@@ -6,7 +6,7 @@ status: draft
 authors:
   - codex
 created: 2026-09-22
-updated: 2026-09-23
+updated: 2026-09-27
 implementation_plan: ../implementation-plans/spec-001-implementation-plan.md
 related_future_work: []
 related_explorations: []
@@ -20,6 +20,9 @@ superseded_by: null
 > This note explains a replaceable internal realization of the approved
 > contract. It is not authority and does not change any profile byte count,
 > layout result, rendering behavior, or connected-target gate.
+>
+> The exact 480 x 320 layout analysis below describes the original nRF target.
+> It needs fresh 240 x 320 evidence for the approved `KMRTM24024-SPI` preset.
 
 ## Purpose and Boundary
 

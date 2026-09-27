@@ -6,7 +6,7 @@ status: active
 owners:
   - codex
 created: 2026-09-09
-updated: 2026-09-19
+updated: 2026-09-27
 related_design_notes:
   - ../implementation-designs/spec-015-generated-workload-and-presets.md
   - ../implementation-designs/spec-015-wake-and-pacing.md
@@ -25,6 +25,21 @@ superseded_by: null
 > It orders reusable host assembly and evidence but does not amend SPEC-015,
 > absorb behavior owned by another Specification, or authorize connected
 > deployment, service restart, or board flashing.
+>
+> The recorded nRF preset tasks and evidence describe the original 480 x 320
+> target. The `KMRTM24024-SPI` 240 x 320 preset was approved on 2026-09-27
+> and requires regenerated manifest, profile, and host evidence.
+
+## 2026-09-27 nRF Preset Amendment
+
+Regenerate the nRF preset and workload manifest from the approved 240 x 320,
+240 x 4, 480-byte-row, 1,920-byte fixture. Update exact runtime, capability,
+backend, and staging inputs together; retain the shared semantic and Canvas
+minima. Re-run the four-profile assembly, static storage, no-allocation, and
+resource checks for `HC-004` through `HC-008`, `HC-013`, and `HC-015` through
+`HC-017`. Record fresh conformance evidence. The
+[SPEC-001 integration sequence](spec-001-implementation-plan.md#2026-09-27-nrf-display-replacement)
+coordinates the target-host and firmware work.
 
 ## Authority and Scope
 

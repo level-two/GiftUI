@@ -6,7 +6,7 @@ status: implementing
 authors:
   - codex
 created: 2026-08-28
-updated: 2026-09-23
+updated: 2026-09-27
 proposal:
   - PROPOSAL-002
   - PROPOSAL-003
@@ -93,6 +93,11 @@ target_milestone: MVP
 > with revised exact Dynamic and Static layout/render-workspace projections
 > and checked profile totals. This amendment is authoritative and does not
 > claim implementation conformance.
+>
+> **2026-09-27 approved target amendment:** The maintainer explicitly approved
+> the `KMRTM24024-SPI` 240 x 320 direct-SPI nRF preset below in place of the
+> former 480 x 320 fixture, coordinated with SPEC-001, SPEC-004, and SPEC-014.
+> Earlier generated manifests and evidence still describe the old fixture.
 >
 > On 2026-09-20, the maintainer explicitly approved the completed production
 > hierarchy measurement. Every preset now requires semantic depth 34, 48
@@ -206,9 +211,10 @@ and are not authority.
 
 SPEC-001 is the approved downstream application integration contract. Its fixed
 four-channel workload, six-action domain, 250-millisecond cadence, fact-storage
-shape, 240 x 240 Pi fixture, and 480 x 320 nRF52840 fixture are authoritative
-application inputs. SPEC-015 approval authorizes only the reusable host-
-assembly contract and the four configuration obligations defined here;
+shape and 240 x 240 Pi fixture are authoritative application inputs. The
+2026-09-27 amendment replaces the 480 x 320 nRF fixture with 240 x 320.
+SPEC-015 approval authorizes only the reusable host-assembly contract and the
+four configuration obligations defined here;
 SPEC-001 approval authorizes the application contract that consumes them.
 
 ## Related ADRs
@@ -873,10 +879,10 @@ must admit the declared minima; equality succeeds.
 The macOS dynamic and static fixtures use the same logical extent and exact
 resource package, and must resolve equal `EffectiveRasterPresentation` values
 apart from storage-mechanism evidence. The Raspberry Pi fixture is 240 x 240
-and admits a full-width 16-row RGB565 region. The nRF52840 fixture is 480 x 320
-and admits a 480 x 4 RGB565 region, 960-byte rows, and exactly 3,840 raster,
-payload, and in-flight bytes with one slot and no full framebuffer. A concrete
-macOS window extent is a host input, but the paired dynamic/static fixtures
+and admits a full-width 16-row RGB565 region. The nRF52840 fixture is
+240 x 320 and admits a 240 x 4 RGB565 region, 480-byte rows, and exactly 1,920
+raster, payload, and in-flight bytes with one slot and no full framebuffer. A
+concrete macOS window extent is a host input, but the paired dynamic/static fixtures
 MUST use the same immutable extent and reassemble after an extent change.
 
 ## Behavior
@@ -1263,7 +1269,7 @@ Required tests include:
 - construction-function failure without an instance, activation failure at
   every step, illegal-state API calls, and idempotent teardown from every
   instance state;
-- exact Pi 240 x 240 and nRF52840 480 x 320 capability/backend joins;
+- exact Pi 240 x 240 and nRF52840 240 x 320 capability/backend joins;
 - forbidden-import and portable-source scans; and
 - zero-allocation/static-runtime and resource-accounting evidence.
 
@@ -1328,9 +1334,9 @@ software, transport, and observed architecture separately.
   selects only allowed dispositions, quiesces without consulting a defective
   table, and is unchanged by every diagnostic configuration and fault.
 - [ ] **HC-013:** macOS dynamic/static fixtures share extent and effective
-  semantics; Pi resolves 240 x 240 with a 240 x 16 RGB565 region; nRF52840
-  resolves 480 x 320 with a 480 x 4 region, 960-byte rows, and 3,840-byte
-  raster/payload/in-flight bounds without a full framebuffer.
+  semantics; Pi resolves 240 x 240 with a 240 x 16 RGB565 region; the
+  nRF52840 fixture resolves 240 x 320 with a 240 x 4 region, 480-byte rows,
+  and 1,920-byte raster/payload/in-flight bounds without a full framebuffer.
 - [ ] **HC-014:** Activation and teardown tests cover every intermediate state,
   prevent stale callbacks/input/reports, retire identities without reuse, and
   require fresh assembly after terminal unavailability or immutable change.
@@ -1363,9 +1369,14 @@ as separate measured conformance evidence.
 
 ## Open Issues
 
-No unresolved architectural or contractual issue remains. The schema-3
-render-workspace additions and coordinated SPEC-013 amendment were explicitly
-reapproved on 2026-09-12. Approved SPEC-001 preserves this contract's
+The `KMRTM24024-SPI` nRF preset and geometry were approved with
+SPEC-001/004/014 on 2026-09-27. The actual display controller, touch
+controller, wiring, and logical orientation still
+need hardware confirmation; the previous 480 x 320 preset evidence cannot
+prove this replacement.
+
+The earlier schema-3 render-workspace additions and coordinated SPEC-013
+amendment were explicitly reapproved on 2026-09-12. Approved SPEC-001 preserves this contract's
 fact-burst, failure normalization, deterministic mock trace, diagnostic, and
 exact host-fixture alignment.
 

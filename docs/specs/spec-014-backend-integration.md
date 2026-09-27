@@ -6,7 +6,7 @@ status: implementing
 authors:
   - codex
 created: 2026-08-27
-updated: 2026-09-13
+updated: 2026-09-27
 proposal:
   - PROPOSAL-003
   - PROPOSAL-004
@@ -78,6 +78,11 @@ target_milestone: MVP
 > validated by the first `sink.begin` call after reservation and before any
 > surface or display mutation. The approved contract remains authoritative and
 > is not yet implemented.
+>
+> **2026-09-27 approved target amendment:** The maintainer explicitly approved
+> the nRF `KMRTM24024-SPI` 240 x 320 fixture below, coordinated with SPEC-001,
+> SPEC-004, and SPEC-015. The replacement still requires new implementation
+> and conformance evidence.
 
 ## Summary
 
@@ -897,8 +902,8 @@ At integration construction, the selected effective value maps one-to-one:
 No field may be ignored, widened, or replaced with target identity. The macOS
 dynamic and static fixtures must produce equal logical output. The Raspberry
 Pi/Linux 240 x 240 fixture must admit a full-width 16-row RGB565 region. The
-nRF52840 480 x 320 fixture must admit exactly a full-width four-row RGB565
-region with 960-byte rows and 3,840-byte raster, payload, and in-flight
+nRF52840 240 x 320 fixture must admit exactly a full-width four-row RGB565
+region with 480-byte rows and 1,920-byte raster, payload, and in-flight
 requirements and no full framebuffer.
 
 ## Backend Requirements
@@ -1072,7 +1077,7 @@ The corpus runs through:
 - a full-surface RGBA8888 buffer;
 - a full-surface/framebuffer RGB565 adapter; and
 - bounded operation-major RGB565 tiled targets using the Pi 240 x 16 and
-  nRF52840 480 x 4 selected regions.
+  nRF52840 240 x 4 selected regions.
 
 Tests must cover:
 
@@ -1120,9 +1125,9 @@ hardware separately.
 - [ ] **BI-002:** Each of the four MVP configuration fixtures constructs the
   exact SPEC-004 contributions and selected effective value; every one-field
   mismatch rejects construction before the first offer without target probing.
-- [ ] **BI-003:** The nRF52840 fixture reports a 480 x 320 surface, 480 x 4
-  region, 960-byte stride, and exactly 3,840 raster, payload, and in-flight
-  bytes with one slot and no full framebuffer.
+- [ ] **BI-003:** The nRF52840 fixture reports a 240 x 320 surface,
+  240 x 4 region, 480-byte stride, and exactly 1,920 raster, payload, and
+  in-flight bytes with one slot and no full framebuffer.
 - [ ] **BI-004:** Every valid candidate completes all checked header bounds and
   reserves one complete frame session before `body`; every reservation ends in
   exactly one `finishFrame` or `cancelFrame`.
@@ -1178,9 +1183,9 @@ compare final encoded surfaces.
 
 ## Open Issues
 
-No unresolved contract or architectural issue remains in this Specification.
-Production surface, region, payload, per-frame work, and in-flight values are
-Wave 7 HOST-CONFIGURATION inputs and are intentionally not selected here.
+The 240 x 320 nRF fixture was approved with SPEC-001/004/015 on 2026-09-27.
+The prior 480 x 320 backend evidence does not prove the replacement fixture. The
+generic raster, display, and transport boundaries remain unchanged.
 
 ## Deferred and Follow-up Work
 

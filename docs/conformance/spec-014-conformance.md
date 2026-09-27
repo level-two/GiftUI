@@ -6,7 +6,7 @@ status: complete
 reviewers:
   - codex
 created: 2026-09-13
-updated: 2026-09-13
+updated: 2026-09-27
 implementation_plan: ../implementation-plans/spec-014-implementation-plan.md
 related_future_work: [FW-010, FW-014]
 related_explorations: []
@@ -19,6 +19,11 @@ superseded_by: null
 
 > This report records evidence. It does not authorize the governing
 > Specification's `implemented` transition.
+>
+> **Replacement-target applicability:** The nRF pass rows below cover the
+> original 480 x 320 ILI9486 fixture and frozen contract hash. They do not
+> establish conformance for the approved 240 x 320 `KMRTM24024-SPI` fixture;
+> affected criteria require new evidence.
 
 ## Review Scope
 

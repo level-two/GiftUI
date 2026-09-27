@@ -20,6 +20,11 @@ superseded_by: null
 > This note explains one replaceable internal realization of an approved
 > contract. It is non-authoritative and cannot introduce architecture or amend
 > the governing Specifications.
+>
+> The nRF 480 x 320 ILI9486/ADS7846 path below describes the original
+> implementation. The approved `KMRTM24024-SPI` 240 x 320 target needs a
+> revised device adapter and new evidence; Raspberry Pi/PiScreen work is
+> unaffected.
 
 ## Purpose and Boundary
 

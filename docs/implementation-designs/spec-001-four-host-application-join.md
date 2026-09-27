@@ -6,7 +6,7 @@ status: current
 authors:
   - codex
 created: 2026-09-14
-updated: 2026-09-14
+updated: 2026-09-27
 implementation_plan: ../implementation-plans/spec-001-implementation-plan.md
 related_future_work: []
 related_explorations: []
@@ -20,6 +20,10 @@ superseded_by: null
 > This note explains one replaceable internal realization of an approved
 > contract. It is non-authoritative and cannot introduce architecture or amend
 > the governing Specifications.
+>
+> The nRF 480 x 320 fixture row below describes the original target. The
+> approved `KMRTM24024-SPI` 240 x 320 fixture requires a renewed host join
+> and evidence.
 
 ## Purpose and Boundary
 

@@ -2,11 +2,11 @@
 spec: SPEC-014
 feature: giftui-mvp-architecture
 title: SPEC-014 Implementation Plan
-status: completed
+status: active
 owners:
   - codex
 created: 2026-09-09
-updated: 2026-09-13
+updated: 2026-09-27
 related_design_notes:
   - ../implementation-designs/spec-014-widened-integer-stroke-raster.md
   - ../implementation-designs/spec-014-operation-major-rgb565-tiling.md
@@ -26,10 +26,26 @@ superseded_by: null
 
 # SPEC-014 Implementation Plan
 
-> This ready plan derives work from the approved Raster Backend and Display
+> This active plan derives work from the approved Raster Backend and Display
 > Integration Contract. It orders implementation and evidence but does not
 > amend its raster, surface, display, capability, handoff, failure, resource,
 > profile, platform, or hardware contracts.
+>
+> The completed nRF fixture tasks and evidence in this plan describe the
+> original 480 x 320 target. The `KMRTM24024-SPI` 240 x 320 fixture was
+> approved on 2026-09-27 and requires fresh backend evidence.
+
+## 2026-09-27 nRF Fixture Amendment
+
+The earlier task dispositions remain evidence for the original fixture. This
+plan is active again for the approved replacement. Update the normalized
+display target and endpoint fixtures to a 240 x 320 surface, 240 x 4 RGB565
+region, 480-byte row, and one 1,920-byte borrowed slot. Re-run `BI-002`,
+`BI-003`, `BI-006`, `BI-007`, `BI-013`, and the relevant exact-limit and
+no-retention checks with the new geometry. Record fresh resource and nRF link
+evidence without treating the old ILI9486 results as replacement conformance.
+The implementation sequence and firmware join are in the
+[SPEC-001 integration plan](spec-001-implementation-plan.md#2026-09-27-nrf-display-replacement).
 
 ## Authority and Scope
 
@@ -164,7 +180,7 @@ exactly once below.
 | --- | --- | --- | --- |
 | `BI-001` — Separate surface, raster, display, backend-integration, runtime, and host ownership with every prohibited edge rejected | `T0.2`, `T1.6`, `T8.1` | SwiftPM graph audit, compiled-import scan, positive and negative dependency fixtures | pending |
 | `BI-002` — Four exact SPEC-004 configurations and pre-offer rejection of every one-field construction mismatch without target probing | `T2.1`, `T2.2`, `T2.5`, `T7.1` | Complete contribution/effective-value matrix, constructor call-count transcript | pending |
-| `BI-003` — Exact nRF52840 480 x 320, 480 x 4, 960-byte-row, 3,840-byte single-slot tiled configuration with no framebuffer | `T2.5`, `T6.5`, `T8.2`, `T8.5` | Normalized fixture, storage report, link/map and forbidden-buffer scan | pending |
+| `BI-003` — Exact nRF52840 240 x 320, 240 x 4, 480-byte-row, 1,920-byte single-slot tiled configuration with no framebuffer | `T2.5`, `T6.5`, `T8.2`, `T8.5` | Normalized fixture, storage report, link/map and forbidden-buffer scan | replacement evidence pending |
 | `BI-004` — Checked header bounds and one complete reservation before body, with one finish or cancel | `T2.3`, `T3.1`, `T3.5`, `T7.1`, `T7.2` | Header/reservation/call-order transcript for every terminal path | pending |
 | `BI-005` — Complete payload grammar, exact slot reuse, and rejection of every invalid writer/reservation operation | `T3.1`-`T3.5`, `T7.5` | Exhaustive `transactions.yaml` state-transition corpus | pending |
 | `BI-006` — Single producer and borrowed-operation calls in both tiled fixtures with bounded storage and no replay, display list, framebuffer, or retained address | `T0.4`, `T6.1`-`T6.5`, `T8.2` | Call-count, borrow-poison, address, storage high-water, and forbidden-symbol reports | pending |

@@ -5,7 +5,7 @@ title: SPEC-001 Conformance Report
 status: complete
 reviewers: [codex]
 created: 2026-09-19
-updated: 2026-09-24
+updated: 2026-09-27
 implementation_plan: ../implementation-plans/spec-001-implementation-plan.md
 related_future_work: []
 related_explorations: []
@@ -18,6 +18,12 @@ superseded_by: null
 
 > This report records evidence. It does not authorize the governing
 > Specification's `implemented` transition.
+>
+> **Replacement-target applicability:** This report's nRF results and frozen
+> Specification hashes cover the original 480 x 320 ILI9486 fixture. They do
+> not prove the 2026-09-27 approved 240 x 320 `KMRTM24024-SPI` amendment.
+> Reassess affected criteria with new
+> hardware-free and connected evidence.
 
 ## Review Scope
 

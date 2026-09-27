@@ -2,11 +2,11 @@
 spec: SPEC-004
 feature: capability-system
 title: SPEC-004 Implementation Plan
-status: completed
+status: active
 owners:
   - codex
 created: 2026-08-29
-updated: 2026-09-19
+updated: 2026-09-27
 related_design_notes:
   - ../implementation-designs/spec-004-raster-arithmetic.md
   - ../implementation-designs/spec-004-resource-evidence-driver.md
@@ -28,9 +28,25 @@ superseded_by: null
 
 # SPEC-004 Implementation Plan
 
-> This ready plan derives work from the approved Capability Contribution and
+> This active plan derives work from the approved Capability Contribution and
 > Resolution Specification. It orders implementation and evidence but does not
 > amend that contract or authorize work owned by another Specification.
+>
+> The completed nRF fixture tasks and evidence in this plan describe the
+> original 480 x 320 target. The `KMRTM24024-SPI` 240 x 320 fixture was
+> approved on 2026-09-27 and requires fresh resolver and resource evidence.
+
+## 2026-09-27 nRF Fixture Amendment
+
+The earlier task dispositions remain evidence for the original fixture. This
+plan is active again for the approved replacement. Recompute the normalized
+240 x 320 requirement, 240 x 4 RGB565 region, 480-byte row, and 1,920-byte
+raster/payload/in-flight usage in the SPEC-004 fixtures and production host
+contributions. Re-run exact arithmetic, incompatibility, four-profile,
+zero-allocation, and nRF resource checks for `CR-010`, `CR-010A`, and `CR-013`.
+Record new evidence in the conformance report; preserve the old 3,840-byte
+result as historical evidence. This work precedes the SPEC-014 and SPEC-015
+replacement joins in the [SPEC-001 integration sequence](spec-001-implementation-plan.md#2026-09-27-nrf-display-replacement).
 
 ## Authority and Scope
 

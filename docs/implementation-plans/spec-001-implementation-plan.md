@@ -24,10 +24,33 @@ superseded_by: null
 
 # SPEC-001 Implementation Plan
 
-> This ready plan derives the ordered application work and evidence strategy
+> This active plan derives the ordered application work and evidence strategy
 > from the approved Signal Analyzer contract. It does not amend SPEC-001,
 > redefine a reusable GiftUI contract, or authorize deployment, remote service
 > changes, connected Pi execution, or nRF52840 flashing.
+
+## 2026-09-27 nRF Display Replacement
+
+The maintainer approved replacing the original 480 x 320 ILI9486 PiScreen
+bridge on the nRF configuration with the physically connected
+`KMRTM24024-SPI` 240 x 320 direct-SPI TFT. This sequence reopens only the
+affected nRF work. The portable Signal Analyzer hierarchy remains shared and
+must lay out at the supplied size. Earlier task dispositions and conformance
+results remain evidence for the original target only.
+
+| Step | Work and affected owners | Completion evidence / criteria |
+| --- | --- | --- |
+| 1. Identify the module | Confirm the display and touch controller identities, wiring, electrical limits, and portrait orientation from the physical module and a bounded connected diagnostic. Record pin map, controller readback or another reliable identification method, and touch calibration. Do not select an ILI9341 driver solely from the module marking. | Reproducible hardware identity and safety record; `SA-AC-024` and `HC-017` prerequisites. Connected-board changes require a separate explicit request. |
+| 2. Replace the exact fixtures | Update SPEC-004 resolver fixtures; SPEC-014 display/endpoint fixtures; SPEC-015 generated preset and workload; SPEC-001 hierarchy/layout, canvas, and resource expectations. Use 240 x 320, 240 x 4 RGB565, 480-byte rows, and 1,920-byte raster/payload/in-flight values. Keep the 3,840-byte fact-admission regions separate. | New passing `CR-010`/`CR-010A`, `BI-003`, `HC-013`, `SA-AC-005`/`SA-AC-045` evidence and exact generated-file checks. |
+| 3. Replace the device adapter | Replace the ILI9486 serial-to-parallel command framing in `firmware/nrf52840/applications/signal-analyzer-static/` with the identified controller's direct-SPI initialization, command/data writes, address windows, RGB565 submission, safe state, and shutdown. Update `app.overlay`, the display binding, CMake sources, display validation, and the touch adapter only as the verified hardware requires. | Native driver tests and Devicetree checks cover commands, bounds, byte counts, failure paths, and safe shutdown; no PiScreen bridge framing remains in the nRF production path. |
+| 4. Rejoin the static host | Update `StaticSignalAnalyzerNRFDisplayTarget`, its transport, `StaticSignalAnalyzerNRFProfileRegions`, tile/region storage, and firmware `StaticPreset.swift` to the approved fixture. Re-run host-native full-layout, render, input, and deterministic-scenario rehearsals. Confirm the complete title, four rows, controls, ruler, grid, and traces remain usable at 240 x 320 without a target-specific Presentation fork. | Exact host/capability/backend equality, zero forbidden allocation or runtime dependencies, and new `SA-AC-005`, `SA-AC-024`, `SA-AC-025`, `SA-AC-039`, `SA-AC-045` evidence. |
+| 5. Build and measure | Run repository contract drivers and `scripts/nrf52840/doctor.sh`, then build `signal-analyzer-static` through `scripts/nrf52840/build.sh`. Inspect generated Devicetree, ELF ARMv7E-M/VFP calling convention, RAM, flash, stack, staging, and tile high-water against the approved ceilings. | Reproducible hardware-free reports and linked firmware for the exact source revision; no connected conformance claim from a build. |
+| 6. Validate on the connected board | After a separate explicit connected-board request, flash the inspected artifact through the repository J-Link workflow. Verify an initial full image, at least 30 continuous seconds at the required cadence, all six physical controls, touch coordinates, reset/watchdog behavior, failure recovery, and resource high-water. Compare semantic/action/drawing traces with the host oracle. | New T8.2/T8.3 transcript and updated SPEC-001/004/014/015 conformance reports; only then request the `implemented` transitions. |
+
+Steps 2-4 may need focused updates to the existing nRF implementation design
+notes. Any controller or input finding that changes the approved geometry,
+resource bounds, host ownership, or backend semantics must return to the
+Specification or ADR review boundary before implementation continues.
 
 ## Authority and Scope
 
@@ -1920,13 +1943,14 @@ simulation.
       watchdog/reset behavior, stack high-water where supported, assembled
       RAM/flash/workspaces/timing, artifact identity, and teardown. Never infer
       this evidence from an emulator or cross-build.
-      **Blocked pending explicit connected-board authorization and physical
-      target evidence:** T6.8 now composes the production Static analyzer host
+      **Original 480 x 320 task record:** T6.8 composed the production Static analyzer host
       loop with ILI9486/ADS7846 display and input. Its exact-source native
-      probe and linked firmware pass the hardware-free gate. Physical shield
-      provenance, continuity/orientation, and power evidence is still required
-      before flashing; connected display, touch calibration, input, timing,
-      reset, and stack observations remain uncollected.
+      probe and linked firmware passed the hardware-free gate. Physical shield
+      provenance, continuity/orientation, and power evidence were still required
+      before flashing. A later authorized connected run identified the
+      `KMRTM24024-SPI` 240 x 320 module instead. The replacement's controller,
+      touch path, orientation, production firmware, and connected checks remain
+      open; see the deferred-work disposition and evidence below.
 - [ ] `T8.3` — Compare connected semantic/action/drawing traces with the
       hardware-free oracle while preserving target-specific performance and
       display facts. Classify any absent hardware run as an open connected
@@ -2127,11 +2151,20 @@ not warrant design notes.
 
 ## Deferred and Follow-up Work
 
-The connected nRF attempt exposed a physical 240 x 320 direct-SPI module in
-place of the approved 480 x 320 target. Optional support for that separate
-module is captured in
-[FW-023](../future-work/fw-023-ili9341-240x320-target-variant.md); the
-current T8.2 hardware mismatch remains a blocker. Public binding
+The connected nRF attempt exposed a physical `KMRTM24024-SPI` 240 x 320
+direct-SPI module in place of the approved 480 x 320 target. The maintainer
+explicitly approved replacement within the existing nRF configuration on
+2026-09-27 through the coordinated SPEC-001/004/014/015 fixture amendments.
+[FW-023](../future-work/fw-023-ili9341-240x320-target-variant.md)
+is closed as a separate-target idea. T8.2 remains blocked until the controller,
+touch path, and orientation are confirmed and revised production firmware and
+connected evidence satisfy the amendment. Existing task dispositions
+and 480 x 320 results describe historical work, not the replacement target.
+Revise the nRF generated preset and workload manifest,
+the display/input adapter and firmware for the identified module, the exact
+capability/backend fixtures and resource evidence, and the T8.2 connected
+campaign. Recheck the shared layout and all required content at 240 x 320.
+Public binding
 and fine-grained property observation remain in RFC-008's linked
 [FW-017](../future-work/fw-017-public-binding-abstraction.md) and
 [FW-019](../future-work/fw-019-fine-grained-observable-dependency-tracking.md);

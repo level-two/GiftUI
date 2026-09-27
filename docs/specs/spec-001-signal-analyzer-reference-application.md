@@ -6,7 +6,7 @@ status: implementing
 authors:
   - Yauheni Lychkouski
 created: 2026-08-14
-updated: 2026-09-23
+updated: 2026-09-27
 proposal:
   - PROPOSAL-002
 related_rfcs:
@@ -46,7 +46,8 @@ related_specs:
   - SPEC-013
   - SPEC-014
   - SPEC-015
-related_future_work: []
+related_future_work:
+  - FW-023
 related_explorations: []
 related_spikes: []
 supersedes: []
@@ -77,6 +78,13 @@ target_milestone: MVP
 > 3,584 fact bytes and 256 bytes of metadata and separately sequenced fact
 > reserve. These physical storage sizes implement the unchanged capacities
 > and ordered-admission contract below.
+>
+> **2026-09-27 approved target amendment:** The maintainer explicitly approved
+> replacing the nRF52840 display target with the physically connected
+> `KMRTM24024-SPI` 240 x 320 direct-SPI TFT, coordinated with SPEC-004,
+> SPEC-014, and SPEC-015. The revised fixture below is authoritative for
+> implementation. Existing 480 x 320 evidence remains historical and does
+> not establish conformance for the replacement target.
 
 ## Summary
 
@@ -1413,16 +1421,18 @@ fact storage, the exact `20 + 2 + 6 == 28` conforming compact-fact burst, five
 Canvas occurrences, five submitted strokes, at least 202 simultaneously live
 Path points, 12 live subpaths, 832 snapshotted points, and 16 snapshotted
 subpaths. Raspberry Pi fixtures use the approved 240 x 240 extent and 240 x 16
-RGB565 region. nRF52840 fixtures use the approved 480 x 320 extent, 480 x 4
-RGB565 region, 960-byte rows, and 3,840-byte raster, payload, and in-flight
-bounds without a full framebuffer. The checked-in hierarchy descriptor,
+RGB565 region. The nRF52840 fixture uses a 240 x 320 logical extent
+for the `KMRTM24024-SPI` module, a 240 x 4 RGB565 region, 480-byte rows, and
+1,920-byte raster, payload, and in-flight bounds without a full framebuffer.
+The portable hierarchy MUST lay out against the supplied extent rather than
+assume a fixed nRF width. The checked-in hierarchy descriptor,
 generated workload manifest, `RuntimeProfileLimits`, and assembly report MUST
 agree exactly for each preset.
 
 The Raspberry Pi/Linux claim requires execution with framebuffer rendering and
 PiScreen display/input evidence. The nRF52840 claim requires static execution
-with the supported TFT display. A host simulator does not substitute for those
-connected-hardware claims.
+with the `KMRTM24024-SPI` TFT display and its connected input. A host simulator
+does not substitute for those connected-hardware claims.
 
 The approved SPEC-015 workload reserves 224 text-scalar and positioned-glyph
 slots in each host's layout/render limits. This covers the shared hierarchy's
@@ -1813,7 +1823,8 @@ behavioral, resource, profile, or connected-hardware evidence.
   scheduler, GPIO, renderer, display, or hardware API.
 - [ ] **SA-AC-005:** The screen visibly contains the required title, subtitle,
   status, time ruler, four ordered channel rows, controls, error region, grid,
-  and four traces.
+  and four traces at each approved host extent, including the
+  240 x 320 nRF fixture, without target-specific Presentation layout.
 - [ ] **SA-AC-006:** The portable hierarchy uses fixed explicit channel and
   window composition and is substantially shared by all four configurations.
 - [ ] **SA-AC-007:** Sink registration synchronously delivers revisioned
@@ -1930,7 +1941,7 @@ behavioral, resource, profile, or connected-hardware evidence.
 - [ ] **SA-AC-045:** Every host fixture proves exact equality with SPEC-015's
   workload manifest, runtime limits, `1/32/1` fact stores, 28-fact production
   burst, five-Canvas Drawing minima, Pi extent/region, nRF52840 extent/region
-  and 3,840-byte bounds, and assembly report.
+  and 1,920-byte raster/payload/in-flight bounds, and assembly report.
 
 ## Implementation Notes
 
@@ -2013,12 +2024,18 @@ view invalidations without batching or dropping capture events.
 
 ## Open Issues
 
-No unresolved architecture choice or application-contract blocker is known.
-Later contract changes require renewed review and explicit maintainer approval.
+The nRF display controller, touch controller, connected wiring, and logical
+orientation of the `KMRTM24024-SPI` module require hardware confirmation.
+The four coordinated fixture amendments were approved on 2026-09-27. The
+existing 480 x 320 implementation and its evidence cannot discharge the
+240 x 320 connected acceptance gate.
 
 ## Deferred and Follow-up Work
 
-No deferred item originates from this Specification. For context, RFC-008
+The previously captured [FW-023](../future-work/fw-023-ili9341-240x320-target-variant.md)
+is closed as a separate-target idea because the maintainer directed replacement
+of the existing nRF target. The replacement remains a current contract-review
+blocker, not deferred work. For context, RFC-008
 already keeps public binding/projection in
 [FW-017](../future-work/fw-017-public-binding-abstraction.md) and fine-grained
 property dependency tracking in

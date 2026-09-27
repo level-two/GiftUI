@@ -1,12 +1,12 @@
 ---
 id: FW-023
 feature: signal-analyzer
-title: Optional 240 x 320 ILI9341 Target Variant
-status: captured
+title: 240 x 320 nRF Target Variant (Closed)
+status: closed
 authors:
   - codex
 created: 2026-09-25
-updated: 2026-09-25
+updated: 2026-09-27
 source:
   - SPEC-001
 related_future_work: []
@@ -18,7 +18,15 @@ superseded_by: []
 target_milestone: null
 ---
 
-# FW-023: Optional 240 x 320 ILI9341 Target Variant
+# FW-023: 240 x 320 nRF Target Variant (Closed)
+
+This record preserves the originally deferred separate-variant idea. On
+2026-09-27 the maintainer directed replacement of the existing nRF display
+target within the Signal Analyzer MVP instead and explicitly approved the
+coordinated SPEC-001, SPEC-004, SPEC-014, and SPEC-015 amendments. This closed
+Future Work item itself grants no implementation authority.
+
+## Original 2026-09-25 Capture
 
 ## Observation / Opportunity
 
@@ -58,9 +66,10 @@ remove it.
 
 ## Disposition
 
-Captured as a possible separate target. Revisit through Proposal and, if
-accepted, RFC/ADR/Specification review before implementation. The current
-approved target and T8.2 remain unchanged.
+Closed as a separate-target proposal after the maintainer chose replacement
+within the existing feature scope. The T8.2 connected gate remains open until
+the actual controller and input hardware are identified, the approved
+replacement is implemented, and the connected campaign passes on that target.
 
 ## References
 

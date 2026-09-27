@@ -340,6 +340,13 @@ budgets.
 | Raspberry Pi 1/Linux dynamic + PiScreen | Dynamic producer; RGB565 tiled raster candidate within the supported 480 x 320 bound; 240 x 240 PiScreen fixture; Linux framebuffer accepting 16-, 24-, or 32-bit layouts; default 240 x 16 x 2-byte GiftUI tile | Available bounded tiled realization using the common stream contract; resolver selects compatible encoding/conversion and downstream submission-lifetime inputs shared by renderer and framebuffer rather than probing a concrete display type |
 | nRF52840 static + TFT | Static bounded producer; required MVP operations; RGB565 tile raster; 480 x 320 display path; synchronous borrowed SPI submission; maximum 480 x 4 x 2-byte (3,840-byte) tile; no full framebuffer | Available RGB565 tiled realization whose capability contribution, initialization-time resolution, validation result, effective-result storage, and steady-state access require no heap allocator; uses the common stream contract and compatible borrowed submission within the configured storage bound; a full-surface RGBA realization is unavailable |
 
+The nRF geometry in this approved RFC records the original fixture, not a
+portable-layout requirement. A 2026-09-27 maintainer-directed replacement with
+the physically connected `KMRTM24024-SPI` 240 x 320 TFT was explicitly
+approved through coordinated SPEC-001/004/014/015 amendments. The capability
+architecture and Raspberry Pi PiScreen fixture remain unchanged; the
+replacement fixture requires new implementation and conformance evidence.
+
 At least two effective realizations therefore differ materially: desktop may
 use a bounded full surface, while the nRF52840 fixture requires bounded RGB565
 tiles and synchronous borrowed submission. The portable presentation remains
