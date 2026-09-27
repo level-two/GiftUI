@@ -18,6 +18,11 @@ commands passed for `macos-dynamic`, `macos-static`, `nrf52840-embedded`, and
 These reports were generated from parent revision `543a8573` with the working
 tree changes in this implementation step.
 
+After the direct-SPI firmware and shared 240-pixel header were committed,
+`scripts/contracts/run-spec-004.sh --profile nrf52840-embedded` passed again
+and published immutable run
+`f9213d8cd189af44fc8671556ef856cdf5762f5b-1644496d5c389122`.
+
 The nRF matched resource pair reports 7,936 baseline and 8,188 candidate
 linked RAM bytes (+252); 25,732 baseline and 30,500 candidate linked flash
 bytes (+4,768); 202 bytes named capability storage; 1,920 bytes display

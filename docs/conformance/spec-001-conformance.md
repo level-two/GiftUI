@@ -19,11 +19,12 @@ superseded_by: null
 > This report records evidence. It does not authorize the governing
 > Specification's `implemented` transition.
 >
-> **Replacement-target applicability:** This report's nRF results and frozen
-> Specification hashes cover the original 480 x 320 ILI9486 fixture. They do
-> not prove the 2026-09-27 approved 240 x 320 `KMRTM24024-SPI` amendment.
-> Reassess affected criteria with new
-> hardware-free and connected evidence.
+> **Replacement-target applicability:** The table and frozen hashes below are
+> the historical review of the original 480 x 320 ILI9486 fixture. The
+> [240 x 320 hardware-free follow-up](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-8/nrf52840-240x320-hardware-free.md)
+> covers the approved `KMRTM24024-SPI` geometry, direct-SPI transport, static
+> host, and cross-build. Independent pixel review and connected display/input
+> evidence remain open; the table's five blocked criteria are unchanged.
 
 ## Review Scope
 

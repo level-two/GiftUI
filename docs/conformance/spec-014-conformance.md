@@ -20,10 +20,11 @@ superseded_by: null
 > This report records evidence. It does not authorize the governing
 > Specification's `implemented` transition.
 >
-> **Replacement-target applicability:** The nRF pass rows below cover the
-> original 480 x 320 ILI9486 fixture and frozen contract hash. They do not
-> establish conformance for the approved 240 x 320 `KMRTM24024-SPI` fixture;
-> affected criteria require new evidence.
+> **Replacement-target applicability:** The nRF pass rows below are the
+> historical review of the original 480 x 320 ILI9486 fixture and frozen
+> contract hash. The [240 x 320 cross-build follow-up](../../Tests/ContractFixtures/SPEC014/Evidence/milestone-8/nrf52840-240x320-cross-build.md)
+> verifies the amended backend fixture and resource bounds. Connected
+> display/input behavior remains unverified.
 
 ## Review Scope
 
