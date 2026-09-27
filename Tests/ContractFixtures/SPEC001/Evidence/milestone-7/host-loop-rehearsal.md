@@ -267,6 +267,48 @@ passed and verified the supported EABI5 hard-float executable without a remote
 run. The refreshed [Pi raw trace](pi-ordered-trace.tsv) has SHA-256
 `ebe67b25fc8174379ecb2ee0cddf15702958b5bf2c26a7411391945710220d9e`.
 
+## T7.6 macOS Static reference and completed comparisons (2026-09-27)
+
+The focused macOS Static reference uses the approved `macOSStatic` profile's
+320×240 logical extent and 39,696-byte fixed profile regions. It constructs
+its own deterministic source, repository, Static fact admission, ViewModel,
+generated Static semantic table, in-place layout and Drawing workspaces,
+render preflight and recording operation sink. Source facts are admitted and
+applied at each source opportunity; presentation occurs at the same 250 ms
+deadlines as the nRF native loop. The reference generates the schedule from
+the source's own delays and does not read the nRF trace to choose facts.
+
+The reference also builds and commits six Static interaction records for each
+accepted presentation. Before each scripted enabled action it tests pointer
+down/up at the committed hit region; disabled controls must ignore down. The
+model action is invoked only after the enabled gesture is admitted. The shared
+generated Static hierarchy and fixed-region algorithms are exercised with
+the macOS preset and its extent; the nRF target retains its own 480×320 tiled
+physical projection.
+
+The focused test passed and produced the [macOS Static trace](macos-static-reference-trace.tsv)
+(139 ordered records, SHA-256
+`4671d31448ac482f28fed9e520f51e974eb1d9dc339f69d882167f269dcb7b52`).
+The comparison commands passed:
+
+```sh
+scripts/contracts/compare-spec-001-dynamic-reference.rb \
+  Tests/ContractFixtures/SPEC001/Evidence/milestone-7/macos-dynamic-reference-trace.tsv \
+  Tests/ContractFixtures/SPEC001/Evidence/milestone-7/pi-ordered-trace.tsv
+scripts/contracts/compare-spec-001-static-reference.rb \
+  Tests/ContractFixtures/SPEC001/Evidence/milestone-7/macos-static-reference-trace.tsv \
+  Tests/ContractFixtures/SPEC001/Evidence/milestone-7/nrf-ordered-trace.tsv
+```
+
+The Dynamic comparison covers 120 workload frames, seven initial/action
+presentations and 12 pointer outcomes; the Static comparison covers all 127
+initial, workload and action presentations and 12 action outcomes. Both check
+ordered capture/model state, semantic/layout/Drawing/render summaries and the
+presence of a physical target-frame hash. The target-to-target action check
+also passes. This completes T7.6 at the host-native evidence boundary.
+Reviewed exact pixels, fault injection and profile-driver registration remain
+T7.7 through T7.9.
+
 ## Validation boundary
 
 After these slices, both host-native rehearsal commands passed, as did the
@@ -278,8 +320,8 @@ include the SPEC-002 owned-source inventory and SPEC-008 package boundary
 checks. The detailed local results are under
 `.build/test-reports/macos-dynamic/`; they are not T7.6 parity evidence.
 
-The macOS Dynamic and Static executables call `HardwareFreePresetRunner.run`
-and report preset/admission checksums. The new focused Dynamic reference above
-adds an ordered workload presentation calculation but does not turn either
-executable into a full application loop. Remaining action, raster, and Static
-reference comparisons must pass before T7.6 can be completed.
+The macOS Dynamic and Static executables still call
+`HardwareFreePresetRunner.run` for preset/admission checksums. The focused
+tests above provide the independent source, admission, presentation and
+interaction references used for T7.6. The complete host-native behavior and
+ordered comparison gate now passes. Exact pixel references remain T7.7.
