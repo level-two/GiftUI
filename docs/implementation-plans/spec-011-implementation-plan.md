@@ -6,7 +6,7 @@ status: active
 owners:
   - codex
 created: 2026-09-09
-updated: 2026-09-20
+updated: 2026-09-27
 related_design_notes:
   - ../implementation-designs/spec-011-target-bound-dispatch.md
 conformance_report: null
@@ -573,9 +573,13 @@ report has a disposition for every criterion.
       this result from simulator, host, or ELF evidence. Collect it in the
       nRF52840 TFT/input campaign group defined by
       [SPEC-001 Milestone 8](spec-001-implementation-plan.md#cross-specification-connected-validation-campaign).
-      **Blocked:** the selected ILI9486/ADS7846 device firmware passes exact
-      build/inspection but lacks the production Static analyzer host. No board
-      has been flashed, and the physical shield safety gates remain open.
+      **Historical blocker:** the original ILI9486/ADS7846 build lacked the
+      production Static analyzer host at this checkpoint. The approved
+      `KMRTM24024-SPI` 240 x 320 replacement now has a hardware-free
+      direct-SPI firmware build and host-native input rehearsal; see the
+      [replacement evidence](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-8/nrf52840-240x320-hardware-free.md).
+      The actual display/touch controllers, wiring, calibration, and connected
+      interaction behavior remain open. No replacement firmware was flashed.
 - [x] `T9.5` — Create `docs/conformance/spec-011-conformance.md`, map every
       `IN-001` through `IN-013` criterion to reproducible evidence, record
       deviations/exceptions and connected-evidence status, link it from

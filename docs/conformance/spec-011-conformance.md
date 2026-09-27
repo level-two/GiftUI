@@ -5,7 +5,7 @@ title: SPEC-011 Conformance Report
 status: complete
 reviewers: [codex]
 created: 2026-09-19
-updated: 2026-09-20
+updated: 2026-09-27
 implementation_plan: ../implementation-plans/spec-011-implementation-plan.md
 related_future_work: [FW-021]
 related_explorations: []
@@ -18,6 +18,12 @@ superseded_by: null
 
 > This report records evidence. It does not authorize the governing
 > Specification's `implemented` transition.
+>
+> **nRF target applicability:** The ILI9486/ADS7846 adapter statements below
+> describe the original 480 x 320 fixture at the frozen review revision. The
+> approved nRF target is now the 240 x 320 `KMRTM24024-SPI` direct-SPI module.
+> Its [hardware-free application and input follow-up](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-8/nrf52840-240x320-hardware-free.md)
+> passes; connected touch and display routing remain open for `T9.4`.
 
 ## Review Scope
 
