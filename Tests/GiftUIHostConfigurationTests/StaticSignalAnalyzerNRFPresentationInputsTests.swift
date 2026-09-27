@@ -10,12 +10,14 @@ import GiftUIRenderCore
 import GiftUIRenderLowering
 import GiftUIRuntimeCore
 import GiftUIRuntimeStatic
+import SignalAnalyzerData
 import SignalAnalyzerDomain
+import SignalAnalyzerHost
 import SignalAnalyzerPresentation
 import SignalAnalyzerTargetHost
 import Testing
 
-@Test func macOSStaticReferencePresentsGeneratedHierarchyAtApprovedExtent() throws {
+@Test func macOSStaticReferenceRunsGeneratedPresentationWorkload() throws {
     let preset = GeneratedSignalAnalyzerPresets.macOSStatic()
     #expect(preset.raster.logicalWidth == 320)
     #expect(preset.raster.logicalHeight == 240)
@@ -39,117 +41,285 @@ import Testing
             Issue.record("macOS Static fixed profile did not construct")
             return
         }
-        let context = ExecutionContext(
-            cycle: RunCycleID(rawValue: 1),
-            semanticRevision: SemanticRevision(rawValue: 1),
-            candidateFrame: nil,
-            phase: .admitting
+        let source = DeterministicSignalDataSource()
+        let repository = DefaultSignalAcquisitionRepository(source: source)
+        let model = SignalAnalyzerViewModel(
+            startAcquisition: StartSignalAcquisitionUseCase(repository: repository),
+            stopAcquisition: StopSignalAcquisitionUseCase(repository: repository),
+            clearCapture: ClearSignalCaptureUseCase(repository: repository)
         )
-        #expect(profile.beginOpportunity(context: context) == nil)
-        let model = staticNRFPresentationInputModel()
-        StaticSignalAnalyzerNRFGeneratedPresentationInputFactory.withInputs(model: model) {
-            inputs in
-            #expect(inputs.stageGeneratedSemanticCandidate(in: &profile) != nil)
-            #expect(inputs.publishGeneratedSemanticCandidate(revision: 1, in: &profile) != nil)
-            let presented = profile.withPresentationRegions {
-                semanticRegion, layoutRegion, renderRegion, pathRegion, planRegion in
-                guard
-                    let semantic = StaticSignalAnalyzerNRFUTF8LayoutView(in: semanticRegion),
-                    var layoutWorkspace = StaticSignalAnalyzerNRFLayoutWorkspace(
-                        scopes: layoutRegion, text: renderRegion
-                    ),
-                    var layoutSink = StaticSignalAnalyzerNRFResolvedLayoutStorage(
-                        scopes: layoutRegion, text: renderRegion
-                    ),
-                    let proposal = ProposedSize(width: 320, height: 240)
-                else { return false }
-                guard
-                    case .success(let layoutSummary) = layout(
-                        semantic: semantic,
-                        metrics: GiftUIReferenceTextResources.targetPackage.metrics,
-                        proposal: proposal,
-                        limits: preset.runtimeLimits.layout,
-                        workspace: &layoutWorkspace,
-                        sink: &layoutSink
-                    )
-                else { return false }
-                guard
-                    var source = StaticSignalAnalyzerNRFCanvasInvocationSource(
-                        semanticRegion: semanticRegion, inputs: inputs
-                    ),
-                    var drawing = StaticSignalAnalyzerNRFDrawingWorkspace(
-                        pathRegion: pathRegion,
-                        planRegion: planRegion,
-                        capacity: preset.runtimeLimits.drawing
-                    )
-                else { return false }
-                guard
-                    case .success(let drawingSummary) = CanvasPlanProducer.derive(
-                        source: &source,
-                        layout: layoutSink.renderView,
-                        executionContext: ExecutionContext(
-                            cycle: RunCycleID(rawValue: 1),
-                            semanticRevision: SemanticRevision(rawValue: 1),
-                            candidateFrame: nil,
-                            phase: .deriving
-                        ),
-                        limits: preset.runtimeLimits.drawing,
-                        workspace: &drawing
-                    ), source.allReleased
-                else { return false }
-                guard
-                    let render = StaticSignalAnalyzerNRFUTF8RenderView(
-                        in: semanticRegion, renderSnapshotVersion: 1
-                    ),
-                    let bounds = Rect(
-                        origin: Point(x: 0, y: 0),
-                        size: Size(width: 320, height: 240)!
-                    ),
-                    var renderWorkspace = StaticSignalAnalyzerNRFRenderWorkspace(
-                        region: renderRegion,
-                        capacity: preset.runtimeLimits.render,
-                        structuralCapacity: preset.runtimeLimits.renderWorkspace
-                    )
-                else { return false }
-                let preflight = CanvasRenderProducer.preflight(
-                    semantic: render,
-                    layout: layoutSink.renderView,
-                    textMetrics: GiftUIReferenceTextResources.targetPackage.metrics,
-                    drawingPlan: drawing,
-                    surfaceBounds: bounds,
-                    damageMode: .initializeCompleteSurface,
-                    rootForeground: .white,
-                    limits: preset.runtimeLimits.render,
-                    configuredSinkCapacity: preset.runtimeLimits.renderSink,
-                    workspace: &renderWorkspace
+        var admissionStorage = StaticSignalAnalyzerHostFactAdmissionStorage()
+        withUnsafeMutablePointer(to: &admissionStorage) { admissionPointer in
+            let admission = StaticSignalAnalyzerHostFactAdmission(storage: admissionPointer)
+            let adapter = SignalAnalyzerPresentationAdmissionAdapter(
+                observeCapture: ObserveSignalCaptureUseCase(repository: repository),
+                observeState: ObserveAcquisitionStateUseCase(repository: repository),
+                admission: admission,
+                failureFactory: DefaultSignalAnalyzerOperationalFailureFactory()
+            )
+            var sourceClock: UInt64 = 10_000
+            var transitionDeadline: UInt64 = 0
+            var delivered = 0
+            for window in 0 ... 126 {
+                if window == 1 {
+                    #expect(admission.beginProducer(.bootstrap))
+                    guard case .started = adapter.startObserving() else {
+                        Issue.record("macOS Static observation did not start")
+                        return
+                    }
+                    admission.endProducer()
+                    #expect(admission.seal())
+                    while let (_, _, fact) = admission.takeNextSealed() {
+                        guard case .applied = model.apply(fact) else {
+                            Issue.record("macOS Static bootstrap fact application failed")
+                            return
+                        }
+                    }
+                    #expect(admission.beginProducer(.action))
+                    model.startTapped()
+                    admission.endProducer()
+                }
+                if window > 0 && window <= 120 {
+                    guard let generation = source.activeGeneration else {
+                        Issue.record("macOS Static source did not start")
+                        return
+                    }
+                    let frameDeadline = UInt64(window) * 250_000
+                    var factCount = 0
+                    while delivered < 2_400 {
+                        if transitionDeadline == 0 {
+                            guard let delay = source.nextScheduledDelay else {
+                                Issue.record("macOS Static source has no next delay")
+                                return
+                            }
+                            let components = delay.components
+                            let microseconds =
+                                UInt64(components.seconds) * 1_000_000
+                                + UInt64(components.attoseconds / 1_000_000_000_000)
+                            transitionDeadline =
+                                sourceClock
+                                + microseconds * 2_998 / 20_177
+                        }
+                        if transitionDeadline > frameDeadline { break }
+                        sourceClock = transitionDeadline
+                        transitionDeadline = 0
+                        #expect(admission.beginProducer(.transition))
+                        #expect(source.deliverScheduledTransition(generation: generation))
+                        admission.endProducer()
+                        delivered += 1
+                        if admission.seal() {
+                            while let (_, _, fact) = admission.takeNextSealed() {
+                                guard case .applied = model.apply(fact) else {
+                                    Issue.record("macOS Static fact application failed")
+                                    return
+                                }
+                                factCount += 1
+                            }
+                        }
+                    }
+                    #expect(factCount > 0 && factCount <= 30)
+                }
+                let action: SignalAnalyzerAction?
+                switch window {
+                case 121: action = .stop
+                case 122: action = .start
+                case 123: action = .clear
+                case 124: action = .selectOneSecond
+                case 125: action = .selectFiveSeconds
+                case 126: action = .selectTwoSeconds
+                default: action = nil
+                }
+                if let action {
+                    #expect(admission.beginProducer(.action))
+                    switch action {
+                    case .start: model.startTapped()
+                    case .stop: model.stopTapped()
+                    case .clear: model.clearTapped()
+                    case .selectOneSecond: model.visibleDurationChanged(.oneSecond)
+                    case .selectTwoSeconds: model.visibleDurationChanged(.twoSeconds)
+                    case .selectFiveSeconds: model.visibleDurationChanged(.fiveSeconds)
+                    }
+                    admission.endProducer()
+                    if admission.seal() {
+                        while let (_, _, fact) = admission.takeNextSealed() {
+                            guard case .applied = model.apply(fact) else {
+                                Issue.record("macOS Static action fact application failed")
+                                return
+                            }
+                        }
+                    }
+                }
+                let revision = UInt32(window + 1)
+                let context = ExecutionContext(
+                    cycle: RunCycleID(rawValue: revision),
+                    semanticRevision: SemanticRevision(rawValue: revision),
+                    candidateFrame: nil,
+                    phase: .admitting
                 )
-                guard case .success(let header) = preflight else { return false }
-                var sink = StaticNRFCountingRenderSink(capacity: preset.runtimeLimits.renderSink)
-                guard
-                    CanvasRenderProducer.produce(
-                        semantic: render,
-                        layout: layoutSink.renderView,
-                        textMetrics: GiftUIReferenceTextResources.targetPackage.metrics,
-                        drawingPlan: drawing,
-                        surfaceBounds: bounds,
-                        damageMode: .initializeCompleteSurface,
-                        rootForeground: .white,
-                        limits: preset.runtimeLimits.render,
-                        expectedHeader: header,
-                        workspace: &renderWorkspace,
-                        sink: &sink
-                    ) == .success(header)
-                else { return false }
-                #expect(layoutSummary.scopeCount == 96)
-                #expect(drawingSummary.strokeCount == 5)
-                #expect(sink.publishedHeader == header)
-                #expect(header.operationCount > 0)
-                return true
+                #expect(profile.beginOpportunity(context: context) == nil)
+                StaticSignalAnalyzerNRFGeneratedPresentationInputFactory.withInputs(model: model) {
+                    inputs in
+                    #expect(inputs.stageGeneratedSemanticCandidate(in: &profile) != nil)
+                    #expect(
+                        inputs.publishGeneratedSemanticCandidate(revision: revision, in: &profile)
+                            != nil)
+                    let presented = profile.withPresentationRegions {
+                        semanticRegion, layoutRegion, renderRegion, pathRegion, planRegion in
+                        guard
+                            let semantic = StaticSignalAnalyzerNRFUTF8LayoutView(
+                                in: semanticRegion),
+                            var layoutWorkspace = StaticSignalAnalyzerNRFLayoutWorkspace(
+                                scopes: layoutRegion, text: renderRegion
+                            ),
+                            var layoutSink = StaticSignalAnalyzerNRFResolvedLayoutStorage(
+                                scopes: layoutRegion, text: renderRegion
+                            ),
+                            let proposal = ProposedSize(width: 320, height: 240)
+                        else { return false }
+                        guard
+                            case .success(let layoutSummary) = layout(
+                                semantic: semantic,
+                                metrics: GiftUIReferenceTextResources.targetPackage.metrics,
+                                proposal: proposal,
+                                limits: preset.runtimeLimits.layout,
+                                workspace: &layoutWorkspace,
+                                sink: &layoutSink
+                            )
+                        else { return false }
+                        guard
+                            var source = StaticSignalAnalyzerNRFCanvasInvocationSource(
+                                semanticRegion: semanticRegion, inputs: inputs
+                            ),
+                            var drawing = StaticSignalAnalyzerNRFDrawingWorkspace(
+                                pathRegion: pathRegion,
+                                planRegion: planRegion,
+                                capacity: preset.runtimeLimits.drawing
+                            )
+                        else { return false }
+                        guard
+                            case .success(let drawingSummary) = CanvasPlanProducer.derive(
+                                source: &source,
+                                layout: layoutSink.renderView,
+                                executionContext: ExecutionContext(
+                                    cycle: RunCycleID(rawValue: revision),
+                                    semanticRevision: SemanticRevision(rawValue: revision),
+                                    candidateFrame: nil,
+                                    phase: .deriving
+                                ),
+                                limits: preset.runtimeLimits.drawing,
+                                workspace: &drawing
+                            ), source.allReleased
+                        else { return false }
+                        guard
+                            let render = StaticSignalAnalyzerNRFUTF8RenderView(
+                                in: semanticRegion, renderSnapshotVersion: revision
+                            ),
+                            let bounds = Rect(
+                                origin: Point(x: 0, y: 0),
+                                size: Size(width: 320, height: 240)!
+                            ),
+                            var renderWorkspace = StaticSignalAnalyzerNRFRenderWorkspace(
+                                region: renderRegion,
+                                capacity: preset.runtimeLimits.render,
+                                structuralCapacity: preset.runtimeLimits.renderWorkspace
+                            )
+                        else { return false }
+                        let preflight = CanvasRenderProducer.preflight(
+                            semantic: render,
+                            layout: layoutSink.renderView,
+                            textMetrics: GiftUIReferenceTextResources.targetPackage.metrics,
+                            drawingPlan: drawing,
+                            surfaceBounds: bounds,
+                            damageMode: .initializeCompleteSurface,
+                            rootForeground: .white,
+                            limits: preset.runtimeLimits.render,
+                            configuredSinkCapacity: preset.runtimeLimits.renderSink,
+                            workspace: &renderWorkspace
+                        )
+                        guard case .success(let header) = preflight else { return false }
+                        var sink = StaticNRFCountingRenderSink(
+                            capacity: preset.runtimeLimits.renderSink)
+                        guard
+                            CanvasRenderProducer.produce(
+                                semantic: render,
+                                layout: layoutSink.renderView,
+                                textMetrics: GiftUIReferenceTextResources.targetPackage.metrics,
+                                drawingPlan: drawing,
+                                surfaceBounds: bounds,
+                                damageMode: .initializeCompleteSurface,
+                                rootForeground: .white,
+                                limits: preset.runtimeLimits.render,
+                                expectedHeader: header,
+                                workspace: &renderWorkspace,
+                                sink: &sink
+                            ) == .success(header)
+                        else { return false }
+                        #expect(layoutSummary.scopeCount == 96)
+                        #expect(drawingSummary.strokeCount == 5)
+                        #expect(sink.publishedHeader == header)
+                        #expect(header.operationCount > 0)
+                        print(
+                            "reference=macos-static\tordinal=\(window)"
+                                + "\tcapture_revision=\(model.captureRevision)"
+                                + "\tcapture_count=\(model.state.capture.transitions.count)"
+                                + "\tstate=\(model.state.acquisitionState)"
+                                + "\twindow=\(model.state.visibleWindow)"
+                                + "\tsemantic_scopes=\(render.semanticScopeCount)"
+                                + "\tlayout_scopes=\(layoutSummary.scopeCount)"
+                                + "\tdrawing_strokes=\(drawingSummary.strokeCount)"
+                                + "\tdrawing_points=\(drawingSummary.pointCount)"
+                                + "\trender_operations=\(header.operationCount)"
+                        )
+                        return true
+                    }
+                    #expect(presented == true)
+                }
+                #expect(
+                    profile.finishOpportunity(
+                        context: ExecutionContext(
+                            cycle: nil, semanticRevision: nil, candidateFrame: nil, phase: .idle
+                        )) == nil)
+                if window == 120 {
+                    printMacOSStaticReferenceAction(
+                        .start, dispatched: false, revision: revision, model: model
+                    )
+                }
+                if let action {
+                    printMacOSStaticReferenceAction(
+                        action, dispatched: true, revision: revision, model: model
+                    )
+                    if action != .clear {
+                        printMacOSStaticReferenceAction(
+                            action, dispatched: false, revision: revision, model: model
+                        )
+                    }
+                }
             }
-            #expect(presented == true)
+            #expect(model.captureRevision == 2_405)
+            #expect(model.state.capture.transitions.count == 0)
+            #expect(delivered == 2_400)
+            adapter.stopObserving()
+            source.shutdown()
+            admission.quiesce()
         }
         profile.quiesce()
     }
+}
+
+private func printMacOSStaticReferenceAction(
+    _ action: SignalAnalyzerAction,
+    dispatched: Bool,
+    revision: UInt32,
+    model: SignalAnalyzerViewModel
+) {
+    print(
+        "reference=macos-static-action\tcode=\(action.rawValue)"
+            + "\tdispatched=\(dispatched ? 1 : 0)"
+            + "\trevision=\(revision)"
+            + "\tcapture_count=\(model.state.capture.transitions.count)"
+            + "\tstate=\(model.state.acquisitionState)"
+            + "\twindow=\(model.state.visibleWindow)"
+    )
 }
 
 @Test func staticNRFGeneratedPresentationInputsMatchBothSemanticVariants() {
