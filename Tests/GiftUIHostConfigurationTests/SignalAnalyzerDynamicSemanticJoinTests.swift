@@ -473,7 +473,7 @@ private final class LogicalFrameCapture {
             .first { $0.action.code == SignalAnalyzerAction.selectOneSecond.rawValue }
     )
     let point = Point(
-        x: action.hitBounds.origin.x + action.hitBounds.size.width / 2,
+        x: action.hitBounds.origin.x + 1,
         y: action.hitBounds.origin.y + action.hitBounds.size.height / 2
     )
     let source = InputSourceID(rawValue: 17)
@@ -1353,7 +1353,7 @@ private final class LogicalFrameCapture {
         #expect(preset.runtimeLimits.layout.maximumTextLines == 128)
         #expect(preset.runtimeLimits.renderWorkspace.maximumTextLines == 128)
         let cases: [(UInt8, UInt16, UInt16)] = [
-            (87, 27, 214),
+            (87, 25, 214),
             (10, 117, 118),
         ]
         for (byte, expectedLines, expectedGlyphs) in cases {

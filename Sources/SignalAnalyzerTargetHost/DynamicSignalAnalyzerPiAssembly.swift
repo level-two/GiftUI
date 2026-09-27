@@ -41,7 +41,7 @@ package enum DynamicSignalAnalyzerPiAssembly {
             let payloadLimits = payloadLimits()
         else { return .invalid(stage: .capability, error: .invariantViolation) }
 
-        let resources = GiftUIReferenceTextResources.targetPackage
+        let resources = GiftUIPiCompactTextResources.targetPackage
         let textValidation = TextResourceValidator.validate(
             resources,
             requiring: RasterRealizationID(rawValue: 0)

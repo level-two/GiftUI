@@ -12,6 +12,10 @@ recorder reconstructs its approved 480×320 surface from production
 `ili9486_write_rgb565` tile writes.
 
 The `diagnostic` images show a visible `ERR` message through each production
-presentation loop. Visual inspection found the Pi status label clipped in the
-running and diagnostic images. Independent review and locked RGB565 references
-are pending. These images must not be used as passing oracles.
+presentation loop. The Pi images were replaced after the Pi-only font changed
+from 16 px to a readable 10 px bitmap. An 8 px trial was discarded because its
+labels were unreadable. Visual inspection now shows the full title, status,
+controls, and diagnostic inside the 240×240 logical raster. The shared 16 px
+resource remains in use on nRF.
+Independent review and locked RGB565 references are pending. These images must
+not be used as passing oracles.

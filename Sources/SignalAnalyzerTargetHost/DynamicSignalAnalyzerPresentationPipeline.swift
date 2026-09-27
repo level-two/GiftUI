@@ -307,7 +307,7 @@ package struct DynamicSignalAnalyzerPresentationPipeline {
         var validation = LayoutSemanticValidation(limits: limits.layout)
         if let error = validation.validate(
             semantic: semanticStorage,
-            metrics: GiftUIReferenceTextResources.targetPackage.metrics,
+            metrics: GiftUIPiCompactTextResources.targetPackage.metrics,
             workspace: &layoutValidationWorkspace
         ) {
             layoutValidationWorkspace.resetLayout()
@@ -317,7 +317,7 @@ package struct DynamicSignalAnalyzerPresentationPipeline {
 
         let layoutResult = layout(
             semantic: semanticStorage,
-            metrics: GiftUIReferenceTextResources.targetPackage.metrics,
+            metrics: GiftUIPiCompactTextResources.targetPackage.metrics,
             proposal: proposal,
             limits: limits.layout,
             workspace: &layoutWorkspace,
@@ -354,7 +354,7 @@ package struct DynamicSignalAnalyzerPresentationPipeline {
         let renderResult = CanvasRenderProducer.preflight(
             semantic: semanticStorage.renderView,
             layout: layoutSink.renderView,
-            textMetrics: GiftUIReferenceTextResources.targetPackage.metrics,
+            textMetrics: GiftUIPiCompactTextResources.targetPackage.metrics,
             drawingPlan: drawingWorkspace,
             surfaceBounds: surfaceBounds,
             damageMode: .initializeCompleteSurface,
@@ -487,7 +487,7 @@ package struct DynamicSignalAnalyzerPresentationPipeline {
             switch CanvasRenderProducer.produce(
                 semantic: semanticStorage.renderView,
                 layout: layoutSink.renderView,
-                textMetrics: GiftUIReferenceTextResources.targetPackage.metrics,
+                textMetrics: GiftUIPiCompactTextResources.targetPackage.metrics,
                 drawingPlan: drawingWorkspace,
                 surfaceBounds: surfaceBounds,
                 damageMode: .initializeCompleteSurface,

@@ -266,7 +266,10 @@ let package = Package(
         .target(
             name: "GiftUIReferenceTextResources",
             dependencies: ["GiftUI", "GiftUITextResources"],
-            exclude: ["Generated/generation-manifest.json"]
+            exclude: [
+                "Generated/generation-manifest.json",
+                "PiCompactGenerated/generation-manifest.json",
+            ]
         ),
         .target(
             name: "GiftUITextResourceFailureAdapterFixture",

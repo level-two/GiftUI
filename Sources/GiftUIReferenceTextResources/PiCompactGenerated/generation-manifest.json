@@ -1,0 +1,21 @@
+{
+  "bitmapPayloadSHA256": "fd51c2f388d5d58b13c469447f61e304bc9936fc9481bc4b15c0c77677118ce1",
+  "canonicalManifestByteCount": 4543,
+  "generator": "scripts/text-resources/generate-pi-compact-resources.py",
+  "glyphCount": 102,
+  "inkThreshold": 64,
+  "mappingCount": 96,
+  "outputs": {
+    "PiCompactBitmapPayload.generated.swift": "5f054adff0f8b0a550432b42b60a8c9eedd1edb95889d32fe1270a9d8b3de7d6",
+    "PiCompactCatalogue.generated.swift": "c4daa129a9e717ba926457aef206fa4583fde1a32f7b7b26d78ad95534c41f62"
+  },
+  "pixelSize": 10,
+  "resourceID": "ed33c7c36dcf926dd78ee73563a7785e5d3bb3e470e65b7265caa8faf511847e",
+  "sourceFontSHA256": "40d692fce188e4471e2b3cba937be967878f631ad3ebbbdcd587687c7ebe0c82",
+  "tools": {
+    "FreeType": "2.13.3",
+    "Pillow": "11.3.0",
+    "fontTools": "4.60.2",
+    "python": "3.9.6"
+  }
+}

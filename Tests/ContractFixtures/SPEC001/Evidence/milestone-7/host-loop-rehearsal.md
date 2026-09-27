@@ -386,3 +386,20 @@ under `Tests/ContractFixtures/SPEC001/PixelReferences` and performs byte
 comparison, writing a red difference PNG on a mismatch. Those references do
 not exist yet, so the registered target gates stop before claiming
 T7.7–T7.9 completion. No connected run or hardware evidence is inferred.
+
+### Pi text correction and replacement candidates (2026-09-27)
+
+The Pi 240×240 host now measures and paints text with a separate validated
+10 px bitmap instance of the pinned Inter source. An 8 px trial was discarded
+after review showed unreadable labels. The previous 16 px Pi
+candidate images were replaced in `raster-candidates/`; nRF continues to use
+the shared 16 px instance. Pi host validation, full normal and diagnostic
+rehearsals, and all Pi fault modes pass with the compact resource. Visual
+inspection of the replacement idle, running, stopped, and diagnostic images
+shows the title, status, controls, and `ERR` within the logical raster. The
+current Pi idle, running, and diagnostic RGB565 SHA-256 values are
+`7b743b7045b7bb430e34df2139b396a12eb113f0ab96f2d99872e044ce894f2f`,
+`878ce2a4a07719a748ee30f52ab8a75ce537856121d3481a8c7b0986fe08f849`,
+and `dcdf78090cb98d08d62d2dd840e4152647fc880d8f971df4213647d33819dad9`.
+The earlier Pi hashes above are superseded. Independent pixel review and
+locked references remain pending.

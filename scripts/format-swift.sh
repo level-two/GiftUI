@@ -50,7 +50,7 @@ while IFS= read -r path; do
       demo/SignalAnalyzer/Tests/*.swift | scripts/raspberry-pi/probe/Package.swift | \
       scripts/raspberry-pi/probe/Sources/*.swift)
       case "${path}" in
-        */Generated/* | Sources/GiftUIFailureDiagnostics/GiftUIFixedDiagnosticBuffer.swift) ;;
+        */Generated/* | */PiCompactGenerated/* | Sources/GiftUIFailureDiagnostics/GiftUIFixedDiagnosticBuffer.swift) ;;
         *) files+=("${PROJECT_ROOT}/${path}") ;;
       esac
       ;;
