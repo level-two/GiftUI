@@ -22,18 +22,18 @@ import Testing
     )
     #expect(
         StaticSignalAnalyzerNRFTileStorage(
-            region: UnsafeMutableRawBufferPointer(rebasing: region[0 ..< 1_919]),
+            region: UnsafeMutableRawBufferPointer(rebasing: region[0 ..< 2_559]),
             coverage: coverage
         ) == nil)
     #expect(
         StaticSignalAnalyzerNRFTileStorage(
             region: region,
-            coverage: UnsafeMutableRawBufferPointer(rebasing: coverage[0 ..< 119])
+            coverage: UnsafeMutableRawBufferPointer(rebasing: coverage[0 ..< 159])
         ) == nil)
     #expect(
         StaticSignalAnalyzerNRFTileStorage(
             region: region,
-            coverage: UnsafeMutableRawBufferPointer(rebasing: region[0 ..< 120])
+            coverage: UnsafeMutableRawBufferPointer(rebasing: region[0 ..< 160])
         ) == nil)
     guard
         var storage = StaticSignalAnalyzerNRFTileStorage(
@@ -43,33 +43,33 @@ import Testing
         Issue.record("Exact Static tile storage did not construct")
         return
     }
-    #expect(storage.byteCapacity == 1_920)
-    #expect(storage.pixelCapacity == 960)
-    let oversizedReset = storage.reset(byteCount: 1_921, pixelCount: 960)
+    #expect(storage.byteCapacity == 2_560)
+    #expect(storage.pixelCapacity == 1_280)
+    let oversizedReset = storage.reset(byteCount: 2_561, pixelCount: 1_280)
     #expect(!oversizedReset)
-    let initialReset = storage.reset(byteCount: 1_920, pixelCount: 960)
+    let initialReset = storage.reset(byteCount: 2_560, pixelCount: 1_280)
     #expect(initialReset)
     let finalPixel = storage.store(
         mostSignificantByte: 0xAB,
         leastSignificantByte: 0xCD,
-        byteOffset: 1_918,
-        pixelIndex: 959
+        byteOffset: 2_558,
+        pixelIndex: 1_279
     )
     #expect(finalPixel)
-    #expect(storage.byte(at: 1_918) == 0xAB)
-    #expect(storage.byte(at: 1_919) == 0xCD)
-    #expect(storage.isAffected(pixelIndex: 959))
-    #expect(!storage.isAffected(pixelIndex: 958))
+    #expect(storage.byte(at: 2_558) == 0xAB)
+    #expect(storage.byte(at: 2_559) == 0xCD)
+    #expect(storage.isAffected(pixelIndex: 1_279))
+    #expect(!storage.isAffected(pixelIndex: 1_278))
     let outOfBoundsPixel = storage.store(
         mostSignificantByte: 0,
         leastSignificantByte: 0,
-        byteOffset: 1_919,
-        pixelIndex: 959
+        byteOffset: 2_559,
+        pixelIndex: 1_279
     )
     #expect(!outOfBoundsPixel)
-    let secondReset = storage.reset(byteCount: 1_920, pixelCount: 960)
+    let secondReset = storage.reset(byteCount: 2_560, pixelCount: 1_280)
     #expect(secondReset)
-    #expect(!storage.isAffected(pixelIndex: 959))
-    #expect(storage.byte(at: 1_918) == 0)
-    #expect(storage.byte(at: 1_920) == nil)
+    #expect(!storage.isAffected(pixelIndex: 1_279))
+    #expect(storage.byte(at: 2_558) == 0)
+    #expect(storage.byte(at: 2_560) == nil)
 }

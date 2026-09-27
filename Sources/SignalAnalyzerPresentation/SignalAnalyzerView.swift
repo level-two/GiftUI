@@ -10,7 +10,7 @@ package struct SignalAnalyzerView: View {
     }
 
     package var body: some View {
-        VStack(spacing: 4) {
+        VStack(spacing: 0) {
             SignalAnalyzerHeaderView(acquisitionState: viewModel.state.acquisitionState)
             SignalAnalyzerWaveformView(
                 capture: viewModel.state.capture,
@@ -25,7 +25,7 @@ package struct SignalAnalyzerView: View {
                     .foregroundStyle(.red)
             }
         }
-        .padding(4)
+        .padding(2)
         .background(.black)
     }
 }

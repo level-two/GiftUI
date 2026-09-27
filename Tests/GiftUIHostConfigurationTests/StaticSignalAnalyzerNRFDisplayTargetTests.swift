@@ -50,9 +50,9 @@ struct StaticNRFRecordingDisplayTransport: StaticSignalAnalyzerNRFDisplayTranspo
         Issue.record("Static nRF assembly did not validate")
         return
     }
-    let raster = UnsafeMutableRawPointer.allocate(byteCount: 1_920, alignment: 8)
+    let raster = UnsafeMutableRawPointer.allocate(byteCount: 2_560, alignment: 8)
     defer { raster.deallocate() }
-    let coverage = UnsafeMutableRawPointer.allocate(byteCount: 120, alignment: 8)
+    let coverage = UnsafeMutableRawPointer.allocate(byteCount: 160, alignment: 8)
     defer { coverage.deallocate() }
     let provenance = FrameProvenance(
         cycle: RunCycleID(rawValue: 8),
@@ -64,8 +64,8 @@ struct StaticNRFRecordingDisplayTransport: StaticSignalAnalyzerNRFDisplayTranspo
             transport: StaticNRFRecordingDisplayTransport(maximumAcceptedPayloads: 1),
             provenance: provenance,
             assemblyReport: report,
-            rasterRegion: UnsafeMutableRawBufferPointer(start: raster, count: 1_920),
-            coverageRegion: UnsafeMutableRawBufferPointer(start: coverage, count: 120)
+            rasterRegion: UnsafeMutableRawBufferPointer(start: raster, count: 2_560),
+            coverageRegion: UnsafeMutableRawBufferPointer(start: coverage, count: 160)
         )
     else {
         Issue.record("Static nRF endpoint did not construct")
@@ -116,9 +116,9 @@ struct StaticNRFRecordingDisplayTransport: StaticSignalAnalyzerNRFDisplayTranspo
         Issue.record("Static nRF assembly did not validate")
         return
     }
-    let raster = UnsafeMutableRawPointer.allocate(byteCount: 1_920, alignment: 8)
+    let raster = UnsafeMutableRawPointer.allocate(byteCount: 2_560, alignment: 8)
     defer { raster.deallocate() }
-    let coverage = UnsafeMutableRawPointer.allocate(byteCount: 120, alignment: 8)
+    let coverage = UnsafeMutableRawPointer.allocate(byteCount: 160, alignment: 8)
     defer { coverage.deallocate() }
     let provenance = FrameProvenance(
         cycle: RunCycleID(rawValue: 9),
@@ -130,8 +130,8 @@ struct StaticNRFRecordingDisplayTransport: StaticSignalAnalyzerNRFDisplayTranspo
             transport: StaticNRFRecordingDisplayTransport(maximumAcceptedPayloads: 0),
             provenance: provenance,
             assemblyReport: report,
-            rasterRegion: UnsafeMutableRawBufferPointer(start: raster, count: 1_920),
-            coverageRegion: UnsafeMutableRawBufferPointer(start: coverage, count: 120)
+            rasterRegion: UnsafeMutableRawBufferPointer(start: raster, count: 2_560),
+            coverageRegion: UnsafeMutableRawBufferPointer(start: coverage, count: 160)
         )
     else {
         Issue.record("Static nRF endpoint did not construct")
@@ -163,9 +163,9 @@ struct StaticNRFRecordingDisplayTransport: StaticSignalAnalyzerNRFDisplayTranspo
 }
 
 @Test func staticNRFDisplayTargetCompactsSharedRasterWithoutOverwritingUnreadPixels() {
-    let pointer = UnsafeMutableRawPointer.allocate(byteCount: 1_920, alignment: 8)
+    let pointer = UnsafeMutableRawPointer.allocate(byteCount: 2_560, alignment: 8)
     defer { pointer.deallocate() }
-    let region = UnsafeMutableRawBufferPointer(start: pointer, count: 1_920)
+    let region = UnsafeMutableRawBufferPointer(start: pointer, count: 2_560)
     region.initializeMemory(as: UInt8.self, repeating: 0)
     region[200] = 0x12
     region[201] = 0x34
@@ -178,7 +178,7 @@ struct StaticNRFRecordingDisplayTransport: StaticSignalAnalyzerNRFDisplayTranspo
         ), let descriptor = StaticSignalAnalyzerNRFAssembly.descriptor(),
         case .reserved(let reservation) = target.reserveFrame(
             descriptor: descriptor,
-            payloadCapacityBytes: 1_920,
+            payloadCapacityBytes: 2_560,
             regionCapacity: 1
         )
     else {
@@ -218,9 +218,9 @@ struct StaticNRFRecordingDisplayTransport: StaticSignalAnalyzerNRFDisplayTranspo
 }
 
 @Test func staticNRFDisplayTargetRejectsTransportFailureAndInvalidReservation() {
-    let pointer = UnsafeMutableRawPointer.allocate(byteCount: 1_920, alignment: 8)
+    let pointer = UnsafeMutableRawPointer.allocate(byteCount: 2_560, alignment: 8)
     defer { pointer.deallocate() }
-    let region = UnsafeMutableRawBufferPointer(start: pointer, count: 1_920)
+    let region = UnsafeMutableRawBufferPointer(start: pointer, count: 2_560)
     guard
         var target = StaticSignalAnalyzerNRFDisplayTarget(
             transport: StaticNRFRecordingDisplayTransport(accepts: false),
@@ -228,7 +228,7 @@ struct StaticNRFRecordingDisplayTransport: StaticSignalAnalyzerNRFDisplayTranspo
         ), let descriptor = StaticSignalAnalyzerNRFAssembly.descriptor(),
         case .reserved(let reservation) = target.reserveFrame(
             descriptor: descriptor,
-            payloadCapacityBytes: 1_920,
+            payloadCapacityBytes: 2_560,
             regionCapacity: 1
         )
     else {
@@ -237,7 +237,7 @@ struct StaticNRFRecordingDisplayTransport: StaticSignalAnalyzerNRFDisplayTranspo
     }
     #expect(
         target.reserveFrame(
-            descriptor: descriptor, payloadCapacityBytes: 1_920, regionCapacity: 1
+            descriptor: descriptor, payloadCapacityBytes: 2_560, regionCapacity: 1
         ) == .failure(.reentrancyViolation))
     #expect(
         target.submitPayload(DisplayReservationID(rawValue: 99))
@@ -258,7 +258,7 @@ struct StaticNRFRecordingDisplayTransport: StaticSignalAnalyzerNRFDisplayTranspo
     #expect(target.finishFrame(reservation) == .completed)
     #expect(
         target.reserveFrame(
-            descriptor: descriptor, payloadCapacityBytes: 1_920, regionCapacity: 1
+            descriptor: descriptor, payloadCapacityBytes: 2_560, regionCapacity: 1
         ) == .nonRetryableRefusal
     )
     #expect(

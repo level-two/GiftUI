@@ -38,7 +38,11 @@ were zero. This supports successful initialization and sustained scheduler
 execution. SPI API success does not establish visible pixel output or a
 correct controller profile.
 
-The TFT image, controller identity/readback, backlight, orientation, six
-physical controls, touch coordinate calibration, frame cadence, and connected
-stack high-water remain unverified. The maintainer was asked to inspect the
-screen. `T8.2` and connected conformance remain blocked pending that evidence.
+The maintainer subsequently supplied a photograph. It shows that the TFT
+receives and displays the Signal Analyzer image, but in portrait orientation
+with horizontally reversed text and an unpainted white band. The later
+[320×240 landscape candidate](nrf52840-320x240-landscape-candidate.md) addresses
+those observations in firmware. Its physical result, controller
+identity/readback, six controls, touch calibration, cadence, and connected
+stack high-water remain unverified. `T8.2` and connected conformance remain
+blocked pending that evidence.

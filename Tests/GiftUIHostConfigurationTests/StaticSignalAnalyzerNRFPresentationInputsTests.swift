@@ -1370,11 +1370,11 @@ private func macOSStaticReferencePointerOutcome(
                     #expect(operationSink.strokeCount == 5)
                     if case .valid(let report) = StaticSignalAnalyzerNRFAssembly.validate() {
                         let raster = UnsafeMutableRawPointer.allocate(
-                            byteCount: 1_920, alignment: 8
+                            byteCount: 2_560, alignment: 8
                         )
                         defer { raster.deallocate() }
                         let coverage = UnsafeMutableRawPointer.allocate(
-                            byteCount: 120, alignment: 8
+                            byteCount: 160, alignment: 8
                         )
                         defer { coverage.deallocate() }
                         let provenance = FrameProvenance(
@@ -1383,7 +1383,7 @@ private func macOSStaticReferencePointerOutcome(
                             candidateFrame: CandidateFrameID(rawValue: cycle)
                         )
                         let rasterRegion = UnsafeMutableRawBufferPointer(
-                            start: raster, count: 1_920
+                            start: raster, count: 2_560
                         )
                         guard
                             var endpoint = StaticSignalAnalyzerNRFEndpointFactory.make(
@@ -1392,7 +1392,7 @@ private func macOSStaticReferencePointerOutcome(
                                 assemblyReport: report,
                                 rasterRegion: rasterRegion,
                                 coverageRegion: UnsafeMutableRawBufferPointer(
-                                    start: coverage, count: 120
+                                    start: coverage, count: 160
                                 )
                             ),
                             var rasterRenderWorkspace = StaticSignalAnalyzerNRFRenderWorkspace(
@@ -1417,7 +1417,7 @@ private func macOSStaticReferencePointerOutcome(
                             let wrongSurfaceHeader = RenderPlanHeader(
                                 surfaceBounds: Rect(
                                     origin: Point(x: 0, y: 0),
-                                    size: Size(width: 480, height: 319)!
+                                    size: Size(width: 320, height: 239)!
                                 )!,
                                 damageBounds: acceptedHeader.damageBounds,
                                 operationCount: acceptedHeader.operationCount,
@@ -1668,9 +1668,9 @@ private func macOSStaticReferencePointerOutcome(
             Issue.record("Static nRF preparation owners did not construct")
             return
         }
-        let raster = UnsafeMutableRawPointer.allocate(byteCount: 1_920, alignment: 8)
+        let raster = UnsafeMutableRawPointer.allocate(byteCount: 2_560, alignment: 8)
         defer { raster.deallocate() }
-        let coverage = UnsafeMutableRawPointer.allocate(byteCount: 120, alignment: 8)
+        let coverage = UnsafeMutableRawPointer.allocate(byteCount: 160, alignment: 8)
         defer { coverage.deallocate() }
         let provenance = FrameProvenance(
             cycle: RunCycleID(rawValue: 1),
@@ -1682,8 +1682,8 @@ private func macOSStaticReferencePointerOutcome(
                 transport: StaticNRFRecordingDisplayTransport(),
                 provenance: provenance,
                 assemblyReport: report,
-                rasterRegion: UnsafeMutableRawBufferPointer(start: raster, count: 1_920),
-                coverageRegion: UnsafeMutableRawBufferPointer(start: coverage, count: 120)
+                rasterRegion: UnsafeMutableRawBufferPointer(start: raster, count: 2_560),
+                coverageRegion: UnsafeMutableRawBufferPointer(start: coverage, count: 160)
             )
         else {
             Issue.record("Static nRF preparation endpoint did not construct")
@@ -1763,9 +1763,9 @@ private func macOSStaticReferencePointerOutcome(
             Issue.record("Static nRF paced presentation owners did not construct")
             return
         }
-        let raster = UnsafeMutableRawPointer.allocate(byteCount: 1_920, alignment: 8)
+        let raster = UnsafeMutableRawPointer.allocate(byteCount: 2_560, alignment: 8)
         defer { raster.deallocate() }
-        let coverage = UnsafeMutableRawPointer.allocate(byteCount: 120, alignment: 8)
+        let coverage = UnsafeMutableRawPointer.allocate(byteCount: 160, alignment: 8)
         defer { coverage.deallocate() }
         var identities = StaticSignalAnalyzerNRFPresentationIdentityOwner()
         guard let first = identities.reserve() else {
@@ -1781,8 +1781,8 @@ private func macOSStaticReferencePointerOutcome(
                 ),
                 provenance: provenance,
                 assemblyReport: report,
-                rasterRegion: UnsafeMutableRawBufferPointer(start: raster, count: 1_920),
-                coverageRegion: UnsafeMutableRawBufferPointer(start: coverage, count: 120)
+                rasterRegion: UnsafeMutableRawBufferPointer(start: raster, count: 2_560),
+                coverageRegion: UnsafeMutableRawBufferPointer(start: coverage, count: 160)
             )
         else {
             Issue.record("Static nRF paced presentation endpoint did not construct")

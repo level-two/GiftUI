@@ -16,6 +16,17 @@ superseded_by: null
 
 # SPEC-001 Conformance Report
 
+## 2026-09-27 Landscape Follow-up
+
+The [320×240 candidate](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-8/nrf52840-320x240-landscape-candidate.md)
+has a passing cross-build and host-native raster rehearsal and was flashed to
+the connected nRF52840-DK. The earlier photograph proves panel output but
+shows the portrait image mirrored. A photograph or equivalent observation of
+the new landscape firmware is still pending. The latest host-native raster
+shows both control rows but clips the failure-state diagnostic text; pixel
+review, all six physical controls, touch, and the connected criteria remain
+blocked. The older review below applies to its stated target.
+
 > This report records evidence. It does not authorize the governing
 > Specification's `implemented` transition.
 >

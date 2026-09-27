@@ -204,33 +204,33 @@ import Testing
     let descriptor = RasterSurfaceDescriptor(
         bounds: Rect(
             origin: Point(x: 0, y: 0),
-            size: Size(width: 240, height: 320)!
+            size: Size(width: 320, height: 240)!
         )!,
         encoding: .rgb565BigEndian,
-        bytesPerRow: 480,
+        bytesPerRow: 640,
         realization: .tiled,
-        regionWidth: 240,
+        regionWidth: 320,
         regionHeight: 4
     )!
     let payload = RasterPayloadLimits(
-        maximumRasterBytes: 1_920,
-        maximumPayloadBytes: 1_920,
+        maximumRasterBytes: 2_560,
+        maximumPayloadBytes: 2_560,
         maximumRegionsPerPayload: 1,
         maximumRegionSubmissionsPerFrame: 80,
         maximumTileVisitsPerFrame: 80,
         maximumInFlightPayloads: 1,
-        maximumGlyphRasterBytes: 1_920,
-        maximumStrokeWorkspaceBytes: 1_920
+        maximumGlyphRasterBytes: 2_560,
+        maximumStrokeWorkspaceBytes: 2_560
     )!
     let endpoint = HostEndpointConfiguration(
         effectivePresentation: effective,
         descriptor: descriptor,
         payloadLimits: payload,
-        surfaceWritableCapacityBytes: 1_920,
+        surfaceWritableCapacityBytes: 2_560,
         displaySubmissionLifetime: .synchronousBorrow,
         displayHandoff: .synchronous,
         displayMaximumInFlightPayloads: 1,
-        displayMaximumInFlightBytes: 1_920,
+        displayMaximumInFlightBytes: 2_560,
         textRasterRealization: RasterRealizationID(rawValue: 1),
         healthOwnerCount: 1,
         endpointAndDisplayShareHealthOwner: true
@@ -239,11 +239,11 @@ import Testing
     #expect(endpoint.effectivePresentation == effective)
     #expect(endpoint.descriptor == descriptor)
     #expect(endpoint.payloadLimits == payload)
-    #expect(endpoint.surfaceWritableCapacityBytes == 1_920)
+    #expect(endpoint.surfaceWritableCapacityBytes == 2_560)
     #expect(endpoint.displaySubmissionLifetime == .synchronousBorrow)
     #expect(endpoint.displayHandoff == .synchronous)
     #expect(endpoint.displayMaximumInFlightPayloads == 1)
-    #expect(endpoint.displayMaximumInFlightBytes == 1_920)
+    #expect(endpoint.displayMaximumInFlightBytes == 2_560)
     #expect(endpoint.textRasterRealization == RasterRealizationID(rawValue: 1))
     #expect(endpoint.healthOwnerCount == 1)
     #expect(endpoint.endpointAndDisplayShareHealthOwner)
@@ -259,11 +259,11 @@ private func resolveNRFPresentation() -> EffectiveRasterPresentation? {
         encodings: .rgb565BigEndian,
         producedSubmissionLifetimes: .synchronousBorrow,
         maximumExtent: extent,
-        maximumRegionWidth: 240,
+        maximumRegionWidth: 320,
         maximumRegionHeight: 4,
         rowByteAlignment: 2,
-        maximumRasterBytes: .init(rawValue: 1_920),
-        maximumPayloadBytes: .init(rawValue: 1_920)
+        maximumRasterBytes: .init(rawValue: 2_560),
+        maximumPayloadBytes: .init(rawValue: 2_560)
     )!
     var contributions = RasterPresentationContributions()
     _ = contributions.insert(
@@ -284,20 +284,20 @@ private func resolveNRFPresentation() -> EffectiveRasterPresentation? {
                 encodings: .rgb565BigEndian,
                 acceptedSubmissionLifetimes: .synchronousBorrow,
                 handoffs: .synchronous,
-                maximumRegionWidth: 240,
+                maximumRegionWidth: 320,
                 maximumRegionHeight: 4,
                 rowByteAlignment: 2,
                 maximumInFlightCount: 1,
-                maximumInFlightBytes: .init(rawValue: 1_920)
+                maximumInFlightBytes: .init(rawValue: 2_560)
             )!
         )
     )
     _ = contributions.insert(
         .hostResourcePolicy(
             RasterPresentationPolicy(
-                maximumRasterBytes: .init(rawValue: 1_920),
-                maximumPayloadBytes: .init(rawValue: 1_920),
-                maximumInFlightBytes: .init(rawValue: 1_920),
+                maximumRasterBytes: .init(rawValue: 2_560),
+                maximumPayloadBytes: .init(rawValue: 2_560),
+                maximumInFlightBytes: .init(rawValue: 2_560),
                 allowedRealizations: .tiled,
                 allowedEncodings: .rgb565BigEndian,
                 preferredRealization: .tiled,

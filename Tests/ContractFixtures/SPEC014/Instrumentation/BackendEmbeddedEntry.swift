@@ -8,11 +8,11 @@ import GiftUIRenderCore
 import GiftUISurfaceCore
 
 private struct EmbeddedTileStorage: RGB565TileStorage {
-    private var bytes = InlineArray<1920, UInt8>(repeating: 0)
-    private var affected = InlineArray<960, Bool>(repeating: false)
+    private var bytes = InlineArray<2560, UInt8>(repeating: 0)
+    private var affected = InlineArray<1280, Bool>(repeating: false)
 
-    var byteCapacity: UInt32 { 1_920 }
-    var pixelCapacity: UInt32 { 960 }
+    var byteCapacity: UInt32 { 2_560 }
+    var pixelCapacity: UInt32 { 1_280 }
 
     mutating func reset(byteCount: UInt32, pixelCount: UInt32) -> Bool {
         guard byteCount <= byteCapacity, pixelCount <= pixelCapacity else {
@@ -28,7 +28,7 @@ private struct EmbeddedTileStorage: RGB565TileStorage {
         byteOffset: UInt32,
         pixelIndex: UInt32
     ) -> Bool {
-        guard byteOffset < 1_919, pixelIndex < 960 else { return false }
+        guard byteOffset < 2_559, pixelIndex < 1_280 else { return false }
         bytes[Int(byteOffset)] = mostSignificantByte
         bytes[Int(byteOffset) + 1] = leastSignificantByte
         affected[Int(pixelIndex)] = true
@@ -36,16 +36,16 @@ private struct EmbeddedTileStorage: RGB565TileStorage {
     }
 
     func isAffected(pixelIndex: UInt32) -> Bool {
-        pixelIndex < 960 && affected[Int(pixelIndex)]
+        pixelIndex < 1_280 && affected[Int(pixelIndex)]
     }
 
     func byte(at offset: UInt32) -> UInt8? {
-        offset < 1_920 ? bytes[Int(offset)] : nil
+        offset < 2_560 ? bytes[Int(offset)] : nil
     }
 }
 
 private struct EmbeddedWriter: DisplayPayloadWriter {
-    let capacityBytes: UInt32 = 1_920
+    let capacityBytes: UInt32 = 2_560
     let regionCapacity: UInt16 = 4
     private(set) var writtenBytes: UInt32 = 0
     private(set) var writtenRegionCount: UInt16 = 0
@@ -104,7 +104,7 @@ private struct EmbeddedTarget: DisplayTarget {
     let submissionLifetime: SubmissionLifetime = .synchronousCopy
     let handoff: SubmissionHandoff = .synchronous
     let maximumInFlightPayloads: UInt8 = 1
-    let maximumInFlightBytes: UInt32 = 1_920
+    let maximumInFlightBytes: UInt32 = 2_560
     var writer = EmbeddedWriter()
     private var reservationActive = false
 
@@ -116,9 +116,9 @@ private struct EmbeddedTarget: DisplayTarget {
         guard !reservationActive,
             descriptor.encoding == .rgb565BigEndian,
             descriptor.realization == .tiled,
-            descriptor.regionWidth == 240,
+            descriptor.regionWidth == 320,
             descriptor.regionHeight == 4,
-            payloadCapacityBytes == 1_920,
+            payloadCapacityBytes == 2_560,
             regionCapacity == 4
         else { return .failure(.invariantViolation) }
         reservationActive = true
@@ -167,14 +167,14 @@ private struct EmbeddedTarget: DisplayTarget {
 
 @inline(never)
 package func spec014EmbeddedBackendEntry() -> UInt32 {
-    guard let size = Size(width: 240, height: 320),
+    guard let size = Size(width: 320, height: 240),
         let bounds = Rect(origin: Point(x: 0, y: 0), size: size),
         let descriptor = RasterSurfaceDescriptor(
             bounds: bounds,
             encoding: .rgb565BigEndian,
-            bytesPerRow: 480,
+            bytesPerRow: 640,
             realization: .tiled,
-            regionWidth: 240,
+            regionWidth: 320,
             regionHeight: 4
         ),
         var workspace = RGB565TileWorkspace(
@@ -182,11 +182,11 @@ package func spec014EmbeddedBackendEntry() -> UInt32 {
             storage: EmbeddedTileStorage()
         ),
         let limits = RasterPayloadLimits(
-            maximumRasterBytes: 1_920,
-            maximumPayloadBytes: 1_920,
+            maximumRasterBytes: 2_560,
+            maximumPayloadBytes: 2_560,
             maximumRegionsPerPayload: 4,
-            maximumRegionSubmissionsPerFrame: 320,
-            maximumTileVisitsPerFrame: 80,
+            maximumRegionSubmissionsPerFrame: 240,
+            maximumTileVisitsPerFrame: 60,
             maximumInFlightPayloads: 1,
             maximumGlyphRasterBytes: 1,
             maximumStrokeWorkspaceBytes: 1
@@ -196,7 +196,7 @@ package func spec014EmbeddedBackendEntry() -> UInt32 {
     var target = EmbeddedTarget()
     guard case .reserved(let reservation) = target.reserveFrame(
         descriptor: descriptor,
-        payloadCapacityBytes: 1_920,
+        payloadCapacityBytes: 2_560,
         regionCapacity: 4
     ) else { return .max }
     var work = RasterWorkTracker(limits: limits)
@@ -224,17 +224,17 @@ package func spec014EmbeddedBackendEntry() -> UInt32 {
             return false
         }
     )
-    guard traversal == .completed(tileVisits: 80),
+    guard traversal == .completed(tileVisits: 60),
         case .completed = RGB565TilePayloadEmitter.finish(
             reservation: reservation,
             target: &target,
             work: &work
         ),
-        work.highWater.rasterBytes == 1_920,
-        work.highWater.payloadBytes == 1_920,
-        work.highWater.tileVisits == 80,
-        work.highWater.regionSubmissions == 320,
-        work.highWater.payloads == 80
+        work.highWater.rasterBytes == 2_560,
+        work.highWater.payloadBytes == 2_560,
+        work.highWater.tileVisits == 60,
+        work.highWater.regionSubmissions == 240,
+        work.highWater.payloads == 60
     else { return .max }
     return work.highWater.rasterBytes &+ work.highWater.regionSubmissions
 }

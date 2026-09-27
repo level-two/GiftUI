@@ -1,7 +1,7 @@
 # case_id	domain	input_words	expected_words
 arithmetic-rgb565-tiled-unequal-alignment	arithmetic	5,9,2,1,3,4,6,8	available,24,5,3,24,72,72,72
 arithmetic-rgba8888-full-surface	arithmetic	5,7,1,2,7,7,4,8	available,8,5,7,24,168,168,168
-arithmetic-nrf52840-exact-tile	arithmetic	240,320,2,1,4,320,2,2	available,2,240,4,480,1920,1920,1920
+arithmetic-nrf52840-exact-tile	arithmetic	320,240,2,1,4,240,2,2	available,2,320,4,640,2560,2560,2560
 arithmetic-tiled-logical-height-minimum	arithmetic	5,2,2,1,3,4,1,1	available,1,5,2,10,20,20,20
 arithmetic-tiled-surface-height-minimum	arithmetic	5,9,2,1,4,3,1,1	available,1,5,3,10,30,30,30
 arithmetic-candidate-width-rejection	arithmetic	5,2,1,1,4,5,2,2	unavailable,unsupported-logical-extent
@@ -21,7 +21,7 @@ arithmetic-in-flight-requirement-boundary	arithmetic	4,1,16,15	equality-availabl
 arithmetic-in-flight-surface-boundary	arithmetic	4,2,16,15	equality-available,16,first-excess,4,16,15
 arithmetic-in-flight-policy-boundary	arithmetic	4,3,16,15	equality-available,16,first-excess,4,16,15
 arithmetic-in-flight-zero-minimum	arithmetic	4,2,1,1,2,2,1,1,20,0,18	unavailable,insufficient-capacity,4,16,0
-resolver-positive-role-permutations	resolver	24,1	available,2,1,1,1,240,4,480,1920
+resolver-positive-role-permutations	resolver	24,1	available,2,1,1,1,320,4,640,2560
 resolver-stream-mismatch-role-permutations	resolver	24,2	unavailable,operation-stream-mismatch
 negative-missing-required-role	negative	0,4	unavailable,missing,1,no-snapshot
 negative-duplicate-preserves-first	negative	1,2	unavailable,duplicate,1,first-preserved,no-snapshot
@@ -33,8 +33,8 @@ instrumentation-repeated-snapshot-access	instrumentation	10000	0,0
 configuration-macos-dynamic	configuration	640,480,1,2	available,31,640,480,640,480,2560,1,2,1,1,1,1228800,1228800,1,1228800
 configuration-macos-static	configuration	640,480,1,2	available,31,640,480,640,480,2560,1,2,1,1,1,1228800,1228800,1,1228800
 configuration-pi-screen	configuration	240,240,2,1	available,31,240,240,240,16,480,1,1,1,1,2,7680,7680,1,7680
-configuration-nrf52840-tft	configuration	240,320,2,1	available,31,240,320,240,4,480,1,1,1,1,2,1920,1920,1,1920
-configuration-nrf52840-full-rgba-negative	configuration	240,320,1,2,1920	unavailable,insufficient-capacity,2,307200,1920
+configuration-nrf52840-tft	configuration	320,240,2,1	available,31,320,240,320,4,640,1,1,1,1,2,2560,2560,1,2560
+configuration-nrf52840-full-rgba-negative	configuration	320,240,1,2,2560	unavailable,insufficient-capacity,2,307200,2560
 one-shot-lifetime-handoff-matrix	one-shot	3,2,6	5-available,1-rejected,3-operations,1-traversal,0-retained
 one-shot-encoding-negative-control	one-shot	1,2,1,1	negative,9,control,available
 one-shot-lifetime-negative-control	one-shot	1,1,1,2	negative,10,control,available

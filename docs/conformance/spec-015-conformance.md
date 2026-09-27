@@ -16,6 +16,14 @@ superseded_by: null
 
 # SPEC-015 Conformance Report
 
+## 2026-09-27 Landscape Follow-up
+
+The approved nRF preset and generated workload now use 320×240 with a 320×4
+RGB565 tile and 2,560-byte raster, payload, and in-flight limits. Generator
+freshness passes. The four immutable profile reports and normalized comparison
+are being refreshed; the old 240×320 comparison below is historical. Connected
+display and input evidence remains open.
+
 > This report records evidence. It does not authorize the governing
 > Specification's `implemented` transition.
 >

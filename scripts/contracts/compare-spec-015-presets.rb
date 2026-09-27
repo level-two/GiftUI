@@ -61,7 +61,7 @@ expected = {
   "macos-dynamic" => %w[dynamic 320x240 240 1280 307200 41376],
   "macos-static" => %w[static 320x240 240 1280 307200 39696],
   "raspberry-pi-armv6" => %w[dynamic 240x240 16 480 7680 41376],
-  "nrf52840-embedded" => %w[static 240x320 4 480 1920 39696],
+  "nrf52840-embedded" => %w[static 320x240 4 640 2560 39696],
 }
 physical_fields = %w[profile extent region_height bytes_per_row raster_bytes profile_storage_bytes]
 expected.each do |profile, values|
@@ -109,8 +109,8 @@ capability_evidence = ROOT.join("Tests/ContractFixtures/SPEC004/Evidence/milesto
 %w[+252 +4,768 202 80].each do |measurement|
   fail_check("nRF capability evidence lacks #{measurement}") unless capability_evidence.include?(measurement)
 end
-backend_evidence = ROOT.join("Tests/ContractFixtures/SPEC014/Evidence/milestone-8/nrf52840-240x320-cross-build.md").read
-%w[240×4 1,920 80].each do |measurement|
+backend_evidence = ROOT.join("Tests/ContractFixtures/SPEC014/Evidence/milestone-8/nrf52840-320x240-cross-build.md").read
+%w[320×4 2,560 60].each do |measurement|
   fail_check("nRF backend evidence lacks #{measurement}") unless backend_evidence.include?(measurement)
 end
 
@@ -118,12 +118,12 @@ output_dir = REPORT_ROOT.join("comparison")
 FileUtils.mkdir_p(output_dir)
 output = output_dir.join("report.tsv")
 nrf_named_application = Integer(semantic["nrf52840-embedded"]["profile_storage_bytes"], 10) +
-  115_392 + 1_920
+  115_392 + 2_560
 output.write(<<~TSV)
   dimension\tmacos-dynamic\tmacos-static\traspberry-pi-armv6\tnrf52840-embedded\tresult
   semantics\t#{semantic["macos-dynamic"]["semantic_checksum"]}\t#{semantic["macos-static"]["semantic_checksum"]}\t#{semantic["raspberry-pi-armv6"]["semantic_checksum"]}\t#{semantic["nrf52840-embedded"]["semantic_checksum"]}\tequal
   profile-storage-bytes\t41376\t39696\t41376\t39696\tprofile-bounded
-  raster-staging-bytes\t307200\t307200\t7680\t1920\texact
+  raster-staging-bytes\t307200\t307200\t7680\t2560\texact
   resolver-calls-startup\t1\t1\t1\t1\texact
   resolver-calls-post-startup\t0\t0\t0\t0\texact
   abi\tnative-macos\tnative-macos\tarmv6-hard-float\tarmv7e-m-vfp-hard-float\tverified

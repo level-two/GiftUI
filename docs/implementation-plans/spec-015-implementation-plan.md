@@ -20,6 +20,14 @@ superseded_by: null
 
 # SPEC-015 Implementation Plan
 
+## 2026-09-27 Landscape Preset Correction
+
+The current approved nRF generated preset and workload use a 320×240 surface,
+320×4 RGB565 region, 640-byte rows, and 2,560-byte raster, payload, and
+in-flight limits. The generator freshness check passes. The four-profile
+comparison must be rerun after all host test fixtures and immutable profile
+reports reflect this geometry; the 240×320 section below is historical.
+
 > This active plan derives work from the approved MVP Target-Host Configuration
 > Contract, including its explicitly reapproved schema-3 workload amendment.
 > It orders reusable host assembly and evidence but does not amend SPEC-015,

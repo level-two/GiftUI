@@ -11,7 +11,7 @@ import SignalAnalyzerTargetHost
 import Testing
 
 struct StaticNRFEndpointWriter: DisplayPayloadWriter {
-    let capacityBytes: UInt32 = 1_920
+    let capacityBytes: UInt32 = 2_560
     let regionCapacity: UInt16 = 1
     private(set) var writtenBytes: UInt32 = 0
     private(set) var writtenRegionCount: UInt16 = 0
@@ -52,7 +52,7 @@ struct StaticNRFEndpointTarget: DisplayTarget {
     let submissionLifetime: SubmissionLifetime = .synchronousBorrow
     let handoff: SubmissionHandoff = .synchronous
     let maximumInFlightPayloads: UInt8 = 1
-    let maximumInFlightBytes: UInt32 = 1_920
+    let maximumInFlightBytes: UInt32 = 2_560
     var acceptsOffers = false
     var writer = StaticNRFEndpointWriter()
     private(set) var submittedPayloads = 0
@@ -102,9 +102,9 @@ struct StaticNRFEndpointTarget: DisplayTarget {
         Issue.record("Static nRF assembly did not validate")
         return
     }
-    let raster = UnsafeMutableRawPointer.allocate(byteCount: 1_920, alignment: 8)
+    let raster = UnsafeMutableRawPointer.allocate(byteCount: 2_560, alignment: 8)
     defer { raster.deallocate() }
-    let coverage = UnsafeMutableRawPointer.allocate(byteCount: 120, alignment: 8)
+    let coverage = UnsafeMutableRawPointer.allocate(byteCount: 160, alignment: 8)
     defer { coverage.deallocate() }
     let provenance = FrameProvenance(
         cycle: RunCycleID(rawValue: 2),
@@ -116,8 +116,8 @@ struct StaticNRFEndpointTarget: DisplayTarget {
             target: StaticNRFEndpointTarget(acceptsOffers: true),
             provenance: provenance,
             assemblyReport: report,
-            rasterRegion: UnsafeMutableRawBufferPointer(start: raster, count: 1_920),
-            coverageRegion: UnsafeMutableRawBufferPointer(start: coverage, count: 120)
+            rasterRegion: UnsafeMutableRawBufferPointer(start: raster, count: 2_560),
+            coverageRegion: UnsafeMutableRawBufferPointer(start: coverage, count: 160)
         )
     else {
         Issue.record("Static nRF endpoint did not construct")
@@ -169,12 +169,12 @@ struct StaticNRFEndpointTarget: DisplayTarget {
         Issue.record("Approved Static nRF stream did not fit raster work limits")
         return
     }
-    #expect(work.tileVisits == 12_000)
+    #expect(work.tileVisits == 9_000)
     #expect(work.regionSubmissions == 11_520_000)
 
-    let raster = UnsafeMutableRawPointer.allocate(byteCount: 1_920, alignment: 8)
+    let raster = UnsafeMutableRawPointer.allocate(byteCount: 2_560, alignment: 8)
     defer { raster.deallocate() }
-    let coverage = UnsafeMutableRawPointer.allocate(byteCount: 120, alignment: 8)
+    let coverage = UnsafeMutableRawPointer.allocate(byteCount: 160, alignment: 8)
     defer { coverage.deallocate() }
     let provenance = FrameProvenance(
         cycle: RunCycleID(rawValue: 1),
@@ -185,16 +185,16 @@ struct StaticNRFEndpointTarget: DisplayTarget {
         target: StaticNRFEndpointTarget(),
         provenance: provenance,
         assemblyReport: report,
-        rasterRegion: UnsafeMutableRawBufferPointer(start: raster, count: 1_920),
-        coverageRegion: UnsafeMutableRawBufferPointer(start: coverage, count: 120)
+        rasterRegion: UnsafeMutableRawBufferPointer(start: raster, count: 2_560),
+        coverageRegion: UnsafeMutableRawBufferPointer(start: coverage, count: 160)
     )
     #expect(endpoint != nil)
     let invalidEndpoint = StaticSignalAnalyzerNRFEndpointFactory.make(
         target: StaticNRFEndpointTarget(),
         provenance: provenance,
         assemblyReport: report,
-        rasterRegion: UnsafeMutableRawBufferPointer(start: raster, count: 1_920),
-        coverageRegion: UnsafeMutableRawBufferPointer(start: coverage, count: 239)
+        rasterRegion: UnsafeMutableRawBufferPointer(start: raster, count: 2_560),
+        coverageRegion: UnsafeMutableRawBufferPointer(start: coverage, count: 319)
     )
     #expect(invalidEndpoint == nil)
 }

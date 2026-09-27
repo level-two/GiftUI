@@ -26,6 +26,18 @@ superseded_by: null
 
 # SPEC-014 Implementation Plan
 
+## 2026-09-27 Landscape Fixture Correction
+
+The current approved nRF backend fixture is 320×240 with one 320×4 RGB565
+tile, 640-byte rows, 2,560-byte raster/payload/in-flight limits, and a
+160-byte coverage map. The updated capability and cross-build fixtures pass
+their focused checks; the
+[320×240 cross-build evidence](../../Tests/ContractFixtures/SPEC014/Evidence/milestone-8/nrf52840-320x240-cross-build.md)
+records the precise scope. The aggregate SPEC-014 driver still has unrelated
+Raspberry Pi migration, module-edge, and plan-status failures. The 240×320
+section below is historical. Connected high-water and display checks remain
+open.
+
 > This active plan derives work from the approved Raster Backend and Display
 > Integration Contract. It orders implementation and evidence but does not
 > amend its raster, surface, display, capability, handoff, failure, resource,

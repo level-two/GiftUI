@@ -23,9 +23,9 @@ private struct StaticNRFCompositionRecordingTransport:
     defer { profile.deallocate() }
     let capture = UnsafeMutableRawPointer.allocate(byteCount: 115_392, alignment: 8)
     defer { capture.deallocate() }
-    let raster = UnsafeMutableRawPointer.allocate(byteCount: 1_920, alignment: 8)
+    let raster = UnsafeMutableRawPointer.allocate(byteCount: 2_560, alignment: 8)
     defer { raster.deallocate() }
-    let coverage = UnsafeMutableRawPointer.allocate(byteCount: 120, alignment: 8)
+    let coverage = UnsafeMutableRawPointer.allocate(byteCount: 160, alignment: 8)
     defer { coverage.deallocate() }
 
     let joined = StaticSignalAnalyzerNRFPresentationComposition.withOwners(
@@ -34,8 +34,8 @@ private struct StaticNRFCompositionRecordingTransport:
         initialFrameOriginMicroseconds: 0,
         profileStorage: UnsafeMutableRawBufferPointer(start: profile, count: 39_696),
         captureRegion: UnsafeMutableRawBufferPointer(start: capture, count: 115_392),
-        rasterRegion: UnsafeMutableRawBufferPointer(start: raster, count: 1_920),
-        coverageRegion: UnsafeMutableRawBufferPointer(start: coverage, count: 120),
+        rasterRegion: UnsafeMutableRawBufferPointer(start: raster, count: 2_560),
+        coverageRegion: UnsafeMutableRawBufferPointer(start: coverage, count: 160),
         transport: StaticNRFCompositionRecordingTransport()
     ) {
         application, profile, captureOwner, captureHistory, pacing, identities, first, endpoint,
@@ -81,7 +81,7 @@ private struct StaticNRFCompositionRecordingTransport:
         profileStorage: UnsafeMutableRawBufferPointer(start: storage, count: 39_696),
         captureRegion: UnsafeMutableRawBufferPointer(start: capture, count: 115_392),
         rasterRegion: UnsafeMutableRawBufferPointer(
-            start: storage.advanced(by: 36_000), count: 1_920
+            start: storage.advanced(by: 36_000), count: 2_560
         ),
         coverageRegion: UnsafeMutableRawBufferPointer(
             start: storage.advanced(by: 39_968), count: 240
@@ -103,9 +103,9 @@ private struct StaticNRFCompositionRecordingTransport:
     defer { profile.deallocate() }
     let capture = UnsafeMutableRawPointer.allocate(byteCount: 115_392, alignment: 8)
     defer { capture.deallocate() }
-    let raster = UnsafeMutableRawPointer.allocate(byteCount: 1_920, alignment: 8)
+    let raster = UnsafeMutableRawPointer.allocate(byteCount: 2_560, alignment: 8)
     defer { raster.deallocate() }
-    let coverage = UnsafeMutableRawPointer.allocate(byteCount: 120, alignment: 8)
+    let coverage = UnsafeMutableRawPointer.allocate(byteCount: 160, alignment: 8)
     defer { coverage.deallocate() }
     var bodyCalls = 0
     let joined: Void? = StaticSignalAnalyzerNRFPresentationComposition.withOwners(
@@ -116,8 +116,8 @@ private struct StaticNRFCompositionRecordingTransport:
             start: profile.advanced(by: 1), count: 39_696
         ),
         captureRegion: UnsafeMutableRawBufferPointer(start: capture, count: 115_392),
-        rasterRegion: UnsafeMutableRawBufferPointer(start: raster, count: 1_920),
-        coverageRegion: UnsafeMutableRawBufferPointer(start: coverage, count: 120),
+        rasterRegion: UnsafeMutableRawBufferPointer(start: raster, count: 2_560),
+        coverageRegion: UnsafeMutableRawBufferPointer(start: coverage, count: 160),
         transport: StaticNRFCompositionRecordingTransport()
     ) { _, _, _, _, _, _, _, _, _ in
         bodyCalls += 1
@@ -133,9 +133,9 @@ private struct StaticNRFCompositionRecordingTransport:
     }
     let shared = UnsafeMutableRawPointer.allocate(byteCount: 155_088, alignment: 8)
     defer { shared.deallocate() }
-    let raster = UnsafeMutableRawPointer.allocate(byteCount: 1_920, alignment: 8)
+    let raster = UnsafeMutableRawPointer.allocate(byteCount: 2_560, alignment: 8)
     defer { raster.deallocate() }
-    let coverage = UnsafeMutableRawPointer.allocate(byteCount: 120, alignment: 8)
+    let coverage = UnsafeMutableRawPointer.allocate(byteCount: 160, alignment: 8)
     defer { coverage.deallocate() }
     var bodyCalls = 0
     let joined: Void? = StaticSignalAnalyzerNRFPresentationComposition.withOwners(
@@ -146,8 +146,8 @@ private struct StaticNRFCompositionRecordingTransport:
         captureRegion: UnsafeMutableRawBufferPointer(
             start: shared.advanced(by: 8), count: 115_392
         ),
-        rasterRegion: UnsafeMutableRawBufferPointer(start: raster, count: 1_920),
-        coverageRegion: UnsafeMutableRawBufferPointer(start: coverage, count: 120),
+        rasterRegion: UnsafeMutableRawBufferPointer(start: raster, count: 2_560),
+        coverageRegion: UnsafeMutableRawBufferPointer(start: coverage, count: 160),
         transport: StaticNRFCompositionRecordingTransport()
     ) { _, _, _, _, _, _, _, _, _ in
         bodyCalls += 1
@@ -164,10 +164,10 @@ private struct StaticNRFCompositionRecordingTransport:
         start: pointer.advanced(by: 39_696), count: 115_392
     )
     let raster = UnsafeMutableRawBufferPointer(
-        start: pointer.advanced(by: 155_088), count: 1_920
+        start: pointer.advanced(by: 155_088), count: 2_560
     )
     let coverage = UnsafeMutableRawBufferPointer(
-        start: pointer.advanced(by: 158_928), count: 120
+        start: pointer.advanced(by: 158_928), count: 160
     )
     #expect(
         StaticSignalAnalyzerNRFRegionMap.validate(

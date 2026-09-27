@@ -38,24 +38,24 @@ public enum NormalizedProfileProbe {
             expectedRowBytes: 480, expectedBytes: 7_680,
             expectedKind: .tiled, expectedEncoding: .rgb565BigEndian
         ) == 2,
-        // corpus-row: configuration-nrf52840-tft|configuration|240,320,2,1|available,31,240,320,240,4,480,1,1,1,1,2,1920,1920,1,1920
+        // corpus-row: configuration-nrf52840-tft|configuration|320,240,2,1|available,31,320,240,320,4,640,1,1,1,1,2,2560,2560,1,2560
         // corpus-code: 3
         availableCode(
             resolution(
-                width: 240, height: 320, kind: .tiled,
+                width: 320, height: 240, kind: .tiled,
                 encoding: .rgb565BigEndian, regionHeight: 4,
-                maximumBytes: 1_920
+                maximumBytes: 2_560
             ),
-            expectedExtent: (240, 320), expectedRegionHeight: 4,
-            expectedRowBytes: 480, expectedBytes: 1_920,
+            expectedExtent: (320, 240), expectedRegionHeight: 4,
+            expectedRowBytes: 640, expectedBytes: 2_560,
             expectedKind: .tiled, expectedEncoding: .rgb565BigEndian
         ) == 3,
-        // corpus-row: configuration-nrf52840-full-rgba-negative|configuration|240,320,1,2,1920|unavailable,insufficient-capacity,2,307200,1920
+        // corpus-row: configuration-nrf52840-full-rgba-negative|configuration|320,240,1,2,2560|unavailable,insufficient-capacity,2,307200,2560
         // corpus-code: 5
         unavailableCode(resolution(
-            width: 240, height: 320, kind: .fullSurface,
-            encoding: .rgba8888, regionHeight: 320,
-            maximumBytes: 1_920
+            width: 320, height: 240, kind: .fullSurface,
+            encoding: .rgba8888, regionHeight: 240,
+            maximumBytes: 2_560
         )) == 5 else {
             return 0
         }
@@ -68,7 +68,7 @@ public enum NormalizedProfileProbe {
         guard resolution == .unavailable(.insufficientCapacity(
             domain: .raster,
             required: .init(rawValue: 307_200),
-            available: .init(rawValue: 1_920)
+            available: .init(rawValue: 2_560)
         )) else {
             return 0
         }

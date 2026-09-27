@@ -56,12 +56,12 @@ expected_spec004_rows = {
     "available,31,240,240,240,16,480,1,1,1,1,2,7680,7680,1,7680",
   ],
   "configuration-nrf52840-tft" => [
-    "configuration", "240,320,2,1",
-    "available,31,240,320,240,4,480,1,1,1,1,2,1920,1920,1,1920",
+    "configuration", "320,240,2,1",
+    "available,31,320,240,320,4,640,1,1,1,1,2,2560,2560,1,2560",
   ],
   "configuration-nrf52840-full-rgba-negative" => [
-    "configuration", "240,320,1,2,1920",
-    "unavailable,insufficient-capacity,2,307200,1920",
+    "configuration", "320,240,1,2,2560",
+    "unavailable,insufficient-capacity,2,307200,2560",
   ],
 }
 expected_spec004_rows.each do |id, expected|
@@ -107,7 +107,7 @@ fail_check("Raspberry Pi selected geometry differs") unless pi_actual == pi_expe
 
 nrf_fixture = cases.fetch("spec014-nrf52840-rgb565-tiled")
 nrf = nrf_fixture.fetch("effectiveCapability")
-nrf_expected = [240, 320, 240, 4, 480, 1_920, 1_920, 1, 1_920]
+nrf_expected = [320, 240, 320, 4, 640, 2_560, 2_560, 1, 2_560]
 nrf_actual = [
   nrf.dig("extent", "width"), nrf.dig("extent", "height"),
   nrf.dig("regionExtent", "width"), nrf.dig("regionExtent", "height"),
@@ -123,7 +123,7 @@ negative_expected = {
   "reason" => "insufficientCapacity",
   "domain" => "raster",
   "requiredBytes" => 307_200,
-  "availableBytes" => 1_920,
+  "availableBytes" => 2_560,
 }
 fail_check("nRF52840 framebuffer rejection differs") unless negative["effectiveCapability"] == negative_expected
 fail_check("nRF52840 rejection records framebuffer bytes") unless negative.dig("highWater", "admittedFramebufferBytes").zero?

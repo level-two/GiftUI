@@ -29,7 +29,7 @@ public func giftuiSpec004Resolve(
 @_cdecl("giftui_spec004_resource_probe")
 public func giftuiSpec004ResourceProbe(_ seed: UInt32) -> UInt32 {
 #if GIFTUI_SPEC004_CANDIDATE
-    let extent = CapabilityExtent(width: 240, height: 320)!
+    let extent = CapabilityExtent(width: 320, height: 240)!
     let operations = RasterOperationSet(rawValue: 0x1f)
     let encodings = CanonicalPixelEncodingSet.rgb565BigEndian
     let lifetimes = SubmissionLifetimeSet(rawValue: 0x07)
@@ -39,9 +39,9 @@ public func giftuiSpec004ResourceProbe(_ seed: UInt32) -> UInt32 {
         operationStream: .synchronousBorrowedOneShot,
         acceptedEncodings: encodings,
         acceptedSubmissionLifetimes: lifetimes,
-        maximumRasterBytes: .init(rawValue: 1_920),
-        maximumPayloadBytes: .init(rawValue: 1_920),
-        maximumInFlightBytes: .init(rawValue: 1_920),
+        maximumRasterBytes: .init(rawValue: 2_560),
+        maximumPayloadBytes: .init(rawValue: 2_560),
+        maximumInFlightBytes: .init(rawValue: 2_560),
         absence: .required
     )!
     let producer = RenderProducerContribution(
@@ -55,11 +55,11 @@ public func giftuiSpec004ResourceProbe(_ seed: UInt32) -> UInt32 {
         encodings: encodings,
         producedSubmissionLifetimes: lifetimes,
         maximumExtent: extent,
-        maximumRegionWidth: 240,
+        maximumRegionWidth: 320,
         maximumRegionHeight: 4,
         rowByteAlignment: 4,
-        maximumRasterBytes: .init(rawValue: 1_920),
-        maximumPayloadBytes: .init(rawValue: 1_920)
+        maximumRasterBytes: .init(rawValue: 2_560),
+        maximumPayloadBytes: .init(rawValue: 2_560)
     )!
     let backend = RasterBackendContribution(primary: realization, alternate: nil)!
     let surface = SurfaceDisplayContribution(
@@ -67,16 +67,16 @@ public func giftuiSpec004ResourceProbe(_ seed: UInt32) -> UInt32 {
         encodings: encodings,
         acceptedSubmissionLifetimes: lifetimes,
         handoffs: .synchronous,
-        maximumRegionWidth: 240,
+        maximumRegionWidth: 320,
         maximumRegionHeight: 4,
         rowByteAlignment: 4,
         maximumInFlightCount: 1,
-        maximumInFlightBytes: .init(rawValue: 1_920)
+        maximumInFlightBytes: .init(rawValue: 2_560)
     )!
     let policy = RasterPresentationPolicy(
-        maximumRasterBytes: .init(rawValue: 1_920),
-        maximumPayloadBytes: .init(rawValue: 1_920),
-        maximumInFlightBytes: .init(rawValue: 1_920),
+        maximumRasterBytes: .init(rawValue: 2_560),
+        maximumPayloadBytes: .init(rawValue: 2_560),
+        maximumInFlightBytes: .init(rawValue: 2_560),
         allowedRealizations: .tiled,
         allowedEncodings: encodings,
         preferredRealization: .tiled,

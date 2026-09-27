@@ -3,7 +3,7 @@
 extern uint32_t giftui_spec004_resource_probe(uint32_t seed);
 
 volatile uint32_t giftui_spec004_resource_sink;
-uint8_t giftui_spec004_display_staging[1920];
+uint8_t giftui_spec004_display_staging[2560];
 const uint32_t giftui_spec004_initialization_operations = 44;
 
 int main(void)

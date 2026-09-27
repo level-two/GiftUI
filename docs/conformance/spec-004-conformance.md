@@ -17,6 +17,13 @@ superseded_by: null
 
 # SPEC-004 Conformance Report
 
+## 2026-09-27 Landscape Follow-up
+
+The approved nRF fixture is now 320×240, 320×4 RGB565, and 2,560 bytes per
+borrowed tile. Updated exact capability fixtures and the nRF SPEC-004 profile
+pass. Connected resource and display behavior remain open under SPEC-001. The
+240×320 follow-up and original review below are historical.
+
 > This report records evidence. It does not authorize the governing
 > Specification's `implemented` transition.
 >

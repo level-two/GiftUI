@@ -29,6 +29,25 @@ superseded_by: null
 > redefine a reusable GiftUI contract, or authorize deployment, remote service
 > changes, connected Pi execution, or nRF52840 flashing.
 
+## 2026-09-27 Landscape Correction
+
+The maintainer's connected photograph showed the 240×320 image in portrait,
+horizontally mirrored, and with an unpainted white band. The approved
+Specifications now set the `KMRTM24024-SPI` target to a 320×240 logical
+landscape surface, 320×4 RGB565 tiles, 640-byte rows, 2,560-byte
+raster/payload/in-flight limits, and 160-byte tile coverage. The code and
+cross-build are committed at `37b08184`; the
+[landscape candidate evidence](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-8/nrf52840-320x240-landscape-candidate.md)
+records the flash and host-native raster. The 240×320 sequence below is
+historical.
+
+Finish the 320×240 fixture and four-profile contract updates, resolve the
+host-native failure-state diagnostic clipping, review new pixel references,
+and repeat connected visual, touch, cadence, and resource checks. The shared
+root layout now exposes both control rows in the host-native raster. Until the
+diagnostic and all six controls are visible and responsive on the physical
+panel, `T8.2` and the affected acceptance criteria remain open.
+
 ## 2026-09-27 nRF Display Replacement
 
 The maintainer approved replacing the original 480 x 320 ILI9486 PiScreen

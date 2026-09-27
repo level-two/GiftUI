@@ -28,6 +28,15 @@ superseded_by: null
 
 # SPEC-004 Implementation Plan
 
+## 2026-09-27 Landscape Fixture Correction
+
+The current approved nRF target is 320×240 with a 320×4 RGB565 region,
+640-byte row, and 2,560-byte raster, payload, and in-flight bounds. The
+SPEC-004 normalized and resource fixtures have been updated to these values;
+the nRF `run-spec-004.sh` profile and exact capability fixture checks pass.
+The 240×320 replacement section below records the previous candidate and is
+historical. Connected resource evidence remains open under the SPEC-001 plan.
+
 > This active plan derives work from the approved Capability Contribution and
 > Resolution Specification. It orders implementation and evidence but does not
 > amend that contract or authorize work owned by another Specification.
