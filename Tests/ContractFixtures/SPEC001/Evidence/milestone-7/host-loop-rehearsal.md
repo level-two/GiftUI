@@ -478,7 +478,9 @@ every state and mapped PiScreen view, gives all raw RGB565 hashes, and records
 the runner's source and binary identities. This is a review packet only:
 no reviewer decision has been recorded, no `PixelReferences` have been
 promoted, and the registered profile gates remain blocked at the exact-pixel
-comparison.
+comparison. The default raster command now checks all eight reviewed RGB565
+files and their expected byte lengths before running either profile. The
+candidate-only command bypasses this preflight for review preparation.
 
 ### T7.8 fault disposition (2026-09-27)
 

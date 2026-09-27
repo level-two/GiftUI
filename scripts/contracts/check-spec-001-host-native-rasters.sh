@@ -22,6 +22,25 @@ captures="${output}/captures"
 images="${output}/images"
 references="${project_root}/Tests/ContractFixtures/SPEC001/PixelReferences"
 evidence="${project_root}/Tests/ContractFixtures/SPEC001/Evidence/milestone-7"
+if [[ "${candidate_only}" == false ]]; then
+    states=(idle running-four-traces stopped cleared window-one-second
+        window-five-seconds window-two-seconds diagnostic)
+    expected_bytes=307200
+    [[ "${target}" == pi ]] && expected_bytes=115200
+    for state in "${states[@]}"; do
+        reference="${references}/${target}-${state}.rgb565"
+        [[ -f "${reference}" ]] || {
+            printf 'reviewed SPEC-001 pixel reference missing: %s\n' "${reference}" >&2
+            exit 1
+        }
+        actual_bytes="$(wc -c < "${reference}" | tr -d '[:space:]')"
+        [[ "${actual_bytes}" == "${expected_bytes}" ]] || {
+            printf 'reviewed SPEC-001 pixel reference has %s bytes, expected %s: %s\n' \
+                "${actual_bytes}" "${expected_bytes}" "${reference}" >&2
+            exit 1
+        }
+    done
+fi
 mkdir -p "${captures}" "${images}"
 
 if [[ "${target}" == pi ]]; then
@@ -63,10 +82,6 @@ arguments=(
     --include-diagnostic
 )
 if [[ "${candidate_only}" == false ]]; then
-    [[ -f "${references}/${target}-diagnostic.rgb565" ]] || {
-        printf 'reviewed SPEC-001 %s pixel references are missing\n' "${target}" >&2
-        exit 1
-    }
     arguments+=(--references "${references}")
 fi
 python3 "${project_root}/scripts/contracts/render-spec-001-rasters.py" \
