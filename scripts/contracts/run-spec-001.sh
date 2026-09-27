@@ -179,6 +179,7 @@ if [[ "${profile}" == "raspberry-pi-armv6" ]]; then
 fi
 
 if [[ "${profile}" == "nrf52840-embedded" ]]; then
+    "${SCRIPT_DIR}/check-spec-001-spi-tft-transport.sh"
     "${SCRIPT_DIR}/check-spec-001-nrf-touch-input.sh"
     "${SCRIPT_DIR}/check-spec-001-nrf-static-input-bridge.sh"
     "${SCRIPT_DIR}/check-spec-001-nrf-static-touch-pipeline.sh"
