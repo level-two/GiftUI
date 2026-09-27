@@ -159,9 +159,9 @@ post-workload enabled and disabled pointer sequence. These are observation
 records; they do not drive the host loops.
 
 Raw records are saved as [Pi](pi-ordered-trace.tsv) (139 lines, SHA-256
-`7fb99bc7042a3e3017457d711f9045bd67d6d842df9e6ffdd7233d3bbf682472`)
+`ebe67b25fc8174379ecb2ee0cddf15702958b5bf2c26a7411391945710220d9e`)
 and [nRF](nrf-ordered-trace.tsv) (139 lines, SHA-256
-`d5f1fee4f126f52a4090e621ba7b436801494a545c8dd72affb61cb08bd7ee8b`).
+`65ad95a95b98c167f7c9e15d707c00ae308cd4c03cffbc5a625026cf68807dd6`).
 Both host-native runner commands passed. The standalone comparison command
 
 ```sh
@@ -233,11 +233,23 @@ records. No count controls an application transition or a render decision.
 The native run and target build passed. The checked `nrf52840dk/nrf52840`
 ELF retained ARMv7E-M hard-float verification and used 196,544 RAM and
 241,644 flash bytes. The refreshed [nRF raw trace](nrf-ordered-trace.tsv) has
-SHA-256 `d5f1fee4f126f52a4090e621ba7b436801494a545c8dd72affb61cb08bd7ee8b`.
+SHA-256 `65ad95a95b98c167f7c9e15d707c00ae308cd4c03cffbc5a625026cf68807dd6`.
 Its 127 frames now retain completed semantic, layout, Drawing, and render
 counts for a future independent macOS Static comparison.
 
 ## T7.6 Pi initial and action frame summaries (2026-09-27)
+
+The host-native display adapters now retain their accepted RGB565 writes in
+recording surfaces and append an FNV-1a 64-bit hash to each committed frame
+record. Pi reconstructs its 240×240 logical pixels from submitted payload
+regions; the nRF adapter reconstructs 480×320 pixels from one-row ILI9486
+writes. The latter surface exists only in the macOS native recorder, not the
+firmware. The first hashes are `11815390858494900828` (Pi) and
+`17577988481690697083` (nRF). Both complete native runs passed and the
+target action comparator still passed 120 Pi workload frames, 127 nRF frames,
+seven initial/action frames, and 12 actions. These extent-specific hashes
+establish physical write order and frame identity; T7.7 will supply reviewed
+pixel references.
 
 The Dynamic presentation owner now retains its latest accepted summary for
 read-only observation. The Pi native runner records the idle initial frame and
@@ -253,7 +265,7 @@ strokes/points, and render operation count. Pi and nRF retain their distinct
 semantic counting schemes and physical projections. The ARMv6 cross-build
 passed and verified the supported EABI5 hard-float executable without a remote
 run. The refreshed [Pi raw trace](pi-ordered-trace.tsv) has SHA-256
-`7fb99bc7042a3e3017457d711f9045bd67d6d842df9e6ffdd7233d3bbf682472`.
+`ebe67b25fc8174379ecb2ee0cddf15702958b5bf2c26a7411391945710220d9e`.
 
 ## Validation boundary
 
