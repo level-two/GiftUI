@@ -103,10 +103,10 @@ finishes the reserved frame once, and preserves the first local failure.
 
 ## Runtime Profiles and Platforms
 
-Raspberry Pi uses 240 x 16 row tiles. nRF52840 uses 480 x 4 row tiles, exactly
-3,840 raster bytes. Dynamic/static host tests use smaller identical logical
-fixtures. The same Raster Core coverage functions and run ordering compile in
-all four profiles.
+Raspberry Pi uses 240 x 16 row tiles. The approved nRF52840 TFT uses 240 x 4
+row tiles, exactly 1,920 raster bytes. Dynamic/static host tests use smaller
+identical logical fixtures. The same Raster Core coverage functions and run
+ordering compile in all four profiles.
 
 ## Resource and Failure Behavior
 

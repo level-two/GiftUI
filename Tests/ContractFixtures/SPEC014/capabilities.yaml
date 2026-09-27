@@ -125,26 +125,26 @@ cases:
     profiles: [nrf52840-embedded]
     descriptor:
       origin: {x: 0, y: 0}
-      extent: {width: 480, height: 320}
+      extent: {width: 240, height: 320}
       encoding: rgb565BigEndian
-      bytesPerRow: 960
+      bytesPerRow: 480
       realization: tiled
-      regionExtent: {width: 480, height: 4}
+      regionExtent: {width: 240, height: 4}
     effectiveCapability:
       status: available
       operationsRawValue: 31
-      extent: {width: 480, height: 320}
-      regionExtent: {width: 480, height: 4}
-      rowBytes: 960
+      extent: {width: 240, height: 320}
+      regionExtent: {width: 240, height: 4}
+      rowBytes: 480
       operationStream: synchronousBorrowedOneShot
       encoding: rgb565BigEndian
       submissionLifetime: synchronousBorrow
       handoff: synchronous
       realization: tiled
-      requiredRasterBytes: 3840
-      requiredPayloadBytes: 3840
+      requiredRasterBytes: 1920
+      requiredPayloadBytes: 1920
       inFlightCount: 1
-      requiredInFlightBytes: 3840
+      requiredInFlightBytes: 1920
     header: none
     operationsResources:
       requiredOperationBits: 31
@@ -158,28 +158,28 @@ cases:
     health: none
     highWater:
       surfaceBytes: 0
-      tileBytes: 3840
-      rasterBytes: 3840
-      payloadBytes: 3840
+      tileBytes: 1920
+      rasterBytes: 1920
+      payloadBytes: 1920
       inFlightPayloads: 1
-      inFlightBytes: 3840
+      inFlightBytes: 1920
   - fixtureID: spec014-nrf52840-full-framebuffer-rejected
     criteria: [BI-002, BI-003, BI-012]
     evidenceClasses: [cross-build, inspection]
     profiles: [nrf52840-embedded]
     descriptor:
       proposedOrigin: {x: 0, y: 0}
-      proposedExtent: {width: 480, height: 320}
+      proposedExtent: {width: 240, height: 320}
       proposedEncoding: rgba8888
-      proposedBytesPerRow: 1920
+      proposedBytesPerRow: 960
       proposedRealization: fullSurface
-      proposedRegionExtent: {width: 480, height: 320}
+      proposedRegionExtent: {width: 240, height: 320}
     effectiveCapability:
       status: unavailable
       reason: insufficientCapacity
       domain: raster
-      requiredBytes: 614400
-      availableBytes: 3840
+      requiredBytes: 307200
+      availableBytes: 1920
     header: none
     operationsResources:
       requiredOperationBits: 31
@@ -193,4 +193,4 @@ cases:
     health: none
     highWater:
       admittedFramebufferBytes: 0
-      maximumRasterBytes: 3840
+      maximumRasterBytes: 1920

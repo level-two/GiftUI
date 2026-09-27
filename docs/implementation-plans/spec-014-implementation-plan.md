@@ -47,6 +47,12 @@ evidence without treating the old ILI9486 results as replacement conformance.
 The implementation sequence and firmware join are in the
 [SPEC-001 integration plan](spec-001-implementation-plan.md#2026-09-27-nrf-display-replacement).
 
+The normalized capability fixture and cross-build probe now use the amended
+geometry and 1,920-byte storage bounds. Their hardware-free result is recorded
+in the [240×320 nRF cross-build evidence](../../Tests/ContractFixtures/SPEC014/Evidence/milestone-8/nrf52840-240x320-cross-build.md).
+The original milestone evidence remains historical; connected replacement
+conformance is still pending.
+
 ## Authority and Scope
 
 The governing [SPEC-014](../specs/spec-014-backend-integration.md) is approved

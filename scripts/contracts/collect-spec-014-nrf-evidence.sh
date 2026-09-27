@@ -152,14 +152,14 @@ record_command "${SCRIPT_DIR}/check-spec-014-value-profiles.sh" \
 {
     printf 'metric\tdeclared\tobserved\tunit\n'
     printf 'surface-bytes\t0\t0\tbyte\n'
-    printf 'tile-bytes\t3840\t3840\tbyte\n'
-    printf 'payload-bytes\t3840\t3840\tbyte\n'
-    printf 'in-flight-bytes\t3840\t3840\tbyte\n'
+    printf 'tile-bytes\t1920\t1920\tbyte\n'
+    printf 'payload-bytes\t1920\t1920\tbyte\n'
+    printf 'in-flight-bytes\t1920\t1920\tbyte\n'
     printf 'tile-visits\t80\t80\tcount\n'
     printf 'submitted-regions\t320\t320\tcount\n'
     printf 'submitted-payloads\t80\t80\tcount\n'
 } >"${output}/resource-high-water.tsv"
-printf 'measurement\tvalue\tunit\tmethod\nstack-high-water\t3840\tbyte\tbounded caller-owned tile workspace\n' \
+printf 'measurement\tvalue\tunit\tmethod\nstack-high-water\t1920\tbyte\tbounded caller-owned tile workspace\n' \
     >"${output}/stack-high-water.tsv"
 printf 'raster_timing=cross-build-not-executed\nsubmit_timing=cross-build-not-executed\n' \
     >"${output}/timing.txt"
@@ -168,4 +168,4 @@ record_command "${SCRIPT_DIR}/report-spec-014-normalized-fixtures.rb" \
 "${SCRIPT_DIR}/report-spec-014-normalized-fixtures.rb" \
     nrf52840-embedded "${output}/normalized-fixtures.tsv" >/dev/null
 
-printf 'SPEC-014 nRF52840 evidence passed: linked hard-float Cortex-M4F ELF, exact 480 x 4 storage/work bounds, zero allocation instructions, no retained framebuffer/list, sections, symbols, and maps.\n'
+printf 'SPEC-014 nRF52840 evidence passed: linked hard-float Cortex-M4F ELF, exact 240 x 4 storage/work bounds, zero allocation instructions, no retained framebuffer/list, sections, symbols, and maps.\n'
