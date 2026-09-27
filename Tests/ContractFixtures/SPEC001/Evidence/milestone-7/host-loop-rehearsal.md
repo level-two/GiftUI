@@ -428,6 +428,25 @@ comparison rectangle ends before its first row. All eight new captures pass
 the raster invariant check. The former Pi hashes are superseded; independent
 pixel review and locked RGB565 references remain pending.
 
+### Pi lowercase-legibility correction (2026-09-27)
+
+The Spleen candidate left lowercase `a` and `e` difficult to distinguish.
+The Pi-only package now uses native Terminus 6×12 bitmap glyphs from the
+pinned 4.49.1 BDF source. A Cozette trial was rejected after the full screen
+capture lost clarity in uppercase title letters. Terminus preserves the
+complete title and gives `e` a more open lower-right shape. The Spleen
+source was removed; nRF continues to use the shared Inter resource. The
+new idle, running, and diagnostic RGB565 SHA-256 values are
+`d057256cab898501a57f596321fd635cad372b998cf228b0e7271c255e153e7f`,
+`1986c7489293df9da584df727099e76a146e733c385bd857fa7a63a65b67ad78`,
+and `5cd880ab2b2e4fcc14789fa774a9f124fe131c8242802944b084d711da2ea196`.
+The full Pi host-native raster command passed for all eight states, matching
+120 workload frames, seven initial/action frames, and 12 actions. Its
+startup display, later display, and oversized-input fault injections passed.
+All 23 Pi semantic join tests, resource regeneration, and governance
+validation passed. The previous Spleen hashes are superseded; independent
+pixel review and locked RGB565 references remain pending.
+
 ### T7.8 fault disposition (2026-09-27)
 
 `T7.8` host-native fixture checks pass at revision `a069ba92`. The Pi runner

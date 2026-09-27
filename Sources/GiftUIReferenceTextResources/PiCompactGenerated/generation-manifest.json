@@ -1,15 +1,15 @@
 {
-  "bitmapPayloadSHA256": "1fe260ab5a9d92a838b77179c955f7f5196aa8a1f3acf08d5c7e55d9c19c9020",
+  "bitmapPayloadSHA256": "9fb2d693d1a98e192aea27f4efdc4f168b7f83936b88fbfdb2678b2211ff5a3d",
   "canonicalManifestByteCount": 4315,
   "generator": "scripts/text-resources/generate-pi-compact-resources.py",
   "glyphCount": 96,
-  "licenseSHA256": "f33fe8679d5b2abecc4f1313ce6c6bfa58262964de5f7bca146596a7318047af",
+  "licenseSHA256": "c14f8d795784a547ea35e69c51dee2957bb71a1cdb492ec5321e4b61d3d97630",
   "mappingCount": 96,
   "outputs": {
-    "PiCompactBitmapPayload.generated.swift": "f1922148be0a057bf2a826661d0531ae809cdafdc09e45512206f3359e106955",
-    "PiCompactCatalogue.generated.swift": "9d6f34d8d44a3afd07ae4852ca5f16702e59a8e63163143173fcf49bc4137c33"
+    "PiCompactBitmapPayload.generated.swift": "3ed31673d646b934a7fa61915280e5352ff5ee33166c8344386b69906c5f6c45",
+    "PiCompactCatalogue.generated.swift": "90bed8fb4cbed77b257607857d321779c366fcddf66b06e05fe310e4b554f3c9"
   },
-  "resourceID": "31461d4ab1bee7f15d4c769969d99dddfee86e179c33772abc17daaf28001c08",
-  "source": "ThirdParty/Spleen-2.2.0/spleen-6x12.bdf",
-  "sourceSHA256": "fc0743d164690f99b7e2e1b9d503180e4c719a9831ae03fd8f6da18c857dee27"
+  "resourceID": "ad582a7ebba89b876b3e86de5612b60b4f31983bacacd30c1f126a3c2aa3e35d",
+  "source": "ThirdParty/Terminus-4.49.1/ter-u12n.bdf",
+  "sourceSHA256": "9e942cad8173fddf34fc8a784e9ec6d2d4cfb8b82363faf65f43b236fe2f5a99"
 }

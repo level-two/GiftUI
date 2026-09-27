@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate the Pi-only bitmap font from pinned Spleen BDF glyphs."""
+"""Generate the Pi-only bitmap font from pinned Terminus BDF glyphs."""
 
 from __future__ import annotations
 
@@ -8,10 +8,10 @@ import importlib.util
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
-SOURCE = ROOT / "ThirdParty/Spleen-2.2.0/spleen-6x12.bdf"
-LICENSE = ROOT / "ThirdParty/Spleen-2.2.0/LICENSE"
-SOURCE_SHA256 = "fc0743d164690f99b7e2e1b9d503180e4c719a9831ae03fd8f6da18c857dee27"
-LICENSE_SHA256 = "f33fe8679d5b2abecc4f1313ce6c6bfa58262964de5f7bca146596a7318047af"
+SOURCE = ROOT / "ThirdParty/Terminus-4.49.1/ter-u12n.bdf"
+LICENSE = ROOT / "ThirdParty/Terminus-4.49.1/OFL.TXT"
+SOURCE_SHA256 = "9e942cad8173fddf34fc8a784e9ec6d2d4cfb8b82363faf65f43b236fe2f5a99"
+LICENSE_SHA256 = "c14f8d795784a547ea35e69c51dee2957bb71a1cdb492ec5321e4b61d3d97630"
 REFERENCE = Path(__file__).with_name("generate-reference-resources.py")
 SPEC = importlib.util.spec_from_file_location("giftui_reference_generator", REFERENCE)
 assert SPEC is not None and SPEC.loader is not None
@@ -21,9 +21,9 @@ SPEC.loader.exec_module(ref)
 
 def read_bdf() -> tuple[dict[int, dict], int, int]:
     if ref.sha256(SOURCE.read_bytes()) != SOURCE_SHA256:
-        raise SystemExit("Spleen source hash mismatch")
+        raise SystemExit("Terminus source hash mismatch")
     if ref.sha256(LICENSE.read_bytes()) != LICENSE_SHA256:
-        raise SystemExit("Spleen license hash mismatch")
+        raise SystemExit("Terminus license hash mismatch")
     lines = SOURCE.read_text(encoding="ascii").splitlines()
     glyphs: dict[int, dict] = {}
     ascent = descent = None
@@ -68,10 +68,10 @@ def read_bdf() -> tuple[dict[int, dict], int, int]:
                     "bitmap": bitmap,
                 }
         position += 1
-    if (ascent, descent) != (9, 3):
-        raise SystemExit("unexpected Spleen line metrics")
+    if (ascent, descent) != (10, 2):
+        raise SystemExit("unexpected Terminus line metrics")
     if any(scalar not in glyphs for scalar in ref.REQUIRED_SCALARS):
-        raise SystemExit("Spleen is missing a required scalar")
+        raise SystemExit("Terminus is missing a required scalar")
     return glyphs, ascent, descent
 
 
@@ -118,7 +118,7 @@ def generate(output: Path) -> None:
     ref.write_text(output / "PiCompactBitmapPayload.generated.swift", bitmap)
     ref.write_json(output / "generation-manifest.json", {
         "generator": "scripts/text-resources/generate-pi-compact-resources.py",
-        "source": "ThirdParty/Spleen-2.2.0/spleen-6x12.bdf",
+        "source": "ThirdParty/Terminus-4.49.1/ter-u12n.bdf",
         "sourceSHA256": SOURCE_SHA256,
         "licenseSHA256": LICENSE_SHA256,
         "resourceID": ref.sha256(manifest),
