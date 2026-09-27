@@ -78,8 +78,6 @@ package enum RasterStrokeCoverage {
             break
         case .invalidStroke:
             return .invalidStroke
-        case .arithmeticOverflow:
-            return .arithmeticOverflow
         }
         guard
             let covered = RasterFillCoverage.intersection(
@@ -153,7 +151,6 @@ package enum RasterStrokeCoverage {
     private enum ValidationResult {
         case valid
         case invalidStroke
-        case arithmeticOverflow
     }
 
     private static func nextPotentialRange<Stroke: StraightLineStrokeView>(
@@ -172,10 +169,8 @@ package enum RasterStrokeCoverage {
             }
             if subpath.pointCount > 2 { return (fromX, maximumX) }
             if subpath.pointCount == 2 {
-                guard let firstLocal = stroke.point(at: subpath.firstPoint),
-                    let secondLocal = stroke.point(at: subpath.firstPoint + 1),
-                    let first = translated(firstLocal, by: header.surfaceOrigin),
-                    let second = translated(secondLocal, by: header.surfaceOrigin)
+                guard let first = stroke.point(at: subpath.firstPoint),
+                    let second = stroke.point(at: subpath.firstPoint + 1)
                 else { return (fromX, maximumX) }
                 let width = Int64(header.lineWidth)
                 let minimumY = Int64(min(first.y, second.y)) - width
@@ -210,12 +205,7 @@ package enum RasterStrokeCoverage {
 
         var pointIndex: UInt16 = 0
         while pointIndex < header.pointCount {
-            guard let point = stroke.point(at: pointIndex) else {
-                return .invalidStroke
-            }
-            guard translated(point, by: header.surfaceOrigin) != nil else {
-                return .arithmeticOverflow
-            }
+            guard stroke.point(at: pointIndex) != nil else { return .invalidStroke }
             pointIndex += 1
         }
 
@@ -257,7 +247,6 @@ package enum RasterStrokeCoverage {
                 cap: header.lineCap,
                 join: header.lineJoin,
                 subpath: subpath,
-                origin: header.surfaceOrigin,
                 stroke: stroke
             ) {
             case .covered:
@@ -281,16 +270,13 @@ package enum RasterStrokeCoverage {
         cap: LineCap,
         join: LineJoin,
         subpath: SubpathRange,
-        origin: Point,
         stroke: borrowing Stroke
     ) -> CoverageResult {
         guard subpath.pointCount > 1 else { return .notCovered }
         guard let first = stroke.point(at: subpath.firstPoint) else {
             return .invalidStroke
         }
-        guard var previousPoint = translated(first, by: origin) else {
-            return .arithmeticOverflow
-        }
+        var previousPoint = first
 
         var firstSegmentStart: Point?
         var lastSegmentStart: Point?
@@ -302,12 +288,7 @@ package enum RasterStrokeCoverage {
         let end = endResult.partialValue
         var index = subpath.firstPoint + 1
         while index < end {
-            guard let localPoint = stroke.point(at: index) else {
-                return .invalidStroke
-            }
-            guard let point = translated(localPoint, by: origin) else {
-                return .arithmeticOverflow
-            }
+            guard let point = stroke.point(at: index) else { return .invalidStroke }
             defer {
                 previousPoint = point
                 index += 1
@@ -719,13 +700,6 @@ package enum RasterStrokeCoverage {
             if next >= estimate { return estimate }
             estimate = next
         }
-    }
-
-    private static func translated(_ point: Point, by origin: Point) -> Point? {
-        let x = point.x.addingReportingOverflow(origin.x)
-        let y = point.y.addingReportingOverflow(origin.y)
-        guard !x.overflow, !y.overflow else { return nil }
-        return Point(x: x.partialValue, y: y.partialValue)
     }
 
     private static func contains(_ outer: Rect, _ inner: Rect) -> Bool {

@@ -272,7 +272,7 @@ let strokeVectors: [StrokeVectorFixture] = [
         ]
     ),
     StrokeVectorFixture(
-        name: "negative-outside-canvas",
+        name: "pretranslated-surface-points",
         width: 9,
         height: 7,
         operations: [
@@ -281,7 +281,7 @@ let strokeVectors: [StrokeVectorFixture] = [
                 cap: .round,
                 origin: point(4, 3),
                 clip: rect(0, 0, 9, 7),
-                points: [point(-3, -2), point(4, 3)],
+                points: [point(1, 1), point(8, 6)],
                 subpaths: [(0, 2)]
             )
         ],
@@ -464,46 +464,6 @@ func strokeCoverageRejectsMalformedViewsBeforeReplacingPixels() {
     }
 
     #expect(result == .invalidStroke)
-    #expect(calls == 0)
-}
-
-@Test
-func strokeCoverageReportsTranslatedPointOverflowBeforeReplacingPixels() {
-    let bounds = rect(0, 0, 4, 4)
-    let descriptor = RasterSurfaceDescriptor(
-        bounds: bounds,
-        encoding: .rgb565BigEndian,
-        bytesPerRow: 8,
-        realization: .fullSurface,
-        regionWidth: 4,
-        regionHeight: 4
-    )!
-    let stroke = FixtureStroke(
-        header: StraightLineStrokeHeader(
-            color: .red,
-            lineWidth: 1,
-            lineCap: .butt,
-            lineJoin: .miter,
-            surfaceOrigin: point(1, 0),
-            inheritedClip: bounds,
-            pointCount: 2,
-            subpathCount: 1
-        ),
-        points: [point(.max, 0), point(0, 0)],
-        subpaths: [SubpathRange(firstPoint: 0, pointCount: 2)!]
-    )
-    var calls = 0
-
-    let result = RasterStrokeCoverage.rasterize(
-        stroke,
-        descriptor: descriptor,
-        damageBounds: bounds
-    ) { _, _ in
-        calls += 1
-        return true
-    }
-
-    #expect(result == .arithmeticOverflow)
     #expect(calls == 0)
 }
 
