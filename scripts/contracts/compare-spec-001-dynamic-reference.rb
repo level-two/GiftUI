@@ -26,6 +26,7 @@ mac.zip(pi).each_with_index do |(expected, actual), index|
 
     abort "frame #{index + 1} #{field}: mac=#{expected.fetch(field)} pi=#{actual.fetch(field)}"
   end
+  abort "frame #{index + 1} missing physical hash" unless Integer(actual.fetch('frame_hash')).positive?
 end
 
 other_fields = %w[
@@ -42,6 +43,7 @@ mac_other.zip(pi_other).each_with_index do |(expected, actual), index|
     abort "initial/action frame #{index} #{field}: mac=#{expected.fetch(field)} pi=#{actual.fetch(field)}"
   end
   abort "initial/action frame #{index} revision mismatch" unless Integer(expected.fetch('revision')) == Integer(actual.fetch('revision')) + 1
+  abort "initial/action frame #{index} missing physical hash" unless Integer(actual.fetch('frame_hash')).positive?
 end
 
 action_fields = %w[code dispatched capture_count state window]
