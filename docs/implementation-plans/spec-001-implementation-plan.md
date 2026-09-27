@@ -73,6 +73,8 @@ display or connected conformance result.
 
 The 240 x 320 host-native capture now renders the full title, subtitle,
 status, ruler, four channel rows, controls, traces, and visible diagnostic.
+The shared Presentation header stacks these labels at 240-pixel widths; the
+same change was captured on the Pi's 240 x 240 logical surface.
 Direct-SPI transport, touch normalization, full layout, production-loop fault,
 and raster candidate checks pass. The revised eight-state PNG set remains a
 candidate under the existing independent pixel-review gate; no RGB565

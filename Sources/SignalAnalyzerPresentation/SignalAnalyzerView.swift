@@ -34,7 +34,7 @@ package struct SignalAnalyzerHeaderView: View {
     package let acquisitionState: AcquisitionState
 
     package var body: some View {
-        HStack(spacing: 4) {
+        VStack(alignment: .leading, spacing: 4) {
             VStack(alignment: .leading, spacing: 2) {
                 Text("DIGITAL SIGNAL ANALYZER")
                     .foregroundStyle(.white)
