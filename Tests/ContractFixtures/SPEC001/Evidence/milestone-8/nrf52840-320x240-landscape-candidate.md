@@ -38,6 +38,14 @@ signal-analyzer-static --no-build` with the J-Link runner. The board reset
 after flashing. A fresh physical photograph is still needed to confirm
 orientation and mirror correction on the panel.
 
+A later read-only J-Link snapshot on probe `683833660` reported 3.300 V and
+halted the Cortex-M4 in thread mode (`IPSR=0`). The display driver's
+`display_initialized` byte at `0x200283ac` was `1`; five `fault_counts` words
+at `0x20028210` and the CFSR/HFSR words at `0xE000ED28` were all zero. The
+core was resumed with `g`. This confirms initialization and absence of
+recorded faults at the snapshot, but cannot establish visual orientation,
+touch behavior, or display cadence.
+
 Physical verification of the new orientation, readable text, full-panel clear,
 touch alignment, all six controls, frame cadence, and stack high water remains
 open pending a new connected observation. No connected conformance claim or
