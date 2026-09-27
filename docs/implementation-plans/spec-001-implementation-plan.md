@@ -80,6 +80,14 @@ and raster candidate checks pass. The revised eight-state PNG set remains a
 candidate under the existing independent pixel-review gate; no RGB565
 reference has been promoted.
 
+The maintainer subsequently verified the bench wiring and requested a
+connected physical test. The exact 240 x 320 firmware was flashed to J-Link
+serial `683833660`; [the connected attempt](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-8/nrf52840-240x320-connected-attempt.md)
+records a live production scheduler, initialized display driver, and zero
+recorded firmware/CPU faults after more than 30 seconds. Visible pixel output,
+controller identity, physical input, calibration, and frame cadence are still
+open. `T8.2` is not complete.
+
 ## Authority and Scope
 
 The governing

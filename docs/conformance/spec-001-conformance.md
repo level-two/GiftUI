@@ -26,6 +26,11 @@ superseded_by: null
 > host, and cross-build. Independent pixel review and connected display/input
 > evidence remain open; the table's five blocked criteria are unchanged.
 
+The [connected 240 x 320 attempt](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-8/nrf52840-240x320-connected-attempt.md)
+adds a successful flash and sustained production-scheduler observation.
+Display pixels, touch behavior, and the complete connected criteria remain
+unverified.
+
 ## Review Scope
 
 The review freezes [SPEC-001](../specs/spec-001-signal-analyzer-reference-application.md)
