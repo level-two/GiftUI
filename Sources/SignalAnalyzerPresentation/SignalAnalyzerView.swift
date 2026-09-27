@@ -57,7 +57,7 @@ package struct SignalAnalyzerWaveformView: View {
     package var body: some View {
         ZStack {
             SignalAnalyzerGridView()
-                .frame(width: 200, height: 100)
+                .frame(width: 120, height: 96)
             VStack(spacing: 2) {
                 SignalAnalyzerTimeRulerView(visibleRange: visibleRange)
                 SignalAnalyzerChannelWaveformView(
@@ -133,7 +133,7 @@ package struct SignalAnalyzerChannelWaveformView: View {
                 .foregroundStyle(level.foregroundColor)
         }
         .padding(.vertical, 1)
-        .background(SignalAnalyzerSurfaceColor.channelRowBackground)
+        .foregroundStyle(.white)
     }
 }
 
@@ -362,7 +362,6 @@ private enum SignalAnalyzerSurfaceColor {
     static let statusBackground = Color(red: 32, green: 32, blue: 32)
     static let controlsBackground = Color(red: 48, green: 48, blue: 48)
     static let rulerBackground = Color(red: 24, green: 24, blue: 24)
-    static let channelRowBackground = Color(red: 8, green: 8, blue: 8)
 }
 
 package extension SignalCapture {

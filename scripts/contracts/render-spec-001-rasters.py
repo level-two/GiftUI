@@ -13,6 +13,11 @@ INVARIANT_RECTS = {
     "pi": ((4, 0, 160, 32), (75, 137, 165, 174)),
     "nrf": ((4, 0, 220, 32), (170, 170, 310, 220)),
 }
+PLOT_RECTS = {"pi": (60, 57, 181, 137), "nrf": (180, 75, 301, 169)}
+TRACE_BANDS = {
+    "pi": ((60, 76), (80, 96), (100, 116), (120, 136)),
+    "nrf": ((78, 95), (102, 119), (126, 143), (150, 167)),
+}
 STATES = (
     "idle",
     "running-four-traces",
@@ -60,6 +65,40 @@ def region_bytes(pixels, width, rect):
     )
 
 
+def pixel_at(pixels, width, x, y):
+    offset = (y * width + x) * 2
+    return pixels[offset] << 8 | pixels[offset + 1]
+
+
+def waveform_pixels_present(pixels, width, profile):
+    left, top, right, bottom = PLOT_RECTS[profile]
+    grid = 0x8410  # RGB565 gray
+    trace = 0x07E0  # RGB565 green
+    grid_columns = [
+        x for x in range(left, right)
+        if sum(pixel_at(pixels, width, x, y) == grid for y in range(top, bottom)) >= 30
+    ]
+    grid_lines = sum(
+        index == 0 or x > grid_columns[index - 1] + 1
+        for index, x in enumerate(grid_columns)
+    )
+    center_line = max(
+        sum(pixel_at(pixels, width, x, y) == grid for x in range(left, right))
+        for y in range(top, bottom)
+    )
+    trace_levels = True
+    for band_top, band_bottom in TRACE_BANDS[profile]:
+        rows = [
+            y for y in range(band_top, band_bottom)
+            if sum(pixel_at(pixels, width, x, y) == trace for x in range(left, right))
+            >= 10
+        ]
+        if len(rows) < 2 or rows[-1] - rows[0] < 4:
+            trace_levels = False
+            break
+    return grid_lines == 11 and center_line >= 80 and trace_levels
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--profile", choices=("pi", "nrf"), required=True)
@@ -89,6 +128,11 @@ def main():
         elif invariant_regions != invariant_baseline:
             failed = True
             print(f"invariant_mismatch={name}", file=sys.stderr)
+        if state == "running-four-traces" and not waveform_pixels_present(
+            data, width, args.profile
+        ):
+            failed = True
+            print(f"waveform_or_grid_missing={name}", file=sys.stderr)
         png(args.images / f"{name}.png", data, width, height)
         if args.profile == "pi":
             physical = (args.captures / f"{name}-physical.rgb565").read_bytes()

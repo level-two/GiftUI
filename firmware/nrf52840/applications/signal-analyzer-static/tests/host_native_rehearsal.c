@@ -31,6 +31,7 @@ extern int giftui_firmware_main(void);
 static uint64_t clock_microseconds;
 static unsigned touch_polls;
 static unsigned display_writes;
+static unsigned first_frame_write_count;
 static unsigned display_bytes;
 static unsigned shutdown_order;
 static unsigned paced_frame_observed;
@@ -126,6 +127,7 @@ int ads7846_pen_is_down(void)
         assert(giftui_signal_analyzer_last_render_operations() > 0U);
         last_traced_revision = revision;
         if (revision == 1U) {
+            first_frame_write_count = display_writes;
             capture_frame("idle");
         } else if (revision == 121U) {
             capture_frame("running-four-traces");
@@ -292,7 +294,9 @@ int ili9486_write_rgb565(uint16_t x, uint16_t y, uint16_t width,
     assert(pixels != NULL && byte_count == (size_t)width * 2U);
     if (fault_mode != NULL &&
         (strcmp(fault_mode, "write-initial") == 0 ||
-         ((strcmp(fault_mode, "write-next") == 0) && display_writes >= 2460U))) {
+         ((strcmp(fault_mode, "write-next") == 0) &&
+          first_frame_write_count != 0U &&
+          display_writes >= first_frame_write_count))) {
         return -EIO;
     }
     for (uint16_t column = 0U; column < width; column++) {
@@ -356,7 +360,8 @@ int main(void)
             if (strcmp(fault_mode, "write-initial") == 0) {
                 assert(display_writes == 0U);
             } else if (strcmp(fault_mode, "write-next") == 0) {
-                assert(display_writes == 2460U);
+                assert(first_frame_write_count > 0U);
+                assert(display_writes == first_frame_write_count);
             } else {
                 assert(display_writes > 0U);
             }

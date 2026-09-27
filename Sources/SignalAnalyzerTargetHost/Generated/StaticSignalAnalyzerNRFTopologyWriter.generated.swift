@@ -401,13 +401,12 @@ package enum StaticSignalAnalyzerNRFTopologyWriter {
     )? {
         switch ordinal {
         case 0: (25, 0)
-        case 5, 35, 44, 53, 62, 73, 77, 80, 85, 89, 93:
+        case 5, 32, 35, 41, 44, 50, 53, 59, 62, 73, 77, 80, 85, 89, 93:
             (17, 16_777_215)
         case 7, 24, 27, 30: (17, 8_421_504)
         case 10: (25, 2_105_376)
         case 14: (25, 1_052_688)
         case 21: (25, 1_579_032)
-        case 32, 41, 50, 59: (25, 526_344)
         case 68: (25, 3_158_064)
         case 96: (17, 255)
         default: nil
@@ -441,7 +440,7 @@ package enum StaticSignalAnalyzerNRFTopologyWriter {
         case 0: (2, 15, 4, 0)
         case 1, 2: (2, 15, 2, 0)
         case 3: (12, 232, 80, 0)
-        case 4: (11, 15, 200, 100)
+        case 4: (11, 15, 120, 96)
         case 5: (2, 10, 2, 0)
         case 6, 8, 10, 12: (2, 5, 1, 0)
         case 7, 9, 11, 13: (11, 15, 120, 16)

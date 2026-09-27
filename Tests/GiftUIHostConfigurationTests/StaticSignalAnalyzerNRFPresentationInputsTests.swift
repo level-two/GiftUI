@@ -1326,10 +1326,10 @@ private func macOSStaticReferencePointerOutcome(
                     #expect(renderLimits.renderSink.maximumOperations == 150)
                     #expect(acceptedHeader.operationCount <= 150)
                     switch cycle {
-                    case 2: #expect(acceptedHeader.operationCount == 37)
-                    case 3: #expect(acceptedHeader.operationCount == 38)
-                    case 4: #expect(acceptedHeader.operationCount == 34)
-                    case 5 ... 8: #expect(acceptedHeader.operationCount == 39)
+                    case 2: #expect(acceptedHeader.operationCount == 33)
+                    case 3: #expect(acceptedHeader.operationCount == 34)
+                    case 4: #expect(acceptedHeader.operationCount == 30)
+                    case 5 ... 8: #expect(acceptedHeader.operationCount == 35)
                     default: #expect(acceptedHeader.operationCount > 0)
                     }
                     let expectedGlyphs: UInt16

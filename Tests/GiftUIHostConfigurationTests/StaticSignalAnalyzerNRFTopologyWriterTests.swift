@@ -54,7 +54,8 @@ import Testing
                     in: region
                 )
             )
-            #expect(table.scope(at: 18, in: region)?.payload1 == 100)
+            #expect(table.scope(at: 18, in: region)?.payload0 == 120)
+            #expect(table.scope(at: 18, in: region)?.payload1 == 96)
             #expect(
                 StaticSignalAnalyzerNRFTopologyWriter.populateInvariantStyles(
                     scopeCount: count,
@@ -62,6 +63,8 @@ import Testing
                 )
             )
             #expect(table.scope(at: 5, in: region)?.payload0 == 16_777_215)
+            #expect(table.scope(at: 32, in: region)?.flags == 17)
+            #expect(table.scope(at: 32, in: region)?.payload0 == 16_777_215)
             #expect(table.scope(at: 12, in: region)?.flags == 0)
             #expect(
                 !StaticSignalAnalyzerNRFTopologyWriter.populateInvariantStyles(
