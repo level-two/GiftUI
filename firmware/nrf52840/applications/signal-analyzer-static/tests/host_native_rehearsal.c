@@ -38,6 +38,16 @@ static unsigned action_index;
 static uint32_t action_prior_revision;
 static uint64_t action_started_at;
 static uint32_t last_traced_revision;
+static uint8_t recorded_surface[480U * 320U * 2U];
+
+static uint64_t recorded_frame_hash(void)
+{
+    uint64_t hash = UINT64_C(14695981039346656037);
+    for (size_t index = 0U; index < sizeof(recorded_surface); index++) {
+        hash = (hash ^ recorded_surface[index]) * UINT64_C(1099511628211);
+    }
+    return hash;
+}
 
 struct scripted_action {
     uint16_t code;
@@ -87,7 +97,8 @@ int ads7846_pen_is_down(void)
                "\tcapture_count=%u\tstate=%u\twindow=%u"
                "\tsemantic_scopes=%u\tlayout_scopes=%u"
                "\tdrawing_strokes=%u\tdrawing_points=%u"
-               "\trender_operations=%u\twrites=%u\tbytes=%u\n",
+               "\trender_operations=%u\twrites=%u\tbytes=%u"
+               "\tframe_hash=%llu\n",
                revision, giftui_signal_analyzer_capture_revision(),
                giftui_signal_analyzer_capture_count(),
                giftui_signal_analyzer_acquisition_state(),
@@ -97,7 +108,8 @@ int ads7846_pen_is_down(void)
                giftui_signal_analyzer_last_drawing_strokes(),
                giftui_signal_analyzer_last_drawing_points(),
                giftui_signal_analyzer_last_render_operations(),
-               display_writes, display_bytes);
+               display_writes, display_bytes,
+               (unsigned long long)recorded_frame_hash());
     }
     if (script_stage == 0U) {
         if (touch_phase == 0U) {
@@ -211,6 +223,11 @@ int ili9486_write_rgb565(uint16_t x, uint16_t y, uint16_t width,
     assert(x < 480U && y < 320U && width > 0U && height == 1U);
     assert((uint32_t)x + width <= 480U);
     assert(pixels != NULL && byte_count == (size_t)width * 2U);
+    for (uint16_t column = 0U; column < width; column++) {
+        const size_t destination = ((size_t)y * 480U + x + column) * 2U;
+        recorded_surface[destination] = pixels[(size_t)column * 2U];
+        recorded_surface[destination + 1U] = pixels[(size_t)column * 2U + 1U];
+    }
     display_writes++;
     display_bytes += (unsigned)byte_count;
     return 0;

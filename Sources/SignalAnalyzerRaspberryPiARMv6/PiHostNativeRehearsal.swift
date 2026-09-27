@@ -12,6 +12,16 @@ private final class PiRecordingDevice: PiScreenFramebufferSink {
     var bytes = 0
     var regions = 0
     var clock: UInt64 = 0
+    private var logicalPixels = [UInt16](repeating: 0, count: 240 * 240)
+
+    var frameHash: UInt64 {
+        var hash: UInt64 = 14_695_981_039_346_656_037
+        for pixel in logicalPixels {
+            hash = (hash ^ UInt64(pixel >> 8)) &* 1_099_511_628_211
+            hash = (hash ^ UInt64(pixel & 0xff)) &* 1_099_511_628_211
+        }
+        return hash
+    }
 
     func presentRGB565BigEndian(
         bytes: UnsafeRawBufferPointer,
@@ -20,6 +30,20 @@ private final class PiRecordingDevice: PiScreenFramebufferSink {
     ) -> Bool {
         guard transform.logicalWidth == 240, transform.logicalHeight == 240
         else { return false }
+        for region in regions {
+            let x = Int(region.origin.x)
+            let y = Int(region.origin.y)
+            let count = Int(region.pixelCount)
+            let offset = Int(region.byteOffset)
+            guard x >= 0, y >= 0, y < 240, x + count <= 240,
+                offset + count * 2 <= bytes.count
+            else { return false }
+            for pixel in 0 ..< count {
+                logicalPixels[y * 240 + x + pixel] =
+                    UInt16(bytes[offset + pixel * 2]) << 8
+                    | UInt16(bytes[offset + pixel * 2 + 1])
+            }
+        }
         payloads += 1
         self.bytes += bytes.count
         self.regions += regions.count
@@ -231,6 +255,7 @@ enum PiHostNativeRehearsal {
                     + "\tdrawing_strokes=\(presentation.drawing.strokeCount)"
                     + "\tdrawing_points=\(presentation.drawing.pointCount)"
                     + "\trender_operations=\(presentation.render.operationCount)"
+                    + "\tframe_hash=\(device.frameHash)"
             )
             frames += 1
         }
@@ -376,6 +401,7 @@ enum PiHostNativeRehearsal {
                 + "\trender_operations=\(summary.render.operationCount)"
                 + "\tpayloads=\(device.payloads)\tregions=\(device.regions)"
                 + "\tbytes=\(device.bytes)"
+                + "\tframe_hash=\(device.frameHash)"
         )
     }
 }
