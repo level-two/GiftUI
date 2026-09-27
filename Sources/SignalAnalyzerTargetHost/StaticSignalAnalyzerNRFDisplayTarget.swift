@@ -19,7 +19,7 @@ package protocol StaticSignalAnalyzerNRFDisplayTransport {
 /// traversal reads pixels in ascending offset order, so this compaction never
 /// overwrites an unread pixel. Discard resets metadata without clearing bytes.
 package struct StaticSignalAnalyzerNRFDisplayWriter: DisplayPayloadWriter {
-    package let capacityBytes: UInt32 = 3_840
+    package let capacityBytes: UInt32 = 1_920
     package let regionCapacity: UInt16 = 1
     package private(set) var writtenBytes: UInt32 = 0
     package private(set) var writtenRegionCount: UInt16 = 0
@@ -47,8 +47,8 @@ package struct StaticSignalAnalyzerNRFDisplayWriter: DisplayPayloadWriter {
             encoding == .rgb565BigEndian,
             pixelCount > 0,
             origin.x >= 0, origin.y >= 0,
-            origin.x < 480, origin.y < 320,
-            Int32(pixelCount) <= 480 - origin.x
+            origin.x < 240, origin.y < 320,
+            Int32(pixelCount) <= 240 - origin.x
         else { return false }
         let byteCount = UInt32(pixelCount) * 2
         guard byteCount <= capacityBytes else { return false }
@@ -108,14 +108,14 @@ package struct StaticSignalAnalyzerNRFDisplayWriter: DisplayPayloadWriter {
     }
 }
 
-/// One synchronous borrowed-payload target for the validated 480 x 320 nRF
+/// One synchronous borrowed-payload target for the validated 240 x 320 nRF
 /// surface. Its writer shares the caller's raster region with the tile store.
 package struct StaticSignalAnalyzerNRFDisplayTarget<Transport>: DisplayTarget
 where Transport: StaticSignalAnalyzerNRFDisplayTransport {
     package let submissionLifetime: SubmissionLifetime = .synchronousBorrow
     package let handoff: SubmissionHandoff = .synchronous
     package let maximumInFlightPayloads: UInt8 = 1
-    package let maximumInFlightBytes: UInt32 = 3_840
+    package let maximumInFlightBytes: UInt32 = 1_920
     package private(set) var transport: Transport
     package private(set) var writer: StaticSignalAnalyzerNRFDisplayWriter
 
@@ -147,10 +147,10 @@ where Transport: StaticSignalAnalyzerNRFDisplayTransport {
             let expectedDescriptor = RasterSurfaceDescriptor(
                 bounds: Rect(
                     origin: Point(x: 0, y: 0),
-                    size: Size(width: 480, height: 320)!
+                    size: Size(width: 240, height: 320)!
                 )!,
-                encoding: .rgb565BigEndian, bytesPerRow: 960,
-                realization: .tiled, regionWidth: 480, regionHeight: 4
+                encoding: .rgb565BigEndian, bytesPerRow: 480,
+                realization: .tiled, regionWidth: 240, regionHeight: 4
             )
         #else
             let expectedDescriptor = StaticSignalAnalyzerNRFAssembly.descriptor()

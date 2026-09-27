@@ -56,7 +56,7 @@ package struct StaticSignalAnalyzerNRFInputABI {
         priorPhysicalSequenceIsCompleteRawValue: UInt8
     ) -> StaticSignalAnalyzerNRFInputABIOutcome? {
         guard let phase = PointerPhase(rawValue: phaseRawValue),
-            x < 480,
+            x < 240,
             y < 320,
             priorPhysicalSequenceIsCompleteRawValue <= 1
         else { return nil }

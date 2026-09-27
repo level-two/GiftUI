@@ -52,6 +52,14 @@ notes. Any controller or input finding that changes the approved geometry,
 resource bounds, host ownership, or backend semantics must return to the
 Specification or ADR review boundary before implementation continues.
 
+The generated preset and static target-host geometry now use the 240 x 320
+logical surface, 240 x 4 RGB565 tile, 480-byte row, 1,920-byte tile and
+payload, and 120-byte tile coverage map. The fact-admission regions retain
+their independent 3,840-byte bounds. Hardware-free focused tests cover
+assembly, tile storage, display borrowing, region mapping, generated layout,
+and the preset runner; controller-specific firmware and connected validation
+remain separate steps.
+
 ## Authority and Scope
 
 The governing

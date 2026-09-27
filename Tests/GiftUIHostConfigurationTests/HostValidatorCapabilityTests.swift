@@ -59,16 +59,16 @@ import Testing
     let preset = GeneratedSignalAnalyzerPresets.nrf52840Static()
     let requirement = preset.capabilityRequirement
     #expect(requirement.operations.rawValue == 0x1F)
-    #expect(requirement.extent == CapabilityExtent(width: 480, height: 320))
+    #expect(requirement.extent == CapabilityExtent(width: 240, height: 320))
     #expect(requirement.operationStream == .synchronousBorrowedOneShot)
     #expect(requirement.acceptedEncodings == .rgb565BigEndian)
     #expect(
         requirement.acceptedSubmissionLifetimes
             == [.synchronousBorrow, .synchronousCopy, .ownershipTransfer]
     )
-    #expect(requirement.maximumRasterBytes == CapabilityByteCount(rawValue: 3_840))
-    #expect(requirement.maximumPayloadBytes == CapabilityByteCount(rawValue: 3_840))
-    #expect(requirement.maximumInFlightBytes == CapabilityByteCount(rawValue: 3_840))
+    #expect(requirement.maximumRasterBytes == CapabilityByteCount(rawValue: 1_920))
+    #expect(requirement.maximumPayloadBytes == CapabilityByteCount(rawValue: 1_920))
+    #expect(requirement.maximumInFlightBytes == CapabilityByteCount(rawValue: 1_920))
     #expect(requirement.absence == .required)
 }
 

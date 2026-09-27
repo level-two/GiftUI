@@ -4,7 +4,7 @@ import Testing
 @Test func staticNRFILI9486TransportCallsOneRowCABIAndMapsStatus() {
     let accepted: StaticSignalAnalyzerNRFILI9486Write = {
         x, y, width, height, bytes, byteCount in
-        x == 479 && y == 319 && width == 1 && height == 1
+        x == 239 && y == 319 && width == 1 && height == 1
             && byteCount == 2 && bytes?[0] == 0xAB && bytes?[1] == 0xCD
             ? 0 : -1
     }
@@ -16,15 +16,15 @@ import Testing
     let pixels: [UInt8] = [0xAB, 0xCD]
     pixels.withUnsafeBytes { bytes in
         let acceptedRun = transport.presentRGB565BigEndian(
-            x: 479, y: 319, pixelCount: 1, bytes: bytes
+            x: 239, y: 319, pixelCount: 1, bytes: bytes
         )
         #expect(acceptedRun)
         let invalidRun = transport.presentRGB565BigEndian(
-            x: 479, y: 319, pixelCount: 2, bytes: bytes
+            x: 239, y: 319, pixelCount: 2, bytes: bytes
         )
         #expect(!invalidRun)
         let failedRun = failingTransport.presentRGB565BigEndian(
-            x: 479, y: 319, pixelCount: 1, bytes: bytes
+            x: 239, y: 319, pixelCount: 1, bytes: bytes
         )
         #expect(!failedRun)
     }

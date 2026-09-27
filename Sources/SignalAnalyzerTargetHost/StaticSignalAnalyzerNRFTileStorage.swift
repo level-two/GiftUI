@@ -1,12 +1,12 @@
 import GiftUIRasterCore
 
-/// Borrows the caller's one 480 x 4 RGB565 raster region for the complete
-/// synchronous raster session. A separate 240-byte coverage map tracks which
-/// of its 1,920 pixels were written, without a second raster buffer.
+/// Borrows the caller's one 240 x 4 RGB565 raster region for the complete
+/// synchronous raster session. A separate 120-byte coverage map tracks which
+/// of its 960 pixels were written, without a second raster buffer.
 package struct StaticSignalAnalyzerNRFTileStorage: RGB565TileStorage {
-    package static let requiredByteCount = 3_840
-    package static let requiredCoverageByteCount = 240
-    private static let maximumPixels: UInt32 = 1_920
+    package static let requiredByteCount = 1_920
+    package static let requiredCoverageByteCount = 120
+    private static let maximumPixels: UInt32 = 960
 
     private let region: UnsafeMutableRawBufferPointer
     private let coverage: UnsafeMutableRawBufferPointer

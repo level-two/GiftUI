@@ -16,7 +16,7 @@
             ) -> Bool
         ) -> StaticSignalAnalyzerNRFEmbeddedTileRunSummary? {
             guard let bounds = tile.activeTile,
-                bounds.minX == 0, bounds.size.width == 480,
+                bounds.minX == 0, bounds.size.width == 240,
                 bounds.minY >= 0, bounds.maxY <= 320
             else { return nil }
             var runs: UInt32 = 0
@@ -24,25 +24,25 @@
             var row: UInt32 = 0
             while row < UInt32(bounds.size.height) {
                 var column: UInt32 = 0
-                while column < 480 {
-                    let pixelIndex = row * 480 + column
+                while column < 240 {
+                    let pixelIndex = row * 240 + column
                     if !tile.storage.isAffected(pixelIndex: pixelIndex) {
                         column += 1
                         continue
                     }
                     let start = column
                     column += 1
-                    while column < 480 {
+                    while column < 240 {
                         guard
                             tile.storage.isAffected(
-                                pixelIndex: row * 480 + column
+                                pixelIndex: row * 240 + column
                             )
                         else { break }
                         column += 1
                     }
                     let pixelCount = column - start
                     let byteCount = pixelCount * 2
-                    let offset = row * 960 + start * 2
+                    let offset = row * 480 + start * 2
                     guard
                         let accepted = tile.storage.withBorrowedRun(
                             byteOffset: offset, byteCount: byteCount,

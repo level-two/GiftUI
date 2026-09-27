@@ -70,11 +70,11 @@ package enum StaticSignalAnalyzerNRFAssembly {
                 effectivePresentation: capability.effective,
                 descriptor: descriptor,
                 payloadLimits: payloadLimits,
-                surfaceWritableCapacityBytes: 3_840,
+                surfaceWritableCapacityBytes: 1_920,
                 displaySubmissionLifetime: .synchronousBorrow,
                 displayHandoff: .synchronous,
                 displayMaximumInFlightPayloads: 1,
-                displayMaximumInFlightBytes: 3_840,
+                displayMaximumInFlightBytes: 1_920,
                 textRasterRealization: RasterRealizationID(rawValue: 0),
                 healthOwnerCount: 1,
                 endpointAndDisplayShareHealthOwner: true
@@ -119,12 +119,12 @@ package enum StaticSignalAnalyzerNRFAssembly {
         guard let root = preset.staticRoot else { return false }
         return preset.kind == .nrf52840Static
             && preset.profile == .static
-            && preset.raster.logicalWidth == 480
+            && preset.raster.logicalWidth == 240
             && preset.raster.logicalHeight == 320
             && preset.raster.regionHeight == 4
-            && preset.raster.bytesPerRow == 960
-            && preset.raster.maximumRasterBytes == 3_840
-            && preset.raster.maximumPayloadBytes == 3_840
+            && preset.raster.bytesPerRow == 480
+            && preset.raster.maximumRasterBytes == 1_920
+            && preset.raster.maximumPayloadBytes == 1_920
             && preset.raster.maximumInFlightPayloads == 1
             && root.structuralIdentity == 1_410_692_621
             && root.declarationOrdinal == 0
@@ -144,26 +144,26 @@ package enum StaticSignalAnalyzerNRFAssembly {
         RasterSurfaceDescriptor(
             bounds: Rect(
                 origin: Point(x: 0, y: 0),
-                size: Size(width: 480, height: 320)!
+                size: Size(width: 240, height: 320)!
             )!,
             encoding: .rgb565BigEndian,
-            bytesPerRow: 960,
+            bytesPerRow: 480,
             realization: .tiled,
-            regionWidth: 480,
+            regionWidth: 240,
             regionHeight: 4
         )
     }
 
     package static func payloadLimits() -> RasterPayloadLimits? {
         RasterPayloadLimits(
-            maximumRasterBytes: 3_840,
-            maximumPayloadBytes: 3_840,
+            maximumRasterBytes: 1_920,
+            maximumPayloadBytes: 1_920,
             maximumRegionsPerPayload: 1,
-            maximumRegionSubmissionsPerFrame: 23_040_000,
+            maximumRegionSubmissionsPerFrame: 11_520_000,
             maximumTileVisitsPerFrame: 12_000,
             maximumInFlightPayloads: 1,
-            maximumGlyphRasterBytes: 3_840,
-            maximumStrokeWorkspaceBytes: 3_840
+            maximumGlyphRasterBytes: 1_920,
+            maximumStrokeWorkspaceBytes: 1_920
         )
     }
 
@@ -173,7 +173,7 @@ package enum StaticSignalAnalyzerNRFAssembly {
         contributions: RasterPresentationContributions,
         effective: EffectiveRasterPresentation
     )? {
-        let bytes = CapabilityByteCount(rawValue: 3_840)
+        let bytes = CapabilityByteCount(rawValue: 1_920)
         guard
             let realization = RasterRealizationContribution(
                 kind: .tiled,
@@ -182,7 +182,7 @@ package enum StaticSignalAnalyzerNRFAssembly {
                 encodings: .rgb565BigEndian,
                 producedSubmissionLifetimes: .synchronousBorrow,
                 maximumExtent: preset.capabilityRequirement.extent,
-                maximumRegionWidth: 480,
+                maximumRegionWidth: 240,
                 maximumRegionHeight: 4,
                 rowByteAlignment: 2,
                 maximumRasterBytes: bytes,
@@ -198,7 +198,7 @@ package enum StaticSignalAnalyzerNRFAssembly {
                 encodings: .rgb565BigEndian,
                 acceptedSubmissionLifetimes: .synchronousBorrow,
                 handoffs: .synchronous,
-                maximumRegionWidth: 480,
+                maximumRegionWidth: 240,
                 maximumRegionHeight: 4,
                 rowByteAlignment: 2,
                 maximumInFlightCount: 1,

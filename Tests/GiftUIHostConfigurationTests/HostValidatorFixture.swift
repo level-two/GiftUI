@@ -209,11 +209,11 @@ func makeHostEndpointFixture(
     effectivePresentation: EffectiveRasterPresentation? = nil,
     descriptor: RasterSurfaceDescriptor? = nil,
     payloadLimits: RasterPayloadLimits? = nil,
-    surfaceWritableCapacityBytes: UInt32 = 3_840,
+    surfaceWritableCapacityBytes: UInt32 = 1_920,
     displaySubmissionLifetime: SubmissionLifetime = .synchronousBorrow,
     displayHandoff: SubmissionHandoff = .synchronous,
     displayMaximumInFlightPayloads: UInt8 = 1,
-    displayMaximumInFlightBytes: UInt32 = 3_840,
+    displayMaximumInFlightBytes: UInt32 = 1_920,
     textRasterRealization: RasterRealizationID = RasterRealizationID(rawValue: 1),
     healthOwnerCount: UInt8 = 1,
     endpointAndDisplayShareHealthOwner: Bool = true
@@ -227,23 +227,23 @@ func makeHostEndpointFixture(
     let defaultDescriptor = RasterSurfaceDescriptor(
         bounds: Rect(
             origin: Point(x: 0, y: 0),
-            size: Size(width: 480, height: 320)!
+            size: Size(width: 240, height: 320)!
         )!,
         encoding: .rgb565BigEndian,
-        bytesPerRow: 960,
+        bytesPerRow: 480,
         realization: .tiled,
-        regionWidth: 480,
+        regionWidth: 240,
         regionHeight: 4
     )!
     let defaultPayload = RasterPayloadLimits(
-        maximumRasterBytes: 3_840,
-        maximumPayloadBytes: 3_840,
+        maximumRasterBytes: 1_920,
+        maximumPayloadBytes: 1_920,
         maximumRegionsPerPayload: 1,
         maximumRegionSubmissionsPerFrame: 80,
         maximumTileVisitsPerFrame: 80,
         maximumInFlightPayloads: 1,
-        maximumGlyphRasterBytes: 3_840,
-        maximumStrokeWorkspaceBytes: 3_840
+        maximumGlyphRasterBytes: 1_920,
+        maximumStrokeWorkspaceBytes: 1_920
     )!
 
     return HostEndpointConfiguration(
@@ -272,11 +272,11 @@ func makeHostCapabilityValues(
         encodings: .rgb565BigEndian,
         producedSubmissionLifetimes: .synchronousBorrow,
         maximumExtent: extent,
-        maximumRegionWidth: 480,
+        maximumRegionWidth: 240,
         maximumRegionHeight: 4,
         rowByteAlignment: 2,
-        maximumRasterBytes: .init(rawValue: 3_840),
-        maximumPayloadBytes: .init(rawValue: 3_840)
+        maximumRasterBytes: .init(rawValue: 1_920),
+        maximumPayloadBytes: .init(rawValue: 1_920)
     )!
     return [
         .renderProducer(
@@ -294,18 +294,18 @@ func makeHostCapabilityValues(
                 encodings: .rgb565BigEndian,
                 acceptedSubmissionLifetimes: .synchronousBorrow,
                 handoffs: .synchronous,
-                maximumRegionWidth: 480,
+                maximumRegionWidth: 240,
                 maximumRegionHeight: 4,
                 rowByteAlignment: 2,
                 maximumInFlightCount: 1,
-                maximumInFlightBytes: .init(rawValue: 3_840)
+                maximumInFlightBytes: .init(rawValue: 1_920)
             )!
         ),
         .hostResourcePolicy(
             RasterPresentationPolicy(
-                maximumRasterBytes: .init(rawValue: 3_840),
-                maximumPayloadBytes: .init(rawValue: 3_840),
-                maximumInFlightBytes: .init(rawValue: 3_840),
+                maximumRasterBytes: .init(rawValue: 1_920),
+                maximumPayloadBytes: .init(rawValue: 1_920),
+                maximumInFlightBytes: .init(rawValue: 1_920),
                 allowedRealizations: .tiled,
                 allowedEncodings: .rgb565BigEndian,
                 preferredRealization: .tiled,

@@ -9,8 +9,8 @@ package enum StaticSignalAnalyzerNRFRegionMap {
     ) -> Bool {
         guard profile.count == 39_696,
             capture.count == StaticSignalAnalyzerNRFCaptureRegions.requiredByteCount,
-            raster.count == 3_840,
-            coverage.count == 240,
+            raster.count == 1_920,
+            coverage.count == 120,
             aligned(profile), aligned(capture), aligned(raster), aligned(coverage)
         else { return false }
         return disjoint(profile, capture) && disjoint(profile, raster)
