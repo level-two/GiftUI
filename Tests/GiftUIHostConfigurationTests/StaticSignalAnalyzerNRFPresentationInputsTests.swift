@@ -1326,22 +1326,25 @@ private func macOSStaticReferencePointerOutcome(
                     #expect(renderLimits.renderSink.maximumOperations == 150)
                     #expect(acceptedHeader.operationCount <= 150)
                     switch cycle {
-                    case 2: #expect(acceptedHeader.operationCount == 34)
-                    case 3: #expect(acceptedHeader.operationCount == 34)
+                    case 2: #expect(acceptedHeader.operationCount == 31)
+                    case 3: #expect(acceptedHeader.operationCount == 31)
                     case 4: #expect(acceptedHeader.operationCount == 30)
-                    case 5 ... 8: #expect(acceptedHeader.operationCount == 34)
+                    case 5 ... 8: #expect(acceptedHeader.operationCount == 31)
                     default: #expect(acceptedHeader.operationCount > 0)
                     }
+                    // The semantic candidate retains the full bounded diagnostic.
+                    // These are the positioned glyphs inside the 320×240 viewport;
+                    // connected readability remains a separate conformance check.
                     let expectedGlyphs: UInt16
                     switch cycle {
                     case 1: expectedGlyphs = 117
-                    case 2: expectedGlyphs = 202
-                    case 3: expectedGlyphs = 174
+                    case 2: expectedGlyphs = 146
+                    case 3: expectedGlyphs = 137
                     case 4: expectedGlyphs = 118
-                    case 5: expectedGlyphs = 122
-                    case 6: expectedGlyphs = 126
-                    case 7: expectedGlyphs = 130
-                    default: expectedGlyphs = 138
+                    case 5: expectedGlyphs = 119
+                    case 6: expectedGlyphs = 120
+                    case 7: expectedGlyphs = 121
+                    default: expectedGlyphs = 123
                     }
                     #expect(acceptedHeader.positionedGlyphCount == expectedGlyphs)
                     var operationSink = StaticNRFCountingRenderSink(

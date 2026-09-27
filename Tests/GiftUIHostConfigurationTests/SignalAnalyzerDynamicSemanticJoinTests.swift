@@ -1812,8 +1812,8 @@ private final class LogicalFrameCapture {
         Issue.record("measured render projection failed: \(renderResult)")
         return
     }
-    #expect(header.operationCount == 25)
-    #expect(header.positionedGlyphCount == 117)
+    #expect(header.operationCount == 26)
+    #expect(header.positionedGlyphCount == 129)
     #expect(header.maximumObservedClipDepth == 3)
     #expect(renderSink.storage.published.count > 0)
 
@@ -1877,8 +1877,8 @@ private final class LogicalFrameCapture {
             Issue.record("measured Canvas render preflight failed: \(canvasPreflight)")
             return
         }
-        #expect(canvasHeader.operationCount == 30)
-        #expect(canvasHeader.positionedGlyphCount == 117)
+        #expect(canvasHeader.operationCount == 31)
+        #expect(canvasHeader.positionedGlyphCount == 129)
         #expect(canvasHeader.maximumObservedClipDepth == 3)
 
         var drawingSink = SemanticJoinDrawingSink(

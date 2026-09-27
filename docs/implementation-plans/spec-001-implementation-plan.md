@@ -42,7 +42,7 @@ records the flash and host-native raster. The 240×320 sequence below is
 historical.
 
 Finish the 320×240 fixture and four-profile contract updates, resolve the
-host-native failure-state diagnostic clipping, review new pixel references,
+host-native long diagnostic clipping, review new pixel references,
 and repeat connected visual, touch, cadence, and resource checks. The shared
 root layout now exposes both control rows in the host-native raster. Until the
 diagnostic and all six controls are visible and responsive on the physical

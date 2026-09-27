@@ -20,8 +20,8 @@ superseded_by: null
 
 The approved nRF preset and generated workload now use 320×240 with a 320×4
 RGB565 tile and 2,560-byte raster, payload, and in-flight limits. Generator
-freshness passes. The four immutable profile reports and normalized comparison
-are being refreshed; the old 240×320 comparison below is historical. Connected
+freshness and the [four-preset comparison](../../Tests/ContractFixtures/SPEC015/Evidence/milestone-6/320x240-four-preset-comparison.md)
+pass. The old 240×320 comparison below is historical. Connected
 display and input evidence remains open.
 
 > This report records evidence. It does not authorize the governing

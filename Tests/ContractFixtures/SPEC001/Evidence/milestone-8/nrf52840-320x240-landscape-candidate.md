@@ -19,12 +19,11 @@ The HEX was flashed through the repository J-Link workflow after the
 maintainer's connected-test request.
 
 The nRF host-native rehearsal and eight 320×240 raster candidates pass. The
-first raster exposed a clipped time-window control row. A later shared root
-layout adjustment reduced outer spacing and padding; its idle PNG now shows
-the title, status, ruler, four traces, and all six control labels. The
-diagnostic text is still below the visible surface in the failure state. This
-is an outstanding landscape layout defect, and the candidates are not reviewed
-pixel references. The candidate files remain under
+first raster exposed a clipped time-window control row. A later shared layout
+adjustment reduced outer and inner spacing; its idle PNG now shows the title,
+status, ruler, four traces, and all six control labels. The short `ERR`
+diagnostic is visible, while longer diagnostics are clipped by the viewport.
+The candidate files are not reviewed pixel references. They remain under
 `.build/contract-generated/spec-001/nrf-raster-gate/`.
 
 Physical verification of the new orientation, readable text, full-panel clear,

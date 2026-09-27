@@ -23,7 +23,8 @@ has a passing cross-build and host-native raster rehearsal and was flashed to
 the connected nRF52840-DK. The earlier photograph proves panel output but
 shows the portrait image mirrored. A photograph or equivalent observation of
 the new landscape firmware is still pending. The latest host-native raster
-shows both control rows but clips the failure-state diagnostic text; pixel
+shows both control rows and the short error label but clips longer failure
+diagnostics; pixel
 review, all six physical controls, touch, and the connected criteria remain
 blocked. The older review below applies to its stated target.
 

@@ -383,7 +383,7 @@ public func giftUISignalAnalyzerFullLayoutValid(
             textRegion: text
         ), ordinaryHeader.operationCount > 0,
         ordinaryHeader.operationCount <= 145,
-        ordinaryHeader.positionedGlyphCount == 118
+        ordinaryHeader.positionedGlyphCount == 121
     else { return 0 }
     workspace.packed.reset()
     return resolved.isPublished ? 0 : 1
@@ -1171,7 +1171,7 @@ private func giftUIStaticFullCanvas(
         renderHeader.positionedGlyphCount > 0,
         renderHeader.positionedGlyphCount <= 150,
         (frameRevision != 1
-            || renderHeader.positionedGlyphCount == (validation ? 118 : 117))
+            || renderHeader.positionedGlyphCount == (validation ? 121 : 117))
     else { return 0 }
     var sink = StaticSignalAnalyzerNRFEmbeddedCountingSink()
     guard case .success(let streamedHeader) =
@@ -1343,7 +1343,7 @@ private func giftUIStaticFullCanvas(
                     start: profile.advanced(by: 9_184), count: 4_704
                 ), drawing: drawing
             ), updatedRenderHeader.operationCount <= 150,
-        updatedRenderHeader.positionedGlyphCount == 118
+        updatedRenderHeader.positionedGlyphCount == 121
     else { return 0 }
     sink = StaticSignalAnalyzerNRFEmbeddedCountingSink()
     guard case .success(let updatedStreamedHeader) =
@@ -1356,7 +1356,7 @@ private func giftUIStaticFullCanvas(
         ), updatedStreamedHeader == updatedRenderHeader,
         sink.isFinished, !sink.wasDiscarded,
         sink.strokeCount == 5,
-        sink.glyphCount == 118
+        sink.glyphCount == 121
     else { return 0 }
     guard var updatedRasterSink = StaticSignalAnalyzerNRFEmbeddedRasterSink(
         rasterRegion: UnsafeMutableRawBufferPointer(

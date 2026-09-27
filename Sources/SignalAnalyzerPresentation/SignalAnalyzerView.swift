@@ -34,7 +34,7 @@ package struct SignalAnalyzerHeaderView: View {
     package let acquisitionState: AcquisitionState
 
     package var body: some View {
-        VStack(alignment: .leading, spacing: 4) {
+        VStack(alignment: .leading, spacing: 2) {
             VStack(alignment: .leading, spacing: 2) {
                 Text("DIGITAL SIGNAL ANALYZER")
                     .foregroundStyle(.white)
@@ -58,7 +58,7 @@ package struct SignalAnalyzerWaveformView: View {
         ZStack {
             SignalAnalyzerGridView()
                 .frame(width: 120, height: 96)
-            VStack(spacing: 2) {
+            VStack(spacing: 0) {
                 SignalAnalyzerTimeRulerView(visibleRange: visibleRange)
                 SignalAnalyzerChannelWaveformView(
                     channelID: SignalChannelID(rawValue: 1),
@@ -132,7 +132,7 @@ package struct SignalAnalyzerChannelWaveformView: View {
             Text(level.label)
                 .foregroundStyle(level.foregroundColor)
         }
-        .padding(.vertical, 1)
+        .padding(.vertical, 0)
         .foregroundStyle(.white)
     }
 }
@@ -283,7 +283,7 @@ package struct SignalAnalyzerControlsView: View {
                     .disabled(controlState.fiveSecondsDisabled)
             }
         }
-        .padding(2)
+        .padding(1)
         .background(SignalAnalyzerSurfaceColor.controlsBackground)
     }
 }

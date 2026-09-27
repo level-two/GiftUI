@@ -46,7 +46,7 @@ import Testing
                     in: region
                 )
             )
-            #expect(table.scope(at: 2, in: region)?.payload0 == 4)
+            #expect(table.scope(at: 2, in: region)?.payload0 == 0)
             #expect(table.scope(at: 83, in: region)?.payload0 == 4)
             #expect(
                 StaticSignalAnalyzerNRFTopologyWriter.populateInvariantLayoutModifiers(

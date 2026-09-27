@@ -25,8 +25,9 @@ superseded_by: null
 The current approved nRF generated preset and workload use a 320×240 surface,
 320×4 RGB565 region, 640-byte rows, and 2,560-byte raster, payload, and
 in-flight limits. The generator freshness check passes. The four-profile
-comparison must be rerun after all host test fixtures and immutable profile
-reports reflect this geometry; the 240×320 section below is historical.
+comparison now passes using the updated nRF immutable profile report; see the
+[320×240 four-preset evidence](../../Tests/ContractFixtures/SPEC015/Evidence/milestone-6/320x240-four-preset-comparison.md).
+The 240×320 section below is historical.
 
 > This active plan derives work from the approved MVP Target-Host Configuration
 > Contract, including its explicitly reapproved schema-3 workload amendment.

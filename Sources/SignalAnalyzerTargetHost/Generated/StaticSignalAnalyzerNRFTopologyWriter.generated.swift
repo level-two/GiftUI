@@ -442,9 +442,9 @@ package enum StaticSignalAnalyzerNRFTopologyWriter {
         case 3: (12, 232, 80, 0)
         case 4: (11, 15, 120, 96)
         case 5: (2, 10, 2, 0)
-        case 6, 8, 10, 12: (2, 5, 1, 0)
+        case 6, 8, 10, 12: (2, 5, 0, 0)
         case 7, 9, 11, 13: (11, 15, 120, 16)
-        default: (2, 15, 2, 0)
+        default: (2, 15, 1, 0)
         }
     }
 
@@ -471,10 +471,10 @@ package enum StaticSignalAnalyzerNRFTopologyWriter {
     ) -> (kind: StaticSignalAnalyzerNRFScopeKind, auxiliary: UInt16, payload0: UInt32) {
         switch slot {
         case 0: (.vStack, 1, 0)
-        case 1: (.vStack, 0, 4)
+        case 1: (.vStack, 0, 2)
         case 2: (.vStack, 0, 2)
         case 3: (.zStack, 257, 0)
-        case 4: (.vStack, 1, 2)
+        case 4: (.vStack, 1, 0)
         case 5...9: (.hStack, 1, 2)
         case 10: (.vStack, 1, 2)
         default: (.hStack, 1, 4)
