@@ -9,6 +9,10 @@ import sys
 import zlib
 
 EXTENTS = {"pi": (240, 240), "nrf": (480, 320)}
+INVARIANT_RECTS = {
+    "pi": ((4, 0, 160, 32), (75, 137, 165, 178)),
+    "nrf": ((4, 0, 220, 32), (170, 170, 310, 220)),
+}
 STATES = (
     "idle",
     "running-four-traces",
@@ -48,6 +52,14 @@ def png(path, pixels, width, height):
     )
 
 
+def region_bytes(pixels, width, rect):
+    left, top, right, bottom = rect
+    return b"".join(
+        pixels[(y * width + left) * 2 : (y * width + right) * 2]
+        for y in range(top, bottom)
+    )
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--profile", choices=("pi", "nrf"), required=True)
@@ -58,6 +70,7 @@ def main():
     args = parser.parse_args()
     args.images.mkdir(parents=True, exist_ok=True)
     failed = False
+    invariant_baseline = None
     width, height = EXTENTS[args.profile]
     for state in STATES + (("diagnostic",) if args.include_diagnostic else ()):
         name = f"{args.profile}-{state}"
@@ -65,6 +78,17 @@ def main():
         data = path.read_bytes()
         if len(data) != width * height * 2:
             raise ValueError(f"{path}: expected {width * height * 2} bytes, got {len(data)}")
+        invariant_regions = tuple(
+            region_bytes(data, width, rect) for rect in INVARIANT_RECTS[args.profile]
+        )
+        if invariant_baseline is None:
+            invariant_baseline = invariant_regions
+            if any(not any(region) for region in invariant_regions):
+                failed = True
+                print(f"invariant_empty={name}", file=sys.stderr)
+        elif invariant_regions != invariant_baseline:
+            failed = True
+            print(f"invariant_mismatch={name}", file=sys.stderr)
         png(args.images / f"{name}.png", data, width, height)
         if args.profile == "pi":
             physical = (args.captures / f"{name}-physical.rgb565").read_bytes()

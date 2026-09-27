@@ -404,6 +404,13 @@ and `dcdf78090cb98d08d62d2dd840e4152647fc880d8f971df4213647d33819dad9`.
 The earlier Pi hashes above are superseded. Independent pixel review and
 locked references remain pending.
 
+The fresh nRF capture initially appeared to lose text in a preview. Direct
+RGB565 inspection confirmed that the title and controls were byte-for-byte
+identical to idle in all seven other states. The raster command now checks
+those invariant regions on both profiles and fails on an altered pixel; a
+deliberately modified nRF title pixel triggered the mismatch check. The nRF
+cross build and candidate command were rerun from the committed source.
+
 ### T7.8 fault disposition (2026-09-27)
 
 `T7.8` host-native fixture checks pass at revision `a069ba92`. The Pi runner
