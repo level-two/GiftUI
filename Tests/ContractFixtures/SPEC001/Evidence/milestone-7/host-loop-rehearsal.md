@@ -403,3 +403,25 @@ current Pi idle, running, and diagnostic RGB565 SHA-256 values are
 and `dcdf78090cb98d08d62d2dd840e4152647fc880d8f971df4213647d33819dad9`.
 The earlier Pi hashes above are superseded. Independent pixel review and
 locked references remain pending.
+
+### T7.8 fault disposition (2026-09-27)
+
+`T7.8` host-native fixture checks pass at revision `a069ba92`. The Pi runner
+injected initial display refusal, later display refusal, and oversized contact
+ingress. It asserted the normalized endpoint/presentation/overflow result,
+retained complete frame and revision after later faults, no changed model or
+stale action, and the eight reverse teardown steps. The nRF runner was rebuilt
+from this revision after discarding stale generated host inputs, then injected
+touch/display startup, initial/later display writes, idle pen polling, raw
+touch reading, and polling after the second committed frame. It asserted
+`-EIO`, zero live model/revision/actions after shutdown, ordered device
+cleanup, no stale action, and the expected empty, idle, or second-frame hash.
+The separate diagnostic captures show visible `ERR` through both production
+presentation loops. These tests exercise substituted callbacks on macOS and do
+not claim connected-device recovery.
+
+```sh
+bash scripts/contracts/check-spec-001-pi-host-native-faults.sh
+scripts/nrf52840/build.sh --application signal-analyzer-static
+bash scripts/contracts/check-spec-001-nrf-host-native-faults.sh
+```

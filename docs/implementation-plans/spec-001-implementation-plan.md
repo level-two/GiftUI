@@ -1866,7 +1866,7 @@ the next connected run for the corresponding target.
       image on mismatch. Reference changes require recorded review of the
       changed image and source revision. Window screenshots and AppKit scale
       are not the pixel oracle.
-- [ ] `T7.8` — Inject startup, display, and input failures through each
+- [x] `T7.8` — Inject startup, display, and input failures through each
       production loop. Verify the specified normalized failure, visible
       diagnostic where applicable, last-complete-frame behavior, no stale
       action or publication, and reverse-order cleanup. Compare resulting
@@ -2255,8 +2255,10 @@ behavior slices pass. The macOS Dynamic reference matches Pi workload
 summaries for all 120 frames, seven initial/action presentations, and 12
 pointer outcomes. The macOS Static reference matches all 127 nRF initial,
 workload, and action presentations and 12 actions. Both target traces include
-physical frame hashes. `T7.6` is complete; `T7.7` through `T7.9` remain
-pending. Reviewed pixel references and connected-target execution remain
+physical frame hashes. `T7.6` and `T7.8` are complete; `T7.7` and `T7.9`
+remain pending. The Pi and nRF production loops passed their host-native
+startup, display, and input fault injections with retained-frame and cleanup
+checks. Reviewed pixel references and connected-target execution remain
 separate evidence gates.
 
 The original Milestone 9 tasks are complete. The interface/dependency audit,
