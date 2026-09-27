@@ -7,6 +7,8 @@
 #include <stddef.h>
 #include <stdint.h>
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 extern uint32_t giftui_signal_analyzer_initial_model_active(void);
 extern uint16_t giftui_signal_analyzer_initial_committed_actions(void);
@@ -23,6 +25,7 @@ extern uint32_t giftui_signal_analyzer_last_drawing_strokes(void);
 extern uint32_t giftui_signal_analyzer_last_drawing_points(void);
 extern uint32_t giftui_signal_analyzer_last_render_operations(void);
 extern uint64_t giftui_signal_analyzer_next_delay_microseconds(void);
+extern uint32_t giftui_signal_analyzer_rehearsal_diagnostic(void);
 extern int giftui_firmware_main(void);
 
 static uint64_t clock_microseconds;
@@ -39,6 +42,26 @@ static uint32_t action_prior_revision;
 static uint64_t action_started_at;
 static uint32_t last_traced_revision;
 static uint8_t recorded_surface[480U * 320U * 2U];
+static const char *fault_mode;
+static unsigned diagnostic_mode;
+static unsigned diagnostic_injected;
+
+static void capture_frame(const char *name)
+{
+    const char *directory = getenv("GIFTUI_REHEARSAL_RASTERS");
+    if (directory == NULL) {
+        return;
+    }
+    char path[1024];
+    const int length = snprintf(path, sizeof(path), "%s/nrf-%s.rgb565",
+                                directory, name);
+    assert(length > 0 && (size_t)length < sizeof(path));
+    FILE *file = fopen(path, "wb");
+    assert(file != NULL);
+    assert(fwrite(recorded_surface, 1U, sizeof(recorded_surface), file) ==
+           sizeof(recorded_surface));
+    assert(fclose(file) == 0);
+}
 
 static uint64_t recorded_frame_hash(void)
 {
@@ -80,19 +103,45 @@ uint64_t giftui_static_host_source_clock_delay(uint64_t duration)
     return duration * 2998U / 20177U;
 }
 
-int ads7846_initialize(void) { return 0; }
+int ads7846_initialize(void)
+{
+    return fault_mode != NULL && fault_mode[0] == 't' ? -EIO : 0;
+}
 int ads7846_pen_is_down(void)
 {
     touch_polls++;
     const uint32_t revision = giftui_signal_analyzer_current_revision();
+    if (fault_mode != NULL &&
+        ((fault_mode[0] == 'i' && revision == 1U) ||
+         (fault_mode[0] == 'p' && revision >= 2U))) {
+        return -EIO;
+    }
     if (revision != 0U && revision != last_traced_revision) {
         assert(revision > last_traced_revision);
-        assert(giftui_signal_analyzer_last_semantic_scopes() == 96U);
-        assert(giftui_signal_analyzer_last_layout_scopes() == 96U);
+        const uint32_t scopes = diagnostic_mode != 0U && revision == 2U ? 98U : 96U;
+        assert(giftui_signal_analyzer_last_semantic_scopes() == scopes);
+        assert(giftui_signal_analyzer_last_layout_scopes() == scopes);
         assert(giftui_signal_analyzer_last_drawing_strokes() == 5U);
         assert(giftui_signal_analyzer_last_drawing_points() >= 32U);
         assert(giftui_signal_analyzer_last_render_operations() > 0U);
         last_traced_revision = revision;
+        if (revision == 1U) {
+            capture_frame("idle");
+        } else if (revision == 121U) {
+            capture_frame("running-four-traces");
+        } else if (revision == 122U) {
+            capture_frame("stopped");
+        } else if (revision == 124U) {
+            capture_frame("cleared");
+        } else if (revision == 125U) {
+            capture_frame("window-one-second");
+        } else if (revision == 126U) {
+            capture_frame("window-five-seconds");
+        } else if (revision == 127U) {
+            capture_frame("window-two-seconds");
+        } else if (diagnostic_mode != 0U && revision == 2U) {
+            capture_frame("diagnostic");
+        }
         printf("trace=frame\trevision=%u\tcapture_revision=%u"
                "\tcapture_count=%u\tstate=%u\twindow=%u"
                "\tsemantic_scopes=%u\tlayout_scopes=%u"
@@ -110,6 +159,18 @@ int ads7846_pen_is_down(void)
                giftui_signal_analyzer_last_render_operations(),
                display_writes, display_bytes,
                (unsigned long long)recorded_frame_hash());
+    }
+    if (diagnostic_mode != 0U) {
+        if (revision == 1U && diagnostic_injected == 0U &&
+            clock_microseconds >= 10000U) {
+            assert(giftui_signal_analyzer_rehearsal_diagnostic() == 1U);
+            diagnostic_injected = 1U;
+        }
+        if (revision == 2U) {
+            assert(giftui_signal_analyzer_acquisition_state() == 3U);
+            return -ECANCELED;
+        }
+        return 0;
     }
     if (script_stage == 0U) {
         if (touch_phase == 0U) {
@@ -199,6 +260,9 @@ int ads7846_pen_is_down(void)
 }
 int ads7846_read_raw(struct ads7846_raw_sample *sample)
 {
+    if (fault_mode != NULL && strcmp(fault_mode, "read-input") == 0) {
+        return -EIO;
+    }
     const uint32_t point = touch_point;
     assert(point != 0U && sample != NULL);
     sample->x = (uint16_t)(((point & 0xffffU) * 4095U) / 479U);
@@ -209,11 +273,14 @@ int ads7846_read_raw(struct ads7846_raw_sample *sample)
 }
 int ads7846_shutdown(void)
 {
-    assert(shutdown_order == 1U);
+    assert(shutdown_order == (fault_mode != NULL && fault_mode[0] == 'd' ? 0U : 1U));
     shutdown_order = 2U;
     return 0;
 }
-int ili9486_initialize(void) { return 0; }
+int ili9486_initialize(void)
+{
+    return fault_mode != NULL && fault_mode[0] == 'd' ? -EIO : 0;
+}
 uint16_t ili9486_tile_height(void) { return 4U; }
 uint32_t ili9486_spi_segment_bytes(void) { return 3840U; }
 int ili9486_write_rgb565(uint16_t x, uint16_t y, uint16_t width,
@@ -223,6 +290,11 @@ int ili9486_write_rgb565(uint16_t x, uint16_t y, uint16_t width,
     assert(x < 480U && y < 320U && width > 0U && height == 1U);
     assert((uint32_t)x + width <= 480U);
     assert(pixels != NULL && byte_count == (size_t)width * 2U);
+    if (fault_mode != NULL &&
+        (strcmp(fault_mode, "write-initial") == 0 ||
+         ((strcmp(fault_mode, "write-next") == 0) && display_writes >= 2460U))) {
+        return -EIO;
+    }
     for (uint16_t column = 0U; column < width; column++) {
         const size_t destination = ((size_t)y * 480U + x + column) * 2U;
         recorded_surface[destination] = pixels[(size_t)column * 2U];
@@ -248,6 +320,8 @@ void k_busy_wait(uint32_t duration) { clock_microseconds += duration; }
 
 int main(void)
 {
+    fault_mode = getenv("GIFTUI_REHEARSAL_FAULT");
+    diagnostic_mode = getenv("GIFTUI_REHEARSAL_DIAGNOSTIC") != NULL;
     struct giftui_static_host_storage regions;
     assert(giftui_signal_analyzer_storage_regions(&regions) == 0);
     assert(regions.profile_bytes == 39696U);
@@ -257,6 +331,42 @@ int main(void)
 
 
     const int result = giftui_firmware_main();
+    if (diagnostic_mode != 0U) {
+        assert(result == -ECANCELED);
+        assert(diagnostic_injected == 1U && last_traced_revision == 2U);
+        assert(shutdown_order == 2U);
+        printf("diagnostic=visible\trevision=2\tframe_hash=%llu"
+               "\tstatus=passed\n",
+               (unsigned long long)recorded_frame_hash());
+        return 0;
+    }
+    if (fault_mode != NULL) {
+        assert(result == -EIO);
+        assert(giftui_signal_analyzer_initial_model_active() == 0U);
+        assert(giftui_signal_analyzer_current_revision() == 0U);
+        assert(giftui_signal_analyzer_initial_committed_actions() == 0U);
+        if (fault_mode[0] == 't') {
+            assert(shutdown_order == 0U);
+            assert(display_writes == 0U);
+        } else if (fault_mode[0] == 'd') {
+            assert(shutdown_order == 2U);
+            assert(display_writes == 0U);
+        } else {
+            assert(shutdown_order == 2U);
+            if (strcmp(fault_mode, "write-initial") == 0) {
+                assert(display_writes == 0U);
+            } else if (strcmp(fault_mode, "write-next") == 0) {
+                assert(display_writes == 2460U);
+            } else {
+                assert(display_writes > 0U);
+            }
+        }
+        printf("fault=%s\tresult=%d\tshutdown_order=%u\twrites=%u"
+               "\tlast_frame_hash=%llu\tstatus=passed\n",
+               fault_mode, result, shutdown_order, display_writes,
+               (unsigned long long)recorded_frame_hash());
+        return 0;
+    }
     assert(result == -ECANCELED);
     assert(touch_polls > 2U && paced_frame_observed == 1U);
     assert(action_index == sizeof(actions) / sizeof(actions[0]));

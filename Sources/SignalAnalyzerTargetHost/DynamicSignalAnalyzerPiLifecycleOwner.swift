@@ -103,6 +103,17 @@ where Target: DisplayTarget {
         presentationOwner?.lastPresentedSummary
     }
 
+    #if os(macOS)
+        package func injectHostNativeDiagnostic() -> Bool {
+            guard let model,
+                let diagnostic = SignalAnalyzerDiagnostic(exactUTF8: Array("ERR".utf8)),
+                case .applied(changed: true) =
+                    model.apply(.acquisitionState(.failed(diagnostic)))
+            else { return false }
+            return true
+        }
+    #endif
+
     package func committedAction(
         code: SignalAnalyzerAction
     ) -> BoundActionRecord<DynamicSemanticIdentity>? {

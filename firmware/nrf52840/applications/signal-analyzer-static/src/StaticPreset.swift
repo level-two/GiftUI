@@ -1057,7 +1057,8 @@ private func giftUIStaticFullCanvas(
                     start: capture, count: Int(captureBytes)
                 )
             ), StaticSignalAnalyzerNRFEmbeddedSemanticRegion.stage(
-                variant: .normal, model: model,
+                variant: model.errorMessage == nil ? .normal : .diagnostic,
+                model: model,
                 capture: captures, in: candidateRegion
             ) != nil,
             StaticSignalAnalyzerNRFEmbeddedSemanticRegion.publish(

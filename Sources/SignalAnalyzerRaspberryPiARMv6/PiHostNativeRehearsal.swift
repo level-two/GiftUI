@@ -7,12 +7,18 @@ import SignalAnalyzerDomain
 import SignalAnalyzerPresentation
 import SignalAnalyzerTargetHost
 
+#if os(macOS)
+    import Foundation
+#endif
+
 private final class PiRecordingDevice: PiScreenFramebufferSink {
     var payloads = 0
     var bytes = 0
     var regions = 0
     var clock: UInt64 = 0
+    var failAtPayload: Int?
     private var logicalPixels = [UInt16](repeating: 0, count: 240 * 240)
+    private var physicalPixels = [UInt16](repeating: 0, count: 480 * 320)
 
     var frameHash: UInt64 {
         var hash: UInt64 = 14_695_981_039_346_656_037
@@ -23,11 +29,35 @@ private final class PiRecordingDevice: PiScreenFramebufferSink {
         return hash
     }
 
+    func capture(_ name: String) throws {
+        #if os(macOS)
+            guard let directory = ProcessInfo.processInfo.environment["GIFTUI_REHEARSAL_RASTERS"]
+            else { return }
+            for (suffix, pixels) in [
+                ("", logicalPixels), ("-physical", physicalPixels),
+            ] {
+                var bytes = [UInt8]()
+                bytes.reserveCapacity(pixels.count * 2)
+                for pixel in pixels {
+                    bytes.append(UInt8(pixel >> 8))
+                    bytes.append(UInt8(pixel & 0xff))
+                }
+                try Data(bytes).write(
+                    to: URL(fileURLWithPath: directory).appendingPathComponent(
+                        "pi-\(name)\(suffix).rgb565"
+                    ),
+                    options: .atomic
+                )
+            }
+        #endif
+    }
+
     func presentRGB565BigEndian(
         bytes: UnsafeRawBufferPointer,
         regions: [PiScreenPayloadRegion],
         transform: PiScreenAspectFitTransform
     ) -> Bool {
+        if payloads + 1 == failAtPayload { return false }
         guard transform.logicalWidth == 240, transform.logicalHeight == 240
         else { return false }
         for region in regions {
@@ -42,6 +72,22 @@ private final class PiRecordingDevice: PiScreenFramebufferSink {
                 logicalPixels[y * 240 + x + pixel] =
                     UInt16(bytes[offset + pixel * 2]) << 8
                     | UInt16(bytes[offset + pixel * 2 + 1])
+            }
+            guard
+                let physical = transform.physicalBounds(
+                    origin: region.origin, pixelCount: region.pixelCount
+                )
+            else { return false }
+            for physicalY in physical.minY ..< physical.maxY {
+                for physicalX in physical.minX ..< physical.maxX {
+                    let sourcePixel = Int(
+                        Int64(physicalX - physical.minX) * Int64(region.pixelCount)
+                            / Int64(physical.size.width)
+                    )
+                    physicalPixels[Int(physicalY) * 480 + Int(physicalX)] =
+                        UInt16(bytes[offset + sourcePixel * 2]) << 8
+                        | UInt16(bytes[offset + sourcePixel * 2 + 1])
+                }
             }
         }
         payloads += 1
@@ -170,6 +216,10 @@ enum PiHostNativeRehearsal {
             throw PiHostNativeRehearsalError.invalidAssembly
         }
         let device = PiRecordingDevice()
+        #if os(macOS)
+            let faultMode = ProcessInfo.processInfo.environment["GIFTUI_REHEARSAL_FAULT"]
+            if faultMode == "display-initial" { device.failAtPayload = 1 }
+        #endif
         guard
             let layout = PiScreenFramebufferLayout(
                 width: 480, height: 320, bitsPerPixel: 16,
@@ -190,6 +240,25 @@ enum PiHostNativeRehearsal {
             RaspberryPiDynamicHostActivationFailure
         >()
         let activation = controller.activate(owner: &owner, invariantFailure: .invariant)
+        #if os(macOS)
+            if faultMode == "display-initial" {
+                guard activation == .failure(.endpoint(.invariantViolation)),
+                    controller.lifecycleState == .failed,
+                    !owner.production.inputIsEligible,
+                    !owner.production.sourceIsActive,
+                    device.payloads == 0
+                else { throw PiHostNativeRehearsalError.activation }
+                controller.teardown(owner: &owner)
+                guard controller.lifecycleState == .quiescent,
+                    owner.production.phase == .quiescent,
+                    owner.teardownSteps == Array(UInt8(1) ... UInt8(8))
+                else { throw PiHostNativeRehearsalError.teardown }
+                print(
+                    "fault=display-initial\tresult=endpoint.invariantViolation"
+                        + "\tpayloads=0\tstatus=passed")
+                return
+            }
+        #endif
         guard activation == .active else {
             print("activation=\(activation)")
             controller.teardown(owner: &owner)
@@ -203,7 +272,94 @@ enum PiHostNativeRehearsal {
             controller.teardown(owner: &owner)
             throw PiHostNativeRehearsalError.missingFrame
         }
+        #if os(macOS)
+            if faultMode == "display-next" {
+                let priorHash = device.frameHash
+                let priorRevision = owner.production.currentPresentationRevision
+                device.failAtPayload = device.payloads + 1
+                for event in 1 ... 20 {
+                    device.clock = UInt64(event * 12_500)
+                    guard owner.production.deliverScheduledSourceTransition() else {
+                        throw PiHostNativeRehearsalError.workload
+                    }
+                }
+                let result = owner.production.service(at: device.clock)
+                guard case .completed(_, .failure(.presentation)) = result,
+                    owner.production.currentPresentationRevision == priorRevision,
+                    device.frameHash == priorHash
+                else {
+                    print(
+                        "display-next-result=\(result)"
+                            + "\trevision=\(String(describing: owner.production.currentPresentationRevision))"
+                            + "\thash=\(device.frameHash)")
+                    throw PiHostNativeRehearsalError.missingFrame
+                }
+                controller.teardown(owner: &owner)
+                guard controller.lifecycleState == .quiescent,
+                    owner.teardownSteps == Array(UInt8(1) ... UInt8(8))
+                else { throw PiHostNativeRehearsalError.teardown }
+                print(
+                    "fault=display-next\tresult=presentationFailure"
+                        + "\tlast_frame_hash=\(priorHash)\tstatus=passed")
+                return
+            }
+            if faultMode == "diagnostic" {
+                let priorRevision = owner.production.currentPresentationRevision
+                guard owner.production.injectHostNativeDiagnostic() else {
+                    throw PiHostNativeRehearsalError.action
+                }
+                device.clock += 250_000
+                let result = owner.production.service(at: device.clock)
+                guard case .completed(_, .completed) = result,
+                    owner.production.currentPresentationRevision != priorRevision,
+                    owner.production.applicationState?.errorMessage != nil
+                else {
+                    print("diagnostic-result=\(result)")
+                    throw PiHostNativeRehearsalError.missingFrame
+                }
+                try device.capture("diagnostic")
+                controller.teardown(owner: &owner)
+                guard controller.lifecycleState == .quiescent,
+                    owner.teardownSteps == Array(UInt8(1) ... UInt8(8))
+                else { throw PiHostNativeRehearsalError.teardown }
+                print("diagnostic=visible\tframe_hash=\(device.frameHash)\tstatus=passed")
+                return
+            }
+            if faultMode == "input-overflow" {
+                let priorHash = device.frameHash
+                let priorRevision = owner.production.currentPresentationRevision
+                let priorState = owner.production.applicationState
+                let contacts = Array(
+                    repeating: DynamicSignalAnalyzerPiContact(
+                        phase: .down, position: Point(x: 0, y: 0)
+                    ), count: 65_536
+                )
+                let ingress = owner.production.admit(contacts, at: device.clock)
+                guard ingress == .failure(.contactCountOverflow),
+                    owner.production.currentPresentationRevision == priorRevision,
+                    device.frameHash == priorHash,
+                    owner.production.applicationState == priorState
+                else {
+                    print(
+                        "input-overflow-result=\(ingress)"
+                            + "\trevision=\(String(describing: owner.production.currentPresentationRevision))"
+                            + "\thash=\(device.frameHash)"
+                            + "\tstate=\(String(describing: owner.production.applicationState?.acquisitionState))"
+                    )
+                    throw PiHostNativeRehearsalError.action
+                }
+                controller.teardown(owner: &owner)
+                guard controller.lifecycleState == .quiescent,
+                    owner.teardownSteps == Array(UInt8(1) ... UInt8(8))
+                else { throw PiHostNativeRehearsalError.teardown }
+                print(
+                    "fault=input-overflow\tresult=contactCountOverflow"
+                        + "\tlast_frame_hash=\(priorHash)\tstatus=passed")
+                return
+            }
+        #endif
         try traceOtherFrame(code: nil, owner: owner, device: device)
+        try device.capture("idle")
         try runWorkload(owner: &owner, device: device)
         try runActions(owner: &owner, device: device)
         controller.teardown(owner: &owner)
@@ -258,6 +414,7 @@ enum PiHostNativeRehearsal {
                     + "\tframe_hash=\(device.frameHash)"
             )
             frames += 1
+            if window == 120 { try device.capture("running-four-traces") }
         }
         guard transitions == 2_400, frames == 120,
             owner.production.applicationState?.acquisitionState == .running,
@@ -299,6 +456,16 @@ enum PiHostNativeRehearsal {
                 owner.production.currentPresentationRevision != beforeRevision
             else { throw PiHostNativeRehearsalError.action }
             try traceOtherFrame(code: code, owner: owner, device: device)
+            let captureName: String?
+            switch code {
+            case .stop: captureName = "stopped"
+            case .clear: captureName = "cleared"
+            case .selectOneSecond: captureName = "window-one-second"
+            case .selectFiveSeconds: captureName = "window-five-seconds"
+            case .selectTwoSeconds: captureName = "window-two-seconds"
+            default: captureName = nil
+            }
+            if let captureName { try device.capture(captureName) }
             try traceAction(code, dispatched: 1, owner: owner)
             if code == .clear {
                 guard owner.production.applicationState?.capture.transitions.isEmpty == true

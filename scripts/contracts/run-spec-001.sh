@@ -139,6 +139,14 @@ fi
 
 if [[ "${profile}" == "raspberry-pi-armv6" ]]; then
     "${SCRIPT_DIR}/run-spec-015.sh" --profile "${profile}"
+    bash "${SCRIPT_DIR}/check-spec-001-host-native-rasters.sh" --profile "${profile}"
+    rehearsal_dir="${PROJECT_ROOT}/.build/contract-generated/spec-001/pi-raster-gate"
+    cp "${rehearsal_dir}/"{normal-trace.tsv,diagnostic-trace.tsv,fault-results.txt,behavior-comparison.txt,raster-hashes.tsv,identities.txt} \
+        "${staging_report_dir}/"
+    mkdir -p "${staging_report_dir}/rasters"
+    cp "${rehearsal_dir}/images/"*.png "${staging_report_dir}/rasters/"
+    mkdir -p "${staging_report_dir}/faults"
+    cp "${rehearsal_dir}/faults/"*.tsv "${staging_report_dir}/faults/"
     spec015_run_id="$(cat "${PROJECT_ROOT}/.build/contract-reports/spec-015/latest-${profile}.txt")"
     spec015_report_dir="${PROJECT_ROOT}/.build/contract-reports/spec-015/${spec015_run_id}/${profile}"
     product="SignalAnalyzerRaspberryPiARMv6"
@@ -181,6 +189,14 @@ if [[ "${profile}" == "nrf52840-embedded" ]]; then
     "${SCRIPT_DIR}/check-spec-001-nrf-production-host.sh"
     "${SCRIPT_DIR}/check-spec-001-nrf-input-storage-ownership.sh"
     "${SCRIPT_DIR}/run-spec-015.sh" --profile "${profile}"
+    bash "${SCRIPT_DIR}/check-spec-001-host-native-rasters.sh" --profile "${profile}"
+    rehearsal_dir="${PROJECT_ROOT}/.build/contract-generated/spec-001/nrf-raster-gate"
+    cp "${rehearsal_dir}/"{normal-trace.tsv,diagnostic-trace.tsv,fault-results.txt,behavior-comparison.txt,raster-hashes.tsv,identities.txt} \
+        "${staging_report_dir}/"
+    mkdir -p "${staging_report_dir}/rasters"
+    cp "${rehearsal_dir}/images/"*.png "${staging_report_dir}/rasters/"
+    mkdir -p "${staging_report_dir}/faults"
+    cp "${rehearsal_dir}/faults/"*.tsv "${staging_report_dir}/faults/"
     spec015_run_id="$(cat "${PROJECT_ROOT}/.build/contract-reports/spec-015/latest-${profile}.txt")"
     spec015_report_dir="${PROJECT_ROOT}/.build/contract-reports/spec-015/${spec015_run_id}/${profile}"
     "${SCRIPT_DIR}/check-spec-001-nrf-full-layout-native.sh"

@@ -12,9 +12,12 @@ output="${project_root}/.build/contract-generated/spec-001/nrf-host-native-rehea
 }
 mkdir -p "${output}" "${output}/clang-cache"
 export CLANG_MODULE_CACHE_PATH="${output}/clang-cache"
+cat "${source_file}" \
+    "${application}/tests/host_native_rehearsal_hooks.swift" \
+    > "${output}/host_native_rehearsal.swift"
 
 swiftc -parse-as-library -Osize -package-name GiftUI -D GIFTUI_NRF_EMBEDDED \
-    -emit-object "${source_file}" -o "${output}/application.o"
+    -emit-object "${output}/host_native_rehearsal.swift" -o "${output}/application.o"
 
 c_sources=(
     "${application}/src/main.c"
