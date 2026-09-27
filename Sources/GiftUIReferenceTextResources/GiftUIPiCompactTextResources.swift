@@ -1,7 +1,7 @@
 import GiftUITextResources
 
-/// The Pi's 240 px logical display uses a 10 px instance of the pinned Inter
-/// source. It has its own canonical identity and validated bitmap payload.
+/// The Pi's 240 px logical display uses Spleen's native 6x12 bitmap glyphs.
+/// It has its own canonical identity and validated bitmap payload.
 package struct GiftUIPiCompactTextMetricsView: CanonicalTextMetricsView {
     package init() {}
 

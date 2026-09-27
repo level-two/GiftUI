@@ -82,6 +82,8 @@ if [[ "${target}" == pi ]]; then
         "${project_root}/Sources/GiftUIReferenceTextResources/GiftUIPiCompactTextResources.swift" \
         "${project_root}/Sources/GiftUIReferenceTextResources/PiCompactGenerated/PiCompactCatalogue.generated.swift" \
         "${project_root}/Sources/GiftUIReferenceTextResources/PiCompactGenerated/PiCompactBitmapPayload.generated.swift" \
+        "${project_root}/ThirdParty/Spleen-2.2.0/spleen-6x12.bdf" \
+        "${project_root}/scripts/text-resources/generate-pi-compact-resources.py" \
         "${project_root}/Sources/SignalAnalyzerPresentation/SignalAnalyzerView.swift" \
         | shasum -a 256 | awk '{print $1}')"
 else

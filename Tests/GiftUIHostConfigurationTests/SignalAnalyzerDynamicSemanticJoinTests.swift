@@ -1353,7 +1353,7 @@ private final class LogicalFrameCapture {
         #expect(preset.runtimeLimits.layout.maximumTextLines == 128)
         #expect(preset.runtimeLimits.renderWorkspace.maximumTextLines == 128)
         let cases: [(UInt8, UInt16, UInt16)] = [
-            (87, 25, 214),
+            (87, 23, 214),
             (10, 117, 118),
         ]
         for (byte, expectedLines, expectedGlyphs) in cases {

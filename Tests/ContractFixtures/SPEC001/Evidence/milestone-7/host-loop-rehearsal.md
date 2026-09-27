@@ -389,7 +389,7 @@ T7.7–T7.9 completion. No connected run or hardware evidence is inferred.
 
 ### Pi text correction and replacement candidates (2026-09-27)
 
-The Pi 240×240 host now measures and paints text with a separate validated
+The Pi 240×240 host initially measured and painted text with a separate validated
 10 px bitmap instance of the pinned Inter source. An 8 px trial was discarded
 after review showed unreadable labels. The previous 16 px Pi
 candidate images were replaced in `raster-candidates/`; nRF continues to use
@@ -401,7 +401,7 @@ current Pi idle, running, and diagnostic RGB565 SHA-256 values are
 `7b743b7045b7bb430e34df2139b396a12eb113f0ab96f2d99872e044ce894f2f`,
 `878ce2a4a07719a748ee30f52ab8a75ce537856121d3481a8c7b0986fe08f849`,
 and `dcdf78090cb98d08d62d2dd840e4152647fc880d8f971df4213647d33819dad9`.
-The earlier Pi hashes above are superseded. Independent pixel review and
+The earlier Pi hashes above were superseded. Independent pixel review and
 locked references remain pending.
 
 The fresh nRF capture initially appeared to lose text in a preview. Direct
@@ -410,6 +410,23 @@ identical to idle in all seven other states. The raster command now checks
 those invariant regions on both profiles and fails on an altered pixel; a
 deliberately modified nRF title pixel triggered the mismatch check. The nRF
 cross build and candidate command were rerun from the committed source.
+
+### Pi pixel-font replacement (2026-09-27)
+
+The Pi-only 10 px rasterized Inter trial was replaced by Spleen 6×12, a
+bitmap font drawn for small pixel grids. The generator reads the pinned BDF
+glyph bytes directly, verifies its BSD 2-Clause license and source hashes,
+and selects every required printable ASCII glyph and the degree sign. The
+shared Inter resource remains in use on nRF. The new Pi captures show crisp
+title, status, channel labels, controls, and diagnostic text at native
+240×240 resolution. The idle, running, and diagnostic RGB565 SHA-256 values
+are `bbaaad5179c7ca86c9d4dd731fa4e8e1011b968b0d7535ccc91cd4c3fb6421bb`,
+`6d19007eaa4422f6b6b066e743594934e9acfc8c60a0ff81e8555d23eea8ae0b`,
+and `479580e1faf24f193db1b94fd64a7473df87e32599a7ba46594263ebe0406130`.
+The diagnostic glyph moved one pixel upward, so the unchanged-control
+comparison rectangle ends before its first row. All eight new captures pass
+the raster invariant check. The former Pi hashes are superseded; independent
+pixel review and locked RGB565 references remain pending.
 
 ### T7.8 fault disposition (2026-09-27)
 

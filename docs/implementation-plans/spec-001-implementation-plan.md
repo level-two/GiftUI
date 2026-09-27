@@ -2256,7 +2256,7 @@ summaries for all 120 frames, seven initial/action presentations, and 12
 pointer outcomes. The macOS Static reference matches all 127 nRF initial,
 workload, and action presentations and 12 actions. Both target traces include
 physical frame hashes. `T7.6` and `T7.8` are complete; `T7.7` and `T7.9`
-remain pending. The Pi and nRF production loops passed their host-native
+remain blocked on independently reviewed pixel references. The Pi and nRF production loops passed their host-native
 startup, display, and input fault injections with retained-frame and cleanup
 checks. Reviewed pixel references and connected-target execution remain
 separate evidence gates.
