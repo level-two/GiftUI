@@ -466,6 +466,20 @@ frames, and 12 actions, plus startup-display, later-display, and
 oversized-input fault injections. The earlier 6×12 hashes are superseded.
 Independent pixel review and locked RGB565 references remain pending.
 
+### Revision-bound T7.7 review packet (2026-09-27)
+
+Both standalone candidate commands were rerun from clean revision
+`8e45792f1937c9433b9923d3398caea623cbde2e` after the Pi font change.
+The Pi and nRF normal behavior comparators passed, the raster renderer
+accepted all eight required states at their canonical extents, and every
+committed candidate PNG matched its fresh generated counterpart byte for
+byte. The [candidate review record](raster-candidates/README.md) now links
+every state and mapped PiScreen view, gives all raw RGB565 hashes, and records
+the runner's source and binary identities. This is a review packet only:
+no reviewer decision has been recorded, no `PixelReferences` have been
+promoted, and the registered profile gates remain blocked at the exact-pixel
+comparison.
+
 ### T7.8 fault disposition (2026-09-27)
 
 `T7.8` host-native fixture checks pass at revision `a069ba92`. The Pi runner
