@@ -12,9 +12,10 @@ recorder reconstructs its approved 480×320 surface from production
 `ili9486_write_rgb565` tile writes.
 
 The `diagnostic` images show a visible `ERR` message through each production
-presentation loop. The Pi images use native Terminus 6×12 bitmap glyphs.
-This replaced the Spleen candidate after review found its lowercase `a` and
-`e` hard to read. The shared 16 px Inter resource remains in use on nRF.
+presentation loop. The Pi images use a 7×14 bitmap derived from Terminus
+8×14 by removing each selected glyph's empty rightmost column. This keeps
+the clearer lowercase shapes while allowing the full `RUNNING` status to
+fit beside the title. The shared 16 px Inter resource remains in use on nRF.
 The raw RGB565 captures preserve identical title and control pixel regions
 across all eight states on both targets. The raster command checks those
 regions directly and fails if they change or are empty.

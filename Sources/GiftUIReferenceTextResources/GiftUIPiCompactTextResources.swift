@@ -1,6 +1,7 @@
 import GiftUITextResources
 
-/// The Pi's 240 px logical display uses native Terminus 6x12 bitmap glyphs.
+/// The Pi's 240 px logical display uses 7x14 bitmap glyphs derived from
+/// Terminus 8x14 by removing each glyph's unused rightmost column.
 /// It has its own canonical identity and validated bitmap payload.
 package struct GiftUIPiCompactTextMetricsView: CanonicalTextMetricsView {
     package init() {}

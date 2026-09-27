@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate the Pi-only bitmap font from pinned Terminus BDF glyphs."""
+"""Generate the Pi-only 7x14 bitmap font from pinned Terminus BDF glyphs."""
 
 from __future__ import annotations
 
@@ -8,9 +8,9 @@ import importlib.util
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
-SOURCE = ROOT / "ThirdParty/Terminus-4.49.1/ter-u12n.bdf"
+SOURCE = ROOT / "ThirdParty/Terminus-4.49.1/ter-u14n.bdf"
 LICENSE = ROOT / "ThirdParty/Terminus-4.49.1/OFL.TXT"
-SOURCE_SHA256 = "9e942cad8173fddf34fc8a784e9ec6d2d4cfb8b82363faf65f43b236fe2f5a99"
+SOURCE_SHA256 = "fb6aaad8bebe5ee824e914635b3f4e17a82f1673dea37f083e9adde285d7de32"
 LICENSE_SHA256 = "c14f8d795784a547ea35e69c51dee2957bb71a1cdb492ec5321e4b61d3d97630"
 REFERENCE = Path(__file__).with_name("generate-reference-resources.py")
 SPEC = importlib.util.spec_from_file_location("giftui_reference_generator", REFERENCE)
@@ -68,7 +68,7 @@ def read_bdf() -> tuple[dict[int, dict], int, int]:
                     "bitmap": bitmap,
                 }
         position += 1
-    if (ascent, descent) != (10, 2):
+    if (ascent, descent) != (12, 2):
         raise SystemExit("unexpected Terminus line metrics")
     if any(scalar not in glyphs for scalar in ref.REQUIRED_SCALARS):
         raise SystemExit("Terminus is missing a required scalar")
@@ -86,15 +86,24 @@ def generate(output: Path) -> None:
     payload = bytearray()
     for index, scalar in enumerate(scalars):
         source = glyphs[scalar]
+        if (
+            source["width"] != 8
+            or source["advanceX"] != 8
+            or source["rowByteCount"] != 1
+            or any(row & 1 for row in source["bitmap"])
+        ):
+            raise SystemExit(f"Terminus glyph cannot fit a 7 px cell: {scalar}")
         metrics.append({"glyph": index, **{
             field: source[field]
             for field in ("advanceX", "offsetX", "offsetY", "width", "height")
         }})
+        metrics[-1]["advanceX"] = 7
+        metrics[-1]["width"] = 7
         bitmap = source["bitmap"]
         records.append({
             "glyph": index, "offset": len(payload),
             "byteCount": len(bitmap), "rowByteCount": source["rowByteCount"],
-            "pixelWidth": source["width"], "pixelHeight": source["height"],
+            "pixelWidth": 7, "pixelHeight": source["height"],
         })
         payload.extend(bitmap)
     instance = {
@@ -118,9 +127,10 @@ def generate(output: Path) -> None:
     ref.write_text(output / "PiCompactBitmapPayload.generated.swift", bitmap)
     ref.write_json(output / "generation-manifest.json", {
         "generator": "scripts/text-resources/generate-pi-compact-resources.py",
-        "source": "ThirdParty/Terminus-4.49.1/ter-u12n.bdf",
+        "source": "ThirdParty/Terminus-4.49.1/ter-u14n.bdf",
         "sourceSHA256": SOURCE_SHA256,
         "licenseSHA256": LICENSE_SHA256,
+        "derivedCellWidth": 7,
         "resourceID": ref.sha256(manifest),
         "bitmapPayloadSHA256": ref.sha256(payload),
         "canonicalManifestByteCount": len(manifest),

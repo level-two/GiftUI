@@ -447,6 +447,25 @@ All 23 Pi semantic join tests, resource regeneration, and governance
 validation passed. The previous Spleen hashes are superseded; independent
 pixel review and locked RGB565 references remain pending.
 
+### Pi 7×14 font candidate (2026-09-27)
+
+The 6×12 Terminus trial retained Spleen's exact lowercase `a` bitmap. A
+native Terminus 8×14 trial made `a` and `e` clearer but clipped the longer
+`RUNNING` status beside the title. The selected Pi resource derives a 7×14
+cell from that 8×14 bitmap: the generator verifies the rightmost column is
+empty in all 96 selected glyphs, then reduces cell width and advance without
+removing ink. The full title, `RUNNING` status, controls, and `ERR` are
+visible in the canonical 240×240 raster. The obsolete 6×12 source was
+removed. The idle, running, and diagnostic RGB565 SHA-256 values are
+`c2ed068bc9f3f3dc4ab45dc567c5196608b4783fe9ddcd62ae0b023578494ddb`,
+`9a6b33cd8743835cf409cfaf9930cce88becc58e51894f1f67c979f036d4c574`,
+and `36064f9a95d4c2d5aefa4495dcfdd15f4c1521b9977b6645dd8e8b6089f57c88`.
+All 23 Pi semantic join tests passed. The full host-native raster command
+passed for all eight states, matching 120 workload frames, seven initial/action
+frames, and 12 actions, plus startup-display, later-display, and
+oversized-input fault injections. The earlier 6×12 hashes are superseded.
+Independent pixel review and locked RGB565 references remain pending.
+
 ### T7.8 fault disposition (2026-09-27)
 
 `T7.8` host-native fixture checks pass at revision `a069ba92`. The Pi runner

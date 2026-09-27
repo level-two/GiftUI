@@ -1,15 +1,16 @@
 {
-  "bitmapPayloadSHA256": "9fb2d693d1a98e192aea27f4efdc4f168b7f83936b88fbfdb2678b2211ff5a3d",
+  "bitmapPayloadSHA256": "78f17115de401a8e236583f7351cf5624b00337144a0e4758235904e7e0e5e00",
   "canonicalManifestByteCount": 4315,
+  "derivedCellWidth": 7,
   "generator": "scripts/text-resources/generate-pi-compact-resources.py",
   "glyphCount": 96,
   "licenseSHA256": "c14f8d795784a547ea35e69c51dee2957bb71a1cdb492ec5321e4b61d3d97630",
   "mappingCount": 96,
   "outputs": {
-    "PiCompactBitmapPayload.generated.swift": "3ed31673d646b934a7fa61915280e5352ff5ee33166c8344386b69906c5f6c45",
-    "PiCompactCatalogue.generated.swift": "90bed8fb4cbed77b257607857d321779c366fcddf66b06e05fe310e4b554f3c9"
+    "PiCompactBitmapPayload.generated.swift": "6d9ae291e7c780cf049010cd8912742ccc36f8b89452db6132086776e0b7bca3",
+    "PiCompactCatalogue.generated.swift": "0f8900aaf2433a975276603039af1d4200759ec081394e193d149656d78c0c89"
   },
-  "resourceID": "ad582a7ebba89b876b3e86de5612b60b4f31983bacacd30c1f126a3c2aa3e35d",
-  "source": "ThirdParty/Terminus-4.49.1/ter-u12n.bdf",
-  "sourceSHA256": "9e942cad8173fddf34fc8a784e9ec6d2d4cfb8b82363faf65f43b236fe2f5a99"
+  "resourceID": "ad19519fb308dc4fe0efbd2bb6b05a6a4d7d59860fbb7d1f14c0a9d9203308c8",
+  "source": "ThirdParty/Terminus-4.49.1/ter-u14n.bdf",
+  "sourceSHA256": "fb6aaad8bebe5ee824e914635b3f4e17a82f1673dea37f083e9adde285d7de32"
 }
