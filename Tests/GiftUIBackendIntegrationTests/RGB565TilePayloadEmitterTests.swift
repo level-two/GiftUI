@@ -834,7 +834,10 @@ private func parseStrokeOperation(
         surfaceOrigin: surfaceOrigin,
         clip: clipRect,
         points: stride(from: 0, to: points.count, by: 2).map {
-            Point(x: Int32(points[$0]), y: Int32(points[$0 + 1]))
+            Point(
+                x: Int32(points[$0]) + surfaceOrigin.x,
+                y: Int32(points[$0 + 1]) + surfaceOrigin.y
+            )
         },
         subpaths: try stride(from: 0, to: subpaths.count, by: 2).map {
             guard

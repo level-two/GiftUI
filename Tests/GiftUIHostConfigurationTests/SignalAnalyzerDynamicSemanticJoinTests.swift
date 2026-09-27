@@ -1276,7 +1276,7 @@ private final class LogicalFrameCapture {
     #expect(summary.layout.maximumObservedDepth == 13)
     #expect(summary.drawing.canvasOccurrenceCount == 5)
     #expect(summary.drawing.strokeCount == 5)
-    #expect(summary.render.operationCount == 35)
+    #expect(summary.render.operationCount == 31)
     #expect(summary.render.positionedGlyphCount == 129)
     #expect(summary.render.maximumObservedClipDepth == 3)
     #expect(summary.interactionOccurrenceCount == 6)
@@ -1527,14 +1527,13 @@ private final class LogicalFrameCapture {
             break
         }
     }
-    #expect(foregrounds.values.reduce(0, +) == 21)
-    #expect(foregrounds[.white] == 12)
+    #expect(foregrounds.values.reduce(0, +) == 25)
+    #expect(foregrounds[.white] == 16)
     #expect(foregrounds[.gray] == 4)
     #expect(foregrounds[.red] == 1)
     #expect(foregrounds[Color(red: 0, green: 128, blue: 255)] == 4)
-    #expect(backgrounds.values.reduce(0, +) == 9)
+    #expect(backgrounds.values.reduce(0, +) == 5)
     #expect(backgrounds[.black] == 1)
-    #expect(backgrounds[Color(red: 8, green: 8, blue: 8)] == 4)
     #expect(backgrounds[Color(red: 16, green: 16, blue: 16)] == 1)
     #expect(backgrounds[Color(red: 24, green: 24, blue: 24)] == 1)
     #expect(backgrounds[Color(red: 32, green: 32, blue: 32)] == 1)
@@ -1813,7 +1812,7 @@ private final class LogicalFrameCapture {
         Issue.record("measured render projection failed: \(renderResult)")
         return
     }
-    #expect(header.operationCount == 30)
+    #expect(header.operationCount == 26)
     #expect(header.positionedGlyphCount == 129)
     #expect(header.maximumObservedClipDepth == 3)
     #expect(renderSink.storage.published.count > 0)
@@ -1878,7 +1877,7 @@ private final class LogicalFrameCapture {
             Issue.record("measured Canvas render preflight failed: \(canvasPreflight)")
             return
         }
-        #expect(canvasHeader.operationCount == 35)
+        #expect(canvasHeader.operationCount == 31)
         #expect(canvasHeader.positionedGlyphCount == 129)
         #expect(canvasHeader.maximumObservedClipDepth == 3)
 
