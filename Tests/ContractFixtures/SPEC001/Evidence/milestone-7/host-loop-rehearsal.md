@@ -503,3 +503,42 @@ bash scripts/contracts/check-spec-001-pi-host-native-faults.sh
 scripts/nrf52840/build.sh --application signal-analyzer-static
 bash scripts/contracts/check-spec-001-nrf-host-native-faults.sh
 ```
+
+### Waveform and grid raster correction (2026-09-27)
+
+Visual review of the candidate running frames found no plotted trace pixels
+and only fragments of the grid. The Drawing plans held all five strokes,
+but `RasterStrokeCoverage` added each Canvas origin to points already
+translated by the Drawing plan. This contradicted SPEC-012's coordinate
+contract and moved all four traces outside their clips. The rasterizer now
+uses the stored surface points directly; its nonzero-origin golden vector
+checks this boundary. The four opaque channel-row fills also covered the
+grid. The portable view now uses a 120×96 grid over the trace area and a
+row foreground style in place of those fills. The Static generated modifier
+payloads and focused expectations were updated without changing the 96
+normal or 98 diagnostic scope topology.
+
+The independent macOS Dynamic and Static 139-record references were rerun.
+Their 127 frame records differ from the previous references only by the four
+removed fill operations (`34` to `30` for normal frames); actions, model
+state, Drawing point counts, and ordering were unchanged. New Pi and nRF
+ordered target traces match those references exactly through the existing
+behavior comparators. Both candidate gates pass all eight frames and their
+fault suites. The nRF `write-next` fault now locates the next frame from the
+measured first-frame write count instead of a stale fixed count. The corrected
+firmware built for `nrf52840dk/nrf52840` with ARMv7E-M hard-float checks;
+reported RAM and flash are 196,480 and 241,588 bytes.
+
+The raster renderer now checks the running RGB565 surface for two visible
+levels in each of four traces, 11 vertical grid lines, and one center line.
+The [replacement candidate images and hashes](raster-candidates/README.md)
+supersede the earlier images and all earlier RGB565 values in this record.
+Independent visual review and locked exact-pixel references remain pending,
+so `T7.7` and the registered `T7.9` gate remain open. These are host-native
+fixture findings, not connected Pi or nRF display evidence.
+
+The final `scripts/test.sh` run passed the root tests, SPEC-001, SPEC-010, and
+SPEC-015 drivers, but its aggregate gate exited with 12 failures in other
+registered SPEC drivers. The SPEC-002 migration inventory check passes when
+run directly; the aggregate failures need separate investigation and are not
+counted as passing evidence for this correction.

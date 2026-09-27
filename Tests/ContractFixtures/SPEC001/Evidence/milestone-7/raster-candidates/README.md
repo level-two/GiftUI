@@ -18,21 +18,24 @@ the clearer lowercase shapes while allowing the full `RUNNING` status to
 fit beside the title. The shared 16 px Inter resource remains in use on nRF.
 The raw RGB565 captures preserve identical title and control pixel regions
 across all eight states on both targets. The raster command checks those
-regions directly and fails if they change or are empty.
+regions directly and fails if they change or are empty. It also verifies four
+two-level running traces, 11 visible vertical grid lines, and the horizontal
+center line from the raw pixels.
 Independent review and locked RGB565 references are pending. These images must
 not be used as passing oracles.
 
 ## Candidate identity for visual review
 
 Both candidate commands in [the rehearsal record](../host-loop-rehearsal.md)
-passed at clean revision `8e45792f1937c9433b9923d3398caea623cbde2e`.
+passed with the rendering sources committed in `5cd97720`. Their images were
+captured before this evidence update was committed.
 The Pi host binary SHA-256 was
-`1290531102d015fcec49eff301204b5c989e05f8c2c62d3fc0e4dbb12e6b0f02`;
+`a24d1e1fcb52f51bb8c798f93ce8ae187a5867ed35460ede6f1e04b1b5cecb1d`;
 the nRF host binary SHA-256 was
-`6477fff2cc999b0567c9135db660ea66cc752d1de1e875051ee372c8136bd381`.
+`0038a392cd2cc89f80d9f89ad4c42ad2f0faca49eece4a7ea48aff8ecb468ad2`.
 The Pi and nRF source identities recorded by the runner were respectively
-`7e8c7de196af27300bf91d2eeff9a9e31e534194274b44edd386c03c37dae654`
-and `a1dbc89d11dd078f685cafed6ab532acb16f68d559ba38c970e97343d88c8aad`.
+`34efe2c4526129e2ee0e1dd92582dac7b3e8281e70774a81f5aceaf0ff176ed1`
+and `9723c47f132a32dca3b37696c0cbb0211e121ae221e73e708087ee07cee07213`.
 Every committed state PNG was byte-equal to the freshly rendered candidate.
 
 | State | Pi logical (240×240) | PiScreen mapping (480×320) | nRF (480×320) |
@@ -50,14 +53,14 @@ The corresponding raw RGB565 SHA-256 values are:
 
 | State | Pi logical | nRF |
 | --- | --- | --- |
-| Idle | `c2ed068bc9f3f3dc4ab45dc567c5196608b4783fe9ddcd62ae0b023578494ddb` | `2870679886374dcb4d157d3d667dabe6abcf2458acabe35ff33912f1a905b612` |
-| Four traces running | `9a6b33cd8743835cf409cfaf9930cce88becc58e51894f1f67c979f036d4c574` | `94192ca8f56d5c0abd4e5f390ae4d3ed554399c5f253ab830edd00e92b6fcda0` |
-| Stopped | `56a03c4d76f38cfa331fef0fcd60d139fddbcf1893b2c878e1c2de0f0e1abc91` | `fdf3485afe902b0f129da97dc1f09d833bfcfc7b0d4a2b9fddd72b74b8adecd0` |
-| Cleared | `b3a4af513ad7c41f77f4ad3f545c493075346cf6dae99c0f7b36a4296c2bd7ce` | `6b242478b73c0521eeecbef6b330fb73be36e12aec0a9e71680209b978885ef6` |
-| One-second window | `68f321d2dfe369fd2a5d7bdd71336d910f492ed08f81a6187c00256d875200d3` | `d5e9966f5a70e189124fd03a278b2952fc245a2c7b0402de9326bb36713a8e18` |
-| Five-second window | `31310f2d26a0c2fdc08bd17f9beeec37194a7c32617009c9155d9f53cc72f4f6` | `a9b800f0f0964fba8918360e1c0ea06c6f939f39da5675d042a7d7661a827e53` |
-| Two-second window | `b3a4af513ad7c41f77f4ad3f545c493075346cf6dae99c0f7b36a4296c2bd7ce` | `6b242478b73c0521eeecbef6b330fb73be36e12aec0a9e71680209b978885ef6` |
-| Diagnostic | `36064f9a95d4c2d5aefa4495dcfdd15f4c1521b9977b6645dd8e8b6089f57c88` | `a4af033a54401e7410bbb7873d4d731772a3c874182034a90e5888e58549b964` |
+| Idle | `cf8eb7ca9ae49b36ca31c85223d01ffb61e5cb6b8e711c33b15befc9358129be` | `8438ae379b845a253087043e0f04f2f493bcf0b1762d3cd62e2c6114825b85ed` |
+| Four traces running | `ed9f3db3ca0cc56e126689989d7cd477dda985f9395a624e1fd732f0277e9487` | `c66b1b181f7d54e05d46f4956494e3f537cea4d2a6ead94b9065ecfd86e471dc` |
+| Stopped | `747916b59f984d4d2eea57b34ac3a31970f06c915d316ae120cf3da91f47952a` | `823326c348d126ed383fcb8be664de70ee1920b66d797ed0fdfff54f53561dc0` |
+| Cleared | `382c5791568decc349e3e8cc9230bafe209855326da6e6264e1fcdbc370b1c25` | `784c314bbb4f62c2b61514db8c40dd7bce738615e320bbdad011a43ca4c8536c` |
+| One-second window | `b2b52ea32748e6cf147c090f5a8d3704ed94faf5bbc9c8b7108529d9de3364d7` | `71baeffffa9b61041962a806f5ca28977a9b21b85faef5aba9e1c55393324c9b` |
+| Five-second window | `783c525168c38f116b0f9a6a5140a2abfa13bfe5277aa3d8914aadb1837ce3c4` | `57f8ede130aed5b7e35c5177ab6710ad4737bea65ccd4983b3060508a5e485b9` |
+| Two-second window | `382c5791568decc349e3e8cc9230bafe209855326da6e6264e1fcdbc370b1c25` | `784c314bbb4f62c2b61514db8c40dd7bce738615e320bbdad011a43ca4c8536c` |
+| Diagnostic | `16771dde9ecae28aa97f45136fdf4257f9e0c4bfbb5cd80eaa0756b7978e48da` | `86947390c91f9cf960abb0eda8629e72c34013f175a4a0384d86562e8a27ffc6` |
 
 The cleared and two-second-window rasters match because returning to the
 default two-second scale with no captured traces restores the same visible
