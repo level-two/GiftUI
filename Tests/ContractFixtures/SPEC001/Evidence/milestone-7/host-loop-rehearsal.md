@@ -325,3 +325,12 @@ The macOS Dynamic and Static executables still call
 tests above provide the independent source, admission, presentation and
 interaction references used for T7.6. The complete host-native behavior and
 ordered comparison gate now passes. Exact pixel references remain T7.7.
+
+The final `scripts/test.sh macos-static` run at revision `6963e1a7` passed
+governance, formatting, both SPEC-013 Static profile compile checks, root
+Swift tests, the diagnostic-buffer check, and the registered SPEC-001 and
+SPEC-015 macOS Static drivers. The aggregate gate exited 1 because 12
+other-specification drivers (SPEC-002 through SPEC-009 and SPEC-011 through
+SPEC-014) failed their existing boundary, resource, inventory, or integration
+checks. The exact check list and logs are in
+`.build/test-reports/macos-static/`; none is a T7.6 trace comparison failure.
