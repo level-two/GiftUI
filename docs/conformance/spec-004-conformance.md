@@ -25,6 +25,11 @@ superseded_by: null
 > conformance for the approved 240 x 320 `KMRTM24024-SPI` fixture; affected
 > criteria require new evidence.
 
+The [replacement fixture evidence](../../Tests/ContractFixtures/SPEC004/Evidence/replacement-240x320-fixture.md)
+records the new exact capability arithmetic, normalized profile, and resource
+probe. The original table below remains the historical review; host and
+connected-device conformance for the replacement target remain open.
+
 ## Review Scope
 
 - Governing contract: [SPEC-004 Capability Contribution and Resolution](../specs/spec-004-capability-contribution-and-resolution.md), status `implementing`, pre-report SHA-256 `e7c6e526c9543c3dec38e1890d82aae61d924347886dc7a7ca5a3388631b80d8`.

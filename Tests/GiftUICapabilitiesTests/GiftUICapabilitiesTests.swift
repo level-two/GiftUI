@@ -358,7 +358,7 @@ final class GiftUICapabilitiesTests: XCTestCase {
 
     func testRasterArithmeticProducesExactNRFUsage() throws {
         let outcome = try evaluateArithmetic(
-            width: 480,
+            width: 240,
             height: 320,
             kind: .tiled,
             encoding: .rgb565BigEndian,
@@ -366,18 +366,18 @@ final class GiftUICapabilitiesTests: XCTestCase {
             surfaceRegionHeight: 320,
             realizationAlignment: 2,
             surfaceAlignment: 2,
-            ceiling: 3_840
+            ceiling: 1_920
         )
         XCTAssertEqual(
             outcome,
             .available(
                 RasterPresentationArithmeticValue(
                     effectiveRowAlignment: 2,
-                    regionExtent: try XCTUnwrap(CapabilityExtent(width: 480, height: 4)),
-                    rowBytes: .init(rawValue: 960),
-                    requiredRasterBytes: .init(rawValue: 3_840),
-                    requiredPayloadBytes: .init(rawValue: 3_840),
-                    requiredInFlightBytes: .init(rawValue: 3_840)
+                    regionExtent: try XCTUnwrap(CapabilityExtent(width: 240, height: 4)),
+                    rowBytes: .init(rawValue: 480),
+                    requiredRasterBytes: .init(rawValue: 1_920),
+                    requiredPayloadBytes: .init(rawValue: 1_920),
+                    requiredInFlightBytes: .init(rawValue: 1_920)
                 )))
     }
 

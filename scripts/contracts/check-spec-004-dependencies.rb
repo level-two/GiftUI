@@ -67,11 +67,19 @@ expected_capability_consumers.each do |name|
     sources.match?(/^import GiftUIFailureDiagnostics$/)
 end
 
-production_resolver_calls = Dir.glob(File.join(root, "Sources", "**", "*.swift"))
+production_resolver_sites = Dir.glob(File.join(root, "Sources", "**", "*.swift"))
   .reject { |path| path.include?("/GiftUICapabilities/") || path.include?("/SignalAnalyzerPresetHarness/") }
-  .sum { |path| File.read(path).scan(/RasterPresentationResolver\.resolve\(/).length }
-fail_check("production capability resolution must have exactly one host call site") unless
-  production_resolver_calls == 1
+  .each_with_object({}) do |path, sites|
+    count = File.read(path).scan(/RasterPresentationResolver\.resolve\(/).length
+    sites[path.delete_prefix("#{root}/")] = count if count.positive?
+  end
+expected_resolver_sites = {
+  "Sources/GiftUIHostConfiguration/CheckedMVPHostConfigurationValidator.swift" => 1,
+  "Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFAssembly.swift" => 1,
+  "Sources/SignalAnalyzerTargetHost/DynamicSignalAnalyzerPiAssembly.swift" => 1,
+}
+fail_check("production capability resolution sites differ from host owners") unless
+  production_resolver_sites == expected_resolver_sites
 
 product = products["GiftUICapabilities"] || fail_check("GiftUICapabilities product is missing")
 fail_check("GiftUICapabilities product must be a library") unless product["type"].key?("library")

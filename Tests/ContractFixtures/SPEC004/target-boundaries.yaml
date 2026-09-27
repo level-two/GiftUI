@@ -73,6 +73,40 @@ active:
       - SignalAnalyzerDomain
       - SignalAnalyzerHost
       - SignalAnalyzerPresentation
+  SignalAnalyzerTargetHost:
+    type: regular
+    dependencies:
+      - GiftUI
+      - GiftUIBackendIntegration
+      - GiftUICapabilities
+      - GiftUIDisplayCore
+      - GiftUIDrawing
+      - GiftUIExecution
+      - GiftUIHostConfiguration
+      - GiftUIInteraction
+      - GiftUILayout
+      - GiftUIObservableState
+      - GiftUIRasterCore
+      - GiftUIReferenceTextResources
+      - GiftUIRenderCore
+      - GiftUIRuntimeCore
+      - GiftUIRuntimeDynamic
+      - GiftUIRuntimeStatic
+      - GiftUISemanticCore
+      - GiftUISurfaceCore
+      - GiftUITextResources
+      - SignalAnalyzerData
+      - SignalAnalyzerDomain
+      - SignalAnalyzerHost
+      - SignalAnalyzerPresentation
+  GiftUIPlatformRaspberryPi:
+    type: regular
+    dependencies:
+      - GiftUI
+      - GiftUICapabilities
+      - GiftUIDisplayCore
+      - GiftUIFailureCore
+      - GiftUISurfaceCore
 forbidden_capability_imports:
   - GiftUI
   - GiftUIFailureCore

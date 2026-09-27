@@ -48,6 +48,12 @@ Record new evidence in the conformance report; preserve the old 3,840-byte
 result as historical evidence. This work precedes the SPEC-014 and SPEC-015
 replacement joins in the [SPEC-001 integration sequence](spec-001-implementation-plan.md#2026-09-27-nrf-display-replacement).
 
+The replacement fixture, exact arithmetic test, normalized corpus, and
+1,920-byte resource harness are updated. The dependency inventory now includes
+both current target hosts and checks the three named production resolver
+sites. Four-profile contract reports for this slice are recorded in the
+[replacement fixture evidence](../../Tests/ContractFixtures/SPEC004/Evidence/replacement-240x320-fixture.md).
+
 ## Authority and Scope
 
 The governing contract is approved

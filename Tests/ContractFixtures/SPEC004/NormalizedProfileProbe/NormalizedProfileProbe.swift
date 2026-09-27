@@ -38,24 +38,24 @@ public enum NormalizedProfileProbe {
             expectedRowBytes: 480, expectedBytes: 7_680,
             expectedKind: .tiled, expectedEncoding: .rgb565BigEndian
         ) == 2,
-        // corpus-row: configuration-nrf52840-tft|configuration|480,320,2,1|available,31,480,320,480,4,960,1,1,1,1,2,3840,3840,1,3840
+        // corpus-row: configuration-nrf52840-tft|configuration|240,320,2,1|available,31,240,320,240,4,480,1,1,1,1,2,1920,1920,1,1920
         // corpus-code: 3
         availableCode(
             resolution(
-                width: 480, height: 320, kind: .tiled,
+                width: 240, height: 320, kind: .tiled,
                 encoding: .rgb565BigEndian, regionHeight: 4,
-                maximumBytes: 3_840
+                maximumBytes: 1_920
             ),
-            expectedExtent: (480, 320), expectedRegionHeight: 4,
-            expectedRowBytes: 960, expectedBytes: 3_840,
+            expectedExtent: (240, 320), expectedRegionHeight: 4,
+            expectedRowBytes: 480, expectedBytes: 1_920,
             expectedKind: .tiled, expectedEncoding: .rgb565BigEndian
         ) == 3,
-        // corpus-row: configuration-nrf52840-full-rgba-negative|configuration|480,320,1,2,3840|unavailable,insufficient-capacity,2,614400,3840
+        // corpus-row: configuration-nrf52840-full-rgba-negative|configuration|240,320,1,2,1920|unavailable,insufficient-capacity,2,307200,1920
         // corpus-code: 5
         unavailableCode(resolution(
-            width: 480, height: 320, kind: .fullSurface,
+            width: 240, height: 320, kind: .fullSurface,
             encoding: .rgba8888, regionHeight: 320,
-            maximumBytes: 3_840
+            maximumBytes: 1_920
         )) == 5 else {
             return 0
         }
@@ -67,8 +67,8 @@ public enum NormalizedProfileProbe {
     ) -> UInt32 {
         guard resolution == .unavailable(.insufficientCapacity(
             domain: .raster,
-            required: .init(rawValue: 614_400),
-            available: .init(rawValue: 3_840)
+            required: .init(rawValue: 307_200),
+            available: .init(rawValue: 1_920)
         )) else {
             return 0
         }
@@ -103,7 +103,7 @@ public enum NormalizedProfileProbe {
             return 0
         }
         if expectedExtent.0 == 640 { return 1 }
-        if expectedExtent.0 == 240 { return 2 }
+        if expectedExtent == (240, 240) { return 2 }
         return 3
     }
 

@@ -214,13 +214,13 @@ require(
 require(
     "arithmetic-nrf52840-exact-tile",
     evaluate(
-        width: 480, height: 320, kind: .tiled, encoding: .rgb565BigEndian,
+        width: 240, height: 320, kind: .tiled, encoding: .rgb565BigEndian,
         realizationRegionHeight: 4, surfaceRegionHeight: 320,
-        realizationAlignment: 2, surfaceAlignment: 2, ceiling: 3_840
+        realizationAlignment: 2, surfaceAlignment: 2, ceiling: 1_920
     ),
-    value(alignment: 2, width: 480, height: 4, rowBytes: 960, usage: 3_840),
-    input: "480,320,2,1,4,320,2,2",
-    result: "available,2,480,4,960,3840,3840,3840"
+    value(alignment: 2, width: 240, height: 4, rowBytes: 480, usage: 1_920),
+    input: "240,320,2,1,4,320,2,2",
+    result: "available,2,240,4,480,1920,1920,1920"
 )
 require(
     "arithmetic-tiled-logical-height-minimum",
@@ -392,16 +392,16 @@ private func resolverValues(
     encodings: CanonicalPixelEncodingSet = .rgb565BigEndian,
     fullRegionHeight: UInt16 = 4
 ) -> (RasterPresentationRequirement, [RasterPresentationContribution]) {
-    guard let extent = CapabilityExtent(width: 480, height: 320),
+    guard let extent = CapabilityExtent(width: 240, height: 320),
           let requirement = RasterPresentationRequirement(
               operations: allOperations,
               extent: extent,
               operationStream: .synchronousBorrowedOneShot,
               acceptedEncodings: encodings,
               acceptedSubmissionLifetimes: .synchronousBorrow,
-              maximumRasterBytes: .init(rawValue: 3_840),
-              maximumPayloadBytes: .init(rawValue: 3_840),
-              maximumInFlightBytes: .init(rawValue: 3_840),
+              maximumRasterBytes: .init(rawValue: 1_920),
+              maximumPayloadBytes: .init(rawValue: 1_920),
+              maximumInFlightBytes: .init(rawValue: 1_920),
               absence: .required
           ),
           let producer = RenderProducerContribution(
@@ -415,11 +415,11 @@ private func resolverValues(
               encodings: encodings,
               producedSubmissionLifetimes: .synchronousBorrow,
               maximumExtent: extent,
-              maximumRegionWidth: 480,
+              maximumRegionWidth: 240,
               maximumRegionHeight: fullRegionHeight,
               rowByteAlignment: 2,
-              maximumRasterBytes: .init(rawValue: 3_840),
-              maximumPayloadBytes: .init(rawValue: 3_840)
+              maximumRasterBytes: .init(rawValue: 1_920),
+              maximumPayloadBytes: .init(rawValue: 1_920)
           ),
           let tiled = RasterRealizationContribution(
               kind: .tiled,
@@ -428,11 +428,11 @@ private func resolverValues(
               encodings: encodings,
               producedSubmissionLifetimes: .synchronousBorrow,
               maximumExtent: extent,
-              maximumRegionWidth: 480,
+              maximumRegionWidth: 240,
               maximumRegionHeight: 4,
               rowByteAlignment: 2,
-              maximumRasterBytes: .init(rawValue: 3_840),
-              maximumPayloadBytes: .init(rawValue: 3_840)
+              maximumRasterBytes: .init(rawValue: 1_920),
+              maximumPayloadBytes: .init(rawValue: 1_920)
           ),
           let backend = RasterBackendContribution(primary: full, alternate: tiled),
           let surface = SurfaceDisplayContribution(
@@ -440,16 +440,16 @@ private func resolverValues(
               encodings: encodings,
               acceptedSubmissionLifetimes: .synchronousBorrow,
               handoffs: .synchronous,
-              maximumRegionWidth: 480,
+              maximumRegionWidth: 240,
               maximumRegionHeight: 320,
               rowByteAlignment: 2,
               maximumInFlightCount: 1,
-              maximumInFlightBytes: .init(rawValue: 3_840)
+              maximumInFlightBytes: .init(rawValue: 1_920)
           ),
           let policy = RasterPresentationPolicy(
-              maximumRasterBytes: .init(rawValue: 3_840),
-              maximumPayloadBytes: .init(rawValue: 3_840),
-              maximumInFlightBytes: .init(rawValue: 3_840),
+              maximumRasterBytes: .init(rawValue: 1_920),
+              maximumPayloadBytes: .init(rawValue: 1_920),
+              maximumInFlightBytes: .init(rawValue: 1_920),
               allowedRealizations: .tiled,
               allowedEncodings: encodings,
               preferredRealization: .tiled,
@@ -502,7 +502,7 @@ let (positiveRequirement, _) = resolverValues(
     producerStream: .synchronousBorrowedOneShot
 )
 let positiveArithmetic = value(
-    alignment: 2, width: 480, height: 4, rowBytes: 960, usage: 3_840
+    alignment: 2, width: 240, height: 4, rowBytes: 480, usage: 1_920
 )
 guard case let .available(arithmeticValue) = positiveArithmetic else {
     fatalError("invalid resolver arithmetic fixture")
@@ -526,7 +526,7 @@ verifyResolverPermutations(
     producerStream: .synchronousBorrowedOneShot,
     expected: .available(positiveEffective)
 )
-print("resolver-positive-role-permutations\tresolver\t24,1\tavailable,2,1,1,1,480,4,960,3840")
+print("resolver-positive-role-permutations\tresolver\t24,1\tavailable,2,1,1,1,240,4,480,1920")
 verifyResolverPermutations(
     producerStream: .incompatibleWithSynchronousBorrowedOneShot,
     expected: .unavailable(.operationStreamMismatch)
@@ -834,39 +834,39 @@ guard case let .available(piEffective) = piConfiguration,
 print("configuration-pi-screen\tconfiguration\t240,240,2,1\tavailable,31,240,240,240,16,480,1,1,1,1,2,7680,7680,1,7680")
 
 let nrfConfiguration = normalizedConfiguration(
-    width: 480, height: 320, kind: .tiled, encoding: .rgb565BigEndian,
-    regionHeight: 4, maximumBytes: 3_840
+    width: 240, height: 320, kind: .tiled, encoding: .rgb565BigEndian,
+    regionHeight: 4, maximumBytes: 1_920
 )
 guard case let .available(nrfEffective) = nrfConfiguration,
       nrfEffective.operations == allOperations,
-      nrfEffective.extent == CapabilityExtent(width: 480, height: 320),
-      nrfEffective.regionExtent == CapabilityExtent(width: 480, height: 4),
-      nrfEffective.rowBytes == .init(rawValue: 960),
+      nrfEffective.extent == CapabilityExtent(width: 240, height: 320),
+      nrfEffective.regionExtent == CapabilityExtent(width: 240, height: 4),
+      nrfEffective.rowBytes == .init(rawValue: 480),
       nrfEffective.operationStream == .synchronousBorrowedOneShot,
       nrfEffective.encoding == .rgb565BigEndian,
       nrfEffective.submissionLifetime == .synchronousBorrow,
       nrfEffective.handoff == .synchronous,
       nrfEffective.realization == .tiled,
-      nrfEffective.requiredRasterBytes == .init(rawValue: 3_840),
-      nrfEffective.requiredPayloadBytes == .init(rawValue: 3_840),
+      nrfEffective.requiredRasterBytes == .init(rawValue: 1_920),
+      nrfEffective.requiredPayloadBytes == .init(rawValue: 1_920),
       nrfEffective.inFlightCount == 1,
-      nrfEffective.requiredInFlightBytes == .init(rawValue: 3_840) else {
+      nrfEffective.requiredInFlightBytes == .init(rawValue: 1_920) else {
     fatalError("nRF normalized configuration mismatch")
 }
-print("configuration-nrf52840-tft\tconfiguration\t480,320,2,1\tavailable,31,480,320,480,4,960,1,1,1,1,2,3840,3840,1,3840")
+print("configuration-nrf52840-tft\tconfiguration\t240,320,2,1\tavailable,31,240,320,240,4,480,1,1,1,1,2,1920,1920,1,1920")
 
 let nrfFullRGBA = normalizedConfiguration(
-    width: 480, height: 320, kind: .fullSurface, encoding: .rgba8888,
-    regionHeight: 320, maximumBytes: 3_840
+    width: 240, height: 320, kind: .fullSurface, encoding: .rgba8888,
+    regionHeight: 320, maximumBytes: 1_920
 )
 guard nrfFullRGBA == .unavailable(.insufficientCapacity(
     domain: .raster,
-    required: .init(rawValue: 614_400),
-    available: .init(rawValue: 3_840)
+    required: .init(rawValue: 307_200),
+    available: .init(rawValue: 1_920)
 )) else {
     fatalError("nRF full-surface RGBA negative mismatch")
 }
-print("configuration-nrf52840-full-rgba-negative\tconfiguration\t480,320,1,2,3840\tunavailable,insufficient-capacity,2,614400,3840")
+print("configuration-nrf52840-full-rgba-negative\tconfiguration\t240,320,1,2,1920\tunavailable,insufficient-capacity,2,307200,1920")
 
 private struct OneShotBorrowState {
     var active = true
