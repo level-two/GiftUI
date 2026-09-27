@@ -124,7 +124,7 @@ int main(void)
             regions.profile, (uint32_t)regions.profile_bytes,
             regions.capture, (uint32_t)regions.capture_bytes) != 1u ||
         ili9486_tile_height() != 4u ||
-        ili9486_spi_segment_bytes() != 3840u) {
+        ili9486_spi_segment_bytes() != 1920u) {
         return 1;
     }
     return giftui_production_host_run();

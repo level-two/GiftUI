@@ -60,6 +60,13 @@ assembly, tile storage, display borrowing, region mapping, generated layout,
 and the preset runner; controller-specific firmware and connected validation
 remain separate steps.
 
+The firmware Static preset and caller-owned display regions also use the new
+geometry. A hardware-free `signal-analyzer-static` build linked with 194,240
+bytes of RAM and 235,620 bytes of flash and passed its symbol-size and
+ARMv7E-M/VFP checks. This is a geometry staging build: its existing ILI9486
+bridge command path is still present and cannot drive the connected module
+correctly. It is not a connected-image or display-conformance result.
+
 ## Authority and Scope
 
 The governing

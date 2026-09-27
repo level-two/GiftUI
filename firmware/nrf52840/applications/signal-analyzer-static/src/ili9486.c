@@ -235,8 +235,8 @@ int ili9486_initialize(void)
         goto fail;
     }
 
-    /* First board milestone: 480x320 landscape with BGR color order. */
-    const uint8_t memory_access = ILI9486_MADCTL_MV | ILI9486_MADCTL_BGR;
+    /* Geometry-only staging; controller identity and orientation remain unverified. */
+    const uint8_t memory_access = ILI9486_MADCTL_BGR;
     result = write_command(ILI9486_MADCTL, &memory_access, 1U);
     if (result != 0) {
         goto fail;
