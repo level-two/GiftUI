@@ -26,6 +26,18 @@ diagnostic is visible, while longer diagnostics are clipped by the viewport.
 The candidate files are not reviewed pixel references. They remain under
 `.build/contract-generated/spec-001/nrf-raster-gate/`.
 
+The compact layout source revision `e476c138` built again for
+`nrf52840dk/nrf52840` and passed the nRF host-native raster candidate gate,
+108 focused host tests, the registered SPEC-015 nRF cross-build profile, and
+the four-preset comparison. Its ELF SHA-256 is
+`38aaa11515c992bdd1e48c0c711ccd9842269e97b4e42a5543382a670f5022c1`;
+its HEX SHA-256 is
+`67fef78c96844fe6530d0e25d0b765ce3c8d16b3945be20a77c79ea2000d9211`.
+That HEX was flashed through `scripts/nrf52840/flash.sh --application
+signal-analyzer-static --no-build` with the J-Link runner. The board reset
+after flashing. A fresh physical photograph is still needed to confirm
+orientation and mirror correction on the panel.
+
 Physical verification of the new orientation, readable text, full-panel clear,
 touch alignment, all six controls, frame cadence, and stack high water remains
 open pending a new connected observation. No connected conformance claim or
