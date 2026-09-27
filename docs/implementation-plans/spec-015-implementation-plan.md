@@ -48,7 +48,11 @@ descriptor were regenerated from source identity
 `08cb1c6afd8825e036d1ba8455a3ed8cf8ff59076f4d796f943deffc110f416a`.
 The generator `--check` passed and twelve generated-preset tests passed. The
 3,840-byte static admission queue and sealed batch remain separate from the
-display tile. Target-host and firmware joins remain subsequent work in the
+display tile. The target-host and firmware joins are implemented for
+hardware-free execution. The four profile drivers and normalized comparison
+passed with the new geometry; see the
+[240×320 comparison evidence](../../Tests/ContractFixtures/SPEC015/Evidence/milestone-6/240x320-four-preset-comparison.md).
+Connected controller, wiring, touch, and display verification remain in the
 SPEC-001 sequence.
 
 ## Authority and Scope
