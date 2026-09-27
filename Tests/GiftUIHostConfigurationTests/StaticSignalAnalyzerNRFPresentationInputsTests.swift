@@ -15,6 +15,143 @@ import SignalAnalyzerPresentation
 import SignalAnalyzerTargetHost
 import Testing
 
+@Test func macOSStaticReferencePresentsGeneratedHierarchyAtApprovedExtent() throws {
+    let preset = GeneratedSignalAnalyzerPresets.macOSStatic()
+    #expect(preset.raster.logicalWidth == 320)
+    #expect(preset.raster.logicalHeight == 240)
+    withStaticNRFPresentationInputStorage { storage in
+        guard case .valid(let report) = StaticSignalAnalyzerNRFAssembly.validate(),
+            let metadata = StaticSignalAnalyzerNRFGeneratedMetadataFactory.make(
+                assemblyReport: report,
+                canvasTable: StaticSignalAnalyzerNRFCanvasCallableTable()
+            ),
+            let regions = StaticSignalAnalyzerNRFProfileRegions(storage: storage),
+            regions.byteCounts == preset.expectedStorageBytes,
+            let root = preset.staticRoot,
+            let identity = StaticStructuralIdentity(rawValue: root.structuralIdentity),
+            var profile = StaticRuntimeProfileBinding(
+                structuralIdentity: identity,
+                limits: preset.runtimeLimits,
+                regions: consume regions,
+                metadata: consume metadata
+            )
+        else {
+            Issue.record("macOS Static fixed profile did not construct")
+            return
+        }
+        let context = ExecutionContext(
+            cycle: RunCycleID(rawValue: 1),
+            semanticRevision: SemanticRevision(rawValue: 1),
+            candidateFrame: nil,
+            phase: .admitting
+        )
+        #expect(profile.beginOpportunity(context: context) == nil)
+        let model = staticNRFPresentationInputModel()
+        StaticSignalAnalyzerNRFGeneratedPresentationInputFactory.withInputs(model: model) {
+            inputs in
+            #expect(inputs.stageGeneratedSemanticCandidate(in: &profile) != nil)
+            #expect(inputs.publishGeneratedSemanticCandidate(revision: 1, in: &profile) != nil)
+            let presented = profile.withPresentationRegions {
+                semanticRegion, layoutRegion, renderRegion, pathRegion, planRegion in
+                guard
+                    let semantic = StaticSignalAnalyzerNRFUTF8LayoutView(in: semanticRegion),
+                    var layoutWorkspace = StaticSignalAnalyzerNRFLayoutWorkspace(
+                        scopes: layoutRegion, text: renderRegion
+                    ),
+                    var layoutSink = StaticSignalAnalyzerNRFResolvedLayoutStorage(
+                        scopes: layoutRegion, text: renderRegion
+                    ),
+                    let proposal = ProposedSize(width: 320, height: 240)
+                else { return false }
+                guard
+                    case .success(let layoutSummary) = layout(
+                        semantic: semantic,
+                        metrics: GiftUIReferenceTextResources.targetPackage.metrics,
+                        proposal: proposal,
+                        limits: preset.runtimeLimits.layout,
+                        workspace: &layoutWorkspace,
+                        sink: &layoutSink
+                    )
+                else { return false }
+                guard
+                    var source = StaticSignalAnalyzerNRFCanvasInvocationSource(
+                        semanticRegion: semanticRegion, inputs: inputs
+                    ),
+                    var drawing = StaticSignalAnalyzerNRFDrawingWorkspace(
+                        pathRegion: pathRegion,
+                        planRegion: planRegion,
+                        capacity: preset.runtimeLimits.drawing
+                    )
+                else { return false }
+                guard
+                    case .success(let drawingSummary) = CanvasPlanProducer.derive(
+                        source: &source,
+                        layout: layoutSink.renderView,
+                        executionContext: ExecutionContext(
+                            cycle: RunCycleID(rawValue: 1),
+                            semanticRevision: SemanticRevision(rawValue: 1),
+                            candidateFrame: nil,
+                            phase: .deriving
+                        ),
+                        limits: preset.runtimeLimits.drawing,
+                        workspace: &drawing
+                    ), source.allReleased
+                else { return false }
+                guard
+                    let render = StaticSignalAnalyzerNRFUTF8RenderView(
+                        in: semanticRegion, renderSnapshotVersion: 1
+                    ),
+                    let bounds = Rect(
+                        origin: Point(x: 0, y: 0),
+                        size: Size(width: 320, height: 240)!
+                    ),
+                    var renderWorkspace = StaticSignalAnalyzerNRFRenderWorkspace(
+                        region: renderRegion,
+                        capacity: preset.runtimeLimits.render,
+                        structuralCapacity: preset.runtimeLimits.renderWorkspace
+                    )
+                else { return false }
+                let preflight = CanvasRenderProducer.preflight(
+                    semantic: render,
+                    layout: layoutSink.renderView,
+                    textMetrics: GiftUIReferenceTextResources.targetPackage.metrics,
+                    drawingPlan: drawing,
+                    surfaceBounds: bounds,
+                    damageMode: .initializeCompleteSurface,
+                    rootForeground: .white,
+                    limits: preset.runtimeLimits.render,
+                    configuredSinkCapacity: preset.runtimeLimits.renderSink,
+                    workspace: &renderWorkspace
+                )
+                guard case .success(let header) = preflight else { return false }
+                var sink = StaticNRFCountingRenderSink(capacity: preset.runtimeLimits.renderSink)
+                guard
+                    CanvasRenderProducer.produce(
+                        semantic: render,
+                        layout: layoutSink.renderView,
+                        textMetrics: GiftUIReferenceTextResources.targetPackage.metrics,
+                        drawingPlan: drawing,
+                        surfaceBounds: bounds,
+                        damageMode: .initializeCompleteSurface,
+                        rootForeground: .white,
+                        limits: preset.runtimeLimits.render,
+                        expectedHeader: header,
+                        workspace: &renderWorkspace,
+                        sink: &sink
+                    ) == .success(header)
+                else { return false }
+                #expect(layoutSummary.scopeCount == 96)
+                #expect(drawingSummary.strokeCount == 5)
+                #expect(sink.publishedHeader == header)
+                #expect(header.operationCount > 0)
+                return true
+            }
+            #expect(presented == true)
+        }
+        profile.quiesce()
+    }
+}
+
 @Test func staticNRFGeneratedPresentationInputsMatchBothSemanticVariants() {
     let normal = staticNRFPresentationInputModel()
     StaticSignalAnalyzerNRFGeneratedPresentationInputFactory.withInputs(
