@@ -50,4 +50,4 @@ pacing.maximum_retryable_refusals	3
 preset.macos_dynamic	0,dynamic,320,240,240,1280,307200,307200,1
 preset.macos_static	1,static,320,240,240,1280,307200,307200,1
 preset.raspberry_pi_dynamic	2,dynamic,240,240,16,480,7680,7680,1
-preset.nrf52840_static	3,static,480,320,4,960,3840,3840,1
+preset.nrf52840_static	3,static,240,320,4,480,1920,1920,1

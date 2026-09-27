@@ -41,6 +41,16 @@ resource checks for `HC-004` through `HC-008`, `HC-013`, and `HC-015` through
 [SPEC-001 integration sequence](spec-001-implementation-plan.md#2026-09-27-nrf-display-replacement)
 coordinates the target-host and firmware work.
 
+The source workload now projects the nRF preset at 240 x 320 with a 240 x 4
+RGB565 region, 480-byte rows, and 1,920-byte raster and payload ceilings.
+The four generated manifests, generated Swift preset, and static model
+descriptor were regenerated from source identity
+`08cb1c6afd8825e036d1ba8455a3ed8cf8ff59076f4d796f943deffc110f416a`.
+The generator `--check` passed and twelve generated-preset tests passed. The
+3,840-byte static admission queue and sealed batch remain separate from the
+display tile. Target-host and firmware joins remain subsequent work in the
+SPEC-001 sequence.
+
 ## Authority and Scope
 
 The governing [SPEC-015](../specs/spec-015-host-configuration.md) contract is
