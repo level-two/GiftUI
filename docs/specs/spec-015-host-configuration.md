@@ -95,9 +95,14 @@ target_milestone: MVP
 > claim implementation conformance.
 >
 > **2026-09-27 approved target amendment:** The maintainer explicitly approved
-> the `KMRTM24024-SPI` 240 x 320 direct-SPI nRF preset below in place of the
+> the `KMRTM24024-SPI` portrait 240 x 320 direct-SPI nRF preset in place of the
 > former 480 x 320 fixture, coordinated with SPEC-001, SPEC-004, and SPEC-014.
 > Earlier generated manifests and evidence still describe the old fixture.
+>
+> **2026-09-27 approved landscape correction:** The maintainer requested a
+> horizontal nRF image after the connected portrait image appeared mirrored.
+> The authoritative preset below uses 320 x 240, a 320 x 4 RGB565 region,
+> 640-byte rows, and 2,560-byte raster/payload/in-flight bounds.
 >
 > On 2026-09-20, the maintainer explicitly approved the completed production
 > hierarchy measurement. Every preset now requires semantic depth 34, 48
@@ -212,7 +217,9 @@ and are not authority.
 SPEC-001 is the approved downstream application integration contract. Its fixed
 four-channel workload, six-action domain, 250-millisecond cadence, fact-storage
 shape and 240 x 240 Pi fixture are authoritative application inputs. The
-2026-09-27 amendment replaces the 480 x 320 nRF fixture with 240 x 320.
+2026-09-27 amendments replace the 480 x 320 nRF fixture with the
+`KMRTM24024-SPI` module, initially 240 x 320 portrait and subsequently
+320 x 240 landscape.
 SPEC-015 approval authorizes only the reusable host-assembly contract and the
 four configuration obligations defined here;
 SPEC-001 approval authorizes the application contract that consumes them.
@@ -880,7 +887,7 @@ The macOS dynamic and static fixtures use the same logical extent and exact
 resource package, and must resolve equal `EffectiveRasterPresentation` values
 apart from storage-mechanism evidence. The Raspberry Pi fixture is 240 x 240
 and admits a full-width 16-row RGB565 region. The nRF52840 fixture is
-240 x 320 and admits a 240 x 4 RGB565 region, 480-byte rows, and exactly 1,920
+320 x 240 and admits a 320 x 4 RGB565 region, 640-byte rows, and exactly 2,560
 raster, payload, and in-flight bytes with one slot and no full framebuffer. A
 concrete macOS window extent is a host input, but the paired dynamic/static fixtures
 MUST use the same immutable extent and reassemble after an extent change.
@@ -1269,7 +1276,7 @@ Required tests include:
 - construction-function failure without an instance, activation failure at
   every step, illegal-state API calls, and idempotent teardown from every
   instance state;
-- exact Pi 240 x 240 and nRF52840 240 x 320 capability/backend joins;
+- exact Pi 240 x 240 and nRF52840 320 x 240 capability/backend joins;
 - forbidden-import and portable-source scans; and
 - zero-allocation/static-runtime and resource-accounting evidence.
 
@@ -1335,8 +1342,8 @@ software, transport, and observed architecture separately.
   table, and is unchanged by every diagnostic configuration and fault.
 - [ ] **HC-013:** macOS dynamic/static fixtures share extent and effective
   semantics; Pi resolves 240 x 240 with a 240 x 16 RGB565 region; the
-  nRF52840 fixture resolves 240 x 320 with a 240 x 4 region, 480-byte rows,
-  and 1,920-byte raster/payload/in-flight bounds without a full framebuffer.
+  nRF52840 fixture resolves 320 x 240 with a 320 x 4 region, 640-byte rows,
+  and 2,560-byte raster/payload/in-flight bounds without a full framebuffer.
 - [ ] **HC-014:** Activation and teardown tests cover every intermediate state,
   prevent stale callbacks/input/reports, retire identities without reuse, and
   require fresh assembly after terminal unavailability or immutable change.

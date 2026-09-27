@@ -50,9 +50,14 @@ target_milestone: MVP
 > continued implementation.
 >
 > **2026-09-27 approved target amendment:** The maintainer explicitly approved
-> the connected `KMRTM24024-SPI` 240 x 320 nRF fixture below, coordinated with
+> the connected `KMRTM24024-SPI` portrait 240 x 320 nRF fixture, coordinated with
 > SPEC-001, SPEC-014, and SPEC-015. Prior 480 x 320 fixture results remain
 > historical evidence and do not prove this amended contract.
+>
+> **2026-09-27 approved landscape correction:** The maintainer requested a
+> horizontal nRF display after inspecting the connected portrait image. The
+> authoritative nRF fixture below is 320 x 240 with a 320 x 4 RGB565 region,
+> 640-byte rows, and 2,560-byte raster, payload, and in-flight bounds.
 
 ## Summary
 
@@ -565,8 +570,8 @@ arithmetic and cannot independently produce `.inFlight` overflow. The resolver
 never reports `.resolverWorkspace`, `.payload`, or `.inFlight` for byte
 arithmetic and never treats overflow as zero, saturation, or wrapping.
 
-Consequently, the nRF52840 fixture's width `240`, height limit `4`,
-RGB565 encoding, and alignment `2` yield a 480-byte row and exactly 1,920
+Consequently, the nRF52840 fixture's width `320`, height limit `4`,
+RGB565 encoding, and alignment `2` yield a 640-byte row and exactly 2,560
 required raster, payload, and in-flight bytes. A zero ceiling fails that
 positive usage.
 
@@ -889,12 +894,12 @@ The normative fixture-to-field map is:
 | Field group | Required fixture assertion |
 | --- | --- |
 | Operation coverage and stream lifetime | All four hosts require the complete Signal Analyzer opaque rectangle, positioned text, straight-line stroke, clipping, and damage vocabulary through ADR-010's one-shot stream |
-| Logical and maximum extent | Each host requirement equals its initialized logical surface; Pi proves 240 x 240, and the nRF52840 fixture proves 240 x 320 |
+| Logical and maximum extent | Each host requirement equals its initialized logical surface; Pi proves 240 x 240, and the nRF52840 fixture proves 320 x 240 |
 | Canonical encodings | Desktop proves `rgba8888`; Pi and nRF52840 prove `rgb565BigEndian`; SPIKE-001's encoding negative/control pair proves the intersection is required |
 | Submission lifetime and handoff | Pi and nRF52840 prove synchronous borrow; SPIKE-001's lifetime negative/control pair proves lifetime is an input rather than metadata |
 | Realization kind | Desktop proves bounded full surface; Pi and nRF52840 prove bounded tiled presentation; nRF52840 rejects full-surface `rgba8888` |
-| Region and row alignment | The Pi 240 x 16 RGB565 tile and nRF52840 240 x 4 RGB565 tile prove bounded region height, complete-row width, and two-byte row alignment |
-| Raster and payload bytes | Pi permits a 7,680-byte default tile; the nRF52840 fixture permits at most a 1,920-byte tile and no full framebuffer |
+| Region and row alignment | The Pi 240 x 16 RGB565 tile and nRF52840 320 x 4 RGB565 tile prove bounded region height, complete-row width, and two-byte row alignment |
+| Raster and payload bytes | Pi permits a 7,680-byte default tile; the nRF52840 fixture permits at most a 2,560-byte tile and no full framebuffer |
 | In-flight count and bytes | Synchronous borrowed Pi and nRF52840 submission requires exactly one active derived payload and storage for that payload |
 | Required/optional absence | Every claimed Signal Analyzer host uses `required`; an optional negative fixture proves absence remains `nil` in the snapshot rather than becoming support |
 | Policy allow/preference fields | Desktop-versus-tiled fixtures prove realization selection, and common-encoding controls prove policy selects only from technically conforming paths |
@@ -903,9 +908,9 @@ The macOS dynamic and static fixtures MUST resolve the same semantic coverage,
 although their conforming realization and storage mechanisms may differ. The
 Raspberry Pi fixture MUST support the 240 x 240 PiScreen case through a bounded
 RGB565 tiled realization compatible with its Linux framebuffer path. The
-nRF52840 fixture MUST support the 240 x 320 `KMRTM24024-SPI` TFT path
-using no full framebuffer, with a tile no larger than 240 x 4 x 2 bytes
-(1,920 bytes) and compatible synchronous borrowed submission. A full-surface
+nRF52840 fixture MUST support the 320 x 240 `KMRTM24024-SPI` TFT path
+using no full framebuffer, with a tile no larger than 320 x 4 x 2 bytes
+(2,560 bytes) and compatible synchronous borrowed submission. A full-surface
 `rgba8888` realization for the
 nRF52840 fixture MUST resolve unavailable.
 
@@ -1170,14 +1175,14 @@ evidence.
   retained GiftUI operation stream is admitted.
 - [ ] **CR-010:** The macOS dynamic and static fixtures expose equal semantic coverage;
   the Raspberry Pi 240 x 240 fixture resolves to a bounded RGB565 tiled path;
-  the nRF52840 240 x 320 fixture resolves with a tile no larger than 1,920
+  the nRF52840 320 x 240 fixture resolves with a tile no larger than 2,560
   bytes; and nRF52840 full-surface `rgba8888` resolves unavailable.
 - [ ] **CR-010A:** Formula fixtures cover both encodings, full-surface and
   tiled geometry, unequal alignments, all three capacity minima, zero
   byte-count ceilings, malformed zero structural maximums, maximum typed
   LCM/row boundary values, the constructible shared-usage overflow assigned to
   `.raster`, the fixed-domain proof excluding payload-only/in-flight
-  arithmetic overflow, and the exact nRF52840 result of one 1,920-byte
+  arithmetic overflow, and the exact nRF52840 result of one 2,560-byte
   in-flight payload.
 - [ ] **CR-011:** Allocation instrumentation reports zero heap allocations for the static
   path from contribution construction through resolution, validation-result
@@ -1217,9 +1222,10 @@ semantics and normalized results remain unchanged.
 
 ## Open Issues
 
-The `KMRTM24024-SPI` 240 x 320 fixture and its 1,920-byte tile were approved
-with SPEC-001/014/015 on 2026-09-27. Earlier 480 x 320 resolver evidence does
-not prove this fixture; new fixture and resource evidence is required.
+The `KMRTM24024-SPI` portrait 240 x 320 fixture and its 1,920-byte tile were
+approved with SPEC-001/014/015 on 2026-09-27. The later approved landscape
+correction uses 320 x 240 and a 2,560-byte tile. Earlier resolver evidence
+does not prove the current fixture; new fixture and resource evidence is required.
 
 Implementation of `T2.2` exposed that the previously single-case
 `OperationStreamLifetime` made `.operationStreamMismatch`, its two typed

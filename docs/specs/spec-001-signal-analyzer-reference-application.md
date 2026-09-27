@@ -81,10 +81,18 @@ target_milestone: MVP
 >
 > **2026-09-27 approved target amendment:** The maintainer explicitly approved
 > replacing the nRF52840 display target with the physically connected
-> `KMRTM24024-SPI` 240 x 320 direct-SPI TFT, coordinated with SPEC-004,
+> `KMRTM24024-SPI` direct-SPI TFT, initially in portrait 240 x 320,
+> coordinated with SPEC-004,
 > SPEC-014, and SPEC-015. The revised fixture below is authoritative for
 > implementation. Existing 480 x 320 evidence remains historical and does
 > not establish conformance for the replacement target.
+>
+> **2026-09-27 approved landscape correction:** Connected output showed the
+> portrait image mirrored and left an unpainted band. The maintainer requested
+> horizontal orientation. The nRF logical fixture below is now 320 x 240,
+> with a 320 x 4 RGB565 region, 640-byte rows, and 2,560-byte raster,
+> payload, and in-flight bounds. Controller scan direction and touch
+> calibration require connected verification.
 
 ## Summary
 
@@ -1421,9 +1429,9 @@ fact storage, the exact `20 + 2 + 6 == 28` conforming compact-fact burst, five
 Canvas occurrences, five submitted strokes, at least 202 simultaneously live
 Path points, 12 live subpaths, 832 snapshotted points, and 16 snapshotted
 subpaths. Raspberry Pi fixtures use the approved 240 x 240 extent and 240 x 16
-RGB565 region. The nRF52840 fixture uses a 240 x 320 logical extent
-for the `KMRTM24024-SPI` module, a 240 x 4 RGB565 region, 480-byte rows, and
-1,920-byte raster, payload, and in-flight bounds without a full framebuffer.
+RGB565 region. The nRF52840 fixture uses a 320 x 240 landscape logical extent
+for the `KMRTM24024-SPI` module, a 320 x 4 RGB565 region, 640-byte rows, and
+2,560-byte raster, payload, and in-flight bounds without a full framebuffer.
 The portable hierarchy MUST lay out against the supplied extent rather than
 assume a fixed nRF width. The checked-in hierarchy descriptor,
 generated workload manifest, `RuntimeProfileLimits`, and assembly report MUST
@@ -1824,7 +1832,7 @@ behavioral, resource, profile, or connected-hardware evidence.
 - [ ] **SA-AC-005:** The screen visibly contains the required title, subtitle,
   status, time ruler, four ordered channel rows, controls, error region, grid,
   and four traces at each approved host extent, including the
-  240 x 320 nRF fixture, without target-specific Presentation layout.
+  320 x 240 nRF fixture, without target-specific Presentation layout.
 - [ ] **SA-AC-006:** The portable hierarchy uses fixed explicit channel and
   window composition and is substantially shared by all four configurations.
 - [ ] **SA-AC-007:** Sink registration synchronously delivers revisioned
@@ -1941,7 +1949,7 @@ behavioral, resource, profile, or connected-hardware evidence.
 - [ ] **SA-AC-045:** Every host fixture proves exact equality with SPEC-015's
   workload manifest, runtime limits, `1/32/1` fact stores, 28-fact production
   burst, five-Canvas Drawing minima, Pi extent/region, nRF52840 extent/region
-  and 1,920-byte raster/payload/in-flight bounds, and assembly report.
+  and 2,560-byte raster/payload/in-flight bounds, and assembly report.
 
 ## Implementation Notes
 
@@ -2028,7 +2036,7 @@ The nRF display controller, touch controller, connected wiring, and logical
 orientation of the `KMRTM24024-SPI` module require hardware confirmation.
 The four coordinated fixture amendments were approved on 2026-09-27. The
 existing 480 x 320 implementation and its evidence cannot discharge the
-240 x 320 connected acceptance gate.
+320 x 240 landscape connected acceptance gate.
 
 ## Deferred and Follow-up Work
 
