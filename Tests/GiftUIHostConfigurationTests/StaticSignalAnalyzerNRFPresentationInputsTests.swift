@@ -48,6 +48,25 @@ import Testing
             stopAcquisition: StopSignalAcquisitionUseCase(repository: repository),
             clearCapture: ClearSignalCaptureUseCase(repository: repository)
         )
+        let interactionLimits = preset.runtimeLimits.interaction
+        var interaction = StaticInteractionState<UInt32>(
+            candidateRecords: StaticInteractionCandidateStorage(
+                capacity: interactionLimits.maximumActions
+            )!,
+            candidateHitRegions: StaticInteractionHitStorage(
+                capacity: interactionLimits.maximumHitRegions
+            )!,
+            candidateCommittedRecords: StaticInteractionCommittedStorage(
+                capacity: interactionLimits.maximumActions
+            )!,
+            committedRecords: StaticInteractionCommittedStorage(
+                capacity: interactionLimits.maximumActions
+            )!,
+            committedHitRegions: StaticInteractionHitStorage(
+                capacity: interactionLimits.maximumHitRegions
+            )!
+        )
+        var actionGenerations = RuntimeActionGenerationAllocator<UInt32>()
         var admissionStorage = StaticSignalAnalyzerHostFactAdmissionStorage()
         withUnsafeMutablePointer(to: &admissionStorage) { admissionPointer in
             let admission = StaticSignalAnalyzerHostFactAdmission(storage: admissionPointer)
@@ -76,6 +95,10 @@ import Testing
                         }
                     }
                     #expect(admission.beginProducer(.action))
+                    #expect(
+                        macOSStaticReferencePointerOutcome(
+                            .start, enabled: true, interaction: interaction
+                        ))
                     model.startTapped()
                     admission.endProducer()
                 }
@@ -130,6 +153,10 @@ import Testing
                 default: action = nil
                 }
                 if let action {
+                    #expect(
+                        macOSStaticReferencePointerOutcome(
+                            action, enabled: true, interaction: interaction
+                        ))
                     #expect(admission.beginProducer(.action))
                     switch action {
                     case .start: model.startTapped()
@@ -258,6 +285,26 @@ import Testing
                         #expect(drawingSummary.strokeCount == 5)
                         #expect(sink.publishedHeader == header)
                         #expect(header.operationCount > 0)
+                        guard
+                            let occurrences = StaticSignalAnalyzerNRFInteractionOccurrences(
+                                semanticRegion: semanticRegion,
+                                layout: layoutSink.renderView
+                            )
+                        else { return false }
+                        #expect(
+                            StaticSignalAnalyzerNRFInteractionCandidateProducer.build(
+                                occurrences: occurrences,
+                                targetGeneration: ObservableTargetGeneration(rawValue: 0),
+                                limits: interactionLimits,
+                                interaction: &interaction,
+                                generations: &actionGenerations
+                            ) == .ready
+                        )
+                        interaction.resolveCandidate(
+                            .commit(PresentationRevision(rawValue: revision))
+                        )
+                        actionGenerations.resolveCandidate(committed: true)
+                        #expect(interaction.committedRevision?.rawValue == revision)
                         print(
                             "reference=macos-static\tordinal=\(window)"
                                 + "\tcapture_revision=\(model.captureRevision)"
@@ -280,6 +327,10 @@ import Testing
                             cycle: nil, semanticRevision: nil, candidateFrame: nil, phase: .idle
                         )) == nil)
                 if window == 120 {
+                    #expect(
+                        macOSStaticReferencePointerOutcome(
+                            .start, enabled: false, interaction: interaction
+                        ))
                     printMacOSStaticReferenceAction(
                         .start, dispatched: false, revision: revision, model: model
                     )
@@ -289,6 +340,10 @@ import Testing
                         action, dispatched: true, revision: revision, model: model
                     )
                     if action != .clear {
+                        #expect(
+                            macOSStaticReferencePointerOutcome(
+                                action, enabled: false, interaction: interaction
+                            ))
                         printMacOSStaticReferenceAction(
                             action, dispatched: false, revision: revision, model: model
                         )
@@ -320,6 +375,36 @@ private func printMacOSStaticReferenceAction(
             + "\tstate=\(model.state.acquisitionState)"
             + "\twindow=\(model.state.visibleWindow)"
     )
+}
+
+private func macOSStaticReferencePointerOutcome(
+    _ action: SignalAnalyzerAction,
+    enabled: Bool,
+    interaction: borrowing StaticInteractionState<UInt32>
+) -> Bool {
+    var matching: BoundActionRecord<UInt32>?
+    for ordinal in 0 ..< interaction.committedRecordCount {
+        guard let record = interaction.committedRecord(at: ordinal) else { return false }
+        if record.action.code == action.rawValue {
+            matching = record
+            break
+        }
+    }
+    guard let record = matching, record.isEnabled == enabled
+    else { return false }
+    let point = Point(
+        x: record.hitBounds.origin.x + record.hitBounds.size.width / 2,
+        y: record.hitBounds.origin.y + record.hitBounds.size.height / 2
+    )
+    switch interaction.resolveDown(at: point) {
+    case .captured(let captured) where enabled:
+        return interaction.resolveUp(captured, at: point)
+            == .activationAdmitted(captured)
+    case .ignored where !enabled:
+        return true
+    default:
+        return false
+    }
 }
 
 @Test func staticNRFGeneratedPresentationInputsMatchBothSemanticVariants() {
