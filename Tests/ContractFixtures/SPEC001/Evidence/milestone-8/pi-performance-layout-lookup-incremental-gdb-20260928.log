@@ -1,0 +1,12 @@
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/arm-linux-gnueabihf/libthread_db.so.1".
+pi-target-us sink=867177 payloads=311 regions=3577 bytes=218874
+pi-present-us derive=628889 offer=2417964
+
+Program received signal SIGSEGV, Segmentation fault.
+0x0066ead0 in $s23GiftUIHostConfiguration26HostSequencedFactAdmissionV7quiesceyyF ()
+#0  0x0066ead0 in $s23GiftUIHostConfiguration26HostSequencedFactAdmissionV7quiesceyyF ()
+#1  0x007ae9c8 in $s18SignalAnalyzerHost07DynamicabC13FactAdmissionC7quiesceyyF ()
+#2  0x007e46d0 in ?? ()
+#3  0x00624044 in $s23GiftUIHostConfiguration27MVPHostActivationControllerV8teardown5owneryqd__z_tAA0D13TeardownOwnerRd__lF ()
+#4  0x007c6838 in main ()

@@ -70,6 +70,21 @@ package struct PiScreenPayloadWriter: DisplayPayloadWriter {
         return true
     }
 
+    package mutating func writePixel(
+        mostSignificantByte: UInt8,
+        leastSignificantByte: UInt8
+    ) -> Bool {
+        guard !finished, remainingRegionBytes >= 2,
+            writtenBytes <= capacityBytes,
+            capacityBytes - writtenBytes >= 2
+        else { return false }
+        storage[Int(writtenBytes)] = mostSignificantByte
+        storage[Int(writtenBytes) + 1] = leastSignificantByte
+        writtenBytes += 2
+        remainingRegionBytes -= 2
+        return true
+    }
+
     package mutating func endRegion() -> Bool {
         guard !finished, remainingRegionBytes == 0 else { return false }
         writtenRegionCount += 1

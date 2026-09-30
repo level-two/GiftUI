@@ -6,7 +6,7 @@ status: implementing
 authors:
   - Yauheni Lychkouski
 created: 2026-08-14
-updated: 2026-09-27
+updated: 2026-09-30
 proposal:
   - PROPOSAL-002
 related_rfcs:
@@ -48,6 +48,10 @@ related_specs:
   - SPEC-015
 related_future_work:
   - FW-023
+  - FW-024
+  - FW-025
+  - FW-026
+  - FW-027
 related_explorations: []
 related_spikes: []
 supersedes: []
@@ -2039,6 +2043,17 @@ existing 480 x 320 implementation and its evidence cannot discharge the
 320 x 240 landscape connected acceptance gate.
 
 ## Deferred and Follow-up Work
+
+The Pi investigation preserves partial presentation in
+[FW-024](../future-work/fw-024-pi-partial-frame-presentation.md) and cross-frame
+reuse in [FW-025](../future-work/fw-025-pi-cross-frame-work-reuse.md). These
+items do not alter the complete-frame contract or its acceptance criteria.
+[FW-026](../future-work/fw-026-pi-complete-physical-surface-presentation.md)
+preserves the excluded physical-surface prototype.
+[FW-027](../future-work/fw-027-pi-performance-investigation-resumption.md)
+records postponed investigation without waiving the current cadence or
+connected-input requirements.
+
 
 The previously captured [FW-023](../future-work/fw-023-ili9341-240x320-target-variant.md)
 is closed as a separate-target idea because the maintainer directed replacement

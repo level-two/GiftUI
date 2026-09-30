@@ -1,0 +1,8 @@
+pi-layout-us validation=131116 measure=230044 place=167939 publish=14622
+pi-derive-detail-us semantic=139338 layout=546648 drawing=2737 preflight=33447 interaction=4861
+pi-framebuffer-us projection=20988 writes=992205 regions=3577 rows=7154
+pi-target-us sink=1040194 payloads=311 regions=3577 bytes=218874
+pi-operations-us fills=674559 glyphs=1299968 strokes=463572 fillCount=5 glyphCount=117 strokeCount=5
+pi-tiles-us reset=13580 raster=257328 consume=2143937 fill=1091363 scan=429508 capacity=13354 begin=13751 bytes=211419 end=10924 submit=1046039 finish=1398 visits=284 runs=3686 pixels=109630
+pi-produce-us preflight=33306 stream=2484931
+pi-present-us derive=728481 offer=2518909

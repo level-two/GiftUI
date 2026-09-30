@@ -1,0 +1,4 @@
+pi-target-us sink=909667 payloads=311 regions=3577 bytes=218874
+pi-present-us derive=345250 offer=2068302
+Segmentation fault
+exit=139

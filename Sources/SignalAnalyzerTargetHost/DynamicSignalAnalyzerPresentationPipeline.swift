@@ -200,7 +200,6 @@ package struct DynamicSignalAnalyzerPresentationPipeline {
     private var semanticWorkspace: DynamicSemanticExpansionWorkspace
     private var semanticStorage: DynamicSemanticHostStorage
     private var layoutWorkspace: DynamicLayoutWorkspace
-    private var layoutValidationWorkspace: DynamicLayoutWorkspace
     private var layoutSink: ResolvedRenderLayoutResultSink<DynamicResolvedLayoutStorage>
     private var drawingWorkspace: DynamicDrawingPlanWorkspace
     private var renderWorkspace: DynamicRenderWorkspace
@@ -245,7 +244,6 @@ package struct DynamicSignalAnalyzerPresentationPipeline {
             canvasCapacity: limits.drawing.maximumCanvasOccurrences
         )
         layoutWorkspace = DynamicLayoutWorkspace(limits: limits.layout)
-        layoutValidationWorkspace = DynamicLayoutWorkspace(limits: limits.layout)
         layoutSink = ResolvedRenderLayoutResultSink(
             storage: DynamicResolvedLayoutStorage(limits: limits.layout)
         )
@@ -304,17 +302,6 @@ package struct DynamicSignalAnalyzerPresentationPipeline {
             _ = reconciler.finishCandidate(.discard)
             return .failure(.observable(error))
         }
-        var validation = LayoutSemanticValidation(limits: limits.layout)
-        if let error = validation.validate(
-            semantic: semanticStorage,
-            metrics: GiftUIPiCompactTextResources.targetPackage.metrics,
-            workspace: &layoutValidationWorkspace
-        ) {
-            layoutValidationWorkspace.resetLayout()
-            return .failure(.layout(error))
-        }
-        layoutValidationWorkspace.resetLayout()
-
         let layoutResult = layout(
             semantic: semanticStorage,
             metrics: GiftUIPiCompactTextResources.targetPackage.metrics,

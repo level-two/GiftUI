@@ -1,0 +1,25 @@
+pi-present-us derive=1391154 offer=4055190
+pi-present-us derive=1323572 offer=6821472
+pi-frame-duration-us 8149669
+pi-present-us derive=1348472 offer=7786508
+pi-frame-duration-us 9137974
+pi-present-us derive=1366450 offer=8540560
+pi-frame-duration-us 9910279
+pi-present-us derive=1352730 offer=8764847
+pi-frame-duration-us 10121536
+pi-contact down Point(x: 87, y: 213)
+pi-contact up Point(x: 87, y: 210)
+pi-input DynamicSignalAnalyzerPiContactIngressSummary(contactCount: 2, queuedCount: 2, rejectedCount: 0, wakeRequestCount: 1, coalescedWakeCount: 1)
+pi-opportunity-input DynamicSignalAnalyzerPiInputDrainSummary(eventCount: 2, dispatchedActionCount: 0, cancelledOrRejectedCount: 0)
+pi-contact down Point(x: 115, y: 210)
+pi-contact up Point(x: 115, y: 208)
+pi-contact down Point(x: 114, y: 211)
+pi-contact up Point(x: 114, y: 212)
+pi-input DynamicSignalAnalyzerPiContactIngressSummary(contactCount: 4, queuedCount: 4, rejectedCount: 0, wakeRequestCount: 1, coalescedWakeCount: 3)
+pi-opportunity-input DynamicSignalAnalyzerPiInputDrainSummary(eventCount: 4, dispatchedActionCount: 2, cancelledOrRejectedCount: 0)
+pi-contact down Point(x: 115, y: 212)
+pi-contact up Point(x: 115, y: 212)
+pi-contact down Point(x: 154, y: 213)
+pi-contact up Point(x: 153, y: 212)
+pi-input DynamicSignalAnalyzerPiContactIngressSummary(contactCount: 4, queuedCount: 4, rejectedCount: 0, wakeRequestCount: 0, coalescedWakeCount: 4)
+status=failed	error=pacing(GiftUIHostConfiguration.HostWakePacingError.serviceDeadlineMissed)

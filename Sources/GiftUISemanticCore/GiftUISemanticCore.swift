@@ -173,7 +173,7 @@ package protocol SemanticExpansionSink {
     mutating func resetExpansion()
 }
 
-package struct SemanticRecordingRole: RawRepresentable, Equatable, Sendable {
+package struct SemanticRecordingRole: RawRepresentable, Hashable, Sendable {
     package let rawValue: UInt16
 
     package init(rawValue: UInt16) {
@@ -181,7 +181,7 @@ package struct SemanticRecordingRole: RawRepresentable, Equatable, Sendable {
     }
 }
 
-package enum SemanticRecordingPathComponent: Equatable, Sendable {
+package enum SemanticRecordingPathComponent: Hashable, Sendable {
     case root
     case customBody
     case fixedChild(UInt8)

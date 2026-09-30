@@ -223,6 +223,7 @@ let package = Package(
                 "GiftUIRenderLowering",
                 "GiftUIRuntimeCore",
                 "GiftUISemanticCore",
+                "GiftUITextResources",
             ]
         ),
         .target(
@@ -314,6 +315,7 @@ let package = Package(
                 "GiftUIDisplayCore",
                 "GiftUIDrawing",
                 "GiftUIExecution",
+                "GiftUIFailureCore",
                 "GiftUIHostConfiguration",
                 "GiftUIInteraction",
                 "GiftUILayout",
@@ -321,6 +323,7 @@ let package = Package(
                 "GiftUIRasterCore",
                 "GiftUIReferenceTextResources",
                 "GiftUIRenderCore",
+                "GiftUIRenderLowering",
                 "GiftUIRuntimeCore",
                 "GiftUIRuntimeDynamic",
                 "GiftUIRuntimeStatic",
@@ -370,7 +373,9 @@ let package = Package(
                 "GiftUIHostConfiguration",
                 "GiftUIPlatformRaspberryPi",
                 "SignalAnalyzerData",
+                "SignalAnalyzerDomain",
                 "SignalAnalyzerPresetHarness",
+                "SignalAnalyzerPresentation",
                 "SignalAnalyzerTargetHost",
             ]
         ),

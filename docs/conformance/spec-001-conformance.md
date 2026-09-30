@@ -5,7 +5,7 @@ title: SPEC-001 Conformance Report
 status: complete
 reviewers: [codex]
 created: 2026-09-19
-updated: 2026-09-27
+updated: 2026-09-30
 implementation_plan: ../implementation-plans/spec-001-implementation-plan.md
 related_future_work: []
 related_explorations: []
@@ -144,14 +144,23 @@ RAM/flash, and supported stack evidence without inferring connected behavior.
 
 ## Deviations and Exceptions
 
-No implementation divergence or approved exception was found. Five criteria
-remain blocked only by missing connected evidence: `SA-AC-005`, `SA-AC-023`,
+No exception is approved. Historical connected Pi frame service exceeds the
+250 ms policy; the selected integration has no new connected timing or
+six-control evidence. That performance gap remains part of the open Pi
+conformance work. Five criteria remain blocked by connected validation: `SA-AC-005`, `SA-AC-023`,
 `SA-AC-024`, `SA-AC-025`, and `SA-AC-039`. These are requirements, not waived
 exceptions.
 
 ## Deferred Work Audit
 
-SPEC-001 originates no deferred item. FW-017, FW-019, and FW-021 remain
+The 2026-09-30 [Pi performance closeout](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-8/pi-performance-closeout-20260930.md)
+records retained internal improvements and postponed investigation under
+[FW-027](../future-work/fw-027-pi-performance-investigation-resumption.md).
+Historical connected Pi timing exceeds 250 ms; cadence and connected-control
+validation remain open. No requirement or exception is approved by the
+closeout. FW-024 through FW-026 preserve unselected optimization directions.
+
+FW-017, FW-019, and FW-021 remain
 post-MVP extensions and are unnecessary for the fixed analyzer. No deferred
 artifact conceals a current correctness or conformance requirement.
 
@@ -160,6 +169,7 @@ artifact conceals a current correctness or conformance requirement.
 Forty criteria pass and five have explicit connected-hardware blockers. The
 hardware-free implementation and evidence boundary is complete, but this
 report does not yet support requesting SPEC-001's `implemented` transition.
-T8.1 through T8.3 remain open pending separate authorization and physical
-PiScreen/nRF52840 display/input access. Human conformance review may proceed
+T8.1 through T8.3 remain open for complete connected conformance, including
+Pi cadence and six-control validation. Further performance experiments are
+postponed under FW-027; any connected work requires its normal authorization. Human conformance review may proceed
 with those gates visible.

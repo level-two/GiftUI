@@ -1,0 +1,120 @@
+pi-derive-detail-us semantic=122503 layout=534677 drawing=3022 preflight=33299 interaction=5038
+pi-framebuffer-us projection=21595 writes=912758 regions=3577 rows=7154
+pi-target-us sink=961021 payloads=311 regions=3577 bytes=218874
+pi-operations-us fills=741750 glyphs=1164250 strokes=375458 fillCount=5 glyphCount=117 strokeCount=5
+pi-tiles-us reset=12331 raster=329206 consume=1917148 fill=943510 scan=401167 bytes=190138 submit=967099 finish=1405 visits=284 runs=3686 pixels=109630
+pi-produce-us preflight=33411 stream=2328427
+pi-present-us derive=700345 offer=2362488
+pi-derive-detail-us semantic=57493 layout=525422 drawing=1663 preflight=34240 interaction=1991
+pi-framebuffer-us projection=22706 writes=982346 regions=3720 rows=7440
+pi-target-us sink=1034605 payloads=326 regions=3720 bytes=219770
+pi-operations-us fills=727742 glyphs=1196182 strokes=456731 fillCount=5 glyphCount=121 strokeCount=5
+pi-tiles-us reset=12104 raster=332527 consume=2012486 fill=964770 scan=418654 bytes=194799 submit=1041249 finish=1438 visits=291 runs=3834 pixels=110085
+pi-produce-us preflight=34946 stream=2429716
+pi-present-us derive=622340 offer=2465030
+pi-frame-duration-us 3092653
+pi-derive-detail-us semantic=59078 layout=538203 drawing=1995 preflight=34540 interaction=1792
+pi-framebuffer-us projection=22336 writes=938934 regions=3750 rows=7500
+pi-target-us sink=989158 payloads=328 regions=3750 bytes=219856
+pi-operations-us fills=821587 glyphs=1091260 strokes=415480 fillCount=5 glyphCount=122 strokeCount=5
+pi-tiles-us reset=13611 raster=317920 consume=1973741 fill=971041 scan=419961 bytes=199942 submit=995907 finish=1447 visits=293 runs=3863 pixels=110127
+pi-produce-us preflight=34591 stream=2376325
+pi-present-us derive=637080 offer=2411384
+pi-frame-duration-us 3050312
+pi-derive-detail-us semantic=60117 layout=540621 drawing=2031 preflight=36220 interaction=1823
+pi-framebuffer-us projection=23302 writes=880594 regions=3779 rows=7558
+pi-target-us sink=933328 payloads=330 regions=3779 bytes=219938
+pi-operations-us fills=751084 glyphs=1057621 strokes=488802 fillCount=5 glyphCount=123 strokeCount=5
+pi-tiles-us reset=13028 raster=335935 consume=1924044 fill=977129 scan=429886 bytes=195688 submit=940218 finish=1451 visits=295 runs=3891 pixels=110166
+pi-produce-us preflight=36182 stream=2348415
+pi-present-us derive=642347 offer=2384908
+pi-frame-duration-us 3029352
+pi-derive-detail-us semantic=59181 layout=537196 drawing=1788 preflight=35304 interaction=1839
+pi-framebuffer-us projection=23005 writes=971934 regions=3785 rows=7570
+pi-target-us sink=1024534 payloads=330 regions=3785 bytes=219996
+pi-operations-us fills=886575 glyphs=1086288 strokes=439595 fillCount=5 glyphCount=122 strokeCount=5
+pi-tiles-us reset=12944 raster=361580 consume=2013741 fill=975986 scan=427172 bytes=198694 submit=1031077 finish=1474 visits=294 runs=3898 pixels=110197
+pi-produce-us preflight=36203 stream=2466623
+pi-present-us derive=636810 offer=2504315
+pi-frame-duration-us 3144354
+pi-derive-detail-us semantic=59011 layout=545943 drawing=1905 preflight=36345 interaction=1950
+pi-framebuffer-us projection=23580 writes=827991 regions=3815 rows=7630
+pi-target-us sink=880943 payloads=332 regions=3815 bytes=220082
+pi-operations-us fills=747320 glyphs=1065460 strokes=480838 fillCount=5 glyphCount=123 strokeCount=5
+pi-tiles-us reset=13040 raster=381706 consume=1874862 fill=980350 scan=433585 bytes=198705 submit=887269 finish=1485 visits=295 runs=3929 pixels=110242
+pi-produce-us preflight=36617 stream=2346201
+pi-present-us derive=646627 offer=2383130
+pi-frame-duration-us 3031808
+pi-derive-detail-us semantic=59596 layout=549247 drawing=2091 preflight=36132 interaction=1846
+pi-framebuffer-us projection=23388 writes=880433 regions=3821 rows=7642
+pi-target-us sink=933087 payloads=332 regions=3821 bytes=220140
+pi-operations-us fills=877642 glyphs=1066768 strokes=386314 fillCount=5 glyphCount=122 strokeCount=5
+pi-tiles-us reset=13835 raster=373253 consume=1919237 fill=973039 scan=428133 bytes=196627 submit=939553 finish=1433 visits=293 runs=3937 pixels=110274
+pi-produce-us preflight=36997 stream=2381295
+pi-present-us derive=650476 offer=2418607
+pi-frame-duration-us 3070875
+pi-derive-detail-us semantic=60742 layout=544038 drawing=2063 preflight=35938 interaction=1927
+pi-framebuffer-us projection=23398 writes=1006923 regions=3826 rows=7652
+pi-target-us sink=1060182 payloads=332 regions=3826 bytes=220194
+pi-operations-us fills=795166 glyphs=1147547 strokes=503809 fillCount=5 glyphCount=121 strokeCount=5
+pi-tiles-us reset=13358 raster=358625 consume=2050657 fill=976799 scan=425819 bytes=201528 submit=1066666 finish=1427 visits=291 runs=3944 pixels=110305
+pi-produce-us preflight=38044 stream=2500739
+pi-present-us derive=644928 offer=2540367
+pi-frame-duration-us 3188345
+pi-derive-detail-us semantic=60385 layout=547266 drawing=1896 preflight=35202 interaction=1921
+pi-framebuffer-us projection=23521 writes=984713 regions=3832 rows=7664
+pi-target-us sink=1038290 payloads=332 regions=3832 bytes=220252
+pi-operations-us fills=762021 glyphs=1152023 strokes=505907 fillCount=5 glyphCount=120 strokeCount=5
+pi-tiles-us reset=12448 raster=368068 consume=2016254 fill=963769 scan=422391 bytes=195083 submit=1044862 finish=1457 visits=290 runs=3951 pixels=110336
+pi-produce-us preflight=35501 stream=2469596
+pi-present-us derive=648153 offer=2505495
+pi-frame-duration-us 3155421
+pi-derive-detail-us semantic=60731 layout=545478 drawing=2367 preflight=35889 interaction=1829
+pi-framebuffer-us projection=23629 writes=931097 regions=3861 rows=7722
+pi-target-us sink=984418 payloads=334 regions=3861 bytes=220334
+pi-operations-us fills=741346 glyphs=1161948 strokes=479088 fillCount=5 glyphCount=121 strokeCount=5
+pi-tiles-us reset=12464 raster=372872 consume=1972481 fill=974651 scan=426789 bytes=198284 submit=990902 finish=1469 visits=292 runs=3980 pixels=110377
+pi-produce-us preflight=38294 stream=2436893
+pi-present-us derive=646627 offer=2477003
+pi-frame-duration-us 3128032
+pi-derive-detail-us semantic=60888 layout=543836 drawing=2477 preflight=36396 interaction=1851
+pi-framebuffer-us projection=23320 writes=847530 regions=3891 rows=7782
+pi-target-us sink=900858 payloads=337 regions=3891 bytes=220420
+pi-operations-us fills=738033 glyphs=1071946 strokes=512286 fillCount=5 glyphCount=122 strokeCount=5
+pi-tiles-us reset=13197 raster=387865 consume=1897398 fill=983075 scan=429510 bytes=200472 submit=907455 finish=1476 visits=294 runs=4011 pixels=110458
+pi-produce-us preflight=37099 stream=2376633
+pi-present-us derive=647070 offer=2415223
+pi-frame-duration-us 3065576
+pi-derive-detail-us semantic=59724 layout=542788 drawing=2105 preflight=36519 interaction=1819
+pi-framebuffer-us projection=23326 writes=842717 regions=3921 rows=7842
+pi-target-us sink=896026 payloads=339 regions=3921 bytes=220506
+pi-operations-us fills=793742 glyphs=1036383 strokes=497610 fillCount=5 glyphCount=123 strokeCount=5
+pi-tiles-us reset=13320 raster=392647 consume=1896434 fill=986716 scan=433215 bytes=201378 submit=902830 finish=1526 visits=295 runs=4042 pixels=110503
+pi-produce-us preflight=36324 stream=2379222
+pi-present-us derive=644448 offer=2415852
+pi-frame-duration-us 3062140
+pi-derive-detail-us semantic=60583 layout=543267 drawing=2499 preflight=36299 interaction=1945
+pi-framebuffer-us projection=24369 writes=859019 regions=3926 rows=7852
+pi-target-us sink=914745 payloads=340 regions=3926 bytes=220560
+pi-operations-us fills=800932 glyphs=1030379 strokes=513463 fillCount=5 glyphCount=122 strokeCount=5
+pi-tiles-us reset=12840 raster=397867 consume=1909869 fill=981614 scan=428535 bytes=199554 submit=921371 finish=1445 visits=293 runs=4050 pixels=110562
+pi-produce-us preflight=37130 stream=2407270
+pi-present-us derive=646119 offer=2445946
+pi-frame-duration-us 3095097
+pi-derive-detail-us semantic=61890 layout=545143 drawing=2435 preflight=35765 interaction=1816
+pi-framebuffer-us projection=23410 writes=1005093 regions=3931 rows=7862
+pi-target-us sink=1059319 payloads=339 regions=3931 bytes=220614
+pi-operations-us fills=862009 glyphs=1108305 strokes=519094 fillCount=5 glyphCount=121 strokeCount=5
+pi-tiles-us reset=12910 raster=403397 consume=2049236 fill=976528 scan=429663 bytes=197148 submit=1066017 finish=1440 visits=291 runs=4056 pixels=110597
+pi-produce-us preflight=36703 stream=2541696
+pi-present-us derive=648620 offer=2578724
+pi-frame-duration-us 3230832
+pi-derive-detail-us semantic=59216 layout=553071 drawing=2255 preflight=36044 interaction=1835
+status=completed
+pi-framebuffer-us projection=23957 writes=908978 regions=3937 rows=7874
+pi-target-us sink=963398 payloads=339 regions=3937 bytes=220672
+pi-operations-us fills=800230 glyphs=1139606 strokes=456844 fillCount=5 glyphCount=120 strokeCount=5
+pi-tiles-us reset=12746 raster=413711 consume=1946604 fill=969232 scan=423993 bytes=198530 submit=970496 finish=1449 visits=290 runs=4063 pixels=110628
+pi-produce-us preflight=37065 stream=2446628
+pi-present-us derive=653913 offer=2484004
+pi-frame-duration-us 3139686

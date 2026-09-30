@@ -6,6 +6,8 @@ private struct DynamicLayoutWorkspaceScope {
     let identity: DynamicSemanticIdentity
     var measurement: LayoutMeasurement
     var placement: LayoutPlacement?
+    var lineRange: Range<UInt16>?
+    var glyphRange: Range<UInt16>?
 }
 
 package struct DynamicLayoutWorkspace: LayoutWorkspace {
@@ -17,6 +19,7 @@ package struct DynamicLayoutWorkspace: LayoutWorkspace {
     package private(set) var isLayoutActive = false
 
     private var scopes: [DynamicLayoutWorkspaceScope] = []
+    private var scopeIndex: [DynamicSemanticIdentity: Int] = [:]
     private var lines: [LayoutTextLine<DynamicSemanticIdentity>] = []
     private var glyphs: [LayoutPositionedGlyph<DynamicSemanticIdentity>] = []
     private var depth: [DynamicSemanticIdentity] = []
@@ -28,6 +31,7 @@ package struct DynamicLayoutWorkspace: LayoutWorkspace {
         maximumTextLines = limits.maximumTextLines
         maximumPositionedGlyphs = limits.maximumPositionedGlyphs
         scopes.reserveCapacity(Int(limits.maximumScopes))
+        scopeIndex.reserveCapacity(Int(limits.maximumScopes))
         lines.reserveCapacity(Int(limits.maximumTextLines))
         glyphs.reserveCapacity(Int(limits.maximumPositionedGlyphs))
         depth.reserveCapacity(Int(limits.maximumDepth))
@@ -45,13 +49,16 @@ package struct DynamicLayoutWorkspace: LayoutWorkspace {
     ) -> Bool {
         let identity = copy identity
         guard scopes.count < Int(maximumScopes),
-            !scopes.contains(where: { $0.identity == identity })
+            scopeIndex[identity] == nil
         else { return false }
+        scopeIndex[identity] = scopes.count
         scopes.append(
             DynamicLayoutWorkspaceScope(
                 identity: identity,
                 measurement: measurement,
-                placement: nil
+                placement: nil,
+                lineRange: nil,
+                glyphRange: nil
             )
         )
         return true
@@ -68,7 +75,8 @@ package struct DynamicLayoutWorkspace: LayoutWorkspace {
         for identity: borrowing DynamicSemanticIdentity
     ) -> LayoutMeasurement? {
         let identity = copy identity
-        return scopes.first { $0.identity == identity }?.measurement
+        guard let index = scopeIndex[identity] else { return nil }
+        return scopes[index].measurement
     }
 
     package mutating func storeMeasurement(
@@ -76,7 +84,7 @@ package struct DynamicLayoutWorkspace: LayoutWorkspace {
         for identity: borrowing DynamicSemanticIdentity
     ) -> Bool {
         let identity = copy identity
-        guard let index = scopes.firstIndex(where: { $0.identity == identity })
+        guard let index = scopeIndex[identity]
         else { return false }
         scopes[index].measurement = measurement
         return true
@@ -87,7 +95,7 @@ package struct DynamicLayoutWorkspace: LayoutWorkspace {
         for identity: borrowing DynamicSemanticIdentity
     ) -> Bool {
         let identity = copy identity
-        guard let index = scopes.firstIndex(where: { $0.identity == identity }),
+        guard let index = scopeIndex[identity],
             scopes[index].placement == nil
         else { return false }
         scopes[index].placement = placement
@@ -98,7 +106,8 @@ package struct DynamicLayoutWorkspace: LayoutWorkspace {
         for identity: borrowing DynamicSemanticIdentity
     ) -> LayoutPlacement? {
         let identity = copy identity
-        return scopes.first { $0.identity == identity }?.placement
+        guard let index = scopeIndex[identity] else { return nil }
+        return scopes[index].placement
     }
 
     package var textLineCount: UInt16 { UInt16(lines.count) }
@@ -106,9 +115,26 @@ package struct DynamicLayoutWorkspace: LayoutWorkspace {
     package mutating func appendTextLine(
         _ line: LayoutTextLine<DynamicSemanticIdentity>
     ) -> Bool {
-        guard lines.count < Int(maximumTextLines) else { return false }
+        guard lines.count < Int(maximumTextLines),
+            let index = scopeIndex[line.identity]
+        else { return false }
+        let ordinal = UInt16(lines.count)
+        if let range = scopes[index].lineRange {
+            guard range.upperBound == ordinal else { return false }
+            scopes[index].lineRange = range.lowerBound ..< (ordinal + 1)
+        } else {
+            scopes[index].lineRange = ordinal ..< (ordinal + 1)
+        }
         lines.append(line)
         return true
+    }
+
+    package func textLineRange(
+        for identity: borrowing DynamicSemanticIdentity
+    ) -> Range<UInt16>? {
+        let identity = copy identity
+        guard let index = scopeIndex[identity] else { return nil }
+        return scopes[index].lineRange
     }
 
     package func textLine(
@@ -132,9 +158,26 @@ package struct DynamicLayoutWorkspace: LayoutWorkspace {
     package mutating func appendPositionedGlyph(
         _ glyph: LayoutPositionedGlyph<DynamicSemanticIdentity>
     ) -> Bool {
-        guard glyphs.count < Int(maximumPositionedGlyphs) else { return false }
+        guard glyphs.count < Int(maximumPositionedGlyphs),
+            let index = scopeIndex[glyph.identity]
+        else { return false }
+        let ordinal = UInt16(glyphs.count)
+        if let range = scopes[index].glyphRange {
+            guard range.upperBound == ordinal else { return false }
+            scopes[index].glyphRange = range.lowerBound ..< (ordinal + 1)
+        } else {
+            scopes[index].glyphRange = ordinal ..< (ordinal + 1)
+        }
         glyphs.append(glyph)
         return true
+    }
+
+    package func positionedGlyphRange(
+        for identity: borrowing DynamicSemanticIdentity
+    ) -> Range<UInt16>? {
+        let identity = copy identity
+        guard let index = scopeIndex[identity] else { return nil }
+        return scopes[index].glyphRange
     }
 
     package func positionedGlyph(
@@ -167,6 +210,7 @@ package struct DynamicLayoutWorkspace: LayoutWorkspace {
 
     package mutating func resetLayout() {
         scopes.removeAll(keepingCapacity: true)
+        scopeIndex.removeAll(keepingCapacity: true)
         lines.removeAll(keepingCapacity: true)
         glyphs.removeAll(keepingCapacity: true)
         depth.removeAll(keepingCapacity: true)
