@@ -34,15 +34,15 @@ unless render_core_imports == expected_render_core_imports
   fail_check("Render Core imports differ: #{render_core_imports}")
 end
 
-fail_check("Semantic render result adapter does not forward its authoritative view") unless semantic_adapter.include?(
-  "var renderView: Storage.RenderView {\n        storage.renderView\n    }"
+fail_check("Semantic render result adapter does not forward its authoritative view") unless semantic_adapter.match?(
+  /var renderView: Storage\.RenderView\s*\{\s*storage\.renderView\s*\}/
 )
-fail_check("resolved layout adapter does not forward its authoritative view") unless layout.include?(
-  "package var renderView: Storage.RenderView {\n        storage.renderView\n    }"
+fail_check("resolved layout adapter does not forward its authoritative view") unless layout.match?(
+  /package var renderView: Storage\.RenderView\s*\{\s*storage\.renderView\s*\}/
 )
 
 semantic_adapter_body = semantic_adapter[/package extension SemanticLayoutResultSink where Storage: SemanticRenderResultStorage \{(.*?)\n\}/m, 1]
-layout_adapter_body = layout[/package struct ResolvedRenderLayoutResultSink<Storage>:(.*?)\n\}/m, 1]
+layout_adapter_body = layout[/^([ \t]*)package struct ResolvedRenderLayoutResultSink<Storage>:(.*?)\n\1\}/m, 2]
 fail_check("Semantic render adapter body is missing") unless semantic_adapter_body
 fail_check("resolved layout adapter body is missing") unless layout_adapter_body
 adapter_sources = [semantic_adapter_body, layout_adapter_body].join("\n")

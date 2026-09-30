@@ -3,7 +3,7 @@ import GiftUIDrawing
 import GiftUIInteraction
 import GiftUISemanticCore
 
-package struct DynamicSemanticIdentity: SemanticRecordingIdentity {
+package struct DynamicSemanticIdentity: SemanticRecordingIdentity, Hashable {
     package let components: [SemanticRecordingPathComponent]
     package let declarationRole: SemanticRecordingRole
     package let layoutScopeDiscriminator: UInt16?
@@ -184,6 +184,12 @@ private struct DynamicSemanticRenderProjectionNode {
     let children: [DynamicSemanticIdentity]
 }
 
+private struct DynamicSemanticLayoutLookup {
+    let identity: DynamicSemanticIdentity
+    let children: [DynamicSemanticIdentity]
+    let modifiers: [DynamicSemanticModifierRecord]
+}
+
 package struct DynamicSemanticRenderView: SemanticRenderView {
     package let rootIdentity: DynamicSemanticIdentity
     package let renderSnapshotVersion: UInt32
@@ -251,6 +257,8 @@ package struct DynamicSemanticHostStorage: SemanticExpansionSink,
     private var modifiers: [DynamicSemanticModifierRecord] = []
     private var renderScopes: [DynamicSemanticRenderRecord] = []
     private var actions: [DynamicSemanticActionRecord] = []
+    private var publishedLayoutLookups: [DynamicSemanticLayoutLookup] = []
+    private var publishedLayoutIndex: [DynamicSemanticIdentity: Int] = [:]
     private var canvasStorage: DynamicCanvasCallableStorage<DynamicSemanticIdentity>
     private var publishedRenderView: DynamicSemanticRenderView?
     private var bodyEvaluationCount: UInt16 = 0
@@ -275,6 +283,8 @@ package struct DynamicSemanticHostStorage: SemanticExpansionSink,
         modifiers.reserveCapacity(Int(limits.maximumModifierApplications))
         renderScopes.reserveCapacity(Int(limits.maximumSemanticNodes))
         actions.reserveCapacity(Int(limits.maximumActionOccurrences))
+        publishedLayoutLookups.reserveCapacity(Int(maximumStructuralOccurrences))
+        publishedLayoutIndex.reserveCapacity(Int(maximumStructuralOccurrences))
     }
 
     package mutating func beginExpansion() -> Bool {
@@ -418,11 +428,36 @@ package struct DynamicSemanticHostStorage: SemanticExpansionSink,
         else { return false }
         let nextVersion = renderSnapshotVersion.addingReportingOverflow(1)
         guard !nextVersion.overflow, nextVersion.partialValue != 0 else { return false }
+        let occurrenceIdentities = primitives.map(\.identity) + actions.map(\.identity)
+        let sortedOccurrenceIndices = occurrenceIdentities.indices.sorted { left, right in
+            let leftDepth = occurrenceIdentities[left].componentCount
+            let rightDepth = occurrenceIdentities[right].componentCount
+            return leftDepth == rightDepth ? left < right : leftDepth < rightDepth
+        }
+        for identity in structural {
+            publishedLayoutIndex[identity] = publishedLayoutLookups.count
+            publishedLayoutLookups.append(
+                DynamicSemanticLayoutLookup(
+                    identity: identity,
+                    children: children(
+                        of: identity,
+                        among: occurrenceIdentities,
+                        sortedIndices: sortedOccurrenceIndices
+                    ),
+                    modifiers: modifiers(of: identity, among: occurrenceIdentities)
+                )
+            )
+        }
         guard
             let renderView = makeRenderView(
-                snapshotVersion: nextVersion.partialValue
+                snapshotVersion: nextVersion.partialValue,
+                occurrenceIdentities: occurrenceIdentities
             )
-        else { return false }
+        else {
+            publishedLayoutLookups.removeAll(keepingCapacity: true)
+            publishedLayoutIndex.removeAll(keepingCapacity: true)
+            return false
+        }
         renderSnapshotVersion = nextVersion.partialValue
         publishedRenderView = renderView
         isRecording = false
@@ -484,30 +519,37 @@ package struct DynamicSemanticHostStorage: SemanticExpansionSink,
     }
 
     package func childCount(of identity: DynamicSemanticIdentity) -> UInt16? {
-        guard isPublished, structural.contains(identity) else { return nil }
-        return UInt16(children(of: identity).count)
+        guard isPublished,
+            let lookup = layoutLookup(of: identity)
+        else { return nil }
+        return UInt16(lookup.children.count)
     }
 
     package func child(
         of identity: DynamicSemanticIdentity,
         at index: UInt16
     ) -> DynamicSemanticIdentity? {
-        guard isPublished, structural.contains(identity) else { return nil }
-        let children = children(of: identity)
-        guard Int(index) < children.count else { return nil }
-        return children[Int(index)]
+        guard isPublished,
+            let lookup = layoutLookup(of: identity),
+            Int(index) < lookup.children.count
+        else { return nil }
+        return lookup.children[Int(index)]
     }
 
     package func modifierCount(of identity: DynamicSemanticIdentity) -> UInt16? {
-        guard isPublished, structural.contains(identity) else { return nil }
-        return UInt16(modifiers(of: identity).count)
+        guard isPublished,
+            let lookup = layoutLookup(of: identity)
+        else { return nil }
+        return UInt16(lookup.modifiers.count)
     }
 
     package func modifierScope(
         of identity: DynamicSemanticIdentity,
         at index: UInt16
     ) -> DynamicSemanticIdentity? {
-        let values = modifiers(of: identity)
+        let values =
+            layoutLookup(of: identity)?.modifiers
+            ?? modifiers(of: identity)
         guard Int(index) < values.count else { return nil }
         return values[Int(index)].layoutIdentity
     }
@@ -516,7 +558,9 @@ package struct DynamicSemanticHostStorage: SemanticExpansionSink,
         of identity: DynamicSemanticIdentity,
         at index: UInt16
     ) -> SemanticLayoutModifier? {
-        let values = modifiers(of: identity)
+        let values =
+            layoutLookup(of: identity)?.modifiers
+            ?? modifiers(of: identity)
         guard Int(index) < values.count else { return nil }
         return values[Int(index)].modifier
     }
@@ -525,7 +569,9 @@ package struct DynamicSemanticHostStorage: SemanticExpansionSink,
         of identity: DynamicSemanticIdentity,
         at index: UInt16
     ) -> Bool? {
-        let values = modifiers(of: identity)
+        let values =
+            layoutLookup(of: identity)?.modifiers
+            ?? modifiers(of: identity)
         guard Int(index) < values.count else { return nil }
         return values[Int(index)].disablesActions
     }
@@ -603,6 +649,8 @@ package struct DynamicSemanticHostStorage: SemanticExpansionSink,
         modifiers.removeAll(keepingCapacity: true)
         renderScopes.removeAll(keepingCapacity: true)
         actions.removeAll(keepingCapacity: true)
+        publishedLayoutLookups.removeAll(keepingCapacity: true)
+        publishedLayoutIndex.removeAll(keepingCapacity: true)
         canvasStorage.discard()
         publishedRenderView = nil
         bodyEvaluationCount = 0
@@ -618,47 +666,67 @@ package struct DynamicSemanticHostStorage: SemanticExpansionSink,
         renderScopes[index].scope = scope
     }
 
-    private func children(
+    private func layoutLookup(
         of identity: DynamicSemanticIdentity
+    ) -> DynamicSemanticLayoutLookup? {
+        guard let index = publishedLayoutIndex[identity] else { return nil }
+        return publishedLayoutLookups[index]
+    }
+
+    private func children(
+        of identity: DynamicSemanticIdentity,
+        among layoutIdentities: [DynamicSemanticIdentity],
+        sortedIndices: [Int]
     ) -> [DynamicSemanticIdentity] {
-        let layoutIdentities = primitives.map(\.identity) + actions.map(\.identity)
-        return layoutIdentities.filter { candidate in
-            guard identity != candidate, identity.isPrefix(of: candidate) else {
-                return false
-            }
-            return !layoutIdentities.contains { intermediate in
-                intermediate != identity && intermediate != candidate
-                    && identity.isPrefix(of: intermediate)
-                    && intermediate.isPrefix(of: candidate)
-            }
+        var selected: [Int] = []
+        for offset in sortedIndices {
+            let candidate = layoutIdentities[offset]
+            guard identity != candidate,
+                identity.isPrefix(of: candidate),
+                !selected.contains(where: {
+                    layoutIdentities[$0].isPrefix(of: candidate)
+                })
+            else { continue }
+            selected.append(offset)
         }
+        selected.sort()
+        return selected.map { layoutIdentities[$0] }
     }
 
     private func modifiers(
         of identity: DynamicSemanticIdentity
     ) -> [DynamicSemanticModifierRecord] {
         let layoutIdentities = primitives.map(\.identity) + actions.map(\.identity)
+        return modifiers(of: identity, among: layoutIdentities)
+    }
+
+    private func modifiers(
+        of identity: DynamicSemanticIdentity,
+        among layoutIdentities: [DynamicSemanticIdentity]
+    ) -> [DynamicSemanticModifierRecord] {
+        let nearestLayoutAncestorDepth =
+            layoutIdentities.lazy.filter { candidate in
+                candidate != identity && candidate.isPrefix(of: identity)
+            }.map(\.componentCount).max() ?? 0
         return modifiers.filter { record in
             record.identity.isPrefix(of: identity)
-                && !layoutIdentities.contains { intermediate in
-                    intermediate != identity
-                        && record.identity.isPrefix(of: intermediate)
-                        && intermediate.isPrefix(of: identity)
-                }
+                && (record.identity == identity
+                    || record.identity.componentCount > nearestLayoutAncestorDepth)
         }
         .sorted { $0.chainIndex < $1.chainIndex }
     }
 
     private func makeRenderView(
-        snapshotVersion: UInt32
+        snapshotVersion: UInt32,
+        occurrenceIdentities: [DynamicSemanticIdentity]
     ) -> DynamicSemanticRenderView? {
-        let occurrenceIdentities = primitives.map(\.identity) + actions.map(\.identity)
         guard !occurrenceIdentities.isEmpty else { return nil }
 
         func entryIdentity(
             for identity: DynamicSemanticIdentity
         ) -> DynamicSemanticIdentity {
-            modifiers(of: identity).last?.layoutIdentity ?? identity
+            layoutLookup(of: identity)?
+                .modifiers.last?.layoutIdentity ?? identity
         }
 
         guard let recordedRoot = structural.first else { return nil }
@@ -666,14 +734,16 @@ package struct DynamicSemanticHostStorage: SemanticExpansionSink,
         if occurrenceIdentities.contains(recordedRoot) {
             rootOccurrences = [recordedRoot]
         } else {
-            rootOccurrences = children(of: recordedRoot)
+            guard let rootLookup = layoutLookup(of: recordedRoot) else { return nil }
+            rootOccurrences = rootLookup.children
         }
         guard rootOccurrences.count == 1 else { return nil }
 
         var nodes: [DynamicSemanticRenderProjectionNode] = []
         nodes.reserveCapacity(Int(scopeCount))
         for identity in occurrenceIdentities {
-            let modifierRecords = modifiers(of: identity)
+            guard let lookup = layoutLookup(of: identity) else { return nil }
+            let modifierRecords = lookup.modifiers
             for (index, record) in modifierRecords.enumerated() {
                 let child =
                     index == 0
@@ -688,7 +758,7 @@ package struct DynamicSemanticHostStorage: SemanticExpansionSink,
                 )
             }
 
-            let childEntries = children(of: identity).map(entryIdentity(for:))
+            let childEntries = lookup.children.map(entryIdentity(for:))
             let primitiveScope =
                 primitives.first {
                     $0.identity == identity

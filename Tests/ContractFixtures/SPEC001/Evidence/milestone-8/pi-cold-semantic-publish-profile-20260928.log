@@ -1,0 +1,65 @@
+pi-semantic-publish-us occurrence=120 lookup=63224 render=5986 structural=124
+pi-derive-us semantic=146818 layout=72231 drawing=2669 render=33290 interaction=5142
+pi-target-us sink=792656 payloads=311 regions=3577 bytes=218874
+pi-present-us derive=261665 offer=1307822
+pi-semantic-publish-us occurrence=120 lookup=52706 render=5291 structural=124
+pi-derive-us semantic=75204 layout=67615 drawing=1748 render=34284 interaction=1915
+pi-target-us sink=826837 payloads=326 regions=3720 bytes=219770
+pi-present-us derive=182312 offer=1361050
+pi-frame-duration-us 1547580
+pi-semantic-publish-us occurrence=70 lookup=53328 render=5104 structural=124
+pi-derive-us semantic=78373 layout=68026 drawing=1874 render=35115 interaction=1839
+pi-target-us sink=808532 payloads=328 regions=3750 bytes=219856
+pi-present-us derive=186850 offer=1349835
+pi-frame-duration-us 1539437
+pi-semantic-publish-us occurrence=69 lookup=55669 render=5210 structural=124
+pi-derive-us semantic=80181 layout=68918 drawing=1940 render=36450 interaction=1843
+pi-target-us sink=844864 payloads=330 regions=3779 bytes=219938
+pi-present-us derive=190949 offer=1392110
+pi-frame-duration-us 1585389
+pi-semantic-publish-us occurrence=73 lookup=57658 render=5244 structural=124
+pi-derive-us semantic=79959 layout=69048 drawing=1918 render=35709 interaction=1847
+pi-target-us sink=828512 payloads=330 regions=3785 bytes=219996
+pi-present-us derive=190115 offer=1384752
+pi-frame-duration-us 1577350
+pi-semantic-publish-us occurrence=66 lookup=57568 render=5112 structural=124
+pi-derive-us semantic=81071 layout=68635 drawing=1984 render=36203 interaction=1969
+pi-target-us sink=822590 payloads=332 regions=3815 bytes=220082
+pi-present-us derive=191485 offer=1380569
+pi-frame-duration-us 1575631
+pi-semantic-publish-us occurrence=72 lookup=53268 render=5337 structural=124
+pi-derive-us semantic=78829 layout=68812 drawing=1917 render=35795 interaction=1865
+pi-target-us sink=776750 payloads=332 regions=3821 bytes=220140
+pi-present-us derive=188759 offer=1331190
+pi-frame-duration-us 1524847
+pi-semantic-publish-us occurrence=70 lookup=55040 render=5293 structural=124
+pi-derive-us semantic=81422 layout=69805 drawing=2054 render=35462 interaction=1851
+pi-target-us sink=854813 payloads=332 regions=3826 bytes=220194
+pi-present-us derive=192180 offer=1430182
+pi-frame-duration-us 1625270
+pi-semantic-publish-us occurrence=74 lookup=55834 render=5247 structural=124
+pi-derive-us semantic=79551 layout=69624 drawing=2125 render=35343 interaction=1960
+pi-target-us sink=754247 payloads=332 regions=3832 bytes=220252
+pi-present-us derive=190272 offer=1310118
+pi-frame-duration-us 1504375
+pi-semantic-publish-us occurrence=69 lookup=55688 render=5292 structural=124
+pi-derive-us semantic=78362 layout=70925 drawing=2227 render=35996 interaction=1859
+pi-target-us sink=669976 payloads=334 regions=3861 bytes=220334
+pi-present-us derive=190930 offer=1232672
+pi-frame-duration-us 1425992
+pi-semantic-publish-us occurrence=73 lookup=55950 render=5301 structural=124
+pi-derive-us semantic=81686 layout=69606 drawing=2244 render=36688 interaction=1858
+pi-target-us sink=837277 payloads=337 regions=3891 bytes=220420
+pi-present-us derive=193662 offer=1419338
+pi-frame-duration-us 1615488
+pi-semantic-publish-us occurrence=69 lookup=56033 render=5125 structural=124
+pi-derive-us semantic=79210 layout=69659 drawing=2392 render=35783 interaction=2124
+pi-target-us sink=785953 payloads=339 regions=3921 bytes=220506
+pi-present-us derive=190721 offer=1348823
+pi-frame-duration-us 1543240
+pi-semantic-publish-us occurrence=352 lookup=55651 render=5234 structural=124
+pi-derive-us semantic=81960 layout=69098 drawing=2328 render=36408 interaction=1892
+status=completed
+pi-target-us sink=668393 payloads=340 regions=3926 bytes=220560
+pi-present-us derive=193375 offer=1242479
+pi-frame-duration-us 1440238

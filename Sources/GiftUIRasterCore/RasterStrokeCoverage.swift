@@ -97,6 +97,17 @@ package enum RasterStrokeCoverage {
             color: header.color,
             encoding: descriptor.encoding
         )
+        #if GIFTUI_DYNAMIC_PROFILE && !GIFTUI_NRF_EMBEDDED
+            if header.lineWidth == 1, isOrthogonal(stroke, header: header) {
+                return rasterizeUnitOrthogonal(
+                    stroke,
+                    header: header,
+                    covered: covered,
+                    pixel: pixel,
+                    replace
+                )
+            }
+        #endif
         var replaced: UInt32 = 0
         var y = covered.minY
         while y < covered.maxY {
@@ -141,6 +152,134 @@ package enum RasterStrokeCoverage {
         return .completed(pixelCount: replaced)
     }
 
+    #if GIFTUI_DYNAMIC_PROFILE && !GIFTUI_NRF_EMBEDDED
+        private static func isOrthogonal<Stroke: StraightLineStrokeView>(
+            _ stroke: borrowing Stroke,
+            header: StraightLineStrokeHeader
+        ) -> Bool {
+            var subpathIndex: UInt16 = 0
+            while subpathIndex < header.subpathCount {
+                guard let subpath = stroke.subpath(at: subpathIndex) else { return false }
+                if subpath.pointCount > 1 {
+                    var index = subpath.firstPoint + 1
+                    let end = subpath.firstPoint + subpath.pointCount
+                    guard var previous = stroke.point(at: subpath.firstPoint) else {
+                        return false
+                    }
+                    while index < end {
+                        guard let point = stroke.point(at: index),
+                            previous.x == point.x || previous.y == point.y,
+                            previous.x != .min, previous.y != .min,
+                            point.x != .min, point.y != .min
+                        else { return false }
+                        previous = point
+                        index += 1
+                    }
+                }
+                subpathIndex += 1
+            }
+            return true
+        }
+
+        private static func rasterizeUnitOrthogonal<Stroke: StraightLineStrokeView>(
+            _ stroke: borrowing Stroke,
+            header: StraightLineStrokeHeader,
+            covered: Rect,
+            pixel: CanonicalEncodedPixel,
+            _ replace: (Point, CanonicalEncodedPixel) -> Bool
+        ) -> RasterStrokeResult {
+            var replaced: UInt32 = 0
+            var y = covered.minY
+            while y < covered.maxY {
+                var row = [Bool](repeating: false, count: Int(covered.size.width))
+                var subpathIndex: UInt16 = 0
+                while subpathIndex < header.subpathCount {
+                    guard let subpath = stroke.subpath(at: subpathIndex) else {
+                        return .invalidStroke
+                    }
+                    guard subpath.pointCount > 1 else {
+                        subpathIndex += 1
+                        continue
+                    }
+                    guard let start = stroke.point(at: subpath.firstPoint) else {
+                        return .invalidStroke
+                    }
+                    var previous = start
+                    var lastSegmentStart: Point?
+                    var lastSegmentEnd: Point?
+                    var index = subpath.firstPoint + 1
+                    let end = subpath.firstPoint + subpath.pointCount
+                    while index < end {
+                        guard let point = stroke.point(at: index) else {
+                            return .invalidStroke
+                        }
+                        defer {
+                            previous = point
+                            index += 1
+                        }
+                        guard point != previous else { continue }
+                        if previous.y == point.y {
+                            if y == previous.y - 1 || y == previous.y {
+                                let startX = max(covered.minX, min(previous.x, point.x))
+                                let endX = min(covered.maxX, max(previous.x, point.x))
+                                if startX < endX {
+                                    for x in startX ..< endX {
+                                        row[Int(x - covered.minX)] = true
+                                    }
+                                }
+                            }
+                        } else if y >= min(previous.y, point.y),
+                            y < max(previous.y, point.y)
+                        {
+                            for x in (previous.x - 1) ... previous.x
+                            where x >= covered.minX && x < covered.maxX {
+                                row[Int(x - covered.minX)] = true
+                            }
+                        }
+                        if let lastSegmentStart, let lastSegmentEnd,
+                            y == previous.y - 1 || y == previous.y
+                        {
+                            for x in (previous.x - 1) ... previous.x
+                            where x >= covered.minX && x < covered.maxX {
+                                switch joinCovers(
+                                    centerX: Wide(x) * 2 + 1,
+                                    centerY: Wide(y) * 2 + 1,
+                                    previous: lastSegmentStart,
+                                    vertex: lastSegmentEnd,
+                                    following: point,
+                                    width: 1,
+                                    join: header.lineJoin
+                                ) {
+                                case .covered:
+                                    row[Int(x - covered.minX)] = true
+                                case .arithmeticOverflow:
+                                    return .arithmeticOverflow
+                                case .notCovered, .invalidStroke:
+                                    break
+                                }
+                            }
+                        }
+                        lastSegmentStart = previous
+                        lastSegmentEnd = point
+                    }
+                    subpathIndex += 1
+                }
+                for index in row.indices where row[index] {
+                    guard
+                        replace(
+                            Point(x: covered.minX + Int32(index), y: y), pixel
+                        )
+                    else { return .replacementRefused }
+                    let next = replaced.addingReportingOverflow(1)
+                    guard !next.overflow else { return .arithmeticOverflow }
+                    replaced = next.partialValue
+                }
+                y += 1
+            }
+            return .completed(pixelCount: replaced)
+        }
+    #endif
+
     private enum CoverageResult {
         case covered
         case notCovered
@@ -167,25 +306,41 @@ package enum RasterStrokeCoverage {
             guard let subpath = stroke.subpath(at: index) else {
                 return (fromX, maximumX)
             }
-            if subpath.pointCount > 2 { return (fromX, maximumX) }
-            if subpath.pointCount == 2 {
-                guard let first = stroke.point(at: subpath.firstPoint),
-                    let second = stroke.point(at: subpath.firstPoint + 1)
-                else { return (fromX, maximumX) }
-                let width = Int64(header.lineWidth)
-                let minimumY = Int64(min(first.y, second.y)) - width
-                let maximumY = Int64(max(first.y, second.y)) + width
-                if Int64(y) >= minimumY && Int64(y) <= maximumY {
-                    let left = Int64(min(first.x, second.x)) - width
-                    let right = Int64(max(first.x, second.x)) + width + 1
-                    let start = Int32(min(Int64(maximumX), max(Int64(fromX), left)))
-                    let end = Int32(max(Int64(fromX), min(Int64(maximumX), right)))
-                    if end > start,
-                        start < bestStart || (start == bestStart && end > bestEnd)
-                    {
-                        bestStart = start
-                        bestEnd = end
+            if subpath.pointCount > 1 {
+                let end = subpath.firstPoint + subpath.pointCount
+                var pointIndex = subpath.firstPoint + 1
+                guard var first = stroke.point(at: subpath.firstPoint) else {
+                    return (fromX, maximumX)
+                }
+                while pointIndex < end {
+                    guard let second = stroke.point(at: pointIndex) else {
+                        return (fromX, maximumX)
                     }
+                    // Multi-segment miter joins can extend beyond the
+                    // expanded segment bounds. Orthogonal joins and round
+                    // joins remain inside them.
+                    if subpath.pointCount > 2, header.lineJoin == .miter,
+                        first.x != second.x, first.y != second.y
+                    {
+                        return (fromX, maximumX)
+                    }
+                    let width = Int64(header.lineWidth)
+                    let minimumY = Int64(min(first.y, second.y)) - width
+                    let maximumY = Int64(max(first.y, second.y)) + width
+                    if Int64(y) >= minimumY && Int64(y) <= maximumY {
+                        let left = Int64(min(first.x, second.x)) - width
+                        let right = Int64(max(first.x, second.x)) + width + 1
+                        let start = Int32(min(Int64(maximumX), max(Int64(fromX), left)))
+                        let end = Int32(max(Int64(fromX), min(Int64(maximumX), right)))
+                        if end > start,
+                            start < bestStart || (start == bestStart && end > bestEnd)
+                        {
+                            bestStart = start
+                            bestEnd = end
+                        }
+                    }
+                    first = second
+                    pointIndex += 1
                 }
             }
             index += 1
@@ -358,6 +513,13 @@ package enum RasterStrokeCoverage {
         second: Point,
         width: Wide
     ) -> Bool {
+        // The stroke cannot cover a pixel outside the segment's expanded
+        // bounds. Reject distant waveform segments before the wide products.
+        guard centerX >= Wide(min(first.x, second.x)) * 2 - width,
+            centerX <= Wide(max(first.x, second.x)) * 2 + width,
+            centerY >= Wide(min(first.y, second.y)) * 2 - width,
+            centerY <= Wide(max(first.y, second.y)) * 2 + width
+        else { return false }
         let dx = Wide(second.x) - Wide(first.x)
         let dy = Wide(second.y) - Wide(first.y)
         let lengthSquared = (dx * dx) + (dy * dy)
@@ -397,6 +559,16 @@ package enum RasterStrokeCoverage {
         width: Wide,
         join: LineJoin
     ) -> CoverageResult {
+        let incomingIsAxisAligned = previous.x == vertex.x || previous.y == vertex.y
+        let outgoingIsAxisAligned = following.x == vertex.x || following.y == vertex.y
+        if incomingIsAxisAligned && outgoingIsAxisAligned,
+            centerX < Wide(vertex.x) * 2 - width
+                || centerX > Wide(vertex.x) * 2 + width
+                || centerY < Wide(vertex.y) * 2 - width
+                || centerY > Wide(vertex.y) * 2 + width
+        {
+            return .notCovered
+        }
         if join == .round {
             return diskCovers(
                 centerX: centerX,

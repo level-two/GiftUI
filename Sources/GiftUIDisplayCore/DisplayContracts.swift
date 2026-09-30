@@ -47,9 +47,22 @@ package protocol DisplayPayloadWriter {
         encoding: CanonicalPixelEncoding
     ) -> Bool
     mutating func write(byte: UInt8) -> Bool
+    mutating func writePixel(
+        mostSignificantByte: UInt8,
+        leastSignificantByte: UInt8
+    ) -> Bool
     mutating func endRegion() -> Bool
     mutating func finish() -> Bool
     mutating func discard()
+}
+
+extension DisplayPayloadWriter {
+    package mutating func writePixel(
+        mostSignificantByte: UInt8,
+        leastSignificantByte: UInt8
+    ) -> Bool {
+        write(byte: mostSignificantByte) && write(byte: leastSignificantByte)
+    }
 }
 
 package protocol DisplayTarget {

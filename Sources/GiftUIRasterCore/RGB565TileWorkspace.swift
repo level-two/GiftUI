@@ -14,7 +14,42 @@ package protocol RGB565TileStorage {
         pixelIndex: UInt32
     ) -> Bool
     borrowing func isAffected(pixelIndex: UInt32) -> Bool
+    borrowing func nextAffectedRun(
+        startingAt cursor: UInt32,
+        before end: UInt32,
+        rowWidth: UInt32
+    ) -> Range<UInt32>?
     borrowing func byte(at offset: UInt32) -> UInt8?
+    borrowing func pixelBytes(at byteOffset: UInt32) -> (UInt8, UInt8)?
+}
+
+extension RGB565TileStorage {
+    package borrowing func pixelBytes(at byteOffset: UInt32) -> (UInt8, UInt8)? {
+        guard let nextOffset = UInt32(exactly: UInt64(byteOffset) + 1),
+            let mostSignificantByte = byte(at: byteOffset),
+            let leastSignificantByte = byte(at: nextOffset)
+        else { return nil }
+        return (mostSignificantByte, leastSignificantByte)
+    }
+
+    package borrowing func nextAffectedRun(
+        startingAt cursor: UInt32,
+        before end: UInt32,
+        rowWidth: UInt32
+    ) -> Range<UInt32>? {
+        guard rowWidth > 0 else { return nil }
+        var start = cursor
+        while start < end, !isAffected(pixelIndex: start) {
+            start += 1
+        }
+        guard start < end else { return nil }
+        let rowEnd = min(end, start + rowWidth - start % rowWidth)
+        var next = start + 1
+        while next < rowEnd, isAffected(pixelIndex: next) {
+            next += 1
+        }
+        return start ..< next
+    }
 }
 
 package struct RGB565TileWorkspace<Storage>
@@ -22,6 +57,8 @@ where Storage: RGB565TileStorage {
     package let descriptor: RasterSurfaceDescriptor
     package private(set) var storage: Storage
     package private(set) var activeTile: Rect?
+    package private(set) var firstAffectedPixel: UInt32?
+    package private(set) var lastAffectedPixel: UInt32?
 
     package init?(
         descriptor: RasterSurfaceDescriptor,
@@ -63,6 +100,8 @@ where Storage: RGB565TileStorage {
             )
         else { return false }
         activeTile = tile
+        firstAffectedPixel = nil
+        lastAffectedPixel = nil
         return true
     }
 
@@ -92,12 +131,19 @@ where Storage: RGB565TileStorage {
             UInt32(point.x)
         )
         guard !byteOffset.overflow, !pixelIndex.overflow else { return false }
-        return storage.store(
-            mostSignificantByte: pixel.byte0,
-            leastSignificantByte: pixel.byte1,
-            byteOffset: byteOffset.partialValue,
-            pixelIndex: pixelIndex.partialValue
-        )
+        guard
+            storage.store(
+                mostSignificantByte: pixel.byte0,
+                leastSignificantByte: pixel.byte1,
+                byteOffset: byteOffset.partialValue,
+                pixelIndex: pixelIndex.partialValue
+            )
+        else { return false }
+        firstAffectedPixel = min(
+            firstAffectedPixel ?? pixelIndex.partialValue, pixelIndex.partialValue)
+        lastAffectedPixel = max(
+            lastAffectedPixel ?? pixelIndex.partialValue, pixelIndex.partialValue)
+        return true
     }
 
     package mutating func finishTile() -> Bool {

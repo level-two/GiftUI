@@ -1,0 +1,78 @@
+pi-target-us sink=729399 payloads=311 regions=3577 bytes=218874
+pi-present-us derive=701224 offer=1493193
+pi-target-us sink=852928 payloads=326 regions=3720 bytes=219770
+pi-present-us derive=623103 offer=1630468
+pi-frame-duration-us 2258134
+pi-target-us sink=888154 payloads=328 regions=3750 bytes=219856
+pi-present-us derive=650374 offer=1675837
+pi-frame-duration-us 2329699
+pi-target-us sink=870100 payloads=330 regions=3779 bytes=219938
+pi-present-us derive=638809 offer=1654247
+pi-frame-duration-us 2294821
+pi-target-us sink=799190 payloads=330 regions=3785 bytes=219996
+pi-present-us derive=644503 offer=1584596
+pi-frame-duration-us 2231646
+pi-target-us sink=878298 payloads=332 regions=3815 bytes=220082
+pi-present-us derive=650234 offer=1673316
+pi-frame-duration-us 2325320
+pi-target-us sink=870040 payloads=332 regions=3821 bytes=220140
+pi-present-us derive=644854 offer=1668660
+pi-frame-duration-us 2315635
+pi-target-us sink=821241 payloads=332 regions=3826 bytes=220194
+pi-present-us derive=650260 offer=1621651
+pi-frame-duration-us 2274053
+pi-target-us sink=844713 payloads=332 regions=3832 bytes=220252
+pi-present-us derive=638554 offer=1653882
+pi-frame-duration-us 2294585
+pi-target-us sink=846504 payloads=334 regions=3861 bytes=220334
+pi-present-us derive=645054 offer=1663335
+pi-frame-duration-us 2310184
+pi-target-us sink=899725 payloads=337 regions=3891 bytes=220420
+pi-present-us derive=644554 offer=1698169
+pi-frame-duration-us 2344478
+pi-target-us sink=872717 payloads=339 regions=3921 bytes=220506
+pi-present-us derive=643221 offer=1681204
+pi-frame-duration-us 2326577
+pi-target-us sink=850820 payloads=340 regions=3926 bytes=220560
+pi-present-us derive=647089 offer=1669378
+pi-frame-duration-us 2318730
+pi-target-us sink=834728 payloads=339 regions=3931 bytes=220614
+pi-present-us derive=641031 offer=1667945
+pi-frame-duration-us 2310865
+pi-target-us sink=822324 payloads=339 regions=3937 bytes=220672
+pi-present-us derive=650923 offer=1630246
+pi-frame-duration-us 2282974
+pi-target-us sink=871636 payloads=342 regions=3966 bytes=220754
+pi-present-us derive=639687 offer=1700374
+pi-frame-duration-us 2341876
+pi-target-us sink=856930 payloads=341 regions=3971 bytes=220808
+pi-present-us derive=649442 offer=1675813
+pi-frame-duration-us 2327178
+pi-target-us sink=841128 payloads=340 regions=3977 bytes=220866
+pi-present-us derive=638146 offer=1662999
+pi-frame-duration-us 2302959
+pi-target-us sink=887425 payloads=342 regions=4007 bytes=220952
+pi-present-us derive=646373 offer=1742455
+pi-frame-duration-us 2390610
+pi-target-us sink=868322 payloads=343 regions=4036 bytes=221034
+pi-present-us derive=641817 offer=1697943
+pi-frame-duration-us 2341669
+pi-target-us sink=853768 payloads=344 regions=4041 bytes=221054
+pi-present-us derive=646397 offer=1672980
+pi-frame-duration-us 2321178
+pi-target-us sink=885585 payloads=346 regions=4070 bytes=221102
+pi-present-us derive=658514 offer=1727309
+pi-frame-duration-us 2388765
+pi-target-us sink=840964 payloads=343 regions=3981 bytes=220872
+pi-present-us derive=646845 offer=1690890
+pi-frame-duration-us 2339880
+pi-target-us sink=865581 payloads=342 regions=4002 bytes=220888
+pi-present-us derive=659278 offer=1695387
+pi-frame-duration-us 2356868
+pi-target-us sink=856275 payloads=345 regions=3995 bytes=220836
+pi-present-us derive=655406 offer=1688725
+pi-frame-duration-us 2345964
+status=completed
+pi-target-us sink=871620 payloads=345 regions=3993 bytes=220906
+pi-present-us derive=651222 offer=1695810
+pi-frame-duration-us 2348854

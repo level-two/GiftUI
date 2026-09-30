@@ -81,6 +81,7 @@ fail_check("portable GiftUI contains an exported import") if giftui_text.match?(
 allowed_layout_consumers = %w[
   GiftUILayoutFailureAdapterFixture GiftUIRenderLowering GiftUIInteraction
   GiftUIDrawing GiftUIRuntimeCore GiftUIRuntimeDynamic GiftUIRuntimeStatic
+  SignalAnalyzerTargetHost
 ]
 consumer_violations = Dir[ROOT.join("Sources/*/**/*.swift")].map do |path|
   next unless File.read(path).match?(/^import GiftUILayout$/)

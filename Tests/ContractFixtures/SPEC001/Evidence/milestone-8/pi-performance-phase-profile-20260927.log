@@ -1,0 +1,96 @@
+pi-framebuffer-us projection=22255 writes=971078 regions=3577 rows=7154
+pi-target-us sink=1024348 payloads=311 regions=3577 bytes=218874
+pi-tiles-us reset=12840 raster=290785 consume=1885307 fill=847728 submit=1030500 finish=1392 visits=284
+pi-produce-us preflight=32501 stream=2252780
+pi-present-us derive=697636 offer=2285866
+pi-framebuffer-us projection=23010 writes=945120 regions=3720 rows=7440
+pi-target-us sink=999809 payloads=326 regions=3720 bytes=219770
+pi-tiles-us reset=12762 raster=301509 consume=1879508 fill=864867 submit=1007287 finish=1460 visits=291
+pi-produce-us preflight=33617 stream=2262451
+pi-present-us derive=622665 offer=2297608
+pi-frame-duration-us 2925142
+pi-framebuffer-us projection=22602 writes=742086 regions=3750 rows=7500
+pi-target-us sink=797212 payloads=328 regions=3750 bytes=219856
+pi-tiles-us reset=12852 raster=309331 consume=1691634 fill=880244 submit=803926 finish=1441 visits=293
+pi-produce-us preflight=34663 stream=2083482
+pi-present-us derive=621437 offer=2118497
+pi-frame-duration-us 2741618
+pi-framebuffer-us projection=23932 writes=998216 regions=3779 rows=7558
+pi-target-us sink=1055005 payloads=330 regions=3779 bytes=219938
+pi-tiles-us reset=13992 raster=307889 consume=1942001 fill=872802 submit=1061417 finish=1407 visits=295
+pi-produce-us preflight=35058 stream=2332823
+pi-present-us derive=641030 offer=2368174
+pi-frame-duration-us 3010935
+pi-framebuffer-us projection=23158 writes=930187 regions=3785 rows=7570
+pi-target-us sink=985621 payloads=330 regions=3785 bytes=219996
+pi-tiles-us reset=13405 raster=344156 consume=1875264 fill=874872 submit=992716 finish=1356 visits=294
+pi-produce-us preflight=34960 stream=2300755
+pi-present-us derive=636577 offer=2336068
+pi-frame-duration-us 2974461
+pi-framebuffer-us projection=23247 writes=845007 regions=3815 rows=7630
+pi-target-us sink=902254 payloads=332 regions=3815 bytes=220082
+pi-tiles-us reset=12661 raster=326338 consume=1795046 fill=878441 submit=908724 finish=1420 visits=295
+pi-produce-us preflight=35310 stream=2204221
+pi-present-us derive=637696 offer=2239826
+pi-frame-duration-us 2879635
+pi-framebuffer-us projection=23122 writes=965911 regions=3821 rows=7642
+pi-target-us sink=1022187 payloads=332 regions=3821 bytes=220140
+pi-tiles-us reset=13019 raster=310476 consume=1908399 fill=871728 submit=1029104 finish=1463 visits=293
+pi-produce-us preflight=34790 stream=2300424
+pi-present-us derive=629772 offer=2335517
+pi-frame-duration-us 2967137
+pi-framebuffer-us projection=23665 writes=892757 regions=3826 rows=7652
+pi-target-us sink=948992 payloads=332 regions=3826 bytes=220194
+pi-tiles-us reset=14129 raster=315207 consume=1830270 fill=867167 submit=955447 finish=1344 visits=291
+pi-produce-us preflight=35365 stream=2231239
+pi-present-us derive=631186 offer=2266907
+pi-frame-duration-us 2900276
+pi-framebuffer-us projection=24329 writes=840287 regions=3832 rows=7664
+pi-target-us sink=897649 payloads=332 regions=3832 bytes=220252
+pi-tiles-us reset=12522 raster=321548 consume=1777593 fill=866067 submit=904049 finish=1401 visits=290
+pi-produce-us preflight=35064 stream=2181060
+pi-present-us derive=637191 offer=2216430
+pi-frame-duration-us 2855748
+pi-framebuffer-us projection=23788 writes=817873 regions=3861 rows=7722
+pi-target-us sink=874650 payloads=334 regions=3861 bytes=220334
+pi-tiles-us reset=13157 raster=317368 consume=1756923 fill=867620 submit=881682 finish=1958 visits=292
+pi-produce-us preflight=35390 stream=2156641
+pi-present-us derive=636994 offer=2192331
+pi-frame-duration-us 2831082
+pi-framebuffer-us projection=23466 writes=959343 regions=3891 rows=7782
+pi-target-us sink=1016242 payloads=337 regions=3891 bytes=220420
+pi-tiles-us reset=12888 raster=339344 consume=1910314 fill=879617 submit=1023340 finish=1385 visits=294
+pi-produce-us preflight=36133 stream=2332218
+pi-present-us derive=636699 offer=2368655
+pi-frame-duration-us 3008932
+pi-framebuffer-us projection=24299 writes=776661 regions=3921 rows=7842
+pi-target-us sink=834449 payloads=339 regions=3921 bytes=220506
+pi-tiles-us reset=13138 raster=330897 consume=1734626 fill=885683 submit=841487 finish=1394 visits=295
+pi-produce-us preflight=35713 stream=2147970
+pi-present-us derive=636068 offer=2183990
+pi-frame-duration-us 2821834
+pi-framebuffer-us projection=24132 writes=953064 regions=3926 rows=7852
+pi-target-us sink=1011351 payloads=340 regions=3926 bytes=220560
+pi-tiles-us reset=13692 raster=331768 consume=1893272 fill=867530 submit=1018232 finish=1366 visits=293
+pi-produce-us preflight=35457 stream=2308887
+pi-present-us derive=637432 offer=2344643
+pi-frame-duration-us 2983847
+pi-framebuffer-us projection=24522 writes=791558 regions=3931 rows=7862
+pi-target-us sink=850108 payloads=339 regions=3931 bytes=220614
+pi-tiles-us reset=13662 raster=324463 consume=1728236 fill=864266 submit=856611 finish=1371 visits=291
+pi-produce-us preflight=36469 stream=2136405
+pi-present-us derive=636947 offer=2173169
+pi-frame-duration-us 2812242
+pi-framebuffer-us projection=24139 writes=962560 regions=3937 rows=7874
+pi-target-us sink=1020406 payloads=339 regions=3937 bytes=220672
+pi-tiles-us reset=13019 raster=336357 consume=1902631 fill=867801 submit=1026999 finish=1358 visits=290
+pi-produce-us preflight=35734 stream=2321249
+pi-present-us derive=638463 offer=2357279
+pi-frame-duration-us 2997516
+pi-framebuffer-us projection=24619 writes=949499 regions=3966 rows=7932
+pi-target-us sink=1008058 payloads=342 regions=3966 bytes=220754
+pi-tiles-us reset=12884 raster=332451 consume=1897295 fill=875040 submit=1014648 finish=1386 visits=292
+pi-produce-us preflight=35745 stream=2312305
+pi-present-us derive=636547 offer=2348351
+pi-frame-duration-us 2986675
+status=completed

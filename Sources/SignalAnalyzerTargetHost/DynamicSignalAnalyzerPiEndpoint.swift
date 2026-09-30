@@ -48,8 +48,39 @@ package struct DynamicSignalAnalyzerPiTileStorage: RGB565TileStorage {
         pixelIndex < pixelCapacity && affected[Int(pixelIndex)]
     }
 
+    package borrowing func nextAffectedRun(
+        startingAt cursor: UInt32,
+        before end: UInt32,
+        rowWidth: UInt32
+    ) -> Range<UInt32>? {
+        guard rowWidth > 0, cursor < end, end <= pixelCapacity else { return nil }
+        return affected.withUnsafeBufferPointer { flags in
+            guard let base = flags.baseAddress else { return nil }
+            var start = Int(cursor)
+            let limit = Int(end)
+            while start < limit, !base[start] {
+                start += 1
+            }
+            guard start < limit else { return nil }
+            let width = Int(rowWidth)
+            let rowEnd = min(limit, start + width - start % width)
+            var next = start + 1
+            while next < rowEnd, base[next] {
+                next += 1
+            }
+            return UInt32(start) ..< UInt32(next)
+        }
+    }
+
     package borrowing func byte(at offset: UInt32) -> UInt8? {
         offset < byteCapacity ? bytes[Int(offset)] : nil
+    }
+
+    package borrowing func pixelBytes(at byteOffset: UInt32) -> (UInt8, UInt8)? {
+        guard byteOffset < byteCapacity,
+            byteCapacity - byteOffset >= 2
+        else { return nil }
+        return (bytes[Int(byteOffset)], bytes[Int(byteOffset) + 1])
     }
 }
 

@@ -156,46 +156,19 @@
             regions: [PiScreenPayloadRegion],
             transform: PiScreenAspectFitTransform
         ) -> Bool {
-            guard let source = bytes.baseAddress?.assumingMemoryBound(to: UInt8.self) else {
-                return regions.isEmpty
-            }
-            let destination = mapping.assumingMemoryBound(to: UInt8.self)
-            for region in regions {
-                guard
-                    let physical = transform.physicalBounds(
-                        origin: region.origin,
-                        pixelCount: region.pixelCount
-                    )
-                else { return false }
-                let byteCount = UInt32(region.pixelCount).multipliedReportingOverflow(by: 2)
-                guard !byteCount.overflow,
-                    region.byteOffset <= UInt32(bytes.count),
-                    byteCount.partialValue <= UInt32(bytes.count) - region.byteOffset
-                else { return false }
-                for physicalY in physical.minY ..< physical.maxY {
-                    let rowOffset = UInt32(physicalY).multipliedReportingOverflow(
-                        by: layout.bytesPerRow
-                    )
-                    guard !rowOffset.overflow else { return false }
-                    for physicalX in physical.minX ..< physical.maxX {
-                        let relativeX = physicalX - physical.minX
-                        let sourcePixel = Int32(
-                            Int64(relativeX) * Int64(region.pixelCount) / Int64(physical.size.width)
-                        )
-                        let sourceOffset = Int(region.byteOffset) + Int(sourcePixel) * 2
-                        let pixelOffset = UInt32(physicalX).multipliedReportingOverflow(by: 2)
-                        guard !pixelOffset.overflow else { return false }
-                        let destinationOffset = rowOffset.partialValue.addingReportingOverflow(
-                            pixelOffset.partialValue
-                        )
-                        guard !destinationOffset.overflow,
-                            destinationOffset.partialValue + 1 < layout.mappedBytes
-                        else { return false }
-                        destination[Int(destinationOffset.partialValue)] = source[sourceOffset + 1]
-                        destination[Int(destinationOffset.partialValue) + 1] = source[sourceOffset]
-                    }
-                }
-            }
+            let destination = UnsafeMutableRawBufferPointer(
+                start: mapping,
+                count: Int(layout.mappedBytes)
+            )
+            guard
+                PiScreenFramebufferProjection.present(
+                    bytes: bytes,
+                    regions: regions,
+                    transform: transform,
+                    layout: layout,
+                    destination: destination
+                )
+            else { return false }
             // The SPI framebuffer driver flushes dirty mmap pages to the panel.
             // Forcing a synchronous full-map flush for every small raster payload
             // serializes dozens of panel transfers within one logical frame.

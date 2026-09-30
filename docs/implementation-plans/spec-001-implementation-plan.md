@@ -6,7 +6,7 @@ status: active
 owners:
   - codex
 created: 2026-09-13
-updated: 2026-09-27
+updated: 2026-09-30
 related_design_notes:
   - ../implementation-designs/spec-001-presentation-admission-and-failure.md
   - ../implementation-designs/spec-001-four-host-application-join.md
@@ -16,6 +16,7 @@ related_design_notes:
 conformance_report: ../conformance/spec-001-conformance.md
 related_future_work:
   - FW-023
+  - FW-027
 related_explorations: []
 related_spikes: []
 supersedes: null
@@ -2206,6 +2207,15 @@ not warrant design notes.
 
 ## Deferred and Follow-up Work
 
+- [FW-027](../future-work/fw-027-pi-performance-investigation-resumption.md) records the
+  maintainer's 2026-09-30 stop of Pi performance experiments. Resume when the
+  remaining MVP functionality is ready for integrated conformance review and
+  cadence blocks completion, or when the maintainer reprioritizes it. The
+  250 ms requirement and connected-control evidence remain open; this
+  postpones investigation, not acceptance criteria. See the
+  [closeout](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-8/pi-performance-closeout-20260930.md)
+  for retained changes, exclusions, and integration checks.
+
 The connected nRF attempt exposed a physical `KMRTM24024-SPI` 240 x 320
 direct-SPI module in place of the approved 480 x 320 target. The maintainer
 explicitly approved replacement within the existing nRF configuration on
@@ -2371,3 +2381,8 @@ or invalidates them. When every planned task has a disposition, set the plan to
 `completed` and link the conformance report.
 Plan completion alone does not establish conformance or authorize SPEC-001's
 `implemented` status.
+
+The 2026-09-30 closeout registers the preserved Pi investigation files as
+historical `T8.1` evidence, including rejected experiments. The task remains
+blocked; these files do not establish current-layout timing or connected
+six-control conformance.

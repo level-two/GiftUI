@@ -99,6 +99,22 @@ private struct StructuralExcessRoot: View {
         }
     }
     #expect(foundDegree)
+
+    #expect(storage.modifierCount(of: action.identity) == 1)
+    let replacement = expandSemanticTree(
+        StructuralExcessRoot(),
+        limits: limits,
+        workspace: &workspace,
+        sink: &storage
+    )
+    guard case .success = replacement else {
+        Issue.record("replacement semantic expansion failed: \(replacement)")
+        return
+    }
+    #expect(storage.renderSnapshotVersion == 2)
+    #expect(storage.actionOccurrenceCount == 0)
+    #expect(storage.modifierCount(of: action.identity) ?? 0 == 0)
+    #expect(storage.modifier(of: action.identity, at: 0) == nil)
 }
 
 @Test func dynamicSemanticHostStorageDiscardsFirstExcessAtomically() throws {

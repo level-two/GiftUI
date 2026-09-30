@@ -81,11 +81,12 @@ package enum RGB565TilePayloadEmitter {
         let pixelCapacity = UInt32(workspace.descriptor.regionWidth)
             .multipliedReportingOverflow(by: UInt32(tile.size.height))
         guard !pixelCapacity.overflow else { return .arithmeticOverflow }
-        var cursor: UInt32 = 0
+        let scanEnd = workspace.lastAffectedPixel.map { $0 + 1 } ?? 0
+        var cursor = workspace.firstAffectedPixel ?? 0
         if work.isDraining {
             return drain(
                 workspace,
-                pixelCapacity: pixelCapacity.partialValue,
+                pixelCapacity: scanEnd,
                 cursor: &cursor,
                 work: &work
             )
@@ -94,14 +95,14 @@ package enum RGB565TilePayloadEmitter {
         var totalRegions: UInt32 = 0
         var totalBytes: UInt32 = 0
 
-        while cursor < pixelCapacity.partialValue {
+        while cursor < scanEnd {
             let fill: TileWriterFillResult? = target.withWriter(
                 for: reservation
             ) { writer in
                 fillWriter(
                     &workspace,
                     tile: tile,
-                    pixelCapacity: pixelCapacity.partialValue,
+                    pixelCapacity: scanEnd,
                     cursor: &cursor,
                     writer: &writer,
                     work: &work
@@ -110,7 +111,7 @@ package enum RGB565TilePayloadEmitter {
             guard let fill else { return .writerUnavailable }
             switch fill {
             case .empty:
-                cursor = pixelCapacity.partialValue
+                cursor = scanEnd
             case .writerFailure:
                 return .writerFailure
             case .workFailure(let error):
@@ -134,7 +135,7 @@ package enum RGB565TilePayloadEmitter {
                     if work.presentationResponsibilityAccepted {
                         return drain(
                             workspace,
-                            pixelCapacity: pixelCapacity.partialValue,
+                            pixelCapacity: scanEnd,
                             cursor: &cursor,
                             work: &work,
                             initialPayloads: totalPayloads,
@@ -148,7 +149,7 @@ package enum RGB565TilePayloadEmitter {
                     _ = work.recordFailure(.displayFailure)
                     return drain(
                         workspace,
-                        pixelCapacity: pixelCapacity.partialValue,
+                        pixelCapacity: scanEnd,
                         cursor: &cursor,
                         work: &work,
                         initialPayloads: totalPayloads,
@@ -185,20 +186,16 @@ package enum RGB565TilePayloadEmitter {
         let width = UInt32(workspace.descriptor.regionWidth)
 
         while cursor < pixelCapacity {
-            while cursor < pixelCapacity,
-                !workspace.storage.isAffected(pixelIndex: cursor)
-            {
-                cursor += 1
-            }
-            guard cursor < pixelCapacity else { break }
-            let row = cursor / width
-            let startX = cursor % width
-            var endX = startX + 1
-            while endX < width,
-                workspace.storage.isAffected(pixelIndex: row * width + endX)
-            {
-                endX += 1
-            }
+            guard
+                let run = workspace.storage.nextAffectedRun(
+                    startingAt: cursor,
+                    before: pixelCapacity,
+                    rowWidth: width
+                )
+            else { break }
+            let row = run.lowerBound / width
+            let startX = run.lowerBound % width
+            let endX = run.upperBound - row * width
             let runBytes = (endX - startX).multipliedReportingOverflow(by: 2)
             guard !runBytes.overflow,
                 runBytes.partialValue <= work.limits.maximumPayloadBytes
@@ -228,7 +225,7 @@ package enum RGB565TilePayloadEmitter {
             }
             payloadBytes += runBytes.partialValue
             payloadRegions += 1
-            cursor = row * width + endX
+            cursor = run.upperBound
         }
         if payloadRegions > 0 {
             guard
@@ -277,25 +274,20 @@ package enum RGB565TilePayloadEmitter {
     where Storage: RGB565TileStorage, Writer: DisplayPayloadWriter {
         var wroteRegion = false
         while cursor < pixelCapacity {
-            while cursor < pixelCapacity,
-                !workspace.storage.isAffected(pixelIndex: cursor)
-            {
-                cursor += 1
-            }
-            guard cursor < pixelCapacity else {
+            let width = UInt32(workspace.descriptor.regionWidth)
+            guard
+                let run = workspace.storage.nextAffectedRun(
+                    startingAt: cursor,
+                    before: pixelCapacity,
+                    rowWidth: width
+                )
+            else {
                 if !wroteRegion { return .empty }
                 return finishWriter(&writer, finishedTile: true, work: &work)
             }
-
-            let width = UInt32(workspace.descriptor.regionWidth)
-            let row = cursor / width
-            let startX = cursor % width
-            var endX = startX + 1
-            while endX < width,
-                workspace.storage.isAffected(pixelIndex: row * width + endX)
-            {
-                endX += 1
-            }
+            let row = run.lowerBound / width
+            let startX = run.lowerBound % width
+            let endX = run.upperBound - row * width
             let runPixels = endX - startX
             let runBytes = runPixels.multipliedReportingOverflow(by: 2)
             guard !runBytes.overflow,
@@ -337,28 +329,30 @@ package enum RGB565TilePayloadEmitter {
                 writer.discard()
                 return .writerFailure
             }
+            let rowOffset = row.multipliedReportingOverflow(
+                by: workspace.descriptor.bytesPerRow
+            )
+            let columnOffset = startX.multipliedReportingOverflow(by: 2)
+            let byteOffset = rowOffset.partialValue.addingReportingOverflow(
+                columnOffset.partialValue
+            )
+            let lastByteOffset = byteOffset.partialValue.addingReportingOverflow(
+                runBytes.partialValue - 1
+            )
+            guard !rowOffset.overflow, !columnOffset.overflow,
+                !byteOffset.overflow, !lastByteOffset.overflow
+            else {
+                writer.discard()
+                return .arithmeticOverflow
+            }
             var x = startX
             while x < endX {
-                let rowOffset = row.multipliedReportingOverflow(
-                    by: workspace.descriptor.bytesPerRow
-                )
-                let columnOffset = x.multipliedReportingOverflow(by: 2)
-                guard !rowOffset.overflow, !columnOffset.overflow else {
-                    writer.discard()
-                    return .arithmeticOverflow
-                }
-                let offset = rowOffset.partialValue.addingReportingOverflow(
-                    columnOffset.partialValue
-                )
-                let nextOffset = offset.partialValue.addingReportingOverflow(1)
-                guard !offset.overflow,
-                    !nextOffset.overflow,
-                    let byte0 = workspace.storage.byte(at: offset.partialValue),
-                    let byte1 = workspace.storage.byte(
-                        at: nextOffset.partialValue
-                    ),
-                    writer.write(byte: byte0),
-                    writer.write(byte: byte1)
+                let offset = byteOffset.partialValue + (x - startX) * 2
+                guard let (byte0, byte1) = workspace.storage.pixelBytes(at: offset),
+                    writer.writePixel(
+                        mostSignificantByte: byte0,
+                        leastSignificantByte: byte1
+                    )
                 else {
                     writer.discard()
                     return .writerFailure
@@ -370,7 +364,7 @@ package enum RGB565TilePayloadEmitter {
                 return .writerFailure
             }
             wroteRegion = true
-            cursor = row * width + endX
+            cursor = run.upperBound
         }
         return finishWriter(&writer, finishedTile: true, work: &work)
     }

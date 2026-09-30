@@ -341,6 +341,7 @@ targets:
       - GiftUIRenderLowering
       - GiftUIRuntimeCore
       - GiftUISemanticCore
+      - GiftUITextResources
   GiftUIRuntimeStatic:
     type: regular
     dependencies:
@@ -552,6 +553,7 @@ targets:
       - GiftUIDisplayCore
       - GiftUIDrawing
       - GiftUIExecution
+      - GiftUIFailureCore
       - GiftUIHostConfiguration
       - GiftUIInteraction
       - GiftUILayout
@@ -559,6 +561,7 @@ targets:
       - GiftUIRasterCore
       - GiftUIReferenceTextResources
       - GiftUIRenderCore
+      - GiftUIRenderLowering
       - GiftUIRuntimeCore
       - GiftUIRuntimeDynamic
       - GiftUIRuntimeStatic
@@ -602,7 +605,9 @@ targets:
       - GiftUIHostConfiguration
       - GiftUIPlatformRaspberryPi
       - SignalAnalyzerData
+      - SignalAnalyzerDomain
       - SignalAnalyzerPresetHarness
+      - SignalAnalyzerPresentation
       - SignalAnalyzerTargetHost
   SignalAnalyzerNRF52840HostOracle:
     type: executable

@@ -260,10 +260,9 @@ private struct RecordingConsoleTransport: PiScreenConsoleModeTransport {
                 encoding: .rgb565BigEndian
             )
         else { return false }
-        for byte in [UInt8(0xF8), 0, 0x07, 0xE0] where !writer.write(byte: byte) {
-            return false
-        }
-        return writer.endRegion() && writer.finish()
+        return writer.writePixel(mostSignificantByte: 0xF8, leastSignificantByte: 0)
+            && writer.writePixel(mostSignificantByte: 0x07, leastSignificantByte: 0xE0)
+            && writer.endRegion() && writer.finish()
     }
     #expect(wrote == true)
     #expect(target.submitPayload(reservation) == .completed)
@@ -273,6 +272,45 @@ private struct RecordingConsoleTransport: PiScreenConsoleModeTransport {
     #expect(
         target.sink.presented.first?.physicalBounds == Rect(
             origin: Point(x: 80, y: 0), size: Size(width: 3, height: 2)!)!)
+}
+
+@Test func framebufferProjectionCopiesRowsAndPreservesRegionOrder() throws {
+    let layout = try #require(
+        PiScreenFramebufferLayout(
+            width: 4, height: 4, bitsPerPixel: 16,
+            bytesPerRow: 8, mappedBytes: 32
+        )
+    )
+    let transform = try #require(
+        PiScreenAspectFitTransform(
+            physicalWidth: 4, physicalHeight: 4,
+            logicalWidth: 2, logicalHeight: 2
+        )
+    )
+    let bytes: [UInt8] = [0xF8, 0, 0x07, 0xE0, 0, 0x1F]
+    let regions = [
+        PiScreenPayloadRegion(origin: Point(x: 0, y: 0), pixelCount: 2, byteOffset: 0),
+        PiScreenPayloadRegion(origin: Point(x: 1, y: 1), pixelCount: 1, byteOffset: 4),
+    ]
+    var destination = [UInt8](repeating: 0, count: 32)
+
+    let presented = bytes.withUnsafeBytes { source in
+        destination.withUnsafeMutableBytes { output in
+            PiScreenFramebufferProjection.present(
+                bytes: source, regions: regions, transform: transform,
+                layout: layout, destination: output
+            )
+        }
+    }
+
+    #expect(presented)
+    #expect(
+        destination == [
+            0, 0xF8, 0, 0xF8, 0xE0, 0x07, 0xE0, 0x07,
+            0, 0xF8, 0, 0xF8, 0xE0, 0x07, 0xE0, 0x07,
+            0, 0, 0, 0, 0x1F, 0, 0x1F, 0,
+            0, 0, 0, 0, 0x1F, 0, 0x1F, 0,
+        ])
 }
 
 @Test func displayTargetRejectsWrongDescriptorAndTransportFailure() throws {

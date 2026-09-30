@@ -1,0 +1,619 @@
+--- a/Sources/GiftUIBackendIntegration/OperationMajorRGB565RasterSession.swift
++++ b/Sources/GiftUIBackendIntegration/OperationMajorRGB565RasterSession.swift
+@@ -7,6 +7,9 @@
+ import GiftUIRenderCore
+ import GiftUISurfaceCore
+ import GiftUITextResources
++#if os(Linux)
++    import Glibc
++#endif
+ 
+ /// Owns one bounded operation-major RGB565 offer session. It consumes every
+ /// borrowed operation synchronously and retains only tile, payload, target,
+@@ -46,6 +49,14 @@
+     private var consumedOperations: UInt16 = 0
+     private var consumedGlyphs: UInt16 = 0
+     private var consumedPositionedGlyphs: UInt16 = 0
++    #if os(Linux)
++        private var traceFillRectUS: UInt64 = 0
++        private var traceGlyphUS: UInt64 = 0
++        private var traceStrokeUS: UInt64 = 0
++        private var traceFillRects: UInt32 = 0
++        private var traceGlyphs: UInt32 = 0
++        private var traceStrokes: UInt32 = 0
++    #endif
+ 
+     package init?(
+         capacity: RenderSinkCapacity,
+@@ -116,6 +127,28 @@
+         retainedProducerError = nil
+         failure = nil
+         work.reset()
++        #if os(Linux)
++            traceFillRectUS = 0
++            traceGlyphUS = 0
++            traceStrokeUS = 0
++            traceFillRects = 0
++            traceGlyphs = 0
++            traceStrokes = 0
++            workspace.traceResetUS = 0
++            workspace.traceRasterUS = 0
++            workspace.traceConsumeUS = 0
++            workspace.traceFinishUS = 0
++            workspace.traceTileVisits = 0
++            workspace.traceFillWriterUS = 0
++            workspace.traceSubmitUS = 0
++            workspace.traceScanUS = 0
++            workspace.traceBytesUS = 0
++            workspace.traceRuns = 0
++            workspace.tracePixels = 0
++            workspace.traceCapacityUS = 0
++            workspace.traceRegionBeginUS = 0
++            workspace.traceRegionEndUS = 0
++        #endif
+         let result = target.reserveFrame(
+             descriptor: descriptor,
+             payloadCapacityBytes: payloadCapacityBytes,
+@@ -171,6 +204,15 @@
+     }
+ 
+     package mutating func fillRect(_ operation: FillRectOperation) -> Bool {
++        #if os(Linux)
++            let operationStart = Self.traceNow()
++            defer {
++                if let operationStart, let end = Self.traceNow() {
++                    traceFillRectUS += end - operationStart
++                    traceFillRects += 1
++                }
++            }
++        #endif
+         guard phase == .streaming, let header, let reservation,
+             consumedOperations < header.operationCount
+         else {
+@@ -245,6 +287,15 @@
+     }
+ 
+     package mutating func positionedGlyph(_ glyph: PositionedGlyph) -> Bool {
++        #if os(Linux)
++            let operationStart = Self.traceNow()
++            defer {
++                if let operationStart, let end = Self.traceNow() {
++                    traceGlyphUS += end - operationStart
++                    traceGlyphs += 1
++                }
++            }
++        #endif
+         guard phase == .positionedGlyphs, let glyphHeader,
+             consumedGlyphs < glyphHeader.glyphCount,
+             let header, let reservation
+@@ -343,6 +394,15 @@
+     package mutating func straightLineStroke<Stroke: StraightLineStrokeView>(
+         _ stroke: borrowing Stroke
+     ) -> Bool {
++        #if os(Linux)
++            let operationStart = Self.traceNow()
++            defer {
++                if let operationStart, let end = Self.traceNow() {
++                    traceStrokeUS += end - operationStart
++                    traceStrokes += 1
++                }
++            }
++        #endif
+         guard phase == .streaming, let header, let reservation,
+             consumedOperations < header.operationCount
+         else {
+@@ -413,6 +473,14 @@
+             work: &work
+         )
+         failure = work.failure
++        #if os(Linux)
++            if Glibc.getenv("GIFTUI_PI_TRACE") != nil {
++                let operationLine = "pi-operations-us fills=\(traceFillRectUS) glyphs=\(traceGlyphUS) strokes=\(traceStrokeUS) fillCount=\(traceFillRects) glyphCount=\(traceGlyphs) strokeCount=\(traceStrokes)\n"
++                _ = operationLine.withCString { Glibc.write(STDERR_FILENO, $0, Glibc.strlen($0)) }
++                let line = "pi-tiles-us reset=\(workspace.traceResetUS) raster=\(workspace.traceRasterUS) consume=\(workspace.traceConsumeUS) fill=\(workspace.traceFillWriterUS) scan=\(workspace.traceScanUS) capacity=\(workspace.traceCapacityUS) begin=\(workspace.traceRegionBeginUS) bytes=\(workspace.traceBytesUS) end=\(workspace.traceRegionEndUS) submit=\(workspace.traceSubmitUS) finish=\(workspace.traceFinishUS) visits=\(workspace.traceTileVisits) runs=\(workspace.traceRuns) pixels=\(workspace.tracePixels)\n"
++                _ = line.withCString { Glibc.write(STDERR_FILENO, $0, Glibc.strlen($0)) }
++            }
++        #endif
+         switch result {
+         case .completed:
+             streamCompleted = true
+@@ -439,6 +507,15 @@
+         return mayDrain
+     }
+ 
++    #if os(Linux)
++        private static func traceNow() -> UInt64? {
++            guard Glibc.getenv("GIFTUI_PI_TRACE") != nil else { return nil }
++            var value = timespec()
++            guard Glibc.clock_gettime(CLOCK_MONOTONIC, &value) == 0 else { return nil }
++            return UInt64(value.tv_sec) * 1_000_000 + UInt64(value.tv_nsec) / 1_000
++        }
++    #endif
++
+     private mutating func reject(_ error: RasterBackendError) -> Bool {
+         _ = record(error)
+         retainProducerError(.sinkRefused)
+--- a/Sources/GiftUIBackendIntegration/OperationMajorTileTraversal.swift
++++ b/Sources/GiftUIBackendIntegration/OperationMajorTileTraversal.swift
+@@ -1,6 +1,9 @@
+ import GiftUI
+ import GiftUIRasterCore
+ import GiftUISurfaceCore
++#if os(Linux)
++    import Glibc
++#endif
+ 
+ package enum OperationMajorTileTraversalResult: Equatable, Sendable {
+     case completed(tileVisits: UInt32)
+@@ -58,19 +61,51 @@
+                     )!
+                 )
+             else { return .arithmeticOverflow }
++            #if os(Linux)
++                let resetStart = traceNow()
++            #endif
+             guard workspace.beginTile(tile) else { return .workspaceFailure }
++            #if os(Linux)
++                if let resetStart, let end = traceNow() {
++                    workspace.traceResetUS += end - resetStart
++                    workspace.traceTileVisits += 1
++                }
++                let rasterStart = traceNow()
++            #endif
+             let rasterized = rasterize(tileDamage) { point, pixel in
+                 workspace.replacePixel(at: point, with: pixel)
+             }
++            #if os(Linux)
++                if let rasterStart, let end = traceNow() {
++                    workspace.traceRasterUS += end - rasterStart
++                }
++            #endif
+             guard rasterized else {
+                 _ = workspace.finishTile()
+                 return .rasterFailure
+             }
+-            guard consume(&workspace) else {
++            #if os(Linux)
++                let consumeStart = traceNow()
++            #endif
++            let consumed = consume(&workspace)
++            #if os(Linux)
++                if let consumeStart, let end = traceNow() {
++                    workspace.traceConsumeUS += end - consumeStart
++                }
++            #endif
++            guard consumed else {
+                 _ = workspace.finishTile()
+                 return .consumeFailure
+             }
++            #if os(Linux)
++                let finishStart = traceNow()
++            #endif
+             guard workspace.finishTile() else { return .workspaceFailure }
++            #if os(Linux)
++                if let finishStart, let end = traceNow() {
++                    workspace.traceFinishUS += end - finishStart
++                }
++            #endif
+             let nextVisits = visits.addingReportingOverflow(1)
+             guard !nextVisits.overflow else { return .arithmeticOverflow }
+             visits = nextVisits.partialValue
+@@ -83,4 +118,13 @@
+         inner.minX >= outer.minX && inner.minY >= outer.minY
+             && inner.maxX <= outer.maxX && inner.maxY <= outer.maxY
+     }
++
++    #if os(Linux)
++        private static func traceNow() -> UInt64? {
++            guard Glibc.getenv("GIFTUI_PI_TRACE") != nil else { return nil }
++            var value = timespec()
++            guard Glibc.clock_gettime(CLOCK_MONOTONIC, &value) == 0 else { return nil }
++            return UInt64(value.tv_sec) * 1_000_000 + UInt64(value.tv_nsec) / 1_000
++        }
++    #endif
+ }
+--- a/Sources/GiftUIBackendIntegration/RGB565TilePayloadEmitter.swift
++++ b/Sources/GiftUIBackendIntegration/RGB565TilePayloadEmitter.swift
+@@ -3,6 +3,9 @@
+ import GiftUIDisplayCore
+ import GiftUIRasterCore
+ import GiftUISurfaceCore
++#if os(Linux)
++    import Glibc
++#endif
+ 
+ package struct TilePayloadEmissionSummary: Equatable, Sendable {
+     package let payloads: UInt32
+@@ -96,6 +99,9 @@
+         var totalBytes: UInt32 = 0
+ 
+         while cursor < scanEnd {
++            #if os(Linux)
++                let fillStart = traceNow()
++            #endif
+             let fill: TileWriterFillResult? = target.withWriter(
+                 for: reservation
+             ) { writer in
+@@ -108,6 +114,11 @@
+                     work: &work
+                 )
+             }
++            #if os(Linux)
++                if let fillStart, let end = traceNow() {
++                    workspace.traceFillWriterUS += end - fillStart
++                }
++            #endif
+             guard let fill else { return .writerUnavailable }
+             switch fill {
+             case .empty:
+@@ -126,7 +137,15 @@
+                 totalPayloads = payloads
+                 totalRegions = regionCount
+                 totalBytes = byteCount
++                #if os(Linux)
++                    let submitStart = traceNow()
++                #endif
+                 let transfer = target.submitPayload(reservation)
++                #if os(Linux)
++                    if let submitStart, let end = traceNow() {
++                        workspace.traceSubmitUS += end - submitStart
++                    }
++                #endif
+                 switch transfer {
+                 case .completed:
+                     work.acceptPresentationResponsibility()
+@@ -278,6 +297,9 @@
+     where Storage: RGB565TileStorage, Writer: DisplayPayloadWriter {
+         var wroteRegion = false
+         while cursor < pixelCapacity {
++            #if os(Linux)
++                let scanStart = traceNow()
++            #endif
+             while cursor < pixelCapacity,
+                 !workspace.storage.isAffected(pixelIndex: cursor)
+             {
+@@ -297,6 +319,14 @@
+             {
+                 endX += 1
+             }
++            #if os(Linux)
++                if let scanStart, let end = traceNow() {
++                    workspace.traceScanUS += end - scanStart
++                    workspace.traceRuns += 1
++                    workspace.tracePixels += endX - startX
++                }
++                let capacityStart = traceNow()
++            #endif
+             let runPixels = endX - startX
+             let runBytes = runPixels.multipliedReportingOverflow(by: 2)
+             guard !runBytes.overflow,
+@@ -322,7 +352,12 @@
+                 }
+                 return finishWriter(&writer, finishedTile: false, work: &work)
+             }
+-
++            #if os(Linux)
++                if let capacityStart, let end = traceNow() {
++                    workspace.traceCapacityUS += end - capacityStart
++                }
++                let beginStart = traceNow()
++            #endif
+             let originX = Int32(startX).addingReportingOverflow(tile.minX)
+             let originY = Int32(row).addingReportingOverflow(tile.minY)
+             guard !originX.overflow, !originY.overflow,
+@@ -354,7 +389,15 @@
+                 writer.discard()
+                 return .arithmeticOverflow
+             }
++            #if os(Linux)
++                if let beginStart, let end = traceNow() {
++                    workspace.traceRegionBeginUS += end - beginStart
++                }
++            #endif
+             var x = startX
++            #if os(Linux)
++                let bytesStart = traceNow()
++            #endif
+             while x < endX {
+                 let offset = byteOffset.partialValue + (x - startX) * 2
+                 guard let byte0 = workspace.storage.byte(at: offset),
+@@ -367,10 +410,21 @@
+                 }
+                 x += 1
+             }
++            #if os(Linux)
++                if let bytesStart, let end = traceNow() {
++                    workspace.traceBytesUS += end - bytesStart
++                }
++                let endStart = traceNow()
++            #endif
+             guard writer.endRegion() else {
+                 writer.discard()
+                 return .writerFailure
+             }
++            #if os(Linux)
++                if let endStart, let end = traceNow() {
++                    workspace.traceRegionEndUS += end - endStart
++                }
++            #endif
+             wroteRegion = true
+             cursor = row * width + endX
+         }
+@@ -405,4 +459,13 @@
+         let result = lhs.addingReportingOverflow(rhs)
+         return result.overflow ? nil : result.partialValue
+     }
++
++    #if os(Linux)
++        private static func traceNow() -> UInt64? {
++            guard Glibc.getenv("GIFTUI_PI_TRACE") != nil else { return nil }
++            var value = timespec()
++            guard Glibc.clock_gettime(CLOCK_MONOTONIC, &value) == 0 else { return nil }
++            return UInt64(value.tv_sec) * 1_000_000 + UInt64(value.tv_nsec) / 1_000
++        }
++    #endif
+ }
+--- a/Sources/GiftUILayout/Layout.swift
++++ b/Sources/GiftUILayout/Layout.swift
+@@ -1,6 +1,9 @@
+ import GiftUI
+ import GiftUISemanticCore
+ import GiftUITextResources
++#if os(Linux)
++    import Glibc
++#endif
+ 
+ package func layout<Semantic, Metrics, Workspace, Sink>(
+     semantic: borrowing Semantic,
+@@ -18,6 +21,9 @@
+     Semantic.Identity == Workspace.Identity,
+     Semantic.Identity == Sink.Identity
+ {
++    #if os(Linux)
++        let startedAt = layoutTraceNow()
++    #endif
+     guard !workspace.isLayoutActive, !sink.isLayoutActive else {
+         return .failure(.reentrancyViolation)
+     }
+@@ -43,6 +49,9 @@
+         workspace.resetLayout()
+         return .failure(error)
+     }
++    #if os(Linux)
++        let validationEnd = layoutTraceNow()
++    #endif
+     var engine = LayoutEngine(
+         limits: limits,
+         validatedCounters: validation.countersSnapshot
+@@ -58,6 +67,9 @@
+         workspace.resetLayout()
+         return .failure(engine.failure ?? .invariantViolation)
+     }
++    #if os(Linux)
++        let measurementEnd = layoutTraceNow()
++    #endif
+     let rootBounds = Rect(
+         origin: Point(x: 0, y: 0),
+         size: measurement.resolvedSize
+@@ -73,6 +85,9 @@
+         workspace.resetLayout()
+         return .failure(engine.failure ?? .invariantViolation)
+     }
++    #if os(Linux)
++        let placementEnd = layoutTraceNow()
++    #endif
+     let counters = engine.finalCounters
+     let summary = LayoutSummary(
+         scopeCount: counters.scopeCount,
+@@ -82,5 +97,24 @@
+         maximumObservedDepth: counters.maximumObservedDepth,
+         rootBounds: rootBounds
+     )
+-    return publishLayout(summary: summary, workspace: &workspace, sink: &sink)
++    let result = publishLayout(summary: summary, workspace: &workspace, sink: &sink)
++    #if os(Linux)
++        if let startedAt, let validationEnd, let measurementEnd,
++            let placementEnd, let publicationEnd = layoutTraceNow(),
++            Glibc.getenv("GIFTUI_PI_TRACE") != nil
++        {
++            let line = "pi-layout-us validation=\(validationEnd - startedAt) measure=\(measurementEnd - validationEnd) place=\(placementEnd - measurementEnd) publish=\(publicationEnd - placementEnd)\n"
++            _ = line.withCString { Glibc.write(STDERR_FILENO, $0, Glibc.strlen($0)) }
++        }
++    #endif
++    return result
+ }
++
++#if os(Linux)
++    private func layoutTraceNow() -> UInt64? {
++        guard Glibc.getenv("GIFTUI_PI_TRACE") != nil else { return nil }
++        var value = timespec()
++        guard Glibc.clock_gettime(CLOCK_MONOTONIC, &value) == 0 else { return nil }
++        return UInt64(value.tv_sec) * 1_000_000 + UInt64(value.tv_nsec) / 1_000
++    }
++#endif
+--- a/Sources/GiftUIRasterCore/RGB565TileWorkspace.swift
++++ b/Sources/GiftUIRasterCore/RGB565TileWorkspace.swift
+@@ -24,6 +24,22 @@
+     package private(set) var activeTile: Rect?
+     package private(set) var firstAffectedPixel: UInt32?
+     package private(set) var lastAffectedPixel: UInt32?
++    #if os(Linux)
++        package var traceResetUS: UInt64 = 0
++        package var traceRasterUS: UInt64 = 0
++        package var traceConsumeUS: UInt64 = 0
++        package var traceFinishUS: UInt64 = 0
++        package var traceTileVisits: UInt32 = 0
++        package var traceFillWriterUS: UInt64 = 0
++        package var traceSubmitUS: UInt64 = 0
++        package var traceScanUS: UInt64 = 0
++        package var traceBytesUS: UInt64 = 0
++        package var traceRuns: UInt32 = 0
++        package var tracePixels: UInt32 = 0
++        package var traceCapacityUS: UInt64 = 0
++        package var traceRegionBeginUS: UInt64 = 0
++        package var traceRegionEndUS: UInt64 = 0
++    #endif
+ 
+     package init?(
+         descriptor: RasterSurfaceDescriptor,
+--- a/Sources/GiftUIRenderLowering/RenderProducer.swift
++++ b/Sources/GiftUIRenderLowering/RenderProducer.swift
+@@ -3,6 +3,9 @@
+ import GiftUIRenderCore
+ import GiftUISemanticCore
+ import GiftUITextResources
++#if os(Linux)
++    import Glibc
++#endif
+ 
+ extension RenderProducer {
+     package static func produce<Semantic, Layout, Metrics, Workspace, Sink>(
+@@ -101,6 +104,9 @@
+         }
+         defer { workspace.reset() }
+ 
++        #if os(Linux)
++            let preflightStartedAt = traceNow()
++        #endif
+         let preflightResult = preflightTraversal(
+             semantic: semantic,
+             layout: layout,
+@@ -111,6 +117,9 @@
+             workspace: &workspace,
+             extensionVisitor: &preflightExtension
+         )
++        #if os(Linux)
++            let preflightFinishedAt = traceNow()
++        #endif
+         guard case .success(let summary) = preflightResult else {
+             if case .failure(let error) = preflightResult {
+                 return .failure(error)
+@@ -132,7 +141,10 @@
+             return .failure(error)
+         }
+ 
+-        return stream(
++        #if os(Linux)
++            let streamStartedAt = traceNow()
++        #endif
++        let streamResult = stream(
+             preflight: summary,
+             semantic: semantic,
+             layout: layout,
+@@ -144,5 +156,23 @@
+             extensionVisitor: &streamingExtension,
+             sink: &sink
+         )
++        #if os(Linux)
++            if let preflightStartedAt, let preflightFinishedAt,
++                let streamStartedAt, let streamFinishedAt = traceNow()
++            {
++                let line = "pi-produce-us preflight=\(preflightFinishedAt - preflightStartedAt) stream=\(streamFinishedAt - streamStartedAt)\n"
++                _ = line.withCString { Glibc.write(STDERR_FILENO, $0, Glibc.strlen($0)) }
++            }
++        #endif
++        return streamResult
+     }
++
++    #if os(Linux)
++        private static func traceNow() -> UInt64? {
++            guard Glibc.getenv("GIFTUI_PI_TRACE") != nil else { return nil }
++            var value = timespec()
++            guard Glibc.clock_gettime(CLOCK_MONOTONIC, &value) == 0 else { return nil }
++            return UInt64(value.tv_sec) * 1_000_000 + UInt64(value.tv_nsec) / 1_000
++        }
++    #endif
+ }
+--- a/Sources/SignalAnalyzerTargetHost/DynamicSignalAnalyzerPresentationPipeline.swift
++++ b/Sources/SignalAnalyzerTargetHost/DynamicSignalAnalyzerPresentationPipeline.swift
+@@ -12,6 +12,9 @@
+ import GiftUISemanticCore
+ import SignalAnalyzerHost
+ import SignalAnalyzerPresentation
++#if os(Linux)
++    import Glibc
++#endif
+ 
+ package struct DynamicSignalAnalyzerPresentationSummary: Equatable, Sendable {
+     package let semantic: SemanticExpansionSummary
+@@ -278,6 +281,9 @@
+         cycle: RunCycleID,
+         semanticRevision: SemanticRevision
+     ) -> DynamicSignalAnalyzerPresentationResult {
++        #if os(Linux)
++            let deriveStart = Self.traceNow()
++        #endif
+         drawingWorkspace.reset()
+         guard reconciler.beginCandidate() == .success(.candidateStarted) else {
+             return .failure(.invariantViolation)
+@@ -290,6 +296,9 @@
+             sink: &semanticStorage,
+             stateBinding: &binding
+         )
++        #if os(Linux)
++            let semanticEnd = Self.traceNow()
++        #endif
+         reconciler = binding.reconciler
+         let semantic: SemanticExpansionSummary
+         switch semanticResult {
+@@ -310,6 +319,9 @@
+             workspace: &layoutWorkspace,
+             sink: &layoutSink
+         )
++        #if os(Linux)
++            let layoutEnd = Self.traceNow()
++        #endif
+         let layoutSummary: LayoutSummary
+         switch layoutResult {
+         case .success(let summary):
+@@ -330,6 +342,9 @@
+             limits: limits.drawing,
+             workspace: &drawingWorkspace
+         )
++        #if os(Linux)
++            let drawingEnd = Self.traceNow()
++        #endif
+         let drawing: DrawingPlanSummary
+         switch drawingResult {
+         case .success(let summary):
+@@ -350,6 +365,9 @@
+             configuredSinkCapacity: limits.renderSink,
+             workspace: &renderWorkspace
+         )
++        #if os(Linux)
++            let renderEnd = Self.traceNow()
++        #endif
+         let render: RenderPlanHeader
+         switch renderResult {
+         case .success(let header):
+@@ -395,6 +413,15 @@
+             _ = reconciler.finishCandidate(.discard)
+             return .failure(.invariantViolation)
+         }
++
++        #if os(Linux)
++            if let deriveStart, let semanticEnd, let layoutEnd,
++                let drawingEnd, let renderEnd, let interactionEnd = Self.traceNow()
++            {
++                let line = "pi-derive-detail-us semantic=\(semanticEnd - deriveStart) layout=\(layoutEnd - semanticEnd) drawing=\(drawingEnd - layoutEnd) preflight=\(renderEnd - drawingEnd) interaction=\(interactionEnd - renderEnd)\n"
++                _ = line.withCString { Glibc.write(STDERR_FILENO, $0, Glibc.strlen($0)) }
++            }
++        #endif
+ 
+         return .success(
+             DynamicSignalAnalyzerPresentationSummary(
+@@ -552,4 +579,13 @@
+         else { return nil }
+         return target
+     }
+-}
++
++    #if os(Linux)
++        private static func traceNow() -> UInt64? {
++            guard Glibc.getenv("GIFTUI_PI_TRACE") != nil else { return nil }
++            var value = timespec()
++            guard Glibc.clock_gettime(CLOCK_MONOTONIC, &value) == 0 else { return nil }
++            return UInt64(value.tv_sec) * 1_000_000 + UInt64(value.tv_nsec) / 1_000
++        }
++    #endif
++}
