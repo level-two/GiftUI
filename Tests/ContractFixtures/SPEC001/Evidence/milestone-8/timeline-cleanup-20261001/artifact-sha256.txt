@@ -1,0 +1,2 @@
+bd9f96f9cbd3e1ca22dbb7f8c6506ab68254e83704a445f59272bcd4ad6c798d  .build/nrf52840/signal-analyzer-static/zephyr/zephyr.elf
+5a9c6c0fecc210479a362825da2f3ed22cae71de448695a799611294387131e3  .build/raspberry-pi/artifacts/SignalAnalyzerRaspberryPiARMv6

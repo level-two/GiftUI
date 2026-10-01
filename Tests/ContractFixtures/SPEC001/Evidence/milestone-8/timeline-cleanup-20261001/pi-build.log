@@ -1,0 +1,16 @@
+==> building SignalAnalyzerRaspberryPiARMv6 for armv6-unknown-linux-gnueabihf (release, static Swift runtime)
+[0/1] Planning build
+Building for production...
+[0/6] Write sources
+[2/6] Write swift-version-3DE8B4069F7AB4E6.txt
+[4/6] Compiling SignalAnalyzerPresentation ModuleBoundary.swift
+[5/7] Compiling SignalAnalyzerHost DynamicSignalAnalyzerActionDispatcher.swift
+[6/9] Compiling SignalAnalyzerPresetHarness HardwareFreePresetRunner.swift
+[7/9] Compiling SignalAnalyzerTargetHost DynamicSignalAnalyzerPiAssembly.swift
+[8/10] Compiling SignalAnalyzerRaspberryPiARMv6 LinuxSignalAnalyzerPiInputPump.swift
+[8/10] Write Objects.LinkFileList
+[9/10] Linking SignalAnalyzerRaspberryPiARMv6
+Build of product 'SignalAnalyzerRaspberryPiARMv6' complete! (16.12s)
+==> stripping deploy artifact
+==> verified ARMv6 hard-float binary: /Users/eugene/work/GiftUI/.build/raspberry-pi/artifacts/SignalAnalyzerRaspberryPiARMv6: ELF 32-bit LSB pie executable, ARM, EABI5 version 1 (SYSV), dynamically linked, interpreter /lib/ld-linux-armhf.so.3, for GNU/Linux 3.2.0, BuildID[sha1]=eafebb27f374485e13fa6b0a1012c9f134764d19, stripped
+ARTIFACT=/Users/eugene/work/GiftUI/.build/raspberry-pi/artifacts/SignalAnalyzerRaspberryPiARMv6

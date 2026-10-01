@@ -1,0 +1,3 @@
+trace=frame	revision=1	capture_revision=0	capture_count=0	state=0	window=1	semantic_scopes=92	layout_scopes=92	drawing_strokes=5	drawing_points=32	render_operations=30	writes=2841	bytes=267250	frame_hash=16797207334065370199
+trace=frame	revision=2	capture_revision=0	capture_count=0	state=3	window=1	semantic_scopes=92	layout_scopes=92	drawing_strokes=5	drawing_points=32	render_operations=31	writes=5738	bytes=534786	frame_hash=10003839164685399983
+diagnostic=visible	revision=2	frame_hash=10003839164685399983	status=passed

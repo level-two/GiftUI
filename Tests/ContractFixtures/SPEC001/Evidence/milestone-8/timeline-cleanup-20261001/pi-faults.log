@@ -1,0 +1,16 @@
+swiftpm-command: swift run --package-path /Users/eugene/work/GiftUI --disable-sandbox -Xswiftc -DGIFTUI_DYNAMIC_PROFILE SignalAnalyzerRaspberryPiARMv6 --rehearse-host
+[0/1] Planning build
+Building for debugging...
+[0/3] Write swift-version--58304C5D6DBC2206.txt
+Build of product 'SignalAnalyzerRaspberryPiARMv6' complete! (1.07s)
+swiftpm-command: swift run --package-path /Users/eugene/work/GiftUI --disable-sandbox -Xswiftc -DGIFTUI_DYNAMIC_PROFILE SignalAnalyzerRaspberryPiARMv6 --rehearse-host
+[0/1] Planning build
+Building for debugging...
+[0/3] Write swift-version--58304C5D6DBC2206.txt
+Build of product 'SignalAnalyzerRaspberryPiARMv6' complete! (0.94s)
+swiftpm-command: swift run --package-path /Users/eugene/work/GiftUI --disable-sandbox -Xswiftc -DGIFTUI_DYNAMIC_PROFILE SignalAnalyzerRaspberryPiARMv6 --rehearse-host
+[0/1] Planning build
+Building for debugging...
+[0/3] Write swift-version--58304C5D6DBC2206.txt
+Build of product 'SignalAnalyzerRaspberryPiARMv6' complete! (0.96s)
+SPEC-001 Pi production-loop faults passed: startup display, later display, and input overflow.

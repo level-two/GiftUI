@@ -1,0 +1,6 @@
+schema_version=1
+selection=macos-dynamic
+repository_revision=6f0d263ca516544e55d27deaa9a8bad3ff6a86dc
+profiles=macos-dynamic
+contract_report_root=.build/contract-reports
+failure_count=10
