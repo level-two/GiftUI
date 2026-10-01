@@ -216,9 +216,13 @@ private struct RecordingConsoleTransport: PiScreenConsoleModeTransport {
     )
     #expect(
         decoder.update(point: nil, touching: true)
-            == PiScreenContactEvent(phase: .up, point: Point(x: 18, y: 28))
+            == PiScreenContactEvent(phase: .move, point: Point(x: -1, y: -1))
     )
-    #expect(decoder.update(point: nil, touching: false) == nil)
+    #expect(decoder.update(point: Point(x: 18, y: 28), touching: true) == nil)
+    #expect(
+        decoder.update(point: nil, touching: false)
+            == PiScreenContactEvent(phase: .up, point: Point(x: -1, y: -1)))
+    #expect(decoder.update(point: Point(x: 18, y: 28), touching: true)?.phase == .down)
 }
 
 @Test func displayTargetPreservesCanonicalBytesAndPhysicalProjection() throws {

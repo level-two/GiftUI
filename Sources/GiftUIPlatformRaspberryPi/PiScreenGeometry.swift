@@ -206,12 +206,20 @@ package struct PiScreenContactEvent: Equatable, Sendable {
 package struct PiScreenContactDecoder: Sendable {
     private var activePoint: Point?
     private var lastEmittedPoint: Point?
+    private var awaitingPhysicalRelease = false
 
     private static let minimumMovePixels: Int64 = 8
 
     package init() {}
 
     package mutating func update(point: Point?, touching: Bool) -> PiScreenContactEvent? {
+        if awaitingPhysicalRelease {
+            guard !touching else { return nil }
+            awaitingPhysicalRelease = false
+            activePoint = nil
+            lastEmittedPoint = nil
+            return PiScreenContactEvent(phase: .up, point: Point(x: -1, y: -1))
+        }
         switch (activePoint, touching, point) {
         case (nil, true, .some(let point)):
             activePoint = point
@@ -227,7 +235,13 @@ package struct PiScreenContactDecoder: Sendable {
             else { return nil }
             self.lastEmittedPoint = point
             return PiScreenContactEvent(phase: .move, point: point)
-        case (.some(let previous), false, _), (.some(let previous), true, nil):
+        case (.some, true, nil):
+            // A synthetic release at the previous in-bounds point would
+            // activate the captured button. Move outside to cancel instead,
+            // and retain the physical sequence until the pen really lifts.
+            awaitingPhysicalRelease = true
+            return PiScreenContactEvent(phase: .move, point: Point(x: -1, y: -1))
+        case (.some(let previous), false, _):
             activePoint = nil
             lastEmittedPoint = nil
             return PiScreenContactEvent(phase: .up, point: previous)

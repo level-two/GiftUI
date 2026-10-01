@@ -3078,6 +3078,7 @@ func signalAnalyzerWaveformResolvesSurfaceConstraints(width: Int32, height: Int3
 
 @Test(arguments: [
     "tap", "hold", "move-inside", "move-outside", "miss", "disabled", "stale", "up-only",
+    "leave-surface",
 ])
 func rawFramebufferTouchesReachModelAndReplacementFrame(scenario: String) throws {
     let preset = GeneratedSignalAnalyzerPresets.raspberryPiDynamic()
@@ -3175,6 +3176,10 @@ func rawFramebufferTouchesReachModelAndReplacementFrame(scenario: String) throws
         submit(try #require(sample(Point(x: center.x + 8, y: center.y), touching: true)))
     } else if scenario == "move-outside" {
         submit(try #require(sample(outside, touching: true)))
+    }
+    if scenario == "leave-surface" {
+        if let contact = sample(Point(x: -60, y: center.y), touching: true) { submit(contact) }
+        if let contact = sample(center, touching: true) { submit(contact) }
     }
     if scenario != "up-only" {
         submit(try #require(sample(start, touching: false)))

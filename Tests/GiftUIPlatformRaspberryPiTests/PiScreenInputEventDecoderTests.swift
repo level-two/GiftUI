@@ -46,7 +46,7 @@ import Testing
     #expect(decoder.consume(type: 9, code: 9, value: 1) == nil)
     #expect(decoder.consume(type: 0, code: 0, value: 0)?.phase == .down)
     #expect(decoder.consume(type: 3, code: 0, value: 0) == nil)
-    #expect(decoder.consume(type: 0, code: 0, value: 0)?.phase == .up)
+    #expect(decoder.consume(type: 0, code: 0, value: 0)?.phase == .move)
     #expect(decoder.consume(type: 1, code: 330, value: 0) == nil)
-    #expect(decoder.consume(type: 0, code: 0, value: 0) == nil)
+    #expect(decoder.consume(type: 0, code: 0, value: 0)?.phase == .up)
 }
