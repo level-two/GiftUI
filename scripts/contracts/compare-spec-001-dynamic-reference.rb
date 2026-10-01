@@ -35,7 +35,7 @@ other_fields = %w[
 ]
 mac_other = records(ARGV.fetch(0), "reference=macos-dynamic-other-frame\t")
 pi_other = records(ARGV.fetch(1), "trace=other_frame\t")
-abort "expected 7 initial/action frames, got mac=#{mac_other.length} pi=#{pi_other.length}" unless mac_other.length == 7 && pi_other.length == 7
+abort "expected 9 initial/action frames, got mac=#{mac_other.length} pi=#{pi_other.length}" unless mac_other.length == 9 && pi_other.length == 9
 mac_other.zip(pi_other).each_with_index do |(expected, actual), index|
   other_fields.each do |field|
     next if expected.fetch(field) == actual.fetch(field)

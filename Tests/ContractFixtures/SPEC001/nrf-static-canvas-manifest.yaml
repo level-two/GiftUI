@@ -12,12 +12,12 @@ semantic_region:
   canvas_descriptor_offset: 32
   canvas_descriptor_stride: 8
   action_code_offset: 72
-  action_code_count: 6
+  action_code_count: 3
   checksum_offset: 84
   checksum_coverage: full_region_except_checksum_word
 semantic_variants:
-  - { name: normal, nodes: 47, bodies: 14, modifiers: 49, actions: 6, depth: 34, structural: 124, traversal: 201 }
-  - { name: diagnostic, nodes: 48, bodies: 14, modifiers: 50, actions: 6, depth: 34, structural: 126, traversal: 203 }
+  - { name: normal, nodes: 41, bodies: 16, modifiers: 50, actions: 3, depth: 40, structural: 119, traversal: 188 }
+  - { name: diagnostic, nodes: 42, bodies: 16, modifiers: 51, actions: 3, depth: 40, structural: 121, traversal: 190 }
 callable_cases:
   - id: 1
     expression: grid

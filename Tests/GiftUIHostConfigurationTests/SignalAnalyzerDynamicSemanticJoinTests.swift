@@ -1916,7 +1916,9 @@ private func makeSemanticJoinModel(failsStart: Bool = false) -> SignalAnalyzerVi
 }
 
 @Test func macOSDynamicReferenceRunsOrderedAcquisitionAndPresentationWorkload() throws {
-    let preset = GeneratedSignalAnalyzerPresets.macOSDynamic()
+    // Run the Dynamic oracle on macOS at the Pi target extent. Responsive text
+    // wrapping changes operation counts between 240- and 320-pixel surfaces.
+    let preset = GeneratedSignalAnalyzerPresets.raspberryPiDynamic()
     let source = DeterministicSignalDataSource()
     let repository = DefaultSignalAcquisitionRepository(source: source)
     let admission = DynamicSignalAnalyzerHostFactAdmission()

@@ -430,58 +430,50 @@ enum PiHostNativeRehearsal {
         owner: inout PiRecordingLifecycleOwner<PiScreenDisplayTarget<PiRecordingDevice>>,
         device: PiRecordingDevice
     ) throws {
-        let actions: [(SignalAnalyzerAction, AcquisitionState, VisibleTimeWindow)] = [
-            (.stop, .stopped, .twoSeconds),
-            (.start, .running, .twoSeconds),
-            (.clear, .running, .twoSeconds),
-            (.selectOneSecond, .running, .oneSecond),
-            (.selectFiveSeconds, .running, .fiveSeconds),
-            (.selectTwoSeconds, .running, .twoSeconds),
+        let actions: [(SignalAnalyzerAction, UInt16, AcquisitionState, VisibleTimeWindow)] = [
+            (.stop, 1, .stopped, .twoSeconds),
+            (.start, 1, .running, .twoSeconds),
+            (.selectOneSecond, 1, .running, .oneSecond),
+            (.selectOneSecond, 0, .running, .oneSecond),
+            (.selectOneSecond, 0, .running, .oneSecond),
+            (.selectTwoSeconds, 1, .running, .twoSeconds),
+            (.selectFiveSeconds, 1, .running, .fiveSeconds),
+            (.selectFiveSeconds, 0, .running, .fiveSeconds),
+            (.selectFiveSeconds, 0, .running, .fiveSeconds),
+            (.selectTwoSeconds, 1, .running, .twoSeconds),
+            (.selectOneSecond, 1, .running, .oneSecond),
+            (.selectTwoSeconds, 1, .running, .twoSeconds),
         ]
-        try tapAction(.start, expectedDispatch: 0, owner: &owner, device: device)
-        try traceAction(.start, dispatched: 0, owner: owner)
-        for (code, expectedState, expectedWindow) in actions {
+        for (code, dispatched, expectedState, expectedWindow) in actions {
             let beforeRevision = owner.production.currentPresentationRevision
-            try tapAction(code, expectedDispatch: 1, owner: &owner, device: device)
-            if code == .stop || code == .start || code == .clear {
-                device.clock += 250_000
-                guard
-                    case .completed(_, .completed(let applied)) =
-                        owner.production.service(at: device.clock),
-                    applied.application.factCount > 0
-                else { throw PiHostNativeRehearsalError.action }
+            try tapAction(code, expectedDispatch: dispatched, owner: &owner, device: device)
+            if dispatched == 1 {
+                if code == .stop || code == .start {
+                    device.clock += 250_000
+                    guard
+                        case .completed(_, .completed(let applied)) = owner.production.service(
+                            at: device.clock),
+                        applied.application.factCount > 0
+                    else { throw PiHostNativeRehearsalError.action }
+                }
+                guard owner.production.currentPresentationRevision != beforeRevision else {
+                    throw PiHostNativeRehearsalError.action
+                }
+                try traceOtherFrame(code: code, owner: owner, device: device)
+                let captureName: String?
+                switch code {
+                case .stop: captureName = "stopped"
+                case .selectOneSecond: captureName = "window-one-second"
+                case .selectFiveSeconds: captureName = "window-five-seconds"
+                case .selectTwoSeconds: captureName = "window-two-seconds"
+                default: captureName = nil
+                }
+                if let captureName { try device.capture(captureName) }
             }
             guard owner.production.applicationState?.acquisitionState == expectedState,
-                owner.production.applicationState?.visibleWindow == expectedWindow,
-                owner.production.currentPresentationRevision != beforeRevision
+                owner.production.applicationState?.visibleWindow == expectedWindow
             else { throw PiHostNativeRehearsalError.action }
-            try traceOtherFrame(code: code, owner: owner, device: device)
-            let captureName: String?
-            switch code {
-            case .stop: captureName = "stopped"
-            case .clear: captureName = "cleared"
-            case .selectOneSecond: captureName = "window-one-second"
-            case .selectFiveSeconds: captureName = "window-five-seconds"
-            case .selectTwoSeconds: captureName = "window-two-seconds"
-            default: captureName = nil
-            }
-            if let captureName { try device.capture(captureName) }
-            try traceAction(code, dispatched: 1, owner: owner)
-            if code == .clear {
-                guard owner.production.applicationState?.capture.transitions.isEmpty == true
-                else { throw PiHostNativeRehearsalError.action }
-            }
-            if code == .stop || code == .start {
-                try tapAction(code, expectedDispatch: 0, owner: &owner, device: device)
-                try traceAction(code, dispatched: 0, owner: owner)
-            }
-            if code == .selectOneSecond || code == .selectFiveSeconds
-                || code == .selectTwoSeconds
-            {
-                try tapAction(code, expectedDispatch: 0, owner: &owner, device: device)
-                try traceAction(code, dispatched: 0, owner: owner)
-            }
-            print("action=\(code)\tstate=\(expectedState)\twindow=\(expectedWindow)")
+            try traceAction(code, dispatched: dispatched, owner: owner)
         }
     }
 

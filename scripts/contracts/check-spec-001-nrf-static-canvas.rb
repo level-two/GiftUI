@@ -25,14 +25,14 @@ expected_semantic_region = {
   "canvas_descriptor_offset" => 32,
   "canvas_descriptor_stride" => 8,
   "action_code_offset" => 72,
-  "action_code_count" => 6,
+  "action_code_count" => 3,
   "checksum_offset" => 84,
   "checksum_coverage" => "full_region_except_checksum_word"
 }
 fail_check("semantic region layout differs") unless semantic_region == expected_semantic_region
 expected_variants = [
-  ["normal", 47, 14, 49, 6, 34, 124, 201],
-  ["diagnostic", 48, 14, 50, 6, 34, 126, 203]
+  ["normal", 41, 16, 50, 3, 40, 119, 188],
+  ["diagnostic", 42, 16, 51, 3, 40, 121, 190]
 ]
 actual_variants = manifest.fetch("semantic_variants").map do |entry|
   %w[name nodes bodies modifiers actions depth structural traversal].map { |key| entry.fetch(key) }
@@ -87,9 +87,9 @@ input_tokens = [
   "enum StaticSignalAnalyzerNRFSemanticVariant",
   "case normal = 0",
   "case diagnostic = 1",
-  "semanticNodeCount: 47",
-  "semanticNodeCount: 48",
-  "modifierApplicationCount: 49",
+  "semanticNodeCount: 41",
+  "semanticNodeCount: 42",
+  "modifierApplicationCount: 51",
   "modifierApplicationCount: 50",
   "canvasOccurrenceCount = 5",
   "case 1 ... 4:",
@@ -104,7 +104,7 @@ semantic_tokens = [
   "static let regionByteCount = 3_024",
   "static let encodedByteCount = 88",
   "static let canvasDescriptorCount: UInt16 = 5",
-  "static let actionCodeCount: UInt16 = 6",
+  "static let actionCodeCount: UInt16 = 3",
   "profile.withRegion(.semanticCandidate)",
   "profile.withSemanticRegions",
   "case candidate = 1",

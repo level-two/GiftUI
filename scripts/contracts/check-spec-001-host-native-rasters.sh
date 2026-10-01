@@ -4,10 +4,12 @@ set -euo pipefail
 project_root="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd -P)"
 profile=""
 candidate_only=false
+reference_traces=""
 while [[ $# -gt 0 ]]; do
     case "$1" in
         --profile) profile="$2"; shift 2 ;;
         --candidate-only) candidate_only=true; shift ;;
+        --reference-traces) reference_traces="$2"; shift 2 ;;
         *) printf 'unknown argument: %s\n' "$1" >&2; exit 2 ;;
     esac
 done
@@ -21,9 +23,9 @@ output="${project_root}/.build/contract-generated/spec-001/${target}-raster-gate
 captures="${output}/captures"
 images="${output}/images"
 references="${project_root}/Tests/ContractFixtures/SPEC001/PixelReferences"
-evidence="${project_root}/Tests/ContractFixtures/SPEC001/Evidence/milestone-7"
+evidence="${reference_traces:-${project_root}/Tests/ContractFixtures/SPEC001/Evidence/milestone-7}"
 if [[ "${candidate_only}" == false ]]; then
-    states=(idle running-four-traces stopped cleared window-one-second
+    states=(idle running-four-traces stopped window-one-second
         window-five-seconds window-two-seconds diagnostic)
     expected_bytes=153600
     [[ "${target}" == pi ]] && expected_bytes=115200

@@ -81,18 +81,18 @@ struct scripted_action {
 };
 
 static const struct scripted_action actions[] = {
-    {0U, 0U, 1U, 1U},
     {1U, 1U, 2U, 1U},
-    {1U, 0U, 2U, 1U},
     {0U, 1U, 1U, 1U},
-    {0U, 0U, 1U, 1U},
-    {2U, 1U, 1U, 1U},
     {3U, 1U, 1U, 0U},
     {3U, 0U, 1U, 0U},
+    {3U, 0U, 1U, 0U},
+    {4U, 1U, 1U, 1U},
     {5U, 1U, 1U, 2U},
     {5U, 0U, 1U, 2U},
+    {5U, 0U, 1U, 2U},
     {4U, 1U, 1U, 1U},
-    {4U, 0U, 1U, 1U},
+    {3U, 1U, 1U, 0U},
+    {4U, 1U, 1U, 1U},
 };
 
 uint64_t giftui_static_host_source_clock_delay(uint64_t duration)
@@ -128,7 +128,7 @@ int ads7846_pen_is_down(void)
     }
     if (revision != 0U && revision != last_traced_revision) {
         assert(revision > last_traced_revision);
-        const uint32_t scopes = diagnostic_mode != 0U && revision == 2U ? 98U : 96U;
+        const uint32_t scopes = diagnostic_mode != 0U && revision == 2U ? 93U : 91U;
         assert(giftui_signal_analyzer_last_semantic_scopes() == scopes);
         assert(giftui_signal_analyzer_last_layout_scopes() == scopes);
         assert(giftui_signal_analyzer_last_drawing_strokes() == 5U);
@@ -143,12 +143,10 @@ int ads7846_pen_is_down(void)
         } else if (revision == 122U) {
             capture_frame("stopped");
         } else if (revision == 124U) {
-            capture_frame("cleared");
-        } else if (revision == 125U) {
             capture_frame("window-one-second");
-        } else if (revision == 126U) {
+                } else if (revision == 126U) {
             capture_frame("window-five-seconds");
-        } else if (revision == 127U) {
+        } else if (revision == 129U) {
             capture_frame("window-two-seconds");
         } else if (diagnostic_mode != 0U && revision == 2U) {
             capture_frame("diagnostic");
