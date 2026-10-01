@@ -221,22 +221,8 @@
     }
 
     package final class LinuxPiScreenTouchDevice {
-        private static let eventSynchronization: UInt16 = 0
-        private static let eventKey: UInt16 = 1
-        private static let eventAbsolute: UInt16 = 3
-        private static let synchronizationReport: UInt16 = 0
-        private static let absoluteX: UInt16 = 0
-        private static let absoluteY: UInt16 = 1
-        private static let buttonTouch: UInt16 = 330
-
         private let fileDescriptor: Int32
-        private let transform: PiScreenAspectFitTransform
-        private let calibration: PiScreenTouchCalibration
-        private var decoder = PiScreenContactDecoder()
-        private var rawX: Int32 = 0
-        private var rawY: Int32 = 0
-        private var touching = false
-        private var changed = false
+        private var decoder: PiScreenInputEventDecoder
 
         package init(
             devicePath: String = "/dev/input/event0",
@@ -249,8 +235,7 @@
             }
             guard descriptor >= 0 else { throw .openFailed }
             fileDescriptor = descriptor
-            self.transform = transform
-            self.calibration = calibration
+            decoder = PiScreenInputEventDecoder(transform: transform, calibration: calibration)
         }
 
         deinit {
@@ -272,29 +257,10 @@
             var result: [PiScreenContactEvent] = []
             let count = byteCount / MemoryLayout<LinuxInputEvent>.stride
             for event in input.prefix(count) {
-                switch (event.type, event.code) {
-                case (Self.eventAbsolute, Self.absoluteX):
-                    rawX = event.value
-                    changed = true
-                case (Self.eventAbsolute, Self.absoluteY):
-                    rawY = event.value
-                    changed = true
-                case (Self.eventKey, Self.buttonTouch):
-                    touching = event.value != 0
-                    changed = true
-                case (Self.eventSynchronization, Self.synchronizationReport):
-                    guard changed else { continue }
-                    changed = false
-                    let point = transform.logicalPoint(
-                        rawX: rawX,
-                        rawY: rawY,
-                        calibration: calibration
-                    )
-                    if let emitted = decoder.update(point: point, touching: touching) {
-                        result.append(emitted)
-                    }
-                default:
-                    break
+                if let emitted = decoder.consume(
+                    type: event.type, code: event.code, value: event.value
+                ) {
+                    result.append(emitted)
                 }
             }
             return result

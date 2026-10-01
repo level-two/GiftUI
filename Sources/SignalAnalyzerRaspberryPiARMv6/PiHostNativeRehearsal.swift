@@ -496,15 +496,46 @@ enum PiHostNativeRehearsal {
         let priorState = owner.production.applicationState
         let priorRevision = owner.production.currentPresentationRevision
         device.clock += 250_000
+        // Substitute the device sample, preserving production calibration and
+        // contact decoding before entering the serialized application owner.
+        guard
+            let transform = PiScreenAspectFitTransform(
+                physicalWidth: 480, physicalHeight: 320, logicalWidth: 240, logicalHeight: 240
+            ), let calibration = PiScreenTouchCalibration.signalAnalyzerPiScreen
+        else {
+            throw PiHostNativeRehearsalError.action
+        }
+        let physicalX = transform.contentOriginX + point.x * transform.contentWidth / 240
+        let physicalY = transform.contentOriginY + point.y * transform.contentHeight / 240
+        let rawX =
+            calibration.minimumX
+            + Int32((Int64(physicalX) * 4095 + 478) / 479)
+        let rawY =
+            calibration.minimumY
+            + Int32((Int64(physicalY) * 4095 + 318) / 319)
+        guard
+            let normalized = transform.logicalPoint(
+                rawX: rawX, rawY: rawY, calibration: calibration
+            ), record.hitBounds.contains(normalized)
+        else {
+            throw PiHostNativeRehearsalError.action
+        }
+        var decoder = PiScreenInputEventDecoder(transform: transform, calibration: calibration)
+        guard decoder.consume(type: 3, code: 0, value: rawX) == nil,
+            decoder.consume(type: 3, code: 1, value: rawY) == nil,
+            decoder.consume(type: 1, code: 330, value: 1) == nil,
+            let down = decoder.consume(type: 0, code: 0, value: 0),
+            decoder.consume(type: 0, code: 0, value: 0) == nil,
+            decoder.consume(type: 1, code: 330, value: 0) == nil,
+            let up = decoder.consume(type: 0, code: 0, value: 0),
+            decoder.consume(type: 0, code: 0, value: 0) == nil
+        else { throw PiHostNativeRehearsalError.action }
         let ingress = owner.production.admit(
             [
                 DynamicSignalAnalyzerPiContact(
-                    phase: .down, position: point,
-                    priorPhysicalSequenceIsComplete: true
-                ),
-                DynamicSignalAnalyzerPiContact(phase: .up, position: point),
-            ], at: device.clock
-        )
+                    phase: down.phase, position: down.point, priorPhysicalSequenceIsComplete: true),
+                DynamicSignalAnalyzerPiContact(phase: up.phase, position: up.point),
+            ], at: device.clock)
         let result = owner.production.service(at: device.clock)
         guard case .admitted(let admitted) = ingress, admitted.queuedCount == 2,
             case .completed(_, .completed(let summary)) = result,
