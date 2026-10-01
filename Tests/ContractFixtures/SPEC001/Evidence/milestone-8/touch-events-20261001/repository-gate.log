@@ -1,0 +1,145 @@
+==> governance
+pass: governance
+==> governance-tooling
+pass: governance-tooling
+==> swift-format
+pass: swift-format
+==> driver-registry
+pass: driver-registry
+==> spec-013-migration
+pass: spec-013-migration
+==> spec-013-dynamic-binding
+pass: spec-013-dynamic-binding
+==> spec-013-static-generated-fixture
+pass: spec-013-static-generated-fixture
+==> spec-013-static-storage
+pass: spec-013-static-storage
+==> spec-013-macos-static
+pass: spec-013-macos-static
+==> spec-013-nrf-static
+pass: spec-013-nrf-static
+==> root-tests
+pass: root-tests
+==> spec-003-diagnostic-buffer
+fail: spec-003-diagnostic-buffer (exit 1; /Users/eugene/work/GiftUI/.build/test-reports/all-hardware-free/logs/spec-003-diagnostic-buffer.log)
+==> SPEC-001-macos-dynamic
+pass: SPEC-001-macos-dynamic
+==> SPEC-002-macos-dynamic
+pass: SPEC-002-macos-dynamic
+==> SPEC-003-macos-dynamic
+fail: SPEC-003-macos-dynamic (exit 1; /Users/eugene/work/GiftUI/.build/test-reports/all-hardware-free/logs/SPEC-003-macos-dynamic.log)
+==> SPEC-004-macos-dynamic
+fail: SPEC-004-macos-dynamic (exit 1; /Users/eugene/work/GiftUI/.build/test-reports/all-hardware-free/logs/SPEC-004-macos-dynamic.log)
+==> SPEC-005-macos-dynamic
+fail: SPEC-005-macos-dynamic (exit 1; /Users/eugene/work/GiftUI/.build/test-reports/all-hardware-free/logs/SPEC-005-macos-dynamic.log)
+==> SPEC-006-macos-dynamic
+fail: SPEC-006-macos-dynamic (exit 1; /Users/eugene/work/GiftUI/.build/test-reports/all-hardware-free/logs/SPEC-006-macos-dynamic.log)
+==> SPEC-007-macos-dynamic
+pass: SPEC-007-macos-dynamic
+==> SPEC-008-macos-dynamic
+fail: SPEC-008-macos-dynamic (exit 1; /Users/eugene/work/GiftUI/.build/test-reports/all-hardware-free/logs/SPEC-008-macos-dynamic.log)
+==> SPEC-009-macos-dynamic
+fail: SPEC-009-macos-dynamic (exit 1; /Users/eugene/work/GiftUI/.build/test-reports/all-hardware-free/logs/SPEC-009-macos-dynamic.log)
+==> SPEC-010-macos-dynamic
+pass: SPEC-010-macos-dynamic
+==> SPEC-011-macos-dynamic
+fail: SPEC-011-macos-dynamic (exit 1; /Users/eugene/work/GiftUI/.build/test-reports/all-hardware-free/logs/SPEC-011-macos-dynamic.log)
+==> SPEC-012-macos-dynamic
+fail: SPEC-012-macos-dynamic (exit 1; /Users/eugene/work/GiftUI/.build/test-reports/all-hardware-free/logs/SPEC-012-macos-dynamic.log)
+==> SPEC-013-macos-dynamic
+fail: SPEC-013-macos-dynamic (exit 1; /Users/eugene/work/GiftUI/.build/test-reports/all-hardware-free/logs/SPEC-013-macos-dynamic.log)
+==> SPEC-014-macos-dynamic
+fail: SPEC-014-macos-dynamic (exit 1; /Users/eugene/work/GiftUI/.build/test-reports/all-hardware-free/logs/SPEC-014-macos-dynamic.log)
+==> SPEC-015-macos-dynamic
+pass: SPEC-015-macos-dynamic
+==> SPEC-001-macos-static
+pass: SPEC-001-macos-static
+==> SPEC-002-macos-static
+pass: SPEC-002-macos-static
+==> SPEC-003-macos-static
+fail: SPEC-003-macos-static (exit 1; /Users/eugene/work/GiftUI/.build/test-reports/all-hardware-free/logs/SPEC-003-macos-static.log)
+==> SPEC-004-macos-static
+fail: SPEC-004-macos-static (exit 1; /Users/eugene/work/GiftUI/.build/test-reports/all-hardware-free/logs/SPEC-004-macos-static.log)
+==> SPEC-005-macos-static
+fail: SPEC-005-macos-static (exit 1; /Users/eugene/work/GiftUI/.build/test-reports/all-hardware-free/logs/SPEC-005-macos-static.log)
+==> SPEC-006-macos-static
+fail: SPEC-006-macos-static (exit 1; /Users/eugene/work/GiftUI/.build/test-reports/all-hardware-free/logs/SPEC-006-macos-static.log)
+==> SPEC-007-macos-static
+pass: SPEC-007-macos-static
+==> SPEC-008-macos-static
+fail: SPEC-008-macos-static (exit 1; /Users/eugene/work/GiftUI/.build/test-reports/all-hardware-free/logs/SPEC-008-macos-static.log)
+==> SPEC-009-macos-static
+fail: SPEC-009-macos-static (exit 1; /Users/eugene/work/GiftUI/.build/test-reports/all-hardware-free/logs/SPEC-009-macos-static.log)
+==> SPEC-010-macos-static
+pass: SPEC-010-macos-static
+==> SPEC-011-macos-static
+fail: SPEC-011-macos-static (exit 1; /Users/eugene/work/GiftUI/.build/test-reports/all-hardware-free/logs/SPEC-011-macos-static.log)
+==> SPEC-012-macos-static
+fail: SPEC-012-macos-static (exit 1; /Users/eugene/work/GiftUI/.build/test-reports/all-hardware-free/logs/SPEC-012-macos-static.log)
+==> SPEC-013-macos-static
+fail: SPEC-013-macos-static (exit 1; /Users/eugene/work/GiftUI/.build/test-reports/all-hardware-free/logs/SPEC-013-macos-static.log)
+==> SPEC-014-macos-static
+fail: SPEC-014-macos-static (exit 1; /Users/eugene/work/GiftUI/.build/test-reports/all-hardware-free/logs/SPEC-014-macos-static.log)
+==> SPEC-015-macos-static
+pass: SPEC-015-macos-static
+==> SPEC-001-raspberry-pi-armv6
+fail: SPEC-001-raspberry-pi-armv6 (exit 1; /Users/eugene/work/GiftUI/.build/test-reports/all-hardware-free/logs/SPEC-001-raspberry-pi-armv6.log)
+==> SPEC-002-raspberry-pi-armv6
+pass: SPEC-002-raspberry-pi-armv6
+==> SPEC-003-raspberry-pi-armv6
+fail: SPEC-003-raspberry-pi-armv6 (exit 1; /Users/eugene/work/GiftUI/.build/test-reports/all-hardware-free/logs/SPEC-003-raspberry-pi-armv6.log)
+==> SPEC-004-raspberry-pi-armv6
+fail: SPEC-004-raspberry-pi-armv6 (exit 1; /Users/eugene/work/GiftUI/.build/test-reports/all-hardware-free/logs/SPEC-004-raspberry-pi-armv6.log)
+==> SPEC-005-raspberry-pi-armv6
+fail: SPEC-005-raspberry-pi-armv6 (exit 1; /Users/eugene/work/GiftUI/.build/test-reports/all-hardware-free/logs/SPEC-005-raspberry-pi-armv6.log)
+==> SPEC-006-raspberry-pi-armv6
+fail: SPEC-006-raspberry-pi-armv6 (exit 1; /Users/eugene/work/GiftUI/.build/test-reports/all-hardware-free/logs/SPEC-006-raspberry-pi-armv6.log)
+==> SPEC-007-raspberry-pi-armv6
+pass: SPEC-007-raspberry-pi-armv6
+==> SPEC-008-raspberry-pi-armv6
+fail: SPEC-008-raspberry-pi-armv6 (exit 1; /Users/eugene/work/GiftUI/.build/test-reports/all-hardware-free/logs/SPEC-008-raspberry-pi-armv6.log)
+==> SPEC-009-raspberry-pi-armv6
+fail: SPEC-009-raspberry-pi-armv6 (exit 1; /Users/eugene/work/GiftUI/.build/test-reports/all-hardware-free/logs/SPEC-009-raspberry-pi-armv6.log)
+==> SPEC-010-raspberry-pi-armv6
+pass: SPEC-010-raspberry-pi-armv6
+==> SPEC-011-raspberry-pi-armv6
+fail: SPEC-011-raspberry-pi-armv6 (exit 1; /Users/eugene/work/GiftUI/.build/test-reports/all-hardware-free/logs/SPEC-011-raspberry-pi-armv6.log)
+==> SPEC-012-raspberry-pi-armv6
+fail: SPEC-012-raspberry-pi-armv6 (exit 1; /Users/eugene/work/GiftUI/.build/test-reports/all-hardware-free/logs/SPEC-012-raspberry-pi-armv6.log)
+==> SPEC-013-raspberry-pi-armv6
+fail: SPEC-013-raspberry-pi-armv6 (exit 1; /Users/eugene/work/GiftUI/.build/test-reports/all-hardware-free/logs/SPEC-013-raspberry-pi-armv6.log)
+==> SPEC-014-raspberry-pi-armv6
+fail: SPEC-014-raspberry-pi-armv6 (exit 1; /Users/eugene/work/GiftUI/.build/test-reports/all-hardware-free/logs/SPEC-014-raspberry-pi-armv6.log)
+==> SPEC-015-raspberry-pi-armv6
+pass: SPEC-015-raspberry-pi-armv6
+==> SPEC-001-nrf52840-embedded
+fail: SPEC-001-nrf52840-embedded (exit 1; /Users/eugene/work/GiftUI/.build/test-reports/all-hardware-free/logs/SPEC-001-nrf52840-embedded.log)
+==> SPEC-002-nrf52840-embedded
+pass: SPEC-002-nrf52840-embedded
+==> SPEC-003-nrf52840-embedded
+fail: SPEC-003-nrf52840-embedded (exit 1; /Users/eugene/work/GiftUI/.build/test-reports/all-hardware-free/logs/SPEC-003-nrf52840-embedded.log)
+==> SPEC-004-nrf52840-embedded
+fail: SPEC-004-nrf52840-embedded (exit 1; /Users/eugene/work/GiftUI/.build/test-reports/all-hardware-free/logs/SPEC-004-nrf52840-embedded.log)
+==> SPEC-005-nrf52840-embedded
+fail: SPEC-005-nrf52840-embedded (exit 1; /Users/eugene/work/GiftUI/.build/test-reports/all-hardware-free/logs/SPEC-005-nrf52840-embedded.log)
+==> SPEC-006-nrf52840-embedded
+fail: SPEC-006-nrf52840-embedded (exit 1; /Users/eugene/work/GiftUI/.build/test-reports/all-hardware-free/logs/SPEC-006-nrf52840-embedded.log)
+==> SPEC-007-nrf52840-embedded
+pass: SPEC-007-nrf52840-embedded
+==> SPEC-008-nrf52840-embedded
+fail: SPEC-008-nrf52840-embedded (exit 1; /Users/eugene/work/GiftUI/.build/test-reports/all-hardware-free/logs/SPEC-008-nrf52840-embedded.log)
+==> SPEC-009-nrf52840-embedded
+fail: SPEC-009-nrf52840-embedded (exit 1; /Users/eugene/work/GiftUI/.build/test-reports/all-hardware-free/logs/SPEC-009-nrf52840-embedded.log)
+==> SPEC-010-nrf52840-embedded
+pass: SPEC-010-nrf52840-embedded
+==> SPEC-011-nrf52840-embedded
+fail: SPEC-011-nrf52840-embedded (exit 1; /Users/eugene/work/GiftUI/.build/test-reports/all-hardware-free/logs/SPEC-011-nrf52840-embedded.log)
+==> SPEC-012-nrf52840-embedded
+fail: SPEC-012-nrf52840-embedded (exit 1; /Users/eugene/work/GiftUI/.build/test-reports/all-hardware-free/logs/SPEC-012-nrf52840-embedded.log)
+==> SPEC-013-nrf52840-embedded
+fail: SPEC-013-nrf52840-embedded (exit 1; /Users/eugene/work/GiftUI/.build/test-reports/all-hardware-free/logs/SPEC-013-nrf52840-embedded.log)
+==> SPEC-014-nrf52840-embedded
+fail: SPEC-014-nrf52840-embedded (exit 1; /Users/eugene/work/GiftUI/.build/test-reports/all-hardware-free/logs/SPEC-014-nrf52840-embedded.log)
+==> SPEC-015-nrf52840-embedded
+pass: SPEC-015-nrf52840-embedded
+43 check(s) failed; see /Users/eugene/work/GiftUI/.build/test-reports/all-hardware-free

@@ -1,0 +1,3 @@
+trace=frame	revision=1	capture_revision=0	capture_count=0	state=0	window=1	semantic_scopes=92	layout_scopes=92	drawing_strokes=5	drawing_points=32	render_operations=30	writes=2841	bytes=267250	frame_hash=16797207334065370199
+trace=touch-probe	hold=cancelled	miss=ignored	revision=1	status=passed
+status=passed	profile=nrf52840-static	evidence=raw-touch-probes

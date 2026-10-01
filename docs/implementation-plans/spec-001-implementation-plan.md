@@ -2431,3 +2431,23 @@ indicator. Normal and diagnostic projections now share 92 scopes, 41 nodes,
 The fixed capacities and physical storage remain unchanged. T6.8 implements
 the requested correction; T7.7 evidence records hardware-free visual checks.
 Connected hardware and reviewed-pixel blockers remain open.
+
+
+### Maintainer-requested automated touch propagation (2026-10-01)
+
+Under T6.7/T6.8/T7.7, hardware-free tests now inject raw Linux evdev records
+through the Pi device decoder and raw ADS7846 samples through the nRF
+production firmware loop. Dynamic and Static sequence matrices verify current
+model dispatch, disabled/stale/cancelled input, mutation timing, dirty state,
+and accepted replacement frames. Both macOS recording oracles now dispatch
+controls through their real interaction/model path; the Static oracle no
+longer substitutes direct model calls after checking a gesture.
+
+The [automated touch evidence](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-8/touch-events-20261001/README.md)
+records 19 sequence cases, raw-device rehearsals, Dynamic/Pi and Static/nRF
+workload parity, two Pi decoder fixes (surface-exit cancellation and final
+release position), source identities, and repository-gate results. The unit
+gate and focused touch suite passed. Existing audit/resource blockers and
+missing reviewed pixel references keep full conformance open; no lifecycle
+status, acceptance criterion, manifest relationship, or connected-device claim
+changes.

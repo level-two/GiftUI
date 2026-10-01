@@ -1,0 +1,140 @@
+swiftpm-command: swift test --package-path /Users/eugene/work/GiftUI --disable-sandbox -Xswiftc -DGIFTUI_DYNAMIC_PROFILE --filter rawFramebuffer\|staticTouchABI\|evdev\|contactDecoder
+Test Suite 'Selected tests' started at 2026-10-01 20:53:00.074.
+Test Suite 'GiftUIPackageTests.xctest' started at 2026-10-01 20:53:00.075.
+Test Suite 'GiftUIPackageTests.xctest' passed at 2026-10-01 20:53:00.075.
+	 Executed 0 tests, with 0 failures (0 unexpected) in 0.000 (0.000) seconds
+Test Suite 'Selected tests' passed at 2026-10-01 20:53:00.075.
+	 Executed 0 tests, with 0 failures (0 unexpected) in 0.000 (0.001) seconds
+◇ Test run started.
+↳ Testing Library Version: 1902
+↳ Target Platform: arm64e-apple-macos14.0
+◇ Test staticTouchABIReachesCurrentModelOnlyOnValidRelease(scenario:) started.
+◇ Test contactDecoderProducesOneOrderedSequenceAndCancelsOutside() started.
+◇ Test evdevIgnoresUnknownRecordsAndContactsInLetterbox() started.
+◇ Test rawFramebufferTouchesReachModelAndReplacementFrame(scenario:) started.
+◇ Test evdevReportsCalibrateAndEmitOneContactPerPhysicalPhase() started.
+◇ Test case passing 1 argument scenario → "hold" to staticTouchABIReachesCurrentModelOnlyOnValidRelease(scenario:) started.
+◇ Test case passing 1 argument scenario → "tap" to rawFramebufferTouchesReachModelAndReplacementFrame(scenario:) started.
+◇ Test case passing 1 argument scenario → "move-inside" to rawFramebufferTouchesReachModelAndReplacementFrame(scenario:) started.
+◇ Test case passing 1 argument scenario → "miss" to staticTouchABIReachesCurrentModelOnlyOnValidRelease(scenario:) started.
+◇ Test case passing 1 argument scenario → "move-outside" to rawFramebufferTouchesReachModelAndReplacementFrame(scenario:) started.
+◇ Test case passing 1 argument scenario → "tap" to staticTouchABIReachesCurrentModelOnlyOnValidRelease(scenario:) started.
+◇ Test case passing 1 argument scenario → "hold" to rawFramebufferTouchesReachModelAndReplacementFrame(scenario:) started.
+◇ Test case passing 1 argument scenario → "disabled" to staticTouchABIReachesCurrentModelOnlyOnValidRelease(scenario:) started.
+◇ Test case passing 1 argument scenario → "move-inside" to staticTouchABIReachesCurrentModelOnlyOnValidRelease(scenario:) started.
+◇ Test case passing 1 argument scenario → "move-outside" to staticTouchABIReachesCurrentModelOnlyOnValidRelease(scenario:) started.
+◇ Test case passing 1 argument scenario → "miss" to rawFramebufferTouchesReachModelAndReplacementFrame(scenario:) started.
+◇ Test case passing 1 argument scenario → "stale" to staticTouchABIReachesCurrentModelOnlyOnValidRelease(scenario:) started.
+◇ Test case passing 1 argument scenario → "disabled" to rawFramebufferTouchesReachModelAndReplacementFrame(scenario:) started.
+◇ Test case passing 1 argument scenario → "up-only" to staticTouchABIReachesCurrentModelOnlyOnValidRelease(scenario:) started.
+◇ Test case passing 1 argument scenario → "stale" to rawFramebufferTouchesReachModelAndReplacementFrame(scenario:) started.
+◇ Test case passing 1 argument scenario → "leave-surface" to rawFramebufferTouchesReachModelAndReplacementFrame(scenario:) started.
+◇ Test case passing 1 argument scenario → "up-only" to rawFramebufferTouchesReachModelAndReplacementFrame(scenario:) started.
+◇ Test case passing 1 argument scenario → "release-outside" to rawFramebufferTouchesReachModelAndReplacementFrame(scenario:) started.
+✔ Test contactDecoderProducesOneOrderedSequenceAndCancelsOutside() passed after 0.001 seconds.
+◇ Test case passing 1 argument scenario → "release-letterbox" to rawFramebufferTouchesReachModelAndReplacementFrame(scenario:) started.
+✔ Test evdevReportsCalibrateAndEmitOneContactPerPhysicalPhase() passed after 0.001 seconds.
+✔ Test evdevIgnoresUnknownRecordsAndContactsInLetterbox() passed after 0.001 seconds.
+✔ Test staticTouchABIReachesCurrentModelOnlyOnValidRelease(scenario:) with 8 test cases passed after 0.001 seconds.
+✔ Test rawFramebufferTouchesReachModelAndReplacementFrame(scenario:) with 11 test cases passed after 0.877 seconds.
+✔ Test run with 5 tests in 0 suites passed after 0.877 seconds.
+Another instance of SwiftPM (PID: 8097) is already running using '/Users/eugene/work/GiftUI/.build', waiting until that process has finished execution...warning: /Users/eugene/Library/org.swift.swiftpm/configuration is not accessible or not writable, disabling user-level cache features.
+warning: /Users/eugene/Library/org.swift.swiftpm/security is not accessible or not writable, disabling user-level cache features.
+warning: /Users/eugene/Library/Caches/org.swift.swiftpm is not accessible or not writable, disabling user-level cache features.
+warning: 'giftui': failed storing manifest for 'giftui' in cache: attempt to write a readonly database
+warning: 'swift-syntax': failed storing manifest for 'swift-syntax' in cache: attempt to write a readonly database
+[0/1] Planning build
+Building for debugging...
+[0/14] Write sources
+[3/14] Write swift-version--58304C5D6DBC2206.txt
+[5/17] Emitting module SignalAnalyzerDomain
+[6/17] Emitting module GiftUIFailureCore
+[7/18] Emitting module SignalAnalyzerDomain
+[8/20] Emitting module GiftUIFailureCore
+[9/23] Compiling GiftUI ObservableState.swift
+[10/23] Emitting module SignalAnalyzerData
+[12/25] Emitting module GiftUICapabilitiesTests
+[13/27] Emitting module GiftUISemanticCore
+[14/27] Emitting module GiftUI
+[15/29] Emitting module SignalAnalyzerPresentation
+[16/29] Emitting module SignalAnalyzerDomainTests
+[17/29] Emitting module GiftUIRenderCore
+[18/36] Emitting module GiftUILayout
+[19/36] Emitting module GiftUISemanticCore
+[20/39] Emitting module SignalAnalyzerDataTests
+[21/41] Emitting module GiftUIRenderCore
+[22/41] Compiling GiftUITests ObservableStateHostIntegrationTests.swift
+[23/41] Emitting module GiftUIRenderLowering
+[24/43] Emitting module GiftUIExecution
+[25/43] Emitting module GiftUIRasterCore
+[26/43] Emitting module GiftUIDisplayCore
+[27/43] Emitting module GiftUILayout
+[28/43] Emitting module GiftUITests
+[29/49] Emitting module SignalAnalyzerPresentation
+[30/49] Compiling SignalAnalyzerPresentation SignalAnalyzerView.swift
+[31/51] Compiling GiftUITests DeclarativeViewTests.swift
+[32/51] Emitting module GiftUIInteraction
+[33/52] Emitting module GiftUIObservableState
+[34/52] Emitting module GiftUIPlatformRaspberryPi
+[35/52] Emitting module GiftUIFailureExecution
+[36/52] Emitting module GiftUIDrawing
+[37/52] Emitting module GiftUIRasterCore
+[38/52] Emitting module GiftUIExecution
+[39/52] Emitting module GiftUIRenderLowering
+[40/57] Emitting module GiftUIReferenceTextResources
+[41/59] Emitting module GiftUIDisplayCore
+[42/59] Emitting module GiftUIInteractionFailureAdapterFixture
+[43/59] Emitting module GiftUIBackendIntegration
+[44/59] Emitting module GiftUIRuntimeCore
+[45/59] Emitting module GiftUIObservableState
+[46/61] Emitting module GiftUIReferenceTextResources
+[47/63] Emitting module GiftUIFailureExecution
+[48/65] Emitting module GiftUIInteraction
+[49/65] Emitting module SignalAnalyzerPresentationTests
+[50/67] Emitting module GiftUIDrawingFailureAdapterFixture
+[51/69] Emitting module GiftUIDrawing
+[52/69] Emitting module GiftUIRasterCoreTests
+[53/70] Emitting module GiftUIRuntimeStatic
+[54/75] Compiling GiftUIPlatformRaspberryPi PiScreenGeometry.swift
+[55/79] Emitting module GiftUIInteractionFailureAdapterFixture
+[56/79] Emitting module GiftUIRuntimeDynamic
+[57/80] Emitting module GiftUIRuntimeCore
+[58/84] Emitting module GiftUIFailureExecutionTests
+[59/84] Emitting module GiftUIBackendIntegration
+[60/84] Emitting module GiftUIInteractionFailureAdapterTests
+[61/84] Emitting module GiftUIInteractionTests
+[62/84] Emitting module GiftUIRuntimeStatic
+[63/84] Emitting module GiftUIHostConfiguration
+[64/90] Emitting module GiftUIRuntimeDynamic
+[65/90] Emitting module SignalAnalyzerHost
+[66/90] Emitting module GiftUISemanticCoreTests
+[67/90] Emitting module GiftUIRuntimeStaticTests
+[68/90] Compiling GiftUIPlatformRaspberryPi PiScreenGeometry.swift
+[69/90] Emitting module GiftUIPlatformRaspberryPi
+[70/90] Emitting module GiftUIHostConfiguration
+[71/91] Emitting module GiftUIObservableStateTests
+[72/91] Emitting module GiftUILayoutTests
+[73/95] Emitting module GiftUIBackendIntegrationTests
+[74/95] Emitting module SignalAnalyzerPresetHarness
+[75/95] Emitting module GiftUIRuntimeCoreTests
+[76/95] Emitting module GiftUIDrawingTests
+[77/96] Emitting module GiftUIExecutionTests
+[78/96] Emitting module SignalAnalyzerHost
+[79/96] Emitting module GiftUIPlatformRaspberryPiTests
+[80/96] Compiling GiftUIObservableStateTests ObservableStateBindingDecoratorTests.swift
+[81/96] Compiling GiftUIObservableStateTests ObservableStateCandidateLifecycleTests.swift
+[82/90] Emitting module GiftUIRuntimeConformanceTests
+[83/90] Compiling GiftUISemanticCoreTests SemanticExpansionTraversalTests.swift
+[84/90] Emitting module GiftUIRuntimeDynamicTests
+[85/90] Emitting module SignalAnalyzerTargetHost
+[86/91] Emitting module SignalAnalyzerPresetHarness
+[87/93] Emitting module SignalAnalyzerRaspberryPiARMv6
+[87/93] Write Objects.LinkFileList
+[89/93] Emitting module SignalAnalyzerTargetHost
+[89/95] Linking SignalAnalyzerRaspberryPiARMv6
+[90/95] Applying SignalAnalyzerRaspberryPiARMv6
+[92/95] Emitting module GiftUIHostConfigurationTests
+[93/95] Compiling GiftUIHostConfigurationTests SignalAnalyzerDynamicSemanticJoinTests.swift
+[93/95] Write Objects.LinkFileList
+[94/95] Linking GiftUIPackageTests
+Build complete! (10.60s)

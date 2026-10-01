@@ -1,0 +1,2 @@
+SPEC-001 macOS Static/nRF reference comparison passed: 129 ordered frames, 12 actions
+SPEC-001 macOS Dynamic/Pi reference comparison passed: 120 workload frames, 9 initial/action frames, 12 actions
