@@ -1,5 +1,5 @@
 #if GIFTUI_NRF_EMBEDDED
-    /// Borrows the six generated action scopes for one resolved frame attempt.
+    /// Borrows the three generated action scopes for one resolved frame attempt.
     /// No semantic or layout pointer survives the attempt's workspace reset.
     package struct StaticSignalAnalyzerNRFEmbeddedInteractionOccurrences {
         package struct Occurrence {
@@ -12,7 +12,7 @@
 
         private let semantic: StaticSignalAnalyzerNRFEmbeddedSemanticView
         private let layout: StaticSignalAnalyzerNRFEmbeddedResolvedLayoutView
-        package let count: UInt16 = 6
+        package let count: UInt16 = 3
 
         package init?(
             semantic: StaticSignalAnalyzerNRFEmbeddedSemanticView,
@@ -34,6 +34,7 @@
         package func occurrence(at index: UInt16) -> Occurrence? {
             guard index < count,
                 let ordinal = semantic.actionScopeOrdinal(at: index),
+                let action = semantic.actionCode(at: index),
                 let record = semantic.scope(atOrdinal: ordinal),
                 let bounds = layout.bounds(of: record.identity),
                 let clip = layout.clip(of: record.identity)
@@ -55,7 +56,7 @@
             }
             return Occurrence(
                 identity: record.identity,
-                actionCode: UInt8(index),
+                actionCode: action,
                 bounds: bounds, clip: clip,
                 isEnabled: enabled
             )

@@ -1,7 +1,7 @@
 import GiftUIInteraction
 import GiftUIRuntimeCore
 
-/// Reads six generated action occurrences directly from the scoped semantic
+/// Reads three generated action occurrences directly from the scoped semantic
 /// candidate and its resolved layout. No candidate record is retained here.
 package struct StaticSignalAnalyzerNRFInteractionOccurrences:
     RuntimeInteractionOccurrenceView
@@ -10,7 +10,7 @@ package struct StaticSignalAnalyzerNRFInteractionOccurrences:
 
     private let semanticRegion: UnsafeMutableRawBufferPointer
     private let layout: StaticSignalAnalyzerNRFResolvedLayoutView
-    package let interactionOccurrenceCount: UInt16 = 6
+    package let interactionOccurrenceCount: UInt16 = 3
 
     package init?(
         semanticRegion: UnsafeMutableRawBufferPointer,
@@ -45,7 +45,9 @@ package struct StaticSignalAnalyzerNRFInteractionOccurrences:
             ),
             let bounds = layout.bounds(of: record.identity),
             let clip = layout.clip(of: record.identity),
-            let enabled = isEnabled(at: ordinal)
+            let enabled = isEnabled(at: ordinal),
+            let action = StaticSignalAnalyzerNRFSemanticRegionStore.actionCode(
+                at: index, in: semanticRegion)
         else { return nil }
         return RuntimeInteractionOccurrence(
             identity: UInt32(record.identity),
@@ -53,7 +55,7 @@ package struct StaticSignalAnalyzerNRFInteractionOccurrences:
             bounds: bounds,
             clip: clip,
             paintOrder: index,
-            action: BoundedApplicationAction(code: index)
+            action: BoundedApplicationAction(code: action)
         )
     }
 

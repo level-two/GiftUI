@@ -150,11 +150,11 @@ public func giftUISignalAnalyzerTopologyValid(
             let view = StaticSignalAnalyzerNRFEmbeddedSemanticView(
                 published: published
             ),
-            view.scopeCount == (variant == .normal ? 96 : 98),
+            view.scopeCount == (variant == .normal ? 91 : 93),
             view.revision == revision,
             view.rootPrimitiveIdentity != nil,
             let title = StaticSignalAnalyzerNRFPackedSemanticRecords.scope(
-                at: 6, in: published
+                at: 8, in: published
             ),
             view.textScalar(of: title.identity, at: 0) == 0x44
         else { return false }
@@ -220,7 +220,7 @@ public func giftUISignalAnalyzerLayoutTextValid(
     )
     guard StaticSignalAnalyzerNRFEmbeddedSemanticRegion.verifyPublished(published),
         let title = StaticSignalAnalyzerNRFPackedSemanticRecords.scope(
-            at: 6, in: published
+            at: 8, in: published
         ) else { return 0 }
     let scopes = UnsafeMutableRawBufferPointer(
         start: profile.advanced(by: 6_048), count: 3_136
@@ -311,7 +311,7 @@ public func giftUISignalAnalyzerFullLayoutValid(
         resolved.renderSnapshotVersion == semantic.revision,
         resolved.rootBounds.size.width > 0,
         resolved.rootBounds.size.height > 0,
-        resolved.lineCount == 21, resolved.glyphCount == 121
+        resolved.lineCount == 18, resolved.glyphCount == 101
     else { return 0 }
     var canvasCount: UInt16 = 0
     var checkedLines: UInt16 = 0
@@ -374,8 +374,8 @@ public func giftUISignalAnalyzerFullLayoutValid(
         }
         ordinal += 1
     }
-    guard canvasCount == 5, checkedLines == 21,
-        checkedGlyphs == 121
+    guard canvasCount == 5, checkedLines == 18,
+        checkedGlyphs == 101
     else { return 0 }
     guard case .success(let ordinaryHeader) =
         StaticSignalAnalyzerNRFEmbeddedRenderPreflight.run(
@@ -383,7 +383,7 @@ public func giftUISignalAnalyzerFullLayoutValid(
             textRegion: text
         ), ordinaryHeader.operationCount > 0,
         ordinaryHeader.operationCount <= 145,
-        ordinaryHeader.positionedGlyphCount == 121
+        ordinaryHeader.positionedGlyphCount == 101
     else { return 0 }
     workspace.packed.reset()
     return resolved.isPublished ? 0 : 1
@@ -723,23 +723,33 @@ public func giftUISignalAnalyzerInitialStartPoint() -> UInt32 {
 
 @_cdecl("giftui_signal_analyzer_action_point")
 public func giftUISignalAnalyzerActionPoint(_ code: UInt16) -> UInt32 {
-    guard code < 6,
-        let record = giftUIStaticInteractionOwner.committedRecord(at: code),
-        record.action.code == code, record.isEnabled
-    else { return 0 }
-    return giftUISignalAnalyzerHitPoint(code)
+    guard code < 6 else { return 0 }
+    var index: UInt16 = 0
+    while index < 3 {
+        if let record = giftUIStaticInteractionOwner.committedRecord(at: index),
+            record.action.code == code, record.isEnabled {
+            return giftUISignalAnalyzerHitPoint(code)
+        }
+        index += 1
+    }
+    return 0
 }
 
 @_cdecl("giftui_signal_analyzer_hit_point")
 public func giftUISignalAnalyzerHitPoint(_ code: UInt16) -> UInt32 {
-    guard code < 6,
-        let record = giftUIStaticInteractionOwner.committedRecord(at: code),
-        record.action.code == code
-    else { return 0 }
-    let x = record.hitBounds.origin.x + record.hitBounds.size.width / 2
-    let y = record.hitBounds.origin.y + record.hitBounds.size.height / 2
-    guard x >= 0, x < 320, y >= 0, y < 240 else { return 0 }
-    return UInt32(y) << 16 | UInt32(x)
+    guard code < 6 else { return 0 }
+    var index: UInt16 = 0
+    while index < 3 {
+        if let record = giftUIStaticInteractionOwner.committedRecord(at: index),
+            record.action.code == code {
+            let x = record.hitBounds.origin.x + record.hitBounds.size.width / 2
+            let y = record.hitBounds.origin.y + record.hitBounds.size.height / 2
+            guard x >= 0, x < 320, y >= 0, y < 240 else { return 0 }
+            return UInt32(y) << 16 | UInt32(x)
+        }
+        index += 1
+    }
+    return 0
 }
 
 @_cdecl("giftui_signal_analyzer_drain_initial_input")
@@ -1104,9 +1114,9 @@ private func giftUIStaticFullCanvas(
         semantic: semantic, workspace: &layoutWorkspace
     ), let actions = StaticSignalAnalyzerNRFEmbeddedInteractionOccurrences(
         semantic: semantic, layout: resolved
-    ), actions.count == 6,
-        actions.occurrence(at: 0)?.actionCode == 0,
-        actions.occurrence(at: 5)?.actionCode == 5,
+    ), actions.count == 3,
+        actions.occurrence(at: 0)?.actionCode == (model.acquisitionState == .running ? 1 : 0),
+        actions.occurrence(at: 2)?.actionCode == (model.visibleWindowRawValue == 0 ? 4 : 5),
         interaction.build(
             occurrences: actions,
             targetGeneration: ObservableTargetGeneration(
@@ -1171,7 +1181,7 @@ private func giftUIStaticFullCanvas(
         renderHeader.positionedGlyphCount > 0,
         renderHeader.positionedGlyphCount <= 150,
         (frameRevision != 1
-            || renderHeader.positionedGlyphCount == (validation ? 121 : 117))
+            || renderHeader.positionedGlyphCount == (validation ? 101 : 97))
     else { return 0 }
     var sink = StaticSignalAnalyzerNRFEmbeddedCountingSink()
     guard case .success(let streamedHeader) =
@@ -1228,10 +1238,10 @@ private func giftUIStaticFullCanvas(
         presentationRevision: PresentationRevision(rawValue: frameRevision)
     )
     interactionCandidatePending = false
-    guard interaction.committedRecordCount == 6,
+    guard interaction.committedRecordCount == 3,
         interaction.committedRevision?.rawValue == frameRevision,
-        interaction.committedRecord(at: 0)?.action.code == 0,
-        interaction.committedRecord(at: 5)?.action.code == 5
+        interaction.committedRecord(at: 0)?.action.code == (model.acquisitionState == .running ? 1 : 0),
+        interaction.committedRecord(at: 2)?.action.code == (model.visibleWindowRawValue == 0 ? 4 : 5)
     else { return 0 }
     if !validation {
         giftUIStaticLastSemanticScopes = UInt32(semantic.scopeCount)
@@ -1254,7 +1264,7 @@ private func giftUIStaticFullCanvas(
         accepted: false,
         presentationRevision: PresentationRevision(rawValue: 2)
     )
-    guard interaction.committedRecordCount == 6,
+    guard interaction.committedRecordCount == 3,
         interaction.committedRevision?.rawValue == 1
     else { return 0 }
     guard var refusingSink = StaticSignalAnalyzerNRFEmbeddedRasterSink(
@@ -1343,7 +1353,7 @@ private func giftUIStaticFullCanvas(
                     start: profile.advanced(by: 9_184), count: 4_704
                 ), drawing: drawing
             ), updatedRenderHeader.operationCount <= 150,
-        updatedRenderHeader.positionedGlyphCount == 121
+        updatedRenderHeader.positionedGlyphCount == 101
     else { return 0 }
     sink = StaticSignalAnalyzerNRFEmbeddedCountingSink()
     guard case .success(let updatedStreamedHeader) =
@@ -1356,7 +1366,7 @@ private func giftUIStaticFullCanvas(
         ), updatedStreamedHeader == updatedRenderHeader,
         sink.isFinished, !sink.wasDiscarded,
         sink.strokeCount == 5,
-        sink.glyphCount == 121
+        sink.glyphCount == 101
     else { return 0 }
     guard var updatedRasterSink = StaticSignalAnalyzerNRFEmbeddedRasterSink(
         rasterRegion: UnsafeMutableRawBufferPointer(

@@ -79,7 +79,7 @@ import Testing
             var sourceClock: UInt64 = 10_000
             var transitionDeadline: UInt64 = 0
             var delivered = 0
-            for window in 0 ... 126 {
+            for window in 0 ... 128 {
                 if window == 1 {
                     #expect(admission.beginProducer(.bootstrap))
                     guard case .started = adapter.startObserving() else {
@@ -146,10 +146,12 @@ import Testing
                 switch window {
                 case 121: action = .stop
                 case 122: action = .start
-                case 123: action = .clear
-                case 124: action = .selectOneSecond
+                case 123: action = .selectOneSecond
+                case 124: action = .selectTwoSeconds
                 case 125: action = .selectFiveSeconds
                 case 126: action = .selectTwoSeconds
+                case 127: action = .selectOneSecond
+                case 128: action = .selectTwoSeconds
                 default: action = nil
                 }
                 if let action {
@@ -281,7 +283,7 @@ import Testing
                                 sink: &sink
                             ) == .success(header)
                         else { return false }
-                        #expect(layoutSummary.scopeCount == 96)
+                        #expect(layoutSummary.scopeCount == 91)
                         #expect(drawingSummary.strokeCount == 5)
                         #expect(sink.publishedHeader == header)
                         #expect(header.operationCount > 0)
@@ -326,32 +328,22 @@ import Testing
                         context: ExecutionContext(
                             cycle: nil, semanticRevision: nil, candidateFrame: nil, phase: .idle
                         )) == nil)
-                if window == 120 {
-                    #expect(
-                        macOSStaticReferencePointerOutcome(
-                            .start, enabled: false, interaction: interaction
-                        ))
-                    printMacOSStaticReferenceAction(
-                        .start, dispatched: false, revision: revision, model: model
-                    )
-                }
                 if let action {
                     printMacOSStaticReferenceAction(
-                        action, dispatched: true, revision: revision, model: model
-                    )
-                    if action != .clear {
-                        #expect(
-                            macOSStaticReferencePointerOutcome(
-                                action, enabled: false, interaction: interaction
-                            ))
-                        printMacOSStaticReferenceAction(
-                            action, dispatched: false, revision: revision, model: model
-                        )
+                        action, dispatched: true, revision: revision, model: model)
+                    if window == 123 || window == 125 {
+                        for _ in 0 ..< 2 {
+                            #expect(
+                                macOSStaticReferencePointerOutcome(
+                                    action, enabled: false, interaction: interaction))
+                            printMacOSStaticReferenceAction(
+                                action, dispatched: false, revision: revision, model: model)
+                        }
                     }
                 }
             }
-            #expect(model.captureRevision == 2_405)
-            #expect(model.state.capture.transitions.count == 0)
+            #expect(model.captureRevision == 2_404)
+            #expect(model.state.capture.transitions.count == 359)
             #expect(delivered == 2_400)
             adapter.stopObserving()
             source.shutdown()
@@ -413,13 +405,13 @@ private func macOSStaticReferencePointerOutcome(
         model: normal
     ) { inputs in
         #expect(inputs.semantic.variant == .normal)
-        #expect(inputs.semantic.expansion.semanticNodeCount == 47)
-        #expect(inputs.semantic.expansion.bodyEvaluationCount == 14)
-        #expect(inputs.semantic.expansion.modifierApplicationCount == 49)
-        #expect(inputs.semantic.expansion.actionOccurrenceCount == 6)
-        #expect(inputs.semantic.expansion.maximumObservedDepth == 34)
-        #expect(inputs.semantic.structuralOccurrenceCount == 124)
-        #expect(inputs.semantic.recordedTraversalIdentityCount == 201)
+        #expect(inputs.semantic.expansion.semanticNodeCount == 41)
+        #expect(inputs.semantic.expansion.bodyEvaluationCount == 16)
+        #expect(inputs.semantic.expansion.modifierApplicationCount == 50)
+        #expect(inputs.semantic.expansion.actionOccurrenceCount == 3)
+        #expect(inputs.semantic.expansion.maximumObservedDepth == 40)
+        #expect(inputs.semantic.structuralOccurrenceCount == 119)
+        #expect(inputs.semantic.recordedTraversalIdentityCount == 188)
         #expect(inputs.semantic.canvasOccurrenceCount == 5)
     }
 
@@ -433,34 +425,39 @@ private func macOSStaticReferencePointerOutcome(
         model: diagnostic
     ) { inputs in
         #expect(inputs.semantic.variant == .diagnostic)
-        #expect(inputs.semantic.expansion.semanticNodeCount == 48)
-        #expect(inputs.semantic.expansion.modifierApplicationCount == 50)
-        #expect(inputs.semantic.structuralOccurrenceCount == 126)
-        #expect(inputs.semantic.recordedTraversalIdentityCount == 203)
+        #expect(inputs.semantic.expansion.semanticNodeCount == 42)
+        #expect(inputs.semantic.expansion.modifierApplicationCount == 51)
+        #expect(inputs.semantic.structuralOccurrenceCount == 121)
+        #expect(inputs.semantic.recordedTraversalIdentityCount == 190)
     }
 }
 
 @Test func staticNRFLiveModifiersFollowRunningAndWindowState() {
     let model = staticNRFPresentationInputModel()
-    StaticSignalAnalyzerNRFGeneratedPresentationInputFactory.withInputs(
-        model: model
-    ) { inputs in
-        #expect(inputs.liveModifierInput(at: 12)?.payload0 == 16_777_215)
-        #expect(inputs.liveModifierInput(at: 72)?.flags == 1)
-        #expect(inputs.liveModifierInput(at: 76)?.flags == 65)
-        #expect(inputs.liveModifierInput(at: 88)?.flags == 65)
+    StaticSignalAnalyzerNRFGeneratedPresentationInputFactory.withInputs(model: model) { inputs in
+        #expect(inputs.liveModifierInput(at: 11)?.payload0 == 16_777_215)
+        #expect(inputs.liveModifierInput(at: 31)?.flags == 1)
+        #expect(inputs.liveModifierInput(at: 55)?.flags == 1)
+        #expect(inputs.actionCode(at: 0) == 0)
+        #expect(inputs.actionCode(at: 1) == 3)
+        #expect(inputs.actionCode(at: 2) == 5)
     }
     #expect(model.apply(.acquisitionState(.running)) == .applied(changed: true))
     model.visibleDurationChanged(.fiveSeconds)
-    StaticSignalAnalyzerNRFGeneratedPresentationInputFactory.withInputs(
-        model: model
-    ) { inputs in
-        #expect(inputs.liveModifierInput(at: 12)?.payload0 != 16_777_215)
-        #expect(inputs.liveModifierInput(at: 72)?.flags == 65)
-        #expect(inputs.liveModifierInput(at: 76)?.flags == 1)
-        #expect(inputs.liveModifierInput(at: 88)?.flags == 1)
-        #expect(inputs.liveModifierInput(at: 92)?.flags == 65)
+    StaticSignalAnalyzerNRFGeneratedPresentationInputFactory.withInputs(model: model) { inputs in
+        #expect(inputs.liveModifierInput(at: 11)?.payload0 == 0x00FF00)
+        #expect(inputs.liveModifierInput(at: 31)?.flags == 1)
+        #expect(inputs.liveModifierInput(at: 55)?.flags == 65)
+        #expect(inputs.actionCode(at: 0) == 1)
+        #expect(inputs.actionCode(at: 1) == 4)
+        #expect(inputs.actionCode(at: 2) == 5)
         #expect(inputs.liveModifierInput(at: 0) == nil)
+    }
+    model.visibleDurationChanged(.oneSecond)
+    StaticSignalAnalyzerNRFGeneratedPresentationInputFactory.withInputs(model: model) { inputs in
+        #expect(inputs.liveModifierInput(at: 31)?.flags == 65)
+        #expect(inputs.liveModifierInput(at: 55)?.flags == 1)
+        #expect(inputs.actionCode(at: 2) == 4)
     }
 }
 
@@ -572,7 +569,7 @@ private func macOSStaticReferencePointerOutcome(
             #expect(candidate?.variant == .normal)
             #expect(candidate?.rootIdentity == 1_410_692_621)
             #expect(candidate?.revision == 0)
-            #expect(candidate?.expansion.semanticNodeCount == 47)
+            #expect(candidate?.expansion.semanticNodeCount == 41)
             #expect(inputs.stageSemanticCandidate(in: &profile) == nil)
 
             var index: UInt16 = 0
@@ -601,7 +598,7 @@ private func macOSStaticReferencePointerOutcome(
                         at: index,
                         in: .semanticCandidate,
                         profile: &profile
-                    ) == index
+                    ) == (index == 0 ? 0 : (index == 1 ? 3 : 5))
                 )
                 index += 1
             }
@@ -702,7 +699,7 @@ private func macOSStaticReferencePointerOutcome(
             )
             let published = inputs.publishSemanticCandidate(revision: 8, in: &profile)
             #expect(published?.variant == .diagnostic)
-            #expect(published?.expansion.semanticNodeCount == 48)
+            #expect(published?.expansion.semanticNodeCount == 42)
             #expect(published?.revision == 8)
             #expect(
                 profile.withRegion(.semanticPublished) { region in
@@ -756,7 +753,7 @@ private func macOSStaticReferencePointerOutcome(
                 )
             )
             let expected = StaticSignalAnalyzerNRFPackedTableSummary(
-                scopeCount: 96,
+                scopeCount: 91,
                 scalarCount: 0
             )
             #expect(
@@ -798,10 +795,10 @@ private func macOSStaticReferencePointerOutcome(
             #expect(
                 profile.withRegion(.semanticCandidate) { region in
                     let table = StaticSignalAnalyzerNRFPackedSemanticRecords.self
-                    guard let canvas = table.scope(at: 91, in: region) else {
+                    guard let canvas = table.scope(at: 86, in: region) else {
                         return false
                     }
-                    let payloadOffset = table.scopeOffset + 91 * table.scopeStride + 12
+                    let payloadOffset = table.scopeOffset + 86 * table.scopeStride + 12
                     region[payloadOffset] = 1
                     let rejected = !table.hasExactCanvasOccurrences(in: region)
                     region[payloadOffset] = UInt8(canvas.payload0)
@@ -858,7 +855,7 @@ private func macOSStaticReferencePointerOutcome(
             StaticSignalAnalyzerNRFSemanticRegionStore.completeTableSummary(
                 in: .semanticPublished,
                 profile: &profile
-            )?.scopeCount == 96
+            )?.scopeCount == 91
         )
         profile.quiesce()
     }
@@ -919,14 +916,14 @@ private func macOSStaticReferencePointerOutcome(
         }
 
         let cases: [(UInt32, SignalAnalyzerViewModel, UInt16, UInt16, UInt16?)] = [
-            (1, normal, 96, 117, nil),
-            (2, diagnostic, 98, 214, 96),
-            (3, wideDiagnostic, 98, 214, 98),
-            (4, multilineDiagnostic, 98, 214, 98),
-            (5, mixedOne, 98, 214, 98),
-            (6, mixedTwo, 98, 214, 98),
-            (7, mixedThree, 98, 214, 98),
-            (8, mixedFour, 98, 214, 98),
+            (1, normal, 91, 97, nil),
+            (2, diagnostic, 93, 194, 91),
+            (3, wideDiagnostic, 93, 194, 93),
+            (4, multilineDiagnostic, 93, 194, 93),
+            (5, mixedOne, 93, 194, 93),
+            (6, mixedTwo, 93, 194, 93),
+            (7, mixedThree, 93, 194, 93),
+            (8, mixedFour, 93, 194, 93),
         ]
         for (cycle, model, expectedScopes, expectedBytes, previousScopes) in cases {
             let active = ExecutionContext(
@@ -1039,9 +1036,9 @@ private func macOSStaticReferencePointerOutcome(
                         Issue.record("generated action occurrences did not resolve")
                         return false
                     }
-                    #expect(occurrences.interactionOccurrenceCount == 6)
-                    #expect(occurrences.interactionOccurrence(at: 6) == nil)
-                    for index: UInt16 in 0 ..< 6 {
+                    #expect(occurrences.interactionOccurrenceCount == 3)
+                    #expect(occurrences.interactionOccurrence(at: 3) == nil)
+                    for index: UInt16 in 0 ..< 3 {
                         guard let occurrence = occurrences.interactionOccurrence(at: index),
                             let actionOrdinal =
                                 StaticSignalAnalyzerNRFPackedSemanticRecords
@@ -1054,11 +1051,11 @@ private func macOSStaticReferencePointerOutcome(
                             return false
                         }
                         #expect(occurrence.identity == UInt32(action.identity))
-                        #expect(occurrence.action.code == index)
+                        #expect(occurrence.action.code == (index == 0 ? 0 : (index == 1 ? 3 : 5)))
                         #expect(occurrence.paintOrder == index)
                     }
                     #expect(occurrences.interactionOccurrence(at: 0)?.isEnabled == true)
-                    #expect(occurrences.interactionOccurrence(at: 1)?.isEnabled == false)
+                    #expect(occurrences.interactionOccurrence(at: 1)?.isEnabled == true)
                     let interactionLimits = GeneratedSignalAnalyzerPresets.nrf52840Static()
                         .runtimeLimits.interaction
                     var interaction = StaticInteractionState<UInt32>(
@@ -1093,10 +1090,10 @@ private func macOSStaticReferencePointerOutcome(
                     )
                     generations.resolveCandidate(committed: true)
                     #expect(interaction.committedRevision?.rawValue == cycle)
-                    #expect(interaction.committedRecordCount == 6)
+                    #expect(interaction.committedRecordCount == 3)
                     #expect(interaction.committedRecord(at: 0)?.isEnabled == true)
-                    #expect(interaction.committedRecord(at: 1)?.isEnabled == false)
-                    #expect(generations.committedReservationCount == 6)
+                    #expect(interaction.committedRecord(at: 1)?.isEnabled == true)
+                    #expect(generations.committedReservationCount == 3)
                     #expect(
                         StaticSignalAnalyzerNRFInteractionCandidateProducer.build(
                             occurrences: occurrences,
@@ -1202,7 +1199,7 @@ private func macOSStaticReferencePointerOutcome(
                                 ) == .committed(PresentationRevision(rawValue: cycle))
                             )
                             owner.withInteraction { state in
-                                #expect(state.committedRecordCount == 6)
+                                #expect(state.committedRecordCount == 3)
                                 #expect(state.committedRevision?.rawValue == cycle)
                             }
                             let acceptedInput = owner.admit(
@@ -1326,10 +1323,10 @@ private func macOSStaticReferencePointerOutcome(
                     #expect(renderLimits.renderSink.maximumOperations == 150)
                     #expect(acceptedHeader.operationCount <= 150)
                     switch cycle {
-                    case 2: #expect(acceptedHeader.operationCount == 31)
-                    case 3: #expect(acceptedHeader.operationCount == 31)
-                    case 4: #expect(acceptedHeader.operationCount == 30)
-                    case 5 ... 8: #expect(acceptedHeader.operationCount == 31)
+                    case 2: #expect(acceptedHeader.operationCount == 33)
+                    case 3: #expect(acceptedHeader.operationCount == 33)
+                    case 4: #expect(acceptedHeader.operationCount == 31)
+                    case 5 ... 8: #expect(acceptedHeader.operationCount == 33)
                     default: #expect(acceptedHeader.operationCount > 0)
                     }
                     // The semantic candidate retains the full bounded diagnostic.
@@ -1337,14 +1334,14 @@ private func macOSStaticReferencePointerOutcome(
                     // connected readability remains a separate conformance check.
                     let expectedGlyphs: UInt16
                     switch cycle {
-                    case 1: expectedGlyphs = 117
-                    case 2: expectedGlyphs = 146
-                    case 3: expectedGlyphs = 137
-                    case 4: expectedGlyphs = 118
-                    case 5: expectedGlyphs = 119
-                    case 6: expectedGlyphs = 120
-                    case 7: expectedGlyphs = 121
-                    default: expectedGlyphs = 123
+                    case 1: expectedGlyphs = 97
+                    case 2: expectedGlyphs = 154
+                    case 3: expectedGlyphs = 136
+                    case 4: expectedGlyphs = 98
+                    case 5: expectedGlyphs = 100
+                    case 6: expectedGlyphs = 102
+                    case 7: expectedGlyphs = 104
+                    default: expectedGlyphs = 108
                     }
                     #expect(acceptedHeader.positionedGlyphCount == expectedGlyphs)
                     var operationSink = StaticNRFCountingRenderSink(
@@ -1494,7 +1491,7 @@ private func macOSStaticReferencePointerOutcome(
                                     )
                             )
                             owner.withInteraction { state in
-                                #expect(state.committedRecordCount == 6)
+                                #expect(state.committedRecordCount == 3)
                                 #expect(state.committedRevision?.rawValue == cycle)
                             }
                             #expect(
@@ -1544,7 +1541,7 @@ private func macOSStaticReferencePointerOutcome(
                         StaticSignalAnalyzerNRFSemanticRegionStore.generatedUTF8TableSummary(
                             in: .semanticPublished,
                             profile: &profile
-                        )?.scopeCount == 96
+                        )?.scopeCount == 91
                     )
                     #expect(
                         profile.withRegion(.semanticCandidate) { region in
@@ -1732,7 +1729,7 @@ private func macOSStaticReferencePointerOutcome(
                     )
             )
             owner.withInteraction { state in
-                #expect(state.committedRecordCount == 6)
+                #expect(state.committedRecordCount == 3)
             }
         }
         #expect(endpoint.sink.target.transport.payloads > 0)
@@ -1865,7 +1862,7 @@ private func macOSStaticReferencePointerOutcome(
             let inputIsEligible = owner.inputIsEligible
             #expect(inputIsEligible)
             owner.withInteraction { state in
-                #expect(state.committedRecordCount == 6)
+                #expect(state.committedRecordCount == 3)
             }
 
             guard let next = identities.reserve() else {
@@ -2138,16 +2135,16 @@ private func populateSyntheticNRFCompleteTable(
 ) -> StaticSignalAnalyzerNRFPackedTableSummary? {
     let table = StaticSignalAnalyzerNRFPackedSemanticRecords.self
     var ordinal: UInt16 = 0
-    while ordinal < 96 {
+    while ordinal < 91 {
         let record = StaticSignalAnalyzerNRFScopeRecord(
             identity: ordinal + 1,
             parent: ordinal == 0 ? table.missingOrdinal : ordinal - 1,
-            firstChild: ordinal == 95 ? table.missingOrdinal : ordinal + 1,
+            firstChild: ordinal == 90 ? table.missingOrdinal : ordinal + 1,
             nextSibling: table.missingOrdinal,
-            kind: (90 ... 94).contains(ordinal) ? .canvas : .proxy,
+            kind: (85 ... 89).contains(ordinal) ? .canvas : .proxy,
             flags: 0,
             auxiliary: 0,
-            payload0: (90 ... 94).contains(ordinal) ? UInt32(ordinal - 89) : 0,
+            payload0: (85 ... 89).contains(ordinal) ? UInt32(ordinal - 84) : 0,
             payload1: 0,
             payload2: 0
         )
@@ -2161,7 +2158,7 @@ private func populateSyntheticNRFCompleteTable(
         }
         action += 1
     }
-    return StaticSignalAnalyzerNRFPackedTableSummary(scopeCount: 96, scalarCount: 0)
+    return StaticSignalAnalyzerNRFPackedTableSummary(scopeCount: 91, scalarCount: 0)
 }
 
 private final class StaticNRFPresentationInputRepository:

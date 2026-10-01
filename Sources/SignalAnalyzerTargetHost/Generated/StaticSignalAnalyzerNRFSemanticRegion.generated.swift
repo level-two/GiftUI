@@ -34,7 +34,7 @@ package enum StaticSignalAnalyzerNRFSemanticRegionStore {
     package static let regionByteCount = 3_024
     package static let encodedByteCount = 88
     package static let canvasDescriptorCount: UInt16 = 5
-    package static let actionCodeCount: UInt16 = 6
+    package static let actionCodeCount: UInt16 = 3
 
     private static let magic: UInt32 = 0x5341_4E43
     private static let schemaVersion: UInt16 = 1
@@ -458,6 +458,15 @@ package enum StaticSignalAnalyzerNRFSemanticRegionStore {
 
     package static func actionCode(
         at index: UInt16,
+        in region: UnsafeMutableRawBufferPointer
+    ) -> UInt16? {
+        guard index < actionCodeCount, decodeHeader(from: region) != nil else { return nil }
+        let code = loadUInt16(from: region, at: actionOffset + Int(index) * 2)
+        return code < 6 ? code : nil
+    }
+
+    package static func actionCode(
+        at index: UInt16,
         in family: RuntimeStorageFamily,
         profile: inout StaticSignalAnalyzerNRFProductionProfileBinding
     ) -> UInt16? {
@@ -506,7 +515,8 @@ package enum StaticSignalAnalyzerNRFSemanticRegionStore {
         }
         var actionIndex: UInt16 = 0
         while actionIndex < actionCodeCount {
-            store(actionIndex, in: region, at: actionOffset + Int(actionIndex) * 2)
+            guard let code = inputs.actionCode(at: actionIndex) else { return false }
+            store(code, in: region, at: actionOffset + Int(actionIndex) * 2)
             actionIndex += 1
         }
         store(checksum(of: region), in: region, at: checksumOffset)

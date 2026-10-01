@@ -8,7 +8,7 @@ import Testing
     #expect(
         table.scopeOffset + Int(table.maximumScopeCount) * table.scopeStride == table.scalarOffset)
     #expect(table.scalarOffset + Int(table.maximumScalarCount) * 4 == table.actionOffset)
-    #expect(table.actionOffset + Int(table.actionCount) * 2 == table.reservedOffset)
+    #expect(table.actionOffset + Int(table.actionCount) * 2 <= table.reservedOffset)
     #expect(table.reservedOffset + 16 == table.regionByteCount)
 }
 
@@ -32,8 +32,8 @@ import Testing
         #expect(table.scope(at: 97, in: region) == record)
         #expect(table.storeScalar(0x10_FFFF, at: 138, in: region))
         #expect(table.scalar(at: 138, in: region) == 0x10_FFFF)
-        #expect(table.storeActionScope(97, at: 5, in: region))
-        #expect(table.actionScope(at: 5, in: region) == 97)
+        #expect(table.storeActionScope(97, at: 2, in: region))
+        #expect(table.actionScope(at: 2, in: region) == 97)
         #expect(table.scope(at: 98, in: region) == nil)
         #expect(table.scalar(at: 139, in: region) == nil)
         #expect(table.actionScope(at: 6, in: region) == nil)

@@ -20,8 +20,8 @@ import Testing
 @Test func staticNRFTopologyWriterUsesExactVariantScopeCounts() {
     let table = StaticSignalAnalyzerNRFPackedSemanticRecords.self
     for (variant, count) in [
-        (StaticSignalAnalyzerNRFSemanticVariant.normal, UInt16(96)),
-        (.diagnostic, UInt16(98)),
+        (StaticSignalAnalyzerNRFSemanticVariant.normal, UInt16(91)),
+        (.diagnostic, UInt16(93)),
     ] {
         var bytes = [UInt8](repeating: 0, count: table.regionByteCount)
         bytes.withUnsafeMutableBytes { region in
@@ -39,16 +39,16 @@ import Testing
                     in: region
                 )
             )
-            #expect(table.actionScope(at: 0, in: region) == 74)
-            #expect(table.scope(at: 19, in: region)?.payload0 == 1)
+            #expect(table.actionScope(at: 0, in: region) == 15)
+            #expect(table.scope(at: 27, in: region)?.payload0 == 1)
             #expect(
                 StaticSignalAnalyzerNRFTopologyWriter.populateInvariantPrimitives(
                     scopeCount: count,
                     in: region
                 )
             )
-            #expect(table.scope(at: 2, in: region)?.payload0 == 0)
-            #expect(table.scope(at: 83, in: region)?.payload0 == 4)
+            #expect(table.scope(at: 3, in: region)?.payload0 == 0)
+            #expect(table.scope(at: 5, in: region)?.payload0 == 4)
             #expect(
                 StaticSignalAnalyzerNRFTopologyWriter.populateInvariantLayoutModifiers(
                     scopeCount: count,
@@ -56,10 +56,10 @@ import Testing
                 )
             )
             #expect(
-                table.scope(at: 18, in: region)?.payload0
+                table.scope(at: 26, in: region)?.payload0
                     == UInt32(SignalAnalyzerLayoutConstraints.reference.gridWidth))
             #expect(
-                table.scope(at: 18, in: region)?.payload1
+                table.scope(at: 26, in: region)?.payload1
                     == UInt32(SignalAnalyzerLayoutConstraints.reference.gridHeight))
             #expect(
                 StaticSignalAnalyzerNRFTopologyWriter.populateInvariantStyles(
@@ -67,10 +67,10 @@ import Testing
                     in: region
                 )
             )
-            #expect(table.scope(at: 5, in: region)?.payload0 == 16_777_215)
-            #expect(table.scope(at: 32, in: region)?.flags == 17)
-            #expect(table.scope(at: 32, in: region)?.payload0 == 16_777_215)
-            #expect(table.scope(at: 12, in: region)?.flags == 0)
+            #expect(table.scope(at: 2, in: region)?.payload0 == 16_777_215)
+            #expect(table.scope(at: 43, in: region)?.flags == 17)
+            #expect(table.scope(at: 43, in: region)?.payload0 == 8_421_504)
+            #expect(table.scope(at: 11, in: region)?.flags == 0)
             #expect(
                 !StaticSignalAnalyzerNRFTopologyWriter.populateInvariantStyles(
                     scopeCount: count,
@@ -105,7 +105,7 @@ import Testing
     bytes.withUnsafeMutableBytes { region in
         #expect(
             !StaticSignalAnalyzerNRFTopologyWriter.populateBindings(
-                scopeCount: 96,
+                scopeCount: 91,
                 in: region
             )
         )

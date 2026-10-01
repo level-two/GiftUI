@@ -18,8 +18,8 @@ package enum StaticSignalAnalyzerNRFEmbeddedSemanticRegion {
             (model.errorMessage != nil) == (variant == .diagnostic)
         else { return nil }
         candidate.initializeMemory(as: UInt8.self, repeating: 0)
-        encodePrefix(variant: variant, in: candidate)
-        let count: UInt16 = variant == .normal ? 96 : 98
+        encodePrefix(variant: variant, model: model, in: candidate)
+        let count: UInt16 = variant == .normal ? 91 : 93
         guard
             StaticSignalAnalyzerNRFTopologyWriter.populateShape(
                 variant: variant, in: candidate
@@ -88,20 +88,20 @@ package enum StaticSignalAnalyzerNRFEmbeddedSemanticRegion {
             loadUInt32(at: 8, in: region) == rootIdentity,
             loadUInt32(at: checksumOffset, in: region) == checksum(region),
             loadUInt32(at: table.reservedOffset, in: region) == tableMagic,
-            loadUInt16(at: table.reservedOffset + 8, in: region) == 6,
+            loadUInt16(at: table.reservedOffset + 8, in: region) == 3,
             loadUInt16(at: table.reservedOffset + 10, in: region) == 2,
             loadUInt32(at: table.reservedOffset + 12, in: region) == 0
         else { return false }
-        let scopeCount: UInt16 = variant == .normal ? 96 : 98
+        let scopeCount: UInt16 = variant == .normal ? 91 : 93
         let textBytes = loadUInt16(at: table.reservedOffset + 6, in: region)
         guard loadUInt16(at: table.reservedOffset + 4, in: region) == scopeCount,
-            loadUInt16(at: 12, in: region) == (variant == .normal ? 47 : 48),
-            loadUInt16(at: 14, in: region) == 14,
-            loadUInt16(at: 16, in: region) == (variant == .normal ? 49 : 50),
-            loadUInt16(at: 18, in: region) == 6,
-            loadUInt16(at: 20, in: region) == 34,
-            loadUInt16(at: 22, in: region) == (variant == .normal ? 124 : 126),
-            loadUInt16(at: 24, in: region) == (variant == .normal ? 201 : 203),
+            loadUInt16(at: 12, in: region) == (variant == .normal ? 41 : 42),
+            loadUInt16(at: 14, in: region) == 16,
+            loadUInt16(at: 16, in: region) == (variant == .normal ? 50 : 51),
+            loadUInt16(at: 18, in: region) == 3,
+            loadUInt16(at: 20, in: region) == 40,
+            loadUInt16(at: 22, in: region) == (variant == .normal ? 119 : 121),
+            loadUInt16(at: 24, in: region) == (variant == .normal ? 188 : 190),
             loadUInt16(at: 26, in: region) == 5,
             state != 1 || loadUInt32(at: 28, in: region) == 0,
             state != 2 || loadUInt32(at: 28, in: region) > 0,
@@ -120,8 +120,11 @@ package enum StaticSignalAnalyzerNRFEmbeddedSemanticRegion {
             canvas += 1
         }
         var action: UInt16 = 0
-        while action < 6 {
-            guard loadUInt16(at: 72 + Int(action) * 2, in: region) == action
+        while action < 3 {
+            let code = loadUInt16(at: 72 + Int(action) * 2, in: region)
+            guard
+                action == 0
+                    ? code <= 1 : (action == 1 ? code == 3 || code == 4 : code == 4 || code == 5)
             else { return false }
             action += 1
         }
@@ -161,6 +164,7 @@ package enum StaticSignalAnalyzerNRFEmbeddedSemanticRegion {
 
     private static func encodePrefix(
         variant: StaticSignalAnalyzerNRFSemanticVariant,
+        model: borrowing StaticSignalAnalyzerNRFModelLocation,
         in region: UnsafeMutableRawBufferPointer
     ) {
         store(magic, at: 0, in: region)
@@ -168,13 +172,13 @@ package enum StaticSignalAnalyzerNRFEmbeddedSemanticRegion {
         region[6] = 1
         region[7] = variant.rawValue
         store(rootIdentity, at: 8, in: region)
-        store(variant == .normal ? UInt16(47) : 48, at: 12, in: region)
-        store(UInt16(14), at: 14, in: region)
-        store(variant == .normal ? UInt16(49) : 50, at: 16, in: region)
-        store(UInt16(6), at: 18, in: region)
-        store(UInt16(34), at: 20, in: region)
-        store(variant == .normal ? UInt16(124) : 126, at: 22, in: region)
-        store(variant == .normal ? UInt16(201) : 203, at: 24, in: region)
+        store(variant == .normal ? UInt16(41) : 42, at: 12, in: region)
+        store(UInt16(16), at: 14, in: region)
+        store(variant == .normal ? UInt16(50) : 51, at: 16, in: region)
+        store(UInt16(3), at: 18, in: region)
+        store(UInt16(40), at: 20, in: region)
+        store(variant == .normal ? UInt16(119) : 121, at: 22, in: region)
+        store(variant == .normal ? UInt16(188) : 190, at: 24, in: region)
         store(UInt16(5), at: 26, in: region)
         var canvas: UInt16 = 0
         while canvas < 5 {
@@ -184,11 +188,11 @@ package enum StaticSignalAnalyzerNRFEmbeddedSemanticRegion {
             store(canvas == 0 ? UInt16(0) : 32, at: offset + 4, in: region)
             canvas += 1
         }
-        var action: UInt16 = 0
-        while action < 6 {
-            store(action, at: 72 + Int(action) * 2, in: region)
-            action += 1
-        }
+        let recording: UInt16
+        if case .running = model.acquisitionState { recording = 1 } else { recording = 0 }
+        store(recording, at: 72, in: region)
+        store(model.visibleWindowRawValue == 2 ? UInt16(4) : 3, at: 74, in: region)
+        store(model.visibleWindowRawValue == 0 ? UInt16(4) : 5, at: 76, in: region)
     }
 
     private static func seal(
@@ -200,7 +204,7 @@ package enum StaticSignalAnalyzerNRFEmbeddedSemanticRegion {
         store(tableMagic, at: offset, in: region)
         store(scopeCount, at: offset + 4, in: region)
         store(textByteCount, at: offset + 6, in: region)
-        store(UInt16(6), at: offset + 8, in: region)
+        store(UInt16(3), at: offset + 8, in: region)
         store(UInt16(2), at: offset + 10, in: region)
     }
 

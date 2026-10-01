@@ -29,12 +29,12 @@
                 let limits = RenderLimits(
                     maximumOperations: 150,
                     maximumPositionedGlyphs: 224,
-                    maximumClipDepth: 4
+                    maximumClipDepth: 5
                 ),
                 let structural = RenderWorkspaceCapacity(
                     maximumSemanticScopes: 98,
                     maximumLayoutScopes: 98,
-                    maximumTraversalDepth: 13,
+                    maximumTraversalDepth: 19,
                     maximumTextLines: 128
                 ),
                 var workspace = StaticSignalAnalyzerNRFRenderWorkspace(
@@ -72,12 +72,12 @@
                 let limits = RenderLimits(
                     maximumOperations: 150,
                     maximumPositionedGlyphs: 224,
-                    maximumClipDepth: 4
+                    maximumClipDepth: 5
                 ),
                 let structural = RenderWorkspaceCapacity(
                     maximumSemanticScopes: 98,
                     maximumLayoutScopes: 98,
-                    maximumTraversalDepth: 13,
+                    maximumTraversalDepth: 19,
                     maximumTextLines: 128
                 ),
                 var workspace = StaticSignalAnalyzerNRFRenderWorkspace(
@@ -114,12 +114,12 @@
                 let limits = RenderLimits(
                     maximumOperations: 150,
                     maximumPositionedGlyphs: 224,
-                    maximumClipDepth: 4
+                    maximumClipDepth: 5
                 ),
                 let structural = RenderWorkspaceCapacity(
                     maximumSemanticScopes: 98,
                     maximumLayoutScopes: 98,
-                    maximumTraversalDepth: 13,
+                    maximumTraversalDepth: 19,
                     maximumTextLines: 128
                 ),
                 var workspace = StaticSignalAnalyzerNRFRenderWorkspace(

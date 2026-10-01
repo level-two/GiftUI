@@ -9,7 +9,7 @@ package struct StaticSignalAnalyzerNRFEmbeddedSemanticView {
         guard StaticSignalAnalyzerNRFEmbeddedSemanticRegion.verifyPublished(published)
         else { return nil }
         region = published
-        scopeCount = published[7] == 0 ? 96 : 98
+        scopeCount = published[7] == 0 ? 91 : 93
         revision =
             UInt32(published[28]) | UInt32(published[29]) << 8
             | UInt32(published[30]) << 16 | UInt32(published[31]) << 24
@@ -17,6 +17,13 @@ package struct StaticSignalAnalyzerNRFEmbeddedSemanticView {
 
     package var rootSemanticIdentity: UInt16 {
         StaticSignalAnalyzerNRFPackedSemanticRecords.scope(at: 0, in: region)!.identity
+    }
+
+    package func actionCode(at index: UInt16) -> UInt8? {
+        guard index < 3 else { return nil }
+        let offset = 72 + Int(index) * 2
+        guard region[offset + 1] == 0, region[offset] < 6 else { return nil }
+        return region[offset]
     }
 
     package func actionScopeOrdinal(at index: UInt16) -> UInt16? {

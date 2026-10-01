@@ -1,6 +1,6 @@
 import SignalAnalyzerDomain
 
-/// Writes the ten model-dependent passthrough modifiers in the generated
+/// Writes the sixteen model-dependent passthrough modifiers in the generated
 /// Static tree. Colors use the packed R | G << 8 | B << 16 schema.
 package enum StaticSignalAnalyzerNRFModelModifierWriter {
     package static func populate(
@@ -11,7 +11,7 @@ package enum StaticSignalAnalyzerNRFModelModifierWriter {
         let table = StaticSignalAnalyzerNRFPackedSemanticRecords.self
         guard region.count == table.regionByteCount else { return false }
         var slot: UInt16 = 0
-        while slot < 10 {
+        while slot < 16 {
             let ordinal = scopeOrdinal(at: slot)
             guard let record = table.scope(at: ordinal, in: region),
                 record.kind == .modifier,
@@ -23,7 +23,7 @@ package enum StaticSignalAnalyzerNRFModelModifierWriter {
             slot += 1
         }
         slot = 0
-        while slot < 10 {
+        while slot < 16 {
             let ordinal = scopeOrdinal(at: slot)
             guard let old = table.scope(at: ordinal, in: region),
                 let payload = payload(at: ordinal, model: model, capture: capture),
@@ -51,16 +51,22 @@ package enum StaticSignalAnalyzerNRFModelModifierWriter {
 
     private static func scopeOrdinal(at slot: UInt16) -> UInt16 {
         switch slot {
-        case 0: 12
-        case 1: 39
-        case 2: 48
-        case 3: 57
-        case 4: 66
-        case 5: 72
-        case 6: 76
-        case 7: 84
-        case 8: 88
-        default: 92
+        case 0: 11
+        case 1: 16
+        case 2: 17
+        case 3: 19
+        case 4: 31
+        case 5: 33
+        case 6: 34
+        case 7: 36
+        case 8: 55
+        case 9: 57
+        case 10: 58
+        case 11: 60
+        case 12: 68
+        case 13: 75
+        case 14: 82
+        default: 89
         }
     }
 
@@ -70,35 +76,35 @@ package enum StaticSignalAnalyzerNRFModelModifierWriter {
         capture: borrowing StaticSignalAnalyzerNRFCaptureRegions
     ) -> (flags: UInt8, color: UInt32)? {
         switch ordinal {
-        case 12:
+        case 11:
             switch model.acquisitionState {
             case .idle, .stopped: return (17, 0xFF_FF_FF)
             case .running: return (17, 0x00_FF_00)
             case .failed: return (17, 0x00_00_FF)
             }
-        case 39, 48, 57, 66:
-            let channel: Int
-            switch ordinal {
-            case 39: channel = 1
-            case 48: channel = 2
-            case 57: channel = 3
-            default: channel = 4
-            }
+        case 16, 17, 19:
+            let running: Bool
+            if case .running = model.acquisitionState { running = true } else { running = false }
+            let color: UInt32 =
+                ordinal == 19
+                ? (running ? 0x10_30_00 : 0x20_10_38) : (running ? 0x00_FF_00 : 0x80_60_FF)
+            return (ordinal == 16 ? 17 : 25, color)
+        case 31: return (model.visibleWindowRawValue == 0 ? 65 : 1, 0)
+        case 55: return (model.visibleWindowRawValue == 2 ? 65 : 1, 0)
+        case 33, 34, 36, 57, 58, 60:
+            let disabled =
+                ordinal < 55 ? model.visibleWindowRawValue == 0 : model.visibleWindowRawValue == 2
+            let fill = ordinal == 36 || ordinal == 60
+            let color: UInt32 =
+                fill ? (disabled ? 0x18_18_18 : 0x40_40_40) : (disabled ? 0x80_80_80 : 0xFF_FF_FF)
+            return (ordinal == 33 || ordinal == 57 ? 17 : 25, color)
+        case 68, 75, 82, 89:
+            let channel = Int((ordinal - 68) / 7) + 1
             guard
                 let level = model.capture.currentLevel(
-                    for: SignalChannelID(rawValue: channel), in: capture
-                )
+                    for: SignalChannelID(rawValue: channel), in: capture)
             else { return nil }
             return (17, level == .low ? 0xFF_80_00 : 0x00_FF_00)
-        case 72:
-            if case .running = model.acquisitionState { return (65, 0) }
-            return (1, 0)
-        case 76:
-            if case .running = model.acquisitionState { return (1, 0) }
-            return (65, 0)
-        case 84: return (model.visibleWindowRawValue == 0 ? 65 : 1, 0)
-        case 88: return (model.visibleWindowRawValue == 1 ? 65 : 1, 0)
-        case 92: return (model.visibleWindowRawValue == 2 ? 65 : 1, 0)
         default: return nil
         }
     }

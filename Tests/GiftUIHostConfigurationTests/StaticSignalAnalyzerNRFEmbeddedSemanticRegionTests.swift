@@ -37,7 +37,7 @@ import Testing
             #expect(
                 StaticSignalAnalyzerNRFPackedSemanticRecords.utf8TableSummary(
                     in: candidate
-                )?.scopeCount == 96
+                )?.scopeCount == 91
             )
             let overlap = StaticSignalAnalyzerNRFEmbeddedSemanticRegion.publish(
                 revision: 1, candidate: candidate, published: candidate
@@ -74,7 +74,7 @@ import Testing
             #expect(
                 StaticSignalAnalyzerNRFPackedSemanticRecords.utf8TableSummary(
                     in: candidate
-                )?.scopeCount == 98
+                )?.scopeCount == 93
             )
             let next = StaticSignalAnalyzerNRFEmbeddedSemanticRegion.publish(
                 revision: 2, candidate: candidate, published: published

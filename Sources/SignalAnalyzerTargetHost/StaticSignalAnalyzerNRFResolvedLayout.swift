@@ -175,7 +175,7 @@ package struct StaticSignalAnalyzerNRFResolvedLayoutStorage:
             summary.scopeCount > 0, summary.scopeCount <= 98,
             summary.textScalarCount <= 224, summary.textLineCount <= 128,
             summary.positionedGlyphCount <= 224,
-            summary.maximumObservedDepth <= 13,
+            summary.maximumObservedDepth <= 19,
             text[StaticSignalAnalyzerNRFLayoutWorkspace.publishedMarkerOffset] == 0
         else { return false }
         self.summary = summary

@@ -26,25 +26,25 @@ package struct StaticSignalAnalyzerNRFGeneratedSemanticSummary: Equatable, Senda
         if model.state.errorMessage == nil {
             variant = .normal
             expansion = SemanticExpansionSummary(
-                semanticNodeCount: 47,
-                bodyEvaluationCount: 14,
-                modifierApplicationCount: 49,
-                actionOccurrenceCount: 6,
-                maximumObservedDepth: 34
+                semanticNodeCount: 41,
+                bodyEvaluationCount: 16,
+                modifierApplicationCount: 50,
+                actionOccurrenceCount: 3,
+                maximumObservedDepth: 40
             )
-            structuralOccurrenceCount = 124
-            recordedTraversalIdentityCount = 201
+            structuralOccurrenceCount = 119
+            recordedTraversalIdentityCount = 188
         } else {
             variant = .diagnostic
             expansion = SemanticExpansionSummary(
-                semanticNodeCount: 48,
-                bodyEvaluationCount: 14,
-                modifierApplicationCount: 50,
-                actionOccurrenceCount: 6,
-                maximumObservedDepth: 34
+                semanticNodeCount: 42,
+                bodyEvaluationCount: 16,
+                modifierApplicationCount: 51,
+                actionOccurrenceCount: 3,
+                maximumObservedDepth: 40
             )
-            structuralOccurrenceCount = 126
-            recordedTraversalIdentityCount = 203
+            structuralOccurrenceCount = 121
+            recordedTraversalIdentityCount = 190
         }
         canvasOccurrenceCount = 5
     }
@@ -216,117 +216,81 @@ package struct StaticSignalAnalyzerNRFGeneratedPresentationInputs {
 
     /// Generated root-first text values from the same portable presentation.
     /// The ordinal is a semantic scope ordinal, not a text-pool offset.
-    package borrowing func textInput(at scopeOrdinal: UInt16) -> BoundedText? {
-        switch scopeOrdinal {
-        case 6: return BoundedText("DIGITAL SIGNAL ANALYZER")
-        case 8: return BoundedText("Four-channel acquisition")
-        case 36: return BoundedText("CH1")
-        case 45: return BoundedText("CH2")
-        case 54: return BoundedText("CH3")
-        case 63: return BoundedText("CH4")
-        case 75: return BoundedText("Start")
-        case 79: return BoundedText("Stop")
-        case 82: return BoundedText("Clear")
-        case 87: return BoundedText("1 s")
-        case 91: return BoundedText("2 s")
-        case 95: return BoundedText("5 s")
-        default:
-            let range = visibleRange
-            let variant = semantic.variant
-            return model.withModel { source in
-                switch scopeOrdinal {
-                case 13:
-                    return SignalAnalyzerControlState(
-                        acquisitionState: source.state.acquisitionState,
-                        selectedWindow: source.state.visibleWindow
-                    ).statusText
-                case 25, 28, 31:
-                    let labels = SignalAnalyzerRulerLabels(visibleRange: range)
-                    switch scopeOrdinal {
-                    case 25: return labels.lowerBound
-                    case 28: return labels.midpoint
-                    default: return labels.upperBound
-                    }
-                case 40, 49, 58, 67:
-                    let channel: Int
-                    switch scopeOrdinal {
-                    case 40: channel = 1
-                    case 49: channel = 2
-                    case 58: channel = 3
-                    default: channel = 4
-                    }
-                    switch source.state.capture.currentLevel(
-                        for: SignalChannelID(rawValue: channel)
-                    ) {
-                    case .low: return BoundedText("LOW")
-                    case .high: return BoundedText("HIGH")
-                    }
-                case 97 where variant == .diagnostic:
-                    return source.state.errorMessage?.boundedText
-                default:
-                    return nil
-                }
+    package borrowing func actionCode(at index: UInt16) -> UInt16? {
+        model.withModel { source in
+            switch index {
+            case 0: return SignalAnalyzerControlState(acquisitionState: source.state.acquisitionState, selectedWindow: source.state.visibleWindow).recordingAction.rawValue
+            case 1: return source.state.visibleWindow.shorterAction.rawValue
+            case 2: return source.state.visibleWindow.longerAction.rawValue
+            default: return nil
             }
         }
     }
 
-    package borrowing func liveModifierInput(
-        at scopeOrdinal: UInt16
-    ) -> StaticSignalAnalyzerNRFModifierPayload? {
+    package borrowing func textInput(at scopeOrdinal: UInt16) -> BoundedText? {
+        let range = visibleRange
+        let variant = semantic.variant
         return model.withModel { source in
-            let state = source.state
             switch scopeOrdinal {
-            case 12:
-                let color: Color
+            case 8: return BoundedText("DIGITAL SIGNAL ANALYZER")
+            case 10: return BoundedText("Four-channel acquisition")
+            case 12: return SignalAnalyzerControlState(acquisitionState: source.state.acquisitionState, selectedWindow: source.state.visibleWindow).statusText
+            case 21: return SignalAnalyzerControlState(acquisitionState: source.state.acquisitionState, selectedWindow: source.state.visibleWindow).recordingLabel
+            case 38: return BoundedText("-")
+            case 62: return BoundedText("+")
+            case 45, 49, 53:
+                let labels = SignalAnalyzerRulerLabels(visibleRange: range)
+                switch scopeOrdinal {
+                case 45: return labels.lowerBound
+                case 49: return labels.midpoint
+                default: return labels.upperBound
+                }
+            case 65: return BoundedText("CH1")
+            case 72: return BoundedText("CH2")
+            case 79: return BoundedText("CH3")
+            case 86: return BoundedText("CH4")
+            case 69, 76, 83, 90:
+                let channel = Int((scopeOrdinal - 69) / 7) + 1
+                return source.state.capture.currentLevel(for: SignalChannelID(rawValue: channel)) == .low ? BoundedText("LOW") : BoundedText("HIGH")
+            case 92 where variant == .diagnostic: return source.state.errorMessage?.boundedText
+            default: return nil
+            }
+        }
+    }
+
+    package borrowing func liveModifierInput(at ordinal: UInt16) -> StaticSignalAnalyzerNRFModifierPayload? {
+        model.withModel { source in
+            let state = source.state
+            let controls = SignalAnalyzerControlState(acquisitionState: state.acquisitionState, selectedWindow: state.visibleWindow)
+            let color: Color
+            let background: Bool
+            switch ordinal {
+            case 11:
                 switch state.acquisitionState {
                 case .running: color = .green
                 case .failed: color = .red
-                case .idle, .stopped: color = .white
+                default: color = .white
                 }
-                return StaticSignalAnalyzerNRFModifierPayload(
-                    modifier: .passthrough,
-                    renderScope: .foregroundStyle(color)
-                )
-            case 39, 48, 57, 66:
-                let channel: Int
-                switch scopeOrdinal {
-                case 39: channel = 1
-                case 48: channel = 2
-                case 57: channel = 3
-                default: channel = 4
-                }
-                let color: Color
-                switch state.capture.currentLevel(
-                    for: SignalChannelID(rawValue: channel)
-                ) {
-                case .low: color = Color(red: 0, green: 128, blue: 255)
-                case .high: color = .green
-                }
-                return StaticSignalAnalyzerNRFModifierPayload(
-                    modifier: .passthrough,
-                    renderScope: .foregroundStyle(color)
-                )
-            case 72, 76, 84, 88, 92:
-                let controls = SignalAnalyzerControlState(
-                    acquisitionState: state.acquisitionState,
-                    selectedWindow: state.visibleWindow
-                )
-                let disabled: Bool
-                switch scopeOrdinal {
-                case 72: disabled = controls.startDisabled
-                case 76: disabled = controls.stopDisabled
-                case 84: disabled = controls.oneSecondDisabled
-                case 88: disabled = controls.twoSecondsDisabled
-                default: disabled = controls.fiveSecondsDisabled
-                }
-                return StaticSignalAnalyzerNRFModifierPayload(
-                    modifier: .passthrough,
-                    renderScope: .structural,
-                    disablesActions: disabled
-                )
-            default:
-                return nil
+                background = false
+            case 16, 17, 19:
+                color = ordinal == 19 ? controls.recordingFill : controls.recordingColor
+                background = ordinal != 16
+            case 31, 55:
+                return StaticSignalAnalyzerNRFModifierPayload(modifier: .passthrough, renderScope: .structural,
+                    disablesActions: ordinal == 31 ? state.visibleWindow == .oneSecond : state.visibleWindow == .fiveSeconds)
+            case 33, 34, 36, 57, 58, 60:
+                let disabled = ordinal < 55 ? state.visibleWindow == .oneSecond : state.visibleWindow == .fiveSeconds
+                let fill = ordinal == 36 || ordinal == 60
+                color = fill ? (disabled ? Color(red: 24, green: 24, blue: 24) : Color(red: 64, green: 64, blue: 64)) : (disabled ? .gray : .white)
+                background = ordinal != 33 && ordinal != 57
+            case 68, 75, 82, 89:
+                let channel = Int((ordinal - 68) / 7) + 1
+                color = state.capture.currentLevel(for: SignalChannelID(rawValue: channel)) == .low ? Color(red: 0, green: 128, blue: 255) : .green
+                background = false
+            default: return nil
             }
+            return StaticSignalAnalyzerNRFModifierPayload(modifier: .passthrough,
+                renderScope: background ? .background(color) : .foregroundStyle(color))
         }
     }
 

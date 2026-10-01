@@ -12,7 +12,7 @@ package enum StaticSignalAnalyzerNRFModelTextWriter {
         let table = StaticSignalAnalyzerNRFPackedSemanticRecords.self
         let pool = StaticSignalAnalyzerNRFUTF8TextPool.self
         guard region.count == table.regionByteCount else { return nil }
-        let scopeCount: UInt16 = variant == .normal ? 96 : 98
+        let scopeCount: UInt16 = variant == .normal ? 91 : 93
         var ordinal: UInt16 = 0
         var required: UInt16 = 0
         var textCount: UInt16 = 0
@@ -31,7 +31,7 @@ package enum StaticSignalAnalyzerNRFModelTextWriter {
             }
             ordinal += 1
         }
-        guard textCount == (variant == .normal ? 20 : 21) else { return nil }
+        guard textCount == (variant == .normal ? 17 : 18) else { return nil }
         ordinal = 0
         var used: UInt16 = 0
         while ordinal < scopeCount {
@@ -75,31 +75,30 @@ package enum StaticSignalAnalyzerNRFModelTextWriter {
         capture: borrowing StaticSignalAnalyzerNRFCaptureRegions
     ) -> SignalAnalyzerDiagnostic? {
         switch ordinal {
-        case 6: fixed("DIGITAL SIGNAL ANALYZER")
-        case 8: fixed("Four-channel acquisition")
-        case 13: status(model.acquisitionState)
-        case 25: seconds(model.visibleRange.lowerBound)
-        case 28:
-            seconds(
+        case 8: return fixed("DIGITAL SIGNAL ANALYZER")
+        case 10: return fixed("Four-channel acquisition")
+        case 12: return status(model.acquisitionState)
+        case 21:
+            if case .running = model.acquisitionState { return fixed("R") }
+            return fixed("S")
+        case 38: return fixed("-")
+        case 62: return fixed("+")
+        case 45: return seconds(model.visibleRange.lowerBound)
+        case 49:
+            return seconds(
                 model.visibleRange.lowerBound
                     + (model.visibleRange.upperBound - model.visibleRange.lowerBound) / 2)
-        case 31: seconds(model.visibleRange.upperBound)
-        case 36: fixed("CH1")
-        case 40: level(channel: 1, model: model, capture: capture)
-        case 45: fixed("CH2")
-        case 49: level(channel: 2, model: model, capture: capture)
-        case 54: fixed("CH3")
-        case 58: level(channel: 3, model: model, capture: capture)
-        case 63: fixed("CH4")
-        case 67: level(channel: 4, model: model, capture: capture)
-        case 75: fixed("Start")
-        case 79: fixed("Stop")
-        case 82: fixed("Clear")
-        case 87: fixed("1 s")
-        case 91: fixed("2 s")
-        case 95: fixed("5 s")
-        case 97 where variant == .diagnostic: model.errorMessage
-        default: nil
+        case 53: return seconds(model.visibleRange.upperBound)
+        case 65: return fixed("CH1")
+        case 72: return fixed("CH2")
+        case 79: return fixed("CH3")
+        case 86: return fixed("CH4")
+        case 69: return level(channel: 1, model: model, capture: capture)
+        case 76: return level(channel: 2, model: model, capture: capture)
+        case 83: return level(channel: 3, model: model, capture: capture)
+        case 90: return level(channel: 4, model: model, capture: capture)
+        case 92 where variant == .diagnostic: return model.errorMessage
+        default: return nil
         }
     }
 
