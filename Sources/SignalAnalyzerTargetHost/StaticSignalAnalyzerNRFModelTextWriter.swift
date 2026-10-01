@@ -1,4 +1,5 @@
 import SignalAnalyzerDomain
+import SignalAnalyzerPresentation
 
 /// Lowers the portable Signal Analyzer text projection into the generated
 /// scope table without constructing a String or retaining a model borrow.
@@ -127,45 +128,6 @@ package enum StaticSignalAnalyzerNRFModelTextWriter {
     }
 
     private static func seconds(_ duration: Duration) -> SignalAnalyzerDiagnostic? {
-        let components = duration.components
-        let hundredths: Int64
-        if components.seconds < 0 {
-            hundredths = 0
-        } else {
-            let seconds = components.seconds.multipliedReportingOverflow(by: 100)
-            if seconds.overflow {
-                hundredths = .max
-            } else {
-                let fractional = max(0, components.attoseconds / 10_000_000_000_000_000)
-                let result = seconds.partialValue.addingReportingOverflow(fractional)
-                hundredths = result.overflow ? .max : result.partialValue
-            }
-        }
-        var storage = (
-            UInt8(0), UInt8(0), UInt8(0), UInt8(0), UInt8(0), UInt8(0), UInt8(0),
-            UInt8(0), UInt8(0), UInt8(0), UInt8(0), UInt8(0), UInt8(0), UInt8(0),
-            UInt8(0), UInt8(0), UInt8(0), UInt8(0), UInt8(0), UInt8(0), UInt8(0),
-            UInt8(0), UInt8(0), UInt8(0), UInt8(0), UInt8(0), UInt8(0), UInt8(0),
-            UInt8(0), UInt8(0), UInt8(0), UInt8(0)
-        )
-        var count = 0
-        withUnsafeMutableBytes(of: &storage) { bytes in
-            var whole = hundredths / 100
-            repeat {
-                bytes[count] = 48 + UInt8(whole % 10)
-                count += 1
-                whole /= 10
-            } while whole > 0
-            bytes[0 ..< count].reverse()
-            bytes[count] = 46
-            bytes[count + 1] = 48 + UInt8((hundredths % 100) / 10)
-            bytes[count + 2] = 48 + UInt8(hundredths % 10)
-            bytes[count + 3] = 32
-            bytes[count + 4] = 115
-            count += 5
-        }
-        return withUnsafeBytes(of: storage) { bytes in
-            SignalAnalyzerDiagnostic(exactUTF8: bytes.prefix(count))
-        }
+        SignalAnalyzerTimelineFormatting.seconds(duration)
     }
 }

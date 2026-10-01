@@ -78,49 +78,9 @@ package enum SignalAnalyzerWaveformGeometry {
     }
 
     package static func formattedSeconds(_ duration: Duration) -> BoundedText {
-        let totalHundredths = hundredths(duration)
-        let whole = totalHundredths / 100
-        let fractional = totalHundredths % 100
-        var storage = (
-            UInt8(0), UInt8(0), UInt8(0), UInt8(0), UInt8(0), UInt8(0), UInt8(0),
-            UInt8(0), UInt8(0), UInt8(0), UInt8(0), UInt8(0), UInt8(0), UInt8(0),
-            UInt8(0), UInt8(0), UInt8(0), UInt8(0), UInt8(0), UInt8(0), UInt8(0),
-            UInt8(0), UInt8(0), UInt8(0), UInt8(0), UInt8(0), UInt8(0), UInt8(0),
-            UInt8(0), UInt8(0), UInt8(0), UInt8(0)
-        )
-        var count = 0
-        withUnsafeMutableBytes(of: &storage) { bytes in
-            var magnitude = whole
-            repeat {
-                bytes[count] = UInt8(ascii: "0") + UInt8(magnitude % 10)
-                count += 1
-                magnitude /= 10
-            } while magnitude > 0
-            bytes[0 ..< count].reverse()
-            bytes[count] = UInt8(ascii: ".")
-            count += 1
-            bytes[count] = UInt8(ascii: "0") + UInt8(fractional / 10)
-            count += 1
-            bytes[count] = UInt8(ascii: "0") + UInt8(fractional % 10)
-            count += 1
-            bytes[count] = UInt8(ascii: " ")
-            count += 1
-            bytes[count] = UInt8(ascii: "s")
-            count += 1
+        SignalAnalyzerTimelineFormatting.seconds(duration).withUTF8 { bytes in
+            BoundedText(utf8: bytes)!
         }
-        return withUnsafeBytes(of: storage) { bytes in
-            BoundedText(utf8: bytes.prefix(count))!
-        }
-    }
-
-    private static func hundredths(_ duration: Duration) -> Int64 {
-        let components = duration.components
-        guard components.seconds >= 0 else { return 0 }
-        let seconds = components.seconds.multipliedReportingOverflow(by: 100)
-        guard !seconds.overflow else { return .max }
-        let fractional = max(0, components.attoseconds / 10_000_000_000_000_000)
-        let result = seconds.partialValue.addingReportingOverflow(fractional)
-        return result.overflow ? .max : result.partialValue
     }
 
     private static func milliseconds(_ duration: Duration) -> Int64 {

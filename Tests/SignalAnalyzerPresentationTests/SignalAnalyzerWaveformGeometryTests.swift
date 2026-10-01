@@ -5,15 +5,31 @@ import Testing
 
 @Suite("Signal Analyzer waveform geometry")
 struct SignalAnalyzerWaveformGeometryTests {
-    @Test("ruler formats lower midpoint and upper bounds with two fractional digits")
+    @Test("ruler formats lower midpoint and upper bounds with at most one fractional digit")
     func rulerLabels() {
         let labels = SignalAnalyzerRulerLabels(
             visibleRange: Duration.milliseconds(15_300) ..< .milliseconds(17_300)
         )
 
-        #expect(waveformText(labels.lowerBound) == "15.30 s")
-        #expect(waveformText(labels.midpoint) == "16.30 s")
-        #expect(waveformText(labels.upperBound) == "17.30 s")
+        #expect(waveformText(labels.lowerBound) == "15.3 s")
+        #expect(waveformText(labels.midpoint) == "16.3 s")
+        #expect(waveformText(labels.upperBound) == "17.3 s")
+    }
+
+    @Test("timeline rounds tenths, trims whole seconds, and handles carry and bounds")
+    func timelineRounding() {
+        let cases: [(Duration, String)] = [
+            (.zero, "0 s"), (.seconds(2), "2 s"),
+            (.milliseconds(500), "0.5 s"),
+            (.milliseconds(2_049), "2 s"), (.milliseconds(2_050), "2.1 s"),
+            (.milliseconds(2_949), "2.9 s"), (.milliseconds(2_950), "3 s"),
+            (.milliseconds(199_770), "199.8 s"), (.milliseconds(-100), "0 s"),
+            (.seconds(Int64.max), "9223372036854775807 s"),
+        ]
+        for (duration, expected) in cases {
+            #expect(
+                waveformText(SignalAnalyzerWaveformGeometry.formattedSeconds(duration)) == expected)
+        }
     }
 
     @Test("trace includes lower-bound state and upper-bound transition exactly")

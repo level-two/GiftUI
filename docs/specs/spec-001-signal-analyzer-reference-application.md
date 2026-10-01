@@ -1294,7 +1294,9 @@ specified reset behavior, without a visible control.
 ### Waveform and ruler
 
 The time ruler MUST display labels for the visible lower bound, midpoint, and
-upper bound in seconds with two fractional digits.
+upper bound in seconds rounded to the nearest tenth, omitting the fractional
+part for whole seconds. This is display rounding only; capture timestamps and
+visible range remain unchanged.
 
 For each channel:
 
@@ -1869,8 +1871,8 @@ behavioral, resource, profile, or connected-hardware evidence.
 - [ ] **SA-AC-019:** Every channel waveform starts from the correct baseline,
   applies visible transitions, maps time to x coordinates, and extends to the
   right edge.
-- [x] **SA-AC-020:** The ruler shows lower, midpoint, and upper seconds with two
-  fractional digits, and the grid contains 11 vertical and one center line.
+- [x] **SA-AC-020:** The ruler shows lower, midpoint, and upper seconds rounded to tenths, omitting the
+  fractional part for whole seconds, and the grid contains 11 vertical and one center line.
 - [ ] **SA-AC-021:** At 80 events per second, frames use consistent latest
   state at a 250-millisecond target interval without requiring one frame per
   event.
