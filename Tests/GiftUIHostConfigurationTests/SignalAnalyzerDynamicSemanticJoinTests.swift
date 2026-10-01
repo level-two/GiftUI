@@ -2907,3 +2907,70 @@ private func packedNRFPathID(
     let folded = UInt16(truncatingIfNeeded: hash ^ (hash >> 16))
     return folded == 0 ? UInt16.max : folded
 }
+
+@Test(
+    "waveform canvases resolve from surface constraints",
+    arguments: [(240, 320), (320, 240), (480, 320)])
+func signalAnalyzerWaveformResolvesSurfaceConstraints(width: Int32, height: Int32) {
+    let preset = GeneratedSignalAnalyzerPresets.nrf52840Static()
+    let model = makeSemanticJoinModel()
+    let root = DynamicObservableRootAdapter<SignalAnalyzerViewModel, DynamicSemanticIdentity>(
+        capacity: preset.runtimeLimits.observableState.maximumLocations
+    )
+    var reconciler = DynamicObservableStateReconciler(root: root)
+    var binding = ObservableStateBindingDecorator(reconciler: reconciler)
+    var expansion = DynamicSemanticExpansionWorkspace(
+        maximumPathComponents: 64, maximumIdentities: 2048)
+    let limits = SemanticExpansionLimits(
+        maximumDepth: 64, maximumSemanticNodes: 512,
+        maximumBodyEvaluations: 512, maximumModifierApplications: 512, maximumActionOccurrences: 32)!
+    var semantic = DynamicSemanticHostStorage(
+        limits: limits, maximumStructuralOccurrences: 512,
+        canvasCapacity: 5)
+    let constraints = SignalAnalyzerLayoutConstraints(width: width, height: height, lineHeight: 20)
+    #expect(reconciler.beginCandidate() == .success(.candidateStarted))
+    guard
+        case .success = expandSemanticTreeWithStateBinding(
+            SignalAnalyzerView(viewModel: model, layout: constraints), limits: limits,
+            workspace: &expansion, sink: &semantic, stateBinding: &binding
+        )
+    else {
+        Issue.record("surface hierarchy failed")
+        return
+    }
+    var workspace = DynamicLayoutWorkspace(limits: preset.runtimeLimits.layout)
+    var sink = ResolvedRenderLayoutResultSink(
+        storage: DynamicResolvedLayoutStorage(limits: preset.runtimeLimits.layout))
+    guard
+        case .success = layout(
+            semantic: semantic,
+            metrics: GiftUIReferenceTextResources.targetPackage.metrics,
+            proposal: ProposedSize(width: width, height: height)!,
+            limits: preset.runtimeLimits.layout,
+            workspace: &workspace, sink: &sink
+        )
+    else {
+        Issue.record("surface layout failed")
+        return
+    }
+    var canvases = 0
+    for ordinal in 0 ..< semantic.semanticScopeCount {
+        guard let identity = semantic.semanticIdentity(at: ordinal),
+            case .canvas = semantic.scope(at: identity)
+        else { continue }
+        guard let bounds = sink.renderView.bounds(of: identity) else {
+            Issue.record("Canvas bounds missing")
+            continue
+        }
+        #expect(
+            bounds.size.width == (canvases == 0 ? constraints.gridWidth : constraints.traceWidth))
+        #expect(
+            bounds.size.height == (canvases == 0 ? constraints.gridHeight : constraints.traceHeight)
+        )
+        #expect(bounds.origin.x >= 0 && bounds.origin.y >= 0)
+        #expect(bounds.origin.x + bounds.size.width <= width)
+        #expect(bounds.origin.y + bounds.size.height <= height)
+        canvases += 1
+    }
+    #expect(canvases == 5)
+}
