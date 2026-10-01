@@ -3075,3 +3075,129 @@ func signalAnalyzerWaveformResolvesSurfaceConstraints(width: Int32, height: Int3
         }
     #endif
 }
+
+@Test(arguments: [
+    "tap", "hold", "move-inside", "move-outside", "miss", "disabled", "stale", "up-only",
+])
+func rawFramebufferTouchesReachModelAndReplacementFrame(scenario: String) throws {
+    let preset = GeneratedSignalAnalyzerPresets.raspberryPiDynamic()
+    let revision = PresentationRevision(rawValue: 1)
+    let provenance = FrameProvenance(
+        cycle: RunCycleID(rawValue: 1), semanticRevision: SemanticRevision(rawValue: 1),
+        candidateFrame: CandidateFrameID(rawValue: 1))
+    let capture = LogicalFrameCapture()
+    let target = try #require(
+        PiScreenDisplayTarget(
+            sink: EndpointFramebufferSink(capture: capture.record),
+            layout: PiScreenFramebufferLayout(
+                width: 480, height: 320, bitsPerPixel: 16,
+                bytesPerRow: 960, mappedBytes: 307_200)!))
+    var owner = try #require(
+        DynamicSignalAnalyzerPiInitialPresentationOwner(
+            target: target, limits: preset.runtimeLimits, maximumRecordedTraversalIdentities: 203,
+            effectivePresentation: dynamicPiEffectivePresentation(preset: preset),
+            provenance: provenance, presentationRevision: revision))
+    let model = makeSemanticJoinModel()
+    if scenario == "disabled" { model.visibleDurationChanged(.oneSecond) }
+    guard case .presented = owner.presentInitial(model: model) else {
+        Issue.record("initial touch frame failed")
+        return
+    }
+    let originalState = model.state
+    let originalPixels = capture.pixels
+    let action = try #require(
+        (0 ..< owner.eligibleActionCount).compactMap {
+            owner.eligibleAction(at: $0)
+        }.first { $0.action.code == SignalAnalyzerAction.selectOneSecond.rawValue })
+    let center = Point(x: action.hitBounds.minX + 22, y: action.hitBounds.minY + 22)
+    let outside = Point(x: 120, y: 230)
+    let start = scenario == "miss" ? outside : center
+    let transform = PiScreenAspectFitTransform(
+        physicalWidth: 480, physicalHeight: 320, logicalWidth: 240, logicalHeight: 240)!
+    let calibration = PiScreenTouchCalibration.signalAnalyzerPiScreen!
+    var decoder = PiScreenInputEventDecoder(transform: transform, calibration: calibration)
+    let source = InputSourceID(rawValue: 1)
+    var coordinator = DynamicSignalAnalyzerPiInputCoordinator(
+        source: source, capacity: preset.runtimeLimits.execution.maximumInputEvents,
+        context: ExecutionContext(
+            cycle: provenance.cycle,
+            semanticRevision: provenance.semanticRevision,
+            candidateFrame: provenance.candidateFrame,
+            phase: .idle))
+    coordinator.installPhysicalPresentation(revision)
+
+    func sample(_ point: Point, touching: Bool) -> PiScreenContactEvent? {
+        let px = transform.contentOriginX + point.x * transform.contentWidth / 240
+        let py = transform.contentOriginY + point.y * transform.contentHeight / 240
+        _ = decoder.consume(type: 3, code: 0, value: Int32((Int64(px) * 4095 + 478) / 479))
+        _ = decoder.consume(
+            type: 3, code: 1,
+            value: calibration.minimumY + Int32((Int64(py) * 4095 + 318) / 319))
+        _ = decoder.consume(type: 1, code: 330, value: touching ? 1 : 0)
+        return decoder.consume(type: 0, code: 0, value: 0)
+    }
+    func submit(_ contact: PiScreenContactEvent) {
+        let result = coordinator.admit(
+            phase: contact.phase, position: contact.point, source: source,
+            observedPresentationRevision: scenario == "stale"
+                ? PresentationRevision(rawValue: 0) : revision,
+            priorPhysicalSequenceIsComplete: contact.phase == .down)
+        if scenario == "stale" {
+            #expect(result == .dropped(.stalePresentation))
+        } else {
+            guard case .queued = result else {
+                Issue.record("raw contact refused: \(result)")
+                return
+            }
+        }
+    }
+    if scenario != "up-only" {
+        submit(try #require(sample(start, touching: true)))
+    } else {
+        #expect(sample(start, touching: false) == nil)
+    }
+    let downResult = coordinator.runOpportunity(
+        into: &owner,
+        provenance: FrameProvenance(
+            cycle: RunCycleID(rawValue: 2),
+            semanticRevision: SemanticRevision(rawValue: 2),
+            candidateFrame: CandidateFrameID(rawValue: 2)),
+        presentationRevision: PresentationRevision(rawValue: 2))
+    guard case .completed(let down) = downResult else {
+        Issue.record("down failed")
+        return
+    }
+    #expect(down.input.dispatchedActionCount == 0)
+    #expect(down.presentation == nil)
+    #expect(model.state == originalState)
+    if scenario == "hold" { #expect(sample(start, touching: true) == nil) }
+    if scenario == "move-inside" {
+        submit(try #require(sample(Point(x: center.x + 8, y: center.y), touching: true)))
+    } else if scenario == "move-outside" {
+        submit(try #require(sample(outside, touching: true)))
+    }
+    if scenario != "up-only" {
+        submit(try #require(sample(start, touching: false)))
+        #expect(sample(start, touching: false) == nil)
+    }
+    let upResult = coordinator.runOpportunity(
+        into: &owner,
+        provenance: FrameProvenance(
+            cycle: RunCycleID(rawValue: 3),
+            semanticRevision: SemanticRevision(rawValue: 3),
+            candidateFrame: CandidateFrameID(rawValue: 3)),
+        presentationRevision: PresentationRevision(rawValue: 3))
+    guard case .completed(let up) = upResult else {
+        Issue.record("up failed: \(upResult)")
+        return
+    }
+    let dispatches: UInt16 = ["tap", "hold", "move-inside"].contains(scenario) ? 1 : 0
+    #expect(up.input.dispatchedActionCount == dispatches)
+    #expect(
+        model.state.visibleWindow == (dispatches == 1 ? .oneSecond : originalState.visibleWindow))
+    #expect(
+        owner.currentPresentationRevision
+            == (dispatches == 1 ? PresentationRevision(rawValue: 3) : revision))
+    #expect((up.presentation != nil) == (dispatches == 1))
+    #expect((capture.pixels != originalPixels) == (dispatches == 1))
+}

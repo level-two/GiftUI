@@ -189,7 +189,9 @@ private func makeStaticNRFApplicationInputOwner()
 }
 
 private func makeStaticNRFInteraction(
-    targetGeneration: UInt32
+    targetGeneration: UInt32,
+    enabled: Bool = true,
+    side: Int32 = 8
 ) -> StaticInteractionState<UInt32> {
     var interaction = StaticInteractionState<UInt32>(
         candidateRecords: StaticInteractionCandidateStorage(capacity: 1)!,
@@ -206,14 +208,14 @@ private func makeStaticNRFInteraction(
     #expect(
         interaction.append(
             identity: 4,
-            isEnabled: true,
+            isEnabled: enabled,
             bounds: Rect(
                 origin: Point(x: 0, y: 0),
-                size: Size(width: 8, height: 8)!
+                size: Size(width: side, height: side)!
             )!,
             clip: Rect(
                 origin: Point(x: 0, y: 0),
-                size: Size(width: 8, height: 8)!
+                size: Size(width: side, height: side)!
             )!,
             paintOrder: 0,
             action: BoundedApplicationAction(
@@ -282,4 +284,57 @@ private func admitStaticNRFInteraction(
         Issue.record("expected Static nRF interaction admission")
         return
     }
+}
+
+@Test(arguments: [
+    "tap", "hold", "move-inside", "move-outside", "miss", "disabled", "stale", "up-only",
+])
+func staticTouchABIReachesCurrentModelOnlyOnValidRelease(scenario: String) {
+    var root = StaticObservableRootAdapter<SignalAnalyzerViewModel, UInt32>(
+        structuralIdentity: staticNRFRootIdentity, declarationOrdinal: 0)
+    var interaction = makeStaticNRFInteraction(
+        targetGeneration: 0,
+        enabled: scenario != "disabled", side: 44)
+    var owner = makeStaticNRFApplicationInputOwner()
+    withUnsafeMutablePointer(to: &root) { bindStaticNRFInteractionRoot($0) }
+    func admit(_ phase: PointerPhase, x: UInt16, y: UInt16) {
+        let outcome = owner.admit(
+            phaseRawValue: phase.rawValue, x: x, y: y,
+            observedPresentationRevisionRawValue: scenario == "stale"
+                ? 0 : staticNRFInteractionRevision.rawValue,
+            priorPhysicalSequenceIsCompleteRawValue: phase == .down ? 1 : 0)
+        #expect(outcome?.disposition == (scenario == "stale" ? .dropped : .queued))
+    }
+    if scenario != "up-only" { admit(.down, x: scenario == "miss" ? 80 : 22, y: 22) }
+    let down = owner.runOpportunity(interaction: &interaction, root: &root)
+    guard case .completed(let summary) = down else {
+        Issue.record("Static down failed")
+        return
+    }
+    #expect(summary.dispatchedActionCount == 0)
+    #expect(root.withModel { $0.state.visibleWindow } == .twoSeconds)
+    let dirtyBeforeRelease = root.isDirty
+    #expect(!dirtyBeforeRelease)
+    if scenario == "hold" {
+        let held = owner.runOpportunity(interaction: &interaction, root: &root)
+        guard case .completed(let summary) = held else {
+            Issue.record("Static hold failed")
+            return
+        }
+        #expect(summary.dispatchedActionCount == 0)
+    }
+    if scenario == "move-inside" { admit(.move, x: 30, y: 22) }
+    if scenario == "move-outside" { admit(.move, x: 80, y: 22) }
+    if scenario != "up-only" { admit(.up, x: scenario == "miss" ? 80 : 22, y: 22) }
+    let up = owner.runOpportunity(interaction: &interaction, root: &root)
+    guard case .completed(let summary) = up else {
+        Issue.record("Static up failed")
+        return
+    }
+    let dispatches: UInt16 = ["tap", "hold", "move-inside"].contains(scenario) ? 1 : 0
+    #expect(summary.dispatchedActionCount == dispatches)
+    #expect(
+        root.withModel { $0.state.visibleWindow } == (dispatches == 1 ? .oneSecond : .twoSeconds))
+    let dirtyAfterRelease = root.isDirty
+    #expect(dirtyAfterRelease == (dispatches == 1))
 }
