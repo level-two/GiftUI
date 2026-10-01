@@ -1,0 +1,1 @@
+SPEC-001 nRF production-loop faults passed: seven injected paths and retained frames.

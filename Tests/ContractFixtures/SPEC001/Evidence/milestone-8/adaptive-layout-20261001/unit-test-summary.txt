@@ -1,0 +1,6 @@
+◇ Test "waveform canvases resolve from surface constraints" started.
+◇ Test case passing 2 arguments width → 240, height → 320 to "waveform canvases resolve from surface constraints" started.
+◇ Test case passing 2 arguments width → 320, height → 240 to "waveform canvases resolve from surface constraints" started.
+◇ Test case passing 2 arguments width → 480, height → 320 to "waveform canvases resolve from surface constraints" started.
+✔ Test "waveform canvases resolve from surface constraints" with 3 test cases passed after 1.763 seconds.
+✔ Test run with 1139 tests in 17 suites passed after 69.484 seconds.

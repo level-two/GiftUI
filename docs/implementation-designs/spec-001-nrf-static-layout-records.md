@@ -6,7 +6,7 @@ status: draft
 authors:
   - codex
 created: 2026-09-22
-updated: 2026-09-27
+updated: 2026-10-01
 implementation_plan: ../implementation-plans/spec-001-implementation-plan.md
 related_future_work: []
 related_explorations: []
@@ -258,3 +258,28 @@ stack evidence remain the separate T8.2 gate.
 - [Line/glyph codec tests](../../Tests/GiftUIHostConfigurationTests/StaticSignalAnalyzerNRFLayoutTextCodecTests.swift)
 - [Static profile lifetime binding](../../Sources/GiftUIRuntimeStatic/StaticProfileStorage.swift)
 - [Paired-region lifetime test](../../Tests/GiftUIHostConfigurationTests/StaticSignalAnalyzerNRFProfileBindingTests.swift)
+
+## Surface-derived constraints (2026-10-01)
+
+The presentation now uses `SignalAnalyzerLayoutConstraints` to derive finite
+Canvas maxima from the surface extent and canonical line height. This realizes
+SPEC-007's existing absent-main-axis proposal rule: infinity alone cannot
+supply a Canvas dimension beneath a stack. The Pi host supplies its logical
+extent and compact font height; the generated nRF projection uses the reference
+320 × 240 surface and 20-point canonical line height. Both consume the same
+constraint calculation and the existing shared measure/place engine.
+
+The budget reserves root/panel padding, header, controls, ruler and one
+single-line diagnostic. Longer permitted diagnostics continue through the
+existing bounded wrapping/clipping behavior. Two label columns each reserve
+twice the line height; the grid uses the same width and horizontal origin as
+all four traces. Channel labels occupy fixed-width leading frames, channel
+rows align leading, and state labels begin beyond the plot. No resolved
+absolute frame, scope capacity, profile region, or heap storage was added.
+The hierarchy retains 96 normal and 98 diagnostic layout scopes, while
+foreground inheritance supplies the channel label color formerly written by
+four redundant modifiers.
+
+[Fresh host raster and target-build evidence](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-8/adaptive-layout-20261001/README.md)
+records the incremental correction under T6.8/T7.7. It does not close the
+reviewed-pixel-reference or connected-target T8.2 gates.

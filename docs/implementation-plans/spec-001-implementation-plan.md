@@ -6,7 +6,7 @@ status: active
 owners:
   - codex
 created: 2026-09-13
-updated: 2026-09-30
+updated: 2026-10-01
 related_design_notes:
   - ../implementation-designs/spec-001-presentation-admission-and-failure.md
   - ../implementation-designs/spec-001-four-host-application-join.md
@@ -2386,3 +2386,13 @@ The 2026-09-30 closeout registers the preserved Pi investigation files as
 historical `T8.1` evidence, including rejected experiments. The task remains
 blocked; these files do not establish current-layout timing or connected
 six-control conformance.
+
+## Adaptive layout correction — 2026-10-01
+
+T6.8/T7.7 now have fresh [surface constraint, host raster and nRF cross-build
+evidence](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-8/adaptive-layout-20261001/README.md).
+The shared hierarchy derives finite Canvas maxima from surface and font
+constraints and confines the grid/traces between channel and state labels.
+Normal/diagnostic scope counts and resource budgets remain unchanged. T7.7
+retains its reviewed-reference blocker, and T8.2 retains its connected-target
+evidence boundary; these implementation fixes do not promote either gate.

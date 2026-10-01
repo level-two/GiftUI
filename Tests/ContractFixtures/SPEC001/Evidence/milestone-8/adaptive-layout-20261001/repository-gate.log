@@ -1,0 +1,55 @@
+==> governance
+pass: governance
+==> governance-tooling
+pass: governance-tooling
+==> swift-format
+pass: swift-format
+==> driver-registry
+pass: driver-registry
+==> spec-013-migration
+pass: spec-013-migration
+==> spec-013-dynamic-binding
+pass: spec-013-dynamic-binding
+==> spec-013-static-generated-fixture
+pass: spec-013-static-generated-fixture
+==> spec-013-static-storage
+pass: spec-013-static-storage
+==> spec-013-macos-static
+pass: spec-013-macos-static
+==> spec-013-nrf-static
+pass: spec-013-nrf-static
+==> root-tests
+pass: root-tests
+==> spec-003-diagnostic-buffer
+pass: spec-003-diagnostic-buffer
+==> SPEC-001-macos-dynamic
+pass: SPEC-001-macos-dynamic
+==> SPEC-002-macos-dynamic
+pass: SPEC-002-macos-dynamic
+==> SPEC-003-macos-dynamic
+fail: SPEC-003-macos-dynamic (exit 1; /Users/eugene/work/GiftUI/.build/test-reports/macos-dynamic/logs/SPEC-003-macos-dynamic.log)
+==> SPEC-004-macos-dynamic
+fail: SPEC-004-macos-dynamic (exit 1; /Users/eugene/work/GiftUI/.build/test-reports/macos-dynamic/logs/SPEC-004-macos-dynamic.log)
+==> SPEC-005-macos-dynamic
+fail: SPEC-005-macos-dynamic (exit 1; /Users/eugene/work/GiftUI/.build/test-reports/macos-dynamic/logs/SPEC-005-macos-dynamic.log)
+==> SPEC-006-macos-dynamic
+fail: SPEC-006-macos-dynamic (exit 1; /Users/eugene/work/GiftUI/.build/test-reports/macos-dynamic/logs/SPEC-006-macos-dynamic.log)
+==> SPEC-007-macos-dynamic
+pass: SPEC-007-macos-dynamic
+==> SPEC-008-macos-dynamic
+fail: SPEC-008-macos-dynamic (exit 1; /Users/eugene/work/GiftUI/.build/test-reports/macos-dynamic/logs/SPEC-008-macos-dynamic.log)
+==> SPEC-009-macos-dynamic
+fail: SPEC-009-macos-dynamic (exit 1; /Users/eugene/work/GiftUI/.build/test-reports/macos-dynamic/logs/SPEC-009-macos-dynamic.log)
+==> SPEC-010-macos-dynamic
+pass: SPEC-010-macos-dynamic
+==> SPEC-011-macos-dynamic
+fail: SPEC-011-macos-dynamic (exit 1; /Users/eugene/work/GiftUI/.build/test-reports/macos-dynamic/logs/SPEC-011-macos-dynamic.log)
+==> SPEC-012-macos-dynamic
+fail: SPEC-012-macos-dynamic (exit 1; /Users/eugene/work/GiftUI/.build/test-reports/macos-dynamic/logs/SPEC-012-macos-dynamic.log)
+==> SPEC-013-macos-dynamic
+fail: SPEC-013-macos-dynamic (exit 1; /Users/eugene/work/GiftUI/.build/test-reports/macos-dynamic/logs/SPEC-013-macos-dynamic.log)
+==> SPEC-014-macos-dynamic
+fail: SPEC-014-macos-dynamic (exit 1; /Users/eugene/work/GiftUI/.build/test-reports/macos-dynamic/logs/SPEC-014-macos-dynamic.log)
+==> SPEC-015-macos-dynamic
+pass: SPEC-015-macos-dynamic
+10 check(s) failed; see /Users/eugene/work/GiftUI/.build/test-reports/macos-dynamic

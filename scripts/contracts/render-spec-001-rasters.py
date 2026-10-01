@@ -13,9 +13,9 @@ INVARIANT_RECTS = {
     "pi": ((36, 4, 205, 34), (4, 75, 13, 185)),
     "nrf": ((52, 4, 272, 23), (52, 27, 266, 46)),
 }
-PLOT_RECTS = {"pi": (34, 72, 207, 203), "nrf": (44, 94, 273, 174)}
+PLOT_RECTS = {"pi": (0, 72, 240, 203), "nrf": (0, 94, 320, 174)}
 TRACE_BANDS = {
-    "pi": ((76, 101), (109, 134), (142, 167), (175, 200)),
+    "pi": ((76, 94), (106, 124), (136, 154), (166, 184)),
     "nrf": ((98, 110), (118, 130), (138, 150), (158, 170)),
 }
 STATES = (
@@ -82,6 +82,11 @@ def waveform_pixels_present(pixels, width, profile):
         index == 0 or x > grid_columns[index - 1] + 1
         for index, x in enumerate(grid_columns)
     )
+    if grid_lines != 11:
+        return False
+    # Derive the plot columns from the rendered grid, rather than assuming
+    # the old fixed-width Canvas position. Labels stay outside this interval.
+    left, right = grid_columns[0], grid_columns[-1] + 1
     center_line = max(
         sum(pixel_at(pixels, width, x, y) == grid for x in range(left, right))
         for y in range(top, bottom)

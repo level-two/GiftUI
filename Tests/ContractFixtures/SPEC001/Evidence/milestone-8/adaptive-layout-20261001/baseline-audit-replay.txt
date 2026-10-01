@@ -1,0 +1,33 @@
+baseline_revision=0c53656b4432337f2255ef2e7b0f643850e41bd0
+Package.swift is unchanged from this baseline; audits use the same dumped package JSON.
+
+check=check-spec-003-dependencies.rb exit=1
+SPEC-003 dependency check failed: direct production Failure Core consumer set differs
+
+
+check=check-spec-004-dependencies.rb exit=1
+SPEC-004 dependency check failed: SignalAnalyzerTargetHost dependencies differ
+
+
+check=check-spec-005-generated-assets.rb exit=1
+SPEC-005 generated asset check failed: registered generated asset is missing: experiments/spike-005-inter-reference-font/generated/GiftUIReferenceSans-Regular-16px.bitmap1
+
+
+check=check-spec-006-migration.rb exit=1
+SPEC-006 migration check failed: traversal PoC scan failed: 
+
+
+check=check-spec-008-package-boundaries.rb exit=1
+SPEC-008 package boundary check failed: semantic/layout join exists outside approved producers
+
+
+check=check-spec-009-admission-values.rb exit=1
+SPEC-009 admission value check failed: ExecutionOpportunityRunner ownership differs: ["<baseline>/Sources/GiftUIExecution/ExecutionOpportunityRunner.swift"]
+
+
+check=check-spec-012-module-contract.rb exit=1
+SPEC-012 module contract check failed: combined stroke emission owner differs: ["SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFEmbeddedRasterSink.swift", "GiftUIDrawing/CanvasRenderProducer.swift"]
+
+
+check=check-spec-013-module-contract.rb exit=1
+SPEC-013 module contract check failed: GiftUIRuntimeDynamic direct dependencies differ

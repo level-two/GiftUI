@@ -1,0 +1,18 @@
+SPEC-003
+SPEC-003 dependency check failed: direct production Failure Core consumer set differs
+SPEC-004
+SPEC-004 dependency check failed: SignalAnalyzerTargetHost dependencies differ
+SPEC-005
+SPEC-005 generated asset check failed: stale generated asset scripts/text-resources/generate-reference-resources.py: expected c3ef9e2a7aae037b24b9e55fafe8eba7cb4c811da23b53a5bc2c9dab959ae736, got 8433302f9a8c8ecfe58bb9c0e978d2d488ff8f4a25e9a52bf8883fc734e10d5e
+SPEC-006
+SPEC-006 migration check failed: legacy surface remains in maintained source: [#<Pathname:Sources/GiftUIPlatformRaspberryPi/LinuxPiScreenDevices.swift>]
+SPEC-008
+SPEC-008 package boundary check failed: semantic/layout join exists outside approved producers
+SPEC-009
+SPEC-009 admission value check failed: ExecutionOpportunityRunner ownership differs: ["/Users/eugene/work/GiftUI/Sources/GiftUIExecution/ExecutionOpportunityRunner.swift"]
+SPEC-012
+SPEC-012 module contract check failed: combined stroke emission owner differs: ["SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFEmbeddedRasterSink.swift", "GiftUIDrawing/CanvasRenderProducer.swift"]
+SPEC-013
+SPEC-013 module contract check failed: GiftUIRuntimeDynamic direct dependencies differ
+SPEC-011: delegates to the SPEC-012 harness, which fails on the same module-owner audit.
+SPEC-014: two explicit incomplete assertions in the backend report; no connected-target claim.
