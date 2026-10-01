@@ -2412,3 +2412,10 @@ static storage size, and lifecycle gates. Validate adjacent window transitions,
 disabled endpoints, hit bounds, shared static projection, firmware ABI/budgets,
 and production host captures. The SPEC-001 control amendment records the
 maintainer's explicit request; SPEC-015's descriptor remains the limit source.
+
+The [touch-control evidence](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-8/touch-controls-20261001/README.md)
+records passing portable/static projections, 44×44 hit bounds, adjacent window
+steps, ignored endpoint taps, target-sized behavior oracles, framebuffer captures,
+shared-font pixels, fault paths, and both hard-float cross-builds. Resource limits
+come from the regenerated SPEC-015 workload descriptor. Physical storage budgets
+are unchanged. T7.7 and T8.2 retain their existing review/hardware boundaries.

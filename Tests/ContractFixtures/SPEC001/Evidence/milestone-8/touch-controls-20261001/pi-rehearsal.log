@@ -1,0 +1,752 @@
+swiftpm-command: swift run --package-path /Users/eugene/work/GiftUI --disable-sandbox -Xswiftc -DGIFTUI_DYNAMIC_PROFILE SignalAnalyzerRaspberryPiARMv6 --rehearse-host
+trace=other_frame	code=65535	revision=0	capture_revision=0	capture_count=0	state=idle	window=twoSeconds	semantic_nodes=41	layout_scopes=91	drawing_strokes=5	drawing_points=32	render_operations=35	payloads=324	regions=3577	bytes=214404	frame_hash=13169664285323153010
+trace=frame	ordinal=1	revision=1	facts=25	capture_revision=24	capture_count=24	state=running	window=twoSeconds	semantic_nodes=41	layout_scopes=91	drawing_strokes=5	drawing_points=72	render_operations=35	frame_hash=4298534807251869534
+trace=frame	ordinal=2	revision=2	facts=20	capture_revision=44	capture_count=44	state=running	window=twoSeconds	semantic_nodes=41	layout_scopes=91	drawing_strokes=5	drawing_points=84	render_operations=35	frame_hash=6163975046413474468
+trace=frame	ordinal=3	revision=3	facts=20	capture_revision=64	capture_count=64	state=running	window=twoSeconds	semantic_nodes=41	layout_scopes=91	drawing_strokes=5	drawing_points=78	render_operations=35	frame_hash=2045784829251762392
+trace=frame	ordinal=4	revision=4	facts=20	capture_revision=84	capture_count=84	state=running	window=twoSeconds	semantic_nodes=41	layout_scopes=91	drawing_strokes=5	drawing_points=86	render_operations=35	frame_hash=6625893501579973867
+trace=frame	ordinal=5	revision=5	facts=20	capture_revision=104	capture_count=104	state=running	window=twoSeconds	semantic_nodes=41	layout_scopes=91	drawing_strokes=5	drawing_points=82	render_operations=35	frame_hash=6010327529989566612
+trace=frame	ordinal=6	revision=6	facts=20	capture_revision=124	capture_count=124	state=running	window=twoSeconds	semantic_nodes=41	layout_scopes=91	drawing_strokes=5	drawing_points=76	render_operations=35	frame_hash=17746706700670801569
+trace=frame	ordinal=7	revision=7	facts=20	capture_revision=144	capture_count=144	state=running	window=twoSeconds	semantic_nodes=41	layout_scopes=91	drawing_strokes=5	drawing_points=82	render_operations=35	frame_hash=16421144364987478844
+trace=frame	ordinal=8	revision=8	facts=20	capture_revision=164	capture_count=164	state=running	window=twoSeconds	semantic_nodes=41	layout_scopes=91	drawing_strokes=5	drawing_points=84	render_operations=35	frame_hash=6377372767434714156
+trace=frame	ordinal=9	revision=9	facts=20	capture_revision=184	capture_count=184	state=running	window=twoSeconds	semantic_nodes=41	layout_scopes=91	drawing_strokes=5	drawing_points=78	render_operations=35	frame_hash=14358162001561686947
+trace=frame	ordinal=10	revision=10	facts=20	capture_revision=204	capture_count=204	state=running	window=twoSeconds	semantic_nodes=41	layout_scopes=91	drawing_strokes=5	drawing_points=82	render_operations=35	frame_hash=359323841471439280
+trace=frame	ordinal=11	revision=11	facts=20	capture_revision=224	capture_count=224	state=running	window=twoSeconds	semantic_nodes=41	layout_scopes=91	drawing_strokes=5	drawing_points=76	render_operations=35	frame_hash=15094986568982173691
+trace=frame	ordinal=12	revision=12	facts=20	capture_revision=244	capture_count=244	state=running	window=twoSeconds	semantic_nodes=41	layout_scopes=91	drawing_strokes=5	drawing_points=80	render_operations=35	frame_hash=9264616142826467761
+trace=frame	ordinal=13	revision=13	facts=20	capture_revision=264	capture_count=264	state=running	window=twoSeconds	semantic_nodes=41	layout_scopes=91	drawing_strokes=5	drawing_points=76	render_operations=35	frame_hash=13455285729357663718
+trace=frame	ordinal=14	revision=14	facts=20	capture_revision=284	capture_count=284	state=running	window=twoSeconds	semantic_nodes=41	layout_scopes=91	drawing_strokes=5	drawing_points=76	render_operations=35	frame_hash=7874192031946846081
+trace=frame	ordinal=15	revision=15	facts=20	capture_revision=304	capture_count=304	state=running	window=twoSeconds	semantic_nodes=41	layout_scopes=91	drawing_strokes=5	drawing_points=82	render_operations=35	frame_hash=10069722084043921460
+trace=frame	ordinal=16	revision=16	facts=20	capture_revision=324	capture_count=324	state=running	window=twoSeconds	semantic_nodes=41	layout_scopes=91	drawing_strokes=5	drawing_points=78	render_operations=35	frame_hash=7442305958724532589
+trace=frame	ordinal=17	revision=17	facts=20	capture_revision=344	capture_count=344	state=running	window=twoSeconds	semantic_nodes=41	layout_scopes=91	drawing_strokes=5	drawing_points=76	render_operations=35	frame_hash=1628527448593720482
+trace=frame	ordinal=18	revision=18	facts=20	capture_revision=364	capture_count=354	state=running	window=twoSeconds	semantic_nodes=41	layout_scopes=91	drawing_strokes=5	drawing_points=82	render_operations=35	frame_hash=14502261096148669253
+trace=frame	ordinal=19	revision=19	facts=20	capture_revision=384	capture_count=356	state=running	window=twoSeconds	semantic_nodes=41	layout_scopes=91	drawing_strokes=5	drawing_points=76	render_operations=35	frame_hash=2946384090293315537
+trace=frame	ordinal=20	revision=20	facts=20	capture_revision=404	capture_count=356	state=running	window=twoSeconds	semantic_nodes=41	layout_scopes=91	drawing_strokes=5	drawing_points=80	render_operations=35	frame_hash=17153621940722086170
+trace=frame	ordinal=21	revision=21	facts=20	capture_revision=424	capture_count=353	state=running	window=twoSeconds	semantic_nodes=41	layout_scopes=91	drawing_strokes=5	drawing_points=80	render_operations=35	frame_hash=6530690514732958925
+trace=frame	ordinal=22	revision=22	facts=20	capture_revision=444	capture_count=354	state=running	window=twoSeconds	semantic_nodes=41	layout_scopes=91	drawing_strokes=5	drawing_points=74	render_operations=35	frame_hash=12682807034495381986
+trace=frame	ordinal=23	revision=23	facts=20	capture_revision=464	capture_count=356	state=running	window=twoSeconds	semantic_nodes=41	layout_scopes=91	drawing_strokes=5	drawing_points=80	render_operations=35	frame_hash=2091861881036863042
+trace=frame	ordinal=24	revision=24	facts=20	capture_revision=484	capture_count=355	state=running	window=twoSeconds	semantic_nodes=41	layout_scopes=91	drawing_strokes=5	drawing_points=82	render_operations=35	frame_hash=6828350020102081588
+trace=frame	ordinal=25	revision=25	facts=20	capture_revision=504	capture_count=353	state=running	window=twoSeconds	semantic_nodes=41	layout_scopes=91	drawing_strokes=5	drawing_points=74	render_operations=35	frame_hash=5460211527153903792
+trace=frame	ordinal=26	revision=26	facts=20	capture_revision=524	capture_count=355	state=running	window=twoSeconds	semantic_nodes=41	layout_scopes=91	drawing_strokes=5	drawing_points=80	render_operations=35	frame_hash=15867320749227757385
+trace=frame	ordinal=27	revision=27	facts=20	capture_revision=544	capture_count=354	state=running	window=twoSeconds	semantic_nodes=41	layout_scopes=91	drawing_strokes=5	drawing_points=82	render_operations=35	frame_hash=1354462144602375518
+trace=frame	ordinal=28	revision=28	facts=20	capture_revision=564	capture_count=355	state=running	window=twoSeconds	semantic_nodes=41	layout_scopes=91	drawing_strokes=5	drawing_points=78	render_operations=35	frame_hash=13444566135590921872
+trace=frame	ordinal=29	revision=29	facts=20	capture_revision=584	capture_count=353	state=running	window=twoSeconds	semantic_nodes=41	layout_scopes=91	drawing_strokes=5	drawing_points=82	render_operations=35	frame_hash=9766022820148130721
+trace=frame	ordinal=30	revision=30	facts=20	capture_revision=604	capture_count=354	state=running	window=twoSeconds	semantic_nodes=41	layout_scopes=91	drawing_strokes=5	drawing_points=82	render_operations=35	frame_hash=17740320959501715712
+trace=frame	ordinal=31	revision=31	facts=20	capture_revision=624	capture_count=357	state=running	window=twoSeconds	semantic_nodes=41	layout_scopes=91	drawing_strokes=5	drawing_points=80	render_operations=35	frame_hash=18294417148951878176
+trace=frame	ordinal=32	revision=32	facts=20	capture_revision=644	capture_count=358	state=running	window=twoSeconds	semantic_nodes=41	layout_scopes=91	drawing_strokes=5	drawing_points=82	render_operations=35	frame_hash=2085418043896188372
+trace=frame	ordinal=33	revision=33	facts=20	capture_revision=664	capture_count=356	state=running	window=twoSeconds	semantic_nodes=41	layout_scopes=91	drawing_strokes=5	drawing_points=80	render_operations=35	frame_hash=10374436149931949470
+trace=frame	ordinal=34	revision=34	facts=20	capture_revision=684	capture_count=358	state=running	window=twoSeconds	semantic_nodes=41	layout_scopes=91	drawing_strokes=5	drawing_points=80	render_operations=35	frame_hash=2670445169208756023
+trace=frame	ordinal=35	revision=35	facts=20	capture_revision=704	capture_count=360	state=running	window=twoSeconds	semantic_nodes=41	layout_scopes=91	drawing_strokes=5	drawing_points=84	render_operations=35	frame_hash=11122703824299591467
+trace=frame	ordinal=36	revision=36	facts=20	capture_revision=724	capture_count=360	state=running	window=twoSeconds	semantic_nodes=41	layout_scopes=91	drawing_strokes=5	drawing_points=84	render_operations=35	frame_hash=7180791326135401970
+trace=frame	ordinal=37	revision=37	facts=20	capture_revision=744	capture_count=361	state=running	window=twoSeconds	semantic_nodes=41	layout_scopes=91	drawing_strokes=5	drawing_points=78	render_operations=35	frame_hash=1807809143956325188
+trace=frame	ordinal=38	revision=38	facts=20	capture_revision=764	capture_count=360	state=running	window=twoSeconds	semantic_nodes=41	layout_scopes=91	drawing_strokes=5	drawing_points=82	render_operations=35	frame_hash=1641032005324982166
+trace=frame	ordinal=39	revision=39	facts=20	capture_revision=784	capture_count=361	state=running	window=twoSeconds	semantic_nodes=41	layout_scopes=91	drawing_strokes=5	drawing_points=86	render_operations=35	frame_hash=8980968476781773248
+trace=frame	ordinal=40	revision=40	facts=20	capture_revision=804	capture_count=361	state=running	window=twoSeconds	semantic_nodes=41	layout_scopes=91	drawing_strokes=5	drawing_points=76	render_operations=35	frame_hash=16642908446564514729
+trace=frame	ordinal=41	revision=41	facts=20	capture_revision=824	capture_count=361	state=running	window=twoSeconds	semantic_nodes=41	layout_scopes=91	drawing_strokes=5	drawing_points=80	render_operations=35	frame_hash=276318046132003573
+trace=frame	ordinal=42	revision=42	facts=20	capture_revision=844	capture_count=360	state=running	window=twoSeconds	semantic_nodes=41	layout_scopes=91	drawing_strokes=5	drawing_points=80	render_operations=35	frame_hash=18235770249849444372
+trace=frame	ordinal=43	revision=43	facts=20	capture_revision=864	capture_count=361	state=running	window=twoSeconds	semantic_nodes=41	layout_scopes=91	drawing_strokes=5	drawing_points=78	render_operations=35	frame_hash=4093756050736927616
+trace=frame	ordinal=44	revision=44	facts=20	capture_revision=884	capture_count=362	state=running	window=twoSeconds	semantic_nodes=41	layout_scopes=91	drawing_strokes=5	drawing_points=84	render_operations=35	frame_hash=4211250586528989992
+trace=frame	ordinal=45	revision=45	facts=20	capture_revision=904	capture_count=361	state=running	window=twoSeconds	semantic_nodes=41	layout_scopes=91	drawing_strokes=5	drawing_points=82	render_operations=35	frame_hash=14766279596327507192
+trace=frame	ordinal=46	revision=46	facts=20	capture_revision=924	capture_count=362	state=running	window=twoSeconds	semantic_nodes=41	layout_scopes=91	drawing_strokes=5	drawing_points=78	render_operations=35	frame_hash=11373297930974456461
+trace=frame	ordinal=47	revision=47	facts=20	capture_revision=944	capture_count=365	state=running	window=twoSeconds	semantic_nodes=41	layout_scopes=91	drawing_strokes=5	drawing_points=84	render_operations=35	frame_hash=11205678691155028839
+trace=frame	ordinal=48	revision=48	facts=20	capture_revision=964	capture_count=362	state=running	window=twoSeconds	semantic_nodes=41	layout_scopes=91	drawing_strokes=5	drawing_points=84	render_operations=35	frame_hash=1636046780868027954
+trace=frame	ordinal=49	revision=49	facts=20	capture_revision=984	capture_count=362	state=running	window=twoSeconds	semantic_nodes=41	layout_scopes=91	drawing_strokes=5	drawing_points=78	render_operations=35	frame_hash=5618505150200122001
+trace=frame	ordinal=50	revision=50	facts=20	capture_revision=1004	capture_count=364	state=running	window=twoSeconds	semantic_nodes=41	layout_scopes=91	drawing_strokes=5	drawing_points=86	render_operations=35	frame_hash=2311046984563739717
+trace=frame	ordinal=51	revision=51	facts=20	capture_revision=1024	capture_count=361	state=running	window=twoSeconds	semantic_nodes=41	layout_scopes=91	drawing_strokes=5	drawing_points=78	render_operations=35	frame_hash=7573801067703353865
+trace=frame	ordinal=52	revision=52	facts=20	capture_revision=1044	capture_count=362	state=running	window=twoSeconds	semantic_nodes=41	layout_scopes=91	drawing_strokes=5	drawing_points=80	render_operations=35	frame_hash=14421323432277899308
+trace=frame	ordinal=53	revision=53	facts=20	capture_revision=1064	capture_count=360	state=running	window=twoSeconds	semantic_nodes=41	layout_scopes=91	drawing_strokes=5	drawing_points=80	render_operations=35	frame_hash=17627705116709844689
+trace=frame	ordinal=54	revision=54	facts=20	capture_revision=1084	capture_count=359	state=running	window=twoSeconds	semantic_nodes=41	layout_scopes=91	drawing_strokes=5	drawing_points=78	render_operations=35	frame_hash=1870974911566148936
+trace=frame	ordinal=55	revision=55	facts=20	capture_revision=1104	capture_count=360	state=running	window=twoSeconds	semantic_nodes=41	layout_scopes=91	drawing_strokes=5	drawing_points=80	render_operations=35	frame_hash=9759432210226000624
+trace=frame	ordinal=56	revision=56	facts=20	capture_revision=1124	capture_count=359	state=running	window=twoSeconds	semantic_nodes=41	layout_scopes=91	drawing_strokes=5	drawing_points=80	render_operations=35	frame_hash=9623255692939196300
+trace=frame	ordinal=57	revision=57	facts=20	capture_revision=1144	capture_count=358	state=running	window=twoSeconds	semantic_nodes=41	layout_scopes=91	drawing_strokes=5	drawing_points=78	render_operations=35	frame_hash=8016413936990829
+trace=frame	ordinal=58	revision=58	facts=20	capture_revision=1164	capture_count=359	state=running	window=twoSeconds	semantic_nodes=41	layout_scopes=91	drawing_strokes=5	drawing_points=78	render_operations=35	frame_hash=8531336744662182965
+trace=frame	ordinal=59	revision=59	facts=20	capture_revision=1184	capture_count=357	state=running	window=twoSeconds	semantic_nodes=41	layout_scopes=91	drawing_strokes=5	drawing_points=78	render_operations=35	frame_hash=15411345078269894654
+trace=frame	ordinal=60	revision=60	facts=20	capture_revision=1204	capture_count=357	state=running	window=twoSeconds	semantic_nodes=41	layout_scopes=91	drawing_strokes=5	drawing_points=74	render_operations=35	frame_hash=6171297721835482030
+trace=frame	ordinal=61	revision=61	facts=20	capture_revision=1224	capture_count=360	state=running	window=twoSeconds	semantic_nodes=41	layout_scopes=91	drawing_strokes=5	drawing_points=84	render_operations=35	frame_hash=7065173220327291646
+trace=frame	ordinal=62	revision=62	facts=20	capture_revision=1244	capture_count=357	state=running	window=twoSeconds	semantic_nodes=41	layout_scopes=91	drawing_strokes=5	drawing_points=76	render_operations=35	frame_hash=6901611668308206069
+trace=frame	ordinal=63	revision=63	facts=20	capture_revision=1264	capture_count=358	state=running	window=twoSeconds	semantic_nodes=41	layout_scopes=91	drawing_strokes=5	drawing_points=76	render_operations=35	frame_hash=17951861759263493778
+trace=frame	ordinal=64	revision=64	facts=20	capture_revision=1284	capture_count=357	state=running	window=twoSeconds	semantic_nodes=41	layout_scopes=91	drawing_strokes=5	drawing_points=82	render_operations=35	frame_hash=13879253123684382276
+trace=frame	ordinal=65	revision=65	facts=20	capture_revision=1304	capture_count=357	state=running	window=twoSeconds	semantic_nodes=41	layout_scopes=91	drawing_strokes=5	drawing_points=80	render_operations=35	frame_hash=16501510680016251417
+trace=frame	ordinal=66	revision=66	facts=20	capture_revision=1324	capture_count=358	state=running	window=twoSeconds	semantic_nodes=41	layout_scopes=91	drawing_strokes=5	drawing_points=76	render_operations=35	frame_hash=4972865302750717875
+trace=frame	ordinal=67	revision=67	facts=20	capture_revision=1344	capture_count=359	state=running	window=twoSeconds	semantic_nodes=41	layout_scopes=91	drawing_strokes=5	drawing_points=84	render_operations=35	frame_hash=17806196102450239838
+trace=frame	ordinal=68	revision=68	facts=20	capture_revision=1364	capture_count=357	state=running	window=twoSeconds	semantic_nodes=41	layout_scopes=91	drawing_strokes=5	drawing_points=76	render_operations=35	frame_hash=7659734413926849818
+trace=frame	ordinal=69	revision=69	facts=20	capture_revision=1384	capture_count=359	state=running	window=twoSeconds	semantic_nodes=41	layout_scopes=91	drawing_strokes=5	drawing_points=80	render_operations=35	frame_hash=15628645305167834169
+trace=frame	ordinal=70	revision=70	facts=20	capture_revision=1404	capture_count=359	state=running	window=twoSeconds	semantic_nodes=41	layout_scopes=91	drawing_strokes=5	drawing_points=84	render_operations=35	frame_hash=5595442893065642522
+trace=frame	ordinal=71	revision=71	facts=20	capture_revision=1424	capture_count=359	state=running	window=twoSeconds	semantic_nodes=41	layout_scopes=91	drawing_strokes=5	drawing_points=76	render_operations=35	frame_hash=1501121103260005666
+trace=frame	ordinal=72	revision=72	facts=20	capture_revision=1444	capture_count=359	state=running	window=twoSeconds	semantic_nodes=41	layout_scopes=91	drawing_strokes=5	drawing_points=78	render_operations=35	frame_hash=16903270897292889597
+trace=frame	ordinal=73	revision=73	facts=20	capture_revision=1464	capture_count=357	state=running	window=twoSeconds	semantic_nodes=41	layout_scopes=91	drawing_strokes=5	drawing_points=82	render_operations=35	frame_hash=13973588869618770051
+trace=frame	ordinal=74	revision=74	facts=20	capture_revision=1484	capture_count=356	state=running	window=twoSeconds	semantic_nodes=41	layout_scopes=91	drawing_strokes=5	drawing_points=72	render_operations=35	frame_hash=2005623348083271739
+trace=frame	ordinal=75	revision=75	facts=20	capture_revision=1504	capture_count=357	state=running	window=twoSeconds	semantic_nodes=41	layout_scopes=91	drawing_strokes=5	drawing_points=80	render_operations=35	frame_hash=14495900413684952911
+trace=frame	ordinal=76	revision=76	facts=20	capture_revision=1524	capture_count=356	state=running	window=twoSeconds	semantic_nodes=41	layout_scopes=91	drawing_strokes=5	drawing_points=80	render_operations=35	frame_hash=3228582739968683752
+trace=frame	ordinal=77	revision=77	facts=20	capture_revision=1544	capture_count=357	state=running	window=twoSeconds	semantic_nodes=41	layout_scopes=91	drawing_strokes=5	drawing_points=76	render_operations=35	frame_hash=3130215002405333860
+trace=frame	ordinal=78	revision=78	facts=20	capture_revision=1564	capture_count=359	state=running	window=twoSeconds	semantic_nodes=41	layout_scopes=91	drawing_strokes=5	drawing_points=84	render_operations=35	frame_hash=2250129399818113015
+trace=frame	ordinal=79	revision=79	facts=20	capture_revision=1584	capture_count=355	state=running	window=twoSeconds	semantic_nodes=41	layout_scopes=91	drawing_strokes=5	drawing_points=76	render_operations=35	frame_hash=11658310409717280543
+trace=frame	ordinal=80	revision=80	facts=20	capture_revision=1604	capture_count=358	state=running	window=twoSeconds	semantic_nodes=41	layout_scopes=91	drawing_strokes=5	drawing_points=80	render_operations=35	frame_hash=6782981818784097616
+trace=frame	ordinal=81	revision=81	facts=20	capture_revision=1624	capture_count=356	state=running	window=twoSeconds	semantic_nodes=41	layout_scopes=91	drawing_strokes=5	drawing_points=82	render_operations=35	frame_hash=3615930442509864567
+trace=frame	ordinal=82	revision=82	facts=20	capture_revision=1644	capture_count=357	state=running	window=twoSeconds	semantic_nodes=41	layout_scopes=91	drawing_strokes=5	drawing_points=78	render_operations=35	frame_hash=10078998304057012258
+trace=frame	ordinal=83	revision=83	facts=20	capture_revision=1664	capture_count=357	state=running	window=twoSeconds	semantic_nodes=41	layout_scopes=91	drawing_strokes=5	drawing_points=80	render_operations=35	frame_hash=9919803851950440406
+trace=frame	ordinal=84	revision=84	facts=20	capture_revision=1684	capture_count=354	state=running	window=twoSeconds	semantic_nodes=41	layout_scopes=91	drawing_strokes=5	drawing_points=84	render_operations=35	frame_hash=6060306185008624531
+trace=frame	ordinal=85	revision=85	facts=20	capture_revision=1704	capture_count=354	state=running	window=twoSeconds	semantic_nodes=41	layout_scopes=91	drawing_strokes=5	drawing_points=76	render_operations=35	frame_hash=12438942548650391984
+trace=frame	ordinal=86	revision=86	facts=20	capture_revision=1724	capture_count=355	state=running	window=twoSeconds	semantic_nodes=41	layout_scopes=91	drawing_strokes=5	drawing_points=82	render_operations=35	frame_hash=8001809176782743299
+trace=frame	ordinal=87	revision=87	facts=20	capture_revision=1744	capture_count=354	state=running	window=twoSeconds	semantic_nodes=41	layout_scopes=91	drawing_strokes=5	drawing_points=82	render_operations=35	frame_hash=11828306967297818240
+trace=frame	ordinal=88	revision=88	facts=20	capture_revision=1764	capture_count=352	state=running	window=twoSeconds	semantic_nodes=41	layout_scopes=91	drawing_strokes=5	drawing_points=74	render_operations=35	frame_hash=11678024988091106790
+trace=frame	ordinal=89	revision=89	facts=20	capture_revision=1784	capture_count=351	state=running	window=twoSeconds	semantic_nodes=41	layout_scopes=91	drawing_strokes=5	drawing_points=80	render_operations=35	frame_hash=14820806360091620850
+trace=frame	ordinal=90	revision=90	facts=20	capture_revision=1804	capture_count=351	state=running	window=twoSeconds	semantic_nodes=41	layout_scopes=91	drawing_strokes=5	drawing_points=74	render_operations=35	frame_hash=4970048495186001245
+trace=frame	ordinal=91	revision=91	facts=20	capture_revision=1824	capture_count=353	state=running	window=twoSeconds	semantic_nodes=41	layout_scopes=91	drawing_strokes=5	drawing_points=80	render_operations=35	frame_hash=3149731592715593644
+trace=frame	ordinal=92	revision=92	facts=20	capture_revision=1844	capture_count=352	state=running	window=twoSeconds	semantic_nodes=41	layout_scopes=91	drawing_strokes=5	drawing_points=82	render_operations=35	frame_hash=10279761444952975825
+trace=frame	ordinal=93	revision=93	facts=20	capture_revision=1864	capture_count=353	state=running	window=twoSeconds	semantic_nodes=41	layout_scopes=91	drawing_strokes=5	drawing_points=76	render_operations=35	frame_hash=496469010019805946
+trace=frame	ordinal=94	revision=94	facts=20	capture_revision=1884	capture_count=355	state=running	window=twoSeconds	semantic_nodes=41	layout_scopes=91	drawing_strokes=5	drawing_points=80	render_operations=35	frame_hash=4654338011170524525
+trace=frame	ordinal=95	revision=95	facts=20	capture_revision=1904	capture_count=355	state=running	window=twoSeconds	semantic_nodes=41	layout_scopes=91	drawing_strokes=5	drawing_points=78	render_operations=35	frame_hash=5623724535303674219
+trace=frame	ordinal=96	revision=96	facts=20	capture_revision=1924	capture_count=355	state=running	window=twoSeconds	semantic_nodes=41	layout_scopes=91	drawing_strokes=5	drawing_points=74	render_operations=35	frame_hash=4641408523970457597
+trace=frame	ordinal=97	revision=97	facts=20	capture_revision=1944	capture_count=359	state=running	window=twoSeconds	semantic_nodes=41	layout_scopes=91	drawing_strokes=5	drawing_points=80	render_operations=35	frame_hash=14324616944567943100
+trace=frame	ordinal=98	revision=98	facts=20	capture_revision=1964	capture_count=357	state=running	window=twoSeconds	semantic_nodes=41	layout_scopes=91	drawing_strokes=5	drawing_points=80	render_operations=35	frame_hash=14727361458382284230
+trace=frame	ordinal=99	revision=99	facts=20	capture_revision=1984	capture_count=357	state=running	window=twoSeconds	semantic_nodes=41	layout_scopes=91	drawing_strokes=5	drawing_points=78	render_operations=35	frame_hash=3774540719545911452
+trace=frame	ordinal=100	revision=100	facts=20	capture_revision=2004	capture_count=358	state=running	window=twoSeconds	semantic_nodes=41	layout_scopes=91	drawing_strokes=5	drawing_points=78	render_operations=35	frame_hash=17852996352274210625
+trace=frame	ordinal=101	revision=101	facts=20	capture_revision=2024	capture_count=358	state=running	window=twoSeconds	semantic_nodes=41	layout_scopes=91	drawing_strokes=5	drawing_points=82	render_operations=35	frame_hash=7392459442628837343
+trace=frame	ordinal=102	revision=102	facts=20	capture_revision=2044	capture_count=358	state=running	window=twoSeconds	semantic_nodes=41	layout_scopes=91	drawing_strokes=5	drawing_points=74	render_operations=35	frame_hash=1766863624524775947
+trace=frame	ordinal=103	revision=103	facts=20	capture_revision=2064	capture_count=360	state=running	window=twoSeconds	semantic_nodes=41	layout_scopes=91	drawing_strokes=5	drawing_points=80	render_operations=35	frame_hash=1225572986858319898
+trace=frame	ordinal=104	revision=104	facts=20	capture_revision=2084	capture_count=360	state=running	window=twoSeconds	semantic_nodes=41	layout_scopes=91	drawing_strokes=5	drawing_points=84	render_operations=35	frame_hash=10409856286570196593
+trace=frame	ordinal=105	revision=105	facts=20	capture_revision=2104	capture_count=360	state=running	window=twoSeconds	semantic_nodes=41	layout_scopes=91	drawing_strokes=5	drawing_points=78	render_operations=35	frame_hash=14415472650350995298
+trace=frame	ordinal=106	revision=106	facts=20	capture_revision=2124	capture_count=362	state=running	window=twoSeconds	semantic_nodes=41	layout_scopes=91	drawing_strokes=5	drawing_points=80	render_operations=35	frame_hash=2663361314181139552
+trace=frame	ordinal=107	revision=107	facts=20	capture_revision=2144	capture_count=362	state=running	window=twoSeconds	semantic_nodes=41	layout_scopes=91	drawing_strokes=5	drawing_points=82	render_operations=35	frame_hash=672170295837242959
+trace=frame	ordinal=108	revision=108	facts=20	capture_revision=2164	capture_count=362	state=running	window=twoSeconds	semantic_nodes=41	layout_scopes=91	drawing_strokes=5	drawing_points=74	render_operations=35	frame_hash=18136080834464254021
+trace=frame	ordinal=109	revision=109	facts=20	capture_revision=2184	capture_count=363	state=running	window=twoSeconds	semantic_nodes=41	layout_scopes=91	drawing_strokes=5	drawing_points=78	render_operations=35	frame_hash=15275711141076958271
+trace=frame	ordinal=110	revision=110	facts=20	capture_revision=2204	capture_count=362	state=running	window=twoSeconds	semantic_nodes=41	layout_scopes=91	drawing_strokes=5	drawing_points=84	render_operations=35	frame_hash=9327260249522914279
+trace=frame	ordinal=111	revision=111	facts=20	capture_revision=2224	capture_count=362	state=running	window=twoSeconds	semantic_nodes=41	layout_scopes=91	drawing_strokes=5	drawing_points=76	render_operations=35	frame_hash=4472323349456664887
+trace=frame	ordinal=112	revision=112	facts=20	capture_revision=2244	capture_count=362	state=running	window=twoSeconds	semantic_nodes=41	layout_scopes=91	drawing_strokes=5	drawing_points=82	render_operations=35	frame_hash=15733163808575608454
+trace=frame	ordinal=113	revision=113	facts=20	capture_revision=2264	capture_count=361	state=running	window=twoSeconds	semantic_nodes=41	layout_scopes=91	drawing_strokes=5	drawing_points=80	render_operations=35	frame_hash=3575782533220619261
+trace=frame	ordinal=114	revision=114	facts=20	capture_revision=2284	capture_count=361	state=running	window=twoSeconds	semantic_nodes=41	layout_scopes=91	drawing_strokes=5	drawing_points=78	render_operations=35	frame_hash=1058914995235423388
+trace=frame	ordinal=115	revision=115	facts=20	capture_revision=2304	capture_count=359	state=running	window=twoSeconds	semantic_nodes=41	layout_scopes=91	drawing_strokes=5	drawing_points=84	render_operations=35	frame_hash=14688460718068575071
+trace=frame	ordinal=116	revision=116	facts=20	capture_revision=2324	capture_count=359	state=running	window=twoSeconds	semantic_nodes=41	layout_scopes=91	drawing_strokes=5	drawing_points=84	render_operations=35	frame_hash=3362739730116139461
+trace=frame	ordinal=117	revision=117	facts=20	capture_revision=2344	capture_count=359	state=running	window=twoSeconds	semantic_nodes=41	layout_scopes=91	drawing_strokes=5	drawing_points=78	render_operations=35	frame_hash=3137841365463126476
+trace=frame	ordinal=118	revision=118	facts=20	capture_revision=2364	capture_count=358	state=running	window=twoSeconds	semantic_nodes=41	layout_scopes=91	drawing_strokes=5	drawing_points=80	render_operations=35	frame_hash=3791537495163047675
+trace=frame	ordinal=119	revision=119	facts=20	capture_revision=2384	capture_count=357	state=running	window=twoSeconds	semantic_nodes=41	layout_scopes=91	drawing_strokes=5	drawing_points=82	render_operations=35	frame_hash=6420853232319658710
+trace=frame	ordinal=120	revision=120	facts=20	capture_revision=2404	capture_count=359	state=running	window=twoSeconds	semantic_nodes=41	layout_scopes=91	drawing_strokes=5	drawing_points=78	render_operations=35	frame_hash=12911848933361810279
+workload_transitions=2400	workload_frames=120
+trace=other_frame	code=1	revision=121	capture_revision=2404	capture_count=359	state=stopped	window=twoSeconds	semantic_nodes=41	layout_scopes=91	drawing_strokes=5	drawing_points=78	render_operations=35	payloads=43263	regions=484258	bytes=26357394	frame_hash=4205006449841913043
+trace=action	code=1	dispatched=1	revision=121	capture_count=359	state=stopped	window=twoSeconds
+trace=other_frame	code=0	revision=122	capture_revision=2404	capture_count=359	state=running	window=twoSeconds	semantic_nodes=41	layout_scopes=91	drawing_strokes=5	drawing_points=78	render_operations=35	payloads=43619	regions=488229	bytes=26573414	frame_hash=12911848933361810279
+trace=action	code=0	dispatched=1	revision=122	capture_count=359	state=running	window=twoSeconds
+trace=other_frame	code=3	revision=123	capture_revision=2404	capture_count=359	state=running	window=oneSecond	semantic_nodes=41	layout_scopes=91	drawing_strokes=5	drawing_points=58	render_operations=35	payloads=43968	regions=492088	bytes=26788978	frame_hash=11364157155694093774
+trace=action	code=3	dispatched=1	revision=123	capture_count=359	state=running	window=oneSecond
+trace=action	code=3	dispatched=0	revision=123	capture_count=359	state=running	window=oneSecond
+trace=action	code=3	dispatched=0	revision=123	capture_count=359	state=running	window=oneSecond
+trace=other_frame	code=4	revision=124	capture_revision=2404	capture_count=359	state=running	window=twoSeconds	semantic_nodes=41	layout_scopes=91	drawing_strokes=5	drawing_points=78	render_operations=35	payloads=44324	regions=496059	bytes=27004998	frame_hash=12911848933361810279
+trace=action	code=4	dispatched=1	revision=124	capture_count=359	state=running	window=twoSeconds
+trace=other_frame	code=5	revision=125	capture_revision=2404	capture_count=359	state=running	window=fiveSeconds	semantic_nodes=41	layout_scopes=91	drawing_strokes=5	drawing_points=154	render_operations=35	payloads=44701	regions=500356	bytes=27222624	frame_hash=9090170627453875623
+trace=action	code=5	dispatched=1	revision=125	capture_count=359	state=running	window=fiveSeconds
+trace=action	code=5	dispatched=0	revision=125	capture_count=359	state=running	window=fiveSeconds
+trace=action	code=5	dispatched=0	revision=125	capture_count=359	state=running	window=fiveSeconds
+trace=other_frame	code=4	revision=126	capture_revision=2404	capture_count=359	state=running	window=twoSeconds	semantic_nodes=41	layout_scopes=91	drawing_strokes=5	drawing_points=78	render_operations=35	payloads=45057	regions=504327	bytes=27438644	frame_hash=12911848933361810279
+trace=action	code=4	dispatched=1	revision=126	capture_count=359	state=running	window=twoSeconds
+trace=other_frame	code=3	revision=127	capture_revision=2404	capture_count=359	state=running	window=oneSecond	semantic_nodes=41	layout_scopes=91	drawing_strokes=5	drawing_points=58	render_operations=35	payloads=45406	regions=508186	bytes=27654208	frame_hash=11364157155694093774
+trace=action	code=3	dispatched=1	revision=127	capture_count=359	state=running	window=oneSecond
+trace=other_frame	code=4	revision=128	capture_revision=2404	capture_count=359	state=running	window=twoSeconds	semantic_nodes=41	layout_scopes=91	drawing_strokes=5	drawing_points=78	render_operations=35	payloads=45762	regions=512157	bytes=27870228	frame_hash=12911848933361810279
+trace=action	code=4	dispatched=1	revision=128	capture_count=359	state=running	window=twoSeconds
+frames=45762	regions=512157	bytes=27870228
+status=passed	profile=raspberry-pi-dynamic	evidence=host-native-fixture
+[0/1] Planning build
+Building for debugging...
+[0/3] Write swift-version--58304C5D6DBC2206.txt
+[2/12] Compiling SignalAnalyzerDomain SignalAcquisitionContracts.swift
+[3/12] Compiling SignalAnalyzerDomain ModuleBoundary.swift
+[4/12] Compiling SignalAnalyzerDomain AcquisitionState.swift
+[5/12] Compiling SignalAnalyzerDomain SignalCaptureChange.swift
+[6/12] Compiling SignalAnalyzerDomain SignalAnalyzerDiagnostic.swift
+[7/12] Compiling SignalAnalyzerDomain SignalValues.swift
+[8/12] Compiling SignalAnalyzerDomain SignalPrimitiveValues.swift
+[9/12] Compiling SignalAnalyzerDomain SignalCapturePublication.swift
+[10/12] Emitting module SignalAnalyzerDomain
+[10/19] Write sources
+[14/20] Compiling _SwiftSyntaxCShims PlatformMutex.c
+[16/37] Emitting module SwiftSyntax600
+[17/37] Compiling SwiftSyntax510 Empty.swift
+[18/37] Emitting module SwiftSyntax510
+[19/37] Compiling SwiftSyntax603 Empty.swift
+[20/37] Emitting module SwiftSyntax603
+[21/37] Compiling SwiftSyntax601 Empty.swift
+[22/37] Emitting module SwiftSyntax601
+[23/37] Emitting module SwiftSyntax602
+[24/37] Compiling SwiftSyntax602 Empty.swift
+[25/37] Compiling SwiftSyntax600 Empty.swift
+[26/37] Compiling SwiftSyntax509 Empty.swift
+[27/37] Emitting module SwiftSyntax509
+[28/37] Emitting module SignalAnalyzerData
+[29/37] Emitting module GiftUIFailureCore
+[30/37] Emitting module GiftUICapabilities
+[31/37] Compiling GiftUIFailureCore GiftUIFailureCore.swift
+[32/103] Compiling GiftUICapabilities GiftUICapabilities.swift
+[33/103] Compiling SwiftSyntax SyntaxCollection.swift
+[34/103] Compiling SwiftSyntax SyntaxHashable.swift
+[35/103] Compiling SwiftSyntax SyntaxIdentifier.swift
+[36/103] Compiling SwiftSyntax SyntaxNodeStructure.swift
+[37/103] Compiling SwiftSyntax SyntaxProtocol.swift
+[38/103] Compiling SwiftSyntax SyntaxText.swift
+[39/108] Compiling SwiftSyntax AbsolutePosition.swift
+[40/108] Compiling SwiftSyntax AbsoluteSyntaxInfo.swift
+[41/108] Compiling SwiftSyntax ArenaAllocatedBuffer.swift
+[42/108] Compiling SwiftSyntax Assert.swift
+[43/108] Compiling SwiftSyntax BumpPtrAllocator.swift
+[44/108] Compiling SwiftSyntax CommonAncestor.swift
+[45/108] Compiling SwiftSyntax Convenience.swift
+[46/108] Compiling SwiftSyntax CustomTraits.swift
+[47/108] Compiling SwiftSyntax EditorPlaceholder.swift
+[48/108] Compiling SwiftSyntax Identifier.swift
+[49/108] Compiling SwiftSyntax MemoryLayout.swift
+[50/108] Compiling SwiftSyntax MissingNodeInitializers.swift
+[51/108] Compiling SwiftSyntax RawSyntax.swift
+[52/108] Compiling SwiftSyntax RawSyntaxArena.swift
+[53/108] Compiling SwiftSyntax RawSyntaxLayoutView.swift
+[54/108] Compiling SwiftSyntax RawSyntaxNodeProtocol.swift
+[55/108] Compiling SwiftSyntax RawSyntaxTokenView.swift
+[56/108] Compiling SwiftSyntax SourceEdit.swift
+[57/108] Compiling SwiftSyntax SourceLength.swift
+[58/108] Compiling SwiftSyntax SourceLocation.swift
+[59/108] Compiling SwiftSyntax SourcePresence.swift
+[60/108] Compiling SwiftSyntax SwiftSyntaxCompatibility.swift
+[61/108] Compiling SwiftSyntax Syntax.swift
+[62/108] Compiling SwiftSyntax SyntaxChildren.swift
+[63/108] Compiling SwiftSyntax RawSyntaxNodesEF.swift
+[64/108] Compiling SwiftSyntax RawSyntaxNodesGHI.swift
+[65/108] Compiling SwiftSyntax RawSyntaxNodesJKLMN.swift
+[66/108] Compiling SwiftSyntax RawSyntaxNodesOP.swift
+[67/108] Compiling SwiftSyntax RawSyntaxNodesQRS.swift
+[68/108] Compiling SwiftSyntax RawSyntaxNodesTUVWXYZ.swift
+[69/108] Compiling SwiftSyntax RawSyntaxValidation.swift
+[70/108] Compiling SwiftSyntax SyntaxNodesAB.swift
+[71/108] Compiling SwiftSyntax SyntaxNodesC.swift
+[72/108] Compiling SwiftSyntax SyntaxNodesD.swift
+[73/108] Compiling SwiftSyntax SyntaxNodesEF.swift
+[74/108] Compiling SwiftSyntax SyntaxNodesGHI.swift
+[75/108] Compiling SwiftSyntax SyntaxNodesJKLMN.swift
+[76/108] Compiling SwiftSyntax SyntaxNodesOP.swift
+[77/108] Compiling SwiftSyntax SyntaxNodesQRS.swift
+[78/108] Compiling SwiftSyntax SyntaxNodesTUVWXYZ.swift
+[79/108] Emitting module SwiftSyntax
+[80/108] Compiling SwiftSyntax TokenKind.swift
+[81/108] Compiling SwiftSyntax Tokens.swift
+[82/108] Compiling SwiftSyntax TriviaPieces.swift
+[83/108] Compiling SwiftSyntax RawSyntaxNodesAB.swift
+[84/108] Compiling SwiftSyntax RawSyntaxNodesC.swift
+[85/108] Compiling SwiftSyntax RawSyntaxNodesD.swift
+[86/108] Compiling SwiftSyntax ChildNameForKeyPath.swift
+[87/108] Compiling SwiftSyntax Keyword.swift
+[88/108] Compiling SwiftSyntax RenamedChildrenCompatibility.swift
+[89/108] Compiling SwiftSyntax RenamedNodesCompatibility.swift
+[90/108] Compiling SwiftSyntax SyntaxAnyVisitor.swift
+[91/108] Compiling SwiftSyntax SyntaxBaseNodes.swift
+[92/108] Compiling SwiftSyntax SyntaxCollections.swift
+[93/108] Compiling SwiftSyntax SyntaxEnum.swift
+[94/108] Compiling SwiftSyntax SyntaxKind.swift
+[95/108] Compiling SwiftSyntax SyntaxRewriter.swift
+[96/108] Compiling SwiftSyntax SyntaxTraits.swift
+[97/108] Compiling SwiftSyntax SyntaxVisitor.swift
+[98/108] Compiling SwiftSyntax SyntaxTreeViewMode.swift
+[99/108] Compiling SwiftSyntax TokenDiagnostic.swift
+[100/108] Compiling SwiftSyntax TokenSequence.swift
+[101/108] Compiling SwiftSyntax TokenSyntax.swift
+[102/108] Compiling SwiftSyntax Trivia.swift
+[103/108] Compiling SwiftSyntax Utils.swift
+[104/170] Compiling SwiftDiagnostics Note.swift
+[105/170] Compiling SwiftDiagnostics Message.swift
+[106/170] Compiling SwiftBasicFormat Syntax+Extensions.swift
+[107/170] Compiling SwiftBasicFormat InferIndentation.swift
+[108/170] Compiling SwiftBasicFormat SyntaxProtocol+Formatted.swift
+[109/170] Compiling SwiftBasicFormat Trivia+FormatExtensions.swift
+[110/170] Compiling SwiftDiagnostics ANSIDiagnosticDecorator.swift
+[111/170] Compiling SwiftDiagnostics DiagnosticsFormatter.swift
+[112/170] Emitting module SwiftDiagnostics
+[113/170] Compiling SwiftDiagnostics Convenience.swift
+[114/170] Compiling SwiftDiagnostics BasicDiagnosticDecorator.swift
+[115/170] Compiling SwiftDiagnostics DiagnosticDecorator.swift
+[116/170] Compiling SwiftDiagnostics GroupedDiagnostics.swift
+[117/170] Compiling SwiftDiagnostics Diagnostic.swift
+[118/170] Compiling SwiftDiagnostics FixIt.swift
+[119/170] Emitting module SwiftBasicFormat
+[120/170] Compiling SwiftBasicFormat Indenter.swift
+[121/170] Compiling SwiftBasicFormat BasicFormat.swift
+[122/170] Compiling SwiftParser Names.swift
+[123/170] Compiling SwiftParser Nominals.swift
+[124/170] Compiling SwiftParser Parameters.swift
+[125/170] Compiling SwiftParser ParseSourceFile.swift
+[126/173] Compiling SwiftParser Lexeme.swift
+[127/173] Compiling SwiftParser LexemeSequence.swift
+[128/173] Compiling SwiftParser Lexer.swift
+[129/173] Compiling SwiftParser RegexLiteralLexer.swift
+[130/173] Compiling SwiftParser UnicodeScalarExtensions.swift
+[131/173] Compiling SwiftParser Lookahead.swift
+[132/173] Compiling SwiftParser LoopProgressCondition.swift
+[133/173] Compiling SwiftParser Modifiers.swift
+[134/173] Compiling SwiftParser SwiftVersion.swift
+[135/173] Compiling SwiftParser SyntaxUtils.swift
+[136/173] Compiling SwiftParser TokenConsumer.swift
+[137/173] Compiling SwiftParser TokenPrecedence.swift
+[138/173] Compiling SwiftParser Attributes.swift
+[139/173] Compiling SwiftParser Availability.swift
+[140/173] Compiling SwiftParser CharacterInfo.swift
+[141/173] Compiling SwiftParser CollectionNodes+Parsable.swift
+[142/173] Compiling SwiftParser Types.swift
+[143/173] Compiling SwiftParser ExperimentalFeatures.swift
+[144/173] Compiling SwiftParser IsLexerClassified.swift
+[145/173] Compiling SwiftParser CompilerFiles.swift
+[146/173] Compiling SwiftParser Declarations.swift
+[147/173] Compiling SwiftParser Directives.swift
+[148/173] Compiling SwiftParser ExpressionInterpretedAsVersionTuple.swift
+[149/173] Compiling SwiftParser TokenSpec.swift
+[150/173] Compiling SwiftParser TokenSpecSet.swift
+[151/173] Compiling SwiftParser TopLevel.swift
+[152/173] Compiling SwiftParser TriviaParser.swift
+[153/173] Emitting module SwiftParser
+[154/173] Compiling SwiftParser Parser.swift
+[155/173] Compiling SwiftParser Patterns.swift
+[156/173] Compiling SwiftParser Recovery.swift
+[157/173] Compiling SwiftParser Specifiers.swift
+[158/173] Compiling SwiftParser Statements.swift
+[159/173] Compiling SwiftParser StringLiteralRepresentedLiteralValue.swift
+[160/173] Compiling SwiftParser StringLiterals.swift
+[161/173] Compiling SwiftParser SwiftParserCompatibility.swift
+[162/173] Compiling SwiftParser Expressions.swift
+[163/173] Compiling SwiftParser IncrementalParseTransition.swift
+[164/173] Compiling SwiftParser IsValidIdentifier.swift
+[165/173] Compiling SwiftParser Cursor.swift
+[166/173] Compiling SwiftParser LayoutNodes+Parsable.swift
+[167/173] Compiling SwiftParser Parser+TokenSpecSet.swift
+[168/173] Compiling SwiftParser TokenSpecStaticMembers.swift
+[169/197] Compiling SwiftParserDiagnostics SyntaxKindNameForDiagnostics.swift
+[170/198] Compiling SwiftOperators SyntaxSynthesis.swift
+[171/198] Compiling SwiftOperators PrecedenceGraph.swift
+[172/198] Compiling SwiftOperators PrecedenceGroup.swift
+[173/198] Compiling SwiftParserDiagnostics Utils.swift
+[174/198] Compiling SwiftParserDiagnostics TokenNameForDiagnostics.swift
+[175/198] Compiling SwiftParserDiagnostics SyntaxExtensions.swift
+[176/198] Compiling SwiftParserDiagnostics PresenceUtils.swift
+[177/198] Compiling SwiftOperators OperatorTable+Defaults.swift
+[178/198] Compiling SwiftOperators OperatorTable.swift
+[179/198] Compiling SwiftOperators OperatorError.swift
+[180/198] Compiling SwiftOperators OperatorError+Diagnostics.swift
+[181/198] Compiling SwiftOperators OperatorTable+Semantics.swift
+[182/198] Emitting module SwiftOperators
+[183/198] Compiling SwiftOperators Operator.swift
+[184/198] Compiling SwiftOperators OperatorTable+Folding.swift
+[185/198] Compiling SwiftParserDiagnostics MultiLineStringLiteralDiagnosticsGenerator.swift
+[186/198] Compiling SwiftParserDiagnostics MissingTokenError.swift
+[187/198] Compiling SwiftParserDiagnostics ChildNameForDiagnostics.swift
+[188/198] Compiling SwiftParserDiagnostics ParserDiagnosticMessages.swift
+[189/198] Emitting module SwiftParserDiagnostics
+[190/198] Compiling SwiftParserDiagnostics DiagnosticExtensions.swift
+[191/198] Compiling SwiftParserDiagnostics LexerDiagnosticMessages.swift
+[192/198] Compiling SwiftParserDiagnostics MissingNodesError.swift
+[193/198] Compiling SwiftParserDiagnostics ParseDiagnosticsGenerator.swift
+[194/213] Compiling SwiftSyntaxBuilder BuildableNodes.swift
+[195/213] Compiling SwiftSyntaxBuilder RenamedChildrenBuilderCompatibility.swift
+[196/214] Compiling SwiftSyntaxBuilder ValidatingSyntaxNodes.swift
+[197/214] Compiling SwiftSyntaxBuilder SyntaxParsable+ExpressibleByStringInterpolation.swift
+[198/214] Compiling SwiftSyntaxBuilder WithTrailingCommaSyntax+EnsuringTrailingComma.swift
+[199/214] Compiling SwiftSyntaxBuilder Indenter.swift
+[200/214] Compiling SwiftSyntaxBuilder ListBuilder.swift
+[201/214] Compiling SwiftSyntaxBuilder SyntaxNodeWithBody.swift
+[202/214] Compiling SwiftSyntaxBuilder ResultBuilderExtensions.swift
+[203/214] Compiling SwiftSyntaxBuilder SwiftSyntaxBuilderCompatibility.swift
+[204/214] Compiling SwiftSyntaxBuilder Syntax+StringInterpolation.swift
+[205/214] Emitting module SwiftSyntaxBuilder
+[206/214] Compiling SwiftSyntaxBuilder ConvenienceInitializers.swift
+[207/214] Compiling SwiftSyntaxBuilder DeclSyntaxParseable.swift
+[208/214] Compiling SwiftSyntaxBuilder ResultBuilders.swift
+[209/214] Compiling SwiftSyntaxBuilder SyntaxExpressibleByStringInterpolationConformances.swift
+[210/229] Compiling SwiftIfConfig IfConfigFunctions.swift
+[211/230] Compiling SwiftIfConfig VersionTuple+Parsing.swift
+[212/230] Compiling SwiftIfConfig SyntaxLiteralUtils.swift
+[213/230] Compiling SwiftIfConfig SyntaxProtocol+IfConfig.swift
+[214/230] Compiling SwiftIfConfig IfConfigDiagnostic.swift
+[215/230] Compiling SwiftIfConfig StaticBuildConfiguration.swift
+[216/230] Compiling SwiftIfConfig VersionTuple.swift
+[217/230] Compiling SwiftIfConfig ConfiguredRegions.swift
+[218/230] Compiling SwiftIfConfig IfConfigDecl+IfConfig.swift
+[219/230] Compiling SwiftIfConfig ActiveClauseEvaluator.swift
+[220/230] Compiling SwiftIfConfig ActiveSyntaxRewriter.swift
+[221/230] Compiling SwiftIfConfig ActiveSyntaxVisitor.swift
+[222/230] Compiling SwiftIfConfig BuildConfiguration.swift
+[223/230] Compiling SwiftIfConfig IfConfigRegionState.swift
+[224/230] Emitting module SwiftIfConfig
+[225/230] Compiling SwiftIfConfig IfConfigEvaluation.swift
+[226/248] Compiling SwiftSyntaxMacros PreambleMacro.swift
+[227/248] Compiling SwiftSyntaxMacros Macro.swift
+[228/248] Compiling SwiftSyntaxMacros AttachedMacro.swift
+[229/248] Compiling SwiftSyntaxMacros BodyMacro.swift
+[230/248] Compiling SwiftSyntaxMacros FreestandingMacro.swift
+[231/248] Compiling SwiftSyntaxMacros Macro+Format.swift
+[232/248] Compiling SwiftSyntaxMacros MemberMacro.swift
+[233/249] Compiling SwiftSyntaxMacros ExpressionMacro.swift
+[234/249] Compiling SwiftSyntaxMacros ExtensionMacro.swift
+[235/249] Compiling SwiftSyntaxMacros PeerMacro.swift
+[236/249] Compiling SwiftSyntaxMacros MemberAttributeMacro.swift
+[237/249] Compiling SwiftSyntaxMacros CodeItemMacro.swift
+[238/249] Compiling SwiftSyntaxMacros DeclarationMacro.swift
+[239/249] Compiling SwiftSyntaxMacros MacroExpansionDiagnosticMessages.swift
+[240/249] Compiling SwiftSyntaxMacros AccessorMacro.swift
+[241/249] Emitting module SwiftSyntaxMacros
+[242/249] Compiling SwiftSyntaxMacros AbstractSourceLocation.swift
+[243/249] Compiling SwiftSyntaxMacros MacroExpansionContext.swift
+[244/249] Compiling SwiftSyntaxMacros Syntax+LexicalContext.swift
+[245/259] Compiling SwiftSyntaxMacroExpansion MacroExpansion.swift
+[246/259] Compiling SwiftSyntaxMacroExpansion MacroSystem.swift
+[247/259] Compiling SwiftSyntaxMacroExpansion IndentationUtils.swift
+[248/259] Compiling SwiftSyntaxMacroExpansion BasicMacroExpansionContext.swift
+[249/259] Emitting module SwiftSyntaxMacroExpansion
+[250/259] Compiling SwiftSyntaxMacroExpansion FunctionParameterUtils.swift
+[251/259] Compiling SwiftSyntaxMacroExpansion MacroArgument.swift
+[252/259] Compiling SwiftSyntaxMacroExpansion MacroReplacement.swift
+[253/259] Compiling SwiftSyntaxMacroExpansion MacroExpansionDiagnosticMessages.swift
+[254/259] Compiling SwiftSyntaxMacroExpansion MacroSpec.swift
+[255/271] Compiling SwiftCompilerPluginMessageHandling CompilerPluginMessageHandler.swift
+[256/272] Compiling SwiftCompilerPluginMessageHandling StandardIOMessageConnection.swift
+[257/272] Compiling SwiftCompilerPluginMessageHandling PluginMacroExpansionContext.swift
+[258/272] Compiling SwiftCompilerPluginMessageHandling PluginMessageCompatibility.swift
+[259/272] Compiling SwiftCompilerPluginMessageHandling Macros.swift
+[260/272] Compiling SwiftCompilerPluginMessageHandling Diagnostics.swift
+[261/272] Compiling SwiftCompilerPluginMessageHandling JSON.swift
+[262/272] Compiling SwiftCompilerPluginMessageHandling LRUCache.swift
+[263/272] Compiling SwiftCompilerPluginMessageHandling CodingUtilities.swift
+[264/272] Compiling SwiftCompilerPluginMessageHandling JSONEncoding.swift
+[265/272] Compiling SwiftCompilerPluginMessageHandling JSONDecoding.swift
+[266/272] Emitting module SwiftCompilerPluginMessageHandling
+[267/272] Compiling SwiftCompilerPluginMessageHandling PluginMessages.swift
+[268/274] Compiling SwiftCompilerPlugin CompilerPlugin.swift
+[269/274] Emitting module SwiftCompilerPlugin
+[270/277] Compiling GiftUIMacros ObservableStateHostMacro.swift
+[271/277] Compiling GiftUIMacros GiftUIMacros.swift
+[272/277] Emitting module GiftUIMacros
+[272/277] Write Objects.LinkFileList
+[273/277] Linking GiftUIMacros-tool
+[275/293] Compiling GiftUI ObservableState.swift
+[276/293] Compiling GiftUI GiftUI.swift
+[277/293] Compiling GiftUI DrawingSurface.swift
+[278/293] Compiling GiftUI Disabled.swift
+[279/293] Compiling GiftUI DrawingStyles.swift
+[280/293] Compiling GiftUI LayoutModifiers.swift
+[281/293] Compiling GiftUI StyleModifiers.swift
+[282/293] Compiling GiftUI LayoutContainers.swift
+[283/293] Compiling GiftUI LayoutValues.swift
+[284/294] Compiling GiftUI Color.swift
+[285/294] Compiling GiftUI DeclarativeView.swift
+[286/294] Compiling GiftUI ActionHandler.swift
+[287/294] Compiling GiftUI BoundedText.swift
+[288/294] Compiling GiftUI Button.swift
+[289/294] Compiling GiftUI Canvas.swift
+[290/294] Emitting module GiftUI
+[291/294] Compiling GiftUI Text.swift
+[292/310] Emitting module GiftUISemanticCore
+[293/310] Compiling SignalAnalyzerPresentation SignalAnalyzerPresentationValues.swift
+[294/310] Compiling GiftUISemanticCore SemanticLayoutView.swift
+[295/310] Compiling GiftUISemanticCore SemanticRenderView.swift
+[296/310] Compiling GiftUISemanticCore GiftUISemanticCore.swift
+[297/310] Compiling SignalAnalyzerPresentation ModuleBoundary.swift
+[298/310] Compiling SignalAnalyzerPresentation SignalAnalyzerPresentationAdmissionAdapter.swift
+[299/310] Compiling SignalAnalyzerPresentation SignalAnalyzerFailureNormalizer.swift
+[300/310] Compiling SignalAnalyzerPresentation SignalAnalyzerLayoutConstraints.swift
+[301/310] Compiling SignalAnalyzerPresentation SignalAnalyzerWaveformGeometry.swift
+[302/310] Compiling SignalAnalyzerPresentation SignalAnalyzerOwnerFailureAdapter.swift
+[303/310] Emitting module SignalAnalyzerPresentation
+[304/310] Compiling SignalAnalyzerPresentation SignalAnalyzerDiagnostic+BoundedText.swift
+[305/310] Compiling SignalAnalyzerPresentation SignalAnalyzerView.swift
+[306/310] Emitting module GiftUITextResources
+[307/310] Compiling GiftUITextResources GiftUITextResources.swift
+[308/328] Compiling GiftUIRenderCore RenderOperationSink.swift
+[309/328] Compiling GiftUIRenderCore DrawingOperationSink.swift
+[310/328] Compiling GiftUIRenderCore RenderValues.swift
+[311/328] Compiling GiftUIRenderCore RenderRecordingSink.swift
+[312/328] Emitting module GiftUIRenderCore
+[313/357] Compiling GiftUISurfaceCore RasterSurface.swift
+[314/357] Compiling GiftUIExecution ExecutionAdmissionSealer.swift
+[315/357] Compiling GiftUIExecution ExecutionMutationBatch.swift
+[316/357] Compiling GiftUIExecution ExecutionOpportunityRunner.swift
+[317/359] Compiling GiftUIExecution PointerActionCapture.swift
+[318/359] Compiling GiftUIExecution RecordingCandidateOfferCoordinator.swift
+[319/359] Compiling GiftUIExecution RecordingFocusedFailureSelection.swift
+[320/359] Compiling GiftUIExecution RecordingFrameCommitTransaction.swift
+[321/359] Compiling GiftUISurfaceCore SurfaceValues.swift
+[322/359] Emitting module GiftUISurfaceCore
+[323/359] Compiling GiftUIExecution RecordingFrameEndpoint.swift
+[324/359] Compiling GiftUIExecution RecordingMutationBatch.swift
+[325/359] Compiling GiftUIExecution RecordingDerivationRecovery.swift
+[326/359] Compiling GiftUIExecution RecordingDerivationTransaction.swift
+[327/359] Compiling GiftUIExecution FrameHandoffValues.swift
+[328/359] Compiling GiftUIExecution FrameOfferNormalization.swift
+[329/359] Compiling GiftUIExecution RecordingCycleCoordinator.swift
+[330/359] Compiling GiftUIExecution RecordingCycleFinalizer.swift
+[331/359] Compiling GiftUIExecution RecordingPresentationPendingCoordinator.swift
+[332/359] Compiling GiftUIExecution RecordingPresentationTerminalRecovery.swift
+[333/359] Emitting module GiftUIExecution
+[334/359] Compiling GiftUIExecution IdentityAllocators.swift
+[335/359] Compiling GiftUIExecution InputSourceSequenceState.swift
+[336/359] Compiling GiftUIExecution AdmissionValues.swift
+[337/359] Compiling GiftUIExecution ExecutionAdmissionController.swift
+[338/359] Compiling GiftUIExecution ExecutionAdmissionSealTransaction.swift
+[339/359] Compiling GiftUIExecution ExecutionPhaseMachine.swift
+[340/359] Compiling GiftUIExecution ExecutionValues.swift
+[341/359] Compiling GiftUIExecution ExecutionWakeAccumulator.swift
+[342/359] Compiling GiftUILayout Layout.swift
+[343/359] Compiling GiftUILayout ResolvedRenderLayoutView.swift
+[344/359] Compiling GiftUILayout LayoutPublication.swift
+[345/359] Compiling GiftUILayout LayoutValues.swift
+[346/359] Compiling GiftUILayout LayoutWorkspace.swift
+[347/359] Compiling GiftUILayout LayoutSemanticValidation.swift
+[348/359] Compiling GiftUILayout LayoutCounters.swift
+[349/359] Compiling GiftUILayout LayoutGeometry.swift
+[350/359] Compiling GiftUILayout LayoutError.swift
+[351/359] Emitting module GiftUILayout
+[352/359] Compiling GiftUILayout LayoutEngine.swift
+[353/359] Compiling GiftUILayout LayoutResultSink.swift
+[354/359] Compiling GiftUIExecution RunCycleValues.swift
+[355/359] Compiling GiftUIExecution WakeValues.swift
+[356/404] Compiling GiftUIDisplayCore DisplayContracts.swift
+[357/404] Compiling GiftUIDisplayCore SurfaceDisplayContributionAdapter.swift
+[358/404] Emitting module GiftUIDisplayCore
+[359/405] Compiling GiftUIInteraction InteractionValues.swift
+[360/405] Compiling GiftUIObservableState ObservableStateValues.swift
+[361/406] Emitting module GiftUIPlatformRaspberryPi
+[362/406] Compiling GiftUIRasterCore RasterBackendContributionAdapter.swift
+[363/406] Compiling GiftUIRasterCore RasterFrameWork.swift
+[364/406] Compiling GiftUIObservableState PresentationFactAdmission.swift
+[365/406] Compiling GiftUIObservableState ObservableStateReportGuard.swift
+[366/406] Compiling GiftUIObservableState ObservableStateTargetLifetime.swift
+[367/406] Compiling GiftUIObservableState ObservableStateReportRoute.swift
+[368/406] Compiling GiftUIObservableState ObservableStateTargetLookupSlot.swift
+[369/406] Compiling GiftUIRenderLowering RenderProductionValues.swift
+[370/406] Compiling GiftUIRenderLowering RenderStreaming.swift
+[371/406] Compiling GiftUIRenderLowering RenderPreflight.swift
+[372/406] Compiling GiftUIRenderLowering RenderProducer.swift
+[373/406] Emitting module GiftUIRenderLowering
+[374/406] Compiling GiftUIRenderLowering RenderExtensions.swift
+[375/406] Compiling GiftUIInteraction InteractionFailurePrecedence.swift
+[376/406] Compiling GiftUIInteraction InteractionStorage.swift
+[377/406] Compiling GiftUIInteraction ExecutionGestureAdapter.swift
+[378/406] Compiling GiftUIInteraction EffectiveActionEnabledState.swift
+[379/406] Emitting module GiftUIInteraction
+[380/406] Compiling GiftUIInteraction InteractionState.swift
+[381/406] Compiling GiftUIObservableState ObservableStateReplacementTransaction.swift
+[382/406] Compiling GiftUIObservableState ObservableStateProtocols.swift
+[383/406] Compiling GiftUIObservableState ObservableStateRegistrationBridge.swift
+[384/406] Compiling GiftUIObservableState ObservableStateRegistrationLifecycle.swift
+[385/406] Compiling GiftUIObservableState ObservableStateReplacementBridge.swift
+[386/406] Compiling GiftUIObservableState ObservableStateDirtyDerivation.swift
+[387/406] Compiling GiftUIObservableState ObservableStateMutationResultSlot.swift
+[388/406] Emitting module GiftUIObservableState
+[389/406] Compiling GiftUIObservableState ObservableStateBindingDecorator.swift
+[390/406] Compiling GiftUIObservableState ObservableStateCandidateLifecycle.swift
+[391/406] Compiling GiftUIObservableState ObservableStateAssociationLifecycle.swift
+[392/406] Compiling GiftUIObservableState ObservableStateAttachmentGenerationAllocator.swift
+[393/406] Emitting module GiftUIReferenceTextResources
+[394/406] Compiling GiftUIRasterCore FullSurfaceRGB565Framebuffer.swift
+[395/417] Compiling GiftUIDrawing PathConstruction.swift
+[396/417] Compiling GiftUIDrawing StaticCanvasCallableTable.swift
+[397/417] Compiling GiftUIDrawing DrawingPlan.swift
+[398/417] Compiling GiftUIDrawing DrawingLimits.swift
+[399/417] Compiling GiftUIDrawing DrawingValues.swift
+[400/417] Compiling GiftUIDrawing GiftUIDrawing.swift
+[401/417] Compiling GiftUIDrawing StrokeSnapshot.swift
+[402/417] Compiling GiftUIDrawing CanvasPlanProducer.swift
+[403/417] Emitting module GiftUIDrawing
+[404/417] Compiling GiftUIDrawing CanvasInvocationSource.swift
+[405/417] Compiling GiftUIDrawing CanvasRenderProducer.swift
+[406/433] Compiling GiftUIRasterCore RasterWorkTracker.swift
+[407/433] Compiling GiftUIRasterCore FullSurfaceRGBA8888Buffer.swift
+[408/433] Compiling GiftUIRasterCore RasterPayloadLimits.swift
+[409/433] Compiling GiftUIRasterCore RasterFillCoverage.swift
+[410/433] Compiling GiftUIRasterCore RasterGlyphCoverage.swift
+[411/433] Compiling GiftUIRasterCore RasterFrameSink.swift
+[412/433] Compiling GiftUIRasterCore RGB565TileWorkspace.swift
+[413/433] Emitting module GiftUIRasterCore
+[414/433] Compiling GiftUIRasterCore RasterStrokeCoverage.swift
+[415/433] Compiling GiftUIRuntimeCore RuntimeFocusedFailureState.swift
+[416/433] Compiling GiftUIRuntimeCore RuntimeInteractionCandidateCoordinator.swift
+[417/434] Compiling GiftUIRuntimeCore RuntimeInteractionMutationOwner.swift
+[418/434] Compiling GiftUIRuntimeCore RuntimeInteractionCandidateTransaction.swift
+[419/434] Compiling GiftUIRuntimeCore RuntimeObservableProfileWorkspace.swift
+[420/434] Compiling GiftUIRuntimeCore RuntimeProfileValidation.swift
+[421/434] Compiling GiftUIRuntimeCore RuntimeProfileStorage.swift
+[422/434] Compiling GiftUIRuntimeCore RuntimeInteractionDispatcher.swift
+[423/434] Compiling GiftUIRuntimeCore RuntimeProfileValues.swift
+[424/445] Compiling GiftUIRuntimeCore RuntimeCoordinatorQuiescence.swift
+[425/445] Compiling GiftUIRuntimeCore RuntimeCoreBoundary.swift
+[426/445] Compiling GiftUIRuntimeCore RuntimeCompletePipeline.swift
+[427/445] Compiling GiftUIRuntimeCore RuntimeCoordinatorCleanup.swift
+[428/445] Emitting module GiftUIRuntimeCore
+[429/445] Compiling GiftUIRuntimeCore RuntimeCoordinatorContracts.swift
+[430/445] Compiling GiftUIRuntimeCore RuntimeCoordinatorLifecycle.swift
+[431/445] Compiling GiftUIBackendIntegration RasterBackendStartupValidator.swift
+[432/445] Compiling GiftUIBackendIntegration RasterTextResourceValidation.swift
+[433/445] Compiling GiftUIRuntimeCore RuntimeStorageRegistry.swift
+[434/445] Compiling GiftUIBackendIntegration OperationMajorRGB565RasterSession.swift
+[435/445] Emitting module GiftUIBackendIntegration
+[436/445] Compiling GiftUIBackendIntegration FullSurfacePayloadEmitter.swift
+[437/445] Compiling GiftUIBackendIntegration OneShotRasterBackendEndpoint.swift
+[438/475] Compiling GiftUIBackendIntegration RasterBackendEndpoint.swift
+[439/475] Compiling GiftUIBackendIntegration OperationMajorTileTraversal.swift
+[440/475] Compiling GiftUIBackendIntegration RasterBackendOwnerFailureAdapter.swift
+[441/475] Compiling GiftUIBackendIntegration RasterFrameWorkAdmission.swift
+[442/475] Compiling GiftUIBackendIntegration RGB565TilePayloadEmitter.swift
+[443/475] Emitting module GiftUIRuntimeDynamic
+[444/476] Compiling GiftUIRuntimeDynamic DynamicObservableStateReconciler.swift
+[445/476] Compiling GiftUIRuntimeDynamic DynamicRuntimeExecutionCoordinator.swift
+[446/490] Compiling GiftUIHostConfiguration HostEndpointHealthController.swift
+[447/490] Compiling GiftUIHostConfiguration HostEndpointStartupValidation.swift
+[448/498] Compiling GiftUIRuntimeDynamic DynamicRuntimeProfileBinding.swift
+[449/498] Compiling GiftUIRuntimeDynamic DynamicRenderWorkspace.swift
+[450/498] Compiling GiftUIHostConfiguration CheckedMVPHostConfigurationValidator.swift
+[451/498] Compiling GiftUIRuntimeStatic StaticObservableRegistrationRecord.swift
+[452/498] Compiling GiftUIHostConfiguration SignalAnalyzerPresets.generated.swift
+[453/498] Compiling GiftUIRuntimeStatic StaticProfileBoundary.swift
+[454/498] Compiling GiftUIRuntimeStatic StaticObservableRootTargetAccess.swift
+[455/498] Compiling GiftUIRuntimeStatic StaticObservableRootAdapter.swift
+[456/498] Compiling GiftUIRuntimeStatic StaticObservableProfileSlotStorage.swift
+[457/498] Compiling GiftUIRuntimeStatic StaticObservableModelStorage.swift
+[458/498] Emitting module GiftUIRuntimeStatic
+[459/498] Compiling GiftUIRuntimeStatic StaticRuntimeExecutionCoordinator.swift
+[460/498] Compiling GiftUIRuntimeStatic StaticProfileStorage.swift
+[461/499] Compiling GiftUIHostConfiguration HostApplicationStartupValidation.swift
+[462/499] Compiling GiftUIHostConfiguration HostComponentGraphValidation.swift
+[463/499] Compiling GiftUIRuntimeDynamic DynamicProfileBoundary.swift
+[464/499] Compiling GiftUIRuntimeDynamic DynamicProfileStorage.swift
+[465/499] Compiling GiftUIRuntimeStatic StaticRuntimeProfileBinding.swift
+[466/499] Compiling GiftUIRuntimeStatic StaticInteractionStorage.swift
+[467/499] Compiling GiftUIRuntimeStatic StaticGeneratedProfileMetadata.swift
+[468/499] Compiling GiftUIHostConfiguration HostActivationController.swift
+[469/499] Compiling GiftUIHostConfiguration HostApplicationOpportunityGate.swift
+[470/499] Compiling GiftUIHostConfiguration HostFailureAdapter.swift
+[471/499] Compiling GiftUIHostConfiguration HostNormalizedInputGate.swift
+[472/499] Compiling GiftUIHostConfiguration HostResidualFailureRouting.swift
+[473/499] Compiling GiftUIHostConfiguration HostResidualPolicyTableValidation.swift
+[476/499] Compiling GiftUIHostConfiguration HostConfigurationResults.swift
+[477/499] Compiling GiftUIHostConfiguration HostConfigurationValues.swift
+[478/499] Compiling GiftUIHostConfiguration HostWakePacingController.swift
+[479/499] Compiling GiftUIHostConfiguration SignalAnalyzerDrawingStartupValidation.swift
+[482/499] Compiling GiftUIHostConfiguration SignalAnalyzerPresetHostInstance.swift
+[483/499] Emitting module GiftUIHostConfiguration
+[488/499] Compiling GiftUIHostConfiguration HostScheduledOpportunityController.swift
+[489/499] Compiling GiftUIHostConfiguration HostSequencedFactAdmission.swift
+[490/499] Compiling GiftUIHostConfiguration HostPresentationRecovery.swift
+[491/499] Compiling GiftUIHostConfiguration HostPresetBootstrap.swift
+[492/500] Compiling GiftUIHostConfiguration SignalAnalyzerWorkloadStartupValidation.swift
+[497/500] Compiling GiftUIRuntimeDynamic DynamicSemanticHostStorage.swift
+[498/504] Emitting module SignalAnalyzerHost
+[499/504] Compiling SignalAnalyzerHost StaticSignalAnalyzerActionDispatcher.swift
+[500/504] Compiling SignalAnalyzerHost DynamicSignalAnalyzerActionDispatcher.swift
+[501/504] Compiling SignalAnalyzerHost SignalAnalyzerHostFactAdmission.swift
+[502/608] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFEmbeddedCountingSink.swift
+[503/608] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFEmbeddedFontRaster.swift
+[504/608] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFEmbeddedGestureSession.swift
+[505/608] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFEmbeddedInputHandler.swift
+[506/608] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFEmbeddedInteractionOccurrences.swift
+[507/608] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFEmbeddedInteractionOwner.swift
+[508/608] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFEmbeddedLayoutAdapters.swift
+[509/608] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFEmbeddedLayoutInterfaces.swift
+[510/608] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFEmbeddedLayoutModifier.swift
+[511/617] Emitting module SignalAnalyzerPresetHarness
+[512/617] Compiling SignalAnalyzerPresetHarness HardwareFreePresetRunner.swift
+[513/617] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFPresentationHealth.swift
+[514/617] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFPresentationIdentityOwner.swift
+[515/617] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFPresentationPreparation.swift
+[516/617] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFPresentationTransaction.swift
+[517/617] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFProfileBinding.swift
+[518/617] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFProfileRegions.swift
+[519/617] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFRegionMap.swift
+[520/617] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFRenderOffer.swift
+[521/617] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFRenderWorkspace.swift
+[522/617] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFModelLocation.swift
+[523/617] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFModelModifierWriter.swift
+[524/617] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFModelTextWriter.swift
+[525/617] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFOperationalFailureBridge.swift
+[526/617] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFOperationalFailureFact.swift
+[527/617] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFPacedApplicationStage.swift
+[528/617] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFPresentationCommitter.swift
+[529/617] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFPresentationComposition.swift
+[530/617] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFPresentationHandoff.swift
+[531/617] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFCompactPresentationFact.swift
+[532/617] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFDeterministicSource.swift
+[533/617] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFDisplayTarget.swift
+[534/617] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFDrawingPlanRecords.swift
+[535/617] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFDrawingPlanStorage.swift
+[536/617] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFDrawingWorkspace.swift
+[537/617] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFEmbeddedActionDispatcher.swift
+[538/617] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFEmbeddedCanvasPayload.swift
+[539/617] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFEmbeddedCanvasSource.swift
+[540/617] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFCaptureFactAdmission.swift
+[541/617] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFCaptureHistory.swift
+[542/617] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFCaptureRecord.swift
+[543/617] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFCaptureSnapshotView.swift
+[544/617] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFCaptureStorage.swift
+[545/617] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFCommonLayoutPass.swift
+[546/617] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFCommonLayoutWorkspace.swift
+[547/617] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFCompactCaptureFact.swift
+[548/617] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFCompactFactRing.swift
+[549/617] Emitting module SignalAnalyzerTargetHost
+[550/617] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFInteractionCandidateProducer.swift
+[551/617] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFInteractionHandler.swift
+[552/617] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFInteractionOccurrences.swift
+[553/617] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFLayoutPass.swift
+[554/617] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFLayoutScopeCodec.swift
+[555/617] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFLayoutTextCodec.swift
+[556/617] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFLayoutWorkspace.swift
+[557/617] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFLivePathStorage.swift
+[558/617] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFModelCaptureState.swift
+[559/617] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFEmbeddedSemanticValidator.swift
+[560/617] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFEmbeddedSemanticView.swift
+[561/617] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFEmbeddedTextMeasure.swift
+[562/617] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFEmbeddedTextPlace.swift
+[563/617] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFEmbeddedTileRuns.swift
+[564/617] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFEndpoint.swift
+[565/617] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFGeneratedMetadata.swift
+[566/617] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFInputABI.swift
+[567/617] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFInputCoordinator.swift
+[568/617] Compiling SignalAnalyzerTargetHost DynamicSignalAnalyzerPiAssembly.swift
+[569/617] Compiling SignalAnalyzerTargetHost DynamicSignalAnalyzerPiContactIngress.swift
+[570/617] Compiling SignalAnalyzerTargetHost DynamicSignalAnalyzerPiCorrelationOwner.swift
+[571/617] Compiling SignalAnalyzerTargetHost DynamicSignalAnalyzerPiEndpoint.swift
+[572/617] Compiling SignalAnalyzerTargetHost DynamicSignalAnalyzerPiInitialPresentationOwner.swift
+[573/617] Compiling SignalAnalyzerTargetHost DynamicSignalAnalyzerPiInputCoordinator.swift
+[574/617] Compiling SignalAnalyzerTargetHost DynamicSignalAnalyzerPiLifecycleOwner.swift
+[575/617] Compiling SignalAnalyzerTargetHost DynamicSignalAnalyzerPiWakeAdmission.swift
+[576/617] Compiling SignalAnalyzerTargetHost DynamicSignalAnalyzerPiWakePacingOwner.swift
+[577/617] Compiling SignalAnalyzerTargetHost DynamicSignalAnalyzerPresentationPipeline.swift
+[578/617] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFEmbeddedLayoutPrimitive.swift
+[579/617] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFEmbeddedLayoutScopeCodec.swift
+[580/617] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFEmbeddedLayoutTextCodec.swift
+[581/617] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFEmbeddedLayoutWorkspace.swift
+[582/617] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFEmbeddedRasterSink.swift
+[583/617] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFEmbeddedRenderPreflight.swift
+[584/617] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFEmbeddedRenderSemanticAdapter.swift
+[585/617] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFEmbeddedResolvedLayoutView.swift
+[586/617] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFEmbeddedSemanticRegion.swift
+[587/617] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFRepositoryProducer.swift
+[588/617] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFResidualRouting.swift
+[589/617] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFResolvedLayout.swift
+[590/617] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFRuntimeStorage.swift
+[591/617] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFSPITFTTransport.swift
+[592/617] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFSealedFactApplication.swift
+[593/617] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFSemanticPublication.swift
+[594/617] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFSnapshotFact.swift
+[595/617] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFTileStorage.swift
+[596/617] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFCanvasTable.generated.swift
+[597/617] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFEmbeddedCanvasTable.generated.swift
+[598/617] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFModelDescriptor.generated.swift
+[599/617] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFModifierPayload.generated.swift
+[600/617] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFPackedSemanticRecords.generated.swift
+[601/617] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFPresentationInputs.generated.swift
+[602/617] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFPrimitivePayload.generated.swift
+[603/617] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFReferenceMetrics.generated.swift
+[604/617] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFSemanticRegion.generated.swift
+[605/617] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFTextPoolWriter.generated.swift
+[606/617] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFTopologyWriter.generated.swift
+[607/617] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFUTF8LayoutView.generated.swift
+[608/617] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFUTF8RenderView.generated.swift
+[609/617] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFUTF8TextPool.generated.swift
+[610/617] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFApplicationInputOwner.swift
+[611/617] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFApplicationStorage.swift
+[612/617] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFAssembly.swift
+[613/617] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFCanvasInvocationSource.swift
+[614/617] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFCanvasPass.swift
+[615/619] Emitting module SignalAnalyzerRaspberryPiARMv6
+[616/619] Compiling SignalAnalyzerRaspberryPiARMv6 PiHostNativeRehearsal.swift
+[616/619] Write Objects.LinkFileList
+[617/619] Linking SignalAnalyzerRaspberryPiARMv6
+[618/619] Applying SignalAnalyzerRaspberryPiARMv6
+Build of product 'SignalAnalyzerRaspberryPiARMv6' complete! (24.51s)

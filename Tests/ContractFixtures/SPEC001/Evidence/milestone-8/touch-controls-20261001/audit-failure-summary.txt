@@ -1,0 +1,26 @@
+SPEC-003-macos-dynamic
+SPEC-003 dependency check failed: direct production Failure Core consumer set differs
+
+SPEC-004-macos-dynamic
+SPEC-004 dependency check failed: SignalAnalyzerTargetHost dependencies differ
+
+SPEC-005-macos-dynamic
+SPEC-005 generated asset check failed: stale generated asset scripts/text-resources/generate-reference-resources.py: expected c3ef9e2a7aae037b24b9e55fafe8eba7cb4c811da23b53a5bc2c9dab959ae736, got 8433302f9a8c8ecfe58bb9c0e978d2d488ff8f4a25e9a52bf8883fc734e10d5e
+
+SPEC-006-macos-dynamic
+SPEC-006 migration check failed: legacy surface remains in maintained source: [#<Pathname:Sources/GiftUIPlatformRaspberryPi/LinuxPiScreenDevices.swift>]
+
+SPEC-008-macos-dynamic
+SPEC-008 package boundary check failed: semantic/layout join exists outside approved producers
+
+SPEC-009-macos-dynamic
+SPEC-009 admission value check failed: ExecutionOpportunityRunner ownership differs: ["/Users/eugene/work/GiftUI/Sources/GiftUIExecution/ExecutionOpportunityRunner.swift"]
+
+SPEC-011-macos-dynamic
+SPEC-011 integration audit failed: expected one production action-generation allocator construction
+
+SPEC-012-macos-dynamic
+SPEC-012 module contract check failed: combined stroke emission owner differs: ["SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFEmbeddedRasterSink.swift", "GiftUIDrawing/CanvasRenderProducer.swift"]
+
+SPEC-013-macos-dynamic
+
