@@ -150,7 +150,7 @@ public func giftUISignalAnalyzerTopologyValid(
             let view = StaticSignalAnalyzerNRFEmbeddedSemanticView(
                 published: published
             ),
-            view.scopeCount == (variant == .normal ? 91 : 93),
+            view.scopeCount == 92,
             view.revision == revision,
             view.rootPrimitiveIdentity != nil,
             let title = StaticSignalAnalyzerNRFPackedSemanticRecords.scope(
@@ -311,7 +311,7 @@ public func giftUISignalAnalyzerFullLayoutValid(
         resolved.renderSnapshotVersion == semantic.revision,
         resolved.rootBounds.size.width > 0,
         resolved.rootBounds.size.height > 0,
-        resolved.lineCount == 18, resolved.glyphCount == 101
+        resolved.lineCount == 17, resolved.glyphCount == 86
     else { return 0 }
     var canvasCount: UInt16 = 0
     var checkedLines: UInt16 = 0
@@ -374,8 +374,8 @@ public func giftUISignalAnalyzerFullLayoutValid(
         }
         ordinal += 1
     }
-    guard canvasCount == 5, checkedLines == 18,
-        checkedGlyphs == 101
+    guard canvasCount == 5, checkedLines == 17,
+        checkedGlyphs == 86
     else { return 0 }
     guard case .success(let ordinaryHeader) =
         StaticSignalAnalyzerNRFEmbeddedRenderPreflight.run(
@@ -383,7 +383,7 @@ public func giftUISignalAnalyzerFullLayoutValid(
             textRegion: text
         ), ordinaryHeader.operationCount > 0,
         ordinaryHeader.operationCount <= 145,
-        ordinaryHeader.positionedGlyphCount == 101
+        ordinaryHeader.positionedGlyphCount == 86
     else { return 0 }
     workspace.packed.reset()
     return resolved.isPublished ? 0 : 1
@@ -1181,7 +1181,7 @@ private func giftUIStaticFullCanvas(
         renderHeader.positionedGlyphCount > 0,
         renderHeader.positionedGlyphCount <= 224,
         (frameRevision != 1
-            || renderHeader.positionedGlyphCount == (validation ? 101 : 97))
+            || renderHeader.positionedGlyphCount == (validation ? 86 : 83))
     else { return 0 }
     var sink = StaticSignalAnalyzerNRFEmbeddedCountingSink()
     guard case .success(let streamedHeader) =
@@ -1353,7 +1353,7 @@ private func giftUIStaticFullCanvas(
                     start: profile.advanced(by: 9_184), count: 4_704
                 ), drawing: drawing
             ), updatedRenderHeader.operationCount <= 150,
-        updatedRenderHeader.positionedGlyphCount == 101
+        updatedRenderHeader.positionedGlyphCount == 86
     else { return 0 }
     sink = StaticSignalAnalyzerNRFEmbeddedCountingSink()
     guard case .success(let updatedStreamedHeader) =
@@ -1366,7 +1366,7 @@ private func giftUIStaticFullCanvas(
         ), updatedStreamedHeader == updatedRenderHeader,
         sink.isFinished, !sink.wasDiscarded,
         sink.strokeCount == 5,
-        sink.glyphCount == 101
+        sink.glyphCount == 86
     else { return 0 }
     guard var updatedRasterSink = StaticSignalAnalyzerNRFEmbeddedRasterSink(
         rasterRegion: UnsafeMutableRawBufferPointer(

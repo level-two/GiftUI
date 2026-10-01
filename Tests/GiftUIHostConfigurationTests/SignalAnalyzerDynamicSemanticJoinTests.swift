@@ -1268,16 +1268,16 @@ private final class LogicalFrameCapture {
         Issue.record("production presentation pipeline failed: \(result)")
         return
     }
-    #expect(summary.semantic.semanticNodeCount == 42)
+    #expect(summary.semantic.semanticNodeCount == 41)
     #expect(summary.semantic.modifierApplicationCount == 51)
-    #expect(summary.retainedSemanticIdentities == 121)
-    #expect(summary.recordedTraversalIdentities == 192)
-    #expect(summary.layout.scopeCount == 93)
+    #expect(summary.retainedSemanticIdentities == 119)
+    #expect(summary.recordedTraversalIdentities == 187)
+    #expect(summary.layout.scopeCount == 92)
     #expect(summary.layout.maximumObservedDepth == 19)
     #expect(summary.drawing.canvasOccurrenceCount == 5)
     #expect(summary.drawing.strokeCount == 5)
-    #expect(summary.render.operationCount == 36)
-    #expect(summary.render.positionedGlyphCount == 109)
+    #expect(summary.render.operationCount == 32)
+    #expect(summary.render.positionedGlyphCount == 95)
     #expect(summary.render.maximumObservedClipDepth == 5)
     #expect(summary.interactionOccurrenceCount == 3)
     var endpoint = SemanticJoinEndpoint(
@@ -1354,8 +1354,8 @@ private final class LogicalFrameCapture {
         #expect(preset.runtimeLimits.renderWorkspace.maximumTextLines == 128)
         let cases: [(UInt8, UInt16, UInt16)] = [
             // Inter’s wider W glyph increases wrapping for the 96-byte diagnostic.
-            (87, 28, 194),
-            (10, 118, 98),
+            (87, 26, 179),
+            (10, 114, 83),
         ]
         for (byte, expectedLines, expectedGlyphs) in cases {
             var pipeline = try #require(
@@ -1383,7 +1383,7 @@ private final class LogicalFrameCapture {
                 Issue.record("full diagnostic pipeline failed for byte \(byte): \(result)")
                 continue
             }
-            #expect(summary.layout.textScalarCount == 194)
+            #expect(summary.layout.textScalarCount == 179)
             #expect(summary.layout.textLineCount == expectedLines)
             #expect(summary.layout.positionedGlyphCount == expectedGlyphs)
             #expect(summary.render.positionedGlyphCount <= expectedGlyphs)
@@ -1434,13 +1434,13 @@ private final class LogicalFrameCapture {
     #expect(reconciler.finishCandidate(.publish) == .success(.associationsCommitted))
     #expect(summary.semanticNodeCount == 41)
     #expect(summary.bodyEvaluationCount == 16)
-    #expect(summary.modifierApplicationCount == 50)
+    #expect(summary.modifierApplicationCount == 51)
     #expect(summary.actionOccurrenceCount == 3)
     #expect(summary.maximumObservedDepth == 40)
     #expect(storage.semanticScopeCount == 119)
-    #expect(storage.scopeCount == 91)
+    #expect(storage.scopeCount == 92)
     let normalTextScalars = semanticTextScalarCount(in: storage)
-    #expect(normalTextScalars == 97)
+    #expect(normalTextScalars == 83)
     #expect(storage.actionOccurrenceCount == 3)
     #expect(storage.canvasOccurrenceCount == 5)
     #expect(storage.hasPublishedResult)
@@ -1448,7 +1448,7 @@ private final class LogicalFrameCapture {
     verifyPackedNRFRenderProjection(
         of: storage,
         model: model,
-        expectedScalars: 97,
+        expectedScalars: 83,
         expectedTopologyFingerprint:
             StaticSignalAnalyzerNRFPackedSemanticRecords.normalTopologyFingerprint
     )
@@ -1494,20 +1494,20 @@ private final class LogicalFrameCapture {
         return
     }
     #expect(reconciler.finishCandidate(.publish) == .success(.associationsCommitted))
-    #expect(summary.semanticNodeCount == 42)
+    #expect(summary.semanticNodeCount == 41)
     #expect(summary.bodyEvaluationCount == 16)
     #expect(summary.modifierApplicationCount == 51)
     #expect(summary.actionOccurrenceCount == 3)
     #expect(summary.maximumObservedDepth == 40)
-    #expect(storage.semanticScopeCount == 121)
-    #expect(storage.scopeCount == 93)
+    #expect(storage.semanticScopeCount == 119)
+    #expect(storage.scopeCount == 92)
     let diagnosticTextScalars = semanticTextScalarCount(in: storage)
-    #expect(diagnosticTextScalars == 109)
+    #expect(diagnosticTextScalars == 95)
     #expect(storage.canvasOccurrenceCount == 5)
     verifyPackedNRFRenderProjection(
         of: storage,
         model: model,
-        expectedScalars: 109,
+        expectedScalars: 95,
         expectedTopologyFingerprint:
             StaticSignalAnalyzerNRFPackedSemanticRecords.diagnosticTopologyFingerprint
     )
@@ -1528,8 +1528,8 @@ private final class LogicalFrameCapture {
             break
         }
     }
-    #expect(foregrounds.values.reduce(0, +) == 14)
-    #expect(foregrounds[.white] == 4)
+    #expect(foregrounds.values.reduce(0, +) == 13)
+    #expect(foregrounds[.white] == 3)
     #expect(foregrounds[.gray] == 4)
     #expect(foregrounds[.red] == 1)
     #expect(foregrounds[Color(red: 0, green: 128, blue: 255)] == 4)
@@ -1551,7 +1551,7 @@ private final class LogicalFrameCapture {
         model: model
     ) { inputs in
         #expect(inputs.semantic.variant == .diagnostic)
-        #expect(inputs.textInput(at: 92)?.utf8ByteCount == 96)
+        #expect(inputs.textInput(at: 13)?.utf8ByteCount == 96)
         let table = StaticSignalAnalyzerNRFPackedSemanticRecords.self
         let pool = StaticSignalAnalyzerNRFUTF8TextPool.self
         var regionBytes = [UInt8](repeating: 0, count: table.regionByteCount)
@@ -1572,8 +1572,8 @@ private final class LogicalFrameCapture {
                 used += count
                 textCount += 1
             }
-            #expect(textCount == 18)
-            #expect(used == 194)
+            #expect(textCount == 17)
+            #expect(used == 179)
             #expect(used <= pool.maximumByteCount)
         }
         var generatedBytes = [UInt8](repeating: 0, count: table.regionByteCount)
@@ -1582,29 +1582,29 @@ private final class LogicalFrameCapture {
                 StaticSignalAnalyzerNRFTopologyWriter.populateShape(
                     variant: .diagnostic,
                     in: region
-                ) == 93
+                ) == 92
             )
             #expect(
-                StaticSignalAnalyzerNRFTopologyWriter.populateBindings(scopeCount: 93, in: region))
+                StaticSignalAnalyzerNRFTopologyWriter.populateBindings(scopeCount: 92, in: region))
             #expect(
                 StaticSignalAnalyzerNRFTopologyWriter.populateInvariantPrimitives(
-                    scopeCount: 93, in: region))
+                    scopeCount: 92, in: region))
             #expect(
                 StaticSignalAnalyzerNRFTopologyWriter.populateInvariantLayoutModifiers(
-                    scopeCount: 93, in: region))
+                    scopeCount: 92, in: region))
             #expect(
                 StaticSignalAnalyzerNRFTopologyWriter.populateInvariantStyles(
-                    scopeCount: 93, in: region))
+                    scopeCount: 92, in: region))
             #expect(
                 StaticSignalAnalyzerNRFTopologyWriter.populateLiveModifiers(
                     inputs: inputs, in: region))
             #expect(
                 StaticSignalAnalyzerNRFTopologyWriter.populateTextBytes(inputs: inputs, in: region)
-                    == 194)
-            #expect(table.sealUTF8Table(scopeCount: 93, textByteCount: 194, in: region))
-            #expect(table.utf8TableSummary(in: region)?.textByteCount == 194)
+                    == 179)
+            #expect(table.sealUTF8Table(scopeCount: 92, textByteCount: 179, in: region))
+            #expect(table.utf8TableSummary(in: region)?.textByteCount == 179)
             guard let layout = StaticSignalAnalyzerNRFUTF8LayoutView(in: region),
-                let diagnosticID = table.scope(at: 92, in: region)?.identity
+                let diagnosticID = table.scope(at: 13, in: region)?.identity
             else {
                 Issue.record("maximum diagnostic layout text is missing")
                 return
@@ -1615,7 +1615,7 @@ private final class LogicalFrameCapture {
             #expect(layout.textScalar(of: diagnosticID, at: 96) == nil)
         }
     }
-    #expect(109 - 12 + 96 > StaticSignalAnalyzerNRFPackedSemanticRecords.maximumScalarCount)
+    #expect(95 - 12 + 96 > StaticSignalAnalyzerNRFPackedSemanticRecords.maximumScalarCount)
 }
 
 @Test func signalAnalyzerDynamicSemanticJoinAdmitsApprovedPreset() throws {
@@ -1653,7 +1653,7 @@ private final class LogicalFrameCapture {
         return
     }
     #expect(summary.semanticNodeCount == 41)
-    #expect(summary.modifierApplicationCount == 50)
+    #expect(summary.modifierApplicationCount == 51)
     #expect(summary.maximumObservedDepth == 40)
     #expect(storage.semanticScopeCount == 119)
     #expect(reconciler.finishCandidate(.publish) == .success(.associationsCommitted))
@@ -1696,9 +1696,9 @@ private final class LogicalFrameCapture {
         Issue.record("approved semantic stage failed: \(semanticResult)")
         return
     }
-    #expect(semanticWorkspace.recordedIdentityCount == 192)
+    #expect(semanticWorkspace.recordedIdentityCount == 187)
     #expect(reconciler.finishCandidate(.publish) == .success(.associationsCommitted))
-    #expect(semanticStorage.semanticScopeCount == 121)
+    #expect(semanticStorage.semanticScopeCount == 119)
     #expect(preset.runtimeLimits.renderWorkspace.maximumSemanticScopes == 98)
 
     var scopeIdentities: [DynamicSemanticIdentity] = []
@@ -1752,10 +1752,10 @@ private final class LogicalFrameCapture {
         Issue.record("approved layout stage failed: \(layoutResult)")
         return
     }
-    #expect(summary.scopeCount == 93)
-    #expect(summary.textScalarCount == 109)
-    #expect(summary.textLineCount == 22)
-    #expect(summary.positionedGlyphCount == 109)
+    #expect(summary.scopeCount == 92)
+    #expect(summary.textScalarCount == 95)
+    #expect(summary.textLineCount == 18)
+    #expect(summary.positionedGlyphCount == 95)
     #expect(summary.maximumObservedDepth == 19)
     #expect(!layoutWorkspace.isLayoutActive)
     #expect(!layoutSink.isLayoutActive)
@@ -1783,7 +1783,7 @@ private final class LogicalFrameCapture {
             )
         }
     }
-    #expect(visitedRenderScopes.count == 93)
+    #expect(visitedRenderScopes.count == 92)
     #expect(maximumRenderDepth == 19)
     let renderLimits = preset.runtimeLimits.render
     let renderWorkspaceCapacity = preset.runtimeLimits.renderWorkspace
@@ -1815,8 +1815,8 @@ private final class LogicalFrameCapture {
         Issue.record("measured render projection failed: \(renderResult)")
         return
     }
-    #expect(header.operationCount == 31)
-    #expect(header.positionedGlyphCount == 109)
+    #expect(header.operationCount == 27)
+    #expect(header.positionedGlyphCount == 95)
     #expect(header.maximumObservedClipDepth == 5)
     #expect(renderSink.storage.published.count > 0)
 
@@ -1880,8 +1880,8 @@ private final class LogicalFrameCapture {
             Issue.record("measured Canvas render preflight failed: \(canvasPreflight)")
             return
         }
-        #expect(canvasHeader.operationCount == 36)
-        #expect(canvasHeader.positionedGlyphCount == 109)
+        #expect(canvasHeader.operationCount == 32)
+        #expect(canvasHeader.positionedGlyphCount == 95)
         #expect(canvasHeader.maximumObservedClipDepth == 5)
 
         var drawingSink = SemanticJoinDrawingSink(
@@ -2606,7 +2606,7 @@ private func verifyPackedNRFRenderProjection(
         var generatedBytes = [UInt8](repeating: 0, count: table.regionByteCount)
         generatedBytes.withUnsafeMutableBytes { generated in
             let variant: StaticSignalAnalyzerNRFSemanticVariant =
-                expectedScalars == 97 ? .normal : .diagnostic
+                expectedScalars == 83 ? .normal : .diagnostic
             #expect(
                 StaticSignalAnalyzerNRFTopologyWriter.populateShape(
                     variant: variant,
@@ -2915,10 +2915,15 @@ private func packedNRFPathID(
 
 @Test(
     "waveform canvases resolve from surface constraints",
-    arguments: [(240, 320), (320, 240), (480, 320)])
-func signalAnalyzerWaveformResolvesSurfaceConstraints(width: Int32, height: Int32) {
+    arguments: [
+        (240, 240, false), (240, 240, true), (240, 320, false), (240, 320, true), (320, 240, false),
+        (320, 240, true), (480, 320, false), (480, 320, true),
+    ])
+func signalAnalyzerWaveformResolvesSurfaceConstraints(width: Int32, height: Int32, diagnostic: Bool)
+{
     let preset = GeneratedSignalAnalyzerPresets.nrf52840Static()
-    let model = makeSemanticJoinModel()
+    let model = makeSemanticJoinModel(failsStart: diagnostic)
+    if diagnostic { model.startTapped() } else { _ = model.apply(.acquisitionState(.running)) }
     let root = DynamicObservableRootAdapter<SignalAnalyzerViewModel, DynamicSemanticIdentity>(
         capacity: preset.runtimeLimits.observableState.maximumLocations
     )
@@ -2969,6 +2974,7 @@ func signalAnalyzerWaveformResolvesSurfaceConstraints(width: Int32, height: Int3
             plotBounds = bounds
         } else {
             #expect(bounds.origin.x == plotBounds?.origin.x)
+            if canvases == 1 { #expect(bounds.origin.y == plotBounds?.origin.y) }
         }
         #expect(
             bounds.size.width == (canvases == 0 ? constraints.gridWidth : constraints.traceWidth))
@@ -2992,6 +2998,16 @@ func signalAnalyzerWaveformResolvesSurfaceConstraints(width: Int32, height: Int3
             semantic.textScalar(of: identity, at: index).flatMap(UnicodeScalar.init)
         }
         let label = String(String.UnicodeScalarView(scalars))
+        #expect(!["READY", "RUNNING", "STOPPED", "FAILED"].contains(label))
+        if label.hasSuffix(" s") {
+            #expect(bounds.origin.y + bounds.size.height <= plotBounds.origin.y)
+        }
+        if label == "start failed" {
+            #expect(bounds.origin.y + bounds.size.height <= 2 + constraints.headerHeight)
+            #expect(
+                bounds.origin.y + bounds.size.height <= plotBounds.origin.y - constraints.buttonSize
+            )
+        }
         if label.hasPrefix("CH") {
             #expect(bounds.origin.x + bounds.size.width <= plotBounds.origin.x)
         } else if label == "LOW" || label == "HIGH" {

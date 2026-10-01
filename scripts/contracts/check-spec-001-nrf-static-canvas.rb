@@ -31,8 +31,8 @@ expected_semantic_region = {
 }
 fail_check("semantic region layout differs") unless semantic_region == expected_semantic_region
 expected_variants = [
-  ["normal", 41, 16, 50, 3, 40, 119, 188],
-  ["diagnostic", 42, 16, 51, 3, 40, 121, 190]
+  ["normal", 41, 16, 51, 3, 40, 119, 187],
+  ["diagnostic", 41, 16, 51, 3, 40, 119, 187]
 ]
 actual_variants = manifest.fetch("semantic_variants").map do |entry|
   %w[name nodes bodies modifiers actions depth structural traversal].map { |key| entry.fetch(key) }
@@ -88,9 +88,9 @@ input_tokens = [
   "case normal = 0",
   "case diagnostic = 1",
   "semanticNodeCount: 41",
-  "semanticNodeCount: 42",
+  "semanticNodeCount: 41",
   "modifierApplicationCount: 51",
-  "modifierApplicationCount: 50",
+  "modifierApplicationCount: 51",
   "canvasOccurrenceCount = 5",
   "case 1 ... 4:",
   "profile.stageCanvas("

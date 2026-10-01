@@ -19,7 +19,7 @@ package enum StaticSignalAnalyzerNRFEmbeddedSemanticRegion {
         else { return nil }
         candidate.initializeMemory(as: UInt8.self, repeating: 0)
         encodePrefix(variant: variant, model: model, in: candidate)
-        let count: UInt16 = variant == .normal ? 91 : 93
+        let count: UInt16 = 92
         guard
             StaticSignalAnalyzerNRFTopologyWriter.populateShape(
                 variant: variant, in: candidate
@@ -92,16 +92,16 @@ package enum StaticSignalAnalyzerNRFEmbeddedSemanticRegion {
             loadUInt16(at: table.reservedOffset + 10, in: region) == 2,
             loadUInt32(at: table.reservedOffset + 12, in: region) == 0
         else { return false }
-        let scopeCount: UInt16 = variant == .normal ? 91 : 93
+        let scopeCount: UInt16 = 92
         let textBytes = loadUInt16(at: table.reservedOffset + 6, in: region)
         guard loadUInt16(at: table.reservedOffset + 4, in: region) == scopeCount,
-            loadUInt16(at: 12, in: region) == (variant == .normal ? 41 : 42),
+            loadUInt16(at: 12, in: region) == 41,
             loadUInt16(at: 14, in: region) == 16,
-            loadUInt16(at: 16, in: region) == (variant == .normal ? 50 : 51),
+            loadUInt16(at: 16, in: region) == 51,
             loadUInt16(at: 18, in: region) == 3,
             loadUInt16(at: 20, in: region) == 40,
-            loadUInt16(at: 22, in: region) == (variant == .normal ? 119 : 121),
-            loadUInt16(at: 24, in: region) == (variant == .normal ? 188 : 190),
+            loadUInt16(at: 22, in: region) == 119,
+            loadUInt16(at: 24, in: region) == 187,
             loadUInt16(at: 26, in: region) == 5,
             state != 1 || loadUInt32(at: 28, in: region) == 0,
             state != 2 || loadUInt32(at: 28, in: region) > 0,
@@ -172,13 +172,13 @@ package enum StaticSignalAnalyzerNRFEmbeddedSemanticRegion {
         region[6] = 1
         region[7] = variant.rawValue
         store(rootIdentity, at: 8, in: region)
-        store(variant == .normal ? UInt16(41) : 42, at: 12, in: region)
+        store(UInt16(41), at: 12, in: region)
         store(UInt16(16), at: 14, in: region)
-        store(variant == .normal ? UInt16(50) : 51, at: 16, in: region)
+        store(UInt16(51), at: 16, in: region)
         store(UInt16(3), at: 18, in: region)
         store(UInt16(40), at: 20, in: region)
-        store(variant == .normal ? UInt16(119) : 121, at: 22, in: region)
-        store(variant == .normal ? UInt16(188) : 190, at: 24, in: region)
+        store(UInt16(119), at: 22, in: region)
+        store(UInt16(187), at: 24, in: region)
         store(UInt16(5), at: 26, in: region)
         var canvas: UInt16 = 0
         while canvas < 5 {

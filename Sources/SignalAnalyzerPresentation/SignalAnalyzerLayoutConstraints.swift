@@ -6,6 +6,7 @@ package struct SignalAnalyzerLayoutConstraints: Equatable, Sendable {
     package let buttonSize: GeometryScalar
     package let headerTextWidth: GeometryScalar
     package let headerHeight: GeometryScalar
+    package let errorLineHeight: GeometryScalar
     package let rulerLabelWidth: GeometryScalar
     package let labelWidth: GeometryScalar
     package let gridWidth: GeometryScalar
@@ -19,11 +20,12 @@ package struct SignalAnalyzerLayoutConstraints: Equatable, Sendable {
         buttonSize = max(44, 2 * lineHeight + 4)
         headerTextWidth = max(1, width - buttonSize - 8)
         headerHeight = 4 * lineHeight + 4
+        errorLineHeight = lineHeight
         labelWidth = buttonSize
         traceWidth = max(1, width - 8 - 2 * labelWidth - 4)
         gridWidth = traceWidth
         rulerLabelWidth = max(1, (traceWidth - 8) / 3)
         traceHeight = max(lineHeight, (height - headerHeight - buttonSize - lineHeight - 8) / 4)
-        gridHeight = buttonSize + 4 * traceHeight
+        gridHeight = 4 * traceHeight
     }
 }

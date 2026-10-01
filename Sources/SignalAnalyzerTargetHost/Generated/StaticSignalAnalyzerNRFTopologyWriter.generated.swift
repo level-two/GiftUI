@@ -5,8 +5,8 @@
 import SignalAnalyzerPresentation
 
 package enum StaticSignalAnalyzerNRFTopologyWriter {
-    private static let normalShape: StaticString = "0867ffff0100ffff08ec6100000200ffff08473401000300ffff08449702000400ffff02643a030005001600082d0f04000600ffff03f466050007000d0008bd2a06000800ffff02b5d10700ffff090006777807000a000b000834450900ffffffff06281607000c00ffff08e0670b00ffffffff06e6fb05000e00ffff0250780d000f00ffff08b7070e001000ffff01c3a30f001100ffff086e4a10001200ffff08110a11001300ffff08b96212001400ffff082ecd13001500ffff0865541400ffffffff06895f03001700ffff0810fe16001800ffff08b61e17001900ffff083e2618001a00ffff046b5a19001b001c00088d0d1a00ffffffff074fef19001d00ffff02a40a1c001e003f0003ff331d001f00270002de391e002000ffff08a2381f002100ffff01e43a20002200ffff08b0db21002300ffff082f7222002400ffff08ed5023002500ffff0816bb24002600ffff08710f2500ffffffff06fe131d002800360008bd3027002900ffff08099b28002a00ffff08012229002b00ffff034ae82a002c002e0008d08c2b002d00ffff089e172c00ffffffff0661e22a00ffff2f0005a1da2a0030003200085a7d2f003100ffff0843123000ffffffff0608c02a00ffff330005b3d22a003400ffff08d88233003500ffff088b423400ffffffff06ef181d003700ffff023f0136003800ffff0806a437003900ffff01e82638003a00ffff08e6bb39003b00ffff08811b3a003c00ffff0819c33b003d00ffff08b6923c003e00ffff080daa3d00ffffffff0645071c00400046000345c43f00410042000875344000ffffffff0670a23f00430044000884884200ffffffff07663b3f004500ffff0827b74400ffffffff06e7761c0047004d000395cd4600480049000851534700ffffffff0617ff46004a004b0008d1b64900ffffffff07f90646004c00ffff083e124b00ffffffff0602041c004e00540003f6f74d004f00500008a6894e00ffffffff0676794d005100520008d3db5000ffffffff07c51f4d005300ffff08157d5200ffffffff0626f61c005500ffff03b1a95400560057000872d05500ffffffff06262654005800590008dcff5700ffffffff07dd2c54005a00ffff089d2c5900ffffffff06"
-    private static let diagnosticShape: StaticString = "0867ffff0100ffff08ec6100000200ffff08473401000300ffff08449702000400ffff02643a030005001600082d0f04000600ffff03f466050007000d0008bd2a06000800ffff02b5d10700ffff090006777807000a000b000834450900ffffffff06281607000c00ffff08e0670b00ffffffff06e6fb05000e00ffff0250780d000f00ffff08b7070e001000ffff01c3a30f001100ffff086e4a10001200ffff08110a11001300ffff08b96212001400ffff082ecd13001500ffff0865541400ffffffff06895f030017005b000810fe16001800ffff08b61e17001900ffff083e2618001a00ffff046b5a19001b001c00088d0d1a00ffffffff074fef19001d00ffff02a40a1c001e003f0003ff331d001f00270002de391e002000ffff08a2381f002100ffff01e43a20002200ffff08b0db21002300ffff082f7222002400ffff08ed5023002500ffff0816bb24002600ffff08710f2500ffffffff06fe131d002800360008bd3027002900ffff08099b28002a00ffff08012229002b00ffff034ae82a002c002e0008d08c2b002d00ffff089e172c00ffffffff0661e22a00ffff2f0005a1da2a0030003200085a7d2f003100ffff0843123000ffffffff0608c02a00ffff330005b3d22a003400ffff08d88233003500ffff088b423400ffffffff06ef181d003700ffff023f0136003800ffff0806a437003900ffff01e82638003a00ffff08e6bb39003b00ffff08811b3a003c00ffff0819c33b003d00ffff08b6923c003e00ffff080daa3d00ffffffff0645071c00400046000345c43f00410042000875344000ffffffff0670a23f00430044000884884200ffffffff07663b3f004500ffff0827b74400ffffffff06e7761c0047004d000395cd4600480049000851534700ffffffff0617ff46004a004b0008d1b64900ffffffff07f90646004c00ffff083e124b00ffffffff0602041c004e00540003f6f74d004f00500008a6894e00ffffffff0676794d005100520008d3db5000ffffffff07c51f4d005300ffff08157d5200ffffffff0626f61c005500ffff03b1a95400560057000872d05500ffffffff06262654005800590008dcff5700ffffffff07dd2c54005a00ffff089d2c5900ffffffff063a0803005c00ffff08eb625b00ffffffff06"
+    private static let normalShape: StaticString = "0867ffff0100ffff08ec6100000200ffff08473401000300ffff08449702000400ffff02643a030005001700082d0f04000600ffff03f466050007000e0008bd2a06000800ffff02b5d10700ffff090006777807000a000b000834450900ffffffff06170c07000c00ffff0873a80b000d00ffff08a2050c00ffffffff06e6fb05000f00ffff0250780e001000ffff08b7070f001100ffff01c3a310001200ffff086e4a11001300ffff08110a12001400ffff08b96213001500ffff082ecd14001600ffff0865541500ffffffff06895f03001800ffff0810fe17001900ffff08b61e18001a00ffff083e2619001b00ffff046b5a1a001c001d00088d0d1b00ffffffff074fef1a001e00ffff02a40a1d001f00400003ff331e002000280002de391f002100ffff08a23820002200ffff01e43a21002300ffff08b0db22002400ffff082f7223002500ffff08ed5024002600ffff0816bb25002700ffff08710f2600ffffffff06fe131e002900370008bd3028002a00ffff08099b29002b00ffff0801222a002c00ffff034ae82b002d002f0008d08c2c002e00ffff089e172d00ffffffff0661e22b00ffff300005a1da2b0031003300085a7d30003200ffff0843123100ffffffff0608c02b00ffff340005b3d22b003500ffff08d88234003600ffff088b423500ffffffff06ef181e003800ffff023f0137003900ffff0806a438003a00ffff01e82639003b00ffff08e6bb3a003c00ffff08811b3b003d00ffff0819c33c003e00ffff08b6923d003f00ffff080daa3e00ffffffff0645071d00410047000345c44000420043000875344100ffffffff0670a24000440045000884884300ffffffff07663b40004600ffff0827b74500ffffffff06e7761d0048004e000395cd470049004a000851534800ffffffff0617ff47004b004c0008d1b64a00ffffffff07f90647004d00ffff083e124c00ffffffff0602041d004f00550003f6f74e005000510008a6894f00ffffffff0676794e005200530008d3db5100ffffffff07c51f4e005400ffff08157d5300ffffffff0626f61d005600ffff03b1a95500570058000872d05600ffffffff062626550059005a0008dcff5800ffffffff07dd2c55005b00ffff089d2c5a00ffffffff06"
+    private static let diagnosticShape: StaticString = "0867ffff0100ffff08ec6100000200ffff08473401000300ffff08449702000400ffff02643a030005001700082d0f04000600ffff03f466050007000e0008bd2a06000800ffff02b5d10700ffff090006777807000a000b000834450900ffffffff06170c07000c00ffff0873a80b000d00ffff08a2050c00ffffffff06e6fb05000f00ffff0250780e001000ffff08b7070f001100ffff01c3a310001200ffff086e4a11001300ffff08110a12001400ffff08b96213001500ffff082ecd14001600ffff0865541500ffffffff06895f03001800ffff0810fe17001900ffff08b61e18001a00ffff083e2619001b00ffff046b5a1a001c001d00088d0d1b00ffffffff074fef1a001e00ffff02a40a1d001f00400003ff331e002000280002de391f002100ffff08a23820002200ffff01e43a21002300ffff08b0db22002400ffff082f7223002500ffff08ed5024002600ffff0816bb25002700ffff08710f2600ffffffff06fe131e002900370008bd3028002a00ffff08099b29002b00ffff0801222a002c00ffff034ae82b002d002f0008d08c2c002e00ffff089e172d00ffffffff0661e22b00ffff300005a1da2b0031003300085a7d30003200ffff0843123100ffffffff0608c02b00ffff340005b3d22b003500ffff08d88234003600ffff088b423500ffffffff06ef181e003800ffff023f0137003900ffff0806a438003a00ffff01e82639003b00ffff08e6bb3a003c00ffff08811b3b003d00ffff0819c33c003e00ffff08b6923d003f00ffff080daa3e00ffffffff0645071d00410047000345c44000420043000875344100ffffffff0670a24000440045000884884300ffffffff07663b40004600ffff0827b74500ffffffff06e7761d0048004e000395cd470049004a000851534800ffffffff0617ff47004b004c0008d1b64a00ffffffff07f90647004d00ffff083e124c00ffffffff0602041d004f00550003f6f74e005000510008a6894f00ffffffff0676794e005200530008d3db5100ffffffff07c51f4e005400ffff08157d5300ffffffff0626f61d005600ffff03b1a95500570058000872d05600ffffffff062626550059005a0008dcff5800ffffffff07dd2c55005b00ffff089d2c5a00ffffffff06"
 
     package static func populateShape(
         variant: StaticSignalAnalyzerNRFSemanticVariant,
@@ -19,10 +19,10 @@ package enum StaticSignalAnalyzerNRFTopologyWriter {
         switch variant {
         case .normal:
             shape = normalShape
-            count = 91
+            count = 92
         case .diagnostic:
             shape = diagnosticShape
-            count = 93
+            count = 92
         }
         return shape.withUTF8Buffer { bytes in
             let length = bytes.last == 0 ? bytes.count - 1 : bytes.count
@@ -67,7 +67,7 @@ package enum StaticSignalAnalyzerNRFTopologyWriter {
     ) -> Bool {
         let table = StaticSignalAnalyzerNRFPackedSemanticRecords.self
         guard region.count == table.regionByteCount,
-            scopeCount == 91 || scopeCount == 93
+            scopeCount == 92
         else { return false }
         var index: UInt16 = 0
         while index < 5 {
@@ -132,7 +132,7 @@ package enum StaticSignalAnalyzerNRFTopologyWriter {
     ) -> Bool {
         let table = StaticSignalAnalyzerNRFPackedSemanticRecords.self
         guard region.count == table.regionByteCount,
-            scopeCount == 91 || scopeCount == 93
+            scopeCount == 92
         else { return false }
         var slot: UInt16 = 0
         while slot < 16 {
@@ -182,10 +182,10 @@ package enum StaticSignalAnalyzerNRFTopologyWriter {
     ) -> Bool {
         let table = StaticSignalAnalyzerNRFPackedSemanticRecords.self
         guard region.count == table.regionByteCount,
-            scopeCount == 91 || scopeCount == 93
+            scopeCount == 92
         else { return false }
         var slot: UInt16 = 0
-        while slot < 25 {
+        while slot < 26 {
             let ordinal = invariantModifierOrdinal(at: slot)
             guard let record = table.scope(at: ordinal, in: region),
                 record.kind == .modifier,
@@ -198,7 +198,7 @@ package enum StaticSignalAnalyzerNRFTopologyWriter {
             slot += 1
         }
         slot = 0
-        while slot < 25 {
+        while slot < 26 {
             let ordinal = invariantModifierOrdinal(at: slot)
             let payload = invariantModifierPayload(at: slot)
             guard let old = table.scope(at: ordinal, in: region),
@@ -232,7 +232,7 @@ package enum StaticSignalAnalyzerNRFTopologyWriter {
     ) -> Bool {
         let table = StaticSignalAnalyzerNRFPackedSemanticRecords.self
         guard region.count == table.regionByteCount,
-            scopeCount == 91 || scopeCount == 93
+            scopeCount == 92
         else { return false }
         var ordinal: UInt16 = 0
         while ordinal < scopeCount {
@@ -283,7 +283,7 @@ package enum StaticSignalAnalyzerNRFTopologyWriter {
         let table = StaticSignalAnalyzerNRFPackedSemanticRecords.self
         guard region.count == table.regionByteCount else { return false }
         var slot: UInt16 = 0
-        while slot < 16 {
+        while slot < 15 {
             let ordinal = liveModifierOrdinal(at: slot)
             guard let record = table.scope(at: ordinal, in: region),
                 record.kind == .modifier,
@@ -297,7 +297,7 @@ package enum StaticSignalAnalyzerNRFTopologyWriter {
             slot += 1
         }
         slot = 0
-        while slot < 16 {
+        while slot < 15 {
             let ordinal = liveModifierOrdinal(at: slot)
             guard let old = table.scope(at: ordinal, in: region),
                 let payload = inputs.liveModifierInput(at: ordinal),
@@ -332,7 +332,7 @@ package enum StaticSignalAnalyzerNRFTopologyWriter {
         let table = StaticSignalAnalyzerNRFPackedSemanticRecords.self
         let pool = StaticSignalAnalyzerNRFUTF8TextPool.self
         guard region.count == table.regionByteCount else { return nil }
-        let scopeCount: UInt16 = inputs.semantic.variant == .normal ? 91 : 93
+        let scopeCount: UInt16 = 92
         var ordinal: UInt16 = 0
         var required: UInt16 = 0
         var textCount: UInt16 = 0
@@ -350,7 +350,7 @@ package enum StaticSignalAnalyzerNRFTopologyWriter {
             }
             ordinal += 1
         }
-        guard textCount == (scopeCount == 91 ? 17 : 18) else { return nil }
+        guard textCount == (17) else { return nil }
         ordinal = 0
         var used: UInt16 = 0
         while ordinal < scopeCount {
@@ -385,22 +385,21 @@ package enum StaticSignalAnalyzerNRFTopologyWriter {
 
     private static func liveModifierOrdinal(at index: UInt16) -> UInt16 {
         switch index {
-        case 0: 11
-        case 1: 16
-        case 2: 17
-        case 3: 19
-        case 4: 31
-        case 5: 33
-        case 6: 34
-        case 7: 36
-        case 8: 55
-        case 9: 57
-        case 10: 58
-        case 11: 60
-        case 12: 68
-        case 13: 75
-        case 14: 82
-        default: 89
+        case 0: 17
+        case 1: 18
+        case 2: 20
+        case 3: 32
+        case 4: 34
+        case 5: 35
+        case 6: 37
+        case 7: 56
+        case 8: 58
+        case 9: 59
+        case 10: 61
+        case 11: 69
+        case 12: 76
+        case 13: 83
+        default: 90
         }
     }
 
@@ -409,13 +408,13 @@ package enum StaticSignalAnalyzerNRFTopologyWriter {
         case 0: (25, 0)
         case 2: (17, 16777215)
         case 9: (17, 8421504)
-        case 14: (1, 0)
-        case 22: (25, 1052688)
-        case 39: (25, 1579032)
-        case 43: (17, 8421504)
-        case 47: (17, 8421504)
-        case 51: (17, 8421504)
-        case 91: (17, 255)
+        case 12: (17, 255)
+        case 15: (1, 0)
+        case 23: (25, 1052688)
+        case 40: (25, 1579032)
+        case 44: (17, 8421504)
+        case 48: (17, 8421504)
+        case 52: (17, 8421504)
         default: nil
         }
     }
@@ -425,28 +424,29 @@ package enum StaticSignalAnalyzerNRFTopologyWriter {
         case 0: 1
         case 1: 4
         case 2: 6
-        case 3: 18
-        case 4: 20
-        case 5: 23
+        case 3: 11
+        case 4: 19
+        case 5: 21
         case 6: 24
-        case 7: 26
-        case 8: 35
-        case 9: 37
-        case 10: 40
+        case 7: 25
+        case 8: 27
+        case 9: 36
+        case 10: 38
         case 11: 41
-        case 12: 44
-        case 13: 48
-        case 14: 52
-        case 15: 59
-        case 16: 61
-        case 17: 64
-        case 18: 66
-        case 19: 71
-        case 20: 73
-        case 21: 78
-        case 22: 80
-        case 23: 85
-        default: 87
+        case 12: 42
+        case 13: 45
+        case 14: 49
+        case 15: 53
+        case 16: 60
+        case 17: 62
+        case 18: 65
+        case 19: 67
+        case 20: 72
+        case 21: 74
+        case 22: 79
+        case 23: 81
+        case 24: 86
+        default: 88
         }
     }
 
@@ -457,27 +457,28 @@ package enum StaticSignalAnalyzerNRFTopologyWriter {
         case 0: (2, 15, 2, 0)
         case 1: (11, 2, 0, UInt32(layout.headerHeight))
         case 2: (11, 9, UInt32(layout.headerTextWidth), 0)
-        case 3: (2, 15, 2, 0)
-        case 4: (11, 15, UInt32(layout.buttonSize - 4), UInt32(layout.buttonSize - 4))
-        case 5: (2, 15, 2, 0)
-        case 6: (12, 232, 80, 0)
-        case 7: (12, 210, UInt32(layout.gridWidth), UInt32(layout.gridHeight))
-        case 8: (2, 15, 2, 0)
-        case 9: (11, 15, UInt32(layout.buttonSize - 4), UInt32(layout.buttonSize - 4))
-        case 10: (11, 13, UInt32(layout.traceWidth), 0)
-        case 11: (2, 10, 2, 0)
-        case 12: (11, 13, UInt32(layout.rulerLabelWidth), 0)
+        case 3: (11, 10, 0, UInt32(layout.errorLineHeight))
+        case 4: (2, 15, 2, 0)
+        case 5: (11, 15, UInt32(layout.buttonSize - 4), UInt32(layout.buttonSize - 4))
+        case 6: (2, 15, 2, 0)
+        case 7: (12, 232, 80, 0)
+        case 8: (12, 210, UInt32(layout.gridWidth), UInt32(layout.gridHeight))
+        case 9: (2, 15, 2, 0)
+        case 10: (11, 15, UInt32(layout.buttonSize - 4), UInt32(layout.buttonSize - 4))
+        case 11: (11, 13, UInt32(layout.traceWidth), 0)
+        case 12: (2, 10, 2, 0)
         case 13: (11, 13, UInt32(layout.rulerLabelWidth), 0)
         case 14: (11, 13, UInt32(layout.rulerLabelWidth), 0)
-        case 15: (2, 15, 2, 0)
-        case 16: (11, 15, UInt32(layout.buttonSize - 4), UInt32(layout.buttonSize - 4))
-        case 17: (11, 9, UInt32(layout.labelWidth), 0)
-        case 18: (12, 210, UInt32(layout.traceWidth), UInt32(layout.traceHeight))
-        case 19: (11, 9, UInt32(layout.labelWidth), 0)
-        case 20: (12, 210, UInt32(layout.traceWidth), UInt32(layout.traceHeight))
-        case 21: (11, 9, UInt32(layout.labelWidth), 0)
-        case 22: (12, 210, UInt32(layout.traceWidth), UInt32(layout.traceHeight))
-        case 23: (11, 9, UInt32(layout.labelWidth), 0)
+        case 15: (11, 13, UInt32(layout.rulerLabelWidth), 0)
+        case 16: (2, 15, 2, 0)
+        case 17: (11, 15, UInt32(layout.buttonSize - 4), UInt32(layout.buttonSize - 4))
+        case 18: (11, 9, UInt32(layout.labelWidth), 0)
+        case 19: (12, 210, UInt32(layout.traceWidth), UInt32(layout.traceHeight))
+        case 20: (11, 9, UInt32(layout.labelWidth), 0)
+        case 21: (12, 210, UInt32(layout.traceWidth), UInt32(layout.traceHeight))
+        case 22: (11, 9, UInt32(layout.labelWidth), 0)
+        case 23: (12, 210, UInt32(layout.traceWidth), UInt32(layout.traceHeight))
+        case 24: (11, 9, UInt32(layout.labelWidth), 0)
         default: (12, 210, UInt32(layout.traceWidth), UInt32(layout.traceHeight))
         }
     }
@@ -487,19 +488,19 @@ package enum StaticSignalAnalyzerNRFTopologyWriter {
         case 0: 3
         case 1: 5
         case 2: 7
-        case 3: 13
-        case 4: 25
-        case 5: 28
-        case 6: 29
-        case 7: 30
-        case 8: 42
-        case 9: 46
-        case 10: 50
-        case 11: 54
-        case 12: 63
-        case 13: 70
-        case 14: 77
-        default: 84
+        case 3: 14
+        case 4: 26
+        case 5: 29
+        case 6: 30
+        case 7: 31
+        case 8: 43
+        case 9: 47
+        case 10: 51
+        case 11: 55
+        case 12: 64
+        case 13: 71
+        case 14: 78
+        default: 85
         }
     }
 
@@ -510,7 +511,7 @@ package enum StaticSignalAnalyzerNRFTopologyWriter {
         case 1: (.hStack, 0, 4)
         case 2: (.vStack, 0, 2)
         case 3: (.vStack, 1, 0)
-        case 4: (.zStack, 257, 0)
+        case 4: (.zStack, 513, 0)
         case 5: (.vStack, 0, 0)
         case 6: (.hStack, 1, 2)
         case 7: (.vStack, 1, 0)
@@ -527,9 +528,9 @@ package enum StaticSignalAnalyzerNRFTopologyWriter {
 
     private static func actionOrdinal(at index: UInt16) -> UInt16 {
         switch index {
-        case 0: 15
-        case 1: 32
-        default: 56
+        case 0: 16
+        case 1: 33
+        default: 57
         }
     }
 
@@ -543,11 +544,11 @@ package enum StaticSignalAnalyzerNRFTopologyWriter {
 
     private static func canvasOrdinal(at index: UInt16) -> UInt16 {
         switch index {
-        case 0: 27
-        case 1: 67
-        case 2: 74
-        case 3: 81
-        default: 88
+        case 0: 28
+        case 1: 68
+        case 2: 75
+        case 3: 82
+        default: 89
         }
     }
 

@@ -42,7 +42,7 @@ import Testing
         ) {
             var bytes = [UInt8](repeating: 0, count: table.regionByteCount)
             bytes.withUnsafeMutableBytes { region in
-                let count: UInt16 = variant == .normal ? 91 : 93
+                let count: UInt16 = 92
                 #expect(
                     StaticSignalAnalyzerNRFTopologyWriter.populateShape(
                         variant: variant, in: region
@@ -95,38 +95,35 @@ import Testing
                     acquisitionState: model.acquisitionState,
                     selectedWindow: selectedWindow
                 )
-                let statusColor: Color
-                switch model.acquisitionState {
-                case .idle, .stopped: statusColor = .white
-                case .running: statusColor = .green
-                case .failed: statusColor = .red
-                }
+                let statusColor: Color = .red
                 let statusPayload = StaticSignalAnalyzerNRFModifierPayload(
                     modifier: .passthrough,
                     renderScope: .foregroundStyle(statusColor)
                 )
-                #expect(table.scope(at: 11, in: region)?.flags == statusPayload?.flags)
-                #expect(table.scope(at: 11, in: region)?.payload0 == statusPayload?.payload0)
+                #expect(table.scope(at: 12, in: region)?.flags == statusPayload?.flags)
+                #expect(table.scope(at: 12, in: region)?.payload0 == statusPayload?.payload0)
                 #expect(
-                    table.scope(at: 68, in: region)?.payload0
+                    table.scope(at: 69, in: region)?.payload0
                         == (channelOne == "HIGH" ? 0x00_FF_00 : 0xFF_80_00)
                 )
-                #expect(table.scope(at: 31, in: region)?.flags == 1)
+                #expect(table.scope(at: 32, in: region)?.flags == 1)
                 #expect(
-                    table.scope(at: 55, in: region)?.flags
+                    table.scope(at: 56, in: region)?.flags
                         == (model.visibleWindowRawValue == 2 ? 65 : 1))
                 #expect(text(8, in: region) == "DIGITAL SIGNAL ANALYZER")
-                #expect(text(12, in: region) == portable(controls.statusText))
-                #expect(text(45, in: region) == portable(labels.lowerBound))
-                #expect(text(49, in: region) == portable(labels.midpoint))
-                #expect(text(53, in: region) == portable(labels.upperBound))
-                #expect(text(69, in: region) == channelOne)
-                #expect(text(90, in: region) == "LOW")
-                #expect(text(21, in: region) == portable(controls.recordingLabel))
-                #expect(text(38, in: region) == "-")
-                #expect(text(62, in: region) == "+")
+                #expect(
+                    text(13, in: region)
+                        == (variant == .diagnostic ? String(repeating: "E", count: 96) : ""))
+                #expect(text(46, in: region) == portable(labels.lowerBound))
+                #expect(text(50, in: region) == portable(labels.midpoint))
+                #expect(text(54, in: region) == portable(labels.upperBound))
+                #expect(text(70, in: region) == channelOne)
+                #expect(text(91, in: region) == "LOW")
+                #expect(text(22, in: region) == portable(controls.recordingLabel))
+                #expect(text(39, in: region) == "-")
+                #expect(text(63, in: region) == "+")
                 if variant == .diagnostic {
-                    #expect(text(92, in: region) == String(repeating: "E", count: 96))
+                    #expect(text(13, in: region) == String(repeating: "E", count: 96))
                 }
                 region[table.scopeOffset + 8 * table.scopeStride + 12] = 1
                 if let textBytes {

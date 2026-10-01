@@ -7,7 +7,7 @@ package enum StaticSignalAnalyzerNRFEmbeddedSemanticValidator {
         in region: UnsafeMutableRawBufferPointer
     ) -> Bool {
         let table = StaticSignalAnalyzerNRFPackedSemanticRecords.self
-        let count: UInt16 = variant == .normal ? 91 : 93
+        let count: UInt16 = 92
         guard region.count == table.regionByteCount,
             textByteCount <= table.maximumTextByteCount,
             let root = table.scope(at: 0, in: region),
@@ -68,7 +68,7 @@ package enum StaticSignalAnalyzerNRFEmbeddedSemanticValidator {
             ordinal += 1
         }
         guard coveredText == textByteCount,
-            textScopes == (variant == .normal ? 17 : 18),
+            textScopes == (17),
             canvasMask == 0b1_1111,
             fingerprint
                 == (variant == .normal
@@ -164,9 +164,9 @@ package enum StaticSignalAnalyzerNRFEmbeddedSemanticValidator {
 
     private static func actionOrdinal(_ action: UInt16) -> UInt16 {
         switch action {
-        case 0: 15
-        case 1: 32
-        default: 56
+        case 0: 16
+        case 1: 33
+        default: 57
         }
     }
 

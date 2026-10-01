@@ -366,3 +366,15 @@ embedded compiler measurements remain required before this note can become
 - [Portable hierarchy](../../Sources/SignalAnalyzerPresentation/SignalAnalyzerView.swift)
 - [Dynamic semantic oracle](../../Sources/GiftUIRuntimeDynamic/DynamicSemanticHostStorage.swift)
 - [T6.8 evidence](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-6/nrf52840-tft-input-adapter.md)
+
+### Maintainer-requested timeline and status cleanup (2026-10-01)
+
+Ruler formatting now shares an allocation-free formatter across portable and
+Embedded presentation, rounds to tenths, and omits whole-second fractions.
+The grid is bottom-aligned to the four trace rows, leaving the ruler clear.
+The header uses one fixed-height error slot; R/S is the sole normal state
+indicator. Normal and diagnostic projections now share 92 scopes, 41 nodes,
+51 modifiers, 119 structural occurrences, and 187 recorded traversal identities.
+The fixed capacities and physical storage remain unchanged. T6.8 implements
+the requested correction; T7.7 evidence records hardware-free visual checks.
+Connected hardware and reviewed-pixel blockers remain open.

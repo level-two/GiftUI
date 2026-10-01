@@ -350,7 +350,7 @@ The analyzer MUST present one screen containing:
 
 - the title `DIGITAL SIGNAL ANALYZER`;
 - the subtitle `Four-channel acquisition`;
-- a visible acquisition status for Ready, Running, Stopped, or Failed;
+- acquisition state represented by the recording toggle letter;
 - a time ruler;
 - four explicit rows named `CH1`, `CH2`, `CH3`, and `CH4`;
 - a visible HIGH or LOW label for every channel;
@@ -1256,15 +1256,14 @@ The hierarchy MUST be structurally equivalent to:
 ```text
 SignalAnalyzerView
 ├── header
-│   ├── title, subtitle, and acquisition status
+│   ├── title, subtitle, and a bounded acquisition error line
 │   └── square R/S recording toggle
-├── WaveformView
+└── WaveformView
 │   ├── minus button, time ruler, plus button
 │   ├── ChannelWaveformView for CH1
 │   ├── ChannelWaveformView for CH2
 │   ├── ChannelWaveformView for CH3
 │   └── ChannelWaveformView for CH4
-└── error text
 ```
 
 The waveform area MUST lower as exactly five Canvas occurrences: one grid
@@ -1279,12 +1278,18 @@ gradients, shadows, clipping, opacity, or alpha compositing.
 
 ### Status and disabled state
 
-| Acquisition state | Status text | Toggle letter | Toggle action |
-| --- | --- | --- | --- |
-| idle | READY | S | Start |
-| running | RUNNING | R | Stop |
-| stopped | STOPPED | S | Start |
-| failed | FAILED | S | Start |
+| Acquisition state | Toggle letter | Toggle action |
+| --- | --- | --- |
+| idle | S | Start |
+| running | R | Stop |
+| stopped | S | Start |
+| failed | S | Start |
+
+The recording letter is the only normal acquisition status indicator. Ready,
+Running, Stopped, and Failed labels MUST NOT be drawn. Acquisition errors MUST
+appear in the header line beneath the subtitle, constrained to one canonical
+text-line height so they cannot overlap the ruler. The full bounded diagnostic
+MUST remain in the semantic payload; viewport wrapping and clipping apply.
 
 The toggle remains enabled in every state. Minus is disabled only at `1 s`;
 Plus is disabled only at `5 s`. Disabled controls MUST not admit activation.
@@ -1318,7 +1323,9 @@ x = (timestamp - visibleLowerBound) / visibleSpan * canvasWidth
 
 Low and high MUST map to visibly distinct horizontal levels with nonzero top
 and bottom insets. The grid MUST include 11 evenly spaced vertical lines and
-one horizontal center line. Exact colors, insets, stroke widths, caps, joins,
+one horizontal center line. Its bounds MUST span only the four trace rows,
+below the time ruler and between the channel and state labels; no grid line
+may pass behind ruler text. Exact colors, insets, stroke widths, caps, joins,
 and row sizes are non-normative provided traces and grid remain legible.
 
 The visible HIGH or LOW label MUST reflect the channel level at
@@ -1652,8 +1659,8 @@ mutation is incompatible and MUST migrate to the admission adapter.
 
 The portable Presentation migrates from SwiftUI to GiftUI. Exact SwiftUI source
 compatibility, exact pixel output, and identical host code are not required.
-The title, status, controls, channel ordering, visible-range formula, waveform
-semantics, and acquisition behavior are compatibility requirements.
+The title, recording indicator, controls, channel ordering, visible-range
+formula, waveform semantics, and acquisition behavior are compatibility requirements.
 
 Dynamic and static profiles MAY use different physical storage, executor,
 observable-registration, dependency-wiring, clock, scheduling, and rendering
@@ -1833,8 +1840,8 @@ behavioral, resource, profile, or connected-hardware evidence.
 - [ ] **SA-AC-004:** Presentation imports no concrete Data, platform, clock,
   scheduler, GPIO, renderer, display, or hardware API.
 - [ ] **SA-AC-005:** The screen visibly contains the required title, subtitle,
-  status, time ruler, four ordered channel rows, controls, error region, grid,
-  and four traces at each approved host extent, including the
+  recording indicator, time ruler, four ordered channel rows, controls, error
+  region, grid, and four traces at each approved host extent, including the
   320 x 240 nRF fixture, without target-specific Presentation layout.
 - [ ] **SA-AC-006:** The portable hierarchy uses fixed explicit channel and
   window composition and is substantially shared by all four configurations.

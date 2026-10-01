@@ -9,7 +9,7 @@ package struct StaticSignalAnalyzerNRFEmbeddedSemanticView {
         guard StaticSignalAnalyzerNRFEmbeddedSemanticRegion.verifyPublished(published)
         else { return nil }
         region = published
-        scopeCount = published[7] == 0 ? 91 : 93
+        scopeCount = 92
         revision =
             UInt32(published[28]) | UInt32(published[29]) << 8
             | UInt32(published[30]) << 16 | UInt32(published[31]) << 24

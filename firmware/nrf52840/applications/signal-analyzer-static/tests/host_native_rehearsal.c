@@ -129,7 +129,7 @@ int ads7846_pen_is_down(void)
     }
     if (revision != 0U && revision != last_traced_revision) {
         assert(revision > last_traced_revision);
-        const uint32_t scopes = diagnostic_mode != 0U && revision == 2U ? 93U : 91U;
+        const uint32_t scopes = 92U;
         assert(giftui_signal_analyzer_last_semantic_scopes() == scopes);
         assert(giftui_signal_analyzer_last_layout_scopes() == scopes);
         assert(giftui_signal_analyzer_last_drawing_strokes() == 5U);

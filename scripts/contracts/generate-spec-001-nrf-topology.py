@@ -10,12 +10,12 @@ FIXTURE = ROOT / 'Tests/ContractFixtures/SPEC001'
 OUT = ROOT / 'Sources/SignalAnalyzerTargetHost/Generated'
 rows = json.loads((FIXTURE / 'nrf-touch-ui-projection.json').read_text())
 diag = json.loads((FIXTURE / 'nrf-touch-ui-diagnostic-projection.json').read_text())
-assert len(rows) == 91 and len(diag) == 93
+assert len(rows) == 92 and len(diag) == 92
 kinds = {1:'proxy',2:'vStack',3:'hStack',4:'zStack',5:'spacer',6:'text',7:'canvas',8:'modifier'}
-live = [11,16,17,19,31,33,34,36,55,57,58,60,68,75,82,89]
+live = [17,18,20,32,34,35,37,56,58,59,61,69,76,83,90]
 primitives = [r for r in rows if r['kind'] in (2,3,4,5)]
 modifiers = [r for r in rows if r['kind']==8 and r['flags'] in (2,11,12)]
-styles = [r for r in rows if r['kind']==8 and r['ordinal'] not in live and r['flags'] not in (2,11,12)] + [diag[91]]
+styles = [r for r in rows if r['kind']==8 and r['ordinal'] not in live and r['flags'] not in (2,11,12)]
 actions = [r for r in rows if r['kind']==1]
 canvases = [r for r in rows if r['kind']==7]
 
@@ -52,7 +52,8 @@ def ordinal_func(name, records, field='ordinal'):
 src=(OUT/'StaticSignalAnalyzerNRFTopologyWriter.generated.swift').read_text()
 src=re.sub(r'private static let normalShape: StaticString = "[^"]*"',f'private static let normalShape: StaticString = "{shape(rows)}"',src)
 src=re.sub(r'private static let diagnosticShape: StaticString = "[^"]*"',f'private static let diagnosticShape: StaticString = "{shape(diag)}"',src)
-src=src.replace('count = 96','count = 91').replace('count = 98','count = 93').replace('scopeCount == 96 || scopeCount == 98','scopeCount == 91 || scopeCount == 93')
+src=src.replace('count = 91','count = 92').replace('count = 93','count = 92').replace('scopeCount == 91 || scopeCount == 93','scopeCount == 92')
+src=src.replace('scopeCount == 91 ? 17 : 18', '17')
 # Change each method's loop count without altering unrelated bounds.
 for method, count in [('populateInvariantPrimitives',len(primitives)),('populateInvariantLayoutModifiers',len(modifiers)),('populateLiveModifiers',len(live))]:
  a=src.index('    package static func '+method+'('); b=src.find('    package static func ',a+1)
@@ -69,11 +70,11 @@ src=replace_func(src,'invariantPrimitivePayload',f'''    private static func inv
         default: (.{kinds[r['kind']]}, {r['aux']}, {r['p0']})
         }}
     }}''')
-geometry={4:('0','UInt32(layout.headerHeight)'),6:('UInt32(layout.headerTextWidth)','0'),26:('UInt32(layout.gridWidth)','UInt32(layout.gridHeight)'),40:('UInt32(layout.traceWidth)','0')}
-for n in (20,37,61): geometry[n]=('UInt32(layout.buttonSize - 4)','UInt32(layout.buttonSize - 4)')
-for n in (44,48,52): geometry[n]=('UInt32(layout.rulerLabelWidth)','0')
-for n in (64,71,78,85): geometry[n]=('UInt32(layout.labelWidth)','0')
-for n in (66,73,80,87): geometry[n]=('UInt32(layout.traceWidth)','UInt32(layout.traceHeight)')
+geometry={11:('0','UInt32(layout.errorLineHeight)'),4:('0','UInt32(layout.headerHeight)'),6:('UInt32(layout.headerTextWidth)','0'),27:('UInt32(layout.gridWidth)','UInt32(layout.gridHeight)'),41:('UInt32(layout.traceWidth)','0')}
+for n in (21,38,62): geometry[n]=('UInt32(layout.buttonSize - 4)','UInt32(layout.buttonSize - 4)')
+for n in (45,49,53): geometry[n]=('UInt32(layout.rulerLabelWidth)','0')
+for n in (65,72,79,86): geometry[n]=('UInt32(layout.labelWidth)','0')
+for n in (67,74,81,88): geometry[n]=('UInt32(layout.traceWidth)','UInt32(layout.traceHeight)')
 mod_cases=[]
 for i,r in enumerate(modifiers):
  p0,p1=geometry.get(r['ordinal'],(str(r['p0']),str(r['p1'])))
@@ -98,4 +99,4 @@ p=OUT/'StaticSignalAnalyzerNRFPackedSemanticRecords.generated.swift';src=p.read_
 for kind,rs in [('normal',rows),('diagnostic',diag)]:
  src=re.sub(rf'{kind}TopologyFingerprint: UInt64 = [\d_]+',f'{kind}TopologyFingerprint: UInt64 = {fingerprint(rs)}',src)
 p.write_text(src)
-print(f'Generated 91/93 scopes, {len(primitives)} primitive payloads, {len(modifiers)} layout modifiers, 16 live modifiers and three actions')
+print(f'Generated 92/92 scopes, {len(primitives)} primitive payloads, {len(modifiers)} layout modifiers, 15 live modifiers and three actions')

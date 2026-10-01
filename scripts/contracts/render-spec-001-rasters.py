@@ -86,6 +86,14 @@ def waveform_pixels_present(pixels, width, profile):
     # Derive the plot columns from the rendered grid, rather than assuming
     # the old fixed-width Canvas position. Labels stay outside this interval.
     left, right = grid_columns[0], grid_columns[-1] + 1
+    # Timeline glyphs can contain short gray runs, but a grid column must not
+    # extend through the 44-pixel ruler band above the channel rows.
+    for x in range(left, right):
+        run = 0
+        for y in range(top - 44, top):
+            run = run + 1 if pixel_at(pixels, width, x, y) == grid else 0
+            if run >= 20:
+                return False
     center_line = max(
         sum(pixel_at(pixels, width, x, y) == grid for x in range(left, right))
         for y in range(top, bottom)

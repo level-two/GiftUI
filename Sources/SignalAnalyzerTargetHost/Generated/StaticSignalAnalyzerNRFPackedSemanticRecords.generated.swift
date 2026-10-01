@@ -76,8 +76,8 @@ package enum StaticSignalAnalyzerNRFPackedSemanticRecords {
     package static let maximumScalarCount: UInt16 = 139
     package static let maximumTextByteCount: UInt16 = 556
     package static let actionCount: UInt16 = 3
-    package static let normalTopologyFingerprint: UInt64 = 12365040286902491080
-    package static let diagnosticTopologyFingerprint: UInt64 = 2806035910362712768
+    package static let normalTopologyFingerprint: UInt64 = 7380818070099276327
+    package static let diagnosticTopologyFingerprint: UInt64 = 7380818070099276327
     package static let missingOrdinal = UInt16.max
     package static let scopeOffset = 88
     package static let scopeStride = 24

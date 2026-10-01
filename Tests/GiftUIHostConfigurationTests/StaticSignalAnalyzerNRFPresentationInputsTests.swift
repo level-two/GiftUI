@@ -283,7 +283,7 @@ import Testing
                                 sink: &sink
                             ) == .success(header)
                         else { return false }
-                        #expect(layoutSummary.scopeCount == 91)
+                        #expect(layoutSummary.scopeCount == 92)
                         #expect(drawingSummary.strokeCount == 5)
                         #expect(sink.publishedHeader == header)
                         #expect(header.operationCount > 0)
@@ -407,11 +407,11 @@ private func macOSStaticReferencePointerOutcome(
         #expect(inputs.semantic.variant == .normal)
         #expect(inputs.semantic.expansion.semanticNodeCount == 41)
         #expect(inputs.semantic.expansion.bodyEvaluationCount == 16)
-        #expect(inputs.semantic.expansion.modifierApplicationCount == 50)
+        #expect(inputs.semantic.expansion.modifierApplicationCount == 51)
         #expect(inputs.semantic.expansion.actionOccurrenceCount == 3)
         #expect(inputs.semantic.expansion.maximumObservedDepth == 40)
         #expect(inputs.semantic.structuralOccurrenceCount == 119)
-        #expect(inputs.semantic.recordedTraversalIdentityCount == 188)
+        #expect(inputs.semantic.recordedTraversalIdentityCount == 187)
         #expect(inputs.semantic.canvasOccurrenceCount == 5)
     }
 
@@ -425,19 +425,19 @@ private func macOSStaticReferencePointerOutcome(
         model: diagnostic
     ) { inputs in
         #expect(inputs.semantic.variant == .diagnostic)
-        #expect(inputs.semantic.expansion.semanticNodeCount == 42)
+        #expect(inputs.semantic.expansion.semanticNodeCount == 41)
         #expect(inputs.semantic.expansion.modifierApplicationCount == 51)
-        #expect(inputs.semantic.structuralOccurrenceCount == 121)
-        #expect(inputs.semantic.recordedTraversalIdentityCount == 190)
+        #expect(inputs.semantic.structuralOccurrenceCount == 119)
+        #expect(inputs.semantic.recordedTraversalIdentityCount == 187)
     }
 }
 
 @Test func staticNRFLiveModifiersFollowRunningAndWindowState() {
     let model = staticNRFPresentationInputModel()
     StaticSignalAnalyzerNRFGeneratedPresentationInputFactory.withInputs(model: model) { inputs in
-        #expect(inputs.liveModifierInput(at: 11)?.payload0 == 16_777_215)
-        #expect(inputs.liveModifierInput(at: 31)?.flags == 1)
-        #expect(inputs.liveModifierInput(at: 55)?.flags == 1)
+        #expect(inputs.liveModifierInput(at: 17)?.payload0 == 0x8060FF)
+        #expect(inputs.liveModifierInput(at: 32)?.flags == 1)
+        #expect(inputs.liveModifierInput(at: 56)?.flags == 1)
         #expect(inputs.actionCode(at: 0) == 0)
         #expect(inputs.actionCode(at: 1) == 3)
         #expect(inputs.actionCode(at: 2) == 5)
@@ -445,9 +445,9 @@ private func macOSStaticReferencePointerOutcome(
     #expect(model.apply(.acquisitionState(.running)) == .applied(changed: true))
     model.visibleDurationChanged(.fiveSeconds)
     StaticSignalAnalyzerNRFGeneratedPresentationInputFactory.withInputs(model: model) { inputs in
-        #expect(inputs.liveModifierInput(at: 11)?.payload0 == 0x00FF00)
-        #expect(inputs.liveModifierInput(at: 31)?.flags == 1)
-        #expect(inputs.liveModifierInput(at: 55)?.flags == 65)
+        #expect(inputs.liveModifierInput(at: 17)?.payload0 == 0x00FF00)
+        #expect(inputs.liveModifierInput(at: 32)?.flags == 1)
+        #expect(inputs.liveModifierInput(at: 56)?.flags == 65)
         #expect(inputs.actionCode(at: 0) == 1)
         #expect(inputs.actionCode(at: 1) == 4)
         #expect(inputs.actionCode(at: 2) == 5)
@@ -455,8 +455,8 @@ private func macOSStaticReferencePointerOutcome(
     }
     model.visibleDurationChanged(.oneSecond)
     StaticSignalAnalyzerNRFGeneratedPresentationInputFactory.withInputs(model: model) { inputs in
-        #expect(inputs.liveModifierInput(at: 31)?.flags == 65)
-        #expect(inputs.liveModifierInput(at: 55)?.flags == 1)
+        #expect(inputs.liveModifierInput(at: 32)?.flags == 65)
+        #expect(inputs.liveModifierInput(at: 56)?.flags == 1)
         #expect(inputs.actionCode(at: 2) == 4)
     }
 }
@@ -699,7 +699,7 @@ private func macOSStaticReferencePointerOutcome(
             )
             let published = inputs.publishSemanticCandidate(revision: 8, in: &profile)
             #expect(published?.variant == .diagnostic)
-            #expect(published?.expansion.semanticNodeCount == 42)
+            #expect(published?.expansion.semanticNodeCount == 41)
             #expect(published?.revision == 8)
             #expect(
                 profile.withRegion(.semanticPublished) { region in
@@ -753,7 +753,7 @@ private func macOSStaticReferencePointerOutcome(
                 )
             )
             let expected = StaticSignalAnalyzerNRFPackedTableSummary(
-                scopeCount: 91,
+                scopeCount: 92,
                 scalarCount: 0
             )
             #expect(
@@ -795,10 +795,10 @@ private func macOSStaticReferencePointerOutcome(
             #expect(
                 profile.withRegion(.semanticCandidate) { region in
                     let table = StaticSignalAnalyzerNRFPackedSemanticRecords.self
-                    guard let canvas = table.scope(at: 86, in: region) else {
+                    guard let canvas = table.scope(at: 87, in: region) else {
                         return false
                     }
-                    let payloadOffset = table.scopeOffset + 86 * table.scopeStride + 12
+                    let payloadOffset = table.scopeOffset + 87 * table.scopeStride + 12
                     region[payloadOffset] = 1
                     let rejected = !table.hasExactCanvasOccurrences(in: region)
                     region[payloadOffset] = UInt8(canvas.payload0)
@@ -855,7 +855,7 @@ private func macOSStaticReferencePointerOutcome(
             StaticSignalAnalyzerNRFSemanticRegionStore.completeTableSummary(
                 in: .semanticPublished,
                 profile: &profile
-            )?.scopeCount == 91
+            )?.scopeCount == 92
         )
         profile.quiesce()
     }
@@ -916,14 +916,14 @@ private func macOSStaticReferencePointerOutcome(
         }
 
         let cases: [(UInt32, SignalAnalyzerViewModel, UInt16, UInt16, UInt16?)] = [
-            (1, normal, 91, 97, nil),
-            (2, diagnostic, 93, 194, 91),
-            (3, wideDiagnostic, 93, 194, 93),
-            (4, multilineDiagnostic, 93, 194, 93),
-            (5, mixedOne, 93, 194, 93),
-            (6, mixedTwo, 93, 194, 93),
-            (7, mixedThree, 93, 194, 93),
-            (8, mixedFour, 93, 194, 93),
+            (1, normal, 92, 83, nil),
+            (2, diagnostic, 92, 179, 92),
+            (3, wideDiagnostic, 92, 179, 92),
+            (4, multilineDiagnostic, 92, 179, 92),
+            (5, mixedOne, 92, 179, 92),
+            (6, mixedTwo, 92, 179, 92),
+            (7, mixedThree, 92, 179, 92),
+            (8, mixedFour, 92, 179, 92),
         ]
         for (cycle, model, expectedScopes, expectedBytes, previousScopes) in cases {
             let active = ExecutionContext(
@@ -1323,10 +1323,10 @@ private func macOSStaticReferencePointerOutcome(
                     #expect(renderLimits.renderSink.maximumOperations == 150)
                     #expect(acceptedHeader.operationCount <= 150)
                     switch cycle {
-                    case 2: #expect(acceptedHeader.operationCount == 33)
-                    case 3: #expect(acceptedHeader.operationCount == 33)
-                    case 4: #expect(acceptedHeader.operationCount == 31)
-                    case 5 ... 8: #expect(acceptedHeader.operationCount == 33)
+                    case 2: #expect(acceptedHeader.operationCount == 31)
+                    case 3: #expect(acceptedHeader.operationCount == 31)
+                    case 4: #expect(acceptedHeader.operationCount == 30)
+                    case 5 ... 8: #expect(acceptedHeader.operationCount == 31)
                     default: #expect(acceptedHeader.operationCount > 0)
                     }
                     // The semantic candidate retains the full bounded diagnostic.
@@ -1334,14 +1334,14 @@ private func macOSStaticReferencePointerOutcome(
                     // connected readability remains a separate conformance check.
                     let expectedGlyphs: UInt16
                     switch cycle {
-                    case 1: expectedGlyphs = 97
-                    case 2: expectedGlyphs = 154
-                    case 3: expectedGlyphs = 136
-                    case 4: expectedGlyphs = 98
-                    case 5: expectedGlyphs = 100
-                    case 6: expectedGlyphs = 102
-                    case 7: expectedGlyphs = 104
-                    default: expectedGlyphs = 108
+                    case 1: expectedGlyphs = 83
+                    case 2: expectedGlyphs = 107
+                    case 3: expectedGlyphs = 99
+                    case 4: expectedGlyphs = 83
+                    case 5: expectedGlyphs = 84
+                    case 6: expectedGlyphs = 85
+                    case 7: expectedGlyphs = 86
+                    default: expectedGlyphs = 88
                     }
                     #expect(acceptedHeader.positionedGlyphCount == expectedGlyphs)
                     var operationSink = StaticNRFCountingRenderSink(
@@ -1541,7 +1541,7 @@ private func macOSStaticReferencePointerOutcome(
                         StaticSignalAnalyzerNRFSemanticRegionStore.generatedUTF8TableSummary(
                             in: .semanticPublished,
                             profile: &profile
-                        )?.scopeCount == 91
+                        )?.scopeCount == 92
                     )
                     #expect(
                         profile.withRegion(.semanticCandidate) { region in
@@ -2135,16 +2135,16 @@ private func populateSyntheticNRFCompleteTable(
 ) -> StaticSignalAnalyzerNRFPackedTableSummary? {
     let table = StaticSignalAnalyzerNRFPackedSemanticRecords.self
     var ordinal: UInt16 = 0
-    while ordinal < 91 {
+    while ordinal < 92 {
         let record = StaticSignalAnalyzerNRFScopeRecord(
             identity: ordinal + 1,
             parent: ordinal == 0 ? table.missingOrdinal : ordinal - 1,
-            firstChild: ordinal == 90 ? table.missingOrdinal : ordinal + 1,
+            firstChild: ordinal == 91 ? table.missingOrdinal : ordinal + 1,
             nextSibling: table.missingOrdinal,
-            kind: (85 ... 89).contains(ordinal) ? .canvas : .proxy,
+            kind: (86 ... 90).contains(ordinal) ? .canvas : .proxy,
             flags: 0,
             auxiliary: 0,
-            payload0: (85 ... 89).contains(ordinal) ? UInt32(ordinal - 84) : 0,
+            payload0: (86 ... 90).contains(ordinal) ? UInt32(ordinal - 85) : 0,
             payload1: 0,
             payload2: 0
         )
@@ -2158,7 +2158,7 @@ private func populateSyntheticNRFCompleteTable(
         }
         action += 1
     }
-    return StaticSignalAnalyzerNRFPackedTableSummary(scopeCount: 91, scalarCount: 0)
+    return StaticSignalAnalyzerNRFPackedTableSummary(scopeCount: 92, scalarCount: 0)
 }
 
 private final class StaticNRFPresentationInputRepository:

@@ -17,17 +17,14 @@ package struct SignalAnalyzerView: View {
     package var body: some View {
         VStack(spacing: 0) {
             SignalAnalyzerHeaderView(
-                acquisitionState: viewModel.state.acquisitionState, layout: layout)
+                acquisitionState: viewModel.state.acquisitionState,
+                errorMessage: viewModel.state.errorMessage, layout: layout)
             SignalAnalyzerWaveformView(
                 capture: viewModel.state.capture,
                 visibleRange: viewModel.visibleRange,
                 selectedWindow: viewModel.state.visibleWindow,
                 layout: layout
             )
-            if let errorMessage = viewModel.state.errorMessage {
-                Text(errorMessage.boundedText)
-                    .foregroundStyle(.red)
-            }
         }
         .foregroundStyle(.white)
         .padding(2)
@@ -37,6 +34,7 @@ package struct SignalAnalyzerView: View {
 
 package struct SignalAnalyzerHeaderView: View {
     package let acquisitionState: AcquisitionState
+    package let errorMessage: SignalAnalyzerDiagnostic?
     package let layout: SignalAnalyzerLayoutConstraints
 
     package var body: some View {
@@ -47,8 +45,9 @@ package struct SignalAnalyzerHeaderView: View {
                 Text("DIGITAL SIGNAL ANALYZER")
                 Text("Four-channel acquisition")
                     .foregroundStyle(.gray)
-                Text(acquisitionState.statusText)
-                    .foregroundStyle(acquisitionState.statusColor)
+                Text(errorMessage?.boundedText ?? BoundedText("")!)
+                    .foregroundStyle(.red)
+                    .frame(height: layout.errorLineHeight, alignment: .leading)
             }
             .frame(width: layout.headerTextWidth, alignment: .leading)
             SignalAnalyzerSquareButton(
@@ -80,7 +79,7 @@ package struct SignalAnalyzerWaveformView: View {
     package let selectedWindow: VisibleTimeWindow
 
     package var body: some View {
-        ZStack {
+        ZStack(alignment: Alignment(horizontal: .center, vertical: .bottom)) {
             SignalAnalyzerGridView()
                 .frame(maxWidth: .points(layout.gridWidth), maxHeight: .points(layout.gridHeight))
             VStack(alignment: .leading, spacing: 0) {

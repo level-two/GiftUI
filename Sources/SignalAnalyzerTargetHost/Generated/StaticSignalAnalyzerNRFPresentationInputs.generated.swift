@@ -28,23 +28,23 @@ package struct StaticSignalAnalyzerNRFGeneratedSemanticSummary: Equatable, Senda
             expansion = SemanticExpansionSummary(
                 semanticNodeCount: 41,
                 bodyEvaluationCount: 16,
-                modifierApplicationCount: 50,
+                modifierApplicationCount: 51,
                 actionOccurrenceCount: 3,
                 maximumObservedDepth: 40
             )
             structuralOccurrenceCount = 119
-            recordedTraversalIdentityCount = 188
+            recordedTraversalIdentityCount = 187
         } else {
             variant = .diagnostic
             expansion = SemanticExpansionSummary(
-                semanticNodeCount: 42,
+                semanticNodeCount: 41,
                 bodyEvaluationCount: 16,
                 modifierApplicationCount: 51,
                 actionOccurrenceCount: 3,
                 maximumObservedDepth: 40
             )
-            structuralOccurrenceCount = 121
-            recordedTraversalIdentityCount = 190
+            structuralOccurrenceCount = 119
+            recordedTraversalIdentityCount = 187
         }
         canvasOccurrenceCount = 5
     }
@@ -229,31 +229,29 @@ package struct StaticSignalAnalyzerNRFGeneratedPresentationInputs {
 
     package borrowing func textInput(at scopeOrdinal: UInt16) -> BoundedText? {
         let range = visibleRange
-        let variant = semantic.variant
-        return model.withModel { source in
+                return model.withModel { source in
             switch scopeOrdinal {
             case 8: return BoundedText("DIGITAL SIGNAL ANALYZER")
             case 10: return BoundedText("Four-channel acquisition")
-            case 12: return SignalAnalyzerControlState(acquisitionState: source.state.acquisitionState, selectedWindow: source.state.visibleWindow).statusText
-            case 21: return SignalAnalyzerControlState(acquisitionState: source.state.acquisitionState, selectedWindow: source.state.visibleWindow).recordingLabel
-            case 38: return BoundedText("-")
-            case 62: return BoundedText("+")
-            case 45, 49, 53:
+            case 13: return source.state.errorMessage?.boundedText ?? BoundedText("")!
+            case 22: return SignalAnalyzerControlState(acquisitionState: source.state.acquisitionState, selectedWindow: source.state.visibleWindow).recordingLabel
+            case 39: return BoundedText("-")
+            case 63: return BoundedText("+")
+            case 46, 50, 54:
                 let labels = SignalAnalyzerRulerLabels(visibleRange: range)
                 switch scopeOrdinal {
-                case 45: return labels.lowerBound
-                case 49: return labels.midpoint
+                case 46: return labels.lowerBound
+                case 50: return labels.midpoint
                 default: return labels.upperBound
                 }
-            case 65: return BoundedText("CH1")
-            case 72: return BoundedText("CH2")
-            case 79: return BoundedText("CH3")
-            case 86: return BoundedText("CH4")
-            case 69, 76, 83, 90:
-                let channel = Int((scopeOrdinal - 69) / 7) + 1
+            case 66: return BoundedText("CH1")
+            case 73: return BoundedText("CH2")
+            case 80: return BoundedText("CH3")
+            case 87: return BoundedText("CH4")
+            case 70, 77, 84, 91:
+                let channel = Int((scopeOrdinal - 70) / 7) + 1
                 return source.state.capture.currentLevel(for: SignalChannelID(rawValue: channel)) == .low ? BoundedText("LOW") : BoundedText("HIGH")
-            case 92 where variant == .diagnostic: return source.state.errorMessage?.boundedText
-            default: return nil
+                        default: return nil
             }
         }
     }
@@ -265,26 +263,19 @@ package struct StaticSignalAnalyzerNRFGeneratedPresentationInputs {
             let color: Color
             let background: Bool
             switch ordinal {
-            case 11:
-                switch state.acquisitionState {
-                case .running: color = .green
-                case .failed: color = .red
-                default: color = .white
-                }
-                background = false
-            case 16, 17, 19:
-                color = ordinal == 19 ? controls.recordingFill : controls.recordingColor
-                background = ordinal != 16
-            case 31, 55:
+            case 17, 18, 20:
+                color = ordinal == 20 ? controls.recordingFill : controls.recordingColor
+                background = ordinal != 17
+            case 32, 56:
                 return StaticSignalAnalyzerNRFModifierPayload(modifier: .passthrough, renderScope: .structural,
-                    disablesActions: ordinal == 31 ? state.visibleWindow == .oneSecond : state.visibleWindow == .fiveSeconds)
-            case 33, 34, 36, 57, 58, 60:
-                let disabled = ordinal < 55 ? state.visibleWindow == .oneSecond : state.visibleWindow == .fiveSeconds
-                let fill = ordinal == 36 || ordinal == 60
+                    disablesActions: ordinal == 32 ? state.visibleWindow == .oneSecond : state.visibleWindow == .fiveSeconds)
+            case 34, 35, 37, 58, 59, 61:
+                let disabled = ordinal < 56 ? state.visibleWindow == .oneSecond : state.visibleWindow == .fiveSeconds
+                let fill = ordinal == 37 || ordinal == 61
                 color = fill ? (disabled ? Color(red: 24, green: 24, blue: 24) : Color(red: 64, green: 64, blue: 64)) : (disabled ? .gray : .white)
-                background = ordinal != 33 && ordinal != 57
-            case 68, 75, 82, 89:
-                let channel = Int((ordinal - 68) / 7) + 1
+                background = ordinal != 34 && ordinal != 58
+            case 69, 76, 83, 90:
+                let channel = Int((ordinal - 69) / 7) + 1
                 color = state.capture.currentLevel(for: SignalChannelID(rawValue: channel)) == .low ? Color(red: 0, green: 128, blue: 255) : .green
                 background = false
             default: return nil

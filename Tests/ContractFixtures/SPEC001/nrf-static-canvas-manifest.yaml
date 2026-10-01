@@ -16,8 +16,8 @@ semantic_region:
   checksum_offset: 84
   checksum_coverage: full_region_except_checksum_word
 semantic_variants:
-  - { name: normal, nodes: 41, bodies: 16, modifiers: 50, actions: 3, depth: 40, structural: 119, traversal: 188 }
-  - { name: diagnostic, nodes: 42, bodies: 16, modifiers: 51, actions: 3, depth: 40, structural: 121, traversal: 190 }
+  - { name: normal, nodes: 41, bodies: 16, modifiers: 51, actions: 3, depth: 40, structural: 119, traversal: 187 }
+  - { name: diagnostic, nodes: 41, bodies: 16, modifiers: 51, actions: 3, depth: 40, structural: 119, traversal: 187 }
 callable_cases:
   - id: 1
     expression: grid

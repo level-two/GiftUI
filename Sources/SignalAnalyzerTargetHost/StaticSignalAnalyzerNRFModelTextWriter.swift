@@ -13,7 +13,7 @@ package enum StaticSignalAnalyzerNRFModelTextWriter {
         let table = StaticSignalAnalyzerNRFPackedSemanticRecords.self
         let pool = StaticSignalAnalyzerNRFUTF8TextPool.self
         guard region.count == table.regionByteCount else { return nil }
-        let scopeCount: UInt16 = variant == .normal ? 91 : 93
+        let scopeCount: UInt16 = 92
         var ordinal: UInt16 = 0
         var required: UInt16 = 0
         var textCount: UInt16 = 0
@@ -32,7 +32,7 @@ package enum StaticSignalAnalyzerNRFModelTextWriter {
             }
             ordinal += 1
         }
-        guard textCount == (variant == .normal ? 17 : 18) else { return nil }
+        guard textCount == (17) else { return nil }
         ordinal = 0
         var used: UInt16 = 0
         while ordinal < scopeCount {
@@ -78,42 +78,32 @@ package enum StaticSignalAnalyzerNRFModelTextWriter {
         switch ordinal {
         case 8: return fixed("DIGITAL SIGNAL ANALYZER")
         case 10: return fixed("Four-channel acquisition")
-        case 12: return status(model.acquisitionState)
-        case 21:
+        case 13: return model.errorMessage ?? fixed("")
+        case 22:
             if case .running = model.acquisitionState { return fixed("R") }
             return fixed("S")
-        case 38: return fixed("-")
-        case 62: return fixed("+")
-        case 45: return seconds(model.visibleRange.lowerBound)
-        case 49:
+        case 39: return fixed("-")
+        case 63: return fixed("+")
+        case 46: return seconds(model.visibleRange.lowerBound)
+        case 50:
             return seconds(
                 model.visibleRange.lowerBound
                     + (model.visibleRange.upperBound - model.visibleRange.lowerBound) / 2)
-        case 53: return seconds(model.visibleRange.upperBound)
-        case 65: return fixed("CH1")
-        case 72: return fixed("CH2")
-        case 79: return fixed("CH3")
-        case 86: return fixed("CH4")
-        case 69: return level(channel: 1, model: model, capture: capture)
-        case 76: return level(channel: 2, model: model, capture: capture)
-        case 83: return level(channel: 3, model: model, capture: capture)
-        case 90: return level(channel: 4, model: model, capture: capture)
-        case 92 where variant == .diagnostic: return model.errorMessage
+        case 54: return seconds(model.visibleRange.upperBound)
+        case 66: return fixed("CH1")
+        case 73: return fixed("CH2")
+        case 80: return fixed("CH3")
+        case 87: return fixed("CH4")
+        case 70: return level(channel: 1, model: model, capture: capture)
+        case 77: return level(channel: 2, model: model, capture: capture)
+        case 84: return level(channel: 3, model: model, capture: capture)
+        case 91: return level(channel: 4, model: model, capture: capture)
         default: return nil
         }
     }
 
     private static func fixed(_ text: StaticString) -> SignalAnalyzerDiagnostic? {
         text.withUTF8Buffer { SignalAnalyzerDiagnostic(exactUTF8: $0) }
-    }
-
-    private static func status(_ state: AcquisitionState) -> SignalAnalyzerDiagnostic? {
-        switch state {
-        case .idle: fixed("READY")
-        case .running: fixed("RUNNING")
-        case .stopped: fixed("STOPPED")
-        case .failed: fixed("FAILED")
-        }
     }
 
     private static func level(
