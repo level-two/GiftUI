@@ -1,0 +1,4 @@
+Command: swift test --disable-sandbox --scratch-path .build/test-reports/macos-dynamic/swiftpm -Xswiftc -DGIFTUI_DYNAMIC_PROFILE
+✔ Test signalAnalyzerPiSelectsTheSameReferenceFontAsNRF() passed after 5.824 seconds.
+✔ Test dynamicPiPipelineRendersFullDiagnosticWithinAmendedPreset() passed after 6.051 seconds.
+✔ Test run with 1140 tests in 17 suites passed after 123.751 seconds.

@@ -1,0 +1,1 @@
+PASS: identical Pi/nRF text pixels across 8 states (diagnostic: title/subtitle and channel labels)

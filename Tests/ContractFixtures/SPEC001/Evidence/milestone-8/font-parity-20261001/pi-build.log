@@ -1,0 +1,23 @@
+==> building SignalAnalyzerRaspberryPiARMv6 for armv6-unknown-linux-gnueabihf (release, static Swift runtime)
+[0/1] Planning build
+Building for production...
+[0/13] Write sources
+[9/13] Write swift-version-3DE8B4069F7AB4E6.txt
+[11/16] Compiling GiftUIDisplayCore DisplayContracts.swift
+[12/17] Compiling GiftUISemanticCore GiftUISemanticCore.swift
+[13/18] Compiling GiftUIDrawing CanvasInvocationSource.swift
+[14/19] Compiling SignalAnalyzerPresentation ModuleBoundary.swift
+[15/19] Compiling GiftUIRasterCore FullSurfaceRGB565Framebuffer.swift
+[16/20] Compiling GiftUIPlatformRaspberryPi LinuxPiScreenDevices.swift
+[17/20] Compiling GiftUIBackendIntegration FullSurfacePayloadEmitter.swift
+[18/20] Compiling GiftUIRuntimeDynamic DynamicCanvasCallableStorage.swift
+[19/21] Compiling SignalAnalyzerHost DynamicSignalAnalyzerActionDispatcher.swift
+[20/23] Compiling SignalAnalyzerPresetHarness HardwareFreePresetRunner.swift
+[21/23] Compiling SignalAnalyzerTargetHost DynamicSignalAnalyzerPiAssembly.swift
+[22/24] Compiling SignalAnalyzerRaspberryPiARMv6 LinuxSignalAnalyzerPiInputPump.swift
+[22/24] Write Objects.LinkFileList
+[23/24] Linking SignalAnalyzerRaspberryPiARMv6
+Build of product 'SignalAnalyzerRaspberryPiARMv6' complete! (20.19s)
+==> stripping deploy artifact
+==> verified ARMv6 hard-float binary: /Users/eugene/work/GiftUI/.build/raspberry-pi/artifacts/SignalAnalyzerRaspberryPiARMv6: ELF 32-bit LSB pie executable, ARM, EABI5 version 1 (SYSV), dynamically linked, interpreter /lib/ld-linux-armhf.so.3, for GNU/Linux 3.2.0, BuildID[sha1]=43653bd1b92acaea6557ac779d12aa67d4f0d81f, stripped
+ARTIFACT=/Users/eugene/work/GiftUI/.build/raspberry-pi/artifacts/SignalAnalyzerRaspberryPiARMv6

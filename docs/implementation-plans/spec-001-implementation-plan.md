@@ -2396,3 +2396,9 @@ constraints and confines the grid/traces between channel and state labels.
 Normal/diagnostic scope counts and resource budgets remain unchanged. T7.7
 retains its reviewed-reference blocker, and T8.2 retains its connected-target
 evidence boundary; these implementation fixes do not promote either gate.
+
+The subsequent [shared-font correction](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-8/font-parity-20261001/README.md)
+aligns Dynamic Pi assembly, layout, and raster selection with SPEC-005's Inter
+reference resource used on nRF. Text pixels match across host captures, and
+surface-derived constraints accommodate its line metrics on the smaller Pi
+logical display. This remains implementation evidence under T6.8/T7.7.

@@ -1,0 +1,1 @@
+SPEC-001 Pi production-loop faults passed: startup display, later display, and input overflow.
