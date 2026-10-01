@@ -27,7 +27,7 @@ package struct StaticSignalAnalyzerNRFEmbeddedResolvedLayoutView {
 
     package var isPublished: Bool {
         text.count == StaticSignalAnalyzerNRFEmbeddedLayoutTextCodec.regionByteCount
-            && text[StaticSignalAnalyzerNRFEmbeddedLayoutTextCodec.scratchOffset + 26] == 1
+            && text[StaticSignalAnalyzerNRFEmbeddedLayoutTextCodec.scratchOffset + 38] == 1
     }
 
     package func scope(

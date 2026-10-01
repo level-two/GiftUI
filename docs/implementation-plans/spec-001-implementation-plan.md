@@ -2402,3 +2402,13 @@ aligns Dynamic Pi assembly, layout, and raster selection with SPEC-005's Inter
 reference resource used on nRF. Text pixels match across host captures, and
 surface-derived constraints accommodate its line metrics on the smaller Pi
 logical display. This remains implementation evidence under T6.8/T7.7.
+
+### Maintainer-requested touch controls (2026-10-01)
+
+Under T6.8/T7.7, replace the six visible controls with the specified upper-right
+R/S toggle and bordered 44-point minus/plus controls. Preserve the finite six
+application operations, five Canvas occurrences, approved Inter resource,
+static storage size, and lifecycle gates. Validate adjacent window transitions,
+disabled endpoints, hit bounds, shared static projection, firmware ABI/budgets,
+and production host captures. The SPEC-001 control amendment records the
+maintainer's explicit request; SPEC-015's descriptor remains the limit source.

@@ -2941,19 +2941,16 @@ func signalAnalyzerWaveformResolvesSurfaceConstraints(width: Int32, height: Int3
         Issue.record("surface hierarchy failed")
         return
     }
-    var workspace = DynamicLayoutWorkspace(limits: preset.runtimeLimits.layout)
+    let layoutLimits = preset.runtimeLimits.layout
+    var workspace = DynamicLayoutWorkspace(limits: layoutLimits)
     var sink = ResolvedRenderLayoutResultSink(
-        storage: DynamicResolvedLayoutStorage(limits: preset.runtimeLimits.layout))
-    guard
-        case .success = layout(
-            semantic: semantic,
-            metrics: GiftUIReferenceTextResources.targetPackage.metrics,
-            proposal: ProposedSize(width: width, height: height)!,
-            limits: preset.runtimeLimits.layout,
-            workspace: &workspace, sink: &sink
-        )
-    else {
-        Issue.record("surface layout failed")
+        storage: DynamicResolvedLayoutStorage(limits: layoutLimits))
+    let layoutResult = layout(
+        semantic: semantic, metrics: GiftUIReferenceTextResources.targetPackage.metrics,
+        proposal: ProposedSize(width: width, height: height)!, limits: layoutLimits,
+        workspace: &workspace, sink: &sink)
+    guard case .success = layoutResult else {
+        Issue.record("surface layout failed: \(layoutResult)")
         return
     }
     var canvases = 0
@@ -2999,4 +2996,64 @@ func signalAnalyzerWaveformResolvesSurfaceConstraints(width: Int32, height: Int3
             #expect(bounds.origin.x >= plotBounds.origin.x + plotBounds.size.width)
         }
     }
+}
+
+@Test func analyzerTouchButtonsHaveSquareHitsAndDisableWindowEndpoints() throws {
+    #if GIFTUI_DYNAMIC_PROFILE
+        let preset = GeneratedSignalAnalyzerPresets.raspberryPiDynamic()
+        for window in [VisibleTimeWindow.oneSecond, .twoSeconds, .fiveSeconds] {
+            let model = makeSemanticJoinModel()
+            model.visibleDurationChanged(window)
+            var pipeline = try #require(
+                DynamicSignalAnalyzerPresentationPipeline(
+                    limits: preset.runtimeLimits, maximumRecordedTraversalIdentities: 203,
+                    logicalWidth: 240, logicalHeight: 240))
+            let result = pipeline.derive(
+                model: model, cycle: RunCycleID(rawValue: 1),
+                semanticRevision: SemanticRevision(rawValue: 1))
+            guard case .success(let summary) = result else {
+                Issue.record("touch UI derivation failed: \(result)")
+                continue
+            }
+            #expect(summary.interactionOccurrenceCount == 3)
+            var endpoint = SemanticJoinEndpoint(capacity: preset.runtimeLimits.renderSink)
+            let offer = pipeline.offer(
+                endpoint: &endpoint,
+                provenance: FrameProvenance(
+                    cycle: RunCycleID(rawValue: 1),
+                    semanticRevision: SemanticRevision(rawValue: 1),
+                    candidateFrame: CandidateFrameID(rawValue: 1)),
+                expectedHeader: summary.render)
+            #expect(
+                pipeline.resolveInteraction(
+                    offer: offer, presentationRevision: PresentationRevision(rawValue: 1))
+                    == .committed(PresentationRevision(rawValue: 1)))
+            let actions = (0 ..< pipeline.committedActionCount).compactMap {
+                pipeline.committedAction(at: $0)
+            }
+            for action in actions {
+                #expect(action.hitBounds.size == Size(width: 44, height: 44)!)
+            }
+            let record = try #require(
+                actions.first { $0.action.code == SignalAnalyzerAction.start.rawValue })
+            #expect(record.hitBounds.maxX == 238)
+            #expect(record.hitBounds.minY == 2)
+            let minus = Point(x: 26, y: 108)
+            let plus = Point(x: 214, y: 108)
+            if window == .oneSecond {
+                #expect(pipeline.resolveDown(at: minus) == .ignored)
+            } else {
+                guard case .captured(let captured) = pipeline.resolveDown(at: minus) else {
+                    Issue.record("minus button was not finger reachable")
+                    continue
+                }
+                #expect(pipeline.resolveUp(captured, at: minus) == .activationAdmitted(captured))
+                #expect(pipeline.dispatch(captured) == .dispatched)
+                #expect(
+                    model.state.visibleWindow == (window == .fiveSeconds ? .twoSeconds : .oneSecond)
+                )
+            }
+            if window == .fiveSeconds { #expect(pipeline.resolveDown(at: plus) == .ignored) }
+        }
+    #endif
 }

@@ -296,3 +296,21 @@ surface fits the shared 20-point line metrics through the existing constraints.
 
 [Font identity, pixel parity and ARMv6 evidence](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-8/font-parity-20261001/README.md)
 records this correction. Connected-hardware and reviewed-reference gates remain open.
+
+## Touch-control revision (2026-10-01)
+
+The maintainer-requested three-control UI uses existing qualified finite actions,
+with R/S selecting Stop/Start and minus/plus selecting the adjacent window.
+Nested opaque backgrounds produce two-pixel rectangular borders without adding
+Canvas occurrences. A 40-point inner frame plus a two-point border on every side
+produces a 44-point square hit area with centered labels. Control wrappers keep
+left/right placement explicit in the shared layout hierarchy.
+
+Measured normal/diagnostic projections use 91/93 scopes, 41/42 semantic nodes,
+50/51 modifiers, 16 body evaluations, and 188/190 traversal identities. The
+new border/frame nesting requires semantic depth 40, layout/render traversal
+depth 19, and clip depth five. The existing workload descriptor now supplies
+these bounds. Region allocations remain unchanged: the 4,704-byte text/render
+region has a 416-byte scratch tail. Its layout identity stack needs 38 bytes,
+publication marker uses byte 38, and render visitation begins at byte 48.
+The semantic/layout visitation bytes and 19 foreground colors still fit there.

@@ -7,7 +7,7 @@ import GiftUITextResources
 /// The owner must finish the profile opportunity before reusing either region.
 package struct StaticSignalAnalyzerNRFLayoutWorkspace: LayoutWorkspace {
     package let maximumScopes: UInt16 = 98
-    package let maximumDepth: UInt16 = 13
+    package let maximumDepth: UInt16 = 19
     package let maximumTextScalars: UInt16 = 224
     package let maximumTextLines: UInt16 = 128
     package let maximumPositionedGlyphs: UInt16 = 224
@@ -280,7 +280,7 @@ package struct StaticSignalAnalyzerNRFLayoutWorkspace: LayoutWorkspace {
     }
 
     package static let publishedMarkerOffset =
-        StaticSignalAnalyzerNRFLayoutTextCodec.scratchOffset + 26
+        StaticSignalAnalyzerNRFLayoutTextCodec.scratchOffset + 38
 
     private func intersection(_ a: Rect, _ b: Rect) -> Rect? {
         LayoutGeometry.intersection(a, b)

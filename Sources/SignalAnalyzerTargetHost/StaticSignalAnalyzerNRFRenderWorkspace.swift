@@ -19,10 +19,10 @@ package struct StaticSignalAnalyzerNRFRenderWorkspace: RenderProductionWorkspace
     #else
         private static let scratchOffset = StaticSignalAnalyzerNRFLayoutTextCodec.scratchOffset
     #endif
-    private static let semanticOffset = scratchOffset + 32
+    private static let semanticOffset = scratchOffset + 48
     private static let layoutOffset = semanticOffset + 98
     private static let foregroundOffset = layoutOffset + 98
-    private static let maximumScratchEnd = foregroundOffset + 13 * 3
+    private static let maximumScratchEnd = foregroundOffset + 19 * 3
 
     package init?(
         region: UnsafeMutableRawBufferPointer,
@@ -32,7 +32,7 @@ package struct StaticSignalAnalyzerNRFRenderWorkspace: RenderProductionWorkspace
         guard region.count == 4_704,
             structuralCapacity.maximumSemanticScopes <= 98,
             structuralCapacity.maximumLayoutScopes <= 98,
-            structuralCapacity.maximumTraversalDepth <= 13,
+            structuralCapacity.maximumTraversalDepth <= 19,
             Self.maximumScratchEnd <= region.count
         else { return nil }
         self.region = region

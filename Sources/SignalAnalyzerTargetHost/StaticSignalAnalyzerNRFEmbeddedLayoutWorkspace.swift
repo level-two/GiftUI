@@ -110,7 +110,7 @@ package struct StaticSignalAnalyzerNRFEmbeddedLayoutWorkspace {
     }
 
     package mutating func pushScope(_ identity: UInt16) -> Bool {
-        guard isActive, depth < 13,
+        guard isActive, depth < 19,
             scopeOrdinal(of: identity) != nil
         else { return false }
         let offset =
@@ -253,7 +253,7 @@ package struct StaticSignalAnalyzerNRFEmbeddedLayoutWorkspace {
         guard isActive, depth == 0,
             scopeCount == expectedScopeCount,
             scopeCount > 0,
-            text[StaticSignalAnalyzerNRFEmbeddedLayoutTextCodec.scratchOffset + 26] == 0,
+            text[StaticSignalAnalyzerNRFEmbeddedLayoutTextCodec.scratchOffset + 38] == 0,
             scopeOrdinal(of: rootIdentity) != nil
         else { return nil }
         var scopeCursor: UInt16 = 0
@@ -285,7 +285,7 @@ package struct StaticSignalAnalyzerNRFEmbeddedLayoutWorkspace {
             else { return nil }
             glyphOrdinal += 1
         }
-        text[StaticSignalAnalyzerNRFEmbeddedLayoutTextCodec.scratchOffset + 26] = 1
+        text[StaticSignalAnalyzerNRFEmbeddedLayoutTextCodec.scratchOffset + 38] = 1
         isActive = false
         return StaticSignalAnalyzerNRFEmbeddedResolvedLayoutView(
             scopes: scopes, text: text,

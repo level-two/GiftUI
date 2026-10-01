@@ -7,6 +7,14 @@ package enum VisibleTimeWindow: Equatable, Sendable {
     case twoSeconds
     case fiveSeconds
 
+    package var shorterAction: SignalAnalyzerAction {
+        self == .fiveSeconds ? .selectTwoSeconds : .selectOneSecond
+    }
+
+    package var longerAction: SignalAnalyzerAction {
+        self == .oneSecond ? .selectTwoSeconds : .selectFiveSeconds
+    }
+
     package var duration: Duration {
         switch self {
         case .oneSecond: .seconds(1)

@@ -9,7 +9,7 @@
             guard workspace.acquireLayout(),
                 let limits = LayoutLimits(
                     maximumScopes: 98,
-                    maximumDepth: 13,
+                    maximumDepth: 19,
                     maximumTextScalars: 224,
                     maximumTextLines: 128,
                     maximumPositionedGlyphs: 224

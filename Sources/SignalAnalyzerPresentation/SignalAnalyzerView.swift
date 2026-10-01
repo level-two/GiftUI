@@ -16,21 +16,20 @@ package struct SignalAnalyzerView: View {
 
     package var body: some View {
         VStack(spacing: 0) {
-            SignalAnalyzerHeaderView(acquisitionState: viewModel.state.acquisitionState)
+            SignalAnalyzerHeaderView(
+                acquisitionState: viewModel.state.acquisitionState, layout: layout)
             SignalAnalyzerWaveformView(
                 capture: viewModel.state.capture,
                 visibleRange: viewModel.visibleRange,
+                selectedWindow: viewModel.state.visibleWindow,
                 layout: layout
-            )
-            SignalAnalyzerControlsView(
-                acquisitionState: viewModel.state.acquisitionState,
-                selectedWindow: viewModel.state.visibleWindow
             )
             if let errorMessage = viewModel.state.errorMessage {
                 Text(errorMessage.boundedText)
                     .foregroundStyle(.red)
             }
         }
+        .foregroundStyle(.white)
         .padding(2)
         .background(.black)
     }
@@ -38,21 +37,28 @@ package struct SignalAnalyzerView: View {
 
 package struct SignalAnalyzerHeaderView: View {
     package let acquisitionState: AcquisitionState
+    package let layout: SignalAnalyzerLayoutConstraints
 
     package var body: some View {
-        VStack(alignment: .leading, spacing: 2) {
+        let controls = SignalAnalyzerControlState(
+            acquisitionState: acquisitionState, selectedWindow: .twoSeconds)
+        HStack(alignment: .top, spacing: 4) {
             VStack(alignment: .leading, spacing: 2) {
                 Text("DIGITAL SIGNAL ANALYZER")
-                    .foregroundStyle(.white)
                 Text("Four-channel acquisition")
                     .foregroundStyle(.gray)
+                Text(acquisitionState.statusText)
+                    .foregroundStyle(acquisitionState.statusColor)
             }
-            Spacer()
-            Text(acquisitionState.statusText)
-                .foregroundStyle(acquisitionState.statusColor)
-                .padding(2)
-                .background(SignalAnalyzerSurfaceColor.statusBackground)
+            .frame(width: layout.headerTextWidth, alignment: .leading)
+            SignalAnalyzerSquareButton(
+                label: controls.recordingLabel, action: controls.recordingAction,
+                color: controls.recordingColor, fill: controls.recordingFill,
+                size: layout.buttonSize
+            )
         }
+        .frame(
+            height: layout.headerHeight, alignment: Alignment(horizontal: .leading, vertical: .top))
     }
 }
 
@@ -61,21 +67,45 @@ package struct SignalAnalyzerWaveformView: View {
 
     package init(
         capture: SignalCapture, visibleRange: Range<Duration>,
+        selectedWindow: VisibleTimeWindow = .twoSeconds,
         layout: SignalAnalyzerLayoutConstraints = .reference
     ) {
         self.capture = capture
         self.visibleRange = visibleRange
+        self.selectedWindow = selectedWindow
         self.layout = layout
     }
     package let capture: SignalCapture
     package let visibleRange: Range<Duration>
+    package let selectedWindow: VisibleTimeWindow
 
     package var body: some View {
         ZStack {
             SignalAnalyzerGridView()
                 .frame(maxWidth: .points(layout.gridWidth), maxHeight: .points(layout.gridHeight))
             VStack(alignment: .leading, spacing: 0) {
-                SignalAnalyzerTimeRulerView(visibleRange: visibleRange)
+                HStack(spacing: 2) {
+                    SignalAnalyzerSquareButton(
+                        label: BoundedText("-")!, action: selectedWindow.shorterAction,
+                        color: selectedWindow == .oneSecond ? .gray : .white,
+                        fill: selectedWindow == .oneSecond
+                            ? Color(red: 24, green: 24, blue: 24)
+                            : Color(red: 64, green: 64, blue: 64),
+                        size: layout.buttonSize, isDisabled: selectedWindow == .oneSecond
+                    )
+                    SignalAnalyzerTimeRulerView(
+                        visibleRange: visibleRange, labelWidth: layout.rulerLabelWidth
+                    )
+                    .frame(width: layout.traceWidth)
+                    SignalAnalyzerSquareButton(
+                        label: BoundedText("+")!, action: selectedWindow.longerAction,
+                        color: selectedWindow == .fiveSeconds ? .gray : .white,
+                        fill: selectedWindow == .fiveSeconds
+                            ? Color(red: 24, green: 24, blue: 24)
+                            : Color(red: 64, green: 64, blue: 64),
+                        size: layout.buttonSize, isDisabled: selectedWindow == .fiveSeconds
+                    )
+                }
                 SignalAnalyzerChannelWaveformView(
                     layout: layout,
                     channelID: SignalChannelID(rawValue: 1),
@@ -114,17 +144,21 @@ package struct SignalAnalyzerWaveformView: View {
 
 package struct SignalAnalyzerTimeRulerView: View {
     package let visibleRange: Range<Duration>
+    package var labelWidth: GeometryScalar = 72
 
     package var body: some View {
         let labels = SignalAnalyzerRulerLabels(visibleRange: visibleRange)
         HStack(spacing: 2) {
             Text(labels.lowerBound)
+                .frame(width: labelWidth)
                 .foregroundStyle(.gray)
             Spacer()
             Text(labels.midpoint)
+                .frame(width: labelWidth)
                 .foregroundStyle(.gray)
             Spacer()
             Text(labels.upperBound)
+                .frame(width: labelWidth)
                 .foregroundStyle(.gray)
         }
         .padding(.horizontal, 2)
@@ -153,8 +187,7 @@ package struct SignalAnalyzerChannelWaveformView: View {
             Text(level.label)
                 .foregroundStyle(level.foregroundColor)
         }
-        .padding(.vertical, 0)
-        .foregroundStyle(.white)
+
     }
 }
 
@@ -272,44 +305,35 @@ package func drawSignalAnalyzerTrace(
     }
 }
 
-package struct SignalAnalyzerControlsView: View {
-    package let acquisitionState: AcquisitionState
-    package let selectedWindow: VisibleTimeWindow
+package struct SignalAnalyzerSquareButton: View {
+    package let label: BoundedText
+    package let action: SignalAnalyzerAction
+    package let color: Color
+    package let fill: Color
+    package let size: GeometryScalar
+    package var isDisabled = false
 
     package var body: some View {
-        let controlState = SignalAnalyzerControlState(
-            acquisitionState: acquisitionState,
-            selectedWindow: selectedWindow
-        )
-        VStack(spacing: 2) {
-            HStack(spacing: 4) {
-                Button("Start", action: SignalAnalyzerAction.start)
-                    .foregroundStyle(.white)
-                    .disabled(controlState.startDisabled)
-                Button("Stop", action: SignalAnalyzerAction.stop)
-                    .foregroundStyle(.white)
-                    .disabled(controlState.stopDisabled)
-                Button("Clear", action: SignalAnalyzerAction.clear)
-                    .foregroundStyle(.white)
+        VStack(spacing: 0) {
+            Button(action: action) {
+                Text(label)
+                    .frame(width: size - 4, height: size - 4)
+                    .background(fill)
+                    .padding(2)
+                    .background(color)
+                    .foregroundStyle(color)
             }
-            HStack(spacing: 4) {
-                Button("1 s", action: SignalAnalyzerAction.selectOneSecond)
-                    .foregroundStyle(.white)
-                    .disabled(controlState.oneSecondDisabled)
-                Button("2 s", action: SignalAnalyzerAction.selectTwoSeconds)
-                    .foregroundStyle(.white)
-                    .disabled(controlState.twoSecondsDisabled)
-                Button("5 s", action: SignalAnalyzerAction.selectFiveSeconds)
-                    .foregroundStyle(.white)
-                    .disabled(controlState.fiveSecondsDisabled)
-            }
+            .disabled(isDisabled)
         }
-        .padding(1)
-        .background(SignalAnalyzerSurfaceColor.controlsBackground)
     }
+
 }
 
 package struct SignalAnalyzerControlState: Equatable, Sendable {
+    package let recordingLabel: BoundedText
+    package let recordingAction: SignalAnalyzerAction
+    package let recordingColor: Color
+    package let recordingFill: Color
     package let statusText: BoundedText
     package let startDisabled: Bool
     package let stopDisabled: Bool
@@ -318,6 +342,13 @@ package struct SignalAnalyzerControlState: Equatable, Sendable {
     package let fiveSecondsDisabled: Bool
 
     package init(acquisitionState: AcquisitionState, selectedWindow: VisibleTimeWindow) {
+        let isRecording: Bool
+        if case .running = acquisitionState { isRecording = true } else { isRecording = false }
+        recordingLabel = BoundedText(isRecording ? "R" : "S")!
+        recordingAction = isRecording ? .stop : .start
+        recordingColor = isRecording ? .green : Color(red: 255, green: 96, blue: 128)
+        recordingFill =
+            isRecording ? Color(red: 0, green: 48, blue: 16) : Color(red: 56, green: 16, blue: 32)
         switch acquisitionState {
         case .idle:
             statusText = BoundedText("READY")!

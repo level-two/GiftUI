@@ -355,19 +355,24 @@ The analyzer MUST present one screen containing:
 - four explicit rows named `CH1`, `CH2`, `CH3`, and `CH4`;
 - a visible HIGH or LOW label for every channel;
 - a time grid and a data-driven digital trace for every channel;
-- Start, Stop, and Clear controls;
-- explicit `1 s`, `2 s`, and `5 s` visible-window controls;
+- one square recording toggle in the upper-right corner, showing `R` while running and `S` otherwise;
+- square minus and plus controls above the channel-label and state-label columns;
 - acquisition error text when startup or source processing fails.
 
 The user-visible behavior MUST satisfy these rules:
 
 - Start begins or resumes progressive transition acquisition.
-- Start is disabled while acquisition state is running.
-- Stop pauses an active acquisition and is disabled otherwise.
+- The recording toggle dispatches Stop while running and Start otherwise.
+- Stop pauses an active acquisition.
 - Clear empties retained history and resets capture time without changing the
   acquisition state.
-- Selecting a visible window changes the rendered range immediately; the
-  selected window control is disabled.
+- Minus selects the adjacent shorter window and Plus the adjacent longer window
+  in the ordered sequence `1 s`, `2 s`, `5 s`. Selection changes the rendered range
+  immediately. Minus is disabled at `1 s`; Plus is disabled at `5 s`.
+- The three visible controls MUST have opaque fills, rectangular borders, and
+  square hit bounds at least 44 logical pixels wide and high.
+- Clear remains an application operation for tests and integrations, without
+  a visible button.
 - State and capture changes invalidate the portable Presentation through
   GiftUI's provided observation mechanism.
 - The screen need not render more than once every 250 milliseconds, but the
@@ -915,17 +920,12 @@ struct SignalAnalyzerView: View {
 }
 ```
 
-Its portable controls MUST use qualified finite actions, including these exact
-action mappings:
-
-```swift
-Button("Start", action: SignalAnalyzerAction.start)
-Button("Stop", action: SignalAnalyzerAction.stop)
-Button("Clear", action: SignalAnalyzerAction.clear)
-Button("1 s", action: SignalAnalyzerAction.selectOneSecond)
-Button("2 s", action: SignalAnalyzerAction.selectTwoSeconds)
-Button("5 s", action: SignalAnalyzerAction.selectFiveSeconds)
-```
+Its three portable controls MUST use qualified finite actions. The recording
+control selects `SignalAnalyzerAction.stop` while running and `.start` otherwise.
+Minus selects `.selectOneSecond` from either `1 s` (disabled) or `2 s`, and
+`.selectTwoSeconds` from `5 s`. Plus selects `.selectTwoSeconds` from `1 s`, and
+`.selectFiveSeconds` from either `2 s` or `5 s` (disabled). The finite action
+codes and handler retain the existing six operations, including Clear.
 
 No portable Button may capture `viewModel`, a use case, repository, adapter,
 or closure. Target assembly MUST install exactly one
@@ -1256,19 +1256,14 @@ The hierarchy MUST be structurally equivalent to:
 ```text
 SignalAnalyzerView
 ├── header
-│   ├── title and subtitle
-│   └── acquisition status
+│   ├── title, subtitle, and acquisition status
+│   └── square R/S recording toggle
 ├── WaveformView
-│   ├── time ruler
+│   ├── minus button, time ruler, plus button
 │   ├── ChannelWaveformView for CH1
 │   ├── ChannelWaveformView for CH2
 │   ├── ChannelWaveformView for CH3
 │   └── ChannelWaveformView for CH4
-├── controls
-│   ├── Start
-│   ├── Stop
-│   ├── Clear
-│   └── 1 s, 2 s, and 5 s window buttons
 └── error text
 ```
 
@@ -1277,22 +1272,24 @@ Canvas and one trace Canvas for each of the four explicit channels. This is the
 application-side workload consumed by SPEC-012 and SPEC-015; it does not let
 the application select producer storage or backend realization.
 
-The four channel rows and three window controls MUST be declared explicitly.
+The four channel rows and three visible controls MUST be declared explicitly.
 The portable hierarchy MUST NOT require dynamic collections, scrolling,
 navigation, menus, animations, gestures, environment values, geometry readers,
 gradients, shadows, clipping, opacity, or alpha compositing.
 
 ### Status and disabled state
 
-| Acquisition state | Status text | Start | Stop |
+| Acquisition state | Status text | Toggle letter | Toggle action |
 | --- | --- | --- | --- |
-| idle | READY | Enabled | Disabled |
-| running | RUNNING | Disabled | Enabled |
-| stopped | STOPPED | Enabled | Disabled |
-| failed | FAILED | Enabled | Disabled |
+| idle | READY | S | Start |
+| running | RUNNING | R | Stop |
+| stopped | STOPPED | S | Start |
+| failed | FAILED | S | Start |
 
-Clear MUST remain enabled in every state. Exactly one visible-window control
-MUST be disabled: the currently selected window.
+The toggle remains enabled in every state. Minus is disabled only at `1 s`;
+Plus is disabled only at `5 s`. Disabled controls MUST not admit activation.
+Clear remains available through the application handler and retains its
+specified reset behavior, without a visible control.
 
 ### Waveform and ruler
 
@@ -1745,7 +1742,7 @@ Tests MUST verify:
 - thrown and published failures appear as error text;
 - visible-window selection and exact range calculation;
 - the status and disabled-state table for every acquisition state;
-- the four explicit channel rows and three explicit window controls;
+- the four explicit channel rows and three explicit controls;
 - lower-bound baseline reconstruction and transition-to-path mapping;
 - time-ruler lower, midpoint, and upper labels;
 - grid line count and trace continuity to both canvas edges.
@@ -1865,7 +1862,7 @@ behavioral, resource, profile, or connected-hardware evidence.
 - [ ] **SA-AC-016:** Initial Presentation state is idle, empty, two seconds,
   and error-free; applied facts mutate it only in the GiftUI domain and produce
   synchronous model-owned change reports.
-- [x] **SA-AC-017:** Start, Stop, Clear, and window controls match all specified
+- [x] **SA-AC-017:** The recording toggle and adjacent-window controls match all specified
   enabled and disabled states.
 - [x] **SA-AC-018:** Visible ranges for 1, 2, and 5 seconds follow the exact
   formula and always span the selected duration.
@@ -2114,3 +2111,13 @@ contract, and this Specification does not create an additional relationship.
 - External implementation evidence: the SignalAnalyzer playground source and
   tests.
 - [SPIKE-003: Portable Observable Reference State Feasibility](../spikes/spike-003-portable-observable-reference-state-feasibility.md)
+
+## Maintainer-requested control revision — 2026-10-01
+
+The maintainer requested replacement of the six visible controls with one
+upper-right R/S recording toggle and minus/plus window steppers, square borders,
+opaque fills, finger-sized padding, and disabled range endpoints. This amendment
+records that explicit requested behavior. It leaves accepted architecture,
+finite application operations, capture/Clear semantics, and lifecycle status
+unchanged. Borders use existing nested rectangular backgrounds rather than
+additional Canvas occurrences. Implementation and validation remain required.
