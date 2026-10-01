@@ -50,6 +50,7 @@ static unsigned diagnostic_injected;
 static unsigned touch_probe_stage;
 static uint64_t touch_probe_released_at;
 static uint64_t acquisition_started_at;
+static unsigned touch_probe_mode;
 
 static void capture_frame(const char *name)
 {
@@ -188,7 +189,7 @@ int ads7846_pen_is_down(void)
         return 0;
     }
     if (script_stage == 0U) {
-        if (fault_mode == NULL && touch_probe_stage < 8U) {
+        if (touch_probe_mode != 0U && touch_probe_stage < 8U) {
             assert(revision == 1U);
             assert(giftui_signal_analyzer_acquisition_state() == 0U);
             switch (touch_probe_stage) {
@@ -221,6 +222,7 @@ int ads7846_pen_is_down(void)
                 if (touch_probe_stage == 8U) {
                     printf("trace=touch-probe\thold=cancelled\tmiss=ignored"
                            "\trevision=1\tstatus=passed\n");
+                    return -ECANCELED;
                 }
                 return 0;
             case 5U:
@@ -384,6 +386,7 @@ int main(void)
     fault_mode = getenv("GIFTUI_REHEARSAL_FAULT");
     const char *diagnostic = getenv("GIFTUI_REHEARSAL_DIAGNOSTIC");
     diagnostic_mode = diagnostic == NULL ? 0U : (diagnostic[0] == 'm' ? 2U : 1U);
+    touch_probe_mode = getenv("GIFTUI_REHEARSAL_TOUCH_PROBE") != NULL;
     struct giftui_static_host_storage regions;
     assert(giftui_signal_analyzer_storage_regions(&regions) == 0);
     assert(regions.profile_bytes == 39696U);
@@ -393,6 +396,16 @@ int main(void)
 
 
     const int result = giftui_firmware_main();
+    if (touch_probe_mode != 0U) {
+        assert(result == -ECANCELED && touch_probe_stage == 8U);
+        assert(shutdown_order == 2U);
+        assert(display_writes == first_frame_write_count);
+        assert(giftui_signal_analyzer_initial_model_active() == 0U);
+        assert(giftui_signal_analyzer_current_revision() == 0U);
+        assert(giftui_signal_analyzer_initial_committed_actions() == 0U);
+        printf("status=passed\tprofile=nrf52840-static\tevidence=raw-touch-probes\n");
+        return 0;
+    }
     if (diagnostic_mode != 0U) {
         assert(result == -ECANCELED);
         assert(diagnostic_injected == 1U && last_traced_revision == 2U);

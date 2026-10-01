@@ -49,3 +49,9 @@ for source in "${c_sources[@]}"; do
 done
 swiftc "${objects[@]}" -o "${output}/host-native-rehearsal"
 "${output}/host-native-rehearsal"
+# Keep negative touch probes in a separate firmware lifetime so their idle time
+# cannot shift the paced acquisition corpus compared with the macOS oracle.
+env -u GIFTUI_REHEARSAL_RASTERS -u GIFTUI_REHEARSAL_FAULT -u GIFTUI_REHEARSAL_DIAGNOSTIC \
+    GIFTUI_REHEARSAL_TOUCH_PROBE=1 "${output}/host-native-rehearsal" \
+    > "${output}/touch-probes.tsv"
+grep '^trace=touch-probe' "${output}/touch-probes.tsv"
