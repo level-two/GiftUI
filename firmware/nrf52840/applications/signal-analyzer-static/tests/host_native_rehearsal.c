@@ -47,6 +47,9 @@ static uint8_t recorded_surface[320U * 240U * 2U];
 static const char *fault_mode;
 static unsigned diagnostic_mode;
 static unsigned diagnostic_injected;
+static unsigned touch_probe_stage;
+static uint64_t touch_probe_released_at;
+static uint64_t acquisition_started_at;
 
 static void capture_frame(const char *name)
 {
@@ -185,6 +188,49 @@ int ads7846_pen_is_down(void)
         return 0;
     }
     if (script_stage == 0U) {
+        if (fault_mode == NULL && touch_probe_stage < 8U) {
+            assert(revision == 1U);
+            assert(giftui_signal_analyzer_acquisition_state() == 0U);
+            switch (touch_probe_stage) {
+            case 0U:
+                touch_point = giftui_signal_analyzer_action_point(0U);
+                assert(touch_point != 0U);
+                touch_probe_stage++;
+                return 1;
+            case 1U:
+                /* Holding the button must not dispatch before release. */
+                touch_probe_stage++;
+                return 1;
+            case 2U:
+                /* Drag into the waveform, cancelling the captured button. */
+                touch_point = (220U << 16) | 120U;
+                touch_probe_stage++;
+                return 1;
+            case 3U:
+            case 6U:
+                touch_probe_released_at = clock_microseconds;
+                touch_probe_stage++;
+                return 0;
+            case 4U:
+            case 7U:
+                if (clock_microseconds < touch_probe_released_at + 260000U) {
+                    return 0;
+                }
+                assert(display_writes == first_frame_write_count);
+                touch_probe_stage++;
+                if (touch_probe_stage == 8U) {
+                    printf("trace=touch-probe\thold=cancelled\tmiss=ignored"
+                           "\trevision=1\tstatus=passed\n");
+                }
+                return 0;
+            case 5U:
+                /* A complete tap on empty content must also be ignored. */
+                touch_probe_stage++;
+                return 1;
+            default:
+                assert(0);
+            }
+        }
         if (touch_phase == 0U) {
             touch_point = giftui_signal_analyzer_action_point(0U);
             assert(touch_point != 0U);
@@ -196,13 +242,14 @@ int ads7846_pen_is_down(void)
             return 0;
         }
         if (giftui_signal_analyzer_acquisition_state() == 1U) {
+            acquisition_started_at = clock_microseconds;
             script_stage = 1U;
             touch_phase = 0U;
         }
         return 0;
     }
     if (script_stage == 1U) {
-        if (clock_microseconds >= 1000000U &&
+        if (clock_microseconds >= acquisition_started_at + 1000000U &&
             giftui_signal_analyzer_capture_revision() < 50U) {
             fprintf(stderr, "source-stalled clock=%llu capture=%u frame=%u state=%u delay=%llu\n",
                     (unsigned long long)clock_microseconds,
