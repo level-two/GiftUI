@@ -4,8 +4,13 @@ import SignalAnalyzerDomain
 @ObservableStateHost
 package struct SignalAnalyzerView: View {
     @State private var viewModel: SignalAnalyzerViewModel
+    private let layout: SignalAnalyzerLayoutConstraints
 
-    package init(viewModel: SignalAnalyzerViewModel) {
+    package init(
+        viewModel: SignalAnalyzerViewModel,
+        layout: SignalAnalyzerLayoutConstraints = .reference
+    ) {
+        self.layout = layout
         _viewModel = State(wrappedValue: viewModel)
     }
 
@@ -14,7 +19,8 @@ package struct SignalAnalyzerView: View {
             SignalAnalyzerHeaderView(acquisitionState: viewModel.state.acquisitionState)
             SignalAnalyzerWaveformView(
                 capture: viewModel.state.capture,
-                visibleRange: viewModel.visibleRange
+                visibleRange: viewModel.visibleRange,
+                layout: layout
             )
             SignalAnalyzerControlsView(
                 acquisitionState: viewModel.state.acquisitionState,
@@ -51,34 +57,48 @@ package struct SignalAnalyzerHeaderView: View {
 }
 
 package struct SignalAnalyzerWaveformView: View {
+    package let layout: SignalAnalyzerLayoutConstraints
+
+    package init(
+        capture: SignalCapture, visibleRange: Range<Duration>,
+        layout: SignalAnalyzerLayoutConstraints = .reference
+    ) {
+        self.capture = capture
+        self.visibleRange = visibleRange
+        self.layout = layout
+    }
     package let capture: SignalCapture
     package let visibleRange: Range<Duration>
 
     package var body: some View {
         ZStack {
             SignalAnalyzerGridView()
-                .frame(width: 120, height: 96)
+                .frame(maxWidth: .points(layout.gridWidth), maxHeight: .points(layout.gridHeight))
             VStack(spacing: 0) {
                 SignalAnalyzerTimeRulerView(visibleRange: visibleRange)
                 SignalAnalyzerChannelWaveformView(
+                    layout: layout,
                     channelID: SignalChannelID(rawValue: 1),
                     name: BoundedText("CH1")!,
                     capture: capture,
                     visibleRange: visibleRange
                 )
                 SignalAnalyzerChannelWaveformView(
+                    layout: layout,
                     channelID: SignalChannelID(rawValue: 2),
                     name: BoundedText("CH2")!,
                     capture: capture,
                     visibleRange: visibleRange
                 )
                 SignalAnalyzerChannelWaveformView(
+                    layout: layout,
                     channelID: SignalChannelID(rawValue: 3),
                     name: BoundedText("CH3")!,
                     capture: capture,
                     visibleRange: visibleRange
                 )
                 SignalAnalyzerChannelWaveformView(
+                    layout: layout,
                     channelID: SignalChannelID(rawValue: 4),
                     name: BoundedText("CH4")!,
                     capture: capture,
@@ -113,6 +133,7 @@ package struct SignalAnalyzerTimeRulerView: View {
 }
 
 package struct SignalAnalyzerChannelWaveformView: View {
+    package var layout: SignalAnalyzerLayoutConstraints = .reference
     package let channelID: SignalChannelID
     package let name: BoundedText
     package let capture: SignalCapture
@@ -128,7 +149,7 @@ package struct SignalAnalyzerChannelWaveformView: View {
                 capture: capture,
                 visibleRange: visibleRange
             )
-            .frame(width: 120, height: 16)
+            .frame(maxWidth: .points(layout.traceWidth), maxHeight: .points(layout.traceHeight))
             Text(level.label)
                 .foregroundStyle(level.foregroundColor)
         }

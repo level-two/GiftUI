@@ -284,7 +284,16 @@ package struct DynamicSignalAnalyzerPresentationPipeline {
         }
         var binding = ObservableStateBindingDecorator(reconciler: reconciler)
         let semanticResult = expandSemanticTreeWithStateBinding(
-            SignalAnalyzerView(viewModel: model),
+            SignalAnalyzerView(
+                viewModel: model,
+                layout: SignalAnalyzerLayoutConstraints(
+                    width: surfaceBounds.size.width, height: surfaceBounds.size.height,
+                    lineHeight: GiftUIPiCompactTextResources.targetPackage.metrics.instance(at: 0)!
+                        .lineMetrics.ascent
+                        + GiftUIPiCompactTextResources.targetPackage.metrics.instance(at: 0)!
+                        .lineMetrics.descent
+                )
+            ),
             limits: limits.semantic,
             workspace: &semanticWorkspace,
             sink: &semanticStorage,
