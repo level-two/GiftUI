@@ -32,3 +32,21 @@ import Testing
     }
     #expect(target.metric(for: target.glyphCount) == nil)
 }
+
+@Test func signalAnalyzerPiSelectsTheSameReferenceFontAsNRF() {
+    let selected = DynamicSignalAnalyzerPiAssembly.textResources
+    let selectedInstance = selected.metrics.instance(at: 0)!
+    let reference = GiftUIReferenceTextResources.targetPackage
+    #expect(selected.metrics.descriptor == reference.metrics.descriptor)
+    #expect(selected.raster.descriptor == reference.raster.descriptor)
+    #expect(
+        selectedInstance.lineMetrics.ascent
+            == StaticSignalAnalyzerNRFReferenceMetrics.ascent)
+    #expect(
+        selectedInstance.lineMetrics.descent
+            == StaticSignalAnalyzerNRFReferenceMetrics.descent)
+    #expect(
+        TextResourceValidator.validate(selected, requiring: RasterRealizationID(rawValue: 0))
+            == TextResourceValidator.validate(
+                reference, requiring: RasterRealizationID(rawValue: 0)))
+}

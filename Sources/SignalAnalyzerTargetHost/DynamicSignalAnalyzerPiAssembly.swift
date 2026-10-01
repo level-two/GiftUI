@@ -26,6 +26,13 @@ private struct DynamicSignalAnalyzerPiComponentGraph: HostComponentGraphView {
 /// Produces the immutable Dynamic Pi assembly report before any Linux device
 /// owner is opened.
 package enum DynamicSignalAnalyzerPiAssembly {
+    /// One immutable package joins validation, layout, and rasterization.
+    package static var textResources:
+        TextResourcePackage<GiftUIReferenceTextMetricsView, GiftUIReferenceTextRasterView>
+    {
+        GiftUIReferenceTextResources.targetPackage
+    }
+
     package static func validate() -> HostValidationResult {
         let preset = GeneratedSignalAnalyzerPresets.raspberryPiDynamic()
         let runtimeValidation = preset.validatedStorageAudit()
@@ -41,7 +48,7 @@ package enum DynamicSignalAnalyzerPiAssembly {
             let payloadLimits = payloadLimits()
         else { return .invalid(stage: .capability, error: .invariantViolation) }
 
-        let resources = GiftUIPiCompactTextResources.targetPackage
+        let resources = textResources
         let textValidation = TextResourceValidator.validate(
             resources,
             requiring: RasterRealizationID(rawValue: 0)

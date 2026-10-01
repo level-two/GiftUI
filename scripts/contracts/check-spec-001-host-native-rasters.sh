@@ -94,11 +94,9 @@ if [[ "${target}" == pi ]]; then
         "${project_root}/Sources/SignalAnalyzerRaspberryPiARMv6/PiHostNativeRehearsal.swift" \
         "${project_root}/Sources/SignalAnalyzerTargetHost/DynamicSignalAnalyzerPiLifecycleOwner.swift" \
         "${project_root}/Sources/SignalAnalyzerTargetHost/DynamicSignalAnalyzerPresentationPipeline.swift" \
-        "${project_root}/Sources/GiftUIReferenceTextResources/GiftUIPiCompactTextResources.swift" \
-        "${project_root}/Sources/GiftUIReferenceTextResources/PiCompactGenerated/PiCompactCatalogue.generated.swift" \
-        "${project_root}/Sources/GiftUIReferenceTextResources/PiCompactGenerated/PiCompactBitmapPayload.generated.swift" \
-        "${project_root}/ThirdParty/Terminus-4.49.1/ter-u14n.bdf" \
-        "${project_root}/scripts/text-resources/generate-pi-compact-resources.py" \
+        "${project_root}/Sources/GiftUIReferenceTextResources/GiftUIReferenceTextResources.swift" \
+        "${project_root}/Sources/GiftUIReferenceTextResources/Generated/ReferenceCatalogue.generated.swift" \
+        "${project_root}/Sources/GiftUIReferenceTextResources/Generated/ReferenceBitmapPayload.generated.swift" \
         "${project_root}/Sources/SignalAnalyzerPresentation/SignalAnalyzerView.swift" \
         | shasum -a 256 | awk '{print $1}')"
 else

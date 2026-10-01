@@ -288,9 +288,10 @@ package struct DynamicSignalAnalyzerPresentationPipeline {
                 viewModel: model,
                 layout: SignalAnalyzerLayoutConstraints(
                     width: surfaceBounds.size.width, height: surfaceBounds.size.height,
-                    lineHeight: GiftUIPiCompactTextResources.targetPackage.metrics.instance(at: 0)!
+                    lineHeight: DynamicSignalAnalyzerPiAssembly.textResources.metrics.instance(
+                        at: 0)!
                         .lineMetrics.ascent
-                        + GiftUIPiCompactTextResources.targetPackage.metrics.instance(at: 0)!
+                        + DynamicSignalAnalyzerPiAssembly.textResources.metrics.instance(at: 0)!
                         .lineMetrics.descent
                 )
             ),
@@ -313,7 +314,7 @@ package struct DynamicSignalAnalyzerPresentationPipeline {
         }
         let layoutResult = layout(
             semantic: semanticStorage,
-            metrics: GiftUIPiCompactTextResources.targetPackage.metrics,
+            metrics: DynamicSignalAnalyzerPiAssembly.textResources.metrics,
             proposal: proposal,
             limits: limits.layout,
             workspace: &layoutWorkspace,
@@ -350,7 +351,7 @@ package struct DynamicSignalAnalyzerPresentationPipeline {
         let renderResult = CanvasRenderProducer.preflight(
             semantic: semanticStorage.renderView,
             layout: layoutSink.renderView,
-            textMetrics: GiftUIPiCompactTextResources.targetPackage.metrics,
+            textMetrics: DynamicSignalAnalyzerPiAssembly.textResources.metrics,
             drawingPlan: drawingWorkspace,
             surfaceBounds: surfaceBounds,
             damageMode: .initializeCompleteSurface,
@@ -483,7 +484,7 @@ package struct DynamicSignalAnalyzerPresentationPipeline {
             switch CanvasRenderProducer.produce(
                 semantic: semanticStorage.renderView,
                 layout: layoutSink.renderView,
-                textMetrics: GiftUIPiCompactTextResources.targetPackage.metrics,
+                textMetrics: DynamicSignalAnalyzerPiAssembly.textResources.metrics,
                 drawingPlan: drawingWorkspace,
                 surfaceBounds: surfaceBounds,
                 damageMode: .initializeCompleteSurface,

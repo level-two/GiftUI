@@ -106,15 +106,15 @@ package typealias DynamicSignalAnalyzerPiSession<Target: DisplayTarget> =
     OperationMajorRGB565RasterSession<
         DynamicSignalAnalyzerPiTileStorage,
         Target,
-        GiftUIPiCompactTextMetricsView,
-        GiftUIPiCompactTextRasterView
+        GiftUIReferenceTextMetricsView,
+        GiftUIReferenceTextRasterView
     >
 
 package typealias DynamicSignalAnalyzerPiEndpoint<Target: DisplayTarget> =
     OneShotRasterBackendEndpoint<
         DynamicSignalAnalyzerPiSession<Target>,
-        GiftUIPiCompactTextMetricsView,
-        GiftUIPiCompactTextRasterView,
+        GiftUIReferenceTextMetricsView,
+        GiftUIReferenceTextRasterView,
         DynamicSignalAnalyzerFrameEnvelopeValidator
     >
 
@@ -159,7 +159,7 @@ package enum DynamicSignalAnalyzerPiEndpointFactory {
             maximumGlyphRasterBytes: 7_680,
             maximumStrokeWorkspaceBytes: 1
         )!
-        let resources = GiftUIPiCompactTextResources.targetPackage
+        let resources = DynamicSignalAnalyzerPiAssembly.textResources
         guard
             let session = DynamicSignalAnalyzerPiSession(
                 capacity: GeneratedSignalAnalyzerPresets.raspberryPiDynamic().runtimeLimits
