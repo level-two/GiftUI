@@ -241,10 +241,10 @@ package struct PiScreenContactDecoder: Sendable {
             // and retain the physical sequence until the pen really lifts.
             awaitingPhysicalRelease = true
             return PiScreenContactEvent(phase: .move, point: Point(x: -1, y: -1))
-        case (.some(let previous), false, _):
+        case (.some, false, _):
             activePoint = nil
             lastEmittedPoint = nil
-            return PiScreenContactEvent(phase: .up, point: previous)
+            return PiScreenContactEvent(phase: .up, point: point ?? Point(x: -1, y: -1))
         case (nil, false, _), (nil, true, nil):
             return nil
         }
