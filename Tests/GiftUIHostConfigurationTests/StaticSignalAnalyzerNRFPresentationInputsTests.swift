@@ -48,6 +48,18 @@ import Testing
             stopAcquisition: StopSignalAcquisitionUseCase(repository: repository),
             clearCapture: ClearSignalCaptureUseCase(repository: repository)
         )
+        var inputRoot = StaticObservableRootAdapter<SignalAnalyzerViewModel, UInt32>(
+            structuralIdentity: root.structuralIdentity, declarationOrdinal: root.declarationOrdinal
+        )
+        #expect(inputRoot.beginCandidate() == .success(.candidateStarted))
+        let encounter = inputRoot.withEncounter(
+            state: State(wrappedValue: model),
+            replacementRoute: { _ in }, reportRoute: { _ in .staleAttachment }, body: { _ in () })
+        guard case .bound(.success(.materialized), ()) = encounter else {
+            Issue.record("Static touch root did not bind")
+            return
+        }
+        #expect(inputRoot.finishCandidate(.publish) == .success(.associationsCommitted))
         let interactionLimits = preset.runtimeLimits.interaction
         var interaction = StaticInteractionState<UInt32>(
             candidateRecords: StaticInteractionCandidateStorage(
@@ -97,9 +109,8 @@ import Testing
                     #expect(admission.beginProducer(.action))
                     #expect(
                         macOSStaticReferencePointerOutcome(
-                            .start, enabled: true, interaction: interaction
+                            .start, enabled: true, interaction: &interaction, root: &inputRoot
                         ))
-                    model.startTapped()
                     admission.endProducer()
                 }
                 if window > 0 && window <= 120 {
@@ -155,19 +166,11 @@ import Testing
                 default: action = nil
                 }
                 if let action {
+                    #expect(admission.beginProducer(.action))
                     #expect(
                         macOSStaticReferencePointerOutcome(
-                            action, enabled: true, interaction: interaction
+                            action, enabled: true, interaction: &interaction, root: &inputRoot
                         ))
-                    #expect(admission.beginProducer(.action))
-                    switch action {
-                    case .start: model.startTapped()
-                    case .stop: model.stopTapped()
-                    case .clear: model.clearTapped()
-                    case .selectOneSecond: model.visibleDurationChanged(.oneSecond)
-                    case .selectTwoSeconds: model.visibleDurationChanged(.twoSeconds)
-                    case .selectFiveSeconds: model.visibleDurationChanged(.fiveSeconds)
-                    }
                     admission.endProducer()
                     if admission.seal() {
                         while let (_, _, fact) = admission.takeNextSealed() {
@@ -335,7 +338,8 @@ import Testing
                         for _ in 0 ..< 2 {
                             #expect(
                                 macOSStaticReferencePointerOutcome(
-                                    action, enabled: false, interaction: interaction))
+                                    action, enabled: false, interaction: &interaction,
+                                    root: &inputRoot))
                             printMacOSStaticReferenceAction(
                                 action, dispatched: false, revision: revision, model: model)
                         }
@@ -372,7 +376,8 @@ private func printMacOSStaticReferenceAction(
 private func macOSStaticReferencePointerOutcome(
     _ action: SignalAnalyzerAction,
     enabled: Bool,
-    interaction: borrowing StaticInteractionState<UInt32>
+    interaction: inout StaticInteractionState<UInt32>,
+    root: inout StaticObservableRootAdapter<SignalAnalyzerViewModel, UInt32>
 ) -> Bool {
     var matching: BoundActionRecord<UInt32>?
     for ordinal in 0 ..< interaction.committedRecordCount {
@@ -388,15 +393,23 @@ private func macOSStaticReferencePointerOutcome(
         x: record.hitBounds.origin.x + record.hitBounds.size.width / 2,
         y: record.hitBounds.origin.y + record.hitBounds.size.height / 2
     )
-    switch interaction.resolveDown(at: point) {
-    case .captured(let captured) where enabled:
-        return interaction.resolveUp(captured, at: point)
-            == .activationAdmitted(captured)
-    case .ignored where !enabled:
-        return true
-    default:
-        return false
+    guard let revision = interaction.committedRevision else { return false }
+    var input = StaticSignalAnalyzerNRFApplicationInputOwner(sourceRawValue: 1)
+    input.installPhysicalPresentation(rawValue: revision.rawValue)
+    for phase in [PointerPhase.down, .up] {
+        guard
+            input.admit(
+                phaseRawValue: phase.rawValue, x: UInt16(point.x), y: UInt16(point.y),
+                observedPresentationRevisionRawValue: revision.rawValue,
+                priorPhysicalSequenceIsCompleteRawValue: phase == .down ? 1 : 0)?.disposition
+                == .queued
+        else { return false }
     }
+    guard
+        case .completed(let summary) = input.runOpportunity(interaction: &interaction, root: &root)
+    else { return false }
+    return summary.eventCount == 2 && summary.dispatchedActionCount == (enabled ? 1 : 0)
+
 }
 
 @Test func staticNRFGeneratedPresentationInputsMatchBothSemanticVariants() {

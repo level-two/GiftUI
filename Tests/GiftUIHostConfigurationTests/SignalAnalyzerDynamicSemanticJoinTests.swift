@@ -1984,7 +1984,21 @@ private func makeSemanticJoinModel(failsStart: Bool = false) -> SignalAnalyzerVi
     }
     #expect(bootstrap.factCount == 2)
     #expect(admission.beginProducer(.action))
-    model.startTapped()
+    let startRecord = try #require(
+        (0 ..< pipeline.committedActionCount).compactMap {
+            pipeline.committedAction(at: $0)
+        }.first { $0.action.code == SignalAnalyzerAction.start.rawValue })
+    let startPoint = Point(
+        x: startRecord.hitBounds.minX + startRecord.hitBounds.size.width / 2,
+        y: startRecord.hitBounds.minY + startRecord.hitBounds.size.height / 2)
+    #expect(pipeline.beginApplicationMutation())
+    guard case .captured(let startCapture) = pipeline.resolveDown(at: startPoint) else {
+        Issue.record("Dynamic start touch did not capture")
+        return
+    }
+    #expect(pipeline.resolveUp(startCapture, at: startPoint) == .activationAdmitted(startCapture))
+    #expect(pipeline.dispatch(startCapture) == .dispatched)
+    #expect(pipeline.endApplicationMutation() != nil)
     admission.endProducer()
     let generation = try #require(source.activeGeneration)
 
