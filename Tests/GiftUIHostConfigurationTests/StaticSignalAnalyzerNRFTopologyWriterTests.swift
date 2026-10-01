@@ -1,3 +1,4 @@
+import SignalAnalyzerPresentation
 import SignalAnalyzerTargetHost
 import Testing
 
@@ -54,8 +55,12 @@ import Testing
                     in: region
                 )
             )
-            #expect(table.scope(at: 18, in: region)?.payload0 == 120)
-            #expect(table.scope(at: 18, in: region)?.payload1 == 96)
+            #expect(
+                table.scope(at: 18, in: region)?.payload0
+                    == UInt32(SignalAnalyzerLayoutConstraints.reference.gridWidth))
+            #expect(
+                table.scope(at: 18, in: region)?.payload1
+                    == UInt32(SignalAnalyzerLayoutConstraints.reference.gridHeight))
             #expect(
                 StaticSignalAnalyzerNRFTopologyWriter.populateInvariantStyles(
                     scopeCount: count,

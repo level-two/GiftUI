@@ -3,6 +3,7 @@ import GiftUI
 /// Finite maxima pass the surface budget through stacks whose main-axis
 /// proposal is absent. All origins and final bounds remain owned by Layout.
 package struct SignalAnalyzerLayoutConstraints: Equatable, Sendable {
+    package let labelWidth: GeometryScalar
     package let gridWidth: GeometryScalar
     package let gridHeight: GeometryScalar
     package let traceWidth: GeometryScalar
@@ -13,8 +14,9 @@ package struct SignalAnalyzerLayoutConstraints: Equatable, Sendable {
     package init(width: GeometryScalar, height: GeometryScalar, lineHeight: GeometryScalar) {
         // Reserve root/panel padding, header, controls, ruler and one diagnostic
         // line. Reserve two label columns so LOW/HIGH cannot move the traces.
-        gridWidth = max(1, width - 8)
-        traceWidth = max(1, gridWidth - 4 * lineHeight - 4)
+        labelWidth = 2 * lineHeight
+        traceWidth = max(1, width - 8 - 2 * labelWidth - 4)
+        gridWidth = traceWidth
         traceHeight = max(4, (height - 7 * lineHeight - 20) / 4)
         gridHeight = lineHeight + 4 * traceHeight
     }

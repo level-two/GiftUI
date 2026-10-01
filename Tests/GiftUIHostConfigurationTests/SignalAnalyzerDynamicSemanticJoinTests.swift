@@ -1278,7 +1278,7 @@ private final class LogicalFrameCapture {
     #expect(summary.drawing.strokeCount == 5)
     #expect(summary.render.operationCount == 31)
     #expect(summary.render.positionedGlyphCount == 129)
-    #expect(summary.render.maximumObservedClipDepth == 3)
+    #expect(summary.render.maximumObservedClipDepth == 4)
     #expect(summary.interactionOccurrenceCount == 6)
     var endpoint = SemanticJoinEndpoint(
         capacity: preset.runtimeLimits.renderSink
@@ -1527,8 +1527,8 @@ private final class LogicalFrameCapture {
             break
         }
     }
-    #expect(foregrounds.values.reduce(0, +) == 25)
-    #expect(foregrounds[.white] == 16)
+    #expect(foregrounds.values.reduce(0, +) == 21)
+    #expect(foregrounds[.white] == 12)
     #expect(foregrounds[.gray] == 4)
     #expect(foregrounds[.red] == 1)
     #expect(foregrounds[Color(red: 0, green: 128, blue: 255)] == 4)
@@ -1683,7 +1683,9 @@ private final class LogicalFrameCapture {
 
     #expect(reconciler.beginCandidate() == .success(.candidateStarted))
     let semanticResult = expandSemanticTreeWithStateBinding(
-        SignalAnalyzerView(viewModel: model),
+        SignalAnalyzerView(
+            viewModel: model,
+            layout: SignalAnalyzerLayoutConstraints(width: 240, height: 240, lineHeight: 20)),
         limits: preset.runtimeLimits.semantic,
         workspace: &semanticWorkspace,
         sink: &semanticStorage,
@@ -1814,7 +1816,7 @@ private final class LogicalFrameCapture {
     }
     #expect(header.operationCount == 26)
     #expect(header.positionedGlyphCount == 129)
-    #expect(header.maximumObservedClipDepth == 3)
+    #expect(header.maximumObservedClipDepth == 4)
     #expect(renderSink.storage.published.count > 0)
 
     #if GIFTUI_DYNAMIC_PROFILE
@@ -1879,7 +1881,7 @@ private final class LogicalFrameCapture {
         }
         #expect(canvasHeader.operationCount == 31)
         #expect(canvasHeader.positionedGlyphCount == 129)
-        #expect(canvasHeader.maximumObservedClipDepth == 3)
+        #expect(canvasHeader.maximumObservedClipDepth == 4)
 
         var drawingSink = SemanticJoinDrawingSink(
             capacity: preset.runtimeLimits.renderSink
@@ -2954,6 +2956,7 @@ func signalAnalyzerWaveformResolvesSurfaceConstraints(width: Int32, height: Int3
         return
     }
     var canvases = 0
+    var plotBounds: Rect?
     for ordinal in 0 ..< semantic.semanticScopeCount {
         guard let identity = semantic.semanticIdentity(at: ordinal),
             case .canvas = semantic.scope(at: identity)
@@ -2961,6 +2964,11 @@ func signalAnalyzerWaveformResolvesSurfaceConstraints(width: Int32, height: Int3
         guard let bounds = sink.renderView.bounds(of: identity) else {
             Issue.record("Canvas bounds missing")
             continue
+        }
+        if canvases == 0 {
+            plotBounds = bounds
+        } else {
+            #expect(bounds.origin.x == plotBounds?.origin.x)
         }
         #expect(
             bounds.size.width == (canvases == 0 ? constraints.gridWidth : constraints.traceWidth))
@@ -2973,4 +2981,21 @@ func signalAnalyzerWaveformResolvesSurfaceConstraints(width: Int32, height: Int3
         canvases += 1
     }
     #expect(canvases == 5)
+    guard let plotBounds else { return }
+    for ordinal in 0 ..< semantic.semanticScopeCount {
+        guard let identity = semantic.semanticIdentity(at: ordinal),
+            semantic.primitive(at: identity) == .text,
+            let count = semantic.textScalarCount(of: identity),
+            let bounds = sink.renderView.bounds(of: identity)
+        else { continue }
+        let scalars = (0 ..< count).compactMap { index in
+            semantic.textScalar(of: identity, at: index).flatMap(UnicodeScalar.init)
+        }
+        let label = String(String.UnicodeScalarView(scalars))
+        if label.hasPrefix("CH") {
+            #expect(bounds.origin.x + bounds.size.width <= plotBounds.origin.x)
+        } else if label == "LOW" || label == "HIGH" {
+            #expect(bounds.origin.x >= plotBounds.origin.x + plotBounds.size.width)
+        }
+    }
 }

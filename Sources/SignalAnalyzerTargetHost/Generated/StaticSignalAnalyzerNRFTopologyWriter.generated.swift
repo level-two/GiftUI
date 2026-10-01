@@ -174,7 +174,7 @@ package enum StaticSignalAnalyzerNRFTopologyWriter {
         return true
     }
 
-    /// The 15 padding and frame modifiers are invariant across model state.
+    /// The 19 padding and frame modifiers are invariant across model state.
     /// Passthrough render colors and disabled-action flags are not written here.
     package static func populateInvariantLayoutModifiers(
         scopeCount: UInt16,
@@ -185,7 +185,7 @@ package enum StaticSignalAnalyzerNRFTopologyWriter {
             scopeCount == 96 || scopeCount == 98
         else { return false }
         var slot: UInt16 = 0
-        while slot < 15 {
+        while slot < 19 {
             let ordinal = invariantModifierOrdinal(at: slot)
             guard let record = table.scope(at: ordinal, in: region),
                 record.kind == .modifier,
@@ -198,7 +198,7 @@ package enum StaticSignalAnalyzerNRFTopologyWriter {
             slot += 1
         }
         slot = 0
-        while slot < 15 {
+        while slot < 19 {
             let ordinal = invariantModifierOrdinal(at: slot)
             let payload = invariantModifierPayload(at: slot)
             guard let old = table.scope(at: ordinal, in: region),
@@ -403,7 +403,7 @@ package enum StaticSignalAnalyzerNRFTopologyWriter {
     )? {
         switch ordinal {
         case 0: (25, 0)
-        case 5, 32, 35, 41, 44, 50, 53, 59, 62, 73, 77, 80, 85, 89, 93:
+        case 5, 32, 41, 50, 59, 73, 77, 80, 85, 89, 93:
             (17, 16_777_215)
         case 7, 24, 27, 30: (17, 8_421_504)
         case 10: (25, 2_105_376)
@@ -431,7 +431,11 @@ package enum StaticSignalAnalyzerNRFTopologyWriter {
         case 11: 55
         case 12: 60
         case 13: 64
-        default: 69
+        case 14: 69
+        case 15: 35
+        case 16: 44
+        case 17: 53
+        default: 62
         }
     }
 
@@ -447,7 +451,8 @@ package enum StaticSignalAnalyzerNRFTopologyWriter {
         case 5: (2, 10, 2, 0)
         case 6, 8, 10, 12: (2, 5, 0, 0)
         case 7, 9, 11, 13: (12, 210, UInt32(layout.traceWidth), UInt32(layout.traceHeight))
-        default: (2, 15, 1, 0)
+        case 14: (2, 15, 1, 0)
+        default: (11, 9, UInt32(layout.labelWidth), 0)
         }
     }
 
@@ -477,7 +482,7 @@ package enum StaticSignalAnalyzerNRFTopologyWriter {
         case 1: (.vStack, 0, 2)
         case 2: (.vStack, 0, 2)
         case 3: (.zStack, 257, 0)
-        case 4: (.vStack, 1, 0)
+        case 4: (.vStack, 0, 0)
         case 5...9: (.hStack, 1, 2)
         case 10: (.vStack, 1, 2)
         default: (.hStack, 1, 4)

@@ -74,7 +74,7 @@ package struct SignalAnalyzerWaveformView: View {
         ZStack {
             SignalAnalyzerGridView()
                 .frame(maxWidth: .points(layout.gridWidth), maxHeight: .points(layout.gridHeight))
-            VStack(spacing: 0) {
+            VStack(alignment: .leading, spacing: 0) {
                 SignalAnalyzerTimeRulerView(visibleRange: visibleRange)
                 SignalAnalyzerChannelWaveformView(
                     layout: layout,
@@ -143,7 +143,7 @@ package struct SignalAnalyzerChannelWaveformView: View {
         let level = capture.currentLevel(for: channelID)
         HStack(spacing: 2) {
             Text(name)
-                .foregroundStyle(.white)
+                .frame(width: layout.labelWidth, alignment: .leading)
             SignalAnalyzerTraceView(
                 channelID: channelID,
                 capture: capture,
