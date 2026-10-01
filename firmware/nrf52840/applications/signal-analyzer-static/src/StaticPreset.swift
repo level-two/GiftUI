@@ -1179,7 +1179,7 @@ private func giftUIStaticFullCanvas(
                 ), drawing: drawing
             ), renderHeader.operationCount <= 150,
         renderHeader.positionedGlyphCount > 0,
-        renderHeader.positionedGlyphCount <= 150,
+        renderHeader.positionedGlyphCount <= 224,
         (frameRevision != 1
             || renderHeader.positionedGlyphCount == (validation ? 101 : 97))
     else { return 0 }

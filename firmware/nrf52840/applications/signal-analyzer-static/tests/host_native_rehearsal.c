@@ -26,6 +26,7 @@ extern uint32_t giftui_signal_analyzer_last_drawing_points(void);
 extern uint32_t giftui_signal_analyzer_last_render_operations(void);
 extern uint64_t giftui_signal_analyzer_next_delay_microseconds(void);
 extern uint32_t giftui_signal_analyzer_rehearsal_diagnostic(void);
+extern uint32_t giftui_signal_analyzer_rehearsal_maximum_diagnostic(void);
 extern int giftui_firmware_main(void);
 
 static uint64_t clock_microseconds;
@@ -172,7 +173,9 @@ int ads7846_pen_is_down(void)
     if (diagnostic_mode != 0U) {
         if (revision == 1U && diagnostic_injected == 0U &&
             clock_microseconds >= 10000U) {
-            assert(giftui_signal_analyzer_rehearsal_diagnostic() == 1U);
+            assert((diagnostic_mode == 2U
+                        ? giftui_signal_analyzer_rehearsal_maximum_diagnostic()
+                        : giftui_signal_analyzer_rehearsal_diagnostic()) == 1U);
             diagnostic_injected = 1U;
         }
         if (revision == 2U) {
@@ -332,7 +335,8 @@ void k_busy_wait(uint32_t duration) { clock_microseconds += duration; }
 int main(void)
 {
     fault_mode = getenv("GIFTUI_REHEARSAL_FAULT");
-    diagnostic_mode = getenv("GIFTUI_REHEARSAL_DIAGNOSTIC") != NULL;
+    const char *diagnostic = getenv("GIFTUI_REHEARSAL_DIAGNOSTIC");
+    diagnostic_mode = diagnostic == NULL ? 0U : (diagnostic[0] == 'm' ? 2U : 1U);
     struct giftui_static_host_storage regions;
     assert(giftui_signal_analyzer_storage_regions(&regions) == 0);
     assert(regions.profile_bytes == 39696U);

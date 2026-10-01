@@ -38,4 +38,7 @@ for mode in touch-startup display-startup write-initial write-next \
         *) grep -Fq 'last_frame_hash=1225258071749886757' "${trace}" ;;
     esac
 done
-printf 'SPEC-001 nRF production-loop faults passed: seven injected paths and retained frames.\n'
+GIFTUI_REHEARSAL_DIAGNOSTIC=maximum "${binary}" > "${output}/maximum-diagnostic.tsv"
+grep -Fq 'diagnostic=visible' "${output}/maximum-diagnostic.tsv"
+grep -Fq 'status=passed' "${output}/maximum-diagnostic.tsv"
+printf 'SPEC-001 nRF production-loop faults passed: seven injected paths, retained frames, and a maximum 96-byte diagnostic.\n'
