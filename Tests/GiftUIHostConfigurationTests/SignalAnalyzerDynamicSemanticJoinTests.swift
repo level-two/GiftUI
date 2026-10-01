@@ -1353,7 +1353,8 @@ private final class LogicalFrameCapture {
         #expect(preset.runtimeLimits.layout.maximumTextLines == 128)
         #expect(preset.runtimeLimits.renderWorkspace.maximumTextLines == 128)
         let cases: [(UInt8, UInt16, UInt16)] = [
-            (87, 23, 214),
+            // Inter’s wider W glyph increases wrapping for the 96-byte diagnostic.
+            (87, 27, 214),
             (10, 117, 118),
         ]
         for (byte, expectedLines, expectedGlyphs) in cases {
