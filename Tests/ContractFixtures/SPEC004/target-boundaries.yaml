@@ -82,6 +82,7 @@ active:
       - GiftUIDisplayCore
       - GiftUIDrawing
       - GiftUIExecution
+      - GiftUIFailureCore
       - GiftUIHostConfiguration
       - GiftUIInteraction
       - GiftUILayout
@@ -89,6 +90,7 @@ active:
       - GiftUIRasterCore
       - GiftUIReferenceTextResources
       - GiftUIRenderCore
+      - GiftUIRenderLowering
       - GiftUIRuntimeCore
       - GiftUIRuntimeDynamic
       - GiftUIRuntimeStatic

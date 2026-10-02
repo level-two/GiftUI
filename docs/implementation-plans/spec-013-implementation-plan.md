@@ -2,16 +2,16 @@
 spec: SPEC-013
 feature: giftui-mvp-architecture
 title: SPEC-013 Implementation Plan
-status: completed
+status: draft
 owners:
   - codex
 created: 2026-09-09
-updated: 2026-09-19
+updated: 2026-10-02
 related_design_notes:
   - ../implementation-designs/spec-013-common-coordinator-and-cleanup.md
   - ../implementation-designs/spec-013-storage-audit-and-overlay-ownership.md
   - ../implementation-designs/spec-013-static-generation-and-capture-lifetime.md
-conformance_report: null
+conformance_report: ../conformance/spec-013-conformance.md
 related_future_work: []
 related_explorations: []
 related_spikes:
@@ -25,14 +25,18 @@ superseded_by: null
 
 # SPEC-013 Implementation Plan
 
-> This plan is `active`. The focused render-workspace-limit amendment to
+> Milestones 0–8 retain their historical dispositions. The maintainer approved
+> the SPEC-013/SPEC-015 amendments on 2026-10-02. The new Milestone 9 remains
+> `draft` pending its implementation-readiness assessment; no repair has begun.
+> The previous plan was active during the work recorded below.
+> Baseline authorization: The focused render-workspace-limit amendment to
 > SPEC-013 was explicitly reapproved on 2026-09-12, the plan's separate
 > readiness transition was explicitly requested on 2026-09-12, and authorized
 > implementation began with T0.1 on 2026-09-12.
 
 ## Authority and Scope
 
-The governing [SPEC-013](../specs/spec-013-runtime-profiles.md) is approved,
+The baseline [SPEC-013](../specs/spec-013-runtime-profiles.md) was approved,
 including the coordinated render-workspace limit addition. Its Proposal, RFC,
 and accepted-ADR chain fixes one portable semantic meaning,
 the module graph, checked geometry, serialized execution, observable-state and
@@ -171,21 +175,21 @@ exactly once below.
 
 | Criterion | Implementation tasks | Evidence | Status |
 | --- | --- | --- | --- |
-| `RP-001` — Both runtime targets use one portable root and focused owners without sibling/backend imports | `T0.2`, `T3.5`, `T4.6`, `T8.1` | Package graph, source-import audit, same-root positive compile, and forbidden-import negatives | pending |
-| `RP-002` — One successful audit accounts exactly for every correctness store and configured render-workspace capacity | `T1.2`-`T1.4`, `T3.2`, `T4.2`, `T6.1` | Field ownership registry, four-field capacity equality, exact byte reports, checked-total tests, and overlap/overlay audit | pending |
-| `RP-003` — Invalid configurations and static tables fail before client/endpoint use | `T1.1`-`T1.5`, `T4.3`, `T6.2` | Ordered startup-failure and exact SPEC-003 mapping corpus with poisoned client, callback, policy, and endpoint probes | pending |
-| `RP-004` — Exact stage order, pre-body binding, Canvas release, and cleanup rows | `T2.1`-`T2.4`, `T5.1`-`T5.5`, `T6.3` | Stage transcript, injected-failure cleanup matrix, and release/finalization counters | pending |
-| `RP-005` — Value-equal cross-profile semantic through disposition transcripts | `T0.1`, `T5.5`, `T6.6`, `T7.4` | Canonical tagged transcripts and zero-tolerance differential comparison | pending |
-| `RP-006` — Exact-limit success and deterministic first-excess for every store | `T3.2`, `T4.2`, `T6.1` | Table-driven boundary corpus and high-water reports for every storage family | pending |
-| `RP-007` — Failed derivation never replays effects and clears attempt/candidate storage | `T2.3`, `T3.3`, `T4.4`, `T6.3` | Replay-poisoning scripts, mutation counters, reset counters, and residual-state audit | pending |
-| `RP-008` — Accepted handoff alone commits routing | `T2.2`, `T5.4`, `T6.4` | Accepted/refused/failed offer matrix with prior/candidate routing snapshots | pending |
-| `RP-009` — Refusal recovery retains only constant-space presentation intent | `T2.2`, `T3.3`, `T4.4`, `T6.4` | Repeated-refusal high-water, pending-intent, and no-retained-payload evidence | pending |
-| `RP-010` — Static generation, complete callable dispatch, destruction, zero allocation, and forbidden-facility exclusion | `T4.1`-`T4.6`, `T6.5`, `T7.2`-`T7.3` | Typed-source negatives, table coverage, capture destruction, allocation, symbol, SIL, and ELF reports | pending |
-| `RP-011` — Dynamic conveniences stay outside `GiftUI` and preserve portable results | `T3.4`, `T6.6`, `T8.1` | Product/import audit and baseline-versus-convenience transcript comparison | pending |
-| `RP-012` — Dependency, typed-source, borrow-poisoning, and generated coverage tests pass | `T0.2`, `T4.3`, `T6.5`, `T8.1` | Negative compile suite, lifetime probes, exact generated-case coverage, and graph checks | pending |
-| `RP-013` — Reproducible resource and timing evidence under pinned toolchains | `T7.1`-`T7.5`, `T8.3` | Two pristine builds per profile with compiler/SDK/target, stack, allocation, section, timing, and digest reports | pending |
-| `RP-014` — Interaction binds the exact publishable target generation and discards candidate-only generations | `T5.3`-`T5.4`, `T6.3`-`T6.4` | Initial/replacement/discard generation transcripts and committed-state preservation checks | pending |
-| `RP-015` — Exact focused owner failures survive generic carrier, mapping, cleanup, and comparison | `T1.5`, `T2.4`, `T5.5`, `T6.3`, `T6.6` | 2-byte layout proof, per-owner injected failure corpus, correlated fact/disposition records, and differential report | pending |
+| `RP-001` — Both runtime targets use one portable root and focused owners without sibling/backend imports | `T0.2`, `T3.5`, `T4.6`, `T8.1`, `T9.1`, `T9.3`, `T9.4` | Package graph, source-import audit, same-root positive compile, and forbidden-import negatives | pending |
+| `RP-002` — One successful audit accounts exactly for every correctness store and configured render-workspace capacity | `T1.2`-`T1.4`, `T3.2`, `T4.2`, `T6.1`, `T9.3`, `T9.4` | Field ownership registry, four-field capacity equality, exact byte reports, checked-total tests, and overlap/overlay audit | pending |
+| `RP-003` — Invalid configurations and static tables fail before client/endpoint use | `T1.1`-`T1.5`, `T4.3`, `T6.2`, `T9.4` | Ordered startup-failure and exact SPEC-003 mapping corpus with poisoned client, callback, policy, and endpoint probes | pending |
+| `RP-004` — Exact stage order, pre-body binding, Canvas release, and cleanup rows | `T2.1`-`T2.4`, `T5.1`-`T5.5`, `T6.3`, `T9.1`, `T9.2`, `T9.4` | Stage transcript, injected-failure cleanup matrix, and release/finalization counters | pending |
+| `RP-005` — Value-equal cross-profile semantic through disposition transcripts | `T0.1`, `T5.5`, `T6.6`, `T7.4`, `T9.2`, `T9.4` | Canonical tagged transcripts and zero-tolerance differential comparison | pending |
+| `RP-006` — Exact-limit success and deterministic first-excess for every store | `T3.2`, `T4.2`, `T6.1`, `T9.4` | Table-driven boundary corpus and high-water reports for every storage family | pending |
+| `RP-007` — Failed derivation never replays effects and clears attempt/candidate storage | `T2.3`, `T3.3`, `T4.4`, `T6.3`, `T9.1`, `T9.2`, `T9.4` | Replay-poisoning scripts, mutation counters, reset counters, and residual-state audit | pending |
+| `RP-008` — Accepted handoff alone commits routing | `T2.2`, `T5.4`, `T6.4`, `T9.2`, `T9.4` | Accepted/refused/failed offer matrix with prior/candidate routing snapshots | pending |
+| `RP-009` — Refusal recovery retains only constant-space presentation intent | `T2.2`, `T3.3`, `T4.4`, `T6.4`, `T9.4` | Repeated-refusal high-water, pending-intent, and no-retained-payload evidence | pending |
+| `RP-010` — Static generation, complete callable dispatch, destruction, zero allocation, and forbidden-facility exclusion | `T4.1`-`T4.6`, `T6.5`, `T7.2`-`T7.3`, `T9.3`, `T9.4` | Typed-source negatives, table coverage, capture destruction, allocation, symbol, SIL, and ELF reports | pending |
+| `RP-011` — Dynamic conveniences stay outside `GiftUI` and preserve portable results | `T3.4`, `T6.6`, `T8.1`, `T9.4` | Product/import audit and baseline-versus-convenience transcript comparison | pending |
+| `RP-012` — Dependency, typed-source, borrow-poisoning, and generated coverage tests pass | `T0.2`, `T4.3`, `T6.5`, `T8.1`, `T9.3`, `T9.4` | Negative compile suite, lifetime probes, exact generated-case coverage, and graph checks | pending |
+| `RP-013` — Reproducible resource and timing evidence under pinned toolchains | `T7.1`-`T7.5`, `T8.3`, `T9.3`, `T9.4` | Two pristine builds per profile with compiler/SDK/target, stack, allocation, section, timing, and digest reports | pending |
+| `RP-014` — Interaction binds the exact publishable target generation and discards candidate-only generations | `T5.3`-`T5.4`, `T6.3`-`T6.4`, `T9.2`, `T9.4` | Initial/replacement/discard generation transcripts and committed-state preservation checks | pending |
+| `RP-015` — Exact focused owner failures survive generic carrier, mapping, cleanup, and comparison | `T1.5`, `T2.4`, `T5.5`, `T6.3`, `T6.6`, `T9.1`, `T9.2`, `T9.3`, `T9.4` | 2-byte layout proof, per-owner injected failure corpus, correlated fact/disposition records, and differential report | pending |
 
 ## Milestones and Tasks
 
@@ -487,6 +491,51 @@ ready for independent review.
       criterion to reproducible evidence, distinguish hardware-free from
       connected-target results, record deviations/exceptions, and request the
       human `implemented` transition only after conformance review.
+
+### Milestone 9: Preserve Partial Mutation and Exact Application Failures
+
+The maintainer approved the coordinated SPEC-013/SPEC-015 revisions on
+2026-10-02. This required correctness repair is not deferred work. The plan
+remains draft pending its implementation-readiness assessment. The
+MVP need is the common runner join for SPEC-001 T10.5/T10.6; no new host,
+profile, retry policy, or storage ceiling is introduced.
+
+- [ ] `T9.1` — Parameterize all common pipeline failure-bearing values, the
+  pipeline owner, both profile bindings, execution coordinator wrappers, and
+  first-failure storage with the configured bounded owner-failure sum. Return
+  an explicit mutation-progress bit on the failure branch and use it for
+  final disposition. Generalize SPEC-015's host opportunity carrier and host
+  instance seam to forward the same sum. Keep framework-only specializations
+  with `RuntimeOwnerFailure`, and keep application types and normalization
+  above Runtime Core. Update the common coordinator design note.
+  **Depends on:** both amendments, explicitly approved on 2026-10-02; plan readiness.
+  **Covers:** RP-001, RP-004, RP-007, RP-015; HC-010, HC-012.
+- [ ] `T9.2` — Exercise failures before any applied work, after one effect,
+  and after several effects. Preserve the exact error and context, skip later
+  stages, finalize/clean up once, retain partial state as dirty, and rederive
+  on a subsequent allowed opportunity without replay. Compare Dynamic and
+  Static bindings with identical scripts, including application rejection,
+  diagnostics disabled, and quiescent / safety-not-proven containment.
+  **Depends on:** `T9.1`.
+  **Covers:** RP-004, RP-005, RP-007, RP-008, RP-014, RP-015; HC-010, HC-012.
+- [ ] `T9.3` — Measure framework and production-composed owner/failure/result
+  layouts under supported compilers (2 / 4 / 8 / 72-byte ceilings), include
+  changed retained storage in profile audits, and verify Embedded declaration
+  feasibility and zero allocation. Preserve module boundaries, borrowed
+  storage lifetimes, and existing RAM/flash ceilings. Remeasure assembled
+  production binaries again after the downstream joins; pre-join results
+  cannot discharge that obligation.
+  **Depends on:** `T9.1` and `T9.2`.
+  **Covers:** RP-002, RP-010, RP-012, RP-013, RP-015; HC-015, HC-016.
+- [ ] `T9.4` — Run the registered SPEC-013 and relevant SPEC-015 owner checks,
+  record exact failing or passing invocations, update conformance and host
+  plan records, and hand the validated seam to SPEC-001 T10.5/T10.6. Resume
+  the Dynamic join first, then Static/nRF, then T10.7/T10.8 final validation.
+  Preserve unrelated owner-gate and reviewed-pixel blockers; do not claim
+  full conformance from the seam tests or change lifecycle status to pass a
+  checker.
+  **Depends on:** `T9.2` and `T9.3`.
+  **Covers:** RP-001 through RP-015 and downstream HC-010/012/015/016 evidence.
 
 ## Design-Note Triggers
 
@@ -1001,5 +1050,7 @@ invalidates the earlier blanket production-readiness inference for partial
 admitted-work failure. Existing passing owner fixtures remain historical
 evidence for their tested inputs. Specification review must determine the
 partial-mutation and exact application-failure seam before a traceable owner
-repair task is made ready. This record does not approve a contract amendment
-or reopen architectural decisions implicitly.
+repair task is made ready. The owner repair is now Milestone 9; the maintainer
+explicitly approved both amended Specifications on 2026-10-02. The plan still
+requires its implementation-readiness assessment. This record reports that
+approval and does not reopen architectural decisions implicitly.

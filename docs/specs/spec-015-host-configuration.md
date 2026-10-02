@@ -2,11 +2,11 @@
 id: SPEC-015
 feature: giftui-mvp-architecture
 title: MVP Target-Host Configuration Contract
-status: implementing
+status: approved
 authors:
   - codex
 created: 2026-08-28
-updated: 2026-09-27
+updated: 2026-10-02
 proposal:
   - PROPOSAL-002
   - PROPOSAL-003
@@ -64,6 +64,13 @@ target_milestone: MVP
 ---
 
 # SPEC-015: MVP Target-Host Configuration Contract
+
+> **Amendment approved — 2026-10-02:** The maintainer explicitly accepted
+> this amendment together with SPEC-013: `HostOpportunityResult` preserves
+> the configured cycle owner-failure type through the host boundary. This
+> revision is `approved` and authoritative; implementation of the amendment
+> has not begun. The pre-amendment baseline is preserved at Git revision
+> `a7202dc5`. Host resource ceilings and policy mappings remain unchanged.
 
 > **Approval status:** Explicitly reapproved by the maintainer on 2026-09-12.
 > The approved workload-schema amendment supplies SPEC-008 render-workspace
@@ -576,17 +583,19 @@ package enum HostActivationResult<Failure: Equatable & Sendable>:
     case failure(Failure)
 }
 
-package enum HostOpportunityResult: Equatable, Sendable {
-    case cycle(RunCycleResult<RuntimeOwnerFailure>)
+package enum HostOpportunityResult<OwnerFailure: Equatable & Sendable>:
+    Equatable, Sendable {
+    case cycle(RunCycleResult<OwnerFailure>)
     case invalidLifecycle
 }
 
 package protocol MVPHostInstance: ~Copyable {
     associatedtype ActivationFailure: Equatable & Sendable
+    associatedtype OwnerFailure: Equatable & Sendable = RuntimeOwnerFailure
     var lifecycleState: MVPHostLifecycleState { get }
     var assemblyReport: HostAssemblyReport { get }
     mutating func activate() -> HostActivationResult<ActivationFailure>
-    mutating func runOpportunity() -> HostOpportunityResult
+    mutating func runOpportunity() -> HostOpportunityResult<OwnerFailure>
     mutating func teardown()
 }
 
@@ -1217,6 +1226,16 @@ dispositions, action/fact behavior, and user-visible state.
 
 ## Compatibility
 
+The 2026-10-02 opportunity amendment is a package-SPI source change. Framework
+fixtures use `HostOpportunityResult<RuntimeOwnerFailure>`; application hosts
+use the finite owner-failure sum configured for their SPEC-013 coordinator.
+The exact failure and execution context must reach the existing owner adapter
+and residual policy boundary, including application rejection after partial
+mutation. Narrowing to a framework error, fabricating an invariant failure,
+or relying on a diagnostic record is forbidden. Existing containment,
+finalization, quiescence, policy, resource, and lifecycle requirements remain
+unchanged. SPEC-009's owner/failure/cycle-result ceilings still apply.
+
 The four host presets are source-level package SPI, not stable ABI or a
 persistent configuration format. Static generation may specialize wiring;
 dynamic hosts may use bounded references and existentials. Both preserve the
@@ -1232,6 +1251,14 @@ mutation, closure-retaining portable Button actions, mutable capability
 registries, and target-specific reduced presentations are incompatible.
 
 ## Testing Requirements
+
+The shared opportunity boundary must forward exact framework and application
+failure cases in Dynamic and Static profiles, with diagnostics disabled and
+after partial admitted-work application. Tests must preserve execution context
+and the existing containment-before-policy ordering, retain dirty state without
+replaying effects, and prove that a semantic wake does not resume a quiescent
+host. Measure every production carrier specialization within SPEC-009's
+existing ceilings and revalidate the assembled host budgets.
 
 The repository MUST provide `scripts/contracts/run-spec-015.sh`. From the
 repository root it runs hardware-free macOS dynamic/static execution fixtures,
@@ -1329,7 +1356,8 @@ software, transport, and observed architecture separately.
   or immutable handler.
 - [ ] **HC-010:** Same-thread and distinct-executor fixtures preserve bounded
   fact admission, later mutation, no reentrant model mutation, ordered
-  application, and equivalent transcripts.
+  application, and equivalent transcripts. Exact application rejections after
+  partial mutation survive the shared opportunity carrier without effect replay.
 - [ ] **HC-011:** Wake requests never enter the runtime synchronously; the frame
   interval and maximum fact-service latency are both 250,000 microseconds; the
   exact 20/2/6 production burst fits 32 slots with four-slot margin, all 32
@@ -1339,7 +1367,9 @@ software, transport, and observed architecture separately.
 - [ ] **HC-012:** The total policy matrix runs only after mandatory effects,
   routes each host outcome exactly once, performs every owning no-policy row,
   selects only allowed dispositions, quiesces without consulting a defective
-  table, and is unchanged by every diagnostic configuration and fault.
+  table, and is unchanged by every diagnostic configuration and fault. The
+  configured cycle owner-failure sum and execution context reach this boundary
+  without narrowing or diagnostic-only preservation.
 - [ ] **HC-013:** macOS dynamic/static fixtures share extent and effective
   semantics; Pi resolves 240 x 240 with a 240 x 16 RGB565 region; the
   nRF52840 fixture resolves 320 x 240 with a 320 x 4 region, 640-byte rows,
@@ -1375,6 +1405,12 @@ body during host validation. The short-diagnostic operation count is retained
 as separate measured conformance evidence.
 
 ## Open Issues
+
+The maintainer explicitly approved the focused opportunity amendment together
+with the SPEC-013 shared-pipeline amendment on 2026-10-02. SPEC-013 Milestone 9
+includes the host carrier repair and its cross-profile boundary tests;
+SPEC-001 T10.5/T10.6 remain blocked until that repair is verified. Approval
+does not establish implementation or conformance.
 
 The `KMRTM24024-SPI` nRF preset and geometry were approved with
 SPEC-001/004/014 on 2026-09-27. The actual display controller, touch

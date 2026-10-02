@@ -6,7 +6,7 @@ status: active
 owners:
   - codex
 created: 2026-09-09
-updated: 2026-09-27
+updated: 2026-10-02
 related_design_notes:
   - ../implementation-designs/spec-015-generated-workload-and-presets.md
   - ../implementation-designs/spec-015-wake-and-pacing.md
@@ -19,6 +19,16 @@ superseded_by: null
 ---
 
 # SPEC-015 Implementation Plan
+
+## 2026-10-02 Opportunity Failure Carrier Review
+
+The maintainer approved the focused SPEC-015 opportunity amendment together
+with SPEC-013 on 2026-10-02. The plan retains historical task dispositions;
+implementation of the amended carrier has not begun. The cross-owner repair and HC-010/HC-012 failure,
+context, containment, and diagnostics evidence are assigned to
+[SPEC-013 T9.1–T9.4](spec-013-implementation-plan.md#milestone-9-preserve-partial-mutation-and-exact-application-failures).
+That owner handoff is required before SPEC-001 T10.5/T10.6 resume. Approval
+resolves the contract gate, not the implementation or evidence obligations.
 
 ## 2026-09-27 Landscape Preset Correction
 

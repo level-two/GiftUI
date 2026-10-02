@@ -2104,6 +2104,14 @@ human `implemented` transition.
 
 ### Milestone 10: Restore Module Ownership in the Production Host Joins
 
+**2026-10-02 blocker resolution:** The maintainer explicitly approved the
+coordinated SPEC-013/SPEC-015 amendment. The precise repair sequence is
+[SPEC-013 T9.1–T9.4](spec-013-implementation-plan.md#milestone-9-preserve-partial-mutation-and-exact-application-failures):
+carry partial-mutation progress and exact application errors, prove failure
+and no-replay behavior, measure bounded carriers and Embedded feasibility,
+then validate and hand off. T10.5/T10.6 remain blocked until that owner
+handoff; T10.7/T10.8 keep their final join/gate prerequisites.
+
 **Entry conditions:** The 2026-10-01 dependency/ownership review and the
 maintainer's 2026-10-02 request for concrete cleanup tasks. This is planning
 under the existing approved contracts; no cleanup task is completed by this

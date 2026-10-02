@@ -19,6 +19,7 @@ GiftUIRuntimeDynamic	GiftUIRenderCore	allowed
 GiftUIRuntimeDynamic	GiftUIRenderLowering	allowed
 GiftUIRuntimeDynamic	GiftUIRuntimeCore	allowed
 GiftUIRuntimeDynamic	GiftUISemanticCore	allowed
+GiftUIRuntimeDynamic	GiftUITextResources	allowed
 GiftUIRuntimeStatic	GiftUI	allowed
 GiftUIRuntimeStatic	GiftUIDrawing	allowed
 GiftUIRuntimeStatic	GiftUIExecution	allowed

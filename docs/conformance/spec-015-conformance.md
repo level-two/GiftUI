@@ -2,10 +2,10 @@
 spec: SPEC-015
 feature: giftui-mvp-architecture
 title: SPEC-015 Conformance Report
-status: complete
+status: collecting
 reviewers: [codex]
 created: 2026-09-19
-updated: 2026-09-27
+updated: 2026-10-02
 implementation_plan: ../implementation-plans/spec-015-implementation-plan.md
 related_future_work: [FW-022]
 related_explorations: []
@@ -15,6 +15,14 @@ superseded_by: null
 ---
 
 # SPEC-015 Conformance Report
+
+> **Current applicability — 2026-10-02:** The maintainer approved the
+> coordinated SPEC-013/SPEC-015 seam amendment. Earlier passing rows remain historical evidence
+> for the frozen baseline and their tested inputs. This report is `collecting`
+> for the amendment; partial admitted-work failure and exact application
+> rejection through the host opportunity boundary need new evidence from
+> [SPEC-013 Milestone 9](../implementation-plans/spec-013-implementation-plan.md#milestone-9-preserve-partial-mutation-and-exact-application-failures).
+> No blanket current conformance or implemented transition is claimed.
 
 ## 2026-09-27 Landscape Follow-up
 

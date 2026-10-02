@@ -2,11 +2,11 @@
 id: SPEC-013
 feature: giftui-mvp-architecture
 title: Dynamic and Static Runtime Profile Contract
-status: implementing
+status: approved
 authors:
   - codex
 created: 2026-08-27
-updated: 2026-09-20
+updated: 2026-10-02
 proposal:
   - PROPOSAL-003
   - PROPOSAL-005
@@ -66,6 +66,14 @@ target_milestone: MVP
 ---
 
 # SPEC-013: Dynamic and Static Runtime Profile Contract
+
+> **Amendment approved — 2026-10-02:** The maintainer explicitly accepted
+> this amendment together with SPEC-015: the shared runner reports partial
+> admitted-work mutation on failure and preserves the configured bounded
+> application owner-failure sum. This revision is `approved` and authoritative.
+> Implementation of the amendment has not begun. The pre-amendment baseline
+> is preserved at Git revision `a7202dc5`. SPEC-001 T10.5/T10.6 still require
+> the SPEC-013 Milestone 9 repair and validated owner handoff.
 
 > **Implementation status:** Explicitly reapproved by the maintainer on
 > 2026-09-12 and moved to `implementing` when T0.1 began on 2026-09-12. The
@@ -295,8 +303,8 @@ errors into SPEC-003 facts. `GiftUIRuntimeCore` MUST NOT import
 `GiftUIFailureCore` or `GiftUIFailureExecution`; a sibling owner adapter that
 imports both sides performs mapping and correlation.
 
-The adapter MUST preserve `RuntimeOwnerFailure` until mapping and make the
-correlated failure available to total host policy independently of diagnostic
+The adapter MUST preserve the configured cycle owner-failure sum until mapping
+and make the correlated failure available to total host policy independently of diagnostic
 selection or delivery. Runtime profile code MUST NOT replace a focused error
 with a generic profile error after construction.
 
@@ -395,7 +403,6 @@ package protocol RuntimeProfileStorage: ~Copyable {
 
 package protocol GiftUIRuntimeProfileCoordinator:
     ExecutionAdmissionSink, ExecutionOpportunityRunner
-where OwnerFailure == RuntimeOwnerFailure
 {
     associatedtype Storage: RuntimeProfileStorage
     associatedtype Endpoint: SynchronousFrameEndpoint
@@ -410,6 +417,87 @@ where OwnerFailure == RuntimeOwnerFailure
     mutating func quiesce()
 }
 ```
+
+### Shared pipeline failure and mutation seam
+
+`RuntimeOwnerFailure` remains the exact framework-focused sum above. A
+framework-only coordinator uses it directly. An application integration MAY
+configure a finite, statically known `Equatable & Sendable` owner-failure sum
+containing an exact `RuntimeOwnerFailure` and its application-owned rejection
+enum. The containing sum and application mappings belong above Runtime Core;
+Runtime Core MUST NOT import application modules or name application cases.
+An application rejection MUST NOT be converted to an execution invariant,
+rendering failure, or diagnostic-only value. The configured sum MUST contain
+only inline bounded values and meet the unchanged SPEC-009 storage ceilings.
+
+The common runner and both profile bindings preserve the same configured
+`OwnerFailure` throughout all stages and their returned failure record. The
+Execution coordinator forwards `Opportunity.OwnerFailure` without restricting
+it to `RuntimeOwnerFailure`. First-failure storage retains the configured sum
+and original execution context; it MUST NOT narrow it to a framework case.
+Framework-only owners remain valid without an application failure type.
+
+The shared pipeline package SPI has these failure-bearing shapes:
+
+```swift
+package enum RuntimePipelineStepResult<OwnerFailure: Equatable & Sendable>:
+    Equatable, Sendable {
+    case advanced
+    case failure(RunCycleFailure<OwnerFailure>)
+}
+
+package enum RuntimePipelineMutationResult<OwnerFailure: Equatable & Sendable>:
+    Equatable, Sendable {
+    case applied(Bool)
+    case failure(RunCycleFailure<OwnerFailure>, mutationApplied: Bool)
+}
+
+package enum RuntimePipelinePublicationResult<OwnerFailure: Equatable & Sendable>:
+    Equatable, Sendable {
+    case published(RuntimePipelinePublication)
+    case failure(RunCycleFailure<OwnerFailure>)
+}
+
+package enum RuntimePipelineOfferResult<OwnerFailure: Equatable & Sendable>:
+    Equatable, Sendable {
+    case accepted(PresentationRevision)
+    case noChange
+    case backpressured
+    case retryableRefusal
+    case nonRetryableRefusal(FrameRefusalOrigin)
+    case failure(RunCycleFailure<OwnerFailure>)
+}
+
+package struct RuntimePipelineFailureRecord<OwnerFailure: Equatable & Sendable>:
+    Equatable, Sendable {
+    package let stage: RuntimeCompletePipelineStage
+    package let failure: RunCycleFailure<OwnerFailure>
+    package let publication: RuntimePipelinePublication?
+    package let disposition: RuntimePipelineDisposition
+}
+
+package enum RuntimeCompletePipelineResult<OwnerFailure: Equatable & Sendable>:
+    Equatable, Sendable {
+    case completed(RuntimePipelineCompletion)
+    case failed(RuntimePipelineFailureRecord<OwnerFailure>)
+}
+```
+
+`RuntimeCompletePipelineOwner` declares
+`associatedtype OwnerFailure: Equatable & Sendable = RuntimeOwnerFailure`.
+Its fallible methods return the corresponding shape specialized with
+`OwnerFailure`. `RuntimeCompletePipeline.run`, `rejectInactive`, and both
+profile bindings' `runActivePipeline` return
+`RuntimeCompletePipelineResult<Owner.OwnerFailure>`. The successful completion,
+disposition, publication, cleanup ordering, and stage numbering are unchanged.
+
+On both mutation result branches, `mutationApplied` reports whether any
+admitted effect has already been applied in this cycle. It is false for a
+rejection before any application and true if application progressed before
+failure. The owner MUST return the actual progress, not assume all failures
+occur before mutation or mark every failure as mutated. The common runner
+uses this value when finalizing failure and preserves the exact failure value.
+No rollback or effect replay is introduced.
 
 `RuntimeProfileLimits.init` returns `nil` unless every contained value is
 valid and these relations hold:
@@ -686,9 +774,20 @@ adapter as follows:
 
 During execution, the coordinator wraps Semantic, Layout, Observable State,
 Interaction, or Drawing errors in the exact `RuntimeOwnerFailure` case and
-returns `.focusedOwner` through SPEC-009. Execution, rendering, and endpoint
+preserves that value directly or inside the configured application sum in
+`.focusedOwner` through SPEC-009. Application rejections retain their exact
+application case in the same carrier, including rejection after partial
+mutation. Execution, rendering, and endpoint
 failures retain their SPEC-009 cases. The owning adapter maps the exact value;
 no profile-generic failure or diagnostic side channel is permitted.
+
+A mutation-stage failure before any applied work leaves semantic disposition
+unchanged and adds no semantic-dirty wake reason. The same failure after any
+applied work leaves semantic disposition dirty and records `.semanticDirty`
+for paced rederivation. Both paths skip all later fallible stages and execute
+mandatory cleanup, disposition, and finalization once. Dirty state and a wake
+reason do not authorize execution while quiescent or override mandatory
+containment, residual policy, or `.safetyNotProven` handling.
 
 Profile detection order is the six-step construction sequence. Host
 composition then checks text resources, structural workload, capability,
@@ -723,6 +822,15 @@ must not use unbounded history or retry storage.
 compiler and therefore satisfies SPEC-009's `OwnerFailure` ceiling. It contains
 no reference, existential, closure, string, or diagnostic payload.
 
+An application-composed cycle `OwnerFailure` MUST occupy no more than 4 bytes;
+`RunCycleFailure<OwnerFailure>` no more than 8 bytes; and
+`RunCycleResult<OwnerFailure>` no more than 72 bytes, as already required by
+SPEC-009. Measure every production specialization under each supported
+toolchain. Generic specialization MUST NOT introduce heap allocation, boxed
+errors, escaping captures, or an additional retained replay buffer. Include
+changed first-failure storage in the checked profile audit and remeasure the
+assembled binary against unchanged host ceilings before closing the join.
+
 For each supported toolchain, evidence MUST report separately:
 
 - each `RuntimeStorageAudit` field and checked total;
@@ -750,6 +858,13 @@ values are stable only within this contract. Dynamic and static profiles must
 compile from the same portable application source; profile-specific imports
 in Presentation are nonconforming.
 
+The partial-mutation/failure amendment changes package SPI: failure-bearing
+pipeline values require their owner-failure type argument; mutation failures
+require the explicit progress bit; and coordinator/profile wrappers must
+forward the configured owner-failure type. Existing framework-only fixtures
+specialize with `RuntimeOwnerFailure`. SPEC-015's opportunity result must
+forward the same type; erasing it at the host boundary is nonconforming.
+
 The render-workspace and semantic-structural amendments are source-breaking
 package-SPI changes. Existing `RuntimeProfileLimits` construction and profile
 storage conformances MUST supply the explicit `renderWorkspace`,
@@ -776,6 +891,14 @@ both profiles with identical artificial limits. It requires:
 - startup audit missing/small/overflow/incompatible-table tests;
 - semantic identity, branch replacement, state preservation/removal, and
   failed-derivation fixtures;
+- admitted-work rejection before mutation and after one or several applied
+  effects, with exact failure/context, dirty-state/wake disposition, skipped
+  later stages, once-only cleanup/finalization, and a subsequent rederivation
+  proving no effect replay;
+- equal Dynamic/Static application-rejection transcripts, including the
+  production capture-revision mismatch and reserved-failure capacity cases,
+  exact owner normalization with diagnostics disabled, and mandatory
+  containment/quiescence checks;
 - layout and render golden transcripts;
 - Canvas dynamic-closure/static-ID staging, inline captures, invocation/release,
   typed-throws cleanup, Path snapshot, plan discard, and recovery fixtures;
@@ -834,7 +957,9 @@ assembled configurations.
 - [ ] **RP-006:** Exact-limit succeeds and first-excess fails deterministically for every
   storage family.
 - [ ] **RP-007:** Failed derivation never replays admitted effects and releases all
-  candidate/attempt storage.
+  candidate/attempt storage. Admitted-work failures distinguish no applied
+  work from partial application; partial application remains dirty with a
+  paced semantic wake, subject to mandatory containment and quiescence.
 - [ ] **RP-008:** Accepted handoff alone commits presentation-coupled routing; every other
   result preserves the previous committed set.
 - [ ] **RP-009:** Refusal recovery retains only constant-space presentation intent.
@@ -852,7 +977,10 @@ assembled configurations.
   retires candidate-only generations and preserves committed state.
 - [ ] **RP-015:** Every focused owner error returns through SPEC-009's generic
   carrier with exact value/context, mapping, cleanup, and equal cross-profile
-  transcript.
+  transcript. Application-owned rejection cases survive the same path without
+  fabrication or diagnostics, including after partial mutation, within the
+  unchanged 2-byte framework / 4-byte composed owner / 8-byte failure /
+  72-byte cycle-result ceilings.
 
 ## Implementation Notes
 
@@ -864,7 +992,15 @@ assertions.
 
 ## Open Issues
 
-No unresolved architectural or contractual issue remains. The coordinated
+The maintainer explicitly approved the 2026-10-02 shared-pipeline amendment
+and matching SPEC-015 opportunity amendment. The approval gate is resolved;
+the reproduced mutation-stage loss and inability to preserve application
+rejections still block SPEC-001 T10.5/T10.6 until SPEC-013 Milestone 9 repairs
+and validates the seam. Implementation and conformance are not established
+by approval. No new architecture decision is proposed:
+ADR-011 requires at-most-once mutation and dirty rederivation; ADR-014/015
+require exact bounded failures, containment, and owner mapping; SPEC-009
+already permits the finite generic owner-failure sum. The coordinated
 SPEC-009, SPEC-010, and SPEC-011 amendments remain approved, and the focused
 render-workspace schema change was explicitly reapproved on 2026-09-12. Its
 production values remain owned by Wave 7 HOST-CONFIGURATION.
@@ -877,6 +1013,7 @@ existing lifecycle or deferred tracks and are not required by this contract.
 
 ## References
 
+- [2026-10-02 Shared Pipeline Amendment Review](../../Tests/ContractFixtures/SPEC013/Evidence/milestone-9/seam-amendment-review.md)
 - [SPEC-013 Implementation Plan](../implementation-plans/spec-013-implementation-plan.md)
 - [SPEC-013 Conformance Report](../conformance/spec-013-conformance.md)
 - [Common Coordinator and Cleanup Implementation Design](../implementation-designs/spec-013-common-coordinator-and-cleanup.md)
