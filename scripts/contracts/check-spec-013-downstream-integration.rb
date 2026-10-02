@@ -6,7 +6,7 @@ require "pathname"
 root = Pathname.new(File.expand_path("../..", __dir__))
 runtime_source = root.join("Sources/GiftUIRuntimeCore").glob("**/*.swift").map(&:read).join("\n")
 host_source = root.join("Sources/GiftUIHostConfiguration").glob("**/*.swift").map(&:read).join("\n")
-assembly_source = root.join("Sources/SignalAnalyzerHost").glob("**/*.swift").map(&:read).join("\n")
+assembly_source = root.join("Sources/SignalAnalyzerTargetHost").glob("**/*.swift").map(&:read).join("\n")
 
 def fail_check(message)
   warn "SPEC-013 downstream integration failed: #{message}"

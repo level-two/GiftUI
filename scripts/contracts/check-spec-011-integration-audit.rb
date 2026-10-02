@@ -27,7 +27,6 @@ approved_consumers = %w[
   GiftUIRuntimeDynamicTests
   GiftUIRuntimeStatic
   GiftUIRuntimeStaticTests
-  SignalAnalyzerHost
   SignalAnalyzerTargetHost
 ]
 actual_consumers = GRAPH.each_with_object([]) do |(target, declaration), consumers|
@@ -74,8 +73,8 @@ dispatch_paths = source_by_path.each_with_object([]) do |(path, source), paths|
   paths << path if source.include?("RuntimeInteractionDispatcher(")
 end.sort
 expected_dispatch_paths = %w[
-  Sources/SignalAnalyzerHost/DynamicSignalAnalyzerActionDispatcher.swift
-  Sources/SignalAnalyzerHost/StaticSignalAnalyzerActionDispatcher.swift
+  Sources/SignalAnalyzerTargetHost/DynamicSignalAnalyzerActionDispatcher.swift
+  Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerActionDispatcher.swift
 ]
 fail_check("production dispatch joins differ: #{dispatch_paths.inspect}") unless
   dispatch_paths == expected_dispatch_paths

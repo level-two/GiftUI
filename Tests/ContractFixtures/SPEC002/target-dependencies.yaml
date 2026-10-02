@@ -538,10 +538,6 @@ targets:
     dependencies:
       - GiftUIExecution
       - GiftUIHostConfiguration
-      - GiftUIInteraction
-      - GiftUIRuntimeCore
-      - GiftUIRuntimeDynamic
-      - GiftUIRuntimeStatic
       - SignalAnalyzerDomain
       - SignalAnalyzerPresentation
   SignalAnalyzerTargetHost:

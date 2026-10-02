@@ -2273,6 +2273,11 @@ evidence. Existing reviewed-pixel and connected-hardware gates remain open.
       as proof of the production firmware's isolation; T10.4/T10.6 cover that
       source configuration separately. If an exact module contract must change,
       obtain its reviewed amendment before relying on the changed topology.
+      **2026-10-02 disposition:** Independent dependency cleanup delivered;
+      final verification blocked by T10.5/T10.6. The [isolation record](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/executable-dependency-isolation.md)
+      captures the dispatcher relocation inside existing owners, exact closure
+      negatives, nine regressions, and independent deterministic checksums.
+
 - [ ] `T10.8` — Revalidate the assembled cleanup and record its dispositions.
       Update dependency/actual-source reports, the affected implementation
       design notes, task-evidence ledger, and SPEC-001 conformance evidence for

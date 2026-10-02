@@ -298,10 +298,6 @@ let package = Package(
             dependencies: [
                 "GiftUIExecution",
                 "GiftUIHostConfiguration",
-                "GiftUIInteraction",
-                "GiftUIRuntimeCore",
-                "GiftUIRuntimeDynamic",
-                "GiftUIRuntimeStatic",
                 "SignalAnalyzerDomain",
                 "SignalAnalyzerPresentation",
             ]

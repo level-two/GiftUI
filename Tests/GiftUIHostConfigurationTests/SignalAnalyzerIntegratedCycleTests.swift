@@ -9,6 +9,7 @@ import GiftUIRuntimeStatic
 import SignalAnalyzerDomain
 import SignalAnalyzerHost
 import SignalAnalyzerPresentation
+import SignalAnalyzerTargetHost
 import Testing
 
 private protocol IntegratedFactAdmission: SignalAnalyzerFactAdmission {

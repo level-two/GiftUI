@@ -9,6 +9,8 @@ mkdir -p "${CLANG_MODULE_CACHE_PATH}"
 
 swift package --disable-sandbox --package-path "${PROJECT_ROOT}" dump-package |
     ruby "${SCRIPT_DIR}/check-spec-001-boundaries.rb"
+swift package --disable-sandbox --package-path "${PROJECT_ROOT}" dump-package |
+    python3 "${SCRIPT_DIR}/check-spec-001-executable-closures.py"
 ruby "${SCRIPT_DIR}/check-spec-001-portable-presentation.rb"
 ruby "${SCRIPT_DIR}/check-spec-001-domain-contract.rb"
 swift package --disable-sandbox --package-path "${PROJECT_ROOT}" dump-package |
