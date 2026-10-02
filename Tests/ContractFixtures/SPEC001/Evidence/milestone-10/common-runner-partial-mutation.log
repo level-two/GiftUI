@@ -1,0 +1,19 @@
+[3/5] Compiling GiftUIRuntimeCoreTests RuntimeCompletePipelineTests.swift
+[4/5] Emitting module GiftUIRuntimeCoreTests
+[4/6] Write Objects.LinkFileList
+[5/6] Linking GiftUIPackageTests
+Build complete! (2.04s)
+Test Suite 'Selected tests' started at 2026-10-02 11:08:16.637.
+Test Suite 'GiftUIPackageTests.xctest' started at 2026-10-02 11:08:16.637.
+Test Suite 'GiftUIPackageTests.xctest' passed at 2026-10-02 11:08:16.637.
+	 Executed 0 tests, with 0 failures (0 unexpected) in 0.000 (0.000) seconds
+Test Suite 'Selected tests' passed at 2026-10-02 11:08:16.637.
+	 Executed 0 tests, with 0 failures (0 unexpected) in 0.000 (0.001) seconds
+◇ Test run started.
+↳ Testing Library Version: 1902
+↳ Target Platform: arm64e-apple-macos14.0
+◇ Test partialMutationFailureRetainsDirtyStateForRederivation() started.
+✘ Test partialMutationFailureRetainsDirtyStateForRederivation() recorded an issue at RuntimeCompletePipelineTests.swift:526:5: Expectation failed: (record.disposition.semanticDisposition → .unchanged) == .dirty
+✘ Test partialMutationFailureRetainsDirtyStateForRederivation() recorded an issue at RuntimeCompletePipelineTests.swift:527:5: Expectation failed: (record.disposition.wakeReasons → ExecutionWakeReasons(rawValue: 0)).contains(.semanticDirty → ExecutionWakeReasons(rawValue: 2))
+✘ Test partialMutationFailureRetainsDirtyStateForRederivation() failed after 0.001 seconds with 2 issues.
+✘ Test run with 1 test in 0 suites failed after 0.001 seconds with 2 issues.

@@ -2234,6 +2234,11 @@ evidence. Existing reviewed-pixel and connected-hardware gates remain open.
       commits routing, refusals retain bounded intent, exact focused failure
       meaning reaches policy after mandatory effects, and T10.2's regressions
       plus raw-device touch/workload scenarios pass.
+      **2026-10-02 disposition:** Blocked by the [reproduced common-runtime seam gap](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/dynamic-runner-blocker.md).
+      An application batch may mutate before failure, but the existing result
+      cannot retain that fact for dirty/wake disposition. Exact application
+      rejection handling also needs owner review; no partial join is retained.
+
 - [ ] `T10.6` — Delegate Static/nRF production sequencing to the same common
       runner using fixed typed owner adapters and caller-owned storage. Rejoin
       the embedded presentation preparation, semantic publication, layout,

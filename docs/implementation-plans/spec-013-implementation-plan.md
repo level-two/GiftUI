@@ -993,3 +993,13 @@ Task checkboxes and evidence links must be updated with implementation. Plan
 completion requires a disposition for every task but does not mark SPEC-013
 implemented; that transition remains gated on conformance review and explicit
 human authorization.
+
+## SPEC-001 milestone 10 upstream defect — 2026-10-02
+
+The [T10.5 reproduction](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/dynamic-runner-blocker.md)
+invalidates the earlier blanket production-readiness inference for partial
+admitted-work failure. Existing passing owner fixtures remain historical
+evidence for their tested inputs. Specification review must determine the
+partial-mutation and exact application-failure seam before a traceable owner
+repair task is made ready. This record does not approve a contract amendment
+or reopen architectural decisions implicitly.

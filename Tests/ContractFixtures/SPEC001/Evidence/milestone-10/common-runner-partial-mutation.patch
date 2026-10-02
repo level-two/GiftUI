@@ -1,0 +1,43 @@
+diff --git a/Tests/GiftUIRuntimeCoreTests/RuntimeCompletePipelineTests.swift b/Tests/GiftUIRuntimeCoreTests/RuntimeCompletePipelineTests.swift
+index c89d8fce..3f9131cf 100644
+--- a/Tests/GiftUIRuntimeCoreTests/RuntimeCompletePipelineTests.swift
++++ b/Tests/GiftUIRuntimeCoreTests/RuntimeCompletePipelineTests.swift
+@@ -13,6 +13,8 @@ private struct CompletePipelineRecorder: RuntimeCompletePipelineOwner {
+     var failureStage: RuntimeCompletePipelineStage?
+     var injectedFailure: RunCycleFailure<RuntimeOwnerFailure>?
+     var mutationApplied = true
++    var partiallyApplyBeforeFailure = false
++    private(set) var appliedFactCount = 0
+     var publication = RuntimePipelinePublication(
+         semanticRevision: SemanticRevision(rawValue: 7),
+         changed: true
+@@ -31,6 +33,7 @@ private struct CompletePipelineRecorder: RuntimeCompletePipelineOwner {
+ 
+     mutating func applyAdmittedWork() -> RuntimePipelineMutationResult {
+         stages.append(.applyAdmittedWork)
++        if partiallyApplyBeforeFailure { appliedFactCount += 1 }
+         return failureStage == .applyAdmittedWork
+             ? .failure(failure(for: .applyAdmittedWork))
+             : .applied(mutationApplied)
+@@ -505,3 +508,21 @@ private func measureSPEC013Nanoseconds(_ operation: () -> Void) -> UInt64 {
+     let (total, totalOverflow) = whole.addingReportingOverflow(attoseconds / 1_000_000_000)
+     return wholeOverflow || totalOverflow ? .max : total
+ }
++
++@Test func partialMutationFailureRetainsDirtyStateForRederivation() {
++    // A sealed application batch may apply one fact before the next fact fails.
++    // The present result shape can return the error but cannot report that work.
++    var owner = CompletePipelineRecorder()
++    owner.partiallyApplyBeforeFailure = true
++    owner.failureStage = .applyAdmittedWork
++    owner.injectedFailure = .focusedOwner(.observableState(.invalidPhaseContained))
++    let result = RuntimeCompletePipeline.run(owner: &owner)
++    guard case .failed(let record) = result else {
++        Issue.record("expected application failure")
++        return
++    }
++    #expect(owner.appliedFactCount == 1)
++    #expect(record.failure == owner.injectedFailure)
++    #expect(record.disposition.semanticDisposition == .dirty)
++    #expect(record.disposition.wakeReasons.contains(.semanticDirty))
++}
