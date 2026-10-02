@@ -2,7 +2,7 @@
 spec: SPEC-014
 feature: giftui-mvp-architecture
 title: SPEC-014 Implementation Plan
-status: active
+status: completed
 owners:
   - codex
 created: 2026-09-09
@@ -196,21 +196,21 @@ exactly once below.
 
 | Criterion | Implementation tasks | Evidence | Status |
 | --- | --- | --- | --- |
-| `BI-001` — Separate surface, raster, display, backend-integration, runtime, and host ownership with every prohibited edge rejected | `T0.2`, `T1.6`, `T8.1` | SwiftPM graph audit, compiled-import scan, positive and negative dependency fixtures | pending |
-| `BI-002` — Four exact SPEC-004 configurations and pre-offer rejection of every one-field construction mismatch without target probing | `T2.1`, `T2.2`, `T2.5`, `T7.1` | Complete contribution/effective-value matrix, constructor call-count transcript | pending |
-| `BI-003` — Exact nRF52840 240 x 320, 240 x 4, 480-byte-row, 1,920-byte single-slot tiled configuration with no framebuffer | `T2.5`, `T6.5`, `T8.2`, `T8.5` | Normalized fixture, storage report, link/map and forbidden-buffer scan | replacement evidence pending |
-| `BI-004` — Checked header bounds and one complete reservation before body, with one finish or cancel | `T2.3`, `T3.1`, `T3.5`, `T7.1`, `T7.2` | Header/reservation/call-order transcript for every terminal path | pending |
-| `BI-005` — Complete payload grammar, exact slot reuse, and rejection of every invalid writer/reservation operation | `T3.1`-`T3.5`, `T7.5` | Exhaustive `transactions.yaml` state-transition corpus | pending |
-| `BI-006` — Single producer and borrowed-operation calls in both tiled fixtures with bounded storage and no replay, display list, framebuffer, or retained address | `T0.4`, `T6.1`-`T6.5`, `T8.2` | Call-count, borrow-poison, address, storage high-water, and forbidden-symbol reports | pending |
-| `BI-007` — Identical affected pixels and exact bytes through recording, RGBA8888, framebuffer RGB565, Pi tiled, and nRF tiled paths | `T4.1`, `T4.6`, `T5.4`, `T6.5`, `T8.3` | Zero-difference normalized image and canonical-byte comparison | pending |
-| `BI-008` — Exact SPEC-005 glyph resources are neither reshaped, remeasured, substituted, repositioned, nor retained | `T2.4`, `T4.3`, `T6.3`, `T8.2` | Resource-identity transcript, payload-borrow count, poisoning and address scan | pending |
-| `BI-009` — Every SPEC-012 stroke vector has exact full-surface and tiled coverage and encoding | `T4.4`, `T5.4`, `T6.3`, `T8.3` | Imported canonical stroke corpus with zero pixel/byte tolerance | pending |
-| `BI-010` — Exact pre-body reservation and body-result mappings, call counts, retained local error, cleanup, and logical disposition | `T7.1`-`T7.3`, `T7.5` | Complete reservation/body/result cross-product transcript | pending |
-| `BI-011` — Abortability before transfer and accepted drain plus one health update after transfer, without capability mutation | `T3.4`, `T6.6`, `T7.2`-`T7.4` | First/later payload fault injection, health count, immutable-value snapshot | pending |
-| `BI-012` — Equality success and deterministic first excess for every limit in exact detection order | `T1.3`, `T2.2`-`T2.4`, `T3.1`, `T3.2`, `T4.5`, `T7.3`, `T7.5` | Exact-limit/first-excess and simultaneous-failure precedence matrix | pending |
-| `BI-013` — Normative value layouts, zero-heap static RGB565 construction/frame, and no forbidden runtime facility | `T1.6`, `T8.2`, `T8.4`, `T8.5` | 32/64-bit layout, allocation, stack, sections, and linked-symbol reports | pending |
-| `BI-014` — No operation, resource, Path/stroke, closure, sink, or Core address survives accepted, refused, or failed offer | `T4.3`, `T4.4`, `T6.4`, `T7.2`, `T8.2` | Borrow poisoning and post-offer address scans for every disposition | pending |
-| `BI-015` — One registered reproducible four-profile driver with complete fixture, dependency, resource, and timing evidence confined to `.build/spec-014/` | `T0.1`, `T0.3`, `T8.1`-`T8.6` | Standalone driver reports, registry/top-level gate result, output-path audit | pending |
+| `BI-001` — Separate surface, raster, display, backend-integration, runtime, and host ownership with every prohibited edge rejected | `T0.2`, `T1.6`, `T8.1` | SwiftPM graph audit, compiled-import scan, positive and negative dependency fixtures | complete |
+| `BI-002` — Four exact SPEC-004 configurations and pre-offer rejection of every one-field construction mismatch without target probing | `T2.1`, `T2.2`, `T2.5`, `T7.1` | Complete contribution/effective-value matrix, constructor call-count transcript | complete |
+| `BI-003` — Exact nRF52840 320 x 240, 320 x 4, 640-byte-row, 2,560-byte single-slot tiled configuration with no framebuffer | `T2.5`, `T6.5`, `T8.2`, `T8.5` | Normalized fixture, storage report, link/map and forbidden-buffer scan | complete |
+| `BI-004` — Checked header bounds and one complete reservation before body, with one finish or cancel | `T2.3`, `T3.1`, `T3.5`, `T7.1`, `T7.2` | Header/reservation/call-order transcript for every terminal path | complete |
+| `BI-005` — Complete payload grammar, exact slot reuse, and rejection of every invalid writer/reservation operation | `T3.1`-`T3.5`, `T7.5` | Exhaustive `transactions.yaml` state-transition corpus | complete |
+| `BI-006` — Single producer and borrowed-operation calls in both tiled fixtures with bounded storage and no replay, display list, framebuffer, or retained address | `T0.4`, `T6.1`-`T6.5`, `T8.2` | Call-count, borrow-poison, address, storage high-water, and forbidden-symbol reports | complete |
+| `BI-007` — Identical affected pixels and exact bytes through recording, RGBA8888, framebuffer RGB565, Pi tiled, and nRF tiled paths | `T4.1`, `T4.6`, `T5.4`, `T6.5`, `T8.3` | Zero-difference normalized image and canonical-byte comparison | complete |
+| `BI-008` — Exact SPEC-005 glyph resources are neither reshaped, remeasured, substituted, repositioned, nor retained | `T2.4`, `T4.3`, `T6.3`, `T8.2` | Resource-identity transcript, payload-borrow count, poisoning and address scan | complete |
+| `BI-009` — Every SPEC-012 stroke vector has exact full-surface and tiled coverage and encoding | `T4.4`, `T5.4`, `T6.3`, `T8.3` | Imported canonical stroke corpus with zero pixel/byte tolerance | complete |
+| `BI-010` — Exact pre-body reservation and body-result mappings, call counts, retained local error, cleanup, and logical disposition | `T7.1`-`T7.3`, `T7.5` | Complete reservation/body/result cross-product transcript | complete |
+| `BI-011` — Abortability before transfer and accepted drain plus one health update after transfer, without capability mutation | `T3.4`, `T6.6`, `T7.2`-`T7.4` | First/later payload fault injection, health count, immutable-value snapshot | complete |
+| `BI-012` — Equality success and deterministic first excess for every limit in exact detection order | `T1.3`, `T2.2`-`T2.4`, `T3.1`, `T3.2`, `T4.5`, `T7.3`, `T7.5` | Exact-limit/first-excess and simultaneous-failure precedence matrix | complete |
+| `BI-013` — Normative value layouts, zero-heap static RGB565 construction/frame, and no forbidden runtime facility | `T1.6`, `T8.2`, `T8.4`, `T8.5` | 32/64-bit layout, allocation, stack, sections, and linked-symbol reports | complete |
+| `BI-014` — No operation, resource, Path/stroke, closure, sink, or Core address survives accepted, refused, or failed offer | `T4.3`, `T4.4`, `T6.4`, `T7.2`, `T8.2` | Borrow poisoning and post-offer address scans for every disposition | complete |
+| `BI-015` — One registered reproducible four-profile driver with complete fixture, dependency, resource, and timing evidence confined to `.build/spec-014/` | `T0.1`, `T0.3`, `T8.1`-`T8.6` | Standalone driver reports, registry/top-level gate result, output-path audit | complete |
 
 ## Milestones and Tasks
 
@@ -1229,3 +1229,14 @@ Plan completion requires every task to have an explicit disposition and a
 linked `docs/conformance/spec-014-conformance.md`. A complete plan and report
 do not mark SPEC-014 implemented; that lifecycle transition requires complete
 conformance evidence and explicit human authorization.
+
+### Approved landscape fixture revalidation — 2026-10-02
+
+The [fresh criterion and four-profile comparison](../../Tests/ContractFixtures/SPEC014/Evidence/milestone-10/landscape-revalidation.md)
+closes the six affected replacement-fixture evidence rows. Current collectors
+confirm 2,560-byte nRF tile/payload/in-flight bounds, 60 tile/payload visits,
+240 regions, hard-float ABI, and zero optimized entry allocation instructions.
+The plan's criterion text now mirrors the approved 320 x 240 contract. The
+original completion record above remains scoped to its original fixture;
+current hardware-free evidence restores plan completion without granting a
+Specification status transition or connected application conformance.
