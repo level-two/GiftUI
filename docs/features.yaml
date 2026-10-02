@@ -17,6 +17,7 @@ features:
     specs: []
     dependencies: []
     milestone: MVP
+  # Deferred toolchain question: FW-028 (linked from SPEC-001 and its plan).
   signal-analyzer:
     title: Signal Analyzer Reference Application
     status: implementation

@@ -6,7 +6,7 @@ status: collecting
 reviewers:
   - codex
 created: 2026-09-09
-updated: 2026-09-12
+updated: 2026-10-02
 implementation_plan: ../implementation-plans/spec-006-implementation-plan.md
 related_future_work:
   - FW-017
@@ -123,3 +123,12 @@ All seventeen criteria have reproducible passing evidence and the amended
 Specification remains `implementing`. This collecting report is ready for
 renewed conformance review but does not itself support or perform an
 `implemented` transition; explicit maintainer authorization remains required.
+
+## SPEC-001 milestone 10 gate applicability — 2026-10-02
+
+The complete current hardware-free gate has failed this owner's profile
+checks. The [milestone 10 disposition packet](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/revalidation-disposition.md)
+records the exact gate results and failure logs. Historical passing evidence
+above remains scoped to its recorded revision and inputs; it is not a current
+full-gate pass. The owner assertion must be resolved and rerun, without waiving
+a boundary or migration requirement, before the assembled cleanup can close.

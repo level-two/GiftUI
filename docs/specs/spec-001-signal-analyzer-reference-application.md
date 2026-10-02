@@ -6,7 +6,7 @@ status: implementing
 authors:
   - Yauheni Lychkouski
 created: 2026-08-14
-updated: 2026-09-30
+updated: 2026-10-02
 proposal:
   - PROPOSAL-002
 related_rfcs:
@@ -52,6 +52,7 @@ related_future_work:
   - FW-025
   - FW-026
   - FW-027
+  - FW-028
 related_explorations: []
 related_spikes: []
 supersedes: []
@@ -2130,3 +2131,5 @@ records that explicit requested behavior. It leaves accepted architecture,
 finite application operations, capture/Clear semantics, and lifecycle status
 unchanged. Borders use existing nested rectangular backgrounds rather than
 additional Canvas occurrences. Implementation and validation remain required.
+
+[FW-028](../future-work/fw-028-embedded-owner-partitioned-output-diagnostics.md) preserves the non-blocking partitioned Embedded output diagnostic question from T10.4.

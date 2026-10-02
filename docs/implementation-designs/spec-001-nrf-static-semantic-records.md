@@ -6,7 +6,7 @@ status: draft
 authors:
   - codex
 created: 2026-09-21
-updated: 2026-09-23
+updated: 2026-10-02
 implementation_plan: ../implementation-plans/spec-001-implementation-plan.md
 related_future_work: []
 related_explorations: []

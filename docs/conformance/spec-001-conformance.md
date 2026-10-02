@@ -5,7 +5,7 @@ title: SPEC-001 Conformance Report
 status: complete
 reviewers: [codex]
 created: 2026-09-19
-updated: 2026-09-30
+updated: 2026-10-02
 implementation_plan: ../implementation-plans/spec-001-implementation-plan.md
 related_future_work: []
 related_explorations: []
@@ -173,3 +173,27 @@ T8.1 through T8.3 remain open for complete connected conformance, including
 Pi cadence and six-control validation. Further performance experiments are
 postponed under FW-027; any connected work requires its normal authorization. Human conformance review may proceed
 with those gates visible.
+
+## Milestone 10 implementation review — 2026-10-02
+
+Code scope: `44ac06a8` and its T10.1–T10.7 prerequisite commits.
+T10.1–T10.4 are implemented. T10.5/T10.6 are blocked by the
+[reproduced SPEC-013 mutation/failure seam](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/dynamic-runner-blocker.md);
+T10.7 delivers independent dependency cleanup but awaits both production
+runner joins. The [criterion dispositions](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/criterion-revalidation.tsv)
+cover all 45 criteria and distinguish retained historical tested scope from
+required assembled-production revalidation. They supersede any inference that
+the historical pass table proves the missing production common-runner joins.
+
+Canonical embedded contracts, native layout/Canvas/offer probes, 129-frame /
+12-action comparison and ARMv7E-M hard-float fixed-storage/zero-heap/resource
+inspection pass. The [source applicability record](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/final-source-applicability.txt)
+checks the current firmware selection against T10.4 hashes and records a fresh
+ARMv6 hard-float Pi build. No board or remote service was changed. Reviewed
+pixels, connected input/display/cadence and stack high-water remain blocked.
+The complete cleanup does not support an implemented transition.
+
+The [final registered gate](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/revalidation-disposition.md)
+records 30 passing and 42 failing checks across 72 checks, with 1,151 root
+Swift tests passing. Owner failures and missing reviewed pixel references
+remain explicit; T10.8 is blocked rather than complete.

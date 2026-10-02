@@ -17,6 +17,7 @@ conformance_report: ../conformance/spec-001-conformance.md
 related_future_work:
   - FW-023
   - FW-027
+  - FW-028
 related_explorations: []
 related_spikes: []
 supersedes: null
@@ -2291,6 +2292,12 @@ evidence. Existing reviewed-pixel and connected-hardware gates remain open.
       revalidation. Pixel review and connected display/input/timing/high-water
       criteria retain their existing blockers until separately satisfied.
       Plan completion does not authorize an `implemented` transition.
+      **2026-10-02 disposition:** Review recorded; completion blocked by
+      T10.5/T10.6, T10.7's final join verification, and 42 failed checks in the
+      registered hardware-free gate. The [final review packet](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/revalidation-disposition.md)
+      records all 45 criterion dispositions, exact gate results and raw logs,
+      current source applicability, and unchanged resource ceilings. The
+      1,151-test root suite passes. No implemented transition is requested.
 
 **Execution order:** T10.1 first; T10.2 and T10.3 before the Dynamic runner join;
 T10.4 before the Static runner join; T10.7 can begin once T10.1 fixes the
@@ -2424,6 +2431,11 @@ not warrant design notes.
   or an explicit human exception exists.
 
 ## Deferred and Follow-up Work
+
+- [FW-028](../future-work/fw-028-embedded-owner-partitioned-output-diagnostics.md)
+  preserves the unanswered partitioned Embedded output diagnostic question.
+  Revisit on a pinned toolchain change or a demonstrated problem with the
+  current separate-module, single-translation-unit-per-owner build.
 
 - [FW-027](../future-work/fw-027-pi-performance-investigation-resumption.md) records the
   maintainer's 2026-09-30 stop of Pi performance experiments. Resume when the

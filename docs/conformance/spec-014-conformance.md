@@ -6,7 +6,7 @@ status: complete
 reviewers:
   - codex
 created: 2026-09-13
-updated: 2026-09-27
+updated: 2026-10-02
 implementation_plan: ../implementation-plans/spec-014-implementation-plan.md
 related_future_work: [FW-010, FW-014]
 related_explorations: []
@@ -127,3 +127,11 @@ All fifteen criteria have reproducible passing evidence with no deviation or
 exception. The evidence supports requesting explicit human authorization for
 SPEC-014's `implemented` transition. That authorization has not been given in
 this review, so SPEC-014 remains `implementing`.
+
+## SPEC-001 milestone 10 canonical font identity — 2026-10-02
+
+The [Dynamic metrics injection](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/canonical-dynamic-metrics.md)
+and [embedded canonical join](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/canonical-embedded-contracts.md)
+use checked resource/font-instance identities across measurement, preflight
+and rasterization, retain the Inter catalogue and reject a mismatched package.
+This is focused consumer evidence; it does not waive owner/profile gate gaps.

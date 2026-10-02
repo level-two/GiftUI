@@ -1,0 +1,46 @@
+criterion	prior_status	current_disposition	applicability	evidence_or_reason
+SA-AC-001	pass	pass	prior-evidence-remains-valid-for-tested-scope	governance-and-reciprocal-link-audit; historical scope retained, no broadened production claim
+SA-AC-002	pass	pass	prior-evidence-remains-valid-for-tested-scope	package-and-owner-graph; historical scope retained, no broadened production claim; current canonical embedded / interface / focused regression support
+SA-AC-003	pass	pass	prior-evidence-remains-valid-for-tested-scope	domain-negative-dependency-audit; historical scope retained, no broadened production claim; current canonical embedded / interface / focused regression support
+SA-AC-004	pass	pass	prior-evidence-remains-valid-for-tested-scope	presentation-negative-dependency-audit; historical scope retained, no broadened production claim; current canonical embedded / interface / focused regression support
+SA-AC-005	blocked	blocked	existing-blocker	visible-screen-and-display-evidence; reviewed pixels / connected evidence still outstanding
+SA-AC-006	pass	pass	prior-evidence-remains-valid-for-tested-scope	portable-source-identity-and-hierarchy; historical scope retained, no broadened production claim; current canonical embedded / interface / focused regression support
+SA-AC-007	pass	pass	prior-evidence-remains-valid-for-tested-scope	revisioned-sink-lifecycle; historical scope retained, no broadened production claim
+SA-AC-008	pass	blocked	production-join-revalidation-required	T10.5/T10.6 SPEC-013 mutation/failure seam and assembled production join
+SA-AC-009	pass	pass	prior-evidence-remains-valid-for-tested-scope	acquisition-action-state-table; historical scope retained, no broadened production claim
+SA-AC-010	pass	pass	prior-evidence-remains-valid-for-tested-scope	clear-and-rebase-corpus; historical scope retained, no broadened production claim
+SA-AC-011	pass	pass	prior-evidence-remains-valid-for-tested-scope	sustained-transition-workload; historical scope retained, no broadened production claim
+SA-AC-012	pass	pass	prior-evidence-remains-valid-for-tested-scope	bounded-transition-storage; historical scope retained, no broadened production claim
+SA-AC-013	pass	pass	prior-evidence-remains-valid-for-tested-scope	trim-overflow-baselines; historical scope retained, no broadened production claim
+SA-AC-014	pass	pass	prior-evidence-remains-valid-for-tested-scope	stable-order-and-invalid-input; historical scope retained, no broadened production claim
+SA-AC-015	pass	pass	prior-evidence-remains-valid-for-tested-scope	deterministic-source-vectors; historical scope retained, no broadened production claim
+SA-AC-016	pass	blocked	production-join-revalidation-required	T10.5/T10.6 SPEC-013 mutation/failure seam and assembled production join
+SA-AC-017	pass	pass	prior-evidence-remains-valid-for-tested-scope	control-state-matrix; historical scope retained, no broadened production claim
+SA-AC-018	pass	pass	prior-evidence-remains-valid-for-tested-scope	visible-range-corpus; historical scope retained, no broadened production claim
+SA-AC-019	pass	pass	prior-evidence-remains-valid-for-tested-scope	waveform-path-corpus; historical scope retained, no broadened production claim; current canonical embedded / interface / focused regression support
+SA-AC-020	pass	pass	prior-evidence-remains-valid-for-tested-scope	ruler-and-grid-transcript; historical scope retained, no broadened production claim; current canonical embedded / interface / focused regression support
+SA-AC-021	pass	blocked	production-join-revalidation-required	T10.5/T10.6 SPEC-013 mutation/failure seam and assembled production join
+SA-AC-022	pass	blocked	production-join-revalidation-required	T10.5/T10.6 SPEC-013 mutation/failure seam and assembled production join
+SA-AC-023	blocked	blocked	existing-blocker	pi-framebuffer-display-input; reviewed pixels / connected evidence still outstanding
+SA-AC-024	blocked	blocked	existing-blocker	nrf-tft-display-input; reviewed pixels / connected evidence still outstanding
+SA-AC-025	blocked	blocked	existing-blocker	nrf-binary-memory-and-workspaces; reviewed pixels / connected evidence still outstanding
+SA-AC-026	pass	pass	prior-evidence-remains-valid-for-tested-scope	conforming-source-substitution; historical scope retained, no broadened production claim
+SA-AC-027	pass	pass	prior-evidence-remains-valid-for-tested-scope	missing-facility-fail-closed; historical scope retained, no broadened production claim
+SA-AC-028	pass	pass	prior-evidence-remains-valid-for-tested-scope	host-owned-adapter-lifecycle; historical scope retained, no broadened production claim
+SA-AC-029	pass	pass	prior-evidence-remains-valid-for-tested-scope	fact-store-capacity-corpus; historical scope retained, no broadened production claim
+SA-AC-030	pass	blocked	production-join-revalidation-required	T10.5/T10.6 SPEC-013 mutation/failure seam and assembled production join
+SA-AC-031	pass	pass	prior-evidence-remains-valid-for-tested-scope	capture-mutation-replay; historical scope retained, no broadened production claim
+SA-AC-032	pass	blocked	production-join-revalidation-required	T10.5/T10.6 SPEC-013 mutation/failure seam and assembled production join
+SA-AC-033	pass	blocked	production-join-revalidation-required	T10.5/T10.6 SPEC-013 mutation/failure seam and assembled production join
+SA-AC-034	pass	blocked	production-join-revalidation-required	T10.5/T10.6 SPEC-013 mutation/failure seam and assembled production join
+SA-AC-035	pass	blocked	production-join-revalidation-required	T10.5/T10.6 SPEC-013 mutation/failure seam and assembled production join
+SA-AC-036	pass	blocked	production-join-revalidation-required	T10.5/T10.6 SPEC-013 mutation/failure seam and assembled production join
+SA-AC-037	pass	pass	prior-evidence-remains-valid-for-tested-scope	finite-qualified-action-surface; historical scope retained, no broadened production claim; current canonical embedded / interface / focused regression support
+SA-AC-038	pass	blocked	production-join-revalidation-required	T10.5/T10.6 SPEC-013 mutation/failure seam and assembled production join
+SA-AC-039	blocked	blocked	existing-blocker	embedded-typed-storage; reviewed pixels / connected evidence still outstanding
+SA-AC-040	pass	blocked	production-join-revalidation-required	T10.5/T10.6 SPEC-013 mutation/failure seam and assembled production join
+SA-AC-041	pass	pass	prior-evidence-remains-valid-for-tested-scope	bounded-diagnostic-utf8; historical scope retained, no broadened production claim
+SA-AC-042	pass	pass	prior-evidence-remains-valid-for-tested-scope	ch4-wrapping-vectors; historical scope retained, no broadened production claim
+SA-AC-043	pass	pass	prior-evidence-remains-valid-for-tested-scope	capture-revision-terminal-path; historical scope retained, no broadened production claim
+SA-AC-044	pass	pass	prior-evidence-remains-valid-for-tested-scope	operational-failure-structure; historical scope retained, no broadened production claim
+SA-AC-045	pass	pass	prior-evidence-remains-valid-for-tested-scope	preset-workload-equality; historical scope retained, no broadened production claim; current canonical embedded / interface / focused regression support

@@ -6,7 +6,7 @@ status: complete
 reviewers:
   - codex
 created: 2026-09-20
-updated: 2026-09-20
+updated: 2026-10-02
 implementation_plan: ../implementation-plans/spec-003-implementation-plan.md
 related_future_work:
   - FW-009
@@ -147,3 +147,12 @@ exception remains. This report supports requesting explicit human
 authorization for SPEC-003's `implemented` transition. It does not perform
 that transition; SPEC-003 remains `implementing` until a maintainer explicitly
 authorizes it.
+
+## SPEC-001 milestone 10 gate applicability — 2026-10-02
+
+The complete current hardware-free gate has failed this owner's profile
+checks. The [milestone 10 disposition packet](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/revalidation-disposition.md)
+records the exact gate results and failure logs. Historical passing evidence
+above remains scoped to its recorded revision and inputs; it is not a current
+full-gate pass. The owner assertion must be resolved and rerun, without waiving
+a boundary or migration requirement, before the assembled cleanup can close.

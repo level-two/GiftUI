@@ -6,7 +6,7 @@ status: complete
 reviewers:
   - codex
 created: 2026-09-04
-updated: 2026-09-19
+updated: 2026-10-02
 implementation_plan: ../implementation-plans/spec-005-implementation-plan.md
 related_future_work:
   - FW-001
@@ -94,3 +94,11 @@ implementation authority. No deferred item conceals required current work.
 All thirteen criteria pass. The evidence supports requesting explicit human
 authorization for the SPEC-005 `implementing` to `implemented` transition;
 this report does not itself authorize or perform that transition.
+
+## SPEC-001 milestone 10 gate applicability — 2026-10-02
+
+The current hardware-free gate fails this owner's profile harness. The
+[milestone 10 disposition packet](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/revalidation-disposition.md)
+records the failed check and retained logs. Historical evidence remains
+revision-scoped; resolve the assertion and rerun before claiming a current
+complete assembled gate. No requirement or exception is changed here.

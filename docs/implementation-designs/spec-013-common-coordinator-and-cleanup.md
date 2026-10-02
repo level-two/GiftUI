@@ -6,7 +6,7 @@ status: current
 authors:
   - codex
 created: 2026-09-12
-updated: 2026-09-13
+updated: 2026-10-02
 implementation_plan: ../implementation-plans/spec-013-implementation-plan.md
 related_future_work: []
 related_explorations: []
@@ -222,3 +222,15 @@ owned by later profile-specific tasks and notes.
 Milestones 2 and 5 are implemented through these linked common mechanisms,
 production owner boundaries, and oracles. The authoritative behavior remains
 SPEC-013 and its accepted ADRs.
+
+## Production application failure gap — 2026-10-02
+
+The [SPEC-001 T10.5 reproduction](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/dynamic-runner-blocker.md)
+shows that the current mutation result cannot retain partial application when
+its step fails. The runner therefore misclassifies that prior work as unchanged
+with no dirty wake. The exact application-rejection route also lacks reviewed
+production realization. This invalidates a blanket production applicability
+claim for the described complete pipeline; existing fixtures test a narrower
+application-failure corpus. The owning Spec review and plan repair must resolve
+these seams before either analyzer profile delegates its production opportunity.
+No alternate coordinator or new contract is specified by this note.

@@ -6,7 +6,7 @@ status: review
 reviewers:
   - codex
 created: 2026-08-31
-updated: 2026-08-31
+updated: 2026-10-02
 implementation_plan: ../implementation-plans/spec-002-implementation-plan.md
 related_future_work:
   - FW-005
@@ -131,3 +131,14 @@ is classified `pass`. The report supports requesting explicit maintainer
 authorization for the Specification's `implementing → implemented`
 transition. This report does not perform or imply that transition; SPEC-002
 must remain `implementing` until a human maintainer authorizes it.
+
+## SPEC-001 milestone 10 ownership support — 2026-10-02
+
+The [canonical embedded join](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/canonical-embedded-contracts.md)
+builds actual selected firmware owners as separate modules with cross-owner
+imports retained; forbidden actual-source imports fail. The
+[executable closure audit](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/executable-dependency-isolation.md)
+removes the mixed runtime edge from shared fact admission without adding a
+target/product or changing the logical dependency direction. The exact package
+allow-list passes for 84 targets and 373 direct edges. This is supporting owner
+evidence, not approval of the missing production runtime joins.

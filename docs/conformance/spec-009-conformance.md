@@ -5,7 +5,7 @@ title: SPEC-009 Conformance Report
 status: complete
 reviewers: [codex]
 created: 2026-09-19
-updated: 2026-09-19
+updated: 2026-10-02
 implementation_plan: ../implementation-plans/spec-009-implementation-plan.md
 related_future_work: [FW-010, FW-014]
 related_explorations: []
@@ -90,3 +90,12 @@ Every EX criterion has a traceable passing disposition and the explicit
 repository-gate portion of T8.6 is green. This report supports requesting the
 `implemented` transition. SPEC-009 remains `implementing` until that transition
 receives explicit human authorization; no transition is inferred here.
+
+## SPEC-001 milestone 10 gate applicability — 2026-10-02
+
+The complete current hardware-free gate has failed this owner's profile
+checks. The [milestone 10 disposition packet](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/revalidation-disposition.md)
+records the exact gate results and failure logs. Historical passing evidence
+above remains scoped to its recorded revision and inputs; it is not a current
+full-gate pass. The owner assertion must be resolved and rerun, without waiving
+a boundary or migration requirement, before the assembled cleanup can close.

@@ -5,7 +5,7 @@ title: SPEC-013 Conformance Report
 status: complete
 reviewers: [codex]
 created: 2026-09-19
-updated: 2026-09-20
+updated: 2026-10-02
 implementation_plan: ../implementation-plans/spec-013-implementation-plan.md
 related_future_work: []
 related_explorations: []
@@ -92,3 +92,16 @@ All fifteen criteria have reproducible passing evidence and no remaining
 SPEC-013 conformance gate. This report supports requesting explicit human
 authorization for the `implemented` transition. That authorization has not
 been given, so SPEC-013 remains `implementing`.
+
+## SPEC-001 production-join discovery — 2026-10-02
+
+The [T10.5 reproduction](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/dynamic-runner-blocker.md)
+exposes a gap outside the earlier tested fixture assumptions. Applying one
+admitted fact before application failure returns an unchanged semantic
+disposition and no dirty wake. The shared mutation result cannot carry partial
+application, and the exact application-rejection boundary needs owner review.
+RP-004/RP-007 production applicability is therefore blocked pending the owner
+repair; RP-015 needs revalidation of the complete production error route.
+Earlier passing rows remain historical results for their tested corpus, not
+a current blanket production-readiness conclusion. No exception or contract
+amendment has been approved.

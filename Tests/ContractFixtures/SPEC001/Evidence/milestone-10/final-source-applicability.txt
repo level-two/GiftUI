@@ -1,0 +1,10 @@
+implementation_revision=44ac06a8
+canonical_firmware_selected_sources=151
+changed_selected_sources=0
+pi_artifact_sha256=0b2449138a60f502b8e727738d66d109449d84d5f42849acfcf6f0b0db48a98c
+pi_target=armv6-unknown-linux-gnueabihf
+pi_hard_float=verified-by-build-driver
+nrf_target=armv7em-none-none-eabi
+nrf_hard_float=canonical-nrf-abi.txt
+remote_access=false
+flashing=false

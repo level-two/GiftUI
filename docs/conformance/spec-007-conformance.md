@@ -6,7 +6,7 @@ status: complete
 reviewers:
   - codex
 created: 2026-09-11
-updated: 2026-09-11
+updated: 2026-10-02
 implementation_plan: ../implementation-plans/spec-007-implementation-plan.md
 related_future_work:
   - FW-001
@@ -117,3 +117,11 @@ All nine acceptance criteria have reproducible passing evidence, with no
 deviation or exception. The maintainer explicitly authorized that transition
 on 2026-09-11, so SPEC-007 is now `implemented`. This report records the
 decision; it did not grant the authorization.
+
+## SPEC-001 milestone 10 canonical embedded consumer — 2026-10-02
+
+The [T10.4 consumer evidence](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/canonical-embedded-contracts.md)
+reuses canonical Semantic/Layout/Text declarations with packed caller-owned
+projections, checks actual compiler owner boundaries, preserves selected font
+identity and passes native full layout plus the pinned hard-float firmware
+build. This does not replace the owner corpus or connected resource evidence.
