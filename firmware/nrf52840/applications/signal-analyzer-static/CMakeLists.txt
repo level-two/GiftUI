@@ -192,6 +192,7 @@ set(giftui_static_swift_inputs
     "${giftui_project_root}/Sources/SignalAnalyzerTargetHost/Generated/StaticSignalAnalyzerNRFModelDescriptor.generated.swift"
     "${giftui_project_root}/Sources/SignalAnalyzerTargetHost/Generated/StaticSignalAnalyzerNRFReferenceMetrics.generated.swift"
     "${giftui_project_root}/Sources/SignalAnalyzerTargetHost/Generated/StaticSignalAnalyzerNRFPackedSemanticRecords.generated.swift"
+    "${giftui_project_root}/Sources/SignalAnalyzerPresentation/SignalAnalyzerRuntimeCondition.swift"
     "${giftui_project_root}/Sources/SignalAnalyzerPresentation/SignalAnalyzerLayoutConstraints.swift"
     "${giftui_project_root}/Sources/SignalAnalyzerPresentation/SignalAnalyzerTimelineFormatting.swift"
     "${giftui_project_root}/Sources/SignalAnalyzerTargetHost/Generated/StaticSignalAnalyzerNRFTopologyWriter.generated.swift"

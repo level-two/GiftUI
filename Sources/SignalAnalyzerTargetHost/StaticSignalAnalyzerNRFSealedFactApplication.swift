@@ -1,16 +1,16 @@
 import SignalAnalyzerDomain
+import SignalAnalyzerPresentation
 
 package enum StaticSignalAnalyzerNRFSealedFactApplyOutcome: Equatable {
     case applied
-    case rejected
+    case rejected(SignalAnalyzerRuntimeCondition)
     case storageInvariantViolation
 }
 
 package enum StaticSignalAnalyzerNRFBatchApplyOutcome: Equatable {
     case applied(factCount: UInt16)
     case unavailable
-    case rejected
-    case storageInvariantViolation
+    case failure(SignalAnalyzerRuntimeCondition, mutationApplied: Bool, appliedCount: UInt16)
 }
 
 extension StaticSignalAnalyzerNRFModelLocation {
@@ -35,19 +35,26 @@ extension StaticSignalAnalyzerNRFModelLocation {
         while let fact = admission.takeNextSealed() {
             let outcome = applySealedFact(fact, captureStorage: captureStorage)
             guard outcome == .applied else {
-                admission.discardAll()
+                // Drain only this sealed batch. Facts admitted after sealing remain pending.
+                while admission.takeNextSealed() != nil {}
                 _ = endMutation()
+                let condition: SignalAnalyzerRuntimeCondition
                 switch outcome {
-                case .applied: return .unavailable
-                case .rejected: return .rejected
-                case .storageInvariantViolation: return .storageInvariantViolation
+                case .applied: condition = .observableStateInvariantViolation
+                case .rejected(let rejection): condition = rejection
+                case .storageInvariantViolation: condition = .observableStateInvariantViolation
                 }
+                return .failure(
+                    condition, mutationApplied: appliedCount > 0,
+                    appliedCount: appliedCount)
             }
             appliedCount += 1
         }
         guard endMutation(), appliedCount == pendingCount else {
-            admission.discardAll()
-            return .storageInvariantViolation
+            while admission.takeNextSealed() != nil {}
+            return .failure(
+                .observableStateInvariantViolation,
+                mutationApplied: appliedCount > 0, appliedCount: appliedCount)
         }
         return .applied(factCount: appliedCount)
     }
@@ -58,7 +65,7 @@ extension StaticSignalAnalyzerNRFModelLocation {
         _ fact: StaticSignalAnalyzerNRFSealedCaptureFact,
         captureStorage: UnsafeMutableRawBufferPointer
     ) -> StaticSignalAnalyzerNRFSealedFactApplyOutcome {
-        guard activeGeneration != nil, isMutating else { return .rejected }
+        guard activeGeneration != nil, isMutating else { return .rejected(.mutationPhaseViolation) }
         switch fact {
         case .snapshot(let snapshot):
             guard
@@ -71,7 +78,8 @@ extension StaticSignalAnalyzerNRFModelLocation {
                     baselineLevels: snapshot.baselineLevels
                 ), var regions = StaticSignalAnalyzerNRFCaptureRegions(storage: captureStorage)
             else { return .storageInvariantViolation }
-            return installCaptureSnapshot(view, in: &regions) ? .applied : .rejected
+            return installCaptureSnapshot(view, in: &regions)
+                ? .applied : .rejected(.observableStateInvariantViolation)
 
         case .compact(let compact):
             switch compact.payload {
@@ -87,15 +95,17 @@ extension StaticSignalAnalyzerNRFModelLocation {
                     in: &regions
                 ) {
                 case .applied: return .applied
-                case .rejected: return .rejected
+                case .rejected: return .rejected(.captureRevisionMismatch)
                 case .storageInvariantViolation: return .storageInvariantViolation
                 }
             case .acquisitionState(let state):
-                return setAcquisitionState(state) ? .applied : .rejected
+                return setAcquisitionState(state)
+                    ? .applied : .rejected(.observableStateInvariantViolation)
             }
 
         case .operationalFailure(let failure):
-            return setAcquisitionState(.failed(failure.diagnostic)) ? .applied : .rejected
+            return setAcquisitionState(.failed(failure.diagnostic))
+                ? .applied : .rejected(.observableStateInvariantViolation)
         }
     }
 }

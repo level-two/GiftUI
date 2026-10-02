@@ -1,4 +1,9 @@
 #if GIFTUI_NRF_EMBEDDED
+    package enum StaticSignalAnalyzerNRFCommonLayoutResult {
+        case success(StaticSignalAnalyzerNRFEmbeddedResolvedLayoutView)
+        case failure(LayoutError)
+    }
+
     /// Runs the exact shared Layout validator, measure pass, and placer over
     /// the audited nRF regions, then publishes those records in place.
     package enum StaticSignalAnalyzerNRFCommonLayoutPass {
@@ -6,6 +11,16 @@
             semantic: StaticSignalAnalyzerNRFEmbeddedSemanticView,
             workspace: inout StaticSignalAnalyzerNRFCommonLayoutWorkspace
         ) -> StaticSignalAnalyzerNRFEmbeddedResolvedLayoutView? {
+            if case .success(let view) = runTyped(semantic: semantic, workspace: &workspace) {
+                return view
+            }
+            return nil
+        }
+
+        package static func runTyped(
+            semantic: StaticSignalAnalyzerNRFEmbeddedSemanticView,
+            workspace: inout StaticSignalAnalyzerNRFCommonLayoutWorkspace
+        ) -> StaticSignalAnalyzerNRFCommonLayoutResult {
             guard workspace.acquireLayout(),
                 let limits = LayoutLimits(
                     maximumScopes: 98,
@@ -14,21 +29,17 @@
                     maximumTextLines: 128,
                     maximumPositionedGlyphs: 224
                 ), let proposal = ProposedSize(width: 320, height: 240)
-            else { return nil }
+            else { return .failure(.invariantViolation) }
             let layoutSemantic = StaticSignalAnalyzerNRFEmbeddedLayoutSemanticAdapter(
                 source: semantic
             )
             let metrics = StaticSignalAnalyzerNRFEmbeddedFontMetrics()
             var validation = LayoutSemanticValidation(limits: limits)
-            guard
-                validation.validate(
-                    semantic: layoutSemantic,
-                    metrics: metrics,
-                    workspace: &workspace
-                ) == nil
-            else {
+            if let error = validation.validate(
+                semantic: layoutSemantic, metrics: metrics, workspace: &workspace
+            ) {
                 workspace.resetLayout()
-                return nil
+                return .failure(error)
             }
             var engine = LayoutEngine(
                 limits: limits,
@@ -60,9 +71,9 @@
                 )
             else {
                 workspace.resetLayout()
-                return nil
+                return .failure(engine.failure ?? .invariantViolation)
             }
-            return result
+            return .success(result)
         }
     }
 #endif

@@ -2717,3 +2717,10 @@ Production failure normalization, mandatory effects, recovery and health are now
 joined to the common Dynamic runner. The final T10.5 evidence supersedes the dated
 blocked and partial-increment dispositions. T10.6 consumes this production seam;
 T10.7 final closure validation and T10.8 remain outstanding.
+
+### T10.6 typed preparation increment — 2026-10-02
+
+[Static typed preparation](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/static-typed-preparation.md)
+retains exact Layout and application rejection meaning plus mutation progress.
+The native workload and constrained target build pass. T10.6 remains executing;
+this increment does not replace the required live firmware sequencing join.
