@@ -953,3 +953,10 @@ criteria to passing hardware-free evidence and records no divergence or
 exception. The connected PiScreen and nRF TFT/input rows remain explicitly
 open, so the plan stays active and SPEC-015 remains `implementing`; no
 `implemented` transition is requested yet.
+
+### Opportunity carrier handoff — 2026-10-02
+
+SPEC-013 T9.1–T9.4 implemented and validated the approved generic host carrier.
+All four SPEC-015 profiles pass at f6ef6fb6; [handoff evidence](../../Tests/ContractFixtures/SPEC013/Evidence/milestone-9/owner-handoff.md)
+retains the remaining assembled downstream obligations. The amendment's
+implementation prerequisite is satisfied, without claiming full conformance.

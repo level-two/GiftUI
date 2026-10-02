@@ -539,7 +539,7 @@ profile, retry policy, or storage ceiling is introduced.
   exercised Embedded allocation proof. [Resource evidence](../../Tests/ContractFixtures/SPEC013/Evidence/milestone-9/carrier-resources.md)
   records all three supported compiler/target measurements, no retained
   specialization delta, and the separate downstream assembled-budget obligation.
-- [ ] `T9.4` — Run the registered SPEC-013 and relevant SPEC-015 owner checks,
+- [x] `T9.4` — Run the registered SPEC-013 and relevant SPEC-015 owner checks,
   record exact failing or passing invocations, update conformance and host
   plan records, and hand the validated seam to SPEC-001 T10.5/T10.6. Resume
   the Dynamic join first, then Static/nRF, then T10.7/T10.8 final validation.
@@ -548,6 +548,10 @@ profile, retry policy, or storage ceiling is introduced.
   checker.
   **Depends on:** `T9.2` and `T9.3`.
   **Covers:** RP-001 through RP-015 and downstream HC-010/012/015/016 evidence.
+  **2026-10-02 disposition:** Validated handoff complete; all four SPEC-013
+  and all four SPEC-015 registered owner profiles pass at f6ef6fb6.
+  [Owner handoff](../../Tests/ContractFixtures/SPEC013/Evidence/milestone-9/owner-handoff.md)
+  preserves raw reports and the downstream assembled-production obligations.
 
 ## Design-Note Triggers
 

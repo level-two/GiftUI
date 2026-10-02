@@ -113,3 +113,13 @@ repair; RP-015 needs revalidation of the complete production error route.
 Earlier passing rows remain historical results for their tested corpus, not
 a current blanket production-readiness conclusion. No exception or contract
 amendment has been approved.
+
+## Approved amendment seam handoff — 2026-10-02
+
+The [SPEC-013 Milestone 9 handoff](../../Tests/ContractFixtures/SPEC013/Evidence/milestone-9/owner-handoff.md)
+records the implemented partial-mutation/generic owner seam, passing behavior
+and bounded carrier checks, and four passing registered profiles for this
+owner at f6ef6fb6. This supersedes the pre-amendment seam defect only.
+Assembled SPEC-001 T10.5/T10.6 and total budget/fault revalidation remain
+outstanding; historical criterion rows do not silently become current
+production conformance. No implemented transition is requested.

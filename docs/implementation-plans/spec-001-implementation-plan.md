@@ -2689,3 +2689,11 @@ gate and focused touch suite passed. Existing audit/resource blockers and
 missing reviewed pixel references keep full conformance open; no lifecycle
 status, acceptance criterion, manifest relationship, or connected-device claim
 changes.
+
+### Milestone 10 resumed — 2026-10-02
+
+[Validated SPEC-013/SPEC-015 owner handoff](../../Tests/ContractFixtures/SPEC013/Evidence/milestone-9/owner-handoff.md)
+satisfies the required failure/mutation seam prerequisite at f6ef6fb6.
+T10.5 is now executing, followed by T10.6 and final T10.7/T10.8 validation.
+Earlier blocked dispositions remain historical; production joins and unrelated
+gate/review/hardware evidence are not completed by owner approval or handoff.
