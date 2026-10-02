@@ -6,7 +6,7 @@ status: active
 owners:
   - codex
 created: 2026-09-13
-updated: 2026-10-01
+updated: 2026-10-02
 related_design_notes:
   - ../implementation-designs/spec-001-presentation-admission-and-failure.md
   - ../implementation-designs/spec-001-four-host-application-join.md
@@ -276,51 +276,51 @@ governed implementation must still reproduce and record the required evidence.
 
 | Criterion | Implementation tasks | Evidence | Status |
 | --- | --- | --- | --- |
-| `SA-AC-001` — Complete feature and authority traceability | `T0.1`, `T9.4` | Governance, manifest, status, and reciprocal-link audit | baseline; revalidation pending |
-| `SA-AC-002` — Logical Domain/Data/Presentation/host graph and inward dependencies | `T0.2`, `T0.5`, `T1.4`, `T6.1`, `T9.1` | Package graph, imports, interfaces, generated graph report | baseline; revalidation pending |
-| `SA-AC-003` — Domain excludes UI/backend/platform/timing/hardware APIs | `T0.2`, `T0.5`, `T1.4`, `T9.1` | Source/import/symbol negative scans in every profile | baseline; revalidation pending |
-| `SA-AC-004` — Presentation excludes Data/platform/timing/renderer/display/hardware APIs | `T0.2`, `T0.5`, `T4.4`, `T9.1` | Import and dependency negative fixtures | pending |
-| `SA-AC-005` — Complete visible screen surface | `T4.1`-`T4.3`, `T6.2`-`T6.5`, `T6.7`, `T6.8`, `T7.6`, `T7.7`, `T7.9`, `T8.1`, `T8.2` | Semantic hierarchy transcript, reviewed host-frame images and exact pixels, and connected display evidence | pending |
-| `SA-AC-006` — Fixed explicit portable composition shared by four configurations | `T4.1`, `T4.4`, `T6.2`-`T6.5` | Source identity/hash, compile, and hierarchy comparison | pending |
-| `SA-AC-007` — Revisioned current-value sink registration, replacement, detach, and bounded returns | `T1.3`, `T2.2`, `T3.2` | Ordered callback/outcome and lifetime transcript | pending |
-| `SA-AC-008` — Synchronous application delivery and distinct GiftUI mutation without portable concurrency facilities | `T1.4`, `T2.2`, `T3.2`, `T5.3`, `T9.1` | Same-thread/distinct-executor transcript and forbidden-facility scans | pending |
-| `SA-AC-009` — Complete acquisition action state table | `T2.2`, `T2.3` | State/publication/source-generation matrix | baseline; revalidation pending |
-| `SA-AC-010` — Clear resets epoch/history, preserves state/levels, rebases, and publishes once | `T1.3`, `T2.1`, `T2.2`, `T3.3` | Idle/running/stopped/failed clear and mutation replay corpus | pending |
-| `SA-AC-011` — 80 transitions/second for 30 seconds without loss or duplication | `T2.4`, `T7.4` | Timestamped 2,400-event sustained-workload transcript | pending |
-| `SA-AC-012` — Static 2,404-entry transition storage and four baselines | `T1.2`, `T2.1`, `T6.3`, `T6.5`, `T7.4` | Static layout, high-water, boundary, map, and ELF reports | pending |
-| `SA-AC-013` — Oldest-first trimming/overflow with correct lower-bound levels | `T1.2`, `T2.1` | Time/capacity boundary and reconstruction corpus | baseline; revalidation pending |
-| `SA-AC-014` — Stable ordering and specified invalid/out-of-horizon behavior | `T2.1`, `T2.2` | Equal/out-of-order/invalid/horizon transcript | baseline; revalidation pending |
-| `SA-AC-015` — Exact deterministic four-channel source and stale-event prevention | `T2.3` | Pattern, restart, cancellation, and teardown corpus | baseline; revalidation pending |
-| `SA-AC-016` — Initial state and mutation-phase-only observable changes/reports | `T3.1`, `T3.3`, `T5.2`, `T5.3` | Initial/materialization/fact/action/change-report transcript | pending |
-| `SA-AC-017` — Exact control enabled/disabled behavior | `T3.1`, `T4.2` | Four-state control matrix and semantic transcript | baseline; revalidation pending |
-| `SA-AC-018` — Exact 1/2/5-second visible ranges | `T3.1`, `T4.3` | Boundary and golden range corpus | baseline; revalidation pending |
-| `SA-AC-019` — Baseline-correct continuous waveform mapping | `T4.3` | Path point/subpath transcript at range/retention edges | pending |
-| `SA-AC-020` — Ruler formatting and 11-plus-one grid | `T4.3` | Text bytes and normalized Drawing operation transcript | baseline; revalidation pending |
-| `SA-AC-021` — Consistent latest state at 250 ms without per-event frames | `T5.3`, `T7.4` | Admission/application/publication/frame timeline and cadence report | pending |
-| `SA-AC-022` — macOS dynamic and static deterministic execution | `T6.2`, `T6.3`, `T9.2` | Two host-execution reports and normalized equivalence | pending |
-| `SA-AC-023` — Raspberry Pi framebuffer/PiScreen display and input | `T6.4`, `T6.7`, `T7.6`, `T7.7`, `T7.8`, `T7.9`, `T8.1` | ARMv6 cross-build, host rehearsal, and separately labeled connected-target transcript | pending |
-| `SA-AC-024` — nRF52840 static TFT display and input | `T6.5`, `T6.8`, `T7.6`, `T7.7`, `T7.8`, `T7.9`, `T8.2` | ELF inspection, host rehearsal, and separately labeled connected-target transcript | pending |
-| `SA-AC-025` — nRF binary/RAM/storage/drawing/stack fit evidence | `T6.5`, `T6.8`, `T7.4`, `T8.2` | Link map, ELF, stack/high-water, workspace, and run report | pending |
-| `SA-AC-026` — Conforming source replacement changes no portable owners | `T2.3`, `T6.6` | Mock/fixture-source substitution compile and graph comparison | pending |
-| `SA-AC-027` — Missing GiftUI behavior fails configuration without reduced UI | `T6.6`, `T7.1` | Each-required-facility negative and zero-publication transcript | pending |
-| `SA-AC-028` — Host-owned observation and adapter sink installation | `T3.2`, `T6.1`-`T6.5`, `T6.7`, `T6.8` | Construction/start/stop/teardown owner-call ledger | pending |
-| `SA-AC-029` — Exact `1/32/1` fact capacities and first-excess rejection | `T5.1`, `T6.1`, `T7.4` | 28/32/33 ordinary, snapshot 1/2, reserved 1/2 corpus | pending |
-| `SA-AC-030` — Nonzero monotonic sequence and ordered at-most-once application | `T5.1`, `T5.3` | Cross-storage seal/apply/post-seal/exhaustion transcript | pending |
-| `SA-AC-031` — Exact revisioned mutation replay and mismatch containment | `T1.3`, `T2.2`, `T3.3`, `T7.1` | Full replay, malformed/mismatch, unchanged-model, restart corpus | pending |
-| `SA-AC-032` — One portable `@State` identity across reconstruction/profiles | `T4.1`, `T5.2`, `T6.2`, `T6.3` | Source compile plus dynamic/static identity transcript | pending |
-| `SA-AC-033` — Exact replacement/removal/reinsertion lifecycle | `T5.2` | Shared dynamic/static lifecycle matrix | pending |
-| `SA-AC-034` — Deterministic bounded observable failures without alias/fallback | `T5.2`, `T5.3`, `T7.1` | Capacity/identity/stale/phase/generation fault matrix | pending |
-| `SA-AC-035` — Twenty reports coalesce while facts and semantic publication remain complete | `T5.1`, `T5.3`, `T7.4` | Twenty-update dirty/wake/publication high-water transcript | pending |
-| `SA-AC-036` — Button callback becomes later fact; executor realizations agree | `T3.1`, `T5.3`, `T5.4` | Reentrancy poison and normalized executor-equivalence transcript | pending |
-| `SA-AC-037` — Six qualified actions and total noncapturing handler | `T3.1`, `T4.2`, `T5.4`, `T9.1` | Four-profile compile, source audit, and six-case dispatch transcript | pending |
-| `SA-AC-038` — Replacement cancels in-flight dispatch; failed replacement preserves old target | `T5.2`, `T5.4` | Down/admission/replacement interleaving corpus | pending |
-| `SA-AC-039` — Embedded typed model/storage/facility/resource evidence | `T5.2`, `T6.5`, `T6.8`, `T7.4` | Generated source, address/layout, forbidden-symbol, timing, RAM/flash/stack reports | pending |
-| `SA-AC-040` — Total normalization, mandatory effects, residual policy, and diagnostic independence | `T3.4`, `T7.1` | Exhaustive outcome/effect/policy/projection matrix | pending |
-| `SA-AC-041` — Complete 96-byte UTF-8 diagnostic and BoundedText matrix | `T1.1`, `T3.4`, `T9.2` | Dynamic/static construction, borrow, projection, allocation transcript | pending |
-| `SA-AC-042` — Exact wrapping CH4 vectors in every profile/host | `T2.3`, `T6.2`-`T6.5`, `T9.2` | Two golden vectors and four normalized host traces | pending |
-| `SA-AC-043` — Capture revision exhaustion terminal procedure | `T1.3`, `T2.2`, `T3.4`, `T7.1`, `T7.3` | `UInt32.max - 1/max`, reserved fact, no-policy, quiesce/rebuild transcript | pending |
-| `SA-AC-044` — Operational failure structurally contains only failure fact plus semantic diagnostic | `T3.1`, `T3.4`, `T5.1`, `T9.1` | Positive API/layout and negative construction/generated-storage fixtures | pending |
-| `SA-AC-045` — Exact SPEC-015 workload/preset/report equality | `T4.3`, `T6.1`-`T6.5`, `T6.7`, `T6.8`, `T7.4` | Descriptor, generated manifest, limits, assembly, extent/region/bounds comparison | pending |
+| `SA-AC-001` — Complete feature and authority traceability | `T0.1`, `T9.4`, `T10.8` | Governance, manifest, status, and reciprocal-link audit | baseline; revalidation pending |
+| `SA-AC-002` — Logical Domain/Data/Presentation/host graph and inward dependencies | `T0.2`, `T0.5`, `T1.4`, `T6.1`, `T9.1`, `T10.1`, `T10.4`, `T10.7`, `T10.8` | Package graph, imports, interfaces, generated graph report | baseline; revalidation pending |
+| `SA-AC-003` — Domain excludes UI/backend/platform/timing/hardware APIs | `T0.2`, `T0.5`, `T1.4`, `T9.1`, `T10.1`, `T10.7`, `T10.8` | Source/import/symbol negative scans in every profile | baseline; revalidation pending |
+| `SA-AC-004` — Presentation excludes Data/platform/timing/renderer/display/hardware APIs | `T0.2`, `T0.5`, `T4.4`, `T9.1`, `T10.1`, `T10.7`, `T10.8` | Import and dependency negative fixtures | pending |
+| `SA-AC-005` — Complete visible screen surface | `T4.1`-`T4.3`, `T6.2`-`T6.5`, `T6.7`, `T6.8`, `T7.6`, `T7.7`, `T7.9`, `T8.1`, `T8.2`, `T10.3`, `T10.4`, `T10.8` | Semantic hierarchy transcript, reviewed host-frame images and exact pixels, and connected display evidence | pending |
+| `SA-AC-006` — Fixed explicit portable composition shared by four configurations | `T4.1`, `T4.4`, `T6.2`-`T6.5`, `T10.4`, `T10.7`, `T10.8` | Source identity/hash, compile, and hierarchy comparison | pending |
+| `SA-AC-007` — Revisioned current-value sink registration, replacement, detach, and bounded returns | `T1.3`, `T2.2`, `T3.2`, `T10.8` | Ordered callback/outcome and lifetime transcript | pending |
+| `SA-AC-008` — Synchronous application delivery and distinct GiftUI mutation without portable concurrency facilities | `T1.4`, `T2.2`, `T3.2`, `T5.3`, `T9.1`, `T10.5`, `T10.6`, `T10.8` | Same-thread/distinct-executor transcript and forbidden-facility scans | pending |
+| `SA-AC-009` — Complete acquisition action state table | `T2.2`, `T2.3`, `T10.8` | State/publication/source-generation matrix | baseline; revalidation pending |
+| `SA-AC-010` — Clear resets epoch/history, preserves state/levels, rebases, and publishes once | `T1.3`, `T2.1`, `T2.2`, `T3.3`, `T10.8` | Idle/running/stopped/failed clear and mutation replay corpus | pending |
+| `SA-AC-011` — 80 transitions/second for 30 seconds without loss or duplication | `T2.4`, `T7.4`, `T10.8` | Timestamped 2,400-event sustained-workload transcript | pending |
+| `SA-AC-012` — Static 2,404-entry transition storage and four baselines | `T1.2`, `T2.1`, `T6.3`, `T6.5`, `T7.4`, `T10.8` | Static layout, high-water, boundary, map, and ELF reports | pending |
+| `SA-AC-013` — Oldest-first trimming/overflow with correct lower-bound levels | `T1.2`, `T2.1`, `T10.8` | Time/capacity boundary and reconstruction corpus | baseline; revalidation pending |
+| `SA-AC-014` — Stable ordering and specified invalid/out-of-horizon behavior | `T2.1`, `T2.2`, `T10.8` | Equal/out-of-order/invalid/horizon transcript | baseline; revalidation pending |
+| `SA-AC-015` — Exact deterministic four-channel source and stale-event prevention | `T2.3`, `T10.8` | Pattern, restart, cancellation, and teardown corpus | baseline; revalidation pending |
+| `SA-AC-016` — Initial state and mutation-phase-only observable changes/reports | `T3.1`, `T3.3`, `T5.2`, `T5.3`, `T10.5`, `T10.6`, `T10.8` | Initial/materialization/fact/action/change-report transcript | pending |
+| `SA-AC-017` — Exact control enabled/disabled behavior | `T3.1`, `T4.2`, `T10.8` | Four-state control matrix and semantic transcript | baseline; revalidation pending |
+| `SA-AC-018` — Exact 1/2/5-second visible ranges | `T3.1`, `T4.3`, `T10.8` | Boundary and golden range corpus | baseline; revalidation pending |
+| `SA-AC-019` — Baseline-correct continuous waveform mapping | `T4.3`, `T10.3`, `T10.8` | Path point/subpath transcript at range/retention edges | pending |
+| `SA-AC-020` — Ruler formatting and 11-plus-one grid | `T4.3`, `T10.8` | Text bytes and normalized Drawing operation transcript | baseline; revalidation pending |
+| `SA-AC-021` — Consistent latest state at 250 ms without per-event frames | `T5.3`, `T7.4`, `T10.5`, `T10.6`, `T10.8` | Admission/application/publication/frame timeline and cadence report | pending |
+| `SA-AC-022` — macOS dynamic and static deterministic execution | `T6.2`, `T6.3`, `T9.2`, `T10.3`, `T10.7`, `T10.8` | Two host-execution reports and normalized equivalence | pending |
+| `SA-AC-023` — Raspberry Pi framebuffer/PiScreen display and input | `T6.4`, `T6.7`, `T7.6`, `T7.7`, `T7.8`, `T7.9`, `T8.1`, `T10.3`, `T10.5`, `T10.8` | ARMv6 cross-build, host rehearsal, and separately labeled connected-target transcript | pending |
+| `SA-AC-024` — nRF52840 static TFT display and input | `T6.5`, `T6.8`, `T7.6`, `T7.7`, `T7.8`, `T7.9`, `T8.2`, `T10.3`, `T10.4`, `T10.6`, `T10.8` | ELF inspection, host rehearsal, and separately labeled connected-target transcript | pending |
+| `SA-AC-025` — nRF binary/RAM/storage/drawing/stack fit evidence | `T6.5`, `T6.8`, `T7.4`, `T8.2`, `T10.4`, `T10.6`, `T10.8` | Link map, ELF, stack/high-water, workspace, and run report | pending |
+| `SA-AC-026` — Conforming source replacement changes no portable owners | `T2.3`, `T6.6`, `T10.8` | Mock/fixture-source substitution compile and graph comparison | pending |
+| `SA-AC-027` — Missing GiftUI behavior fails configuration without reduced UI | `T6.6`, `T7.1`, `T10.8` | Each-required-facility negative and zero-publication transcript | pending |
+| `SA-AC-028` — Host-owned observation and adapter sink installation | `T3.2`, `T6.1`-`T6.5`, `T6.7`, `T6.8`, `T10.8` | Construction/start/stop/teardown owner-call ledger | pending |
+| `SA-AC-029` — Exact `1/32/1` fact capacities and first-excess rejection | `T5.1`, `T6.1`, `T7.4`, `T10.8` | 28/32/33 ordinary, snapshot 1/2, reserved 1/2 corpus | pending |
+| `SA-AC-030` — Nonzero monotonic sequence and ordered at-most-once application | `T5.1`, `T5.3`, `T10.8` | Cross-storage seal/apply/post-seal/exhaustion transcript | pending |
+| `SA-AC-031` — Exact revisioned mutation replay and mismatch containment | `T1.3`, `T2.2`, `T3.3`, `T7.1`, `T10.8` | Full replay, malformed/mismatch, unchanged-model, restart corpus | pending |
+| `SA-AC-032` — One portable `@State` identity across reconstruction/profiles | `T4.1`, `T5.2`, `T6.2`, `T6.3`, `T10.5`, `T10.6`, `T10.8` | Source compile plus dynamic/static identity transcript | pending |
+| `SA-AC-033` — Exact replacement/removal/reinsertion lifecycle | `T5.2`, `T10.2`, `T10.5`, `T10.6`, `T10.8` | Shared dynamic/static lifecycle matrix | pending |
+| `SA-AC-034` — Deterministic bounded observable failures without alias/fallback | `T5.2`, `T5.3`, `T7.1`, `T10.2`, `T10.5`, `T10.6`, `T10.8` | Capacity/identity/stale/phase/generation fault matrix | pending |
+| `SA-AC-035` — Twenty reports coalesce while facts and semantic publication remain complete | `T5.1`, `T5.3`, `T7.4`, `T10.5`, `T10.6`, `T10.8` | Twenty-update dirty/wake/publication high-water transcript | pending |
+| `SA-AC-036` — Button callback becomes later fact; executor realizations agree | `T3.1`, `T5.3`, `T5.4`, `T10.5`, `T10.6`, `T10.8` | Reentrancy poison and normalized executor-equivalence transcript | pending |
+| `SA-AC-037` — Six qualified actions and total noncapturing handler | `T3.1`, `T4.2`, `T5.4`, `T9.1`, `T10.8` | Four-profile compile, source audit, and six-case dispatch transcript | pending |
+| `SA-AC-038` — Replacement cancels in-flight dispatch; failed replacement preserves old target | `T5.2`, `T5.4`, `T10.2`, `T10.5`, `T10.6`, `T10.8` | Down/admission/replacement interleaving corpus | pending |
+| `SA-AC-039` — Embedded typed model/storage/facility/resource evidence | `T5.2`, `T6.5`, `T6.8`, `T7.4`, `T10.1`, `T10.4`, `T10.6`, `T10.7`, `T10.8` | Generated source, address/layout, forbidden-symbol, timing, RAM/flash/stack reports | pending |
+| `SA-AC-040` — Total normalization, mandatory effects, residual policy, and diagnostic independence | `T3.4`, `T7.1`, `T10.2`, `T10.5`, `T10.6`, `T10.8` | Exhaustive outcome/effect/policy/projection matrix | pending |
+| `SA-AC-041` — Complete 96-byte UTF-8 diagnostic and BoundedText matrix | `T1.1`, `T3.4`, `T9.2`, `T10.8` | Dynamic/static construction, borrow, projection, allocation transcript | pending |
+| `SA-AC-042` — Exact wrapping CH4 vectors in every profile/host | `T2.3`, `T6.2`-`T6.5`, `T9.2`, `T10.8` | Two golden vectors and four normalized host traces | pending |
+| `SA-AC-043` — Capture revision exhaustion terminal procedure | `T1.3`, `T2.2`, `T3.4`, `T7.1`, `T7.3`, `T10.8` | `UInt32.max - 1/max`, reserved fact, no-policy, quiesce/rebuild transcript | pending |
+| `SA-AC-044` — Operational failure structurally contains only failure fact plus semantic diagnostic | `T3.1`, `T3.4`, `T5.1`, `T9.1`, `T10.8` | Positive API/layout and negative construction/generated-storage fixtures | pending |
+| `SA-AC-045` — Exact SPEC-015 workload/preset/report equality | `T4.3`, `T6.1`-`T6.5`, `T6.7`, `T6.8`, `T7.4`, `T10.1`, `T10.3`, `T10.4`, `T10.8` | Descriptor, generated manifest, limits, assembly, extent/region/bounds comparison | pending |
 
 ## Milestones and Tasks
 
@@ -2100,6 +2100,194 @@ human `implemented` transition.
       exactly once: 40 pass and five retain explicit connected-hardware
       blockers. SPEC-001 remains `implementing`; T8.1-T8.3 and the human
       transition remain open.
+
+### Milestone 10: Restore Module Ownership in the Production Host Joins
+
+**Entry conditions:** The 2026-10-01 dependency/ownership review and the
+maintainer's 2026-10-02 request for concrete cleanup tasks. This is planning
+under the existing approved contracts; no cleanup task is completed by this
+revision. SPEC-001 remains `implementing` and this plan remains `active`.
+
+**MVP justification:** The shared Signal Analyzer and all four stack
+configurations must exercise the actual contract owners, preserve profile
+isolation, and retain bounded failure and resource behavior. These are current
+integration requirements, not a package-count reduction project.
+
+**Authority:** Consume accepted ADR-005, ADR-007, ADR-008, ADR-014, ADR-023,
+ADR-032, and the approved SPEC-002/003/005/006/007/008/009/010/011/012/013/014/015
+contracts. In particular, SPEC-013 owns common sequencing and cleanup,
+SPEC-006 owns the semantic-facing views, and SPEC-005 owns text identities.
+SPEC-001 permits static packaging flattening while preserving ownership.
+ADR-008 requires compiler-visible isolation. T10.1 must establish how the
+actual embedded source configuration satisfies both before dependent work
+chooses its build realization.
+
+**Exit evidence:** The selected production host source sets use canonical
+owner contracts, the common pipeline owns framework sequencing/cleanup, each
+profile-specific executable has an isolated runtime dependency closure, and
+the final source revision has reproducible hardware-free regression/resource
+evidence. Existing reviewed-pixel and connected-hardware gates remain open.
+
+| Task | Dependencies | Supporting owner criteria |
+| --- | --- | --- |
+| `T10.1` | Existing T9.1 audit baseline | SPEC-002 `PF-005`/`PF-006`; SPEC-013 `RP-001`/`RP-012`; SPEC-007 `LY-007` |
+| `T10.2` | `T10.1` ownership/failure inventory | SPEC-013 `RP-004`/`RP-007`/`RP-008`/`RP-014`/`RP-015` |
+| `T10.3` | `T10.1` selected-resource ledger | SPEC-005 `TR-003`/`TR-006`/`TR-007`; SPEC-007 `LY-004` |
+| `T10.4` | `T10.1` embedded authority/feasibility result | SPEC-002 `PF-005`/`PF-006`; SPEC-005 `TR-002`/`TR-003`/`TR-010`; SPEC-007 `LY-002`/`LY-007`/`LY-009` |
+| `T10.5` | `T10.2`, `T10.3` | SPEC-013 `RP-004`/`RP-005`/`RP-007`/`RP-008`/`RP-009`/`RP-015` |
+| `T10.6` | `T10.2`, `T10.4`, shared runner integration from `T10.5` | SPEC-013 `RP-004`/`RP-005`/`RP-007`/`RP-008`/`RP-009`/`RP-010`/`RP-013`/`RP-015` |
+| `T10.7` | `T10.1`; final closure check after `T10.5`/`T10.6` | SPEC-002 `PF-005`; SPEC-013 `RP-001`/`RP-012` |
+| `T10.8` | `T10.2` through `T10.7` | Revalidate affected owner criteria; retain existing platform/review gates |
+
+- [x] `T10.1` — Establish the exact cleanup baseline and embedded ownership
+      gate. Inventory SwiftPM targets, test-only fixture targets, production
+      source selections, `GIFTUI_NRF_EMBEDDED` branches, import removal, and
+      host-local duplicates in `Package.swift`, the firmware CMake source list,
+      and `StaticSignalAnalyzerNRFEmbeddedLayoutInterfaces.swift`. Record a
+      producer/consumer/owner ledger for each copied contract and each
+      production pipeline stage. Verify the actual selected embedded sources
+      can consume the canonical contracts with the pinned Embedded Swift
+      compiler and existing budgets. Record the compiler diagnostics and
+      resource delta rather than assuming a host build proves feasibility.
+      **Done when:** the ledger distinguishes healthy adapters from duplicate
+      authority; actual-source positive/forbidden-import coverage is specified;
+      and T10.4 has a contract-conforming realization or a named upstream
+      blocker. If flattening requires relaxing compiler isolation or changing
+      identity meaning, route that decision through RFC-002/ADR-008 and the
+      affected Specifications before dependent implementation. This task does
+      not accept a new architecture or run a production prototype.
+      **2026-10-02 disposition:** Completed baseline/gate audit. The [ownership
+      ledger](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/ownership-baseline.md)
+      records all 133 selected files, canonical target-compiler module checks,
+      the forbidden Layout import, unchanged firmware resource baseline, and
+      the separate-owner realization required by T10.4. Consumer/link/resource
+      validation remains T10.4; no isolation exception is accepted.
+
+- [ ] `T10.2` — Reproduce and repair failed-derivation cleanup in the current
+      Dynamic production host. Add focused fault injection around observable
+      candidate begin, semantic expansion, Layout, Drawing, render preflight,
+      and Interaction in `DynamicSignalAnalyzerPresentationPipeline` and its
+      enclosing opportunity owner. Verify whether each early return currently
+      releases acquired candidates before changing it; the audit identified a
+      possible gap, not an executed failure reproduction. Use the existing
+      SPEC-013 cleanup behavior and preserve the original focused error.
+      **Done when:** every injected failure releases acquired attempt state
+      exactly once, preserves prior committed presentation/actions, never
+      replays admitted model effects, and either permits a subsequent valid
+      opportunity or returns the exact required quiescent outcome. Keep these
+      regression cases when T10.5 removes the parallel runner.
+- [ ] `T10.3` — Remove the pipeline's dependency on the Pi assembly's text
+      resource selection. Supply the selected canonical metrics/resource view
+      and surface constraints through existing owner contracts to
+      `DynamicSignalAnalyzerPresentationPipeline`; retain concrete selection
+      in `DynamicSignalAnalyzerPiAssembly`. Update its callers and the existing
+      shared-font/layout comparisons.
+      **Done when:** the pipeline names no Pi assembly, measurement/preflight
+      and rasterization use the same checked resource identity, the approved
+      Inter font and current rendered behavior are preserved, and a deliberately
+      mismatched metrics/raster pair fails the existing compatibility gate.
+- [ ] `T10.4` — Replace the embedded host's duplicate contract declarations
+      with canonical owner declarations. Following T10.1, consume
+      `SemanticLayoutView`/payloads from `GiftUISemanticCore` and font/resource
+      identities and views from `GiftUITextResources`. Retain generated packed
+      storage and narrow projections that implement those contracts; remove
+      host-owned lookalikes and constant resource identities. Source-file
+      separation inside an existing owner may isolate Embedded-compatible
+      declarations without adding a new SPI or changing their meaning.
+      Update firmware/native-rehearsal source selection and audit the actual
+      selected source configuration with its owner boundaries intact.
+      **Done when:** each shared contract has one maintained owner definition,
+      real embedded consumers pass positive and forbidden-import compile cases,
+      canonical resource identity survives layout/render/raster joins, shared
+      transcripts match, and the inspected nRF firmware fits all existing
+      resource and hard-float requirements. Register any new required check
+      explicitly with the contract driver/root runner. A necessary contract or
+      ownership change blocks this task and returns to its governing owner plan.
+- [ ] `T10.5` — Delegate Dynamic production opportunity sequencing to the
+      common runtime pipeline. Adapt the Pi host's fact application, semantic,
+      layout, Canvas, render, and Interaction workspaces to the existing
+      `RuntimeCompletePipelineOwner`/profile entry seam. Keep acquisition,
+      hardware ingress, scheduling, concrete endpoint/resource selection, and
+      application mapping in the host. Remove the host's independent stage
+      ordering/publication/cleanup decisions after the common runner drives
+      the production path. Map retained focused errors through production
+      owner adapters at the approved failure boundary; test fixtures must not
+      become production dependencies.
+      **Done when:** the production Pi rehearsal executes the common runner,
+      stage/failure/cleanup transcripts match SPEC-013, only accepted handoff
+      commits routing, refusals retain bounded intent, exact focused failure
+      meaning reaches policy after mandatory effects, and T10.2's regressions
+      plus raw-device touch/workload scenarios pass.
+- [ ] `T10.6` — Delegate Static/nRF production sequencing to the same common
+      runner using fixed typed owner adapters and caller-owned storage. Rejoin
+      the embedded presentation preparation, semantic publication, layout,
+      Canvas, render offer, and interaction commit stages after canonical
+      contract adoption. Do not replace the packed storage with a host-only
+      representation, erase errors into `Bool`/`nil` at the coordinating
+      boundary, add heap fallback, or weaken resource limits to make the join
+      compile. Update the static host and common-coordinator design notes to
+      describe the actual ownership and borrow lifetimes.
+      **Done when:** actual firmware source selection consumes the common
+      sequencing owner, Dynamic/Static normalized fault/disposition traces
+      agree, retained committed state and no-replay behavior match, and native
+      rehearsal plus nRF cross-build/ABI/zero-heap/RAM/flash/stack checks pass.
+      A missing reusable production seam is work under its owning Spec; it
+      cannot be replaced with an analyzer-local parallel implementation.
+- [ ] `T10.7` — Isolate profile-specific executable dependencies from the
+      four-profile comparison harness. Partition the existing host helpers so
+      the macOS Static executable consumes only Static hosting/runtime code
+      and the Dynamic executable consumes only Dynamic hosting/runtime code.
+      Keep mixed-profile comparison in explicit test/harness code. Preserve
+      existing public product names and update the exact dependency allow-list,
+      affected source selection, and positive/negative fixtures together.
+      **Done when:** dependency closure checks prove absence of the other
+      runtime and inappropriate Dynamic conveniences for each profile-specific
+      executable, both execute the same deterministic scenario independently,
+      and the combined comparison still runs as an explicitly selected check.
+      Do not treat `SignalAnalyzerNRF52840HostOracle` or a shared harness build
+      as proof of the production firmware's isolation; T10.4/T10.6 cover that
+      source configuration separately. If an exact module contract must change,
+      obtain its reviewed amendment before relying on the changed topology.
+- [ ] `T10.8` — Revalidate the assembled cleanup and record its dispositions.
+      Update dependency/actual-source reports, the affected implementation
+      design notes, task-evidence ledger, and SPEC-001 conformance evidence for
+      the final revision. Record supporting owner results in their existing
+      conformance reports; preserve historical results as revision-scoped
+      evidence rather than silently rewriting them as current passes.
+      **Done when:** focused fault/profile/resource cases and the registered
+      hardware-free gates pass, resource deltas are recorded without relaxed
+      ceilings, all eight tasks have evidence-backed dispositions, and every
+      SPEC-001 criterion records whether its evidence remains valid or needs
+      revalidation. Pixel review and connected display/input/timing/high-water
+      criteria retain their existing blockers until separately satisfied.
+      Plan completion does not authorize an `implemented` transition.
+
+**Execution order:** T10.1 first; T10.2 and T10.3 before the Dynamic runner join;
+T10.4 before the Static runner join; T10.7 can begin once T10.1 fixes the
+selection ledger but its final check consumes both joins; T10.8 last.
+
+**Validation order:** Run focused regression and owner contract checks first,
+then Pi/nRF host-native production rehearsals and normalized comparison.
+Use `scripts/format-swift.sh` before the repository gate whenever Swift changes.
+Run `scripts/test.sh` and the applicable explicit profiles, with the final
+`scripts/test.sh all-hardware-free` run covering the registered owner drivers.
+Use `scripts/raspberry-pi/doctor.sh` then
+`scripts/raspberry-pi/build.sh --product SignalAnalyzerRaspberryPiARMv6` for
+ARMv6 ELF/hard-float evidence. Use `scripts/nrf52840/doctor.sh` then
+`scripts/nrf52840/build.sh --application signal-analyzer-static` for nRF
+ARMv7E-M/VFP and resource reports. Keep artifacts in the established `.build/`
+platform directories and record emitted artifact paths. Deployment, flashing,
+service restarts, and connected evidence are separate authorized tasks.
+
+**Scope exclusions and routing:** Keep the justified backend integration,
+render lowering, and failure-correlation boundaries. Nine test-only failure
+adapter fixtures do not justify a production module consolidation. General
+package distribution remains [FW-016](../future-work/fw-016-post-mvp-package-distribution-topology.md),
+and an interactive embedded simulator remains
+[FW-022](../future-work/fw-022-contract-accurate-embedded-target-simulator.md);
+neither is needed for these tasks and no promotion is made. Changes to accepted
+ownership, exact cross-module declarations, identity semantics, failure
+disposition, or resource ceilings require the appropriate RFC/ADR/Spec gate.
 
 ## Design-Note Triggers
 

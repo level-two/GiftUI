@@ -1,0 +1,9 @@
+/Users/eugene/work/GiftUI/.build/contract-reports/spec-001/milestone-10/owner-feasibility/LayoutEngine.swift:1799:8: error: no such module 'GiftUIRuntimeDynamic'
+1797 | }
+1798 | 
+1799 | import GiftUIRuntimeDynamic
+     |        `- error: no such module 'GiftUIRuntimeDynamic'
+1800 | 
+
+<unknown>:0: note: did you forget to set an SDK using -sdk or SDKROOT?
+<unknown>:0: note: use "xcrun swiftc" to select the default macOS SDK installed with Xcode
