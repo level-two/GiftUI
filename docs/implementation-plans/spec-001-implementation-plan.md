@@ -2254,6 +2254,10 @@ evidence. Existing reviewed-pixel and connected-hardware gates remain open.
       rehearsal plus nRF cross-build/ABI/zero-heap/RAM/flash/stack checks pass.
       A missing reusable production seam is work under its owning Spec; it
       cannot be replaced with an analyzer-local parallel implementation.
+      **2026-10-02 disposition:** Blocked. The [Static join record](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/static-runner-blocker.md)
+      links the same SPEC-013 partial-application defect and exact-error seam
+      review. Canonical adoption is complete; the Static runner join is not.
+
 - [ ] `T10.7` — Isolate profile-specific executable dependencies from the
       four-profile comparison harness. Partition the existing host helpers so
       the macOS Static executable consumes only Static hosting/runtime code
