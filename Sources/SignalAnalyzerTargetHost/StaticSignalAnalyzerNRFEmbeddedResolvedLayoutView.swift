@@ -181,7 +181,8 @@ package struct StaticSignalAnalyzerNRFEmbeddedResolvedLayoutView {
                     {
                         return ResolvedRenderGlyph(
                             lineIndex: record.lineIndex, glyphIndex: index,
-                            instance: FontInstanceID(rawValue: 0),
+                            instance: StaticSignalAnalyzerNRFEmbeddedFontMetrics().instance(at: 0)!
+                                .id,
                             glyph: GlyphID(rawValue: record.glyphID),
                             baseline: Point(
                                 x: GeometryScalar(record.baselineX),

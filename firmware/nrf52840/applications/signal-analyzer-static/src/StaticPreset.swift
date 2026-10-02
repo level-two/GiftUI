@@ -1,3 +1,76 @@
+private enum StaticSignalAnalyzerNRFEmbeddedCapabilitySelection {
+    // Selected once for the immutable host lifetime, never reconstructed by an endpoint.
+    static let effective: EffectiveRasterPresentation? = resolve()
+
+    private static func resolve() -> EffectiveRasterPresentation? {
+        let bytes = CapabilityByteCount(rawValue: 2_560)
+        guard let requirement = RasterPresentationRequirement(
+            operations: [.opaqueRectangles, .positionedText, .straightLineStrokes, .clipping, .damage],
+            extent: CapabilityExtent(width: 320, height: 240)!,
+            operationStream: .synchronousBorrowedOneShot,
+            acceptedEncodings: .rgb565BigEndian,
+            acceptedSubmissionLifetimes: .synchronousBorrow,
+            maximumRasterBytes: bytes, maximumPayloadBytes: bytes,
+            maximumInFlightBytes: bytes, absence: .required
+        ) else { return nil }
+        guard
+            let realization = RasterRealizationContribution(
+                kind: .tiled,
+                operations: requirement.operations,
+                operationStream: .synchronousBorrowedOneShot,
+                encodings: .rgb565BigEndian,
+                producedSubmissionLifetimes: .synchronousBorrow,
+                maximumExtent: requirement.extent,
+                maximumRegionWidth: 320,
+                maximumRegionHeight: 4,
+                rowByteAlignment: 2,
+                maximumRasterBytes: bytes,
+                maximumPayloadBytes: bytes
+            ),
+            let render = RenderProducerContribution(
+                operations: requirement.operations,
+                operationStream: .synchronousBorrowedOneShot
+            ),
+            let backend = RasterBackendContribution(primary: realization, alternate: nil),
+            let display = SurfaceDisplayContribution(
+                extent: requirement.extent,
+                encodings: .rgb565BigEndian,
+                acceptedSubmissionLifetimes: .synchronousBorrow,
+                handoffs: .synchronous,
+                maximumRegionWidth: 320,
+                maximumRegionHeight: 4,
+                rowByteAlignment: 2,
+                maximumInFlightCount: 1,
+                maximumInFlightBytes: bytes
+            ),
+            let policy = RasterPresentationPolicy(
+                maximumRasterBytes: bytes,
+                maximumPayloadBytes: bytes,
+                maximumInFlightBytes: bytes,
+                allowedRealizations: .tiled,
+                allowedEncodings: .rgb565BigEndian,
+                preferredRealization: .tiled,
+                preferredEncoding: .rgb565BigEndian
+            )
+        else { return nil }
+
+        var contributions = RasterPresentationContributions()
+        _ = contributions.insert(.renderProducer(render))
+        _ = contributions.insert(.rasterBackend(backend))
+        _ = contributions.insert(.surfaceDisplay(display))
+        _ = contributions.insert(.hostResourcePolicy(policy))
+        var workspace = RasterPresentationResolverWorkspace()!
+        guard
+            case .available(let effective) = RasterPresentationResolver.resolve(
+                requirement: requirement,
+                contributions: contributions,
+                workspace: &workspace
+            )
+        else { return nil }
+        return effective
+    }
+}
+
 private struct StaticSignalAnalyzerPreset {
     let logicalWidth: UInt16 = 320
     let logicalHeight: UInt16 = 240
@@ -1528,7 +1601,7 @@ public func giftUISignalAnalyzerTileValid(
             glyph: GlyphID(rawValue: 1), baseline: Point(x: 10, y: 20)
         ),
         operation: PositionedGlyphOperationHeader(
-            instance: FontInstanceID(rawValue: 0), clip: third,
+            instance: StaticSignalAnalyzerNRFEmbeddedFontMetrics().instance(at: 0)!.id, clip: third,
             color: .white, glyphCount: 1
         ),
         metrics: StaticSignalAnalyzerNRFEmbeddedFontMetrics(),
@@ -1702,24 +1775,7 @@ public func giftUISignalAnalyzerTileValid(
         semanticRevision: SemanticRevision(rawValue: 1),
         candidateFrame: CandidateFrameID(rawValue: 1)
     )
-    let effective = EffectiveRasterPresentation(
-        operations: [
-            .opaqueRectangles, .positionedText,
-            .straightLineStrokes, .clipping, .damage,
-        ],
-        extent: CapabilityExtent(width: 320, height: 240)!,
-        regionExtent: CapabilityExtent(width: 320, height: 4)!,
-        rowBytes: CapabilityByteCount(rawValue: 640),
-        operationStream: .synchronousBorrowedOneShot,
-        encoding: .rgb565BigEndian,
-        submissionLifetime: .synchronousBorrow,
-        handoff: .synchronous,
-        realization: .tiled,
-        requiredRasterBytes: CapabilityByteCount(rawValue: 2_560),
-        requiredPayloadBytes: CapabilityByteCount(rawValue: 2_560),
-        inFlightCount: 1,
-        requiredInFlightBytes: CapabilityByteCount(rawValue: 2_560)
-    )
+    guard let effective = StaticSignalAnalyzerNRFEmbeddedCapabilitySelection.effective else { return 0 }
     guard var endpoint = OneShotRasterBackendEndpoint(
         effectivePresentation: effective,
         descriptor: descriptor,
@@ -1819,24 +1875,7 @@ private func giftUIStaticEmbeddedEndpoint(
         realization: RasterRealizationID(rawValue: 0),
         storage: storage, target: target
     ) else { return nil }
-    let effective = EffectiveRasterPresentation(
-        operations: [
-            .opaqueRectangles, .positionedText,
-            .straightLineStrokes, .clipping, .damage,
-        ],
-        extent: CapabilityExtent(width: 320, height: 240)!,
-        regionExtent: CapabilityExtent(width: 320, height: 4)!,
-        rowBytes: CapabilityByteCount(rawValue: 640),
-        operationStream: .synchronousBorrowedOneShot,
-        encoding: .rgb565BigEndian,
-        submissionLifetime: .synchronousBorrow,
-        handoff: .synchronous,
-        realization: .tiled,
-        requiredRasterBytes: CapabilityByteCount(rawValue: 2_560),
-        requiredPayloadBytes: CapabilityByteCount(rawValue: 2_560),
-        inFlightCount: 1,
-        requiredInFlightBytes: CapabilityByteCount(rawValue: 2_560)
-    )
+    guard let effective = StaticSignalAnalyzerNRFEmbeddedCapabilitySelection.effective else { return nil }
     return StaticSignalAnalyzerNRFEmbeddedEndpoint(
         effectivePresentation: effective, descriptor: descriptor,
         payloadLimits: limits,

@@ -16,7 +16,11 @@ cat "${source_file}" \
     "${application}/tests/host_native_rehearsal_hooks.swift" \
     > "${output}/host_native_rehearsal.swift"
 
-swiftc -parse-as-library -Osize -package-name GiftUI -D GIFTUI_NRF_EMBEDDED \
+owner_output="${project_root}/.build/contract-generated/spec-001/nrf-native-owners"
+python3 "${project_root}/scripts/contracts/compile-spec-001-nrf-native-owners.py" --output "${owner_output}"
+owner_objects=()
+while IFS= read -r object; do owner_objects+=("${object}"); done < "${owner_output}/owner-objects.txt"
+swiftc -I "${owner_output}/modules" -DGIFTUI_REFERENCE_BITMAP_ONLY -parse-as-library -Osize -package-name GiftUI -D GIFTUI_NRF_EMBEDDED \
     -emit-object "${output}/host_native_rehearsal.swift" -o "${output}/application.o"
 
 c_sources=(
@@ -30,7 +34,7 @@ c_sources=(
     "${application}/src/storage.c"
     "${application}/tests/host_native_rehearsal.c"
 )
-objects=("${output}/application.o")
+objects=("${output}/application.o" "${owner_objects[@]}")
 for source in "${c_sources[@]}"; do
     object="${output}/$(basename "${source}" .c).o"
     if [[ "$(basename "${source}")" == main.c ]]; then

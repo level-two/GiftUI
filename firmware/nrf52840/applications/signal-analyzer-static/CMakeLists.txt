@@ -128,7 +128,6 @@ set(giftui_static_swift_inputs
     "${giftui_project_root}/Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFEmbeddedCanvasSource.swift"
     "${giftui_project_root}/Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFEmbeddedCanvasPayload.swift"
     "${giftui_project_root}/Sources/SignalAnalyzerTargetHost/Generated/StaticSignalAnalyzerNRFEmbeddedCanvasTable.generated.swift"
-    "${giftui_project_root}/Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFEmbeddedLayoutInterfaces.swift"
     "${giftui_project_root}/Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFEmbeddedLayoutAdapters.swift"
     "${giftui_project_root}/Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFCommonLayoutWorkspace.swift"
     "${giftui_project_root}/Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFCommonLayoutPass.swift"
@@ -218,25 +217,122 @@ set(giftui_static_swift_inputs
     "${CMAKE_CURRENT_SOURCE_DIR}/src/StaticPreset.swift"
     "${CMAKE_CURRENT_SOURCE_DIR}/src/StaticInputABI.swift"
 )
+list(APPEND giftui_static_swift_inputs
+    "${giftui_project_root}/Sources/GiftUI/ActionHandler.swift"
+    "${giftui_project_root}/Sources/GiftUI/BoundedText.swift"
+    "${giftui_project_root}/Sources/GiftUI/Button.swift"
+    "${giftui_project_root}/Sources/GiftUI/Canvas.swift"
+    "${giftui_project_root}/Sources/GiftUI/DeclarativeView.swift"
+    "${giftui_project_root}/Sources/GiftUI/Disabled.swift"
+    "${giftui_project_root}/Sources/GiftUI/LayoutContainers.swift"
+    "${giftui_project_root}/Sources/GiftUI/LayoutModifiers.swift"
+    "${giftui_project_root}/Sources/GiftUI/ObservableState.swift"
+    "${giftui_project_root}/Sources/GiftUI/StyleModifiers.swift"
+    "${giftui_project_root}/Sources/GiftUI/Text.swift"
+    "${giftui_project_root}/Sources/GiftUISemanticCore/GiftUISemanticCore.swift"
+    "${giftui_project_root}/Sources/GiftUISemanticCore/SemanticLayoutView.swift"
+    "${giftui_project_root}/Sources/GiftUITextResources/GiftUITextResources.swift"
+    "${giftui_project_root}/Sources/GiftUILayout/Layout.swift"
+    "${giftui_project_root}/Sources/GiftUILayout/LayoutPublication.swift"
+    "${giftui_project_root}/Sources/GiftUILayout/LayoutResultSink.swift"
+    "${giftui_project_root}/Sources/GiftUIReferenceTextResources/GiftUIReferenceTextResources.swift"
+    "${giftui_project_root}/Sources/GiftUIReferenceTextResources/Generated/ReferenceCatalogue.generated.swift"
+)
 set_property(DIRECTORY APPEND PROPERTY CMAKE_CONFIGURE_DEPENDS
     ${giftui_static_swift_inputs})
+# Compile selected sources in their owning modules. Only composition-root
+# fragments are combined; cross-owner imports are retained and checked.
+set(giftui_swift_owners "")
 foreach(source ${giftui_static_swift_inputs})
-    file(READ "${source}" giftui_static_swift_fragment)
-    string(REGEX REPLACE "(^|\n)import [A-Za-z0-9_]+\r?\n" "\\1"
-        giftui_static_swift_fragment "${giftui_static_swift_fragment}")
-    file(APPEND "${giftui_static_swift_source}"
-        "${giftui_static_swift_fragment}\n")
+    if(source MATCHES "/Sources/([A-Za-z0-9_]+)/")
+        set(owner "${CMAKE_MATCH_1}")
+    else()
+        set(owner SignalAnalyzerTargetHost)
+    endif()
+    if(owner STREQUAL SignalAnalyzerTargetHost)
+        file(READ "${source}" fragment)
+        file(APPEND "${giftui_static_swift_source}" "${fragment}\n")
+    else()
+        list(APPEND giftui_sources_${owner} "${source}")
+        list(APPEND giftui_swift_owners "${owner}")
+    endif()
+endforeach()
+list(REMOVE_DUPLICATES giftui_swift_owners)
+file(WRITE "${CMAKE_CURRENT_BINARY_DIR}/swift-owner-sources.tsv" "owner\tsource\n")
+foreach(owner ${giftui_swift_owners})
+    # One WMO translation unit per owner avoids redundant Embedded runtime
+    # partitions while retaining a distinct module and its checked imports.
+    set(owner_source "${CMAKE_CURRENT_BINARY_DIR}/${owner}.swift")
+    file(WRITE "${owner_source}" "")
+    foreach(source ${giftui_sources_${owner}})
+        file(READ "${source}" fragment)
+        file(APPEND "${owner_source}" "${fragment}\n")
+    endforeach()
+    add_library(giftui_${owner} OBJECT "${owner_source}")
+    set_target_properties(giftui_${owner} PROPERTIES
+        Swift_MODULE_NAME "${owner}"
+        Swift_MODULE_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/swift-modules/${owner}")
+    foreach(source ${giftui_sources_${owner}})
+        file(APPEND "${CMAKE_CURRENT_BINARY_DIR}/swift-owner-sources.tsv" "${owner}\t${source}\n")
+    endforeach()
+    target_sources(app PRIVATE $<TARGET_OBJECTS:giftui_${owner}>)
+endforeach()
+# The host composes every selected owner; lower owners can see only their
+# declared imports. A module directory is never shared across owner closures.
+set(host_imports "")
+foreach(owner ${giftui_swift_owners})
+    string(APPEND host_imports "import ${owner}\n")
+endforeach()
+file(READ "${giftui_static_swift_source}" host_fragments)
+file(WRITE "${giftui_static_swift_source}" "${host_imports}\n${host_fragments}")
+add_library(app_swift OBJECT "${giftui_static_swift_source}")
+set_target_properties(app_swift PROPERTIES Swift_MODULE_NAME SignalAnalyzerTargetHost)
+add_dependencies(app_swift syscall_list_h_target)
+foreach(owner ${giftui_swift_owners})
+    add_dependencies(app_swift giftui_${owner})
+    target_compile_options(app_swift PRIVATE "-I${CMAKE_CURRENT_BINARY_DIR}/swift-modules/${owner}")
+    set(owner_imports "")
+    foreach(source ${giftui_sources_${owner}})
+        file(STRINGS "${source}" import_lines REGEX "^import [A-Za-z0-9_]+$")
+        foreach(line ${import_lines})
+            string(REGEX REPLACE "^import " "" dependency "${line}")
+            list(APPEND owner_imports "${dependency}")
+        endforeach()
+    endforeach()
+    list(REMOVE_DUPLICATES owner_imports)
+    set(giftui_imports_${owner} ${owner_imports})
+    foreach(dependency ${owner_imports})
+        if(NOT TARGET giftui_${dependency})
+            message(FATAL_ERROR "Selected ${owner} imports unavailable owner ${dependency}")
+        endif()
+        add_dependencies(giftui_${owner} giftui_${dependency})
+        target_compile_options(giftui_${owner} PRIVATE "-I${CMAKE_CURRENT_BINARY_DIR}/swift-modules/${dependency}")
+    endforeach()
 endforeach()
 
-add_library(app_swift OBJECT "${giftui_static_swift_source}")
-add_dependencies(app_swift syscall_list_h_target)
+# Swift's serialized modules also need their transitive lower-owner modules
+# available for deserialization. No sibling/higher owner directories are added.
+foreach(owner ${giftui_swift_owners})
+    set(pending_imports ${giftui_imports_${owner}})
+    set(visible_imports "")
+    while(pending_imports)
+        list(POP_FRONT pending_imports dependency)
+        if(NOT dependency IN_LIST visible_imports)
+            list(APPEND visible_imports "${dependency}")
+            list(APPEND pending_imports ${giftui_imports_${dependency}})
+            add_dependencies(giftui_${owner} giftui_${dependency})
+            target_compile_options(giftui_${owner} PRIVATE
+                "-I${CMAKE_CURRENT_BINARY_DIR}/swift-modules/${dependency}")
+        endif()
+    endwhile()
+endforeach()
 
 if(NOT CONFIG_FP_HARDABI)
     message(FATAL_ERROR "Signal Analyzer Static requires Cortex-M4F hard-float")
 endif()
 
-target_compile_options(app_swift PRIVATE
-    -parse-as-library -Osize -package-name GiftUI -D GIFTUI_NRF_EMBEDDED
+set(giftui_swift_compile_flags
+    -parse-as-library -Osize -package-name GiftUI -DGIFTUI_NRF_EMBEDDED
     -enable-experimental-feature Embedded
     "SHELL:-Xfrontend -function-sections"
     "SHELL:-Xfrontend -disable-stack-protector"
@@ -247,12 +343,23 @@ target_compile_options(app_swift PRIVATE
     "SHELL:-Xcc -I -Xcc ${ZEPHYR_SDK_INSTALL_DIR}/arm-zephyr-eabi/picolibc/include"
 )
 
+foreach(swift_target app_swift ${giftui_swift_owners})
+    if(NOT swift_target STREQUAL app_swift)
+        set(swift_target giftui_${swift_target})
+    endif()
+    target_compile_options(${swift_target} PRIVATE ${giftui_swift_compile_flags}
+        -DGIFTUI_REFERENCE_BITMAP_ONLY)
+endforeach()
+
 foreach(flag ${TOOLCHAIN_C_FLAGS})
     string(FIND "${flag}" "-imacro" is_imacro)
     string(FIND "${flag}" "-mfp16-format" is_mfp16)
     string(FIND "${flag}" "--sysroot" is_sysroot)
     if(is_imacro EQUAL -1 AND is_mfp16 EQUAL -1 AND is_sysroot EQUAL -1)
         target_compile_options(app_swift PRIVATE "SHELL:-Xcc ${flag}")
+        foreach(owner ${giftui_swift_owners})
+            target_compile_options(giftui_${owner} PRIVATE "SHELL:-Xcc ${flag}")
+        endforeach()
     endif()
 endforeach()
 

@@ -378,3 +378,19 @@ indicator. Normal and diagnostic projections now share 92 scopes, 41 nodes,
 The fixed capacities and physical storage remain unchanged. T6.8 implements
 the requested correction; T7.7 evidence records hardware-free visual checks.
 Connected hardware and reviewed-pixel blockers remain open.
+
+## Milestone 10 canonical owner join — 2026-10-02
+
+T10.4 retains the generated packed caller-owned records and adapts them to the
+canonical `GiftUISemanticCore`, `GiftUILayout`, and `GiftUITextResources`
+contracts. The host defines no replacement semantic or font/resource contract.
+The selected reference metrics and bitmap raster views now carry the same
+canonical resource and font-instance identities through measurement, resolved
+glyph projection, render preflight, and raster coverage.
+
+Firmware compilation keeps each lower owner in a separate compiler-visible
+module with only its transitive lower dependencies visible. One translation
+unit per owner supports Embedded whole-module specialization without erasing
+cross-owner imports. Only the target-host composition fragments share their
+existing host module. The exact selected source manifest also drives native
+rehearsals; compiler negative cases exercise those actual firmware invocations.

@@ -200,6 +200,7 @@ if [[ "${profile}" == "nrf52840-embedded" ]]; then
     cp "${rehearsal_dir}/faults/"*.tsv "${staging_report_dir}/faults/"
     spec015_run_id="$(cat "${PROJECT_ROOT}/.build/contract-reports/spec-015/latest-${profile}.txt")"
     spec015_report_dir="${PROJECT_ROOT}/.build/contract-reports/spec-015/${spec015_run_id}/${profile}"
+    python3 "${SCRIPT_DIR}/check-spec-001-nrf-owner-isolation.py"
     "${SCRIPT_DIR}/check-spec-001-nrf-full-layout-native.sh"
     artifact="${PROJECT_ROOT}/.build/nrf52840/signal-analyzer-static/zephyr/zephyr.elf"
     artifact_identity="$(shasum -a 256 "${artifact}" | awk '{print $1}')"

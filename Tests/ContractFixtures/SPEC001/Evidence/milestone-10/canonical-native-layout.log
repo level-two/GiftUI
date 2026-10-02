@@ -1,0 +1,22 @@
+native-owner=GiftUI; sources=16; status=pass
+native-owner=GiftUICapabilities; sources=1; status=pass
+native-owner=GiftUIFailureCore; sources=1; status=pass
+native-owner=SignalAnalyzerDomain; sources=4; status=pass
+native-owner=GiftUISemanticCore; sources=3; status=pass
+native-owner=GiftUISurfaceCore; sources=1; status=pass
+native-owner=GiftUITextResources; sources=1; status=pass
+native-owner=SignalAnalyzerData; sources=1; status=pass
+native-owner=SignalAnalyzerPresentation; sources=2; status=pass
+native-owner=GiftUIDisplayCore; sources=1; status=pass
+native-owner=GiftUILayout; sources=11; status=pass
+native-owner=GiftUIReferenceTextResources; sources=3; status=pass
+native-owner=GiftUIRenderCore; sources=3; status=pass
+native-owner=GiftUIExecution; sources=6; status=pass
+native-owner=GiftUIRasterCore; sources=8; status=pass
+native-owner=GiftUIRenderLowering; sources=5; status=pass
+native-owner=GiftUIBackendIntegration; sources=6; status=pass
+native-owner=GiftUIDrawing; sources=8; status=pass
+native-owner=GiftUIHostConfiguration; sources=2; status=pass
+native-owner=GiftUIInteraction; sources=4; status=pass
+native-owner=GiftUIRuntimeStatic; sources=1; status=pass
+nRF layout and Drawing storage: passed

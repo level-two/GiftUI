@@ -9,7 +9,7 @@ mkdir -p "${output}/modules" "${output}/clang-cache"
 export CLANG_MODULE_CACHE_PATH="${output}/clang-cache"
 "${GIFTUI_NRF_SWIFTC}" --version > "${output}/compiler.txt"
 flags=(-target "${GIFTUI_NRF_SWIFT_TARGET}" -enable-experimental-feature Embedded
-    -Osize -whole-module-optimization -package-name GiftUI -parse-as-library
+    -DGIFTUI_NRF_EMBEDDED -Osize -whole-module-optimization -package-name GiftUI -parse-as-library
     -Xcc -mfloat-abi=hard -Xcc -mcpu=cortex-m4 -Xcc -mfpu=fpv4-sp-d16)
 for owner in GiftUI GiftUITextResources GiftUISemanticCore GiftUILayout; do
     "${GIFTUI_NRF_SWIFTC}" "${flags[@]}" -emit-module -module-name "${owner}" \

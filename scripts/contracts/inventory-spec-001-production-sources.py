@@ -5,7 +5,7 @@ cm=r/'firmware/nrf52840/applications/signal-analyzer-static/CMakeLists.txt'
 s=cm.read_text().split('set(giftui_static_swift_inputs',1)[1].split('set_property',1)[0]
 paths=[]
 for x in re.findall(r'"([^"]+)"',s):
- x=x.replace('${giftui_project_root}',str(r)).replace('${CMAKE_CURRENT_SOURCE_DIR}',str(cm.parent)).replace('${giftui_reference_bitmap}',str(r/'Sources/GiftUIReferenceTextResources/Generated/ReferenceBitmapPayload.generated.swift'))
+ x=x.replace('${giftui_project_root}',str(r)).replace('${CMAKE_CURRENT_SOURCE_DIR}',str(cm.parent)).replace('${giftui_reference_bitmap}',str(r/'Sources/GiftUIReferenceTextResources/Generated/ReferenceBitmapPayload.generated.swift')).replace('${giftui_reference_catalogue}',str(r/'Sources/GiftUIReferenceTextResources/Generated/ReferenceCatalogue.generated.swift'))
  p=Path(x)
  if p.exists():paths.append(p)
 with (out/'selected-sources.tsv').open('w') as f:

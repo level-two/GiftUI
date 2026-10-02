@@ -96,7 +96,7 @@ struct FullLayoutNativeCheck {
             "initial Canvas offer failed"
         )
         precondition(giftUISignalAnalyzerInitialModelActive() == 1)
-        precondition(giftUISignalAnalyzerInitialCommittedActions() == 6)
+        precondition(giftUISignalAnalyzerInitialCommittedActions() == 3)
         precondition(giftUISignalAnalyzerInitialGestureReady() == 1)
         precondition(giftUISignalAnalyzerNeedsPresentation() == 0)
         precondition(giftUISignalAnalyzerCurrentRevision() == 1)
@@ -106,7 +106,7 @@ struct FullLayoutNativeCheck {
         )
         precondition(
             StaticSignalAnalyzerNRFEmbeddedSemanticView(published: published)?
-                .scopeCount == 96,
+                .scopeCount == 92,
             "initial offer retained the diagnostic semantic table"
         )
         precondition(
@@ -170,12 +170,14 @@ struct FullLayoutNativeCheck {
             "prior physical revision admitted a touch after replacement"
         )
         precondition(giftUISignalAnalyzerInputPendingCount() == 0)
-        for code in UInt16(1) ... UInt16(5) {
+        // The approved touch amendment exposes Stop, window increase from 2 s
+        // to 5 s, decrease to 2 s, decrease to 1 s, and increase to 2 s in turn.
+        for (step, code) in [UInt16(1), 5, 4, 3, 4].enumerated() {
             dispatchAction(
-                code, revision: UInt32(code) + 1,
+                code, revision: UInt32(step) + 2,
                 profile: profile, capture: capture
             )
-            if code < 5 {
+            if step < 4 {
                 precondition(
                     giftUISignalAnalyzerPresentNext(
                         profile, 39_696, capture, 115_392,
@@ -215,7 +217,7 @@ struct FullLayoutNativeCheck {
             ) == 1,
             "retired model could not activate again"
         )
-        precondition(giftUISignalAnalyzerInitialCommittedActions() == 6)
+        precondition(giftUISignalAnalyzerInitialCommittedActions() == 3)
         precondition(giftUISignalAnalyzerInitialGestureReady() == 1)
         precondition(
             giftUISignalAnalyzerPresentNext(

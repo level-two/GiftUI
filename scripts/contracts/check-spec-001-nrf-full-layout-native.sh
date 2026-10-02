@@ -12,6 +12,10 @@ binary="${project_root}/.build/nrf52840/signal-analyzer-static/full-layout-nativ
 }
 mkdir -p "${project_root}/.build/clang-module-cache"
 export CLANG_MODULE_CACHE_PATH="${project_root}/.build/clang-module-cache"
-swiftc -parse-as-library -Osize -package-name GiftUI -D GIFTUI_NRF_EMBEDDED \
-    "${source_file}" "${harness}" -o "${binary}"
+owner_output="${project_root}/.build/contract-generated/spec-001/nrf-native-owners"
+python3 "${project_root}/scripts/contracts/compile-spec-001-nrf-native-owners.py" --output "${owner_output}"
+owner_objects=()
+while IFS= read -r object; do owner_objects+=("${object}"); done < "${owner_output}/owner-objects.txt"
+swiftc -I "${owner_output}/modules" -DGIFTUI_REFERENCE_BITMAP_ONLY -parse-as-library -Osize -package-name GiftUI -D GIFTUI_NRF_EMBEDDED \
+    "${source_file}" "${harness}" "${owner_objects[@]}" -o "${binary}"
 "${binary}"

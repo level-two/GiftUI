@@ -102,57 +102,5 @@
         }
     }
 
-    package struct StaticSignalAnalyzerNRFEmbeddedFontMetrics:
-        CanonicalTextMetricsView
-    {
-        package let descriptor = TextResourceDescriptor(instanceCount: 1)
-
-        package func instance(at index: UInt16) -> FontInstanceDescriptor? {
-            guard index == 0 else { return nil }
-            return FontInstanceDescriptor(
-                id: FontInstanceID(rawValue: 0),
-                lineMetrics: FontLineMetrics(
-                    ascent: GeometryScalar(StaticSignalAnalyzerNRFReferenceMetrics.ascent),
-                    descent: GeometryScalar(StaticSignalAnalyzerNRFReferenceMetrics.descent),
-                    lineGap: GeometryScalar(StaticSignalAnalyzerNRFReferenceMetrics.lineGap)
-                ),
-                replacementGlyph: GlyphID(
-                    rawValue: StaticSignalAnalyzerNRFReferenceMetrics.replacementGlyph
-                )
-            )
-        }
-
-        package func mapScalar(
-            _ scalar: UInt32, in instance: FontInstanceID
-        ) -> GlyphMapping? {
-            guard instance.rawValue == 0 else { return nil }
-            if let glyph = StaticSignalAnalyzerNRFReferenceMetrics.glyph(for: scalar) {
-                return .exact(GlyphID(rawValue: glyph))
-            }
-            return .replacement(
-                GlyphID(
-                    rawValue: StaticSignalAnalyzerNRFReferenceMetrics.replacementGlyph
-                ))
-        }
-
-        package func metrics(
-            for glyph: GlyphID, in instance: FontInstanceID
-        ) -> GlyphMetrics? {
-            guard instance.rawValue == 0,
-                let metric = StaticSignalAnalyzerNRFReferenceMetrics.metric(
-                    for: glyph.rawValue
-                ),
-                let inkSize = Size(
-                    width: GeometryScalar(metric.width),
-                    height: GeometryScalar(metric.height)
-                )
-            else { return nil }
-            return GlyphMetrics(
-                advanceX: GeometryScalar(metric.advanceX),
-                offsetX: GeometryScalar(metric.offsetX),
-                offsetY: GeometryScalar(metric.offsetY),
-                inkSize: inkSize
-            )
-        }
-    }
+    package typealias StaticSignalAnalyzerNRFEmbeddedFontMetrics = GiftUIReferenceTextMetricsView
 #endif

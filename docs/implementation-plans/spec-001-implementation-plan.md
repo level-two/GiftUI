@@ -2196,7 +2196,7 @@ evidence. Existing reviewed-pixel and connected-hardware gates remain open.
       identity across measurement/preflight/streaming/raster, mismatched-package
       rejection, and 19 passing regressions.
 
-- [ ] `T10.4` — Replace the embedded host's duplicate contract declarations
+- [x] `T10.4` — Replace the embedded host's duplicate contract declarations
       with canonical owner declarations. Following T10.1, consume
       `SemanticLayoutView`/payloads from `GiftUISemanticCore` and font/resource
       identities and views from `GiftUITextResources`. Retain generated packed
@@ -2213,6 +2213,12 @@ evidence. Existing reviewed-pixel and connected-hardware gates remain open.
       resource and hard-float requirements. Register any new required check
       explicitly with the contract driver/root runner. A necessary contract or
       ownership change blocks this task and returns to its governing owner plan.
+      **2026-10-02 disposition:** Completed. The [canonical embedded join](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/canonical-embedded-contracts.md)
+      records canonical identities, actual owner compiler isolation, passing
+      full-layout/production/fault rehearsals, 129-frame/12-action parity, and
+      inspected firmware within unchanged hard-float, zero-heap and byte limits.
+      Reviewed pixel references and connected evidence remain outstanding.
+
 - [ ] `T10.5` — Delegate Dynamic production opportunity sequencing to the
       common runtime pipeline. Adapt the Pi host's fact application, semantic,
       layout, Canvas, render, and Interaction workspaces to the existing

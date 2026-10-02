@@ -185,7 +185,8 @@
         package mutating func appendPositionedGlyph(
             _ glyph: LayoutPositionedGlyph<UInt16>
         ) -> Bool {
-            guard glyph.instance.rawValue == 0,
+            guard
+                glyph.instance == StaticSignalAnalyzerNRFEmbeddedFontMetrics().instance(at: 0)!.id,
                 glyph.clip == zeroRect,
                 let baselineX = compact(glyph.baseline.x),
                 let baselineY = compact(glyph.baseline.y)
@@ -218,7 +219,7 @@
             return LayoutPositionedGlyph(
                 identity: record.identity, lineIndex: record.lineIndex,
                 glyphIndex: localIndex,
-                instance: FontInstanceID(rawValue: 0),
+                instance: StaticSignalAnalyzerNRFEmbeddedFontMetrics().instance(at: 0)!.id,
                 glyph: GlyphID(rawValue: record.glyphID),
                 baseline: Point(
                     x: GeometryScalar(record.baselineX),
