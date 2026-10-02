@@ -2270,7 +2270,7 @@ evidence. Existing reviewed-pixel and connected-hardware gates remain open.
       ABI/zero heap and measured stack fit without relaxed ceilings.
       Earlier blocker records below retain their historical scope.
 
-- [ ] `T10.7` — Isolate profile-specific executable dependencies from the
+- [x] `T10.7` — Isolate profile-specific executable dependencies from the
       four-profile comparison harness. Partition the existing host helpers so
       the macOS Static executable consumes only Static hosting/runtime code
       and the Dynamic executable consumes only Dynamic hosting/runtime code.
@@ -2285,8 +2285,9 @@ evidence. Existing reviewed-pixel and connected-hardware gates remain open.
       as proof of the production firmware's isolation; T10.4/T10.6 cover that
       source configuration separately. If an exact module contract must change,
       obtain its reviewed amendment before relying on the changed topology.
-      **2026-10-02 disposition:** Independent dependency cleanup delivered;
-      final verification blocked by T10.5/T10.6. The [isolation record](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/executable-dependency-isolation.md)
+      **2026-10-02 current disposition:** Complete; both production joins and
+      the connected stack prerequisite are satisfied. Final independent runs,
+      positive/negative closures and the 84-target / 375-edge audit pass. The [isolation record](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/executable-dependency-isolation.md)
       captures the dispatcher relocation inside existing owners, exact closure
       negatives, nine regressions, and independent deterministic checksums.
 
@@ -2775,3 +2776,10 @@ measured main-stack high-water, zero CPU/driver faults, 191,104-byte RAM and
 interaction semantics; split startup/stage call frames avoid the initial
 overflow. This recorded case closes the join's stack prerequisite. Physical
 input, pixel review and cadence/frame-cost acceptance remain open.
+
+### T10.7 final verification complete — 2026-10-02
+
+Fresh independent executable builds and deterministic runs agree, selected
+runtimes and forbidden-edge negatives pass, and actual firmware isolation
+remains separately checked. The completed T10.6 stack check resolves the final
+dependency prerequisite. T10.8 retains the reviewed-pixel gate.

@@ -1,4 +1,4 @@
-# T10.7 — Independent dependency cleanup; final join verification blocked
+# T10.7 — Independent dependency cleanup and final verification
 
 The only profile-specific code in `SignalAnalyzerHost` was its two action
 dispatcher factories. They now belong to the existing
@@ -47,3 +47,15 @@ The six actual Dynamic/Static production failure rows also agree after the live
 firmware join. This adds positive selected-owner evidence to the earlier absence
 checks; it does not claim these preset executables are connected production hosts.
 T10.7's final dependency prerequisite remains the outstanding T10.6 stack check.
+
+## Final completion — 2026-10-02
+
+T10.5 and T10.6 are complete, including connected stack validation. The final
+actual package graph again passes positive/negative closures and the complete
+interface audit (84 targets / 375 edges). Fresh builds in two independent
+scratch directories execute each product, with semantic checksum 360515885,
+workload checksum 18300581, 2,400 events at 80 Hz for 30 seconds, 120 frames
+and category high-water 20. The explicit combined production fault comparison
+remains equal. Actual firmware isolation is separately verified in T10.6.
+`final-executable-isolation.tar.gz` retains this final graph and both run logs.
+Earlier blocked dispositions above are historical and superseded by this check.
