@@ -131,3 +131,13 @@ T3.3/T4.2 because they exercise candidate/published lifetime distinctions.
 No T3.2 correctness question remains. T4.2's exact fixed packing depends on
 the landed generated metadata and will be documented here when implemented;
 it cannot change the family registry, logical dimensions, or audit fields.
+
+## Amended failure carrier measurement — 2026-10-02
+
+Framework/composed first-failure values both have 28-byte stride under macOS,
+ARMv6 and Embedded compilers. The bounded application sum therefore introduces
+no specialization delta in this value. Existing generated128/96-byte failure
+regions are unchanged. [T9.3 evidence](../../Tests/ContractFixtures/SPEC013/Evidence/milestone-9/carrier-resources.md)
+is pre-join proof; actual production placement and total binary/storage audit
+remain downstream obligations. It does not authorize double-counting a value
+and its backing region, stack overlay, or overlapping retained lifetimes.

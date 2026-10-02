@@ -17,7 +17,7 @@ package enum RuntimeOwnerFailure: Equatable, Sendable {
 
 package protocol GiftUIRuntimeProfileCoordinator:
     ExecutionAdmissionSink, ExecutionOpportunityRunner
-where OwnerFailure == RuntimeOwnerFailure {
+{
     associatedtype Storage: RuntimeProfileStorage
     associatedtype Endpoint: SynchronousFrameEndpoint
     where Endpoint.Sink: DrawingOperationSink

@@ -526,7 +526,7 @@ profile, retry policy, or storage ceiling is introduced.
   **2026-10-02 disposition:** Complete seam-level differential and no-replay
   tests; 22 focused tests pass. [Behavior evidence](../../Tests/ContractFixtures/SPEC013/Evidence/milestone-9/partial-mutation-behavior.md)
   distinguishes scripts from downstream assembled-production obligations.
-- [ ] `T9.3` — Measure framework and production-composed owner/failure/result
+- [x] `T9.3` — Measure framework and production-composed owner/failure/result
   layouts under supported compilers (2 / 4 / 8 / 72-byte ceilings), include
   changed retained storage in profile audits, and verify Embedded declaration
   feasibility and zero allocation. Preserve module boundaries, borrowed
@@ -535,6 +535,10 @@ profile, retry policy, or storage ceiling is introduced.
   cannot discharge that obligation.
   **Depends on:** `T9.1` and `T9.2`.
   **Covers:** RP-002, RP-010, RP-012, RP-013, RP-015; HC-015, HC-016.
+  **2026-10-02 disposition:** Complete carrier declarations/layout and
+  exercised Embedded allocation proof. [Resource evidence](../../Tests/ContractFixtures/SPEC013/Evidence/milestone-9/carrier-resources.md)
+  records all three supported compiler/target measurements, no retained
+  specialization delta, and the separate downstream assembled-budget obligation.
 - [ ] `T9.4` — Run the registered SPEC-013 and relevant SPEC-015 owner checks,
   record exact failing or passing invocations, update conformance and host
   plan records, and hand the validated seam to SPEC-001 T10.5/T10.6. Resume
