@@ -206,3 +206,21 @@ canonical sequencing, exact focused failures, application effects, recovery and
 backend health. See the [reproducible evidence](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/dynamic-failure-recovery.md).
 T10.6, final closure checks and assembled revalidation remain outstanding; this
 increment does not claim full conformance or any connected hardware evidence.
+
+## Current assembled milestone-10 review — 2026-10-02
+
+T10.1–T10.7 are complete. The [current review packet](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/assembled-revalidation.md)
+supersedes earlier seam/closure/gate blocker dispositions while preserving
+their original revision scope. The current 45-row criterion ledger records
+41 scoped passes and four blocked criteria (SA-AC-005/023/024/039).
+SA-AC-025 now passes the measured connected fit-and-run case in the
+[raw stack record](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/connected-stack.md).
+This supersedes that criterion's historical table row, not the remaining
+physical input/display/cadence or admission/mutation/publication/frame-cost gates.
+
+The registered gate records 62/72 passes; eight named focused reruns pass,
+leaving two missing reviewed-pixel references. Current root/native/fault/ABI/
+resource/isolation checks pass. The final actual-source hashes and raw artifacts
+are preserved. T10.8 remains blocked on the references; an implemented transition
+is not requested. The flash and debugger measurement were explicitly authorized;
+no remote service was deployed or restarted.

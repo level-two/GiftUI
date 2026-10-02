@@ -2304,12 +2304,16 @@ evidence. Existing reviewed-pixel and connected-hardware gates remain open.
       revalidation. Pixel review and connected display/input/timing/high-water
       criteria retain their existing blockers until separately satisfied.
       Plan completion does not authorize an `implemented` transition.
-      **2026-10-02 disposition:** Review recorded; completion blocked by
-      T10.5/T10.6, T10.7's final join verification, and 42 failed checks in the
-      registered hardware-free gate. The [final review packet](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/revalidation-disposition.md)
+      **2026-10-02 current disposition:** Review updated; T10.1–T10.7 complete.
+      Completion is blocked by the two registered SPEC-001 Pi/nRF reviewed-pixel
+      reference gates. The [assembled review](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/assembled-revalidation.md)
+      preserves the 62/72 gate and eight passing focused reruns, with current
+      fault/profile/resource/source checks and all 45 criterion dispositions. The [final review packet](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/revalidation-disposition.md)
       records all 45 criterion dispositions, exact gate results and raw logs,
       current source applicability, and unchanged resource ceilings. The
-      1,151-test root suite passes. No implemented transition is requested.
+      prior 1,151-test root result retains its historical scope. The current
+      1,158-test root run passes; complete reference corpora passed in the gate.
+      No implemented transition is requested.
 
 **Execution order:** T10.1 first; T10.2 and T10.3 before the Dynamic runner join;
 T10.4 before the Static runner join; T10.7 can begin once T10.1 fixes the
@@ -2783,3 +2787,13 @@ Fresh independent executable builds and deterministic runs agree, selected
 runtimes and forbidden-edge negatives pass, and actual firmware isolation
 remains separately checked. The completed T10.6 stack check resolves the final
 dependency prerequisite. T10.8 retains the reviewed-pixel gate.
+
+### T10.8 current assembled disposition — 2026-10-02
+
+Seven tasks are complete. The registered gate plus eight exact focused reruns
+provide passing evidence for 70 of 72 checks, retaining every original status
+and input scope. The two remaining checks require independently reviewed
+Pi/nRF RGB565 references. All 45 criteria are reconciled; connected stack fit
+is now measured, while physical touch/display/cadence and frame-cost acceptance
+remain open. Current raster candidates are prepared for review. No approval
+is inferred and no implemented transition is requested.

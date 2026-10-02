@@ -1,0 +1,6 @@
+schema_version=1
+selection=all-hardware-free
+repository_revision=5058ff504870f06561a053f0b4b0f078ebe9ac2b
+profiles=macos-dynamic,macos-static,raspberry-pi-armv6,nrf52840-embedded
+contract_report_root=.build/contract-reports
+failure_count=10

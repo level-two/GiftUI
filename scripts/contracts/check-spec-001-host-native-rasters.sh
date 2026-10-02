@@ -23,8 +23,7 @@ output="${project_root}/.build/contract-generated/spec-001/${target}-raster-gate
 captures="${output}/captures"
 images="${output}/images"
 references="${project_root}/Tests/ContractFixtures/SPEC001/PixelReferences"
-default_evidence="${project_root}/Tests/ContractFixtures/SPEC001/Evidence/milestone-7"
-[[ "${target}" == nrf ]] && default_evidence="${project_root}/Tests/ContractFixtures/SPEC001/Evidence/milestone-10"
+default_evidence="${project_root}/Tests/ContractFixtures/SPEC001/Evidence/milestone-10"
 evidence="${reference_traces:-${default_evidence}}"
 if [[ "${candidate_only}" == false ]]; then
     states=(idle running-four-traces stopped window-one-second

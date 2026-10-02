@@ -1,0 +1,42 @@
+# Current milestone-10 raster candidates — independent review pending
+
+These are review candidates from the current production recording adapters,
+not accepted pixel references. Pi logical output is 240×240, mapped to 480×320;
+nRF output is the approved 320×240 landscape fixture. Both targets run their
+actual canonical production pipelines with recording device boundaries.
+
+The full registered gate's independently executed macOS Dynamic transcript is
+extracted verbatim into `../macos-dynamic-reference-trace.tsv` (120 workload
+frames, nine initial/action frames, 12 actions). Its current 41 semantic nodes
+supersede the stale milestone-7 trace's 47; the candidate runner now defaults to
+the current milestone-10 reference folder. No comparator field is removed or
+relaxed. nRF uses the independent 818-frame/12-action paced Static reference.
+Raw RGB565, identity hashes, normal/diagnostic traces, comparison and fault
+results are retained with the images in `recording-candidates.tar.gz`.
+
+The candidate-only command deliberately does not compare against missing
+reviewed pixels. It still requires exact independent behavioral comparison,
+nonempty raster/header invariants, four traces/grid and production fault probes.
+The default registered command continues to fail when PixelReferences is absent.
+
+Review each PNG at native size for title/subtitle/status, labels, ruler, grid,
+four waveform rows, controls and diagnostic. Record the independent reviewer's
+name, decision and source revision before installing matching raw RGB565 in
+`Tests/ContractFixtures/SPEC001/PixelReferences/`. A candidate generation pass
+and this agent's visual inspection do not grant that approval.
+
+| State | Pi logical | Pi mapped display | nRF landscape |
+| --- | --- | --- | --- |
+| idle | [view](pi-idle.png) | [view](pi-idle-physical.png) | [view](nrf-idle.png) |
+| running-four-traces | [view](pi-running-four-traces.png) | [view](pi-running-four-traces-physical.png) | [view](nrf-running-four-traces.png) |
+| stopped | [view](pi-stopped.png) | [view](pi-stopped-physical.png) | [view](nrf-stopped.png) |
+| cleared | [view](pi-cleared.png) | [view](pi-cleared-physical.png) | [view](nrf-cleared.png) |
+| window-one-second | [view](pi-window-one-second.png) | [view](pi-window-one-second-physical.png) | [view](nrf-window-one-second.png) |
+| window-five-seconds | [view](pi-window-five-seconds.png) | [view](pi-window-five-seconds-physical.png) | [view](nrf-window-five-seconds.png) |
+| window-two-seconds | [view](pi-window-two-seconds.png) | [view](pi-window-two-seconds-physical.png) | [view](nrf-window-two-seconds.png) |
+| diagnostic | [view](pi-diagnostic.png) | [view](pi-diagnostic-physical.png) | [view](nrf-diagnostic.png) |
+
+Candidate runs pass at source revision `5b79b0a9` plus the documented
+current-reference default change. Input/source and binary hashes are retained
+in each recording identity file. Representative running nRF and diagnostic Pi
+images have been inspected; independent acceptance of all images remains pending.
