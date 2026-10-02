@@ -110,3 +110,10 @@ The original milestone-3 provenance remains historical. The
 records its actual source byte count/hash; pinned tools, font/licence, generated
 outputs and resource identity still pass exact checks. This reconciles source
 provenance without changing text-resource contracts or claiming new target execution.
+
+## SPEC-001 milestone 10 landscape fixture revalidation — 2026-10-02
+
+The [current fixture record](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/landscape-owner-fixtures.md)
+records the corrected resolver extent and complete canonical resource consumers.
+The focused macOS Dynamic driver passes; historical profile results retain their
+original revision scope. No implemented transition or connected claim is made.

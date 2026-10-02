@@ -650,7 +650,7 @@ private func instrumentedResolution(
 let (widestResult, widestCounts) = instrumentedResolution(
     producerStream: .synchronousBorrowedOneShot,
     encodings: CanonicalPixelEncodingSet(rawValue: 3),
-    fullRegionHeight: 320
+    fullRegionHeight: 240
 )
 guard case .available = widestResult,
       widestCounts.roleVisits == 4,

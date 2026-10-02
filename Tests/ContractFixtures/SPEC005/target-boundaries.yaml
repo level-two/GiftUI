@@ -75,6 +75,8 @@ downstream_integration:
     - GiftUIRenderLowering
     - GiftUIDrawing
     - GiftUIRuntimeCore
+    - GiftUIRuntimeDynamic
+    - SignalAnalyzerTargetHost
     - GiftUIHostConfiguration
   platform_roots:
     - SignalAnalyzerHost

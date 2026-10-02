@@ -132,3 +132,10 @@ records the exact gate results and failure logs. Historical passing evidence
 above remains scoped to its recorded revision and inputs; it is not a current
 full-gate pass. The owner assertion must be resolved and rerun, without waiving
 a boundary or migration requirement, before the assembled cleanup can close.
+
+## SPEC-001 milestone 10 landscape fixture revalidation — 2026-10-02
+
+The [current fixture record](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/landscape-owner-fixtures.md)
+records the corrected resolver extent and complete canonical resource consumers.
+The focused macOS Dynamic driver passes; historical profile results retain their
+original revision scope. No implemented transition or connected claim is made.
