@@ -2163,7 +2163,7 @@ evidence. Existing reviewed-pixel and connected-hardware gates remain open.
       the separate-owner realization required by T10.4. Consumer/link/resource
       validation remains T10.4; no isolation exception is accepted.
 
-- [ ] `T10.2` — Reproduce and repair failed-derivation cleanup in the current
+- [x] `T10.2` — Reproduce and repair failed-derivation cleanup in the current
       Dynamic production host. Add focused fault injection around observable
       candidate begin, semantic expansion, Layout, Drawing, render preflight,
       and Interaction in `DynamicSignalAnalyzerPresentationPipeline` and its
@@ -2176,6 +2176,11 @@ evidence. Existing reviewed-pixel and connected-hardware gates remain open.
       replays admitted model effects, and either permits a subsequent valid
       opportunity or returns the exact required quiescent outcome. Keep these
       regression cases when T10.5 removes the parallel runner.
+      **2026-10-02 disposition:** Completed. [Fault reproduction and repair](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/dynamic-derivation-cleanup.md)
+      records the three candidate leaks, exact focused errors, one discard per
+      acquired candidate, retained committed actions, unchanged model effects,
+      and 18 passing Dynamic host/lifecycle regressions.
+
 - [ ] `T10.3` — Remove the pipeline's dependency on the Pi assembly's text
       resource selection. Supply the selected canonical metrics/resource view
       and surface constraints through existing owner contracts to

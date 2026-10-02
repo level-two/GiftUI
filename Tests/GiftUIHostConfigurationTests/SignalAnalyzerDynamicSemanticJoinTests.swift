@@ -3224,3 +3224,65 @@ func rawFramebufferTouchesReachModelAndReplacementFrame(scenario: String) throws
     #expect((up.presentation != nil) == (dispatches == 1))
     #expect((capture.pixels != originalPixels) == (dispatches == 1))
 }
+
+@Test func dynamicDerivationFailurePermitsNextAttemptAndPreservesCommittedActions() throws {
+    let preset = GeneratedSignalAnalyzerPresets.raspberryPiDynamic()
+    for failure in [
+        DynamicSignalAnalyzerPresentationFailure.observable(.locationCapacityExhausted),
+        .semantic(.capacityExhausted), .layout(.capacityExhausted),
+        .drawing(.capacityExhausted), .render(.capacityExhausted),
+        .interaction(.missingModelTarget),
+    ] {
+        var pipeline = try #require(
+            DynamicSignalAnalyzerPresentationPipeline(
+                limits: preset.runtimeLimits, maximumRecordedTraversalIdentities: 203,
+                logicalWidth: 240, logicalHeight: 240
+            ))
+        let model = makeSemanticJoinModel(failsStart: true)
+        model.startTapped()
+        let initial = pipeline.derive(
+            model: model, cycle: RunCycleID(rawValue: 1),
+            semanticRevision: SemanticRevision(rawValue: 1))
+        guard case .success = initial else {
+            Issue.record("initial derivation failed: \(initial)")
+            continue
+        }
+        #expect(
+            pipeline.resolveInteraction(
+                offer: FrameOfferResult(disposition: .accepted, failure: nil)!,
+                presentationRevision: PresentationRevision(rawValue: 1))
+                == .committed(PresentationRevision(rawValue: 1)))
+        let committed = (0 ..< pipeline.committedActionCount).compactMap {
+            pipeline.committedAction(at: $0)
+        }
+        let modelState = model.state
+        let captureRevision = model.captureRevision
+        let discards = pipeline.observableCandidateDiscardCount
+        let failed = pipeline.derive(
+            model: model, cycle: RunCycleID(rawValue: 2),
+            semanticRevision: SemanticRevision(rawValue: 2), injectingFailure: failure)
+        #expect(failed == .failure(failure))
+        #expect(model.state == modelState)
+        #expect(model.captureRevision == captureRevision)
+        let expectedDiscards: UInt16
+        if case .observable = failure { expectedDiscards = 0 } else { expectedDiscards = 1 }
+        #expect(pipeline.observableCandidateDiscardCount == discards + expectedDiscards)
+        #expect(
+            (0 ..< pipeline.committedActionCount).compactMap { pipeline.committedAction(at: $0) }
+                == committed)
+        let next = pipeline.derive(
+            model: model, cycle: RunCycleID(rawValue: 3),
+            semanticRevision: SemanticRevision(rawValue: 3))
+        #expect(model.state == modelState)
+        #expect(model.captureRevision == captureRevision)
+        guard case .success = next else {
+            Issue.record("next derivation after \(failure) failed: \(next)")
+            continue
+        }
+        #expect(
+            pipeline.resolveInteraction(
+                offer: FrameOfferResult(disposition: .accepted, failure: nil)!,
+                presentationRevision: PresentationRevision(rawValue: 2))
+                == .committed(PresentationRevision(rawValue: 2)))
+    }
+}

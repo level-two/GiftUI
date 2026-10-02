@@ -1,0 +1,61 @@
+Building for debugging...
+[0/14] Write sources
+[3/14] Write swift-version--58304C5D6DBC2206.txt
+[5/11] Compiling SignalAnalyzerTargetHost DynamicSignalAnalyzerPresentationPipeline.swift
+[6/11] Emitting module SignalAnalyzerTargetHost
+[7/11] Compiling SignalAnalyzerTargetHost DynamicSignalAnalyzerPresentationPipeline.swift
+[8/11] Emitting module SignalAnalyzerTargetHost
+[8/13] Write Objects.LinkFileList
+[9/15] Linking SignalAnalyzerRaspberryPiARMv6
+[10/15] Applying SignalAnalyzerRaspberryPiARMv6
+[12/15] Emitting module GiftUIHostConfigurationTests
+[13/15] Compiling GiftUIHostConfigurationTests SignalAnalyzerDynamicSemanticJoinTests.swift
+[13/15] Write Objects.LinkFileList
+[14/15] Linking GiftUIPackageTests
+Build complete! (5.74s)
+Test Suite 'Selected tests' started at 2026-10-02 09:59:11.329.
+Test Suite 'GiftUIPackageTests.xctest' started at 2026-10-02 09:59:11.330.
+Test Suite 'GiftUIPackageTests.xctest' passed at 2026-10-02 09:59:11.330.
+	 Executed 0 tests, with 0 failures (0 unexpected) in 0.000 (0.000) seconds
+Test Suite 'Selected tests' passed at 2026-10-02 09:59:11.330.
+	 Executed 0 tests, with 0 failures (0 unexpected) in 0.000 (0.001) seconds
+◇ Test run started.
+↳ Testing Library Version: 1902
+↳ Target Platform: arm64e-apple-macos14.0
+◇ Test dynamicPiWakeAdmissionNotifiesOnlyAfterAcceptedFacts() started.
+◇ Test dynamicPiPacingServicesTheSerializedCoordinatorAtFrameBoundary() started.
+◇ Test dynamicPiOwnerCommitsReplacementPresentationRevision() started.
+◇ Test dynamicPiInputCoordinatorQueuesNormalizedSequenceUntilDrain() started.
+◇ Test dynamicTargetHostPresentationPipelineUsesExactGeneratedLimits() started.
+◇ Test dynamicPiLifecycleOwnerRunsSevenStepsAndEightStepTeardown() started.
+◇ Test dynamicPiLifecycleOwnerContainsInitialFrameFailureAndTearsDown() started.
+◇ Test dynamicPiEndpointFactoryStreamsTheProductionCandidate() started.
+◇ Test dynamicPiCorrelationOwnerReservesPublicationOnlyForChangedCycles() started.
+◇ Test dynamicPiInputOpportunityDefersActionRepositoryCallbacks() started.
+◇ Test dynamicPiOpportunityOwnsCorrelationReservationCallSite() started.
+◇ Test dynamicPiWakePacingOwnerCoalescesFactAndInputIngress() started.
+◇ Test dynamicPiDecodedContactsEnterNormalizedAdmissionAndWakePacing() started.
+◇ Test dynamicPiInitialPresentationEnablesInputOnlyAfterAcceptedFrame() started.
+◇ Test dynamicPiPipelineRendersFullDiagnosticWithinAmendedPreset() started.
+◇ Test dynamicPiInitialPresentationRefusalKeepsInputIneligible() started.
+◇ Test dynamicDerivationFailurePermitsNextAttemptAndPreservesCommittedActions() started.
+◇ Test dynamicPiContactIngressRecoversAfterCompletedPhysicalSequence() started.
+✔ Test dynamicPiCorrelationOwnerReservesPublicationOnlyForChangedCycles() passed after 0.001 seconds.
+✔ Test dynamicPiDecodedContactsEnterNormalizedAdmissionAndWakePacing() passed after 0.001 seconds.
+✔ Test dynamicPiWakeAdmissionNotifiesOnlyAfterAcceptedFacts() passed after 0.002 seconds.
+✔ Test dynamicPiWakePacingOwnerCoalescesFactAndInputIngress() passed after 0.002 seconds.
+✔ Test dynamicPiContactIngressRecoversAfterCompletedPhysicalSequence() passed after 0.002 seconds.
+✔ Test dynamicPiPacingServicesTheSerializedCoordinatorAtFrameBoundary() passed after 0.002 seconds.
+✔ Test dynamicPiOpportunityOwnsCorrelationReservationCallSite() passed after 0.002 seconds.
+✔ Test dynamicPiLifecycleOwnerContainsInitialFrameFailureAndTearsDown() passed after 0.091 seconds.
+✔ Test dynamicPiInitialPresentationRefusalKeepsInputIneligible() passed after 0.093 seconds.
+✔ Test dynamicPiPipelineRendersFullDiagnosticWithinAmendedPreset() passed after 0.160 seconds.
+✔ Test dynamicTargetHostPresentationPipelineUsesExactGeneratedLimits() passed after 0.172 seconds.
+✔ Test dynamicPiInitialPresentationEnablesInputOnlyAfterAcceptedFrame() passed after 0.440 seconds.
+✔ Test dynamicPiEndpointFactoryStreamsTheProductionCandidate() passed after 0.489 seconds.
+✔ Test dynamicPiOwnerCommitsReplacementPresentationRevision() passed after 0.766 seconds.
+✔ Test dynamicPiInputCoordinatorQueuesNormalizedSequenceUntilDrain() passed after 0.769 seconds.
+✔ Test dynamicPiLifecycleOwnerRunsSevenStepsAndEightStepTeardown() passed after 0.773 seconds.
+✔ Test dynamicPiInputOpportunityDefersActionRepositoryCallbacks() passed after 0.779 seconds.
+✔ Test dynamicDerivationFailurePermitsNextAttemptAndPreservesCommittedActions() passed after 0.831 seconds.
+✔ Test run with 18 tests in 0 suites passed after 0.831 seconds.
