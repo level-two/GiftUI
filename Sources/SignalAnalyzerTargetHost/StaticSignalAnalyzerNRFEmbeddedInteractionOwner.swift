@@ -5,17 +5,17 @@
         InteractionGestureResolver
     {
         package typealias Identity = UInt32
-        private var interaction: StaticInteractionState<UInt32>
+        private var interaction: StaticSixInteractionState<UInt32>
         private var generations = RuntimeActionGenerationAllocator<UInt32>()
 
         package init?() {
-            guard let candidate = StaticInteractionCandidateStorage<UInt32>(capacity: 6),
-                let candidateHits = StaticInteractionHitStorage<UInt32>(capacity: 6),
-                let candidateCommitted = StaticInteractionCommittedStorage<UInt32>(capacity: 6),
-                let committed = StaticInteractionCommittedStorage<UInt32>(capacity: 6),
-                let committedHits = StaticInteractionHitStorage<UInt32>(capacity: 6)
+            guard let candidate = StaticSixInteractionCandidateStorage<UInt32>(capacity: 6),
+                let candidateHits = StaticSixInteractionHitStorage<UInt32>(capacity: 6),
+                let candidateCommitted = StaticSixInteractionCommittedStorage<UInt32>(capacity: 6),
+                let committed = StaticSixInteractionCommittedStorage<UInt32>(capacity: 6),
+                let committedHits = StaticSixInteractionHitStorage<UInt32>(capacity: 6)
             else { return nil }
-            interaction = StaticInteractionState(
+            interaction = StaticSixInteractionState(
                 candidateRecords: candidate,
                 candidateHitRegions: candidateHits,
                 candidateCommittedRecords: candidateCommitted,

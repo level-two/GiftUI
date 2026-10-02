@@ -1157,6 +1157,20 @@ private func giftUIStaticVerifyInputDrain(
     return true
 }
 
+// Keep the canonical plan traversal in its own frame. Repeated validation
+// passes must not reserve all of their generic traversal temporaries together.
+@inline(never)
+private func giftUIStaticDeriveCanvas(
+    source: inout StaticSignalAnalyzerNRFEmbeddedCanvasSource,
+    layout: borrowing StaticSignalAnalyzerNRFEmbeddedResolvedLayoutView,
+    executionContext: ExecutionContext, limits: DrawingLimits,
+    workspace: inout StaticSignalAnalyzerNRFDrawingWorkspace
+) -> DrawingPlanResult {
+    CanvasPlanProducer.derive(
+        source: &source, layout: layout, executionContext: executionContext,
+        limits: limits, workspace: &workspace)
+}
+
 private func giftUIStaticFullCanvas(
     _ profile: UnsafeMutableRawPointer?, _ bytes: UInt32,
     _ capture: UnsafeMutableRawPointer?, _ captureBytes: UInt32,
@@ -1255,9 +1269,8 @@ private func giftUIStaticFullCanvas(
             )
         ), interaction.candidateIsReadyForOffer
     else { return 0 }
-    var interactionCandidatePending = true
     defer {
-        if interactionCandidatePending {
+        if interaction.candidateIsReadyForOffer {
             interaction.resolve(
                 accepted: false,
                 presentationRevision: PresentationRevision(rawValue: frameRevision)
@@ -1275,7 +1288,53 @@ private func giftUIStaticFullCanvas(
             )
         )
     else { return 0 }
-    let result = CanvasPlanProducer.derive(
+    let firstProvenance = FrameProvenance(
+        cycle: RunCycleID(rawValue: frameRevision),
+        semanticRevision: SemanticRevision(rawValue: semantic.revision),
+        candidateFrame: CandidateFrameID(rawValue: frameRevision)
+    )
+    guard
+        var fullEndpoint = giftUIStaticEmbeddedEndpoint(
+            raster: raster, coverage: coverage, provenance: firstProvenance, write: write
+        ),
+        giftUIStaticValidateFirstCanvas(
+            semantic: semantic, drawing: &drawing, limits: limits,
+            profile: profile, capture: capture, captureBytes: captureBytes,
+            raster: raster, rasterBytes: rasterBytes,
+            coverage: coverage, coverageBytes: coverageBytes,
+            model: &model, fullEndpoint: &fullEndpoint, resolved: resolved, source: &source,
+            interaction: &interaction, gestures: &gestures, actions: actions,
+            frameRevision: frameRevision, validation: validation,
+            firstProvenance: firstProvenance) == 1
+    else { return 0 }
+    return giftUIStaticValidateUpdatedCanvas(
+        semantic: semantic, drawing: &drawing, limits: limits,
+        profile: profile, capture: capture, captureBytes: captureBytes,
+        raster: raster, rasterBytes: rasterBytes,
+        coverage: coverage, coverageBytes: coverageBytes,
+        model: &model, fullEndpoint: &fullEndpoint, layoutWorkspace: &layoutWorkspace,
+        resolved: resolved)
+}
+
+@inline(never)
+private func giftUIStaticValidateFirstCanvas(
+    semantic: StaticSignalAnalyzerNRFEmbeddedSemanticView,
+    drawing: inout StaticSignalAnalyzerNRFDrawingWorkspace,
+    limits: DrawingLimits, profile: UnsafeMutableRawPointer,
+    capture: UnsafeMutableRawPointer, captureBytes: UInt32,
+    raster: UnsafeMutableRawPointer, rasterBytes: UInt32,
+    coverage: UnsafeMutableRawPointer, coverageBytes: UInt32,
+    model: inout StaticSignalAnalyzerNRFModelLocation,
+    fullEndpoint: inout StaticSignalAnalyzerNRFEmbeddedEndpoint,
+    resolved: StaticSignalAnalyzerNRFEmbeddedResolvedLayoutView,
+    source: inout StaticSignalAnalyzerNRFEmbeddedCanvasSource,
+    interaction: inout StaticSignalAnalyzerNRFEmbeddedInteractionOwner,
+    gestures: inout StaticSignalAnalyzerNRFEmbeddedGestureSession,
+    actions: StaticSignalAnalyzerNRFEmbeddedInteractionOccurrences,
+    frameRevision: UInt32, validation: Bool,
+    firstProvenance: FrameProvenance
+) -> UInt32 {
+    let result = giftUIStaticDeriveCanvas(
         source: &source, layout: resolved,
         executionContext: ExecutionContext(
             cycle: RunCycleID(rawValue: frameRevision),
@@ -1351,17 +1410,7 @@ private func giftUIStaticFullCanvas(
             rasterSink.submittedBytes > 0
         else { return 0 }
     }
-    let firstProvenance = FrameProvenance(
-        cycle: RunCycleID(rawValue: frameRevision),
-        semanticRevision: SemanticRevision(rawValue: semantic.revision),
-        candidateFrame: CandidateFrameID(rawValue: frameRevision)
-    )
     guard
-        var fullEndpoint = giftUIStaticEmbeddedEndpoint(
-            raster: raster, coverage: coverage,
-            provenance: firstProvenance,
-            write: write
-        ),
         giftUIStaticEmbeddedOffer(
             endpoint: &fullEndpoint,
             provenance: firstProvenance,
@@ -1375,7 +1424,6 @@ private func giftUIStaticFullCanvas(
         accepted: true,
         presentationRevision: PresentationRevision(rawValue: frameRevision)
     )
-    interactionCandidatePending = false
     guard interaction.committedRecordCount == 3,
         interaction.committedRevision?.rawValue == frameRevision,
         interaction.committedRecord(at: 0)?.action.code
@@ -1438,6 +1486,22 @@ private func giftUIStaticFullCanvas(
         else { return 0 }
         occurrence += 1
     }
+    return 1
+}
+
+@inline(never)
+private func giftUIStaticValidateUpdatedCanvas(
+    semantic: StaticSignalAnalyzerNRFEmbeddedSemanticView,
+    drawing: inout StaticSignalAnalyzerNRFDrawingWorkspace,
+    limits: DrawingLimits, profile: UnsafeMutableRawPointer,
+    capture: UnsafeMutableRawPointer, captureBytes: UInt32,
+    raster: UnsafeMutableRawPointer, rasterBytes: UInt32,
+    coverage: UnsafeMutableRawPointer, coverageBytes: UInt32,
+    model: inout StaticSignalAnalyzerNRFModelLocation,
+    fullEndpoint: inout StaticSignalAnalyzerNRFEmbeddedEndpoint,
+    layoutWorkspace: inout StaticSignalAnalyzerNRFCommonLayoutWorkspace,
+    resolved: StaticSignalAnalyzerNRFEmbeddedResolvedLayoutView
+) -> UInt32 {
     drawing.reset()
     layoutWorkspace.packed.reset()
     let captureRegion = UnsafeMutableRawBufferPointer(
@@ -1470,7 +1534,7 @@ private func giftUIStaticFullCanvas(
             )
         )
     else { return 0 }
-    let updatedResult = CanvasPlanProducer.derive(
+    let updatedResult = giftUIStaticDeriveCanvas(
         source: &updatedSource, layout: updatedLayout,
         executionContext: ExecutionContext(
             cycle: RunCycleID(rawValue: 2),
@@ -1502,7 +1566,7 @@ private func giftUIStaticFullCanvas(
             ), updatedRenderHeader.operationCount <= 150,
         updatedRenderHeader.positionedGlyphCount == 86
     else { return 0 }
-    sink = StaticSignalAnalyzerNRFEmbeddedCountingSink()
+    var sink = StaticSignalAnalyzerNRFEmbeddedCountingSink()
     guard
         case .success(let updatedStreamedHeader) =
             StaticSignalAnalyzerNRFEmbeddedRenderPreflight.streamCombined(
@@ -1944,6 +2008,7 @@ private typealias StaticSignalAnalyzerNRFEmbeddedEndpoint =
         StaticSignalAnalyzerNRFEmbeddedProbeEnvelope
     >
 
+@inline(never)
 private func giftUIStaticEmbeddedEndpoint(
     raster: UnsafeMutableRawPointer,
     coverage: UnsafeMutableRawPointer,
@@ -2002,6 +2067,7 @@ private func giftUIStaticEmbeddedEndpoint(
     )
 }
 
+@inline(never)
 private func giftUIStaticEmbeddedOffer(
     endpoint: inout StaticSignalAnalyzerNRFEmbeddedEndpoint,
     provenance: FrameProvenance,
@@ -2682,6 +2748,7 @@ private struct StaticSignalAnalyzerCommonOwner: RuntimeCompletePipelineOwner, ~C
         }
     }
 
+    @inline(never)
     mutating func inject(_ stage: RuntimeCompletePipelineStage) -> RuntimePipelineStepResult<
         OwnerFailure
     >? {
@@ -2700,6 +2767,7 @@ private struct StaticSignalAnalyzerCommonOwner: RuntimeCompletePipelineOwner, ~C
             candidateFrame: candidate, phase: candidate == nil ? .deriving : .offering)
     }
 
+    @inline(never)
     mutating func failure(_ failure: RunCycleFailure<OwnerFailure>, phase: ExecutionPhase)
         -> RuntimePipelineStepResult<OwnerFailure>
     {
@@ -2716,6 +2784,7 @@ private struct StaticSignalAnalyzerCommonOwner: RuntimeCompletePipelineOwner, ~C
         return .failure(failure)
     }
 
+    @inline(never)
     mutating func admitAndSeal() -> RuntimePipelineStepResult<OwnerFailure> {
         guard state.isAvailable, model.pointee.activeGeneration != nil else {
             return .failure(.execution(.requiredFacilityUnavailable))
@@ -2727,6 +2796,7 @@ private struct StaticSignalAnalyzerCommonOwner: RuntimeCompletePipelineOwner, ~C
         return inject(.admissionAndSeal) ?? .advanced
     }
 
+    @inline(never)
     mutating func applyAdmittedWork() -> RuntimePipelineMutationResult<OwnerFailure> {
         var applied = false
         switch model.pointee.applyAdmittedBatch(from: &admission, captureStorage: capture) {
@@ -2771,6 +2841,7 @@ private struct StaticSignalAnalyzerCommonOwner: RuntimeCompletePipelineOwner, ~C
         return .applied(applied)
     }
 
+    @inline(never)
     mutating func freezeObservableMutation() -> RuntimePipelineStepResult<OwnerFailure> {
         guard !model.pointee.isMutating else {
             return failure(.focusedOwner(.application(.mutationPhaseViolation)), phase: .mutating)
@@ -2781,6 +2852,7 @@ private struct StaticSignalAnalyzerCommonOwner: RuntimeCompletePipelineOwner, ~C
         return inject(.freezeObservableMutation) ?? .advanced
     }
 
+    @inline(never)
     mutating func beginObservableCandidateAndExpandSemantics() -> RuntimePipelineStepResult<
         OwnerFailure
     > {
@@ -2814,6 +2886,7 @@ private struct StaticSignalAnalyzerCommonOwner: RuntimeCompletePipelineOwner, ~C
         return .advanced
     }
 
+    @inline(never)
     mutating func resolveLayout() -> RuntimePipelineStepResult<OwnerFailure> {
         guard derivesPresentation else { return .advanced }
         if let injected = inject(.layout) { return injected }
@@ -2829,6 +2902,7 @@ private struct StaticSignalAnalyzerCommonOwner: RuntimeCompletePipelineOwner, ~C
         }
     }
 
+    @inline(never)
     mutating func invokeCanvasesAndDerivePlan() -> RuntimePipelineStepResult<OwnerFailure> {
         guard derivesPresentation else { return .advanced }
         if let injected = inject(.canvasInvocationAndPlan) { return injected }
@@ -2839,7 +2913,7 @@ private struct StaticSignalAnalyzerCommonOwner: RuntimeCompletePipelineOwner, ~C
         else {
             return failure(.focusedOwner(.runtime(.drawing(.invariantViolation))), phase: .deriving)
         }
-        switch CanvasPlanProducer.derive(
+        switch giftUIStaticDeriveCanvas(
             source: &source, layout: layout, executionContext: context,
             limits: limits, workspace: &drawing)
         {
@@ -2855,6 +2929,7 @@ private struct StaticSignalAnalyzerCommonOwner: RuntimeCompletePipelineOwner, ~C
         }
     }
 
+    @inline(never)
     mutating func preflightCombinedRender() -> RuntimePipelineStepResult<OwnerFailure> {
         guard derivesPresentation else { return .advanced }
         if let injected = inject(.combinedRenderPreflight) { return injected }
@@ -2872,6 +2947,7 @@ private struct StaticSignalAnalyzerCommonOwner: RuntimeCompletePipelineOwner, ~C
         }
     }
 
+    @inline(never)
     mutating func buildInteractionCandidate() -> RuntimePipelineStepResult<OwnerFailure> {
         guard derivesPresentation else { return .advanced }
         if let injected = inject(.interactionCandidate) { return injected }
@@ -2895,6 +2971,7 @@ private struct StaticSignalAnalyzerCommonOwner: RuntimeCompletePipelineOwner, ~C
         }
     }
 
+    @inline(never)
     mutating func publishSemanticAndObservableCandidate() -> RuntimePipelinePublicationResult<
         OwnerFailure
     > {
@@ -2927,6 +3004,7 @@ private struct StaticSignalAnalyzerCommonOwner: RuntimeCompletePipelineOwner, ~C
                 semanticRevision: SemanticRevision(rawValue: semanticRevision), changed: changed))
     }
 
+    @inline(never)
     mutating func allocateCandidate() -> RuntimePipelineStepResult<OwnerFailure> {
         guard derivesPresentation else { return .advanced }
         if let injected = inject(.candidateAllocation) { return injected }
@@ -2937,6 +3015,7 @@ private struct StaticSignalAnalyzerCommonOwner: RuntimeCompletePipelineOwner, ~C
         return .advanced
     }
 
+    @inline(never)
     mutating func offerAndProduce() -> RuntimePipelineOfferResult<OwnerFailure> {
         guard derivesPresentation else { return .noChange }
         if let injected = inject(.offerAndProduction), case .failure(let cause) = injected {
@@ -3004,6 +3083,7 @@ private struct StaticSignalAnalyzerCommonOwner: RuntimeCompletePipelineOwner, ~C
         }
     }
 
+    @inline(never)
     mutating func cleanup(_ action: RuntimeCleanupAction) {
         state.lastCleanup |= 1 << action.rawValue
         guard derivesPresentation else { return }
@@ -3049,6 +3129,7 @@ private struct StaticSignalAnalyzerCommonOwner: RuntimeCompletePipelineOwner, ~C
         }
     }
 
+    @inline(never)
     mutating func quiesce() {
         state.isAvailable = false
         state.semanticRetry = false
@@ -3059,6 +3140,7 @@ private struct StaticSignalAnalyzerCommonOwner: RuntimeCompletePipelineOwner, ~C
         giftUISignalAnalyzerInputQuiesce()
     }
 
+    @inline(never)
     mutating func applyDisposition(_ disposition: RuntimePipelineDisposition) {
         if disposition.semanticDisposition == .dirty { state.semanticRetry = true }
         guard let offer else { return }
@@ -3078,6 +3160,7 @@ private struct StaticSignalAnalyzerCommonOwner: RuntimeCompletePipelineOwner, ~C
         if recoveryTransition?.disposition == .unavailable { quiesce() }
     }
 
+    @inline(never)
     mutating func finalizePipeline() {
         while admission.takeNextSealed() != nil {}
         admission.endProducer()
@@ -3128,6 +3211,7 @@ private struct StaticSignalAnalyzerCommonOwner: RuntimeCompletePipelineOwner, ~C
         giftUIStaticHasPendingFacts = false
     }
 
+    @inline(never)
     mutating func finish(_ result: RuntimeCompletePipelineResult<OwnerFailure>) -> UInt32 {
         state.lastResult = result
         state.lastHealthError = healthError

@@ -17,6 +17,7 @@
             return nil
         }
 
+        @inline(never)
         package static func runTyped(
             semantic: StaticSignalAnalyzerNRFEmbeddedSemanticView,
             workspace: inout StaticSignalAnalyzerNRFCommonLayoutWorkspace

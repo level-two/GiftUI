@@ -46,6 +46,26 @@ extern uint32_t giftui_signal_analyzer_present_next(
     int (*write)(uint16_t, uint16_t, uint16_t, uint16_t,
                  const uint8_t *, size_t));
 
+/* Read-only C getters remain available to connected stack measurements.
+ * Debugger-driven pointer input still enters the production admission API. */
+extern uint32_t giftui_signal_analyzer_action_point(uint16_t code);
+extern uint32_t giftui_signal_analyzer_capture_count(void);
+extern uint32_t giftui_signal_analyzer_acquisition_state(void);
+extern uint32_t giftui_signal_analyzer_last_drawing_points(void);
+
+__attribute__((used, retain))
+static uint32_t (*const giftui_committed_action_point_entry)(uint16_t) =
+    giftui_signal_analyzer_action_point;
+__attribute__((used, retain))
+static uint32_t (*const giftui_capture_count_entry)(void) =
+    giftui_signal_analyzer_capture_count;
+__attribute__((used, retain))
+static uint32_t (*const giftui_acquisition_state_entry)(void) =
+    giftui_signal_analyzer_acquisition_state;
+__attribute__((used, retain))
+static uint32_t (*const giftui_drawing_points_entry)(void) =
+    giftui_signal_analyzer_last_drawing_points;
+
 /* Keep the future committed-interaction handoff linkable without granting
  * input eligibility in this finite diagnostic path. */
 __attribute__((used, retain))

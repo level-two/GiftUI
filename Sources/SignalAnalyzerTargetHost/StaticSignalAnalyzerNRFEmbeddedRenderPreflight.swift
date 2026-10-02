@@ -17,6 +17,7 @@
     }
 
     package enum StaticSignalAnalyzerNRFEmbeddedRenderPreflight {
+        @inline(never)
         package static func streamCombined<Sink: DrawingOperationSink>(
             semantic: StaticSignalAnalyzerNRFEmbeddedSemanticView,
             layout: StaticSignalAnalyzerNRFEmbeddedResolvedLayoutView,
@@ -62,6 +63,7 @@
             )
         }
 
+        @inline(never)
         package static func runCombined(
             semantic: StaticSignalAnalyzerNRFEmbeddedSemanticView,
             layout: StaticSignalAnalyzerNRFEmbeddedResolvedLayoutView,

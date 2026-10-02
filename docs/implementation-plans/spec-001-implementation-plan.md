@@ -2249,7 +2249,7 @@ evidence. Existing reviewed-pixel and connected-hardware gates remain open.
       cover actual production execution, mandatory effects, policy, pending
       retries, transport health, native behavior and ARMv6 cross-build.
 
-- [ ] `T10.6` — Delegate Static/nRF production sequencing to the same common
+- [x] `T10.6` — Delegate Static/nRF production sequencing to the same common
       runner using fixed typed owner adapters and caller-owned storage. Rejoin
       the embedded presentation preparation, semantic publication, layout,
       Canvas, render offer, and interaction commit stages after canonical
@@ -2264,9 +2264,11 @@ evidence. Existing reviewed-pixel and connected-hardware gates remain open.
       rehearsal plus nRF cross-build/ABI/zero-heap/RAM/flash/stack checks pass.
       A missing reusable production seam is work under its owning Spec; it
       cannot be replaced with an analyzer-local parallel implementation.
-      **2026-10-02 disposition:** Blocked. The [Static join record](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/static-runner-blocker.md)
-      links the same SPEC-013 partial-application defect and exact-error seam
-      review. Canonical adoption is complete; the Static runner join is not.
+      **2026-10-02 current disposition:** Complete. The [production join](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/static-production-join.md)
+      and [connected stack evidence](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/connected-stack.md)
+      establish canonical ownership, normalized fault agreement, native behavior,
+      ABI/zero heap and measured stack fit without relaxed ceilings.
+      Earlier blocker records below retain their historical scope.
 
 - [ ] `T10.7` — Isolate profile-specific executable dependencies from the
       four-profile comparison harness. Partition the existing host helpers so
@@ -2764,3 +2766,12 @@ identity. SPEC-014's six amended-fixture gaps are explicit collecting dispositio
 not waived acceptance. Root reference corpora run once before shared profile checks.
 [Record](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/gate-reconciliation.md).
 A clean registered run and criterion applicability review remain in progress.
+
+### T10.6 connected stack completion — 2026-10-02
+
+The user-authorized final firmware fits and runs with 19,480 / 27,648 bytes
+measured main-stack high-water, zero CPU/driver faults, 191,104-byte RAM and
+275,504-byte flash. Runtime-owned six-slot storage preserves canonical
+interaction semantics; split startup/stage call frames avoid the initial
+overflow. This recorded case closes the join's stack prerequisite. Physical
+input, pixel review and cadence/frame-cost acceptance remain open.

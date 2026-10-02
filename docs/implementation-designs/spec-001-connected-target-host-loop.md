@@ -841,3 +841,15 @@ admit 23 transition facts per 250 ms window against a 20-fact preset. The correc
 818-frame corpus is independently reproduced on macOS; it validates ordered source
 behavior, not the separate normative 80-Hz timing claim. Connected stack high-water
 and display/cadence evidence remain in their existing platform tasks.
+
+## T10.6 measured stack realization — 2026-10-02
+
+The six-action preset uses runtime-owned six-slot candidate/committed/hit
+stores with canonical InteractionState, avoiding copies of unused 32-slot
+capacity. The general 32-slot API remains. Startup first/updated Canvas
+validators and typed stage calls remain out of line, preserving all checks
+while reducing simultaneously live stack values. Borrowed views and workspace
+pointers still end at their opportunity; retained diagnostic exports are
+read-only and input uses the production ABI. The [connected measurement](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/connected-stack.md)
+records 19,480-byte high-water and its tested scope, not a worst-case or
+physical-input/timing claim.

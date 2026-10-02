@@ -229,3 +229,172 @@ package typealias StaticInteractionState<Identity> = InteractionState<
     StaticInteractionCommittedStorage<Identity>,
     StaticInteractionHitStorage<Identity>
 > where Identity: Equatable & Sendable
+
+// The six-action presets use a physical six-slot backing store, while the
+// general Static storage above retains its full 32-slot capacity.
+private struct StaticSixInteractionSlots<Element> {
+    private var values: (Element?, Element?, Element?, Element?, Element?, Element?) =
+        (nil, nil, nil, nil, nil, nil)
+
+    subscript(index: UInt16) -> Element? {
+        borrowing get {
+            switch index {
+            case 0: values.0
+            case 1: values.1
+            case 2: values.2
+            case 3: values.3
+            case 4: values.4
+            case 5: values.5
+            default: nil
+            }
+        }
+        set {
+            switch index {
+            case 0: values.0 = newValue
+            case 1: values.1 = newValue
+            case 2: values.2 = newValue
+            case 3: values.3 = newValue
+            case 4: values.4 = newValue
+            case 5: values.5 = newValue
+            default: break
+            }
+        }
+    }
+
+    mutating func reset(count: UInt16) {
+        var index: UInt16 = 0
+        while index < count {
+            self[index] = nil
+            index += 1
+        }
+    }
+}
+
+package struct StaticSixInteractionCandidateStorage<Identity>:
+    InteractionCandidateRecordStorage
+where Identity: Equatable & Sendable {
+    package let capacity: UInt16
+    package private(set) var count: UInt16 = 0
+    private var slots = StaticSixInteractionSlots<InteractionCandidateRecord<Identity>>()
+
+    package init?(capacity: UInt16) {
+        guard capacity > 0, capacity <= 6 else { return nil }
+        self.capacity = capacity
+    }
+
+    package mutating func reset() {
+        slots.reset(count: count)
+        count = 0
+    }
+
+    package borrowing func record(
+        at index: UInt16
+    ) -> InteractionCandidateRecord<Identity>? {
+        guard index < count else { return nil }
+        return slots[index]
+    }
+
+    package mutating func append(
+        _ record: consuming InteractionCandidateRecord<Identity>
+    ) -> Bool {
+        guard count < capacity else { return false }
+        slots[count] = consume record
+        count += 1
+        return true
+    }
+
+    package mutating func replace(
+        at index: UInt16,
+        with record: consuming InteractionCandidateRecord<Identity>
+    ) -> Bool {
+        guard index < count else { return false }
+        slots[index] = consume record
+        return true
+    }
+}
+
+package struct StaticSixInteractionCommittedStorage<Identity>:
+    InteractionCommittedRecordStorage
+where Identity: Equatable & Sendable {
+    package private(set) var capacity: UInt16
+    package private(set) var count: UInt16 = 0
+    private var slots = StaticSixInteractionSlots<BoundActionRecord<Identity>>()
+
+    package init?(capacity: UInt16) {
+        guard capacity > 0, capacity <= 6 else { return nil }
+        self.capacity = capacity
+    }
+
+    package mutating func reset() {
+        slots.reset(count: count)
+        count = 0
+    }
+
+    package borrowing func record(
+        at index: UInt16
+    ) -> BoundActionRecord<Identity>? {
+        guard index < count else { return nil }
+        return slots[index]
+    }
+
+    package mutating func append(
+        _ record: consuming BoundActionRecord<Identity>
+    ) -> Bool {
+        guard count < capacity else { return false }
+        slots[count] = consume record
+        count += 1
+        return true
+    }
+
+    package mutating func exchangeContents(with other: inout Self) {
+        swap(&capacity, &other.capacity)
+        swap(&count, &other.count)
+        swap(&slots, &other.slots)
+    }
+}
+
+package struct StaticSixInteractionHitStorage<Identity>:
+    InteractionHitRegionStorage
+where Identity: Equatable & Sendable {
+    package private(set) var capacity: UInt16
+    package private(set) var count: UInt16 = 0
+    private var slots = StaticSixInteractionSlots<InteractionHitRegion<Identity>>()
+
+    package init?(capacity: UInt16) {
+        guard capacity > 0, capacity <= 6 else { return nil }
+        self.capacity = capacity
+    }
+
+    package mutating func reset() {
+        slots.reset(count: count)
+        count = 0
+    }
+
+    package borrowing func region(
+        at index: UInt16
+    ) -> InteractionHitRegion<Identity>? {
+        guard index < count else { return nil }
+        return slots[index]
+    }
+
+    package mutating func append(
+        _ region: consuming InteractionHitRegion<Identity>
+    ) -> Bool {
+        guard count < capacity else { return false }
+        slots[count] = consume region
+        count += 1
+        return true
+    }
+
+    package mutating func exchangeContents(with other: inout Self) {
+        swap(&capacity, &other.capacity)
+        swap(&count, &other.count)
+        swap(&slots, &other.slots)
+    }
+}
+
+package typealias StaticSixInteractionState<Identity> = InteractionState<
+    StaticSixInteractionCandidateStorage<Identity>,
+    StaticSixInteractionCommittedStorage<Identity>,
+    StaticSixInteractionHitStorage<Identity>
+> where Identity: Equatable & Sendable
