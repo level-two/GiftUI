@@ -6,7 +6,7 @@
     {
         package typealias Identity = UInt32
         private var interaction: StaticInteractionState<UInt32>
-        private var generations = ActionGenerationAllocator()
+        private var generations = RuntimeActionGenerationAllocator<UInt32>()
 
         package init?() {
             guard let candidate = StaticInteractionCandidateStorage<UInt32>(capacity: 6),
@@ -68,53 +68,31 @@
             occurrences: StaticSignalAnalyzerNRFEmbeddedInteractionOccurrences,
             targetGeneration: ObservableTargetGeneration
         ) -> Bool {
-            guard
-                let limits = InteractionLimits(
-                    maximumActions: 6, maximumHitRegions: 6
-                ), interaction.beginCandidate(limits: limits) == nil
-            else { return false }
-            var index: UInt16 = 0
-            while index < occurrences.count {
-                guard let occurrence = occurrences.occurrence(at: index) else {
-                    interaction.resolveCandidate(.discard)
-                    return false
-                }
-                let identity = UInt32(occurrence.identity)
-                switch interaction.append(
-                    identity: identity, isEnabled: occurrence.isEnabled,
-                    bounds: occurrence.bounds, clip: occurrence.clip,
-                    paintOrder: index,
-                    action: BoundedApplicationAction(code: UInt16(occurrence.actionCode)),
-                    targetGeneration: targetGeneration
-                ) {
-                case .preserved:
-                    break
-                case .requiresGeneration:
-                    guard let generation = generations.reserve(),
-                        interaction.assignGeneration(generation, to: identity) == nil
-                    else {
-                        interaction.resolveCandidate(.discard)
-                        return false
-                    }
-                case .failure:
-                    interaction.resolveCandidate(.discard)
-                    return false
-                }
-                index += 1
-            }
-            guard interaction.finishCandidate() == nil else {
-                interaction.resolveCandidate(.discard)
-                return false
-            }
-            return true
+            buildTyped(occurrences: occurrences, targetGeneration: targetGeneration) == .ready
+        }
+
+        package mutating func buildTyped(
+            occurrences: StaticSignalAnalyzerNRFEmbeddedInteractionOccurrences,
+            targetGeneration: ObservableTargetGeneration
+        ) -> RuntimeInteractionCandidateBuildResult {
+            guard let limits = InteractionLimits(maximumActions: 6, maximumHitRegions: 6)
+            else { return .ownerFailure(.interaction(.invariantViolation)) }
+            var target = StaticSignalAnalyzerNRFInteractionTargetProjection(
+                generation: targetGeneration)
+            return RuntimeInteractionCandidateCoordinator.build(
+                occurrences: occurrences, limits: limits, rootIdentity: 0, rootStateOrdinal: 0,
+                interaction: &interaction, observable: &target, generations: &generations)
         }
 
         package mutating func resolve(
             accepted: Bool, presentationRevision: PresentationRevision
         ) {
-            interaction.resolveCandidate(
-                accepted ? .commit(presentationRevision) : .discard
-            )
+            _ = RuntimeInteractionCandidateTransaction.resolve(
+                offer: FrameOfferResult(
+                    disposition: accepted ? .accepted : .nonRetryableRefusal,
+                    failure: nil)!,
+                presentationRevision: presentationRevision,
+                interaction: &interaction, generations: &generations)
         }
     }
 #endif

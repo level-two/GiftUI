@@ -109,18 +109,6 @@ package struct HostPacingPolicy: Equatable, Sendable {
     }
 }
 
-package enum HostResidualPolicyContext: UInt8, Equatable, Sendable {
-    case startupValidation = 0
-    case activation = 1
-    case presentationBackpressure = 2
-    case presentationRetryableRefusal = 3
-    case presentationUnavailable = 4
-    case containedCandidateFailure = 5
-    case staleInputOrRegistration = 6
-    case backendOperationalFailure = 7
-    case safetyNotProven = 8
-}
-
 package struct SignalAnalyzerHostCardinality: Equatable, Sendable {
     package let actionCaseCount: UInt16
     package let rootModelLocationCount: UInt16

@@ -7,14 +7,6 @@ import GiftUIObservableState
 import GiftUIRenderCore
 import GiftUISemanticCore
 
-package enum RuntimeOwnerFailure: Equatable, Sendable {
-    case semantic(SemanticExpansionError)
-    case layout(LayoutError)
-    case observableState(ObservableStateError)
-    case interaction(InteractionError)
-    case drawing(DrawingProductionError)
-}
-
 package protocol GiftUIRuntimeProfileCoordinator:
     ExecutionAdmissionSink, ExecutionOpportunityRunner
 {

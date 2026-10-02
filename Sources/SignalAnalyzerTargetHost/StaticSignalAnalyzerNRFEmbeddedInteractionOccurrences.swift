@@ -1,7 +1,22 @@
 #if GIFTUI_NRF_EMBEDDED
     /// Borrows the three generated action scopes for one resolved frame attempt.
     /// No semantic or layout pointer survives the attempt's workspace reset.
-    package struct StaticSignalAnalyzerNRFEmbeddedInteractionOccurrences {
+    package struct StaticSignalAnalyzerNRFEmbeddedInteractionOccurrences:
+        RuntimeInteractionOccurrenceView
+    {
+        package typealias Identity = UInt32
+        package var interactionOccurrenceCount: UInt16 { count }
+
+        package borrowing func interactionOccurrence(at index: UInt16)
+            -> RuntimeInteractionOccurrence<UInt32>?
+        {
+            guard let occurrence = occurrence(at: index) else { return nil }
+            return RuntimeInteractionOccurrence(
+                identity: UInt32(occurrence.identity),
+                isEnabled: occurrence.isEnabled, bounds: occurrence.bounds, clip: occurrence.clip,
+                paintOrder: index,
+                action: BoundedApplicationAction(code: UInt16(occurrence.actionCode)))
+        }
         package struct Occurrence {
             package let identity: UInt16
             package let actionCode: UInt8

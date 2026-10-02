@@ -75,15 +75,6 @@ package enum SignalAnalyzerObservationStartOutcome: Equatable, Sendable {
     case rejected(SignalSinkDeliveryRejection)
 }
 
-package enum SignalAnalyzerResidualPolicyContext: UInt8, Equatable, Sendable {
-    case observationStart
-    case activeDelivery
-    case initialModelAttachment
-    case modelReplacement
-    case modelChangeReport
-    case captureFactApplication
-}
-
 package protocol SignalAnalyzerFactAdmission {
     func submit(_ fact: SignalAnalyzerPresentationFact) -> SignalSinkDeliveryOutcome
 }

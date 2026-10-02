@@ -4,16 +4,6 @@ import GiftUIFailureCore
 import GiftUIRuntimeCore
 import GiftUITextResources
 
-package protocol MVPHostResidualPolicyTable: ~Copyable {
-    var fatalHookIsAvailable: Bool { get }
-    borrowing func allowed(
-        for context: HostResidualPolicyContext
-    ) -> GiftUIAllowedDispositions
-    borrowing func selection(
-        for context: HostResidualPolicyContext
-    ) -> GiftUIResidualDisposition
-}
-
 package enum HostValidationStage: UInt8, Equatable, Sendable {
     case graph = 0
     case runtimeProfile = 1
@@ -133,9 +123,6 @@ package protocol MVPHostConfigurationValidator: ~Copyable {
     var residualPolicyTable: ResidualPolicyTable { get }
     mutating func validate() -> HostValidationResult
 }
-
-package protocol MVPHostResidualPolicy: GiftUIResidualFailurePolicy
-where Context == HostResidualPolicyContext {}
 
 struct HostValidationStateGuard: ~Copyable {
     private var hasBegun = false

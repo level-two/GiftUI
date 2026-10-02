@@ -19,54 +19,16 @@ package enum StaticSignalAnalyzerNRFInteractionCandidateProducer {
         interaction: inout StaticInteractionState<UInt32>,
         generations: inout RuntimeActionGenerationAllocator<UInt32>
     ) -> StaticSignalAnalyzerNRFInteractionCandidateResult {
-        if let error = interaction.beginCandidate(limits: limits) {
-            return .interaction(error)
+        var target = StaticSignalAnalyzerNRFInteractionTargetProjection(
+            generation: targetGeneration)
+        switch RuntimeInteractionCandidateCoordinator.build(
+            occurrences: occurrences, limits: limits, rootIdentity: 0, rootStateOrdinal: 0,
+            interaction: &interaction, observable: &target, generations: &generations)
+        {
+        case .ready: return .ready
+        case .ownerFailure(.interaction(let error)): return .interaction(error)
+        case .executionFailure(.identityExhausted): return .identityExhausted
+        default: return .interaction(.invariantViolation)
         }
-        var index: UInt16 = 0
-        while index < occurrences.interactionOccurrenceCount {
-            guard let occurrence = occurrences.interactionOccurrence(at: index) else {
-                return fail(.invalidIdentity, interaction: &interaction, generations: &generations)
-            }
-            switch interaction.append(
-                identity: occurrence.identity,
-                isEnabled: occurrence.isEnabled,
-                bounds: occurrence.bounds,
-                clip: occurrence.clip,
-                paintOrder: occurrence.paintOrder,
-                action: occurrence.action,
-                targetGeneration: targetGeneration
-            ) {
-            case .preserved:
-                break
-            case .requiresGeneration:
-                guard let generation = generations.generation(for: occurrence.identity) else {
-                    interaction.resolveCandidate(.discard)
-                    generations.resolveCandidate(committed: false)
-                    return .identityExhausted
-                }
-                if let error = interaction.assignGeneration(
-                    generation, to: occurrence.identity
-                ) {
-                    return fail(error, interaction: &interaction, generations: &generations)
-                }
-            case .failure(let error):
-                return fail(error, interaction: &interaction, generations: &generations)
-            }
-            index += 1
-        }
-        if let error = interaction.finishCandidate() {
-            return fail(error, interaction: &interaction, generations: &generations)
-        }
-        return .ready
-    }
-
-    private static func fail(
-        _ error: InteractionError,
-        interaction: inout StaticInteractionState<UInt32>,
-        generations: inout RuntimeActionGenerationAllocator<UInt32>
-    ) -> StaticSignalAnalyzerNRFInteractionCandidateResult {
-        interaction.resolveCandidate(.discard)
-        generations.resolveCandidate(committed: false)
-        return .interaction(error)
     }
 }

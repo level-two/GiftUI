@@ -2724,3 +2724,12 @@ T10.7 final closure validation and T10.8 remain outstanding.
 retains exact Layout and application rejection meaning plus mutation progress.
 The native workload and constrained target build pass. T10.6 remains executing;
 this increment does not replace the required live firmware sequencing join.
+
+### T10.6 shared contracts increment — 2026-10-02
+
+Canonical interaction candidate sequencing, transaction resolution and action
+generation allocation now serve the Static adapter. Independently selected finite
+policy declarations and the ordered runtime failure rule preserve owner boundaries
+and mandatory effect order. Eleven focused regressions pass; the selected Embedded
+owner build passes. [Evidence](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/static-shared-contracts.md).
+The live firmware runner join remains executing.

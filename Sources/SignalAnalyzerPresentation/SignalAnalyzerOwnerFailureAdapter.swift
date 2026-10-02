@@ -1,42 +1,6 @@
 import GiftUIFailureCore
 import SignalAnalyzerDomain
 
-package enum SignalAnalyzerMandatoryEffect: UInt8, Equatable, Sendable {
-    case rejectWithoutOverwrite
-    case reservedFailureAttempted
-    case detachObservation
-    case stopAcquisitionDelivery
-    case preserveLastCompleteRevision
-    case removePartialCandidate
-    case preserveExistingModel
-    case markPresentationFailed
-    case schedulePacedRetry
-    case discardPartialPublication
-    case preventNormalCycle
-    case requireFreshGraph
-    case quiesceAffectedScope
-    case quiesceRuntimeHealth
-}
-
-package protocol SignalAnalyzerMandatoryEffectSink {
-    func apply(_ effect: SignalAnalyzerMandatoryEffect)
-}
-
-package struct SignalAnalyzerResidualFailurePolicy: GiftUIResidualFailurePolicy {
-    package init() {}
-
-    package mutating func disposition(
-        for input: GiftUIResidualPolicyInput<SignalAnalyzerResidualPolicyContext>
-    ) -> GiftUIResidualDisposition {
-        if input.allowed.contains(.continueOperation),
-            input.context == .modelReplacement || input.context == .modelChangeReport
-        {
-            return .continueOperation
-        }
-        return .quiesceAffectedScope
-    }
-}
-
 package final class SignalAnalyzerOwnerFailureAdapter<Effects>:
     SignalAnalyzerOperationalFailureFactory
 where Effects: SignalAnalyzerMandatoryEffectSink {
@@ -141,53 +105,19 @@ where Effects: SignalAnalyzerMandatoryEffectSink {
             stableStateProven: stableStateProven,
             diagnostic: diagnostic
         )
-        switch condition {
-        case .mutationPhaseViolation where stableStateProven:
-            apply(.preserveLastCompleteRevision, .schedulePacedRetry)
+        let rule = SignalAnalyzerRuntimeFailureRule.evaluate(
+            condition,
+            context: context, stableStateProven: stableStateProven,
+            existingLiveModel: existingLiveModel)
+        var effectIndex: UInt8 = 0
+        while let effect = rule.effect(at: effectIndex) {
+            effects.apply(effect)
+            effectIndex += 1
+        }
+        if let allowed = rule.allowed {
+            offer(failure.failure, context: context, allowed: allowed)
+        } else {
             lastDisposition = nil
-        case .stateLocationCapacityExhausted, .registrationCapacityExhausted:
-            if context == .initialModelAttachment {
-                effects.apply(.removePartialCandidate)
-                offer(
-                    failure.failure, context: context,
-                    allowed: [.quiesceAffectedScope, .invokeFatalHook])
-            } else {
-                apply(.removePartialCandidate, .preserveExistingModel)
-                offer(
-                    failure.failure, context: context,
-                    allowed: [.continueOperation, .quiesceAffectedScope])
-            }
-        case .replacementStagingExhausted, .duplicateModelOwner, .incompatibleStateAssociation:
-            if existingLiveModel {
-                apply(.removePartialCandidate, .preserveExistingModel)
-                offer(
-                    failure.failure, context: context,
-                    allowed: [.continueOperation, .quiesceAffectedScope])
-            } else {
-                effects.apply(.removePartialCandidate)
-                offer(
-                    failure.failure, context: context,
-                    allowed: [.quiesceAffectedScope, .invokeFatalHook])
-            }
-        case .staleRegistrationReport:
-            effects.apply(.preserveLastCompleteRevision)
-            offer(failure.failure, context: context, allowed: [.continueOperation])
-        case .captureRevisionMismatch:
-            apply(
-                .preserveLastCompleteRevision, .markPresentationFailed, .detachObservation,
-                .requireFreshGraph)
-            offer(failure.failure, context: context, allowed: [.quiesceAffectedScope])
-        case .identityGenerationExhausted, .reservedFailureCapacityExhausted:
-            apply(.preserveLastCompleteRevision, .preventNormalCycle, .requireFreshGraph)
-            offer(
-                failure.failure, context: context,
-                allowed: [.quiesceAffectedScope, .invokeFatalHook])
-        case .mutationPhaseViolation, .observableStateReentrancyViolation,
-            .observableStateInvariantViolation:
-            apply(.discardPartialPublication, .quiesceRuntimeHealth, .preventNormalCycle)
-            offer(
-                failure.failure, context: context,
-                allowed: [.quiesceAffectedScope, .invokeFatalHook])
         }
         return failure
     }
