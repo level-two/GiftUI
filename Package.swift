@@ -355,11 +355,11 @@ let package = Package(
         ),
         .executableTarget(
             name: "SignalAnalyzerMacOSDynamic",
-            dependencies: ["SignalAnalyzerPresetHarness"]
+            dependencies: ["GiftUIRuntimeDynamic", "SignalAnalyzerPresetHarness"]
         ),
         .executableTarget(
             name: "SignalAnalyzerMacOSStatic",
-            dependencies: ["SignalAnalyzerPresetHarness"]
+            dependencies: ["GiftUIRuntimeStatic", "SignalAnalyzerPresetHarness"]
         ),
         .executableTarget(
             name: "SignalAnalyzerRaspberryPiARMv6",

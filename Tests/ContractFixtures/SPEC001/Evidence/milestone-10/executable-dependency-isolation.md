@@ -30,3 +30,20 @@ the missing production common-runner joins execute. Final T10.7 remains
 blocked by T10.5/T10.6, as the plan requires its final check to consume both
 joins. The wider SPEC-011 integration audit also reports its existing allocator
 construction-count assertion; it is not waived by this dependency check.
+
+## Selected-runtime closure validation — 2026-10-02
+
+Each macOS executable now has one direct selected-runtime dependency and
+constructs that owner's actual bounded interaction candidate storage using the
+preset action capacity. The positive closure check requires that runtime; the
+negative fixtures remove it or introduce the opposite runtime. Static still
+excludes Dynamic conveniences and both exclude mixed TargetHost composition.
+The combined comparison stays in explicit harness/test code.
+
+The exact SPEC-002 graph is 84 targets / 375 direct edges. Both independent
+executables pass with semantic checksum 360515885 and 2,400-event workload checksum
+18300581, category high-water 20. The interface audit and closure negatives pass.
+The six actual Dynamic/Static production failure rows also agree after the live
+firmware join. This adds positive selected-owner evidence to the earlier absence
+checks; it does not claim these preset executables are connected production hosts.
+T10.7's final dependency prerequisite remains the outstanding T10.6 stack check.

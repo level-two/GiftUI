@@ -2745,3 +2745,12 @@ The cross-build passes ABI/zero-heap/RAM/flash checks with unchanged limits.
 T10.6 remains executing until its stack-validation prerequisite is established;
 a native run does not establish the existing connected stack high-water gate.
 T10.7 independent closure validation and T10.8 reconciliation continue.
+
+### T10.7 selected-runtime closures — 2026-10-02
+
+Both independent macOS executables now construct selected-owner candidate storage.
+Closure checks require the selected runtime and reject missing-selected/opposite
+profile edges. The exact 84-target/375-edge graph and independent deterministic
+corpora pass. This closes the earlier vacuous absence proof.
+[Evidence](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/executable-dependency-isolation.md).
+The remaining final prerequisite is T10.6's stack-validation disposition.

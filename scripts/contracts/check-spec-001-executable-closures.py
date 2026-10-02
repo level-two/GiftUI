@@ -26,6 +26,13 @@ for executable, forbidden in [
     ('SignalAnalyzerMacOSStatic', 'GiftUIRuntimeDynamic'),
 ]:
     selected = closure(executable, graph)
+    required = 'GiftUIRuntimeDynamic' if executable.endswith('Dynamic') else 'GiftUIRuntimeStatic'
+    if required not in selected:
+        raise SystemExit(f'{executable}: selected runtime is absent: {required}')
+    removed = dict(graph)
+    removed[executable] = [edge for edge in graph[executable] if edge != required]
+    if required in closure(executable, removed):
+        raise SystemExit(f'{executable}: missing-profile negative fixture is ineffective')
     prohibited = {forbidden, 'SignalAnalyzerTargetHost'}
     if executable.endswith('Static'):
         prohibited.add('GiftUIDynamicConveniences')

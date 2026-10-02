@@ -588,10 +588,12 @@ targets:
   SignalAnalyzerMacOSDynamic:
     type: executable
     dependencies:
+      - GiftUIRuntimeDynamic
       - SignalAnalyzerPresetHarness
   SignalAnalyzerMacOSStatic:
     type: executable
     dependencies:
+      - GiftUIRuntimeStatic
       - SignalAnalyzerPresetHarness
   SignalAnalyzerRaspberryPiARMv6:
     type: executable
