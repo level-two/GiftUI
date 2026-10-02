@@ -88,10 +88,10 @@ import Testing
                 admission: admission,
                 failureFactory: DefaultSignalAnalyzerOperationalFailureFactory()
             )
-            var sourceClock: UInt64 = 10_000
+            var sourceClock: UInt64 = 260_000
             var transitionDeadline: UInt64 = 0
             var delivered = 0
-            for window in 0 ... 128 {
+            for window in 0 ... 817 {
                 if window == 1 {
                     #expect(admission.beginProducer(.bootstrap))
                     guard case .started = adapter.startObserving() else {
@@ -113,7 +113,7 @@ import Testing
                         ))
                     admission.endProducer()
                 }
-                if window > 0 && window <= 120 {
+                if window > 1 && window <= 809 {
                     guard let generation = source.activeGeneration else {
                         Issue.record("macOS Static source did not start")
                         return
@@ -131,8 +131,7 @@ import Testing
                                 UInt64(components.seconds) * 1_000_000
                                 + UInt64(components.attoseconds / 1_000_000_000_000)
                             transitionDeadline =
-                                sourceClock
-                                + microseconds * 2_998 / 20_177
+                                sourceClock + microseconds
                         }
                         if transitionDeadline > frameDeadline { break }
                         sourceClock = transitionDeadline
@@ -141,28 +140,38 @@ import Testing
                         #expect(source.deliverScheduledTransition(generation: generation))
                         admission.endProducer()
                         delivered += 1
-                        if admission.seal() {
-                            while let (_, _, fact) = admission.takeNextSealed() {
-                                guard case .applied = model.apply(fact) else {
-                                    Issue.record("macOS Static fact application failed")
-                                    return
-                                }
-                                factCount += 1
+                    }
+                    // Seal the entire paced batch, rather than hiding category
+                    // overruns by applying one source callback at a time.
+                    if admission.seal() {
+                        while let (_, _, fact) = admission.takeNextSealed() {
+                            guard case .applied = model.apply(fact) else {
+                                Issue.record("macOS Static fact application failed")
+                                return
                             }
+                            factCount += 1
                         }
                     }
-                    #expect(factCount > 0 && factCount <= 30)
+                    #expect(factCount > 0 && factCount <= 20)
+                }
+                if window == 1, admission.seal() {
+                    while let (_, _, fact) = admission.takeNextSealed() {
+                        guard case .applied = model.apply(fact) else {
+                            Issue.record("macOS Static Start fact application failed")
+                            return
+                        }
+                    }
                 }
                 let action: SignalAnalyzerAction?
                 switch window {
-                case 121: action = .stop
-                case 122: action = .start
-                case 123: action = .selectOneSecond
-                case 124: action = .selectTwoSeconds
-                case 125: action = .selectFiveSeconds
-                case 126: action = .selectTwoSeconds
-                case 127: action = .selectOneSecond
-                case 128: action = .selectTwoSeconds
+                case 810: action = .stop
+                case 811: action = .start
+                case 812: action = .selectOneSecond
+                case 813: action = .selectTwoSeconds
+                case 814: action = .selectFiveSeconds
+                case 815: action = .selectTwoSeconds
+                case 816: action = .selectOneSecond
+                case 817: action = .selectTwoSeconds
                 default: action = nil
                 }
                 if let action {
@@ -334,7 +343,7 @@ import Testing
                 if let action {
                     printMacOSStaticReferenceAction(
                         action, dispatched: true, revision: revision, model: model)
-                    if window == 123 || window == 125 {
+                    if window == 812 || window == 814 {
                         for _ in 0 ..< 2 {
                             #expect(
                                 macOSStaticReferencePointerOutcome(

@@ -69,6 +69,10 @@ package enum StaticSignalAnalyzerNRFEmbeddedSemanticRegion {
         return verify(published, state: 2)
     }
 
+    package static func verifyCandidate(_ candidate: UnsafeMutableRawBufferPointer) -> Bool {
+        verify(candidate, state: 1)
+    }
+
     package static func verifyPublished(
         _ published: UnsafeMutableRawBufferPointer
     ) -> Bool {

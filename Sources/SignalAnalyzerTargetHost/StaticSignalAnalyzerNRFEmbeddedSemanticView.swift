@@ -15,6 +15,15 @@ package struct StaticSignalAnalyzerNRFEmbeddedSemanticView {
             | UInt32(published[30]) << 16 | UInt32(published[31]) << 24
     }
 
+    /// Candidate projection carries the proposed revision without publishing its bytes.
+    package init?(candidate: UnsafeMutableRawBufferPointer, revision: UInt32) {
+        guard revision > 0, StaticSignalAnalyzerNRFEmbeddedSemanticRegion.verifyCandidate(candidate)
+        else { return nil }
+        region = candidate
+        scopeCount = 92
+        self.revision = revision
+    }
+
     package var rootSemanticIdentity: UInt16 {
         StaticSignalAnalyzerNRFPackedSemanticRecords.scope(at: 0, in: region)!.identity
     }

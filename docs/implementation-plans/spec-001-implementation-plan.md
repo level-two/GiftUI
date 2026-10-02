@@ -2733,3 +2733,15 @@ policy declarations and the ordered runtime failure rule preserve owner boundari
 and mandatory effect order. Eleven focused regressions pass; the selected Embedded
 owner build passes. [Evidence](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/static-shared-contracts.md).
 The live firmware runner join remains executing.
+
+### T10.6 production join delivered — 2026-10-02
+
+The actual firmware now runs the common complete pipeline using fixed borrowed
+adapters. Six production Dynamic/Static failure rows agree; Static partial failure,
+recovery, post-transfer health and seven C-loop fault paths pass. Independent macOS
+and native traces match 818 frames and 12 actions using supported real source delays.
+The cross-build passes ABI/zero-heap/RAM/flash checks with unchanged limits.
+[Evidence](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/static-production-join.md).
+T10.6 remains executing until its stack-validation prerequisite is established;
+a native run does not establish the existing connected stack high-water gate.
+T10.7 independent closure validation and T10.8 reconciliation continue.

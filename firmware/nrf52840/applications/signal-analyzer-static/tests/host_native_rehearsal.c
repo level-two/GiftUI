@@ -28,8 +28,11 @@ extern uint64_t giftui_signal_analyzer_next_delay_microseconds(void);
 extern uint32_t giftui_signal_analyzer_rehearsal_diagnostic(void);
 extern uint32_t giftui_signal_analyzer_rehearsal_maximum_diagnostic(void);
 extern int giftui_firmware_main(void);
+extern uint32_t giftui_signal_analyzer_rehearsal_common_owner(void *, void *, void *, void *);
 
 static uint64_t clock_microseconds;
+static uint32_t workload_last_revision;
+extern uint32_t giftui_signal_analyzer_source_capture_revision(void);
 static unsigned touch_polls;
 static unsigned display_writes;
 static unsigned first_frame_write_count;
@@ -103,10 +106,12 @@ static const struct scripted_action actions[] = {
 uint64_t giftui_static_host_source_clock_delay(uint64_t duration)
 {
     if (duration == UINT64_MAX ||
-        giftui_signal_analyzer_capture_revision() >= 2404U) {
+        giftui_signal_analyzer_source_capture_revision() >= 2404U) {
         return UINT64_MAX;
     }
-    return duration * 2998U / 20177U;
+    /* The live adapter batches until the paced boundary. Keep the actual
+     * source delay so this substitute honors the approved 20-fact window. */
+    return duration;
 }
 
 int ads7846_initialize(void)
@@ -116,7 +121,7 @@ int ads7846_initialize(void)
 int ads7846_pen_is_down(void)
 {
     touch_polls++;
-    if (clock_microseconds > UINT64_C(45000000)) {
+    if (clock_microseconds > UINT64_C(300000000)) {
         fprintf(stderr,
                 "rehearsal-stalled clock=%llu capture=%u frame=%u stage=%u action=%u\n",
                 (unsigned long long)clock_microseconds,
@@ -143,15 +148,16 @@ int ads7846_pen_is_down(void)
         if (revision == 1U) {
             first_frame_write_count = display_writes;
             capture_frame("idle");
-        } else if (revision == 121U) {
+        } else if (giftui_signal_analyzer_capture_revision() == 2404U && workload_last_revision == 0U) {
+            workload_last_revision = revision;
             capture_frame("running-four-traces");
-        } else if (revision == 122U) {
+        } else if (workload_last_revision != 0U && revision == workload_last_revision + 1U) {
             capture_frame("stopped");
-        } else if (revision == 124U) {
+        } else if (workload_last_revision != 0U && revision == workload_last_revision + 3U) {
             capture_frame("window-one-second");
-                } else if (revision == 126U) {
+                } else if (workload_last_revision != 0U && revision == workload_last_revision + 5U) {
             capture_frame("window-five-seconds");
-        } else if (revision == 129U) {
+        } else if (workload_last_revision != 0U && revision == workload_last_revision + 8U) {
             capture_frame("window-two-seconds");
         } else if (diagnostic_mode != 0U && revision == 2U) {
             capture_frame("diagnostic");
@@ -252,7 +258,7 @@ int ads7846_pen_is_down(void)
     }
     if (script_stage == 1U) {
         if (clock_microseconds >= acquisition_started_at + 1000000U &&
-            giftui_signal_analyzer_capture_revision() < 50U) {
+            giftui_signal_analyzer_capture_revision() < 5U) {
             fprintf(stderr, "source-stalled clock=%llu capture=%u frame=%u state=%u delay=%llu\n",
                     (unsigned long long)clock_microseconds,
                     giftui_signal_analyzer_capture_revision(),
@@ -263,10 +269,11 @@ int ads7846_pen_is_down(void)
         }
         assert(giftui_signal_analyzer_capture_revision() <= 2404U);
         if (giftui_signal_analyzer_capture_revision() == 2404U &&
-            giftui_signal_analyzer_current_revision() == 121U) {
+            giftui_signal_analyzer_current_revision() >= 809U) {
             paced_frame_observed = 1U;
             script_stage = 2U;
-            printf("workload_transitions=2400\tworkload_frames=120\n");
+            printf("workload_transitions=2400\tworkload_frames=%u\tsource_clock=unscaled\n",
+                   giftui_signal_analyzer_current_revision() - 2U);
         }
         return 0;
     }
@@ -395,6 +402,11 @@ int main(void)
     assert(regions.coverage_bytes == 160U);
 
 
+    if (getenv("GIFTUI_REHEARSAL_COMMON_OWNER") != NULL) {
+        setbuf(stdout, NULL);
+        assert(giftui_signal_analyzer_rehearsal_common_owner(regions.profile, regions.capture, regions.raster, regions.coverage) == 1U);
+        return 0;
+    }
     const int result = giftui_firmware_main();
     if (touch_probe_mode != 0U) {
         assert(result == -ECANCELED && touch_probe_stage == 8U);

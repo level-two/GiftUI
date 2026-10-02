@@ -13,7 +13,10 @@ end
 
 mac = records(ARGV.fetch(0), "reference=macos-static\t")
 nrf = records(ARGV.fetch(1), "trace=frame\t")
-abort "expected 129 frames, got mac=#{mac.length} nrf=#{nrf.length}" unless mac.length == 129 && nrf.length == 129
+# Historical packets used an accelerated source that could exceed the preset's
+# category bound. The live paced corpus keeps real delays: 818 ordered frames.
+expected_frames = mac.length == 129 ? 129 : 818
+abort "expected #{expected_frames} frames, got mac=#{mac.length} nrf=#{nrf.length}" unless mac.length == expected_frames && nrf.length == expected_frames
 
 mac.zip(nrf).each_with_index do |(expected, actual), index|
   abort "frame #{index} revision mismatch" unless Integer(actual.fetch('revision')) == index + 1

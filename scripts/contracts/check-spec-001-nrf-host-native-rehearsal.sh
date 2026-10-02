@@ -20,7 +20,8 @@ owner_output="${project_root}/.build/contract-generated/spec-001/nrf-native-owne
 python3 "${project_root}/scripts/contracts/compile-spec-001-nrf-native-owners.py" --output "${owner_output}"
 owner_objects=()
 while IFS= read -r object; do owner_objects+=("${object}"); done < "${owner_output}/owner-objects.txt"
-swiftc -I "${owner_output}/modules" -DGIFTUI_REFERENCE_BITMAP_ONLY -parse-as-library -Osize -package-name GiftUI -D GIFTUI_NRF_EMBEDDED \
+native_optimization="${GIFTUI_NATIVE_OPTIMIZATION:--Osize}"
+swiftc -I "${owner_output}/modules" -DGIFTUI_REFERENCE_BITMAP_ONLY -parse-as-library "${native_optimization}" -package-name GiftUI -D GIFTUI_NRF_EMBEDDED \
     -emit-object "${output}/host_native_rehearsal.swift" -o "${output}/application.o"
 
 c_sources=(
@@ -53,9 +54,16 @@ for source in "${c_sources[@]}"; do
 done
 swiftc "${objects[@]}" -o "${output}/host-native-rehearsal"
 "${output}/host-native-rehearsal"
+if [[ "${GIFTUI_REHEARSAL_COMMON_OWNER:-}" == 1 ]]; then exit 0; fi
 # Keep negative touch probes in a separate firmware lifetime so their idle time
 # cannot shift the paced acquisition corpus compared with the macOS oracle.
 env -u GIFTUI_REHEARSAL_RASTERS -u GIFTUI_REHEARSAL_FAULT -u GIFTUI_REHEARSAL_DIAGNOSTIC \
     GIFTUI_REHEARSAL_TOUCH_PROBE=1 "${output}/host-native-rehearsal" \
     > "${output}/touch-probes.tsv"
 grep '^trace=touch-probe' "${output}/touch-probes.tsv"
+
+# Typed failures exercise the actual selected firmware owner in a fresh lifetime.
+env -u GIFTUI_REHEARSAL_RASTERS -u GIFTUI_REHEARSAL_FAULT -u GIFTUI_REHEARSAL_DIAGNOSTIC \
+    GIFTUI_REHEARSAL_COMMON_OWNER=1 "${output}/host-native-rehearsal" \
+    > "${output}/common-owner-probes.tsv"
+grep "^static-owner-" "${output}/common-owner-probes.tsv"

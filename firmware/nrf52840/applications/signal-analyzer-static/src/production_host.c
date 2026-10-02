@@ -132,12 +132,6 @@ static int service(void *opaque, uint64_t now,
     struct giftui_production_context *context = opaque;
     const struct giftui_static_host_storage *regions = &context->regions;
     *stop = 0;
-    if (giftui_signal_analyzer_drain_initial_input(
-            regions->profile, (uint32_t)regions->profile_bytes,
-            regions->capture, (uint32_t)regions->capture_bytes) == 0U ||
-        giftui_signal_analyzer_input_pending_count() != 0U) {
-        return -EIO;
-    }
     uint8_t due_count = 0U;
     for (;;) {
         const uint64_t delay = giftui_static_host_source_clock_delay(
@@ -164,17 +158,18 @@ static int service(void *opaque, uint64_t now,
         due_count++;
         context->next_transition_deadline = 0U;
     }
-    if (giftui_signal_analyzer_needs_presentation() != 0U &&
+    if ((giftui_signal_analyzer_needs_presentation() != 0U ||
+         giftui_signal_analyzer_input_pending_count() != 0U) &&
         now >= context->next_frame_deadline) {
-        if (giftui_signal_analyzer_present_next(
-                regions->profile, (uint32_t)regions->profile_bytes,
-                regions->capture, (uint32_t)regions->capture_bytes,
-                regions->raster, (uint32_t)regions->raster_bytes,
-                regions->coverage, (uint32_t)regions->coverage_bytes,
-                spi_tft_write_rgb565) != 1U ||
-            giftui_static_touch_pipeline_present(
-                &context->touch,
-                giftui_signal_analyzer_current_revision()) != 0) {
+        const uint32_t outcome = giftui_signal_analyzer_present_next(
+            regions->profile, (uint32_t)regions->profile_bytes,
+            regions->capture, (uint32_t)regions->capture_bytes,
+            regions->raster, (uint32_t)regions->raster_bytes,
+            regions->coverage, (uint32_t)regions->coverage_bytes,
+            spi_tft_write_rgb565);
+        if (outcome == 0U || (outcome == 1U &&
+            giftui_static_touch_pipeline_present(&context->touch,
+                giftui_signal_analyzer_current_revision()) != 0)) {
             return -EIO;
         }
         if (now > UINT64_MAX - GIFTUI_FRAME_INTERVAL_MICROSECONDS) {

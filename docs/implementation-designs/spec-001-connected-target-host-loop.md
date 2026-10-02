@@ -807,3 +807,37 @@ backend policy. Initial identities are allocated by their runner stages.
 
 See the [T10.5 completion evidence](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/dynamic-failure-recovery.md).
 Static ownership and borrow lifetimes remain T10.6 work.
+
+## T10.6 Static common-runner join — 2026-10-02
+
+The firmware presentation entries now borrow model, repository, interaction and
+input-session locations for one RuntimeCompletePipeline opportunity. Source polling
+only admits facts. The common opportunity seals/applies them and dispatches input
+before freezing mutation. Semantic candidate views, canonical Layout and Canvas
+workspace views, and render streams exist only within that enclosing borrow.
+Semantic bytes publish after all preflight and interaction stages succeed;
+Interaction commits only after accepted responsibility. Preparation remains separate
+from synchronous physical delivery.
+
+The 192-byte coordinator region retains only finite Copyable values: identities,
+recovery, health, policy state and the exact last result. The 96-byte first-failure
+region retains the exact focused cause and detecting context. Neither retains
+region views, pointers or callables. The selected constructor checks both strides.
+Common cleanup closes attempt views once; focused producers release their own
+callable/scratch lifetimes and contain a partially failed stage before returning.
+The generated live model registration survives a contained candidate failure.
+
+The Static application adapter consumes the ordered rule shared with the Dynamic
+application owner. It applies mandatory effects before policy, retains exact partial
+progress and first cause, drains sealed work without replay, and quiesces source and
+input on unsafe/terminal outcomes. Pending/backpressure retries carry the published
+revision across empty opportunities; three retryable refusals exhaust the preset.
+Post-transfer stream failure preserves logical commitment then removes eligibility.
+The explicit native fault hooks inject boundary outcomes into this actual owner;
+production construction supplies no injection. They are not firmware sources.
+
+The native source uses its real delays. The former accelerated rehearsal could
+admit 23 transition facts per 250 ms window against a 20-fact preset. The corrected
+818-frame corpus is independently reproduced on macOS; it validates ordered source
+behavior, not the separate normative 80-Hz timing claim. Connected stack high-water
+and display/cadence evidence remain in their existing platform tasks.

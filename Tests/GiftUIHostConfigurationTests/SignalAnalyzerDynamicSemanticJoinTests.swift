@@ -3391,6 +3391,11 @@ func rawFramebufferTouchesReachModelAndReplacementFrame(scenario: String) throws
             #expect(owner.currentPresentationRevision == PresentationRevision(rawValue: 1))
             #expect(owner.eligibleAction(at: 0) == oldAction)
             #expect(owner.pipelineFinalizationCount == 2)
+            let fact = SignalAnalyzerCycleFailureNormalizer.cycleFailure(
+                record.failure, context: context)
+            print(
+                "production-fault\tstage=\(stage.rawValue)\tcondition=\(fact.condition.rawValue)\torigin=\(fact.origin.rawValue)\tscope=\(fact.affectedScope.rawValue)\tcontainment=\(fact.containment.rawValue)\tdirty=\(record.disposition.semanticDisposition == .dirty ? 1 : 0)\tpriorRouting=1\tfinalizations=2"
+            )
             owner.injectingFailure = nil
             let next = owner.runOwnedOpportunity(
                 admission: admission, events: [], cycle: RunCycleID(rawValue: 3),
