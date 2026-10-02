@@ -31,6 +31,7 @@ package enum DynamicSignalAnalyzerPresentationFailure: Equatable, Sendable {
     case render(RenderProductionError)
     case interaction(InteractionError)
     case execution(ExecutionError)
+    case runtime(RuntimeOwnerFailure)
     case invariantViolation
 }
 
@@ -46,8 +47,8 @@ package struct DynamicSignalAnalyzerFactApplicationSummary: Equatable, Sendable 
 
 package enum DynamicSignalAnalyzerFactApplicationResult: Equatable, Sendable {
     case applied(DynamicSignalAnalyzerFactApplicationSummary)
-    case rejected(SignalAnalyzerRuntimeCondition)
-    case unavailable
+    case rejected(SignalAnalyzerRuntimeCondition, mutationApplied: Bool)
+    case unavailable(mutationApplied: Bool)
 }
 
 private struct DynamicSignalAnalyzerInteractionOccurrences:
@@ -297,32 +298,59 @@ package struct DynamicSignalAnalyzerPresentationPipeline<Metrics: CanonicalTextM
         interactionCaptures = DynamicSignalAnalyzerInteractionCaptures()
     }
 
-    package mutating func derive(
-        model: SignalAnalyzerViewModel,
-        cycle: RunCycleID,
-        semanticRevision: SemanticRevision,
-        injectingFailure: DynamicSignalAnalyzerPresentationFailure? = nil
-    ) -> DynamicSignalAnalyzerPresentationResult {
+    private var attemptSemantic: SemanticExpansionSummary?
+    private var attemptLayout: LayoutSummary?
+    private var attemptDrawing: DrawingPlanSummary?
+    private var attemptRender: RenderPlanHeader?
+    private var attemptInteractionOccurrenceCount: UInt16 = 0
+
+    package var applicationIsDirty: Bool { root.isDirty }
+
+    package mutating func prepareAttempt() {
         lastFailureCleanupActions = []
-        var stage = RuntimeCoordinatorStage.observableBindingOrSemanticExpansion
-        var acquired: RuntimeCleanupActions = []
+        attemptSemantic = nil
+        attemptLayout = nil
+        attemptDrawing = nil
+        attemptRender = nil
+        attemptInteractionOccurrenceCount = 0
+    }
+
+    package var preparedSummary: DynamicSignalAnalyzerPresentationSummary? {
+        guard let semantic = attemptSemantic, let layout = attemptLayout,
+            let drawing = attemptDrawing, let render = attemptRender
+        else { return nil }
+        return DynamicSignalAnalyzerPresentationSummary(
+            semantic: semantic, retainedSemanticIdentities: semanticStorage.semanticScopeCount,
+            recordedTraversalIdentities: semanticWorkspace.recordedIdentityCount,
+            layout: layout, drawing: drawing, render: render,
+            interactionOccurrenceCount: attemptInteractionOccurrenceCount)
+    }
+
+    package mutating func expandSemantics(
+        model: SignalAnalyzerViewModel,
+        injectingFailure: DynamicSignalAnalyzerPresentationFailure? = nil
+    ) -> DynamicSignalAnalyzerPresentationFailure? {
+        prepareAttempt()
+        drawingWorkspace.reset()
         var completed = false
         defer {
-            if !completed { cleanupFailedDerivation(stage: stage, acquired: acquired) }
+            if !completed {
+                cleanupFailedDerivation(
+                    stage: .observableBindingOrSemanticExpansion,
+                    acquired: [
+                        .releaseCanvasCallable, .discardSemanticCandidate,
+                        .discardObservableCandidate, .resetAttemptStorage,
+                    ])
+            }
         }
-        drawingWorkspace.reset()
         if case .observable(let error) = injectingFailure {
-            return .failure(.observable(error))
+            return .observable(error)
         }
         switch reconciler.beginCandidate() {
         case .success(.candidateStarted): break
-        case .failure(let error): return .failure(.observable(error))
-        case .success: return .failure(.invariantViolation)
+        case .failure(let error): return .observable(error)
+        case .success: return .invariantViolation
         }
-        acquired.formUnion([
-            .discardObservableCandidate, .discardSemanticCandidate,
-            .releaseCanvasCallable, .resetAttemptStorage,
-        ])
         var binding = ObservableStateBindingDecorator(reconciler: reconciler)
         let semanticResult = expandSemanticTreeWithStateBinding(
             SignalAnalyzerView(
@@ -338,24 +366,25 @@ package struct DynamicSignalAnalyzerPresentationPipeline<Metrics: CanonicalTextM
             stateBinding: &binding
         )
         reconciler = binding.reconciler
-        let semantic: SemanticExpansionSummary
         switch semanticResult {
         case .success(let summary):
-            semantic = summary
+            attemptSemantic = summary
         case .semanticFailure(let error):
-            _ = reconciler.finishCandidate(.discard)
-            return .failure(.semantic(error))
+            return .semantic(error)
         case .bindingFailure(let error):
-            _ = reconciler.finishCandidate(.discard)
-            return .failure(.observable(error))
+            return .observable(error)
         }
         if case .semantic(let error) = injectingFailure {
-            _ = reconciler.finishCandidate(.discard)
-            return .failure(.semantic(error))
+            return .semantic(error)
         }
-        stage = .layout
-        acquired.insert(.resetLayoutCandidate)
-        if case .layout(let error) = injectingFailure { return .failure(.layout(error)) }
+        completed = true
+        return nil
+    }
+
+    package mutating func resolveLayout(
+        injectingFailure: DynamicSignalAnalyzerPresentationFailure? = nil
+    ) -> DynamicSignalAnalyzerPresentationFailure? {
+        if case .layout(let error) = injectingFailure { return .layout(error) }
         let layoutResult = layout(
             semantic: semanticStorage,
             metrics: textMetrics,
@@ -364,17 +393,21 @@ package struct DynamicSignalAnalyzerPresentationPipeline<Metrics: CanonicalTextM
             workspace: &layoutWorkspace,
             sink: &layoutSink
         )
-        let layoutSummary: LayoutSummary
         switch layoutResult {
         case .success(let summary):
-            layoutSummary = summary
+            attemptLayout = summary
         case .failure(let error):
-            return .failure(.layout(error))
+            return .layout(error)
         }
 
-        stage = .canvasInvocationOrPlan
-        acquired.insert(.resetDrawingPlan)
-        if case .drawing(let error) = injectingFailure { return .failure(.drawing(error)) }
+        return nil
+    }
+
+    package mutating func invokeCanvases(
+        cycle: RunCycleID, semanticRevision: SemanticRevision,
+        injectingFailure: DynamicSignalAnalyzerPresentationFailure? = nil
+    ) -> DynamicSignalAnalyzerPresentationFailure? {
+        if case .drawing(let error) = injectingFailure { return .drawing(error) }
         let drawingResult = CanvasPlanProducer.derive(
             source: &semanticStorage,
             layout: layoutSink.renderView,
@@ -388,18 +421,20 @@ package struct DynamicSignalAnalyzerPresentationPipeline<Metrics: CanonicalTextM
             workspace: &drawingWorkspace
         )
         // The Drawing owner releases every callable on success or failure.
-        acquired.remove(.releaseCanvasCallable)
-        let drawing: DrawingPlanSummary
         switch drawingResult {
         case .success(let summary):
-            drawing = summary
+            attemptDrawing = summary
         case .failure(let error):
-            return .failure(.drawing(error))
+            return .drawing(error)
         }
 
-        stage = .combinedRenderPreflight
-        acquired.insert(.resetRenderWorkspace)
-        if case .render(let error) = injectingFailure { return .failure(.render(error)) }
+        return nil
+    }
+
+    package mutating func preflightRender(
+        injectingFailure: DynamicSignalAnalyzerPresentationFailure? = nil
+    ) -> DynamicSignalAnalyzerPresentationFailure? {
+        if case .render(let error) = injectingFailure { return .render(error) }
         let renderResult = CanvasRenderProducer.preflight(
             semantic: semanticStorage.renderView,
             layout: layoutSink.renderView,
@@ -412,18 +447,21 @@ package struct DynamicSignalAnalyzerPresentationPipeline<Metrics: CanonicalTextM
             configuredSinkCapacity: limits.renderSink,
             workspace: &renderWorkspace
         )
-        let render: RenderPlanHeader
         switch renderResult {
         case .success(let header):
-            render = header
+            attemptRender = header
         case .failure(let error):
-            return .failure(.render(error))
+            return .render(error)
         }
 
-        stage = .interactionBuildOrGeneration
+        return nil
+    }
+
+    package mutating func buildInteraction(
+        injectingFailure: DynamicSignalAnalyzerPresentationFailure? = nil
+    ) -> DynamicSignalAnalyzerPresentationFailure? {
         if case .interaction(let error) = injectingFailure {
-            _ = reconciler.finishCandidate(.discard)
-            return .failure(.interaction(error))
+            return .interaction(error)
         }
         let layoutView = layoutSink.renderView
         guard
@@ -434,8 +472,7 @@ package struct DynamicSignalAnalyzerPresentationPipeline<Metrics: CanonicalTextM
             ),
             let observableTarget = publishableObservableTarget()
         else {
-            _ = reconciler.finishCandidate(.discard)
-            return .failure(.interaction(.missingModelTarget))
+            return .interaction(.missingModelTarget)
         }
         switch RuntimeInteractionCandidateTransaction.build(
             occurrences: occurrences,
@@ -450,29 +487,72 @@ package struct DynamicSignalAnalyzerPresentationPipeline<Metrics: CanonicalTextM
         case .ready:
             break
         case .ownerFailure(.interaction(let error)):
-            return .failure(.interaction(error))
-        case .ownerFailure:
-            return .failure(.invariantViolation)
+            return .interaction(error)
+        case .ownerFailure(let failure):
+            return .runtime(failure)
         case .executionFailure(let error):
-            return .failure(.execution(error))
+            return .execution(error)
+        }
+        attemptInteractionOccurrenceCount = occurrences.interactionOccurrenceCount
+        return nil
+    }
+
+    package mutating func publishObservableCandidate() -> DynamicSignalAnalyzerPresentationFailure?
+    {
+        guard case .success = reconciler.finishCandidate(.publish) else {
+            return .observable(.invariantViolation)
+        }
+        return nil
+    }
+
+    package func freezeApplicationMutation() { root.setExecutionPhase(.deriving) }
+    package func finalizeApplicationOpportunity() { root.setExecutionPhase(.idle) }
+
+    /// Explicit recording-harness helper; live opportunities use the common runner.
+    package mutating func derive(
+        model: SignalAnalyzerViewModel, cycle: RunCycleID,
+        semanticRevision: SemanticRevision,
+        injectingFailure: DynamicSignalAnalyzerPresentationFailure? = nil
+    ) -> DynamicSignalAnalyzerPresentationResult {
+        var stage = RuntimeCoordinatorStage.observableBindingOrSemanticExpansion
+        var acquired: RuntimeCleanupActions = []
+        var completed = false
+        defer { if !completed { cleanupFailedDerivation(stage: stage, acquired: acquired) } }
+        if let failure = expandSemantics(model: model, injectingFailure: injectingFailure) {
+            return .failure(failure)
+        }
+        acquired = [
+            .discardObservableCandidate, .discardSemanticCandidate,
+            .releaseCanvasCallable, .resetAttemptStorage,
+        ]
+        stage = .layout
+        acquired.insert(.resetLayoutCandidate)
+        if let failure = resolveLayout(injectingFailure: injectingFailure) {
+            return .failure(failure)
+        }
+        stage = .canvasInvocationOrPlan
+        acquired.insert(.resetDrawingPlan)
+        if let failure = invokeCanvases(
+            cycle: cycle, semanticRevision: semanticRevision,
+            injectingFailure: injectingFailure)
+        {
+            return .failure(failure)
+        }
+        acquired.remove(.releaseCanvasCallable)
+        stage = .combinedRenderPreflight
+        acquired.insert(.resetRenderWorkspace)
+        if let failure = preflightRender(injectingFailure: injectingFailure) {
+            return .failure(failure)
+        }
+        stage = .interactionBuildOrGeneration
+        if let failure = buildInteraction(injectingFailure: injectingFailure) {
+            return .failure(failure)
         }
         acquired.insert(.discardInteractionCandidate)
-        guard case .success = reconciler.finishCandidate(.publish) else {
-            return .failure(.invariantViolation)
-        }
-
+        if let failure = publishObservableCandidate() { return .failure(failure) }
+        guard let summary = preparedSummary else { return .failure(.invariantViolation) }
         completed = true
-        return .success(
-            DynamicSignalAnalyzerPresentationSummary(
-                semantic: semantic,
-                retainedSemanticIdentities: semanticStorage.semanticScopeCount,
-                recordedTraversalIdentities: semanticWorkspace.recordedIdentityCount,
-                layout: layoutSummary,
-                drawing: drawing,
-                render: render,
-                interactionOccurrenceCount: occurrences.interactionOccurrenceCount
-            )
-        )
+        return .success(summary)
     }
 
     private mutating func cleanupFailedDerivation(
@@ -484,51 +564,33 @@ package struct DynamicSignalAnalyzerPresentationPipeline<Metrics: CanonicalTextM
             plan: RuntimeCoordinatorCleanupOracle.plan(after: stage), acquired: remaining
         )
         while let action = tracker.takeNext() {
-            lastFailureCleanupActions.insert(RuntimeCleanupActions(rawValue: 1 << action.rawValue))
-            switch action {
-            case .releaseCanvasCallable:
-                var index: UInt16 = 0
-                while index < semanticStorage.canvasOccurrenceCount {
-                    if let identity = semanticStorage.canvasIdentity(at: index) {
-                        semanticStorage.releaseCanvas(at: identity)
-                    }
-                    index += 1
-                }
-            case .discardInteractionCandidate:
-                interaction.resolveCandidate(.discard)
-                actionGenerations.resolveCandidate(committed: false)
-            case .resetRenderWorkspace: renderWorkspace.reset()
-            case .resetDrawingPlan: drawingWorkspace.reset()
-            case .resetLayoutCandidate: layoutSink.discard()
-            case .discardSemanticCandidate: semanticStorage.discardExpansion()
-            case .discardObservableCandidate: _ = reconciler.finishCandidate(.discard)
-            case .resetAttemptStorage: semanticWorkspace.resetExpansion()
-            case .commitInteractionCandidate: preconditionFailure("failed derivation cannot commit")
-            }
+            cleanup(action)
         }
     }
 
     package func applySealedFacts(
         from admission: DynamicSignalAnalyzerHostFactAdmission
     ) -> DynamicSignalAnalyzerFactApplicationResult {
-        guard root.isActive else { return .unavailable }
+        guard root.isActive else { return .unavailable(mutationApplied: false) }
         root.setExecutionPhase(.mutating)
         defer { root.setExecutionPhase(.idle) }
 
+        var mutationApplied = false
         var factCount: UInt16 = 0
         var changed = false
         while let (_, _, fact) = admission.takeNextSealed() {
             let nextCount = factCount.addingReportingOverflow(1)
-            guard !nextCount.overflow else { return .unavailable }
+            guard !nextCount.overflow else { return .unavailable(mutationApplied: mutationApplied) }
             factCount = nextCount.partialValue
             guard let application = root.withModel({ model in model.apply(fact) }) else {
-                return .unavailable
+                return .unavailable(mutationApplied: mutationApplied)
             }
             switch application {
             case .applied(let factChanged):
+                mutationApplied = true
                 changed = changed || factChanged
             case .rejected(let condition):
-                return .rejected(condition)
+                return .rejected(condition, mutationApplied: mutationApplied)
             }
         }
         return .applied(
@@ -650,5 +712,32 @@ package struct DynamicSignalAnalyzerPresentationPipeline<Metrics: CanonicalTextM
             ) != nil
         else { return nil }
         return target
+    }
+}
+
+extension DynamicSignalAnalyzerPresentationPipeline {
+    package mutating func cleanup(_ action: RuntimeCleanupAction) {
+        lastFailureCleanupActions.insert(RuntimeCleanupActions(rawValue: 1 << action.rawValue))
+        switch action {
+        case .releaseCanvasCallable:
+            var index: UInt16 = 0
+            while index < semanticStorage.canvasOccurrenceCount {
+                if let identity = semanticStorage.canvasIdentity(at: index) {
+                    semanticStorage.releaseCanvas(at: identity)
+                }
+                index += 1
+            }
+        case .discardInteractionCandidate:
+            interaction.resolveCandidate(.discard)
+            actionGenerations.resolveCandidate(committed: false)
+        case .resetRenderWorkspace: renderWorkspace.reset()
+        case .resetDrawingPlan: drawingWorkspace.reset()
+        case .resetLayoutCandidate: layoutSink.discard()
+        case .discardSemanticCandidate: semanticStorage.discardExpansion()
+        case .discardObservableCandidate:
+            if reconciler.candidateIsActive { _ = reconciler.finishCandidate(.discard) }
+        case .resetAttemptStorage: semanticWorkspace.resetExpansion()
+        case .commitInteractionCandidate: break
+        }
     }
 }

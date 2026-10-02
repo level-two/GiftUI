@@ -6,7 +6,7 @@ status: current
 authors:
   - codex
 created: 2026-09-20
-updated: 2026-09-27
+updated: 2026-10-02
 implementation_plan: ../implementation-plans/spec-001-implementation-plan.md
 related_future_work: []
 related_explorations: []
@@ -753,3 +753,38 @@ transitions and observes 120 paced frames before physical action scenarios.
   records the bounded Dynamic render-preflight workspace prerequisite.
 - [`dynamic-render-projection-blocker.md`](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-6/dynamic-render-projection-blocker.md)
   records the measured production semantic-to-render mismatch.
+
+## Milestone 10 Dynamic common-runner adapter
+
+T10.5 now uses `DynamicSignalAnalyzerPiInitialPresentationOwner` as the concrete
+`RuntimeCompletePipelineOwner`. The common runner owns stage ordering, publication,
+cleanup selection, disposition, and finalization. The input coordinator retains
+bounded ingress and the host opportunity gate; it transfers its sealed input
+array and fact-admission handle to the owner instead of applying the batch or
+choosing whether to derive a frame itself.
+
+The owner retains one attempt's model, bounded admitted events, correlation,
+and focused summaries. Semantic identity is reserved at expansion; candidate
+and presentation identities are reserved at candidate allocation for active
+opportunities. Publication retains the complete semantic revision independently
+of the last physically accepted presentation. Only the accepted cleanup action
+commits interaction routing and installs its physical presentation revision.
+
+Focused methods on the presentation pipeline contain partially acquired storage
+when their own stage fails. Successful acquisition transfers cleanup responsibility
+to the common runner. The observable discard operation checks whether its candidate
+is still active because the canonical Interaction build also contains observable
+candidates on failure. Facts remaining in a failed sealed batch are discarded at
+finalization; facts produced after sealing remain available for the next opportunity.
+Actual applied progress, including a successful unchanged fact, is retained separately
+from the decision to derive a changed semantic revision.
+
+The `derive` helper remains explicitly selected by recording/reference callers. It
+calls these same focused operations, but no production Pi opportunity calls it.
+It cannot authorize an accepted handoff on behalf of a recording endpoint.
+
+This first join slice preserves exact framework/application errors and their
+execution context through the host result and first-failure storage. Production
+normalization, mandatory application effects, bounded refusal policy, and wake
+integration are the remaining T10.5 work; this note does not claim those are complete.
+The Static borrow-based adapter remains T10.6 work.

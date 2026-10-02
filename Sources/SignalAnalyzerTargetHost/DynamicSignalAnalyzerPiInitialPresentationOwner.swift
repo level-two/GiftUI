@@ -24,6 +24,7 @@ package enum DynamicSignalAnalyzerPiInitialPresentationFailure: Equatable, Senda
     case presentation(DynamicSignalAnalyzerPresentationFailure)
     case offer(FrameOfferResult)
     case interaction
+    case pipeline(ExecutionContext, RuntimePipelineFailureRecord<SignalAnalyzerCycleOwnerFailure>)
 }
 
 package enum DynamicSignalAnalyzerPiInitialPresentationResult: Equatable, Sendable {
@@ -63,6 +64,31 @@ where Target: DisplayTarget {
     private var model: SignalAnalyzerViewModel?
 
     package private(set) var state: DynamicSignalAnalyzerPiInitialPresentationState = .ready
+    private var attemptModel: SignalAnalyzerViewModel?
+    private var attemptAdmission: DynamicSignalAnalyzerHostFactAdmission?
+    private var attemptEvents: [NormalizedPointerEvent] = []
+    private var attemptCorrelations: DynamicSignalAnalyzerPiCorrelationOwner?
+    private var attemptFixedCorrelation: DynamicSignalAnalyzerPiPresentationCorrelation?
+    private var attemptCycle: RunCycleID?
+    private var attemptSemanticRevision: SemanticRevision?
+    private var attemptCorrelation: DynamicSignalAnalyzerPiPresentationCorrelation?
+    private var attemptSummary: DynamicSignalAnalyzerPresentationSummary?
+    private var derivesPresentation = false
+    private var semanticChanged = false
+    private var presentationPending = false
+    private var publishedSemanticRevision: SemanticRevision
+    package var injectingFailure: DynamicSignalAnalyzerPresentationFailure?
+    package private(set) var retainedFailure = RuntimeFocusedFailureState<
+        SignalAnalyzerCycleOwnerFailure
+    >()
+    private var attemptOffer: FrameOfferResult?
+    private var applicationSummary = DynamicSignalAnalyzerFactApplicationSummary(
+        factCount: 0, changed: false)
+    private var inputSummary = DynamicSignalAnalyzerPiInputDrainSummary(
+        eventCount: 0, dispatchedActionCount: 0, cancelledOrRejectedCount: 0)
+    package private(set) var lastPipelineResult:
+        RuntimeCompletePipelineResult<SignalAnalyzerCycleOwnerFailure>?
+    package private(set) var pipelineFinalizationCount: UInt32 = 0
     package private(set) var lastPresentedSummary: DynamicSignalAnalyzerPresentationSummary?
 
     package init?(
@@ -95,6 +121,7 @@ where Target: DisplayTarget {
         self.envelopeValidator = envelopeValidator
         self.provenance = provenance
         self.presentationRevision = presentationRevision
+        publishedSemanticRevision = provenance.semanticRevision
     }
 
     package var inputIsEligible: Bool { state == .inputEligible }
@@ -154,7 +181,7 @@ where Target: DisplayTarget {
     package func applySealedFacts(
         from admission: DynamicSignalAnalyzerHostFactAdmission
     ) -> DynamicSignalAnalyzerFactApplicationResult {
-        guard state == .inputEligible else { return .unavailable }
+        guard state == .inputEligible else { return .unavailable(mutationApplied: false) }
         return pipeline.applySealedFacts(from: admission)
     }
 
@@ -172,74 +199,108 @@ where Target: DisplayTarget {
         provenance: FrameProvenance,
         presentationRevision: PresentationRevision
     ) -> DynamicSignalAnalyzerPiInitialPresentationResult {
-        #if os(Linux)
-            let deriveStartedAt = Self.traceMicroseconds()
-        #endif
-        let result = pipeline.derive(
-            model: model,
-            cycle: provenance.cycle,
-            semanticRevision: provenance.semanticRevision
-        )
-        #if os(Linux)
-            let deriveFinishedAt = Self.traceMicroseconds()
-        #endif
-        let summary: DynamicSignalAnalyzerPresentationSummary
-        switch result {
-        case .success(let value):
-            summary = value
-        case .failure(let failure):
-            return .failure(.presentation(failure))
-        }
-
-        envelopeValidator.install(provenance)
-        let offer = pipeline.offer(
-            endpoint: &endpoint,
-            provenance: provenance,
-            expectedHeader: summary.render
-        )
-        #if os(Linux)
-            if let deriveStartedAt, let deriveFinishedAt,
-                let offerFinishedAt = Self.traceMicroseconds(),
-                Glibc.getenv("GIFTUI_PI_TRACE") != nil
-            {
-                let line =
-                    "pi-present-us derive=\(deriveFinishedAt - deriveStartedAt) offer=\(offerFinishedAt - deriveFinishedAt)\n"
-                _ = line.withCString { Glibc.write(STDERR_FILENO, $0, Glibc.strlen($0)) }
-            }
-        #endif
-        guard offer.disposition == .accepted else {
-            _ = pipeline.resolveInteraction(
-                offer: offer,
-                presentationRevision: presentationRevision
-            )
-            return .failure(.offer(offer))
-        }
-        guard
-            pipeline.resolveInteraction(
-                offer: offer,
-                presentationRevision: presentationRevision
-            ) == .committed(presentationRevision)
-        else { return .failure(.interaction) }
-
-        cancelInputSequence()
-        self.provenance = provenance
-        self.presentationRevision = presentationRevision
-        self.model = model
-        state = .inputEligible
-        lastPresentedSummary = summary
-        return .presented(summary)
+        prepareOpportunity(
+            model: model, cycle: provenance.cycle, admission: nil, events: [],
+            correlations: nil,
+            fixed: DynamicSignalAnalyzerPiPresentationCorrelation(
+                provenance: provenance, presentationRevision: presentationRevision), force: true)
+        let result = RuntimeCompletePipeline.run(owner: &self)
+        retainFailure(result)
+        lastPipelineResult = result
+        return presentationResult(result)
     }
 
-    #if os(Linux)
-        private static func traceMicroseconds() -> UInt64? {
-            guard Glibc.getenv("GIFTUI_PI_TRACE") != nil else { return nil }
-            var value = timespec()
-            guard Glibc.clock_gettime(CLOCK_MONOTONIC, &value) == 0,
-                value.tv_sec >= 0, value.tv_nsec >= 0
-            else { return nil }
-            return UInt64(value.tv_sec) * 1_000_000 + UInt64(value.tv_nsec) / 1_000
+    package mutating func runOwnedOpportunity(
+        admission: DynamicSignalAnalyzerHostFactAdmission, events: [NormalizedPointerEvent],
+        cycle: RunCycleID, correlations: DynamicSignalAnalyzerPiCorrelationOwner?,
+        fixed: DynamicSignalAnalyzerPiPresentationCorrelation?
+    ) -> DynamicSignalAnalyzerPiInputOpportunityResult {
+        guard let model, state == .inputEligible else { return .failure(.mutationUnavailable) }
+        prepareOpportunity(
+            model: model, cycle: cycle, admission: admission, events: events,
+            correlations: correlations, fixed: fixed, force: false)
+        let result = RuntimeCompletePipeline.run(owner: &self)
+        retainFailure(result)
+        lastPipelineResult = result
+        switch result {
+        case .failed(let record):
+            return .failure(.presentation(.pipeline(failureContext(record), record)))
+        case .completed:
+            if let offer = attemptOffer, offer.disposition != .accepted {
+                return .failure(.presentation(.offer(offer)))
+            }
+            return .completed(
+                DynamicSignalAnalyzerPiOpportunitySummary(
+                    application: applicationSummary,
+                    input: inputSummary, presentation: attemptSummary))
         }
-    #endif
+    }
+
+    private mutating func prepareOpportunity(
+        model: SignalAnalyzerViewModel, cycle: RunCycleID,
+        admission: DynamicSignalAnalyzerHostFactAdmission?, events: [NormalizedPointerEvent],
+        correlations: DynamicSignalAnalyzerPiCorrelationOwner?,
+        fixed: DynamicSignalAnalyzerPiPresentationCorrelation?, force: Bool
+    ) {
+        retainedFailure = RuntimeFocusedFailureState()
+        attemptModel = model
+        attemptCycle = cycle
+        attemptAdmission = admission
+        attemptEvents = events
+        attemptCorrelations = correlations
+        attemptFixedCorrelation = fixed
+        attemptSemanticRevision = nil
+        attemptCorrelation = nil
+        attemptSummary = nil
+        attemptOffer = nil
+        semanticChanged = force
+        derivesPresentation = force
+        applicationSummary = DynamicSignalAnalyzerFactApplicationSummary(
+            factCount: 0, changed: false)
+        inputSummary = DynamicSignalAnalyzerPiInputDrainSummary(
+            eventCount: 0, dispatchedActionCount: 0, cancelledOrRejectedCount: 0)
+    }
+
+    private mutating func retainFailure(_ result: RuntimeCompletePipelineResult<OwnerFailure>) {
+        if case .failed(let record) = result, case .focusedOwner(let failure) = record.failure {
+            retainedFailure.captureFirst(failure, context: failureContext(record))
+        }
+    }
+
+    private func failureContext(
+        _ record: RuntimePipelineFailureRecord<SignalAnalyzerCycleOwnerFailure>
+    ) -> ExecutionContext {
+        ExecutionContext(
+            cycle: attemptCycle!, semanticRevision: attemptSemanticRevision,
+            candidateFrame: attemptCorrelation?.provenance.candidateFrame,
+            phase: phase(for: record.stage))
+    }
+
+    private func phase(for stage: RuntimeCompletePipelineStage) -> ExecutionPhase {
+        switch stage {
+        case .admissionAndSeal: .admitting
+        case .applyAdmittedWork, .freezeObservableMutation: .mutating
+        case .semanticAndObservablePublication: .publishing
+        case .candidateAllocation, .offerAndProduction: .offering
+        default: .deriving
+        }
+    }
+
+    private func presentationResult(
+        _ result: RuntimeCompletePipelineResult<SignalAnalyzerCycleOwnerFailure>
+    ) -> DynamicSignalAnalyzerPiInitialPresentationResult {
+        switch result {
+        case .failed(let record):
+            if let offer = attemptOffer { return .failure(.offer(offer)) }
+            return .failure(.pipeline(failureContext(record), record))
+        case .completed:
+            if let offer = attemptOffer, offer.disposition != .accepted {
+                return .failure(.offer(offer))
+            }
+            guard let summary = attemptSummary else { return .failure(.invalidLifecycle) }
+            return .presented(summary)
+        }
+    }
 
     package mutating func handle(
         _ event: NormalizedPointerEvent
@@ -319,5 +380,214 @@ where Target: DisplayTarget {
         activeInputSequence = nil
         lastInputOrdinal = nil
         capturedAction = nil
+    }
+}
+
+extension DynamicSignalAnalyzerPiInitialPresentationOwner: RuntimeCompletePipelineOwner {
+    package typealias OwnerFailure = SignalAnalyzerCycleOwnerFailure
+
+    package mutating func admitAndSeal() -> RuntimePipelineStepResult<OwnerFailure> {
+        guard state != .quiescent else { return .failure(.execution(.invalidPhase)) }
+        _ = attemptAdmission?.seal()
+        return .advanced
+    }
+
+    package mutating func applyAdmittedWork() -> RuntimePipelineMutationResult<OwnerFailure> {
+        var applied = false
+        if let admission = attemptAdmission {
+            switch pipeline.applySealedFacts(from: admission) {
+            case .applied(let summary):
+                applicationSummary = summary
+                applied = summary.factCount != 0
+            case .rejected(let condition, let mutationApplied):
+                return .failure(
+                    .focusedOwner(.application(condition)), mutationApplied: mutationApplied)
+            case .unavailable(let mutationApplied):
+                return .failure(
+                    .execution(.requiredFacilityUnavailable), mutationApplied: mutationApplied)
+            }
+        }
+        if !attemptEvents.isEmpty {
+            guard pipeline.beginApplicationMutation() else {
+                return .failure(.execution(.invalidPhase), mutationApplied: applied)
+            }
+            guard attemptAdmission?.beginProducer(.action) == true else {
+                return .failure(.execution(.reentrancyViolation), mutationApplied: applied)
+            }
+            var dispatched: UInt16 = 0
+            var cancelled: UInt16 = 0
+            for event in attemptEvents {
+                switch handle(event) {
+                case .dispatched(.dispatched):
+                    dispatched += 1
+                    applied = true
+                case .cancelled, .rejected, .dispatched: cancelled += 1
+                case .captured, .continued, .ignored: break
+                }
+            }
+            attemptAdmission?.endProducer()
+            inputSummary = DynamicSignalAnalyzerPiInputDrainSummary(
+                eventCount: UInt16(attemptEvents.count),
+                dispatchedActionCount: dispatched, cancelledOrRejectedCount: cancelled)
+        }
+        semanticChanged = semanticChanged || pipeline.applicationIsDirty
+        derivesPresentation = semanticChanged || presentationPending
+        return .applied(applied)
+    }
+
+    package mutating func freezeObservableMutation() -> RuntimePipelineStepResult<OwnerFailure> {
+        pipeline.freezeApplicationMutation()
+        return .advanced
+    }
+
+    package mutating func beginObservableCandidateAndExpandSemantics() -> RuntimePipelineStepResult<
+        OwnerFailure
+    > {
+        guard derivesPresentation else {
+            attemptSemanticRevision = publishedSemanticRevision
+            return .advanced
+        }
+        attemptSemanticRevision =
+            semanticChanged
+            ? (attemptFixedCorrelation?.provenance.semanticRevision
+                ?? attemptCorrelations?.reserveSemanticRevision())
+            : publishedSemanticRevision
+        guard let attemptSemanticRevision, let attemptModel else {
+            return .failure(.execution(.identityExhausted))
+        }
+        let failure = pipeline.expandSemantics(
+            model: attemptModel, injectingFailure: injectingFailure)
+        return step(failure)
+    }
+
+    package mutating func resolveLayout() -> RuntimePipelineStepResult<OwnerFailure> {
+        guard derivesPresentation else { return .advanced }
+        let failure = pipeline.resolveLayout(injectingFailure: injectingFailure)
+        if failure != nil { pipeline.cleanup(.resetLayoutCandidate) }
+        return step(failure)
+    }
+
+    package mutating func invokeCanvasesAndDerivePlan() -> RuntimePipelineStepResult<OwnerFailure> {
+        guard derivesPresentation else { return .advanced }
+        let failure = pipeline.invokeCanvases(
+            cycle: attemptCycle!, semanticRevision: attemptSemanticRevision!,
+            injectingFailure: injectingFailure)
+        if failure != nil { pipeline.cleanup(.resetDrawingPlan) }
+        return step(failure)
+    }
+
+    package mutating func preflightCombinedRender() -> RuntimePipelineStepResult<OwnerFailure> {
+        guard derivesPresentation else { return .advanced }
+        let failure = pipeline.preflightRender(injectingFailure: injectingFailure)
+        if failure != nil { pipeline.cleanup(.resetRenderWorkspace) }
+        return step(failure)
+    }
+
+    package mutating func buildInteractionCandidate() -> RuntimePipelineStepResult<OwnerFailure> {
+        guard derivesPresentation else { return .advanced }
+        let failure = pipeline.buildInteraction(injectingFailure: injectingFailure)
+
+        return step(failure)
+    }
+
+    package mutating func publishSemanticAndObservableCandidate()
+        -> RuntimePipelinePublicationResult<OwnerFailure>
+    {
+        if derivesPresentation {
+            if let failure = pipeline.publishObservableCandidate() {
+                return .failure(mapped(failure))
+            }
+            guard let summary = pipeline.preparedSummary else {
+                return .failure(.execution(.invariantViolation))
+            }
+            attemptSummary = summary
+            publishedSemanticRevision = attemptSemanticRevision!
+        }
+        return .published(
+            RuntimePipelinePublication(
+                semanticRevision: attemptSemanticRevision!, changed: semanticChanged))
+    }
+
+    package mutating func allocateCandidate() -> RuntimePipelineStepResult<OwnerFailure> {
+        guard derivesPresentation else { return .advanced }
+        attemptCorrelation =
+            attemptFixedCorrelation
+            ?? attemptCorrelations?.reservePresentation(
+                for: attemptCycle!, semanticRevision: attemptSemanticRevision!)
+        return attemptCorrelation == nil ? .failure(.execution(.identityExhausted)) : .advanced
+    }
+
+    package mutating func offerAndProduce() -> RuntimePipelineOfferResult<OwnerFailure> {
+        guard derivesPresentation else { return .noChange }
+        let correlation = attemptCorrelation!
+        envelopeValidator.install(correlation.provenance)
+        let offer = pipeline.offer(
+            endpoint: &endpoint, provenance: correlation.provenance,
+            expectedHeader: attemptSummary!.render)
+        attemptOffer = offer
+        switch offer.disposition {
+        case .accepted: return .accepted(correlation.presentationRevision)
+        case .backpressured: return .backpressured
+        case .retryableRefusal: return .retryableRefusal
+        case .nonRetryableRefusal: return .nonRetryableRefusal(.endpoint)
+        case .failed: return .failure(.frameOffer(offer.failure!))
+        }
+    }
+
+    package mutating func cleanup(_ action: RuntimeCleanupAction) {
+        guard derivesPresentation else { return }
+        if action == .commitInteractionCandidate {
+            let correlation = attemptCorrelation!
+            guard
+                pipeline.resolveInteraction(
+                    offer: attemptOffer!, presentationRevision: correlation.presentationRevision)
+                    == .committed(correlation.presentationRevision)
+            else {
+                quiesce()
+                return
+            }
+            cancelInputSequence()
+            provenance = correlation.provenance
+            presentationRevision = correlation.presentationRevision
+            model = attemptModel
+            state = .inputEligible
+            lastPresentedSummary = attemptSummary
+        } else {
+            pipeline.cleanup(action)
+        }
+    }
+
+    package mutating func applyDisposition(_ disposition: RuntimePipelineDisposition) {
+        presentationPending = disposition.presentationIntentState == .pending
+    }
+
+    package mutating func finalizePipeline() {
+        pipeline.finalizeApplicationOpportunity()
+        attemptAdmission?.endProducer()
+        if let admission = attemptAdmission { while admission.takeNextSealed() != nil {} }
+        attemptEvents.removeAll(keepingCapacity: true)
+        pipelineFinalizationCount += 1
+    }
+
+    private func step(_ failure: DynamicSignalAnalyzerPresentationFailure?)
+        -> RuntimePipelineStepResult<OwnerFailure>
+    {
+        failure.map { .failure(mapped($0)) } ?? .advanced
+    }
+
+    private func mapped(_ failure: DynamicSignalAnalyzerPresentationFailure) -> RunCycleFailure<
+        OwnerFailure
+    > {
+        switch failure {
+        case .observable(let error): return .focusedOwner(.runtime(.observableState(error)))
+        case .semantic(let error): return .focusedOwner(.runtime(.semantic(error)))
+        case .layout(let error): return .focusedOwner(.runtime(.layout(error)))
+        case .drawing(let error): return .focusedOwner(.runtime(.drawing(error)))
+        case .interaction(let error): return .focusedOwner(.runtime(.interaction(error)))
+        case .runtime(let failure): return .focusedOwner(.runtime(failure))
+        case .render(let error): return .renderProduction(error)
+        case .execution(let error): return .execution(error)
+        case .invariantViolation: return .execution(.invariantViolation)
+        }
     }
 }

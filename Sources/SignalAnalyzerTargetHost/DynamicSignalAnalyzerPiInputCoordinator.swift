@@ -154,118 +154,44 @@ package struct DynamicSignalAnalyzerPiInputCoordinator {
         correlations: DynamicSignalAnalyzerPiCorrelationOwner
     ) -> DynamicSignalAnalyzerPiInputOpportunityResult
     where Target: DisplayTarget {
-        runOpportunity(into: &owner) {
-            guard let cycle = correlations.reserveOpportunityCycle() else { return nil }
-            return { correlations.reservePresentation(for: cycle) }
+        guard let cycle = correlations.reserveOpportunityCycle() else {
+            return .failure(.correlationUnavailable)
         }
+        return runOpportunity(into: &owner, cycle: cycle, correlations: correlations, fixed: nil)
     }
 
     package mutating func runOpportunity<Target>(
         into owner: inout DynamicSignalAnalyzerPiInitialPresentationOwner<Target>,
         provenance: FrameProvenance,
         presentationRevision: PresentationRevision
-    ) -> DynamicSignalAnalyzerPiInputOpportunityResult
-    where Target: DisplayTarget {
-        runOpportunity(into: &owner) {
-            {
-                DynamicSignalAnalyzerPiPresentationCorrelation(
-                    provenance: provenance,
-                    presentationRevision: presentationRevision
-                )
-            }
-        }
+    ) -> DynamicSignalAnalyzerPiInputOpportunityResult where Target: DisplayTarget {
+        runOpportunity(
+            into: &owner, cycle: provenance.cycle, correlations: nil,
+            fixed: DynamicSignalAnalyzerPiPresentationCorrelation(
+                provenance: provenance,
+                presentationRevision: presentationRevision))
     }
 
     private mutating func runOpportunity<Target>(
         into owner: inout DynamicSignalAnalyzerPiInitialPresentationOwner<Target>,
-        makePresentationCorrelation: () -> (() -> DynamicSignalAnalyzerPiPresentationCorrelation?)?
-    ) -> DynamicSignalAnalyzerPiInputOpportunityResult
-    where Target: DisplayTarget {
+        cycle: RunCycleID,
+        correlations: DynamicSignalAnalyzerPiCorrelationOwner?,
+        fixed: DynamicSignalAnalyzerPiPresentationCorrelation?
+    ) -> DynamicSignalAnalyzerPiInputOpportunityResult where Target: DisplayTarget {
         switch opportunityGate.begin() {
-        case .admitted:
-            break
-        case .rejected(let rejection):
-            return .rejected(.application(rejection))
+        case .admitted: break
+        case .rejected(let rejection): return .rejected(.application(rejection))
         }
         defer { _ = opportunityGate.complete() }
-        guard let reservePresentation = makePresentationCorrelation() else {
-            return .failure(.correlationUnavailable)
+        let result = owner.runOwnedOpportunity(
+            admission: factAdmission, events: queue.takeAll(),
+            cycle: cycle, correlations: correlations, fixed: fixed)
+        if case .completed(let summary) = result, summary.presentation != nil,
+            let revision = owner.currentPresentationRevision
+        {
+            gate.installPhysicalPresentation(revision)
         }
-
-        let application: DynamicSignalAnalyzerFactApplicationSummary
-        if factAdmission.seal() {
-            switch owner.applySealedFacts(from: factAdmission) {
-            case .applied(let summary):
-                application = summary
-            case .rejected(let condition):
-                return .failure(.factApplicationRejected(condition))
-            case .unavailable:
-                return .failure(.factAdmissionUnavailable)
-            }
-        } else {
-            application = DynamicSignalAnalyzerFactApplicationSummary(
-                factCount: 0,
-                changed: false
-            )
-        }
-        guard owner.beginApplicationMutation() else {
-            return .failure(.mutationUnavailable)
-        }
-        guard factAdmission.beginProducer(.action) else {
-            _ = owner.endApplicationMutation()
-            return .rejected(.factProducerUnavailable)
-        }
-
-        let events = queue.takeAll()
-        var dispatched: UInt16 = 0
-        var cancelledOrRejected: UInt16 = 0
-        for event in events {
-            switch owner.handle(event) {
-            case .dispatched(.dispatched):
-                dispatched += 1
-            case .cancelled, .rejected, .dispatched:
-                cancelledOrRejected += 1
-            case .captured, .continued, .ignored:
-                break
-            }
-        }
-        factAdmission.endProducer()
-        guard let inputChanged = owner.endApplicationMutation() else {
-            return .failure(.mutationUnavailable)
-        }
-        let input = DynamicSignalAnalyzerPiInputDrainSummary(
-            eventCount: UInt16(events.count),
-            dispatchedActionCount: dispatched,
-            cancelledOrRejectedCount: cancelledOrRejected
-        )
-        guard application.changed || inputChanged else {
-            return .completed(
-                DynamicSignalAnalyzerPiOpportunitySummary(
-                    application: application,
-                    input: input,
-                    presentation: nil
-                )
-            )
-        }
-        guard let correlation = reservePresentation() else {
-            return .failure(.correlationUnavailable)
-        }
-        switch owner.presentNext(
-            provenance: correlation.provenance,
-            presentationRevision: correlation.presentationRevision
-        ) {
-        case .presented(let summary):
-            gate.installPhysicalPresentation(correlation.presentationRevision)
-            return .completed(
-                DynamicSignalAnalyzerPiOpportunitySummary(
-                    application: application,
-                    input: input,
-                    presentation: summary
-                )
-            )
-        case .failure(let failure):
-            return .failure(.presentation(failure))
-        }
+        return result
     }
 
     package mutating func quiesce() {

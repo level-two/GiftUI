@@ -3324,3 +3324,153 @@ func rawFramebufferTouchesReachModelAndReplacementFrame(scenario: String) throws
     }
     #expect(summary.render.positionedGlyphCount == 95)
 }
+
+@Test func dynamicProductionCommonRunnerContainsFocusedFailuresAndRecomputesWithoutReplay() throws {
+    #if GIFTUI_DYNAMIC_PROFILE
+        let failures: [(DynamicSignalAnalyzerPresentationFailure, RuntimeCompletePipelineStage)] = [
+            (.observable(.locationCapacityExhausted), .observableCandidateAndSemanticExpansion),
+            (.semantic(.capacityExhausted), .observableCandidateAndSemanticExpansion),
+            (.layout(.capacityExhausted), .layout),
+            (.drawing(.capacityExhausted), .canvasInvocationAndPlan),
+            (.render(.capacityExhausted), .combinedRenderPreflight),
+            (.interaction(.missingModelTarget), .interactionCandidate),
+        ]
+        for (failure, stage) in failures {
+            let preset = GeneratedSignalAnalyzerPresets.raspberryPiDynamic()
+            let initial = FrameProvenance(
+                cycle: RunCycleID(rawValue: 1),
+                semanticRevision: SemanticRevision(rawValue: 1),
+                candidateFrame: CandidateFrameID(rawValue: 1))
+            let target = try #require(
+                PiScreenDisplayTarget(
+                    sink: EndpointFramebufferSink(),
+                    layout: PiScreenFramebufferLayout(
+                        width: 480, height: 320, bitsPerPixel: 16,
+                        bytesPerRow: 960, mappedBytes: 307_200)!))
+            var owner = try #require(
+                DynamicSignalAnalyzerPiInitialPresentationOwner(
+                    target: target,
+                    limits: preset.runtimeLimits, maximumRecordedTraversalIdentities: 203,
+                    effectivePresentation: dynamicPiEffectivePresentation(preset: preset),
+                    provenance: initial,
+                    presentationRevision: PresentationRevision(rawValue: 1)))
+            let model = makeSemanticJoinModel()
+            guard case .presented = owner.presentInitial(model: model) else {
+                Issue.record("initial failed")
+                return
+            }
+            let oldAction = try #require(owner.eligibleAction(at: 0))
+            let admission = DynamicSignalAnalyzerHostFactAdmission()
+            #expect(admission.beginProducer(.transition))
+            guard case .accepted = admission.submit(.acquisitionState(.running)) else {
+                Issue.record("admission failed")
+                return
+            }
+            admission.endProducer()
+            owner.injectingFailure = failure
+            let result = owner.runOwnedOpportunity(
+                admission: admission, events: [], cycle: RunCycleID(rawValue: 2),
+                correlations: nil,
+                fixed: DynamicSignalAnalyzerPiPresentationCorrelation(
+                    provenance: FrameProvenance(
+                        cycle: RunCycleID(rawValue: 2),
+                        semanticRevision: SemanticRevision(rawValue: 2),
+                        candidateFrame: CandidateFrameID(rawValue: 2)),
+                    presentationRevision: PresentationRevision(rawValue: 2)))
+            guard case .failure(.presentation(.pipeline(let context, let record))) = result else {
+                Issue.record("focused failure did not survive the production boundary")
+                return
+            }
+            #expect(record.stage == stage)
+            #expect(record.disposition.semanticDisposition == .dirty)
+            #expect(record.disposition.wakeReasons == [.semanticDirty])
+            #expect(record.publication == nil)
+            #expect(context.cycle == RunCycleID(rawValue: 2))
+            #expect(context.candidateFrame == nil)
+            #expect(model.state.acquisitionState == .running)
+            #expect(owner.currentPresentationRevision == PresentationRevision(rawValue: 1))
+            #expect(owner.eligibleAction(at: 0) == oldAction)
+            #expect(owner.pipelineFinalizationCount == 2)
+            owner.injectingFailure = nil
+            let next = owner.runOwnedOpportunity(
+                admission: admission, events: [], cycle: RunCycleID(rawValue: 3),
+                correlations: nil,
+                fixed: DynamicSignalAnalyzerPiPresentationCorrelation(
+                    provenance: FrameProvenance(
+                        cycle: RunCycleID(rawValue: 3),
+                        semanticRevision: SemanticRevision(rawValue: 3),
+                        candidateFrame: CandidateFrameID(rawValue: 3)),
+                    presentationRevision: PresentationRevision(rawValue: 3)))
+            guard case .completed(let summary) = next else {
+                Issue.record("dirty recomputation failed")
+                return
+            }
+            #expect(summary.application.factCount == 0)
+            #expect(summary.presentation != nil)
+            #expect(model.state.acquisitionState == .running)
+            #expect(owner.currentPresentationRevision == PresentationRevision(rawValue: 3))
+            #expect(owner.pipelineFinalizationCount == 3)
+        }
+    #endif
+}
+
+@Test func dynamicProductionPartialApplicationPreservesExactRejectionAndDirtyDisposition() throws {
+    #if GIFTUI_DYNAMIC_PROFILE
+        let preset = GeneratedSignalAnalyzerPresets.raspberryPiDynamic()
+        let initial = FrameProvenance(
+            cycle: RunCycleID(rawValue: 1), semanticRevision: SemanticRevision(rawValue: 1),
+            candidateFrame: CandidateFrameID(rawValue: 1))
+        let target = try #require(
+            PiScreenDisplayTarget(
+                sink: EndpointFramebufferSink(),
+                layout: PiScreenFramebufferLayout(
+                    width: 480, height: 320, bitsPerPixel: 16, bytesPerRow: 960,
+                    mappedBytes: 307_200)!))
+        var owner = try #require(
+            DynamicSignalAnalyzerPiInitialPresentationOwner(
+                target: target,
+                limits: preset.runtimeLimits, maximumRecordedTraversalIdentities: 203,
+                effectivePresentation: dynamicPiEffectivePresentation(preset: preset),
+                provenance: initial,
+                presentationRevision: PresentationRevision(rawValue: 1)))
+        let model = makeSemanticJoinModel()
+        guard case .presented = owner.presentInitial(model: model) else {
+            Issue.record("initial failed")
+            return
+        }
+        let admission = DynamicSignalAnalyzerHostFactAdmission()
+        #expect(admission.beginProducer(.transition))
+        guard case .accepted = admission.submit(.acquisitionState(.running)),
+            case .accepted = admission.submit(
+                .captureMutation(
+                    revision: UInt32.max,
+                    change: .reset(baseRevision: 0, baselines: model.state.capture.baselineLevels))),
+            case .accepted = admission.submit(.acquisitionState(.stopped))
+        else {
+            Issue.record("batch admission failed")
+            return
+        }
+        admission.endProducer()
+        let result = owner.runOwnedOpportunity(
+            admission: admission, events: [], cycle: RunCycleID(rawValue: 2), correlations: nil,
+            fixed: DynamicSignalAnalyzerPiPresentationCorrelation(
+                provenance: initial, presentationRevision: PresentationRevision(rawValue: 2)))
+        guard case .failure(.presentation(.pipeline(let context, let record))) = result else {
+            Issue.record("application rejection erased")
+            return
+        }
+        #expect(record.stage == .applyAdmittedWork)
+        #expect(record.failure == .focusedOwner(.application(.captureRevisionMismatch)))
+        #expect(record.disposition.semanticDisposition == .dirty)
+        #expect(record.disposition.wakeReasons == [.semanticDirty])
+        #expect(record.publication == nil)
+        #expect(context.phase == .mutating)
+        #expect(context.cycle == RunCycleID(rawValue: 2))
+        #expect(owner.retainedFailure.firstFailure == .application(.captureRevisionMismatch))
+        #expect(owner.retainedFailure.detectingContext == context)
+        #expect(model.state.acquisitionState == .running)
+        #expect(admission.takeNextSealed() == nil)
+        #expect(owner.currentPresentationRevision == PresentationRevision(rawValue: 1))
+        #expect(owner.pipelineFinalizationCount == 2)
+    #endif
+}

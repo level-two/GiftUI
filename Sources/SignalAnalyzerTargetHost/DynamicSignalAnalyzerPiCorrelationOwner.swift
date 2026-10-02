@@ -4,6 +4,11 @@ import GiftUIExecution
 package struct DynamicSignalAnalyzerPiPresentationCorrelation: Equatable, Sendable {
     package let provenance: FrameProvenance
     package let presentationRevision: PresentationRevision
+
+    package init(provenance: FrameProvenance, presentationRevision: PresentationRevision) {
+        self.provenance = provenance
+        self.presentationRevision = presentationRevision
+    }
 }
 
 /// Reserves production identities only when their corresponding stage begins.
@@ -19,11 +24,19 @@ package final class DynamicSignalAnalyzerPiCorrelationOwner {
         cycles.reserve()
     }
 
+    package func reserveSemanticRevision() -> SemanticRevision? { semantics.reserve() }
+
+    package func reservePresentation(for cycle: RunCycleID)
+        -> DynamicSignalAnalyzerPiPresentationCorrelation?
+    {
+        guard let semanticRevision = reserveSemanticRevision() else { return nil }
+        return reservePresentation(for: cycle, semanticRevision: semanticRevision)
+    }
+
     package func reservePresentation(
-        for cycle: RunCycleID
+        for cycle: RunCycleID, semanticRevision: SemanticRevision
     ) -> DynamicSignalAnalyzerPiPresentationCorrelation? {
         guard
-            let semanticRevision = semantics.reserve(),
             let candidateFrame = candidates.reserve(),
             let presentationRevision = presentations.reserve()
         else { return nil }

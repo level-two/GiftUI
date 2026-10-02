@@ -2697,3 +2697,15 @@ satisfies the required failure/mutation seam prerequisite at f6ef6fb6.
 T10.5 is now executing, followed by T10.6 and final T10.7/T10.8 validation.
 Earlier blocked dispositions remain historical; production joins and unrelated
 gate/review/hardware evidence are not completed by owner approval or handoff.
+
+### T10.5 Dynamic stage-join increment — 2026-10-02
+
+The first production increment implements the concrete common-runner owner,
+transfers fact and pointer mutation into its mutation stage, extracts focused
+operations shared with explicitly selected recording helpers, preserves exact
+failure/context and partial progress, and commits routing only in the accepted
+cleanup action. The current [host-loop design](../implementation-designs/spec-001-connected-target-host-loop.md)
+describes storage and cleanup ownership. Evidence is in the
+[Dynamic stage-join record](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/dynamic-stage-join.md).
+T10.5 remains executing: production normalization/policy, mandatory application
+effects, bounded refusal recovery, and final assembled evidence are still required.
