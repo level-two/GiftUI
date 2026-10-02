@@ -1,5 +1,6 @@
 import GiftUIExecution
 import GiftUIRuntimeCore
+import SignalAnalyzerPresentation
 import Testing
 
 @testable import GiftUIHostConfiguration
@@ -227,4 +228,57 @@ private func differentScheduledReport(
             report.maximumCompactFactsPerServiceWindow,
         maximumRetryableRefusals: report.maximumRetryableRefusals - 1
     )
+}
+
+private enum ScheduledApplicationOwnerFailure: Equatable, Sendable {
+    case runtime(RuntimeOwnerFailure)
+    case application(SignalAnalyzerRuntimeCondition)
+}
+
+private struct ScheduledApplicationFailureInstance: MVPHostInstance {
+    let assemblyReport: HostAssemblyReport
+    let condition: SignalAnalyzerRuntimeCondition
+    var lifecycleState: MVPHostLifecycleState = .active
+    var runCount = 0
+    mutating func activate() -> HostActivationResult<ScheduledFixtureFailure> { .active }
+    mutating func runOpportunity() -> HostOpportunityResult<ScheduledApplicationOwnerFailure> {
+        runCount += 1
+        return .cycle(
+            .failure(
+                ExecutionContext(
+                    cycle: RunCycleID(rawValue: 5),
+                    semanticRevision: nil, candidateFrame: nil, phase: .mutating),
+                .focusedOwner(.application(condition)), nil))
+    }
+    mutating func teardown() { lifecycleState = .quiescent }
+}
+
+@Test func scheduledHostPreservesExactApplicationFailureAndDoesNotResumeQuiescence() {
+    for condition in [
+        SignalAnalyzerRuntimeCondition.captureRevisionMismatch,
+        .reservedFailureCapacityExhausted,
+    ] {
+        let report = scheduledReport()
+        var instance = ScheduledApplicationFailureInstance(
+            assemblyReport: report, condition: condition)
+        var controller = HostScheduledOpportunityController(
+            assemblyReport: report,
+            initialFrameOriginMicroseconds: 0)
+        #expect(controller.recordAcceptedFact(at: 1) == .success(.requestWake))
+        guard
+            case .cycle(_, .cycle(.failure(let context, let failure, _))) =
+                controller.service(at: 250_000, instance: &instance)
+        else {
+            Issue.record("expected exact application failure")
+            return
+        }
+        #expect(failure == .focusedOwner(.application(condition)))
+        #expect(context.phase == .mutating && context.cycle == RunCycleID(rawValue: 5))
+        instance.teardown()
+        _ = controller.record(.semanticDirty, at: 250_001)
+        #expect(
+            controller.service(at: 500_000, instance: &instance)
+                == .rejected(.invalidLifecycle, pacing: nil))
+        #expect(instance.runCount == 1)
+    }
 }

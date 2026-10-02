@@ -608,3 +608,187 @@ private func differentialByteCounts() -> RuntimeStorageByteCounts {
         failureStateBytes: 1
     )
 }
+
+private enum PartialMutationApplicationFailure: UInt8, Equatable, Sendable {
+    case captureRevisionMismatch
+    case reservedFailureCapacityExhausted
+}
+
+private enum PartialMutationOwnerFailure: Equatable, Sendable {
+    case runtime(RuntimeOwnerFailure)
+    case application(PartialMutationApplicationFailure)
+}
+
+private let partialMutationContext = ExecutionContext(
+    cycle: RunCycleID(rawValue: 1), semanticRevision: nil,
+    candidateFrame: nil, phase: .mutating
+)
+
+private struct PartialMutationPipelineOwner: RuntimeCompletePipelineOwner {
+    var rejectedAfterEffects: UInt16?
+    private(set) var appliedEffects: UInt16 = 0
+    private(set) var admittedEffects: UInt16 = 0
+    var failureState = RuntimeFocusedFailureState<PartialMutationOwnerFailure>()
+    private(set) var lastDisposition: RuntimePipelineDisposition?
+    private(set) var stages: [RuntimeCompletePipelineStage] = []
+    private(set) var cleanups: [RuntimeCleanupAction] = []
+    private(set) var finalizationCount = UInt16(0)
+
+    mutating func admitAndSeal() -> RuntimePipelineStepResult<PartialMutationOwnerFailure> {
+        step(.admissionAndSeal)
+    }
+
+    mutating func applyAdmittedWork() -> RuntimePipelineMutationResult<PartialMutationOwnerFailure>
+    {
+        stages.append(.applyAdmittedWork)
+        let rejection = rejectedAfterEffects
+        let effectCount = rejection ?? 0
+        admittedEffects += effectCount
+        appliedEffects += effectCount
+        rejectedAfterEffects = nil
+        if rejection != nil {
+            let failure = PartialMutationOwnerFailure.application(.captureRevisionMismatch)
+            failureState.captureFirst(failure, context: partialMutationContext)
+            return .failure(.focusedOwner(failure), mutationApplied: effectCount > 0)
+        }
+        return .applied(false)
+    }
+
+    mutating func freezeObservableMutation() -> RuntimePipelineStepResult<
+        PartialMutationOwnerFailure
+    > {
+        step(.freezeObservableMutation)
+    }
+
+    mutating func beginObservableCandidateAndExpandSemantics() -> RuntimePipelineStepResult<
+        PartialMutationOwnerFailure
+    > {
+        step(.observableCandidateAndSemanticExpansion)
+    }
+
+    mutating func resolveLayout() -> RuntimePipelineStepResult<PartialMutationOwnerFailure> {
+        step(.layout)
+    }
+
+    mutating func invokeCanvasesAndDerivePlan() -> RuntimePipelineStepResult<
+        PartialMutationOwnerFailure
+    > {
+        step(.canvasInvocationAndPlan)
+    }
+
+    mutating func preflightCombinedRender() -> RuntimePipelineStepResult<
+        PartialMutationOwnerFailure
+    > {
+        step(.combinedRenderPreflight)
+    }
+
+    mutating func buildInteractionCandidate() -> RuntimePipelineStepResult<
+        PartialMutationOwnerFailure
+    > {
+        step(.interactionCandidate)
+    }
+
+    mutating func publishSemanticAndObservableCandidate() -> RuntimePipelinePublicationResult<
+        PartialMutationOwnerFailure
+    > {
+        stages.append(.semanticAndObservablePublication)
+        return .published(
+            RuntimePipelinePublication(
+                semanticRevision: SemanticRevision(rawValue: 7),
+                changed: true
+            )
+        )
+    }
+
+    mutating func allocateCandidate() -> RuntimePipelineStepResult<PartialMutationOwnerFailure> {
+        step(.candidateAllocation)
+    }
+
+    mutating func offerAndProduce() -> RuntimePipelineOfferResult<PartialMutationOwnerFailure> {
+        stages.append(.offerAndProduction)
+        return .accepted(PresentationRevision(rawValue: 9))
+    }
+
+    mutating func cleanup(_ action: RuntimeCleanupAction) { cleanups.append(action) }
+    mutating func applyDisposition(_ value: RuntimePipelineDisposition) { lastDisposition = value }
+    mutating func finalizePipeline() { finalizationCount += 1 }
+
+    private mutating func step(_ stage: RuntimeCompletePipelineStage) -> RuntimePipelineStepResult<
+        PartialMutationOwnerFailure
+    > {
+        stages.append(stage)
+        return .advanced
+    }
+}
+
+@Test(arguments: [UInt16(0), 1, 3])
+func partialMutationFailurePreservesExactProgressAndNeverReplaysAcrossProfiles(effectCount: UInt16)
+{
+    var dynamic = DynamicRuntimeProfileBinding(
+        structuralIdentity: DynamicStructuralIdentity(rawValue: 1)!,
+        limits: differentialLimits(profile: .dynamic), byteCounts: differentialByteCounts()
+    )!
+    var fixed = StaticRuntimeProfileBinding(
+        structuralIdentity: StaticStructuralIdentity(rawValue: 1)!,
+        limits: differentialLimits(profile: .static),
+        regions: DifferentialStaticRegions(), metadata: DifferentialStaticMetadata()
+    )!
+    let active = ExecutionContext(
+        cycle: RunCycleID(rawValue: 1), semanticRevision: nil,
+        candidateFrame: nil, phase: .admitting)
+    let idle = ExecutionContext(
+        cycle: nil, semanticRevision: nil, candidateFrame: nil, phase: .idle)
+    #expect(dynamic.beginOpportunity(context: active) == nil)
+    #expect(fixed.beginOpportunity(context: active) == nil)
+    var dynamicOwner = PartialMutationPipelineOwner(rejectedAfterEffects: effectCount)
+    var staticOwner = PartialMutationPipelineOwner(rejectedAfterEffects: effectCount)
+    let dynamicResult = dynamic.runActivePipeline(owner: &dynamicOwner)
+    let staticResult = fixed.runActivePipeline(owner: &staticOwner)
+    #expect(dynamicResult == staticResult)
+    guard case .failed(let record) = dynamicResult else {
+        Issue.record("expected admitted-work rejection")
+        return
+    }
+    #expect(record.stage == .applyAdmittedWork)
+    #expect(record.failure == .focusedOwner(.application(.captureRevisionMismatch)))
+    #expect(record.disposition.semanticDisposition == (effectCount > 0 ? .dirty : .unchanged))
+    #expect(record.disposition.wakeReasons == (effectCount > 0 ? [.semanticDirty] : []))
+    #expect(dynamicOwner.stages == [.admissionAndSeal, .applyAdmittedWork])
+    #expect(staticOwner.stages == dynamicOwner.stages)
+    #expect(dynamicOwner.cleanups.isEmpty && staticOwner.cleanups.isEmpty)
+    #expect(dynamicOwner.finalizationCount == 1 && staticOwner.finalizationCount == 1)
+    #expect(dynamicOwner.failureState.selectedFailure()?.context == partialMutationContext)
+    #expect(dynamicOwner.failureState.selectedFailure()?.failure == record.failure)
+    dynamicOwner.failureState.captureFirst(
+        .application(.reservedFailureCapacityExhausted),
+        context: idle)
+    dynamicOwner.failureState.recordCleanupFailure(containment: .safetyNotProven)
+    #expect(dynamicOwner.failureState.selectedFailure()?.context == partialMutationContext)
+    #expect(dynamicOwner.failureState.selectedFailure()?.failure == record.failure)
+    #expect(dynamicOwner.failureState.cleanupContainment == .safetyNotProven)
+    #expect(dynamic.finishOpportunity(context: idle) == nil)
+    #expect(fixed.finishOpportunity(context: idle) == nil)
+    #expect(dynamic.beginOpportunity(context: active) == nil)
+    #expect(fixed.beginOpportunity(context: active) == nil)
+    let recovery = dynamic.runActivePipeline(owner: &dynamicOwner)
+    #expect(recovery == fixed.runActivePipeline(owner: &staticOwner))
+    guard case .completed = recovery else {
+        Issue.record("expected rederivation")
+        return
+    }
+    #expect(dynamicOwner.appliedEffects == effectCount && staticOwner.appliedEffects == effectCount)
+    #expect(
+        dynamicOwner.admittedEffects == effectCount && staticOwner.admittedEffects == effectCount)
+    #expect(dynamicOwner.finalizationCount == 2 && staticOwner.finalizationCount == 2)
+    #expect(dynamic.finishOpportunity(context: idle) == nil)
+    #expect(fixed.finishOpportunity(context: idle) == nil)
+    dynamic.quiesce()
+    fixed.quiesce()
+    #expect(dynamic.beginOpportunity(context: active) != nil)
+    #expect(fixed.beginOpportunity(context: active) != nil)
+    let count = dynamicOwner.stages.count
+    #expect(
+        dynamic.runActivePipeline(owner: &dynamicOwner)
+            == fixed.runActivePipeline(owner: &staticOwner))
+    #expect(dynamicOwner.stages.count == count)
+}

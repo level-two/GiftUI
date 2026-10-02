@@ -515,7 +515,7 @@ profile, retry policy, or storage ceiling is introduced.
   bit. [Carrier implementation evidence](../../Tests/ContractFixtures/SPEC013/Evidence/milestone-9/carrier-implementation.md)
   records the focused compile/regression result. T9.2/T9.3 retain behavior and
   production resource obligations.
-- [ ] `T9.2` — Exercise failures before any applied work, after one effect,
+- [x] `T9.2` — Exercise failures before any applied work, after one effect,
   and after several effects. Preserve the exact error and context, skip later
   stages, finalize/clean up once, retain partial state as dirty, and rederive
   on a subsequent allowed opportunity without replay. Compare Dynamic and
@@ -523,6 +523,9 @@ profile, retry policy, or storage ceiling is introduced.
   diagnostics disabled, and quiescent / safety-not-proven containment.
   **Depends on:** `T9.1`.
   **Covers:** RP-004, RP-005, RP-007, RP-008, RP-014, RP-015; HC-010, HC-012.
+  **2026-10-02 disposition:** Complete seam-level differential and no-replay
+  tests; 22 focused tests pass. [Behavior evidence](../../Tests/ContractFixtures/SPEC013/Evidence/milestone-9/partial-mutation-behavior.md)
+  distinguishes scripts from downstream assembled-production obligations.
 - [ ] `T9.3` — Measure framework and production-composed owner/failure/result
   layouts under supported compilers (2 / 4 / 8 / 72-byte ceilings), include
   changed retained storage in profile audits, and verify Embedded declaration
