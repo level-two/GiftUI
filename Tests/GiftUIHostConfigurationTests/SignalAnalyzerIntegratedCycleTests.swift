@@ -78,7 +78,7 @@ private struct IntegratedCycleTranscript: Equatable {
     let actionResult: InteractionDispatchResult?
     let semanticRevision: SemanticRevision?
     let drawingStrokeCount: UInt16
-    let result: RuntimeCompletePipelineResult
+    let result: RuntimeCompletePipelineResult<RuntimeOwnerFailure>
     let cleanup: [RuntimeCleanupAction]
     let wakePendingAfterCompletion: Bool
     let finalState: SignalAnalyzerViewState
@@ -88,7 +88,7 @@ private struct IntegratedCycleOwner: RuntimeCompletePipelineOwner {
     let admission: any IntegratedFactAdmission
     let model: SignalAnalyzerViewModel
     let root: IntegratedRootHooks
-    let offer: RuntimePipelineOfferResult
+    let offer: RuntimePipelineOfferResult<RuntimeOwnerFailure>
     private(set) var stages: [RuntimeCompletePipelineStage] = []
     private(set) var appliedSequences: [UInt32] = []
     private(set) var dirtyTransitions: UInt16 = 0
@@ -102,7 +102,7 @@ private struct IntegratedCycleOwner: RuntimeCompletePipelineOwner {
         admission: any IntegratedFactAdmission,
         model: SignalAnalyzerViewModel,
         root: IntegratedRootHooks,
-        offer: RuntimePipelineOfferResult
+        offer: RuntimePipelineOfferResult<RuntimeOwnerFailure>
     ) {
         self.admission = admission
         self.model = model
@@ -110,14 +110,14 @@ private struct IntegratedCycleOwner: RuntimeCompletePipelineOwner {
         self.offer = offer
     }
 
-    mutating func admitAndSeal() -> RuntimePipelineStepResult {
+    mutating func admitAndSeal() -> RuntimePipelineStepResult<RuntimeOwnerFailure> {
         stages.append(.admissionAndSeal)
         return admission.seal()
             ? .advanced
             : .failure(.execution(.requiredFacilityUnavailable))
     }
 
-    mutating func applyAdmittedWork() -> RuntimePipelineMutationResult {
+    mutating func applyAdmittedWork() -> RuntimePipelineMutationResult<RuntimeOwnerFailure> {
         stages.append(.applyAdmittedWork)
         root.setPhase(.mutating)
         while let next = admission.takeNextSealed() {
@@ -128,23 +128,25 @@ private struct IntegratedCycleOwner: RuntimeCompletePipelineOwner {
                 changed = changed || factChanged
                 if !wasDirty, root.isDirty() { dirtyTransitions += 1 }
             case .rejected:
-                return .failure(.execution(.invariantViolation))
+                return .failure(.execution(.invariantViolation), mutationApplied: changed)
             }
         }
         actionResult = root.dispatchAction()
         guard actionResult == .dispatched else {
-            return .failure(.execution(.invariantViolation))
+            return .failure(.execution(.invariantViolation), mutationApplied: changed)
         }
         return .applied(changed)
     }
 
-    mutating func freezeObservableMutation() -> RuntimePipelineStepResult {
+    mutating func freezeObservableMutation() -> RuntimePipelineStepResult<RuntimeOwnerFailure> {
         stages.append(.freezeObservableMutation)
         root.setPhase(.deriving)
         return .advanced
     }
 
-    mutating func beginObservableCandidateAndExpandSemantics() -> RuntimePipelineStepResult {
+    mutating func beginObservableCandidateAndExpandSemantics() -> RuntimePipelineStepResult<
+        RuntimeOwnerFailure
+    > {
         stages.append(.observableCandidateAndSemanticExpansion)
         guard root.beginCandidate() == .success(.candidateStarted),
             root.encounterPreserved() == .success(.preserved)
@@ -154,28 +156,30 @@ private struct IntegratedCycleOwner: RuntimeCompletePipelineOwner {
         return .advanced
     }
 
-    mutating func resolveLayout() -> RuntimePipelineStepResult {
+    mutating func resolveLayout() -> RuntimePipelineStepResult<RuntimeOwnerFailure> {
         stages.append(.layout)
         return .advanced
     }
 
-    mutating func invokeCanvasesAndDerivePlan() -> RuntimePipelineStepResult {
+    mutating func invokeCanvasesAndDerivePlan() -> RuntimePipelineStepResult<RuntimeOwnerFailure> {
         stages.append(.canvasInvocationAndPlan)
         drawingStrokeCount = 5
         return .advanced
     }
 
-    mutating func preflightCombinedRender() -> RuntimePipelineStepResult {
+    mutating func preflightCombinedRender() -> RuntimePipelineStepResult<RuntimeOwnerFailure> {
         stages.append(.combinedRenderPreflight)
         return .advanced
     }
 
-    mutating func buildInteractionCandidate() -> RuntimePipelineStepResult {
+    mutating func buildInteractionCandidate() -> RuntimePipelineStepResult<RuntimeOwnerFailure> {
         stages.append(.interactionCandidate)
         return .advanced
     }
 
-    mutating func publishSemanticAndObservableCandidate() -> RuntimePipelinePublicationResult {
+    mutating func publishSemanticAndObservableCandidate() -> RuntimePipelinePublicationResult<
+        RuntimeOwnerFailure
+    > {
         stages.append(.semanticAndObservablePublication)
         root.setPhase(.publishing)
         guard case .success = root.publishCandidate() else {
@@ -189,12 +193,12 @@ private struct IntegratedCycleOwner: RuntimeCompletePipelineOwner {
         )
     }
 
-    mutating func allocateCandidate() -> RuntimePipelineStepResult {
+    mutating func allocateCandidate() -> RuntimePipelineStepResult<RuntimeOwnerFailure> {
         stages.append(.candidateAllocation)
         return .advanced
     }
 
-    mutating func offerAndProduce() -> RuntimePipelineOfferResult {
+    mutating func offerAndProduce() -> RuntimePipelineOfferResult<RuntimeOwnerFailure> {
         stages.append(.offerAndProduction)
         return offer
     }
@@ -214,7 +218,7 @@ private struct IntegratedCycleOwner: RuntimeCompletePipelineOwner {
 
 @Test(arguments: [false, true])
 func integratedAnalyzerCycleIsProfileEquivalent(retryableOffer: Bool) {
-    let offer: RuntimePipelineOfferResult =
+    let offer: RuntimePipelineOfferResult<RuntimeOwnerFailure> =
         retryableOffer
         ? .retryableRefusal
         : .accepted(PresentationRevision(rawValue: 1))
@@ -260,7 +264,7 @@ func integratedAnalyzerCycleIsProfileEquivalent(retryableOffer: Bool) {
 }
 
 private func dynamicIntegratedTranscript(
-    offer: RuntimePipelineOfferResult
+    offer: RuntimePipelineOfferResult<RuntimeOwnerFailure>
 ) -> IntegratedCycleTranscript {
     let admission = DynamicSignalAnalyzerHostFactAdmission()
     let repository = IntegratedRepository()
@@ -304,7 +308,7 @@ private func dynamicIntegratedTranscript(
 }
 
 private func staticIntegratedTranscript(
-    offer: RuntimePipelineOfferResult
+    offer: RuntimePipelineOfferResult<RuntimeOwnerFailure>
 ) -> IntegratedCycleTranscript {
     var root = StaticObservableRootAdapter<SignalAnalyzerViewModel, UInt16>(
         structuralIdentity: 1,
@@ -371,7 +375,7 @@ private func runIntegratedTranscript(
     admission: any IntegratedFactAdmission,
     model: SignalAnalyzerViewModel,
     root: IntegratedRootHooks,
-    offer: RuntimePipelineOfferResult
+    offer: RuntimePipelineOfferResult<RuntimeOwnerFailure>
 ) -> IntegratedCycleTranscript {
     var pacing = makeIntegratedPacingController()
     var admissionSequences: [UInt32] = []

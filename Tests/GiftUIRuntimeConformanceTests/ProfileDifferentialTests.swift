@@ -38,7 +38,7 @@ private struct DifferentialTranscript: Equatable {
     let offer: UInt16
     let failure: UInt16
     let cleanup: [RuntimeCleanupAction]
-    let result: RuntimeCompletePipelineResult
+    let result: RuntimeCompletePipelineResult<RuntimeOwnerFailure>
     let finalization: UInt16
 }
 
@@ -47,36 +47,44 @@ private struct DifferentialPipelineOwner: RuntimeCompletePipelineOwner {
     private(set) var cleanups: [RuntimeCleanupAction] = []
     private(set) var finalizationCount = UInt16(0)
 
-    mutating func admitAndSeal() -> RuntimePipelineStepResult { step(.admissionAndSeal) }
+    mutating func admitAndSeal() -> RuntimePipelineStepResult<RuntimeOwnerFailure> {
+        step(.admissionAndSeal)
+    }
 
-    mutating func applyAdmittedWork() -> RuntimePipelineMutationResult {
+    mutating func applyAdmittedWork() -> RuntimePipelineMutationResult<RuntimeOwnerFailure> {
         stages.append(.applyAdmittedWork)
         return .applied(true)
     }
 
-    mutating func freezeObservableMutation() -> RuntimePipelineStepResult {
+    mutating func freezeObservableMutation() -> RuntimePipelineStepResult<RuntimeOwnerFailure> {
         step(.freezeObservableMutation)
     }
 
-    mutating func beginObservableCandidateAndExpandSemantics() -> RuntimePipelineStepResult {
+    mutating func beginObservableCandidateAndExpandSemantics() -> RuntimePipelineStepResult<
+        RuntimeOwnerFailure
+    > {
         step(.observableCandidateAndSemanticExpansion)
     }
 
-    mutating func resolveLayout() -> RuntimePipelineStepResult { step(.layout) }
+    mutating func resolveLayout() -> RuntimePipelineStepResult<RuntimeOwnerFailure> {
+        step(.layout)
+    }
 
-    mutating func invokeCanvasesAndDerivePlan() -> RuntimePipelineStepResult {
+    mutating func invokeCanvasesAndDerivePlan() -> RuntimePipelineStepResult<RuntimeOwnerFailure> {
         step(.canvasInvocationAndPlan)
     }
 
-    mutating func preflightCombinedRender() -> RuntimePipelineStepResult {
+    mutating func preflightCombinedRender() -> RuntimePipelineStepResult<RuntimeOwnerFailure> {
         step(.combinedRenderPreflight)
     }
 
-    mutating func buildInteractionCandidate() -> RuntimePipelineStepResult {
+    mutating func buildInteractionCandidate() -> RuntimePipelineStepResult<RuntimeOwnerFailure> {
         step(.interactionCandidate)
     }
 
-    mutating func publishSemanticAndObservableCandidate() -> RuntimePipelinePublicationResult {
+    mutating func publishSemanticAndObservableCandidate() -> RuntimePipelinePublicationResult<
+        RuntimeOwnerFailure
+    > {
         stages.append(.semanticAndObservablePublication)
         return .published(
             RuntimePipelinePublication(
@@ -86,9 +94,11 @@ private struct DifferentialPipelineOwner: RuntimeCompletePipelineOwner {
         )
     }
 
-    mutating func allocateCandidate() -> RuntimePipelineStepResult { step(.candidateAllocation) }
+    mutating func allocateCandidate() -> RuntimePipelineStepResult<RuntimeOwnerFailure> {
+        step(.candidateAllocation)
+    }
 
-    mutating func offerAndProduce() -> RuntimePipelineOfferResult {
+    mutating func offerAndProduce() -> RuntimePipelineOfferResult<RuntimeOwnerFailure> {
         stages.append(.offerAndProduction)
         return .accepted(PresentationRevision(rawValue: 9))
     }
@@ -97,7 +107,9 @@ private struct DifferentialPipelineOwner: RuntimeCompletePipelineOwner {
     mutating func applyDisposition(_: RuntimePipelineDisposition) {}
     mutating func finalizePipeline() { finalizationCount += 1 }
 
-    private mutating func step(_ stage: RuntimeCompletePipelineStage) -> RuntimePipelineStepResult {
+    private mutating func step(_ stage: RuntimeCompletePipelineStage) -> RuntimePipelineStepResult<
+        RuntimeOwnerFailure
+    > {
         stages.append(stage)
         return .advanced
     }
@@ -510,7 +522,7 @@ private func stageCount(
     UInt16(owner.stages.count(where: { $0 == stage }))
 }
 
-private func failureCount(in result: RuntimeCompletePipelineResult) -> UInt16 {
+private func failureCount(in result: RuntimeCompletePipelineResult<RuntimeOwnerFailure>) -> UInt16 {
     if case .failed = result { return 1 }
     return 0
 }

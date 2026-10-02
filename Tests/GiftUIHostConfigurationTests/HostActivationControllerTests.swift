@@ -1,3 +1,4 @@
+import GiftUIRuntimeCore
 import Testing
 
 @testable import GiftUIHostConfiguration
@@ -177,7 +178,7 @@ private struct ActivationFixtureInstance: MVPHostInstance {
         controller.activate(owner: &owner, invariantFailure: .invariant)
     }
 
-    mutating func runOpportunity() -> HostOpportunityResult {
+    mutating func runOpportunity() -> HostOpportunityResult<RuntimeOwnerFailure> {
         .invalidLifecycle
     }
 

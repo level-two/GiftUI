@@ -8,12 +8,11 @@ package struct DynamicRuntimeExecutionCoordinator<Admission, Opportunity>:
     ExecutionAdmissionSink, ExecutionOpportunityRunner
 where
     Admission: ExecutionAdmissionSink,
-    Opportunity: ExecutionOpportunityRunner,
-    Opportunity.OwnerFailure == RuntimeOwnerFailure
+    Opportunity: ExecutionOpportunityRunner
 {
     package typealias StateChangeFact = Admission.StateChangeFact
     package typealias CompletionFact = Admission.CompletionFact
-    package typealias OwnerFailure = RuntimeOwnerFailure
+    package typealias OwnerFailure = Opportunity.OwnerFailure
 
     private let binding: UnsafeMutablePointer<DynamicRuntimeProfileBinding>
     package private(set) var admission: Admission
@@ -50,7 +49,7 @@ where
         return admission.submit(completion: completion)
     }
 
-    package mutating func runOpportunity() -> RunCycleResult<RuntimeOwnerFailure> {
+    package mutating func runOpportunity() -> RunCycleResult<OwnerFailure> {
         guard !binding.pointee.isQuiescent else {
             return .failure(
                 binding.pointee.executionContext,

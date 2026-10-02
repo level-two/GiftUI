@@ -17,7 +17,7 @@ func focusedFailureStateRetainsFirstExactValueAndExecutionContext() {
         candidateFrame: CandidateFrameID(rawValue: 2),
         phase: .finalizing
     )
-    var state = RuntimeFocusedFailureState()
+    var state = RuntimeFocusedFailureState<RuntimeOwnerFailure>()
     state.captureFirst(.semantic(.capacityExhausted), context: firstContext)
     state.captureFirst(.layout(.invariantViolation), context: laterContext)
 
@@ -39,7 +39,7 @@ func cleanupFailureCanOnlyWidenAndNeverReplacePrimaryFailure() {
         candidateFrame: nil,
         phase: .deriving
     )
-    var state = RuntimeFocusedFailureState()
+    var state = RuntimeFocusedFailureState<RuntimeOwnerFailure>()
     state.captureFirst(.drawing(.invalidValue), context: context)
     state.recordCleanupFailure(containment: .contained)
     state.recordCleanupFailure(containment: .none)

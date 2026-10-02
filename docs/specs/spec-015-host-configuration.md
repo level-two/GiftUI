@@ -2,7 +2,7 @@
 id: SPEC-015
 feature: giftui-mvp-architecture
 title: MVP Target-Host Configuration Contract
-status: approved
+status: implementing
 authors:
   - codex
 created: 2026-08-28
@@ -1479,3 +1479,9 @@ Specification:
 - [ADR-027](../adrs/adr-027-bounded-presentation-fact-admission.md)
 - [ADR-031](../adrs/adr-031-bounded-canvas-failure-and-startup-gate-integration.md)
 - [ADR-033](../adrs/adr-033-bounded-application-actions-and-model-target-dispatch.md)
+
+### Amendment execution — 2026-10-02
+
+Authorized owner repair began under SPEC-013 T9.1 after implementation-readiness
+assessment. The amended contract is now implementing; approval records above
+remain historical and do not establish conformance.

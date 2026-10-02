@@ -18,7 +18,7 @@ private struct CompileHostInstance: MVPHostInstance, ~Copyable {
         .failure(.failed)
     }
 
-    mutating func runOpportunity() -> HostOpportunityResult {
+    mutating func runOpportunity() -> HostOpportunityResult<RuntimeOwnerFailure> {
         .invalidLifecycle
     }
 
@@ -101,7 +101,7 @@ func verifyHostConfigurationSurface() {
     requireSendable(HostValidationResult.self)
     requireSendable(MVPHostLifecycleState.self)
     requireSendable(HostActivationResult<CompileActivationFailure>.self)
-    requireSendable(HostOpportunityResult.self)
+    requireSendable(HostOpportunityResult<RuntimeOwnerFailure>.self)
 
     var instance = CompileHostInstance()
     var validator = CompileValidator()

@@ -73,7 +73,7 @@ where Owner: SignalAnalyzerPresetLiveOwner {
         controller.activate(owner: &owner, invariantFailure: invariantFailure)
     }
 
-    package mutating func runOpportunity() -> HostOpportunityResult {
+    package mutating func runOpportunity() -> HostOpportunityResult<RuntimeOwnerFailure> {
         guard lifecycleState == .active else { return .invalidLifecycle }
         return .cycle(owner.runOpportunity())
     }

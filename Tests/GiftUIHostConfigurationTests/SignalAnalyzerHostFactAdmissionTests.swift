@@ -34,20 +34,20 @@ private struct SignalAnalyzerMutationPipelineOwner: RuntimeCompletePipelineOwner
         self.deferredAfterSeal = deferredAfterSeal
     }
 
-    mutating func admitAndSeal() -> RuntimePipelineStepResult {
+    mutating func admitAndSeal() -> RuntimePipelineStepResult<RuntimeOwnerFailure> {
         admission.seal() ? .advanced : .failure(.execution(.requiredFacilityUnavailable))
     }
 
-    mutating func applyAdmittedWork() -> RuntimePipelineMutationResult {
+    mutating func applyAdmittedWork() -> RuntimePipelineMutationResult<RuntimeOwnerFailure> {
         observableRoot.setExecutionPhase(.mutating)
         if let deferredAfterSeal {
             guard admission.beginProducer(.action) else {
-                return .failure(.execution(.reentrancyViolation))
+                return .failure(.execution(.reentrancyViolation), mutationApplied: false)
             }
             let outcome = admission.submit(deferredAfterSeal)
             admission.endProducer()
             guard case .accepted = outcome else {
-                return .failure(.execution(.invariantViolation))
+                return .failure(.execution(.invariantViolation), mutationApplied: false)
             }
             self.deferredAfterSeal = nil
         }
@@ -61,18 +61,21 @@ private struct SignalAnalyzerMutationPipelineOwner: RuntimeCompletePipelineOwner
                 if !wasDirty, observableRoot.isDirty {
                     dirtyTransitionCount += 1
                 }
-            case .rejected: return .failure(.execution(.invariantViolation))
+            case .rejected:
+                return .failure(.execution(.invariantViolation), mutationApplied: changed)
             }
         }
         return .applied(changed)
     }
 
-    mutating func freezeObservableMutation() -> RuntimePipelineStepResult {
+    mutating func freezeObservableMutation() -> RuntimePipelineStepResult<RuntimeOwnerFailure> {
         observableRoot.setExecutionPhase(.deriving)
         return .advanced
     }
 
-    mutating func beginObservableCandidateAndExpandSemantics() -> RuntimePipelineStepResult {
+    mutating func beginObservableCandidateAndExpandSemantics() -> RuntimePipelineStepResult<
+        RuntimeOwnerFailure
+    > {
         guard observableRoot.beginCandidate() == .success(.candidateStarted) else {
             return .failure(.execution(.invariantViolation))
         }
@@ -94,12 +97,20 @@ private struct SignalAnalyzerMutationPipelineOwner: RuntimeCompletePipelineOwner
         }
     }
 
-    mutating func resolveLayout() -> RuntimePipelineStepResult { .advanced }
-    mutating func invokeCanvasesAndDerivePlan() -> RuntimePipelineStepResult { .advanced }
-    mutating func preflightCombinedRender() -> RuntimePipelineStepResult { .advanced }
-    mutating func buildInteractionCandidate() -> RuntimePipelineStepResult { .advanced }
+    mutating func resolveLayout() -> RuntimePipelineStepResult<RuntimeOwnerFailure> { .advanced }
+    mutating func invokeCanvasesAndDerivePlan() -> RuntimePipelineStepResult<RuntimeOwnerFailure> {
+        .advanced
+    }
+    mutating func preflightCombinedRender() -> RuntimePipelineStepResult<RuntimeOwnerFailure> {
+        .advanced
+    }
+    mutating func buildInteractionCandidate() -> RuntimePipelineStepResult<RuntimeOwnerFailure> {
+        .advanced
+    }
 
-    mutating func publishSemanticAndObservableCandidate() -> RuntimePipelinePublicationResult {
+    mutating func publishSemanticAndObservableCandidate() -> RuntimePipelinePublicationResult<
+        RuntimeOwnerFailure
+    > {
         observableRoot.setExecutionPhase(.publishing)
         guard case .success = observableRoot.finishCandidate(.publish) else {
             return .failure(.execution(.invariantViolation))
@@ -113,8 +124,12 @@ private struct SignalAnalyzerMutationPipelineOwner: RuntimeCompletePipelineOwner
         )
     }
 
-    mutating func allocateCandidate() -> RuntimePipelineStepResult { .advanced }
-    mutating func offerAndProduce() -> RuntimePipelineOfferResult { .backpressured }
+    mutating func allocateCandidate() -> RuntimePipelineStepResult<RuntimeOwnerFailure> {
+        .advanced
+    }
+    mutating func offerAndProduce() -> RuntimePipelineOfferResult<RuntimeOwnerFailure> {
+        .backpressured
+    }
     mutating func cleanup(_ action: RuntimeCleanupAction) {}
     mutating func applyDisposition(_ disposition: RuntimePipelineDisposition) {}
     mutating func finalizePipeline() {

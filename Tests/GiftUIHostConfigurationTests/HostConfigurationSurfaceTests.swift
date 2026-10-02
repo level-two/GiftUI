@@ -20,7 +20,7 @@ private struct CompileHostInstance: MVPHostInstance, ~Copyable {
         .failure(.failed)
     }
 
-    mutating func runOpportunity() -> HostOpportunityResult {
+    mutating func runOpportunity() -> HostOpportunityResult<RuntimeOwnerFailure> {
         .invalidLifecycle
     }
 
@@ -117,7 +117,7 @@ private func requireSendable<T: Sendable>(_: T.Type) {}
         HostActivationResult<CompileActivationFailure>.failure(.failed)
             == .failure(.failed)
     )
-    #expect(HostOpportunityResult.invalidLifecycle == .invalidLifecycle)
+    #expect(HostOpportunityResult<RuntimeOwnerFailure>.invalidLifecycle == .invalidLifecycle)
 }
 
 @Test func hostConfigurationResultFamiliesAreSendable() {
@@ -129,7 +129,7 @@ private func requireSendable<T: Sendable>(_: T.Type) {}
     requireSendable(HostValidationResult.self)
     requireSendable(MVPHostLifecycleState.self)
     requireSendable(HostActivationResult<CompileActivationFailure>.self)
-    requireSendable(HostOpportunityResult.self)
+    requireSendable(HostOpportunityResult<RuntimeOwnerFailure>.self)
 }
 
 @Test func exactNoncopyableHostProtocolsAcceptFiniteConformers() {

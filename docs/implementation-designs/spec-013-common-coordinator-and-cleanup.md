@@ -234,3 +234,19 @@ claim for the described complete pipeline; existing fixtures test a narrower
 application-failure corpus. The owning Spec review and plan repair must resolve
 these seams before either analyzer profile delegates its production opportunity.
 No alternate coordinator or new contract is specified by this note.
+
+## Amended bounded failure seam — 2026-10-02
+
+The common pipeline owner, stage results, failure record and returned pipeline
+result share `OwnerFailure`. Framework owners specialize with
+`RuntimeOwnerFailure`; application integrations supply a finite inline sum
+above Runtime Core. Both profile bindings return the owner's specialization.
+Execution coordinator wrappers forward `Opportunity.OwnerFailure`; first-failure
+storage retains that same value and original context. The scheduled host
+result forwards `Instance.OwnerFailure` without narrowing it.
+
+Mutation failure carries actual progress separately from the exact error.
+The common finalizer leaves partially applied state dirty with semantic wake
+and skips derivation; owners still perform mandatory containment and quiescence.
+A wake does not reactivate a quiescent owner. No failure causes replay or
+rollback, and no application type is imported by Runtime Core.

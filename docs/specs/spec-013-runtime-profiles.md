@@ -2,7 +2,7 @@
 id: SPEC-013
 feature: giftui-mvp-architecture
 title: Dynamic and Static Runtime Profile Contract
-status: approved
+status: implementing
 authors:
   - codex
 created: 2026-08-27
@@ -1049,3 +1049,9 @@ existing lifecycle or deferred tracks and are not required by this contract.
 - [SPIKE-004](../spikes/spike-004-canvas-path-plan-feasibility.md)
 - [SPIKE-007](../spikes/spike-007-static-action-storage-feasibility.md)
 - [SPIKE-008](../spikes/spike-008-spec-012-exact-canvas-declarations.md)
+
+### Amendment execution — 2026-10-02
+
+Authorized owner repair began under SPEC-013 T9.1 after implementation-readiness
+assessment. The amended contract is now implementing; approval records above
+remain historical and do not establish conformance.

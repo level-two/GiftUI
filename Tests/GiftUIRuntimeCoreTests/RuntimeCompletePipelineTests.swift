@@ -17,7 +17,7 @@ private struct CompletePipelineRecorder: RuntimeCompletePipelineOwner {
         semanticRevision: SemanticRevision(rawValue: 7),
         changed: true
     )
-    var offer: RuntimePipelineOfferResult = .accepted(
+    var offer: RuntimePipelineOfferResult<RuntimeOwnerFailure> = .accepted(
         PresentationRevision(rawValue: 9)
     )
     private(set) var stages: [RuntimeCompletePipelineStage] = []
@@ -25,53 +25,57 @@ private struct CompletePipelineRecorder: RuntimeCompletePipelineOwner {
     private(set) var dispositions: [RuntimePipelineDisposition] = []
     private(set) var finalizationCount = 0
 
-    mutating func admitAndSeal() -> RuntimePipelineStepResult {
+    mutating func admitAndSeal() -> RuntimePipelineStepResult<RuntimeOwnerFailure> {
         step(.admissionAndSeal)
     }
 
-    mutating func applyAdmittedWork() -> RuntimePipelineMutationResult {
+    mutating func applyAdmittedWork() -> RuntimePipelineMutationResult<RuntimeOwnerFailure> {
         stages.append(.applyAdmittedWork)
         return failureStage == .applyAdmittedWork
-            ? .failure(failure(for: .applyAdmittedWork))
+            ? .failure(failure(for: .applyAdmittedWork), mutationApplied: false)
             : .applied(mutationApplied)
     }
 
-    mutating func freezeObservableMutation() -> RuntimePipelineStepResult {
+    mutating func freezeObservableMutation() -> RuntimePipelineStepResult<RuntimeOwnerFailure> {
         step(.freezeObservableMutation)
     }
 
-    mutating func beginObservableCandidateAndExpandSemantics() -> RuntimePipelineStepResult {
+    mutating func beginObservableCandidateAndExpandSemantics() -> RuntimePipelineStepResult<
+        RuntimeOwnerFailure
+    > {
         step(.observableCandidateAndSemanticExpansion)
     }
 
-    mutating func resolveLayout() -> RuntimePipelineStepResult {
+    mutating func resolveLayout() -> RuntimePipelineStepResult<RuntimeOwnerFailure> {
         step(.layout)
     }
 
-    mutating func invokeCanvasesAndDerivePlan() -> RuntimePipelineStepResult {
+    mutating func invokeCanvasesAndDerivePlan() -> RuntimePipelineStepResult<RuntimeOwnerFailure> {
         step(.canvasInvocationAndPlan)
     }
 
-    mutating func preflightCombinedRender() -> RuntimePipelineStepResult {
+    mutating func preflightCombinedRender() -> RuntimePipelineStepResult<RuntimeOwnerFailure> {
         step(.combinedRenderPreflight)
     }
 
-    mutating func buildInteractionCandidate() -> RuntimePipelineStepResult {
+    mutating func buildInteractionCandidate() -> RuntimePipelineStepResult<RuntimeOwnerFailure> {
         step(.interactionCandidate)
     }
 
-    mutating func publishSemanticAndObservableCandidate() -> RuntimePipelinePublicationResult {
+    mutating func publishSemanticAndObservableCandidate() -> RuntimePipelinePublicationResult<
+        RuntimeOwnerFailure
+    > {
         stages.append(.semanticAndObservablePublication)
         return failureStage == .semanticAndObservablePublication
             ? .failure(failure(for: .semanticAndObservablePublication))
             : .published(publication)
     }
 
-    mutating func allocateCandidate() -> RuntimePipelineStepResult {
+    mutating func allocateCandidate() -> RuntimePipelineStepResult<RuntimeOwnerFailure> {
         step(.candidateAllocation)
     }
 
-    mutating func offerAndProduce() -> RuntimePipelineOfferResult {
+    mutating func offerAndProduce() -> RuntimePipelineOfferResult<RuntimeOwnerFailure> {
         stages.append(.offerAndProduction)
         if failureStage == .offerAndProduction {
             return .failure(failure(for: .offerAndProduction))
@@ -93,7 +97,7 @@ private struct CompletePipelineRecorder: RuntimeCompletePipelineOwner {
 
     private mutating func step(
         _ stage: RuntimeCompletePipelineStage
-    ) -> RuntimePipelineStepResult {
+    ) -> RuntimePipelineStepResult<RuntimeOwnerFailure> {
         stages.append(stage)
         guard failureStage != stage else {
             return .failure(failure(for: stage))

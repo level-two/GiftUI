@@ -8,10 +8,11 @@ package enum HostScheduledOpportunityError: UInt8, Error, Equatable, Sendable {
     case invalidCompletion = 4
 }
 
-package enum HostScheduledOpportunityResult: Equatable, Sendable {
+package enum HostScheduledOpportunityResult<OwnerFailure: Equatable & Sendable>: Equatable, Sendable
+{
     case noWork
     case wait(untilMicroseconds: UInt64)
-    case cycle(reasons: ExecutionWakeReasons, result: HostOpportunityResult)
+    case cycle(reasons: ExecutionWakeReasons, result: HostOpportunityResult<OwnerFailure>)
     case rejected(HostScheduledOpportunityError, pacing: HostWakePacingError?)
 }
 
@@ -57,7 +58,7 @@ package struct HostScheduledOpportunityController: Sendable {
     package mutating func service<Instance: MVPHostInstance>(
         at timestampMicroseconds: UInt64,
         instance: inout Instance
-    ) -> HostScheduledOpportunityResult {
+    ) -> HostScheduledOpportunityResult<Instance.OwnerFailure> {
         guard instance.lifecycleState == .active else {
             return .rejected(.invalidLifecycle, pacing: nil)
         }

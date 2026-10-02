@@ -103,17 +103,18 @@ package enum HostActivationResult<Failure: Equatable & Sendable>:
     case failure(Failure)
 }
 
-package enum HostOpportunityResult: Equatable, Sendable {
-    case cycle(RunCycleResult<RuntimeOwnerFailure>)
+package enum HostOpportunityResult<OwnerFailure: Equatable & Sendable>: Equatable, Sendable {
+    case cycle(RunCycleResult<OwnerFailure>)
     case invalidLifecycle
 }
 
 package protocol MVPHostInstance: ~Copyable {
     associatedtype ActivationFailure: Equatable & Sendable
+    associatedtype OwnerFailure: Equatable & Sendable = RuntimeOwnerFailure
     var lifecycleState: MVPHostLifecycleState { get }
     var assemblyReport: HostAssemblyReport { get }
     mutating func activate() -> HostActivationResult<ActivationFailure>
-    mutating func runOpportunity() -> HostOpportunityResult
+    mutating func runOpportunity() -> HostOpportunityResult<OwnerFailure>
     mutating func teardown()
 }
 

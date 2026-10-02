@@ -48,7 +48,7 @@ private struct ScheduledFixtureInstance: MVPHostInstance {
         .active
     }
 
-    mutating func runOpportunity() -> HostOpportunityResult {
+    mutating func runOpportunity() -> HostOpportunityResult<RuntimeOwnerFailure> {
         guard lifecycleState == .active else { return .invalidLifecycle }
         probe.runCount += 1
         probe.applySealedFacts()

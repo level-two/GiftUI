@@ -129,7 +129,7 @@ package struct DynamicRuntimeProfileBinding: ~Copyable {
 
     package mutating func runActivePipeline<Owner>(
         owner: inout Owner
-    ) -> RuntimeCompletePipelineResult
+    ) -> RuntimeCompletePipelineResult<Owner.OwnerFailure>
     where Owner: RuntimeCompletePipelineOwner & ~Copyable {
         guard storage.storageLifetimeState == .attemptActive else {
             return RuntimeCompletePipeline.rejectInactive(owner: &owner)

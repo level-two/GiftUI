@@ -6,8 +6,8 @@ package enum RuntimeCleanupFailureContainment: UInt8, Equatable, Sendable {
     case safetyNotProven = 2
 }
 
-package struct RuntimeFocusedFailureState: Equatable, Sendable {
-    package private(set) var firstFailure: RuntimeOwnerFailure?
+package struct RuntimeFocusedFailureState<OwnerFailure: Equatable & Sendable>: Equatable, Sendable {
+    package private(set) var firstFailure: OwnerFailure?
     package private(set) var detectingContext: ExecutionContext?
     package private(set) var cleanupContainment: RuntimeCleanupFailureContainment
 
@@ -18,7 +18,7 @@ package struct RuntimeFocusedFailureState: Equatable, Sendable {
     }
 
     package mutating func captureFirst(
-        _ failure: RuntimeOwnerFailure,
+        _ failure: OwnerFailure,
         context: ExecutionContext
     ) {
         guard firstFailure == nil else { return }
@@ -35,7 +35,7 @@ package struct RuntimeFocusedFailureState: Equatable, Sendable {
     }
 
     package func selectedFailure()
-        -> (context: ExecutionContext, failure: RunCycleFailure<RuntimeOwnerFailure>)?
+        -> (context: ExecutionContext, failure: RunCycleFailure<OwnerFailure>)?
     {
         guard let firstFailure, let detectingContext else { return nil }
         return (detectingContext, .focusedOwner(firstFailure))

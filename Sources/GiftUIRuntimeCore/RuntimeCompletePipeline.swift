@@ -15,14 +15,15 @@ package enum RuntimeCompletePipelineStage: UInt8, Equatable, Sendable {
     case offerAndProduction = 10
 }
 
-package enum RuntimePipelineStepResult: Equatable, Sendable {
+package enum RuntimePipelineStepResult<OwnerFailure: Equatable & Sendable>: Equatable, Sendable {
     case advanced
-    case failure(RunCycleFailure<RuntimeOwnerFailure>)
+    case failure(RunCycleFailure<OwnerFailure>)
 }
 
-package enum RuntimePipelineMutationResult: Equatable, Sendable {
+package enum RuntimePipelineMutationResult<OwnerFailure: Equatable & Sendable>: Equatable, Sendable
+{
     case applied(Bool)
-    case failure(RunCycleFailure<RuntimeOwnerFailure>)
+    case failure(RunCycleFailure<OwnerFailure>, mutationApplied: Bool)
 }
 
 package struct RuntimePipelinePublication: Equatable, Sendable {
@@ -35,18 +36,20 @@ package struct RuntimePipelinePublication: Equatable, Sendable {
     }
 }
 
-package enum RuntimePipelinePublicationResult: Equatable, Sendable {
+package enum RuntimePipelinePublicationResult<OwnerFailure: Equatable & Sendable>: Equatable,
+    Sendable
+{
     case published(RuntimePipelinePublication)
-    case failure(RunCycleFailure<RuntimeOwnerFailure>)
+    case failure(RunCycleFailure<OwnerFailure>)
 }
 
-package enum RuntimePipelineOfferResult: Equatable, Sendable {
+package enum RuntimePipelineOfferResult<OwnerFailure: Equatable & Sendable>: Equatable, Sendable {
     case accepted(PresentationRevision)
     case noChange
     case backpressured
     case retryableRefusal
     case nonRetryableRefusal(FrameRefusalOrigin)
-    case failure(RunCycleFailure<RuntimeOwnerFailure>)
+    case failure(RunCycleFailure<OwnerFailure>)
 }
 
 package struct RuntimePipelineDisposition: Equatable, Sendable {
@@ -65,30 +68,37 @@ package struct RuntimePipelineCompletion: Equatable, Sendable {
     package let disposition: RuntimePipelineDisposition
 }
 
-package struct RuntimePipelineFailureRecord: Equatable, Sendable {
+package struct RuntimePipelineFailureRecord<OwnerFailure: Equatable & Sendable>: Equatable, Sendable
+{
     package let stage: RuntimeCompletePipelineStage
-    package let failure: RunCycleFailure<RuntimeOwnerFailure>
+    package let failure: RunCycleFailure<OwnerFailure>
     package let publication: RuntimePipelinePublication?
     package let disposition: RuntimePipelineDisposition
 }
 
-package enum RuntimeCompletePipelineResult: Equatable, Sendable {
+package enum RuntimeCompletePipelineResult<OwnerFailure: Equatable & Sendable>: Equatable, Sendable
+{
     case completed(RuntimePipelineCompletion)
-    case failed(RuntimePipelineFailureRecord)
+    case failed(RuntimePipelineFailureRecord<OwnerFailure>)
 }
 
 package protocol RuntimeCompletePipelineOwner: ~Copyable {
-    mutating func admitAndSeal() -> RuntimePipelineStepResult
-    mutating func applyAdmittedWork() -> RuntimePipelineMutationResult
-    mutating func freezeObservableMutation() -> RuntimePipelineStepResult
-    mutating func beginObservableCandidateAndExpandSemantics() -> RuntimePipelineStepResult
-    mutating func resolveLayout() -> RuntimePipelineStepResult
-    mutating func invokeCanvasesAndDerivePlan() -> RuntimePipelineStepResult
-    mutating func preflightCombinedRender() -> RuntimePipelineStepResult
-    mutating func buildInteractionCandidate() -> RuntimePipelineStepResult
-    mutating func publishSemanticAndObservableCandidate() -> RuntimePipelinePublicationResult
-    mutating func allocateCandidate() -> RuntimePipelineStepResult
-    mutating func offerAndProduce() -> RuntimePipelineOfferResult
+    associatedtype OwnerFailure: Equatable & Sendable = RuntimeOwnerFailure
+    mutating func admitAndSeal() -> RuntimePipelineStepResult<OwnerFailure>
+    mutating func applyAdmittedWork() -> RuntimePipelineMutationResult<OwnerFailure>
+    mutating func freezeObservableMutation() -> RuntimePipelineStepResult<OwnerFailure>
+    mutating func beginObservableCandidateAndExpandSemantics() -> RuntimePipelineStepResult<
+        OwnerFailure
+    >
+    mutating func resolveLayout() -> RuntimePipelineStepResult<OwnerFailure>
+    mutating func invokeCanvasesAndDerivePlan() -> RuntimePipelineStepResult<OwnerFailure>
+    mutating func preflightCombinedRender() -> RuntimePipelineStepResult<OwnerFailure>
+    mutating func buildInteractionCandidate() -> RuntimePipelineStepResult<OwnerFailure>
+    mutating func publishSemanticAndObservableCandidate() -> RuntimePipelinePublicationResult<
+        OwnerFailure
+    >
+    mutating func allocateCandidate() -> RuntimePipelineStepResult<OwnerFailure>
+    mutating func offerAndProduce() -> RuntimePipelineOfferResult<OwnerFailure>
     mutating func cleanup(_ action: RuntimeCleanupAction)
     mutating func applyDisposition(_ disposition: RuntimePipelineDisposition)
     mutating func finalizePipeline()
@@ -97,7 +107,7 @@ package protocol RuntimeCompletePipelineOwner: ~Copyable {
 package enum RuntimeCompletePipeline {
     package static func rejectInactive<Owner>(
         owner: inout Owner
-    ) -> RuntimeCompletePipelineResult
+    ) -> RuntimeCompletePipelineResult<Owner.OwnerFailure>
     where Owner: RuntimeCompletePipelineOwner & ~Copyable {
         fail(
             at: .admissionAndSeal,
@@ -111,7 +121,7 @@ package enum RuntimeCompletePipeline {
 
     package static func run<Owner>(
         owner: inout Owner
-    ) -> RuntimeCompletePipelineResult
+    ) -> RuntimeCompletePipelineResult<Owner.OwnerFailure>
     where Owner: RuntimeCompletePipelineOwner & ~Copyable {
         var acquired: RuntimeCleanupActions = []
         var mutationApplied = false
@@ -130,11 +140,11 @@ package enum RuntimeCompletePipeline {
         switch owner.applyAdmittedWork() {
         case .applied(let applied):
             mutationApplied = applied
-        case .failure(let failure):
+        case .failure(let failure, let applied):
             return fail(
                 at: .applyAdmittedWork,
                 failure: failure,
-                mutationApplied: mutationApplied,
+                mutationApplied: applied,
                 publication: nil,
                 acquired: acquired,
                 owner: &owner
@@ -248,7 +258,7 @@ package enum RuntimeCompletePipeline {
         }
 
         let offer = owner.offerAndProduce()
-        let result: RuntimeCompletePipelineResult
+        let result: RuntimeCompletePipelineResult<Owner.OwnerFailure>
         switch offer {
         case .accepted(let revision):
             let disposition = RuntimePipelineDisposition(
@@ -347,7 +357,7 @@ package enum RuntimeCompletePipeline {
         publication: RuntimePipelinePublication,
         acquired: RuntimeCleanupActions,
         owner: inout Owner
-    ) -> RuntimeCompletePipelineResult
+    ) -> RuntimeCompletePipelineResult<Owner.OwnerFailure>
     where Owner: RuntimeCompletePipelineOwner & ~Copyable {
         let disposition = RuntimePipelineDisposition(
             semanticDisposition: publication.changed ? .published : .unchanged,
@@ -372,12 +382,12 @@ package enum RuntimeCompletePipeline {
 
     private static func fail<Owner>(
         at stage: RuntimeCompletePipelineStage,
-        failure: RunCycleFailure<RuntimeOwnerFailure>,
+        failure: RunCycleFailure<Owner.OwnerFailure>,
         mutationApplied: Bool,
         publication: RuntimePipelinePublication?,
         acquired: RuntimeCleanupActions,
         owner: inout Owner
-    ) -> RuntimeCompletePipelineResult
+    ) -> RuntimeCompletePipelineResult<Owner.OwnerFailure>
     where Owner: RuntimeCompletePipelineOwner & ~Copyable {
         let wasPublished = publication != nil
         let disposition = RuntimePipelineDisposition(
@@ -397,7 +407,7 @@ package enum RuntimeCompletePipeline {
         owner.applyDisposition(disposition)
         owner.finalizePipeline()
         return .failed(
-            RuntimePipelineFailureRecord(
+            RuntimePipelineFailureRecord<Owner.OwnerFailure>(
                 stage: stage,
                 failure: failure,
                 publication: publication,

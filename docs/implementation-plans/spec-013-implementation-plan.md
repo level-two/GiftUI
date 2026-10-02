@@ -2,7 +2,7 @@
 spec: SPEC-013
 feature: giftui-mvp-architecture
 title: SPEC-013 Implementation Plan
-status: draft
+status: active
 owners:
   - codex
 created: 2026-09-09
@@ -500,7 +500,7 @@ remains draft pending its implementation-readiness assessment. The
 MVP need is the common runner join for SPEC-001 T10.5/T10.6; no new host,
 profile, retry policy, or storage ceiling is introduced.
 
-- [ ] `T9.1` — Parameterize all common pipeline failure-bearing values, the
+- [x] `T9.1` — Parameterize all common pipeline failure-bearing values, the
   pipeline owner, both profile bindings, execution coordinator wrappers, and
   first-failure storage with the configured bounded owner-failure sum. Return
   an explicit mutation-progress bit on the failure branch and use it for
@@ -510,6 +510,11 @@ profile, retry policy, or storage ceiling is introduced.
   above Runtime Core. Update the common coordinator design note.
   **Depends on:** both amendments, explicitly approved on 2026-10-02; plan readiness.
   **Covers:** RP-001, RP-004, RP-007, RP-015; HC-010, HC-012.
+  **2026-10-02 disposition:** Implemented generic pipeline/profile/coordinator,
+  first-failure and host opportunity forwarding, including the mutation progress
+  bit. [Carrier implementation evidence](../../Tests/ContractFixtures/SPEC013/Evidence/milestone-9/carrier-implementation.md)
+  records the focused compile/regression result. T9.2/T9.3 retain behavior and
+  production resource obligations.
 - [ ] `T9.2` — Exercise failures before any applied work, after one effect,
   and after several effects. Preserve the exact error and context, skip later
   stages, finalize/clean up once, retain partial state as dirty, and rederive
@@ -1054,3 +1059,13 @@ repair task is made ready. The owner repair is now Milestone 9; the maintainer
 explicitly approved both amended Specifications on 2026-10-02. The plan still
 requires its implementation-readiness assessment. This record reports that
 approval and does not reopen architectural decisions implicitly.
+
+## Amendment implementation readiness — 2026-10-02
+
+The approved SPEC-013/SPEC-015 declarations, existing common runner and
+profile/host consumers were inspected. T9.1–T9.4 map every affected criterion
+to code, behavior, carrier/resource and owner-driver evidence in prerequisite
+order. No unresolved architecture or contract choice remains. The plan is
+ready and now active under the maintainer's request to resume SPEC-001; T9.1
+begins the required owner repair. Earlier draft/readiness statements remain
+historical. Unrelated owner and pixel-review gaps are not waived.

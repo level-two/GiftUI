@@ -89,7 +89,7 @@ private struct BootstrapInstance: MVPHostInstance {
         return .active
     }
 
-    mutating func runOpportunity() -> HostOpportunityResult {
+    mutating func runOpportunity() -> HostOpportunityResult<RuntimeOwnerFailure> {
         .invalidLifecycle
     }
 
