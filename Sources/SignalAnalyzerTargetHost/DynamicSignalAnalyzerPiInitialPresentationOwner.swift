@@ -3,6 +3,7 @@ import GiftUICapabilities
 import GiftUIDisplayCore
 import GiftUIExecution
 import GiftUIInteraction
+import GiftUIReferenceTextResources
 import GiftUIRuntimeCore
 import GiftUIRuntimeDynamic
 import SignalAnalyzerHost
@@ -50,7 +51,7 @@ package enum DynamicSignalAnalyzerPiInputResult: Equatable, Sendable {
 /// the matching interaction candidate commits.
 package struct DynamicSignalAnalyzerPiInitialPresentationOwner<Target>
 where Target: DisplayTarget {
-    private var pipeline: DynamicSignalAnalyzerPresentationPipeline
+    private var pipeline: DynamicSignalAnalyzerPresentationPipeline<GiftUIReferenceTextMetricsView>
     private var endpoint: DynamicSignalAnalyzerPiEndpoint<Target>
     private let envelopeValidator: DynamicSignalAnalyzerFrameEnvelopeValidator
     private var provenance: FrameProvenance
@@ -77,6 +78,7 @@ where Target: DisplayTarget {
         )
         guard
             let pipeline = DynamicSignalAnalyzerPresentationPipeline(
+                textMetrics: DynamicSignalAnalyzerPiAssembly.textResources.metrics,
                 limits: limits,
                 maximumRecordedTraversalIdentities: maximumRecordedTraversalIdentities,
                 logicalWidth: 240,

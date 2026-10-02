@@ -141,6 +141,7 @@ private final class LogicalFrameCapture {
     )
     var pipeline = try #require(
         DynamicSignalAnalyzerPresentationPipeline(
+            textMetrics: DynamicSignalAnalyzerPiAssembly.textResources.metrics,
             limits: preset.runtimeLimits,
             maximumRecordedTraversalIdentities: 203,
             logicalWidth: 240,
@@ -1250,6 +1251,7 @@ private final class LogicalFrameCapture {
     let preset = GeneratedSignalAnalyzerPresets.raspberryPiDynamic()
     var pipeline = try #require(
         DynamicSignalAnalyzerPresentationPipeline(
+            textMetrics: DynamicSignalAnalyzerPiAssembly.textResources.metrics,
             limits: preset.runtimeLimits,
             maximumRecordedTraversalIdentities: 203,
             logicalWidth: preset.raster.logicalWidth,
@@ -1360,6 +1362,7 @@ private final class LogicalFrameCapture {
         for (byte, expectedLines, expectedGlyphs) in cases {
             var pipeline = try #require(
                 DynamicSignalAnalyzerPresentationPipeline(
+                    textMetrics: DynamicSignalAnalyzerPiAssembly.textResources.metrics,
                     limits: preset.runtimeLimits,
                     maximumRecordedTraversalIdentities: 203,
                     logicalWidth: preset.raster.logicalWidth,
@@ -1935,6 +1938,7 @@ private func makeSemanticJoinModel(failsStart: Bool = false) -> SignalAnalyzerVi
     )
     var pipeline = try #require(
         DynamicSignalAnalyzerPresentationPipeline(
+            textMetrics: DynamicSignalAnalyzerPiAssembly.textResources.metrics,
             limits: preset.runtimeLimits,
             maximumRecordedTraversalIdentities: 203,
             logicalWidth: preset.raster.logicalWidth,
@@ -3038,6 +3042,7 @@ func signalAnalyzerWaveformResolvesSurfaceConstraints(width: Int32, height: Int3
             model.visibleDurationChanged(window)
             var pipeline = try #require(
                 DynamicSignalAnalyzerPresentationPipeline(
+                    textMetrics: DynamicSignalAnalyzerPiAssembly.textResources.metrics,
                     limits: preset.runtimeLimits, maximumRecordedTraversalIdentities: 203,
                     logicalWidth: 240, logicalHeight: 240))
             let result = pipeline.derive(
@@ -3235,6 +3240,7 @@ func rawFramebufferTouchesReachModelAndReplacementFrame(scenario: String) throws
     ] {
         var pipeline = try #require(
             DynamicSignalAnalyzerPresentationPipeline(
+                textMetrics: DynamicSignalAnalyzerPiAssembly.textResources.metrics,
                 limits: preset.runtimeLimits, maximumRecordedTraversalIdentities: 203,
                 logicalWidth: 240, logicalHeight: 240
             ))
@@ -3285,4 +3291,36 @@ func rawFramebufferTouchesReachModelAndReplacementFrame(scenario: String) throws
                 presentationRevision: PresentationRevision(rawValue: 2))
                 == .committed(PresentationRevision(rawValue: 2)))
     }
+}
+
+@Test func dynamicPipelineConsumesCanonicalMetricsAndRejectsMismatchedRasterResources() throws {
+    let resources = DynamicSignalAnalyzerPiAssembly.textResources
+    #expect(
+        TextResourceValidator.validate(resources, requiring: RasterRealizationID(rawValue: 0))
+            == .valid)
+    // Another concrete metric package has a different exact resource identity.
+    // The established owner gate must reject joining it to the selected raster.
+    let mismatched = TextResourcePackage(
+        metrics: GiftUIPiCompactTextMetricsView(), raster: resources.raster)
+    #expect(mismatched.metrics.descriptor.resource != resources.raster.descriptor.resource)
+    #expect(
+        TextResourceValidator.validate(mismatched, requiring: RasterRealizationID(rawValue: 0))
+            == .invalid(.invalidCount))
+    let preset = GeneratedSignalAnalyzerPresets.raspberryPiDynamic()
+    // This canonical metrics consumer has no dependency on the concrete Pi assembly.
+    var pipeline = try #require(
+        DynamicSignalAnalyzerPresentationPipeline(
+            textMetrics: resources.metrics, limits: preset.runtimeLimits,
+            maximumRecordedTraversalIdentities: 203, logicalWidth: 240, logicalHeight: 240))
+    let model = makeSemanticJoinModel(failsStart: true)
+    model.startTapped()
+    guard
+        case .success(let summary) = pipeline.derive(
+            model: model,
+            cycle: RunCycleID(rawValue: 1), semanticRevision: SemanticRevision(rawValue: 1))
+    else {
+        Issue.record("injected canonical metrics failed production derivation")
+        return
+    }
+    #expect(summary.render.positionedGlyphCount == 95)
 }

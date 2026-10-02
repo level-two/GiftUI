@@ -2181,7 +2181,7 @@ evidence. Existing reviewed-pixel and connected-hardware gates remain open.
       acquired candidate, retained committed actions, unchanged model effects,
       and 18 passing Dynamic host/lifecycle regressions.
 
-- [ ] `T10.3` — Remove the pipeline's dependency on the Pi assembly's text
+- [x] `T10.3` — Remove the pipeline's dependency on the Pi assembly's text
       resource selection. Supply the selected canonical metrics/resource view
       and surface constraints through existing owner contracts to
       `DynamicSignalAnalyzerPresentationPipeline`; retain concrete selection
@@ -2191,6 +2191,11 @@ evidence. Existing reviewed-pixel and connected-hardware gates remain open.
       and rasterization use the same checked resource identity, the approved
       Inter font and current rendered behavior are preserved, and a deliberately
       mismatched metrics/raster pair fails the existing compatibility gate.
+      **2026-10-02 disposition:** Completed. The [canonical metrics join](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/canonical-dynamic-metrics.md)
+      records host selection, generic canonical view injection, one checked
+      identity across measurement/preflight/streaming/raster, mismatched-package
+      rejection, and 19 passing regressions.
+
 - [ ] `T10.4` — Replace the embedded host's duplicate contract declarations
       with canonical owner declarations. Following T10.1, consume
       `SemanticLayoutView`/payloads from `GiftUISemanticCore` and font/resource

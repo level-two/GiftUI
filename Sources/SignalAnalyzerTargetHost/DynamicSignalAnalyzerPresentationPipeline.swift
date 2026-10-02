@@ -5,11 +5,11 @@ import GiftUIExecution
 import GiftUIInteraction
 import GiftUILayout
 import GiftUIObservableState
-import GiftUIReferenceTextResources
 import GiftUIRenderCore
 import GiftUIRuntimeCore
 import GiftUIRuntimeDynamic
 import GiftUISemanticCore
+import GiftUITextResources
 import SignalAnalyzerHost
 import SignalAnalyzerPresentation
 
@@ -197,7 +197,9 @@ private struct DynamicSignalAnalyzerInteractionCaptures:
 /// Owns the production Dynamic semantic, layout, Drawing, and combined-render
 /// workspaces used by a target host. Endpoint offer and lifecycle coordination
 /// remain with the enclosing host owner.
-package struct DynamicSignalAnalyzerPresentationPipeline {
+package struct DynamicSignalAnalyzerPresentationPipeline<Metrics: CanonicalTextMetricsView> {
+    private let textMetrics: Metrics
+    private let lineHeight: GeometryScalar
     private let limits: RuntimeProfileLimits
     private let proposal: ProposedSize
     private let surfaceBounds: Rect
@@ -221,12 +223,19 @@ package struct DynamicSignalAnalyzerPresentationPipeline {
     package var observableCandidateDiscardCount: UInt16 { reconciler.candidateDiscardCount }
 
     package init?(
+        textMetrics: Metrics,
         limits: RuntimeProfileLimits,
         maximumRecordedTraversalIdentities: UInt16,
         logicalWidth: UInt16,
         logicalHeight: UInt16
     ) {
-        guard maximumRecordedTraversalIdentities >= limits.maximumSemanticStructuralOccurrences,
+        guard let instance = textMetrics.instance(at: 0),
+            instance.id.resource == textMetrics.descriptor.resource,
+            instance.id.instanceIndex == 0,
+            let lineHeight = GeometryArithmetic.add(
+                instance.lineMetrics.ascent, instance.lineMetrics.descent),
+            lineHeight > 0,
+            maximumRecordedTraversalIdentities >= limits.maximumSemanticStructuralOccurrences,
             let proposal = ProposedSize(
                 width: Int32(logicalWidth),
                 height: Int32(logicalHeight)
@@ -239,6 +248,8 @@ package struct DynamicSignalAnalyzerPresentationPipeline {
             SignalAnalyzerViewModel,
             DynamicSemanticIdentity
         >(capacity: limits.observableState.maximumLocations)
+        self.textMetrics = textMetrics
+        self.lineHeight = lineHeight
         self.limits = limits
         self.proposal = proposal
         self.surfaceBounds = surfaceBounds
@@ -318,11 +329,7 @@ package struct DynamicSignalAnalyzerPresentationPipeline {
                 viewModel: model,
                 layout: SignalAnalyzerLayoutConstraints(
                     width: surfaceBounds.size.width, height: surfaceBounds.size.height,
-                    lineHeight: DynamicSignalAnalyzerPiAssembly.textResources.metrics.instance(
-                        at: 0)!
-                        .lineMetrics.ascent
-                        + DynamicSignalAnalyzerPiAssembly.textResources.metrics.instance(at: 0)!
-                        .lineMetrics.descent
+                    lineHeight: lineHeight
                 )
             ),
             limits: limits.semantic,
@@ -351,7 +358,7 @@ package struct DynamicSignalAnalyzerPresentationPipeline {
         if case .layout(let error) = injectingFailure { return .failure(.layout(error)) }
         let layoutResult = layout(
             semantic: semanticStorage,
-            metrics: DynamicSignalAnalyzerPiAssembly.textResources.metrics,
+            metrics: textMetrics,
             proposal: proposal,
             limits: limits.layout,
             workspace: &layoutWorkspace,
@@ -396,7 +403,7 @@ package struct DynamicSignalAnalyzerPresentationPipeline {
         let renderResult = CanvasRenderProducer.preflight(
             semantic: semanticStorage.renderView,
             layout: layoutSink.renderView,
-            textMetrics: DynamicSignalAnalyzerPiAssembly.textResources.metrics,
+            textMetrics: textMetrics,
             drawingPlan: drawingWorkspace,
             surfaceBounds: surfaceBounds,
             damageMode: .initializeCompleteSurface,
@@ -566,7 +573,7 @@ package struct DynamicSignalAnalyzerPresentationPipeline {
             switch CanvasRenderProducer.produce(
                 semantic: semanticStorage.renderView,
                 layout: layoutSink.renderView,
-                textMetrics: DynamicSignalAnalyzerPiAssembly.textResources.metrics,
+                textMetrics: textMetrics,
                 drawingPlan: drawingWorkspace,
                 surfaceBounds: surfaceBounds,
                 damageMode: .initializeCompleteSurface,
