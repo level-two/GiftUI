@@ -100,7 +100,7 @@ ruby "${SCRIPT_DIR}/check-spec-001-sustained-workload.rb"
 ruby "${SCRIPT_DIR}/check-spec-001-nrf-static-canvas.rb"
 "${SCRIPT_DIR}/check-spec-001-interface-audit.sh"
 swift test --disable-sandbox --scratch-path "${PROJECT_ROOT}/.build" \
-    -Xswiftc -DGIFTUI_DYNAMIC_PROFILE --filter SignalAnalyzer
+    -Xswiftc -DGIFTUI_DYNAMIC_PROFILE --filter 'SignalAnalyzer|dynamicProduction|dynamicPi|rawFramebufferTouches'
 
 if [[ "${profile}" == "macos-dynamic" || "${profile}" == "macos-static" ]]; then
     "${SCRIPT_DIR}/run-spec-015.sh" --profile "${profile}"

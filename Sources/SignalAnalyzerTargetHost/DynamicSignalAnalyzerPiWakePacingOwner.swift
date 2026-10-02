@@ -109,7 +109,15 @@ package final class DynamicSignalAnalyzerPiWakePacingOwner {
             into: &owner,
             correlations: correlations
         )
-        if let error = controller.completeOpportunity(at: completionTimeMicroseconds()) {
+        let completedAt = completionTimeMicroseconds()
+        if let error = controller.completeOpportunity(at: completedAt) {
+            return .rejected(error)
+        }
+        if owner.state == .quiescent {
+            _ = controller.quiesce()
+        } else if case .failure(let error) = controller.record(
+            owner.pendingWakeReasons, at: completedAt)
+        {
             return .rejected(error)
         }
         return .completed(reasons: reasons, result: result)

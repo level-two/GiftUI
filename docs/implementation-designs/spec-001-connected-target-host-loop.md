@@ -788,3 +788,22 @@ execution context through the host result and first-failure storage. Production
 normalization, mandatory application effects, bounded refusal policy, and wake
 integration are the remaining T10.5 work; this note does not claim those are complete.
 The Static borrow-based adapter remains T10.6 work.
+
+## Dynamic production failure and recovery completion — 2026-10-02
+
+The adapter retains one exact first failure/context, one normalized fact, one
+bounded residual-policy result, canonical presentation recovery, and endpoint
+health. Application rejection performs mandatory effects inside finalization's
+mutation phase, before returning to policy. Observation detachment and source
+stop close application admission; the runtime keeps the original failure rather
+than a cleanup failure. Diagnostics may be empty without changing disposition.
+
+Pending presentation and dirty retries are recorded by the pacing owner after
+completion, so no new application fact is needed. Three retryable refusals exhaust
+the generated limit; backpressure does not increment it. Physical responsibility
+acceptance is checked separately from stream completion. A transferred-stream
+failure retains the physical revision but quiesces input and the source before
+backend policy. Initial identities are allocated by their runner stages.
+
+See the [T10.5 completion evidence](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/dynamic-failure-recovery.md).
+Static ownership and borrow lifetimes remain T10.6 work.

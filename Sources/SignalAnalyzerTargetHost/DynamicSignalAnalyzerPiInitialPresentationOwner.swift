@@ -2,6 +2,8 @@ import GiftUI
 import GiftUICapabilities
 import GiftUIDisplayCore
 import GiftUIExecution
+import GiftUIFailureCore
+import GiftUIHostConfiguration
 import GiftUIInteraction
 import GiftUIReferenceTextResources
 import GiftUIRuntimeCore
@@ -24,6 +26,8 @@ package enum DynamicSignalAnalyzerPiInitialPresentationFailure: Equatable, Senda
     case presentation(DynamicSignalAnalyzerPresentationFailure)
     case offer(FrameOfferResult)
     case interaction
+    case endpointHealth(HostEndpointHealthTransition)
+    case endpointHealthFailure(HostEndpointHealthError)
     case pipeline(ExecutionContext, RuntimePipelineFailureRecord<SignalAnalyzerCycleOwnerFailure>)
 }
 
@@ -76,6 +80,20 @@ where Target: DisplayTarget {
     private var derivesPresentation = false
     private var semanticChanged = false
     private var presentationPending = false
+    private var requiresSemanticRetry = false
+    private var recovery = HostPresentationRecovery(
+        maximumRetryableRefusals: GeneratedSignalAnalyzerPresets.raspberryPiDynamic().pacing
+            .maximumRetryableRefusals)!
+    private var health: HostEndpointHealthController
+    private var applicationFailureOwner: (any DynamicSignalAnalyzerApplicationFailureHandling)?
+    private var applicationFailureWasAlreadyHandled = false
+    private var attemptApplicationFailure: SignalAnalyzerRuntimeCondition?
+    package private(set) var residualPolicy = SignalAnalyzerCycleResidualPolicyOwner()
+    package private(set) var lastNormalizedFailure: GiftUIFailureFact?
+    package private(set) var lastRecoveryTransition: HostPresentationRecoveryTransition?
+    package private(set) var lastHealthFailure: HostEndpointHealthError?
+    package private(set) var lastHealthTransition: HostEndpointHealthTransition?
+
     private var publishedSemanticRevision: SemanticRevision
     package var injectingFailure: DynamicSignalAnalyzerPresentationFailure?
     package private(set) var retainedFailure = RuntimeFocusedFailureState<
@@ -118,12 +136,37 @@ where Target: DisplayTarget {
         else { return nil }
         self.pipeline = pipeline
         self.endpoint = endpoint
+        health = HostEndpointHealthController(
+            initialHealth: endpoint.health(), inputIsEligible: false)!
         self.envelopeValidator = envelopeValidator
         self.provenance = provenance
         self.presentationRevision = presentationRevision
         publishedSemanticRevision = provenance.semanticRevision
     }
 
+    package mutating func installApplicationFailureOwner(
+        _ owner: any DynamicSignalAnalyzerApplicationFailureHandling
+    ) {
+        applicationFailureOwner = owner
+    }
+
+    package var pendingWakeReasons: ExecutionWakeReasons {
+        guard state == .inputEligible else { return [] }
+        var reasons: ExecutionWakeReasons
+        switch lastPipelineResult {
+        case .completed(let completion): reasons = completion.disposition.wakeReasons
+        case .failed(let failure): reasons = failure.disposition.wakeReasons
+        case nil: reasons = []
+        }
+        if presentationPending { reasons.insert(.presentationPending) }
+        if requiresSemanticRetry { reasons.insert(.semanticDirty) }
+        return reasons
+    }
+
+    package var lastCleanupActions: RuntimeCleanupActions { pipeline.lastFailureCleanupActions }
+
+    package var lastCommittedPresentationRevision: PresentationRevision { presentationRevision }
+    package var pendingPresentationIntent: PresentationPendingIntent? { recovery.pendingIntent }
     package var inputIsEligible: Bool { state == .inputEligible }
     package var currentPresentationRevision: PresentationRevision? {
         inputIsEligible ? presentationRevision : nil
@@ -150,6 +193,21 @@ where Target: DisplayTarget {
             provenance: provenance,
             presentationRevision: presentationRevision
         )
+    }
+
+    package mutating func presentInitial(
+        model: SignalAnalyzerViewModel,
+        correlations: DynamicSignalAnalyzerPiCorrelationOwner
+    ) -> DynamicSignalAnalyzerPiInitialPresentationResult {
+        guard state == .ready else { return .failure(.invalidLifecycle) }
+        prepareOpportunity(
+            model: model, cycle: provenance.cycle, admission: nil, events: [],
+            correlations: correlations, fixed: nil, force: true)
+        attemptCycle = nil
+        let result = RuntimeCompletePipeline.run(owner: &self)
+        finishResult(result)
+        lastPipelineResult = result
+        return presentationResult(result)
     }
 
     package mutating func presentNext(
@@ -205,7 +263,7 @@ where Target: DisplayTarget {
             fixed: DynamicSignalAnalyzerPiPresentationCorrelation(
                 provenance: provenance, presentationRevision: presentationRevision), force: true)
         let result = RuntimeCompletePipeline.run(owner: &self)
-        retainFailure(result)
+        finishResult(result)
         lastPipelineResult = result
         return presentationResult(result)
     }
@@ -220,14 +278,20 @@ where Target: DisplayTarget {
             model: model, cycle: cycle, admission: admission, events: events,
             correlations: correlations, fixed: fixed, force: false)
         let result = RuntimeCompletePipeline.run(owner: &self)
-        retainFailure(result)
+        finishResult(result)
         lastPipelineResult = result
         switch result {
         case .failed(let record):
             return .failure(.presentation(.pipeline(failureContext(record), record)))
         case .completed:
+            if let lastHealthFailure {
+                return .failure(.presentation(.endpointHealthFailure(lastHealthFailure)))
+            }
             if let offer = attemptOffer, offer.disposition != .accepted {
                 return .failure(.presentation(.offer(offer)))
+            }
+            if let transition = lastHealthTransition, transition.residualRouteRequest() != nil {
+                return .failure(.presentation(.endpointHealth(transition)))
             }
             return .completed(
                 DynamicSignalAnalyzerPiOpportunitySummary(
@@ -242,7 +306,14 @@ where Target: DisplayTarget {
         correlations: DynamicSignalAnalyzerPiCorrelationOwner?,
         fixed: DynamicSignalAnalyzerPiPresentationCorrelation?, force: Bool
     ) {
+        pipeline.prepareAttempt()
         retainedFailure = RuntimeFocusedFailureState()
+        applicationFailureWasAlreadyHandled = false
+        attemptApplicationFailure = nil
+        lastRecoveryTransition = nil
+        lastHealthFailure = nil
+        lastHealthTransition = nil
+        lastNormalizedFailure = nil
         attemptModel = model
         attemptCycle = cycle
         attemptAdmission = admission
@@ -261,17 +332,104 @@ where Target: DisplayTarget {
             eventCount: 0, dispatchedActionCount: 0, cancelledOrRejectedCount: 0)
     }
 
-    private mutating func retainFailure(_ result: RuntimeCompletePipelineResult<OwnerFailure>) {
-        if case .failed(let record) = result, case .focusedOwner(let failure) = record.failure {
-            retainedFailure.captureFirst(failure, context: failureContext(record))
+    private mutating func finishResult(_ result: RuntimeCompletePipelineResult<OwnerFailure>) {
+        switch result {
+        case .failed(let record):
+            let context = failureContext(record)
+            if case .focusedOwner(let failure) = record.failure {
+                retainedFailure.captureFirst(failure, context: context)
+            }
+            let fact = SignalAnalyzerCycleFailureNormalizer.cycleFailure(
+                record.failure, context: context)
+            lastNormalizedFailure = fact
+            if applicationFailureWasAlreadyHandled {
+                lastNormalizedFailure = applicationFailureOwner?.lastFailureFact ?? fact
+                residualPolicy.noPolicy(.focusedOwnerFinal)
+            } else if case .focusedOwner(.application) = record.failure {
+                residualPolicy.noPolicy(.focusedOwnerFinal)
+            } else if record.failure
+                == .focusedOwner(.runtime(.observableState(.invalidPhaseContained)))
+            {
+                requiresSemanticRetry = true
+                residualPolicy.noPolicy(.observableContainedPhase)
+            } else if fact.containment == .safetyNotProven {
+                quiesce()
+                residualPolicy.route(
+                    HostResidualRouteRequest(
+                        outcome: .failure(fact), context: .safetyNotProven,
+                        completedEffects: [.discardPartialWork, .preventNormalCycle],
+                        attemptOrdinal: 0, attemptLimit: 1))
+            } else if record.stage == .offerAndProduction || record.stage == .candidateAllocation {
+                lastRecoveryTransition = recovery.recordNonRetryableRefusal()
+                presentationPending = false
+                quiesce()
+                residualPolicy.route(
+                    HostResidualRouteRequest(
+                        outcome: .failure(fact), context: .presentationUnavailable,
+                        completedEffects: [.clearPendingIntent, .quiesceInput], attemptOrdinal: 0,
+                        attemptLimit: 1))
+            } else if state == .ready {
+                quiesce()
+                residualPolicy.route(
+                    HostResidualRouteRequest(
+                        outcome: .failure(fact), context: .activation,
+                        completedEffects: [.containActivation], attemptOrdinal: 0, attemptLimit: 1))
+            } else {
+                residualPolicy.route(
+                    HostResidualRouteRequest(
+                        outcome: .failure(fact), context: .containedCandidateFailure,
+                        completedEffects: [.discardCandidate, .preservePriorRoot],
+                        attemptOrdinal: 0, attemptLimit: 1))
+            }
+        case .completed(let completion):
+            if lastHealthFailure != nil {
+                let fact = GiftUIFailureFact(
+                    condition: .invariantViolation, origin: .hostComposition,
+                    affectedScope: .runtime, containment: .safetyNotProven)
+                lastNormalizedFailure = fact
+                residualPolicy.route(
+                    HostResidualRouteRequest(
+                        outcome: .failure(fact), context: .safetyNotProven,
+                        completedEffects: [.discardPartialWork, .preventNormalCycle],
+                        attemptOrdinal: 0, attemptLimit: 1))
+            } else if let transition = lastHealthTransition,
+                let request = transition.residualRouteRequest()
+            {
+                residualPolicy.route(request)
+            } else if let transition = lastRecoveryTransition,
+                let context = transition.policyContext
+            {
+                let outcome: GiftUIOutcome<Void>
+                if transition.disposition == .unavailable {
+                    outcome = .failure(
+                        GiftUIFailureFact(
+                            condition: .nonRetryableRefusal, origin: .backend,
+                            affectedScope: .candidateFrame, containment: .contained))
+                } else {
+                    outcome = .operational(
+                        GiftUIOperationalFact(
+                            kind: completion.operational == .backpressured
+                                ? .backpressured : .retryableRefusal,
+                            origin: .backend, affectedScope: .candidateFrame))
+                }
+                residualPolicy.route(
+                    HostResidualRouteRequest(
+                        outcome: outcome, context: context,
+                        completedEffects: transition.completedEffects,
+                        attemptOrdinal: transition.policyAttemptOrdinal,
+                        attemptLimit: transition.policyAttemptLimit))
+            } else {
+                residualPolicy.noPolicy(.success)
+            }
         }
+        if residualPolicy.preventsNormalCycle { quiesce() }
     }
 
     private func failureContext(
         _ record: RuntimePipelineFailureRecord<SignalAnalyzerCycleOwnerFailure>
     ) -> ExecutionContext {
         ExecutionContext(
-            cycle: attemptCycle!, semanticRevision: attemptSemanticRevision,
+            cycle: attemptCycle, semanticRevision: attemptSemanticRevision,
             candidateFrame: attemptCorrelation?.provenance.candidateFrame,
             phase: phase(for: record.stage))
     }
@@ -294,6 +452,10 @@ where Target: DisplayTarget {
             if let offer = attemptOffer { return .failure(.offer(offer)) }
             return .failure(.pipeline(failureContext(record), record))
         case .completed:
+            if let lastHealthFailure { return .failure(.endpointHealthFailure(lastHealthFailure)) }
+            if let transition = lastHealthTransition, transition.residualRouteRequest() != nil {
+                return .failure(.endpointHealth(transition))
+            }
             if let offer = attemptOffer, offer.disposition != .accepted {
                 return .failure(.offer(offer))
             }
@@ -373,6 +535,8 @@ where Target: DisplayTarget {
     package mutating func quiesce() {
         cancelInputSequence()
         state = .quiescent
+        _ = health.requireFreshConstruction(for: .terminalUnavailability)
+        attemptAdmission?.quiesce()
     }
 
     private mutating func cancelInputSequence() {
@@ -388,6 +552,20 @@ extension DynamicSignalAnalyzerPiInitialPresentationOwner: RuntimeCompletePipeli
 
     package mutating func admitAndSeal() -> RuntimePipelineStepResult<OwnerFailure> {
         guard state != .quiescent else { return .failure(.execution(.invalidPhase)) }
+        if let applicationFailureOwner, !applicationFailureOwner.isAvailable {
+            applicationFailureWasAlreadyHandled = true
+            quiesce()
+            if let condition = applicationFailureOwner.terminalCondition {
+                return .failure(.focusedOwner(.application(condition)))
+            }
+            return .failure(.execution(.requiredFacilityUnavailable))
+        }
+        if attemptCycle == nil {
+            guard let cycle = attemptCorrelations?.reserveOpportunityCycle() else {
+                return .failure(.execution(.identityExhausted))
+            }
+            attemptCycle = cycle
+        }
         _ = attemptAdmission?.seal()
         return .advanced
     }
@@ -400,6 +578,7 @@ extension DynamicSignalAnalyzerPiInitialPresentationOwner: RuntimeCompletePipeli
                 applicationSummary = summary
                 applied = summary.factCount != 0
             case .rejected(let condition, let mutationApplied):
+                attemptApplicationFailure = condition
                 return .failure(
                     .focusedOwner(.application(condition)), mutationApplied: mutationApplied)
             case .unavailable(let mutationApplied):
@@ -430,7 +609,7 @@ extension DynamicSignalAnalyzerPiInitialPresentationOwner: RuntimeCompletePipeli
                 eventCount: UInt16(attemptEvents.count),
                 dispatchedActionCount: dispatched, cancelledOrRejectedCount: cancelled)
         }
-        semanticChanged = semanticChanged || pipeline.applicationIsDirty
+        semanticChanged = semanticChanged || pipeline.applicationIsDirty || requiresSemanticRetry
         derivesPresentation = semanticChanged || presentationPending
         return .applied(applied)
     }
@@ -452,7 +631,7 @@ extension DynamicSignalAnalyzerPiInitialPresentationOwner: RuntimeCompletePipeli
             ? (attemptFixedCorrelation?.provenance.semanticRevision
                 ?? attemptCorrelations?.reserveSemanticRevision())
             : publishedSemanticRevision
-        guard let attemptSemanticRevision, let attemptModel else {
+        guard attemptSemanticRevision != nil, let attemptModel else {
             return .failure(.execution(.identityExhausted))
         }
         let failure = pipeline.expandSemantics(
@@ -463,7 +642,6 @@ extension DynamicSignalAnalyzerPiInitialPresentationOwner: RuntimeCompletePipeli
     package mutating func resolveLayout() -> RuntimePipelineStepResult<OwnerFailure> {
         guard derivesPresentation else { return .advanced }
         let failure = pipeline.resolveLayout(injectingFailure: injectingFailure)
-        if failure != nil { pipeline.cleanup(.resetLayoutCandidate) }
         return step(failure)
     }
 
@@ -472,14 +650,12 @@ extension DynamicSignalAnalyzerPiInitialPresentationOwner: RuntimeCompletePipeli
         let failure = pipeline.invokeCanvases(
             cycle: attemptCycle!, semanticRevision: attemptSemanticRevision!,
             injectingFailure: injectingFailure)
-        if failure != nil { pipeline.cleanup(.resetDrawingPlan) }
         return step(failure)
     }
 
     package mutating func preflightCombinedRender() -> RuntimePipelineStepResult<OwnerFailure> {
         guard derivesPresentation else { return .advanced }
         let failure = pipeline.preflightRender(injectingFailure: injectingFailure)
-        if failure != nil { pipeline.cleanup(.resetRenderWorkspace) }
         return step(failure)
     }
 
@@ -502,6 +678,7 @@ extension DynamicSignalAnalyzerPiInitialPresentationOwner: RuntimeCompletePipeli
             }
             attemptSummary = summary
             publishedSemanticRevision = attemptSemanticRevision!
+            requiresSemanticRetry = false
         }
         return .published(
             RuntimePipelinePublication(
@@ -529,8 +706,14 @@ extension DynamicSignalAnalyzerPiInitialPresentationOwner: RuntimeCompletePipeli
         case .accepted: return .accepted(correlation.presentationRevision)
         case .backpressured: return .backpressured
         case .retryableRefusal: return .retryableRefusal
-        case .nonRetryableRefusal: return .nonRetryableRefusal(.endpoint)
-        case .failed: return .failure(.frameOffer(offer.failure!))
+        case .nonRetryableRefusal:
+            return .nonRetryableRefusal(
+                endpoint.retainedProducerError == .sinkRefused ? .renderProducer : .endpoint)
+        case .failed:
+            if let error = endpoint.retainedProducerError {
+                return .failure(.renderProduction(error))
+            }
+            return .failure(.frameOffer(offer.failure!))
         }
     }
 
@@ -559,12 +742,52 @@ extension DynamicSignalAnalyzerPiInitialPresentationOwner: RuntimeCompletePipeli
 
     package mutating func applyDisposition(_ disposition: RuntimePipelineDisposition) {
         presentationPending = disposition.presentationIntentState == .pending
+        guard let offer = attemptOffer else { return }
+        switch offer.disposition {
+        case .accepted:
+            lastRecoveryTransition = recovery.recordAccepted(revision: attemptSemanticRevision!)
+            switch health.consumeAcceptedOffer(
+                from: endpoint,
+                responsibilityTransferred: endpoint.sink.presentationResponsibilityAccepted,
+                streamDrained: endpoint.sink.streamCompleted)
+            {
+            case .success(let transition):
+                lastHealthTransition = transition
+                if transition.residualRouteRequest() != nil {
+                    quiesce()
+                } else if !health.enableInputAfterCommittedOffer(from: endpoint) {
+                    quiesce()
+                }
+            case .failure(let error):
+                lastHealthFailure = error
+                quiesce()
+            }
+        case .backpressured:
+            lastRecoveryTransition = recovery.recordBackpressure(revision: attemptSemanticRevision!)
+        case .retryableRefusal:
+            lastRecoveryTransition = recovery.recordRetryableRefusal(
+                revision: attemptSemanticRevision!)
+        case .nonRetryableRefusal: lastRecoveryTransition = recovery.recordNonRetryableRefusal()
+        case .failed: break
+        }
+        if let transition = lastRecoveryTransition, transition.disposition == .unavailable {
+            presentationPending = false
+            quiesce()
+        }
     }
 
     package mutating func finalizePipeline() {
-        pipeline.finalizeApplicationOpportunity()
         attemptAdmission?.endProducer()
         if let admission = attemptAdmission { while admission.takeNextSealed() != nil {} }
+        if let condition = attemptApplicationFailure {
+            _ = pipeline.beginApplicationMutation()
+            if let applicationFailureOwner {
+                if applicationFailureOwner.handle(condition) { quiesce() }
+            } else {
+                quiesce()
+            }
+        }
+        pipeline.finalizeApplicationOpportunity()
         attemptEvents.removeAll(keepingCapacity: true)
         pipelineFinalizationCount += 1
     }

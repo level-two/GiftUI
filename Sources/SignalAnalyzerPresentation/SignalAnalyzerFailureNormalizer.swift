@@ -36,35 +36,10 @@ package enum SignalAnalyzerFailureNormalizer {
         stableStateProven: Bool,
         diagnostic: SignalAnalyzerDiagnostic
     ) -> SignalAnalyzerOperationalFailure {
-        let failure: GiftUIFailureFact
-        switch condition {
-        case .stateLocationCapacityExhausted, .registrationCapacityExhausted:
-            failure = fact(.capacityExhausted, .observableState, .component, .contained)
-        case .replacementStagingExhausted:
-            failure = fact(.capacityExhausted, .observableState, .operation, .contained)
-        case .duplicateModelOwner, .incompatibleStateAssociation:
-            failure = fact(.invalidIdentity, .observableState, .component, .contained)
-        case .staleRegistrationReport:
-            failure = fact(.invalidIdentity, .observableState, .operation, .contained)
-        case .identityGenerationExhausted:
-            failure = fact(.invalidIdentity, .observableState, .runtime, .safetyNotProven)
-        case .captureRevisionMismatch:
-            failure = fact(.invalidProvenance, .presentationIntegration, .component, .contained)
-        case .reservedFailureCapacityExhausted:
-            failure = fact(.capacityExhausted, .presentationIntegration, .runtime, .safetyNotProven)
-        case .mutationPhaseViolation:
-            failure = fact(
-                .invalidPhase,
-                .observableState,
-                .activeCycle,
-                stableStateProven ? .contained : .safetyNotProven
-            )
-        case .observableStateReentrancyViolation:
-            failure = fact(.reentrancyViolation, .observableState, .activeCycle, .safetyNotProven)
-        case .observableStateInvariantViolation:
-            failure = fact(.invariantViolation, .observableState, .runtime, .safetyNotProven)
-        }
-        return SignalAnalyzerOperationalFailure(failure: failure, diagnostic: diagnostic)
+        SignalAnalyzerOperationalFailure(
+            failure: SignalAnalyzerRuntimeFailureNormalizer.fact(
+                for: condition, stableStateProven: stableStateProven),
+            diagnostic: diagnostic)
     }
 
     private static func fact(

@@ -285,7 +285,11 @@ enum PiHostNativeRehearsal {
                 }
                 let result = owner.production.service(at: device.clock)
                 guard case .completed(_, .failure(.presentation)) = result,
-                    owner.production.currentPresentationRevision == priorRevision,
+                    owner.production.lastCommittedPresentationRevision == priorRevision,
+                    owner.production.currentPresentationRevision == nil,
+                    !owner.production.inputIsEligible,
+                    !owner.production.sourceIsActive,
+                    owner.production.phase == .quiescent,
                     device.frameHash == priorHash
                 else {
                     print(

@@ -197,3 +197,12 @@ The [final registered gate](../../Tests/ContractFixtures/SPEC001/Evidence/milest
 records 30 passing and 42 failing checks across 72 checks, with 1,151 root
 Swift tests passing. Owner failures and missing reviewed pixel references
 remain explicit; T10.8 is blocked rather than complete.
+
+## T10.5 resumed production join — 2026-10-02
+
+The approved carrier amendments and owning SPEC-013/SPEC-015 handoff resolve the
+previous runner seam blocker. T10.5 is complete: the real Dynamic Pi host joins
+canonical sequencing, exact focused failures, application effects, recovery and
+backend health. See the [reproducible evidence](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/dynamic-failure-recovery.md).
+T10.6, final closure checks and assembled revalidation remain outstanding; this
+increment does not claim full conformance or any connected hardware evidence.

@@ -2228,7 +2228,7 @@ evidence. Existing reviewed-pixel and connected-hardware gates remain open.
       inspected firmware within unchanged hard-float, zero-heap and byte limits.
       Reviewed pixel references and connected evidence remain outstanding.
 
-- [ ] `T10.5` — Delegate Dynamic production opportunity sequencing to the
+- [x] `T10.5` — Delegate Dynamic production opportunity sequencing to the
       common runtime pipeline. Adapt the Pi host's fact application, semantic,
       layout, Canvas, render, and Interaction workspaces to the existing
       `RuntimeCompletePipelineOwner`/profile entry seam. Keep acquisition,
@@ -2243,10 +2243,11 @@ evidence. Existing reviewed-pixel and connected-hardware gates remain open.
       commits routing, refusals retain bounded intent, exact focused failure
       meaning reaches policy after mandatory effects, and T10.2's regressions
       plus raw-device touch/workload scenarios pass.
-      **2026-10-02 disposition:** Blocked by the [reproduced common-runtime seam gap](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/dynamic-runner-blocker.md).
-      An application batch may mutate before failure, but the existing result
-      cannot retain that fact for dirty/wake disposition. Exact application
-      rejection handling also needs owner review; no partial join is retained.
+      **2026-10-02 final disposition:** Completed after the validated
+      SPEC-013/SPEC-015 handoff. [Stage join](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/dynamic-stage-join.md)
+      and [failure/recovery evidence](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/dynamic-failure-recovery.md)
+      cover actual production execution, mandatory effects, policy, pending
+      retries, transport health, native behavior and ARMv6 cross-build.
 
 - [ ] `T10.6` — Delegate Static/nRF production sequencing to the same common
       runner using fixed typed owner adapters and caller-owned storage. Rejoin
@@ -2709,3 +2710,10 @@ describes storage and cleanup ownership. Evidence is in the
 [Dynamic stage-join record](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/dynamic-stage-join.md).
 T10.5 remains executing: production normalization/policy, mandatory application
 effects, bounded refusal recovery, and final assembled evidence are still required.
+
+### T10.5 completed; T10.6 executing — 2026-10-02
+
+Production failure normalization, mandatory effects, recovery and health are now
+joined to the common Dynamic runner. The final T10.5 evidence supersedes the dated
+blocked and partial-increment dispositions. T10.6 consumes this production seam;
+T10.7 final closure validation and T10.8 remain outstanding.

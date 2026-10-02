@@ -3433,12 +3433,32 @@ func rawFramebufferTouchesReachModelAndReplacementFrame(scenario: String) throws
                 effectivePresentation: dynamicPiEffectivePresentation(preset: preset),
                 provenance: initial,
                 presentationRevision: PresentationRevision(rawValue: 1)))
-        let model = makeSemanticJoinModel()
+        let repository = ProductionFailureObservationRepository()
+        let model = SignalAnalyzerViewModel(
+            startAcquisition: StartSignalAcquisitionUseCase(repository: repository),
+            stopAcquisition: StopSignalAcquisitionUseCase(repository: repository),
+            clearCapture: ClearSignalCaptureUseCase(repository: repository))
         guard case .presented = owner.presentInitial(model: model) else {
             Issue.record("initial failed")
             return
         }
         let admission = DynamicSignalAnalyzerHostFactAdmission()
+        let failureOwner = DynamicSignalAnalyzerApplicationFailureOwner(
+            model: model,
+            stop: StopSignalAcquisitionUseCase(repository: repository), admission: admission)
+        let observation = SignalAnalyzerPresentationAdmissionAdapter(
+            observeCapture: ObserveSignalCaptureUseCase(repository: repository),
+            observeState: ObserveAcquisitionStateUseCase(repository: repository),
+            admission: admission,
+            failureFactory: failureOwner.factory)
+        failureOwner.installObservation(observation)
+        owner.installApplicationFailureOwner(failureOwner)
+        #expect(admission.beginProducer(.bootstrap))
+        guard case .started = observation.startObserving() else {
+            Issue.record("observation failed")
+            return
+        }
+        admission.endProducer()
         #expect(admission.beginProducer(.transition))
         guard case .accepted = admission.submit(.acquisitionState(.running)),
             case .accepted = admission.submit(
@@ -3468,9 +3488,301 @@ func rawFramebufferTouchesReachModelAndReplacementFrame(scenario: String) throws
         #expect(context.cycle == RunCycleID(rawValue: 2))
         #expect(owner.retainedFailure.firstFailure == .application(.captureRevisionMismatch))
         #expect(owner.retainedFailure.detectingContext == context)
-        #expect(model.state.acquisitionState == .running)
+        #expect(model.state.acquisitionState == .failed(SignalAnalyzerDiagnostic(exactUTF8: [])!))
+        #expect(model.captureRevision == 0)
+        #expect(repository.captureDetachCount == 1)
+        #expect(repository.stateDetachCount == 1)
+        #expect(failureOwner.policyCallCount == 1)
+        #expect(failureOwner.lastDisposition == .quiesceAffectedScope)
+        #expect(
+            owner.lastNormalizedFailure
+                == GiftUIFailureFact(
+                    condition: .invalidProvenance,
+                    origin: .presentationIntegration, affectedScope: .component,
+                    containment: .contained))
+        #expect(owner.residualPolicy.lastResult == .noPolicyCall(.focusedOwnerFinal))
+        #expect(admission.beginProducer(.transition))
+        #expect(admission.submit(.acquisitionState(.running)) == .rejected(.runtimeUnavailable))
+        admission.endProducer()
         #expect(admission.takeNextSealed() == nil)
-        #expect(owner.currentPresentationRevision == PresentationRevision(rawValue: 1))
+        #expect(owner.lastCommittedPresentationRevision == PresentationRevision(rawValue: 1))
+        #expect(owner.state == .quiescent)
+        #expect(owner.pipelineFinalizationCount == 2)
+    #endif
+}
+
+private final class ProductionFailureObservationRepository: SignalAcquisitionRepository {
+    private(set) var captureDetachCount: UInt8 = 0
+    private(set) var stateDetachCount: UInt8 = 0
+    func startObservingCapture(sink: some SignalCaptureSink) {
+        _ = sink.receive(.snapshot(revision: 0, capture: .empty()))
+    }
+    func stopObservingCapture() { captureDetachCount += 1 }
+    func startObservingAcquisitionState(sink: some AcquisitionStateSink) { _ = sink.receive(.idle) }
+    func stopObservingAcquisitionState() { stateDetachCount += 1 }
+    func start() throws {}
+    func stop() {}
+    func clear() {}
+}
+
+private final class ProductionReservationControl {
+    var refusal: DisplayReservationResult?
+}
+
+private struct ProductionRefusalTarget: DisplayTarget {
+    private var base: PiScreenDisplayTarget<EndpointFramebufferSink>
+    private let control: ProductionReservationControl
+    init(control: ProductionReservationControl) {
+        self.control = control
+        base = PiScreenDisplayTarget(
+            sink: EndpointFramebufferSink(),
+            layout: PiScreenFramebufferLayout(
+                width: 480, height: 320, bitsPerPixel: 16,
+                bytesPerRow: 960, mappedBytes: 307_200)!)!
+    }
+    var submissionLifetime: SubmissionLifetime { base.submissionLifetime }
+    var handoff: SubmissionHandoff { base.handoff }
+    var maximumInFlightPayloads: UInt8 { base.maximumInFlightPayloads }
+    var maximumInFlightBytes: UInt32 { base.maximumInFlightBytes }
+    mutating func reserveFrame(
+        descriptor: RasterSurfaceDescriptor, payloadCapacityBytes: UInt32,
+        regionCapacity: UInt16
+    ) -> DisplayReservationResult {
+        if let refusal = control.refusal { return refusal }
+        return base.reserveFrame(
+            descriptor: descriptor, payloadCapacityBytes: payloadCapacityBytes,
+            regionCapacity: regionCapacity)
+    }
+    mutating func withWriter<Result>(
+        for reservation: DisplayReservationID,
+        _ body: (inout PiScreenPayloadWriter) -> Result
+    ) -> Result? { base.withWriter(for: reservation, body) }
+    mutating func submitPayload(_ reservation: DisplayReservationID) -> DisplayTransferResult {
+        base.submitPayload(reservation)
+    }
+    mutating func finishFrame(_ reservation: DisplayReservationID) -> DisplayTransferResult {
+        base.finishFrame(reservation)
+    }
+    mutating func cancelFrame(_ reservation: DisplayReservationID) { base.cancelFrame(reservation) }
+    func health() -> GiftUIOperationalHealth { base.health() }
+}
+
+@Test func dynamicProductionRefusalsRetainOneRevisionAndExhaustTheConfiguredLimit() throws {
+    #if GIFTUI_DYNAMIC_PROFILE
+        let preset = GeneratedSignalAnalyzerPresets.raspberryPiDynamic()
+        let control = ProductionReservationControl()
+        let correlations = DynamicSignalAnalyzerPiCorrelationOwner()
+        let initial = try #require(correlations.reserveInitialPresentation())
+        var owner = try #require(
+            DynamicSignalAnalyzerPiInitialPresentationOwner(
+                target: ProductionRefusalTarget(control: control), limits: preset.runtimeLimits,
+                maximumRecordedTraversalIdentities: 203,
+                effectivePresentation: dynamicPiEffectivePresentation(preset: preset),
+                provenance: initial.provenance, presentationRevision: initial.presentationRevision))
+        let model = makeSemanticJoinModel()
+        guard case .presented = owner.presentInitial(model: model) else {
+            Issue.record("initial failed")
+            return
+        }
+        let oldAction = try #require(owner.eligibleAction(at: 0))
+        let admission = DynamicSignalAnalyzerHostFactAdmission()
+        #expect(admission.beginProducer(.transition))
+        guard case .accepted = admission.submit(.acquisitionState(.running)) else {
+            Issue.record("fact rejected")
+            return
+        }
+        admission.endProducer()
+        let refusals: [DisplayReservationResult] = [
+            .backpressured, .retryableRefusal, .backpressured, .retryableRefusal, .retryableRefusal,
+        ]
+        let counts: [UInt8?] = [0, 1, 1, 2, nil]
+        for (index, refusal) in refusals.enumerated() {
+            control.refusal = refusal
+            let cycle = try #require(correlations.reserveOpportunityCycle())
+            _ = owner.runOwnedOpportunity(
+                admission: admission, events: [], cycle: cycle, correlations: correlations,
+                fixed: nil)
+            guard case .completed(let completion) = owner.lastPipelineResult else {
+                Issue.record("refusal lost publication")
+                return
+            }
+            #expect(completion.publication.semanticRevision == SemanticRevision(rawValue: 1))
+            #expect(completion.publication.changed == (index == 0))
+            #expect(completion.committedPresentationRevision == nil)
+            #expect(owner.pendingPresentationIntent?.retryableRefusalCount == counts[index])
+            #expect(owner.lastCommittedPresentationRevision == initial.presentationRevision)
+            if index < 4 {
+                #expect(owner.eligibleAction(at: 0) == oldAction)
+                #expect(owner.residualPolicy.lastResult == .selected(.requestPacedRetry))
+                #expect(owner.pendingWakeReasons == [.presentationPending])
+            }
+        }
+        #expect(owner.state == .quiescent)
+        #expect(owner.pendingWakeReasons.isEmpty)
+        #expect(owner.pendingPresentationIntent == nil)
+        #expect(owner.residualPolicy.lastContext == .presentationUnavailable)
+        #expect(owner.residualPolicy.lastResult == .selected(.quiesceAffectedScope))
+        #expect(owner.residualPolicy.callCount == 5)
+        #expect(owner.pipelineFinalizationCount == 6)
+        #expect(model.state.acquisitionState == .running)
+        #expect(
+            owner.runOwnedOpportunity(
+                admission: admission, events: [], cycle: RunCycleID(rawValue: 6),
+                correlations: correlations, fixed: nil) == .failure(.mutationUnavailable))
+        #expect(owner.pipelineFinalizationCount == 6)
+    #endif
+}
+
+@Test func dynamicProductionPacingRetriesPendingPresentationWithoutNewFacts() throws {
+    #if GIFTUI_DYNAMIC_PROFILE
+        let preset = GeneratedSignalAnalyzerPresets.raspberryPiDynamic()
+        let control = ProductionReservationControl()
+        let correlations = DynamicSignalAnalyzerPiCorrelationOwner()
+        let initial = try #require(correlations.reserveInitialPresentation())
+        var owner = try #require(
+            DynamicSignalAnalyzerPiInitialPresentationOwner(
+                target: ProductionRefusalTarget(control: control), limits: preset.runtimeLimits,
+                maximumRecordedTraversalIdentities: 203,
+                effectivePresentation: dynamicPiEffectivePresentation(preset: preset),
+                provenance: initial.provenance, presentationRevision: initial.presentationRevision))
+        let model = makeSemanticJoinModel()
+        guard case .presented = owner.presentInitial(model: model) else {
+            Issue.record("initial failed")
+            return
+        }
+        let admission = DynamicSignalAnalyzerHostFactAdmission()
+        var coordinator = DynamicSignalAnalyzerPiInputCoordinator(
+            source: InputSourceID(rawValue: 1), capacity: 6,
+            context: ExecutionContext(
+                cycle: nil, semanticRevision: nil, candidateFrame: nil, phase: .idle),
+            factAdmission: admission)
+        coordinator.installPhysicalPresentation(initial.presentationRevision)
+        let pacing = DynamicSignalAnalyzerPiWakePacingOwner(
+            policy: preset.pacing, initialFrameOriginMicroseconds: 0)
+        #expect(admission.beginProducer(.transition))
+        guard case .accepted = admission.submit(.acquisitionState(.running)) else {
+            Issue.record("fact rejected")
+            return
+        }
+        admission.endProducer()
+        _ = pacing.recordAcceptedFact(at: 50_000)
+        control.refusal = .backpressured
+        guard
+            case .completed = pacing.service(
+                at: 250_000, completionTimeMicroseconds: { 250_000 },
+                coordinator: &coordinator, owner: &owner, correlations: correlations)
+        else {
+            Issue.record("first opportunity failed")
+            return
+        }
+        #expect(pacing.accumulatedReasons == [.presentationPending])
+        #expect(owner.currentPresentationRevision == initial.presentationRevision)
+        control.refusal = nil
+        guard
+            case .completed(let reasons, .completed(let summary)) = pacing.service(
+                at: 500_000,
+                completionTimeMicroseconds: { 500_000 }, coordinator: &coordinator, owner: &owner,
+                correlations: correlations)
+        else {
+            Issue.record("pending frame did not retry")
+            return
+        }
+        #expect(reasons == [.presentationPending])
+        #expect(summary.application.factCount == 0)
+        #expect(summary.presentation != nil)
+        #expect(owner.pendingPresentationIntent == nil)
+        #expect(pacing.accumulatedReasons.isEmpty)
+        guard case .completed(let completion) = owner.lastPipelineResult else {
+            Issue.record("accepted result missing")
+            return
+        }
+        #expect(completion.publication.semanticRevision == SemanticRevision(rawValue: 1))
+        #expect(!completion.publication.changed)
+        #expect(completion.disposition.commitsInteractionCandidate)
+        #expect(owner.eligibleAction(at: 0)?.action.code == SignalAnalyzerAction.stop.rawValue)
+    #endif
+}
+
+private final class ProductionPayloadControl {
+    var acceptedPayloads: UInt32 = 0
+    var refuseAt: UInt32 = .max
+}
+
+private struct ProductionControlledFramebufferSink: PiScreenFramebufferSink {
+    let control: ProductionPayloadControl
+    mutating func presentRGB565BigEndian(
+        bytes: UnsafeRawBufferPointer,
+        regions: [PiScreenPayloadRegion], transform: PiScreenAspectFitTransform
+    ) -> Bool {
+        guard control.acceptedPayloads < control.refuseAt else { return false }
+        control.acceptedPayloads += 1
+        return true
+    }
+}
+
+@Test func dynamicProductionTransferredStreamFailureQuiescesBeforeBackendPolicy() throws {
+    #if GIFTUI_DYNAMIC_PROFILE
+        let preset = GeneratedSignalAnalyzerPresets.raspberryPiDynamic()
+        let control = ProductionPayloadControl()
+        let correlations = DynamicSignalAnalyzerPiCorrelationOwner()
+        let initial = try #require(correlations.reserveInitialPresentation())
+        let target = try #require(
+            PiScreenDisplayTarget(
+                sink: ProductionControlledFramebufferSink(control: control),
+                layout: PiScreenFramebufferLayout(
+                    width: 480, height: 320, bitsPerPixel: 16, bytesPerRow: 960,
+                    mappedBytes: 307_200)!))
+        var owner = try #require(
+            DynamicSignalAnalyzerPiInitialPresentationOwner(
+                target: target,
+                limits: preset.runtimeLimits, maximumRecordedTraversalIdentities: 203,
+                effectivePresentation: dynamicPiEffectivePresentation(preset: preset),
+                provenance: initial.provenance,
+                presentationRevision: initial.presentationRevision))
+        let model = makeSemanticJoinModel()
+        guard case .presented = owner.presentInitial(model: model) else {
+            Issue.record("initial failed")
+            return
+        }
+        control.refuseAt = control.acceptedPayloads + 1
+        let admission = DynamicSignalAnalyzerHostFactAdmission()
+        #expect(admission.beginProducer(.transition))
+        guard case .accepted = admission.submit(.acquisitionState(.running)) else {
+            Issue.record("fact refused")
+            return
+        }
+        admission.endProducer()
+        let cycle = try #require(correlations.reserveOpportunityCycle())
+        let result = owner.runOwnedOpportunity(
+            admission: admission, events: [], cycle: cycle,
+            correlations: correlations, fixed: nil)
+        let fact = GiftUIFailureFact(
+            condition: .requiredFacilityUnavailable, origin: .presentationIntegration,
+            affectedScope: .component, containment: .contained)
+        guard
+            case .failure(
+                .presentation(.endpointHealth(.backendOperationalFailure(let actual, let effects)))) =
+                result
+        else {
+            Issue.record("accepted stream failure lost health meaning")
+            return
+        }
+        #expect(actual == fact)
+        #expect(effects == [.drainTransferredStream, .updateEndpointHealth, .quiesceInput])
+        #expect(owner.residualPolicy.lastContext == .backendOperationalFailure)
+        #expect(owner.residualPolicy.lastFact == fact)
+        #expect(owner.residualPolicy.lastResult == .selected(.quiesceAffectedScope))
+        #expect(owner.state == .quiescent)
+        #expect(owner.currentPresentationRevision == nil)
+        #expect(owner.lastCommittedPresentationRevision == PresentationRevision(rawValue: 1))
+        #expect(owner.pendingWakeReasons.isEmpty)
+        #expect(control.acceptedPayloads == control.refuseAt)
+        guard case .completed(let completion) = owner.lastPipelineResult else {
+            Issue.record("logical handoff lost")
+            return
+        }
+        #expect(completion.disposition.logicalFrameDisposition == .committed)
+        #expect(completion.committedPresentationRevision == PresentationRevision(rawValue: 1))
         #expect(owner.pipelineFinalizationCount == 2)
     #endif
 }

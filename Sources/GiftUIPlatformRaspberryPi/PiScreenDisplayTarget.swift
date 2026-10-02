@@ -130,6 +130,7 @@ package struct PiScreenDisplayTarget<Sink: PiScreenFramebufferSink>: DisplayTarg
     private var reservation: DisplayReservationID?
     private var nextReservationRaw: UInt32 = 1
     private var operationalHealth = GiftUIOperationalHealth()
+    private var frameResponsibilityAccepted = false
 
     package init?(
         sink: Sink,
@@ -162,6 +163,7 @@ package struct PiScreenDisplayTarget<Sink: PiScreenFramebufferSink>: DisplayTarg
         regionCapacity: UInt16
     ) -> DisplayReservationResult {
         guard reservation == nil else { return .failure(.reentrancyViolation) }
+        guard operationalHealth.state == .available else { return .nonRetryableRefusal }
         guard descriptor.bounds.size == Size(width: 240, height: 240),
             descriptor.encoding == .rgb565BigEndian,
             descriptor.realization == .tiled,
@@ -210,7 +212,18 @@ package struct PiScreenDisplayTarget<Sink: PiScreenFramebufferSink>: DisplayTarg
                 transform: transform
             )
         }
-        guard accepted else { return .failureBeforeAcceptance(.transportUnavailable) }
+        guard accepted else {
+            operationalHealth.recordFailure(
+                GiftUIFailureFact(
+                    condition: .requiredFacilityUnavailable,
+                    origin: .presentationIntegration, affectedScope: .component,
+                    containment: .contained),
+                resultingState: .unavailable)
+            return frameResponsibilityAccepted
+                ? .failureAfterAcceptance(.transportUnavailable)
+                : .failureBeforeAcceptance(.transportUnavailable)
+        }
+        frameResponsibilityAccepted = true
         writer.discard()
         return .completed
     }
@@ -223,6 +236,7 @@ package struct PiScreenDisplayTarget<Sink: PiScreenFramebufferSink>: DisplayTarg
         }
         self.reservation = nil
         descriptor = nil
+        frameResponsibilityAccepted = false
         return .completed
     }
 
@@ -231,6 +245,7 @@ package struct PiScreenDisplayTarget<Sink: PiScreenFramebufferSink>: DisplayTarg
         writer.discard()
         self.reservation = nil
         descriptor = nil
+        frameResponsibilityAccepted = false
     }
 
     package borrowing func health() -> GiftUIOperationalHealth {

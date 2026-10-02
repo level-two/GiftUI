@@ -186,6 +186,7 @@ package struct DynamicSignalAnalyzerPiInputCoordinator {
         let result = owner.runOwnedOpportunity(
             admission: factAdmission, events: queue.takeAll(),
             cycle: cycle, correlations: correlations, fixed: fixed)
+        if owner.state == .quiescent { quiesce() }
         if case .completed(let summary) = result, summary.presentation != nil,
             let revision = owner.currentPresentationRevision
         {

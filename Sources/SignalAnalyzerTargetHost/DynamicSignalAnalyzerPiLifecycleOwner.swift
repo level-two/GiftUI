@@ -91,6 +91,10 @@ where Target: DisplayTarget {
         presentationOwner?.currentPresentationRevision
     }
 
+    package var lastCommittedPresentationRevision: PresentationRevision? {
+        presentationOwner?.lastCommittedPresentationRevision
+    }
+
     package var sourceIsActive: Bool { source?.activeGeneration != nil }
     package var loopIsEstablished: Bool { phase == .active }
     package var reportRuntimeUseIsValid: Bool { assemblyReportRuntimeUseIsValid }
@@ -133,12 +137,18 @@ where Target: DisplayTarget {
     package mutating func constructRuntimeAndEndpoint() -> HostActivationStepResult<
         ActivationFailure
     > {
+        // Storage placeholders do not authorize an offer. The common runner
+        // reserves the actual initial identities at their corresponding stages.
+        let correlation = DynamicSignalAnalyzerPiPresentationCorrelation(
+            provenance: FrameProvenance(
+                cycle: RunCycleID(rawValue: 0), semanticRevision: SemanticRevision(rawValue: 0),
+                candidateFrame: CandidateFrameID(rawValue: 0)),
+            presentationRevision: PresentationRevision(rawValue: 0))
         guard phase == .valid,
             assemblyReportRuntimeUseIsValid,
             assemblyReport.kind == .raspberryPiDynamic,
             assemblyReport.profile == .dynamic,
             let target,
-            let correlation = correlations.reserveInitialPresentation(),
             let owner = DynamicSignalAnalyzerPiInitialPresentationOwner(
                 target: target,
                 limits: assemblyReport.storageAudit.limits,
@@ -169,17 +179,22 @@ where Target: DisplayTarget {
                 _ = pacing.recordAcceptedFact(at: nowMicroseconds())
             }
         )
-        let adapter = SignalAnalyzerPresentationAdmissionAdapter(
-            observeCapture: ObserveSignalCaptureUseCase(repository: repository),
-            observeState: ObserveAcquisitionStateUseCase(repository: repository),
-            admission: wakeAdmission,
-            failureFactory: DefaultSignalAnalyzerOperationalFailureFactory()
-        )
         let model = SignalAnalyzerViewModel(
             startAcquisition: StartSignalAcquisitionUseCase(repository: repository),
             stopAcquisition: StopSignalAcquisitionUseCase(repository: repository),
             clearCapture: ClearSignalCaptureUseCase(repository: repository)
         )
+        let failureOwner = DynamicSignalAnalyzerApplicationFailureOwner(
+            model: model,
+            stop: StopSignalAcquisitionUseCase(repository: repository), admission: factAdmission)
+        let adapter = SignalAnalyzerPresentationAdmissionAdapter(
+            observeCapture: ObserveSignalCaptureUseCase(repository: repository),
+            observeState: ObserveAcquisitionStateUseCase(repository: repository),
+            admission: wakeAdmission,
+            failureFactory: failureOwner.factory
+        )
+        failureOwner.installObservation(adapter)
+        presentationOwner?.installApplicationFailureOwner(failureOwner)
         inputCoordinator = DynamicSignalAnalyzerPiInputCoordinator(
             source: inputSource,
             capacity: assemblyReport.storageAudit.limits.execution.maximumInputEvents,
@@ -233,7 +248,10 @@ where Target: DisplayTarget {
             var presentationOwner, var inputCoordinator,
             let correlation = initialCorrelation
         else { return fail(.configuration(.invariantViolation)) }
-        guard case .presented = presentationOwner.presentInitial(model: model) else {
+        guard
+            case .presented = presentationOwner.presentInitial(
+                model: model, correlations: correlations)
+        else {
             self.presentationOwner = presentationOwner
             return fail(.endpoint(.invariantViolation))
         }
@@ -312,6 +330,10 @@ where Target: DisplayTarget {
         )
         self.inputCoordinator = inputCoordinator
         self.presentationOwner = presentationOwner
+        if presentationOwner.state == .quiescent {
+            stopSourceDeliveryAndRepositoryObservation()
+            phase = .quiescent
+        }
         return result
     }
 
