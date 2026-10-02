@@ -11,6 +11,8 @@ static uint32_t revision;
 static uint32_t frame_count;
 static uint32_t poll_count;
 static uint32_t drain_count;
+static uint16_t pending_input = 1U;
+static int pending_next;
 static uint32_t touch_revision;
 static uint32_t teardown_count;
 static uint32_t dirty;
@@ -59,7 +61,7 @@ int32_t giftui_signal_analyzer_input_install_presentation(uint32_t next)
     assert(next == 1U);
     return 0;
 }
-uint16_t giftui_signal_analyzer_input_pending_count(void) { return 0U; }
+uint16_t giftui_signal_analyzer_input_pending_count(void) { return pending_input; }
 void giftui_signal_analyzer_input_quiesce(void) { teardown_count++; }
 int giftui_static_touch_pipeline_initialize(
     struct giftui_static_touch_pipeline *pipeline,
@@ -114,6 +116,11 @@ uint32_t giftui_signal_analyzer_present_next(
     (void)raster; (void)raster_bytes; (void)coverage; (void)coverage_bytes;
     assert(write == spi_tft_write_rgb565);
     if (refuse_next != 0) { return 0U; }
+    if (pending_input != 0U) {
+        pending_input = 0U;
+        delay = 80000U;
+    }
+    if (pending_next != 0) { return 2U; }
     revision++;
     frame_count++;
     dirty = 0U;
@@ -124,11 +131,7 @@ uint32_t giftui_signal_analyzer_drain_initial_input(
 {
     (void)profile; (void)profile_bytes; (void)capture; (void)capture_bytes;
     drain_count++;
-    if (drain_count == 1U) {
-        delay = 80000U;
-        dirty = 1U;
-        return 2U;
-    }
+    assert(0 && "input application belongs to the paced common opportunity");
     return 1U;
 }
 uint32_t giftui_signal_analyzer_poll_scheduled_due(
@@ -137,8 +140,8 @@ uint32_t giftui_signal_analyzer_poll_scheduled_due(
     (void)profile; (void)profile_bytes; (void)capture; (void)capture_bytes;
     poll_count++;
     dirty = 1U;
-    if (zero_delay_pair != 0 && poll_count == 2U) { delay = 0U; }
-    if (zero_delay_pair != 0 && poll_count == 3U) { delay = 80000U; }
+    if (zero_delay_pair != 0 && poll_count == 1U) { delay = 0U; }
+    if (zero_delay_pair != 0 && poll_count == 2U) { delay = 80000U; }
     return 1U;
 }
 uint32_t giftui_signal_analyzer_needs_presentation(void) { return dirty; }
@@ -171,19 +174,30 @@ int main(void)
     assert(frame_count == 1U && touch_revision == 1U && poll_count == 0U);
     assert(service(&production, 180000U, &deadline, &stop) == 0);
     assert(deadline == 190000U);
-    assert(frame_count == 1U && touch_revision == 1U && poll_count == 1U);
+    assert(frame_count == 1U && touch_revision == 1U && poll_count == 0U &&
+           pending_input == 1U && drain_count == 0U);
     assert(service(&production, 250000U, &deadline, &stop) == 0);
     assert(deadline == 260000U);
-    assert(frame_count == 2U && touch_revision == 2U && poll_count == 1U);
+    assert(frame_count == 2U && touch_revision == 2U && poll_count == 0U &&
+           pending_input == 0U && drain_count == 0U);
     zero_delay_pair = 1;
     assert(service(&production, 260000U, &deadline, &stop) == 0);
     assert(deadline == 270000U);
-    assert(frame_count == 2U && poll_count == 3U);
+    assert(frame_count == 2U && poll_count == 0U);
+    assert(service(&production, 340000U, &deadline, &stop) == 0);
+    assert(deadline == 350000U && frame_count == 2U && poll_count == 2U);
+    delay = UINT64_MAX;
+    production.next_transition_deadline = 0U;
+    pending_next = 1;
+    assert(service(&production, 500000U, &deadline, &stop) == 0);
+    assert(frame_count == 2U && revision == 2U && touch_revision == 2U);
+    assert(dirty == 1U && production.next_frame_deadline == 750000U);
+    pending_next = 0;
     delay = UINT64_MAX;
     production.next_transition_deadline = 0U;
     dirty = 1U;
     refuse_next = 1;
-    assert(service(&production, 500000U, &deadline, &stop) == -EIO);
+    assert(service(&production, 750000U, &deadline, &stop) == -EIO);
     refuse_next = 0;
     pen_result = -EIO;
     assert(touch_poll() == -EIO);
