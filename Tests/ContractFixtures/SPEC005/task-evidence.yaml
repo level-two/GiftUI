@@ -181,6 +181,7 @@ tasks:
     evidence:
       - Tests/ContractFixtures/SPEC005/Evidence/milestone-3/provenance-and-build-validation.md
       - Tests/ContractFixtures/SPEC005/Evidence/milestone-3/reference-provenance.tsv
+      - Tests/ContractFixtures/SPEC005/Evidence/milestone-3/reference-provenance-current.tsv
     blockers: []
   T4.1:
     disposition: completed

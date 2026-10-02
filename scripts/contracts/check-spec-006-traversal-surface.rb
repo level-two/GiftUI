@@ -69,8 +69,11 @@ allowed_source_paths = [
   "Sources/GiftUIMacros/ObservableStateHostMacro.swift",
   "Sources/GiftUISemanticCore/GiftUISemanticCore.swift",
   "Sources/GiftUISemanticCore/SemanticLayoutView.swift",
-  "Sources/GiftUISemanticCore/SemanticRenderView.swift"
+  "Sources/GiftUISemanticCore/SemanticRenderView.swift",
+  "Sources/GiftUIRuntimeDynamic/DynamicSemanticHostStorage.swift"
 ]
+storage = File.read(File.join(root, "Sources/GiftUIRuntimeDynamic/DynamicSemanticHostStorage.swift"))
+failures << "Dynamic storage acquired traversal ownership" if storage.match?(/func _giftUITraverse\b/)
 Dir.glob(File.join(root, "Sources/**/*.swift")).sort.each do |absolute|
   relative = absolute.delete_prefix("#{root}/")
   next if allowed_source_paths.include?(relative)

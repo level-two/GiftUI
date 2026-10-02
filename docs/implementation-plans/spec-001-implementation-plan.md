@@ -2754,3 +2754,13 @@ profile edges. The exact 84-target/375-edge graph and independent deterministic
 corpora pass. This closes the earlier vacuous absence proof.
 [Evidence](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/executable-dependency-isolation.md).
 The remaining final prerequisite is T10.6's stack-validation disposition.
+
+### T10.8 registered-check reconciliation — 2026-10-02
+
+Owner scans now distinguish canonical algorithm ownership, composition projections
+and borrowed sink forwarding. Current compiler probes select the matching module
+directory; historical text-generator provenance is preserved beside current source
+identity. SPEC-014's six amended-fixture gaps are explicit collecting dispositions,
+not waived acceptance. Root reference corpora run once before shared profile checks.
+[Record](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/gate-reconciliation.md).
+A clean registered run and criterion applicability review remain in progress.

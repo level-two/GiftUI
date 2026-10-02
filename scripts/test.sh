@@ -91,6 +91,7 @@ run_check() {
     printf '==> %s\n' "${id}"
     "$@" >"${log}" 2>&1
     result=$?
+    last_check_status="${result}"
     printf '%s\t%s\t%s\n' "${id}" "${result}" "${log#"${PROJECT_ROOT}/"}" >>"${results_path}"
     if [[ "${result}" -ne 0 ]]; then
         failures=$((failures + 1))
@@ -121,6 +122,11 @@ run_check root-tests giftui_swiftpm \
     --cache-root "${report_dir}" \
     --swift-flag -DGIFTUI_DYNAMIC_PROFILE \
     -- test
+# The two complete macOS reference corpora run in root-tests. Reuse that
+# successful shared check across profile drivers; standalone drivers run them.
+if [[ "${last_check_status}" -eq 0 ]]; then
+    export GIFTUI_SHARED_REFERENCE_ALREADY_TESTED=1
+fi
 run_check spec-003-diagnostic-buffer \
     "${PROJECT_ROOT}/scripts/contracts/check-spec-003-diagnostic-buffer.sh"
 

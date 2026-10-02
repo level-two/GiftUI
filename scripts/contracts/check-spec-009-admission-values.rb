@@ -11,7 +11,8 @@ def fail_check(message)
   exit 1
 end
 
-source = SOURCE.read
+runner = ROOT.join("Sources/GiftUIExecution/ExecutionOpportunityRunner.swift")
+source = SOURCE.read + "\n" + runner.read
 fail_check("admission imports differ") unless source.scan(/^import (\w+)$/).flatten == %w[GiftUI]
 
 required_declarations = %w[
@@ -23,7 +24,7 @@ required_declarations.each do |name|
   matches = Dir[ROOT.join("Sources/**/*.swift")].select do |path|
     File.read(path).match?(/package (?:struct|enum|protocol) #{name}\b/)
   end
-  fail_check("#{name} ownership differs: #{matches}") unless matches == [SOURCE.to_s]
+  fail_check("#{name} ownership differs: #{matches}") unless matches == [name == "ExecutionOpportunityRunner" ? runner.to_s : SOURCE.to_s]
 end
 
 required_fragments = [

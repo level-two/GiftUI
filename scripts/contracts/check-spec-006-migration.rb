@@ -66,8 +66,15 @@ queries.each do |family, (pattern, paths)|
 end
 
 maintained_sources = Dir[ROOT.join("Sources/**/*.swift"), ROOT.join("Tests/**/*Tests/*.swift")].sort
-forbidden = /\bViewVisitor\b|\b_visit\b|\bStateKey\b.*\bString\b|\bpath:\s*String\b/
-violations = maintained_sources.select { |path| File.read(path).match?(forbidden) }
+forbidden = /\bViewVisitor\b|\b_visit\b|\bStateKey\b.*\bString\b/
+# Structural declaration paths are forbidden. Device filesystem paths are not
+# structural identities and remain valid in a platform's sysfs/file IO adapter.
+violations = maintained_sources.select do |path|
+  source = File.read(path)
+  source.match?(forbidden) ||
+    (Pathname.new(path).relative_path_from(ROOT).to_s.match?(%r{\ASources/(?:GiftUI|GiftUISemanticCore|GiftUIRuntime[^/]*)/}) && source.match?(/\bpath:\s*String\b/))
+end
+fail_check("negative structural-path probe was not rejected") unless "path: String".match?(/\bpath:\s*String\b/)
 fail_check("legacy surface remains in maintained source: #{violations.map { |path| Pathname.new(path).relative_path_from(ROOT) }}") unless violations.empty?
 
 puts "SPEC-006 migration inventory passed: #{rows.length} exact PoC path/family rows, no maintained compatibility shim."

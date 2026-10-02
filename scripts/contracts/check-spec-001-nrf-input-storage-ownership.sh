@@ -25,8 +25,8 @@ giftui_swiftpm \
     --disable-sandbox \
     -- build --target SignalAnalyzerTargetHost >/dev/null
 
-module_file="$(find "${PROJECT_ROOT}/.build" -maxdepth 6 \
-    -path '*/debug/Modules/SignalAnalyzerTargetHost.swiftmodule' -print -quit)"
+binary_dir="$(swift build --disable-sandbox --scratch-path "${PROJECT_ROOT}/.build" --show-bin-path)"
+module_file="${binary_dir}/Modules/SignalAnalyzerTargetHost.swiftmodule"
 [[ -n "${module_file}" ]] || fail 'built target-host module was not found'
 module_path="$(dirname "${module_file}")"
 

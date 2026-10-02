@@ -56,8 +56,16 @@ action_allocator_constructions = all_source.scan(
 ).length
 fail_check("expected one production action-generation allocator construction") unless
   action_allocator_constructions == 1
-coordinator_calls = all_source.scan(/RuntimeInteractionCandidateCoordinator\.build\(/).length
-fail_check("expected one production candidate-coordinator join") unless coordinator_calls == 1
+coordinator_paths = source_by_path.select { |_path, source| source.include?("RuntimeInteractionCandidateCoordinator.build(") }.keys.sort
+expected_coordinator_paths = %w[
+  Sources/GiftUIRuntimeCore/RuntimeInteractionCandidateTransaction.swift
+  Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFEmbeddedInteractionOwner.swift
+  Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFInteractionCandidateProducer.swift
+]
+fail_check("canonical candidate-coordinator callers differ: #{coordinator_paths.inspect}") unless
+  coordinator_paths == expected_coordinator_paths
+fail_check("duplicate candidate coordinator definition") unless
+  all_source.scan(/(?:enum|struct) RuntimeInteractionCandidateCoordinator\b/).length == 1
 
 interaction_state_paths = source_by_path.each_with_object([]) do |(path, source), paths|
   paths << path if path.start_with?("Sources/GiftUIRuntime") && source.match?(/\bInteractionState</)

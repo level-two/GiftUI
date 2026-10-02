@@ -30,8 +30,8 @@ giftui_swiftpm \
     --disable-sandbox \
     -- build --target GiftUIHostConfiguration >/dev/null
 
-module_file="$(find "${PROJECT_ROOT}/.build" -maxdepth 6 \
-    -path '*/debug/Modules/GiftUIHostConfiguration.swiftmodule' -print -quit)"
+binary_dir="$(swift build --disable-sandbox --scratch-path "${PROJECT_ROOT}/.build" --show-bin-path)"
+module_file="${binary_dir}/Modules/GiftUIHostConfiguration.swiftmodule"
 [[ -n "${module_file}" ]] || fail 'built host configuration module was not found'
 module_path="$(dirname "${module_file}")"
 [[ -d "${module_path}" ]] || fail "missing built module path: ${module_path}"

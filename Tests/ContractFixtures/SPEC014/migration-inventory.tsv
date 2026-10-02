@@ -12,7 +12,7 @@ absent-framebuffer-backend	working-tree	Sources/GiftUIBackendFramebuffer/	frameb
 absent-rgb565-backend	working-tree	Sources/GiftUIBackendRGB565/	rgb565-raster	already-absent	GiftUIRasterCore
 absent-ili9341-display	working-tree	Sources/GiftUIDisplayILI9341/	display-target	already-absent	SPEC-015
 absent-linux-platform	working-tree	Sources/GiftUIPlatformLinux/	platform-display-integration	already-absent	SPEC-015
-absent-raspberry-pi-platform	working-tree	Sources/GiftUIPlatformRaspberryPi/	platform-device-integration	already-absent	SPEC-015
+current-raspberry-pi-platform	working-tree	Sources/GiftUIPlatformRaspberryPi/	platform-device-integration	downstream-owned	SPEC-015
 absent-mac-simulator	working-tree	Sources/GiftUISimulatorMac/	display-simulator	already-absent	SPEC-015
 poc-core-rendering	PoC	Sources/GiftUI/Rendering/	renderer-and-operation-surface	replace	GiftUIRenderCore,GiftUIRasterCore
 poc-framebuffer-backend	PoC	Sources/GiftUIBackendFramebuffer/	framebuffer-surface-raster-and-text	replace	GiftUISurfaceCore,GiftUIRasterCore

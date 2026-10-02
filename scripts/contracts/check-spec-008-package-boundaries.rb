@@ -54,9 +54,15 @@ approved_joiners = %w[
   GiftUIDrawing GiftUIRenderLowering GiftUIRuntimeCore GiftUIRuntimeDynamic
   GiftUIRuntimeStatic
 ]
-fail_check("semantic/layout join exists outside approved producers") unless
+approved_projections = %w[
+  SignalAnalyzerTargetHost/DynamicSignalAnalyzerPresentationPipeline.swift
+  SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFResolvedLayout.swift
+]
+# Composition may borrow both views; production traversal still has one owner.
+fail_check("semantic/layout join exists outside approved producers or projections") unless
   !joiners.empty? && joiners.all? do |path|
-    approved_joiners.any? { |target| path.to_s.include?("/#{target}/") }
+    approved_joiners.any? { |target| path.to_s.include?("/#{target}/") } ||
+      approved_projections.include?(path.relative_path_from(SOURCES).to_s)
   end
 
 consumer_directories = SOURCES.children.select do |path|

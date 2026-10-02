@@ -52,10 +52,14 @@ run_check ruby "${SCRIPT_DIR}/check-spec-015-generated-workload.rb"
 run_check "${SCRIPT_DIR}/check-spec-015-validation-purity.sh"
 run_check "${SCRIPT_DIR}/check-spec-015-host-surfaces.sh" \
     --output "${REPORT_ROOT}/host-surfaces"
+reference_args=()
+if [[ "${GIFTUI_SHARED_REFERENCE_ALREADY_TESTED:-0}" == 1 ]]; then
+    reference_args=(--skip 'macOS.*ReferenceRuns')
+fi
 run_check swift test --disable-sandbox \
     --scratch-path "${PROJECT_ROOT}/.build" \
     -Xswiftc -DGIFTUI_DYNAMIC_PROFILE \
-    --filter GiftUIHostConfigurationTests
+    "${reference_args[@]}" --filter GiftUIHostConfigurationTests
 input_identity="$(shasum -a 256 "${FIXTURE_ROOT}"/*.tsv | shasum -a 256 | awk '{print $1}')"
 compiler_identity="$(swiftc --version 2>/dev/null | tr '\n' ' ')"
 command_hash="$(printf '%s' "scripts/contracts/run-spec-015.sh --profile ${profile}" | shasum -a 256 | awk '{print $1}')"

@@ -2,7 +2,7 @@
 spec: SPEC-014
 feature: giftui-mvp-architecture
 title: SPEC-014 Conformance Report
-status: complete
+status: collecting
 reviewers:
   - codex
 created: 2026-09-13
@@ -56,20 +56,20 @@ resource, or hardware contracts.
 | Criterion | Result | Evidence | Notes / exception authority |
 | --- | --- | --- | --- |
 | `BI-001` | pass | [module checker](../../scripts/contracts/check-spec-014-module-contract.rb), [downstream host registry](../../Tests/ContractFixtures/SPEC014/Evidence/milestone-8/downstream-consumer-registry.md), [profile declarations](../../scripts/contracts/check-spec-014-value-profiles.sh) | Exact owner graphs, the explicit SPEC-015 consumer, and five import-negative fixtures pass. |
-| `BI-002` | pass | [capability checker](../../scripts/contracts/check-spec-014-capability-fixtures.rb), [endpoint admission](../../Tests/ContractFixtures/SPEC014/Evidence/milestone-7/endpoint-admission.md) | Four exact effective values, every mismatch, and no pre-construction target probing pass. |
-| `BI-003` | pass | [nRF evidence](../../Tests/ContractFixtures/SPEC014/Evidence/milestone-8/nrf52840-cross-build.md), [platform high-water](../../Tests/ContractFixtures/SPEC014/Evidence/milestone-6/platform-tile-high-water.md) | Exact 480 x 4, 960-byte row, 3,840-byte one-slot path links without a framebuffer. |
+| `BI-002` | pending | [capability checker](../../scripts/contracts/check-spec-014-capability-fixtures.rb), [endpoint admission](../../Tests/ContractFixtures/SPEC014/Evidence/milestone-7/endpoint-admission.md) | Four exact effective values, every mismatch, and no pre-construction target probing pass. |
+| `BI-003` | pending | [nRF evidence](../../Tests/ContractFixtures/SPEC014/Evidence/milestone-8/nrf52840-cross-build.md), [platform high-water](../../Tests/ContractFixtures/SPEC014/Evidence/milestone-6/platform-tile-high-water.md) | Exact 480 x 4, 960-byte row, 3,840-byte one-slot path links without a framebuffer. |
 | `BI-004` | pass | [transaction corpus](../../Tests/ContractFixtures/SPEC014/Evidence/milestone-7/transaction-failure-corpus.md), [endpoint cleanup](../../Tests/ContractFixtures/SPEC014/Evidence/milestone-7/endpoint-stream-cleanup.md) | Header bounds precede mutation; every reservation terminates once. |
 | `BI-005` | pass | [transaction corpus](../../Tests/ContractFixtures/SPEC014/Evidence/milestone-7/transaction-failure-corpus.md) | Zero/one/multi payload, slot reuse, identity exhaustion, and writer misuse pass. |
-| `BI-006` | pass | [tile workspace](../../Tests/ContractFixtures/SPEC014/Evidence/milestone-6/operation-major-tile-workspace.md), [borrow lifetime](../../Tests/ContractFixtures/SPEC014/Evidence/milestone-6/borrow-lifetime-evidence.md) | One producer/operation borrow, no replay/list/framebuffer, and exact bounds pass. |
-| `BI-007` | pass | [full-surface comparison](../../Tests/ContractFixtures/SPEC014/Evidence/milestone-5/full-surface-comparison.md), [tiled equivalence](../../Tests/ContractFixtures/SPEC014/Evidence/milestone-6/tiled-raster-equivalence.md), [macOS comparison](../../Tests/ContractFixtures/SPEC014/Evidence/milestone-8/macos-profile-equivalence.md) | Logical pixels and canonical bytes compare with zero tolerance. |
+| `BI-006` | pending | [tile workspace](../../Tests/ContractFixtures/SPEC014/Evidence/milestone-6/operation-major-tile-workspace.md), [borrow lifetime](../../Tests/ContractFixtures/SPEC014/Evidence/milestone-6/borrow-lifetime-evidence.md) | One producer/operation borrow, no replay/list/framebuffer, and exact bounds pass. |
+| `BI-007` | pending | [full-surface comparison](../../Tests/ContractFixtures/SPEC014/Evidence/milestone-5/full-surface-comparison.md), [tiled equivalence](../../Tests/ContractFixtures/SPEC014/Evidence/milestone-6/tiled-raster-equivalence.md), [macOS comparison](../../Tests/ContractFixtures/SPEC014/Evidence/milestone-8/macos-profile-equivalence.md) | Logical pixels and canonical bytes compare with zero tolerance. |
 | `BI-008` | pass | [canonical raster](../../Tests/ContractFixtures/SPEC014/Evidence/milestone-4/canonical-recording-raster.md), [borrow lifetime](../../Tests/ContractFixtures/SPEC014/Evidence/milestone-6/borrow-lifetime-evidence.md) | Exact glyph identity and one payload borrow are preserved without fallback or retention. |
 | `BI-009` | pass | [stroke raster](../../Tests/ContractFixtures/SPEC014/Evidence/milestone-4/stroke-raster.md), [tiled equivalence](../../Tests/ContractFixtures/SPEC014/Evidence/milestone-6/tiled-raster-equivalence.md) | All 17 SPEC-012 vectors match full-surface and tiled pixels/bytes exactly. |
 | `BI-010` | pass | [endpoint admission](../../Tests/ContractFixtures/SPEC014/Evidence/milestone-7/endpoint-admission.md), [transaction corpus](../../Tests/ContractFixtures/SPEC014/Evidence/milestone-7/transaction-failure-corpus.md) | Every reservation/body result, count, retained error, cleanup, and disposition is covered. |
 | `BI-011` | pass | [failure drain](../../Tests/ContractFixtures/SPEC014/Evidence/milestone-6/tiled-failure-drain.md), [health isolation](../../Tests/ContractFixtures/SPEC014/Evidence/milestone-7/endpoint-health-diagnostics.md) | Pre-transfer faults reverse; accepted faults drain and update health once. |
 | `BI-012` | pass | [failure mapping](../../Tests/ContractFixtures/SPEC014/Evidence/milestone-7/backend-owner-failure-mapping.md), [transaction corpus](../../Tests/ContractFixtures/SPEC014/Evidence/milestone-7/transaction-failure-corpus.md) | Equality/first-excess and fifteen-stage first-failure order are fail-closed. |
-| `BI-013` | pass | [resource instrumentation](../../Tests/ContractFixtures/SPEC014/Evidence/milestone-8/resource-instrumentation.md), [ARMv6](../../Tests/ContractFixtures/SPEC014/Evidence/milestone-8/armv6-cross-build.md), [nRF](../../Tests/ContractFixtures/SPEC014/Evidence/milestone-8/nrf52840-cross-build.md) | Layouts pass; static worst-case frame has zero allocation instructions; sections/maps/symbols are recorded. |
+| `BI-013` | pending | [resource instrumentation](../../Tests/ContractFixtures/SPEC014/Evidence/milestone-8/resource-instrumentation.md), [ARMv6](../../Tests/ContractFixtures/SPEC014/Evidence/milestone-8/armv6-cross-build.md), [nRF](../../Tests/ContractFixtures/SPEC014/Evidence/milestone-8/nrf52840-cross-build.md) | Layouts pass; static worst-case frame has zero allocation instructions; sections/maps/symbols are recorded. |
 | `BI-014` | pass | [borrow lifetime](../../Tests/ContractFixtures/SPEC014/Evidence/milestone-6/borrow-lifetime-evidence.md), [endpoint cleanup](../../Tests/ContractFixtures/SPEC014/Evidence/milestone-7/endpoint-stream-cleanup.md) | No Core/resource/operation/body/sink address survives the offer. |
-| `BI-015` | pass | [canonical driver](../../Tests/ContractFixtures/SPEC014/Evidence/milestone-8/canonical-loader-driver.md), [macOS](../../Tests/ContractFixtures/SPEC014/Evidence/milestone-8/macos-profile-equivalence.md), [ARMv6](../../Tests/ContractFixtures/SPEC014/Evidence/milestone-8/armv6-cross-build.md), [nRF](../../Tests/ContractFixtures/SPEC014/Evidence/milestone-8/nrf52840-cross-build.md) | One registered driver confines SPEC-014 evidence to `.build/spec-014/`. |
+| `BI-015` | pending | [canonical driver](../../Tests/ContractFixtures/SPEC014/Evidence/milestone-8/canonical-loader-driver.md), [macOS](../../Tests/ContractFixtures/SPEC014/Evidence/milestone-8/macos-profile-equivalence.md), [ARMv6](../../Tests/ContractFixtures/SPEC014/Evidence/milestone-8/armv6-cross-build.md), [nRF](../../Tests/ContractFixtures/SPEC014/Evidence/milestone-8/nrf52840-cross-build.md) | One registered driver confines SPEC-014 evidence to `.build/spec-014/`. |
 
 ## Required-Test Results
 
@@ -135,3 +135,13 @@ and [embedded canonical join](../../Tests/ContractFixtures/SPEC001/Evidence/mile
 use checked resource/font-instance identities across measurement, preflight
 and rasterization, retain the Inter catalogue and reject a mismatched package.
 This is focused consumer evidence; it does not waive owner/profile gate gaps.
+
+## 2026-10-02 amended-fixture applicability
+
+The plan remains active for the approved landscape replacement. Six affected
+criterion rows now record pending current-fixture revalidation; their linked
+original-fixture reports remain historical evidence. The collecting report
+does not claim a completed implementation plan or current connected high-water.
+The hardware-free driver validates this explicit disposition and still runs its
+geometry, transaction, raster, resource and platform collectors. Passing that
+driver does not turn these pending acceptance criteria into passes.

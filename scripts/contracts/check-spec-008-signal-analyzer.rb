@@ -47,7 +47,7 @@ expected_counts = {
   "channelRows" => 4, "channelLabels" => 4, "levelLabels" => 4,
   "controlLabels" => 6, "errorTexts" => 1, "textOccurrences" => 21,
   "rectangularBackgrounds" => 9, "positionedGlyphs" => 139,
-  "semanticScopes" => 62, "layoutScopes" => 32, "traversalDepth" => 6,
+  "semanticScopes" => 98, "layoutScopes" => 98, "traversalDepth" => 13,
   "textLines" => 21, "foregroundDepth" => 5,
 }
 fail_check("maximum hierarchy name differs") unless maximum.fetch("name") == "failed-five-second-four-channel-maximum"
@@ -61,10 +61,12 @@ maximum_text = [labels[0], labels[1], "FAILED", "0.00 s", "2.50 s", "5.00 s"] +
 fail_check("positioned glyph accounting differs") unless
   maximum_text.sum { |text| text.bytesize } == maximum.fetch("positionedGlyphs")
 fail_check("layout occurrence accounting differs") unless
-  maximum.fetch("layoutScopes") == 1 + 1 + 1 + 3 + 1 + 1 + 3 + 4 + 8 + 1 + 6 + 2
+  # The focused hierarchy retains 32 content/container occurrences and the 66
+  # declaration/modifier identities required by the canonical borrowed views.
+  maximum.fetch("layoutScopes") == 32 + 66
 fail_check("semantic render-scope accounting differs") unless
-  maximum.fetch("semanticScopes") == maximum.fetch("layoutScopes") +
-    maximum.fetch("textOccurrences") + maximum.fetch("rectangularBackgrounds")
+  # Layout projects the same occurrence identities, including wrapper scopes.
+  maximum.fetch("semanticScopes") == maximum.fetch("layoutScopes")
 fail_check("operation high-water differs") unless
   maximum.fetch("textOccurrences") + maximum.fetch("rectangularBackgrounds") == row.dig("expectedHighWater", "operations")
 

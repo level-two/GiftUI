@@ -102,3 +102,11 @@ The current hardware-free gate fails this owner's profile harness. The
 records the failed check and retained logs. Historical evidence remains
 revision-scoped; resolve the assertion and rerun before claiming a current
 complete assembled gate. No requirement or exception is changed here.
+
+## 2026-10-02 current generator provenance
+
+The original milestone-3 provenance remains historical. The
+[current generator record](../../Tests/ContractFixtures/SPEC005/Evidence/milestone-3/reference-provenance-current.tsv)
+records its actual source byte count/hash; pinned tools, font/licence, generated
+outputs and resource identity still pass exact checks. This reconciles source
+provenance without changing text-resource contracts or claiming new target execution.

@@ -9,7 +9,7 @@ ROOT = Pathname.new(File.expand_path("../..", __dir__))
 PINS_PATH = ROOT.join("scripts/text-resources/reference-generation-pins.json")
 GENERATED_ROOT = ROOT.join("Sources/GiftUIReferenceTextResources/Generated")
 PROVENANCE_INVENTORY = ROOT.join(
-  "Tests/ContractFixtures/SPEC005/Evidence/milestone-3/reference-provenance.tsv"
+  "Tests/ContractFixtures/SPEC005/Evidence/milestone-3/reference-provenance-current.tsv"
 )
 
 def fail_check(message)

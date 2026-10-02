@@ -23,7 +23,9 @@ output="${project_root}/.build/contract-generated/spec-001/${target}-raster-gate
 captures="${output}/captures"
 images="${output}/images"
 references="${project_root}/Tests/ContractFixtures/SPEC001/PixelReferences"
-evidence="${reference_traces:-${project_root}/Tests/ContractFixtures/SPEC001/Evidence/milestone-7}"
+default_evidence="${project_root}/Tests/ContractFixtures/SPEC001/Evidence/milestone-7"
+[[ "${target}" == nrf ]] && default_evidence="${project_root}/Tests/ContractFixtures/SPEC001/Evidence/milestone-10"
+evidence="${reference_traces:-${default_evidence}}"
 if [[ "${candidate_only}" == false ]]; then
     states=(idle running-four-traces stopped window-one-second
         window-five-seconds window-two-seconds diagnostic)
@@ -75,7 +77,7 @@ else
     cp "${project_root}/.build/contract-generated/spec-001/nrf-host-native-rehearsal/"fault-*.tsv \
         "${output}/faults/"
     ruby "${project_root}/scripts/contracts/compare-spec-001-static-reference.rb" \
-        "${evidence}/macos-static-reference-trace.tsv" \
+        "${evidence}/macos-static-paced-reference-trace.tsv" \
         "${output}/normal-trace.tsv" > "${output}/behavior-comparison.txt"
 fi
 

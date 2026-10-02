@@ -121,7 +121,15 @@ stroke_emission_owners = all_sources.select do |path|
   path.read.include?(".straightLineStroke(")
 end.map { |path| path.relative_path_from(SOURCES).to_s }
 fail_check("combined stroke emission owner differs: #{stroke_emission_owners}") unless
-  stroke_emission_owners == ["GiftUIDrawing/CanvasRenderProducer.swift"]
+  stroke_emission_owners.sort == %w[
+    GiftUIDrawing/CanvasRenderProducer.swift
+    SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFEmbeddedRasterSink.swift
+  ]
+# The selected Raster sink forwards to the canonical bounded counting sink after
+# rasterization; it neither enumerates a plan nor emits another operation stream.
+forwarder = SOURCES.join("SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFEmbeddedRasterSink.swift").read
+fail_check("embedded sink does not forward the borrowed stroke") unless
+  forwarder.scan(/\.straightLineStroke\(/).length == 1 && forwarder.include?("counts.straightLineStroke(stroke)")
 
 bridge_references = (all_sources + ROOT.join("Tests").glob("*/*.swift")).select do |path|
   path.read.include?("_giftUIInvokeCanvas")
