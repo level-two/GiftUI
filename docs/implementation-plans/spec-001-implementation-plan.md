@@ -2813,3 +2813,7 @@ statuses and input scope. T10.8 is complete; T7.7/T7.9 remain open for a current
 T7.7/T7.9 and T8.1/T8.2/T8.3 remain: connected Pi/nRF physical controls, sustained
 cadence, display/input/resource/target-cost evidence and connected trace
 comparison. The plan stays active and SPEC-001 stays implementing.
+
+### Current cleared-state recordings — 2026-10-03
+
+Both host-native production recorders now capture Clear after the preserved stop/restart and window-control sequence. Restart preserves history under the approved contract; explicit Clear resets the capture and preserves channel levels. Fresh Pi logical/physical and nRF images, zero-transition/running assertions, unchanged independent behavior comparisons, 21 exact approved-reference matches and 17 passing focused tests are retained in [the capture packet](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/current-cleared-20261003/README.md). T7.7 now awaits visual acceptance of these three fresh candidates; T7.9 awaits their eight-state reviewed-reference gate. Historical cleared references remain preserved. Connected tasks and Specification lifecycle status are unchanged.
