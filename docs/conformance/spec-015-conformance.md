@@ -5,7 +5,7 @@ title: SPEC-015 Conformance Report
 status: collecting
 reviewers: [codex]
 created: 2026-09-19
-updated: 2026-10-02
+updated: 2026-10-03
 implementation_plan: ../implementation-plans/spec-015-implementation-plan.md
 related_future_work: [FW-022]
 related_explorations: []
@@ -141,3 +141,21 @@ owner at f6ef6fb6. This supersedes the pre-amendment seam defect only.
 Assembled SPEC-001 T10.5/T10.6 and total budget/fault revalidation remain
 outstanding; historical criterion rows do not silently become current
 production conformance. No implemented transition is requested.
+
+## Pi display/control signoff verified — 2026-10-03
+
+The [connected approval packet](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/connected-pi-20261003/README.md) supersedes the older statements that
+production Pi physical controls were unobserved. Eugene confirmed plus/minus
+and the calibrated S toggle worked, then explicitly marked the Pi application
+verified after reviewing the repeated-R deadline failure. The approval-only
+Pi application display/control signoff is complete. This is connected-target
+evidence with exact binary identities, raw/normalized contacts, dispatch counts,
+health observations, and code-1 exit status; it is not inferred from a build.
+
+The full connected obligations remain open: four-frame/second cadence and
+250 ms fact-service latency are not met, burst input includes refusals, and
+complete connected interaction/trace/failure-recovery coverage is not collected.
+No timing exception or whole-Spec `implemented` transition is inferred from
+application signoff. These current blockers cannot be deferred as Future Work.
+Temporary stopped-startup hosting and monitoring helpers are removed, with the
+working calibration and captured-tap regression retained.

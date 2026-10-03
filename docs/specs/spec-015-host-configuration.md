@@ -56,6 +56,7 @@ related_specs:
   - SPEC-014
 related_future_work:
   - FW-022
+  - FW-030
 related_explorations: []
 related_spikes: []
 supersedes: []
@@ -1424,6 +1425,11 @@ fact-burst, failure normalization, deterministic mock trace, diagnostic, and
 exact host-fixture alignment.
 
 ## Deferred and Follow-up Work
+
+[FW-030](../future-work/fw-030-application-integration-experience.md) captures
+the maintainer's request to assess easier application/backend integration.
+A separate-consumer study could identify reusable host and build tooling
+without adding a public integration API or changing this MVP contract.
 
 [FW-022](../future-work/fw-022-contract-accurate-embedded-target-simulator.md)
 subsequently captures a possible post-MVP contract-accurate embedded-target

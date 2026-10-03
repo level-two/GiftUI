@@ -6,7 +6,7 @@ status: active
 owners:
   - codex
 created: 2026-09-13
-updated: 2026-10-02
+updated: 2026-10-03
 related_design_notes:
   - ../implementation-designs/spec-001-presentation-admission-and-failure.md
   - ../implementation-designs/spec-001-four-host-application-join.md
@@ -1984,14 +1984,17 @@ simulation.
       continuous seconds on framebuffer/PiScreen, exercise all six controls,
       and record display/input correctness, no loss/duplication/stale events,
       responsiveness, process memory, four-frame/second cadence, teardown,
-      commands, artifact identity, and recovery. **Connected run in progress,
-      gate still open:** authorized `armv6l` runs now show the complete screen
-      and decoded ADS7846 contacts. Calibrated Stop dispatched; the corrected
-      source scheduler then exposed a `serviceDeadlineMissed` failure caused
-      by roughly 4-7-second full redraws. The display remains well below the
-      required cadence. All six physical controls and sustained pacing still
-      need connected evidence. See the
-      [PiScreen campaign evidence](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-8/raspberry-pi-piscreen-attempt.md).
+      commands, artifact identity, and recovery. **Physical application signoff verified:**
+      Eugene explicitly accepted the current Pi display, Start/Stop toggle,
+      and plus/minus behavior on 2026-10-03. The calibrated artifact records
+      physical dispatch and a subsequent code-1 `serviceDeadlineMissed` exit
+      during repeated R taps. The full task remains open for cadence,
+      deadline-safe interaction/recovery, complete connected action coverage,
+      and trace evidence; acceptance is not a timing waiver. See the
+      [current connected verification](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/connected-pi-20261003/README.md).
+      - [x] Pi application display/control validation and maintainer signoff.
+      - [ ] Remaining T8.1 cadence, burst/failure-recovery, and complete
+        connected coverage requirements.
 - [ ] `T8.2` — After explicit authorization, inspect and flash the exact `T6.5`
       ELF through the repository nRF workflow, run the deterministic scenario
       for at least 30 continuous seconds on the connected TFT/input target,
@@ -2839,3 +2842,14 @@ revisions 1–14, and over eight minutes of zero observed CPU/driver faults. Tem
 diagnostics, printk stubs, and added tests were removed at his request. T8.2 remains
 open for endpoint calibration and the remaining connected acceptance evidence;
 Specification lifecycle status is unchanged.
+
+### Raspberry Pi physical application approved — 2026-10-03
+
+Eugene explicitly marked the calibrated Pi application verified after confirming
+plus/minus and S behavior and reviewing the repeated-R deadline exit. The
+[connected approval packet](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/connected-pi-20261003/README.md) closes the display/control approval-only
+work for T8.1 and supplies SPEC-011/015's corresponding Pi signoff. Temporary
+stopped-startup hosting and live monitoring helpers were reverted; production
+calibration and the captured-contact regression remain. The observed 1.357-second
+redraw, 250 ms service-deadline exit, and burst refusals remain current blockers.
+T8.1/T8.2/T8.3 and the Specification's full conformance transition remain open.

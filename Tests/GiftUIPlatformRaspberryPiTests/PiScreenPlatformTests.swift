@@ -198,7 +198,7 @@ private struct RecordingConsoleTransport: PiScreenConsoleModeTransport {
     let piScreenCalibration = try #require(PiScreenTouchCalibration.signalAnalyzerPiScreen)
     #expect(
         transform.logicalPoint(rawX: 1_959, rawY: 2_929, calibration: piScreenCalibration)
-            == Point(x: 111, y: 183)
+            == Point(x: 111, y: 159)
     )
 }
 

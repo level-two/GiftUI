@@ -53,7 +53,8 @@ related_specs:
   - SPEC-012
   - SPEC-014
   - SPEC-015
-related_future_work: []
+related_future_work:
+  - FW-029
 related_explorations: []
 related_spikes:
   - SPIKE-003
@@ -1007,9 +1008,13 @@ production values remain owned by Wave 7 HOST-CONFIGURATION.
 
 ## Deferred and Follow-up Work
 
-No new deferred item was created. Retained rendering, fine-grained observable
-tracking, replayable delivery, and additional runtime profiles remain in their
-existing lifecycle or deferred tracks and are not required by this contract.
+[FW-029](../future-work/fw-029-reduce-source-conditional-compilation.md)
+captures the maintainer's conditional-compilation cleanup question. Revisit
+when focused cleanup is requested, after current production joins, or when
+build-selection work makes a mechanical removal practical. It adds no
+requirement or implementation commitment to this contract. Retained rendering,
+fine-grained observable tracking, replayable delivery, and additional runtime
+profiles remain in their existing lifecycle or deferred tracks.
 
 ## References
 

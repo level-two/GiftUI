@@ -1,0 +1,101 @@
+[0/1] Planning build
+Building for debugging...
+[0/13] Write sources
+[1/13] Write swift-version--58304C5D6DBC2206.txt
+[3/18] Emitting module SignalAnalyzerDomain
+[4/18] Emitting module GiftUIFailureCore
+[5/19] Compiling GiftUIMacros GiftUIMacros.swift
+[6/19] Emitting module SignalAnalyzerData
+[7/19] Compiling GiftUIMacros ObservableStateHostMacro.swift
+[8/19] Emitting module GiftUIMacros
+[8/19] Write Objects.LinkFileList
+[9/20] Linking GiftUIMacros-tool
+[10/22] Write Objects.LinkFileList
+[12/22] Emitting module GiftUI
+[13/22] Compiling GiftUI ObservableState.swift
+[14/31] Emitting module GiftUISemanticCore
+[15/31] Emitting module GiftUIRenderCore
+[16/33] Emitting module GiftUILayout
+[17/36] Emitting module SignalAnalyzerPresentation
+[18/36] Compiling SignalAnalyzerPresentation SignalAnalyzerView.swift
+[19/36] Emitting module GiftUIDisplayCore
+[20/36] Emitting module GiftUIExecution
+[21/36] Emitting module GiftUIRenderLowering
+[22/36] Emitting module GiftUIRasterCore
+[23/41] Emitting module GiftUIPlatformRaspberryPi
+[24/41] Emitting module GiftUIInteraction
+[25/41] Emitting module GiftUIDrawing
+[26/41] Emitting module GiftUIObservableState
+[27/41] Emitting module GiftUIBackendIntegration
+[28/41] Emitting module GiftUIReferenceTextResources
+[29/42] Emitting module GiftUIRuntimeCore
+[29/42] Linking GiftUIPackageTests
+[31/45] Emitting module GiftUIRuntimeStatic
+[32/45] Emitting module GiftUIRuntimeDynamic
+[33/45] Emitting module GiftUIHostConfiguration
+[34/46] Emitting module SignalAnalyzerHost
+[35/47] Emitting module SignalAnalyzerPresetHarness
+[35/47] Write Objects.LinkFileList
+[38/48] Linking SignalAnalyzerNRF52840HostOracle
+[39/48] Linking SignalAnalyzerMacOSStatic
+[40/48] Linking SignalAnalyzerMacOSDynamic
+[41/48] Applying SignalAnalyzerNRF52840HostOracle
+[42/48] Applying SignalAnalyzerMacOSStatic
+[43/48] Applying SignalAnalyzerMacOSDynamic
+[45/48] Emitting module SignalAnalyzerTargetHost
+[46/51] Compiling SignalAnalyzerRaspberryPiARMv6 LinuxSignalAnalyzerPiProcessLoop.swift
+[47/51] Compiling SignalAnalyzerRaspberryPiARMv6 main.swift
+[48/51] Emitting module SignalAnalyzerRaspberryPiARMv6
+[48/51] Write Objects.LinkFileList
+[49/51] Linking SignalAnalyzerRaspberryPiARMv6
+[50/51] Applying SignalAnalyzerRaspberryPiARMv6
+Build complete! (4.67s)
+Test Suite 'Selected tests' started at 2026-10-03 14:15:33.326.
+Test Suite 'GiftUIPackageTests.xctest' started at 2026-10-03 14:15:33.327.
+Test Suite 'GiftUIPackageTests.xctest' passed at 2026-10-03 14:15:33.327.
+	 Executed 0 tests, with 0 failures (0 unexpected) in 0.000 (0.000) seconds
+Test Suite 'Selected tests' passed at 2026-10-03 14:15:33.327.
+	 Executed 0 tests, with 0 failures (0 unexpected) in 0.000 (0.001) seconds
+◇ Test run started.
+↳ Testing Library Version: 1902
+↳ Target Platform: arm64e-apple-macos14.0
+◇ Test rawFramebufferTouchesReachModelAndReplacementFrame(scenario:) started.
+◇ Test contactDecoderProducesOneOrderedSequenceAndCancelsOutside() started.
+◇ Test aspectFitMapsTouchAndRejectsLetterbox() started.
+◇ Test analyzerTouchButtonsHaveSquareHitsAndDisableWindowEndpoints() started.
+◇ Test evdevIgnoresUnknownRecordsAndContactsInLetterbox() started.
+◇ Test framebufferProjectionCopiesRowsAndPreservesRegionOrder() started.
+◇ Test evdevReportsCalibrateAndEmitOneContactPerPhysicalPhase() started.
+◇ Test consoleOwnerClosesAfterAcquisitionFailures() started.
+◇ Test framebufferLayoutRejectsWrongFormatStrideAndMapping() started.
+◇ Test consoleOwnerPreservesPreexistingGraphicsMode() started.
+◇ Test consoleOwnerClosesWhenPriorModeRestorationFails() started.
+◇ Test displayTargetPreservesCanonicalBytesAndPhysicalProjection() started.
+◇ Test case passing 1 argument scenario → "move-outside" to rawFramebufferTouchesReachModelAndReplacementFrame(scenario:) started.
+◇ Test case passing 1 argument scenario → "hold" to rawFramebufferTouchesReachModelAndReplacementFrame(scenario:) started.
+◇ Test displayTargetRejectsWrongDescriptorAndTransportFailure() started.
+◇ Test case passing 1 argument scenario → "stale" to rawFramebufferTouchesReachModelAndReplacementFrame(scenario:) started.
+◇ Test case passing 1 argument scenario → "move-inside" to rawFramebufferTouchesReachModelAndReplacementFrame(scenario:) started.
+◇ Test case passing 1 argument scenario → "up-only" to rawFramebufferTouchesReachModelAndReplacementFrame(scenario:) started.
+◇ Test case passing 1 argument scenario → "tap" to rawFramebufferTouchesReachModelAndReplacementFrame(scenario:) started.
+◇ Test consoleOwnerAcquiresGraphicsAndRestoresPriorModeOnce() started.
+◇ Test case passing 1 argument scenario → "leave-surface" to rawFramebufferTouchesReachModelAndReplacementFrame(scenario:) started.
+◇ Test case passing 1 argument scenario → "miss" to rawFramebufferTouchesReachModelAndReplacementFrame(scenario:) started.
+◇ Test case passing 1 argument scenario → "release-letterbox" to rawFramebufferTouchesReachModelAndReplacementFrame(scenario:) started.
+◇ Test case passing 1 argument scenario → "disabled" to rawFramebufferTouchesReachModelAndReplacementFrame(scenario:) started.
+◇ Test case passing 1 argument scenario → "release-outside" to rawFramebufferTouchesReachModelAndReplacementFrame(scenario:) started.
+✔ Test contactDecoderProducesOneOrderedSequenceAndCancelsOutside() passed after 0.302 seconds.
+✔ Test evdevIgnoresUnknownRecordsAndContactsInLetterbox() passed after 0.302 seconds.
+✔ Test framebufferProjectionCopiesRowsAndPreservesRegionOrder() passed after 0.302 seconds.
+✔ Test evdevReportsCalibrateAndEmitOneContactPerPhysicalPhase() passed after 0.302 seconds.
+✔ Test consoleOwnerClosesAfterAcquisitionFailures() passed after 0.302 seconds.
+✔ Test aspectFitMapsTouchAndRejectsLetterbox() passed after 0.303 seconds.
+✔ Test analyzerTouchButtonsHaveSquareHitsAndDisableWindowEndpoints() passed after 0.303 seconds.
+✔ Test framebufferLayoutRejectsWrongFormatStrideAndMapping() passed after 0.303 seconds.
+✔ Test consoleOwnerPreservesPreexistingGraphicsMode() passed after 0.303 seconds.
+✔ Test consoleOwnerClosesWhenPriorModeRestorationFails() passed after 0.303 seconds.
+✔ Test displayTargetPreservesCanonicalBytesAndPhysicalProjection() passed after 0.303 seconds.
+✔ Test displayTargetRejectsWrongDescriptorAndTransportFailure() passed after 0.303 seconds.
+✔ Test consoleOwnerAcquiresGraphicsAndRestoresPriorModeOnce() passed after 0.302 seconds.
+✔ Test rawFramebufferTouchesReachModelAndReplacementFrame(scenario:) with 11 test cases passed after 0.989 seconds.
+✔ Test run with 14 tests in 0 suites passed after 0.989 seconds.

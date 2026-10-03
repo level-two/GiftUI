@@ -1,0 +1,44 @@
+Connected Pi failure after repeated R taps, 2026-10-03
+
+Binary: b6de3f5f1ee2dbf0c25d02b40fa2b169b39e904fcc03bbabe3b0f82d3a4ccb4e  giftui/bin/SignalAnalyzerRaspberryPiARMv6
+
+Exit status: 1; no terminating signal recorded.
+
+The run reported pacing(HostWakePacingError.serviceDeadlineMissed).
+A button action was dispatched immediately before the exit. Its frame took
+1,357,026 us. The configured maximum fact service latency is 250,000 us.
+Stop-action facts are admitted during applyAdmittedWork, after the current
+fact batch is sealed, and therefore wait for the next opportunity. Synchronous
+rendering can consume the entire deadline before that opportunity begins.
+This is the code-supported explanation; per-fact timestamp instrumentation
+was not enabled in this run.
+
+A later burst contained nine contacts: six queued and three rejected.
+That overload is separate from the reported deadline failure.
+
+The user confirmed plus/minus and S worked after calibration. The user then
+reported the failure while pressing R repeatedly during redraws.
+The app remains exited; no automatic restart or pacing-policy change made.
+
+Relevant final trace:
+2026-10-03T14:05:18+0200 APP pi-frame-duration-us 1281577
+2026-10-03T14:05:18+0200 APP pi-contact down Point(x: 201, y: 24)
+2026-10-03T14:05:18+0200 APP pi-contact up Point(x: 199, y: 23)
+2026-10-03T14:05:18+0200 APP pi-contact down Point(x: 200, y: 29)
+2026-10-03T14:05:18+0200 APP pi-input DynamicSignalAnalyzerPiContactIngressSummary(contactCount: 3, queuedCount: 3, rejectedCount: 0, wakeRequestCount: 1, coalescedWakeCount: 2)
+2026-10-03T14:05:20+0200 HEALTH 2151  2150 S          01:35  0.0  3780 sudo
+2026-10-03T14:05:20+0200 HEALTH 2152  2151 R          01:35 11.8 10008 SignalAnalyzerR
+2026-10-03T14:05:20+0200 APP pi-frame-duration-us 1357026
+2026-10-03T14:05:20+0200 APP pi-opportunity-input DynamicSignalAnalyzerPiInputDrainSummary(eventCount: 3, dispatchedActionCount: 1, cancelledOrRejectedCount: 0)
+2026-10-03T14:05:20+0200 APP pi-contact up Point(x: 198, y: 26)
+2026-10-03T14:05:20+0200 APP pi-contact down Point(x: 201, y: 25)
+2026-10-03T14:05:20+0200 APP pi-contact up Point(x: 198, y: 24)
+2026-10-03T14:05:20+0200 APP pi-contact down Point(x: 205, y: 28)
+2026-10-03T14:05:20+0200 APP pi-contact up Point(x: 204, y: 28)
+2026-10-03T14:05:20+0200 APP pi-contact down Point(x: 198, y: 24)
+2026-10-03T14:05:20+0200 APP pi-contact up Point(x: 199, y: 23)
+2026-10-03T14:05:20+0200 APP pi-contact down Point(x: 204, y: 26)
+2026-10-03T14:05:20+0200 APP pi-contact up Point(x: 204, y: 26)
+2026-10-03T14:05:20+0200 APP pi-input DynamicSignalAnalyzerPiContactIngressSummary(contactCount: 9, queuedCount: 6, rejectedCount: 3, wakeRequestCount: 0, coalescedWakeCount: 6)
+2026-10-03T14:05:20+0200 APP status=failed	error=pacing(GiftUIHostConfiguration.HostWakePacingError.serviceDeadlineMissed)
+2026-10-03T14:05:20+0200 EXIT code=1 signal=none

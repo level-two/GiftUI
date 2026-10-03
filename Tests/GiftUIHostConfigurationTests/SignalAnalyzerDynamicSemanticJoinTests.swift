@@ -3075,6 +3075,24 @@ func signalAnalyzerWaveformResolvesSurfaceConstraints(width: Int32, height: Int3
                 actions.first { $0.action.code == SignalAnalyzerAction.start.rawValue })
             #expect(record.hitBounds.maxX == 238)
             #expect(record.hitBounds.minY == 2)
+            let transform = try #require(
+                PiScreenAspectFitTransform(
+                    physicalWidth: 480, physicalHeight: 320, logicalWidth: 240, logicalHeight: 240))
+            let calibration = try #require(PiScreenTouchCalibration.signalAnalyzerPiScreen)
+            // Physical contact starts recorded on the connected Pi, 2026-10-03.
+            let recordedTaps: [(SignalAnalyzerAction, Int32, Int32)] = [
+                (.start, 2927, 764), (.start, 2967, 697), (.start, 2979, 720),
+                (.start, 2935, 722), (.start, 3011, 728), (.start, 2920, 694),
+                (.start, 2950, 620),
+                (window.shorterAction, 1034, 2054), (window.shorterAction, 1042, 1971),
+                (window.longerAction, 2878, 2049), (window.longerAction, 2892, 1913),
+            ]
+            for (code, rawX, rawY) in recordedTaps {
+                let action = try #require(actions.first { $0.action.code == code.rawValue })
+                let point = try #require(
+                    transform.logicalPoint(rawX: rawX, rawY: rawY, calibration: calibration))
+                #expect(action.hitBounds.contains(point))
+            }
             let minus = Point(x: 26, y: 108)
             let plus = Point(x: 214, y: 108)
             if window == .oneSecond {

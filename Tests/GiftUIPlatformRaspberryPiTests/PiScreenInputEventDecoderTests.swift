@@ -10,7 +10,7 @@ import Testing
     let calibration = try #require(PiScreenTouchCalibration.signalAnalyzerPiScreen)
     var decoder = PiScreenInputEventDecoder(transform: transform, calibration: calibration)
     #expect(decoder.consume(type: 3, code: 0, value: 2048) == nil)
-    #expect(decoder.consume(type: 3, code: 1, value: 1843) == nil)
+    #expect(decoder.consume(type: 3, code: 1, value: 2253) == nil)
     #expect(decoder.consume(type: 1, code: 330, value: 1) == nil)
     #expect(
         decoder.consume(type: 0, code: 0, value: 0)

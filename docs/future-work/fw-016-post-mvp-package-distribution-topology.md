@@ -6,12 +6,13 @@ status: captured
 authors:
   - Yauheni Lychkouski
 created: 2026-08-19
-updated: 2026-08-22
+updated: 2026-10-02
 source:
   - RFC-002
   - ADR-008
   - SPEC-002
-related_future_work: []
+related_future_work:
+  - FW-030
 related_explorations: []
 related_spikes: []
 promoted_to: []
@@ -34,6 +35,27 @@ versioning needs, dependency constraints, or measured build and release costs
 may justify splitting GiftUI into several Swift packages or adopting another
 distribution topology. That decision should follow evidence rather than map
 packages mechanically to logical layers.
+
+On 2026-10-02, the maintainer requested a repository/package boundary review
+so applications can compose portable GiftUI, a selected runtime profile,
+rendering, and platform/display support as independently usable building
+blocks. Inspection found more than co-location: most runtime/render/backend
+targets have no library product; their integration contracts use `package`
+access; `GiftUIHostConfiguration` contains Signal Analyzer workload types and
+generated presets; generic SPI display support is under
+`SignalAnalyzerTargetHost`; and firmware CMake selects framework and application
+sources through a shared repository root. Host-configuration tests also mix
+generic owner checks with application and target-stack integration checks.
+These are consumption and extraction constraints, not evidence that every
+module needs its own repository or that current runtime behavior is incorrect.
+
+The requested review makes independent application consumption an explicit
+goal to evaluate. Candidate boundaries include the portable framework,
+software raster implementation, Linux adapters, Zephyr adapters, and the
+reference application. Static and Dynamic could remain separate products of
+one framework package. These candidates are not selected architecture;
+cross-package contracts, reusable build inputs, and separation of application
+workload configuration must be evaluated before moving sources.
 
 ## Why Deferred
 
@@ -82,8 +104,19 @@ provides concrete distribution constraints or measurements and competing
 topologies need comparison. Any architecture change must then pass the normal
 RFC and ADR gates before package restructuring is treated as authoritative.
 
+The 2026-10-02 request supplies a concrete composition goal for re-evaluation,
+but no external-consumer build or cost measurement has yet been performed.
+The recommended next step is a bounded extraction/consumption Exploration
+with FW-030: verify a separate small application can select components without
+copying reference-application owners, using repository-relative source lists,
+or granting access to all framework internals. ADR-008 still governs MVP
+distribution; this capture does not authorize a split or change its milestone.
+
 ## References
 
 - [RFC-002: GiftUI MVP Layered Architecture](../rfcs/rfc-002-giftui-mvp-layered-architecture.md)
 - [`Package.swift`](../../Package.swift) — current one-package, multiple-target
   implementation evidence only
+- [FW-030: Application Integration Experience](fw-030-application-integration-experience.md)
+- [Host configuration values](../../Sources/GiftUIHostConfiguration/HostConfigurationValues.swift)
+- [Firmware build composition](../../firmware/nrf52840/applications/signal-analyzer-static/CMakeLists.txt)

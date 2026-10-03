@@ -6,7 +6,7 @@ status: active
 owners:
   - codex
 created: 2026-09-09
-updated: 2026-10-02
+updated: 2026-10-03
 related_design_notes:
   - ../implementation-designs/spec-015-generated-workload-and-presets.md
   - ../implementation-designs/spec-015-wake-and-pacing.md
@@ -648,6 +648,10 @@ connected-hardware evidence is explicit rather than implied.
       gates through the Raspberry Pi / PiScreen and nRF52840 TFT/input campaign
       groups defined by
       [SPEC-001 Milestone 8](spec-001-implementation-plan.md#cross-specification-connected-validation-campaign).
+      - [x] Pi application display/control evidence and maintainer signoff:
+        [2026-10-03 approval packet](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/connected-pi-20261003/README.md).
+      - [ ] Remaining Pi timing/failure-recovery and nRF connected obligations;
+        the observed deadline exit remains a current conformance limitation.
 
 ## Design-Note Triggers
 

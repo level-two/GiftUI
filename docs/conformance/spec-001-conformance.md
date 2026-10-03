@@ -91,7 +91,7 @@ with zero failed checks.
 | `SA-AC-020` | pass | [waveform corpus](../../Tests/ContractFixtures/SPEC001/waveform-drawing-cases.tsv) | Ruler bytes and 11-plus-one grid pass. |
 | `SA-AC-021` | pass | [sustained workload](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-7/sustained-workload-and-resources.md) | 120 consistent frames cover 2,400 events with coalescing. |
 | `SA-AC-022` | pass | [driver suite](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-9/hardware-free-driver-suite.md) | Both macOS executables build, execute, and compare equal. |
-| `SA-AC-023` | blocked | [four-preset evidence](../../Tests/ContractFixtures/SPEC015/Evidence/milestone-6/raspberry-pi-armv6.md), [Pi adapter](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-6/piscreen-platform-adapter.md), [Pi host loop](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-6/dynamic-pi-lifecycle-owner.md) | ARMv6 and host-native semantics pass. The production analyzer host loop now owns framebuffer/input devices; the earlier connected bounded display transfer did not exercise a physical control or the complete analyzer loop. |
+| `SA-AC-023` | blocked | [current connected verification](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/connected-pi-20261003/README.md) | Pi display/control signoff verified by Eugene; cadence, deadline-safe repeated-R behavior, complete connected coverage, and recovery remain open. |
 | `SA-AC-024` | blocked | [four-preset evidence](../../Tests/ContractFixtures/SPEC015/Evidence/milestone-6/nrf52840-static.md), [nRF adapter and host loop](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-6/nrf52840-tft-input-adapter.md) | The selected ILI9486/ADS7846 production firmware and exact-source native probe pass the hardware-free gate; no board was flashed or connected output/input measured. |
 | `SA-AC-025` | blocked | [sustained workload](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-7/sustained-workload-and-resources.md), [nRF adapter and host loop](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-6/nrf52840-tft-input-adapter.md) | Production binary/RAM/storage/drawing fit is inspected; connected stack high-water, timing, and application execution remain missing. |
 | `SA-AC-026` | pass | [source substitution](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-6/source-and-facility-substitution.md) | Conforming source replacement changes no portable owner. |
@@ -248,3 +248,21 @@ Both host-native production recorders now capture Clear after the preserved stop
 ### Approved current cleared references and gate closure — 2026-10-03
 
 Eugene accepted all three fresh cleared images. Both registered constrained-profile drivers pass the complete eight-state reviewed-reference set, including Pi physical mapping: 24 current exact pixel comparisons. Independent behavior comparisons, production-loop faults and 269 selected Swift tests per profile pass. [Approval and immutable validation](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/current-cleared-20261003/approval.md) close T7.7 and T7.9. T8.1/T8.2/T8.3 and the connected scope of SA-AC-005/023/024/039 remain open. This evidence is host-native-fixture/cross-build evidence, not connected execution; SPEC-001 remains implementing.
+
+## Pi display/control signoff verified — 2026-10-03
+
+The [connected approval packet](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/connected-pi-20261003/README.md) supersedes the older statements that
+production Pi physical controls were unobserved. Eugene confirmed plus/minus
+and the calibrated S toggle worked, then explicitly marked the Pi application
+verified after reviewing the repeated-R deadline failure. The approval-only
+Pi application display/control signoff is complete. This is connected-target
+evidence with exact binary identities, raw/normalized contacts, dispatch counts,
+health observations, and code-1 exit status; it is not inferred from a build.
+
+The full connected obligations remain open: four-frame/second cadence and
+250 ms fact-service latency are not met, burst input includes refusals, and
+complete connected interaction/trace/failure-recovery coverage is not collected.
+No timing exception or whole-Spec `implemented` transition is inferred from
+application signoff. These current blockers cannot be deferred as Future Work.
+Temporary stopped-startup hosting and monitoring helpers are removed, with the
+working calibration and captured-tap regression retained.

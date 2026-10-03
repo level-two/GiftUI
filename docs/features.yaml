@@ -18,6 +18,7 @@ features:
     dependencies: []
     milestone: MVP
   # Deferred toolchain question: FW-028 (linked from SPEC-001 and its plan).
+  # Pi display/control signoff verified 2026-10-03; timing/recovery and full connected gates remain open.
   signal-analyzer:
     title: Signal Analyzer Reference Application
     status: implementation
@@ -40,6 +41,8 @@ features:
   # SPEC-013/SPEC-015 focused seam amendments were approved on 2026-10-02;
   # SPEC-013 Milestone 9 validated the seam; SPEC-001 production joins now resume.
   giftui-mvp-architecture:
+    # Optional source-conditional cleanup: FW-029, linked from SPEC-013.
+    # Component distribution/integration review: FW-016 and FW-030; no split approved.
     title: GiftUI MVP Architecture Establishment
     status: implementation
     proposal:

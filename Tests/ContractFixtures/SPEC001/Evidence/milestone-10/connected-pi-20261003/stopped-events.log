@@ -1,0 +1,538 @@
+2026-10-03T13:51:26+0200 START pid=1793
+2026-10-03T13:51:26+0200 RAW_TOUCH capture=/dev/input/event0
+2026-10-03T13:51:27+0200 HEALTH 1793  1792 S          00:01  6.6  3792 sudo
+2026-10-03T13:51:27+0200 HEALTH 1794  1793 R          00:00 69.7  9448 SignalAnalyzerR
+2026-10-03T13:51:28+0200 APP status=failed	error=startupStop
+2026-10-03T13:51:29+0200 EXIT code=1 signal=none
+2026-10-03T13:54:37+0200 START pid=1915
+2026-10-03T13:54:37+0200 RAW_TOUCH capture=/dev/input/event0
+2026-10-03T13:54:38+0200 HEALTH 1915  1914 S          00:01  6.6  3780 sudo
+2026-10-03T13:54:38+0200 HEALTH 1916  1915 D          00:00 64.9  9444 SignalAnalyzerR
+2026-10-03T13:54:40+0200 APP status=ready	acquisition=stopped
+2026-10-03T13:54:42+0200 APP pi-frame-duration-us 1598432
+2026-10-03T13:54:44+0200 HEALTH 1915  1914 S          00:06  1.0  3780 sudo
+2026-10-03T13:54:44+0200 HEALTH 1916  1915 S          00:06 32.4  9636 SignalAnalyzerR
+2026-10-03T13:54:49+0200 HEALTH 1915  1914 S          00:12  0.5  3780 sudo
+2026-10-03T13:54:49+0200 HEALTH 1916  1915 S          00:12 19.9  9636 SignalAnalyzerR
+2026-10-03T13:54:54+0200 HEALTH 1915  1914 S          00:17  0.4  3780 sudo
+2026-10-03T13:54:54+0200 HEALTH 1916  1915 S          00:17 15.0  9636 SignalAnalyzerR
+2026-10-03T13:55:00+0200 HEALTH 1915  1914 S          00:22  0.3  3780 sudo
+2026-10-03T13:55:00+0200 HEALTH 1916  1915 S          00:22 12.3  9636 SignalAnalyzerR
+2026-10-03T13:55:05+0200 HEALTH 1915  1914 S          00:27  0.2  3780 sudo
+2026-10-03T13:55:05+0200 HEALTH 1916  1915 S          00:27 10.6  9636 SignalAnalyzerR
+2026-10-03T13:55:10+0200 HEALTH 1915  1914 S          00:32  0.2  3780 sudo
+2026-10-03T13:55:10+0200 HEALTH 1916  1915 S          00:32  9.5  9636 SignalAnalyzerR
+2026-10-03T13:55:15+0200 HEALTH 1915  1914 S          00:37  0.1  3780 sudo
+2026-10-03T13:55:15+0200 HEALTH 1916  1915 S          00:37  8.6  9636 SignalAnalyzerR
+2026-10-03T13:55:20+0200 HEALTH 1915  1914 S          00:42  0.1  3780 sudo
+2026-10-03T13:55:20+0200 HEALTH 1916  1915 S          00:42  8.0  9636 SignalAnalyzerR
+2026-10-03T13:55:25+0200 HEALTH 1915  1914 S          00:48  0.1  3780 sudo
+2026-10-03T13:55:25+0200 HEALTH 1916  1915 S          00:48  7.5  9636 SignalAnalyzerR
+2026-10-03T13:55:30+0200 HEALTH 1915  1914 S          00:53  0.1  3780 sudo
+2026-10-03T13:55:30+0200 HEALTH 1916  1915 S          00:53  7.1  9636 SignalAnalyzerR
+2026-10-03T13:55:36+0200 HEALTH 1915  1914 S          00:58  0.1  3780 sudo
+2026-10-03T13:55:36+0200 HEALTH 1916  1915 S          00:58  6.8  9636 SignalAnalyzerR
+2026-10-03T13:55:41+0200 HEALTH 1915  1914 S          01:03  0.1  3780 sudo
+2026-10-03T13:55:41+0200 HEALTH 1916  1915 S          01:03  6.5  9636 SignalAnalyzerR
+2026-10-03T13:55:46+0200 HEALTH 1915  1914 S          01:08  0.1  3780 sudo
+2026-10-03T13:55:46+0200 HEALTH 1916  1915 S          01:08  6.3  9636 SignalAnalyzerR
+2026-10-03T13:55:51+0200 HEALTH 1915  1914 S          01:13  0.0  3780 sudo
+2026-10-03T13:55:51+0200 HEALTH 1916  1915 S          01:13  6.1  9636 SignalAnalyzerR
+2026-10-03T13:55:56+0200 HEALTH 1915  1914 S          01:18  0.0  3780 sudo
+2026-10-03T13:55:56+0200 HEALTH 1916  1915 S          01:18  5.9  9636 SignalAnalyzerR
+2026-10-03T13:56:01+0200 HEALTH 1915  1914 S          01:24  0.0  3780 sudo
+2026-10-03T13:56:01+0200 HEALTH 1916  1915 S          01:24  5.7  9636 SignalAnalyzerR
+2026-10-03T13:56:06+0200 HEALTH 1915  1914 S          01:29  0.0  3780 sudo
+2026-10-03T13:56:06+0200 HEALTH 1916  1915 S          01:29  5.6  9636 SignalAnalyzerR
+2026-10-03T13:56:12+0200 HEALTH 1915  1914 S          01:34  0.0  3780 sudo
+2026-10-03T13:56:12+0200 HEALTH 1916  1915 S          01:34  5.5  9636 SignalAnalyzerR
+2026-10-03T13:56:17+0200 HEALTH 1915  1914 S          01:39  0.0  3780 sudo
+2026-10-03T13:56:17+0200 HEALTH 1916  1915 S          01:39  5.4  9636 SignalAnalyzerR
+2026-10-03T13:56:22+0200 HEALTH 1915  1914 S          01:44  0.0  3780 sudo
+2026-10-03T13:56:22+0200 HEALTH 1916  1915 S          01:44  5.3  9636 SignalAnalyzerR
+2026-10-03T13:56:27+0200 HEALTH 1915  1914 S          01:49  0.0  3780 sudo
+2026-10-03T13:56:27+0200 HEALTH 1916  1915 S          01:49  5.2  9636 SignalAnalyzerR
+2026-10-03T13:56:32+0200 HEALTH 1915  1914 S          01:55  0.0  3780 sudo
+2026-10-03T13:56:32+0200 HEALTH 1916  1915 S          01:54  5.1  9636 SignalAnalyzerR
+2026-10-03T13:56:37+0200 HEALTH 1915  1914 S          02:00  0.0  3780 sudo
+2026-10-03T13:56:37+0200 HEALTH 1916  1915 S          02:00  5.0  9636 SignalAnalyzerR
+2026-10-03T13:56:42+0200 HEALTH 1915  1914 S          02:05  0.0  3780 sudo
+2026-10-03T13:56:42+0200 HEALTH 1916  1915 S          02:05  5.0  9636 SignalAnalyzerR
+2026-10-03T13:56:48+0200 HEALTH 1915  1914 S          02:10  0.0  3780 sudo
+2026-10-03T13:56:48+0200 HEALTH 1916  1915 S          02:10  4.9  9636 SignalAnalyzerR
+2026-10-03T13:56:53+0200 HEALTH 1915  1914 S          02:15  0.0  3780 sudo
+2026-10-03T13:56:53+0200 HEALTH 1916  1915 S          02:15  4.8  9636 SignalAnalyzerR
+2026-10-03T13:56:58+0200 HEALTH 1915  1914 S          02:20  0.0  3780 sudo
+2026-10-03T13:56:58+0200 HEALTH 1916  1915 S          02:20  4.8  9636 SignalAnalyzerR
+2026-10-03T13:57:03+0200 HEALTH 1915  1914 S          02:25  0.0  3780 sudo
+2026-10-03T13:57:03+0200 HEALTH 1916  1915 S          02:25  4.7  9636 SignalAnalyzerR
+2026-10-03T13:57:08+0200 HEALTH 1915  1914 S          02:30  0.0  3780 sudo
+2026-10-03T13:57:08+0200 HEALTH 1916  1915 S          02:30  4.7  9636 SignalAnalyzerR
+2026-10-03T13:57:13+0200 HEALTH 1915  1914 S          02:36  0.0  3780 sudo
+2026-10-03T13:57:13+0200 HEALTH 1916  1915 S          02:36  4.6  9636 SignalAnalyzerR
+2026-10-03T13:57:18+0200 HEALTH 1915  1914 S          02:41  0.0  3780 sudo
+2026-10-03T13:57:18+0200 HEALTH 1916  1915 S          02:41  4.6  9636 SignalAnalyzerR
+2026-10-03T13:57:24+0200 HEALTH 1915  1914 S          02:46  0.0  3780 sudo
+2026-10-03T13:57:24+0200 HEALTH 1916  1915 S          02:46  4.6  9636 SignalAnalyzerR
+2026-10-03T13:57:29+0200 HEALTH 1915  1914 S          02:51  0.0  3780 sudo
+2026-10-03T13:57:29+0200 HEALTH 1916  1915 S          02:51  4.5  9636 SignalAnalyzerR
+2026-10-03T13:57:34+0200 HEALTH 1915  1914 S          02:56  0.0  3780 sudo
+2026-10-03T13:57:34+0200 HEALTH 1916  1915 S          02:56  4.5  9636 SignalAnalyzerR
+2026-10-03T13:57:36+0200 RAW_TOUCH kernel_time=1791028656.367029 x=3023 y=2077 pressure=61 down=1
+2026-10-03T13:57:36+0200 APP pi-contact down Point(x: 204, y: 132)
+2026-10-03T13:57:36+0200 APP pi-input DynamicSignalAnalyzerPiContactIngressSummary(contactCount: 1, queuedCount: 1, rejectedCount: 0, wakeRequestCount: 1, coalescedWakeCount: 0)
+2026-10-03T13:57:36+0200 APP pi-frame-duration-us 619
+2026-10-03T13:57:36+0200 APP pi-opportunity-input DynamicSignalAnalyzerPiInputDrainSummary(eventCount: 1, dispatchedActionCount: 0, cancelledOrRejectedCount: 0)
+2026-10-03T13:57:36+0200 RAW_TOUCH kernel_time=1791028656.387098 x=3015 y=2080 pressure=62 down=1
+2026-10-03T13:57:36+0200 RAW_TOUCH kernel_time=1791028656.407055 x=3024 y=2077 pressure=66 down=1
+2026-10-03T13:57:36+0200 RAW_TOUCH kernel_time=1791028656.427037 x=3028 y=2075 pressure=69 down=1
+2026-10-03T13:57:36+0200 RAW_TOUCH kernel_time=1791028656.447083 x=3023 y=2080 pressure=71 down=1
+2026-10-03T13:57:36+0200 RAW_TOUCH kernel_time=1791028656.467021 x=3023 y=2074 pressure=76 down=1
+2026-10-03T13:57:36+0200 RAW_TOUCH kernel_time=1791028656.487008 x=3023 y=2075 pressure=77 down=1
+2026-10-03T13:57:36+0200 RAW_TOUCH kernel_time=1791028656.507019 x=3016 y=2072 pressure=79 down=1
+2026-10-03T13:57:36+0200 RAW_TOUCH kernel_time=1791028656.527038 x=3021 y=2089 pressure=80 down=1
+2026-10-03T13:57:36+0200 RAW_TOUCH kernel_time=1791028656.547017 x=3006 y=2080 pressure=81 down=1
+2026-10-03T13:57:36+0200 RAW_TOUCH kernel_time=1791028656.567043 x=3015 y=2072 pressure=84 down=1
+2026-10-03T13:57:36+0200 RAW_TOUCH kernel_time=1791028656.587007 x=3021 y=2070 pressure=85 down=1
+2026-10-03T13:57:36+0200 RAW_TOUCH kernel_time=1791028656.607011 x=3019 y=2068 pressure=86 down=1
+2026-10-03T13:57:36+0200 RAW_TOUCH kernel_time=1791028656.627039 x=3017 y=2070 pressure=85 down=1
+2026-10-03T13:57:36+0200 RAW_TOUCH kernel_time=1791028656.647014 x=3007 y=2068 pressure=84 down=1
+2026-10-03T13:57:36+0200 RAW_TOUCH kernel_time=1791028656.667033 x=3017 y=2068 pressure=85 down=1
+2026-10-03T13:57:36+0200 RAW_TOUCH kernel_time=1791028656.687014 x=3019 y=2068 pressure=85 down=1
+2026-10-03T13:57:36+0200 RAW_TOUCH kernel_time=1791028656.707045 x=3019 y=2064 pressure=84 down=1
+2026-10-03T13:57:36+0200 RAW_TOUCH kernel_time=1791028656.727019 x=3018 y=2059 pressure=82 down=1
+2026-10-03T13:57:36+0200 RAW_TOUCH kernel_time=1791028656.747011 x=3018 y=2056 pressure=76 down=1
+2026-10-03T13:57:36+0200 RAW_TOUCH kernel_time=1791028656.766851 x=3018 y=2056 pressure=0 down=0
+2026-10-03T13:57:36+0200 APP pi-contact up Point(x: 204, y: 132)
+2026-10-03T13:57:36+0200 APP pi-input DynamicSignalAnalyzerPiContactIngressSummary(contactCount: 1, queuedCount: 1, rejectedCount: 0, wakeRequestCount: 1, coalescedWakeCount: 0)
+2026-10-03T13:57:36+0200 APP pi-frame-duration-us 555
+2026-10-03T13:57:36+0200 APP pi-opportunity-input DynamicSignalAnalyzerPiInputDrainSummary(eventCount: 1, dispatchedActionCount: 0, cancelledOrRejectedCount: 0)
+2026-10-03T13:57:39+0200 RAW_TOUCH kernel_time=1791028659.116993 x=1034 y=2054 pressure=63 down=1
+2026-10-03T13:57:39+0200 APP pi-contact down Point(x: 30, y: 131)
+2026-10-03T13:57:39+0200 APP pi-input DynamicSignalAnalyzerPiContactIngressSummary(contactCount: 1, queuedCount: 1, rejectedCount: 0, wakeRequestCount: 1, coalescedWakeCount: 0)
+2026-10-03T13:57:39+0200 APP pi-frame-duration-us 684
+2026-10-03T13:57:39+0200 APP pi-opportunity-input DynamicSignalAnalyzerPiInputDrainSummary(eventCount: 1, dispatchedActionCount: 0, cancelledOrRejectedCount: 0)
+2026-10-03T13:57:39+0200 RAW_TOUCH kernel_time=1791028659.137093 x=1033 y=2058 pressure=72 down=1
+2026-10-03T13:57:39+0200 RAW_TOUCH kernel_time=1791028659.157003 x=1028 y=2070 pressure=77 down=1
+2026-10-03T13:57:39+0200 RAW_TOUCH kernel_time=1791028659.177047 x=1024 y=2080 pressure=80 down=1
+2026-10-03T13:57:39+0200 RAW_TOUCH kernel_time=1791028659.197022 x=1026 y=2080 pressure=78 down=1
+2026-10-03T13:57:39+0200 RAW_TOUCH kernel_time=1791028659.217068 x=1024 y=2083 pressure=78 down=1
+2026-10-03T13:57:39+0200 RAW_TOUCH kernel_time=1791028659.237000 x=1012 y=2081 pressure=79 down=1
+2026-10-03T13:57:39+0200 RAW_TOUCH kernel_time=1791028659.257084 x=1004 y=2082 pressure=85 down=1
+2026-10-03T13:57:39+0200 RAW_TOUCH kernel_time=1791028659.276997 x=1002 y=2080 pressure=85 down=1
+2026-10-03T13:57:39+0200 RAW_TOUCH kernel_time=1791028659.297062 x=1000 y=2073 pressure=86 down=1
+2026-10-03T13:57:39+0200 RAW_TOUCH kernel_time=1791028659.317027 x=994 y=2066 pressure=80 down=1
+2026-10-03T13:57:39+0200 RAW_TOUCH kernel_time=1791028659.337057 x=992 y=2061 pressure=80 down=1
+2026-10-03T13:57:39+0200 RAW_TOUCH kernel_time=1791028659.357002 x=989 y=2052 pressure=81 down=1
+2026-10-03T13:57:39+0200 RAW_TOUCH kernel_time=1791028659.377049 x=989 y=2052 pressure=82 down=1
+2026-10-03T13:57:39+0200 RAW_TOUCH kernel_time=1791028659.396992 x=989 y=2055 pressure=82 down=1
+2026-10-03T13:57:39+0200 RAW_TOUCH kernel_time=1791028659.417084 x=987 y=2048 pressure=86 down=1
+2026-10-03T13:57:39+0200 RAW_TOUCH kernel_time=1791028659.437006 x=986 y=2051 pressure=85 down=1
+2026-10-03T13:57:39+0200 RAW_TOUCH kernel_time=1791028659.457082 x=984 y=2048 pressure=86 down=1
+2026-10-03T13:57:39+0200 RAW_TOUCH kernel_time=1791028659.477001 x=983 y=2049 pressure=86 down=1
+2026-10-03T13:57:39+0200 RAW_TOUCH kernel_time=1791028659.497056 x=982 y=2048 pressure=86 down=1
+2026-10-03T13:57:39+0200 RAW_TOUCH kernel_time=1791028659.517001 x=981 y=2048 pressure=86 down=1
+2026-10-03T13:57:39+0200 HEALTH 1915  1914 S          03:01  0.0  3780 sudo
+2026-10-03T13:57:39+0200 HEALTH 1916  1915 S          03:01  4.5  9968 SignalAnalyzerR
+2026-10-03T13:57:39+0200 RAW_TOUCH kernel_time=1791028659.537113 x=981 y=2034 pressure=85 down=1
+2026-10-03T13:57:39+0200 RAW_TOUCH kernel_time=1791028659.557109 x=977 y=2020 pressure=82 down=1
+2026-10-03T13:57:39+0200 RAW_TOUCH kernel_time=1791028659.577179 x=977 y=2016 pressure=79 down=1
+2026-10-03T13:57:39+0200 RAW_TOUCH kernel_time=1791028659.597159 x=972 y=2008 pressure=84 down=1
+2026-10-03T13:57:39+0200 RAW_TOUCH kernel_time=1791028659.617224 x=970 y=2000 pressure=79 down=1
+2026-10-03T13:57:39+0200 RAW_TOUCH kernel_time=1791028659.636140 x=970 y=2000 pressure=0 down=0
+2026-10-03T13:57:39+0200 APP pi-contact up Point(x: 24, y: 128)
+2026-10-03T13:57:39+0200 APP pi-input DynamicSignalAnalyzerPiContactIngressSummary(contactCount: 1, queuedCount: 1, rejectedCount: 0, wakeRequestCount: 1, coalescedWakeCount: 0)
+2026-10-03T13:57:40+0200 APP pi-frame-duration-us 1244151
+2026-10-03T13:57:40+0200 APP pi-opportunity-input DynamicSignalAnalyzerPiInputDrainSummary(eventCount: 1, dispatchedActionCount: 1, cancelledOrRejectedCount: 0)
+2026-10-03T13:57:43+0200 RAW_TOUCH kernel_time=1791028663.247011 x=2878 y=2049 pressure=60 down=1
+2026-10-03T13:57:43+0200 APP pi-contact down Point(x: 192, y: 131)
+2026-10-03T13:57:43+0200 APP pi-input DynamicSignalAnalyzerPiContactIngressSummary(contactCount: 1, queuedCount: 1, rejectedCount: 0, wakeRequestCount: 1, coalescedWakeCount: 0)
+2026-10-03T13:57:43+0200 APP pi-frame-duration-us 661
+2026-10-03T13:57:43+0200 APP pi-opportunity-input DynamicSignalAnalyzerPiInputDrainSummary(eventCount: 1, dispatchedActionCount: 0, cancelledOrRejectedCount: 0)
+2026-10-03T13:57:43+0200 RAW_TOUCH kernel_time=1791028663.267057 x=2877 y=2048 pressure=66 down=1
+2026-10-03T13:57:43+0200 RAW_TOUCH kernel_time=1791028663.287024 x=2874 y=2040 pressure=71 down=1
+2026-10-03T13:57:43+0200 RAW_TOUCH kernel_time=1791028663.307011 x=2873 y=2027 pressure=76 down=1
+2026-10-03T13:57:43+0200 RAW_TOUCH kernel_time=1791028663.327039 x=2880 y=2016 pressure=81 down=1
+2026-10-03T13:57:43+0200 RAW_TOUCH kernel_time=1791028663.347017 x=2875 y=2016 pressure=80 down=1
+2026-10-03T13:57:43+0200 RAW_TOUCH kernel_time=1791028663.367010 x=2882 y=2016 pressure=81 down=1
+2026-10-03T13:57:43+0200 RAW_TOUCH kernel_time=1791028663.387012 x=2877 y=2016 pressure=82 down=1
+2026-10-03T13:57:43+0200 RAW_TOUCH kernel_time=1791028663.407033 x=2883 y=2019 pressure=83 down=1
+2026-10-03T13:57:43+0200 RAW_TOUCH kernel_time=1791028663.427011 x=2877 y=2016 pressure=85 down=1
+2026-10-03T13:57:43+0200 RAW_TOUCH kernel_time=1791028663.447067 x=2878 y=2009 pressure=87 down=1
+2026-10-03T13:57:43+0200 RAW_TOUCH kernel_time=1791028663.467027 x=2879 y=2011 pressure=88 down=1
+2026-10-03T13:57:43+0200 RAW_TOUCH kernel_time=1791028663.487012 x=2877 y=2010 pressure=89 down=1
+2026-10-03T13:57:43+0200 RAW_TOUCH kernel_time=1791028663.507052 x=2877 y=2011 pressure=88 down=1
+2026-10-03T13:57:43+0200 RAW_TOUCH kernel_time=1791028663.527014 x=2878 y=2009 pressure=89 down=1
+2026-10-03T13:57:43+0200 RAW_TOUCH kernel_time=1791028663.547101 x=2880 y=2007 pressure=88 down=1
+2026-10-03T13:57:43+0200 RAW_TOUCH kernel_time=1791028663.567034 x=2877 y=2008 pressure=88 down=1
+2026-10-03T13:57:43+0200 RAW_TOUCH kernel_time=1791028663.587012 x=2879 y=2008 pressure=87 down=1
+2026-10-03T13:57:43+0200 RAW_TOUCH kernel_time=1791028663.607015 x=2878 y=2008 pressure=88 down=1
+2026-10-03T13:57:43+0200 RAW_TOUCH kernel_time=1791028663.627010 x=2883 y=2008 pressure=88 down=1
+2026-10-03T13:57:43+0200 RAW_TOUCH kernel_time=1791028663.647039 x=2879 y=2003 pressure=88 down=1
+2026-10-03T13:57:43+0200 RAW_TOUCH kernel_time=1791028663.667010 x=2883 y=2002 pressure=90 down=1
+2026-10-03T13:57:43+0200 RAW_TOUCH kernel_time=1791028663.687012 x=2883 y=2002 pressure=89 down=1
+2026-10-03T13:57:43+0200 RAW_TOUCH kernel_time=1791028663.707013 x=2882 y=2000 pressure=82 down=1
+2026-10-03T13:57:43+0200 RAW_TOUCH kernel_time=1791028663.726884 x=2882 y=2000 pressure=0 down=0
+2026-10-03T13:57:43+0200 APP pi-contact up Point(x: 192, y: 128)
+2026-10-03T13:57:43+0200 APP pi-input DynamicSignalAnalyzerPiContactIngressSummary(contactCount: 1, queuedCount: 1, rejectedCount: 0, wakeRequestCount: 1, coalescedWakeCount: 0)
+2026-10-03T13:57:44+0200 HEALTH 1915  1914 S          03:07  0.0  3780 sudo
+2026-10-03T13:57:44+0200 HEALTH 1916  1915 D          03:07  5.1  9996 SignalAnalyzerR
+2026-10-03T13:57:45+0200 APP pi-frame-duration-us 1315481
+2026-10-03T13:57:45+0200 APP pi-opportunity-input DynamicSignalAnalyzerPiInputDrainSummary(eventCount: 1, dispatchedActionCount: 1, cancelledOrRejectedCount: 0)
+2026-10-03T13:57:45+0200 RAW_TOUCH kernel_time=1791028665.567004 x=2892 y=1913 pressure=70 down=1
+2026-10-03T13:57:45+0200 APP pi-contact down Point(x: 193, y: 123)
+2026-10-03T13:57:45+0200 APP pi-input DynamicSignalAnalyzerPiContactIngressSummary(contactCount: 1, queuedCount: 1, rejectedCount: 0, wakeRequestCount: 1, coalescedWakeCount: 0)
+2026-10-03T13:57:45+0200 APP pi-frame-duration-us 701
+2026-10-03T13:57:45+0200 APP pi-opportunity-input DynamicSignalAnalyzerPiInputDrainSummary(eventCount: 1, dispatchedActionCount: 0, cancelledOrRejectedCount: 0)
+2026-10-03T13:57:45+0200 RAW_TOUCH kernel_time=1791028665.587091 x=2888 y=1917 pressure=75 down=1
+2026-10-03T13:57:45+0200 RAW_TOUCH kernel_time=1791028665.607008 x=2887 y=1924 pressure=83 down=1
+2026-10-03T13:57:45+0200 RAW_TOUCH kernel_time=1791028665.627035 x=2881 y=1936 pressure=86 down=1
+2026-10-03T13:57:45+0200 RAW_TOUCH kernel_time=1791028665.647009 x=2876 y=1952 pressure=87 down=1
+2026-10-03T13:57:45+0200 RAW_TOUCH kernel_time=1791028665.667012 x=2872 y=1959 pressure=88 down=1
+2026-10-03T13:57:45+0200 RAW_TOUCH kernel_time=1791028665.687101 x=2865 y=1968 pressure=86 down=1
+2026-10-03T13:57:45+0200 RAW_TOUCH kernel_time=1791028665.707011 x=2864 y=1973 pressure=86 down=1
+2026-10-03T13:57:45+0200 RAW_TOUCH kernel_time=1791028665.727006 x=2863 y=1971 pressure=88 down=1
+2026-10-03T13:57:45+0200 RAW_TOUCH kernel_time=1791028665.747030 x=2857 y=1970 pressure=88 down=1
+2026-10-03T13:57:45+0200 RAW_TOUCH kernel_time=1791028665.767010 x=2864 y=1973 pressure=90 down=1
+2026-10-03T13:57:45+0200 RAW_TOUCH kernel_time=1791028665.787008 x=2866 y=1986 pressure=88 down=1
+2026-10-03T13:57:45+0200 RAW_TOUCH kernel_time=1791028665.807038 x=2868 y=1973 pressure=90 down=1
+2026-10-03T13:57:45+0200 RAW_TOUCH kernel_time=1791028665.827013 x=2860 y=1971 pressure=90 down=1
+2026-10-03T13:57:45+0200 RAW_TOUCH kernel_time=1791028665.847006 x=2870 y=1975 pressure=90 down=1
+2026-10-03T13:57:45+0200 RAW_TOUCH kernel_time=1791028665.867038 x=2869 y=1974 pressure=91 down=1
+2026-10-03T13:57:45+0200 RAW_TOUCH kernel_time=1791028665.887014 x=2863 y=1974 pressure=90 down=1
+2026-10-03T13:57:45+0200 RAW_TOUCH kernel_time=1791028665.907010 x=2879 y=1972 pressure=89 down=1
+2026-10-03T13:57:45+0200 RAW_TOUCH kernel_time=1791028665.927059 x=2878 y=1973 pressure=82 down=1
+2026-10-03T13:57:45+0200 RAW_TOUCH kernel_time=1791028665.946849 x=2878 y=1973 pressure=0 down=0
+2026-10-03T13:57:45+0200 APP pi-contact up Point(x: 192, y: 126)
+2026-10-03T13:57:45+0200 APP pi-input DynamicSignalAnalyzerPiContactIngressSummary(contactCount: 1, queuedCount: 1, rejectedCount: 0, wakeRequestCount: 1, coalescedWakeCount: 0)
+2026-10-03T13:57:47+0200 APP pi-frame-duration-us 1241558
+2026-10-03T13:57:47+0200 APP pi-opportunity-input DynamicSignalAnalyzerPiInputDrainSummary(eventCount: 1, dispatchedActionCount: 1, cancelledOrRejectedCount: 0)
+2026-10-03T13:57:48+0200 RAW_TOUCH kernel_time=1791028668.887020 x=1042 y=1971 pressure=60 down=1
+2026-10-03T13:57:48+0200 APP pi-contact down Point(x: 30, y: 126)
+2026-10-03T13:57:48+0200 APP pi-input DynamicSignalAnalyzerPiContactIngressSummary(contactCount: 1, queuedCount: 1, rejectedCount: 0, wakeRequestCount: 1, coalescedWakeCount: 0)
+2026-10-03T13:57:48+0200 APP pi-frame-duration-us 682
+2026-10-03T13:57:48+0200 APP pi-opportunity-input DynamicSignalAnalyzerPiInputDrainSummary(eventCount: 1, dispatchedActionCount: 0, cancelledOrRejectedCount: 0)
+2026-10-03T13:57:48+0200 RAW_TOUCH kernel_time=1791028668.907015 x=1043 y=1968 pressure=70 down=1
+2026-10-03T13:57:48+0200 RAW_TOUCH kernel_time=1791028668.926998 x=1040 y=1973 pressure=66 down=1
+2026-10-03T13:57:48+0200 RAW_TOUCH kernel_time=1791028668.947024 x=1030 y=1985 pressure=62 down=1
+2026-10-03T13:57:48+0200 RAW_TOUCH kernel_time=1791028668.967019 x=1028 y=1992 pressure=60 down=1
+2026-10-03T13:57:48+0200 RAW_TOUCH kernel_time=1791028668.987025 x=1026 y=1995 pressure=64 down=1
+2026-10-03T13:57:48+0200 RAW_TOUCH kernel_time=1791028669.007008 x=1015 y=2004 pressure=70 down=1
+2026-10-03T13:57:49+0200 RAW_TOUCH kernel_time=1791028669.026996 x=1011 y=2000 pressure=68 down=1
+2026-10-03T13:57:49+0200 RAW_TOUCH kernel_time=1791028669.047031 x=1011 y=2009 pressure=69 down=1
+2026-10-03T13:57:49+0200 RAW_TOUCH kernel_time=1791028669.066994 x=1010 y=2001 pressure=71 down=1
+2026-10-03T13:57:49+0200 RAW_TOUCH kernel_time=1791028669.086998 x=1009 y=2004 pressure=71 down=1
+2026-10-03T13:57:49+0200 RAW_TOUCH kernel_time=1791028669.107020 x=1011 y=2004 pressure=72 down=1
+2026-10-03T13:57:49+0200 RAW_TOUCH kernel_time=1791028669.127025 x=1011 y=2004 pressure=74 down=1
+2026-10-03T13:57:49+0200 RAW_TOUCH kernel_time=1791028669.146999 x=1010 y=2001 pressure=74 down=1
+2026-10-03T13:57:49+0200 RAW_TOUCH kernel_time=1791028669.166853 x=1010 y=2001 pressure=0 down=0
+2026-10-03T13:57:49+0200 APP pi-contact up Point(x: 28, y: 128)
+2026-10-03T13:57:49+0200 APP pi-input DynamicSignalAnalyzerPiContactIngressSummary(contactCount: 1, queuedCount: 1, rejectedCount: 0, wakeRequestCount: 1, coalescedWakeCount: 0)
+2026-10-03T13:57:50+0200 HEALTH 1915  1914 S          03:12  0.0  3780 sudo
+2026-10-03T13:57:50+0200 HEALTH 1916  1915 D          03:12  5.6  9996 SignalAnalyzerR
+2026-10-03T13:57:50+0200 APP pi-frame-duration-us 1235367
+2026-10-03T13:57:50+0200 APP pi-opportunity-input DynamicSignalAnalyzerPiInputDrainSummary(eventCount: 1, dispatchedActionCount: 1, cancelledOrRejectedCount: 0)
+2026-10-03T13:57:50+0200 RAW_TOUCH kernel_time=1791028670.817028 x=2927 y=764 pressure=57 down=1
+2026-10-03T13:57:50+0200 APP pi-contact down Point(x: 196, y: 56)
+2026-10-03T13:57:50+0200 APP pi-input DynamicSignalAnalyzerPiContactIngressSummary(contactCount: 1, queuedCount: 1, rejectedCount: 0, wakeRequestCount: 1, coalescedWakeCount: 0)
+2026-10-03T13:57:50+0200 APP pi-frame-duration-us 648
+2026-10-03T13:57:50+0200 APP pi-opportunity-input DynamicSignalAnalyzerPiInputDrainSummary(eventCount: 1, dispatchedActionCount: 0, cancelledOrRejectedCount: 0)
+2026-10-03T13:57:50+0200 RAW_TOUCH kernel_time=1791028670.837030 x=2934 y=770 pressure=63 down=1
+2026-10-03T13:57:50+0200 RAW_TOUCH kernel_time=1791028670.857039 x=2932 y=777 pressure=62 down=1
+2026-10-03T13:57:50+0200 RAW_TOUCH kernel_time=1791028670.877017 x=2935 y=771 pressure=59 down=1
+2026-10-03T13:57:50+0200 RAW_TOUCH kernel_time=1791028670.897010 x=2928 y=770 pressure=60 down=1
+2026-10-03T13:57:50+0200 RAW_TOUCH kernel_time=1791028670.917031 x=2928 y=769 pressure=63 down=1
+2026-10-03T13:57:50+0200 RAW_TOUCH kernel_time=1791028670.937008 x=2927 y=768 pressure=67 down=1
+2026-10-03T13:57:50+0200 RAW_TOUCH kernel_time=1791028670.957019 x=2920 y=768 pressure=67 down=1
+2026-10-03T13:57:50+0200 RAW_TOUCH kernel_time=1791028670.977032 x=2931 y=766 pressure=68 down=1
+2026-10-03T13:57:50+0200 RAW_TOUCH kernel_time=1791028670.997009 x=2927 y=768 pressure=67 down=1
+2026-10-03T13:57:51+0200 RAW_TOUCH kernel_time=1791028671.017013 x=2930 y=764 pressure=72 down=1
+2026-10-03T13:57:51+0200 RAW_TOUCH kernel_time=1791028671.037047 x=2925 y=768 pressure=70 down=1
+2026-10-03T13:57:51+0200 RAW_TOUCH kernel_time=1791028671.057045 x=2920 y=768 pressure=71 down=1
+2026-10-03T13:57:51+0200 RAW_TOUCH kernel_time=1791028671.077008 x=2920 y=768 pressure=72 down=1
+2026-10-03T13:57:51+0200 RAW_TOUCH kernel_time=1791028671.097013 x=2922 y=765 pressure=73 down=1
+2026-10-03T13:57:51+0200 RAW_TOUCH kernel_time=1791028671.117073 x=2920 y=762 pressure=73 down=1
+2026-10-03T13:57:51+0200 RAW_TOUCH kernel_time=1791028671.137008 x=2921 y=770 pressure=66 down=1
+2026-10-03T13:57:51+0200 RAW_TOUCH kernel_time=1791028671.156876 x=2921 y=770 pressure=0 down=0
+2026-10-03T13:57:51+0200 APP pi-contact up Point(x: 195, y: 56)
+2026-10-03T13:57:51+0200 APP pi-input DynamicSignalAnalyzerPiContactIngressSummary(contactCount: 1, queuedCount: 1, rejectedCount: 0, wakeRequestCount: 1, coalescedWakeCount: 0)
+2026-10-03T13:57:51+0200 APP pi-frame-duration-us 559
+2026-10-03T13:57:51+0200 APP pi-opportunity-input DynamicSignalAnalyzerPiInputDrainSummary(eventCount: 1, dispatchedActionCount: 0, cancelledOrRejectedCount: 0)
+2026-10-03T13:57:53+0200 RAW_TOUCH kernel_time=1791028673.337054 x=2967 y=697 pressure=3 down=1
+2026-10-03T13:57:53+0200 APP pi-contact down Point(x: 200, y: 52)
+2026-10-03T13:57:53+0200 APP pi-input DynamicSignalAnalyzerPiContactIngressSummary(contactCount: 1, queuedCount: 1, rejectedCount: 0, wakeRequestCount: 1, coalescedWakeCount: 0)
+2026-10-03T13:57:53+0200 APP pi-frame-duration-us 646
+2026-10-03T13:57:53+0200 APP pi-opportunity-input DynamicSignalAnalyzerPiInputDrainSummary(eventCount: 1, dispatchedActionCount: 0, cancelledOrRejectedCount: 0)
+2026-10-03T13:57:53+0200 RAW_TOUCH kernel_time=1791028673.357035 x=2956 y=707 pressure=35 down=1
+2026-10-03T13:57:53+0200 RAW_TOUCH kernel_time=1791028673.377037 x=2952 y=714 pressure=43 down=1
+2026-10-03T13:57:53+0200 RAW_TOUCH kernel_time=1791028673.397212 x=2943 y=718 pressure=48 down=1
+2026-10-03T13:57:53+0200 RAW_TOUCH kernel_time=1791028673.417003 x=2950 y=721 pressure=53 down=1
+2026-10-03T13:57:53+0200 RAW_TOUCH kernel_time=1791028673.437067 x=2941 y=721 pressure=56 down=1
+2026-10-03T13:57:53+0200 RAW_TOUCH kernel_time=1791028673.457006 x=2940 y=722 pressure=61 down=1
+2026-10-03T13:57:53+0200 RAW_TOUCH kernel_time=1791028673.477010 x=2936 y=722 pressure=64 down=1
+2026-10-03T13:57:53+0200 RAW_TOUCH kernel_time=1791028673.497031 x=2940 y=726 pressure=65 down=1
+2026-10-03T13:57:53+0200 RAW_TOUCH kernel_time=1791028673.517012 x=2932 y=721 pressure=68 down=1
+2026-10-03T13:57:53+0200 RAW_TOUCH kernel_time=1791028673.537010 x=2924 y=720 pressure=70 down=1
+2026-10-03T13:57:53+0200 RAW_TOUCH kernel_time=1791028673.557035 x=2927 y=720 pressure=71 down=1
+2026-10-03T13:57:53+0200 RAW_TOUCH kernel_time=1791028673.577009 x=2925 y=720 pressure=72 down=1
+2026-10-03T13:57:53+0200 RAW_TOUCH kernel_time=1791028673.597013 x=2926 y=718 pressure=73 down=1
+2026-10-03T13:57:53+0200 RAW_TOUCH kernel_time=1791028673.617032 x=2927 y=720 pressure=72 down=1
+2026-10-03T13:57:53+0200 RAW_TOUCH kernel_time=1791028673.656993 x=2934 y=720 pressure=72 down=1
+2026-10-03T13:57:53+0200 RAW_TOUCH kernel_time=1791028673.677022 x=2931 y=720 pressure=73 down=1
+2026-10-03T13:57:53+0200 RAW_TOUCH kernel_time=1791028673.697027 x=2932 y=720 pressure=74 down=1
+2026-10-03T13:57:53+0200 RAW_TOUCH kernel_time=1791028673.717044 x=2934 y=719 pressure=73 down=1
+2026-10-03T13:57:53+0200 RAW_TOUCH kernel_time=1791028673.737017 x=2932 y=718 pressure=73 down=1
+2026-10-03T13:57:53+0200 RAW_TOUCH kernel_time=1791028673.757012 x=2936 y=718 pressure=73 down=1
+2026-10-03T13:57:53+0200 RAW_TOUCH kernel_time=1791028673.777006 x=2926 y=721 pressure=73 down=1
+2026-10-03T13:57:53+0200 RAW_TOUCH kernel_time=1791028673.797041 x=2928 y=718 pressure=74 down=1
+2026-10-03T13:57:53+0200 RAW_TOUCH kernel_time=1791028673.817008 x=2925 y=720 pressure=73 down=1
+2026-10-03T13:57:53+0200 RAW_TOUCH kernel_time=1791028673.837014 x=2930 y=717 pressure=73 down=1
+2026-10-03T13:57:53+0200 RAW_TOUCH kernel_time=1791028673.857033 x=2926 y=720 pressure=72 down=1
+2026-10-03T13:57:53+0200 RAW_TOUCH kernel_time=1791028673.877014 x=2928 y=722 pressure=71 down=1
+2026-10-03T13:57:53+0200 RAW_TOUCH kernel_time=1791028673.897016 x=2928 y=717 pressure=73 down=1
+2026-10-03T13:57:53+0200 RAW_TOUCH kernel_time=1791028673.917042 x=2928 y=728 pressure=69 down=1
+2026-10-03T13:57:53+0200 RAW_TOUCH kernel_time=1791028673.937009 x=2927 y=720 pressure=58 down=1
+2026-10-03T13:57:53+0200 RAW_TOUCH kernel_time=1791028673.956856 x=2927 y=720 pressure=0 down=0
+2026-10-03T13:57:53+0200 APP pi-contact up Point(x: 196, y: 54)
+2026-10-03T13:57:53+0200 APP pi-input DynamicSignalAnalyzerPiContactIngressSummary(contactCount: 1, queuedCount: 1, rejectedCount: 0, wakeRequestCount: 1, coalescedWakeCount: 0)
+2026-10-03T13:57:53+0200 APP pi-frame-duration-us 553
+2026-10-03T13:57:53+0200 APP pi-opportunity-input DynamicSignalAnalyzerPiInputDrainSummary(eventCount: 1, dispatchedActionCount: 0, cancelledOrRejectedCount: 0)
+2026-10-03T13:57:55+0200 RAW_TOUCH kernel_time=1791028675.687032 x=2979 y=720 pressure=16 down=1
+2026-10-03T13:57:55+0200 HEALTH 1915  1914 S          03:18  0.0  3780 sudo
+2026-10-03T13:57:55+0200 HEALTH 1916  1915 S          03:18  5.6  9996 SignalAnalyzerR
+2026-10-03T13:57:55+0200 RAW_TOUCH kernel_time=1791028675.707151 x=2980 y=720 pressure=41 down=1
+2026-10-03T13:57:55+0200 RAW_TOUCH kernel_time=1791028675.727120 x=2973 y=722 pressure=45 down=1
+2026-10-03T13:57:55+0200 RAW_TOUCH kernel_time=1791028675.747133 x=2971 y=725 pressure=51 down=1
+2026-10-03T13:57:55+0200 RAW_TOUCH kernel_time=1791028675.767113 x=2972 y=724 pressure=53 down=1
+2026-10-03T13:57:55+0200 RAW_TOUCH kernel_time=1791028675.807109 x=2959 y=726 pressure=52 down=1
+2026-10-03T13:57:55+0200 RAW_TOUCH kernel_time=1791028675.827069 x=2972 y=724 pressure=54 down=1
+2026-10-03T13:57:55+0200 APP pi-contact down Point(x: 201, y: 54)
+2026-10-03T13:57:55+0200 APP pi-input DynamicSignalAnalyzerPiContactIngressSummary(contactCount: 1, queuedCount: 1, rejectedCount: 0, wakeRequestCount: 1, coalescedWakeCount: 0)
+2026-10-03T13:57:55+0200 APP pi-frame-duration-us 623
+2026-10-03T13:57:55+0200 APP pi-opportunity-input DynamicSignalAnalyzerPiInputDrainSummary(eventCount: 1, dispatchedActionCount: 0, cancelledOrRejectedCount: 0)
+2026-10-03T13:57:55+0200 RAW_TOUCH kernel_time=1791028675.847013 x=2971 y=724 pressure=55 down=1
+2026-10-03T13:57:55+0200 RAW_TOUCH kernel_time=1791028675.867034 x=2968 y=723 pressure=58 down=1
+2026-10-03T13:57:55+0200 RAW_TOUCH kernel_time=1791028675.887007 x=2967 y=724 pressure=59 down=1
+2026-10-03T13:57:55+0200 RAW_TOUCH kernel_time=1791028675.926991 x=2962 y=724 pressure=59 down=1
+2026-10-03T13:57:55+0200 RAW_TOUCH kernel_time=1791028675.947003 x=2967 y=724 pressure=59 down=1
+2026-10-03T13:57:55+0200 RAW_TOUCH kernel_time=1791028675.967058 x=2963 y=725 pressure=60 down=1
+2026-10-03T13:57:55+0200 RAW_TOUCH kernel_time=1791028675.987014 x=2961 y=723 pressure=61 down=1
+2026-10-03T13:57:55+0200 RAW_TOUCH kernel_time=1791028676.007013 x=2962 y=721 pressure=61 down=1
+2026-10-03T13:57:56+0200 RAW_TOUCH kernel_time=1791028676.027035 x=2960 y=722 pressure=61 down=1
+2026-10-03T13:57:56+0200 RAW_TOUCH kernel_time=1791028676.047015 x=2959 y=722 pressure=63 down=1
+2026-10-03T13:57:56+0200 RAW_TOUCH kernel_time=1791028676.067018 x=2957 y=721 pressure=63 down=1
+2026-10-03T13:57:56+0200 RAW_TOUCH kernel_time=1791028676.087038 x=2955 y=720 pressure=64 down=1
+2026-10-03T13:57:56+0200 RAW_TOUCH kernel_time=1791028676.107004 x=2949 y=715 pressure=64 down=1
+2026-10-03T13:57:56+0200 RAW_TOUCH kernel_time=1791028676.127006 x=2950 y=713 pressure=64 down=1
+2026-10-03T13:57:56+0200 RAW_TOUCH kernel_time=1791028676.147011 x=2943 y=712 pressure=66 down=1
+2026-10-03T13:57:56+0200 RAW_TOUCH kernel_time=1791028676.167032 x=2948 y=711 pressure=66 down=1
+2026-10-03T13:57:56+0200 RAW_TOUCH kernel_time=1791028676.187011 x=2948 y=710 pressure=67 down=1
+2026-10-03T13:57:56+0200 RAW_TOUCH kernel_time=1791028676.207010 x=2943 y=711 pressure=68 down=1
+2026-10-03T13:57:56+0200 RAW_TOUCH kernel_time=1791028676.227053 x=2945 y=713 pressure=67 down=1
+2026-10-03T13:57:56+0200 RAW_TOUCH kernel_time=1791028676.247022 x=2947 y=711 pressure=67 down=1
+2026-10-03T13:57:56+0200 RAW_TOUCH kernel_time=1791028676.267013 x=2945 y=713 pressure=68 down=1
+2026-10-03T13:57:56+0200 RAW_TOUCH kernel_time=1791028676.287006 x=2942 y=713 pressure=68 down=1
+2026-10-03T13:57:56+0200 RAW_TOUCH kernel_time=1791028676.307032 x=2938 y=713 pressure=69 down=1
+2026-10-03T13:57:56+0200 RAW_TOUCH kernel_time=1791028676.327011 x=2939 y=712 pressure=68 down=1
+2026-10-03T13:57:56+0200 RAW_TOUCH kernel_time=1791028676.347006 x=2948 y=709 pressure=56 down=1
+2026-10-03T13:57:56+0200 RAW_TOUCH kernel_time=1791028676.366873 x=2948 y=709 pressure=0 down=0
+2026-10-03T13:57:56+0200 APP pi-contact up Point(x: 198, y: 53)
+2026-10-03T13:57:56+0200 APP pi-input DynamicSignalAnalyzerPiContactIngressSummary(contactCount: 1, queuedCount: 1, rejectedCount: 0, wakeRequestCount: 1, coalescedWakeCount: 0)
+2026-10-03T13:57:56+0200 APP pi-frame-duration-us 560
+2026-10-03T13:57:56+0200 APP pi-opportunity-input DynamicSignalAnalyzerPiInputDrainSummary(eventCount: 1, dispatchedActionCount: 0, cancelledOrRejectedCount: 0)
+2026-10-03T13:57:57+0200 RAW_TOUCH kernel_time=1791028677.197047 x=2935 y=722 pressure=41 down=1
+2026-10-03T13:57:57+0200 APP pi-contact down Point(x: 197, y: 54)
+2026-10-03T13:57:57+0200 APP pi-input DynamicSignalAnalyzerPiContactIngressSummary(contactCount: 1, queuedCount: 1, rejectedCount: 0, wakeRequestCount: 1, coalescedWakeCount: 0)
+2026-10-03T13:57:57+0200 APP pi-frame-duration-us 645
+2026-10-03T13:57:57+0200 APP pi-opportunity-input DynamicSignalAnalyzerPiInputDrainSummary(eventCount: 1, dispatchedActionCount: 0, cancelledOrRejectedCount: 0)
+2026-10-03T13:57:57+0200 RAW_TOUCH kernel_time=1791028677.217050 x=2944 y=722 pressure=42 down=1
+2026-10-03T13:57:57+0200 RAW_TOUCH kernel_time=1791028677.237033 x=2942 y=720 pressure=48 down=1
+2026-10-03T13:57:57+0200 RAW_TOUCH kernel_time=1791028677.257016 x=2942 y=722 pressure=48 down=1
+2026-10-03T13:57:57+0200 RAW_TOUCH kernel_time=1791028677.277002 x=2939 y=720 pressure=57 down=1
+2026-10-03T13:57:57+0200 RAW_TOUCH kernel_time=1791028677.297033 x=2933 y=720 pressure=62 down=1
+2026-10-03T13:57:57+0200 RAW_TOUCH kernel_time=1791028677.317007 x=2927 y=720 pressure=67 down=1
+2026-10-03T13:57:57+0200 RAW_TOUCH kernel_time=1791028677.337005 x=2932 y=720 pressure=66 down=1
+2026-10-03T13:57:57+0200 RAW_TOUCH kernel_time=1791028677.357049 x=2936 y=720 pressure=67 down=1
+2026-10-03T13:57:57+0200 RAW_TOUCH kernel_time=1791028677.377027 x=2940 y=720 pressure=68 down=1
+2026-10-03T13:57:57+0200 RAW_TOUCH kernel_time=1791028677.397007 x=2936 y=721 pressure=68 down=1
+2026-10-03T13:57:57+0200 RAW_TOUCH kernel_time=1791028677.417008 x=2936 y=720 pressure=70 down=1
+2026-10-03T13:57:57+0200 RAW_TOUCH kernel_time=1791028677.437038 x=2938 y=724 pressure=69 down=1
+2026-10-03T13:57:57+0200 RAW_TOUCH kernel_time=1791028677.457061 x=2940 y=724 pressure=70 down=1
+2026-10-03T13:57:57+0200 RAW_TOUCH kernel_time=1791028677.477007 x=2932 y=724 pressure=70 down=1
+2026-10-03T13:57:57+0200 RAW_TOUCH kernel_time=1791028677.497008 x=2932 y=725 pressure=70 down=1
+2026-10-03T13:57:57+0200 RAW_TOUCH kernel_time=1791028677.517007 x=2927 y=724 pressure=71 down=1
+2026-10-03T13:57:57+0200 RAW_TOUCH kernel_time=1791028677.537034 x=2936 y=725 pressure=70 down=1
+2026-10-03T13:57:57+0200 RAW_TOUCH kernel_time=1791028677.557042 x=2940 y=723 pressure=71 down=1
+2026-10-03T13:57:57+0200 RAW_TOUCH kernel_time=1791028677.577008 x=2932 y=725 pressure=71 down=1
+2026-10-03T13:57:57+0200 RAW_TOUCH kernel_time=1791028677.597037 x=2939 y=721 pressure=71 down=1
+2026-10-03T13:57:57+0200 RAW_TOUCH kernel_time=1791028677.617013 x=2936 y=722 pressure=70 down=1
+2026-10-03T13:57:57+0200 RAW_TOUCH kernel_time=1791028677.637012 x=2937 y=721 pressure=70 down=1
+2026-10-03T13:57:57+0200 RAW_TOUCH kernel_time=1791028677.657036 x=2942 y=722 pressure=61 down=1
+2026-10-03T13:57:57+0200 RAW_TOUCH kernel_time=1791028677.677011 x=2951 y=725 pressure=45 down=1
+2026-10-03T13:57:57+0200 RAW_TOUCH kernel_time=1791028677.696857 x=2951 y=725 pressure=0 down=0
+2026-10-03T13:57:57+0200 APP pi-contact up Point(x: 198, y: 54)
+2026-10-03T13:57:57+0200 APP pi-input DynamicSignalAnalyzerPiContactIngressSummary(contactCount: 1, queuedCount: 1, rejectedCount: 0, wakeRequestCount: 1, coalescedWakeCount: 0)
+2026-10-03T13:57:57+0200 APP pi-frame-duration-us 562
+2026-10-03T13:57:57+0200 APP pi-opportunity-input DynamicSignalAnalyzerPiInputDrainSummary(eventCount: 1, dispatchedActionCount: 0, cancelledOrRejectedCount: 0)
+2026-10-03T13:57:58+0200 RAW_TOUCH kernel_time=1791028678.327036 x=3011 y=728 pressure=38 down=1
+2026-10-03T13:57:58+0200 APP pi-contact down Point(x: 204, y: 54)
+2026-10-03T13:57:58+0200 APP pi-input DynamicSignalAnalyzerPiContactIngressSummary(contactCount: 1, queuedCount: 1, rejectedCount: 0, wakeRequestCount: 1, coalescedWakeCount: 0)
+2026-10-03T13:57:58+0200 APP pi-frame-duration-us 644
+2026-10-03T13:57:58+0200 APP pi-opportunity-input DynamicSignalAnalyzerPiInputDrainSummary(eventCount: 1, dispatchedActionCount: 0, cancelledOrRejectedCount: 0)
+2026-10-03T13:57:58+0200 RAW_TOUCH kernel_time=1791028678.347035 x=3016 y=726 pressure=47 down=1
+2026-10-03T13:57:58+0200 RAW_TOUCH kernel_time=1791028678.367010 x=3017 y=725 pressure=55 down=1
+2026-10-03T13:57:58+0200 RAW_TOUCH kernel_time=1791028678.387064 x=3024 y=721 pressure=59 down=1
+2026-10-03T13:57:58+0200 RAW_TOUCH kernel_time=1791028678.407013 x=3024 y=722 pressure=61 down=1
+2026-10-03T13:57:58+0200 RAW_TOUCH kernel_time=1791028678.427006 x=3013 y=722 pressure=60 down=1
+2026-10-03T13:57:58+0200 RAW_TOUCH kernel_time=1791028678.447035 x=3016 y=722 pressure=59 down=1
+2026-10-03T13:57:58+0200 RAW_TOUCH kernel_time=1791028678.467018 x=3007 y=723 pressure=59 down=1
+2026-10-03T13:57:58+0200 RAW_TOUCH kernel_time=1791028678.487059 x=2996 y=725 pressure=62 down=1
+2026-10-03T13:57:58+0200 RAW_TOUCH kernel_time=1791028678.507014 x=2985 y=723 pressure=65 down=1
+2026-10-03T13:57:58+0200 RAW_TOUCH kernel_time=1791028678.527041 x=2981 y=720 pressure=68 down=1
+2026-10-03T13:57:58+0200 RAW_TOUCH kernel_time=1791028678.547061 x=2980 y=720 pressure=68 down=1
+2026-10-03T13:57:58+0200 RAW_TOUCH kernel_time=1791028678.567009 x=2978 y=720 pressure=70 down=1
+2026-10-03T13:57:58+0200 RAW_TOUCH kernel_time=1791028678.587009 x=2981 y=718 pressure=68 down=1
+2026-10-03T13:57:58+0200 RAW_TOUCH kernel_time=1791028678.607035 x=2976 y=717 pressure=69 down=1
+2026-10-03T13:57:58+0200 RAW_TOUCH kernel_time=1791028678.627009 x=2974 y=717 pressure=70 down=1
+2026-10-03T13:57:58+0200 RAW_TOUCH kernel_time=1791028678.647013 x=2977 y=714 pressure=68 down=1
+2026-10-03T13:57:58+0200 RAW_TOUCH kernel_time=1791028678.667038 x=2976 y=712 pressure=67 down=1
+2026-10-03T13:57:58+0200 RAW_TOUCH kernel_time=1791028678.687024 x=2975 y=712 pressure=66 down=1
+2026-10-03T13:57:58+0200 RAW_TOUCH kernel_time=1791028678.707012 x=2988 y=715 pressure=34 down=1
+2026-10-03T13:57:58+0200 RAW_TOUCH kernel_time=1791028678.726862 x=2988 y=715 pressure=0 down=0
+2026-10-03T13:57:58+0200 APP pi-contact up Point(x: 201, y: 53)
+2026-10-03T13:57:58+0200 APP pi-input DynamicSignalAnalyzerPiContactIngressSummary(contactCount: 1, queuedCount: 1, rejectedCount: 0, wakeRequestCount: 1, coalescedWakeCount: 0)
+2026-10-03T13:57:58+0200 APP pi-frame-duration-us 519
+2026-10-03T13:57:58+0200 APP pi-opportunity-input DynamicSignalAnalyzerPiInputDrainSummary(eventCount: 1, dispatchedActionCount: 0, cancelledOrRejectedCount: 0)
+2026-10-03T13:58:01+0200 HEALTH 1915  1914 S          03:24  0.0  3780 sudo
+2026-10-03T13:58:01+0200 HEALTH 1916  1915 S          03:24  5.6  9996 SignalAnalyzerR
+2026-10-03T13:58:07+0200 HEALTH 1915  1914 S          03:29  0.0  3780 sudo
+2026-10-03T13:58:07+0200 HEALTH 1916  1915 S          03:29  5.5  9996 SignalAnalyzerR
+2026-10-03T13:58:12+0200 HEALTH 1915  1914 S          03:34  0.0  3780 sudo
+2026-10-03T13:58:12+0200 HEALTH 1916  1915 S          03:34  5.4  9996 SignalAnalyzerR
+2026-10-03T13:58:16+0200 RAW_TOUCH kernel_time=1791028696.497029 x=2920 y=694 pressure=28 down=1
+2026-10-03T13:58:16+0200 APP pi-contact down Point(x: 195, y: 52)
+2026-10-03T13:58:16+0200 APP pi-input DynamicSignalAnalyzerPiContactIngressSummary(contactCount: 1, queuedCount: 1, rejectedCount: 0, wakeRequestCount: 1, coalescedWakeCount: 0)
+2026-10-03T13:58:16+0200 APP pi-frame-duration-us 599
+2026-10-03T13:58:16+0200 APP pi-opportunity-input DynamicSignalAnalyzerPiInputDrainSummary(eventCount: 1, dispatchedActionCount: 0, cancelledOrRejectedCount: 0)
+2026-10-03T13:58:16+0200 RAW_TOUCH kernel_time=1791028696.517017 x=2931 y=694 pressure=38 down=1
+2026-10-03T13:58:16+0200 RAW_TOUCH kernel_time=1791028696.537034 x=2936 y=699 pressure=36 down=1
+2026-10-03T13:58:16+0200 RAW_TOUCH kernel_time=1791028696.557017 x=2937 y=696 pressure=40 down=1
+2026-10-03T13:58:16+0200 RAW_TOUCH kernel_time=1791028696.577008 x=2941 y=694 pressure=47 down=1
+2026-10-03T13:58:16+0200 RAW_TOUCH kernel_time=1791028696.597036 x=2936 y=696 pressure=51 down=1
+2026-10-03T13:58:16+0200 RAW_TOUCH kernel_time=1791028696.617024 x=2931 y=705 pressure=55 down=1
+2026-10-03T13:58:16+0200 RAW_TOUCH kernel_time=1791028696.637100 x=2928 y=706 pressure=56 down=1
+2026-10-03T13:58:16+0200 RAW_TOUCH kernel_time=1791028696.657147 x=2928 y=708 pressure=60 down=1
+2026-10-03T13:58:16+0200 RAW_TOUCH kernel_time=1791028696.677031 x=2923 y=708 pressure=67 down=1
+2026-10-03T13:58:16+0200 RAW_TOUCH kernel_time=1791028696.697011 x=2928 y=713 pressure=68 down=1
+2026-10-03T13:58:16+0200 RAW_TOUCH kernel_time=1791028696.717044 x=2927 y=715 pressure=68 down=1
+2026-10-03T13:58:16+0200 RAW_TOUCH kernel_time=1791028696.757003 x=2924 y=745 pressure=63 down=1
+2026-10-03T13:58:16+0200 RAW_TOUCH kernel_time=1791028696.777009 x=2926 y=713 pressure=71 down=1
+2026-10-03T13:58:16+0200 RAW_TOUCH kernel_time=1791028696.797038 x=2924 y=721 pressure=69 down=1
+2026-10-03T13:58:16+0200 RAW_TOUCH kernel_time=1791028696.817012 x=2923 y=715 pressure=71 down=1
+2026-10-03T13:58:16+0200 RAW_TOUCH kernel_time=1791028696.837020 x=2922 y=717 pressure=70 down=1
+2026-10-03T13:58:16+0200 RAW_TOUCH kernel_time=1791028696.857042 x=2908 y=716 pressure=70 down=1
+2026-10-03T13:58:16+0200 RAW_TOUCH kernel_time=1791028696.877006 x=2921 y=716 pressure=71 down=1
+2026-10-03T13:58:16+0200 RAW_TOUCH kernel_time=1791028696.897008 x=2921 y=716 pressure=70 down=1
+2026-10-03T13:58:16+0200 RAW_TOUCH kernel_time=1791028696.917009 x=2928 y=715 pressure=71 down=1
+2026-10-03T13:58:16+0200 RAW_TOUCH kernel_time=1791028696.937034 x=2927 y=713 pressure=68 down=1
+2026-10-03T13:58:16+0200 RAW_TOUCH kernel_time=1791028696.957018 x=2931 y=709 pressure=54 down=1
+2026-10-03T13:58:16+0200 RAW_TOUCH kernel_time=1791028696.976848 x=2931 y=709 pressure=0 down=0
+2026-10-03T13:58:16+0200 APP pi-contact up Point(x: 196, y: 53)
+2026-10-03T13:58:16+0200 APP pi-input DynamicSignalAnalyzerPiContactIngressSummary(contactCount: 1, queuedCount: 1, rejectedCount: 0, wakeRequestCount: 1, coalescedWakeCount: 0)
+2026-10-03T13:58:16+0200 APP pi-frame-duration-us 556
+2026-10-03T13:58:16+0200 APP pi-opportunity-input DynamicSignalAnalyzerPiInputDrainSummary(eventCount: 1, dispatchedActionCount: 0, cancelledOrRejectedCount: 0)
+2026-10-03T13:58:17+0200 RAW_TOUCH kernel_time=1791028697.657026 x=2950 y=620 pressure=28 down=1
+2026-10-03T13:58:17+0200 HEALTH 1915  1914 S          03:40  0.0  3780 sudo
+2026-10-03T13:58:17+0200 HEALTH 1916  1915 S          03:40  5.4  9996 SignalAnalyzerR
+2026-10-03T13:58:17+0200 RAW_TOUCH kernel_time=1791028697.677192 x=2952 y=624 pressure=42 down=1
+2026-10-03T13:58:17+0200 RAW_TOUCH kernel_time=1791028697.697173 x=2943 y=633 pressure=46 down=1
+2026-10-03T13:58:17+0200 RAW_TOUCH kernel_time=1791028697.717149 x=2948 y=644 pressure=49 down=1
+2026-10-03T13:58:17+0200 RAW_TOUCH kernel_time=1791028697.737175 x=2942 y=648 pressure=58 down=1
+2026-10-03T13:58:17+0200 RAW_TOUCH kernel_time=1791028697.757101 x=2927 y=653 pressure=61 down=1
+2026-10-03T13:58:17+0200 RAW_TOUCH kernel_time=1791028697.777101 x=2927 y=658 pressure=61 down=1
+2026-10-03T13:58:17+0200 RAW_TOUCH kernel_time=1791028697.797189 x=2932 y=661 pressure=62 down=1
+2026-10-03T13:58:17+0200 APP pi-contact down Point(x: 198, y: 48)
+2026-10-03T13:58:17+0200 APP pi-input DynamicSignalAnalyzerPiContactIngressSummary(contactCount: 1, queuedCount: 1, rejectedCount: 0, wakeRequestCount: 1, coalescedWakeCount: 0)
+2026-10-03T13:58:17+0200 APP pi-frame-duration-us 601
+2026-10-03T13:58:17+0200 APP pi-opportunity-input DynamicSignalAnalyzerPiInputDrainSummary(eventCount: 1, dispatchedActionCount: 0, cancelledOrRejectedCount: 0)
+2026-10-03T13:58:17+0200 RAW_TOUCH kernel_time=1791028697.817014 x=2928 y=665 pressure=64 down=1
+2026-10-03T13:58:17+0200 RAW_TOUCH kernel_time=1791028697.837030 x=2932 y=667 pressure=65 down=1
+2026-10-03T13:58:17+0200 RAW_TOUCH kernel_time=1791028697.857043 x=2925 y=668 pressure=67 down=1
+2026-10-03T13:58:17+0200 RAW_TOUCH kernel_time=1791028697.877011 x=2925 y=672 pressure=66 down=1
+2026-10-03T13:58:17+0200 RAW_TOUCH kernel_time=1791028697.897006 x=2924 y=672 pressure=67 down=1
+2026-10-03T13:58:17+0200 RAW_TOUCH kernel_time=1791028697.917013 x=2925 y=672 pressure=67 down=1
+2026-10-03T13:58:17+0200 RAW_TOUCH kernel_time=1791028697.937066 x=2928 y=673 pressure=67 down=1
+2026-10-03T13:58:17+0200 RAW_TOUCH kernel_time=1791028697.957012 x=2928 y=674 pressure=65 down=1
+2026-10-03T13:58:17+0200 RAW_TOUCH kernel_time=1791028697.977077 x=2928 y=674 pressure=67 down=1
+2026-10-03T13:58:17+0200 RAW_TOUCH kernel_time=1791028697.997008 x=2924 y=674 pressure=67 down=1
+2026-10-03T13:58:18+0200 RAW_TOUCH kernel_time=1791028698.017016 x=2931 y=675 pressure=67 down=1
+2026-10-03T13:58:18+0200 RAW_TOUCH kernel_time=1791028698.037036 x=2924 y=676 pressure=67 down=1
+2026-10-03T13:58:18+0200 RAW_TOUCH kernel_time=1791028698.057009 x=2932 y=675 pressure=67 down=1
+2026-10-03T13:58:18+0200 RAW_TOUCH kernel_time=1791028698.077042 x=2930 y=674 pressure=68 down=1
+2026-10-03T13:58:18+0200 RAW_TOUCH kernel_time=1791028698.097007 x=2924 y=674 pressure=66 down=1
+2026-10-03T13:58:18+0200 RAW_TOUCH kernel_time=1791028698.117039 x=2935 y=677 pressure=65 down=1
+2026-10-03T13:58:18+0200 RAW_TOUCH kernel_time=1791028698.137010 x=2929 y=675 pressure=66 down=1
+2026-10-03T13:58:18+0200 RAW_TOUCH kernel_time=1791028698.157052 x=2929 y=676 pressure=64 down=1
+2026-10-03T13:58:18+0200 RAW_TOUCH kernel_time=1791028698.177050 x=2932 y=675 pressure=64 down=1
+2026-10-03T13:58:18+0200 RAW_TOUCH kernel_time=1791028698.197051 x=2932 y=676 pressure=64 down=1
+2026-10-03T13:58:18+0200 RAW_TOUCH kernel_time=1791028698.217016 x=2926 y=676 pressure=65 down=1
+2026-10-03T13:58:18+0200 RAW_TOUCH kernel_time=1791028698.237072 x=2932 y=675 pressure=66 down=1
+2026-10-03T13:58:18+0200 RAW_TOUCH kernel_time=1791028698.257010 x=2927 y=674 pressure=67 down=1
+2026-10-03T13:58:18+0200 RAW_TOUCH kernel_time=1791028698.277008 x=2930 y=675 pressure=68 down=1
+2026-10-03T13:58:18+0200 RAW_TOUCH kernel_time=1791028698.297030 x=2919 y=676 pressure=67 down=1
+2026-10-03T13:58:18+0200 RAW_TOUCH kernel_time=1791028698.317012 x=2928 y=676 pressure=68 down=1
+2026-10-03T13:58:18+0200 RAW_TOUCH kernel_time=1791028698.337008 x=2927 y=677 pressure=68 down=1
+2026-10-03T13:58:18+0200 RAW_TOUCH kernel_time=1791028698.357012 x=2931 y=677 pressure=69 down=1
+2026-10-03T13:58:18+0200 RAW_TOUCH kernel_time=1791028698.377039 x=2933 y=677 pressure=69 down=1
+2026-10-03T13:58:18+0200 RAW_TOUCH kernel_time=1791028698.397012 x=2928 y=676 pressure=69 down=1
+2026-10-03T13:58:18+0200 RAW_TOUCH kernel_time=1791028698.417029 x=2933 y=676 pressure=69 down=1
+2026-10-03T13:58:18+0200 RAW_TOUCH kernel_time=1791028698.437007 x=2930 y=676 pressure=68 down=1
+2026-10-03T13:58:18+0200 RAW_TOUCH kernel_time=1791028698.457011 x=2932 y=676 pressure=69 down=1
+2026-10-03T13:58:18+0200 RAW_TOUCH kernel_time=1791028698.477030 x=2923 y=677 pressure=69 down=1
+2026-10-03T13:58:18+0200 RAW_TOUCH kernel_time=1791028698.497003 x=2934 y=677 pressure=69 down=1
+2026-10-03T13:58:18+0200 RAW_TOUCH kernel_time=1791028698.517011 x=2931 y=676 pressure=69 down=1
+2026-10-03T13:58:18+0200 RAW_TOUCH kernel_time=1791028698.537007 x=2931 y=677 pressure=69 down=1
+2026-10-03T13:58:18+0200 RAW_TOUCH kernel_time=1791028698.557012 x=2929 y=676 pressure=69 down=1
+2026-10-03T13:58:18+0200 RAW_TOUCH kernel_time=1791028698.577032 x=2930 y=677 pressure=69 down=1
+2026-10-03T13:58:18+0200 RAW_TOUCH kernel_time=1791028698.597025 x=2927 y=677 pressure=70 down=1
+2026-10-03T13:58:18+0200 RAW_TOUCH kernel_time=1791028698.617078 x=2934 y=676 pressure=70 down=1
+2026-10-03T13:58:18+0200 RAW_TOUCH kernel_time=1791028698.637102 x=2933 y=677 pressure=70 down=1
+2026-10-03T13:58:18+0200 RAW_TOUCH kernel_time=1791028698.657052 x=2928 y=680 pressure=68 down=1
+2026-10-03T13:58:18+0200 RAW_TOUCH kernel_time=1791028698.677013 x=2933 y=677 pressure=70 down=1
+2026-10-03T13:58:18+0200 RAW_TOUCH kernel_time=1791028698.697013 x=2931 y=678 pressure=70 down=1
+2026-10-03T13:58:18+0200 RAW_TOUCH kernel_time=1791028698.717040 x=2930 y=679 pressure=71 down=1
+2026-10-03T13:58:18+0200 RAW_TOUCH kernel_time=1791028698.737006 x=2931 y=678 pressure=71 down=1
+2026-10-03T13:58:18+0200 RAW_TOUCH kernel_time=1791028698.757006 x=2931 y=680 pressure=71 down=1
+2026-10-03T13:58:18+0200 RAW_TOUCH kernel_time=1791028698.777007 x=2929 y=678 pressure=71 down=1
+2026-10-03T13:58:18+0200 RAW_TOUCH kernel_time=1791028698.797048 x=2935 y=678 pressure=70 down=1
+2026-10-03T13:58:18+0200 RAW_TOUCH kernel_time=1791028698.817015 x=2933 y=681 pressure=65 down=1
+2026-10-03T13:58:18+0200 RAW_TOUCH kernel_time=1791028698.837011 x=2944 y=676 pressure=24 down=1
+2026-10-03T13:58:18+0200 RAW_TOUCH kernel_time=1791028698.856877 x=2944 y=676 pressure=0 down=0
+2026-10-03T13:58:18+0200 APP pi-contact up Point(x: 198, y: 51)
+2026-10-03T13:58:18+0200 APP pi-input DynamicSignalAnalyzerPiContactIngressSummary(contactCount: 1, queuedCount: 1, rejectedCount: 0, wakeRequestCount: 1, coalescedWakeCount: 0)
+2026-10-03T13:58:18+0200 APP pi-frame-duration-us 532
+2026-10-03T13:58:18+0200 APP pi-opportunity-input DynamicSignalAnalyzerPiInputDrainSummary(eventCount: 1, dispatchedActionCount: 0, cancelledOrRejectedCount: 0)
+2026-10-03T13:58:22+0200 HEALTH 1915  1914 S          03:45  0.0  3780 sudo
+2026-10-03T13:58:22+0200 HEALTH 1916  1915 S          03:45  5.4  9996 SignalAnalyzerR
+2026-10-03T13:58:28+0200 HEALTH 1915  1914 S          03:50  0.0  3780 sudo
+2026-10-03T13:58:28+0200 HEALTH 1916  1915 S          03:50  5.3  9996 SignalAnalyzerR
+2026-10-03T13:58:33+0200 HEALTH 1915  1914 S          03:55  0.0  3780 sudo
+2026-10-03T13:58:33+0200 HEALTH 1916  1915 S          03:55  5.3  9996 SignalAnalyzerR
+2026-10-03T13:58:38+0200 HEALTH 1915  1914 S          04:00  0.0  3780 sudo
+2026-10-03T13:58:38+0200 HEALTH 1916  1915 S          04:00  5.2  9996 SignalAnalyzerR
+2026-10-03T13:58:43+0200 HEALTH 1915  1914 S          04:05  0.0  3780 sudo
+2026-10-03T13:58:43+0200 HEALTH 1916  1915 S          04:05  5.2  9996 SignalAnalyzerR
+2026-10-03T13:58:48+0200 HEALTH 1915  1914 S          04:11  0.0  3780 sudo
+2026-10-03T13:58:48+0200 HEALTH 1916  1915 S          04:10  5.2  9996 SignalAnalyzerR
+2026-10-03T13:58:53+0200 HEALTH 1915  1914 S          04:16  0.0  3780 sudo
+2026-10-03T13:58:53+0200 HEALTH 1916  1915 S          04:16  5.1  9996 SignalAnalyzerR
+2026-10-03T13:58:58+0200 HEALTH 1915  1914 S          04:21  0.0  3780 sudo
+2026-10-03T13:58:58+0200 HEALTH 1916  1915 S          04:21  5.1  9996 SignalAnalyzerR
+2026-10-03T13:59:04+0200 HEALTH 1915  1914 S          04:26  0.0  3780 sudo
+2026-10-03T13:59:04+0200 HEALTH 1916  1915 S          04:26  5.1  9996 SignalAnalyzerR
+2026-10-03T13:59:09+0200 HEALTH 1915  1914 S          04:31  0.0  3780 sudo
+2026-10-03T13:59:09+0200 HEALTH 1916  1915 S          04:31  5.0  9996 SignalAnalyzerR
+2026-10-03T13:59:14+0200 HEALTH 1915  1914 S          04:36  0.0  3780 sudo
+2026-10-03T13:59:14+0200 HEALTH 1916  1915 S          04:36  5.0  9996 SignalAnalyzerR
+2026-10-03T13:59:19+0200 HEALTH 1915  1914 S          04:41  0.0  3780 sudo
+2026-10-03T13:59:19+0200 HEALTH 1916  1915 S          04:41  5.0  9996 SignalAnalyzerR

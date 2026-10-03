@@ -6,7 +6,7 @@ status: active
 owners:
   - codex
 created: 2026-09-09
-updated: 2026-09-27
+updated: 2026-10-03
 related_design_notes:
   - ../implementation-designs/spec-011-target-bound-dispatch.md
 conformance_report: null
@@ -560,12 +560,16 @@ report has a disposition for every criterion.
       Raspberry Pi portion in the Raspberry Pi / PiScreen campaign group
       defined by
       [SPEC-001 Milestone 8](spec-001-implementation-plan.md#cross-specification-connected-validation-campaign).
-      **Blocked:** the current ARMv6 artifact owns the accessible PiScreen
-      framebuffer and touchscreen and completed an exact bounded connected
-      framebuffer transfer. It still lacks the production analyzer host loop,
-      and no physical touch occurred, so committed provenance, routing, and
-      dispatch remain unobserved. See the
-      [Pi adapter evidence](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-6/piscreen-platform-adapter.md).
+      **Pi application controls verified:** the production ARMv6 host now
+      records physical plus/minus and recording-toggle dispatch, explicitly
+      accepted by Eugene on 2026-10-03. Its calibration regression checks the
+      recorded taps against actual committed hit bounds. See the
+      [connected approval packet](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/connected-pi-20261003/README.md).
+      - [x] Raspberry Pi application display/control and maintainer signoff.
+      - [ ] Remaining connected provenance/disabled-overlap/movement/stale/
+        exact-once corpus and macOS physical pointer evidence. Repeated R taps
+        during redraw exposed burst refusal and a host service-deadline exit;
+        this is not complete connected interaction conformance.
 - [ ] `T9.4` — With explicit authorization, build, inspect, flash, and exercise
       the connected `nrf52840dk/nrf52840` target through its approved host/input/
       display stack. Record VFP ABI again and distinguish hardware-observed

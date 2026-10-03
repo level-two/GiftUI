@@ -36,13 +36,14 @@ package struct PiScreenTouchCalibration: Equatable, Sendable {
     package let invertX: Bool
     package let invertY: Bool
 
-    // Connected ADS7846 taps on the Start/Stop row decoded 12 logical
-    // pixels above the visible controls on the 480 x 320 PiScreen.
+    // Connected taps on the current toggle decoded at y=48...56, below
+    // its y=2..<46 hit area. This offset also keeps recorded +/- taps
+    // inside their current hit areas on the 480 x 320 PiScreen.
     package static let signalAnalyzerPiScreen = Self(
         minimumX: 0,
         maximumX: 4_095,
-        minimumY: -205,
-        maximumY: 3_890
+        minimumY: 205,
+        maximumY: 4_300
     )
 
     package init?(
