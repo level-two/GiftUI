@@ -1951,7 +1951,7 @@ the next connected run for the corresponding target.
       diagnostic where applicable, last-complete-frame behavior, no stale
       action or publication, and reverse-order cleanup. Compare resulting
       semantic/action/frame traces with the approved failure expectations.
-- [ ] `T7.9` — Add an explicit standalone command for each host-native
+- [x] `T7.9` — Add an explicit standalone command for each host-native
       rehearsal and invoke both from the registered SPEC-001 profile driver;
       no profile may be skipped silently. Record source and binary identities,
       substituted boundaries, commands, event/frame order, raw traces,
@@ -2821,3 +2821,7 @@ Both host-native production recorders now capture Clear after the preserved stop
 ### Cleared-state review accepted — 2026-10-03
 
 Eugene explicitly accepted the three fresh cleared-state images from `b0bfa295`. Their raw pixels are installed from the immutable capture archive; eight current logical states and Pi physical mapping now have reviewed references. Exact retained-frame comparison and cleared-reference corruption negatives pass. [Approval and validation](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/current-cleared-20261003/approval.md) close T7.7. T7.9 is awaiting the registered profile reruns with the expanded gate. Connected validation remains open.
+
+### Eight-state rehearsal gate completed — 2026-10-03
+
+Both registered constrained-profile drivers pass with the approved cleared references, bringing the current exact pixel set to 24 images. [The approval packet](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/current-cleared-20261003/approval.md) retains immutable run IDs, all comparisons/fault checks, 269 selected tests per profile, ABI/resource evidence and cleared-reference corruption negatives. T7.7 and T7.9 are complete. Only T8.1/T8.2/T8.3 remain for connected display/input, cadence/costs and connected trace comparison. The plan remains active and SPEC-001 remains implementing.

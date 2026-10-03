@@ -553,3 +553,7 @@ Three cleared-state images are older artifacts and are retained as historical.
 T7.7/T7.9 remain open for a current cleared-state capture. Their approval
 blocker is resolved; that remaining coverage must not be inferred from stale
 images. Recording fixtures do not close connected acceptance criteria.
+
+### Approved current cleared references and gate closure — 2026-10-03
+
+Eugene accepted all three fresh cleared images. Both registered constrained-profile drivers pass the complete eight-state reviewed-reference set, including Pi physical mapping: 24 current exact pixel comparisons. Independent behavior comparisons, production-loop faults and 269 selected Swift tests per profile pass. [Approval and immutable validation](../milestone-10/current-cleared-20261003/approval.md) close T7.7 and T7.9. T8.1/T8.2/T8.3 and the connected scope of SA-AC-005/023/024/039 remain open. This evidence is host-native-fixture/cross-build evidence, not connected execution; SPEC-001 remains implementing.

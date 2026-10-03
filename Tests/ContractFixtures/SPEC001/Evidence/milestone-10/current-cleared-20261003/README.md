@@ -26,3 +26,7 @@ a95d2b0c1c1e1abf09de7d69bb198e136861c2e61cfc5ad609ae6be77804ed6d  nrf-cleared.pn
 2ae683b352402b7859461e840101114e4dcf51f68c957f9bbb03e23ec0992d06  pi-cleared-physical.png
 46d0ee16780d9480022734702f3a5e28351d5025a4ba8a4b91836d9438783295  pi-cleared.png
 ```
+
+## Subsequent approval
+
+Eugene explicitly approved all three displayed current cleared images. [Approval and registered validation](approval.md) supersede the pending-review statements above. The reviewed raw bytes were installed from this immutable capture packet. Historical evidence and its original scope remain preserved.
