@@ -155,15 +155,20 @@ def main():
         print(f"raster={name}\tbytes={len(data)}\tsha256={digest}")
         if args.references is None:
             continue
-        reference = (args.references / f"{name}.rgb565").read_bytes()
-        if data != reference:
-            failed = True
-            diff = bytearray(len(data))
-            for offset in range(0, len(data), 2):
-                if data[offset : offset + 2] != reference[offset : offset + 2]:
-                    diff[offset : offset + 2] = b"\xf8\x00"
-            png(args.images / f"{name}-diff.png", diff, width, height)
-            print(f"raster_mismatch={name}", file=sys.stderr)
+        compared = [(name, data, width, height)]
+        if args.profile == "pi":
+            compared.append((f"{name}-physical", physical, 480, 320))
+        for reference_name, actual, reference_width, reference_height in compared:
+            reference = (args.references / f"{reference_name}.rgb565").read_bytes()
+            if actual != reference:
+                failed = True
+                diff = bytearray(len(actual))
+                for offset in range(0, len(actual), 2):
+                    if actual[offset : offset + 2] != reference[offset : offset + 2]:
+                        diff[offset : offset + 2] = b"\xf8\x00"
+                png(args.images / f"{reference_name}-diff.png", diff,
+                    reference_width, reference_height)
+                print(f"raster_mismatch={reference_name}", file=sys.stderr)
     return int(failed)
 
 

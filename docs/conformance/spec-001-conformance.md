@@ -5,7 +5,7 @@ title: SPEC-001 Conformance Report
 status: complete
 reviewers: [codex]
 created: 2026-09-19
-updated: 2026-10-02
+updated: 2026-10-03
 implementation_plan: ../implementation-plans/spec-001-implementation-plan.md
 related_future_work: []
 related_explorations: []
@@ -224,3 +224,19 @@ resource/isolation checks pass. The final actual-source hashes and raw artifacts
 are preserved. T10.8 remains blocked on the references; an implemented transition
 is not requested. The flash and debugger measurement were explicitly authorized;
 no remote service was deployed or restarted.
+
+## Maintainer-approved pixel closure — 2026-10-03
+
+Eugene explicitly approved the 24 displayed state/target images in chat. The
+[locked pixel closure](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/approved-pixel-closure.md)
+records unchanged approved bytes, exact final Pi/nRF driver passes and
+physical/diagnostic corruption negatives. The 21 current images match exactly;
+three cleared-state pairs are historical and current-source cleared capture is
+missing. T7.7/T7.9 remain open on that requirement; SA-AC-005 retains its blocker.
+
+All 72 registered checks have passing evidence from the original gate and
+named reruns; this does not claim a single fresh 72-check invocation. T10.8
+and milestone 10 are complete. The ledger retains 41 scoped passes and four
+blocked criteria (SA-AC-005/023/024/039). T8.1/T8.2/T8.3 remain open for connected
+input/display, all controls, sustained cadence/costs and trace comparison.
+No implemented transition, flash, deployment or service restart follows.

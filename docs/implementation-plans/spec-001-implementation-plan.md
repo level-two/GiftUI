@@ -2291,7 +2291,7 @@ evidence. Existing reviewed-pixel and connected-hardware gates remain open.
       captures the dispatcher relocation inside existing owners, exact closure
       negatives, nine regressions, and independent deterministic checksums.
 
-- [ ] `T10.8` — Revalidate the assembled cleanup and record its dispositions.
+- [x] `T10.8` — Revalidate the assembled cleanup and record its dispositions.
       Update dependency/actual-source reports, the affected implementation
       design notes, task-evidence ledger, and SPEC-001 conformance evidence for
       the final revision. Record supporting owner results in their existing
@@ -2304,9 +2304,12 @@ evidence. Existing reviewed-pixel and connected-hardware gates remain open.
       revalidation. Pixel review and connected display/input/timing/high-water
       criteria retain their existing blockers until separately satisfied.
       Plan completion does not authorize an `implemented` transition.
-      **2026-10-02 current disposition:** Review updated; T10.1–T10.7 complete.
-      Completion is blocked by the two registered SPEC-001 Pi/nRF reviewed-pixel
-      reference gates. The [assembled review](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/assembled-revalidation.md)
+      **2026-10-03 current disposition:** Complete. The maintainer approved
+      the supplied images; exact current reviewed pixels and both profile drivers
+      pass. The [approval and closure](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/approved-pixel-closure.md)
+      closes T10.8 and all eight milestone-10 tasks. T7.7/T7.9 remain open
+      for the missing current cleared-state capture. Earlier collected
+      gate results retain their original scope. The [assembled review](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/assembled-revalidation.md)
       preserves the 62/72 gate and eight passing focused reruns, with current
       fault/profile/resource/source checks and all 45 criterion dispositions. The [final review packet](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/revalidation-disposition.md)
       records all 45 criterion dispositions, exact gate results and raw logs,
@@ -2797,3 +2800,16 @@ Pi/nRF RGB565 references. All 45 criteria are reconciled; connected stack fit
 is now measured, while physical touch/display/cadence and frame-cost acceptance
 remain open. Current raster candidates are prepared for review. No approval
 is inferred and no implemented transition is requested.
+
+### Approved pixel gate and milestone-10 completion — 2026-10-03
+
+The maintainer accepted all 24 review images. References are locked from the
+reviewed archive; exact comparison checks all seven current logical states and Pi
+physical mapping. Both registered SPEC-001 constrained-profile drivers pass,
+including meaningful corrupted-reference negatives. The gate plus explicit
+reruns supplies passing evidence for all 72 checks, preserving original
+statuses and input scope. T10.8 is complete; T7.7/T7.9 remain open for a current cleared-state capture.
+
+T7.7/T7.9 and T8.1/T8.2/T8.3 remain: connected Pi/nRF physical controls, sustained
+cadence, display/input/resource/target-cost evidence and connected trace
+comparison. The plan stays active and SPEC-001 stays implementing.

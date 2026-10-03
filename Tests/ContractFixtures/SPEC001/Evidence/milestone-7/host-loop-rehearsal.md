@@ -542,3 +542,14 @@ SPEC-015 drivers, but its aggregate gate exited with 12 failures in other
 registered SPEC drivers. The SPEC-002 migration inventory check passes when
 run directly; the aggregate failures need separate investigation and are not
 counted as passing evidence for this correction.
+
+## Reviewed pixel scope and registered gate — 2026-10-03
+
+The maintainer approved the 24 displayed Pi logical/mapped and nRF images.
+The [current closure](../milestone-10/approved-pixel-closure.md) locks the exact
+21 current RGB565 references, records both registered SPEC-001 profile passes,
+seven state comparisons plus Pi physical mapping, and corruption negatives.
+Three cleared-state images are older artifacts and are retained as historical.
+T7.7/T7.9 remain open for a current cleared-state capture. Their approval
+blocker is resolved; that remaining coverage must not be inferred from stale
+images. Recording fixtures do not close connected acceptance criteria.

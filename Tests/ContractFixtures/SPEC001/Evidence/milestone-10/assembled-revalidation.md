@@ -57,3 +57,15 @@ initial-action/12-action and nRF's 818-frame/12-action independent comparisons.
 The stale Pi behavior transcript is replaced by the verbatim independent gate
 corpus; no comparison is weakened. The [24-image review packet](pixel-review/README.md)
 and raw recording archive are current and remain unapproved.
+
+## Maintainer-approved closure — 2026-10-03
+
+The [approved pixel closure](approved-pixel-closure.md) supersedes the two
+remaining registered reference blockers. The maintainer accepted the displayed
+images; 21 current images match the final exact comparisons, including Pi
+physical mapping. Three cleared images are historical and remain scoped as
+such. Physical/diagnostic corruption negatives pass. All 72 registered checks
+have passing evidence from the gate and named reruns; original statuses remain
+unchanged. T10.8 and milestone 10 are complete. T7.7/T7.9 remain open for a
+current-source cleared-state capture, alongside T8.1/T8.2/T8.3 connected
+validation. The ledger retains 41 scoped passes and four blocked criteria.
