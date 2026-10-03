@@ -8,7 +8,7 @@ and do not duplicate Proposal, RFC, ADR, or Specification content.
 commitment's goal, scope, and success criteria. Roadmaps sequence work within
 those approved boundaries. MVP is [ITERATION-001](../iterations/iteration-001-mvp.md).
 
-MVP roadmap decisions must conform to [GiftUI MVP Scope](../MVP_SCOPE.md),
+MVP roadmap decisions must conform to [GiftUI MVP Scope](../iterations/iteration-001-mvp.md),
 including its reference application, validation progression, and exit criteria.
 
 Current roadmap:

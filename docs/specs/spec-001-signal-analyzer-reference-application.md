@@ -126,7 +126,7 @@ Observation, `MainActor`, `Task`, or `ContinuousClock`, this contract specifies
 portable behavior instead of preserving those mechanisms.
 
 This Specification assumes GiftUI provides the complete client-facing MVP
-surface defined by `docs/MVP_SCOPE.md`, including observable state-driven
+surface defined by `docs/iterations/iteration-001-mvp.md`, including observable state-driven
 invalidation and the Canvas/path/stroke operations needed by the waveform. It
 does not define or approve those framework contracts.
 
@@ -224,7 +224,7 @@ contract unless a requirement below states otherwise.
 ### GiftUI dependencies
 
 Every claimed configuration MUST provide the complete Rank 0–2 and waveform
-drawing surface from [GiftUI MVP Scope](../MVP_SCOPE.md). This includes the
+drawing surface from [GiftUI MVP Scope](../iterations/iteration-001-mvp.md). This includes the
 view model, fixed child composition, custom views, modifier chaining, stacks,
 spacer, spacing, alignment, padding, frame constraints, text, opaque RGB color,
 foreground styling, rectangular backgrounds, buttons, disabled state,
@@ -2121,7 +2121,7 @@ contract, and this Specification does not create an additional relationship.
 - [RFC-009: Canvas, Path, and Stroke Drawing Architecture](../rfcs/rfc-009-canvas-path-stroke-drawing-architecture.md)
 - [RFC-011: Bounded Application Actions and Model-Target Dispatch](../rfcs/rfc-011-bounded-application-actions.md)
 - [PROPOSAL-002: Signal Analyzer Reference Application](../proposals/proposal-002-signal-analyzer-reference-application.md)
-- [GiftUI MVP Scope](../MVP_SCOPE.md)
+- [GiftUI MVP Scope](../iterations/iteration-001-mvp.md)
 - [GiftUI Vision](../VISION.md)
 - [GiftUI Principles](../PRINCIPLES.md)
 - External legacy source: `GIFTUI_SIGNAL_ANALYZER_SPEC.md` in the

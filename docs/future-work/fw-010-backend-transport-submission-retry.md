@@ -96,4 +96,4 @@ item.
 - [SPEC-009: Execution Cycle and Frame Handoff Contract](../specs/spec-009-execution-cycle-and-frame-handoff.md)
 - [FW-011: Handoff-Refusal Frame Rescheduling](fw-011-failed-frame-rescheduling.md)
 - [FW-014: Replayable Operation Delivery for Future Raster Strategies](fw-014-replayable-operation-delivery.md)
-- [GiftUI MVP Scope](../MVP_SCOPE.md)
+- [GiftUI MVP Scope](../iterations/iteration-001-mvp.md)

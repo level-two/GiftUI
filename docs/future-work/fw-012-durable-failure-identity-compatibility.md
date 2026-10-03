@@ -84,4 +84,4 @@ and contract must pass the normal RFC, ADR, and Specification gates.
 ## References
 
 - [RFC-005: Failure and Diagnostics Propagation Architecture](../rfcs/rfc-005-failure-diagnostics-propagation.md)
-- [GiftUI MVP Scope](../MVP_SCOPE.md)
+- [GiftUI MVP Scope](../iterations/iteration-001-mvp.md)

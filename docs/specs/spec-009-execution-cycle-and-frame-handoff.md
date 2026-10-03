@@ -1703,6 +1703,6 @@ Current MVP scope is unchanged.
 - [SPEC-007](spec-007-layout.md)
 - [SPEC-008](spec-008-rendering.md)
 - [SPIKE-001](../spikes/spike-001-tiled-one-shot-capability-fixtures.md)
-- [GiftUI MVP Scope](../MVP_SCOPE.md)
+- [GiftUI MVP Scope](../iterations/iteration-001-mvp.md)
 - [MVP Specification Portfolio](../roadmap/MVP_SPECIFICATION_PORTFOLIO.md)
 - [Legacy GiftUI Framework Specification](../engineering/POC_HISTORICAL_BASELINE.md)

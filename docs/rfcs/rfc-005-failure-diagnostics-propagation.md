@@ -680,7 +680,7 @@ This approved RFC is recorded by accepted ADRs for:
 - [RFC-006](rfc-006-capability-system-architecture.md)
 - [FW-012](../future-work/fw-012-durable-failure-identity-compatibility.md)
 - [FW-013](../future-work/fw-013-fine-grained-failure-containment-recovery.md)
-- [GiftUI MVP Scope](../MVP_SCOPE.md)
+- [GiftUI MVP Scope](../iterations/iteration-001-mvp.md)
 - [GiftUI Vision](../VISION.md)
 - [GiftUI Principles](../PRINCIPLES.md)
 - [GiftUI Framework Proof-of-Concept Specification](../engineering/POC_HISTORICAL_BASELINE.md) — legacy evidence only

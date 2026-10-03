@@ -1308,7 +1308,7 @@ contract.
 - [SPEC-001: Signal Analyzer Reference Application Contract](spec-001-signal-analyzer-reference-application.md)
 - [SPEC-002: Portable Foundation](spec-002-portable-foundation.md)
 - [SPEC-004: Capability Contribution and Resolution](spec-004-capability-contribution-and-resolution.md)
-- [GiftUI MVP Scope](../MVP_SCOPE.md)
+- [GiftUI MVP Scope](../iterations/iteration-001-mvp.md)
 - [MVP Specification Portfolio](../roadmap/MVP_SPECIFICATION_PORTFOLIO.md)
 - [GiftUI Principles](../PRINCIPLES.md)
 - [GiftUI Framework Proof-of-Concept Specification](../engineering/POC_HISTORICAL_BASELINE.md) — legacy evidence only

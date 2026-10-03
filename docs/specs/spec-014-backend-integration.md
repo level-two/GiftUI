@@ -1212,7 +1212,7 @@ No new deferred artifact was needed and current MVP scope is unchanged.
 - [SPEC-014 Conformance Report](../conformance/spec-014-conformance.md)
 - [Widened-Integer Stroke Raster Design](../implementation-designs/spec-014-widened-integer-stroke-raster.md)
 - [GiftUI MVP Specification Portfolio](../roadmap/MVP_SPECIFICATION_PORTFOLIO.md)
-- [GiftUI MVP Scope](../MVP_SCOPE.md)
+- [GiftUI MVP Scope](../iterations/iteration-001-mvp.md)
 - [PROPOSAL-003](../proposals/proposal-003-giftui-mvp-architecture-establishment.md)
 - [PROPOSAL-004](../proposals/proposal-004-capability-system.md)
 - [PROPOSAL-006](../proposals/proposal-006-canvas-path-stroke-drawing.md)

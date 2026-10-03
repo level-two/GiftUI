@@ -23,7 +23,7 @@ Read canonical governance rules including
 approved Spec and all linked accepted ADRs, approved RFC, Proposal,
 architecture docs, relevant source/tests, and applicable platform/toolchain
 skills.
-For MVP work, read `docs/MVP_SCOPE.md` and keep task scope traceable to the
+For MVP work, read `docs/iterations/iteration-001-mvp.md` and keep task scope traceable to the
 reference application and required stack validation.
 
 ## Allowed Decisions

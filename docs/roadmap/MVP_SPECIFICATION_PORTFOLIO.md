@@ -33,7 +33,7 @@ The current authoritative inputs are:
 - accepted ADR-001 and ADR-003 through ADR-012, ADR-014 through ADR-033;
 - SPEC-001, the approved Signal Analyzer application contract reconciled
   against the approved reusable portfolio;
-- the established [MVP Scope](../MVP_SCOPE.md), including the four supported
+- the established [MVP Scope](../iterations/iteration-001-mvp.md), including the four supported
   configurations and the Signal Analyzer validation progression.
 
 ADR-002 is superseded by ADR-027 and ADR-013 is superseded by ADR-033; neither
@@ -319,7 +319,7 @@ should verify that:
 - [Feature Lifecycle](../engineering/FEATURE_LIFECYCLE.md)
 - [Documentation Rules](../engineering/DOCUMENTATION_RULES.md)
 - [AI Agent Rules](../engineering/AI_AGENT_RULES.md)
-- [GiftUI MVP Scope](../MVP_SCOPE.md)
+- [GiftUI MVP Scope](../iterations/iteration-001-mvp.md)
 - [MVP Milestones](MVP_MILESTONES.md)
 - [Feature Manifest](../features.yaml)
 - [Specification Template](../templates/spec.md)

@@ -84,4 +84,4 @@ binding as preapproval for a generalized action architecture.
 - [ADR-033: Bounded Application Actions and Model-Target Dispatch](../adrs/adr-033-bounded-application-actions-and-model-target-dispatch.md)
 - [FW-017: Public Binding Abstraction](fw-017-public-binding-abstraction.md)
 - [FW-020: Declarative Extensibility](fw-020-declarative-extensibility.md)
-- [GiftUI MVP Scope](../MVP_SCOPE.md)
+- [GiftUI MVP Scope](../iterations/iteration-001-mvp.md)

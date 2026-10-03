@@ -279,7 +279,7 @@ implementation, or claims of configuration conformance.
 - [PROPOSAL-003: GiftUI MVP Architecture Establishment](proposal-003-giftui-mvp-architecture-establishment.md)
 - [RFC-002: GiftUI MVP Layered Architecture](../rfcs/rfc-002-giftui-mvp-layered-architecture.md) — approved design consensus extracted into accepted ADRs
 - [RFC-006: GiftUI Capability System Architecture](../rfcs/rfc-006-capability-system-architecture.md) — approved design consensus extracted into accepted ADRs
-- [GiftUI MVP Scope](../MVP_SCOPE.md)
+- [GiftUI MVP Scope](../iterations/iteration-001-mvp.md)
 - [MVP Milestones](../roadmap/MVP_MILESTONES.md)
 - [GiftUI Vision](../VISION.md)
 - [GiftUI Principles](../PRINCIPLES.md)

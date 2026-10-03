@@ -77,7 +77,7 @@ authority chain is accepted
 RFC-005 remain governing integration context for the module graph, startup
 gates, and failure boundary.
 
-The [MVP Scope](../MVP_SCOPE.md) requires one substantially shared Signal
+The [MVP Scope](../iterations/iteration-001-mvp.md) requires one substantially shared Signal
 Analyzer presentation across macOS dynamic, macOS static, Raspberry Pi
 1/Linux dynamic with PiScreen, and nRF52840 static with TFT. Those stacks use
 materially different full-surface and bounded tiled presentation paths, so the

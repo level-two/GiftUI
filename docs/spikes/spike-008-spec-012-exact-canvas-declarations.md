@@ -174,4 +174,4 @@ must not be copied into production without normal implementation review.
 - [SPIKE-007: Static Action Storage Feasibility](spike-007-static-action-storage-feasibility.md)
 - [ADR-029: Scoped Transient Path Snapshot Semantics](../adrs/adr-029-scoped-transient-path-snapshot-semantics.md)
 - [ADR-031: Bounded Canvas Failure and Startup-Gate Integration](../adrs/adr-031-bounded-canvas-failure-and-startup-gate-integration.md)
-- [GiftUI MVP Scope](../MVP_SCOPE.md)
+- [GiftUI MVP Scope](../iterations/iteration-001-mvp.md)

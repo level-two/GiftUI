@@ -21,9 +21,9 @@ architecture, amend Specifications, or authorize major implementation.
   iterations. Scope membership does not reset existing feature approvals.
 
 MVP is [ITERATION-001](../iterations/iteration-001-mvp.md). Its existing
-`MVP` milestone labels and `docs/MVP_SCOPE.md` links remain valid aliases and
-references. Numbering does not rename historical artifacts or change their
-requirements or dispositions.
+`MVP` milestone labels remain valid aliases. The numbered scope holds the
+authoritative MVP requirements and exit criteria. Numbering does not rename
+historical feature artifacts or change their requirements or dispositions.
 
 ## Assemble and approve the scope
 
@@ -92,7 +92,7 @@ mark Specifications implemented, or demonstrate full product conformance.
 ## Existing MVP baseline
 
 The maintainer registered MVP as `ITERATION-001` on 2026-10-04. Its detailed
-scope and exit criteria remain authoritative in [MVP Scope](../MVP_SCOPE.md).
-The numbered record links that baseline and the already recorded 2026-10-03
-closeout, including approved exceptions. This is registration of existing
-history, not a new closure or a claim that full measured MVP conformance passed.
+scope and exit criteria were consolidated into that numbered record without
+changing the established baseline. It also links the already recorded
+2026-10-03 closeout, including approved exceptions. This preserves existing
+history; it is not a new closure or a claim that full measured MVP conformance passed.

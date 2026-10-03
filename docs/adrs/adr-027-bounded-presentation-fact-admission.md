@@ -172,5 +172,5 @@ exhaustion change observable semantics.
 - [PROPOSAL-002: Signal Analyzer Reference Application](../proposals/proposal-002-signal-analyzer-reference-application.md)
 - [PROPOSAL-005: Observable Reference State](../proposals/proposal-005-observable-reference-state.md)
 - [SPEC-001: Signal Analyzer Reference Application](../specs/spec-001-signal-analyzer-reference-application.md)
-- [GiftUI MVP Scope](../MVP_SCOPE.md)
+- [GiftUI MVP Scope](../iterations/iteration-001-mvp.md)
 - [GiftUI Principles](../PRINCIPLES.md)

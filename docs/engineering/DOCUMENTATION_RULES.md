@@ -121,7 +121,7 @@ an accepted decision, approved contract, roadmap commitment, or implementation
 authorization. When cited by an RFC, they support analysis but do not replace
 review or approval.
 
-`docs/MVP_SCOPE.md` is the established product boundary for MVP prioritization,
+`docs/iterations/iteration-001-mvp.md` is the established product boundary for MVP prioritization,
 validation configurations, and exit decisions. MVP work MUST trace to a
 reference-application or stack-validation requirement from that scope. The
 scope determines whether work belongs in the MVP; it does not select an

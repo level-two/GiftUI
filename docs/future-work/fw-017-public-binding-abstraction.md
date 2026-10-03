@@ -80,5 +80,5 @@ RFC, ADR, and Specification gates.
 - [RFC-002: GiftUI MVP Layered Architecture](../rfcs/rfc-002-giftui-mvp-layered-architecture.md)
 - [RFC-008: Observable Reference State Architecture](../rfcs/rfc-008-observable-reference-state-architecture.md)
 - [SPEC-006: Declarative View Semantics](../specs/spec-006-declarative-view-semantics.md)
-- [GiftUI MVP Scope](../MVP_SCOPE.md)
+- [GiftUI MVP Scope](../iterations/iteration-001-mvp.md)
 - [MVP Milestones](../roadmap/MVP_MILESTONES.md)

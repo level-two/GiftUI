@@ -141,5 +141,5 @@ backend obligations beyond the accepted straight-line MVP scope.
 - [PROPOSAL-006: Canvas, Path, and Stroke Drawing](../proposals/proposal-006-canvas-path-stroke-drawing.md)
 - [SPIKE-004: Canvas Path Plan Feasibility](../spikes/spike-004-canvas-path-plan-feasibility.md)
 - [ADR-009: Checked Integer Geometry for MVP](adr-009-checked-integer-geometry.md)
-- [GiftUI MVP Scope](../MVP_SCOPE.md)
+- [GiftUI MVP Scope](../iterations/iteration-001-mvp.md)
 - [GiftUI Principles](../PRINCIPLES.md)

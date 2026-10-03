@@ -142,7 +142,7 @@ Presentation, admission-adapter declarations, application-specific owner
 adapter, concrete source behavior, portable hierarchy, host-facing analyzer
 assembly inputs, and end-to-end application evidence required by SPEC-001.
 
-The [MVP Scope](../MVP_SCOPE.md) requires one coherent, substantially shared
+The [MVP Scope](../iterations/iteration-001-mvp.md) requires one coherent, substantially shared
 four-channel analyzer to exercise the complete Rank 0-2 client surface and
 waveform drawing on macOS dynamic, macOS static, Raspberry Pi 1/Linux dynamic
 with framebuffer/PiScreen, and nRF52840 static with TFT. This reference

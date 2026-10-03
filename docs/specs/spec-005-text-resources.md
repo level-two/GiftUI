@@ -136,7 +136,7 @@ dynamic, and nRF52840/Zephyr static configurations.
   borrowing boundaries.
 - [SPEC-002](spec-002-portable-foundation.md) is approved and owns
   `GeometryScalar`, `Point`, `Size`, `Rect`, and checked arithmetic.
-- The [MVP Scope](../MVP_SCOPE.md) requires text for the substantially shared
+- The [MVP Scope](../iterations/iteration-001-mvp.md) requires text for the substantially shared
   Signal Analyzer presentation on all four configurations. SPEC-001 names the
   concrete title, subtitle, channel, level, status, control, visible-window,
   and error-text uses that make this contract necessary now.
@@ -1145,5 +1145,5 @@ acceptance criteria.
 - [SPEC-003: Failure Outcomes and Containment](spec-003-failure-outcomes-and-containment.md)
 - [SPEC-004: Capability Contribution and Resolution](spec-004-capability-contribution-and-resolution.md)
 - [GiftUI MVP Specification Portfolio](../roadmap/MVP_SPECIFICATION_PORTFOLIO.md)
-- [GiftUI MVP Scope](../MVP_SCOPE.md)
+- [GiftUI MVP Scope](../iterations/iteration-001-mvp.md)
 - [`Package.swift`](../../Package.swift) and existing text/font sources and tests — proof-of-concept evidence only

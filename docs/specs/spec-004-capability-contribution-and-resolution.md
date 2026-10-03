@@ -156,7 +156,7 @@ backend, display, runtime, or board integrations that supply those seams.
 - ADR-010 owns the synchronous one-shot operation handoff and borrowed-stream
   lifetime that `rasterPresentation` checks for compatibility.
 - The four MVP configurations and the Signal Analyzer render vocabulary in
-  `docs/MVP_SCOPE.md` bound the catalogue and fixture set.
+  `docs/iterations/iteration-001-mvp.md` bound the catalogue and fixture set.
 - SPIKE-001 and SPIKE-002 are feasibility evidence only. They do not define
   production types, storage layouts, or budgets.
 
@@ -1302,6 +1302,6 @@ criteria.
 - [SPEC-002: Portable Foundation Specification](spec-002-portable-foundation.md)
 - [SPEC-003: Failure Outcomes and Containment](spec-003-failure-outcomes-and-containment.md)
 - [GiftUI MVP Specification Portfolio](../roadmap/MVP_SPECIFICATION_PORTFOLIO.md)
-- [GiftUI MVP Scope](../MVP_SCOPE.md)
+- [GiftUI MVP Scope](../iterations/iteration-001-mvp.md)
 - [SPIKE-001: Tiled One-Shot Stream and Capability Compatibility Fixtures](../spikes/spike-001-tiled-one-shot-capability-fixtures.md)
 - [SPIKE-002: nRF52840 Capability Path Resource Evidence](../spikes/spike-002-nrf52840-capability-path-resource-evidence.md)

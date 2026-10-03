@@ -147,4 +147,4 @@ Specification nor authorizes implementation.
 - [ADR-024: Structurally Owned Observable Reference State](../adrs/adr-024-structurally-owned-observable-reference-state.md)
 - [ADR-025: Coarse Model-Owned Observable Invalidation](../adrs/adr-025-coarse-model-owned-observable-invalidation.md)
 - [ADR-026: Profile-Equivalent Bounded Observable State Realization](../adrs/adr-026-profile-equivalent-bounded-observable-state.md)
-- [GiftUI MVP Scope](../MVP_SCOPE.md)
+- [GiftUI MVP Scope](../iterations/iteration-001-mvp.md)

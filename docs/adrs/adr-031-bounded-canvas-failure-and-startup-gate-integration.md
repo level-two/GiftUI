@@ -176,5 +176,5 @@ derivation effects.
 - [ADR-014: Bounded Cross-Layer Outcome Meaning](adr-014-bounded-cross-layer-outcomes.md)
 - [ADR-020: Composite Raster Presentation Capability](adr-020-raster-presentation-capability.md)
 - [SPIKE-004: Canvas Path Plan Feasibility](../spikes/spike-004-canvas-path-plan-feasibility.md)
-- [GiftUI MVP Scope](../MVP_SCOPE.md)
+- [GiftUI MVP Scope](../iterations/iteration-001-mvp.md)
 - [GiftUI Principles](../PRINCIPLES.md)

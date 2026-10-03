@@ -182,7 +182,7 @@ state, and failure behavior MUST still be explicitly bounded and deterministic.
 
 ## Constraints
 
-- MVP capability work is limited by PROPOSAL-004 and `docs/MVP_SCOPE.md`.
+- MVP capability work is limited by PROPOSAL-004 and `docs/iterations/iteration-001-mvp.md`.
 - All four claimed configurations must still provide the complete required
   Signal Analyzer semantics; a different implementation alone is not
   necessarily a client-visible Capability.
@@ -774,7 +774,7 @@ ADRs for:
 - [RFC-005](rfc-005-failure-diagnostics-propagation.md)
 - [ADR-001](../adrs/adr-001-signal-analyzer-application-boundaries.md)
 - [FW-018: Live Surface Reconfiguration](../future-work/fw-018-live-surface-reconfiguration.md)
-- [GiftUI MVP Scope](../MVP_SCOPE.md)
+- [GiftUI MVP Scope](../iterations/iteration-001-mvp.md)
 - [GiftUI Vision](../VISION.md)
 - [GiftUI Principles](../PRINCIPLES.md)
 - [GiftUI Framework Proof-of-Concept Specification](../engineering/POC_HISTORICAL_BASELINE.md) — legacy evidence only

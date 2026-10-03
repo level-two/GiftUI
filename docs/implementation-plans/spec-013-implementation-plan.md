@@ -59,7 +59,7 @@ through [ADR-026](../adrs/adr-026-profile-equivalent-bounded-observable-state.md
 are implementation authority. ADR-013 is superseded history and is not an
 implementation input.
 
-The [MVP Scope](../MVP_SCOPE.md) requires the same portable Signal Analyzer
+The [MVP Scope](../iterations/iteration-001-mvp.md) requires the same portable Signal Analyzer
 Presentation across macOS dynamic, macOS static, Raspberry Pi 1/Linux dynamic,
 and nRF52840 static configurations. SPEC-013 supplies the two finite runtime
 profiles that coordinate the approved focused contracts and prove equivalent

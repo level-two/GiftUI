@@ -93,7 +93,7 @@ SPEC-013 and SPEC-015 are downstream coordination contracts: profile storage,
 target assembly, production capacities, platform selection, and connected
 hardware remain outside this plan.
 
-The [MVP Scope](../MVP_SCOPE.md) requires the same portable Signal Analyzer to
+The [MVP Scope](../iterations/iteration-001-mvp.md) requires the same portable Signal Analyzer to
 render opaque backgrounds, exact positioned labels, and grid/trace strokes on
 macOS dynamic, macOS static, Raspberry Pi 1/Linux with PiScreen, and nRF52840
 with a TFT. Those configurations require materially different full-surface and

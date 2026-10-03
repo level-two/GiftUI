@@ -165,5 +165,5 @@ API spelling, generation layout, capacities, or assembled application costs.
 - [PROPOSAL-005: Observable Reference State](../proposals/proposal-005-observable-reference-state.md)
 - [SPIKE-003: Portable Observable Reference State Feasibility](../spikes/spike-003-portable-observable-reference-state-feasibility.md)
 - [ADR-006: Shared Semantics Across Runtime Profiles](adr-006-shared-semantics-runtime-profiles.md)
-- [GiftUI MVP Scope](../MVP_SCOPE.md)
+- [GiftUI MVP Scope](../iterations/iteration-001-mvp.md)
 - [GiftUI Principles](../PRINCIPLES.md)

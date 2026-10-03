@@ -98,7 +98,7 @@ GiftUI framework and architecture terminology is defined separately in the
   backend, runtime-profile, performance, resource, or compatibility choices.
 
 **MVP scope**
-: The established product boundary in `docs/MVP_SCOPE.md`. It governs what is
+: The established product boundary in `docs/iterations/iteration-001-mvp.md`. It governs what is
   necessary for the MVP and how MVP completion is judged, but does not select
   architecture or replace lifecycle approvals.
 

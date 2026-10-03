@@ -296,5 +296,5 @@ reinterpret an old coordinate or action against a different presentation.
 - [ADR-025: Coarse Model-Owned Observable Invalidation](adr-025-coarse-model-owned-observable-invalidation.md)
 - [ADR-026: Profile-Equivalent Bounded Observable State Realization](adr-026-profile-equivalent-bounded-observable-state.md)
 - [SPIKE-007: Static Action Storage Feasibility](../spikes/spike-007-static-action-storage-feasibility.md)
-- [GiftUI MVP Scope](../MVP_SCOPE.md)
+- [GiftUI MVP Scope](../iterations/iteration-001-mvp.md)
 - [GiftUI Principles](../PRINCIPLES.md)

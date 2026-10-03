@@ -76,7 +76,7 @@ must remain parallel to, and absent from, the normalized render stream. Approved
 the semantic and operation surfaces for Canvas/strokes and is not scheduled as
 SPEC-008 work.
 
-The [MVP Scope](../MVP_SCOPE.md) requires one substantially shared Signal
+The [MVP Scope](../iterations/iteration-001-mvp.md) requires one substantially shared Signal
 Analyzer Presentation with bounded text, opaque foreground and rectangular
 background styling, deterministic positioned text, clipping, and shared
 render semantics across macOS dynamic, macOS static, Raspberry Pi 1/Linux

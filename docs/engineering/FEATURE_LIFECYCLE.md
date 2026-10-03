@@ -7,7 +7,7 @@ repository.
 
 Related rules:
 
-- [MVP Scope](../MVP_SCOPE.md)
+- [MVP Scope](../iterations/iteration-001-mvp.md)
 - [Documentation Rules](DOCUMENTATION_RULES.md)
 - [Implementation Documentation](IMPLEMENTATION_DOCUMENTATION.md)
 - [AI Agent Rules](AI_AGENT_RULES.md)

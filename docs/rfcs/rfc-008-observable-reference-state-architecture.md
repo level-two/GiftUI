@@ -1349,7 +1349,7 @@ and capacities still required in an approved Specification.
 ## References
 
 - [PROPOSAL-005: Observable Reference State](../proposals/proposal-005-observable-reference-state.md)
-- [GiftUI MVP Scope](../MVP_SCOPE.md)
+- [GiftUI MVP Scope](../iterations/iteration-001-mvp.md)
 - [GiftUI Principles](../PRINCIPLES.md)
 - [MVP Milestones](../roadmap/MVP_MILESTONES.md)
 - [RFC-001: Signal Analyzer Application Architecture](rfc-001-signal-analyzer-application-architecture.md)

@@ -168,5 +168,5 @@ semantic and layout ownership.
 - [ADR-008: Module Dependency Graph and MVP Package Topology](adr-008-module-dependency-graph-and-package-topology.md)
 - [SPEC-006: Declarative View Semantics](../specs/spec-006-declarative-view-semantics.md)
 - [SPEC-007: Proposal-Based Layout](../specs/spec-007-layout.md)
-- [GiftUI MVP Scope](../MVP_SCOPE.md)
+- [GiftUI MVP Scope](../iterations/iteration-001-mvp.md)
 - [GiftUI Principles](../PRINCIPLES.md)

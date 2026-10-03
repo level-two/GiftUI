@@ -247,7 +247,7 @@ evidence.
 - The Signal Analyzer ingests up to 80 transitions per second but presents at
   four frames per second; invalidations may therefore be coalesced.
 - MVP rendering is limited to opaque RGB colors, text, backgrounds, and the
-  straight-line waveform drawing surface in `docs/MVP_SCOPE.md`.
+  straight-line waveform drawing surface in `docs/iterations/iteration-001-mvp.md`.
 - Hardware scrolling, readback, shadows, alpha compositing, images, advanced
   paths, and native-widget projection are not MVP implementation requirements.
 - Existing source compatibility is desirable but secondary to accepted
@@ -1361,7 +1361,7 @@ active MVP decision and remains deferred through RFC-007 and FW-009.
 - [FW-005: Alternative Geometry Scalar Representations](../future-work/fw-005-alternative-geometry-scalars.md)
 - [FW-016: Post-MVP Package and Distribution Topology](../future-work/fw-016-post-mvp-package-distribution-topology.md)
 - [FW-017: Public Binding Abstraction](../future-work/fw-017-public-binding-abstraction.md)
-- [GiftUI MVP Scope](../MVP_SCOPE.md)
+- [GiftUI MVP Scope](../iterations/iteration-001-mvp.md)
 - [GiftUI Vision](../VISION.md)
 - [GiftUI Principles](../PRINCIPLES.md)
 - [GiftUI Framework Proof-of-Concept Specification](../engineering/POC_HISTORICAL_BASELINE.md)

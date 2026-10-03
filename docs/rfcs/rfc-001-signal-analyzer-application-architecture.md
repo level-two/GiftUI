@@ -108,7 +108,7 @@ are extracted into ADRs or converted into a governed Specification.
 
 [PROPOSAL-002](../proposals/proposal-002-signal-analyzer-reference-application.md)
 accepts the Signal Analyzer as the coherent application-level workload used to
-validate GiftUI. [The MVP scope](../MVP_SCOPE.md) requires a substantially
+validate GiftUI. [The MVP scope](../iterations/iteration-001-mvp.md) requires a substantially
 shared presentation on macOS dynamic and static configurations, Raspberry
 Pi/Linux with framebuffer output, and nRF52840 with a TFT display.
 
@@ -315,7 +315,7 @@ window button is disabled. Waveform views receive capture values and a visible
 range; they have no acquisition or source lifecycle knowledge.
 
 The client-facing GiftUI surface is the Rank 0–2 and waveform-drawing surface
-already established by `docs/MVP_SCOPE.md`. This RFC does not redefine that
+already established by `docs/iterations/iteration-001-mvp.md`. This RFC does not redefine that
 surface. Missing GiftUI contracts must be supplied by their own approved
 Specifications before the analyzer Specification can depend on them.
 
@@ -618,7 +618,7 @@ GiftUI's distinct mutation domain.
 - [RFC-008: Observable Reference State Architecture](rfc-008-observable-reference-state-architecture.md)
 - [ADR-002: Serialized Synchronous Acquisition Delivery](../adrs/adr-002-serialized-synchronous-acquisition-delivery.md)
 - [ADR-027: Bounded Presentation-Fact Admission](../adrs/adr-027-bounded-presentation-fact-admission.md)
-- [GiftUI MVP Scope](../MVP_SCOPE.md)
+- [GiftUI MVP Scope](../iterations/iteration-001-mvp.md)
 - [GiftUI Vision](../VISION.md)
 - [GiftUI Principles](../PRINCIPLES.md)
 - [Feature Lifecycle](../engineering/FEATURE_LIFECYCLE.md)

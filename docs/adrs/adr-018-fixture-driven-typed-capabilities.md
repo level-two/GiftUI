@@ -119,4 +119,4 @@ storage are unnecessary for closed MVP stacks.
 
 - [RFC-006: GiftUI Capability System Architecture](../rfcs/rfc-006-capability-system-architecture.md)
 - [PROPOSAL-004: GiftUI Capability System](../proposals/proposal-004-capability-system.md)
-- [GiftUI MVP Scope](../MVP_SCOPE.md)
+- [GiftUI MVP Scope](../iterations/iteration-001-mvp.md)

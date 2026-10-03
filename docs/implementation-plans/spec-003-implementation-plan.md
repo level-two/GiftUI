@@ -39,7 +39,7 @@ approved [RFC-002](../rfcs/rfc-002-giftui-mvp-layered-architecture.md) and
 [ADR-015](../adrs/adr-015-layered-failure-disposition.md), and
 [ADR-016](../adrs/adr-016-non-authoritative-diagnostics.md).
 
-The [MVP Scope](../MVP_SCOPE.md) requires one substantially shared Signal
+The [MVP Scope](../iterations/iteration-001-mvp.md) requires one substantially shared Signal
 Analyzer presentation across macOS dynamic, macOS static, Raspberry Pi 1/Linux
 dynamic, and nRF52840 static configurations. Those stacks require equivalent,
 bounded failure meaning without exceptions, heap-backed error objects,

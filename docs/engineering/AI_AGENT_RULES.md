@@ -14,7 +14,7 @@ Before drafting or implementing major feature work:
 
 1. read [Feature Lifecycle](FEATURE_LIFECYCLE.md) and
    [Documentation Rules](DOCUMENTATION_RULES.md);
-2. read [GiftUI MVP Scope](../MVP_SCOPE.md), `docs/VISION.md`, and
+2. read [GiftUI MVP Scope](../iterations/iteration-001-mvp.md), `docs/VISION.md`, and
    `docs/PRINCIPLES.md`;
 3. inspect [the feature manifest](../features.yaml);
 4. locate the feature's linked Proposal, RFCs, accepted ADRs, approved

@@ -57,7 +57,7 @@ affected SPEC-007 work now waits only for the authorized implementation. This
 plan consumes those contracts without duplicating their owners or changing
 their acceptance criteria.
 
-The [MVP Scope](../MVP_SCOPE.md) requires the substantially shared Signal
+The [MVP Scope](../iterations/iteration-001-mvp.md) requires the substantially shared Signal
 Analyzer Presentation to express vertical, horizontal, and overlay layout,
 flexible space, explicit spacing and alignment, padding, fixed/constrained/
 expanding frames, and deterministic text geometry across macOS dynamic,

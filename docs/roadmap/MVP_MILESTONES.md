@@ -8,7 +8,7 @@
 
 ## Purpose
 
-This roadmap orders the work required by the [GiftUI MVP Scope](../MVP_SCOPE.md). The scope remains authoritative for what belongs in MVP and for MVP exit decisions; this document answers when that work should happen and what architectural subsystem each milestone should prove.
+This roadmap orders the work required by the [GiftUI MVP Scope](../iterations/iteration-001-mvp.md). The scope remains authoritative for what belongs in MVP and for MVP exit decisions; this document answers when that work should happen and what architectural subsystem each milestone should prove.
 
 The ordering follows one guiding principle:
 
@@ -77,7 +77,7 @@ This baseline should be preserved as non-authoritative migration input. Existing
 
 **Why here:** Client-feature work and migration need a stable destination. Without accepted boundaries, reuse decisions would allow the PoC to define the architecture implicitly.
 
-**Scope trace:** [Architecture Scope](../MVP_SCOPE.md#architecture-scope), [Backend Scope](../MVP_SCOPE.md#backend-scope), and [Static and Dynamic Configuration Scope](../MVP_SCOPE.md#static-and-dynamic-configuration-scope).
+**Scope trace:** [Architecture Scope](../iterations/iteration-001-mvp.md#architecture-scope), [Backend Scope](../iterations/iteration-001-mvp.md#backend-scope), and [Static and Dynamic Configuration Scope](../iterations/iteration-001-mvp.md#static-and-dynamic-configuration-scope).
 
 ### M2 — Capability and Foundation Infrastructure
 
@@ -91,7 +91,7 @@ This baseline should be preserved as non-authoritative migration input. Existing
 
 **Why here:** The client surface should grow on the intended runtime, backend, capability, and validation rails rather than creating another temporary parallel stack.
 
-**Scope trace:** [Capability System Scope](../MVP_SCOPE.md#capability-system-scope), [Backend Scope](../MVP_SCOPE.md#backend-scope), and [Static and Dynamic Configuration Scope](../MVP_SCOPE.md#static-and-dynamic-configuration-scope).
+**Scope trace:** [Capability System Scope](../iterations/iteration-001-mvp.md#capability-system-scope), [Backend Scope](../iterations/iteration-001-mvp.md#backend-scope), and [Static and Dynamic Configuration Scope](../iterations/iteration-001-mvp.md#static-and-dynamic-configuration-scope).
 
 ### M3 — PoC Disposition and Migration
 
@@ -111,7 +111,7 @@ This baseline should be preserved as non-authoritative migration input. Existing
 
 **Why here:** This creates one coherent foundation for subsequent work, captures the value already present in the repository, and avoids maintaining old and new rails longer than necessary.
 
-**Scope trace:** The migration is justified by the need to preserve a common application model across the [MVP Outcome](../MVP_SCOPE.md#mvp-outcome) and by the anti-leakage requirements in [Architecture Scope](../MVP_SCOPE.md#architecture-scope).
+**Scope trace:** The migration is justified by the need to preserve a common application model across the [MVP Outcome](../iterations/iteration-001-mvp.md#mvp-outcome) and by the anti-leakage requirements in [Architecture Scope](../iterations/iteration-001-mvp.md#architecture-scope).
 
 ### M4 — Declarative Composition Foundation
 
@@ -121,7 +121,7 @@ This baseline should be preserved as non-authoritative migration input. Existing
 
 **Why here:** Every later layout, rendering, state, and input feature depends on a stable composition model. Modifier chaining is included here because layout and rendering modifiers must share a coherent transformation pipeline.
 
-**Scope trace:** [Rank 0 — Declarative View Model](../MVP_SCOPE.md#rank-0--declarative-view-model).
+**Scope trace:** [Rank 0 — Declarative View Model](../iterations/iteration-001-mvp.md#rank-0--declarative-view-model).
 
 ### M5 — Layout Language
 
@@ -131,7 +131,7 @@ This baseline should be preserved as non-authoritative migration input. Existing
 
 **Why here:** This is the highest-leverage expansion of client expressiveness. It enables complete screen structure before GiftUI accumulates specialized widgets or drawing APIs.
 
-**Scope trace:** [Rank 1 — Layout](../MVP_SCOPE.md#rank-1--layout).
+**Scope trace:** [Rank 1 — Layout](../iterations/iteration-001-mvp.md#rank-1--layout).
 
 ### M6 — Composed Rendering
 
@@ -141,7 +141,7 @@ This baseline should be preserved as non-authoritative migration input. Existing
 
 **Why here:** The Signal Analyzer needs a usable visual vocabulary, but the MVP does not need speculative shapes, effects, alpha compositing, or a general styling system.
 
-**Scope trace:** Rendering entries in [Rank 2 — Rendering, Interaction, and State](../MVP_SCOPE.md#rank-2--rendering-interaction-and-state).
+**Scope trace:** Rendering entries in [Rank 2 — Rendering, Interaction, and State](../iterations/iteration-001-mvp.md#rank-2--rendering-interaction-and-state).
 
 ### M7 — Observable State and Input
 
@@ -151,7 +151,7 @@ This baseline should be preserved as non-authoritative migration input. Existing
 
 **Why here:** State propagation should be demonstrated before controls become more complex. The scoped Button surface then proves the complete one-way update and event loop without introducing binding ownership or richer controls that the MVP does not require.
 
-**Scope trace:** State and interaction entries in [Rank 2 — Rendering, Interaction, and State](../MVP_SCOPE.md#rank-2--rendering-interaction-and-state) and the [State and Data Boundary](../MVP_SCOPE.md#state-and-data-boundary).
+**Scope trace:** State and interaction entries in [Rank 2 — Rendering, Interaction, and State](../iterations/iteration-001-mvp.md#rank-2--rendering-interaction-and-state) and the [State and Data Boundary](../iterations/iteration-001-mvp.md#state-and-data-boundary).
 
 ### M8 — Core Signal Analyzer Vertical Slice
 
@@ -176,7 +176,7 @@ measurements; those remain target-specific validation work.
 
 **Why here:** A cross-stack vertical slice exposes abstraction leaks before the custom-drawing contract adds backend complexity.
 
-**Scope trace:** [MVP Outcome](../MVP_SCOPE.md#mvp-outcome), [Backend Scope](../MVP_SCOPE.md#backend-scope), and [Static and Dynamic Configuration Scope](../MVP_SCOPE.md#static-and-dynamic-configuration-scope).
+**Scope trace:** [MVP Outcome](../iterations/iteration-001-mvp.md#mvp-outcome), [Backend Scope](../iterations/iteration-001-mvp.md#backend-scope), and [Static and Dynamic Configuration Scope](../iterations/iteration-001-mvp.md#static-and-dynamic-configuration-scope).
 
 ### M9 — Analyzer Drawing Surface
 
@@ -186,7 +186,7 @@ measurements; those remain target-specific validation work.
 
 **Why here:** Custom drawing is essential to the reference application but less broadly foundational than composition, layout, rendering, state, and input. Implementing it after the core vertical slice prevents it from becoming the architecture around which ordinary views are designed.
 
-**Scope trace:** [Waveform Drawing Scope](../MVP_SCOPE.md#waveform-drawing-scope).
+**Scope trace:** [Waveform Drawing Scope](../iterations/iteration-001-mvp.md#waveform-drawing-scope).
 
 ### M10 — Complete Signal Analyzer and MVP Validation
 
@@ -201,7 +201,7 @@ measurements; those remain target-specific validation work.
 3. Raspberry Pi/Linux dynamic with framebuffer rendering and PiScreen;
 4. nRF52840 static with a TFT display.
 
-**Completion gate:** Every criterion in [MVP Exit Criteria](../MVP_SCOPE.md#mvp-exit-criteria) must have real execution evidence. Builds, host tests, and simulators do not substitute for required connected-hardware validation.
+**Completion gate:** Every criterion in [MVP Exit Criteria](../iterations/iteration-001-mvp.md#mvp-exit-criteria) must have real execution evidence. Builds, host tests, and simulators do not substitute for required connected-hardware validation.
 
 ## Deferred Client Priorities
 

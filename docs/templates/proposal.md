@@ -35,7 +35,7 @@ Describe the current problem without prescribing architecture.
 ## Motivation
 
 Explain why GiftUI should address it now. For MVP work, identify the concrete
-reference-application or stack-validation requirement from `MVP_SCOPE.md`.
+reference-application or stack-validation requirement from `ITERATION-001`.
 
 ## Users / Use Cases
 
@@ -79,5 +79,5 @@ Proposal. State why each item is outside this Proposal's current scope.
 
 - [GiftUI Vision](../VISION.md)
 - [GiftUI Principles](../PRINCIPLES.md)
-- [GiftUI MVP Scope](../MVP_SCOPE.md)
+- [GiftUI MVP Scope](../iterations/iteration-001-mvp.md)
 - Relevant legacy source or evidence, if any.

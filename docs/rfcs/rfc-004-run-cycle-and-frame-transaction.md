@@ -939,7 +939,7 @@ This approved RFC is recorded by accepted ADRs for:
 - [FW-010: Backend and Transport Post-Handoff Recovery](../future-work/fw-010-backend-transport-submission-retry.md)
 - [FW-011: Handoff-Refusal Frame Rescheduling](../future-work/fw-011-failed-frame-rescheduling.md)
 - [FW-014: Replayable Operation Delivery for Future Raster Strategies](../future-work/fw-014-replayable-operation-delivery.md)
-- [GiftUI MVP Scope](../MVP_SCOPE.md)
+- [GiftUI MVP Scope](../iterations/iteration-001-mvp.md)
 - [GiftUI Vision](../VISION.md)
 - [GiftUI Principles](../PRINCIPLES.md)
 - [GiftUI Framework Proof-of-Concept Specification](../engineering/POC_HISTORICAL_BASELINE.md) — legacy evidence only

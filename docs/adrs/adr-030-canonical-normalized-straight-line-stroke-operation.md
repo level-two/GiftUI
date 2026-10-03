@@ -163,5 +163,5 @@ bounds an additional clip source.
 - [ADR-010: Synchronous One-Shot Frame Handoff](adr-010-synchronous-one-shot-frame-handoff.md)
 - [ADR-020: Composite Raster Presentation Capability](adr-020-raster-presentation-capability.md)
 - [SPIKE-004: Canvas Path Plan Feasibility](../spikes/spike-004-canvas-path-plan-feasibility.md)
-- [GiftUI MVP Scope](../MVP_SCOPE.md)
+- [GiftUI MVP Scope](../iterations/iteration-001-mvp.md)
 - [GiftUI Principles](../PRINCIPLES.md)

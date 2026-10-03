@@ -547,4 +547,4 @@ validation decisions.
 - [SPEC-010: Observable Reference State Contract](../specs/spec-010-observable-reference-state.md)
 - [SPEC-011: Button Interaction and Activation Contract](../specs/spec-011-interaction.md)
 - [SPIKE-007: Static Action Storage Feasibility](../spikes/spike-007-static-action-storage-feasibility.md)
-- [GiftUI MVP Scope](../MVP_SCOPE.md)
+- [GiftUI MVP Scope](../iterations/iteration-001-mvp.md)

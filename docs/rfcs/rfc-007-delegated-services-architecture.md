@@ -255,5 +255,5 @@ representation at that time.
 - [RFC-006](rfc-006-capability-system-architecture.md)
 - [FW-009](../future-work/fw-009-shared-delegated-service-foundation.md)
 - [ADR-001](../adrs/adr-001-signal-analyzer-application-boundaries.md)
-- [GiftUI MVP Scope](../MVP_SCOPE.md)
+- [GiftUI MVP Scope](../iterations/iteration-001-mvp.md)
 - [GiftUI Principles](../PRINCIPLES.md)

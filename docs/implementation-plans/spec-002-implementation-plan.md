@@ -38,7 +38,7 @@ approved [RFC-002](../rfcs/rfc-002-giftui-mvp-layered-architecture.md),
 [ADR-009](../adrs/adr-009-checked-integer-geometry.md), and
 [ADR-033](../adrs/adr-033-bounded-application-actions-and-model-target-dispatch.md).
 
-The [MVP Scope](../MVP_SCOPE.md) requires one substantially shared Signal
+The [MVP Scope](../iterations/iteration-001-mvp.md) requires one substantially shared Signal
 Analyzer presentation across macOS dynamic, macOS static, Raspberry Pi 1/Linux
 dynamic, and nRF52840 static configurations. Those stacks require identical
 portable geometry and input-value meaning without importing target mechanics.
@@ -113,7 +113,7 @@ survives.
 
 | Disposition | Active-tree material | Rule |
 | --- | --- | --- |
-| Preserve | `docs/MVP_SCOPE.md`, vision/principles, governed lifecycle artifacts, `docs/features.yaml`, engineering governance, `.agents/`, and repository skills | Current authority or current process infrastructure |
+| Preserve | `docs/iterations/iteration-001-mvp.md`, vision/principles, governed lifecycle artifacts, `docs/features.yaml`, engineering governance, `.agents/`, and repository skills | Current authority or current process infrastructure |
 | Preserve | `demo/SignalAnalyzer/`, `docs/spikes/`, and `experiments/` | Post-PoC MVP application or governed evidence |
 | Preserve after audit | Toolchain pins, setup/environment/common/doctor scripts, Raspberry Pi probe package, nRF52840 `probe` application, generic build and artifact/ELF inspection mechanics, and ignored `.toolchains/` state | Reusable environment capability with no old product, module, API, or application assumption |
 | Rewrite | Root `Package.swift`, root `README.md`, environment summary text, build/deploy defaults, and retained script examples | The file has reusable mechanics but its active meaning is PoC-coupled |

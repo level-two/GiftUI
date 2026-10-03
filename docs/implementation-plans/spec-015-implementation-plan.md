@@ -103,7 +103,7 @@ approved [RFC-001](../rfcs/rfc-001-signal-analyzer-application-architecture.md),
 ADR listed by SPEC-015. The complete ADR list remains authoritative and is not
 duplicated here as a substitute for the Specification metadata.
 
-The [MVP Scope](../MVP_SCOPE.md) requires one substantially shared Signal
+The [MVP Scope](../iterations/iteration-001-mvp.md) requires one substantially shared Signal
 Analyzer Presentation to run through macOS dynamic, macOS static, Raspberry
 Pi 1/Linux dynamic with framebuffer and PiScreen, and nRF52840 static with a
 TFT display. SPEC-015 is the stack-validation join that proves the approved

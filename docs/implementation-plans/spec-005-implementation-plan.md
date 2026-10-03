@@ -55,7 +55,7 @@ returns only its local validation vocabulary. Layout, positioned-glyph
 rendering, backend integration, and production host composition remain owned
 by SPEC-007, SPEC-008, SPEC-014, and SPEC-015 respectively.
 
-The [MVP Scope](../MVP_SCOPE.md) and approved
+The [MVP Scope](../iterations/iteration-001-mvp.md) and approved
 [SPEC-001](../specs/spec-001-signal-analyzer-reference-application.md) require
 deterministic titles, subtitles, channel names, levels, status, controls,
 visible-window values, and bounded error text in one substantially shared

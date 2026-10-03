@@ -207,7 +207,7 @@ conformance gates.
 ## References
 
 - [PROPOSAL-001: GiftUI MVP Baseline Charter](proposal-001-giftui-mvp-baseline-charter.md)
-- [GiftUI MVP Scope](../MVP_SCOPE.md)
+- [GiftUI MVP Scope](../iterations/iteration-001-mvp.md)
 - [MVP Milestones](../roadmap/MVP_MILESTONES.md)
 - [GiftUI Vision](../VISION.md)
 - [GiftUI Principles](../PRINCIPLES.md)

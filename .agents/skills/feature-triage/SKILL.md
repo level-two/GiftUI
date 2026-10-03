@@ -20,7 +20,7 @@ feature.
 1. `docs/engineering/FEATURE_LIFECYCLE.md`
 2. `docs/engineering/DOCUMENTATION_RULES.md`
 3. `docs/engineering/AI_AGENT_RULES.md`
-4. `docs/MVP_SCOPE.md`, `docs/VISION.md`, and `docs/PRINCIPLES.md`
+4. `docs/iterations/iteration-001-mvp.md`, `docs/VISION.md`, and `docs/PRINCIPLES.md`
 5. `docs/features.yaml`
 6. Linked lifecycle and deferred-track artifacts and affected architecture
    documents as needed.

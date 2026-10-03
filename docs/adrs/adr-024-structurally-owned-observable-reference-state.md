@@ -160,5 +160,5 @@ making external side effects dependent on an uncommitted hierarchy.
 - [RFC-008: Observable Reference State Architecture](../rfcs/rfc-008-observable-reference-state-architecture.md)
 - [PROPOSAL-005: Observable Reference State](../proposals/proposal-005-observable-reference-state.md)
 - [SPIKE-003: Portable Observable Reference State Feasibility](../spikes/spike-003-portable-observable-reference-state-feasibility.md)
-- [GiftUI MVP Scope](../MVP_SCOPE.md)
+- [GiftUI MVP Scope](../iterations/iteration-001-mvp.md)
 - [GiftUI Principles](../PRINCIPLES.md)

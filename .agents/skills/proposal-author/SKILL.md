@@ -20,7 +20,7 @@ who benefits, desired outcomes, and explicit boundaries.
 
 Read `docs/engineering/FEATURE_LIFECYCLE.md`,
 `docs/engineering/DOCUMENTATION_RULES.md`, `docs/features.yaml`,
-`docs/VISION.md`, `docs/PRINCIPLES.md`, `docs/MVP_SCOPE.md`, and
+`docs/VISION.md`, `docs/PRINCIPLES.md`, `docs/iterations/iteration-001-mvp.md`, and
 `docs/templates/proposal.md`. Read related legacy sources only as provenance.
 
 ## Allowed Decisions

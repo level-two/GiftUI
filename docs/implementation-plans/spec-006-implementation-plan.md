@@ -60,7 +60,7 @@ owns `_GiftUIObservableStateHost`, its lexical declaration visitor, macro, and
 binding failures. This plan implements only SPEC-006's traversal position and
 integrates with those declarations after they exist.
 
-The [MVP Scope](../MVP_SCOPE.md) requires non-trivial Signal Analyzer
+The [MVP Scope](../iterations/iteration-001-mvp.md) requires non-trivial Signal Analyzer
 hierarchies, reusable custom views, fixed child composition, and modifier
 chaining in one portable Presentation across macOS dynamic, macOS static,
 Raspberry Pi 1/Linux dynamic, and nRF52840 static configurations. SPEC-006 is

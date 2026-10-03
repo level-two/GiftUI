@@ -208,7 +208,7 @@ currently lack a concrete MVP requirement.
 
 ## References
 
-- [GiftUI MVP Scope](../MVP_SCOPE.md)
+- [GiftUI MVP Scope](../iterations/iteration-001-mvp.md)
 - [GiftUI Vision](../VISION.md)
 - [GiftUI Principles](../PRINCIPLES.md)
 - [PROPOSAL-002: Signal Analyzer Reference Application](proposal-002-signal-analyzer-reference-application.md)

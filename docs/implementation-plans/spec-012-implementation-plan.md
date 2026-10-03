@@ -58,7 +58,7 @@ and host configuration, SPEC-013 owns dynamic/static profile storage and
 generation, and SPEC-014 owns concrete backend and raster integration. This
 plan consumes those contracts without duplicating their owners.
 
-The [MVP Scope](../MVP_SCOPE.md) requires the substantially shared Signal
+The [MVP Scope](../iterations/iteration-001-mvp.md) requires the substantially shared Signal
 Analyzer presentation to draw its time grid and four data-driven digital
 traces on macOS dynamic, macOS static, Raspberry Pi 1/Linux dynamic, and
 nRF52840 static configurations. SPEC-012 supplies the minimal portable

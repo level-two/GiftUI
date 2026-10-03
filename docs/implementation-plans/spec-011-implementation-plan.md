@@ -82,7 +82,7 @@ immutable handler/root-target assembly, and connected integrations. This plan
 implements SPEC-011-owned behavior at those seams without duplicating the
 application or host owners.
 
-The [MVP Scope](../MVP_SCOPE.md) requires the substantially shared Signal
+The [MVP Scope](../iterations/iteration-001-mvp.md) requires the substantially shared Signal
 Analyzer Presentation to provide Start, Stop, Clear, and three visible-window
 controls, enforce their disabled states, and preserve observable updates across
 macOS dynamic, macOS static, Raspberry Pi 1 ARMv6, and nRF52840 static

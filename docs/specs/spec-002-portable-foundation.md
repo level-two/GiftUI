@@ -139,7 +139,7 @@ meaning MUST hold in all four configurations.
   [ADR-009](../adrs/adr-009-checked-integer-geometry.md), plus
   [ADR-033](../adrs/adr-033-bounded-application-actions-and-model-target-dispatch.md), are
   accepted.
-- The [MVP Scope](../MVP_SCOPE.md) requires one substantially shared portable
+- The [MVP Scope](../iterations/iteration-001-mvp.md) requires one substantially shared portable
   Signal Analyzer presentation across the four supported configurations. This
   foundation is necessary now because those configurations must share values
   and semantics without importing target mechanics.
@@ -867,7 +867,7 @@ MUST return to RFC/ADR review.
 - [ADR-033: Bounded Application Actions and Model-Target Dispatch](../adrs/adr-033-bounded-application-actions-and-model-target-dispatch.md)
 - [SPEC-003: Failure Outcomes and Containment](spec-003-failure-outcomes-and-containment.md)
 - [SPEC-004: Capability Contribution and Resolution](spec-004-capability-contribution-and-resolution.md)
-- [GiftUI MVP Scope](../MVP_SCOPE.md)
+- [GiftUI MVP Scope](../iterations/iteration-001-mvp.md)
 - [GiftUI MVP Specification Portfolio](../roadmap/MVP_SPECIFICATION_PORTFOLIO.md)
 - [GiftUI Principles](../PRINCIPLES.md)
 - [GiftUI Project Glossary](../GLOSSARY.md)

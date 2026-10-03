@@ -851,6 +851,6 @@ geometry model is architectural or post-MVP work and must not be decided here.
 - [RFC-010](../rfcs/rfc-010-layout-semantic-core-adapter-boundary.md)
 - [ADR-032](../adrs/adr-032-semantic-core-owned-layout-input.md)
 - [ADR-008](../adrs/adr-008-module-dependency-graph-and-package-topology.md)
-- [MVP Scope](../MVP_SCOPE.md)
+- [MVP Scope](../iterations/iteration-001-mvp.md)
 - [MVP Specification Portfolio](../roadmap/MVP_SPECIFICATION_PORTFOLIO.md)
 - [Legacy GiftUI Framework Specification](../engineering/POC_HISTORICAL_BASELINE.md)

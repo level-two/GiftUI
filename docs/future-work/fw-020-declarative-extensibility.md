@@ -80,4 +80,4 @@ architecture.
 
 - [SPEC-006: Declarative View Semantics Specification](../specs/spec-006-declarative-view-semantics.md)
 - [FW-017: Public Binding Abstraction](fw-017-public-binding-abstraction.md)
-- [GiftUI MVP Scope](../MVP_SCOPE.md)
+- [GiftUI MVP Scope](../iterations/iteration-001-mvp.md)

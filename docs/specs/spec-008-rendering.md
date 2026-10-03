@@ -1206,6 +1206,6 @@ and its accepted ADRs; they are not silently added here.
 - [ADR-022](../adrs/adr-022-positioned-glyph-render-operation.md)
 - [ADR-023](../adrs/adr-023-exact-font-resource-identity.md)
 - [ADR-032](../adrs/adr-032-semantic-core-owned-layout-input.md)
-- [MVP Scope](../MVP_SCOPE.md)
+- [MVP Scope](../iterations/iteration-001-mvp.md)
 - [MVP Specification Portfolio](../roadmap/MVP_SPECIFICATION_PORTFOLIO.md)
 - [Legacy GiftUI Framework Specification](../engineering/POC_HISTORICAL_BASELINE.md)

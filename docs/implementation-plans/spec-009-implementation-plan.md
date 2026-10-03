@@ -57,7 +57,7 @@ layout and hit geometry; and approved
 the one-attempt operation-sink lifetime. This plan consumes those contracts
 without duplicating their declarations or implementations.
 
-The [MVP Scope](../MVP_SCOPE.md) requires the substantially shared Signal
+The [MVP Scope](../iterations/iteration-001-mvp.md) requires the substantially shared Signal
 Analyzer to accept up to 80 state changes per second while presenting at a
 nominal four frames per second across macOS dynamic, macOS static, Raspberry
 Pi 1 ARMv6 dynamic, and nRF52840 static configurations. SPEC-009 supplies the

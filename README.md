@@ -118,7 +118,7 @@ build, deploy, and flash workflows and their safety constraints.
 Major features follow the gated Proposal → RFC → ADR → Specification →
 Implementation Plan → Conformance lifecycle. Start with:
 
-- [MVP scope](docs/MVP_SCOPE.md)
+- [MVP scope](docs/iterations/iteration-001-mvp.md)
 - [numbered iteration scopes](docs/iterations/README.md)
 - [feature lifecycle](docs/engineering/FEATURE_LIFECYCLE.md)
 - [AI agent rules](docs/engineering/AI_AGENT_RULES.md)

@@ -339,7 +339,7 @@ authority to implement or to claim embedded-hardware equivalence.
 ## References
 
 - [GiftUI Proof-of-Concept Historical Baseline](../engineering/POC_HISTORICAL_BASELINE.md)
-- [GiftUI MVP Scope](../MVP_SCOPE.md)
+- [GiftUI MVP Scope](../iterations/iteration-001-mvp.md)
 - [GiftUI Principles](../PRINCIPLES.md)
 - [SPEC-013: Dynamic and Static Runtime Profile Contract](../specs/spec-013-runtime-profiles.md)
 - [SPEC-014: Raster Backend and Display Integration Contract](../specs/spec-014-backend-integration.md)

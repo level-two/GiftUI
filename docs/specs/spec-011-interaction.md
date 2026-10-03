@@ -783,7 +783,7 @@ configuration contracts.
 - [SPEC-010](spec-010-observable-reference-state.md)
 - [SPIKE-007](../spikes/spike-007-static-action-storage-feasibility.md)
 - [FW-021](../future-work/fw-021-scoped-action-domains.md)
-- [GiftUI MVP Scope](../MVP_SCOPE.md)
+- [GiftUI MVP Scope](../iterations/iteration-001-mvp.md)
 - [GiftUI Principles](../PRINCIPLES.md)
 
 ## Deferred and Follow-up Work — iteration closeout
