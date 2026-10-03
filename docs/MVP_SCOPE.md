@@ -1,5 +1,7 @@
 # GiftUI MVP Scope
 
+**Iteration:** [ITERATION-001: GiftUI MVP](iterations/iteration-001-mvp.md)
+
 **Status:** Established MVP product scope
 
 **Authority:** Maintainer-provided boundary for MVP prioritization and exit decisions

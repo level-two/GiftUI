@@ -128,6 +128,65 @@ features.each do |feature_id, entry|
   end
 end
 
+iteration_index = manifest.is_a?(Hash) ? manifest["iterations"] : nil
+errors << "docs/features.yaml: iterations must be a mapping" unless iteration_index.is_a?(Hash)
+iteration_index = {} unless iteration_index.is_a?(Hash)
+iteration_records = {}
+Dir[DOCS.join("iterations", "*.md")].sort.each do |filename|
+  path = Pathname.new(filename)
+  next if path.basename.to_s == "README.md"
+
+  metadata, = front_matter(path, errors)
+  next unless metadata
+  label = path.relative_path_from(ROOT).to_s
+  missing = %w[id title status revision approved_revision created updated features approval closure].reject { |field| metadata.key?(field) }
+  errors << "#{label}: missing #{missing.join(', ')}" unless missing.empty?
+  id = metadata["id"]
+  unless id.is_a?(String) && id.match?(/\AITERATION-\d{3}\z/)
+    errors << "#{label}: invalid iteration ID #{id.inspect}"
+    next
+  end
+  errors << "#{label}: duplicate iteration ID #{id}" if iteration_records.key?(id)
+  iteration_records[id] = label
+  expected_prefix = id.downcase
+  errors << "#{label}: filename must match #{id}" unless path.basename.to_s.match?(/\A#{expected_prefix}-.+\.md\z/)
+  errors << "#{label}: title must be non-empty" unless metadata["title"].is_a?(String) && !metadata["title"].strip.empty?
+  status = metadata["status"]
+  errors << "#{label}: invalid iteration status #{status.inspect}" unless %w[draft approved active closed abandoned].include?(status)
+  revision = metadata["revision"]
+  errors << "#{label}: revision must be a positive integer" unless revision.is_a?(Integer) && revision.positive?
+  if %w[approved active closed].include?(status)
+    errors << "#{label}: approved_revision must match revision" unless metadata["approved_revision"] == revision
+    errors << "#{label}: approval provenance is required" unless metadata["approval"].is_a?(String) && !metadata["approval"].strip.empty?
+  end
+  if %w[closed abandoned].include?(status)
+    errors << "#{label}: closure provenance is required" unless metadata["closure"].is_a?(String) && !metadata["closure"].strip.empty?
+  end
+  %w[created updated].each do |field|
+    value = metadata[field]
+    errors << "#{label}: #{field} must be YYYY-MM-DD" unless value && value.to_s.match?(/\A\d{4}-\d{2}-\d{2}\z/)
+  end
+  members = metadata["features"]
+  unless members.is_a?(Array)
+    errors << "#{label}: features must be an array"
+    next
+  end
+  errors << "#{label}: duplicate feature membership" unless members.uniq == members
+  members.each do |feature_id|
+    errors << "#{label}: unknown feature #{feature_id.inspect}" unless features.key?(feature_id)
+  end
+end
+iteration_records.each do |id, path|
+  errors << "docs/features.yaml: #{id} must register #{path}" unless iteration_index[id] == path
+end
+iteration_index.each do |id, path|
+  errors << "docs/features.yaml: unknown or mismatched iteration #{id.inspect}" unless iteration_records[id] == path && path.is_a?(String)
+end
+iteration_numbers = iteration_records.keys.map { |id| id.delete_prefix("ITERATION-").to_i }.sort
+unless iteration_numbers == (1..iteration_numbers.length).to_a
+  errors << "docs/iterations: IDs must be consecutive from ITERATION-001; retain abandoned records"
+end
+
 ARTIFACTS.each do |directory, rules|
   Dir[DOCS.join(directory, "*.md")].sort.each do |filename|
     path = Pathname.new(filename)
@@ -271,7 +330,7 @@ end
 link_files = []
 link_files.concat(Dir[DOCS.join("{VISION,PRINCIPLES,MVP_SCOPE}.md")])
 link_files.concat(Dir[DOCS.join("engineering", "*.md")])
-link_files.concat(Dir[DOCS.join("{architecture,proposals,rfcs,adrs,specs,roadmap,templates}", "*.md")])
+link_files.concat(Dir[DOCS.join("{architecture,proposals,rfcs,adrs,specs,roadmap,templates,iterations}", "*.md")])
 link_files.each do |filename|
   path = Pathname.new(filename)
   path.read.scan(/\[[^\]]+\]\(([^)]+)\)/).flatten.each do |target|

@@ -25,6 +25,10 @@ Before major feature design or implementation:
 5. Treat draft, proposed, review, legacy, rejected, deprecated, and superseded
    documents as non-authoritative.
 
+For iteration work, read `docs/engineering/ITERATION_SCOPES.md` and the
+governing numbered scope under `docs/iterations/`. MVP is `ITERATION-001`;
+iteration commitments do not replace feature lifecycle approval gates.
+
 Do not infer human approval or change accepted architecture implicitly.
 Preserve lifecycle traceability and update `docs/features.yaml` plus affected
 cross-references when creating or superseding artifacts. Use the role-specific

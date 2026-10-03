@@ -1,5 +1,7 @@
 # GiftUI MVP Milestones
 
+**Iteration:** [ITERATION-001: GiftUI MVP](../iterations/iteration-001-mvp.md)
+
 **Status:** Established MVP delivery ordering
 
 **Authority:** Prioritization only; this roadmap does not approve architecture, feature contracts, or implementation

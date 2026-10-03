@@ -53,6 +53,12 @@ scripts/governance/build-authority-graph.rb --check
 scripts/validate-governance.rb
 ```
 
+The repository validator also checks the numbered iteration index, unique
+consecutive IDs, scope metadata, feature membership, approval/closure
+provenance fields, and local documentation links. These structural checks do
+not authenticate human approval or add iteration scopes to the architecture
+authority graph; consult the tracked scope and its recorded authorization.
+
 Generate or check an exact task context pack:
 
 ```sh

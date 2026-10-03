@@ -152,6 +152,10 @@ only a human maintainer may:
 - accept an ADR;
 - approve or mark implemented a Specification.
 
+Iteration scope baselines, amendments, exceptions, closure, and abandonment
+also require explicit human authorization, as defined in
+[Numbered Iteration Scopes](ITERATION_SCOPES.md).
+
 Completeness, existing implementation, detailed legacy prose, and lack of
 objections do not imply approval.
 
@@ -169,6 +173,11 @@ Deferred-track documents use independent immutable, zero-padded IDs:
 - `FW-NNN`
 - `EXP-NNN`
 - `SPIKE-NNN`
+
+Iteration scopes use a separate consecutive `ITERATION-NNN` sequence, stored
+under `docs/iterations/`. Scope revisions keep the same ID; new delivery
+commitments receive new IDs. See [Numbered Iteration Scopes](ITERATION_SCOPES.md)
+for registration, metadata, approval, and amendment rules.
 
 Allocate the next unused number within each artifact type. IDs MUST remain
 unchanged after a document is published or referenced. Filenames use the
@@ -271,6 +280,13 @@ the RFC in `source`.
 ## Feature manifest schema
 
 `docs/features.yaml` has a numeric `schema_version` and a `features` mapping.
+
+It also has an `iterations` navigation mapping from iteration IDs to
+repository-relative scope paths, for example
+`ITERATION-001: docs/iterations/iteration-001-mvp.md`. This mapping does not
+grant approval or change feature lifecycle stages. Scope records list their
+participating feature keys; historical `milestone: MVP` labels remain valid.
+
 Each feature key is an immutable lowercase kebab-case identifier. A populated
 entry has this navigation-only shape:
 
@@ -329,6 +345,10 @@ Project scope documents answer what product outcome and validation boundary a
 milestone must satisfy. They constrain Proposals, RFCs, ADRs, Specifications,
 roadmaps, and implementation plans without replacing their distinct roles.
 
+Use [Numbered Iteration Scopes](ITERATION_SCOPES.md) to establish and amend
+bounded delivery commitments. Their success criteria define iteration exit
+evidence, not replacement architecture or implementation contracts.
+
 ## Legacy and historical documents
 
 Preserve the reasoning and provenance of mixed legacy documents as source
@@ -367,6 +387,7 @@ changes current authority; it does not erase history.
 - `docs/specs/`: Specification artifacts only
 - `docs/architecture/`: explanations of accepted current architecture
 - `docs/roadmap/`: milestones and ordering
+- `docs/iterations/`: numbered delivery scopes, revisions, and closure records
 - `docs/future-work/`: cheap deferred idea capture
 - `docs/explorations/`: structured, non-decisional investigations
 - `docs/spikes/`: experiment records and evidence; disposable code belongs

@@ -4,6 +4,10 @@ Roadmap documents answer when work should happen, in what order, and toward
 which product milestone. They reference feature IDs from `docs/features.yaml`
 and do not duplicate Proposal, RFC, ADR, or Specification content.
 
+[Numbered iteration scopes](../iterations/README.md) establish each delivery
+commitment's goal, scope, and success criteria. Roadmaps sequence work within
+those approved boundaries. MVP is [ITERATION-001](../iterations/iteration-001-mvp.md).
+
 MVP roadmap decisions must conform to [GiftUI MVP Scope](../MVP_SCOPE.md),
 including its reference application, validation progression, and exit criteria.
 

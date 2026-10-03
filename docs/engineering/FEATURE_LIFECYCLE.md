@@ -13,6 +13,13 @@ Related rules:
 - [AI Agent Rules](AI_AGENT_RULES.md)
 - [Glossary](GLOSSARY.md)
 - [Feature Manifest](../features.yaml)
+- [Numbered Iteration Scopes](ITERATION_SCOPES.md)
+
+Iteration scopes group selected work into approved delivery commitments with
+goals, exclusions, success criteria, and validation boundaries. They do not
+replace any feature gate below. Milestones subdivide an iteration, and feature
+lifecycles may span iterations. MVP is ITERATION-001; later iteration inclusion
+requires explicit scope approval rather than automatic promotion of Future Work.
 
 ## Canonical lifecycle
 

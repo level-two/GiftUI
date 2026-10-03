@@ -20,7 +20,8 @@ pixel references, and connected target observations. SPEC-001, SPEC-011, and
 SPEC-015 close with explicit maintainer-approved exceptions: Pi and nRF
 cadence fails, and complete connected input, fault/recovery, trace, and
 sustained-load evidence remains incomplete. This closes the current iteration;
-full measured MVP conformance remains outstanding.
+full measured MVP conformance remains outstanding. Its numbered scope is
+[ITERATION-001: GiftUI MVP](docs/iterations/iteration-001-mvp.md).
 
 Follow-up is preserved in [Pi performance](docs/future-work/fw-027-pi-performance-investigation-resumption.md),
 [macOS pointer validation](docs/future-work/fw-031-macos-connected-pointer-validation-resumption.md),
@@ -118,6 +119,7 @@ Major features follow the gated Proposal → RFC → ADR → Specification →
 Implementation Plan → Conformance lifecycle. Start with:
 
 - [MVP scope](docs/MVP_SCOPE.md)
+- [numbered iteration scopes](docs/iterations/README.md)
 - [feature lifecycle](docs/engineering/FEATURE_LIFECYCLE.md)
 - [AI agent rules](docs/engineering/AI_AGENT_RULES.md)
 - [code style](docs/engineering/CODE_STYLE.md)

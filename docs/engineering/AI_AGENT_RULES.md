@@ -24,6 +24,11 @@ Before drafting or implementing major feature work:
 6. state the current lifecycle stage, MVP justification, and any missing gate
    before proceeding.
 
+For iteration work, also read the governing numbered scope and
+[Numbered Iteration Scopes](ITERATION_SCOPES.md). Trace the work to its approved
+goal and selected outcomes. MVP is ITERATION-001; later iterations require
+their own explicitly approved scope.
+
 If the manifest or an artifact does not yet exist, report the gap. Do not
 invent a relationship to make the chain appear complete.
 
@@ -64,7 +69,11 @@ An agent MUST NOT:
 - treat an Implementation Plan, Design Note, or Conformance Report as
   architecture or a contract amendment;
 - change a Specification merely to make implementation easier;
-- claim hardware validation from a build, simulator, or host test.
+- claim hardware validation from a build, simulator, or host test;
+- approve iteration baselines, amend committed scope, or close/abandon an
+  iteration without explicit human authorization;
+- treat iteration inclusion or closure as architectural approval,
+  implementation authorization, or proof of full product conformance.
 
 ## Conflict and discovery handling
 
