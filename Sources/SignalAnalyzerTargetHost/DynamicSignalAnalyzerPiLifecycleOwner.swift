@@ -108,6 +108,14 @@ where Target: DisplayTarget {
     }
 
     #if os(macOS)
+        package func clearHostNativeCapture() -> Bool {
+            guard phase == .active, let repository, factAdmission.beginProducer(.action)
+            else { return false }
+            defer { factAdmission.endProducer() }
+            ClearSignalCaptureUseCase(repository: repository).execute()
+            return true
+        }
+
         package func injectHostNativeDiagnostic() -> Bool {
             guard let model,
                 let diagnostic = SignalAnalyzerDiagnostic(exactUTF8: Array("ERR".utf8)),

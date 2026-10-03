@@ -366,6 +366,29 @@ enum PiHostNativeRehearsal {
         try device.capture("idle")
         try runWorkload(owner: &owner, device: device)
         try runActions(owner: &owner, device: device)
+        #if os(macOS)
+            if ProcessInfo.processInfo.environment["GIFTUI_REHEARSAL_CLEARED"] != nil {
+                let previous = owner.production.applicationCaptureRevision
+                guard owner.production.clearHostNativeCapture() else {
+                    throw PiHostNativeRehearsalError.action
+                }
+                device.clock += 250_000
+                let result = owner.production.service(at: device.clock)
+                guard case .completed(_, .completed) = result,
+                    let state = owner.production.applicationState,
+                    state.capture.transitions.isEmpty,
+                    state.acquisitionState == .running,
+                    owner.production.applicationCaptureRevision == previous.map({ $0 + 1 })
+                else {
+                    print(
+                        "cleared-result=\(result)\tprevious=\(String(describing: previous))\tcurrent=\(String(describing: owner.production.applicationCaptureRevision))\tstate=\(String(describing: owner.production.applicationState))"
+                    )
+                    throw PiHostNativeRehearsalError.action
+                }
+                try device.capture("cleared")
+                print("cleared=captured\tcapture_count=0\tstate=running\tstatus=passed")
+            }
+        #endif
         controller.teardown(owner: &owner)
         guard controller.lifecycleState == .quiescent,
             owner.teardownSteps == Array(UInt8(1) ... UInt8(8)),

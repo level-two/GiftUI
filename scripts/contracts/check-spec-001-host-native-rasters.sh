@@ -53,6 +53,9 @@ if [[ "${target}" == pi ]]; then
     GIFTUI_REHEARSAL_FAULT=diagnostic GIFTUI_REHEARSAL_RASTERS="${captures}" \
         "${project_root}/scripts/contracts/check-spec-001-pi-host-native-rehearsal.sh" \
         > "${output}/diagnostic-trace.tsv"
+    GIFTUI_REHEARSAL_CLEARED=1 GIFTUI_REHEARSAL_RASTERS="${captures}" \
+        "${project_root}/scripts/contracts/check-spec-001-pi-host-native-rehearsal.sh" \
+        > "${output}/cleared-trace.tsv"
     bash "${project_root}/scripts/contracts/check-spec-001-pi-host-native-faults.sh" \
         > "${output}/fault-results.txt"
     mkdir -p "${output}/faults"
@@ -69,6 +72,9 @@ else
     GIFTUI_REHEARSAL_DIAGNOSTIC=1 GIFTUI_REHEARSAL_RASTERS="${captures}" \
         "${project_root}/.build/contract-generated/spec-001/nrf-host-native-rehearsal/host-native-rehearsal" \
         > "${output}/diagnostic-trace.tsv"
+    GIFTUI_REHEARSAL_CLEARED=1 GIFTUI_REHEARSAL_RASTERS="${captures}" \
+        "${project_root}/.build/contract-generated/spec-001/nrf-host-native-rehearsal/host-native-rehearsal" \
+        > "${output}/cleared-trace.tsv"
     bash "${project_root}/scripts/contracts/check-spec-001-nrf-host-native-faults.sh" \
         > "${output}/fault-results.txt"
     mkdir -p "${output}/faults"
@@ -86,6 +92,8 @@ arguments=(
 )
 if [[ "${candidate_only}" == false ]]; then
     arguments+=(--references "${references}")
+else
+    arguments+=(--include-cleared)
 fi
 python3 "${project_root}/scripts/contracts/render-spec-001-rasters.py" \
     "${arguments[@]}" > "${output}/raster-hashes.tsv"

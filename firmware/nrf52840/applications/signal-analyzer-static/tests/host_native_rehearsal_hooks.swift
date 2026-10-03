@@ -1,4 +1,21 @@
 // Appended to the generated Swift amalgamation only for the macOS recorder.
+// Clear uses the production repository/admission path, without a synthetic UI control.
+@_cdecl("giftui_signal_analyzer_rehearsal_clear")
+public func giftUISignalAnalyzerRehearsalClear(
+    _ profile: UnsafeMutableRawPointer, _ capture: UnsafeMutableRawPointer
+) -> UInt32 {
+    let storage = UnsafeMutableRawBufferPointer(start: profile, count: 39_696)
+    guard var admission = StaticSignalAnalyzerNRFCaptureFactAdmission(
+        resumingActiveStorage: UnsafeMutableRawBufferPointer(rebasing: storage[31_632 ..< 35_472]),
+        sealedStorage: UnsafeMutableRawBufferPointer(rebasing: storage[35_472 ..< 39_312])
+    ), case .accepted = giftUIStaticRepository.clear(
+        admission: &admission,
+        captureStorage: UnsafeMutableRawBufferPointer(start: capture, count: 115_392)
+    ) else { return 0 }
+    giftUIStaticHasPendingFacts = true
+    return 1
+}
+
 // This injects a model fact; the production host still schedules and presents it.
 @_cdecl("giftui_signal_analyzer_rehearsal_diagnostic")
 public func giftUISignalAnalyzerRehearsalDiagnostic() -> UInt32 {

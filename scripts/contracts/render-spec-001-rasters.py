@@ -118,12 +118,18 @@ def main():
     parser.add_argument("--images", type=pathlib.Path, required=True)
     parser.add_argument("--references", type=pathlib.Path)
     parser.add_argument("--include-diagnostic", action="store_true")
+    parser.add_argument("--include-cleared", action="store_true")
     args = parser.parse_args()
     args.images.mkdir(parents=True, exist_ok=True)
     failed = False
     invariant_baseline = None
     width, height = EXTENTS[args.profile]
-    for state in STATES + (("diagnostic",) if args.include_diagnostic else ()):
+    states = STATES
+    if args.include_cleared:
+        states += ("cleared",)
+    if args.include_diagnostic:
+        states += ("diagnostic",)
+    for state in states:
         name = f"{args.profile}-{state}"
         path = args.captures / f"{name}.rgb565"
         data = path.read_bytes()

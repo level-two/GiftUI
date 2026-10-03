@@ -26,6 +26,7 @@ extern uint32_t giftui_signal_analyzer_last_drawing_points(void);
 extern uint32_t giftui_signal_analyzer_last_render_operations(void);
 extern uint64_t giftui_signal_analyzer_next_delay_microseconds(void);
 extern uint32_t giftui_signal_analyzer_rehearsal_diagnostic(void);
+extern uint32_t giftui_signal_analyzer_rehearsal_clear(void *, void *);
 extern uint32_t giftui_signal_analyzer_rehearsal_maximum_diagnostic(void);
 extern int giftui_firmware_main(void);
 extern uint32_t giftui_signal_analyzer_rehearsal_common_owner(void *, void *, void *, void *);
@@ -49,6 +50,8 @@ static uint32_t last_traced_revision;
 static uint8_t recorded_surface[320U * 240U * 2U];
 static const char *fault_mode;
 static unsigned diagnostic_mode;
+static unsigned cleared_mode;
+static uint32_t clear_prior_revision;
 static unsigned diagnostic_injected;
 static unsigned touch_probe_stage;
 static uint64_t touch_probe_released_at;
@@ -159,6 +162,11 @@ int ads7846_pen_is_down(void)
             capture_frame("window-five-seconds");
         } else if (workload_last_revision != 0U && revision == workload_last_revision + 8U) {
             capture_frame("window-two-seconds");
+        } else if (clear_prior_revision != 0U && revision > clear_prior_revision) {
+            assert(giftui_signal_analyzer_capture_count() == 0U);
+            assert(giftui_signal_analyzer_acquisition_state() == 1U);
+            capture_frame("cleared");
+            printf("cleared=captured\tcapture_count=0\tstate=running\tstatus=passed\n");
         } else if (diagnostic_mode != 0U && revision == 2U) {
             capture_frame("diagnostic");
         }
@@ -179,6 +187,9 @@ int ads7846_pen_is_down(void)
                giftui_signal_analyzer_last_render_operations(),
                display_writes, display_bytes,
                (unsigned long long)recorded_frame_hash());
+    }
+    if (clear_prior_revision != 0U) {
+        return revision > clear_prior_revision ? -ECANCELED : 0;
     }
     if (diagnostic_mode != 0U) {
         if (revision == 1U && diagnostic_injected == 0U &&
@@ -278,6 +289,14 @@ int ads7846_pen_is_down(void)
         return 0;
     }
     if (action_index == sizeof(actions) / sizeof(actions[0])) {
+        if (cleared_mode != 0U) {
+            struct giftui_static_host_storage regions;
+            assert(giftui_signal_analyzer_storage_regions(&regions) == 0);
+            clear_prior_revision = giftui_signal_analyzer_current_revision();
+            assert(giftui_signal_analyzer_capture_count() > 0U);
+            assert(giftui_signal_analyzer_rehearsal_clear(regions.profile, regions.capture) == 1U);
+            return 0;
+        }
         return -ECANCELED;
     }
     const struct scripted_action *action = &actions[action_index];
@@ -321,9 +340,7 @@ int ads7846_pen_is_down(void)
            giftui_signal_analyzer_visible_window());
     action_index++;
     touch_phase = 0U;
-    if (action_index == sizeof(actions) / sizeof(actions[0])) {
-        return -ECANCELED;
-    }
+    // The next poll either finishes or admits the separate cleared-state fixture.
     return 0;
 }
 int ads7846_read_raw(struct ads7846_raw_sample *sample)
@@ -391,6 +408,7 @@ void k_busy_wait(uint32_t duration) { clock_microseconds += duration; }
 int main(void)
 {
     fault_mode = getenv("GIFTUI_REHEARSAL_FAULT");
+    cleared_mode = getenv("GIFTUI_REHEARSAL_CLEARED") != NULL;
     const char *diagnostic = getenv("GIFTUI_REHEARSAL_DIAGNOSTIC");
     diagnostic_mode = diagnostic == NULL ? 0U : (diagnostic[0] == 'm' ? 2U : 1U);
     touch_probe_mode = getenv("GIFTUI_REHEARSAL_TOUCH_PROBE") != NULL;
