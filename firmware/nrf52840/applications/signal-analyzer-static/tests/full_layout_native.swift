@@ -109,10 +109,12 @@ struct FullLayoutNativeCheck {
                 .scopeCount == 92,
             "initial offer retained the diagnostic semantic table"
         )
+        // Standalone validator revisions do not consume the freshly activated
+        // common runner's semantic allocator. Its first publication is 1.
         precondition(
             StaticSignalAnalyzerNRFEmbeddedSemanticView(published: published)?
-                .revision == 3,
-            "initial offer did not advance semantic revision"
+                .revision == 1,
+            "initial offer did not start the canonical semantic revision"
         )
         precondition(giftUISignalAnalyzerInputInitialize(1) == 0)
         precondition(
@@ -161,7 +163,7 @@ struct FullLayoutNativeCheck {
         precondition(giftUISignalAnalyzerCurrentRevision() == 2)
         precondition(
             StaticSignalAnalyzerNRFEmbeddedSemanticView(published: published)?
-                .revision == 4,
+                .revision == 2,
             "second offer did not advance semantic revision"
         )
         precondition(giftUISignalAnalyzerInitialGestureReady() == 1)
