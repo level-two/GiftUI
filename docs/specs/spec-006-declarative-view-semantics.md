@@ -2,11 +2,11 @@
 id: SPEC-006
 feature: giftui-mvp-architecture
 title: Declarative View Semantics Specification
-status: implementing
+status: implemented
 authors:
   - codex
 created: 2026-08-25
-updated: 2026-09-12
+updated: 2026-10-03
 proposal:
   - PROPOSAL-003
 related_rfcs:
@@ -41,6 +41,8 @@ target_milestone: MVP
 ---
 
 # SPEC-006: Declarative View Semantics Specification
+
+> **Current implementation status — 2026-10-03:** Eugene explicitly authorized this Specification's `implemented` transition after conformance review and the complete 72-check gate. [Human approval](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/iteration-closeout-20261003/owner-transition-approval.md) supersedes earlier pending-transition statements; the approved contract is unchanged.
 
 > **Implementation status:** Implementation resumed on 2026-09-12 after the
 > maintainer explicitly reapproved the amendment and requested execution.
@@ -1185,7 +1187,7 @@ bounds is an upstream contract conflict, not permission to weaken this Spec.
   `fixedChild(0)`, preserve canonical zero-through-five child order and
   structural identity across all four profiles, never evaluate `body`, and
   publish no partial result when primitive staging or child traversal fails.
-- [ ] **DV-017:** Action-primitive-with-content fixtures use the exact typed
+- [x] **DV-017:** Action-primitive-with-content fixtures use the exact typed
   overload once, stage one action occurrence at the declaration identity before
   traversing stored builder-produced content beneath `fixedChild(0)`, preserve
   the exact action and canonical zero-through-five child order across all four

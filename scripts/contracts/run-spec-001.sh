@@ -104,7 +104,7 @@ if [[ "${GIFTUI_SHARED_REFERENCE_ALREADY_TESTED:-0}" == 1 ]]; then
     reference_args=(--skip 'macOS.*ReferenceRuns')
 fi
 swift test --disable-sandbox --scratch-path "${PROJECT_ROOT}/.build" \
-    -Xswiftc -DGIFTUI_DYNAMIC_PROFILE "${reference_args[@]}" --filter 'SignalAnalyzer|dynamicProduction|dynamicPi|rawFramebufferTouches'
+    -Xswiftc -DGIFTUI_DYNAMIC_PROFILE ${reference_args[@]+"${reference_args[@]}"} --filter 'SignalAnalyzer|dynamicProduction|dynamicPi|rawFramebufferTouches'
 
 if [[ "${profile}" == "macos-dynamic" || "${profile}" == "macos-static" ]]; then
     "${SCRIPT_DIR}/run-spec-015.sh" --profile "${profile}"

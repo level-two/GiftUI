@@ -24,7 +24,7 @@ specs = {
 }.transform_values { |path| metadata(path) }
 
 specs.each do |id, spec|
-  fail!("#{id} is not implementing") unless spec["status"] == "implementing"
+  fail!("#{id} is not implementing or implemented") unless %w[implementing implemented].include?(spec["status"])
   (specs.keys - [id]).each do |peer|
     fail!("#{id} lacks reciprocal #{peer} relation") unless spec.fetch("related_specs").include?(peer)
   end
@@ -52,8 +52,8 @@ manifest = YAML.safe_load(
 ).fetch("features")
 architecture = manifest.fetch("giftui-mvp-architecture")
 capabilities = manifest.fetch("capability-system")
-fail!("architecture manifest stage differs") unless architecture["status"] == "implementation"
-fail!("capability manifest stage differs") unless capabilities["status"] == "implementation"
+fail!("architecture manifest stage differs") unless %w[implementation implemented].include?(architecture["status"])
+fail!("capability manifest stage differs") unless %w[implementation implemented].include?(capabilities["status"])
 fail!("architecture manifest lacks SPEC-002/003") unless (specs.keys.first(2) - architecture.fetch("specs")).empty?
 fail!("capability manifest lacks SPEC-004") unless capabilities.fetch("specs").include?("SPEC-004")
 fail!("capability dependency is missing") unless capabilities.fetch("dependencies").include?("giftui-mvp-architecture")

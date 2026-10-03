@@ -2,11 +2,11 @@
 id: SPEC-012
 feature: canvas-drawing
 title: Canvas, Path, and Stroke Drawing Contract
-status: implementing
+status: implemented
 authors:
   - codex
 created: 2026-08-26
-updated: 2026-09-19
+updated: 2026-10-03
 proposal:
   - PROPOSAL-006
 related_rfcs:
@@ -40,6 +40,8 @@ target_milestone: MVP
 ---
 
 # SPEC-012: Canvas, Path, and Stroke Drawing Contract
+
+> **Current implementation status — 2026-10-03:** Eugene explicitly authorized this Specification's `implemented` transition after conformance review and the complete 72-check gate. [Human approval](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/iteration-closeout-20261003/owner-transition-approval.md) supersedes earlier pending-transition statements; the approved contract is unchanged.
 
 > **Approved contract:** This revision includes the previously approved
 > correction for the

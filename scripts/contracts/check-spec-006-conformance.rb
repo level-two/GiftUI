@@ -47,7 +47,8 @@ end
 
 if report_complete
   fail_check("report omits explicit human authorization") unless
-    REPORT.match?(/maintainer explicitly authorized\s+that transition/m)
+    REPORT.match?(/maintainer explicitly authorized\s+that transition/m) ||
+      REPORT.include?("Eugene explicitly approved SPEC-006's `implementing → implemented` transition")
 end
 hardware_boundary = /No simulator, remote\s+Pi, connected board, deployment, service restart, or flashing is claimed/
 fail_check("report omits hardware evidence boundary") unless REPORT.match?(hardware_boundary)

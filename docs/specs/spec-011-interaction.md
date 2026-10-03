@@ -2,11 +2,11 @@
 id: SPEC-011
 feature: giftui-mvp-architecture
 title: Button Interaction and Activation Contract
-status: implementing
+status: implemented
 authors:
   - codex
 created: 2026-08-26
-updated: 2026-09-09
+updated: 2026-10-03
 proposal:
   - PROPOSAL-003
 related_rfcs:
@@ -38,6 +38,8 @@ related_specs:
   - SPEC-015
 related_future_work:
   - FW-021
+  - FW-031
+  - FW-033
 related_explorations: []
 related_spikes:
   - SPIKE-007
@@ -47,6 +49,14 @@ target_milestone: MVP
 ---
 
 # SPEC-011: Button Interaction and Activation Contract
+
+**Current disposition — 2026-10-03:** The maintainer explicitly directed
+performance work to future iterations and closure of the remaining Specifications.
+[Recorded authorization](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/iteration-closeout-20261003/remaining-spec-transition-approval.md) closes SPEC-001, SPEC-011, and SPEC-015
+as `implemented` with approved exceptions for measured timing failures and
+missing connected evidence. The original requirements and raw results are retained.
+FW-027/FW-032 track performance; FW-031/FW-033 track connected validation.
+Earlier open-gate statements below describe the pre-approval history.
 
 > **Approval status:** Explicitly reapproved by the maintainer after the
 > 2026-08-28 amendment binding candidate actions to SPEC-010's exact
@@ -731,6 +741,12 @@ configuration contracts.
 
 ## Deferred and Follow-up Work
 
+- [FW-031](../future-work/fw-031-macos-connected-pointer-validation-resumption.md)
+  preserves the maintainer's 2026-10-03 postponement of macOS physical-pointer
+  validation. The connected gate is closed for this iteration by the linked
+  maintainer-approved exception; the required evidence remains follow-up and
+  the original contract is unchanged.
+
 - [FW-021](../future-work/fw-021-scoped-action-domains.md) preserves multiple
   or nested domains, independently replaceable targets, action transformation,
   and reusable feature routing. It remains post-MVP.
@@ -769,3 +785,8 @@ configuration contracts.
 - [FW-021](../future-work/fw-021-scoped-action-domains.md)
 - [GiftUI MVP Scope](../MVP_SCOPE.md)
 - [GiftUI Principles](../PRINCIPLES.md)
+
+## Deferred and Follow-up Work — iteration closeout
+
+- [FW-031](../future-work/fw-031-macos-connected-pointer-validation-resumption.md): deferred follow-up under the approved closeout exception.
+- [FW-033](../future-work/fw-033-connected-validation-follow-up.md): deferred follow-up under the approved closeout exception.

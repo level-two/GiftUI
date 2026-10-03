@@ -2,11 +2,11 @@
 id: SPEC-015
 feature: giftui-mvp-architecture
 title: MVP Target-Host Configuration Contract
-status: implementing
+status: implemented
 authors:
   - codex
 created: 2026-08-28
-updated: 2026-10-02
+updated: 2026-10-03
 proposal:
   - PROPOSAL-002
   - PROPOSAL-003
@@ -57,6 +57,8 @@ related_specs:
 related_future_work:
   - FW-022
   - FW-030
+  - FW-032
+  - FW-033
 related_explorations: []
 related_spikes: []
 supersedes: []
@@ -65,6 +67,14 @@ target_milestone: MVP
 ---
 
 # SPEC-015: MVP Target-Host Configuration Contract
+
+**Current disposition — 2026-10-03:** The maintainer explicitly directed
+performance work to future iterations and closure of the remaining Specifications.
+[Recorded authorization](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/iteration-closeout-20261003/remaining-spec-transition-approval.md) closes SPEC-001, SPEC-011, and SPEC-015
+as `implemented` with approved exceptions for measured timing failures and
+missing connected evidence. The original requirements and raw results are retained.
+FW-027/FW-032 track performance; FW-031/FW-033 track connected validation.
+Earlier open-gate statements below describe the pre-approval history.
 
 > **Amendment approved — 2026-10-02:** The maintainer explicitly accepted
 > this amendment together with SPEC-013: `HostOpportunityResult` preserves
@@ -1491,3 +1501,8 @@ Specification:
 Authorized owner repair began under SPEC-013 T9.1 after implementation-readiness
 assessment. The amended contract is now implementing; approval records above
 remain historical and do not establish conformance.
+
+## Deferred and Follow-up Work — iteration closeout
+
+- [FW-032](../future-work/fw-032-nrf-performance-improvement.md): deferred follow-up under the approved closeout exception.
+- [FW-033](../future-work/fw-033-connected-validation-follow-up.md): deferred follow-up under the approved closeout exception.

@@ -2,11 +2,11 @@
 id: SPEC-004
 feature: capability-system
 title: Capability Contribution and Resolution
-status: implementing
+status: implemented
 authors:
   - codex
 created: 2026-08-22
-updated: 2026-09-27
+updated: 2026-10-03
 proposal:
   - PROPOSAL-004
 related_rfcs:
@@ -43,6 +43,8 @@ target_milestone: MVP
 ---
 
 # SPEC-004: Capability Contribution and Resolution
+
+> **Current implementation status — 2026-10-03:** Eugene explicitly authorized this Specification's `implemented` transition after conformance review and the complete 72-check gate. [Human approval](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/iteration-closeout-20261003/owner-transition-approval.md) supersedes earlier pending-transition statements; the approved contract is unchanged.
 
 > **Approval status:** Explicitly reapproved by the maintainer after the
 > 2026-08-30 fixed-width raster-arithmetic and validation-only

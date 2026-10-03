@@ -2,10 +2,10 @@
 spec: SPEC-013
 feature: giftui-mvp-architecture
 title: SPEC-013 Conformance Report
-status: collecting
+status: complete
 reviewers: [codex]
 created: 2026-09-19
-updated: 2026-10-02
+updated: 2026-10-03
 implementation_plan: ../implementation-plans/spec-013-implementation-plan.md
 related_future_work: []
 related_explorations: []
@@ -16,7 +16,9 @@ superseded_by: null
 
 # SPEC-013 Conformance Report
 
-> **Current applicability — 2026-10-02:** The maintainer approved the
+> **Current disposition — 2026-10-03:** [Final owner review](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/iteration-closeout-20261003/README.md) closes the amended seam and production-join applicability blockers. All four owner profiles and the complete 72-check gate pass; all owner task dispositions are complete. The maintainer explicitly approved the implemented transition in the linked owner-approval record.
+
+> **Historical amendment applicability — 2026-10-02:** The maintainer approved the
 > coordinated SPEC-013/SPEC-015 seam amendment. Earlier passing rows remain historical evidence
 > for the frozen baseline and their tested inputs. This report is `collecting`
 > for the amendment; partial admitted-work failure and exact application
@@ -123,3 +125,22 @@ owner at f6ef6fb6. This supersedes the pre-amendment seam defect only.
 Assembled SPEC-001 T10.5/T10.6 and total budget/fault revalidation remain
 outstanding; historical criterion rows do not silently become current
 production conformance. No implemented transition is requested.
+
+## Current final-artifact gate review — 2026-10-03
+
+The [iteration closeout](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/iteration-closeout-20261003/README.md) records a complete final invocation of the
+registered hardware-free gate: 72 checks pass, including this owner's four
+profiles, current application integration, selected-runtime isolation, fault
+corpora and reviewed pixel comparisons. This supersedes the earlier recorded
+sandbox/profile failures and resolved production-join blockers for these
+tested inputs; historical reports retain their original scope.
+
+The criterion evidence has been reviewed against the current approved contract;
+all existing owner acceptance rows retain their passing dispositions for the
+applicable corpus. No new contract, exception, connected-hardware claim or
+Specification status transition is inferred. The report is complete and
+supports requesting an explicit human `implemented` transition for this owner.
+
+## Human implemented-transition authorization — 2026-10-03
+
+Eugene explicitly approved SPEC-013's `implementing → implemented` transition as one of the ten named owner transitions. [The approval record](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/iteration-closeout-20261003/owner-transition-approval.md) supersedes prior statements that authorization was pending. The Specification is now implemented; connected application and MVP gates retain their distinct scope.

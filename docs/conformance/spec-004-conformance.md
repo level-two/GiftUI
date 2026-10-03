@@ -6,7 +6,7 @@ status: complete
 reviewers:
   - codex
 created: 2026-09-19
-updated: 2026-10-02
+updated: 2026-10-03
 implementation_plan: ../implementation-plans/spec-004-implementation-plan.md
 related_future_work: [FW-006, FW-007, FW-008, FW-014, FW-015, FW-018]
 related_explorations: []
@@ -139,3 +139,22 @@ The [current fixture record](../../Tests/ContractFixtures/SPEC001/Evidence/miles
 records the corrected resolver extent and complete canonical resource consumers.
 The focused macOS Dynamic driver passes; historical profile results retain their
 original revision scope. No implemented transition or connected claim is made.
+
+## Current final-artifact gate review — 2026-10-03
+
+The [iteration closeout](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/iteration-closeout-20261003/README.md) records a complete final invocation of the
+registered hardware-free gate: 72 checks pass, including this owner's four
+profiles, current application integration, selected-runtime isolation, fault
+corpora and reviewed pixel comparisons. This supersedes the earlier recorded
+sandbox/profile failures and resolved production-join blockers for these
+tested inputs; historical reports retain their original scope.
+
+The criterion evidence has been reviewed against the current approved contract;
+all existing owner acceptance rows retain their passing dispositions for the
+applicable corpus. No new contract, exception, connected-hardware claim or
+Specification status transition is inferred. The report is complete and
+supports requesting an explicit human `implemented` transition for this owner.
+
+## Human implemented-transition authorization — 2026-10-03
+
+Eugene explicitly approved SPEC-004's `implementing → implemented` transition as one of the ten named owner transitions. [The approval record](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/iteration-closeout-20261003/owner-transition-approval.md) supersedes prior statements that authorization was pending. The Specification is now implemented; connected application and MVP gates retain their distinct scope.

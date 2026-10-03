@@ -2,11 +2,11 @@
 spec: SPEC-004
 feature: capability-system
 title: SPEC-004 Implementation Plan
-status: active
+status: completed
 owners:
   - codex
 created: 2026-08-29
-updated: 2026-09-27
+updated: 2026-10-03
 related_design_notes:
   - ../implementation-designs/spec-004-raster-arithmetic.md
   - ../implementation-designs/spec-004-resource-evidence-driver.md
@@ -986,3 +986,10 @@ all seventeen criterion dispositions, exact profile classifications, resource
 evidence, and repository-wide aggregate observations. The plan is `completed`;
 SPEC-004 remains `implementing` pending explicit maintainer authorization for
 any `implemented` transition.
+
+## Final owner-task reconciliation — 2026-10-03
+
+Every planned owner task, including the amendment tasks where applicable, has
+a completed disposition. The [72-check final gate](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/iteration-closeout-20261003/README.md) revalidates all four
+owner profiles and actual production joins. The plan is `completed`; no
+Specification `implemented` transition is performed by this reconciliation.

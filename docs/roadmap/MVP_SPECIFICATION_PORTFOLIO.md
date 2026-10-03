@@ -20,6 +20,13 @@ immutable ID, and registered in [the feature manifest](../features.yaml).
 
 ## Lifecycle Baseline
 
+The maintainer approved ten owner `implemented` transitions on 2026-10-03.
+[Approval](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/iteration-closeout-20261003/owner-transition-approval.md) and current conformance evidence are recorded separately
+from the connected application exceptions now approved for SPEC-001/011/015.
+The [remaining closeout approval](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/iteration-closeout-20261003/remaining-spec-transition-approval.md) completes those transitions;
+all fifteen portfolio Specifications are implemented. Performance and connected
+evidence follow-up are preserved under FW-027/FW-031/FW-032/FW-033.
+
 The current authoritative inputs are:
 
 - approved RFC-001 through RFC-006 and RFC-008 through RFC-011;
@@ -34,9 +41,8 @@ is current authority. RFC-007 remains `draft`; its delegated-service direction
 and FW-009 MUST NOT become a required MVP Specification dependency.
 
 The `canvas-drawing` feature completed its decision stage with approved RFC-009
-and accepted ADR-028 through ADR-031. SPEC-010 and SPEC-011 are approved;
-SPEC-012 is implementing its explicitly approved focused render-extension
-completion-seam amendment.
+and accepted ADR-028 through ADR-031. SPEC-010 and SPEC-012 are implemented;
+SPEC-011 is implemented with the maintainer-approved connected interaction exception.
 SPEC-006 was explicitly reapproved on 2026-09-12 for the typed
 action-primitive-with-content operation required by SPEC-011. SPEC-010 was
 explicitly reapproved on 2026-09-05 after its completeness
@@ -64,9 +70,9 @@ Wave 1 has completed coordinated approval with these immutable identities:
 
 | Candidate key | Allocated Specification | Lifecycle status |
 | --- | --- | --- |
-| `FOUNDATION` | `SPEC-002` | `approved` |
-| `FAILURE` | `SPEC-003` | `approved` |
-| `CAPABILITY` | `SPEC-004` | `approved` |
+| `FOUNDATION` | `SPEC-002` | `implemented` |
+| `FAILURE` | `SPEC-003` | `implemented` |
+| `CAPABILITY` | `SPEC-004` | `implemented` |
 
 The three Specifications share one ownership rule: SPEC-002 owns portable values and
 import boundaries; SPEC-003 owns outcome, containment, disposition, health,
@@ -81,8 +87,8 @@ action-primitive-with-content amendment required by SPEC-011:
 
 | Candidate key | Allocated Specification | Lifecycle status |
 | --- | --- | --- |
-| `TEXT` | `SPEC-005` | `approved` |
-| `DECLARATIVE` | `SPEC-006` | `approved` |
+| `TEXT` | `SPEC-005` | `implemented` |
+| `DECLARATIVE` | `SPEC-006` | `implemented` |
 
 SPEC-005 and SPEC-006 are parallel sibling contracts. SPEC-005 owns exact text
 resource identities, compatible resource views, and resource lifetimes;
@@ -90,14 +96,14 @@ SPEC-006 owns declarative expansion, ordered modifiers, structural identity,
 the bounded public action-value protocol, and action identity. Neither
 Specification depends on or redefines the other.
 
-Wave 3 retains these immutable identities. SPEC-007 remains approved;
+Wave 3 retains these immutable identities. SPEC-007 is implemented;
 SPEC-008's corrected 2026-09-11 bounded-workspace and immutable-snapshot
 amendment is explicitly approved:
 
 | Candidate key | Allocated Specification | Lifecycle status |
 | --- | --- | --- |
-| `LAYOUT` | `SPEC-007` | `approved` |
-| `RENDERING` | `SPEC-008` | `approved` |
+| `LAYOUT` | `SPEC-007` | `implemented` |
+| `RENDERING` | `SPEC-008` | `implemented` |
 
 SPEC-007 owns proposal-based measurement, placement, canonical text geometry,
 and resolved occurrence bounds. SPEC-008 owns public text/color/style meaning,
@@ -111,7 +117,7 @@ failure-carrier amendment has received renewed approval:
 
 | Candidate key | Allocated Specification | Lifecycle status |
 | --- | --- | --- |
-| `EXECUTION` | `SPEC-009` | `approved` |
+| `EXECUTION` | `SPEC-009` | `implemented` |
 
 SPEC-009 owns the serialized run cycle, sealed admission, publication and
 dirty-recovery boundaries, execution provenance, synchronous one-shot frame
@@ -125,19 +131,20 @@ reapproved completeness amendment:
 
 | Candidate key | Allocated Specification | Lifecycle status |
 | --- | --- | --- |
-| `OBSERVABLE` | `SPEC-010` | `implementing` |
-| `INTERACTION` | `SPEC-011` | `approved` |
-| `DRAWING` | `SPEC-012` | `implementing` |
+| `OBSERVABLE` | `SPEC-010` | `implemented` |
+| `INTERACTION` | `SPEC-011` | `implemented` |
+| `DRAWING` | `SPEC-012` | `implemented` |
 
 SPEC-009 through SPEC-012 are approved and authoritative for implementation;
-SPEC-010 and SPEC-012 are actively implementing their approved contracts.
+SPEC-010 and SPEC-012 are implemented after explicit maintainer authorization
+on 2026-10-03; SPEC-011 closes its connected interaction gate under the explicit maintainer-approved exception.
 
 Wave 6 has produced these immutable artifacts:
 
 | Candidate key | Allocated Specification | Lifecycle status |
 | --- | --- | --- |
-| `RUNTIME-PROFILES` | `SPEC-013` | `approved` |
-| `BACKEND-INTEGRATION` | `SPEC-014` | `approved` |
+| `RUNTIME-PROFILES` | `SPEC-013` | `implemented` |
+| `BACKEND-INTEGRATION` | `SPEC-014` | `implemented` |
 
 Both artifacts are approved and reconciled to SPEC-012's drawing semantics.
 SPEC-013's focused render-workspace-limit amendment was explicitly reapproved
@@ -147,7 +154,7 @@ Wave 7 has produced this immutable artifact:
 
 | Candidate key | Allocated Specification | Lifecycle status |
 | --- | --- | --- |
-| `HOST-CONFIGURATION` | `SPEC-015` | `approved` |
+| `HOST-CONFIGURATION` | `SPEC-015` | `implemented` |
 
 SPEC-015 owns immutable target-host assembly, structural and capability startup
 gates, action/model/fact wiring, input/wake integration, finite pacing and

@@ -7,7 +7,10 @@ reviewers: [codex]
 created: 2026-09-19
 updated: 2026-10-03
 implementation_plan: ../implementation-plans/spec-011-implementation-plan.md
-related_future_work: [FW-021]
+related_future_work:
+  - FW-021
+  - FW-031
+  - FW-033
 related_explorations: []
 related_spikes: [SPIKE-007]
 supersedes: null
@@ -15,6 +18,14 @@ superseded_by: null
 ---
 
 # SPEC-011 Conformance Report
+
+**Current disposition — 2026-10-03:** The maintainer explicitly directed
+performance work to future iterations and closure of the remaining Specifications.
+[Recorded authorization](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/iteration-closeout-20261003/remaining-spec-transition-approval.md) closes SPEC-001, SPEC-011, and SPEC-015
+as `implemented` with approved exceptions for measured timing failures and
+missing connected evidence. The original requirements and raw results are retained.
+FW-027/FW-032 track performance; FW-031/FW-033 track connected validation.
+Earlier open-gate statements below describe the pre-approval history.
 
 > This report records evidence. It does not authorize the governing
 > Specification's `implemented` transition.
@@ -128,3 +139,44 @@ No timing exception or whole-Spec `implemented` transition is inferred from
 application signoff. These current blockers cannot be deferred as Future Work.
 Temporary stopped-startup hosting and monitoring helpers are removed, with the
 working calibration and captured-tap regression retained.
+
+## Current connected closeout and maintainer dispositions — 2026-10-03
+
+The [final-artifact closeout](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/iteration-closeout-20261003/README.md) supersedes earlier claims that no
+production artifact was deployed/flashed or that calibration is provisional.
+The maintainer explicitly confirmed touch calibration; that subtask is complete.
+Pi timing work is postponed under FW-027, and macOS physical-pointer work is
+postponed under FW-031. Neither postponement is an acceptance-criterion waiver.
+
+All 72 final registered hardware-free checks pass, including this owner's four
+profiles and current production-join/pixel evidence. The final Pi hash is
+verified on the target. Its 32 measured updates average approximately 0.72
+frames/second, with 1.294–1.522-second costs and 9,740 KiB peak sampled RSS;
+bounded SIGINT teardown prints `status=completed`. The cleaned final nRF image
+is flashed and running. Its recorded software Start succeeds, driver/CPU fault
+samples are zero, and nine live records match the deterministic source prefix.
+Observed presentation intervals of approximately 21 seconds fail cadence.
+
+Complete connected physical/failure coverage, sustained 80-Hz acceptance,
+target costs and full connected semantic/action/drawing trace comparison remain
+unproved. The macOS physical-pointer subset is explicitly postponed. The
+Specification and connected plan remain implementing/active; this complete
+evidence disposition does not support a full `implemented` transition.
+
+## Final current-artifact stack case — 2026-10-03
+
+The [painted final-firmware snapshot](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/iteration-closeout-20261003/README.md) measures 19,480 / 27,648 bytes after startup/idle, with zero driver/CFSR/HFSR faults and production revision 1. This closes the current startup/idle measurement subcase; it does not establish sustained-load timing or exhaustive worst-case stack use.
+
+## Approved exception and implemented transition — 2026-10-03
+
+**Current disposition — 2026-10-03:** The maintainer explicitly directed
+performance work to future iterations and closure of the remaining Specifications.
+[Recorded authorization](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/iteration-closeout-20261003/remaining-spec-transition-approval.md) closes SPEC-001, SPEC-011, and SPEC-015
+as `implemented` with approved exceptions for measured timing failures and
+missing connected evidence. The original requirements and raw results are retained.
+FW-027/FW-032 track performance; FW-031/FW-033 track connected validation.
+Earlier open-gate statements below describe the pre-approval history.
+
+Hardware-free acceptance rows retain their passing scope. The remaining
+connected gate is closed by the explicit exception in the linked authorization,
+with its uncollected physical/fault/trace evidence retained as follow-up.

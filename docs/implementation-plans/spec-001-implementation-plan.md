@@ -2,7 +2,7 @@
 spec: SPEC-001
 feature: signal-analyzer
 title: SPEC-001 Implementation Plan
-status: active
+status: completed
 owners:
   - codex
 created: 2026-09-13
@@ -18,6 +18,8 @@ related_future_work:
   - FW-023
   - FW-027
   - FW-028
+  - FW-032
+  - FW-033
 related_explorations: []
 related_spikes: []
 supersedes: null
@@ -25,6 +27,14 @@ superseded_by: null
 ---
 
 # SPEC-001 Implementation Plan
+
+**Current disposition — 2026-10-03:** The maintainer explicitly directed
+performance work to future iterations and closure of the remaining Specifications.
+[Recorded authorization](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/iteration-closeout-20261003/remaining-spec-transition-approval.md) closes SPEC-001, SPEC-011, and SPEC-015
+as `implemented` with approved exceptions for measured timing failures and
+missing connected evidence. The original requirements and raw results are retained.
+FW-027/FW-032 track performance; FW-031/FW-033 track connected validation.
+Earlier open-gate statements below describe the pre-approval history.
 
 > This active plan derives the ordered application work and evidence strategy
 > from the approved Signal Analyzer contract. It does not amend SPEC-001,
@@ -1978,7 +1988,7 @@ evidence but do not waive this gate for a later attempt.
 are recorded as connected-target evidence rather than inferred from build or
 simulation.
 
-- [ ] `T8.1` — After explicit authorization, require the remote Raspberry Pi to
+- [x] `T8.1` — **Closed by approved exception; connected pass not established.** After explicit authorization, require the remote Raspberry Pi to
       report `armv6l`, deploy the exact `T6.4` artifact through the repository
       workflow, run the deterministic 80-event/second scenario for at least 30
       continuous seconds on framebuffer/PiScreen, exercise all six controls,
@@ -1993,9 +2003,9 @@ simulation.
       and trace evidence; acceptance is not a timing waiver. See the
       [current connected verification](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/connected-pi-20261003/README.md).
       - [x] Pi application display/control validation and maintainer signoff.
-      - [ ] Remaining T8.1 cadence, burst/failure-recovery, and complete
+      - [x] **Closed by approved exception; connected pass not established.** Remaining T8.1 cadence, burst/failure-recovery, and complete
         connected coverage requirements.
-- [ ] `T8.2` — After explicit authorization, inspect and flash the exact `T6.5`
+- [x] `T8.2` — **Closed by approved exception; connected pass not established.** **Current calibration subtask complete:** maintainer confirmation on 2026-10-03. Final firmware is flashed; full cadence/physical/fault corpus remains open. After explicit authorization, inspect and flash the exact `T6.5`
       ELF through the repository nRF workflow, run the deterministic scenario
       for at least 30 continuous seconds on the connected TFT/input target,
       exercise all six controls, and record display/input correctness, no
@@ -2011,7 +2021,7 @@ simulation.
       `KMRTM24024-SPI` 240 x 320 module instead. The replacement's controller,
       touch path, orientation, production firmware, and connected checks remain
       open; see the deferred-work disposition and evidence below.
-- [ ] `T8.3` — Compare connected semantic/action/drawing traces with the
+- [x] `T8.3` — **Closed by approved exception; connected pass not established.** Compare connected semantic/action/drawing traces with the
       hardware-free oracle while preserving target-specific performance and
       display facts. Classify any absent hardware run as an open connected
       gate, not a failure hidden by simulator evidence.
@@ -2853,3 +2863,37 @@ stopped-startup hosting and live monitoring helpers were reverted; production
 calibration and the captured-contact regression remain. The observed 1.357-second
 redraw, 250 ms service-deadline exit, and burst refusals remain current blockers.
 T8.1/T8.2/T8.3 and the Specification's full conformance transition remain open.
+
+## Current iteration closeout — 2026-10-03
+
+The [final-artifact packet](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/iteration-closeout-20261003/README.md) records 72 passing registered checks, both
+verified target builds, final Pi deployment and nRF flashing, bounded connected
+observations, source-prefix comparison and explicit remaining failures.
+
+- Touch calibration is **complete**, explicitly confirmed by the maintainer.
+- The Pi timing fix is postponed to the next iterations under FW-027; its
+  measured cadence remains nonconforming and is not marked complete.
+- The macOS physical-pointer campaign is postponed under FW-031.
+- T8.1 retains unmet cadence and complete interaction/recovery/trace evidence.
+- T8.2 retains unmet cadence, sustained-load and complete connected corpus.
+- T8.3 has only a passing nRF deterministic capture-prefix comparison; full
+  semantic/action/drawing equality remains open.
+
+The final current criterion disposition is 41 scoped passes, two failures
+(SA-AC-023/039 timing), and two blocked connected criteria (SA-AC-005/024).
+Earlier tables and appendices remain historical where this record supersedes
+them. The plan remains active and SPEC-001 remains implementing.
+
+## Maintainer-directed plan completion — 2026-10-03
+
+**Current disposition — 2026-10-03:** The maintainer explicitly directed
+performance work to future iterations and closure of the remaining Specifications.
+[Recorded authorization](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/iteration-closeout-20261003/remaining-spec-transition-approval.md) closes SPEC-001, SPEC-011, and SPEC-015
+as `implemented` with approved exceptions for measured timing failures and
+missing connected evidence. The original requirements and raw results are retained.
+FW-027/FW-032 track performance; FW-031/FW-033 track connected validation.
+Earlier open-gate statements below describe the pre-approval history.
+
+Connected task completion means approved exception disposition, with remaining
+measurements and evidence assigned to the linked Future Work. It does not mean
+the previously missing corpus was executed.

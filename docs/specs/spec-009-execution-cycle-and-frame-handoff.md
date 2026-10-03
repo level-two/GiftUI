@@ -2,11 +2,11 @@
 id: SPEC-009
 feature: giftui-mvp-architecture
 title: Execution Cycle and Frame Handoff Contract
-status: implementing
+status: implemented
 authors:
   - codex
 created: 2026-08-26
-updated: 2026-09-19
+updated: 2026-10-03
 proposal:
   - PROPOSAL-003
 related_rfcs:
@@ -46,6 +46,8 @@ target_milestone: MVP
 ---
 
 # SPEC-009: Execution Cycle and Frame Handoff Contract
+
+> **Current implementation status — 2026-10-03:** Eugene explicitly authorized this Specification's `implemented` transition after conformance review and the complete 72-check gate. [Human approval](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/iteration-closeout-20261003/owner-transition-approval.md) supersedes earlier pending-transition statements; the approved contract is unchanged.
 
 > **Approval status:** Explicitly reapproved by the maintainer after the
 > 2026-08-28 bounded generic focused-owner failure-carrier amendment required

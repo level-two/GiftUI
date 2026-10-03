@@ -2,11 +2,11 @@
 id: SPEC-003
 feature: giftui-mvp-architecture
 title: Failure Outcomes and Containment
-status: implementing
+status: implemented
 authors:
   - codex
 created: 2026-08-22
-updated: 2026-09-20
+updated: 2026-10-03
 proposal:
   - PROPOSAL-003
 related_rfcs:
@@ -43,6 +43,8 @@ target_milestone: MVP
 ---
 
 # SPEC-003: Failure Outcomes and Containment
+
+> **Current implementation status — 2026-10-03:** Eugene explicitly authorized this Specification's `implemented` transition after conformance review and the complete 72-check gate. [Human approval](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/iteration-closeout-20261003/owner-transition-approval.md) supersedes earlier pending-transition statements; the approved contract is unchanged.
 
 > **Approval status:** Explicitly reapproved by the maintainer on 2026-09-19
 > after revising the frozen macOS reference runner from macOS 26.3 build

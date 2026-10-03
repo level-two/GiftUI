@@ -2,11 +2,11 @@
 id: SPEC-001
 feature: signal-analyzer
 title: Signal Analyzer Reference Application Contract
-status: implementing
+status: implemented
 authors:
   - Yauheni Lychkouski
 created: 2026-08-14
-updated: 2026-10-02
+updated: 2026-10-03
 proposal:
   - PROPOSAL-002
 related_rfcs:
@@ -53,6 +53,8 @@ related_future_work:
   - FW-026
   - FW-027
   - FW-028
+  - FW-032
+  - FW-033
 related_explorations: []
 related_spikes: []
 supersedes: []
@@ -61,6 +63,14 @@ target_milestone: MVP
 ---
 
 # SPEC-001: Signal Analyzer Reference Application Contract
+
+**Current disposition — 2026-10-03:** The maintainer explicitly directed
+performance work to future iterations and closure of the remaining Specifications.
+[Recorded authorization](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/iteration-closeout-20261003/remaining-spec-transition-approval.md) closes SPEC-001, SPEC-011, and SPEC-015
+as `implemented` with approved exceptions for measured timing failures and
+missing connected evidence. The original requirements and raw results are retained.
+FW-027/FW-032 track performance; FW-031/FW-033 track connected validation.
+Earlier open-gate statements below describe the pre-approval history.
 
 > **Approval status:** Explicitly approved by the maintainer after
 > reconciliation against approved SPEC-002 through SPEC-015, including the
@@ -2133,3 +2143,9 @@ unchanged. Borders use existing nested rectangular backgrounds rather than
 additional Canvas occurrences. Implementation and validation remain required.
 
 [FW-028](../future-work/fw-028-embedded-owner-partitioned-output-diagnostics.md) preserves the non-blocking partitioned Embedded output diagnostic question from T10.4.
+
+## Deferred and Follow-up Work — iteration closeout
+
+- [FW-027](../future-work/fw-027-pi-performance-investigation-resumption.md): deferred follow-up under the approved closeout exception.
+- [FW-032](../future-work/fw-032-nrf-performance-improvement.md): deferred follow-up under the approved closeout exception.
+- [FW-033](../future-work/fw-033-connected-validation-follow-up.md): deferred follow-up under the approved closeout exception.

@@ -7,19 +7,25 @@ nRF52840 Embedded Swift configurations.
 
 ## Current implementation state
 
-The repository is on the clean MVP baseline governed by
-[SPEC-002: Portable Foundation](docs/specs/spec-002-portable-foundation.md),
-which is currently implementing. The root Swift package intentionally contains
-only:
+All fifteen MVP Specifications are implemented under the recorded maintainer
+approvals. The framework includes declarative views, layout, text and opaque
+color rendering, observable state, interaction, Canvas drawing, runtime
+profiles, backend integration, and target-host configuration. The
+[Specification portfolio](docs/roadmap/MVP_SPECIFICATION_PORTFOLIO.md) links
+the governing contracts and their current lifecycle states.
 
-- the stable `GiftUI` library product and target;
-- the `GiftUITests` Foundation test target; and
-- SPEC-002 migration and contract evidence.
+The [iteration closeout](Tests/ContractFixtures/SPEC001/Evidence/milestone-10/iteration-closeout-20261003/README.md)
+records 72 passing hardware-free checks across all four profiles, reviewed
+pixel references, and connected target observations. SPEC-001, SPEC-011, and
+SPEC-015 close with explicit maintainer-approved exceptions: Pi and nRF
+cadence fails, and complete connected input, fault/recovery, trace, and
+sustained-load evidence remains incomplete. This closes the current iteration;
+full measured MVP conformance remains outstanding.
 
-Portable geometry and normalized pointer declarations are introduced in the
-next SPEC-002 milestones. Runtime, layout, rendering, backend, platform, and
-host targets return only through their own approved Specifications and ready
-implementation plans.
+Follow-up is preserved in [Pi performance](docs/future-work/fw-027-pi-performance-investigation-resumption.md),
+[macOS pointer validation](docs/future-work/fw-031-macos-connected-pointer-validation-resumption.md),
+[nRF performance](docs/future-work/fw-032-nrf-performance-improvement.md), and
+[connected validation](docs/future-work/fw-033-connected-validation-follow-up.md).
 
 ## Build and test
 
@@ -54,11 +60,17 @@ cannot use the user-level compiler cache, point `CLANG_MODULE_CACHE_PATH` and
 
 ## Signal Analyzer reference application
 
-The current macOS SwiftUI reference application is under
-[`demo/SignalAnalyzer/`](demo/SignalAnalyzer/README.md). It preserves the MVP
-domain, data, view-model, workload, and presentation evidence while GiftUI's
-approved contracts are implemented. It is a separate package and does not
-claim that the clean GiftUI root package can run the completed analyzer yet.
+The GiftUI application shares its domain, data, and presentation under
+`Sources/SignalAnalyzerDomain`, `Sources/SignalAnalyzerData`, and
+`Sources/SignalAnalyzerPresentation`. The root package provides
+`SignalAnalyzerMacOSDynamic`, `SignalAnalyzerMacOSStatic`,
+`SignalAnalyzerRaspberryPiARMv6`, and the `SignalAnalyzerNRF52840HostOracle`
+validation executable. The nRF production application is
+`firmware/nrf52840/applications/signal-analyzer-static`.
+
+The separate [macOS SwiftUI reference](demo/SignalAnalyzer/README.md) remains
+comparison evidence. Application acceptance and its closeout exceptions are
+recorded in [SPEC-001 conformance](docs/conformance/spec-001-conformance.md).
 
 ## Cross-target environments
 
@@ -112,7 +124,7 @@ Implementation Plan → Conformance lifecycle. Start with:
 - [feature manifest](docs/features.yaml)
 - [SPEC-002 implementation plan](docs/implementation-plans/spec-002-implementation-plan.md)
 
-Accepted ADRs and approved or implementing Specifications are authoritative.
+Accepted ADRs and approved, implementing, or implemented Specifications are authoritative.
 Draft, proposed, review, superseded, legacy, deferred, and Spike material is
 not implementation authority.
 

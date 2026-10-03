@@ -2,11 +2,11 @@
 id: SPEC-013
 feature: giftui-mvp-architecture
 title: Dynamic and Static Runtime Profile Contract
-status: implementing
+status: implemented
 authors:
   - codex
 created: 2026-08-27
-updated: 2026-10-02
+updated: 2026-10-03
 proposal:
   - PROPOSAL-003
   - PROPOSAL-005
@@ -67,6 +67,8 @@ target_milestone: MVP
 ---
 
 # SPEC-013: Dynamic and Static Runtime Profile Contract
+
+> **Current implementation status — 2026-10-03:** Eugene explicitly authorized this Specification's `implemented` transition after conformance review and the complete 72-check gate. [Human approval](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/iteration-closeout-20261003/owner-transition-approval.md) supersedes earlier pending-transition statements; the approved contract is unchanged.
 
 > **Amendment approved — 2026-10-02:** The maintainer explicitly accepted
 > this amendment together with SPEC-015: the shared runner reports partial

@@ -22,7 +22,9 @@ complete = REPORT.match?(/\nstatus: complete\n/)
 fail_check("report must be collecting or complete") unless collecting || complete
 fail_check("plan status differs from report readiness") unless
   collecting ? PLAN.match?(/\nstatus: active\n/) : PLAN.match?(/\nstatus: completed\n/)
-fail_check("Specification must remain implementing pending human authority") unless SPEC.match?(/\nstatus: implementing\n/)
+implemented = SPEC.match?(/\nstatus: implemented\n/)
+fail_check("Specification must be implementing or implemented") unless
+  implemented || SPEC.match?(/\nstatus: implementing\n/)
 fail_check("reviewed revision is missing") unless REPORT.match?(/Reviewed implementation revision: `[0-9a-f]{40}`/)
 
 (1..15).each do |ordinal|
@@ -43,7 +45,13 @@ EVIDENCE_PATH.each_line do |line|
   fail_check("#{fields.fetch(0)} ledger/report disposition differs") unless
     row_result == (fields.fetch(4) == "complete" ? "pass" : "pending")
 end
-fail_check("report claims transition authority") unless REPORT.include?("authorization has not been given")
+if implemented
+  fail_check("implemented Specification requires a complete report") unless complete
+  fail_check("report omits explicit human authorization") unless
+    REPORT.include?("Eugene explicitly approved SPEC-014's `implementing → implemented` transition")
+else
+  fail_check("report claims transition authority") unless REPORT.include?("authorization has not been given")
+end
 fail_check("report omits hardware boundary") unless REPORT.match?(/does not claim target\nexecution, connected framebuffer\/PiScreen\/TFT behavior, remote access,\ndeployment, service restart, or flashing/)
 
 REPORT.scan(/\[[^\]]+\]\((\.\.\/[^)]+)\)/).flatten.each do |relative|

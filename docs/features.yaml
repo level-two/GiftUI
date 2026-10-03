@@ -18,10 +18,11 @@ features:
     dependencies: []
     milestone: MVP
   # Deferred toolchain question: FW-028 (linked from SPEC-001 and its plan).
-  # Pi display/control signoff verified 2026-10-03; timing/recovery and full connected gates remain open.
+  # All owner Specs implemented by explicit maintainer approval on 2026-10-03, with connected exceptions.
+  # Performance postponed under FW-027/FW-032; connected follow-up under FW-031/FW-033.
   signal-analyzer:
     title: Signal Analyzer Reference Application
-    status: implementation
+    status: implemented
     proposal:
       - PROPOSAL-002
     rfcs:
@@ -43,8 +44,9 @@ features:
   giftui-mvp-architecture:
     # Optional source-conditional cleanup: FW-029, linked from SPEC-013.
     # Component distribution/integration review: FW-016 and FW-030; no split approved.
+    # macOS physical-pointer validation is postponed under FW-031.
     title: GiftUI MVP Architecture Establishment
-    status: implementation
+    status: implemented
     proposal:
       - PROPOSAL-003
     rfcs:
@@ -90,7 +92,7 @@ features:
     milestone: MVP
   capability-system:
     title: GiftUI Capability System
-    status: implementation
+    status: implemented
     proposal:
       - PROPOSAL-004
     rfcs:
@@ -107,7 +109,7 @@ features:
     milestone: MVP
   observable-reference-state:
     title: Observable Reference State
-    status: implementation
+    status: implemented
     proposal:
       - PROPOSAL-005
     rfcs:
@@ -123,7 +125,7 @@ features:
     milestone: MVP
   canvas-drawing:
     title: Canvas, Path, and Stroke Drawing
-    status: implementation
+    status: implemented
     proposal:
       - PROPOSAL-006
     rfcs:

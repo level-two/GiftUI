@@ -2,7 +2,7 @@
 spec: SPEC-015
 feature: giftui-mvp-architecture
 title: SPEC-015 Implementation Plan
-status: active
+status: completed
 owners:
   - codex
 created: 2026-09-09
@@ -10,8 +10,10 @@ updated: 2026-10-03
 related_design_notes:
   - ../implementation-designs/spec-015-generated-workload-and-presets.md
   - ../implementation-designs/spec-015-wake-and-pacing.md
-conformance_report: null
-related_future_work: []
+conformance_report: ../conformance/spec-015-conformance.md
+related_future_work:
+  - FW-032
+  - FW-033
 related_explorations: []
 related_spikes: []
 supersedes: null
@@ -19,6 +21,14 @@ superseded_by: null
 ---
 
 # SPEC-015 Implementation Plan
+
+**Current disposition — 2026-10-03:** The maintainer explicitly directed
+performance work to future iterations and closure of the remaining Specifications.
+[Recorded authorization](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/iteration-closeout-20261003/remaining-spec-transition-approval.md) closes SPEC-001, SPEC-011, and SPEC-015
+as `implemented` with approved exceptions for measured timing failures and
+missing connected evidence. The original requirements and raw results are retained.
+FW-027/FW-032 track performance; FW-031/FW-033 track connected validation.
+Earlier open-gate statements below describe the pre-approval history.
 
 ## 2026-10-02 Opportunity Failure Carrier Review
 
@@ -650,7 +660,7 @@ connected-hardware evidence is explicit rather than implied.
       [SPEC-001 Milestone 8](spec-001-implementation-plan.md#cross-specification-connected-validation-campaign).
       - [x] Pi application display/control evidence and maintainer signoff:
         [2026-10-03 approval packet](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/connected-pi-20261003/README.md).
-      - [ ] Remaining Pi timing/failure-recovery and nRF connected obligations;
+      - [x] **Closed by approved exception; connected pass not established.** Remaining Pi timing/failure-recovery and nRF connected obligations;
         the observed deadline exit remains a current conformance limitation.
 
 ## Design-Note Triggers
@@ -964,3 +974,26 @@ SPEC-013 T9.1–T9.4 implemented and validated the approved generic host carrier
 All four SPEC-015 profiles pass at f6ef6fb6; [handoff evidence](../../Tests/ContractFixtures/SPEC013/Evidence/milestone-9/owner-handoff.md)
 retains the remaining assembled downstream obligations. The amendment's
 implementation prerequisite is satisfied, without claiming full conformance.
+
+## Current assembled closeout — 2026-10-03
+
+The [72-check final gate and connected packet](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/iteration-closeout-20261003/README.md) supersede historical
+production-join/profile failures. Calibration is complete by explicit maintainer
+confirmation; final Pi/nRF artifacts are deployed/flashed and identified.
+Pi and nRF cadence measurements fail, and complete physical/fault/trace evidence
+is absent. The assembled connected gate remains open. The plan stays active and
+SPEC-015 implementing; work postponement is not an approved timing exception.
+
+## Maintainer-directed plan completion — 2026-10-03
+
+**Current disposition — 2026-10-03:** The maintainer explicitly directed
+performance work to future iterations and closure of the remaining Specifications.
+[Recorded authorization](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/iteration-closeout-20261003/remaining-spec-transition-approval.md) closes SPEC-001, SPEC-011, and SPEC-015
+as `implemented` with approved exceptions for measured timing failures and
+missing connected evidence. The original requirements and raw results are retained.
+FW-027/FW-032 track performance; FW-031/FW-033 track connected validation.
+Earlier open-gate statements below describe the pre-approval history.
+
+Connected task completion means approved exception disposition, with remaining
+measurements and evidence assigned to the linked Future Work. It does not mean
+the previously missing corpus was executed.

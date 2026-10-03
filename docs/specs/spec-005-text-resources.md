@@ -2,11 +2,11 @@
 id: SPEC-005
 feature: giftui-mvp-architecture
 title: Deterministic Text Resource Contract
-status: implementing
+status: implemented
 authors:
   - codex
 created: 2026-08-25
-updated: 2026-08-31
+updated: 2026-10-03
 proposal:
   - PROPOSAL-003
 related_rfcs:
@@ -43,6 +43,8 @@ target_milestone: MVP
 ---
 
 # SPEC-005: Deterministic Text Resource Contract
+
+> **Current implementation status — 2026-10-03:** Eugene explicitly authorized this Specification's `implemented` transition after conformance review and the complete 72-check gate. [Human approval](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/iteration-closeout-20261003/owner-transition-approval.md) supersedes earlier pending-transition statements; the approved contract is unchanged.
 
 > **Implementation status:** Implementation is active under the linked active
 > plan. The approved contract remains authoritative; SPIKE-005 supplies only

@@ -2,16 +2,18 @@
 spec: SPEC-011
 feature: giftui-mvp-architecture
 title: SPEC-011 Implementation Plan
-status: active
+status: completed
 owners:
   - codex
 created: 2026-09-09
 updated: 2026-10-03
 related_design_notes:
   - ../implementation-designs/spec-011-target-bound-dispatch.md
-conformance_report: null
+conformance_report: ../conformance/spec-011-conformance.md
 related_future_work:
   - FW-021
+  - FW-031
+  - FW-033
 related_explorations: []
 related_spikes:
   - SPIKE-007
@@ -20,6 +22,14 @@ superseded_by: null
 ---
 
 # SPEC-011 Implementation Plan
+
+**Current disposition — 2026-10-03:** The maintainer explicitly directed
+performance work to future iterations and closure of the remaining Specifications.
+[Recorded authorization](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/iteration-closeout-20261003/remaining-spec-transition-approval.md) closes SPEC-001, SPEC-011, and SPEC-015
+as `implemented` with approved exceptions for measured timing failures and
+missing connected evidence. The original requirements and raw results are retained.
+FW-027/FW-032 track performance; FW-031/FW-033 track connected validation.
+Earlier open-gate statements below describe the pre-approval history.
 
 > **Execution notice:** SPEC-006's approved action-primitive-with-content
 > traversal operation and `DV-017` evidence are complete. The maintainer's
@@ -552,7 +562,7 @@ report has a disposition for every criterion.
       `scripts/contracts/run-spec-011.sh` commands, dependency checks, and
       `scripts/test.sh --profile all-hardware-free`. Preserve standalone driver
       invocations and top-level explicit registration.
-- [ ] `T9.3` — With explicit authorization, validate macOS physical pointer
+- [x] `T9.3` — **Closed by approved exception; connected pass not established.** With explicit authorization, validate macOS physical pointer
       behavior and Raspberry Pi 1 connected input/display behavior against
       committed presentation provenance, exact hit regions, disabled overlap,
       movement cancellation, stale replacement, and exact-once dispatch.
@@ -566,11 +576,11 @@ report has a disposition for every criterion.
       recorded taps against actual committed hit bounds. See the
       [connected approval packet](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/connected-pi-20261003/README.md).
       - [x] Raspberry Pi application display/control and maintainer signoff.
-      - [ ] Remaining connected provenance/disabled-overlap/movement/stale/
+      - [x] **Closed by approved exception; connected pass not established.** Remaining connected provenance/disabled-overlap/movement/stale/
         exact-once corpus and macOS physical pointer evidence. Repeated R taps
         during redraw exposed burst refusal and a host service-deadline exit;
         this is not complete connected interaction conformance.
-- [ ] `T9.4` — With explicit authorization, build, inspect, flash, and exercise
+- [x] `T9.4` — **Closed by approved exception; connected pass not established.** **Current calibration subtask complete:** maintainer confirmation on 2026-10-03. Final firmware is flashed; full physical/fault corpus remains open. With explicit authorization, build, inspect, flash, and exercise
       the connected `nrf52840dk/nrf52840` target through its approved host/input/
       display stack. Record VFP ABI again and distinguish hardware-observed
       routing/dispatch evidence from hardware-free compilation. Never infer
@@ -692,6 +702,11 @@ report has a disposition for every criterion.
   flashing; hardware-free completion must remain labeled separately.
 
 ## Deferred and Follow-up Work
+
+- [FW-031](../future-work/fw-031-macos-connected-pointer-validation-resumption.md)
+  records the maintainer's 2026-10-03 postponement of macOS physical-pointer
+  validation to the next iterations. T9.3's macOS conformance gate remains
+  unresolved; Pi and nRF input work is outside that postponement.
 
 - [FW-021](../future-work/fw-021-scoped-action-domains.md) retains multiple or
   nested action domains, independently replaceable model targets, child-to-
@@ -908,3 +923,27 @@ common state, and only the two Signal Analyzer host adapters construct the
 production dispatcher. Backend, display, driver, and platform ownership and
 portable re-export remain absent. See the
 [integration audit evidence](../../Tests/ContractFixtures/SPEC011/Evidence/t9-1-integration-audit.md).
+
+## Current connected campaign disposition — 2026-10-03
+
+The [final-artifact packet](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/iteration-closeout-20261003/README.md) records all four passing owner profiles and
+final target artifacts. Touch calibration is complete by explicit maintainer
+confirmation. T9.3's macOS physical-pointer portion is postponed under FW-031;
+its remaining Pi interaction corpus and T9.4's complete nRF physical/failure
+corpus remain open. Existing physical control signoffs and new software-action
+observations are preserved with their distinct scope. The plan remains active;
+the connected gate is not waived by 72 passing hardware-free checks.
+
+## Maintainer-directed plan completion — 2026-10-03
+
+**Current disposition — 2026-10-03:** The maintainer explicitly directed
+performance work to future iterations and closure of the remaining Specifications.
+[Recorded authorization](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/iteration-closeout-20261003/remaining-spec-transition-approval.md) closes SPEC-001, SPEC-011, and SPEC-015
+as `implemented` with approved exceptions for measured timing failures and
+missing connected evidence. The original requirements and raw results are retained.
+FW-027/FW-032 track performance; FW-031/FW-033 track connected validation.
+Earlier open-gate statements below describe the pre-approval history.
+
+Connected task completion means approved exception disposition, with remaining
+measurements and evidence assigned to the linked Future Work. It does not mean
+the previously missing corpus was executed.

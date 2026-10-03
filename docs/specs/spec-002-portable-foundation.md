@@ -2,11 +2,11 @@
 id: SPEC-002
 feature: giftui-mvp-architecture
 title: Portable Foundation Specification
-status: implementing
+status: implemented
 authors:
   - codex
 created: 2026-08-22
-updated: 2026-08-31
+updated: 2026-10-03
 proposal:
   - PROPOSAL-003
 related_rfcs:
@@ -45,6 +45,8 @@ target_milestone: MVP
 
 # SPEC-002: Portable Foundation Specification
 
+> **Current implementation status — 2026-10-03:** Eugene explicitly authorized this Specification's `implemented` transition after conformance review and the complete 72-check gate. [Human approval](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/iteration-closeout-20261003/owner-transition-approval.md) supersedes earlier pending-transition statements; the approved contract is unchanged.
+
 ## Summary
 
 This Specification defines GiftUI's portable foundation: shared portable
@@ -54,7 +56,7 @@ below their consumers. It deliberately leaves declarative semantics, failure
 and containment semantics, capability contribution and resolution semantics,
 and pointer admission behavior to their owning Specifications.
 
-This Specification is `implementing`; its approved contract authorizes the
+This Specification is `implemented`; its approved contract authorizes the
 active implementation. The value representations, visibility classes, and
 cross-layer mapping of local Foundation rejection into SPEC-003 outcomes are
 fixed here.

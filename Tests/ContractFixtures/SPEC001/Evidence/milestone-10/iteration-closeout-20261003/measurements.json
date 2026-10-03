@@ -1,0 +1,189 @@
+{
+  "pi": {
+    "identity": {
+      "kind": "identity",
+      "utc": "2026-10-03T15:40:14.187622+00:00",
+      "arch": "armv6l",
+      "binary": "acf57db5625eb1d2802210aaa6e30128749277d81ad26a3f313b79f8448d8d7e  /home/giftui/giftui/bin/SignalAnalyzerRaspberryPiARMv6"
+    },
+    "frames_observed": 32,
+    "frame_cost_us_min": 1294164,
+    "frame_cost_us_median": 1350954.5,
+    "frame_cost_us_max": 1522434,
+    "observed_frames_per_second": 0.7233473059921274,
+    "peak_sampled_rss_kib": 9740,
+    "exit": {
+      "kind": "exit",
+      "utc": "2026-10-03T15:41:02.114823+00:00",
+      "exit_code": 124,
+      "elapsed_seconds": 47.22860234999996
+    },
+    "cadence_pass": false,
+    "application_teardown": true
+  },
+  "nrf": {
+    "identity": {
+      "elf_sha256": "c6d0f12c8585cad3f3949fb596e13fa7328989239a31a1f6e428afadb541ed5c",
+      "production": 536873360,
+      "fault_counts": 537031424,
+      "kind": "connected-target nonhalting SWD reads; host timestamps include probe overhead",
+      "started_utc": "2026-10-03T15:45:17.282089+00:00",
+      "requested_sample_count": 600,
+      "requested_sleep_seconds": 60
+    },
+    "presentation_changes": [
+      {
+        "utc": "2026-10-03T15:45:17.531217+00:00",
+        "revision": 1
+      },
+      {
+        "utc": "2026-10-03T15:45:20.070977+00:00",
+        "revision": 2
+      },
+      {
+        "utc": "2026-10-03T15:45:41.250874+00:00",
+        "revision": 3
+      },
+      {
+        "utc": "2026-10-03T15:46:02.501036+00:00",
+        "revision": 4
+      },
+      {
+        "utc": "2026-10-03T15:46:24.137436+00:00",
+        "revision": 5
+      }
+    ],
+    "nonhalting_sample_count": 600,
+    "driver_faults_observed": [
+      0
+    ],
+    "cfsr_hfsr_observed": [
+      0
+    ],
+    "stack_high_water_bytes": null,
+    "stack_measurement_note": "Single-thread Zephyr stack was not sentinel-painted; raw dump cannot establish high-water. Preserve historical painted measurement separately.",
+    "stack_reserved_bytes": 27648,
+    "live_capture_prefix": [
+      {
+        "milliseconds": 0,
+        "channel": 1,
+        "level": 0
+      },
+      {
+        "milliseconds": 0,
+        "channel": 2,
+        "level": 0
+      },
+      {
+        "milliseconds": 0,
+        "channel": 3,
+        "level": 0
+      },
+      {
+        "milliseconds": 0,
+        "channel": 4,
+        "level": 0
+      },
+      {
+        "milliseconds": 80,
+        "channel": 3,
+        "level": 1
+      },
+      {
+        "milliseconds": 160,
+        "channel": 3,
+        "level": 0
+      },
+      {
+        "milliseconds": 240,
+        "channel": 3,
+        "level": 1
+      },
+      {
+        "milliseconds": 250,
+        "channel": 1,
+        "level": 1
+      },
+      {
+        "milliseconds": 400,
+        "channel": 2,
+        "level": 1
+      }
+    ],
+    "expected_deterministic_prefix": [
+      {
+        "milliseconds": 0,
+        "channel": 1,
+        "level": 0
+      },
+      {
+        "milliseconds": 0,
+        "channel": 2,
+        "level": 0
+      },
+      {
+        "milliseconds": 0,
+        "channel": 3,
+        "level": 0
+      },
+      {
+        "milliseconds": 0,
+        "channel": 4,
+        "level": 0
+      },
+      {
+        "milliseconds": 80,
+        "channel": 3,
+        "level": 1
+      },
+      {
+        "milliseconds": 160,
+        "channel": 3,
+        "level": 0
+      },
+      {
+        "milliseconds": 240,
+        "channel": 3,
+        "level": 1
+      },
+      {
+        "milliseconds": 250,
+        "channel": 1,
+        "level": 1
+      },
+      {
+        "milliseconds": 400,
+        "channel": 2,
+        "level": 1
+      }
+    ],
+    "capture_prefix_matches": true,
+    "cadence_pass": false,
+    "scope": "SWD timing and debugger-injected Start; halted snapshot has running state, capture count 9 and 40 drawing points; full connected corpus uncollected",
+    "painted_startup_idle_stack": {
+      "buffer": "0x20027E80",
+      "capacity_bytes": 27648,
+      "untouched_prefix_bytes": 8168,
+      "high_water_bytes": 19480,
+      "scope": "final artifact startup/idle, pre-boot sentinel; excludes sustained acquisition worst-case"
+    }
+  },
+  "maintainer_closeout": {
+    "date": "2026-10-03",
+    "implemented_specs": [
+      "SPEC-001",
+      "SPEC-011",
+      "SPEC-015"
+    ],
+    "authorization": "remaining-spec-transition-approval.md",
+    "disposition": "implemented with explicitly approved exceptions; original measurements unchanged",
+    "performance_future_work": [
+      "FW-027",
+      "FW-032"
+    ],
+    "connected_evidence_future_work": [
+      "FW-031",
+      "FW-033"
+    ]
+  }
+}

@@ -7,7 +7,10 @@ reviewers: [codex]
 created: 2026-09-19
 updated: 2026-10-03
 implementation_plan: ../implementation-plans/spec-001-implementation-plan.md
-related_future_work: []
+related_future_work:
+  - FW-027
+  - FW-032
+  - FW-033
 related_explorations: []
 related_spikes: []
 supersedes: null
@@ -15,6 +18,16 @@ superseded_by: null
 ---
 
 # SPEC-001 Conformance Report
+
+**Current disposition — 2026-10-03:** The maintainer explicitly directed
+performance work to future iterations and closure of the remaining Specifications.
+[Recorded authorization](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/iteration-closeout-20261003/remaining-spec-transition-approval.md) closes SPEC-001, SPEC-011, and SPEC-015
+as `implemented` with approved exceptions for measured timing failures and
+missing connected evidence. The original requirements and raw results are retained.
+FW-027/FW-032 track performance; FW-031/FW-033 track connected validation.
+Earlier open-gate statements below describe the pre-approval history.
+
+> **Validation before closeout approval — 2026-10-03:** [Final-artifact closeout](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/iteration-closeout-20261003/README.md): 41 scoped passes, two timing failures and two connected-evidence blockers. Calibration is confirmed. The subsequent approval above closes the four outstanding criteria by exception. The final current-artifact startup/idle stack measurement is 19,480 / 27,648 bytes. Historical sections below retain their original scope.
 
 ## 2026-09-27 Landscape Follow-up
 
@@ -73,7 +86,7 @@ with zero failed checks.
 | `SA-AC-002` | pass | [interface audit](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-9/interface-and-dependency-audit.md) | Exact Domain/Data/Presentation/host direction is audited. |
 | `SA-AC-003` | pass | [interface audit](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-9/interface-and-dependency-audit.md) | Domain forbidden-import/facility scans pass. |
 | `SA-AC-004` | pass | [interface audit](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-9/interface-and-dependency-audit.md) | Presentation forbidden-import/facility scans pass. |
-| `SA-AC-005` | blocked | [host structural gates](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-6/host-structural-gates.md), [Pi adapter](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-6/piscreen-platform-adapter.md), [nRF adapter](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-6/nrf52840-tft-input-adapter.md) | Semantic hierarchy and device adapters are complete; connected analyzer output on PiScreen and TFT is missing. |
+| `SA-AC-005` | approved exception | [current connected packet](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/iteration-closeout-20261003/README.md) | Reviewed host pixels pass and prior target display/control approvals are retained; complete final connected screen/input coverage is still open. |
 | `SA-AC-006` | pass | [host structural gates](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-6/host-structural-gates.md) | One source identity and fixed hierarchy compile across all profiles. |
 | `SA-AC-007` | pass | [repository corpus](../../Tests/ContractFixtures/SPEC001/repository-lifecycle-cases.tsv) | Current-value, replacement, detach, and bounded-return cases pass. |
 | `SA-AC-008` | pass | [interface audit](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-9/interface-and-dependency-audit.md), [integrated cycle](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-5/integrated-cycle.md) | Serialized delivery and distinct mutation domains pass without portable concurrency facilities. |
@@ -91,9 +104,9 @@ with zero failed checks.
 | `SA-AC-020` | pass | [waveform corpus](../../Tests/ContractFixtures/SPEC001/waveform-drawing-cases.tsv) | Ruler bytes and 11-plus-one grid pass. |
 | `SA-AC-021` | pass | [sustained workload](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-7/sustained-workload-and-resources.md) | 120 consistent frames cover 2,400 events with coalescing. |
 | `SA-AC-022` | pass | [driver suite](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-9/hardware-free-driver-suite.md) | Both macOS executables build, execute, and compare equal. |
-| `SA-AC-023` | blocked | [current connected verification](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/connected-pi-20261003/README.md) | Pi display/control signoff verified by Eugene; cadence, deadline-safe repeated-R behavior, complete connected coverage, and recovery remain open. |
-| `SA-AC-024` | blocked | [four-preset evidence](../../Tests/ContractFixtures/SPEC015/Evidence/milestone-6/nrf52840-static.md), [nRF adapter and host loop](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-6/nrf52840-tft-input-adapter.md) | The selected ILI9486/ADS7846 production firmware and exact-source native probe pass the hardware-free gate; no board was flashed or connected output/input measured. |
-| `SA-AC-025` | blocked | [sustained workload](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-7/sustained-workload-and-resources.md), [nRF adapter and host loop](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-6/nrf52840-tft-input-adapter.md) | Production binary/RAM/storage/drawing fit is inspected; connected stack high-water, timing, and application execution remain missing. |
+| `SA-AC-023` | approved exception | [current connected packet](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/iteration-closeout-20261003/README.md) | Final ARMv6 artifact deployed and hash verified; 32 updates measure 0.72335 frames/second and 1.294–1.522-second costs. Display/control signoff is retained; timing work is postponed under the recorded maintainer-approved closeout exception. |
+| `SA-AC-024` | approved exception | [current connected packet](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/iteration-closeout-20261003/README.md) | Clean final firmware flashed; calibration confirmed, software Start accepted and live execution measured. Complete final physical interaction/display/failure corpus remains uncollected; cadence is separately failing. |
+| `SA-AC-025` | pass | [current connected packet](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/iteration-closeout-20261003/README.md) | Historical painted stack-fit case passes within its recorded scope. Final firmware builds and runs at 191,104-byte RAM/275,600-byte flash; fresh painted startup/idle stack high-water is 19,480 / 27,648 bytes. The unpainted diagnostic dump is excluded. |
 | `SA-AC-026` | pass | [source substitution](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-6/source-and-facility-substitution.md) | Conforming source replacement changes no portable owner. |
 | `SA-AC-027` | pass | [source/facility evidence](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-6/source-and-facility-substitution.md) | Every required facility fails closed before publication. |
 | `SA-AC-028` | pass | [host structural gates](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-6/host-structural-gates.md) | Host lifecycle owns observation and adapter sinks. |
@@ -107,7 +120,7 @@ with zero failed checks.
 | `SA-AC-036` | pass | [integrated cycle](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-5/integrated-cycle.md) | Button callback becomes a later fact; executor transcripts agree. |
 | `SA-AC-037` | pass | [interface audit](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-9/interface-and-dependency-audit.md) | Six qualified actions and total noncapturing handler pass all profiles. |
 | `SA-AC-038` | pass | [action target access](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-5/action-model-target-access.md) | Replacement cancellation and failed-replacement preservation pass. |
-| `SA-AC-039` | blocked | [nRF evidence](../../Tests/ContractFixtures/SPEC015/Evidence/milestone-6/nrf52840-static.md) | Typed storage, ELF, RAM/flash/stack, and forbidden symbols pass; target mutation/publication/frame timing is not collected. |
+| `SA-AC-039` | approved exception | [current connected packet](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/iteration-closeout-20261003/README.md) | Current firmware ABI/storage/build evidence passes, but approximately 21-second connected presentation intervals fail cadence. Compliant sustained admission/mutation/publication/frame timing remains unproved. |
 | `SA-AC-040` | pass | [failure matrix](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-7/exhaustive-failure-matrix.md), [diagnostic matrix](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-7/diagnostic-profile-equivalence.md) | Exact normalization, effect order, policy, and diagnostic independence pass. |
 | `SA-AC-041` | pass | [diagnostic matrix](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-7/diagnostic-profile-equivalence.md) | Complete bounded UTF-8 and projection corpus passes both profiles. |
 | `SA-AC-042` | pass | [driver suite](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-9/hardware-free-driver-suite.md) | Both CH4 vectors compare equal in all four fixtures. |
@@ -266,3 +279,44 @@ No timing exception or whole-Spec `implemented` transition is inferred from
 application signoff. These current blockers cannot be deferred as Future Work.
 Temporary stopped-startup hosting and monitoring helpers are removed, with the
 working calibration and captured-tap regression retained.
+
+## Current connected closeout and maintainer dispositions — 2026-10-03
+
+The [final-artifact closeout](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/iteration-closeout-20261003/README.md) supersedes earlier claims that no
+production artifact was deployed/flashed or that calibration is provisional.
+The maintainer explicitly confirmed touch calibration; that subtask is complete.
+Pi timing work is postponed under FW-027, and macOS physical-pointer work is
+postponed under FW-031. Neither postponement is an acceptance-criterion waiver.
+
+All 72 final registered hardware-free checks pass, including this owner's four
+profiles and current production-join/pixel evidence. The final Pi hash is
+verified on the target. Its 32 measured updates average approximately 0.72
+frames/second, with 1.294–1.522-second costs and 9,740 KiB peak sampled RSS;
+bounded SIGINT teardown prints `status=completed`. The cleaned final nRF image
+is flashed and running. Its recorded software Start succeeds, driver/CPU fault
+samples are zero, and nine live records match the deterministic source prefix.
+Observed presentation intervals of approximately 21 seconds fail cadence.
+
+Complete connected physical/failure coverage, sustained 80-Hz acceptance,
+target costs and full connected semantic/action/drawing trace comparison remain
+unproved. The macOS physical-pointer subset is explicitly postponed. The
+Specification and connected plan remain implementing/active; this complete
+evidence disposition does not support a full `implemented` transition.
+
+## Final current-artifact stack case — 2026-10-03
+
+The [painted final-firmware snapshot](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/iteration-closeout-20261003/README.md) measures 19,480 / 27,648 bytes after startup/idle, with zero driver/CFSR/HFSR faults and production revision 1. This closes the current startup/idle measurement subcase; it does not establish sustained-load timing or exhaustive worst-case stack use.
+
+## Approved exception and implemented transition — 2026-10-03
+
+**Current disposition — 2026-10-03:** The maintainer explicitly directed
+performance work to future iterations and closure of the remaining Specifications.
+[Recorded authorization](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/iteration-closeout-20261003/remaining-spec-transition-approval.md) closes SPEC-001, SPEC-011, and SPEC-015
+as `implemented` with approved exceptions for measured timing failures and
+missing connected evidence. The original requirements and raw results are retained.
+FW-027/FW-032 track performance; FW-031/FW-033 track connected validation.
+Earlier open-gate statements below describe the pre-approval history.
+
+Final acceptance disposition: 41 scoped passes and four approved exceptions
+(SA-AC-005/023/024/039). Raw timing failures and missing coverage remain
+unchanged in the evidence packet.
