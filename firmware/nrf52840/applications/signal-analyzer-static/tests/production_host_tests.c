@@ -21,6 +21,7 @@ static int refuse_initial;
 static int refuse_next;
 static int pen_result;
 static int zero_delay_pair;
+static uint64_t clock_now;
 
 void k_busy_wait(uint32_t duration) { (void)duration; }
 int ads7846_initialize(void) { return 0; }
@@ -150,7 +151,7 @@ uint64_t giftui_signal_analyzer_next_delay_microseconds(void) { return delay; }
 void giftui_signal_analyzer_retire_initial(void) { teardown_count++; }
 int giftui_static_host_clock_now(uint64_t *timestamp)
 {
-    *timestamp = 0U;
+    *timestamp = clock_now;
     return 0;
 }
 int giftui_static_host_run(
@@ -200,6 +201,7 @@ int main(void)
     assert(service(&production, 750000U, &deadline, &stop) == -EIO);
     refuse_next = 0;
     pen_result = -EIO;
+    clock_now = 100000U;
     assert(touch_poll() == -EIO);
     pen_result = 0;
     assert(teardown(&production) == 0);

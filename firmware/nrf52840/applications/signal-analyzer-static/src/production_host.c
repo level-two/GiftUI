@@ -14,6 +14,7 @@
 #include <zephyr/kernel.h>
 
 #define GIFTUI_INPUT_POLL_MICROSECONDS 10000U
+#define GIFTUI_TOUCH_SAMPLE_MICROSECONDS 50000U
 #define GIFTUI_FRAME_INTERVAL_MICROSECONDS 250000U
 
 extern uint32_t giftui_signal_analyzer_present_initial(
@@ -36,6 +37,7 @@ struct giftui_production_context {
     struct giftui_static_touch_pipeline touch;
     uint64_t next_transition_deadline;
     uint64_t next_frame_deadline;
+    uint64_t next_touch_sample_deadline;
 };
 
 static struct giftui_production_context production;
@@ -48,8 +50,8 @@ uint64_t giftui_static_host_source_clock_delay(uint64_t duration)
     return duration;
 }
 
-/* Full ADC range is the hardware-free default; connected calibration remains
- * a separately measured device setting. */
+/* Connected button samples establish swapped, reversed axes for the landscape
+ * display. Full ADC range remains provisional until endpoint calibration. */
 static const struct giftui_touch_calibration touch_calibration = {
     .horizontal_minimum = 0U,
     .horizontal_maximum = 4095U,
@@ -57,9 +59,9 @@ static const struct giftui_touch_calibration touch_calibration = {
     .vertical_maximum = 4095U,
     .logical_width = 320U,
     .logical_height = 240U,
-    .swap_axes = 0U,
-    .invert_horizontal = 0U,
-    .invert_vertical = 0U,
+    .swap_axes = 1U,
+    .invert_horizontal = 1U,
+    .invert_vertical = 1U,
 };
 
 static int validate(void *opaque)
@@ -92,6 +94,7 @@ static int activate(void *opaque)
         return -EIO;
     }
     context->next_transition_deadline = 0U;
+    context->next_touch_sample_deadline = 0U;
     uint64_t now = 0U;
     if (giftui_static_host_clock_now(&now) != 0 ||
         now > UINT64_MAX - GIFTUI_FRAME_INTERVAL_MICROSECONDS) {
@@ -103,6 +106,18 @@ static int activate(void *opaque)
 
 static int touch_poll(void)
 {
+    uint64_t now = 0U;
+    if (giftui_static_host_clock_now(&now) != 0 ||
+        now > UINT64_MAX - GIFTUI_TOUCH_SAMPLE_MICROSECONDS) {
+        return -ERANGE;
+    }
+    /* Six input slots must cover the 250 ms opportunity interval. Sampling
+     * has its own deadline because source wakes can occur before the loop's
+     * nominal poll deadline. Never admit an extra sample on those wakes. */
+    if (now < production.next_touch_sample_deadline) {
+        return 0;
+    }
+    production.next_touch_sample_deadline = now + GIFTUI_TOUCH_SAMPLE_MICROSECONDS;
     const int pen = ads7846_pen_is_down();
     if (pen < 0) {
         giftui_static_touch_pipeline_transport_reset(&production.touch);
@@ -200,6 +215,7 @@ static int teardown(void *opaque)
     context->touch.valid = 0U;
     context->next_transition_deadline = 0U;
     context->next_frame_deadline = 0U;
+    context->next_touch_sample_deadline = 0U;
     return 0;
 }
 

@@ -2825,3 +2825,17 @@ Eugene explicitly accepted the three fresh cleared-state images from `b0bfa295`.
 ### Eight-state rehearsal gate completed — 2026-10-03
 
 Both registered constrained-profile drivers pass with the approved cleared references, bringing the current exact pixel set to 24 images. [The approval packet](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/current-cleared-20261003/approval.md) retains immutable run IDs, all comparisons/fault checks, 269 selected tests per profile, ABI/resource evidence and cleared-reference corruption negatives. T7.7 and T7.9 are complete. Only T8.1/T8.2/T8.3 remain for connected display/input, cadence/costs and connected trace comparison. The plan remains active and SPEC-001 remains implementing.
+
+### Connected nRF button diagnosis — 2026-10-03
+
+Maintainer-authorized tap capture identified a landscape touch-orientation mismatch
+and a 100 Hz producer overflowing the six-event queue between 250 ms opportunities.
+The [connected touch record](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/connected-touch-pacing-20261003.md)
+retains the nonresponsive physical observations, corrected orientation, independent
+50 ms sample deadline, regression and native-firmware results, and reflashed artifact.
+The corrected physical Start/Stop and minus/plus retry is **verified and complete**
+by Eugene's explicit confirmation. The run records accepted contacts, presentation
+revisions 1–14, and over eight minutes of zero observed CPU/driver faults. Temporary
+diagnostics, printk stubs, and added tests were removed at his request. T8.2 remains
+open for endpoint calibration and the remaining connected acceptance evidence;
+Specification lifecycle status is unchanged.

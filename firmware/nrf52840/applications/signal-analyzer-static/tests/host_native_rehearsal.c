@@ -350,8 +350,9 @@ int ads7846_read_raw(struct ads7846_raw_sample *sample)
     }
     const uint32_t point = touch_point;
     assert(point != 0U && sample != NULL);
-    sample->x = (uint16_t)(((point & 0xffffU) * 4095U) / 319U);
-    sample->y = (uint16_t)((((point >> 16) & 0xffffU) * 4095U) / 239U);
+    /* Generate controller coordinates for the connected landscape orientation. */
+    sample->x = (uint16_t)(4095U - ((((point >> 16) & 0xffffU) * 4095U) / 239U));
+    sample->y = (uint16_t)(4095U - (((point & 0xffffU) * 4095U) / 319U));
     sample->z1 = 1U;
     sample->z2 = 1U;
     return 0;
