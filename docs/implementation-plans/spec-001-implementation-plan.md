@@ -1936,7 +1936,7 @@ the next connected run for the corresponding target.
       to every committed target frame. The [rehearsal evidence](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-7/host-loop-rehearsal.md)
       records commands, trace identities, and comparison results. Reviewed
       pixel references and exact pixel comparisons remain `T7.7`.
-- [ ] `T7.7` — Capture canonical final pixels at the exact approved Pi and
+- [x] `T7.7` — Capture canonical final pixels at the exact approved Pi and
       nRF extents for idle, running with four traces, stopped, cleared, each
       selected window, and a visible diagnostic. Reconstruct the nRF tiled
       surface only in the macOS recording adapter from submitted regions.
@@ -2817,3 +2817,7 @@ comparison. The plan stays active and SPEC-001 stays implementing.
 ### Current cleared-state recordings — 2026-10-03
 
 Both host-native production recorders now capture Clear after the preserved stop/restart and window-control sequence. Restart preserves history under the approved contract; explicit Clear resets the capture and preserves channel levels. Fresh Pi logical/physical and nRF images, zero-transition/running assertions, unchanged independent behavior comparisons, 21 exact approved-reference matches and 17 passing focused tests are retained in [the capture packet](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/current-cleared-20261003/README.md). T7.7 now awaits visual acceptance of these three fresh candidates; T7.9 awaits their eight-state reviewed-reference gate. Historical cleared references remain preserved. Connected tasks and Specification lifecycle status are unchanged.
+
+### Cleared-state review accepted — 2026-10-03
+
+Eugene explicitly accepted the three fresh cleared-state images from `b0bfa295`. Their raw pixels are installed from the immutable capture archive; eight current logical states and Pi physical mapping now have reviewed references. Exact retained-frame comparison and cleared-reference corruption negatives pass. [Approval and validation](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/current-cleared-20261003/approval.md) close T7.7. T7.9 is awaiting the registered profile reruns with the expanded gate. Connected validation remains open.

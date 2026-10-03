@@ -26,7 +26,7 @@ references="${project_root}/Tests/ContractFixtures/SPEC001/PixelReferences"
 default_evidence="${project_root}/Tests/ContractFixtures/SPEC001/Evidence/milestone-10"
 evidence="${reference_traces:-${default_evidence}}"
 if [[ "${candidate_only}" == false ]]; then
-    states=(idle running-four-traces stopped window-one-second
+    states=(idle running-four-traces stopped cleared window-one-second
         window-five-seconds window-two-seconds diagnostic)
     expected_bytes=153600
     [[ "${target}" == pi ]] && expected_bytes=115200
@@ -88,12 +88,10 @@ fi
 
 arguments=(
     --profile "${target}" --captures "${captures}" --images "${images}"
-    --include-diagnostic
+    --include-diagnostic --include-cleared
 )
 if [[ "${candidate_only}" == false ]]; then
     arguments+=(--references "${references}")
-else
-    arguments+=(--include-cleared)
 fi
 python3 "${project_root}/scripts/contracts/render-spec-001-rasters.py" \
     "${arguments[@]}" > "${output}/raster-hashes.tsv"
