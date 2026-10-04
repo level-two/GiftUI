@@ -1,0 +1,469 @@
+{
+  "revision": "b3aad1b446864728ed5cefa340ef1620afeb784f",
+  "authorization": "Maintainer authorized hardware measurements and experiments after hardware-free completion on 2026-10-04; no services restarted; physical touch not supplied.",
+  "pi": {
+    "identity": {
+      "kind": "identity",
+      "utc": "2026-10-04T16:46:26.933208+00:00",
+      "architecture": "armv6l",
+      "hostname": "giftui-pi",
+      "binary_digest": "acf57db5625eb1d2802210aaa6e30128749277d81ad26a3f313b79f8448d8d7e",
+      "temperature_millidegrees": "41160"
+    },
+    "frames": 31,
+    "frame_us_min": 1272457,
+    "frame_us_median": 1368875,
+    "frame_us_max": 1513110,
+    "observed_frames_per_second": 0.7167031197800122,
+    "peak_sampled_rss_kib": 9748,
+    "exit": {
+      "kind": "exit",
+      "utc": "2026-10-04T16:47:13.049216+00:00",
+      "wrapper_exit_code": 124,
+      "elapsed_seconds": 46.079230500999984,
+      "stop_reason": "45-second SIGINT timeout; application status is recorded separately"
+    },
+    "application_completed": true,
+    "scope": "45-second idle full-frame run; no physical/synthetic input; not the 80 events/s acceptance workload"
+  },
+  "nrf": {
+    "observations": {
+      "baseline-idle": {
+        "identity": {
+          "elf_sha256": "c6d0f12c8585cad3f3949fb596e13fa7328989239a31a1f6e428afadb541ed5c",
+          "elf": ".build/nrf52840/signal-analyzer-static/zephyr/zephyr.elf",
+          "probe_serial": "683833660",
+          "production": 536873360,
+          "fault_counts": 537031424,
+          "command": [
+            "JLinkExe",
+            "-device",
+            "NRF52840_XXAA",
+            "-if",
+            "SWD",
+            "-speed",
+            "4000",
+            "-SelectEmuBySN",
+            "683833660",
+            "-autoconnect",
+            "1",
+            "-CommanderScript",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/iteration-002-connected/baseline-idle/monitor.jlink"
+          ],
+          "requested_samples": 120,
+          "requested_sleep_ms": 100,
+          "kind": "connected nonhalting SWD reads; host timestamps include probe overhead",
+          "started_utc": "2026-10-04T16:46:24.661558+00:00",
+          "exit_code": 0,
+          "elapsed_seconds": 13.809165042
+        },
+        "samples": 120,
+        "presentation_changes": [
+          {
+            "utc": "2026-10-04T16:46:25.142030+00:00",
+            "revision": 1
+          }
+        ],
+        "driver_fault_values": [
+          0
+        ],
+        "cfsr_hfsr_values": [
+          0
+        ]
+      },
+      "ready-acquisition": {
+        "identity": {
+          "elf_sha256": "c6d0f12c8585cad3f3949fb596e13fa7328989239a31a1f6e428afadb541ed5c",
+          "elf": ".build/nrf52840/signal-analyzer-static/zephyr/zephyr.elf",
+          "probe_serial": "683833660",
+          "production": 536873360,
+          "fault_counts": 537031424,
+          "command": [
+            "JLinkExe",
+            "-device",
+            "NRF52840_XXAA",
+            "-if",
+            "SWD",
+            "-speed",
+            "4000",
+            "-SelectEmuBySN",
+            "683833660",
+            "-autoconnect",
+            "1",
+            "-CommanderScript",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/iteration-002-connected/ready-acquisition/monitor.jlink"
+          ],
+          "requested_samples": 600,
+          "requested_sleep_ms": 100,
+          "kind": "connected nonhalting SWD reads; host timestamps include probe overhead",
+          "started_utc": "2026-10-04T17:04:26.141501+00:00",
+          "exit_code": 0,
+          "elapsed_seconds": 66.8367315
+        },
+        "samples": 600,
+        "presentation_changes": [
+          {
+            "utc": "2026-10-04T17:04:26.381862+00:00",
+            "revision": 1
+          },
+          {
+            "utc": "2026-10-04T17:04:28.716174+00:00",
+            "revision": 2
+          },
+          {
+            "utc": "2026-10-04T17:04:49.905962+00:00",
+            "revision": 3
+          },
+          {
+            "utc": "2026-10-04T17:05:11.105974+00:00",
+            "revision": 4
+          },
+          {
+            "utc": "2026-10-04T17:05:32.731399+00:00",
+            "revision": 5
+          }
+        ],
+        "driver_fault_values": [
+          0
+        ],
+        "cfsr_hfsr_values": [
+          0
+        ]
+      },
+      "ready-stop": {
+        "identity": {
+          "elf_sha256": "c6d0f12c8585cad3f3949fb596e13fa7328989239a31a1f6e428afadb541ed5c",
+          "elf": ".build/nrf52840/signal-analyzer-static/zephyr/zephyr.elf",
+          "probe_serial": "683833660",
+          "production": 536873360,
+          "fault_counts": 537031424,
+          "command": [
+            "JLinkExe",
+            "-device",
+            "NRF52840_XXAA",
+            "-if",
+            "SWD",
+            "-speed",
+            "4000",
+            "-SelectEmuBySN",
+            "683833660",
+            "-autoconnect",
+            "1",
+            "-CommanderScript",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/iteration-002-connected/ready-stop/monitor.jlink"
+          ],
+          "requested_samples": 400,
+          "requested_sleep_ms": 100,
+          "kind": "connected nonhalting SWD reads; host timestamps include probe overhead",
+          "started_utc": "2026-10-04T17:06:31.778297+00:00",
+          "exit_code": 0,
+          "elapsed_seconds": 44.628318583
+        },
+        "samples": 400,
+        "presentation_changes": [
+          {
+            "utc": "2026-10-04T17:06:32.019062+00:00",
+            "revision": 7
+          },
+          {
+            "utc": "2026-10-04T17:06:40.224337+00:00",
+            "revision": 8
+          },
+          {
+            "utc": "2026-10-04T17:07:03.209229+00:00",
+            "revision": 9
+          }
+        ],
+        "driver_fault_values": [
+          0
+        ],
+        "cfsr_hfsr_values": [
+          0
+        ]
+      },
+      "painted-baseline-startup": {
+        "identity": {
+          "elf_sha256": "c6d0f12c8585cad3f3949fb596e13fa7328989239a31a1f6e428afadb541ed5c",
+          "elf": ".build/nrf52840/signal-analyzer-static/zephyr/zephyr.elf",
+          "probe_serial": "683833660",
+          "production": 536873360,
+          "fault_counts": 537031424,
+          "command": [
+            "JLinkExe",
+            "-device",
+            "NRF52840_XXAA",
+            "-if",
+            "SWD",
+            "-speed",
+            "4000",
+            "-SelectEmuBySN",
+            "683833660",
+            "-autoconnect",
+            "1",
+            "-CommanderScript",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/iteration-002-connected/painted-baseline-startup/monitor.jlink"
+          ],
+          "requested_samples": 600,
+          "requested_sleep_ms": 100,
+          "kind": "connected nonhalting SWD reads; host timestamps include probe overhead",
+          "started_utc": "2026-10-04T17:09:21.095774+00:00",
+          "exit_code": 0,
+          "elapsed_seconds": 66.50033025
+        },
+        "samples": 600,
+        "presentation_changes": [
+          {
+            "utc": "2026-10-04T17:09:21.148661+00:00",
+            "revision": 0
+          }
+        ],
+        "driver_fault_values": [
+          0
+        ],
+        "cfsr_hfsr_values": [
+          0
+        ]
+      },
+      "painted-baseline-ready": {
+        "identity": {
+          "elf_sha256": "c6d0f12c8585cad3f3949fb596e13fa7328989239a31a1f6e428afadb541ed5c",
+          "elf": ".build/nrf52840/signal-analyzer-static/zephyr/zephyr.elf",
+          "probe_serial": "683833660",
+          "production": 536873360,
+          "fault_counts": 537031424,
+          "command": [
+            "JLinkExe",
+            "-device",
+            "NRF52840_XXAA",
+            "-if",
+            "SWD",
+            "-speed",
+            "4000",
+            "-SelectEmuBySN",
+            "683833660",
+            "-autoconnect",
+            "1",
+            "-CommanderScript",
+            "/Users/eugene/work/GiftUI/.build/nrf52840/iteration-002-connected/painted-baseline-ready/monitor.jlink"
+          ],
+          "requested_samples": 600,
+          "requested_sleep_ms": 100,
+          "kind": "connected nonhalting SWD reads; host timestamps include probe overhead",
+          "started_utc": "2026-10-04T17:11:46.087269+00:00",
+          "exit_code": 0,
+          "elapsed_seconds": 66.798070041
+        },
+        "samples": 600,
+        "presentation_changes": [
+          {
+            "utc": "2026-10-04T17:11:46.329046+00:00",
+            "revision": 1
+          }
+        ],
+        "driver_fault_values": [
+          0
+        ],
+        "cfsr_hfsr_values": [
+          0
+        ]
+      }
+    },
+    "steady_publication_gaps_seconds": [
+      21.189788,
+      21.200012,
+      21.625425
+    ],
+    "median_gap_seconds": 21.200012,
+    "live_prefix": [
+      {
+        "milliseconds": 0,
+        "channel": 1,
+        "level": 0
+      },
+      {
+        "milliseconds": 0,
+        "channel": 2,
+        "level": 0
+      },
+      {
+        "milliseconds": 0,
+        "channel": 3,
+        "level": 0
+      },
+      {
+        "milliseconds": 0,
+        "channel": 4,
+        "level": 0
+      },
+      {
+        "milliseconds": 80,
+        "channel": 3,
+        "level": 1
+      },
+      {
+        "milliseconds": 160,
+        "channel": 3,
+        "level": 0
+      },
+      {
+        "milliseconds": 240,
+        "channel": 3,
+        "level": 1
+      },
+      {
+        "milliseconds": 250,
+        "channel": 1,
+        "level": 1
+      },
+      {
+        "milliseconds": 400,
+        "channel": 2,
+        "level": 1
+      }
+    ],
+    "expected_prefix": [
+      {
+        "milliseconds": 0,
+        "channel": 1,
+        "level": 0
+      },
+      {
+        "milliseconds": 0,
+        "channel": 2,
+        "level": 0
+      },
+      {
+        "milliseconds": 0,
+        "channel": 3,
+        "level": 0
+      },
+      {
+        "milliseconds": 0,
+        "channel": 4,
+        "level": 0
+      },
+      {
+        "milliseconds": 80,
+        "channel": 3,
+        "level": 1
+      },
+      {
+        "milliseconds": 160,
+        "channel": 3,
+        "level": 0
+      },
+      {
+        "milliseconds": 240,
+        "channel": 3,
+        "level": 1
+      },
+      {
+        "milliseconds": 250,
+        "channel": 1,
+        "level": 1
+      },
+      {
+        "milliseconds": 400,
+        "channel": 2,
+        "level": 1
+      }
+    ],
+    "prefix_matches": true,
+    "start": "Ready revision1, pending pair2; subsequent running state1, capture9 and drawing40 observed.",
+    "stop": "Pair admitted at revision6 while halted mid-frame; later snapshot at revision13 remained state1/capture16. Stop outcome not established; no physical Stop claimed.",
+    "painted_startup": {
+      "stack_range": [
+        "0x20027e80",
+        "0x2002ea80"
+      ],
+      "sentinel": 170,
+      "bytes": 27648,
+      "untouched_prefix_bytes": 8168,
+      "observed_sentinel_extent_bytes": 19480,
+      "scope": "Fresh verified reset/halt/loadbin paint, no debugger function calls before capture; ready idle revision1, CFSR/HFSR0. Observed startup/idle extent, not whole-control-flow bound."
+    },
+    "excluded_attempts": [
+      "paint.gdb / idle-stack.bin / start.gdb",
+      "start-valid.gdb (CPU registers initialized at attach)",
+      "baseline-acquisition (revision0 after unintended register initialization)",
+      "painted-startup (not final independent baseline)"
+    ],
+    "limits": "Host timestamped SWD observations include probe overhead; no 80event/s/30s workload, complete pixel corpus, physical contact or failure/recovery corpus."
+  },
+  "archive": {
+    "path": "docs/iterations/iteration-002-review/evidence/22-connected-logs.tar.gz",
+    "sha256": "b82fad83279ee00a0ab6c75d6e5f2ca4327651567e9e18a99f53e86fc9693ff6",
+    "files": {
+      "raspberry-pi/iteration-002-connected/baseline.jsonl": "ce00a936aef3ef8fb342a6eb1c38fcedecb2730a0d6e08a93076aec4cefb537c",
+      "raspberry-pi/iteration-002-connected/display-inspection.log": "5adf3dc60c33431bd81977ab2b233a27ecc32633072d6546bd58542bf24ab879",
+      "raspberry-pi/iteration-002-connected/doctor.log": "a74c12b1f674a7864fa05ae914d98b41ef8e8abf174403fa051c52478b62d58e",
+      "raspberry-pi/iteration-002-connected/target-identity.log": "a213ca92d4a8571ccb90e034e41c3200f83b57ac18d92a69d3d1607980535811",
+      "nrf52840/iteration-002-connected/acquisition-prefix.bin": "6f446be37f9de42e5a43c77f3dbe43705bb32e6d87bcb7d8e110db8ecd68cb80",
+      "nrf52840/iteration-002-connected/baseline-acquisition/identity.json": "70b738b491a1bdfeff166c082c617585614f5dc51187c89342f974ee44e296b3",
+      "nrf52840/iteration-002-connected/baseline-acquisition/monitor.jlink": "1e8b968f1eabfd0aa68a8e55b88b3cec32152b103a1723d3eb6de7f2add5aba8",
+      "nrf52840/iteration-002-connected/baseline-acquisition/monitor.log": "4bd2d574453dde25ac1362d599f08c6f80522bb1a9507f1b12327c65f798778e",
+      "nrf52840/iteration-002-connected/baseline-acquisition-summary.log": "41e5391a720659e7f907eefdd7bafdb4ed726afc75504300fb023222134da823",
+      "nrf52840/iteration-002-connected/baseline-flash.log": "29d90bed064d1b6b1b33ba96ee4e631c88052db885cd3cc017ad742bc16b3602",
+      "nrf52840/iteration-002-connected/baseline-idle/identity.json": "47c3e404d3f5d1ab2d52ffc60a007063a7e6fd5d20f04164dce93da4ce283568",
+      "nrf52840/iteration-002-connected/baseline-idle/monitor.jlink": "9163f42275ef27cff7cb99a4c5268cfb2bc43021e826cd37a7a3ffbbaf507c90",
+      "nrf52840/iteration-002-connected/baseline-idle/monitor.log": "94f4f61d8bca233151206cf876e36d66640b0f937b2b2a90a258ea74b13da2ba",
+      "nrf52840/iteration-002-connected/baseline-idle-summary.log": "592b060e4f2095ca61f47f1aae2f4c9c62c1ea13aaabb701e40b679c6e1a69ca",
+      "nrf52840/iteration-002-connected/baseline-stack-paint.bin": "71564595b47d580587570bbc0671d771ac4b634dd6055858ead5bc95af1435b3",
+      "nrf52840/iteration-002-connected/baseline-stack-paint.jlink": "275e40ba49ece035e8c90ff2f17c1f13552869d639e70a31aa4fe490e1f2fea0",
+      "nrf52840/iteration-002-connected/baseline-stack-paint.log": "967c969094e1b1ca0ac4a17303720df4810f0060fa8e8e772eb9c164da1fd44d",
+      "nrf52840/iteration-002-connected/current-read.jlink": "cde594996bb4bad00cd62f62501508247d873990a7748c5375b88d2e28329073",
+      "nrf52840/iteration-002-connected/current-read.log": "7fe0b2ed50ebcb1677f9b47bc1b45233e50721eed73a5fcca82df26d336baa60",
+      "nrf52840/iteration-002-connected/current-stack.bin": "325eb32462e7523dd2173d51f80ab5ff85233da1b2b88806f22f50d3ba43da36",
+      "nrf52840/iteration-002-connected/doctor.log": "dc22bfeb24756160a73b8c73983f8f410b40cdbee4b2a69250ecf95e11e0864f",
+      "nrf52840/iteration-002-connected/gdb-preserve-server.log": "757e6c7d34b50b80ec8505c71a2c6543e6a8f525f0c8111f0c01ae1afb550080",
+      "nrf52840/iteration-002-connected/gdb-server-valid.log": "7f030d9f4490fbc7616f46c404669408ede4fde540953b44d0bf466191e935de",
+      "nrf52840/iteration-002-connected/gdb-server.log": "37f5085d8754020bbafe88ff9d92b07a68010d1974755b8db75dfc1a3a24dd61",
+      "nrf52840/iteration-002-connected/idle-stack.bin": "a86e3a196d80e542f02563a2c0f2929a807ceefffa8a4bf0938a56e78497e708",
+      "nrf52840/iteration-002-connected/list-probes.jlink": "257ec65112fea1bd8cdfd5651ac8d4b75a4c59e1afba9b1bdce95909f4a4649a",
+      "nrf52840/iteration-002-connected/list-probes.log": "351de4a97a79b90a6b7592657d73fbc15d44993733df024b2b9c502cc1a6e0a0",
+      "nrf52840/iteration-002-connected/paint-verified.jlink": "54f529b38cd1b2663b5a8d12e1bdd71e218e1f85e5efdc618acf9cb5df516005",
+      "nrf52840/iteration-002-connected/paint-verified.log": "5c82aa67c1d877276c71e05225d6445c6a51004a90437010e9abc1b9d27a7518",
+      "nrf52840/iteration-002-connected/paint.gdb": "e0bb9344d0b553710794b5119c01182568f6ffb212ba3f4716aa4b8d8851c978",
+      "nrf52840/iteration-002-connected/paint.log": "65568bca6780635b3f50a7a700fba9cf22f3c880de72efeac56255bfd7e0f3df",
+      "nrf52840/iteration-002-connected/painted-baseline-read.log": "9e02f139152c57f436ee3b455e9931f423bac2d11e5597bbb4fdfaa534e0f5b7",
+      "nrf52840/iteration-002-connected/painted-baseline-ready/identity.json": "b6645fbf29737ced026ca0e267d123bf0f390c05060d7ffd91797374cb7da99a",
+      "nrf52840/iteration-002-connected/painted-baseline-ready/monitor.jlink": "1e8b968f1eabfd0aa68a8e55b88b3cec32152b103a1723d3eb6de7f2add5aba8",
+      "nrf52840/iteration-002-connected/painted-baseline-ready/monitor.log": "d6b8122a3cb6fbceb4144f43d71ae19ee4102012b099cb60e36d96a73b238941",
+      "nrf52840/iteration-002-connected/painted-baseline-stack.bin": "325eb32462e7523dd2173d51f80ab5ff85233da1b2b88806f22f50d3ba43da36",
+      "nrf52840/iteration-002-connected/painted-baseline-startup/identity.json": "806775adffed7f6e9f62712424db52bdca9f2811b690893af935888af7d140cc",
+      "nrf52840/iteration-002-connected/painted-baseline-startup/monitor.jlink": "1e8b968f1eabfd0aa68a8e55b88b3cec32152b103a1723d3eb6de7f2add5aba8",
+      "nrf52840/iteration-002-connected/painted-baseline-startup/monitor.log": "4548abd4565a95d62880d08f118d768bcd325b4eaf81a8dee51a3f68b328f7c6",
+      "nrf52840/iteration-002-connected/painted-startup/identity.json": "de6ed67233f273a8a716143b5e4496e19b25ed2153debcdf3a00a5914f533c83",
+      "nrf52840/iteration-002-connected/painted-startup/monitor.jlink": "625c28053e3a4a08c3742fbff425f172304a9edb15e06e5d4aa649367cc17253",
+      "nrf52840/iteration-002-connected/painted-startup/monitor.log": "c6fa376e57f5786de0744efb39af7284afd083ca16755049dbb44738c77b878e",
+      "nrf52840/iteration-002-connected/painted-startup-summary.log": "8a4043e442339e5b6b24a93f971e9d4105e6bead23c476acd636a2f4207e4ba8",
+      "nrf52840/iteration-002-connected/pre-action.jlink": "be0981c33f469d4296de4f7c000ba313b5d98846be9c87f6c5952a593997e721",
+      "nrf52840/iteration-002-connected/pre-action.log": "e8c101eff88b56de853a7ecb932524a8a9cc8b8493ad72fef1a7a00fcd8a9253",
+      "nrf52840/iteration-002-connected/ready-acquisition/identity.json": "15beebb11111d997d1c6ea53e034db1f2d20e269bd64482f3827712c0dc3e9c1",
+      "nrf52840/iteration-002-connected/ready-acquisition/monitor.jlink": "1e8b968f1eabfd0aa68a8e55b88b3cec32152b103a1723d3eb6de7f2add5aba8",
+      "nrf52840/iteration-002-connected/ready-acquisition/monitor.log": "75e8f50d5e9ee3b7513f679dcc19e5abc169bc35cb1ba16afe938a872b2a6b0a",
+      "nrf52840/iteration-002-connected/ready-idle-stack.bin": "492457b97819c06bf7523911b76324340a6dbf35b49454b797418a57f32a19fd",
+      "nrf52840/iteration-002-connected/ready-stop/identity.json": "7189677a8f064b949e76d44927803f165564865b4b9bae7c679287f8f710d0c6",
+      "nrf52840/iteration-002-connected/ready-stop/monitor.jlink": "a9b7024864635929d52cbe9955185feaadb71261ac5374f163b43bfe14b271b3",
+      "nrf52840/iteration-002-connected/ready-stop/monitor.log": "9b0d72855416eb5d96553b7321d4be9ad561588bd949300e2773e8bc9cbbfa22",
+      "nrf52840/iteration-002-connected/reset-halt.jlink": "4e6b0455de40d665547320cb99f5e99b96f93f6b0b3769c6f5671a145677d44e",
+      "nrf52840/iteration-002-connected/reset-halt.log": "5bd458654fa0d205f10cc203dd43d61cd3520d2e5de0302093a44448726a48d4",
+      "nrf52840/iteration-002-connected/stack-layout.gdb": "1e7dc5a5309bbeee5606e539deec662f15dc16cd3f480374feddbb4d9bb25efb",
+      "nrf52840/iteration-002-connected/stack-layout.log": "bd83caf997796b9f9c5c97d25828ac5de88189eccdce705356d27c547213701f",
+      "nrf52840/iteration-002-connected/stack-layout.server.log": "eefd600483ffc5e4f2478da32b7df6c89526911fefc9be83d1fb67708482ac47",
+      "nrf52840/iteration-002-connected/stack-paint.bin": "71564595b47d580587570bbc0671d771ac4b634dd6055858ead5bc95af1435b3",
+      "nrf52840/iteration-002-connected/start-ready.gdb": "e6530af2ddb12a9cc85d17cfb3e20055645f4a59753e7710ef2e7c03209a6f8b",
+      "nrf52840/iteration-002-connected/start-ready.log": "fc4ace37dfbb4139f8b9edf7f7302ecefae2c9b107dc9b298f7d14d9f539fa1a",
+      "nrf52840/iteration-002-connected/start-valid.gdb": "cacc405bd2857d46447c3fd368446951c93b718b27a4769e24a745b0ef1cc53c",
+      "nrf52840/iteration-002-connected/start-valid.log": "4623dd9cd03692ed4dd1add78fa140cf564889454fd150424caa9b0dfe49d16d",
+      "nrf52840/iteration-002-connected/start.gdb": "498924c93cad3c12e5de9ea7c7de9f0fddbbd01519924db7d18803136ff690c6",
+      "nrf52840/iteration-002-connected/start.log": "1e02c3f4d3d2492806240f5ce1b63ce8bdeba5a44dd7b135dd458b02c453e4f3",
+      "nrf52840/iteration-002-connected/stop-ready.gdb": "91906e1049933d052b1b69a63b8aa28524961ffffb16c9dddbeee21c9649ee08",
+      "nrf52840/iteration-002-connected/stop-ready.log": "171263f16cec4e321a69bff22424beecc28b93dd1255be7666aa4bc4d824f816",
+      "nrf52840/iteration-002-connected/stop-ready.server.log": "b6a579f2340c32948e54f0764a1b2ceebe351d52d5d583b09ce13d8e73c75417",
+      "nrf52840/iteration-002-connected/stopped-state.gdb": "8370443f4a662907e71228ad0d4b5e38cd110f8ef880cf2fb4c612437878d2fe",
+      "nrf52840/iteration-002-connected/stopped-state.log": "8ce84509ffbec06407037be428e19f56c9d00a8e6f78ed429ded654d1effbfde",
+      "nrf52840/iteration-002-connected/stopped-state.server.log": "e048020417ede652a3015c96dd7e257fec02cfbd8e31b75d6a0120c49abd176c"
+    }
+  }
+}

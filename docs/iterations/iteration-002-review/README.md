@@ -34,7 +34,9 @@ draft; research does not select or authorize implementation.
 | 18 — Declaration traversal | [Bounded actual-body snapshot prerequisite](18-bounded-declaration-traversal.md) | 42 cases/84 refusals pass; additive +34,184 flash bytes; full replacement remains unsupported |
 | 19 — Clean generation | [Complete clean table emission and parity](19-clean-topology-generation.md) | Two byte-identical generations; 12 refusals; 42 semantic comparisons; zero linked size delta |
 | 20 — Static stack assessment | [Addressed evidence and unresolved control-flow boundary](20-static-stack-assessment.md) | Inspection complete; indirect targets/metadata prevent a whole-stack bound; connected evidence deferred |
-| 21 — Research closeout | [Completed queue and draft scope revision 3](21-research-closeout.md) | Hardware-free investigation complete; production selection/approval next; connected work deferred |
+| 21 — Research closeout | [Completed queue and draft scope revision 3](21-research-closeout.md) | Hardware-free investigation complete; hardware-free round concluded; connected supplement authorized afterward |
+
+| 22 — Connected baseline | [Production timing, software action limits and painted startup](22-connected-baseline.md) | Pi0.717fps; nRF21.2s median publication gap; startup extent19,480 bytes; full connected corpus incomplete |
 
 [Findings register](findings.md) records confirmed observations separately from
 hypotheses and preferences. A step's completion does not imply every module or
@@ -48,7 +50,7 @@ prioritizes candidate fixes without selecting or authorizing implementation.
 Follow-up experiments in Steps 13–20 measure candidates and conclude with a
 retain-packed-runtime disposition. Clean generation is demonstrated; full
 runtime replacement is outside the proposed cleanup commitment. Connected work
-is deferred by the maintainer. [Step 21](21-research-closeout.md) is the current
+was subsequently authorized for bounded measurements; [Step 22](22-connected-baseline.md) records fresh results and limits. [Step 21](21-research-closeout.md) is the current
 planning disposition and distinguishes remaining implementation gates from
 completed investigation.
 Read the register's counterevidence and validation limits before scope approval.
