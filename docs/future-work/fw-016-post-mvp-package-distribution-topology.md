@@ -13,7 +13,8 @@ source:
   - SPEC-002
 related_future_work:
   - FW-030
-related_explorations: []
+related_explorations:
+  - EXP-002
 related_spikes: []
 promoted_to: []
 supersedes: []
@@ -113,6 +114,11 @@ or granting access to all framework internals. ADR-008 still governs MVP
 distribution; this capture does not authorize a split or change its milestone.
 
 ## Draft Iteration Context
+
+[EXP-002](../explorations/exp-002-backend-and-application-integration-shapes.md)
+now compares typed assembly, supported presets and generated composition,
+including packaging/access constraints. This item's status remains captured;
+no package extraction or consumer build has been performed.
 
 The maintainer included this concern in the working scope for
 [ITERATION-003: Dev UX Improvement](../iterations/iteration-003-dev-ux-improvement.md) on 2026-10-04.

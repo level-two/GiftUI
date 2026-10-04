@@ -104,6 +104,7 @@ approved exceptions, and remaining deferred work.
 
 ## References
 
+- [EXP-002: Backend and Application Integration Shapes](../explorations/exp-002-backend-and-application-integration-shapes.md) — documentation-only candidate comparison; no scope or architecture approval
 - [ADR-006: Shared Semantics and Runtime Profiles](../adrs/adr-006-shared-semantics-runtime-profiles.md)
 - [ADR-007: Integration Ownership and Host Composition](../adrs/adr-007-integration-ownership-and-host-composition.md)
 - [ADR-008: Module Dependency Graph and Package Topology](../adrs/adr-008-module-dependency-graph-and-package-topology.md)

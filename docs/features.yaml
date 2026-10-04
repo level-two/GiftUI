@@ -52,6 +52,7 @@ features:
   giftui-mvp-architecture:
     # Optional source-conditional cleanup: FW-029, linked from SPEC-013.
     # Component distribution/integration review: FW-016 and FW-030; no split approved.
+    # Integration candidate exploration: EXP-002, under draft ITERATION-003.
     # macOS physical-pointer validation is postponed under FW-031.
     title: GiftUI MVP Architecture Establishment
     status: implemented

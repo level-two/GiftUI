@@ -2,7 +2,7 @@
 id: FW-030
 feature: giftui-mvp-architecture
 title: Application Integration Experience
-status: captured
+status: promoted
 authors:
   - codex
 created: 2026-10-02
@@ -11,9 +11,11 @@ source:
   - SPEC-015
 related_future_work:
   - FW-016
-related_explorations: []
+related_explorations:
+  - EXP-002
 related_spikes: []
-promoted_to: []
+promoted_to:
+  - EXP-002
 supersedes: []
 superseded_by: []
 target_milestone: null
@@ -51,8 +53,8 @@ ownership guarantees across any candidate package boundary.
 
 ## Why Deferred
 
-The MVP currently validates one reference application on four stacks; its
-production joins remain in implementation. A general external integration
+The MVP validated one reference application on four stacks and closed with
+recorded exceptions. A general external integration
 contract and tooling workflow require evidence from a separate consumer and
 must preserve accepted ownership, static resource bounds, and lifecycle rules.
 The observed friction does not itself establish a current correctness blocker.
@@ -85,17 +87,21 @@ The observed friction does not itself establish a current correctness blocker.
 
 ## Disposition
 
-Captured. The smallest useful next step is a bounded Exploration of a second
-consumer, recording setup steps, touched files, application glue, and build
-diagnostics. Public integration and architectural changes require their normal
-Proposal, RFC, ADR, and Specification gates before implementation.
+Promoted to [EXP-002](../explorations/exp-002-backend-and-application-integration-shapes.md)
+on 2026-10-04 after the maintainer explicitly requested candidate solutions
+and constraints for Iteration 3 preparation without production code changes.
+The Exploration compares integration shapes and proposes a bounded second
+consumer study; no consumer code or Spike has been implemented. Public
+integration and architectural changes still require their normal Proposal,
+RFC, ADR, and Specification gates before implementation.
 
 ## Draft Iteration Context
 
 The maintainer included this concern in the working scope for
 [ITERATION-003: Dev UX Improvement](../iterations/iteration-003-dev-ux-improvement.md) on 2026-10-04.
-The scope remains open for codebase review; this link does not promote the item,
-change its disposition, or establish a delivery commitment.
+The scope remains open for codebase review and does not establish a delivery
+commitment. The subsequent explicit request to explore solutions is recorded
+in the promotion disposition above.
 
 ## References
 
