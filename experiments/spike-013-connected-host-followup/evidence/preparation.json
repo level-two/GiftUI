@@ -1,0 +1,31 @@
+{
+  "revision": "02fcf864385899ee662af451e9b43e8301bda75f",
+  "stages": [
+    "admitAndSeal",
+    "applyAdmittedWork",
+    "freezeObservableMutation",
+    "beginObservableCandidateAndExpandSemantics",
+    "resolveLayout",
+    "invokeCanvasesAndDerivePlan",
+    "preflightCombinedRender",
+    "buildInteractionCandidate",
+    "publishSemanticAndObservableCandidate",
+    "allocateCandidate",
+    "offerAndProduce"
+  ],
+  "inputs": {
+    ".build/nrf52840/spike-013-connected-host-normal/application/CMakeLists.txt": "7dd874d65ec73a202a09e04b8969e94b55c16c7951594721185a635cf9dabe0f",
+    ".build/nrf52840/spike-013-connected-host-normal/application/src/main.c": "b080cbeaa43e043bd73bc78a6cb247888a078eac2148bdb9579d13edc4670428",
+    ".build/nrf52840/spike-013-connected-host-normal/application/src/StaticPreset.swift": "24fee1e3eed4d08ad6f0ff9a20c44f8242fc5276458e57331b752ba3d387221f",
+    ".build/nrf52840/spike-013-connected-host-normal/application/src/production_host.c": "7b9f41edc0834f49e4341c403e5dcf9f3e44a6e1a63a0941786ab26a1a77b14a",
+    ".build/nrf52840/spike-013-connected-host-refusal/application/CMakeLists.txt": "4943f0e6e2c7b07688137539b65b4cefea715fdfd177c682bf34032b726179c9",
+    ".build/nrf52840/spike-013-connected-host-refusal/application/src/main.c": "b080cbeaa43e043bd73bc78a6cb247888a078eac2148bdb9579d13edc4670428",
+    ".build/nrf52840/spike-013-connected-host-refusal/application/src/StaticPreset.swift": "24fee1e3eed4d08ad6f0ff9a20c44f8242fc5276458e57331b752ba3d387221f",
+    ".build/nrf52840/spike-013-connected-host-refusal/application/src/production_host.c": "7b9f41edc0834f49e4341c403e5dcf9f3e44a6e1a63a0941786ab26a1a77b14a",
+    "firmware/nrf52840/applications/signal-analyzer-static/src/StaticPreset.swift": "f9d54b312d543dc9ef39eab294bef89735a6680a60b78046c84265a160cca36c",
+    "firmware/nrf52840/applications/signal-analyzer-static/src/production_host.c": "a4aa57c9d26f9412081194c73fe08126e1edda3348beeef50882bdc2938b26c0",
+    "experiments/spike-013-connected-host-followup/prepare.py": "761092e3049176f6bfcb23a3d02edd4768c18818b507cf34af1b1e83daaec591",
+    "experiments/spike-013-connected-host-followup/research.c": "4e692aa2cd4d0ae45f50e50dc4ec3778a81040a7dd3199d0f75e186b7eb5a835",
+    "experiments/spike-013-connected-host-followup/research.h": "fd311ab7be8e21fbc5dc2695402247c0a13a1ed83fb24a45277c80088ec26851"
+  }
+}

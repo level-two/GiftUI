@@ -1,0 +1,56 @@
+{
+  "revision": "cabb826c2fe03d9dc40c84e5f07de29c92f2f6a2",
+  "limits": "Linked size and configured stack reservation; no physical timing or stack high-water measurement",
+  "images": {
+    "baseline": {
+      "elf": ".build/nrf52840/signal-analyzer-static/zephyr/zephyr.elf",
+      "sha256": "c6d0f12c8585cad3f3949fb596e13fa7328989239a31a1f6e428afadb541ed5c",
+      "flash_bytes": 275600,
+      "ram_bytes": 191104,
+      "v7em": true,
+      "hard_float": true,
+      "zero_zephyr_heap": true,
+      "zero_libc_heap": true,
+      "stack_config": [
+        "CONFIG_SYSTEM_WORKQUEUE_STACK_SIZE=1024",
+        "CONFIG_MAIN_STACK_SIZE=27648",
+        "CONFIG_IDLE_STACK_SIZE=320",
+        "CONFIG_ISR_STACK_SIZE=2048"
+      ],
+      "allocator_entries": [],
+      "refusing_allocation_stub": "\n/Users/eugene/work/GiftUI/.build/nrf52840/signal-analyzer-static/zephyr/zephyr.elf:     file format elf32-littlearm\n\n\nDisassembly of section rom_start:\n\nDisassembly of section text:\n\n0003c628 <posix_memalign>:\n   3c628:\t200c      \tmovs\tr0, #12\n   3c62a:\t4770      \tbx\tlr\n",
+      "startup_text_symbols": [
+        "0000fab4 0000054c T $e24SignalAnalyzerTargetHost06StaticaB20NRFEmbeddedTextPlaceO3run8identity8semantic7originX0L1Y14inheritedClipX0mN1Y0mN5Width0mN6Height9workspaceSbs6UInt16V_AA0eabF12SemanticViewVs5Int16VA5sA0eabF15LayoutWorkspaceVztFZ",
+        "0000f3b8 000006fc T $e24SignalAnalyzerTargetHost06StaticaB22NRFEmbeddedTextMeasureO3run8identity8semantic13proposalWidth0L6Height9workspaceSbs6UInt16V_AA0eabF12SemanticViewVs5Int16VSgApA0eabF15LayoutWorkspaceVztFZ",
+        "000335de 00000004 T giftui_signal_analyzer_layout_text_valid"
+      ]
+    },
+    "candidate": {
+      "elf": ".build/nrf52840/spike-013-connected-host-normal/firmware/zephyr/zephyr.elf",
+      "sha256": "2641c3ed819601e3d3a8b95cf5af3b87adcbdb53ef2333a6332e39c85455e1b6",
+      "flash_bytes": 277208,
+      "ram_bytes": 191872,
+      "v7em": true,
+      "hard_float": true,
+      "zero_zephyr_heap": true,
+      "zero_libc_heap": true,
+      "stack_config": [
+        "CONFIG_SYSTEM_WORKQUEUE_STACK_SIZE=1024",
+        "CONFIG_MAIN_STACK_SIZE=27648",
+        "CONFIG_IDLE_STACK_SIZE=320",
+        "CONFIG_ISR_STACK_SIZE=2048"
+      ],
+      "allocator_entries": [],
+      "refusing_allocation_stub": "\n/Users/eugene/work/GiftUI/.build/nrf52840/spike-013-connected-host-normal/firmware/zephyr/zephyr.elf:     file format elf32-littlearm\n\n\nDisassembly of section rom_start:\n\nDisassembly of section text:\n\n0003cbb8 <posix_memalign>:\n   3cbb8:\t200c      \tmovs\tr0, #12\n   3cbba:\t4770      \tbx\tlr\n",
+      "startup_text_symbols": [
+        "0000fab8 0000054c T $e24SignalAnalyzerTargetHost06StaticaB20NRFEmbeddedTextPlaceO3run8identity8semantic7originX0L1Y14inheritedClipX0mN1Y0mN5Width0mN6Height9workspaceSbs6UInt16V_AA0eabF12SemanticViewVs5Int16VA5sA0eabF15LayoutWorkspaceVztFZ",
+        "0000f3bc 000006fc T $e24SignalAnalyzerTargetHost06StaticaB22NRFEmbeddedTextMeasureO3run8identity8semantic13proposalWidth0L6Height9workspaceSbs6UInt16V_AA0eabF12SemanticViewVs5Int16VSgApA0eabF15LayoutWorkspaceVztFZ",
+        "00033b06 00000004 T giftui_signal_analyzer_layout_text_valid"
+      ]
+    }
+  },
+  "delta": {
+    "flash_bytes": 1608,
+    "ram_bytes": 768
+  }
+}

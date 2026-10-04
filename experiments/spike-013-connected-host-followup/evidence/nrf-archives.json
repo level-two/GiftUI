@@ -1,0 +1,10 @@
+{
+  "normal": {
+    "archive_sha256": "f52e4ea2341e742a33b9b763beedf414de9d7a135d3390f26706d4ae16b81aa5",
+    "hex_sha256": "29d8875fb3881766466f559d514166feef838e08c375c427c77e6b8dc00f4a50"
+  },
+  "refusal": {
+    "archive_sha256": "6fffbb4bc5d38eb7ed41af930e9f192ecfd1df2834b36c49b14a886da4dc516d",
+    "hex_sha256": "99c9ebd7c4e00aee2a8fb9a814a8ecdacd06fa876e1bf30f711632721b4a9fc5"
+  }
+}

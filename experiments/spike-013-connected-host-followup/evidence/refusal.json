@@ -1,0 +1,216 @@
+{
+  "driver_fault_counts": [
+    0,
+    0,
+    1,
+    0,
+    0
+  ],
+  "cfsr_hfsr": [
+    0,
+    0
+  ],
+  "mode": "refusal",
+  "utc": "2026-10-04T18:11:25.169219+00:00",
+  "elf_sha256": "90814810e7890fa02010b84525d9a5c0f8f5c1e2d9af71adfc0f28f854d7c6e4",
+  "probe_serial": "683833660",
+  "resource": {
+    "elf": ".build/nrf52840/spike-013-connected-host-refusal/firmware/zephyr/zephyr.elf",
+    "sha256": "90814810e7890fa02010b84525d9a5c0f8f5c1e2d9af71adfc0f28f854d7c6e4",
+    "flash_bytes": 277016,
+    "ram_bytes": 191872,
+    "v7em": true,
+    "hard_float": true,
+    "zero_zephyr_heap": true,
+    "zero_libc_heap": true,
+    "stack_config": [
+      "CONFIG_SYSTEM_WORKQUEUE_STACK_SIZE=1024",
+      "CONFIG_MAIN_STACK_SIZE=27648",
+      "CONFIG_IDLE_STACK_SIZE=320",
+      "CONFIG_ISR_STACK_SIZE=2048"
+    ],
+    "allocator_entries": [],
+    "refusing_allocation_stub": "\n/Users/eugene/work/GiftUI/.build/nrf52840/spike-013-connected-host-refusal/firmware/zephyr/zephyr.elf:     file format elf32-littlearm\n\n\nDisassembly of section rom_start:\n\nDisassembly of section text:\n\n0003cb46 <posix_memalign>:\n   3cb46:\t200c      \tmovs\tr0, #12\n   3cb48:\t4770      \tbx\tlr\n",
+    "startup_text_symbols": [
+      "0000fab8 0000054c T $e24SignalAnalyzerTargetHost06StaticaB20NRFEmbeddedTextPlaceO3run8identity8semantic7originX0L1Y14inheritedClipX0mN1Y0mN5Width0mN6Height9workspaceSbs6UInt16V_AA0eabF12SemanticViewVs5Int16VA5sA0eabF15LayoutWorkspaceVztFZ",
+      "0000f3bc 000006fc T $e24SignalAnalyzerTargetHost06StaticaB22NRFEmbeddedTextMeasureO3run8identity8semantic13proposalWidth0L6Height9workspaceSbs6UInt16V_AA0eabF12SemanticViewVs5Int16VSgApA0eabF15LayoutWorkspaceVztFZ",
+      "00033a8e 00000004 T giftui_signal_analyzer_layout_text_valid"
+    ]
+  },
+  "raw_header": [
+    1397764403,
+    2,
+    1,
+    64000000,
+    32768,
+    6400037,
+    3256,
+    3,
+    4294967291,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    4,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0
+  ],
+  "results": [
+    -5,
+    0
+  ],
+  "calibration_seconds_cpu": 0.100000578125,
+  "calibration_seconds_rtc": 0.099365234375,
+  "frames": [
+    {
+      "revision": 1,
+      "initial": true,
+      "outcome": 1,
+      "seconds": 20.3160400390625,
+      "total_cycles": 1295274226,
+      "state": 0,
+      "capture": 0,
+      "window": 1,
+      "spi_calls": 2841,
+      "successful_pixel_bytes": 267250,
+      "spi_seconds": 1.0878621875,
+      "refusals": 0,
+      "clock_relative_difference": 0.003808825817615921,
+      "stage_seconds": {
+        "admitAndSeal": 2.296875e-06,
+        "applyAdmittedWork": 0.0007783125,
+        "freezeObservableMutation": 1.546875e-06,
+        "beginObservableCandidateAndExpandSemantics": 0.07408353125,
+        "resolveLayout": 3.5396914375,
+        "invokeCanvasesAndDerivePlan": 0.218107375,
+        "preflightCombinedRender": 0.221234453125,
+        "buildInteractionCandidate": 0.0045261875,
+        "publishSemanticAndObservableCandidate": 0.046498546875,
+        "allocateCandidate": 2.171875e-06,
+        "offerAndProduce": 16.132596109375
+      }
+    },
+    {
+      "revision": 2,
+      "initial": false,
+      "outcome": 0,
+      "seconds": 18.99102783203125,
+      "total_cycles": 1215168116,
+      "state": 1,
+      "capture": 4,
+      "window": 1,
+      "spi_calls": 1,
+      "successful_pixel_bytes": 0,
+      "spi_seconds": 0.003828890625,
+      "refusals": 1,
+      "clock_relative_difference": 0.0002119958733596638,
+      "stage_seconds": {
+        "admitAndSeal": 2.296875e-06,
+        "applyAdmittedWork": 0.0036565,
+        "freezeObservableMutation": 1.546875e-06,
+        "beginObservableCandidateAndExpandSemantics": 0.07440015625,
+        "resolveLayout": 3.539689703125,
+        "invokeCanvasesAndDerivePlan": 0.218271546875,
+        "preflightCombinedRender": 0.221234453125,
+        "buildInteractionCandidate": 0.004525984375,
+        "publishSemanticAndObservableCandidate": 0.06906434375,
+        "allocateCandidate": 2.171875e-06,
+        "offerAndProduce": 14.8549731875
+      }
+    },
+    {
+      "revision": 1,
+      "initial": true,
+      "outcome": 1,
+      "seconds": 20.309326171875,
+      "total_cycles": 1297415318,
+      "state": 0,
+      "capture": 0,
+      "window": 1,
+      "spi_calls": 2841,
+      "successful_pixel_bytes": 267250,
+      "spi_seconds": 1.10115015625,
+      "refusals": 0,
+      "clock_relative_difference": 0.0018322532126413443,
+      "stage_seconds": {
+        "admitAndSeal": 2.296875e-06,
+        "applyAdmittedWork": 0.0007783125,
+        "freezeObservableMutation": 1.546875e-06,
+        "beginObservableCandidateAndExpandSemantics": 0.07408353125,
+        "resolveLayout": 3.5396914375,
+        "invokeCanvasesAndDerivePlan": 0.218107375,
+        "preflightCombinedRender": 0.221234453125,
+        "buildInteractionCandidate": 0.0045261875,
+        "publishSemanticAndObservableCandidate": 0.046498546875,
+        "allocateCandidate": 2.171875e-06,
+        "offerAndProduce": 16.166050671875
+      }
+    }
+  ],
+  "source_polls": 0,
+  "first_source_microseconds": 0,
+  "last_source_microseconds": 0,
+  "stack_range": [
+    537035136,
+    537062784
+  ],
+  "observed_sentinel_extent_bytes": 17032,
+  "retired_revision": [
+    0,
+    0
+  ],
+  "retired_pending": [
+    0,
+    0
+  ],
+  "retired_needs": [
+    0,
+    0
+  ],
+  "retired_touch_valid": [
+    0,
+    0
+  ],
+  "files": {
+    "faults.bin": "22ec3adf8741e3b438a79a23bd35e3d60161a2ef842e11bebbca7fce98487491",
+    "observe-00.jlink": "303f2151a0a0a29f09357c0c74d411eabd11ccf4ff21f1840abc1a2be14596b6",
+    "observe-00.log": "b022da037181d8e20445761c0db969b73ebd88ecf6ff011a907385a9f311714d",
+    "observe-01.jlink": "303f2151a0a0a29f09357c0c74d411eabd11ccf4ff21f1840abc1a2be14596b6",
+    "observe-01.log": "cfd15c50af01814fb1f53cdf1791376b16f2d1bb1f379296c278b91025cb91b1",
+    "observe-02.jlink": "303f2151a0a0a29f09357c0c74d411eabd11ccf4ff21f1840abc1a2be14596b6",
+    "observe-02.log": "d8a685e3e807f7ac143b32461dd6c502e1f669bbb086fc73824eccca50287a68",
+    "observe-03.jlink": "303f2151a0a0a29f09357c0c74d411eabd11ccf4ff21f1840abc1a2be14596b6",
+    "observe-03.log": "72df48c59ce473582de9a9c3f61a0e0e8e99fd77928944ab2ee524502d46aece",
+    "observe-04.jlink": "303f2151a0a0a29f09357c0c74d411eabd11ccf4ff21f1840abc1a2be14596b6",
+    "observe-04.log": "f363ef5a3491341505092280dcf7a4ea05da4d3f3d27126697ff3713d7964c9a",
+    "observe-05.jlink": "303f2151a0a0a29f09357c0c74d411eabd11ccf4ff21f1840abc1a2be14596b6",
+    "observe-05.log": "4efbeef7c02d820584f563aa6eff55ee0fdba3c43e270684754dd814401b6d2e",
+    "observe-06.jlink": "303f2151a0a0a29f09357c0c74d411eabd11ccf4ff21f1840abc1a2be14596b6",
+    "observe-06.log": "c83cb9a006e521d724772b9625d62faaf1c2979ba9810489d8afce5436870c52",
+    "paint.bin": "71564595b47d580587570bbc0671d771ac4b634dd6055858ead5bc95af1435b3",
+    "paint.jlink": "5cafda0bbccfd13dc8c4a6d55d68d7174097fbaa56934a5a153efd08633e37bf",
+    "paint.log": "b76e00705dbf8df15bd51204632623d37f3732e22d92b1b5e1797bb9b73192b1",
+    "read.jlink": "f6b7c7c1c9cb861755512410827ad808ac6c1286d930999b961376905f192098",
+    "read.log": "8e3a413de092fa32636b52ee2673235ae1a93f499744ef38cc4887e8a94ede6a",
+    "stack.bin": "7cdeea644978fb4bbb3fcf3f1aa9a32d64a81c75fa0545f6dba7c9a94758aeb1",
+    "trace.bin": "1a87e86364a0bee853b17b98ef9d880499a3dcf63d670917b25d33e9f684d302",
+    "vector.bin": "21501d8b095eeac531cb3d814b5e491681192ffd29fe84f2c4fb1f0f9c73ecfd"
+  },
+  "limits": "Copied application; software actions/model diagnostic/backend refusal; not physical input, independent pixels, or a universal stack bound."
+}

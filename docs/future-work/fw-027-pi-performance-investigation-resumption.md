@@ -15,7 +15,8 @@ related_future_work:
   - FW-026
   - FW-032
 related_explorations: []
-related_spikes: []
+related_spikes:
+  - SPIKE-013
 promoted_to: []
 supersedes: []
 superseded_by: []
