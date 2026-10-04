@@ -1,0 +1,27 @@
+schema_version=2
+input_set_sha256=d93a5691c785f10759332a401c28eabb9b89b66e7d6a2b188e737e47cf88850d
+run_id=759cf5945d69313ab3546965eace2ecc08da5ab3-d93a5691c785f107
+report_directory=.build/contract-reports/spec-002/759cf5945d69313ab3546965eace2ecc08da5ab3-d93a5691c785f107/raspberry-pi-armv6
+spec=SPEC-002
+profile=raspberry-pi-armv6
+repository_revision=759cf5945d69313ab3546965eace2ecc08da5ab3
+invocation=scripts/contracts/run-spec-002.sh --profile raspberry-pi-armv6
+semantic_corpus_sha256=3add894045d330ea1441f2a6ff6d5465840c867ba02fb83912657819a20f3ccb
+compiler_version<<EOF
+Apple Swift version 6.3.2 (swift-6.3.2-RELEASE)
+Target: arm64-apple-macosx26.0
+EOF
+sdk_identity<<EOF
+swift_version=6.3.2
+target=armv6-unknown-linux-gnueabihf
+distribution=raspios-bookworm
+sha256=bd09f97b693aa2097df281d9b5490d51c6c01a2241b890c7d05623d4134d7fc8
+EOF
+target=armv6-unknown-linux-gnueabihf
+sdk_path=/Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6
+destination=/Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6/raspios-bookworm-static.json
+optimization=-O -whole-module-optimization
+linked_section_inspector<<EOF
+/Users/eugene/work/GiftUI/.toolchains/host/swift-6.3.2-RELEASE-osx/usr/bin/llvm-objdump: LLVM (http://llvm.org/):
+EOF
+exit_code=0

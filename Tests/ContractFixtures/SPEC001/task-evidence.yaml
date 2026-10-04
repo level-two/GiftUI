@@ -67,15 +67,15 @@ tasks:
     implementation: ["Sources/SignalAnalyzerData/DefaultSignalAcquisitionRepository.swift"]
     checks: ["Tests/SignalAnalyzerDataTests/DefaultSignalAcquisitionRepositoryTests.swift", "Tests/SignalAnalyzerDataTests/SignalAcquisitionRepositoryLifecycleTests.swift"]
     profiles: ["macos-dynamic", "macos-static", "raspberry-pi-armv6", "nrf52840-embedded"]
-    evidence: ["docs/iterations/iteration-002-cleanup/evidence/01-startup/result.md"]
+    evidence: ["docs/iterations/iteration-002-cleanup/evidence/01-startup/result.md", "docs/iterations/iteration-002-cleanup/evidence/09-startup-admission/result.md"]
     blockers: []
   T11.2:
-    disposition: pending
+    disposition: completed
     requirements: ["SA-AC-007", "SA-AC-008", "SA-AC-009", "SA-AC-028", "SA-AC-030", "SA-AC-036", "SA-AC-040", "SA-AC-043"]
     implementation: ["Sources/SignalAnalyzerTargetHost", "Sources/SignalAnalyzerPresentation"]
-    checks: ["scripts/contracts/check-spec-001-nrf-static-host-lifecycle.sh", "scripts/contracts/check-spec-001-pi-host-native-rehearsal.sh", "scripts/contracts/run-spec-001.sh"]
+    checks: ["Tests/GiftUIHostConfigurationTests/SignalAnalyzerStartupAdmissionTests.swift", "scripts/contracts/check-spec-001-nrf-static-host-lifecycle.sh", "scripts/contracts/check-spec-001-pi-host-native-rehearsal.sh", "scripts/contracts/run-spec-001.sh"]
     profiles: ["macos-dynamic", "macos-static", "raspberry-pi-armv6", "nrf52840-embedded"]
-    evidence: []
+    evidence: ["docs/iterations/iteration-002-cleanup/evidence/09-startup-admission/result.md", "docs/iterations/iteration-002-cleanup/evidence/10-integration/result.md"]
     blockers: []
   T11.3:
     disposition: completed
@@ -89,7 +89,7 @@ tasks:
     disposition: completed
     requirements: ["SA-AC-005", "SA-AC-006", "SA-AC-017", "SA-AC-018", "SA-AC-019", "SA-AC-020", "SA-AC-025", "SA-AC-039", "SA-AC-041", "SA-AC-045"]
     implementation: ["scripts/contracts/generate-spec-001-nrf-topology.py", "Sources/SignalAnalyzerTargetHost/Generated", "Tests/ContractFixtures/SPEC001"]
-    checks: ["Tests/GiftUIHostConfigurationTests/StaticSignalAnalyzerNRFTopologyWriterTests.swift", "scripts/contracts/run-spec-001.sh"]
+    checks: ["scripts/contracts/check-spec-001-nrf-topology.py", "scripts/contracts/check-spec-001-nrf-topology-native.sh", "Tests/GiftUIHostConfigurationTests/StaticSignalAnalyzerNRFTopologyWriterTests.swift", "scripts/contracts/run-spec-001.sh"]
     profiles: ["macos-dynamic", "macos-static", "raspberry-pi-armv6", "nrf52840-embedded"]
     evidence: ["docs/iterations/iteration-002-cleanup/evidence/08-topology/result.md"]
     blockers: []
@@ -97,17 +97,17 @@ tasks:
     disposition: completed
     requirements: ["SA-AC-022", "SA-AC-023", "SA-AC-024", "SA-AC-025", "SA-AC-039", "SA-AC-045"]
     implementation: ["scripts/contracts/run-spec-001.sh"]
-    checks: ["scripts/contracts/check-spec-001-driver.rb", "Tests/GovernanceTooling/report_identity_test.rb"]
+    checks: ["scripts/contracts/check-spec-001-driver.rb", "Tests/GovernanceTooling/artifact_toolchain_test.rb", "Tests/GovernanceTooling/report_identity_test.rb"]
     profiles: ["macos-dynamic", "macos-static", "raspberry-pi-armv6", "nrf52840-embedded"]
-    evidence: ["docs/iterations/iteration-002-cleanup/evidence/05-compilers/result.md"]
+    evidence: ["docs/iterations/iteration-002-cleanup/evidence/05-compilers/result.md", "docs/iterations/iteration-002-cleanup/evidence/10-integration/result.md"]
     blockers: []
   T11.6:
-    disposition: pending
+    disposition: completed
     requirements: ["SA-AC-001", "SA-AC-002", "SA-AC-003", "SA-AC-004", "SA-AC-005", "SA-AC-006", "SA-AC-007", "SA-AC-008", "SA-AC-009", "SA-AC-010", "SA-AC-011", "SA-AC-012", "SA-AC-013", "SA-AC-014", "SA-AC-015", "SA-AC-016", "SA-AC-017", "SA-AC-018", "SA-AC-019", "SA-AC-020", "SA-AC-021", "SA-AC-022", "SA-AC-023", "SA-AC-024", "SA-AC-025", "SA-AC-026", "SA-AC-027", "SA-AC-028", "SA-AC-029", "SA-AC-030", "SA-AC-031", "SA-AC-032", "SA-AC-033", "SA-AC-034", "SA-AC-035", "SA-AC-036", "SA-AC-037", "SA-AC-038", "SA-AC-039", "SA-AC-040", "SA-AC-041", "SA-AC-042", "SA-AC-043", "SA-AC-044", "SA-AC-045"]
     implementation: ["Sources/SignalAnalyzerTargetHost", "scripts/test.sh"]
     checks: ["scripts/format-swift.sh", "scripts/test.sh", "scripts/contracts/run-spec-001.sh"]
     profiles: ["macos-dynamic", "macos-static", "raspberry-pi-armv6", "nrf52840-embedded"]
-    evidence: []
+    evidence: ["docs/iterations/iteration-002-cleanup/evidence/10-integration/result.md"]
     blockers: []
   T11.7:
     disposition: pending

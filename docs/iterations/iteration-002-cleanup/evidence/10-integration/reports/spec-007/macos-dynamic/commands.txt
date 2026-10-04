@@ -1,0 +1,14 @@
+/Users/eugene/work/GiftUI/scripts/contracts/check-spec-007-harness.rb 
+/Users/eugene/work/GiftUI/scripts/contracts/check-spec-007-boundaries.rb 
+/Users/eugene/work/GiftUI/scripts/contracts/check-spec-007-conformance.rb 
+/Users/eugene/work/GiftUI/scripts/contracts/check-spec-007-declarations.sh 
+/Users/eugene/work/GiftUI/scripts/contracts/check-spec-007-migration.rb 
+/Users/eugene/work/GiftUI/scripts/contracts/check-spec-007-semantic-boundary.rb 
+/Users/eugene/work/GiftUI/scripts/contracts/check-spec-007-values.rb 
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc --version 
+xcrun --sdk macosx --show-sdk-path 
+swift build --disable-sandbox --package-path /Users/eugene/work/GiftUI --scratch-path /Users/eugene/work/GiftUI/.build/contract-reports/spec-007/.tmp-macos-dynamic-35629/build/swiftpm -c release --target GiftUILayout -Xswiftc -DGIFTUI_DYNAMIC_PROFILE -Xswiftc -whole-module-optimization 
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc -O -whole-module-optimization -DGIFTUI_DYNAMIC_PROFILE -target arm64-apple-macosx26.0 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk -I /Users/eugene/work/GiftUI/.build/contract-reports/spec-007/.tmp-macos-dynamic-35629/build/swiftpm/arm64-apple-macosx/release/Modules -package-name giftui -parse-as-library -emit-ir /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC007/Instrumentation/SemanticBorrowProbe.swift -o /Users/eugene/work/GiftUI/.build/contract-reports/spec-007/.tmp-macos-dynamic-35629/semantics/layout-resource.ll 
+/Users/eugene/work/GiftUI/scripts/contracts/check-spec-007-resource-ir.rb /Users/eugene/work/GiftUI/.build/contract-reports/spec-007/.tmp-macos-dynamic-35629/semantics/layout-resource.ll /Users/eugene/work/GiftUI/.build/contract-reports/spec-007/.tmp-macos-dynamic-35629/semantics/value-layouts.tsv 
+swift test --package-path /Users/eugene/work/GiftUI --filter GiftUILayoutTests 
+/Users/eugene/work/GiftUI/scripts/contracts/check-spec-007-harness.rb /Users/eugene/work/GiftUI/.build/contract-reports/spec-007/.tmp-macos-dynamic-35629 

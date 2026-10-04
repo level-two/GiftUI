@@ -1,0 +1,14 @@
+/Users/eugene/work/GiftUI/scripts/contracts/check-spec-013-harness.rb 
+/Users/eugene/work/GiftUI/scripts/contracts/check-spec-013-report-driver.rb 
+/Users/eugene/work/GiftUI/scripts/contracts/check-spec-013-resource-instrumentation.sh 
+/Users/eugene/work/GiftUI/scripts/contracts/check-spec-013-migration.rb 
+/Users/eugene/work/GiftUI/scripts/contracts/check-spec-013-module-contract.sh 
+/Users/eugene/work/GiftUI/scripts/contracts/check-spec-013-storage-boundaries.rb 
+/Users/eugene/work/GiftUI/scripts/contracts/check-spec-013-startup-corpus.rb 
+/Users/eugene/work/GiftUI/scripts/contracts/check-spec-013-cycle-failures.rb 
+python3 /Users/eugene/work/GiftUI/scripts/contracts/check-spec-013-amended-carriers.py --profile raspberry-pi-armv6 
+/Users/eugene/work/GiftUI/scripts/contracts/check-spec-013-handoff-recovery.rb 
+/Users/eugene/work/GiftUI/scripts/contracts/check-spec-013-borrow-boundaries.rb 
+/Users/eugene/work/GiftUI/scripts/contracts/check-spec-013-equivalence.rb 
+/Users/eugene/work/GiftUI/scripts/contracts/check-spec-013-workloads.sh --profile raspberry-pi-armv6 --output /Users/eugene/work/GiftUI/.build/contract-reports/spec-013/.tmp-raspberry-pi-armv6-64185/workload-timing.tsv 
+/Users/eugene/work/GiftUI/scripts/contracts/report-spec-013-profile.rb --root /Users/eugene/work/GiftUI --output \<report-staging\> --profile raspberry-pi-armv6 --revision 759cf5945d69313ab3546965eace2ecc08da5ab3 --dirty false --evidence-class cross-build --compiler /Users/eugene/work/GiftUI/.toolchains/host/swift-6.3.2-RELEASE-osx/usr/bin/swift\ ::\ Apple\ Swift\ version\ 6.3.2\ \(swift-6.3.2-RELEASE\)\ Target:\ arm64-apple-macosx26.0\  --sdk /Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6 --target armv6-unknown-linux-gnueabihf --fixture-result pass --command scripts/contracts/run-spec-013.sh\ --profile\ raspberry-pi-armv6 

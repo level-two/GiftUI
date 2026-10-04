@@ -1,0 +1,10 @@
+# criterion	status	reason
+LY-001	pass	public-compile-payload-preservation-and-surface-audit
+LY-002	pass	semantic-view-transcript-borrow-and-no-second-graph-evidence
+LY-003	pass	stack-spacer-modifier-placement-and-clip-goldens
+LY-004	pass	canonical-text-instance-glyph-line-baseline-and-clip-goldens
+LY-005	pass	failure-mapping-acquisition-discard-and-atomicity-matrix
+LY-006	pass	profile-normalized-allocation-and-borrow-lifetime-comparison
+LY-007	pass	package-graph-import-negative-and-source-dependency-audit
+LY-008	pass	signal-analyzer-limits-high-water-and-surface-coverage
+LY-009	pass	four-profile-value-resource-stack-link-and-elf-reports

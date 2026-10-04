@@ -1,0 +1,32 @@
+schema_version=2
+spec=SPEC-005
+profile=macos-dynamic
+repository_revision=759cf5945d69313ab3546965eace2ecc08da5ab3
+repository_dirty=false
+input_set_sha256=13497580cfa982fc6fc2fa0dcab8e3deae27734bf1a5cc86c57a84e5f82190d9
+run_id=759cf5945d69313ab3546965eace2ecc08da5ab3-13497580cfa982fc
+generated_directory=.build/contract-generated/spec-005/macos-dynamic
+report_directory=.build/contract-reports/spec-005/759cf5945d69313ab3546965eace2ecc08da5ab3-13497580cfa982fc/macos-dynamic
+invocation=scripts/contracts/run-spec-005.sh --profile macos-dynamic
+evidence=hardware-free
+remote_access=false
+deployment=false
+service_restart=false
+simulator_execution=false
+connected_target_execution=false
+flashing=false
+source_list=Sources/GiftUITextResources/GiftUITextResources.swift
+compiler_path=/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc
+compiler_sha256=2ed38571e92c0283091838c1649e27650ad9c99950288e883c7b2dc6c4ce89fb
+compiler_version<<EOF
+swift-driver version: 1.148.6 Apple Swift version 6.3.3 (swiftlang-6.3.3.1.3 clang-2100.1.1.101)
+Target: arm64-apple-macosx26.0
+EOF
+target=arm64-apple-macosx26.0
+sdk_path=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk
+sdk_version=26.5
+optimization=-O -whole-module-optimization
+profile_flag=-DGIFTUI_DYNAMIC_PROFILE
+required_realization_ids=0,1
+available_realization_ids=0,1
+exit_code=0

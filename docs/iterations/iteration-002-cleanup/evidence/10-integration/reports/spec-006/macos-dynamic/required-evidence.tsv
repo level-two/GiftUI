@@ -1,0 +1,19 @@
+# item	status
+compiler-identity	complete
+target-pin	complete
+optimization	complete
+command-transcript	complete
+repository-revision	complete
+portable-module	complete
+public-interface	complete
+ordered-corpus	complete
+normalized-results	complete
+allocation-record	complete
+owned-value-layouts	complete
+summary-counters	complete
+maximum-observed-depth	complete
+underscored-reference-inventory	complete
+nrf-elf-inspection	not-applicable
+complexity-instrumentation	complete
+primitive-container	complete
+action-container	complete

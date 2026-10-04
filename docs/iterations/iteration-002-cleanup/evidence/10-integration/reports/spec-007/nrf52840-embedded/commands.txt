@@ -1,0 +1,11 @@
+/Users/eugene/work/GiftUI/scripts/contracts/check-spec-007-harness.rb 
+/Users/eugene/work/GiftUI/scripts/contracts/check-spec-007-boundaries.rb 
+/Users/eugene/work/GiftUI/scripts/contracts/check-spec-007-conformance.rb 
+/Users/eugene/work/GiftUI/scripts/contracts/check-spec-007-declarations.sh 
+/Users/eugene/work/GiftUI/scripts/contracts/check-spec-007-migration.rb 
+/Users/eugene/work/GiftUI/scripts/contracts/check-spec-007-semantic-boundary.rb 
+/Users/eugene/work/GiftUI/scripts/contracts/check-spec-007-values.rb 
+/Users/eugene/work/GiftUI/scripts/nrf52840/doctor.sh 
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.3.2-RELEASE-osx/usr/bin/swiftc --version 
+/Users/eugene/work/GiftUI/scripts/contracts/check-spec-007-embedded-semantic.sh /Users/eugene/work/GiftUI/.build/contract-reports/spec-007/.tmp-nrf52840-embedded-81251/semantics/nrf 
+/Users/eugene/work/GiftUI/scripts/contracts/check-spec-007-harness.rb /Users/eugene/work/GiftUI/.build/contract-reports/spec-007/.tmp-nrf52840-embedded-81251 

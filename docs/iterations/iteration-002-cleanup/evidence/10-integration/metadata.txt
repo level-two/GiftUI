@@ -1,0 +1,10 @@
+schema_version=1
+invocation_id=run-ZP4SPN01
+selection=all-hardware-free
+repository_revision=759cf5945d69313ab3546965eace2ecc08da5ab3
+profiles=macos-dynamic,macos-static,raspberry-pi-armv6,nrf52840-embedded
+contract_report_root=.build/contract-reports
+failure_count=0
+status=complete
+exit_code=0
+active_check=none

@@ -1,0 +1,14 @@
+# criterion	status	reason
+DR-001	missing	public-interface-and-positive-negative-compile-transcripts
+DR-002	missing	semantic-layout-render-identity-and-zero-output-transcript
+DR-003	missing	cycle-timeline-invocation-release-and-refusal-recovery
+DR-004	missing	path-snapshot-subpath-zero-length-and-atomic-capacity-fixtures
+DR-005	missing	canonical-combined-header-and-recording-transcript
+DR-006	missing	shared-raster-mask-and-exact-encoding-corpus
+DR-007	missing	ordered-failure-mapping-and-lifecycle-disposition-matrix
+DR-008	missing	independent-b2-capability-and-snapshot-field-matrix
+DR-009	missing	borrow-poisoning-and-lifecycle-storage-audits
+DR-010	missing	generated-callable-coverage-capture-and-rejection-corpus
+DR-011	missing	typed-error-cleanup-allocation-symbol-and-elf-inspection
+DR-012	missing	value-layout-resource-high-water-link-and-timing-reports
+DR-013	missing	target-graph-import-symbol-owner-and-portable-source-audit

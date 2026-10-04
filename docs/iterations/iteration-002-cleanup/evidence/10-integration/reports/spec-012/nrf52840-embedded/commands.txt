@@ -1,0 +1,13 @@
+/Users/eugene/work/GiftUI/scripts/contracts/check-spec-012-harness.rb 
+/Users/eugene/work/GiftUI/scripts/contracts/check-spec-012-migration.rb 
+/Users/eugene/work/GiftUI/scripts/contracts/check-spec-012-raster-vectors.rb 
+/Users/eugene/work/GiftUI/scripts/contracts/check-spec-012-static-canvas-manifest.rb 
+/Users/eugene/work/GiftUI/scripts/contracts/check-spec-013-storage-boundaries.rb 
+swift package --disable-sandbox dump-package 
+/Users/eugene/work/GiftUI/scripts/contracts/check-target-dependencies.rb 
+/Users/eugene/work/GiftUI/scripts/contracts/check-spec-014-module-contract.rb 
+/Users/eugene/work/GiftUI/scripts/nrf52840/doctor.sh 
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.3.2-RELEASE-osx/usr/bin/swiftc --version 
+/Users/eugene/work/GiftUI/scripts/contracts/check-spec-012-declarations.sh --profile nrf52840-embedded --output /Users/eugene/work/GiftUI/.build/contract-reports/spec-012/.tmp-nrf52840-embedded-85650/declarations 
+/Users/eugene/work/GiftUI/scripts/contracts/check-spec-012-value-profiles.sh --profile nrf52840-embedded --output /Users/eugene/work/GiftUI/.build/contract-reports/spec-012/.tmp-nrf52840-embedded-85650/value-layouts 
+/Users/eugene/work/GiftUI/scripts/contracts/check-spec-012-harness.rb /Users/eugene/work/GiftUI/.build/contract-reports/spec-012/.tmp-nrf52840-embedded-85650 

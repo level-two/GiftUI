@@ -5,7 +5,7 @@ title: SPEC-011 Conformance Report
 status: complete
 reviewers: [codex]
 created: 2026-09-19
-updated: 2026-10-03
+updated: 2026-10-05
 implementation_plan: ../implementation-plans/spec-011-implementation-plan.md
 related_future_work:
   - FW-021
@@ -180,3 +180,16 @@ Earlier open-gate statements below describe the pre-approval history.
 Hardware-free acceptance rows retain their passing scope. The remaining
 connected gate is closed by the explicit exception in the linked authorization,
 with its uncollected physical/fault/trace evidence retained as follow-up.
+
+## Iteration 2 maintenance integration — 2026-10-05
+
+[Fresh 30s-contract packet](../iterations/iteration-002-cleanup/evidence/10-integration/result.md)
+reviews all 13 criteria against the unchanged approved contract at revision
+759cf594. All four owner profiles and their composed resource/dependency gates
+pass; all 74 repository checks and 60 immutable reports verify. The original
+criterion table and historical raw evidence retain their dispositions. New
+startup/capacity/source-selection/generator/compiler observations apply only
+to their maintained and hardware-free evidence, with exact hashes and limits
+in the linked packet. No lifecycle transition or new exception follows.
+Connected changed-path checks and final application reconciliation remain
+SPEC-001 T11.7/T11.8. Retention remains 30s/2,404 pending RFC/ADR/Spec gates.

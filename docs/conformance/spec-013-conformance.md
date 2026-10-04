@@ -5,7 +5,7 @@ title: SPEC-013 Conformance Report
 status: complete
 reviewers: [codex]
 created: 2026-09-19
-updated: 2026-10-03
+updated: 2026-10-05
 implementation_plan: ../implementation-plans/spec-013-implementation-plan.md
 related_future_work: []
 related_explorations: []
@@ -144,3 +144,16 @@ supports requesting an explicit human `implemented` transition for this owner.
 ## Human implemented-transition authorization — 2026-10-03
 
 Eugene explicitly approved SPEC-013's `implementing → implemented` transition as one of the ten named owner transitions. [The approval record](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/iteration-closeout-20261003/owner-transition-approval.md) supersedes prior statements that authorization was pending. The Specification is now implemented; connected application and MVP gates retain their distinct scope.
+
+## Iteration 2 maintenance integration — 2026-10-05
+
+[Fresh 30s-contract packet](../iterations/iteration-002-cleanup/evidence/10-integration/result.md)
+reviews all 15 criteria against the unchanged approved contract at revision
+759cf594. All four owner profiles and their composed resource/dependency gates
+pass; all 74 repository checks and 60 immutable reports verify. The original
+criterion table and historical raw evidence retain their dispositions. New
+startup/capacity/source-selection/generator/compiler observations apply only
+to their maintained and hardware-free evidence, with exact hashes and limits
+in the linked packet. No lifecycle transition or new exception follows.
+Connected changed-path checks and final application reconciliation remain
+SPEC-001 T11.7/T11.8. Retention remains 30s/2,404 pending RFC/ADR/Spec gates.

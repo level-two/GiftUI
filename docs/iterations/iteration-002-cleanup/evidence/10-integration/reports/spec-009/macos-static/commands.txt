@@ -1,0 +1,46 @@
+/Users/eugene/work/GiftUI/scripts/contracts/check-spec-009-harness.rb 
+/Users/eugene/work/GiftUI/scripts/contracts/check-spec-009-migration.rb 
+/Users/eugene/work/GiftUI/scripts/contracts/check-spec-009-identity-allocators.rb 
+/Users/eugene/work/GiftUI/scripts/contracts/check-spec-009-input-sequences.rb 
+/Users/eugene/work/GiftUI/scripts/contracts/check-spec-009-interface-audit.rb 
+/Users/eugene/work/GiftUI/scripts/contracts/check-spec-009-offer-normalization.rb 
+/Users/eugene/work/GiftUI/scripts/contracts/check-spec-009-operational-mapping.rb 
+/Users/eugene/work/GiftUI/scripts/contracts/check-spec-009-owner-instrumentation.rb 
+/Users/eugene/work/GiftUI/scripts/contracts/check-spec-009-owner-integration.rb 
+/Users/eugene/work/GiftUI/scripts/contracts/check-spec-013-storage-boundaries.rb 
+swift package --disable-sandbox --package-path /Users/eugene/work/GiftUI dump-package 
+/Users/eugene/work/GiftUI/scripts/contracts/check-spec-014-module-contract.rb 
+/Users/eugene/work/GiftUI/scripts/contracts/check-spec-009-admission-values.rb 
+/Users/eugene/work/GiftUI/scripts/contracts/check-spec-009-admission-controller.rb 
+/Users/eugene/work/GiftUI/scripts/contracts/check-spec-009-admission-seal.rb 
+/Users/eugene/work/GiftUI/scripts/contracts/check-spec-009-admission-seal-faults.rb 
+/Users/eugene/work/GiftUI/scripts/contracts/check-spec-009-cycle-finalization.rb 
+/Users/eugene/work/GiftUI/scripts/contracts/check-spec-009-candidate-offer.rb 
+/Users/eugene/work/GiftUI/scripts/contracts/check-spec-009-canonical-loader.rb 
+/Users/eugene/work/GiftUI/scripts/contracts/check-spec-009-cycle-input-corpus.rb 
+/Users/eugene/work/GiftUI/scripts/contracts/check-spec-009-diagnostic-isolation.rb 
+/Users/eugene/work/GiftUI/scripts/contracts/check-spec-009-execution-values.rb 
+/Users/eugene/work/GiftUI/scripts/contracts/check-spec-009-execution-failure-adapter.rb 
+/Users/eugene/work/GiftUI/scripts/contracts/check-spec-009-frame-commit.rb 
+/Users/eugene/work/GiftUI/scripts/contracts/check-spec-009-frame-handoff-values.rb 
+/Users/eugene/work/GiftUI/scripts/contracts/check-spec-009-focused-failures.rb 
+/Users/eugene/work/GiftUI/scripts/contracts/check-spec-009-handoff-corpus.rb 
+/Users/eugene/work/GiftUI/scripts/contracts/check-spec-009-focused-owner-adapter.rb 
+/Users/eugene/work/GiftUI/scripts/contracts/check-spec-009-wake-values.rb 
+/Users/eugene/work/GiftUI/scripts/contracts/check-spec-009-wake-accumulator.rb 
+/Users/eugene/work/GiftUI/scripts/contracts/check-spec-009-phase-machine.rb 
+/Users/eugene/work/GiftUI/scripts/contracts/check-spec-009-pointer-capture.rb 
+/Users/eugene/work/GiftUI/scripts/contracts/check-spec-009-presentation-pending.rb 
+/Users/eugene/work/GiftUI/scripts/contracts/check-spec-009-presentation-recovery.rb 
+/Users/eugene/work/GiftUI/scripts/contracts/check-spec-009-recording-coordinator.rb 
+/Users/eugene/work/GiftUI/scripts/contracts/check-spec-009-recording-derivation.rb 
+/Users/eugene/work/GiftUI/scripts/contracts/check-spec-009-recording-endpoint.rb 
+/Users/eugene/work/GiftUI/scripts/contracts/check-spec-009-recording-mutation.rb 
+/Users/eugene/work/GiftUI/scripts/contracts/check-spec-009-recording-recovery.rb 
+/Users/eugene/work/GiftUI/scripts/contracts/check-spec-009-recovery-signal-corpus.rb 
+/Users/eugene/work/GiftUI/scripts/contracts/check-spec-009-render-offer-mapping.rb 
+/Users/eugene/work/GiftUI/scripts/contracts/check-spec-009-run-cycle-values.rb 
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc --version 
+xcrun --sdk macosx --show-sdk-path 
+/Users/eugene/work/GiftUI/scripts/contracts/check-spec-009-value-profiles.sh --profile macos-static --output /Users/eugene/work/GiftUI/.build/contract-reports/spec-009/.tmp-macos-static-49950/value-surface 
+/Users/eugene/work/GiftUI/scripts/contracts/check-spec-009-harness.rb /Users/eugene/work/GiftUI/.build/contract-reports/spec-009/.tmp-macos-static-49950 

@@ -1,0 +1,362 @@
+[
+  {
+    "spec": "spec-001",
+    "profile": "macos-dynamic",
+    "canonical_report": ".build/contract-reports/spec-001/20261004T225647Z-28781/macos-dynamic",
+    "metadata_sha256": "223d85a3c1e1774a8a0c2395f6107ae908c0ab664fe0d7706d4a73fad0b56943"
+  },
+  {
+    "spec": "spec-001",
+    "profile": "macos-static",
+    "canonical_report": ".build/contract-reports/spec-001/20261004T230354Z-41114/macos-static",
+    "metadata_sha256": "8c7ca758eb11748949bf79e9322bfb0169a75954f6eba8347f63a382fb6117a4"
+  },
+  {
+    "spec": "spec-001",
+    "profile": "nrf52840-embedded",
+    "canonical_report": ".build/contract-reports/spec-001/20261004T232626Z-65897/nrf52840-embedded",
+    "metadata_sha256": "56f52490cf8e79da09421ef03f008fca5b27e9f0756d4091b95dfc5377cd1db5"
+  },
+  {
+    "spec": "spec-001",
+    "profile": "raspberry-pi-armv6",
+    "canonical_report": ".build/contract-reports/spec-001/20261004T231058Z-53505/raspberry-pi-armv6",
+    "metadata_sha256": "2de72da7022407e93ceb7abdfd285a6b4a54217e0074d7ee811c8dad1cc87462"
+  },
+  {
+    "spec": "spec-002",
+    "profile": "macos-dynamic",
+    "canonical_report": ".build/contract-reports/spec-002/759cf5945d69313ab3546965eace2ecc08da5ab3-d93a5691c785f107/macos-dynamic",
+    "metadata_sha256": "fc637bf38fe960285d8e9d86f826895668aa44094cbd039f085e5c78ba1fb696"
+  },
+  {
+    "spec": "spec-002",
+    "profile": "macos-static",
+    "canonical_report": ".build/contract-reports/spec-002/759cf5945d69313ab3546965eace2ecc08da5ab3-d93a5691c785f107/macos-static",
+    "metadata_sha256": "00717e3e2ce31d5229f635f1eaca2a2f797a622cbe886771d5cec7406ae6b2f8"
+  },
+  {
+    "spec": "spec-002",
+    "profile": "nrf52840-embedded",
+    "canonical_report": ".build/contract-reports/spec-002/759cf5945d69313ab3546965eace2ecc08da5ab3-d93a5691c785f107/nrf52840-embedded",
+    "metadata_sha256": "1fa3e21b46cb6a200951bae46cbb399d970dc043f7cff95d3cb74bdc98394366"
+  },
+  {
+    "spec": "spec-002",
+    "profile": "raspberry-pi-armv6",
+    "canonical_report": ".build/contract-reports/spec-002/759cf5945d69313ab3546965eace2ecc08da5ab3-d93a5691c785f107/raspberry-pi-armv6",
+    "metadata_sha256": "5b181b20127210e861ad8edc1c8398fcf45f2e6d6262da97b81bfa8f02a7df26"
+  },
+  {
+    "spec": "spec-003",
+    "profile": "macos-dynamic",
+    "canonical_report": ".build/contract-reports/spec-003/759cf5945d69313ab3546965eace2ecc08da5ab3-d93a5691c785f107/macos-dynamic",
+    "metadata_sha256": "99028fae66d4af0a0654f56f4201dec9ac60d7674e12255918e0bdf1e1b9bb02"
+  },
+  {
+    "spec": "spec-003",
+    "profile": "macos-static",
+    "canonical_report": ".build/contract-reports/spec-003/759cf5945d69313ab3546965eace2ecc08da5ab3-d93a5691c785f107/macos-static",
+    "metadata_sha256": "58d7bfccbc9ec8bfc620ddc4a185e86309ae60982b9fa5767a22912e643f13c4"
+  },
+  {
+    "spec": "spec-003",
+    "profile": "nrf52840-embedded",
+    "canonical_report": ".build/contract-reports/spec-003/759cf5945d69313ab3546965eace2ecc08da5ab3-d93a5691c785f107/nrf52840-embedded",
+    "metadata_sha256": "4401287d2a5dd8bbb6d25ebffc72be9005109e9944c5b5e96e903519c23c61d2"
+  },
+  {
+    "spec": "spec-003",
+    "profile": "raspberry-pi-armv6",
+    "canonical_report": ".build/contract-reports/spec-003/759cf5945d69313ab3546965eace2ecc08da5ab3-d93a5691c785f107/raspberry-pi-armv6",
+    "metadata_sha256": "bc7e906f2789b3df1e6eee4835f8748313894f3edea71d7ebfe592311711ff40"
+  },
+  {
+    "spec": "spec-004",
+    "profile": "macos-dynamic",
+    "canonical_report": ".build/contract-reports/spec-004/759cf5945d69313ab3546965eace2ecc08da5ab3-d93a5691c785f107/macos-dynamic",
+    "metadata_sha256": "18f9341d1971a3eada6fcaa6e1a191080b45063a8113fba1a4ee1175f45e7cf8"
+  },
+  {
+    "spec": "spec-004",
+    "profile": "macos-static",
+    "canonical_report": ".build/contract-reports/spec-004/759cf5945d69313ab3546965eace2ecc08da5ab3-d93a5691c785f107/macos-static",
+    "metadata_sha256": "8576c4a478fa6d61c0b29cd8e5c7545089316aba3a5833c7c0a0d625174f801f"
+  },
+  {
+    "spec": "spec-004",
+    "profile": "nrf52840-embedded",
+    "canonical_report": ".build/contract-reports/spec-004/759cf5945d69313ab3546965eace2ecc08da5ab3-d93a5691c785f107/nrf52840-embedded",
+    "metadata_sha256": "dd28268bc8b710dbc9e5aa3e018872bafa57f77396e10f78d997c6c049d15e89"
+  },
+  {
+    "spec": "spec-004",
+    "profile": "raspberry-pi-armv6",
+    "canonical_report": ".build/contract-reports/spec-004/759cf5945d69313ab3546965eace2ecc08da5ab3-d93a5691c785f107/raspberry-pi-armv6",
+    "metadata_sha256": "7658d093f19d491d3bdddd52559548fe02d76709bc982fda855b3c382bbacdbf"
+  },
+  {
+    "spec": "spec-005",
+    "profile": "macos-dynamic",
+    "canonical_report": ".build/contract-reports/spec-005/759cf5945d69313ab3546965eace2ecc08da5ab3-13497580cfa982fc/macos-dynamic",
+    "metadata_sha256": "84d366d2824a97b9e89d1894b325aa474cb9008659fece0e410706db13d9463b"
+  },
+  {
+    "spec": "spec-005",
+    "profile": "macos-static",
+    "canonical_report": ".build/contract-reports/spec-005/759cf5945d69313ab3546965eace2ecc08da5ab3-13497580cfa982fc/macos-static",
+    "metadata_sha256": "6e5c398186bebb0536e6a4572c2d0829fdbcbfd950981cda41eb84d7a7bb5cb8"
+  },
+  {
+    "spec": "spec-005",
+    "profile": "nrf52840-embedded",
+    "canonical_report": ".build/contract-reports/spec-005/759cf5945d69313ab3546965eace2ecc08da5ab3-13497580cfa982fc/nrf52840-embedded",
+    "metadata_sha256": "b6a2fe12f3fc480e85c4c933addfd24ce75fefef1d10355418a339c0c86020de"
+  },
+  {
+    "spec": "spec-005",
+    "profile": "raspberry-pi-armv6",
+    "canonical_report": ".build/contract-reports/spec-005/759cf5945d69313ab3546965eace2ecc08da5ab3-13497580cfa982fc/raspberry-pi-armv6",
+    "metadata_sha256": "79611a4ecebb27b882118ce6961d27d36c23c7c284380f4f14670e4c381a4731"
+  },
+  {
+    "spec": "spec-006",
+    "profile": "macos-dynamic",
+    "canonical_report": ".build/contract-reports/spec-006/759cf5945d69313ab3546965eace2ecc08da5ab3-e4e48e37d8c767c7/macos-dynamic",
+    "metadata_sha256": "93e7e474941ce78b3a81cb53e2651fafda950cd2ad438e41e970c5cb43229e8e"
+  },
+  {
+    "spec": "spec-006",
+    "profile": "macos-static",
+    "canonical_report": ".build/contract-reports/spec-006/759cf5945d69313ab3546965eace2ecc08da5ab3-e4e48e37d8c767c7/macos-static",
+    "metadata_sha256": "2289f571b72f4416a7986932908a67a1ff8d45c349bb79c19e3788d45f46d559"
+  },
+  {
+    "spec": "spec-006",
+    "profile": "nrf52840-embedded",
+    "canonical_report": ".build/contract-reports/spec-006/759cf5945d69313ab3546965eace2ecc08da5ab3-e4e48e37d8c767c7/nrf52840-embedded",
+    "metadata_sha256": "dd19400d6a2468bbfcd494ab0b59d3511f0e1c06e074400edfa0c4cca4dae016"
+  },
+  {
+    "spec": "spec-006",
+    "profile": "raspberry-pi-armv6",
+    "canonical_report": ".build/contract-reports/spec-006/759cf5945d69313ab3546965eace2ecc08da5ab3-e4e48e37d8c767c7/raspberry-pi-armv6",
+    "metadata_sha256": "e570e1ae42cbfe15ad9a19cc60c8b749121f73c3e18b91e877a132ff3c7816f0"
+  },
+  {
+    "spec": "spec-007",
+    "profile": "macos-dynamic",
+    "canonical_report": ".build/contract-reports/spec-007/759cf5945d69313ab3546965eace2ecc08da5ab3-9c9b7b98bfb72db1/macos-dynamic",
+    "metadata_sha256": "f9240c58b2e90415ea16017a3ae618e25f2495ccc2ae0bb81fde25410b1036e1"
+  },
+  {
+    "spec": "spec-007",
+    "profile": "macos-static",
+    "canonical_report": ".build/contract-reports/spec-007/759cf5945d69313ab3546965eace2ecc08da5ab3-9c9b7b98bfb72db1/macos-static",
+    "metadata_sha256": "c7605e3ec47cff2bf2c9b97adb25e8f95587e78089b05c89ba734c450ff438fa"
+  },
+  {
+    "spec": "spec-007",
+    "profile": "nrf52840-embedded",
+    "canonical_report": ".build/contract-reports/spec-007/759cf5945d69313ab3546965eace2ecc08da5ab3-9c9b7b98bfb72db1/nrf52840-embedded",
+    "metadata_sha256": "685f27e6e4ca1d915a6ca82c6642c4ae50f482012f87ea8ab76d231c79b1d295"
+  },
+  {
+    "spec": "spec-007",
+    "profile": "raspberry-pi-armv6",
+    "canonical_report": ".build/contract-reports/spec-007/759cf5945d69313ab3546965eace2ecc08da5ab3-9c9b7b98bfb72db1/raspberry-pi-armv6",
+    "metadata_sha256": "9ce6481b90ef039aec687d5a8d6bcb7d2a59135ebe2d848c7078e9d6089caa81"
+  },
+  {
+    "spec": "spec-008",
+    "profile": "macos-dynamic",
+    "canonical_report": ".build/contract-reports/spec-008/759cf5945d69313ab3546965eace2ecc08da5ab3-8c912bd577cac4a7/macos-dynamic",
+    "metadata_sha256": "111a767e3c5612c29e14e7c8be9e4b636fa85151a3ada56f613a93e8d701b0c9"
+  },
+  {
+    "spec": "spec-008",
+    "profile": "macos-static",
+    "canonical_report": ".build/contract-reports/spec-008/759cf5945d69313ab3546965eace2ecc08da5ab3-8c912bd577cac4a7/macos-static",
+    "metadata_sha256": "f96943ed4bb0bdf1584724bdb28bfd02c098f9fc0fe8abbf9e096d77c1351018"
+  },
+  {
+    "spec": "spec-008",
+    "profile": "nrf52840-embedded",
+    "canonical_report": ".build/contract-reports/spec-008/759cf5945d69313ab3546965eace2ecc08da5ab3-8c912bd577cac4a7/nrf52840-embedded",
+    "metadata_sha256": "3f7a69f28a8af747a95032b9943c6d37a15b3b947a95e654bc0ec05732cf37eb"
+  },
+  {
+    "spec": "spec-008",
+    "profile": "raspberry-pi-armv6",
+    "canonical_report": ".build/contract-reports/spec-008/759cf5945d69313ab3546965eace2ecc08da5ab3-8c912bd577cac4a7/raspberry-pi-armv6",
+    "metadata_sha256": "66b3f1b3ebaf2e6f091820da7f3b84a2cf7bab2314491029de52ee6d469aa6a5"
+  },
+  {
+    "spec": "spec-009",
+    "profile": "macos-dynamic",
+    "canonical_report": ".build/contract-reports/spec-009/759cf5945d69313ab3546965eace2ecc08da5ab3-54aaea69d783eaaa/macos-dynamic",
+    "metadata_sha256": "bec45e1a056c06049e2cf4599eea9ce386ca5901028fc75a7de2b19ef1991c0a"
+  },
+  {
+    "spec": "spec-009",
+    "profile": "macos-static",
+    "canonical_report": ".build/contract-reports/spec-009/759cf5945d69313ab3546965eace2ecc08da5ab3-54aaea69d783eaaa/macos-static",
+    "metadata_sha256": "ca64381a5425de47f31590de185d2cc4a685f2412bccb6da09dbea38295eaaa7"
+  },
+  {
+    "spec": "spec-009",
+    "profile": "nrf52840-embedded",
+    "canonical_report": ".build/contract-reports/spec-009/759cf5945d69313ab3546965eace2ecc08da5ab3-54aaea69d783eaaa/nrf52840-embedded",
+    "metadata_sha256": "f9342bea69a03e51f0646c6d0c1006da14f5ecb0932fe81a01603aaae8bae35c"
+  },
+  {
+    "spec": "spec-009",
+    "profile": "raspberry-pi-armv6",
+    "canonical_report": ".build/contract-reports/spec-009/759cf5945d69313ab3546965eace2ecc08da5ab3-54aaea69d783eaaa/raspberry-pi-armv6",
+    "metadata_sha256": "9cc9536d39d2c7a1a6c730ed0367b8f6fd0445895a840ded2c7dcee163cc3796"
+  },
+  {
+    "spec": "spec-010",
+    "profile": "macos-dynamic",
+    "canonical_report": ".build/contract-reports/spec-010/759cf5945d69313ab3546965eace2ecc08da5ab3-f09fa73a6913497f/macos-dynamic",
+    "metadata_sha256": "5a3b00c48ea7b8a6a0879f278dcfb99988cad75b697df8b06a4776477a75a180"
+  },
+  {
+    "spec": "spec-010",
+    "profile": "macos-static",
+    "canonical_report": ".build/contract-reports/spec-010/759cf5945d69313ab3546965eace2ecc08da5ab3-f09fa73a6913497f/macos-static",
+    "metadata_sha256": "a714d0dbe17b0c2ad563c4ca7291cac15d6884d63508df144b14755b687261cd"
+  },
+  {
+    "spec": "spec-010",
+    "profile": "nrf52840-embedded",
+    "canonical_report": ".build/contract-reports/spec-010/759cf5945d69313ab3546965eace2ecc08da5ab3-f09fa73a6913497f/nrf52840-embedded",
+    "metadata_sha256": "8ce846a904756a79ce09d9e084534d74b888181d581cc4ef6d4811ace955e813"
+  },
+  {
+    "spec": "spec-010",
+    "profile": "raspberry-pi-armv6",
+    "canonical_report": ".build/contract-reports/spec-010/759cf5945d69313ab3546965eace2ecc08da5ab3-f09fa73a6913497f/raspberry-pi-armv6",
+    "metadata_sha256": "840314970810ae7fda322bfe78b843269b15a78a1075692159b0c89c20acc8ac"
+  },
+  {
+    "spec": "spec-011",
+    "profile": "macos-dynamic",
+    "canonical_report": ".build/contract-reports/spec-011/759cf5945d69313ab3546965eace2ecc08da5ab3-d93a5691c785f107/macos-dynamic",
+    "metadata_sha256": "fc788b152e972ee4d7321a95f288fb73f2af6939d3e325fe8faa6590977ee666"
+  },
+  {
+    "spec": "spec-011",
+    "profile": "macos-static",
+    "canonical_report": ".build/contract-reports/spec-011/759cf5945d69313ab3546965eace2ecc08da5ab3-d93a5691c785f107/macos-static",
+    "metadata_sha256": "0bd0b26012b0ce861dda4b927ba11f025b17193ae219c02b0acf502ec6f7be53"
+  },
+  {
+    "spec": "spec-011",
+    "profile": "nrf52840-embedded",
+    "canonical_report": ".build/contract-reports/spec-011/759cf5945d69313ab3546965eace2ecc08da5ab3-d93a5691c785f107/nrf52840-embedded",
+    "metadata_sha256": "ae26f66f0f9a7d8f0792e376a3869b161b3b8aefd494bbc78e52d8cd0a89ae54"
+  },
+  {
+    "spec": "spec-011",
+    "profile": "raspberry-pi-armv6",
+    "canonical_report": ".build/contract-reports/spec-011/759cf5945d69313ab3546965eace2ecc08da5ab3-d93a5691c785f107/raspberry-pi-armv6",
+    "metadata_sha256": "d72387b732ca42b3f4869c2f8302efd2dc7e13c09fd43fe32e5d3c24b380065d"
+  },
+  {
+    "spec": "spec-012",
+    "profile": "macos-dynamic",
+    "canonical_report": ".build/contract-reports/spec-012/759cf5945d69313ab3546965eace2ecc08da5ab3-fc0aae9586267865/macos-dynamic",
+    "metadata_sha256": "f349e68d2ae5946faba930ef69f09229c7d4f021dd18bc077a33917a635348b2"
+  },
+  {
+    "spec": "spec-012",
+    "profile": "macos-static",
+    "canonical_report": ".build/contract-reports/spec-012/759cf5945d69313ab3546965eace2ecc08da5ab3-fc0aae9586267865/macos-static",
+    "metadata_sha256": "7d1d4744017698844c2df9db1891037e0cb37b85eeaa96f6194ac8f6d4c321f3"
+  },
+  {
+    "spec": "spec-012",
+    "profile": "nrf52840-embedded",
+    "canonical_report": ".build/contract-reports/spec-012/759cf5945d69313ab3546965eace2ecc08da5ab3-fc0aae9586267865/nrf52840-embedded",
+    "metadata_sha256": "9efcec1264048b3e35348ce494f53bc78f581a2f535eceb114cb681d2c764a50"
+  },
+  {
+    "spec": "spec-012",
+    "profile": "raspberry-pi-armv6",
+    "canonical_report": ".build/contract-reports/spec-012/759cf5945d69313ab3546965eace2ecc08da5ab3-fc0aae9586267865/raspberry-pi-armv6",
+    "metadata_sha256": "70e558b46c6665758641a6b4e188d201879b069c6acb30f94d3940a4ca08e790"
+  },
+  {
+    "spec": "spec-013",
+    "profile": "macos-dynamic",
+    "canonical_report": ".build/contract-reports/spec-013/759cf5945d69313ab3546965eace2ecc08da5ab3-d25973a2ebde9c96/macos-dynamic",
+    "metadata_sha256": "ad91f412e0500f8cb3fb38f43d7d0d4e666d422472f3baf229456208729b636a"
+  },
+  {
+    "spec": "spec-013",
+    "profile": "macos-static",
+    "canonical_report": ".build/contract-reports/spec-013/759cf5945d69313ab3546965eace2ecc08da5ab3-d25973a2ebde9c96/macos-static",
+    "metadata_sha256": "914fe3b7ce1782fa6960d190cdf918b164923618669bed1c43e0a11e4c7e669c"
+  },
+  {
+    "spec": "spec-013",
+    "profile": "nrf52840-embedded",
+    "canonical_report": ".build/contract-reports/spec-013/759cf5945d69313ab3546965eace2ecc08da5ab3-d25973a2ebde9c96/nrf52840-embedded",
+    "metadata_sha256": "fe17ca745122c31f8d6ed45d3cb6130cc418771d4eb497666b8ac35bde2fad8a"
+  },
+  {
+    "spec": "spec-013",
+    "profile": "raspberry-pi-armv6",
+    "canonical_report": ".build/contract-reports/spec-013/759cf5945d69313ab3546965eace2ecc08da5ab3-d25973a2ebde9c96/raspberry-pi-armv6",
+    "metadata_sha256": "5246068b0e4cdac627e39d95bf8905e78b3d57b361497aa4bbe940ee8f32be95"
+  },
+  {
+    "spec": "spec-014",
+    "profile": "macos-dynamic",
+    "canonical_report": ".build/spec-014/reports/759cf5945d69313ab3546965eace2ecc08da5ab3-145c16b3b1e9a369/macos-dynamic",
+    "metadata_sha256": "00f447a257d2e464ae28b2b9c52467fb56079447887e235c5f77dc0be4343f71"
+  },
+  {
+    "spec": "spec-014",
+    "profile": "macos-static",
+    "canonical_report": ".build/spec-014/reports/759cf5945d69313ab3546965eace2ecc08da5ab3-145c16b3b1e9a369/macos-static",
+    "metadata_sha256": "3fbba216f3eba64007a47287c20da2a638f27f12cbb884daa962842f746201a7"
+  },
+  {
+    "spec": "spec-014",
+    "profile": "nrf52840-embedded",
+    "canonical_report": ".build/spec-014/reports/759cf5945d69313ab3546965eace2ecc08da5ab3-145c16b3b1e9a369/nrf52840-embedded",
+    "metadata_sha256": "1be44bf596b2e144f53f084662613a8ae75c787eff1940769fd656a9c9fe62da"
+  },
+  {
+    "spec": "spec-014",
+    "profile": "raspberry-pi-armv6",
+    "canonical_report": ".build/spec-014/reports/759cf5945d69313ab3546965eace2ecc08da5ab3-145c16b3b1e9a369/raspberry-pi-armv6",
+    "metadata_sha256": "3b64c79ece48e42e61cbe3c119fd7e95e1760d6128d30d0a90f276fe459466aa"
+  },
+  {
+    "spec": "spec-015",
+    "profile": "macos-dynamic",
+    "canonical_report": ".build/contract-reports/spec-015/759cf5945d69313ab3546965eace2ecc08da5ab3-d93a5691c785f107/macos-dynamic",
+    "metadata_sha256": "aeaa4646b4c0b2d9ad48ad2ee831030cedbdd89ba13d4876acf3b159cf89b7f6"
+  },
+  {
+    "spec": "spec-015",
+    "profile": "macos-static",
+    "canonical_report": ".build/contract-reports/spec-015/759cf5945d69313ab3546965eace2ecc08da5ab3-d93a5691c785f107/macos-static",
+    "metadata_sha256": "8c441c594b36835351903b17dacaf487bbde76502123efcad8645f7dd5fb8244"
+  },
+  {
+    "spec": "spec-015",
+    "profile": "nrf52840-embedded",
+    "canonical_report": ".build/contract-reports/spec-015/759cf5945d69313ab3546965eace2ecc08da5ab3-d93a5691c785f107/nrf52840-embedded",
+    "metadata_sha256": "f565520ac7ea9ffe65038d40ed8871608d0968c485962651cf7730e415b88a1c"
+  },
+  {
+    "spec": "spec-015",
+    "profile": "raspberry-pi-armv6",
+    "canonical_report": ".build/contract-reports/spec-015/759cf5945d69313ab3546965eace2ecc08da5ab3-d93a5691c785f107/raspberry-pi-armv6",
+    "metadata_sha256": "894cbdab33e40cb366a075e4399ccf22b55b78b769eff341de81670c8945ed67"
+  }
+]

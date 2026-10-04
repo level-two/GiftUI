@@ -1,0 +1,14 @@
+# criterion	status	owner
+IN-001	pending	declarations-and-four-profiles
+IN-002	pending	normalization-and-dispatch
+IN-003	pending	semantic-records
+IN-004	pending	candidate-hit-resolution
+IN-005	pending	gesture-capture
+IN-006	pending	target-replacement
+IN-007	pending	synchronous-dispatch
+IN-008	pending	candidate-lifecycle
+IN-009	pending	failure-mapping
+IN-010	pending	profile-equivalence
+IN-011	pending	dependency-allocation-audit
+IN-012	pending	cross-target-resources
+IN-013	pending	target-generation-binding

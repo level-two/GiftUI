@@ -1,0 +1,12 @@
+/Users/eugene/work/GiftUI/scripts/contracts/check-spec-007-harness.rb 
+/Users/eugene/work/GiftUI/scripts/contracts/check-spec-007-boundaries.rb 
+/Users/eugene/work/GiftUI/scripts/contracts/check-spec-007-conformance.rb 
+/Users/eugene/work/GiftUI/scripts/contracts/check-spec-007-declarations.sh 
+/Users/eugene/work/GiftUI/scripts/contracts/check-spec-007-migration.rb 
+/Users/eugene/work/GiftUI/scripts/contracts/check-spec-007-semantic-boundary.rb 
+/Users/eugene/work/GiftUI/scripts/contracts/check-spec-007-values.rb 
+/Users/eugene/work/GiftUI/scripts/raspberry-pi/doctor.sh 
+/Users/eugene/work/GiftUI/.toolchains/host/swift-6.3.2-RELEASE-osx/usr/bin/swiftc --version 
+/Users/eugene/work/GiftUI/.toolchains/host/swift-6.3.2-RELEASE-osx/usr/bin/swift build --disable-sandbox --package-path /Users/eugene/work/GiftUI --scratch-path /Users/eugene/work/GiftUI/.build/contract-reports/spec-007/.tmp-raspberry-pi-armv6-61220/build/swiftpm --destination /Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6/raspios-bookworm-static.json --configuration release --target GiftUILayout --static-swift-stdlib -Xswiftc -whole-module-optimization 
+/Users/eugene/work/GiftUI/.toolchains/host/swift-6.3.2-RELEASE-osx/usr/bin/swiftc -target armv6-unknown-linux-gnueabihf -sdk /Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6/raspios-bookworm -resource-dir /Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6/raspios-bookworm/usr/lib/swift_static -Xcc --gcc-toolchain=/Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6/raspios-bookworm/usr -O -whole-module-optimization -package-name giftui -I /Users/eugene/work/GiftUI/.build/contract-reports/spec-007/.tmp-raspberry-pi-armv6-61220/build/swiftpm/armv6-unknown-linux-gnueabihf/release/Modules -parse-as-library -emit-ir /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC007/Instrumentation/SemanticBorrowProbe.swift -o /Users/eugene/work/GiftUI/.build/contract-reports/spec-007/.tmp-raspberry-pi-armv6-61220/semantics/layout-resource.ll 
+/Users/eugene/work/GiftUI/scripts/contracts/check-spec-007-harness.rb /Users/eugene/work/GiftUI/.build/contract-reports/spec-007/.tmp-raspberry-pi-armv6-61220 

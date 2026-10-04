@@ -1,0 +1,22 @@
+schema_version=2
+input_set_sha256=d93a5691c785f10759332a401c28eabb9b89b66e7d6a2b188e737e47cf88850d
+run_id=759cf5945d69313ab3546965eace2ecc08da5ab3-d93a5691c785f107
+report_directory=.build/contract-reports/spec-002/759cf5945d69313ab3546965eace2ecc08da5ab3-d93a5691c785f107/macos-static
+spec=SPEC-002
+profile=macos-static
+repository_revision=759cf5945d69313ab3546965eace2ecc08da5ab3
+invocation=scripts/contracts/run-spec-002.sh --profile macos-static
+semantic_corpus_sha256=3add894045d330ea1441f2a6ff6d5465840c867ba02fb83912657819a20f3ccb
+compiler_version<<EOF
+swift-driver version: 1.148.6 Apple Swift version 6.3.3 (swiftlang-6.3.3.1.3 clang-2100.1.1.101)
+Target: arm64-apple-macosx26.0
+EOF
+target=arm64-apple-macosx26.0
+sdk_path=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk
+sdk_version=26.5
+optimization=-O -whole-module-optimization
+profile_flag=-DGIFTUI_STATIC_PROFILE
+linked_section_inspector<<EOF
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/size: Xcode 26.6;Build version 17F113;
+EOF
+exit_code=0

@@ -110,7 +110,7 @@ Specification criterion matrices and append cleanup tasks to affected rows.
 
 ### Repository tooling tasks
 
-- [ ] **TOOL-01 — Runner isolation and publication.** Inspect parent and child
+- [x] **TOOL-01 — Runner isolation and publication.** Inspect parent and child
   shared paths in `scripts/test.sh`, `scripts/contracts/*`, compiler caches and
   firmware/SwiftPM build roots. Implement safe isolation or serialization through
   all those writers, preserving explicit standalone commands and the registry.
@@ -258,3 +258,5 @@ record this document step separately from future execution.
 **TOOL-01 implementation — 2026-10-04:** [Isolation and fixture result](evidence/04-runner/result.md). Final real aggregate validation remains pending.
 
 **RET-01 preparation — 2026-10-05:** [RFC-012](../../rfcs/rfc-012-five-second-capture-retention-amendment.md) is in review; [review verdict](retention-review.md) is ready for human approval consideration. Explicit RFC approval remains pending; RET-02–04 are held.
+
+**Maintenance integration — 2026-10-05:** [All 74 checks and 60 profile reports](evidence/10-integration/result.md) pass. TOOL-01/02 and independent owner integration tasks are complete. The report-collection-only follow-up has [focused evidence](evidence/04-runner/special-root-followup.md). T11.7 connected evidence and T11.8 reconciliation remain next; retention approval and FINAL-01 stay held.

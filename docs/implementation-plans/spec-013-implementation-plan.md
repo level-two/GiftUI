@@ -1102,9 +1102,9 @@ Specification `implemented` transition is performed by this reconciliation.
 
 - [x] `T10.1` — Move exactly the 15 Step 15 outer Embedded guards into explicit build selection and remove the empty font-raster compatibility shell. Inspect `Package.swift`, firmware CMake and all direct/native compile consumers. Keep selected declarations in the Embedded closure and out of normal SwiftPM module surfaces; retain every nested/residual profile, resource, arithmetic, instrumentation and board guard. Update list consistency checks with source edits atomically, preserving all module owners/contracts. Depend on SPEC-001 T11.3 landing first for the final source-list integration. Exit: named-file before/after inventory and maintained source-selection checks.
 
-- [ ] `T10.2` — Validate the mechanical selection after T10.1. Compare manifest/CMake/native source sets, wrong-selection and forbidden-import/declaration negatives, native full-layout/Drawing/input/failure/reuse transcripts and paired selected firmware builds. Require unchanged linked flash/RAM for this isolated change, unchanged configured stack reservations, VFP ABI/disabled heaps and forbidden-symbol checks. Preserve current profile surface, exact capacities, failure cleanup and action-generation publication. Exercise both macOS profiles, Pi ARMv6 and nRF Static selections under current contracts. Exit: source/interface/behavior and paired artifact packet; unchanged sizes do not prove connected conformance.
+- [x] `T10.2` — Validate the mechanical selection after T10.1. Compare manifest/CMake/native source sets, wrong-selection and forbidden-import/declaration negatives, native full-layout/Drawing/input/failure/reuse transcripts and paired selected firmware builds. Require unchanged linked flash/RAM for this isolated change, unchanged configured stack reservations, VFP ABI/disabled heaps and forbidden-symbol checks. Preserve current profile surface, exact capacities, failure cleanup and action-generation publication. Exercise both macOS profiles, Pi ARMv6 and nRF Static selections under current contracts. Exit: source/interface/behavior and paired artifact packet; unchanged sizes do not prove connected conformance.
 
-- [ ] `T10.3` — Run all four registered SPEC-013 profile drivers after T10.2 with current Interaction correction and source/generator integration. Respect coordinator TOOL-01 before overlapping outputs; retain exact owner/local error, cleanup, resource and symbolic profile evidence. Reconcile all fifteen criteria with previous conformance and add new source-selection observations without rewriting historical passes. Hand current results to SPEC-001 T11.6 and FINAL-01. Retention limits stay at the currently accepted contract until RET-03/04 supplies reviewed amendments and new tasks. Exit: current owner gate/criterion/ledger packet and explicit residual-guard disposition.
+- [x] `T10.3` — Run all four registered SPEC-013 profile drivers after T10.2 with current Interaction correction and source/generator integration. Respect coordinator TOOL-01 before overlapping outputs; retain exact owner/local error, cleanup, resource and symbolic profile evidence. Reconcile all fifteen criteria with previous conformance and add new source-selection observations without rewriting historical passes. Hand current results to SPEC-001 T11.6 and FINAL-01. Retention limits stay at the currently accepted contract until RET-03/04 supplies reviewed amendments and new tasks. Exit: current owner gate/criterion/ledger packet and explicit residual-guard disposition.
 
 ### Cleanup design notes, risks and completion
 
@@ -1114,8 +1114,10 @@ All added tasks are pending. Original completed ledger entries and historical ra
 
 | Cleanup task | Disposition | Execution evidence |
 | --- | --- | --- |
-| T10.1 | pending | Not collected |
-| T10.2 | pending | Not collected |
-| T10.3 | pending | Not collected |
+| T10.1 | completed | [Fresh integration](../iterations/iteration-002-cleanup/evidence/10-integration/result.md) |
+| T10.2 | completed | [Fresh integration](../iterations/iteration-002-cleanup/evidence/10-integration/result.md) |
+| T10.3 | completed | [Fresh integration](../iterations/iteration-002-cleanup/evidence/10-integration/result.md) |
 
 **T10.1 execution — 2026-10-05:** [Source selections, negative checks and zero linked delta](../iterations/iteration-002-cleanup/evidence/07-source-selection/result.md). Final affected profile validation remains T10.2/T10.3.
+
+**Fresh maintenance integration — 2026-10-05:** [74 passing checks, 60 verified profile reports and unchanged 30s contracts](../iterations/iteration-002-cleanup/evidence/10-integration/result.md). Added owner integration tasks are complete; SPEC-001 connected/reconciliation tasks and retention/final closure remain separate.

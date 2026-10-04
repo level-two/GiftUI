@@ -1,0 +1,14 @@
+schema_version=2
+input_set_sha256=d93a5691c785f10759332a401c28eabb9b89b66e7d6a2b188e737e47cf88850d
+run_id=759cf5945d69313ab3546965eace2ecc08da5ab3-d93a5691c785f107
+report_directory=.build/contract-reports/spec-015/759cf5945d69313ab3546965eace2ecc08da5ab3-d93a5691c785f107/macos-static
+spec=SPEC-015
+profile=macos-static
+repository_revision=759cf5945d69313ab3546965eace2ecc08da5ab3
+repository_dirty=false
+invocation=scripts/contracts/run-spec-015.sh --profile macos-static
+remote_access=false
+deployment=false
+service_restart=false
+connected_target_execution=false
+flashing=false
