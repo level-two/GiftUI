@@ -41,7 +41,7 @@ class ReportIdentityTest < Minitest::Test
         staging = File.join(report_root, ".tmp-#{name}")
         FileUtils.mkdir_p(staging)
         File.write(File.join(staging, "metadata.txt"), content)
-        Open3.capture3("ruby", PUBLISH, "--report-root", report_root, "--staging", staging,
+        Open3.capture3({ "GIFTUI_TEST_CHILD_REPORT_LEDGER" => nil }, "ruby", PUBLISH, "--report-root", report_root, "--staging", staging,
                        "--destination", destination, "--latest", latest, "--run-id", "run")
       end
       assert publish.call("one", "same\n").last.success?

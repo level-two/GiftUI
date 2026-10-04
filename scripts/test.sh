@@ -83,7 +83,7 @@ finish_run() {
     if [[ "${status}" == interrupted ]]; then
         printf '%s\t%s\t%s\n' "${active_check}" "${exit_code}" "interrupted" >>"${results_path}"
     fi
-    for staging in "${PROJECT_ROOT}"/.build/contract-reports/*/.tmp-*; do
+    for staging in "${PROJECT_ROOT}"/.build/contract-reports/*/.tmp-* "${PROJECT_ROOT}"/.build/spec-014/reports/.tmp-*; do
         [[ -d "${staging}" ]] || continue
         printf 'retained-staging\t%s\t%s\n' "${staging#"${PROJECT_ROOT}/"}" "incomplete" >>"${child_ledger}"
     done
@@ -122,7 +122,7 @@ run_check() {
     "$@" >"${log}" 2>&1
     result=$?
     last_check_status="${result}"
-    for pointer in "${PROJECT_ROOT}"/.build/contract-reports/*/latest-*.txt; do
+    for pointer in "${PROJECT_ROOT}"/.build/contract-reports/*/latest-*.txt "${PROJECT_ROOT}"/.build/spec-014/reports/latest-*.txt; do
         [[ -f "${pointer}" ]] || continue
         printf '%s\t%s\t%s\n' "${id}" "${pointer#"${PROJECT_ROOT}/"}" "$(cat "${pointer}")" >>"${child_ledger}"
     done

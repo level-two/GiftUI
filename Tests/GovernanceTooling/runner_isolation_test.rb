@@ -33,7 +33,11 @@ class RunnerIsolationTest < Minitest::Test
         mkdir "$root/.build/shared-active"
         trap 'rmdir "$root/.build/shared-active"' EXIT
         printf 'active\\n' > "$root/.build/started"
-        if [[ "${FIXTURE_MODE:-}" == interrupt ]]; then sleep 30; fi
+        if [[ "${FIXTURE_MODE:-}" == interrupt ]]; then
+          mkdir -p "$root/.build/spec-014/reports/.tmp-interrupted-$$"
+          printf 'run_id=interrupted-$$\\n' > "$root/.build/spec-014/reports/.tmp-interrupted-$$/metadata.txt"
+          sleep 30
+        fi
         sleep 0.2
         run="child-$$"
         mkdir -p "$root/.build/contract-reports/spec-001/$run/macos-dynamic"
@@ -105,6 +109,7 @@ class RunnerIsolationTest < Minitest::Test
       interrupted = reports(root).find { |run| File.read(File.join(run, "metadata.txt")).include?("status=interrupted") }
       refute_nil interrupted
       assert_includes File.read(File.join(interrupted, "results.tsv")), "SPEC-001-macos-dynamic\t143\tinterrupted"
+      assert_includes File.read(File.join(interrupted, "child-reports.tsv")), "retained-staging\t.build/spec-014/reports/.tmp-interrupted-"
       refute File.exist?(File.join(root, ".build/shared-active"))
     end
   end
