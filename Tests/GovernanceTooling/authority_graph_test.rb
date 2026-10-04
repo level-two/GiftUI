@@ -68,6 +68,48 @@ class AuthorityGraphTest < Minitest::Test
     end
   end
 
+  def test_deferred_source_paths_are_provenance_not_authority_edges
+    fixture(extra: { "Sources/Example.swift" => "// source", "README.md" => "readme" }, mutate: lambda { |root|
+      write_artifact(root, "future-work/item.md", "FW-001", "example", "Later", "captured",
+                     source: ["RFC-001", "Sources/Example.swift"])
+    }) do |root|
+      output = File.join(root, "graph.json")
+      assert run_generator(root, "--output", output).last.success?
+      graph = JSON.parse(File.read(output))
+      assert_equal ["Sources/Example.swift"], graph.fetch("repositorySources").map { |entry| entry.fetch("path") }
+      assert_equal ["RFC-001"], graph.fetch("edges").select { |edge| edge["from"] == "FW-001" }.map { |edge| edge["to"] }
+      refute graph.fetch("nodes").any? { |node| node["path"] == "Sources/Example.swift" }
+      write_artifact(root, "future-work/item.md", "FW-001", "example", "Later", "captured",
+                     source: ["Sources/Example.swift", "README.md"])
+      assert run_generator(root, "--check").last.success?
+    end
+  end
+
+  def test_unknown_source_id_and_unsafe_source_paths_fail
+    ["RFC-999", "Sources/missing.swift", "/etc/passwd", "../outside/file", "Sources/../docs/features.yaml", "Sources/escape.swift"].each do |source|
+      fixture(mutate: lambda { |root|
+        FileUtils.mkdir_p(File.join(root, "Sources"))
+        File.symlink("/etc/passwd", File.join(root, "Sources/escape.swift"))
+        write_artifact(root, "future-work/item.md", "FW-001", "example", "Later", "captured", source: [source])
+      }) do |root|
+        _out, error, status = run_generator(root, "--check")
+        refute status.success?, source
+        assert_match(/unknown source ID|unsafe or missing source path/, error)
+      end
+    end
+  end
+
+  def test_source_paths_do_not_weaken_authority_relationships
+    fixture(extra: { "Sources/Example.swift" => "// source" }, mutate: lambda { |root|
+      write_artifact(root, "specs/spec.md", "SPEC-001", "example", "Spec", "implementing",
+                     related_adrs: ["Sources/Example.swift"])
+    }) do |root|
+      _out, error, status = run_generator(root, "--check")
+      refute status.success?
+      assert_includes error, "unknown related_adrs ID"
+    end
+  end
+
   def test_duplicate_unknown_and_invalid_status_fail
     fixture(mutate: lambda { |root|
       write_artifact(root, "specs/duplicate.md", "SPEC-001", "example", "Duplicate", "invented", related_adrs: ["ADR-999"])

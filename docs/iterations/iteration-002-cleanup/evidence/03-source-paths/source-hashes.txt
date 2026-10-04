@@ -1,0 +1,2 @@
+2a4e691dde055efbd43c1774a81a65dc51561b201291eae2015b644e9a594da1  scripts/governance/build-authority-graph.rb
+a548286613435d7b346bba452cd06cd5a8a8483b6d71689e213b92692a1fd8a5  Tests/GovernanceTooling/authority_graph_test.rb

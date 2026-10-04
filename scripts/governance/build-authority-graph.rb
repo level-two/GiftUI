@@ -158,12 +158,32 @@ features.each do |feature, entry|
 end
 
 edges = []
+repository_sources = []
 records.each_value do |record|
   metadata = record[:metadata]
   ID_RELATIONSHIPS.each do |field|
     next unless metadata.key?(field)
     values = metadata[field].nil? ? [] : Array(metadata[field])
     values.each do |target|
+      if field == "source" && target.is_a?(String) && !target.match?(/\A[A-Z]+-\d{3}\z/)
+        path = Pathname.new(target)
+        safe = !path.absolute? && !target.include?("\\") &&
+          !target.match?(/[[:cntrl:]]/) && !path.each_filename.any? { |part| %w[. ..].include?(part) }
+        resolved = root.join(path)
+        begin
+          safe &&= resolved.file? && resolved.realpath.to_s.start_with?(root.realpath.to_s + "/")
+        rescue SystemCallError
+          safe = false
+        end
+        unless safe
+          errors << "#{relative(record[:path], root)}: unsafe or missing source path #{target.inspect}"
+          next
+        end
+        repository_sources << { "from" => record[:id], "path" => target,
+                                "declaredBy" => relative(record[:path], root),
+                                "sha256" => Digest::SHA256.file(resolved).hexdigest }
+        next
+      end
       unless target.is_a?(String) && records.key?(target)
         errors << "#{relative(record[:path], root)}: unknown #{field} ID #{target.inspect}"
         next
@@ -233,7 +253,8 @@ nodes = records.values.sort_by { |record| record[:id] }.map do |record|
     "authoritative" => authority?(record[:kind], record[:status]) }
 end
 edges.sort_by! { |edge| [edge["from"], edge["relationship"], edge["to"], edge["declaredBy"]] }
-graph = { "schemaVersion" => 1, "generatedFrom" => generated_from, "nodes" => nodes, "edges" => edges }
+graph = { "schemaVersion" => 1, "generatedFrom" => generated_from, "nodes" => nodes, "edges" => edges,
+          "repositorySources" => repository_sources.sort_by { |source| [source["from"], source["path"]] } }
 json = JSON.pretty_generate(graph) + "\n"
 
 unless options[:check]

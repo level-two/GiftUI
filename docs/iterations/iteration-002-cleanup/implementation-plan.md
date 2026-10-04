@@ -121,7 +121,7 @@ Specification criterion matrices and append cleanup tasks to affected rows.
   Register the maintained fixture check explicitly in the existing runner
   (or extend its existing governance-tooling check). The real final gate supplies
   integration evidence. No new report schema may silently invalidate consumers.
-- [ ] **TOOL-02 — Deferred source-path alignment.** Update
+- [x] **TOOL-02 — Deferred source-path alignment.** Update
   `scripts/governance/build-authority-graph.rb` and the existing authority-graph
   fixture suite. Accept documented repository sources without confusing paths
   with unknown artifact IDs; reject missing, absolute/escaping or unsafe paths
@@ -252,3 +252,5 @@ All new execution tasks are pending; retention production remains held upstream.
 Original completed owner tasks and historical criterion/exception evidence are
 unchanged. [Plan-derivation checks](../iteration-002-review/33-implementation-plan-derivation.md)
 record this document step separately from future execution.
+
+**TOOL-02 execution — 2026-10-04:** [Result](evidence/03-source-paths/result.md); governance fixtures and repository validator passed.

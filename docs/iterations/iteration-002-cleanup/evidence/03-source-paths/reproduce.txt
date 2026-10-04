@@ -1,0 +1,2 @@
+scripts/governance/test.sh
+ruby scripts/validate-governance.rb

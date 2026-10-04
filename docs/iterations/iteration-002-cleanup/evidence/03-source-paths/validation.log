@@ -1,0 +1,50 @@
+governance-tooling-test: Tests/GovernanceTooling/authority_graph_test.rb
+Run options: --seed 16240
+
+# Running:
+
+......
+
+Finished in 0.951617s, 6.3051 runs/s, 45.1862 assertions/s.
+
+6 runs, 43 assertions, 0 failures, 0 errors, 0 skips
+governance-tooling-test: Tests/GovernanceTooling/context_for_task_test.rb
+Run options: --seed 21299
+
+# Running:
+
+....
+
+Finished in 1.695255s, 2.3595 runs/s, 13.5673 assertions/s.
+
+4 runs, 23 assertions, 0 failures, 0 errors, 0 skips
+governance-tooling-test: Tests/GovernanceTooling/gates_test.rb
+Run options: --seed 21017
+
+# Running:
+
+...
+
+Finished in 0.472388s, 6.3507 runs/s, 35.9874 assertions/s.
+
+3 runs, 17 assertions, 0 failures, 0 errors, 0 skips
+governance-tooling-test: Tests/GovernanceTooling/report_identity_test.rb
+Run options: --seed 56449
+
+# Running:
+
+.....
+
+Finished in 0.472203s, 10.5887 runs/s, 72.0029 assertions/s.
+
+5 runs, 34 assertions, 0 failures, 0 errors, 0 skips
+governance-tooling-test: Tests/GovernanceTooling/task_evidence_test.rb
+Run options: --seed 60171
+
+# Running:
+
+...
+
+Finished in 0.205538s, 14.5958 runs/s, 34.0570 assertions/s.
+
+3 runs, 7 assertions, 0 failures, 0 errors, 0 skips
