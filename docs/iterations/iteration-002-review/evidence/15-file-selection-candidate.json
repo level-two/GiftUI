@@ -1,0 +1,106 @@
+{
+  "revision": "60558ed67986b2755f3cd018a1061abcc45618a2",
+  "candidates": {
+    "Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFCommonLayoutPass.swift": {
+      "original_sha256": "14daf96b6e4f18842072de197f7bdf5f7b6d4e51bf97fb2349519d866e991442",
+      "candidate_sha256": "643e33d313f2107b09060934e2dbde0c487a277234d1fec71a657bea0e7b0021"
+    },
+    "Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFCommonLayoutWorkspace.swift": {
+      "original_sha256": "0ca1b2748ef752bcc3af26127655d037625c61b3e4fb4b59fcb9d9ccd357e1ea",
+      "candidate_sha256": "7ff3b395d33d862cd3e3d058aa22c60722bfcaa4789f8327280a2c4c7e8b013e"
+    },
+    "Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFEmbeddedActionDispatcher.swift": {
+      "original_sha256": "740b45bf5d35215150a23d09abc36b078e38f969dd327b8c9943e71836d81035",
+      "candidate_sha256": "20ceddbeafe7fe7da29f4f5324021cbbf0f1fdd7c0ab2f4f50993a70eaaba4db"
+    },
+    "Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFEmbeddedCanvasPayload.swift": {
+      "original_sha256": "14565a41d01542f4428e8b5d49f7e04371672567010b62aed4d11c6bafb959a0",
+      "candidate_sha256": "6274be909f4642d32cb65116b08988770961f7e0df370f4ec4d84b8d6590681c"
+    },
+    "Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFEmbeddedCanvasSource.swift": {
+      "original_sha256": "21dd27fb7c2fee5329208ad03e4b1fc65863495ee1ea005b533abc1983d5341c",
+      "candidate_sha256": "176786847fd4ccd4784a673ae6188ab0ba2826d3668e7d6392482f6b320eec7b"
+    },
+    "Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFEmbeddedCountingSink.swift": {
+      "original_sha256": "cd424b0ef04ad42c53d5cfd967562ea2d5b09bde74c5774aa0fc7cabb1978b59",
+      "candidate_sha256": "367518a38af590648fae74d1f94a207996fb4a73188924878741ae9b5df840cc"
+    },
+    "Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFEmbeddedGestureSession.swift": {
+      "original_sha256": "542c33563a304fd5af90084d2fb7758a5f883e4a9a3eeccd2f3026e29448ac6d",
+      "candidate_sha256": "5c1ad650cdb930d1a220a3e4e1a8c3099d6d53b276cee812192093f7189b0716"
+    },
+    "Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFEmbeddedInputHandler.swift": {
+      "original_sha256": "e209dd636498363e558ea69f3aff52185fb8392f3f1319c31a17246d78a5ef4c",
+      "candidate_sha256": "4902933d6400e075dd4bee2256d54ab6ba515cbd6d704779f18e9b6973babbc7"
+    },
+    "Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFEmbeddedInteractionOccurrences.swift": {
+      "original_sha256": "bb9cf4d07adf9153bfde470f1163bf8c631fda07f9becb92da63ebb6f4215f9c",
+      "candidate_sha256": "edc7e4a6780c9b00131cd365d1e502bcce3ae11c178afd50bef0c143f0eebc85"
+    },
+    "Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFEmbeddedInteractionOwner.swift": {
+      "original_sha256": "51c235550a254ef68247adb2dccb7bc295ef8b83c924b9fc28143e4976558703",
+      "candidate_sha256": "b972ecb67bfdbd2f77125784c4e8db4621beea2adfda1d06335330ac86e59afe"
+    },
+    "Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFEmbeddedLayoutAdapters.swift": {
+      "original_sha256": "ea12f252dcb0d847feaf4dad99b9504d6503bdd71be2f35e08f66723dc6b2c6b",
+      "candidate_sha256": "1d34782f5136b384253534194d67657fcc14d3e5384afcca4606555fea48ea6f"
+    },
+    "Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFEmbeddedRasterSink.swift": {
+      "original_sha256": "00a39976e025e004b16cdb83aef8ceae37a32602ccf44ddf6c4c5d42b152166a",
+      "candidate_sha256": "ef1573e320bc59ea5f0d93090f419a1a07b3ac9d8215cbf96296df00fc746b8e"
+    },
+    "Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFEmbeddedRenderPreflight.swift": {
+      "original_sha256": "4fbf70980b34f9f7ec58660bdbd66a0840c20e4659add161c31dfa622b3b25ad",
+      "candidate_sha256": "554eac822f15f73a6cb2138cd110c0239724ebca949a6779326b6fa5b167dbbf"
+    },
+    "Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFEmbeddedRenderSemanticAdapter.swift": {
+      "original_sha256": "4bc6eac0a052f34f6b1aa85767e70bbc543b8b943afc18982189aee3afb301c0",
+      "candidate_sha256": "7b22ab6ffdbb1ec3900e8bbb0ff47b11c7b5b9c2ddd536d615e9dc74dbaad797"
+    },
+    "Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFEmbeddedTileRuns.swift": {
+      "original_sha256": "7b0e46a9175e4022ec72f2b09a8afbeea42f8bcbd70155ce6a6620cb8a5ed31a",
+      "candidate_sha256": "13adb1cb61d61e65a1eb84ac1e55499b9b410f003a3f99d474f236eefc37cd90"
+    }
+  },
+  "limits": "Selected Embedded closure and native rehearsal; proposed SwiftPM exclusions must be applied and validated before production removal",
+  "command": [
+    "swiftc",
+    "-I",
+    "/Users/eugene/work/GiftUI/.build/contract-generated/spec-001/nrf-native-owners/modules",
+    "-parse-as-library",
+    "-Osize",
+    "-package-name",
+    "GiftUI",
+    "-DGIFTUI_REFERENCE_BITMAP_ONLY",
+    "-DGIFTUI_NRF_EMBEDDED",
+    "/Users/eugene/work/GiftUI/.build/nrf52840/iteration-002-file-selection/candidate.swift",
+    "/Users/eugene/work/GiftUI/firmware/nrf52840/applications/signal-analyzer-static/tests/full_layout_native.swift",
+    "/Users/eugene/work/GiftUI/.build/contract-generated/spec-001/nrf-native-owners/GiftUI.o",
+    "/Users/eugene/work/GiftUI/.build/contract-generated/spec-001/nrf-native-owners/GiftUICapabilities.o",
+    "/Users/eugene/work/GiftUI/.build/contract-generated/spec-001/nrf-native-owners/GiftUIFailureCore.o",
+    "/Users/eugene/work/GiftUI/.build/contract-generated/spec-001/nrf-native-owners/SignalAnalyzerDomain.o",
+    "/Users/eugene/work/GiftUI/.build/contract-generated/spec-001/nrf-native-owners/GiftUISemanticCore.o",
+    "/Users/eugene/work/GiftUI/.build/contract-generated/spec-001/nrf-native-owners/GiftUISurfaceCore.o",
+    "/Users/eugene/work/GiftUI/.build/contract-generated/spec-001/nrf-native-owners/GiftUITextResources.o",
+    "/Users/eugene/work/GiftUI/.build/contract-generated/spec-001/nrf-native-owners/SignalAnalyzerData.o",
+    "/Users/eugene/work/GiftUI/.build/contract-generated/spec-001/nrf-native-owners/SignalAnalyzerPresentation.o",
+    "/Users/eugene/work/GiftUI/.build/contract-generated/spec-001/nrf-native-owners/GiftUIDisplayCore.o",
+    "/Users/eugene/work/GiftUI/.build/contract-generated/spec-001/nrf-native-owners/GiftUILayout.o",
+    "/Users/eugene/work/GiftUI/.build/contract-generated/spec-001/nrf-native-owners/GiftUIReferenceTextResources.o",
+    "/Users/eugene/work/GiftUI/.build/contract-generated/spec-001/nrf-native-owners/GiftUIRenderCore.o",
+    "/Users/eugene/work/GiftUI/.build/contract-generated/spec-001/nrf-native-owners/GiftUIExecution.o",
+    "/Users/eugene/work/GiftUI/.build/contract-generated/spec-001/nrf-native-owners/GiftUIRasterCore.o",
+    "/Users/eugene/work/GiftUI/.build/contract-generated/spec-001/nrf-native-owners/GiftUIRenderLowering.o",
+    "/Users/eugene/work/GiftUI/.build/contract-generated/spec-001/nrf-native-owners/GiftUIBackendIntegration.o",
+    "/Users/eugene/work/GiftUI/.build/contract-generated/spec-001/nrf-native-owners/GiftUIDrawing.o",
+    "/Users/eugene/work/GiftUI/.build/contract-generated/spec-001/nrf-native-owners/GiftUIInteraction.o",
+    "/Users/eugene/work/GiftUI/.build/contract-generated/spec-001/nrf-native-owners/GiftUIObservableState.o",
+    "/Users/eugene/work/GiftUI/.build/contract-generated/spec-001/nrf-native-owners/GiftUIHostConfiguration.o",
+    "/Users/eugene/work/GiftUI/.build/contract-generated/spec-001/nrf-native-owners/GiftUIRuntimeCore.o",
+    "/Users/eugene/work/GiftUI/.build/contract-generated/spec-001/nrf-native-owners/GiftUIRuntimeStatic.o",
+    "-o",
+    "/Users/eugene/work/GiftUI/.build/nrf52840/iteration-002-file-selection/probe"
+  ],
+  "exit_code": 0,
+  "output": "nRF layout and Drawing storage: passed\n"
+}

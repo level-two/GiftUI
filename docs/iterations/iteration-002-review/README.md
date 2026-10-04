@@ -27,6 +27,7 @@ draft; research does not select or authorize implementation.
 | 11 — Fresh hardware-free gate | [Validation and preserved report identities](11-fresh-hardware-free-validation.md) | 72 checks passed; 60 published report manifests verified |
 | 13 — Startup text probe | [Measured shared-engine candidate and coverage migration](13-startup-text-probe-assessment.md) | Recorded; −1,296 flash bytes, unchanged RAM; production cleanup pending |
 | 14 — Five-second retention | [Owner impact, behavioral prototype and linked costs](14-five-second-retention-impact.md) | Recorded; 96,000 bytes less RAM; contract amendments pending |
+| 15 — Conditional removal | [15-file source-selection prototype and residual policy](15-conditional-removal-candidates.md) | Recorded; native/Embedded checks pass at unchanged linked size |
 | 12 — Final reconciliation | [Priorities, bounded outcomes, routing and remaining gaps](12-final-reconciliation.md) | Bounded audit concluded; implementation selection pending |
 
 [Findings register](findings.md) records confirmed observations separately from
