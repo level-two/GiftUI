@@ -330,6 +330,23 @@ let package = Package(
                 "SignalAnalyzerDomain",
                 "SignalAnalyzerHost",
                 "SignalAnalyzerPresentation",
+            ],
+            exclude: [
+                "StaticSignalAnalyzerNRFCommonLayoutPass.swift",
+                "StaticSignalAnalyzerNRFCommonLayoutWorkspace.swift",
+                "StaticSignalAnalyzerNRFEmbeddedActionDispatcher.swift",
+                "StaticSignalAnalyzerNRFEmbeddedCanvasPayload.swift",
+                "StaticSignalAnalyzerNRFEmbeddedCanvasSource.swift",
+                "StaticSignalAnalyzerNRFEmbeddedCountingSink.swift",
+                "StaticSignalAnalyzerNRFEmbeddedGestureSession.swift",
+                "StaticSignalAnalyzerNRFEmbeddedInputHandler.swift",
+                "StaticSignalAnalyzerNRFEmbeddedInteractionOccurrences.swift",
+                "StaticSignalAnalyzerNRFEmbeddedInteractionOwner.swift",
+                "StaticSignalAnalyzerNRFEmbeddedLayoutAdapters.swift",
+                "StaticSignalAnalyzerNRFEmbeddedRasterSink.swift",
+                "StaticSignalAnalyzerNRFEmbeddedRenderPreflight.swift",
+                "StaticSignalAnalyzerNRFEmbeddedRenderSemanticAdapter.swift",
+                "StaticSignalAnalyzerNRFEmbeddedTileRuns.swift",
             ]
         ),
         .target(

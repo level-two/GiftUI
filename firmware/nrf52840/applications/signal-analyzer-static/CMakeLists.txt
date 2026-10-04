@@ -108,7 +108,6 @@ set(giftui_static_swift_inputs
     "${giftui_project_root}/Sources/GiftUIBackendIntegration/RasterBackendEndpoint.swift"
     "${giftui_project_root}/Sources/GiftUIBackendIntegration/OneShotRasterBackendEndpoint.swift"
     "${giftui_reference_bitmap}"
-    "${giftui_project_root}/Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFEmbeddedFontRaster.swift"
     "${giftui_project_root}/Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFTileStorage.swift"
     "${giftui_project_root}/Sources/GiftUI/DrawingStyles.swift"
     "${giftui_project_root}/Sources/GiftUI/DrawingSurface.swift"

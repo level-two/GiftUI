@@ -18,11 +18,11 @@ class RunnerIsolationTest < Minitest::Test
       File.write(File.join(root, "scripts/lib/swiftpm.sh"), "giftui_swiftpm() { return 0; }\n")
       # Stub costly checks, keeping the actual runner and lock unchanged.
       source = File.read(File.join(ROOT, "scripts/test.sh"))
-      source.scan(/\$\{PROJECT_ROOT\}\/([\w\/.-]+\.(?:rb|sh))/).flatten.uniq.each do |path|
+      source.scan(/\$\{PROJECT_ROOT\}\/([\w\/.-]+\.(?:rb|sh|py))/).flatten.uniq.each do |path|
         next if %w[scripts/lib/swiftpm.sh scripts/lib/serialize-validation.rb].include?(path)
         full = File.join(root, path)
         FileUtils.mkdir_p(File.dirname(full))
-        File.write(full, "#!/usr/bin/env bash\nexit 0\n")
+        File.write(full, path.end_with?(".py") ? "print('fixture check passed')\n" : "#!/usr/bin/env bash\nexit 0\n")
         File.chmod(0o755, full)
       end
       File.write(File.join(root, "scripts/contracts/driver-registry.tsv"), "SPEC-001\tscripts/contracts/fake.sh\tmacos-dynamic\n")

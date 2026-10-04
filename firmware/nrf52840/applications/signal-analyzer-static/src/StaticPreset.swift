@@ -1764,7 +1764,7 @@ public func giftUISignalAnalyzerTileValid(
         strokePixels > 0,
         tile.finishTile(),
         tile.beginTile(third),
-        let realization = StaticSignalAnalyzerNRFEmbeddedFontRaster().realization(
+        let realization = GiftUIReferenceTextRasterView().realization(
             at: 0
         )
     else { return 0 }
@@ -1777,7 +1777,7 @@ public func giftUISignalAnalyzerTileValid(
             color: .white, glyphCount: 1
         ),
         metrics: StaticSignalAnalyzerNRFEmbeddedFontMetrics(),
-        raster: StaticSignalAnalyzerNRFEmbeddedFontRaster(),
+        raster: GiftUIReferenceTextRasterView(),
         realization: realization, descriptor: descriptor,
         damageBounds: third
     ) { point, pixel in tile.replacePixel(at: point, with: pixel) }
@@ -1932,7 +1932,7 @@ public func giftUISignalAnalyzerTileValid(
                 maximumOperations: 150, maximumPositionedGlyphs: 224
             ), descriptor: descriptor, payloadLimits: payloadLimits,
             metrics: StaticSignalAnalyzerNRFEmbeddedFontMetrics(),
-            raster: StaticSignalAnalyzerNRFEmbeddedFontRaster(),
+            raster: GiftUIReferenceTextRasterView(),
             realization: RasterRealizationID(rawValue: 0),
             storage: sessionStorage, target: sessionTarget
         )
@@ -1974,7 +1974,7 @@ public func giftUISignalAnalyzerTileValid(
             descriptor: descriptor,
             payloadLimits: payloadLimits,
             textMetrics: StaticSignalAnalyzerNRFEmbeddedFontMetrics(),
-            textRaster: StaticSignalAnalyzerNRFEmbeddedFontRaster(),
+            textRaster: GiftUIReferenceTextRasterView(),
             textRasterRealization: RasterRealizationID(rawValue: 0),
             envelopeValidator: StaticSignalAnalyzerNRFEmbeddedProbeEnvelope(
                 expected: provenance
@@ -2025,14 +2025,14 @@ private typealias StaticSignalAnalyzerNRFEmbeddedSession =
         StaticSignalAnalyzerNRFTileStorage,
         StaticSignalAnalyzerNRFEmbeddedDisplay,
         StaticSignalAnalyzerNRFEmbeddedFontMetrics,
-        StaticSignalAnalyzerNRFEmbeddedFontRaster
+        GiftUIReferenceTextRasterView
     >
 
 private typealias StaticSignalAnalyzerNRFEmbeddedEndpoint =
     OneShotRasterBackendEndpoint<
         StaticSignalAnalyzerNRFEmbeddedSession,
         StaticSignalAnalyzerNRFEmbeddedFontMetrics,
-        StaticSignalAnalyzerNRFEmbeddedFontRaster,
+        GiftUIReferenceTextRasterView,
         StaticSignalAnalyzerNRFEmbeddedProbeEnvelope
     >
 
@@ -2075,7 +2075,7 @@ private func giftUIStaticEmbeddedEndpoint(
                 maximumOperations: 150, maximumPositionedGlyphs: 224
             ), descriptor: descriptor, payloadLimits: limits,
             metrics: StaticSignalAnalyzerNRFEmbeddedFontMetrics(),
-            raster: StaticSignalAnalyzerNRFEmbeddedFontRaster(),
+            raster: GiftUIReferenceTextRasterView(),
             realization: RasterRealizationID(rawValue: 0),
             storage: storage, target: target
         )
@@ -2087,7 +2087,7 @@ private func giftUIStaticEmbeddedEndpoint(
         effectivePresentation: effective, descriptor: descriptor,
         payloadLimits: limits,
         textMetrics: StaticSignalAnalyzerNRFEmbeddedFontMetrics(),
-        textRaster: StaticSignalAnalyzerNRFEmbeddedFontRaster(),
+        textRaster: GiftUIReferenceTextRasterView(),
         textRasterRealization: RasterRealizationID(rawValue: 0),
         envelopeValidator: StaticSignalAnalyzerNRFEmbeddedProbeEnvelope(
             expected: provenance

@@ -1,80 +1,78 @@
-#if GIFTUI_NRF_EMBEDDED
-    /// Borrows the three generated action scopes for one resolved frame attempt.
-    /// No semantic or layout pointer survives the attempt's workspace reset.
-    package struct StaticSignalAnalyzerNRFEmbeddedInteractionOccurrences:
-        RuntimeInteractionOccurrenceView
+/// Borrows the three generated action scopes for one resolved frame attempt.
+/// No semantic or layout pointer survives the attempt's workspace reset.
+package struct StaticSignalAnalyzerNRFEmbeddedInteractionOccurrences:
+    RuntimeInteractionOccurrenceView
+{
+    package typealias Identity = UInt32
+    package var interactionOccurrenceCount: UInt16 { count }
+
+    package borrowing func interactionOccurrence(at index: UInt16)
+        -> RuntimeInteractionOccurrence<UInt32>?
     {
-        package typealias Identity = UInt32
-        package var interactionOccurrenceCount: UInt16 { count }
+        guard let occurrence = occurrence(at: index) else { return nil }
+        return RuntimeInteractionOccurrence(
+            identity: UInt32(occurrence.identity),
+            isEnabled: occurrence.isEnabled, bounds: occurrence.bounds, clip: occurrence.clip,
+            paintOrder: index,
+            action: BoundedApplicationAction(code: UInt16(occurrence.actionCode)))
+    }
+    package struct Occurrence {
+        package let identity: UInt16
+        package let actionCode: UInt8
+        package let bounds: Rect
+        package let clip: Rect
+        package let isEnabled: Bool
+    }
 
-        package borrowing func interactionOccurrence(at index: UInt16)
-            -> RuntimeInteractionOccurrence<UInt32>?
-        {
-            guard let occurrence = occurrence(at: index) else { return nil }
-            return RuntimeInteractionOccurrence(
-                identity: UInt32(occurrence.identity),
-                isEnabled: occurrence.isEnabled, bounds: occurrence.bounds, clip: occurrence.clip,
-                paintOrder: index,
-                action: BoundedApplicationAction(code: UInt16(occurrence.actionCode)))
-        }
-        package struct Occurrence {
-            package let identity: UInt16
-            package let actionCode: UInt8
-            package let bounds: Rect
-            package let clip: Rect
-            package let isEnabled: Bool
-        }
+    private let semantic: StaticSignalAnalyzerNRFEmbeddedSemanticView
+    private let layout: StaticSignalAnalyzerNRFEmbeddedResolvedLayoutView
+    package let count: UInt16 = 3
 
-        private let semantic: StaticSignalAnalyzerNRFEmbeddedSemanticView
-        private let layout: StaticSignalAnalyzerNRFEmbeddedResolvedLayoutView
-        package let count: UInt16 = 3
-
-        package init?(
-            semantic: StaticSignalAnalyzerNRFEmbeddedSemanticView,
-            layout: StaticSignalAnalyzerNRFEmbeddedResolvedLayoutView
-        ) {
-            guard layout.isPublished,
-                layout.renderSnapshotVersion == semantic.revision,
-                layout.scopeCount == semantic.scopeCount
-            else { return nil }
-            self.semantic = semantic
-            self.layout = layout
-            var index: UInt16 = 0
-            while index < count {
-                guard occurrence(at: index) != nil else { return nil }
-                index += 1
-            }
-        }
-
-        package func occurrence(at index: UInt16) -> Occurrence? {
-            guard index < count,
-                let ordinal = semantic.actionScopeOrdinal(at: index),
-                let action = semantic.actionCode(at: index),
-                let record = semantic.scope(atOrdinal: ordinal),
-                let bounds = layout.bounds(of: record.identity),
-                let clip = layout.clip(of: record.identity)
-            else { return nil }
-            var enabled = true
-            var parent = ordinal
-            var visits: UInt16 = 0
-            while parent != StaticSignalAnalyzerNRFPackedSemanticRecords.missingOrdinal {
-                guard visits < semantic.scopeCount,
-                    let current = semantic.scope(atOrdinal: parent)
-                else { return nil }
-                if current.kind == .modifier {
-                    guard StaticSignalAnalyzerNRFEmbeddedLayoutModifier(record: current) != nil
-                    else { return nil }
-                    if current.flags & 0x40 != 0 { enabled = false }
-                }
-                parent = current.parent
-                visits += 1
-            }
-            return Occurrence(
-                identity: record.identity,
-                actionCode: action,
-                bounds: bounds, clip: clip,
-                isEnabled: enabled
-            )
+    package init?(
+        semantic: StaticSignalAnalyzerNRFEmbeddedSemanticView,
+        layout: StaticSignalAnalyzerNRFEmbeddedResolvedLayoutView
+    ) {
+        guard layout.isPublished,
+            layout.renderSnapshotVersion == semantic.revision,
+            layout.scopeCount == semantic.scopeCount
+        else { return nil }
+        self.semantic = semantic
+        self.layout = layout
+        var index: UInt16 = 0
+        while index < count {
+            guard occurrence(at: index) != nil else { return nil }
+            index += 1
         }
     }
-#endif
+
+    package func occurrence(at index: UInt16) -> Occurrence? {
+        guard index < count,
+            let ordinal = semantic.actionScopeOrdinal(at: index),
+            let action = semantic.actionCode(at: index),
+            let record = semantic.scope(atOrdinal: ordinal),
+            let bounds = layout.bounds(of: record.identity),
+            let clip = layout.clip(of: record.identity)
+        else { return nil }
+        var enabled = true
+        var parent = ordinal
+        var visits: UInt16 = 0
+        while parent != StaticSignalAnalyzerNRFPackedSemanticRecords.missingOrdinal {
+            guard visits < semantic.scopeCount,
+                let current = semantic.scope(atOrdinal: parent)
+            else { return nil }
+            if current.kind == .modifier {
+                guard StaticSignalAnalyzerNRFEmbeddedLayoutModifier(record: current) != nil
+                else { return nil }
+                if current.flags & 0x40 != 0 { enabled = false }
+            }
+            parent = current.parent
+            visits += 1
+        }
+        return Occurrence(
+            identity: record.identity,
+            actionCode: action,
+            bounds: bounds, clip: clip,
+            isEnabled: enabled
+        )
+    }
+}

@@ -1,80 +1,78 @@
-#if GIFTUI_NRF_EMBEDDED
-    package enum StaticSignalAnalyzerNRFCommonLayoutResult {
-        case success(StaticSignalAnalyzerNRFEmbeddedResolvedLayoutView)
-        case failure(LayoutError)
+package enum StaticSignalAnalyzerNRFCommonLayoutResult {
+    case success(StaticSignalAnalyzerNRFEmbeddedResolvedLayoutView)
+    case failure(LayoutError)
+}
+
+/// Runs the exact shared Layout validator, measure pass, and placer over
+/// the audited nRF regions, then publishes those records in place.
+package enum StaticSignalAnalyzerNRFCommonLayoutPass {
+    package static func run(
+        semantic: StaticSignalAnalyzerNRFEmbeddedSemanticView,
+        workspace: inout StaticSignalAnalyzerNRFCommonLayoutWorkspace
+    ) -> StaticSignalAnalyzerNRFEmbeddedResolvedLayoutView? {
+        if case .success(let view) = runTyped(semantic: semantic, workspace: &workspace) {
+            return view
+        }
+        return nil
     }
 
-    /// Runs the exact shared Layout validator, measure pass, and placer over
-    /// the audited nRF regions, then publishes those records in place.
-    package enum StaticSignalAnalyzerNRFCommonLayoutPass {
-        package static func run(
-            semantic: StaticSignalAnalyzerNRFEmbeddedSemanticView,
-            workspace: inout StaticSignalAnalyzerNRFCommonLayoutWorkspace
-        ) -> StaticSignalAnalyzerNRFEmbeddedResolvedLayoutView? {
-            if case .success(let view) = runTyped(semantic: semantic, workspace: &workspace) {
-                return view
-            }
-            return nil
+    @inline(never)
+    package static func runTyped(
+        semantic: StaticSignalAnalyzerNRFEmbeddedSemanticView,
+        workspace: inout StaticSignalAnalyzerNRFCommonLayoutWorkspace
+    ) -> StaticSignalAnalyzerNRFCommonLayoutResult {
+        guard workspace.acquireLayout(),
+            let limits = LayoutLimits(
+                maximumScopes: 98,
+                maximumDepth: 19,
+                maximumTextScalars: 224,
+                maximumTextLines: 128,
+                maximumPositionedGlyphs: 224
+            ), let proposal = ProposedSize(width: 320, height: 240)
+        else { return .failure(.invariantViolation) }
+        let layoutSemantic = StaticSignalAnalyzerNRFEmbeddedLayoutSemanticAdapter(
+            source: semantic
+        )
+        let metrics = StaticSignalAnalyzerNRFEmbeddedFontMetrics()
+        var validation = LayoutSemanticValidation(limits: limits)
+        if let error = validation.validate(
+            semantic: layoutSemantic, metrics: metrics, workspace: &workspace
+        ) {
+            workspace.resetLayout()
+            return .failure(error)
         }
-
-        @inline(never)
-        package static func runTyped(
-            semantic: StaticSignalAnalyzerNRFEmbeddedSemanticView,
-            workspace: inout StaticSignalAnalyzerNRFCommonLayoutWorkspace
-        ) -> StaticSignalAnalyzerNRFCommonLayoutResult {
-            guard workspace.acquireLayout(),
-                let limits = LayoutLimits(
-                    maximumScopes: 98,
-                    maximumDepth: 19,
-                    maximumTextScalars: 224,
-                    maximumTextLines: 128,
-                    maximumPositionedGlyphs: 224
-                ), let proposal = ProposedSize(width: 320, height: 240)
-            else { return .failure(.invariantViolation) }
-            let layoutSemantic = StaticSignalAnalyzerNRFEmbeddedLayoutSemanticAdapter(
-                source: semantic
+        var engine = LayoutEngine(
+            limits: limits,
+            validatedCounters: validation.countersSnapshot
+        )
+        guard
+            let measurement = engine.measure(
+                semantic: layoutSemantic,
+                metrics: metrics,
+                proposal: proposal,
+                workspace: &workspace
+            ),
+            let rootBounds = Rect(
+                origin: Point(x: 0, y: 0), size: measurement.resolvedSize
+            ),
+            engine.place(
+                semantic: layoutSemantic,
+                metrics: metrics,
+                rootBounds: rootBounds,
+                workspace: &workspace
+            ),
+            workspace.packed.reserveTextScalars(
+                engine.finalCounters.textScalarCount
+            ),
+            let result = workspace.packed.publish(
+                rootIdentity: semantic.rootSemanticIdentity,
+                expectedScopeCount: semantic.scopeCount,
+                renderSnapshotVersion: semantic.revision
             )
-            let metrics = StaticSignalAnalyzerNRFEmbeddedFontMetrics()
-            var validation = LayoutSemanticValidation(limits: limits)
-            if let error = validation.validate(
-                semantic: layoutSemantic, metrics: metrics, workspace: &workspace
-            ) {
-                workspace.resetLayout()
-                return .failure(error)
-            }
-            var engine = LayoutEngine(
-                limits: limits,
-                validatedCounters: validation.countersSnapshot
-            )
-            guard
-                let measurement = engine.measure(
-                    semantic: layoutSemantic,
-                    metrics: metrics,
-                    proposal: proposal,
-                    workspace: &workspace
-                ),
-                let rootBounds = Rect(
-                    origin: Point(x: 0, y: 0), size: measurement.resolvedSize
-                ),
-                engine.place(
-                    semantic: layoutSemantic,
-                    metrics: metrics,
-                    rootBounds: rootBounds,
-                    workspace: &workspace
-                ),
-                workspace.packed.reserveTextScalars(
-                    engine.finalCounters.textScalarCount
-                ),
-                let result = workspace.packed.publish(
-                    rootIdentity: semantic.rootSemanticIdentity,
-                    expectedScopeCount: semantic.scopeCount,
-                    renderSnapshotVersion: semantic.revision
-                )
-            else {
-                workspace.resetLayout()
-                return .failure(engine.failure ?? .invariantViolation)
-            }
-            return .success(result)
+        else {
+            workspace.resetLayout()
+            return .failure(engine.failure ?? .invariantViolation)
         }
+        return .success(result)
     }
-#endif
+}

@@ -1,299 +1,297 @@
-#if GIFTUI_NRF_EMBEDDED
-    package typealias StaticSignalAnalyzerNRFEmbeddedPixelWrite =
-        @convention(c) (
-            UInt16, UInt16, UInt16, UInt16, UnsafePointer<UInt8>?, Int
-        ) -> Int32
+package typealias StaticSignalAnalyzerNRFEmbeddedPixelWrite =
+    @convention(c) (
+        UInt16, UInt16, UInt16, UInt16, UnsafePointer<UInt8>?, Int
+    ) -> Int32
 
-    /// Rasterizes the shared operation stream into the one caller-owned tile.
-    /// The tile consumer currently records bounded visits; the display join
-    /// will replace that consumer with synchronous RGB565 submission.
-    package struct StaticSignalAnalyzerNRFEmbeddedRasterSink: DrawingOperationSink {
-        package var capacity: RenderSinkCapacity { counts.capacity }
-        package private(set) var paintedPixels: UInt32 = 0
-        package private(set) var tileVisits: UInt32 = 0
-        package private(set) var submittedRuns: UInt32 = 0
-        package private(set) var submittedBytes: UInt32 = 0
-        package private(set) var isFinished = false
+/// Rasterizes the shared operation stream into the one caller-owned tile.
+/// The tile consumer currently records bounded visits; the display join
+/// will replace that consumer with synchronous RGB565 submission.
+package struct StaticSignalAnalyzerNRFEmbeddedRasterSink: DrawingOperationSink {
+    package var capacity: RenderSinkCapacity { counts.capacity }
+    package private(set) var paintedPixels: UInt32 = 0
+    package private(set) var tileVisits: UInt32 = 0
+    package private(set) var submittedRuns: UInt32 = 0
+    package private(set) var submittedBytes: UInt32 = 0
+    package private(set) var isFinished = false
 
-        private var counts = StaticSignalAnalyzerNRFEmbeddedCountingSink()
-        private var tile: RGB565TileWorkspace<StaticSignalAnalyzerNRFTileStorage>
-        private var header: RenderPlanHeader?
-        private var glyphHeader: PositionedGlyphOperationHeader?
-        private let metrics = StaticSignalAnalyzerNRFEmbeddedFontMetrics()
-        private let raster = StaticSignalAnalyzerNRFEmbeddedFontRaster()
-        private let realization: RasterRealizationDescriptor
-        private let write: StaticSignalAnalyzerNRFEmbeddedPixelWrite?
+    private var counts = StaticSignalAnalyzerNRFEmbeddedCountingSink()
+    private var tile: RGB565TileWorkspace<StaticSignalAnalyzerNRFTileStorage>
+    private var header: RenderPlanHeader?
+    private var glyphHeader: PositionedGlyphOperationHeader?
+    private let metrics = StaticSignalAnalyzerNRFEmbeddedFontMetrics()
+    private let raster = GiftUIReferenceTextRasterView()
+    private let realization: RasterRealizationDescriptor
+    private let write: StaticSignalAnalyzerNRFEmbeddedPixelWrite?
 
-        package init?(
-            rasterRegion: UnsafeMutableRawBufferPointer,
-            coverageRegion: UnsafeMutableRawBufferPointer,
-            write: StaticSignalAnalyzerNRFEmbeddedPixelWrite? = nil
-        ) {
-            guard
-                let bounds = Rect(
-                    origin: Point(x: 0, y: 0),
-                    size: Size(width: 320, height: 240)!
-                ),
-                let descriptor = RasterSurfaceDescriptor(
-                    bounds: bounds, encoding: .rgb565BigEndian,
-                    bytesPerRow: 640, realization: .tiled,
-                    regionWidth: 320, regionHeight: 4
-                ),
-                let storage = StaticSignalAnalyzerNRFTileStorage(
-                    region: rasterRegion, coverage: coverageRegion
-                ),
-                let tile = RGB565TileWorkspace(
-                    descriptor: descriptor, storage: storage
-                ),
-                let realization = StaticSignalAnalyzerNRFEmbeddedFontRaster()
-                    .realization(at: 0)
-            else { return nil }
-            self.tile = tile
-            self.realization = realization
-            self.write = write
-        }
-
-        package mutating func begin(_ header: RenderPlanHeader) -> Bool {
-            guard header.surfaceBounds == tile.descriptor.bounds,
-                counts.begin(header)
-            else { return false }
-            self.header = header
-            return true
-        }
-
-        package mutating func fillRect(_ operation: FillRectOperation) -> Bool {
-            guard let header else { return false }
-            var workspace = tile
-            var pixels = paintedPixels
-            var visits = tileVisits
-            var runs = submittedRuns
-            var bytes = submittedBytes
-            let descriptor = workspace.descriptor
-            let transportWrite = write
-            let result = OperationMajorTileTraversal.visit(
-                operationClip: operation.clip,
-                damageBounds: header.damageBounds,
-                workspace: &workspace,
-                { damage, replace in
-                    switch RasterFillCoverage.rasterize(
-                        operation, descriptor: descriptor,
-                        damageBounds: damage, replace
-                    ) {
-                    case .completed(let count):
-                        let next = pixels.addingReportingOverflow(count)
-                        guard !next.overflow else { return false }
-                        pixels = next.partialValue
-                        return true
-                    default: return false
-                    }
-                },
-                { completedTile in
-                    guard
-                        let emitted = StaticSignalAnalyzerNRFEmbeddedTileRuns.emit(
-                            completedTile,
-                            { x, y, pixelCount, borrowed in
-                                guard borrowed.count == Int(pixelCount) * 2,
-                                    let base = borrowed.baseAddress
-                                else { return false }
-                                guard let transportWrite else { return true }
-                                return transportWrite(
-                                    x, y, pixelCount, 1,
-                                    base.assumingMemoryBound(to: UInt8.self),
-                                    borrowed.count
-                                ) == 0
-                            }
-                        )
-                    else { return false }
-                    let nextVisits = visits.addingReportingOverflow(1)
-                    let nextRuns = runs.addingReportingOverflow(emitted.runCount)
-                    let nextBytes = bytes.addingReportingOverflow(emitted.byteCount)
-                    guard !nextVisits.overflow, !nextRuns.overflow,
-                        !nextBytes.overflow
-                    else { return false }
-                    visits = nextVisits.partialValue
-                    runs = nextRuns.partialValue
-                    bytes = nextBytes.partialValue
-                    return true
-                }
-            )
-            guard case .completed = result, counts.fillRect(operation) else {
-                return false
-            }
-            tile = workspace
-            paintedPixels = pixels
-            tileVisits = visits
-            submittedRuns = runs
-            submittedBytes = bytes
-            return true
-        }
-
-        package mutating func beginPositionedGlyphs(
-            _ operation: PositionedGlyphOperationHeader
-        ) -> Bool {
-            guard glyphHeader == nil,
-                counts.beginPositionedGlyphs(operation)
-            else { return false }
-            glyphHeader = operation
-            return true
-        }
-
-        package mutating func positionedGlyph(_ glyph: PositionedGlyph) -> Bool {
-            guard let header, let glyphHeader else { return false }
-            var workspace = tile
-            var pixels = paintedPixels
-            var visits = tileVisits
-            var runs = submittedRuns
-            var bytes = submittedBytes
-            let descriptor = workspace.descriptor
-            let transportWrite = write
-            let result = OperationMajorTileTraversal.visit(
-                operationClip: glyphHeader.clip,
-                damageBounds: header.damageBounds,
-                workspace: &workspace,
-                { damage, replace in
-                    switch RasterGlyphCoverage.rasterize(
-                        glyph, operation: glyphHeader,
-                        metrics: metrics, raster: raster,
-                        realization: realization,
-                        descriptor: descriptor,
-                        damageBounds: damage, replace
-                    ) {
-                    case .completed(let count, _):
-                        let next = pixels.addingReportingOverflow(count)
-                        guard !next.overflow else { return false }
-                        pixels = next.partialValue
-                        return true
-                    default: return false
-                    }
-                },
-                { completedTile in
-                    guard
-                        let emitted = StaticSignalAnalyzerNRFEmbeddedTileRuns.emit(
-                            completedTile,
-                            { x, y, pixelCount, borrowed in
-                                guard borrowed.count == Int(pixelCount) * 2,
-                                    let base = borrowed.baseAddress
-                                else { return false }
-                                guard let transportWrite else { return true }
-                                return transportWrite(
-                                    x, y, pixelCount, 1,
-                                    base.assumingMemoryBound(to: UInt8.self),
-                                    borrowed.count
-                                ) == 0
-                            }
-                        )
-                    else { return false }
-                    let nextVisits = visits.addingReportingOverflow(1)
-                    let nextRuns = runs.addingReportingOverflow(emitted.runCount)
-                    let nextBytes = bytes.addingReportingOverflow(emitted.byteCount)
-                    guard !nextVisits.overflow, !nextRuns.overflow,
-                        !nextBytes.overflow
-                    else { return false }
-                    visits = nextVisits.partialValue
-                    runs = nextRuns.partialValue
-                    bytes = nextBytes.partialValue
-                    return true
-                }
-            )
-            guard case .completed = result, counts.positionedGlyph(glyph) else {
-                return false
-            }
-            tile = workspace
-            paintedPixels = pixels
-            tileVisits = visits
-            submittedRuns = runs
-            submittedBytes = bytes
-            return true
-        }
-
-        package mutating func endPositionedGlyphs() -> Bool {
-            guard glyphHeader != nil, counts.endPositionedGlyphs() else {
-                return false
-            }
-            glyphHeader = nil
-            return true
-        }
-
-        package mutating func straightLineStroke<Stroke: StraightLineStrokeView>(
-            _ stroke: borrowing Stroke
-        ) -> Bool {
-            guard let header else { return false }
-            let strokeView = copy stroke
-            var workspace = tile
-            var pixels = paintedPixels
-            var visits = tileVisits
-            var runs = submittedRuns
-            var bytes = submittedBytes
-            let descriptor = workspace.descriptor
-            let transportWrite = write
-            let result = OperationMajorTileTraversal.visit(
-                operationClip: strokeView.header.inheritedClip,
-                damageBounds: header.damageBounds,
-                workspace: &workspace,
-                { damage, replace in
-                    switch RasterStrokeCoverage.rasterize(
-                        strokeView, descriptor: descriptor,
-                        damageBounds: damage, replace
-                    ) {
-                    case .completed(let count):
-                        let next = pixels.addingReportingOverflow(count)
-                        guard !next.overflow else { return false }
-                        pixels = next.partialValue
-                        return true
-                    default: return false
-                    }
-                },
-                { completedTile in
-                    guard
-                        let emitted = StaticSignalAnalyzerNRFEmbeddedTileRuns.emit(
-                            completedTile,
-                            { x, y, pixelCount, borrowed in
-                                guard borrowed.count == Int(pixelCount) * 2,
-                                    let base = borrowed.baseAddress
-                                else { return false }
-                                guard let transportWrite else { return true }
-                                return transportWrite(
-                                    x, y, pixelCount, 1,
-                                    base.assumingMemoryBound(to: UInt8.self),
-                                    borrowed.count
-                                ) == 0
-                            }
-                        )
-                    else { return false }
-                    let nextVisits = visits.addingReportingOverflow(1)
-                    let nextRuns = runs.addingReportingOverflow(emitted.runCount)
-                    let nextBytes = bytes.addingReportingOverflow(emitted.byteCount)
-                    guard !nextVisits.overflow, !nextRuns.overflow,
-                        !nextBytes.overflow
-                    else { return false }
-                    visits = nextVisits.partialValue
-                    runs = nextRuns.partialValue
-                    bytes = nextBytes.partialValue
-                    return true
-                }
-            )
-            guard case .completed = result,
-                counts.straightLineStroke(stroke)
-            else { return false }
-            tile = workspace
-            paintedPixels = pixels
-            tileVisits = visits
-            submittedRuns = runs
-            submittedBytes = bytes
-            return true
-        }
-
-        package mutating func finish() -> Bool {
-            guard glyphHeader == nil, counts.finish() else { return false }
-            isFinished = true
-            return true
-        }
-
-        package mutating func discard() {
-            counts.discard()
-            isFinished = false
-            header = nil
-            glyphHeader = nil
-        }
+    package init?(
+        rasterRegion: UnsafeMutableRawBufferPointer,
+        coverageRegion: UnsafeMutableRawBufferPointer,
+        write: StaticSignalAnalyzerNRFEmbeddedPixelWrite? = nil
+    ) {
+        guard
+            let bounds = Rect(
+                origin: Point(x: 0, y: 0),
+                size: Size(width: 320, height: 240)!
+            ),
+            let descriptor = RasterSurfaceDescriptor(
+                bounds: bounds, encoding: .rgb565BigEndian,
+                bytesPerRow: 640, realization: .tiled,
+                regionWidth: 320, regionHeight: 4
+            ),
+            let storage = StaticSignalAnalyzerNRFTileStorage(
+                region: rasterRegion, coverage: coverageRegion
+            ),
+            let tile = RGB565TileWorkspace(
+                descriptor: descriptor, storage: storage
+            ),
+            let realization = GiftUIReferenceTextRasterView()
+                .realization(at: 0)
+        else { return nil }
+        self.tile = tile
+        self.realization = realization
+        self.write = write
     }
-#endif
+
+    package mutating func begin(_ header: RenderPlanHeader) -> Bool {
+        guard header.surfaceBounds == tile.descriptor.bounds,
+            counts.begin(header)
+        else { return false }
+        self.header = header
+        return true
+    }
+
+    package mutating func fillRect(_ operation: FillRectOperation) -> Bool {
+        guard let header else { return false }
+        var workspace = tile
+        var pixels = paintedPixels
+        var visits = tileVisits
+        var runs = submittedRuns
+        var bytes = submittedBytes
+        let descriptor = workspace.descriptor
+        let transportWrite = write
+        let result = OperationMajorTileTraversal.visit(
+            operationClip: operation.clip,
+            damageBounds: header.damageBounds,
+            workspace: &workspace,
+            { damage, replace in
+                switch RasterFillCoverage.rasterize(
+                    operation, descriptor: descriptor,
+                    damageBounds: damage, replace
+                ) {
+                case .completed(let count):
+                    let next = pixels.addingReportingOverflow(count)
+                    guard !next.overflow else { return false }
+                    pixels = next.partialValue
+                    return true
+                default: return false
+                }
+            },
+            { completedTile in
+                guard
+                    let emitted = StaticSignalAnalyzerNRFEmbeddedTileRuns.emit(
+                        completedTile,
+                        { x, y, pixelCount, borrowed in
+                            guard borrowed.count == Int(pixelCount) * 2,
+                                let base = borrowed.baseAddress
+                            else { return false }
+                            guard let transportWrite else { return true }
+                            return transportWrite(
+                                x, y, pixelCount, 1,
+                                base.assumingMemoryBound(to: UInt8.self),
+                                borrowed.count
+                            ) == 0
+                        }
+                    )
+                else { return false }
+                let nextVisits = visits.addingReportingOverflow(1)
+                let nextRuns = runs.addingReportingOverflow(emitted.runCount)
+                let nextBytes = bytes.addingReportingOverflow(emitted.byteCount)
+                guard !nextVisits.overflow, !nextRuns.overflow,
+                    !nextBytes.overflow
+                else { return false }
+                visits = nextVisits.partialValue
+                runs = nextRuns.partialValue
+                bytes = nextBytes.partialValue
+                return true
+            }
+        )
+        guard case .completed = result, counts.fillRect(operation) else {
+            return false
+        }
+        tile = workspace
+        paintedPixels = pixels
+        tileVisits = visits
+        submittedRuns = runs
+        submittedBytes = bytes
+        return true
+    }
+
+    package mutating func beginPositionedGlyphs(
+        _ operation: PositionedGlyphOperationHeader
+    ) -> Bool {
+        guard glyphHeader == nil,
+            counts.beginPositionedGlyphs(operation)
+        else { return false }
+        glyphHeader = operation
+        return true
+    }
+
+    package mutating func positionedGlyph(_ glyph: PositionedGlyph) -> Bool {
+        guard let header, let glyphHeader else { return false }
+        var workspace = tile
+        var pixels = paintedPixels
+        var visits = tileVisits
+        var runs = submittedRuns
+        var bytes = submittedBytes
+        let descriptor = workspace.descriptor
+        let transportWrite = write
+        let result = OperationMajorTileTraversal.visit(
+            operationClip: glyphHeader.clip,
+            damageBounds: header.damageBounds,
+            workspace: &workspace,
+            { damage, replace in
+                switch RasterGlyphCoverage.rasterize(
+                    glyph, operation: glyphHeader,
+                    metrics: metrics, raster: raster,
+                    realization: realization,
+                    descriptor: descriptor,
+                    damageBounds: damage, replace
+                ) {
+                case .completed(let count, _):
+                    let next = pixels.addingReportingOverflow(count)
+                    guard !next.overflow else { return false }
+                    pixels = next.partialValue
+                    return true
+                default: return false
+                }
+            },
+            { completedTile in
+                guard
+                    let emitted = StaticSignalAnalyzerNRFEmbeddedTileRuns.emit(
+                        completedTile,
+                        { x, y, pixelCount, borrowed in
+                            guard borrowed.count == Int(pixelCount) * 2,
+                                let base = borrowed.baseAddress
+                            else { return false }
+                            guard let transportWrite else { return true }
+                            return transportWrite(
+                                x, y, pixelCount, 1,
+                                base.assumingMemoryBound(to: UInt8.self),
+                                borrowed.count
+                            ) == 0
+                        }
+                    )
+                else { return false }
+                let nextVisits = visits.addingReportingOverflow(1)
+                let nextRuns = runs.addingReportingOverflow(emitted.runCount)
+                let nextBytes = bytes.addingReportingOverflow(emitted.byteCount)
+                guard !nextVisits.overflow, !nextRuns.overflow,
+                    !nextBytes.overflow
+                else { return false }
+                visits = nextVisits.partialValue
+                runs = nextRuns.partialValue
+                bytes = nextBytes.partialValue
+                return true
+            }
+        )
+        guard case .completed = result, counts.positionedGlyph(glyph) else {
+            return false
+        }
+        tile = workspace
+        paintedPixels = pixels
+        tileVisits = visits
+        submittedRuns = runs
+        submittedBytes = bytes
+        return true
+    }
+
+    package mutating func endPositionedGlyphs() -> Bool {
+        guard glyphHeader != nil, counts.endPositionedGlyphs() else {
+            return false
+        }
+        glyphHeader = nil
+        return true
+    }
+
+    package mutating func straightLineStroke<Stroke: StraightLineStrokeView>(
+        _ stroke: borrowing Stroke
+    ) -> Bool {
+        guard let header else { return false }
+        let strokeView = copy stroke
+        var workspace = tile
+        var pixels = paintedPixels
+        var visits = tileVisits
+        var runs = submittedRuns
+        var bytes = submittedBytes
+        let descriptor = workspace.descriptor
+        let transportWrite = write
+        let result = OperationMajorTileTraversal.visit(
+            operationClip: strokeView.header.inheritedClip,
+            damageBounds: header.damageBounds,
+            workspace: &workspace,
+            { damage, replace in
+                switch RasterStrokeCoverage.rasterize(
+                    strokeView, descriptor: descriptor,
+                    damageBounds: damage, replace
+                ) {
+                case .completed(let count):
+                    let next = pixels.addingReportingOverflow(count)
+                    guard !next.overflow else { return false }
+                    pixels = next.partialValue
+                    return true
+                default: return false
+                }
+            },
+            { completedTile in
+                guard
+                    let emitted = StaticSignalAnalyzerNRFEmbeddedTileRuns.emit(
+                        completedTile,
+                        { x, y, pixelCount, borrowed in
+                            guard borrowed.count == Int(pixelCount) * 2,
+                                let base = borrowed.baseAddress
+                            else { return false }
+                            guard let transportWrite else { return true }
+                            return transportWrite(
+                                x, y, pixelCount, 1,
+                                base.assumingMemoryBound(to: UInt8.self),
+                                borrowed.count
+                            ) == 0
+                        }
+                    )
+                else { return false }
+                let nextVisits = visits.addingReportingOverflow(1)
+                let nextRuns = runs.addingReportingOverflow(emitted.runCount)
+                let nextBytes = bytes.addingReportingOverflow(emitted.byteCount)
+                guard !nextVisits.overflow, !nextRuns.overflow,
+                    !nextBytes.overflow
+                else { return false }
+                visits = nextVisits.partialValue
+                runs = nextRuns.partialValue
+                bytes = nextBytes.partialValue
+                return true
+            }
+        )
+        guard case .completed = result,
+            counts.straightLineStroke(stroke)
+        else { return false }
+        tile = workspace
+        paintedPixels = pixels
+        tileVisits = visits
+        submittedRuns = runs
+        submittedBytes = bytes
+        return true
+    }
+
+    package mutating func finish() -> Bool {
+        guard glyphHeader == nil, counts.finish() else { return false }
+        isFinished = true
+        return true
+    }
+
+    package mutating func discard() {
+        counts.discard()
+        isFinished = false
+        header = nil
+        glyphHeader = nil
+    }
+}
