@@ -2,7 +2,7 @@
 id: ITERATION-002
 title: Cleanup
 status: draft
-revision: 4
+revision: 5
 approved_revision: null
 created: 2026-10-04
 updated: 2026-10-04
@@ -96,7 +96,7 @@ on coverage and explicit finding dispositions,
 not on repeated agent passes ceasing to produce suggestions. Discovery does not
 automatically select remediation or expand an approved iteration.
 
-The [updated research reconciliation](iteration-002-review/24-connected-reconciliation.md)
+The [updated research reconciliation](iteration-002-review/28-host-followup-reconciliation.md)
 records eight findings, all bounded review perspectives, the passing four-profile
 gate and completed bounded follow-up experiments/assessments. It recommends correctness and
 evidence fixes first, then measured startup/source-selection cleanups and the
@@ -205,3 +205,24 @@ approved exceptions, and remaining deferred work.
 - [SPEC-015](../specs/spec-015-host-configuration.md)
 - [SPEC-001 implementation plan](../implementation-plans/spec-001-implementation-plan.md), Milestone 10.
 - Discussion provenance: “Plan MVP Cleanup Iteration” (`01a0fd70-a61c-7b43-9eb0-28ac915ee793`), “Review module dependency direction” (`01a0f92f-f02e-7a53-99d0-5f3bc8e3a546`), “Explain Static nRF Stack Hierarchy” (`01a0fb90-48f5-7d63-ad19-d7af9457368b`), “Assess Removing Project-wide ifdefs” (`01a0fcf0-fa50-75e2-835f-3105c62b284d`), and “Assess 10 Hz Input Frequency Limit” (`01a0fd19-a846-7a12-a9b6-1e50a84c13a1`).
+
+## Focused connected follow-up — revision5
+
+The continued research request adds [Step25](iteration-002-review/25-quiescent-software-input.md)'s
+production software-input subset and [Step26](iteration-002-review/26-connected-nrf-phases-and-failure.md)'s
+actual-owner phase/refusal observations. nRF layout/production dominate; this
+localizes future performance investigation without selecting an optimization or
+runtime replacement. Programmatic Clear/diagnostic and one refusal/fresh-activation
+case are scoped supplements to existing connected exceptions.
+
+[Step27](iteration-002-review/27-pi-profiler-preparation.md)'s separate ARMv6
+profiler is ready, but Pi connectivity blocks its measurement. Resume that
+specific task when SSH is restored. Physical-contact provenance, complete
+independent traces/pixels, other fault modes and lossless sustained admission
+remain explicit follow-up gates. No generic audit pass remains necessary.
+
+The recommended cleanup priority remains reproduced correctness and tooling
+integrity, then supported startup/source-selection/generator cleanup. This
+revision does not select fixes, approve scope, promise cadence remediation or
+amend capture retention. `approved_revision`, approval, feature stages,
+authoritative contracts and approved MVP exceptions remain unchanged.

@@ -1,7 +1,7 @@
 # Step 27 — Pi phase profiler prepared; connected measurement blocked
 
-The separate `SignalAnalyzerPiResearch` product builds with the paired6.3.2
-compiler/ARMv6 SDK and passes the repository's32-bit ARMv6 hard-float inspection.
+The separate `SignalAnalyzerPiResearch` product builds with the paired 6.3.2
+compiler/ARMv6 SDK and passes the repository's 32-bit ARMv6 hard-float inspection.
 It copies maintained sources and preserves Dynamic behavior, production automatic
 Start and the real source loop. Eleven common stages get CLOCK_MONOTONIC timers;
 the existing mmap projection gets separate timing. Source delivery timestamps
@@ -42,7 +42,7 @@ python3 experiments/spike-013-connected-host-followup/run-pi.py
 The runner optionally accepts an explicitly supplied SSH peer. It requires
 `armv6l` before deploying under `~/giftui/experiments/iteration-002-spike-013/`.
 The remote collector verifies the research hash, uses the production application
-command with a45s SIGINT timeout and bounded kill fallback, records stdout/RSS,
+command with a 45s SIGINT timeout and bounded kill fallback, records stdout/RSS,
 and leaves service configuration alone. The local decoder requires completed
 teardown, complete stage records and actual source deliveries before producing
 results. Do not overwrite completed archives when resuming a later campaign.

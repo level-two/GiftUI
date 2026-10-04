@@ -86,6 +86,18 @@ counts, explain the whole frame gap or prove sustained admission.
 records restored production firmware and remaining coverage. Performance
 remediation remains captured/unselected; original requirements/exception stand.
 
+## Service-boundary phase follow-up
+
+[Step26](../iterations/iteration-002-review/26-connected-nrf-phases-and-failure.md)
+measures actual owner bodies in copied firmware: normal layout3.59–3.71s and
+production16.46–17.01s, including about1.11s of SPI writes. These phases account
+for roughly97% of cycle time. This localizes the next investigation; it does not
+isolate the linear-lookup call counts or authorize an optimization. The same
+preserved source loop delivers two scheduled records20.959s apart in the bounded
+case. Lossless80-event/s admission and four-fps conformance remain unproved/unmet.
+Keep the original stack reservation: copied loaded extents omit production
+startup probes and are observations, not worst-case bounds.
+
 ## References
 
 - [Cleanup review CBR-005](../iterations/iteration-002-review/findings.md#cbr-005--repeated-packed-identity-lookups-need-phase-measurements)

@@ -1,21 +1,21 @@
 # Step 25 — Production nRF software input at service boundaries
 
 The maintainer's request to proceed reopens the concrete connected corpus gaps
-from Step24. This step uses the unchanged production ELF SHA256
+from Step 24. This step uses the unchanged production ELF SHA256
 `c6d0f12c8585cad3f3949fb596e13fa7328989239a31a1f6e428afadb541ed5c`
-on J-Link683833660. GDB preserves registers on attach, halts at the production
+on J-Link 683833660. GDB preserves registers on attach, halts at the production
 `service` entry, admits against the current committed revision, and observes a
 subsequent service boundary. It deletes breakpoints and resumes before detach.
 No reset, flash or maintained implementation change occurs in these cases.
 
 | Case | Observed outcome |
 | --- | --- |
-| Start | Idle/revision1 → running/revision2; two queued events drained |
-| Stop | Running/revision5 → stopped/revision6; two events drained; eight capture records |
-| Window1s / 2s / 5s | Corresponding published action-code sets `[0,3,4]`, `[0,3,5]`, `[0,4,5]`; capture remains eight; each selected change advances revision once |
-| Disabled Plus at5s | Enabled lookup returns zero; gesture uses its previously enabled point; queued events drain with unchanged revision/window/capture |
+| Start | Idle/revision 1 → running/revision 2; two queued events drained |
+| Stop | Running/revision 5 → stopped/revision 6; two events drained; eight capture records |
+| Window 1s / 2s / 5s | Corresponding published action-code sets `[0,3,4]`, `[0,3,5]`, `[0,4,5]`; capture remains eight; each selected change advances revision once |
+| Disabled Plus at 5s | Enabled lookup returns zero; gesture uses its previously enabled point; queued events drain with unchanged revision/window/capture |
 | Move outside then Up | Down/Move/Up drain; revision/window/capture unchanged |
-| Stale revision | Both events rejected with admission258; queue zero; revision/window/capture unchanged |
+| Stale revision | Both events rejected with admission 258; queue zero; revision/window/capture unchanged |
 
 Every completed case samples zero driver counters and CFSR/HFSR. DFSR's debug
 bit is expected from breakpoints. These are actual production software-input
@@ -32,11 +32,11 @@ that physical input meets its deadline during a roughly22s synchronous frame.
 [Raw scripts/logs archive](evidence/25-quiescent-input-logs.tar.gz) and
 [validated summary](evidence/25-quiescent-input.json) retain case details and hashes.
 Run the reviewed `.gdb` scripts with `run-nrf-connected-gdb.py`; its optional
-bounded timeout accepts at most55s. `run-nrf-quiescent-corpus.py` prepares the
-window/cancellation cases for this exact ELF. Start from a stopped2s window,
+bounded timeout accepts at most 55s. `run-nrf-quiescent-corpus.py` prepares the
+window/cancellation cases for this exact ELF. Start from a stopped 2s window,
 then run window-one, window-two, window-five, disabled-plus, window-two,
 movement-cancel and stale-revision. The final window-two log records restoration
-from5s to2s. Software Start/Stop are preserved as their explicit raw scripts.
+from 5s to 2s. Software Start/Stop are preserved as their explicit raw scripts.
 
 The first getter attempt found `hit_point` absent from the linked debugger
 symbols; enabled `action_point` supplied the tested coordinates instead. A Clear

@@ -86,6 +86,16 @@ teardown; no service changed. [Connected reconciliation](../iterations/iteration
 records exact identities and limitations. Compatible optimization remains
 unselected; this baseline does not close the four-fps/sustained-workload gap.
 
+## Phase-profiler preparation and connectivity blocker
+
+[Step27](../iterations/iteration-002-review/27-pi-profiler-preparation.md) prepares
+and verifies an isolated ARMv6 research product with eleven owner-stage timers,
+mmap timing and actual source/capture observations. Pi initially answered but
+SSH subsequently timed out over both address families. No new phase result is
+claimed. Resume SPIKE-013's bounded45s measurement when connectivity is restored;
+existing device authorization remains in force. Production binary/service
+configuration remains unchanged, and compatible optimization is unselected.
+
 ## References
 
 - [Closeout and retained implementation](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-8/pi-performance-closeout-20260930.md)

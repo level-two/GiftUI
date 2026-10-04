@@ -79,6 +79,20 @@ fault/recovery or sustained 80-event/s resource corpus was collected. Preserve
 this item's remaining evidence and all approved exceptions; no criterion is
 upgraded solely from these bounded results.
 
+## Service-boundary corpus and refusal follow-up
+
+[Step25](../iterations/iteration-002-review/25-quiescent-software-input.md)
+establishes stopped state through the unchanged production service boundary,
+plus all windows, disabled Plus, movement cancellation and stale rejection.
+The earlier mid-frame Stop remains inconclusive as a separate method. These
+software observations do not prove physical contacts or exact-once dispatch.
+[Step26](../iterations/iteration-002-review/26-connected-nrf-phases-and-failure.md)
+adds copied-owner programmatic Clear, a96-byte model diagnostic, one injected
+pixel-write refusal with cleanup, and successful fresh activation after explicit
+input-graph reconstruction. This is a scoped supplement, not the complete
+physical, independent-pixel/trace, overlap or multi-fault corpus. Existing
+criterion exceptions retain their exact scope.
+
 ## References
 
 - [SPEC-001](../specs/spec-001-signal-analyzer-reference-application.md)

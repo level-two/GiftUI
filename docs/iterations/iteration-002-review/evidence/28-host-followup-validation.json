@@ -1,0 +1,77 @@
+{
+  "revision": "3c17f537cbd82a4fcc34be3be80a0218432aa4fd",
+  "source_baseline": "6cf31f266987e917458f31f05ed8c390cda9a202",
+  "checks": {
+    "maintained_inputs_unchanged": [
+      "Sources",
+      "Tests",
+      "firmware",
+      "scripts",
+      "Package.swift",
+      "demo",
+      ".agents",
+      "skills"
+    ],
+    "production_gate_archive_unchanged": true,
+    "step25_archive": "adddc511b09f3ac98673384aabbb5dfd6482c61d98c119842e9872affe1b9270",
+    "normal_archive": "f52e4ea2341e742a33b9b763beedf414de9d7a135d3390f26706d4ae16b81aa5",
+    "refusal_archive": "6fffbb4bc5d38eb7ed41af930e9f192ecfd1df2834b36c49b14a886da4dc516d",
+    "preparation_inputs_match": true,
+    "local_debugger_upload_processes": [],
+    "local_links": 168,
+    "python_syntax_files": 11,
+    "shell": {
+      "exit_code": 0,
+      "output": ""
+    },
+    "whitespace": {
+      "exit_code": 0,
+      "output": ""
+    },
+    "format": {
+      "exit_code": 0,
+      "output": ""
+    },
+    "governance": {
+      "exit_code": 0,
+      "output": "Authority graph validation passed: 170 nodes, 1705 edges.\n"
+    }
+  },
+  "utc": "2026-10-04T18:24:18.263386+00:00",
+  "pi": {
+    "status": "measurement_blocked",
+    "preparation_verified": true,
+    "blocker": "Pi answered armv6l before initial upload; subsequent IPv4 connection and IPv6 SSH banner timeouts; no measurement completed.",
+    "final_remote_state_unavailable": true
+  },
+  "nrf": {
+    "elf_sha256": "c6d0f12c8585cad3f3949fb596e13fa7328989239a31a1f6e428afadb541ed5c",
+    "probe_serial": "683833660",
+    "ready_revision": 1,
+    "samples": 10,
+    "cfsr_hfsr": [
+      0,
+      0
+    ],
+    "driver_faults": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "running_dhcsr": true
+  },
+  "archive": {
+    "sha256": "bc9b561238e686e80a36b6f39adaf56b326adec0c0d238c1b12d041ecccb309a",
+    "files": {
+      "nrf52840/iteration-002-final-restoration/process-final.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "nrf52840/iteration-002-final-restoration/flash.log": "29d90bed064d1b6b1b33ba96ee4e631c88052db885cd3cc017ad742bc16b3602",
+      "nrf52840/iteration-002-connected/step-28-production-ready/identity.json": "bc47a1b00c68e92fd21f2e768a2cffbfb9991e1310a10fb679590e31a113bf4a",
+      "nrf52840/iteration-002-connected/step-28-production-ready/monitor.jlink": "144e261678bdf75a3b30095e53e1b7ee7796fc2c2ecad42561c74ec1fd00727c",
+      "nrf52840/iteration-002-connected/step-28-production-ready/monitor.log": "65f1a45ecf2c5356410c39cb8c04957341932edbc0147d18f4da1545e05a9c83",
+      "raspberry-pi/spike-013/preflight.log": "3c786a1aef08868d0974d8765ef3b8c4288bc8d5cedb12aa1c40188b50610d81",
+      "raspberry-pi/spike-013/resumption-attempt.log": "c3eb37f256a3a14fa0beac4bdc2b26272932db930776d21b9016a7f2c457ab09"
+    }
+  }
+}
