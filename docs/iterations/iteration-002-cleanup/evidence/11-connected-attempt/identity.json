@@ -1,0 +1,28 @@
+{
+  "elf_sha256": "9ef60d653678dce21ec389dbf4977aca0fe40291a2847958ba42b3d190681da6",
+  "elf": ".build/nrf52840/signal-analyzer-static/zephyr/zephyr.elf",
+  "probe_serial": "683833660",
+  "production": 536873360,
+  "fault_counts": 537031424,
+  "command": [
+    "JLinkExe",
+    "-device",
+    "NRF52840_XXAA",
+    "-if",
+    "SWD",
+    "-speed",
+    "4000",
+    "-SelectEmuBySN",
+    "683833660",
+    "-autoconnect",
+    "1",
+    "-CommanderScript",
+    "/Users/eugene/work/GiftUI/.build/nrf52840/iteration-002-connected/maintenance-recovery-01/monitor.jlink"
+  ],
+  "requested_samples": 100,
+  "requested_sleep_ms": 100,
+  "kind": "connected nonhalting SWD reads; host timestamps include probe overhead",
+  "started_utc": "2026-10-04T23:48:46.150217+00:00",
+  "exit_code": 0,
+  "elapsed_seconds": 11.407653291
+}

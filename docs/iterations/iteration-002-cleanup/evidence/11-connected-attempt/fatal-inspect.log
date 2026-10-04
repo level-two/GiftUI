@@ -1,0 +1,19 @@
+arch_system_halt (reason=0) at /Users/eugene/work/GiftUI/.toolchains/nrf52840/workspace/zephyr/kernel/fatal.c:30
+30		for (;;) {
+pc             0x3cf5e             0x3cf5e <arch_system_halt+14>
+sp             0x20027de8          0x20027de8 <z_interrupt_stacks+2024>
+#0  arch_system_halt (reason=0) at /Users/eugene/work/GiftUI/.toolchains/nrf52840/workspace/zephyr/kernel/fatal.c:30
+#1  0x0003cf66 in k_sys_fatal_error_handler (reason=<optimized out>, esf=esf@entry=0x20027e00 <z_interrupt_stacks+2048>) at /Users/eugene/work/GiftUI/.toolchains/nrf52840/workspace/zephyr/kernel/fatal.c:44
+#2  0x0003cf7a in z_fatal_error (reason=<optimized out>, esf=esf@entry=0x20027e00 <z_interrupt_stacks+2048>) at /Users/eugene/work/GiftUI/.toolchains/nrf52840/workspace/zephyr/kernel/fatal.c:119
+#3  0x00023d30 in z_arm_fatal_error (reason=<optimized out>, esf=esf@entry=0x20027e00 <z_interrupt_stacks+2048>) at /Users/eugene/work/GiftUI/.toolchains/nrf52840/workspace/zephyr/arch/arm/core/fatal.c:87
+#4  0x000240a0 in z_arm_fault (msp=<optimized out>, psp=<optimized out>, exc_return=<optimized out>, callee_regs=<optimized out>) at /Users/eugene/work/GiftUI/.toolchains/nrf52840/workspace/zephyr/arch/arm/core/cortex_m/fault.c:1083
+#5  0x00024154 in z_arm_usage_fault () at /Users/eugene/work/GiftUI/.toolchains/nrf52840/workspace/zephyr/arch/arm/core/cortex_m/fault_s.S:102
+#6  <signal handler called>
+#7  service (opaque=0x20000990 <production>, now=99709000, next_deadline=0x2002e9d0 <z_main_stack+27536>, stop=0x2002e9c4 <z_main_stack+27524>) at /Users/eugene/work/GiftUI/firmware/nrf52840/applications/signal-analyzer-static/src/production_host.c:146
+#8  0x0003bfd4 in giftui_static_host_run (hal=hal@entry=0x2002ea10 <z_main_stack+27600>, application=application@entry=0x2002e9fc <z_main_stack+27580>) at /Users/eugene/work/GiftUI/firmware/nrf52840/applications/signal-analyzer-static/src/static_host_lifecycle.c:60
+#9  0x000239d6 in giftui_production_host_run () at /Users/eugene/work/GiftUI/firmware/nrf52840/applications/signal-analyzer-static/src/production_host.c:248
+#10 0x000236ba in main () at /Users/eugene/work/GiftUI/firmware/nrf52840/applications/signal-analyzer-static/src/main.c:130
+$1 = {regions = {profile = 0x2001d748 <giftui_signal_analyzer_profile_storage> "CNAS\001", profile_bytes = 39696, capture = 0x20001488 <giftui_signal_analyzer_capture_storage> "", capture_bytes = 115392, raster = 0x20000a88 <giftui_signal_analyzer_raster_staging> "\004\037\004\037\004\037", raster_bytes = 2560, coverage = 0x200009e8 <giftui_signal_analyzer_raster_coverage> "", coverage_bytes = 160}, touch = {input = {calibration = {horizontal_minimum = 0, horizontal_maximum = 4095, vertical_minimum = 0, vertical_maximum = 4095, logical_width = 320, logical_height = 240, swap_axes = 1 '\001', invert_horizontal = 1 '\001', invert_vertical = 1 '\001'}, last_x = 0, last_y = 0, active = 0 '\000', valid = 1 '\001'}, observed_presentation_revision = 1, prior_physical_sequence_is_complete = 1 '\001', awaiting_observed_release = 0 '\000', valid = 1 '\001'}, next_transition_deadline = 0, next_frame_deadline = 99959000, next_touch_sample_deadline = 99759000}
+$2 = {0, 0, 0, 0, 0}
+0xe000ed28:	0x00000000	0x80000000	0x00000001
+[Inferior 1 (Remote target) detached]

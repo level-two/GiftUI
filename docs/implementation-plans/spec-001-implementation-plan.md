@@ -2943,3 +2943,5 @@ All added tasks are pending. Original completed ledger entries and historical ra
 **T11.1/T11.2 local follow-up — 2026-10-05:** [Real-source admission ordering](../iterations/iteration-002-cleanup/evidence/09-startup-admission/result.md). Source quiescence now precedes terminal admission; cross-profile/connected validation remains pending.
 
 **Fresh maintenance integration — 2026-10-05:** [74 passing checks, 60 verified profile reports and unchanged 30s contracts](../iterations/iteration-002-cleanup/evidence/10-integration/result.md). Added owner integration tasks are complete; SPEC-001 connected/reconciliation tasks and retention/final closure remain separate.
+
+**T11.7 attempt — 2026-10-05:** [Connected attempt and blockers](../iterations/iteration-002-cleanup/evidence/11-connected-attempt/result.md). Pi transfer interrupted; nRF startup reached ready but debugger action attempts timed out and left a breakpoint fault. Recovery flash and resumed remote deployment require explicit device authorization after automatic approval rejection. T11.7 and dependent T11.8 remain blocked; no new exception or pass.

@@ -1,0 +1,12 @@
+SEGGER J-Link Commander V9.66 (Compiled Aug  5 2026 12:20:09)
+DLL version V9.66, compiled Aug  5 2026 12:19:06
+
+
+J-Link Command File read successfully.
+Processing script file...
+J-Link>ShowEmuList
+J-Link[0]: Connection: USB, Serial number: 683833660, ProductName: J-Link OB-SAM3U128-V2-NordicSem, Nickname: <not set>
+J-Link>exit
+
+Script processing completed.
+

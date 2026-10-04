@@ -1,0 +1,4 @@
+armv6l
+-rwxr-xr-x 1 giftui giftui 10371236 Oct  3 17:37 giftui/bin/SignalAnalyzerRaspberryPiARMv6
+-rwxr-xr-x 1 giftui giftui 10146404 Sep 28 09:24 giftui/bin/SignalAnalyzerRaspberryPiARMv6-profile
+-rw------- 1 giftui giftui  5767168 Oct  5 01:50 giftui/bin/SignalAnalyzerRaspberryPiARMv6.incoming

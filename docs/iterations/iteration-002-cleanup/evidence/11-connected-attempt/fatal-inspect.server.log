@@ -1,0 +1,41 @@
+SEGGER J-Link GDB Server V9.66 Command Line Version
+
+JLinkARM.dll V9.66 (DLL compiled Aug  5 2026 12:19:06)
+
+Command line: -device NRF52840_XXAA -if SWD -speed 4000 -select USB=683833660 -port 2331 -localhostonly 1 -nogui -nohalt -noir -noreset
+-----GDB Server start settings-----
+GDBInit file:                  none
+GDB Server Listening port:     2331
+SWO raw output listening port: 2332
+Terminal I/O port:             2333
+Accept remote connection:      localhost only
+Generate logfile:              off
+Verify download:               off
+Init regs on start:            off
+Silent mode:                   off
+Single run mode:               off
+Target connection timeout:     0 ms
+------J-Link related settings------
+J-Link Host interface:         USB
+J-Link script:                 none
+J-Link settings file:          none
+------Target related settings------
+Target device:                 NRF52840_XXAA
+Target device parameters:      none
+Target interface:              SWD
+Target interface speed:        4000kHz
+Target endian:                 little
+
+Connecting to J-Link...
+J-Link is connected.
+Firmware: J-Link OB-SAM3U128-V2-NordicSemi compiled Jul  8 2025 10:14:41
+Hardware: V1.00
+S/N: 683833660
+Feature(s): RDI, FlashBP, FlashDL, JFlash, GDB
+Checking target voltage...
+Target voltage: 3.30 V
+ERROR: Failed to listen at socket (Err = -1)
+ERROR: Failed to open listener port 2331
+Restoring target state and closing J-Link connection...
+Shutting down...
+Failed to open listener port 2331

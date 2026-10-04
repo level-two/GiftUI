@@ -1,0 +1,52 @@
+[
+  {
+    "source": "/Users/eugene/work/GiftUI/.build/nrf52840/iteration-002-maintenance-connected/fatal-inspect.gdb",
+    "copy": "fatal-inspect.gdb",
+    "sha256": "3f6581e54e7359420b3371197255cd15961c7f9b9a73527c7f305bd7170a2a0b"
+  },
+  {
+    "source": "/Users/eugene/work/GiftUI/.build/nrf52840/iteration-002-maintenance-connected/fatal-inspect.log",
+    "copy": "fatal-inspect.log",
+    "sha256": "fdda8a0ac458465e76a0a0c8b92c6290a6c771c3c0a1b5595db837db9659ddc7"
+  },
+  {
+    "source": "/Users/eugene/work/GiftUI/.build/nrf52840/iteration-002-maintenance-connected/fatal-inspect.server.log",
+    "copy": "fatal-inspect.server.log",
+    "sha256": "94f75895a04ca09f3cc2c1e64a97fe83068998d5c7889d76459f4995b9d267e0"
+  },
+  {
+    "source": "/Users/eugene/work/GiftUI/.build/nrf52840/iteration-002-connected/maintenance-recovery-01/monitor.log",
+    "copy": "monitor.log",
+    "sha256": "82ae41dbbf7d8e8c12d3cb0541f537e78162c264b529da4c9c138583d9075c68"
+  },
+  {
+    "source": "/Users/eugene/work/GiftUI/.build/nrf52840/iteration-002-connected/maintenance-recovery-01/identity.json",
+    "copy": "identity.json",
+    "sha256": "0d9f9e64a81cefe5266b342e3cf2221089cba94d44b3a5fdf8c23874c1134d39"
+  },
+  {
+    "source": "/Users/eugene/work/GiftUI/.build/nrf52840/iteration-002-connected/maintenance-recovery-01/monitor.jlink",
+    "copy": "monitor.jlink",
+    "sha256": "04a037f454cfb0be0a81103a091f6db9bb27096dce2f548fa30601eaa1f571b5"
+  },
+  {
+    "source": "/Users/eugene/work/GiftUI/.build/raspberry-pi/iteration-002-connection-retry.log",
+    "copy": "iteration-002-connection-retry.log",
+    "sha256": "a3c14cb74c896e540df44ec24f9a1ccc7d28dbc5ba12c1da6ce1a4077f09485d"
+  },
+  {
+    "source": "/private/tmp/i2-pi-identity.log",
+    "copy": "i2-pi-identity.log",
+    "sha256": "bdba9872a37bd89974f93ffd26e6fbd1f43392afb01aa58fb47727fbbc6d7911"
+  },
+  {
+    "source": "/private/tmp/i2-jlink-list.log",
+    "copy": "i2-jlink-list.log",
+    "sha256": "351de4a97a79b90a6b7592657d73fbc15d44993733df024b2b9c502cc1a6e0a0"
+  },
+  {
+    "source": "/private/tmp/i2-nrf-preflight.log",
+    "copy": "i2-nrf-preflight.log",
+    "sha256": "3e390d37c660f2b88b9208fb6b33fe143fe62a494077e20db99b5043dec79b58"
+  }
+]

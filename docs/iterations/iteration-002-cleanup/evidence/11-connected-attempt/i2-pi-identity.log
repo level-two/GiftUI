@@ -1,0 +1,6 @@
+armv6l
+giftui-pi
+901 bash -c uname -m; hostname; pgrep -af SignalAnalyzer || true; ls -l /dev/fb1 /dev/gpiochip0; sha256sum giftui/bin/SignalAnalyzerRaspberryPiARMv6
+ls: cannot access '/dev/fb1': No such file or directorycrw-rw---- 1 root gpio 254, 0 Oct  4 22:30 /dev/gpiochip0
+
+acf57db5625eb1d2802210aaa6e30128749277d81ad26a3f313b79f8448d8d7e  giftui/bin/SignalAnalyzerRaspberryPiARMv6
