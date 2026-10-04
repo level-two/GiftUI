@@ -1,0 +1,96 @@
+swiftpm-command: swift test --package-path /Users/eugene/work/GiftUI --scratch-path /Users/eugene/work/GiftUI/.build/iteration-002-focused -Xswiftc -DGIFTUI_DYNAMIC_PROFILE --filter SignalAcquisitionRepositoryLifecycleTests\|InteractionCandidateAppendTests\|nRFRepository
+Test Suite 'Selected tests' started at 2026-10-04 23:46:14.023.
+Test Suite 'GiftUIPackageTests.xctest' started at 2026-10-04 23:46:14.024.
+Test Suite 'InteractionCandidateAppendTests' started at 2026-10-04 23:46:14.024.
+Test Case '-[GiftUIInteractionTests.InteractionCandidateAppendTests testAppendUsesExactClipAndRetainsEmptyIntersectionWithoutHit]' started.
+Test Case '-[GiftUIInteractionTests.InteractionCandidateAppendTests testAppendUsesExactClipAndRetainsEmptyIntersectionWithoutHit]' passed (0.002 seconds).
+Test Case '-[GiftUIInteractionTests.InteractionCandidateAppendTests testDownCapturesTopmostEnabledAndDisabledTopmostBlocksRetargeting]' started.
+Test Case '-[GiftUIInteractionTests.InteractionCandidateAppendTests testDownCapturesTopmostEnabledAndDisabledTopmostBlocksRetargeting]' passed (0.000 seconds).
+Test Case '-[GiftUIInteractionTests.InteractionCandidateAppendTests testDuplicatePaintOrderAndFirstExcessFailDeterministically]' started.
+Test Case '-[GiftUIInteractionTests.InteractionCandidateAppendTests testDuplicatePaintOrderAndFirstExcessFailDeterministically]' passed (0.000 seconds).
+Test Case '-[GiftUIInteractionTests.InteractionCandidateAppendTests testEachUndersizedStoreFailsWithoutReplacingCommittedState]' started.
+Test Case '-[GiftUIInteractionTests.InteractionCandidateAppendTests testEachUndersizedStoreFailsWithoutReplacingCommittedState]' passed (0.000 seconds).
+Test Case '-[GiftUIInteractionTests.InteractionCandidateAppendTests testExecutionAdapterPermanentlyClearsAnOutsideMove]' started.
+Test Case '-[GiftUIInteractionTests.InteractionCandidateAppendTests testExecutionAdapterPermanentlyClearsAnOutsideMove]' passed (0.000 seconds).
+Test Case '-[GiftUIInteractionTests.InteractionCandidateAppendTests testExecutionAdapterUsesTheSingleCaptureOwnerAndAlwaysClearsUp]' started.
+Test Case '-[GiftUIInteractionTests.InteractionCandidateAppendTests testExecutionAdapterUsesTheSingleCaptureOwnerAndAlwaysClearsUp]' passed (0.000 seconds).
+Test Case '-[GiftUIInteractionTests.InteractionCandidateAppendTests testFailedCandidateCanBeDiscardedExactlyOnceAndReused]' started.
+Test Case '-[GiftUIInteractionTests.InteractionCandidateAppendTests testFailedCandidateCanBeDiscardedExactlyOnceAndReused]' passed (0.000 seconds).
+Test Case '-[GiftUIInteractionTests.InteractionCandidateAppendTests testFirstCandidateErrorWinsUntilDiscard]' started.
+Test Case '-[GiftUIInteractionTests.InteractionCandidateAppendTests testFirstCandidateErrorWinsUntilDiscard]' passed (0.000 seconds).
+Test Case '-[GiftUIInteractionTests.InteractionCandidateAppendTests testGenerationAssignmentAndFinishAreExactlyOnceAndPhaseBound]' started.
+Test Case '-[GiftUIInteractionTests.InteractionCandidateAppendTests testGenerationAssignmentAndFinishAreExactlyOnceAndPhaseBound]' passed (0.000 seconds).
+Test Case '-[GiftUIInteractionTests.InteractionCandidateAppendTests testMoveContinuesOnlyTheExactCurrentCaptureInsideItsRegion]' started.
+Test Case '-[GiftUIInteractionTests.InteractionCandidateAppendTests testMoveContinuesOnlyTheExactCurrentCaptureInsideItsRegion]' passed (0.000 seconds).
+Test Case '-[GiftUIInteractionTests.InteractionCandidateAppendTests testOnlyAnExactlyEqualCommittedRecordPreservesGeneration]' started.
+Test Case '-[GiftUIInteractionTests.InteractionCandidateAppendTests testOnlyAnExactlyEqualCommittedRecordPreservesGeneration]' passed (0.000 seconds).
+Test Case '-[GiftUIInteractionTests.InteractionCandidateAppendTests testResolutionCommitsAtomicallyOrDiscardsAndPreservesCommittedState]' started.
+Test Case '-[GiftUIInteractionTests.InteractionCandidateAppendTests testResolutionCommitsAtomicallyOrDiscardsAndPreservesCommittedState]' passed (0.000 seconds).
+Test Case '-[GiftUIInteractionTests.InteractionCandidateAppendTests testStagedCapacityFailurePreservesGenerationErrorPrecedence]' started.
+Test Case '-[GiftUIInteractionTests.InteractionCandidateAppendTests testStagedCapacityFailurePreservesGenerationErrorPrecedence]' passed (0.000 seconds).
+Test Case '-[GiftUIInteractionTests.InteractionCandidateAppendTests testUpAdmitsOnlyTheExactCurrentEnabledCaptureInsideItsRegion]' started.
+Test Case '-[GiftUIInteractionTests.InteractionCandidateAppendTests testUpAdmitsOnlyTheExactCurrentEnabledCaptureInsideItsRegion]' passed (0.000 seconds).
+Test Suite 'InteractionCandidateAppendTests' passed at 2026-10-04 23:46:14.029.
+	 Executed 14 tests, with 0 failures (0 unexpected) in 0.004 (0.005) seconds
+Test Suite 'GiftUIPackageTests.xctest' passed at 2026-10-04 23:46:14.029.
+	 Executed 14 tests, with 0 failures (0 unexpected) in 0.004 (0.005) seconds
+Test Suite 'Selected tests' passed at 2026-10-04 23:46:14.029.
+	 Executed 14 tests, with 0 failures (0 unexpected) in 0.004 (0.006) seconds
+◇ Test run started.
+↳ Testing Library Version: 1902
+↳ Target Platform: arm64e-apple-macos14.0
+◇ Suite "Signal Analyzer repository lifecycle and failures" started.
+◇ Test nRFRepositoryRevisionExhaustionAdmitsStateAndReservedFailure() started.
+◇ Test nRFRepositoryProducerReplaysPortableInitialAndScheduledCapture() started.
+◇ Test nRFRepositoryRevisionFailureRetainsReservedSlotAfterActionQuota() started.
+◇ Test "state sink replacement, detachment, and action idempotence are exact" started.
+◇ Test "sink replacement and detachment are immediate and refusal does not roll back" started.
+◇ Test "revision exhaustion publishes once and permanently quiesces the graph" started.
+◇ Test "observation does not retain the dynamic sink" started.
+◇ Test "real startup callbacks preserve terminal revision failure" started.
+◇ Test "clear succeeds at max minus one then uses terminal procedure at max" started.
+◇ Test "real source normal startup, stop, restart and clear remain available" started.
+◇ Test "transition succeeds at max minus one then rejects before mutation at max" started.
+◇ Test "callback then throw preserves terminal diagnostic and single publication" started.
+◇ Test "clear at maximum revision uses the same terminal procedure" started.
+◇ Test "startup failure stops partial activation and carries published diagnostic" started.
+◇ Test "invalid and out-of-horizon input follow distinct failure paths" started.
+◇ Test case passing 1 argument initialRevision → 4294967294 to "real startup callbacks preserve terminal revision failure" started.
+◇ Test case passing 1 argument initialRevision → 4294967295 to "real startup callbacks preserve terminal revision failure" started.
+✔ Test "state sink replacement, detachment, and action idempotence are exact" passed after 0.001 seconds.
+✔ Test "observation does not retain the dynamic sink" passed after 0.001 seconds.
+✔ Test nRFRepositoryRevisionExhaustionAdmitsStateAndReservedFailure() passed after 0.001 seconds.
+✔ Test "transition succeeds at max minus one then rejects before mutation at max" passed after 0.001 seconds.
+✔ Test "real source normal startup, stop, restart and clear remain available" passed after 0.001 seconds.
+✔ Test "sink replacement and detachment are immediate and refusal does not roll back" passed after 0.001 seconds.
+✔ Test "invalid and out-of-horizon input follow distinct failure paths" passed after 0.001 seconds.
+✔ Test nRFRepositoryRevisionFailureRetainsReservedSlotAfterActionQuota() passed after 0.001 seconds.
+✔ Test "clear succeeds at max minus one then uses terminal procedure at max" passed after 0.001 seconds.
+✔ Test "clear at maximum revision uses the same terminal procedure" passed after 0.001 seconds.
+✔ Test "revision exhaustion publishes once and permanently quiesces the graph" passed after 0.002 seconds.
+✔ Test "startup failure stops partial activation and carries published diagnostic" passed after 0.001 seconds.
+✔ Test "callback then throw preserves terminal diagnostic and single publication" passed after 0.002 seconds.
+✔ Test "real startup callbacks preserve terminal revision failure" with 2 test cases passed after 0.002 seconds.
+✔ Suite "Signal Analyzer repository lifecycle and failures" passed after 0.002 seconds.
+✔ Test nRFRepositoryProducerReplaysPortableInitialAndScheduledCapture() passed after 0.602 seconds.
+✔ Test run with 15 tests in 1 suite passed after 0.602 seconds.
+[0/1] Planning build
+Building for debugging...
+[0/14] Write sources
+[3/14] Write swift-version--58304C5D6DBC2206.txt
+[5/17] Emitting module GiftUIInteraction
+[7/17] Compiling GiftUIInteraction InteractionState.swift
+[8/22] Write Objects.LinkFileList
+[12/24] Linking SignalAnalyzerNRF52840HostOracle
+[13/24] Linking SignalAnalyzerMacOSDynamic
+[13/24] Linking SignalAnalyzerMacOSStatic
+[15/24] Applying SignalAnalyzerNRF52840HostOracle
+[16/24] Applying SignalAnalyzerMacOSDynamic
+[16/24] Applying SignalAnalyzerMacOSStatic
+[18/24] Linking SignalAnalyzerRaspberryPiARMv6
+[19/24] Applying SignalAnalyzerRaspberryPiARMv6
+[21/24] Compiling GiftUIInteractionTests InteractionCandidateAppendTests.swift
+[22/24] Emitting module GiftUIInteractionTests
+[22/24] Write Objects.LinkFileList
+[23/24] Linking GiftUIPackageTests
+Build complete! (3.41s)

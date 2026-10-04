@@ -220,7 +220,8 @@ where
             }
             index += 1
         }
-        guard candidateRecords.count <= committedRecords.capacity,
+        guard candidateRecords.count <= candidateCommittedRecords.capacity,
+            candidateRecords.count <= committedRecords.capacity,
             candidateHitRegions.count <= committedHitRegions.capacity
         else {
             candidateError = .capacityExhausted

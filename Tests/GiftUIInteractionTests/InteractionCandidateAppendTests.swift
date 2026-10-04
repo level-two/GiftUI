@@ -5,6 +5,81 @@ import XCTest
 @testable import GiftUIInteraction
 
 final class InteractionCandidateAppendTests: XCTestCase {
+    func testEachUndersizedStoreFailsWithoutReplacingCommittedState() {
+        for store in 0 ..< 5 {
+            let capacities: [UInt16] = (0 ..< 5).map { $0 == store ? 1 : 2 }
+            var state = InteractionState(
+                candidateRecords: ArrayCandidateStorage(capacity: capacities[0]),
+                candidateHitRegions: ArrayHitStorage(capacity: capacities[1]),
+                candidateCommittedRecords: ArrayCommittedStorage(capacity: capacities[2]),
+                committedRecords: ArrayCommittedStorage(capacity: capacities[3]),
+                committedHitRegions: ArrayHitStorage(capacity: capacities[4])
+            )
+            let one = InteractionLimits(maximumActions: 1, maximumHitRegions: 1)!
+            let two = InteractionLimits(maximumActions: 2, maximumHitRegions: 2)!
+            XCTAssertNil(state.beginCandidate(limits: one))
+            XCTAssertEqual(append(&state, identity: 7, paintOrder: 0), .requiresGeneration)
+            XCTAssertNil(state.assignGeneration(ActionGeneration(rawValue: 9), to: 7))
+            XCTAssertNil(state.finishCandidate())
+            state.resolveCandidate(.commit(PresentationRevision(rawValue: 4)))
+            let committed = state.committedRecord(at: 0)
+            for _ in 0 ..< 2 {
+                // Exchange moves the previous retained store into staging.
+                // A shortage there must fail before publishing any candidate.
+                let begin = state.beginCandidate(limits: two)
+                if begin == nil {
+                    XCTAssertEqual(append(&state, identity: 8, paintOrder: 0), .requiresGeneration)
+                    XCTAssertEqual(append(&state, identity: 9, paintOrder: 1), .requiresGeneration)
+                    XCTAssertNil(state.assignGeneration(ActionGeneration(rawValue: 10), to: 8))
+                    XCTAssertNil(state.assignGeneration(ActionGeneration(rawValue: 11), to: 9))
+                    XCTAssertEqual(state.finishCandidate(), .capacityExhausted)
+                    state.resolveCandidate(.commit(PresentationRevision(rawValue: 5)))
+                    state.resolveCandidate(.discard)
+                } else {
+                    XCTAssertEqual(begin, .capacityExhausted)
+                }
+                XCTAssertEqual(state.committedRevision, PresentationRevision(rawValue: 4))
+                XCTAssertEqual(state.committedRecordCount, 1)
+                XCTAssertEqual(state.committedHitRegionCount, 1)
+                XCTAssertEqual(state.committedRecord(at: 0), committed)
+            }
+            XCTAssertNil(state.beginCandidate(limits: one))
+            XCTAssertEqual(append(&state, identity: 7, paintOrder: 0), .preserved)
+            XCTAssertNil(state.finishCandidate())
+            state.resolveCandidate(.commit(PresentationRevision(rawValue: 6)))
+            XCTAssertEqual(state.committedRevision, PresentationRevision(rawValue: 6))
+        }
+    }
+
+    func testStagedCapacityFailurePreservesGenerationErrorPrecedence() {
+        var state = InteractionState(
+            candidateRecords: ArrayCandidateStorage(capacity: 2),
+            candidateHitRegions: ArrayHitStorage(capacity: 2),
+            candidateCommittedRecords: ArrayCommittedStorage(capacity: 1),
+            committedRecords: ArrayCommittedStorage(capacity: 2),
+            committedHitRegions: ArrayHitStorage(capacity: 2)
+        )
+        XCTAssertNil(
+            state.beginCandidate(
+                limits: InteractionLimits(maximumActions: 2, maximumHitRegions: 2)!))
+        XCTAssertEqual(append(&state, identity: 1, paintOrder: 0), .requiresGeneration)
+        XCTAssertEqual(append(&state, identity: 2, paintOrder: 1), .requiresGeneration)
+        XCTAssertEqual(state.finishCandidate(), .invalidIdentity)
+        state.resolveCandidate(.discard)
+        XCTAssertNil(
+            state.beginCandidate(
+                limits: InteractionLimits(maximumActions: 2, maximumHitRegions: 2)!))
+        for identity: UInt16 in 1 ... 2 {
+            XCTAssertEqual(
+                append(&state, identity: identity, paintOrder: identity - 1), .requiresGeneration)
+            XCTAssertNil(
+                state.assignGeneration(ActionGeneration(rawValue: UInt32(identity)), to: identity))
+        }
+        XCTAssertEqual(state.finishCandidate(), .capacityExhausted)
+        XCTAssertEqual(state.committedRecordCount, 0)
+        XCTAssertEqual(state.committedHitRegionCount, 0)
+    }
+
     func testExecutionAdapterUsesTheSingleCaptureOwnerAndAlwaysClearsUp() {
         var state = makeState(capacity: 2)
         commitOverlappingRecords(&state, topEnabled: true)

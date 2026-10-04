@@ -1,0 +1,1 @@
+swift test --scratch-path .build/iteration-002-focused -Xswiftc -DGIFTUI_DYNAMIC_PROFILE --filter 'SignalAcquisitionRepositoryLifecycleTests|InteractionCandidateAppendTests|nRFRepository'
