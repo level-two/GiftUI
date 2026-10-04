@@ -96,6 +96,10 @@ and freshness observations, not evidence that runtime derivation is cheaper
 or viable. See [CBR-002](../iterations/iteration-002-review/findings.md) and
 [hashed results](../iterations/iteration-002-review/evidence/09-hierarchy-generator.json).
 
+The [fresh hardware-free gate](../iterations/iteration-002-review/11-fresh-hardware-free-validation.md)
+records the current assembled baseline at 275,600 flash bytes and 191,104 RAM
+bytes. This is not a candidate comparison or fresh physical stack/timing proof.
+
 ## Remaining Unknowns
 
 No replacement prototype, agreed allowed deltas/derivation budget or measured

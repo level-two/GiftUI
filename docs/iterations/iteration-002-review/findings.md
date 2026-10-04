@@ -15,6 +15,7 @@ No remediation is approved or implemented by this register.
 | CBR-005 | Performance hypothesis; investigation only | Packed identity lookups repeatedly scan scope records | Preserved under FW-032; outside cleanup remediation selection |
 | CBR-006 | Confirmed process/tooling inconsistency; low | Deferred-track source paths are documented as legal but rejected by authority graph validation | Recommended bounded validator alignment |
 | CBR-007 | Confirmed source-start lifecycle defect; medium | Synchronous terminal revision failure is overwritten by running state | Recommended correctness correction |
+| CBR-008 | Confirmed report-identity defect; low | Pi artifact report records default host Swift rather than its paired cross-build compiler | Recommended metadata correction |
 
 ## CBR-001 — Missing staged committed-action capacity preflight
 
@@ -176,6 +177,28 @@ No remediation is approved or implemented by this register.
   failure admission/quiescence; compare corresponding target realizations.
 - **Owner/disposition:** Data/source lifecycle owner; recommended correctness
   correction, not deferred as simplification.
+
+## CBR-008 — Pi compiler metadata describes the wrong compiler
+
+- **Evidence:** `scripts/contracts/run-spec-001.sh:80,167` captures default
+  `swiftc --version` before the profile build and writes it to the Pi report.
+  The fresh Pi report records Apple Swift 6.3.3 while its actual build log
+  confirms project-local Swift 6.3.2 and the paired ARMv6 SDK. The
+  [hashed comparison](evidence/11-pi-compiler-identity.json) identifies the
+  report, artifact and build log.
+- **Consequence/confidence:** High confidence in the emitted metadata mismatch;
+  it misattributes the cross-built artifact's compiler and weakens reproduction.
+  The driver also runs native checks, so both compiler identities are useful
+  when separately named.
+- **Counterevidence:** `scripts/raspberry-pi/build.sh:93-96` enforces Swift 6.3.2;
+  the cross-build/ABI gate passes. No wrong compiler use or artifact ABI defect
+  is demonstrated. The nRF report explicitly writes its pinned target compiler.
+- **Correction/routing:** Lightweight report-tooling maintenance. Record the
+  actual cross-build compiler and SDK; retain a separately named native-check
+  compiler where needed. Validate report fields against toolchain/build output
+  with differing default and paired compiler versions across all profiles.
+- **Owner/disposition:** Contract-driver evidence tooling; recommended bounded
+  correction discovered while inspecting fresh gate output.
 
 ## Deferred and Follow-up Work
 

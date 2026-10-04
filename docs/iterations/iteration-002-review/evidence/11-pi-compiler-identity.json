@@ -1,0 +1,25 @@
+{
+  "report": ".build/contract-reports/spec-001/20261004T142310Z-23558/raspberry-pi-armv6/metadata.txt",
+  "repository_revision": "b18da84a0622e2d24bfc1da8ce17fdf0c89faea7",
+  "reported_compiler": "Apple Swift version 6.3.3 (swiftlang-6.3.3.1.3 clang-2100.1.1.101) Target: arm64-apple-macosx26.0 ",
+  "actual_cross_build_toolchain_lines": [
+    "ok:    host Swift is 6.3.2",
+    "Host:   Apple Swift version 6.3.2 (swift-6.3.2-RELEASE)",
+    "Tools:  /Users/eugene/work/GiftUI/.toolchains/host/swift-6.3.2-RELEASE-osx",
+    "SDK:    /Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6"
+  ],
+  "artifact_identity": "acf57db5625eb1d2802210aaa6e30128749277d81ad26a3f313b79f8448d8d7e",
+  "reported_target": "armv6-unknown-linux-gnueabihf",
+  "source_locations": [
+    "scripts/contracts/run-spec-001.sh:80,167",
+    "scripts/raspberry-pi/build.sh:93-96"
+  ],
+  "hashes": {
+    ".build/contract-reports/spec-001/20261004T142310Z-23558/raspberry-pi-armv6/metadata.txt": "6b42a40bf05116a26b5e624f10bc12f31e3dfc235fab8aaac547b0a1290e3095",
+    ".build/contract-reports/spec-015/b18da84a0622e2d24bfc1da8ce17fdf0c89faea7-5845a50eeb7d2730/raspberry-pi-armv6/run.log": "fb64f5e11045d543b02357465bb1397a4bd5f001f77e19dedc2d0531b1be817a",
+    "scripts/contracts/run-spec-001.sh": "702425a1bc3eb9fb36481b47fc251459da747f4f670a4170c743701f40bf2749",
+    "scripts/raspberry-pi/build.sh": "fcbfc1b6537a6814922d51efaf8b6d902ceda9a6934441e1e3488f7bda7f7d2b",
+    "scripts/raspberry-pi/toolchain.env": "0cf3edcb612598971b042b35792398193dc24196d49af521a5d1d23570f0a51f"
+  },
+  "limitation": "Metadata mismatch only; build enforces the correct compiler/ARMv6 pair and ABI checks pass."
+}
