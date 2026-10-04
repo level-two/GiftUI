@@ -10,3 +10,5 @@ Spikes, conclude inconclusively, or recommend promotion through normal gates.
 
 Use `exp-NNN-short-slug.md` and the next unused `EXP-NNN` ID. Link sources and
 Spikes bidirectionally. Findings are evidence, not accepted decisions.
+
+- [EXP-001: nRF Hierarchy Derivation and Stable Role Bindings](exp-001-nrf-hierarchy-derivation.md)

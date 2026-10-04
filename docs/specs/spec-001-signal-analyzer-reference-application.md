@@ -6,7 +6,7 @@ status: implemented
 authors:
   - Yauheni Lychkouski
 created: 2026-08-14
-updated: 2026-10-03
+updated: 2026-10-04
 proposal:
   - PROPOSAL-002
 related_rfcs:
@@ -55,7 +55,8 @@ related_future_work:
   - FW-028
   - FW-032
   - FW-033
-related_explorations: []
+related_explorations:
+  - EXP-001
 related_spikes: []
 supersedes: []
 superseded_by: []
@@ -2060,6 +2061,11 @@ existing 480 x 320 implementation and its evidence cannot discharge the
 320 x 240 landscape connected acceptance gate.
 
 ## Deferred and Follow-up Work
+
+[EXP-001](../explorations/exp-001-nrf-hierarchy-derivation.md) preserves the
+post-MVP hierarchy derivation/stable-role investigation, evidence plan and
+budget questions from the cleanup audit. It changes no current requirement
+and does not authorize replacement of the packed nRF implementation.
 
 The Pi investigation preserves partial presentation in
 [FW-024](../future-work/fw-024-pi-partial-frame-presentation.md) and cross-frame
