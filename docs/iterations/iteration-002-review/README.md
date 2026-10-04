@@ -32,6 +32,7 @@ draft; research does not select or authorize implementation.
 | 16 — Hierarchy Spike | [Direct-module failure and measured role-binding alternative](16-hierarchy-feasibility-experiment.md) | Recorded; retain packed hierarchy; smaller cleanup candidate |
 | 17 — Follow-up reconciliation | [Updated candidate selection and readiness](17-followup-reconciliation.md) | Research round concluded; draft scope revision 2 ready for selection |
 | 18 — Declaration traversal | [Bounded actual-body snapshot prerequisite](18-bounded-declaration-traversal.md) | 42 cases/84 refusals pass; additive +34,184 flash bytes; full replacement remains unsupported |
+| 19 — Clean generation | [Complete clean table emission and parity](19-clean-topology-generation.md) | Two byte-identical generations; 12 refusals; 42 semantic comparisons; zero linked size delta |
 
 [Findings register](findings.md) records confirmed observations separately from
 hypotheses and preferences. A step's completion does not imply every module or

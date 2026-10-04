@@ -1,0 +1,198 @@
+{
+  "revision": "bd3d9121107a6afa7acff11c2502f69784eca3e4",
+  "inputs": {
+    "Tests/ContractFixtures/SPEC001/nrf-touch-ui-projection.json": "20b1ed30222dd9a0cfd23d3cb198a3f3ba7e0378512ff28921144e9252ae2816",
+    "Tests/ContractFixtures/SPEC001/nrf-touch-ui-diagnostic-projection.json": "f2ca9c26210d14872b10dbc5b36401e55a377ad67f7affa2d8946ad9aa61b66b",
+    "experiments/spike-011-clean-topology-generation/policy.json": "758da72136ba08a2a5bea1296020421a8580f6388c2f4115614e81b4213cb1db",
+    "Sources/SignalAnalyzerPresentation/SignalAnalyzerView.swift": "c21ec7f17548c511a61e36e13000787b07a02746ad1720f70736d05dceb93b2d",
+    "Sources/SignalAnalyzerPresentation/SignalAnalyzerLayoutConstraints.swift": "22eed0e3ed059faec49a7b32e02527b620996f55803f02721fc17e9b22b533fd",
+    "Sources/SignalAnalyzerPresentation/SignalAnalyzerWaveformGeometry.swift": "288e7f302fe604d9f8a504cd1eeae9f631e5ef2e5b12acf7f883d4e736a2b992",
+    "Sources/SignalAnalyzerPresentation/SignalAnalyzerPresentationValues.swift": "aa678d815356fb3a73b496f44a2494a29b3f8d0e8a2e68dc973946657a65ee8e",
+    "experiments/spike-011-clean-topology-generation/generate.py": "a39c4ce9bb826b305738fe4dee54dbc3b4051c234ac65d9dd7b40c080bb99537",
+    "experiments/spike-011-clean-topology-generation/run.py": "cd3e90c408098ec5fa1b382031e450218ca0a11019dae3beb3234288a23caebf",
+    "experiments/spike-011-clean-topology-generation/templates/PackedRecords.swift.in": "3d697cb4a222ef431c665b356f7948f69dcaebd35cb96bb07e07b014b4782066",
+    "experiments/spike-011-clean-topology-generation/templates/Topology.swift.in": "d0a264583909448ad3351e362fe6c63abb6cf905f577ac33a98729f2d2da6dfb",
+    "firmware/nrf52840/applications/signal-analyzer-static/CMakeLists.txt": "9accb5b9936c4351b1b394a078167c8bd123d5a91df65b4310776fd36d39c7c4",
+    "Sources/SignalAnalyzerTargetHost/Generated/StaticSignalAnalyzerNRFTopologyWriter.generated.swift": "02c0ee5b21820f9c5c62e20ae2e867dbf8929ee750f0454271fe7409b75643d0",
+    "Sources/SignalAnalyzerTargetHost/Generated/StaticSignalAnalyzerNRFPackedSemanticRecords.generated.swift": "c8981c6b36c6622c9f843bacf9fa46e3f95e2ea6be101e113e546fca06139b78",
+    "experiments/spike-009-nrf-hierarchy-roles/Probe.swift": "154107937d192557ffb4c1cdae23177e28630a5364855869deed84972b6b96da"
+  },
+  "clean_generations": [
+    {
+      "StaticSignalAnalyzerNRFTopologyWriter.generated.swift": "02c0ee5b21820f9c5c62e20ae2e867dbf8929ee750f0454271fe7409b75643d0",
+      "StaticSignalAnalyzerNRFPackedSemanticRecords.generated.swift": "c8981c6b36c6622c9f843bacf9fa46e3f95e2ea6be101e113e546fca06139b78"
+    },
+    {
+      "StaticSignalAnalyzerNRFTopologyWriter.generated.swift": "02c0ee5b21820f9c5c62e20ae2e867dbf8929ee750f0454271fe7409b75643d0",
+      "StaticSignalAnalyzerNRFPackedSemanticRecords.generated.swift": "c8981c6b36c6622c9f843bacf9fa46e3f95e2ea6be101e113e546fca06139b78"
+    }
+  ],
+  "rejected_inputs": [
+    {
+      "mutation": "duplicate-identity",
+      "reason": "unique nonzero identity"
+    },
+    {
+      "mutation": "zero-identity",
+      "reason": "unique nonzero identity"
+    },
+    {
+      "mutation": "noncontiguous-ordinal",
+      "reason": "contiguous ordinals"
+    },
+    {
+      "mutation": "out-of-range-child",
+      "reason": "relation range"
+    },
+    {
+      "mutation": "child-cycle",
+      "reason": "parent/child agreement"
+    },
+    {
+      "mutation": "parent-child-disagreement",
+      "reason": "parent/child agreement"
+    },
+    {
+      "mutation": "unsupported-modifier",
+      "reason": "supported modifier"
+    },
+    {
+      "mutation": "variant-shape-disagreement",
+      "reason": "variant topology agreement"
+    },
+    {
+      "mutation": "invariant-payload-disagreement",
+      "reason": "invariant variant payloads"
+    },
+    {
+      "mutation": "scope-capacity",
+      "reason": "scope capacity"
+    },
+    {
+      "mutation": "stale-registered-declaration",
+      "reason": "stale registered declaration source"
+    },
+    {
+      "mutation": "nonempty-output",
+      "reason": "clean output directory required"
+    }
+  ],
+  "generated_sources_equal_production": {
+    "StaticSignalAnalyzerNRFTopologyWriter.generated.swift": true,
+    "StaticSignalAnalyzerNRFPackedSemanticRecords.generated.swift": true
+  },
+  "native_owner_objects": {
+    ".build/contract-generated/spec-001/nrf-native-owners/GiftUI.o": "5539773cc47b33763f09a6d6f7f4d185a43871286f0f1c4f8b8511809fb8d101",
+    ".build/contract-generated/spec-001/nrf-native-owners/GiftUICapabilities.o": "924cfcff2d3f0734b853bd22a5a297ac6bcf82848011bf11a9c933e80e8d0e13",
+    ".build/contract-generated/spec-001/nrf-native-owners/GiftUIFailureCore.o": "f72b5b8cff95d6e47a061392979be26d633a1fbd4e9bbb98ad6521d7c26a0e41",
+    ".build/contract-generated/spec-001/nrf-native-owners/SignalAnalyzerDomain.o": "f3bd44df8d4a60b5a673b5eea5fba65f6c782e5839bdb856cba3c57cffd24335",
+    ".build/contract-generated/spec-001/nrf-native-owners/GiftUISemanticCore.o": "b96b18fb9ab0182fd3b73e194bccfc198a27b0a0291b67c1c459bd68fd9854b7",
+    ".build/contract-generated/spec-001/nrf-native-owners/GiftUISurfaceCore.o": "318e5652c3910f2e4726145fca9db168df8430d57c4da7f9aed3d50ac0f57be3",
+    ".build/contract-generated/spec-001/nrf-native-owners/GiftUITextResources.o": "052d2af9b51b91597939cb47eca0a84ddc75e27ec08c97b712ab635760425d98",
+    ".build/contract-generated/spec-001/nrf-native-owners/SignalAnalyzerData.o": "187138c578a12930f8c7246c9f8b42c84a7119af7560c0c1bed15ca48101f9b5",
+    ".build/contract-generated/spec-001/nrf-native-owners/SignalAnalyzerPresentation.o": "a323cec904b2ff83ca69940e8caf308fd112ae8c96fb8f5258bfbad7095ce8e3",
+    ".build/contract-generated/spec-001/nrf-native-owners/GiftUIDisplayCore.o": "188af73ff52bacbfbdbc8e76d62e3cbd5635e4c3700df0e9e1e25af5aa95e3ce",
+    ".build/contract-generated/spec-001/nrf-native-owners/GiftUILayout.o": "0343913fa07f7c91eb56c842a0ef761e0e992efe346ec75d6f6d6577d7b9fe45",
+    ".build/contract-generated/spec-001/nrf-native-owners/GiftUIReferenceTextResources.o": "eb9c2b6c12f866a8abebc22b477c8fecb72ad9fbd017dcaed3cfe3b1acc3c79b",
+    ".build/contract-generated/spec-001/nrf-native-owners/GiftUIRenderCore.o": "6d74a64e508f1c801a11eb2450f50c9ef0bc5cd37390555174ec7833937e2d47",
+    ".build/contract-generated/spec-001/nrf-native-owners/GiftUIExecution.o": "e45825c3f3d150e84bba518d2397069b9ac52830a1488034ad3088f07f5118d9",
+    ".build/contract-generated/spec-001/nrf-native-owners/GiftUIRasterCore.o": "f344becf820fa23dc7fb10ef517fe59c97ba1ce6ac34da59a814268c8d6b3db8",
+    ".build/contract-generated/spec-001/nrf-native-owners/GiftUIRenderLowering.o": "4292463ab4a40f47711862fafcdb386c193a4e42531f0f26c6814e90f1652184",
+    ".build/contract-generated/spec-001/nrf-native-owners/GiftUIBackendIntegration.o": "bbeff278aaf09f279cb23f6d25798cc02bff1cbc29ee31c089f274af0b25853a",
+    ".build/contract-generated/spec-001/nrf-native-owners/GiftUIDrawing.o": "946a13a44a1d81a88dae59a6d3b679e9f98ce0f5359226aff7fb1be9aa66a5f8",
+    ".build/contract-generated/spec-001/nrf-native-owners/GiftUIInteraction.o": "d00bd797b96f5a29724797688537f1f7c3949a77c3573baf4888df53312b8fcb",
+    ".build/contract-generated/spec-001/nrf-native-owners/GiftUIObservableState.o": "25c78018d0a7af0e1fd6e65e352c11ee76c996e5449ab8136fb311fbe175970a",
+    ".build/contract-generated/spec-001/nrf-native-owners/GiftUIHostConfiguration.o": "43b19896f9daaa3717086847f6bd3797ad05ea8ded2b8267b8b400ac70cc30b1",
+    ".build/contract-generated/spec-001/nrf-native-owners/GiftUIRuntimeCore.o": "1f525d6e8e6c9aa6cd525bad2013924d9448aa37bbe0b04d73d7d6ef9d43af1c",
+    ".build/contract-generated/spec-001/nrf-native-owners/GiftUIRuntimeStatic.o": "cdc5cb70ab036095a49fc233310282d4aa4b16cd6bd0cd67b931f40469ba1621"
+  },
+  "native": {
+    "baseline": {
+      "command": [
+        "swiftc",
+        "-I",
+        "/Users/eugene/work/GiftUI/.build/contract-generated/spec-001/nrf-native-owners/modules",
+        "-parse-as-library",
+        "-Osize",
+        "-package-name",
+        "GiftUI",
+        "-DGIFTUI_NRF_EMBEDDED",
+        "-DGIFTUI_REFERENCE_BITMAP_ONLY",
+        "/Users/eugene/work/GiftUI/.build/nrf52840/signal-analyzer-static/SignalAnalyzerStatic.swift",
+        "/Users/eugene/work/GiftUI/experiments/spike-009-nrf-hierarchy-roles/Probe.swift",
+        "/Users/eugene/work/GiftUI/.build/contract-generated/spec-001/nrf-native-owners/GiftUI.o",
+        "/Users/eugene/work/GiftUI/.build/contract-generated/spec-001/nrf-native-owners/GiftUICapabilities.o",
+        "/Users/eugene/work/GiftUI/.build/contract-generated/spec-001/nrf-native-owners/GiftUIFailureCore.o",
+        "/Users/eugene/work/GiftUI/.build/contract-generated/spec-001/nrf-native-owners/SignalAnalyzerDomain.o",
+        "/Users/eugene/work/GiftUI/.build/contract-generated/spec-001/nrf-native-owners/GiftUISemanticCore.o",
+        "/Users/eugene/work/GiftUI/.build/contract-generated/spec-001/nrf-native-owners/GiftUISurfaceCore.o",
+        "/Users/eugene/work/GiftUI/.build/contract-generated/spec-001/nrf-native-owners/GiftUITextResources.o",
+        "/Users/eugene/work/GiftUI/.build/contract-generated/spec-001/nrf-native-owners/SignalAnalyzerData.o",
+        "/Users/eugene/work/GiftUI/.build/contract-generated/spec-001/nrf-native-owners/SignalAnalyzerPresentation.o",
+        "/Users/eugene/work/GiftUI/.build/contract-generated/spec-001/nrf-native-owners/GiftUIDisplayCore.o",
+        "/Users/eugene/work/GiftUI/.build/contract-generated/spec-001/nrf-native-owners/GiftUILayout.o",
+        "/Users/eugene/work/GiftUI/.build/contract-generated/spec-001/nrf-native-owners/GiftUIReferenceTextResources.o",
+        "/Users/eugene/work/GiftUI/.build/contract-generated/spec-001/nrf-native-owners/GiftUIRenderCore.o",
+        "/Users/eugene/work/GiftUI/.build/contract-generated/spec-001/nrf-native-owners/GiftUIExecution.o",
+        "/Users/eugene/work/GiftUI/.build/contract-generated/spec-001/nrf-native-owners/GiftUIRasterCore.o",
+        "/Users/eugene/work/GiftUI/.build/contract-generated/spec-001/nrf-native-owners/GiftUIRenderLowering.o",
+        "/Users/eugene/work/GiftUI/.build/contract-generated/spec-001/nrf-native-owners/GiftUIBackendIntegration.o",
+        "/Users/eugene/work/GiftUI/.build/contract-generated/spec-001/nrf-native-owners/GiftUIDrawing.o",
+        "/Users/eugene/work/GiftUI/.build/contract-generated/spec-001/nrf-native-owners/GiftUIInteraction.o",
+        "/Users/eugene/work/GiftUI/.build/contract-generated/spec-001/nrf-native-owners/GiftUIObservableState.o",
+        "/Users/eugene/work/GiftUI/.build/contract-generated/spec-001/nrf-native-owners/GiftUIHostConfiguration.o",
+        "/Users/eugene/work/GiftUI/.build/contract-generated/spec-001/nrf-native-owners/GiftUIRuntimeCore.o",
+        "/Users/eugene/work/GiftUI/.build/contract-generated/spec-001/nrf-native-owners/GiftUIRuntimeStatic.o",
+        "-o",
+        "/Users/eugene/work/GiftUI/.build/nrf52840/spike-011-clean-topology-generation/baseline"
+      ],
+      "exit_code": 0,
+      "transcript_sha256": "38c2bf62917e58745b079c14bd338a724dc2272e877cad658b1a5e8437de775c",
+      "bytes": 306792
+    },
+    "candidate": {
+      "command": [
+        "swiftc",
+        "-I",
+        "/Users/eugene/work/GiftUI/.build/contract-generated/spec-001/nrf-native-owners/modules",
+        "-parse-as-library",
+        "-Osize",
+        "-package-name",
+        "GiftUI",
+        "-DGIFTUI_NRF_EMBEDDED",
+        "-DGIFTUI_REFERENCE_BITMAP_ONLY",
+        "/Users/eugene/work/GiftUI/.build/nrf52840/spike-011-clean-topology-generation/candidate.swift",
+        "/Users/eugene/work/GiftUI/experiments/spike-009-nrf-hierarchy-roles/Probe.swift",
+        "/Users/eugene/work/GiftUI/.build/contract-generated/spec-001/nrf-native-owners/GiftUI.o",
+        "/Users/eugene/work/GiftUI/.build/contract-generated/spec-001/nrf-native-owners/GiftUICapabilities.o",
+        "/Users/eugene/work/GiftUI/.build/contract-generated/spec-001/nrf-native-owners/GiftUIFailureCore.o",
+        "/Users/eugene/work/GiftUI/.build/contract-generated/spec-001/nrf-native-owners/SignalAnalyzerDomain.o",
+        "/Users/eugene/work/GiftUI/.build/contract-generated/spec-001/nrf-native-owners/GiftUISemanticCore.o",
+        "/Users/eugene/work/GiftUI/.build/contract-generated/spec-001/nrf-native-owners/GiftUISurfaceCore.o",
+        "/Users/eugene/work/GiftUI/.build/contract-generated/spec-001/nrf-native-owners/GiftUITextResources.o",
+        "/Users/eugene/work/GiftUI/.build/contract-generated/spec-001/nrf-native-owners/SignalAnalyzerData.o",
+        "/Users/eugene/work/GiftUI/.build/contract-generated/spec-001/nrf-native-owners/SignalAnalyzerPresentation.o",
+        "/Users/eugene/work/GiftUI/.build/contract-generated/spec-001/nrf-native-owners/GiftUIDisplayCore.o",
+        "/Users/eugene/work/GiftUI/.build/contract-generated/spec-001/nrf-native-owners/GiftUILayout.o",
+        "/Users/eugene/work/GiftUI/.build/contract-generated/spec-001/nrf-native-owners/GiftUIReferenceTextResources.o",
+        "/Users/eugene/work/GiftUI/.build/contract-generated/spec-001/nrf-native-owners/GiftUIRenderCore.o",
+        "/Users/eugene/work/GiftUI/.build/contract-generated/spec-001/nrf-native-owners/GiftUIExecution.o",
+        "/Users/eugene/work/GiftUI/.build/contract-generated/spec-001/nrf-native-owners/GiftUIRasterCore.o",
+        "/Users/eugene/work/GiftUI/.build/contract-generated/spec-001/nrf-native-owners/GiftUIRenderLowering.o",
+        "/Users/eugene/work/GiftUI/.build/contract-generated/spec-001/nrf-native-owners/GiftUIBackendIntegration.o",
+        "/Users/eugene/work/GiftUI/.build/contract-generated/spec-001/nrf-native-owners/GiftUIDrawing.o",
+        "/Users/eugene/work/GiftUI/.build/contract-generated/spec-001/nrf-native-owners/GiftUIInteraction.o",
+        "/Users/eugene/work/GiftUI/.build/contract-generated/spec-001/nrf-native-owners/GiftUIObservableState.o",
+        "/Users/eugene/work/GiftUI/.build/contract-generated/spec-001/nrf-native-owners/GiftUIHostConfiguration.o",
+        "/Users/eugene/work/GiftUI/.build/contract-generated/spec-001/nrf-native-owners/GiftUIRuntimeCore.o",
+        "/Users/eugene/work/GiftUI/.build/contract-generated/spec-001/nrf-native-owners/GiftUIRuntimeStatic.o",
+        "-o",
+        "/Users/eugene/work/GiftUI/.build/nrf52840/spike-011-clean-topology-generation/candidate"
+      ],
+      "exit_code": 0,
+      "transcript_sha256": "38c2bf62917e58745b079c14bd338a724dc2272e877cad658b1a5e8437de775c",
+      "bytes": 306792
+    }
+  },
+  "semantic_transcripts_identical": true
+}

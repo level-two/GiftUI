@@ -1,0 +1,106 @@
+{
+  "schema": 1,
+  "scope_capacity": 98,
+  "action_count": 3,
+  "live_modifier_identities": [
+    41923,
+    19054,
+    25273,
+    14814,
+    15076,
+    56240,
+    20717,
+    319,
+    9960,
+    48102,
+    49945,
+    15206,
+    1785,
+    8133,
+    11485
+  ],
+  "geometry_by_identity": {
+    "3095": [
+      "0",
+      "UInt32(layout.errorLineHeight)"
+    ],
+    "14948": [
+      "0",
+      "UInt32(layout.headerHeight)"
+    ],
+    "26356": [
+      "UInt32(layout.headerTextWidth)",
+      "0"
+    ],
+    "23147": [
+      "UInt32(layout.gridWidth)",
+      "UInt32(layout.gridHeight)"
+    ],
+    "12477": [
+      "UInt32(layout.traceWidth)",
+      "0"
+    ],
+    "52526": [
+      "UInt32(layout.buttonSize - 4)",
+      "UInt32(layout.buttonSize - 4)"
+    ],
+    "47894": [
+      "UInt32(layout.buttonSize - 4)",
+      "UInt32(layout.buttonSize - 4)"
+    ],
+    "37558": [
+      "UInt32(layout.buttonSize - 4)",
+      "UInt32(layout.buttonSize - 4)"
+    ],
+    "36048": [
+      "UInt32(layout.rulerLabelWidth)",
+      "0"
+    ],
+    "32090": [
+      "UInt32(layout.rulerLabelWidth)",
+      "0"
+    ],
+    "33496": [
+      "UInt32(layout.rulerLabelWidth)",
+      "0"
+    ],
+    "50245": [
+      "UInt32(layout.labelWidth)",
+      "0"
+    ],
+    "52629": [
+      "UInt32(layout.labelWidth)",
+      "0"
+    ],
+    "63478": [
+      "UInt32(layout.labelWidth)",
+      "0"
+    ],
+    "43441": [
+      "UInt32(layout.labelWidth)",
+      "0"
+    ],
+    "41584": [
+      "UInt32(layout.traceWidth)",
+      "UInt32(layout.traceHeight)"
+    ],
+    "65303": [
+      "UInt32(layout.traceWidth)",
+      "UInt32(layout.traceHeight)"
+    ],
+    "31094": [
+      "UInt32(layout.traceWidth)",
+      "UInt32(layout.traceHeight)"
+    ],
+    "9766": [
+      "UInt32(layout.traceWidth)",
+      "UInt32(layout.traceHeight)"
+    ]
+  },
+  "source_hashes": {
+    "Sources/SignalAnalyzerPresentation/SignalAnalyzerView.swift": "c21ec7f17548c511a61e36e13000787b07a02746ad1720f70736d05dceb93b2d",
+    "Sources/SignalAnalyzerPresentation/SignalAnalyzerLayoutConstraints.swift": "22eed0e3ed059faec49a7b32e02527b620996f55803f02721fc17e9b22b533fd",
+    "Sources/SignalAnalyzerPresentation/SignalAnalyzerWaveformGeometry.swift": "288e7f302fe604d9f8a504cd1eeae9f631e5ef2e5b12acf7f883d4e736a2b992",
+    "Sources/SignalAnalyzerPresentation/SignalAnalyzerPresentationValues.swift": "aa678d815356fb3a73b496f44a2494a29b3f8d0e8a2e68dc973946657a65ee8e"
+  }
+}

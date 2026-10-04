@@ -14,6 +14,7 @@ related_explorations: []
 related_spikes:
   - SPIKE-009
   - SPIKE-010
+  - SPIKE-011
 promoted_to: []
 supersedes: []
 superseded_by: []
@@ -122,14 +123,24 @@ lowering: 42 cases and 84 refusals pass, at an additive +34,184 flash bytes and
 unchanged RAM. It does not supply stable identity, observable attachment or a
 packed publication sink. [Step 18](../iterations/iteration-002-review/18-bounded-declaration-traversal.md)
 records the distinction. Clean offline generation and static stack inspection
-remain in this reopened round; connected timing/high-water are deferred by
+were selected for this reopened round; connected timing/high-water are deferred by
 the maintainer's explicit instruction.
 
-A complete runtime declaration replacement, complete clean offline
-generation, whole-stack bounds and target timing remain unproven. These are
+[SPIKE-011](../spikes/spike-011-clean-topology-generation.md) now cleanly emits
+both current topology-updater outputs from projections, versioned codec
+templates and explicit binding policy. Two empty-directory runs match both
+production files byte-for-byte; 12 invalid/stale input refusals and 42 complete
+semantic comparisons pass. Linked flash/RAM are unchanged. This removes the
+previous-output dependency in the prototype, while specialized policy/model
+writers remain. [Step 19](../iterations/iteration-002-review/19-clean-topology-generation.md)
+records the supported tooling candidate.
+
+A complete runtime declaration replacement, whole-stack bounds and target
+timing remain unproven. These are
 future candidate-specific research, not evidence that the current packed
 representation should be removed. The partial binding candidate does not
-remove the topology generator or its current source-template dependency.
+remove the topology generator. SPIKE-011 provides a separate clean-generation
+candidate with explicit codec templates rather than previous output inputs.
 
 ## Disposition
 
