@@ -6,10 +6,11 @@ status: active
 authors:
   - codex
 created: 2026-10-04
-updated: 2026-10-04
+updated: 2026-10-05
 source:
   - FW-030
   - FW-016
+  - docs/explorations/exp-002/future-directions-2026-10-05.txt
 related_future_work:
   - FW-030
   - FW-016
@@ -330,6 +331,122 @@ candidates, not evidence that every rendering backend should import a raster
 implementation. A combined distribution product may package multiple owners
 without merging their authority.
 
+### Sensitivity to possible future directions — 2026-10-05
+
+The maintainer supplied an [unapproved direction map](exp-002/future-directions-2026-10-05.txt)
+and asked how it changes the candidate approaches and their pros/cons. The
+snapshot preserves the supplied text as discussion provenance, not authority.
+These scenarios do not add a simulator, IR, compiler, migration layer or
+language-neutral runtime to Iteration 3. They test how costly each direction
+would be to pursue after choosing an integration shape.
+
+The main adjustment is to evaluate three independent axes: typed assembly
+versus generated assembly; supported presets versus custom composition; and
+Swift-specific application bindings versus a future frontend-neutral boundary.
+A, B and C can be layers in one system rather than competing complete designs.
+
+| Possible direction | Effect on integration preferences | New cost or uncertainty |
+| --- | --- | --- |
+| Target simulation, fast preview, deterministic CI | A becomes more valuable for replacing clock, scheduling, display and hardware services; B should expose the same target facts when composing real or simulated adapters. | A native desktop runner does not prove target-binary behavior, exact CPU timing or hardware effects. |
+| Resource prediction, monitoring, attribution and optimization | A/B need inspectable capabilities, budgets, selected implementations and optional observation points; C gains value from reproducible artifacts and source-to-component provenance. | Estimates, actual ELF sizes and hardware measurements need separate evidence classes; instrumentation has its own cost. |
+| Many targets and adaptive/capability-aware UI | B becomes a composition of board, display, runtime and rendering facts rather than an opaque factory per hardware combination. | Preset combinatorics and richer capability/fallback semantics; the latter are new feature contracts. |
+| Additional frontends, migration and a possible non-Swift core | A remains useful for Swift binding but is insufficient as the only future contract; a frontend-neutral application artifact becomes a separate candidate D. | Identity, model/state lifetimes, actions, resource ownership, unsupported features and ABI/schema versioning are substantial design problems. |
+| Incremental adoption and reuse of existing drivers | A gains value as an embeddable service with narrow adapters and application-owned scheduling. | Foreign surfaces need explicit render/input ownership, composition order, synchronization and resource bounds. |
+| GPU or other rendering families | Endpoint contracts and rendering-family helpers become more useful than one mandatory software raster implementation. | Existing exact pixel contracts cannot automatically establish equivalence for every future engine/effect. |
+| Machine-operated tooling and closed-loop development | An inspectable composition report and replayable external test inputs become useful across A/B/C. | Report/version/provenance contracts; diagnostic observations cannot become runtime control or automatic hardware authorization. |
+
+**A — Typed assembly: stronger foundation, narrower claim.** Its replaceable
+environment and device seams fit simulation, embedding and driver reuse well.
+However, Swift generic types and factory calls alone are awkward as an input
+to a non-Swift frontend, analyzer or external tool. Consider pairing a concrete
+assembly with immutable descriptive facts and a machine-readable report.
+Avoid requiring tools to infer behavior through reflection or arbitrary
+initializers. Keep typed bindings as one language facade, not the assumed
+permanent representation of every future application.
+
+**B — Presets: stronger onboarding, greater risk of hiding facts.** Opaque
+`runOnBoardX` factories would hinder target-aware preview and comparison. A
+descriptive preset could expose geometry, capabilities, limits, implementation
+choices and provenance, while real and simulated compositions supply their
+own environment/device adapters. A simulated TFT viewport alone is not a
+simulation of the Static runtime. Deterministic scheduling and constrained
+stores must also be selected when claiming that fidelity. Known board/display
+facts stay separate from application workload and state bounds.
+
+**C — Generated assembly: higher strategic value, unchanged near-term proof
+burden.** It could eventually connect capability checking, resource analysis,
+static specialization and repeatable builds. It therefore deserves a stronger
+long-term position than merely reducing boilerplate. It should emit inspectable
+artifacts with input/toolchain identities and mappings back to declarations.
+Assembly generation, general application lowering, resource estimation and
+optimization remain distinct capabilities. Better prospects do not make their
+feasibility established or put a general generator into Iteration 3.
+
+**D — Frontend-neutral application artifact and integration contracts: new
+axis to explore.** A frontend could lower into a versioned semantic contract;
+analysis and target specialization could produce bounded runtime artifacts;
+language-specific hosts could bind concrete application services and backends.
+This could support Swift, importers and later non-Swift consumers without
+requiring each one to manufacture Swift `View` values or mirror Swift generics.
+Its attraction is frontend/tooling reuse. Its principal risk is building a
+second framework and compatibility system before an actual consumer proves
+what must cross the boundary.
+
+```text
+Hypothetical long-term flow, not an approved architecture:
+
+Swift declarations / imported UI / another frontend
+        -> semantic input contract with source provenance
+        -> capability and resource analysis / target specialization
+        -> concrete runtime artifact and typed service bindings
+        -> selected runtime and rendering endpoint
+        -> real or simulated environment/display adapters
+```
+
+A semantic contract would need state, binding, action, identity and lifetime
+meaning as well as layout intent. The existing normalized render stream is
+not enough to reconstruct these meanings. Conversely, an analysis/exchange
+format need not be the runtime's physical storage or a fully materialized
+universal graph. Preserve distinct semantic, resolved-layout and render
+ownership; static execution may use generated bounded records. Do not serialize
+or copy every frame merely to obtain language neutrality. A tool exchange
+schema, an in-process borrowed contract and a stable C ABI are three different
+commitments. Exact ABI stabilization or a core rewrite is not justified yet.
+
+### Revised recommendation under those scenarios
+
+Keep **A plus B as the first integration comparison**, but evaluate them for
+inspectability and substitutability as well as short application bootstrap.
+Make **C a credible later tooling layer** and **D an explicit future boundary
+question**, not requirements for first external consumption.
+
+Cheap design checks now could include explicit component facts, no hardcoded
+backend/profile dependency in portable UI, separable external service adapters,
+an application-owned service-loop option and identifiable configuration/failure
+reports. Optional measurement/reporting should be removable on Static and have
+its overhead accounted for. A preset should select implementations without
+preventing a custom adapter from using the same assembly contracts.
+
+Later evidence could test a virtual clock and recording display with the same
+chosen runtime/raster/resource limits, plus a host embedded in an existing
+application loop. These exercise useful seams without promising a digital twin
+or migration framework. Frontend-neutral input and cross-language ABI need
+their own bounded consumers and architectural review.
+
+The map also introduces explicit scope sensitivities: portable UI capability
+queries/degradation extend current contracts; mixed foreign/native UI could
+require new interaction/model/composition semantics; optimization may need new
+render realizations. Existing one-shot handoff, action/model provenance and
+zero-heap Static constraints remain authority until separately revised. Future
+GPU fidelity, timing models and source-level cost attribution are unresolved,
+not benefits that follow automatically from a package or schema.
+
+This comparison is captured in the active Exploration rather than promoting
+each direction into a feature or registering the whole map as an iteration.
+[FW-022](../future-work/fw-022-contract-accurate-embedded-target-simulator.md)
+and [FW-006](../future-work/fw-006-generated-target-configuration.md) remain
+contextual captures with their existing statuses and triggers.
+
 ## Evidence Plan
 
 The next study could use a small external counter/status application with one
@@ -418,6 +535,12 @@ remaining duplication and proves its application-lowering prerequisites.
 Static consumption is the deciding feasibility boundary, rather than something
 to retrofit after validating a desktop-only convenience API.
 
+The 2026-10-05 direction-map comparison above qualifies this preference:
+inspectable target/composition facts and replaceable environments make A/B
+more useful to possible future tooling. C has greater strategic upside if
+analysis/compiler directions are selected; D represents a separate future
+frontend-neutral contract. None changes Iteration 3's current draft scope.
+
 ## Remaining Unknowns
 
 - What exact typed application descriptor preserves original UI/model/action
@@ -464,6 +587,7 @@ change need their normal gates. Iteration scope approval remains separate.
 ## References
 
 - [ITERATION-003](../iterations/iteration-003-dev-ux-improvement.md)
+- [Unapproved direction map supplied 2026-10-05](exp-002/future-directions-2026-10-05.txt) — discussion provenance only
 - [ITERATION-001](../iterations/iteration-001-mvp.md)
 - [FW-030](../future-work/fw-030-application-integration-experience.md)
 - [FW-016](../future-work/fw-016-post-mvp-package-distribution-topology.md)
