@@ -9,6 +9,7 @@ created: 2026-08-13
 updated: 2026-08-29
 proposal: []
 related_rfcs:
+  - RFC-012
   - RFC-001
 related_adrs:
   - ADR-001

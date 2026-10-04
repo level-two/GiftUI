@@ -256,3 +256,5 @@ record this document step separately from future execution.
 **TOOL-02 execution — 2026-10-04:** [Result](evidence/03-source-paths/result.md); governance fixtures and repository validator passed.
 
 **TOOL-01 implementation — 2026-10-04:** [Isolation and fixture result](evidence/04-runner/result.md). Final real aggregate validation remains pending.
+
+**RET-01 preparation — 2026-10-05:** [RFC-012](../../rfcs/rfc-012-five-second-capture-retention-amendment.md) is in review; [review verdict](retention-review.md) is ready for human approval consideration. Explicit RFC approval remains pending; RET-02–04 are held.

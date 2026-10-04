@@ -10,6 +10,7 @@ updated: 2026-08-29
 proposal:
   - PROPOSAL-002
 related_rfcs:
+  - RFC-012
   - RFC-008
   - RFC-009
 related_adrs:
@@ -31,6 +32,13 @@ target_milestone: MVP
 ---
 
 # RFC-001: Signal Analyzer Application Architecture
+
+## Pending Retention Amendment
+
+[RFC-012](rfc-012-five-second-capture-retention-amendment.md) proposes a separately
+reviewed 5s/404 retention policy. It is in review and has no approval authority.
+ADR-003 and the current Specifications retain the 30s contract. This navigation
+link does not revise the approved reasoning below.
 
 ## Post-Approval Authority Update
 

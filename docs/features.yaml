@@ -35,6 +35,7 @@ features:
       - PROPOSAL-002
     rfcs:
       - RFC-001
+      - RFC-012
     adrs:
       - ADR-001
       - ADR-002
