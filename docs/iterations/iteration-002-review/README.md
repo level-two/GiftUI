@@ -42,6 +42,7 @@ draft; research does not select or authorize implementation.
 | 26 — nRF phases/failure | [Actual-owner copied workload](26-connected-nrf-phases-and-failure.md) | Layout/production dominate; Clear/diagnostic and one pixel refusal/fresh activation recorded; no optimization selected |
 | 27 — Pi phase profiler | [Verified preparation and resumption](27-pi-profiler-preparation.md) | ARMv6 build ready; connected measurement blocked by lost SSH connectivity |
 | 28 — Follow-up reconciliation | [Results, restoration and remaining blockers](28-host-followup-reconciliation.md) | nRF research completed/restored; Pi profiler ready but connectivity blocks measurement; draft scope revision5 |
+| 29 — Pi phase trace | [Resumed bounded measurement](29-pi-connected-phase-trace.md) | Connectivity restored; verbose phase/source/RSS trace recorded; quieter comparison pending |
 
 [Findings register](findings.md) records confirmed observations separately from
 hypotheses and preferences. A step's completion does not imply every module or

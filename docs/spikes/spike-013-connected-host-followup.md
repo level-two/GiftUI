@@ -40,8 +40,8 @@ remaining tasks. Copied application only, supported board/J-Link/compiler/ABI,
 nRF zero heaps and fixed trace storage; Pi preserves its Dynamic profile. No production optimization or contract change,
 no fabricated physical contact/pixel signoff. Stop on missing calibration,
 trace overflow, ABI/resource failure, CPU fault or uncontrolled device state.
-At most six complete nRF frames per case, bounded fault/restart runs and a 45s
-Pi observation. Restore
+At most six complete nRF frames per case, bounded fault/restart runs and at most two 45s
+Pi observations (verbose and accumulated counters). Restore
 original production firmware afterward.
 
 ## Method
@@ -75,9 +75,12 @@ Connected flashing uses the repository environment and explicit J-Link runner.
 
 ## Results
 
-nRF cases completed; Pi collection is blocked by lost SSH connectivity after a verified build. See
+nRF cases completed; Pi connectivity restored and the verbose phase trace
+completed. One accumulated-counter comparison remains. See
 [Step 26](../iterations/iteration-002-review/26-connected-nrf-phases-and-failure.md)
 for costs, Clear/diagnostic, injected refusal and fresh activation evidence.
+[Step29](../iterations/iteration-002-review/29-pi-connected-phase-trace.md) records
+the Pi trace and its observer-cost concern.
 
 ## Limitations
 
