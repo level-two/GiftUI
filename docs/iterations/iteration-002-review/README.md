@@ -18,6 +18,7 @@ draft; research does not select or authorize implementation.
 | 02 — Interfaces, types, and mappings | [Selected seams, reproduction, and simplification candidates](02-interfaces-and-mappings.md) | Targeted pass recorded; complete module review remains |
 | 03 — Requirements, flows, profiles, and tooling | [Traceability, selected flows, fresh guards, and tooling findings](03-requirements-flows-and-tooling.md) | Targeted pass recorded; full behavioral/profile review remains |
 | 04 — Reconciliation | [Recommendations and remaining bounded review tasks](04-reconciliation.md) | Initial findings reconciled; full audit and final selection remain open |
+| 05 — Portable/application review | [Owner boundaries and terminal startup reproduction](05-portable-and-application.md) | Recorded |
 
 [Findings register](findings.md) records confirmed observations separately from
 hypotheses and preferences. A step's completion does not imply every module or

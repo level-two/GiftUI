@@ -14,6 +14,7 @@ No remediation is approved or implemented by this register.
 | CBR-004 | Confirmed test-ledger isolation defect; medium | Same-selection test runs clear and write shared reports/caches | Recommended tooling correction; historical interference recorded |
 | CBR-005 | Performance hypothesis; investigation only | Packed identity lookups repeatedly scan scope records | Preserved under FW-032; outside cleanup remediation selection |
 | CBR-006 | Confirmed process/tooling inconsistency; low | Deferred-track source paths are documented as legal but rejected by authority graph validation | Recommended bounded validator alignment |
+| CBR-007 | Confirmed source-start lifecycle defect; medium | Synchronous terminal revision failure is overwritten by running state | Recommended correctness correction |
 
 ## CBR-001 — Missing staged committed-action capacity preflight
 
@@ -150,6 +151,31 @@ No remediation is approved or implemented by this register.
 - **Owner/disposition:** Governance tooling; recommended bounded correction.
   For this research, existing Spec source IDs and reciprocal body/References
   links preserve provenance; the transient rejected metadata entry was removed.
+
+## CBR-007 — Terminal callback during source startup is overwritten
+
+- **Evidence:** `Sources/SignalAnalyzerData/DefaultSignalAcquisitionRepository.swift:50,57,152`;
+  actual deterministic source's synchronous initial callbacks; [Step 05](05-portable-and-application.md)
+  and [unchanged-source reproduction](evidence/05-acquisition-start-probe.json).
+- **Contract/consequence:** SPEC-001 terminal revision procedure (679–692,
+  SA-AC-043) requires failed state, stopped delivery, no ordinary state callback
+  for that failure, and a fresh graph. At max/max-minus-one during startup, one
+  terminal callback is followed by ordinary running publication; the real
+  deterministic source remains active while later Start is unavailable.
+- **Confidence/counterevidence:** High confidence in reproduced Data behavior.
+  Existing tests exhaust revision after successful startup. Initial revision
+  zero does not trigger this case; full-host failure containment and equivalent
+  nRF startup behavior were not demonstrated by this host Data probe.
+- **Smallest correction/risk:** Treat source startup as callback-capable; preserve
+  any failure/terminal transition and stop a source activated during that call.
+  Do not blindly publish running on return. Cover startup throws after callbacks
+  and avoid duplicate terminal/state publication or producer activation.
+- **Routing/validation:** Maintenance within SPEC-001; Data/lifecycle tests with
+  the real deterministic source at max/max-minus-one and a callback-capable source
+  failing during Start; successful Start/Stop/restart, Clear, terminal replay,
+  failure admission/quiescence; compare corresponding target realizations.
+- **Owner/disposition:** Data/source lifecycle owner; recommended correctness
+  correction, not deferred as simplification.
 
 ## Deferred and Follow-up Work
 
