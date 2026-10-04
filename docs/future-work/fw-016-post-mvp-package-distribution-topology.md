@@ -6,7 +6,7 @@ status: captured
 authors:
   - Yauheni Lychkouski
 created: 2026-08-19
-updated: 2026-10-02
+updated: 2026-10-04
 source:
   - RFC-002
   - ADR-008
@@ -111,6 +111,13 @@ with FW-030: verify a separate small application can select components without
 copying reference-application owners, using repository-relative source lists,
 or granting access to all framework internals. ADR-008 still governs MVP
 distribution; this capture does not authorize a split or change its milestone.
+
+## Draft Iteration Context
+
+The maintainer included this concern in the working scope for
+[ITERATION-003: Dev UX Improvement](../iterations/iteration-003-dev-ux-improvement.md) on 2026-10-04.
+The scope remains open for codebase review; this link does not promote the item,
+change its disposition, or establish a delivery commitment.
 
 ## References
 

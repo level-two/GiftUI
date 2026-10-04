@@ -8,6 +8,8 @@
 schema_version: 1
 iterations:
   ITERATION-001: docs/iterations/iteration-001-mvp.md
+  ITERATION-002: docs/iterations/iteration-002-cleanup.md
+  ITERATION-003: docs/iterations/iteration-003-dev-ux-improvement.md
 features:
   giftui-mvp-baseline:
     title: GiftUI MVP Baseline

@@ -6,7 +6,7 @@ status: captured
 authors:
   - codex
 created: 2026-10-02
-updated: 2026-10-02
+updated: 2026-10-04
 source:
   - SPEC-015
 related_future_work:
@@ -89,6 +89,13 @@ Captured. The smallest useful next step is a bounded Exploration of a second
 consumer, recording setup steps, touched files, application glue, and build
 diagnostics. Public integration and architectural changes require their normal
 Proposal, RFC, ADR, and Specification gates before implementation.
+
+## Draft Iteration Context
+
+The maintainer included this concern in the working scope for
+[ITERATION-003: Dev UX Improvement](../iterations/iteration-003-dev-ux-improvement.md) on 2026-10-04.
+The scope remains open for codebase review; this link does not promote the item,
+change its disposition, or establish a delivery commitment.
 
 ## References
 

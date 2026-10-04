@@ -6,7 +6,7 @@ status: captured
 authors:
   - codex
 created: 2026-10-02
-updated: 2026-10-02
+updated: 2026-10-04
 source:
   - SPEC-013
 related_future_work: []
@@ -74,6 +74,13 @@ Captured as optional maintenance beyond current implementation commitments.
 Mechanical changes that preserve contracts may use the lightweight path;
 module ownership, profile semantics, public declaration, or resource changes
 require the appropriate lifecycle review.
+
+## Draft Iteration Context
+
+The maintainer included this concern in the working scope for
+[ITERATION-002: Cleanup](../iterations/iteration-002-cleanup.md) on 2026-10-04.
+The scope remains open for codebase review; this link does not promote the item,
+change its disposition, or establish a delivery commitment.
 
 ## References
 

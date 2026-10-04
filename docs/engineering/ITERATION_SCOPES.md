@@ -49,6 +49,17 @@ Required metadata is defined by the template. `created` is the date the
 numbered record was created, not an invented historical start date. Revision
 numbers begin at 1. `approved_revision` and `approval` are null until approval.
 
+### Audit before final scope selection
+
+For cleanup work, a draft scope may describe a bounded audit whose findings
+inform the final commitment. Read-only review may begin before scope approval;
+use the [Codebase Review Process](CODEBASE_REVIEW.md) to record coverage,
+evidence, and dispositions. Separate review outcomes from proposed fixes.
+Select remediation and its validation boundaries before approving the scope
+and deriving implementation tasks. Where feasibility remains uncertain, an
+iteration may commit to an investigation and disposition instead of promising
+a replacement. Neither audit findings nor scope approval bypass feature gates.
+
 ## Status and scope changes
 
 Allowed statuses are `draft`, `approved`, `active`, `closed`, and `abandoned`:
