@@ -12,7 +12,8 @@ source:
 related_future_work: []
 related_explorations:
   - EXP-001
-related_spikes: []
+related_spikes:
+  - SPIKE-012
 promoted_to: []
 supersedes: []
 superseded_by: []

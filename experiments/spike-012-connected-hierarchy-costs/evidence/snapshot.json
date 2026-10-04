@@ -1,0 +1,150 @@
+{
+  "revision": "709133cc75fb0dce45bd9e4147147b942acd91f7",
+  "started_utc": "2026-10-04T17:19:22.620966+00:00",
+  "mode": "snapshot",
+  "elf": ".build/nrf52840/spike-012-connected-snapshot/firmware/zephyr/zephyr.elf",
+  "elf_sha256": "1199cb46284cce9a6ac210d8f50f1e5efa4321337340c3f68dd1b019a019dac4",
+  "probe_serial": "683833660",
+  "command": [
+    "JLinkExe",
+    "-device",
+    "NRF52840_XXAA",
+    "-if",
+    "SWD",
+    "-speed",
+    "4000",
+    "-SelectEmuBySN",
+    "683833660",
+    "-autoconnect",
+    "1"
+  ],
+  "v7em": true,
+  "hard_float": true,
+  "zero_heaps": true,
+  "stack_range": [
+    537034496,
+    537062144
+  ],
+  "guard_bytes": 64,
+  "stack_configured_bytes": 27648,
+  "result_address": 536872656,
+  "result_bytes": 124,
+  "elapsed_seconds": 20.755029584048316,
+  "raw_words": [
+    1397764402,
+    2,
+    2,
+    32,
+    64000000,
+    32768,
+    6400037,
+    3255,
+    12807602,
+    12807566,
+    12807566,
+    12807566,
+    12807566,
+    12839819,
+    12839822,
+    12839822,
+    12839822,
+    12839822,
+    2944,
+    2944,
+    2944,
+    2944,
+    2944,
+    2944,
+    2944,
+    2944,
+    2944,
+    2944,
+    0,
+    0,
+    92
+  ],
+  "cpu_hz": 64000000,
+  "clock_hz": 32768,
+  "calibration": {
+    "cycles": 6400037,
+    "ticks": 3255,
+    "seconds_cpu": 0.100000578125,
+    "seconds_rtc": 0.099334716796875
+  },
+  "batch_cycles": [
+    [
+      12807602,
+      12807566,
+      12807566,
+      12807566,
+      12807566
+    ],
+    [
+      12839819,
+      12839822,
+      12839822,
+      12839822,
+      12839822
+    ]
+  ],
+  "batch_results": [
+    [
+      2944,
+      2944,
+      2944,
+      2944,
+      2944
+    ],
+    [
+      2944,
+      2944,
+      2944,
+      2944,
+      2944
+    ]
+  ],
+  "iterations": 32,
+  "per_call_microseconds": [
+    [
+      6253.7119140625,
+      6253.6943359375,
+      6253.6943359375,
+      6253.6943359375,
+      6253.6943359375
+    ],
+    [
+      6269.44287109375,
+      6269.4443359375,
+      6269.4443359375,
+      6269.4443359375,
+      6269.4443359375
+    ]
+  ],
+  "median_per_call_microseconds": [
+    6253.6943359375,
+    6269.4443359375
+  ],
+  "refusal_and_reuse": [
+    0,
+    0,
+    92
+  ],
+  "untouched_prefix_bytes": 9752,
+  "observed_sentinel_extent_bytes": 17896,
+  "cfsr_hfsr": [
+    0,
+    0
+  ],
+  "scope": "Packed includes one setup per32 stages; snapshot constructs each call. Interrupts included; no render/input/acquisition corpus; extent is not a universal bound.",
+  "files": {
+    "observe.jlink": "0c909dcdf15207fe9759c0acda95016a42fb4b4dc2aba6150fae4dd1ce66382c",
+    "observe.log": "7ed09e2420142bf16db783b244bc4a8c6d009a45b21b7b37f407c01d30cf440c",
+    "paint.jlink": "fbc15322058b8153a2cc77d32e9ab8875d69ba70119d869dea11c818988b648a",
+    "paint.log": "51fd8fa6c08f5cd1007d128dbbd5a09cbc36606fc5971aeca26f1598f4c23a2f",
+    "read.jlink": "2520799c2c454b39126f4627112a5b03b7fda33874b3bcb5cde60eb1faa8d404",
+    "read.log": "a3d38533343c1cb2b228754156e4e4c5203310abc4eec72e5c69959630b40b22",
+    "results.bin": "2528dce8a52e39750a58ee14505f038d9c4b1e15b2db5f837a572cfa2b97fbc5",
+    "stack-paint.bin": "71564595b47d580587570bbc0671d771ac4b634dd6055858ead5bc95af1435b3",
+    "stack.bin": "d3ac67eeeea1dc19d1e314a0a4652b5d1374a813697fd12796cea71794acc4c0"
+  }
+}

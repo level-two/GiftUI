@@ -1,0 +1,18 @@
+{
+  "revision": "b3aad1b446864728ed5cefa340ef1620afeb784f",
+  "inputs": {
+    ".build/nrf52840/spike-012-connected-packed/application/CMakeLists.txt": "285d6a18ecc784b7a893452aed187ec1ac8c9ceeb03f0c836927cbe9950ecc3d",
+    ".build/nrf52840/spike-012-connected-packed/application/src/main.c": "048697a8ff8045f8faacc8c09b1887e4acd8bd012e58032a15b352069cb9f51c",
+    ".build/nrf52840/spike-009-hierarchy-roles/Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFModelTextWriter.swift": "e02e5fc47c7101378e0a55ef2e6fb6f3d3574f481211ed05559e73b8e013fcd2",
+    ".build/nrf52840/spike-009-hierarchy-roles/Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFModelModifierWriter.swift": "412b03305e9e1fb0e11fe747c13fedef7a01e56335ded059d14c2222c76df371",
+    ".build/nrf52840/spike-009-hierarchy-roles/SpikeRoles.swift": "f9f7ceee4ffd0b797fec64a5dc8f0f1f8284dd9752dac20d04c55cb2e8f9d328",
+    ".build/nrf52840/spike-012-connected-roles/application/CMakeLists.txt": "a51df77f5323de257c8535815618c05a6eb70fc7349a98f4ed5a28547e71aab6",
+    ".build/nrf52840/spike-012-connected-roles/application/src/main.c": "0e880e59822d3a14182f4cddd2ccea3748e3b6cb1581309b37cf96ea67c482fb",
+    ".build/nrf52840/spike-012-connected-snapshot/application/CMakeLists.txt": "285d6a18ecc784b7a893452aed187ec1ac8c9ceeb03f0c836927cbe9950ecc3d",
+    ".build/nrf52840/spike-012-connected-snapshot/application/src/main.c": "856d361a591e90057c1868201a8167f9984dd8d70576a2de4a545f60d4130d08",
+    ".build/nrf52840/spike-010-bounded-declaration-traversal/LoweredBody.swift": "8b734c5b5e5fd5fea63057d817a902345c0840613f17cbe18e4bb65144432bda",
+    "experiments/spike-012-connected-hierarchy-costs/Benchmark.swift": "834ddf80bdc6a203cc5c9f3f7bea5bafa904c30861d9f60cf70489a4cd4bc366",
+    "experiments/spike-012-connected-hierarchy-costs/benchmark.c": "460a2c81ed1377a2f608abc0e8cde833cf9f510452282191cd9e6c9241366a25",
+    "experiments/spike-012-connected-hierarchy-costs/prepare.py": "42bc2d4084e2f61b1fe3515cddda65620ab9e4cefafe5607e9f1684a42eaad08"
+  }
+}

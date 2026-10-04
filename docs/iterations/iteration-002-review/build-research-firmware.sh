@@ -2,7 +2,7 @@
 set -euo pipefail
 # Run from repository root. Reuses the supported compiler/SDK; never flashes.
 case "${1:-}" in
-    iteration-002-startup-text | iteration-002-retention | iteration-002-file-selection | spike-009-hierarchy-roles | spike-010-bounded-declaration-traversal | spike-011-clean-topology-generation) ;;
+    iteration-002-startup-text | iteration-002-retention | iteration-002-file-selection | spike-009-hierarchy-roles | spike-010-bounded-declaration-traversal | spike-011-clean-topology-generation | spike-012-connected-packed | spike-012-connected-roles | spike-012-connected-snapshot) ;;
     *) printf 'error: supply a prepared iteration-002 research name\n' >&2; exit 2 ;;
 esac
 source scripts/nrf52840/common.sh

@@ -1,0 +1,183 @@
+{
+  "revision": "709133cc75fb0dce45bd9e4147147b942acd91f7",
+  "modes": {
+    "packed": {
+      "elf_sha256": "d471e71e11380e1934471aca421609f6012fdb07dbab7d4dae48b60a414fc9a0",
+      "median_per_call_microseconds": [
+        55612.0458984375,
+        55732.30908203125
+      ],
+      "observed_sentinel_extent_bytes": 3992,
+      "calibration": {
+        "cycles": 6400037,
+        "ticks": 3254,
+        "seconds_cpu": 0.100000578125,
+        "seconds_rtc": 0.09930419921875
+      },
+      "batch_results": [
+        [
+          3008,
+          3008,
+          3008,
+          3008,
+          3008
+        ],
+        [
+          6080,
+          6080,
+          6080,
+          6080,
+          6080
+        ]
+      ],
+      "cfsr_hfsr": [
+        0,
+        0
+      ]
+    },
+    "roles": {
+      "elf_sha256": "ce85f65b6d71557893fb7489f4a6b46599a6a1e8961b9a74eb1c6524156c82f0",
+      "median_per_call_microseconds": [
+        54264.54052734375,
+        54430.8955078125
+      ],
+      "observed_sentinel_extent_bytes": 3984,
+      "calibration": {
+        "cycles": 6400034,
+        "ticks": 3256,
+        "seconds_cpu": 0.10000053125,
+        "seconds_rtc": 0.099365234375
+      },
+      "batch_results": [
+        [
+          3008,
+          3008,
+          3008,
+          3008,
+          3008
+        ],
+        [
+          6080,
+          6080,
+          6080,
+          6080,
+          6080
+        ]
+      ],
+      "cfsr_hfsr": [
+        0,
+        0
+      ]
+    },
+    "snapshot": {
+      "elf_sha256": "1199cb46284cce9a6ac210d8f50f1e5efa4321337340c3f68dd1b019a019dac4",
+      "median_per_call_microseconds": [
+        6253.6943359375,
+        6269.4443359375
+      ],
+      "observed_sentinel_extent_bytes": 17896,
+      "calibration": {
+        "cycles": 6400037,
+        "ticks": 3255,
+        "seconds_cpu": 0.100000578125,
+        "seconds_rtc": 0.099334716796875
+      },
+      "batch_results": [
+        [
+          2944,
+          2944,
+          2944,
+          2944,
+          2944
+        ],
+        [
+          2944,
+          2944,
+          2944,
+          2944,
+          2944
+        ]
+      ],
+      "cfsr_hfsr": [
+        0,
+        0
+      ]
+    }
+  },
+  "roles_relative_percent": [
+    -2.42304585153126,
+    -2.3351151166251265
+  ],
+  "limits": [
+    "Five batches32 calls per case, one board, two diagnostic variants; no adoption budget.",
+    "Packed model/capture setup amortized once per batch. Snapshot constructs each call and does incomplete semantics with different diagnostic/window fixture.",
+    "Only return counts matched on board; prior42 full semantic comparisons were native. No fresh complete on-board semantic/pixel parity claimed.",
+    "Single-thread configured stack range, observed sentinel extent not control-flow bound; rendering and acquisition excluded.",
+    "Instrumented image sizes include benchmark and both mechanisms; do not substitute for SPIKE009/010 production deltas.",
+    "Initial extraction used ambiguous decimal J-Link dump lengths and failed the byte-count assertion; valid rerun uses explicit hexadecimal lengths."
+  ],
+  "code": {
+    "experiments/spike-012-connected-hierarchy-costs/Benchmark.swift": "834ddf80bdc6a203cc5c9f3f7bea5bafa904c30861d9f60cf70489a4cd4bc366",
+    "experiments/spike-012-connected-hierarchy-costs/benchmark.c": "460a2c81ed1377a2f608abc0e8cde833cf9f510452282191cd9e6c9241366a25",
+    "experiments/spike-012-connected-hierarchy-costs/collect.py": "b64b40831e9829c4a1c985e2f5d145243a64eca618c496b89ac4b035cac2e729",
+    "experiments/spike-012-connected-hierarchy-costs/prepare.py": "42bc2d4084e2f61b1fe3515cddda65620ab9e4cefafe5607e9f1684a42eaad08",
+    "experiments/spike-012-connected-hierarchy-costs/summarize.py": "61506ebc43448bffd8f6b67abe0387239335545968934219051805d0372172cc"
+  },
+  "archive": {
+    "path": "experiments/spike-012-connected-hierarchy-costs/evidence/connected-artifacts.tar.gz",
+    "sha256": "0afaca9629f48a5e37ab281a6f1015f77e9a9a10dfefa9f216d68a54d2cf3022",
+    "files": {
+      "spike-012-connected-packed/build.log": "3a1fa4234e0b8aee157305522dfc347f1957ea046f408927d21e7e1c1759eb2f",
+      "spike-012-connected-packed/flash.log": "3ec75559de3bb9a863d43f203d163d15ab21ac62a0376d7c7d7c735ef819187b",
+      "spike-012-connected-packed/application/CMakeLists.txt": "285d6a18ecc784b7a893452aed187ec1ac8c9ceeb03f0c836927cbe9950ecc3d",
+      "spike-012-connected-packed/application/src/main.c": "048697a8ff8045f8faacc8c09b1887e4acd8bd012e58032a15b352069cb9f51c",
+      "spike-012-connected-packed/connected/observe.jlink": "fd7bfd9641ead570d60e393741f4d48a7b969f08a4d05f42c38841a470f63f8f",
+      "spike-012-connected-packed/connected/observe.log": "556ed4929254635b3735cf29fceb068f548a864327cf4abe6697ff04258c2d94",
+      "spike-012-connected-packed/connected/paint.jlink": "62271088e54e57e684ab8d5ee4030f4fa906bff04d2671a966a3a98ea66437cf",
+      "spike-012-connected-packed/connected/paint.log": "128d081276928d30cce54f0272f37d74dc5ea05bc34173d52986cb360ace4c35",
+      "spike-012-connected-packed/connected/read.jlink": "ca158a030cb624d30e374aecf9c03d38fc4f8a7eb0db955b04c0a7249b4a83c5",
+      "spike-012-connected-packed/connected/read.log": "652b442a417841e6952d6fbb1e66a27ae828c7802ef1068317d99271d85cee66",
+      "spike-012-connected-packed/connected/results.bin": "33913ea1a8926d9170911d26994f14eb0b831dca7e26ad9c9ed9e81d3cb4de92",
+      "spike-012-connected-packed/connected/stack-paint.bin": "71564595b47d580587570bbc0671d771ac4b634dd6055858ead5bc95af1435b3",
+      "spike-012-connected-packed/connected/stack.bin": "8868732c60242df873ae1552156282ef404b99dbee5883a36ccf8cda4b327ca6",
+      "spike-012-connected-packed/firmware/zephyr/zephyr.elf": "d471e71e11380e1934471aca421609f6012fdb07dbab7d4dae48b60a414fc9a0",
+      "spike-012-connected-packed/firmware/zephyr/zephyr.hex": "b4e8ea346c102b207d820d4d4078d2eda7b38eff3fd4223c9ddb9a9f530cae4f",
+      "spike-012-connected-packed/firmware/zephyr/zephyr.map": "9c8fdc1eddf8fbffb44cd31d7b719babf9ae5493d5cb0866db4bda2bdee460a6",
+      "spike-012-connected-packed/firmware/zephyr/.config": "4f722a1601be957e850c3ff3b9c79399d72d2918c788f631364ad129ee21e2e1",
+      "spike-012-connected-roles/build.log": "6356c1543b7a2aedf441df48b12c4ab529bddf3fd2f0dd40925d5e15be319614",
+      "spike-012-connected-roles/flash.log": "5b13f5f64a90ec2e90910ab10ffae064bb2507da5052212ca1ff826abb5c17d8",
+      "spike-012-connected-roles/application/CMakeLists.txt": "a51df77f5323de257c8535815618c05a6eb70fc7349a98f4ed5a28547e71aab6",
+      "spike-012-connected-roles/application/src/main.c": "0e880e59822d3a14182f4cddd2ccea3748e3b6cb1581309b37cf96ea67c482fb",
+      "spike-012-connected-roles/connected/observe.jlink": "0c909dcdf15207fe9759c0acda95016a42fb4b4dc2aba6150fae4dd1ce66382c",
+      "spike-012-connected-roles/connected/observe.log": "3eb309cb73ad97b7d749370a7a64cea70419309275ac83d54e7dc256e9a1213f",
+      "spike-012-connected-roles/connected/paint.jlink": "94ba9d8e43c7d4abb8c602e3b68f3074305fcad1b3620d764c1fe5ce7dc3636a",
+      "spike-012-connected-roles/connected/paint.log": "b25b8a94b8fa39028b864ef9b64a85a05879ce7a0521652f3d4f8c33bf16d994",
+      "spike-012-connected-roles/connected/read.jlink": "a7bd66cc1c0ac6ec37f1d78ec01750f8781e1a9652450b2a22a5952230425b6b",
+      "spike-012-connected-roles/connected/read.log": "942ed30ceaa15978afe65cb93c836546356f0a40ce6122a1a182424df7378070",
+      "spike-012-connected-roles/connected/results.bin": "adc11a93bd4039575567df370522de8b676085a0c41a959420f9b89b4691879c",
+      "spike-012-connected-roles/connected/stack-paint.bin": "71564595b47d580587570bbc0671d771ac4b634dd6055858ead5bc95af1435b3",
+      "spike-012-connected-roles/connected/stack.bin": "53fb52dee52afca07a9df05bd1ea858e33b79e51f4a4cf8f583d652a0350aab5",
+      "spike-012-connected-roles/firmware/zephyr/zephyr.elf": "ce85f65b6d71557893fb7489f4a6b46599a6a1e8961b9a74eb1c6524156c82f0",
+      "spike-012-connected-roles/firmware/zephyr/zephyr.hex": "035dfff207915b211bdddc2651b36c64ad4185d7b269aed9cb1683e358b1f8fa",
+      "spike-012-connected-roles/firmware/zephyr/zephyr.map": "087dee40625bb880113cbc0613ea7d1daa58efaa29490bb8191fc8fbab08ae18",
+      "spike-012-connected-roles/firmware/zephyr/.config": "4f722a1601be957e850c3ff3b9c79399d72d2918c788f631364ad129ee21e2e1",
+      "spike-012-connected-snapshot/build.log": "c5e9f9b792b9f754bc901cdc40129850b3bad3681ef473df807356ffe8674524",
+      "spike-012-connected-snapshot/flash.log": "82e10f8a049c4f37d50ce2d2dae81518cc523be3d24af2fefa6c34b1190d20d3",
+      "spike-012-connected-snapshot/application/CMakeLists.txt": "285d6a18ecc784b7a893452aed187ec1ac8c9ceeb03f0c836927cbe9950ecc3d",
+      "spike-012-connected-snapshot/application/src/main.c": "856d361a591e90057c1868201a8167f9984dd8d70576a2de4a545f60d4130d08",
+      "spike-012-connected-snapshot/connected/observe.jlink": "0c909dcdf15207fe9759c0acda95016a42fb4b4dc2aba6150fae4dd1ce66382c",
+      "spike-012-connected-snapshot/connected/observe.log": "7ed09e2420142bf16db783b244bc4a8c6d009a45b21b7b37f407c01d30cf440c",
+      "spike-012-connected-snapshot/connected/paint.jlink": "fbc15322058b8153a2cc77d32e9ab8875d69ba70119d869dea11c818988b648a",
+      "spike-012-connected-snapshot/connected/paint.log": "51fd8fa6c08f5cd1007d128dbbd5a09cbc36606fc5971aeca26f1598f4c23a2f",
+      "spike-012-connected-snapshot/connected/read.jlink": "2520799c2c454b39126f4627112a5b03b7fda33874b3bcb5cde60eb1faa8d404",
+      "spike-012-connected-snapshot/connected/read.log": "a3d38533343c1cb2b228754156e4e4c5203310abc4eec72e5c69959630b40b22",
+      "spike-012-connected-snapshot/connected/results.bin": "2528dce8a52e39750a58ee14505f038d9c4b1e15b2db5f837a572cfa2b97fbc5",
+      "spike-012-connected-snapshot/connected/stack-paint.bin": "71564595b47d580587570bbc0671d771ac4b634dd6055858ead5bc95af1435b3",
+      "spike-012-connected-snapshot/connected/stack.bin": "d3ac67eeeea1dc19d1e314a0a4652b5d1374a813697fd12796cea71794acc4c0",
+      "spike-012-connected-snapshot/firmware/zephyr/zephyr.elf": "1199cb46284cce9a6ac210d8f50f1e5efa4321337340c3f68dd1b019a019dac4",
+      "spike-012-connected-snapshot/firmware/zephyr/zephyr.hex": "3f721eb90730a2294a369fb83d72f27ba50d4a961373bf34a8fb3e430cfc61df",
+      "spike-012-connected-snapshot/firmware/zephyr/zephyr.map": "097f4c6343cb9bf9968156b696c6db376e1beaba681405c50cc9dd368a5be55d",
+      "spike-012-connected-snapshot/firmware/zephyr/.config": "4f722a1601be957e850c3ff3b9c79399d72d2918c788f631364ad129ee21e2e1"
+    }
+  }
+}

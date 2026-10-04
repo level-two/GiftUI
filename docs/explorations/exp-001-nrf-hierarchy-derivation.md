@@ -15,6 +15,7 @@ related_spikes:
   - SPIKE-009
   - SPIKE-010
   - SPIKE-011
+  - SPIKE-012
 promoted_to: []
 supersedes: []
 superseded_by: []
@@ -185,3 +186,14 @@ bounded investigation queue; connected work remains explicitly deferred.
 - [Model text writer](../../Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFModelTextWriter.swift)
 - [Model modifier writer](../../Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFModelModifierWriter.swift)
 - [nRF pins and resource limits](../../scripts/nrf52840/toolchain.env)
+
+## Connected supplement
+
+After hardware-free closeout, the maintainer authorized connected measurements
+and experiments. [SPIKE-012](../spikes/spike-012-connected-hierarchy-costs.md)
+records completed bounded candidate measurements on the identified board:
+packed staging 55.612/55.732 ms, named-role staging 54.265/54.431 ms, and partial
+snapshot counting 6.254/6.269 ms. Their observed painted extents are
+3,992/3,984/17,896 bytes; the partial snapshot remains a different-work probe. This supplements the
+concluded hardware-free round and leaves implementation selection, comparison
+budgets and draft scope approval separate.
