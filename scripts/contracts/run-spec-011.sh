@@ -68,7 +68,7 @@ run_check swift test --disable-sandbox --scratch-path "${PROJECT_ROOT}/.build" \
 run_check swift test --disable-sandbox --scratch-path "${PROJECT_ROOT}/.build" \
     --filter RuntimeInteraction
 run_check swift test --disable-sandbox --scratch-path "${PROJECT_ROOT}/.build" \
-    --filter ProfileDifferentialTests
+    --filter 'ProfileDifferentialTests|UnequalInteractionStoreCapacity'
 
 case "${profile}" in
     macos-dynamic | macos-static)

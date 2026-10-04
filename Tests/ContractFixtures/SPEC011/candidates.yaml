@@ -5,3 +5,9 @@ rows:
   - { id: empty_clip, result: retainedWithoutHitRegion }
   - { id: capacity, result: capacityExhausted }
   - { id: invalid_geometry, result: invalidGeometry }
+  - { id: unequal_candidate_records, profiles: [recording, dynamic, static], result: capacityExhausted, publication: unchanged, reuse: exact_bound }
+  - { id: unequal_candidate_hits, profiles: [recording, dynamic, static], result: capacityExhausted, publication: unchanged, reuse: exact_bound }
+  - { id: unequal_staged_committed, profiles: [recording, dynamic, static], result: capacityExhausted, publication: unchanged, reuse: exact_bound }
+  - { id: unequal_retained_committed, profiles: [recording, dynamic, static], result: capacityExhausted, publication: unchanged, reuse: exact_bound }
+  - { id: unequal_retained_hits, profiles: [recording, dynamic, static], result: capacityExhausted, publication: unchanged, reuse: exact_bound }
+  - { id: missing_generation_precedes_staged_capacity, result: invalidIdentity }

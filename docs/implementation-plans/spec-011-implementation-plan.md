@@ -975,3 +975,5 @@ All added tasks are pending. Original completed ledger entries and historical ra
 **T10.1 execution — 2026-10-04:** [Result and validation](../iterations/iteration-002-cleanup/evidence/02-capacity/result.md). Remaining integration/connected tasks stay pending.
 
 **T10.2 concrete-store coverage — 2026-10-05:** [Real Static/Dynamic five-store cases](../iterations/iteration-002-cleanup/evidence/02-capacity/concrete-stores/result.md); final owner/profile checks remain pending.
+
+**T10.2 driver integration — 2026-10-05:** [Fixture registration, explicit concrete-store filter and strict milestone inventory correction](../iterations/iteration-002-cleanup/evidence/02-capacity/driver-integration/result.md). Final four-profile evidence remains pending.

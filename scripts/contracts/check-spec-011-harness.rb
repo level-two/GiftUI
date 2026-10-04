@@ -28,8 +28,8 @@ abort "manifest references missing fixture" unless paths.all? { |path| File.file
 end
 
 evidence = YAML.safe_load(File.read(File.join(fixtures, "task-evidence.yaml"))).fetch("tasks")
-expected_tasks = (0..9).flat_map do |milestone|
-  count = { 0 => 4, 1 => 5, 2 => 5, 3 => 6, 4 => 4, 5 => 6, 6 => 4, 7 => 5, 8 => 5, 9 => 5 }.fetch(milestone)
+expected_tasks = (0..10).flat_map do |milestone|
+  count = { 0 => 4, 1 => 5, 2 => 5, 3 => 6, 4 => 4, 5 => 6, 6 => 4, 7 => 5, 8 => 5, 9 => 5, 10 => 3 }.fetch(milestone)
   (1..count).map { |task| "T#{milestone}.#{task}" }
 end
 abort "task evidence keys differ" unless evidence.keys.sort == expected_tasks.sort
