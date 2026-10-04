@@ -17,11 +17,17 @@ draft; research does not select or authorize implementation.
 | 01 — Dependencies and ownership | [Graph, source checks, and firmware composition](01-dependencies.md) | Structural pass recorded; detailed responsibility review remains |
 | 02 — Interfaces, types, and mappings | [Selected seams, reproduction, and simplification candidates](02-interfaces-and-mappings.md) | Targeted pass recorded; complete module review remains |
 | 03 — Requirements, flows, profiles, and tooling | [Traceability, selected flows, fresh guards, and tooling findings](03-requirements-flows-and-tooling.md) | Targeted pass recorded; full behavioral/profile review remains |
-| 04 — Reconciliation | Findings, recommended selection, and remaining review work | Not reviewed |
+| 04 — Reconciliation | [Recommendations and remaining bounded review tasks](04-reconciliation.md) | Initial findings reconciled; full audit and final selection remain open |
 
 [Findings register](findings.md) records confirmed observations separately from
 hypotheses and preferences. A step's completion does not imply every module or
 acceptance criterion passed. See coverage for exact reviewed areas and gaps.
+
+The initial passes found one reproduced interaction capacity defect, two
+tooling/process defects, two supported simplification candidates, and one
+deferred performance hypothesis. Read the register's counterevidence and
+validation bounds before selecting fixes. The complete all-module audit is
+still in progress; [Step 04](04-reconciliation.md) defines the remaining tasks.
 
 ## Reproduce the lexical inventory
 

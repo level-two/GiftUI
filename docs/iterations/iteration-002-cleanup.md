@@ -93,6 +93,13 @@ on coverage and explicit finding dispositions,
 not on repeated agent passes ceasing to produce suggestions. Discovery does not
 automatically select remediation or expand an approved iteration.
 
+The [initial reconciliation](iteration-002-review/04-reconciliation.md) recommends
+bounded interaction-capacity and evidence-tooling corrections, identifies two
+target-host simplification investigations, and preserves a performance hypothesis
+under FW-032. These are research recommendations, not selected commitments.
+Detailed module/flow/profile coverage remains open in the review matrix; the
+initial passes do not complete IT-AC-006 or finalize this scope.
+
 ## Exclusions
 
 - No commitment to fix every audit finding, minimize type/target/directive

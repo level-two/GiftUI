@@ -115,7 +115,7 @@ summary = {
     "nrf_selected_source_files": len(nrf_sources),
     "nrf_selected_owners": len(set(path.split("/")[1] for path in nrf_sources)),
     "internal_imports_without_direct_edge": undeclared,
-    "limits": "Lexical counts include conditional/inactive imports and generated code. CMake inventory does not configure/build firmware; criterion IDs are mentions, not validated acceptance coverage.",
+    "limits": "Lexical counts include conditional/inactive imports and generated code. CMake inventory does not configure/build firmware; criterion IDs are checklist declarations, not validated acceptance coverage.",
 }
 (OUTPUT / "inventory-summary.json").write_text(json.dumps(summary, indent=2) + "\n")
 print(json.dumps(summary, indent=2))

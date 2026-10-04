@@ -10,5 +10,5 @@
   "nrf_selected_source_files": 172,
   "nrf_selected_owners": 24,
   "internal_imports_without_direct_edge": [],
-  "limits": "Lexical counts include conditional/inactive imports and generated code. CMake inventory does not configure/build firmware; criterion IDs are mentions, not validated acceptance coverage."
+  "limits": "Lexical counts include conditional/inactive imports and generated code. CMake inventory does not configure/build firmware; criterion IDs are checklist declarations, not validated acceptance coverage."
 }

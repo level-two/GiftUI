@@ -1,0 +1,36 @@
+{
+  "source_baseline": "6cf31f266987e917458f31f05ed8c390cda9a202",
+  "kind": "research document verification, not a repository behavioral gate",
+  "checks": [
+    {
+      "status": "fulfilled",
+      "value": {
+        "chunk_id": "737935",
+        "wall_time_seconds": 0.57589375,
+        "exit_code": 0,
+        "original_token_count": 134,
+        "output": "Authority graph validation passed: 164 nodes, 1676 edges.\nTask evidence validation passed: SPEC-001 all tasks (59 task(s)).\nTask evidence validation passed: SPEC-002 all tasks (32 task(s)).\nTask evidence validation passed: SPEC-003 all tasks (31 task(s)).\nTask evidence validation passed: SPEC-004 all tasks (30 task(s)).\nTask evidence validation passed: SPEC-005 all tasks (31 task(s)).\nTask evidence validation passed: SPEC-011 all tasks (49 task(s)).\nGovernance validation passed: 6 feature(s), 65 lifecycle artifact(s), 9 skill(s).\n"
+      }
+    },
+    {
+      "status": "fulfilled",
+      "value": {
+        "chunk_id": "e52920",
+        "wall_time_seconds": 0.000006833,
+        "exit_code": 0,
+        "original_token_count": 68,
+        "output": "{\n  \"relative_links_checked\": 77,\n  \"missing_paths\": [],\n  \"research_python_syntax\": \"pass\",\n  \"tracked_changes_outside_docs_since_source_baseline\": [],\n  \"limits\": \"Checks existence, not anchors or behavioral conformance; untracked research files inspected separately\"\n}\n"
+      }
+    },
+    {
+      "status": "fulfilled",
+      "value": {
+        "chunk_id": "8bfd9e",
+        "wall_time_seconds": 0.000005792,
+        "exit_code": 0,
+        "original_token_count": 0,
+        "output": ""
+      }
+    }
+  ]
+}
