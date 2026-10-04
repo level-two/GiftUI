@@ -138,8 +138,9 @@ records the supported tooling candidate.
 
 ## Remaining Unknowns
 
-A complete runtime declaration replacement, whole-stack bounds and target
-timing remain unproven. These are future candidate-specific design/research,
+A complete runtime declaration replacement, whole-stack bounds and full
+replacement timing remain unproven. SPIKE-012 records bounded on-board costs
+for existing staging and partial counting; it supplies no complete replacement. These are future candidate-specific design/research,
 not evidence that the current packed
 representation should be removed. The partial binding candidate does not
 remove the topology generator. SPIKE-011 provides a separate clean-generation
@@ -165,7 +166,8 @@ draft ITERATION-002 revision 3 and needs later explicit design selection and
 budgets. The direct-module route remains a negative prerequisite result.
 IT-AC-003 is refined for scope selection, not recorded as an approved pass.
 [Step 21](../iterations/iteration-002-review/21-research-closeout.md) closes the
-bounded investigation queue; connected work remains explicitly deferred.
+hardware-free investigation queue; connected work was deferred at that point
+and later authorized for the bounded supplement below.
 
 ## Revisit Triggers
 

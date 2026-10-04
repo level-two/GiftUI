@@ -1,0 +1,95 @@
+{
+  "revision": "073fb5c8ca1bdb0dfc82ddbf8589d7f5499c1453",
+  "source_baseline": "6cf31f266987e917458f31f05ed8c390cda9a202",
+  "checks": {
+    "maintained_inputs_unchanged": [
+      "Sources",
+      "Tests",
+      "firmware",
+      "scripts",
+      "Package.swift",
+      "demo",
+      ".agents",
+      "skills"
+    ],
+    "original_72_check_archive_sha256": "b97efdfec757fdeaed82e542a12edde021fa47b49f16d9ea156c36857a1c60d8",
+    "docs/iterations/iteration-002-review/evidence/22-connected-baseline.json": "b82fad83279ee00a0ab6c75d6e5f2ca4327651567e9e18a99f53e86fc9693ff6",
+    "experiments/spike-012-connected-hierarchy-costs/evidence/summary.json": "0afaca9629f48a5e37ab281a6f1015f77e9a9a10dfefa9f216d68a54d2cf3022",
+    "paint_registers_match_each_elf_vectors": {
+      "packed": {
+        "vector_sp": 537062080,
+        "reset_pc": 157324,
+        "prepaint_pc": 157324,
+        "postpaint_pc": 157324
+      },
+      "roles": {
+        "vector_sp": 537062080,
+        "reset_pc": 157384,
+        "prepaint_pc": 157384,
+        "postpaint_pc": 157384
+      },
+      "snapshot": {
+        "vector_sp": 537062080,
+        "reset_pc": 157324,
+        "prepaint_pc": 157324,
+        "postpaint_pc": 157324
+      }
+    },
+    "pinned_stack_formula_sources": {
+      ".toolchains/nrf52840/workspace/zephyr/arch/arm/core/cortex_m/thread.c": "45c6814905b893432176d8b57e718715c87d6dd390d2d398e507dd7fe66b6baa",
+      ".toolchains/nrf52840/workspace/zephyr/include/zephyr/kernel/thread_stack.h": "6b596e7d69be53f59e62264ca273581439f7bffa2d87aa0c4c399b105d46a67c"
+    },
+    "local_links_checked": 179,
+    "python_syntax": {
+      "exit_code": 0,
+      "output": ""
+    },
+    "shell_syntax": {
+      "exit_code": 0,
+      "output": ""
+    },
+    "diff_whitespace": {
+      "exit_code": 0,
+      "output": ""
+    },
+    "governance": {
+      "exit_code": 0,
+      "output": "Authority graph validation passed: 169 nodes, 1696 edges.\n"
+    }
+  },
+  "restoration": {
+    "nrf_elf_sha256": "c6d0f12c8585cad3f3949fb596e13fa7328989239a31a1f6e428afadb541ed5c",
+    "nrf_ready_revision": 1,
+    "sample_count": 600,
+    "driver_fault_values": [
+      0
+    ],
+    "cfsr_hfsr_values": [
+      0
+    ],
+    "running_dhcsr_observed": true,
+    "pi": {
+      "architecture": "armv6l",
+      "binary_sha256": "acf57db5625eb1d2802210aaa6e30128749277d81ad26a3f313b79f8448d8d7e",
+      "application_processes": [],
+      "verification": "Final SSH uname/hash/ps inspection reported these values; no remote service changed."
+    },
+    "debug_processes": [],
+    "process_verification": "Final local ps showed no J-Link/GDB process from this campaign."
+  },
+  "archive": {
+    "path": "docs/iterations/iteration-002-review/evidence/24-restoration-logs.tar.gz",
+    "sha256": "12dd157956b2a0056c69e18a43ec5710ddc0144a1aa4278c768bae1b64eb3297",
+    "files": {
+      "nrf52840/iteration-002-connected/production-restored-flash.log": "29d90bed064d1b6b1b33ba96ee4e631c88052db885cd3cc017ad742bc16b3602",
+      "nrf52840/iteration-002-connected/format.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "nrf52840/iteration-002-connected/production-restored-startup/identity.json": "ca0eea4cb927f660bbff9827cc15d06fcddff32cb55c3fde53b4451eb0846075",
+      "nrf52840/iteration-002-connected/production-restored-startup/monitor.jlink": "1e8b968f1eabfd0aa68a8e55b88b3cec32152b103a1723d3eb6de7f2add5aba8",
+      "nrf52840/iteration-002-connected/production-restored-startup/monitor.log": "190f955d750947770f108f478e4776463c52aa7b720cc7a216e75c5f8863ca9f",
+      "nrf52840/iteration-002-connected/production-restored-ready/identity.json": "8e6b94615237c7da755217eec8cf911b45b126d42eac0c15cb2e6c8ee5e4a285",
+      "nrf52840/iteration-002-connected/production-restored-ready/monitor.jlink": "1e8b968f1eabfd0aa68a8e55b88b3cec32152b103a1723d3eb6de7f2add5aba8",
+      "nrf52840/iteration-002-connected/production-restored-ready/monitor.log": "f95e2ba6118de8e98c391457e5635ba96b8c58855ef97a4a36c9570493f9d558"
+    }
+  },
+  "validated_utc": "2026-10-04T17:33:20.373452+00:00"
+}

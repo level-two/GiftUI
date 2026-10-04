@@ -6,7 +6,7 @@ status: captured
 authors:
   - codex
 created: 2026-10-03
-updated: 2026-10-03
+updated: 2026-10-04
 source:
   - SPEC-001
   - SPEC-011
@@ -50,8 +50,9 @@ evidence without reporting a test pass.
 
 ## Current Non-goals
 
-- No fabricated physical observation, acceptance-criterion change, or current
-  hardware operation. The immutable logs and measured failures remain intact.
+- No fabricated physical observation or acceptance-criterion change.
+  Immutable logs and measured failures remain intact; the later authorized
+  bounded campaign supplies only its explicitly recorded observations.
 - No new MVP functionality or architecture decision.
 
 ## Revisit Triggers
@@ -65,6 +66,17 @@ evidence without reporting a test pass.
 Captured as follow-up to the maintainer-approved closure. Coordinate the macOS
 pointer subset with FW-031. Preserve original criterion and task IDs in the
 future evidence record, then update conformance exceptions with actual results.
+
+## 2026-10-04 bounded measurement update
+
+The maintainer authorized connected measurements/experiments, superseding the
+cleanup investigation's earlier hardware deferral. [Steps 22–24](../iterations/iteration-002-review/24-connected-reconciliation.md)
+add identified production baselines, software Start and candidate cost/stack
+observations. Software Stop was admitted but a stopped outcome was not
+established. No physical contacts, complete diagnostic/pixel corpus, transport
+fault/recovery or sustained 80-event/s resource corpus was collected. Preserve
+this item's remaining evidence and all approved exceptions; no criterion is
+upgraded solely from these bounded results.
 
 ## References
 

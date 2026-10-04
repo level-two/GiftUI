@@ -6,7 +6,7 @@ status: captured
 authors:
   - codex
 created: 2026-09-30
-updated: 2026-10-03
+updated: 2026-10-04
 source:
   - SPEC-001
 related_future_work:
@@ -50,7 +50,8 @@ do not continue speculative optimization during this closeout.
   requirements. SPEC-001 closes with an explicitly approved exception;
   the measured timing gap remains preserved for future iterations.
 - No architecture or Specification amendment, new buffer, endpoint bypass,
-  partial frames, cross-frame reuse, deployment, or hardware experiment.
+  partial frames or cross-frame reuse. Hardware operations require their own
+  maintainer authorization, provided for the later bounded measurement campaign.
 
 ## Revisit Triggers
 
@@ -74,6 +75,15 @@ an approved exception and postpones all performance improvement. Cadence and
 deadline-safe interaction remain unmet measurements, with their original
 requirements retained. [Recorded approval](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/iteration-closeout-20261003/remaining-spec-transition-approval.md)
 supersedes the earlier no-exception disposition.
+
+## 2026-10-04 bounded measurement update
+
+The maintainer authorized hardware measurements/experiments after cleanup
+research. The unchanged Pi artifact reproduced 0.717fps and 1.272–1.513s idle
+frame costs at sampled peak RSS 9,748KiB. The application completed bounded
+teardown; no service changed. [Connected reconciliation](../iterations/iteration-002-review/24-connected-reconciliation.md)
+records exact identities and limitations. Compatible optimization remains
+unselected; this baseline does not close the four-fps/sustained-workload gap.
 
 ## References
 

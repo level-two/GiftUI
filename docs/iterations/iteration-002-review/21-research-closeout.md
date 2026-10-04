@@ -56,3 +56,11 @@ the bounded evidence round. No feature lifecycle status changes.
 checks links, source/fixture/template hashes, semantic transcripts, linked-image
 identities, stack-object identity, preserved baseline evidence, formatting and
 governance. No universal conformance or physical validation is inferred.
+
+## Later connected supplement
+
+The maintainer subsequently authorized hardware measurements/experiments after
+this hardware-free round. [Steps 22–24](24-connected-reconciliation.md) record
+bounded baseline/candidate costs and restoration. This historical closeout
+does not prohibit that later authorized work; full connected coverage and
+production selection remain separate.

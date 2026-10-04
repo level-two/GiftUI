@@ -26,7 +26,8 @@ features:
   # Performance postponed under FW-027/FW-032; connected follow-up under FW-031/FW-033.
   signal-analyzer:
     # Cleanup research EXP-001 concluded: SPIKE-009 roles, SPIKE-010 snapshot
-    # prerequisite, SPIKE-011 clean generation; draft ITERATION-002 revision 3.
+    # prerequisite, SPIKE-011 clean generation, SPIKE-012 connected costs;
+    # draft ITERATION-002 revision 4 retains packed runtime.
     # Research does not select implementation or alter this lifecycle status.
     title: Signal Analyzer Reference Application
     status: implemented

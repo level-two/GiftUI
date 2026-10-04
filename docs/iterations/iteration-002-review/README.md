@@ -23,7 +23,7 @@ draft; research does not select or authorize implementation.
 | 07 — Execution/observable/runtime | [Input, replacement, failure, and quiescence flows](07-execution-observable-runtime.md) | Recorded |
 | 08 — Backend/host/platform | [Responsibilities, policy, and transfer/input lifetimes](08-backend-host-platform.md) | Recorded |
 | 09 — Tests/generation/entry points | [Corpus limits, updater freshness, and guard dispositions](09-tests-generation-and-entrypoints.md) | Recorded; current execution in Step 11 |
-| 10 — Hierarchy investigation | [Disposition and EXP-001](10-hierarchy-investigation-disposition.md) | Source assessment recorded; comparative feasibility remains open |
+| 10 — Hierarchy investigation | [Disposition and EXP-001](10-hierarchy-investigation-disposition.md) | Initial question; bounded dispositions in Steps 16/18/19/23 |
 | 11 — Fresh hardware-free gate | [Validation and preserved report identities](11-fresh-hardware-free-validation.md) | 72 checks passed; 60 published report manifests verified |
 | 12 — Final reconciliation | [Priorities, bounded outcomes, routing and remaining gaps](12-final-reconciliation.md) | Bounded audit concluded; implementation selection pending |
 | 13 — Startup text probe | [Measured shared-engine candidate and coverage migration](13-startup-text-probe-assessment.md) | Recorded; −1,296 flash bytes, unchanged RAM; production cleanup pending |
@@ -33,11 +33,11 @@ draft; research does not select or authorize implementation.
 | 17 — Follow-up reconciliation | [Prior candidate selection and readiness](17-followup-reconciliation.md) | Historical first follow-up round; superseded planning disposition in Step 21 |
 | 18 — Declaration traversal | [Bounded actual-body snapshot prerequisite](18-bounded-declaration-traversal.md) | 42 cases/84 refusals pass; additive +34,184 flash bytes; full replacement remains unsupported |
 | 19 — Clean generation | [Complete clean table emission and parity](19-clean-topology-generation.md) | Two byte-identical generations; 12 refusals; 42 semantic comparisons; zero linked size delta |
-| 20 — Static stack assessment | [Addressed evidence and unresolved control-flow boundary](20-static-stack-assessment.md) | Inspection complete; indirect targets/metadata prevent a whole-stack bound; connected evidence deferred |
-| 21 — Research closeout | [Completed queue and draft scope revision 3](21-research-closeout.md) | Hardware-free investigation complete; hardware-free round concluded; connected supplement authorized afterward |
+| 20 — Static stack assessment | [Addressed evidence and unresolved control-flow boundary](20-static-stack-assessment.md) | Inspection complete; indirect targets/metadata prevent a whole-stack bound; connected supplement in Steps 22–23 |
+| 21 — Research closeout | [Completed queue and draft scope revision 3](21-research-closeout.md) | Hardware-free round concluded; connected supplement authorized afterward |
 | 22 — Connected baseline | [Production timing, software action limits and painted startup](22-connected-baseline.md) | Pi 0.717fps; nRF 21.2s median publication gap; startup extent 19,480 bytes; full connected corpus incomplete |
-
 | 23 — Connected candidates | [Calibrated on-board hierarchy costs](23-connected-hierarchy-candidates.md) | Packed 55.6ms, roles 54.3ms; counting 6.26ms/17,896-byte extent; replacement remains unsupported |
+| 24 — Connected reconciliation | [Disposition, restoration and remaining gates](24-connected-reconciliation.md) | Bounded campaign complete; devices restored; draft scope revision 4; exceptions remain |
 
 [Findings register](findings.md) records confirmed observations separately from
 hypotheses and preferences. A step's completion does not imply every module or
@@ -51,7 +51,7 @@ prioritizes candidate fixes without selecting or authorizing implementation.
 Follow-up experiments in Steps 13–20 measure candidates and conclude with a
 retain-packed-runtime disposition. Clean generation is demonstrated; full
 runtime replacement is outside the proposed cleanup commitment. Connected work
-was subsequently authorized for bounded measurements; [Step 22](22-connected-baseline.md) records fresh results and limits. [Step 21](21-research-closeout.md) is the current
+was subsequently authorized for bounded measurements; [Step 22](22-connected-baseline.md) records fresh results and limits. [Step 24](24-connected-reconciliation.md) is the current
 planning disposition and distinguishes remaining implementation gates from
 completed investigation.
 Read the register's counterevidence and validation limits before scope approval.

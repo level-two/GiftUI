@@ -14,7 +14,8 @@ related_future_work:
   - FW-027
   - FW-033
 related_explorations: []
-related_spikes: []
+related_spikes:
+  - SPIKE-012
 promoted_to: []
 supersedes: []
 superseded_by: []
@@ -54,8 +55,8 @@ exception. Preserve the gap and measurements for the next performance iteration.
 ## Current Non-goals
 
 - No numerical requirement amendment or inference that current timing passes.
-- No architecture change, new buffering policy, firmware modification or
-  connected campaign in this documentation closeout.
+- No architecture change, new buffering policy or selected production
+  optimization. Later authorized disposable measurements are evidence only.
 
 ## Revisit Triggers
 
@@ -71,6 +72,18 @@ identity validation, pixels, heap policy, and failure behavior.
 Captured for future iterations under the explicit maintainer instruction.
 Resume compatible internal work against the existing approved contracts;
 contract or architecture changes require their normal review and approval.
+
+## 2026-10-04 bounded measurement update
+
+The maintainer authorized hardware measurements/experiments after cleanup
+research. Fresh production observations reproduce a 21.2s median publication
+gap and a 19,480-byte startup/idle sentinel extent. [SPIKE-012](../spikes/spike-012-connected-hierarchy-costs.md)
+measures approximately 55.6ms packed staging and 54.3ms named-role staging,
+plus a different-work counting prerequisite. This does not isolate lookup call
+counts, explain the whole frame gap or prove sustained admission.
+[Connected reconciliation](../iterations/iteration-002-review/24-connected-reconciliation.md)
+records restored production firmware and remaining coverage. Performance
+remediation remains captured/unselected; original requirements/exception stand.
 
 ## References
 

@@ -9,7 +9,8 @@ created: 2026-10-04
 updated: 2026-10-04
 source:
   - EXP-001
-related_future_work: []
+related_future_work:
+  - FW-032
 related_explorations:
   - EXP-001
 related_spikes:

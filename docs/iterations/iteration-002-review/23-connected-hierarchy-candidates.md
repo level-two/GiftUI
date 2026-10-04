@@ -44,5 +44,5 @@ generation remains the supported tooling candidate; named roles remain optional.
 Full declaration replacement still needs identity/state/publication design,
 complete parity, conservative bounds and agreed budgets if selected later.
 The repository J-Link runner has restored the original production image after
-the experiments. Final connected reconciliation will record the verified device
+the experiments. [Step 24](24-connected-reconciliation.md) records the verified device
 state and remaining connected coverage.
