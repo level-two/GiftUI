@@ -1,0 +1,12 @@
+{
+  "reviewed_head_before_final_commit": "dc9d8a348fa888451238b706cea6b7552762c9c0",
+  "governance": "passed: 165 nodes, 1678 edges, 6 features, 65 main lifecycle artifacts, 9 skills",
+  "markdown_files_checked": 18,
+  "local_links_checked": 134,
+  "review_python_scripts_parsed": 8,
+  "archive_members_verified": 589,
+  "archive_sha256": "b97efdfec757fdeaed82e542a12edde021fa47b49f16d9ea156c36857a1c60d8",
+  "all_changes_from_source_baseline_are_under_docs": true,
+  "diff_whitespace_check": "passed",
+  "limitation": "Documentation/provenance QA; hardware-free and remaining gaps are recorded separately."
+}

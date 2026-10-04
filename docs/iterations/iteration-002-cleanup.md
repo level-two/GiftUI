@@ -93,12 +93,16 @@ on coverage and explicit finding dispositions,
 not on repeated agent passes ceasing to produce suggestions. Discovery does not
 automatically select remediation or expand an approved iteration.
 
-The [initial reconciliation](iteration-002-review/04-reconciliation.md) recommends
-bounded interaction-capacity and evidence-tooling corrections, identifies two
-target-host simplification investigations, and preserves a performance hypothesis
-under FW-032. These are research recommendations, not selected commitments.
-Detailed module/flow/profile coverage remains open in the review matrix; the
-initial passes do not complete IT-AC-006 or finalize this scope.
+The [final research reconciliation](iteration-002-review/12-final-reconciliation.md)
+recommends bounded startup-lifecycle, interaction-capacity and evidence-tooling
+corrections, identifies two target-host simplification opportunities, and
+preserves a performance hypothesis under FW-032. Owner-boundary reviews now
+cover all maintained module groups; the coverage matrix records the audit's
+depth and remaining comparative-feasibility/connected gaps. These are research
+recommendations, not selected commitments or scope approval. IT-AC-003 remains
+open; [EXP-001](../explorations/exp-001-nrf-hierarchy-derivation.md) defines its
+questions, comparison-budget prerequisite and evidence plan. IT-AC-006's audit
+record is available for scope review; this does not finalize or close the iteration.
 
 ## Exclusions
 

@@ -1,5 +1,8 @@
 # Step 04 — Initial Findings Reconciliation
 
+Historical initial-pass record. See [final reconciliation](12-final-reconciliation.md)
+for the expanded owner reviews, latest findings and remaining evidence gaps.
+
 Date: 2026-10-04. Source baseline:
 `6cf31f266987e917458f31f05ed8c390cda9a202`.
 This reconciles the initial targeted passes. The complete audit and final
