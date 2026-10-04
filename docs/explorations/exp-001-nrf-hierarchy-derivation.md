@@ -144,6 +144,15 @@ candidate with explicit codec templates rather than previous output inputs.
 
 ## Disposition
 
+[Step 20](../iterations/iteration-002-review/20-static-stack-assessment.md)
+records completed static stack inspection: register-indirect sites and absent
+compiler stack-size metadata prevent a whole-stack bound. Observed entry
+frames are not high-water estimates. This is an explicit inconclusive stopping
+boundary; target timing/high-water remain deferred by the maintainer. Full
+runtime replacement is not a cleanup commitment, so its missing design/parity/
+budget evidence is a future selection prerequisite rather than an unfinished
+generic audit step.
+
 The first bounded research round concluded with a retain-packed-hierarchy
 recommendation. Consider selecting explicit generated/checkable semantic-role
 bindings as a smaller maintenance outcome; do not promise runtime replacement

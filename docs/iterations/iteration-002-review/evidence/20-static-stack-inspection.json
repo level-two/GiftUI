@@ -1,0 +1,2197 @@
+{
+  "revision": "eda6aa2b3b453c39610e42a0f181839f3aadc891",
+  "images": {
+    "production": {
+      "elf": ".build/nrf52840/signal-analyzer-static/zephyr/zephyr.elf",
+      "sha256": "c6d0f12c8585cad3f3949fb596e13fa7328989239a31a1f6e428afadb541ed5c",
+      "roots": [
+        {
+          "address": 56652,
+          "size": 428,
+          "symbols": [
+            "$e24SignalAnalyzerTargetHost06StaticaB25NRFEmbeddedSemanticRegionO5stage7variant5model7capture2ins6UInt16VSgAA0eaB18NRFSemanticVariantO_AA0eaB16NRFModelLocationVAA0eaB17NRFCaptureRegionsVSwtFZ"
+          ],
+          "entry_allocation_bytes": 632,
+          "entry_instructions": [
+            {
+              "address": 56652,
+              "mnemonic": "stmdb",
+              "operands": "sp!, {r4, r5, r6, r7, r8, r9, sl, fp, lr}"
+            },
+            {
+              "address": 56656,
+              "mnemonic": "sub.w",
+              "operands": "sp, sp, #596"
+            }
+          ]
+        }
+      ],
+      "reachable_function_count": 94,
+      "direct_graph_cycle_entries": [],
+      "indirect_calls_or_tail_branches": [
+        {
+          "function_symbols": [
+            "$es7_Int128V19multipliedFullWidth2byAB4high_s8_UInt128V3lowtAB_tF"
+          ],
+          "address": 22606,
+          "mnemonic": "blx",
+          "operands": "r6"
+        },
+        {
+          "function_symbols": [
+            "$es7_Int128V19multipliedFullWidth2byAB4high_s8_UInt128V3lowtAB_tF"
+          ],
+          "address": 22630,
+          "mnemonic": "blx",
+          "operands": "r6"
+        },
+        {
+          "function_symbols": [
+            "$es7_Int128V19multipliedFullWidth2byAB4high_s8_UInt128V3lowtAB_tF"
+          ],
+          "address": 22660,
+          "mnemonic": "blx",
+          "operands": "r6"
+        },
+        {
+          "function_symbols": [
+            "$es7_Int128V19multipliedFullWidth2byAB4high_s8_UInt128V3lowtAB_tF"
+          ],
+          "address": 22682,
+          "mnemonic": "blx",
+          "operands": "r6"
+        },
+        {
+          "function_symbols": [
+            "$e24SignalAnalyzerTargetHost06StaticaB24NRFPackedSemanticRecordsO10storeScope_2at2inSbAA0eaB14NRFScopeRecordV_s6UInt16VSwtFZ"
+          ],
+          "address": 50868,
+          "mnemonic": "blx",
+          "operands": "r7"
+        },
+        {
+          "function_symbols": [
+            "$e24SignalAnalyzerTargetHost06StaticaB24NRFPackedSemanticRecordsO10storeScope_2at2inSbAA0eaB14NRFScopeRecordV_s6UInt16VSwtFZ"
+          ],
+          "address": 50880,
+          "mnemonic": "blx",
+          "operands": "r7"
+        },
+        {
+          "function_symbols": [
+            "$e24SignalAnalyzerTargetHost06StaticaB24NRFPackedSemanticRecordsO10storeScope_2at2inSbAA0eaB14NRFScopeRecordV_s6UInt16VSwtFZ"
+          ],
+          "address": 50892,
+          "mnemonic": "blx",
+          "operands": "r7"
+        },
+        {
+          "function_symbols": [
+            "$e24SignalAnalyzerTargetHost06StaticaB24NRFPackedSemanticRecordsO5scope2at2inAA0eaB14NRFScopeRecordVSgs6UInt16V_SwtFZ"
+          ],
+          "address": 51068,
+          "mnemonic": "blx",
+          "operands": "r7"
+        },
+        {
+          "function_symbols": [
+            "$e24SignalAnalyzerTargetHost06StaticaB24NRFPackedSemanticRecordsO5scope2at2inAA0eaB14NRFScopeRecordVSgs6UInt16V_SwtFZ"
+          ],
+          "address": 51078,
+          "mnemonic": "blx",
+          "operands": "r7"
+        },
+        {
+          "function_symbols": [
+            "$e24SignalAnalyzerTargetHost06StaticaB24NRFPackedSemanticRecordsO5scope2at2inAA0eaB14NRFScopeRecordVSgs6UInt16V_SwtFZ"
+          ],
+          "address": 51090,
+          "mnemonic": "blx",
+          "operands": "r1"
+        },
+        {
+          "function_symbols": [
+            "$e24SignalAnalyzerTargetHost06StaticaB18NRFModelTextWriterO8populate7variant5model7capture2ins6UInt16VSgAA0eaB18NRFSemanticVariantO_AA0eabF8LocationVAA0eaB17NRFCaptureRegionsVSwtFZ"
+          ],
+          "address": 53262,
+          "mnemonic": "blx",
+          "operands": "fp"
+        },
+        {
+          "function_symbols": [
+            "$e24SignalAnalyzerTargetHost06StaticaB18NRFModelTextWriterO8populate7variant5model7capture2ins6UInt16VSgAA0eaB18NRFSemanticVariantO_AA0eabF8LocationVAA0eaB17NRFCaptureRegionsVSwtFZ"
+          ],
+          "address": 53272,
+          "mnemonic": "blx",
+          "operands": "fp"
+        },
+        {
+          "function_symbols": [
+            "$e24SignalAnalyzerTargetHost06StaticaB18NRFModelTextWriterO8populate7variant5model7capture2ins6UInt16VSgAA0eaB18NRFSemanticVariantO_AA0eabF8LocationVAA0eaB17NRFCaptureRegionsVSwtFZ"
+          ],
+          "address": 53280,
+          "mnemonic": "blx",
+          "operands": "fp"
+        },
+        {
+          "function_symbols": [
+            "$e24SignalAnalyzerTargetHost06StaticaB18NRFModelTextWriterO8populate7variant5model7capture2ins6UInt16VSgAA0eaB18NRFSemanticVariantO_AA0eabF8LocationVAA0eaB17NRFCaptureRegionsVSwtFZ"
+          ],
+          "address": 53554,
+          "mnemonic": "blx",
+          "operands": "fp"
+        },
+        {
+          "function_symbols": [
+            "$e24SignalAnalyzerTargetHost06StaticaB18NRFModelTextWriterO8populate7variant5model7capture2ins6UInt16VSgAA0eaB18NRFSemanticVariantO_AA0eabF8LocationVAA0eaB17NRFCaptureRegionsVSwtFZ"
+          ],
+          "address": 53560,
+          "mnemonic": "blx",
+          "operands": "fp"
+        },
+        {
+          "function_symbols": [
+            "$e24SignalAnalyzerTargetHost06StaticaB18NRFModelTextWriterO8populate7variant5model7capture2ins6UInt16VSgAA0eaB18NRFSemanticVariantO_AA0eabF8LocationVAA0eaB17NRFCaptureRegionsVSwtFZ"
+          ],
+          "address": 53566,
+          "mnemonic": "blx",
+          "operands": "fp"
+        },
+        {
+          "function_symbols": [
+            "$e24SignalAnalyzerTargetHost06StaticaB28NRFEmbeddedSemanticValidatorO8validate7variant13textByteCount2inSbAA0eaB18NRFSemanticVariantO_s6UInt16VSwtFZ"
+          ],
+          "address": 55662,
+          "mnemonic": "blx",
+          "operands": "r6"
+        },
+        {
+          "function_symbols": [
+            "$e24SignalAnalyzerTargetHost06StaticaB28NRFEmbeddedSemanticValidatorO8validate7variant13textByteCount2inSbAA0eaB18NRFSemanticVariantO_s6UInt16VSwtFZ"
+          ],
+          "address": 55668,
+          "mnemonic": "blx",
+          "operands": "r6"
+        },
+        {
+          "function_symbols": [
+            "$e24SignalAnalyzerTargetHost06StaticaB28NRFEmbeddedSemanticValidatorO8validate7variant13textByteCount2inSbAA0eaB18NRFSemanticVariantO_s6UInt16VSwtFZ"
+          ],
+          "address": 55674,
+          "mnemonic": "blx",
+          "operands": "r6"
+        },
+        {
+          "function_symbols": [
+            "$e24SignalAnalyzerTargetHost06StaticaB28NRFEmbeddedSemanticValidatorO13incomingLinks33_CD3AE57164B4922038E3E425581D90C5LL2to5count2ins5UInt8Vs6UInt16V_ALSwtFZ"
+          ],
+          "address": 56548,
+          "mnemonic": "blx",
+          "operands": "r7"
+        },
+        {
+          "function_symbols": [
+            "$e24SignalAnalyzerTargetHost06StaticaB28NRFEmbeddedSemanticValidatorO13incomingLinks33_CD3AE57164B4922038E3E425581D90C5LL2to5count2ins5UInt8Vs6UInt16V_ALSwtFZ"
+          ],
+          "address": 56556,
+          "mnemonic": "blx",
+          "operands": "r7"
+        },
+        {
+          "function_symbols": [
+            "$e24SignalAnalyzerTargetHost06StaticaB28NRFEmbeddedSemanticValidatorO13incomingLinks33_CD3AE57164B4922038E3E425581D90C5LL2to5count2ins5UInt8Vs6UInt16V_ALSwtFZ"
+          ],
+          "address": 56564,
+          "mnemonic": "blx",
+          "operands": "r7"
+        }
+      ],
+      "unresolved_direct_edges": [
+        {
+          "function_symbols": [
+            "$e26SignalAnalyzerPresentation0aB18TimelineFormattingO7secondsy0aB6Domain0aB10DiagnosticVs8DurationVFZ"
+          ],
+          "address": 21820,
+          "mnemonic": "bl",
+          "operands": "1d0 <__aeabi_uldivmod>"
+        },
+        {
+          "function_symbols": [
+            "$e26SignalAnalyzerPresentation0aB18TimelineFormattingO7secondsy0aB6Domain0aB10DiagnosticVs8DurationVFZ"
+          ],
+          "address": 21944,
+          "mnemonic": "bl",
+          "operands": "130 <__aeabi_ldivmod>"
+        },
+        {
+          "function_symbols": [
+            "$e26SignalAnalyzerPresentation0aB18TimelineFormattingO7secondsy0aB6Domain0aB10DiagnosticVs8DurationVFZ"
+          ],
+          "address": 21970,
+          "mnemonic": "bl",
+          "operands": "1d0 <__aeabi_uldivmod>"
+        },
+        {
+          "function_symbols": [
+            "$e24SignalAnalyzerTargetHost06StaticaB18NRFModelTextWriterO8populate7variant5model7capture2ins6UInt16VSgAA0eaB18NRFSemanticVariantO_AA0eabF8LocationVAA0eaB17NRFCaptureRegionsVSwtFZ"
+          ],
+          "address": 53608,
+          "mnemonic": "bl",
+          "operands": "3b48c <giftui_signal_analyzer_input_quiesce+0x5eec>"
+        },
+        {
+          "function_symbols": [
+            "$e24SignalAnalyzerTargetHost06StaticaB18NRFModelTextWriterO5value33_CD3AE57164B4922038E3E425581D90C5LL2at7variant5model7capture0aB6Domain0aB10DiagnosticVSgs6UInt16V_AA0eaB18NRFSemanticVariantOAA0eabF8LocationVAA0eaB17NRFCaptureRegionsVtFZ"
+          ],
+          "address": 54106,
+          "mnemonic": "bl",
+          "operands": "3b4c6 <giftui_signal_analyzer_input_quiesce+0x5f26>"
+        },
+        {
+          "function_symbols": [
+            "$e24SignalAnalyzerTargetHost06StaticaB18NRFModelTextWriterO5value33_CD3AE57164B4922038E3E425581D90C5LL2at7variant5model7capture0aB6Domain0aB10DiagnosticVSgs6UInt16V_AA0eaB18NRFSemanticVariantOAA0eabF8LocationVAA0eaB17NRFCaptureRegionsVtFZ"
+          ],
+          "address": 54200,
+          "mnemonic": "bl",
+          "operands": "3b4b4 <giftui_signal_analyzer_input_quiesce+0x5f14>"
+        },
+        {
+          "function_symbols": [
+            "$e24SignalAnalyzerTargetHost06StaticaB18NRFModelTextWriterO5level33_CD3AE57164B4922038E3E425581D90C5LL7channel5model7capture0aB6Domain0aB10DiagnosticVSgSi_AA0eabF8LocationVAA0eaB17NRFCaptureRegionsVtFZ"
+          ],
+          "address": 54416,
+          "mnemonic": "bl",
+          "operands": "3b4b4 <giftui_signal_analyzer_input_quiesce+0x5f14>"
+        },
+        {
+          "function_symbols": [
+            "$e24SignalAnalyzerTargetHost06StaticaB25NRFEmbeddedSemanticRegionO5stage7variant5model7capture2ins6UInt16VSgAA0eaB18NRFSemanticVariantO_AA0eaB16NRFModelLocationVAA0eaB17NRFCaptureRegionsVSwtFZ"
+          ],
+          "address": 56732,
+          "mnemonic": "bl",
+          "operands": "3b48c <giftui_signal_analyzer_input_quiesce+0x5eec>"
+        },
+        {
+          "function_symbols": [
+            "$e24SignalAnalyzerTargetHost06StaticaB25NRFEmbeddedSemanticRegionO12encodePrefix33_CD3AE57164B4922038E3E425581D90C5LL7variant5model2inyAA0eaB18NRFSemanticVariantO_AA0eaB16NRFModelLocationVSwtFZ"
+          ],
+          "address": 57188,
+          "mnemonic": "bl",
+          "operands": "3b48c <giftui_signal_analyzer_input_quiesce+0x5eec>"
+        },
+        {
+          "function_symbols": [
+            "$e24SignalAnalyzerTargetHost06StaticaB18NRFModelTextWriterO5fixed33_CD3AE57164B4922038E3E425581D90C5LLy0aB6Domain0aB10DiagnosticVSgs0E6StringVFZ"
+          ],
+          "address": 205068,
+          "mnemonic": "bl",
+          "operands": "3b4b4 <giftui_signal_analyzer_input_quiesce+0x5f14>"
+        },
+        {
+          "function_symbols": [
+            "$e20SignalAnalyzerDomain0aB10DiagnosticV10truncating4utf8AA0abD12ConstructionOx_tSlRzs5UInt8V7ElementRtzlFZSRyAIG_Tt0g5"
+          ],
+          "address": 236236,
+          "mnemonic": "bl",
+          "operands": "3b4c6 <giftui_signal_analyzer_input_quiesce+0x5f26>"
+        },
+        {
+          "function_symbols": [
+            "$es13_wideDivide2233_01352DAC517C06837D2107CA00914BA8LL_2byx4high_9MagnitudeSjQz3lowt8quotient_xAD_AfGt9remaindertxAD_AfGt_xAD_AfGtts17FixedWidthIntegerRzSURzlFs6UInt64V_Tg5"
+          ],
+          "address": 236898,
+          "mnemonic": "bl",
+          "operands": "1d0 <__aeabi_uldivmod>"
+        },
+        {
+          "function_symbols": [
+            "$es13_wideDivide2233_01352DAC517C06837D2107CA00914BA8LL_2byx4high_9MagnitudeSjQz3lowt8quotient_xAD_AfGt9remaindertxAD_AfGt_xAD_AfGtts17FixedWidthIntegerRzSURzlFs6UInt64V_Tg5"
+          ],
+          "address": 236948,
+          "mnemonic": "bl",
+          "operands": "1d0 <__aeabi_uldivmod>"
+        },
+        {
+          "function_symbols": [
+            "$es13_wideDivide2233_01352DAC517C06837D2107CA00914BA8LL_2byx4high_9MagnitudeSjQz3lowt8quotient_xAD_AfGt9remaindertxAD_AfGt_xAD_AfGtts17FixedWidthIntegerRzSURzlFs6UInt64V_Tg5"
+          ],
+          "address": 237520,
+          "mnemonic": "bl",
+          "operands": "1d0 <__aeabi_uldivmod>"
+        },
+        {
+          "function_symbols": [
+            "$eSUss17FixedWidthIntegerRzrlE012dividingFullB0yx8quotient_x9remaindertx4high_9MagnitudeSjQz3lowt_tFs6UInt64V_Tg5"
+          ],
+          "address": 237728,
+          "mnemonic": "bl",
+          "operands": "1d0 <__aeabi_uldivmod>"
+        },
+        {
+          "function_symbols": [
+            "$eSUss17FixedWidthIntegerRzrlE012dividingFullB0yx8quotient_x9remaindertx4high_9MagnitudeSjQz3lowt_tFs6UInt64V_Tg5"
+          ],
+          "address": 237800,
+          "mnemonic": "bl",
+          "operands": "1d0 <__aeabi_uldivmod>"
+        },
+        {
+          "function_symbols": [
+            "$eSUss17FixedWidthIntegerRzrlE012dividingFullB0yx8quotient_x9remaindertx4high_9MagnitudeSjQz3lowt_tFs6UInt64V_Tg5"
+          ],
+          "address": 237986,
+          "mnemonic": "bl",
+          "operands": "1d0 <__aeabi_uldivmod>"
+        },
+        {
+          "function_symbols": [
+            "$eSUss17FixedWidthIntegerRzrlE012dividingFullB0yx8quotient_x9remaindertx4high_9MagnitudeSjQz3lowt_tFs6UInt64V_Tg5"
+          ],
+          "address": 238002,
+          "mnemonic": "bl",
+          "operands": "1d0 <__aeabi_uldivmod>"
+        },
+        {
+          "function_symbols": [
+            "OUTLINED_FUNCTION_77"
+          ],
+          "address": 244580,
+          "mnemonic": "b.w",
+          "operands": "3b48c <giftui_signal_analyzer_input_quiesce+0x5eec>"
+        },
+        {
+          "function_symbols": [
+            "OUTLINED_FUNCTION_104"
+          ],
+          "address": 244848,
+          "mnemonic": "bl",
+          "operands": "3b48c <giftui_signal_analyzer_input_quiesce+0x5eec>"
+        },
+        {
+          "function_symbols": [
+            "OUTLINED_FUNCTION_106"
+          ],
+          "address": 244870,
+          "mnemonic": "b.w",
+          "operands": "3b48c <giftui_signal_analyzer_input_quiesce+0x5eec>"
+        },
+        {
+          "function_symbols": [
+            "OUTLINED_FUNCTION_111"
+          ],
+          "address": 244894,
+          "mnemonic": "b.w",
+          "operands": "3b4c6 <giftui_signal_analyzer_input_quiesce+0x5f26>"
+        },
+        {
+          "function_symbols": [
+            "OUTLINED_FUNCTION_244"
+          ],
+          "address": 245954,
+          "mnemonic": "b.w",
+          "operands": "3b4b4 <giftui_signal_analyzer_input_quiesce+0x5f14>"
+        }
+      ],
+      "largest_observed_entry_allocations": [
+        {
+          "address": 56652,
+          "size": 428,
+          "symbols": [
+            "$e24SignalAnalyzerTargetHost06StaticaB25NRFEmbeddedSemanticRegionO5stage7variant5model7capture2ins6UInt16VSgAA0eaB18NRFSemanticVariantO_AA0eaB16NRFModelLocationVAA0eaB17NRFCaptureRegionsVSwtFZ"
+          ],
+          "entry_allocation_bytes": 632,
+          "entry_instructions": [
+            {
+              "address": 56652,
+              "mnemonic": "stmdb",
+              "operands": "sp!, {r4, r5, r6, r7, r8, r9, sl, fp, lr}"
+            },
+            {
+              "address": 56656,
+              "mnemonic": "sub.w",
+              "operands": "sp, sp, #596"
+            }
+          ]
+        },
+        {
+          "address": 53100,
+          "size": 700,
+          "symbols": [
+            "$e24SignalAnalyzerTargetHost06StaticaB18NRFModelTextWriterO8populate7variant5model7capture2ins6UInt16VSgAA0eaB18NRFSemanticVariantO_AA0eabF8LocationVAA0eaB17NRFCaptureRegionsVSwtFZ"
+          ],
+          "entry_allocation_bytes": 608,
+          "entry_instructions": [
+            {
+              "address": 53100,
+              "mnemonic": "stmdb",
+              "operands": "sp!, {r4, r5, r6, r7, r8, r9, sl, fp, lr}"
+            },
+            {
+              "address": 53104,
+              "mnemonic": "sub.w",
+              "operands": "sp, sp, #572"
+            }
+          ]
+        },
+        {
+          "address": 180426,
+          "size": 620,
+          "symbols": [
+            "$e20SignalAnalyzerDomain0aB10DiagnosticV10truncating4utf8AA0abD12ConstructionOx_tSlRzs5UInt8V7ElementRtzlFZs5SliceVySWG_Tt0g5"
+          ],
+          "entry_allocation_bytes": 448,
+          "entry_instructions": [
+            {
+              "address": 180426,
+              "mnemonic": "stmdb",
+              "operands": "sp!, {r4, r5, r6, r7, r8, r9, sl, fp, lr}"
+            },
+            {
+              "address": 180430,
+              "mnemonic": "sub",
+              "operands": "sp, #412"
+            }
+          ]
+        },
+        {
+          "address": 235796,
+          "size": 482,
+          "symbols": [
+            "$e20SignalAnalyzerDomain0aB10DiagnosticV10truncating4utf8AA0abD12ConstructionOx_tSlRzs5UInt8V7ElementRtzlFZSRyAIG_Tt0g5"
+          ],
+          "entry_allocation_bytes": 432,
+          "entry_instructions": [
+            {
+              "address": 235796,
+              "mnemonic": "stmdb",
+              "operands": "sp!, {r4, r5, r6, r7, r8, r9, sl, fp, lr}"
+            },
+            {
+              "address": 235800,
+              "mnemonic": "sub",
+              "operands": "sp, #396"
+            }
+          ]
+        },
+        {
+          "address": 205030,
+          "size": 84,
+          "symbols": [
+            "$e24SignalAnalyzerTargetHost06StaticaB18NRFModelTextWriterO5fixed33_CD3AE57164B4922038E3E425581D90C5LLy0aB6Domain0aB10DiagnosticVSgs0E6StringVFZ"
+          ],
+          "entry_allocation_bytes": 320,
+          "entry_instructions": [
+            {
+              "address": 205030,
+              "mnemonic": "push",
+              "operands": "{r4, r5, r7, lr}"
+            },
+            {
+              "address": 205032,
+              "mnemonic": "sub",
+              "operands": "sp, #304"
+            }
+          ]
+        }
+      ],
+      "stack_config": [
+        "CONFIG_SYSTEM_WORKQUEUE_STACK_SIZE=1024",
+        "CONFIG_MAIN_STACK_SIZE=27648",
+        "CONFIG_IDLE_STACK_SIZE=320",
+        "CONFIG_ISR_STACK_SIZE=2048"
+      ]
+    },
+    "named_roles": {
+      "elf": ".build/nrf52840/spike-009-hierarchy-roles/firmware/zephyr/zephyr.elf",
+      "sha256": "9e59cbf70ff7b270aae7a19c3d689b60d6e98ea7ae85ff992784abd29dce7651",
+      "roots": [
+        {
+          "address": 56720,
+          "size": 428,
+          "symbols": [
+            "$e24SignalAnalyzerTargetHost06StaticaB25NRFEmbeddedSemanticRegionO5stage7variant5model7capture2ins6UInt16VSgAA0eaB18NRFSemanticVariantO_AA0eaB16NRFModelLocationVAA0eaB17NRFCaptureRegionsVSwtFZ"
+          ],
+          "entry_allocation_bytes": 632,
+          "entry_instructions": [
+            {
+              "address": 56720,
+              "mnemonic": "stmdb",
+              "operands": "sp!, {r4, r5, r6, r7, r8, r9, sl, fp, lr}"
+            },
+            {
+              "address": 56724,
+              "mnemonic": "sub.w",
+              "operands": "sp, sp, #596"
+            }
+          ]
+        }
+      ],
+      "reachable_function_count": 94,
+      "direct_graph_cycle_entries": [],
+      "indirect_calls_or_tail_branches": [
+        {
+          "function_symbols": [
+            "$es7_Int128V19multipliedFullWidth2byAB4high_s8_UInt128V3lowtAB_tF"
+          ],
+          "address": 22606,
+          "mnemonic": "blx",
+          "operands": "r6"
+        },
+        {
+          "function_symbols": [
+            "$es7_Int128V19multipliedFullWidth2byAB4high_s8_UInt128V3lowtAB_tF"
+          ],
+          "address": 22630,
+          "mnemonic": "blx",
+          "operands": "r6"
+        },
+        {
+          "function_symbols": [
+            "$es7_Int128V19multipliedFullWidth2byAB4high_s8_UInt128V3lowtAB_tF"
+          ],
+          "address": 22660,
+          "mnemonic": "blx",
+          "operands": "r6"
+        },
+        {
+          "function_symbols": [
+            "$es7_Int128V19multipliedFullWidth2byAB4high_s8_UInt128V3lowtAB_tF"
+          ],
+          "address": 22682,
+          "mnemonic": "blx",
+          "operands": "r6"
+        },
+        {
+          "function_symbols": [
+            "$e24SignalAnalyzerTargetHost06StaticaB24NRFPackedSemanticRecordsO10storeScope_2at2inSbAA0eaB14NRFScopeRecordV_s6UInt16VSwtFZ"
+          ],
+          "address": 50860,
+          "mnemonic": "blx",
+          "operands": "r7"
+        },
+        {
+          "function_symbols": [
+            "$e24SignalAnalyzerTargetHost06StaticaB24NRFPackedSemanticRecordsO10storeScope_2at2inSbAA0eaB14NRFScopeRecordV_s6UInt16VSwtFZ"
+          ],
+          "address": 50872,
+          "mnemonic": "blx",
+          "operands": "r7"
+        },
+        {
+          "function_symbols": [
+            "$e24SignalAnalyzerTargetHost06StaticaB24NRFPackedSemanticRecordsO10storeScope_2at2inSbAA0eaB14NRFScopeRecordV_s6UInt16VSwtFZ"
+          ],
+          "address": 50884,
+          "mnemonic": "blx",
+          "operands": "r7"
+        },
+        {
+          "function_symbols": [
+            "$e24SignalAnalyzerTargetHost06StaticaB24NRFPackedSemanticRecordsO5scope2at2inAA0eaB14NRFScopeRecordVSgs6UInt16V_SwtFZ"
+          ],
+          "address": 51060,
+          "mnemonic": "blx",
+          "operands": "r7"
+        },
+        {
+          "function_symbols": [
+            "$e24SignalAnalyzerTargetHost06StaticaB24NRFPackedSemanticRecordsO5scope2at2inAA0eaB14NRFScopeRecordVSgs6UInt16V_SwtFZ"
+          ],
+          "address": 51070,
+          "mnemonic": "blx",
+          "operands": "r7"
+        },
+        {
+          "function_symbols": [
+            "$e24SignalAnalyzerTargetHost06StaticaB24NRFPackedSemanticRecordsO5scope2at2inAA0eaB14NRFScopeRecordVSgs6UInt16V_SwtFZ"
+          ],
+          "address": 51082,
+          "mnemonic": "blx",
+          "operands": "r1"
+        },
+        {
+          "function_symbols": [
+            "$e24SignalAnalyzerTargetHost06StaticaB18NRFModelTextWriterO8populate7variant5model7capture2ins6UInt16VSgAA0eaB18NRFSemanticVariantO_AA0eabF8LocationVAA0eaB17NRFCaptureRegionsVSwtFZ"
+          ],
+          "address": 53250,
+          "mnemonic": "blx",
+          "operands": "sl"
+        },
+        {
+          "function_symbols": [
+            "$e24SignalAnalyzerTargetHost06StaticaB18NRFModelTextWriterO8populate7variant5model7capture2ins6UInt16VSgAA0eaB18NRFSemanticVariantO_AA0eabF8LocationVAA0eaB17NRFCaptureRegionsVSwtFZ"
+          ],
+          "address": 53260,
+          "mnemonic": "blx",
+          "operands": "sl"
+        },
+        {
+          "function_symbols": [
+            "$e24SignalAnalyzerTargetHost06StaticaB18NRFModelTextWriterO8populate7variant5model7capture2ins6UInt16VSgAA0eaB18NRFSemanticVariantO_AA0eabF8LocationVAA0eaB17NRFCaptureRegionsVSwtFZ"
+          ],
+          "address": 53268,
+          "mnemonic": "blx",
+          "operands": "sl"
+        },
+        {
+          "function_symbols": [
+            "$e24SignalAnalyzerTargetHost06StaticaB18NRFModelTextWriterO8populate7variant5model7capture2ins6UInt16VSgAA0eaB18NRFSemanticVariantO_AA0eabF8LocationVAA0eaB17NRFCaptureRegionsVSwtFZ"
+          ],
+          "address": 53542,
+          "mnemonic": "blx",
+          "operands": "sl"
+        },
+        {
+          "function_symbols": [
+            "$e24SignalAnalyzerTargetHost06StaticaB18NRFModelTextWriterO8populate7variant5model7capture2ins6UInt16VSgAA0eaB18NRFSemanticVariantO_AA0eabF8LocationVAA0eaB17NRFCaptureRegionsVSwtFZ"
+          ],
+          "address": 53550,
+          "mnemonic": "blx",
+          "operands": "sl"
+        },
+        {
+          "function_symbols": [
+            "$e24SignalAnalyzerTargetHost06StaticaB18NRFModelTextWriterO8populate7variant5model7capture2ins6UInt16VSgAA0eaB18NRFSemanticVariantO_AA0eabF8LocationVAA0eaB17NRFCaptureRegionsVSwtFZ"
+          ],
+          "address": 53556,
+          "mnemonic": "blx",
+          "operands": "sl"
+        },
+        {
+          "function_symbols": [
+            "$e24SignalAnalyzerTargetHost06StaticaB28NRFEmbeddedSemanticValidatorO8validate7variant13textByteCount2inSbAA0eaB18NRFSemanticVariantO_s6UInt16VSwtFZ"
+          ],
+          "address": 55730,
+          "mnemonic": "blx",
+          "operands": "r6"
+        },
+        {
+          "function_symbols": [
+            "$e24SignalAnalyzerTargetHost06StaticaB28NRFEmbeddedSemanticValidatorO8validate7variant13textByteCount2inSbAA0eaB18NRFSemanticVariantO_s6UInt16VSwtFZ"
+          ],
+          "address": 55736,
+          "mnemonic": "blx",
+          "operands": "r6"
+        },
+        {
+          "function_symbols": [
+            "$e24SignalAnalyzerTargetHost06StaticaB28NRFEmbeddedSemanticValidatorO8validate7variant13textByteCount2inSbAA0eaB18NRFSemanticVariantO_s6UInt16VSwtFZ"
+          ],
+          "address": 55742,
+          "mnemonic": "blx",
+          "operands": "r6"
+        },
+        {
+          "function_symbols": [
+            "$e24SignalAnalyzerTargetHost06StaticaB28NRFEmbeddedSemanticValidatorO13incomingLinks33_CD3AE57164B4922038E3E425581D90C5LL2to5count2ins5UInt8Vs6UInt16V_ALSwtFZ"
+          ],
+          "address": 56616,
+          "mnemonic": "blx",
+          "operands": "r7"
+        },
+        {
+          "function_symbols": [
+            "$e24SignalAnalyzerTargetHost06StaticaB28NRFEmbeddedSemanticValidatorO13incomingLinks33_CD3AE57164B4922038E3E425581D90C5LL2to5count2ins5UInt8Vs6UInt16V_ALSwtFZ"
+          ],
+          "address": 56624,
+          "mnemonic": "blx",
+          "operands": "r7"
+        },
+        {
+          "function_symbols": [
+            "$e24SignalAnalyzerTargetHost06StaticaB28NRFEmbeddedSemanticValidatorO13incomingLinks33_CD3AE57164B4922038E3E425581D90C5LL2to5count2ins5UInt8Vs6UInt16V_ALSwtFZ"
+          ],
+          "address": 56632,
+          "mnemonic": "blx",
+          "operands": "r7"
+        }
+      ],
+      "unresolved_direct_edges": [
+        {
+          "function_symbols": [
+            "$e26SignalAnalyzerPresentation0aB18TimelineFormattingO7secondsy0aB6Domain0aB10DiagnosticVs8DurationVFZ"
+          ],
+          "address": 21820,
+          "mnemonic": "bl",
+          "operands": "1d0 <__aeabi_uldivmod>"
+        },
+        {
+          "function_symbols": [
+            "$e26SignalAnalyzerPresentation0aB18TimelineFormattingO7secondsy0aB6Domain0aB10DiagnosticVs8DurationVFZ"
+          ],
+          "address": 21944,
+          "mnemonic": "bl",
+          "operands": "130 <__aeabi_ldivmod>"
+        },
+        {
+          "function_symbols": [
+            "$e26SignalAnalyzerPresentation0aB18TimelineFormattingO7secondsy0aB6Domain0aB10DiagnosticVs8DurationVFZ"
+          ],
+          "address": 21970,
+          "mnemonic": "bl",
+          "operands": "1d0 <__aeabi_uldivmod>"
+        },
+        {
+          "function_symbols": [
+            "$e24SignalAnalyzerTargetHost06StaticaB18NRFModelTextWriterO5value33_CD3AE57164B4922038E3E425581D90C5LL2at7variant5model7capture0aB6Domain0aB10DiagnosticVSgs6UInt16V_AA0eaB18NRFSemanticVariantOAA0eabF8LocationVAA0eaB17NRFCaptureRegionsVtFZ"
+          ],
+          "address": 54128,
+          "mnemonic": "bl",
+          "operands": "3b4f8 <giftui_signal_analyzer_input_quiesce+0x5f26>"
+        },
+        {
+          "function_symbols": [
+            "$e24SignalAnalyzerTargetHost06StaticaB18NRFModelTextWriterO5value33_CD3AE57164B4922038E3E425581D90C5LL2at7variant5model7capture0aB6Domain0aB10DiagnosticVSgs6UInt16V_AA0eaB18NRFSemanticVariantOAA0eabF8LocationVAA0eaB17NRFCaptureRegionsVtFZ"
+          ],
+          "address": 54218,
+          "mnemonic": "bl",
+          "operands": "3b4e6 <giftui_signal_analyzer_input_quiesce+0x5f14>"
+        },
+        {
+          "function_symbols": [
+            "$e24SignalAnalyzerTargetHost06StaticaB18NRFModelTextWriterO5level33_CD3AE57164B4922038E3E425581D90C5LL7channel5model7capture0aB6Domain0aB10DiagnosticVSgSi_AA0eabF8LocationVAA0eaB17NRFCaptureRegionsVtFZ"
+          ],
+          "address": 54468,
+          "mnemonic": "bl",
+          "operands": "3b4e6 <giftui_signal_analyzer_input_quiesce+0x5f14>"
+        },
+        {
+          "function_symbols": [
+            "$e24SignalAnalyzerTargetHost06StaticaB25NRFEmbeddedSemanticRegionO5stage7variant5model7capture2ins6UInt16VSgAA0eaB18NRFSemanticVariantO_AA0eaB16NRFModelLocationVAA0eaB17NRFCaptureRegionsVSwtFZ"
+          ],
+          "address": 56800,
+          "mnemonic": "bl",
+          "operands": "3b4be <giftui_signal_analyzer_input_quiesce+0x5eec>"
+        },
+        {
+          "function_symbols": [
+            "$e24SignalAnalyzerTargetHost06StaticaB25NRFEmbeddedSemanticRegionO12encodePrefix33_CD3AE57164B4922038E3E425581D90C5LL7variant5model2inyAA0eaB18NRFSemanticVariantO_AA0eaB16NRFModelLocationVSwtFZ"
+          ],
+          "address": 57256,
+          "mnemonic": "bl",
+          "operands": "3b4be <giftui_signal_analyzer_input_quiesce+0x5eec>"
+        },
+        {
+          "function_symbols": [
+            "$e24SignalAnalyzerTargetHost06StaticaB18NRFModelTextWriterO5fixed33_CD3AE57164B4922038E3E425581D90C5LLy0aB6Domain0aB10DiagnosticVSgs0E6StringVFZ"
+          ],
+          "address": 205122,
+          "mnemonic": "bl",
+          "operands": "3b4e6 <giftui_signal_analyzer_input_quiesce+0x5f14>"
+        },
+        {
+          "function_symbols": [
+            "$e20SignalAnalyzerDomain0aB10DiagnosticV10truncating4utf8AA0abD12ConstructionOx_tSlRzs5UInt8V7ElementRtzlFZSRyAIG_Tt0g5"
+          ],
+          "address": 236286,
+          "mnemonic": "bl",
+          "operands": "3b4f8 <giftui_signal_analyzer_input_quiesce+0x5f26>"
+        },
+        {
+          "function_symbols": [
+            "$es13_wideDivide2233_01352DAC517C06837D2107CA00914BA8LL_2byx4high_9MagnitudeSjQz3lowt8quotient_xAD_AfGt9remaindertxAD_AfGt_xAD_AfGtts17FixedWidthIntegerRzSURzlFs6UInt64V_Tg5"
+          ],
+          "address": 236948,
+          "mnemonic": "bl",
+          "operands": "1d0 <__aeabi_uldivmod>"
+        },
+        {
+          "function_symbols": [
+            "$es13_wideDivide2233_01352DAC517C06837D2107CA00914BA8LL_2byx4high_9MagnitudeSjQz3lowt8quotient_xAD_AfGt9remaindertxAD_AfGt_xAD_AfGtts17FixedWidthIntegerRzSURzlFs6UInt64V_Tg5"
+          ],
+          "address": 236998,
+          "mnemonic": "bl",
+          "operands": "1d0 <__aeabi_uldivmod>"
+        },
+        {
+          "function_symbols": [
+            "$es13_wideDivide2233_01352DAC517C06837D2107CA00914BA8LL_2byx4high_9MagnitudeSjQz3lowt8quotient_xAD_AfGt9remaindertxAD_AfGt_xAD_AfGtts17FixedWidthIntegerRzSURzlFs6UInt64V_Tg5"
+          ],
+          "address": 237570,
+          "mnemonic": "bl",
+          "operands": "1d0 <__aeabi_uldivmod>"
+        },
+        {
+          "function_symbols": [
+            "$eSUss17FixedWidthIntegerRzrlE012dividingFullB0yx8quotient_x9remaindertx4high_9MagnitudeSjQz3lowt_tFs6UInt64V_Tg5"
+          ],
+          "address": 237778,
+          "mnemonic": "bl",
+          "operands": "1d0 <__aeabi_uldivmod>"
+        },
+        {
+          "function_symbols": [
+            "$eSUss17FixedWidthIntegerRzrlE012dividingFullB0yx8quotient_x9remaindertx4high_9MagnitudeSjQz3lowt_tFs6UInt64V_Tg5"
+          ],
+          "address": 237850,
+          "mnemonic": "bl",
+          "operands": "1d0 <__aeabi_uldivmod>"
+        },
+        {
+          "function_symbols": [
+            "$eSUss17FixedWidthIntegerRzrlE012dividingFullB0yx8quotient_x9remaindertx4high_9MagnitudeSjQz3lowt_tFs6UInt64V_Tg5"
+          ],
+          "address": 238036,
+          "mnemonic": "bl",
+          "operands": "1d0 <__aeabi_uldivmod>"
+        },
+        {
+          "function_symbols": [
+            "$eSUss17FixedWidthIntegerRzrlE012dividingFullB0yx8quotient_x9remaindertx4high_9MagnitudeSjQz3lowt_tFs6UInt64V_Tg5"
+          ],
+          "address": 238052,
+          "mnemonic": "bl",
+          "operands": "1d0 <__aeabi_uldivmod>"
+        },
+        {
+          "function_symbols": [
+            "OUTLINED_FUNCTION_75"
+          ],
+          "address": 244616,
+          "mnemonic": "b.w",
+          "operands": "3b4be <giftui_signal_analyzer_input_quiesce+0x5eec>"
+        },
+        {
+          "function_symbols": [
+            "OUTLINED_FUNCTION_98"
+          ],
+          "address": 244846,
+          "mnemonic": "bl",
+          "operands": "3b4be <giftui_signal_analyzer_input_quiesce+0x5eec>"
+        },
+        {
+          "function_symbols": [
+            "OUTLINED_FUNCTION_105"
+          ],
+          "address": 244914,
+          "mnemonic": "b.w",
+          "operands": "3b4be <giftui_signal_analyzer_input_quiesce+0x5eec>"
+        },
+        {
+          "function_symbols": [
+            "OUTLINED_FUNCTION_106"
+          ],
+          "address": 244922,
+          "mnemonic": "bl",
+          "operands": "3b4be <giftui_signal_analyzer_input_quiesce+0x5eec>"
+        },
+        {
+          "function_symbols": [
+            "OUTLINED_FUNCTION_112"
+          ],
+          "address": 244962,
+          "mnemonic": "b.w",
+          "operands": "3b4f8 <giftui_signal_analyzer_input_quiesce+0x5f26>"
+        },
+        {
+          "function_symbols": [
+            "OUTLINED_FUNCTION_248"
+          ],
+          "address": 246044,
+          "mnemonic": "b.w",
+          "operands": "3b4e6 <giftui_signal_analyzer_input_quiesce+0x5f14>"
+        }
+      ],
+      "largest_observed_entry_allocations": [
+        {
+          "address": 56720,
+          "size": 428,
+          "symbols": [
+            "$e24SignalAnalyzerTargetHost06StaticaB25NRFEmbeddedSemanticRegionO5stage7variant5model7capture2ins6UInt16VSgAA0eaB18NRFSemanticVariantO_AA0eaB16NRFModelLocationVAA0eaB17NRFCaptureRegionsVSwtFZ"
+          ],
+          "entry_allocation_bytes": 632,
+          "entry_instructions": [
+            {
+              "address": 56720,
+              "mnemonic": "stmdb",
+              "operands": "sp!, {r4, r5, r6, r7, r8, r9, sl, fp, lr}"
+            },
+            {
+              "address": 56724,
+              "mnemonic": "sub.w",
+              "operands": "sp, sp, #596"
+            }
+          ]
+        },
+        {
+          "address": 53092,
+          "size": 692,
+          "symbols": [
+            "$e24SignalAnalyzerTargetHost06StaticaB18NRFModelTextWriterO8populate7variant5model7capture2ins6UInt16VSgAA0eaB18NRFSemanticVariantO_AA0eabF8LocationVAA0eaB17NRFCaptureRegionsVSwtFZ"
+          ],
+          "entry_allocation_bytes": 600,
+          "entry_instructions": [
+            {
+              "address": 53092,
+              "mnemonic": "stmdb",
+              "operands": "sp!, {r4, r5, r6, r7, r8, r9, sl, fp, lr}"
+            },
+            {
+              "address": 53096,
+              "mnemonic": "sub.w",
+              "operands": "sp, sp, #564"
+            }
+          ]
+        },
+        {
+          "address": 180478,
+          "size": 620,
+          "symbols": [
+            "$e20SignalAnalyzerDomain0aB10DiagnosticV10truncating4utf8AA0abD12ConstructionOx_tSlRzs5UInt8V7ElementRtzlFZs5SliceVySWG_Tt0g5"
+          ],
+          "entry_allocation_bytes": 448,
+          "entry_instructions": [
+            {
+              "address": 180478,
+              "mnemonic": "stmdb",
+              "operands": "sp!, {r4, r5, r6, r7, r8, r9, sl, fp, lr}"
+            },
+            {
+              "address": 180482,
+              "mnemonic": "sub",
+              "operands": "sp, #412"
+            }
+          ]
+        },
+        {
+          "address": 235846,
+          "size": 482,
+          "symbols": [
+            "$e20SignalAnalyzerDomain0aB10DiagnosticV10truncating4utf8AA0abD12ConstructionOx_tSlRzs5UInt8V7ElementRtzlFZSRyAIG_Tt0g5"
+          ],
+          "entry_allocation_bytes": 432,
+          "entry_instructions": [
+            {
+              "address": 235846,
+              "mnemonic": "stmdb",
+              "operands": "sp!, {r4, r5, r6, r7, r8, r9, sl, fp, lr}"
+            },
+            {
+              "address": 235850,
+              "mnemonic": "sub",
+              "operands": "sp, #396"
+            }
+          ]
+        },
+        {
+          "address": 205084,
+          "size": 84,
+          "symbols": [
+            "$e24SignalAnalyzerTargetHost06StaticaB18NRFModelTextWriterO5fixed33_CD3AE57164B4922038E3E425581D90C5LLy0aB6Domain0aB10DiagnosticVSgs0E6StringVFZ"
+          ],
+          "entry_allocation_bytes": 320,
+          "entry_instructions": [
+            {
+              "address": 205084,
+              "mnemonic": "push",
+              "operands": "{r4, r5, r7, lr}"
+            },
+            {
+              "address": 205086,
+              "mnemonic": "sub",
+              "operands": "sp, #304"
+            }
+          ]
+        }
+      ],
+      "stack_config": [
+        "CONFIG_SYSTEM_WORKQUEUE_STACK_SIZE=1024",
+        "CONFIG_MAIN_STACK_SIZE=27648",
+        "CONFIG_IDLE_STACK_SIZE=320",
+        "CONFIG_ISR_STACK_SIZE=2048"
+      ]
+    },
+    "snapshot_counting": {
+      "elf": ".build/nrf52840/spike-010-bounded-declaration-traversal/firmware/zephyr/zephyr.elf",
+      "sha256": "1fcd322f34c3a0210fa3fc33ac6012d43546249929aa4290c92175d7303bc988",
+      "roots": [
+        {
+          "address": 56572,
+          "size": 428,
+          "symbols": [
+            "$e24SignalAnalyzerTargetHost06StaticaB25NRFEmbeddedSemanticRegionO5stage7variant5model7capture2ins6UInt16VSgAA0eaB18NRFSemanticVariantO_AA0eaB16NRFModelLocationVAA0eaB17NRFCaptureRegionsVSwtFZ"
+          ],
+          "entry_allocation_bytes": 632,
+          "entry_instructions": [
+            {
+              "address": 56572,
+              "mnemonic": "stmdb",
+              "operands": "sp!, {r4, r5, r6, r7, r8, r9, sl, fp, lr}"
+            },
+            {
+              "address": 56576,
+              "mnemonic": "sub.w",
+              "operands": "sp, sp, #596"
+            }
+          ]
+        },
+        {
+          "address": 216808,
+          "size": 14,
+          "symbols": [
+            "giftui_spike010_derive"
+          ],
+          "entry_allocation_bytes": 8,
+          "entry_instructions": [
+            {
+              "address": 216808,
+              "mnemonic": "push",
+              "operands": "{r4, lr}"
+            }
+          ]
+        }
+      ],
+      "reachable_function_count": 227,
+      "direct_graph_cycle_entries": [],
+      "indirect_calls_or_tail_branches": [
+        {
+          "function_symbols": [
+            "$es7_Int128V19multipliedFullWidth2byAB4high_s8_UInt128V3lowtAB_tF"
+          ],
+          "address": 22606,
+          "mnemonic": "blx",
+          "operands": "r6"
+        },
+        {
+          "function_symbols": [
+            "$es7_Int128V19multipliedFullWidth2byAB4high_s8_UInt128V3lowtAB_tF"
+          ],
+          "address": 22630,
+          "mnemonic": "blx",
+          "operands": "r6"
+        },
+        {
+          "function_symbols": [
+            "$es7_Int128V19multipliedFullWidth2byAB4high_s8_UInt128V3lowtAB_tF"
+          ],
+          "address": 22660,
+          "mnemonic": "blx",
+          "operands": "r6"
+        },
+        {
+          "function_symbols": [
+            "$es7_Int128V19multipliedFullWidth2byAB4high_s8_UInt128V3lowtAB_tF"
+          ],
+          "address": 22682,
+          "mnemonic": "blx",
+          "operands": "r6"
+        },
+        {
+          "function_symbols": [
+            "$e24SignalAnalyzerTargetHost06StaticaB24NRFPackedSemanticRecordsO10storeScope_2at2inSbAA0eaB14NRFScopeRecordV_s6UInt16VSwtFZ"
+          ],
+          "address": 50808,
+          "mnemonic": "blx",
+          "operands": "r7"
+        },
+        {
+          "function_symbols": [
+            "$e24SignalAnalyzerTargetHost06StaticaB24NRFPackedSemanticRecordsO10storeScope_2at2inSbAA0eaB14NRFScopeRecordV_s6UInt16VSwtFZ"
+          ],
+          "address": 50820,
+          "mnemonic": "blx",
+          "operands": "r7"
+        },
+        {
+          "function_symbols": [
+            "$e24SignalAnalyzerTargetHost06StaticaB24NRFPackedSemanticRecordsO10storeScope_2at2inSbAA0eaB14NRFScopeRecordV_s6UInt16VSwtFZ"
+          ],
+          "address": 50832,
+          "mnemonic": "blx",
+          "operands": "r7"
+        },
+        {
+          "function_symbols": [
+            "$e24SignalAnalyzerTargetHost06StaticaB24NRFPackedSemanticRecordsO5scope2at2inAA0eaB14NRFScopeRecordVSgs6UInt16V_SwtFZ"
+          ],
+          "address": 51008,
+          "mnemonic": "blx",
+          "operands": "r7"
+        },
+        {
+          "function_symbols": [
+            "$e24SignalAnalyzerTargetHost06StaticaB24NRFPackedSemanticRecordsO5scope2at2inAA0eaB14NRFScopeRecordVSgs6UInt16V_SwtFZ"
+          ],
+          "address": 51018,
+          "mnemonic": "blx",
+          "operands": "r7"
+        },
+        {
+          "function_symbols": [
+            "$e24SignalAnalyzerTargetHost06StaticaB24NRFPackedSemanticRecordsO5scope2at2inAA0eaB14NRFScopeRecordVSgs6UInt16V_SwtFZ"
+          ],
+          "address": 51030,
+          "mnemonic": "blx",
+          "operands": "r1"
+        },
+        {
+          "function_symbols": [
+            "$e24SignalAnalyzerTargetHost06StaticaB18NRFModelTextWriterO8populate7variant5model7capture2ins6UInt16VSgAA0eaB18NRFSemanticVariantO_AA0eabF8LocationVAA0eaB17NRFCaptureRegionsVSwtFZ"
+          ],
+          "address": 53202,
+          "mnemonic": "blx",
+          "operands": "fp"
+        },
+        {
+          "function_symbols": [
+            "$e24SignalAnalyzerTargetHost06StaticaB18NRFModelTextWriterO8populate7variant5model7capture2ins6UInt16VSgAA0eaB18NRFSemanticVariantO_AA0eabF8LocationVAA0eaB17NRFCaptureRegionsVSwtFZ"
+          ],
+          "address": 53212,
+          "mnemonic": "blx",
+          "operands": "fp"
+        },
+        {
+          "function_symbols": [
+            "$e24SignalAnalyzerTargetHost06StaticaB18NRFModelTextWriterO8populate7variant5model7capture2ins6UInt16VSgAA0eaB18NRFSemanticVariantO_AA0eabF8LocationVAA0eaB17NRFCaptureRegionsVSwtFZ"
+          ],
+          "address": 53220,
+          "mnemonic": "blx",
+          "operands": "fp"
+        },
+        {
+          "function_symbols": [
+            "$e24SignalAnalyzerTargetHost06StaticaB18NRFModelTextWriterO8populate7variant5model7capture2ins6UInt16VSgAA0eaB18NRFSemanticVariantO_AA0eabF8LocationVAA0eaB17NRFCaptureRegionsVSwtFZ"
+          ],
+          "address": 53492,
+          "mnemonic": "blx",
+          "operands": "fp"
+        },
+        {
+          "function_symbols": [
+            "$e24SignalAnalyzerTargetHost06StaticaB18NRFModelTextWriterO8populate7variant5model7capture2ins6UInt16VSgAA0eaB18NRFSemanticVariantO_AA0eabF8LocationVAA0eaB17NRFCaptureRegionsVSwtFZ"
+          ],
+          "address": 53498,
+          "mnemonic": "blx",
+          "operands": "fp"
+        },
+        {
+          "function_symbols": [
+            "$e24SignalAnalyzerTargetHost06StaticaB18NRFModelTextWriterO8populate7variant5model7capture2ins6UInt16VSgAA0eaB18NRFSemanticVariantO_AA0eabF8LocationVAA0eaB17NRFCaptureRegionsVSwtFZ"
+          ],
+          "address": 53504,
+          "mnemonic": "blx",
+          "operands": "fp"
+        },
+        {
+          "function_symbols": [
+            "$e24SignalAnalyzerTargetHost06StaticaB28NRFEmbeddedSemanticValidatorO8validate7variant13textByteCount2inSbAA0eaB18NRFSemanticVariantO_s6UInt16VSwtFZ"
+          ],
+          "address": 55582,
+          "mnemonic": "blx",
+          "operands": "r6"
+        },
+        {
+          "function_symbols": [
+            "$e24SignalAnalyzerTargetHost06StaticaB28NRFEmbeddedSemanticValidatorO8validate7variant13textByteCount2inSbAA0eaB18NRFSemanticVariantO_s6UInt16VSwtFZ"
+          ],
+          "address": 55588,
+          "mnemonic": "blx",
+          "operands": "r6"
+        },
+        {
+          "function_symbols": [
+            "$e24SignalAnalyzerTargetHost06StaticaB28NRFEmbeddedSemanticValidatorO8validate7variant13textByteCount2inSbAA0eaB18NRFSemanticVariantO_s6UInt16VSwtFZ"
+          ],
+          "address": 55594,
+          "mnemonic": "blx",
+          "operands": "r6"
+        },
+        {
+          "function_symbols": [
+            "$e24SignalAnalyzerTargetHost06StaticaB28NRFEmbeddedSemanticValidatorO13incomingLinks33_CD3AE57164B4922038E3E425581D90C5LL2to5count2ins5UInt8Vs6UInt16V_ALSwtFZ"
+          ],
+          "address": 56468,
+          "mnemonic": "blx",
+          "operands": "r7"
+        },
+        {
+          "function_symbols": [
+            "$e24SignalAnalyzerTargetHost06StaticaB28NRFEmbeddedSemanticValidatorO13incomingLinks33_CD3AE57164B4922038E3E425581D90C5LL2to5count2ins5UInt8Vs6UInt16V_ALSwtFZ"
+          ],
+          "address": 56476,
+          "mnemonic": "blx",
+          "operands": "r7"
+        },
+        {
+          "function_symbols": [
+            "$e24SignalAnalyzerTargetHost06StaticaB28NRFEmbeddedSemanticValidatorO13incomingLinks33_CD3AE57164B4922038E3E425581D90C5LL2to5count2ins5UInt8Vs6UInt16V_ALSwtFZ"
+          ],
+          "address": 56484,
+          "mnemonic": "blx",
+          "operands": "r7"
+        },
+        {
+          "function_symbols": [
+            "$e6GiftUI10TupleView5V15_giftUITraverseyyqd__zAA01_A26UISemanticTraversalVisitorRd__lFAA6HStackVyAA0C5View3Vy24SignalAnalyzerTargetHost0lM12SquareButtonVAA0A23UILayoutModifiedContent33_20DF17E44E695B31F3651BB03959C606LLVyAJ0lM13TimeRulerViewVAA01_A19UIFixedFramePayloadVGALGG_AJ0lM19ChannelWaveformViewVA3X0aG4Core017SemanticExpansionH033_E10F4FB91E19058A9E26D5292F31405CLLVyAJ16BoundedWorkspace33_CD3AE57164B4922038E3E425581D90C5LLVAJ12CountingSinkA2_LLVAY23UnsupportedStateBindingA_LLVys6UInt16VGGTg5"
+          ],
+          "address": 149312,
+          "mnemonic": "blx",
+          "operands": "r4"
+        },
+        {
+          "function_symbols": [
+            "$e6GiftUI10TupleView5V15_giftUITraverseyyqd__zAA01_A26UISemanticTraversalVisitorRd__lFAA6HStackVyAA0C5View3Vy24SignalAnalyzerTargetHost0lM12SquareButtonVAA0A23UILayoutModifiedContent33_20DF17E44E695B31F3651BB03959C606LLVyAJ0lM13TimeRulerViewVAA01_A19UIFixedFramePayloadVGALGG_AJ0lM19ChannelWaveformViewVA3X0aG4Core017SemanticExpansionH033_E10F4FB91E19058A9E26D5292F31405CLLVyAJ16BoundedWorkspace33_CD3AE57164B4922038E3E425581D90C5LLVAJ12CountingSinkA2_LLVAY23UnsupportedStateBindingA_LLVys6UInt16VGGTg5"
+          ],
+          "address": 149318,
+          "mnemonic": "blx",
+          "operands": "r4"
+        },
+        {
+          "function_symbols": [
+            "$e6GiftUI10TupleView5V15_giftUITraverseyyqd__zAA01_A26UISemanticTraversalVisitorRd__lFAA6HStackVyAA0C5View3Vy24SignalAnalyzerTargetHost0lM12SquareButtonVAA0A23UILayoutModifiedContent33_20DF17E44E695B31F3651BB03959C606LLVyAJ0lM13TimeRulerViewVAA01_A19UIFixedFramePayloadVGALGG_AJ0lM19ChannelWaveformViewVA3X0aG4Core017SemanticExpansionH033_E10F4FB91E19058A9E26D5292F31405CLLVyAJ16BoundedWorkspace33_CD3AE57164B4922038E3E425581D90C5LLVAJ12CountingSinkA2_LLVAY23UnsupportedStateBindingA_LLVys6UInt16VGGTg5"
+          ],
+          "address": 149324,
+          "mnemonic": "blx",
+          "operands": "r4"
+        },
+        {
+          "function_symbols": [
+            "$e6GiftUI10TupleView5V15_giftUITraverseyyqd__zAA01_A26UISemanticTraversalVisitorRd__lFAA6HStackVyAA0C5View3Vy24SignalAnalyzerTargetHost0lM12SquareButtonVAA0A23UILayoutModifiedContent33_20DF17E44E695B31F3651BB03959C606LLVyAJ0lM13TimeRulerViewVAA01_A19UIFixedFramePayloadVGALGG_AJ0lM19ChannelWaveformViewVA3X0aG4Core017SemanticExpansionH033_E10F4FB91E19058A9E26D5292F31405CLLVyAJ16BoundedWorkspace33_CD3AE57164B4922038E3E425581D90C5LLVAJ12CountingSinkA2_LLVAY23UnsupportedStateBindingA_LLVys6UInt16VGGTg5"
+          ],
+          "address": 149330,
+          "mnemonic": "blx",
+          "operands": "r4"
+        },
+        {
+          "function_symbols": [
+            "$e6GiftUI10TupleView5V15_giftUITraverseyyqd__zAA01_A26UISemanticTraversalVisitorRd__lFAA0A17UIModifiedContent33_20DF17E44E695B31F3651BB03959C606LLVyAA0a16UILayoutModifiedK0AGLLVyAA4TextVAA01_A19UIFixedFramePayloadVGAA01_a17UIForegroundStyleX0VG_AA6SpacerVArtR0aG4Core017SemanticExpansionH033_E10F4FB91E19058A9E26D5292F31405CLLVy24SignalAnalyzerTargetHost16BoundedWorkspace33_CD3AE57164B4922038E3E425581D90C5LLVAY12CountingSinkA_LLVAU23UnsupportedStateBindingAWLLVys6UInt16VGGTg5"
+          ],
+          "address": 149430,
+          "mnemonic": "blx",
+          "operands": "r6"
+        },
+        {
+          "function_symbols": [
+            "$e6GiftUI10TupleView5V15_giftUITraverseyyqd__zAA01_A26UISemanticTraversalVisitorRd__lFAA0A17UIModifiedContent33_20DF17E44E695B31F3651BB03959C606LLVyAA0a16UILayoutModifiedK0AGLLVyAA4TextVAA01_A19UIFixedFramePayloadVGAA01_a17UIForegroundStyleX0VG_AA6SpacerVArtR0aG4Core017SemanticExpansionH033_E10F4FB91E19058A9E26D5292F31405CLLVy24SignalAnalyzerTargetHost16BoundedWorkspace33_CD3AE57164B4922038E3E425581D90C5LLVAY12CountingSinkA_LLVAU23UnsupportedStateBindingAWLLVys6UInt16VGGTg5"
+          ],
+          "address": 149444,
+          "mnemonic": "blx",
+          "operands": "r6"
+        },
+        {
+          "function_symbols": [
+            "$e6GiftUI10TupleView5V15_giftUITraverseyyqd__zAA01_A26UISemanticTraversalVisitorRd__lFAA0A17UIModifiedContent33_20DF17E44E695B31F3651BB03959C606LLVyAA0a16UILayoutModifiedK0AGLLVyAA4TextVAA01_A19UIFixedFramePayloadVGAA01_a17UIForegroundStyleX0VG_AA6SpacerVArtR0aG4Core017SemanticExpansionH033_E10F4FB91E19058A9E26D5292F31405CLLVy24SignalAnalyzerTargetHost16BoundedWorkspace33_CD3AE57164B4922038E3E425581D90C5LLVAY12CountingSinkA_LLVAU23UnsupportedStateBindingAWLLVys6UInt16VGGTg5"
+          ],
+          "address": 149458,
+          "mnemonic": "blx",
+          "operands": "r6"
+        },
+        {
+          "function_symbols": [
+            "$e18GiftUISemanticCore26SemanticExpansionTraversal33_E10F4FB91E19058A9E26D5292F31405CLLV15visitCustomView_4bodyyqd___4BodyQyd__yXEt0A2UI0Q0Rd__lF24SignalAnalyzerTargetHost16BoundedWorkspace33_CD3AE57164B4922038E3E425581D90C5LLV_AK12CountingSinkAMLLVAA23UnsupportedStateBindingACLLVys6UInt16VGAK0uvQ0VTtg5"
+          ],
+          "address": 265068,
+          "mnemonic": "blx",
+          "operands": "r5"
+        },
+        {
+          "function_symbols": [
+            "$e18GiftUISemanticCore26SemanticExpansionTraversal33_E10F4FB91E19058A9E26D5292F31405CLLV15visitCustomView_4bodyyqd___4BodyQyd__yXEt0A2UI0Q0Rd__lF24SignalAnalyzerTargetHost16BoundedWorkspace33_CD3AE57164B4922038E3E425581D90C5LLV_AK12CountingSinkAMLLVAA23UnsupportedStateBindingACLLVys6UInt16VGAK0uv8WaveformQ0VTtg5"
+          ],
+          "address": 265282,
+          "mnemonic": "blx",
+          "operands": "r5"
+        },
+        {
+          "function_symbols": [
+            "$e18GiftUISemanticCore26SemanticExpansionTraversal33_E10F4FB91E19058A9E26D5292F31405CLLV15visitCustomView_4bodyyqd___4BodyQyd__yXEt0A2UI0Q0Rd__lF24SignalAnalyzerTargetHost16BoundedWorkspace33_CD3AE57164B4922038E3E425581D90C5LLV_AK12CountingSinkAMLLVAA23UnsupportedStateBindingACLLVys6UInt16VGAK0uv9TimeRulerQ0VTtg5"
+          ],
+          "address": 265702,
+          "mnemonic": "blx",
+          "operands": "r5"
+        },
+        {
+          "function_symbols": [
+            "$e18GiftUISemanticCore26SemanticExpansionTraversal33_E10F4FB91E19058A9E26D5292F31405CLLV15visitCustomView_4bodyyqd___4BodyQyd__yXEt0A2UI0Q0Rd__lF24SignalAnalyzerTargetHost16BoundedWorkspace33_CD3AE57164B4922038E3E425581D90C5LLV_AK12CountingSinkAMLLVAA23UnsupportedStateBindingACLLVys6UInt16VGAK0uV12SquareButtonVTtg5"
+          ],
+          "address": 265914,
+          "mnemonic": "blx",
+          "operands": "r5"
+        },
+        {
+          "function_symbols": [
+            "$e18GiftUISemanticCore26SemanticExpansionTraversal33_E10F4FB91E19058A9E26D5292F31405CLLV15visitCustomView_4bodyyqd___4BodyQyd__yXEt0A2UI0Q0Rd__lF24SignalAnalyzerTargetHost16BoundedWorkspace33_CD3AE57164B4922038E3E425581D90C5LLV_AK12CountingSinkAMLLVAA23UnsupportedStateBindingACLLVys6UInt16VGAK0uv5TraceQ0VTtg5Tm"
+          ],
+          "address": 266116,
+          "mnemonic": "blx",
+          "operands": "r5"
+        },
+        {
+          "function_symbols": [
+            "$e18GiftUISemanticCore26SemanticExpansionTraversal33_E10F4FB91E19058A9E26D5292F31405CLLV15visitCustomView_4bodyyqd___4BodyQyd__yXEt0A2UI0Q0Rd__lF24SignalAnalyzerTargetHost16BoundedWorkspace33_CD3AE57164B4922038E3E425581D90C5LLV_AK12CountingSinkAMLLVAA23UnsupportedStateBindingACLLVys6UInt16VGAK0uv6HeaderQ0VTtg5"
+          ],
+          "address": 266326,
+          "mnemonic": "blx",
+          "operands": "r5"
+        }
+      ],
+      "unresolved_direct_edges": [
+        {
+          "function_symbols": [
+            "$e26SignalAnalyzerPresentation0aB18TimelineFormattingO7secondsy0aB6Domain0aB10DiagnosticVs8DurationVFZ"
+          ],
+          "address": 21820,
+          "mnemonic": "bl",
+          "operands": "1d0 <__aeabi_uldivmod>"
+        },
+        {
+          "function_symbols": [
+            "$e26SignalAnalyzerPresentation0aB18TimelineFormattingO7secondsy0aB6Domain0aB10DiagnosticVs8DurationVFZ"
+          ],
+          "address": 21944,
+          "mnemonic": "bl",
+          "operands": "130 <__aeabi_ldivmod>"
+        },
+        {
+          "function_symbols": [
+            "$e26SignalAnalyzerPresentation0aB18TimelineFormattingO7secondsy0aB6Domain0aB10DiagnosticVs8DurationVFZ"
+          ],
+          "address": 21970,
+          "mnemonic": "bl",
+          "operands": "1d0 <__aeabi_uldivmod>"
+        },
+        {
+          "function_symbols": [
+            "$e24SignalAnalyzerTargetHost06StaticaB18NRFModelTextWriterO8populate7variant5model7capture2ins6UInt16VSgAA0eaB18NRFSemanticVariantO_AA0eabF8LocationVAA0eaB17NRFCaptureRegionsVSwtFZ"
+          ],
+          "address": 53546,
+          "mnemonic": "bl",
+          "operands": "40790 <__kernel_ram_size+0xf18>"
+        },
+        {
+          "function_symbols": [
+            "$e24SignalAnalyzerTargetHost06StaticaB18NRFModelTextWriterO5value33_CD3AE57164B4922038E3E425581D90C5LL2at7variant5model7capture0aB6Domain0aB10DiagnosticVSgs6UInt16V_AA0eaB18NRFSemanticVariantOAA0eabF8LocationVAA0eaB17NRFCaptureRegionsVtFZ"
+          ],
+          "address": 54126,
+          "mnemonic": "bl",
+          "operands": "407b8 <__kernel_ram_size+0xf40>"
+        },
+        {
+          "function_symbols": [
+            "$e24SignalAnalyzerTargetHost06StaticaB18NRFModelTextWriterO5level33_CD3AE57164B4922038E3E425581D90C5LL7channel5model7capture0aB6Domain0aB10DiagnosticVSgSi_AA0eabF8LocationVAA0eaB17NRFCaptureRegionsVtFZ"
+          ],
+          "address": 54340,
+          "mnemonic": "bl",
+          "operands": "407b8 <__kernel_ram_size+0xf40>"
+        },
+        {
+          "function_symbols": [
+            "$e24SignalAnalyzerTargetHost06StaticaB25NRFEmbeddedSemanticRegionO5stage7variant5model7capture2ins6UInt16VSgAA0eaB18NRFSemanticVariantO_AA0eaB16NRFModelLocationVAA0eaB17NRFCaptureRegionsVSwtFZ"
+          ],
+          "address": 56652,
+          "mnemonic": "bl",
+          "operands": "40790 <__kernel_ram_size+0xf18>"
+        },
+        {
+          "function_symbols": [
+            "$e24SignalAnalyzerTargetHost14spike010Deriveys6UInt32VAD_A3Ds6UInt16VAFtF"
+          ],
+          "address": 65648,
+          "mnemonic": "bl",
+          "operands": "407b8 <__kernel_ram_size+0xf40>"
+        },
+        {
+          "function_symbols": [
+            "$e24SignalAnalyzerTargetHost14spike010Deriveys6UInt32VAD_A3Ds6UInt16VAFtF"
+          ],
+          "address": 65666,
+          "mnemonic": "bl",
+          "operands": "407ca <__kernel_ram_size+0xf52>"
+        },
+        {
+          "function_symbols": [
+            "$e24SignalAnalyzerTargetHost14spike010Deriveys6UInt32VAD_A3Ds6UInt16VAFtF"
+          ],
+          "address": 65940,
+          "mnemonic": "bl",
+          "operands": "407ca <__kernel_ram_size+0xf52>"
+        },
+        {
+          "function_symbols": [
+            "$e24SignalAnalyzerTargetHost14spike010Deriveys6UInt32VAD_A3Ds6UInt16VAFtF"
+          ],
+          "address": 65956,
+          "mnemonic": "bl",
+          "operands": "407b8 <__kernel_ram_size+0xf40>"
+        },
+        {
+          "function_symbols": [
+            "$e24SignalAnalyzerTargetHost14spike010Deriveys6UInt32VAD_A3Ds6UInt16VAFtF"
+          ],
+          "address": 65962,
+          "mnemonic": "bl",
+          "operands": "407b8 <__kernel_ram_size+0xf40>"
+        },
+        {
+          "function_symbols": [
+            "$e24SignalAnalyzerTargetHost06StaticaB18NRFModelTextWriterO5fixed33_CD3AE57164B4922038E3E425581D90C5LLy0aB6Domain0aB10DiagnosticVSgs0E6StringVFZ"
+          ],
+          "address": 211488,
+          "mnemonic": "bl",
+          "operands": "407b8 <__kernel_ram_size+0xf40>"
+        },
+        {
+          "function_symbols": [
+            "$e20SignalAnalyzerDomain0aB10DiagnosticV10truncating4utf8AA0abD12ConstructionOx_tSlRzs5UInt8V7ElementRtzlFZSRyAIG_Tt0g5"
+          ],
+          "address": 244280,
+          "mnemonic": "bl",
+          "operands": "407ca <__kernel_ram_size+0xf52>"
+        },
+        {
+          "function_symbols": [
+            "$es13_wideDivide2233_01352DAC517C06837D2107CA00914BA8LL_2byx4high_9MagnitudeSjQz3lowt8quotient_xAD_AfGt9remaindertxAD_AfGt_xAD_AfGtts17FixedWidthIntegerRzSURzlFs6UInt64V_Tg5"
+          ],
+          "address": 244942,
+          "mnemonic": "bl",
+          "operands": "1d0 <__aeabi_uldivmod>"
+        },
+        {
+          "function_symbols": [
+            "$es13_wideDivide2233_01352DAC517C06837D2107CA00914BA8LL_2byx4high_9MagnitudeSjQz3lowt8quotient_xAD_AfGt9remaindertxAD_AfGt_xAD_AfGtts17FixedWidthIntegerRzSURzlFs6UInt64V_Tg5"
+          ],
+          "address": 244992,
+          "mnemonic": "bl",
+          "operands": "1d0 <__aeabi_uldivmod>"
+        },
+        {
+          "function_symbols": [
+            "$es13_wideDivide2233_01352DAC517C06837D2107CA00914BA8LL_2byx4high_9MagnitudeSjQz3lowt8quotient_xAD_AfGt9remaindertxAD_AfGt_xAD_AfGtts17FixedWidthIntegerRzSURzlFs6UInt64V_Tg5"
+          ],
+          "address": 245564,
+          "mnemonic": "bl",
+          "operands": "1d0 <__aeabi_uldivmod>"
+        },
+        {
+          "function_symbols": [
+            "$eSUss17FixedWidthIntegerRzrlE012dividingFullB0yx8quotient_x9remaindertx4high_9MagnitudeSjQz3lowt_tFs6UInt64V_Tg5"
+          ],
+          "address": 245772,
+          "mnemonic": "bl",
+          "operands": "1d0 <__aeabi_uldivmod>"
+        },
+        {
+          "function_symbols": [
+            "$eSUss17FixedWidthIntegerRzrlE012dividingFullB0yx8quotient_x9remaindertx4high_9MagnitudeSjQz3lowt_tFs6UInt64V_Tg5"
+          ],
+          "address": 245844,
+          "mnemonic": "bl",
+          "operands": "1d0 <__aeabi_uldivmod>"
+        },
+        {
+          "function_symbols": [
+            "$eSUss17FixedWidthIntegerRzrlE012dividingFullB0yx8quotient_x9remaindertx4high_9MagnitudeSjQz3lowt_tFs6UInt64V_Tg5"
+          ],
+          "address": 246030,
+          "mnemonic": "bl",
+          "operands": "1d0 <__aeabi_uldivmod>"
+        },
+        {
+          "function_symbols": [
+            "$eSUss17FixedWidthIntegerRzrlE012dividingFullB0yx8quotient_x9remaindertx4high_9MagnitudeSjQz3lowt_tFs6UInt64V_Tg5"
+          ],
+          "address": 246046,
+          "mnemonic": "bl",
+          "operands": "1d0 <__aeabi_uldivmod>"
+        },
+        {
+          "function_symbols": [
+            "OUTLINED_FUNCTION_57"
+          ],
+          "address": 278240,
+          "mnemonic": "bl",
+          "operands": "40790 <__kernel_ram_size+0xf18>"
+        },
+        {
+          "function_symbols": [
+            "OUTLINED_FUNCTION_63"
+          ],
+          "address": 278324,
+          "mnemonic": "bl",
+          "operands": "40790 <__kernel_ram_size+0xf18>"
+        },
+        {
+          "function_symbols": [
+            "OUTLINED_FUNCTION_78"
+          ],
+          "address": 278460,
+          "mnemonic": "b.w",
+          "operands": "40790 <__kernel_ram_size+0xf18>"
+        },
+        {
+          "function_symbols": [
+            "OUTLINED_FUNCTION_84"
+          ],
+          "address": 278526,
+          "mnemonic": "bl",
+          "operands": "40790 <__kernel_ram_size+0xf18>"
+        },
+        {
+          "function_symbols": [
+            "OUTLINED_FUNCTION_85"
+          ],
+          "address": 278540,
+          "mnemonic": "b.w",
+          "operands": "40790 <__kernel_ram_size+0xf18>"
+        },
+        {
+          "function_symbols": [
+            "OUTLINED_FUNCTION_87"
+          ],
+          "address": 278552,
+          "mnemonic": "b.w",
+          "operands": "40790 <__kernel_ram_size+0xf18>"
+        },
+        {
+          "function_symbols": [
+            "OUTLINED_FUNCTION_120"
+          ],
+          "address": 278880,
+          "mnemonic": "b.w",
+          "operands": "407ca <__kernel_ram_size+0xf52>"
+        },
+        {
+          "function_symbols": [
+            "OUTLINED_FUNCTION_194"
+          ],
+          "address": 279470,
+          "mnemonic": "b.w",
+          "operands": "407ca <__kernel_ram_size+0xf52>"
+        },
+        {
+          "function_symbols": [
+            "OUTLINED_FUNCTION_268"
+          ],
+          "address": 280054,
+          "mnemonic": "b.w",
+          "operands": "407b8 <__kernel_ram_size+0xf40>"
+        }
+      ],
+      "largest_observed_entry_allocations": [
+        {
+          "address": 248596,
+          "size": 312,
+          "symbols": [
+            "$e18GiftUISemanticCore26SemanticExpansionTraversal33_E10F4FB91E19058A9E26D5292F31405CLLV17expandDeclaration_23continuingModifierChainyqd___Sbt0A2UI4ViewRd__lF24SignalAnalyzerTargetHost16BoundedWorkspace33_CD3AE57164B4922038E3E425581D90C5LLV_AI12CountingSinkAKLLVAA23UnsupportedStateBindingACLLVys6UInt16VGAG0A17UIModifiedContent33_20DF17E44E695B31F3651BB03959C606LLVyAG0A23UILayoutModifiedContentAULLVyAXyAG6ZStackVyAG05TupleU0VyAXyAI0vw4GridU0VAG01_A22UIFlexibleFramePayloadVGAG6VStackVyAG10TupleView5VyAG6HStackVyAG10TupleView3VyAI0vW12SquareButtonVAXyAI0vw9TimeRulerU0VAG01_A19UIFixedFramePayloadVGA15_GGAI0vw15ChannelWaveformU0VA24_A24_A24_GGGGA4_GAG01_A16UIPaddingPayloadVGAG01_A19UIBackgroundPayloadVGTg5"
+          ],
+          "entry_allocation_bytes": 1224,
+          "entry_instructions": [
+            {
+              "address": 248596,
+              "mnemonic": "stmdb",
+              "operands": "sp!, {r4, r5, r6, r7, r8, r9, fp, lr}"
+            },
+            {
+              "address": 248600,
+              "mnemonic": "sub.w",
+              "operands": "sp, sp, #1192"
+            }
+          ]
+        },
+        {
+          "address": 248908,
+          "size": 308,
+          "symbols": [
+            "$e18GiftUISemanticCore26SemanticExpansionTraversal33_E10F4FB91E19058A9E26D5292F31405CLLV17expandDeclaration_23continuingModifierChainyqd___Sbt0A2UI4ViewRd__lF24SignalAnalyzerTargetHost16BoundedWorkspace33_CD3AE57164B4922038E3E425581D90C5LLV_AI12CountingSinkAKLLVAA23UnsupportedStateBindingACLLVys6UInt16VGAG0A23UILayoutModifiedContent33_20DF17E44E695B31F3651BB03959C606LLVyAVyAG6ZStackVyAG05TupleU0VyAVyAI0vw4GridU0VAG01_A22UIFlexibleFramePayloadVGAG6VStackVyAG10TupleView5VyAG6HStackVyAG10TupleView3VyAI0vW12SquareButtonVAVyAI0vw9TimeRulerU0VAG01_A19UIFixedFramePayloadVGA13_GGAI0vw15ChannelWaveformU0VA22_A22_A22_GGGGA2_GAG01_A16UIPaddingPayloadVGTg5"
+          ],
+          "entry_allocation_bytes": 1216,
+          "entry_instructions": [
+            {
+              "address": 248908,
+              "mnemonic": "stmdb",
+              "operands": "sp!, {r4, r5, r6, r7, r8, r9, fp, lr}"
+            },
+            {
+              "address": 248912,
+              "mnemonic": "sub.w",
+              "operands": "sp, sp, #1184"
+            }
+          ]
+        },
+        {
+          "address": 265104,
+          "size": 214,
+          "symbols": [
+            "$e18GiftUISemanticCore26SemanticExpansionTraversal33_E10F4FB91E19058A9E26D5292F31405CLLV15visitCustomView_4bodyyqd___4BodyQyd__yXEt0A2UI0Q0Rd__lF24SignalAnalyzerTargetHost16BoundedWorkspace33_CD3AE57164B4922038E3E425581D90C5LLV_AK12CountingSinkAMLLVAA23UnsupportedStateBindingACLLVys6UInt16VGAK0uv8WaveformQ0VTtg5"
+          ],
+          "entry_allocation_bytes": 1216,
+          "entry_instructions": [
+            {
+              "address": 265104,
+              "mnemonic": "stmdb",
+              "operands": "sp!, {r4, r5, r6, r7, r8, sl, lr}"
+            },
+            {
+              "address": 265108,
+              "mnemonic": "subw",
+              "operands": "sp, sp, #1188"
+            }
+          ]
+        },
+        {
+          "address": 249216,
+          "size": 316,
+          "symbols": [
+            "$e18GiftUISemanticCore26SemanticExpansionTraversal33_E10F4FB91E19058A9E26D5292F31405CLLV17expandDeclaration_23continuingModifierChainyqd___Sbt0A2UI4ViewRd__lF24SignalAnalyzerTargetHost16BoundedWorkspace33_CD3AE57164B4922038E3E425581D90C5LLV_AI12CountingSinkAKLLVAA23UnsupportedStateBindingACLLVys6UInt16VGAG0A23UILayoutModifiedContent33_20DF17E44E695B31F3651BB03959C606LLVyAG6ZStackVyAG05TupleU0VyAVyAI0vw4GridU0VAG01_A22UIFlexibleFramePayloadVGAG6VStackVyAG10TupleView5VyAG6HStackVyAG10TupleView3VyAI0vW12SquareButtonVAVyAI0vw9TimeRulerU0VAG01_A19UIFixedFramePayloadVGA13_GGAI0vw15ChannelWaveformU0VA22_A22_A22_GGGGA2_GTg5"
+          ],
+          "entry_allocation_bytes": 1208,
+          "entry_instructions": [
+            {
+              "address": 249216,
+              "mnemonic": "stmdb",
+              "operands": "sp!, {r4, r5, r6, r7, r8, r9, fp, lr}"
+            },
+            {
+              "address": 249220,
+              "mnemonic": "sub.w",
+              "operands": "sp, sp, #1176"
+            }
+          ]
+        },
+        {
+          "address": 249532,
+          "size": 308,
+          "symbols": [
+            "$e18GiftUISemanticCore26SemanticExpansionTraversal33_E10F4FB91E19058A9E26D5292F31405CLLV17expandDeclaration_23continuingModifierChainyqd___Sbt0A2UI4ViewRd__lF24SignalAnalyzerTargetHost16BoundedWorkspace33_CD3AE57164B4922038E3E425581D90C5LLV_AI12CountingSinkAKLLVAA23UnsupportedStateBindingACLLVys6UInt16VGAG6ZStackVyAG05TupleU0VyAG0A23UILayoutModifiedContent33_20DF17E44E695B31F3651BB03959C606LLVyAI0vw4GridU0VAG01_A22UIFlexibleFramePayloadVGAG6VStackVyAG10TupleView5VyAG6HStackVyAG10TupleView3VyAI0vW12SquareButtonVAZyAI0vw9TimeRulerU0VAG01_A19UIFixedFramePayloadVGA13_GGAI0vw15ChannelWaveformU0VA22_A22_A22_GGGGTg5"
+          ],
+          "entry_allocation_bytes": 1176,
+          "entry_instructions": [
+            {
+              "address": 249532,
+              "mnemonic": "stmdb",
+              "operands": "sp!, {r4, r5, r6, r7, r8, r9, fp, lr}"
+            },
+            {
+              "address": 249536,
+              "mnemonic": "sub.w",
+              "operands": "sp, sp, #1144"
+            }
+          ]
+        }
+      ],
+      "stack_config": [
+        "CONFIG_SYSTEM_WORKQUEUE_STACK_SIZE=1024",
+        "CONFIG_MAIN_STACK_SIZE=27648",
+        "CONFIG_IDLE_STACK_SIZE=320",
+        "CONFIG_ISR_STACK_SIZE=2048"
+      ]
+    },
+    "clean_generation": {
+      "elf": ".build/nrf52840/spike-011-clean-topology-generation/firmware/zephyr/zephyr.elf",
+      "sha256": "c5c06b1d71fe53bc963f4a9ec58487f700baecb04f35329a5dbfb5603e5868f4",
+      "roots": [
+        {
+          "address": 56652,
+          "size": 428,
+          "symbols": [
+            "$e24SignalAnalyzerTargetHost06StaticaB25NRFEmbeddedSemanticRegionO5stage7variant5model7capture2ins6UInt16VSgAA0eaB18NRFSemanticVariantO_AA0eaB16NRFModelLocationVAA0eaB17NRFCaptureRegionsVSwtFZ"
+          ],
+          "entry_allocation_bytes": 632,
+          "entry_instructions": [
+            {
+              "address": 56652,
+              "mnemonic": "stmdb",
+              "operands": "sp!, {r4, r5, r6, r7, r8, r9, sl, fp, lr}"
+            },
+            {
+              "address": 56656,
+              "mnemonic": "sub.w",
+              "operands": "sp, sp, #596"
+            }
+          ]
+        }
+      ],
+      "reachable_function_count": 94,
+      "direct_graph_cycle_entries": [],
+      "indirect_calls_or_tail_branches": [
+        {
+          "function_symbols": [
+            "$es7_Int128V19multipliedFullWidth2byAB4high_s8_UInt128V3lowtAB_tF"
+          ],
+          "address": 22606,
+          "mnemonic": "blx",
+          "operands": "r6"
+        },
+        {
+          "function_symbols": [
+            "$es7_Int128V19multipliedFullWidth2byAB4high_s8_UInt128V3lowtAB_tF"
+          ],
+          "address": 22630,
+          "mnemonic": "blx",
+          "operands": "r6"
+        },
+        {
+          "function_symbols": [
+            "$es7_Int128V19multipliedFullWidth2byAB4high_s8_UInt128V3lowtAB_tF"
+          ],
+          "address": 22660,
+          "mnemonic": "blx",
+          "operands": "r6"
+        },
+        {
+          "function_symbols": [
+            "$es7_Int128V19multipliedFullWidth2byAB4high_s8_UInt128V3lowtAB_tF"
+          ],
+          "address": 22682,
+          "mnemonic": "blx",
+          "operands": "r6"
+        },
+        {
+          "function_symbols": [
+            "$e24SignalAnalyzerTargetHost06StaticaB24NRFPackedSemanticRecordsO10storeScope_2at2inSbAA0eaB14NRFScopeRecordV_s6UInt16VSwtFZ"
+          ],
+          "address": 50868,
+          "mnemonic": "blx",
+          "operands": "r7"
+        },
+        {
+          "function_symbols": [
+            "$e24SignalAnalyzerTargetHost06StaticaB24NRFPackedSemanticRecordsO10storeScope_2at2inSbAA0eaB14NRFScopeRecordV_s6UInt16VSwtFZ"
+          ],
+          "address": 50880,
+          "mnemonic": "blx",
+          "operands": "r7"
+        },
+        {
+          "function_symbols": [
+            "$e24SignalAnalyzerTargetHost06StaticaB24NRFPackedSemanticRecordsO10storeScope_2at2inSbAA0eaB14NRFScopeRecordV_s6UInt16VSwtFZ"
+          ],
+          "address": 50892,
+          "mnemonic": "blx",
+          "operands": "r7"
+        },
+        {
+          "function_symbols": [
+            "$e24SignalAnalyzerTargetHost06StaticaB24NRFPackedSemanticRecordsO5scope2at2inAA0eaB14NRFScopeRecordVSgs6UInt16V_SwtFZ"
+          ],
+          "address": 51068,
+          "mnemonic": "blx",
+          "operands": "r7"
+        },
+        {
+          "function_symbols": [
+            "$e24SignalAnalyzerTargetHost06StaticaB24NRFPackedSemanticRecordsO5scope2at2inAA0eaB14NRFScopeRecordVSgs6UInt16V_SwtFZ"
+          ],
+          "address": 51078,
+          "mnemonic": "blx",
+          "operands": "r7"
+        },
+        {
+          "function_symbols": [
+            "$e24SignalAnalyzerTargetHost06StaticaB24NRFPackedSemanticRecordsO5scope2at2inAA0eaB14NRFScopeRecordVSgs6UInt16V_SwtFZ"
+          ],
+          "address": 51090,
+          "mnemonic": "blx",
+          "operands": "r1"
+        },
+        {
+          "function_symbols": [
+            "$e24SignalAnalyzerTargetHost06StaticaB18NRFModelTextWriterO8populate7variant5model7capture2ins6UInt16VSgAA0eaB18NRFSemanticVariantO_AA0eabF8LocationVAA0eaB17NRFCaptureRegionsVSwtFZ"
+          ],
+          "address": 53262,
+          "mnemonic": "blx",
+          "operands": "fp"
+        },
+        {
+          "function_symbols": [
+            "$e24SignalAnalyzerTargetHost06StaticaB18NRFModelTextWriterO8populate7variant5model7capture2ins6UInt16VSgAA0eaB18NRFSemanticVariantO_AA0eabF8LocationVAA0eaB17NRFCaptureRegionsVSwtFZ"
+          ],
+          "address": 53272,
+          "mnemonic": "blx",
+          "operands": "fp"
+        },
+        {
+          "function_symbols": [
+            "$e24SignalAnalyzerTargetHost06StaticaB18NRFModelTextWriterO8populate7variant5model7capture2ins6UInt16VSgAA0eaB18NRFSemanticVariantO_AA0eabF8LocationVAA0eaB17NRFCaptureRegionsVSwtFZ"
+          ],
+          "address": 53280,
+          "mnemonic": "blx",
+          "operands": "fp"
+        },
+        {
+          "function_symbols": [
+            "$e24SignalAnalyzerTargetHost06StaticaB18NRFModelTextWriterO8populate7variant5model7capture2ins6UInt16VSgAA0eaB18NRFSemanticVariantO_AA0eabF8LocationVAA0eaB17NRFCaptureRegionsVSwtFZ"
+          ],
+          "address": 53554,
+          "mnemonic": "blx",
+          "operands": "fp"
+        },
+        {
+          "function_symbols": [
+            "$e24SignalAnalyzerTargetHost06StaticaB18NRFModelTextWriterO8populate7variant5model7capture2ins6UInt16VSgAA0eaB18NRFSemanticVariantO_AA0eabF8LocationVAA0eaB17NRFCaptureRegionsVSwtFZ"
+          ],
+          "address": 53560,
+          "mnemonic": "blx",
+          "operands": "fp"
+        },
+        {
+          "function_symbols": [
+            "$e24SignalAnalyzerTargetHost06StaticaB18NRFModelTextWriterO8populate7variant5model7capture2ins6UInt16VSgAA0eaB18NRFSemanticVariantO_AA0eabF8LocationVAA0eaB17NRFCaptureRegionsVSwtFZ"
+          ],
+          "address": 53566,
+          "mnemonic": "blx",
+          "operands": "fp"
+        },
+        {
+          "function_symbols": [
+            "$e24SignalAnalyzerTargetHost06StaticaB28NRFEmbeddedSemanticValidatorO8validate7variant13textByteCount2inSbAA0eaB18NRFSemanticVariantO_s6UInt16VSwtFZ"
+          ],
+          "address": 55662,
+          "mnemonic": "blx",
+          "operands": "r6"
+        },
+        {
+          "function_symbols": [
+            "$e24SignalAnalyzerTargetHost06StaticaB28NRFEmbeddedSemanticValidatorO8validate7variant13textByteCount2inSbAA0eaB18NRFSemanticVariantO_s6UInt16VSwtFZ"
+          ],
+          "address": 55668,
+          "mnemonic": "blx",
+          "operands": "r6"
+        },
+        {
+          "function_symbols": [
+            "$e24SignalAnalyzerTargetHost06StaticaB28NRFEmbeddedSemanticValidatorO8validate7variant13textByteCount2inSbAA0eaB18NRFSemanticVariantO_s6UInt16VSwtFZ"
+          ],
+          "address": 55674,
+          "mnemonic": "blx",
+          "operands": "r6"
+        },
+        {
+          "function_symbols": [
+            "$e24SignalAnalyzerTargetHost06StaticaB28NRFEmbeddedSemanticValidatorO13incomingLinks33_CD3AE57164B4922038E3E425581D90C5LL2to5count2ins5UInt8Vs6UInt16V_ALSwtFZ"
+          ],
+          "address": 56548,
+          "mnemonic": "blx",
+          "operands": "r7"
+        },
+        {
+          "function_symbols": [
+            "$e24SignalAnalyzerTargetHost06StaticaB28NRFEmbeddedSemanticValidatorO13incomingLinks33_CD3AE57164B4922038E3E425581D90C5LL2to5count2ins5UInt8Vs6UInt16V_ALSwtFZ"
+          ],
+          "address": 56556,
+          "mnemonic": "blx",
+          "operands": "r7"
+        },
+        {
+          "function_symbols": [
+            "$e24SignalAnalyzerTargetHost06StaticaB28NRFEmbeddedSemanticValidatorO13incomingLinks33_CD3AE57164B4922038E3E425581D90C5LL2to5count2ins5UInt8Vs6UInt16V_ALSwtFZ"
+          ],
+          "address": 56564,
+          "mnemonic": "blx",
+          "operands": "r7"
+        }
+      ],
+      "unresolved_direct_edges": [
+        {
+          "function_symbols": [
+            "$e26SignalAnalyzerPresentation0aB18TimelineFormattingO7secondsy0aB6Domain0aB10DiagnosticVs8DurationVFZ"
+          ],
+          "address": 21820,
+          "mnemonic": "bl",
+          "operands": "1d0 <__aeabi_uldivmod>"
+        },
+        {
+          "function_symbols": [
+            "$e26SignalAnalyzerPresentation0aB18TimelineFormattingO7secondsy0aB6Domain0aB10DiagnosticVs8DurationVFZ"
+          ],
+          "address": 21944,
+          "mnemonic": "bl",
+          "operands": "130 <__aeabi_ldivmod>"
+        },
+        {
+          "function_symbols": [
+            "$e26SignalAnalyzerPresentation0aB18TimelineFormattingO7secondsy0aB6Domain0aB10DiagnosticVs8DurationVFZ"
+          ],
+          "address": 21970,
+          "mnemonic": "bl",
+          "operands": "1d0 <__aeabi_uldivmod>"
+        },
+        {
+          "function_symbols": [
+            "$e24SignalAnalyzerTargetHost06StaticaB18NRFModelTextWriterO8populate7variant5model7capture2ins6UInt16VSgAA0eaB18NRFSemanticVariantO_AA0eabF8LocationVAA0eaB17NRFCaptureRegionsVSwtFZ"
+          ],
+          "address": 53608,
+          "mnemonic": "bl",
+          "operands": "3b48c <giftui_signal_analyzer_input_quiesce+0x5eec>"
+        },
+        {
+          "function_symbols": [
+            "$e24SignalAnalyzerTargetHost06StaticaB18NRFModelTextWriterO5value33_CD3AE57164B4922038E3E425581D90C5LL2at7variant5model7capture0aB6Domain0aB10DiagnosticVSgs6UInt16V_AA0eaB18NRFSemanticVariantOAA0eabF8LocationVAA0eaB17NRFCaptureRegionsVtFZ"
+          ],
+          "address": 54106,
+          "mnemonic": "bl",
+          "operands": "3b4c6 <giftui_signal_analyzer_input_quiesce+0x5f26>"
+        },
+        {
+          "function_symbols": [
+            "$e24SignalAnalyzerTargetHost06StaticaB18NRFModelTextWriterO5value33_CD3AE57164B4922038E3E425581D90C5LL2at7variant5model7capture0aB6Domain0aB10DiagnosticVSgs6UInt16V_AA0eaB18NRFSemanticVariantOAA0eabF8LocationVAA0eaB17NRFCaptureRegionsVtFZ"
+          ],
+          "address": 54200,
+          "mnemonic": "bl",
+          "operands": "3b4b4 <giftui_signal_analyzer_input_quiesce+0x5f14>"
+        },
+        {
+          "function_symbols": [
+            "$e24SignalAnalyzerTargetHost06StaticaB18NRFModelTextWriterO5level33_CD3AE57164B4922038E3E425581D90C5LL7channel5model7capture0aB6Domain0aB10DiagnosticVSgSi_AA0eabF8LocationVAA0eaB17NRFCaptureRegionsVtFZ"
+          ],
+          "address": 54416,
+          "mnemonic": "bl",
+          "operands": "3b4b4 <giftui_signal_analyzer_input_quiesce+0x5f14>"
+        },
+        {
+          "function_symbols": [
+            "$e24SignalAnalyzerTargetHost06StaticaB25NRFEmbeddedSemanticRegionO5stage7variant5model7capture2ins6UInt16VSgAA0eaB18NRFSemanticVariantO_AA0eaB16NRFModelLocationVAA0eaB17NRFCaptureRegionsVSwtFZ"
+          ],
+          "address": 56732,
+          "mnemonic": "bl",
+          "operands": "3b48c <giftui_signal_analyzer_input_quiesce+0x5eec>"
+        },
+        {
+          "function_symbols": [
+            "$e24SignalAnalyzerTargetHost06StaticaB25NRFEmbeddedSemanticRegionO12encodePrefix33_CD3AE57164B4922038E3E425581D90C5LL7variant5model2inyAA0eaB18NRFSemanticVariantO_AA0eaB16NRFModelLocationVSwtFZ"
+          ],
+          "address": 57188,
+          "mnemonic": "bl",
+          "operands": "3b48c <giftui_signal_analyzer_input_quiesce+0x5eec>"
+        },
+        {
+          "function_symbols": [
+            "$e24SignalAnalyzerTargetHost06StaticaB18NRFModelTextWriterO5fixed33_CD3AE57164B4922038E3E425581D90C5LLy0aB6Domain0aB10DiagnosticVSgs0E6StringVFZ"
+          ],
+          "address": 205068,
+          "mnemonic": "bl",
+          "operands": "3b4b4 <giftui_signal_analyzer_input_quiesce+0x5f14>"
+        },
+        {
+          "function_symbols": [
+            "$e20SignalAnalyzerDomain0aB10DiagnosticV10truncating4utf8AA0abD12ConstructionOx_tSlRzs5UInt8V7ElementRtzlFZSRyAIG_Tt0g5"
+          ],
+          "address": 236236,
+          "mnemonic": "bl",
+          "operands": "3b4c6 <giftui_signal_analyzer_input_quiesce+0x5f26>"
+        },
+        {
+          "function_symbols": [
+            "$es13_wideDivide2233_01352DAC517C06837D2107CA00914BA8LL_2byx4high_9MagnitudeSjQz3lowt8quotient_xAD_AfGt9remaindertxAD_AfGt_xAD_AfGtts17FixedWidthIntegerRzSURzlFs6UInt64V_Tg5"
+          ],
+          "address": 236898,
+          "mnemonic": "bl",
+          "operands": "1d0 <__aeabi_uldivmod>"
+        },
+        {
+          "function_symbols": [
+            "$es13_wideDivide2233_01352DAC517C06837D2107CA00914BA8LL_2byx4high_9MagnitudeSjQz3lowt8quotient_xAD_AfGt9remaindertxAD_AfGt_xAD_AfGtts17FixedWidthIntegerRzSURzlFs6UInt64V_Tg5"
+          ],
+          "address": 236948,
+          "mnemonic": "bl",
+          "operands": "1d0 <__aeabi_uldivmod>"
+        },
+        {
+          "function_symbols": [
+            "$es13_wideDivide2233_01352DAC517C06837D2107CA00914BA8LL_2byx4high_9MagnitudeSjQz3lowt8quotient_xAD_AfGt9remaindertxAD_AfGt_xAD_AfGtts17FixedWidthIntegerRzSURzlFs6UInt64V_Tg5"
+          ],
+          "address": 237520,
+          "mnemonic": "bl",
+          "operands": "1d0 <__aeabi_uldivmod>"
+        },
+        {
+          "function_symbols": [
+            "$eSUss17FixedWidthIntegerRzrlE012dividingFullB0yx8quotient_x9remaindertx4high_9MagnitudeSjQz3lowt_tFs6UInt64V_Tg5"
+          ],
+          "address": 237728,
+          "mnemonic": "bl",
+          "operands": "1d0 <__aeabi_uldivmod>"
+        },
+        {
+          "function_symbols": [
+            "$eSUss17FixedWidthIntegerRzrlE012dividingFullB0yx8quotient_x9remaindertx4high_9MagnitudeSjQz3lowt_tFs6UInt64V_Tg5"
+          ],
+          "address": 237800,
+          "mnemonic": "bl",
+          "operands": "1d0 <__aeabi_uldivmod>"
+        },
+        {
+          "function_symbols": [
+            "$eSUss17FixedWidthIntegerRzrlE012dividingFullB0yx8quotient_x9remaindertx4high_9MagnitudeSjQz3lowt_tFs6UInt64V_Tg5"
+          ],
+          "address": 237986,
+          "mnemonic": "bl",
+          "operands": "1d0 <__aeabi_uldivmod>"
+        },
+        {
+          "function_symbols": [
+            "$eSUss17FixedWidthIntegerRzrlE012dividingFullB0yx8quotient_x9remaindertx4high_9MagnitudeSjQz3lowt_tFs6UInt64V_Tg5"
+          ],
+          "address": 238002,
+          "mnemonic": "bl",
+          "operands": "1d0 <__aeabi_uldivmod>"
+        },
+        {
+          "function_symbols": [
+            "OUTLINED_FUNCTION_77"
+          ],
+          "address": 244580,
+          "mnemonic": "b.w",
+          "operands": "3b48c <giftui_signal_analyzer_input_quiesce+0x5eec>"
+        },
+        {
+          "function_symbols": [
+            "OUTLINED_FUNCTION_104"
+          ],
+          "address": 244848,
+          "mnemonic": "bl",
+          "operands": "3b48c <giftui_signal_analyzer_input_quiesce+0x5eec>"
+        },
+        {
+          "function_symbols": [
+            "OUTLINED_FUNCTION_106"
+          ],
+          "address": 244870,
+          "mnemonic": "b.w",
+          "operands": "3b48c <giftui_signal_analyzer_input_quiesce+0x5eec>"
+        },
+        {
+          "function_symbols": [
+            "OUTLINED_FUNCTION_111"
+          ],
+          "address": 244894,
+          "mnemonic": "b.w",
+          "operands": "3b4c6 <giftui_signal_analyzer_input_quiesce+0x5f26>"
+        },
+        {
+          "function_symbols": [
+            "OUTLINED_FUNCTION_244"
+          ],
+          "address": 245954,
+          "mnemonic": "b.w",
+          "operands": "3b4b4 <giftui_signal_analyzer_input_quiesce+0x5f14>"
+        }
+      ],
+      "largest_observed_entry_allocations": [
+        {
+          "address": 56652,
+          "size": 428,
+          "symbols": [
+            "$e24SignalAnalyzerTargetHost06StaticaB25NRFEmbeddedSemanticRegionO5stage7variant5model7capture2ins6UInt16VSgAA0eaB18NRFSemanticVariantO_AA0eaB16NRFModelLocationVAA0eaB17NRFCaptureRegionsVSwtFZ"
+          ],
+          "entry_allocation_bytes": 632,
+          "entry_instructions": [
+            {
+              "address": 56652,
+              "mnemonic": "stmdb",
+              "operands": "sp!, {r4, r5, r6, r7, r8, r9, sl, fp, lr}"
+            },
+            {
+              "address": 56656,
+              "mnemonic": "sub.w",
+              "operands": "sp, sp, #596"
+            }
+          ]
+        },
+        {
+          "address": 53100,
+          "size": 700,
+          "symbols": [
+            "$e24SignalAnalyzerTargetHost06StaticaB18NRFModelTextWriterO8populate7variant5model7capture2ins6UInt16VSgAA0eaB18NRFSemanticVariantO_AA0eabF8LocationVAA0eaB17NRFCaptureRegionsVSwtFZ"
+          ],
+          "entry_allocation_bytes": 608,
+          "entry_instructions": [
+            {
+              "address": 53100,
+              "mnemonic": "stmdb",
+              "operands": "sp!, {r4, r5, r6, r7, r8, r9, sl, fp, lr}"
+            },
+            {
+              "address": 53104,
+              "mnemonic": "sub.w",
+              "operands": "sp, sp, #572"
+            }
+          ]
+        },
+        {
+          "address": 180426,
+          "size": 620,
+          "symbols": [
+            "$e20SignalAnalyzerDomain0aB10DiagnosticV10truncating4utf8AA0abD12ConstructionOx_tSlRzs5UInt8V7ElementRtzlFZs5SliceVySWG_Tt0g5"
+          ],
+          "entry_allocation_bytes": 448,
+          "entry_instructions": [
+            {
+              "address": 180426,
+              "mnemonic": "stmdb",
+              "operands": "sp!, {r4, r5, r6, r7, r8, r9, sl, fp, lr}"
+            },
+            {
+              "address": 180430,
+              "mnemonic": "sub",
+              "operands": "sp, #412"
+            }
+          ]
+        },
+        {
+          "address": 235796,
+          "size": 482,
+          "symbols": [
+            "$e20SignalAnalyzerDomain0aB10DiagnosticV10truncating4utf8AA0abD12ConstructionOx_tSlRzs5UInt8V7ElementRtzlFZSRyAIG_Tt0g5"
+          ],
+          "entry_allocation_bytes": 432,
+          "entry_instructions": [
+            {
+              "address": 235796,
+              "mnemonic": "stmdb",
+              "operands": "sp!, {r4, r5, r6, r7, r8, r9, sl, fp, lr}"
+            },
+            {
+              "address": 235800,
+              "mnemonic": "sub",
+              "operands": "sp, #396"
+            }
+          ]
+        },
+        {
+          "address": 205030,
+          "size": 84,
+          "symbols": [
+            "$e24SignalAnalyzerTargetHost06StaticaB18NRFModelTextWriterO5fixed33_CD3AE57164B4922038E3E425581D90C5LLy0aB6Domain0aB10DiagnosticVSgs0E6StringVFZ"
+          ],
+          "entry_allocation_bytes": 320,
+          "entry_instructions": [
+            {
+              "address": 205030,
+              "mnemonic": "push",
+              "operands": "{r4, r5, r7, lr}"
+            },
+            {
+              "address": 205032,
+              "mnemonic": "sub",
+              "operands": "sp, #304"
+            }
+          ]
+        }
+      ],
+      "stack_config": [
+        "CONFIG_SYSTEM_WORKQUEUE_STACK_SIZE=1024",
+        "CONFIG_MAIN_STACK_SIZE=27648",
+        "CONFIG_IDLE_STACK_SIZE=320",
+        "CONFIG_ISR_STACK_SIZE=2048"
+      ]
+    }
+  },
+  "method": "nm-sized function intervals, addressed objdump instructions, direct-call/external-branch reachability, entry-only allocations",
+  "whole_stack_bound_established": false,
+  "limitations": "Entry frames are local observations, not upper bounds. Indirect targets, recursion bounds, body stack mutations, exceptions/interrupts and caller stack require independent proof. No physical high-water or target timing.",
+  "compiler_stack_section_probe": {
+    "object": ".build/nrf52840/spike-010-bounded-declaration-traversal/LoweredBody.o",
+    "sha256": "b438deb31d2402e02533e5e37810b81608a1ecf5ededa8801c60496a3c46b243",
+    "requested_flags": [
+      "-Xllvm",
+      "-stack-size-section"
+    ],
+    "stack_sizes_present": false,
+    "section_listing_sha256": "269b1b7dc6a7f1f3028fc131acb6940aed398d949891beeacd3014462f2c5299",
+    "section_listing_line_count": 1730,
+    "stack_related_section_lines": [
+      "  [1718] .note.GNU-stack   PROGBITS        00000000 00c7f0 000000 00      0   0  1"
+    ]
+  }
+}

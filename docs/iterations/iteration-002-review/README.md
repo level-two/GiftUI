@@ -33,6 +33,7 @@ draft; research does not select or authorize implementation.
 | 17 — Follow-up reconciliation | [Updated candidate selection and readiness](17-followup-reconciliation.md) | Research round concluded; draft scope revision 2 ready for selection |
 | 18 — Declaration traversal | [Bounded actual-body snapshot prerequisite](18-bounded-declaration-traversal.md) | 42 cases/84 refusals pass; additive +34,184 flash bytes; full replacement remains unsupported |
 | 19 — Clean generation | [Complete clean table emission and parity](19-clean-topology-generation.md) | Two byte-identical generations; 12 refusals; 42 semantic comparisons; zero linked size delta |
+| 20 — Static stack assessment | [Addressed evidence and unresolved control-flow boundary](20-static-stack-assessment.md) | Inspection complete; indirect targets/metadata prevent a whole-stack bound; connected evidence deferred |
 
 [Findings register](findings.md) records confirmed observations separately from
 hypotheses and preferences. A step's completion does not imply every module or
