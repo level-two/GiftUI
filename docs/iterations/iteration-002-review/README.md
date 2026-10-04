@@ -40,6 +40,7 @@ draft; research does not select or authorize implementation.
 | 24 — Connected reconciliation | [Disposition, restoration and remaining gates](24-connected-reconciliation.md) | Bounded campaign complete; devices restored; draft scope revision 4; exceptions remain |
 | 25 — Quiescent software input | [Production service-boundary corpus](25-quiescent-software-input.md) | Start/Stop, windows, disabled Plus, movement and stale subset recorded; physical/full corpus separate |
 | 26 — nRF phases/failure | [Actual-owner copied workload](26-connected-nrf-phases-and-failure.md) | Layout/production dominate; Clear/diagnostic and one pixel refusal/fresh activation recorded; no optimization selected |
+| 27 — Pi phase profiler | [Verified preparation and resumption](27-pi-profiler-preparation.md) | ARMv6 build ready; connected measurement blocked by lost SSH connectivity |
 
 [Findings register](findings.md) records confirmed observations separately from
 hypotheses and preferences. A step's completion does not imply every module or

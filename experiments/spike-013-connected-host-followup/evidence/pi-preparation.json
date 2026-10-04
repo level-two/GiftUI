@@ -1,0 +1,25 @@
+{
+  "revision": "cabb826c2fe03d9dc40c84e5f07de29c92f2f6a2",
+  "stages": [
+    "admitAndSeal",
+    "applyAdmittedWork",
+    "freezeObservableMutation",
+    "beginObservableCandidateAndExpandSemantics",
+    "resolveLayout",
+    "invokeCanvasesAndDerivePlan",
+    "preflightCombinedRender",
+    "buildInteractionCandidate",
+    "publishSemanticAndObservableCandidate",
+    "allocateCandidate",
+    "offerAndProduce"
+  ],
+  "product": "SignalAnalyzerPiResearch",
+  "inputs": {
+    ".build/raspberry-pi/spike-013/package/Package.swift": "caeed55a3128e215fe7b48d767220468f59c132b0650792252b6d4e94f6ca084",
+    ".build/raspberry-pi/spike-013/package/Sources/SignalAnalyzerTargetHost/DynamicSignalAnalyzerPiInitialPresentationOwner.swift": "85fdb31c7c2314ffb28d7f64b9daaf9de36edb12fd421157df4ae7169b77a38c",
+    ".build/raspberry-pi/spike-013/package/Sources/SignalAnalyzerTargetHost/PiResearchClock.swift": "92badf51160135cb4d648f36fefafe33db952aa9fc894113a71ea5ccacf46ccf",
+    ".build/raspberry-pi/spike-013/package/Sources/SignalAnalyzerTargetHost/DynamicSignalAnalyzerPiLifecycleOwner.swift": "5eaaa48949283fd238d587ba305d33ae2c497c2a7e86e8ddaf5af9d81586ab57",
+    ".build/raspberry-pi/spike-013/package/Sources/GiftUIPlatformRaspberryPi/LinuxPiScreenDevices.swift": "92438b6c639571fad5ee35c5aca54c853d5f2330248c8537087a886669a74ef0",
+    "experiments/spike-013-connected-host-followup/prepare-pi.py": "c937d05ab5e30a85011847d831e7193e42fa6343f8c3d1100fd0d96fb4cdb0c6"
+  }
+}

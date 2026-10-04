@@ -37,10 +37,11 @@ the Pi Dynamic owner, and what does its real source scheduling deliver?
 
 Authorized connected research under the maintainer's request to proceed with
 remaining tasks. Copied application only, supported board/J-Link/compiler/ABI,
-zero heaps and fixed trace storage. No production optimization or contract change,
+nRF zero heaps and fixed trace storage; Pi preserves its Dynamic profile. No production optimization or contract change,
 no fabricated physical contact/pixel signoff. Stop on missing calibration,
 trace overflow, ABI/resource failure, CPU fault or uncontrolled device state.
-At most six complete frames per case and bounded fault/restart runs. Restore
+At most six complete nRF frames per case, bounded fault/restart runs and a45s
+Pi observation. Restore
 original production firmware afterward.
 
 ## Method
@@ -74,7 +75,7 @@ Connected flashing uses the repository environment and explicit J-Link runner.
 
 ## Results
 
-nRF cases completed; Pi collection remains active. See
+nRF cases completed; Pi collection is blocked by lost SSH connectivity after a verified build. See
 [Step26](../iterations/iteration-002-review/26-connected-nrf-phases-and-failure.md)
 for costs, Clear/diagnostic, injected refusal and fresh activation evidence.
 

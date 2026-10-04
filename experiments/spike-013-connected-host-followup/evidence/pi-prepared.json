@@ -1,0 +1,15 @@
+{
+  "status": "blocked",
+  "blocker": "Pi answered armv6l before initial upload; subsequent IPv4 connection and IPv6 SSH banner timeouts; no measurement completed.",
+  "build": "verified ARMv6 hard-float; separate SignalAnalyzerPiResearch product",
+  "identity": {
+    "binary_sha256": "cbd434f051724ccdb09fed44998ffd4124b997e385b96734d8226911ace5afa0",
+    "production_sha256": "acf57db5625eb1d2802210aaa6e30128749277d81ad26a3f313b79f8448d8d7e"
+  },
+  "files": {
+    "build.log": "77238121f3eae87c504e9e3b498f4dab3a2285030755d09a353b29f3fdfcf32b",
+    "target-identity.log": "2880b4fccb8e0bc177824cfcd4d10396bb70b32008d470a2c7b1bbfe33db58c6",
+    "retry-ipv4.log": "abca8ddec51ba7396f71ebf622da89e72f8df414e1fe96f100e4a1b19408499f"
+  },
+  "archive_sha256": "e7854d4342b83a1efc4e3edec3fd89a8ebea673c5b91bc3b1d9bb596daf1cfb5"
+}
