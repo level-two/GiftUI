@@ -3,7 +3,7 @@
 **Governing scope:** [approved revision 7](../iteration-002-cleanup.md),
 [approval provenance](../iteration-002-review/32-scope-approval.md), approval
 commit `2a0bf0fa`.
-**Prepared:** 2026-10-04. **Execution:** not started.
+**Prepared:** 2026-10-04. **Execution:** active.
 
 This derived record coordinates the nine approved outcomes across existing
 owner plans and repository tooling. It adds no architecture, contract,

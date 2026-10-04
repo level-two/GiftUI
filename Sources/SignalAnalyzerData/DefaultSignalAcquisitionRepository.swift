@@ -61,12 +61,13 @@ package final class DefaultSignalAcquisitionRepository: SignalAcquisitionReposit
         guard acquisitionState != .running else { return }
         do {
             try source.start(sink: self)
-            isSourceActive = true
-            acquisitionState = .running
-            publishState()
         } catch let failure as any SignalDataSourceDiagnosticError {
             source.stop()
             isSourceActive = false
+            if isTerminal {
+                throw SignalAcquisitionUnavailableError(
+                    signalAnalyzerDiagnostic: terminalDiagnostic!)
+            }
             let diagnostic = failure.signalAnalyzerDiagnostic
             acquisitionState = .failed(diagnostic)
             publishState()
@@ -74,6 +75,10 @@ package final class DefaultSignalAcquisitionRepository: SignalAcquisitionReposit
         } catch {
             source.stop()
             isSourceActive = false
+            if isTerminal {
+                throw SignalAcquisitionUnavailableError(
+                    signalAnalyzerDiagnostic: terminalDiagnostic!)
+            }
             let diagnostic = SignalAnalyzerDiagnostic(
                 exactUTF8: Array("source start failed".utf8)
             )!
@@ -81,6 +86,13 @@ package final class DefaultSignalAcquisitionRepository: SignalAcquisitionReposit
             publishState()
             throw SignalAcquisitionStartError(signalAnalyzerDiagnostic: diagnostic)
         }
+        if isTerminal {
+            source.stop()
+            throw SignalAcquisitionUnavailableError(signalAnalyzerDiagnostic: terminalDiagnostic!)
+        }
+        isSourceActive = true
+        acquisitionState = .running
+        publishState()
     }
 
     package func stop() {

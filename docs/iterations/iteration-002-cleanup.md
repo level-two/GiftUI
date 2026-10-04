@@ -1,7 +1,7 @@
 ---
 id: ITERATION-002
 title: Cleanup
-status: approved
+status: active
 revision: 7
 approved_revision: 7
 created: 2026-10-04

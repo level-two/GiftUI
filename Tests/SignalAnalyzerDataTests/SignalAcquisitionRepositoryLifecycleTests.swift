@@ -4,6 +4,91 @@ import Testing
 
 @Suite("Signal Analyzer repository lifecycle and failures")
 struct SignalAcquisitionRepositoryLifecycleTests {
+    @Test(
+        "real startup callbacks preserve terminal revision failure",
+        arguments: [UInt32.max, UInt32.max - 1])
+    func synchronousStartupRevisionFailure(initialRevision: UInt32) {
+        let source = DeterministicSignalDataSource()
+        let repository = DefaultSignalAcquisitionRepository(
+            source: source, initialRevision: initialRevision)
+        let captures = LifecycleCaptureSink(outcome: .accepted(sequence: 1))
+        let states = LifecycleStateSink()
+        repository.startObservingCapture(sink: captures)
+        repository.startObservingAcquisitionState(sink: states)
+
+        #expect(throws: SignalAcquisitionUnavailableError.self) { try repository.start() }
+        #expect(source.activeGeneration == nil)
+        #expect(source.nextScheduledDelay == nil)
+        #expect(repository.captureRevision == .max)
+        #expect(repository.currentCapture.transitions.count == (initialRevision == .max ? 0 : 1))
+        #expect(states.states == [.idle])
+        #expect(
+            captures.publications.filter {
+                if case .terminalFailure = $0 { return true }
+                return false
+            }.count == 1)
+        let capture = repository.currentCapture
+        let count = captures.publications.count
+        repository.clear()
+        repository.stop()
+        #expect(throws: SignalAcquisitionUnavailableError.self) { try repository.start() }
+        #expect(!source.deliverScheduledTransition(generation: 1))
+        #expect(repository.currentCapture == capture)
+        #expect(captures.publications.count == count)
+        let replay = LifecycleStateSink()
+        repository.startObservingAcquisitionState(sink: replay)
+        #expect(replay.states == [repository.acquisitionState])
+        guard case .failed = replay.states.first else {
+            Issue.record("expected terminal failed state replay")
+            return
+        }
+    }
+
+    @Test("callback then throw preserves terminal diagnostic and single publication")
+    func synchronousCallbackThenThrow() {
+        let source = LifecycleSource()
+        source.emitDuringStart = true
+        source.failure = LifecycleSource.Failure(
+            signalAnalyzerDiagnostic: SignalAnalyzerDiagnostic(
+                exactUTF8: Array("startup failed".utf8))!)
+        let repository = DefaultSignalAcquisitionRepository(source: source, initialRevision: .max)
+        let captures = LifecycleCaptureSink(outcome: .accepted(sequence: 1))
+        let states = LifecycleStateSink()
+        repository.startObservingCapture(sink: captures)
+        repository.startObservingAcquisitionState(sink: states)
+        #expect(throws: SignalAcquisitionUnavailableError.self) { try repository.start() }
+        #expect(source.stopCount == 1)
+        #expect(states.states == [.idle])
+        guard
+            case .terminalFailure(.captureRevisionExhausted, let diagnostic) = captures.publications
+                .last
+        else {
+            Issue.record("expected terminal capture failure")
+            return
+        }
+        #expect(repository.acquisitionState == .failed(diagnostic))
+        #expect(captures.publications.count == 2)
+    }
+
+    @Test("real source normal startup, stop, restart and clear remain available")
+    func realSourceLifecycle() throws {
+        let source = DeterministicSignalDataSource()
+        let repository = DefaultSignalAcquisitionRepository(source: source)
+        try repository.start()
+        #expect(repository.captureRevision == 4)
+        #expect(repository.acquisitionState == .running)
+        repository.stop()
+        #expect(source.activeGeneration == nil)
+        try repository.start()
+        #expect(source.activeGeneration == 2)
+        #expect(repository.captureRevision == 4)
+        repository.clear()
+        #expect(repository.captureRevision == 5)
+        #expect(repository.currentCapture.transitions.isEmpty)
+        #expect(repository.acquisitionState == .running)
+        repository.stop()
+    }
+
     @Test("sink replacement and detachment are immediate and refusal does not roll back")
     func captureSinkLifecycle() throws {
         let source = LifecycleSource()
@@ -208,6 +293,7 @@ private final class LifecycleSource: SignalDataSource {
     struct Failure: SignalDataSourceDiagnosticError {
         let signalAnalyzerDiagnostic: SignalAnalyzerDiagnostic
     }
+    var emitDuringStart = false
     var failure: Failure?
     var startCount = 0
     var stopCount = 0
@@ -216,6 +302,7 @@ private final class LifecycleSource: SignalDataSource {
     func start(sink: some SignalTransitionSink) throws {
         startCount += 1
         self.sink = sink
+        if emitDuringStart { emit(1) }
         if let failure { throw failure }
     }
 
