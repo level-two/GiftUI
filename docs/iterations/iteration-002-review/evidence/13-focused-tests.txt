@@ -1,0 +1,25 @@
+swiftpm-command: swift test --package-path /Users/eugene/work/GiftUI --scratch-path /Users/eugene/work/GiftUI/.build/test-reports/all-hardware-free/swiftpm -Xswiftc -DGIFTUI_DYNAMIC_PROFILE --filter staticNRFEmbedded\(SemanticRegion\|Layout\)
+Test Suite 'Selected tests' started at 2026-10-04 17:17:54.470.
+Test Suite 'GiftUIPackageTests.xctest' started at 2026-10-04 17:17:54.470.
+Test Suite 'GiftUIPackageTests.xctest' passed at 2026-10-04 17:17:54.470.
+	 Executed 0 tests, with 0 failures (0 unexpected) in 0.000 (0.000) seconds
+Test Suite 'Selected tests' passed at 2026-10-04 17:17:54.471.
+	 Executed 0 tests, with 0 failures (0 unexpected) in 0.000 (0.001) seconds
+◇ Test run started.
+↳ Testing Library Version: 1902
+↳ Target Platform: arm64e-apple-macos14.0
+◇ Test staticNRFEmbeddedLayoutTextCodecMatchesHostBytes() started.
+◇ Test staticNRFEmbeddedLayoutScopeCodecMatchesHostBytes() started.
+◇ Test staticNRFEmbeddedLayoutPublishesTheInPlaceHostRecords() started.
+◇ Test staticNRFEmbeddedLayoutWorkspaceMatchesHostScopeRecords() started.
+◇ Test staticNRFEmbeddedSemanticRegionPublishesOnlyValidatedRevisions() started.
+✔ Test staticNRFEmbeddedLayoutScopeCodecMatchesHostBytes() passed after 0.001 seconds.
+✔ Test staticNRFEmbeddedLayoutTextCodecMatchesHostBytes() passed after 0.001 seconds.
+✔ Test staticNRFEmbeddedLayoutPublishesTheInPlaceHostRecords() passed after 0.001 seconds.
+✔ Test staticNRFEmbeddedLayoutWorkspaceMatchesHostScopeRecords() passed after 0.001 seconds.
+✔ Test staticNRFEmbeddedSemanticRegionPublishesOnlyValidatedRevisions() passed after 0.040 seconds.
+✔ Test run with 5 tests in 0 suites passed after 0.041 seconds.
+[0/1] Planning build
+Building for debugging...
+[0/11] Write swift-version--58304C5D6DBC2206.txt
+Build complete! (4.84s)
