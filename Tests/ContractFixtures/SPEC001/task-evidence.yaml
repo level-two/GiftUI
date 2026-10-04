@@ -94,12 +94,12 @@ tasks:
     evidence: []
     blockers: []
   T11.5:
-    disposition: pending
+    disposition: completed
     requirements: ["SA-AC-022", "SA-AC-023", "SA-AC-024", "SA-AC-025", "SA-AC-039", "SA-AC-045"]
     implementation: ["scripts/contracts/run-spec-001.sh"]
     checks: ["scripts/contracts/check-spec-001-driver.rb", "Tests/GovernanceTooling/report_identity_test.rb"]
     profiles: ["macos-dynamic", "macos-static", "raspberry-pi-armv6", "nrf52840-embedded"]
-    evidence: []
+    evidence: ["docs/iterations/iteration-002-cleanup/evidence/05-compilers/result.md"]
     blockers: []
   T11.6:
     disposition: pending
