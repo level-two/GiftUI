@@ -12,3 +12,5 @@ Use `spike-NNN-short-slug.md` and the next unused `SPIKE-NNN` ID. Put optional
 experiment code in `experiments/spike-NNN-short-slug/` and link it from the
 record. A Spike feeds evidence to its parent; it cannot establish architecture
 or authorize production implementation.
+
+- [SPIKE-009: nRF hierarchy direct-module probe and generated role bindings](spike-009-nrf-hierarchy-role-bindings.md)

@@ -2,7 +2,7 @@
 id: EXP-001
 feature: signal-analyzer
 title: nRF Hierarchy Derivation and Stable Role Bindings
-status: draft
+status: concluded
 authors:
   - codex
 created: 2026-10-04
@@ -11,7 +11,8 @@ source:
   - SPEC-001
 related_future_work: []
 related_explorations: []
-related_spikes: []
+related_spikes:
+  - SPIKE-009
 promoted_to: []
 supersedes: []
 superseded_by: []
@@ -100,17 +101,34 @@ The [fresh hardware-free gate](../iterations/iteration-002-review/11-fresh-hardw
 records the current assembled baseline at 275,600 flash bytes and 191,104 RAM
 bytes. This is not a candidate comparison or fresh physical stack/timing proof.
 
+## Follow-up Experiment
+
+[SPIKE-009](../spikes/spike-009-nrf-hierarchy-role-bindings.md) now records the
+bounded direct-module failure and a measured role-binding candidate. The
+unmodified Domain APIs hit actual Embedded existential restrictions before
+view derivation. Thirty-two inferred role bindings produce identical packed
+semantic bytes across 42 model/window/diagnostic/capture states; linked costs
+are +192 flash bytes and unchanged RAM. Native timing and local writer frame
+observations are recorded with limits. No acceptable target timing/stack/delta
+budget was agreed, and full runtime derivation was not built.
+
 ## Remaining Unknowns
 
-No replacement prototype, agreed allowed deltas/derivation budget or measured
-candidate firmware exists in this review. Existing declaration feasibility and
-current firmware conformance do not answer these questions.
+A bounded typed witness/declaration-lowering candidate, complete clean offline
+generation, whole-stack bounds and target timing remain untested. These are
+future candidate-specific research, not evidence that the current packed
+representation should be removed. The partial binding candidate does not
+remove the topology generator or its current source-template dependency.
 
 ## Disposition
 
-Continue as a proposed bounded investigation for iteration selection. Retain
-current production code pending comparative evidence. Audit source assessment
-is complete; IT-AC-003's replacement feasibility assessment remains open.
+Conclude this bounded research round with a retain-packed-hierarchy
+recommendation. Consider selecting explicit generated/checkable semantic-role
+bindings as a smaller maintenance outcome; do not promise runtime replacement
+for ITERATION-002. The direct-module route has a negative prerequisite result,
+not full parity/cost evidence. IT-AC-003 is available for scope refinement but
+is not recorded as an approved criterion pass. Further runtime work requires
+selecting a concrete lowering candidate and comparison budgets.
 
 ## Revisit Triggers
 

@@ -1,0 +1,105 @@
+{
+  "limitation": "First 48 instruction bytes only, not a complete frame/call-chain bound or physical high-water measurement",
+  "images": {
+    "baseline": {
+      "$e24SignalAnalyzerTargetHost06StaticaB18NRFModelTextWriterO5value33_CD3AE57164B4922038E3E425581D90C5LL2at7variant5model7capture0aB6Domain0aB10DiagnosticVSgs6UInt16V_AA0eaB18NRFSemanticVariantOAA0eabF8LocationVAA0eaB17NRFCaptureRegionsVtFZ": {
+        "address": 53800,
+        "symbol_bytes": 576,
+        "entry_instructions": [
+          "    d228:\te92d 4ff0 \tstmdb\tsp!, {r4, r5, r6, r7, r8, r9, sl, fp, lr}",
+          "    d22c:\tb0c1      \tsub\tsp, #260\t; 0x104",
+          "    d22e:\t4604      \tmov\tr4, r0",
+          "    d230:\tb288      \tuxth\tr0, r1",
+          "    d232:\t9d4a      \tldr\tr5, [sp, #296]\t; 0x128",
+          "    d234:\t285b      \tcmp\tr0, #91\t; 0x5b"
+        ]
+      },
+      "$e24SignalAnalyzerTargetHost06StaticaB18NRFModelTextWriterO8populate7variant5model7capture2ins6UInt16VSgAA0eaB18NRFSemanticVariantO_AA0eabF8LocationVAA0eaB17NRFCaptureRegionsVSwtFZ": {
+        "address": 53100,
+        "symbol_bytes": 700,
+        "entry_instructions": [
+          "    cf6c:\te92d 4ff0 \tstmdb\tsp!, {r4, r5, r6, r7, r8, r9, sl, fp, lr}",
+          "    cf70:\tf5ad 7d0f \tsub.w\tsp, sp, #572\t; 0x23c",
+          "    cf74:\t9e98      \tldr\tr6, [sp, #608]\t; 0x260",
+          "    cf76:\ta808      \tadd\tr0, sp, #32",
+          "    cf78:\tc00e      \tstmia\tr0!, {r1, r2, r3}",
+          "    cf7a:\t2e00      \tcmp\tr6, #0"
+        ]
+      },
+      "$e24SignalAnalyzerTargetHost06StaticaB22NRFModelModifierWriterO7payload33_CD3AE57164B4922038E3E425581D90C5LL2at5model7captures5UInt8V5flags_s6UInt32V5colortSgs6UInt16V_AA0eabF8LocationVAA0eaB17NRFCaptureRegionsVtFZ": {
+        "address": 54844,
+        "symbol_bytes": 348,
+        "entry_instructions": [
+          "    d63c:\te92d 44f0 \tstmdb\tsp!, {r4, r5, r6, r7, sl, lr}",
+          "    d640:\tb09a      \tsub\tsp, #104\t; 0x68",
+          "    d642:\tb285      \tuxth\tr5, r0",
+          "    d644:\t460b      \tmov\tr3, r1",
+          "    d646:\t2d11      \tcmp\tr5, #17",
+          "    d648:\td113      \tbne.n\td672 <CONFIG_CLOCK_CONTROL_NRF_K32SRC_FREQUENCY+0x5672>"
+        ]
+      },
+      "$e24SignalAnalyzerTargetHost06StaticaB22NRFModelModifierWriterO8populate5model7capture2inSbAA0eabF8LocationV_AA0eaB17NRFCaptureRegionsVSwtFZ": {
+        "address": 54460,
+        "symbol_bytes": 384,
+        "entry_instructions": [
+          "    d4bc:\te92d 4ff0 \tstmdb\tsp!, {r4, r5, r6, r7, r8, r9, sl, fp, lr}",
+          "    d4c0:\tb08f      \tsub\tsp, #60\t; 0x3c",
+          "    d4c2:\t2b00      \tcmp\tr3, #0",
+          "    d4c4:\t9002      \tstr\tr0, [sp, #8]",
+          "    d4c6:\tf000 80b2 \tbeq.w\td62e <CONFIG_CLOCK_CONTROL_NRF_K32SRC_FREQUENCY+0x562e>",
+          "    d4ca:\t9818      \tldr\tr0, [sp, #96]\t; 0x60"
+        ]
+      }
+    },
+    "candidate": {
+      "$e24SignalAnalyzerTargetHost06StaticaB18NRFModelTextWriterO5value33_CD3AE57164B4922038E3E425581D90C5LL2at7variant5model7capture0aB6Domain0aB10DiagnosticVSgs6UInt16V_AA0eaB18NRFSemanticVariantOAA0eabF8LocationVAA0eaB17NRFCaptureRegionsVtFZ": {
+        "address": 53784,
+        "symbol_bytes": 644,
+        "entry_instructions": [
+          "    d218:\te92d 4ff0 \tstmdb\tsp!, {r4, r5, r6, r7, r8, r9, sl, fp, lr}",
+          "    d21c:\tb0c1      \tsub\tsp, #260\t; 0x104",
+          "    d21e:\t4604      \tmov\tr4, r0",
+          "    d220:\tb288      \tuxth\tr0, r1",
+          "    d222:\tf240 51a2 \tmovw\tr1, #1442\t; 0x5a2",
+          "    d226:\t4288      \tcmp\tr0, r1"
+        ]
+      },
+      "$e24SignalAnalyzerTargetHost06StaticaB18NRFModelTextWriterO8populate7variant5model7capture2ins6UInt16VSgAA0eaB18NRFSemanticVariantO_AA0eabF8LocationVAA0eaB17NRFCaptureRegionsVSwtFZ": {
+        "address": 53092,
+        "symbol_bytes": 692,
+        "entry_instructions": [
+          "    cf64:\te92d 4ff0 \tstmdb\tsp!, {r4, r5, r6, r7, r8, r9, sl, fp, lr}",
+          "    cf68:\tf5ad 7d0d \tsub.w\tsp, sp, #564\t; 0x234",
+          "    cf6c:\t9d96      \tldr\tr5, [sp, #600]\t; 0x258",
+          "    cf6e:\ta806      \tadd\tr0, sp, #24",
+          "    cf70:\tc00e      \tstmia\tr0!, {r1, r2, r3}",
+          "    cf72:\t2d00      \tcmp\tr5, #0"
+        ]
+      },
+      "$e24SignalAnalyzerTargetHost06StaticaB22NRFModelModifierWriterO7payload33_CD3AE57164B4922038E3E425581D90C5LL2at5model7captures5UInt8V5flags_s6UInt32V5colortSgs6UInt16V_AA0eabF8LocationVAA0eaB17NRFCaptureRegionsVtFZ": {
+        "address": 54872,
+        "symbol_bytes": 388,
+        "entry_instructions": [
+          "    d658:\te92d 4430 \tstmdb\tsp!, {r4, r5, sl, lr}",
+          "    d65c:\tb09a      \tsub\tsp, #104\t; 0x68",
+          "    d65e:\tb285      \tuxth\tr5, r0",
+          "    d660:\tf24a 30c3 \tmovw\tr0, #41923\t; 0xa3c3",
+          "    d664:\t4285      \tcmp\tr5, r0",
+          "    d666:\td114      \tbne.n\td692 <CONFIG_CLOCK_CONTROL_NRF_K32SRC_FREQUENCY+0x5692>"
+        ]
+      },
+      "$e24SignalAnalyzerTargetHost06StaticaB22NRFModelModifierWriterO8populate5model7capture2inSbAA0eabF8LocationV_AA0eaB17NRFCaptureRegionsVSwtFZ": {
+        "address": 54512,
+        "symbol_bytes": 360,
+        "entry_instructions": [
+          "    d4f0:\te92d 4ff0 \tstmdb\tsp!, {r4, r5, r6, r7, r8, r9, sl, fp, lr}",
+          "    d4f4:\tb08f      \tsub\tsp, #60\t; 0x3c",
+          "    d4f6:\t2b00      \tcmp\tr3, #0",
+          "    d4f8:\te9cd 0101 \tstrd\tr0, r1, [sp, #4]",
+          "    d4fc:\tf000 80a5 \tbeq.w\td64a <CONFIG_CLOCK_CONTROL_NRF_K32SRC_FREQUENCY+0x564a>",
+          "    d500:\t9818      \tldr\tr0, [sp, #96]\t; 0x60"
+        ]
+      }
+    }
+  }
+}

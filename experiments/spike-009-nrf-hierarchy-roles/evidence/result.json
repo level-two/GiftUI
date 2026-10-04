@@ -1,0 +1,396 @@
+{
+  "revision": "34d3403b3ee662068717b92cd91002dd050d1918",
+  "inputs": {
+    "Sources/SignalAnalyzerDomain/AcquisitionState.swift": "a2fb47cf52972d8610a78e7ffe4d1e8771ea8fff315ca72aec2d29ca33776755",
+    "Sources/SignalAnalyzerDomain/ModuleBoundary.swift": "837099cf3d38228e94c4be34dc1cbca3d67b4e62f64a05862843e94186c08293",
+    "Sources/SignalAnalyzerDomain/SignalAcquisitionContracts.swift": "121a62d4a13b2da15865309dfb3e2e17ca90534c9fc0416521730c5a65201fa9",
+    "Sources/SignalAnalyzerDomain/SignalAnalyzerDiagnostic.swift": "f44b7d121c9d290f877ad43c361b4d90d79ecb27a3f8ac1e112062077b53dcf4",
+    "Sources/SignalAnalyzerDomain/SignalCaptureChange.swift": "22b797e24c32d8f4054e22ef2756b056c3d3601d061a02f9438ceb0c71cb6dbc",
+    "Sources/SignalAnalyzerDomain/SignalCapturePublication.swift": "2d2a648a49e96f6020eb8a55080bc14f24c2f3a9748dd12694bfefb14a940a1b",
+    "Sources/SignalAnalyzerDomain/SignalPrimitiveValues.swift": "c37d6271a0c077fbc99e694b98d0c094e311a0f42681f1c09bbcc64f1ae101c1",
+    "Sources/SignalAnalyzerDomain/SignalValues.swift": "310f8a7d0736a363b22dc58a915fb25b03cdc80369ad42f2c28a6b92db37eca2",
+    "Tests/ContractFixtures/SPEC001/nrf-touch-ui-projection.json": "20b1ed30222dd9a0cfd23d3cb198a3f3ba7e0378512ff28921144e9252ae2816",
+    "Tests/ContractFixtures/SPEC001/nrf-touch-ui-diagnostic-projection.json": "f2ca9c26210d14872b10dbc5b36401e55a377ad67f7affa2d8946ad9aa61b66b",
+    "Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFModelTextWriter.swift": "a2e7c9e4be86c7f3c18f3d918a6fb856dd507043439b3451ce420092a02d492c",
+    "Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFModelModifierWriter.swift": "601a92e6cc7a9902c90640fa3ab1dceaa25f6c439c806f1668a330977edfa7ef",
+    "firmware/nrf52840/applications/signal-analyzer-static/CMakeLists.txt": "9accb5b9936c4351b1b394a078167c8bd123d5a91df65b4310776fd36d39c7c4",
+    "experiments/spike-009-nrf-hierarchy-roles/run.py": "9e927ac1af1e689430932533d03f52fad4ed25bf4d5677464b6ada5ab11a65da",
+    "experiments/spike-009-nrf-hierarchy-roles/Probe.swift": "154107937d192557ffb4c1cdae23177e28630a5364855869deed84972b6b96da",
+    ".build/nrf52840/signal-analyzer-static/SignalAnalyzerStatic.swift": "c0834234b12653c2489d4516237b5c34152f7a4fe18e6aec808d31c96a981cc0",
+    "scripts/nrf52840/toolchain.env": "9f71c8faf46502e920c1e5f1763132166f8136bc0e23a17cc38291ef35f376a5"
+  },
+  "direct_module_probe": {
+    "command": [
+      "/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.3.2-RELEASE-osx/usr/bin/swiftc",
+      "-target",
+      "armv7em-none-none-eabi",
+      "-j",
+      "12",
+      "-num-threads",
+      "12",
+      "-c",
+      "-parse-as-library",
+      "-module-name",
+      "SignalAnalyzerDomain",
+      "-module-link-name",
+      "giftui_SignalAnalyzerDomain",
+      "-wmo",
+      "-parse-as-library",
+      "-Osize",
+      "-package-name",
+      "GiftUI",
+      "-DGIFTUI_NRF_EMBEDDED",
+      "-enable-experimental-feature",
+      "Embedded",
+      "-Xfrontend",
+      "-function-sections",
+      "-Xfrontend",
+      "-disable-stack-protector",
+      "-Xcc",
+      "-mfloat-abi=hard",
+      "-Xcc",
+      "-fshort-enums",
+      "-Xcc",
+      "-fno-pic",
+      "-Xcc",
+      "-fno-pie",
+      "-Xcc",
+      "-I",
+      "-Xcc",
+      "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/picolibc/include",
+      "-DGIFTUI_REFERENCE_BITMAP_ONLY",
+      "-Xcc",
+      "-mcpu=cortex-m4",
+      "-Xcc",
+      "-mthumb",
+      "-Xcc",
+      "-mabi=aapcs",
+      "-Xcc",
+      "-mfpu=fpv4-sp-d16",
+      "-Xcc",
+      "-mtp=soft",
+      "-emit-module",
+      "-emit-module-path",
+      "/Users/eugene/work/GiftUI/.build/nrf52840/spike-009-hierarchy-roles/SignalAnalyzerDomain.swiftmodule",
+      "-o",
+      "/Users/eugene/work/GiftUI/.build/nrf52840/spike-009-hierarchy-roles/SignalAnalyzerDomain.o",
+      "/Users/eugene/work/GiftUI/.build/nrf52840/spike-009-hierarchy-roles/ActualDomain.swift",
+      "-module-cache-path",
+      "/Users/eugene/work/GiftUI/.build/nrf52840/spike-009-hierarchy-roles/clang-cache"
+    ],
+    "exit_code": 1,
+    "diagnostics": "/Users/eugene/work/GiftUI/.build/nrf52840/spike-009-hierarchy-roles/ActualDomain.swift:52:20: warning: cannot use generic instance method 'startObservingCapture(sink:)' on a value of type 'any SignalAcquisitionRepository' in Embedded Swift [#EmbeddedRestrictions]\n 50 | \n 51 |     package func start(sink: some SignalCaptureSink) {\n 52 |         repository.startObservingCapture(sink: sink)\n    |                    `- warning: cannot use generic instance method 'startObservingCapture(sink:)' on a value of type 'any SignalAcquisitionRepository' in Embedded Swift [#EmbeddedRestrictions]\n 53 |     }\n 54 | \n\n/Users/eugene/work/GiftUI/.build/nrf52840/spike-009-hierarchy-roles/ActualDomain.swift:68:20: warning: cannot use generic instance method 'startObservingAcquisitionState(sink:)' on a value of type 'any SignalAcquisitionRepository' in Embedded Swift [#EmbeddedRestrictions]\n 66 | \n 67 |     package func start(sink: some AcquisitionStateSink) {\n 68 |         repository.startObservingAcquisitionState(sink: sink)\n    |                    `- warning: cannot use generic instance method 'startObservingAcquisitionState(sink:)' on a value of type 'any SignalAcquisitionRepository' in Embedded Swift [#EmbeddedRestrictions]\n 69 |     }\n 70 | \n\n/Users/eugene/work/GiftUI/.build/nrf52840/spike-009-hierarchy-roles/ActualDomain.swift:56:20: error: cannot use a value of protocol type 'any SignalAcquisitionRepository' in embedded Swift [#EmbeddedRestrictions]\n 54 | \n 55 |     package func stop() {\n 56 |         repository.stopObservingCapture()\n    |                    `- error: cannot use a value of protocol type 'any SignalAcquisitionRepository' in embedded Swift [#EmbeddedRestrictions]\n 57 |     }\n 58 | }\n\n/Users/eugene/work/GiftUI/.build/nrf52840/spike-009-hierarchy-roles/ActualDomain.swift:72:20: error: cannot use a value of protocol type 'any SignalAcquisitionRepository' in embedded Swift [#EmbeddedRestrictions]\n 70 | \n 71 |     package func stop() {\n 72 |         repository.stopObservingAcquisitionState()\n    |                    `- error: cannot use a value of protocol type 'any SignalAcquisitionRepository' in embedded Swift [#EmbeddedRestrictions]\n 73 |     }\n 74 | }\n\n/Users/eugene/work/GiftUI/.build/nrf52840/spike-009-hierarchy-roles/ActualDomain.swift:84:24: error: cannot use a value of protocol type 'any SignalAcquisitionRepository' in embedded Swift [#EmbeddedRestrictions]\n 82 | \n 83 |     package func execute() throws {\n 84 |         try repository.start()\n    |                        `- error: cannot use a value of protocol type 'any SignalAcquisitionRepository' in embedded Swift [#EmbeddedRestrictions]\n 85 |     }\n 86 | }\n\n/Users/eugene/work/GiftUI/.build/nrf52840/spike-009-hierarchy-roles/ActualDomain.swift:96:20: error: cannot use a value of protocol type 'any SignalAcquisitionRepository' in embedded Swift [#EmbeddedRestrictions]\n 94 | \n 95 |     package func execute() {\n 96 |         repository.stop()\n    |                    `- error: cannot use a value of protocol type 'any SignalAcquisitionRepository' in embedded Swift [#EmbeddedRestrictions]\n 97 |     }\n 98 | }\n\n/Users/eugene/work/GiftUI/.build/nrf52840/spike-009-hierarchy-roles/ActualDomain.swift:108:20: error: cannot use a value of protocol type 'any SignalAcquisitionRepository' in embedded Swift [#EmbeddedRestrictions]\n106 | \n107 |     package func execute() {\n108 |         repository.clear()\n    |                    `- error: cannot use a value of protocol type 'any SignalAcquisitionRepository' in embedded Swift [#EmbeddedRestrictions]\n109 |     }\n110 | }\n\n[#EmbeddedRestrictions]: <https://docs.swift.org/compiler/documentation/diagnostics/embedded-restrictions>\n"
+  },
+  "roles": {
+    "title": {
+      "ordinal": 8,
+      "identity": 53685,
+      "kind": 6
+    },
+    "subtitle": {
+      "ordinal": 10,
+      "identity": 17716,
+      "kind": 6
+    },
+    "recording": {
+      "ordinal": 22,
+      "identity": 21605,
+      "kind": 6
+    },
+    "shorter": {
+      "ordinal": 39,
+      "identity": 3953,
+      "kind": 6
+    },
+    "longer": {
+      "ordinal": 63,
+      "identity": 43533,
+      "kind": 6
+    },
+    "rulerStart": {
+      "ordinal": 46,
+      "identity": 6046,
+      "kind": 6
+    },
+    "rulerMiddle": {
+      "ordinal": 50,
+      "identity": 4675,
+      "kind": 6
+    },
+    "rulerEnd": {
+      "ordinal": 54,
+      "identity": 17035,
+      "kind": 6
+    },
+    "error": {
+      "ordinal": 13,
+      "identity": 1442,
+      "kind": 6
+    },
+    "recordingBackground": {
+      "ordinal": 20,
+      "identity": 25273,
+      "kind": 8
+    },
+    "recordingRectangleStyle": {
+      "ordinal": 18,
+      "identity": 19054,
+      "kind": 8
+    },
+    "recordingTextStyle": {
+      "ordinal": 17,
+      "identity": 41923,
+      "kind": 8
+    },
+    "shorterBackground": {
+      "ordinal": 37,
+      "identity": 20717,
+      "kind": 8
+    },
+    "shorterRectangleStyle": {
+      "ordinal": 35,
+      "identity": 56240,
+      "kind": 8
+    },
+    "shorterTextStyle": {
+      "ordinal": 34,
+      "identity": 15076,
+      "kind": 8
+    },
+    "shorterDisabled": {
+      "ordinal": 32,
+      "identity": 14814,
+      "kind": 8
+    },
+    "longerBackground": {
+      "ordinal": 61,
+      "identity": 49945,
+      "kind": 8
+    },
+    "longerRectangleStyle": {
+      "ordinal": 59,
+      "identity": 48102,
+      "kind": 8
+    },
+    "longerTextStyle": {
+      "ordinal": 58,
+      "identity": 9960,
+      "kind": 8
+    },
+    "longerDisabled": {
+      "ordinal": 56,
+      "identity": 319,
+      "kind": 8
+    },
+    "channel1Name": {
+      "ordinal": 66,
+      "identity": 13429,
+      "kind": 6
+    },
+    "channel1Level": {
+      "ordinal": 70,
+      "identity": 46887,
+      "kind": 6
+    },
+    "channel1LevelStyle": {
+      "ordinal": 69,
+      "identity": 15206,
+      "kind": 8
+    },
+    "channel2Name": {
+      "ordinal": 73,
+      "identity": 21329,
+      "kind": 6
+    },
+    "channel2Level": {
+      "ordinal": 77,
+      "identity": 4670,
+      "kind": 6
+    },
+    "channel2LevelStyle": {
+      "ordinal": 76,
+      "identity": 1785,
+      "kind": 8
+    },
+    "channel3Name": {
+      "ordinal": 80,
+      "identity": 35238,
+      "kind": 6
+    },
+    "channel3Level": {
+      "ordinal": 84,
+      "identity": 32021,
+      "kind": 6
+    },
+    "channel3LevelStyle": {
+      "ordinal": 83,
+      "identity": 8133,
+      "kind": 8
+    },
+    "channel4Name": {
+      "ordinal": 87,
+      "identity": 53362,
+      "kind": 6
+    },
+    "channel4Level": {
+      "ordinal": 91,
+      "identity": 11421,
+      "kind": 6
+    },
+    "channel4LevelStyle": {
+      "ordinal": 90,
+      "identity": 11485,
+      "kind": 8
+    }
+  },
+  "variant_roles_match": true,
+  "ordinal_shift_inference_passed": true,
+  "rejected_anchor_mutations": [
+    "missing-title",
+    "duplicate-title"
+  ],
+  "bindings_sha256": "f9f7ceee4ffd0b797fec64a5dc8f0f1f8284dd9752dac20d04c55cb2e8f9d328",
+  "candidate_sources": {
+    "Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFModelTextWriter.swift": "e02e5fc47c7101378e0a55ef2e6fb6f3d3574f481211ed05559e73b8e013fcd2",
+    "Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFModelModifierWriter.swift": "412b03305e9e1fb0e11fe747c13fedef7a01e56335ded059d14c2222c76df371"
+  },
+  "native_object_hashes": {
+    ".build/contract-generated/spec-001/nrf-native-owners/GiftUI.o": "5539773cc47b33763f09a6d6f7f4d185a43871286f0f1c4f8b8511809fb8d101",
+    ".build/contract-generated/spec-001/nrf-native-owners/GiftUICapabilities.o": "924cfcff2d3f0734b853bd22a5a297ac6bcf82848011bf11a9c933e80e8d0e13",
+    ".build/contract-generated/spec-001/nrf-native-owners/GiftUIFailureCore.o": "f72b5b8cff95d6e47a061392979be26d633a1fbd4e9bbb98ad6521d7c26a0e41",
+    ".build/contract-generated/spec-001/nrf-native-owners/SignalAnalyzerDomain.o": "f3bd44df8d4a60b5a673b5eea5fba65f6c782e5839bdb856cba3c57cffd24335",
+    ".build/contract-generated/spec-001/nrf-native-owners/GiftUISemanticCore.o": "b96b18fb9ab0182fd3b73e194bccfc198a27b0a0291b67c1c459bd68fd9854b7",
+    ".build/contract-generated/spec-001/nrf-native-owners/GiftUISurfaceCore.o": "318e5652c3910f2e4726145fca9db168df8430d57c4da7f9aed3d50ac0f57be3",
+    ".build/contract-generated/spec-001/nrf-native-owners/GiftUITextResources.o": "052d2af9b51b91597939cb47eca0a84ddc75e27ec08c97b712ab635760425d98",
+    ".build/contract-generated/spec-001/nrf-native-owners/SignalAnalyzerData.o": "187138c578a12930f8c7246c9f8b42c84a7119af7560c0c1bed15ca48101f9b5",
+    ".build/contract-generated/spec-001/nrf-native-owners/SignalAnalyzerPresentation.o": "a323cec904b2ff83ca69940e8caf308fd112ae8c96fb8f5258bfbad7095ce8e3",
+    ".build/contract-generated/spec-001/nrf-native-owners/GiftUIDisplayCore.o": "188af73ff52bacbfbdbc8e76d62e3cbd5635e4c3700df0e9e1e25af5aa95e3ce",
+    ".build/contract-generated/spec-001/nrf-native-owners/GiftUILayout.o": "0343913fa07f7c91eb56c842a0ef761e0e992efe346ec75d6f6d6577d7b9fe45",
+    ".build/contract-generated/spec-001/nrf-native-owners/GiftUIReferenceTextResources.o": "eb9c2b6c12f866a8abebc22b477c8fecb72ad9fbd017dcaed3cfe3b1acc3c79b",
+    ".build/contract-generated/spec-001/nrf-native-owners/GiftUIRenderCore.o": "6d74a64e508f1c801a11eb2450f50c9ef0bc5cd37390555174ec7833937e2d47",
+    ".build/contract-generated/spec-001/nrf-native-owners/GiftUIExecution.o": "e45825c3f3d150e84bba518d2397069b9ac52830a1488034ad3088f07f5118d9",
+    ".build/contract-generated/spec-001/nrf-native-owners/GiftUIRasterCore.o": "f344becf820fa23dc7fb10ef517fe59c97ba1ce6ac34da59a814268c8d6b3db8",
+    ".build/contract-generated/spec-001/nrf-native-owners/GiftUIRenderLowering.o": "4292463ab4a40f47711862fafcdb386c193a4e42531f0f26c6814e90f1652184",
+    ".build/contract-generated/spec-001/nrf-native-owners/GiftUIBackendIntegration.o": "bbeff278aaf09f279cb23f6d25798cc02bff1cbc29ee31c089f274af0b25853a",
+    ".build/contract-generated/spec-001/nrf-native-owners/GiftUIDrawing.o": "946a13a44a1d81a88dae59a6d3b679e9f98ce0f5359226aff7fb1be9aa66a5f8",
+    ".build/contract-generated/spec-001/nrf-native-owners/GiftUIInteraction.o": "d00bd797b96f5a29724797688537f1f7c3949a77c3573baf4888df53312b8fcb",
+    ".build/contract-generated/spec-001/nrf-native-owners/GiftUIObservableState.o": "25c78018d0a7af0e1fd6e65e352c11ee76c996e5449ab8136fb311fbe175970a",
+    ".build/contract-generated/spec-001/nrf-native-owners/GiftUIHostConfiguration.o": "43b19896f9daaa3717086847f6bd3797ad05ea8ded2b8267b8b400ac70cc30b1",
+    ".build/contract-generated/spec-001/nrf-native-owners/GiftUIRuntimeCore.o": "1f525d6e8e6c9aa6cd525bad2013924d9448aa37bbe0b04d73d7d6ef9d43af1c",
+    ".build/contract-generated/spec-001/nrf-native-owners/GiftUIRuntimeStatic.o": "cdc5cb70ab036095a49fc233310282d4aa4b16cd6bd0cd67b931f40469ba1621"
+  },
+  "paired_compiler": "Apple Swift version 6.3.2 (swift-6.3.2-RELEASE)\nTarget: arm64-apple-macosx26.0\n",
+  "native": {
+    "baseline": {
+      "command": [
+        "swiftc",
+        "-I",
+        "/Users/eugene/work/GiftUI/.build/contract-generated/spec-001/nrf-native-owners/modules",
+        "-parse-as-library",
+        "-Osize",
+        "-package-name",
+        "GiftUI",
+        "-DGIFTUI_NRF_EMBEDDED",
+        "-DGIFTUI_REFERENCE_BITMAP_ONLY",
+        "/Users/eugene/work/GiftUI/.build/nrf52840/signal-analyzer-static/SignalAnalyzerStatic.swift",
+        "/Users/eugene/work/GiftUI/experiments/spike-009-nrf-hierarchy-roles/Probe.swift",
+        "/Users/eugene/work/GiftUI/.build/contract-generated/spec-001/nrf-native-owners/GiftUI.o",
+        "/Users/eugene/work/GiftUI/.build/contract-generated/spec-001/nrf-native-owners/GiftUICapabilities.o",
+        "/Users/eugene/work/GiftUI/.build/contract-generated/spec-001/nrf-native-owners/GiftUIFailureCore.o",
+        "/Users/eugene/work/GiftUI/.build/contract-generated/spec-001/nrf-native-owners/SignalAnalyzerDomain.o",
+        "/Users/eugene/work/GiftUI/.build/contract-generated/spec-001/nrf-native-owners/GiftUISemanticCore.o",
+        "/Users/eugene/work/GiftUI/.build/contract-generated/spec-001/nrf-native-owners/GiftUISurfaceCore.o",
+        "/Users/eugene/work/GiftUI/.build/contract-generated/spec-001/nrf-native-owners/GiftUITextResources.o",
+        "/Users/eugene/work/GiftUI/.build/contract-generated/spec-001/nrf-native-owners/SignalAnalyzerData.o",
+        "/Users/eugene/work/GiftUI/.build/contract-generated/spec-001/nrf-native-owners/SignalAnalyzerPresentation.o",
+        "/Users/eugene/work/GiftUI/.build/contract-generated/spec-001/nrf-native-owners/GiftUIDisplayCore.o",
+        "/Users/eugene/work/GiftUI/.build/contract-generated/spec-001/nrf-native-owners/GiftUILayout.o",
+        "/Users/eugene/work/GiftUI/.build/contract-generated/spec-001/nrf-native-owners/GiftUIReferenceTextResources.o",
+        "/Users/eugene/work/GiftUI/.build/contract-generated/spec-001/nrf-native-owners/GiftUIRenderCore.o",
+        "/Users/eugene/work/GiftUI/.build/contract-generated/spec-001/nrf-native-owners/GiftUIExecution.o",
+        "/Users/eugene/work/GiftUI/.build/contract-generated/spec-001/nrf-native-owners/GiftUIRasterCore.o",
+        "/Users/eugene/work/GiftUI/.build/contract-generated/spec-001/nrf-native-owners/GiftUIRenderLowering.o",
+        "/Users/eugene/work/GiftUI/.build/contract-generated/spec-001/nrf-native-owners/GiftUIBackendIntegration.o",
+        "/Users/eugene/work/GiftUI/.build/contract-generated/spec-001/nrf-native-owners/GiftUIDrawing.o",
+        "/Users/eugene/work/GiftUI/.build/contract-generated/spec-001/nrf-native-owners/GiftUIInteraction.o",
+        "/Users/eugene/work/GiftUI/.build/contract-generated/spec-001/nrf-native-owners/GiftUIObservableState.o",
+        "/Users/eugene/work/GiftUI/.build/contract-generated/spec-001/nrf-native-owners/GiftUIHostConfiguration.o",
+        "/Users/eugene/work/GiftUI/.build/contract-generated/spec-001/nrf-native-owners/GiftUIRuntimeCore.o",
+        "/Users/eugene/work/GiftUI/.build/contract-generated/spec-001/nrf-native-owners/GiftUIRuntimeStatic.o",
+        "-o",
+        "/Users/eugene/work/GiftUI/.build/nrf52840/spike-009-hierarchy-roles/baseline"
+      ],
+      "exit_code": 0,
+      "transcript_sha256": "38c2bf62917e58745b079c14bd338a724dc2272e877cad658b1a5e8437de775c",
+      "bytes": 306792,
+      "host_stage_ns_per_call": [
+        "TIMING false 0 61141",
+        "TIMING false 1 60515",
+        "TIMING false 2 60540",
+        "TIMING false 3 60346",
+        "TIMING false 4 60500",
+        "TIMING true 0 61297",
+        "TIMING true 1 61089",
+        "TIMING true 2 61029",
+        "TIMING true 3 60975",
+        "TIMING true 4 60836"
+      ]
+    },
+    "candidate": {
+      "command": [
+        "swiftc",
+        "-I",
+        "/Users/eugene/work/GiftUI/.build/contract-generated/spec-001/nrf-native-owners/modules",
+        "-parse-as-library",
+        "-Osize",
+        "-package-name",
+        "GiftUI",
+        "-DGIFTUI_NRF_EMBEDDED",
+        "-DGIFTUI_REFERENCE_BITMAP_ONLY",
+        "/Users/eugene/work/GiftUI/.build/nrf52840/spike-009-hierarchy-roles/candidate.swift",
+        "/Users/eugene/work/GiftUI/experiments/spike-009-nrf-hierarchy-roles/Probe.swift",
+        "/Users/eugene/work/GiftUI/.build/contract-generated/spec-001/nrf-native-owners/GiftUI.o",
+        "/Users/eugene/work/GiftUI/.build/contract-generated/spec-001/nrf-native-owners/GiftUICapabilities.o",
+        "/Users/eugene/work/GiftUI/.build/contract-generated/spec-001/nrf-native-owners/GiftUIFailureCore.o",
+        "/Users/eugene/work/GiftUI/.build/contract-generated/spec-001/nrf-native-owners/SignalAnalyzerDomain.o",
+        "/Users/eugene/work/GiftUI/.build/contract-generated/spec-001/nrf-native-owners/GiftUISemanticCore.o",
+        "/Users/eugene/work/GiftUI/.build/contract-generated/spec-001/nrf-native-owners/GiftUISurfaceCore.o",
+        "/Users/eugene/work/GiftUI/.build/contract-generated/spec-001/nrf-native-owners/GiftUITextResources.o",
+        "/Users/eugene/work/GiftUI/.build/contract-generated/spec-001/nrf-native-owners/SignalAnalyzerData.o",
+        "/Users/eugene/work/GiftUI/.build/contract-generated/spec-001/nrf-native-owners/SignalAnalyzerPresentation.o",
+        "/Users/eugene/work/GiftUI/.build/contract-generated/spec-001/nrf-native-owners/GiftUIDisplayCore.o",
+        "/Users/eugene/work/GiftUI/.build/contract-generated/spec-001/nrf-native-owners/GiftUILayout.o",
+        "/Users/eugene/work/GiftUI/.build/contract-generated/spec-001/nrf-native-owners/GiftUIReferenceTextResources.o",
+        "/Users/eugene/work/GiftUI/.build/contract-generated/spec-001/nrf-native-owners/GiftUIRenderCore.o",
+        "/Users/eugene/work/GiftUI/.build/contract-generated/spec-001/nrf-native-owners/GiftUIExecution.o",
+        "/Users/eugene/work/GiftUI/.build/contract-generated/spec-001/nrf-native-owners/GiftUIRasterCore.o",
+        "/Users/eugene/work/GiftUI/.build/contract-generated/spec-001/nrf-native-owners/GiftUIRenderLowering.o",
+        "/Users/eugene/work/GiftUI/.build/contract-generated/spec-001/nrf-native-owners/GiftUIBackendIntegration.o",
+        "/Users/eugene/work/GiftUI/.build/contract-generated/spec-001/nrf-native-owners/GiftUIDrawing.o",
+        "/Users/eugene/work/GiftUI/.build/contract-generated/spec-001/nrf-native-owners/GiftUIInteraction.o",
+        "/Users/eugene/work/GiftUI/.build/contract-generated/spec-001/nrf-native-owners/GiftUIObservableState.o",
+        "/Users/eugene/work/GiftUI/.build/contract-generated/spec-001/nrf-native-owners/GiftUIHostConfiguration.o",
+        "/Users/eugene/work/GiftUI/.build/contract-generated/spec-001/nrf-native-owners/GiftUIRuntimeCore.o",
+        "/Users/eugene/work/GiftUI/.build/contract-generated/spec-001/nrf-native-owners/GiftUIRuntimeStatic.o",
+        "-o",
+        "/Users/eugene/work/GiftUI/.build/nrf52840/spike-009-hierarchy-roles/candidate"
+      ],
+      "exit_code": 0,
+      "transcript_sha256": "38c2bf62917e58745b079c14bd338a724dc2272e877cad658b1a5e8437de775c",
+      "bytes": 306792,
+      "host_stage_ns_per_call": [
+        "TIMING false 0 61353",
+        "TIMING false 1 60336",
+        "TIMING false 2 60863",
+        "TIMING false 3 60443",
+        "TIMING false 4 60310",
+        "TIMING true 0 61142",
+        "TIMING true 1 60940",
+        "TIMING true 2 60886",
+        "TIMING true 3 60964",
+        "TIMING true 4 61178"
+      ]
+    }
+  },
+  "semantic_transcripts_identical": true
+}
