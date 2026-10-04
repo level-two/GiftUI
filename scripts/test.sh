@@ -4,6 +4,10 @@ set -uo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd -P)"
 PROJECT_ROOT="$(cd "${SCRIPT_DIR}/.." && pwd -P)"
+# Serialize shared build/cache writers; nested checks inherit the owner.
+if [[ -z "${GIFTUI_VALIDATION_LOCK_OWNER:-}" ]]; then
+    exec ruby "${PROJECT_ROOT}/scripts/lib/serialize-validation.rb" "$0" "$@"
+fi
 # shellcheck source=lib/swiftpm.sh
 source "${PROJECT_ROOT}/scripts/lib/swiftpm.sh"
 REGISTRY="${PROJECT_ROOT}/scripts/contracts/driver-registry.tsv"
@@ -58,8 +62,9 @@ case "${selection}" in
         ;;
 esac
 
-report_dir="${REPORT_ROOT}/${selection}"
-rm -rf "${report_dir}"
+mkdir -p "${REPORT_ROOT}/${selection}"
+report_dir="$(mktemp -d "${REPORT_ROOT}/${selection}/run-XXXXXXXX")"
+invocation_id="${report_dir##*/}"
 mkdir -p \
     "${report_dir}/logs" \
     "${report_dir}/swiftpm-cache" \
@@ -67,6 +72,28 @@ mkdir -p \
 results_path="${report_dir}/results.tsv"
 metadata_path="${report_dir}/metadata.txt"
 : >"${results_path}"
+child_ledger="${report_dir}/child-reports.tsv"
+: >"${child_ledger}"
+export GIFTUI_TEST_CHILD_REPORT_LEDGER="${child_ledger}"
+status="running"
+active_check="none"
+finish_run() {
+    local exit_code=$?
+    printf 'status=%s\nexit_code=%s\nactive_check=%s\n' "${status}" "${exit_code}" "${active_check}" >>"${metadata_path}"
+    if [[ "${status}" == interrupted ]]; then
+        printf '%s\t%s\t%s\n' "${active_check}" "${exit_code}" "interrupted" >>"${results_path}"
+    fi
+    while IFS= read -r staging; do
+        printf 'retained-staging\t%s\t%s\n' "${staging#"${PROJECT_ROOT}/"}" "incomplete" >>"${child_ledger}"
+    done < <(find "${PROJECT_ROOT}/.build/contract-reports" -type d -name '.tmp-*' 2>/dev/null | LC_ALL=C sort)
+    local pointer="${REPORT_ROOT}/latest-${selection}.txt"
+    printf '%s\n' "${report_dir#"${REPORT_ROOT}/"}" >"${pointer}.tmp-$$"
+    mv "${pointer}.tmp-$$" "${pointer}"
+}
+trap finish_run EXIT
+trap 'status=interrupted; exit 130' INT
+trap 'status=interrupted; exit 143' TERM
+trap 'status=interrupted; exit 129' HUP
 
 if [[ "${selection}" == "all-hardware-free" ]]; then
     selected_profiles=("${ALL_PROFILES[@]}")
@@ -76,6 +103,7 @@ fi
 
 {
     printf 'schema_version=1\n'
+    printf 'invocation_id=%s\n' "${invocation_id}"
     printf 'selection=%s\n' "${selection}"
     printf 'repository_revision=%s\n' "$(git -C "${PROJECT_ROOT}" rev-parse HEAD)"
     printf 'profiles=%s\n' "$(IFS=,; printf '%s' "${selected_profiles[*]}")"
@@ -88,11 +116,16 @@ run_check() {
     shift
     local log="${report_dir}/logs/${id}.log"
     local result
+    active_check="${id}"
     printf '==> %s\n' "${id}"
     "$@" >"${log}" 2>&1
     result=$?
     last_check_status="${result}"
+    while IFS= read -r pointer; do
+        printf '%s\t%s\t%s\n' "${id}" "${pointer#"${PROJECT_ROOT}/"}" "$(cat "${pointer}")" >>"${child_ledger}"
+    done < <(find "${PROJECT_ROOT}/.build/contract-reports" -name 'latest-*.txt' -type f 2>/dev/null | LC_ALL=C sort)
     printf '%s\t%s\t%s\n' "${id}" "${result}" "${log#"${PROJECT_ROOT}/"}" >>"${results_path}"
+    active_check="none"
     if [[ "${result}" -ne 0 ]]; then
         failures=$((failures + 1))
         printf 'fail: %s (exit %s; %s)\n' "${id}" "${result}" "${log}" >&2
@@ -150,7 +183,9 @@ for selected_profile in "${selected_profiles[@]}"; do
 done
 
 printf 'failure_count=%s\n' "${failures}" >>"${metadata_path}"
+status="complete"
 if [[ "${failures}" -ne 0 ]]; then
+    status="failed"
     printf '%s check(s) failed; see %s\n' "${failures}" "${report_dir}" >&2
     exit 1
 fi

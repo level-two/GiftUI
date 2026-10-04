@@ -4,6 +4,10 @@ set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd -P)"
 PROJECT_ROOT="$(cd "${SCRIPT_DIR}/../.." && pwd -P)"
+# Serialize shared build/cache writers; nested checks inherit the owner.
+if [[ -z "${GIFTUI_VALIDATION_LOCK_OWNER:-}" ]]; then
+    exec ruby "${PROJECT_ROOT}/scripts/lib/serialize-validation.rb" "$0" "$@"
+fi
 # shellcheck source=../raspberry-pi/common.sh
 source "${PROJECT_ROOT}/scripts/raspberry-pi/common.sh"
 

@@ -54,3 +54,9 @@ temporary_pointer = latest.dirname.join(".#{latest.basename}.tmp-#{Process.pid}"
 temporary_pointer.write("#{options[:run_id]}\n")
 File.rename(temporary_pointer, latest)
 puts "#{disposition}=#{destination}"
+
+if (ledger = ENV["GIFTUI_TEST_CHILD_REPORT_LEDGER"])
+  File.open(ledger, "a") do |file|
+    file.puts ["published", destination, options[:run_id]].join("\t")
+  end
+end

@@ -51,6 +51,18 @@ scripts/test.sh --profile nrf52840-embedded
 scripts/test.sh --profile all-hardware-free
 ```
 
+Each invocation keeps reports under `.build/test-reports/<selection>/run-*`.
+`latest-<selection>.txt` points atomically to the last finished invocation,
+including failures. `metadata.txt`, `results.tsv`, logs and `child-reports.tsv`
+retain run status, interrupted checks, newly published child identities and
+latest-pointer observations (which can include older reports). Incomplete child
+staging directories are retained and listed separately. Invocations and
+standalone contract drivers serialize shared build/cache writers through
+`.build/validation.lock`; nested checks inherit the lock. The lock file is never
+removed, and process exit releases its kernel lock. There is no automatic report
+pruning: archive or remove completed runs manually only when no validation is
+active. A forcibly killed run retains its files even if its exit trap cannot run.
+
 The aggregate runner never deploys, contacts a Raspberry Pi, or flashes a
 connected nRF board. A missing local cross-toolchain is reported as a failed
 profile rather than skipped.

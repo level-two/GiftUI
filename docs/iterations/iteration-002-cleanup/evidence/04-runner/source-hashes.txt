@@ -1,0 +1,3 @@
+e745927a2cc6b56717cbf484c2b91bf8eb89ee4410e5fb976b071cdcd067ad00  scripts/test.sh
+70109a9b12713ffe5d4f984abbead93d7f55b1c10bdeb6dc3939565cc6e22a76  scripts/lib/serialize-validation.rb
+c83703a2eb6766de4c5d618aeaafe063b162b100cb19289b6727331665b61eb1  Tests/GovernanceTooling/runner_isolation_test.rb

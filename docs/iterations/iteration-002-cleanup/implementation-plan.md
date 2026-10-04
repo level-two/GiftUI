@@ -254,3 +254,5 @@ unchanged. [Plan-derivation checks](../iteration-002-review/33-implementation-pl
 record this document step separately from future execution.
 
 **TOOL-02 execution — 2026-10-04:** [Result](evidence/03-source-paths/result.md); governance fixtures and repository validator passed.
+
+**TOOL-01 implementation — 2026-10-04:** [Isolation and fixture result](evidence/04-runner/result.md). Final real aggregate validation remains pending.
