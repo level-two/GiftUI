@@ -82,6 +82,15 @@ The maintainer included this concern in the working scope for
 The scope remains open for codebase review; this link does not promote the item,
 change its disposition, or establish a delivery commitment.
 
+## Follow-up Evidence
+
+[Step 15](../iterations/iteration-002-review/15-conditional-removal-candidates.md)
+now names 15 whole-file Embedded guards and an empty compatibility file as
+candidates. The isolated selected closure passes native execution and nRF
+compile/link at unchanged flash/RAM size. SwiftPM selection must change with
+production removal; profile, payload, instrumentation and board guards retain
+their reasons. This refines optional maintenance without promoting this item.
+
 ## References
 
 - [SPEC-013](../specs/spec-013-runtime-profiles.md)

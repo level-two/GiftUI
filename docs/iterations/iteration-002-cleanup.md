@@ -2,7 +2,7 @@
 id: ITERATION-002
 title: Cleanup
 status: draft
-revision: 1
+revision: 2
 approved_revision: null
 created: 2026-10-04
 updated: 2026-10-04
@@ -44,9 +44,12 @@ boundaries are still open. Scope membership creates no implementation authority.
 | Bounded codebase audit and findings selection | Maintainer discussion establishing the cleanup review process; all participating features | Review dependencies, module interfaces, abstractions/mappings, requirements, execution flows, profiles/resources, and tooling. Produce a baseline, coverage matrix, evidence-backed findings register, and prioritized remediation selection. | Read-only review may begin while this scope is draft. Route confirmed defects, simplifications, contract changes, architectural concerns, and uncertain hypotheses separately under the existing lifecycle. |
 | Improve process: numbered iterations | [ITERATION-001](iteration-001-mvp.md); discussion “Plan MVP Cleanup Iteration” | Use consecutive scope records, beginning with MVP as ITERATION-001. The process and MVP registration are already delivered; these draft scopes continue it. Identify any remaining process gaps during review. | Documentation maintenance under the existing iteration rules. |
 | Revise module dependencies | Discussion “Review module dependency direction”; giftui-mvp-architecture | Reassess dependency directions and glue modules against their actual responsibilities; select remaining cleanup after accounting for completed SPEC-001 Milestone 10 work. | Contract-preserving maintenance may use the lightweight path; ownership or dependency-graph changes require lifecycle review against ADR-007/ADR-008 and SPEC-002. |
-| Investigate replacement of the nRF `.generated` hierarchy approach | Discussion “Explain Static nRF Stack Hierarchy”; signal-analyzer | Produce measured feasibility evidence and a recommendation on runtime derivation from portable view declarations. Replacement and removal of supporting infrastructure are candidates to select only if costs and parity are acceptable. | Use Exploration/Spike work where needed. Preserve Static bounded storage, zero heap allocation, and semantic parity; obtain affected contract/architecture approvals before implementing a selected replacement. |
-| Remove source `#if` / `#ifdef` conditionals | [FW-029](../future-work/fw-029-reduce-source-conditional-compilation.md) | Remove avoidable conditionals and make implementation selection clearer. Determine the justified residual guards during code review. | Mechanical source selection may be lightweight; changes to profile behavior, storage, ownership, or declarations need lifecycle review. |
-| Five-second Signal Analyzer buffer | Discussion “Assess 10 Hz Input Frequency Limit”; signal-analyzer | Reduce retained capture history from 30 seconds to 5 seconds, covering the largest visible window while preserving channel baselines and the existing 10 Hz per-channel input limit. | Amend accepted ADR-003 and affected capture/host contracts before implementation; resize all affected stores and remeasure resource use. |
+| nRF hierarchy assessment and role-binding cleanup | [EXP-001](../explorations/exp-001-nrf-hierarchy-derivation.md), [SPIKE-009](../spikes/spike-009-nrf-hierarchy-role-bindings.md), CBR-002; signal-analyzer | Record the negative direct-module prerequisite result and retain packed hierarchy. Consider generated/checkable named text/modifier roles using the measured +192 flash / zero RAM candidate; full runtime replacement is a separate candidate-specific investigation if selected. | Current evidence is research. Preserve Static storage, zero heap and semantic parity; agree comparison budgets and obtain affected contract/architecture approvals before any selected replacement. |
+| Move named source-selection guards into build selection | [FW-029](../future-work/fw-029-reduce-source-conditional-compilation.md), [Step 15](iteration-002-review/15-conditional-removal-candidates.md) | Consider 15 named Embedded-only whole-file guards plus one empty compatibility file; coordinate SwiftPM exclusion, CMake and native source lists. Keep the justified residual profile/resource/arithmetic/instrumentation/board guards. | Mechanical selection may be lightweight; profile behavior, declarations, ownership or resource changes need lifecycle review. |
+| Five-second Signal Analyzer buffer | [Step 14](iteration-002-review/14-five-second-retention-impact.md); signal-analyzer | Consider 404 records per store and 5s retention. Resize live/model/admission storage together; measured nRF RAM changes from 191,104 to 95,104 bytes. Preserve 1/2/5s baselines, 10 Hz per-channel input and the 30s workload. | Amend accepted ADR-003 and affected capture/host contracts before implementation; migrate retained-history oracles separately from delivered-event counts and revalidate all profiles. |
+| Callback-safe startup and interaction capacity | CBR-007 / CBR-001; Signal Analyzer Data and Interaction | Preserve terminal startup state and preflight every staged commit-store capacity with the specified contained failure. | Contract-preserving maintenance under SPEC-001/011/013; real-source and unequal-capacity reproduction cases plus failure/reuse and affected profile gates. |
+| Evidence tooling integrity | CBR-004 / CBR-006 / CBR-008 | Isolate overlapping runner evidence; align documented source-path validation; report actual Pi cross-build and native compilers separately. | Tooling maintenance with overlap/path/configuration-identity regressions and retained failure reports. |
+| Shared-engine startup text validation | CBR-003, [Step 13](iteration-002-review/13-startup-text-probe-assessment.md) | Retire duplicate startup text algorithms using the shared Layout owner. Isolated candidate saves 1,296 flash bytes at unchanged RAM. Preserve codec checks and migrate negative/overflow coverage. | Candidate maintenance under SPEC-001/007/013; startup/reuse/text corpus and firmware ABI/resource validation before production adoption. |
 
 ## Audit and Scope Finalization
 
@@ -93,16 +96,14 @@ on coverage and explicit finding dispositions,
 not on repeated agent passes ceasing to produce suggestions. Discovery does not
 automatically select remediation or expand an approved iteration.
 
-The [final research reconciliation](iteration-002-review/12-final-reconciliation.md)
-recommends bounded startup-lifecycle, interaction-capacity and evidence-tooling
-corrections, identifies two target-host simplification opportunities, and
-preserves a performance hypothesis under FW-032. Owner-boundary reviews now
-cover all maintained module groups; the coverage matrix records the audit's
-depth and remaining comparative-feasibility/connected gaps. These are research
-recommendations, not selected commitments or scope approval. IT-AC-003 remains
-open; [EXP-001](../explorations/exp-001-nrf-hierarchy-derivation.md) defines its
-questions, comparison-budget prerequisite and evidence plan. IT-AC-006's audit
-record is available for scope review; this does not finalize or close the iteration.
+The [updated research reconciliation](iteration-002-review/17-followup-reconciliation.md)
+records eight findings, all bounded review perspectives, the passing four-profile
+gate and four follow-up experiments/assessments. It recommends correctness and
+evidence fixes first, then measured startup/source-selection cleanups and the
+5s contract amendment; retaining the packed hierarchy is the current research
+disposition. A smaller role-binding candidate has measured parity/cost evidence.
+Full runtime derivation and connected proof remain unproven. These are refined
+candidates, not selected commitments, scope approval or criterion passes.
 
 ## Exclusions
 
@@ -127,9 +128,9 @@ These are provisional outcomes to refine before scope approval.
 | --- | --- | --- | --- |
 | IT-AC-001 | Numbered iteration records are registered, discoverable, and distinguish draft scope from approved commitments. | Repository documentation | Governance validation and iteration index; already established process plus these scopes. |
 | IT-AC-002 | Selected dependency cleanup has explicit ownership and no forbidden imports or dependency cycles. | Affected modules and supported target builds, to be selected | Before/after dependency inventory, owner checks, and governing ADR-007/ADR-008/SPEC-002 criteria. |
-| IT-AC-003 | nRF hierarchy replacement has a reproducible feasibility assessment and explicit recommendation/disposition; replacement is selected only through scope and lifecycle review. | nRF Static; desktop comparison/rehearsal | Inventory of affected generated sources/scripts/mappings; candidate parity and firmware build evidence; heap/ABI checks; measured RAM, flash, stack, and derivation cost; acceptable cost thresholds agreed before judging feasibility; remaining limitations. |
-| IT-AC-004 | Reviewed avoidable conditionals are removed; remaining guards have documented reasons. | Affected Static/Dynamic and platform source selections | Before/after inventory and affected compile/behavior checks; preserve compile-time exclusions and resource bounds. |
-| IT-AC-005 | Five-second retention supports all existing 1/2/5-second windows and correct levels at the left edge. | All analyzer configurations | Approved capture/host contract amendments, cutoff/baseline/ordering tests, store-capacity evidence, nRF memory measurements, and sustained acquisition validation. |
+| IT-AC-003 | Hierarchy investigation has reproducible evidence and an explicit disposition, including negative prerequisite results. Any selected role-binding cleanup has exact parity and budgeted cost evidence; full runtime replacement is promised only if separately selected and demonstrated. | nRF Static; desktop comparison/rehearsal | EXP-001/SPIKE-009 record direct-module failure, 32-role inference, 42 semantic-byte comparisons and partial-candidate costs. Target timing, whole-stack bounds and acceptable deltas remain requirements before selecting a replacement. |
+| IT-AC-004 | Selected 15-file source-selection guards and the empty compatibility shell are removed coherently; justified residual guards remain documented. | SwiftPM native selections, nRF CMake and native rehearsal | Step 15 candidate list; manifest/source consistency, compile/behavior and resource checks; preserve profile exclusions and negative configuration tests. |
+| IT-AC-005 | Approved 5s/404-record retention supports all 1/2/5s windows with correct left-edge levels and snapshot/replay behavior. | All analyzer configurations | ADR-003 and affected Spec amendments; cutoff/equal-time/404/405/clear/snapshot cases; three-store size, linked nRF memory and 30s sustained acquisition/publication validation. Step 14 is prototype evidence, not a production pass. |
 | IT-AC-006 | The bounded audit records its baseline, all planned review perspectives, coverage and gaps, evidence-backed findings, and reconciled dispositions. | Maintained code/build/test areas across all four supported configurations | Linked baseline, coverage matrix, and findings register following the Codebase Review Process; governing requirements and known MVP exceptions; explicit evidence limitations rather than inferred passes. |
 | IT-AC-007 | Every selected remediation item traces to a finding or existing candidate, has a lifecycle route and validation plan, and closes with evidence or an explicitly approved exception. | Configurations affected by each selected change | Final selected-work list and refined criteria before scope approval; governing contract/plan links; focused checks and appropriate profile gates; resource/parity evidence where affected; deferred records for valuable unselected work. |
 
@@ -140,10 +141,8 @@ These are provisional outcomes to refine before scope approval.
   or amend their authoritative artifacts.
 - Which dependency issues remain after SPEC-001 Milestone 10, rather than
   repeating completed cleanup?
-- What exact generated files, scripts, ordinal mappings, and fixtures belong
-  to the hierarchy replacement? What derivation cost is acceptable?
-- Which conditionals can be removed mechanically, and which require a durable
-  architectural choice? Is a residual-guard list acceptable?
+- The hierarchy surface and partial binding candidate are inventoried. If further runtime replacement research is selected, which bounded typed lowering candidate and flash/RAM/whole-stack/target-time budgets govern it?
+- Step 15 specifies 15 file-selection candidates and justified residual guards. Confirm that bounded outcome when selecting scope; all-directive removal is unsupported.
 - Five seconds is a proposed retention horizon, not a new workload duration:
   distinguish it from the existing 30-second sustained-acquisition validation.
   Capacity, boundary-event policy, snapshot/model stores, host budgets, and
@@ -171,6 +170,7 @@ These are provisional outcomes to refine before scope approval.
 | Revision | Date | Change / reason | Maintainer approval |
 | --- | --- | --- | --- |
 | 1 | 2026-10-04 | Initial candidate scope from recent discussions and the maintainer's two-iteration outline; refined with a bounded audit, findings-selection process, and evidence-first nRF investigation. | Scope approval pending; maintainer requested these draft-document updates. |
+| 2 | 2026-10-04 | Incorporate Steps 13–16: measured startup/retention/guard/role candidates, direct-module negative result and refined bounded outcomes. | Scope approval pending; maintainer authorized remaining research and per-step commits. |
 
 ## Closure and Follow-up
 

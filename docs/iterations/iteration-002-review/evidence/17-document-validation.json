@@ -1,0 +1,27 @@
+{
+  "head_before_reconciliation_commit": "db526c94965beaba1e787ab75d7c180a4672deb0",
+  "markdown_files_checked": 13,
+  "local_links_checked": 155,
+  "python_scripts_parsed": 14,
+  "json_files_parsed": 10,
+  "elf_identities_verified": 8,
+  "spike_transcript_bytes_verified": 306792,
+  "spike_input_hashes_verified": 17,
+  "production_gate_archive_unchanged": true,
+  "maintained_inputs_unchanged_from_initial_snapshot": true,
+  "whitespace_and_shell_syntax": "passed",
+  "governance": "Authority graph validation passed: 166 nodes, 1681 edges.",
+  "formatter": "",
+  "research_log_hashes": {
+    ".build/iteration-002-audit/startup-text-research.log": "91c444aa5c36c6861b932386adb7fb2e05192d353d8d71155f811bd83a4d2a52",
+    ".build/iteration-002-audit/startup-text-firmware.log": "133286930faf0ea29d00bda2e61a734958460eaebe1092d77e530b54dd5b65ca",
+    ".build/iteration-002-audit/startup-text-tests.log": "70673dbe1db0fec6fe725a35e7c8b82b73dad7bbb8f4f947c2d4b62b32876564",
+    ".build/iteration-002-audit/retention-candidate.log": "bf5fc5d162fd183b0d6614815b948151022017569374f3abcaa9ecc18ed56558",
+    ".build/iteration-002-audit/retention-firmware.log": "348554e1b9f3df7c9c6e8b2f0876e079690a70048efc732942675400e6819442",
+    ".build/iteration-002-audit/file-selection-native.log": "a12c5f2aa3375ea588ead77caf917cf61929cf3d9380f84fa56fc33bc95418fe",
+    ".build/iteration-002-audit/file-selection-firmware.log": "7859aa00c8ef8d5b3aae7861eb2daf7a639c75d176da4fc37011745dcf09bf1a",
+    ".build/iteration-002-audit/hierarchy-roles-native.log": "6b1ce767def8500eacfd0cda7eba28907c8a6c04df3030c7060b1fdf320397df",
+    ".build/iteration-002-audit/hierarchy-roles-firmware.log": "872c4af13c4078a6316823118a3be6b6ee0ca99ce319f66e530a5edfa09c5db9"
+  },
+  "limitations": "Documentation/provenance and isolated hardware-free experiments; no new universal conformance, approval or connected proof"
+}

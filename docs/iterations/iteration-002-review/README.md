@@ -25,11 +25,12 @@ draft; research does not select or authorize implementation.
 | 09 — Tests/generation/entry points | [Corpus limits, updater freshness, and guard dispositions](09-tests-generation-and-entrypoints.md) | Recorded; current execution in Step 11 |
 | 10 — Hierarchy investigation | [Disposition and EXP-001](10-hierarchy-investigation-disposition.md) | Source assessment recorded; comparative feasibility remains open |
 | 11 — Fresh hardware-free gate | [Validation and preserved report identities](11-fresh-hardware-free-validation.md) | 72 checks passed; 60 published report manifests verified |
+| 12 — Final reconciliation | [Priorities, bounded outcomes, routing and remaining gaps](12-final-reconciliation.md) | Bounded audit concluded; implementation selection pending |
 | 13 — Startup text probe | [Measured shared-engine candidate and coverage migration](13-startup-text-probe-assessment.md) | Recorded; −1,296 flash bytes, unchanged RAM; production cleanup pending |
 | 14 — Five-second retention | [Owner impact, behavioral prototype and linked costs](14-five-second-retention-impact.md) | Recorded; 96,000 bytes less RAM; contract amendments pending |
 | 15 — Conditional removal | [15-file source-selection prototype and residual policy](15-conditional-removal-candidates.md) | Recorded; native/Embedded checks pass at unchanged linked size |
 | 16 — Hierarchy Spike | [Direct-module failure and measured role-binding alternative](16-hierarchy-feasibility-experiment.md) | Recorded; retain packed hierarchy; smaller cleanup candidate |
-| 12 — Final reconciliation | [Priorities, bounded outcomes, routing and remaining gaps](12-final-reconciliation.md) | Bounded audit concluded; implementation selection pending |
+| 17 — Follow-up reconciliation | [Updated candidate selection and readiness](17-followup-reconciliation.md) | Research round concluded; draft scope revision 2 ready for selection |
 
 [Findings register](findings.md) records confirmed observations separately from
 hypotheses and preferences. A step's completion does not imply every module or
@@ -40,7 +41,7 @@ defects, two supported simplification opportunities and one deferred performance
 hypothesis. All owner groups have review dispositions and the hardware-free
 gate passed across four profiles. [Final reconciliation](12-final-reconciliation.md)
 prioritizes candidate fixes without selecting or authorizing implementation.
-Comparative hierarchy feasibility and connected evidence remain explicit gaps.
+Follow-up experiments in Steps 13–16 measure partial candidates and conclude with a retain-packed-hierarchy disposition. Full runtime replacement and connected evidence remain unproven; [Step 17](17-followup-reconciliation.md) is the current planning disposition.
 Read the register's counterevidence and validation limits before scope approval.
 
 ## Reproduce the lexical inventory

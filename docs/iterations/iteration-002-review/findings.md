@@ -9,8 +9,8 @@ No remediation is approved or implemented by this register.
 | ID | Classification / priority | Observation | Disposition |
 | --- | --- | --- | --- |
 | CBR-001 | Confirmed preflight/error-classification defect; medium, correctness shortlist | Staged committed-action capacity is omitted from preflight | Recommended for bounded correction; production reachability remains unproved |
-| CBR-002 | Supported simplification opportunity; medium | Manual ordinal/model mappings couple ordinary source to a separately generated hierarchy | Needs investigation under the existing hierarchy candidate |
-| CBR-003 | Supported simplification opportunity; medium | Startup probes retain separate target-host text-layout algorithms after the common production Layout join | Candidate for contract-preserving maintenance after probe-coverage review |
+| CBR-002 | Supported simplification opportunity; medium | Manual ordinal/model mappings couple ordinary source to a separately generated hierarchy | Measured role-binding alternative; retain packed hierarchy |
+| CBR-003 | Supported simplification opportunity; medium | Startup probes retain separate target-host text-layout algorithms after the common production Layout join | Measured startup simplification; coverage migration specified |
 | CBR-004 | Confirmed test-ledger isolation defect; medium | Same-selection test runs clear and write shared reports/caches | Recommended tooling correction; historical interference recorded |
 | CBR-005 | Performance hypothesis; investigation only | Packed identity lookups repeatedly scan scope records | Preserved under FW-032; outside cleanup remediation selection |
 | CBR-006 | Confirmed process/tooling inconsistency; low | Deferred-track source paths are documented as legal but rejected by authority graph validation | Recommended bounded validator alignment |
@@ -61,8 +61,7 @@ No remediation is approved or implemented by this register.
   Exploration/Spike when undertaking candidate implementation or measurement.
   Module/contract/profile/resource changes require their normal approvals.
   Measure parity, RAM/flash/stack/heap, derivation costs, and reproducibility.
-- **Owner/disposition:** Signal Analyzer target-host/generation owners; needs
-  investigation, not a commitment to remove all generated code.
+- **Owner/disposition:** Signal Analyzer target-host/generation owners; [SPIKE-009](../../spikes/spike-009-nrf-hierarchy-role-bindings.md) supports named role bindings (+192 flash bytes, unchanged RAM, 42 exact semantic comparisons). Retain packed hierarchy; full runtime derivation is unproven.
 
 ## CBR-003 — Duplicate text-layout rules remain in startup validation
 
@@ -76,7 +75,7 @@ No remediation is approved or implemented by this register.
   algorithm than a common-path probe.
 - **Counterevidence/confidence:** High confidence in duplicate live algorithms;
   they test packed codecs/startup validity and cannot simply be deleted. No
-  incorrect current text output or measured binary-size benefit is asserted.
+  incorrect current text output is asserted. [Step 13](13-startup-text-probe-assessment.md) now measures a 1,296-byte flash saving with unchanged RAM in an isolated shared-engine candidate.
 - **Smallest correction/risk:** Adapt startup/probe cases to common Layout over
   the packed workspace, preserving separately useful codec negatives. Retire
   duplicated algorithms only after proving their consumers and coverage migrate.
@@ -84,7 +83,7 @@ No remediation is approved or implemented by this register.
   a changed startup contract/resource bound needs upstream review. Test text
   corpus, packed writes, startup failures, firmware build/ABI and measured costs.
 - **Owner/disposition:** Target-host/probe owners; recommended candidate pending
-  final scope selection and coverage assessment.
+  final scope selection and the concrete negative/overflow corpus migration recorded in [Step 13](13-startup-text-probe-assessment.md).
 
 ## CBR-004 — Test runner reports are shared across invocations
 
@@ -210,3 +209,12 @@ coupling or establish clean declaration-derived generation.
 [FW-032](../../future-work/fw-032-nrf-performance-improvement.md) now links back
 to CBR-005. The capacity correctness finding remains a current selection item;
 it is not hidden by this performance deferral.
+
+## Follow-up investigation disposition
+
+[Steps 13–16](17-followup-reconciliation.md) add bounded candidate measurements
+and scope detail without altering maintained code or closing findings as fixed.
+Five-second retention has paired history/replay and independent left-edge
+evidence plus measured three-store costs. Fifteen file-selection guards have
+a named candidate and explicit residual policy. Full hierarchy replacement,
+physical timing/high-water and connected behavior remain unproven.

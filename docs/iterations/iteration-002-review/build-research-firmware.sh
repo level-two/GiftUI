@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 set -euo pipefail
 # Run from repository root. Reuses the supported compiler/SDK; never flashes.
+case "${1:-}" in
+    iteration-002-startup-text | iteration-002-retention | iteration-002-file-selection | spike-009-hierarchy-roles) ;;
+    *) printf 'error: supply a prepared iteration-002 research name\n' >&2; exit 2 ;;
+esac
 source scripts/nrf52840/common.sh
 giftui_nrf_export_environment
 research_root="$PWD/.build/nrf52840/$1"
