@@ -79,7 +79,7 @@ for path in sorted((ROOT / "docs/specs").glob("spec-*.md")):
     spec_id = re.search(r"^id: (SPEC-\d+)$", content, re.M).group(1)
     status = re.search(r"^status: (\S+)$", content, re.M).group(1)
     acceptance = content.split("## Acceptance Criteria", 1)[-1].split("\n## ", 1)[0]
-    criteria = sorted(set(re.findall(r"\b[A-Z][A-Z0-9-]*-\d{3}\b", acceptance)))
+    criteria = sorted(set(re.findall(r"^- \[[ xX]\] \*\*([A-Z][A-Z0-9-]*-\d{2,3}):\*\*", acceptance, re.M)))
     portfolio.append([spec_id, status, str(path.relative_to(ROOT)), len(criteria), hashlib.sha256(content.encode()).hexdigest()])
 write_tsv("specifications.tsv", ["id", "status", "path", "unique_criterion_ids", "sha256"], portfolio)
 

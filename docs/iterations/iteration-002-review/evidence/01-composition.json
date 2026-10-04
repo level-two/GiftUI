@@ -1,0 +1,38 @@
+{
+  "package_executable_roots": [
+    "SignalAnalyzerMacOSDynamic",
+    "SignalAnalyzerMacOSStatic",
+    "SignalAnalyzerRaspberryPiARMv6",
+    "SignalAnalyzerNRF52840HostOracle"
+  ],
+  "fixture_targets_in_executable_closure": [],
+  "nrf_selected_owners": [
+    "GiftUI",
+    "GiftUIBackendIntegration",
+    "GiftUICapabilities",
+    "GiftUIDisplayCore",
+    "GiftUIDrawing",
+    "GiftUIExecution",
+    "GiftUIFailureCore",
+    "GiftUIHostConfiguration",
+    "GiftUIInteraction",
+    "GiftUILayout",
+    "GiftUIObservableState",
+    "GiftUIRasterCore",
+    "GiftUIReferenceTextResources",
+    "GiftUIRenderCore",
+    "GiftUIRenderLowering",
+    "GiftUIRuntimeCore",
+    "GiftUIRuntimeStatic",
+    "GiftUISemanticCore",
+    "GiftUISurfaceCore",
+    "GiftUITextResources",
+    "SignalAnalyzerData",
+    "SignalAnalyzerDomain",
+    "SignalAnalyzerPresentation",
+    "SignalAnalyzerTargetHost"
+  ],
+  "nrf_imports_without_selected_owner": [],
+  "nrf_imports_without_manifest_direct_edge": [],
+  "limits": "Lexical selected-source analysis; host receives injected imports; no firmware configure/compile or actual-invocation negatives rerun."
+}

@@ -1,0 +1,76 @@
+{
+  "reviewed_revision": "9d87ae53252e59c937643addea0a2b05deffe298",
+  "source_baseline": "6cf31f266987e917458f31f05ed8c390cda9a202",
+  "checks": [
+    {
+      "command": "scripts/contracts/check-target-dependencies.rb < /private/tmp/iteration-002-package.json",
+      "exit_code": 0,
+      "output": "SPEC-002 dependency check passed: 84 targets, 375 direct edges, acyclic.\n"
+    },
+    {
+      "command": "scripts/contracts/check-spec-001-boundaries.rb < /private/tmp/iteration-002-package.json",
+      "exit_code": 0,
+      "output": "SPEC-001 boundary audit passed: three production owners, three test owners, 13 dependency fixtures, and 13 registered composition edges.\n"
+    },
+    {
+      "command": "scripts/contracts/check-spec-002-boundaries.rb",
+      "exit_code": 1,
+      "output": "SPEC-002 boundary check failed: expected package JSON, GiftUI public/package interfaces, dependency scan, and product links\n"
+    },
+    {
+      "command": "scripts/contracts/check-spec-003-dependencies.rb < /private/tmp/iteration-002-package.json",
+      "exit_code": 0,
+      "output": "SPEC-003 dependency check passed: 26 active and 0 reserved targets.\n"
+    },
+    {
+      "command": "scripts/contracts/check-spec-004-dependencies.rb < /private/tmp/iteration-002-package.json",
+      "exit_code": 0,
+      "output": "SPEC-004 dependency check passed: 12 active targets and 14 forbidden imports.\n"
+    },
+    {
+      "command": "scripts/contracts/check-spec-005-dependencies.rb < /private/tmp/iteration-002-package.json",
+      "exit_code": 0,
+      "output": "SPEC-005 dependency check passed: 8 active targets, 0 reserved consumers, no standalone product.\n"
+    },
+    {
+      "command": "scripts/contracts/check-spec-006-dependency-surface.rb < /private/tmp/iteration-002-package.json",
+      "exit_code": 0,
+      "output": "SPEC-006 dependency surface passed: exact leaf edge, declaration surface, underscored allowlist, and forbidden-surface scans are clean.\n"
+    },
+    {
+      "command": "scripts/contracts/check-spec-007-boundaries.rb < /private/tmp/iteration-002-package.json",
+      "exit_code": 1,
+      "output": "SPEC-007 boundary check failed: package dump failed: warning: /Users/eugene/Library/org.swift.swiftpm/configuration is not accessible or not writable, disabling user-level cache features.\nwarning: /Users/eugene/Library/org.swift.swiftpm/security is not accessible or not writable, disabling user-level cache features.\nwarning: /Users/eugene/Library/Caches/org.swift.swiftpm is not accessible or not writable, disabling user-level cache features.\nerror: 'giftui': Invalid manifest (compiled with: [\"/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc\", \"-vfsoverlay\", \"/var/folders/38/tc_rs_016rz5chj25dzt9nfm0000gn/T/TemporaryDirectory.ljau9r/vfs.yaml\", \"-L\", \"/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/pm/ManifestAPI\", \"-lPackageDescription\", \"-Xlinker\", \"-rpath\", \"-Xlinker\", \"/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/pm/ManifestAPI\", \"-target\", \"arm64-apple-macosx14.0\", \"-plugin-path\", \"/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/plugins/testing\", \"-sdk\", \"/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk\", \"-F\", \"/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks\", \"-I\", \"/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib\", \"-L\", \"/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib\", \"-swift-version\", \"6\", \"-I\", \"/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/pm/ManifestAPI\", \"-sdk\", \"/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk\", \"-package-description-version\", \"6.2.0\", \"/Users/eugene/work/GiftUI/Package.swift\", \"-o\", \"/var/folders/38/tc_rs_016rz5chj25dzt9nfm0000gn/T/TemporaryDirectory.jqkHOn/giftui-manifest\"])\n<unknown>:0: error: error opening '/Users/eugene/.cache/clang/ModuleCache/Swift-1IEYM950OGIQC.swiftmodule' for output: /Users/eugene/.cache/clang/ModuleCache: Operation not permitted\n<unknown>:0: error: unable to load standard library for target 'arm64-apple-macosx14.0'\nerror: invalid manifests at [<AbsolutePath:\"/Users/eugene/work/GiftUI\">]\n"
+    },
+    {
+      "command": "scripts/contracts/check-spec-008-package-boundaries.rb < /private/tmp/iteration-002-package.json",
+      "exit_code": 0,
+      "output": "SPEC-008 package boundaries passed: exact Render Core/Lowering edges, approved semantic-layout producers, symbol ownership, backend isolation, and no GiftUI SPI re-export.\n"
+    },
+    {
+      "command": "scripts/contracts/check-spec-011-boundaries.rb < /private/tmp/iteration-002-package.json",
+      "exit_code": 0,
+      "output": "SPEC-011 boundaries passed: exact Interaction and failure-adapter graph, imports, reverse edges, and finite mapping surface.\n"
+    },
+    {
+      "command": "scripts/contracts/check-spec-013-borrow-boundaries.rb",
+      "exit_code": 0,
+      "output": "SPEC-013 borrow boundaries passed: twelve cases cover typed escapes, scoped payloads, generated tables, Static facilities, and dependency direction.\n"
+    },
+    {
+      "command": "scripts/contracts/check-spec-015-source-boundaries.rb",
+      "exit_code": 0,
+      "output": "SPEC-015 source boundaries passed: 23 host files, 10 registered imports, 201 protected owner files, zero ambient lookup.\n"
+    },
+    {
+      "command": "scripts/contracts/check-spec-007-boundaries.rb (retry with compiler cache access)",
+      "exit_code": 0,
+      "output": "SPEC-007 boundaries passed: 4 exact targets and 12 import-negative categories.\n"
+    },
+    {
+      "command": "scripts/contracts/run-spec-002.sh --profile macos-dynamic",
+      "exit_code": 0,
+      "output": "SPEC-002 macos-dynamic contract surface passed. Immutable run ID: 9d87ae53252e59c937643addea0a2b05deffe298-9b9b65db77b5280e"
+    }
+  ]
+}
