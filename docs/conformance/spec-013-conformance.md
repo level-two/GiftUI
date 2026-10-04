@@ -157,3 +157,15 @@ to their maintained and hardware-free evidence, with exact hashes and limits
 in the linked packet. No lifecycle transition or new exception follows.
 Connected changed-path checks and final application reconciliation remain
 SPEC-001 T11.7/T11.8. Retention remains 30s/2,404 pending RFC/ADR/Spec gates.
+
+## Current maintenance limits — 2026-10-05
+
+[Connected attempt](../iterations/iteration-002-cleanup/evidence/11-connected-attempt/result.md)
+is incomplete and cannot satisfy a new connected criterion or enlarge the
+2026-10-03 exceptions. SPEC-001 T11.7 and its dependent T11.8 remain blocked.
+The production fixes and all fresh hardware-free observations stand separately;
+iteration closure and retention's RFC/ADR/Spec gates remain unmet.
+
+| New maintenance observation | Criteria affected | Evidence and limit |
+| --- | --- | --- |
+| Explicit Embedded source selection and profile/resource/dependency negatives | RP-002/003/006/013/014/015 | [Selected-file packet](../iterations/iteration-002-cleanup/evidence/07-source-selection/result.md) and [four-profile integration](../iterations/iteration-002-cleanup/evidence/10-integration/result.md); isolated linked-size delta zero, no lifecycle/profile contract change. |

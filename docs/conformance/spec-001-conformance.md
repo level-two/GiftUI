@@ -333,3 +333,18 @@ to their maintained and hardware-free evidence, with exact hashes and limits
 in the linked packet. No lifecycle transition or new exception follows.
 Connected changed-path checks and final application reconciliation remain
 SPEC-001 T11.7/T11.8. Retention remains 30s/2,404 pending RFC/ADR/Spec gates.
+
+## Current maintenance limits — 2026-10-05
+
+[Connected attempt](../iterations/iteration-002-cleanup/evidence/11-connected-attempt/result.md)
+is incomplete and cannot satisfy a new connected criterion or enlarge the
+2026-10-03 exceptions. SPEC-001 T11.7 and its dependent T11.8 remain blocked.
+The production fixes and all fresh hardware-free observations stand separately;
+iteration closure and retention's RFC/ADR/Spec gates remain unmet.
+
+| New maintenance observation | Criteria affected | Evidence and limit |
+| --- | --- | --- |
+| Terminal source-start publication/quiescence | SA-AC-007/008/009/015/043 | [Real-source admission](../iterations/iteration-002-cleanup/evidence/09-startup-admission/result.md), current hardware-free profiles; no Pi connected pass. |
+| Common startup Layout, source closure and exact generated topology | SA-AC-005/006/025/028/030/036/040/041/045 | [Startup](../iterations/iteration-002-cleanup/evidence/06-startup-text/result.md), [selection](../iterations/iteration-002-cleanup/evidence/07-source-selection/result.md), [generator](../iterations/iteration-002-cleanup/evidence/08-topology/result.md), fresh profile reports; no independent connected pixels. |
+| Actual compiler/SDK/artifact and resource identities | SA-AC-022/023/024/025/039/045 | [Integration](../iterations/iteration-002-cleanup/evidence/10-integration/result.md); ABI/configured resources pass, timing and whole-stack limits preserved. |
+| Authority/source provenance and repeatable reports | SA-AC-001/002/003/004 | [Source paths](../iterations/iteration-002-cleanup/evidence/03-source-paths/result.md), [runner](../iterations/iteration-002-cleanup/evidence/04-runner/result.md), 60 verified owner/profile reports; no approval inferred. |

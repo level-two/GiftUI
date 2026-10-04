@@ -69,19 +69,19 @@ Specification criterion matrices and append cleanup tasks to affected rows.
 
 | Criterion | Tasks / existing baseline | Planned evidence / current disposition |
 | --- | --- | --- |
-| IT-AC-001 | Approval record; FINAL-01 | Registered approved revision and provenance; approval established, final navigation/governance check pending |
-| IT-AC-002 | SPEC-011 T10.3; SPEC-013 T10.2/T10.3; SPEC-001 T11.6 | Before/after imports and target/source closure, existing dependency gates; pending cleanup validation |
-| IT-AC-003 | SPEC-001 T11.4 | Clean output/freshness/refusal/parity/zero-delta packet and residual mappings; pending |
-| IT-AC-004 | SPEC-013 T10.1/T10.2/T10.3 | Named-file selection and source/profile/resource packet; pending |
-| IT-AC-005 | RET-01–04, subsequently derived production tasks | Current ADR-003/Spec amendments missing; implementation blocked, no research result promoted to production pass |
-| IT-AC-006 | Steps 00–30; FINAL-01 | Preserved baseline/coverage/archive hashes and explicit evidence limits; preparation established, preservation checked at closeout |
-| IT-AC-007 | SPEC-001 T11.8; FINAL-01 | Every item and criterion has evidence/disposition, coherent commits, precise exceptions and human closure; pending |
-| IT-AC-008 | SPEC-001 T11.1/T11.2/T11.7 | Callback-safe source/host lifecycle packet; pending |
-| IT-AC-009 | SPEC-011 T10.1/T10.2/T10.3 | Unequal-capacity/preflight/commit/rollback packet; pending |
-| IT-AC-010 | TOOL-01; SPEC-001 T11.6 | Isolated/serialized runner fixture and real gate invocation ledger; pending |
-| IT-AC-011 | TOOL-02 | Source-path/authority graph fixture and repository governance packet; pending |
-| IT-AC-012 | SPEC-001 T11.5/T11.6 | Actual artifact/native/SDK identity packet; pending |
-| IT-AC-013 | SPEC-001 T11.3/T11.7 | Migrated common-engine startup corpus, paired resource/ABI and connected startup packet; pending |
+| IT-AC-001 | Approval record; FINAL-01 | Pass: revision 7/provenance registered; fresh governance/navigation validation passes. Human closure stays FINAL-01. |
+| IT-AC-002 | SPEC-011 T10.3; SPEC-013 T10.2/T10.3; SPEC-001 T11.6 | Pass for maintenance: four-profile dependency/source/import closure in [integration](evidence/10-integration/result.md). |
+| IT-AC-003 | SPEC-001 T11.4 | Pass: [clean generation](evidence/08-topology/result.md), 42 semantic cases, refusals, exact outputs and paired zero delta. CBR-002 remains partial. |
+| IT-AC-004 | SPEC-013 T10.1/T10.2/T10.3 | Pass: [15-file selection](evidence/07-source-selection/result.md), native and four-profile/resource gates; residual guards remain deferred. |
+| IT-AC-005 | RET-01–04, subsequently derived production tasks | Blocked: RFC-012 approval and successor ADR/Spec gates pending; current retention is 30s/2,404. No production retention task is ready. |
+| IT-AC-006 | Steps 00–30; FINAL-01 | Pass: original research/evidence remains discoverable and unchanged; fresh immutable [integration](evidence/10-integration/result.md) added separately. |
+| IT-AC-007 | SPEC-001 T11.8; FINAL-01 | Partial: coherent step commits and maintenance dispositions recorded; T11.7/T11.8, retention and human FINAL-01 closure remain blocked. |
+| IT-AC-008 | SPEC-001 T11.1/T11.2/T11.7 | Partial: [real source and admission](evidence/09-startup-admission/result.md) and hardware-free integration pass; [connected checks](evidence/11-connected-attempt/result.md) incomplete. |
+| IT-AC-009 | SPEC-011 T10.1/T10.2/T10.3 | Pass: [concrete five-store corpus](evidence/02-capacity/result.md) and registered differential/profile/resource checks in integration. |
+| IT-AC-010 | TOOL-01; SPEC-001 T11.6 | Pass: [runner isolation](evidence/04-runner/result.md), special-root interruption fixture and exact 74-check/60-report integration ledger. |
+| IT-AC-011 | TOOL-02 | Pass: [safe source paths](evidence/03-source-paths/result.md), authority fixtures and fresh repository governance. |
+| IT-AC-012 | SPEC-001 T11.5/T11.6 | Pass: [actual compilers](evidence/05-compilers/result.md), separate native/paired compiler and SDK/artifact identities in all fresh reports. |
+| IT-AC-013 | SPEC-001 T11.3/T11.7 | Partial: [common startup corpus](evidence/06-startup-text/result.md), paired flash/RAM and ABI gates pass; ready revision observed, connected regression incomplete. |
 
 ## Ordered work and dependencies
 
@@ -248,7 +248,7 @@ feature stage, exception or optimization is created by this plan.
 
 ## Completion record
 
-All new execution tasks are pending; retention production remains held upstream.
+Independent maintenance implementation and hardware-free integration tasks are complete. Connected checks and their dependent final reconciliation are blocked; retention production remains held upstream.
 Original completed owner tasks and historical criterion/exception evidence are
 unchanged. [Plan-derivation checks](../iteration-002-review/33-implementation-plan-derivation.md)
 record this document step separately from future execution.
@@ -260,3 +260,5 @@ record this document step separately from future execution.
 **RET-01 preparation — 2026-10-05:** [RFC-012](../../rfcs/rfc-012-five-second-capture-retention-amendment.md) is in review; [review verdict](retention-review.md) is ready for human approval consideration. Explicit RFC approval remains pending; RET-02–04 are held.
 
 **Maintenance integration — 2026-10-05:** [All 74 checks and 60 profile reports](evidence/10-integration/result.md) pass. TOOL-01/02 and independent owner integration tasks are complete. The report-collection-only follow-up has [focused evidence](evidence/04-runner/special-root-followup.md). T11.7 connected evidence and T11.8 reconciliation remain next; retention approval and FINAL-01 stay held.
+
+**Connected attempt / partial reconciliation — 2026-10-05:** [Attempt and final observed device states](evidence/11-connected-attempt/result.md). T11.7/T11.8 are blocked after incomplete device checks and explicit authorization rejections. The criterion matrix above records the current pass/partial/blocked dispositions; it does not close FINAL-01 or enlarge prior exceptions.

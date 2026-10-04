@@ -11,23 +11,22 @@ implemented by the research.
 [Approved scope revision 7](../iteration-002-cleanup.md) now selects correction
 of CBR-001/003/004/006/007/008 and clean-generation remediation for part of
 CBR-002. Named role bindings and residual ordinal/model coupling remain
-explicitly unselected under EXP-001; CBR-005 stays under FW-032. All findings
-remain open or deferred until production evidence establishes their outcome.
+explicitly unselected under EXP-001; CBR-005 stays under FW-032. Production maintenance evidence now establishes the dispositions below; connected validation has separate outstanding limits.
 
 [Delivery coordination](../iteration-002-cleanup/implementation-plan.md) and
-SPEC-001/011/013 cleanup milestones now map the selections to pending execution
-tasks. Scope approval and ready maintenance plans do not mark a finding fixed.
+SPEC-001/011/013 cleanup milestones map the selections to executed maintenance
+tasks and explicit remaining blockers. [Fresh integration](../iteration-002-cleanup/evidence/10-integration/result.md) records 74 passing checks and 60 verified reports.
 
 | ID | Classification / priority | Observation | Disposition |
 | --- | --- | --- | --- |
-| CBR-001 | Confirmed preflight/error-classification defect; medium, correctness shortlist | Staged committed-action capacity is omitted from preflight | Recommended for bounded correction; production reachability remains unproved |
-| CBR-002 | Supported simplification opportunity; medium | Manual ordinal/model mappings couple ordinary source to a separately generated hierarchy | Measured role-binding alternative; retain packed hierarchy |
-| CBR-003 | Supported simplification opportunity; medium | Startup probes retain separate target-host text-layout algorithms after the common production Layout join | Measured startup simplification; coverage migration specified |
-| CBR-004 | Confirmed test-ledger isolation defect; medium | Same-selection test runs clear and write shared reports/caches | Recommended tooling correction; historical interference recorded |
+| CBR-001 | Confirmed preflight/error-classification defect; medium, correctness shortlist | Staged committed-action capacity is omitted from preflight | Corrected: preflight and real Dynamic/Static five-store, rollback/reuse/precedence corpus pass; production trigger was not claimed. |
+| CBR-002 | Supported simplification opportunity; medium | Manual ordinal/model mappings couple ordinary source to a separately generated hierarchy | Partial: complete clean generator/freshness/parity passes; manual ordinal/model mappings remain under EXP-001. |
+| CBR-003 | Supported simplification opportunity; medium | Startup probes retain separate target-host text-layout algorithms after the common production Layout join | Implemented: common Layout startup corpus replaces duplicate algorithms; paired flash −1,296/RAM unchanged. Connected action regression remains blocked. |
+| CBR-004 | Confirmed test-ledger isolation defect; medium | Same-selection test runs clear and write shared reports/caches | Corrected: serialized writers, distinct retained invocation roots and child identities; failure/interruption/overlap fixtures and real gate pass. |
 | CBR-005 | Performance hypothesis; investigation only | Packed identity lookups repeatedly scan scope records | Preserved under FW-032; outside cleanup remediation selection |
-| CBR-006 | Confirmed process/tooling inconsistency; low | Deferred-track source paths are documented as legal but rejected by authority graph validation | Recommended bounded validator alignment |
-| CBR-007 | Confirmed source-start lifecycle defect; medium | Synchronous terminal revision failure is overwritten by running state | Recommended correctness correction |
-| CBR-008 | Confirmed report-identity defect; low | Pi artifact report records default host Swift rather than its paired cross-build compiler | Recommended metadata correction |
+| CBR-006 | Confirmed process/tooling inconsistency; low | Deferred-track source paths are documented as legal but rejected by authority graph validation | Corrected: safe source-path support preserves strict authority IDs/edges; governance fixtures pass. |
+| CBR-007 | Confirmed source-start lifecycle defect; medium | Synchronous terminal revision failure is overwritten by running state | Corrected: callback-safe terminal startup and source quiescence pass real-source/admission tests; Pi connected check remains blocked. |
+| CBR-008 | Confirmed report-identity defect; low | Pi artifact report records default host Swift rather than its paired cross-build compiler | Corrected: fresh reports separately identify actual paired artifact compiler/SDK and native check compiler. |
 
 ## CBR-001 — Missing staged committed-action capacity preflight
 
@@ -246,3 +245,22 @@ generation is a supported candidate; full runtime replacement is excluded from
 the proposed cleanup commitment. Connected work is explicitly deferred by the
 maintainer. All eight findings retain their open/deferred dispositions; no
 production defect was fixed by disposable research.
+
+## Production maintenance disposition — 2026-10-05
+
+[Integration evidence](../iteration-002-cleanup/evidence/10-integration/result.md)
+updates the current table above. The preceding investigation descriptions and
+raw records remain historical recommendations, not current pending selection.
+CBR-001/004/006/007/008 corrections are validated in their maintained scope.
+CBR-003 production migration and resource result are validated hardware-free;
+its connected portion remains incomplete. CBR-002 is deliberately partial:
+clean generation is production, while named roles and residual model/ordinal
+coupling remain under EXP-001. CBR-005 remains the unmeasured lookup hypothesis
+under FW-032. Fifteen selected guards and the compatibility alias are retired;
+residual profile/resource/board/instrumentation guards remain under FW-029.
+
+[Connected attempt](../iteration-002-cleanup/evidence/11-connected-attempt/result.md)
+records actual failures, device state and authorization blockers. It creates no
+new exception and cannot close the full connected corpus in FW-031/FW-033.
+Retention approval is a current iteration blocker, not deferred work. Iteration
+2 remains active; FINAL-01 and SPEC-001 T11.8 are incomplete.

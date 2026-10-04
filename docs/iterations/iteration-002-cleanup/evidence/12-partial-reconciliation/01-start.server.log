@@ -1,0 +1,129 @@
+SEGGER J-Link GDB Server V9.66 Command Line Version
+
+JLinkARM.dll V9.66 (DLL compiled Aug  5 2026 12:19:06)
+
+Command line: -device NRF52840_XXAA -if SWD -speed 4000 -select USB=683833660 -port 2331 -localhostonly 1 -nogui -nohalt -noir -noreset
+-----GDB Server start settings-----
+GDBInit file:                  none
+GDB Server Listening port:     2331
+SWO raw output listening port: 2332
+Terminal I/O port:             2333
+Accept remote connection:      localhost only
+Generate logfile:              off
+Verify download:               off
+Init regs on start:            off
+Silent mode:                   off
+Single run mode:               off
+Target connection timeout:     0 ms
+------J-Link related settings------
+J-Link Host interface:         USB
+J-Link script:                 none
+J-Link settings file:          none
+------Target related settings------
+Target device:                 NRF52840_XXAA
+Target device parameters:      none
+Target interface:              SWD
+Target interface speed:        4000kHz
+Target endian:                 little
+
+Connecting to J-Link...
+J-Link is connected.
+Firmware: J-Link OB-SAM3U128-V2-NordicSemi compiled Jul  8 2025 10:14:41
+Hardware: V1.00
+S/N: 683833660
+Feature(s): RDI, FlashBP, FlashDL, JFlash, GDB
+Checking target voltage...
+Target voltage: 3.30 V
+Listening on TCP/IP port 2331
+Connecting to target...
+Connected to target
+Waiting for GDB connection...Connected to 0000:0000:0000:0000:0000:0000:0000:0001
+GDB client (conn. 9) requested target.xml from GDB Server
+Reading common registers: 
+...Target halted (PC = 0x000000000003CF5E)
+Reading register 'r0' from hardware = 0x00000000
+Reading register 'r1' from hardware = 0x20027E00
+Reading register 'r2' from hardware = 0x00000001
+Reading register 'r3' from hardware = 0x00000020
+Reading register 'r4' from hardware = 0x00000000
+Reading register 'r5' from hardware = 0x00000000
+Reading register 'r6' from hardware = 0x20027E20
+Reading register 'r7' from hardware = 0x2002E970
+Reading register 'r8' from hardware = 0x00000000
+Reading register 'r9' from hardware = 0x00000000
+Reading register 'r10' from hardware = 0x00000000
+Reading register 'r11' from hardware = 0x00000000
+Reading register 'r12' from hardware = 0x00000000
+Reading register 'sp' from hardware = 0x20027DE8
+Reading register 'lr' from hardware = 0x0003CF67
+Reading register 'pc' from hardware = 0x0003CF5E
+Reading register 'xpsr' from hardware = 0x01000003
+Read 4 bytes @ address 0x0003CF5E (Data = 0xB508E7FE)
+Read 4 bytes @ address 0x0003CF66 (Data = 0xF3EFB510)
+Reading 64 bytes @ address 0x20027DC0
+Read 4 bytes @ address 0x0003CF7A (Data = 0x8811F384)
+Read 4 bytes @ address 0x000240A0 (Data = 0xE8BDB00A)
+Reading 64 bytes @ address 0x20027E00
+Received monitor command: halt
+Halting target CPU...
+...Target halted (PC = 0x000000000003CF5E)
+Read 2 bytes @ address 0x00023840 (Data = 0xE92D)
+Setting breakpoint @ address 0x00023840, Kind = 2, Type = THUMB, BPHandle = 0x0001
+Starting target CPU...
+Connected to 0000:0000:0000:0000:0000:0000:0000:0001
+GDB client (conn. 10) requested target.xml from GDB Server
+Reading common registers: 
+...Target halted (PC = 0x000000000003CF5E)
+Reading register 'r0' from hardware = 0x00000000
+Reading register 'r1' from hardware = 0x20027E00
+Reading register 'r2' from hardware = 0x00000001
+Reading register 'r3' from hardware = 0x00000020
+Reading register 'r4' from hardware = 0x00000000
+Reading register 'r5' from hardware = 0x00000000
+Reading register 'r6' from hardware = 0x20027E20
+Reading register 'r7' from hardware = 0x2002E970
+Reading register 'r8' from hardware = 0x00000000
+Reading register 'r9' from hardware = 0x00000000
+Reading register 'r10' from hardware = 0x00000000
+Reading register 'r11' from hardware = 0x00000000
+Reading register 'r12' from hardware = 0x00000000
+Reading register 'sp' from hardware = 0x20027DE8
+Reading register 'lr' from hardware = 0x0003CF67
+Reading register 'pc' from hardware = 0x0003CF5E
+Reading register 'xpsr' from hardware = 0x01000003
+Read 4 bytes @ address 0x0003CF5E (Data = 0xB508E7FE)
+Read 4 bytes @ address 0x0003CF66 (Data = 0xF3EFB510)
+Reading 64 bytes @ address 0x20027DC0
+Read 4 bytes @ address 0x0003CF7A (Data = 0x8811F384)
+Read 4 bytes @ address 0x000240A0 (Data = 0xE8BDB00A)
+Reading 64 bytes @ address 0x20027E00
+Received monitor command: halt
+Halting target CPU...
+...Target halted (PC = 0x000000000003CF5E)
+Read 4 bytes @ address 0x00024154 (Data = 0xBF00BD01)
+Reading 64 bytes @ address 0x00024140
+Reading register 'psp' from hardware = 0xE000ED00
+Read 4 bytes @ address 0x2002E96C (Data = 0x41000000)
+Reading 64 bytes @ address 0x2002E940
+Read 4 bytes @ address 0x00023840 (Data = 0x4DF0E92D)
+Read 4 bytes @ address 0x0003BFD4 (Data = 0xB9784604)
+Reading 64 bytes @ address 0x2002E9C0
+Reading 64 bytes @ address 0x2002E980
+Read 4 bytes @ address 0x000239D6 (Data = 0xBD70B00E)
+Reading 64 bytes @ address 0x2002EA00
+Read 4 bytes @ address 0x000236BA (Data = 0x092DE731)
+Reading 64 bytes @ address 0x2002EA40
+Read 4 bytes @ address 0x000274D8 (Data = 0x7B134A03)
+Reading 88 bytes @ address 0x20000990
+Reading 8 bytes @ address 0x2001D748
+Reading 8 bytes @ address 0x20001488
+Reading 8 bytes @ address 0x20000A88
+Reading 8 bytes @ address 0x200009E8
+Reading 20 bytes @ address 0x20027300
+Read 4 bytes @ address 0xE000ED28 (Data = 0x00000000)
+Read 4 bytes @ address 0xE000ED2C (Data = 0x80000000)
+Read 4 bytes @ address 0xE000ED30 (Data = 0x00000001)
+Received monitor command: go
+Starting target CPU...
+GDB closed TCP/IP connection (Socket 10)
+GDB closed TCP/IP connection (Socket 9)

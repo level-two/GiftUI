@@ -1,0 +1,3 @@
+arch_system_halt (reason=0) at /Users/eugene/work/GiftUI/.toolchains/nrf52840/workspace/zephyr/kernel/fatal.c:30
+30		for (;;) {
+Temporary breakpoint 1 at 0x23840: file /Users/eugene/work/GiftUI/firmware/nrf52840/applications/signal-analyzer-static/src/production_host.c, line 146.

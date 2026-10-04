@@ -1,0 +1,17 @@
+[
+  {
+    "source": ".build/iteration-002-final-governance.log",
+    "copy": "iteration-002-final-governance.log",
+    "sha256": "d14b497c09b30097927f69d80ca4a9fbf1e2899a459f5649a35c1772d8db3a2e"
+  },
+  {
+    "source": ".build/nrf52840/iteration-002-maintenance-connected/01-start.log",
+    "copy": "01-start.log",
+    "sha256": "a0b1ea52a399d0db7aa89d58d2c4ec81890a1acc89a7be64441e05e71ca31959"
+  },
+  {
+    "source": ".build/nrf52840/iteration-002-maintenance-connected/01-start.server.log",
+    "copy": "01-start.server.log",
+    "sha256": "39e272296e6c47f08e8d98e8b3824270b79debbb9b54fc454da51a06eca5df0d"
+  }
+]

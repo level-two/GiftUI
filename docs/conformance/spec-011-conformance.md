@@ -193,3 +193,15 @@ to their maintained and hardware-free evidence, with exact hashes and limits
 in the linked packet. No lifecycle transition or new exception follows.
 Connected changed-path checks and final application reconciliation remain
 SPEC-001 T11.7/T11.8. Retention remains 30s/2,404 pending RFC/ADR/Spec gates.
+
+## Current maintenance limits — 2026-10-05
+
+[Connected attempt](../iterations/iteration-002-cleanup/evidence/11-connected-attempt/result.md)
+is incomplete and cannot satisfy a new connected criterion or enlarge the
+2026-10-03 exceptions. SPEC-001 T11.7 and its dependent T11.8 remain blocked.
+The production fixes and all fresh hardware-free observations stand separately;
+iteration closure and retention's RFC/ADR/Spec gates remain unmet.
+
+| New maintenance observation | Criteria affected | Evidence and limit |
+| --- | --- | --- |
+| Five independently unequal stores, contained capacity result, committed-state preservation, precedence and reuse | IN-008/009/010/013 | [Recording corpus](../iterations/iteration-002-cleanup/evidence/02-capacity/result.md), [concrete Dynamic/Static corpus](../iterations/iteration-002-cleanup/evidence/02-capacity/concrete-stores/result.md), [driver integration](../iterations/iteration-002-cleanup/evidence/02-capacity/driver-integration/result.md); hardware-free owner profiles pass. Existing connected exception remains separate. |
