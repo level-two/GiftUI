@@ -14,6 +14,10 @@ CBR-002. Named role bindings and residual ordinal/model coupling remain
 explicitly unselected under EXP-001; CBR-005 stays under FW-032. All findings
 remain open or deferred until production evidence establishes their outcome.
 
+[Delivery coordination](../iteration-002-cleanup/implementation-plan.md) and
+SPEC-001/011/013 cleanup milestones now map the selections to pending execution
+tasks. Scope approval and ready maintenance plans do not mark a finding fixed.
+
 | ID | Classification / priority | Observation | Disposition |
 | --- | --- | --- | --- |
 | CBR-001 | Confirmed preflight/error-classification defect; medium, correctness shortlist | Staged committed-action capacity is omitted from preflight | Recommended for bounded correction; production reachability remains unproved |

@@ -2,11 +2,11 @@
 spec: SPEC-001
 feature: signal-analyzer
 title: SPEC-001 Implementation Plan
-status: completed
+status: ready
 owners:
   - codex
 created: 2026-09-13
-updated: 2026-10-03
+updated: 2026-10-04
 related_design_notes:
   - ../implementation-designs/spec-001-presentation-admission-and-failure.md
   - ../implementation-designs/spec-001-four-host-application-join.md
@@ -27,6 +27,8 @@ superseded_by: null
 ---
 
 # SPEC-001 Implementation Plan
+
+**Current maintenance readiness — 2026-10-04:** [ITERATION-002 revision 7](../iterations/iteration-002-cleanup.md) is explicitly approved. Milestone 11 below adds ready contract-preserving cleanup tasks; implementation has not started. All original milestones, task dispositions and conformance history are retained. The Specification remains `implemented`; this plan update does not reopen its approval or change its contract. [Delivery coordination](../iterations/iteration-002-cleanup/implementation-plan.md) owns cross-plan/tooling dependencies. Retention production tasks remain behind the separate upstream gates. Earlier status statements and matrix baseline evidence are historical; new cleanup task evidence is pending.
 
 **Current disposition — 2026-10-03:** The maintainer explicitly directed
 performance work to future iterations and closure of the remaining Specifications.
@@ -287,51 +289,51 @@ governed implementation must still reproduce and record the required evidence.
 
 | Criterion | Implementation tasks | Evidence | Status |
 | --- | --- | --- | --- |
-| `SA-AC-001` — Complete feature and authority traceability | `T0.1`, `T9.4`, `T10.8` | Governance, manifest, status, and reciprocal-link audit | baseline; revalidation pending |
-| `SA-AC-002` — Logical Domain/Data/Presentation/host graph and inward dependencies | `T0.2`, `T0.5`, `T1.4`, `T6.1`, `T9.1`, `T10.1`, `T10.4`, `T10.7`, `T10.8` | Package graph, imports, interfaces, generated graph report | baseline; revalidation pending |
-| `SA-AC-003` — Domain excludes UI/backend/platform/timing/hardware APIs | `T0.2`, `T0.5`, `T1.4`, `T9.1`, `T10.1`, `T10.7`, `T10.8` | Source/import/symbol negative scans in every profile | baseline; revalidation pending |
-| `SA-AC-004` — Presentation excludes Data/platform/timing/renderer/display/hardware APIs | `T0.2`, `T0.5`, `T4.4`, `T9.1`, `T10.1`, `T10.7`, `T10.8` | Import and dependency negative fixtures | pending |
-| `SA-AC-005` — Complete visible screen surface | `T4.1`-`T4.3`, `T6.2`-`T6.5`, `T6.7`, `T6.8`, `T7.6`, `T7.7`, `T7.9`, `T8.1`, `T8.2`, `T10.3`, `T10.4`, `T10.8` | Semantic hierarchy transcript, reviewed host-frame images and exact pixels, and connected display evidence | pending |
-| `SA-AC-006` — Fixed explicit portable composition shared by four configurations | `T4.1`, `T4.4`, `T6.2`-`T6.5`, `T10.4`, `T10.7`, `T10.8` | Source identity/hash, compile, and hierarchy comparison | pending |
-| `SA-AC-007` — Revisioned current-value sink registration, replacement, detach, and bounded returns | `T1.3`, `T2.2`, `T3.2`, `T10.8` | Ordered callback/outcome and lifetime transcript | pending |
-| `SA-AC-008` — Synchronous application delivery and distinct GiftUI mutation without portable concurrency facilities | `T1.4`, `T2.2`, `T3.2`, `T5.3`, `T9.1`, `T10.5`, `T10.6`, `T10.8` | Same-thread/distinct-executor transcript and forbidden-facility scans | pending |
-| `SA-AC-009` — Complete acquisition action state table | `T2.2`, `T2.3`, `T10.8` | State/publication/source-generation matrix | baseline; revalidation pending |
-| `SA-AC-010` — Clear resets epoch/history, preserves state/levels, rebases, and publishes once | `T1.3`, `T2.1`, `T2.2`, `T3.3`, `T10.8` | Idle/running/stopped/failed clear and mutation replay corpus | pending |
-| `SA-AC-011` — 80 transitions/second for 30 seconds without loss or duplication | `T2.4`, `T7.4`, `T10.8` | Timestamped 2,400-event sustained-workload transcript | pending |
-| `SA-AC-012` — Static 2,404-entry transition storage and four baselines | `T1.2`, `T2.1`, `T6.3`, `T6.5`, `T7.4`, `T10.8` | Static layout, high-water, boundary, map, and ELF reports | pending |
-| `SA-AC-013` — Oldest-first trimming/overflow with correct lower-bound levels | `T1.2`, `T2.1`, `T10.8` | Time/capacity boundary and reconstruction corpus | baseline; revalidation pending |
-| `SA-AC-014` — Stable ordering and specified invalid/out-of-horizon behavior | `T2.1`, `T2.2`, `T10.8` | Equal/out-of-order/invalid/horizon transcript | baseline; revalidation pending |
-| `SA-AC-015` — Exact deterministic four-channel source and stale-event prevention | `T2.3`, `T10.8` | Pattern, restart, cancellation, and teardown corpus | baseline; revalidation pending |
-| `SA-AC-016` — Initial state and mutation-phase-only observable changes/reports | `T3.1`, `T3.3`, `T5.2`, `T5.3`, `T10.5`, `T10.6`, `T10.8` | Initial/materialization/fact/action/change-report transcript | pending |
-| `SA-AC-017` — Exact control enabled/disabled behavior | `T3.1`, `T4.2`, `T10.8` | Four-state control matrix and semantic transcript | baseline; revalidation pending |
-| `SA-AC-018` — Exact 1/2/5-second visible ranges | `T3.1`, `T4.3`, `T10.8` | Boundary and golden range corpus | baseline; revalidation pending |
-| `SA-AC-019` — Baseline-correct continuous waveform mapping | `T4.3`, `T10.3`, `T10.8` | Path point/subpath transcript at range/retention edges | pending |
-| `SA-AC-020` — Ruler formatting and 11-plus-one grid | `T4.3`, `T10.8` | Text bytes and normalized Drawing operation transcript | baseline; revalidation pending |
-| `SA-AC-021` — Consistent latest state at 250 ms without per-event frames | `T5.3`, `T7.4`, `T10.5`, `T10.6`, `T10.8` | Admission/application/publication/frame timeline and cadence report | pending |
-| `SA-AC-022` — macOS dynamic and static deterministic execution | `T6.2`, `T6.3`, `T9.2`, `T10.3`, `T10.7`, `T10.8` | Two host-execution reports and normalized equivalence | pending |
-| `SA-AC-023` — Raspberry Pi framebuffer/PiScreen display and input | `T6.4`, `T6.7`, `T7.6`, `T7.7`, `T7.8`, `T7.9`, `T8.1`, `T10.3`, `T10.5`, `T10.8` | ARMv6 cross-build, host rehearsal, and separately labeled connected-target transcript | pending |
-| `SA-AC-024` — nRF52840 static TFT display and input | `T6.5`, `T6.8`, `T7.6`, `T7.7`, `T7.8`, `T7.9`, `T8.2`, `T10.3`, `T10.4`, `T10.6`, `T10.8` | ELF inspection, host rehearsal, and separately labeled connected-target transcript | pending |
-| `SA-AC-025` — nRF binary/RAM/storage/drawing/stack fit evidence | `T6.5`, `T6.8`, `T7.4`, `T8.2`, `T10.4`, `T10.6`, `T10.8` | Link map, ELF, stack/high-water, workspace, and run report | pending |
-| `SA-AC-026` — Conforming source replacement changes no portable owners | `T2.3`, `T6.6`, `T10.8` | Mock/fixture-source substitution compile and graph comparison | pending |
-| `SA-AC-027` — Missing GiftUI behavior fails configuration without reduced UI | `T6.6`, `T7.1`, `T10.8` | Each-required-facility negative and zero-publication transcript | pending |
-| `SA-AC-028` — Host-owned observation and adapter sink installation | `T3.2`, `T6.1`-`T6.5`, `T6.7`, `T6.8`, `T10.8` | Construction/start/stop/teardown owner-call ledger | pending |
-| `SA-AC-029` — Exact `1/32/1` fact capacities and first-excess rejection | `T5.1`, `T6.1`, `T7.4`, `T10.8` | 28/32/33 ordinary, snapshot 1/2, reserved 1/2 corpus | pending |
-| `SA-AC-030` — Nonzero monotonic sequence and ordered at-most-once application | `T5.1`, `T5.3`, `T10.8` | Cross-storage seal/apply/post-seal/exhaustion transcript | pending |
-| `SA-AC-031` — Exact revisioned mutation replay and mismatch containment | `T1.3`, `T2.2`, `T3.3`, `T7.1`, `T10.8` | Full replay, malformed/mismatch, unchanged-model, restart corpus | pending |
-| `SA-AC-032` — One portable `@State` identity across reconstruction/profiles | `T4.1`, `T5.2`, `T6.2`, `T6.3`, `T10.5`, `T10.6`, `T10.8` | Source compile plus dynamic/static identity transcript | pending |
-| `SA-AC-033` — Exact replacement/removal/reinsertion lifecycle | `T5.2`, `T10.2`, `T10.5`, `T10.6`, `T10.8` | Shared dynamic/static lifecycle matrix | pending |
-| `SA-AC-034` — Deterministic bounded observable failures without alias/fallback | `T5.2`, `T5.3`, `T7.1`, `T10.2`, `T10.5`, `T10.6`, `T10.8` | Capacity/identity/stale/phase/generation fault matrix | pending |
-| `SA-AC-035` — Twenty reports coalesce while facts and semantic publication remain complete | `T5.1`, `T5.3`, `T7.4`, `T10.5`, `T10.6`, `T10.8` | Twenty-update dirty/wake/publication high-water transcript | pending |
-| `SA-AC-036` — Button callback becomes later fact; executor realizations agree | `T3.1`, `T5.3`, `T5.4`, `T10.5`, `T10.6`, `T10.8` | Reentrancy poison and normalized executor-equivalence transcript | pending |
-| `SA-AC-037` — Six qualified actions and total noncapturing handler | `T3.1`, `T4.2`, `T5.4`, `T9.1`, `T10.8` | Four-profile compile, source audit, and six-case dispatch transcript | pending |
-| `SA-AC-038` — Replacement cancels in-flight dispatch; failed replacement preserves old target | `T5.2`, `T5.4`, `T10.2`, `T10.5`, `T10.6`, `T10.8` | Down/admission/replacement interleaving corpus | pending |
-| `SA-AC-039` — Embedded typed model/storage/facility/resource evidence | `T5.2`, `T6.5`, `T6.8`, `T7.4`, `T10.1`, `T10.4`, `T10.6`, `T10.7`, `T10.8` | Generated source, address/layout, forbidden-symbol, timing, RAM/flash/stack reports | pending |
-| `SA-AC-040` — Total normalization, mandatory effects, residual policy, and diagnostic independence | `T3.4`, `T7.1`, `T10.2`, `T10.5`, `T10.6`, `T10.8` | Exhaustive outcome/effect/policy/projection matrix | pending |
-| `SA-AC-041` — Complete 96-byte UTF-8 diagnostic and BoundedText matrix | `T1.1`, `T3.4`, `T9.2`, `T10.8` | Dynamic/static construction, borrow, projection, allocation transcript | pending |
-| `SA-AC-042` — Exact wrapping CH4 vectors in every profile/host | `T2.3`, `T6.2`-`T6.5`, `T9.2`, `T10.8` | Two golden vectors and four normalized host traces | pending |
-| `SA-AC-043` — Capture revision exhaustion terminal procedure | `T1.3`, `T2.2`, `T3.4`, `T7.1`, `T7.3`, `T10.8` | `UInt32.max - 1/max`, reserved fact, no-policy, quiesce/rebuild transcript | pending |
-| `SA-AC-044` — Operational failure structurally contains only failure fact plus semantic diagnostic | `T3.1`, `T3.4`, `T5.1`, `T9.1`, `T10.8` | Positive API/layout and negative construction/generated-storage fixtures | pending |
-| `SA-AC-045` — Exact SPEC-015 workload/preset/report equality | `T4.3`, `T6.1`-`T6.5`, `T6.7`, `T6.8`, `T7.4`, `T10.1`, `T10.3`, `T10.4`, `T10.8` | Descriptor, generated manifest, limits, assembly, extent/region/bounds comparison | pending |
+| `SA-AC-001` — Complete feature and authority traceability | `T0.1`, `T9.4`, `T10.8`, `T11.6`, `T11.8` | Governance, manifest, status, and reciprocal-link audit | prior conformance retained; cleanup pending |
+| `SA-AC-002` — Logical Domain/Data/Presentation/host graph and inward dependencies | `T0.2`, `T0.5`, `T1.4`, `T6.1`, `T9.1`, `T10.1`, `T10.4`, `T10.7`, `T10.8`, `T11.6`, `T11.8` | Package graph, imports, interfaces, generated graph report | prior conformance retained; cleanup pending |
+| `SA-AC-003` — Domain excludes UI/backend/platform/timing/hardware APIs | `T0.2`, `T0.5`, `T1.4`, `T9.1`, `T10.1`, `T10.7`, `T10.8`, `T11.6`, `T11.8` | Source/import/symbol negative scans in every profile | prior conformance retained; cleanup pending |
+| `SA-AC-004` — Presentation excludes Data/platform/timing/renderer/display/hardware APIs | `T0.2`, `T0.5`, `T4.4`, `T9.1`, `T10.1`, `T10.7`, `T10.8`, `T11.6`, `T11.8` | Import and dependency negative fixtures | prior conformance retained; cleanup pending |
+| `SA-AC-005` — Complete visible screen surface | `T4.1`-`T4.3`, `T6.2`-`T6.5`, `T6.7`, `T6.8`, `T7.6`, `T7.7`, `T7.9`, `T8.1`, `T8.2`, `T10.3`, `T10.4`, `T10.8`, `T11.3`, `T11.4`, `T11.6`, `T11.7`, `T11.8` | Semantic hierarchy transcript, reviewed host-frame images and exact pixels, and connected display evidence | prior conformance retained; cleanup pending |
+| `SA-AC-006` — Fixed explicit portable composition shared by four configurations | `T4.1`, `T4.4`, `T6.2`-`T6.5`, `T10.4`, `T10.7`, `T10.8`, `T11.3`, `T11.4`, `T11.6`, `T11.8` | Source identity/hash, compile, and hierarchy comparison | prior conformance retained; cleanup pending |
+| `SA-AC-007` — Revisioned current-value sink registration, replacement, detach, and bounded returns | `T1.3`, `T2.2`, `T3.2`, `T10.8`, `T11.1`, `T11.2`, `T11.6`, `T11.8` | Ordered callback/outcome and lifetime transcript | prior conformance retained; cleanup pending |
+| `SA-AC-008` — Synchronous application delivery and distinct GiftUI mutation without portable concurrency facilities | `T1.4`, `T2.2`, `T3.2`, `T5.3`, `T9.1`, `T10.5`, `T10.6`, `T10.8`, `T11.1`, `T11.2`, `T11.6`, `T11.8` | Same-thread/distinct-executor transcript and forbidden-facility scans | prior conformance retained; cleanup pending |
+| `SA-AC-009` — Complete acquisition action state table | `T2.2`, `T2.3`, `T10.8`, `T11.1`, `T11.2`, `T11.6`, `T11.7`, `T11.8` | State/publication/source-generation matrix | prior conformance retained; cleanup pending |
+| `SA-AC-010` — Clear resets epoch/history, preserves state/levels, rebases, and publishes once | `T1.3`, `T2.1`, `T2.2`, `T3.3`, `T10.8`, `T11.6`, `T11.8` | Idle/running/stopped/failed clear and mutation replay corpus | prior conformance retained; cleanup pending |
+| `SA-AC-011` — 80 transitions/second for 30 seconds without loss or duplication | `T2.4`, `T7.4`, `T10.8`, `T11.6`, `T11.8` | Timestamped 2,400-event sustained-workload transcript | prior conformance retained; cleanup pending |
+| `SA-AC-012` — Static 2,404-entry transition storage and four baselines | `T1.2`, `T2.1`, `T6.3`, `T6.5`, `T7.4`, `T10.8`, `T11.6`, `T11.8` | Static layout, high-water, boundary, map, and ELF reports | prior conformance retained; cleanup pending |
+| `SA-AC-013` — Oldest-first trimming/overflow with correct lower-bound levels | `T1.2`, `T2.1`, `T10.8`, `T11.6`, `T11.8` | Time/capacity boundary and reconstruction corpus | prior conformance retained; cleanup pending |
+| `SA-AC-014` — Stable ordering and specified invalid/out-of-horizon behavior | `T2.1`, `T2.2`, `T10.8`, `T11.6`, `T11.8` | Equal/out-of-order/invalid/horizon transcript | prior conformance retained; cleanup pending |
+| `SA-AC-015` — Exact deterministic four-channel source and stale-event prevention | `T2.3`, `T10.8`, `T11.1`, `T11.6`, `T11.7`, `T11.8` | Pattern, restart, cancellation, and teardown corpus | prior conformance retained; cleanup pending |
+| `SA-AC-016` — Initial state and mutation-phase-only observable changes/reports | `T3.1`, `T3.3`, `T5.2`, `T5.3`, `T10.5`, `T10.6`, `T10.8`, `T11.6`, `T11.8` | Initial/materialization/fact/action/change-report transcript | prior conformance retained; cleanup pending |
+| `SA-AC-017` — Exact control enabled/disabled behavior | `T3.1`, `T4.2`, `T10.8`, `T11.4`, `T11.6`, `T11.8` | Four-state control matrix and semantic transcript | prior conformance retained; cleanup pending |
+| `SA-AC-018` — Exact 1/2/5-second visible ranges | `T3.1`, `T4.3`, `T10.8`, `T11.4`, `T11.6`, `T11.8` | Boundary and golden range corpus | prior conformance retained; cleanup pending |
+| `SA-AC-019` — Baseline-correct continuous waveform mapping | `T4.3`, `T10.3`, `T10.8`, `T11.4`, `T11.6`, `T11.8` | Path point/subpath transcript at range/retention edges | prior conformance retained; cleanup pending |
+| `SA-AC-020` — Ruler formatting and 11-plus-one grid | `T4.3`, `T10.8`, `T11.4`, `T11.6`, `T11.8` | Text bytes and normalized Drawing operation transcript | prior conformance retained; cleanup pending |
+| `SA-AC-021` — Consistent latest state at 250 ms without per-event frames | `T5.3`, `T7.4`, `T10.5`, `T10.6`, `T10.8`, `T11.6`, `T11.8` | Admission/application/publication/frame timeline and cadence report | prior conformance retained; cleanup pending |
+| `SA-AC-022` — macOS dynamic and static deterministic execution | `T6.2`, `T6.3`, `T9.2`, `T10.3`, `T10.7`, `T10.8`, `T11.5`, `T11.6`, `T11.8` | Two host-execution reports and normalized equivalence | prior conformance retained; cleanup pending |
+| `SA-AC-023` — Raspberry Pi framebuffer/PiScreen display and input | `T6.4`, `T6.7`, `T7.6`, `T7.7`, `T7.8`, `T7.9`, `T8.1`, `T10.3`, `T10.5`, `T10.8`, `T11.5`, `T11.6`, `T11.7`, `T11.8` | ARMv6 cross-build, host rehearsal, and separately labeled connected-target transcript | prior conformance retained; cleanup pending |
+| `SA-AC-024` — nRF52840 static TFT display and input | `T6.5`, `T6.8`, `T7.6`, `T7.7`, `T7.8`, `T7.9`, `T8.2`, `T10.3`, `T10.4`, `T10.6`, `T10.8`, `T11.5`, `T11.6`, `T11.7`, `T11.8` | ELF inspection, host rehearsal, and separately labeled connected-target transcript | prior conformance retained; cleanup pending |
+| `SA-AC-025` — nRF binary/RAM/storage/drawing/stack fit evidence | `T6.5`, `T6.8`, `T7.4`, `T8.2`, `T10.4`, `T10.6`, `T10.8`, `T11.3`, `T11.4`, `T11.5`, `T11.6`, `T11.7`, `T11.8` | Link map, ELF, stack/high-water, workspace, and run report | prior conformance retained; cleanup pending |
+| `SA-AC-026` — Conforming source replacement changes no portable owners | `T2.3`, `T6.6`, `T10.8`, `T11.6`, `T11.8` | Mock/fixture-source substitution compile and graph comparison | prior conformance retained; cleanup pending |
+| `SA-AC-027` — Missing GiftUI behavior fails configuration without reduced UI | `T6.6`, `T7.1`, `T10.8`, `T11.6`, `T11.8` | Each-required-facility negative and zero-publication transcript | prior conformance retained; cleanup pending |
+| `SA-AC-028` — Host-owned observation and adapter sink installation | `T3.2`, `T6.1`-`T6.5`, `T6.7`, `T6.8`, `T10.8`, `T11.2`, `T11.6`, `T11.8` | Construction/start/stop/teardown owner-call ledger | prior conformance retained; cleanup pending |
+| `SA-AC-029` — Exact `1/32/1` fact capacities and first-excess rejection | `T5.1`, `T6.1`, `T7.4`, `T10.8`, `T11.6`, `T11.8` | 28/32/33 ordinary, snapshot 1/2, reserved 1/2 corpus | prior conformance retained; cleanup pending |
+| `SA-AC-030` — Nonzero monotonic sequence and ordered at-most-once application | `T5.1`, `T5.3`, `T10.8`, `T11.2`, `T11.6`, `T11.8` | Cross-storage seal/apply/post-seal/exhaustion transcript | prior conformance retained; cleanup pending |
+| `SA-AC-031` — Exact revisioned mutation replay and mismatch containment | `T1.3`, `T2.2`, `T3.3`, `T7.1`, `T10.8`, `T11.6`, `T11.8` | Full replay, malformed/mismatch, unchanged-model, restart corpus | prior conformance retained; cleanup pending |
+| `SA-AC-032` — One portable `@State` identity across reconstruction/profiles | `T4.1`, `T5.2`, `T6.2`, `T6.3`, `T10.5`, `T10.6`, `T10.8`, `T11.6`, `T11.8` | Source compile plus dynamic/static identity transcript | prior conformance retained; cleanup pending |
+| `SA-AC-033` — Exact replacement/removal/reinsertion lifecycle | `T5.2`, `T10.2`, `T10.5`, `T10.6`, `T10.8`, `T11.6`, `T11.8` | Shared dynamic/static lifecycle matrix | prior conformance retained; cleanup pending |
+| `SA-AC-034` — Deterministic bounded observable failures without alias/fallback | `T5.2`, `T5.3`, `T7.1`, `T10.2`, `T10.5`, `T10.6`, `T10.8`, `T11.6`, `T11.8` | Capacity/identity/stale/phase/generation fault matrix | prior conformance retained; cleanup pending |
+| `SA-AC-035` — Twenty reports coalesce while facts and semantic publication remain complete | `T5.1`, `T5.3`, `T7.4`, `T10.5`, `T10.6`, `T10.8`, `T11.6`, `T11.8` | Twenty-update dirty/wake/publication high-water transcript | prior conformance retained; cleanup pending |
+| `SA-AC-036` — Button callback becomes later fact; executor realizations agree | `T3.1`, `T5.3`, `T5.4`, `T10.5`, `T10.6`, `T10.8`, `T11.2`, `T11.6`, `T11.8` | Reentrancy poison and normalized executor-equivalence transcript | prior conformance retained; cleanup pending |
+| `SA-AC-037` — Six qualified actions and total noncapturing handler | `T3.1`, `T4.2`, `T5.4`, `T9.1`, `T10.8`, `T11.6`, `T11.8` | Four-profile compile, source audit, and six-case dispatch transcript | prior conformance retained; cleanup pending |
+| `SA-AC-038` — Replacement cancels in-flight dispatch; failed replacement preserves old target | `T5.2`, `T5.4`, `T10.2`, `T10.5`, `T10.6`, `T10.8`, `T11.6`, `T11.8` | Down/admission/replacement interleaving corpus | prior conformance retained; cleanup pending |
+| `SA-AC-039` — Embedded typed model/storage/facility/resource evidence | `T5.2`, `T6.5`, `T6.8`, `T7.4`, `T10.1`, `T10.4`, `T10.6`, `T10.7`, `T10.8`, `T11.3`, `T11.4`, `T11.5`, `T11.6`, `T11.7`, `T11.8` | Generated source, address/layout, forbidden-symbol, timing, RAM/flash/stack reports | prior conformance retained; cleanup pending |
+| `SA-AC-040` — Total normalization, mandatory effects, residual policy, and diagnostic independence | `T3.4`, `T7.1`, `T10.2`, `T10.5`, `T10.6`, `T10.8`, `T11.2`, `T11.6`, `T11.8` | Exhaustive outcome/effect/policy/projection matrix | prior conformance retained; cleanup pending |
+| `SA-AC-041` — Complete 96-byte UTF-8 diagnostic and BoundedText matrix | `T1.1`, `T3.4`, `T9.2`, `T10.8`, `T11.3`, `T11.4`, `T11.6`, `T11.8` | Dynamic/static construction, borrow, projection, allocation transcript | prior conformance retained; cleanup pending |
+| `SA-AC-042` — Exact wrapping CH4 vectors in every profile/host | `T2.3`, `T6.2`-`T6.5`, `T9.2`, `T10.8`, `T11.6`, `T11.8` | Two golden vectors and four normalized host traces | prior conformance retained; cleanup pending |
+| `SA-AC-043` — Capture revision exhaustion terminal procedure | `T1.3`, `T2.2`, `T3.4`, `T7.1`, `T7.3`, `T10.8`, `T11.1`, `T11.2`, `T11.6`, `T11.7`, `T11.8` | `UInt32.max - 1/max`, reserved fact, no-policy, quiesce/rebuild transcript | prior conformance retained; cleanup pending |
+| `SA-AC-044` — Operational failure structurally contains only failure fact plus semantic diagnostic | `T3.1`, `T3.4`, `T5.1`, `T9.1`, `T10.8`, `T11.6`, `T11.8` | Positive API/layout and negative construction/generated-storage fixtures | prior conformance retained; cleanup pending |
+| `SA-AC-045` — Exact SPEC-015 workload/preset/report equality | `T4.3`, `T6.1`-`T6.5`, `T6.7`, `T6.8`, `T7.4`, `T10.1`, `T10.3`, `T10.4`, `T10.8`, `T11.3`, `T11.4`, `T11.5`, `T11.6`, `T11.8` | Descriptor, generated manifest, limits, assembly, extent/region/bounds comparison | prior conformance retained; cleanup pending |
 
 ## Milestones and Tasks
 
@@ -2897,3 +2899,35 @@ Earlier open-gate statements below describe the pre-approval history.
 Connected task completion means approved exception disposition, with remaining
 measurements and evidence assigned to the linked Future Work. It does not mean
 the previously missing corpus was executed.
+
+## Iteration 2 maintenance readiness and scope
+
+[Approved scope](../iterations/iteration-002-cleanup.md) and [coordination plan](../iterations/iteration-002-cleanup/implementation-plan.md) govern this post-MVP maintenance. No new major implementation or Spec amendment is selected here. Existing authority/complete criterion mappings are retained; added tasks map in the original acceptance matrix, with pending entries in the task-evidence ledger. A new contract, owner/profile semantic or required resource bound must return upstream before affected work proceeds.
+
+### Milestone 11: Iteration 2 application and evidence maintenance
+
+**Entry conditions:** Approved iteration revision 7, current implemented Specification and its accepted authority chain; exact task dependencies below. Repository tooling protection is required before overlapping gate writers.
+
+**Exit evidence:** Each added task has current maintained checks, immutable evidence and a verified disposition. Experimental records are supporting context only; prior reports are not relabelled as cleanup passes.
+
+- [ ] `T11.1` — Correct callback-capable source startup. Inspect `Sources/SignalAnalyzerData/DefaultSignalAcquisitionRepository.swift`, the real deterministic source and existing acquisition/lifecycle suites. Preserve terminal state raised during `source.start`, stop partial activation and avoid subsequent ordinary running/failure publication. Add real-source max/max-minus-one and callback-then-throw tests, including normal Start/Stop/restart/Clear and terminal replay/rejection. Preserve specified failure precedence and last capture; do not add a new lifecycle contract. Dependencies: approved I2-01 and current SPEC-001. Exit: maintained reproduction/regression transcript and focused passing suites.
+
+- [ ] `T11.2` — Validate the corrected startup through the application/host seams. Depend on T11.1. Exercise admission of one exact terminal fact, no ordinary state duplicate, no mutation reentry, source quiescence and fresh graph requirement; retain successful lifecycle behavior. Compare the Pi/macOS Data realization with the corresponding nRF callback/start path before deciding any target correction is needed. Run focused adapter/native lifecycle checks and affected SPEC-001 profiles. Exit: current callback/source/admission/host observations with target-specific limits; do not label the original host reproduction an nRF defect.
+
+- [ ] `T11.3` — Migrate startup text probes to the common Layout owner before retiring the two duplicate text-measure/place fragments. Follow Step 13 coverage: startup-sized title, empty/CR/LF, wrapping/clipping/overflow, exact/first-excess line/glyph storage, invalid region/index, codec append/readback, reset invalidation, failure cleanup and repeated success. Update firmware `StaticPreset.swift`, CMake/native consumers and the semantic-region comparison oracle together; shared algorithms must not be replaced by target-local expectations. Run native full-layout/Drawing and focused text/codec suites. Build a matched before/after nRF pair: no flash/RAM growth, unchanged stack reservations, VFP/disabled-heap/forbidden-symbol gates. Depend on current SPEC-007/013 seams; no new owner or contract. Connected startup proof is T11.7. Exit: migrated coverage and paired artifact packet.
+
+- [ ] `T11.4` — Replace patch-in-place topology updates with maintained clean generation. Inspect the existing generator, registered normal/diagnostic projections and freshness checks. Introduce explicit codec/scaffold templates and binding policy as reviewed tooling inputs, not a new runtime representation. Adapt SPIKE-011 evidence through normal review rather than copying its assertions as production authority. Produce both complete outputs from two empty directories, compare exact bytes and all 42 maintained semantic cases, test malformed/stale/unsupported inputs and fail before partial publication. Verify deterministic regeneration/check mode and explicit runner registration for any new check. Matched generator-only linked flash/RAM delta must be zero. Retain packed storage, specialized policy and current model writers; record partial CBR-002 outcome. Dependencies: current projection/codec contracts; compare artifacts before retention or unrelated size changes. Exit: generator/input/parity/refusal/freshness packet.
+
+- [ ] `T11.5` — Correct artifact compiler/SDK report identity in `scripts/contracts/run-spec-001.sh` and its maintained metadata fixtures. Record the Pi cross-build compiler from the paired project-local route, distinguish native checks and preserve accurate other-profile identities. Exercise differing default/paired compiler versions and verify report schema consumers, parent/child/artifact links and actual build output. Historical evidence remains immutable. Depend on existing build identity interfaces; real final-run verification waits for coordinator TOOL-01 and T11.6. Exit: metadata regression and profile fixture packet; compiler labels do not claim connected conformance.
+
+- [ ] `T11.6` — Run fresh combined maintenance integration under current approved contracts. Depend on T11.1–T11.5, SPEC-011 T10.3, SPEC-013 T10.3 and coordination TOOL-01/02. Format maintained Swift; run focused checks followed by `scripts/test.sh all-hardware-free`, retaining exact invocation/child IDs, source/fixture/compiler/SDK/artifact identities, ABI/heap/dependency and matched resource observations. Review all 45 criteria against their existing conformance dispositions: aggregate success does not change connected/timing exceptions. If retention is unapproved, explicitly label this a 30s-contract maintenance packet; a later approved retention change requires newly derived tasks and affected combined revalidation. Exit: immutable fresh integration packet with failures/limits preserved.
+
+- [ ] `T11.7` — Collect only the scope-required changed-path connected regressions after inspected current artifacts from T11.6. Use standing maintainer hardware authorization, supported Pi/nRF skills and the existing connected-host design; verify current armv6l/J-Link/board and artifact identity. Bound startup, Start/Stop and 1/2/5s-window observations, source/capture/baseline and fault/cleanup records; record software versus physical provenance and teardown. Pi covers changed acquisition, nRF covers changed startup/build paths; extend retention checks only after its approved implementation tasks exist. Do not infer complete independent pixels, exact-once/physical corpus, whole-stack bound or 80-event/s wall-time success. Hardware unavailability blocks the task, requiring an explicit criterion disposition. Exit: identified focused packet with current timing/resource limits and final state.
+
+- [ ] `T11.8` — Reconcile the application cleanup and conformance evidence. Depend on T11.6/T11.7 or specific approved exceptions for missing changed-path evidence. Add new per-criterion observations to the conformance record without rewriting previous raw results or increasing MVP exceptions by inference. Update CBR-007/003/008 outcomes only to the extent verified; record partial CBR-002 and remaining mappings. Keep every task ledger, source/design link and reproduction command current. Hand the evidence to coordination FINAL-01; this task cannot close the iteration while I2-09 or another selected result is unmet. No Specification lifecycle transition follows automatically. Exit: complete task/criterion disposition and handoff packet.
+
+### Cleanup design notes, risks and completion
+
+Update an existing focused owner design only when the new implementation changes its explanation; local mechanical corrections need no new note. Complex source-list or generator template/policy mechanisms may warrant a focused clarification under existing contracts. The coordination plan defines all-profile and separately bounded connected ordering, current blockers and deferred boundaries. Missing retention approvals do not block independent maintenance but prevent retention production and final iteration closure.
+
+All added tasks are pending. Original completed ledger entries and historical raw evidence remain unchanged. Update this milestone, the task ledger and affected conformance/design links together as execution progresses; do not advance a Specification or close an iteration through plan completion alone.

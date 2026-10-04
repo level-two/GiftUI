@@ -2,11 +2,11 @@
 spec: SPEC-013
 feature: giftui-mvp-architecture
 title: SPEC-013 Implementation Plan
-status: completed
+status: ready
 owners:
   - codex
 created: 2026-09-09
-updated: 2026-10-03
+updated: 2026-10-04
 related_design_notes:
   - ../implementation-designs/spec-013-common-coordinator-and-cleanup.md
   - ../implementation-designs/spec-013-storage-audit-and-overlay-ownership.md
@@ -24,6 +24,8 @@ superseded_by: null
 ---
 
 # SPEC-013 Implementation Plan
+
+**Current maintenance readiness — 2026-10-04:** [ITERATION-002 revision 7](../iterations/iteration-002-cleanup.md) is explicitly approved. Milestone 10 below adds ready contract-preserving cleanup tasks; implementation has not started. All original milestones, task dispositions and conformance history are retained. The Specification remains `implemented`; this plan update does not reopen its approval or change its contract. [Delivery coordination](../iterations/iteration-002-cleanup/implementation-plan.md) owns cross-plan/tooling dependencies. Retention production tasks remain behind the separate upstream gates. Earlier status statements and matrix baseline evidence are historical; new cleanup task evidence is pending.
 
 > Milestones 0–8 retain their historical dispositions. The maintainer approved
 > the SPEC-013/SPEC-015 amendments on 2026-10-02. The new Milestone 9 remains
@@ -175,21 +177,21 @@ exactly once below.
 
 | Criterion | Implementation tasks | Evidence | Status |
 | --- | --- | --- | --- |
-| `RP-001` — Both runtime targets use one portable root and focused owners without sibling/backend imports | `T0.2`, `T3.5`, `T4.6`, `T8.1`, `T9.1`, `T9.3`, `T9.4` | Package graph, source-import audit, same-root positive compile, and forbidden-import negatives | pending |
-| `RP-002` — One successful audit accounts exactly for every correctness store and configured render-workspace capacity | `T1.2`-`T1.4`, `T3.2`, `T4.2`, `T6.1`, `T9.3`, `T9.4` | Field ownership registry, four-field capacity equality, exact byte reports, checked-total tests, and overlap/overlay audit | pending |
-| `RP-003` — Invalid configurations and static tables fail before client/endpoint use | `T1.1`-`T1.5`, `T4.3`, `T6.2`, `T9.4` | Ordered startup-failure and exact SPEC-003 mapping corpus with poisoned client, callback, policy, and endpoint probes | pending |
-| `RP-004` — Exact stage order, pre-body binding, Canvas release, and cleanup rows | `T2.1`-`T2.4`, `T5.1`-`T5.5`, `T6.3`, `T9.1`, `T9.2`, `T9.4` | Stage transcript, injected-failure cleanup matrix, and release/finalization counters | pending |
-| `RP-005` — Value-equal cross-profile semantic through disposition transcripts | `T0.1`, `T5.5`, `T6.6`, `T7.4`, `T9.2`, `T9.4` | Canonical tagged transcripts and zero-tolerance differential comparison | pending |
-| `RP-006` — Exact-limit success and deterministic first-excess for every store | `T3.2`, `T4.2`, `T6.1`, `T9.4` | Table-driven boundary corpus and high-water reports for every storage family | pending |
-| `RP-007` — Failed derivation never replays effects and clears attempt/candidate storage | `T2.3`, `T3.3`, `T4.4`, `T6.3`, `T9.1`, `T9.2`, `T9.4` | Replay-poisoning scripts, mutation counters, reset counters, and residual-state audit | pending |
-| `RP-008` — Accepted handoff alone commits routing | `T2.2`, `T5.4`, `T6.4`, `T9.2`, `T9.4` | Accepted/refused/failed offer matrix with prior/candidate routing snapshots | pending |
-| `RP-009` — Refusal recovery retains only constant-space presentation intent | `T2.2`, `T3.3`, `T4.4`, `T6.4`, `T9.4` | Repeated-refusal high-water, pending-intent, and no-retained-payload evidence | pending |
-| `RP-010` — Static generation, complete callable dispatch, destruction, zero allocation, and forbidden-facility exclusion | `T4.1`-`T4.6`, `T6.5`, `T7.2`-`T7.3`, `T9.3`, `T9.4` | Typed-source negatives, table coverage, capture destruction, allocation, symbol, SIL, and ELF reports | pending |
-| `RP-011` — Dynamic conveniences stay outside `GiftUI` and preserve portable results | `T3.4`, `T6.6`, `T8.1`, `T9.4` | Product/import audit and baseline-versus-convenience transcript comparison | pending |
-| `RP-012` — Dependency, typed-source, borrow-poisoning, and generated coverage tests pass | `T0.2`, `T4.3`, `T6.5`, `T8.1`, `T9.3`, `T9.4` | Negative compile suite, lifetime probes, exact generated-case coverage, and graph checks | pending |
-| `RP-013` — Reproducible resource and timing evidence under pinned toolchains | `T7.1`-`T7.5`, `T8.3`, `T9.3`, `T9.4` | Two pristine builds per profile with compiler/SDK/target, stack, allocation, section, timing, and digest reports | pending |
-| `RP-014` — Interaction binds the exact publishable target generation and discards candidate-only generations | `T5.3`-`T5.4`, `T6.3`-`T6.4`, `T9.2`, `T9.4` | Initial/replacement/discard generation transcripts and committed-state preservation checks | pending |
-| `RP-015` — Exact focused owner failures survive generic carrier, mapping, cleanup, and comparison | `T1.5`, `T2.4`, `T5.5`, `T6.3`, `T6.6`, `T9.1`, `T9.2`, `T9.3`, `T9.4` | 2-byte layout proof, per-owner injected failure corpus, correlated fact/disposition records, and differential report | pending |
+| `RP-001` — Both runtime targets use one portable root and focused owners without sibling/backend imports | `T0.2`, `T3.5`, `T4.6`, `T8.1`, `T9.1`, `T9.3`, `T9.4`, `T10.1`, `T10.2`, `T10.3` | Package graph, source-import audit, same-root positive compile, and forbidden-import negatives | prior conformance retained; cleanup pending |
+| `RP-002` — One successful audit accounts exactly for every correctness store and configured render-workspace capacity | `T1.2`-`T1.4`, `T3.2`, `T4.2`, `T6.1`, `T9.3`, `T9.4`, `T10.2`, `T10.3` | Field ownership registry, four-field capacity equality, exact byte reports, checked-total tests, and overlap/overlay audit | prior conformance retained; cleanup pending |
+| `RP-003` — Invalid configurations and static tables fail before client/endpoint use | `T1.1`-`T1.5`, `T4.3`, `T6.2`, `T9.4`, `T10.1`, `T10.2`, `T10.3` | Ordered startup-failure and exact SPEC-003 mapping corpus with poisoned client, callback, policy, and endpoint probes | prior conformance retained; cleanup pending |
+| `RP-004` — Exact stage order, pre-body binding, Canvas release, and cleanup rows | `T2.1`-`T2.4`, `T5.1`-`T5.5`, `T6.3`, `T9.1`, `T9.2`, `T9.4`, `T10.2`, `T10.3` | Stage transcript, injected-failure cleanup matrix, and release/finalization counters | prior conformance retained; cleanup pending |
+| `RP-005` — Value-equal cross-profile semantic through disposition transcripts | `T0.1`, `T5.5`, `T6.6`, `T7.4`, `T9.2`, `T9.4`, `T10.2`, `T10.3` | Canonical tagged transcripts and zero-tolerance differential comparison | prior conformance retained; cleanup pending |
+| `RP-006` — Exact-limit success and deterministic first-excess for every store | `T3.2`, `T4.2`, `T6.1`, `T9.4`, `T10.2`, `T10.3` | Table-driven boundary corpus and high-water reports for every storage family | prior conformance retained; cleanup pending |
+| `RP-007` — Failed derivation never replays effects and clears attempt/candidate storage | `T2.3`, `T3.3`, `T4.4`, `T6.3`, `T9.1`, `T9.2`, `T9.4`, `T10.2`, `T10.3` | Replay-poisoning scripts, mutation counters, reset counters, and residual-state audit | prior conformance retained; cleanup pending |
+| `RP-008` — Accepted handoff alone commits routing | `T2.2`, `T5.4`, `T6.4`, `T9.2`, `T9.4`, `T10.2`, `T10.3` | Accepted/refused/failed offer matrix with prior/candidate routing snapshots | prior conformance retained; cleanup pending |
+| `RP-009` — Refusal recovery retains only constant-space presentation intent | `T2.2`, `T3.3`, `T4.4`, `T6.4`, `T9.4`, `T10.2`, `T10.3` | Repeated-refusal high-water, pending-intent, and no-retained-payload evidence | prior conformance retained; cleanup pending |
+| `RP-010` — Static generation, complete callable dispatch, destruction, zero allocation, and forbidden-facility exclusion | `T4.1`-`T4.6`, `T6.5`, `T7.2`-`T7.3`, `T9.3`, `T9.4`, `T10.1`, `T10.2`, `T10.3` | Typed-source negatives, table coverage, capture destruction, allocation, symbol, SIL, and ELF reports | prior conformance retained; cleanup pending |
+| `RP-011` — Dynamic conveniences stay outside `GiftUI` and preserve portable results | `T3.4`, `T6.6`, `T8.1`, `T9.4`, `T10.1`, `T10.3` | Product/import audit and baseline-versus-convenience transcript comparison | prior conformance retained; cleanup pending |
+| `RP-012` — Dependency, typed-source, borrow-poisoning, and generated coverage tests pass | `T0.2`, `T4.3`, `T6.5`, `T8.1`, `T9.3`, `T9.4`, `T10.1`, `T10.2`, `T10.3` | Negative compile suite, lifetime probes, exact generated-case coverage, and graph checks | prior conformance retained; cleanup pending |
+| `RP-013` — Reproducible resource and timing evidence under pinned toolchains | `T7.1`-`T7.5`, `T8.3`, `T9.3`, `T9.4`, `T10.2`, `T10.3` | Two pristine builds per profile with compiler/SDK/target, stack, allocation, section, timing, and digest reports | prior conformance retained; cleanup pending |
+| `RP-014` — Interaction binds the exact publishable target generation and discards candidate-only generations | `T5.3`-`T5.4`, `T6.3`-`T6.4`, `T9.2`, `T9.4`, `T10.2`, `T10.3` | Initial/replacement/discard generation transcripts and committed-state preservation checks | prior conformance retained; cleanup pending |
+| `RP-015` — Exact focused owner failures survive generic carrier, mapping, cleanup, and comparison | `T1.5`, `T2.4`, `T5.5`, `T6.3`, `T6.6`, `T9.1`, `T9.2`, `T9.3`, `T9.4`, `T10.2`, `T10.3` | 2-byte layout proof, per-owner injected failure corpus, correlated fact/disposition records, and differential report | prior conformance retained; cleanup pending |
 
 ## Milestones and Tasks
 
@@ -1087,3 +1089,31 @@ Every planned owner task, including the amendment tasks where applicable, has
 a completed disposition. The [72-check final gate](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/iteration-closeout-20261003/README.md) revalidates all four
 owner profiles and actual production joins. The plan is `completed`; no
 Specification `implemented` transition is performed by this reconciliation.
+
+## Iteration 2 maintenance readiness and scope
+
+[Approved scope](../iterations/iteration-002-cleanup.md) and [coordination plan](../iterations/iteration-002-cleanup/implementation-plan.md) govern this post-MVP maintenance. No new major implementation or Spec amendment is selected here. Existing authority/complete criterion mappings are retained; added tasks map in the original acceptance matrix, with pending dispositions recorded below. SPEC-013 has no pre-existing structured task-evidence manifest; its original task/evidence record remains in this plan. A new contract, owner/profile semantic or required resource bound must return upstream before affected work proceeds.
+
+### Milestone 10: Iteration 2 explicit Embedded source selection
+
+**Entry conditions:** Approved iteration revision 7, current implemented Specification and its accepted authority chain; exact task dependencies below. Repository tooling protection is required before overlapping gate writers.
+
+**Exit evidence:** Each added task has current maintained checks, immutable evidence and a verified disposition. Experimental records are supporting context only; prior reports are not relabelled as cleanup passes.
+
+- [ ] `T10.1` — Move exactly the 15 Step 15 outer Embedded guards into explicit build selection and remove the empty font-raster compatibility shell. Inspect `Package.swift`, firmware CMake and all direct/native compile consumers. Keep selected declarations in the Embedded closure and out of normal SwiftPM module surfaces; retain every nested/residual profile, resource, arithmetic, instrumentation and board guard. Update list consistency checks with source edits atomically, preserving all module owners/contracts. Depend on SPEC-001 T11.3 landing first for the final source-list integration. Exit: named-file before/after inventory and maintained source-selection checks.
+
+- [ ] `T10.2` — Validate the mechanical selection after T10.1. Compare manifest/CMake/native source sets, wrong-selection and forbidden-import/declaration negatives, native full-layout/Drawing/input/failure/reuse transcripts and paired selected firmware builds. Require unchanged linked flash/RAM for this isolated change, unchanged configured stack reservations, VFP ABI/disabled heaps and forbidden-symbol checks. Preserve current profile surface, exact capacities, failure cleanup and action-generation publication. Exercise both macOS profiles, Pi ARMv6 and nRF Static selections under current contracts. Exit: source/interface/behavior and paired artifact packet; unchanged sizes do not prove connected conformance.
+
+- [ ] `T10.3` — Run all four registered SPEC-013 profile drivers after T10.2 with current Interaction correction and source/generator integration. Respect coordinator TOOL-01 before overlapping outputs; retain exact owner/local error, cleanup, resource and symbolic profile evidence. Reconcile all fifteen criteria with previous conformance and add new source-selection observations without rewriting historical passes. Hand current results to SPEC-001 T11.6 and FINAL-01. Retention limits stay at the currently accepted contract until RET-03/04 supplies reviewed amendments and new tasks. Exit: current owner gate/criterion/ledger packet and explicit residual-guard disposition.
+
+### Cleanup design notes, risks and completion
+
+Update an existing focused owner design only when the new implementation changes its explanation; local mechanical corrections need no new note. Complex source-list or generator template/policy mechanisms may warrant a focused clarification under existing contracts. The coordination plan defines all-profile and separately bounded connected ordering, current blockers and deferred boundaries. Missing retention approvals do not block independent maintenance but prevent retention production and final iteration closure.
+
+All added tasks are pending. Original completed ledger entries and historical raw evidence remain unchanged. Update this milestone, the task disposition record and affected conformance/design links together as execution progresses; do not advance a Specification or close an iteration through plan completion alone.
+
+| Cleanup task | Disposition | Execution evidence |
+| --- | --- | --- |
+| T10.1 | pending | Not collected |
+| T10.2 | pending | Not collected |
+| T10.3 | pending | Not collected |

@@ -1,0 +1,311 @@
+{
+  "base_revision": "2a0bf0faa1c467be281e6c484bb7a806918a293f",
+  "checked_utc": "2026-10-04T21:38:58.210501+00:00",
+  "checks": {
+    "production_contracts_feature_stages_and_historical_evidence_unchanged": true,
+    "scope_approval_preserved": {
+      "revision": 7,
+      "status": "approved",
+      "approved_revision": 7
+    },
+    "concurrent_iteration_003_formatting_only": true,
+    "owner_plans": {
+      "SPEC-001": {
+        "status": "ready",
+        "criterion_count": 45,
+        "new_pending_tasks": [
+          "T11.1",
+          "T11.2",
+          "T11.3",
+          "T11.4",
+          "T11.5",
+          "T11.6",
+          "T11.7",
+          "T11.8"
+        ],
+        "historical_task_marks_unchanged": true,
+        "ledger": "existing structured ledger extended; original entries unchanged"
+      },
+      "SPEC-011": {
+        "status": "ready",
+        "criterion_count": 13,
+        "new_pending_tasks": [
+          "T10.1",
+          "T10.2",
+          "T10.3"
+        ],
+        "historical_task_marks_unchanged": true,
+        "ledger": "existing structured ledger extended; original entries unchanged"
+      },
+      "SPEC-013": {
+        "status": "ready",
+        "criterion_count": 15,
+        "new_pending_tasks": [
+          "T10.1",
+          "T10.2",
+          "T10.3"
+        ],
+        "historical_task_marks_unchanged": true,
+        "ledger": "existing plan task record retained; new pending disposition table"
+      }
+    },
+    "new_task_criterion_mappings": {
+      "SPEC-001": {
+        "T11.1": [
+          "SA-AC-007",
+          "SA-AC-008",
+          "SA-AC-009",
+          "SA-AC-015",
+          "SA-AC-043"
+        ],
+        "T11.2": [
+          "SA-AC-007",
+          "SA-AC-008",
+          "SA-AC-009",
+          "SA-AC-028",
+          "SA-AC-030",
+          "SA-AC-036",
+          "SA-AC-040",
+          "SA-AC-043"
+        ],
+        "T11.3": [
+          "SA-AC-005",
+          "SA-AC-006",
+          "SA-AC-025",
+          "SA-AC-039",
+          "SA-AC-041",
+          "SA-AC-045"
+        ],
+        "T11.4": [
+          "SA-AC-005",
+          "SA-AC-006",
+          "SA-AC-017",
+          "SA-AC-018",
+          "SA-AC-019",
+          "SA-AC-020",
+          "SA-AC-025",
+          "SA-AC-039",
+          "SA-AC-041",
+          "SA-AC-045"
+        ],
+        "T11.5": [
+          "SA-AC-022",
+          "SA-AC-023",
+          "SA-AC-024",
+          "SA-AC-025",
+          "SA-AC-039",
+          "SA-AC-045"
+        ],
+        "T11.6": [
+          "SA-AC-001",
+          "SA-AC-002",
+          "SA-AC-003",
+          "SA-AC-004",
+          "SA-AC-005",
+          "SA-AC-006",
+          "SA-AC-007",
+          "SA-AC-008",
+          "SA-AC-009",
+          "SA-AC-010",
+          "SA-AC-011",
+          "SA-AC-012",
+          "SA-AC-013",
+          "SA-AC-014",
+          "SA-AC-015",
+          "SA-AC-016",
+          "SA-AC-017",
+          "SA-AC-018",
+          "SA-AC-019",
+          "SA-AC-020",
+          "SA-AC-021",
+          "SA-AC-022",
+          "SA-AC-023",
+          "SA-AC-024",
+          "SA-AC-025",
+          "SA-AC-026",
+          "SA-AC-027",
+          "SA-AC-028",
+          "SA-AC-029",
+          "SA-AC-030",
+          "SA-AC-031",
+          "SA-AC-032",
+          "SA-AC-033",
+          "SA-AC-034",
+          "SA-AC-035",
+          "SA-AC-036",
+          "SA-AC-037",
+          "SA-AC-038",
+          "SA-AC-039",
+          "SA-AC-040",
+          "SA-AC-041",
+          "SA-AC-042",
+          "SA-AC-043",
+          "SA-AC-044",
+          "SA-AC-045"
+        ],
+        "T11.7": [
+          "SA-AC-005",
+          "SA-AC-009",
+          "SA-AC-015",
+          "SA-AC-023",
+          "SA-AC-024",
+          "SA-AC-025",
+          "SA-AC-039",
+          "SA-AC-043"
+        ],
+        "T11.8": [
+          "SA-AC-001",
+          "SA-AC-002",
+          "SA-AC-003",
+          "SA-AC-004",
+          "SA-AC-005",
+          "SA-AC-006",
+          "SA-AC-007",
+          "SA-AC-008",
+          "SA-AC-009",
+          "SA-AC-010",
+          "SA-AC-011",
+          "SA-AC-012",
+          "SA-AC-013",
+          "SA-AC-014",
+          "SA-AC-015",
+          "SA-AC-016",
+          "SA-AC-017",
+          "SA-AC-018",
+          "SA-AC-019",
+          "SA-AC-020",
+          "SA-AC-021",
+          "SA-AC-022",
+          "SA-AC-023",
+          "SA-AC-024",
+          "SA-AC-025",
+          "SA-AC-026",
+          "SA-AC-027",
+          "SA-AC-028",
+          "SA-AC-029",
+          "SA-AC-030",
+          "SA-AC-031",
+          "SA-AC-032",
+          "SA-AC-033",
+          "SA-AC-034",
+          "SA-AC-035",
+          "SA-AC-036",
+          "SA-AC-037",
+          "SA-AC-038",
+          "SA-AC-039",
+          "SA-AC-040",
+          "SA-AC-041",
+          "SA-AC-042",
+          "SA-AC-043",
+          "SA-AC-044",
+          "SA-AC-045"
+        ]
+      },
+      "SPEC-011": {
+        "T10.1": [
+          "IN-008",
+          "IN-009",
+          "IN-013"
+        ],
+        "T10.2": [
+          "IN-008",
+          "IN-009",
+          "IN-010",
+          "IN-013"
+        ],
+        "T10.3": [
+          "IN-008",
+          "IN-009",
+          "IN-010",
+          "IN-011",
+          "IN-012",
+          "IN-013"
+        ]
+      },
+      "SPEC-013": {
+        "T10.1": [
+          "RP-001",
+          "RP-003",
+          "RP-010",
+          "RP-011",
+          "RP-012"
+        ],
+        "T10.2": [
+          "RP-001",
+          "RP-002",
+          "RP-003",
+          "RP-004",
+          "RP-005",
+          "RP-006",
+          "RP-007",
+          "RP-008",
+          "RP-009",
+          "RP-010",
+          "RP-012",
+          "RP-013",
+          "RP-014",
+          "RP-015"
+        ],
+        "T10.3": [
+          "RP-001",
+          "RP-002",
+          "RP-003",
+          "RP-004",
+          "RP-005",
+          "RP-006",
+          "RP-007",
+          "RP-008",
+          "RP-009",
+          "RP-010",
+          "RP-011",
+          "RP-012",
+          "RP-013",
+          "RP-014",
+          "RP-015"
+        ]
+      }
+    },
+    "coordination": {
+      "scope_items": 9,
+      "iteration_criteria": 13,
+      "owner_tasks": 14,
+      "tooling_tasks": 2,
+      "upstream_retention_tasks": 4,
+      "closure_tasks": 1,
+      "retention_production_readiness": false
+    },
+    "local_links_verified": {
+      "paths": 304,
+      "anchors": 11
+    },
+    "immutable_baseline_archives": {
+      "docs/iterations/iteration-002-review/evidence/11-validation-logs.tar.gz": "b97efdfec757fdeaed82e542a12edde021fa47b49f16d9ea156c36857a1c60d8",
+      "experiments/spike-013-connected-host-followup/evidence/pi-logs.tar.gz": "fe8f624e432edf3c6d62c45f299996e943706f383c5137e1cd96fe96234a4037",
+      "experiments/spike-013-connected-host-followup/evidence/pi-aggregate-logs.tar.gz": "62f66b2217b698d8b4d0b2dc66740ee91f4a876b77d40af76f38d62f60dea761"
+    },
+    "governance": {
+      "exit_code": 0,
+      "output": "Authority graph validation passed: 170 nodes, 1705 edges.\nTask evidence validation passed: SPEC-001 all tasks (67 task(s)).\nTask evidence validation passed: SPEC-002 all tasks (32 task(s)).\nTask evidence validation passed: SPEC-003 all tasks (31 task(s)).\nTask evidence validation passed: SPEC-004 all tasks (30 task(s)).\nTask evidence validation passed: SPEC-005 all tasks (31 task(s)).\nTask evidence validation passed: SPEC-011 all tasks (52 task(s)).\nGovernance validation passed: 6 feature(s), 65 lifecycle artifact(s), 9 skill(s).\n"
+    },
+    "whitespace": {
+      "exit_code": 0,
+      "output": ""
+    }
+  },
+  "execution": "not started",
+  "connected_operations": "none",
+  "product_tests": "not rerun: plan and pending-ledger changes only",
+  "changed_document_sha256": {
+    "Tests/ContractFixtures/SPEC001/task-evidence.yaml": "ad75b3cd396b97040f9a9facaa1410308856955716e32de227af303f6f204df6",
+    "Tests/ContractFixtures/SPEC011/task-evidence.yaml": "494b2e548d3951680f3bc2dc36bfab577bc39ac84948611e1e5f1b11844d61e1",
+    "docs/implementation-plans/spec-001-implementation-plan.md": "3cc5d8e4f528b67d0b56b3c1120a186f14a1e5b5e54a30cbd059f26c0df1575c",
+    "docs/implementation-plans/spec-011-implementation-plan.md": "03159690a6accaa3dca2acca3571a81500215d2250b03aa85e5516cfc697fd10",
+    "docs/implementation-plans/spec-013-implementation-plan.md": "3548e9d8ad93a651b2bc2cb476ae27d0d4a4cdb5a3bc805173cc0daffb4a67a4",
+    "docs/iterations/iteration-002-cleanup.md": "d3a9de2a22f773edbe2d0e46dea56beaa8db6053d649c63b0161251ec911d81a",
+    "docs/iterations/iteration-002-review/README.md": "7d26205a7b5b276bf512e2b1beac5ff6a20f3257fb2a64cb9d5e3888f2c0fafd",
+    "docs/iterations/iteration-002-review/findings.md": "0ce29ebf163ad74ff444c9b9357ad686aadfffc0624d93064ca3d35057aecd87",
+    "docs/iterations/iteration-003-dev-ux-improvement.md": "6c0bc9be428d2d43e22cbc007e2497175f6f26bb9a4824dd4bbb8542d19f48c8",
+    "docs/iterations/iteration-002-cleanup/implementation-plan.md": "a92e8068c82fd5646734016a6e6f930c7e81f07f23c1eb92d282d4531a2fed62",
+    "docs/iterations/iteration-002-review/33-implementation-plan-derivation.md": "ccc811a56fd8c75036b78e996770419dd1fe7f669c7d5f1ccce8014e0d813f4c"
+  }
+}

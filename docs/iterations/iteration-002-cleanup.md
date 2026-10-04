@@ -190,8 +190,10 @@ before plan derivation. The remaining gates are explicit:
    is a product/architecture change from ADR-003's 30s history. Prepare the smallest
    coherent RFC amendment and successor ADR, then affected Specifications and a
    ready implementation plan. Do not edit accepted history into a new decision.
-4. After scope approval, derive task ordering and evidence mappings under the
-   governing Specs. This scope's milestones are not a replacement plan.
+4. [Delivery coordination and derived owner plans](iteration-002-cleanup/implementation-plan.md)
+   now record task ordering and evidence mappings under the governing Specs.
+   Maintenance plans are ready; retention production derivation remains gated.
+   This scope's milestones are not a replacement plan.
 5. If hardware is unavailable at validation time, leave the focused connected
    criteria unmet and report the blocker; obtain an explicit scoped exception or
    amendment before closure instead of asserting hardware-free equivalence.
@@ -230,6 +232,7 @@ and deferred revisit triggers. Record the maintainer's closure decision in
 
 ## References
 
+- [Iteration 2 delivery coordination plan](iteration-002-cleanup/implementation-plan.md)
 - [ITERATION-001: GiftUI MVP](iteration-001-mvp.md)
 - [Codebase Review Process](../engineering/CODEBASE_REVIEW.md)
 - [ADR-003: Transition-Based Bounded Capture](../adrs/adr-003-transition-based-bounded-capture.md)

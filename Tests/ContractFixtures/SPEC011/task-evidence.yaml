@@ -51,3 +51,27 @@ tasks:
   T9.3: { disposition: completed, requirements: [], implementation: [Sources/SignalAnalyzerRaspberryPiARMv6/main.swift, Sources/SignalAnalyzerPresetHarness/HardwareFreePresetRunner.swift], checks: [scripts/raspberry-pi/doctor.sh], profiles: [raspberry-pi-armv6], evidence: [Tests/ContractFixtures/SPEC001/Evidence/milestone-10/iteration-closeout-20261003/remaining-spec-transition-approval.md, Tests/ContractFixtures/SPEC001/Evidence/milestone-8/raspberry-pi-piscreen-attempt.md, Tests/ContractFixtures/SPEC001/Evidence/milestone-10/iteration-closeout-20261003/README.md, Tests/ContractFixtures/SPEC001/Evidence/milestone-10/iteration-closeout-20261003/gate-ledger.tsv, Tests/ContractFixtures/SPEC001/Evidence/milestone-10/iteration-closeout-20261003/measurements.json, Tests/ContractFixtures/SPEC001/Evidence/milestone-10/iteration-closeout-20261003/validation.tar.gz, Tests/ContractFixtures/SPEC001/Evidence/milestone-10/iteration-closeout-20261003/archive.sha256], blockers: [] }
   T9.4: { disposition: completed, requirements: [], implementation: [firmware/nrf52840/applications/signal-analyzer-static/src/StaticPreset.swift], checks: [scripts/contracts/run-spec-011.sh, scripts/validate-governance.rb], profiles: [], evidence: [Tests/ContractFixtures/SPEC001/Evidence/milestone-10/iteration-closeout-20261003/remaining-spec-transition-approval.md, Tests/ContractFixtures/SPEC001/Evidence/milestone-10/iteration-closeout-20261003/README.md, Tests/ContractFixtures/SPEC001/Evidence/milestone-10/iteration-closeout-20261003/gate-ledger.tsv, Tests/ContractFixtures/SPEC001/Evidence/milestone-10/iteration-closeout-20261003/measurements.json, Tests/ContractFixtures/SPEC001/Evidence/milestone-10/iteration-closeout-20261003/validation.tar.gz, Tests/ContractFixtures/SPEC001/Evidence/milestone-10/iteration-closeout-20261003/archive.sha256], blockers: [] }
   T9.5: { disposition: completed, requirements: [], implementation: [docs/conformance/spec-011-conformance.md], checks: [scripts/test.sh], profiles: [macos-dynamic, macos-static, raspberry-pi-armv6, nrf52840-embedded], evidence: [docs/conformance/spec-011-conformance.md], blockers: [] }
+  T10.1:
+    disposition: pending
+    requirements: ["IN-008", "IN-009", "IN-013"]
+    implementation: ["Sources/GiftUIInteraction/InteractionState.swift"]
+    checks: ["Tests/GiftUIInteractionTests/InteractionCandidateAppendTests.swift", "Tests/GiftUIInteractionTests/InteractionFailurePrecedenceTests.swift"]
+    profiles: ["macos-dynamic", "macos-static", "raspberry-pi-armv6", "nrf52840-embedded"]
+    evidence: []
+    blockers: []
+  T10.2:
+    disposition: pending
+    requirements: ["IN-008", "IN-009", "IN-010", "IN-013"]
+    implementation: ["Tests/ContractFixtures/SPEC011/candidates.yaml", "Tests/ContractFixtures/SPEC011/failures.yaml"]
+    checks: ["scripts/contracts/run-spec-011.sh"]
+    profiles: ["macos-dynamic", "macos-static", "raspberry-pi-armv6", "nrf52840-embedded"]
+    evidence: []
+    blockers: []
+  T10.3:
+    disposition: pending
+    requirements: ["IN-008", "IN-009", "IN-010", "IN-011", "IN-012", "IN-013"]
+    implementation: ["docs/conformance/spec-011-conformance.md", "Tests/ContractFixtures/SPEC011/task-evidence.yaml"]
+    checks: ["scripts/contracts/run-spec-011.sh", "scripts/contracts/check-target-dependencies.rb"]
+    profiles: ["macos-dynamic", "macos-static", "raspberry-pi-armv6", "nrf52840-embedded"]
+    evidence: []
+    blockers: []

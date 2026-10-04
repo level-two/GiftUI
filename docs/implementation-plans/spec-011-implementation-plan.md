@@ -2,11 +2,11 @@
 spec: SPEC-011
 feature: giftui-mvp-architecture
 title: SPEC-011 Implementation Plan
-status: completed
+status: ready
 owners:
   - codex
 created: 2026-09-09
-updated: 2026-10-03
+updated: 2026-10-04
 related_design_notes:
   - ../implementation-designs/spec-011-target-bound-dispatch.md
 conformance_report: ../conformance/spec-011-conformance.md
@@ -22,6 +22,8 @@ superseded_by: null
 ---
 
 # SPEC-011 Implementation Plan
+
+**Current maintenance readiness — 2026-10-04:** [ITERATION-002 revision 7](../iterations/iteration-002-cleanup.md) is explicitly approved. Milestone 10 below adds ready contract-preserving cleanup tasks; implementation has not started. All original milestones, task dispositions and conformance history are retained. The Specification remains `implemented`; this plan update does not reopen its approval or change its contract. [Delivery coordination](../iterations/iteration-002-cleanup/implementation-plan.md) owns cross-plan/tooling dependencies. Retention production tasks remain behind the separate upstream gates. Earlier status statements and matrix baseline evidence are historical; new cleanup task evidence is pending.
 
 **Current disposition — 2026-10-03:** The maintainer explicitly directed
 performance work to future iterations and closure of the remaining Specifications.
@@ -196,12 +198,12 @@ exactly once below.
 | `IN-005` — Identity/generation-only capture and cancellation of every invalid, stale, moved, disabled, removed, or rebound release | `T4.1`-`T4.4`, `T5.2`, `T8.2` | Capture-layout audit and complete gesture/commit interleaving transcript | pending |
 | `IN-006` — Replacement after down/admission invokes neither model; failed replacement preserves the former binding | `T5.1`-`T5.5`, `T7.2`, `T8.2` | Observable-target replacement/removal/failure dispatch corpus | pending |
 | `IN-007` — Valid activation dispatches once in SPEC-009 order to the borrowed current model and reports synchronously | `T5.2`-`T5.6`, `T7.4`, `T8.2` | Mutation-order, borrow-lifetime, exact-once handler, report, and later-fact transcript | pending |
-| `IN-008` — Exact candidate lifecycle and all-or-nothing commit/discard/refusal behavior | `T3.3`-`T3.6`, `T5.1`, `T5.2`, `T8.2` | State-machine, fault-injection, generation-reservation, offer, and atomic-publication corpus | pending |
-| `IN-009` — Exact error/cancellation precedence, mapping, mandatory effects, policy bounds, and no fallback/alias | `T3.5`, `T4.4`, `T5.4`, `T6.1`-`T6.4`, `T8.2` | Exhaustive individual/simultaneous failure matrix and diagnostic-isolation transcript | pending |
-| `IN-010` — Equal-limit dynamic/static results and zero static heap allocation | `T7.1`-`T7.3`, `T8.2`-`T8.4` | Normalized profile comparison and allocation interposer reports | pending |
-| `IN-011` — No forbidden Interaction imports/dependencies, reflection, unrestricted existential, or allocator | `T0.2`, `T3.2`, `T7.3`, `T8.4`, `T9.1` | Exact target graph, import-negative corpus, source/SIL/symbol/link-map audit | pending |
-| `IN-012` — nRF52840 and ARMv6 ABI, fixed storage, stack, flash, RAM, direct dispatch, and forbidden-symbol evidence | `T7.3`, `T8.3`-`T8.5` | Cross-target compiler/ELF/link/resource reports and direct-switch inspection | pending |
-| `IN-013` — Every staged record binds the exact publishable target generation before finish and observable non-publication discards Interaction once | `T3.4`-`T3.6`, `T5.1`, `T5.5`, `T7.2`, `T8.2` | Initial/preserved/replaced/discarded target-generation and exact-once discard transcript | pending |
+| `IN-008` — Exact candidate lifecycle and all-or-nothing commit/discard/refusal behavior | `T3.3`-`T3.6`, `T5.1`, `T5.2`, `T8.2`, `T10.1`, `T10.2`, `T10.3` | State-machine, fault-injection, generation-reservation, offer, and atomic-publication corpus | prior conformance retained; cleanup pending |
+| `IN-009` — Exact error/cancellation precedence, mapping, mandatory effects, policy bounds, and no fallback/alias | `T3.5`, `T4.4`, `T5.4`, `T6.1`-`T6.4`, `T8.2`, `T10.1`, `T10.2`, `T10.3` | Exhaustive individual/simultaneous failure matrix and diagnostic-isolation transcript | prior conformance retained; cleanup pending |
+| `IN-010` — Equal-limit dynamic/static results and zero static heap allocation | `T7.1`-`T7.3`, `T8.2`-`T8.4`, `T10.2`, `T10.3` | Normalized profile comparison and allocation interposer reports | prior conformance retained; cleanup pending |
+| `IN-011` — No forbidden Interaction imports/dependencies, reflection, unrestricted existential, or allocator | `T0.2`, `T3.2`, `T7.3`, `T8.4`, `T9.1`, `T10.3` | Exact target graph, import-negative corpus, source/SIL/symbol/link-map audit | prior conformance retained; cleanup pending |
+| `IN-012` — nRF52840 and ARMv6 ABI, fixed storage, stack, flash, RAM, direct dispatch, and forbidden-symbol evidence | `T7.3`, `T8.3`-`T8.5`, `T10.3` | Cross-target compiler/ELF/link/resource reports and direct-switch inspection | prior conformance retained; cleanup pending |
+| `IN-013` — Every staged record binds the exact publishable target generation before finish and observable non-publication discards Interaction once | `T3.4`-`T3.6`, `T5.1`, `T5.5`, `T7.2`, `T8.2`, `T10.1`, `T10.2`, `T10.3` | Initial/preserved/replaced/discarded target-generation and exact-once discard transcript | prior conformance retained; cleanup pending |
 
 ## Milestones and Tasks
 
@@ -947,3 +949,25 @@ Earlier open-gate statements below describe the pre-approval history.
 Connected task completion means approved exception disposition, with remaining
 measurements and evidence assigned to the linked Future Work. It does not mean
 the previously missing corpus was executed.
+
+## Iteration 2 maintenance readiness and scope
+
+[Approved scope](../iterations/iteration-002-cleanup.md) and [coordination plan](../iterations/iteration-002-cleanup/implementation-plan.md) govern this post-MVP maintenance. No new major implementation or Spec amendment is selected here. Existing authority/complete criterion mappings are retained; added tasks map in the original acceptance matrix, with pending entries in the task-evidence ledger. A new contract, owner/profile semantic or required resource bound must return upstream before affected work proceeds.
+
+### Milestone 10: Iteration 2 staged capacity correction
+
+**Entry conditions:** Approved iteration revision 7, current implemented Specification and its accepted authority chain; exact task dependencies below. Repository tooling protection is required before overlapping gate writers.
+
+**Exit evidence:** Each added task has current maintained checks, immutable evidence and a verified disposition. Experimental records are supporting context only; prior reports are not relabelled as cleanup passes.
+
+- [ ] `T10.1` — Complete commit-store preflight in `InteractionState.finishCandidate()` and any necessary initial-limit validation under the existing error precedence. Add independently undersized candidate, staged committed, retained committed and hit stores; exact-bound/first-excess cases must return the specified contained capacity result before copying/publication. Preserve the previous committed action/hit/revision/generation set, all-or-nothing resolution and infallible ready-state commit. Verify discard and repeated reuse after failure. Dependencies: approved I2-02 and current SPEC-011; standard equal capacities are counterevidence to a production trigger, not a reason to omit unequal tests. Exit: maintained reproduction, behavioral/precedence cases and local passing suites.
+
+- [ ] `T10.2` — Integrate the unequal-capacity cases into the maintained recording/Dynamic/Static fixture corpus and owner driver. Depend on T10.1; prove exact local-to-contained failure mapping, preserved committed state, generation binding and exactly one discard across failure/refusal/reuse. Compare symbolic transcripts and storage high-water, preserving zero Static heap and no fallback. Use native profile compositions and affected host rehearsals; do not introduce allocator/storage changes to equalize limits. Exit: driver-connected fixture coverage and equal-profile transcript packet.
+
+- [ ] `T10.3` — Run affected owner profile and resource/dependency gates after T10.2; execute all four registered SPEC-011 modes under coordinator TOOL-01 protection before overlap. Inspect ARMv6 and ARMv7E-M/VFP artifacts, zero Static heap, forbidden imports/symbols, unchanged storage/stack bounds and exact error precedence. Add only new observations to the conformance/task evidence; retain old connected exceptions. Hand current results to SPEC-001 T11.6 and FINAL-01. Exit: current four-profile owner packet and maintained ledger; no implicit iteration closure or architecture change.
+
+### Cleanup design notes, risks and completion
+
+Update an existing focused owner design only when the new implementation changes its explanation; local mechanical corrections need no new note. Complex source-list or generator template/policy mechanisms may warrant a focused clarification under existing contracts. The coordination plan defines all-profile and separately bounded connected ordering, current blockers and deferred boundaries. Missing retention approvals do not block independent maintenance but prevent retention production and final iteration closure.
+
+All added tasks are pending. Original completed ledger entries and historical raw evidence remain unchanged. Update this milestone, the task ledger and affected conformance/design links together as execution progresses; do not advance a Specification or close an iteration through plan completion alone.
