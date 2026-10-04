@@ -83,9 +83,10 @@ finish_run() {
     if [[ "${status}" == interrupted ]]; then
         printf '%s\t%s\t%s\n' "${active_check}" "${exit_code}" "interrupted" >>"${results_path}"
     fi
-    while IFS= read -r staging; do
+    for staging in "${PROJECT_ROOT}"/.build/contract-reports/*/.tmp-*; do
+        [[ -d "${staging}" ]] || continue
         printf 'retained-staging\t%s\t%s\n' "${staging#"${PROJECT_ROOT}/"}" "incomplete" >>"${child_ledger}"
-    done < <(find "${PROJECT_ROOT}/.build/contract-reports" -type d -name '.tmp-*' 2>/dev/null | LC_ALL=C sort)
+    done
     local pointer="${REPORT_ROOT}/latest-${selection}.txt"
     printf '%s\n' "${report_dir#"${REPORT_ROOT}/"}" >"${pointer}.tmp-$$"
     mv "${pointer}.tmp-$$" "${pointer}"
@@ -121,9 +122,10 @@ run_check() {
     "$@" >"${log}" 2>&1
     result=$?
     last_check_status="${result}"
-    while IFS= read -r pointer; do
+    for pointer in "${PROJECT_ROOT}"/.build/contract-reports/*/latest-*.txt; do
+        [[ -f "${pointer}" ]] || continue
         printf '%s\t%s\t%s\n' "${id}" "${pointer#"${PROJECT_ROOT}/"}" "$(cat "${pointer}")" >>"${child_ledger}"
-    done < <(find "${PROJECT_ROOT}/.build/contract-reports" -name 'latest-*.txt' -type f 2>/dev/null | LC_ALL=C sort)
+    done
     printf '%s\t%s\t%s\n' "${id}" "${result}" "${log#"${PROJECT_ROOT}/"}" >>"${results_path}"
     active_check="none"
     if [[ "${result}" -ne 0 ]]; then
