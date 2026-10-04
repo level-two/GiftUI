@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "reviewed_revision": "6cf31f266987e917458f31f05ed8c390cda9a202",
+  "targets": 84,
+  "internal_edges": 375,
+  "external_edges": 6,
+  "acyclic": true,
+  "source_swift_files": 381,
+  "source_opening_if": 59,
+  "nrf_selected_source_files": 172,
+  "nrf_selected_owners": 24,
+  "internal_imports_without_direct_edge": [],
+  "limits": "Lexical counts include conditional/inactive imports and generated code. CMake inventory does not configure/build firmware; criterion IDs are mentions, not validated acceptance coverage."
+}

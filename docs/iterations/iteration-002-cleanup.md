@@ -86,9 +86,10 @@ iteration may finish with evidence and a disposition rather than a replacement.
    profile gates at integration milestones. Remeasure constrained resources where
    affected and review resulting changes against their selected findings.
 
-At audit kickoff, create and link the baseline, coverage matrix, and findings
-register as derived review records. No audit has yet been performed by this
-scope update. Completion depends on coverage and explicit finding dispositions,
+The maintainer authorized research kickoff on 2026-10-04. The
+[review record](iteration-002-review/README.md) links the baseline, coverage
+matrix, findings, and step results. This scope remains draft. Completion depends
+on coverage and explicit finding dispositions,
 not on repeated agent passes ceasing to produce suggestions. Discovery does not
 automatically select remediation or expand an approved iteration.
 
