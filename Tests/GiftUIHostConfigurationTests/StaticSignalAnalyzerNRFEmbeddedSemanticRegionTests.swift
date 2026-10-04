@@ -259,88 +259,68 @@ private func staticNRFEmbeddedTextMeasureMatchesHost(
     _ source: StaticSignalAnalyzerNRFEmbeddedSemanticView,
     _ identity: UInt16
 ) -> Bool {
-    var targetScopes = [UInt8](repeating: 0, count: 3_136)
-    var targetText = [UInt8](repeating: 0, count: 4_704)
-    var hostScopes = [UInt8](repeating: 0, count: 3_136)
-    var hostText = [UInt8](repeating: 0, count: 4_704)
-    return targetScopes.withUnsafeMutableBytes { targetScopeRegion in
-        targetText.withUnsafeMutableBytes { targetTextRegion in
-            hostScopes.withUnsafeMutableBytes { hostScopeRegion in
-                hostText.withUnsafeMutableBytes { hostTextRegion in
-                    guard
-                        var target = StaticSignalAnalyzerNRFEmbeddedLayoutWorkspace(
-                            scopes: targetScopeRegion, text: targetTextRegion
-                        ),
-                        var host = StaticSignalAnalyzerNRFLayoutWorkspace(
-                            scopes: hostScopeRegion, text: hostTextRegion
-                        ), target.acquire(), host.acquireLayout()
-                    else { return false }
-                    let zero = Size(width: 0, height: 0)!
-                    guard
-                        target.appendScope(
-                            identity: identity,
-                            idealWidth: 0, idealHeight: 0,
-                            width: 0, height: 0
-                        ),
-                        host.appendScope(
-                            identity: identity,
-                            measurement: LayoutMeasurement(
-                                idealSize: zero, resolvedSize: zero
-                            )
-                        )
-                    else { return false }
-                    let limits = LayoutLimits(
-                        maximumScopes: 98, maximumDepth: 13,
-                        maximumTextScalars: 224, maximumTextLines: 128,
-                        maximumPositionedGlyphs: 224
-                    )!
-                    var engine = LayoutEngine(
-                        limits: limits,
-                        validatedCounters: LayoutCounters(limits: limits)
-                    )
-                    guard
-                        let measurement = engine.measure(
-                            semantic: StaticNRFOneTextSemantic(
-                                rootIdentity: identity, source: source
-                            ),
-                            metrics: GiftUIReferenceTextMetricsView(),
-                            proposal: ProposedSize(width: 480, height: 320)!,
-                            workspace: &host
-                        ),
-                        StaticSignalAnalyzerNRFEmbeddedTextMeasure.run(
-                            identity: identity, semantic: source,
-                            proposalWidth: 480, proposalHeight: 320,
-                            workspace: &target
-                        )
-                    else { return false }
-                    guard [UInt8](targetScopeRegion) == [UInt8](hostScopeRegion),
-                        [UInt8](targetTextRegion) == [UInt8](hostTextRegion),
-                        let rootBounds = Rect(
-                            origin: Point(x: 7, y: 11),
-                            size: measurement.resolvedSize
-                        ),
-                        engine.place(
-                            semantic: StaticNRFOneTextSemantic(
-                                rootIdentity: identity, source: source
-                            ),
-                            metrics: GiftUIReferenceTextMetricsView(),
-                            rootBounds: rootBounds,
-                            workspace: &host
-                        ), let width = Int16(exactly: measurement.resolvedSize.width),
-                        let height = Int16(exactly: measurement.resolvedSize.height),
-                        StaticSignalAnalyzerNRFEmbeddedTextPlace.run(
-                            identity: identity, semantic: source,
-                            originX: 7, originY: 11,
-                            inheritedClipX: 7, inheritedClipY: 11,
-                            inheritedClipWidth: width,
-                            inheritedClipHeight: height,
-                            workspace: &target
-                        )
-                    else { return false }
-                    return [UInt8](targetScopeRegion) == [UInt8](hostScopeRegion)
-                        && [UInt8](targetTextRegion) == [UInt8](hostTextRegion)
-                }
+    var scopes = [UInt8](repeating: 0, count: 3_136)
+    var text = [UInt8](repeating: 0, count: 4_704)
+    return scopes.withUnsafeMutableBytes { scopeRegion in
+        text.withUnsafeMutableBytes { textRegion in
+            guard
+                var host = StaticSignalAnalyzerNRFLayoutWorkspace(
+                    scopes: scopeRegion, text: textRegion),
+                host.acquireLayout()
+            else { return false }
+            defer { host.resetLayout() }
+            let zero = Size(width: 0, height: 0)!
+            guard
+                host.appendScope(
+                    identity: identity,
+                    measurement: LayoutMeasurement(idealSize: zero, resolvedSize: zero))
+            else { return false }
+            let limits = LayoutLimits(
+                maximumScopes: 98, maximumDepth: 19,
+                maximumTextScalars: 224, maximumTextLines: 128, maximumPositionedGlyphs: 224)!
+            var engine = LayoutEngine(
+                limits: limits, validatedCounters: LayoutCounters(limits: limits))
+            let semantic = StaticNRFOneTextSemantic(rootIdentity: identity, source: source)
+            guard
+                let measurement = engine.measure(
+                    semantic: semantic,
+                    metrics: GiftUIReferenceTextMetricsView(),
+                    proposal: ProposedSize(width: 480, height: 320)!,
+                    workspace: &host),
+                let bounds = Rect(origin: Point(x: 7, y: 11), size: measurement.resolvedSize),
+                engine.place(
+                    semantic: semantic, metrics: GiftUIReferenceTextMetricsView(),
+                    rootBounds: bounds, workspace: &host),
+                let packedScope = StaticSignalAnalyzerNRFEmbeddedLayoutScopeCodec.read(
+                    at: 0, in: scopeRegion),
+                packedScope.identity == identity,
+                packedScope.width == Int16(measurement.resolvedSize.width),
+                packedScope.originX == 7, packedScope.originY == 11
+            else { return false }
+            for index in 0 ..< host.textLineCount {
+                guard let expected = host.textLine(at: index),
+                    let packed = StaticSignalAnalyzerNRFEmbeddedLayoutTextCodec.line(
+                        at: index, in: textRegion),
+                    packed.identity == expected.identity, packed.lineIndex == expected.lineIndex,
+                    packed.x == Int16(expected.bounds.origin.x),
+                    packed.y == Int16(expected.bounds.origin.y),
+                    packed.width == Int16(expected.bounds.size.width),
+                    packed.height == Int16(expected.bounds.size.height),
+                    packed.baselineX == Int16(expected.baseline.x),
+                    packed.baselineY == Int16(expected.baseline.y)
+                else { return false }
             }
+            for index in 0 ..< host.positionedGlyphCount {
+                guard let expected = host.positionedGlyph(at: index),
+                    let packed = StaticSignalAnalyzerNRFEmbeddedLayoutTextCodec.glyph(
+                        at: index, in: textRegion),
+                    packed.identity == expected.identity, packed.lineIndex == expected.lineIndex,
+                    packed.glyphID == expected.glyph.rawValue,
+                    packed.baselineX == Int16(expected.baseline.x),
+                    packed.baselineY == Int16(expected.baseline.y)
+                else { return false }
+            }
+            return true
         }
     }
 }

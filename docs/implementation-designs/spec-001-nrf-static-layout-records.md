@@ -330,3 +330,7 @@ unit per owner supports Embedded whole-module specialization without erasing
 cross-owner imports. Only the target-host composition fragments share their
 existing host module. The exact selected source manifest also drives native
 rehearsals; compiler negative cases exercise those actual firmware invocations.
+
+## Iteration 002 startup maintenance
+
+Startup text uses the common LayoutEngine over a one-text semantic adapter and the existing packed workspace. Codec round-trip and publication/reset probes remain separate checks. The two startup-only text algorithms were retired; no additional layout owner or storage was introduced. [Evidence](../iterations/iteration-002-cleanup/evidence/06-startup-text/result.md).

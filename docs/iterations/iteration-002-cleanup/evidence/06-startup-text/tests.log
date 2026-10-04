@@ -1,0 +1,390 @@
+swiftpm-command: swift test --package-path /Users/eugene/work/GiftUI --scratch-path /Users/eugene/work/GiftUI/.build/iteration-002-focused -Xswiftc -DGIFTUI_DYNAMIC_PROFILE --filter GiftUILayoutTests\|EmbeddedLayout\|LayoutTextCodec\|staticNRFEmbeddedSemanticRegion
+Test Suite 'Selected tests' started at 2026-10-04 23:59:31.304.
+Test Suite 'GiftUIPackageTests.xctest' started at 2026-10-04 23:59:31.305.
+Test Suite 'GiftUIPackageTests.xctest' passed at 2026-10-04 23:59:31.305.
+	 Executed 0 tests, with 0 failures (0 unexpected) in 0.000 (0.000) seconds
+Test Suite 'Selected tests' passed at 2026-10-04 23:59:31.305.
+	 Executed 0 tests, with 0 failures (0 unexpected) in 0.000 (0.001) seconds
+◇ Test run started.
+↳ Testing Library Version: 1902
+↳ Target Platform: arm64e-apple-macos14.0
+◇ Test semanticValidationRejectsInvalidUnicodeScalar() started.
+◇ Test staticNRFEmbeddedLayoutPublishesTheInPlaceHostRecords() started.
+◇ Test beginRefusalResetsWorkspaceWithoutDiscardingOrReplacingCurrentOutput() started.
+◇ Test signalAnalyzerApprovalFixtureFitsExactLimitsAndExercisesLayoutSurface() started.
+◇ Test staticNRFEmbeddedLayoutTextCodecMatchesHostBytes() started.
+◇ Test leadingTrailingAndConsecutiveBreaksPreserveEveryEmptyLine() started.
+◇ Test staticNRFEmbeddedLayoutWorkspaceMatchesHostScopeRecords() started.
+◇ Test staticNRFLayoutTextCodecKeepsExactDisjointLineGlyphAndScratchRanges() started.
+◇ Test staticNRFEmbeddedSemanticRegionPublishesOnlyValidatedRevisions() started.
+◇ Test workspaceReportsEveryCapacityAndIndexesExactIdentities() started.
+◇ Test spec005ReferenceMetricsProduceCanonicalResourceGolden() started.
+◇ Test staticNRFEmbeddedLayoutScopeCodecMatchesHostBytes() started.
+◇ Test staticNRFLayoutTextCodecRejectsOverflowDuplicateAndWrongRegion() started.
+◇ Test overWideFirstGlyphStaysAndItsLogicalLineWidthIsCapped() started.
+◇ Test proxyAdoptsAndCoLocatesItsSingleFlattenedChild() started.
+◇ Test semanticValidationAcceptsOneWellFormedRootScope() started.
+◇ Test fixedAndMinimumFramesDifferUnderSmallerParentProposal() started.
+◇ Test everyWorkspaceCapacityFailsBeforeAcquisitionOrInput(_:) started.
+◇ Test textScalarLimitFailsBeforeTheOneOverLookup() started.
+◇ Test completeWorkspacePublishesAtomicallyInCanonicalOrder() started.
+◇ Test declaredScopeLimitFailsBeforeRootOrOccurrenceInspection() started.
+◇ Test zStackUsesSharedProposalMaximumIdealAndIndependentAlignment() started.
+◇ Test directSpacersReceiveEqualShareAndEarlierRemainder() started.
+◇ Test everyPostBeginRefusalDiscardsOnceAndPreservesPriorOutput(_:) started.
+◇ Test layoutEntryRejectsSinkReentryBeforeInspectingInputs() started.
+◇ Test layoutEntryRejectsBothActiveCollaboratorsWithoutCleanup() started.
+◇ Test emptyCanonicalTextStillProducesOneLine() started.
+◇ Test positionedGlyphLimitFailsBeforeTheOneOverMappingLookup() started.
+◇ Test canonicalTextMapsSourceScalarsAndReplacementInOrder() started.
+◇ Test standaloneAndWrappedSpacersAreOrdinaryZeroSizeScopes() started.
+◇ Test layoutErrorsHaveExactRawValuesAndLayout() started.
+◇ Test invalidTextDeclarationStopsBeforeLayoutPublicationOrRenderInvocation() started.
+◇ Test horizontalStackCapsItsOwnBoundsWithoutCompressingOrClippingChildren() started.
+◇ Test emptyStackPublishesOneZeroSizedScope() started.
+◇ Test semanticValidationRejectsInvalidPayloadBeforePublication() started.
+◇ Test overlappingIntersectionUsesGreaterMinimumAndLesserMaximum() started.
+◇ Test layoutSummaryAndResultFitTheirExactCeilings() started.
+◇ Test frameAndPaddingOrderChangesBoundsAndFrameClip() started.
+◇ Test checkedGeometryRejectsEveryRepresentableOverflowShape() started.
+◇ Test proposalCapsAxesIndependently() started.
+◇ Test insetProposalFloorsUnderflowAtZeroAndPreservesAbsentAxes() started.
+◇ Test layoutLimitsRequireEveryNonzeroCapacityAndFitTheirCeiling() started.
+◇ Test layoutCountersKeepTheFirstFailureSticky() started.
+◇ Test verticalStackMeasuresAndPlacesFiveChildrenWithOnlyInteriorGaps() started.
+◇ Test canonicalTextReportsCheckedArithmeticOverflow(_:) started.
+◇ Test paddingInsetsProposalAndTranslatesChildWithoutAddingClip() started.
+◇ Test layoutEntryRetainsNeitherTheSemanticViewNorItsSourceLifetime() started.
+◇ Test malformedCompleteWorkspaceFailsBeforeBeginAndStillResets() started.
+◇ Test everyLayoutCounterAcceptsEqualityAndRejectsOneOver() started.
+◇ Test explicitLineLimitFailsAtTheBreakBeforeLaterScalarLookup() started.
+◇ Test layoutCountersValidateBalancedDepthAndDeclaredScopeAgreement() started.
+◇ Test layoutEntryRejectsWorkspaceReentryBeforeInspectingInputs() started.
+◇ Test layoutDepthTracksItsHighWaterAndRejectsOneOver() started.
+◇ Test disjointIntersectionIsEmptyAtTheGreaterMinimumEdges() started.
+◇ Test alignmentUsesLowCenteredAndHighOffsetsWithoutClampingOverflow() started.
+◇ Test infiniteFlexibleFrameExpandsOnlyToPresentParentProposal() started.
+◇ Test successfulLayoutExposesExactResolvedRenderProjection() started.
+◇ Test resolvedRenderProjectionReturnsNilOutsideItsPublishedIdentityAndIndexRanges() started.
+◇ Test recordingDynamicAndStaticViewsProduceIdenticalLayoutTranscripts() started.
+◇ Test directSpacersKeepMinimumsWhenProposalIsAbsentOrTooSmall() started.
+◇ Test zeroWidthProducesOneLinePerGlyphAndRetainsZeroLineWidths() started.
+◇ Test canvasDirectViewUsesProposalOrZeroAndFixedFrameExpansionWithoutExtraOutput() started.
+◇ Test semanticValidationRequiresTheDeclaredScopeCountToMatchTraversal() started.
+◇ Test nestedPaddingKeepsSourceCallOrder() started.
+◇ Test positiveWidthWrapsBeforeOnlyTheOverflowingNonfirstGlyph() started.
+◇ Test combinedLayoutCorpusPublishesCanonicalLocalEventOrder() started.
+◇ Test absentWidthWrapsOnlyAtExplicitBreaks() started.
+◇ Test canonicalTextPreservesCrLfCrLfPairsAndEmptyLines() started.
+◇ Test semanticValidationRejectsMissingInRangeChildAsInvariantFailure() started.
+◇ Test heightCapRetainsHiddenLinesAndProducesExactEmptyClips() started.
+◇ Test textLinesAndGlyphBaselinesTranslateToAbsoluteRootCoordinates() started.
+◇ Test case passing 1 argument refusal → .scope to everyPostBeginRefusalDiscardsOnceAndPreservesPriorOutput(_:) started.
+◇ Test case passing 1 argument capacityIndex → 0 to everyWorkspaceCapacityFailsBeforeAcquisitionOrInput(_:) started.
+◇ Test case passing 1 argument capacityIndex → 1 to everyWorkspaceCapacityFailsBeforeAcquisitionOrInput(_:) started.
+◇ Test case passing 1 argument refusal → .line to everyPostBeginRefusalDiscardsOnceAndPreservesPriorOutput(_:) started.
+◇ Test case passing 1 argument capacityIndex → 3 to everyWorkspaceCapacityFailsBeforeAcquisitionOrInput(_:) started.
+◇ Test case passing 1 argument capacityIndex → 2 to everyWorkspaceCapacityFailsBeforeAcquisitionOrInput(_:) started.
+◇ Test case passing 1 argument capacityIndex → 4 to everyWorkspaceCapacityFailsBeforeAcquisitionOrInput(_:) started.
+◇ Test case passing 1 argument refusal → .glyph to everyPostBeginRefusalDiscardsOnceAndPreservesPriorOutput(_:) started.
+◇ Test case passing 1 argument refusal → .publish to everyPostBeginRefusalDiscardsOnceAndPreservesPriorOutput(_:) started.
+◇ Test case passing 1 argument mode → .lineHeight to canonicalTextReportsCheckedArithmeticOverflow(_:) started.
+◇ Test case passing 1 argument mode → .glyphAdvance to canonicalTextReportsCheckedArithmeticOverflow(_:) started.
+✔ Test beginRefusalResetsWorkspaceWithoutDiscardingOrReplacingCurrentOutput() passed after 0.001 seconds.
+✔ Test workspaceReportsEveryCapacityAndIndexesExactIdentities() passed after 0.002 seconds.
+✔ Test leadingTrailingAndConsecutiveBreaksPreserveEveryEmptyLine() passed after 0.002 seconds.
+✔ Test semanticValidationRejectsInvalidUnicodeScalar() passed after 0.002 seconds.
+✔ Test spec005ReferenceMetricsProduceCanonicalResourceGolden() passed after 0.002 seconds.
+✔ Test staticNRFLayoutTextCodecKeepsExactDisjointLineGlyphAndScratchRanges() passed after 0.002 seconds.
+✔ Test staticNRFLayoutTextCodecRejectsOverflowDuplicateAndWrongRegion() passed after 0.002 seconds.
+✔ Test staticNRFEmbeddedLayoutScopeCodecMatchesHostBytes() passed after 0.002 seconds.
+✔ Test staticNRFEmbeddedLayoutPublishesTheInPlaceHostRecords() passed after 0.002 seconds.
+✔ Test textScalarLimitFailsBeforeTheOneOverLookup() passed after 0.002 seconds.
+✔ Test fixedAndMinimumFramesDifferUnderSmallerParentProposal() passed after 0.002 seconds.
+✔ Test overWideFirstGlyphStaysAndItsLogicalLineWidthIsCapped() passed after 0.002 seconds.
+✔ Test staticNRFEmbeddedLayoutTextCodecMatchesHostBytes() passed after 0.002 seconds.
+✔ Test declaredScopeLimitFailsBeforeRootOrOccurrenceInspection() passed after 0.002 seconds.
+✔ Test semanticValidationAcceptsOneWellFormedRootScope() passed after 0.002 seconds.
+✔ Test proxyAdoptsAndCoLocatesItsSingleFlattenedChild() passed after 0.002 seconds.
+✔ Test directSpacersReceiveEqualShareAndEarlierRemainder() passed after 0.002 seconds.
+✔ Test layoutEntryRejectsSinkReentryBeforeInspectingInputs() passed after 0.002 seconds.
+✔ Test signalAnalyzerApprovalFixtureFitsExactLimitsAndExercisesLayoutSurface() passed after 0.002 seconds.
+✔ Test zStackUsesSharedProposalMaximumIdealAndIndependentAlignment() passed after 0.002 seconds.
+✔ Test everyWorkspaceCapacityFailsBeforeAcquisitionOrInput(_:) with 5 test cases passed after 0.002 seconds.
+✔ Test completeWorkspacePublishesAtomicallyInCanonicalOrder() passed after 0.002 seconds.
+✔ Test everyPostBeginRefusalDiscardsOnceAndPreservesPriorOutput(_:) with 4 test cases passed after 0.002 seconds.
+✔ Test standaloneAndWrappedSpacersAreOrdinaryZeroSizeScopes() passed after 0.002 seconds.
+✔ Test layoutErrorsHaveExactRawValuesAndLayout() passed after 0.002 seconds.
+✔ Test staticNRFEmbeddedLayoutWorkspaceMatchesHostScopeRecords() passed after 0.002 seconds.
+✔ Test frameAndPaddingOrderChangesBoundsAndFrameClip() passed after 0.002 seconds.
+✔ Test horizontalStackCapsItsOwnBoundsWithoutCompressingOrClippingChildren() passed after 0.002 seconds.
+✔ Test canonicalTextMapsSourceScalarsAndReplacementInOrder() passed after 0.002 seconds.
+✔ Test positionedGlyphLimitFailsBeforeTheOneOverMappingLookup() passed after 0.002 seconds.
+✔ Test layoutLimitsRequireEveryNonzeroCapacityAndFitTheirCeiling() passed after 0.002 seconds.
+✔ Test checkedGeometryRejectsEveryRepresentableOverflowShape() passed after 0.002 seconds.
+✔ Test emptyCanonicalTextStillProducesOneLine() passed after 0.002 seconds.
+✔ Test canonicalTextReportsCheckedArithmeticOverflow(_:) with 2 test cases passed after 0.002 seconds.
+✔ Test overlappingIntersectionUsesGreaterMinimumAndLesserMaximum() passed after 0.002 seconds.
+✔ Test semanticValidationRejectsInvalidPayloadBeforePublication() passed after 0.002 seconds.
+✔ Test layoutSummaryAndResultFitTheirExactCeilings() passed after 0.002 seconds.
+✔ Test verticalStackMeasuresAndPlacesFiveChildrenWithOnlyInteriorGaps() passed after 0.002 seconds.
+✔ Test paddingInsetsProposalAndTranslatesChildWithoutAddingClip() passed after 0.002 seconds.
+✔ Test proposalCapsAxesIndependently() passed after 0.002 seconds.
+✔ Test insetProposalFloorsUnderflowAtZeroAndPreservesAbsentAxes() passed after 0.002 seconds.
+✔ Test layoutEntryRetainsNeitherTheSemanticViewNorItsSourceLifetime() passed after 0.002 seconds.
+✔ Test emptyStackPublishesOneZeroSizedScope() passed after 0.002 seconds.
+✔ Test layoutDepthTracksItsHighWaterAndRejectsOneOver() passed after 0.002 seconds.
+✔ Test layoutEntryRejectsWorkspaceReentryBeforeInspectingInputs() passed after 0.002 seconds.
+✔ Test malformedCompleteWorkspaceFailsBeforeBeginAndStillResets() passed after 0.002 seconds.
+✔ Test invalidTextDeclarationStopsBeforeLayoutPublicationOrRenderInvocation() passed after 0.002 seconds.
+✔ Test alignmentUsesLowCenteredAndHighOffsetsWithoutClampingOverflow() passed after 0.002 seconds.
+✔ Test explicitLineLimitFailsAtTheBreakBeforeLaterScalarLookup() passed after 0.002 seconds.
+✔ Test layoutCountersKeepTheFirstFailureSticky() passed after 0.002 seconds.
+✔ Test zeroWidthProducesOneLinePerGlyphAndRetainsZeroLineWidths() passed after 0.001 seconds.
+✔ Test disjointIntersectionIsEmptyAtTheGreaterMinimumEdges() passed after 0.002 seconds.
+✔ Test infiniteFlexibleFrameExpandsOnlyToPresentParentProposal() passed after 0.002 seconds.
+✔ Test layoutCountersValidateBalancedDepthAndDeclaredScopeAgreement() passed after 0.002 seconds.
+✔ Test resolvedRenderProjectionReturnsNilOutsideItsPublishedIdentityAndIndexRanges() passed after 0.002 seconds.
+✔ Test everyLayoutCounterAcceptsEqualityAndRejectsOneOver() passed after 0.002 seconds.
+✔ Test layoutEntryRejectsBothActiveCollaboratorsWithoutCleanup() passed after 0.002 seconds.
+✔ Test canonicalTextPreservesCrLfCrLfPairsAndEmptyLines() passed after 0.001 seconds.
+✔ Test semanticValidationRequiresTheDeclaredScopeCountToMatchTraversal() passed after 0.001 seconds.
+✔ Test directSpacersKeepMinimumsWhenProposalIsAbsentOrTooSmall() passed after 0.002 seconds.
+✔ Test semanticValidationRejectsMissingInRangeChildAsInvariantFailure() passed after 0.001 seconds.
+✔ Test successfulLayoutExposesExactResolvedRenderProjection() passed after 0.002 seconds.
+✔ Test positiveWidthWrapsBeforeOnlyTheOverflowingNonfirstGlyph() passed after 0.002 seconds.
+✔ Test nestedPaddingKeepsSourceCallOrder() passed after 0.002 seconds.
+✔ Test heightCapRetainsHiddenLinesAndProducesExactEmptyClips() passed after 0.001 seconds.
+✔ Test absentWidthWrapsOnlyAtExplicitBreaks() passed after 0.001 seconds.
+✔ Test textLinesAndGlyphBaselinesTranslateToAbsoluteRootCoordinates() passed after 0.001 seconds.
+✔ Test combinedLayoutCorpusPublishesCanonicalLocalEventOrder() passed after 0.001 seconds.
+✔ Test canvasDirectViewUsesProposalOrZeroAndFixedFrameExpansionWithoutExtraOutput() passed after 0.002 seconds.
+✔ Test recordingDynamicAndStaticViewsProduceIdenticalLayoutTranscripts() passed after 0.004 seconds.
+✔ Test staticNRFEmbeddedSemanticRegionPublishesOnlyValidatedRevisions() passed after 0.038 seconds.
+✔ Test run with 71 tests in 0 suites passed after 0.038 seconds.
+[0/1] Planning build
+Building for debugging...
+[0/15] Write sources
+[3/16] Write swift-version--58304C5D6DBC2206.txt
+[5/203] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFEmbeddedActionDispatcher.swift
+[6/203] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFEmbeddedCanvasPayload.swift
+[7/203] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFEmbeddedCanvasSource.swift
+[8/203] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFEmbeddedCountingSink.swift
+[9/203] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFEmbeddedFontRaster.swift
+[10/203] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFEmbeddedGestureSession.swift
+[11/203] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFEmbeddedInputHandler.swift
+[12/203] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFEmbeddedInteractionOccurrences.swift
+[13/203] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFEmbeddedInteractionOwner.swift
+[14/203] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFEmbeddedLayoutAdapters.swift
+[15/232] Emitting module SignalAnalyzerTargetHost
+[16/241] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFPresentationHealth.swift
+[17/241] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFModelLocation.swift
+[18/241] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFModelModifierWriter.swift
+[19/241] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFModelTextWriter.swift
+[20/241] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFOperationalFailureBridge.swift
+[21/241] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFOperationalFailureFact.swift
+[22/241] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFPacedApplicationStage.swift
+[23/241] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFPresentationCommitter.swift
+[24/241] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFPresentationComposition.swift
+[25/241] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFModelLocation.swift
+[26/241] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFModelModifierWriter.swift
+[27/241] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFModelTextWriter.swift
+[28/241] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFOperationalFailureBridge.swift
+[29/241] Compiling SignalAnalyzerTargetHost DynamicSignalAnalyzerPiCorrelationOwner.swift
+[30/241] Compiling SignalAnalyzerTargetHost DynamicSignalAnalyzerPiEndpoint.swift
+[31/241] Compiling SignalAnalyzerTargetHost DynamicSignalAnalyzerPiInitialPresentationOwner.swift
+[32/241] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFPresentationComposition.swift
+[33/241] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFPresentationHandoff.swift
+[43/241] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFEmbeddedLayoutInterfaces.swift
+[44/241] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFEmbeddedLayoutModifier.swift
+[45/241] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFEmbeddedLayoutPrimitive.swift
+[46/241] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFEmbeddedLayoutScopeCodec.swift
+[47/241] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFEmbeddedLayoutTextCodec.swift
+[48/241] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFEmbeddedLayoutWorkspace.swift
+[49/241] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFEmbeddedRasterSink.swift
+[50/241] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFEmbeddedRenderPreflight.swift
+[51/241] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFEmbeddedRenderSemanticAdapter.swift
+[52/241] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFEmbeddedResolvedLayoutView.swift
+[53/241] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFSemanticRegion.generated.swift
+[54/241] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFTextPoolWriter.generated.swift
+[55/241] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFTopologyWriter.generated.swift
+[56/241] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFUTF8LayoutView.generated.swift
+[57/241] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFUTF8RenderView.generated.swift
+[58/241] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFUTF8TextPool.generated.swift
+[59/241] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFDisplayTarget.swift
+[60/241] Compiling SignalAnalyzerTargetHost SignalAnalyzerCycleOwnerFailure.swift
+[61/241] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFDrawingPlanStorage.swift
+[62/241] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFDrawingWorkspace.swift
+[63/241] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFCommonLayoutPass.swift
+[64/241] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFCommonLayoutWorkspace.swift
+[65/241] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFCompactCaptureFact.swift
+[66/241] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFCompactFactRing.swift
+[67/241] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFCompactPresentationFact.swift
+[68/241] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFDeterministicSource.swift
+[69/241] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFDisplayTarget.swift
+[70/241] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFDrawingPlanRecords.swift
+[71/241] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFDrawingPlanStorage.swift
+[72/241] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFDrawingWorkspace.swift
+[73/241] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFSemanticRegion.generated.swift
+[74/241] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFEmbeddedSemanticValidator.swift
+[75/241] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFEmbeddedSemanticView.swift
+[76/241] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFEmbeddedTileRuns.swift
+[77/241] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFEndpoint.swift
+[78/241] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFGeneratedMetadata.swift
+[79/241] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFInputABI.swift
+[80/241] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFInputCoordinator.swift
+[81/241] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFInteractionCandidateProducer.swift
+[82/241] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFEmbeddedSemanticRegion.swift
+[83/241] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFEmbeddedSemanticValidator.swift
+[84/241] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFEmbeddedSemanticView.swift
+[85/241] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFEmbeddedTileRuns.swift
+[86/241] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFEndpoint.swift
+[87/241] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFGeneratedMetadata.swift
+[88/241] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFInputABI.swift
+[89/241] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFInputCoordinator.swift
+[90/241] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFInteractionCandidateProducer.swift
+[101/241] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFInteractionOccurrences.swift
+[102/241] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFInteractionTargetProjection.swift
+[103/241] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFLayoutPass.swift
+[104/241] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFLayoutScopeCodec.swift
+[105/241] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFLayoutTextCodec.swift
+[106/241] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFLayoutWorkspace.swift
+[107/241] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFLivePathStorage.swift
+[108/241] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFModelCaptureState.swift
+[109/241] Compiling SignalAnalyzerTargetHost DynamicSignalAnalyzerActionDispatcher.swift
+[110/241] Compiling SignalAnalyzerTargetHost DynamicSignalAnalyzerApplicationFailureOwner.swift
+[111/241] Compiling SignalAnalyzerTargetHost DynamicSignalAnalyzerPiAssembly.swift
+[112/241] Compiling SignalAnalyzerTargetHost DynamicSignalAnalyzerPiContactIngress.swift
+[113/241] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFLayoutPass.swift
+[114/241] Compiling SignalAnalyzerTargetHost DynamicSignalAnalyzerPiEndpoint.swift
+[115/241] Compiling SignalAnalyzerTargetHost DynamicSignalAnalyzerPiInitialPresentationOwner.swift
+[116/241] Compiling SignalAnalyzerTargetHost DynamicSignalAnalyzerPiInputCoordinator.swift
+[117/241] Compiling SignalAnalyzerTargetHost DynamicSignalAnalyzerPiLifecycleOwner.swift
+[118/241] Compiling SignalAnalyzerTargetHost DynamicSignalAnalyzerPiWakeAdmission.swift
+[139/241] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFRepositoryProducer.swift
+[140/241] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFResidualRouting.swift
+[141/241] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFResolvedLayout.swift
+[142/241] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFRuntimeStorage.swift
+[143/241] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFSPITFTTransport.swift
+[144/241] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFSealedFactApplication.swift
+[145/241] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFSemanticPublication.swift
+[146/241] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFSnapshotFact.swift
+[147/241] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFTileStorage.swift
+[158/241] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFInteractionHandler.swift
+[195/241] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFApplicationInputOwner.swift
+[196/241] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFApplicationStorage.swift
+[197/241] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFAssembly.swift
+[198/241] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFCanvasInvocationSource.swift
+[199/241] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFCanvasPass.swift
+[200/241] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFCaptureFactAdmission.swift
+[201/241] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFCaptureHistory.swift
+[202/241] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFCaptureRecord.swift
+[203/241] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFCaptureSnapshotView.swift
+[204/241] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFCaptureStorage.swift
+[226/241] Emitting module SignalAnalyzerTargetHost
+[227/241] Compiling SignalAnalyzerTargetHost DynamicSignalAnalyzerPiWakePacingOwner.swift
+[228/241] Compiling SignalAnalyzerTargetHost DynamicSignalAnalyzerPresentationPipeline.swift
+[229/241] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFCanvasTable.generated.swift
+[230/241] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFEmbeddedCanvasTable.generated.swift
+[231/241] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFModelDescriptor.generated.swift
+[232/241] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFModifierPayload.generated.swift
+[233/241] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFPackedSemanticRecords.generated.swift
+[234/241] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFPresentationInputs.generated.swift
+[235/241] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFPrimitivePayload.generated.swift
+[236/241] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFReferenceMetrics.generated.swift
+[237/292] Emitting module SignalAnalyzerRaspberryPiARMv6
+[238/292] Compiling SignalAnalyzerRaspberryPiARMv6 PiHostNativeRehearsal.swift
+[238/292] Write Objects.LinkFileList
+[239/292] Linking SignalAnalyzerRaspberryPiARMv6
+[240/292] Applying SignalAnalyzerRaspberryPiARMv6
+[242/292] Compiling GiftUIHostConfigurationTests StaticSignalAnalyzerNRFCaptureRecordTests.swift
+[243/292] Compiling GiftUIHostConfigurationTests StaticSignalAnalyzerNRFCaptureSnapshotViewTests.swift
+[244/292] Compiling GiftUIHostConfigurationTests StaticSignalAnalyzerNRFCompactCaptureFactTests.swift
+[245/292] Compiling GiftUIHostConfigurationTests StaticSignalAnalyzerNRFCompactFactRingTests.swift
+[246/292] Compiling GiftUIHostConfigurationTests StaticSignalAnalyzerNRFDeterministicSourceTests.swift
+[247/296] Compiling GiftUIHostConfigurationTests StaticSignalAnalyzerNRFProfileBindingTests.swift
+[248/296] Compiling GiftUIHostConfigurationTests StaticSignalAnalyzerNRFProfileRegionsTests.swift
+[249/296] Compiling GiftUIHostConfigurationTests StaticSignalAnalyzerNRFReferenceMetricsTests.swift
+[250/296] Compiling GiftUIHostConfigurationTests StaticSignalAnalyzerNRFRenderWorkspaceTests.swift
+[251/296] Compiling GiftUIHostConfigurationTests StaticSignalAnalyzerNRFRepositoryProducerTests.swift
+[252/296] Compiling GiftUIHostConfigurationTests StaticSignalAnalyzerNRFRuntimeStorageTests.swift
+[253/296] Compiling GiftUIHostConfigurationTests StaticSignalAnalyzerNRFSPITFTTransportTests.swift
+[254/296] Compiling GiftUIHostConfigurationTests StaticSignalAnalyzerNRFSealedFactApplicationTests.swift
+[255/296] Compiling GiftUIHostConfigurationTests StaticSignalAnalyzerNRFFactPayloadLayoutTests.swift
+[256/296] Compiling GiftUIHostConfigurationTests StaticSignalAnalyzerNRFInputABITests.swift
+[257/296] Compiling GiftUIHostConfigurationTests StaticSignalAnalyzerNRFInputCoordinatorTests.swift
+[258/296] Compiling GiftUIHostConfigurationTests StaticSignalAnalyzerNRFInteractionHandlerTests.swift
+[259/296] Emitting module GiftUIHostConfigurationTests
+[260/296] Compiling GiftUIHostConfigurationTests StaticSignalAnalyzerNRFEmbeddedLayoutTextCodecTests.swift
+[261/296] Compiling GiftUIHostConfigurationTests StaticSignalAnalyzerNRFEmbeddedLayoutWorkspaceTests.swift
+[262/296] Compiling GiftUIHostConfigurationTests StaticSignalAnalyzerNRFEmbeddedSemanticRegionTests.swift
+[263/296] Compiling GiftUIHostConfigurationTests StaticSignalAnalyzerNRFEndpointTests.swift
+[264/296] Compiling GiftUIHostConfigurationTests StaticSignalAnalyzerNRFTextPoolWriterTests.swift
+[265/296] Compiling GiftUIHostConfigurationTests StaticSignalAnalyzerNRFTileStorageTests.swift
+[266/296] Compiling GiftUIHostConfigurationTests StaticSignalAnalyzerNRFTopologyWriterTests.swift
+[267/296] Compiling GiftUIHostConfigurationTests StaticSignalAnalyzerNRFUTF8TextPoolTests.swift
+[268/296] Compiling GiftUIHostConfigurationTests SignalAnalyzerIntegratedCycleTests.swift
+[269/296] Compiling GiftUIHostConfigurationTests StaticSignalAnalyzerNRFAssemblyTests.swift
+[270/296] Compiling GiftUIHostConfigurationTests StaticSignalAnalyzerNRFCanvasTableTests.swift
+[271/296] Compiling GiftUIHostConfigurationTests StaticSignalAnalyzerNRFCaptureFactAdmissionTests.swift
+[272/296] Compiling GiftUIHostConfigurationTests StaticSignalAnalyzerNRFCaptureHistoryTests.swift
+[273/296] Compiling GiftUIHostConfigurationTests StaticSignalAnalyzerNRFLayoutScopeCodecTests.swift
+[274/296] Compiling GiftUIHostConfigurationTests StaticSignalAnalyzerNRFLayoutTextCodecTests.swift
+[275/296] Compiling GiftUIHostConfigurationTests StaticSignalAnalyzerNRFLayoutWorkspaceTests.swift
+[276/296] Compiling GiftUIHostConfigurationTests StaticSignalAnalyzerNRFLivePathStorageTests.swift
+[277/296] Compiling GiftUIHostConfigurationTests StaticSignalAnalyzerNRFPackedSemanticRecordsTests.swift
+[278/296] Compiling GiftUIHostConfigurationTests StaticSignalAnalyzerNRFPresentationCompositionTests.swift
+[279/296] Compiling GiftUIHostConfigurationTests StaticSignalAnalyzerNRFPresentationInputsTests.swift
+[280/296] Compiling GiftUIHostConfigurationTests StaticSignalAnalyzerNRFPrimitivePayloadTests.swift
+[281/296] Compiling GiftUIHostConfigurationTests StaticSignalAnalyzerNRFModelCaptureStateTests.swift
+[282/296] Compiling GiftUIHostConfigurationTests StaticSignalAnalyzerNRFModelLocationTests.swift
+[283/296] Compiling GiftUIHostConfigurationTests StaticSignalAnalyzerNRFModelTextWriterTests.swift
+[284/296] Compiling GiftUIHostConfigurationTests StaticSignalAnalyzerNRFModifierPayloadTests.swift
+[285/296] Compiling GiftUIHostConfigurationTests StaticSignalAnalyzerNRFDisplayTargetTests.swift
+/Users/eugene/work/GiftUI/Tests/GiftUIHostConfigurationTests/StaticSignalAnalyzerNRFDrawingWorkspaceTests.swift:67:9: warning: no calls to throwing functions occur within 'try' expression
+65 |     var planBytes = [UInt8](repeating: 0, count: 13_536)
+66 |     try pathBytes.withUnsafeMutableBytes { path in
+67 |         try planBytes.withUnsafeMutableBytes { plan in
+   |         `- warning: no calls to throwing functions occur within 'try' expression
+68 |             var workspace = StaticSignalAnalyzerNRFDrawingWorkspace(
+69 |                 pathRegion: path, planRegion: plan, capacity: limits
+[286/296] Compiling GiftUIHostConfigurationTests StaticSignalAnalyzerNRFDrawingPlanRecordsTests.swift
+/Users/eugene/work/GiftUI/Tests/GiftUIHostConfigurationTests/StaticSignalAnalyzerNRFDrawingWorkspaceTests.swift:67:9: warning: no calls to throwing functions occur within 'try' expression
+65 |     var planBytes = [UInt8](repeating: 0, count: 13_536)
+66 |     try pathBytes.withUnsafeMutableBytes { path in
+67 |         try planBytes.withUnsafeMutableBytes { plan in
+   |         `- warning: no calls to throwing functions occur within 'try' expression
+68 |             var workspace = StaticSignalAnalyzerNRFDrawingWorkspace(
+69 |                 pathRegion: path, planRegion: plan, capacity: limits
+[287/296] Compiling GiftUIHostConfigurationTests StaticSignalAnalyzerNRFDrawingPlanStorageTests.swift
+/Users/eugene/work/GiftUI/Tests/GiftUIHostConfigurationTests/StaticSignalAnalyzerNRFDrawingWorkspaceTests.swift:67:9: warning: no calls to throwing functions occur within 'try' expression
+65 |     var planBytes = [UInt8](repeating: 0, count: 13_536)
+66 |     try pathBytes.withUnsafeMutableBytes { path in
+67 |         try planBytes.withUnsafeMutableBytes { plan in
+   |         `- warning: no calls to throwing functions occur within 'try' expression
+68 |             var workspace = StaticSignalAnalyzerNRFDrawingWorkspace(
+69 |                 pathRegion: path, planRegion: plan, capacity: limits
+[288/296] Compiling GiftUIHostConfigurationTests StaticSignalAnalyzerNRFDrawingWorkspaceTests.swift
+/Users/eugene/work/GiftUI/Tests/GiftUIHostConfigurationTests/StaticSignalAnalyzerNRFDrawingWorkspaceTests.swift:67:9: warning: no calls to throwing functions occur within 'try' expression
+65 |     var planBytes = [UInt8](repeating: 0, count: 13_536)
+66 |     try pathBytes.withUnsafeMutableBytes { path in
+67 |         try planBytes.withUnsafeMutableBytes { plan in
+   |         `- warning: no calls to throwing functions occur within 'try' expression
+68 |             var workspace = StaticSignalAnalyzerNRFDrawingWorkspace(
+69 |                 pathRegion: path, planRegion: plan, capacity: limits
+[289/296] Compiling GiftUIHostConfigurationTests StaticSignalAnalyzerNRFEmbeddedLayoutScopeCodecTests.swift
+/Users/eugene/work/GiftUI/Tests/GiftUIHostConfigurationTests/StaticSignalAnalyzerNRFDrawingWorkspaceTests.swift:67:9: warning: no calls to throwing functions occur within 'try' expression
+65 |     var planBytes = [UInt8](repeating: 0, count: 13_536)
+66 |     try pathBytes.withUnsafeMutableBytes { path in
+67 |         try planBytes.withUnsafeMutableBytes { plan in
+   |         `- warning: no calls to throwing functions occur within 'try' expression
+68 |             var workspace = StaticSignalAnalyzerNRFDrawingWorkspace(
+69 |                 pathRegion: path, planRegion: plan, capacity: limits
+[290/296] Compiling GiftUIHostConfigurationTests HostApplicationIntegrationTests.swift
+[291/296] Compiling GiftUIHostConfigurationTests SignalAnalyzerDiagnosticProfileMatrixTests.swift
+[292/296] Compiling GiftUIHostConfigurationTests SignalAnalyzerDynamicSemanticJoinTests.swift
+[293/296] Compiling GiftUIHostConfigurationTests SignalAnalyzerHostActionDispatchTests.swift
+[294/296] Compiling GiftUIHostConfigurationTests SignalAnalyzerHostFactAdmissionTests.swift
+[294/296] Write Objects.LinkFileList
+[295/296] Linking GiftUIPackageTests
+Build complete! (12.72s)

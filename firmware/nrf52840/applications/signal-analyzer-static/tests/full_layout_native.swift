@@ -1,3 +1,94 @@
+import GiftUI
+import GiftUILayout
+import GiftUISemanticCore
+
+private struct StartupTextFixture: SemanticLayoutView {
+    let scalars: [UInt32]
+    let rootIdentity: UInt16 = 1
+    let scopeCount: UInt16 = 1
+    func primitive(at identity: UInt16) -> SemanticLayoutPrimitive? { identity == 1 ? .text : nil }
+    func childCount(of identity: UInt16) -> UInt16? { identity == 1 ? 0 : nil }
+    func child(of identity: UInt16, at index: UInt16) -> UInt16? { nil }
+    func modifierCount(of identity: UInt16) -> UInt16? { identity == 1 ? 0 : nil }
+    func modifierScope(of identity: UInt16, at index: UInt16) -> UInt16? { nil }
+    func modifier(of identity: UInt16, at index: UInt16) -> SemanticLayoutModifier? { nil }
+    func textScalarCount(of identity: UInt16) -> UInt16? { identity == 1 ? UInt16(scalars.count) : nil }
+    func textScalar(of identity: UInt16, at index: UInt16) -> UInt32? {
+        identity == 1 && Int(index) < scalars.count ? scalars[Int(index)] : nil
+    }
+}
+
+private func checkStartupTextCorpus() {
+    let scopes = UnsafeMutableRawPointer.allocate(byteCount: 3_136, alignment: 8)
+    let text = UnsafeMutableRawPointer.allocate(byteCount: 4_704, alignment: 8)
+    defer { scopes.deallocate(); text.deallocate() }
+    var workspace = StaticSignalAnalyzerNRFCommonLayoutWorkspace(
+        packed: StaticSignalAnalyzerNRFEmbeddedLayoutWorkspace(
+            scopes: UnsafeMutableRawBufferPointer(start: scopes, count: 3_136),
+            text: UnsafeMutableRawBufferPointer(start: text, count: 4_704))!)
+    let cases: [(scalars: [UInt32], width: GeometryScalar, height: GeometryScalar, lines: UInt16, glyphs: UInt16, lineLimit: UInt16, glyphLimit: UInt16, succeeds: Bool)] = [
+        ([], 320, 240, 1, 0, 128, 224, true),
+        ([13, 10, 68, 10, 13, 68], 320, 240, 4, 2, 128, 224, true),
+        ([68, 68], 1, 1, 2, 2, 128, 224, true),
+        ([68, 68], 320, 240, 1, 2, 128, 2, true),
+        ([68, 68], 320, 240, 1, 2, 128, 1, false),
+        ([10], 320, 240, 2, 0, 2, 224, true),
+        ([10], 320, 240, 2, 0, 1, 224, false),
+        (Array(repeating: 10, count: 127), 320, 240, 128, 0, 128, 224, true),
+        (Array(repeating: 10, count: 128), 320, 240, 129, 0, 128, 224, false),
+        (Array(repeating: 68, count: 224), 320, 240, 9, 224, 128, 224, true),
+        (Array(repeating: 68, count: 225), 320, 240, 9, 225, 128, 224, false),
+    ]
+    // The registered D glyph advances 12 points: 26 glyphs fit a 320-point line.
+    for _ in 0 ..< 2 {
+        for item in cases {
+            let limits = LayoutLimits(maximumScopes: 98, maximumDepth: 19,
+                maximumTextScalars: 224, maximumTextLines: item.lineLimit,
+                maximumPositionedGlyphs: item.glyphLimit)!
+            var engine = LayoutEngine(limits: limits, validatedCounters: LayoutCounters(limits: limits))
+            let zero = Size(width: 0, height: 0)!
+            precondition(workspace.acquireLayout())
+            precondition(workspace.appendScope(identity: 1, measurement: LayoutMeasurement(idealSize: zero, resolvedSize: zero)))
+            let semantic = StartupTextFixture(scalars: item.scalars)
+            let measurement = engine.measure(semantic: semantic, metrics: StaticSignalAnalyzerNRFEmbeddedFontMetrics(),
+                proposal: ProposedSize(width: item.width, height: item.height)!, workspace: &workspace)
+            precondition((measurement != nil) == item.succeeds, "startup shared text bound")
+            if let measurement {
+                precondition(workspace.textLineCount == item.lines)
+                precondition(workspace.positionedGlyphCount == item.glyphs)
+                precondition(workspace.textLine(at: workspace.textLineCount) == nil)
+                precondition(workspace.positionedGlyph(at: workspace.positionedGlyphCount) == nil)
+                let bounds = Rect(origin: Point(x: 7, y: 11), size: measurement.resolvedSize)!
+                precondition(engine.place(semantic: semantic, metrics: StaticSignalAnalyzerNRFEmbeddedFontMetrics(),
+                    rootBounds: bounds, workspace: &workspace))
+                precondition(workspace.packed.reserveTextScalars(engine.finalCounters.textScalarCount))
+                let published = workspace.packed.publish(rootIdentity: 1, expectedScopeCount: 1)!
+                precondition(published.isPublished)
+                precondition(published.line(at: 0)?.identity == 1)
+                workspace.resetLayout()
+                precondition(!published.isPublished)
+            } else {
+                workspace.resetLayout()
+            }
+            precondition(!workspace.isLayoutActive && workspace.scopeCount == 0)
+        }
+    }
+    let limits = LayoutLimits(maximumScopes: 98, maximumDepth: 19,
+        maximumTextScalars: 224, maximumTextLines: 128, maximumPositionedGlyphs: 224)!
+    var engine = LayoutEngine(limits: limits, validatedCounters: LayoutCounters(limits: limits))
+    precondition(workspace.acquireLayout())
+    let zero = Size(width: 0, height: 0)!
+    precondition(workspace.appendScope(identity: 1, measurement: LayoutMeasurement(idealSize: zero, resolvedSize: zero)))
+    let semantic = StartupTextFixture(scalars: [68, 68])
+    let measurement = engine.measure(semantic: semantic, metrics: StaticSignalAnalyzerNRFEmbeddedFontMetrics(),
+        proposal: ProposedSize(width: 320, height: 240)!, workspace: &workspace)!
+    let overflow = Rect(origin: Point(x: 32_767, y: 0), size: measurement.resolvedSize)!
+    precondition(!engine.place(semantic: semantic, metrics: StaticSignalAnalyzerNRFEmbeddedFontMetrics(),
+        rootBounds: overflow, workspace: &workspace))
+    workspace.resetLayout()
+    precondition(!workspace.isLayoutActive)
+}
+
 // Execute the firmware's exact amalgamated Swift source on a native host.
 // This checks the production diagnostic semantic-to-layout path without a board.
 @main
@@ -35,6 +126,7 @@ struct FullLayoutNativeCheck {
     ) -> Int32 = { _, _, _, _, _, _ in -1 }
 
     static func main() {
+        checkStartupTextCorpus()
         let profile = UnsafeMutableRawPointer.allocate(byteCount: 39_696, alignment: 8)
         let capture = UnsafeMutableRawPointer.allocate(byteCount: 115_392, alignment: 8)
         let raster = UnsafeMutableRawPointer.allocate(byteCount: 2_560, alignment: 8)
@@ -53,6 +145,10 @@ struct FullLayoutNativeCheck {
             giftUISignalAnalyzerTopologyValid(profile, 39_696, capture, 115_392) == 1,
             "diagnostic semantic topology failed"
         )
+        precondition(giftUISignalAnalyzerLayoutTextValid(profile, 39_696) == 1)
+        precondition(giftUISignalAnalyzerLayoutTextValid(nil, 39_696) == 0)
+        precondition(giftUISignalAnalyzerLayoutTextValid(profile, 39_695) == 0)
+        precondition(giftUISignalAnalyzerLayoutTextValid(profile, 39_696) == 1)
         precondition(
             giftUISignalAnalyzerFullLayoutValid(profile, 39_696) == 1,
             "full diagnostic layout failed"

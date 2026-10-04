@@ -78,12 +78,12 @@ tasks:
     evidence: []
     blockers: []
   T11.3:
-    disposition: pending
+    disposition: completed
     requirements: ["SA-AC-005", "SA-AC-006", "SA-AC-025", "SA-AC-039", "SA-AC-041", "SA-AC-045"]
     implementation: ["firmware/nrf52840/applications/signal-analyzer-static/src/StaticPreset.swift", "firmware/nrf52840/applications/signal-analyzer-static/CMakeLists.txt", "Sources/SignalAnalyzerTargetHost"]
     checks: ["scripts/contracts/check-spec-001-nrf-full-layout-native.sh", "Tests/GiftUIHostConfigurationTests/StaticSignalAnalyzerNRFEmbeddedSemanticRegionTests.swift", "Tests/GiftUIHostConfigurationTests/StaticSignalAnalyzerNRFEmbeddedLayoutTextCodecTests.swift"]
     profiles: ["macos-dynamic", "macos-static", "raspberry-pi-armv6", "nrf52840-embedded"]
-    evidence: []
+    evidence: ["docs/iterations/iteration-002-cleanup/evidence/06-startup-text/result.md"]
     blockers: []
   T11.4:
     disposition: pending

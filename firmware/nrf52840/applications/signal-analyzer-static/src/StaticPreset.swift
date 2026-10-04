@@ -1,3 +1,37 @@
+private struct StaticNRFStartupTextSemantic: SemanticLayoutView {
+    let rootIdentity: UInt16
+    let source: StaticSignalAnalyzerNRFEmbeddedSemanticView
+    let scopeCount: UInt16 = 1
+
+    func primitive(at identity: UInt16) -> SemanticLayoutPrimitive? {
+        identity == rootIdentity ? .text : nil
+    }
+
+    func childCount(of identity: UInt16) -> UInt16? {
+        identity == rootIdentity ? 0 : nil
+    }
+
+    func child(of identity: UInt16, at index: UInt16) -> UInt16? { nil }
+
+    func modifierCount(of identity: UInt16) -> UInt16? {
+        identity == rootIdentity ? 0 : nil
+    }
+
+    func modifierScope(of identity: UInt16, at index: UInt16) -> UInt16? { nil }
+
+    func modifier(of identity: UInt16, at index: UInt16) -> SemanticLayoutModifier? {
+        nil
+    }
+
+    func textScalarCount(of identity: UInt16) -> UInt16? {
+        identity == rootIdentity ? source.textScalarCount(of: identity) : nil
+    }
+
+    func textScalar(of identity: UInt16, at index: UInt16) -> UInt32? {
+        identity == rootIdentity ? source.textScalar(of: identity, at: index) : nil
+    }
+}
+
 private enum StaticSignalAnalyzerNRFEmbeddedCapabilitySelection {
     // Selected once for the immutable host lifetime, never reconstructed by an endpoint.
     static let effective: EffectiveRasterPresentation? = resolve()
@@ -344,37 +378,31 @@ public func giftUISignalAnalyzerLayoutTextValid(
         layout.glyph(at: 0) == glyph
     else { return 0 }
     layout.reset()
-    guard
-        let semantic = StaticSignalAnalyzerNRFEmbeddedSemanticView(
-            published: published
-        ), layout.acquire(),
-        layout.appendScope(
-            identity: title.identity,
-            idealWidth: 0, idealHeight: 0,
-            width: 0, height: 0
-        ),
-        StaticSignalAnalyzerNRFEmbeddedTextMeasure.run(
-            identity: title.identity, semantic: semantic,
-            proposalWidth: 320, proposalHeight: 240,
-            workspace: &layout
-        ),
-        StaticSignalAnalyzerNRFEmbeddedTextPlace.run(
-            identity: title.identity, semantic: semantic,
-            originX: 0, originY: 0,
-            inheritedClipX: 0, inheritedClipY: 0,
-            inheritedClipWidth: 320, inheritedClipHeight: 240,
-            workspace: &layout
-        ), layout.textLineCount > 0, layout.positionedGlyphCount > 0
+    guard let semantic = StaticSignalAnalyzerNRFEmbeddedSemanticView(published: published),
+        let limits = LayoutLimits(maximumScopes: 98, maximumDepth: 19,
+            maximumTextScalars: 224, maximumTextLines: 128, maximumPositionedGlyphs: 224),
+        let proposal = ProposedSize(width: 320, height: 240),
+        let zero = Size(width: 0, height: 0)
     else { return 0 }
-    guard
-        let resolved = layout.publish(
-            rootIdentity: title.identity, expectedScopeCount: 1
-        ), resolved.isPublished,
-        resolved.scope(at: 0)?.identity == title.identity,
+    let oneText = StaticNRFStartupTextSemantic(rootIdentity: title.identity, source: semantic)
+    var shared = StaticSignalAnalyzerNRFCommonLayoutWorkspace(packed: layout)
+    var engine = LayoutEngine(limits: limits, validatedCounters: LayoutCounters(limits: limits))
+    guard shared.acquireLayout(), shared.appendScope(identity: title.identity,
+        measurement: LayoutMeasurement(idealSize: zero, resolvedSize: zero)),
+        let measurement = engine.measure(semantic: oneText,
+            metrics: StaticSignalAnalyzerNRFEmbeddedFontMetrics(), proposal: proposal,
+            workspace: &shared),
+        let bounds = Rect(origin: Point(x: 0, y: 0), size: measurement.resolvedSize),
+        engine.place(semantic: oneText, metrics: StaticSignalAnalyzerNRFEmbeddedFontMetrics(),
+            rootBounds: bounds, workspace: &shared),
+        shared.packed.textLineCount > 0, shared.packed.positionedGlyphCount > 0,
+        shared.packed.reserveTextScalars(engine.finalCounters.textScalarCount),
+        let resolved = shared.packed.publish(rootIdentity: title.identity, expectedScopeCount: 1),
+        resolved.isPublished, resolved.scope(at: 0)?.identity == title.identity,
         resolved.line(at: 0)?.identity == title.identity,
         resolved.glyph(at: 0)?.identity == title.identity
-    else { return 0 }
-    layout.reset()
+    else { shared.resetLayout(); return 0 }
+    shared.resetLayout()
     guard !resolved.isPublished else { return 0 }
     return 1
 }
