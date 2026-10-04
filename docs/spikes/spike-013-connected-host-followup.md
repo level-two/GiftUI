@@ -2,7 +2,7 @@
 id: SPIKE-013
 feature: signal-analyzer
 title: Connected Host Phase and Failure Follow-up
-status: active
+status: completed
 authors:
   - codex
 created: 2026-10-04
@@ -75,12 +75,19 @@ Connected flashing uses the repository environment and explicit J-Link runner.
 
 ## Results
 
-nRF cases completed; Pi connectivity restored and the verbose phase trace
-completed. One accumulated-counter comparison remains. See
-[Step 26](../iterations/iteration-002-review/26-connected-nrf-phases-and-failure.md)
-for costs, Clear/diagnostic, injected refusal and fresh activation evidence.
-[Step29](../iterations/iteration-002-review/29-pi-connected-phase-trace.md) records
-the Pi trace and its observer-cost concern.
+Completed. [Step26](../iterations/iteration-002-review/26-connected-nrf-phases-and-failure.md)
+records nRF costs, Clear/maximum diagnostic, injected refusal, teardown and fresh
+activation. Normal nRF layout/production take 3.59–3.71s / 16.46–17.01s; real SPI
+writes take about 1.11s within production. No optimization is selected.
+
+Pi connectivity was restored after the recorded Step 27 blocker.
+[Step 29](../iterations/iteration-002-review/29-pi-connected-phase-trace.md)
+preserves the verbose trace; [Step 30](../iterations/iteration-002-review/30-pi-aggregate-phase-comparison.md)
+records accumulated counters at median 1.381s pipeline,1.219s production and
+0.699s mmap projection, 34 scheduled deliveries and 9,820KiB sampled peak RSS.
+Both cases completed bounded teardown; original production identities remain
+unchanged. The quieter run reduces observer work but is still an instrumented
+copy, not a final-artifact acceptance pass.
 
 ## Limitations
 
@@ -91,10 +98,13 @@ not a full fault/recovery corpus. Painted extents are observations, not bounds.
 
 ## Disposition
 
-Feed measured costs and remaining proof barriers back to FW-032/FW-033.
+Close the bounded experiment. Feed measured costs and remaining proof barriers
+back to FW-027/FW-032/FW-033. Production optimization and complete acceptance
+evidence require their own selected work; no experiment question remains pending.
 
 ## References
 
+- [FW-027](../future-work/fw-027-pi-performance-investigation-resumption.md)
 - [FW-032](../future-work/fw-032-nrf-performance-improvement.md)
 - [FW-033](../future-work/fw-033-connected-validation-follow-up.md)
 - [Prior connected reconciliation](../iterations/iteration-002-review/24-connected-reconciliation.md)

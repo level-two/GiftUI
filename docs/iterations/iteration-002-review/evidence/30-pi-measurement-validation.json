@@ -1,0 +1,84 @@
+{
+  "revision": "57c4fb656e6730fca8eae1d097022e9de7071559",
+  "utc": "2026-10-04T20:51:32.429152+00:00",
+  "checks": {
+    "preparation_inputs_verified": true,
+    "maintained_inputs_unchanged": true,
+    "original_72_check_archive_unchanged": true,
+    "historical_closeout_nrf_archives_unchanged": [
+      "docs/iterations/iteration-002-review/evidence/28-host-followup-validation.json",
+      "docs/iterations/iteration-002-review/evidence/28-host-restoration-logs.tar.gz",
+      "experiments/spike-013-connected-host-followup/evidence/normal-logs.tar.gz",
+      "experiments/spike-013-connected-host-followup/evidence/refusal-logs.tar.gz"
+    ],
+    "python_syntax_files": 10,
+    "local_links_checked": 135,
+    "shell": {
+      "exit_code": 0,
+      "output": ""
+    },
+    "whitespace": {
+      "exit_code": 0,
+      "output": ""
+    },
+    "formatter": {
+      "exit_code": 0,
+      "output": ""
+    },
+    "governance": {
+      "exit_code": 0,
+      "output": "Authority graph validation passed: 170 nodes, 1705 edges.\n"
+    },
+    "local_ssh_upload_processes": []
+  },
+  "comparison": {
+    "pi": {
+      "cycles": 25,
+      "pixel_producing_cycles": 24,
+      "median_pixel_producing_microseconds": 1845550.0,
+      "median_all_pipeline_microseconds": 1840887,
+      "median_offer_microseconds": 1664640,
+      "median_mmap_microseconds": 801999,
+      "source_deliveries": 26,
+      "final_capture_count": 30,
+      "median_source_spacing_seconds": 1.859379,
+      "peak_sampled_rss_kib": 9752,
+      "archive_sha256": "fe8f624e432edf3c6d62c45f299996e943706f383c5137e1cd96fe96234a4037"
+    },
+    "pi-aggregate": {
+      "cycles": 33,
+      "pixel_producing_cycles": 32,
+      "median_pixel_producing_microseconds": 1383297.5,
+      "median_all_pipeline_microseconds": 1380512,
+      "median_offer_microseconds": 1218566,
+      "median_mmap_microseconds": 699335,
+      "source_deliveries": 34,
+      "final_capture_count": 38,
+      "median_source_spacing_seconds": 1.399899,
+      "peak_sampled_rss_kib": 9820,
+      "archive_sha256": "62f66b2217b698d8b4d0b2dc66740ee91f4a876b77d40af76f38d62f60dea761"
+    }
+  },
+  "device": {
+    "architecture": "armv6l",
+    "final_remote_binary_hashes": {
+      "SignalAnalyzerPiResearch": "cbd434f051724ccdb09fed44998ffd4124b997e385b96734d8226911ace5afa0",
+      "SignalAnalyzerPiAggregateResearch": "0b6513d22202397927ae72946904af8ac4c4524a4add0b4bc504d029e64ef30f",
+      "SignalAnalyzerRaspberryPiARMv6": "acf57db5625eb1d2802210aaa6e30128749277d81ad26a3f313b79f8448d8d7e"
+    },
+    "remaining_analyzer_processes": [],
+    "services_changed": false
+  },
+  "verification_archive": {
+    "sha256": "79d91f5638403e03d6ed9519c43f2fecf419a38ac42e5f69db376cb1128a7b15",
+    "files": {
+      "resumed-doctor.log": "a74c12b1f674a7864fa05ae914d98b41ef8e8abf174403fa051c52478b62d58e",
+      "resumed-target-identity.log": "81e181edf0de762e06d0244ad7c71d0d84dd3ecde86b6c687ebcecd603d0601a",
+      "resumed-final-state.log": "1c9a01ed0e65a8dc77ec9b6e5a03e37353eb6e27e1748b58cf41e5f2f3fb6141",
+      "resumed-run.log": "2226b0b66e3ab6121f7cbdc1c88344a4ca7df61e3b9f2aaa927b17e687bb2ea5",
+      "aggregate/final-state.log": "5cf3e97c677bbc03803a42d457a8713fa4ce5a5b6a73c6548e10d8fb2b7ae10c",
+      "aggregate/run.log": "ce59858858ec5c987de4a63720b9e417bf37a9b62c15ca189b36cd7f578c585d",
+      "aggregate/local-final-processes.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  }
+}

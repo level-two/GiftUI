@@ -88,13 +88,30 @@ unselected; this baseline does not close the four-fps/sustained-workload gap.
 
 ## Phase-profiler preparation and connectivity blocker
 
-[Step27](../iterations/iteration-002-review/27-pi-profiler-preparation.md) prepares
+[Step 27](../iterations/iteration-002-review/27-pi-profiler-preparation.md) prepares
 and verifies an isolated ARMv6 research product with eleven owner-stage timers,
 mmap timing and actual source/capture observations. Pi initially answered but
 SSH subsequently timed out over both address families. No new phase result is
-claimed. Resume SPIKE-013's bounded45s measurement when connectivity is restored;
+claimed. Resume SPIKE-013's bounded 45s measurement when connectivity is restored;
 existing device authorization remains in force. Production binary/service
 configuration remains unchanged, and compatible optimization is unselected.
+
+## Resumed Pi phase measurement
+
+Connectivity was restored and the maintainer requested resumption.
+[Step 29](../iterations/iteration-002-review/29-pi-connected-phase-trace.md) preserves
+an intrusive per-payload trace. [Step 30](../iterations/iteration-002-review/30-pi-aggregate-phase-comparison.md)
+uses accumulated counters: median pipeline 1.381s, offer/production 1.219s and
+nested mmap projection 0.699s; semantic/layout/preflight are 74.3/53.3/25.9ms.
+There are 34 accepted scheduled deliveries in the bounded 45s run, median 1.400s
+apart, final capture 38 including four bootstrap records, and sampled peak
+RSS 9,820KiB. Graceful teardown and unchanged production hashes are verified.
+
+SPIKE-013 is completed; the connectivity blocker is resolved. This localizes
+future performance investigation to projection and the rest of production.
+Do not infer panel-scanout time or isolated raster cost from these nested
+medians. Four-fps and lossless 80-event/s requirements remain unmet; no production
+optimization, buffering policy or criterion amendment is selected.
 
 ## References
 

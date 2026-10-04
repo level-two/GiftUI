@@ -2,7 +2,7 @@
 id: ITERATION-002
 title: Cleanup
 status: draft
-revision: 5
+revision: 6
 approved_revision: null
 created: 2026-10-04
 updated: 2026-10-04
@@ -96,7 +96,7 @@ on coverage and explicit finding dispositions,
 not on repeated agent passes ceasing to produce suggestions. Discovery does not
 automatically select remediation or expand an approved iteration.
 
-The [updated research reconciliation](iteration-002-review/28-host-followup-reconciliation.md)
+The [updated research reconciliation](iteration-002-review/30-pi-aggregate-phase-comparison.md)
 records eight findings, all bounded review perspectives, the passing four-profile
 gate and completed bounded follow-up experiments/assessments. It recommends correctness and
 evidence fixes first, then measured startup/source-selection cleanups and the
@@ -215,7 +215,7 @@ localizes future performance investigation without selecting an optimization or
 runtime replacement. Programmatic Clear/diagnostic and one refusal/fresh-activation
 case are scoped supplements to existing connected exceptions.
 
-[Step27](iteration-002-review/27-pi-profiler-preparation.md)'s separate ARMv6
+[Step 27](iteration-002-review/27-pi-profiler-preparation.md)'s separate ARMv6
 profiler is ready, but Pi connectivity blocks its measurement. Resume that
 specific task when SSH is restored. Physical-contact provenance, complete
 independent traces/pixels, other fault modes and lossless sustained admission
@@ -226,3 +226,20 @@ integrity, then supported startup/source-selection/generator cleanup. This
 revision does not select fixes, approve scope, promise cadence remediation or
 amend capture retention. `approved_revision`, approval, feature stages,
 authoritative contracts and approved MVP exceptions remain unchanged.
+
+## Pi resumption — revision 6
+
+The maintainer restored connectivity and authorized resumption of the prepared
+Pi measurement. [Steps 29–30](iteration-002-review/30-pi-aggregate-phase-comparison.md)
+complete SPIKE-013: the quieter copied Dynamic pipeline measures median 1.381s,
+including production 1.219s and nested mmap projection 0.699s. The real source loop
+delivers 34 scheduled records in the bounded 45s observation, with median 1.400s
+spacing. Teardown and unchanged production identity are verified.
+
+No measurement or generic audit task remains in this bounded research queue.
+Performance requirements and full physical/independent-pixel/fault/sustained-load
+acceptance coverage remain explicit follow-up gates. This evidence localizes
+future performance work without adding it to the cleanup commitment. The
+recommended correctness/tooling and supported-simplification priorities remain.
+Revision6 stays draft; approval, accepted architecture, feature stages, contracts
+and approved MVP exceptions are unchanged.

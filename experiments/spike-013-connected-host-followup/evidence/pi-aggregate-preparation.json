@@ -1,0 +1,11 @@
+{
+  "revision": "57c4fb656e6730fca8eae1d097022e9de7071559",
+  "source": "accepted verbose package; original copied-owner bodies and module dependencies retained",
+  "inputs": {
+    ".build/raspberry-pi/spike-013/aggregate/package/Package.swift": "caeed55a3128e215fe7b48d767220468f59c132b0650792252b6d4e94f6ca084",
+    ".build/raspberry-pi/spike-013/aggregate/package/Sources/GiftUIPlatformRaspberryPi/LinuxPiScreenDevices.swift": "fb662cc175728a2c65caeae1bd9339335bfdd0e64dfbd8fbe0f924532af1da1d",
+    ".build/raspberry-pi/spike-013/aggregate/package/Sources/SignalAnalyzerTargetHost/PiResearchClock.swift": "98d0f10b3aa8cab042f0e0528006dcc9997463b83ec5a4309f79733f9c7bfac2",
+    ".build/raspberry-pi/spike-013/aggregate/package/Sources/SignalAnalyzerPiResearch/LinuxSignalAnalyzerPiProcessLoop.swift": "d07e1a7e97d3b56311033ac4332e443fc8bc25bc1657a569278a4101cd191a04",
+    "experiments/spike-013-connected-host-followup/prepare-pi-aggregate.py": "8760880ca4418681090f867fdfdd8f156243bbe14f24d336aadb64289bea4d89"
+  }
+}

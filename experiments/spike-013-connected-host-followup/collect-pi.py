@@ -11,10 +11,12 @@ import sys
 def emit(kind, **values):
     print(json.dumps(dict(kind=kind, utc=datetime.datetime.now(datetime.timezone.utc).isoformat(), **values)), flush=True)
 
-binary = Path.home() / "giftui/experiments/iteration-002-spike-013/SignalAnalyzerPiResearch"
+assert len(sys.argv) in (2, 3) and (len(sys.argv) == 2 or sys.argv[2] == "aggregate")
+product = "SignalAnalyzerPiAggregateResearch" if len(sys.argv) == 3 else "SignalAnalyzerPiResearch"
+binary = Path.home() / "giftui/experiments/iteration-002-spike-013" / product
 arch = subprocess.check_output(["uname", "-m"], text=True).strip()
 assert arch == "armv6l", arch
-assert len(sys.argv) == 2 and hashlib.sha256(binary.read_bytes()).hexdigest() == sys.argv[1]
+assert hashlib.sha256(binary.read_bytes()).hexdigest() == sys.argv[1]
 emit("identity", architecture=arch, hostname=subprocess.check_output(["hostname"], text=True).strip(),
      binary_digest=subprocess.check_output(["sha256sum", str(binary)], text=True).split()[0],
      temperature_millidegrees=Path("/sys/class/thermal/thermal_zone0/temp").read_text().strip())

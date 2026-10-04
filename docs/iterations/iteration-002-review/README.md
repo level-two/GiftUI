@@ -37,12 +37,13 @@ draft; research does not select or authorize implementation.
 | 21 — Research closeout | [Completed queue and draft scope revision 3](21-research-closeout.md) | Hardware-free round concluded; connected supplement authorized afterward |
 | 22 — Connected baseline | [Production timing, software action limits and painted startup](22-connected-baseline.md) | Pi 0.717fps; nRF 21.2s median publication gap; startup extent 19,480 bytes; full connected corpus incomplete |
 | 23 — Connected candidates | [Calibrated on-board hierarchy costs](23-connected-hierarchy-candidates.md) | Packed 55.6ms, roles 54.3ms; counting 6.26ms/17,896-byte extent; replacement remains unsupported |
-| 24 — Connected reconciliation | [Prior campaign disposition](24-connected-reconciliation.md) | Historical closeout; focused corpus/phase work resumed in Steps25–28 |
+| 24 — Connected reconciliation | [Prior campaign disposition](24-connected-reconciliation.md) | Historical closeout; focused corpus/phase work resumed in Steps 25–28 |
 | 25 — Quiescent software input | [Production service-boundary corpus](25-quiescent-software-input.md) | Start/Stop, windows, disabled Plus, movement and stale subset recorded; physical/full corpus separate |
 | 26 — nRF phases/failure | [Actual-owner copied workload](26-connected-nrf-phases-and-failure.md) | Layout/production dominate; Clear/diagnostic and one pixel refusal/fresh activation recorded; no optimization selected |
 | 27 — Pi phase profiler | [Verified preparation and resumption](27-pi-profiler-preparation.md) | ARMv6 build ready; connected measurement blocked by lost SSH connectivity |
 | 28 — Follow-up reconciliation | [Results, restoration and remaining blockers](28-host-followup-reconciliation.md) | nRF research completed/restored; Pi profiler ready but connectivity blocks measurement; draft scope revision5 |
 | 29 — Pi phase trace | [Resumed bounded measurement](29-pi-connected-phase-trace.md) | Connectivity restored; verbose phase/source/RSS trace recorded; quieter comparison pending |
+| 30 — Pi accumulated counters | [Comparison and Spike closeout](30-pi-aggregate-phase-comparison.md) | Median1.381s; production/projection dominate; bounded research completed, original artifact unchanged |
 
 [Findings register](findings.md) records confirmed observations separately from
 hypotheses and preferences. A step's completion does not imply every module or
@@ -56,7 +57,7 @@ prioritizes candidate fixes without selecting or authorizing implementation.
 Follow-up experiments in Steps 13–20 measure candidates and conclude with a
 retain-packed-runtime disposition. Clean generation is demonstrated; full
 runtime replacement is outside the proposed cleanup commitment. Connected work
-was subsequently authorized for bounded measurements; [Step 22](22-connected-baseline.md) records fresh results and limits. [Step 28](28-host-followup-reconciliation.md) is the current
+was subsequently authorized for bounded measurements; [Step 22](22-connected-baseline.md) records fresh results and limits. [Step 30](30-pi-aggregate-phase-comparison.md) is the current
 planning disposition and distinguishes remaining implementation gates from
 completed investigation.
 Read the register's counterevidence and validation limits before scope approval.
