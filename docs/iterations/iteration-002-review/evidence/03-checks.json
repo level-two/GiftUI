@@ -1,0 +1,127 @@
+{
+  "source_baseline": "6cf31f266987e917458f31f05ed8c390cda9a202",
+  "kind": "generator freshness and structural guards, not a behavioral gate",
+  "attempts": [
+    {
+      "status": "fulfilled",
+      "value": {
+        "cmd": "scripts/contracts/generate-spec-015-workload.rb --check",
+        "chunk_id": "c5e60d",
+        "wall_time_seconds": 0,
+        "exit_code": 126,
+        "original_token_count": 19,
+        "output": "zsh:1: permission denied: scripts/contracts/generate-spec-015-workload.rb\n"
+      }
+    },
+    {
+      "status": "fulfilled",
+      "value": {
+        "cmd": "scripts/contracts/generate-spec-001-nrf-font.rb --check",
+        "chunk_id": "877307",
+        "wall_time_seconds": 0,
+        "exit_code": 126,
+        "original_token_count": 19,
+        "output": "zsh:1: permission denied: scripts/contracts/generate-spec-001-nrf-font.rb\n"
+      }
+    },
+    {
+      "status": "fulfilled",
+      "value": {
+        "cmd": "scripts/contracts/generate-spec-001-nrf-canvas-table.rb --check",
+        "chunk_id": "c3ff08",
+        "wall_time_seconds": 0,
+        "exit_code": 126,
+        "original_token_count": 21,
+        "output": "zsh:1: permission denied: scripts/contracts/generate-spec-001-nrf-canvas-table.rb\n"
+      }
+    },
+    {
+      "status": "fulfilled",
+      "value": {
+        "cmd": "scripts/contracts/check-spec-009-presentation-pending.rb",
+        "chunk_id": "e8021f",
+        "wall_time_seconds": 0.258194542,
+        "exit_code": 0,
+        "original_token_count": 39,
+        "output": "SPEC-009 presentation pending passed: latest-only constant-space intent, distinct counters, supersession, clearing, and paced wake coalescing are covered.\n"
+      }
+    },
+    {
+      "status": "fulfilled",
+      "value": {
+        "cmd": "scripts/contracts/check-spec-009-render-offer-mapping.rb",
+        "chunk_id": "ae58a8",
+        "wall_time_seconds": 0.526533625,
+        "exit_code": 0,
+        "original_token_count": 39,
+        "output": "SPEC-009 render/offer mapping passed: exact producer, legal frame-offer, impossible pairing, refusal-origin, and mechanical-effect mappings are covered.\n"
+      }
+    },
+    {
+      "status": "fulfilled",
+      "value": {
+        "cmd": "scripts/contracts/check-spec-013-storage-boundaries.rb",
+        "chunk_id": "fc919a",
+        "wall_time_seconds": 0.8084435,
+        "exit_code": 0,
+        "original_token_count": 42,
+        "output": "SPEC-013 storage boundaries passed: 51 logical limits and 16 physical families have exact-limit, first-excess, audit, high-water, and allocator-bookkeeping evidence.\n"
+      }
+    },
+    {
+      "status": "fulfilled",
+      "value": {
+        "cmd": "scripts/contracts/check-spec-013-storage-registry.rb",
+        "chunk_id": "a1d4c9",
+        "wall_time_seconds": 1.047990083,
+        "exit_code": 0,
+        "original_token_count": 39,
+        "output": "SPEC-013 storage registry passed: 16 exclusive audit fields, overlay charging, simultaneous lifetimes, exclusions, and duplicate-owner rejection are exact.\n"
+      }
+    },
+    {
+      "status": "fulfilled",
+      "value": {
+        "cmd": "scripts/contracts/check-spec-013-migration.rb",
+        "chunk_id": "1bab5e",
+        "wall_time_seconds": 1.611237166,
+        "exit_code": 0,
+        "original_token_count": 34,
+        "output": "SPEC-013 migration passed: 24 removed PoC runtime, store, and test paths have explicit dispositions; no compatibility surface returned.\n"
+      }
+    },
+    {
+      "status": "fulfilled",
+      "value": {
+        "cmd": "ruby scripts/contracts/generate-spec-015-workload.rb --check",
+        "chunk_id": "9010bb",
+        "wall_time_seconds": 0.000007083,
+        "exit_code": 0,
+        "original_token_count": 27,
+        "output": "SPEC-015 generated workload is fresh (1071a83c15a74a1142dd11a5c9b43e785acac8a208577a2bb41c99e1e0cd91dd).\n"
+      }
+    },
+    {
+      "status": "fulfilled",
+      "value": {
+        "cmd": "ruby scripts/contracts/generate-spec-001-nrf-font.rb --check",
+        "chunk_id": "207447",
+        "wall_time_seconds": 0.000008541,
+        "exit_code": 0,
+        "original_token_count": 0,
+        "output": ""
+      }
+    },
+    {
+      "status": "fulfilled",
+      "value": {
+        "cmd": "ruby scripts/contracts/generate-spec-001-nrf-canvas-table.rb --check",
+        "chunk_id": "5f7aa8",
+        "wall_time_seconds": 0.0000065,
+        "exit_code": 0,
+        "original_token_count": 0,
+        "output": ""
+      }
+    }
+  ]
+}

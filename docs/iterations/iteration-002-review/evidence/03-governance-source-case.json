@@ -1,0 +1,10 @@
+{
+  "source_baseline": "6cf31f266987e917458f31f05ed8c390cda9a202",
+  "command": "scripts/validate-governance.rb",
+  "transient_input": "Added docs/iterations/iteration-002-review/findings.md to FW-032 source metadata, alongside SPEC-001 and SPEC-015",
+  "exit_code": 1,
+  "output": "Authority graph validation failed with 1 error(s):\n- docs/future-work/fw-032-nrf-performance-improvement.md: unknown source ID \"docs/iterations/iteration-002-review/findings.md\"\nGovernance validation failed: authority graph validation failed.\n",
+  "documented_rule": "docs/engineering/DOCUMENTATION_RULES.md permits repository paths in deferred-track source metadata",
+  "limitation": "This was an observed validation failure on a transient documentation edit; no production code changed",
+  "working_tree_resolution": "Removed the path metadata entry; preserved reciprocal body/References links and existing valid Spec source IDs; validator correction remains recommended research work"
+}

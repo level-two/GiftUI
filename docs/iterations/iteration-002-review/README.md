@@ -16,7 +16,7 @@ draft; research does not select or authorize implementation.
 | 00 — Baseline | [Baseline and limitations](00-baseline.md), [inventory evidence](evidence/inventory-summary.json), [coverage](coverage.md) | Recorded |
 | 01 — Dependencies and ownership | [Graph, source checks, and firmware composition](01-dependencies.md) | Structural pass recorded; detailed responsibility review remains |
 | 02 — Interfaces, types, and mappings | [Selected seams, reproduction, and simplification candidates](02-interfaces-and-mappings.md) | Targeted pass recorded; complete module review remains |
-| 03 — Requirements, flows, profiles, and tooling | Targeted contract/evidence and implementation checks | Not reviewed |
+| 03 — Requirements, flows, profiles, and tooling | [Traceability, selected flows, fresh guards, and tooling findings](03-requirements-flows-and-tooling.md) | Targeted pass recorded; full behavioral/profile review remains |
 | 04 — Reconciliation | Findings, recommended selection, and remaining review work | Not reviewed |
 
 [Findings register](findings.md) records confirmed observations separately from

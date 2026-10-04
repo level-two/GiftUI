@@ -6,7 +6,7 @@ status: captured
 authors:
   - codex
 created: 2026-10-03
-updated: 2026-10-03
+updated: 2026-10-04
 source:
   - SPEC-001
   - SPEC-015
@@ -31,6 +31,11 @@ CPU/driver faults and a matching nine-record deterministic capture prefix do
 not establish compliant sustained admission, mutation, publication or frame
 costs. Startup/idle stack use is measured at 19,480 / 27,648 bytes; worst-case
 loaded use remains unproved.
+
+The 2026-10-04 cleanup audit identified repeated linear identity lookups in
+the packed semantic/render and layout adapters. [CBR-005](../iterations/iteration-002-review/findings.md#cbr-005--repeated-packed-identity-lookups-need-phase-measurements)
+preserves this profiling hypothesis. Their aggregate cost and contribution to
+the observed cadence have not been measured; no optimization is selected.
 
 ## Why Deferred
 
@@ -57,6 +62,10 @@ exception. Preserve the gap and measurements for the next performance iteration.
 - The maintainer starts the next performance-improvement iteration.
 - A target responsiveness issue makes nRF timing a priority for a release.
 
+On resumption, measure phase costs and lookup call counts on the identified
+firmware before choosing an index or changing packed storage. Preserve bounds,
+identity validation, pixels, heap policy, and failure behavior.
+
 ## Disposition
 
 Captured for future iterations under the explicit maintainer instruction.
@@ -65,6 +74,7 @@ contract or architecture changes require their normal review and approval.
 
 ## References
 
+- [Cleanup review CBR-005](../iterations/iteration-002-review/findings.md#cbr-005--repeated-packed-identity-lookups-need-phase-measurements)
 - [SPEC-001](../specs/spec-001-signal-analyzer-reference-application.md)
 - [SPEC-015](../specs/spec-015-host-configuration.md)
 - [Pi performance](fw-027-pi-performance-investigation-resumption.md)
