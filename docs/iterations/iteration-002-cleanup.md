@@ -1,9 +1,9 @@
 ---
 id: ITERATION-002
 title: Cleanup
-status: draft
+status: approved
 revision: 7
-approved_revision: null
+approved_revision: 7
 created: 2026-10-04
 updated: 2026-10-04
 features:
@@ -12,17 +12,18 @@ features:
   - capability-system
   - observable-reference-state
   - canvas-drawing
-approval: null
+approval: "Eugene approved revision 7 on 2026-10-04: let's approve the scope of iteration 2, commit everything and proceed with the implementation plan derivation. Evidence: docs/iterations/iteration-002-review/32-scope-approval.md."
 closure: null
 ---
 
 # ITERATION-002: Cleanup
 
-Revision 7 is the proposed delivery scope after the completed codebase review
-and bounded hardware experiments. The maintainer requested scope preparation;
-this draft awaits explicit approval of this revision under
+Eugene explicitly approved revision 7 on 2026-10-04 after the completed codebase
+review and bounded hardware experiments. This is the delivery commitment under
 [Numbered Iteration Scopes](../engineering/ITERATION_SCOPES.md).
-Scope approval does not approve an ADR or Specification amendment.
+[Approval provenance](iteration-002-review/32-scope-approval.md) preserves the
+maintainer instruction. Scope approval does not approve an ADR or Specification
+amendment.
 
 ## Goal
 
@@ -60,20 +61,20 @@ No additional generic audit pass is a prerequisite to scope approval.
 
 ## Included Scope
 
-These are the recommended selections for revision 7. Each local item ID remains
+These are the approved selections for revision 7. Each local item ID remains
 stable when implementation tasks are derived. None is implemented by research.
 
-| Item / priority | Source / feature | Intended outcome | Lifecycle routing |
-| --- | --- | --- | --- |
-| I2-01 / P1 — Callback-safe source startup | [CBR-007](iteration-002-review/findings.md#cbr-007--terminal-callback-during-source-startup-is-overwritten); signal-analyzer | Preserve a terminal failure raised during synchronous source startup, stop any partial source activation and avoid a subsequent running publication. | Lightweight correction within SPEC-001, including SA-AC-043; compare the corresponding target realizations. |
-| I2-02 / P1 — Complete interaction capacity preflight | [CBR-001](iteration-002-review/findings.md#cbr-001--missing-staged-committed-action-capacity-preflight); giftui-mvp-architecture | Check every staged commit-store capacity before ready-for-offer; return the specified contained capacity failure and preserve committed state. | Lightweight correction within SPEC-011/013; no change to error precedence or commit/rollback contracts. |
-| I2-03 / P2 — Isolated test-run evidence | [CBR-004](iteration-002-review/findings.md#cbr-004--test-runner-reports-are-shared-across-invocations); repository tooling | Same-selection runs cannot erase/interleave reports or active scratch/cache state. Preserve each invocation and its child report identities, including failed/interrupted runs. | Tooling maintenance; isolated invocations or safe serialization, with a documented publication/retention policy. |
-| I2-04 / P2 — Documented deferred-source paths | [CBR-006](iteration-002-review/findings.md#cbr-006--deferred-source-paths-conflict-with-the-validator); repository tooling | Accept valid repository source paths as documented while retaining strict artifact-ID authority relationships. | Governance-tooling maintenance within Documentation Rules; repository paths do not become authority nodes. |
-| I2-05 / P2 — Actual compiler identity in reports | [CBR-008](iteration-002-review/findings.md#cbr-008--pi-compiler-metadata-describes-the-wrong-compiler); repository tooling | Record the actual Pi cross-build compiler and paired SDK; distinguish the native-check compiler. Preserve accurate identities across other profiles. | Contract-driver metadata maintenance; historical reports remain immutable. |
-| I2-06 / P3 — Shared-owner startup text checks | [CBR-003](iteration-002-review/findings.md#cbr-003--duplicate-text-layout-rules-remain-in-startup-validation), [Step 13](iteration-002-review/13-startup-text-probe-assessment.md); signal-analyzer / giftui-mvp-architecture | Retire duplicate startup text-measure/place algorithms after migrating their useful probes and negatives to the common Layout owner. | Contract-preserving maintenance under SPEC-001/007/013. Changed startup semantics or resource bounds require upstream review. |
-| I2-07 / P3 — Explicit Embedded source selection | [FW-029](../future-work/fw-029-reduce-source-conditional-compilation.md), [Step 15](iteration-002-review/15-conditional-removal-candidates.md); giftui-mvp-architecture | Remove exactly the 15 named whole-file Embedded guards and the empty font-raster compatibility shell. Coordinate SwiftPM, CMake and direct/native source selection; retain justified residual guards. | Mechanical maintenance within SPEC-013 and ADR-008. No new module boundary, profile semantics or runtime branch selection. |
-| I2-08 / P3 — Clean topology generation | [CBR-002](iteration-002-review/findings.md#cbr-002--hierarchy-dependent-model-projection-has-manual-ordinal-maps), [SPIKE-011](../spikes/spike-011-clean-topology-generation.md); signal-analyzer | Generate both current outputs from empty directories using fresh registered projections, explicit codec templates and binding policy. Remove dependence on previous generated output. | Tooling maintenance preserving runtime storage, algorithms and owners under SPEC-001/013. Retain specialized model policy; named runtime role bindings are not selected. |
-| I2-09 / P4 — Five-second capture retention | [Step 14](iteration-002-review/14-five-second-retention-impact.md); signal-analyzer / giftui-mvp-architecture | Prepare/review the 5s/404-record retention amendment; after its approvals, resize live, model and admission stores together and validate equivalent visible behavior. | Full upstream gate: reviewed RFC amendment, successor accepted decision for ADR-003, and approved affected SPEC-001/SPEC-015 amendments. Check SPEC-013 and derived plans/designs for affected resource assumptions before implementation. |
+| Item / priority                                      | Source / feature                                                                                                                                                                                                              | Intended outcome                                                                                                                                                                                      | Lifecycle routing                                                                                                                                                                                                                          |
+| ---------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| I2-01 / P1 — Callback-safe source startup            | [CBR-007](iteration-002-review/findings.md#cbr-007--terminal-callback-during-source-startup-is-overwritten); signal-analyzer                                                                                                  | Preserve a terminal failure raised during synchronous source startup, stop any partial source activation and avoid a subsequent running publication.                                                  | Lightweight correction within SPEC-001, including SA-AC-043; compare the corresponding target realizations.                                                                                                                                |
+| I2-02 / P1 — Complete interaction capacity preflight | [CBR-001](iteration-002-review/findings.md#cbr-001--missing-staged-committed-action-capacity-preflight); giftui-mvp-architecture                                                                                              | Check every staged commit-store capacity before ready-for-offer; return the specified contained capacity failure and preserve committed state.                                                        | Lightweight correction within SPEC-011/013; no change to error precedence or commit/rollback contracts.                                                                                                                                    |
+| I2-03 / P2 — Isolated test-run evidence              | [CBR-004](iteration-002-review/findings.md#cbr-004--test-runner-reports-are-shared-across-invocations); repository tooling                                                                                                    | Same-selection runs cannot erase/interleave reports or active scratch/cache state. Preserve each invocation and its child report identities, including failed/interrupted runs.                       | Tooling maintenance; isolated invocations or safe serialization, with a documented publication/retention policy.                                                                                                                           |
+| I2-04 / P2 — Documented deferred-source paths        | [CBR-006](iteration-002-review/findings.md#cbr-006--deferred-source-paths-conflict-with-the-validator); repository tooling                                                                                                    | Accept valid repository source paths as documented while retaining strict artifact-ID authority relationships.                                                                                        | Governance-tooling maintenance within Documentation Rules; repository paths do not become authority nodes.                                                                                                                                 |
+| I2-05 / P2 — Actual compiler identity in reports     | [CBR-008](iteration-002-review/findings.md#cbr-008--pi-compiler-metadata-describes-the-wrong-compiler); repository tooling                                                                                                    | Record the actual Pi cross-build compiler and paired SDK; distinguish the native-check compiler. Preserve accurate identities across other profiles.                                                  | Contract-driver metadata maintenance; historical reports remain immutable.                                                                                                                                                                 |
+| I2-06 / P3 — Shared-owner startup text checks        | [CBR-003](iteration-002-review/findings.md#cbr-003--duplicate-text-layout-rules-remain-in-startup-validation), [Step 13](iteration-002-review/13-startup-text-probe-assessment.md); signal-analyzer / giftui-mvp-architecture | Retire duplicate startup text-measure/place algorithms after migrating their useful probes and negatives to the common Layout owner.                                                                  | Contract-preserving maintenance under SPEC-001/007/013. Changed startup semantics or resource bounds require upstream review.                                                                                                              |
+| I2-07 / P3 — Explicit Embedded source selection      | [FW-029](../future-work/fw-029-reduce-source-conditional-compilation.md), [Step 15](iteration-002-review/15-conditional-removal-candidates.md); giftui-mvp-architecture                                                       | Remove exactly the 15 named whole-file Embedded guards and the empty font-raster compatibility shell. Coordinate SwiftPM, CMake and direct/native source selection; retain justified residual guards. | Mechanical maintenance within SPEC-013 and ADR-008. No new module boundary, profile semantics or runtime branch selection.                                                                                                                 |
+| I2-08 / P3 — Clean topology generation               | [CBR-002](iteration-002-review/findings.md#cbr-002--hierarchy-dependent-model-projection-has-manual-ordinal-maps), [SPIKE-011](../spikes/spike-011-clean-topology-generation.md); signal-analyzer                             | Generate both current outputs from empty directories using fresh registered projections, explicit codec templates and binding policy. Remove dependence on previous generated output.                 | Tooling maintenance preserving runtime storage, algorithms and owners under SPEC-001/013. Retain specialized model policy; named runtime role bindings are not selected.                                                                   |
+| I2-09 / P4 — Five-second capture retention           | [Step 14](iteration-002-review/14-five-second-retention-impact.md); signal-analyzer / giftui-mvp-architecture                                                                                                                 | Prepare/review the 5s/404-record retention amendment; after its approvals, resize live, model and admission stores together and validate equivalent visible behavior.                                 | Full upstream gate: reviewed RFC amendment, successor accepted decision for ADR-003, and approved affected SPEC-001/SPEC-015 amendments. Check SPEC-013 and derived plans/designs for affected resource assumptions before implementation. |
 
 The dependency audit established an acyclic graph and no new wrong dependency.
 Dependency/ownership integrity is an invariant for these selected changes,
@@ -132,7 +133,7 @@ selected maintenance may continue within its authority.
 ## Success Criteria and Validation
 
 Existing IT-AC-001–007 IDs are retained and refined; IT-AC-008–013 cover each
-selected correction explicitly. The table defines proposed exit evidence, not
+selected correction explicitly. The table defines approved iteration exit evidence, not
 new architecture or a substitute for governing acceptance criteria.
 
 | ID | Observable result | Required configurations | Evidence / governing contract |
@@ -176,11 +177,12 @@ new architecture or a substitute for governing acceptance criteria.
 
 ## Dependencies and Open Questions
 
-The remediation selection is concrete; no further research is required to review
-this proposed baseline. The remaining gates are explicit:
+The remediation selection is approved; no further generic research is required
+before plan derivation. The remaining gates are explicit:
 
-1. Human approval of **ITERATION-002 revision 7** before it becomes a delivery
-   commitment. The current instruction authorizes filling the scope.
+1. Human approval of **ITERATION-002 revision 7** is recorded on 2026-10-04.
+   It authorizes this delivery commitment and the requested plan derivation;
+   architecture and contract amendments retain their separate gates.
 2. Existing accepted ADRs and implemented Specifications govern I2-01–08;
    lightweight maintenance applies only while their contracts/owners/bounds hold.
    Any material divergence must receive lifecycle triage before affected code.
@@ -198,13 +200,13 @@ this proposed baseline. The remaining gates are explicit:
 
 | Item | Current boundary / revisit trigger |
 | --- | --- |
-| [FW-029](../future-work/fw-029-reduce-source-conditional-compilation.md) | I2-07 selects only the named mechanical subset in this draft. Revisit remaining directives when new source-selection work touches them or a directive leaks platform/profile selection upward. |
+| [FW-029](../future-work/fw-029-reduce-source-conditional-compilation.md) | I2-07 selects only the named mechanical subset in this approved scope. Revisit remaining directives when new source-selection work touches them or a directive leaks platform/profile selection upward. |
 | [EXP-001](../explorations/exp-001-nrf-hierarchy-derivation.md), [SPIKE-009](../spikes/spike-009-nrf-hierarchy-role-bindings.md), [SPIKE-010](../spikes/spike-010-bounded-declaration-traversal.md), [SPIKE-011](../spikes/spike-011-clean-topology-generation.md), [SPIKE-012](../spikes/spike-012-connected-hierarchy-costs.md) | I2-08 uses clean-generation evidence only. Revisit named roles on a coordinated hierarchy update; full replacement needs separately selected design, complete parity and agreed resource/time budgets. |
 | [FW-027](../future-work/fw-027-pi-performance-investigation-resumption.md), [FW-032](../future-work/fw-032-nrf-performance-improvement.md) | Phase boundaries are measured; lookup contribution remains unisolated. Revisit in an explicitly selected performance iteration or a release-blocking responsiveness issue. |
 | [FW-031](../future-work/fw-031-macos-connected-pointer-validation-resumption.md), [FW-033](../future-work/fw-033-connected-validation-follow-up.md) | Revisit for a selected connected-validation campaign or performance changes ready for sustained regression. Focused changed-path checks above do not close the full corpus. |
 | [FW-028](../future-work/fw-028-embedded-owner-partitioned-output-diagnostics.md) | Separate compiler/linker diagnostics question; revisit when owner-partitioned output work is selected. |
 
-No deferred artifact is promoted and no feature stage changes in this draft.
+No deferred artifact is promoted and no feature stage changes through scope approval.
 
 ## Revision and Approval History
 
@@ -216,7 +218,7 @@ No deferred artifact is promoted and no feature stage changes in this draft.
 | 4 | 2026-10-04 | Steps 22–24: connected baseline/candidate costs and restoration. | Pending; hardware measurements/experiments authorized. |
 | 5 | 2026-10-04 | Steps 25–28: software-input subset, nRF phases/refusal, Pi preparation and reconciliation. | Pending; remaining research authorized; Pi connectivity blocked then. |
 | 6 | 2026-10-04 | Steps 29–30: Pi resumption/comparison and SPIKE-013 closeout. | Pending; Pi measurements authorized after connectivity restoration. |
-| 7 | 2026-10-04 | Replace the candidate collection with nine recommended delivery items, explicit priorities/gates, per-item exit evidence and deferrals. | Pending; maintainer instruction: “yes, let's fill the scope of the iteration 2”. This authorizes preparation, not approval of the newly written revision. |
+| 7 | 2026-10-04 | Replace the candidate collection with nine recommended delivery items, explicit priorities/gates, per-item exit evidence and deferrals. | Approved by Eugene on 2026-10-04: “let's approve the scope of iteration 2, commit everything and proceed with the implementation plan derivation. When finished - commit results as well”. [Provenance](iteration-002-review/32-scope-approval.md). Earlier preparation instruction and draft are preserved in commit `a6158904`. |
 
 ## Closure and Follow-up
 

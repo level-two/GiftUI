@@ -4,9 +4,11 @@ Source baseline: `6cf31f266987e917458f31f05ed8c390cda9a202`.
 Local IDs use `CBR-001`, `CBR-002`, etc.; they are review identifiers, not
 lifecycle artifact IDs. Findings are recommendations and evidence only.
 
-No remediation is approved or implemented by this register.
+The approved iteration scope selects remediation; this register records evidence
+and dispositions, not an independent implementation authority. No finding is
+implemented by the research.
 
-[Draft scope revision 7](../iteration-002-cleanup.md) now proposes correction
+[Approved scope revision 7](../iteration-002-cleanup.md) now selects correction
 of CBR-001/003/004/006/007/008 and clean-generation remediation for part of
 CBR-002. Named role bindings and residual ordinal/model coupling remain
 explicitly unselected under EXP-001; CBR-005 stays under FW-032. All findings

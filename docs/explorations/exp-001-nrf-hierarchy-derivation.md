@@ -171,10 +171,10 @@ and later authorized for the bounded supplement below.
 
 ## Revisit Triggers
 
-[Draft ITERATION-002 revision 7](../iterations/iteration-002-cleanup.md) proposes
+[Approved ITERATION-002 revision 7](../iterations/iteration-002-cleanup.md) selects
 clean generation only (I2-08), retaining packed runtime storage and specialized
 binding policy. Named roles and complete runtime replacement remain unselected
-with the triggers below. This scope proposal does not promote this concluded
+with the triggers below. Scope approval does not promote this concluded
 Exploration or adopt Spike code into production.
 
 - A later scope explicitly selects full runtime replacement and its missing

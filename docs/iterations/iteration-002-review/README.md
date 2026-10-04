@@ -5,9 +5,9 @@ create a review branch, perform research, and commit each step's results.
 Branch: `review/iteration-002-codebase-audit`.
 
 This is a derived research record under the
-[draft cleanup scope](../iteration-002-cleanup.md) and
-[review process](../../engineering/CODEBASE_REVIEW.md). The scope remains
-draft; research does not select or authorize implementation.
+[approved cleanup scope](../iteration-002-cleanup.md) and
+[review process](../../engineering/CODEBASE_REVIEW.md). Revision 7 was approved after scope preparation; research itself does not
+authorize implementation.
 
 ## Steps
 
@@ -45,6 +45,7 @@ draft; research does not select or authorize implementation.
 | 29 — Pi phase trace | [Resumed bounded measurement](29-pi-connected-phase-trace.md) | Connectivity restored; verbose phase/source/RSS trace recorded; quieter comparison pending |
 | 30 — Pi accumulated counters | [Comparison and Spike closeout](30-pi-aggregate-phase-comparison.md) | Median1.381s; production/projection dominate; bounded research completed, original artifact unchanged |
 | 31 — Scope preparation | [Revision 7 selection and handoff](31-scope-preparation.md) | Nine proposed delivery items with explicit gates and validation boundaries; scope approval pending |
+| 32 — Scope approval | [Approval provenance](32-scope-approval.md) | Revision 7 explicitly approved; planning requested, production implementation not started |
 
 [Findings register](findings.md) records confirmed observations separately from
 hypotheses and preferences. A step's completion does not imply every module or
