@@ -2,7 +2,7 @@
 id: EXP-001
 feature: signal-analyzer
 title: nRF Hierarchy Derivation and Stable Role Bindings
-status: concluded
+status: active
 authors:
   - codex
 created: 2026-10-04
@@ -13,6 +13,7 @@ related_future_work: []
 related_explorations: []
 related_spikes:
   - SPIKE-009
+  - SPIKE-010
 promoted_to: []
 supersedes: []
 superseded_by: []
@@ -114,18 +115,28 @@ budget was agreed, and full runtime derivation was not built.
 
 ## Remaining Unknowns
 
-A bounded typed witness/declaration-lowering candidate, complete clean offline
-generation, whole-stack bounds and target timing remain untested. These are
+The maintainer reopened the hardware-free investigation and explicitly kept
+connected work deferred. [SPIKE-010](../spikes/spike-010-bounded-declaration-traversal.md)
+now compiles and counts the actual body through an explicit bounded snapshot
+lowering: 42 cases and 84 refusals pass, at an additive +34,184 flash bytes and
+unchanged RAM. It does not supply stable identity, observable attachment or a
+packed publication sink. [Step 18](../iterations/iteration-002-review/18-bounded-declaration-traversal.md)
+records the distinction. Clean offline generation and static stack inspection
+remain in this reopened round; connected timing/high-water are deferred by
+the maintainer's explicit instruction.
+
+A complete runtime declaration replacement, complete clean offline
+generation, whole-stack bounds and target timing remain unproven. These are
 future candidate-specific research, not evidence that the current packed
 representation should be removed. The partial binding candidate does not
 remove the topology generator or its current source-template dependency.
 
 ## Disposition
 
-Conclude this bounded research round with a retain-packed-hierarchy
+The first bounded research round concluded with a retain-packed-hierarchy
 recommendation. Consider selecting explicit generated/checkable semantic-role
 bindings as a smaller maintenance outcome; do not promise runtime replacement
-for ITERATION-002. The direct-module route has a negative prerequisite result,
+for ITERATION-002. That recommendation remains after SPIKE-010. The direct-module route has a negative prerequisite result,
 not full parity/cost evidence. IT-AC-003 is available for scope refinement but
 is not recorded as an approved criterion pass. Further runtime work requires
 selecting a concrete lowering candidate and comparison budgets.
