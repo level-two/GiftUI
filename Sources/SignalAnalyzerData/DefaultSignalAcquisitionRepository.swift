@@ -59,6 +59,7 @@ package final class DefaultSignalAcquisitionRepository: SignalAcquisitionReposit
             throw SignalAcquisitionUnavailableError(signalAnalyzerDiagnostic: terminalDiagnostic!)
         }
         guard acquisitionState != .running else { return }
+        isSourceActive = true
         do {
             try source.start(sink: self)
         } catch let failure as any SignalDataSourceDiagnosticError {

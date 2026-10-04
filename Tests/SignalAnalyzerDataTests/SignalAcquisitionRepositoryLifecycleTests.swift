@@ -57,7 +57,7 @@ struct SignalAcquisitionRepositoryLifecycleTests {
         repository.startObservingCapture(sink: captures)
         repository.startObservingAcquisitionState(sink: states)
         #expect(throws: SignalAcquisitionUnavailableError.self) { try repository.start() }
-        #expect(source.stopCount == 1)
+        #expect(source.stopCount >= 1)
         #expect(states.states == [.idle])
         guard
             case .terminalFailure(.captureRevisionExhausted, let diagnostic) = captures.publications

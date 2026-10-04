@@ -2939,3 +2939,5 @@ All added tasks are pending. Original completed ledger entries and historical ra
 **T11.3 execution — 2026-10-05:** [Shared-owner corpus and paired resources](../iterations/iteration-002-cleanup/evidence/06-startup-text/result.md). Connected startup remains T11.7.
 
 **T11.4 execution — 2026-10-05:** [Clean generation, 42-case corpus and zero resource delta](../iterations/iteration-002-cleanup/evidence/08-topology/result.md). CBR-002 residual mappings remain explicit.
+
+**T11.1/T11.2 local follow-up — 2026-10-05:** [Real-source admission ordering](../iterations/iteration-002-cleanup/evidence/09-startup-admission/result.md). Source quiescence now precedes terminal admission; cross-profile/connected validation remains pending.
