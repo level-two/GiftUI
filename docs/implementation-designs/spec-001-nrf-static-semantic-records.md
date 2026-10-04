@@ -394,3 +394,17 @@ unit per owner supports Embedded whole-module specialization without erasing
 cross-owner imports. Only the target-host composition fragments share their
 existing host module. The exact selected source manifest also drives native
 rehearsals; compiler negative cases exercise those actual firmware invocations.
+
+## Iteration 002 clean generation
+
+The maintained generator emits topology and packed-record sources from
+registered measured projections, codec/scaffold templates and explicit binding
+policy under `scripts/contracts/nrf-topology/`. It renders and validates both
+complete outputs before publication; check mode uses a clean temporary output.
+The generator never reads previously generated Swift as an input. Policy
+registers declaration/projection hashes and retains specialized geometry/live
+bindings. Model writers and remaining ordinal mappings are still handwritten;
+this change does not introduce named runtime roles or replace packed storage.
+
+[Generator input workflow](../../scripts/contracts/nrf-topology/README.md) and
+[clean/native/resource evidence](../iterations/iteration-002-cleanup/evidence/08-topology/result.md).

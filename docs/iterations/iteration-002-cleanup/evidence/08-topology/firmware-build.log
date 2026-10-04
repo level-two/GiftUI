@@ -1,0 +1,121 @@
+==> building signal-analyzer-static for nrf52840dk/nrf52840
+-- west build: generating a build system
+Loading Zephyr default modules (Zephyr base (cached)).
+-- Application: /Users/eugene/work/GiftUI/firmware/nrf52840/applications/signal-analyzer-static
+-- CMake version: 4.4.2
+-- Cache files will be written to: /Users/eugene/Library/Caches/zephyr
+-- Zephyr version: 4.3.0 (/Users/eugene/work/GiftUI/.toolchains/nrf52840/workspace/zephyr)
+-- Found west (found suitable version "1.5.0", minimum required is "0.14.0")
+-- Board: nrf52840dk, qualifiers: nrf52840
+-- Found host-tools: zephyr 0.17.4 (/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4)
+-- Found toolchain: zephyr 0.17.4 (/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4)
+-- Found BOARD.dts: /Users/eugene/work/GiftUI/.toolchains/nrf52840/workspace/zephyr/boards/nordic/nrf52840dk/nrf52840dk_nrf52840.dts
+-- Found devicetree overlay: /Users/eugene/work/GiftUI/firmware/nrf52840/applications/signal-analyzer-static/app.overlay
+-- Generated zephyr.dts: /Users/eugene/work/GiftUI/.build/nrf52840/signal-analyzer-static/zephyr/zephyr.dts
+-- Generated pickled edt: /Users/eugene/work/GiftUI/.build/nrf52840/signal-analyzer-static/zephyr/edt.pickle
+-- Generated devicetree_generated.h: /Users/eugene/work/GiftUI/.build/nrf52840/signal-analyzer-static/zephyr/include/generated/zephyr/devicetree_generated.h
+Parsing /Users/eugene/work/GiftUI/.toolchains/nrf52840/workspace/zephyr/Kconfig
+Loaded configuration '/Users/eugene/work/GiftUI/.build/nrf52840/signal-analyzer-static/zephyr/.config'
+No change to configuration in '/Users/eugene/work/GiftUI/.build/nrf52840/signal-analyzer-static/zephyr/.config'
+No change to Kconfig header in '/Users/eugene/work/GiftUI/.build/nrf52840/signal-analyzer-static/zephyr/include/generated/zephyr/autoconf.h'
+-- Found gen_kobject_list: /Users/eugene/work/GiftUI/.toolchains/nrf52840/workspace/zephyr/scripts/build/gen_kobject_list.py
+-- Configuring done (3.6s)
+-- Generating done (0.2s)
+-- Build files have been written to: /Users/eugene/work/GiftUI/.build/nrf52840/signal-analyzer-static
+-- west build: building application
+[1/153] Building Swift Module 'SignalAnalyzerDomain' with 1 source
+[2/153] Generating misc/generated/syscalls.json, misc/generated/struct_tags.json
+[3/32] Building Swift Module 'GiftUIFailureCore' with 1 source
+[4/32] Generating linker_zephyr_pre0.cmd
+[5/32] Building Swift Module 'SignalAnalyzerData' with 1 source
+[6/32] Building Swift Module 'GiftUI' with 1 source
+/Users/eugene/work/GiftUI/.build/nrf52840/signal-analyzer-static/GiftUI.swift:1535:14: warning: external macro implementation type 'GiftUIMacros.ObservableStateHostMacro' could not be found for macro 'ObservableStateHost()'; plugin for module 'GiftUIMacros' not found
+1533 | )
+1534 | @attached(extension, conformances: _GiftUIObservableStateHost)
+1535 | public macro ObservableStateHost() =
+     |              `- warning: external macro implementation type 'GiftUIMacros.ObservableStateHostMacro' could not be found for macro 'ObservableStateHost()'; plugin for module 'GiftUIMacros' not found
+1536 |     #externalMacro(
+1537 |         module: "GiftUIMacros",
+[7/32] Building Swift Module 'GiftUICapabilities' with 1 source
+[8/32] Building Swift Module 'GiftUISurfaceCore' with 1 source
+[9/32] Building Swift Module 'GiftUISemanticCore' with 1 source
+[10/32] Building Swift Module 'GiftUIDisplayCore' with 1 source
+[11/32] Building Swift Module 'SignalAnalyzerPresentation' with 1 source
+[12/32] Building Swift Module 'GiftUITextResources' with 1 source
+[13/32] Building Swift Module 'GiftUIRenderCore' with 1 source
+[14/32] Building Swift Module 'GiftUIExecution' with 1 source
+[15/32] Building Swift Module 'GiftUILayout' with 1 source
+[16/32] Building Swift Module 'GiftUIObservableState' with 1 source
+[17/32] Building Swift Module 'GiftUIReferenceTextResources' with 1 source
+[18/32] Building Swift Module 'GiftUIInteraction' with 1 source
+[19/32] Building Swift Module 'GiftUIRenderLowering' with 1 source
+[20/32] Building Swift Module 'GiftUIRuntimeStatic' with 1 source
+[21/32] Building Swift Module 'GiftUIDrawing' with 1 source
+[22/32] Building Swift Module 'GiftUIRasterCore' with 1 source
+[23/32] Building Swift Module 'GiftUIRuntimeCore' with 1 source
+[24/32] Building Swift Module 'GiftUIBackendIntegration' with 1 source
+[25/32] Building Swift Module 'GiftUIHostConfiguration' with 1 source
+[26/32] Building Swift Module 'SignalAnalyzerTargetHost' with 1 source
+[27/31] Linking C executable zephyr/zephyr_pre0.elf; Logical command for additional byproducts on target: zephyr_pre0
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(GiftUI.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(GiftUICapabilities.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(GiftUISurfaceCore.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(GiftUIRasterCore.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(GiftUIFailureCore.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(GiftUIDisplayCore.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(GiftUIBackendIntegration.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(GiftUIReferenceTextResources.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(GiftUIRenderCore.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(GiftUIDrawing.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(GiftUILayout.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(GiftUISemanticCore.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(GiftUIRenderLowering.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(GiftUIExecution.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(GiftUIInteraction.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(GiftUIRuntimeCore.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(GiftUIObservableState.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(GiftUIRuntimeStatic.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(SignalAnalyzerDomain.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(SignalAnalyzerData.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(GiftUIHostConfiguration.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(SignalAnalyzerPresentation.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(GiftUITextResources.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(SignalAnalyzerStatic.swift.obj)' being placed in section `.swift_modhash'
+[28/31] Generating linker.cmd
+[29/31] Generating isr_tables.c, isr_tables_vt.ld, isr_tables_swi.ld
+[30/31] Building C object zephyr/CMakeFiles/zephyr_final.dir/isr_tables.c.obj
+[31/31] Linking C executable zephyr/zephyr.elf
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(GiftUI.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(GiftUICapabilities.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(GiftUISurfaceCore.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(GiftUIRasterCore.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(GiftUIFailureCore.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(GiftUIDisplayCore.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(GiftUIBackendIntegration.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(GiftUIReferenceTextResources.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(GiftUIRenderCore.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(GiftUIDrawing.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(GiftUILayout.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(GiftUISemanticCore.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(GiftUIRenderLowering.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(GiftUIExecution.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(GiftUIInteraction.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(GiftUIRuntimeCore.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(GiftUIObservableState.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(GiftUIRuntimeStatic.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(SignalAnalyzerDomain.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(SignalAnalyzerData.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(GiftUIHostConfiguration.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(SignalAnalyzerPresentation.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(GiftUITextResources.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(SignalAnalyzerStatic.swift.obj)' being placed in section `.swift_modhash'
+Memory region         Used Size  Region Size  %age Used
+           FLASH:      274272 B         1 MB     26.16%
+             RAM:      191104 B       256 KB     72.90%
+        IDT_LIST:          0 GB        32 KB      0.00%
+Generating files from /Users/eugene/work/GiftUI/.build/nrf52840/signal-analyzer-static/zephyr/zephyr.elf for board: nrf52840dk
+ELF=/Users/eugene/work/GiftUI/.build/nrf52840/signal-analyzer-static/zephyr/zephyr.elf
+HEX=/Users/eugene/work/GiftUI/.build/nrf52840/signal-analyzer-static/zephyr/zephyr.hex
+MAP=/Users/eugene/work/GiftUI/.build/nrf52840/signal-analyzer-static/zephyr/zephyr.map
+DEVICETREE=/Users/eugene/work/GiftUI/.build/nrf52840/signal-analyzer-static/zephyr/zephyr.dts
+REPORTS=/Users/eugene/work/GiftUI/.build/nrf52840/signal-analyzer-static/reports

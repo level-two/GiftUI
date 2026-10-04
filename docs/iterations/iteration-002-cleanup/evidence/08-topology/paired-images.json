@@ -1,0 +1,52 @@
+{
+  "revision": "ab69b68d9ccb3db3445ea0a53dd1f2b5c71b05af",
+  "limits": "Linked size and configured stack reservation; no physical timing or stack high-water measurement",
+  "images": {
+    "baseline": {
+      "elf": ".build/nrf52840/iteration-002-baselines/pre-generator/zephyr/zephyr.elf",
+      "sha256": "9ef60d653678dce21ec389dbf4977aca0fe40291a2847958ba42b3d190681da6",
+      "flash_bytes": 274272,
+      "ram_bytes": 191104,
+      "v7em": true,
+      "hard_float": true,
+      "zero_zephyr_heap": true,
+      "zero_libc_heap": true,
+      "stack_config": [
+        "CONFIG_SYSTEM_WORKQUEUE_STACK_SIZE=1024",
+        "CONFIG_MAIN_STACK_SIZE=27648",
+        "CONFIG_IDLE_STACK_SIZE=320",
+        "CONFIG_ISR_STACK_SIZE=2048"
+      ],
+      "allocator_entries": [],
+      "refusing_allocation_stub": "\n/Users/eugene/work/GiftUI/.build/nrf52840/iteration-002-baselines/pre-generator/zephyr/zephyr.elf:     file format elf32-littlearm\n\n\nDisassembly of section rom_start:\n\nDisassembly of section text:\n\n0003c104 <posix_memalign>:\n   3c104:\t200c      \tmovs\tr0, #12\n   3c106:\t4770      \tbx\tlr\n",
+      "startup_text_symbols": [
+        "00033124 00000004 T giftui_signal_analyzer_layout_text_valid"
+      ]
+    },
+    "candidate": {
+      "elf": ".build/nrf52840/signal-analyzer-static/zephyr/zephyr.elf",
+      "sha256": "9ef60d653678dce21ec389dbf4977aca0fe40291a2847958ba42b3d190681da6",
+      "flash_bytes": 274272,
+      "ram_bytes": 191104,
+      "v7em": true,
+      "hard_float": true,
+      "zero_zephyr_heap": true,
+      "zero_libc_heap": true,
+      "stack_config": [
+        "CONFIG_SYSTEM_WORKQUEUE_STACK_SIZE=1024",
+        "CONFIG_MAIN_STACK_SIZE=27648",
+        "CONFIG_IDLE_STACK_SIZE=320",
+        "CONFIG_ISR_STACK_SIZE=2048"
+      ],
+      "allocator_entries": [],
+      "refusing_allocation_stub": "\n/Users/eugene/work/GiftUI/.build/nrf52840/signal-analyzer-static/zephyr/zephyr.elf:     file format elf32-littlearm\n\n\nDisassembly of section rom_start:\n\nDisassembly of section text:\n\n0003c104 <posix_memalign>:\n   3c104:\t200c      \tmovs\tr0, #12\n   3c106:\t4770      \tbx\tlr\n",
+      "startup_text_symbols": [
+        "00033124 00000004 T giftui_signal_analyzer_layout_text_valid"
+      ]
+    }
+  },
+  "delta": {
+    "flash_bytes": 0,
+    "ram_bytes": 0
+  }
+}

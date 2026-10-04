@@ -138,6 +138,7 @@ run_check governance "${PROJECT_ROOT}/scripts/validate-governance.rb"
 run_check governance-tooling "${PROJECT_ROOT}/scripts/governance/test.sh"
 run_check swift-format "${PROJECT_ROOT}/scripts/format-swift.sh" --lint
 run_check driver-registry "${PROJECT_ROOT}/scripts/contracts/check-driver-registry.rb"
+run_check nrf-topology python3 "${PROJECT_ROOT}/scripts/contracts/check-spec-001-nrf-topology.py"
 run_check nrf-source-selection python3 "${PROJECT_ROOT}/scripts/contracts/check-nrf-source-selection.py"
 run_check spec-013-migration "${PROJECT_ROOT}/scripts/contracts/check-spec-013-migration.rb"
 run_check spec-013-dynamic-binding "${PROJECT_ROOT}/scripts/contracts/check-spec-013-dynamic-binding.rb"

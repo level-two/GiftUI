@@ -86,12 +86,12 @@ tasks:
     evidence: ["docs/iterations/iteration-002-cleanup/evidence/06-startup-text/result.md"]
     blockers: []
   T11.4:
-    disposition: pending
+    disposition: completed
     requirements: ["SA-AC-005", "SA-AC-006", "SA-AC-017", "SA-AC-018", "SA-AC-019", "SA-AC-020", "SA-AC-025", "SA-AC-039", "SA-AC-041", "SA-AC-045"]
     implementation: ["scripts/contracts/generate-spec-001-nrf-topology.py", "Sources/SignalAnalyzerTargetHost/Generated", "Tests/ContractFixtures/SPEC001"]
     checks: ["Tests/GiftUIHostConfigurationTests/StaticSignalAnalyzerNRFTopologyWriterTests.swift", "scripts/contracts/run-spec-001.sh"]
     profiles: ["macos-dynamic", "macos-static", "raspberry-pi-armv6", "nrf52840-embedded"]
-    evidence: []
+    evidence: ["docs/iterations/iteration-002-cleanup/evidence/08-topology/result.md"]
     blockers: []
   T11.5:
     disposition: completed
