@@ -1,0 +1,163 @@
+{
+  "elf_sha256": "c6d0f12c8585cad3f3949fb596e13fa7328989239a31a1f6e428afadb541ed5c",
+  "probe_serial": "683833660",
+  "cases": {
+    "window-one": {
+      "before_revision": 6,
+      "point": 7208986,
+      "enabled_point": 7208986,
+      "revision": 7,
+      "state": 2,
+      "pending": 0,
+      "capture_count": 8,
+      "published_action_codes": [
+        0,
+        3,
+        4
+      ],
+      "admission_codes": [
+        255,
+        255
+      ]
+    },
+    "window-two": {
+      "before_revision": 9,
+      "point": 7208986,
+      "enabled_point": 7208986,
+      "revision": 10,
+      "state": 2,
+      "pending": 0,
+      "capture_count": 8,
+      "published_action_codes": [
+        0,
+        3,
+        5
+      ],
+      "admission_codes": [
+        255,
+        255
+      ]
+    },
+    "window-five": {
+      "before_revision": 8,
+      "point": 7209254,
+      "enabled_point": 7209254,
+      "revision": 9,
+      "state": 2,
+      "pending": 0,
+      "capture_count": 8,
+      "published_action_codes": [
+        0,
+        4,
+        5
+      ],
+      "admission_codes": [
+        255,
+        255
+      ]
+    },
+    "disabled-plus": {
+      "before_revision": 9,
+      "point": 7209254,
+      "enabled_point": 0,
+      "revision": 9,
+      "state": 2,
+      "pending": 0,
+      "capture_count": 8,
+      "published_action_codes": [
+        0,
+        4,
+        5
+      ],
+      "admission_codes": [
+        255,
+        255
+      ]
+    },
+    "movement-cancel": {
+      "before_revision": 10,
+      "point": 7208986,
+      "enabled_point": 7208986,
+      "revision": 10,
+      "state": 2,
+      "pending": 0,
+      "capture_count": 8,
+      "published_action_codes": [
+        0,
+        3,
+        5
+      ],
+      "admission_codes": [
+        255,
+        255,
+        255
+      ]
+    },
+    "stale-revision": {
+      "before_revision": 10,
+      "point": 7208986,
+      "enabled_point": 7208986,
+      "revision": 10,
+      "state": 2,
+      "pending": 0,
+      "capture_count": 8,
+      "published_action_codes": [
+        0,
+        3,
+        5
+      ],
+      "admission_codes": [
+        258,
+        258
+      ]
+    },
+    "quiescent-start": {
+      "acquisition_state": 1,
+      "revision": 2,
+      "pending": 0,
+      "scope": "See raw typed GDB output; no physical contact claim"
+    },
+    "quiescent-stop": {
+      "acquisition_state": 2,
+      "revision": 6,
+      "pending": 0,
+      "scope": "See raw typed GDB output; no physical contact claim"
+    }
+  },
+  "archive_sha256": "adddc511b09f3ac98673384aabbb5dfd6482c61d98c119842e9872affe1b9270",
+  "files": {
+    "disabled-plus.gdb": "6832262173e63662153ff5254b5ddc9ff3677b47d1ece7ea7a7c75c96705cbb4",
+    "disabled-plus.log": "09e6d0d435193bc0c407d9b64efca4c578bd949b41542af246c0b2d7868f3ad3",
+    "disabled-plus.server.log": "43732bcb86f05879bd7c48d7150bc787b38a3af60f9ca67cced2ce3301cfda84",
+    "doctor.log": "dc22bfeb24756160a73b8c73983f8f410b40cdbee4b2a69250ecf95e11e0864f",
+    "movement-cancel.gdb": "4a0881bfd6b4fbd31cd615e8b2d9f9741c3e59fc7a9261ae6660b0dcb1a7f56c",
+    "movement-cancel.log": "9b02b6ca23cf54eb64413e995b52ba50b99b7f9ed0ee5b0afb678f788e9f3f5e",
+    "movement-cancel.server.log": "82c00b0f3038a4fafee2ce6917aca61c07a35dbce08e4e387f932723fc094cf0",
+    "quiescent-clear.gdb": "cee5358c73cc7ab255ccf1e84ac008d9b41b13445cfd84b6599f7fa56aa2fde9",
+    "quiescent-clear.log": "a7dff27c57a4df97ee1e88d691b6e4460d364e0224e2dd99a7a3cdf9f1fe5fc7",
+    "quiescent-clear.server.log": "e9a083fcdf6a2ae1b62024cd4112c41accb8fb2df9a48055a8d9e658bbe50571",
+    "quiescent-start.gdb": "beaeeab6ad3c86d8e3ad03151dd8d3b7d5e283a0231b3638c0a415ff75fb9441",
+    "quiescent-start.log": "e32016821552c0eb99c34bd593df865aa846d852e0901775333f3980a6c2eaae",
+    "quiescent-start.server.log": "fe3495e1a95c6ebe9333ef5978f63e50d1f207fb3803b857a799ea51bb7028bc",
+    "quiescent-stop.gdb": "c32b9fd10de7d9cef05686d2931d66ec36703c08c769d69da7122e90ef4ac05a",
+    "quiescent-stop.log": "8525a09a2bbe7b1e0b9dcdd17a0736b33817f9d1263dbd6e29a8fb22a469ec62",
+    "quiescent-stop.server.log": "db1fc2ab1e77b022b8136342c39273c3de7cd0b7ba1cbf733eca92e2f35778c7",
+    "stale-revision.gdb": "cd4139bac81cb972b6de55aa5275721282fe445097b83d8dc464e25f28df2aa8",
+    "stale-revision.log": "5b02d73e80c7f3f3b8ec94b8f01e5efd0bfb9a67d9a509b25757c67f0ae88e54",
+    "stale-revision.server.log": "a2bad6fe7296ff766f2c9462c87961a475919efacbb0554e5e437087f43ce1c6",
+    "window-five.gdb": "fd0fcbfd12ea330c6e750400658a091e3f7701c0a4098d5bb386baf5e3d1166e",
+    "window-five.log": "44fd025ee3c088500e627108a5efcb8076f5ff9f66ab87b7cc27fdefe6d77fb2",
+    "window-five.server.log": "206114bcd2ea87f2268899f9d13258c20e5df3c3d1bd476b0a99dd44af9975d6",
+    "window-one.gdb": "455840e1da65debf5f2ad578d839b271800d277b592fc42524b05af7a23f7052",
+    "window-one.log": "897c2f0f3124603c095f4e5d99aee26a931e34821bfad9b7f907d966f6696966",
+    "window-one.server.log": "f16dd69b25b9b78e4bf041f8e2bf3865e62de02b107515bfd2cdfed25b68f87c",
+    "window-two.gdb": "57a153779e06c9e475a0b5923947f9933c92f304586dccc487a0dee99fb0628a",
+    "window-two.log": "eaa7ae5d4182e82419b45f6094e8594f71cca930f6b277c66467f879515dbf8f",
+    "window-two.server.log": "47707ff281137d3f1a67b2b5bc9d6c68aacb222eddcabc7dbf069060e21c3e42"
+  },
+  "excluded": [
+    "Unlinked hit_point getter attempt; enabled action_point used instead; disabled control uses its prior enabled point.",
+    "quiescent-clear has no UI hit target, then asks for an unlinked visible_window getter; not a Clear test."
+  ],
+  "limits": "Software input at production service entry; no independent full trace, physical provenance, overlapping disabled fixture or exact-once dispatch count."
+}

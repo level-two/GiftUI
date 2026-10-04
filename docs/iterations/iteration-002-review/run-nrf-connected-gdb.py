@@ -10,6 +10,8 @@ import time
 
 script = Path(sys.argv[1]).resolve()
 assert script.is_file() and script.suffix == '.gdb'
+timeout_seconds = int(sys.argv[2]) if len(sys.argv) > 2 else 35
+assert 1 <= timeout_seconds <= 55
 out = script.parent
 with script.with_suffix('.server.log').open('w') as server_log, script.with_suffix('.log').open('w') as action_log:
     server = subprocess.Popen([
@@ -21,7 +23,7 @@ with script.with_suffix('.server.log').open('w') as server_log, script.with_suff
         result = subprocess.run([
             '.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/arm-zephyr-eabi-gdb',
             '-batch', '.build/nrf52840/signal-analyzer-static/zephyr/zephyr.elf', '-x', str(script)],
-            stdout=action_log, stderr=subprocess.STDOUT, timeout=35)
+            stdout=action_log, stderr=subprocess.STDOUT, timeout=timeout_seconds)
     finally:
         server.terminate()
         server.wait(timeout=5)
