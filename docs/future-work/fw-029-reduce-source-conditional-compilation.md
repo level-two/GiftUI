@@ -79,8 +79,10 @@ require the appropriate lifecycle review.
 
 The maintainer included this concern in the working scope for
 [ITERATION-002: Cleanup](../iterations/iteration-002-cleanup.md) on 2026-10-04.
-The scope remains open for codebase review; this link does not promote the item,
-change its disposition, or establish a delivery commitment.
+The completed review now supports draft revision 7's I2-07: the 15 named
+whole-file Embedded guards and the empty compatibility shell. Remaining
+directives retain the boundaries and revisit triggers above. Scope approval
+is pending; this link does not promote the item or establish a commitment.
 
 ## Follow-up Evidence
 

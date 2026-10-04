@@ -6,6 +6,12 @@ lifecycle artifact IDs. Findings are recommendations and evidence only.
 
 No remediation is approved or implemented by this register.
 
+[Draft scope revision 7](../iteration-002-cleanup.md) now proposes correction
+of CBR-001/003/004/006/007/008 and clean-generation remediation for part of
+CBR-002. Named role bindings and residual ordinal/model coupling remain
+explicitly unselected under EXP-001; CBR-005 stays under FW-032. All findings
+remain open or deferred until production evidence establishes their outcome.
+
 | ID | Classification / priority | Observation | Disposition |
 | --- | --- | --- | --- |
 | CBR-001 | Confirmed preflight/error-classification defect; medium, correctness shortlist | Staged committed-action capacity is omitted from preflight | Recommended for bounded correction; production reachability remains unproved |

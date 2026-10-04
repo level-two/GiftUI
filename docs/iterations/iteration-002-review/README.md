@@ -44,6 +44,7 @@ draft; research does not select or authorize implementation.
 | 28 — Follow-up reconciliation | [Results, restoration and remaining blockers](28-host-followup-reconciliation.md) | nRF research completed/restored; Pi profiler ready but connectivity blocks measurement; draft scope revision5 |
 | 29 — Pi phase trace | [Resumed bounded measurement](29-pi-connected-phase-trace.md) | Connectivity restored; verbose phase/source/RSS trace recorded; quieter comparison pending |
 | 30 — Pi accumulated counters | [Comparison and Spike closeout](30-pi-aggregate-phase-comparison.md) | Median1.381s; production/projection dominate; bounded research completed, original artifact unchanged |
+| 31 — Scope preparation | [Revision 7 selection and handoff](31-scope-preparation.md) | Nine proposed delivery items with explicit gates and validation boundaries; scope approval pending |
 
 [Findings register](findings.md) records confirmed observations separately from
 hypotheses and preferences. A step's completion does not imply every module or
@@ -58,8 +59,10 @@ Follow-up experiments in Steps 13–20 measure candidates and conclude with a
 retain-packed-runtime disposition. Clean generation is demonstrated; full
 runtime replacement is outside the proposed cleanup commitment. Connected work
 was subsequently authorized for bounded measurements; [Step 22](22-connected-baseline.md) records fresh results and limits. [Step 30](30-pi-aggregate-phase-comparison.md) is the current
-planning disposition and distinguishes remaining implementation gates from
-completed investigation.
+research disposition and distinguishes remaining implementation gates from
+completed investigation. [Step 31](31-scope-preparation.md) records the
+subsequent concrete draft selection; it is scope preparation, not another
+research pass or implementation approval.
 Read the register's counterevidence and validation limits before scope approval.
 
 ## Reproduce the lexical inventory

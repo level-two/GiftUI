@@ -1,0 +1,56 @@
+{
+  "base_revision": "0c104e3d87e0a38bcd770e2d5cc8771304528f6c",
+  "checked_utc": "2026-10-04T21:13:27.346867+00:00",
+  "checks": {
+    "production_authority_and_historical_evidence_unchanged": true,
+    "scope_revision_and_unchanged_feature_manifest": {
+      "revision": 7,
+      "status": "draft",
+      "approved_revision": null,
+      "manifest_relationships_unchanged": true
+    },
+    "item_criterion_mapping": {
+      "I2-01": "IT-AC-008",
+      "I2-02": "IT-AC-009",
+      "I2-03": "IT-AC-010",
+      "I2-04": "IT-AC-011",
+      "I2-05": "IT-AC-012",
+      "I2-06": "IT-AC-013",
+      "I2-07": "IT-AC-004",
+      "I2-08": "IT-AC-003",
+      "I2-09": "IT-AC-005"
+    },
+    "local_links": {
+      "paths": 138,
+      "anchors": 8
+    },
+    "immutable_baseline_archives": {
+      "docs/iterations/iteration-002-review/evidence/11-validation-logs.tar.gz": "b97efdfec757fdeaed82e542a12edde021fa47b49f16d9ea156c36857a1c60d8",
+      "experiments/spike-013-connected-host-followup/evidence/pi-logs.tar.gz": "fe8f624e432edf3c6d62c45f299996e943706f383c5137e1cd96fe96234a4037",
+      "experiments/spike-013-connected-host-followup/evidence/pi-aggregate-logs.tar.gz": "62f66b2217b698d8b4d0b2dc66740ee91f4a876b77d40af76f38d62f60dea761"
+    },
+    "governance": {
+      "exit_code": 0,
+      "output": "Authority graph validation passed: 170 nodes, 1705 edges.\nTask evidence validation passed: SPEC-001 all tasks (59 task(s)).\nTask evidence validation passed: SPEC-002 all tasks (32 task(s)).\nTask evidence validation passed: SPEC-003 all tasks (31 task(s)).\nTask evidence validation passed: SPEC-004 all tasks (30 task(s)).\nTask evidence validation passed: SPEC-005 all tasks (31 task(s)).\nTask evidence validation passed: SPEC-011 all tasks (49 task(s)).\nGovernance validation passed: 6 feature(s), 65 lifecycle artifact(s), 9 skill(s).\n"
+    },
+    "authority_graph": {
+      "exit_code": 0,
+      "output": "Authority graph validation passed: 170 nodes, 1705 edges.\n"
+    },
+    "whitespace": {
+      "exit_code": 0,
+      "output": ""
+    }
+  },
+  "changed_document_sha256": {
+    "docs/explorations/exp-001-nrf-hierarchy-derivation.md": "8605635c27fe35845e64d72bfa431e699bfb985a15da709d9bdead4806625ed4",
+    "docs/features.yaml": "d107b03dd8948dd0773f7c35803b07b5e3506a824ef410df38aca0899f35a353",
+    "docs/future-work/fw-029-reduce-source-conditional-compilation.md": "4069e88e5abbf82341772d88b554900aa27c5a44db4b8700a578204ef0c71e9e",
+    "docs/iterations/iteration-002-cleanup.md": "92608b5fcb86767685dc73eee60fe2d2a0671ba15c05e456795ae21f99676e6e",
+    "docs/iterations/iteration-002-review/README.md": "89daf26e0f841bd30b5ff328ab3de168c0268369dcac6f5fda999108afde20f9",
+    "docs/iterations/iteration-002-review/findings.md": "7977c3a77f5b0c829890dc361915d9697c2a61f5908811e34b4076ab9dd58779",
+    "docs/iterations/iteration-002-review/31-scope-preparation.md": "2eddd673755c01d8c33a71d4ebb582237f141e96d8d862c600d2601ab058df44"
+  },
+  "product_tests": "not rerun: documentation-only scope preparation",
+  "connected_operations": "none"
+}
