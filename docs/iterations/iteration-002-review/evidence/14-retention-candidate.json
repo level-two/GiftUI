@@ -1,0 +1,143 @@
+{
+  "revision": "0e983967cf54d7181b8294bfd1b9004f94bb0fdd",
+  "transformations": {
+    "2_404": "404",
+    ".seconds(30)": ".seconds(5)"
+  },
+  "sources": {
+    "Sources/SignalAnalyzerDomain/AcquisitionState.swift": {
+      "original_sha256": "a2fb47cf52972d8610a78e7ffe4d1e8771ea8fff315ca72aec2d29ca33776755",
+      "candidate_sha256": "a2fb47cf52972d8610a78e7ffe4d1e8771ea8fff315ca72aec2d29ca33776755"
+    },
+    "Sources/SignalAnalyzerDomain/ModuleBoundary.swift": {
+      "original_sha256": "837099cf3d38228e94c4be34dc1cbca3d67b4e62f64a05862843e94186c08293",
+      "candidate_sha256": "837099cf3d38228e94c4be34dc1cbca3d67b4e62f64a05862843e94186c08293"
+    },
+    "Sources/SignalAnalyzerDomain/SignalAcquisitionContracts.swift": {
+      "original_sha256": "121a62d4a13b2da15865309dfb3e2e17ca90534c9fc0416521730c5a65201fa9",
+      "candidate_sha256": "121a62d4a13b2da15865309dfb3e2e17ca90534c9fc0416521730c5a65201fa9"
+    },
+    "Sources/SignalAnalyzerDomain/SignalAnalyzerDiagnostic.swift": {
+      "original_sha256": "f44b7d121c9d290f877ad43c361b4d90d79ecb27a3f8ac1e112062077b53dcf4",
+      "candidate_sha256": "f44b7d121c9d290f877ad43c361b4d90d79ecb27a3f8ac1e112062077b53dcf4"
+    },
+    "Sources/SignalAnalyzerDomain/SignalCaptureChange.swift": {
+      "original_sha256": "22b797e24c32d8f4054e22ef2756b056c3d3601d061a02f9438ceb0c71cb6dbc",
+      "candidate_sha256": "22b797e24c32d8f4054e22ef2756b056c3d3601d061a02f9438ceb0c71cb6dbc"
+    },
+    "Sources/SignalAnalyzerDomain/SignalCapturePublication.swift": {
+      "original_sha256": "2d2a648a49e96f6020eb8a55080bc14f24c2f3a9748dd12694bfefb14a940a1b",
+      "candidate_sha256": "2d2a648a49e96f6020eb8a55080bc14f24c2f3a9748dd12694bfefb14a940a1b"
+    },
+    "Sources/SignalAnalyzerDomain/SignalPrimitiveValues.swift": {
+      "original_sha256": "c37d6271a0c077fbc99e694b98d0c094e311a0f42681f1c09bbcc64f1ae101c1",
+      "candidate_sha256": "c37d6271a0c077fbc99e694b98d0c094e311a0f42681f1c09bbcc64f1ae101c1"
+    },
+    "Sources/SignalAnalyzerDomain/SignalValues.swift": {
+      "original_sha256": "310f8a7d0736a363b22dc58a915fb25b03cdc80369ad42f2c28a6b92db37eca2",
+      "candidate_sha256": "4efb99632dc8b8a255e56daa257074b91041d6f20fdad71084a9da548588f493"
+    },
+    "Sources/SignalAnalyzerData/SignalCaptureStore.swift": {
+      "original_sha256": "f7c2aa4d8c67c69674063443f503647c36a2d7efb3156dffb7135044d99a00c4",
+      "candidate_sha256": "2180e66fc477ada026a90ae0230b2f3b7a8f99d141ec60fd82a129c2c64ba411"
+    },
+    "Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFCaptureStorage.swift": {
+      "original_sha256": "0944da9988deb156033b059a757022ec7f8d29a03ca72bcf44255d0123dc815b",
+      "candidate_sha256": "406114ed31641ed51cd5fc0cb512312d83bdb1d8f438f28fe83d90347750defe"
+    },
+    "Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFCaptureRecord.swift": {
+      "original_sha256": "dfe2907c392cecf2149a574a1d12419cdcea38ef23b2bddbb05320be8f8ec75a",
+      "candidate_sha256": "dfe2907c392cecf2149a574a1d12419cdcea38ef23b2bddbb05320be8f8ec75a"
+    },
+    "Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFCaptureHistory.swift": {
+      "original_sha256": "f3dcbea79f54e4728204444aafbc13f878026e195142d85927e3c80af80053fa",
+      "candidate_sha256": "a3f6ac701390ca52035164f11bf1e05ccc76144e3e4c05162847853c0aab9edd"
+    }
+  },
+  "commands": [
+    [
+      "swiftc",
+      "-parse-as-library",
+      "-O",
+      "-whole-module-optimization",
+      "-package-name",
+      "GiftUI",
+      "-module-name",
+      "SignalAnalyzerDomain",
+      "-I",
+      "/Users/eugene/work/GiftUI/.build/iteration-002-audit/retention-candidate",
+      "-emit-module",
+      "-emit-object",
+      "-o",
+      "/Users/eugene/work/GiftUI/.build/iteration-002-audit/retention-candidate/SignalAnalyzerDomain.o",
+      "-emit-module-path",
+      "/Users/eugene/work/GiftUI/.build/iteration-002-audit/retention-candidate/SignalAnalyzerDomain.swiftmodule",
+      "/Users/eugene/work/GiftUI/.build/iteration-002-audit/retention-candidate/SignalAnalyzerDomain/AcquisitionState.swift",
+      "/Users/eugene/work/GiftUI/.build/iteration-002-audit/retention-candidate/SignalAnalyzerDomain/ModuleBoundary.swift",
+      "/Users/eugene/work/GiftUI/.build/iteration-002-audit/retention-candidate/SignalAnalyzerDomain/SignalAcquisitionContracts.swift",
+      "/Users/eugene/work/GiftUI/.build/iteration-002-audit/retention-candidate/SignalAnalyzerDomain/SignalAnalyzerDiagnostic.swift",
+      "/Users/eugene/work/GiftUI/.build/iteration-002-audit/retention-candidate/SignalAnalyzerDomain/SignalCaptureChange.swift",
+      "/Users/eugene/work/GiftUI/.build/iteration-002-audit/retention-candidate/SignalAnalyzerDomain/SignalCapturePublication.swift",
+      "/Users/eugene/work/GiftUI/.build/iteration-002-audit/retention-candidate/SignalAnalyzerDomain/SignalPrimitiveValues.swift",
+      "/Users/eugene/work/GiftUI/.build/iteration-002-audit/retention-candidate/SignalAnalyzerDomain/SignalValues.swift"
+    ],
+    [
+      "swiftc",
+      "-parse-as-library",
+      "-O",
+      "-whole-module-optimization",
+      "-package-name",
+      "GiftUI",
+      "-module-name",
+      "SignalAnalyzerData",
+      "-I",
+      "/Users/eugene/work/GiftUI/.build/iteration-002-audit/retention-candidate",
+      "-emit-module",
+      "-emit-object",
+      "-o",
+      "/Users/eugene/work/GiftUI/.build/iteration-002-audit/retention-candidate/SignalAnalyzerData.o",
+      "-emit-module-path",
+      "/Users/eugene/work/GiftUI/.build/iteration-002-audit/retention-candidate/SignalAnalyzerData.swiftmodule",
+      "/Users/eugene/work/GiftUI/.build/iteration-002-audit/retention-candidate/SignalAnalyzerData/SignalCaptureStore.swift"
+    ],
+    [
+      "swiftc",
+      "-parse-as-library",
+      "-O",
+      "-whole-module-optimization",
+      "-package-name",
+      "GiftUI",
+      "-module-name",
+      "SignalAnalyzerTargetHost",
+      "-I",
+      "/Users/eugene/work/GiftUI/.build/iteration-002-audit/retention-candidate",
+      "-emit-module",
+      "-emit-object",
+      "-o",
+      "/Users/eugene/work/GiftUI/.build/iteration-002-audit/retention-candidate/SignalAnalyzerTargetHost.o",
+      "-emit-module-path",
+      "/Users/eugene/work/GiftUI/.build/iteration-002-audit/retention-candidate/SignalAnalyzerTargetHost.swiftmodule",
+      "/Users/eugene/work/GiftUI/.build/iteration-002-audit/retention-candidate/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFCaptureStorage.swift",
+      "/Users/eugene/work/GiftUI/.build/iteration-002-audit/retention-candidate/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFCaptureRecord.swift",
+      "/Users/eugene/work/GiftUI/.build/iteration-002-audit/retention-candidate/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFCaptureHistory.swift"
+    ],
+    [
+      "swiftc",
+      "-parse-as-library",
+      "-O",
+      "-package-name",
+      "GiftUI",
+      "-I",
+      "/Users/eugene/work/GiftUI/.build/iteration-002-audit/retention-candidate",
+      "/Users/eugene/work/GiftUI/docs/iterations/iteration-002-review/retention-candidate.swift",
+      "/Users/eugene/work/GiftUI/.build/iteration-002-audit/retention-candidate/SignalAnalyzerDomain.o",
+      "/Users/eugene/work/GiftUI/.build/iteration-002-audit/retention-candidate/SignalAnalyzerData.o",
+      "/Users/eugene/work/GiftUI/.build/iteration-002-audit/retention-candidate/SignalAnalyzerTargetHost.o",
+      "-o",
+      "/Users/eugene/work/GiftUI/.build/iteration-002-audit/retention-candidate/probe"
+    ]
+  ],
+  "exit_code": 0,
+  "output": "five-second candidate: 2410 paired history/replay checks; 7200 independent left-edge checks; storage=19392; final sustained revision=2404\n",
+  "limits": "Native actual-owner comparison and independent baseline oracle; no firmware or connected performance proof"
+}
