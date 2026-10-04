@@ -1,0 +1,72 @@
+swiftpm-command: swift test --package-path /Users/eugene/work/GiftUI --scratch-path /Users/eugene/work/GiftUI/.build/iteration-002-focused -Xswiftc -DGIFTUI_DYNAMIC_PROFILE --filter UnequalInteractionStoreCapacity\|InteractionCandidateAppendTests
+Test Suite 'Selected tests' started at 2026-10-05 00:11:19.975.
+Test Suite 'GiftUIPackageTests.xctest' started at 2026-10-05 00:11:19.976.
+Test Suite 'InteractionCandidateAppendTests' started at 2026-10-05 00:11:19.976.
+Test Case '-[GiftUIInteractionTests.InteractionCandidateAppendTests testAppendUsesExactClipAndRetainsEmptyIntersectionWithoutHit]' started.
+Test Case '-[GiftUIInteractionTests.InteractionCandidateAppendTests testAppendUsesExactClipAndRetainsEmptyIntersectionWithoutHit]' passed (0.001 seconds).
+Test Case '-[GiftUIInteractionTests.InteractionCandidateAppendTests testDownCapturesTopmostEnabledAndDisabledTopmostBlocksRetargeting]' started.
+Test Case '-[GiftUIInteractionTests.InteractionCandidateAppendTests testDownCapturesTopmostEnabledAndDisabledTopmostBlocksRetargeting]' passed (0.000 seconds).
+Test Case '-[GiftUIInteractionTests.InteractionCandidateAppendTests testDuplicatePaintOrderAndFirstExcessFailDeterministically]' started.
+Test Case '-[GiftUIInteractionTests.InteractionCandidateAppendTests testDuplicatePaintOrderAndFirstExcessFailDeterministically]' passed (0.000 seconds).
+Test Case '-[GiftUIInteractionTests.InteractionCandidateAppendTests testEachUndersizedStoreFailsWithoutReplacingCommittedState]' started.
+Test Case '-[GiftUIInteractionTests.InteractionCandidateAppendTests testEachUndersizedStoreFailsWithoutReplacingCommittedState]' passed (0.000 seconds).
+Test Case '-[GiftUIInteractionTests.InteractionCandidateAppendTests testExecutionAdapterPermanentlyClearsAnOutsideMove]' started.
+Test Case '-[GiftUIInteractionTests.InteractionCandidateAppendTests testExecutionAdapterPermanentlyClearsAnOutsideMove]' passed (0.000 seconds).
+Test Case '-[GiftUIInteractionTests.InteractionCandidateAppendTests testExecutionAdapterUsesTheSingleCaptureOwnerAndAlwaysClearsUp]' started.
+Test Case '-[GiftUIInteractionTests.InteractionCandidateAppendTests testExecutionAdapterUsesTheSingleCaptureOwnerAndAlwaysClearsUp]' passed (0.000 seconds).
+Test Case '-[GiftUIInteractionTests.InteractionCandidateAppendTests testFailedCandidateCanBeDiscardedExactlyOnceAndReused]' started.
+Test Case '-[GiftUIInteractionTests.InteractionCandidateAppendTests testFailedCandidateCanBeDiscardedExactlyOnceAndReused]' passed (0.000 seconds).
+Test Case '-[GiftUIInteractionTests.InteractionCandidateAppendTests testFirstCandidateErrorWinsUntilDiscard]' started.
+Test Case '-[GiftUIInteractionTests.InteractionCandidateAppendTests testFirstCandidateErrorWinsUntilDiscard]' passed (0.000 seconds).
+Test Case '-[GiftUIInteractionTests.InteractionCandidateAppendTests testGenerationAssignmentAndFinishAreExactlyOnceAndPhaseBound]' started.
+Test Case '-[GiftUIInteractionTests.InteractionCandidateAppendTests testGenerationAssignmentAndFinishAreExactlyOnceAndPhaseBound]' passed (0.000 seconds).
+Test Case '-[GiftUIInteractionTests.InteractionCandidateAppendTests testMoveContinuesOnlyTheExactCurrentCaptureInsideItsRegion]' started.
+Test Case '-[GiftUIInteractionTests.InteractionCandidateAppendTests testMoveContinuesOnlyTheExactCurrentCaptureInsideItsRegion]' passed (0.000 seconds).
+Test Case '-[GiftUIInteractionTests.InteractionCandidateAppendTests testOnlyAnExactlyEqualCommittedRecordPreservesGeneration]' started.
+Test Case '-[GiftUIInteractionTests.InteractionCandidateAppendTests testOnlyAnExactlyEqualCommittedRecordPreservesGeneration]' passed (0.000 seconds).
+Test Case '-[GiftUIInteractionTests.InteractionCandidateAppendTests testResolutionCommitsAtomicallyOrDiscardsAndPreservesCommittedState]' started.
+Test Case '-[GiftUIInteractionTests.InteractionCandidateAppendTests testResolutionCommitsAtomicallyOrDiscardsAndPreservesCommittedState]' passed (0.000 seconds).
+Test Case '-[GiftUIInteractionTests.InteractionCandidateAppendTests testStagedCapacityFailurePreservesGenerationErrorPrecedence]' started.
+Test Case '-[GiftUIInteractionTests.InteractionCandidateAppendTests testStagedCapacityFailurePreservesGenerationErrorPrecedence]' passed (0.000 seconds).
+Test Case '-[GiftUIInteractionTests.InteractionCandidateAppendTests testUpAdmitsOnlyTheExactCurrentEnabledCaptureInsideItsRegion]' started.
+Test Case '-[GiftUIInteractionTests.InteractionCandidateAppendTests testUpAdmitsOnlyTheExactCurrentEnabledCaptureInsideItsRegion]' passed (0.000 seconds).
+Test Suite 'InteractionCandidateAppendTests' passed at 2026-10-05 00:11:19.979.
+	 Executed 14 tests, with 0 failures (0 unexpected) in 0.002 (0.003) seconds
+Test Suite 'GiftUIPackageTests.xctest' passed at 2026-10-05 00:11:19.979.
+	 Executed 14 tests, with 0 failures (0 unexpected) in 0.002 (0.003) seconds
+Test Suite 'Selected tests' passed at 2026-10-05 00:11:19.979.
+	 Executed 14 tests, with 0 failures (0 unexpected) in 0.002 (0.004) seconds
+◇ Test run started.
+↳ Testing Library Version: 1902
+↳ Target Platform: arm64e-apple-macos14.0
+◇ Test "Static independently undersized interaction stores reject before publication" started.
+◇ Test "Dynamic independently undersized interaction stores reject before publication" started.
+◇ Test case passing 1 argument store → 2 to "Dynamic independently undersized interaction stores reject before publication" started.
+◇ Test case passing 1 argument store → 2 to "Static independently undersized interaction stores reject before publication" started.
+◇ Test case passing 1 argument store → 0 to "Static independently undersized interaction stores reject before publication" started.
+◇ Test case passing 1 argument store → 1 to "Static independently undersized interaction stores reject before publication" started.
+◇ Test case passing 1 argument store → 1 to "Dynamic independently undersized interaction stores reject before publication" started.
+◇ Test case passing 1 argument store → 0 to "Dynamic independently undersized interaction stores reject before publication" started.
+◇ Test case passing 1 argument store → 4 to "Static independently undersized interaction stores reject before publication" started.
+◇ Test case passing 1 argument store → 3 to "Static independently undersized interaction stores reject before publication" started.
+◇ Test case passing 1 argument store → 3 to "Dynamic independently undersized interaction stores reject before publication" started.
+◇ Test case passing 1 argument store → 4 to "Dynamic independently undersized interaction stores reject before publication" started.
+✔ Test "Dynamic independently undersized interaction stores reject before publication" with 5 test cases passed after 0.001 seconds.
+✔ Test "Static independently undersized interaction stores reject before publication" with 5 test cases passed after 0.001 seconds.
+✔ Test run with 2 tests in 0 suites passed after 0.001 seconds.
+Building for debugging...
+[0/15] Write sources
+[4/15] Write swift-version--58304C5D6DBC2206.txt
+[6/18] Compiling GiftUIRuntimeDynamicTests DynamicInteractionStorageTests.swift
+[7/18] Emitting module GiftUIRuntimeDynamicTests
+[8/19] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFPackedSemanticRecords.generated.swift
+[9/19] Emitting module SignalAnalyzerTargetHost
+[10/19] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFTopologyWriter.generated.swift
+[11/19] Emitting module SignalAnalyzerTargetHost
+[12/19] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFPackedSemanticRecords.generated.swift
+[13/19] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFTopologyWriter.generated.swift
+[14/17] Compiling GiftUIRuntimeStaticTests StaticInteractionStorageTests.swift
+[15/17] Emitting module GiftUIRuntimeStaticTests
+[15/17] Write Objects.LinkFileList
+[16/17] Linking GiftUIPackageTests
+Build complete! (1.93s)

@@ -973,3 +973,5 @@ Update an existing focused owner design only when the new implementation changes
 All added tasks are pending. Original completed ledger entries and historical raw evidence remain unchanged. Update this milestone, the task ledger and affected conformance/design links together as execution progresses; do not advance a Specification or close an iteration through plan completion alone.
 
 **T10.1 execution — 2026-10-04:** [Result and validation](../iterations/iteration-002-cleanup/evidence/02-capacity/result.md). Remaining integration/connected tasks stay pending.
+
+**T10.2 concrete-store coverage — 2026-10-05:** [Real Static/Dynamic five-store cases](../iterations/iteration-002-cleanup/evidence/02-capacity/concrete-stores/result.md); final owner/profile checks remain pending.

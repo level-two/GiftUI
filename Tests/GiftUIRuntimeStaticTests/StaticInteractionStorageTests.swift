@@ -119,3 +119,46 @@ private func append(
             == .captured(CapturedAction(identity: 6, generation: ActionGeneration(rawValue: 6)))
     )
 }
+
+@Test(
+    "Static independently undersized interaction stores reject before publication",
+    arguments: 0 ..< 5)
+func staticUnequalInteractionStoreCapacity(store: Int) {
+    let capacities: [UInt16] = (0 ..< 5).map { $0 == store ? 1 : 2 }
+    var state = StaticInteractionState<UInt16>(
+        candidateRecords: StaticInteractionCandidateStorage(capacity: capacities[0])!,
+        candidateHitRegions: StaticInteractionHitStorage(capacity: capacities[1])!,
+        candidateCommittedRecords: StaticInteractionCommittedStorage(capacity: capacities[2])!,
+        committedRecords: StaticInteractionCommittedStorage(capacity: capacities[3])!,
+        committedHitRegions: StaticInteractionHitStorage(capacity: capacities[4])!
+    )
+    let result = state.beginCandidate(
+        limits: InteractionLimits(maximumActions: 2, maximumHitRegions: 2)!)
+    if store == 2 {
+        #expect(result == nil)
+        for identity: UInt16 in 1 ... 2 {
+            #expect(
+                append(identity: identity, paintOrder: identity - 1, to: &state)
+                    == .requiresGeneration)
+            #expect(
+                state.assignGeneration(ActionGeneration(rawValue: UInt32(identity)), to: identity)
+                    == nil)
+        }
+        #expect(state.finishCandidate() == .capacityExhausted)
+        state.resolveCandidate(.commit(PresentationRevision(rawValue: 1)))
+        state.resolveCandidate(.discard)
+    } else {
+        #expect(result == .capacityExhausted)
+    }
+    #expect(state.committedRecordCount == 0)
+    #expect(state.committedHitRegionCount == 0)
+    #expect(state.committedRevision == nil)
+    #expect(
+        state.beginCandidate(limits: InteractionLimits(maximumActions: 1, maximumHitRegions: 1)!)
+            == nil)
+    #expect(append(identity: 7, paintOrder: 0, to: &state) == .requiresGeneration)
+    #expect(state.assignGeneration(ActionGeneration(rawValue: 9), to: 7) == nil)
+    #expect(state.finishCandidate() == nil)
+    state.resolveCandidate(.commit(PresentationRevision(rawValue: 4)))
+    #expect(state.committedRecord(at: 0)?.identity == 7)
+}
