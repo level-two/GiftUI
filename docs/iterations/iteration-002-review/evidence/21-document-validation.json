@@ -1,0 +1,27 @@
+{
+  "head_before_closeout_commit": "d0069639c00d17820bf5cdecbbc54ddb5399d2b5",
+  "markdown_files_checked": 13,
+  "local_links_checked": 166,
+  "python_scripts_parsed": 19,
+  "json_files_parsed": 9,
+  "input_and_native_object_hashes_verified": 110,
+  "compressed_semantic_transcripts_verified": 2,
+  "paired_elf_hashes_verified": 6,
+  "stack_elf_and_object_hashes_verified": true,
+  "maintained_inputs_unchanged_from_initial_snapshot": true,
+  "production_gate_archive_unchanged": true,
+  "whitespace_and_shell_syntax": "passed",
+  "governance": "Authority graph validation passed: 168 nodes, 1687 edges.",
+  "formatter": "scripts/format-swift.sh completed with exit 0 before this verification; no maintained edits",
+  "formatter_log": "",
+  "log_hashes": {
+    ".build/nrf52840/iteration-002-research-doctor.txt": "dc22bfeb24756160a73b8c73983f8f410b40cdbee4b2a69250ecf95e11e0864f",
+    ".build/nrf52840/spike-010-run.txt": "1a38258e4643758d9464451fb08008d9b9fd0379fe2898c7e67e5c19bc02f66b",
+    ".build/nrf52840/spike-010-build.txt": "d9e6e06b31a0bf6e4702b958b277647de8bb1a82e57bfebc7a329a00085bc080",
+    ".build/nrf52840/spike-011-run.txt": "ceb63391adf91d9ebdcb8cfe4a98e2213938d4598be1cfd7395cb05b54a68006",
+    ".build/nrf52840/spike-011-build.txt": "b3b534004e331c0446a1bbc60452fb85269b1a2aa6d933e696825ee0383abf6b",
+    ".build/iteration-002-audit/reopened-format.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    ".build/iteration-002-audit/reopened-governance.log": "c951bce2d9deb28da5e673c531c39abc80ec5d3a73aaae570b125abd517b88ce"
+  },
+  "limitations": "Bounded disposable hardware-free research. No production remediation, scope approval, universal conformance, whole-stack bound or connected evidence claimed."
+}

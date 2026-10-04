@@ -61,7 +61,15 @@ No remediation is approved or implemented by this register.
   Exploration/Spike when undertaking candidate implementation or measurement.
   Module/contract/profile/resource changes require their normal approvals.
   Measure parity, RAM/flash/stack/heap, derivation costs, and reproducibility.
-- **Owner/disposition:** Signal Analyzer target-host/generation owners; [SPIKE-009](../../spikes/spike-009-nrf-hierarchy-role-bindings.md) supports named role bindings (+192 flash bytes, unchanged RAM, 42 exact semantic comparisons). Retain packed hierarchy; full runtime derivation is unproven.
+- **Owner/disposition:** Signal Analyzer target-host/generation owners;
+  [SPIKE-011](../../spikes/spike-011-clean-topology-generation.md) supports clean
+  generation of both table outputs with exact source/semantic parity and zero
+  linked size delta. [SPIKE-009](../../spikes/spike-009-nrf-hierarchy-role-bindings.md)
+  supports optional named role bindings (+192 flash bytes, unchanged RAM,
+  42 exact semantic comparisons). Retain packed runtime hierarchy. SPIKE-010's
+  snapshot counting prerequisite does not establish a full replacement;
+  [Step 20](20-static-stack-assessment.md) records static stack proof barriers.
+  Finding remains open pending production selection/remediation.
 
 ## CBR-003 — Duplicate text-layout rules remain in startup validation
 
@@ -218,3 +226,11 @@ Five-second retention has paired history/replay and independent left-edge
 evidence plus measured three-store costs. Fifteen file-selection guards have
 a named candidate and explicit residual policy. Full hierarchy replacement,
 physical timing/high-water and connected behavior remain unproven.
+
+[Steps 18–21](21-research-closeout.md) complete the reopened hardware-free queue:
+actual-body snapshot traversal, complete clean topology generation, addressed
+static resource inspection and reconciled draft scope revision 3. Clean
+generation is a supported candidate; full runtime replacement is excluded from
+the proposed cleanup commitment. Connected work is explicitly deferred by the
+maintainer. All eight findings retain their open/deferred dispositions; no
+production defect was fixed by disposable research.

@@ -30,10 +30,11 @@ draft; research does not select or authorize implementation.
 | 14 — Five-second retention | [Owner impact, behavioral prototype and linked costs](14-five-second-retention-impact.md) | Recorded; 96,000 bytes less RAM; contract amendments pending |
 | 15 — Conditional removal | [15-file source-selection prototype and residual policy](15-conditional-removal-candidates.md) | Recorded; native/Embedded checks pass at unchanged linked size |
 | 16 — Hierarchy Spike | [Direct-module failure and measured role-binding alternative](16-hierarchy-feasibility-experiment.md) | Recorded; retain packed hierarchy; smaller cleanup candidate |
-| 17 — Follow-up reconciliation | [Updated candidate selection and readiness](17-followup-reconciliation.md) | Research round concluded; draft scope revision 2 ready for selection |
+| 17 — Follow-up reconciliation | [Prior candidate selection and readiness](17-followup-reconciliation.md) | Historical first follow-up round; superseded planning disposition in Step 21 |
 | 18 — Declaration traversal | [Bounded actual-body snapshot prerequisite](18-bounded-declaration-traversal.md) | 42 cases/84 refusals pass; additive +34,184 flash bytes; full replacement remains unsupported |
 | 19 — Clean generation | [Complete clean table emission and parity](19-clean-topology-generation.md) | Two byte-identical generations; 12 refusals; 42 semantic comparisons; zero linked size delta |
 | 20 — Static stack assessment | [Addressed evidence and unresolved control-flow boundary](20-static-stack-assessment.md) | Inspection complete; indirect targets/metadata prevent a whole-stack bound; connected evidence deferred |
+| 21 — Research closeout | [Completed queue and draft scope revision 3](21-research-closeout.md) | Hardware-free investigation complete; production selection/approval next; connected work deferred |
 
 [Findings register](findings.md) records confirmed observations separately from
 hypotheses and preferences. A step's completion does not imply every module or
@@ -44,7 +45,12 @@ defects, two supported simplification opportunities and one deferred performance
 hypothesis. All owner groups have review dispositions and the hardware-free
 gate passed across four profiles. [Final reconciliation](12-final-reconciliation.md)
 prioritizes candidate fixes without selecting or authorizing implementation.
-Follow-up experiments in Steps 13–16 measure partial candidates and conclude with a retain-packed-hierarchy disposition. Full runtime replacement and connected evidence remain unproven; [Step 17](17-followup-reconciliation.md) is the current planning disposition.
+Follow-up experiments in Steps 13–20 measure candidates and conclude with a
+retain-packed-runtime disposition. Clean generation is demonstrated; full
+runtime replacement is outside the proposed cleanup commitment. Connected work
+is deferred by the maintainer. [Step 21](21-research-closeout.md) is the current
+planning disposition and distinguishes remaining implementation gates from
+completed investigation.
 Read the register's counterevidence and validation limits before scope approval.
 
 ## Reproduce the lexical inventory

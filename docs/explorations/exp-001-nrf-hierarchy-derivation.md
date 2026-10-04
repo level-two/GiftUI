@@ -2,7 +2,7 @@
 id: EXP-001
 feature: signal-analyzer
 title: nRF Hierarchy Derivation and Stable Role Bindings
-status: active
+status: concluded
 authors:
   - codex
 created: 2026-10-04
@@ -114,7 +114,7 @@ are +192 flash bytes and unchanged RAM. Native timing and local writer frame
 observations are recorded with limits. No acceptable target timing/stack/delta
 budget was agreed, and full runtime derivation was not built.
 
-## Remaining Unknowns
+## Reopened Hardware-Free Experiments
 
 The maintainer reopened the hardware-free investigation and explicitly kept
 connected work deferred. [SPIKE-010](../spikes/spike-010-bounded-declaration-traversal.md)
@@ -135,9 +135,11 @@ previous-output dependency in the prototype, while specialized policy/model
 writers remain. [Step 19](../iterations/iteration-002-review/19-clean-topology-generation.md)
 records the supported tooling candidate.
 
+## Remaining Unknowns
+
 A complete runtime declaration replacement, whole-stack bounds and target
-timing remain unproven. These are
-future candidate-specific research, not evidence that the current packed
+timing remain unproven. These are future candidate-specific design/research,
+not evidence that the current packed
 representation should be removed. The partial binding candidate does not
 remove the topology generator. SPIKE-011 provides a separate clean-generation
 candidate with explicit codec templates rather than previous output inputs.
@@ -153,17 +155,21 @@ runtime replacement is not a cleanup commitment, so its missing design/parity/
 budget evidence is a future selection prerequisite rather than an unfinished
 generic audit step.
 
-The first bounded research round concluded with a retain-packed-hierarchy
-recommendation. Consider selecting explicit generated/checkable semantic-role
-bindings as a smaller maintenance outcome; do not promise runtime replacement
-for ITERATION-002. That recommendation remains after SPIKE-010. The direct-module route has a negative prerequisite result,
-not full parity/cost evidence. IT-AC-003 is available for scope refinement but
-is not recorded as an approved criterion pass. Further runtime work requires
-selecting a concrete lowering candidate and comparison budgets.
+Conclude the reopened hardware-free round with a **retain packed runtime**
+recommendation. Clean topology generation is a supported tooling candidate;
+generated/checkable semantic-role bindings are a separate optional candidate.
+The snapshot traversal answers a compiler/counting prerequisite and does not
+demonstrate complete runtime replacement. Full replacement is excluded from
+draft ITERATION-002 revision 3 and needs later explicit design selection and
+budgets. The direct-module route remains a negative prerequisite result.
+IT-AC-003 is refined for scope selection, not recorded as an approved pass.
+[Step 21](../iterations/iteration-002-review/21-research-closeout.md) closes the
+bounded investigation queue; connected work remains explicitly deferred.
 
 ## Revisit Triggers
 
-- ITERATION-002 selects the investigation and comparison budgets are agreed.
+- A later scope explicitly selects full runtime replacement and its missing
+  identity/state/publication design and comparison budgets.
 - A portable hierarchy change requires another coordinated ordinal update,
   providing a concrete case for stable-role generation.
 - A selected candidate changes an owner/profile/public contract: feature triage

@@ -2,7 +2,7 @@
 id: ITERATION-002
 title: Cleanup
 status: draft
-revision: 2
+revision: 3
 approved_revision: null
 created: 2026-10-04
 updated: 2026-10-04
@@ -44,7 +44,7 @@ boundaries are still open. Scope membership creates no implementation authority.
 | Bounded codebase audit and findings selection | Maintainer discussion establishing the cleanup review process; all participating features | Review dependencies, module interfaces, abstractions/mappings, requirements, execution flows, profiles/resources, and tooling. Produce a baseline, coverage matrix, evidence-backed findings register, and prioritized remediation selection. | Read-only review may begin while this scope is draft. Route confirmed defects, simplifications, contract changes, architectural concerns, and uncertain hypotheses separately under the existing lifecycle. |
 | Improve process: numbered iterations | [ITERATION-001](iteration-001-mvp.md); discussion “Plan MVP Cleanup Iteration” | Use consecutive scope records, beginning with MVP as ITERATION-001. The process and MVP registration are already delivered; these draft scopes continue it. Identify any remaining process gaps during review. | Documentation maintenance under the existing iteration rules. |
 | Revise module dependencies | Discussion “Review module dependency direction”; giftui-mvp-architecture | Reassess dependency directions and glue modules against their actual responsibilities; select remaining cleanup after accounting for completed SPEC-001 Milestone 10 work. | Contract-preserving maintenance may use the lightweight path; ownership or dependency-graph changes require lifecycle review against ADR-007/ADR-008 and SPEC-002. |
-| nRF hierarchy assessment and role-binding cleanup | [EXP-001](../explorations/exp-001-nrf-hierarchy-derivation.md), [SPIKE-009](../spikes/spike-009-nrf-hierarchy-role-bindings.md), CBR-002; signal-analyzer | Record the negative direct-module prerequisite result and retain packed hierarchy. Consider generated/checkable named text/modifier roles using the measured +192 flash / zero RAM candidate; full runtime replacement is a separate candidate-specific investigation if selected. | Current evidence is research. Preserve Static storage, zero heap and semantic parity; agree comparison budgets and obtain affected contract/architecture approvals before any selected replacement. |
+| nRF hierarchy tooling and optional role-binding cleanup | [EXP-001](../explorations/exp-001-nrf-hierarchy-derivation.md), [SPIKE-009](../spikes/spike-009-nrf-hierarchy-role-bindings.md), [SPIKE-010](../spikes/spike-010-bounded-declaration-traversal.md), [SPIKE-011](../spikes/spike-011-clean-topology-generation.md), CBR-002; signal-analyzer | Retain packed runtime hierarchy. Consider clean topology generation using explicit codec templates/binding policy: both outputs and 42 semantic transcripts match, with zero linked flash/RAM delta. Optionally select named text/modifier roles at +192 flash / zero RAM. | Tooling maintenance preserves storage/runtime owners; integrate projection freshness, template/policy ownership and generator/profile gates. Full runtime replacement is outside this proposed cleanup scope; any later selection requires design, contract review, full parity and agreed resource/time budgets. |
 | Move named source-selection guards into build selection | [FW-029](../future-work/fw-029-reduce-source-conditional-compilation.md), [Step 15](iteration-002-review/15-conditional-removal-candidates.md) | Consider 15 named Embedded-only whole-file guards plus one empty compatibility file; coordinate SwiftPM exclusion, CMake and native source lists. Keep the justified residual profile/resource/arithmetic/instrumentation/board guards. | Mechanical selection may be lightweight; profile behavior, declarations, ownership or resource changes need lifecycle review. |
 | Five-second Signal Analyzer buffer | [Step 14](iteration-002-review/14-five-second-retention-impact.md); signal-analyzer | Consider 404 records per store and 5s retention. Resize live/model/admission storage together; measured nRF RAM changes from 191,104 to 95,104 bytes. Preserve 1/2/5s baselines, 10 Hz per-channel input and the 30s workload. | Amend accepted ADR-003 and affected capture/host contracts before implementation; migrate retained-history oracles separately from delivered-event counts and revalidate all profiles. |
 | Callback-safe startup and interaction capacity | CBR-007 / CBR-001; Signal Analyzer Data and Interaction | Preserve terminal startup state and preflight every staged commit-store capacity with the specified contained failure. | Contract-preserving maintenance under SPEC-001/011/013; real-source and unequal-capacity reproduction cases plus failure/reuse and affected profile gates. |
@@ -96,13 +96,16 @@ on coverage and explicit finding dispositions,
 not on repeated agent passes ceasing to produce suggestions. Discovery does not
 automatically select remediation or expand an approved iteration.
 
-The [updated research reconciliation](iteration-002-review/17-followup-reconciliation.md)
+The [updated research reconciliation](iteration-002-review/21-research-closeout.md)
 records eight findings, all bounded review perspectives, the passing four-profile
-gate and four follow-up experiments/assessments. It recommends correctness and
+gate and completed bounded follow-up experiments/assessments. It recommends correctness and
 evidence fixes first, then measured startup/source-selection cleanups and the
 5s contract amendment; retaining the packed hierarchy is the current research
-disposition. A smaller role-binding candidate has measured parity/cost evidence.
-Full runtime derivation and connected proof remain unproven. These are refined
+disposition. Clean generation is demonstrated with exact outputs/parity and
+zero size delta; named roles are an optional smaller runtime cleanup. Actual-body
+snapshot traversal compiles but lacks complete replacement parity and costs
+an additive 34,184 flash bytes. Static inspection records explicit barriers to
+a whole-stack bound. Connected work is deferred by the maintainer. These are refined
 candidates, not selected commitments, scope approval or criterion passes.
 
 ## Exclusions
@@ -119,6 +122,9 @@ candidates, not selected commitments, scope approval or criterion passes.
 - No lower signal frequency, new analyzer navigation, or new platform is proposed.
 - Pi/nRF rendering optimization and outstanding connected validation are not
   automatically included; their existing deferred records remain separate.
+- Full runtime declaration replacement is excluded from this proposed cleanup
+  revision. The bounded prerequisite experiment is evidence for future design
+  selection, not an additional investigation commitment for this iteration.
 
 ## Success Criteria and Validation
 
@@ -128,7 +134,7 @@ These are provisional outcomes to refine before scope approval.
 | --- | --- | --- | --- |
 | IT-AC-001 | Numbered iteration records are registered, discoverable, and distinguish draft scope from approved commitments. | Repository documentation | Governance validation and iteration index; already established process plus these scopes. |
 | IT-AC-002 | Selected dependency cleanup has explicit ownership and no forbidden imports or dependency cycles. | Affected modules and supported target builds, to be selected | Before/after dependency inventory, owner checks, and governing ADR-007/ADR-008/SPEC-002 criteria. |
-| IT-AC-003 | Hierarchy investigation has reproducible evidence and an explicit disposition, including negative prerequisite results. Any selected role-binding cleanup has exact parity and budgeted cost evidence; full runtime replacement is promised only if separately selected and demonstrated. | nRF Static; desktop comparison/rehearsal | EXP-001/SPIKE-009 record direct-module failure, 32-role inference, 42 semantic-byte comparisons and partial-candidate costs. Target timing, whole-stack bounds and acceptable deltas remain requirements before selecting a replacement. |
+| IT-AC-003 | Hierarchy research has an explicit disposition. Any selected clean-generation cleanup emits both outputs from empty directories, checks registered projection freshness and malformed inputs, preserves full semantic transcripts, and has no runtime algorithm/storage change. Any separately selected named-role cleanup preserves parity and stays within agreed costs. | nRF Static; native comparison/rehearsal; generator gate | EXP-001 and SPIKE-009/010/011 record negative direct-module results, snapshot prerequisite limits, named roles, clean generation, 42 semantic comparisons and linked costs. Step 20 records static stack proof barriers. Full runtime replacement is excluded from this draft revision; connected timing/high-water remains deferred. |
 | IT-AC-004 | Selected 15-file source-selection guards and the empty compatibility shell are removed coherently; justified residual guards remain documented. | SwiftPM native selections, nRF CMake and native rehearsal | Step 15 candidate list; manifest/source consistency, compile/behavior and resource checks; preserve profile exclusions and negative configuration tests. |
 | IT-AC-005 | Approved 5s/404-record retention supports all 1/2/5s windows with correct left-edge levels and snapshot/replay behavior. | All analyzer configurations | ADR-003 and affected Spec amendments; cutoff/equal-time/404/405/clear/snapshot cases; three-store size, linked nRF memory and 30s sustained acquisition/publication validation. Step 14 is prototype evidence, not a production pass. |
 | IT-AC-006 | The bounded audit records its baseline, all planned review perspectives, coverage and gaps, evidence-backed findings, and reconciled dispositions. | Maintained code/build/test areas across all four supported configurations | Linked baseline, coverage matrix, and findings register following the Codebase Review Process; governing requirements and known MVP exceptions; explicit evidence limitations rather than inferred passes. |
@@ -141,14 +147,17 @@ These are provisional outcomes to refine before scope approval.
   or amend their authoritative artifacts.
 - Which dependency issues remain after SPEC-001 Milestone 10, rather than
   repeating completed cleanup?
-- The hierarchy surface and partial binding candidate are inventoried. If further runtime replacement research is selected, which bounded typed lowering candidate and flash/RAM/whole-stack/target-time budgets govern it?
+- The hardware-free hierarchy investigations have dispositions. Select clean
+  generation and/or named roles for production work; complete runtime
+  replacement would require a separate scope/design and agreed budgets.
 - Step 15 specifies 15 file-selection candidates and justified residual guards. Confirm that bounded outcome when selecting scope; all-directive removal is unsupported.
 - Five seconds is a proposed retention horizon, not a new workload duration:
   distinguish it from the existing 30-second sustained-acquisition validation.
   Capacity, boundary-event policy, snapshot/model stores, host budgets, and
   cross-references must be reviewed together.
-- What concrete cost/resource thresholds make the nRF hierarchy candidate
-  acceptable? Investigation may recommend retaining the existing approach.
+- If selecting named roles, what comparison budgets/resource evidence govern
+  adoption? Clean-generation evidence has zero runtime size/algorithm delta;
+  retain the packed representation in either case.
 - Which audit findings become selected remediation, which require upstream
   decisions, and which are deferred? Settle the required validation matrix
   before approving this scope revision.
@@ -171,6 +180,7 @@ These are provisional outcomes to refine before scope approval.
 | --- | --- | --- | --- |
 | 1 | 2026-10-04 | Initial candidate scope from recent discussions and the maintainer's two-iteration outline; refined with a bounded audit, findings-selection process, and evidence-first nRF investigation. | Scope approval pending; maintainer requested these draft-document updates. |
 | 2 | 2026-10-04 | Incorporate Steps 13–16: measured startup/retention/guard/role candidates, direct-module negative result and refined bounded outcomes. | Scope approval pending; maintainer authorized remaining research and per-step commits. |
+| 3 | 2026-10-04 | Incorporate Steps 18–21: actual-body snapshot prerequisite, complete clean topology generation, static stack stopping boundary; retain packed runtime and exclude full replacement from the proposed cleanup commitment. | Scope approval pending; maintainer requested remaining hardware-free research and explicitly kept connected work deferred. |
 
 ## Closure and Follow-up
 

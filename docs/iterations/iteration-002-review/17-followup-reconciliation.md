@@ -1,5 +1,9 @@
 # Step 17 — Follow-up reconciliation and scope readiness
 
+Historical first follow-up round. The maintainer subsequently requested more
+hardware-free research; [Step 21](21-research-closeout.md) is the current
+disposition after Steps 18–20.
+
 The maintainer requested completion of the remaining investigation steps with
 separate commits. Steps 13–16 now record concrete experiments and assessments;
 production source, tests, build scripts, package topology and authoritative
