@@ -179,6 +179,11 @@ No remediation is approved or implemented by this register.
 
 ## Deferred and Follow-up Work
 
+Step 09's [isolated updater check](evidence/09-hierarchy-generator.json) reproduces
+both current hierarchy outputs and is idempotent. This is counterevidence to a
+stale-generation concern under CBR-002; it does not resolve manual ordinal
+coupling or establish clean declaration-derived generation.
+
 [FW-032](../../future-work/fw-032-nrf-performance-improvement.md) now links back
 to CBR-005. The capacity correctness finding remains a current selection item;
 it is not hidden by this performance deferral.

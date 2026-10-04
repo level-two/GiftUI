@@ -1,0 +1,42 @@
+{
+  "source_baseline": "6cf31f26",
+  "command": "python3 scripts/contracts/generate-spec-001-nrf-topology.py (isolated copy, twice)",
+  "input_hashes": {
+    "scripts/contracts/generate-spec-001-nrf-topology.py": "1140885dac32772013667be657dd40e662865826aa843078f5087b0cc8ecc8d3",
+    "Tests/ContractFixtures/SPEC001/nrf-touch-ui-projection.json": "20b1ed30222dd9a0cfd23d3cb198a3f3ba7e0378512ff28921144e9252ae2816",
+    "Tests/ContractFixtures/SPEC001/nrf-touch-ui-diagnostic-projection.json": "f2ca9c26210d14872b10dbc5b36401e55a377ad67f7affa2d8946ad9aa61b66b",
+    "Sources/SignalAnalyzerTargetHost/Generated/StaticSignalAnalyzerNRFTopologyWriter.generated.swift": "02c0ee5b21820f9c5c62e20ae2e867dbf8929ee750f0454271fe7409b75643d0",
+    "Sources/SignalAnalyzerTargetHost/Generated/StaticSignalAnalyzerNRFPackedSemanticRecords.generated.swift": "c8981c6b36c6622c9f843bacf9fa46e3f95e2ea6be101e113e546fca06139b78"
+  },
+  "limits": "Updater uses existing generated files as inputs; idempotence is not clean generation or semantic parity",
+  "runs": [
+    {
+      "exit_code": 0,
+      "output": "Generated 92/92 scopes, 16 primitive payloads, 26 layout modifiers, 15 live modifiers and three actions\n"
+    },
+    {
+      "exit_code": 0,
+      "output": "Generated 92/92 scopes, 16 primitive payloads, 26 layout modifiers, 15 live modifiers and three actions\n"
+    }
+  ],
+  "outputs": {
+    "Sources/SignalAnalyzerTargetHost/Generated/StaticSignalAnalyzerNRFTopologyWriter.generated.swift": {
+      "original_sha256": "02c0ee5b21820f9c5c62e20ae2e867dbf8929ee750f0454271fe7409b75643d0",
+      "first_sha256": "02c0ee5b21820f9c5c62e20ae2e867dbf8929ee750f0454271fe7409b75643d0",
+      "second_sha256": "02c0ee5b21820f9c5c62e20ae2e867dbf8929ee750f0454271fe7409b75643d0",
+      "matches_checked_in": true,
+      "idempotent": true,
+      "diff_line_count": 0,
+      "diff_preview": []
+    },
+    "Sources/SignalAnalyzerTargetHost/Generated/StaticSignalAnalyzerNRFPackedSemanticRecords.generated.swift": {
+      "original_sha256": "c8981c6b36c6622c9f843bacf9fa46e3f95e2ea6be101e113e546fca06139b78",
+      "first_sha256": "c8981c6b36c6622c9f843bacf9fa46e3f95e2ea6be101e113e546fca06139b78",
+      "second_sha256": "c8981c6b36c6622c9f843bacf9fa46e3f95e2ea6be101e113e546fca06139b78",
+      "matches_checked_in": true,
+      "idempotent": true,
+      "diff_line_count": 0,
+      "diff_preview": []
+    }
+  }
+}

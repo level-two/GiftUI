@@ -7,7 +7,7 @@ geometry, text, render and profile contracts they consume; ADR-007/008/014–020
 | --- | --- |
 | GiftUICapabilities | Fixed contributor roles, candidate workspace, deterministic resolver and precedence. Describes available raster/submission/resource facts independently of execution health; native capability widths are checked at adapters rather than importing GiftUI into this leaf. |
 | GiftUIFailureCore | Condition/origin/scope/containment values, operational health and residual-policy input. Does not own subsystem errors or concrete hardware policy. |
-| GiftUIFailureExecution | Correlation and layered disposition, owner-adapter mappings | Preserves authoritative failure fact and execution context rather than treating diagnostics as a second failure source. |
+| GiftUIFailureExecution | Correlation and layered disposition, owner-adapter mappings; preserves authoritative failure fact and execution context rather than treating diagnostics as a second failure source. |
 | GiftUIFailureDiagnostics | Fixed-capacity buffer and lazy projector | Optional record construction and delivery counters; selected-out records do not invoke the producer closure. Diagnostics cannot select cleanup or change returned outcomes. |
 | GiftUISurfaceCore | Canonical pixel encoding and surface descriptor/surface interface | Checked zero-origin, extent/stride/region descriptor; encoding and surface state are separate from transport ownership. |
 | GiftUIDisplayCore | Reservation/writer/transfer contracts and capability contribution | Explicit before/after-responsibility-acceptance results; synchronous borrow/copy lifetime and in-flight limits bound writer access. |

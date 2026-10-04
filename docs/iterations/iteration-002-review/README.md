@@ -22,6 +22,7 @@ draft; research does not select or authorize implementation.
 | 06 — Semantic/layout/render/drawing | [Owner contracts, lifetimes, capacity, and rollback](06-semantic-layout-render-drawing.md) | Recorded |
 | 07 — Execution/observable/runtime | [Input, replacement, failure, and quiescence flows](07-execution-observable-runtime.md) | Recorded |
 | 08 — Backend/host/platform | [Responsibilities, policy, and transfer/input lifetimes](08-backend-host-platform.md) | Recorded |
+| 09 — Tests/generation/entry points | [Corpus limits, updater freshness, and guard dispositions](09-tests-generation-and-entrypoints.md) | Recorded; fresh gate follows |
 
 [Findings register](findings.md) records confirmed observations separately from
 hypotheses and preferences. A step's completion does not imply every module or

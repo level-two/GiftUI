@@ -1,0 +1,85 @@
+module	type	path	step	review_perspective
+GiftUI	regular	Sources/GiftUI	05	owner interfaces and representative production joins
+GiftUIBackendIntegration	regular	Sources/GiftUIBackendIntegration	08	owner interfaces and representative production joins
+GiftUIBackendIntegrationTests	test	Tests/GiftUIBackendIntegrationTests	09/11	corpus role and automated hardware-free gate; not every test manually reviewed
+GiftUICapabilities	regular	Sources/GiftUICapabilities	08	owner interfaces and representative production joins
+GiftUICapabilitiesTests	test	Tests/GiftUICapabilitiesTests	09/11	corpus role and automated hardware-free gate; not every test manually reviewed
+GiftUICapabilityAdapterTests	test	Tests/GiftUICapabilityAdapterTests	09/11	corpus role and automated hardware-free gate; not every test manually reviewed
+GiftUICapabilityFailureAdapterFixture	regular	Sources/GiftUICapabilityFailureAdapterFixture	08/09	contract failure adapter fixture; excluded from executable production closure
+GiftUICapabilityFailureAdapterTests	test	Tests/GiftUICapabilityFailureAdapterTests	09/11	corpus role and automated hardware-free gate; not every test manually reviewed
+GiftUIDisplayCore	regular	Sources/GiftUIDisplayCore	08	owner interfaces and representative production joins
+GiftUIDisplayCoreTests	test	Tests/GiftUIDisplayCoreTests	09/11	corpus role and automated hardware-free gate; not every test manually reviewed
+GiftUIDrawing	regular	Sources/GiftUIDrawing	06	owner interfaces and representative production joins
+GiftUIDrawingFailureAdapterFixture	regular	Sources/GiftUIDrawingFailureAdapterFixture	08/09	contract failure adapter fixture; excluded from executable production closure
+GiftUIDrawingTests	test	Tests/GiftUIDrawingTests	09/11	corpus role and automated hardware-free gate; not every test manually reviewed
+GiftUIDynamicConveniences	regular	Sources/GiftUIDynamicConveniences	05	owner interfaces and representative production joins
+GiftUIExecution	regular	Sources/GiftUIExecution	07	owner interfaces and representative production joins
+GiftUIExecutionTests	test	Tests/GiftUIExecutionTests	09/11	corpus role and automated hardware-free gate; not every test manually reviewed
+GiftUIFailureCore	regular	Sources/GiftUIFailureCore	08	owner interfaces and representative production joins
+GiftUIFailureCoreTests	test	Tests/GiftUIFailureCoreTests	09/11	corpus role and automated hardware-free gate; not every test manually reviewed
+GiftUIFailureDiagnostics	regular	Sources/GiftUIFailureDiagnostics	08	owner interfaces and representative production joins
+GiftUIFailureDiagnosticsTests	test	Tests/GiftUIFailureDiagnosticsTests	09/11	corpus role and automated hardware-free gate; not every test manually reviewed
+GiftUIFailureExecution	regular	Sources/GiftUIFailureExecution	08	owner interfaces and representative production joins
+GiftUIFailureExecutionTests	test	Tests/GiftUIFailureExecutionTests	09/11	corpus role and automated hardware-free gate; not every test manually reviewed
+GiftUIFoundationFailureAdapterTests	test	Tests/GiftUIFoundationFailureAdapterTests	09/11	corpus role and automated hardware-free gate; not every test manually reviewed
+GiftUIHostConfiguration	regular	Sources/GiftUIHostConfiguration	08	owner interfaces and representative production joins
+GiftUIHostConfigurationTests	test	Tests/GiftUIHostConfigurationTests	09/11	corpus role and automated hardware-free gate; not every test manually reviewed
+GiftUIInteraction	regular	Sources/GiftUIInteraction	07	owner interfaces and representative production joins
+GiftUIInteractionFailureAdapterFixture	regular	Sources/GiftUIInteractionFailureAdapterFixture	08/09	contract failure adapter fixture; excluded from executable production closure
+GiftUIInteractionFailureAdapterTests	test	Tests/GiftUIInteractionFailureAdapterTests	09/11	corpus role and automated hardware-free gate; not every test manually reviewed
+GiftUIInteractionTests	test	Tests/GiftUIInteractionTests	09/11	corpus role and automated hardware-free gate; not every test manually reviewed
+GiftUILayout	regular	Sources/GiftUILayout	06	owner interfaces and representative production joins
+GiftUILayoutFailureAdapterFixture	regular	Sources/GiftUILayoutFailureAdapterFixture	08/09	contract failure adapter fixture; excluded from executable production closure
+GiftUILayoutFailureAdapterTests	test	Tests/GiftUILayoutFailureAdapterTests	09/11	corpus role and automated hardware-free gate; not every test manually reviewed
+GiftUILayoutTests	test	Tests/GiftUILayoutTests	09/11	corpus role and automated hardware-free gate; not every test manually reviewed
+GiftUIMacros	macro	Sources/GiftUIMacros	05	owner interfaces and representative production joins
+GiftUIMacrosTests	test	Tests/GiftUIMacrosTests	09/11	corpus role and automated hardware-free gate; not every test manually reviewed
+GiftUIObservableState	regular	Sources/GiftUIObservableState	07	owner interfaces and representative production joins
+GiftUIObservableStateFailureAdapterFixture	regular	Sources/GiftUIObservableStateFailureAdapterFixture	08/09	contract failure adapter fixture; excluded from executable production closure
+GiftUIObservableStateFailureAdapterTests	test	Tests/GiftUIObservableStateFailureAdapterTests	09/11	corpus role and automated hardware-free gate; not every test manually reviewed
+GiftUIObservableStateTests	test	Tests/GiftUIObservableStateTests	09/11	corpus role and automated hardware-free gate; not every test manually reviewed
+GiftUIPlatformRaspberryPi	regular	Sources/GiftUIPlatformRaspberryPi	08	owner interfaces and representative production joins
+GiftUIPlatformRaspberryPiTests	test	Tests/GiftUIPlatformRaspberryPiTests	09/11	corpus role and automated hardware-free gate; not every test manually reviewed
+GiftUIRasterCore	regular	Sources/GiftUIRasterCore	08	owner interfaces and representative production joins
+GiftUIRasterCoreTests	test	Tests/GiftUIRasterCoreTests	09/11	corpus role and automated hardware-free gate; not every test manually reviewed
+GiftUIReferenceTextResources	regular	Sources/GiftUIReferenceTextResources	06	owner interfaces and representative production joins
+GiftUIReferenceTextResourcesTests	test	Tests/GiftUIReferenceTextResourcesTests	09/11	corpus role and automated hardware-free gate; not every test manually reviewed
+GiftUIRenderCore	regular	Sources/GiftUIRenderCore	06	owner interfaces and representative production joins
+GiftUIRenderCoreTests	test	Tests/GiftUIRenderCoreTests	09/11	corpus role and automated hardware-free gate; not every test manually reviewed
+GiftUIRenderFailureAdapterFixture	regular	Sources/GiftUIRenderFailureAdapterFixture	08/09	contract failure adapter fixture; excluded from executable production closure
+GiftUIRenderFailureAdapterTests	test	Tests/GiftUIRenderFailureAdapterTests	09/11	corpus role and automated hardware-free gate; not every test manually reviewed
+GiftUIRenderLowering	regular	Sources/GiftUIRenderLowering	06	owner interfaces and representative production joins
+GiftUIRenderLoweringTests	test	Tests/GiftUIRenderLoweringTests	09/11	corpus role and automated hardware-free gate; not every test manually reviewed
+GiftUIRuntimeConformanceTests	test	Tests/GiftUIRuntimeConformanceTests	09/11	corpus role and automated hardware-free gate; not every test manually reviewed
+GiftUIRuntimeCore	regular	Sources/GiftUIRuntimeCore	07	owner interfaces and representative production joins
+GiftUIRuntimeCoreTests	test	Tests/GiftUIRuntimeCoreTests	09/11	corpus role and automated hardware-free gate; not every test manually reviewed
+GiftUIRuntimeDynamic	regular	Sources/GiftUIRuntimeDynamic	07	owner interfaces and representative production joins
+GiftUIRuntimeDynamicTests	test	Tests/GiftUIRuntimeDynamicTests	09/11	corpus role and automated hardware-free gate; not every test manually reviewed
+GiftUIRuntimeFailureAdapterFixture	regular	Sources/GiftUIRuntimeFailureAdapterFixture	08/09	contract failure adapter fixture; excluded from executable production closure
+GiftUIRuntimeFailureAdapterTests	test	Tests/GiftUIRuntimeFailureAdapterTests	09/11	corpus role and automated hardware-free gate; not every test manually reviewed
+GiftUIRuntimeStatic	regular	Sources/GiftUIRuntimeStatic	07	owner interfaces and representative production joins
+GiftUIRuntimeStaticTests	test	Tests/GiftUIRuntimeStaticTests	09/11	corpus role and automated hardware-free gate; not every test manually reviewed
+GiftUISemanticCore	regular	Sources/GiftUISemanticCore	06	owner interfaces and representative production joins
+GiftUISemanticCoreTests	test	Tests/GiftUISemanticCoreTests	09/11	corpus role and automated hardware-free gate; not every test manually reviewed
+GiftUISemanticFailureAdapterFixture	regular	Sources/GiftUISemanticFailureAdapterFixture	08/09	contract failure adapter fixture; excluded from executable production closure
+GiftUISemanticFailureAdapterTests	test	Tests/GiftUISemanticFailureAdapterTests	09/11	corpus role and automated hardware-free gate; not every test manually reviewed
+GiftUISurfaceCore	regular	Sources/GiftUISurfaceCore	08	owner interfaces and representative production joins
+GiftUISurfaceCoreTests	test	Tests/GiftUISurfaceCoreTests	09/11	corpus role and automated hardware-free gate; not every test manually reviewed
+GiftUITests	test	Tests/GiftUITests	09/11	corpus role and automated hardware-free gate; not every test manually reviewed
+GiftUITextResourceFailureAdapterFixture	regular	Sources/GiftUITextResourceFailureAdapterFixture	08/09	contract failure adapter fixture; excluded from executable production closure
+GiftUITextResourceOwnerAdapterTests	test	Tests/GiftUITextResourceOwnerAdapterTests	09/11	corpus role and automated hardware-free gate; not every test manually reviewed
+GiftUITextResources	regular	Sources/GiftUITextResources	06	owner interfaces and representative production joins
+GiftUITextResourcesTests	test	Tests/GiftUITextResourcesTests	09/11	corpus role and automated hardware-free gate; not every test manually reviewed
+SignalAnalyzerData	regular	Sources/SignalAnalyzerData	05	owner interfaces and representative production joins
+SignalAnalyzerDataTests	test	Tests/SignalAnalyzerDataTests	09/11	corpus role and automated hardware-free gate; not every test manually reviewed
+SignalAnalyzerDomain	regular	Sources/SignalAnalyzerDomain	05	owner interfaces and representative production joins
+SignalAnalyzerDomainTests	test	Tests/SignalAnalyzerDomainTests	09/11	corpus role and automated hardware-free gate; not every test manually reviewed
+SignalAnalyzerHost	regular	Sources/SignalAnalyzerHost	05	owner interfaces and representative production joins
+SignalAnalyzerMacOSDynamic	executable	Sources/SignalAnalyzerMacOSDynamic	08	owner interfaces and representative production joins
+SignalAnalyzerMacOSStatic	executable	Sources/SignalAnalyzerMacOSStatic	08	owner interfaces and representative production joins
+SignalAnalyzerNRF52840HostOracle	executable	Sources/SignalAnalyzerNRF52840HostOracle	08	owner interfaces and representative production joins
+SignalAnalyzerPresentation	regular	Sources/SignalAnalyzerPresentation	05	owner interfaces and representative production joins
+SignalAnalyzerPresentationTests	test	Tests/SignalAnalyzerPresentationTests	09/11	corpus role and automated hardware-free gate; not every test manually reviewed
+SignalAnalyzerPresetHarness	regular	Sources/SignalAnalyzerPresetHarness	08	owner interfaces and representative production joins
+SignalAnalyzerRaspberryPiARMv6	executable	Sources/SignalAnalyzerRaspberryPiARMv6	08	owner interfaces and representative production joins
+SignalAnalyzerTargetHost	regular	Sources/SignalAnalyzerTargetHost	08	owner interfaces and representative production joins
