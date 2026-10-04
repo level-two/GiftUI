@@ -5,7 +5,9 @@ The [amendment](../../rfcs/rfc-012-five-second-capture-retention-amendment.md)
 is one bounded retention decision under accepted PROPOSAL-002 and preserves
 RFC-001's historical reasoning. ADR-003 remains accepted and authoritative.
 
-No unresolved technical RFC blocker found. Review checked ownership/dependency
+No unresolved technical RFC blocker found. The density review clarified that
+10 Hz/channel is the stress envelope, while the production source keeps its
+distinct deterministic patterns and seeded schedule. Review checked ownership/dependency
 direction, Dynamic/Static compatibility, inclusive cutoff and 404 boundary
 rationale, distinct scalar baselines, equal-time/capacity/out-of-order behavior,
 Clear/publication/borrow/revision semantics, and all three physical stores.

@@ -31,7 +31,7 @@ target_milestone: ITERATION-002
 
 Propose reducing the Signal Analyzer's retained capture horizon from 30s to 5s
 and minimum transition capacity from 2,404 to 404 records. Preserve its existing
-1/2/5s visible windows, four 10 Hz channels, elapsed capture duration, publication
+1/2/5s visible windows, four-channel stress density, elapsed capture duration, publication
 protocol, baseline reconstruction and 30s sustained validation workload. Resize
 the nRF live, observable-model and admission stores together, saving exactly
 96,000 bytes of packed capture storage.
@@ -102,7 +102,12 @@ heaps; Pi remains ARMv6 hard-float. Existing semantic/text/profile regions,
 Canvas callable-capture limits, raster buffers and stack reservations are
 unrelated to signal retention and are not resized by this amendment.
 
-The proposed capacity assumes the accepted density: four channels × 10 cycles/s
+The 10 Hz/channel density is the accepted sustained-validation stress envelope.
+The production deterministic source retains its existing distinct channel
+patterns, frequencies and seeded schedule; this amendment does not turn those
+patterns into four 10 Hz generators.
+
+The proposed capacity assumes the accepted stress density: four channels × 10 cycles/s
 × two edges/cycle × 5s = 400, plus four simultaneous events at the inclusive
 boundary = 404. The extra four are boundary headroom, not additional permanently
 retained initial records or a substitute for the scalar baselines. Unsupported
