@@ -5,7 +5,7 @@ status: draft
 revision: 1
 approved_revision: null
 created: 2026-10-04
-updated: 2026-10-04
+updated: 2026-10-05
 features:
   - giftui-mvp-architecture
 approval: null
@@ -104,6 +104,7 @@ approved exceptions, and remaining deferred work.
 
 ## References
 
+- [EXP-002 backend foundation inventory](../explorations/exp-002/backend-foundation-inventory-2026-10-05.md) — existing reuse, extension/access gaps and proposed IT-AC-002 evidence; no scope or design approval
 - [EXP-002: Backend and Application Integration Shapes](../explorations/exp-002-backend-and-application-integration-shapes.md) — documentation-only candidate comparison; no scope or architecture approval
 - [ADR-006: Shared Semantics and Runtime Profiles](../adrs/adr-006-shared-semantics-runtime-profiles.md)
 - [ADR-007: Integration Ownership and Host Composition](../adrs/adr-007-integration-ownership-and-host-composition.md)

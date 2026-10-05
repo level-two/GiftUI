@@ -55,6 +55,7 @@ features:
     # Optional source-conditional cleanup: FW-029, linked from SPEC-013.
     # Component distribution/integration review: FW-016 and FW-030; no split approved.
     # Integration candidate exploration: EXP-002, under draft ITERATION-003.
+    # EXP-002 includes the 2026-10-05 backend reuse/access inventory for IT-AC-002.
     # macOS physical-pointer validation is postponed under FW-031.
     title: GiftUI MVP Architecture Establishment
     status: implemented

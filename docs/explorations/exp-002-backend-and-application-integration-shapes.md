@@ -11,6 +11,7 @@ source:
   - FW-030
   - FW-016
   - docs/explorations/exp-002/future-directions-2026-10-05.txt
+  - docs/explorations/exp-002/backend-foundation-inventory-2026-10-05.md
 related_future_work:
   - FW-030
   - FW-016
@@ -491,6 +492,19 @@ numerical success threshold or one-button guarantee is invented in this draft.
 
 ## Findings
 
+### Backend foundation inventory — 2026-10-05
+
+The maintainer requested the information needed for Iteration 3's core backend
+work. The [backend foundation inventory](exp-002/backend-foundation-inventory-2026-10-05.md)
+records shared owners, concrete Pi Dynamic/nRF Static firmware reuse,
+construction/access friction, legitimate storage/transport differences,
+decisions required before extraction and proposed evidence for IT-AC-002.
+Inspection began at clean revision `7e11f066`; concurrent retention edits
+appeared during the pass and were left untouched. No production code was
+changed or external consumer/target experiment run by this study.
+This supports scope/design preparation without
+selecting a new module, external contract, package topology or implementation.
+
 ### Observed current state
 
 Repository inspection on 2026-10-04 used HEAD `a14b0797` plus the current
@@ -587,6 +601,7 @@ change need their normal gates. Iteration scope approval remains separate.
 ## References
 
 - [ITERATION-003](../iterations/iteration-003-dev-ux-improvement.md)
+- [Backend foundation inventory — 2026-10-05](exp-002/backend-foundation-inventory-2026-10-05.md) — source inspection and implementation prerequisites
 - [Unapproved direction map supplied 2026-10-05](exp-002/future-directions-2026-10-05.txt) — discussion provenance only
 - [ITERATION-001](../iterations/iteration-001-mvp.md)
 - [FW-030](../future-work/fw-030-application-integration-experience.md)
