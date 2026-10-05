@@ -332,6 +332,65 @@ candidates, not evidence that every rendering backend should import a raster
 implementation. A combined distribution product may package multiple owners
 without merging their authority.
 
+### Coordinated backend foundation and integration rework — 2026-10-05
+
+The maintainer requested alignment of the backend foundation inventory with
+Iteration 3's integration rework. Treat them as coordinated outcomes in this
+Exploration, with one consumer/access study and distinct owner boundaries.
+The [inventory](exp-002/backend-foundation-inventory-2026-10-05.md) supplies
+concrete backend reuse and extraction evidence; FW-030 supplies application
+setup friction. Neither outcome should require a separate implementation of
+the same raster construction, configuration checks or display contracts.
+
+| Concern | Backend foundation outcome / IT-AC-002 | Application integration outcome / IT-AC-003 | Shared evaluation |
+| --- | --- | --- | --- |
+| Extension and construction | Reusable endpoint/session machinery and narrow display/storage/resource inputs | Assembly accepts a selected supported endpoint or custom conforming adapter without copying a pipeline owner | One reviewed type/access inventory, with extension-facing and application-facing entries distinguished |
+| Configuration | Consume immutable effective capabilities; validate raster/resource/payload compatibility at the current owners | Join contributor roles, workload, storage, resources and policy before activation | One reconciled set of selected facts; no independent backend and host configuration models |
+| Runtime lifecycle | Reservation, one-shot consumption, accepted responsibility, bounded payloads and local health | Activation/service/teardown, scheduling, input eligibility and application failure policy | Compatible cleanup and health projections, tested without moving host semantics into the backend |
+| Build and consumption | Selected rendering/display components can be consumed independently of analyzer wiring | Supported builds select those components without copied analyzer source lists or manual storage offsets | One proposed external consumer and target/toolchain matrix, coordinated with IT-AC-001/FW-016 |
+| Customization | A recording display adapter can reuse the existing raster implementation | That adapter can replace the selected display through the same host assembly path | Unchanged portable views/actions and no second bootstrap or duplicated raster factory |
+
+Shapes A/B remain candidates for the joint study: supported presets would
+delegate to the same typed composition used by custom adapters. Backend
+construction would be a lower part of that composition, not another complete
+application bootstrap. Presets may supply reviewed target facts/defaults;
+application workload, resources, behavior and significant policy remain
+application inputs. Exact APIs, package locations and diagnostics are open.
+The application should not implement endpoint grammar or driver state, and a
+display adapter should not implement model/actions, input admission or pacing.
+
+Use the proposed counter/status consumer in two modes: selecting an existing
+supported composition, then replacing its display with a small external
+recording adapter through the same assembly path. One project can produce
+both proofs; publish extension/conformance results separately from application
+setup/lifecycle results. Adapter substitution is construction-time selection,
+not live backend replacement. A recording display is not physical presentation
+or evidence of real touch provenance. Use explicit fixtures for input gating.
+
+The proposed evaluation order is shared rather than two independent plans:
+
+1. Refresh the Iteration 2 baseline, select the small consumer and capture
+   its current setup/build friction and dependency/resource closure.
+2. Trace its application assembly and custom-adapter needs together. Identify
+   narrow external contracts, existing owner reuse and the construction that
+   can be shared; collect Static lowering/access feasibility evidence.
+3. Take the combined problem/outcome through Proposal and the smallest coherent
+   RFC/ADR/Specification decisions. Package/access and host/backend interfaces
+   must agree before deriving a ready implementation plan.
+4. After the relevant approvals, evaluate one complete consumer path across
+   foundation, host assembly and build support. Exercise adapter substitution
+   on that path rather than finishing a standalone backend API first and
+   discovering incompatible host requirements afterward.
+5. Compare setup effort and assembled resource cost against the same baseline;
+   retain separate IT-AC-001/002/003 dispositions and governing owner checks.
+
+This is coordination guidance for a draft scope, not implementation tasks or
+approval of Shapes A/B. A single integration Proposal can cover the related
+investment; split RFCs only where ownership/access/host decisions are
+independently reviewable under the lifecycle rules. General generation,
+services, frontend-neutral contracts and new hardware remain outside this
+alignment and retain their existing deferred records.
+
 ### Sensitivity to possible future directions — 2026-10-05
 
 The maintainer supplied an [unapproved direction map](exp-002/future-directions-2026-10-05.txt)
@@ -449,6 +508,12 @@ and [FW-006](../future-work/fw-006-generated-target-configuration.md) remain
 contextual captures with their existing statuses and triggers.
 
 ## Evidence Plan
+
+Use the [coordinated study](#coordinated-backend-foundation-and-integration-rework--2026-10-05)
+for IT-AC-002/003 and the package-consumption evidence for IT-AC-001. The
+backend inventory's recording-adapter scenario is a mode of the same proposed
+consumer project, not a second application/bootstrap implementation. Share
+inputs, baseline and target matrix while keeping criterion results distinct.
 
 The next study could use a small external counter/status application with one
 observable root, a finite action enum, disabled Button state and changing text.
@@ -588,7 +653,9 @@ performed, and no implementation is authorized by this artifact.
 After selecting the problem/outcome and gathering sufficient feasibility
 evidence, prepare a Proposal for post-MVP external integration and route the
 smallest coherent architectural decision cluster through RFC/ADR/Specification
-review. Public host contracts, cross-package access and any ADR-008 distribution
+review. Cover backend extension and application assembly together in that
+problem statement; avoid independent contracts for repeated construction and
+validation. Public host contracts, cross-package access and any ADR-008 distribution
 change need their normal gates. Iteration scope approval remains separate.
 
 ## Revisit Triggers

@@ -1,7 +1,8 @@
 # EXP-002 Evidence: Backend Foundation Inventory
 
 Documentation-only preparation for [ITERATION-003](../../iterations/iteration-003-dev-ux-improvement.md)
-IT-AC-002, owned by [EXP-002](../exp-002-backend-and-application-integration-shapes.md).
+IT-AC-002, coordinated with its IT-AC-003 integration rework and owned by
+[EXP-002](../exp-002-backend-and-application-integration-shapes.md).
 The maintainer requested the information needed to proceed toward a reusable
 backend module or set of modules on 2026-10-05. Inspection began at clean revision
 `7e11f066ce2cfa29719dff1a6c8f07a3b2f4edba`; concurrent capture-retention edits
@@ -119,6 +120,13 @@ mechanics or a resolved dependency problem, rather than its name alone.
 
 ## Decisions Needed Before Implementation
 
+Resolve these against the same consumer as the integration rework. The
+[coordinated study in EXP-002](../exp-002-backend-and-application-integration-shapes.md#coordinated-backend-foundation-and-integration-rework--2026-10-05)
+owns the shared evaluation sequence and responsibility mapping. Foundation
+inputs should be usable by the proposed host assembly; application onboarding
+should not require a second raster factory or expose backend owner internals.
+The package-consumption item supplies the access/build context for both.
+
 | Question | Evidence / decision required |
 | --- | --- |
 | Who is the first external consumer? | Select display-adapter authors versus complete-renderer authors versus application authors. IT-AC-002's minimal example should exercise the selected extension level. |
@@ -129,14 +137,18 @@ mechanics or a resolved dependency problem, rather than its name alone.
 | How are errors surfaced at construction and activation? | Existing optional factories are not a sufficient diagnostic design. Specify structured errors and responsible owners without discarding pre/post-acceptance distinctions or consulting diagnostics for correctness. |
 | What budgets and build configurations define success? | Record setup steps/files/concepts and linked flash/RAM/stack baselines before selecting thresholds. Prove external access and Static specialization under actual toolchains. |
 
-## Proposed Evidence for IT-AC-002
+## Proposed Evidence for IT-AC-002 and Integration Rework
 
 Use a small external recording display adapter over the existing software
 raster family, with no import of `SignalAnalyzerTargetHost` and no copied
 endpoint/session/coverage algorithms. This is an evaluation candidate, not a
-new hardware backend commitment. A custom recording target proves extension
-access; the separate small application in EXP-002 proves application hosting.
-Those are different proofs and should have separate results.
+new hardware backend commitment. Use the same small consumer proposed in
+EXP-002 first with an existing supported composition and then with this
+adapter substituted through the same host assembly path. A custom recording
+target proves extension access; application setup and host lifecycle prove
+IT-AC-003. These are distinct results from one coordinated study, not separate
+applications or independently implemented bootstrap paths. Configuration,
+resources, budgets and the selected toolchain matrix supply a shared baseline.
 
 | Evidence | Expected comparison / failure cases | Existing starting point |
 | --- | --- | --- |
@@ -145,7 +157,7 @@ Those are different proofs and should have separate results.
 | Offer/transfer lifecycle | Refusal before body, one body call after reservation, grammar/capacity failures, cancellation, first accepted effect, drain and post-acceptance health | One-shot/session tests; `transactions.yaml` and `failures.yaml` |
 | Configuration validation | Missing/incompatible exact resources, encoding/extent/stride mismatch and first-excess workspace/payload/in-flight limits fail before output | Startup/text/work admission tests; `capabilities.yaml` |
 | Profile/resource preservation | macOS Dynamic/Static paired results; Pi ARMv6 build and actual nRF Embedded build, symbol/ABI/section/stack analysis, zero-heap Static path and backing-storage lifetime | SPEC-013/014 resources/evidence plus SPEC-001 production joins |
-| Developer effort | Before/after setup steps, user-maintained files and framework concepts; replacing only the display without copied pipeline owners | Inventory here and EXP-002 consumer baseline plan |
+| Developer effort and host integration | Before/after setup steps, user-maintained files and framework concepts; replacing only the display through the same assembly path without copied pipeline owners; preserved startup/service/input/teardown behavior | EXP-002 joint consumer study, SPEC-015 and IT-AC-003 |
 
 Existing entry points, to rerun when implementation changes justify them:
 
@@ -169,9 +181,10 @@ actions only in a separately authorized campaign.
 ## Routing and Handoff
 
 This inventory is evidence within EXP-002, not a new feature registration or
-implementation plan. The smallest next step is to select the consumer outcome,
-extension level and evidence/budget matrix in the Iteration 3 scope review.
-Then draft a post-MVP integration Proposal that covers this investment, using
+implementation plan. The smallest next step is to select the shared consumer,
+extension level, application assembly needs and evidence/budget matrix in the
+Iteration 3 scope review. Then draft a post-MVP integration Proposal covering
+both the reusable backend foundation and application integration outcome, using
 the existing accepted architecture as constraints. The MVP Proposal does not
 automatically approve a new external extension/compatibility contract.
 
@@ -192,7 +205,7 @@ Refresh the inventory after Iteration 2 changes source/access/build selection,
 or when a real separate consumer exposes a missing seam. Promotion and any
 experiment should remain recorded through EXP-002 and its existing sources.
 
-## Documentation Validation — 2026-10-05
+## Initial Inventory Documentation Validation — 2026-10-05
 
 `scripts/validate-governance.rb` passed with 173 authority nodes, 1,731 edges
 and all reported task-evidence checks. The inventory, parent Exploration and

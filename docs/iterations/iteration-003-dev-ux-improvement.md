@@ -35,6 +35,28 @@ sequence remain open.
 | Core backend module                                                       | Discussion “Assess a Core Backend Framework”; giftui-mvp-architecture                                                   | Make common backend contracts, implementations, validation, and adapter support easier to reuse across hardware and Static/Dynamic profiles. Build on existing shared owners and establish what an additional core module would own. | Inventory existing reuse and duplication before selecting a boundary. Review against ADR-006/ADR-007 and SPEC-014; do not introduce a universal backend requirement implicitly. |
 | Simplify backend integration                                              | [FW-030](../future-work/fw-030-application-integration-experience.md); discussion “Simplify GiftUI Backend Integration” | Reduce manual source selection, bootstrap wiring, storage-offset knowledge, and application-specific infrastructure needed to launch an application with a selected backend.                                                         | Use a small separate consumer to establish friction and evaluate supported host/build entry points; public integration contracts and tooling choices need lifecycle approval.   |
 
+## Backend Foundation and Integration Coordination
+
+The core backend and integration-rework rows are coordinated candidate
+outcomes: the foundation supplies reusable rendering/display components and
+construction support; integration supplies application-facing host assembly
+and supported build paths that consume those components. Host lifecycle,
+input, scheduling and application policy retain their existing owners.
+
+Evaluate both through one small external consumer, first using a supported
+composition and then replacing its display with a recording adapter through
+the same assembly path. Share the access/type inventory, configuration facts,
+setup/resource baseline and target matrix with the packaging item. Keep
+IT-AC-001/002/003 results distinct; neither an adapter-only test nor a short
+application bootstrap proves all three outcomes.
+
+The [EXP-002 coordinated study](../explorations/exp-002-backend-and-application-integration-shapes.md#coordinated-backend-foundation-and-integration-rework--2026-10-05)
+records the responsibility mapping and proposed sequence, using the
+[backend inventory](../explorations/exp-002/backend-foundation-inventory-2026-10-05.md)
+and FW-030 as evidence. Select compatible extension/assembly/access contracts
+before deriving implementation tasks. No additional module, preset API or
+package topology is selected by this alignment.
+
 ## Exclusions
 
 - No repository split at this stage. Independent releases, versioning, or
@@ -54,15 +76,16 @@ These are provisional outcomes to refine before scope approval.
 | ID | Observable result | Required configurations | Evidence / governing contract |
 | --- | --- | --- | --- |
 | IT-AC-001 | A separate small application can consume selected focused packages without copying Signal Analyzer owners or relying on repository-wide source lists. | Consumer/toolchain matrix to be selected, including Static/Embedded feasibility | Approved topology/access contracts, package dependency graph, reproducible consumer builds, and preserved owner-boundary tests. |
-| IT-AC-002 | Backend developers have an explicit reusable foundation and a minimal adapter/composition example showing common and target-specific responsibilities. | Existing Pi Dynamic and nRF Static stacks as initial inventory; final matrix open | Reuse inventory, selected module responsibilities, conformance checks, and profile-specific resource evidence under governing contracts. |
-| IT-AC-003 | A consumer can select a supported backend and build/run through a documented integration path with less manual wiring. | Supported consumer configurations to be selected | Before/after setup steps and touched-file inventory, runnable consumer example, configuration-error diagnostics, and startup/lifecycle checks under approved integration contracts. |
+| IT-AC-002 | Backend developers have an explicit reusable foundation and a minimal adapter/composition example showing common and target-specific responsibilities; the example is usable through the integration path evaluated for IT-AC-003. | Existing Pi Dynamic and nRF Static stacks as initial inventory; shared consumer/target matrix with IT-AC-003 to be selected | Reuse inventory, selected module responsibilities, adapter-substitution and conformance checks, and profile-specific resource evidence under governing contracts. |
+| IT-AC-003 | A consumer can select a supported backend and build/run through a documented integration path with less manual wiring, and use the IT-AC-002 adapter example through the same assembly path. | Shared consumer/target matrix with IT-AC-002 to be selected | Before/after setup steps and touched-file inventory, runnable consumer example using the reusable foundation, configuration-error diagnostics, and startup/lifecycle checks under approved integration contracts. |
 
 ## Dependencies and Open Questions
 
 - The architecture feature is currently `implemented`; these post-MVP
   candidates do not amend its accepted decisions or implemented contracts.
-- Review Cleanup findings before settling package boundaries. Both iterations
-  remain drafts; numbering expresses the intended order, not an approved schedule.
+- Refresh the baseline from active ITERATION-002 revision 7 before settling
+  package boundaries. ITERATION-003 remains draft; numbering alone does not
+  approve its scope or establish an implementation schedule.
 - Which focused packages/products form independently useful consumption units?
   Which currently package-scoped contracts need narrowly scoped external access?
 - What belongs in the core backend module, given existing `GiftUISurfaceCore`,
@@ -97,6 +120,11 @@ These are provisional outcomes to refine before scope approval.
 | --- | --- | --- | --- |
 | 1 | 2026-10-04 | Initial candidate scope from recent discussions and the maintainer's two-iteration outline; further code review expected. | Pending |
 
+On 2026-10-05 the maintainer requested alignment of backend foundation and
+integration rework, plus committing the documentation. The draft now records a
+joint consumer study and compatible contract evaluation, preserving the three
+criterion IDs. This instruction is not scope or architecture approval.
+
 ## Closure and Follow-up
 
 Not started. At closure, record every criterion's disposition, evidence,
@@ -104,7 +132,7 @@ approved exceptions, and remaining deferred work.
 
 ## References
 
-- [EXP-002 backend foundation inventory](../explorations/exp-002/backend-foundation-inventory-2026-10-05.md) — existing reuse, extension/access gaps and proposed IT-AC-002 evidence; no scope or design approval
+- [EXP-002 backend foundation inventory](../explorations/exp-002/backend-foundation-inventory-2026-10-05.md) — existing reuse, extension/access gaps and IT-AC-002 evidence coordinated with integration rework; no scope or design approval
 - [EXP-002: Backend and Application Integration Shapes](../explorations/exp-002-backend-and-application-integration-shapes.md) — documentation-only candidate comparison; no scope or architecture approval
 - [ADR-006: Shared Semantics and Runtime Profiles](../adrs/adr-006-shared-semantics-runtime-profiles.md)
 - [ADR-007: Integration Ownership and Host Composition](../adrs/adr-007-integration-ownership-and-host-composition.md)

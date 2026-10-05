@@ -6,7 +6,7 @@ status: promoted
 authors:
   - codex
 created: 2026-10-02
-updated: 2026-10-04
+updated: 2026-10-05
 source:
   - SPEC-015
 related_future_work:
@@ -103,8 +103,19 @@ The scope remains open for codebase review and does not establish a delivery
 commitment. The subsequent explicit request to explore solutions is recorded
 in the promotion disposition above.
 
+On 2026-10-05 the maintainer requested alignment with the core backend item.
+EXP-002's [coordinated study](../explorations/exp-002-backend-and-application-integration-shapes.md#coordinated-backend-foundation-and-integration-rework--2026-10-05)
+now evaluates application assembly and backend extension through the same
+small consumer, access inventory and setup/resource baseline. Its
+[backend inventory](../explorations/exp-002/backend-foundation-inventory-2026-10-05.md)
+provides the reuse/extraction evidence. Backend reservation/raster/display
+mechanics remain below the host lifecycle/input/scheduling joins. This updates
+the existing Exploration context; FW-030 remains promoted to EXP-002 and no
+new implementation or scope approval is implied.
+
 ## References
 
+- [EXP-002 backend foundation inventory](../explorations/exp-002/backend-foundation-inventory-2026-10-05.md) — coordinated backend extension and application integration study
 - [SPEC-015](../specs/spec-015-host-configuration.md)
 - [Package manifest](../../Package.swift)
 - [Firmware build composition](../../firmware/nrf52840/applications/signal-analyzer-static/CMakeLists.txt)
