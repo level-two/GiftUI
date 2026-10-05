@@ -7,8 +7,9 @@ capture-revisions	2404	30s	1-through-2404
 capture-callbacks	2405	30s	one-snapshot-plus-2404-mutations
 capture-outcomes	2405	30s	nonzero-monotonic
 state-callbacks	2	30s	idle-running
-time-evictions	0	30s	none-at-boundary
-capacity-evictions	0	2404	none-at-boundary
+time-evictions	2000	30s	strictly-before-25s
+capacity-evictions	0	404	none-at-synchronized-boundary
 final-duration	1	30s	exact
 final-replay	2404	30s	byte-semantic-equality
-first-excess-boundary	2405	30s	covered-retention-cases
+first-excess-boundary	405	5s	covered-retention-cases
+retained-final	404	5s	25s-cutoff-inclusive

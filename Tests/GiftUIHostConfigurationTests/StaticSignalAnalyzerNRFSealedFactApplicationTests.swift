@@ -5,7 +5,7 @@ import Testing
 
 @Test func nRFSealedFactsApplyInOneModelMutationPhase() {
     let factBytes = 3_840
-    let captureBytes = 115_392
+    let captureBytes = 19_392
     let active = UnsafeMutableRawPointer.allocate(byteCount: factBytes, alignment: 8)
     let sealed = UnsafeMutableRawPointer.allocate(byteCount: factBytes, alignment: 8)
     let capture = UnsafeMutableRawPointer.allocate(byteCount: captureBytes, alignment: 8)
@@ -89,7 +89,7 @@ import Testing
 
 @Test func nRFAdmittedBatchSealsAndAppliesWithoutReentry() {
     let factBytes = 3_840
-    let captureBytes = 115_392
+    let captureBytes = 19_392
     let active = UnsafeMutableRawPointer.allocate(byteCount: factBytes, alignment: 8)
     let sealed = UnsafeMutableRawPointer.allocate(byteCount: factBytes, alignment: 8)
     let capture = UnsafeMutableRawPointer.allocate(byteCount: captureBytes, alignment: 8)
@@ -147,13 +147,13 @@ import Testing
     for prefix in [UInt16(0), 1, 3] {
         let active = UnsafeMutableRawPointer.allocate(byteCount: 3_840, alignment: 8)
         let sealed = UnsafeMutableRawPointer.allocate(byteCount: 3_840, alignment: 8)
-        let capture = UnsafeMutableRawPointer.allocate(byteCount: 115_392, alignment: 8)
+        let capture = UnsafeMutableRawPointer.allocate(byteCount: 19_392, alignment: 8)
         defer {
             active.deallocate()
             sealed.deallocate()
             capture.deallocate()
         }
-        let storage = UnsafeMutableRawBufferPointer(start: capture, count: 115_392)
+        let storage = UnsafeMutableRawBufferPointer(start: capture, count: 19_392)
         guard
             var admission = StaticSignalAnalyzerNRFCaptureFactAdmission(
                 activeStorage: UnsafeMutableRawBufferPointer(start: active, count: 3_840),

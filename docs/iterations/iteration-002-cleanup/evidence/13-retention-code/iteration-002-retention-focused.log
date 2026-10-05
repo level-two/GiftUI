@@ -1,0 +1,296 @@
+[0/1] Planning build
+Building for debugging...
+[0/20] Write sources
+[9/20] Write swift-version--58304C5D6DBC2206.txt
+[11/29] Emitting module GiftUIFailureCore
+[13/29] Emitting module GiftUICapabilities
+[15/31] Compiling SignalAnalyzerDomain SignalValues.swift
+[16/31] Emitting module SignalAnalyzerDomain
+[17/33] Emitting module GiftUIMacros
+[18/33] Emitting module SignalAnalyzerDomain
+[19/33] Compiling SignalAnalyzerDomain SignalValues.swift
+[20/36] Emitting module GiftUIFailureDiagnostics
+[22/36] Emitting module GiftUICapabilityFailureAdapterFixture
+[24/40] Compiling SignalAnalyzerDomain SignalCapturePublication.swift
+[26/46] Emitting module GiftUICapabilitiesTests
+[27/55] Emitting module GiftUIFailureCoreTests
+[28/56] Emitting module GiftUIMacrosTests
+[29/56] Emitting module GiftUIFailureDiagnosticsTests
+[30/56] Emitting module GiftUI
+[32/56] Emitting module GiftUICapabilityFailureAdapterTests
+[33/59] Compiling SignalAnalyzerData DefaultSignalAcquisitionRepository.swift
+[34/59] Emitting module SignalAnalyzerData
+[35/62] Compiling SignalAnalyzerData SignalCaptureStore.swift
+[37/71] Emitting module SignalAnalyzerData
+[38/71] Compiling SignalAnalyzerData DefaultSignalAcquisitionRepository.swift
+[39/73] Emitting module GiftUIDynamicConveniences
+[40/74] Emitting module GiftUITextResources
+[42/75] Emitting module GiftUIDynamicConveniences
+[43/81] Compiling SignalAnalyzerPresentation SignalAnalyzerPresentationAdmissionAdapter.swift
+[44/83] Emitting module SignalAnalyzerDomainTests
+[45/83] Emitting module GiftUISemanticCore
+[46/83] Emitting module SignalAnalyzerPresentation
+[47/84] Emitting module GiftUITextResourceFailureAdapterFixture
+[48/84] Emitting module SignalAnalyzerPresentation
+[49/84] Emitting module GiftUISemanticCore
+[50/84] Emitting module GiftUIRenderCore
+[51/84] Emitting module GiftUIFoundationFailureAdapterTests
+[52/86] Compiling SignalAnalyzerPresentation SignalAnalyzerPresentationAdmissionAdapter.swift
+[53/87] Emitting module GiftUITextResourceFailureAdapterFixture
+[54/87] Emitting module GiftUISemanticFailureAdapterFixture
+[55/89] Compiling SignalAnalyzerPresentation SignalAnalyzerWaveformGeometry.swift
+[57/89] Emitting module GiftUISemanticFailureAdapterFixture
+[58/89] Emitting module GiftUIRenderCore
+[59/89] Emitting module GiftUICapabilityAdapterTests
+[60/89] Emitting module GiftUISurfaceCore
+[61/90] Compiling SignalAnalyzerDomainTests SignalAcquisitionContractTests.swift
+[62/95] Emitting module GiftUITextResourcesTests
+[63/95] Emitting module GiftUISurfaceCore
+[64/95] Emitting module GiftUITextResourceOwnerAdapterTests
+[65/97] Compiling SignalAnalyzerPresentation SignalAnalyzerPresentationValues.swift
+[66/97] Compiling SignalAnalyzerPresentation SignalAnalyzerView.swift
+[67/98] Emitting module GiftUISemanticFailureAdapterTests
+[68/98] Emitting module GiftUIRenderCoreTests
+[69/98] Compiling SignalAnalyzerPresentation SignalAnalyzerPresentationValues.swift
+[70/98] Compiling SignalAnalyzerPresentation SignalAnalyzerView.swift
+[71/98] Emitting module GiftUITests
+[72/98] Emitting module GiftUILayout
+[73/100] Emitting module GiftUIRasterCore
+[74/101] Emitting module GiftUISurfaceCoreTests
+[75/112] Emitting module GiftUILayout
+[76/112] Emitting module GiftUIRenderLowering
+[77/112] Emitting module GiftUIDisplayCore
+[78/112] Emitting module GiftUILayoutFailureAdapterFixture
+[79/112] Emitting module GiftUIRasterCore
+[80/112] Compiling SignalAnalyzerDomainTests SignalCapturePublicationTests.swift
+[81/117] Emitting module GiftUIExecution
+[82/117] Emitting module GiftUIRenderFailureAdapterFixture
+[83/117] Emitting module GiftUIExecution
+[84/117] Emitting module GiftUIDisplayCore
+[85/117] Emitting module GiftUILayoutFailureAdapterFixture
+[86/117] Compiling SignalAnalyzerDomainTests SignalCaptureTests.swift
+[87/117] Emitting module GiftUIRenderLowering
+[88/117] Emitting module GiftUIPlatformRaspberryPi
+[89/125] Emitting module GiftUIRenderFailureAdapterFixture
+[90/125] Emitting module GiftUIInteraction
+[92/125] Emitting module GiftUIPlatformRaspberryPi
+[93/125] Emitting module GiftUIObservableState
+[94/125] Emitting module GiftUILayoutFailureAdapterTests
+[95/125] Emitting module GiftUIObservableState
+[96/132] Emitting module GiftUIFailureExecution
+[98/132] Emitting module GiftUIRenderFailureAdapterTests
+[99/132] Emitting module GiftUIObservableStateFailureAdapterFixture
+[100/132] Emitting module GiftUIPlatformRaspberryPiTests
+[101/136] Emitting module GiftUIObservableStateFailureAdapterFixture
+[102/137] Emitting module GiftUIInteractionFailureAdapterFixture
+[104/137] Emitting module SignalAnalyzerDataTests
+[105/137] Compiling SignalAnalyzerDataTests SignalCaptureStoreTests.swift
+[106/137] Emitting module GiftUIInteractionTests
+[107/139] Emitting module GiftUIRasterCoreTests
+[108/141] Emitting module GiftUIRenderLoweringTests
+[109/141] Compiling SignalAnalyzerPresentationTests SignalAnalyzerViewHierarchyTests.swift
+[110/141] Compiling SignalAnalyzerPresentationTests SignalAnalyzerPresentationValueTests.swift
+[111/141] Compiling SignalAnalyzerPresentationTests SignalAnalyzerPresentationIntegrationTests.swift
+[112/141] Compiling SignalAnalyzerPresentationTests SignalAnalyzerPresentationAdmissionAdapterTests.swift
+[113/141] Compiling SignalAnalyzerPresentationTests SignalAnalyzerFactApplicationTests.swift
+[114/141] Emitting module SignalAnalyzerPresentationTests
+[115/141] Compiling SignalAnalyzerPresentationTests SignalAnalyzerWaveformGeometryTests.swift
+[116/141] Emitting module GiftUIFailureExecutionTests
+[117/142] Emitting module GiftUIObservableStateFailureAdapterTests
+[118/142] Emitting module GiftUIReferenceTextResources
+[119/142] Emitting module GiftUIInteractionFailureAdapterTests
+[120/142] Emitting module GiftUIReferenceTextResources
+[121/142] Compiling SignalAnalyzerDataTests DefaultSignalAcquisitionRepositoryTests.swift
+[122/142] Compiling SignalAnalyzerDataTests SignalAnalyzerWorkloadOracleTests.swift
+[123/142] Compiling SignalAnalyzerDataTests DeterministicSignalDataSourceTests.swift
+[124/142] Compiling SignalAnalyzerDataTests SignalAcquisitionRepositoryLifecycleTests.swift
+[125/143] Emitting module GiftUIDrawing
+[126/145] Emitting module GiftUISemanticCoreTests
+[127/146] Emitting module GiftUIObservableStateTests
+[128/146] Emitting module GiftUIDrawing
+[129/150] Emitting module GiftUIBackendIntegration
+[131/150] Emitting module GiftUIDrawingFailureAdapterFixture
+[133/152] Emitting module GiftUIReferenceTextResourcesTests
+[134/152] Emitting module GiftUIRuntimeCore
+[135/153] Emitting module GiftUIDisplayCoreTests
+[136/153] Emitting module GiftUIRuntimeCore
+[137/158] Emitting module GiftUIRuntimeFailureAdapterFixture
+[138/162] Emitting module GiftUIRuntimeStatic
+[139/162] Emitting module GiftUIRuntimeDynamic
+[140/163] Emitting module GiftUIRuntimeStatic
+[141/163] Emitting module GiftUILayoutTests
+[142/163] Emitting module GiftUIRuntimeDynamic
+[143/163] Emitting module GiftUIExecutionTests
+[144/163] Emitting module GiftUIRuntimeFailureAdapterFixture
+[145/164] Emitting module GiftUIHostConfiguration
+[146/164] Emitting module GiftUIBackendIntegrationTests
+[147/167] Emitting module GiftUIHostConfiguration
+[148/169] Emitting module GiftUIDrawingTests
+[149/169] Emitting module GiftUIRuntimeFailureAdapterTests
+[150/171] Emitting module GiftUIRuntimeCoreTests
+[151/171] Emitting module GiftUIRuntimeStaticTests
+[152/171] Emitting module GiftUIRuntimeConformanceTests
+[153/171] Emitting module GiftUIRuntimeDynamicTests
+[154/171] Compiling SignalAnalyzerHost SignalAnalyzerHostFactAdmission.swift
+[155/171] Emitting module SignalAnalyzerHost
+[157/171] Compiling SignalAnalyzerHost SignalAnalyzerHostFactAdmission.swift
+[158/207] Compiling SignalAnalyzerPresetHarness HardwareFreePresetRunner.swift
+[159/207] Emitting module SignalAnalyzerPresetHarness
+[160/207] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFPresentationComposition.swift
+[161/211] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerActionDispatcher.swift
+[162/211] Emitting module SignalAnalyzerNRF52840HostOracle
+[163/211] Emitting module SignalAnalyzerMacOSDynamic
+[163/211] Write Objects.LinkFileList
+[165/211] Emitting module SignalAnalyzerMacOSStatic
+[165/211] Write Objects.LinkFileList
+[168/211] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFPresentationComposition.swift
+[169/212] Compiling SignalAnalyzerPresetHarness HardwareFreePresetRunner.swift
+[170/212] Emitting module SignalAnalyzerPresetHarness
+[171/212] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFPresentationInputs.generated.swift
+[172/212] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFCaptureSnapshotView.swift
+[173/212] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFCaptureStorage.swift
+[174/215] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFCaptureHistory.swift
+[174/216] Linking SignalAnalyzerNRF52840HostOracle
+[175/216] Linking SignalAnalyzerMacOSDynamic
+[176/216] Linking SignalAnalyzerMacOSStatic
+[177/216] Applying SignalAnalyzerNRF52840HostOracle
+[178/216] Applying SignalAnalyzerMacOSStatic
+[179/216] Applying SignalAnalyzerMacOSDynamic
+[181/216] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFModelLocation.swift
+[182/217] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFCaptureSnapshotView.swift
+[183/217] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFCaptureHistory.swift
+[184/217] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFCaptureStorage.swift
+[185/217] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFPresentationInputs.generated.swift
+[186/217] Compiling SignalAnalyzerTargetHost DynamicSignalAnalyzerPiInitialPresentationOwner.swift
+[187/217] Compiling SignalAnalyzerTargetHost DynamicSignalAnalyzerPiInputCoordinator.swift
+[188/217] Compiling SignalAnalyzerTargetHost DynamicSignalAnalyzerPiLifecycleOwner.swift
+[189/217] Compiling SignalAnalyzerTargetHost DynamicSignalAnalyzerPiWakeAdmission.swift
+[190/217] Emitting module SignalAnalyzerTargetHost
+[191/217] Compiling SignalAnalyzerTargetHost DynamicSignalAnalyzerPresentationPipeline.swift
+[192/217] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFCanvasTable.generated.swift
+[197/226] Compiling SignalAnalyzerTargetHost DynamicSignalAnalyzerActionDispatcher.swift
+[198/226] Compiling SignalAnalyzerTargetHost DynamicSignalAnalyzerApplicationFailureOwner.swift
+[199/226] Emitting module SignalAnalyzerTargetHost
+[202/231] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFModelCaptureState.swift
+[203/231] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFEmbeddedSemanticRegion.swift
+[204/231] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFCaptureFactAdmission.swift
+[205/231] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFModelModifierWriter.swift
+[206/231] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFSnapshotFact.swift
+[207/231] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFModelTextWriter.swift
+[208/232] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFRegionMap.swift
+[209/232] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFRepositoryProducer.swift
+[210/232] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFSealedFactApplication.swift
+[211/232] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFModelTextWriter.swift
+[212/232] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFModelModifierWriter.swift
+[213/232] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFRegionMap.swift
+[214/232] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFSealedFactApplication.swift
+[215/232] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFRepositoryProducer.swift
+[216/232] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFModelCaptureState.swift
+[217/232] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFCaptureFactAdmission.swift
+[218/232] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFSnapshotFact.swift
+[219/232] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFModelLocation.swift
+[220/232] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFApplicationStorage.swift
+[221/232] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFEmbeddedSemanticRegion.swift
+[224/232] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFRuntimeStorage.swift
+[225/232] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFApplicationStorage.swift
+[226/232] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerActionDispatcher.swift
+[227/232] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFRuntimeStorage.swift
+[228/256] Emitting module SignalAnalyzerRaspberryPiARMv6
+[229/256] Compiling SignalAnalyzerRaspberryPiARMv6 PiHostNativeRehearsal.swift
+[229/256] Write Objects.LinkFileList
+[230/256] Linking SignalAnalyzerRaspberryPiARMv6
+[231/256] Applying SignalAnalyzerRaspberryPiARMv6
+[233/256] Compiling GiftUIHostConfigurationTests StaticSignalAnalyzerNRFRuntimeStorageTests.swift
+[234/256] Compiling GiftUIHostConfigurationTests SignalAnalyzerHostFactAdmissionTests.swift
+[235/256] Compiling GiftUIHostConfigurationTests SignalAnalyzerIntegratedCycleTests.swift
+[236/256] Compiling GiftUIHostConfigurationTests StaticSignalAnalyzerNRFCaptureHistoryTests.swift
+[237/256] Compiling GiftUIHostConfigurationTests StaticSignalAnalyzerNRFCaptureRecordTests.swift
+[238/256] Compiling GiftUIHostConfigurationTests StaticSignalAnalyzerNRFModelTextWriterTests.swift
+[239/256] Compiling GiftUIHostConfigurationTests StaticSignalAnalyzerNRFPresentationCompositionTests.swift
+[240/257] Compiling GiftUIHostConfigurationTests StaticSignalAnalyzerNRFSealedFactApplicationTests.swift
+[241/257] Compiling GiftUIHostConfigurationTests StaticSignalAnalyzerNRFCanvasTableTests.swift
+[242/257] Compiling GiftUIHostConfigurationTests StaticSignalAnalyzerNRFCaptureFactAdmissionTests.swift
+[243/257] Compiling GiftUIHostConfigurationTests StaticSignalAnalyzerNRFCaptureSnapshotViewTests.swift
+[244/257] Compiling GiftUIHostConfigurationTests StaticSignalAnalyzerNRFEmbeddedSemanticRegionTests.swift
+[245/257] Compiling GiftUIHostConfigurationTests StaticSignalAnalyzerNRFPresentationInputsTests.swift
+[246/257] Compiling GiftUIHostConfigurationTests StaticSignalAnalyzerNRFRepositoryProducerTests.swift
+[247/257] Emitting module GiftUIHostConfigurationTests
+[248/257] Compiling GiftUIHostConfigurationTests SignalAnalyzerStartupAdmissionTests.swift
+[249/257] Compiling GiftUIHostConfigurationTests StaticSignalAnalyzerNRFAssemblyTests.swift
+[250/257] Compiling GiftUIHostConfigurationTests StaticSignalAnalyzerNRFInteractionHandlerTests.swift
+[251/257] Compiling GiftUIHostConfigurationTests StaticSignalAnalyzerNRFModelCaptureStateTests.swift
+[252/257] Compiling GiftUIHostConfigurationTests HostApplicationIntegrationTests.swift
+[253/257] Compiling GiftUIHostConfigurationTests SignalAnalyzerDiagnosticProfileMatrixTests.swift
+[254/257] Compiling GiftUIHostConfigurationTests SignalAnalyzerDynamicSemanticJoinTests.swift
+[255/257] Compiling GiftUIHostConfigurationTests SignalAnalyzerHostActionDispatchTests.swift
+[255/257] Write Objects.LinkFileList
+[256/257] Linking GiftUIPackageTests
+Build complete! (13.01s)
+Test Suite 'Selected tests' started at 2026-10-05 08:43:52.409.
+Test Suite 'GiftUIPackageTests.xctest' started at 2026-10-05 08:43:52.410.
+Test Suite 'GiftUIPackageTests.xctest' passed at 2026-10-05 08:43:52.410.
+	 Executed 0 tests, with 0 failures (0 unexpected) in 0.000 (0.000) seconds
+Test Suite 'Selected tests' passed at 2026-10-05 08:43:52.410.
+	 Executed 0 tests, with 0 failures (0 unexpected) in 0.000 (0.001) seconds
+◇ Test run started.
+↳ Testing Library Version: 1902
+↳ Target Platform: arm64e-apple-macos14.0
+◇ Test staticNRFModelCaptureReplaysPortableMutationsInPlace() started.
+◇ Suite "Signal Analyzer capture publication values" started.
+◇ Test staticNRFCaptureHistoryRevisionExhaustionIsTerminal() started.
+◇ Test staticNRFCaptureSnapshotSurvivesLiveMutationAndClear() started.
+◇ Test staticNRFCaptureRegionsRejectWrongSizeAndAlignment() started.
+◇ Test staticNRFCaptureHistoryMatchesPortableInsertionTrimAndClear() started.
+◇ Suite "Signal Analyzer 30-second workload oracle" started.
+◇ Suite "Signal Analyzer checked capture store" started.
+◇ Suite "Signal Analyzer capture values" started.
+◇ Test fiveSecondHistoryMatchesIndependentFullHistoryAtEveryWindowEdge() started.
+◇ Test "insert happens before prefix trimming" started.
+◇ Test "delivery outcomes preserve every exact rejection category" started.
+◇ Test "revision zero accepts only the initial empty snapshot" started.
+◇ Test "revision mismatch and revision exhaustion fail closed" started.
+◇ Test "terminal failure remains structural and carries no revision" started.
+◇ Test staticNRFCaptureRecordFitsThreeExactFirmwareSlots() started.
+◇ Test "capacity pressure may evict the newly inserted transition" started.
+◇ Test "reset clears epoch and history while using supplied baselines" started.
+◇ Test "2400 delivered events preserve replay and five-second inclusive history" started.
+◇ Test "mutation bounds reject malformed descriptions without changing input" started.
+✔ Test staticNRFCaptureRegionsRejectWrongSizeAndAlignment() passed after 0.001 seconds.
+◇ Test "both profiles accept 404 entries, reject 405, and check indexing" started.
+◇ Test "channel baselines use exact positions and invalid channels are absent" started.
+◇ Test "standard channels have exact stable order and names" started.
+◇ Test "empty capture has required baselines and bounds" started.
+◇ Test "capture rejects invalid bounds, order, and channel IDs" started.
+◇ Test "cutoff is inclusive and rejects only strictly older input" started.
+◇ Test "dynamic and caller-owned static storage preserve equivalent values" started.
+◇ Test "five-second cutoff trims oldest entries and reconstructs baselines" started.
+◇ Test "empty store starts at revision zero" started.
+◇ Test "equal timestamps retain arrival order and out-of-order values insert stably" started.
+◇ Test "invalid and out-of-horizon transitions do not mutate capture" started.
+◇ Test "clear preserves current levels and rebases later source time" started.
+✔ Test staticNRFCaptureSnapshotSurvivesLiveMutationAndClear() passed after 0.001 seconds.
+◇ Test "capacity eviction removes the oldest entry after insertion" started.
+✔ Test staticNRFCaptureHistoryRevisionExhaustionIsTerminal() passed after 0.001 seconds.
+✔ Test "insert happens before prefix trimming" passed after 0.001 seconds.
+✔ Test "revision zero accepts only the initial empty snapshot" passed after 0.001 seconds.
+✔ Test "terminal failure remains structural and carries no revision" passed after 0.001 seconds.
+✘ Test staticNRFCaptureRecordFitsThreeExactFirmwareSlots() recorded an issue at StaticSignalAnalyzerNRFCaptureRecordTests.swift:40:5: Expectation failed: wroteLive
+✔ Test "delivery outcomes preserve every exact rejection category" passed after 0.001 seconds.
+✔ Test "reset clears epoch and history while using supplied baselines" passed after 0.001 seconds.
+✔ Test "revision mismatch and revision exhaustion fail closed" passed after 0.001 seconds.
+Swift/ContiguousArrayBuffer.swift:692: Fatal error: Index out of ranerror: Process '/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/libexec/swift/pm/swiftpm-testing-helper --test-bundle-path /Users/eugene/work/GiftUI/.build/arm64-apple-macosx/debug/GiftUIPackageTests.xctest/Contents/MacOS/GiftUIPackageTests --filter SignalCapture|SignalAnalyzerWorkloadOracle|staticNRFCapture|fiveSecondHistory|staticNRFModelCapture /Users/eugene/work/GiftUI/.build/arm64-apple-macosx/debug/GiftUIPackageTests.xctest/Contents/MacOS/GiftUIPackageTests --testing-library swift-testing' exited with unexpected signal code 5
+ge
+✔ Test "channel baselines use exact positions and invalid channels are absent" passed after 0.001 seconds.
+✔ Test "mutation bounds reject malformed descriptions without changing input" passed after 0.001 seconds.
+✔ Test "empty capture has required baselines and bounds" passed after 0.001 seconds.
+✔ Test "capture rejects invalid bounds, order, and channel IDs" passed after 0.001 seconds.
+✔ Test "standard channels have exact stable order and names" passed after 0.001 seconds.
+✔ Test "five-second cutoff trims oldest entries and reconstructs baselines" passed after 0.001 seconds.
+✔ Test "empty store starts at revision zero" passed after 0.001 seconds.
+✔ Test "dynamic and caller-owned static storage preserve equivalent values" passed after 0.001 seconds.
+✔ Test "equal timestamps retain arrival order and out-of-order values insert stably" passed after 0.001 seconds.
+✔ Test "cutoff is inclusive and rejects only strictly older input" passed after 0.001 seconds.
+✔ Test "clear preserves current levels and rebases later source time" passed after 0.001 seconds.
+✔ Test "invalid and out-of-horizon transitions do not mutate capture" passed after 0.001 seconds.
+✔ Test "capacity pressure may evict the newly inserted transition" passed after 0.001 seconds.
+✔ Suite "Signal Analyzer capture publication values" passed after 0.001 seconds.

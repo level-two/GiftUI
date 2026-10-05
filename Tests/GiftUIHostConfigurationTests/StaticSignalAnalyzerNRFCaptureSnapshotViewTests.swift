@@ -3,9 +3,9 @@ import SignalAnalyzerTargetHost
 import Testing
 
 @Test func staticNRFSnapshotViewValidatesRecordsAndVisibleRange() {
-    let pointer = UnsafeMutableRawPointer.allocate(byteCount: 115_392, alignment: 8)
+    let pointer = UnsafeMutableRawPointer.allocate(byteCount: 19_392, alignment: 8)
     defer { pointer.deallocate() }
-    let storage = UnsafeMutableRawBufferPointer(start: pointer, count: 115_392)
+    let storage = UnsafeMutableRawBufferPointer(start: pointer, count: 19_392)
     let first = SignalTransition(
         channelID: SignalChannelID(rawValue: 1), timestamp: .milliseconds(100), level: .high
     )

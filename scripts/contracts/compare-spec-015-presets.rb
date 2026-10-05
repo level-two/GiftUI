@@ -118,7 +118,7 @@ output_dir = REPORT_ROOT.join("comparison")
 FileUtils.mkdir_p(output_dir)
 output = output_dir.join("report.tsv")
 nrf_named_application = Integer(semantic["nrf52840-embedded"]["profile_storage_bytes"], 10) +
-  115_392 + 2_560
+  19_392 + 2_560
 output.write(<<~TSV)
   dimension\tmacos-dynamic\tmacos-static\traspberry-pi-armv6\tnrf52840-embedded\tresult
   semantics\t#{semantic["macos-dynamic"]["semantic_checksum"]}\t#{semantic["macos-static"]["semantic_checksum"]}\t#{semantic["raspberry-pi-armv6"]["semantic_checksum"]}\t#{semantic["nrf52840-embedded"]["semantic_checksum"]}\tequal

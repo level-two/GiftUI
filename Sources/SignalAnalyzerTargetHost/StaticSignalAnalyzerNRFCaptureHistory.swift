@@ -70,7 +70,7 @@ package struct StaticSignalAnalyzerNRFCaptureHistory {
         }
 
         let nextDuration = max(duration, timestamp)
-        let timeBound = max(.zero, nextDuration - .seconds(30))
+        let timeBound = max(.zero, nextDuration - .seconds(5))
         let combinedCount = oldCount + 1
         var timeTrim = 0
         while timeTrim < combinedCount {

@@ -121,7 +121,7 @@ struct SignalCaptureTests {
         )
     }
 
-    @Test("both profiles accept 2404 entries, reject 2405, and check indexing")
+    @Test("both profiles accept 404 entries, reject 405, and check indexing")
     func maximumCapacity() {
         let maximum = (0 ..< SignalCapture.maximumTransitionCount).map { transition($0) }
         let excess = (0 ... SignalCapture.maximumTransitionCount).map { transition($0) }
@@ -130,9 +130,9 @@ struct SignalCaptureTests {
             duration: .microseconds(SignalCapture.maximumTransitionCount)
         )!
 
-        #expect(dynamic.transitions.count == 2_404)
-        #expect(dynamic.transitions.element(at: 2_403) == maximum[2_403])
-        #expect(dynamic.transitions.element(at: 2_404) == nil)
+        #expect(dynamic.transitions.count == 404)
+        #expect(dynamic.transitions.element(at: 403) == maximum[403])
+        #expect(dynamic.transitions.element(at: 404) == nil)
         #expect(
             SignalCapture(
                 transitions: excess,
@@ -159,11 +159,11 @@ struct SignalCaptureTests {
             return
         }
 
-        #expect(fixed.count == 2_404)
-        #expect(fixed.element(at: 2_403) == maximum[2_403])
-        #expect(fixed.element(at: 2_404) == nil)
+        #expect(fixed.count == 404)
+        #expect(fixed.element(at: 403) == maximum[403])
+        #expect(fixed.element(at: 404) == nil)
 
-        let tooSmall = UnsafeMutableBufferPointer<SignalTransition?>.allocate(capacity: 2_403)
+        let tooSmall = UnsafeMutableBufferPointer<SignalTransition?>.allocate(capacity: 403)
         tooSmall.initialize(repeating: nil)
         defer {
             tooSmall.deinitialize()

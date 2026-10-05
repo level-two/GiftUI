@@ -59,7 +59,7 @@ package struct SignalCaptureStore: Sendable {
         transitions.insert(transition, at: insertionIndex)
 
         let duration = max(capture.duration, epochTimestamp)
-        var retainedLowerBound = max(.zero, duration - .seconds(30))
+        var retainedLowerBound = max(.zero, duration - .seconds(5))
         var baselines = capture.baselineLevels
         var evictedPrefixCount = 0
 

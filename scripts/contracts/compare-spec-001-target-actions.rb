@@ -4,18 +4,18 @@
 abort 'usage: compare-spec-001-target-actions.rb PI_LOG NRF_LOG' unless ARGV.length == 2
 
 EXPECTED_ACTIONS = [
-  [1, 1, 'stopped', 'twoSeconds', 359],
-  [0, 1, 'running', 'twoSeconds', 359],
-  [3, 1, 'running', 'oneSecond', 359],
-  [3, 0, 'running', 'oneSecond', 359],
-  [3, 0, 'running', 'oneSecond', 359],
-  [4, 1, 'running', 'twoSeconds', 359],
-  [5, 1, 'running', 'fiveSeconds', 359],
-  [5, 0, 'running', 'fiveSeconds', 359],
-  [5, 0, 'running', 'fiveSeconds', 359],
-  [4, 1, 'running', 'twoSeconds', 359],
-  [3, 1, 'running', 'oneSecond', 359],
-  [4, 1, 'running', 'twoSeconds', 359]
+  [1, 1, 'stopped', 'twoSeconds', 61],
+  [0, 1, 'running', 'twoSeconds', 61],
+  [3, 1, 'running', 'oneSecond', 61],
+  [3, 0, 'running', 'oneSecond', 61],
+  [3, 0, 'running', 'oneSecond', 61],
+  [4, 1, 'running', 'twoSeconds', 61],
+  [5, 1, 'running', 'fiveSeconds', 61],
+  [5, 0, 'running', 'fiveSeconds', 61],
+  [5, 0, 'running', 'fiveSeconds', 61],
+  [4, 1, 'running', 'twoSeconds', 61],
+  [3, 1, 'running', 'oneSecond', 61],
+  [4, 1, 'running', 'twoSeconds', 61]
 ].freeze
 
 def actions(path, static:)
@@ -44,8 +44,8 @@ pi_frames = frames(ARGV.fetch(0))
 nrf_frames = frames(ARGV.fetch(1))
 abort 'Pi workload frame order mismatch' unless pi_frames.map { |frame| Integer(frame.fetch('ordinal')) } == (1..120).to_a
 abort 'nRF committed frame order mismatch' unless nrf_frames.map { |frame| Integer(frame.fetch('revision')) } == (1..129).to_a
-abort 'Pi workload terminal capture mismatch' unless pi_frames.last.fetch('capture_revision') == '2404' && pi_frames.last.fetch('capture_count') == '359'
-abort 'nRF workload terminal capture mismatch' unless nrf_frames.fetch(120).fetch('capture_revision') == '2404' && nrf_frames.fetch(120).fetch('capture_count') == '359'
+abort 'Pi workload terminal capture mismatch' unless pi_frames.last.fetch('capture_revision') == '2404' && pi_frames.last.fetch('capture_count') == '61'
+abort 'nRF workload terminal capture mismatch' unless nrf_frames.fetch(120).fetch('capture_revision') == '2404' && nrf_frames.fetch(120).fetch('capture_count') == '61'
 
 pi_other = frames(ARGV.fetch(0), "trace=other_frame\t")
 abort 'Pi initial/action frame order mismatch' unless pi_other.map { |frame| Integer(frame.fetch('code')) } == [65_535, 1, 0, 3, 4, 5, 4, 3, 4]

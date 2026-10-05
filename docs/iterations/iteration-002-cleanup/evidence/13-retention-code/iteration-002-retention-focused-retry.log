@@ -1,0 +1,86 @@
+Building for debugging...
+[0/13] Write sources
+[2/13] Write swift-version--58304C5D6DBC2206.txt
+[4/8] Compiling SignalAnalyzerDomainTests SignalCaptureTests.swift
+[5/8] Emitting module SignalAnalyzerDomainTests
+[6/9] Emitting module GiftUIHostConfigurationTests
+[7/9] Compiling GiftUIHostConfigurationTests StaticSignalAnalyzerNRFCaptureRecordTests.swift
+[7/9] Write Objects.LinkFileList
+[8/9] Linking GiftUIPackageTests
+Build complete! (2.84s)
+Test Suite 'Selected tests' started at 2026-10-05 08:44:56.685.
+Test Suite 'GiftUIPackageTests.xctest' started at 2026-10-05 08:44:56.686.
+Test Suite 'GiftUIPackageTests.xctest' passed at 2026-10-05 08:44:56.686.
+	 Executed 0 tests, with 0 failures (0 unexpected) in 0.000 (0.000) seconds
+Test Suite 'Selected tests' passed at 2026-10-05 08:44:56.686.
+	 Executed 0 tests, with 0 failures (0 unexpected) in 0.000 (0.001) seconds
+◇ Test run started.
+↳ Testing Library Version: 1902
+↳ Target Platform: arm64e-apple-macos14.0
+◇ Suite "Signal Analyzer capture values" started.
+◇ Suite "Signal Analyzer capture publication values" started.
+◇ Test staticNRFCaptureHistoryMatchesPortableInsertionTrimAndClear() started.
+◇ Test staticNRFCaptureHistoryRevisionExhaustionIsTerminal() started.
+◇ Test fiveSecondHistoryMatchesIndependentFullHistoryAtEveryWindowEdge() started.
+◇ Suite "Signal Analyzer 30-second workload oracle" started.
+◇ Test staticNRFModelCaptureReplaysPortableMutationsInPlace() started.
+◇ Test "terminal failure remains structural and carries no revision" started.
+◇ Test "reset clears epoch and history while using supplied baselines" started.
+◇ Test "capacity pressure may evict the newly inserted transition" started.
+◇ Test staticNRFCaptureRegionsRejectWrongSizeAndAlignment() started.
+◇ Test "channel baselines use exact positions and invalid channels are absent" started.
+◇ Test "revision zero accepts only the initial empty snapshot" started.
+◇ Test "revision mismatch and revision exhaustion fail closed" started.
+◇ Suite "Signal Analyzer checked capture store" started.
+◇ Test "empty capture has required baselines and bounds" started.
+◇ Test "standard channels have exact stable order and names" started.
+◇ Test staticNRFCaptureRecordFitsThreeExactFirmwareSlots() started.
+◇ Test "insert happens before prefix trimming" started.
+◇ Test staticNRFCaptureSnapshotSurvivesLiveMutationAndClear() started.
+◇ Test "dynamic and caller-owned static storage preserve equivalent values" started.
+◇ Test "capture rejects invalid bounds, order, and channel IDs" started.
+◇ Test "mutation bounds reject malformed descriptions without changing input" started.
+◇ Test "both profiles accept 404 entries, reject 405, and check indexing" started.
+◇ Test "delivery outcomes preserve every exact rejection category" started.
+◇ Test "2400 delivered events preserve replay and five-second inclusive history" started.
+✔ Test staticNRFCaptureHistoryRevisionExhaustionIsTerminal() passed after 0.001 seconds.
+✔ Test staticNRFCaptureRegionsRejectWrongSizeAndAlignment() passed after 0.001 seconds.
+✔ Test "reset clears epoch and history while using supplied baselines" passed after 0.001 seconds.
+✔ Test "channel baselines use exact positions and invalid channels are absent" passed after 0.001 seconds.
+✔ Test "revision mismatch and revision exhaustion fail closed" passed after 0.001 seconds.
+◇ Test "empty store starts at revision zero" started.
+✔ Test "terminal failure remains structural and carries no revision" passed after 0.001 seconds.
+◇ Test "five-second cutoff trims oldest entries and reconstructs baselines" started.
+◇ Test "capacity eviction removes the oldest entry after insertion" started.
+◇ Test "equal timestamps retain arrival order and out-of-order values insert stably" started.
+◇ Test "cutoff is inclusive and rejects only strictly older input" started.
+✔ Test "revision zero accepts only the initial empty snapshot" passed after 0.001 seconds.
+✔ Test "empty capture has required baselines and bounds" passed after 0.001 seconds.
+◇ Test "invalid and out-of-horizon transitions do not mutate capture" started.
+✔ Test staticNRFCaptureRecordFitsThreeExactFirmwareSlots() passed after 0.001 seconds.
+◇ Test "clear preserves current levels and rebases later source time" started.
+✔ Test "capture rejects invalid bounds, order, and channel IDs" passed after 0.001 seconds.
+✔ Test staticNRFCaptureSnapshotSurvivesLiveMutationAndClear() passed after 0.001 seconds.
+✔ Test "standard channels have exact stable order and names" passed after 0.001 seconds.
+✔ Test "mutation bounds reject malformed descriptions without changing input" passed after 0.001 seconds.
+✔ Test "insert happens before prefix trimming" passed after 0.001 seconds.
+✔ Test "dynamic and caller-owned static storage preserve equivalent values" passed after 0.001 seconds.
+✔ Test "delivery outcomes preserve every exact rejection category" passed after 0.001 seconds.
+✔ Test "equal timestamps retain arrival order and out-of-order values insert stably" passed after 0.001 seconds.
+✔ Test "five-second cutoff trims oldest entries and reconstructs baselines" passed after 0.001 seconds.
+✔ Test "invalid and out-of-horizon transitions do not mutate capture" passed after 0.001 seconds.
+✔ Test "clear preserves current levels and rebases later source time" passed after 0.001 seconds.
+✔ Test "empty store starts at revision zero" passed after 0.001 seconds.
+✔ Test "cutoff is inclusive and rejects only strictly older input" passed after 0.001 seconds.
+✔ Test "both profiles accept 404 entries, reject 405, and check indexing" passed after 0.001 seconds.
+✔ Suite "Signal Analyzer capture values" passed after 0.001 seconds.
+✔ Test "capacity pressure may evict the newly inserted transition" passed after 0.001 seconds.
+✔ Suite "Signal Analyzer capture publication values" passed after 0.001 seconds.
+✔ Test "capacity eviction removes the oldest entry after insertion" passed after 0.027 seconds.
+✔ Suite "Signal Analyzer checked capture store" passed after 0.027 seconds.
+✔ Test staticNRFModelCaptureReplaysPortableMutationsInPlace() passed after 0.045 seconds.
+✔ Test "2400 delivered events preserve replay and five-second inclusive history" passed after 0.499 seconds.
+✔ Suite "Signal Analyzer 30-second workload oracle" passed after 0.500 seconds.
+✔ Test staticNRFCaptureHistoryMatchesPortableInsertionTrimAndClear() passed after 0.929 seconds.
+✔ Test fiveSecondHistoryMatchesIndependentFullHistoryAtEveryWindowEdge() passed after 1.303 seconds.
+✔ Test run with 29 tests in 4 suites passed after 1.303 seconds.

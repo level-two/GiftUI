@@ -30,19 +30,43 @@ struct SignalCaptureStoreTests {
         #expect(store.revision == 3)
     }
 
-    @Test("thirty-second cutoff trims oldest entries and reconstructs baselines")
+    @Test("five-second cutoff trims oldest entries and reconstructs baselines")
     func timeRetention() {
         var store = SignalCaptureStore()
 
         _ = store.receive(transition(0, channel: 1, level: .high))
         _ = store.receive(transition(1_000, channel: 2, level: .high))
         let preceding = SignalCaptureRevisionState(revision: store.revision, capture: store.capture)
-        let result = store.receive(transition(31_000, channel: 3, level: .high))
+        let result = store.receive(transition(6_000, channel: 3, level: .high))
 
         #expect(store.capture.retainedLowerBound == .seconds(1))
-        #expect(store.capture.transitions.map(\.timestamp) == [.seconds(1), .seconds(31)])
+        #expect(store.capture.transitions.map(\.timestamp) == [.seconds(1), .seconds(6)])
         #expect(store.capture.baselineLevel(for: SignalChannelID(rawValue: 1)) == .high)
         #expect(replays(result, from: preceding, to: store))
+    }
+
+    @Test("cutoff is inclusive and rejects only strictly older input")
+    func inclusiveBoundary() {
+        var store = SignalCaptureStore()
+        _ = store.receive(transition(999, channel: 1, level: .high))
+        _ = store.receive(transition(1_000, channel: 2, level: .high))
+        _ = store.receive(transition(1_001, channel: 3, level: .high))
+        _ = store.receive(transition(6_000, channel: 4, level: .high))
+        let immutable = store.capture
+        #expect(
+            immutable.transitions.map(\.timestamp) == [
+                .milliseconds(1_000), .milliseconds(1_001), .milliseconds(6_000),
+            ])
+        #expect(immutable.baselineLevel(for: SignalChannelID(rawValue: 1)) == .high)
+        #expect(
+            store.receive(transition(999, channel: 2, level: .low))
+                == .rejected(.outsideRetainedHistory))
+        let before = SignalCaptureRevisionState(revision: store.revision, capture: store.capture)
+        #expect(
+            replays(
+                store.receive(transition(1_000, channel: 2, level: .low)), from: before, to: store))
+        #expect(immutable.transitions.count == 3)
+        #expect(store.capture.transitions.prefix(2).map(\.level) == [.high, .low])
     }
 
     @Test("capacity eviction removes the oldest entry after insertion")

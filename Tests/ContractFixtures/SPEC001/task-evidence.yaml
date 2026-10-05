@@ -126,12 +126,12 @@ tasks:
     evidence: ["docs/iterations/iteration-002-cleanup/evidence/11-connected-attempt/result.md"]
     blockers: ["T11.7"]
   T12.1:
-    disposition: pending
+    disposition: completed
     requirements: ["SA-AC-010", "SA-AC-012", "SA-AC-013", "SA-AC-014", "SA-AC-025", "SA-AC-028", "SA-AC-031", "SA-AC-043"]
     implementation: ["Sources/SignalAnalyzerDomain/SignalValues.swift", "Sources/SignalAnalyzerData/SignalCaptureStore.swift", "Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFCaptureStorage.swift", "firmware/nrf52840/applications/signal-analyzer-static"]
     checks: ["scripts/test.sh", "scripts/contracts/run-spec-001.sh", "scripts/contracts/run-spec-013.sh", "scripts/contracts/run-spec-015.sh"]
     profiles: ["macos-dynamic", "macos-static", "raspberry-pi-armv6", "nrf52840-embedded"]
-    evidence: []
+    evidence: ["docs/iterations/iteration-002-cleanup/evidence/13-retention-code/result.md"]
     blockers: []
   T12.2:
     disposition: pending

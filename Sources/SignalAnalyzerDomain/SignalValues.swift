@@ -74,7 +74,7 @@ package struct SignalTransitionCollection: RandomAccessCollection, Equatable, Se
 }
 
 package struct SignalCapture: Equatable, Sendable {
-    package static let maximumTransitionCount = 2_404
+    package static let maximumTransitionCount = 404
 
     package let channels: SignalChannelCollection
     package let transitions: SignalTransitionCollection

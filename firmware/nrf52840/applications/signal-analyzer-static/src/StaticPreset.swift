@@ -116,7 +116,7 @@ private struct StaticSignalAnalyzerPreset {
     let bytesPerRow: UInt32 = 640
     let rasterBytes: UInt32 = 2_560
     let profileStorageBytes: UInt32 = 39_696
-    let captureEntries: UInt16 = 2_404
+    let captureEntries: UInt16 = 404
     let canvasCount: UInt16 = 5
     let livePointCount: UInt16 = 202
     let planPointCount: UInt16 = 832
@@ -132,7 +132,7 @@ private struct StaticSignalAnalyzerPreset {
             && regionHeight == 4 && bytesPerRow == 640
             && rasterBytes == bytesPerRow * UInt32(regionHeight)
             && profileStorageBytes == 39_696
-            && captureEntries == 2_404
+            && captureEntries == 404
             && canvasCount == 5 && livePointCount == 202 && planPointCount == 832
             && compactFactCapacity == 32 && actionCount == 6
             && modelStorageSlots == 2
@@ -240,7 +240,7 @@ public func giftUISignalAnalyzerTopologyValid(
     _ capture: UnsafeMutableRawPointer?, _ captureBytes: UInt32
 ) -> UInt32 {
     guard let profile, bytes == 39_696, let capture,
-        captureBytes == 115_392,
+        captureBytes == 19_392,
         let captures = StaticSignalAnalyzerNRFCaptureRegions(
             storage: UnsafeMutableRawBufferPointer(
                 start: capture, count: Int(captureBytes)
@@ -903,7 +903,7 @@ public func giftUISignalAnalyzerDrainInitialInput(
     _ capture: UnsafeMutableRawPointer?, _ captureBytes: UInt32
 ) -> UInt32 {
     guard let profile, profileBytes == 39_696,
-        let capture, captureBytes == 115_392,
+        let capture, captureBytes == 19_392,
         giftUIStaticGestureSession.hasPresentation,
         giftUIStaticModelLocation.activeGeneration != nil
     else { return 0 }
@@ -960,7 +960,7 @@ public func giftUISignalAnalyzerPollScheduledDue(
     _ capture: UnsafeMutableRawPointer?, _ captureBytes: UInt32
 ) -> UInt32 {
     guard let profile, profileBytes == 39_696,
-        let capture, captureBytes == 115_392,
+        let capture, captureBytes == 19_392,
         giftUIStaticModelLocation.activeGeneration != nil,
         giftUIStaticRepository.nextScheduledDelayMilliseconds != nil
     else { return 0 }
@@ -1005,7 +1005,7 @@ private func giftUIStaticBootstrap(
     repository: inout StaticSignalAnalyzerNRFRepositoryProducer
 ) -> Bool {
     guard let profile, profileBytes == 39_696,
-        let capture, captureBytes == 115_392
+        let capture, captureBytes == 19_392
     else { return false }
     let profileStorage = UnsafeMutableRawBufferPointer(
         start: profile, count: Int(profileBytes)
@@ -1213,7 +1213,7 @@ private func giftUIStaticFullCanvas(
 ) -> UInt32 {
     guard validation else { return 0 }
     guard let profile, bytes == 39_696,
-        let capture, captureBytes == 115_392,
+        let capture, captureBytes == 19_392,
         let raster, rasterBytes == 2_560,
         let coverage, coverageBytes == 160
     else { return 0 }
@@ -2207,8 +2207,8 @@ public func giftUISignalAnalyzerCaptureLayout() -> UInt32 {
     let recordSize = MemoryLayout<StaticSignalAnalyzerNRFCaptureRecord>.size
     let recordStride = MemoryLayout<StaticSignalAnalyzerNRFCaptureRecord>.stride
     return recordSize == 16 && recordStride == 16
-        && StaticSignalAnalyzerNRFCaptureRegions.requiredByteCount == 115_392
-        ? 115_392 : 0
+        && StaticSignalAnalyzerNRFCaptureRegions.requiredByteCount == 19_392
+        ? 19_392 : 0
 }
 
 @_cdecl("giftui_signal_analyzer_capture_roundtrip")
@@ -2309,7 +2309,7 @@ public func giftUISignalAnalyzerSnapshotAdmissionValid(
     _ capture: UnsafeMutableRawPointer?, _ captureBytes: UInt32
 ) -> UInt32 {
     guard let profile, let capture, profileBytes == 39_696,
-        captureBytes == 115_392,
+        captureBytes == 19_392,
         MemoryLayout<StaticSignalAnalyzerNRFSnapshotFact>.stride <= 48
     else { return 0 }
     let profileStorage = UnsafeMutableRawBufferPointer(
@@ -2346,7 +2346,7 @@ public func giftUISignalAnalyzerSnapshotAdmissionValid(
 public func giftUISignalAnalyzerCaptureRegionValid(
     _ address: UnsafeMutableRawPointer?, _ bytes: UInt32
 ) -> UInt32 {
-    guard address != nil, bytes == 115_392 else { return 0 }
+    guard address != nil, bytes == 19_392 else { return 0 }
     let region = UnsafeMutableRawBufferPointer(start: address, count: Int(bytes))
     guard let capture = StaticSignalAnalyzerNRFCaptureRegions(storage: region) else {
         return 0
@@ -2359,7 +2359,7 @@ public func giftUISignalAnalyzerCaptureRegionValid(
 public func giftUISignalAnalyzerCaptureHistoryValid(
     _ capture: UnsafeMutableRawPointer?, _ bytes: UInt32
 ) -> UInt32 {
-    guard let capture, bytes == 115_392,
+    guard let capture, bytes == 19_392,
         var regions = StaticSignalAnalyzerNRFCaptureRegions(
             storage: UnsafeMutableRawBufferPointer(start: capture, count: Int(bytes))
         )
@@ -2382,7 +2382,7 @@ public func giftUISignalAnalyzerSealedApplicationValid(
     _ capture: UnsafeMutableRawPointer?, _ captureBytes: UInt32
 ) -> UInt32 {
     guard let profile, let capture, profileBytes == 39_696,
-        captureBytes == 115_392,
+        captureBytes == 19_392,
         let diagnostic = giftUIStaticSampleDiagnostic()
     else { return 0 }
     let profileStorage = UnsafeMutableRawBufferPointer(
@@ -2434,7 +2434,7 @@ public func giftUISignalAnalyzerRepositoryProducerValid(
     _ capture: UnsafeMutableRawPointer?, _ captureBytes: UInt32
 ) -> UInt32 {
     guard let profile, let capture, profileBytes == 39_696,
-        captureBytes == 115_392
+        captureBytes == 19_392
     else { return 0 }
     let profileStorage = UnsafeMutableRawBufferPointer(
         start: profile, count: Int(profileBytes)
@@ -2509,7 +2509,7 @@ public func giftUISignalAnalyzerRevisionFailureValid(
     _ capture: UnsafeMutableRawPointer?, _ captureBytes: UInt32
 ) -> UInt32 {
     guard let profile, let capture, profileBytes == 39_696,
-        captureBytes == 115_392
+        captureBytes == 19_392
     else { return 0 }
     let profileStorage = UnsafeMutableRawBufferPointer(
         start: profile, count: Int(profileBytes)
@@ -2555,7 +2555,7 @@ public func giftUISignalAnalyzerRevisionFailureValid(
 public func giftUISignalAnalyzerSnapshotViewValid(
     _ address: UnsafeMutableRawPointer?, _ bytes: UInt32
 ) -> UInt32 {
-    guard address != nil, bytes == 115_392 else { return 0 }
+    guard address != nil, bytes == 19_392 else { return 0 }
     let storage = UnsafeMutableRawBufferPointer(start: address, count: Int(bytes))
     let transition = SignalTransition(
         channelID: SignalChannelID(rawValue: 4),
@@ -2582,7 +2582,7 @@ public func giftUISignalAnalyzerSnapshotViewValid(
 public func giftUISignalAnalyzerModelCaptureReplayValid(
     _ address: UnsafeMutableRawPointer?, _ bytes: UInt32
 ) -> UInt32 {
-    guard address != nil, bytes == 115_392 else { return 0 }
+    guard address != nil, bytes == 19_392 else { return 0 }
     let storage = UnsafeMutableRawBufferPointer(start: address, count: Int(bytes))
     return withUnsafeMutablePointer(to: &giftUIStaticModelLocation) { location in
         guard location.pointee.activate() != nil,
@@ -2630,7 +2630,7 @@ public func giftUISignalAnalyzerRegionMapValid(
     _ coverage: UnsafeMutableRawPointer?, _ coverageBytes: UInt32
 ) -> UInt32 {
     guard profile != nil, capture != nil, raster != nil, coverage != nil,
-        profileBytes == 39_696, captureBytes == 115_392,
+        profileBytes == 39_696, captureBytes == 19_392,
         rasterBytes == 2_560, coverageBytes == 160
     else { return 0 }
     let valid = StaticSignalAnalyzerNRFRegionMap.validate(
@@ -3366,7 +3366,7 @@ private func giftUIStaticCommonPresentation(
     interaction: UnsafeMutablePointer<StaticSignalAnalyzerNRFEmbeddedInteractionOwner>,
     gestures: UnsafeMutablePointer<StaticSignalAnalyzerNRFEmbeddedGestureSession>
 ) -> UInt32 {
-    guard let profile, profileBytes == 39_696, let capture, captureBytes == 115_392,
+    guard let profile, profileBytes == 39_696, let capture, captureBytes == 19_392,
         let raster, rasterBytes == 2_560, let coverage, coverageBytes == 160,
         var owner = StaticSignalAnalyzerCommonOwner(
             profile: UnsafeMutableRawBufferPointer(start: profile, count: Int(profileBytes)),

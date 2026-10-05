@@ -4,7 +4,7 @@ import Testing
 
 @Suite("Signal Analyzer 30-second workload oracle")
 struct SignalAnalyzerWorkloadOracleTests {
-    @Test("2400 workload events plus four initial lows remain complete and replayable")
+    @Test("2400 delivered events preserve replay and five-second inclusive history")
     func completeWorkload() throws {
         let source = WorkloadSource()
         let repository = DefaultSignalAcquisitionRepository(source: source)
@@ -17,7 +17,7 @@ struct SignalAnalyzerWorkloadOracleTests {
 
         #expect(source.emittedCount == 2_404)
         #expect(repository.captureRevision == 2_404)
-        #expect(repository.currentCapture.transitions.count == 2_404)
+        #expect(repository.currentCapture.transitions.count == 404)
         #expect(captures.publications.count == 2_405)
         #expect(captures.outcomes == Array(UInt32(1) ... UInt32(2_405)))
         #expect(states.states == [.idle, .running])
@@ -39,14 +39,15 @@ struct SignalAnalyzerWorkloadOracleTests {
         #expect(replay.capture == repository.currentCapture)
 
         let transitions = repository.currentCapture.transitions
-        #expect(transitions.prefix(4).map(\.timestamp) == Array(repeating: .zero, count: 4))
+        #expect(repository.currentCapture.retainedLowerBound == .seconds(25))
+        #expect(transitions.prefix(4).map(\.timestamp) == Array(repeating: .seconds(25), count: 4))
         #expect(transitions.prefix(4).map(\.channelID.rawValue) == [1, 2, 3, 4])
         #expect(transitions.last?.timestamp == .seconds(30))
-        for index in 4 ..< transitions.count {
-            let workloadIndex = index - 3
-            #expect(transitions[index].timestamp == .microseconds(workloadIndex * 12_500))
-            #expect(transitions[index].channelID.rawValue == ((workloadIndex - 1) % 4) + 1)
+        for (index, value) in transitions.enumerated() {
+            #expect(value.timestamp == .milliseconds((500 + index / 4) * 50))
+            #expect(value.channelID.rawValue == index % 4 + 1)
         }
+
     }
 }
 
@@ -67,15 +68,17 @@ private final class WorkloadSource: SignalDataSource {
             )
             emittedCount += 1
         }
-        for index in 1 ... 2_400 {
-            sink.receive(
-                SignalTransition(
-                    channelID: SignalChannelID(rawValue: ((index - 1) % 4) + 1),
-                    timestamp: .microseconds(index * 12_500),
-                    level: index.isMultiple(of: 2) ? .low : .high
+        for cycle in 1 ... 600 {
+            for channel in 1 ... 4 {
+                sink.receive(
+                    SignalTransition(
+                        channelID: SignalChannelID(rawValue: channel),
+                        timestamp: .milliseconds(cycle * 50),
+                        level: cycle.isMultiple(of: 2) ? .low : .high
+                    )
                 )
-            )
-            emittedCount += 1
+                emittedCount += 1
+            }
         }
     }
 

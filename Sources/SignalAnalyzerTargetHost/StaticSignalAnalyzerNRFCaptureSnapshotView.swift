@@ -1,7 +1,7 @@
 import SignalAnalyzerDomain
 
 /// Validated, scoped read access to the copied admission snapshot slot.
-/// The caller keeps the 115,392-byte region alive and unchanged for this scope.
+/// The caller keeps the 19,392-byte region alive and unchanged for this scope.
 package struct StaticSignalAnalyzerNRFCaptureSnapshotView: ~Copyable {
     private let regions: StaticSignalAnalyzerNRFCaptureRegions
     package let revision: UInt32

@@ -4,11 +4,11 @@ import SignalAnalyzerTargetHost
 import Testing
 
 @Test func staticNRFModelCaptureReplaysPortableMutationsInPlace() {
-    let pointer = UnsafeMutableRawPointer.allocate(byteCount: 115_392, alignment: 8)
+    let pointer = UnsafeMutableRawPointer.allocate(byteCount: 19_392, alignment: 8)
     defer { pointer.deallocate() }
     guard
         var regions = StaticSignalAnalyzerNRFCaptureRegions(
-            storage: UnsafeMutableRawBufferPointer(start: pointer, count: 115_392)
+            storage: UnsafeMutableRawBufferPointer(start: pointer, count: 19_392)
         )
     else {
         Issue.record("Exact capture region did not construct")
@@ -17,7 +17,7 @@ import Testing
     var model = StaticSignalAnalyzerNRFModelCaptureState()
     var portable = SignalCaptureStore()
 
-    for index in 0 ..< 2_405 {
+    for index in 0 ..< 405 {
         let source = SignalTransition(
             channelID: SignalChannelID(rawValue: index % 4 + 1),
             timestamp: .milliseconds(index),
@@ -95,9 +95,9 @@ import Testing
 }
 
 @Test func staticNRFModelLocationAppliesSnapshotAndMutationInOwnedPhase() {
-    let pointer = UnsafeMutableRawPointer.allocate(byteCount: 115_392, alignment: 8)
+    let pointer = UnsafeMutableRawPointer.allocate(byteCount: 19_392, alignment: 8)
     defer { pointer.deallocate() }
-    let storage = UnsafeMutableRawBufferPointer(start: pointer, count: 115_392)
+    let storage = UnsafeMutableRawBufferPointer(start: pointer, count: 19_392)
     let first = SignalTransition(
         channelID: SignalChannelID(rawValue: 1),
         timestamp: .milliseconds(125), level: .high

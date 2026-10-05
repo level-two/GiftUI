@@ -10,7 +10,7 @@ public func giftUISignalAnalyzerRehearsalClear(
         sealedStorage: UnsafeMutableRawBufferPointer(rebasing: storage[35_472 ..< 39_312])
     ), case .accepted = giftUIStaticRepository.clear(
         admission: &admission,
-        captureStorage: UnsafeMutableRawBufferPointer(start: capture, count: 115_392)
+        captureStorage: UnsafeMutableRawBufferPointer(start: capture, count: 19_392)
     ) else { return 0 }
     giftUIStaticHasPendingFacts = true
     return 1
@@ -113,7 +113,7 @@ public func giftUISignalAnalyzerRehearsalCommonOwner(
     _ raster: UnsafeMutableRawPointer, _ coverage: UnsafeMutableRawPointer
 ) -> UInt32 {
     let profile = UnsafeMutableRawBufferPointer(start: profilePointer, count: 39_696)
-    let capture = UnsafeMutableRawBufferPointer(start: capturePointer, count: 115_392)
+    let capture = UnsafeMutableRawBufferPointer(start: capturePointer, count: 19_392)
     func start() {
         giftUISignalAnalyzerRetireInitial()
         // Each scenario is a fresh firmware/input graph, as terminal retirement requires.
@@ -121,7 +121,7 @@ public func giftUISignalAnalyzerRehearsalCommonOwner(
         precondition(giftUISignalAnalyzerInputInitialize(1) == 0)
         precondition(
             giftUISignalAnalyzerPresentInitial(
-                profilePointer, 39_696, capturePointer, 115_392, raster, 2_560, coverage, 160,
+                profilePointer, 39_696, capturePointer, 19_392, raster, 2_560, coverage, 160,
                 { _, _, _, _, _, _ in 0 }) == 1)
         precondition(giftUISignalAnalyzerInputInstallPresentation(1) == 0)
 

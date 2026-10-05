@@ -154,7 +154,7 @@ struct SignalCapturePublicationTests {
             revision: 41,
             change: .insertAndTrim(
                 baseRevision: 40,
-                insertionIndex: 2_404,
+                insertionIndex: 404,
                 transition: transition(SignalCapture.maximumTransitionCount),
                 evictedPrefixCount: 0,
                 duration: .microseconds(SignalCapture.maximumTransitionCount),

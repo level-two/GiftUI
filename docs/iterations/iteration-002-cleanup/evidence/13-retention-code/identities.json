@@ -1,0 +1,22 @@
+[
+  {
+    "source": ".build/iteration-002-retention-focused.log",
+    "sha256": "30905ce5e90dc47ed1a0db1045faf5e6ef729af6d03085cd17a5216f74036e63"
+  },
+  {
+    "source": ".build/iteration-002-retention-focused-retry.log",
+    "sha256": "8e45a6952373328a31c01fc48bd2b8c50ffab311e9704168fbff39247a709454"
+  },
+  {
+    "source": ".build/iteration-002-retention-format.log",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "source": ".build/nrf52840/iteration-002-retention-build.log",
+    "sha256": "eec782181bad4826e14cabbd3beeb38724411a7605937d0d9add94ea459ca6bf"
+  },
+  {
+    "source": ".build/nrf52840/iteration-002-maintenance-connected/authorized-restore.log",
+    "sha256": "29d90bed064d1b6b1b33ba96ee4e631c88052db885cd3cc017ad742bc16b3602"
+  }
+]

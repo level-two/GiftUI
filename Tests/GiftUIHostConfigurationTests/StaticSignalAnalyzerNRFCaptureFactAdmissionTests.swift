@@ -288,7 +288,7 @@ import Testing
 @Test func nRFSnapshotAdmissionMergesOnePhysicalSlotInSequence() {
     #expect(MemoryLayout<StaticSignalAnalyzerNRFSnapshotFact>.stride <= 48)
     let factBytes = 3_840
-    let captureBytes = 115_392
+    let captureBytes = 19_392
     let active = UnsafeMutableRawPointer.allocate(byteCount: factBytes, alignment: 8)
     let sealed = UnsafeMutableRawPointer.allocate(byteCount: factBytes, alignment: 8)
     let capture = UnsafeMutableRawPointer.allocate(byteCount: captureBytes, alignment: 8)

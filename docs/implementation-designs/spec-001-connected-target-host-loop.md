@@ -432,8 +432,8 @@ together, then quiesces both before either caller-owned field location or the
 profile buffer can expire. The aggregate remains generic over the concrete
 generated Canvas metadata, so it does not collapse the generation boundary.
 
-The nRF capture region is split into three 2,404-entry slots of compact
-16-byte records, totaling exactly 115,392 bytes. Each record preserves the
+The nRF capture region is split into three 404-entry slots of compact
+16-byte records, totaling exactly 19,392 bytes. Each record preserves the
 portable transition's channel, level, and normalized `Duration` components;
 its attoseconds fit below bit 60, leaving four high bits for the standard
 channel and digital level. The slots separately hold live repository state,
@@ -451,7 +451,7 @@ live compact-record slot in place. It scans the ordered slot for stable
 insertion, computes the combined sequence's time and capacity prefix eviction
 before writing, and updates baseline levels from that prefix. With no eviction
 it shifts records backward; with an evicted prefix it writes forward, so both
-paths stay within the 2,404-record slot without a temporary array. Clear
+paths stay within the 404-record slot without a temporary array. Clear
 preserves current levels, rebases source time, and advances the same revision
 as the portable store. A host differential fixture compares publications,
 metadata, and every retained record through sustained capacity pressure.
@@ -853,3 +853,5 @@ pointers still end at their opportunity; retained diagnostic exports are
 read-only and input uses the production ABI. The [connected measurement](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/connected-stack.md)
 records 19,480-byte high-water and its tested scope, not a worst-case or
 physical-input/timing claim.
+
+Five-second retention and coordinated capture slots follow accepted ADR-034 and the approved 2026-10-05 SPEC-001/013/015 amendment. Delivered 30s workload counts stay distinct from retained records.

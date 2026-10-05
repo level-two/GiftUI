@@ -356,7 +356,7 @@ import Testing
                 }
             }
             #expect(model.captureRevision == 2_404)
-            #expect(model.state.capture.transitions.count == 359)
+            #expect(model.state.capture.transitions.count == 61)
             #expect(delivered == 2_400)
             adapter.stopObserving()
             source.shutdown()

@@ -67,7 +67,7 @@ int main(void)
     if (giftui_signal_analyzer_static_preset() != 360515885u ||
         giftui_signal_analyzer_source_valid() != 1u ||
         giftui_signal_analyzer_storage_bytes() != 157808u ||
-        giftui_signal_analyzer_capture_layout() != 115392u ||
+        giftui_signal_analyzer_capture_layout() != 19392u ||
         giftui_signal_analyzer_capture_roundtrip() != 1u ||
         giftui_signal_analyzer_compact_fact_valid() != 1u ||
         giftui_signal_analyzer_presentation_fact_layout_valid() != 1u ||

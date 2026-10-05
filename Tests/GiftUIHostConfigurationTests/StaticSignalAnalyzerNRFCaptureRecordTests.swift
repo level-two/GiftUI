@@ -5,11 +5,11 @@ import Testing
 @Test func staticNRFCaptureRecordFitsThreeExactFirmwareSlots() {
     #expect(MemoryLayout<StaticSignalAnalyzerNRFCaptureRecord>.size == 16)
     #expect(MemoryLayout<StaticSignalAnalyzerNRFCaptureRecord>.stride == 16)
-    #expect(StaticSignalAnalyzerNRFCaptureRegions.requiredByteCount == 115_392)
+    #expect(StaticSignalAnalyzerNRFCaptureRegions.requiredByteCount == 19_392)
 
-    let pointer = UnsafeMutableRawPointer.allocate(byteCount: 115_392, alignment: 8)
+    let pointer = UnsafeMutableRawPointer.allocate(byteCount: 19_392, alignment: 8)
     defer { pointer.deallocate() }
-    let storage = UnsafeMutableRawBufferPointer(start: pointer, count: 115_392)
+    let storage = UnsafeMutableRawBufferPointer(start: pointer, count: 19_392)
     guard var regions = StaticSignalAnalyzerNRFCaptureRegions(storage: storage) else {
         Issue.record("Exact nRF capture region did not construct")
         return
@@ -30,13 +30,13 @@ import Testing
         Issue.record("Valid transitions did not encode")
         return
     }
-    let wroteLive = regions.store(liveRecord, in: .live, at: 2_403)
+    let wroteLive = regions.store(liveRecord, in: .live, at: 403)
     let wroteSnapshot = regions.store(snapshotRecord, in: .admission, at: 0)
-    let loadedLive = regions.load(from: .live, at: 2_403)?.transition
+    let loadedLive = regions.load(from: .live, at: 403)?.transition
     let loadedSnapshot = regions.load(from: .admission, at: 0)?.transition
-    let pastEnd = regions.load(from: .live, at: 2_404)
+    let pastEnd = regions.load(from: .live, at: 404)
     let beforeStart = regions.load(from: .admission, at: -1)
-    let wrotePastEnd = regions.store(liveRecord, in: .admission, at: 2_404)
+    let wrotePastEnd = regions.store(liveRecord, in: .admission, at: 404)
     #expect(wroteLive)
     #expect(wroteSnapshot)
     #expect(loadedLive == live)
@@ -47,10 +47,10 @@ import Testing
 }
 
 @Test func staticNRFCaptureRegionsRejectWrongSizeAndAlignment() {
-    let pointer = UnsafeMutableRawPointer.allocate(byteCount: 115_400, alignment: 8)
+    let pointer = UnsafeMutableRawPointer.allocate(byteCount: 19_400, alignment: 8)
     defer { pointer.deallocate() }
     let wrongSize = StaticSignalAnalyzerNRFCaptureRegions(
-        storage: UnsafeMutableRawBufferPointer(start: pointer, count: 115_391)
+        storage: UnsafeMutableRawBufferPointer(start: pointer, count: 19_391)
     )
     switch consume wrongSize {
     case nil: break
@@ -58,7 +58,7 @@ import Testing
     }
     let misaligned = StaticSignalAnalyzerNRFCaptureRegions(
         storage: UnsafeMutableRawBufferPointer(
-            start: pointer.advanced(by: 1), count: 115_392
+            start: pointer.advanced(by: 1), count: 19_392
         )
     )
     switch consume misaligned {

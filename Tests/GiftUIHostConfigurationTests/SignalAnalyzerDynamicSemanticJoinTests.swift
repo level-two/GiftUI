@@ -2059,20 +2059,20 @@ private func makeSemanticJoinModel(failsStart: Bool = false) -> SignalAnalyzerVi
         )
     }
     #expect(model.captureRevision == 2_404)
-    #expect(model.state.capture.transitions.count == 359)
+    #expect(model.state.capture.transitions.count == 61)
     let actions: [(SignalAnalyzerAction, Bool, AcquisitionState, VisibleTimeWindow, Int)] = [
-        (.stop, true, .stopped, .twoSeconds, 359),
-        (.start, true, .running, .twoSeconds, 359),
-        (.selectOneSecond, true, .running, .oneSecond, 359),
-        (.selectOneSecond, false, .running, .oneSecond, 359),
-        (.selectOneSecond, false, .running, .oneSecond, 359),
-        (.selectTwoSeconds, true, .running, .twoSeconds, 359),
-        (.selectFiveSeconds, true, .running, .fiveSeconds, 359),
-        (.selectFiveSeconds, false, .running, .fiveSeconds, 359),
-        (.selectFiveSeconds, false, .running, .fiveSeconds, 359),
-        (.selectTwoSeconds, true, .running, .twoSeconds, 359),
-        (.selectOneSecond, true, .running, .oneSecond, 359),
-        (.selectTwoSeconds, true, .running, .twoSeconds, 359),
+        (.stop, true, .stopped, .twoSeconds, 61),
+        (.start, true, .running, .twoSeconds, 61),
+        (.selectOneSecond, true, .running, .oneSecond, 61),
+        (.selectOneSecond, false, .running, .oneSecond, 61),
+        (.selectOneSecond, false, .running, .oneSecond, 61),
+        (.selectTwoSeconds, true, .running, .twoSeconds, 61),
+        (.selectFiveSeconds, true, .running, .fiveSeconds, 61),
+        (.selectFiveSeconds, false, .running, .fiveSeconds, 61),
+        (.selectFiveSeconds, false, .running, .fiveSeconds, 61),
+        (.selectTwoSeconds, true, .running, .twoSeconds, 61),
+        (.selectOneSecond, true, .running, .oneSecond, 61),
+        (.selectTwoSeconds, true, .running, .twoSeconds, 61),
     ]
     var actionRevision: UInt32 = 121
     for (code, enabled, expectedState, expectedWindow, expectedCount) in actions {

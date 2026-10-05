@@ -69,7 +69,7 @@ static int validate(void *opaque)
     struct giftui_production_context *context = opaque;
     if (giftui_signal_analyzer_storage_regions(&context->regions) != 0 ||
         context->regions.profile_bytes != 39696U ||
-        context->regions.capture_bytes != 115392U ||
+        context->regions.capture_bytes != 19392U ||
         context->regions.raster_bytes != 2560U ||
         context->regions.coverage_bytes != 160U) {
         return -EINVAL;

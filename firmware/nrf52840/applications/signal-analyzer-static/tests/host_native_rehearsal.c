@@ -416,7 +416,7 @@ int main(void)
     struct giftui_static_host_storage regions;
     assert(giftui_signal_analyzer_storage_regions(&regions) == 0);
     assert(regions.profile_bytes == 39696U);
-    assert(regions.capture_bytes == 115392U);
+    assert(regions.capture_bytes == 19392U);
     assert(regions.raster_bytes == 2560U);
     assert(regions.coverage_bytes == 160U);
 

@@ -3,11 +3,11 @@ import SignalAnalyzerDomain
 @main
 struct TopologySemanticProbe {
     static func main() {
-        let pointer = UnsafeMutableRawPointer.allocate(byteCount: 115_392, alignment: 8)
+        let pointer = UnsafeMutableRawPointer.allocate(byteCount: 19_392, alignment: 8)
         defer { pointer.deallocate() }
-        pointer.initializeMemory(as: UInt8.self, repeating: 0, count: 115_392)
+        pointer.initializeMemory(as: UInt8.self, repeating: 0, count: 19_392)
         var captures = StaticSignalAnalyzerNRFCaptureRegions(
-            storage: UnsafeMutableRawBufferPointer(start: pointer, count: 115_392))!
+            storage: UnsafeMutableRawBufferPointer(start: pointer, count: 19_392))!
         var cases = 0
         for populated in [false, true] {
             for state in 0..<4 {
@@ -43,7 +43,7 @@ struct TopologySemanticProbe {
                         }
                         let snapshot = history.snapshot(in: &captures)!
                         let view = StaticSignalAnalyzerNRFCaptureSnapshotView(
-                            storage: UnsafeMutableRawBufferPointer(start: pointer, count: 115_392),
+                            storage: UnsafeMutableRawBufferPointer(start: pointer, count: 19_392),
                             revision: snapshot.revision, count: snapshot.count, duration: snapshot.duration,
                             retainedLowerBound: snapshot.retainedLowerBound, baselineLevels: snapshot.baselineLevels)!
                         precondition(model.installCaptureSnapshot(view, in: &captures))

@@ -37,10 +37,10 @@ package enum StaticSignalAnalyzerNRFCaptureSlot: UInt8 {
     case admission = 2
 }
 
-/// Borrows the exact 115,392-byte C region without constructing Swift arrays
+/// Borrows the exact 19,392-byte C region without constructing Swift arrays
 /// or copying either capture. The caller retains the region until teardown.
 package struct StaticSignalAnalyzerNRFCaptureRegions: ~Copyable {
-    package static let entriesPerSlot = 2_404
+    package static let entriesPerSlot = 404
     package static let requiredByteCount =
         3 * entriesPerSlot * StaticSignalAnalyzerNRFCaptureRecord.byteCount
 

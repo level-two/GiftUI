@@ -4,7 +4,7 @@
 #include <string.h>
 
 static uint8_t profile_region[39696];
-static uint8_t capture_region[115392];
+static uint8_t capture_region[19392];
 static uint8_t raster_region[2560];
 static uint8_t coverage_region[160];
 static uint32_t revision;

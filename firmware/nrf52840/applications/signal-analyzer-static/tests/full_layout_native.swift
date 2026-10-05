@@ -106,7 +106,7 @@ struct FullLayoutNativeCheck {
         precondition(giftUISignalAnalyzerInputAdmit(2, x, y, revision, 0) == 0xff)
         precondition(
             giftUISignalAnalyzerDrainInitialInput(
-                profile, 39_696, capture, 115_392
+                profile, 39_696, capture, 19_392
             ) == 2,
             "admitted action did not dispatch"
         )
@@ -128,7 +128,7 @@ struct FullLayoutNativeCheck {
     static func main() {
         checkStartupTextCorpus()
         let profile = UnsafeMutableRawPointer.allocate(byteCount: 39_696, alignment: 8)
-        let capture = UnsafeMutableRawPointer.allocate(byteCount: 115_392, alignment: 8)
+        let capture = UnsafeMutableRawPointer.allocate(byteCount: 19_392, alignment: 8)
         let raster = UnsafeMutableRawPointer.allocate(byteCount: 2_560, alignment: 8)
         let coverage = UnsafeMutableRawPointer.allocate(byteCount: 160, alignment: 8)
         defer {
@@ -138,11 +138,11 @@ struct FullLayoutNativeCheck {
             coverage.deallocate()
         }
         profile.initializeMemory(as: UInt8.self, repeating: 0, count: 39_696)
-        capture.initializeMemory(as: UInt8.self, repeating: 0, count: 115_392)
+        capture.initializeMemory(as: UInt8.self, repeating: 0, count: 19_392)
         raster.initializeMemory(as: UInt8.self, repeating: 0, count: 2_560)
         coverage.initializeMemory(as: UInt8.self, repeating: 0, count: 160)
         precondition(
-            giftUISignalAnalyzerTopologyValid(profile, 39_696, capture, 115_392) == 1,
+            giftUISignalAnalyzerTopologyValid(profile, 39_696, capture, 19_392) == 1,
             "diagnostic semantic topology failed"
         )
         precondition(giftUISignalAnalyzerLayoutTextValid(profile, 39_696) == 1)
@@ -163,20 +163,20 @@ struct FullLayoutNativeCheck {
         )
         precondition(
             giftUISignalAnalyzerFullCanvasValid(
-                profile, 39_696, capture, 115_392, raster, 2_560,
+                profile, 39_696, capture, 19_392, raster, 2_560,
                 coverage, 160
             ) == 1,
             "five Canvas derivation failed"
         )
         precondition(
             giftUISignalAnalyzerRepositoryProducerValid(
-                profile, 39_696, capture, 115_392
+                profile, 39_696, capture, 19_392
             ) == 1,
             "embedded action dispatch did not apply repository facts"
         )
         precondition(
             giftUISignalAnalyzerPresentInitial(
-                profile, 39_696, nil, 115_392, raster, 2_560,
+                profile, 39_696, nil, 19_392, raster, 2_560,
                 coverage, 160, accept
             ) == 0,
             "invalid bootstrap capture region was accepted"
@@ -186,7 +186,7 @@ struct FullLayoutNativeCheck {
         precondition(giftUISignalAnalyzerInitialGestureReady() == 0)
         precondition(
             giftUISignalAnalyzerPresentInitial(
-                profile, 39_696, capture, 115_392, raster, 2_560,
+                profile, 39_696, capture, 19_392, raster, 2_560,
                 coverage, 160, accept
             ) == 1,
             "initial Canvas offer failed"
@@ -232,7 +232,7 @@ struct FullLayoutNativeCheck {
         precondition(giftUISignalAnalyzerInputPendingCount() == 2)
         precondition(
             giftUISignalAnalyzerDrainInitialInput(
-                profile, 39_696, capture, 115_392
+                profile, 39_696, capture, 19_392
             ) == 2,
             "queued Start action did not dispatch through repository"
         )
@@ -240,7 +240,7 @@ struct FullLayoutNativeCheck {
         precondition(giftUISignalAnalyzerNeedsPresentation() == 1)
         precondition(giftUISignalAnalyzerNextDelayMicroseconds() == 80_000)
         let scheduledResult = giftUISignalAnalyzerPollScheduledDue(
-            profile, 39_696, capture, 115_392
+            profile, 39_696, capture, 19_392
         )
         precondition(
             scheduledResult == 1,
@@ -248,7 +248,7 @@ struct FullLayoutNativeCheck {
         )
         precondition(giftUISignalAnalyzerNeedsPresentation() == 1)
         let nextOffer = giftUISignalAnalyzerPresentNext(
-            profile, 39_696, capture, 115_392, raster, 2_560,
+            profile, 39_696, capture, 19_392, raster, 2_560,
             coverage, 160, accept
         )
         precondition(
@@ -278,7 +278,7 @@ struct FullLayoutNativeCheck {
             if step < 4 {
                 precondition(
                     giftUISignalAnalyzerPresentNext(
-                        profile, 39_696, capture, 115_392,
+                        profile, 39_696, capture, 19_392,
                         raster, 2_560, coverage, 160, accept
                     ) == 1,
                     "action did not produce the next physical frame"
@@ -287,7 +287,7 @@ struct FullLayoutNativeCheck {
         }
         precondition(
             giftUISignalAnalyzerPresentInitial(
-                profile, 39_696, capture, 115_392, raster, 2_560,
+                profile, 39_696, capture, 19_392, raster, 2_560,
                 coverage, 160, accept
             ) == 0,
             "active model admitted a second initial offer"
@@ -300,7 +300,7 @@ struct FullLayoutNativeCheck {
         precondition(giftUISignalAnalyzerInitialGestureReady() == 0)
         precondition(
             giftUISignalAnalyzerPresentInitial(
-                profile, 39_696, capture, 115_392, raster, 2_560,
+                profile, 39_696, capture, 19_392, raster, 2_560,
                 coverage, 160, refuse
             ) == 0,
             "initial Canvas offer hid display refusal"
@@ -310,7 +310,7 @@ struct FullLayoutNativeCheck {
         precondition(giftUISignalAnalyzerInitialGestureReady() == 0)
         precondition(
             giftUISignalAnalyzerPresentInitial(
-                profile, 39_696, capture, 115_392, raster, 2_560,
+                profile, 39_696, capture, 19_392, raster, 2_560,
                 coverage, 160, accept
             ) == 1,
             "retired model could not activate again"
@@ -319,7 +319,7 @@ struct FullLayoutNativeCheck {
         precondition(giftUISignalAnalyzerInitialGestureReady() == 1)
         precondition(
             giftUISignalAnalyzerPresentNext(
-                profile, 39_696, capture, 115_392, raster, 2_560,
+                profile, 39_696, capture, 19_392, raster, 2_560,
                 coverage, 160, refuse
             ) == 0,
             "replacement display refusal was accepted"
