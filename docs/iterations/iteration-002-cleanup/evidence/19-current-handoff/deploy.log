@@ -1,0 +1,3 @@
+==> verified deploy artifact: /Users/eugene/work/GiftUI/.build/raspberry-pi/artifacts/SignalAnalyzerRaspberryPiARMv6: ELF 32-bit LSB pie executable, ARM, EABI5 version 1 (SYSV), dynamically linked, interpreter /lib/ld-linux-armhf.so.3, for GNU/Linux 3.2.0, BuildID[sha1]=fea084290e3f79b75accb1831b643adc195989da, stripped
+==> checking giftui@giftui-pi.local
+ssh: Could not resolve hostname giftui-pi.local: nodename nor servname provided, or not known

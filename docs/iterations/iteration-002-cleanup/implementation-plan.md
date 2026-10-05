@@ -15,7 +15,8 @@ Other owner Specifications retain their existing plans and regression gates.
 complete in their hardware-free scope. I2-09's RFC/ADR/Spec approvals and ready
 SPEC-001 milestone 12 are established by [explicit approval](retention-approval.md).
 T12.1 production storage is complete, native tests pass, and fresh profile/
-combined validation is running. Scoped nRF checks completed; Pi connectivity
+combined validation passes all 74 checks with 60 verified reports. Scoped nRF
+checks completed; Pi connectivity
 is the remaining connected dependency. Final closure still requires all results
 or a specifically approved scope amendment/exception.
 
@@ -28,7 +29,10 @@ SPEC-001/002/007/011/013/015 govern the affected owners. The accepted Proposals
 and approved RFCs remain the authority chain linked by those Specifications;
 superseded ADR-002/013 and experimental sources are historical only.
 
-- `DefaultSignalAcquisitionRepository.start()` currently publishes running after
+The following observations are the historical baseline inspected for plan derivation;
+current execution dispositions follow below.
+
+- `DefaultSignalAcquisitionRepository.start()` published running after
   callback-capable source startup; terminal revision failure can occur inside it.
   The real deterministic source and lifecycle suites provide the regression seam.
 - `InteractionState.finishCandidate()` preflights retained commit capacities but
@@ -62,7 +66,7 @@ reused as passes for cleanup. No production source changes in this derivation.
 | I2-06 | SPEC-001 T11.3 | Migrated startup/text/codec corpus, duplicate fragments and consumers retired, paired no flash/RAM growth, connected startup regression in T11.7 |
 | I2-07 | SPEC-013 T10.1 → T10.2 → T10.3 | Exact 15-file outer-guard/empty-shell change, coherent source selection, residual policy, native behavior, unchanged linked size and profile/dependency negatives |
 | I2-08 | SPEC-001 T11.4 | Two clean generations, exact outputs and 42 maintained semantic cases, stale/malformed input refusal, generator-only zero flash/RAM delta; explicit partial CBR-002 disposition |
-| I2-09 | RET-01 → RET-02 → RET-03 → RET-04; production task derivation held until gates pass | Approved upstream artifacts, then ready exact implementation/validation tasks for the approved retention contract; IT-AC-005 stays pending |
+| I2-09 | RET-01 → RET-02 → RET-03 → RET-04; SPEC-001 T12.1–4 | Approved artifacts and ready milestone 12; production/native/all-profile integration complete; Pi connected subset remains blocked |
 
 ## Iteration acceptance-criterion matrix
 
@@ -75,15 +79,15 @@ Specification criterion matrices and append cleanup tasks to affected rows.
 | IT-AC-002 | SPEC-011 T10.3; SPEC-013 T10.2/T10.3; SPEC-001 T11.6 | Pass for maintenance: four-profile dependency/source/import closure in [integration](evidence/10-integration/result.md). |
 | IT-AC-003 | SPEC-001 T11.4 | Pass: [clean generation](evidence/08-topology/result.md), 42 semantic cases, refusals, exact outputs and paired zero delta. CBR-002 remains partial. |
 | IT-AC-004 | SPEC-013 T10.1/T10.2/T10.3 | Pass: [15-file selection](evidence/07-source-selection/result.md), native and four-profile/resource gates; residual guards remain deferred. |
-| IT-AC-005 | RET-01–04, subsequently derived production tasks | Partial: approved RFC-012/ADR-034/contracts and five-second production implementation; native workload/boundaries and exact −96,000-byte RAM pass. Fresh profile validation remains T12.3. |
+| IT-AC-005 | RET-01–04, subsequently derived production tasks | Partial: approved RFC-012/ADR-034/contracts and five-second production implementation; native workload/boundaries and exact −96,000-byte RAM pass. [Fresh profile integration](evidence/18-retention-integration/result.md) passes; nRF connected subset passes, Pi check remains unavailable. |
 | IT-AC-006 | Steps 00–30; FINAL-01 | Pass: original research/evidence remains discoverable and unchanged; fresh immutable [integration](evidence/10-integration/result.md) added separately. |
-| IT-AC-007 | SPEC-001 T11.8; FINAL-01 | Partial: coherent step commits and maintenance dispositions recorded; T11.7/T11.8, retention and human FINAL-01 closure remain blocked. |
-| IT-AC-008 | SPEC-001 T11.1/T11.2/T11.7 | Partial: [real source and admission](evidence/09-startup-admission/result.md) and hardware-free integration pass; [connected checks](evidence/11-connected-attempt/result.md) incomplete. |
+| IT-AC-007 | SPEC-001 T11.8; FINAL-01 | Partial: coherent step commits and maintenance dispositions recorded; Pi portions of T12.4/T11.7 and dependent T11.8/FINAL-01 closure remain blocked. |
+| IT-AC-008 | SPEC-001 T11.1/T11.2/T11.7 | Partial: [real source and admission](evidence/09-startup-admission/result.md) and hardware-free integration pass; [nRF connected checks](evidence/16-nrf-connected/result.md) complete; Pi check unavailable. |
 | IT-AC-009 | SPEC-011 T10.1/T10.2/T10.3 | Pass: [concrete five-store corpus](evidence/02-capacity/result.md) and registered differential/profile/resource checks in integration. |
 | IT-AC-010 | TOOL-01; SPEC-001 T11.6 | Pass: [runner isolation](evidence/04-runner/result.md), special-root interruption fixture and exact 74-check/60-report integration ledger. |
 | IT-AC-011 | TOOL-02 | Pass: [safe source paths](evidence/03-source-paths/result.md), authority fixtures and fresh repository governance. |
 | IT-AC-012 | SPEC-001 T11.5/T11.6 | Pass: [actual compilers](evidence/05-compilers/result.md), separate native/paired compiler and SDK/artifact identities in all fresh reports. |
-| IT-AC-013 | SPEC-001 T11.3/T11.7 | Partial: [common startup corpus](evidence/06-startup-text/result.md), paired flash/RAM and ABI gates pass; ready revision observed, connected regression incomplete. |
+| IT-AC-013 | SPEC-001 T11.3/T11.7 | Pass: [common startup corpus](evidence/06-startup-text/result.md), paired flash/RAM and ABI gates pass; [current nRF connected startup/control/fault/cleanup](evidence/16-nrf-connected/result.md) passes. |
 
 ## Ordered work and dependencies
 
@@ -134,7 +138,7 @@ Specification criterion matrices and append cleanup tasks to affected rows.
   representation and corrected reproduction. Dependency: current documented
   `source` rule, not a new approval shortcut.
 
-### Retention upstream workflow — no production authorization yet
+### Retention upstream workflow — approved and completed
 
 - [x] **RET-01 — RFC amendment and review.** Use rfc-author/rfc-reviewer to
   prepare the smallest reviewable amendment within accepted PROPOSAL-002 and
@@ -250,7 +254,7 @@ feature stage, exception or optimization is created by this plan.
 
 ## Completion record
 
-Independent maintenance implementation and hardware-free integration tasks are complete. Connected checks and their dependent final reconciliation are blocked; retention production remains held upstream.
+All selected maintenance and approved retention production/hardware-free tasks are complete. The nRF connected subset succeeds; Pi connectivity blocks the remaining connected subset and dependent final reconciliation.
 Original completed owner tasks and historical criterion/exception evidence are
 unchanged. [Plan-derivation checks](../iteration-002-review/33-implementation-plan-derivation.md)
 record this document step separately from future execution.
@@ -277,4 +281,6 @@ Pi and nRF deployments/restoration/checks are explicitly authorized. T11.7/T11.8
 remain incomplete until actual new evidence satisfies them. FINAL-01 remains
 pending all selected outcomes; timing/physical exceptions are unchanged.
 
-**Current device disposition:** Explicit deployment approval resolves the prior authorization blockers. nRF Start/Stop/1/2/5s, capture/fault and cleanup checks completed on the five-second image; final idle-state verification follows restoration. Pi name resolution remains unavailable, so no Pi deployment/run is claimed.
+**Current device disposition:** Explicit deployment approval resolves the prior authorization blockers. nRF Start/Stop/1/2/5s, capture/fault and cleanup checks completed on the five-second image; final idle-state verification confirms successful restoration and resumed execution. Pi name resolution remains unavailable, so no Pi deployment/run is claimed.
+
+**Current partial reconciliation — 2026-10-05:** [Thirteen criteria and remaining Pi dependency](evidence/19-current-handoff/result.md); [74-check/60-report final retention integration](evidence/18-retention-integration/result.md). T12.3 is complete. T12.4/T11.7 and dependent T11.8/FINAL-01 remain incomplete only for the required Pi connected evidence and subsequent closure. Earlier dated held-approval/failed-device statements remain historical and are superseded by explicit approval and the successful current nRF packet.

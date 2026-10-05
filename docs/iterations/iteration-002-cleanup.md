@@ -186,13 +186,14 @@ before plan derivation. The remaining gates are explicit:
 2. Existing accepted ADRs and implemented Specifications govern I2-01–08;
    lightweight maintenance applies only while their contracts/owners/bounds hold.
    Any material divergence must receive lifecycle triage before affected code.
-3. I2-09 depends on approved retention architecture and contracts. The 5s horizon
-   is a product/architecture change from ADR-003's 30s history. Prepare the smallest
-   coherent RFC amendment and successor ADR, then affected Specifications and a
-   ready implementation plan. Do not edit accepted history into a new decision.
+3. I2-09's [explicit approval](iteration-002-cleanup/retention-approval.md) establishes
+   approved RFC-012, accepted ADR-034 (superseding ADR-003), faithful SPEC-001/013/015
+   amendments and ready milestone 12. Five-second production and fresh integration
+   are complete; historical accepted reasoning and raw evidence are preserved.
 4. [Delivery coordination and derived owner plans](iteration-002-cleanup/implementation-plan.md)
    now record task ordering and evidence mappings under the governing Specs.
-   Maintenance plans are ready; retention production derivation remains gated.
+   Maintenance and retention production tasks are implemented; focused Pi validation
+   and its dependent reconciliation remain blocked by connectivity.
    This scope's milestones are not a replacement plan.
 5. If hardware is unavailable at validation time, leave the focused connected
    criteria unmet and report the blocker; obtain an explicit scoped exception or
@@ -224,18 +225,20 @@ No deferred artifact is promoted and no feature stage changes through scope appr
 
 ## Closure and Follow-up
 
-Implementation has not started. At closure, record every criterion's
-disposition and immutable evidence, finding outcomes (including partial CBR-002
-remediation), unresolved contract/hardware gates, explicit exception provenance
-and deferred revisit triggers. Record the maintainer's closure decision in
-`closure`; preserve prior research and conformance history.
+All nine selected production changes are implemented. [Current reconciliation](iteration-002-cleanup/evidence/19-current-handoff/result.md)
+records every criterion's disposition, per-step commits, exact current evidence
+and deferred boundaries. The final 74-check hardware-free gate and all 60 report
+manifests pass; focused nRF startup/software-action/fault/cleanup checks succeed.
+Pi connectivity blocks deployment and the required bounded production-loop check,
+so T12.4/T11.7 and dependent T11.8/FINAL-01 remain incomplete. The iteration stays
+active with `closure: null`; no missing hardware evidence is waived by inference.
 
 ## References
 
 - [Iteration 2 delivery coordination plan](iteration-002-cleanup/implementation-plan.md)
 - [ITERATION-001: GiftUI MVP](iteration-001-mvp.md)
 - [Codebase Review Process](../engineering/CODEBASE_REVIEW.md)
-- [ADR-003: Transition-Based Bounded Capture](../adrs/adr-003-transition-based-bounded-capture.md)
+- [ADR-034: Five-second transition capture](../adrs/adr-034-five-second-transition-capture.md); supersedes [historical ADR-003](../adrs/adr-003-transition-based-bounded-capture.md).
 - [ADR-007: Integration Ownership and Host Composition](../adrs/adr-007-integration-ownership-and-host-composition.md)
 - [ADR-008: Module Dependency Graph and Package Topology](../adrs/adr-008-module-dependency-graph-and-package-topology.md)
 - [SPEC-002](../specs/spec-002-portable-foundation.md)

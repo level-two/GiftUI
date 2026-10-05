@@ -21,7 +21,7 @@ tasks and explicit remaining blockers. [Fresh integration](../iteration-002-clea
 | --- | --- | --- | --- |
 | CBR-001 | Confirmed preflight/error-classification defect; medium, correctness shortlist | Staged committed-action capacity is omitted from preflight | Corrected: preflight and real Dynamic/Static five-store, rollback/reuse/precedence corpus pass; production trigger was not claimed. |
 | CBR-002 | Supported simplification opportunity; medium | Manual ordinal/model mappings couple ordinary source to a separately generated hierarchy | Partial: complete clean generator/freshness/parity passes; manual ordinal/model mappings remain under EXP-001. |
-| CBR-003 | Supported simplification opportunity; medium | Startup probes retain separate target-host text-layout algorithms after the common production Layout join | Implemented: common Layout startup corpus replaces duplicate algorithms; paired flash −1,296/RAM unchanged. Connected action regression remains blocked. |
+| CBR-003 | Supported simplification opportunity; medium | Startup probes retain separate target-host text-layout algorithms after the common production Layout join | Implemented: common Layout startup corpus replaces duplicate algorithms; paired flash −1,296/RAM unchanged. Current connected startup/software-action/fault/cleanup regression passes in packet 16; broad physical validation remains deferred. |
 | CBR-004 | Confirmed test-ledger isolation defect; medium | Same-selection test runs clear and write shared reports/caches | Corrected: serialized writers, distinct retained invocation roots and child identities; failure/interruption/overlap fixtures and real gate pass. |
 | CBR-005 | Performance hypothesis; investigation only | Packed identity lookups repeatedly scan scope records | Preserved under FW-032; outside cleanup remediation selection |
 | CBR-006 | Confirmed process/tooling inconsistency; low | Deferred-track source paths are documented as legal but rejected by authority graph validation | Corrected: safe source-path support preserves strict authority IDs/edges; governance fixtures pass. |
@@ -264,3 +264,7 @@ records actual failures, device state and authorization blockers. It creates no
 new exception and cannot close the full connected corpus in FW-031/FW-033.
 Retention approval is a current iteration blocker, not deferred work. Iteration
 2 remains active; FINAL-01 and SPEC-001 T11.8 are incomplete.
+
+## Current approved delivery disposition — 2026-10-05
+
+[Final retention integration](../iteration-002-cleanup/evidence/18-retention-integration/result.md) passes all 74 checks and verifies 60 current reports. [Current nRF regression](../iteration-002-cleanup/evidence/16-nrf-connected/result.md) completes the selected connected CBR-003 startup/control/fault/cleanup subset and restores running idle. Explicit retention/deployment approval supersedes prior authorization blockers. CBR-001/003/004/006/008 are corrected within their selected scope; CBR-007 production and native regressions pass, with its new Pi connected check unavailable. CBR-002 remains partial under EXP-001, CBR-005 remains unmeasured under FW-032, and residual guards remain FW-029. [Criterion handoff](../iteration-002-cleanup/evidence/19-current-handoff/result.md) records Pi connectivity as the remaining blocker; iteration 2 remains active and no new exception is inferred.
