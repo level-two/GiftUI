@@ -1,0 +1,15 @@
+{
+  "utc": "2026-10-05T08:52:59.301908+00:00",
+  "command": [
+    "ssh",
+    "-o",
+    "BatchMode=yes",
+    "-o",
+    "ConnectTimeout=8",
+    "giftui@giftui-pi.local",
+    "uname -m; hostname"
+  ],
+  "exit_code": 255,
+  "stdout": "",
+  "stderr": "ssh: Could not resolve hostname giftui-pi.local: nodename nor servname provided, or not known\n"
+}

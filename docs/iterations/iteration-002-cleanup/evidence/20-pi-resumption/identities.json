@@ -1,0 +1,9 @@
+{
+  "repository_revision": "f46462e10c0d190dbe18ab55ef3317680f19ab11",
+  "artifact_path": ".build/raspberry-pi/artifacts/SignalAnalyzerRaspberryPiARMv6",
+  "artifact_sha256": "90dec11ef8cfd39480b888eb0cdef90ac9695d454ef7f9bdd12466ab7c8fa211",
+  "files": {
+    "doctor.log": "a74c12b1f674a7864fa05ae914d98b41ef8e8abf174403fa051c52478b62d58e",
+    "connectivity.json": "0ec062cafb387dba8159d387ecdbce365b6bb065e29b401452e3b38ecfd90e48"
+  }
+}

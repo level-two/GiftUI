@@ -1,0 +1,22 @@
+ok:    running on macOS
+ok:    host Swift executable exists
+ok:    host Swift is project-local
+ok:    host swift-autolink-extract exists
+ok:    host llvm-objdump exists
+ok:    host llvm-objcopy exists
+ok:    host Swift is 6.3.2
+ok:    static ARMv6 destination exists
+ok:    dynamic ARMv6 destination exists
+ok:    destination targets armv6-unknown-linux-gnueabihf
+ok:    destination uses the project-local SDK
+ok:    destination uses the project-local host tools
+ok:    destination contains no /opt SDK path
+ok:    cached SDK archive checksum
+ok:    cached macOS Swift package checksum
+
+Host:   Apple Swift version 6.3.2 (swift-6.3.2-RELEASE)
+Tools:  /Users/eugene/work/GiftUI/.toolchains/host/swift-6.3.2-RELEASE-osx
+Target: armv6-unknown-linux-gnueabihf
+SDK:    /Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6
+
+GiftUI Raspberry Pi cross-compilation environment is ready
