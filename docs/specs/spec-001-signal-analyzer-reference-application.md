@@ -16,7 +16,7 @@ related_rfcs:
   - RFC-011
 related_adrs:
   - ADR-001
-  - ADR-003
+  - ADR-034
   - ADR-004
   - ADR-011
   - ADR-014
@@ -136,7 +136,7 @@ does not define or approve those framework contracts.
 This Specification covers:
 
 - four fixed digital channels, `CH1` through `CH4`;
-- digital transition values and a bounded 30-second capture;
+- digital transition values and a bounded five-second capture;
 - idle, running, stopped, and failed acquisition states;
 - start, stop, restart, and clear behavior;
 - one capture sink and one acquisition-state sink;
@@ -212,7 +212,7 @@ contract unless a requirement below states otherwise.
   update.
 - [RFC-008](../rfcs/rfc-008-observable-reference-state-architecture.md)
   defines the approved observable-state and Presentation-admission design.
-- ADR-001, ADR-003, ADR-004, ADR-011, ADR-014 through ADR-016, ADR-024 through
+- ADR-001, ADR-034, ADR-004, ADR-011, ADR-014 through ADR-016, ADR-024 through
   ADR-031, and ADR-033 are the accepted governing decisions. ADR-002 and
   ADR-013 are superseded.
 - Approved SPEC-002 through SPEC-015 own the reusable Foundation, failure,
@@ -264,7 +264,7 @@ NOT read a platform clock or schedule timers directly.
 - [ADR-001](../adrs/adr-001-signal-analyzer-application-boundaries.md)
   governs Domain, Data, Presentation, and target-host ownership plus inward
   dependency direction.
-- [ADR-003](../adrs/adr-003-transition-based-bounded-capture.md)
+- [ADR-034](../adrs/adr-034-five-second-transition-capture.md)
   governs transition storage, the 80-event-per-second bound, minimum capacity,
   oldest-first eviction, and per-channel baseline preservation.
 - [ADR-004](../adrs/adr-004-portable-fixed-signal-analyzer-presentation.md)
@@ -699,13 +699,13 @@ in the preceding capture and then removes `evictedPrefixCount` entries from
 the resulting prefix before replacing duration, lower bound, and all four
 baselines. This ordering permits the newly inserted transition itself to be
 evicted under capacity pressure. The result is the repository's current
-capture at the publication revision. Both counts MUST be at most 2,404.
+capture at the publication revision. Both counts MUST be at most 404.
 `reset` replaces the capture with no transitions,
 zero duration and lower bound, and the supplied baselines. `.snapshot`
 publication is required for immediate current-value delivery when observation
 starts or restarts. Ordinary accepted transitions and Clear MUST use
 `.mutation` publication so the static path does not copy a complete
-2,404-entry capture per event.
+404-entry capture per event.
 
 ### Sink and repository contract
 
@@ -1025,7 +1025,7 @@ Fact admission MUST provide these independent fixed capacities per analyzer:
 
 | Storage | Capacity | Contents |
 | --- | ---: | --- |
-| Capture snapshot slot | 1 | One complete capture of at most 2,404 transitions |
+| Capture snapshot slot | 1 | One complete capture of at most 404 transitions |
 | Ordered compact-fact ring | 32 | Capture mutations and acquisition-state facts |
 | Reserved operational-failure slot | 1 | One failure fact unavailable to ordinary traffic |
 
@@ -1114,7 +1114,7 @@ order:
    level.
 4. Update capture duration to the greatest accepted epoch timestamp.
 5. Compute the time retention cutoff as
-   `max(.zero, duration - 30 seconds)`.
+   `max(.zero, duration - 5 seconds)`.
 6. Evict transitions older than the cutoff, updating each channel baseline
    with the last evicted level for that channel.
 7. If capacity still exceeds the concrete limit, evict the oldest transition
@@ -1137,8 +1137,9 @@ and reject the transition without mutating the capture.
 
 The maximum accepted workload is four channels × 10 cycles per second × two
 transitions per cycle = 80 transitions per second. Static storage MUST provide
-at least 2,404 transition entries, covering four initial levels plus 2,400
-events in 30 seconds, and MUST maintain four channel baselines.
+at least 404 transition entries: 400 events at the accepted 80-event/s density
+over five seconds plus four simultaneous events at the inclusive cutoff. It
+MUST maintain four scalar channel baselines separately from those entries.
 
 Time trimming and capacity eviction MUST preserve the newest representable
 history. For any channel, reconstructing from its baseline and retained
@@ -1635,13 +1636,13 @@ bound.
 - Facts and actions applied before semantic derivation begins MUST appear no
   later than the next scheduled analyzer frame, absent a documented platform
   failure. Merely accepted but not yet sealed facts are not considered applied.
-- Static capture storage MUST hold at least 2,404 transition entries plus four
+- Static capture storage MUST hold at least 404 transition entries plus four
   baselines.
-- Static Presentation integration MUST additionally provide one 2,404-entry
+- Static Presentation integration MUST additionally provide one 404-entry
   snapshot slot, 32 compact fact slots, one reserved failure slot, one model
   location, one active registration, and one replacement-staging record.
 - Dynamic storage MAY allocate, but retained logical history MUST remain
-  bounded to 30 seconds and equivalent capacity behavior.
+  bounded to five seconds and equivalent capacity behavior.
 - nRF52840 validation MUST record firmware binary size, static/global RAM,
   estimated or measured stack high-water mark where supported, transition
   storage size, and drawing workspace size.
@@ -1709,8 +1710,8 @@ Tests MUST verify:
   sink outcome;
 - stable ordering for equal and out-of-order timestamps;
 - capture duration and retained lower-bound calculation;
-- 30-second time trimming;
-- 2,404-entry minimum capacity and oldest-first overflow;
+- five-second inclusive time trimming;
+- 404-entry minimum capacity and oldest-first overflow;
 - per-channel baseline correctness after trimming and overflow;
 - invalid-channel and negative-timestamp failure behavior;
 - out-of-horizon event dropping and diagnosis;
@@ -1841,7 +1842,7 @@ behavioral, resource, profile, or connected-hardware evidence.
 ## Acceptance Criteria
 
 - [x] **SA-AC-001:** The feature manifest links the Signal Analyzer and
-  observable-reference-state feature chain, accepted ADR-001, ADR-003,
+  observable-reference-state feature chain, accepted ADR-001, ADR-034,
   ADR-004, ADR-011, ADR-014 through ADR-016, ADR-024 through ADR-027,
   historical ADR-002, and this Specification.
 - [x] **SA-AC-002:** The analyzer builds with logical Domain, Data,
@@ -1871,7 +1872,7 @@ behavioral, resource, profile, or connected-hardware evidence.
   timestamps, and publishes one cleared capture.
 - [ ] **SA-AC-011:** Four 10 Hz channels produce at most 80 accepted transition
   events per second and run for 30 seconds without loss or duplication.
-- [ ] **SA-AC-012:** Static storage provides at least 2,404 transition entries
+- [ ] **SA-AC-012:** Static storage provides at least 404 transition entries
   and four baselines.
 - [x] **SA-AC-013:** Time trimming and capacity overflow evict oldest entries
   while preserving correct levels at the retained lower bound.
@@ -2093,7 +2094,7 @@ contract, and this Specification does not create an additional relationship.
 
 - [ADR-001: Signal Analyzer Application Boundaries](../adrs/adr-001-signal-analyzer-application-boundaries.md)
 - [ADR-002: Serialized Synchronous Acquisition Delivery](../adrs/adr-002-serialized-synchronous-acquisition-delivery.md)
-- [ADR-003: Transition-Based Bounded Capture](../adrs/adr-003-transition-based-bounded-capture.md)
+- [ADR-034: Transition-Based Bounded Capture](../adrs/adr-034-five-second-transition-capture.md)
 - [ADR-004: Portable Fixed Signal Analyzer Presentation](../adrs/adr-004-portable-fixed-signal-analyzer-presentation.md)
 - [ADR-011: Serialized Run Cycle and Semantic Publication](../adrs/adr-011-serialized-run-cycle-and-publication.md)
 - [ADR-014: Bounded Cross-Layer Outcome Meaning](../adrs/adr-014-bounded-cross-layer-outcomes.md)
@@ -2155,3 +2156,29 @@ additional Canvas occurrences. Implementation and validation remain required.
 - [FW-027](../future-work/fw-027-pi-performance-investigation-resumption.md): deferred follow-up under the approved closeout exception.
 - [FW-032](../future-work/fw-032-nrf-performance-improvement.md): deferred follow-up under the approved closeout exception.
 - [FW-033](../future-work/fw-033-connected-validation-follow-up.md): deferred follow-up under the approved closeout exception.
+
+## Approved five-second retention amendment — 2026-10-05
+
+[Explicit approval](../iterations/iteration-002-cleanup/retention-approval.md),
+approved RFC-012 and accepted ADR-034 authorize this faithful contract amendment.
+All current capture/publication/model/admission count bounds are 404. Time
+retention is `max(0, duration - 5s)`, removing only strictly earlier events.
+Equal-time arrival order, capacity eviction/baselines, out-of-order rejection,
+Clear epoch, snapshot lifetime/replay, reserved failure admission and revision
+exhaustion remain unchanged. Four baselines are separate scalar values.
+All three nRF stores MUST resize together from 115,392 to 19,392 aggregate bytes;
+record width/alignment and unrelated regions/stacks remain unchanged.
+
+The sustained workload remains 30 continuous seconds at 80 delivered events/s:
+2,404 accepted capture facts including four initial levels, publication revision
+2,404. Delivery count MUST NOT be replaced by retained count. The synchronized
+four-channel boundary oracle finishes at 30s with retained cutoff 25s and 404
+retained records. Other accepted schedules may have fewer retained events; they
+MUST use their actual full-history oracle. Every 1/2/5s view's left-edge level
+and path MUST agree with full delivered history. Required tests include
+just-before/at/after cutoff, nonzero baselines, equal-time arrival, 404/405,
+capacity eviction, snapshot immutability/replay, Clear, disposal and reuse,
+and current target presentation/raster equivalence. SA-AC-010/011/012/015/025/043/045
+retain their meanings with the new retention bound and unchanged delivery oracle.
+Existing timing and physical-coverage exceptions retain their original scope;
+no timing or whole-stack success follows from smaller storage.

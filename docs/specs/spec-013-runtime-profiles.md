@@ -6,7 +6,7 @@ status: implemented
 authors:
   - codex
 created: 2026-08-27
-updated: 2026-10-03
+updated: 2026-10-05
 proposal:
   - PROPOSAL-003
   - PROPOSAL-005
@@ -20,6 +20,7 @@ related_rfcs:
   - RFC-010
   - RFC-011
 related_adrs:
+  - ADR-034
   - ADR-005
   - ADR-006
   - ADR-008
@@ -1062,3 +1063,22 @@ profiles remain in their existing lifecycle or deferred tracks.
 Authorized owner repair began under SPEC-013 T9.1 after implementation-readiness
 assessment. The amended contract is now implementing; approval records above
 remain historical and do not establish conformance.
+
+## Approved capture-resource consumer amendment — 2026-10-05
+
+[Explicit retention approval](../iterations/iteration-002-cleanup/retention-approval.md)
+and accepted [ADR-034](../adrs/adr-034-five-second-transition-capture.md) revise
+SPEC-001's application capture bound to 404 entries and five seconds inclusive.
+All three nRF live/model/admission regions MUST total `3 × 404 × 16 = 19,392`
+bytes, 96,000 below the previous composition. Fixed record ABI/alignment,
+profile ownership, no-heap policy, borrowed slot lifetime, reserved admission,
+all unrelated workloads/regions and stack reservations remain unchanged.
+The host workload remains 30s/80 delivered events/s and 2,404 accepted facts;
+retained count is separately checked against the actual schedule (404 for the
+synchronized inclusive-boundary corpus). Resource/profile reports MUST identify
+new contracts and actual compiler/SDK/artifact identities. Historical 30s-contract
+reports remain immutable. No timing/physical-coverage exception is enlarged.
+Application-owned implementation and four-profile validation are derived in
+SPEC-001 milestone 12; this consumer amendment adds no reusable host algorithm
+or runtime-profile policy. Current status retains the prior implemented owner
+baseline; this amendment's implementation/conformance is tracked separately.

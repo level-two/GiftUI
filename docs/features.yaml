@@ -40,6 +40,7 @@ features:
       - ADR-001
       - ADR-002
       - ADR-003
+      - ADR-034
       - ADR-004
       - ADR-027
     specs:

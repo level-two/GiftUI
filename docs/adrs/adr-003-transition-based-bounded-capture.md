@@ -2,11 +2,11 @@
 id: ADR-003
 feature: signal-analyzer
 title: Transition-Based Bounded Capture
-status: accepted
+status: superseded
 authors:
   - Yauheni Lychkouski
 created: 2026-08-14
-updated: 2026-08-28
+updated: 2026-10-05
 proposal:
   - PROPOSAL-002
 related_rfcs:
@@ -19,7 +19,8 @@ related_specs:
   - SPEC-001
   - SPEC-015
 supersedes: []
-superseded_by: []
+superseded_by:
+  - ADR-034
 target_milestone: MVP
 ---
 
@@ -27,7 +28,8 @@ target_milestone: MVP
 
 ## Status
 
-Accepted.
+Superseded by [ADR-034](adr-034-five-second-transition-capture.md) on 2026-10-05.
+The original accepted decision is preserved below as history.
 
 ## Context
 

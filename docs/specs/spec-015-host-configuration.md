@@ -6,7 +6,7 @@ status: implemented
 authors:
   - codex
 created: 2026-08-28
-updated: 2026-10-03
+updated: 2026-10-05
 proposal:
   - PROPOSAL-002
   - PROPOSAL-003
@@ -25,7 +25,7 @@ related_rfcs:
   - RFC-011
 related_adrs:
   - ADR-001
-  - ADR-003
+  - ADR-034
   - ADR-004
   - ADR-006
   - ADR-007
@@ -246,7 +246,7 @@ SPEC-001 approval authorizes the application contract that consumes them.
 
 - ADR-001 places the Signal Analyzer's Domain, Data, Presentation, and concrete
   target composition in their inward dependency order.
-- ADR-003 supplies the four-channel, 10-Hz-per-channel, 80-transition-per-
+- ADR-034 supplies the four-channel, 10-Hz-per-channel, 80-transition-per-
   second workload bound used by the admission-service proof.
 - ADR-004 supplies the fixed portable hierarchy, six controls, and
   250-millisecond presentation cadence used by the host workload manifest.
@@ -1478,7 +1478,7 @@ Specification:
 - [SPEC-013](spec-013-runtime-profiles.md)
 - [SPEC-014](spec-014-backend-integration.md)
 - [ADR-001](../adrs/adr-001-signal-analyzer-application-boundaries.md)
-- [ADR-003](../adrs/adr-003-transition-based-bounded-capture.md)
+- [ADR-034](../adrs/adr-034-five-second-transition-capture.md)
 - [ADR-004](../adrs/adr-004-portable-fixed-signal-analyzer-presentation.md)
 - [ADR-006](../adrs/adr-006-shared-semantics-runtime-profiles.md)
 - [ADR-007](../adrs/adr-007-integration-ownership-and-host-composition.md)
@@ -1506,3 +1506,22 @@ remain historical and do not establish conformance.
 
 - [FW-032](../future-work/fw-032-nrf-performance-improvement.md): deferred follow-up under the approved closeout exception.
 - [FW-033](../future-work/fw-033-connected-validation-follow-up.md): deferred follow-up under the approved closeout exception.
+
+## Approved capture-resource consumer amendment — 2026-10-05
+
+[Explicit retention approval](../iterations/iteration-002-cleanup/retention-approval.md)
+and accepted [ADR-034](../adrs/adr-034-five-second-transition-capture.md) revise
+SPEC-001's application capture bound to 404 entries and five seconds inclusive.
+All three nRF live/model/admission regions MUST total `3 × 404 × 16 = 19,392`
+bytes, 96,000 below the previous composition. Fixed record ABI/alignment,
+profile ownership, no-heap policy, borrowed slot lifetime, reserved admission,
+all unrelated workloads/regions and stack reservations remain unchanged.
+The host workload remains 30s/80 delivered events/s and 2,404 accepted facts;
+retained count is separately checked against the actual schedule (404 for the
+synchronized inclusive-boundary corpus). Resource/profile reports MUST identify
+new contracts and actual compiler/SDK/artifact identities. Historical 30s-contract
+reports remain immutable. No timing/physical-coverage exception is enlarged.
+Application-owned implementation and four-profile validation are derived in
+SPEC-001 milestone 12; this consumer amendment adds no reusable host algorithm
+or runtime-profile policy. Current status retains the prior implemented owner
+baseline; this amendment's implementation/conformance is tracked separately.

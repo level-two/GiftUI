@@ -2,7 +2,7 @@
 id: RFC-012
 feature: signal-analyzer
 title: Five-Second Capture Retention Amendment
-status: review
+status: approved
 authors:
   - codex
 created: 2026-10-05
@@ -13,6 +13,7 @@ related_rfcs:
   - RFC-001
 related_adrs:
   - ADR-003
+  - ADR-034
 related_specs:
   - SPEC-001
   - SPEC-013
@@ -37,10 +38,10 @@ the nRF live, observable-model and admission stores together, saving exactly
 96,000 bytes of packed capture storage.
 
 This is the separately reviewed retention amendment to RFC-001 selected by
-[ITERATION-002 I2-09](../iterations/iteration-002-cleanup.md). It is not approved.
-ADR-003 and current implemented Specifications remain authoritative. This RFC
-requires human approval, an accepted successor retention decision, approved
-coordinated contracts and a ready derived plan before production changes.
+[ITERATION-002 I2-09](../iterations/iteration-002-cleanup.md). Eugene explicitly approved this direction on 2026-10-05;
+[approval provenance](../iterations/iteration-002-cleanup/retention-approval.md)
+authorizes faithful successor decision, coordinated contracts and derived plan
+before production changes. ADR-034 records the accepted successor policy.
 
 ## Context
 
@@ -287,3 +288,7 @@ iteration's existing exclusions, not postponed prerequisites for this RFC.
 - [SPEC-015](../specs/spec-015-host-configuration.md)
 - [Retention owner impact and experimental limitations](../iterations/iteration-002-review/14-five-second-retention-impact.md)
 - [Iteration delivery and remaining gates](../iterations/iteration-002-cleanup/implementation-plan.md)
+
+## Approval provenance — 2026-10-05
+
+[Explicit maintainer approval](../iterations/iteration-002-cleanup/retention-approval.md) approves the concrete RFC policy and its faithful implementation chain. Earlier proposed/pending language describes the reviewed proposal, not a remaining RFC approval gate.
