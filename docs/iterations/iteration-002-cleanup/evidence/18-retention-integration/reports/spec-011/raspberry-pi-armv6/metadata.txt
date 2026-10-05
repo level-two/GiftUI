@@ -1,0 +1,16 @@
+schema_version=2
+input_set_sha256=72e10f20d749d836665befda9e901898a8b357e9efec6b2f0f9424a1883ea73f
+run_id=8e3e5ee9603177e6fe6cd2f8bdba2fe54d59445c-72e10f20d749d836
+report_directory=.build/contract-reports/spec-011/8e3e5ee9603177e6fe6cd2f8bdba2fe54d59445c-72e10f20d749d836/raspberry-pi-armv6
+spec=SPEC-011
+profile=raspberry-pi-armv6
+repository_revision=8e3e5ee9603177e6fe6cd2f8bdba2fe54d59445c
+repository_dirty=true
+host_execution=false
+cross_build_inspection=true
+simulator_execution=false
+connected_target_execution=false
+flashing=false
+status=complete
+exit_code=0
+blocking_count=0

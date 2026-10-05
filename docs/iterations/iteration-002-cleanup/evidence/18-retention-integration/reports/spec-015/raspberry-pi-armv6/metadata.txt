@@ -1,0 +1,14 @@
+schema_version=2
+input_set_sha256=72960d77ab24cb4a2858fa5cc4f3f3fcf5600db48f19731dad3a35af4701016c
+run_id=8e3e5ee9603177e6fe6cd2f8bdba2fe54d59445c-72960d77ab24cb4a
+report_directory=.build/contract-reports/spec-015/8e3e5ee9603177e6fe6cd2f8bdba2fe54d59445c-72960d77ab24cb4a/raspberry-pi-armv6
+spec=SPEC-015
+profile=raspberry-pi-armv6
+repository_revision=8e3e5ee9603177e6fe6cd2f8bdba2fe54d59445c
+repository_dirty=true
+invocation=scripts/contracts/run-spec-015.sh --profile raspberry-pi-armv6
+remote_access=false
+deployment=false
+service_restart=false
+connected_target_execution=false
+flashing=false

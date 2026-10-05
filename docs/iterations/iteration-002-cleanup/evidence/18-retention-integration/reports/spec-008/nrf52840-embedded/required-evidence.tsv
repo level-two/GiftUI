@@ -1,0 +1,12 @@
+# criterion	status	reason
+RD-001	pass	public-compile-and-surface-audit
+RD-002	pass	utf8-integer-and-invalid-declaration-evidence
+RD-003	pass	canonical-recording-transcripts
+RD-004	pass	damage-mode-and-no-frame-history-evidence
+RD-005	pass	failure-mapping-and-atomic-lifecycle-matrix
+RD-006	pass	borrow-streaming-and-no-retained-list-audits
+RD-007	pass	normalized-profile-and-limit-comparison
+RD-008	pass	four-profile-layout-allocation-and-resource-reports
+RD-009	pass	signal-analyzer-manifest-and-high-water-report
+RD-010	pass	target-graph-symbol-and-shared-lowering-audit
+RD-011	pass	scope-migration-and-downstream-seam-review

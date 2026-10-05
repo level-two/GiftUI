@@ -1,0 +1,28 @@
+schema_version=1
+spec=SPEC-006
+profile=raspberry-pi-armv6
+repository_revision=8e3e5ee9603177e6fe6cd2f8bdba2fe54d59445c
+repository_dirty=true
+input_set_sha256=e4e48e37d8c767c75056a21420f40a4dad0098466980377e5c68ab14c0337452
+run_id=8e3e5ee9603177e6fe6cd2f8bdba2fe54d59445c-e4e48e37d8c767c7
+generated_directory=.build/contract-generated/spec-006/raspberry-pi-armv6
+report_directory=.build/contract-reports/spec-006/8e3e5ee9603177e6fe6cd2f8bdba2fe54d59445c-e4e48e37d8c767c7/raspberry-pi-armv6
+invocation=scripts/contracts/run-spec-006.sh --profile raspberry-pi-armv6
+evidence=hardware-free
+remote_access=false
+deployment=false
+service_restart=false
+simulator_execution=false
+connected_target_execution=false
+flashing=false
+evidence_complete=true
+compiler_path=/Users/eugene/work/GiftUI/.toolchains/host/swift-6.3.2-RELEASE-osx/usr/bin/swiftc
+compiler_sha256=d8e40107da0e2c1c59640a983faea326d5d2bddfe81f7609db14bade43c4a5b9
+compiler_version<<EOF
+Apple Swift version 6.3.2 (swift-6.3.2-RELEASE)
+Target: arm64-apple-macosx26.0
+EOF
+target=armv6-unknown-linux-gnueabihf
+destination=/Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6/raspios-bookworm-static.json
+optimization=-O -whole-module-optimization
+exit_code=0

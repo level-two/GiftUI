@@ -5,7 +5,7 @@ title: SPEC-015 Conformance Report
 status: complete
 reviewers: [codex]
 created: 2026-09-19
-updated: 2026-10-03
+updated: 2026-10-05
 implementation_plan: ../implementation-plans/spec-015-implementation-plan.md
 related_future_work:
   - FW-022
@@ -18,6 +18,9 @@ superseded_by: null
 ---
 
 # SPEC-015 Conformance Report
+
+**Current amendment — 2026-10-05:** Approved five-second retention is implemented and all four hardware-free profiles pass in the [fresh integration](../iterations/iteration-002-cleanup/evidence/18-retention-integration/result.md). Focused nRF connected checks and restoration succeed; Pi connectivity blocks its new deployment/production-loop check. Original exception authority remains unchanged.
+
 
 **Current disposition — 2026-10-03:** The maintainer explicitly directed
 performance work to future iterations and closure of the remaining Specifications.
@@ -213,3 +216,49 @@ Earlier open-gate statements below describe the pre-approval history.
 Hardware-free acceptance rows retain their passing scope. The remaining
 connected gate is closed by the explicit exception in the linked authorization,
 with its uncollected physical/fault/trace evidence retained as follow-up.
+
+## Current approved retention amendment — 2026-10-05
+
+[Explicit approval](../iterations/iteration-002-cleanup/retention-approval.md)
+and accepted ADR-034 supersede earlier pending-approval/30s descriptions for
+current production. [Five-second integration](../iterations/iteration-002-cleanup/evidence/18-retention-integration/result.md)
+verifies all four owner profiles with current source-hashed raster references:
+74 checks and 60 report manifests pass. Five-second/404-record baseline,
+eviction, snapshots, replay and independent full-history 1/2/5s left edges pass;
+the 30s/80-event-per-second delivery workload remains unchanged. Linked nRF
+RAM is 95,104 (−96,000), flash 274,144 (−128), configured stacks unchanged,
+heaps zero and hard-float ABI verified. Exact criteria/commands/compiler/
+artifact identities and raw failures are retained in the packet.
+
+[nRF connected verification](../iterations/iteration-002-cleanup/evidence/16-nrf-connected/result.md)
+completes startup/software Start/Stop/1/2/5s/capture/fault/cleanup observations
+on the current firmware and restores running idle. This is not physical-input,
+independent pixel, sustained 80-Hz, cadence or exhaustive stack evidence.
+Pi connectivity blocks its new deployment/production-loop check and dependent
+SPEC-001 T12.4/T11.7/T11.8. Prior specifically approved exceptions and original
+criterion/raw evidence remain unchanged; no broader exception or lifecycle
+transition is inferred. Earlier connected-failure statements are historical;
+current nRF restoration succeeds and explicit deployment approval is recorded.
+
+### Current criterion dispositions for the approved amendment
+
+| Criterion | Disposition | Current evidence and limit |
+| --- | --- | --- |
+| `HC-001` | pass | [Current profile/criterion evidence](../iterations/iteration-002-cleanup/evidence/18-retention-integration/result.md). Four current owner/profile reports and composed evidence in packet 18; passing scope is hardware-free unless packet 16 explicitly supplies a connected subset. |
+| `HC-002` | pass | [Current profile/criterion evidence](../iterations/iteration-002-cleanup/evidence/18-retention-integration/result.md). Four current owner/profile reports and composed evidence in packet 18; passing scope is hardware-free unless packet 16 explicitly supplies a connected subset. |
+| `HC-003` | pass | [Current profile/criterion evidence](../iterations/iteration-002-cleanup/evidence/18-retention-integration/result.md). Four current owner/profile reports and composed evidence in packet 18; passing scope is hardware-free unless packet 16 explicitly supplies a connected subset. |
+| `HC-004` | pass | [Current profile/criterion evidence](../iterations/iteration-002-cleanup/evidence/18-retention-integration/result.md). Four current owner/profile reports and composed evidence in packet 18; passing scope is hardware-free unless packet 16 explicitly supplies a connected subset. |
+| `HC-005` | pass | [Current profile/criterion evidence](../iterations/iteration-002-cleanup/evidence/18-retention-integration/result.md). Four current owner/profile reports and composed evidence in packet 18; passing scope is hardware-free unless packet 16 explicitly supplies a connected subset. |
+| `HC-006` | pass | [Current profile/criterion evidence](../iterations/iteration-002-cleanup/evidence/18-retention-integration/result.md). Four current owner/profile reports and composed evidence in packet 18; passing scope is hardware-free unless packet 16 explicitly supplies a connected subset. |
+| `HC-007` | pass | [Current profile/criterion evidence](../iterations/iteration-002-cleanup/evidence/18-retention-integration/result.md). Four current owner/profile reports and composed evidence in packet 18; passing scope is hardware-free unless packet 16 explicitly supplies a connected subset. |
+| `HC-008` | pass | [Current profile/criterion evidence](../iterations/iteration-002-cleanup/evidence/18-retention-integration/result.md). Four current owner/profile reports and composed evidence in packet 18; passing scope is hardware-free unless packet 16 explicitly supplies a connected subset. |
+| `HC-009` | pass | [Current profile/criterion evidence](../iterations/iteration-002-cleanup/evidence/18-retention-integration/result.md). Four current owner/profile reports and composed evidence in packet 18; passing scope is hardware-free unless packet 16 explicitly supplies a connected subset. |
+| `HC-010` | pass | [Current profile/criterion evidence](../iterations/iteration-002-cleanup/evidence/18-retention-integration/result.md). Four current owner/profile reports and composed evidence in packet 18; passing scope is hardware-free unless packet 16 explicitly supplies a connected subset. |
+| `HC-011` | pass | [Current profile/criterion evidence](../iterations/iteration-002-cleanup/evidence/18-retention-integration/result.md). Four current owner/profile reports and composed evidence in packet 18; passing scope is hardware-free unless packet 16 explicitly supplies a connected subset. |
+| `HC-012` | pass | [Current profile/criterion evidence](../iterations/iteration-002-cleanup/evidence/18-retention-integration/result.md). Four current owner/profile reports and composed evidence in packet 18; passing scope is hardware-free unless packet 16 explicitly supplies a connected subset. |
+| `HC-013` | pass | [Current profile/criterion evidence](../iterations/iteration-002-cleanup/evidence/18-retention-integration/result.md). Four current owner/profile reports and composed evidence in packet 18; passing scope is hardware-free unless packet 16 explicitly supplies a connected subset. |
+| `HC-014` | pass | [Current profile/criterion evidence](../iterations/iteration-002-cleanup/evidence/18-retention-integration/result.md). Four current owner/profile reports and composed evidence in packet 18; passing scope is hardware-free unless packet 16 explicitly supplies a connected subset. |
+| `HC-015` | pass | [Current profile/criterion evidence](../iterations/iteration-002-cleanup/evidence/18-retention-integration/result.md). Four current owner/profile reports and composed evidence in packet 18; passing scope is hardware-free unless packet 16 explicitly supplies a connected subset. |
+| `HC-016` | pass | [Current profile/criterion evidence](../iterations/iteration-002-cleanup/evidence/18-retention-integration/result.md). Four current owner/profile reports and composed evidence in packet 18; passing scope is hardware-free unless packet 16 explicitly supplies a connected subset. |
+| `HC-017` | pass | [Current profile/criterion evidence](../iterations/iteration-002-cleanup/evidence/18-retention-integration/result.md). Four current owner/profile reports and composed evidence in packet 18; passing scope is hardware-free unless packet 16 explicitly supplies a connected subset. |
+| `HC-018` | pass | [Current profile/criterion evidence](../iterations/iteration-002-cleanup/evidence/18-retention-integration/result.md). Four current owner/profile reports and composed evidence in packet 18; passing scope is hardware-free unless packet 16 explicitly supplies a connected subset. |

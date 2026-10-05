@@ -1,0 +1,16 @@
+/Users/eugene/work/GiftUI/scripts/contracts/check-spec-014-fixtures.rb 
+/Users/eugene/work/GiftUI/scripts/contracts/check-spec-014-migration.rb 
+/Users/eugene/work/GiftUI/scripts/contracts/check-spec-014-contributors.rb 
+/Users/eugene/work/GiftUI/scripts/contracts/check-spec-014-capability-fixtures.rb 
+/Users/eugene/work/GiftUI/scripts/contracts/check-spec-014-conformance.rb 
+/Users/eugene/work/GiftUI/scripts/contracts/check-spec-014-startup-validator.rb 
+/Users/eugene/work/GiftUI/scripts/contracts/check-spec-014-frame-work.rb 
+/Users/eugene/work/GiftUI/scripts/contracts/check-spec-014-failures.rb 
+/Users/eugene/work/GiftUI/scripts/contracts/check-spec-014-resources.rb 
+/Users/eugene/work/GiftUI/scripts/contracts/check-spec-014-text-resource.rb 
+/Users/eugene/work/GiftUI/scripts/contracts/check-spec-014-transactions.rb 
+/Users/eugene/work/GiftUI/scripts/contracts/check-driver-registry.rb 
+giftui_swiftpm package dump-package 
+/Users/eugene/work/GiftUI/scripts/raspberry-pi/doctor.sh 
+/Users/eugene/work/GiftUI/scripts/contracts/collect-spec-014-armv6-evidence.sh /Users/eugene/work/GiftUI/.build/spec-014/reports/.tmp-raspberry-pi-armv6-89642/armv6-evidence 
+/Users/eugene/work/GiftUI/scripts/contracts/check-spec-014-value-profiles.sh --profile raspberry-pi-armv6 --output /Users/eugene/work/GiftUI/.build/spec-014/reports/.tmp-raspberry-pi-armv6-89642/declarations 

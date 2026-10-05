@@ -2902,7 +2902,7 @@ the previously missing corpus was executed.
 
 ## Iteration 2 maintenance readiness and scope
 
-[Approved scope](../iterations/iteration-002-cleanup.md) and [coordination plan](../iterations/iteration-002-cleanup/implementation-plan.md) govern this post-MVP maintenance. No new major implementation or Spec amendment is selected here. Existing authority/complete criterion mappings are retained; added tasks map in the original acceptance matrix, with pending entries in the task-evidence ledger. A new contract, owner/profile semantic or required resource bound must return upstream before affected work proceeds.
+[Approved scope](../iterations/iteration-002-cleanup.md) and [coordination plan](../iterations/iteration-002-cleanup/implementation-plan.md) govern this post-MVP maintenance. Milestone 11 preserves existing maintenance contracts; the approved retention amendment is derived separately in milestone 12. Existing authority/complete criterion mappings are retained; added tasks map in the original acceptance matrix, with pending entries in the task-evidence ledger. A new contract, owner/profile semantic or required resource bound must return upstream before affected work proceeds.
 
 ### Milestone 11: Iteration 2 application and evidence maintenance
 
@@ -2955,7 +2955,7 @@ four configurations. This milestone authorizes only the faithful approved change
 
 - [x] `T12.1` — Resize Domain/Data and the nRF live/model/admission capture stores together to 404 entries/19,392 bytes and change only the time-retention horizon to five seconds inclusive. Coordinate C allocation/startup/export/build guards and all affected region consumers. Preserve baseline/order/eviction/replay/Clear/revision/borrow semantics, production source patterns, all other regions and configured stacks. Update derived capture/storage design notes.
 - [x] `T12.2` — Migrate current fixtures by meaning and add independent boundary/full-history validation: just-before/at/after cutoff, equal-time arrival/nonzero baselines, 404/405 capacity, overflow, immutable snapshots, publication replay, Clear and repeated slot reuse. Keep 30s/80-event/s/2,404 delivery and separate schedule-specific retained count (404 synchronized oracle); independently compare 1/2/5s left edges and current presentation/raster parity. Include concrete Dynamic and Static owners and admission snapshots. Historical raw reports are immutable.
-- [ ] `T12.3` — Format before the fresh combined gate; verify all four target profiles, updated report consumers, native corpus, ARMv6/ARMv7E-M/VFP, heap/symbol/dependency/stack-reservation gates. Measure matched before/after capture storage and total linked RAM/flash; expect exactly 96,000 fewer capture bytes and no hidden slot. Preserve exact current report/artifact/compiler identities; no timing or whole-stack inference.
+- [x] `T12.3` — Format before the fresh combined gate; verify all four target profiles, updated report consumers, native corpus, ARMv6/ARMv7E-M/VFP, heap/symbol/dependency/stack-reservation gates. Measure matched before/after capture storage and total linked RAM/flash; expect exactly 96,000 fewer capture bytes and no hidden slot. Preserve exact current report/artifact/compiler identities; no timing or whole-stack inference.
 - [ ] `T12.4` — Deploy/flash verified current artifacts under explicit Pi/nRF authorization and collect bounded startup, Start/Stop/window/source/capture/baseline/fault/cleanup results. Use safe hardware breakpoints with guaranteed removal/resume; preserve failed attempts. Close the changed-path T11.7 evidence only on actual success; T11.8 and iteration reconciliation follow without enlarging existing exceptions.
 
 Dependencies: T12.1 → T12.2 → T12.3 → T12.4 → T11.7/T11.8 → FINAL-01.
@@ -2975,3 +2975,5 @@ All-profile report integration remains T12.3.
 complete the nRF subset. Explicit approval resolves the former device-authorization
 blockers. Pi mDNS/connectivity now blocks its deployment/run; these two tasks
 and dependent T11.8 remain incomplete, with no new exception inferred.
+
+**T12.3 execution:** [Fresh five-second integration](../iterations/iteration-002-cleanup/evidence/18-retention-integration/result.md): 74 checks, 60 verified owner/profile reports, current raster references, exact matched −96,000 RAM/−128 flash, ABI/heap/configured-stack gates. T12.4/T11.7/T11.8 remain Pi-connectivity dependent.

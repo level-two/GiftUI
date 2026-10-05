@@ -1,0 +1,15 @@
+# criterion	status	reason
+EX-001	missing	api-layout-and-four-profile-reports
+EX-002	missing	phase-membership-effect-publication-transcripts
+EX-003	missing	dirty-recovery-and-failure-transcripts
+EX-004	missing	reservation-commit-and-lifetime-probes
+EX-005	missing	offer-body-and-irreversible-output-matrix
+EX-006	missing	recovery-coalescing-and-exhaustion-transcripts
+EX-007	missing	input-provenance-and-sequencing-transcripts
+EX-008	missing	capture-generation-and-cancellation-probes
+EX-009	missing	mapping-precedence-and-diagnostic-isolation
+EX-010	missing	normalized-profile-comparison
+EX-011	missing	signal-analyzer-workload-report
+EX-012	missing	four-profile-resource-and-dependency-reports
+EX-013	missing	surface-import-migration-and-symbol-audits
+EX-014	missing	owner-failure-preservation-layout-and-allocation

@@ -1,0 +1,9 @@
+repository_revision=8e3e5ee9603177e6fe6cd2f8bdba2fe54d59445c
+repository_dirty=true
+host_binary=/Users/eugene/work/GiftUI/.build/contract-generated/spec-001/nrf-host-native-rehearsal/host-native-rehearsal
+host_binary_sha256=c47281dd70003bd52832d7bf91d89545d7390b05bd8ff04006934fd897d09725
+source_identity=773db2489f8acd13336a9750026204aa6e9011afe4a250abdc9031b9d8268258
+substituted_boundaries=direct SPI TFT write callback, ADS7846 callbacks, deterministic clock
+normal_command=scripts/contracts/check-spec-001-nrf-host-native-rehearsal.sh
+diagnostic_command=GIFTUI_REHEARSAL_DIAGNOSTIC=1 /Users/eugene/work/GiftUI/.build/contract-generated/spec-001/nrf-host-native-rehearsal/host-native-rehearsal
+raster_renderer_sha256=2d1feba8ceaaf57ebcb44e36efc5cbc248a05bd13fecdb1e732405ab31ae5f9f

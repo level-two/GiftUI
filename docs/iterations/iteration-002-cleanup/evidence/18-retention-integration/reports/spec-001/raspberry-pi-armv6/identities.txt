@@ -1,0 +1,9 @@
+repository_revision=8e3e5ee9603177e6fe6cd2f8bdba2fe54d59445c
+repository_dirty=false
+host_binary=/Users/eugene/work/GiftUI/.build/arm64-apple-macosx/debug/SignalAnalyzerRaspberryPiARMv6
+host_binary_sha256=3731d8a85abf969308b04716b94375aad04020c80e754197598f349c701a4ed1
+source_identity=d7b69d14c41f1ff95db9452727b37294db57106d78b898b8950bd00ca64a9fba
+substituted_boundaries=PiScreen framebuffer sink, decoded touch contacts, deterministic clock
+normal_command=scripts/contracts/check-spec-001-pi-host-native-rehearsal.sh
+diagnostic_command=GIFTUI_REHEARSAL_FAULT=diagnostic scripts/contracts/check-spec-001-pi-host-native-rehearsal.sh
+raster_renderer_sha256=2d1feba8ceaaf57ebcb44e36efc5cbc248a05bd13fecdb1e732405ab31ae5f9f

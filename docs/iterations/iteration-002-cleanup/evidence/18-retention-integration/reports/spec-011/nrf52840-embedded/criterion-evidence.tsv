@@ -1,0 +1,14 @@
+# criterion	status	evidence
+IN-001	complete	declarations-and-four-profiles
+IN-002	complete	normalization-and-dispatch
+IN-003	complete	semantic-records
+IN-004	complete	candidate-hit-resolution
+IN-005	complete	gesture-capture
+IN-006	complete	target-replacement
+IN-007	complete	synchronous-dispatch
+IN-008	complete	candidate-lifecycle
+IN-009	complete	failure-mapping
+IN-010	complete	profile-equivalence
+IN-011	complete	dependency-allocation-audit
+IN-012	complete	cross-target-resources
+IN-013	complete	target-generation-binding

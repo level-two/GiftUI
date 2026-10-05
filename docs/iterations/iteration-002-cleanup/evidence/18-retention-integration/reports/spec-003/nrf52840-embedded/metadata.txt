@@ -1,0 +1,30 @@
+schema_version=2
+input_set_sha256=621a98cf225e33481b7e9f8b237ce630107801140a359a9c5fe75cc1d5eaa371
+run_id=8e3e5ee9603177e6fe6cd2f8bdba2fe54d59445c-621a98cf225e3348
+report_directory=.build/contract-reports/spec-003/8e3e5ee9603177e6fe6cd2f8bdba2fe54d59445c-621a98cf225e3348/nrf52840-embedded
+spec=SPEC-003
+profile=nrf52840-embedded
+repository_revision=8e3e5ee9603177e6fe6cd2f8bdba2fe54d59445c
+repository_dirty=true
+generated_directory=.build/contract-generated/spec-003/nrf52840-embedded
+invocation=scripts/contracts/run-spec-003.sh --profile nrf52840-embedded
+remote_access=false
+deployment=false
+service_restart=false
+flashing=false
+compiler_path=/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.3.2-RELEASE-osx/usr/bin/swiftc
+compiler_sha256=d8e40107da0e2c1c59640a983faea326d5d2bddfe81f7609db14bade43c4a5b9
+compiler_version<<EOF
+Apple Swift version 6.3.2 (swift-6.3.2-RELEASE)
+Target: arm64-apple-macosx26.0
+EOF
+target=armv7em-none-none-eabi
+board=nrf52840dk/nrf52840
+zephyr_version=4.3.0
+zephyr_revision=3568e1b6d5cdd51a6b964a2a1d6d29200fea2056
+zephyr_sdk_version=0.17.4
+sdk_path=/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4
+optimization=-Osize -whole-module-optimization
+embedded_swift=-enable-experimental-feature Embedded
+float_abi=hard
+exit_code=0

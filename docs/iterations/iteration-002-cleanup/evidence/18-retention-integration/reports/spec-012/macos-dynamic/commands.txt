@@ -1,0 +1,13 @@
+/Users/eugene/work/GiftUI/scripts/contracts/check-spec-012-harness.rb 
+/Users/eugene/work/GiftUI/scripts/contracts/check-spec-012-migration.rb 
+/Users/eugene/work/GiftUI/scripts/contracts/check-spec-012-raster-vectors.rb 
+/Users/eugene/work/GiftUI/scripts/contracts/check-spec-012-static-canvas-manifest.rb 
+/Users/eugene/work/GiftUI/scripts/contracts/check-spec-013-storage-boundaries.rb 
+swift package --disable-sandbox dump-package 
+/Users/eugene/work/GiftUI/scripts/contracts/check-target-dependencies.rb 
+/Users/eugene/work/GiftUI/scripts/contracts/check-spec-014-module-contract.rb 
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc --version 
+xcrun --sdk macosx --show-sdk-path 
+/Users/eugene/work/GiftUI/scripts/contracts/check-spec-012-declarations.sh --profile macos-dynamic --output /Users/eugene/work/GiftUI/.build/contract-reports/spec-012/.tmp-macos-dynamic-59949/declarations 
+/Users/eugene/work/GiftUI/scripts/contracts/check-spec-012-value-profiles.sh --profile macos-dynamic --output /Users/eugene/work/GiftUI/.build/contract-reports/spec-012/.tmp-macos-dynamic-59949/value-layouts 
+/Users/eugene/work/GiftUI/scripts/contracts/check-spec-012-harness.rb /Users/eugene/work/GiftUI/.build/contract-reports/spec-012/.tmp-macos-dynamic-59949 

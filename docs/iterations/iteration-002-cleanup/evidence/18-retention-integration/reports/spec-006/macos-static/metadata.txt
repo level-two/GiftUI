@@ -1,0 +1,28 @@
+schema_version=1
+spec=SPEC-006
+profile=macos-static
+repository_revision=8e3e5ee9603177e6fe6cd2f8bdba2fe54d59445c
+repository_dirty=false
+input_set_sha256=e4e48e37d8c767c75056a21420f40a4dad0098466980377e5c68ab14c0337452
+run_id=8e3e5ee9603177e6fe6cd2f8bdba2fe54d59445c-e4e48e37d8c767c7
+generated_directory=.build/contract-generated/spec-006/macos-static
+report_directory=.build/contract-reports/spec-006/8e3e5ee9603177e6fe6cd2f8bdba2fe54d59445c-e4e48e37d8c767c7/macos-static
+invocation=scripts/contracts/run-spec-006.sh --profile macos-static
+evidence=hardware-free
+remote_access=false
+deployment=false
+service_restart=false
+simulator_execution=false
+connected_target_execution=false
+flashing=false
+evidence_complete=true
+compiler_path=/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc
+compiler_sha256=2ed38571e92c0283091838c1649e27650ad9c99950288e883c7b2dc6c4ce89fb
+compiler_version<<EOF
+swift-driver version: 1.148.6 Apple Swift version 6.3.3 (swiftlang-6.3.3.1.3 clang-2100.1.1.101)
+Target: arm64-apple-macosx26.0
+EOF
+target=arm64-apple-macosx26.0
+sdk_path=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk
+optimization=-O -whole-module-optimization
+exit_code=0

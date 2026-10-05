@@ -1,0 +1,15 @@
+ruby /Users/eugene/work/GiftUI/scripts/contracts/check-spec-011-harness.rb 
+ruby /Users/eugene/work/GiftUI/scripts/contracts/check-spec-011-boundaries.rb 
+ruby /Users/eugene/work/GiftUI/scripts/contracts/check-spec-011-diagnostic-isolation.rb 
+ruby /Users/eugene/work/GiftUI/scripts/contracts/check-spec-011-declaration-surface.rb 
+ruby /Users/eugene/work/GiftUI/scripts/contracts/check-spec-011-migration.rb 
+ruby /Users/eugene/work/GiftUI/scripts/contracts/check-spec-011-integration-audit.rb 
+swift test --disable-sandbox --scratch-path /Users/eugene/work/GiftUI/.build --filter GiftUIInteractionTests 
+swift test --disable-sandbox --scratch-path /Users/eugene/work/GiftUI/.build --filter GiftUIInteractionFailureAdapterTests 
+swift test --disable-sandbox --scratch-path /Users/eugene/work/GiftUI/.build --filter RuntimeInteraction 
+swift test --disable-sandbox --scratch-path /Users/eugene/work/GiftUI/.build --filter ProfileDifferentialTests\|UnequalInteractionStoreCapacity 
+/Users/eugene/work/GiftUI/scripts/nrf52840/doctor.sh 
+/Users/eugene/work/GiftUI/scripts/contracts/run-spec-013.sh --profile nrf52840-embedded 
+env -u GIFTUI_IMMUTABLE_REPORT_INNER -u GIFTUI_CONTRACT_REPORT_DIR -u GIFTUI_CONTRACT_RUN_ID /Users/eugene/work/GiftUI/scripts/contracts/run-spec-015.sh --profile nrf52840-embedded 
+/Users/eugene/work/GiftUI/scripts/contracts/verify-contract-report.rb /Users/eugene/work/GiftUI/.build/contract-reports/spec-013/8e3e5ee9603177e6fe6cd2f8bdba2fe54d59445c-9d5c3a64497f7666/nrf52840-embedded 
+/Users/eugene/work/GiftUI/scripts/contracts/verify-contract-report.rb /Users/eugene/work/GiftUI/.build/contract-reports/spec-015/8e3e5ee9603177e6fe6cd2f8bdba2fe54d59445c-621a98cf225e3348/nrf52840-embedded 

@@ -1,0 +1,8 @@
+ruby /Users/eugene/work/GiftUI/scripts/contracts/check-spec-015-harness.rb 
+ruby /Users/eugene/work/GiftUI/scripts/contracts/check-spec-015-negative-corpus.rb 
+ruby /Users/eugene/work/GiftUI/scripts/contracts/check-spec-015-source-boundaries.rb 
+ruby /Users/eugene/work/GiftUI/scripts/contracts/check-spec-015-generated-workload.rb 
+/Users/eugene/work/GiftUI/scripts/contracts/check-spec-015-validation-purity.sh 
+/Users/eugene/work/GiftUI/scripts/contracts/check-spec-015-host-surfaces.sh --output /Users/eugene/work/GiftUI/.build/contract-reports/spec-015/.tmp-nrf52840-embedded-92422/host-surfaces 
+swift test --disable-sandbox --scratch-path /Users/eugene/work/GiftUI/.build -Xswiftc -DGIFTUI_DYNAMIC_PROFILE --skip macOS.\*ReferenceRuns --filter GiftUIHostConfigurationTests 
+scripts/nrf52840/doctor.sh 

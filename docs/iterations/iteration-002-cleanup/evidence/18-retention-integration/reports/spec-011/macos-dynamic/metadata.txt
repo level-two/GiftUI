@@ -1,0 +1,16 @@
+schema_version=2
+input_set_sha256=62a8c83b348a8b5295de89df58a7530896926f05d73bfb78abc248eda395b05a
+run_id=feb4058920efbbb541787485a28b4d727dcc8b3b-62a8c83b348a8b52
+report_directory=.build/contract-reports/spec-011/feb4058920efbbb541787485a28b4d727dcc8b3b-62a8c83b348a8b52/macos-dynamic
+spec=SPEC-011
+profile=macos-dynamic
+repository_revision=feb4058920efbbb541787485a28b4d727dcc8b3b
+repository_dirty=true
+host_execution=true
+cross_build_inspection=false
+simulator_execution=false
+connected_target_execution=false
+flashing=false
+status=complete
+exit_code=0
+blocking_count=0

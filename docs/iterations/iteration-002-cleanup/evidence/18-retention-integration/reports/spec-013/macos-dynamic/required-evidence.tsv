@@ -1,0 +1,16 @@
+# criterion	status	reason
+RP-001	missing	package-graph-import-negatives-and-same-root-positive-compiles
+RP-002	missing	exclusive-storage-registry-render-workspace-equality-and-checked-byte-reports
+RP-003	missing	ordered-startup-failures-mappings-and-poisoned-callback-probes
+RP-004	missing	stage-transcripts-failure-cleanup-matrix-and-release-counters
+RP-005	missing	canonical-value-transcripts-and-zero-tolerance-differential-report
+RP-006	missing	table-driven-exact-limit-first-excess-and-high-water-reports
+RP-007	missing	replay-poisoning-mutation-reset-and-residual-state-reports
+RP-008	missing	accepted-refused-failed-offer-routing-snapshots
+RP-009	missing	repeated-refusal-high-water-pending-intent-and-payload-lifetime-report
+RP-010	missing	static-generation-coverage-destruction-allocation-symbol-sil-and-elf-reports
+RP-011	missing	dynamic-convenience-product-import-and-equivalence-audit
+RP-012	missing	dependency-typed-source-borrow-and-generated-coverage-tests
+RP-013	missing	two-pristine-builds-per-profile-with-resource-timing-and-digest-reports
+RP-014	missing	initial-replacement-discard-generation-and-committed-state-transcripts
+RP-015	missing	failure-layout-owner-value-correlation-cleanup-mapping-and-differential-reports
