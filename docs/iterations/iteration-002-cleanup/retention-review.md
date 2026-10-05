@@ -33,3 +33,7 @@ RET-01 authoring/review is prepared. Its approval gate is pending. RET-02–04 a
 production retention tasks remain held by the ordered workflow in the
 [coordination plan](implementation-plan.md). No artifact status or contract was
 promoted based on iteration approval or this review.
+
+## Subsequent human disposition — 2026-10-05
+
+[Explicit approval](retention-approval.md) approved RFC-012 and its faithful delivery chain. ADR-034 and the coordinated Specs are authoritative; earlier approval-pending statements above preserve the pre-approval review history.

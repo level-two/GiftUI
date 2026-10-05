@@ -14,6 +14,7 @@ proposal:
   - PROPOSAL-005
   - PROPOSAL-006
 related_rfcs:
+  - RFC-012
   - RFC-001
   - RFC-002
   - RFC-003

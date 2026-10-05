@@ -6,10 +6,11 @@ status: implemented
 authors:
   - Yauheni Lychkouski
 created: 2026-08-14
-updated: 2026-10-04
+updated: 2026-10-05
 proposal:
   - PROPOSAL-002
 related_rfcs:
+  - RFC-012
   - RFC-001
   - RFC-008
   - RFC-009
@@ -2094,7 +2095,7 @@ contract, and this Specification does not create an additional relationship.
 
 - [ADR-001: Signal Analyzer Application Boundaries](../adrs/adr-001-signal-analyzer-application-boundaries.md)
 - [ADR-002: Serialized Synchronous Acquisition Delivery](../adrs/adr-002-serialized-synchronous-acquisition-delivery.md)
-- [ADR-034: Transition-Based Bounded Capture](../adrs/adr-034-five-second-transition-capture.md)
+- [ADR-034: Five-Second Transition Capture](../adrs/adr-034-five-second-transition-capture.md)
 - [ADR-004: Portable Fixed Signal Analyzer Presentation](../adrs/adr-004-portable-fixed-signal-analyzer-presentation.md)
 - [ADR-011: Serialized Run Cycle and Semantic Publication](../adrs/adr-011-serialized-run-cycle-and-publication.md)
 - [ADR-014: Bounded Cross-Layer Outcome Meaning](../adrs/adr-014-bounded-cross-layer-outcomes.md)

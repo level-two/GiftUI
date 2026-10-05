@@ -11,17 +11,19 @@ exception or approval. The SPEC-001/011/013 plans contain the executable
 maintenance tasks; their original milestones and evidence remain historical.
 Other owner Specifications retain their existing plans and regression gates.
 
-**Readiness:** I2-01–08 have grounded maintenance tasks under current contracts.
-I2-09 has an ordered upstream artifact workflow; retention production work is
-not ready and has no executable task under the current 30s contract. Iteration
-approval is complete, and final closure waits for every selected outcome or an
-explicitly approved scope amendment/exception.
+**Readiness:** I2-01–08 maintenance implementation and fresh integration are
+complete in their hardware-free scope. I2-09's RFC/ADR/Spec approvals and ready
+SPEC-001 milestone 12 are established by [explicit approval](retention-approval.md).
+T12.1 production storage is complete, native tests pass, and fresh profile/
+combined validation is running. Scoped nRF checks completed; Pi connectivity
+is the remaining connected dependency. Final closure still requires all results
+or a specifically approved scope amendment/exception.
 
 ## Authority and current state
 
 This is post-MVP maintenance of features registered as `implemented`, preserving
 [ITERATION-001](../iteration-001-mvp.md)'s shared Signal Analyzer and four target
-configurations. Accepted ADR-003/007/008/033 and implemented
+configurations. Accepted ADR-034/007/008/033 and implemented
 SPEC-001/002/007/011/013/015 govern the affected owners. The accepted Proposals
 and approved RFCs remain the authority chain linked by those Specifications;
 superseded ADR-002/013 and experimental sources are historical only.
@@ -73,7 +75,7 @@ Specification criterion matrices and append cleanup tasks to affected rows.
 | IT-AC-002 | SPEC-011 T10.3; SPEC-013 T10.2/T10.3; SPEC-001 T11.6 | Pass for maintenance: four-profile dependency/source/import closure in [integration](evidence/10-integration/result.md). |
 | IT-AC-003 | SPEC-001 T11.4 | Pass: [clean generation](evidence/08-topology/result.md), 42 semantic cases, refusals, exact outputs and paired zero delta. CBR-002 remains partial. |
 | IT-AC-004 | SPEC-013 T10.1/T10.2/T10.3 | Pass: [15-file selection](evidence/07-source-selection/result.md), native and four-profile/resource gates; residual guards remain deferred. |
-| IT-AC-005 | RET-01–04, subsequently derived production tasks | Blocked: RFC-012 approval and successor ADR/Spec gates pending; current retention is 30s/2,404. No production retention task is ready. |
+| IT-AC-005 | RET-01–04, subsequently derived production tasks | Partial: approved RFC-012/ADR-034/contracts and five-second production implementation; native workload/boundaries and exact −96,000-byte RAM pass. Fresh profile validation remains T12.3. |
 | IT-AC-006 | Steps 00–30; FINAL-01 | Pass: original research/evidence remains discoverable and unchanged; fresh immutable [integration](evidence/10-integration/result.md) added separately. |
 | IT-AC-007 | SPEC-001 T11.8; FINAL-01 | Partial: coherent step commits and maintenance dispositions recorded; T11.7/T11.8, retention and human FINAL-01 closure remain blocked. |
 | IT-AC-008 | SPEC-001 T11.1/T11.2/T11.7 | Partial: [real source and admission](evidence/09-startup-admission/result.md) and hardware-free integration pass; [connected checks](evidence/11-connected-attempt/result.md) incomplete. |
@@ -274,3 +276,5 @@ Production tasks are now ready; no implementation pass is claimed by planning.
 Pi and nRF deployments/restoration/checks are explicitly authorized. T11.7/T11.8
 remain incomplete until actual new evidence satisfies them. FINAL-01 remains
 pending all selected outcomes; timing/physical exceptions are unchanged.
+
+**Current device disposition:** Explicit deployment approval resolves the prior authorization blockers. nRF Start/Stop/1/2/5s, capture/fault and cleanup checks completed on the five-second image; final idle-state verification follows restoration. Pi name resolution remains unavailable, so no Pi deployment/run is claimed.
