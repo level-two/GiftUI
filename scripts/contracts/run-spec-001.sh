@@ -109,7 +109,14 @@ if [[ "${GIFTUI_SHARED_REFERENCE_ALREADY_TESTED:-0}" == 1 ]]; then
     reference_args=(--skip 'macOS.*ReferenceRuns')
 fi
 swift test --disable-sandbox --scratch-path "${PROJECT_ROOT}/.build" \
-    -Xswiftc -DGIFTUI_DYNAMIC_PROFILE ${reference_args[@]+"${reference_args[@]}"} --filter 'SignalAnalyzer|dynamicProduction|dynamicPi|rawFramebufferTouches'
+    -Xswiftc -DGIFTUI_DYNAMIC_PROFILE ${reference_args[@]+"${reference_args[@]}"} --filter 'SignalAnalyzer|dynamicProduction|dynamicPi|rawFramebufferTouches' | tee "${staging_report_dir}/reference-tests.log"
+if [[ "${GIFTUI_SHARED_REFERENCE_ALREADY_TESTED:-0}" == 1 ]]; then
+    python3 "${SCRIPT_DIR}/current-spec-001-reference-traces.py" verify "${GIFTUI_SHARED_REFERENCE_TRACES:?current reference traces required}"
+    cp -R "${GIFTUI_SHARED_REFERENCE_TRACES}" "${staging_report_dir}/reference-traces"
+else
+    python3 "${SCRIPT_DIR}/current-spec-001-reference-traces.py" publish \
+        "${staging_report_dir}/reference-traces" --log "${staging_report_dir}/reference-tests.log"
+fi
 
 if [[ "${profile}" == "macos-dynamic" || "${profile}" == "macos-static" ]]; then
     "${SCRIPT_DIR}/run-spec-015.sh" --profile "${profile}"
@@ -148,7 +155,7 @@ fi
 
 if [[ "${profile}" == "raspberry-pi-armv6" ]]; then
     "${SCRIPT_DIR}/run-spec-015.sh" --profile "${profile}"
-    bash "${SCRIPT_DIR}/check-spec-001-host-native-rasters.sh" --profile "${profile}"
+    bash "${SCRIPT_DIR}/check-spec-001-host-native-rasters.sh" --profile "${profile}" --reference-traces "${staging_report_dir}/reference-traces"
     rehearsal_dir="${PROJECT_ROOT}/.build/contract-generated/spec-001/pi-raster-gate"
     cp "${rehearsal_dir}/"{normal-trace.tsv,diagnostic-trace.tsv,fault-results.txt,behavior-comparison.txt,raster-hashes.tsv,identities.txt} \
         "${staging_report_dir}/"
@@ -199,7 +206,7 @@ if [[ "${profile}" == "nrf52840-embedded" ]]; then
     "${SCRIPT_DIR}/check-spec-001-nrf-production-host.sh"
     "${SCRIPT_DIR}/check-spec-001-nrf-input-storage-ownership.sh"
     "${SCRIPT_DIR}/run-spec-015.sh" --profile "${profile}"
-    bash "${SCRIPT_DIR}/check-spec-001-host-native-rasters.sh" --profile "${profile}"
+    bash "${SCRIPT_DIR}/check-spec-001-host-native-rasters.sh" --profile "${profile}" --reference-traces "${staging_report_dir}/reference-traces"
     rehearsal_dir="${PROJECT_ROOT}/.build/contract-generated/spec-001/nrf-raster-gate"
     cp "${rehearsal_dir}/"{normal-trace.tsv,diagnostic-trace.tsv,fault-results.txt,behavior-comparison.txt,raster-hashes.tsv,identities.txt} \
         "${staging_report_dir}/"

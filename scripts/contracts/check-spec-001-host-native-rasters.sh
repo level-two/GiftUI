@@ -23,8 +23,11 @@ output="${project_root}/.build/contract-generated/spec-001/${target}-raster-gate
 captures="${output}/captures"
 images="${output}/images"
 references="${project_root}/Tests/ContractFixtures/SPEC001/PixelReferences"
-default_evidence="${project_root}/Tests/ContractFixtures/SPEC001/Evidence/milestone-10"
-evidence="${reference_traces:-${default_evidence}}"
+evidence="${reference_traces:-${GIFTUI_SHARED_REFERENCE_TRACES:-}}"
+[[ -n "${evidence}" ]] || {
+    printf 'current reference traces required; historical evidence is not a default\n' >&2
+    exit 1
+}
 if [[ "${candidate_only}" == false ]]; then
     states=(idle running-four-traces stopped cleared window-one-second
         window-five-seconds window-two-seconds diagnostic)

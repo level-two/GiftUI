@@ -1,0 +1,1585 @@
+SPEC-001 harness passed: 39 fixtures, 45 criteria, 5 evidence kinds, and 5 transcript schemas are registered.
+SPEC-001 exhaustive failure matrix passed: 19 normalized rows.
+SPEC-001 diagnostic profile matrix passed: 6 projection modes.
+SPEC-001 capture revision boundary passed for transition and Clear.
+SPEC-001 sustained workload passed: four presets, 2,400 events, 120 frames.
+SPEC-001 nRF Static Canvas manifest passed: two dense cases, fixed semantic regions, five occurrences, and one exact 32-byte trace record.
+SPEC-001 boundary audit passed: three production owners, three test owners, 13 dependency fixtures, and 13 registered composition edges.
+executable=SignalAnalyzerMacOSDynamic; closure=GiftUI,GiftUIBackendIntegration,GiftUICapabilities,GiftUIDisplayCore,GiftUIDrawing,GiftUIExecution,GiftUIFailureCore,GiftUIHostConfiguration,GiftUIInteraction,GiftUILayout,GiftUIMacros,GiftUIObservableState,GiftUIRasterCore,GiftUIRenderCore,GiftUIRenderLowering,GiftUIRuntimeCore,GiftUIRuntimeDynamic,GiftUISemanticCore,GiftUISurfaceCore,GiftUITextResources,SignalAnalyzerDomain,SignalAnalyzerHost,SignalAnalyzerMacOSDynamic,SignalAnalyzerPresentation,SignalAnalyzerPresetHarness,SwiftCompilerPlugin,SwiftDiagnostics,SwiftSyntax,SwiftSyntaxBuilder,SwiftSyntaxMacros; status=pass
+executable=SignalAnalyzerMacOSStatic; closure=GiftUI,GiftUIBackendIntegration,GiftUICapabilities,GiftUIDisplayCore,GiftUIDrawing,GiftUIExecution,GiftUIFailureCore,GiftUIHostConfiguration,GiftUIInteraction,GiftUILayout,GiftUIMacros,GiftUIObservableState,GiftUIRasterCore,GiftUIRenderCore,GiftUIRenderLowering,GiftUIRuntimeCore,GiftUIRuntimeStatic,GiftUISemanticCore,GiftUISurfaceCore,GiftUITextResources,SignalAnalyzerDomain,SignalAnalyzerHost,SignalAnalyzerMacOSStatic,SignalAnalyzerPresentation,SignalAnalyzerPresetHarness,SwiftCompilerPlugin,SwiftDiagnostics,SwiftSyntax,SwiftSyntaxBuilder,SwiftSyntaxMacros; status=pass
+negative-opposite-profile-edges=pass; firmware-isolation=separate-check
+SPEC-001 portable Presentation check passed: 14 files, 1 observable state, 4 explicit channels, 3 state-qualified controls over 6 finite actions, and 5 Canvas occurrences.
+SPEC-001 Domain contract audit passed: 10 declarations, 7 forbidden facilities, and 13 cases.
+SPEC-002 dependency check passed: 84 targets, 375 direct edges, acyclic.
+SPEC-015 generated workload is fresh (1071a83c15a74a1142dd11a5c9b43e785acac8a208577a2bb41c99e1e0cd91dd).
+SPEC-015 generated workload check passed: four manifests, 168 exact leaf rows, and one provenance-bound Static root descriptor.
+SPEC-001 interface audit passed: package graph, generated presets, portable imports, six actions, structural failure, and dependency negatives.
+[0/1] Planning build
+Building for debugging...
+[0/13] Write swift-version--58304C5D6DBC2206.txt
+[2/29] Compiling SignalAnalyzerDomain SignalAcquisitionContracts.swift
+[3/29] Compiling GiftUIMacros GiftUIMacros.swift
+[4/29] Compiling SignalAnalyzerDomain SignalValues.swift
+[5/29] Compiling SignalAnalyzerDomain SignalPrimitiveValues.swift
+[6/29] Compiling SignalAnalyzerDomain SignalCaptureChange.swift
+[7/29] Compiling SignalAnalyzerDomain SignalCapturePublication.swift
+[8/29] Compiling SignalAnalyzerDomain AcquisitionState.swift
+[9/29] Compiling SignalAnalyzerDomain ModuleBoundary.swift
+[10/29] Emitting module SignalAnalyzerDomain
+[11/29] Compiling SignalAnalyzerDomain SignalAnalyzerDiagnostic.swift
+[12/29] Emitting module GiftUIFailureCore
+[13/29] Compiling GiftUIFailureCore GiftUIFailureCore.swift
+[14/29] Compiling GiftUIMacros ObservableStateHostMacro.swift
+[15/29] Emitting module GiftUIMacros
+[15/29] Write Objects.LinkFileList
+[17/29] Compiling GiftUICapabilities GiftUICapabilities.swift
+[18/29] Emitting module GiftUICapabilities
+[18/29] Linking GiftUIMacros-tool
+[20/46] Emitting module GiftUIMacrosTests
+[21/45] Compiling GiftUI LayoutModifiers.swift
+[22/45] Compiling GiftUI LayoutValues.swift
+[23/45] Compiling GiftUI LayoutContainers.swift
+[24/45] Compiling GiftUI StyleModifiers.swift
+[25/45] Compiling GiftUI ObservableState.swift
+[26/45] Compiling GiftUI Disabled.swift
+[27/45] Compiling GiftUI DrawingStyles.swift
+[28/45] Compiling GiftUI DrawingSurface.swift
+[29/45] Compiling GiftUI Color.swift
+[30/45] Compiling GiftUI DeclarativeView.swift
+[31/45] Compiling GiftUI ActionHandler.swift
+[32/45] Compiling GiftUI BoundedText.swift
+[33/45] Compiling GiftUI GiftUI.swift
+[34/45] Compiling GiftUI Button.swift
+[35/45] Compiling GiftUI Canvas.swift
+[36/46] Emitting module GiftUI
+[37/46] Compiling GiftUI Text.swift
+[38/70] Emitting module GiftUIDynamicConveniences
+[39/70] Compiling SignalAnalyzerPresentation SignalAnalyzerRuntimeCondition.swift
+[40/71] Compiling GiftUISemanticCore SemanticRenderView.swift
+[41/71] Compiling SignalAnalyzerPresentation SignalAnalyzerFailureNormalizer.swift
+[42/71] Compiling SignalAnalyzerPresentation SignalAnalyzerFailurePolicyValues.swift
+[43/71] Compiling SignalAnalyzerPresentation SignalAnalyzerWaveformGeometry.swift
+[44/71] Compiling GiftUISemanticCore SemanticLayoutView.swift
+[45/71] Compiling GiftUISemanticCore GiftUISemanticCore.swift
+[46/71] Emitting module GiftUISemanticCore
+[47/71] Compiling SignalAnalyzerPresentation SignalAnalyzerRuntimeFailureNormalizer.swift
+[48/71] Compiling SignalAnalyzerPresentation SignalAnalyzerRuntimeFailureRule.swift
+[49/71] Compiling SignalAnalyzerPresentation ModuleBoundary.swift
+[50/71] Compiling SignalAnalyzerPresentation SignalAnalyzerDiagnostic+BoundedText.swift
+[51/71] Compiling SignalAnalyzerPresentation SignalAnalyzerTimelineFormatting.swift
+[52/71] Emitting module SignalAnalyzerPresentation
+[53/71] Compiling SignalAnalyzerPresentation SignalAnalyzerOwnerFailureAdapter.swift
+[54/71] Compiling SignalAnalyzerPresentation SignalAnalyzerPresentationAdmissionAdapter.swift
+[55/71] Compiling SignalAnalyzerPresentation SignalAnalyzerPresentationValues.swift
+[56/71] Compiling SignalAnalyzerPresentation SignalAnalyzerView.swift
+[57/71] Compiling SignalAnalyzerPresentation SignalAnalyzerLayoutConstraints.swift
+[58/71] Emitting module GiftUITextResources
+[59/71] Compiling GiftUITextResources GiftUITextResources.swift
+[60/89] Compiling GiftUIRenderCore RenderValues.swift
+[61/89] Compiling GiftUILayout ResolvedRenderLayoutView.swift
+[62/89] Compiling GiftUILayout LayoutWorkspace.swift
+[63/89] Compiling GiftUIRenderCore RenderOperationSink.swift
+[64/89] Compiling GiftUIRenderCore RenderRecordingSink.swift
+[65/89] Compiling GiftUIRenderCore DrawingOperationSink.swift
+[66/89] Emitting module GiftUIRenderCore
+[67/89] Compiling GiftUILayout LayoutPublication.swift
+[68/89] Compiling GiftUILayout LayoutResultSink.swift
+[69/89] Compiling GiftUILayout LayoutSemanticValidation.swift
+[70/89] Compiling GiftUILayout LayoutValues.swift
+[71/89] Compiling GiftUILayout LayoutGeometry.swift
+[72/118] Compiling GiftUIExecution ExecutionAdmissionSealer.swift
+[73/118] Compiling GiftUIExecution ExecutionMutationBatch.swift
+[74/118] Compiling GiftUIExecution ExecutionOpportunityRunner.swift
+[75/120] Compiling GiftUIExecution PointerActionCapture.swift
+[76/120] Compiling GiftUIExecution RecordingCandidateOfferCoordinator.swift
+[77/120] Compiling GiftUIExecution AdmissionValues.swift
+[78/120] Compiling GiftUIExecution ExecutionAdmissionController.swift
+[79/120] Compiling GiftUIExecution ExecutionAdmissionSealTransaction.swift
+[80/120] Compiling GiftUILayout LayoutCounters.swift
+[81/120] Compiling GiftUILayout LayoutError.swift
+[82/120] Compiling GiftUILayout Layout.swift
+[83/120] Emitting module GiftUILayout
+[84/120] Compiling GiftUILayout LayoutEngine.swift
+[85/120] Compiling GiftUIExecution ExecutionPhaseMachine.swift
+[86/120] Compiling GiftUIExecution ExecutionValues.swift
+[87/120] Compiling GiftUIExecution ExecutionWakeAccumulator.swift
+[88/120] Compiling GiftUIExecution RecordingFrameEndpoint.swift
+[89/120] Compiling GiftUIExecution RecordingMutationBatch.swift
+[90/120] Compiling GiftUIExecution RecordingFocusedFailureSelection.swift
+[91/120] Compiling GiftUIExecution RecordingFrameCommitTransaction.swift
+[92/120] Emitting module GiftUIExecution
+[93/120] Compiling GiftUIExecution FrameHandoffValues.swift
+[94/120] Compiling GiftUIExecution FrameOfferNormalization.swift
+[95/120] Compiling GiftUIExecution IdentityAllocators.swift
+[96/120] Compiling GiftUIExecution InputSourceSequenceState.swift
+[97/120] Compiling GiftUIExecution RecordingPresentationPendingCoordinator.swift
+[98/120] Compiling GiftUIExecution RecordingPresentationTerminalRecovery.swift
+[99/120] Compiling GiftUIExecution RecordingDerivationRecovery.swift
+[100/120] Compiling GiftUIExecution RecordingDerivationTransaction.swift
+[101/120] Compiling GiftUIExecution RecordingCycleCoordinator.swift
+[102/120] Compiling GiftUIExecution RecordingCycleFinalizer.swift
+[103/120] Emitting module GiftUISurfaceCore
+[104/120] Compiling GiftUISurfaceCore SurfaceValues.swift
+[105/120] Compiling GiftUISurfaceCore RasterSurface.swift
+[106/126] Compiling GiftUIExecution RunCycleValues.swift
+[107/126] Compiling GiftUIExecution WakeValues.swift
+[108/141] Compiling GiftUIRasterCore RasterFrameSink.swift
+[109/148] Compiling GiftUIDisplayCore DisplayContracts.swift
+[110/148] Emitting module GiftUIDisplayCore
+[111/148] Compiling GiftUIDisplayCore SurfaceDisplayContributionAdapter.swift
+[112/166] Compiling GiftUIInteraction InteractionStorage.swift
+[113/166] Compiling GiftUIInteraction InteractionValues.swift
+[114/166] Compiling GiftUIRasterCore RasterWorkTracker.swift
+[115/166] Compiling GiftUIRasterCore RasterBackendContributionAdapter.swift
+[116/166] Compiling GiftUIRasterCore RasterFillCoverage.swift
+[117/166] Emitting module GiftUIPlatformRaspberryPi
+[118/166] Compiling GiftUIRenderLowering RenderProducer.swift
+[119/166] Compiling GiftUIRenderLowering RenderProductionValues.swift
+[120/166] Emitting module GiftUIRenderLowering
+[121/166] Compiling GiftUIRenderLowering RenderPreflight.swift
+[122/166] Compiling GiftUIRenderLowering RenderExtensions.swift
+[123/166] Compiling GiftUIRenderLowering RenderStreaming.swift
+[124/166] Compiling GiftUIObservableState ObservableStateProtocols.swift
+[125/166] Compiling GiftUIObservableState ObservableStateRegistrationBridge.swift
+[126/166] Compiling GiftUIObservableState ObservableStateTargetLookupSlot.swift
+[127/166] Compiling GiftUIObservableState ObservableStateTargetLifetime.swift
+[128/166] Compiling GiftUIObservableState ObservableStateReplacementTransaction.swift
+[129/166] Compiling GiftUIObservableState ObservableStateReportGuard.swift
+[130/166] Compiling GiftUIObservableState ObservableStateReportRoute.swift
+[131/166] Compiling GiftUIObservableState ObservableStateRegistrationLifecycle.swift
+[132/166] Compiling GiftUIObservableState ObservableStateReplacementBridge.swift
+[133/166] Compiling GiftUIObservableState ObservableStateValues.swift
+[134/166] Compiling GiftUIObservableState ObservableStateDirtyDerivation.swift
+[135/166] Compiling GiftUIObservableState ObservableStateMutationResultSlot.swift
+[136/166] Emitting module GiftUIObservableState
+[137/166] Compiling GiftUIObservableState ObservableStateBindingDecorator.swift
+[138/166] Compiling GiftUIObservableState ObservableStateCandidateLifecycle.swift
+[139/166] Compiling GiftUIObservableState ObservableStateAssociationLifecycle.swift
+[140/166] Compiling GiftUIObservableState ObservableStateAttachmentGenerationAllocator.swift
+[141/167] Compiling GiftUIRasterCore RasterFrameWork.swift
+[142/167] Compiling GiftUIInteraction ExecutionGestureAdapter.swift
+[143/167] Compiling GiftUIInteraction InteractionFailurePrecedence.swift
+[144/167] Compiling GiftUIInteraction EffectiveActionEnabledState.swift
+[145/167] Emitting module GiftUIInteraction
+[146/167] Compiling GiftUIInteraction InteractionState.swift
+[147/167] Compiling GiftUIObservableState PresentationFactAdmission.swift
+[148/167] Compiling GiftUIRasterCore FullSurfaceRGB565Framebuffer.swift
+[149/167] Compiling GiftUIRasterCore RGB565TileWorkspace.swift
+[150/167] Emitting module GiftUIRasterCore
+[151/167] Compiling GiftUIRasterCore FullSurfaceRGBA8888Buffer.swift
+[152/178] Compiling GiftUIRasterCore RasterGlyphCoverage.swift
+[153/178] Compiling GiftUIDrawing StaticCanvasCallableTable.swift
+[154/178] Compiling GiftUIDrawing StrokeSnapshot.swift
+[155/178] Compiling GiftUIDrawing GiftUIDrawing.swift
+[156/178] Compiling GiftUIDrawing DrawingPlan.swift
+[157/178] Compiling GiftUIDrawing DrawingValues.swift
+[158/178] Compiling GiftUIDrawing PathConstruction.swift
+[159/178] Compiling GiftUIDrawing CanvasInvocationSource.swift
+[160/178] Compiling GiftUIDrawing DrawingLimits.swift
+[161/178] Emitting module GiftUIDrawing
+[162/178] Compiling GiftUIDrawing CanvasPlanProducer.swift
+[163/178] Compiling GiftUIDrawing CanvasRenderProducer.swift
+[164/178] Emitting module GiftUIReferenceTextResources
+[165/195] Compiling GiftUIRuntimeCore RuntimeInteractionCandidateTransaction.swift
+[166/195] Compiling GiftUIRuntimeCore RuntimeInteractionDispatcher.swift
+[167/195] Compiling GiftUIRuntimeCore RuntimeProfileValues.swift
+[168/195] Compiling GiftUIRuntimeCore RuntimeProfileValidation.swift
+[169/195] Compiling GiftUIRuntimeCore RuntimeCoordinatorQuiescence.swift
+[170/195] Compiling GiftUIRuntimeCore RuntimeCoreBoundary.swift
+[171/195] Compiling GiftUIRuntimeCore RuntimeOwnerFailure.swift
+[172/195] Compiling GiftUIRuntimeCore RuntimeInteractionMutationOwner.swift
+[173/195] Compiling GiftUIRuntimeCore RuntimeProfileStorage.swift
+[174/195] Compiling GiftUIRuntimeCore RuntimeObservableProfileWorkspace.swift
+[175/196] Compiling GiftUIRasterCore RasterPayloadLimits.swift
+[176/196] Compiling GiftUIRasterCore RasterStrokeCoverage.swift
+[177/196] Compiling GiftUIRuntimeCore RuntimeFocusedFailureState.swift
+[178/196] Compiling GiftUIRuntimeCore RuntimeInteractionCandidateCoordinator.swift
+[179/196] Emitting module GiftUIRuntimeCore
+[180/196] Compiling GiftUIRuntimeCore RuntimeCoordinatorContracts.swift
+[181/196] Compiling GiftUIRuntimeCore RuntimeCoordinatorLifecycle.swift
+[182/196] Compiling GiftUIRuntimeCore RuntimeCompletePipeline.swift
+[183/196] Compiling GiftUIRuntimeCore RuntimeCoordinatorCleanup.swift
+[184/196] Compiling GiftUIRuntimeCore RuntimeStorageRegistry.swift
+[185/220] Compiling GiftUIBackendIntegration RasterTextResourceValidation.swift
+[186/221] Compiling GiftUIBackendIntegration RasterFrameWorkAdmission.swift
+[187/221] Compiling GiftUIRuntimeStatic StaticObservableProfileSlotStorage.swift
+[188/222] Compiling GiftUIRuntimeStatic StaticObservableRootTargetAccess.swift
+[189/222] Compiling GiftUIRuntimeStatic StaticProfileBoundary.swift
+[190/222] Compiling GiftUIBackendIntegration RasterBackendStartupValidator.swift
+[191/222] Compiling GiftUIBackendIntegration RasterBackendOwnerFailureAdapter.swift
+[192/222] Compiling GiftUIBackendIntegration RasterBackendEndpoint.swift
+[193/222] Compiling GiftUIBackendIntegration OneShotRasterBackendEndpoint.swift
+[194/222] Compiling GiftUIBackendIntegration FullSurfacePayloadEmitter.swift
+[195/222] Compiling GiftUIRuntimeStatic StaticRuntimeExecutionCoordinator.swift
+[196/222] Compiling GiftUIRuntimeStatic StaticObservableModelStorage.swift
+[197/222] Compiling GiftUIRuntimeStatic StaticObservableRootAdapter.swift
+[198/222] Compiling GiftUIRuntimeStatic StaticObservableRegistrationRecord.swift
+[199/222] Emitting module GiftUIRuntimeDynamic
+[200/222] Compiling GiftUIBackendIntegration OperationMajorTileTraversal.swift
+[201/222] Compiling GiftUIBackendIntegration OperationMajorRGB565RasterSession.swift
+[202/222] Emitting module GiftUIBackendIntegration
+[203/222] Compiling GiftUIBackendIntegration RGB565TilePayloadEmitter.swift
+[204/222] Compiling GiftUIRuntimeStatic StaticRuntimeProfileBinding.swift
+[205/222] Compiling GiftUIRuntimeStatic StaticGeneratedProfileMetadata.swift
+[206/222] Compiling GiftUIRuntimeStatic StaticCanvasHostHandle.swift
+[207/222] Compiling GiftUIRuntimeStatic StaticCanvasOccurrence.swift
+[208/222] Compiling GiftUIRuntimeStatic StaticInteractionStorage.swift
+[209/222] Emitting module GiftUIRuntimeStatic
+[210/245] Compiling GiftUIRuntimeStatic StaticProfileStorage.swift
+[211/245] Emitting module GiftUIHostConfiguration
+[212/246] Compiling GiftUIHostConfiguration CheckedMVPHostConfigurationValidator.swift
+[213/246] Compiling GiftUIHostConfiguration SignalAnalyzerPresets.generated.swift
+[214/246] Compiling GiftUIHostConfiguration HostActivationController.swift
+[215/246] Compiling GiftUIHostConfiguration HostApplicationOpportunityGate.swift
+[216/246] Compiling GiftUIHostConfiguration HostConfigurationResults.swift
+[217/246] Compiling GiftUIHostConfiguration HostConfigurationValues.swift
+[218/246] Compiling GiftUIHostConfiguration SignalAnalyzerDrawingStartupValidation.swift
+[219/246] Compiling GiftUIHostConfiguration SignalAnalyzerPresetHostInstance.swift
+[220/246] Compiling GiftUIHostConfiguration HostResidualPolicyTableValidation.swift
+[221/246] Compiling GiftUIHostConfiguration HostScheduledOpportunityController.swift
+[222/246] Compiling GiftUIHostConfiguration HostPresentationRecovery.swift
+[223/246] Compiling GiftUIHostConfiguration HostPresetBootstrap.swift
+[224/246] Compiling GiftUIHostConfiguration HostApplicationStartupValidation.swift
+[225/246] Compiling GiftUIHostConfiguration HostComponentGraphValidation.swift
+[226/246] Compiling GiftUIHostConfiguration HostResidualFailureRouting.swift
+[227/246] Compiling GiftUIHostConfiguration HostResidualPolicyContracts.swift
+[228/246] Compiling GiftUIHostConfiguration HostEndpointHealthController.swift
+[229/246] Compiling GiftUIHostConfiguration HostEndpointStartupValidation.swift
+[230/246] Compiling GiftUIHostConfiguration HostFailureAdapter.swift
+[231/246] Compiling GiftUIHostConfiguration HostNormalizedInputGate.swift
+[232/246] Compiling GiftUIHostConfiguration HostSequencedFactAdmission.swift
+[233/246] Compiling GiftUIHostConfiguration HostWakePacingController.swift
+[234/246] Compiling GiftUIHostConfiguration SignalAnalyzerWorkloadStartupValidation.swift
+[235/248] Emitting module SignalAnalyzerHost
+[236/248] Compiling SignalAnalyzerHost SignalAnalyzerHostFactAdmission.swift
+[237/251] Emitting module SignalAnalyzerPresetHarness
+[238/251] Compiling SignalAnalyzerPresetHarness HardwareFreePresetRunner.swift
+[238/251] Write Objects.LinkFileList
+[241/251] Emitting module SignalAnalyzerTargetHost
+[242/253] Compiling SignalAnalyzerMacOSStatic main.swift
+[243/253] Emitting module SignalAnalyzerMacOSStatic
+[243/253] Write Objects.LinkFileList
+[244/254] Linking SignalAnalyzerNRF52840HostOracle
+[245/254] Linking SignalAnalyzerMacOSDynamic
+[246/254] Applying SignalAnalyzerNRF52840HostOracle
+[247/254] Applying SignalAnalyzerMacOSDynamic
+[249/254] Emitting module SignalAnalyzerRaspberryPiARMv6
+[249/254] Write Objects.LinkFileList
+[250/254] Linking SignalAnalyzerMacOSStatic
+[251/254] Applying SignalAnalyzerMacOSStatic
+[252/254] Linking SignalAnalyzerRaspberryPiARMv6
+[253/254] Applying SignalAnalyzerRaspberryPiARMv6
+Build complete! (7.09s)
+Test Suite 'Selected tests' started at 2026-10-05 09:18:52.130.
+Test Suite 'GiftUIPackageTests.xctest' started at 2026-10-05 09:18:52.130.
+Test Suite 'GiftUIPackageTests.xctest' passed at 2026-10-05 09:18:52.130.
+	 Executed 0 tests, with 0 failures (0 unexpected) in 0.000 (0.000) seconds
+Test Suite 'Selected tests' passed at 2026-10-05 09:18:52.130.
+	 Executed 0 tests, with 0 failures (0 unexpected) in 0.000 (0.001) seconds
+◇ Test run started.
+↳ Testing Library Version: 1902
+↳ Target Platform: arm64e-apple-macos14.0
+◇ Suite "Signal Analyzer capture publication values" started.
+◇ Test diagnosticIsInlineValueStorageAndBorrowCallsExactlyOnce() started.
+◇ Suite "Signal Analyzer capture values" started.
+◇ Suite "Signal Analyzer owner failure adapter" started.
+◇ Suite "Signal Analyzer checked capture store" started.
+◇ Suite "Signal Analyzer synchronous Domain contracts" started.
+◇ Suite "Signal Analyzer repository retention integration" started.
+◇ Suite "Signal Analyzer portable hierarchy" started.
+◇ Suite "Signal Analyzer mutation-phase fact application" started.
+◇ Suite "Signal Analyzer deterministic generator" started.
+◇ Suite "Signal Analyzer Presentation integration" started.
+◇ Suite "Signal Analyzer failure normalization" started.
+◇ Test domainBoundaryIsAvailable() started.
+◇ Suite "Signal Analyzer deterministic data source" started.
+◇ Suite "Signal Analyzer 30-second workload oracle" started.
+◇ Suite "Signal Analyzer Presentation admission adapter" started.
+◇ Suite "Signal Analyzer repository lifecycle and failures" started.
+◇ Suite "Signal Analyzer Presentation values and actions" started.
+◇ Test truncationEndsAtUnicodeScalarBoundaries() started.
+◇ Test malformedUTF8IsNeverRepaired() started.
+◇ Test exactDiagnosticAcceptsEveryBoundAndPreservesBorrowedBytes() started.
+◇ Test exactAndTruncatingConstructionAcceptOneThroughFourByteScalars() started.
+◇ Test staticNRFLiveModifiersFollowRunningAndWindowState() started.
+◇ Suite "Signal Analyzer waveform geometry" started.
+◇ Test staticNRFPackedSemanticTableSealRequiresCompleteValidTopology() started.
+◇ Test staticNRFTextPoolWriterRejectsOverflowBeforeMutation() started.
+◇ Test staticNRFModelTextWriterMatchesPortableStatusRulerAndDiagnostic() started.
+◇ Test dynamicProductionCommonRunnerContainsFocusedFailuresAndRecomputesWithoutReplay() started.
+◇ Test staticNRFInteractionDispatchesAcrossSerializedOpportunities() started.
+◇ Test generatedDrawingAndStaticProfileBoundsAreExact() started.
+◇ Test dynamicPipelineConsumesCanonicalMetricsAndRejectsMismatchedRasterResources() started.
+◇ Test dataBoundaryIsAvailable() started.
+◇ Test staticNRFInputAssignsProvenanceAndDrainsInOrder() started.
+◇ Test staticNRFPackedSemanticTopologyValidatesCompleteLinkedTable() started.
+◇ Test diagnosticProjectionPreservesExactUTF8Bytes() started.
+◇ Test staticNRFDrawingWorkspaceRejectsInvalidPathAndDiscardsPartialPlan() started.
+◇ Test dynamicProductionTransferredStreamFailureQuiescesBeforeBackendPolicy() started.
+◇ Test staticNRFProfileBindingOwnsTheExactRuntimeLifecycle() started.
+◇ Test staticNRFCaptureRegionsRejectWrongSizeAndAlignment() started.
+◇ Test staticNRFReferenceMetricsMatchCanonicalCatalogue() started.
+◇ Test staticNRFModelLocationAppliesSnapshotAndMutationInOwnedPhase() started.
+◇ Test staticNRFRuntimeStorageRejectsAnotherAssemblyReport() started.
+◇ Test staticNRFInteractionCancelsCaptureWhenPresentationChanges() started.
+◇ Test staticNRFProfileBindingLendsRegionsOnlyForTheirActiveLifetime() started.
+◇ Test staticNRFCanvasTableInvokesGridAndTraceCases() started.
+◇ Test staticNRFLivePathRejectsWrongRegionAndMalformedMutation() started.
+◇ Test staticNRFAssemblyValidatesExactGeneratedEndpointContract() started.
+◇ Test staticNRFEmbeddedLayoutScopeCodecMatchesHostBytes() started.
+◇ Test analyzerClassifierRequiresHostProducerContextForOrdinaryFacts() started.
+◇ Test analyzerReservesFingerSizedSquareControls() started.
+◇ Test windowSteppersSelectAdjacentDurations() started.
+◇ Test presentationBoundaryIsAvailable() started.
+◇ Test signalAnalyzerDynamicSemanticJoinMeasuresDiagnosticHierarchy() started.
+◇ Test staticNRFGeneratedMetadataBindsRootActionsAndCanvasCoverage() started.
+◇ Test staticNRFCanvasTableHasExactGeneratedLayout() started.
+◇ Test nRFCaptureAdmissionStopsBeforeSequenceWrap() started.
+◇ Test dynamicPiWakePacingOwnerCoalescesFactAndInputIngress() started.
+◇ Test staticNRFGeneratedPresentationInputsReserveAndStageFiveCanvases() started.
+◇ Test recordingToggleReflectsAcquisitionAndSelectsItsNextAction() started.
+◇ Test staticNRFInputABIPreservesTypedAdmissionAndProvenance() started.
+◇ Test dynamicProductionRefusalsRetainOneRevisionAndExhaustTheConfiguredLimit() started.
+◇ Test nRFRepositoryRevisionExhaustionAdmitsStateAndReservedFailure() started.
+◇ Test invalidAnalyzerActionCodesFailClosed(code:) started.
+◇ Test analyzerClassifierPreservesExactApplicationRejectionVocabulary() started.
+◇ Test actionReplacementInterleavingsAreEqualAcrossProfiles() started.
+◇ Test staticNRFRuntimeStorageOwnsOneValidatedCompositionLifetime() started.
+◇ Test dynamicProductionPacingRetriesPendingPresentationWithoutNewFacts() started.
+◇ Test staticNRFModelCaptureReplaysPortableMutationsInPlace() started.
+◇ Test staticNRFDisplayTargetCompactsSharedRasterWithoutOverwritingUnreadPixels() started.
+◇ Test generatedDrawingWorkloadsPassTheIndependentStructuralGate() started.
+◇ Test staticNRFTileStorageUsesExactBorrowedRegionAndBoundedCoverage() started.
+◇ Test everyAnalyzerActionCodeDispatchesThroughTheStaticRoot(code:) started.
+◇ Test staticNRFInputABIDrainsInsideOwnedOpportunity() started.
+◇ Test staticNRFTopologyWriterUsesExactVariantScopeCounts() started.
+◇ Test staticNRFProfileBindingRequiresExactGeneratedCanvasMetadata() started.
+◇ Test staticNRFEmbeddedLayoutPublishesTheInPlaceHostRecords() started.
+◇ Test staticNRFCaptureSnapshotSurvivesLiveMutationAndClear() started.
+◇ Test nRFFactPayloadLayoutHasBoundedInlineValues() started.
+◇ Test staticNRFLayoutTextCodecKeepsExactDisjointLineGlyphAndScratchRanges() started.
+◇ Test signalAnalyzerDynamicLayoutJoinMeasuresDiagnosticMaximum() started.
+◇ Test nRFSnapshotAdmissionMergesOnePhysicalSlotInSequence() started.
+◇ Test staticNRFRenderWorkspaceKeepsPublishedLayoutAndUsesOnlyScratchTail() started.
+◇ Test staticNRFLayoutScopeCodecRejectsUnrepresentableAndMismatchedGeometry() started.
+◇ Test staticNRFTopologyWriterRejectsWrongRegionWithoutMutation() started.
+◇ Test integratedAnalyzerCycleIsProfileEquivalent(retryableOffer:) started.
+◇ Test staticNRFPreparationScopesGeneratedCandidateThroughPhysicalHandoff() started.
+◇ Test nRFCaptureAdmissionResumesPendingFactsAndSequenceWithoutReset() started.
+◇ Test staticNRFGeneratedUTF8CandidateStagesExactHierarchyWithoutPrefixPublication() started.
+◇ Test staticNRFPackedSemanticRecordsRejectInvalidWritesWithoutMutation() started.
+◇ Test staticNRFModelHandlePreservesLocationAndRoutesSixActions() started.
+◇ Test staticNRFTextPoolWriterEncodesUnicodeScalarsWithoutExtraStorage() started.
+◇ Test staticNRFApplicationInputOwnerQuiescesAdmissionAndCapture() started.
+◇ Test replacementBetweenCaptureAndDispatchCancelsAndRetainsNeitherModel() started.
+◇ Test staticNRFEndpointAdmitsApprovedWorstCaseWorkAndExactRegions() started.
+◇ Test dynamicPiContactIngressRecoversAfterCompletedPhysicalSequence() started.
+◇ Test staticNRFUTF8PoolRetainsExactBoundedBytes() started.
+◇ Test staticNRFPackedSemanticTopologyRejectsBrokenLinksAndValues() started.
+◇ Test staticNRFAddressStableOwnerBindsDispatchesAndDetachesRoot() started.
+◇ Test staticNRFLayoutPublicationReadsExactWorkspaceRecordsWithoutCopying() started.
+◇ Test staticNRFProfileRegionsResetAttemptAndRetainedLifetimesSeparately() started.
+◇ Test analyzerClassifierMapsAllFactFamiliesIntoIndependentStores() started.
+◇ Test dynamicPiCorrelationOwnerReservesPublicationOnlyForChangedCycles() started.
+◇ Test staticNRFUTF8PoolRejectsMalformedOrOutOfRangeBytes() started.
+◇ Test staticNRFTopologyBindingsRejectUnpopulatedShapeWithoutMutation() started.
+◇ Test staticNRFCompleteSemanticTableUsesCheckedRegionPublication() started.
+◇ Test staticNRFPrimitivePayloadRejectsWrongAssociationOrScalarRange() started.
+◇ Test staticNRFApplicationStorageUsesValidatedGeneratedOwners() started.
+◇ Test dynamicPiEndpointFactoryStreamsTheProductionCandidate() started.
+◇ Test rawFramebufferTouchesReachModelAndReplacementFrame(scenario:) started.
+◇ Test nRFAdmittedBatchSealsAndAppliesWithoutReentry() started.
+◇ Test staticNRFEmbeddedLayoutWorkspaceMatchesHostScopeRecords() started.
+◇ Test staleActionAndTargetGenerationsCancelBeforeBorrowingTheModel() started.
+◇ Test staticNRFLayoutScopeCodecUsesExactCheckedThirtyTwoByteRecords() started.
+◇ Test staticNRFPresentationCompositionRejectsMisalignedProfile() started.
+◇ Test nRFPartialBatchFailureRetainsExactCauseAndDoesNotReplay() started.
+◇ Test staticNRFRenderWorkspaceRejectsShortRegion() started.
+◇ Test presetInstanceRejectsWrongReportAndPreservesTypedActivationFailure() started.
+◇ Test staticNRFUTF8PoolAdmitsMaximumDiagnosticAndRejectsOverflowAtomically() started.
+◇ Test staticNRFDisplayFailureOnFirstPayloadRetainsPresentationResponsibility() started.
+◇ Test dynamicProductionPartialApplicationPreservesExactRejectionAndDirtyDisposition() started.
+◇ Test dynamicPiPacingServicesTheSerializedCoordinatorAtFrameBoundary() started.
+◇ Test nRFDeterministicSourceMatchesPortableGeneratorAndGenerationRules() started.
+◇ Test staticNRFPresentationCompositionRejectsOverlappingRegionsBeforeBody() started.
+◇ Test staticNRFFirmwareInputStorageOwnsOneInPlaceLifetime() started.
+◇ Test staticNRFLayoutPublicationRejectsMismatchedScopeWithoutPublishing() started.
+◇ Test signalAnalyzerDynamicSemanticJoinAdmitsApprovedPreset() started.
+◇ Test fiveSecondHistoryMatchesIndependentFullHistoryAtEveryWindowEdge() started.
+◇ Test staticNRFLivePathUsesExactFixedRegionAndScopedBuilderSemantics() started.
+◇ Test staticNRFLayoutWorkspaceRejectsWrongRegionsAndTextMetadata() started.
+◇ Test generatedStorageAuditsAreExactAndSuccessful() started.
+◇ Test staticNRFCaptureHistoryMatchesPortableInsertionTrimAndClear() started.
+◇ Test nRFReservedFailureRoundTripsPortableValue() started.
+◇ Test "real source terminal startup is quiescent before reserved admission" started.
+◇ Test staticNRFModifierPayloadRejectsUnsupportedOrIncoherentShapes() started.
+◇ Test staticNRFGeneratedTextRetainsMaximumDiagnosticAndExposesPackingLimit() started.
+◇ Test dynamicPiInitialPresentationRefusalKeepsInputIneligible() started.
+◇ Test staticNRFProfileBindingRejectsAnotherAssemblyReport() started.
+◇ Test nRFSealedFactsApplyInOneModelMutationPhase() started.
+◇ Test structuralGateRejectsFirstExcessAndStaticMismatch() started.
+◇ Test nRFAcquisitionFailurePreservesMaximumDiagnosticThroughSeal() started.
+◇ Test signalAnalyzerPiSelectsTheSameReferenceFontAsNRF() started.
+◇ Test dynamicPiLifecycleOwnerRunsSevenStepsAndEightStepTeardown() started.
+◇ Test staticNRFApplicationStorageRejectsAnotherTargetReport() started.
+◇ Test staticNRFCaptureHistoryRevisionExhaustionIsTerminal() started.
+◇ Test staticNRFProfileRegionsMapEveryGeneratedByteCount() started.
+◇ Test dynamicPiWakeAdmissionNotifiesOnlyAfterAcceptedFacts() started.
+◇ Test staticNRFLivePathRefusesFirstExcessPointWithoutChangingStoredPrefix() started.
+◇ Test nRFRepositoryProducerReplaysPortableInitialAndScheduledCapture() started.
+◇ Test "waveform canvases resolve from surface constraints" started.
+◇ Test staticNRFRegionMapRequiresExactExtentAndDisjointness() started.
+◇ Test staticTouchABIReachesCurrentModelOnlyOnValidRelease(scenario:) started.
+◇ Test staticNRFEmbeddedLayoutTextCodecMatchesHostBytes() started.
+◇ Test staticNRFInputABIRejectsMalformedCValuesBeforeAdmission() started.
+◇ Test staticNRFPresentationCompositionJoinsOneScopedEndpoint() started.
+◇ Test staticNRFSemanticRegionsStagePublishAndRespectProfileLifetimes() started.
+◇ Test sealedAnalyzerFactsApplyOnceInsideTheProductionMutationPipeline() started.
+◇ Test staticNRFDrawingPlanSnapshotsFiveCanvasesIntoOneFixedRegion() started.
+◇ Test staticNRFEmbeddedSemanticRegionPublishesOnlyValidatedRevisions() started.
+◇ Test staticNRFDrawingPlanRecordsRoundTripAtEveryLastSlot() started.
+◇ Test generatedStaticRootDescriptorMatchesThePortableHierarchy() started.
+◇ Test staticNRFPackedSemanticRecordTableFitsExactRegion() started.
+◇ Test staticNRFDisplayFailureAfterFirstPayloadPreservesPresentationResponsibility() started.
+◇ Test nRFCompactCaptureFactRoundTripsWithinFixedSlot() started.
+◇ Test generatedPresetsCarryOneFreshCompleteWorkload() started.
+◇ Test everyAnalyzerActionCodeDispatchesToTheExactCurrentModel(code:) started.
+◇ Test staticNRFSPITFTTransportCallsOneRowCABIAndMapsStatus() started.
+◇ Test staticNRFInputDrainsOnlyThroughSerializedOpportunity() started.
+◇ Test staticNRFEndpointStreamsOneTouchedPixelThroughSynchronousHandoff() started.
+◇ Test staticNRFInputCapacityCancelsTheFirstExcessSequence() started.
+◇ Test dynamicPiInputOpportunityDefersActionRepositoryCallbacks() started.
+◇ Test staticNRFInputRejectsStalePresentationAndQuiescesStorage() started.
+◇ Test dynamicTargetHostPresentationPipelineUsesExactGeneratedLimits() started.
+◇ Test dynamicPiInputCoordinatorQueuesNormalizedSequenceUntilDrain() started.
+◇ Test staticNRFProfileRegionsRejectIncorrectCallerStorage() started.
+◇ Test staticNRFInputABIPacksExactRejectionVocabulary() started.
+◇ Test analyzerTouchButtonsHaveSquareHitsAndDisableWindowEndpoints() started.
+◇ Test nRFCaptureAdmissionOwnsProducerLimitsAndSequences() started.
+◇ Test staticNRFCanvasTableRejectsInvalidCaseAndCaptureInputs() started.
+◇ Test staticNRFDrawingPlanRecordsRejectWrongRegionAndCorruptStroke() started.
+◇ Test staticNRFDisplayTargetRejectsTransportFailureAndInvalidReservation() started.
+◇ Test generatedPhysicalPresetProjectionsMatchTheContract() started.
+◇ Test dynamicPiDecodedContactsEnterNormalizedAdmissionAndWakePacing() started.
+◇ Test staticNRFSnapshotViewValidatesRecordsAndVisibleRange() started.
+◇ Test dynamicPiInitialPresentationEnablesInputOnlyAfterAcceptedFrame() started.
+◇ Test staticNRFPackedSemanticRecordsRoundTripAtTableBoundaries() started.
+◇ Test staticNRFPresentationCompositionRejectsCaptureOverlap() started.
+◇ Test staticNRFInteractionRejectsAStaleObservableTargetGeneration() started.
+◇ Test dynamicPiOpportunityOwnsCorrelationReservationCallSite() started.
+◇ Test fourPresetInstancesActivateInExactOrderAndRunOnlyWhileActive() started.
+◇ Test dynamicAndStaticAnalyzerAdmissionProduceEqualOrderedTranscripts() started.
+◇ Test staticNRFPacedStageKeepsProfileActiveThroughPhysicalHandoff() started.
+◇ Test staticNRFLayoutWorkspaceRetainsGeometryAndDerivesTextFieldsInFixedRegions() started.
+◇ Test nRFCompactFactRingsSealInSequenceWithinExactRegions() started.
+◇ Test nRFRepositoryRevisionFailureRetainsReservedSlotAfterActionQuota() started.
+◇ Test dynamicPiOwnerCommitsReplacementPresentationRevision() started.
+◇ Test spec013SignalAnalyzerWorkloadCycleTiming() started.
+◇ Test staticNRFUTF8TableSealsExactTextAndRejectsCorruption() started.
+◇ Test staticNRFDrawingPlanRejectsIncompleteOrCorruptPublication() started.
+◇ Test dynamicPiPipelineRendersFullDiagnosticWithinAmendedPreset() started.
+◇ Test staticNRFDrawingWorkspaceInvokesFiveScopedCanvasContexts() started.
+◇ Test dynamicPiLifecycleOwnerContainsInitialFrameFailureAndTearsDown() started.
+◇ Test signalAnalyzerDynamicSemanticJoinMeasuresRealHierarchy() started.
+◇ Test nRFReservedOperationalFailureHasIndependentCapacityAndOrder() started.
+◇ Test sameThreadAndDistinctActionCallbacksStopAtLaterFactAdmission() started.
+◇ Test twentyAnalyzerFactsBecomeOneDirtyTransitionAndOneCompletePublication() started.
+◇ Test dynamicDerivationFailurePermitsNextAttemptAndPreservesCommittedActions() started.
+◇ Test staticNRFLayoutTextCodecRejectsOverflowDuplicateAndWrongRegion() started.
+◇ Test staticNRFGeneratedPresentationInputsMatchBothSemanticVariants() started.
+◇ Test "all diagnostic projection modes preserve Dynamic and Static semantics" started.
+◇ Test staticNRFCaptureRecordFitsThreeExactFirmwareSlots() started.
+◇ Test "both profiles accept 404 entries, reject 405, and check indexing" started.
+◇ Test staticNRFGeneratedMetadataRejectsWrongAssemblyAndCallableCount() started.
+◇ Test "channel baselines use exact positions and invalid channels are absent" started.
+◇ Test "delivery outcomes preserve every exact rejection category" started.
+◇ Test structuralGateRejectsEveryDrawingMinimumIndependently() started.
+◇ Test "capacity pressure may evict the newly inserted transition" started.
+◇ Test "dynamic and caller-owned static storage preserve equivalent values" started.
+◇ Test "revision mismatch and revision exhaustion fail closed" started.
+◇ Test "reset clears epoch and history while using supplied baselines" started.
+◇ Test "standard channels have exact stable order and names" started.
+◇ Test "insert happens before prefix trimming" started.
+◇ Test "empty capture has required baselines and bounds" started.
+◇ Test "mutation bounds reject malformed descriptions without changing input" started.
+◇ Test "every unsafe runtime condition records exact effects and one policy selection" started.
+◇ Test "capture rejects invalid bounds, order, and channel IDs" started.
+◇ Test "terminal failure remains structural and carries no revision" started.
+◇ Test "reserved failure rejection escalates without recursive admission" started.
+◇ Test "active admission effects precede selected residual disposition" started.
+◇ Test "runtime rows select exact policy or coordinator-owned retry" started.
+◇ Test "revision zero accepts only the initial empty snapshot" started.
+◇ Test "terminal repository failure has mandatory effects and no policy" started.
+◇ Test "state observation delegates attach and detach exactly once" started.
+◇ Test "source boundary installs its transition sink synchronously" started.
+◇ Test "source transitions publish exact replayable mutations" started.
+◇ Test "capture observation delegates attach and detach exactly once" started.
+◇ Test "start preserves the repository failure" started.
+◇ Test "clear preserves each acquisition state and publishes one exact reset" started.
+◇ Test "action use cases synchronously delegate once" started.
+✔ Test diagnosticIsInlineValueStorageAndBorrowCallsExactlyOnce() passed after 0.004 seconds.
+◇ Test "five-second cutoff trims oldest entries and reconstructs baselines" started.
+◇ Test "root owns exactly one observable model and constructs after binding" started.
+◇ Test "exactly the selected window control is disabled" started.
+◇ Test "exact mutation replays and mismatch leaves model unchanged" started.
+◇ Test "status and acquisition controls follow the exact four-state matrix" started.
+◇ Test "cutoff is inclusive and rejects only strictly older input" started.
+◇ Test "only observable changes report dirty" started.
+◇ Test "snapshot atomically replaces capture revision and visible range" started.
+◇ Test "clear preserves current levels and rebases later source time" started.
+◇ Test "state and operational failures preserve exact semantic diagnostics" started.
+◇ Test "equal timestamps retain arrival order and out-of-order values insert stably" started.
+◇ Test "invalid and out-of-horizon transitions do not mutate capture" started.
+◇ Test "capacity eviction removes the oldest entry after insertion" started.
+◇ Test "empty store starts at revision zero" started.
+◇ Test "CH4 seed 1234 matches the normative golden vector" started.
+◇ Test "start clears old error before execution and defers the published failure fact" started.
+◇ Test "CH1 CH2 and CH3 follow exact interval patterns" started.
+◇ Test "CH4 default live seed matches the normative golden vector" started.
+◇ Test "diagnostics cannot alter normalized facts" started.
+◇ Test "2400 delivered events preserve replay and five-second inclusive history" started.
+◇ Test "all runtime conditions map exactly" started.
+◇ Test "repository and admission conditions map exactly" started.
+◇ Test "generation exhaustion and teardown reject later work" started.
+◇ Test "first start emits four lows and repeated start is idempotent" started.
+◇ Test "partial start rejection detaches both and preserves original rejection" started.
+◇ Test case passing 1 argument code → 6 to invalidAnalyzerActionCodesFailClosed(code:) started.
+◇ Test case passing 1 argument code → 65535 to invalidAnalyzerActionCodesFailClosed(code:) started.
+◇ Test "a second conforming source substitutes without repository changes" started.
+◇ Test "stop detaches both exactly once" started.
+◇ Test "callbacks translate once and active rejection reports once" started.
+◇ Test "host-driven delivery uses accelerated delay and resumes conceptual state" started.
+◇ Test "terminal revision failure admits exactly one reserved fact and invokes no policy" started.
+◇ Test "six actions use one total exact dispatch" started.
+◇ Test "visible windows and initial state are exact" started.
+◇ Test "start admits both immediate current values and is idempotent" started.
+◇ Test "changed intents report synchronously and proven no-ops do not" started.
+◇ Test "start failure exposes the exact bounded diagnostic" started.
+◇ Test "startup failure stops partial activation and carries published diagnostic" started.
+◇ Test "transition succeeds at max minus one then rejects before mutation at max" started.
+✔ Test domainBoundaryIsAvailable() passed after 0.010 seconds.
+◇ Test "clear succeeds at max minus one then uses terminal procedure at max" started.
+◇ Test "revision exhaustion publishes once and permanently quiesces the graph" started.
+◇ Test "real startup callbacks preserve terminal revision failure" started.
+◇ Test case passing 1 argument code → 0 to everyAnalyzerActionCodeDispatchesThroughTheStaticRoot(code:) started.
+◇ Test case passing 1 argument code → 1 to everyAnalyzerActionCodeDispatchesThroughTheStaticRoot(code:) started.
+◇ Test case passing 1 argument code → 2 to everyAnalyzerActionCodeDispatchesThroughTheStaticRoot(code:) started.
+◇ Test case passing 1 argument code → 3 to everyAnalyzerActionCodeDispatchesThroughTheStaticRoot(code:) started.
+◇ Test "clear at maximum revision uses the same terminal procedure" started.
+◇ Test case passing 1 argument code → 4 to everyAnalyzerActionCodeDispatchesThroughTheStaticRoot(code:) started.
+◇ Test case passing 1 argument code → 5 to everyAnalyzerActionCodeDispatchesThroughTheStaticRoot(code:) started.
+◇ Test "state sink replacement, detachment, and action idempotence are exact" started.
+◇ Test "observation does not retain the dynamic sink" started.
+◇ Test "invalid and out-of-horizon input follow distinct failure paths" started.
+✔ Test truncationEndsAtUnicodeScalarBoundaries() passed after 0.015 seconds.
+nRF fact payload strides: diagnostic=100 state=100 mutation=80 failure=108
+nRF compact presentation fact stride=112
+◇ Test "callback then throw preserves terminal diagnostic and single publication" started.
+◇ Test "sink replacement and detachment are immediate and refusal does not roll back" started.
+◇ Test "real source normal startup, stop, restart and clear remain available" started.
+◇ Test "grid and trace workload matches the approved preset inputs" started.
+✔ Test malformedUTF8IsNeverRepaired() passed after 0.018 seconds.
+◇ Test "ruler formats lower midpoint and upper bounds with at most one fractional digit" started.
+◇ Test case passing 1 argument retryableOffer → false to integratedAnalyzerCycleIsProfileEquivalent(retryableOffer:) started.
+◇ Test case passing 1 argument retryableOffer → true to integratedAnalyzerCycleIsProfileEquivalent(retryableOffer:) started.
+◇ Test "grid emits twelve two-point subpaths in one stroke" started.
+◇ Test "empty trimmed and accepted-maximum traces stay within exact bounds" started.
+◇ Test "trace streams exact boundary points and one stroke" started.
+◇ Test "timeline rounds tenths, trims whole seconds, and handles carry and bounds" started.
+◇ Test "trace includes lower-bound state and upper-bound transition exactly" started.
+✔ Test exactAndTruncatingConstructionAcceptOneThroughFourByteScalars() passed after 0.026 seconds.
+✔ Test staticNRFLiveModifiersFollowRunningAndWindowState() passed after 0.035 seconds.
+✔ Test staticNRFPackedSemanticTableSealRequiresCompleteValidTopology() passed after 0.036 seconds.
+◇ Test case passing 1 argument scenario → "tap" to rawFramebufferTouchesReachModelAndReplacementFrame(scenario:) started.
+◇ Test case passing 1 argument scenario → "hold" to rawFramebufferTouchesReachModelAndReplacementFrame(scenario:) started.
+◇ Test case passing 1 argument scenario → "move-inside" to rawFramebufferTouchesReachModelAndReplacementFrame(scenario:) started.
+◇ Test case passing 1 argument scenario → "move-outside" to rawFramebufferTouchesReachModelAndReplacementFrame(scenario:) started.
+◇ Test case passing 1 argument scenario → "miss" to rawFramebufferTouchesReachModelAndReplacementFrame(scenario:) started.
+production-fault	stage=3	condition=3	origin=6	scope=3	containment=0	dirty=1	priorRouting=1	finalizations=2
+◇ Test case passing 1 argument scenario → "disabled" to rawFramebufferTouchesReachModelAndReplacementFrame(scenario:) started.
+◇ Test case passing 1 argument scenario → "stale" to rawFramebufferTouchesReachModelAndReplacementFrame(scenario:) started.
+◇ Test case passing 1 argument scenario → "up-only" to rawFramebufferTouchesReachModelAndReplacementFrame(scenario:) started.
+◇ Test case passing 1 argument scenario → "leave-surface" to rawFramebufferTouchesReachModelAndReplacementFrame(scenario:) started.
+◇ Test case passing 1 argument scenario → "release-outside" to rawFramebufferTouchesReachModelAndReplacementFrame(scenario:) started.
+◇ Test case passing 1 argument scenario → "release-letterbox" to rawFramebufferTouchesReachModelAndReplacementFrame(scenario:) started.
+✔ Test exactDiagnosticAcceptsEveryBoundAndPreservesBorrowedBytes() passed after 1.139 seconds.
+✔ Test staticNRFTextPoolWriterRejectsOverflowBeforeMutation() passed after 1.205 seconds.
+◇ Test case passing 1 argument initialRevision → 4294967295 to "real source terminal startup is quiescent before reserved admission" started.
+◇ Test case passing 1 argument initialRevision → 4294967294 to "real source terminal startup is quiescent before reserved admission" started.
+✔ Test staticNRFInteractionDispatchesAcrossSerializedOpportunities() passed after 1.236 seconds.
+✔ Test generatedDrawingAndStaticProfileBoundsAreExact() passed after 1.248 seconds.
+✔ Test dataBoundaryIsAvailable() passed after 1.253 seconds.
+◇ Test case passing 3 arguments width → 240, height → 240, diagnostic → false to "waveform canvases resolve from surface constraints" started.
+✔ Test diagnosticProjectionPreservesExactUTF8Bytes() passed after 1.312 seconds.
+◇ Test case passing 3 arguments width → 240, height → 240, diagnostic → true to "waveform canvases resolve from surface constraints" started.
+◇ Test case passing 3 arguments width → 240, height → 320, diagnostic → false to "waveform canvases resolve from surface constraints" started.
+◇ Test case passing 3 arguments width → 240, height → 320, diagnostic → true to "waveform canvases resolve from surface constraints" started.
+◇ Test case passing 1 argument scenario → "tap" to staticTouchABIReachesCurrentModelOnlyOnValidRelease(scenario:) started.
+◇ Test case passing 3 arguments width → 320, height → 240, diagnostic → false to "waveform canvases resolve from surface constraints" started.
+◇ Test case passing 1 argument scenario → "hold" to staticTouchABIReachesCurrentModelOnlyOnValidRelease(scenario:) started.
+◇ Test case passing 1 argument scenario → "move-inside" to staticTouchABIReachesCurrentModelOnlyOnValidRelease(scenario:) started.
+◇ Test case passing 3 arguments width → 320, height → 240, diagnostic → true to "waveform canvases resolve from surface constraints" started.
+◇ Test case passing 1 argument scenario → "move-outside" to staticTouchABIReachesCurrentModelOnlyOnValidRelease(scenario:) started.
+◇ Test case passing 1 argument scenario → "miss" to staticTouchABIReachesCurrentModelOnlyOnValidRelease(scenario:) started.
+◇ Test case passing 1 argument scenario → "disabled" to staticTouchABIReachesCurrentModelOnlyOnValidRelease(scenario:) started.
+◇ Test case passing 3 arguments width → 480, height → 320, diagnostic → false to "waveform canvases resolve from surface constraints" started.
+◇ Test case passing 1 argument scenario → "stale" to staticTouchABIReachesCurrentModelOnlyOnValidRelease(scenario:) started.
+◇ Test case passing 1 argument scenario → "up-only" to staticTouchABIReachesCurrentModelOnlyOnValidRelease(scenario:) started.
+◇ Test case passing 3 arguments width → 480, height → 320, diagnostic → true to "waveform canvases resolve from surface constraints" started.
+✔ Test staticNRFInputAssignsProvenanceAndDrainsInOrder() passed after 1.472 seconds.
+✔ Test staticNRFPackedSemanticTopologyValidatesCompleteLinkedTable() passed after 1.473 seconds.
+✔ Test staticNRFCaptureRegionsRejectWrongSizeAndAlignment() passed after 1.477 seconds.
+◇ Test case passing 1 argument code → 0 to everyAnalyzerActionCodeDispatchesToTheExactCurrentModel(code:) started.
+◇ Test case passing 1 argument code → 1 to everyAnalyzerActionCodeDispatchesToTheExactCurrentModel(code:) started.
+◇ Test case passing 1 argument code → 2 to everyAnalyzerActionCodeDispatchesToTheExactCurrentModel(code:) started.
+◇ Test case passing 1 argument code → 3 to everyAnalyzerActionCodeDispatchesToTheExactCurrentModel(code:) started.
+◇ Test case passing 1 argument code → 4 to everyAnalyzerActionCodeDispatchesToTheExactCurrentModel(code:) started.
+◇ Test case passing 1 argument code → 5 to everyAnalyzerActionCodeDispatchesToTheExactCurrentModel(code:) started.
+✔ Test staticNRFDrawingWorkspaceRejectsInvalidPathAndDiscardsPartialPlan() passed after 1.533 seconds.
+production-fault	stage=3	condition=3	origin=2	scope=1	containment=0	dirty=1	priorRouting=1	finalizations=2
+✔ Test staticNRFReferenceMetricsMatchCanonicalCatalogue() passed after 1.660 seconds.
+SPEC013_WORKLOAD	signal-analyzer	49043500	100	3600
+✔ Test staticNRFModelLocationAppliesSnapshotAndMutationInOwnedPhase() passed after 1.728 seconds.
+✔ Test staticNRFInteractionCancelsCaptureWhenPresentationChanges() passed after 2.072 seconds.
+✔ Test staticNRFCanvasTableInvokesGridAndTraceCases() passed after 2.072 seconds.
+◇ Test case passing 1 argument expectedState → .idle to "clear preserves each acquisition state and publishes one exact reset" started.
+◇ Test case passing 1 argument expectedState → .running to "clear preserves each acquisition state and publishes one exact reset" started.
+◇ Test case passing 1 argument expectedState → .stopped to "clear preserves each acquisition state and publishes one exact reset" started.
+✔ Test staticNRFLivePathRejectsWrongRegionAndMalformedMutation() passed after 2.072 seconds.
+✔ Test analyzerClassifierRequiresHostProducerContextForOrdinaryFacts() passed after 2.072 seconds.
+✔ Test analyzerReservesFingerSizedSquareControls() passed after 2.072 seconds.
+✔ Test staticNRFEmbeddedLayoutScopeCodecMatchesHostBytes() passed after 2.073 seconds.
+◇ Test case passing 4 arguments window → .oneSecond, oneSecondDisabled → true, twoSecondsDisabled → false, fiveSecondsDisabled → false to "exactly the selected window control is disabled" started.
+◇ Test case passing 4 arguments window → .twoSeconds, oneSecondDisabled → false, twoSecondsDisabled → true, fiveSecondsDisabled → false to "exactly the selected window control is disabled" started.
+◇ Test case passing 4 arguments window → .fiveSeconds, oneSecondDisabled → false, twoSecondsDisabled → false, fiveSecondsDisabled → true to "exactly the selected window control is disabled" started.
+◇ Test case passing 4 arguments state → .idle, expectedStatus → "READY", startDisabled → false, stopDisabled → true to "status and acquisition controls follow the exact four-state matrix" started.
+◇ Test case passing 4 arguments state → .running, expectedStatus → "RUNNING", startDisabled → true, stopDisabled → false to "status and acquisition controls follow the exact four-state matrix" started.
+◇ Test case passing 4 arguments state → .stopped, expectedStatus → "STOPPED", startDisabled → false, stopDisabled → true to "status and acquisition controls follow the exact four-state matrix" started.
+✔ Test windowSteppersSelectAdjacentDurations() passed after 2.073 seconds.
+✔ Test presentationBoundaryIsAvailable() passed after 2.073 seconds.
+◇ Test case passing 4 arguments state → .failed(SignalAnalyzerDomain.SignalAnalyzerDiagnostic(storage: SignalAnalyzerDomain.(unknown context at $10b2f3ae4).SignalAnalyzerDiagnosticStorage(word00: 1818845542, word01: 25701, word02: 0, word03: 0, word04: 0, word05: 0, word06: 0, word07: 0, word08: 0, word09: 0, word10: 0, word11: 0, word12: 0, word13: 0, word14: 0, word15: 0, word16: 0, word17: 0, word18: 0, word19: 0, word20: 0, word21: 0, word22: 0, word23: 0), count: 6)), expectedStatus → "FAILED", startDisabled → false, stopDisabled → true to "status and acquisition controls follow the exact four-state matrix" started.
+◇ Test case passing 1 argument expectedState → .failed(SignalAnalyzerDomain.SignalAnalyzerDiagnostic(storage: SignalAnalyzerDomain.(unknown context at $10b2f3ae4).SignalAnalyzerDiagnosticStorage(word00: 1818845542, word01: 25701, word02: 0, word03: 0, word04: 0, word05: 0, word06: 0, word07: 0, word08: 0, word09: 0, word10: 0, word11: 0, word12: 0, word13: 0, word14: 0, word15: 0, word16: 0, word17: 0, word18: 0, word19: 0, word20: 0, word21: 0, word22: 0, word23: 0), count: 6)) to "clear preserves each acquisition state and publishes one exact reset" started.
+✔ Test staticNRFCanvasTableHasExactGeneratedLayout() passed after 2.081 seconds.
+✔ Test nRFCaptureAdmissionStopsBeforeSequenceWrap() passed after 2.081 seconds.
+✔ Test dynamicPiWakePacingOwnerCoalescesFactAndInputIngress() passed after 2.081 seconds.
+✔ Test recordingToggleReflectsAcquisitionAndSelectsItsNextAction() passed after 2.081 seconds.
+✔ Test staticNRFInputABIPreservesTypedAdmissionAndProvenance() passed after 2.081 seconds.
+✔ Test staticNRFProfileBindingOwnsTheExactRuntimeLifecycle() passed after 2.119 seconds.
+✔ Test nRFRepositoryRevisionExhaustionAdmitsStateAndReservedFailure() passed after 2.119 seconds.
+✔ Test staticNRFModelTextWriterMatchesPortableStatusRulerAndDiagnostic() passed after 2.120 seconds.
+✔ Test invalidAnalyzerActionCodesFailClosed(code:) with 2 test cases passed after 2.119 seconds.
+✔ Test analyzerClassifierPreservesExactApplicationRejectionVocabulary() passed after 2.119 seconds.
+✔ Test actionReplacementInterleavingsAreEqualAcrossProfiles() passed after 2.119 seconds.
+✔ Test staticNRFProfileBindingLendsRegionsOnlyForTheirActiveLifetime() passed after 2.120 seconds.
+✔ Test staticNRFAssemblyValidatesExactGeneratedEndpointContract() passed after 2.120 seconds.
+✔ Test staticNRFDisplayTargetCompactsSharedRasterWithoutOverwritingUnreadPixels() passed after 2.120 seconds.
+✔ Test generatedDrawingWorkloadsPassTheIndependentStructuralGate() passed after 2.120 seconds.
+✔ Test staticNRFTileStorageUsesExactBorrowedRegionAndBoundedCoverage() passed after 2.120 seconds.
+✔ Test staticNRFInputABIDrainsInsideOwnedOpportunity() passed after 2.120 seconds.
+✔ Test staticNRFTopologyWriterUsesExactVariantScopeCounts() passed after 2.120 seconds.
+◇ Test case passing 1 argument initialRevision → 4294967295 to "real startup callbacks preserve terminal revision failure" started.
+◇ Test case passing 1 argument initialRevision → 4294967294 to "real startup callbacks preserve terminal revision failure" started.
+✔ Test everyAnalyzerActionCodeDispatchesThroughTheStaticRoot(code:) with 6 test cases passed after 2.121 seconds.
+✔ Test staticNRFRuntimeStorageRejectsAnotherAssemblyReport() passed after 2.122 seconds.
+✔ Test staticNRFEmbeddedLayoutPublishesTheInPlaceHostRecords() passed after 2.121 seconds.
+✔ Test staticNRFCaptureSnapshotSurvivesLiveMutationAndClear() passed after 2.121 seconds.
+✔ Test nRFFactPayloadLayoutHasBoundedInlineValues() passed after 2.121 seconds.
+✔ Test staticNRFLayoutTextCodecKeepsExactDisjointLineGlyphAndScratchRanges() passed after 2.121 seconds.
+✔ Test staticNRFGeneratedMetadataBindsRootActionsAndCanvasCoverage() passed after 2.122 seconds.
+✔ Test nRFSnapshotAdmissionMergesOnePhysicalSlotInSequence() passed after 2.122 seconds.
+✔ Test staticNRFRenderWorkspaceKeepsPublishedLayoutAndUsesOnlyScratchTail() passed after 2.122 seconds.
+✔ Test staticNRFLayoutScopeCodecRejectsUnrepresentableAndMismatchedGeometry() passed after 2.122 seconds.
+✔ Test staticNRFGeneratedPresentationInputsReserveAndStageFiveCanvases() passed after 2.122 seconds.
+✔ Test staticNRFTopologyWriterRejectsWrongRegionWithoutMutation() passed after 2.122 seconds.
+✔ Test integratedAnalyzerCycleIsProfileEquivalent(retryableOffer:) with 2 test cases passed after 2.122 seconds.
+✔ Test nRFCaptureAdmissionResumesPendingFactsAndSequenceWithoutReset() passed after 2.122 seconds.
+✔ Test staticNRFProfileBindingRequiresExactGeneratedCanvasMetadata() passed after 2.122 seconds.
+✔ Test staticNRFPackedSemanticRecordsRejectInvalidWritesWithoutMutation() passed after 2.122 seconds.
+✔ Test staticNRFModelHandlePreservesLocationAndRoutesSixActions() passed after 2.122 seconds.
+✔ Test staticNRFTextPoolWriterEncodesUnicodeScalarsWithoutExtraStorage() passed after 2.122 seconds.
+✔ Test staticNRFApplicationInputOwnerQuiescesAdmissionAndCapture() passed after 2.122 seconds.
+✔ Test replacementBetweenCaptureAndDispatchCancelsAndRetainsNeitherModel() passed after 2.122 seconds.
+✔ Test staticNRFRuntimeStorageOwnsOneValidatedCompositionLifetime() passed after 2.122 seconds.
+✔ Test dynamicPiContactIngressRecoversAfterCompletedPhysicalSequence() passed after 2.122 seconds.
+✔ Test staticNRFUTF8PoolRetainsExactBoundedBytes() passed after 2.122 seconds.
+✔ Test staticNRFPackedSemanticTopologyRejectsBrokenLinksAndValues() passed after 2.122 seconds.
+✔ Test staticNRFAddressStableOwnerBindsDispatchesAndDetachesRoot() passed after 2.122 seconds.
+✔ Test staticNRFEndpointAdmitsApprovedWorstCaseWorkAndExactRegions() passed after 2.122 seconds.
+✔ Test staticNRFLayoutPublicationReadsExactWorkspaceRecordsWithoutCopying() passed after 2.122 seconds.
+✔ Test analyzerClassifierMapsAllFactFamiliesIntoIndependentStores() passed after 2.122 seconds.
+✔ Test dynamicPiCorrelationOwnerReservesPublicationOnlyForChangedCycles() passed after 2.122 seconds.
+✔ Test staticNRFProfileRegionsResetAttemptAndRetainedLifetimesSeparately() passed after 2.122 seconds.
+✔ Test staticNRFUTF8PoolRejectsMalformedOrOutOfRangeBytes() passed after 2.122 seconds.
+✔ Test staticNRFTopologyBindingsRejectUnpopulatedShapeWithoutMutation() passed after 2.122 seconds.
+✔ Test staticNRFPrimitivePayloadRejectsWrongAssociationOrScalarRange() passed after 2.122 seconds.
+✔ Test staticNRFApplicationStorageUsesValidatedGeneratedOwners() passed after 2.122 seconds.
+✔ Test staticNRFModelCaptureReplaysPortableMutationsInPlace() passed after 2.123 seconds.
+✔ Test staticNRFCompleteSemanticTableUsesCheckedRegionPublication() passed after 2.122 seconds.
+✔ Test nRFAdmittedBatchSealsAndAppliesWithoutReentry() passed after 2.122 seconds.
+✔ Test dynamicPipelineConsumesCanonicalMetricsAndRejectsMismatchedRasterResources() passed after 2.123 seconds.
+✔ Test signalAnalyzerDynamicLayoutJoinMeasuresDiagnosticMaximum() passed after 2.122 seconds.
+✔ Test staticNRFEmbeddedLayoutWorkspaceMatchesHostScopeRecords() passed after 2.122 seconds.
+✔ Test signalAnalyzerDynamicSemanticJoinMeasuresDiagnosticHierarchy() passed after 2.123 seconds.
+✔ Test dynamicPiEndpointFactoryStreamsTheProductionCandidate() passed after 2.122 seconds.
+✔ Test rawFramebufferTouchesReachModelAndReplacementFrame(scenario:) with 11 test cases passed after 2.122 seconds.
+✔ Test dynamicProductionRefusalsRetainOneRevisionAndExhaustTheConfiguredLimit() passed after 2.123 seconds.
+✔ Test staticNRFPreparationScopesGeneratedCandidateThroughPhysicalHandoff() passed after 2.123 seconds.
+✔ Test dynamicProductionTransferredStreamFailureQuiescesBeforeBackendPolicy() passed after 2.123 seconds.
+✔ Test dynamicProductionPacingRetriesPendingPresentationWithoutNewFacts() passed after 2.123 seconds.
+✔ Test staleActionAndTargetGenerationsCancelBeforeBorrowingTheModel() passed after 2.122 seconds.
+✔ Test staticNRFLayoutScopeCodecUsesExactCheckedThirtyTwoByteRecords() passed after 2.122 seconds.
+✔ Test staticNRFPresentationCompositionRejectsMisalignedProfile() passed after 2.122 seconds.
+✔ Test nRFPartialBatchFailureRetainsExactCauseAndDoesNotReplay() passed after 2.122 seconds.
+✔ Test staticNRFRenderWorkspaceRejectsShortRegion() passed after 2.122 seconds.
+✔ Test presetInstanceRejectsWrongReportAndPreservesTypedActivationFailure() passed after 2.122 seconds.
+✔ Test staticNRFUTF8PoolAdmitsMaximumDiagnosticAndRejectsOverflowAtomically() passed after 2.122 seconds.
+✔ Test staticNRFDisplayFailureOnFirstPayloadRetainsPresentationResponsibility() passed after 2.122 seconds.
+✔ Test dynamicPiPacingServicesTheSerializedCoordinatorAtFrameBoundary() passed after 2.122 seconds.
+✔ Test nRFDeterministicSourceMatchesPortableGeneratorAndGenerationRules() passed after 2.122 seconds.
+✔ Test staticNRFPresentationCompositionRejectsOverlappingRegionsBeforeBody() passed after 2.122 seconds.
+✔ Test staticNRFFirmwareInputStorageOwnsOneInPlaceLifetime() passed after 2.122 seconds.
+✔ Test staticNRFLayoutPublicationRejectsMismatchedScopeWithoutPublishing() passed after 2.122 seconds.
+✔ Test staticNRFLivePathUsesExactFixedRegionAndScopedBuilderSemantics() passed after 2.122 seconds.
+✔ Test staticNRFLayoutWorkspaceRejectsWrongRegionsAndTextMetadata() passed after 2.122 seconds.
+✔ Test generatedStorageAuditsAreExactAndSuccessful() passed after 2.122 seconds.
+✔ Test nRFReservedFailureRoundTripsPortableValue() passed after 2.122 seconds.
+✔ Test "real source terminal startup is quiescent before reserved admission" with 2 test cases passed after 2.122 seconds.
+✔ Test staticNRFModifierPayloadRejectsUnsupportedOrIncoherentShapes() passed after 2.122 seconds.
+✔ Test staticNRFGeneratedTextRetainsMaximumDiagnosticAndExposesPackingLimit() passed after 2.122 seconds.
+✔ Test staticNRFProfileBindingRejectsAnotherAssemblyReport() passed after 2.122 seconds.
+✔ Test nRFSealedFactsApplyInOneModelMutationPhase() passed after 2.122 seconds.
+✔ Test structuralGateRejectsFirstExcessAndStaticMismatch() passed after 2.122 seconds.
+✔ Test nRFAcquisitionFailurePreservesMaximumDiagnosticThroughSeal() passed after 2.122 seconds.
+✔ Test signalAnalyzerDynamicSemanticJoinAdmitsApprovedPreset() passed after 2.122 seconds.
+✔ Test signalAnalyzerPiSelectsTheSameReferenceFontAsNRF() passed after 2.122 seconds.
+✔ Test staticNRFApplicationStorageRejectsAnotherTargetReport() passed after 2.122 seconds.
+✔ Test staticNRFCaptureHistoryRevisionExhaustionIsTerminal() passed after 2.122 seconds.
+✔ Test staticNRFProfileRegionsMapEveryGeneratedByteCount() passed after 2.122 seconds.
+✔ Test dynamicPiWakeAdmissionNotifiesOnlyAfterAcceptedFacts() passed after 2.122 seconds.
+✔ Test staticNRFLivePathRefusesFirstExcessPointWithoutChangingStoredPrefix() passed after 2.122 seconds.
+✔ Test dynamicPiInitialPresentationRefusalKeepsInputIneligible() passed after 2.122 seconds.
+✔ Test staticNRFRegionMapRequiresExactExtentAndDisjointness() passed after 2.122 seconds.
+✔ Test "waveform canvases resolve from surface constraints" with 8 test cases passed after 2.122 seconds.
+✔ Test staticTouchABIReachesCurrentModelOnlyOnValidRelease(scenario:) with 8 test cases passed after 2.122 seconds.
+✔ Test nRFRepositoryProducerReplaysPortableInitialAndScheduledCapture() passed after 2.122 seconds.
+✔ Test staticNRFEmbeddedLayoutTextCodecMatchesHostBytes() passed after 2.122 seconds.
+✔ Test staticNRFInputABIRejectsMalformedCValuesBeforeAdmission() passed after 2.123 seconds.
+✔ Test staticNRFPresentationCompositionJoinsOneScopedEndpoint() passed after 2.122 seconds.
+✔ Test sealedAnalyzerFactsApplyOnceInsideTheProductionMutationPipeline() passed after 2.122 seconds.
+✔ Test staticNRFDrawingPlanSnapshotsFiveCanvasesIntoOneFixedRegion() passed after 2.122 seconds.
+✔ Test staticNRFDrawingPlanRecordsRoundTripAtEveryLastSlot() passed after 2.122 seconds.
+✔ Test generatedStaticRootDescriptorMatchesThePortableHierarchy() passed after 2.122 seconds.
+✔ Test staticNRFPackedSemanticRecordTableFitsExactRegion() passed after 2.122 seconds.
+✔ Test staticNRFSemanticRegionsStagePublishAndRespectProfileLifetimes() passed after 2.122 seconds.
+✔ Test generatedPresetsCarryOneFreshCompleteWorkload() passed after 2.122 seconds.
+✔ Test nRFCompactCaptureFactRoundTripsWithinFixedSlot() passed after 2.122 seconds.
+✔ Test everyAnalyzerActionCodeDispatchesToTheExactCurrentModel(code:) with 6 test cases passed after 2.122 seconds.
+✔ Test staticNRFSPITFTTransportCallsOneRowCABIAndMapsStatus() passed after 2.122 seconds.
+✔ Test staticNRFInputDrainsOnlyThroughSerializedOpportunity() passed after 2.122 seconds.
+✔ Test staticNRFDisplayFailureAfterFirstPayloadPreservesPresentationResponsibility() passed after 2.122 seconds.
+✔ Test staticNRFInputCapacityCancelsTheFirstExcessSequence() passed after 2.122 seconds.
+✔ Test staticNRFEndpointStreamsOneTouchedPixelThroughSynchronousHandoff() passed after 2.122 seconds.
+✔ Test staticNRFInputRejectsStalePresentationAndQuiescesStorage() passed after 2.122 seconds.
+✔ Test staticNRFProfileRegionsRejectIncorrectCallerStorage() passed after 2.122 seconds.
+✔ Test staticNRFInputABIPacksExactRejectionVocabulary() passed after 2.122 seconds.
+✔ Test nRFCaptureAdmissionOwnsProducerLimitsAndSequences() passed after 2.122 seconds.
+✔ Test staticNRFEmbeddedSemanticRegionPublishesOnlyValidatedRevisions() passed after 2.122 seconds.
+✔ Test staticNRFCanvasTableRejectsInvalidCaseAndCaptureInputs() passed after 2.122 seconds.
+✔ Test staticNRFDrawingPlanRecordsRejectWrongRegionAndCorruptStroke() passed after 2.122 seconds.
+✔ Test staticNRFDisplayTargetRejectsTransportFailureAndInvalidReservation() passed after 2.122 seconds.
+✔ Test generatedPhysicalPresetProjectionsMatchTheContract() passed after 2.122 seconds.
+✔ Test dynamicPiDecodedContactsEnterNormalizedAdmissionAndWakePacing() passed after 2.122 seconds.
+✔ Test staticNRFSnapshotViewValidatesRecordsAndVisibleRange() passed after 2.122 seconds.
+✔ Test staticNRFPackedSemanticRecordsRoundTripAtTableBoundaries() passed after 2.122 seconds.
+✔ Test staticNRFPresentationCompositionRejectsCaptureOverlap() passed after 2.122 seconds.
+✔ Test staticNRFInteractionRejectsAStaleObservableTargetGeneration() passed after 2.122 seconds.
+✔ Test dynamicPiOpportunityOwnsCorrelationReservationCallSite() passed after 2.122 seconds.
+✔ Test fourPresetInstancesActivateInExactOrderAndRunOnlyWhileActive() passed after 2.122 seconds.
+✔ Test dynamicAndStaticAnalyzerAdmissionProduceEqualOrderedTranscripts() passed after 2.122 seconds.
+✔ Test dynamicTargetHostPresentationPipelineUsesExactGeneratedLimits() passed after 2.122 seconds.
+✔ Test staticNRFLayoutWorkspaceRetainsGeometryAndDerivesTextFieldsInFixedRegions() passed after 2.122 seconds.
+✔ Test nRFCompactFactRingsSealInSequenceWithinExactRegions() passed after 2.122 seconds.
+✔ Test nRFRepositoryRevisionFailureRetainsReservedSlotAfterActionQuota() passed after 2.122 seconds.
+✔ Test dynamicProductionPartialApplicationPreservesExactRejectionAndDirtyDisposition() passed after 2.123 seconds.
+✔ Test spec013SignalAnalyzerWorkloadCycleTiming() passed after 2.122 seconds.
+✔ Test staticNRFUTF8TableSealsExactTextAndRejectsCorruption() passed after 2.122 seconds.
+✔ Test staticNRFDrawingPlanRejectsIncompleteOrCorruptPublication() passed after 2.122 seconds.
+✔ Test analyzerTouchButtonsHaveSquareHitsAndDisableWindowEndpoints() passed after 2.122 seconds.
+✔ Test staticNRFDrawingWorkspaceInvokesFiveScopedCanvasContexts() passed after 2.122 seconds.
+✔ Test dynamicPiPipelineRendersFullDiagnosticWithinAmendedPreset() passed after 2.122 seconds.
+✔ Test dynamicPiLifecycleOwnerContainsInitialFrameFailureAndTearsDown() passed after 2.122 seconds.
+✔ Test nRFReservedOperationalFailureHasIndependentCapacityAndOrder() passed after 2.122 seconds.
+✔ Test sameThreadAndDistinctActionCallbacksStopAtLaterFactAdmission() passed after 2.122 seconds.
+✔ Test twentyAnalyzerFactsBecomeOneDirtyTransitionAndOneCompletePublication() passed after 2.122 seconds.
+✔ Test signalAnalyzerDynamicSemanticJoinMeasuresRealHierarchy() passed after 2.122 seconds.
+✔ Test staticNRFLayoutTextCodecRejectsOverflowDuplicateAndWrongRegion() passed after 2.122 seconds.
+✔ Test staticNRFGeneratedPresentationInputsMatchBothSemanticVariants() passed after 2.122 seconds.
+✔ Test "all diagnostic projection modes preserve Dynamic and Static semantics" passed after 2.122 seconds.
+✔ Test staticNRFCaptureRecordFitsThreeExactFirmwareSlots() passed after 2.122 seconds.
+✔ Test "both profiles accept 404 entries, reject 405, and check indexing" passed after 2.121 seconds.
+✔ Test dynamicPiInitialPresentationEnablesInputOnlyAfterAcceptedFrame() passed after 2.122 seconds.
+✔ Test "delivery outcomes preserve every exact rejection category" passed after 2.121 seconds.
+✔ Test "channel baselines use exact positions and invalid channels are absent" passed after 2.122 seconds.
+✔ Test structuralGateRejectsEveryDrawingMinimumIndependently() passed after 2.122 seconds.
+✔ Test "capacity pressure may evict the newly inserted transition" passed after 2.122 seconds.
+✔ Test "dynamic and caller-owned static storage preserve equivalent values" passed after 2.121 seconds.
+✔ Test "revision mismatch and revision exhaustion fail closed" passed after 2.121 seconds.
+✔ Test "standard channels have exact stable order and names" passed after 2.121 seconds.
+✔ Test "reset clears epoch and history while using supplied baselines" passed after 2.122 seconds.
+✔ Test "insert happens before prefix trimming" passed after 2.122 seconds.
+✔ Test "empty capture has required baselines and bounds" passed after 2.122 seconds.
+✔ Test "mutation bounds reject malformed descriptions without changing input" passed after 2.121 seconds.
+✔ Test "every unsafe runtime condition records exact effects and one policy selection" passed after 2.121 seconds.
+✔ Test "capture rejects invalid bounds, order, and channel IDs" passed after 2.121 seconds.
+✔ Test "terminal failure remains structural and carries no revision" passed after 2.121 seconds.
+✔ Test "reserved failure rejection escalates without recursive admission" passed after 2.121 seconds.
+✔ Test "active admission effects precede selected residual disposition" passed after 2.121 seconds.
+✔ Test "runtime rows select exact policy or coordinator-owned retry" passed after 2.121 seconds.
+✔ Test "revision zero accepts only the initial empty snapshot" passed after 2.121 seconds.
+✔ Test "terminal repository failure has mandatory effects and no policy" passed after 2.121 seconds.
+✔ Test "state observation delegates attach and detach exactly once" passed after 2.121 seconds.
+✔ Test "source boundary installs its transition sink synchronously" passed after 2.121 seconds.
+✔ Test "source transitions publish exact replayable mutations" passed after 2.121 seconds.
+✔ Test "capture observation delegates attach and detach exactly once" passed after 2.121 seconds.
+✔ Test "start preserves the repository failure" passed after 2.121 seconds.
+✔ Test "clear preserves each acquisition state and publishes one exact reset" with 4 test cases passed after 2.121 seconds.
+✔ Test "action use cases synchronously delegate once" passed after 2.121 seconds.
+✔ Test "five-second cutoff trims oldest entries and reconstructs baselines" passed after 2.121 seconds.
+✔ Test "root owns exactly one observable model and constructs after binding" passed after 2.121 seconds.
+✔ Test "exactly the selected window control is disabled" with 3 test cases passed after 2.121 seconds.
+✔ Test "exact mutation replays and mismatch leaves model unchanged" passed after 2.121 seconds.
+✔ Test "cutoff is inclusive and rejects only strictly older input" passed after 2.121 seconds.
+✔ Test "status and acquisition controls follow the exact four-state matrix" with 4 test cases passed after 2.121 seconds.
+✔ Test "only observable changes report dirty" passed after 2.121 seconds.
+✔ Test "snapshot atomically replaces capture revision and visible range" passed after 2.121 seconds.
+✔ Test "clear preserves current levels and rebases later source time" passed after 2.121 seconds.
+✔ Test "state and operational failures preserve exact semantic diagnostics" passed after 2.121 seconds.
+✔ Test "equal timestamps retain arrival order and out-of-order values insert stably" passed after 2.121 seconds.
+✔ Test "invalid and out-of-horizon transitions do not mutate capture" passed after 2.121 seconds.
+✔ Test staticNRFGeneratedMetadataRejectsWrongAssemblyAndCallableCount() passed after 2.122 seconds.
+✔ Test "empty store starts at revision zero" passed after 2.121 seconds.
+✔ Test "CH4 seed 1234 matches the normative golden vector" passed after 2.121 seconds.
+✔ Test "start clears old error before execution and defers the published failure fact" passed after 2.121 seconds.
+✔ Test "CH1 CH2 and CH3 follow exact interval patterns" passed after 2.121 seconds.
+✔ Test "CH4 default live seed matches the normative golden vector" passed after 2.121 seconds.
+✔ Test "diagnostics cannot alter normalized facts" passed after 2.120 seconds.
+✔ Test "capacity eviction removes the oldest entry after insertion" passed after 2.122 seconds.
+✔ Test "all runtime conditions map exactly" passed after 2.120 seconds.
+✔ Test "repository and admission conditions map exactly" passed after 2.117 seconds.
+✔ Test "generation exhaustion and teardown reject later work" passed after 2.117 seconds.
+✔ Test "first start emits four lows and repeated start is idempotent" passed after 2.117 seconds.
+✔ Test "partial start rejection detaches both and preserves original rejection" passed after 2.117 seconds.
+✔ Test "a second conforming source substitutes without repository changes" passed after 2.117 seconds.
+✔ Test "stop detaches both exactly once" passed after 2.117 seconds.
+✔ Test "callbacks translate once and active rejection reports once" passed after 2.117 seconds.
+✔ Test "host-driven delivery uses accelerated delay and resumes conceptual state" passed after 2.117 seconds.
+✔ Test "terminal revision failure admits exactly one reserved fact and invokes no policy" passed after 2.117 seconds.
+✔ Test "six actions use one total exact dispatch" passed after 2.117 seconds.
+✔ Test "visible windows and initial state are exact" passed after 2.117 seconds.
+✔ Test "start admits both immediate current values and is idempotent" passed after 2.117 seconds.
+✔ Test "changed intents report synchronously and proven no-ops do not" passed after 2.117 seconds.
+✔ Test "start failure exposes the exact bounded diagnostic" passed after 2.117 seconds.
+✔ Test "startup failure stops partial activation and carries published diagnostic" passed after 2.116 seconds.
+✔ Test "transition succeeds at max minus one then rejects before mutation at max" passed after 2.116 seconds.
+✔ Test "clear succeeds at max minus one then uses terminal procedure at max" passed after 2.116 seconds.
+✔ Test "revision exhaustion publishes once and permanently quiesces the graph" passed after 2.116 seconds.
+✔ Test "real startup callbacks preserve terminal revision failure" with 2 test cases passed after 2.115 seconds.
+✔ Test "clear at maximum revision uses the same terminal procedure" passed after 2.112 seconds.
+✔ Test "state sink replacement, detachment, and action idempotence are exact" passed after 2.112 seconds.
+✔ Test "observation does not retain the dynamic sink" passed after 2.112 seconds.
+✔ Test "invalid and out-of-horizon input follow distinct failure paths" passed after 2.112 seconds.
+✔ Test "callback then throw preserves terminal diagnostic and single publication" passed after 2.110 seconds.
+✔ Test "sink replacement and detachment are immediate and refusal does not roll back" passed after 2.109 seconds.
+✔ Test "real source normal startup, stop, restart and clear remain available" passed after 2.109 seconds.
+✔ Test "grid and trace workload matches the approved preset inputs" passed after 2.109 seconds.
+✔ Test "ruler formats lower midpoint and upper bounds with at most one fractional digit" passed after 2.108 seconds.
+✔ Test "grid emits twelve two-point subpaths in one stroke" passed after 2.107 seconds.
+✔ Test "empty trimmed and accepted-maximum traces stay within exact bounds" passed after 2.107 seconds.
+✔ Test "trace streams exact boundary points and one stroke" passed after 2.106 seconds.
+✔ Test "timeline rounds tenths, trims whole seconds, and handles carry and bounds" passed after 2.106 seconds.
+✔ Test "trace includes lower-bound state and upper-bound transition exactly" passed after 2.106 seconds.
+✔ Suite "Signal Analyzer capture values" passed after 2.128 seconds.
+✔ Suite "Signal Analyzer capture publication values" passed after 2.128 seconds.
+✔ Suite "Signal Analyzer owner failure adapter" passed after 2.128 seconds.
+✔ Suite "Signal Analyzer synchronous Domain contracts" passed after 2.128 seconds.
+✔ Suite "Signal Analyzer repository retention integration" passed after 2.128 seconds.
+✔ Suite "Signal Analyzer checked capture store" passed after 2.128 seconds.
+✔ Suite "Signal Analyzer portable hierarchy" passed after 2.128 seconds.
+✔ Suite "Signal Analyzer mutation-phase fact application" passed after 2.128 seconds.
+✔ Suite "Signal Analyzer deterministic generator" passed after 2.128 seconds.
+✔ Suite "Signal Analyzer Presentation integration" passed after 2.128 seconds.
+✔ Suite "Signal Analyzer failure normalization" passed after 2.128 seconds.
+✔ Suite "Signal Analyzer deterministic data source" passed after 2.128 seconds.
+✔ Suite "Signal Analyzer Presentation admission adapter" passed after 2.128 seconds.
+✔ Suite "Signal Analyzer Presentation values and actions" passed after 2.128 seconds.
+✔ Suite "Signal Analyzer repository lifecycle and failures" passed after 2.128 seconds.
+✔ Suite "Signal Analyzer waveform geometry" passed after 2.129 seconds.
+✔ Test dynamicPiLifecycleOwnerRunsSevenStepsAndEightStepTeardown() passed after 2.306 seconds.
+✔ Test dynamicPiInputOpportunityDefersActionRepositoryCallbacks() passed after 2.503 seconds.
+✔ Test dynamicPiInputCoordinatorQueuesNormalizedSequenceUntilDrain() passed after 2.524 seconds.
+✔ Test dynamicPiOwnerCommitsReplacementPresentationRevision() passed after 2.628 seconds.
+production-fault	stage=4	condition=3	origin=3	scope=2	containment=0	dirty=1	priorRouting=1	finalizations=2
+✔ Test staticNRFCaptureHistoryMatchesPortableInsertionTrimAndClear() passed after 2.652 seconds.
+✔ Test "2400 delivered events preserve replay and five-second inclusive history" passed after 2.722 seconds.
+✔ Suite "Signal Analyzer 30-second workload oracle" passed after 2.728 seconds.
+✔ Test dynamicDerivationFailurePermitsNextAttemptAndPreservesCommittedActions() passed after 2.872 seconds.
+✔ Test fiveSecondHistoryMatchesIndependentFullHistoryAtEveryWindowEdge() passed after 3.060 seconds.
+production-fault	stage=5	condition=3	origin=4	scope=1	containment=0	dirty=1	priorRouting=1	finalizations=2
+✔ Test staticNRFPacedStageKeepsProfileActiveThroughPhysicalHandoff() passed after 3.409 seconds.
+production-fault	stage=6	condition=3	origin=4	scope=2	containment=0	dirty=1	priorRouting=1	finalizations=2
+production-fault	stage=7	condition=4	origin=6	scope=2	containment=0	dirty=1	priorRouting=1	finalizations=2
+✔ Test dynamicProductionCommonRunnerContainsFocusedFailuresAndRecomputesWithoutReplay() passed after 4.999 seconds.
+✔ Test staticNRFGeneratedUTF8CandidateStagesExactHierarchyWithoutPrefixPublication() passed after 6.794 seconds.
+✔ Test run with 275 tests in 17 suites passed after 6.795 seconds.
+SPEC-015 raspberry-pi-armv6 complete (cross-build only): /Users/eugene/work/GiftUI/.build/contract-reports/spec-015/.tmp-raspberry-pi-armv6-36216/report.tsv
+published=/Users/eugene/work/GiftUI/.build/contract-reports/spec-015/232f0041063fac57f9ae879cf0c86c37312221f2-96b0a7b2e7d1475f/raspberry-pi-armv6
+SPEC-015 raspberry-pi-armv6 immutable report published; run ID: 232f0041063fac57f9ae879cf0c86c37312221f2-96b0a7b2e7d1475f
+swiftpm-command: swift run --package-path /Users/eugene/work/GiftUI --disable-sandbox -Xswiftc -DGIFTUI_DYNAMIC_PROFILE SignalAnalyzerRaspberryPiARMv6 --rehearse-host
+[0/1] Planning build
+Building for debugging...
+[0/7] Compiling _SwiftSyntaxCShims PlatformMutex.c
+[1/7] Write swift-version--58304C5D6DBC2206.txt
+[3/32] Compiling SwiftSyntax601 Empty.swift
+[4/32] Emitting module SwiftSyntax602
+[5/32] Emitting module SwiftSyntax601
+[6/32] Compiling SwiftSyntax602 Empty.swift
+[7/32] Emitting module SwiftSyntax603
+[8/32] Compiling SwiftSyntax603 Empty.swift
+[9/32] Emitting module SwiftSyntax509
+[10/32] Emitting module SwiftSyntax600
+[11/32] Compiling SwiftSyntax600 Empty.swift
+[12/32] Compiling SwiftSyntax509 Empty.swift
+[13/32] Emitting module SwiftSyntax510
+[14/32] Compiling SwiftSyntax510 Empty.swift
+[15/32] Compiling SignalAnalyzerDomain ModuleBoundary.swift
+[16/32] Compiling SignalAnalyzerDomain SignalAcquisitionContracts.swift
+[17/32] Compiling SignalAnalyzerDomain AcquisitionState.swift
+[18/32] Emitting module SignalAnalyzerDomain
+[19/32] Emitting module GiftUIFailureCore
+[20/32] Compiling SignalAnalyzerDomain SignalCapturePublication.swift
+[21/32] Compiling SignalAnalyzerDomain SignalCaptureChange.swift
+[22/32] Compiling SignalAnalyzerDomain SignalAnalyzerDiagnostic.swift
+[23/32] Compiling SignalAnalyzerDomain SignalPrimitiveValues.swift
+[24/32] Compiling SignalAnalyzerDomain SignalValues.swift
+[25/32] Compiling GiftUIFailureCore GiftUIFailureCore.swift
+[26/104] Compiling SignalAnalyzerData SignalCaptureStore.swift
+[27/104] Compiling SignalAnalyzerData ModuleBoundary.swift
+[28/104] Compiling SignalAnalyzerData DefaultSignalAcquisitionRepository.swift
+[29/104] Compiling SignalAnalyzerData DeterministicSignalGenerator.swift
+[30/104] Emitting module SignalAnalyzerData
+[31/104] Compiling SignalAnalyzerData DeterministicSignalDataSource.swift
+[32/104] Compiling SwiftSyntax Convenience.swift
+[33/104] Compiling SwiftSyntax CustomTraits.swift
+[34/104] Compiling SwiftSyntax EditorPlaceholder.swift
+[35/104] Compiling SwiftSyntax Identifier.swift
+[36/104] Compiling SwiftSyntax MemoryLayout.swift
+[37/104] Compiling SwiftSyntax MissingNodeInitializers.swift
+[38/109] Compiling GiftUICapabilities GiftUICapabilities.swift
+[39/109] Emitting module GiftUICapabilities
+[40/109] Compiling SwiftSyntax AbsolutePosition.swift
+[41/109] Compiling SwiftSyntax AbsoluteSyntaxInfo.swift
+[42/109] Compiling SwiftSyntax ArenaAllocatedBuffer.swift
+[43/109] Compiling SwiftSyntax Assert.swift
+[44/109] Compiling SwiftSyntax BumpPtrAllocator.swift
+[45/109] Compiling SwiftSyntax CommonAncestor.swift
+[46/109] Compiling SwiftSyntax SyntaxTreeViewMode.swift
+[47/109] Compiling SwiftSyntax TokenDiagnostic.swift
+[48/109] Compiling SwiftSyntax TokenSequence.swift
+[49/109] Compiling SwiftSyntax TokenSyntax.swift
+[50/109] Compiling SwiftSyntax Trivia.swift
+[51/109] Compiling SwiftSyntax Utils.swift
+[52/109] Compiling SwiftSyntax RawSyntax.swift
+[53/109] Compiling SwiftSyntax RawSyntaxArena.swift
+[54/109] Compiling SwiftSyntax RawSyntaxLayoutView.swift
+[55/109] Compiling SwiftSyntax RawSyntaxNodeProtocol.swift
+[56/109] Compiling SwiftSyntax RawSyntaxTokenView.swift
+[57/109] Compiling SwiftSyntax SourceEdit.swift
+[58/109] Compiling SwiftSyntax SourceLength.swift
+[59/109] Compiling SwiftSyntax SourceLocation.swift
+[60/109] Compiling SwiftSyntax SourcePresence.swift
+[61/109] Compiling SwiftSyntax SwiftSyntaxCompatibility.swift
+[62/109] Compiling SwiftSyntax Syntax.swift
+[63/109] Compiling SwiftSyntax SyntaxChildren.swift
+[64/109] Emitting module SwiftSyntax
+[65/109] Compiling SwiftSyntax RawSyntaxNodesEF.swift
+[66/109] Compiling SwiftSyntax RawSyntaxNodesGHI.swift
+[67/109] Compiling SwiftSyntax RawSyntaxNodesJKLMN.swift
+[68/109] Compiling SwiftSyntax RawSyntaxNodesOP.swift
+[69/109] Compiling SwiftSyntax RawSyntaxNodesQRS.swift
+[70/109] Compiling SwiftSyntax RawSyntaxNodesTUVWXYZ.swift
+[71/109] Compiling SwiftSyntax SyntaxCollections.swift
+[72/109] Compiling SwiftSyntax SyntaxEnum.swift
+[73/109] Compiling SwiftSyntax SyntaxKind.swift
+[74/109] Compiling SwiftSyntax SyntaxRewriter.swift
+[75/109] Compiling SwiftSyntax SyntaxTraits.swift
+[76/109] Compiling SwiftSyntax SyntaxVisitor.swift
+[77/109] Compiling SwiftSyntax TokenKind.swift
+[78/109] Compiling SwiftSyntax Tokens.swift
+[79/109] Compiling SwiftSyntax TriviaPieces.swift
+[80/109] Compiling SwiftSyntax RawSyntaxNodesAB.swift
+[81/109] Compiling SwiftSyntax RawSyntaxNodesC.swift
+[82/109] Compiling SwiftSyntax RawSyntaxNodesD.swift
+[83/109] Compiling SwiftSyntax SyntaxCollection.swift
+[84/109] Compiling SwiftSyntax SyntaxHashable.swift
+[85/109] Compiling SwiftSyntax SyntaxIdentifier.swift
+[86/109] Compiling SwiftSyntax SyntaxNodeStructure.swift
+[87/109] Compiling SwiftSyntax SyntaxProtocol.swift
+[88/109] Compiling SwiftSyntax SyntaxText.swift
+[89/109] Compiling SwiftSyntax RawSyntaxValidation.swift
+[90/109] Compiling SwiftSyntax SyntaxNodesAB.swift
+[91/109] Compiling SwiftSyntax SyntaxNodesC.swift
+[92/109] Compiling SwiftSyntax SyntaxNodesD.swift
+[93/109] Compiling SwiftSyntax SyntaxNodesEF.swift
+[94/109] Compiling SwiftSyntax SyntaxNodesGHI.swift
+[95/109] Compiling SwiftSyntax SyntaxNodesJKLMN.swift
+[96/109] Compiling SwiftSyntax SyntaxNodesOP.swift
+[97/109] Compiling SwiftSyntax SyntaxNodesQRS.swift
+[98/109] Compiling SwiftSyntax SyntaxNodesTUVWXYZ.swift
+[99/109] Compiling SwiftSyntax ChildNameForKeyPath.swift
+[100/109] Compiling SwiftSyntax Keyword.swift
+[101/109] Compiling SwiftSyntax RenamedChildrenCompatibility.swift
+[102/109] Compiling SwiftSyntax RenamedNodesCompatibility.swift
+[103/109] Compiling SwiftSyntax SyntaxAnyVisitor.swift
+[104/109] Compiling SwiftSyntax SyntaxBaseNodes.swift
+[105/171] Compiling SwiftDiagnostics Note.swift
+[106/171] Compiling SwiftDiagnostics Message.swift
+[107/171] Compiling SwiftDiagnostics FixIt.swift
+[108/171] Compiling SwiftDiagnostics GroupedDiagnostics.swift
+[109/171] Compiling SwiftDiagnostics BasicDiagnosticDecorator.swift
+[110/171] Compiling SwiftDiagnostics DiagnosticDecorator.swift
+[111/171] Compiling SwiftDiagnostics ANSIDiagnosticDecorator.swift
+[112/171] Compiling SwiftDiagnostics Diagnostic.swift
+[113/171] Emitting module SwiftDiagnostics
+[114/171] Compiling SwiftDiagnostics DiagnosticsFormatter.swift
+[115/171] Compiling SwiftDiagnostics Convenience.swift
+[116/171] Compiling SwiftParser SwiftVersion.swift
+[117/171] Compiling SwiftParser SyntaxUtils.swift
+[118/171] Compiling SwiftParser TokenConsumer.swift
+[119/171] Compiling SwiftParser TokenPrecedence.swift
+[120/174] Emitting module SwiftBasicFormat
+[121/174] Compiling SwiftBasicFormat Syntax+Extensions.swift
+[122/174] Compiling SwiftBasicFormat Indenter.swift
+[123/174] Compiling SwiftBasicFormat SyntaxProtocol+Formatted.swift
+[124/174] Compiling SwiftBasicFormat Trivia+FormatExtensions.swift
+[125/174] Compiling SwiftBasicFormat InferIndentation.swift
+[126/174] Compiling SwiftBasicFormat BasicFormat.swift
+[127/174] Compiling SwiftParser Lexeme.swift
+[128/174] Compiling SwiftParser LexemeSequence.swift
+[129/174] Compiling SwiftParser Lexer.swift
+[130/174] Compiling SwiftParser RegexLiteralLexer.swift
+[131/174] Compiling SwiftParser Names.swift
+[132/174] Compiling SwiftParser Nominals.swift
+[133/174] Compiling SwiftParser Parameters.swift
+[134/174] Compiling SwiftParser ParseSourceFile.swift
+[135/174] Compiling SwiftParser UnicodeScalarExtensions.swift
+[136/174] Compiling SwiftParser Lookahead.swift
+[137/174] Compiling SwiftParser LoopProgressCondition.swift
+[138/174] Compiling SwiftParser Modifiers.swift
+[139/174] Compiling SwiftParser Statements.swift
+[140/174] Compiling SwiftParser StringLiteralRepresentedLiteralValue.swift
+[141/174] Compiling SwiftParser StringLiterals.swift
+[142/174] Compiling SwiftParser SwiftParserCompatibility.swift
+[143/174] Compiling SwiftParser Types.swift
+[144/174] Compiling SwiftParser ExperimentalFeatures.swift
+[145/174] Compiling SwiftParser IsLexerClassified.swift
+[146/174] Compiling SwiftParser TokenSpec.swift
+[147/174] Compiling SwiftParser TokenSpecSet.swift
+[148/174] Compiling SwiftParser TopLevel.swift
+[149/174] Compiling SwiftParser TriviaParser.swift
+[150/174] Compiling SwiftParser CompilerFiles.swift
+[151/174] Compiling SwiftParser Declarations.swift
+[152/174] Compiling SwiftParser Directives.swift
+[153/174] Compiling SwiftParser ExpressionInterpretedAsVersionTuple.swift
+[154/174] Emitting module SwiftParser
+[155/174] Compiling SwiftParser Parser.swift
+[156/174] Compiling SwiftParser Patterns.swift
+[157/174] Compiling SwiftParser Recovery.swift
+[158/174] Compiling SwiftParser Specifiers.swift
+[159/174] Compiling SwiftParser Attributes.swift
+[160/174] Compiling SwiftParser Availability.swift
+[161/174] Compiling SwiftParser CharacterInfo.swift
+[162/174] Compiling SwiftParser CollectionNodes+Parsable.swift
+[163/174] Compiling SwiftParser Expressions.swift
+[164/174] Compiling SwiftParser IncrementalParseTransition.swift
+[165/174] Compiling SwiftParser IsValidIdentifier.swift
+[166/174] Compiling SwiftParser Cursor.swift
+[167/174] Compiling SwiftParser LayoutNodes+Parsable.swift
+[168/174] Compiling SwiftParser Parser+TokenSpecSet.swift
+[169/174] Compiling SwiftParser TokenSpecStaticMembers.swift
+[170/198] Compiling SwiftOperators SyntaxSynthesis.swift
+[171/198] Compiling SwiftOperators PrecedenceGraph.swift
+[172/198] Compiling SwiftOperators PrecedenceGroup.swift
+[173/198] Compiling SwiftOperators OperatorTable.swift
+[174/198] Compiling SwiftOperators OperatorTable+Semantics.swift
+[175/198] Compiling SwiftOperators OperatorTable+Defaults.swift
+[176/198] Compiling SwiftOperators OperatorError+Diagnostics.swift
+[177/198] Compiling SwiftOperators OperatorError.swift
+[178/198] Emitting module SwiftOperators
+[179/198] Compiling SwiftOperators Operator.swift
+[180/198] Compiling SwiftOperators OperatorTable+Folding.swift
+[181/198] Compiling SwiftParserDiagnostics Utils.swift
+[182/198] Compiling SwiftParserDiagnostics ChildNameForDiagnostics.swift
+[183/198] Compiling SwiftParserDiagnostics PresenceUtils.swift
+[184/198] Compiling SwiftParserDiagnostics SyntaxKindNameForDiagnostics.swift
+[185/199] Compiling SwiftParserDiagnostics TokenNameForDiagnostics.swift
+[186/199] Compiling SwiftParserDiagnostics ParserDiagnosticMessages.swift
+[187/199] Compiling SwiftParserDiagnostics SyntaxExtensions.swift
+[188/199] Compiling SwiftParserDiagnostics MissingNodesError.swift
+[189/199] Compiling SwiftParserDiagnostics MissingTokenError.swift
+[190/199] Compiling SwiftParserDiagnostics MultiLineStringLiteralDiagnosticsGenerator.swift
+[191/199] Emitting module SwiftParserDiagnostics
+[192/199] Compiling SwiftParserDiagnostics DiagnosticExtensions.swift
+[193/199] Compiling SwiftParserDiagnostics LexerDiagnosticMessages.swift
+[194/199] Compiling SwiftParserDiagnostics ParseDiagnosticsGenerator.swift
+[195/214] Compiling SwiftSyntaxBuilder ResultBuilders.swift
+[196/215] Compiling SwiftSyntaxBuilder RenamedChildrenBuilderCompatibility.swift
+[197/215] Compiling SwiftSyntaxBuilder BuildableNodes.swift
+[198/215] Compiling SwiftSyntaxBuilder ValidatingSyntaxNodes.swift
+[199/215] Compiling SwiftSyntaxBuilder WithTrailingCommaSyntax+EnsuringTrailingComma.swift
+[200/215] Compiling SwiftSyntaxBuilder SyntaxNodeWithBody.swift
+[201/215] Compiling SwiftSyntaxBuilder SyntaxParsable+ExpressibleByStringInterpolation.swift
+[202/215] Compiling SwiftSyntaxBuilder Indenter.swift
+[203/215] Compiling SwiftSyntaxBuilder ListBuilder.swift
+[204/215] Compiling SwiftSyntaxBuilder ConvenienceInitializers.swift
+[205/215] Compiling SwiftSyntaxBuilder DeclSyntaxParseable.swift
+[206/215] Emitting module SwiftSyntaxBuilder
+[207/215] Compiling SwiftSyntaxBuilder ResultBuilderExtensions.swift
+[208/215] Compiling SwiftSyntaxBuilder SwiftSyntaxBuilderCompatibility.swift
+[209/215] Compiling SwiftSyntaxBuilder Syntax+StringInterpolation.swift
+[210/215] Compiling SwiftSyntaxBuilder SyntaxExpressibleByStringInterpolationConformances.swift
+[211/230] Compiling SwiftIfConfig VersionTuple+Parsing.swift
+[212/230] Compiling SwiftIfConfig SyntaxLiteralUtils.swift
+[213/231] Compiling SwiftIfConfig IfConfigRegionState.swift
+[214/231] Compiling SwiftIfConfig SyntaxProtocol+IfConfig.swift
+[215/231] Compiling SwiftIfConfig StaticBuildConfiguration.swift
+[216/231] Compiling SwiftIfConfig IfConfigFunctions.swift
+[217/231] Compiling SwiftIfConfig VersionTuple.swift
+[218/231] Compiling SwiftIfConfig IfConfigDiagnostic.swift
+[219/231] Compiling SwiftIfConfig IfConfigEvaluation.swift
+[220/231] Compiling SwiftIfConfig ConfiguredRegions.swift
+[221/231] Compiling SwiftIfConfig IfConfigDecl+IfConfig.swift
+[222/231] Compiling SwiftIfConfig ActiveSyntaxVisitor.swift
+[223/231] Compiling SwiftIfConfig BuildConfiguration.swift
+[224/231] Emitting module SwiftIfConfig
+[225/231] Compiling SwiftIfConfig ActiveClauseEvaluator.swift
+[226/231] Compiling SwiftIfConfig ActiveSyntaxRewriter.swift
+[227/249] Compiling SwiftSyntaxMacros PeerMacro.swift
+[228/249] Compiling SwiftSyntaxMacros PreambleMacro.swift
+[229/249] Compiling SwiftSyntaxMacros MemberMacro.swift
+[230/250] Compiling SwiftSyntaxMacros ExpressionMacro.swift
+[231/250] Compiling SwiftSyntaxMacros ExtensionMacro.swift
+[232/250] Compiling SwiftSyntaxMacros MemberAttributeMacro.swift
+[233/250] Compiling SwiftSyntaxMacros FreestandingMacro.swift
+[234/250] Compiling SwiftSyntaxMacros Macro+Format.swift
+[235/250] Compiling SwiftSyntaxMacros Macro.swift
+[236/250] Compiling SwiftSyntaxMacros MacroExpansionDiagnosticMessages.swift
+[237/250] Compiling SwiftSyntaxMacros AccessorMacro.swift
+[238/250] Compiling SwiftSyntaxMacros CodeItemMacro.swift
+[239/250] Compiling SwiftSyntaxMacros DeclarationMacro.swift
+[240/250] Emitting module SwiftSyntaxMacros
+[241/250] Compiling SwiftSyntaxMacros AttachedMacro.swift
+[242/250] Compiling SwiftSyntaxMacros BodyMacro.swift
+[243/250] Compiling SwiftSyntaxMacros AbstractSourceLocation.swift
+[244/250] Compiling SwiftSyntaxMacros MacroExpansionContext.swift
+[245/250] Compiling SwiftSyntaxMacros Syntax+LexicalContext.swift
+[246/260] Emitting module SwiftSyntaxMacroExpansion
+[247/260] Compiling SwiftSyntaxMacroExpansion FunctionParameterUtils.swift
+[248/260] Compiling SwiftSyntaxMacroExpansion IndentationUtils.swift
+[249/260] Compiling SwiftSyntaxMacroExpansion MacroSystem.swift
+[250/260] Compiling SwiftSyntaxMacroExpansion BasicMacroExpansionContext.swift
+[251/260] Compiling SwiftSyntaxMacroExpansion MacroReplacement.swift
+[252/260] Compiling SwiftSyntaxMacroExpansion MacroArgument.swift
+[253/260] Compiling SwiftSyntaxMacroExpansion MacroSpec.swift
+[254/260] Compiling SwiftSyntaxMacroExpansion MacroExpansionDiagnosticMessages.swift
+[255/260] Compiling SwiftSyntaxMacroExpansion MacroExpansion.swift
+[256/272] Compiling SwiftCompilerPluginMessageHandling PluginMacroExpansionContext.swift
+[257/273] Compiling SwiftCompilerPluginMessageHandling StandardIOMessageConnection.swift
+[258/273] Compiling SwiftCompilerPluginMessageHandling Macros.swift
+[259/273] Compiling SwiftCompilerPluginMessageHandling PluginMessageCompatibility.swift
+[260/273] Compiling SwiftCompilerPluginMessageHandling JSONDecoding.swift
+[261/273] Compiling SwiftCompilerPluginMessageHandling CodingUtilities.swift
+[262/273] Compiling SwiftCompilerPluginMessageHandling JSONEncoding.swift
+[263/273] Compiling SwiftCompilerPluginMessageHandling LRUCache.swift
+[264/273] Compiling SwiftCompilerPluginMessageHandling JSON.swift
+[265/273] Compiling SwiftCompilerPluginMessageHandling Diagnostics.swift
+[266/273] Compiling SwiftCompilerPluginMessageHandling CompilerPluginMessageHandler.swift
+[267/273] Emitting module SwiftCompilerPluginMessageHandling
+[268/273] Compiling SwiftCompilerPluginMessageHandling PluginMessages.swift
+[269/275] Emitting module SwiftCompilerPlugin
+[270/275] Compiling SwiftCompilerPlugin CompilerPlugin.swift
+[271/278] Compiling GiftUIMacros ObservableStateHostMacro.swift
+[272/278] Compiling GiftUIMacros GiftUIMacros.swift
+[273/278] Emitting module GiftUIMacros
+[273/278] Write Objects.LinkFileList
+[274/278] Linking GiftUIMacros-tool
+[276/294] Compiling GiftUI LayoutModifiers.swift
+[277/294] Compiling GiftUI LayoutContainers.swift
+[278/294] Compiling GiftUI GiftUI.swift
+[279/294] Compiling GiftUI DrawingSurface.swift
+[280/294] Compiling GiftUI Disabled.swift
+[281/294] Compiling GiftUI DrawingStyles.swift
+[282/294] Compiling GiftUI ObservableState.swift
+[283/294] Compiling GiftUI LayoutValues.swift
+[284/294] Compiling GiftUI StyleModifiers.swift
+[285/295] Compiling GiftUI Button.swift
+[286/295] Compiling GiftUI Canvas.swift
+[287/295] Compiling GiftUI Color.swift
+[288/295] Compiling GiftUI DeclarativeView.swift
+[289/295] Emitting module GiftUI
+[290/295] Compiling GiftUI ActionHandler.swift
+[291/295] Compiling GiftUI BoundedText.swift
+[292/295] Compiling GiftUI Text.swift
+[293/315] Compiling SignalAnalyzerPresentation SignalAnalyzerRuntimeFailureRule.swift
+[294/315] Compiling SignalAnalyzerPresentation SignalAnalyzerRuntimeCondition.swift
+[295/315] Emitting module SignalAnalyzerPresentation
+[296/315] Compiling SignalAnalyzerPresentation SignalAnalyzerFailureNormalizer.swift
+[297/315] Compiling SignalAnalyzerPresentation SignalAnalyzerFailurePolicyValues.swift
+[298/315] Compiling SignalAnalyzerPresentation SignalAnalyzerPresentationValues.swift
+[299/315] Compiling SignalAnalyzerPresentation SignalAnalyzerTimelineFormatting.swift
+[300/316] Compiling GiftUISemanticCore SemanticRenderView.swift
+[301/316] Compiling GiftUISemanticCore GiftUISemanticCore.swift
+[302/316] Emitting module GiftUISemanticCore
+[303/316] Compiling GiftUISemanticCore SemanticLayoutView.swift
+[304/316] Compiling SignalAnalyzerPresentation SignalAnalyzerWaveformGeometry.swift
+[305/316] Compiling SignalAnalyzerPresentation SignalAnalyzerRuntimeFailureNormalizer.swift
+[306/316] Compiling SignalAnalyzerPresentation SignalAnalyzerLayoutConstraints.swift
+[307/316] Compiling SignalAnalyzerPresentation SignalAnalyzerView.swift
+[308/316] Compiling SignalAnalyzerPresentation SignalAnalyzerPresentationAdmissionAdapter.swift
+[309/316] Compiling SignalAnalyzerPresentation SignalAnalyzerOwnerFailureAdapter.swift
+[310/316] Compiling SignalAnalyzerPresentation ModuleBoundary.swift
+[311/316] Compiling SignalAnalyzerPresentation SignalAnalyzerDiagnostic+BoundedText.swift
+[312/316] Compiling GiftUITextResources GiftUITextResources.swift
+[313/316] Emitting module GiftUITextResources
+[314/341] Compiling GiftUILayout LayoutError.swift
+[315/341] Emitting module GiftUILayout
+[316/341] Compiling GiftUILayout Layout.swift
+[317/341] Compiling GiftUILayout LayoutCounters.swift
+[318/341] Compiling GiftUILayout ResolvedRenderLayoutView.swift
+[319/341] Compiling GiftUIRenderCore RenderRecordingSink.swift
+[320/341] Compiling GiftUIRenderCore RenderValues.swift
+[321/341] Compiling GiftUIRenderCore DrawingOperationSink.swift
+[322/341] Compiling GiftUIRenderCore RenderOperationSink.swift
+[323/341] Emitting module GiftUIRenderCore
+[324/341] Compiling GiftUILayout LayoutPublication.swift
+[325/341] Compiling GiftUILayout LayoutGeometry.swift
+[326/341] Compiling GiftUILayout LayoutWorkspace.swift
+[327/341] Compiling GiftUILayout LayoutValues.swift
+[328/341] Compiling GiftUILayout LayoutResultSink.swift
+[329/341] Compiling GiftUILayout LayoutSemanticValidation.swift
+[330/370] Compiling GiftUIExecution ExecutionAdmissionSealer.swift
+[331/370] Compiling GiftUIExecution ExecutionMutationBatch.swift
+[332/370] Compiling GiftUIExecution ExecutionOpportunityRunner.swift
+[333/372] Compiling GiftUIExecution FrameHandoffValues.swift
+[334/372] Compiling GiftUIExecution FrameOfferNormalization.swift
+[335/372] Compiling GiftUIExecution RecordingPresentationPendingCoordinator.swift
+[336/372] Compiling GiftUIExecution RecordingPresentationTerminalRecovery.swift
+[337/372] Compiling GiftUIExecution RecordingDerivationRecovery.swift
+[338/372] Compiling GiftUIExecution RecordingDerivationTransaction.swift
+[339/372] Compiling GiftUISurfaceCore RasterSurface.swift
+[340/372] Compiling GiftUISurfaceCore SurfaceValues.swift
+[341/372] Emitting module GiftUISurfaceCore
+[342/372] Compiling GiftUIExecution ExecutionPhaseMachine.swift
+[343/372] Compiling GiftUIExecution ExecutionValues.swift
+[344/372] Compiling GiftUIExecution ExecutionWakeAccumulator.swift
+[345/372] Compiling GiftUILayout LayoutEngine.swift
+[346/372] Compiling GiftUIExecution PointerActionCapture.swift
+[347/372] Compiling GiftUIExecution RecordingCandidateOfferCoordinator.swift
+[348/372] Compiling GiftUIExecution IdentityAllocators.swift
+[349/372] Compiling GiftUIExecution InputSourceSequenceState.swift
+[350/372] Compiling GiftUIExecution RecordingFocusedFailureSelection.swift
+[351/372] Compiling GiftUIExecution RecordingFrameCommitTransaction.swift
+[352/372] Compiling GiftUIExecution RecordingFrameEndpoint.swift
+[353/372] Compiling GiftUIExecution RecordingMutationBatch.swift
+[354/372] Compiling GiftUIExecution RecordingCycleCoordinator.swift
+[355/372] Compiling GiftUIExecution RecordingCycleFinalizer.swift
+[356/372] Emitting module GiftUIExecution
+[357/372] Compiling GiftUIExecution AdmissionValues.swift
+[358/372] Compiling GiftUIExecution ExecutionAdmissionController.swift
+[359/372] Compiling GiftUIExecution ExecutionAdmissionSealTransaction.swift
+[360/372] Compiling GiftUIExecution RunCycleValues.swift
+[361/372] Compiling GiftUIExecution WakeValues.swift
+[362/393] Compiling GiftUIDisplayCore SurfaceDisplayContributionAdapter.swift
+[363/393] Emitting module GiftUIDisplayCore
+[364/393] Compiling GiftUIDisplayCore DisplayContracts.swift
+[365/400] Emitting module GiftUIRenderLowering
+[366/425] Compiling GiftUIRenderLowering RenderProductionValues.swift
+[367/425] Compiling GiftUIRenderLowering RenderProducer.swift
+[368/425] Compiling GiftUIInteraction EffectiveActionEnabledState.swift
+[369/425] Emitting module GiftUIInteraction
+[370/425] Compiling GiftUIRasterCore RasterWorkTracker.swift
+[371/425] Compiling GiftUIInteraction InteractionValues.swift
+[372/425] Compiling GiftUIObservableState ObservableStateReplacementTransaction.swift
+[373/425] Compiling GiftUIObservableState ObservableStateTargetLifetime.swift
+[374/425] Compiling GiftUIObservableState ObservableStateProtocols.swift
+[375/425] Compiling GiftUIObservableState ObservableStateRegistrationBridge.swift
+[376/426] Compiling GiftUIObservableState ObservableStateReportGuard.swift
+[377/426] Compiling GiftUIObservableState ObservableStateTargetLookupSlot.swift
+[378/426] Compiling GiftUIObservableState ObservableStateValues.swift
+[379/426] Compiling GiftUIObservableState ObservableStateReportRoute.swift
+[380/426] Compiling GiftUIObservableState ObservableStateDirtyDerivation.swift
+[381/426] Compiling GiftUIObservableState ObservableStateMutationResultSlot.swift
+[382/426] Compiling GiftUIObservableState PresentationFactAdmission.swift
+[383/426] Compiling GiftUIObservableState ObservableStateRegistrationLifecycle.swift
+[384/426] Compiling GiftUIObservableState ObservableStateReplacementBridge.swift
+[385/426] Compiling GiftUIObservableState ObservableStateBindingDecorator.swift
+[386/426] Compiling GiftUIObservableState ObservableStateCandidateLifecycle.swift
+[387/426] Compiling GiftUIObservableState ObservableStateAssociationLifecycle.swift
+[388/426] Compiling GiftUIObservableState ObservableStateAttachmentGenerationAllocator.swift
+[389/426] Emitting module GiftUIObservableState
+[390/426] Compiling GiftUIRenderLowering RenderStreaming.swift
+[391/426] Compiling GiftUIRenderLowering RenderPreflight.swift
+[392/426] Compiling GiftUIRenderLowering RenderExtensions.swift
+[393/426] Compiling GiftUIInteraction InteractionFailurePrecedence.swift
+[394/426] Compiling GiftUIInteraction InteractionStorage.swift
+[395/426] Compiling GiftUIInteraction ExecutionGestureAdapter.swift
+[396/426] Compiling GiftUIInteraction InteractionState.swift
+[397/426] Compiling GiftUIReferenceTextResources PiCompactBitmapPayload.generated.swift
+[398/426] Compiling GiftUIReferenceTextResources PiCompactCatalogue.generated.swift
+[399/426] Compiling GiftUIRasterCore FullSurfaceRGB565Framebuffer.swift
+[400/426] Emitting module GiftUIRasterCore
+[401/437] Compiling GiftUIDrawing StrokeSnapshot.swift
+[402/437] Compiling GiftUIDrawing StaticCanvasCallableTable.swift
+[403/437] Compiling GiftUIDrawing DrawingValues.swift
+[404/437] Compiling GiftUIDrawing DrawingPlan.swift
+[405/437] Compiling GiftUIDrawing GiftUIDrawing.swift
+[406/437] Compiling GiftUIDrawing CanvasPlanProducer.swift
+[407/437] Compiling GiftUIDrawing CanvasInvocationSource.swift
+[408/437] Emitting module GiftUIDrawing
+[409/437] Compiling GiftUIDrawing DrawingLimits.swift
+[410/437] Compiling GiftUIDrawing CanvasRenderProducer.swift
+[411/437] Compiling GiftUIDrawing PathConstruction.swift
+[412/454] Compiling GiftUIRuntimeCore RuntimeProfileValues.swift
+[413/455] Compiling GiftUIRuntimeCore RuntimeProfileStorage.swift
+[414/455] Compiling GiftUIRuntimeCore RuntimeProfileValidation.swift
+[415/455] Compiling GiftUIRasterCore RasterFrameWork.swift
+[416/455] Compiling GiftUIRasterCore RasterGlyphCoverage.swift
+[417/455] Compiling GiftUIRasterCore RasterFrameSink.swift
+[418/455] Compiling GiftUIRasterCore RasterFillCoverage.swift
+[419/455] Compiling GiftUIRasterCore RasterBackendContributionAdapter.swift
+[420/455] Compiling GiftUIRasterCore FullSurfaceRGBA8888Buffer.swift
+[421/455] Compiling GiftUIRasterCore RGB565TileWorkspace.swift
+[422/455] Compiling GiftUIRasterCore RasterPayloadLimits.swift
+[423/455] Compiling GiftUIRasterCore RasterStrokeCoverage.swift
+[424/455] Compiling GiftUIRuntimeCore RuntimeInteractionMutationOwner.swift
+[425/455] Compiling GiftUIRuntimeCore RuntimeOwnerFailure.swift
+[426/455] Compiling GiftUIRuntimeCore RuntimeInteractionCandidateTransaction.swift
+[427/455] Compiling GiftUIRuntimeCore RuntimeInteractionDispatcher.swift
+[428/455] Compiling GiftUIRuntimeCore RuntimeFocusedFailureState.swift
+[429/455] Compiling GiftUIRuntimeCore RuntimeInteractionCandidateCoordinator.swift
+[430/455] Compiling GiftUIRuntimeCore RuntimeCoordinatorContracts.swift
+[431/455] Compiling GiftUIRuntimeCore RuntimeCoordinatorLifecycle.swift
+[432/455] Compiling GiftUIRuntimeCore RuntimeObservableProfileWorkspace.swift
+[433/455] Compiling GiftUIPlatformRaspberryPi PiScreenFramebufferProjection.swift
+[434/455] Emitting module GiftUIPlatformRaspberryPi
+[435/455] Compiling GiftUIPlatformRaspberryPi LinuxPiScreenExercise.swift
+[436/455] Compiling GiftUIPlatformRaspberryPi PiScreenInputEventDecoder.swift
+[437/455] Compiling GiftUIPlatformRaspberryPi LinuxPiScreenDevices.swift
+[438/455] Compiling GiftUIPlatformRaspberryPi PiScreenConsoleModeOwner.swift
+[439/455] Compiling GiftUIPlatformRaspberryPi PiScreenGeometry.swift
+[440/455] Compiling GiftUIPlatformRaspberryPi PiScreenDisplayTarget.swift
+[441/455] Compiling GiftUIRuntimeCore RuntimeStorageRegistry.swift
+[442/466] Compiling GiftUIRuntimeCore RuntimeCoordinatorQuiescence.swift
+[443/466] Compiling GiftUIRuntimeCore RuntimeCoreBoundary.swift
+[444/466] Emitting module GiftUIRuntimeCore
+[445/466] Compiling GiftUIRuntimeCore RuntimeCompletePipeline.swift
+[446/466] Compiling GiftUIRuntimeCore RuntimeCoordinatorCleanup.swift
+[447/466] Compiling GiftUIBackendIntegration RasterTextResourceValidation.swift
+[448/466] Compiling GiftUIBackendIntegration RasterFrameWorkAdmission.swift
+[449/496] Compiling GiftUIRuntimeStatic StaticRuntimeExecutionCoordinator.swift
+[450/497] Compiling GiftUIRuntimeStatic StaticRuntimeProfileBinding.swift
+[451/497] Compiling GiftUIRuntimeStatic StaticObservableRegistrationRecord.swift
+[452/497] Compiling GiftUIBackendIntegration RasterBackendStartupValidator.swift
+[453/497] Compiling GiftUIBackendIntegration RasterBackendOwnerFailureAdapter.swift
+[454/497] Compiling GiftUIBackendIntegration RasterBackendEndpoint.swift
+[455/497] Compiling GiftUIBackendIntegration OperationMajorRGB565RasterSession.swift
+[456/497] Compiling GiftUIBackendIntegration FullSurfacePayloadEmitter.swift
+[457/497] Compiling GiftUIBackendIntegration OneShotRasterBackendEndpoint.swift
+[458/497] Compiling GiftUIBackendIntegration OperationMajorTileTraversal.swift
+[459/497] Emitting module GiftUIBackendIntegration
+[460/497] Compiling GiftUIBackendIntegration RGB565TilePayloadEmitter.swift
+[461/497] Compiling GiftUIRuntimeStatic StaticProfileBoundary.swift
+[462/497] Compiling GiftUIRuntimeStatic StaticObservableRootAdapter.swift
+[463/497] Compiling GiftUIRuntimeStatic StaticObservableRootTargetAccess.swift
+[464/497] Compiling GiftUIRuntimeStatic StaticProfileStorage.swift
+[465/520] Compiling GiftUIHostConfiguration SignalAnalyzerDrawingStartupValidation.swift
+[466/520] Compiling GiftUIHostConfiguration SignalAnalyzerPresetHostInstance.swift
+[467/521] Compiling GiftUIHostConfiguration SignalAnalyzerWorkloadStartupValidation.swift
+[468/521] Compiling GiftUIHostConfiguration HostActivationController.swift
+[469/521] Compiling GiftUIHostConfiguration HostApplicationOpportunityGate.swift
+[470/521] Emitting module GiftUIHostConfiguration
+[471/521] Compiling GiftUIRuntimeStatic StaticObservableModelStorage.swift
+[472/521] Compiling GiftUIRuntimeStatic StaticObservableProfileSlotStorage.swift
+[475/521] Emitting module GiftUIRuntimeStatic
+[476/521] Compiling GiftUIRuntimeStatic StaticGeneratedProfileMetadata.swift
+[477/521] Compiling GiftUIRuntimeStatic StaticInteractionStorage.swift
+[478/521] Compiling GiftUIHostConfiguration HostConfigurationResults.swift
+[479/521] Compiling GiftUIHostConfiguration HostConfigurationValues.swift
+[482/521] Compiling GiftUIHostConfiguration HostResidualPolicyTableValidation.swift
+[483/521] Compiling GiftUIHostConfiguration HostScheduledOpportunityController.swift
+[484/521] Compiling GiftUIHostConfiguration CheckedMVPHostConfigurationValidator.swift
+[485/521] Compiling GiftUIHostConfiguration SignalAnalyzerPresets.generated.swift
+[486/521] Compiling GiftUIRuntimeDynamic DynamicRuntimeProfileBinding.swift
+[487/521] Compiling GiftUIRuntimeDynamic DynamicProfileStorage.swift
+[488/521] Compiling GiftUIRuntimeDynamic DynamicObservableStateReconciler.swift
+[489/521] Compiling GiftUIRuntimeDynamic DynamicRenderWorkspace.swift
+[490/521] Compiling GiftUIRuntimeDynamic DynamicRuntimeExecutionCoordinator.swift
+[491/522] Compiling GiftUIHostConfiguration HostResidualFailureRouting.swift
+[492/522] Compiling GiftUIHostConfiguration HostResidualPolicyContracts.swift
+[493/522] Compiling GiftUIHostConfiguration HostFailureAdapter.swift
+[494/522] Compiling GiftUIHostConfiguration HostNormalizedInputGate.swift
+[497/522] Compiling GiftUIHostConfiguration HostEndpointHealthController.swift
+[498/522] Compiling GiftUIHostConfiguration HostEndpointStartupValidation.swift
+[499/522] Compiling GiftUIHostConfiguration HostApplicationStartupValidation.swift
+[500/522] Compiling GiftUIHostConfiguration HostComponentGraphValidation.swift
+[503/522] Compiling GiftUIHostConfiguration HostPresentationRecovery.swift
+[504/522] Compiling GiftUIHostConfiguration HostPresetBootstrap.swift
+[507/522] Compiling GiftUIHostConfiguration HostSequencedFactAdmission.swift
+[508/522] Compiling GiftUIHostConfiguration HostWakePacingController.swift
+[509/524] Compiling GiftUIRuntimeDynamic DynamicProfileBoundary.swift
+[512/524] Emitting module GiftUIRuntimeDynamic
+[513/524] Compiling GiftUIRuntimeDynamic DynamicSemanticHostStorage.swift
+[514/524] Emitting module SignalAnalyzerHost
+[515/524] Compiling SignalAnalyzerHost SignalAnalyzerHostFactAdmission.swift
+[516/526] Emitting module SignalAnalyzerPresetHarness
+[517/526] Compiling SignalAnalyzerPresetHarness HardwareFreePresetRunner.swift
+[518/526] Compiling GiftUIReferenceTextResources GiftUIReferenceTextResources.swift
+[519/526] Compiling GiftUIReferenceTextResources GiftUIPiCompactTextResources.swift
+[520/526] Emitting module GiftUIReferenceTextResources
+[521/526] Compiling GiftUIReferenceTextResources ReferenceOutlinePayload.generated.swift
+[522/526] Compiling GiftUIReferenceTextResources ReferenceBitmapPayload.generated.swift
+[523/526] Compiling GiftUIReferenceTextResources ReferenceCatalogue.generated.swift
+[524/618] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFGeneratedMetadata.swift
+[525/618] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFInputABI.swift
+[526/618] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFInputCoordinator.swift
+[527/618] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFInteractionCandidateProducer.swift
+[528/618] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFInteractionHandler.swift
+[529/618] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFInteractionOccurrences.swift
+[530/618] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFInteractionTargetProjection.swift
+[531/618] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFLayoutPass.swift
+[532/626] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFPresentationPreparation.swift
+[533/626] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFPresentationTransaction.swift
+[534/626] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFProfileBinding.swift
+[535/626] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFProfileRegions.swift
+[536/626] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFRegionMap.swift
+[537/626] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFRenderOffer.swift
+[538/626] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFRenderWorkspace.swift
+[539/626] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFRepositoryProducer.swift
+[540/626] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFCaptureFactAdmission.swift
+[541/626] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFCaptureHistory.swift
+[542/626] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFCaptureRecord.swift
+[543/626] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFCaptureSnapshotView.swift
+[544/626] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFCaptureStorage.swift
+[545/626] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFCompactCaptureFact.swift
+[546/626] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFCompactFactRing.swift
+[547/626] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFCompactPresentationFact.swift
+[548/626] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFLayoutScopeCodec.swift
+[549/626] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFLayoutTextCodec.swift
+[550/626] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFLayoutWorkspace.swift
+[551/626] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFLivePathStorage.swift
+[552/626] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFModelCaptureState.swift
+[553/626] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFModelLocation.swift
+[554/626] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFModelModifierWriter.swift
+[555/626] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFModelTextWriter.swift
+[556/626] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFOperationalFailureBridge.swift
+[557/626] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFOperationalFailureFact.swift
+[558/626] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFPacedApplicationStage.swift
+[559/626] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFPresentationCommitter.swift
+[560/626] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFPresentationComposition.swift
+[561/626] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFPresentationHandoff.swift
+[562/626] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFPresentationHealth.swift
+[563/626] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFPresentationIdentityOwner.swift
+[564/626] Compiling SignalAnalyzerTargetHost DynamicSignalAnalyzerPiWakeAdmission.swift
+[565/626] Compiling SignalAnalyzerTargetHost DynamicSignalAnalyzerPiWakePacingOwner.swift
+[566/626] Compiling SignalAnalyzerTargetHost DynamicSignalAnalyzerPresentationPipeline.swift
+[567/626] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFCanvasTable.generated.swift
+[568/626] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFEmbeddedCanvasTable.generated.swift
+[569/626] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFModelDescriptor.generated.swift
+[570/626] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFModifierPayload.generated.swift
+[571/626] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFPackedSemanticRecords.generated.swift
+[572/626] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFPresentationInputs.generated.swift
+[573/626] Compiling SignalAnalyzerTargetHost SignalAnalyzerCycleOwnerFailure.swift
+[574/626] Compiling SignalAnalyzerTargetHost SignalAnalyzerCycleResidualPolicyOwner.swift
+[575/626] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerActionDispatcher.swift
+[576/626] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFApplicationInputOwner.swift
+[577/626] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFApplicationStorage.swift
+[578/626] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFAssembly.swift
+[579/626] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFCanvasInvocationSource.swift
+[580/626] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFCanvasPass.swift
+[581/626] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFEmbeddedLayoutScopeCodec.swift
+[582/626] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFEmbeddedLayoutTextCodec.swift
+[583/626] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFEmbeddedLayoutWorkspace.swift
+[584/626] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFEmbeddedResolvedLayoutView.swift
+[585/626] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFEmbeddedSemanticRegion.swift
+[586/626] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFEmbeddedSemanticValidator.swift
+[587/626] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFEmbeddedSemanticView.swift
+[588/626] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFEndpoint.swift
+[589/626] Compiling SignalAnalyzerTargetHost DynamicSignalAnalyzerActionDispatcher.swift
+[590/626] Compiling SignalAnalyzerTargetHost DynamicSignalAnalyzerApplicationFailureOwner.swift
+[591/626] Compiling SignalAnalyzerTargetHost DynamicSignalAnalyzerPiAssembly.swift
+[592/626] Compiling SignalAnalyzerTargetHost DynamicSignalAnalyzerPiContactIngress.swift
+[593/626] Compiling SignalAnalyzerTargetHost DynamicSignalAnalyzerPiCorrelationOwner.swift
+[594/626] Compiling SignalAnalyzerTargetHost DynamicSignalAnalyzerPiEndpoint.swift
+[595/626] Compiling SignalAnalyzerTargetHost DynamicSignalAnalyzerPiInitialPresentationOwner.swift
+[596/626] Compiling SignalAnalyzerTargetHost DynamicSignalAnalyzerPiInputCoordinator.swift
+[597/626] Compiling SignalAnalyzerTargetHost DynamicSignalAnalyzerPiLifecycleOwner.swift
+[598/626] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFPrimitivePayload.generated.swift
+[599/626] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFReferenceMetrics.generated.swift
+[600/626] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFSemanticRegion.generated.swift
+[601/626] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFTextPoolWriter.generated.swift
+[602/626] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFTopologyWriter.generated.swift
+[603/626] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFUTF8LayoutView.generated.swift
+[604/626] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFUTF8RenderView.generated.swift
+[605/626] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFUTF8TextPool.generated.swift
+[606/626] Compiling SignalAnalyzerTargetHost SignalAnalyzerCycleFailureNormalizer.swift
+[607/626] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFDeterministicSource.swift
+[608/626] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFDisplayTarget.swift
+[609/626] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFDrawingPlanRecords.swift
+[610/626] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFDrawingPlanStorage.swift
+[611/626] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFDrawingWorkspace.swift
+[612/626] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFEmbeddedLayoutInterfaces.swift
+[613/626] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFEmbeddedLayoutModifier.swift
+[614/626] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFEmbeddedLayoutPrimitive.swift
+[615/626] Emitting module SignalAnalyzerTargetHost
+[616/626] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFResidualRouting.swift
+[617/626] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFResolvedLayout.swift
+[618/626] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFRuntimeStorage.swift
+[619/626] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFSPITFTTransport.swift
+[620/626] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFSealedFactApplication.swift
+[621/626] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFSemanticPublication.swift
+[622/626] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFSnapshotFact.swift
+[623/626] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFTileStorage.swift
+[624/631] Compiling SignalAnalyzerRaspberryPiARMv6 LinuxSignalAnalyzerPiInputPump.swift
+[625/631] Compiling SignalAnalyzerRaspberryPiARMv6 main.swift
+[626/631] Compiling SignalAnalyzerRaspberryPiARMv6 LinuxSignalAnalyzerPiProcessLoop.swift
+[627/631] Emitting module SignalAnalyzerRaspberryPiARMv6
+[628/631] Compiling SignalAnalyzerRaspberryPiARMv6 PiHostNativeRehearsal.swift
+[628/631] Write Objects.LinkFileList
+[629/631] Linking SignalAnalyzerRaspberryPiARMv6
+[630/631] Applying SignalAnalyzerRaspberryPiARMv6
+Build of product 'SignalAnalyzerRaspberryPiARMv6' complete! (28.65s)
+swiftpm-command: swift run --package-path /Users/eugene/work/GiftUI --disable-sandbox -Xswiftc -DGIFTUI_DYNAMIC_PROFILE SignalAnalyzerRaspberryPiARMv6 --rehearse-host
+[0/1] Planning build
+Building for debugging...
+[0/3] Write swift-version--58304C5D6DBC2206.txt
+Build of product 'SignalAnalyzerRaspberryPiARMv6' complete! (0.92s)
+swiftpm-command: swift run --package-path /Users/eugene/work/GiftUI --disable-sandbox -Xswiftc -DGIFTUI_DYNAMIC_PROFILE SignalAnalyzerRaspberryPiARMv6 --rehearse-host
+[0/1] Planning build
+Building for debugging...
+[0/3] Write swift-version--58304C5D6DBC2206.txt
+Build of product 'SignalAnalyzerRaspberryPiARMv6' complete! (0.91s)
+swiftpm-command: swift run --package-path /Users/eugene/work/GiftUI --disable-sandbox -Xswiftc -DGIFTUI_DYNAMIC_PROFILE SignalAnalyzerRaspberryPiARMv6 --rehearse-host
+[0/1] Planning build
+Building for debugging...
+[0/3] Write swift-version--58304C5D6DBC2206.txt
+Build of product 'SignalAnalyzerRaspberryPiARMv6' complete! (0.91s)
+swiftpm-command: swift run --package-path /Users/eugene/work/GiftUI --disable-sandbox -Xswiftc -DGIFTUI_DYNAMIC_PROFILE SignalAnalyzerRaspberryPiARMv6 --rehearse-host
+[0/1] Planning build
+Building for debugging...
+[0/3] Write swift-version--58304C5D6DBC2206.txt
+Build of product 'SignalAnalyzerRaspberryPiARMv6' complete! (0.92s)
+swiftpm-command: swift run --package-path /Users/eugene/work/GiftUI --disable-sandbox -Xswiftc -DGIFTUI_DYNAMIC_PROFILE SignalAnalyzerRaspberryPiARMv6 --rehearse-host
+[0/1] Planning build
+Building for debugging...
+[0/3] Write swift-version--58304C5D6DBC2206.txt
+Build of product 'SignalAnalyzerRaspberryPiARMv6' complete! (0.91s)
+frame 3 capture_count: mac=64 pi=60

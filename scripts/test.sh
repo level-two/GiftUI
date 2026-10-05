@@ -162,7 +162,11 @@ run_check root-tests giftui_swiftpm \
 # The two complete macOS reference corpora run in root-tests. Reuse that
 # successful shared check across profile drivers; standalone drivers run them.
 if [[ "${last_check_status}" -eq 0 ]]; then
-    export GIFTUI_SHARED_REFERENCE_ALREADY_TESTED=1
+    if python3 "${PROJECT_ROOT}/scripts/contracts/current-spec-001-reference-traces.py" publish \
+        "${report_dir}/reference-traces" --log "${report_dir}/logs/root-tests.log"; then
+        export GIFTUI_SHARED_REFERENCE_ALREADY_TESTED=1
+        export GIFTUI_SHARED_REFERENCE_TRACES="${report_dir}/reference-traces"
+    fi
 fi
 run_check spec-003-diagnostic-buffer \
     "${PROJECT_ROOT}/scripts/contracts/check-spec-003-diagnostic-buffer.sh"
