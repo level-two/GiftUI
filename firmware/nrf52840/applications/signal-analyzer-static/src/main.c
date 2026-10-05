@@ -66,7 +66,7 @@ int main(void)
     struct giftui_static_host_storage regions;
     if (giftui_signal_analyzer_static_preset() != 360515885u ||
         giftui_signal_analyzer_source_valid() != 1u ||
-        giftui_signal_analyzer_storage_bytes() != 157808u ||
+        giftui_signal_analyzer_storage_bytes() != 61808u ||
         giftui_signal_analyzer_capture_layout() != 19392u ||
         giftui_signal_analyzer_capture_roundtrip() != 1u ||
         giftui_signal_analyzer_compact_fact_valid() != 1u ||
