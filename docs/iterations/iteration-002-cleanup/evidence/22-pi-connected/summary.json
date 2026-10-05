@@ -1,0 +1,28 @@
+{
+  "artifact_sha256": "90dec11ef8cfd39480b888eb0cdef90ac9695d454ef7f9bdd12466ab7c8fa211",
+  "architecture": "armv6l",
+  "host": "192.168.55.44",
+  "recording_rehearsal": {
+    "workload_frames": 120,
+    "delivered_transitions": 2400,
+    "capture_revision": 2404,
+    "retained_at_end": 61,
+    "source_logical_duration_ms": 201770,
+    "reference_other_frames": 9,
+    "reference_actions": 12,
+    "input_kind": "software contacts; recording framebuffer; accelerated logical time on real ARMv6 CPU"
+  },
+  "production_loop": {
+    "elapsed_seconds": 45.91582573400001,
+    "wrapper_exit_code": 124,
+    "application_status": "completed",
+    "frame_cost_count": 31,
+    "frame_cost_min_us": 1322263,
+    "frame_cost_max_us": 1509253,
+    "frame_cost_mean_us": 1393700.3548387096,
+    "rss_peak_kib": 9808,
+    "input_trace_count": 0,
+    "input_kind": "real framebuffer/touch device loop; no supplied physical contacts or synthetic events"
+  },
+  "limits": "No independent physical pixels/touch corpus, sustained 80-Hz wall-time or exhaustive stack proof; existing timing exception unchanged"
+}

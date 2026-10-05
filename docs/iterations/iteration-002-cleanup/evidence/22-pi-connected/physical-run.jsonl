@@ -1,0 +1,73 @@
+{"kind": "identity", "utc": "2026-10-05T09:05:24.796345+00:00", "architecture": "armv6l", "hostname": "giftui-pi", "binary_digest": "90dec11ef8cfd39480b888eb0cdef90ac9695d454ef7f9bdd12466ab7c8fa211", "temperature_millidegrees": "43850"}
+{"kind": "command", "utc": "2026-10-05T09:05:24.817144+00:00", "argv": ["sudo", "-n", "env", "GIFTUI_PI_TRACE=1", "SWIFT_BACKTRACE=enable=yes", "timeout", "--signal=INT", "--kill-after=10", "45", "stdbuf", "-oL", "-eL", "/home/giftui/giftui/bin/SignalAnalyzerRaspberryPiARMv6", "--run-signal-analyzer"], "input_kind": "physical input if supplied; no synthetic input in this baseline"}
+{"kind": "process", "utc": "2026-10-05T09:05:25.070411+00:00", "elapsed_seconds": 0.23841128300000491, "samples": []}
+{"kind": "process", "utc": "2026-10-05T09:05:26.305208+00:00", "elapsed_seconds": 1.4731176860000232, "samples": [{"pid": 711, "rss_kib": 9628, "cpu_percent": "63.7", "status": ["VmHWM:\t    9628 kB", "VmRSS:\t    9628 kB", "Threads:\t1"]}]}
+{"kind": "process", "utc": "2026-10-05T09:05:27.504323+00:00", "elapsed_seconds": 2.672326953000038, "samples": [{"pid": 711, "rss_kib": 9720, "cpu_percent": "53.3", "status": ["VmHWM:\t    9720 kB", "VmRSS:\t    9720 kB", "Threads:\t1"]}]}
+{"kind": "trace", "utc": "2026-10-05T09:05:28.264053+00:00", "line": "pi-frame-duration-us 1349474"}
+{"kind": "process", "utc": "2026-10-05T09:05:28.724053+00:00", "elapsed_seconds": 3.8920597390001603, "samples": [{"pid": 711, "rss_kib": 9740, "cpu_percent": "50.8", "status": ["VmHWM:\t    9740 kB", "VmRSS:\t    9740 kB", "Threads:\t1"]}]}
+{"kind": "trace", "utc": "2026-10-05T09:05:29.638255+00:00", "line": "pi-frame-duration-us 1362074"}
+{"kind": "process", "utc": "2026-10-05T09:05:29.985757+00:00", "elapsed_seconds": 5.153768533000175, "samples": [{"pid": 711, "rss_kib": 9756, "cpu_percent": "49.1", "status": ["VmHWM:\t    9760 kB", "VmRSS:\t    9760 kB", "Threads:\t1"]}]}
+{"kind": "trace", "utc": "2026-10-05T09:05:31.146428+00:00", "line": "pi-frame-duration-us 1490527"}
+{"kind": "process", "utc": "2026-10-05T09:05:31.219982+00:00", "elapsed_seconds": 6.388001998000163, "samples": [{"pid": 711, "rss_kib": 9768, "cpu_percent": "47.1", "status": ["VmHWM:\t    9768 kB", "VmRSS:\t    9768 kB", "Threads:\t1"]}]}
+{"kind": "process", "utc": "2026-10-05T09:05:32.393877+00:00", "elapsed_seconds": 7.561886919000017, "samples": [{"pid": 711, "rss_kib": 9768, "cpu_percent": "47.0", "status": ["VmHWM:\t    9768 kB", "VmRSS:\t    9768 kB", "Threads:\t1"]}]}
+{"kind": "trace", "utc": "2026-10-05T09:05:32.549691+00:00", "line": "pi-frame-duration-us 1389665"}
+{"kind": "process", "utc": "2026-10-05T09:05:33.579471+00:00", "elapsed_seconds": 8.747491570000193, "samples": [{"pid": 711, "rss_kib": 9776, "cpu_percent": "47.2", "status": ["VmHWM:\t    9776 kB", "VmRSS:\t    9776 kB", "Threads:\t1"]}]}
+{"kind": "trace", "utc": "2026-10-05T09:05:33.929837+00:00", "line": "pi-frame-duration-us 1366780"}
+{"kind": "process", "utc": "2026-10-05T09:05:34.764400+00:00", "elapsed_seconds": 9.932418249000193, "samples": [{"pid": 711, "rss_kib": 9776, "cpu_percent": "47.2", "status": ["VmHWM:\t    9776 kB", "VmRSS:\t    9776 kB", "Threads:\t1"]}]}
+{"kind": "trace", "utc": "2026-10-05T09:05:35.321633+00:00", "line": "pi-frame-duration-us 1378392"}
+{"kind": "process", "utc": "2026-10-05T09:05:35.935916+00:00", "elapsed_seconds": 11.103937259000077, "samples": [{"pid": 711, "rss_kib": 9780, "cpu_percent": "47.5", "status": ["VmHWM:\t    9780 kB", "VmRSS:\t    9780 kB", "Threads:\t1"]}]}
+{"kind": "trace", "utc": "2026-10-05T09:05:36.707829+00:00", "line": "pi-frame-duration-us 1373962"}
+{"kind": "process", "utc": "2026-10-05T09:05:37.151609+00:00", "elapsed_seconds": 12.319627224999977, "samples": [{"pid": 711, "rss_kib": 9780, "cpu_percent": "47.6", "status": ["VmHWM:\t    9780 kB", "VmRSS:\t    9780 kB", "Threads:\t1"]}]}
+{"kind": "trace", "utc": "2026-10-05T09:05:38.090019+00:00", "line": "pi-frame-duration-us 1369950"}
+{"kind": "process", "utc": "2026-10-05T09:05:38.414643+00:00", "elapsed_seconds": 13.582665074000033, "samples": [{"pid": 711, "rss_kib": 9780, "cpu_percent": "47.4", "status": ["VmHWM:\t    9780 kB", "VmRSS:\t    9780 kB", "Threads:\t1"]}]}
+{"kind": "process", "utc": "2026-10-05T09:05:39.611601+00:00", "elapsed_seconds": 14.77961451100009, "samples": [{"pid": 711, "rss_kib": 9780, "cpu_percent": "46.7", "status": ["VmHWM:\t    9780 kB", "VmRSS:\t    9780 kB", "Threads:\t1"]}]}
+{"kind": "trace", "utc": "2026-10-05T09:05:39.614074+00:00", "line": "pi-frame-duration-us 1509253"}
+{"kind": "process", "utc": "2026-10-05T09:05:40.795032+00:00", "elapsed_seconds": 15.963051281000162, "samples": [{"pid": 711, "rss_kib": 9780, "cpu_percent": "46.9", "status": ["VmHWM:\t    9780 kB", "VmRSS:\t    9780 kB", "Threads:\t1"]}]}
+{"kind": "trace", "utc": "2026-10-05T09:05:40.950121+00:00", "line": "pi-frame-duration-us 1322263"}
+{"kind": "process", "utc": "2026-10-05T09:05:41.988857+00:00", "elapsed_seconds": 17.15687581300017, "samples": [{"pid": 711, "rss_kib": 9780, "cpu_percent": "47.1", "status": ["VmHWM:\t    9780 kB", "VmRSS:\t    9780 kB", "Threads:\t1"]}]}
+{"kind": "trace", "utc": "2026-10-05T09:05:42.321248+00:00", "line": "pi-frame-duration-us 1357539"}
+{"kind": "process", "utc": "2026-10-05T09:05:43.206723+00:00", "elapsed_seconds": 18.37473778499998, "samples": [{"pid": 711, "rss_kib": 9780, "cpu_percent": "47.3", "status": ["VmHWM:\t    9780 kB", "VmRSS:\t    9780 kB", "Threads:\t1"]}]}
+{"kind": "trace", "utc": "2026-10-05T09:05:43.698889+00:00", "line": "pi-frame-duration-us 1365409"}
+{"kind": "process", "utc": "2026-10-05T09:05:44.375917+00:00", "elapsed_seconds": 19.543936926000015, "samples": [{"pid": 711, "rss_kib": 9780, "cpu_percent": "47.4", "status": ["VmHWM:\t    9780 kB", "VmRSS:\t    9780 kB", "Threads:\t1"]}]}
+{"kind": "trace", "utc": "2026-10-05T09:05:45.085690+00:00", "line": "pi-frame-duration-us 1373459"}
+{"kind": "process", "utc": "2026-10-05T09:05:45.589065+00:00", "elapsed_seconds": 20.757083031000093, "samples": [{"pid": 711, "rss_kib": 9780, "cpu_percent": "47.6", "status": ["VmHWM:\t    9780 kB", "VmRSS:\t    9780 kB", "Threads:\t1"]}]}
+{"kind": "trace", "utc": "2026-10-05T09:05:46.469841+00:00", "line": "pi-frame-duration-us 1372153"}
+{"kind": "process", "utc": "2026-10-05T09:05:46.836862+00:00", "elapsed_seconds": 22.004881321000084, "samples": [{"pid": 711, "rss_kib": 9784, "cpu_percent": "47.5", "status": ["VmHWM:\t    9784 kB", "VmRSS:\t    9784 kB", "Threads:\t1"]}]}
+{"kind": "trace", "utc": "2026-10-05T09:05:47.918612+00:00", "line": "pi-frame-duration-us 1436421"}
+{"kind": "process", "utc": "2026-10-05T09:05:48.060168+00:00", "elapsed_seconds": 23.228189205000035, "samples": [{"pid": 711, "rss_kib": 9784, "cpu_percent": "47.2", "status": ["VmHWM:\t    9784 kB", "VmRSS:\t    9784 kB", "Threads:\t1"]}]}
+{"kind": "process", "utc": "2026-10-05T09:05:49.266815+00:00", "elapsed_seconds": 24.434827498000004, "samples": [{"pid": 711, "rss_kib": 9784, "cpu_percent": "47.1", "status": ["VmHWM:\t    9784 kB", "VmRSS:\t    9784 kB", "Threads:\t1"]}]}
+{"kind": "trace", "utc": "2026-10-05T09:05:49.365599+00:00", "line": "pi-frame-duration-us 1435755"}
+{"kind": "process", "utc": "2026-10-05T09:05:50.455974+00:00", "elapsed_seconds": 25.623996215000034, "samples": [{"pid": 711, "rss_kib": 9788, "cpu_percent": "47.3", "status": ["VmHWM:\t    9788 kB", "VmRSS:\t    9788 kB", "Threads:\t1"]}]}
+{"kind": "trace", "utc": "2026-10-05T09:05:50.724700+00:00", "line": "pi-frame-duration-us 1346414"}
+{"kind": "process", "utc": "2026-10-05T09:05:51.688779+00:00", "elapsed_seconds": 26.856791906000126, "samples": [{"pid": 711, "rss_kib": 9788, "cpu_percent": "47.5", "status": ["VmHWM:\t    9788 kB", "VmRSS:\t    9788 kB", "Threads:\t1"]}]}
+{"kind": "trace", "utc": "2026-10-05T09:05:52.130308+00:00", "line": "pi-frame-duration-us 1392043"}
+{"kind": "process", "utc": "2026-10-05T09:05:52.876410+00:00", "elapsed_seconds": 28.044415680000156, "samples": [{"pid": 711, "rss_kib": 9792, "cpu_percent": "47.5", "status": ["VmHWM:\t    9792 kB", "VmRSS:\t    9792 kB", "Threads:\t1"]}]}
+{"kind": "trace", "utc": "2026-10-05T09:05:53.551694+00:00", "line": "pi-frame-duration-us 1407920"}
+{"kind": "process", "utc": "2026-10-05T09:05:54.082720+00:00", "elapsed_seconds": 29.250740020000194, "samples": [{"pid": 711, "rss_kib": 9792, "cpu_percent": "47.6", "status": ["VmHWM:\t    9792 kB", "VmRSS:\t    9792 kB", "Threads:\t1"]}]}
+{"kind": "trace", "utc": "2026-10-05T09:05:54.947834+00:00", "line": "pi-frame-duration-us 1382532"}
+{"kind": "process", "utc": "2026-10-05T09:05:55.316871+00:00", "elapsed_seconds": 30.484890709000183, "samples": [{"pid": 711, "rss_kib": 9792, "cpu_percent": "47.7", "status": ["VmHWM:\t    9792 kB", "VmRSS:\t    9792 kB", "Threads:\t1"]}]}
+{"kind": "trace", "utc": "2026-10-05T09:05:56.420514+00:00", "line": "pi-frame-duration-us 1470561"}
+{"kind": "process", "utc": "2026-10-05T09:05:56.534782+00:00", "elapsed_seconds": 31.702799794000157, "samples": [{"pid": 711, "rss_kib": 9792, "cpu_percent": "47.4", "status": ["VmHWM:\t    9792 kB", "VmRSS:\t    9792 kB", "Threads:\t1"]}]}
+{"kind": "process", "utc": "2026-10-05T09:05:57.728844+00:00", "elapsed_seconds": 32.896861455000135, "samples": [{"pid": 711, "rss_kib": 9792, "cpu_percent": "47.3", "status": ["VmHWM:\t    9792 kB", "VmRSS:\t    9792 kB", "Threads:\t1"]}]}
+{"kind": "trace", "utc": "2026-10-05T09:05:57.894360+00:00", "line": "pi-frame-duration-us 1459967"}
+{"kind": "process", "utc": "2026-10-05T09:05:58.934589+00:00", "elapsed_seconds": 34.102355288000126, "samples": [{"pid": 711, "rss_kib": 9796, "cpu_percent": "47.5", "status": ["VmHWM:\t    9796 kB", "VmRSS:\t    9796 kB", "Threads:\t1"]}]}
+{"kind": "trace", "utc": "2026-10-05T09:05:59.276700+00:00", "line": "pi-frame-duration-us 1367978"}
+{"kind": "process", "utc": "2026-10-05T09:06:00.149952+00:00", "elapsed_seconds": 35.317972216000044, "samples": [{"pid": 711, "rss_kib": 9796, "cpu_percent": "47.5", "status": ["VmHWM:\t    9796 kB", "VmRSS:\t    9796 kB", "Threads:\t1"]}]}
+{"kind": "trace", "utc": "2026-10-05T09:06:00.655142+00:00", "line": "pi-frame-duration-us 1364933"}
+{"kind": "process", "utc": "2026-10-05T09:06:01.300158+00:00", "elapsed_seconds": 36.46818059100019, "samples": [{"pid": 711, "rss_kib": 9796, "cpu_percent": "47.6", "status": ["VmHWM:\t    9796 kB", "VmRSS:\t    9796 kB", "Threads:\t1"]}]}
+{"kind": "trace", "utc": "2026-10-05T09:06:02.015353+00:00", "line": "pi-frame-duration-us 1347246"}
+{"kind": "process", "utc": "2026-10-05T09:06:02.517071+00:00", "elapsed_seconds": 37.68509079199998, "samples": [{"pid": 711, "rss_kib": 9796, "cpu_percent": "47.8", "status": ["VmHWM:\t    9796 kB", "VmRSS:\t    9796 kB", "Threads:\t1"]}]}
+{"kind": "trace", "utc": "2026-10-05T09:06:03.430110+00:00", "line": "pi-frame-duration-us 1402297"}
+{"kind": "process", "utc": "2026-10-05T09:06:03.764838+00:00", "elapsed_seconds": 38.93286018800018, "samples": [{"pid": 711, "rss_kib": 9800, "cpu_percent": "47.7", "status": ["VmHWM:\t    9800 kB", "VmRSS:\t    9800 kB", "Threads:\t1"]}]}
+{"kind": "trace", "utc": "2026-10-05T09:06:04.903587+00:00", "line": "pi-frame-duration-us 1461082"}
+{"kind": "process", "utc": "2026-10-05T09:06:04.984904+00:00", "elapsed_seconds": 40.152923611000006, "samples": [{"pid": 711, "rss_kib": 9808, "cpu_percent": "47.6", "status": ["VmHWM:\t    9808 kB", "VmRSS:\t    9808 kB", "Threads:\t1"]}]}
+{"kind": "process", "utc": "2026-10-05T09:06:06.170438+00:00", "elapsed_seconds": 41.338458515000184, "samples": [{"pid": 711, "rss_kib": 9808, "cpu_percent": "47.6", "status": ["VmHWM:\t    9808 kB", "VmRSS:\t    9808 kB", "Threads:\t1"]}]}
+{"kind": "trace", "utc": "2026-10-05T09:06:06.358077+00:00", "line": "pi-frame-duration-us 1443279"}
+{"kind": "process", "utc": "2026-10-05T09:06:07.363990+00:00", "elapsed_seconds": 42.532013103000054, "samples": [{"pid": 711, "rss_kib": 9808, "cpu_percent": "47.7", "status": ["VmHWM:\t    9808 kB", "VmRSS:\t    9808 kB", "Threads:\t1"]}]}
+{"kind": "trace", "utc": "2026-10-05T09:06:07.721470+00:00", "line": "pi-frame-duration-us 1349932"}
+{"kind": "process", "utc": "2026-10-05T09:06:08.576322+00:00", "elapsed_seconds": 43.74432968000019, "samples": [{"pid": 711, "rss_kib": 9808, "cpu_percent": "47.8", "status": ["VmHWM:\t    9808 kB", "VmRSS:\t    9808 kB", "Threads:\t1"]}]}
+{"kind": "trace", "utc": "2026-10-05T09:06:09.106790+00:00", "line": "pi-frame-duration-us 1371876"}
+{"kind": "process", "utc": "2026-10-05T09:06:09.744394+00:00", "elapsed_seconds": 44.912417314000095, "samples": [{"pid": 711, "rss_kib": 9808, "cpu_percent": "48.0", "status": ["VmHWM:\t    9808 kB", "VmRSS:\t    9808 kB", "Threads:\t1"]}]}
+{"kind": "trace", "utc": "2026-10-05T09:06:10.501716+00:00", "line": "pi-frame-duration-us 1383575"}
+{"kind": "trace", "utc": "2026-10-05T09:06:10.520245+00:00", "line": "status=completed"}
+{"kind": "exit", "utc": "2026-10-05T09:06:10.747809+00:00", "wrapper_exit_code": 124, "elapsed_seconds": 45.91582573400001, "stop_reason": "45-second SIGINT timeout; application status is recorded separately"}

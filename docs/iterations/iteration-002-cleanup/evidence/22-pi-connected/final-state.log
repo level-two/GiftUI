@@ -1,0 +1,23 @@
+armv6l
+giftui-pi
+90dec11ef8cfd39480b888eb0cdef90ac9695d454ef7f9bdd12466ab7c8fa211  /home/giftui/giftui/bin/SignalAnalyzerRaspberryPiARMv6
+[   83.322572] usb 1-1.2: rtl8xxxu: Loading firmware rtlwifi/rtl8188eufw.bin
+[   83.344313] usb 1-1.2: Firmware revision 28.0 (signature 0x88e1)
+[   83.948239] usbcore: registered new interface driver rtl8xxxu
+[   86.909832] wlan0: authenticate with 54:db:a2:42:0a:8c (local address=d4:6e:0e:0a:f4:5f)
+[   86.909901] wlan0: send auth to 54:db:a2:42:0a:8c (try 1/3)
+[   86.918827] wlan0: authenticated
+[   86.923489] wlan0: associate with 54:db:a2:42:0a:8c (try 1/3)
+[   86.943723] wlan0: RX AssocResp from 54:db:a2:42:0a:8c (capab=0x1c31 status=30 aid=0)
+[   86.943857] wlan0: 54:db:a2:42:0a:8c rejected association temporarily; comeback duration 1024 TU (1048 ms)
+[   88.003559] wlan0: associate with 54:db:a2:42:0a:8c (try 2/3)
+[   88.213340] wlan0: associate with 54:db:a2:42:0a:8c (try 3/3)
+[   88.423321] wlan0: association with 54:db:a2:42:0a:8c timed out
+[   89.761334] wlan0: authenticate with 54:db:a2:42:0a:8c (local address=d4:6e:0e:0a:f4:5f)
+[   89.761403] wlan0: send auth to 54:db:a2:42:0a:8c (try 1/3)
+[   89.778415] wlan0: authenticated
+[   89.783435] wlan0: associate with 54:db:a2:42:0a:8c (try 1/3)
+[   89.795686] wlan0: RX AssocResp from 54:db:a2:42:0a:8c (capab=0x1c31 status=0 aid=10)
+[   89.807077] usb 1-1.2: rtl8xxxu_bss_info_changed: HT supported
+[   89.811220] wlan0: associated
+[   89.811584] wlan0: Limiting TX power to 30 (30 - 0) dBm as advertised by 54:db:a2:42:0a:8c
