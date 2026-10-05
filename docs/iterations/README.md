@@ -9,7 +9,7 @@ criteria of each delivery commitment. The machine-readable index is the
 - [ITERATION-001: GiftUI MVP](iteration-001-mvp.md) — the established MVP
   baseline and recorded closure with approved exceptions.
 
-- [ITERATION-002: Cleanup](iteration-002-cleanup.md) — active revision 7,
+- [ITERATION-002: Cleanup](iteration-002-cleanup.md) — closed revision 7,
   following the completed bounded audit and explicit scope approval; selected
   remediation and validation remain under their governing contracts.
 - [ITERATION-003: Dev UX Improvement](iteration-003-dev-ux-improvement.md) —

@@ -16,7 +16,7 @@ superseded_by: null
 
 # SPEC-013 Conformance Report
 
-**Current amendment — 2026-10-05:** Approved five-second retention is implemented and all four hardware-free profiles pass in the [fresh integration](../iterations/iteration-002-cleanup/evidence/18-retention-integration/result.md). Focused nRF connected checks and restoration succeed; Pi connectivity blocks its new deployment/production-loop check. Original exception authority remains unchanged.
+**Current amendment — 2026-10-05:** Approved five-second retention is implemented and all four hardware-free profiles pass in the [fresh integration](../iterations/iteration-002-cleanup/evidence/18-retention-integration/result.md). Focused nRF connected checks/restoration and current Pi deployment/ARMv6 rehearsal/bounded physical endpoint loop succeed. Original exception authority remains unchanged.
 
 
 > **Current disposition — 2026-10-03:** [Final owner review](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/iteration-closeout-20261003/README.md) closes the amended seam and production-join applicability blockers. All four owner profiles and the complete 72-check gate pass; all owner task dispositions are complete. The maintainer explicitly approved the implemented transition in the linked owner-approval record.
@@ -215,3 +215,19 @@ current nRF restoration succeeds and explicit deployment approval is recorded.
 | `RP-013` | pass | [Current profile/criterion evidence](../iterations/iteration-002-cleanup/evidence/18-retention-integration/result.md). Four current owner/profile reports and composed evidence in packet 18; passing scope is hardware-free unless packet 16 explicitly supplies a connected subset. |
 | `RP-014` | pass | [Current profile/criterion evidence](../iterations/iteration-002-cleanup/evidence/18-retention-integration/result.md). Four current owner/profile reports and composed evidence in packet 18; passing scope is hardware-free unless packet 16 explicitly supplies a connected subset. |
 | `RP-015` | pass | [Current profile/criterion evidence](../iterations/iteration-002-cleanup/evidence/18-retention-integration/result.md). Four current owner/profile reports and composed evidence in packet 18; passing scope is hardware-free unless packet 16 explicitly supplies a connected subset. |
+
+## Current Pi completion and iteration reconciliation — 2026-10-05
+
+[Verified deployed image](../iterations/iteration-002-cleanup/evidence/21-pi-deployment/result.md)
+and [current ARMv6 connected packet](../iterations/iteration-002-cleanup/evidence/22-pi-connected/result.md)
+supersede the previous connectivity blocker. Actual ARMv6 production-owner
+software/recording rehearsal passes 120 workload frames, nine startup/action
+frames and 12 actions against the current hashed reference. Real physical
+framebuffer/touch loop runs boundedly, observes no supplied contacts, and ends
+`status=completed` with no remaining process and unchanged hash. Physical-loop
+frame costs remain 1.322–1.509s; no timing pass is inferred. Software/control/
+source proof and physical endpoint startup/cleanup remain separately classified.
+Together with nRF packet 16, T12.4/T11.7 and final T11.8 are complete.
+[Final criterion/closure record](../iterations/iteration-002-cleanup/evidence/23-closeout/result.md)
+retains the original exception and deferred boundaries; no Specification
+lifecycle transition or broader physical/timing/stack conformance follows.

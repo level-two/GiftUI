@@ -1,7 +1,7 @@
 ---
 id: ITERATION-002
 title: Cleanup
-status: active
+status: closed
 revision: 7
 approved_revision: 7
 created: 2026-10-04
@@ -13,7 +13,7 @@ features:
   - observable-reference-state
   - canvas-drawing
 approval: "Eugene approved revision 7 on 2026-10-04: let's approve the scope of iteration 2, commit everything and proceed with the implementation plan derivation. Evidence: docs/iterations/iteration-002-review/32-scope-approval.md."
-closure: null
+closure: docs/iterations/iteration-002-cleanup/evidence/23-closeout/result.md
 ---
 
 # ITERATION-002: Cleanup
@@ -192,8 +192,8 @@ before plan derivation. The remaining gates are explicit:
    are complete; historical accepted reasoning and raw evidence are preserved.
 4. [Delivery coordination and derived owner plans](iteration-002-cleanup/implementation-plan.md)
    now record task ordering and evidence mappings under the governing Specs.
-   Maintenance and retention production tasks are implemented; focused Pi validation
-   and its dependent reconciliation remain blocked by connectivity.
+   Maintenance, retention production and scoped Pi/nRF validation tasks are complete;
+   final reconciliation and standing approval provenance are recorded in packet 23.
    This scope's milestones are not a replacement plan.
 5. If hardware is unavailable at validation time, leave the focused connected
    criteria unmet and report the blocker; obtain an explicit scoped exception or
@@ -225,13 +225,13 @@ No deferred artifact is promoted and no feature stage changes through scope appr
 
 ## Closure and Follow-up
 
-All nine selected production changes are implemented. [Current reconciliation](iteration-002-cleanup/evidence/19-current-handoff/result.md)
-records every criterion's disposition, per-step commits, exact current evidence
-and deferred boundaries. The final 74-check hardware-free gate and all 60 report
-manifests pass; focused nRF startup/software-action/fault/cleanup checks succeed.
-Pi connectivity blocks deployment and the required bounded production-loop check,
-so T12.4/T11.7 and dependent T11.8/FINAL-01 remain incomplete. The iteration stays
-active with `closure: null`; no missing hardware evidence is waived by inference.
+All nine selected production changes and required validation subsets are complete.
+[Final reconciliation](iteration-002-cleanup/evidence/23-closeout/result.md)
+records all thirteen criterion dispositions, per-step commits, current hashes,
+maintainer authorization and unchanged exception/deferred boundaries. The final
+74-check gate and 60 report manifests pass; current Pi and nRF checks complete
+the previously blocked connected tasks. T12.4/T11.7/T11.8/FINAL-01 are complete.
+The iteration is closed at approved revision 7; no missing evidence was waived.
 
 ## References
 
@@ -249,3 +249,7 @@ active with `closure: null`; no missing hardware evidence is waived by inference
 - [SPEC-015](../specs/spec-015-host-configuration.md)
 - [SPEC-001 implementation plan](../implementation-plans/spec-001-implementation-plan.md), Milestone 10.
 - Discussion provenance: “Plan MVP Cleanup Iteration” (`01a0fd70-a61c-7b43-9eb0-28ac915ee793`), “Review module dependency direction” (`01a0f92f-f02e-7a53-99d0-5f3bc8e3a546`), “Explain Static nRF Stack Hierarchy” (`01a0fb90-48f5-7d63-ad19-d7af9457368b`), “Assess Removing Project-wide ifdefs” (`01a0fcf0-fa50-75e2-835f-3105c62b284d`), and “Assess 10 Hz Input Frequency Limit” (`01a0fd19-a846-7a12-a9b6-1e50a84c13a1`).
+
+## Final delivery and closure — 2026-10-05
+
+[Complete thirteen-criterion reconciliation and maintainer authorization](iteration-002-cleanup/evidence/23-closeout/result.md) supersedes the preceding partial/blocker descriptions. The user-supplied IP restored access; current Pi deployment, ARMv6 source/control rehearsal and bounded physical endpoint cleanup complete the remaining subset. All selected production, hardware-free and scoped connected tasks are complete and committed. Scope revision 7 closes under the maintainer’s standing approval of the complete workflow, with original timing/physical exceptions and deferred boundaries preserved.

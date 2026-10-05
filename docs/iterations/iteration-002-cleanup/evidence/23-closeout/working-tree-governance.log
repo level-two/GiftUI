@@ -1,0 +1,6 @@
+Authority graph validation failed with 4 error(s):
+- docs/spikes/spike-015-counter-integration-control-feasibility.md: EXP-002 lacks reciprocal deferred-work link
+- docs/spikes/spike-015-counter-integration-control-feasibility.md: FW-016 lacks reciprocal deferred-work link
+- docs/spikes/spike-015-counter-integration-control-feasibility.md: FW-030 lacks reciprocal deferred-work link
+- docs/spikes/spike-015-counter-integration-control-feasibility.md: SPIKE-014 lacks reciprocal deferred-work link
+Governance validation failed: authority graph validation failed.

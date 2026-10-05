@@ -3,7 +3,7 @@
 **Governing scope:** [approved revision 7](../iteration-002-cleanup.md),
 [approval provenance](../iteration-002-review/32-scope-approval.md), approval
 commit `2a0bf0fa`.
-**Prepared:** 2026-10-04. **Execution:** active.
+**Prepared:** 2026-10-04. **Execution:** complete.
 
 This derived record coordinates the nine approved outcomes across existing
 owner plans and repository tooling. It adds no architecture, contract,
@@ -11,14 +11,12 @@ exception or approval. The SPEC-001/011/013 plans contain the executable
 maintenance tasks; their original milestones and evidence remain historical.
 Other owner Specifications retain their existing plans and regression gates.
 
-**Readiness:** I2-01–08 maintenance implementation and fresh integration are
-complete in their hardware-free scope. I2-09's RFC/ADR/Spec approvals and ready
-SPEC-001 milestone 12 are established by [explicit approval](retention-approval.md).
-T12.1 production storage is complete, native tests pass, and fresh profile/
-combined validation passes all 74 checks with 60 verified reports. Scoped nRF
-checks completed; Pi connectivity
-is the remaining connected dependency. Final closure still requires all results
-or a specifically approved scope amendment/exception.
+**Completion:** All nine selected outcomes and owner/TOOL/RET/FINAL tasks are complete.
+Approved retention authority and milestone 12 remain linked to [explicit approval](retention-approval.md).
+The fresh gate passes 74 checks and verifies 60 reports; current Pi and nRF scoped
+connected checks complete the device subset. [Final criterion dispositions and
+closure provenance](evidence/23-closeout/result.md) preserve original exceptions
+and deferred boundaries. Earlier partial/blocked records below are historical.
 
 ## Authority and current state
 
@@ -170,7 +168,7 @@ Specification criterion matrices and append cleanup tasks to affected rows.
 
 ### Final integration and closure
 
-- [ ] **FINAL-01 — Iteration reconciliation.** Depend on completed owner tasks,
+- [x] **FINAL-01 — Iteration reconciliation.** Depend on completed owner tasks,
   TOOL-01/02 and approved/executed retention tasks, or a separately approved scope
   amendment/exception for any missing outcome. Verify all thirteen iteration
   criteria, complete/partial/deferred finding dispositions, immutable report and
@@ -288,3 +286,5 @@ pending all selected outcomes; timing/physical exceptions are unchanged.
 **Pi resumption — 2026-10-05:** [Current retry](evidence/20-pi-resumption/result.md) verifies the ready local toolchain and unchanged tested artifact. SSH/Bonjour still cannot resolve the saved hostname; current IP/SSH address is requested. Device-dependent task dispositions remain unchanged.
 
 **Pi deployment — 2026-10-05:** [Verified target and atomic deployment](evidence/21-pi-deployment/result.md) succeed at the user-supplied 192.168.55.44 with saved-key verification. The deployed hash equals the tested artifact; bounded connected checks remain in progress.
+
+**Final completion — 2026-10-05:** [Scope-wide criterion reconciliation and standing approval provenance](evidence/23-closeout/result.md). Pi packet 22 resolves the last connected dependency; all owner/TOOL/RET/FINAL tasks are complete. The scope is closed under the maintainer’s standing approval after all selected outcomes are evidenced. Earlier partial/blocked matrices remain dated history and are superseded by the complete matrix in packet 23. No timing exception or deferred boundary is broadened.
