@@ -134,26 +134,26 @@ Specification criterion matrices and append cleanup tasks to affected rows.
 
 ### Retention upstream workflow — no production authorization yet
 
-- [ ] **RET-01 — RFC amendment and review.** Use rfc-author/rfc-reviewer to
+- [x] **RET-01 — RFC amendment and review.** Use rfc-author/rfc-reviewer to
   prepare the smallest reviewable amendment within accepted PROPOSAL-002 and
   RFC-001's capture boundary. Preserve historical approved reasoning and explicit
   status. Define the 5s horizon, inclusive cutoff/404 rationale, baselines,
   equal-time/overflow/publication behavior and three-store accounting using
   Step 14 evidence. Keep 1/2/5s views, 10 Hz/channel and the 30s/80-event/s workload.
   Scope approval authorizes preparation; explicit human RFC approval remains.
-- [ ] **RET-02 — Successor retention decision.** After RET-01 approval, use
+- [x] **RET-02 — Successor retention decision.** After RET-01 approval, use
   adr-author to extract the accepted direction into a proposed successor to
   ADR-003. Allocate the next unused ADR ID at authoring time, preserve old history
   and reciprocal successor relationships, and obtain explicit acceptance before
   treating it as architecture.
-- [ ] **RET-03 — Coordinated Specification amendments.** After the decision
+- [x] **RET-03 — Coordinated Specification amendments.** After the decision
   gate, use spec-author/spec-reviewer for SPEC-001/SPEC-015 and any affected
   SPEC-013 resource assumptions. Account for Domain/Data/live/model/admission
   stores, C/Swift size guards, workload fixtures, derived designs and report
   consumers. Retained record count and total delivered count get separate oracles;
   existing timing/cadence requirements and exceptions retain their meanings.
   Obtain explicit approval of the exact contracts before production use.
-- [ ] **RET-04 — Derive the now-authorized retention tasks.** Use
+- [x] **RET-04 — Derive the now-authorized retention tasks.** Use
   implementation-planner after RET-03 to amend governing owner plans and task
   ledgers with exact requirements. Replace this held handoff with executable
   tasks for all three stores, boundary/replay/snapshot/pixel/workload checks and
@@ -262,3 +262,15 @@ record this document step separately from future execution.
 **Maintenance integration — 2026-10-05:** [All 74 checks and 60 profile reports](evidence/10-integration/result.md) pass. TOOL-01/02 and independent owner integration tasks are complete. The report-collection-only follow-up has [focused evidence](evidence/04-runner/special-root-followup.md). T11.7 connected evidence and T11.8 reconciliation remain next; retention approval and FINAL-01 stay held.
 
 **Connected attempt / partial reconciliation — 2026-10-05:** [Attempt and final observed device states](evidence/11-connected-attempt/result.md). T11.7/T11.8 are blocked after incomplete device checks and explicit authorization rejections. The criterion matrix above records the current pass/partial/blocked dispositions; it does not close FINAL-01 or enlarge prior exceptions.
+
+## Retention workflow execution — 2026-10-05
+
+[Explicit maintainer approval](retention-approval.md) supersedes earlier held
+approval descriptions. RET-01/02/03 are complete: approved RFC-012, accepted
+ADR-034 (superseding ADR-003), and faithful SPEC-001/013/015 amendments with
+[contract review](retention-spec-review.md). RET-04 is complete: ready SPEC-001
+milestone 12 derives T12.1–4 with complete criterion/task ledger mapping.
+Production tasks are now ready; no implementation pass is claimed by planning.
+Pi and nRF deployments/restoration/checks are explicitly authorized. T11.7/T11.8
+remain incomplete until actual new evidence satisfies them. FINAL-01 remains
+pending all selected outcomes; timing/physical exceptions are unchanged.
