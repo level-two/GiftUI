@@ -115,8 +115,8 @@ tasks:
     implementation: ["docs/implementation-designs/spec-001-connected-target-host-loop.md"]
     checks: ["scripts/raspberry-pi/deploy.sh", "scripts/nrf52840/flash.sh"]
     profiles: ["macos-dynamic", "macos-static", "raspberry-pi-armv6", "nrf52840-embedded"]
-    evidence: ["docs/iterations/iteration-002-cleanup/evidence/11-connected-attempt/result.md"]
-    blockers: ["docs/iterations/iteration-002-cleanup/evidence/11-connected-attempt/result.md"]
+    evidence: ["docs/iterations/iteration-002-cleanup/evidence/11-connected-attempt/result.md", "docs/iterations/iteration-002-cleanup/evidence/16-nrf-connected/result.md"]
+    blockers: ["docs/iterations/iteration-002-cleanup/evidence/16-nrf-connected/result.md"]
   T11.8:
     disposition: blocked
     requirements: ["SA-AC-001", "SA-AC-002", "SA-AC-003", "SA-AC-004", "SA-AC-005", "SA-AC-006", "SA-AC-007", "SA-AC-008", "SA-AC-009", "SA-AC-010", "SA-AC-011", "SA-AC-012", "SA-AC-013", "SA-AC-014", "SA-AC-015", "SA-AC-016", "SA-AC-017", "SA-AC-018", "SA-AC-019", "SA-AC-020", "SA-AC-021", "SA-AC-022", "SA-AC-023", "SA-AC-024", "SA-AC-025", "SA-AC-026", "SA-AC-027", "SA-AC-028", "SA-AC-029", "SA-AC-030", "SA-AC-031", "SA-AC-032", "SA-AC-033", "SA-AC-034", "SA-AC-035", "SA-AC-036", "SA-AC-037", "SA-AC-038", "SA-AC-039", "SA-AC-040", "SA-AC-041", "SA-AC-042", "SA-AC-043", "SA-AC-044", "SA-AC-045"]
@@ -134,12 +134,12 @@ tasks:
     evidence: ["docs/iterations/iteration-002-cleanup/evidence/13-retention-code/result.md"]
     blockers: []
   T12.2:
-    disposition: pending
+    disposition: completed
     requirements: ["SA-AC-005", "SA-AC-010", "SA-AC-011", "SA-AC-012", "SA-AC-013", "SA-AC-015", "SA-AC-016", "SA-AC-025", "SA-AC-036", "SA-AC-043", "SA-AC-045"]
     implementation: ["Sources/SignalAnalyzerDomain/SignalValues.swift", "Sources/SignalAnalyzerData/SignalCaptureStore.swift", "Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFCaptureStorage.swift", "firmware/nrf52840/applications/signal-analyzer-static"]
     checks: ["scripts/test.sh", "scripts/contracts/run-spec-001.sh", "scripts/contracts/run-spec-013.sh", "scripts/contracts/run-spec-015.sh"]
     profiles: ["macos-dynamic", "macos-static", "raspberry-pi-armv6", "nrf52840-embedded"]
-    evidence: []
+    evidence: ["docs/iterations/iteration-002-cleanup/evidence/13-retention-code/result.md", "docs/iterations/iteration-002-cleanup/evidence/14-retention-native/result.md"]
     blockers: []
   T12.3:
     disposition: pending
@@ -150,10 +150,10 @@ tasks:
     evidence: []
     blockers: []
   T12.4:
-    disposition: pending
+    disposition: blocked
     requirements: ["SA-AC-005", "SA-AC-009", "SA-AC-015", "SA-AC-023", "SA-AC-024", "SA-AC-025", "SA-AC-039", "SA-AC-043"]
     implementation: ["Sources/SignalAnalyzerDomain/SignalValues.swift", "Sources/SignalAnalyzerData/SignalCaptureStore.swift", "Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFCaptureStorage.swift", "firmware/nrf52840/applications/signal-analyzer-static"]
     checks: ["scripts/test.sh", "scripts/contracts/run-spec-001.sh", "scripts/contracts/run-spec-013.sh", "scripts/contracts/run-spec-015.sh"]
     profiles: ["macos-dynamic", "macos-static", "raspberry-pi-armv6", "nrf52840-embedded"]
-    evidence: []
-    blockers: []
+    evidence: ["docs/iterations/iteration-002-cleanup/evidence/16-nrf-connected/result.md"]
+    blockers: ["docs/iterations/iteration-002-cleanup/evidence/16-nrf-connected/result.md"]

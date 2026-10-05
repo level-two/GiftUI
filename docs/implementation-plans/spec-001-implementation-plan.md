@@ -2954,7 +2954,7 @@ The reference workload/stack validation requires consistent history across all
 four configurations. This milestone authorizes only the faithful approved change.
 
 - [x] `T12.1` — Resize Domain/Data and the nRF live/model/admission capture stores together to 404 entries/19,392 bytes and change only the time-retention horizon to five seconds inclusive. Coordinate C allocation/startup/export/build guards and all affected region consumers. Preserve baseline/order/eviction/replay/Clear/revision/borrow semantics, production source patterns, all other regions and configured stacks. Update derived capture/storage design notes.
-- [ ] `T12.2` — Migrate current fixtures by meaning and add independent boundary/full-history validation: just-before/at/after cutoff, equal-time arrival/nonzero baselines, 404/405 capacity, overflow, immutable snapshots, publication replay, Clear and repeated slot reuse. Keep 30s/80-event/s/2,404 delivery and separate schedule-specific retained count (404 synchronized oracle); independently compare 1/2/5s left edges and current presentation/raster parity. Include concrete Dynamic and Static owners and admission snapshots. Historical raw reports are immutable.
+- [x] `T12.2` — Migrate current fixtures by meaning and add independent boundary/full-history validation: just-before/at/after cutoff, equal-time arrival/nonzero baselines, 404/405 capacity, overflow, immutable snapshots, publication replay, Clear and repeated slot reuse. Keep 30s/80-event/s/2,404 delivery and separate schedule-specific retained count (404 synchronized oracle); independently compare 1/2/5s left edges and current presentation/raster parity. Include concrete Dynamic and Static owners and admission snapshots. Historical raw reports are immutable.
 - [ ] `T12.3` — Format before the fresh combined gate; verify all four target profiles, updated report consumers, native corpus, ARMv6/ARMv7E-M/VFP, heap/symbol/dependency/stack-reservation gates. Measure matched before/after capture storage and total linked RAM/flash; expect exactly 96,000 fewer capture bytes and no hidden slot. Preserve exact current report/artifact/compiler identities; no timing or whole-stack inference.
 - [ ] `T12.4` — Deploy/flash verified current artifacts under explicit Pi/nRF authorization and collect bounded startup, Start/Stop/window/source/capture/baseline/fault/cleanup results. Use safe hardware breakpoints with guaranteed removal/resume; preserve failed attempts. Close the changed-path T11.7 evidence only on actual success; T11.8 and iteration reconciliation follow without enlarging existing exceptions.
 
@@ -2963,3 +2963,15 @@ No performance or full connected-validation campaign is added. Timing/physical
 limits retain FW-027/031/032/033; residual mappings/guards retain EXP-001/FW-029.
 
 **T12.1 execution:** [Production storage and focused validation](../iterations/iteration-002-cleanup/evidence/13-retention-code/result.md).
+
+**T12.2 execution:** Focused boundary/replay/404–405/snapshot/Clear/reuse corpus,
+independent 601-cycle full-history edge/baseline oracle, canonical native corpus
+(300 XCTest +1,168 Swift Testing), and current native Layout/production-host
+rehearsals pass. [Code evidence](../iterations/iteration-002-cleanup/evidence/13-retention-code/result.md),
+[native firmware](../iterations/iteration-002-cleanup/evidence/14-retention-native/result.md).
+All-profile report integration remains T12.3.
+
+**T12.4/T11.7 current disposition:** [nRF software-input, faults and final idle recovery](../iterations/iteration-002-cleanup/evidence/16-nrf-connected/result.md)
+complete the nRF subset. Explicit approval resolves the former device-authorization
+blockers. Pi mDNS/connectivity now blocks its deployment/run; these two tasks
+and dependent T11.8 remain incomplete, with no new exception inferred.
