@@ -25,11 +25,26 @@ target_milestone: null
 
 # EXP-002: Backend and Application Integration Shapes
 
-Preparation for draft [ITERATION-003](../iterations/iteration-003-dev-ux-improvement.md).
+Evidence for [ITERATION-003](../iterations/iteration-003-dev-ux-improvement.md),
+whose reviewed revision 2 was approved on 2026-10-05.
 The maintainer requested possible solutions and constraints without production
 code changes. This is an active documentation exploration, not an approved
 architecture, API, package topology, or implementation plan. All names and API
 sketches below are illustrative and do not compile against current GiftUI.
+
+### Scope review handoff — 2026-10-05
+
+The [scope review and approval](../iterations/iteration-003-review/scope-review-and-approval.md)
+selects the shared counter/status consumer, finite action/model and Canvas
+variant, recording display extension level, four-configuration evidence matrix
+and before/after setup measures. Follow that scope for current delivery boundaries;
+earlier proposed study details below preserve the preparation reasoning.
+Exact APIs, package boundaries, Static adaptation and measured consumer resource
+ceilings still require downstream review. Shapes A/B/C/D remain candidates.
+
+EXP-002 remains active and unpromoted into the main lifecycle. Next refresh the
+consumer/setup/resource baseline and draft the coordinated post-MVP Proposal.
+No Spike, consumer build or implementation is performed by this approval update.
 
 ## Questions / Hypotheses
 
@@ -63,8 +78,9 @@ exploration does not reopen those choices.
 
 The architecture feature and SPEC-013/014/015 are currently `implemented`.
 Their evidence includes recorded exceptions; implemented status does not prove
-every physical timing or input requirement. Iteration 3 remains draft revision
-1. This work is post-MVP preparation, not a new ITERATION-001 requirement.
+every physical timing or input requirement. Iteration 3 is approved revision
+2; its scope approval does not amend these contracts. This work is post-MVP
+preparation, not a new ITERATION-001 requirement.
 
 | Constraint | Consequence for a candidate | Authority / evidence |
 | --- | --- | --- |
@@ -218,7 +234,7 @@ host source can still be hard to understand if provenance is lost.
 
 **Best fit:** a later automation layer if repeated supported-target setup shows
 that typed factories and reusable build support leave material duplication.
-General configuration generation remains excluded from draft Iteration 3;
+General configuration generation remains excluded from Iteration 3;
 adopting it would need an explicit scope and lifecycle decision. It is not a
 prerequisite for discussing Shapes A/B.
 
@@ -384,8 +400,8 @@ The proposed evaluation order is shared rather than two independent plans:
 5. Compare setup effort and assembled resource cost against the same baseline;
    retain separate IT-AC-001/002/003 dispositions and governing owner checks.
 
-This is coordination guidance for a draft scope, not implementation tasks or
-approval of Shapes A/B. A single integration Proposal can cover the related
+This originated as coordination guidance for draft revision 1, not implementation
+tasks or approval of Shapes A/B. A single integration Proposal can cover the related
 investment; split RFCs only where ownership/access/host decisions are
 independently reviewable under the lifecycle rules. General generation,
 services, frontend-neutral contracts and new hardware remain outside this
@@ -515,15 +531,16 @@ backend inventory's recording-adapter scenario is a mode of the same proposed
 consumer project, not a second application/bootstrap implementation. Share
 inputs, baseline and target matrix while keeping criterion results distinct.
 
-The next study could use a small external counter/status application with one
-observable root, a finite action enum, disabled Button state and changing text.
+The approved scope now selects the previously proposed small external
+counter/status application with one observable root, a finite action enum,
+disabled Button state and changing text.
 Add a tiny Canvas variant to test drawing/resource bounds; retain Signal
 Analyzer as the nontrivial compatibility check. A miniature app alone cannot
 prove arbitrary UI lowering or replace existing conformance evidence.
 
-Before coding a Spike, agree the exact candidate, static adaptation boundary,
-consumer toolchains and acceptable resource deltas. The following is a proposed
-evaluation sequence, not authorized implementation tasks:
+Before coding a Spike, record the exact candidate, Static adaptation boundary,
+the scope's consumer/toolchain matrix and acceptable resource deltas. The
+following is an evidence-study sequence, not authorized production tasks:
 
 1. Record current setup steps, repository internals touched, copied code and
    generated/manual inputs. Compare the same consumer behavior for every
@@ -553,7 +570,9 @@ evaluation sequence, not authorized implementation tasks:
 Suggested decision metrics are setup actions, user-maintained files, copied
 infrastructure, exposed framework concepts, failure-diagnostic clarity, custom
 adapter replacement effort, reproducibility and assembled resource cost. No
-numerical success threshold or one-button guarantee is invented in this draft.
+numerical resource threshold or one-button guarantee is established by this
+Exploration. Revision 2 now fixes setup improvement measures in IT-AC-003;
+measured consumer resource ceilings remain a downstream contract gate.
 
 ## Findings
 
@@ -618,7 +637,8 @@ The 2026-10-05 direction-map comparison above qualifies this preference:
 inspectable target/composition facts and replaceable environments make A/B
 more useful to possible future tooling. C has greater strategic upside if
 analysis/compiler directions are selected; D represents a separate future
-frontend-neutral contract. None changes Iteration 3's current draft scope.
+frontend-neutral contract. These scenarios do not enlarge Iteration 3's
+approved scope.
 
 ## Remaining Unknowns
 
@@ -639,24 +659,27 @@ frontend-neutral contract. None changes Iteration 3's current draft scope.
   Convenience must preserve origin, partial effects and post-handoff health.
 - Which package/product units allow independent rendering/display consumption
   while keeping constrained builds free of unused desktop/macros/toolchains?
-- What setup and resource thresholds would make Iteration 3's provisional
-  IT-AC-001/002/003 observable and reviewable?
+- What measured consumer resource ceilings should the reviewed contracts adopt?
+  The scope now fixes the consumer/matrix and IT-AC-003 setup measures; feasibility
+  and assembled cost evidence remain to be gathered.
 
 ## Disposition
 
-Continue the documentation exploration with maintainer feedback. FW-030 is
-promoted to this Exploration because the maintainer explicitly requested
+Continue the exploration under the approved iteration's bounded evidence study
+and downstream lifecycle gates. FW-030 is promoted to this Exploration because
+the maintainer explicitly requested
 candidate solution drafting; FW-016 participates as packaging context and
 remains captured. No Spike, external consumer build or hardware campaign was
 performed, and no implementation is authorized by this artifact.
 
-After selecting the problem/outcome and gathering sufficient feasibility
-evidence, prepare a Proposal for post-MVP external integration and route the
-smallest coherent architectural decision cluster through RFC/ADR/Specification
+The scope selects the coordinated problem/outcome; after gathering sufficient
+feasibility evidence, prepare a Proposal for post-MVP external integration and
+route the smallest coherent architectural decision cluster through RFC/ADR/Specification
 review. Cover backend extension and application assembly together in that
 problem statement; avoid independent contracts for repeated construction and
 validation. Public host contracts, cross-package access and any ADR-008 distribution
-change need their normal gates. Iteration scope approval remains separate.
+change need their normal gates. Iteration scope approval is recorded separately
+and supplies no approval of these candidate designs.
 
 ## Revisit Triggers
 

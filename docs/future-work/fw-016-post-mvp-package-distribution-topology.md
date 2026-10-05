@@ -6,7 +6,7 @@ status: captured
 authors:
   - Yauheni Lychkouski
 created: 2026-08-19
-updated: 2026-10-04
+updated: 2026-10-05
 source:
   - RFC-002
   - ADR-008
@@ -113,7 +113,7 @@ copying reference-application owners, using repository-relative source lists,
 or granting access to all framework internals. ADR-008 still governs MVP
 distribution; this capture does not authorize a split or change its milestone.
 
-## Draft Iteration Context
+## Iteration Context
 
 [EXP-002](../explorations/exp-002-backend-and-application-integration-shapes.md)
 now compares typed assembly, supported presets and generated composition,
@@ -122,8 +122,15 @@ no package extraction or consumer build has been performed.
 
 The maintainer included this concern in the working scope for
 [ITERATION-003: Dev UX Improvement](../iterations/iteration-003-dev-ux-improvement.md) on 2026-10-04.
-The scope remains open for codebase review; this link does not promote the item,
-change its disposition, or establish a delivery commitment.
+At that point the scope remained open for codebase review; the initial link did
+not promote the item, change its disposition or establish a delivery commitment.
+
+On 2026-10-05 Eugene explicitly requested scope review, alignment, gap filling,
+approval and commit. [ITERATION-003 revision 2](../iterations/iteration-003-dev-ux-improvement.md)
+now selects focused-package consumption through the shared external consumer,
+with separate topology/access/contract gates. [Review and approval](../iterations/iteration-003-review/scope-review-and-approval.md)
+records that prioritization. FW-016 remains captured as the source observation;
+no package split or main-lifecycle promotion is approved by this record.
 
 ## References
 

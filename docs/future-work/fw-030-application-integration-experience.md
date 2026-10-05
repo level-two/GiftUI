@@ -95,12 +95,12 @@ consumer study; no consumer code or Spike has been implemented. Public
 integration and architectural changes still require their normal Proposal,
 RFC, ADR, and Specification gates before implementation.
 
-## Draft Iteration Context
+## Iteration Context
 
 The maintainer included this concern in the working scope for
 [ITERATION-003: Dev UX Improvement](../iterations/iteration-003-dev-ux-improvement.md) on 2026-10-04.
-The scope remains open for codebase review and does not establish a delivery
-commitment. The subsequent explicit request to explore solutions is recorded
+At that point the scope remained open for codebase review and did not establish
+a delivery commitment. The subsequent explicit request to explore solutions is recorded
 in the promotion disposition above.
 
 On 2026-10-05 the maintainer requested alignment with the core backend item.
@@ -110,8 +110,16 @@ small consumer, access inventory and setup/resource baseline. Its
 [backend inventory](../explorations/exp-002/backend-foundation-inventory-2026-10-05.md)
 provides the reuse/extraction evidence. Backend reservation/raster/display
 mechanics remain below the host lifecycle/input/scheduling joins. This updates
-the existing Exploration context; FW-030 remains promoted to EXP-002 and no
-new implementation or scope approval is implied.
+the existing Exploration context; FW-030 remained promoted to EXP-002 and that
+alignment request alone supplied no implementation or scope approval.
+
+The subsequent 2026-10-05 request explicitly authorizes review, alignment, gap
+filling, approval and commit. [ITERATION-003 revision 2](../iterations/iteration-003-dev-ux-improvement.md)
+now selects the coordinated consumption/foundation/integration commitment with
+one bounded consumer and four-profile matrix. [Review and approval](../iterations/iteration-003-review/scope-review-and-approval.md)
+records this later instruction. FW-030 remains promoted to active EXP-002;
+Proposal acceptance, architecture and external integration contracts remain
+separate gates. No consumer experiment or production implementation is claimed.
 
 ## References
 

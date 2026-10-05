@@ -53,8 +53,8 @@ features:
   # SPEC-013 Milestone 9 validated the seam; SPEC-001 production joins now resume.
   giftui-mvp-architecture:
     # Optional source-conditional cleanup: FW-029, linked from SPEC-013.
-    # Component distribution/integration review: FW-016 and FW-030; no split approved.
-    # Integration candidate exploration: EXP-002, under draft ITERATION-003.
+    # Approved ITERATION-003 revision 2 selects distribution/reuse/integration outcomes.
+    # FW-016/FW-030 and EXP-002 supply evidence; topology/access contracts remain gated.
     # EXP-002 aligns backend reuse/access (IT-AC-002) and integration rework (IT-AC-003).
     # macOS physical-pointer validation is postponed under FW-031.
     title: GiftUI MVP Architecture Establishment

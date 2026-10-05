@@ -5,7 +5,7 @@ status: active
 revision: 7
 approved_revision: 7
 created: 2026-10-04
-updated: 2026-10-04
+updated: 2026-10-05
 features:
   - giftui-mvp-architecture
   - signal-analyzer
@@ -123,7 +123,7 @@ selected maintenance may continue within its authority.
   and [FW-033](../future-work/fw-033-connected-validation-follow-up.md).
   Focused connected regressions for changed owners remain included below.
 - Package splitting, a new core-backend module and consumer-integration redesign:
-  [ITERATION-003 draft](iteration-003-dev-ux-improvement.md), FW-016/FW-030.
+  [ITERATION-003](iteration-003-dev-ux-improvement.md), FW-016/FW-030.
 - Universal guard removal, unrelated Canvas/resource generation changes,
   lower signal frequency, new navigation, new platform, or minimizing type/module
   counts without a demonstrated maintenance or correctness benefit.

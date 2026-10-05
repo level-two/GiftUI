@@ -1,142 +1,241 @@
 ---
 id: ITERATION-003
 title: Dev UX Improvement
-status: draft
-revision: 1
-approved_revision: null
+status: approved
+revision: 2
+approved_revision: 2
 created: 2026-10-04
 updated: 2026-10-05
 features:
   - giftui-mvp-architecture
-approval: null
+  - signal-analyzer
+approval: "Eugene authorized review, alignment, gap filling, approval and commit on 2026-10-05. Revision 2 records that reviewed scope. Evidence: docs/iterations/iteration-003-review/scope-review-and-approval.md."
 closure: null
 ---
 
 # ITERATION-003: Dev UX Improvement
 
-This is a working scope gathered from maintainer discussions, not a finalized
-commitment. The maintainer will review the codebase and may add, remove, or
-refine items before approval. Follow [Numbered Iteration Scopes](../engineering/ITERATION_SCOPES.md).
+Eugene explicitly requested review, alignment, gap filling, approval and commit
+on 2026-10-05. Revision 2 is the resulting delivery commitment under
+[Numbered Iteration Scopes](../engineering/ITERATION_SCOPES.md).
+[Review and approval provenance](iteration-003-review/scope-review-and-approval.md)
+records the findings and dispositions. Scope approval leaves architecture,
+external APIs and implementation behind their separate lifecycle gates.
 
 ## Goal
 
-Make GiftUI easier to consume in an application and easier to extend with a
-backend, through focused packages, a reusable backend foundation, and simpler
-integration of selected components.
+Make GiftUI usable by a second application and extensible by a display-adapter
+author through focused packages in this repository, reusable backend components,
+and a supported application integration path. Remove the need to copy Signal
+Analyzer infrastructure or understand framework storage offsets to launch that
+application. Preserve portable UI semantics and constrained Static execution.
+
+This is post-MVP work. [ITERATION-001](iteration-001-mvp.md) validated one
+reference application on four stacks; it did not establish external host or
+backend-extension contracts. Both participating features are `implemented`;
+Signal Analyzer participates as the compatibility check, not a new application
+feature. Existing approvals and exceptions retain their recorded scope.
+
+## Preparation Baseline
+
+[FW-016](../future-work/fw-016-post-mvp-package-distribution-topology.md)
+identifies product/access and build-selection barriers. [FW-030](../future-work/fw-030-application-integration-experience.md)
+and [EXP-002](../explorations/exp-002-backend-and-application-integration-shapes.md)
+identify assembly, Static adaptation and configuration friction. The
+[backend inventory](../explorations/exp-002/backend-foundation-inventory-2026-10-05.md)
+establishes substantial existing shared raster, endpoint, display and validation
+owners; it supports construction/access improvements, not a raster rewrite.
+
+Scope review used clean commit `feb40589`; ITERATION-002 is active revision 7.
+Its final combined validation and closure remain separate. Refresh source,
+generation, access and resource facts for the consumer study and before
+restructuring; earlier inventory and cleanup runs are comparison evidence.
 
 ## Included Scope
 
-All rows are candidates; package boundaries, API design, and implementation
-sequence remain open.
+These are coordinated selections. Exact package/module names, external types
+and factory syntax are downstream design decisions.
 
-| Item                                                                      | Source / feature                                                                                                        | Intended outcome                                                                                                                                                                                                                     | Lifecycle routing                                                                                                                                                               |
-| ------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Separate the project into focused packages within the existing repository | [FW-016](../future-work/fw-016-post-mvp-package-distribution-topology.md); giftui-mvp-architecture                      | Let consumers select coherent framework/runtime, rendering, and platform/display components without copying reference-application internals. Package boundaries remain to be evaluated.                                              | Begin with extraction/consumption evidence; package topology and cross-package access need normal Proposal/RFC/ADR/Specification gates, including review of ADR-008.            |
-| Core backend module                                                       | Discussion “Assess a Core Backend Framework”; giftui-mvp-architecture                                                   | Make common backend contracts, implementations, validation, and adapter support easier to reuse across hardware and Static/Dynamic profiles. Build on existing shared owners and establish what an additional core module would own. | Inventory existing reuse and duplication before selecting a boundary. Review against ADR-006/ADR-007 and SPEC-014; do not introduce a universal backend requirement implicitly. |
-| Simplify backend integration                                              | [FW-030](../future-work/fw-030-application-integration-experience.md); discussion “Simplify GiftUI Backend Integration” | Reduce manual source selection, bootstrap wiring, storage-offset knowledge, and application-specific infrastructure needed to launch an application with a selected backend.                                                         | Use a small separate consumer to establish friction and evaluate supported host/build entry points; public integration contracts and tooling choices need lifecycle approval.   |
+| Item | Source / feature | Intended outcome | Lifecycle routing |
+| --- | --- | --- | --- |
+| I3-01 — Focused packages | FW-016; giftui-mvp-architecture | Independently useful framework/runtime, rendering and selected environment/display components distributed as focused packages within this repository; external consumers need no reference-application internals or repository-wide source lists. | Compare closures/access first. Review ADR-008 and SPEC-002; obtain the necessary RFC/ADR and affected Spec approvals before extraction. Multiple products in the current package are a comparison baseline, not fulfillment of this outcome. |
+| I3-02 — Reusable backend foundation | EXP-002 backend inventory; giftui-mvp-architecture | Externally reusable contracts, raster/session construction, validation and adapter support; a minimal recording display adapter over the existing software raster family usable through I3-03. | Inventory the required transitive types/access and duplication; preserve ADR-006/007 and SPEC-009/014 owners. An additional core module is an option, not a mandatory deliverable or universal backend base. |
+| I3-03 — Simpler application integration | FW-030 / EXP-002; giftui-mvp-architecture | Documented supported host/build entry points with less application setup; supported and custom display selection use the same assembly path. Separate application behavior/resources/policy from reusable host mechanics. | Prepare a coordinated post-MVP Proposal covering all three outcomes. Public assembly/extension/access contracts and tooling choices require reviewed RFC decisions, accepted ADRs and approved Specifications before ready implementation plans. |
 
-## Backend Foundation and Integration Coordination
+## Shared Consumer and Responsibility Boundaries
 
-The core backend and integration-rework rows are coordinated candidate
-outcomes: the foundation supplies reusable rendering/display components and
-construction support; integration supplies application-facing host assembly
-and supported build paths that consume those components. Host lifecycle,
-input, scheduling and application policy retain their existing owners.
+Use one separate counter/status consumer project outside GiftUI's distribution
+packages. It may be maintained as an example in this repository, but must use
+the supported external package interfaces. Shared package identity, privileged
+internal access or a root-manifest target cannot substitute for consumption.
 
-Evaluate both through one small external consumer, first using a supported
-composition and then replacing its display with a recording adapter through
-the same assembly path. Share the access/type inventory, configuration facts,
-setup/resource baseline and target matrix with the packaging item. Keep
-IT-AC-001/002/003 results distinct; neither an adapter-only test nor a short
-application bootstrap proves all three outcomes.
+The bounded application has one observable root, finite typed actions, changing
+text and a disabled Button state, plus a tiny Canvas stroke variant exercising
+resource limits. Its portable presentation stays shared and imports `GiftUI`
+alone. Record every Static lowering, generated and handwritten binding. This
+commits only the finite adaptation needed for this example, not arbitrary Swift
+application lowering or replacement of the retained packed Static runtime.
 
-The [EXP-002 coordinated study](../explorations/exp-002-backend-and-application-integration-shapes.md#coordinated-backend-foundation-and-integration-rework--2026-10-05)
-records the responsibility mapping and proposed sequence, using the
-[backend inventory](../explorations/exp-002/backend-foundation-inventory-2026-10-05.md)
-and FW-030 as evidence. Select compatible extension/assembly/access contracts
-before deriving implementation tasks. No additional module, preset API or
-package topology is selected by this alignment.
+First select existing supported compositions, then replace only the display
+with an external recording adapter using the same raster implementation and
+assembly path. Use deterministic clock/scheduling fixtures for repeatable host
+checks. The consumer must not import Signal Analyzer Domain/Data/TargetHost or
+copy pipeline, endpoint, raster or driver state machines. Recording is a contract
+test adapter, not a new physical backend or evidence of physical input.
+
+| Owner | Responsibility retained |
+| --- | --- |
+| Application | Views, model, action meaning, domain services, exact resources/workload, final component selection and explicit policy |
+| Reusable host assembly | Configuration reconciliation, graph construction, activation/service/quiescence/teardown, input eligibility, scheduling joins and typed failure routing |
+| Backend foundation | Existing one-shot endpoint, raster/session construction and validation, bounded payload/transfer mechanics and local operational health |
+| Display/transport and environment adapters | Geometry/encoding/device facts, payload delivery/lifetime, clocks/wakes and OS/board mechanisms; input/calibration stays a sibling seam |
+| Package/build support | Dependency/source selection, reviewed external access, configuration projection and reproducible artifact identities |
+
+Share one access inventory, setup baseline, resource inputs and matrix across
+all three items; keep their criterion results distinct. A short bootstrap does
+not prove independent packages, and an adapter test does not prove host setup.
+Inspect component facts/defaults; evaluate application-owned service loops and
+a sample runner without selecting an API here. Adapter substitution is a
+construction-time choice, not live reconfiguration.
+
+## Delivery Order and Gates
+
+1. Refresh Iteration 2 inputs and reproduce the bounded consumer's current setup.
+   Record manual actions, user-maintained infrastructure files, copied code,
+   framework concepts, dependency closure, Static adaptation and assembled costs.
+   Use EXP-002 for feasibility findings; any disposable prototype needs a bounded
+   Spike record with candidate, method, budgets and stop conditions before coding.
+2. Draft the coordinated post-MVP Proposal and compare package/access, extension
+   and host/build alternatives together. Split RFCs only for independently
+   reviewable decisions. Resolve actual Embedded consumption early.
+3. Obtain architecture and contract approvals, including external compatibility,
+   configuration diagnostics, finite Static bindings/storage inputs and measured
+   resource ceilings. Derive ready Spec plans after those gates.
+4. Implement coherent package, foundation and host/build changes through those
+   plans, exercising the same consumer and adapter path throughout. Retain
+   Signal Analyzer as the nontrivial regression check.
+5. Publish separate criterion dispositions and request human closure. If
+   feasibility, approvals or evidence fail, record the affected outcome as
+   unmet and request a scoped amendment or exception. An investigation
+   disposition alone does not satisfy the implementation outcomes.
+
+This is delivery coordination, not a ready implementation plan. Read-only
+preparation may begin while ITERATION-002 is active. Before restructuring,
+identify the cleanup revision/evidence being inherited and resolve overlapping
+source/build/generation changes. No cleanup completion, new feature stage or
+downstream approval is inferred from this scope.
 
 ## Exclusions
 
-- No repository split at this stage. Independent releases, versioning, or
-  repository migration are not selected outcomes.
-- No one-package-per-module rule or final package/module naming is selected.
-- No new hardware backend or replacement of all backends with one rendering
-  implementation is proposed.
-- Cleanup of dependencies, nRF hierarchy projections, conditionals, and
-  analyzer retention belongs to [ITERATION-002](iteration-002-cleanup.md).
-- Automatic board discovery, flashing, deployment, and a general configuration
-  generator are not implied by simpler integration.
+- Repository splitting, independent releases/version systems, registry publishing
+  and one-package-per-module rules.
+- New physical backends, GPU/non-raster implementations, a universal backend base,
+  or replacement of shared raster algorithms without demonstrated need.
+- General configuration generation, arbitrary application lowering, complete
+  Static hierarchy replacement or a shared delegated-service framework.
+- Automatic discovery, deployment, flashing or remote service changes.
+- Simulator/digital-twin tooling, frontend-neutral IR/ABI, non-Swift core rewrite,
+  migration/import tools, adaptive capability UI or foreign/native composition.
+- Performance remediation or closing all prior connected-conformance gaps.
+  Existing workloads, timing requirements and exception boundaries remain.
+- ITERATION-002 source/dependency/retention/topology cleanup; integrate its result
+  without reopening its approved commitment.
 
 ## Success Criteria and Validation
 
-These are provisional outcomes to refine before scope approval.
+IT-AC-001/002/003 are retained and made concrete. IT-AC-004/005 cover shared
+compatibility and documentation/evidence gaps. These define iteration exit
+evidence, not replacement Specification acceptance criteria.
 
 | ID | Observable result | Required configurations | Evidence / governing contract |
 | --- | --- | --- | --- |
-| IT-AC-001 | A separate small application can consume selected focused packages without copying Signal Analyzer owners or relying on repository-wide source lists. | Consumer/toolchain matrix to be selected, including Static/Embedded feasibility | Approved topology/access contracts, package dependency graph, reproducible consumer builds, and preserved owner-boundary tests. |
-| IT-AC-002 | Backend developers have an explicit reusable foundation and a minimal adapter/composition example showing common and target-specific responsibilities; the example is usable through the integration path evaluated for IT-AC-003. | Existing Pi Dynamic and nRF Static stacks as initial inventory; shared consumer/target matrix with IT-AC-003 to be selected | Reuse inventory, selected module responsibilities, adapter-substitution and conformance checks, and profile-specific resource evidence under governing contracts. |
-| IT-AC-003 | A consumer can select a supported backend and build/run through a documented integration path with less manual wiring, and use the IT-AC-002 adapter example through the same assembly path. | Shared consumer/target matrix with IT-AC-002 to be selected | Before/after setup steps and touched-file inventory, runnable consumer example using the reusable foundation, configuration-error diagnostics, and startup/lifecycle checks under approved integration contracts. |
+| IT-AC-001 | The separate consumer selects focused packages without copied analyzer owners, repository-wide source lists or privileged package access. Presentation imports only `GiftUI`; constrained closures omit unused concrete platforms. | All four configurations below; package consumer and build-selection checks | Approved topology/access contracts, transitive package/product/module graphs, clean consumer builds and prohibited-dependency checks; ADR-008 and affected SPEC-002/013/014/015. |
+| IT-AC-002 | An external recording display adapter uses documented narrow contracts and existing raster/session/validation support through I3-03 without another bootstrap or copied state machine. | macOS Dynamic/Static execution; Pi ARMv6 and nRF Embedded compile/link plus native contract rehearsal | Reuse/type inventory, adapter-substitution builds, exact fill/glyph/stroke and clipping/painter-order fixtures, reservation/abort/acceptance/health/cleanup cases and bounded storage; SPEC-009/012/014. |
+| IT-AC-003 | Compared with the same consumer baseline, each target's setup has strictly fewer manual actions and fewer user-maintained infrastructure files. Zero copied analyzer infrastructure, zero application-maintained framework source lists and zero handwritten framework storage offsets are required. Display replacement preserves portable UI/model/action code and uses the same assembly path. | All four build configurations; native supported/recording modes with equivalent finite inputs | Reproducible before/after steps/files inventory counting prerequisites, generated inputs and work hidden by presets; startup/service/teardown and missing resources, encoding mismatch, insufficient capacity and incomplete-configuration diagnostics without partial activation; external integration contracts plus SPEC-003/004/005/013/015. |
+| IT-AC-004 | Consumption and assembly changes preserve Signal Analyzer behavior, owner/import direction, Static/Dynamic semantics, failure/provenance and resource guarantees. The consumer has equivalent declared behavior across profiles with explicit bounded Static adaptation. | All four configurations; analyzer and consumer | Final affected Spec gates and combined repository hardware-free gate; profile transcripts, pixel/action oracles, stale-input/model-generation cases, one-shot borrow/transfer evidence and paired flash/RAM/storage/stack/ABI/heap checks; SPEC-001/002/009/011/012/013/014/015, current application limits and reviewed consumer budgets. |
+| IT-AC-005 | Application and adapter authors can reproduce setup, inspect assumptions/failures and customize through the supported path; every scope criterion has a separate evidenced disposition. | Consumer documentation and supported build routes | Quick start, custom-adapter guide, application versus reusable input inventory, migration notes for moved products/access, external API compatibility policy, validation limits, exact source/toolchain/artifact identities, linked contract conformance and human closure. |
+
+### Required configuration matrix
+
+| Configuration | Consumer evidence required | Compatibility evidence |
+| --- | --- | --- |
+| macOS Dynamic | Clean external build and execution in supported/recording modes; setup and negative-configuration checks | Analyzer Dynamic and governing owner gates |
+| macOS Static | Same behavior via documented finite Static bindings; native execution and adapter substitution | Analyzer Static and cross-profile comparison |
+| Raspberry Pi 1 / ARMv6 Linux Dynamic | Actual `armv6-unknown-linux-gnueabihf` compile/link with existing framebuffer/PiScreen support and recording-adapter selection; native deterministic rehearsal | Current Pi artifact/owner gates and analyzer trace comparisons |
+| nRF52840-DK / Embedded Static | Actual `nrf52840dk/nrf52840` firmware compile/link with existing TFT composition and recording-adapter selection; native finite-binding rehearsal | Current analyzer firmware/gates; Cortex-M4F hard-float/VFP ABI, forbidden-symbol, heap, storage and stack evidence |
+
+Native rehearsal and cross-builds establish their evidence classes, not connected
+execution. Use supported toolchains under `.toolchains/` and target artifacts
+under `.build/raspberry-pi/` and `.build/nrf52840/`. Document toolchain prerequisites,
+board/display facts and consumer-owned configuration.
+
+Before production implementation, record matched toolchain/configuration
+baselines and explicit consumer resource ceilings in the reviewed contracts.
+Measure full linked images, backing storage and specialization cost. Existing
+Static zero-heap and application resource/stack bounds continue to apply; changed
+bounds need their normal approval. Do not retrofit budgets to a failing result.
+Setup comparisons must count all manual generation/adaptation for the same
+behavior and limits; shorter Swift syntax alone cannot satisfy IT-AC-003.
+
+Run focused owner checks, format maintained Swift before the repository gate,
+then run the final combined four-profile hardware-free gate with immutable
+current evidence. If changed device/lifetime paths require physical evidence
+under a governing contract, record the dependency and obtain separate connected
+action authorization. Leave the criterion unmet until that evidence or a specific
+human exception exists. Prior MVP exceptions do not cover new regressions or the
+second consumer automatically.
 
 ## Dependencies and Open Questions
 
-- The architecture feature is currently `implemented`; these post-MVP
-  candidates do not amend its accepted decisions or implemented contracts.
-- Refresh the baseline from active ITERATION-002 revision 7 before settling
-  package boundaries. ITERATION-003 remains draft; numbering alone does not
-  approve its scope or establish an implementation schedule.
-- Which focused packages/products form independently useful consumption units?
-  Which currently package-scoped contracts need narrowly scoped external access?
-- What belongs in the core backend module, given existing `GiftUISurfaceCore`,
-  `GiftUIRasterCore`, `GiftUIDisplayCore`, and `GiftUIBackendIntegration`?
-  Distinguish common contracts from rendering-family-specific algorithms.
-- Which setup belongs to the application, reusable host assembly, backend,
-  platform/display adapter, and board configuration? The application should
-  retain user behavior and final component selection.
-- Which small consumer and target matrix demonstrate the intended UX? Decide
-  measurable setup goals after collecting a baseline rather than inventing a
-  one-button guarantee.
-- Preserve Static bounded storage, zero heap allocation, ownership, capabilities,
-  and Dynamic/Static semantic parity across any selected package boundary.
-- Complete the maintainer's codebase review and resolve scope-invalidating
-  questions before approval. Architecture changes require their normal gates;
-  the scope does not select them.
+The outcomes, consumer, extension level and evidence matrix are bounded; there
+are no remaining scope-selection blockers. Downstream gates remain explicit:
+
+- Exact package/products and narrow transitive external access/compatibility
+  surface; review ADR-008 and affected Specs rather than making all SPI public.
+- Whether reuse needs a new core module or exposure/extraction of existing owners.
+  Keep common contracts distinct from rendering-family-specific helpers.
+- Precise application descriptor, finite Static specialization/storage producer,
+  custom assembly/service-loop shape, supported build routes and structured errors.
+  Consumer-specific adaptation must meet IT-AC-003; general generation is excluded.
+- One immutable configuration across host/backend/display, preserving capabilities
+  versus health, one-shot handoff, input provenance and typed failure policy.
+- Measured resource ceilings agreed before contract approval and implementation.
+- Refresh active Iteration 2 inputs and resolve overlap before restructuring;
+  performance/connected gaps remain visible without another generic audit.
+
+Next: baseline/consumer feasibility evidence under EXP-002 and a coordinated
+post-MVP Proposal. The original MVP Proposal and this scope approval do not
+approve new external architecture or contracts.
 
 ## Deferred and Follow-up Work
 
-- [FW-016](../future-work/fw-016-post-mvp-package-distribution-topology.md)
-  and [FW-030](../future-work/fw-030-application-integration-experience.md)
-  supply the packaging and integration observations. This draft is context
-  for re-evaluation, not promotion or implementation authorization.
-- [FW-006](../future-work/fw-006-generated-target-configuration.md) and
-  [FW-009](../future-work/fw-009-shared-delegated-service-foundation.md)
-  remain separate candidates; no configuration generator or shared service
-  foundation is selected here.
+| Item | Current boundary / revisit trigger |
+| --- | --- |
+| [FW-016](../future-work/fw-016-post-mvp-package-distribution-topology.md), [FW-030](../future-work/fw-030-application-integration-experience.md), [EXP-002](../explorations/exp-002-backend-and-application-integration-shapes.md) | Sources for selected outcomes. Existing captured/promoted/active statuses remain; main-lifecycle promotion needs a new artifact and reciprocal links. |
+| [FW-006](../future-work/fw-006-generated-target-configuration.md), [FW-009](../future-work/fw-009-shared-delegated-service-foundation.md) | General generator/services excluded. Revisit when the bounded consumer shows residual repeated configuration or multiple approved consumers need shared service contracts. |
+| [FW-022](../future-work/fw-022-contract-accurate-embedded-target-simulator.md), [EXP-002 direction comparison](../explorations/exp-002-backend-and-application-integration-shapes.md#sensitivity-to-possible-future-directions--2026-10-05) | Fixtures do not commit simulation, IR/ABI, migration or a core rewrite. Revisit the recorded questions when a concrete simulation, analysis or second-frontend consumer is selected. |
+| [FW-027](../future-work/fw-027-pi-performance-investigation-resumption.md), [FW-032](../future-work/fw-032-nrf-performance-improvement.md), [FW-031](../future-work/fw-031-macos-connected-pointer-validation-resumption.md), [FW-033](../future-work/fw-033-connected-validation-follow-up.md) | Performance/full connected validation retain their existing triggers. Changed-path checks remain current obligations where required by contracts. |
 
 ## Revision and Approval History
 
 | Revision | Date | Change / reason | Maintainer approval |
 | --- | --- | --- | --- |
-| 1 | 2026-10-04 | Initial candidate scope from recent discussions and the maintainer's two-iteration outline; further code review expected. | Pending |
-
-On 2026-10-05 the maintainer requested alignment of backend foundation and
-integration rework, plus committing the documentation. The draft now records a
-joint consumer study and compatible contract evaluation, preserving the three
-criterion IDs. This instruction is not scope or architecture approval.
+| 1 | 2026-10-04 | Initial candidates; backend/integration coordination added on 2026-10-05 without approval. | Pending; discussion/inventory/alignment only. Preserved in commit `232f0041`. |
+| 2 | 2026-10-05 | Select coordinated outcomes, consumer/extension level, four-profile matrix, measurable setup improvement, compatibility/documentation criteria, gates and deferrals. | Eugene explicitly requested review, alignment, gap filling, then approval and commit. [Exact instruction and review](iteration-003-review/scope-review-and-approval.md). |
 
 ## Closure and Follow-up
 
-Not started. At closure, record every criterion's disposition, evidence,
-approved exceptions, and remaining deferred work.
+Delivery has not started through this approval; `status: approved` and
+`closure: null` remain. At closure, disposition IT-AC-001–005 as met, unmet or
+an explicitly approved exception with immutable evidence, remaining gates,
+deferred triggers and the maintainer's closure decision. Architecture/Spec
+approval and implemented transitions remain separate.
 
 ## References
 
-- [EXP-002 backend foundation inventory](../explorations/exp-002/backend-foundation-inventory-2026-10-05.md) — existing reuse, extension/access gaps and IT-AC-002 evidence coordinated with integration rework; no scope or design approval
-- [EXP-002: Backend and Application Integration Shapes](../explorations/exp-002-backend-and-application-integration-shapes.md) — documentation-only candidate comparison; no scope or architecture approval
-- [ADR-006: Shared Semantics and Runtime Profiles](../adrs/adr-006-shared-semantics-runtime-profiles.md)
-- [ADR-007: Integration Ownership and Host Composition](../adrs/adr-007-integration-ownership-and-host-composition.md)
-- [ADR-008: Module Dependency Graph and Package Topology](../adrs/adr-008-module-dependency-graph-and-package-topology.md)
-- [SPEC-014: Backend Integration](../specs/spec-014-backend-integration.md)
-- [SPEC-015: Host Configuration](../specs/spec-015-host-configuration.md)
+- [Scope review and approval](iteration-003-review/scope-review-and-approval.md)
+- [EXP-002](../explorations/exp-002-backend-and-application-integration-shapes.md) and [backend inventory](../explorations/exp-002/backend-foundation-inventory-2026-10-05.md)
+- [ITERATION-002](iteration-002-cleanup.md) — active cleanup dependency
+- [ADR-006](../adrs/adr-006-shared-semantics-runtime-profiles.md), [ADR-007](../adrs/adr-007-integration-ownership-and-host-composition.md), [ADR-008](../adrs/adr-008-module-dependency-graph-and-package-topology.md)
+- [SPEC-002](../specs/spec-002-portable-foundation.md), [SPEC-013](../specs/spec-013-runtime-profiles.md), [SPEC-014](../specs/spec-014-backend-integration.md), [SPEC-015](../specs/spec-015-host-configuration.md)
 - Discussion provenance: “Assess a Core Backend Framework” (`01a0fd58-87e8-79c1-81be-b0aab9e5cc76`) and “Simplify GiftUI Backend Integration” (`01a0fd59-dd59-71f2-bf32-d42c617c8705`).

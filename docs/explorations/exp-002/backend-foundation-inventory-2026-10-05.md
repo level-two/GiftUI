@@ -1,5 +1,14 @@
 # EXP-002 Evidence: Backend Foundation Inventory
 
+**Current scope handoff — 2026-10-05:** [ITERATION-003 revision 2](../../iterations/iteration-003-dev-ux-improvement.md)
+is now approved with a shared consumer, recording-display extension level,
+four-profile matrix and setup measures. [Review and approval](../../iterations/iteration-003-review/scope-review-and-approval.md)
+records the dispositions. The initial inventory below remains source evidence
+from draft revision 1; its proposed matrix/next-step questions are superseded
+by that scope selection. No module/API/topology is approved and no consumer
+experiment is performed by this handoff. Refresh this inventory against current
+Iteration 2 inputs before restructuring.
+
 Documentation-only preparation for [ITERATION-003](../../iterations/iteration-003-dev-ux-improvement.md)
 IT-AC-002, coordinated with its IT-AC-003 integration rework and owned by
 [EXP-002](../exp-002-backend-and-application-integration-shapes.md).
