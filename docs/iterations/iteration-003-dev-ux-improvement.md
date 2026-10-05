@@ -38,9 +38,10 @@ Signal Analyzer participates as the compatibility check, not a new application
 feature. Existing approvals and exceptions retain their recorded scope.
 
 The new `external-application-integration` feature is at Proposal stage under
-draft [PROPOSAL-007](../proposals/proposal-007-external-application-integration.md).
-Its registration supplies lifecycle traceability, not acceptance of the new
-architecture or implementation contracts.
+accepted [PROPOSAL-007](../proposals/proposal-007-external-application-integration.md).
+[Human acceptance on 2026-10-05](iteration-003-review/proposal-007-acceptance.md)
+authorizes RFC design; new architecture and implementation contracts still
+require their separate approvals.
 
 ## Preparation Baseline
 
@@ -71,7 +72,7 @@ and factory syntax are downstream design decisions.
 | --- | --- | --- | --- |
 | I3-01 — Focused packages | FW-016; giftui-mvp-architecture | Independently useful framework/runtime, rendering and selected environment/display components distributed as focused packages within this repository; external consumers need no reference-application internals or repository-wide source lists. | Compare closures/access first. Review ADR-008 and SPEC-002; obtain the necessary RFC/ADR and affected Spec approvals before extraction. Multiple products in the current package are a comparison baseline, not fulfillment of this outcome. |
 | I3-02 — Reusable backend foundation | EXP-002 backend inventory; giftui-mvp-architecture | Externally reusable contracts, raster/session construction, validation and adapter support; a minimal recording display adapter over the existing software raster family usable through I3-03. | Inventory the required transitive types/access and duplication; preserve ADR-006/007 and SPEC-009/014 owners. An additional core module is an option, not a mandatory deliverable or universal backend base. |
-| I3-03 — Simpler application integration | FW-030 / EXP-002; giftui-mvp-architecture | Documented supported host/build entry points with less application setup; supported and custom display selection use the same assembly path. Separate application behavior/resources/policy from reusable host mechanics. | Prepare a coordinated post-MVP Proposal covering all three outcomes. Public assembly/extension/access contracts and tooling choices require reviewed RFC decisions, accepted ADRs and approved Specifications before ready implementation plans. |
+| I3-03 — Simpler application integration | FW-030 / EXP-002; giftui-mvp-architecture | Documented supported host/build entry points with less application setup; supported and custom display selection use the same assembly path. Separate application behavior/resources/policy from reusable host mechanics. | Accepted PROPOSAL-007 covers all three outcomes; proceed to coordinated RFC design. Public assembly/extension/access contracts and tooling choices require reviewed RFC decisions, accepted ADRs and approved Specifications before ready implementation plans. |
 
 ## Shared Consumer and Responsibility Boundaries
 
@@ -214,8 +215,9 @@ are no remaining scope-selection blockers. Downstream gates remain explicit:
 - Refresh active Iteration 2 inputs and resolve overlap before restructuring;
   performance/connected gaps remain visible without another generic audit.
 
-Preparation baseline/study and draft PROPOSAL-007 are now recorded. Next obtain
-Proposal acceptance and continue the bounded full-consumer feasibility study;
+Preparation baseline/study and accepted PROPOSAL-007 are now recorded. Next
+compare the coherent package/access/host/backend decision cluster through RFC
+design while continuing the bounded full-consumer feasibility study;
 the initial declaration/access probes do not establish complete host execution.
 The original MVP Proposal and scope approval do not approve new external
 architecture or contracts.
@@ -224,7 +226,7 @@ architecture or contracts.
 
 | Item | Current boundary / revisit trigger |
 | --- | --- |
-| [FW-016](../future-work/fw-016-post-mvp-package-distribution-topology.md), [FW-030](../future-work/fw-030-application-integration-experience.md), [EXP-002](../explorations/exp-002-backend-and-application-integration-shapes.md) | Sources for selected outcomes now feed draft PROPOSAL-007 through reciprocal promotion links. Acceptance and downstream architecture/contract gates remain separate. |
+| [FW-016](../future-work/fw-016-post-mvp-package-distribution-topology.md), [FW-030](../future-work/fw-030-application-integration-experience.md), [EXP-002](../explorations/exp-002-backend-and-application-integration-shapes.md) | Sources for selected outcomes feed accepted PROPOSAL-007 through reciprocal promotion links. Downstream architecture/contract gates remain open. |
 | [FW-006](../future-work/fw-006-generated-target-configuration.md), [FW-009](../future-work/fw-009-shared-delegated-service-foundation.md) | General generator/services excluded. Revisit when the bounded consumer shows residual repeated configuration or multiple approved consumers need shared service contracts. |
 | [FW-022](../future-work/fw-022-contract-accurate-embedded-target-simulator.md), [EXP-002 direction comparison](../explorations/exp-002-backend-and-application-integration-shapes.md#sensitivity-to-possible-future-directions--2026-10-05) | Fixtures do not commit simulation, IR/ABI, migration or a core rewrite. Revisit the recorded questions when a concrete simulation, analysis or second-frontend consumer is selected. |
 | [FW-027](../future-work/fw-027-pi-performance-investigation-resumption.md), [FW-032](../future-work/fw-032-nrf-performance-improvement.md), [FW-031](../future-work/fw-031-macos-connected-pointer-validation-resumption.md), [FW-033](../future-work/fw-033-connected-validation-follow-up.md) | Performance/full connected validation retain their existing triggers. Changed-path checks remain current obligations where required by contracts. |
@@ -238,9 +240,13 @@ architecture or contracts.
 
 ## Closure and Follow-up
 
+Eugene's [PROPOSAL-007 acceptance](iteration-003-review/proposal-007-acceptance.md)
+on 2026-10-05 advances the investment gate without amending the scope, consumer,
+IT-AC-001–005 or exclusions. Revision 2's original approval remains in force.
+
 Preparation is recorded under EXP-002; major implementation has not started.
-The scope remains `status: approved` and
-`closure: null` remain. At closure, disposition IT-AC-001–005 as met, unmet or
+The scope remains `status: approved` with `closure: null`.
+At closure, disposition IT-AC-001–005 as met, unmet or
 an explicitly approved exception with immutable evidence, remaining gates,
 deferred triggers and the maintainer's closure decision. Architecture/Spec
 approval and implemented transitions remain separate.
@@ -248,6 +254,7 @@ approval and implemented transitions remain separate.
 ## References
 
 - [Scope review and approval](iteration-003-review/scope-review-and-approval.md)
+- [Accepted PROPOSAL-007](../proposals/proposal-007-external-application-integration.md) and [acceptance provenance](iteration-003-review/proposal-007-acceptance.md)
 - [EXP-002](../explorations/exp-002-backend-and-application-integration-shapes.md) and [backend inventory](../explorations/exp-002/backend-foundation-inventory-2026-10-05.md)
 - [ITERATION-002](iteration-002-cleanup.md) — active cleanup dependency
 - [ADR-006](../adrs/adr-006-shared-semantics-runtime-profiles.md), [ADR-007](../adrs/adr-007-integration-ownership-and-host-composition.md), [ADR-008](../adrs/adr-008-module-dependency-graph-and-package-topology.md)

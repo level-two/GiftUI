@@ -98,7 +98,10 @@ is not classified as a framework/access failure.
 
 Completed: the named declaration/access/product questions were answered within
 the bounds. Feed evidence to parent EXP-002 and
-[PROPOSAL-007](../proposals/proposal-007-external-application-integration.md).
+[PROPOSAL-007](../proposals/proposal-007-external-application-integration.md),
+subsequently [accepted by Eugene](../iterations/iteration-003-review/proposal-007-acceptance.md)
+on 2026-10-05. Acceptance clears the RFC-design prerequisite, not the evidence
+limits of this completed Spike.
 The complete observable-state/Canvas/host consumer and its setup/resource control
 remain unproven. No Spike code is promoted to production or establishes an API.
 

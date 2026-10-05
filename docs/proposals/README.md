@@ -15,4 +15,4 @@ Use [Future Work](../future-work/README.md) for valuable ideas that do not yet
 justify Proposal scope, and cross-link ideas captured while drafting.
 
 - [PROPOSAL-007: External Application and Backend Integration](proposal-007-external-application-integration.md)
-  — draft coordinated post-MVP investment under ITERATION-003; acceptance pending.
+  — accepted coordinated post-MVP investment under ITERATION-003; RFC design is next.

@@ -2,7 +2,7 @@
 id: PROPOSAL-007
 feature: external-application-integration
 title: External Application and Backend Integration
-status: draft
+status: accepted
 authors:
   - codex
 created: 2026-10-05
@@ -36,10 +36,24 @@ target_milestone: ITERATION-003
 
 # PROPOSAL-007: External Application and Backend Integration
 
-Draft investment proposal prepared under approved
+Accepted investment proposal prepared under approved
 [ITERATION-003 revision 2](../iterations/iteration-003-dev-ux-improvement.md).
 It does not select package names, public APIs, an additional backend module,
-assembly factories or a generation strategy. Human acceptance is pending.
+assembly factories or a generation strategy. Eugene's explicit acceptance on
+2026-10-05 is recorded in the [acceptance provenance](../iterations/iteration-003-review/proposal-007-acceptance.md).
+
+## Acceptance History
+
+The draft was presented for human consideration in commit `995696d4` after the
+authorized preparation study. Eugene then instructed: “Yes, I approve it. Please
+update this document and all dependent documents, including iteration zero zero
+three spec.” This records the presented Proposal's consideration and acceptance;
+its problem, scope and EI-001–005 outcomes are unchanged.
+
+Acceptance authorizes RFC design under the feature lifecycle. The feature
+remains at `proposal` until an RFC is registered. Architectural decisions,
+Specifications, implementation plans and implementation retain their own gates;
+the iteration scope remains approved revision 2 with closure open.
 
 ## Summary
 
@@ -173,7 +187,7 @@ variant and recording adapter supply one shared evaluation vehicle. Signal
 Analyzer remains the nontrivial regression consumer.
 
 Package/API names, additional modules, assembly forms, finite Static producers
-and tool interfaces remain architectural alternatives. Upon acceptance, compare
+and tool interfaces remain architectural alternatives. With acceptance recorded, compare
 them as the smallest coherent decision cluster; use separate RFCs only for
 independently reviewable concerns, not merely for each package or row.
 
@@ -202,14 +216,15 @@ independently reviewable concerns, not merely for each package or row.
   while fitting an application-owned event loop and documented sample runner?
 
 These are evidence/design questions for later gates; the investment problem,
-users and bounded outcomes are ready for consideration. Feasibility failure
+users and bounded outcomes have been accepted. Feasibility failure
 requires an explicit scope disposition, not silent reduction of the commitment.
 
 ## Deferred and Follow-up Work
 
 FW-016 and FW-030 now feed this Proposal with reciprocal promotion links;
-EXP-002 remains active while supplying preparation evidence. Their promotion is
-not Proposal acceptance. SPIKE-014 remains an evidence-only compile/access study.
+EXP-002 remains active while supplying preparation evidence. Their promotion
+preceded the separately recorded human acceptance above. SPIKE-014 remains an
+evidence-only compile/access study.
 
 General generation and services remain with
 [FW-006](../future-work/fw-006-generated-target-configuration.md) and

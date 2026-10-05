@@ -119,16 +119,19 @@ The subsequent 2026-10-05 request explicitly authorizes review, alignment, gap
 filling, approval and commit. [ITERATION-003 revision 2](../iterations/iteration-003-dev-ux-improvement.md)
 now selects the coordinated consumption/foundation/integration commitment with
 one bounded consumer and four-profile matrix. [Review and approval](../iterations/iteration-003-review/scope-review-and-approval.md)
-records this later instruction. FW-030 remains promoted to active EXP-002;
-Proposal acceptance, architecture and external integration contracts remain
-separate gates. No consumer experiment or production implementation is claimed.
+records this later instruction. At that point FW-030 remained promoted to
+active EXP-002, with Proposal acceptance, architecture and external integration
+contracts still separate gates. That scope review claimed no consumer experiment
+or production implementation.
 
-After the instruction “Please then proceed.”, this investment also feeds draft
+After the instruction “Please then proceed.”, this investment also fed the draft
 [PROPOSAL-007](../proposals/proposal-007-external-application-integration.md).
 The existing EXP-002 promotion is retained; both links preserve the chain.
 [SPIKE-014](../spikes/spike-014-external-consumer-access-baseline.md) now provides
 bounded native/Embedded declaration/access results, not a complete application
-host. Proposal acceptance and architecture/contract approvals remain pending.
+host. Eugene subsequently [accepted PROPOSAL-007](../iterations/iteration-003-review/proposal-007-acceptance.md)
+on 2026-10-05. RFC design may proceed; architecture/contract approvals remain
+pending. The original promotion history and Exploration status are preserved.
 
 ## References
 

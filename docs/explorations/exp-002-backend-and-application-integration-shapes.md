@@ -45,12 +45,14 @@ earlier proposed study details below preserve the preparation reasoning.
 Exact APIs, package boundaries, Static adaptation and measured consumer resource
 ceilings still require downstream review. Shapes A/B/C/D remain candidates.
 
-EXP-002 remains active and now feeds draft
+EXP-002 remains active and now feeds accepted
 [PROPOSAL-007](../proposals/proposal-007-external-application-integration.md).
 The [preparation baseline and consumer study](exp-002/preparation-2026-10-05/README.md)
 record refreshed inputs and completed SPIKE-014 declaration/access probes.
-Full host feasibility and measured setup/resource controls remain open; no
-architecture or implementation approval follows from this promotion.
+Full host feasibility and measured setup/resource controls remain open.
+[Eugene's acceptance](../iterations/iteration-003-review/proposal-007-acceptance.md)
+clears the investment gate for RFC design; architectural decisions and
+implementation retain their separate gates.
 
 ## Questions / Hypotheses
 
@@ -677,14 +679,14 @@ baseline. It cannot prove a complete host or approve access changes.
 
 Continue the exploration under the approved iteration's bounded evidence study
 and downstream lifecycle gates. FW-030's earlier promotion to this Exploration
-is preserved; FW-016/FW-030 now feed draft PROPOSAL-007. No implementation is
+is preserved; FW-016/FW-030 now feed accepted PROPOSAL-007. No implementation is
 authorized by this artifact.
 
 The earlier preparation had no consumer experiment. SPIKE-014 now contributes
-bounded declaration/access evidence and FW-016/FW-030 feed draft PROPOSAL-007.
+bounded declaration/access evidence and FW-016/FW-030 feed accepted PROPOSAL-007.
 The consumer study and current baseline are recorded without a complete host,
 resource comparison or hardware campaign. EXP-002 remains active for those
-remaining evidence questions. After Proposal acceptance, route the smallest
+remaining evidence questions. With Proposal acceptance recorded, route the smallest
 coherent architectural decision cluster through RFC/ADR/Specification review.
 Public host contracts, cross-package access and any ADR-008 distribution change
 need their normal gates. Scope approval is recorded separately and supplies no

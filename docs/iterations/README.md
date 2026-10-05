@@ -16,6 +16,8 @@ criteria of each delivery commitment. The machine-readable index is the
   approved revision 2: focused packages, backend reuse and simpler application
   integration, coordinated through one external consumer and four-profile matrix.
   [Review and approval](iteration-003-review/scope-review-and-approval.md).
+  [PROPOSAL-007 acceptance](iteration-003-review/proposal-007-acceptance.md)
+  clears the investment gate; RFC design and downstream contract gates remain.
 
 The next available ID is `ITERATION-004`. Scope approval establishes the delivery
 commitment; architecture and Specification gates remain separate. Amendments and

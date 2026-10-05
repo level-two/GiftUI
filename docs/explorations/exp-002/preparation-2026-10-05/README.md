@@ -41,9 +41,11 @@ hashes and validation before package restructuring.
 ## Triage and authority
 
 The new investment is registered as `external-application-integration`, lifecycle
-stage `proposal`, with draft [PROPOSAL-007](../../../proposals/proposal-007-external-application-integration.md).
-The current user instruction authorizes this preparation and its required
-manifest/traceability updates; it does not accept the Proposal. Keeping a
+stage `proposal`, with accepted [PROPOSAL-007](../../../proposals/proposal-007-external-application-integration.md).
+The initial “Please then proceed.” instruction authorized preparation and its
+required manifest/traceability updates. Eugene subsequently accepted the
+presented Proposal on 2026-10-05; the [acceptance record](../../../iterations/iteration-003-review/proposal-007-acceptance.md)
+preserves the exact instruction and clears the RFC-design prerequisite. Keeping a
 separate feature prevents the implemented MVP architecture status from looking
 like approval of new external access and distribution contracts.
 
@@ -56,8 +58,8 @@ integration requirement or implementation authority.
 Accepted ADR-006/007/008/010/033 and implemented SPEC-002/009/012/013/014/015 are
 the constraints inspected. FW-016/FW-030, active EXP-002 and SPIKE-014 are
 evidence/provenance, not architecture. Original MVP feature statuses remain
-implemented. New Proposal acceptance, RFC review, ADR decisions, Spec approval
-and ready plans are all outstanding for the new feature.
+implemented. The new Proposal is accepted; RFC review, ADR decisions, Spec
+approval and ready plans remain outstanding for the new feature.
 
 ## Refreshed consumption evidence
 
@@ -95,18 +97,20 @@ and finite Static proof obligations without selecting new APIs or ownership.
 
 Proposal 7 covers the coordinated investment and maps EI-001–005 to iteration
 IT-AC-001–005. Prepare one integrating architectural review of consumption,
-access, extension and host/build interfaces after acceptance; separate RFCs only
-when evidence demonstrates independently reviewable decision boundaries. No RFC
-is drafted before the acceptance gate.
+access, extension and host/build interfaces under the accepted Proposal;
+separate RFCs only when evidence demonstrates independently reviewable decision
+boundaries. RFC design may now proceed; no RFC is yet registered.
 
 | Remaining gate | Exact next action |
 | --- | --- |
-| Investment approval | Human consideration/acceptance of draft PROPOSAL-007. |
 | Equivalent setup/resource control | Define a bounded full-consumer Spike with the selected control/candidate and budgets; capture real setup and linked costs. Privileged current SPI, if used in control-only research, must remain labeled debt. |
 | Static root/actions/Canvas | Prove finite observable slots/generations, action binding, text and Canvas callable/storage realization for the selected consumer; declaration compilation alone is insufficient. |
 | External contracts/topology | Compare the actual transitive access closure and construction alternatives; choose through RFC/ADR/Spec gates. Do not make all internals public. |
 | Stable cleanup inheritance | Refresh current retention/trace/source/toolchain evidence and coordinate overlapping owners before restructuring. Leave connected Pi/final iteration 2 gates visible. |
 | Implementation | Approved Specs, measured resource ceilings and ready criterion-mapped plans. |
+
+The investment gate is complete through the linked human acceptance; the table
+lists the remaining work rather than repeating that gate as pending.
 
 General generation/services/simulation remain with FW-006/009/022; EXP-002 keeps
 the wider direction map. Performance/physical follow-up remains FW-027/031/032/033.

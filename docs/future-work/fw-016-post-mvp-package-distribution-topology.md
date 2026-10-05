@@ -135,10 +135,11 @@ records that prioritization. That scope approval selected no package design.
 
 The subsequent instruction “Please then proceed.” authorizes preparation of
 the refreshed baseline, consumer study and coordinated investment Proposal.
-This item is now promoted to draft
+This item is now promoted to
 [PROPOSAL-007](../proposals/proposal-007-external-application-integration.md),
-which takes ownership of the selected distribution problem; acceptance remains
-pending. [SPIKE-014](../spikes/spike-014-external-consumer-access-baseline.md)
+which takes ownership of the selected distribution problem. It was presented
+as a draft in commit `995696d4` and subsequently [accepted by Eugene](../iterations/iteration-003-review/proposal-007-acceptance.md)
+on 2026-10-05. RFC design is next. [SPIKE-014](../spikes/spike-014-external-consumer-access-baseline.md)
 supplies bounded declaration/access evidence. No package split or compatibility
 contract is approved by promotion.
 

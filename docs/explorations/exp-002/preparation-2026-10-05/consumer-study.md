@@ -111,8 +111,9 @@ Improved syntax, skipped prerequisites or reduced workload are not valid evidenc
 
 ## Study handoff and gates
 
-The investment problem is ready for [PROPOSAL-007](../../../proposals/proposal-007-external-application-integration.md)
-consideration. Its acceptance permits RFC work; it does not establish a solution.
+Eugene accepted [PROPOSAL-007](../../../proposals/proposal-007-external-application-integration.md)
+on 2026-10-05, as recorded in the [acceptance provenance](../../../iterations/iteration-003-review/proposal-007-acceptance.md).
+RFC work may proceed; solution selection and implementation remain downstream.
 Continue EXP-002 evidence while preparing the smallest coherent package/access/
 host/backend decision cluster. Any independent RFC split needs lifecycle
 justification and explicit dependencies. Implementation plans wait for approved

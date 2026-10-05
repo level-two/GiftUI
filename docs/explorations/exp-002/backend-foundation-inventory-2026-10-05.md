@@ -11,10 +11,11 @@ Iteration 2 inputs before restructuring.
 
 **Preparation refresh:** The [current baseline and concrete consumer study](preparation-2026-10-05/README.md)
 now include the completed retention integration packet, source/dependency
-inventories and SPIKE-014's bounded native/Embedded access probes. Draft
+inventories and SPIKE-014's bounded native/Embedded access probes. Accepted
 [PROPOSAL-007](../../proposals/proposal-007-external-application-integration.md)
 owns the coordinated investment; full host/model/Canvas feasibility and
-setup/resource comparison remain open. The initial source observations below
+setup/resource comparison remain open. [Human acceptance](../../iterations/iteration-003-review/proposal-007-acceptance.md)
+clears the investment gate for RFC design. The initial source observations below
 are preserved as provenance, rather than reclassified as consumer execution.
 
 Documentation-only preparation for [ITERATION-003](../../iterations/iteration-003-dev-ux-improvement.md)

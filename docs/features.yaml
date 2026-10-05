@@ -13,6 +13,8 @@ iterations:
 features:
   external-application-integration:
     title: External Application and Backend Integration
+    # PROPOSAL-007 accepted by Eugene on 2026-10-05; RFC design is next.
+    # Acceptance provenance: docs/iterations/iteration-003-review/proposal-007-acceptance.md.
     status: proposal
     proposal:
       - PROPOSAL-007
