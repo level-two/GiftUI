@@ -12,12 +12,15 @@ source:
   - FW-016
   - docs/explorations/exp-002/future-directions-2026-10-05.txt
   - docs/explorations/exp-002/backend-foundation-inventory-2026-10-05.md
+  - docs/explorations/exp-002/preparation-2026-10-05/README.md
 related_future_work:
   - FW-030
   - FW-016
 related_explorations: []
-related_spikes: []
-promoted_to: []
+related_spikes:
+  - SPIKE-014
+promoted_to:
+  - PROPOSAL-007
 supersedes: []
 superseded_by: []
 target_milestone: null
@@ -42,9 +45,12 @@ earlier proposed study details below preserve the preparation reasoning.
 Exact APIs, package boundaries, Static adaptation and measured consumer resource
 ceilings still require downstream review. Shapes A/B/C/D remain candidates.
 
-EXP-002 remains active and unpromoted into the main lifecycle. Next refresh the
-consumer/setup/resource baseline and draft the coordinated post-MVP Proposal.
-No Spike, consumer build or implementation is performed by this approval update.
+EXP-002 remains active and now feeds draft
+[PROPOSAL-007](../proposals/proposal-007-external-application-integration.md).
+The [preparation baseline and consumer study](exp-002/preparation-2026-10-05/README.md)
+record refreshed inputs and completed SPIKE-014 declaration/access probes.
+Full host feasibility and measured setup/resource controls remain open; no
+architecture or implementation approval follows from this promotion.
 
 ## Questions / Hypotheses
 
@@ -665,21 +671,24 @@ approved scope.
 
 ## Disposition
 
-Continue the exploration under the approved iteration's bounded evidence study
-and downstream lifecycle gates. FW-030 is promoted to this Exploration because
-the maintainer explicitly requested
-candidate solution drafting; FW-016 participates as packaging context and
-remains captured. No Spike, external consumer build or hardware campaign was
-performed, and no implementation is authorized by this artifact.
+[SPIKE-014](../spikes/spike-014-external-consumer-access-baseline.md) records
+bounded independent-consumer declaration/access probes for the refreshed
+baseline. It cannot prove a complete host or approve access changes.
 
-The scope selects the coordinated problem/outcome; after gathering sufficient
-feasibility evidence, prepare a Proposal for post-MVP external integration and
-route the smallest coherent architectural decision cluster through RFC/ADR/Specification
-review. Cover backend extension and application assembly together in that
-problem statement; avoid independent contracts for repeated construction and
-validation. Public host contracts, cross-package access and any ADR-008 distribution
-change need their normal gates. Iteration scope approval is recorded separately
-and supplies no approval of these candidate designs.
+Continue the exploration under the approved iteration's bounded evidence study
+and downstream lifecycle gates. FW-030's earlier promotion to this Exploration
+is preserved; FW-016/FW-030 now feed draft PROPOSAL-007. No implementation is
+authorized by this artifact.
+
+The earlier preparation had no consumer experiment. SPIKE-014 now contributes
+bounded declaration/access evidence and FW-016/FW-030 feed draft PROPOSAL-007.
+The consumer study and current baseline are recorded without a complete host,
+resource comparison or hardware campaign. EXP-002 remains active for those
+remaining evidence questions. After Proposal acceptance, route the smallest
+coherent architectural decision cluster through RFC/ADR/Specification review.
+Public host contracts, cross-package access and any ADR-008 distribution change
+need their normal gates. Scope approval is recorded separately and supplies no
+approval of these candidate designs.
 
 ## Revisit Triggers
 

@@ -9,6 +9,14 @@ by that scope selection. No module/API/topology is approved and no consumer
 experiment is performed by this handoff. Refresh this inventory against current
 Iteration 2 inputs before restructuring.
 
+**Preparation refresh:** The [current baseline and concrete consumer study](preparation-2026-10-05/README.md)
+now include the completed retention integration packet, source/dependency
+inventories and SPIKE-014's bounded native/Embedded access probes. Draft
+[PROPOSAL-007](../../proposals/proposal-007-external-application-integration.md)
+owns the coordinated investment; full host/model/Canvas feasibility and
+setup/resource comparison remain open. The initial source observations below
+are preserved as provenance, rather than reclassified as consumer execution.
+
 Documentation-only preparation for [ITERATION-003](../../iterations/iteration-003-dev-ux-improvement.md)
 IT-AC-002, coordinated with its IT-AC-003 integration rework and owned by
 [EXP-002](../exp-002-backend-and-application-integration-shapes.md).

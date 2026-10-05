@@ -7,6 +7,7 @@ approved_revision: 2
 created: 2026-10-04
 updated: 2026-10-05
 features:
+  - external-application-integration
   - giftui-mvp-architecture
   - signal-analyzer
 approval: "Eugene authorized review, alignment, gap filling, approval and commit on 2026-10-05. Revision 2 records that reviewed scope. Evidence: docs/iterations/iteration-003-review/scope-review-and-approval.md."
@@ -32,9 +33,14 @@ application. Preserve portable UI semantics and constrained Static execution.
 
 This is post-MVP work. [ITERATION-001](iteration-001-mvp.md) validated one
 reference application on four stacks; it did not establish external host or
-backend-extension contracts. Both participating features are `implemented`;
+backend-extension contracts. The existing MVP features are `implemented`;
 Signal Analyzer participates as the compatibility check, not a new application
 feature. Existing approvals and exceptions retain their recorded scope.
+
+The new `external-application-integration` feature is at Proposal stage under
+draft [PROPOSAL-007](../proposals/proposal-007-external-application-integration.md).
+Its registration supplies lifecycle traceability, not acceptance of the new
+architecture or implementation contracts.
 
 ## Preparation Baseline
 
@@ -50,6 +56,11 @@ Scope review used clean commit `feb40589`; ITERATION-002 is active revision 7.
 Its final combined validation and closure remain separate. Refresh source,
 generation, access and resource facts for the consumer study and before
 restructuring; earlier inventory and cleanup runs are comparison evidence.
+
+The [2026-10-05 preparation baseline and consumer study](../explorations/exp-002/preparation-2026-10-05/README.md)
+now record current input hashes, cleanup/evidence dependencies, six bounded
+native/Embedded declaration/access probes and the coordinated Proposal.
+This preparation update does not amend revision 2's commitment.
 
 ## Included Scope
 
@@ -203,15 +214,17 @@ are no remaining scope-selection blockers. Downstream gates remain explicit:
 - Refresh active Iteration 2 inputs and resolve overlap before restructuring;
   performance/connected gaps remain visible without another generic audit.
 
-Next: baseline/consumer feasibility evidence under EXP-002 and a coordinated
-post-MVP Proposal. The original MVP Proposal and this scope approval do not
-approve new external architecture or contracts.
+Preparation baseline/study and draft PROPOSAL-007 are now recorded. Next obtain
+Proposal acceptance and continue the bounded full-consumer feasibility study;
+the initial declaration/access probes do not establish complete host execution.
+The original MVP Proposal and scope approval do not approve new external
+architecture or contracts.
 
 ## Deferred and Follow-up Work
 
 | Item | Current boundary / revisit trigger |
 | --- | --- |
-| [FW-016](../future-work/fw-016-post-mvp-package-distribution-topology.md), [FW-030](../future-work/fw-030-application-integration-experience.md), [EXP-002](../explorations/exp-002-backend-and-application-integration-shapes.md) | Sources for selected outcomes. Existing captured/promoted/active statuses remain; main-lifecycle promotion needs a new artifact and reciprocal links. |
+| [FW-016](../future-work/fw-016-post-mvp-package-distribution-topology.md), [FW-030](../future-work/fw-030-application-integration-experience.md), [EXP-002](../explorations/exp-002-backend-and-application-integration-shapes.md) | Sources for selected outcomes now feed draft PROPOSAL-007 through reciprocal promotion links. Acceptance and downstream architecture/contract gates remain separate. |
 | [FW-006](../future-work/fw-006-generated-target-configuration.md), [FW-009](../future-work/fw-009-shared-delegated-service-foundation.md) | General generator/services excluded. Revisit when the bounded consumer shows residual repeated configuration or multiple approved consumers need shared service contracts. |
 | [FW-022](../future-work/fw-022-contract-accurate-embedded-target-simulator.md), [EXP-002 direction comparison](../explorations/exp-002-backend-and-application-integration-shapes.md#sensitivity-to-possible-future-directions--2026-10-05) | Fixtures do not commit simulation, IR/ABI, migration or a core rewrite. Revisit the recorded questions when a concrete simulation, analysis or second-frontend consumer is selected. |
 | [FW-027](../future-work/fw-027-pi-performance-investigation-resumption.md), [FW-032](../future-work/fw-032-nrf-performance-improvement.md), [FW-031](../future-work/fw-031-macos-connected-pointer-validation-resumption.md), [FW-033](../future-work/fw-033-connected-validation-follow-up.md) | Performance/full connected validation retain their existing triggers. Changed-path checks remain current obligations where required by contracts. |
@@ -225,7 +238,8 @@ approve new external architecture or contracts.
 
 ## Closure and Follow-up
 
-Delivery has not started through this approval; `status: approved` and
+Preparation is recorded under EXP-002; major implementation has not started.
+The scope remains `status: approved` and
 `closure: null` remain. At closure, disposition IT-AC-001–005 as met, unmet or
 an explicitly approved exception with immutable evidence, remaining gates,
 deferred triggers and the maintainer's closure decision. Architecture/Spec

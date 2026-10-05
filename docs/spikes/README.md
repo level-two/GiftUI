@@ -16,3 +16,4 @@ or authorize production implementation.
 - [SPIKE-009: nRF hierarchy direct-module probe and generated role bindings](spike-009-nrf-hierarchy-role-bindings.md)
 - [SPIKE-010: bounded analyzer declaration snapshot traversal](spike-010-bounded-declaration-traversal.md)
 - [SPIKE-011: clean offline analyzer topology table generation](spike-011-clean-topology-generation.md)
+- [SPIKE-014: external consumer access baseline](spike-014-external-consumer-access-baseline.md)

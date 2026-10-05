@@ -2,7 +2,7 @@
 id: FW-016
 feature: giftui-mvp-architecture
 title: Post-MVP Package and Distribution Topology
-status: captured
+status: promoted
 authors:
   - Yauheni Lychkouski
 created: 2026-08-19
@@ -15,8 +15,10 @@ related_future_work:
   - FW-030
 related_explorations:
   - EXP-002
-related_spikes: []
-promoted_to: []
+related_spikes:
+  - SPIKE-014
+promoted_to:
+  - PROPOSAL-007
 supersedes: []
 superseded_by: []
 target_milestone: null
@@ -100,7 +102,7 @@ or target-stack validation.
 
 ## Disposition
 
-Captured for post-MVP consideration. Promote to an Exploration when a trigger
+Initially captured for post-MVP consideration. Promote to an Exploration when a trigger
 provides concrete distribution constraints or measurements and competing
 topologies need comparison. Any architecture change must then pass the normal
 RFC and ADR gates before package restructuring is treated as authoritative.
@@ -117,7 +119,7 @@ distribution; this capture does not authorize a split or change its milestone.
 
 [EXP-002](../explorations/exp-002-backend-and-application-integration-shapes.md)
 now compares typed assembly, supported presets and generated composition,
-including packaging/access constraints. This item's status remains captured;
+including packaging/access constraints. At that point this item remained captured;
 no package extraction or consumer build has been performed.
 
 The maintainer included this concern in the working scope for
@@ -129,8 +131,16 @@ On 2026-10-05 Eugene explicitly requested scope review, alignment, gap filling,
 approval and commit. [ITERATION-003 revision 2](../iterations/iteration-003-dev-ux-improvement.md)
 now selects focused-package consumption through the shared external consumer,
 with separate topology/access/contract gates. [Review and approval](../iterations/iteration-003-review/scope-review-and-approval.md)
-records that prioritization. FW-016 remains captured as the source observation;
-no package split or main-lifecycle promotion is approved by this record.
+records that prioritization. That scope approval selected no package design.
+
+The subsequent instruction “Please then proceed.” authorizes preparation of
+the refreshed baseline, consumer study and coordinated investment Proposal.
+This item is now promoted to draft
+[PROPOSAL-007](../proposals/proposal-007-external-application-integration.md),
+which takes ownership of the selected distribution problem; acceptance remains
+pending. [SPIKE-014](../spikes/spike-014-external-consumer-access-baseline.md)
+supplies bounded declaration/access evidence. No package split or compatibility
+contract is approved by promotion.
 
 ## References
 

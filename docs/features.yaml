@@ -11,6 +11,20 @@ iterations:
   ITERATION-002: docs/iterations/iteration-002-cleanup.md
   ITERATION-003: docs/iterations/iteration-003-dev-ux-improvement.md
 features:
+  external-application-integration:
+    title: External Application and Backend Integration
+    status: proposal
+    proposal:
+      - PROPOSAL-007
+    rfcs: []
+    adrs: []
+    specs: []
+    dependencies:
+      - giftui-mvp-architecture
+      - capability-system
+      - observable-reference-state
+      - canvas-drawing
+    milestone: ITERATION-003
   giftui-mvp-baseline:
     title: GiftUI MVP Baseline
     status: proposal

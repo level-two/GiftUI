@@ -1,0 +1,9 @@
+schema_version=1
+invocation_id=run-bmuwVkCK
+selection=all-hardware-free
+repository_revision=a607be128fe17c723c5160cab7f0c32818d6d62c
+profiles=macos-dynamic,macos-static,raspberry-pi-armv6,nrf52840-embedded
+contract_report_root=.build/contract-reports
+status=interrupted
+exit_code=143
+active_check=SPEC-002-raspberry-pi-armv6

@@ -1,0 +1,771 @@
+{
+  "repository_revision": "c1fdd3b9a71e096215855c01feb079751b17bf8f",
+  "maintained_input_count": 846,
+  "maintained_input_inventory_sha256": "6c9150c2d7080e9da564e1bdf5b32f4bddd9ca66bb83eb0ff6406166affb0e63",
+  "production_diff": [],
+  "manifest_products": {
+    "GiftUI": [
+      "GiftUI"
+    ],
+    "GiftUIFailureCore": [
+      "GiftUIFailureCore"
+    ],
+    "GiftUIFailureDiagnostics": [
+      "GiftUIFailureDiagnostics"
+    ],
+    "GiftUICapabilities": [
+      "GiftUICapabilities"
+    ],
+    "GiftUIDynamicConveniences": [
+      "GiftUIDynamicConveniences"
+    ],
+    "SignalAnalyzerDomain": [
+      "SignalAnalyzerDomain"
+    ],
+    "SignalAnalyzerData": [
+      "SignalAnalyzerData"
+    ],
+    "GiftUIPlatformRaspberryPi": [
+      "GiftUIPlatformRaspberryPi"
+    ],
+    "SignalAnalyzerPresentation": [
+      "SignalAnalyzerPresentation"
+    ],
+    "SignalAnalyzerMacOSDynamic": [
+      "SignalAnalyzerMacOSDynamic"
+    ],
+    "SignalAnalyzerMacOSStatic": [
+      "SignalAnalyzerMacOSStatic"
+    ],
+    "SignalAnalyzerRaspberryPiARMv6": [
+      "SignalAnalyzerRaspberryPiARMv6"
+    ],
+    "SignalAnalyzerNRF52840HostOracle": [
+      "SignalAnalyzerNRF52840HostOracle"
+    ]
+  },
+  "manifest_target_count": 84,
+  "target_dependency_graph": {
+    "GiftUIMacros": [
+      "external:swift-syntax/SwiftCompilerPlugin",
+      "external:swift-syntax/SwiftDiagnostics",
+      "external:swift-syntax/SwiftSyntax",
+      "external:swift-syntax/SwiftSyntaxBuilder",
+      "external:swift-syntax/SwiftSyntaxMacros"
+    ],
+    "GiftUI": [
+      "GiftUIMacros"
+    ],
+    "GiftUIFailureCore": [],
+    "GiftUIFailureDiagnostics": [
+      "GiftUIFailureCore"
+    ],
+    "GiftUICapabilities": [],
+    "GiftUIDynamicConveniences": [
+      "GiftUI"
+    ],
+    "GiftUISemanticCore": [
+      "GiftUI"
+    ],
+    "GiftUITextResources": [
+      "GiftUI"
+    ],
+    "GiftUILayout": [
+      "GiftUI",
+      "GiftUISemanticCore",
+      "GiftUITextResources"
+    ],
+    "GiftUILayoutFailureAdapterFixture": [
+      "GiftUIFailureCore",
+      "GiftUILayout"
+    ],
+    "GiftUIRenderCore": [
+      "GiftUI",
+      "GiftUITextResources"
+    ],
+    "GiftUISurfaceCore": [
+      "GiftUI",
+      "GiftUICapabilities",
+      "GiftUIRenderCore"
+    ],
+    "GiftUIRasterCore": [
+      "GiftUI",
+      "GiftUICapabilities",
+      "GiftUIRenderCore",
+      "GiftUISurfaceCore",
+      "GiftUITextResources"
+    ],
+    "GiftUIDisplayCore": [
+      "GiftUI",
+      "GiftUICapabilities",
+      "GiftUIFailureCore",
+      "GiftUISurfaceCore"
+    ],
+    "GiftUIBackendIntegration": [
+      "GiftUI",
+      "GiftUICapabilities",
+      "GiftUIDisplayCore",
+      "GiftUIExecution",
+      "GiftUIFailureCore",
+      "GiftUIRasterCore",
+      "GiftUIRenderCore",
+      "GiftUISurfaceCore",
+      "GiftUITextResources"
+    ],
+    "GiftUIRenderLowering": [
+      "GiftUI",
+      "GiftUILayout",
+      "GiftUIRenderCore",
+      "GiftUISemanticCore",
+      "GiftUITextResources"
+    ],
+    "GiftUIRenderFailureAdapterFixture": [
+      "GiftUIFailureCore",
+      "GiftUIRenderLowering"
+    ],
+    "GiftUIDrawing": [
+      "GiftUI",
+      "GiftUIExecution",
+      "GiftUILayout",
+      "GiftUIRenderCore",
+      "GiftUIRenderLowering",
+      "GiftUISemanticCore",
+      "GiftUITextResources"
+    ],
+    "GiftUIDrawingFailureAdapterFixture": [
+      "GiftUIDrawing",
+      "GiftUIFailureCore"
+    ],
+    "GiftUIExecution": [
+      "GiftUI",
+      "GiftUIRenderCore"
+    ],
+    "GiftUIInteraction": [
+      "GiftUI",
+      "GiftUIExecution",
+      "GiftUILayout",
+      "GiftUISemanticCore"
+    ],
+    "GiftUIInteractionFailureAdapterFixture": [
+      "GiftUIFailureCore",
+      "GiftUIFailureExecution",
+      "GiftUIInteraction"
+    ],
+    "GiftUIFailureExecution": [
+      "GiftUIExecution",
+      "GiftUIFailureCore"
+    ],
+    "GiftUIObservableState": [
+      "GiftUI",
+      "GiftUIExecution",
+      "GiftUISemanticCore"
+    ],
+    "GiftUIObservableStateFailureAdapterFixture": [
+      "GiftUIFailureCore",
+      "GiftUIObservableState"
+    ],
+    "GiftUIRuntimeCore": [
+      "GiftUI",
+      "GiftUIDrawing",
+      "GiftUIExecution",
+      "GiftUIInteraction",
+      "GiftUILayout",
+      "GiftUIObservableState",
+      "GiftUIRenderCore",
+      "GiftUIRenderLowering",
+      "GiftUISemanticCore",
+      "GiftUITextResources"
+    ],
+    "GiftUIRuntimeDynamic": [
+      "GiftUI",
+      "GiftUIDrawing",
+      "GiftUIExecution",
+      "GiftUIInteraction",
+      "GiftUILayout",
+      "GiftUIObservableState",
+      "GiftUIRenderCore",
+      "GiftUIRenderLowering",
+      "GiftUIRuntimeCore",
+      "GiftUISemanticCore",
+      "GiftUITextResources"
+    ],
+    "GiftUIRuntimeStatic": [
+      "GiftUI",
+      "GiftUIDrawing",
+      "GiftUIExecution",
+      "GiftUIInteraction",
+      "GiftUILayout",
+      "GiftUIObservableState",
+      "GiftUIRenderCore",
+      "GiftUIRenderLowering",
+      "GiftUIRuntimeCore",
+      "GiftUISemanticCore"
+    ],
+    "GiftUIRuntimeFailureAdapterFixture": [
+      "GiftUIFailureCore",
+      "GiftUIFailureExecution",
+      "GiftUIRuntimeCore"
+    ],
+    "GiftUIHostConfiguration": [
+      "GiftUI",
+      "GiftUIBackendIntegration",
+      "GiftUICapabilities",
+      "GiftUIDisplayCore",
+      "GiftUIExecution",
+      "GiftUIFailureCore",
+      "GiftUIRasterCore",
+      "GiftUIRuntimeCore",
+      "GiftUISurfaceCore",
+      "GiftUITextResources"
+    ],
+    "GiftUIReferenceTextResources": [
+      "GiftUI",
+      "GiftUITextResources"
+    ],
+    "GiftUITextResourceFailureAdapterFixture": [
+      "GiftUIFailureCore",
+      "GiftUITextResources"
+    ],
+    "GiftUICapabilityFailureAdapterFixture": [
+      "GiftUICapabilities",
+      "GiftUIFailureCore"
+    ],
+    "GiftUISemanticFailureAdapterFixture": [
+      "GiftUIFailureCore",
+      "GiftUISemanticCore"
+    ],
+    "SignalAnalyzerDomain": [],
+    "SignalAnalyzerData": [
+      "SignalAnalyzerDomain"
+    ],
+    "SignalAnalyzerPresentation": [
+      "GiftUI",
+      "GiftUIFailureCore",
+      "SignalAnalyzerDomain"
+    ],
+    "SignalAnalyzerHost": [
+      "GiftUIExecution",
+      "GiftUIHostConfiguration",
+      "SignalAnalyzerDomain",
+      "SignalAnalyzerPresentation"
+    ],
+    "SignalAnalyzerTargetHost": [
+      "GiftUI",
+      "GiftUIBackendIntegration",
+      "GiftUICapabilities",
+      "GiftUIDisplayCore",
+      "GiftUIDrawing",
+      "GiftUIExecution",
+      "GiftUIFailureCore",
+      "GiftUIHostConfiguration",
+      "GiftUIInteraction",
+      "GiftUILayout",
+      "GiftUIObservableState",
+      "GiftUIRasterCore",
+      "GiftUIReferenceTextResources",
+      "GiftUIRenderCore",
+      "GiftUIRenderLowering",
+      "GiftUIRuntimeCore",
+      "GiftUIRuntimeDynamic",
+      "GiftUIRuntimeStatic",
+      "GiftUISemanticCore",
+      "GiftUISurfaceCore",
+      "GiftUITextResources",
+      "SignalAnalyzerData",
+      "SignalAnalyzerDomain",
+      "SignalAnalyzerHost",
+      "SignalAnalyzerPresentation"
+    ],
+    "SignalAnalyzerPresetHarness": [
+      "GiftUICapabilities",
+      "GiftUIHostConfiguration",
+      "GiftUIRuntimeCore",
+      "SignalAnalyzerDomain",
+      "SignalAnalyzerHost",
+      "SignalAnalyzerPresentation"
+    ],
+    "GiftUIPlatformRaspberryPi": [
+      "GiftUI",
+      "GiftUICapabilities",
+      "GiftUIDisplayCore",
+      "GiftUIFailureCore",
+      "GiftUISurfaceCore"
+    ],
+    "SignalAnalyzerMacOSDynamic": [
+      "GiftUIRuntimeDynamic",
+      "SignalAnalyzerPresetHarness"
+    ],
+    "SignalAnalyzerMacOSStatic": [
+      "GiftUIRuntimeStatic",
+      "SignalAnalyzerPresetHarness"
+    ],
+    "SignalAnalyzerRaspberryPiARMv6": [
+      "GiftUI",
+      "GiftUIDisplayCore",
+      "GiftUIHostConfiguration",
+      "GiftUIPlatformRaspberryPi",
+      "SignalAnalyzerData",
+      "SignalAnalyzerDomain",
+      "SignalAnalyzerPresentation",
+      "SignalAnalyzerPresetHarness",
+      "SignalAnalyzerTargetHost"
+    ],
+    "SignalAnalyzerNRF52840HostOracle": [
+      "SignalAnalyzerPresetHarness"
+    ],
+    "GiftUITests": [
+      "GiftUI"
+    ],
+    "GiftUIPlatformRaspberryPiTests": [
+      "GiftUI",
+      "GiftUICapabilities",
+      "GiftUIDisplayCore",
+      "GiftUIPlatformRaspberryPi",
+      "GiftUISurfaceCore"
+    ],
+    "GiftUIMacrosTests": [
+      "GiftUIMacros",
+      "external:swift-syntax/SwiftSyntaxMacrosTestSupport"
+    ],
+    "GiftUIFailureCoreTests": [
+      "GiftUIFailureCore"
+    ],
+    "GiftUIFoundationFailureAdapterTests": [
+      "GiftUI",
+      "GiftUIFailureCore"
+    ],
+    "GiftUIFailureDiagnosticsTests": [
+      "GiftUIFailureCore",
+      "GiftUIFailureDiagnostics"
+    ],
+    "GiftUICapabilitiesTests": [
+      "GiftUICapabilities"
+    ],
+    "GiftUISemanticCoreTests": [
+      "GiftUI",
+      "GiftUIObservableState",
+      "GiftUISemanticCore"
+    ],
+    "GiftUITextResourcesTests": [
+      "GiftUI",
+      "GiftUITextResources"
+    ],
+    "GiftUILayoutTests": [
+      "GiftUI",
+      "GiftUILayout",
+      "GiftUIReferenceTextResources",
+      "GiftUISemanticCore",
+      "GiftUITextResources"
+    ],
+    "GiftUILayoutFailureAdapterTests": [
+      "GiftUIFailureCore",
+      "GiftUILayout",
+      "GiftUILayoutFailureAdapterFixture"
+    ],
+    "GiftUIRenderCoreTests": [
+      "GiftUI",
+      "GiftUIRenderCore",
+      "GiftUITextResources"
+    ],
+    "GiftUISurfaceCoreTests": [
+      "GiftUI",
+      "GiftUICapabilities",
+      "GiftUIRenderCore",
+      "GiftUISurfaceCore"
+    ],
+    "GiftUIRasterCoreTests": [
+      "GiftUI",
+      "GiftUICapabilities",
+      "GiftUIRasterCore",
+      "GiftUIRenderCore",
+      "GiftUISurfaceCore",
+      "GiftUITextResources"
+    ],
+    "GiftUIDisplayCoreTests": [
+      "GiftUI",
+      "GiftUICapabilities",
+      "GiftUIDisplayCore",
+      "GiftUIFailureCore",
+      "GiftUISurfaceCore"
+    ],
+    "GiftUIBackendIntegrationTests": [
+      "GiftUI",
+      "GiftUIBackendIntegration",
+      "GiftUICapabilities",
+      "GiftUIDisplayCore",
+      "GiftUIExecution",
+      "GiftUIFailureCore",
+      "GiftUIRasterCore",
+      "GiftUIRenderCore",
+      "GiftUISurfaceCore",
+      "GiftUITextResources"
+    ],
+    "GiftUIRenderLoweringTests": [
+      "GiftUI",
+      "GiftUIFailureCore",
+      "GiftUILayout",
+      "GiftUIRenderCore",
+      "GiftUIRenderFailureAdapterFixture",
+      "GiftUIRenderLowering",
+      "GiftUISemanticCore",
+      "GiftUITextResources"
+    ],
+    "GiftUIRenderFailureAdapterTests": [
+      "GiftUIFailureCore",
+      "GiftUIRenderFailureAdapterFixture",
+      "GiftUIRenderLowering"
+    ],
+    "GiftUIDrawingTests": [
+      "GiftUI",
+      "GiftUIDrawing",
+      "GiftUIDrawingFailureAdapterFixture",
+      "GiftUIExecution",
+      "GiftUIFailureCore",
+      "GiftUILayout",
+      "GiftUIRenderCore",
+      "GiftUIRenderLowering",
+      "GiftUISemanticCore",
+      "GiftUITextResources"
+    ],
+    "GiftUIExecutionTests": [
+      "GiftUI",
+      "GiftUIExecution",
+      "GiftUIRenderCore"
+    ],
+    "GiftUIInteractionTests": [
+      "GiftUI",
+      "GiftUIExecution",
+      "GiftUIInteraction"
+    ],
+    "GiftUIInteractionFailureAdapterTests": [
+      "GiftUIExecution",
+      "GiftUIFailureCore",
+      "GiftUIFailureDiagnostics",
+      "GiftUIFailureExecution",
+      "GiftUIInteraction",
+      "GiftUIInteractionFailureAdapterFixture"
+    ],
+    "GiftUIFailureExecutionTests": [
+      "GiftUIExecution",
+      "GiftUIFailureCore",
+      "GiftUIFailureDiagnostics",
+      "GiftUIFailureExecution",
+      "GiftUIRenderCore"
+    ],
+    "GiftUIObservableStateTests": [
+      "GiftUI",
+      "GiftUIExecution",
+      "GiftUIObservableState",
+      "GiftUISemanticCore"
+    ],
+    "GiftUIObservableStateFailureAdapterTests": [
+      "GiftUIFailureCore",
+      "GiftUIFailureDiagnostics",
+      "GiftUIObservableState",
+      "GiftUIObservableStateFailureAdapterFixture"
+    ],
+    "GiftUIRuntimeCoreTests": [
+      "GiftUI",
+      "GiftUIDrawing",
+      "GiftUIExecution",
+      "GiftUIInteraction",
+      "GiftUILayout",
+      "GiftUIObservableState",
+      "GiftUIRenderCore",
+      "GiftUIRenderLowering",
+      "GiftUIRuntimeCore",
+      "GiftUISemanticCore"
+    ],
+    "GiftUIRuntimeDynamicTests": [
+      "GiftUI",
+      "GiftUIDrawing",
+      "GiftUIDynamicConveniences",
+      "GiftUIExecution",
+      "GiftUIInteraction",
+      "GiftUILayout",
+      "GiftUIObservableState",
+      "GiftUIRenderCore",
+      "GiftUIRenderLowering",
+      "GiftUIRuntimeCore",
+      "GiftUIRuntimeDynamic",
+      "GiftUISemanticCore"
+    ],
+    "GiftUIRuntimeStaticTests": [
+      "GiftUI",
+      "GiftUIDrawing",
+      "GiftUIExecution",
+      "GiftUIInteraction",
+      "GiftUILayout",
+      "GiftUIObservableState",
+      "GiftUIRenderCore",
+      "GiftUIRenderLowering",
+      "GiftUIRuntimeCore",
+      "GiftUIRuntimeStatic",
+      "GiftUISemanticCore"
+    ],
+    "GiftUIRuntimeConformanceTests": [
+      "GiftUI",
+      "GiftUIDrawing",
+      "GiftUIExecution",
+      "GiftUIInteraction",
+      "GiftUILayout",
+      "GiftUIObservableState",
+      "GiftUIRenderCore",
+      "GiftUIRenderLowering",
+      "GiftUIRuntimeCore",
+      "GiftUIRuntimeDynamic",
+      "GiftUIRuntimeStatic",
+      "GiftUISemanticCore"
+    ],
+    "GiftUIRuntimeFailureAdapterTests": [
+      "GiftUIExecution",
+      "GiftUIFailureCore",
+      "GiftUIFailureExecution",
+      "GiftUIRuntimeCore",
+      "GiftUIRuntimeFailureAdapterFixture"
+    ],
+    "GiftUIHostConfigurationTests": [
+      "GiftUI",
+      "GiftUIBackendIntegration",
+      "GiftUICapabilities",
+      "GiftUIDisplayCore",
+      "GiftUIDrawing",
+      "GiftUIExecution",
+      "GiftUIFailureCore",
+      "GiftUIHostConfiguration",
+      "GiftUIInteraction",
+      "GiftUILayout",
+      "GiftUIObservableState",
+      "GiftUIPlatformRaspberryPi",
+      "GiftUIRasterCore",
+      "GiftUIReferenceTextResources",
+      "GiftUIRenderCore",
+      "GiftUIRenderLowering",
+      "GiftUIRuntimeCore",
+      "GiftUIRuntimeDynamic",
+      "GiftUIRuntimeStatic",
+      "GiftUISemanticCore",
+      "GiftUISurfaceCore",
+      "GiftUITextResources",
+      "SignalAnalyzerData",
+      "SignalAnalyzerDomain",
+      "SignalAnalyzerHost",
+      "SignalAnalyzerPresentation",
+      "SignalAnalyzerPresetHarness",
+      "SignalAnalyzerTargetHost"
+    ],
+    "GiftUIReferenceTextResourcesTests": [
+      "GiftUI",
+      "GiftUIReferenceTextResources",
+      "GiftUITextResources"
+    ],
+    "GiftUITextResourceOwnerAdapterTests": [
+      "GiftUIFailureCore",
+      "GiftUIFailureDiagnostics",
+      "GiftUITextResourceFailureAdapterFixture",
+      "GiftUITextResources"
+    ],
+    "GiftUICapabilityAdapterTests": [
+      "GiftUI",
+      "GiftUICapabilities"
+    ],
+    "GiftUICapabilityFailureAdapterTests": [
+      "GiftUICapabilities",
+      "GiftUICapabilityFailureAdapterFixture",
+      "GiftUIFailureCore"
+    ],
+    "GiftUISemanticFailureAdapterTests": [
+      "GiftUIFailureCore",
+      "GiftUISemanticCore",
+      "GiftUISemanticFailureAdapterFixture"
+    ],
+    "SignalAnalyzerDomainTests": [
+      "SignalAnalyzerDomain"
+    ],
+    "SignalAnalyzerDataTests": [
+      "SignalAnalyzerData",
+      "SignalAnalyzerDomain"
+    ],
+    "SignalAnalyzerPresentationTests": [
+      "GiftUI",
+      "GiftUIFailureCore",
+      "SignalAnalyzerDomain",
+      "SignalAnalyzerPresentation"
+    ]
+  },
+  "selected_closures": {
+    "GiftUI": [
+      "GiftUI",
+      "GiftUIMacros",
+      "external:swift-syntax/SwiftCompilerPlugin",
+      "external:swift-syntax/SwiftDiagnostics",
+      "external:swift-syntax/SwiftSyntax",
+      "external:swift-syntax/SwiftSyntaxBuilder",
+      "external:swift-syntax/SwiftSyntaxMacros"
+    ],
+    "GiftUIRuntimeStatic": [
+      "GiftUI",
+      "GiftUIDrawing",
+      "GiftUIExecution",
+      "GiftUIInteraction",
+      "GiftUILayout",
+      "GiftUIMacros",
+      "GiftUIObservableState",
+      "GiftUIRenderCore",
+      "GiftUIRenderLowering",
+      "GiftUIRuntimeCore",
+      "GiftUIRuntimeStatic",
+      "GiftUISemanticCore",
+      "GiftUITextResources",
+      "external:swift-syntax/SwiftCompilerPlugin",
+      "external:swift-syntax/SwiftDiagnostics",
+      "external:swift-syntax/SwiftSyntax",
+      "external:swift-syntax/SwiftSyntaxBuilder",
+      "external:swift-syntax/SwiftSyntaxMacros"
+    ],
+    "GiftUIBackendIntegration": [
+      "GiftUI",
+      "GiftUIBackendIntegration",
+      "GiftUICapabilities",
+      "GiftUIDisplayCore",
+      "GiftUIExecution",
+      "GiftUIFailureCore",
+      "GiftUIMacros",
+      "GiftUIRasterCore",
+      "GiftUIRenderCore",
+      "GiftUISurfaceCore",
+      "GiftUITextResources",
+      "external:swift-syntax/SwiftCompilerPlugin",
+      "external:swift-syntax/SwiftDiagnostics",
+      "external:swift-syntax/SwiftSyntax",
+      "external:swift-syntax/SwiftSyntaxBuilder",
+      "external:swift-syntax/SwiftSyntaxMacros"
+    ],
+    "GiftUIHostConfiguration": [
+      "GiftUI",
+      "GiftUIBackendIntegration",
+      "GiftUICapabilities",
+      "GiftUIDisplayCore",
+      "GiftUIDrawing",
+      "GiftUIExecution",
+      "GiftUIFailureCore",
+      "GiftUIHostConfiguration",
+      "GiftUIInteraction",
+      "GiftUILayout",
+      "GiftUIMacros",
+      "GiftUIObservableState",
+      "GiftUIRasterCore",
+      "GiftUIRenderCore",
+      "GiftUIRenderLowering",
+      "GiftUIRuntimeCore",
+      "GiftUISemanticCore",
+      "GiftUISurfaceCore",
+      "GiftUITextResources",
+      "external:swift-syntax/SwiftCompilerPlugin",
+      "external:swift-syntax/SwiftDiagnostics",
+      "external:swift-syntax/SwiftSyntax",
+      "external:swift-syntax/SwiftSyntaxBuilder",
+      "external:swift-syntax/SwiftSyntaxMacros"
+    ]
+  },
+  "aggregate_observations": [
+    {
+      "path": ".build/test-reports/all-hardware-free/run-IehHOIJf/metadata.txt",
+      "sha256": "388c72a4d10a35ea2b0d89f3ce2dd8c5730d850ce0d2e51971ae8568bf540b37",
+      "metadata": {
+        "schema_version": "1",
+        "invocation_id": "run-IehHOIJf",
+        "selection": "all-hardware-free",
+        "repository_revision": "feb4058920efbbb541787485a28b4d727dcc8b3b",
+        "profiles": "macos-dynamic,macos-static,raspberry-pi-armv6,nrf52840-embedded",
+        "contract_report_root": ".build/contract-reports",
+        "failure_count": "0",
+        "status": "complete",
+        "exit_code": "0",
+        "active_check": "none"
+      },
+      "terminal_status_present": true,
+      "recorded_checks": 74,
+      "nonzero_checks": [],
+      "ledger_sha256": "a0c5c4abd086a5abacbd2e40c1aef18030bdd57d356deec4d6e32a2757e16272",
+      "last_recorded_check": "SPEC-015-nrf52840-embedded"
+    },
+    {
+      "path": ".build/test-reports/all-hardware-free/run-bmuwVkCK/metadata.txt",
+      "sha256": "993d3f1bd9d9d4d5ae7e97826f682573238b35bf78c40d9ec0d6c824cc0bb1d6",
+      "metadata": {
+        "schema_version": "1",
+        "invocation_id": "run-bmuwVkCK",
+        "selection": "all-hardware-free",
+        "repository_revision": "a607be128fe17c723c5160cab7f0c32818d6d62c",
+        "profiles": "macos-dynamic,macos-static,raspberry-pi-armv6,nrf52840-embedded",
+        "contract_report_root": ".build/contract-reports",
+        "status": "interrupted",
+        "exit_code": "143",
+        "active_check": "SPEC-002-raspberry-pi-armv6"
+      },
+      "terminal_status_present": true,
+      "recorded_checks": 46,
+      "nonzero_checks": [
+        [
+          "SPEC-001-raspberry-pi-armv6",
+          "1"
+        ],
+        [
+          "SPEC-002-raspberry-pi-armv6",
+          "143"
+        ]
+      ],
+      "ledger_sha256": "5e758fb500884dd51e2b3d0685f52b2500ec212347e745b0c5c68cbb3473b41a",
+      "last_recorded_check": "SPEC-002-raspberry-pi-armv6"
+    },
+    {
+      "path": ".build/test-reports/all-hardware-free/run-ZP4SPN01/metadata.txt",
+      "sha256": "0ab4c8bd978e91d808b3e77fbec8aab88b03980c58a4efcdfda37d0a08c1a811",
+      "metadata": {
+        "schema_version": "1",
+        "invocation_id": "run-ZP4SPN01",
+        "selection": "all-hardware-free",
+        "repository_revision": "759cf5945d69313ab3546965eace2ecc08da5ab3",
+        "profiles": "macos-dynamic,macos-static,raspberry-pi-armv6,nrf52840-embedded",
+        "contract_report_root": ".build/contract-reports",
+        "failure_count": "0",
+        "status": "complete",
+        "exit_code": "0",
+        "active_check": "none"
+      },
+      "terminal_status_present": true,
+      "recorded_checks": 74,
+      "nonzero_checks": [],
+      "ledger_sha256": "ed99b4043081057dce288246b2d0fe1e9afd407c0e158808f902e0b02e7a9600",
+      "last_recorded_check": "SPEC-015-nrf52840-embedded"
+    }
+  ],
+  "prior_nrf_resource_evidence": {
+    "path": "docs/iterations/iteration-002-cleanup/evidence/16-nrf-connected/paired-resources.json",
+    "evidence_revision": "a607be128fe17c723c5160cab7f0c32818d6d62c",
+    "candidate": {
+      "elf": ".build/nrf52840/signal-analyzer-static/zephyr/zephyr.elf",
+      "sha256": "9822838bccedb57f2819e6d3e8b0e796c15f9e8357d5880bced3bb4cb2b68f2f",
+      "flash_bytes": 274144,
+      "ram_bytes": 95104,
+      "v7em": true,
+      "hard_float": true,
+      "zero_zephyr_heap": true,
+      "zero_libc_heap": true,
+      "stack_config": [
+        "CONFIG_SYSTEM_WORKQUEUE_STACK_SIZE=1024",
+        "CONFIG_MAIN_STACK_SIZE=27648",
+        "CONFIG_IDLE_STACK_SIZE=320",
+        "CONFIG_ISR_STACK_SIZE=2048"
+      ],
+      "allocator_entries": [],
+      "refusing_allocation_stub": "\n/Users/eugene/work/GiftUI/.build/nrf52840/signal-analyzer-static/zephyr/zephyr.elf:     file format elf32-littlearm\n\n\nDisassembly of section rom_start:\n\nDisassembly of section text:\n\n0003c07e <posix_memalign>:\n   3c07e:\t200c      \tmovs\tr0, #12\n   3c080:\t4770      \tbx\tlr\n",
+      "startup_text_symbols": [
+        "00032e52 00000004 T giftui_signal_analyzer_layout_text_valid"
+      ]
+    },
+    "observed_elf_sha256": "9822838bccedb57f2819e6d3e8b0e796c15f9e8357d5880bced3bb4cb2b68f2f",
+    "matches_recorded_candidate": true
+  }
+}

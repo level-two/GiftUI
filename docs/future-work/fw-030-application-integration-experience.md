@@ -13,9 +13,11 @@ related_future_work:
   - FW-016
 related_explorations:
   - EXP-002
-related_spikes: []
+related_spikes:
+  - SPIKE-014
 promoted_to:
   - EXP-002
+  - PROPOSAL-007
 supersedes: []
 superseded_by: []
 target_milestone: null
@@ -120,6 +122,13 @@ one bounded consumer and four-profile matrix. [Review and approval](../iteration
 records this later instruction. FW-030 remains promoted to active EXP-002;
 Proposal acceptance, architecture and external integration contracts remain
 separate gates. No consumer experiment or production implementation is claimed.
+
+After the instruction “Please then proceed.”, this investment also feeds draft
+[PROPOSAL-007](../proposals/proposal-007-external-application-integration.md).
+The existing EXP-002 promotion is retained; both links preserve the chain.
+[SPIKE-014](../spikes/spike-014-external-consumer-access-baseline.md) now provides
+bounded native/Embedded declaration/access results, not a complete application
+host. Proposal acceptance and architecture/contract approvals remain pending.
 
 ## References
 
