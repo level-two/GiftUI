@@ -286,3 +286,5 @@ pending all selected outcomes; timing/physical exceptions are unchanged.
 **Current partial reconciliation — 2026-10-05:** [Thirteen criteria and remaining Pi dependency](evidence/19-current-handoff/result.md); [74-check/60-report final retention integration](evidence/18-retention-integration/result.md). T12.3 is complete. T12.4/T11.7 and dependent T11.8/FINAL-01 remain incomplete only for the required Pi connected evidence and subsequent closure. Earlier dated held-approval/failed-device statements remain historical and are superseded by explicit approval and the successful current nRF packet.
 
 **Pi resumption — 2026-10-05:** [Current retry](evidence/20-pi-resumption/result.md) verifies the ready local toolchain and unchanged tested artifact. SSH/Bonjour still cannot resolve the saved hostname; current IP/SSH address is requested. Device-dependent task dispositions remain unchanged.
+
+**Pi deployment — 2026-10-05:** [Verified target and atomic deployment](evidence/21-pi-deployment/result.md) succeed at the user-supplied 192.168.55.44 with saved-key verification. The deployed hash equals the tested artifact; bounded connected checks remain in progress.

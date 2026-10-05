@@ -1,0 +1,4 @@
+armv6l
+giftui-pi
+acf57db5625eb1d2802210aaa6e30128749277d81ad26a3f313b79f8448d8d7e  /home/giftui/giftui/bin/SignalAnalyzerRaspberryPiARMv6
+556 bash -c uname -m; hostname; sha256sum ~/giftui/bin/SignalAnalyzerRaspberryPiARMv6; pgrep -af SignalAnalyzer || true
