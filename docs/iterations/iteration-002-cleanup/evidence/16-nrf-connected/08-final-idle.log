@@ -1,0 +1,26 @@
+0x00041a22 in delay_machine_code ()
+Hardware assisted breakpoint 1 at 0x23310: file /Users/eugene/work/GiftUI/firmware/nrf52840/applications/signal-analyzer-static/src/production_host.c, line 146.
+
+Temporary breakpoint 1, service (opaque=0x20000990 <production>, now=191945000, next_deadline=0x200172d0 <z_main_stack+27536>, stop=0x200172c4 <z_main_stack+27524>) at /Users/eugene/work/GiftUI/firmware/nrf52840/applications/signal-analyzer-static/src/production_host.c:146
+146	{
+SERVICE BOUNDARY
+pc             0x23310             0x23310 <service>
+sp             0x200172b8          0x200172b8 <z_main_stack+27512>
+$1 = {regions = {profile = 0x20006048 <giftui_signal_analyzer_profile_storage> "CNAS\001", profile_bytes = 39696, capture = 0x20001488 <giftui_signal_analyzer_capture_storage> "", capture_bytes = 19392, raster = 0x20000a88 <giftui_signal_analyzer_raster_staging> "\004\037\004\037\004\037", raster_bytes = 2560, coverage = 0x200009e8 <giftui_signal_analyzer_raster_coverage> "", coverage_bytes = 160}, touch = {input = {calibration = {horizontal_minimum = 0, horizontal_maximum = 4095, vertical_minimum = 0, vertical_maximum = 4095, logical_width = 320, logical_height = 240, swap_axes = 1 '\001', invert_horizontal = 1 '\001', invert_vertical = 1 '\001'}, last_x = 0, last_y = 0, active = 0 '\000', valid = 1 '\001'}, observed_presentation_revision = 1, prior_physical_sequence_is_complete = 1 '\001', awaiting_observed_release = 0 '\000', valid = 1 '\001'}, next_transition_deadline = 0, next_frame_deadline = 97685000, next_touch_sample_deadline = 191954000}
+$2 = 1
+$3 = 0
+$4 = 0
+$5 = 7208986
+$6 = 0
+$7 = 7209254
+$8 = {0, 0, 0, 0, 0}
+0xe000ed28:	0x00000000	0x00000000	0x00000002
+0x20001488 <giftui_signal_analyzer_capture_storage>:	0x0000000000000000	0x1000000000000000
+0x20001498 <giftui_signal_analyzer_capture_storage+16>:	0x0000000000000000	0x2000000000000000
+0x200014a8 <giftui_signal_analyzer_capture_storage+32>:	0x0000000000000000	0x3000000000000000
+0x200014b8 <giftui_signal_analyzer_capture_storage+48>:	0x0000000000000000	0x4000000000000000
+0x200014c8 <giftui_signal_analyzer_capture_storage+64>:	0x0000000000000000	0xb11c37937e080000
+0x200014d8 <giftui_signal_analyzer_capture_storage+80>:	0x0000000000000000	0x0000000000000000
+0x200014e8 <giftui_signal_analyzer_capture_storage+96>:	0x0000000000000000	0x0000000000000000
+0x200014f8 <giftui_signal_analyzer_capture_storage+112>:	0x0000000000000000	0x0000000000000000
+[Inferior 1 (Remote target) detached]

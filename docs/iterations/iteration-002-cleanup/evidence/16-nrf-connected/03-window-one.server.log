@@ -1,0 +1,835 @@
+SEGGER J-Link GDB Server V9.66 Command Line Version
+
+JLinkARM.dll V9.66 (DLL compiled Aug  5 2026 12:19:06)
+
+Command line: -device NRF52840_XXAA -if SWD -speed 4000 -select USB=683833660 -port 2331 -localhostonly 1 -nogui -nohalt -noir -noreset
+-----GDB Server start settings-----
+GDBInit file:                  none
+GDB Server Listening port:     2331
+SWO raw output listening port: 2332
+Terminal I/O port:             2333
+Accept remote connection:      localhost only
+Generate logfile:              off
+Verify download:               off
+Init regs on start:            off
+Silent mode:                   off
+Single run mode:               off
+Target connection timeout:     0 ms
+------J-Link related settings------
+J-Link Host interface:         USB
+J-Link script:                 none
+J-Link settings file:          none
+------Target related settings------
+Target device:                 NRF52840_XXAA
+Target device parameters:      none
+Target interface:              SWD
+Target interface speed:        4000kHz
+Target endian:                 little
+
+Connecting to J-Link...
+J-Link is connected.
+Firmware: J-Link OB-SAM3U128-V2-NordicSemi compiled Jul  8 2025 10:14:41
+Hardware: V1.00
+S/N: 683833660
+Feature(s): RDI, FlashBP, FlashDL, JFlash, GDB
+Checking target voltage...
+Target voltage: 3.30 V
+Listening on TCP/IP port 2331
+Connecting to target...
+Connected to target
+Waiting for GDB connection...Connected to 0000:0000:0000:0000:0000:0000:0000:0001
+GDB client (conn. 9) requested target.xml from GDB Server
+Reading common registers: 
+...Target halted (PC = 0x0000000000041A20)
+Reading register 'r0' from hardware = 0x00009EDA
+Reading register 'r1' from hardware = 0x00000000
+Reading register 'r2' from hardware = 0x0003BE33
+Reading register 'r3' from hardware = 0x00041A21
+Reading register 'r4' from hardware = 0x20017324
+Reading register 'r5' from hardware = 0x0CE73518
+Reading register 'r6' from hardware = 0x00000000
+Reading register 'r7' from hardware = 0x00000001
+Reading register 'r8' from hardware = 0x00000000
+Reading register 'r9' from hardware = 0x0CE72578
+Reading register 'r10' from hardware = 0x00000000
+Reading register 'r11' from hardware = 0x0CE72190
+Reading register 'r12' from hardware = 0x00000140
+Reading register 'sp' from hardware = 0x20017280
+Reading register 'lr' from hardware = 0x00000517
+Reading register 'pc' from hardware = 0x00041A20
+Reading register 'xpsr' from hardware = 0x21000000
+Read 4 bytes @ address 0x00041A20 (Data = 0xD8FD3803)
+Read 2 bytes @ address 0x00041A20 (Data = 0x3803)
+Received monitor command: halt
+Halting target CPU...
+...Target halted (PC = 0x0000000000041A20)
+Read 2 bytes @ address 0x00023310 (Data = 0xE92D)
+Setting breakpoint @ address 0x00023310, Kind = 2, Type = THUMB, BPHandle = 0x0001
+Starting target CPU...
+...Breakpoint (set by 'GDB') reached @ address 0x00023310
+Reading common registers: 
+Reading register 'r0' from hardware = 0x20000990
+Reading register 'r1' from hardware = 0x00023311
+Reading register 'r2' from hardware = 0x0CE75C28
+Reading register 'r3' from hardware = 0x00000000
+Reading register 'r4' from hardware = 0x00000000
+Reading register 'r5' from hardware = 0x20017310
+Reading register 'r6' from hardware = 0x200172FC
+Reading register 'r7' from hardware = 0x200172C4
+Reading register 'r8' from hardware = 0x00000000
+Reading register 'r9' from hardware = 0x00000000
+Reading register 'r10' from hardware = 0x00000000
+Reading register 'r11' from hardware = 0x00000000
+Reading register 'r12' from hardware = 0x00000140
+Reading register 'sp' from hardware = 0x200172B8
+Reading register 'lr' from hardware = 0x0003BF4F
+Reading register 'pc' from hardware = 0x00023310
+Reading register 'xpsr' from hardware = 0x41000000
+Removing breakpoint @ address 0x00023310, Size = 2
+Read 4 bytes @ address 0x00023310 (Data = 0x4DF0E92D)
+Read 4 bytes @ address 0x0003BF4E (Data = 0xB9784604)
+Reading 64 bytes @ address 0x200172C0
+Reading 64 bytes @ address 0x20017280
+Reading 88 bytes @ address 0x20000990
+Reading 8 bytes @ address 0x20006048
+Reading 8 bytes @ address 0x20001488
+Reading 8 bytes @ address 0x20000A88
+Reading 8 bytes @ address 0x200009E8
+Reading register 'd0' from hardware = 0x0000000000000000
+Reading register 'd1' from hardware = 0x0000000000000000
+Reading register 'd2' from hardware = 0x0000000000000000
+Reading register 'd3' from hardware = 0x0000000000000000
+Reading register 'd4' from hardware = 0x0000000000000000
+Reading register 'd5' from hardware = 0x0000000000000000
+Reading register 'd6' from hardware = 0x0000000000000000
+Reading register 'd7' from hardware = 0x0000000000000000
+Reading register 'd8' from hardware = 0x0000000000000000
+Reading register 'd9' from hardware = 0x0000000000000000
+Reading register 'd10' from hardware = 0x0000000000000000
+Reading register 'd11' from hardware = 0x0000000000000000
+Reading register 'd12' from hardware = 0x0000000000000000
+Reading register 'd13' from hardware = 0x0000000000000000
+Reading register 'd14' from hardware = 0x0000000000000000
+Reading register 'd15' from hardware = 0x0000000000000000
+Reading register 'fpscr' from hardware = 0x00000000
+Reading register 'msp' from hardware = 0x00000000
+Reading register 'psp' from hardware = 0x20010740
+Reading register 'primask' from hardware = 0x200172B8
+Reading register 'basepri' from hardware = 0x00000000
+Reading register 'faultmask' from hardware = 0x00000000
+Reading register 'control' from hardware = 0x00000000
+Reading register 'apsr' from hardware = 0x00000006
+Reading register 'epsr' from hardware = 0x40000000
+Reading register 'ipsr' from hardware = 0x01000000
+Reading register 'iapsr' from hardware = 0x00000000
+Reading register 'eapsr' from hardware = 0x40000000
+Reading register 'iepsr' from hardware = 0x41000000
+Writing register 'lr' to hardware = 0x00023C29
+Writing register 'sp' to hardware = 0x200172B0
+Read 2 bytes @ address 0x00023C28 (Data = 0x480F)
+Writing register 'pc' to hardware = 0x00033146
+Setting breakpoint @ address 0x00023C28, Kind = 2, Type = THUMB, BPHandle = 0x0002
+Starting target CPU...
+...Breakpoint (set by 'GDB') reached @ address 0x00023C28
+Reading common registers: 
+Reading register 'r0' from hardware = 0x00000006
+Reading register 'r1' from hardware = 0x00000006
+Reading register 'r2' from hardware = 0x0CE75C28
+Reading register 'r3' from hardware = 0x00000000
+Reading register 'r4' from hardware = 0x00000000
+Reading register 'r5' from hardware = 0x20017310
+Reading register 'r6' from hardware = 0x200172FC
+Reading register 'r7' from hardware = 0x200172C4
+Reading register 'r8' from hardware = 0x00000000
+Reading register 'r9' from hardware = 0x00000000
+Reading register 'r10' from hardware = 0x00000000
+Reading register 'r11' from hardware = 0x00000000
+Reading register 'r12' from hardware = 0x00000140
+Reading register 'sp' from hardware = 0x200172B0
+Reading register 'lr' from hardware = 0x00023C29
+Reading register 'pc' from hardware = 0x00023C28
+Reading register 'xpsr' from hardware = 0x81000000
+Writing register 'r0' to hardware = 0x20000990
+Writing register 'r1' to hardware = 0x00023311
+Writing register 'sp' to hardware = 0x200172B8
+Writing register 'lr' to hardware = 0x0003BF4F
+Writing register 'pc' to hardware = 0x00023310
+Writing register 'xpsr' to hardware = 0x41000000
+Writing register 'd0' to hardware = 0x0000000000000000
+Writing register 'd1' to hardware = 0x0000000000000000
+Writing register 'd2' to hardware = 0x0000000000000000
+Writing register 'd3' to hardware = 0x0000000000000000
+Writing register 'd4' to hardware = 0x0000000000000000
+Writing register 'd5' to hardware = 0x0000000000000000
+Writing register 'd6' to hardware = 0x0000000000000000
+Writing register 'd7' to hardware = 0x0000000000000000
+Writing register 'd8' to hardware = 0x0000000000000000
+Writing register 'd9' to hardware = 0x0000000000000000
+Writing register 'd10' to hardware = 0x0000000000000000
+Writing register 'd11' to hardware = 0x0000000000000000
+Writing register 'd12' to hardware = 0x0000000000000000
+Writing register 'd13' to hardware = 0x0000000000000000
+Writing register 'd14' to hardware = 0x0000000000000000
+Writing register 'd15' to hardware = 0x0000000000000000
+Writing register 'fpscr' to hardware = 0x00000000
+Writing register 'msp' to hardware = 0x20010740
+Writing register 'psp' to hardware = 0x200172B8
+Writing register 'primask' to hardware = 0x00000000
+Writing register 'basepri' to hardware = 0x00000000
+Writing register 'faultmask' to hardware = 0x00000000
+Writing register 'control' to hardware = 0x00000006
+Writing register 'apsr' to hardware = 0x40000000
+Writing register 'epsr' to hardware = 0x01000000
+Writing register 'ipsr' to hardware = 0x00000000
+Writing register 'iapsr' to hardware = 0x40000000
+Writing register 'eapsr' to hardware = 0x41000000
+Writing register 'iepsr' to hardware = 0x01000000
+Removing breakpoint @ address 0x00023C28, Size = 2
+Writing register 'lr' to hardware = 0x00023C29
+Writing register 'sp' to hardware = 0x200172B0
+Read 2 bytes @ address 0x00023C28 (Data = 0x480F)
+Writing register 'pc' to hardware = 0x0003314A
+Setting breakpoint @ address 0x00023C28, Kind = 2, Type = THUMB, BPHandle = 0x0003
+Starting target CPU...
+...Breakpoint (set by 'GDB') reached @ address 0x00023C28
+Reading common registers: 
+Reading register 'r0' from hardware = 0x00000002
+Reading register 'r1' from hardware = 0x00041CF8
+Reading register 'r2' from hardware = 0x200000DF
+Reading register 'r3' from hardware = 0x200172A6
+Reading register 'r4' from hardware = 0x00000000
+Reading register 'r5' from hardware = 0x20017310
+Reading register 'r6' from hardware = 0x200172FC
+Reading register 'r7' from hardware = 0x200172C4
+Reading register 'r8' from hardware = 0x00000000
+Reading register 'r9' from hardware = 0x00000000
+Reading register 'r10' from hardware = 0x00000000
+Reading register 'r11' from hardware = 0x00000000
+Reading register 'r12' from hardware = 0x00000140
+Reading register 'sp' from hardware = 0x200172B0
+Reading register 'lr' from hardware = 0x00011E21
+Reading register 'pc' from hardware = 0x00023C28
+Reading register 'xpsr' from hardware = 0x01000000
+Writing register 'r0' to hardware = 0x20000990
+Writing register 'r1' to hardware = 0x00023311
+Writing register 'r2' to hardware = 0x0CE75C28
+Writing register 'r3' to hardware = 0x00000000
+Writing register 'sp' to hardware = 0x200172B8
+Writing register 'lr' to hardware = 0x0003BF4F
+Writing register 'pc' to hardware = 0x00023310
+Writing register 'xpsr' to hardware = 0x41000000
+Writing register 'd0' to hardware = 0x0000000000000000
+Writing register 'd1' to hardware = 0x0000000000000000
+Writing register 'd2' to hardware = 0x0000000000000000
+Writing register 'd3' to hardware = 0x0000000000000000
+Writing register 'd4' to hardware = 0x0000000000000000
+Writing register 'd5' to hardware = 0x0000000000000000
+Writing register 'd6' to hardware = 0x0000000000000000
+Writing register 'd7' to hardware = 0x0000000000000000
+Writing register 'd8' to hardware = 0x0000000000000000
+Writing register 'd9' to hardware = 0x0000000000000000
+Writing register 'd10' to hardware = 0x0000000000000000
+Writing register 'd11' to hardware = 0x0000000000000000
+Writing register 'd12' to hardware = 0x0000000000000000
+Writing register 'd13' to hardware = 0x0000000000000000
+Writing register 'd14' to hardware = 0x0000000000000000
+Writing register 'd15' to hardware = 0x0000000000000000
+Writing register 'fpscr' to hardware = 0x00000000
+Writing register 'msp' to hardware = 0x20010740
+Writing register 'psp' to hardware = 0x200172B8
+Writing register 'primask' to hardware = 0x00000000
+Writing register 'basepri' to hardware = 0x00000000
+Writing register 'faultmask' to hardware = 0x00000000
+Writing register 'control' to hardware = 0x00000006
+Writing register 'apsr' to hardware = 0x40000000
+Writing register 'epsr' to hardware = 0x01000000
+Writing register 'ipsr' to hardware = 0x00000000
+Writing register 'iapsr' to hardware = 0x40000000
+Writing register 'eapsr' to hardware = 0x41000000
+Writing register 'iepsr' to hardware = 0x01000000
+Removing breakpoint @ address 0x00023C28, Size = 2
+Writing register 'lr' to hardware = 0x00023C29
+Writing register 'sp' to hardware = 0x200172B0
+Read 2 bytes @ address 0x00023C28 (Data = 0x480F)
+Writing register 'pc' to hardware = 0x0003314E
+Setting breakpoint @ address 0x00023C28, Kind = 2, Type = THUMB, BPHandle = 0x0004
+Starting target CPU...
+...Breakpoint (set by 'GDB') reached @ address 0x00023C28
+Reading common registers: 
+Reading register 'r0' from hardware = 0x00000008
+Reading register 'r1' from hardware = 0x00023311
+Reading register 'r2' from hardware = 0x0CE75C28
+Reading register 'r3' from hardware = 0x00000000
+Reading register 'r4' from hardware = 0x00000000
+Reading register 'r5' from hardware = 0x20017310
+Reading register 'r6' from hardware = 0x200172FC
+Reading register 'r7' from hardware = 0x200172C4
+Reading register 'r8' from hardware = 0x00000000
+Reading register 'r9' from hardware = 0x00000000
+Reading register 'r10' from hardware = 0x00000000
+Reading register 'r11' from hardware = 0x00000000
+Reading register 'r12' from hardware = 0x00000140
+Reading register 'sp' from hardware = 0x200172B0
+Reading register 'lr' from hardware = 0x00023C29
+Reading register 'pc' from hardware = 0x00023C28
+Reading register 'xpsr' from hardware = 0x41000000
+Writing register 'r0' to hardware = 0x20000990
+Writing register 'sp' to hardware = 0x200172B8
+Writing register 'lr' to hardware = 0x0003BF4F
+Writing register 'pc' to hardware = 0x00023310
+Writing register 'd0' to hardware = 0x0000000000000000
+Writing register 'd1' to hardware = 0x0000000000000000
+Writing register 'd2' to hardware = 0x0000000000000000
+Writing register 'd3' to hardware = 0x0000000000000000
+Writing register 'd4' to hardware = 0x0000000000000000
+Writing register 'd5' to hardware = 0x0000000000000000
+Writing register 'd6' to hardware = 0x0000000000000000
+Writing register 'd7' to hardware = 0x0000000000000000
+Writing register 'd8' to hardware = 0x0000000000000000
+Writing register 'd9' to hardware = 0x0000000000000000
+Writing register 'd10' to hardware = 0x0000000000000000
+Writing register 'd11' to hardware = 0x0000000000000000
+Writing register 'd12' to hardware = 0x0000000000000000
+Writing register 'd13' to hardware = 0x0000000000000000
+Writing register 'd14' to hardware = 0x0000000000000000
+Writing register 'd15' to hardware = 0x0000000000000000
+Writing register 'fpscr' to hardware = 0x00000000
+Writing register 'msp' to hardware = 0x20010740
+Writing register 'psp' to hardware = 0x200172B8
+Writing register 'primask' to hardware = 0x00000000
+Writing register 'basepri' to hardware = 0x00000000
+Writing register 'faultmask' to hardware = 0x00000000
+Writing register 'control' to hardware = 0x00000006
+Writing register 'apsr' to hardware = 0x40000000
+Writing register 'epsr' to hardware = 0x01000000
+Writing register 'ipsr' to hardware = 0x00000000
+Writing register 'iapsr' to hardware = 0x40000000
+Writing register 'eapsr' to hardware = 0x41000000
+Writing register 'iepsr' to hardware = 0x01000000
+Removing breakpoint @ address 0x00023C28, Size = 2
+Writing register 'lr' to hardware = 0x00023C29
+Writing register 'r0' to hardware = 0x00000003
+Writing register 'sp' to hardware = 0x200172B0
+Read 2 bytes @ address 0x00023C28 (Data = 0x480F)
+Writing register 'pc' to hardware = 0x0003315A
+Setting breakpoint @ address 0x00023C28, Kind = 2, Type = THUMB, BPHandle = 0x0005
+Starting target CPU...
+...Breakpoint (set by 'GDB') reached @ address 0x00023C28
+Reading common registers: 
+Reading register 'r0' from hardware = 0x006E001A
+Reading register 'r1' from hardware = 0x0000001A
+Reading register 'r2' from hardware = 0x0000006E
+Reading register 'r3' from hardware = 0x00000000
+Reading register 'r4' from hardware = 0x00000000
+Reading register 'r5' from hardware = 0x20017310
+Reading register 'r6' from hardware = 0x200172FC
+Reading register 'r7' from hardware = 0x200172C4
+Reading register 'r8' from hardware = 0x00000000
+Reading register 'r9' from hardware = 0x00000000
+Reading register 'r10' from hardware = 0x00000000
+Reading register 'r11' from hardware = 0x00000000
+Reading register 'r12' from hardware = 0x00000001
+Reading register 'sp' from hardware = 0x200172B0
+Reading register 'lr' from hardware = 0x00000058
+Reading register 'pc' from hardware = 0x00023C28
+Reading register 'xpsr' from hardware = 0x81000000
+Writing register 'r0' to hardware = 0x20000990
+Writing register 'r1' to hardware = 0x00023311
+Writing register 'r2' to hardware = 0x0CE75C28
+Writing register 'r12' to hardware = 0x00000140
+Writing register 'sp' to hardware = 0x200172B8
+Writing register 'lr' to hardware = 0x0003BF4F
+Writing register 'pc' to hardware = 0x00023310
+Writing register 'xpsr' to hardware = 0x41000000
+Writing register 'd0' to hardware = 0x0000000000000000
+Writing register 'd1' to hardware = 0x0000000000000000
+Writing register 'd2' to hardware = 0x0000000000000000
+Writing register 'd3' to hardware = 0x0000000000000000
+Writing register 'd4' to hardware = 0x0000000000000000
+Writing register 'd5' to hardware = 0x0000000000000000
+Writing register 'd6' to hardware = 0x0000000000000000
+Writing register 'd7' to hardware = 0x0000000000000000
+Writing register 'd8' to hardware = 0x0000000000000000
+Writing register 'd9' to hardware = 0x0000000000000000
+Writing register 'd10' to hardware = 0x0000000000000000
+Writing register 'd11' to hardware = 0x0000000000000000
+Writing register 'd12' to hardware = 0x0000000000000000
+Writing register 'd13' to hardware = 0x0000000000000000
+Writing register 'd14' to hardware = 0x0000000000000000
+Writing register 'd15' to hardware = 0x0000000000000000
+Writing register 'fpscr' to hardware = 0x00000000
+Writing register 'msp' to hardware = 0x20010740
+Writing register 'psp' to hardware = 0x200172B8
+Writing register 'primask' to hardware = 0x00000000
+Writing register 'basepri' to hardware = 0x00000000
+Writing register 'faultmask' to hardware = 0x00000000
+Writing register 'control' to hardware = 0x00000006
+Writing register 'apsr' to hardware = 0x40000000
+Writing register 'epsr' to hardware = 0x01000000
+Writing register 'ipsr' to hardware = 0x00000000
+Writing register 'iapsr' to hardware = 0x40000000
+Writing register 'eapsr' to hardware = 0x41000000
+Writing register 'iepsr' to hardware = 0x01000000
+Removing breakpoint @ address 0x00023C28, Size = 2
+Writing register 'lr' to hardware = 0x00023C29
+Writing register 'r0' to hardware = 0x00000004
+Writing register 'sp' to hardware = 0x200172B0
+Read 2 bytes @ address 0x00023C28 (Data = 0x480F)
+Writing register 'pc' to hardware = 0x0003315A
+Setting breakpoint @ address 0x00023C28, Kind = 2, Type = THUMB, BPHandle = 0x0006
+Starting target CPU...
+...Breakpoint (set by 'GDB') reached @ address 0x00023C28
+Reading common registers: 
+Reading register 'r0' from hardware = 0x00000000
+Reading register 'r1' from hardware = 0x00000001
+Reading register 'r2' from hardware = 0x00000003
+Reading register 'r3' from hardware = 0x00000003
+Reading register 'r4' from hardware = 0x00000000
+Reading register 'r5' from hardware = 0x20017310
+Reading register 'r6' from hardware = 0x200172FC
+Reading register 'r7' from hardware = 0x200172C4
+Reading register 'r8' from hardware = 0x00000000
+Reading register 'r9' from hardware = 0x00000000
+Reading register 'r10' from hardware = 0x00000000
+Reading register 'r11' from hardware = 0x00000000
+Reading register 'r12' from hardware = 0x00000001
+Reading register 'sp' from hardware = 0x200172B0
+Reading register 'lr' from hardware = 0x00000000
+Reading register 'pc' from hardware = 0x00023C28
+Reading register 'xpsr' from hardware = 0x61000000
+Writing register 'r0' to hardware = 0x20000990
+Writing register 'r1' to hardware = 0x00023311
+Writing register 'r2' to hardware = 0x0CE75C28
+Writing register 'r3' to hardware = 0x00000000
+Writing register 'r12' to hardware = 0x00000140
+Writing register 'sp' to hardware = 0x200172B8
+Writing register 'lr' to hardware = 0x0003BF4F
+Writing register 'pc' to hardware = 0x00023310
+Writing register 'xpsr' to hardware = 0x41000000
+Writing register 'd0' to hardware = 0x0000000000000000
+Writing register 'd1' to hardware = 0x0000000000000000
+Writing register 'd2' to hardware = 0x0000000000000000
+Writing register 'd3' to hardware = 0x0000000000000000
+Writing register 'd4' to hardware = 0x0000000000000000
+Writing register 'd5' to hardware = 0x0000000000000000
+Writing register 'd6' to hardware = 0x0000000000000000
+Writing register 'd7' to hardware = 0x0000000000000000
+Writing register 'd8' to hardware = 0x0000000000000000
+Writing register 'd9' to hardware = 0x0000000000000000
+Writing register 'd10' to hardware = 0x0000000000000000
+Writing register 'd11' to hardware = 0x0000000000000000
+Writing register 'd12' to hardware = 0x0000000000000000
+Writing register 'd13' to hardware = 0x0000000000000000
+Writing register 'd14' to hardware = 0x0000000000000000
+Writing register 'd15' to hardware = 0x0000000000000000
+Writing register 'fpscr' to hardware = 0x00000000
+Writing register 'msp' to hardware = 0x20010740
+Writing register 'psp' to hardware = 0x200172B8
+Writing register 'primask' to hardware = 0x00000000
+Writing register 'basepri' to hardware = 0x00000000
+Writing register 'faultmask' to hardware = 0x00000000
+Writing register 'control' to hardware = 0x00000006
+Writing register 'apsr' to hardware = 0x40000000
+Writing register 'epsr' to hardware = 0x01000000
+Writing register 'ipsr' to hardware = 0x00000000
+Writing register 'iapsr' to hardware = 0x40000000
+Writing register 'eapsr' to hardware = 0x41000000
+Writing register 'iepsr' to hardware = 0x01000000
+Removing breakpoint @ address 0x00023C28, Size = 2
+Writing register 'lr' to hardware = 0x00023C29
+Writing register 'r0' to hardware = 0x00000005
+Writing register 'sp' to hardware = 0x200172B0
+Read 2 bytes @ address 0x00023C28 (Data = 0x480F)
+Writing register 'pc' to hardware = 0x0003315A
+Setting breakpoint @ address 0x00023C28, Kind = 2, Type = THUMB, BPHandle = 0x0007
+Starting target CPU...
+...Breakpoint (set by 'GDB') reached @ address 0x00023C28
+Reading common registers: 
+Reading register 'r0' from hardware = 0x006E0126
+Reading register 'r1' from hardware = 0x00000126
+Reading register 'r2' from hardware = 0x0000006E
+Reading register 'r3' from hardware = 0x00000004
+Reading register 'r4' from hardware = 0x00000000
+Reading register 'r5' from hardware = 0x20017310
+Reading register 'r6' from hardware = 0x200172FC
+Reading register 'r7' from hardware = 0x200172C4
+Reading register 'r8' from hardware = 0x00000000
+Reading register 'r9' from hardware = 0x00000000
+Reading register 'r10' from hardware = 0x00000000
+Reading register 'r11' from hardware = 0x00000000
+Reading register 'r12' from hardware = 0x00000002
+Reading register 'sp' from hardware = 0x200172B0
+Reading register 'lr' from hardware = 0x00000058
+Reading register 'pc' from hardware = 0x00023C28
+Reading register 'xpsr' from hardware = 0x81000000
+Writing register 'r0' to hardware = 0x20000990
+Writing register 'r1' to hardware = 0x00023311
+Writing register 'r2' to hardware = 0x0CE75C28
+Writing register 'r3' to hardware = 0x00000000
+Writing register 'r12' to hardware = 0x00000140
+Writing register 'sp' to hardware = 0x200172B8
+Writing register 'lr' to hardware = 0x0003BF4F
+Writing register 'pc' to hardware = 0x00023310
+Writing register 'xpsr' to hardware = 0x41000000
+Writing register 'd0' to hardware = 0x0000000000000000
+Writing register 'd1' to hardware = 0x0000000000000000
+Writing register 'd2' to hardware = 0x0000000000000000
+Writing register 'd3' to hardware = 0x0000000000000000
+Writing register 'd4' to hardware = 0x0000000000000000
+Writing register 'd5' to hardware = 0x0000000000000000
+Writing register 'd6' to hardware = 0x0000000000000000
+Writing register 'd7' to hardware = 0x0000000000000000
+Writing register 'd8' to hardware = 0x0000000000000000
+Writing register 'd9' to hardware = 0x0000000000000000
+Writing register 'd10' to hardware = 0x0000000000000000
+Writing register 'd11' to hardware = 0x0000000000000000
+Writing register 'd12' to hardware = 0x0000000000000000
+Writing register 'd13' to hardware = 0x0000000000000000
+Writing register 'd14' to hardware = 0x0000000000000000
+Writing register 'd15' to hardware = 0x0000000000000000
+Writing register 'fpscr' to hardware = 0x00000000
+Writing register 'msp' to hardware = 0x20010740
+Writing register 'psp' to hardware = 0x200172B8
+Writing register 'primask' to hardware = 0x00000000
+Writing register 'basepri' to hardware = 0x00000000
+Writing register 'faultmask' to hardware = 0x00000000
+Writing register 'control' to hardware = 0x00000006
+Writing register 'apsr' to hardware = 0x40000000
+Writing register 'epsr' to hardware = 0x01000000
+Writing register 'ipsr' to hardware = 0x00000000
+Writing register 'iapsr' to hardware = 0x40000000
+Writing register 'eapsr' to hardware = 0x41000000
+Writing register 'iepsr' to hardware = 0x01000000
+Removing breakpoint @ address 0x00023C28, Size = 2
+Reading 20 bytes @ address 0x2000FC00
+Read 4 bytes @ address 0xE000ED28 (Data = 0x00000000)
+Read 4 bytes @ address 0xE000ED2C (Data = 0x00000000)
+Read 4 bytes @ address 0xE000ED30 (Data = 0x00000002)
+Writing register 'lr' to hardware = 0x00023C29
+Writing register 'r0' to hardware = 0x00000003
+Writing register 'sp' to hardware = 0x200172B0
+Read 2 bytes @ address 0x00023C28 (Data = 0x480F)
+Writing register 'pc' to hardware = 0x0003315A
+Setting breakpoint @ address 0x00023C28, Kind = 2, Type = THUMB, BPHandle = 0x0008
+Starting target CPU...
+...Breakpoint (set by 'GDB') reached @ address 0x00023C28
+Reading common registers: 
+Reading register 'r0' from hardware = 0x006E001A
+Reading register 'r1' from hardware = 0x0000001A
+Reading register 'r2' from hardware = 0x0000006E
+Reading register 'r3' from hardware = 0x00000000
+Reading register 'r4' from hardware = 0x00000000
+Reading register 'r5' from hardware = 0x20017310
+Reading register 'r6' from hardware = 0x200172FC
+Reading register 'r7' from hardware = 0x200172C4
+Reading register 'r8' from hardware = 0x00000000
+Reading register 'r9' from hardware = 0x00000000
+Reading register 'r10' from hardware = 0x00000000
+Reading register 'r11' from hardware = 0x00000000
+Reading register 'r12' from hardware = 0x00000001
+Reading register 'sp' from hardware = 0x200172B0
+Reading register 'lr' from hardware = 0x00000058
+Reading register 'pc' from hardware = 0x00023C28
+Reading register 'xpsr' from hardware = 0x81000000
+Writing register 'r0' to hardware = 0x20000990
+Writing register 'r1' to hardware = 0x00023311
+Writing register 'r2' to hardware = 0x0CE75C28
+Writing register 'r12' to hardware = 0x00000140
+Writing register 'sp' to hardware = 0x200172B8
+Writing register 'lr' to hardware = 0x0003BF4F
+Writing register 'pc' to hardware = 0x00023310
+Writing register 'xpsr' to hardware = 0x41000000
+Writing register 'd0' to hardware = 0x0000000000000000
+Writing register 'd1' to hardware = 0x0000000000000000
+Writing register 'd2' to hardware = 0x0000000000000000
+Writing register 'd3' to hardware = 0x0000000000000000
+Writing register 'd4' to hardware = 0x0000000000000000
+Writing register 'd5' to hardware = 0x0000000000000000
+Writing register 'd6' to hardware = 0x0000000000000000
+Writing register 'd7' to hardware = 0x0000000000000000
+Writing register 'd8' to hardware = 0x0000000000000000
+Writing register 'd9' to hardware = 0x0000000000000000
+Writing register 'd10' to hardware = 0x0000000000000000
+Writing register 'd11' to hardware = 0x0000000000000000
+Writing register 'd12' to hardware = 0x0000000000000000
+Writing register 'd13' to hardware = 0x0000000000000000
+Writing register 'd14' to hardware = 0x0000000000000000
+Writing register 'd15' to hardware = 0x0000000000000000
+Writing register 'fpscr' to hardware = 0x00000000
+Writing register 'msp' to hardware = 0x20010740
+Writing register 'psp' to hardware = 0x200172B8
+Writing register 'primask' to hardware = 0x00000000
+Writing register 'basepri' to hardware = 0x00000000
+Writing register 'faultmask' to hardware = 0x00000000
+Writing register 'control' to hardware = 0x00000006
+Writing register 'apsr' to hardware = 0x40000000
+Writing register 'epsr' to hardware = 0x01000000
+Writing register 'ipsr' to hardware = 0x00000000
+Writing register 'iapsr' to hardware = 0x40000000
+Writing register 'eapsr' to hardware = 0x41000000
+Writing register 'iepsr' to hardware = 0x01000000
+Removing breakpoint @ address 0x00023C28, Size = 2
+Read 4 bytes @ address 0x00023310 (Data = 0x4DF0E92D)
+Writing register 'lr' to hardware = 0x00023C29
+Writing register 'sp' to hardware = 0x200172B0
+Read 2 bytes @ address 0x00023C28 (Data = 0x480F)
+Writing register 'pc' to hardware = 0x00033146
+Setting breakpoint @ address 0x00023C28, Kind = 2, Type = THUMB, BPHandle = 0x0009
+Starting target CPU...
+...Breakpoint (set by 'GDB') reached @ address 0x00023C28
+Reading common registers: 
+Reading register 'r0' from hardware = 0x00000006
+Reading register 'r1' from hardware = 0x00000006
+Reading register 'r2' from hardware = 0x0CE75C28
+Reading register 'r3' from hardware = 0x00000000
+Reading register 'r4' from hardware = 0x00000000
+Reading register 'r5' from hardware = 0x20017310
+Reading register 'r6' from hardware = 0x200172FC
+Reading register 'r7' from hardware = 0x200172C4
+Reading register 'r8' from hardware = 0x00000000
+Reading register 'r9' from hardware = 0x00000000
+Reading register 'r10' from hardware = 0x00000000
+Reading register 'r11' from hardware = 0x00000000
+Reading register 'r12' from hardware = 0x00000140
+Reading register 'sp' from hardware = 0x200172B0
+Reading register 'lr' from hardware = 0x00023C29
+Reading register 'pc' from hardware = 0x00023C28
+Reading register 'xpsr' from hardware = 0x81000000
+Writing register 'r0' to hardware = 0x20000990
+Writing register 'r1' to hardware = 0x00023311
+Writing register 'sp' to hardware = 0x200172B8
+Writing register 'lr' to hardware = 0x0003BF4F
+Writing register 'pc' to hardware = 0x00023310
+Writing register 'xpsr' to hardware = 0x41000000
+Writing register 'd0' to hardware = 0x0000000000000000
+Writing register 'd1' to hardware = 0x0000000000000000
+Writing register 'd2' to hardware = 0x0000000000000000
+Writing register 'd3' to hardware = 0x0000000000000000
+Writing register 'd4' to hardware = 0x0000000000000000
+Writing register 'd5' to hardware = 0x0000000000000000
+Writing register 'd6' to hardware = 0x0000000000000000
+Writing register 'd7' to hardware = 0x0000000000000000
+Writing register 'd8' to hardware = 0x0000000000000000
+Writing register 'd9' to hardware = 0x0000000000000000
+Writing register 'd10' to hardware = 0x0000000000000000
+Writing register 'd11' to hardware = 0x0000000000000000
+Writing register 'd12' to hardware = 0x0000000000000000
+Writing register 'd13' to hardware = 0x0000000000000000
+Writing register 'd14' to hardware = 0x0000000000000000
+Writing register 'd15' to hardware = 0x0000000000000000
+Writing register 'fpscr' to hardware = 0x00000000
+Writing register 'msp' to hardware = 0x20010740
+Writing register 'psp' to hardware = 0x200172B8
+Writing register 'primask' to hardware = 0x00000000
+Writing register 'basepri' to hardware = 0x00000000
+Writing register 'faultmask' to hardware = 0x00000000
+Writing register 'control' to hardware = 0x00000006
+Writing register 'apsr' to hardware = 0x40000000
+Writing register 'epsr' to hardware = 0x01000000
+Writing register 'ipsr' to hardware = 0x00000000
+Writing register 'iapsr' to hardware = 0x40000000
+Writing register 'eapsr' to hardware = 0x41000000
+Writing register 'iepsr' to hardware = 0x01000000
+Removing breakpoint @ address 0x00023C28, Size = 2
+Read 4 bytes @ address 0x00023310 (Data = 0x4DF0E92D)
+Writing register 'lr' to hardware = 0x00023C29
+Writing register 'r0' to hardware = 0x00000000
+Writing register 'r1' to hardware = 0x0000001A
+Writing register 'r2' to hardware = 0x0000006E
+Writing register 'r3' to hardware = 0x00000006
+Downloading 4 bytes @ address 0x200172A8
+Writing register 'sp' to hardware = 0x200172A8
+Read 2 bytes @ address 0x00023C28 (Data = 0x480F)
+Writing register 'pc' to hardware = 0x00034FB8
+Setting breakpoint @ address 0x00023C28, Kind = 2, Type = THUMB, BPHandle = 0x000A
+Starting target CPU...
+...Breakpoint (set by 'GDB') reached @ address 0x00023C28
+Reading common registers: 
+Reading register 'r0' from hardware = 0x000000FF
+Reading register 'r1' from hardware = 0x00000000
+Reading register 'r2' from hardware = 0x00000000
+Reading register 'r3' from hardware = 0x00000000
+Reading register 'r4' from hardware = 0x00000000
+Reading register 'r5' from hardware = 0x20017310
+Reading register 'r6' from hardware = 0x200172FC
+Reading register 'r7' from hardware = 0x200172C4
+Reading register 'r8' from hardware = 0x00000000
+Reading register 'r9' from hardware = 0x00000000
+Reading register 'r10' from hardware = 0x00000000
+Reading register 'r11' from hardware = 0x00000000
+Reading register 'r12' from hardware = 0x00000002
+Reading register 'sp' from hardware = 0x200172A8
+Reading register 'lr' from hardware = 0x0002F63B
+Reading register 'pc' from hardware = 0x00023C28
+Reading register 'xpsr' from hardware = 0x01000000
+Writing register 'r0' to hardware = 0x20000990
+Writing register 'r1' to hardware = 0x00023311
+Writing register 'r2' to hardware = 0x0CE75C28
+Writing register 'r12' to hardware = 0x00000140
+Writing register 'sp' to hardware = 0x200172B8
+Writing register 'lr' to hardware = 0x0003BF4F
+Writing register 'pc' to hardware = 0x00023310
+Writing register 'xpsr' to hardware = 0x41000000
+Writing register 'd0' to hardware = 0x0000000000000000
+Writing register 'd1' to hardware = 0x0000000000000000
+Writing register 'd2' to hardware = 0x0000000000000000
+Writing register 'd3' to hardware = 0x0000000000000000
+Writing register 'd4' to hardware = 0x0000000000000000
+Writing register 'd5' to hardware = 0x0000000000000000
+Writing register 'd6' to hardware = 0x0000000000000000
+Writing register 'd7' to hardware = 0x0000000000000000
+Writing register 'd8' to hardware = 0x0000000000000000
+Writing register 'd9' to hardware = 0x0000000000000000
+Writing register 'd10' to hardware = 0x0000000000000000
+Writing register 'd11' to hardware = 0x0000000000000000
+Writing register 'd12' to hardware = 0x0000000000000000
+Writing register 'd13' to hardware = 0x0000000000000000
+Writing register 'd14' to hardware = 0x0000000000000000
+Writing register 'd15' to hardware = 0x0000000000000000
+Writing register 'fpscr' to hardware = 0x00000000
+Writing register 'msp' to hardware = 0x20010740
+Writing register 'psp' to hardware = 0x200172B8
+Writing register 'primask' to hardware = 0x00000000
+Writing register 'basepri' to hardware = 0x00000000
+Writing register 'faultmask' to hardware = 0x00000000
+Writing register 'control' to hardware = 0x00000006
+Writing register 'apsr' to hardware = 0x40000000
+Writing register 'epsr' to hardware = 0x01000000
+Writing register 'ipsr' to hardware = 0x00000000
+Writing register 'iapsr' to hardware = 0x40000000
+Writing register 'eapsr' to hardware = 0x41000000
+Writing register 'iepsr' to hardware = 0x01000000
+Removing breakpoint @ address 0x00023C28, Size = 2
+Writing register 'lr' to hardware = 0x00023C29
+Writing register 'r0' to hardware = 0x00000002
+Writing register 'r1' to hardware = 0x0000001A
+Writing register 'r2' to hardware = 0x0000006E
+Writing register 'r3' to hardware = 0x00000006
+Downloading 4 bytes @ address 0x200172A8
+Writing register 'sp' to hardware = 0x200172A8
+Read 2 bytes @ address 0x00023C28 (Data = 0x480F)
+Writing register 'pc' to hardware = 0x00034FB8
+Setting breakpoint @ address 0x00023C28, Kind = 2, Type = THUMB, BPHandle = 0x000B
+Starting target CPU...
+...Breakpoint (set by 'GDB') reached @ address 0x00023C28
+Reading common registers: 
+Reading register 'r0' from hardware = 0x000000FF
+Reading register 'r1' from hardware = 0x00000000
+Reading register 'r2' from hardware = 0x00000002
+Reading register 'r3' from hardware = 0x00000001
+Reading register 'r4' from hardware = 0x00000000
+Reading register 'r5' from hardware = 0x20017310
+Reading register 'r6' from hardware = 0x200172FC
+Reading register 'r7' from hardware = 0x200172C4
+Reading register 'r8' from hardware = 0x00000000
+Reading register 'r9' from hardware = 0x00000000
+Reading register 'r10' from hardware = 0x00000000
+Reading register 'r11' from hardware = 0x00000000
+Reading register 'r12' from hardware = 0x00000002
+Reading register 'sp' from hardware = 0x200172A8
+Reading register 'lr' from hardware = 0x0002F63B
+Reading register 'pc' from hardware = 0x00023C28
+Reading register 'xpsr' from hardware = 0x01000000
+Writing register 'r0' to hardware = 0x20000990
+Writing register 'r1' to hardware = 0x00023311
+Writing register 'r2' to hardware = 0x0CE75C28
+Writing register 'r3' to hardware = 0x00000000
+Writing register 'r12' to hardware = 0x00000140
+Writing register 'sp' to hardware = 0x200172B8
+Writing register 'lr' to hardware = 0x0003BF4F
+Writing register 'pc' to hardware = 0x00023310
+Writing register 'xpsr' to hardware = 0x41000000
+Writing register 'd0' to hardware = 0x0000000000000000
+Writing register 'd1' to hardware = 0x0000000000000000
+Writing register 'd2' to hardware = 0x0000000000000000
+Writing register 'd3' to hardware = 0x0000000000000000
+Writing register 'd4' to hardware = 0x0000000000000000
+Writing register 'd5' to hardware = 0x0000000000000000
+Writing register 'd6' to hardware = 0x0000000000000000
+Writing register 'd7' to hardware = 0x0000000000000000
+Writing register 'd8' to hardware = 0x0000000000000000
+Writing register 'd9' to hardware = 0x0000000000000000
+Writing register 'd10' to hardware = 0x0000000000000000
+Writing register 'd11' to hardware = 0x0000000000000000
+Writing register 'd12' to hardware = 0x0000000000000000
+Writing register 'd13' to hardware = 0x0000000000000000
+Writing register 'd14' to hardware = 0x0000000000000000
+Writing register 'd15' to hardware = 0x0000000000000000
+Writing register 'fpscr' to hardware = 0x00000000
+Writing register 'msp' to hardware = 0x20010740
+Writing register 'psp' to hardware = 0x200172B8
+Writing register 'primask' to hardware = 0x00000000
+Writing register 'basepri' to hardware = 0x00000000
+Writing register 'faultmask' to hardware = 0x00000000
+Writing register 'control' to hardware = 0x00000006
+Writing register 'apsr' to hardware = 0x40000000
+Writing register 'epsr' to hardware = 0x01000000
+Writing register 'ipsr' to hardware = 0x00000000
+Writing register 'iapsr' to hardware = 0x40000000
+Writing register 'eapsr' to hardware = 0x41000000
+Writing register 'iepsr' to hardware = 0x01000000
+Removing breakpoint @ address 0x00023C28, Size = 2
+Writing register 'lr' to hardware = 0x00023C29
+Writing register 'sp' to hardware = 0x200172B0
+Read 2 bytes @ address 0x00023C28 (Data = 0x480F)
+Writing register 'pc' to hardware = 0x00034FC6
+Setting breakpoint @ address 0x00023C28, Kind = 2, Type = THUMB, BPHandle = 0x000C
+Starting target CPU...
+...Breakpoint (set by 'GDB') reached @ address 0x00023C28
+Reading common registers: 
+Reading register 'r0' from hardware = 0x00000002
+Reading register 'r1' from hardware = 0x00000001
+Reading register 'r2' from hardware = 0x0CE75C28
+Reading register 'r3' from hardware = 0x00000000
+Reading register 'r4' from hardware = 0x00000000
+Reading register 'r5' from hardware = 0x20017310
+Reading register 'r6' from hardware = 0x200172FC
+Reading register 'r7' from hardware = 0x200172C4
+Reading register 'r8' from hardware = 0x00000000
+Reading register 'r9' from hardware = 0x00000000
+Reading register 'r10' from hardware = 0x00000000
+Reading register 'r11' from hardware = 0x00000000
+Reading register 'r12' from hardware = 0x00000140
+Reading register 'sp' from hardware = 0x200172B0
+Reading register 'lr' from hardware = 0x00034FCD
+Reading register 'pc' from hardware = 0x00023C28
+Reading register 'xpsr' from hardware = 0x21000000
+Writing register 'r0' to hardware = 0x20000990
+Writing register 'r1' to hardware = 0x00023311
+Writing register 'sp' to hardware = 0x200172B8
+Writing register 'lr' to hardware = 0x0003BF4F
+Writing register 'pc' to hardware = 0x00023310
+Writing register 'xpsr' to hardware = 0x41000000
+Writing register 'd0' to hardware = 0x0000000000000000
+Writing register 'd1' to hardware = 0x0000000000000000
+Writing register 'd2' to hardware = 0x0000000000000000
+Writing register 'd3' to hardware = 0x0000000000000000
+Writing register 'd4' to hardware = 0x0000000000000000
+Writing register 'd5' to hardware = 0x0000000000000000
+Writing register 'd6' to hardware = 0x0000000000000000
+Writing register 'd7' to hardware = 0x0000000000000000
+Writing register 'd8' to hardware = 0x0000000000000000
+Writing register 'd9' to hardware = 0x0000000000000000
+Writing register 'd10' to hardware = 0x0000000000000000
+Writing register 'd11' to hardware = 0x0000000000000000
+Writing register 'd12' to hardware = 0x0000000000000000
+Writing register 'd13' to hardware = 0x0000000000000000
+Writing register 'd14' to hardware = 0x0000000000000000
+Writing register 'd15' to hardware = 0x0000000000000000
+Writing register 'fpscr' to hardware = 0x00000000
+Writing register 'msp' to hardware = 0x20010740
+Writing register 'psp' to hardware = 0x200172B8
+Writing register 'primask' to hardware = 0x00000000
+Writing register 'basepri' to hardware = 0x00000000
+Writing register 'faultmask' to hardware = 0x00000000
+Writing register 'control' to hardware = 0x00000006
+Writing register 'apsr' to hardware = 0x40000000
+Writing register 'epsr' to hardware = 0x01000000
+Writing register 'ipsr' to hardware = 0x00000000
+Writing register 'iapsr' to hardware = 0x40000000
+Writing register 'eapsr' to hardware = 0x41000000
+Writing register 'iepsr' to hardware = 0x01000000
+Removing breakpoint @ address 0x00023C28, Size = 2
+Received monitor command: go
+Starting target CPU...
+GDB closed TCP/IP connection (Socket 9)

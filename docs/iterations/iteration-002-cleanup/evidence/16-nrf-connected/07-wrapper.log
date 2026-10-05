@@ -1,0 +1,25 @@
+0x00041a22 in delay_machine_code ()
+Hardware assisted breakpoint 1 at 0x23310: file /Users/eugene/work/GiftUI/firmware/nrf52840/applications/signal-analyzer-static/src/production_host.c, line 146.
+
+Temporary breakpoint 1, service (opaque=0x20000990 <production>, now=483959000, next_deadline=0x200172d0 <z_main_stack+27536>, stop=0x200172c4 <z_main_stack+27524>) at /Users/eugene/work/GiftUI/firmware/nrf52840/applications/signal-analyzer-static/src/production_host.c:146
+146	{
+SERVICE BOUNDARY
+pc             0x23310             0x23310 <service>
+sp             0x200172b8          0x200172b8 <z_main_stack+27512>
+$1 = {regions = {profile = 0x20006048 <giftui_signal_analyzer_profile_storage> "CNAS\001", profile_bytes = 39696, capture = 0x20001488 <giftui_signal_analyzer_capture_storage> "", capture_bytes = 19392, raster = 0x20000a88 <giftui_signal_analyzer_raster_staging> "\004\037\004\037\004\037", raster_bytes = 2560, coverage = 0x200009e8 <giftui_signal_analyzer_raster_coverage> "", coverage_bytes = 160}, touch = {input = {calibration = {horizontal_minimum = 0, horizontal_maximum = 4095, vertical_minimum = 0, vertical_maximum = 4095, logical_width = 320, logical_height = 240, swap_axes = 1 '\001', invert_horizontal = 1 '\001', invert_vertical = 1 '\001'}, last_x = 0, last_y = 0, active = 0 '\000', valid = 1 '\001'}, observed_presentation_revision = 9, prior_physical_sequence_is_complete = 1 '\001', awaiting_observed_release = 0 '\000', valid = 1 '\001'}, next_transition_deadline = 0, next_frame_deadline = 367469000, next_touch_sample_deadline = 483986000}
+$2 = 9
+$3 = 2
+$4 = 8
+$5 = 0
+$6 = 7208986
+$7 = 0
+$8 = {0, 0, 0, 0, 0}
+0xe000ed28:	0x00000000	0x00000000	0x00000002
+$9 = void
+$10 = void
+$11 = 0
+$12 = 0
+$13 = {0, 0, 0, 0, 0}
+0xe000ed28:	0x00000000	0x00000000	0x00000002
+[Inferior 1 (Remote target) detached]
+

@@ -1,0 +1,212 @@
+[
+  {
+    "source": ".build/nrf52840/iteration-002-retention-connected/01-start.gdb",
+    "copy": "01-start.gdb",
+    "sha256": "144c2c95f1ee5a518752ee1c08279c2b4f2fbf4d2eb9aa74680b28071cfc4910"
+  },
+  {
+    "source": ".build/nrf52840/iteration-002-retention-connected/01-start.log",
+    "copy": "01-start.log",
+    "sha256": "8a2dbc31811ee8b127c100d033b5da9621d0e886fc2d96c1d079f81208cba035"
+  },
+  {
+    "source": ".build/nrf52840/iteration-002-retention-connected/01-start.server.log",
+    "copy": "01-start.server.log",
+    "sha256": "bcc4dee9d3b7b89140a2bfc8283a79fa0f287feed70a1e023c0594c2e3c6340b"
+  },
+  {
+    "source": ".build/nrf52840/iteration-002-retention-connected/01-wrapper.log",
+    "copy": "01-wrapper.log",
+    "sha256": "46f82369bc7a5724998c4fc5592f0860ddab15e9e7e2c153276a7315692212c8"
+  },
+  {
+    "source": ".build/nrf52840/iteration-002-retention-connected/02-stop.gdb",
+    "copy": "02-stop.gdb",
+    "sha256": "a2de5d717e01aee11623f7a839eabe8b061931734f646c484bd58d3fd0ff5da0"
+  },
+  {
+    "source": ".build/nrf52840/iteration-002-retention-connected/02-stop.log",
+    "copy": "02-stop.log",
+    "sha256": "8f5c1aa768b9bce142963af0eb949fdce9e8dc500f85f6c019f4c976d477adf0"
+  },
+  {
+    "source": ".build/nrf52840/iteration-002-retention-connected/02-stop.server.log",
+    "copy": "02-stop.server.log",
+    "sha256": "3519bd8a51964fc940931ac8a4b59f52328ae635833ad76abebb2f7d65eeaea2"
+  },
+  {
+    "source": ".build/nrf52840/iteration-002-retention-connected/02-wrapper.log",
+    "copy": "02-wrapper.log",
+    "sha256": "757c21811dfd2b4605e60e8f4a807b42b7abd7cf1188cfd446821cabf9b20657"
+  },
+  {
+    "source": ".build/nrf52840/iteration-002-retention-connected/03-window-one.gdb",
+    "copy": "03-window-one.gdb",
+    "sha256": "523721a918429eb3af7882f0ed344ac222cd478db3ac0df4052a94c3f190c0c6"
+  },
+  {
+    "source": ".build/nrf52840/iteration-002-retention-connected/03-window-one.log",
+    "copy": "03-window-one.log",
+    "sha256": "249ab57ff80e1debd57a9134bd2bfd67d6d8f4096a041ce6cc6ff8de2bcd9b2e"
+  },
+  {
+    "source": ".build/nrf52840/iteration-002-retention-connected/03-window-one.server.log",
+    "copy": "03-window-one.server.log",
+    "sha256": "c010e95e6311df2b86557c3e37022e1408288ae413760c0ca6ff4f3355f04b4d"
+  },
+  {
+    "source": ".build/nrf52840/iteration-002-retention-connected/03-wrapper.log",
+    "copy": "03-wrapper.log",
+    "sha256": "9aeef1c5a9f6d99648fc009b5c5a9bb81150a84e4c1d591c843fd02115264144"
+  },
+  {
+    "source": ".build/nrf52840/iteration-002-retention-connected/04-window-two.gdb",
+    "copy": "04-window-two.gdb",
+    "sha256": "b40a655bc87deb5185c3a4fefbe8995fe9171be8383fe8d1862011c573aaa6d4"
+  },
+  {
+    "source": ".build/nrf52840/iteration-002-retention-connected/04-window-two.log",
+    "copy": "04-window-two.log",
+    "sha256": "5dfcd592a30ff2b25cc5fef820e76e313759e4a2589d03765e5fa655e65b15d5"
+  },
+  {
+    "source": ".build/nrf52840/iteration-002-retention-connected/04-window-two.server.log",
+    "copy": "04-window-two.server.log",
+    "sha256": "388dfe22eae1bd4b18137d1b996b95ce945367cfb371fab1f826b78e5bacd9c3"
+  },
+  {
+    "source": ".build/nrf52840/iteration-002-retention-connected/04-wrapper.log",
+    "copy": "04-wrapper.log",
+    "sha256": "86ac5b878a8db37d0f4ce452db8af7a9ef59764171b903280dc520fae55afcf7"
+  },
+  {
+    "source": ".build/nrf52840/iteration-002-retention-connected/05-window-five.gdb",
+    "copy": "05-window-five.gdb",
+    "sha256": "1076d264314c42f1b57d5d0b37f718f04ded10142abe555e29e293b11e96e22a"
+  },
+  {
+    "source": ".build/nrf52840/iteration-002-retention-connected/05-window-five.log",
+    "copy": "05-window-five.log",
+    "sha256": "27adb8d5d1cb38f29427f3a6e5dbd1741e96e71101b66a917bfcf123611e98ba"
+  },
+  {
+    "source": ".build/nrf52840/iteration-002-retention-connected/05-window-five.server.log",
+    "copy": "05-window-five.server.log",
+    "sha256": "e9e591593b0d46fbd591e66d91a9abc68c9ec8103abbade93e7bbcb22eedd495"
+  },
+  {
+    "source": ".build/nrf52840/iteration-002-retention-connected/05-wrapper.log",
+    "copy": "05-wrapper.log",
+    "sha256": "a63356ec63d307b810e3056c91f467068bf78390b45fb0928d7c08fb2dc77602"
+  },
+  {
+    "source": ".build/nrf52840/iteration-002-retention-connected/06-final-inspect.gdb",
+    "copy": "06-final-inspect.gdb",
+    "sha256": "11f7da618fff08375ab03dce319732a5e92bb85290879242aae7311fb8e29bd1"
+  },
+  {
+    "source": ".build/nrf52840/iteration-002-retention-connected/06-final-inspect.log",
+    "copy": "06-final-inspect.log",
+    "sha256": "f0be2c33c8fab1c941d982ac3b7ce8bba6ba0810c1cbbacd52b8935a7320d27f"
+  },
+  {
+    "source": ".build/nrf52840/iteration-002-retention-connected/06-final-inspect.server.log",
+    "copy": "06-final-inspect.server.log",
+    "sha256": "828e257a1ab30c4203f6a2ee0df008c667ffc97d36f3b14a40ea533728210ad6"
+  },
+  {
+    "source": ".build/nrf52840/iteration-002-retention-connected/06-wrapper.log",
+    "copy": "06-wrapper.log",
+    "sha256": "2c52768e50777600cf11f148d1d4a367736d19cdcdcc15a9adcdd93729c92928"
+  },
+  {
+    "source": ".build/nrf52840/iteration-002-retention-connected/07-cleanup.gdb",
+    "copy": "07-cleanup.gdb",
+    "sha256": "c053cb378b1b2efe6f7982dbdaee96d87283cce6a515233c6494a16988bf40ee"
+  },
+  {
+    "source": ".build/nrf52840/iteration-002-retention-connected/07-cleanup.log",
+    "copy": "07-cleanup.log",
+    "sha256": "4a35135abd14e0f4a5e3152718b1a16d778f8f6ccba9fbffa2969953fef4bb58"
+  },
+  {
+    "source": ".build/nrf52840/iteration-002-retention-connected/07-cleanup.server.log",
+    "copy": "07-cleanup.server.log",
+    "sha256": "9b4b903af801a51a2abe4a31a6e03464c1cae5224914109a6a0c00ae7b3dcbdb"
+  },
+  {
+    "source": ".build/nrf52840/iteration-002-retention-connected/07-wrapper.log",
+    "copy": "07-wrapper.log",
+    "sha256": "d6c4f6cf121db511781e30e711ffbedc37af5cbed66a33a3b6d45e65d56eec85"
+  },
+  {
+    "source": ".build/nrf52840/iteration-002-retention-connected/08-final-idle.gdb",
+    "copy": "08-final-idle.gdb",
+    "sha256": "11f7da618fff08375ab03dce319732a5e92bb85290879242aae7311fb8e29bd1"
+  },
+  {
+    "source": ".build/nrf52840/iteration-002-retention-connected/08-final-idle.log",
+    "copy": "08-final-idle.log",
+    "sha256": "afb0a93c6abb7ab09c9916f72c6a9c8092dd4b02a0b1e799560f561f97278cbf"
+  },
+  {
+    "source": ".build/nrf52840/iteration-002-retention-connected/08-final-idle.server.log",
+    "copy": "08-final-idle.server.log",
+    "sha256": "1f125bf0cb649ad30ee166fe0cf152feb809399052d0cc11bf793e4af7ef61dc"
+  },
+  {
+    "source": ".build/nrf52840/iteration-002-retention-connected/08-wrapper.log",
+    "copy": "08-wrapper.log",
+    "sha256": "913f166ca9e5b56cb50e2cde6f532552267d663d44de4b529ca6d0c5961415f0"
+  },
+  {
+    "source": ".build/nrf52840/iteration-002-retention-connected/final-idle-flash.log",
+    "copy": "final-idle-flash.log",
+    "sha256": "29d90bed064d1b6b1b33ba96ee4e631c88052db885cd3cc017ad742bc16b3602"
+  },
+  {
+    "source": ".build/nrf52840/iteration-002-retention-connected/final-idle-identity.log",
+    "copy": "final-idle-identity.log",
+    "sha256": "d0592c930bdb8ae05be8e36486a3d06c361196874d3193a3fd6768fcc168dc7b"
+  },
+  {
+    "source": ".build/nrf52840/iteration-002-retention-connected/final-running.log",
+    "copy": "final-running.log",
+    "sha256": "d310f00a4dd52cf3e5f525a67b378837a607e00b201198307e876b09c5e67e13"
+  },
+  {
+    "source": ".build/nrf52840/iteration-002-retention-connected/flash.log",
+    "copy": "flash.log",
+    "sha256": "29d90bed064d1b6b1b33ba96ee4e631c88052db885cd3cc017ad742bc16b3602"
+  },
+  {
+    "source": ".build/nrf52840/iteration-002-connected/retention-final-idle/monitor.log",
+    "copy": "retention-final-idle/monitor.log",
+    "sha256": "a268e06ab7065cd425771a53b764d51fc1ac35a7db2d3921ca01f50f38c55bd7"
+  },
+  {
+    "source": ".build/nrf52840/iteration-002-connected/retention-final-idle/identity.json",
+    "copy": "retention-final-idle/identity.json",
+    "sha256": "bed353df727dc788a255158387a98589b7eac87e9a2e8e5a684aa94455075a07"
+  },
+  {
+    "source": ".build/nrf52840/iteration-002-connected/retention-final-idle/monitor.jlink",
+    "copy": "retention-final-idle/monitor.jlink",
+    "sha256": "2b6e5b264e7629ee24e66be4227e96db3634b8d584180cb8e8962453b419af53"
+  },
+  {
+    "source": ".build/nrf52840/iteration-002-connected/retention-final-running-confirmation/monitor.log",
+    "copy": "retention-final-running-confirmation/monitor.log",
+    "sha256": "21966a6f35286529182b0ad7cc1138d6a302f128d8e8f244b2af3f18c3e48cda"
+  },
+  {
+    "source": ".build/nrf52840/iteration-002-connected/retention-final-running-confirmation/identity.json",
+    "copy": "retention-final-running-confirmation/identity.json",
+    "sha256": "3462d2a69e1d542eaff3ab8b6997ac3078fd17ae9bc7b1e12a65ad5f2f9c5cd8"
+  },
+  {
+    "source": ".build/nrf52840/iteration-002-connected/retention-final-running-confirmation/monitor.jlink",
+    "copy": "retention-final-running-confirmation/monitor.jlink",
+    "sha256": "7ac8cb9d72a4ce977e16a1e8cccbc072fd24fa9fe8acafc93f661201b06bd525"
+  }
+]

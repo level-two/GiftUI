@@ -1,0 +1,7 @@
+==> flashing /Users/eugene/work/GiftUI/.build/nrf52840/signal-analyzer-static/zephyr/zephyr.hex with the nRF52840-DK J-Link runner
+WARNING: --skip-rebuild is deprecated. Please use --no-rebuild instead
+-- west flash: using runner jlink
+-- runners.jlink: reset after flashing requested
+-- runners.jlink: JLink version: 9.66
+-- runners.jlink: Flashing file: /Users/eugene/work/GiftUI/.build/nrf52840/signal-analyzer-static/zephyr/zephyr.hex
+FLASHED=/Users/eugene/work/GiftUI/.build/nrf52840/signal-analyzer-static/zephyr/zephyr.hex
