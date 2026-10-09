@@ -20,6 +20,8 @@ package struct StaticSignalAnalyzerNRFRepositoryProducer {
         history = StaticSignalAnalyzerNRFCaptureHistory(initialRevision: initialRevision)
     }
 
+    package var activeSourceGeneration: UInt32? { source.activeGeneration }
+
     package var captureRevision: UInt32 { history.revision }
 
     package var nextScheduledDelay: Duration? {

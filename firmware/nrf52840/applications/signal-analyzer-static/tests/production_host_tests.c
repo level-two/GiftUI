@@ -22,6 +22,7 @@ static int refuse_next;
 static int pen_result;
 static int zero_delay_pair;
 static uint64_t clock_now;
+static uint32_t source_generation;
 
 void k_busy_wait(uint32_t duration) { (void)duration; }
 int ads7846_initialize(void) { return 0; }
@@ -120,6 +121,7 @@ uint32_t giftui_signal_analyzer_present_next(
     if (pending_input != 0U) {
         pending_input = 0U;
         delay = 80000U;
+        source_generation++;
     }
     if (pending_next != 0) { return 2U; }
     revision++;
@@ -148,6 +150,7 @@ uint32_t giftui_signal_analyzer_poll_scheduled_due(
 uint32_t giftui_signal_analyzer_needs_presentation(void) { return dirty; }
 uint32_t giftui_signal_analyzer_current_revision(void) { return revision; }
 uint64_t giftui_signal_analyzer_next_delay_microseconds(void) { return delay; }
+uint32_t giftui_signal_analyzer_source_generation(void) { return source_generation; }
 void giftui_signal_analyzer_retire_initial(void) { teardown_count++; }
 int giftui_static_host_clock_now(uint64_t *timestamp)
 {
@@ -187,6 +190,7 @@ int main(void)
     assert(frame_count == 2U && poll_count == 0U);
     assert(service(&production, 340000U, &deadline, &stop) == 0);
     assert(deadline == 350000U && frame_count == 2U && poll_count == 2U);
+    source_generation = 0U;
     delay = UINT64_MAX;
     production.next_transition_deadline = 0U;
     pending_next = 1;
@@ -194,6 +198,7 @@ int main(void)
     assert(frame_count == 2U && revision == 2U && touch_revision == 2U);
     assert(dirty == 1U && production.next_frame_deadline == 750000U);
     pending_next = 0;
+    source_generation = 0U;
     delay = UINT64_MAX;
     production.next_transition_deadline = 0U;
     dirty = 1U;
@@ -206,6 +211,44 @@ int main(void)
     pen_result = 0;
     assert(teardown(&production) == 0);
     assert(teardown_count == 2U && production.touch.valid == 0U);
+    /* 80/s for thirty seconds, admitted in 20-event batches after a
+     * delayed poll. Every next deadline remains on the original grid. */
+    zero_delay_pair = 0;
+    pending_input = 0U;
+    dirty = 0U;
+    delay = 12500U;
+    source_generation = 10U;
+    poll_count = 0U;
+    clock_now = 0U;
+    assert(activate(&production) == 0);
+    assert(service(&production, 0U, &deadline, &stop) == 0);
+    for (uint64_t now = 250000U; now <= 30000000U; now += 250000U) {
+        assert(service(&production, now, &deadline, &stop) == 0);
+        assert(poll_count == now / 12500U);
+        assert(production.next_transition_deadline == now + 12500U);
+    }
+    /* Clear/unchanged generation leaves the anchor alone. Stop cancels;
+     * a replacement generation (including Stop+Start in one turn) reanchors. */
+    assert(service(&production, 30001000U, &deadline, &stop) == 0);
+    assert(production.next_transition_deadline == 30012500U);
+    source_generation = 0U;
+    delay = UINT64_MAX;
+    assert(service(&production, 30002000U, &deadline, &stop) == 0);
+    assert(production.source_generation == 0U);
+    source_generation = 11U;
+    delay = 12500U;
+    assert(service(&production, 40000000U, &deadline, &stop) == 0);
+    assert(poll_count == 2400U);
+    source_generation = 12U;
+    assert(service(&production, 41000000U, &deadline, &stop) == 0);
+    assert(poll_count == 2400U);
+    assert(production.next_transition_deadline == 41012500U);
+    /* Excess overdue work fails before event 21 rather than rebasing it. */
+    assert(service(&production, 41262500U, &deadline, &stop) == -EIO);
+    assert(poll_count == 2420U);
+    source_generation++;
+    assert(service(&production, UINT64_MAX - 1U, &deadline, &stop) == -ERANGE);
+    assert(teardown(&production) == 0);
     refuse_initial = 1;
     assert(activate(&production) == -EIO);
     assert(teardown(&production) == 0);

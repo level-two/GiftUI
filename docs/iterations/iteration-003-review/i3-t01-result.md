@@ -16,7 +16,7 @@ Cumulative usage at launch: 15 minutes. Waiting: zero.
 | Step | Disposition | Evidence |
 | --- | --- | --- |
 | Launch planning | Ready | Seven updated per-Spec plans and three focused design notes |
-| I3-T01.1 scheduling | Pending | Anchored, generation-aware bounded catch-up |
+| I3-T01.1 scheduling | Implemented; focused checks pass | Swift schedule corpus (3 tests); native production C loop 2,400 simulated deliveries; nRF build/ABI pass |
 | I3-T01.2 raster | Pending | Fixed scalar coverage mask |
 | I3-T01.3 layout | Pending | Existing scratch-region indexes |
 | Integrated validation | Pending | Four-profile gate and exact target builds |
@@ -30,3 +30,24 @@ needs exact integrated artifacts and separately authorized connected evidence;
 ME-09 needs criterion dispositions and human closure. The production display
 remains at 4 MHz. Hardware-free checks cannot establish four FPS, connected
 80 events/s, physical input behavior or a complete stack bound.
+
+## Scheduling step
+
+The source anchor advances from the previous deadline. Source generation is
+checked across opportunities, including Stop+Start without an intervening poll.
+Clear does not alter it. The C loop and Swift schedule exercise thirty seconds
+at 80/s in twenty-event batches; this is simulated clock evidence, not device
+throughput. Excess backlog and arithmetic overflow fail explicitly.
+
+Validation: `scripts/contracts/check-spec-001-nrf-production-host.sh`,
+`swift test --filter SignalAnalyzerSourceScheduleTests`, formatter and
+`scripts/nrf52840/build.sh --application signal-analyzer-static` pass.
+First Swift invocation was blocked by the compiler cache sandbox; the rerun
+then exposed mutating calls inside Testing macros, fixed before the passing run.
+Native full-host rehearsal and Pi cross-build are pending integrated checks.
+
+[Scheduling nRF resources](i3-t01-evidence/scheduling-memory.txt):
+274,368 flash bytes and 95,104 RAM bytes, within unchanged limits;
+[ABI](i3-t01-evidence/scheduling-arm-attributes.txt) and
+[artifact hash](i3-t01-evidence/scheduling-artifact.sha256).
+No complete stack or connected-performance claim follows.

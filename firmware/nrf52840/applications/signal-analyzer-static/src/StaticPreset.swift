@@ -849,6 +849,11 @@ public func giftUISignalAnalyzerLastRenderOperations() -> UInt32 {
     giftUIStaticLastRenderOperations
 }
 
+@_cdecl("giftui_signal_analyzer_source_generation")
+public func giftUISignalAnalyzerSourceGeneration() -> UInt32 {
+    giftUIStaticRepository.activeSourceGeneration ?? 0
+}
+
 @_cdecl("giftui_signal_analyzer_next_delay_microseconds")
 public func giftUISignalAnalyzerNextDelayMicroseconds() -> UInt64 {
     guard let milliseconds = giftUIStaticRepository.nextScheduledDelayMilliseconds,

@@ -30,11 +30,13 @@ extern uint32_t giftui_signal_analyzer_poll_scheduled_due(
 extern uint32_t giftui_signal_analyzer_needs_presentation(void);
 extern uint32_t giftui_signal_analyzer_current_revision(void);
 extern uint64_t giftui_signal_analyzer_next_delay_microseconds(void);
+extern uint32_t giftui_signal_analyzer_source_generation(void);
 extern void giftui_signal_analyzer_retire_initial(void);
 
 struct giftui_production_context {
     struct giftui_static_host_storage regions;
     struct giftui_static_touch_pipeline touch;
+    uint32_t source_generation;
     uint64_t next_transition_deadline;
     uint64_t next_frame_deadline;
     uint64_t next_touch_sample_deadline;
@@ -48,6 +50,26 @@ __attribute__((weak))
 uint64_t giftui_static_host_source_clock_delay(uint64_t duration)
 {
     return duration;
+}
+
+/* Synchronize only at a generation boundary. Clear retains the source clock. */
+static int synchronize_source(struct giftui_production_context *context,
+                              uint64_t now)
+{
+    const uint32_t generation = giftui_signal_analyzer_source_generation();
+    if (generation == context->source_generation) { return 0; }
+    if (generation == 0U) {
+        context->source_generation = 0U;
+        context->next_transition_deadline = 0U;
+        return 0;
+    }
+    const uint64_t relative = giftui_signal_analyzer_next_delay_microseconds();
+    if (relative == UINT64_MAX) { return -EIO; }
+    const uint64_t delay = giftui_static_host_source_clock_delay(relative);
+    if (delay != UINT64_MAX && delay > UINT64_MAX - now) { return -ERANGE; }
+    context->source_generation = generation;
+    context->next_transition_deadline = delay == UINT64_MAX ? UINT64_MAX : now + delay;
+    return 0;
 }
 
 /* Connected button samples establish swapped, reversed axes for the landscape
@@ -93,6 +115,7 @@ static int activate(void *opaque)
             &context->touch, &touch_calibration, 1U) != 0) {
         return -EIO;
     }
+    context->source_generation = 0U;
     context->next_transition_deadline = 0U;
     context->next_touch_sample_deadline = 0U;
     uint64_t now = 0U;
@@ -147,31 +170,29 @@ static int service(void *opaque, uint64_t now,
     struct giftui_production_context *context = opaque;
     const struct giftui_static_host_storage *regions = &context->regions;
     *stop = 0;
+    int schedule_result = synchronize_source(context, now);
+    if (schedule_result != 0) { return schedule_result; }
     uint8_t due_count = 0U;
-    for (;;) {
-        const uint64_t delay = giftui_static_host_source_clock_delay(
-            giftui_signal_analyzer_next_delay_microseconds());
-        if (delay == UINT64_MAX) {
-            context->next_transition_deadline = 0U;
-            break;
-        }
-        if (context->next_transition_deadline == 0U) {
-            if (delay > UINT64_MAX - now) {
-                return -ERANGE;
-            }
-            context->next_transition_deadline = now + delay;
-        }
-        if (now < context->next_transition_deadline) {
-            break;
-        }
-        if (due_count == 8U ||
+    while (context->source_generation != 0U &&
+           now >= context->next_transition_deadline) {
+        if (due_count == 20U ||
             giftui_signal_analyzer_poll_scheduled_due(
                 regions->profile, (uint32_t)regions->profile_bytes,
                 regions->capture, (uint32_t)regions->capture_bytes) != 1U) {
             return -EIO;
         }
         due_count++;
-        context->next_transition_deadline = 0U;
+        const uint64_t relative = giftui_signal_analyzer_next_delay_microseconds();
+        if (relative == UINT64_MAX) { return -EIO; }
+        const uint64_t delay = giftui_static_host_source_clock_delay(relative);
+        if (delay == UINT64_MAX) {
+            context->next_transition_deadline = UINT64_MAX;
+            break;
+        }
+        if (delay > UINT64_MAX - context->next_transition_deadline) {
+            return -ERANGE;
+        }
+        context->next_transition_deadline += delay;
     }
     if ((giftui_signal_analyzer_needs_presentation() != 0U ||
          giftui_signal_analyzer_input_pending_count() != 0U) &&
@@ -192,11 +213,15 @@ static int service(void *opaque, uint64_t now,
         }
         context->next_frame_deadline = now + GIFTUI_FRAME_INTERVAL_MICROSECONDS;
     }
+    /* Actions run before raster work in the opportunity. Anchor a newly
+     * started generation to this service timestamp, not the frame end. */
+    schedule_result = synchronize_source(context, now);
+    if (schedule_result != 0) { return schedule_result; }
     if (now > UINT64_MAX - GIFTUI_INPUT_POLL_MICROSECONDS) {
         return -ERANGE;
     }
     *next_deadline = now + GIFTUI_INPUT_POLL_MICROSECONDS;
-    if (context->next_transition_deadline != 0U &&
+    if (context->source_generation != 0U &&
         context->next_transition_deadline < *next_deadline) {
         *next_deadline = context->next_transition_deadline;
     }
@@ -213,6 +238,7 @@ static int teardown(void *opaque)
     giftui_signal_analyzer_input_quiesce();
     giftui_signal_analyzer_retire_initial();
     context->touch.valid = 0U;
+    context->source_generation = 0U;
     context->next_transition_deadline = 0U;
     context->next_frame_deadline = 0U;
     context->next_touch_sample_deadline = 0U;

@@ -1,0 +1,53 @@
+[0/1] Planning build
+Building for debugging...
+[0/13] Write sources
+[1/13] Write swift-version--58304C5D6DBC2206.txt
+[3/12] Compiling GiftUIHostConfigurationTests SignalAnalyzerStartupAdmissionTests.swift
+[4/12] Compiling GiftUIHostConfigurationTests SignalAnalyzerSourceScheduleTests.swift
+[5/12] Compiling GiftUIHostConfigurationTests SignalAnalyzerHostActionDispatchTests.swift
+[6/12] Compiling GiftUIHostConfigurationTests SignalAnalyzerPresetHostInstanceTests.swift
+[7/12] Compiling GiftUIHostConfigurationTests StaticSignalAnalyzerNRFAssemblyTests.swift
+[8/12] Emitting module GiftUIHostConfigurationTests
+[9/12] Compiling GiftUIHostConfigurationTests SignalAnalyzerIntegratedCycleTests.swift
+[10/12] Compiling GiftUIHostConfigurationTests SignalAnalyzerHostFactAdmissionTests.swift
+[11/26] Compiling GiftUIHostConfigurationTests HostWorkloadStartupValidationTests.swift
+[12/26] Compiling GiftUIHostConfigurationTests HostValidatorFixture.swift
+[13/26] Compiling GiftUIHostConfigurationTests HostValidatorProfileAndTextTests.swift
+[14/26] Compiling GiftUIHostConfigurationTests HostValidatorCapabilityTests.swift
+[15/26] Compiling GiftUIHostConfigurationTests HostScheduledOpportunityControllerTests.swift
+[16/30] Compiling GiftUIHostConfigurationTests HostFailureAdapterTests.swift
+[17/30] Compiling GiftUIHostConfigurationTests HostResidualPolicyTableValidationTests.swift
+[18/30] Compiling GiftUIHostConfigurationTests HostEndpointStartupValidationTests.swift
+[19/30] Compiling GiftUIHostConfigurationTests StaticSignalAnalyzerNRFProfileBindingTests.swift
+[20/30] Compiling GiftUIHostConfigurationTests HostPresetBootstrapTests.swift
+[21/30] Compiling GiftUIHostConfigurationTests HostApplicationStartupValidationTests.swift
+[22/30] Compiling GiftUIHostConfigurationTests HostConfigurationValueTests.swift
+[23/30] Compiling GiftUIHostConfigurationTests GeneratedSignalAnalyzerPresetTests.swift
+[24/30] Compiling GiftUIHostConfigurationTests HostActivationControllerTests.swift
+[25/30] Compiling GiftUIHostConfigurationTests StaticSignalAnalyzerNRFPresentationInputsTests.swift
+[26/30] Compiling GiftUIHostConfigurationTests SignalAnalyzerDiagnosticProfileMatrixTests.swift
+[27/30] Compiling GiftUIHostConfigurationTests HostApplicationIntegrationTests.swift
+[28/30] Compiling GiftUIHostConfigurationTests SignalAnalyzerDynamicSemanticJoinTests.swift
+[29/32] Emitting module GiftUIPackageTests
+[30/32] Compiling GiftUIPackageTests runner.swift
+[30/32] Write Objects.LinkFileList
+[31/32] Linking GiftUIPackageTests
+Build complete! (10.38s)
+Test Suite 'Selected tests' started at 2026-10-09 18:50:58.745.
+Test Suite 'GiftUIPackageTests.xctest' started at 2026-10-09 18:50:58.746.
+Test Suite 'GiftUIPackageTests.xctest' passed at 2026-10-09 18:50:58.746.
+	 Executed 0 tests, with 0 failures (0 unexpected) in 0.000 (0.000) seconds
+Test Suite 'Selected tests' passed at 2026-10-09 18:50:58.746.
+	 Executed 0 tests, with 0 failures (0 unexpected) in 0.000 (0.001) seconds
+◇ Test run started.
+↳ Testing Library Version: 1902
+↳ Target Platform: arm64e-apple-macos14.0
+◇ Suite SignalAnalyzerSourceScheduleTests started.
+◇ Test invalidScheduleCannotPartiallyReplaceAnchor() started.
+◇ Test latePollingPreservesThirtySecondTimeline() started.
+◇ Test stopRestartAndClearKeepGenerationSemantics() started.
+✔ Test stopRestartAndClearKeepGenerationSemantics() passed after 0.001 seconds.
+✔ Test invalidScheduleCannotPartiallyReplaceAnchor() passed after 0.001 seconds.
+✔ Test latePollingPreservesThirtySecondTimeline() passed after 0.001 seconds.
+✔ Suite SignalAnalyzerSourceScheduleTests passed after 0.001 seconds.
+✔ Test run with 3 tests in 1 suite passed after 0.001 seconds.
