@@ -125,8 +125,59 @@ realization and whole-path safety, not simply the size of the capture buffer.
 
 ## ME-03 — Performance assessment
 
-Pending. Historical target measurements will retain their original workload,
-image and instrumentation limitations.
+| Priority / boundary | Evidence | What it establishes / what remains unknown |
+| --- | --- | --- |
+| 1. nRF production and layout | [Connected phase study](../iteration-002-review/26-connected-nrf-phases-and-failure.md): normal total 20.65–21.22s; production 16.46–17.01s, including SPI 1.108–1.113s; layout 3.59–3.71s. | Both CPU-side phases require attention. Optimizing only wire transfer or only layout cannot explain a route to 250ms. This is an instrumented earlier image with sparse source delivery, not the final five-second image under 80 events/s. |
+| 2. Pi production/projection | [Accumulated phase study](../iteration-002-review/30-pi-aggregate-phase-comparison.md): median total 1.381s, production 1.219s, nested projection 0.699s; semantic 74.3ms, layout 53.3ms, preflight 25.9ms. | Production/projection dominate that run. The medians are not additive and subtraction does not isolate raster cost. Repeated exact pixel/transfer counts and paired uninstrumented controls remain missing. |
+| 3. Source-service coupling | Both source loops execute synchronous frame service before returning to source delivery; deadlines are rebased on sampled current time. | Faster rendering alone does not prove lossless scheduling. Deadline policy, bounded catch-up/admission and maximum service delay need review together. |
+
+The [final Pi production-loop summary](../iteration-002-cleanup/evidence/22-pi-connected/summary.json)
+does use the current recorded image: 31 frames at 1,322,263–1,509,253 microseconds,
+mean 1,393,700 microseconds, peak RSS 9,808 KiB. That confirms the persistent
+four-FPS gap, but is not a sustained 80-event/s test. Its separate accelerated
+recording rehearsal delivers 2,400 scheduled transitions over 201,770ms of logical
+source time; neither the delivered count nor 120 recording frames proves the
+required wall-time workload. The default deterministic source's pattern is not
+itself an 80-event/s stress generator.
+
+### Source-confirmed mechanisms, not measured attribution
+
+- [RasterStrokeCoverage](../../../Sources/GiftUIRasterCore/RasterStrokeCoverage.swift)
+  enables the unit-width orthogonal fast path only for Dynamic/non-Embedded.
+  Embedded visits the clipped pixel rectangle and calls segment/subpath coverage
+  logic per tested pixel; it also omits the non-Embedded potential-range skip.
+  The existing fast path allocates a Boolean row array, so removing the profile
+  guard is not a valid zero-heap remedy. A bounded realization needs its own
+  pixel-equivalence and work/resource evidence. Source inspection establishes
+  the work pattern, not what fraction of 16–17s it consumes.
+- [EmbeddedLayoutWorkspace](../../../Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFEmbeddedLayoutWorkspace.swift)
+  scans scopes by identity, and scans prior glyphs for each glyph insertion.
+  [CommonLayoutWorkspace](../../../Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFCommonLayoutWorkspace.swift)
+  routes measurement/placement through those scans on the selected firmware
+  path. At declared capacities, insertion duplicate checks alone entail 4,753
+  prior-scope comparisons for 98 scopes and 24,976 prior-glyph comparisons for
+  224 glyphs. These are source-derived capacity examples, not observed frame
+  counts or proof that lookup dominates layout.
+- [PiScreen projection](../../../Sources/GiftUIPlatformRaspberryPi/PiScreenFramebufferProjection.swift)
+  scales/reorders each submitted RGB565 region into mapped physical rows. It
+  already has a doubled-width path and repeated-row copying. Another generic
+  memcpy suggestion therefore does not establish an improvement; payload count,
+  repeated coverage and mapped-write time must discriminate the alternatives.
+- [Pi source loop](../../../Sources/SignalAnalyzerRaspberryPiARMv6/LinuxSignalAnalyzerPiProcessLoop.swift)
+  delivers at most one scheduled source transition per outer iteration and
+  computes the next deadline from `now`. [nRF source service](../../../firmware/nrf52840/applications/signal-analyzer-static/src/production_host.c)
+  has a bounded due loop but resets a positive next delay from the same sampled
+  `now`; it does not reconstruct all elapsed deadlines after a long frame.
+  A catch-up change must preserve timestamp/order/generation and the 32 compact
+  fact slots; adding a thread is not implied or authorized.
+
+**Performance conclusion:** sufficient evidence exists to rank the target cost
+boundaries and reject single-cause explanations. It does not establish a measured
+speedup for a remedy, full cold/unchanged/small-change/waveform operation counts,
+or sustained performance of either complete runtime-derived application. Native
+Dynamic/Static allocations/timings and three controlled connected runs per
+accepted target candidate remain open; historical observations are not promoted
+to those evidence classes.
 
 ## ME-04 — Alternatives and terminal decision
 
@@ -142,3 +193,7 @@ ME-02 checkpoint, 14:57:26 UTC: 5m18s active elapsed; 0/8 experimental invocatio
 0/2 experimental corrections; no waiting. Region arithmetic reconciles to the
 historical linked total with the residual explicitly unattributed. This does
 not satisfy the complete stack/lifetime or all-profile measurement criteria.
+
+ME-03 checkpoint, 14:58:55 UTC: 6m47s active elapsed; 0/8 experimental invocations,
+0/2 experimental corrections; no waiting. Ranked historical timings and current
+source mechanisms are recorded without fresh timing or conformance claims.
