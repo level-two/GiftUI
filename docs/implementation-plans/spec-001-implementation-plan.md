@@ -30,7 +30,7 @@ superseded_by: null
 
 ## Iteration 3 correction task — 2026-10-09
 
-**Active — I3-T01.1 implemented, focused checks pass; integration pending.** I3-T01.1–3 / shared integration participates in the
+**Complete — I3-T01 passed within the hardware-free validation boundary.** I3-T01.1–3 / shared integration participates in the
 [single bounded task](../iterations/iteration-003-review/memory-efficiency-plan.md#i3-t01--correct-scheduling-and-reduce-rasterlayout-costs).
 Eugene requested proceeding with iteration-3 tasks and committing each step.
 The existing Specification remains `implemented`; historical ledgers below are preserved.
@@ -39,6 +39,7 @@ The existing Specification remains `implemented`; historical ledgers below are p
 - Exact source/test boundary: `Sources/SignalAnalyzerRaspberryPiARMv6/LinuxSignalAnalyzerPiProcessLoop.swift`, new `Sources/SignalAnalyzerTargetHost/SignalAnalyzerSourceSchedule.swift`, `StaticSignalAnalyzerNRFRepositoryProducer.swift` in that module; firmware `src/production_host.c`, `src/StaticPreset.swift`, `tests/production_host_tests.c`; `Tests/GiftUIHostConfigurationTests/SignalAnalyzerSourceScheduleTests.swift`. Layout and raster boundaries are owned below.
 - Internal realization: Generation-aware checked absolute deadlines; advance from the previous due time, drain at most 20 overdue transitions in order, and preserve admission-category failure checks. Stop/restart resets scheduling; Clear does not. No source pattern or physical GPIO change.
 - Focused commands: `scripts/contracts/check-spec-001-nrf-production-host.sh`; `scripts/contracts/check-spec-001-nrf-host-native-rehearsal.sh`; `scripts/contracts/check-spec-001-pi-host-native-rehearsal.sh`.
+- Integrated validation also corrects the independent source epoch in `Tests/GiftUIHostConfigurationTests/StaticSignalAnalyzerNRFPresentationInputsTests.swift`; all 818 frames and 12 actions still compare exactly, with reviewed pixel references unchanged.
 - Run `scripts/format-swift.sh` before the repository gate, then
   `scripts/test.sh all-hardware-free` for the integrated four-profile result.
   Focused Swift tests use `swift test --filter` with the named test suites.

@@ -23,7 +23,7 @@ superseded_by: null
 
 ## Iteration 3 correction task — 2026-10-09
 
-**Active — I3-T01.2 implemented, focused checks pass; integration pending.** I3-T01.2/3 regression participates in the
+**Complete — I3-T01 passed within the hardware-free validation boundary.** I3-T01.2/3 regression participates in the
 [single bounded task](../iterations/iteration-003-review/memory-efficiency-plan.md#i3-t01--correct-scheduling-and-reduce-rasterlayout-costs).
 Eugene requested proceeding with iteration-3 tasks and committing each step.
 The existing Specification remains `implemented`; historical ledgers below are preserved.
@@ -31,7 +31,7 @@ The existing Specification remains `implemented`; historical ledgers below are p
 - Contract mapping: RD-003–008, 010–011. All other criteria retain their existing dispositions.
 - Exact source/test boundary: No Render production edits planned; existing Render/painter/clip/failure corpus and host-native raster scripts.
 - Internal realization: Preserve operation/painter order, resolved layout values and failure precedence; no changed Render contract.
-- Focused commands: `scripts/contracts/check-spec-001-host-native-rasters.sh`; `scripts/contracts/run-spec-008.sh --profile macos-static`.
+- Focused commands: `scripts/contracts/run-spec-001.sh --profile nrf52840-embedded`; `scripts/contracts/run-spec-008.sh --profile macos-static`.
 - Run `scripts/format-swift.sh` before the repository gate, then
   `scripts/test.sh all-hardware-free` for the integrated four-profile result.
   Focused Swift tests use `swift test --filter` with the named test suites.

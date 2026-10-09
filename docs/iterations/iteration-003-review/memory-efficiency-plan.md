@@ -12,21 +12,21 @@ budgets or permission to grow independent investigations.
 
 ## Start here
 
-Production is the iteration-2 closeout, commit `2d036748`. Existing ADRs,
-implemented Specifications, tests and target recipes are unchanged. Read the
-[findings summary](preparation-findings.md), then identify the exact unresolved
-choice the next work will change. Retrieve archived source/evidence only for
-that choice. No blanket replay of SPIKE-015–067 is required.
+Production now includes the I3-T01 corrections on the iteration-2 baseline.
+[The completed package](i3-t01-result.md) records commits, all 74 hardware-free
+checks, resource costs and remaining gates. Existing accepted ADRs and implemented
+Specifications remain authority; the generated production graph is retained.
 
-**Current next work: I3-T01 below.** The original preparation, one-candidate
-assessment and 32 MHz source review have all ended. Their questions, budgets
-and verdicts below are historical records, not instructions to launch them
-again. There is an executable next task, not yet a fully executable plan for
-all remaining iteration work.
+**Current disposition: I3-T01 passed within its hardware-free boundary.**
+The next unresolved iteration work is I3-04 / ME-05–06 runtime design and its
+applicable contract/implementation readiness, not another general preparation
+cycle. Its concrete bounded execution package remains to be established.
+The [findings summary](preparation-findings.md) and stopped studies remain
+historical inputs; this result does not reopen their budgets or experiments.
 
 | Work | Current readiness / missing prerequisite |
 | --- | --- |
-| I3-T01 correction package | Active; launch plan ready. Implement scheduling, raster and layout in order. No additional general preparation phase is required. |
+| I3-T01 correction package | Complete within the hardware-free boundary; [result and residual gates](i3-t01-result.md). |
 | I3-04 runtime derivation, ME-05/06 | Concrete ownership/lifetime realization, complete resource bounds, applicable contract approvals and executable implementation tasks remain unresolved. Its next execution package and numeric effort ceiling are not yet fixed. I3-T01 informs this work but is not its only prerequisite. |
 | ME-08 integrated validation | Waits for the adopted implementations and exact artifact identities; connected evidence remains separately authorized. |
 | ME-09 closure/handoff | Waits for the criterion dispositions and maintainer decision; no automatic iteration-4 extraction. |
@@ -74,7 +74,8 @@ ME-06 onward is implementation and conformance, not an extension of preparation.
 
 ## I3-T01 — Correct scheduling and reduce raster/layout costs
 
-**Status:** active; launch planning ready, production corrections pending.
+**Status:** complete; passed within the stated hardware-free validation boundary.
+[Integrated result](i3-t01-result.md) records all three corrections and remaining iteration gates.
 **Kind:** one bounded production implementation task, not an experiment.
 **Scope mapping:** I3-05 and its internal host/backend corrections; ME-05
 readiness, ME-07 implementation and the affected portion of ME-08 validation.
@@ -188,8 +189,8 @@ waiting for maintainer input or unavailable hardware and report it separately.
 The budget does not reset at a subtask, commit or session boundary.
 This is an executor-selected work ceiling, not a delivery-time guarantee or a
 claim that the maintainer approved that particular number. Execution launched on 2026-10-09 at 16:43 UTC, with 15 minutes charged for
-launch orientation/source inspection before that timestamp. Cumulative usage
-will be updated in the shared result; no waiting time has been charged.
+launch orientation/source inspection before that timestamp. Cumulative charged usage is at most 140/480 minutes; see the
+[final accounting](i3-t01-result.md#budget). The allowance is closed.
 The eight-hour limit covers I3-T01 only, not the whole iteration. Subsequent
 work still needs a concrete bounded execution plan; this record does not
 promise a total iteration duration or authorize an indefinite continuation.

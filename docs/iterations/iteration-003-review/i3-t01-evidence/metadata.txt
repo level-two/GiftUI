@@ -1,0 +1,10 @@
+schema_version=1
+invocation_id=run-lWETuH3u
+selection=all-hardware-free
+repository_revision=7d618db707d68d3fa4f1ab1fa4facec92e63d2f5
+profiles=macos-dynamic,macos-static,raspberry-pi-armv6,nrf52840-embedded
+contract_report_root=.build/contract-reports
+failure_count=0
+status=complete
+exit_code=0
+active_check=none

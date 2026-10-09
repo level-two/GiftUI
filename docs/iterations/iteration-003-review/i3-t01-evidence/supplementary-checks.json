@@ -1,0 +1,46 @@
+[
+  {
+    "log": "i3-schedule-native.log",
+    "sha256": "b509cfa81e3bea984379494185b46f0ca3009248249fb0ed7f9fd16df3cfdde7",
+    "trace_count": 831,
+    "trace_sha256": "4144a877676bde9fe3538aaed0d42963c516d24bedc8a8af56f61c63ed2df319",
+    "summaries": [
+      "workload_transitions=2400\tworkload_frames=808\tsource_clock=unscaled",
+      "status=passed\tprofile=nrf52840-static\tevidence=host-native-fixture\twrites=2642985\tbytes=219895634",
+      "static-owner-fault stage=3 cleanup=0 finalizations=2 policyCalls=1 status=passed",
+      "static-owner-fault stage=3 cleanup=0 finalizations=2 policyCalls=1 status=passed",
+      "static-owner-fault stage=4 cleanup=448 finalizations=2 policyCalls=1 status=passed",
+      "static-owner-fault stage=5 cleanup=481 finalizations=2 policyCalls=1 status=passed",
+      "static-owner-fault stage=6 cleanup=496 finalizations=2 policyCalls=1 status=passed",
+      "static-owner-fault stage=7 cleanup=504 finalizations=2 policyCalls=1 status=passed",
+      "static-owner-fault stage=3 cleanup=0 finalizations=2 policyCalls=0 status=passed",
+      "static-owner-fault stage=3 cleanup=0 finalizations=2 policyCalls=1 status=passed",
+      "static-owner-fault stage=1 cleanup=0 finalizations=2 policyCalls=0 status=passed",
+      "static-owner-partial prefix=0 firstCause=captureRevisionMismatch finalizations=2 replay=0 status=passed",
+      "static-owner-partial prefix=1 firstCause=captureRevisionMismatch finalizations=2 replay=0 status=passed",
+      "static-owner-partial prefix=3 firstCause=captureRevisionMismatch finalizations=2 replay=0 status=passed",
+      "static-owner-recovery refusals=3 backpressure=preserved semanticRevision=2 status=passed",
+      "static-owner-health responsibility=accepted stream=failed input=quiescent finalizations=2 status=passed"
+    ]
+  },
+  {
+    "log": "i3-pi-native.log",
+    "sha256": "74486c1cd5925b271f8d084a7a6dbcf139f33ffa7db4ac4b5e16ee88bb8f9440",
+    "trace_count": 141,
+    "trace_sha256": "c70be2e2fba33beff70fb93af365cb4a19157460ab170f458e38f96ca8d48b73",
+    "summaries": [
+      "workload_transitions=2400\tworkload_frames=120",
+      "status=passed\tprofile=raspberry-pi-dynamic\tevidence=host-native-fixture"
+    ]
+  },
+  {
+    "log": "i3-schedule-pi-build.log",
+    "sha256": "893459ba8e80f1efd5614028a4c6e4cb93352021d399c53f67c3a353c3dc292e",
+    "trace_count": 0,
+    "trace_sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "summaries": [
+      "==> verified ARMv6 hard-float binary: /Users/eugene/work/GiftUI/.build/raspberry-pi/artifacts/SignalAnalyzerRaspberryPiARMv6: ELF 32-bit LSB pie executable, ARM, EABI5 version 1 (SYSV), dynamically linked, interpreter /lib/ld-linux-armhf.so.3, for GNU/Linux 3.2.0, BuildID[sha1]=d07c481e066492f60c26df7eb5199049c1faccbe, stripped",
+      "ARTIFACT=/Users/eugene/work/GiftUI/.build/raspberry-pi/artifacts/SignalAnalyzerRaspberryPiARMv6"
+    ]
+  }
+]

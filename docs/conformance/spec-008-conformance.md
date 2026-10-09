@@ -6,7 +6,7 @@ status: complete
 reviewers:
   - codex
 created: 2026-09-11
-updated: 2026-10-02
+updated: 2026-10-09
 implementation_plan: ../implementation-plans/spec-008-implementation-plan.md
 related_future_work:
   - FW-001
@@ -133,3 +133,16 @@ records the exact gate results and failure logs. Historical passing evidence
 above remains scoped to its recorded revision and inputs; it is not a current
 full-gate pass. The owner assertion must be resolved and rerun, without waiving
 a boundary or migration requirement, before the assembled cleanup can close.
+
+## I3-T01 correction regression — 2026-10-09
+
+[The bounded correction report](../iterations/iteration-003-review/i3-t01-result.md)
+records the existing-contract scheduling/raster/layout changes and their exact
+commits. The changed-path mapping is RD-003–008 and 010–011; unchanged
+criteria retain their prior dispositions. All 74 aggregate checks and 60
+owner/profile report-integrity checks pass on `7d618db7`, with focused boundary,
+ordering, pixel, storage/reuse and target-build evidence in that report.
+This is hardware-free regression evidence on the generated production graph.
+It does not broaden earlier exceptions or prove connected timing, complete
+stack/lifetime safety, runtime graph migration or iteration-3 closure.
+The Specification remains `implemented` under its existing approval.

@@ -1,0 +1,117 @@
+{
+  "elf_sha256_record": "layout-artifact.sha256",
+  "method": "ARM GNU objdump -d with readelf symbol-address mapping (Swift $e symbols are treated as mapping symbols by objdump).",
+  "boundary": "Local frame prologues only, excluding callees/callback/IRQ paths; not a whole-stack proof.",
+  "local_frame_bytes": {
+    "production_unit_orthogonal": 360,
+    "probe_unit_orthogonal": 112,
+    "workspace_scope_ordinal": 56,
+    "workspace_append_glyph": 112,
+    "host_service": 56,
+    "source_synchronize": 24
+  },
+  "functions": [
+    {
+      "symbol": "synchronize_source",
+      "address": "0x3cf1e",
+      "code_bytes": 110,
+      "prologue": [
+        "   3cf1e:\tb5f8      \tpush\t{r3, r4, r5, r6, r7, lr}",
+        "   3cf20:\t4604      \tmov\tr4, r0",
+        "   3cf22:\t461e      \tmov\tr6, r3",
+        "   3cf24:\t4615      \tmov\tr5, r2",
+        "   3cf26:\tf7f6 fd4c \tbl\t339c2 <giftui_signal_analyzer_source_generation>"
+      ],
+      "stack_instructions": [
+        "   3cf1e:\tb5f8      \tpush\t{r3, r4, r5, r6, r7, lr}",
+        "   3cf40:\tbdf8      \tpop\t{r3, r4, r5, r6, r7, pc}"
+      ]
+    },
+    {
+      "symbol": "service",
+      "address": "0x2394c",
+      "code_bytes": 420,
+      "prologue": [
+        "   2394c:\te92d 47f0 \tstmdb\tsp!, {r4, r5, r6, r7, r8, r9, sl, lr}",
+        "   23950:\tb086      \tsub\tsp, #24",
+        "   23952:\te9dd 810e \tldrd\tr8, r1, [sp, #56]\t; 0x38",
+        "   23956:\t2700      \tmovs\tr7, #0",
+        "   23958:\t600f      \tstr\tr7, [r1, #0]"
+      ],
+      "stack_instructions": [
+        "   2394c:\te92d 47f0 \tstmdb\tsp!, {r4, r5, r6, r7, r8, r9, sl, lr}",
+        "   23950:\tb086      \tsub\tsp, #24",
+        "   2398c:\tb006      \tadd\tsp, #24"
+      ]
+    },
+    {
+      "symbol": "$e24SignalAnalyzerTargetHost06StaticaB26NRFEmbeddedLayoutWorkspaceV12scopeOrdinal2ofs6UInt16VSgAG_tF",
+      "address": "0x2de20",
+      "code_bytes": 104,
+      "prologue": [
+        "   2de20:\tb5b0      \tpush\t{r4, r5, r7, lr}",
+        "   2de22:\tb08a      \tsub\tsp, #40\t; 0x28",
+        "   2de24:\t4605      \tmov\tr5, r0",
+        "   2de26:\tf89a 0010 \tldrb.w\tr0, [sl, #16]",
+        "   2de2a:\t2400      \tmovs\tr4, #0"
+      ],
+      "stack_instructions": [
+        "   2de20:\tb5b0      \tpush\t{r4, r5, r7, lr}",
+        "   2de22:\tb08a      \tsub\tsp, #40\t; 0x28",
+        "   2de84:\tb00a      \tadd\tsp, #40\t; 0x28",
+        "   2de86:\tbdb0      \tpop\t{r4, r5, r7, pc}"
+      ]
+    },
+    {
+      "symbol": "$e16GiftUIRasterCore20RasterStrokeCoverageO23rasterizeUnitOrthogonal33_D99DFFD5234D5FE996B15B4EBAC072C4LL_6header7covered5pixel_AA0dE6ResultOx_0a8UIRenderC0012StraightLineE6HeaderV0A2UI4RectV0a9UISurfaceC021CanonicalEncodedPixelVSbAN5PointV_AStXEtAK0wxE4ViewRzlFZ0A9UIDrawing015CanvasStreamingE4View33_5691A501BF48042BF66D2FBA60371108LLVy24SignalAnalyzerTargetHost39StaticSignalAnalyzerNRFDrawingWorkspaceVG_Tt4g5",
+      "address": "0x36a96",
+      "code_bytes": 2148,
+      "prologue": [
+        "   36a96:\te92d 4ff0 \tstmdb\tsp!, {r4, r5, r6, r7, r8, r9, sl, fp, lr}",
+        "   36a9a:\tb0d1      \tsub\tsp, #324\t; 0x144",
+        "   36a9c:\t4681      \tmov\tr9, r0",
+        "   36a9e:\t985a      \tldr\tr0, [sp, #360]\t; 0x168",
+        "   36aa0:\t9225      \tstr\tr2, [sp, #148]\t; 0x94"
+      ],
+      "stack_instructions": [
+        "   36a96:\te92d 4ff0 \tstmdb\tsp!, {r4, r5, r6, r7, r8, r9, sl, fp, lr}",
+        "   36a9a:\tb0d1      \tsub\tsp, #324\t; 0x144",
+        "   372ac:\tb051      \tadd\tsp, #324\t; 0x144"
+      ]
+    },
+    {
+      "symbol": "$e16GiftUIRasterCore20RasterStrokeCoverageO23rasterizeUnitOrthogonal33_D99DFFD5234D5FE996B15B4EBAC072C4LL_6header7covered5pixel_AA0dE6ResultOx_0a8UIRenderC0012StraightLineE6HeaderV0A2UI4RectV0a9UISurfaceC021CanonicalEncodedPixelVSbAN5PointV_AStXEtAK0wxE4ViewRzlFZ24SignalAnalyzerTargetHost032StaticSignalAnalyzerNRFTileProbeE033_CD3AE57164B4922038E3E425581D90C5LLV_Tt4g5078$e24SignalAnalyzerTargetHost012giftUISignalB9TileValidys6UInt32VSvSg_AdeDtFSb6A58UI5PointV_0J13UISurfaceCore21CanonicalEncodedPixelVtXEfU0_AA19RGB565TileWorkspaceVyAW34StaticSignalAnalyzerNRFTileStorageVGTf1nnnnc_n",
+      "address": "0x372fa",
+      "code_bytes": 816,
+      "prologue": [
+        "   372fa:\te92d 4ff0 \tstmdb\tsp!, {r4, r5, r6, r7, r8, r9, sl, fp, lr}",
+        "   372fe:\tb093      \tsub\tsp, #76\t; 0x4c",
+        "   37300:\t981c      \tldr\tr0, [sp, #112]\t; 0x70",
+        "   37302:\t910c      \tstr\tr1, [sp, #48]\t; 0x30",
+        "   37304:\tf8dd b080 \tldr.w\tfp, [sp, #128]\t; 0x80"
+      ],
+      "stack_instructions": [
+        "   372fa:\te92d 4ff0 \tstmdb\tsp!, {r4, r5, r6, r7, r8, r9, sl, fp, lr}",
+        "   372fe:\tb093      \tsub\tsp, #76\t; 0x4c",
+        "   37604:\tb013      \tadd\tsp, #76\t; 0x4c"
+      ]
+    },
+    {
+      "symbol": "$e24SignalAnalyzerTargetHost06StaticaB26NRFEmbeddedLayoutWorkspaceV11appendGlyph_10glyphIndexSbAA0eabfG9TextCodecO0J0V_s6UInt16VtF",
+      "address": "0x2e318",
+      "code_bytes": 210,
+      "prologue": [
+        "   2e318:\te92d 4ff0 \tstmdb\tsp!, {r4, r5, r6, r7, r8, r9, sl, fp, lr}",
+        "   2e31c:\tb093      \tsub\tsp, #76\t; 0x4c",
+        "   2e31e:\tf00e facd \tbl\t3c8bc <OUTLINED_FUNCTION_144>",
+        "   2e322:\td15c      \tbne.n\t2e3de <OUTLINED_FUNCTION_5+0x24a4>",
+        "   2e324:\t460f      \tmov\tr7, r1"
+      ],
+      "stack_instructions": [
+        "   2e318:\te92d 4ff0 \tstmdb\tsp!, {r4, r5, r6, r7, r8, r9, sl, fp, lr}",
+        "   2e31c:\tb093      \tsub\tsp, #76\t; 0x4c",
+        "   2e3e0:\tb013      \tadd\tsp, #76\t; 0x4c"
+      ]
+    }
+  ]
+}

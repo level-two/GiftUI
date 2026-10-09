@@ -1,0 +1,482 @@
+[
+  {
+    "spec": "SPEC-001",
+    "profile": "macos-dynamic",
+    "run_id": "20261009T180633Z-60779",
+    "path": ".build/contract-reports/spec-001/20261009T180633Z-60779/macos-dynamic",
+    "metadata": "schema_version=1\nspec=SPEC-001\nprofile=macos-dynamic\nevidence_kind=macos-target-execution\nrepository_revision=7d618db707d68d3fa4f1ab1fa4facec92e63d2f5\nrepository_dirty=false\nsource_identity=54ae23e29f4754a63bed1599025c3603a2f8afa7a4ef8d9301737d81d73d0c84\nfixture_identity=8625236385185244659ced27f38a2a4896c8c9c055acbaed14c00ecf992484dc\nnative_check_compiler_path=/usr/bin/swiftc\nnative_check_compiler_identity=swift-driver version: 1.148.6 Apple Swift version 6.3.3 (swiftlang-6.3.3.1.3 clang-2100.1.1.101) Target: arm64-apple-macosx26.0 \ncompiler_path=/usr/bin/swiftc\ncompiler_identity=swift-driver version: 1.148.6 Apple Swift version 6.3.3 (swiftlang-6.3.3.1.3 clang-2100.1.1.101) Target: arm64-apple-macosx26.0 \nsdk_identity=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk\nsdk_version_or_destination_sha256=26.5\ntarget_triple=arm64-apple-macosx\noptimization=debug-dynamic\ninvocation=scripts/contracts/run-spec-001.sh --profile macos-dynamic\ncommand_identity=e00d3f0e9694412f4660a0a127b4917c40007dfe4ba58ef43d3a62008b5b0804\nartifact_path=/Users/eugene/work/GiftUI/.build/arm64-apple-macosx/debug/SignalAnalyzerMacOSDynamic\nartifact_identity=6e182e6aced8ef4c00548d90071a9db60bc040a664a34f67aa1d4449ddb12943\nremote_access=false\ndeployment=false\nservice_restart=false\nhardware_probe=false\nflashing=false\nnetwork_access=false\nstatus=complete\nblocking_reason=none\n",
+    "integrity": "Contract report integrity passed: /Users/eugene/work/GiftUI/.build/contract-reports/spec-001/20261009T180633Z-60779/macos-dynamic"
+  },
+  {
+    "spec": "SPEC-001",
+    "profile": "macos-static",
+    "run_id": "20261009T181347Z-73366",
+    "path": ".build/contract-reports/spec-001/20261009T181347Z-73366/macos-static",
+    "metadata": "schema_version=1\nspec=SPEC-001\nprofile=macos-static\nevidence_kind=macos-target-execution\nrepository_revision=7d618db707d68d3fa4f1ab1fa4facec92e63d2f5\nrepository_dirty=false\nsource_identity=54ae23e29f4754a63bed1599025c3603a2f8afa7a4ef8d9301737d81d73d0c84\nfixture_identity=8625236385185244659ced27f38a2a4896c8c9c055acbaed14c00ecf992484dc\nnative_check_compiler_path=/usr/bin/swiftc\nnative_check_compiler_identity=swift-driver version: 1.148.6 Apple Swift version 6.3.3 (swiftlang-6.3.3.1.3 clang-2100.1.1.101) Target: arm64-apple-macosx26.0 \ncompiler_path=/usr/bin/swiftc\ncompiler_identity=swift-driver version: 1.148.6 Apple Swift version 6.3.3 (swiftlang-6.3.3.1.3 clang-2100.1.1.101) Target: arm64-apple-macosx26.0 \nsdk_identity=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk\nsdk_version_or_destination_sha256=26.5\ntarget_triple=arm64-apple-macosx\noptimization=debug-static\ninvocation=scripts/contracts/run-spec-001.sh --profile macos-static\ncommand_identity=990aad56ec655466c444f8ba046c365f71b1a4ada714993cea849d4ef401a0ff\nartifact_path=/Users/eugene/work/GiftUI/.build/arm64-apple-macosx/debug/SignalAnalyzerMacOSStatic\nartifact_identity=db56574a30b3e2236cfcb684622540576117684366292c1694d356606fa7b43a\nremote_access=false\ndeployment=false\nservice_restart=false\nhardware_probe=false\nflashing=false\nnetwork_access=false\nstatus=complete\nblocking_reason=none\n",
+    "integrity": "Contract report integrity passed: /Users/eugene/work/GiftUI/.build/contract-reports/spec-001/20261009T181347Z-73366/macos-static"
+  },
+  {
+    "spec": "SPEC-001",
+    "profile": "raspberry-pi-armv6",
+    "run_id": "20261009T182052Z-86006",
+    "path": ".build/contract-reports/spec-001/20261009T182052Z-86006/raspberry-pi-armv6",
+    "metadata": "schema_version=1\nspec=SPEC-001\nprofile=raspberry-pi-armv6\nevidence_kind=cross-build-inspection\nrepository_revision=7d618db707d68d3fa4f1ab1fa4facec92e63d2f5\nrepository_dirty=false\nsource_identity=54ae23e29f4754a63bed1599025c3603a2f8afa7a4ef8d9301737d81d73d0c84\nfixture_identity=8625236385185244659ced27f38a2a4896c8c9c055acbaed14c00ecf992484dc\nnative_check_compiler_path=/usr/bin/swiftc\nnative_check_compiler_identity=swift-driver version: 1.148.6 Apple Swift version 6.3.3 (swiftlang-6.3.3.1.3 clang-2100.1.1.101) Target: arm64-apple-macosx26.0 \ncompiler_path=/Users/eugene/work/GiftUI/.toolchains/host/swift-6.3.2-RELEASE-osx/usr/bin/swift\ncompiler_identity=Apple Swift version 6.3.2 (swift-6.3.2-RELEASE) Target: arm64-apple-macosx26.0 \nsdk_identity=/Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6/raspios-bookworm-static.json\nsdk_version_or_destination_sha256=db81f8323c965f9ad31b60a97576f934af909c5e24f5142fbfb6ea92cf90c335\ntarget_triple=armv6-unknown-linux-gnueabihf\noptimization=release\ninvocation=scripts/contracts/run-spec-001.sh --profile raspberry-pi-armv6\ncommand_identity=00f87bfd62fc859c15ef2f285e071a8992808ad51d4f91b81d11cb8b482e8fc3\nartifact_path=/Users/eugene/work/GiftUI/.build/raspberry-pi/artifacts/SignalAnalyzerRaspberryPiARMv6\nartifact_identity=0ad28fd77bd58eb50bf97446be6a813d6ef045f7379ff6d3a67900e002150fbe\nremote_access=false\ndeployment=false\nservice_restart=false\nhardware_probe=false\nflashing=false\nnetwork_access=false\nstatus=complete\nblocking_reason=connected-execution-not-collected\n",
+    "integrity": "Contract report integrity passed: /Users/eugene/work/GiftUI/.build/contract-reports/spec-001/20261009T182052Z-86006/raspberry-pi-armv6"
+  },
+  {
+    "spec": "SPEC-001",
+    "profile": "nrf52840-embedded",
+    "run_id": "20261009T183619Z-99465",
+    "path": ".build/contract-reports/spec-001/20261009T183619Z-99465/nrf52840-embedded",
+    "metadata": "schema_version=1\nspec=SPEC-001\nprofile=nrf52840-embedded\nevidence_kind=cross-build-inspection\nrepository_revision=7d618db707d68d3fa4f1ab1fa4facec92e63d2f5\nrepository_dirty=false\nsource_identity=54ae23e29f4754a63bed1599025c3603a2f8afa7a4ef8d9301737d81d73d0c84\nfixture_identity=8625236385185244659ced27f38a2a4896c8c9c055acbaed14c00ecf992484dc\nnative_check_compiler_path=/usr/bin/swiftc\nnative_check_compiler_identity=swift-driver version: 1.148.6 Apple Swift version 6.3.3 (swiftlang-6.3.3.1.3 clang-2100.1.1.101) Target: arm64-apple-macosx26.0 \nzephyr_revision=3568e1b6d5cdd51a6b964a2a1d6d29200fea2056\ncompiler_path=/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.3.2-RELEASE-osx/usr/bin/swiftc\ncompiler_identity=Apple Swift version 6.3.2 (swift-6.3.2-RELEASE) Target: arm64-apple-macosx26.0 \nsdk_identity=/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4\nsdk_version_or_destination_sha256=0.17.4\ntarget_triple=armv7em-none-none-eabi\noptimization=release-size\ninvocation=scripts/contracts/run-spec-001.sh --profile nrf52840-embedded\ncommand_identity=5040a7a58622554a15fe652721f5dc2e3d4e3587a5bea32d2809c0745ae7a21d\nartifact_path=/Users/eugene/work/GiftUI/.build/nrf52840/signal-analyzer-static/zephyr/zephyr.elf\nartifact_identity=a3104cff7aa87b87c1db97569528418176283ac18f0b381bfcedde95971b38f1\nremote_access=false\ndeployment=false\nservice_restart=false\nhardware_probe=false\nflashing=false\nnetwork_access=false\nstatus=complete\nblocking_reason=connected-execution-not-collected\n",
+    "integrity": "Contract report integrity passed: /Users/eugene/work/GiftUI/.build/contract-reports/spec-001/20261009T183619Z-99465/nrf52840-embedded"
+  },
+  {
+    "spec": "SPEC-002",
+    "profile": "macos-dynamic",
+    "run_id": "7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-b4520a70128f5b8d",
+    "path": ".build/contract-reports/spec-002/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-b4520a70128f5b8d/macos-dynamic",
+    "metadata": "schema_version=2\ninput_set_sha256=b4520a70128f5b8d2d6ac0830e8381445bd9f9910134336b0de6e371823f9cd6\nrun_id=7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-b4520a70128f5b8d\nreport_directory=.build/contract-reports/spec-002/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-b4520a70128f5b8d/macos-dynamic\nspec=SPEC-002\nprofile=macos-dynamic\nrepository_revision=7d618db707d68d3fa4f1ab1fa4facec92e63d2f5\ninvocation=scripts/contracts/run-spec-002.sh --profile macos-dynamic\nsemantic_corpus_sha256=3add894045d330ea1441f2a6ff6d5465840c867ba02fb83912657819a20f3ccb\ncompiler_version<<EOF\nswift-driver version: 1.148.6 Apple Swift version 6.3.3 (swiftlang-6.3.3.1.3 clang-2100.1.1.101)\nTarget: arm64-apple-macosx26.0\nEOF\ntarget=arm64-apple-macosx26.0\nsdk_path=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk\nsdk_version=26.5\noptimization=-O -whole-module-optimization\nprofile_flag=-DGIFTUI_DYNAMIC_PROFILE\nlinked_section_inspector<<EOF\n/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/size: Xcode 26.6;Build version 17F113;\nEOF\nexit_code=0\n",
+    "integrity": "Contract report integrity passed: /Users/eugene/work/GiftUI/.build/contract-reports/spec-002/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-b4520a70128f5b8d/macos-dynamic"
+  },
+  {
+    "spec": "SPEC-002",
+    "profile": "macos-static",
+    "run_id": "7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-b4520a70128f5b8d",
+    "path": ".build/contract-reports/spec-002/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-b4520a70128f5b8d/macos-static",
+    "metadata": "schema_version=2\ninput_set_sha256=b4520a70128f5b8d2d6ac0830e8381445bd9f9910134336b0de6e371823f9cd6\nrun_id=7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-b4520a70128f5b8d\nreport_directory=.build/contract-reports/spec-002/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-b4520a70128f5b8d/macos-static\nspec=SPEC-002\nprofile=macos-static\nrepository_revision=7d618db707d68d3fa4f1ab1fa4facec92e63d2f5\ninvocation=scripts/contracts/run-spec-002.sh --profile macos-static\nsemantic_corpus_sha256=3add894045d330ea1441f2a6ff6d5465840c867ba02fb83912657819a20f3ccb\ncompiler_version<<EOF\nswift-driver version: 1.148.6 Apple Swift version 6.3.3 (swiftlang-6.3.3.1.3 clang-2100.1.1.101)\nTarget: arm64-apple-macosx26.0\nEOF\ntarget=arm64-apple-macosx26.0\nsdk_path=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk\nsdk_version=26.5\noptimization=-O -whole-module-optimization\nprofile_flag=-DGIFTUI_STATIC_PROFILE\nlinked_section_inspector<<EOF\n/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/size: Xcode 26.6;Build version 17F113;\nEOF\nexit_code=0\n",
+    "integrity": "Contract report integrity passed: /Users/eugene/work/GiftUI/.build/contract-reports/spec-002/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-b4520a70128f5b8d/macos-static"
+  },
+  {
+    "spec": "SPEC-002",
+    "profile": "raspberry-pi-armv6",
+    "run_id": "7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-b4520a70128f5b8d",
+    "path": ".build/contract-reports/spec-002/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-b4520a70128f5b8d/raspberry-pi-armv6",
+    "metadata": "schema_version=2\ninput_set_sha256=b4520a70128f5b8d2d6ac0830e8381445bd9f9910134336b0de6e371823f9cd6\nrun_id=7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-b4520a70128f5b8d\nreport_directory=.build/contract-reports/spec-002/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-b4520a70128f5b8d/raspberry-pi-armv6\nspec=SPEC-002\nprofile=raspberry-pi-armv6\nrepository_revision=7d618db707d68d3fa4f1ab1fa4facec92e63d2f5\ninvocation=scripts/contracts/run-spec-002.sh --profile raspberry-pi-armv6\nsemantic_corpus_sha256=3add894045d330ea1441f2a6ff6d5465840c867ba02fb83912657819a20f3ccb\ncompiler_version<<EOF\nApple Swift version 6.3.2 (swift-6.3.2-RELEASE)\nTarget: arm64-apple-macosx26.0\nEOF\nsdk_identity<<EOF\nswift_version=6.3.2\ntarget=armv6-unknown-linux-gnueabihf\ndistribution=raspios-bookworm\nsha256=bd09f97b693aa2097df281d9b5490d51c6c01a2241b890c7d05623d4134d7fc8\nEOF\ntarget=armv6-unknown-linux-gnueabihf\nsdk_path=/Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6\ndestination=/Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6/raspios-bookworm-static.json\noptimization=-O -whole-module-optimization\nlinked_section_inspector<<EOF\n/Users/eugene/work/GiftUI/.toolchains/host/swift-6.3.2-RELEASE-osx/usr/bin/llvm-objdump: LLVM (http://llvm.org/):\nEOF\nexit_code=0\n",
+    "integrity": "Contract report integrity passed: /Users/eugene/work/GiftUI/.build/contract-reports/spec-002/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-b4520a70128f5b8d/raspberry-pi-armv6"
+  },
+  {
+    "spec": "SPEC-002",
+    "profile": "nrf52840-embedded",
+    "run_id": "7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-b4520a70128f5b8d",
+    "path": ".build/contract-reports/spec-002/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-b4520a70128f5b8d/nrf52840-embedded",
+    "metadata": "schema_version=2\ninput_set_sha256=b4520a70128f5b8d2d6ac0830e8381445bd9f9910134336b0de6e371823f9cd6\nrun_id=7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-b4520a70128f5b8d\nreport_directory=.build/contract-reports/spec-002/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-b4520a70128f5b8d/nrf52840-embedded\nspec=SPEC-002\nprofile=nrf52840-embedded\nrepository_revision=7d618db707d68d3fa4f1ab1fa4facec92e63d2f5\ninvocation=scripts/contracts/run-spec-002.sh --profile nrf52840-embedded\nsemantic_corpus_sha256=3add894045d330ea1441f2a6ff6d5465840c867ba02fb83912657819a20f3ccb\ncompiler_version<<EOF\nApple Swift version 6.3.2 (swift-6.3.2-RELEASE)\nTarget: arm64-apple-macosx26.0\nEOF\ntarget=armv7em-none-none-eabi\nboard=nrf52840dk/nrf52840\nzephyr_version=4.3.0\nzephyr_revision=3568e1b6d5cdd51a6b964a2a1d6d29200fea2056\nzephyr_sdk_version=0.17.4\nsdk_path=/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4\noptimization=-Osize -whole-module-optimization\nembedded_swift=-enable-experimental-feature Embedded\nfloat_abi=hard\nlinked_section_inspector<<EOF\n/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/arm-zephyr-eabi-objdump: GNU objdump (Zephyr SDK 0.17.4) 2.38\nEOF\nexit_code=0\n",
+    "integrity": "Contract report integrity passed: /Users/eugene/work/GiftUI/.build/contract-reports/spec-002/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-b4520a70128f5b8d/nrf52840-embedded"
+  },
+  {
+    "spec": "SPEC-003",
+    "profile": "macos-dynamic",
+    "run_id": "7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-b4520a70128f5b8d",
+    "path": ".build/contract-reports/spec-003/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-b4520a70128f5b8d/macos-dynamic",
+    "metadata": "schema_version=2\ninput_set_sha256=b4520a70128f5b8d2d6ac0830e8381445bd9f9910134336b0de6e371823f9cd6\nrun_id=7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-b4520a70128f5b8d\nreport_directory=.build/contract-reports/spec-003/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-b4520a70128f5b8d/macos-dynamic\nspec=SPEC-003\nprofile=macos-dynamic\nrepository_revision=7d618db707d68d3fa4f1ab1fa4facec92e63d2f5\nrepository_dirty=false\ngenerated_directory=.build/contract-generated/spec-003/macos-dynamic\ninvocation=scripts/contracts/run-spec-003.sh --profile macos-dynamic\nremote_access=false\ndeployment=false\nservice_restart=false\nflashing=false\ncompiler_path=/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc\ncompiler_sha256=2ed38571e92c0283091838c1649e27650ad9c99950288e883c7b2dc6c4ce89fb\ncompiler_version<<EOF\nswift-driver version: 1.148.6 Apple Swift version 6.3.3 (swiftlang-6.3.3.1.3 clang-2100.1.1.101)\nTarget: arm64-apple-macosx26.0\nEOF\ntarget=arm64-apple-macosx26.0\nsdk_path=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk\nsdk_version=26.5\noptimization=-O -whole-module-optimization\nprofile_flag=-DGIFTUI_DYNAMIC_PROFILE\nexit_code=0\n",
+    "integrity": "Contract report integrity passed: /Users/eugene/work/GiftUI/.build/contract-reports/spec-003/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-b4520a70128f5b8d/macos-dynamic"
+  },
+  {
+    "spec": "SPEC-003",
+    "profile": "macos-static",
+    "run_id": "7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-b4520a70128f5b8d",
+    "path": ".build/contract-reports/spec-003/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-b4520a70128f5b8d/macos-static",
+    "metadata": "schema_version=2\ninput_set_sha256=b4520a70128f5b8d2d6ac0830e8381445bd9f9910134336b0de6e371823f9cd6\nrun_id=7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-b4520a70128f5b8d\nreport_directory=.build/contract-reports/spec-003/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-b4520a70128f5b8d/macos-static\nspec=SPEC-003\nprofile=macos-static\nrepository_revision=7d618db707d68d3fa4f1ab1fa4facec92e63d2f5\nrepository_dirty=false\ngenerated_directory=.build/contract-generated/spec-003/macos-static\ninvocation=scripts/contracts/run-spec-003.sh --profile macos-static\nremote_access=false\ndeployment=false\nservice_restart=false\nflashing=false\ncompiler_path=/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc\ncompiler_sha256=2ed38571e92c0283091838c1649e27650ad9c99950288e883c7b2dc6c4ce89fb\ncompiler_version<<EOF\nswift-driver version: 1.148.6 Apple Swift version 6.3.3 (swiftlang-6.3.3.1.3 clang-2100.1.1.101)\nTarget: arm64-apple-macosx26.0\nEOF\ntarget=arm64-apple-macosx26.0\nsdk_path=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk\nsdk_version=26.5\noptimization=-O -whole-module-optimization\nprofile_flag=-DGIFTUI_STATIC_PROFILE\nexit_code=0\n",
+    "integrity": "Contract report integrity passed: /Users/eugene/work/GiftUI/.build/contract-reports/spec-003/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-b4520a70128f5b8d/macos-static"
+  },
+  {
+    "spec": "SPEC-003",
+    "profile": "raspberry-pi-armv6",
+    "run_id": "7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-b4520a70128f5b8d",
+    "path": ".build/contract-reports/spec-003/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-b4520a70128f5b8d/raspberry-pi-armv6",
+    "metadata": "schema_version=2\ninput_set_sha256=b4520a70128f5b8d2d6ac0830e8381445bd9f9910134336b0de6e371823f9cd6\nrun_id=7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-b4520a70128f5b8d\nreport_directory=.build/contract-reports/spec-003/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-b4520a70128f5b8d/raspberry-pi-armv6\nspec=SPEC-003\nprofile=raspberry-pi-armv6\nrepository_revision=7d618db707d68d3fa4f1ab1fa4facec92e63d2f5\nrepository_dirty=false\ngenerated_directory=.build/contract-generated/spec-003/raspberry-pi-armv6\ninvocation=scripts/contracts/run-spec-003.sh --profile raspberry-pi-armv6\nremote_access=false\ndeployment=false\nservice_restart=false\nflashing=false\ncompiler_path=/Users/eugene/work/GiftUI/.toolchains/host/swift-6.3.2-RELEASE-osx/usr/bin/swiftc\ncompiler_sha256=d8e40107da0e2c1c59640a983faea326d5d2bddfe81f7609db14bade43c4a5b9\ncompiler_version<<EOF\nApple Swift version 6.3.2 (swift-6.3.2-RELEASE)\nTarget: arm64-apple-macosx26.0\nEOF\nsdk_identity<<EOF\nswift_version=6.3.2\ntarget=armv6-unknown-linux-gnueabihf\ndistribution=raspios-bookworm\nsha256=bd09f97b693aa2097df281d9b5490d51c6c01a2241b890c7d05623d4134d7fc8\nEOF\ntarget=armv6-unknown-linux-gnueabihf\nsdk_path=/Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6\ndestination=/Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6/raspios-bookworm-static.json\noptimization=-O -whole-module-optimization\nexit_code=0\n",
+    "integrity": "Contract report integrity passed: /Users/eugene/work/GiftUI/.build/contract-reports/spec-003/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-b4520a70128f5b8d/raspberry-pi-armv6"
+  },
+  {
+    "spec": "SPEC-003",
+    "profile": "nrf52840-embedded",
+    "run_id": "7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-b4520a70128f5b8d",
+    "path": ".build/contract-reports/spec-003/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-b4520a70128f5b8d/nrf52840-embedded",
+    "metadata": "schema_version=2\ninput_set_sha256=b4520a70128f5b8d2d6ac0830e8381445bd9f9910134336b0de6e371823f9cd6\nrun_id=7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-b4520a70128f5b8d\nreport_directory=.build/contract-reports/spec-003/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-b4520a70128f5b8d/nrf52840-embedded\nspec=SPEC-003\nprofile=nrf52840-embedded\nrepository_revision=7d618db707d68d3fa4f1ab1fa4facec92e63d2f5\nrepository_dirty=false\ngenerated_directory=.build/contract-generated/spec-003/nrf52840-embedded\ninvocation=scripts/contracts/run-spec-003.sh --profile nrf52840-embedded\nremote_access=false\ndeployment=false\nservice_restart=false\nflashing=false\ncompiler_path=/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.3.2-RELEASE-osx/usr/bin/swiftc\ncompiler_sha256=d8e40107da0e2c1c59640a983faea326d5d2bddfe81f7609db14bade43c4a5b9\ncompiler_version<<EOF\nApple Swift version 6.3.2 (swift-6.3.2-RELEASE)\nTarget: arm64-apple-macosx26.0\nEOF\ntarget=armv7em-none-none-eabi\nboard=nrf52840dk/nrf52840\nzephyr_version=4.3.0\nzephyr_revision=3568e1b6d5cdd51a6b964a2a1d6d29200fea2056\nzephyr_sdk_version=0.17.4\nsdk_path=/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4\noptimization=-Osize -whole-module-optimization\nembedded_swift=-enable-experimental-feature Embedded\nfloat_abi=hard\nexit_code=0\n",
+    "integrity": "Contract report integrity passed: /Users/eugene/work/GiftUI/.build/contract-reports/spec-003/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-b4520a70128f5b8d/nrf52840-embedded"
+  },
+  {
+    "spec": "SPEC-004",
+    "profile": "macos-dynamic",
+    "run_id": "7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-b4520a70128f5b8d",
+    "path": ".build/contract-reports/spec-004/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-b4520a70128f5b8d/macos-dynamic",
+    "metadata": "schema_version=2\ninput_set_sha256=b4520a70128f5b8d2d6ac0830e8381445bd9f9910134336b0de6e371823f9cd6\nrun_id=7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-b4520a70128f5b8d\nreport_directory=.build/contract-reports/spec-004/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-b4520a70128f5b8d/macos-dynamic\nspec=SPEC-004\nprofile=macos-dynamic\nrepository_revision=7d618db707d68d3fa4f1ab1fa4facec92e63d2f5\nrepository_dirty=false\ngenerated_directory=.build/contract-generated/spec-004/macos-dynamic\ninvocation=scripts/contracts/run-spec-004.sh --profile macos-dynamic\nremote_access=false\ndeployment=false\nservice_restart=false\nflashing=false\nsource_list=Sources/GiftUICapabilities/GiftUICapabilities.swift\ncompiler_path=/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc\ncompiler_sha256=2ed38571e92c0283091838c1649e27650ad9c99950288e883c7b2dc6c4ce89fb\ncompiler_version<<EOF\nswift-driver version: 1.148.6 Apple Swift version 6.3.3 (swiftlang-6.3.3.1.3 clang-2100.1.1.101)\nTarget: arm64-apple-macosx26.0\nEOF\ntarget=arm64-apple-macosx26.0\nsdk_path=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk\nsdk_version=26.5\noptimization=-O -whole-module-optimization\nprofile_flag=-DGIFTUI_DYNAMIC_PROFILE\nexit_code=0\n",
+    "integrity": "Contract report integrity passed: /Users/eugene/work/GiftUI/.build/contract-reports/spec-004/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-b4520a70128f5b8d/macos-dynamic"
+  },
+  {
+    "spec": "SPEC-004",
+    "profile": "macos-static",
+    "run_id": "7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-b4520a70128f5b8d",
+    "path": ".build/contract-reports/spec-004/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-b4520a70128f5b8d/macos-static",
+    "metadata": "schema_version=2\ninput_set_sha256=b4520a70128f5b8d2d6ac0830e8381445bd9f9910134336b0de6e371823f9cd6\nrun_id=7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-b4520a70128f5b8d\nreport_directory=.build/contract-reports/spec-004/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-b4520a70128f5b8d/macos-static\nspec=SPEC-004\nprofile=macos-static\nrepository_revision=7d618db707d68d3fa4f1ab1fa4facec92e63d2f5\nrepository_dirty=false\ngenerated_directory=.build/contract-generated/spec-004/macos-static\ninvocation=scripts/contracts/run-spec-004.sh --profile macos-static\nremote_access=false\ndeployment=false\nservice_restart=false\nflashing=false\nsource_list=Sources/GiftUICapabilities/GiftUICapabilities.swift\ncompiler_path=/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc\ncompiler_sha256=2ed38571e92c0283091838c1649e27650ad9c99950288e883c7b2dc6c4ce89fb\ncompiler_version<<EOF\nswift-driver version: 1.148.6 Apple Swift version 6.3.3 (swiftlang-6.3.3.1.3 clang-2100.1.1.101)\nTarget: arm64-apple-macosx26.0\nEOF\ntarget=arm64-apple-macosx26.0\nsdk_path=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk\nsdk_version=26.5\noptimization=-O -whole-module-optimization\nprofile_flag=-DGIFTUI_STATIC_PROFILE\nexit_code=0\n",
+    "integrity": "Contract report integrity passed: /Users/eugene/work/GiftUI/.build/contract-reports/spec-004/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-b4520a70128f5b8d/macos-static"
+  },
+  {
+    "spec": "SPEC-004",
+    "profile": "raspberry-pi-armv6",
+    "run_id": "7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-b4520a70128f5b8d",
+    "path": ".build/contract-reports/spec-004/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-b4520a70128f5b8d/raspberry-pi-armv6",
+    "metadata": "schema_version=2\ninput_set_sha256=b4520a70128f5b8d2d6ac0830e8381445bd9f9910134336b0de6e371823f9cd6\nrun_id=7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-b4520a70128f5b8d\nreport_directory=.build/contract-reports/spec-004/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-b4520a70128f5b8d/raspberry-pi-armv6\nspec=SPEC-004\nprofile=raspberry-pi-armv6\nrepository_revision=7d618db707d68d3fa4f1ab1fa4facec92e63d2f5\nrepository_dirty=false\ngenerated_directory=.build/contract-generated/spec-004/raspberry-pi-armv6\ninvocation=scripts/contracts/run-spec-004.sh --profile raspberry-pi-armv6\nremote_access=false\ndeployment=false\nservice_restart=false\nflashing=false\nsource_list=Sources/GiftUICapabilities/GiftUICapabilities.swift\ncompiler_path=/Users/eugene/work/GiftUI/.toolchains/host/swift-6.3.2-RELEASE-osx/usr/bin/swiftc\ncompiler_sha256=d8e40107da0e2c1c59640a983faea326d5d2bddfe81f7609db14bade43c4a5b9\ncompiler_version<<EOF\nApple Swift version 6.3.2 (swift-6.3.2-RELEASE)\nTarget: arm64-apple-macosx26.0\nEOF\nsdk_identity<<EOF\nswift_version=6.3.2\ntarget=armv6-unknown-linux-gnueabihf\ndistribution=raspios-bookworm\nsha256=bd09f97b693aa2097df281d9b5490d51c6c01a2241b890c7d05623d4134d7fc8\nEOF\ntarget=armv6-unknown-linux-gnueabihf\nsdk_path=/Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6\ndestination=/Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6/raspios-bookworm-static.json\noptimization=-O -whole-module-optimization\nexit_code=0\n",
+    "integrity": "Contract report integrity passed: /Users/eugene/work/GiftUI/.build/contract-reports/spec-004/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-b4520a70128f5b8d/raspberry-pi-armv6"
+  },
+  {
+    "spec": "SPEC-004",
+    "profile": "nrf52840-embedded",
+    "run_id": "7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-b4520a70128f5b8d",
+    "path": ".build/contract-reports/spec-004/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-b4520a70128f5b8d/nrf52840-embedded",
+    "metadata": "schema_version=2\ninput_set_sha256=b4520a70128f5b8d2d6ac0830e8381445bd9f9910134336b0de6e371823f9cd6\nrun_id=7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-b4520a70128f5b8d\nreport_directory=.build/contract-reports/spec-004/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-b4520a70128f5b8d/nrf52840-embedded\nspec=SPEC-004\nprofile=nrf52840-embedded\nrepository_revision=7d618db707d68d3fa4f1ab1fa4facec92e63d2f5\nrepository_dirty=false\ngenerated_directory=.build/contract-generated/spec-004/nrf52840-embedded\ninvocation=scripts/contracts/run-spec-004.sh --profile nrf52840-embedded\nremote_access=false\ndeployment=false\nservice_restart=false\nflashing=false\nsource_list=Sources/GiftUICapabilities/GiftUICapabilities.swift\ncompiler_path=/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.3.2-RELEASE-osx/usr/bin/swiftc\ncompiler_sha256=d8e40107da0e2c1c59640a983faea326d5d2bddfe81f7609db14bade43c4a5b9\ncompiler_version<<EOF\nApple Swift version 6.3.2 (swift-6.3.2-RELEASE)\nTarget: arm64-apple-macosx26.0\nEOF\ntarget=armv7em-none-none-eabi\nboard=nrf52840dk/nrf52840\nzephyr_version=4.3.0\nzephyr_revision=3568e1b6d5cdd51a6b964a2a1d6d29200fea2056\nzephyr_sdk_version=0.17.4\nsdk_path=/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4\noptimization=-Osize -whole-module-optimization\nembedded_swift=-enable-experimental-feature Embedded\nfloat_abi=hard\nexit_code=0\n",
+    "integrity": "Contract report integrity passed: /Users/eugene/work/GiftUI/.build/contract-reports/spec-004/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-b4520a70128f5b8d/nrf52840-embedded"
+  },
+  {
+    "spec": "SPEC-005",
+    "profile": "macos-dynamic",
+    "run_id": "7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-13497580cfa982fc",
+    "path": ".build/contract-reports/spec-005/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-13497580cfa982fc/macos-dynamic",
+    "metadata": "schema_version=2\nspec=SPEC-005\nprofile=macos-dynamic\nrepository_revision=7d618db707d68d3fa4f1ab1fa4facec92e63d2f5\nrepository_dirty=false\ninput_set_sha256=13497580cfa982fc6fc2fa0dcab8e3deae27734bf1a5cc86c57a84e5f82190d9\nrun_id=7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-13497580cfa982fc\ngenerated_directory=.build/contract-generated/spec-005/macos-dynamic\nreport_directory=.build/contract-reports/spec-005/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-13497580cfa982fc/macos-dynamic\ninvocation=scripts/contracts/run-spec-005.sh --profile macos-dynamic\nevidence=hardware-free\nremote_access=false\ndeployment=false\nservice_restart=false\nsimulator_execution=false\nconnected_target_execution=false\nflashing=false\nsource_list=Sources/GiftUITextResources/GiftUITextResources.swift\ncompiler_path=/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc\ncompiler_sha256=2ed38571e92c0283091838c1649e27650ad9c99950288e883c7b2dc6c4ce89fb\ncompiler_version<<EOF\nswift-driver version: 1.148.6 Apple Swift version 6.3.3 (swiftlang-6.3.3.1.3 clang-2100.1.1.101)\nTarget: arm64-apple-macosx26.0\nEOF\ntarget=arm64-apple-macosx26.0\nsdk_path=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk\nsdk_version=26.5\noptimization=-O -whole-module-optimization\nprofile_flag=-DGIFTUI_DYNAMIC_PROFILE\nrequired_realization_ids=0,1\navailable_realization_ids=0,1\nexit_code=0\n",
+    "integrity": "Contract report integrity passed: /Users/eugene/work/GiftUI/.build/contract-reports/spec-005/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-13497580cfa982fc/macos-dynamic"
+  },
+  {
+    "spec": "SPEC-005",
+    "profile": "macos-static",
+    "run_id": "7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-13497580cfa982fc",
+    "path": ".build/contract-reports/spec-005/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-13497580cfa982fc/macos-static",
+    "metadata": "schema_version=2\nspec=SPEC-005\nprofile=macos-static\nrepository_revision=7d618db707d68d3fa4f1ab1fa4facec92e63d2f5\nrepository_dirty=false\ninput_set_sha256=13497580cfa982fc6fc2fa0dcab8e3deae27734bf1a5cc86c57a84e5f82190d9\nrun_id=7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-13497580cfa982fc\ngenerated_directory=.build/contract-generated/spec-005/macos-static\nreport_directory=.build/contract-reports/spec-005/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-13497580cfa982fc/macos-static\ninvocation=scripts/contracts/run-spec-005.sh --profile macos-static\nevidence=hardware-free\nremote_access=false\ndeployment=false\nservice_restart=false\nsimulator_execution=false\nconnected_target_execution=false\nflashing=false\nsource_list=Sources/GiftUITextResources/GiftUITextResources.swift\ncompiler_path=/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc\ncompiler_sha256=2ed38571e92c0283091838c1649e27650ad9c99950288e883c7b2dc6c4ce89fb\ncompiler_version<<EOF\nswift-driver version: 1.148.6 Apple Swift version 6.3.3 (swiftlang-6.3.3.1.3 clang-2100.1.1.101)\nTarget: arm64-apple-macosx26.0\nEOF\ntarget=arm64-apple-macosx26.0\nsdk_path=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk\nsdk_version=26.5\noptimization=-O -whole-module-optimization\nprofile_flag=-DGIFTUI_STATIC_PROFILE\nrequired_realization_ids=0,1\navailable_realization_ids=0,1\nexit_code=0\n",
+    "integrity": "Contract report integrity passed: /Users/eugene/work/GiftUI/.build/contract-reports/spec-005/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-13497580cfa982fc/macos-static"
+  },
+  {
+    "spec": "SPEC-005",
+    "profile": "raspberry-pi-armv6",
+    "run_id": "7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-13497580cfa982fc",
+    "path": ".build/contract-reports/spec-005/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-13497580cfa982fc/raspberry-pi-armv6",
+    "metadata": "schema_version=2\nspec=SPEC-005\nprofile=raspberry-pi-armv6\nrepository_revision=7d618db707d68d3fa4f1ab1fa4facec92e63d2f5\nrepository_dirty=false\ninput_set_sha256=13497580cfa982fc6fc2fa0dcab8e3deae27734bf1a5cc86c57a84e5f82190d9\nrun_id=7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-13497580cfa982fc\ngenerated_directory=.build/contract-generated/spec-005/raspberry-pi-armv6\nreport_directory=.build/contract-reports/spec-005/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-13497580cfa982fc/raspberry-pi-armv6\ninvocation=scripts/contracts/run-spec-005.sh --profile raspberry-pi-armv6\nevidence=hardware-free\nremote_access=false\ndeployment=false\nservice_restart=false\nsimulator_execution=false\nconnected_target_execution=false\nflashing=false\nsource_list=Sources/GiftUITextResources/GiftUITextResources.swift\ncompiler_path=/Users/eugene/work/GiftUI/.toolchains/host/swift-6.3.2-RELEASE-osx/usr/bin/swiftc\ncompiler_sha256=d8e40107da0e2c1c59640a983faea326d5d2bddfe81f7609db14bade43c4a5b9\ncompiler_version<<EOF\nApple Swift version 6.3.2 (swift-6.3.2-RELEASE)\nTarget: arm64-apple-macosx26.0\nEOF\nsdk_identity<<EOF\nswift_version=6.3.2\ntarget=armv6-unknown-linux-gnueabihf\ndistribution=raspios-bookworm\nsha256=bd09f97b693aa2097df281d9b5490d51c6c01a2241b890c7d05623d4134d7fc8\nEOF\ntarget=armv6-unknown-linux-gnueabihf\nsdk_path=/Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6\ndestination=/Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6/raspios-bookworm-static.json\noptimization=release -O -whole-module-optimization\nrequired_realization_ids=0,1\navailable_realization_ids=0,1\nexit_code=0\n",
+    "integrity": "Contract report integrity passed: /Users/eugene/work/GiftUI/.build/contract-reports/spec-005/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-13497580cfa982fc/raspberry-pi-armv6"
+  },
+  {
+    "spec": "SPEC-005",
+    "profile": "nrf52840-embedded",
+    "run_id": "7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-13497580cfa982fc",
+    "path": ".build/contract-reports/spec-005/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-13497580cfa982fc/nrf52840-embedded",
+    "metadata": "schema_version=2\nspec=SPEC-005\nprofile=nrf52840-embedded\nrepository_revision=7d618db707d68d3fa4f1ab1fa4facec92e63d2f5\nrepository_dirty=false\ninput_set_sha256=13497580cfa982fc6fc2fa0dcab8e3deae27734bf1a5cc86c57a84e5f82190d9\nrun_id=7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-13497580cfa982fc\ngenerated_directory=.build/contract-generated/spec-005/nrf52840-embedded\nreport_directory=.build/contract-reports/spec-005/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-13497580cfa982fc/nrf52840-embedded\ninvocation=scripts/contracts/run-spec-005.sh --profile nrf52840-embedded\nevidence=hardware-free\nremote_access=false\ndeployment=false\nservice_restart=false\nsimulator_execution=false\nconnected_target_execution=false\nflashing=false\nsource_list=Sources/GiftUITextResources/GiftUITextResources.swift\ncompiler_path=/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.3.2-RELEASE-osx/usr/bin/swiftc\ncompiler_sha256=d8e40107da0e2c1c59640a983faea326d5d2bddfe81f7609db14bade43c4a5b9\ncompiler_version<<EOF\nApple Swift version 6.3.2 (swift-6.3.2-RELEASE)\nTarget: arm64-apple-macosx26.0\nEOF\ntarget=armv7em-none-none-eabi\nboard=nrf52840dk/nrf52840\nzephyr_version=4.3.0\nzephyr_revision=3568e1b6d5cdd51a6b964a2a1d6d29200fea2056\nzephyr_sdk_version=0.17.4\nsdk_path=/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4\noptimization=-Osize -whole-module-optimization\nembedded_swift=-enable-experimental-feature Embedded\nfloat_abi=hard\nrequired_realization_ids=0\navailable_realization_ids=0\nexit_code=0\n",
+    "integrity": "Contract report integrity passed: /Users/eugene/work/GiftUI/.build/contract-reports/spec-005/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-13497580cfa982fc/nrf52840-embedded"
+  },
+  {
+    "spec": "SPEC-006",
+    "profile": "macos-dynamic",
+    "run_id": "7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-e4e48e37d8c767c7",
+    "path": ".build/contract-reports/spec-006/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-e4e48e37d8c767c7/macos-dynamic",
+    "metadata": "schema_version=1\nspec=SPEC-006\nprofile=macos-dynamic\nrepository_revision=7d618db707d68d3fa4f1ab1fa4facec92e63d2f5\nrepository_dirty=false\ninput_set_sha256=e4e48e37d8c767c75056a21420f40a4dad0098466980377e5c68ab14c0337452\nrun_id=7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-e4e48e37d8c767c7\ngenerated_directory=.build/contract-generated/spec-006/macos-dynamic\nreport_directory=.build/contract-reports/spec-006/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-e4e48e37d8c767c7/macos-dynamic\ninvocation=scripts/contracts/run-spec-006.sh --profile macos-dynamic\nevidence=hardware-free\nremote_access=false\ndeployment=false\nservice_restart=false\nsimulator_execution=false\nconnected_target_execution=false\nflashing=false\nevidence_complete=true\ncompiler_path=/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc\ncompiler_sha256=2ed38571e92c0283091838c1649e27650ad9c99950288e883c7b2dc6c4ce89fb\ncompiler_version<<EOF\nswift-driver version: 1.148.6 Apple Swift version 6.3.3 (swiftlang-6.3.3.1.3 clang-2100.1.1.101)\nTarget: arm64-apple-macosx26.0\nEOF\ntarget=arm64-apple-macosx26.0\nsdk_path=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk\noptimization=-O -whole-module-optimization\nexit_code=0\n",
+    "integrity": "Contract report integrity passed: /Users/eugene/work/GiftUI/.build/contract-reports/spec-006/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-e4e48e37d8c767c7/macos-dynamic"
+  },
+  {
+    "spec": "SPEC-006",
+    "profile": "macos-static",
+    "run_id": "7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-e4e48e37d8c767c7",
+    "path": ".build/contract-reports/spec-006/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-e4e48e37d8c767c7/macos-static",
+    "metadata": "schema_version=1\nspec=SPEC-006\nprofile=macos-static\nrepository_revision=7d618db707d68d3fa4f1ab1fa4facec92e63d2f5\nrepository_dirty=false\ninput_set_sha256=e4e48e37d8c767c75056a21420f40a4dad0098466980377e5c68ab14c0337452\nrun_id=7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-e4e48e37d8c767c7\ngenerated_directory=.build/contract-generated/spec-006/macos-static\nreport_directory=.build/contract-reports/spec-006/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-e4e48e37d8c767c7/macos-static\ninvocation=scripts/contracts/run-spec-006.sh --profile macos-static\nevidence=hardware-free\nremote_access=false\ndeployment=false\nservice_restart=false\nsimulator_execution=false\nconnected_target_execution=false\nflashing=false\nevidence_complete=true\ncompiler_path=/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc\ncompiler_sha256=2ed38571e92c0283091838c1649e27650ad9c99950288e883c7b2dc6c4ce89fb\ncompiler_version<<EOF\nswift-driver version: 1.148.6 Apple Swift version 6.3.3 (swiftlang-6.3.3.1.3 clang-2100.1.1.101)\nTarget: arm64-apple-macosx26.0\nEOF\ntarget=arm64-apple-macosx26.0\nsdk_path=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk\noptimization=-O -whole-module-optimization\nexit_code=0\n",
+    "integrity": "Contract report integrity passed: /Users/eugene/work/GiftUI/.build/contract-reports/spec-006/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-e4e48e37d8c767c7/macos-static"
+  },
+  {
+    "spec": "SPEC-006",
+    "profile": "raspberry-pi-armv6",
+    "run_id": "7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-e4e48e37d8c767c7",
+    "path": ".build/contract-reports/spec-006/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-e4e48e37d8c767c7/raspberry-pi-armv6",
+    "metadata": "schema_version=1\nspec=SPEC-006\nprofile=raspberry-pi-armv6\nrepository_revision=7d618db707d68d3fa4f1ab1fa4facec92e63d2f5\nrepository_dirty=false\ninput_set_sha256=e4e48e37d8c767c75056a21420f40a4dad0098466980377e5c68ab14c0337452\nrun_id=7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-e4e48e37d8c767c7\ngenerated_directory=.build/contract-generated/spec-006/raspberry-pi-armv6\nreport_directory=.build/contract-reports/spec-006/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-e4e48e37d8c767c7/raspberry-pi-armv6\ninvocation=scripts/contracts/run-spec-006.sh --profile raspberry-pi-armv6\nevidence=hardware-free\nremote_access=false\ndeployment=false\nservice_restart=false\nsimulator_execution=false\nconnected_target_execution=false\nflashing=false\nevidence_complete=true\ncompiler_path=/Users/eugene/work/GiftUI/.toolchains/host/swift-6.3.2-RELEASE-osx/usr/bin/swiftc\ncompiler_sha256=d8e40107da0e2c1c59640a983faea326d5d2bddfe81f7609db14bade43c4a5b9\ncompiler_version<<EOF\nApple Swift version 6.3.2 (swift-6.3.2-RELEASE)\nTarget: arm64-apple-macosx26.0\nEOF\ntarget=armv6-unknown-linux-gnueabihf\ndestination=/Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6/raspios-bookworm-static.json\noptimization=-O -whole-module-optimization\nexit_code=0\n",
+    "integrity": "Contract report integrity passed: /Users/eugene/work/GiftUI/.build/contract-reports/spec-006/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-e4e48e37d8c767c7/raspberry-pi-armv6"
+  },
+  {
+    "spec": "SPEC-006",
+    "profile": "nrf52840-embedded",
+    "run_id": "7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-e4e48e37d8c767c7",
+    "path": ".build/contract-reports/spec-006/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-e4e48e37d8c767c7/nrf52840-embedded",
+    "metadata": "schema_version=1\nspec=SPEC-006\nprofile=nrf52840-embedded\nrepository_revision=7d618db707d68d3fa4f1ab1fa4facec92e63d2f5\nrepository_dirty=false\ninput_set_sha256=e4e48e37d8c767c75056a21420f40a4dad0098466980377e5c68ab14c0337452\nrun_id=7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-e4e48e37d8c767c7\ngenerated_directory=.build/contract-generated/spec-006/nrf52840-embedded\nreport_directory=.build/contract-reports/spec-006/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-e4e48e37d8c767c7/nrf52840-embedded\ninvocation=scripts/contracts/run-spec-006.sh --profile nrf52840-embedded\nevidence=hardware-free\nremote_access=false\ndeployment=false\nservice_restart=false\nsimulator_execution=false\nconnected_target_execution=false\nflashing=false\nevidence_complete=true\ncompiler_path=/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.3.2-RELEASE-osx/usr/bin/swiftc\ncompiler_sha256=d8e40107da0e2c1c59640a983faea326d5d2bddfe81f7609db14bade43c4a5b9\ncompiler_version<<EOF\nApple Swift version 6.3.2 (swift-6.3.2-RELEASE)\nTarget: arm64-apple-macosx26.0\nEOF\ntarget=armv7em-none-none-eabi\nboard=nrf52840dk/nrf52840\noptimization=-Osize -whole-module-optimization\nexit_code=0\n",
+    "integrity": "Contract report integrity passed: /Users/eugene/work/GiftUI/.build/contract-reports/spec-006/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-e4e48e37d8c767c7/nrf52840-embedded"
+  },
+  {
+    "spec": "SPEC-007",
+    "profile": "macos-dynamic",
+    "run_id": "7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-629996239dbb1a04",
+    "path": ".build/contract-reports/spec-007/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-629996239dbb1a04/macos-dynamic",
+    "metadata": "schema_version=1\nspec=SPEC-007\nprofile=macos-dynamic\nrepository_revision=7d618db707d68d3fa4f1ab1fa4facec92e63d2f5\nrepository_dirty=false\ninput_set_sha256=629996239dbb1a04f651e0d8efca64cb7043da6cea135e34f0b63468bde3468e\nrun_id=7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-629996239dbb1a04\ninvocation=scripts/contracts/run-spec-007.sh --profile macos-dynamic\nlayout_target=complete\nfixture_corpus=complete\nevidence_complete=true\nremote_access=false\ndeployment=false\nservice_restart=false\nsimulator_execution=false\nconnected_target_execution=false\nflashing=false\ncompiler_path=/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc\ncompiler_sha256=2ed38571e92c0283091838c1649e27650ad9c99950288e883c7b2dc6c4ce89fb\ncompiler_version<<EOF\nswift-driver version: 1.148.6 Apple Swift version 6.3.3 (swiftlang-6.3.3.1.3 clang-2100.1.1.101)\nTarget: arm64-apple-macosx26.0\nEOF\ntarget=arm64-apple-macosx26.0\nsdk_path=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk\noptimization=-O -whole-module-optimization\nprofile_flag=-DGIFTUI_DYNAMIC_PROFILE\nexit_code=0\n",
+    "integrity": "Contract report integrity passed: /Users/eugene/work/GiftUI/.build/contract-reports/spec-007/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-629996239dbb1a04/macos-dynamic"
+  },
+  {
+    "spec": "SPEC-007",
+    "profile": "macos-static",
+    "run_id": "7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-629996239dbb1a04",
+    "path": ".build/contract-reports/spec-007/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-629996239dbb1a04/macos-static",
+    "metadata": "schema_version=1\nspec=SPEC-007\nprofile=macos-static\nrepository_revision=7d618db707d68d3fa4f1ab1fa4facec92e63d2f5\nrepository_dirty=false\ninput_set_sha256=629996239dbb1a04f651e0d8efca64cb7043da6cea135e34f0b63468bde3468e\nrun_id=7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-629996239dbb1a04\ninvocation=scripts/contracts/run-spec-007.sh --profile macos-static\nlayout_target=complete\nfixture_corpus=complete\nevidence_complete=true\nremote_access=false\ndeployment=false\nservice_restart=false\nsimulator_execution=false\nconnected_target_execution=false\nflashing=false\ncompiler_path=/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc\ncompiler_sha256=2ed38571e92c0283091838c1649e27650ad9c99950288e883c7b2dc6c4ce89fb\ncompiler_version<<EOF\nswift-driver version: 1.148.6 Apple Swift version 6.3.3 (swiftlang-6.3.3.1.3 clang-2100.1.1.101)\nTarget: arm64-apple-macosx26.0\nEOF\ntarget=arm64-apple-macosx26.0\nsdk_path=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk\noptimization=-O -whole-module-optimization\nprofile_flag=-DGIFTUI_STATIC_PROFILE\nexit_code=0\n",
+    "integrity": "Contract report integrity passed: /Users/eugene/work/GiftUI/.build/contract-reports/spec-007/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-629996239dbb1a04/macos-static"
+  },
+  {
+    "spec": "SPEC-007",
+    "profile": "raspberry-pi-armv6",
+    "run_id": "7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-629996239dbb1a04",
+    "path": ".build/contract-reports/spec-007/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-629996239dbb1a04/raspberry-pi-armv6",
+    "metadata": "schema_version=1\nspec=SPEC-007\nprofile=raspberry-pi-armv6\nrepository_revision=7d618db707d68d3fa4f1ab1fa4facec92e63d2f5\nrepository_dirty=false\ninput_set_sha256=629996239dbb1a04f651e0d8efca64cb7043da6cea135e34f0b63468bde3468e\nrun_id=7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-629996239dbb1a04\ninvocation=scripts/contracts/run-spec-007.sh --profile raspberry-pi-armv6\nlayout_target=complete\nfixture_corpus=complete\nevidence_complete=true\nremote_access=false\ndeployment=false\nservice_restart=false\nsimulator_execution=false\nconnected_target_execution=false\nflashing=false\ncompiler_path=/Users/eugene/work/GiftUI/.toolchains/host/swift-6.3.2-RELEASE-osx/usr/bin/swiftc\ncompiler_sha256=d8e40107da0e2c1c59640a983faea326d5d2bddfe81f7609db14bade43c4a5b9\ncompiler_version<<EOF\nApple Swift version 6.3.2 (swift-6.3.2-RELEASE)\nTarget: arm64-apple-macosx26.0\nEOF\ntarget=armv6-unknown-linux-gnueabihf\nsdk_path=/Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6\ndestination=/Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6/raspios-bookworm-static.json\noptimization=-O -whole-module-optimization\nexit_code=0\n",
+    "integrity": "Contract report integrity passed: /Users/eugene/work/GiftUI/.build/contract-reports/spec-007/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-629996239dbb1a04/raspberry-pi-armv6"
+  },
+  {
+    "spec": "SPEC-007",
+    "profile": "nrf52840-embedded",
+    "run_id": "7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-629996239dbb1a04",
+    "path": ".build/contract-reports/spec-007/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-629996239dbb1a04/nrf52840-embedded",
+    "metadata": "schema_version=1\nspec=SPEC-007\nprofile=nrf52840-embedded\nrepository_revision=7d618db707d68d3fa4f1ab1fa4facec92e63d2f5\nrepository_dirty=false\ninput_set_sha256=629996239dbb1a04f651e0d8efca64cb7043da6cea135e34f0b63468bde3468e\nrun_id=7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-629996239dbb1a04\ninvocation=scripts/contracts/run-spec-007.sh --profile nrf52840-embedded\nlayout_target=complete\nfixture_corpus=complete\nevidence_complete=true\nremote_access=false\ndeployment=false\nservice_restart=false\nsimulator_execution=false\nconnected_target_execution=false\nflashing=false\ncompiler_path=/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.3.2-RELEASE-osx/usr/bin/swiftc\ncompiler_sha256=d8e40107da0e2c1c59640a983faea326d5d2bddfe81f7609db14bade43c4a5b9\ncompiler_version<<EOF\nApple Swift version 6.3.2 (swift-6.3.2-RELEASE)\nTarget: arm64-apple-macosx26.0\nEOF\ntarget=armv7em-none-none-eabi\nboard=nrf52840dk/nrf52840\nsdk_path=/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4\nzephyr_revision=3568e1b6d5cdd51a6b964a2a1d6d29200fea2056\noptimization=-Osize -whole-module-optimization\nfloat_abi=hard\nexit_code=0\n",
+    "integrity": "Contract report integrity passed: /Users/eugene/work/GiftUI/.build/contract-reports/spec-007/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-629996239dbb1a04/nrf52840-embedded"
+  },
+  {
+    "spec": "SPEC-008",
+    "profile": "macos-dynamic",
+    "run_id": "7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-5d08f9bf1bbe6160",
+    "path": ".build/contract-reports/spec-008/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-5d08f9bf1bbe6160/macos-dynamic",
+    "metadata": "schema_version=1\nspec=SPEC-008\nprofile=macos-dynamic\nrepository_revision=7d618db707d68d3fa4f1ab1fa4facec92e63d2f5\nrepository_dirty=false\ninput_set_sha256=5d08f9bf1bbe6160bd39cc14eec5684ab737ca42772924dd2fa282fd4598afd5\nrun_id=7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-5d08f9bf1bbe6160\ninvocation=scripts/contracts/run-spec-008.sh --profile macos-dynamic\nrender_core_target=complete\nrender_lowering_target=complete\ndeclaration_profiles=pending\nfixture_corpus=complete\nevidence_complete=true\nremote_access=false\ndeployment=false\nservice_restart=false\nsimulator_execution=false\nconnected_target_execution=false\nflashing=false\ncompiler_path=/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc\ncompiler_sha256=2ed38571e92c0283091838c1649e27650ad9c99950288e883c7b2dc6c4ce89fb\ncompiler_version<<EOF\nswift-driver version: 1.148.6 Apple Swift version 6.3.3 (swiftlang-6.3.3.1.3 clang-2100.1.1.101)\nTarget: arm64-apple-macosx26.0\nEOF\ntarget=arm64-apple-macosx26.0\nsdk_path=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk\noptimization=-O -whole-module-optimization\nprofile_flag=-DGIFTUI_DYNAMIC_PROFILE\ndeclaration_profiles=complete\nexit_code=0\n",
+    "integrity": "Contract report integrity passed: /Users/eugene/work/GiftUI/.build/contract-reports/spec-008/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-5d08f9bf1bbe6160/macos-dynamic"
+  },
+  {
+    "spec": "SPEC-008",
+    "profile": "macos-static",
+    "run_id": "7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-5d08f9bf1bbe6160",
+    "path": ".build/contract-reports/spec-008/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-5d08f9bf1bbe6160/macos-static",
+    "metadata": "schema_version=1\nspec=SPEC-008\nprofile=macos-static\nrepository_revision=7d618db707d68d3fa4f1ab1fa4facec92e63d2f5\nrepository_dirty=false\ninput_set_sha256=5d08f9bf1bbe6160bd39cc14eec5684ab737ca42772924dd2fa282fd4598afd5\nrun_id=7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-5d08f9bf1bbe6160\ninvocation=scripts/contracts/run-spec-008.sh --profile macos-static\nrender_core_target=complete\nrender_lowering_target=complete\ndeclaration_profiles=pending\nfixture_corpus=complete\nevidence_complete=true\nremote_access=false\ndeployment=false\nservice_restart=false\nsimulator_execution=false\nconnected_target_execution=false\nflashing=false\ncompiler_path=/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc\ncompiler_sha256=2ed38571e92c0283091838c1649e27650ad9c99950288e883c7b2dc6c4ce89fb\ncompiler_version<<EOF\nswift-driver version: 1.148.6 Apple Swift version 6.3.3 (swiftlang-6.3.3.1.3 clang-2100.1.1.101)\nTarget: arm64-apple-macosx26.0\nEOF\ntarget=arm64-apple-macosx26.0\nsdk_path=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk\noptimization=-O -whole-module-optimization\nprofile_flag=-DGIFTUI_STATIC_PROFILE\ndeclaration_profiles=complete\nexit_code=0\n",
+    "integrity": "Contract report integrity passed: /Users/eugene/work/GiftUI/.build/contract-reports/spec-008/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-5d08f9bf1bbe6160/macos-static"
+  },
+  {
+    "spec": "SPEC-008",
+    "profile": "raspberry-pi-armv6",
+    "run_id": "7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-5d08f9bf1bbe6160",
+    "path": ".build/contract-reports/spec-008/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-5d08f9bf1bbe6160/raspberry-pi-armv6",
+    "metadata": "schema_version=1\nspec=SPEC-008\nprofile=raspberry-pi-armv6\nrepository_revision=7d618db707d68d3fa4f1ab1fa4facec92e63d2f5\nrepository_dirty=false\ninput_set_sha256=5d08f9bf1bbe6160bd39cc14eec5684ab737ca42772924dd2fa282fd4598afd5\nrun_id=7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-5d08f9bf1bbe6160\ninvocation=scripts/contracts/run-spec-008.sh --profile raspberry-pi-armv6\nrender_core_target=complete\nrender_lowering_target=complete\ndeclaration_profiles=pending\nfixture_corpus=complete\nevidence_complete=true\nremote_access=false\ndeployment=false\nservice_restart=false\nsimulator_execution=false\nconnected_target_execution=false\nflashing=false\ncompiler_path=/Users/eugene/work/GiftUI/.toolchains/host/swift-6.3.2-RELEASE-osx/usr/bin/swiftc\ncompiler_sha256=d8e40107da0e2c1c59640a983faea326d5d2bddfe81f7609db14bade43c4a5b9\ncompiler_version<<EOF\nApple Swift version 6.3.2 (swift-6.3.2-RELEASE)\nTarget: arm64-apple-macosx26.0\nEOF\ntarget=armv6-unknown-linux-gnueabihf\nsdk_path=/Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6\ndestination=/Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6/raspios-bookworm-static.json\noptimization=-O -whole-module-optimization\ndeclaration_profiles=complete\nexit_code=0\n",
+    "integrity": "Contract report integrity passed: /Users/eugene/work/GiftUI/.build/contract-reports/spec-008/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-5d08f9bf1bbe6160/raspberry-pi-armv6"
+  },
+  {
+    "spec": "SPEC-008",
+    "profile": "nrf52840-embedded",
+    "run_id": "7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-5d08f9bf1bbe6160",
+    "path": ".build/contract-reports/spec-008/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-5d08f9bf1bbe6160/nrf52840-embedded",
+    "metadata": "schema_version=1\nspec=SPEC-008\nprofile=nrf52840-embedded\nrepository_revision=7d618db707d68d3fa4f1ab1fa4facec92e63d2f5\nrepository_dirty=false\ninput_set_sha256=5d08f9bf1bbe6160bd39cc14eec5684ab737ca42772924dd2fa282fd4598afd5\nrun_id=7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-5d08f9bf1bbe6160\ninvocation=scripts/contracts/run-spec-008.sh --profile nrf52840-embedded\nrender_core_target=complete\nrender_lowering_target=complete\ndeclaration_profiles=pending\nfixture_corpus=complete\nevidence_complete=true\nremote_access=false\ndeployment=false\nservice_restart=false\nsimulator_execution=false\nconnected_target_execution=false\nflashing=false\ncompiler_path=/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.3.2-RELEASE-osx/usr/bin/swiftc\ncompiler_sha256=d8e40107da0e2c1c59640a983faea326d5d2bddfe81f7609db14bade43c4a5b9\ncompiler_version<<EOF\nApple Swift version 6.3.2 (swift-6.3.2-RELEASE)\nTarget: arm64-apple-macosx26.0\nEOF\ntarget=armv7em-none-none-eabi\nboard=nrf52840dk/nrf52840\nsdk_path=/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4\nzephyr_revision=3568e1b6d5cdd51a6b964a2a1d6d29200fea2056\noptimization=-Osize -whole-module-optimization\nfloat_abi=hard\ndeclaration_profiles=complete\nexit_code=0\n",
+    "integrity": "Contract report integrity passed: /Users/eugene/work/GiftUI/.build/contract-reports/spec-008/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-5d08f9bf1bbe6160/nrf52840-embedded"
+  },
+  {
+    "spec": "SPEC-009",
+    "profile": "macos-dynamic",
+    "run_id": "7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-54aaea69d783eaaa",
+    "path": ".build/contract-reports/spec-009/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-54aaea69d783eaaa/macos-dynamic",
+    "metadata": "schema_version=1\nspec=SPEC-009\nprofile=macos-dynamic\nrepository_revision=7d618db707d68d3fa4f1ab1fa4facec92e63d2f5\nrepository_dirty=false\ninput_set_sha256=54aaea69d783eaaa19b522fce41d46d8620715b1981050204daed60d54b1eb52\nrun_id=7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-54aaea69d783eaaa\ninvocation=scripts/contracts/run-spec-009.sh --profile macos-dynamic\nexecution_target=present\nvalue_surface=complete\nfixture_corpus=complete\nevidence_complete=false\nremote_access=false\ndeployment=false\nservice_restart=false\nsimulator_execution=false\nconnected_target_execution=false\nflashing=false\ncompiler_path=/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc\ncompiler_sha256=2ed38571e92c0283091838c1649e27650ad9c99950288e883c7b2dc6c4ce89fb\ncompiler_version<<EOF\nswift-driver version: 1.148.6 Apple Swift version 6.3.3 (swiftlang-6.3.3.1.3 clang-2100.1.1.101)\nTarget: arm64-apple-macosx26.0\nEOF\ntarget=arm64-apple-macosx26.0\nsdk_path=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk\noptimization=-O -whole-module-optimization\nprofile_flag=-DGIFTUI_DYNAMIC_PROFILE\nexit_code=0\n",
+    "integrity": "Contract report integrity passed: /Users/eugene/work/GiftUI/.build/contract-reports/spec-009/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-54aaea69d783eaaa/macos-dynamic"
+  },
+  {
+    "spec": "SPEC-009",
+    "profile": "macos-static",
+    "run_id": "7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-54aaea69d783eaaa",
+    "path": ".build/contract-reports/spec-009/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-54aaea69d783eaaa/macos-static",
+    "metadata": "schema_version=1\nspec=SPEC-009\nprofile=macos-static\nrepository_revision=7d618db707d68d3fa4f1ab1fa4facec92e63d2f5\nrepository_dirty=false\ninput_set_sha256=54aaea69d783eaaa19b522fce41d46d8620715b1981050204daed60d54b1eb52\nrun_id=7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-54aaea69d783eaaa\ninvocation=scripts/contracts/run-spec-009.sh --profile macos-static\nexecution_target=present\nvalue_surface=complete\nfixture_corpus=complete\nevidence_complete=false\nremote_access=false\ndeployment=false\nservice_restart=false\nsimulator_execution=false\nconnected_target_execution=false\nflashing=false\ncompiler_path=/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc\ncompiler_sha256=2ed38571e92c0283091838c1649e27650ad9c99950288e883c7b2dc6c4ce89fb\ncompiler_version<<EOF\nswift-driver version: 1.148.6 Apple Swift version 6.3.3 (swiftlang-6.3.3.1.3 clang-2100.1.1.101)\nTarget: arm64-apple-macosx26.0\nEOF\ntarget=arm64-apple-macosx26.0\nsdk_path=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk\noptimization=-O -whole-module-optimization\nprofile_flag=-DGIFTUI_STATIC_PROFILE\nexit_code=0\n",
+    "integrity": "Contract report integrity passed: /Users/eugene/work/GiftUI/.build/contract-reports/spec-009/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-54aaea69d783eaaa/macos-static"
+  },
+  {
+    "spec": "SPEC-009",
+    "profile": "raspberry-pi-armv6",
+    "run_id": "7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-54aaea69d783eaaa",
+    "path": ".build/contract-reports/spec-009/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-54aaea69d783eaaa/raspberry-pi-armv6",
+    "metadata": "schema_version=1\nspec=SPEC-009\nprofile=raspberry-pi-armv6\nrepository_revision=7d618db707d68d3fa4f1ab1fa4facec92e63d2f5\nrepository_dirty=false\ninput_set_sha256=54aaea69d783eaaa19b522fce41d46d8620715b1981050204daed60d54b1eb52\nrun_id=7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-54aaea69d783eaaa\ninvocation=scripts/contracts/run-spec-009.sh --profile raspberry-pi-armv6\nexecution_target=present\nvalue_surface=complete\nfixture_corpus=complete\nevidence_complete=false\nremote_access=false\ndeployment=false\nservice_restart=false\nsimulator_execution=false\nconnected_target_execution=false\nflashing=false\ncompiler_path=/Users/eugene/work/GiftUI/.toolchains/host/swift-6.3.2-RELEASE-osx/usr/bin/swiftc\ncompiler_sha256=d8e40107da0e2c1c59640a983faea326d5d2bddfe81f7609db14bade43c4a5b9\ncompiler_version<<EOF\nApple Swift version 6.3.2 (swift-6.3.2-RELEASE)\nTarget: arm64-apple-macosx26.0\nEOF\ntarget=armv6-unknown-linux-gnueabihf\nsdk_path=/Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6\ndestination=/Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6/raspios-bookworm-static.json\noptimization=-O -whole-module-optimization\nexit_code=0\n",
+    "integrity": "Contract report integrity passed: /Users/eugene/work/GiftUI/.build/contract-reports/spec-009/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-54aaea69d783eaaa/raspberry-pi-armv6"
+  },
+  {
+    "spec": "SPEC-009",
+    "profile": "nrf52840-embedded",
+    "run_id": "7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-54aaea69d783eaaa",
+    "path": ".build/contract-reports/spec-009/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-54aaea69d783eaaa/nrf52840-embedded",
+    "metadata": "schema_version=1\nspec=SPEC-009\nprofile=nrf52840-embedded\nrepository_revision=7d618db707d68d3fa4f1ab1fa4facec92e63d2f5\nrepository_dirty=false\ninput_set_sha256=54aaea69d783eaaa19b522fce41d46d8620715b1981050204daed60d54b1eb52\nrun_id=7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-54aaea69d783eaaa\ninvocation=scripts/contracts/run-spec-009.sh --profile nrf52840-embedded\nexecution_target=present\nvalue_surface=complete\nfixture_corpus=complete\nevidence_complete=false\nremote_access=false\ndeployment=false\nservice_restart=false\nsimulator_execution=false\nconnected_target_execution=false\nflashing=false\ncompiler_path=/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.3.2-RELEASE-osx/usr/bin/swiftc\ncompiler_sha256=d8e40107da0e2c1c59640a983faea326d5d2bddfe81f7609db14bade43c4a5b9\ncompiler_version<<EOF\nApple Swift version 6.3.2 (swift-6.3.2-RELEASE)\nTarget: arm64-apple-macosx26.0\nEOF\ntarget=armv7em-none-none-eabi\nboard=nrf52840dk/nrf52840\nsdk_path=/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4\nzephyr_revision=3568e1b6d5cdd51a6b964a2a1d6d29200fea2056\noptimization=-Osize -whole-module-optimization\nfloat_abi=hard\nexit_code=0\n",
+    "integrity": "Contract report integrity passed: /Users/eugene/work/GiftUI/.build/contract-reports/spec-009/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-54aaea69d783eaaa/nrf52840-embedded"
+  },
+  {
+    "spec": "SPEC-010",
+    "profile": "macos-dynamic",
+    "run_id": "7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-f09fa73a6913497f",
+    "path": ".build/contract-reports/spec-010/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-f09fa73a6913497f/macos-dynamic",
+    "metadata": "schema_version=1\nspec=SPEC-010\nprofile=macos-dynamic\nrepository_revision=7d618db707d68d3fa4f1ab1fa4facec92e63d2f5\nrepository_dirty=false\ninput_set_sha256=f09fa73a6913497f3277205c5ac234d0380fc0695b22ec5e8850349d1316b7d0\nrun_id=7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-f09fa73a6913497f\ninvocation=scripts/contracts/run-spec-010.sh --profile macos-dynamic\npublic_contract_compile=pending\nportable_host_compile=pending\nevidence_complete=false\nremote_access=false\ndeployment=false\nservice_restart=false\nsimulator_execution=false\nconnected_target_execution=false\nflashing=false\ncompiler_path=/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc\ncompiler_sha256=2ed38571e92c0283091838c1649e27650ad9c99950288e883c7b2dc6c4ce89fb\ncompiler_version<<EOF\nswift-driver version: 1.148.6 Apple Swift version 6.3.3 (swiftlang-6.3.3.1.3 clang-2100.1.1.101)\nTarget: arm64-apple-macosx26.0\nEOF\ntarget=arm64-apple-macosx26.0\nsdk_path=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk\noptimization=-O -whole-module-optimization\nportable_host_compile=complete\nexit_code=0\n",
+    "integrity": "Contract report integrity passed: /Users/eugene/work/GiftUI/.build/contract-reports/spec-010/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-f09fa73a6913497f/macos-dynamic"
+  },
+  {
+    "spec": "SPEC-010",
+    "profile": "macos-static",
+    "run_id": "7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-f09fa73a6913497f",
+    "path": ".build/contract-reports/spec-010/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-f09fa73a6913497f/macos-static",
+    "metadata": "schema_version=1\nspec=SPEC-010\nprofile=macos-static\nrepository_revision=7d618db707d68d3fa4f1ab1fa4facec92e63d2f5\nrepository_dirty=false\ninput_set_sha256=f09fa73a6913497f3277205c5ac234d0380fc0695b22ec5e8850349d1316b7d0\nrun_id=7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-f09fa73a6913497f\ninvocation=scripts/contracts/run-spec-010.sh --profile macos-static\npublic_contract_compile=pending\nportable_host_compile=pending\nevidence_complete=false\nremote_access=false\ndeployment=false\nservice_restart=false\nsimulator_execution=false\nconnected_target_execution=false\nflashing=false\ncompiler_path=/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc\ncompiler_sha256=2ed38571e92c0283091838c1649e27650ad9c99950288e883c7b2dc6c4ce89fb\ncompiler_version<<EOF\nswift-driver version: 1.148.6 Apple Swift version 6.3.3 (swiftlang-6.3.3.1.3 clang-2100.1.1.101)\nTarget: arm64-apple-macosx26.0\nEOF\ntarget=arm64-apple-macosx26.0\nsdk_path=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk\noptimization=-O -whole-module-optimization\nportable_host_compile=complete\nexit_code=0\n",
+    "integrity": "Contract report integrity passed: /Users/eugene/work/GiftUI/.build/contract-reports/spec-010/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-f09fa73a6913497f/macos-static"
+  },
+  {
+    "spec": "SPEC-010",
+    "profile": "raspberry-pi-armv6",
+    "run_id": "7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-f09fa73a6913497f",
+    "path": ".build/contract-reports/spec-010/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-f09fa73a6913497f/raspberry-pi-armv6",
+    "metadata": "schema_version=1\nspec=SPEC-010\nprofile=raspberry-pi-armv6\nrepository_revision=7d618db707d68d3fa4f1ab1fa4facec92e63d2f5\nrepository_dirty=false\ninput_set_sha256=f09fa73a6913497f3277205c5ac234d0380fc0695b22ec5e8850349d1316b7d0\nrun_id=7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-f09fa73a6913497f\ninvocation=scripts/contracts/run-spec-010.sh --profile raspberry-pi-armv6\npublic_contract_compile=pending\nportable_host_compile=pending\nevidence_complete=false\nremote_access=false\ndeployment=false\nservice_restart=false\nsimulator_execution=false\nconnected_target_execution=false\nflashing=false\ncompiler_path=/Users/eugene/work/GiftUI/.toolchains/host/swift-6.3.2-RELEASE-osx/usr/bin/swiftc\ncompiler_sha256=d8e40107da0e2c1c59640a983faea326d5d2bddfe81f7609db14bade43c4a5b9\ncompiler_version<<EOF\nApple Swift version 6.3.2 (swift-6.3.2-RELEASE)\nTarget: arm64-apple-macosx26.0\nEOF\ntarget=armv6-unknown-linux-gnueabihf\ndestination=/Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6/raspios-bookworm-static.json\noptimization=-O -whole-module-optimization\nportable_host_compile=complete\nexit_code=0\n",
+    "integrity": "Contract report integrity passed: /Users/eugene/work/GiftUI/.build/contract-reports/spec-010/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-f09fa73a6913497f/raspberry-pi-armv6"
+  },
+  {
+    "spec": "SPEC-010",
+    "profile": "nrf52840-embedded",
+    "run_id": "7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-f09fa73a6913497f",
+    "path": ".build/contract-reports/spec-010/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-f09fa73a6913497f/nrf52840-embedded",
+    "metadata": "schema_version=1\nspec=SPEC-010\nprofile=nrf52840-embedded\nrepository_revision=7d618db707d68d3fa4f1ab1fa4facec92e63d2f5\nrepository_dirty=false\ninput_set_sha256=f09fa73a6913497f3277205c5ac234d0380fc0695b22ec5e8850349d1316b7d0\nrun_id=7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-f09fa73a6913497f\ninvocation=scripts/contracts/run-spec-010.sh --profile nrf52840-embedded\npublic_contract_compile=pending\nportable_host_compile=pending\nevidence_complete=false\nremote_access=false\ndeployment=false\nservice_restart=false\nsimulator_execution=false\nconnected_target_execution=false\nflashing=false\ncompiler_path=/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.3.2-RELEASE-osx/usr/bin/swiftc\ncompiler_sha256=d8e40107da0e2c1c59640a983faea326d5d2bddfe81f7609db14bade43c4a5b9\ncompiler_version<<EOF\nApple Swift version 6.3.2 (swift-6.3.2-RELEASE)\nTarget: arm64-apple-macosx26.0\nEOF\ntarget=armv7em-none-none-eabi\nboard=nrf52840dk/nrf52840\noptimization=-Osize -whole-module-optimization\nportable_host_compile=complete\nexit_code=0\n",
+    "integrity": "Contract report integrity passed: /Users/eugene/work/GiftUI/.build/contract-reports/spec-010/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-f09fa73a6913497f/nrf52840-embedded"
+  },
+  {
+    "spec": "SPEC-011",
+    "profile": "macos-dynamic",
+    "run_id": "7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-b4520a70128f5b8d",
+    "path": ".build/contract-reports/spec-011/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-b4520a70128f5b8d/macos-dynamic",
+    "metadata": "schema_version=2\ninput_set_sha256=b4520a70128f5b8d2d6ac0830e8381445bd9f9910134336b0de6e371823f9cd6\nrun_id=7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-b4520a70128f5b8d\nreport_directory=.build/contract-reports/spec-011/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-b4520a70128f5b8d/macos-dynamic\nspec=SPEC-011\nprofile=macos-dynamic\nrepository_revision=7d618db707d68d3fa4f1ab1fa4facec92e63d2f5\nrepository_dirty=false\nhost_execution=true\ncross_build_inspection=false\nsimulator_execution=false\nconnected_target_execution=false\nflashing=false\nstatus=complete\nexit_code=0\nblocking_count=0\n",
+    "integrity": "Contract report integrity passed: /Users/eugene/work/GiftUI/.build/contract-reports/spec-011/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-b4520a70128f5b8d/macos-dynamic"
+  },
+  {
+    "spec": "SPEC-011",
+    "profile": "macos-static",
+    "run_id": "7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-b4520a70128f5b8d",
+    "path": ".build/contract-reports/spec-011/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-b4520a70128f5b8d/macos-static",
+    "metadata": "schema_version=2\ninput_set_sha256=b4520a70128f5b8d2d6ac0830e8381445bd9f9910134336b0de6e371823f9cd6\nrun_id=7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-b4520a70128f5b8d\nreport_directory=.build/contract-reports/spec-011/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-b4520a70128f5b8d/macos-static\nspec=SPEC-011\nprofile=macos-static\nrepository_revision=7d618db707d68d3fa4f1ab1fa4facec92e63d2f5\nrepository_dirty=false\nhost_execution=true\ncross_build_inspection=false\nsimulator_execution=false\nconnected_target_execution=false\nflashing=false\nstatus=complete\nexit_code=0\nblocking_count=0\n",
+    "integrity": "Contract report integrity passed: /Users/eugene/work/GiftUI/.build/contract-reports/spec-011/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-b4520a70128f5b8d/macos-static"
+  },
+  {
+    "spec": "SPEC-011",
+    "profile": "raspberry-pi-armv6",
+    "run_id": "7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-b4520a70128f5b8d",
+    "path": ".build/contract-reports/spec-011/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-b4520a70128f5b8d/raspberry-pi-armv6",
+    "metadata": "schema_version=2\ninput_set_sha256=b4520a70128f5b8d2d6ac0830e8381445bd9f9910134336b0de6e371823f9cd6\nrun_id=7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-b4520a70128f5b8d\nreport_directory=.build/contract-reports/spec-011/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-b4520a70128f5b8d/raspberry-pi-armv6\nspec=SPEC-011\nprofile=raspberry-pi-armv6\nrepository_revision=7d618db707d68d3fa4f1ab1fa4facec92e63d2f5\nrepository_dirty=false\nhost_execution=false\ncross_build_inspection=true\nsimulator_execution=false\nconnected_target_execution=false\nflashing=false\nstatus=complete\nexit_code=0\nblocking_count=0\n",
+    "integrity": "Contract report integrity passed: /Users/eugene/work/GiftUI/.build/contract-reports/spec-011/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-b4520a70128f5b8d/raspberry-pi-armv6"
+  },
+  {
+    "spec": "SPEC-011",
+    "profile": "nrf52840-embedded",
+    "run_id": "7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-b4520a70128f5b8d",
+    "path": ".build/contract-reports/spec-011/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-b4520a70128f5b8d/nrf52840-embedded",
+    "metadata": "schema_version=2\ninput_set_sha256=b4520a70128f5b8d2d6ac0830e8381445bd9f9910134336b0de6e371823f9cd6\nrun_id=7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-b4520a70128f5b8d\nreport_directory=.build/contract-reports/spec-011/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-b4520a70128f5b8d/nrf52840-embedded\nspec=SPEC-011\nprofile=nrf52840-embedded\nrepository_revision=7d618db707d68d3fa4f1ab1fa4facec92e63d2f5\nrepository_dirty=false\nhost_execution=false\ncross_build_inspection=true\nsimulator_execution=false\nconnected_target_execution=false\nflashing=false\nstatus=complete\nexit_code=0\nblocking_count=0\n",
+    "integrity": "Contract report integrity passed: /Users/eugene/work/GiftUI/.build/contract-reports/spec-011/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-b4520a70128f5b8d/nrf52840-embedded"
+  },
+  {
+    "spec": "SPEC-012",
+    "profile": "macos-dynamic",
+    "run_id": "7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-545680edf6e8b29f",
+    "path": ".build/contract-reports/spec-012/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-545680edf6e8b29f/macos-dynamic",
+    "metadata": "schema_version=1\nspec=SPEC-012\nprofile=macos-dynamic\nrepository_revision=7d618db707d68d3fa4f1ab1fa4facec92e63d2f5\nrepository_dirty=false\ninput_set_sha256=545680edf6e8b29f26f7793ac246b7ff5815c0317c4ca217cc38b7dbe595f782\nrun_id=7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-545680edf6e8b29f\ninvocation=scripts/contracts/run-spec-012.sh --profile macos-dynamic\nfixture_schema=complete\nfixture_corpus=complete\nevidence_complete=false\nremote_access=false\ndeployment=false\nservice_restart=false\nsimulator_execution=false\nconnected_target_execution=false\nflashing=false\ncompiler_path=/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc\ncompiler_sha256=2ed38571e92c0283091838c1649e27650ad9c99950288e883c7b2dc6c4ce89fb\ncompiler_version<<EOF\nswift-driver version: 1.148.6 Apple Swift version 6.3.3 (swiftlang-6.3.3.1.3 clang-2100.1.1.101)\nTarget: arm64-apple-macosx26.0\nEOF\ntarget=arm64-apple-macosx26.0\nsdk_path=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk\noptimization=-O -whole-module-optimization\nprofile_flag=-DGIFTUI_DYNAMIC_PROFILE\nexit_code=0\n",
+    "integrity": "Contract report integrity passed: /Users/eugene/work/GiftUI/.build/contract-reports/spec-012/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-545680edf6e8b29f/macos-dynamic"
+  },
+  {
+    "spec": "SPEC-012",
+    "profile": "macos-static",
+    "run_id": "7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-545680edf6e8b29f",
+    "path": ".build/contract-reports/spec-012/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-545680edf6e8b29f/macos-static",
+    "metadata": "schema_version=1\nspec=SPEC-012\nprofile=macos-static\nrepository_revision=7d618db707d68d3fa4f1ab1fa4facec92e63d2f5\nrepository_dirty=false\ninput_set_sha256=545680edf6e8b29f26f7793ac246b7ff5815c0317c4ca217cc38b7dbe595f782\nrun_id=7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-545680edf6e8b29f\ninvocation=scripts/contracts/run-spec-012.sh --profile macos-static\nfixture_schema=complete\nfixture_corpus=complete\nevidence_complete=false\nremote_access=false\ndeployment=false\nservice_restart=false\nsimulator_execution=false\nconnected_target_execution=false\nflashing=false\ncompiler_path=/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc\ncompiler_sha256=2ed38571e92c0283091838c1649e27650ad9c99950288e883c7b2dc6c4ce89fb\ncompiler_version<<EOF\nswift-driver version: 1.148.6 Apple Swift version 6.3.3 (swiftlang-6.3.3.1.3 clang-2100.1.1.101)\nTarget: arm64-apple-macosx26.0\nEOF\ntarget=arm64-apple-macosx26.0\nsdk_path=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk\noptimization=-O -whole-module-optimization\nprofile_flag=-DGIFTUI_STATIC_PROFILE\nexit_code=0\n",
+    "integrity": "Contract report integrity passed: /Users/eugene/work/GiftUI/.build/contract-reports/spec-012/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-545680edf6e8b29f/macos-static"
+  },
+  {
+    "spec": "SPEC-012",
+    "profile": "raspberry-pi-armv6",
+    "run_id": "7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-545680edf6e8b29f",
+    "path": ".build/contract-reports/spec-012/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-545680edf6e8b29f/raspberry-pi-armv6",
+    "metadata": "schema_version=1\nspec=SPEC-012\nprofile=raspberry-pi-armv6\nrepository_revision=7d618db707d68d3fa4f1ab1fa4facec92e63d2f5\nrepository_dirty=false\ninput_set_sha256=545680edf6e8b29f26f7793ac246b7ff5815c0317c4ca217cc38b7dbe595f782\nrun_id=7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-545680edf6e8b29f\ninvocation=scripts/contracts/run-spec-012.sh --profile raspberry-pi-armv6\nfixture_schema=complete\nfixture_corpus=complete\nevidence_complete=false\nremote_access=false\ndeployment=false\nservice_restart=false\nsimulator_execution=false\nconnected_target_execution=false\nflashing=false\ncompiler_path=/Users/eugene/work/GiftUI/.toolchains/host/swift-6.3.2-RELEASE-osx/usr/bin/swiftc\ncompiler_sha256=d8e40107da0e2c1c59640a983faea326d5d2bddfe81f7609db14bade43c4a5b9\ncompiler_version<<EOF\nApple Swift version 6.3.2 (swift-6.3.2-RELEASE)\nTarget: arm64-apple-macosx26.0\nEOF\ntarget=armv6-unknown-linux-gnueabihf\nsdk_path=/Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6\ndestination=/Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6/raspios-bookworm-static.json\noptimization=-O -whole-module-optimization\nexit_code=0\n",
+    "integrity": "Contract report integrity passed: /Users/eugene/work/GiftUI/.build/contract-reports/spec-012/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-545680edf6e8b29f/raspberry-pi-armv6"
+  },
+  {
+    "spec": "SPEC-012",
+    "profile": "nrf52840-embedded",
+    "run_id": "7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-545680edf6e8b29f",
+    "path": ".build/contract-reports/spec-012/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-545680edf6e8b29f/nrf52840-embedded",
+    "metadata": "schema_version=1\nspec=SPEC-012\nprofile=nrf52840-embedded\nrepository_revision=7d618db707d68d3fa4f1ab1fa4facec92e63d2f5\nrepository_dirty=false\ninput_set_sha256=545680edf6e8b29f26f7793ac246b7ff5815c0317c4ca217cc38b7dbe595f782\nrun_id=7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-545680edf6e8b29f\ninvocation=scripts/contracts/run-spec-012.sh --profile nrf52840-embedded\nfixture_schema=complete\nfixture_corpus=complete\nevidence_complete=false\nremote_access=false\ndeployment=false\nservice_restart=false\nsimulator_execution=false\nconnected_target_execution=false\nflashing=false\ncompiler_path=/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.3.2-RELEASE-osx/usr/bin/swiftc\ncompiler_sha256=d8e40107da0e2c1c59640a983faea326d5d2bddfe81f7609db14bade43c4a5b9\ncompiler_version<<EOF\nApple Swift version 6.3.2 (swift-6.3.2-RELEASE)\nTarget: arm64-apple-macosx26.0\nEOF\ntarget=armv7em-none-none-eabi\nboard=nrf52840dk/nrf52840\nsdk_path=/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4\nzephyr_revision=3568e1b6d5cdd51a6b964a2a1d6d29200fea2056\noptimization=-Osize -whole-module-optimization\nfloat_abi=hard\nexit_code=0\n",
+    "integrity": "Contract report integrity passed: /Users/eugene/work/GiftUI/.build/contract-reports/spec-012/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-545680edf6e8b29f/nrf52840-embedded"
+  },
+  {
+    "spec": "SPEC-013",
+    "profile": "macos-dynamic",
+    "run_id": "7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-3b364f02cbb0d3ce",
+    "path": ".build/contract-reports/spec-013/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-3b364f02cbb0d3ce/macos-dynamic",
+    "metadata": "schema_version=2\ninput_set_sha256=3b364f02cbb0d3cedb14b79cb997a5bcde2c0299cc82eaa0c2127dcb2f9249ce\nrun_id=7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-3b364f02cbb0d3ce\nreport_directory=.build/contract-reports/spec-013/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-3b364f02cbb0d3ce/macos-dynamic\nspec=SPEC-013\nprofile=macos-dynamic\nrepository_revision=7d618db707d68d3fa4f1ab1fa4facec92e63d2f5\nrepository_dirty=false\ninvocation=scripts/contracts/run-spec-013.sh --profile macos-dynamic\nremote_access=false\ndeployment=false\nservice_restart=false\nsimulator_execution=false\nconnected_target_execution=false\nflashing=false\nstatus=complete\nexit_code=0\nblocking_count=0\n",
+    "integrity": "Contract report integrity passed: /Users/eugene/work/GiftUI/.build/contract-reports/spec-013/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-3b364f02cbb0d3ce/macos-dynamic"
+  },
+  {
+    "spec": "SPEC-013",
+    "profile": "macos-static",
+    "run_id": "7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-3b364f02cbb0d3ce",
+    "path": ".build/contract-reports/spec-013/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-3b364f02cbb0d3ce/macos-static",
+    "metadata": "schema_version=2\ninput_set_sha256=3b364f02cbb0d3cedb14b79cb997a5bcde2c0299cc82eaa0c2127dcb2f9249ce\nrun_id=7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-3b364f02cbb0d3ce\nreport_directory=.build/contract-reports/spec-013/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-3b364f02cbb0d3ce/macos-static\nspec=SPEC-013\nprofile=macos-static\nrepository_revision=7d618db707d68d3fa4f1ab1fa4facec92e63d2f5\nrepository_dirty=false\ninvocation=scripts/contracts/run-spec-013.sh --profile macos-static\nremote_access=false\ndeployment=false\nservice_restart=false\nsimulator_execution=false\nconnected_target_execution=false\nflashing=false\nstatus=complete\nexit_code=0\nblocking_count=0\n",
+    "integrity": "Contract report integrity passed: /Users/eugene/work/GiftUI/.build/contract-reports/spec-013/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-3b364f02cbb0d3ce/macos-static"
+  },
+  {
+    "spec": "SPEC-013",
+    "profile": "raspberry-pi-armv6",
+    "run_id": "7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-3b364f02cbb0d3ce",
+    "path": ".build/contract-reports/spec-013/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-3b364f02cbb0d3ce/raspberry-pi-armv6",
+    "metadata": "schema_version=2\ninput_set_sha256=3b364f02cbb0d3cedb14b79cb997a5bcde2c0299cc82eaa0c2127dcb2f9249ce\nrun_id=7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-3b364f02cbb0d3ce\nreport_directory=.build/contract-reports/spec-013/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-3b364f02cbb0d3ce/raspberry-pi-armv6\nspec=SPEC-013\nprofile=raspberry-pi-armv6\nrepository_revision=7d618db707d68d3fa4f1ab1fa4facec92e63d2f5\nrepository_dirty=false\ninvocation=scripts/contracts/run-spec-013.sh --profile raspberry-pi-armv6\nremote_access=false\ndeployment=false\nservice_restart=false\nsimulator_execution=false\nconnected_target_execution=false\nflashing=false\nstatus=complete\nexit_code=0\nblocking_count=0\n",
+    "integrity": "Contract report integrity passed: /Users/eugene/work/GiftUI/.build/contract-reports/spec-013/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-3b364f02cbb0d3ce/raspberry-pi-armv6"
+  },
+  {
+    "spec": "SPEC-013",
+    "profile": "nrf52840-embedded",
+    "run_id": "7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-3b364f02cbb0d3ce",
+    "path": ".build/contract-reports/spec-013/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-3b364f02cbb0d3ce/nrf52840-embedded",
+    "metadata": "schema_version=2\ninput_set_sha256=3b364f02cbb0d3cedb14b79cb997a5bcde2c0299cc82eaa0c2127dcb2f9249ce\nrun_id=7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-3b364f02cbb0d3ce\nreport_directory=.build/contract-reports/spec-013/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-3b364f02cbb0d3ce/nrf52840-embedded\nspec=SPEC-013\nprofile=nrf52840-embedded\nrepository_revision=7d618db707d68d3fa4f1ab1fa4facec92e63d2f5\nrepository_dirty=false\ninvocation=scripts/contracts/run-spec-013.sh --profile nrf52840-embedded\nremote_access=false\ndeployment=false\nservice_restart=false\nsimulator_execution=false\nconnected_target_execution=false\nflashing=false\nstatus=complete\nexit_code=0\nblocking_count=0\n",
+    "integrity": "Contract report integrity passed: /Users/eugene/work/GiftUI/.build/contract-reports/spec-013/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-3b364f02cbb0d3ce/nrf52840-embedded"
+  },
+  {
+    "spec": "SPEC-014",
+    "profile": "macos-dynamic",
+    "run_id": "7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-98c48dfacb021062",
+    "path": ".build/spec-014/reports/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-98c48dfacb021062/macos-dynamic",
+    "metadata": "schema_version=2\ninput_set_sha256=98c48dfacb021062104df45b5c24374a710658ea03ec4c262829b614c7b135fd\nrun_id=7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-98c48dfacb021062\nreport_directory=.build/spec-014/reports/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-98c48dfacb021062/macos-dynamic\nspec=SPEC-014\nprofile=macos-dynamic\nrepository_revision=7d618db707d68d3fa4f1ab1fa4facec92e63d2f5\nrepository_dirty=false\ninvocation=scripts/contracts/run-spec-014.sh --profile macos-dynamic\noutput_root=.build/spec-014\nremote_access=false\ndeployment=false\nservice_restart=false\nsimulator_execution=false\nconnected_target_execution=false\nflashing=false\ncompiler_path=/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc\ncompiler_version=swift-driver version: 1.148.6 Apple Swift version 6.3.3 (swiftlang-6.3.3.1.3 clang-2100.1.1.101) Target: arm64-apple-macosx26.0\nsdk_path=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk\ntarget=arm64-apple-macosx26.0\noptimization=-O -whole-module-optimization\nstatus=passed\nexit_code=0\nblocking_count=0\n",
+    "integrity": "Contract report integrity passed: /Users/eugene/work/GiftUI/.build/spec-014/reports/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-98c48dfacb021062/macos-dynamic"
+  },
+  {
+    "spec": "SPEC-014",
+    "profile": "macos-static",
+    "run_id": "7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-98c48dfacb021062",
+    "path": ".build/spec-014/reports/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-98c48dfacb021062/macos-static",
+    "metadata": "schema_version=2\ninput_set_sha256=98c48dfacb021062104df45b5c24374a710658ea03ec4c262829b614c7b135fd\nrun_id=7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-98c48dfacb021062\nreport_directory=.build/spec-014/reports/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-98c48dfacb021062/macos-static\nspec=SPEC-014\nprofile=macos-static\nrepository_revision=7d618db707d68d3fa4f1ab1fa4facec92e63d2f5\nrepository_dirty=false\ninvocation=scripts/contracts/run-spec-014.sh --profile macos-static\noutput_root=.build/spec-014\nremote_access=false\ndeployment=false\nservice_restart=false\nsimulator_execution=false\nconnected_target_execution=false\nflashing=false\ncompiler_path=/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc\ncompiler_version=swift-driver version: 1.148.6 Apple Swift version 6.3.3 (swiftlang-6.3.3.1.3 clang-2100.1.1.101) Target: arm64-apple-macosx26.0\nsdk_path=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk\ntarget=arm64-apple-macosx26.0\noptimization=-O -whole-module-optimization\nstatus=passed\nexit_code=0\nblocking_count=0\n",
+    "integrity": "Contract report integrity passed: /Users/eugene/work/GiftUI/.build/spec-014/reports/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-98c48dfacb021062/macos-static"
+  },
+  {
+    "spec": "SPEC-014",
+    "profile": "raspberry-pi-armv6",
+    "run_id": "7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-98c48dfacb021062",
+    "path": ".build/spec-014/reports/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-98c48dfacb021062/raspberry-pi-armv6",
+    "metadata": "schema_version=2\ninput_set_sha256=98c48dfacb021062104df45b5c24374a710658ea03ec4c262829b614c7b135fd\nrun_id=7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-98c48dfacb021062\nreport_directory=.build/spec-014/reports/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-98c48dfacb021062/raspberry-pi-armv6\nspec=SPEC-014\nprofile=raspberry-pi-armv6\nrepository_revision=7d618db707d68d3fa4f1ab1fa4facec92e63d2f5\nrepository_dirty=false\ninvocation=scripts/contracts/run-spec-014.sh --profile raspberry-pi-armv6\noutput_root=.build/spec-014\nremote_access=false\ndeployment=false\nservice_restart=false\nsimulator_execution=false\nconnected_target_execution=false\nflashing=false\ncompiler_version=6.3.2\ntarget=armv6-unknown-linux-gnueabihf\nsdk_path=/Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6\noptimization=-O -whole-module-optimization\nstatus=passed\nexit_code=0\nblocking_count=0\n",
+    "integrity": "Contract report integrity passed: /Users/eugene/work/GiftUI/.build/spec-014/reports/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-98c48dfacb021062/raspberry-pi-armv6"
+  },
+  {
+    "spec": "SPEC-014",
+    "profile": "nrf52840-embedded",
+    "run_id": "7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-98c48dfacb021062",
+    "path": ".build/spec-014/reports/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-98c48dfacb021062/nrf52840-embedded",
+    "metadata": "schema_version=2\ninput_set_sha256=98c48dfacb021062104df45b5c24374a710658ea03ec4c262829b614c7b135fd\nrun_id=7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-98c48dfacb021062\nreport_directory=.build/spec-014/reports/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-98c48dfacb021062/nrf52840-embedded\nspec=SPEC-014\nprofile=nrf52840-embedded\nrepository_revision=7d618db707d68d3fa4f1ab1fa4facec92e63d2f5\nrepository_dirty=false\ninvocation=scripts/contracts/run-spec-014.sh --profile nrf52840-embedded\noutput_root=.build/spec-014\nremote_access=false\ndeployment=false\nservice_restart=false\nsimulator_execution=false\nconnected_target_execution=false\nflashing=false\ncompiler_version=6.3.2\ntarget=armv7em-none-none-eabi\nboard=nrf52840dk/nrf52840\nsdk_path=/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4\noptimization=-Osize -whole-module-optimization\nfloat_abi=hard\nstatus=passed\nexit_code=0\nblocking_count=0\n",
+    "integrity": "Contract report integrity passed: /Users/eugene/work/GiftUI/.build/spec-014/reports/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-98c48dfacb021062/nrf52840-embedded"
+  },
+  {
+    "spec": "SPEC-015",
+    "profile": "macos-dynamic",
+    "run_id": "7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-b4520a70128f5b8d",
+    "path": ".build/contract-reports/spec-015/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-b4520a70128f5b8d/macos-dynamic",
+    "metadata": "schema_version=2\ninput_set_sha256=b4520a70128f5b8d2d6ac0830e8381445bd9f9910134336b0de6e371823f9cd6\nrun_id=7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-b4520a70128f5b8d\nreport_directory=.build/contract-reports/spec-015/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-b4520a70128f5b8d/macos-dynamic\nspec=SPEC-015\nprofile=macos-dynamic\nrepository_revision=7d618db707d68d3fa4f1ab1fa4facec92e63d2f5\nrepository_dirty=false\ninvocation=scripts/contracts/run-spec-015.sh --profile macos-dynamic\nremote_access=false\ndeployment=false\nservice_restart=false\nconnected_target_execution=false\nflashing=false\n",
+    "integrity": "Contract report integrity passed: /Users/eugene/work/GiftUI/.build/contract-reports/spec-015/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-b4520a70128f5b8d/macos-dynamic"
+  },
+  {
+    "spec": "SPEC-015",
+    "profile": "macos-static",
+    "run_id": "7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-b4520a70128f5b8d",
+    "path": ".build/contract-reports/spec-015/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-b4520a70128f5b8d/macos-static",
+    "metadata": "schema_version=2\ninput_set_sha256=b4520a70128f5b8d2d6ac0830e8381445bd9f9910134336b0de6e371823f9cd6\nrun_id=7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-b4520a70128f5b8d\nreport_directory=.build/contract-reports/spec-015/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-b4520a70128f5b8d/macos-static\nspec=SPEC-015\nprofile=macos-static\nrepository_revision=7d618db707d68d3fa4f1ab1fa4facec92e63d2f5\nrepository_dirty=false\ninvocation=scripts/contracts/run-spec-015.sh --profile macos-static\nremote_access=false\ndeployment=false\nservice_restart=false\nconnected_target_execution=false\nflashing=false\n",
+    "integrity": "Contract report integrity passed: /Users/eugene/work/GiftUI/.build/contract-reports/spec-015/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-b4520a70128f5b8d/macos-static"
+  },
+  {
+    "spec": "SPEC-015",
+    "profile": "raspberry-pi-armv6",
+    "run_id": "7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-b4520a70128f5b8d",
+    "path": ".build/contract-reports/spec-015/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-b4520a70128f5b8d/raspberry-pi-armv6",
+    "metadata": "schema_version=2\ninput_set_sha256=b4520a70128f5b8d2d6ac0830e8381445bd9f9910134336b0de6e371823f9cd6\nrun_id=7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-b4520a70128f5b8d\nreport_directory=.build/contract-reports/spec-015/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-b4520a70128f5b8d/raspberry-pi-armv6\nspec=SPEC-015\nprofile=raspberry-pi-armv6\nrepository_revision=7d618db707d68d3fa4f1ab1fa4facec92e63d2f5\nrepository_dirty=false\ninvocation=scripts/contracts/run-spec-015.sh --profile raspberry-pi-armv6\nremote_access=false\ndeployment=false\nservice_restart=false\nconnected_target_execution=false\nflashing=false\n",
+    "integrity": "Contract report integrity passed: /Users/eugene/work/GiftUI/.build/contract-reports/spec-015/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-b4520a70128f5b8d/raspberry-pi-armv6"
+  },
+  {
+    "spec": "SPEC-015",
+    "profile": "nrf52840-embedded",
+    "run_id": "7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-b4520a70128f5b8d",
+    "path": ".build/contract-reports/spec-015/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-b4520a70128f5b8d/nrf52840-embedded",
+    "metadata": "schema_version=2\ninput_set_sha256=b4520a70128f5b8d2d6ac0830e8381445bd9f9910134336b0de6e371823f9cd6\nrun_id=7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-b4520a70128f5b8d\nreport_directory=.build/contract-reports/spec-015/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-b4520a70128f5b8d/nrf52840-embedded\nspec=SPEC-015\nprofile=nrf52840-embedded\nrepository_revision=7d618db707d68d3fa4f1ab1fa4facec92e63d2f5\nrepository_dirty=false\ninvocation=scripts/contracts/run-spec-015.sh --profile nrf52840-embedded\nremote_access=false\ndeployment=false\nservice_restart=false\nconnected_target_execution=false\nflashing=false\n",
+    "integrity": "Contract report integrity passed: /Users/eugene/work/GiftUI/.build/contract-reports/spec-015/7d618db707d68d3fa4f1ab1fa4facec92e63d2f5-b4520a70128f5b8d/nrf52840-embedded"
+  }
+]

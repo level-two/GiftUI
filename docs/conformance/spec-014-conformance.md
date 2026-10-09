@@ -6,7 +6,7 @@ status: complete
 reviewers:
   - codex
 created: 2026-09-13
-updated: 2026-10-03
+updated: 2026-10-09
 implementation_plan: ../implementation-plans/spec-014-implementation-plan.md
 related_future_work: [FW-010, FW-014]
 related_explorations: []
@@ -177,3 +177,16 @@ supports requesting an explicit human `implemented` transition for this owner.
 ## Human implemented-transition authorization — 2026-10-03
 
 Eugene explicitly approved SPEC-014's `implementing → implemented` transition as one of the ten named owner transitions. [The approval record](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/iteration-closeout-20261003/owner-transition-approval.md) supersedes prior statements that authorization was pending. The Specification is now implemented; connected application and MVP gates retain their distinct scope.
+
+## I3-T01 correction regression — 2026-10-09
+
+[The bounded correction report](../iterations/iteration-003-review/i3-t01-result.md)
+records the existing-contract scheduling/raster/layout changes and their exact
+commits. The changed-path mapping is BI-003, 006–009, 011 and 013–014; unchanged
+criteria retain their prior dispositions. All 74 aggregate checks and 60
+owner/profile report-integrity checks pass on `7d618db7`, with focused boundary,
+ordering, pixel, storage/reuse and target-build evidence in that report.
+This is hardware-free regression evidence on the generated production graph.
+It does not broaden earlier exceptions or prove connected timing, complete
+stack/lifetime safety, runtime graph migration or iteration-3 closure.
+The Specification remains `implemented` under its existing approval.

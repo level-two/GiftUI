@@ -5,7 +5,7 @@ title: SPEC-015 Conformance Report
 status: complete
 reviewers: [codex]
 created: 2026-09-19
-updated: 2026-10-05
+updated: 2026-10-09
 implementation_plan: ../implementation-plans/spec-015-implementation-plan.md
 related_future_work:
   - FW-022
@@ -278,3 +278,16 @@ Together with nRF packet 16, T12.4/T11.7 and final T11.8 are complete.
 [Final criterion/closure record](../iterations/iteration-002-cleanup/evidence/23-closeout/result.md)
 retains the original exception and deferred boundaries; no Specification
 lifecycle transition or broader physical/timing/stack conformance follows.
+
+## I3-T01 correction regression — 2026-10-09
+
+[The bounded correction report](../iterations/iteration-003-review/i3-t01-result.md)
+records the existing-contract scheduling/raster/layout changes and their exact
+commits. The changed-path mapping is HC-009–011 and 014–018; unchanged
+criteria retain their prior dispositions. All 74 aggregate checks and 60
+owner/profile report-integrity checks pass on `7d618db7`, with focused boundary,
+ordering, pixel, storage/reuse and target-build evidence in that report.
+This is hardware-free regression evidence on the generated production graph.
+It does not broaden earlier exceptions or prove connected timing, complete
+stack/lifetime safety, runtime graph migration or iteration-3 closure.
+The Specification remains `implemented` under its existing approval.
