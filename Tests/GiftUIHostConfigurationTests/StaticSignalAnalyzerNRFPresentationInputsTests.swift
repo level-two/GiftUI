@@ -88,7 +88,9 @@ import Testing
                 admission: admission,
                 failureFactory: DefaultSignalAnalyzerOperationalFailureFactory()
             )
-            var sourceClock: UInt64 = 260_000
+            // Start runs at the first 250 ms opportunity. The source epoch
+            // begins there, without adding the following host poll interval.
+            var sourceClock: UInt64 = 250_000
             var transitionDeadline: UInt64 = 0
             var delivered = 0
             for window in 0 ... 817 {

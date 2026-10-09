@@ -111,3 +111,15 @@ all original interruption/lock/evidence assertions remain. Focused validation:
 zero failures. The original aggregate was interrupted at SPEC-013 nRF checks
 (exit 130) before restarting on the repair; it is not passing evidence.
 This is an in-budget gate repair, not another iteration task.
+
+## Reference-clock alignment
+
+The next aggregate run `run-wnkdTKsu` passed the shared checks and all 45
+macOS/Pi owner-profile checks, then exposed the independent Static reference's
+old 260 ms source anchor. Production now anchors Start at its 250 ms service
+opportunity; adding the next 10 ms poll to the reference retained the corrected
+defect. The fixture now uses 250 ms, with the exact frame/action and reviewed
+pixel comparisons unchanged. That run was interrupted after the mismatch
+(exit 130) and is retained as diagnostic evidence, not a passing gate.
+Focused validation passes: the full Static reference workload and all 818
+ordered frame / 12 action comparisons against the production rehearsal.
