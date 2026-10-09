@@ -26,7 +26,7 @@ superseded_by: null
 
 ## Iteration 3 correction task — 2026-10-09
 
-**Ready — I3-T01 launch, 2026-10-09.** I3-T01.2 regression participates in the
+**Active — I3-T01.2 implemented, focused checks pass; integration pending.** I3-T01.2 regression participates in the
 [single bounded task](../iterations/iteration-003-review/memory-efficiency-plan.md#i3-t01--correct-scheduling-and-reduce-rasterlayout-costs).
 Eugene requested proceeding with iteration-3 tasks and committing each step.
 The existing Specification remains `implemented`; historical ledgers below are preserved.

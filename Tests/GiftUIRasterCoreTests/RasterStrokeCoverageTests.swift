@@ -508,3 +508,114 @@ func strokeCoverageStopsAtFirstReplacementRefusal() {
     #expect(result == .replacementRefused)
     #expect(calls == 2)
 }
+
+private final class StrokeReadCounter {
+    var points = 0
+}
+
+private struct CountedStroke: StraightLineStrokeView {
+    let base: FixtureStroke
+    let counter: StrokeReadCounter
+    var header: StraightLineStrokeHeader { base.header }
+    func point(at index: UInt16) -> Point? {
+        counter.points += 1
+        return base.point(at: index)
+    }
+    func subpath(at index: UInt16) -> SubpathRange? { base.subpath(at: index) }
+}
+
+@Test func unitOrthogonalCoverageMatchesIndependentCellUnionAcrossChunks() {
+    let path = [
+        point(-4, 3), point(63, 3), point(63, 3), point(63, 7),
+        point(128, 7), point(128, 2), point(185, 2), point(128, 2),
+    ]
+    for width: Int32 in [63, 64, 65, 193] {
+        for join: LineJoin in [.round, .miter] {
+            for cap: LineCap in [.butt, .round] {
+                let bounds = rect(0, 0, width, 12)
+                let clip = rect(-2, 0, 188, 9)
+                let descriptor = RasterSurfaceDescriptor(
+                    bounds: bounds, encoding: .rgb565BigEndian,
+                    bytesPerRow: UInt32(width) * 2, realization: .fullSurface,
+                    regionWidth: UInt16(width), regionHeight: 12
+                )!
+                let counter = StrokeReadCounter()
+                let stroke = CountedStroke(
+                    base: FixtureStroke(
+                        header: StraightLineStrokeHeader(
+                            color: .red, lineWidth: 1, lineCap: cap, lineJoin: join,
+                            surfaceOrigin: point(0, 0), inheritedClip: clip,
+                            pointCount: UInt16(path.count), subpathCount: 1
+                        ), points: path,
+                        subpaths: [SubpathRange(firstPoint: 0, pointCount: UInt16(path.count))!]
+                    ), counter: counter
+                )
+                // Independent unit-grid oracle: segment rectangles and, for
+                // a right-angle miter, the four cells meeting at its vertex.
+                let unique = path.enumerated().filter {
+                    $0.offset == 0 || path[$0.offset - 1] != $0.element
+                }.map(\.element)
+                var expected: [Point] = []
+                for y in bounds.minY ..< bounds.maxY {
+                    for x in bounds.minX ..< bounds.maxX {
+                        guard x >= clip.minX, x < clip.maxX, y >= clip.minY, y < clip.maxY else {
+                            continue
+                        }
+                        var covered = false
+                        for i in 1 ..< unique.count {
+                            let a = unique[i - 1]
+                            let b = unique[i]
+                            if a.y == b.y {
+                                covered =
+                                    covered
+                                    || (x >= min(a.x, b.x) && x < max(a.x, b.x)
+                                        && (y == a.y - 1 || y == a.y))
+                            } else {
+                                covered =
+                                    covered
+                                    || (y >= min(a.y, b.y) && y < max(a.y, b.y)
+                                        && (x == a.x - 1 || x == a.x))
+                            }
+                        }
+                        if join == .miter {
+                            for i in 1 ..< unique.count - 1 {
+                                let a = unique[i - 1]
+                                let b = unique[i]
+                                let c = unique[i + 1]
+                                let turns = (a.x == b.x) != (b.x == c.x)
+                                covered =
+                                    covered
+                                    || (turns && (x == b.x - 1 || x == b.x)
+                                        && (y == b.y - 1 || y == b.y))
+                            }
+                        }
+                        if covered { expected.append(point(x, y)) }
+                    }
+                }
+                var actual: [Point] = []
+                let result = RasterStrokeCoverage.rasterize(
+                    stroke, descriptor: descriptor, damageBounds: bounds
+                ) { p, _ in
+                    actual.append(p)
+                    return true
+                }
+                #expect(result == .completed(pixelCount: UInt32(expected.count)))
+                #expect(actual == expected)
+                // Count reads, not wall time: a regression to per-pixel path
+                // evaluation cannot satisfy this row/chunk traversal bound.
+                #expect(counter.points <= path.count * (2 + 9 * 3))
+                var refused: [Point] = []
+                let failure = RasterStrokeCoverage.rasterize(
+                    stroke, descriptor: descriptor, damageBounds: bounds
+                ) { p, _ in
+                    refused.append(p)
+                    return refused.count < 70
+                }
+                if expected.count >= 70 {
+                    #expect(failure == .replacementRefused)
+                    #expect(refused == Array(expected.prefix(70)))
+                }
+            }
+        }
+    }
+}

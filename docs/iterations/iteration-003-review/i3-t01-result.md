@@ -17,7 +17,7 @@ Cumulative usage at launch: 15 minutes. Waiting: zero.
 | --- | --- | --- |
 | Launch planning | Ready | Seven updated per-Spec plans and three focused design notes |
 | I3-T01.1 scheduling | Implemented; focused checks pass | Swift schedule corpus (3 tests); native production C loop 2,400 simulated deliveries; nRF build/ABI pass |
-| I3-T01.2 raster | Pending | Fixed scalar coverage mask |
+| I3-T01.2 raster | Implemented; focused checks pass | 17 independent golden masks, 16 chunk-boundary/style combinations, callback order/refusal, nRF build |
 | I3-T01.3 layout | Pending | Existing scratch-region indexes |
 | Integrated validation | Pending | Four-profile gate and exact target builds |
 
@@ -51,3 +51,26 @@ Native full-host rehearsal and Pi cross-build are pending integrated checks.
 [ABI](i3-t01-evidence/scheduling-arm-attributes.txt) and
 [artifact hash](i3-t01-evidence/scheduling-artifact.sha256).
 No complete stack or connected-performance claim follows.
+
+## Raster step
+
+One UInt64 mask replaces the heap row and enables unit orthogonal coverage in
+all profiles. Existing general widened arithmetic remains for other strokes.
+The independent cell-union regression covers widths 63/64/65/193, round/butt
+caps, miter/round joins, duplicate vertices, reversal, negative path/clip
+coordinates and refusal across chunk boundaries. Full callback transcripts
+match row-major expected pixels; point reads remain at most 232 for the
+eight-point, nine-row, three-chunk fixture, instead of per-pixel path walks.
+This operation-count bound is not a target time measurement.
+
+Formatter, the 17-mask SPEC-012 independent oracle, four focused raster tests
+and the nRF build/ABI pass. The first new test used an invalid negative-origin
+surface; it was corrected to the existing zero-origin descriptor contract,
+retaining negative path/clip coordinates.
+[Tests](i3-t01-evidence/raster-tests.log),
+[resources](i3-t01-evidence/raster-memory.txt),
+[artifact](i3-t01-evidence/raster-artifact.sha256).
+
+Scheduling commit: `2e455320`; launch commit: `c06a6ec3`. The scheduling native
+production rehearsal also passes, including owner partial-mutation/refusal
+controls. Its clock is simulated and its default source is below 80/s.

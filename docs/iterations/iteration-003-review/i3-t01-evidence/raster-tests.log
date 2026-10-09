@@ -1,0 +1,43 @@
+Building for debugging...
+[0/12] Write sources
+[1/12] Write swift-version--58304C5D6DBC2206.txt
+[3/5] Compiling GiftUIRasterCoreTests RasterStrokeCoverageTests.swift
+[4/5] Emitting module GiftUIRasterCoreTests
+[4/6] Write Objects.LinkFileList
+[5/6] Linking GiftUIPackageTests
+Build complete! (2.17s)
+Test Suite 'Selected tests' started at 2026-10-09 18:53:37.532.
+Test Suite 'GiftUIPackageTests.xctest' started at 2026-10-09 18:53:37.533.
+Test Suite 'GiftUIPackageTests.xctest' passed at 2026-10-09 18:53:37.533.
+	 Executed 0 tests, with 0 failures (0 unexpected) in 0.000 (0.000) seconds
+Test Suite 'Selected tests' passed at 2026-10-09 18:53:37.533.
+	 Executed 0 tests, with 0 failures (0 unexpected) in 0.000 (0.001) seconds
+◇ Test run started.
+↳ Testing Library Version: 1902
+↳ Target Platform: arm64e-apple-macos14.0
+◇ Test strokeCoverageStopsAtFirstReplacementRefusal() started.
+◇ Test unitOrthogonalCoverageMatchesIndependentCellUnionAcrossChunks() started.
+◇ Test strokeCoverageRejectsMalformedViewsBeforeReplacingPixels() started.
+◇ Test strokeCoverageMatchesEveryIndependentSPEC012GoldenMask(_:) started.
+◇ Test case passing 1 argument fixture → horizontal-odd-butt to strokeCoverageMatchesEveryIndependentSPEC012GoldenMask(_:) started.
+◇ Test case passing 1 argument fixture → vertical-even-butt to strokeCoverageMatchesEveryIndependentSPEC012GoldenMask(_:) started.
+◇ Test case passing 1 argument fixture → obtuse-angle-round to strokeCoverageMatchesEveryIndependentSPEC012GoldenMask(_:) started.
+◇ Test case passing 1 argument fixture → acute-angle-miter to strokeCoverageMatchesEveryIndependentSPEC012GoldenMask(_:) started.
+◇ Test case passing 1 argument fixture → single-point-subpath to strokeCoverageMatchesEveryIndependentSPEC012GoldenMask(_:) started.
+◇ Test case passing 1 argument fixture → zero-length-subpath to strokeCoverageMatchesEveryIndependentSPEC012GoldenMask(_:) started.
+◇ Test case passing 1 argument fixture → repeated-point-round-join to strokeCoverageMatchesEveryIndependentSPEC012GoldenMask(_:) started.
+◇ Test case passing 1 argument fixture → collinear-same-direction to strokeCoverageMatchesEveryIndependentSPEC012GoldenMask(_:) started.
+◇ Test case passing 1 argument fixture → right-angle-miter to strokeCoverageMatchesEveryIndependentSPEC012GoldenMask(_:) started.
+◇ Test case passing 1 argument fixture → exact-reversal to strokeCoverageMatchesEveryIndependentSPEC012GoldenMask(_:) started.
+◇ Test case passing 1 argument fixture → miter-limit-bevel-fallback to strokeCoverageMatchesEveryIndependentSPEC012GoldenMask(_:) started.
+◇ Test case passing 1 argument fixture → diagonal-round-cap to strokeCoverageMatchesEveryIndependentSPEC012GoldenMask(_:) started.
+◇ Test case passing 1 argument fixture → pretranslated-surface-points to strokeCoverageMatchesEveryIndependentSPEC012GoldenMask(_:) started.
+◇ Test case passing 1 argument fixture → inherited-clip-all-edges to strokeCoverageMatchesEveryIndependentSPEC012GoldenMask(_:) started.
+◇ Test case passing 1 argument fixture → inherited-empty-clip to strokeCoverageMatchesEveryIndependentSPEC012GoldenMask(_:) started.
+◇ Test case passing 1 argument fixture → rgb-rounding-boundaries to strokeCoverageMatchesEveryIndependentSPEC012GoldenMask(_:) started.
+◇ Test case passing 1 argument fixture → overlap-painter-order to strokeCoverageMatchesEveryIndependentSPEC012GoldenMask(_:) started.
+✔ Test strokeCoverageRejectsMalformedViewsBeforeReplacingPixels() passed after 0.001 seconds.
+✔ Test strokeCoverageStopsAtFirstReplacementRefusal() passed after 0.001 seconds.
+✔ Test strokeCoverageMatchesEveryIndependentSPEC012GoldenMask(_:) with 17 test cases passed after 0.001 seconds.
+✔ Test unitOrthogonalCoverageMatchesIndependentCellUnionAcrossChunks() passed after 0.019 seconds.
+✔ Test run with 4 tests in 0 suites passed after 0.019 seconds.

@@ -97,17 +97,15 @@ package enum RasterStrokeCoverage {
             color: header.color,
             encoding: descriptor.encoding
         )
-        #if GIFTUI_DYNAMIC_PROFILE && !GIFTUI_NRF_EMBEDDED
-            if header.lineWidth == 1, isOrthogonal(stroke, header: header) {
-                return rasterizeUnitOrthogonal(
-                    stroke,
-                    header: header,
-                    covered: covered,
-                    pixel: pixel,
-                    replace
-                )
-            }
-        #endif
+        if header.lineWidth == 1, isOrthogonal(stroke, header: header) {
+            return rasterizeUnitOrthogonal(
+                stroke,
+                header: header,
+                covered: covered,
+                pixel: pixel,
+                replace
+            )
+        }
         var replaced: UInt32 = 0
         var y = covered.minY
         while y < covered.maxY {
@@ -152,59 +150,59 @@ package enum RasterStrokeCoverage {
         return .completed(pixelCount: replaced)
     }
 
-    #if GIFTUI_DYNAMIC_PROFILE && !GIFTUI_NRF_EMBEDDED
-        private static func isOrthogonal<Stroke: StraightLineStrokeView>(
-            _ stroke: borrowing Stroke,
-            header: StraightLineStrokeHeader
-        ) -> Bool {
-            var subpathIndex: UInt16 = 0
-            while subpathIndex < header.subpathCount {
-                guard let subpath = stroke.subpath(at: subpathIndex) else { return false }
-                if subpath.pointCount > 1 {
-                    var index = subpath.firstPoint + 1
-                    let end = subpath.firstPoint + subpath.pointCount
-                    guard var previous = stroke.point(at: subpath.firstPoint) else {
-                        return false
-                    }
-                    while index < end {
-                        guard let point = stroke.point(at: index),
-                            previous.x == point.x || previous.y == point.y,
-                            previous.x != .min, previous.y != .min,
-                            point.x != .min, point.y != .min
-                        else { return false }
-                        previous = point
-                        index += 1
-                    }
+    private static func isOrthogonal<Stroke: StraightLineStrokeView>(
+        _ stroke: borrowing Stroke,
+        header: StraightLineStrokeHeader
+    ) -> Bool {
+        var subpathIndex: UInt16 = 0
+        while subpathIndex < header.subpathCount {
+            guard let subpath = stroke.subpath(at: subpathIndex) else { return false }
+            if subpath.pointCount > 1 {
+                var index = subpath.firstPoint + 1
+                let end = subpath.firstPoint + subpath.pointCount
+                guard var previous = stroke.point(at: subpath.firstPoint) else {
+                    return false
                 }
-                subpathIndex += 1
+                while index < end {
+                    guard let point = stroke.point(at: index),
+                        previous.x == point.x || previous.y == point.y,
+                        previous.x != .min, previous.y != .min,
+                        point.x != .min, point.y != .min
+                    else { return false }
+                    previous = point
+                    index += 1
+                }
             }
-            return true
+            subpathIndex += 1
         }
+        return true
+    }
 
-        private static func rasterizeUnitOrthogonal<Stroke: StraightLineStrokeView>(
-            _ stroke: borrowing Stroke,
-            header: StraightLineStrokeHeader,
-            covered: Rect,
-            pixel: CanonicalEncodedPixel,
-            _ replace: (Point, CanonicalEncodedPixel) -> Bool
-        ) -> RasterStrokeResult {
-            var replaced: UInt32 = 0
-            var y = covered.minY
-            while y < covered.maxY {
-                var row = [Bool](repeating: false, count: Int(covered.size.width))
+    private static func rasterizeUnitOrthogonal<Stroke: StraightLineStrokeView>(
+        _ stroke: borrowing Stroke,
+        header: StraightLineStrokeHeader,
+        covered: Rect,
+        pixel: CanonicalEncodedPixel,
+        _ replace: (Point, CanonicalEncodedPixel) -> Bool
+    ) -> RasterStrokeResult {
+        var replaced: UInt32 = 0
+        var y = covered.minY
+        while y < covered.maxY {
+            var chunkStart = covered.minX
+            while chunkStart < covered.maxX {
+                // A scalar mask bounds storage independently of the surface width.
+                let chunkEnd = Int32(min(Int64(chunkStart) + 64, Int64(covered.maxX)))
+                var mask: UInt64 = 0
                 var subpathIndex: UInt16 = 0
                 while subpathIndex < header.subpathCount {
                     guard let subpath = stroke.subpath(at: subpathIndex) else {
                         return .invalidStroke
                     }
-                    guard subpath.pointCount > 1 else {
-                        subpathIndex += 1
-                        continue
-                    }
-                    guard let start = stroke.point(at: subpath.firstPoint) else {
+                    defer { subpathIndex += 1 }
+                    guard subpath.pointCount > 1 else { continue }
+                    guard var previous = stroke.point(at: subpath.firstPoint) else {
                         return .invalidStroke
                     }
-                    var previous = start
                     var lastSegmentStart: Point?
                     var lastSegmentEnd: Point?
                     var index = subpath.firstPoint + 1
@@ -220,27 +218,27 @@ package enum RasterStrokeCoverage {
                         guard point != previous else { continue }
                         if previous.y == point.y {
                             if y == previous.y - 1 || y == previous.y {
-                                let startX = max(covered.minX, min(previous.x, point.x))
-                                let endX = min(covered.maxX, max(previous.x, point.x))
+                                let startX = max(chunkStart, min(previous.x, point.x))
+                                let endX = min(chunkEnd, max(previous.x, point.x))
                                 if startX < endX {
-                                    for x in startX ..< endX {
-                                        row[Int(x - covered.minX)] = true
-                                    }
+                                    let count = Int(endX - startX)
+                                    let bits = UInt64.max >> (64 - count)
+                                    mask |= bits << Int(startX - chunkStart)
                                 }
                             }
                         } else if y >= min(previous.y, point.y),
                             y < max(previous.y, point.y)
                         {
                             for x in (previous.x - 1) ... previous.x
-                            where x >= covered.minX && x < covered.maxX {
-                                row[Int(x - covered.minX)] = true
+                            where x >= chunkStart && x < chunkEnd {
+                                mask |= UInt64(1) << Int(x - chunkStart)
                             }
                         }
                         if let lastSegmentStart, let lastSegmentEnd,
                             y == previous.y - 1 || y == previous.y
                         {
                             for x in (previous.x - 1) ... previous.x
-                            where x >= covered.minX && x < covered.maxX {
+                            where x >= chunkStart && x < chunkEnd {
                                 switch joinCovers(
                                     centerX: Wide(x) * 2 + 1,
                                     centerY: Wide(y) * 2 + 1,
@@ -251,7 +249,7 @@ package enum RasterStrokeCoverage {
                                     join: header.lineJoin
                                 ) {
                                 case .covered:
-                                    row[Int(x - covered.minX)] = true
+                                    mask |= UInt64(1) << Int(x - chunkStart)
                                 case .arithmeticOverflow:
                                     return .arithmeticOverflow
                                 case .notCovered, .invalidStroke:
@@ -262,23 +260,22 @@ package enum RasterStrokeCoverage {
                         lastSegmentStart = previous
                         lastSegmentEnd = point
                     }
-                    subpathIndex += 1
                 }
-                for index in row.indices where row[index] {
-                    guard
-                        replace(
-                            Point(x: covered.minX + Int32(index), y: y), pixel
-                        )
+                while mask != 0 {
+                    let bit = mask.trailingZeroBitCount
+                    guard replace(Point(x: chunkStart + Int32(bit), y: y), pixel)
                     else { return .replacementRefused }
                     let next = replaced.addingReportingOverflow(1)
                     guard !next.overflow else { return .arithmeticOverflow }
                     replaced = next.partialValue
+                    mask &= mask - 1
                 }
-                y += 1
+                chunkStart = chunkEnd
             }
-            return .completed(pixelCount: replaced)
+            y += 1
         }
-    #endif
+        return .completed(pixelCount: replaced)
+    }
 
     private enum CoverageResult {
         case covered
