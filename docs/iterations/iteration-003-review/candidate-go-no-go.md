@@ -335,7 +335,8 @@ does not close or abandon the iteration.
 
 ## 32 MHz architectural reassessment
 
-Status: **running**. On 2026-10-09 Eugene explicitly requested:
+Status: **closed — no additional unavoidable architectural contradiction found
+under the 32 MHz assumption; adoption remains not ready**. On 2026-10-09 Eugene explicitly requested:
 
 > All right, let's then proceed with investigations. Well, I think that we can at the moment suppose that we are working at 32 megahertz. Let's do so, and we'll see if any other blockers will arise, which will be unavoidable in our architecture.
 
@@ -360,3 +361,156 @@ implementation defect/cost**, or **unproved feasibility**. Do not turn a missing
 measurement into an impossibility claim, or “no contradiction found” into
 production approval. No extra study, prototype or scope extension follows
 automatically from a finding.
+
+### Findings under the new assumption
+
+The [source identities and arithmetic](feasibility-evidence/32mhz-review.json)
+make this a conditional review, not another target measurement. The prior
+candidate's 4 MHz rejection is preserved. No hardware or production source was
+changed, and SPIKE-068 was not rerun.
+
+| Reviewed boundary | Finding | Classification |
+| --- | --- | --- |
+| nRF transfer | Normal fills need 63.56 ms at assumed 32 MHz; including their address commands gives 65.276 ms | Previous decisive bandwidth contradiction removed under this assumption; complete-frame timing still unproved |
+| Acquisition and service | Retained Pi/nRF loops rebase delayed source deadlines on current time and do not drain elapsed positive-delay events | Concrete implementation behavior that must change for the required source timeline; not imposed by accepted architecture |
+| Layout and raster | Repeated identity/glyph scans and Embedded per-pixel/per-segment stroke work explain credible large costs | Implementation choices; no accepted requirement forces these algorithms |
+| Storage and stack | Proposed reservations fit the numerical ceiling on paper; complete construction/service/IRQ/teardown and alias/escape bounds are absent | Unproved feasibility, not a demonstrated architectural memory floor |
+| Representation and ownership | Accepted contracts permit bounded typed handles, differing profile storage and borrowed semantic input | No forced whole-tree copy, full framebuffer or heap found; concrete lifetime/API realization still blocks adoption |
+| Counter/macOS/Pi applicability | Raising nRF SPI changes none of their obligations or recorded costs | No new impossibility proof and no new conformance pass on these configurations |
+
+#### Transport: include commands, do not extrapolate a frame benchmark
+
+The nine retained fill rectangles cover 127,120 pixels across 624 horizontal
+row regions. The selected nRF writer sends one region per payload. For each row,
+`spi_tft.c` sends CASET plus four parameter bytes, PASET plus four parameter
+bytes, RAMWR, then the RGB565 pixels. Thus the address commands add
+`624 × 11 = 6,864` bytes to the `254,240` pixel bytes:
+
+`(254240 + 6864) × 8 / 32000000 = 0.065276 seconds`.
+
+These rows require 3,744 `write_bytes` calls in the current path (six per row),
+so a faster wire does not divide all transfer CPU overhead by eight. The
+remaining **184.724 ms** is only the difference from the 250 ms deadline after
+this known wire floor. Glyphs, waveforms, bus gaps, touch contention, interrupts
+and all CPU work still consume it. Neither this lower bound nor the configured
+payload maxima are a complete-frame upper bound. The calculation describes the
+normal geometry recorded by SPIKE-068, not every diagnostic/workload state.
+
+#### Scheduling: a correctable blocker in the retained candidate
+
+In [nRF service](../../../firmware/nrf52840/applications/signal-analyzer-static/src/production_host.c),
+the next source deadline is set to `now + delay`. After delivering a transition,
+the deadline is cleared; the next positive delay is again based on the same
+`now`. The loop can deliver simultaneous zero-delay transitions, but cannot
+catch up successive positive-delay events that became due during rendering.
+Its eight-event limit is also not a complete 20-transition service-window policy.
+
+The [Pi loop](../../../Sources/SignalAnalyzerRaspberryPiARMv6/LinuxSignalAnalyzerPiProcessLoop.swift)
+delivers one due transition and calls `sourceDeadline(... from: now)` before
+synchronous frame service. This likewise shifts the remaining source timeline
+after a late poll. Both source APIs expose relative logical delays; late
+delivery is not evidence that the intervening logical time was correctly served.
+
+An analytical example makes the distinction precise. Stagger four 10 Hz channels
+to produce one transition every 12.5 ms. After delivery at 12.5 ms, a frame taking
+only the known 65.276 ms wire floor ends at 77.776 ms. Five source timestamps are
+now due: 25, 37.5, 50, 62.5 and 75 ms. The retained rebasing loop delivers the
+25 ms event and schedules the 37.5 ms event for wall time 90.276 ms. It preserves
+the logical event sequence while falling behind its required wall-time rate.
+This is source/arithmetic reasoning, not an execution of the slower default
+deterministic generator or a claim that its stored events were observed lost.
+
+The architecture already supplies the relevant mechanism: SPEC-001 requires up
+to 20 transition facts per half-open 250 ms window, plus two observation-start
+facts and six action publications: **28 slots out of 32**. ADR-011 separates
+ordered admission from serialized mutation and freezes a coherent revision.
+A source-generation-aware anchored schedule with bounded ordered catch-up can
+use this batching model without requiring a frame per event or introducing
+threads. It must preserve Start/Stop/Clear, timestamps, stale-generation checks,
+the 28-fact category limits and the existing 250 ms opportunity bound. It is not
+permission to accumulate arbitrarily overdue input after a slow frame.
+
+**Required candidate correction:** replace the explicitly retained rebasing
+policy; increasing SPI alone is insufficient. This is a compatible host/source
+implementation direction under SPEC-001/015, not a reason to replace the core
+ownership architecture. No scheduler fix is implemented by this review.
+
+#### CPU cost: architecture does not mandate the current algorithms
+
+[Embedded stroke coverage](../../../Sources/GiftUIRasterCore/RasterStrokeCoverage.swift)
+visits the clipped rectangle and evaluates segment/subpath coverage per pixel;
+the existing orthogonal fast path is restricted to Dynamic/non-Embedded and
+uses a heap-backed Boolean row. Simply enabling that code on Static would violate
+its resource constraints. A bounded coverage realization with identical output
+is an implementation possibility, not a proven timing result or an accepted new
+algorithm. SPEC-014 permits bounded derived raster data inside each operation;
+it requires painter order and prohibits retaining/replaying borrowed strokes.
+
+[The packed layout workspace](../../../Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFEmbeddedLayoutWorkspace.swift)
+does linear identity lookup and repeated prior-glyph scans. The contracts require
+identity correctness and bounded storage, not those scans. Alternative indexing
+can preserve the semantic/layout owner boundary and must charge its storage.
+
+The [earlier connected nRF measurements](../iteration-002-review/26-connected-nrf-phases-and-failure.md)
+record 20.65–21.22 s total, 3.59–3.71 s Layout and 1.108–1.113 s inside pixel-write
+calls. That evidence makes “only change the clock” an unsupported performance
+plan. It is a different historical instrumented image, not a 32 MHz candidate
+measurement. No lower bound proving that every conforming implementation must
+spend those seconds was found. Pi's historical projection/frame costs are also
+unaffected by the assumed nRF clock.
+
+#### Memory and lifetime: preserve the proof gap accurately
+
+The proposed analyzer ceiling of 128,000 bytes is numerically below the selected
+196,608-byte ceiling by 68,608 bytes. Those are proposed reservations, not a
+linked candidate image or free-memory measurement. The generated production
+image's historical 95,104 bytes and the archived runtime candidate's 169,984
+bytes cannot establish this candidate's safety. The archived 30,304-byte stack
+witness refutes its particular earlier image, not all runtime derivation.
+
+ADR-026 expressly permits fixed/caller-supplied typed model locations and
+identity-preserving handles. ADR-032 requires borrowed semantic input without
+a complete-tree copy across the Layout boundary. Neither requires copying
+404 capture records into each declaration. SPEC-014 permits the bounded tiled
+endpoint already in use; a full framebuffer is not an unavoidable requirement.
+No compulsory storage combination exceeding the ceiling was established here.
+
+However, a slot/generation pair alone cannot read a model without a live owner
+context. Existing `State` binding uses read/replace closures, and
+[`StaticObservableModelStorage`](../../../Sources/GiftUIRuntimeStatic/StaticObservableModelStorage.swift)
+creates such a read closure around a scoped unsafe pointer while its callback
+returns an unconstrained generic `Result`. That API shape does not itself prove
+that a bound wrapper or capture cannot escape. This review has not demonstrated
+an actual escaping production call, a zero-heap realization of the new resolver,
+or safe complete stack bounds. Generation checks must never require dereferencing
+an already-released owner. These remain concrete design/implementation proof
+obligations for both applications, not architectural impossibility claims.
+
+### Terminal decision and recommendation
+
+**No additional unavoidable architectural blocker was found in the four
+reviewed areas under the 32 MHz assumption.** Retain the core owner boundaries,
+bounded Static storage, serialized state publication and synchronous one-shot
+handoff as the working architectural basis. The evidence does not justify a
+wholesale architecture replacement or relaxed acquisition/frame requirements.
+
+The unchanged candidate is still **not ready for adoption**: its retained source
+scheduling needs correction, its CPU costs need effective bounded implementations,
+and complete runtime/lifetime/resource and sustained-workload proof is absent.
+This is a decision about what kinds of changes are necessary, not a claim that
+all such changes have been designed, implemented or validated. The wider
+ADR-010 boundary also allows backend-owned asynchronous work; this review neither
+requires nor selects that alternative, and the current SPEC-014 tiled path
+remains synchronous.
+
+The investigation is complete. No follow-up Spike, additional evidence gate,
+hardware action or automatically extended preparation phase was created. Existing
+FW-027/FW-032 retain performance provenance; current correctness/safety findings
+remain here as adoption blockers rather than being deferred out of scope.
+
+Completed at **16:00:30 UTC**, **8 minutes 31 seconds** after launch, within the
+30-minute ceiling. Experimental invocations/repairs: **0/0**. Source hashes,
+local cross-references and byte/time/batch arithmetic were verified; governance
+and whitespace checks passed. Production sources and accepted ADRs/Specs match
+the pre-review state. No target timing, memory, stack or conformance pass is
+claimed from this review.

@@ -16,8 +16,8 @@ features:
     title: External Application and Backend Integration
     # PROPOSAL-007 accepted; RFC-013 remains draft. Prior experiments are archived.
     # Current one-candidate assessment: docs/iterations/iteration-003-review/candidate-go-no-go.md.
-    # Terminal NO-GO: SPIKE-068 refutes retained nRF transfer cost; RFC-013 stays draft.
-    # Explicitly authorized 32 MHz assumption review follows in the same packet.
+    # 4 MHz NO-GO preserved; 32 MHz review finds no further unavoidable architecture limit.
+    # Scheduler/CPU/lifetime adoption blockers remain; RFC-013 stays draft.
     # Acceptance provenance: docs/iterations/iteration-003-review/proposal-007-acceptance.md.
     status: rfc
     proposal:

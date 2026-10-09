@@ -44,6 +44,12 @@ exceed the frame budget. No automatic preparation continuation is open, and no
 delivery criterion is marked met. The packet distinguishes this demonstrated
 cost failure from unproved runtime safety and records the exact decision boundary.
 
+Eugene subsequently authorized the same packet's
+[32 MHz assumption review](iteration-003-review/candidate-go-no-go.md#32-mhz-architectural-reassessment).
+That closed review finds no additional unavoidable architectural contradiction
+under the assumption; implementation and safety/performance obligations remain.
+The historical 4 MHz rejection and unchanged iteration delivery gates still stand.
+
 ## Goal
 
 Establish a safe, measured runtime-derived Signal Analyzer and finite counter

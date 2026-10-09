@@ -1,0 +1,81 @@
+{
+  "method": "Source/contract review and exact arithmetic; no compiler, benchmark, simulator or target execution.",
+  "assumption": "Sustained 32 MHz display bus; not validated module/wiring speed and not a firmware edit",
+  "source_review_freeze_commit": "6b0d5213",
+  "transport": {
+    "assumed_spi_hz": 32000000,
+    "normal_fill_pixels": 127120,
+    "normal_fill_bytes": 254240,
+    "fill_only_ms": 63.56,
+    "row_regions": 624,
+    "command_bytes_per_row": 11,
+    "command_bytes": 6864,
+    "fill_and_command_bytes": 261104,
+    "fill_and_command_wire_floor_ms": 65.276,
+    "write_bytes_calls": 3744,
+    "frame_budget_ms": 250,
+    "remaining_after_floor_ms": 184.724,
+    "limitations": "Normal geometry only; glyph/stroke bytes, CPU, gaps, IRQs and touch contention excluded. Lower bound, not full-frame upper bound."
+  },
+  "source_timeline": {
+    "kind": "Analytical witness for evenly staggered 80 events/s, not execution of the slower default generator",
+    "interval_us": 12500,
+    "frame_start_us": 12500,
+    "earliest_frame_end_us": 77776,
+    "overdue_timestamps_us": [
+      25000,
+      37500,
+      50000,
+      62500,
+      75000
+    ],
+    "retained_loop": "Deliver 25000 event at 77776, then schedule 37500 event at 90276.",
+    "anchored_comparison": "Five events are due at 77776 and could be admitted in order before another frame.",
+    "limitations": "No exact long-run rate or observed production event-loss claim."
+  },
+  "batch_capacity": {
+    "transition_facts": 20,
+    "observation_start_facts": 2,
+    "action_publications": 6,
+    "total": 28,
+    "slots": 32,
+    "margin": 4
+  },
+  "memory": {
+    "proposed_analyzer_ceiling": 128000,
+    "selected_ceiling": 196608,
+    "difference_not_proven_free": 68608,
+    "safety": "Unproved; neither is a new measured candidate footprint."
+  },
+  "result": {
+    "unavoidable_architectural_contradiction_found": false,
+    "scheduler": "Correctable retained implementation behavior",
+    "raster_layout": "Implementation costs, not imposed by the architecture",
+    "lifetime_stack_workload": "Unproved; adoption not ready"
+  },
+  "experimental_invocations": 0,
+  "experimental_repairs": 0,
+  "source_sha256": {
+    "experiments/spike-068-candidate-transfer-bound/evidence/attempt-2.json": "0cc18ace63c93ec07d50667a8b16a41d143a65fcc49be62ffabd80ff1288ab7d",
+    "Sources/GiftUIBackendIntegration/RGB565TilePayloadEmitter.swift": "0d0b245435a848f98bbc1996a0768298b1be2a03563d06d8bbd04d8077cf7c34",
+    "Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFDisplayTarget.swift": "7bb7c6b182489ffae9c8297b024387333207f79d6b5480af8cd266e837f07395",
+    "Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFSPITFTTransport.swift": "46345a3e848e150be7b640d73f73055f3327f9ee1019b98025b629f09bba878c",
+    "firmware/nrf52840/applications/signal-analyzer-static/src/spi_tft.c": "dda88210a8a70864f3f393ca1057da7b64a84cbe01d3de97da55b1232f1ef00f",
+    "firmware/nrf52840/applications/signal-analyzer-static/src/production_host.c": "570cab8c0ea323a3aef8d16983ea97d200dce5057b6428789dc3a962211d144e",
+    "Sources/SignalAnalyzerRaspberryPiARMv6/LinuxSignalAnalyzerPiProcessLoop.swift": "b52a20af5dda856ace051ecdbd24beb3779d9e862b53fd0e0a9057fb9ba44140",
+    "Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFDeterministicSource.swift": "7657893418f3c7284870d16f158eee73a201879b4fc1b73c3e3d973d323845ed",
+    "Sources/GiftUIRasterCore/RasterStrokeCoverage.swift": "4a88309a22aee5c30bc828684fd03d0fae858540fe7ab2e43d0cddfd8da012ac",
+    "Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFEmbeddedLayoutWorkspace.swift": "e255de7491bc3aa79c1e84dc767b54337d6282b1cb57d5f92ae391f3a804aa59",
+    "Sources/GiftUI/ObservableState.swift": "38cf485a5d5a35dd7234d983a39b66c189039e7a0c77548d226954b68178379d",
+    "Sources/GiftUIRuntimeStatic/StaticObservableModelStorage.swift": "85426dcd1f5b2ebb793996c5ff1b78ffce89a002119ce7f11c91f9cdcd014f19",
+    "docs/specs/spec-001-signal-analyzer-reference-application.md": "ce8c49cf454e79711c2b5a3e52e17394398685922f389f10e761ccde9377f891",
+    "docs/specs/spec-014-backend-integration.md": "60848c50dd2e3ce9c2aa52129bb050f95c5993849f823362a9b556d489031ce7",
+    "docs/adrs/adr-010-synchronous-one-shot-frame-handoff.md": "772b5e624d5f6c9fde61faf8c15273abf561eac0da9751ab160e6f26da80141c",
+    "docs/adrs/adr-011-serialized-run-cycle-and-publication.md": "56f09da34b9302219285cb5dc7d3e6d1af181dde3231711d3cf54ae5b0f4a05f",
+    "docs/adrs/adr-024-structurally-owned-observable-reference-state.md": "22510675e30a99f18d7c81781be0bcca112d315c42bb92ede1fbd6f365f02a0d",
+    "docs/adrs/adr-025-coarse-model-owned-observable-invalidation.md": "04587524721b4c04ee74a6552d71874b94c51f5ccb94547d7a90a9d1b25bb499",
+    "docs/adrs/adr-026-profile-equivalent-bounded-observable-state.md": "3f4632be5a1574c5bd68a983535fa8c37a1173d273afc9d2e9885ee4cb288e02",
+    "docs/adrs/adr-032-semantic-core-owned-layout-input.md": "429942582d270d0bbe684200e6b1c5a8b845835911aa77d76559b611290c8a0f",
+    "docs/adrs/adr-033-bounded-application-actions-and-model-target-dispatch.md": "cd41dccc3e1f4e47bea12c85554a09edbb6625dc1b104c1d6eb2816c8f052fd8"
+  }
+}

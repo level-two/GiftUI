@@ -132,3 +132,11 @@ lower bounds, not target timing measurements. They rule out satisfying 250 ms
 through graph/layout/CPU optimization alone while retaining those transfers.
 This necessary design blocker stays in the candidate report; it is not deferred
 as optional work here. No algorithm is selected and no additional study is opened.
+
+The explicitly authorized [32 MHz assumption review](../iterations/iteration-003-review/candidate-go-no-go.md#32-mhz-architectural-reassessment)
+removes that particular wire-time contradiction conditionally: fills plus their
+address commands have a 65.276 ms floor. It finds no further unavoidable
+architectural contradiction, but identifies source-deadline rebasing as a
+correctable implementation blocker and leaves CPU/lifetime safety unproved.
+The review is closed, with no clock change, new algorithm selection or automatic
+successor study. These current adoption obligations remain in the candidate.

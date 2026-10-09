@@ -161,6 +161,13 @@ of that candidate. Treat 32 MHz as a hypothetical bus rate, not a hardware
 measurement or accepted contract amendment. The review distinguishes inevitable
 architectural limits from correctable implementation behavior and missing proof.
 
+That review is closed with **no additional unavoidable architectural contradiction
+found under the assumption**. The recommendation retains current owner boundaries
+and bounded/serialized/borrowed contracts. Source-deadline rebasing is a concrete
+implementation blocker; raster/layout costs and resolver/stack/resource proof
+remain unresolved. This supports reconsidering the 4 MHz rejection's applicability,
+not approving the candidate: RFC-013 remains draft and not ready for adoption.
+
 [FW-016](../future-work/fw-016-post-mvp-package-distribution-topology.md) and
 [FW-030](../future-work/fw-030-application-integration-experience.md) feed the
 accepted investment. [EXP-002](../explorations/exp-002-backend-and-application-integration-shapes.md)
