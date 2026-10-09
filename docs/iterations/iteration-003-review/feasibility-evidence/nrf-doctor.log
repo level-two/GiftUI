@@ -1,0 +1,34 @@
+ok:    running on macOS
+ok:    host architecture is supported
+ok:    CMake is installed
+ok:    CMake is >=3.29.0
+ok:    Ninja is installed
+ok:    Ninja is >=1.10.0
+ok:    Devicetree compiler is installed
+ok:    Devicetree compiler is >=1.6.0
+ok:    project Python environment exists
+ok:    west is installed in the project environment
+ok:    project-local Swift compiler exists
+ok:    Swift compiler is 6.3.2
+ok:    Zephyr SDK ARM compiler exists
+ok:    Zephyr SDK ELF inspector exists
+ok:    Zephyr checkout matches 4.3.0
+ok:    CMSIS checkout matches pin
+ok:    CMSIS 6 checkout matches pin
+ok:    Nordic HAL checkout matches pin
+ok:    SEGGER module checkout matches pin
+
+Resolved version set
+  Swift:       Apple Swift version 6.3.2 (swift-6.3.2-RELEASE)
+  Swift target: armv7em-none-none-eabi
+  Board:       nrf52840dk/nrf52840
+  Zephyr:      4.3.0 (3568e1b6d5cdd51a6b964a2a1d6d29200fea2056)
+  Zephyr SDK:  0.17.4
+  Python:      3.14.6 (lock baseline 3.12.13)
+  west:        West version: v1.5.0
+  CMake:       4.4.2
+  Ninja:       1.13.2
+  DTC:         1.8.1
+  J-Link:      9.66 (tested 8.96; needed only for flash)
+
+GiftUI nRF52840 development environment is ready

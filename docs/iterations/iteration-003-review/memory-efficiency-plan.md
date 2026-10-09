@@ -163,5 +163,7 @@ FW-035 retains the future generated-frontend question.
 | Adopt major runtime/storage/performance changes | ME-05: applicable approved RFC, accepted ADRs, approved Specifications and ready implementation plans. Existing-contract maintenance remains eligible for the lightweight path. |
 | Deploy/flash for connected measurements | Explicit authorization for the operation plus the repository target skills and checks. |
 
-All ME activities remain planned. This amendment performs no experiment,
-production migration, hardware operation or conformance transition.
+Execution is recorded in the single [feasibility decision packet](feasibility-decision.md).
+ME-01 baseline inventory is complete; ME-02–04 are active preparation. Later ME
+activities remain planned. No production migration or conformance transition
+follows from baseline/toolchain inspection.

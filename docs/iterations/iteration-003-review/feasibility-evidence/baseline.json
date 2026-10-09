@@ -1,0 +1,263 @@
+{
+  "baseline_commit": "2d0367480b5bcf7a8c9dbf021d10e0d57dce80e2",
+  "preparation_parent_commit": "5591932983499d4414e5e9c5b2da6fce36f23839",
+  "archive_commit": "af5e9559ebf71446dbee4c3b1fcb2aae65a8f769",
+  "production_trees": {
+    "Sources": {
+      "git_object": "8a5531b6e902468de79e924a65bcc0c193c21ef2",
+      "matches_iteration_2": true,
+      "working_tree_matches": true
+    },
+    "Tests": {
+      "git_object": "b7149df7b04b96e4255e3e97c5d5ddff0f1bd7bc",
+      "matches_iteration_2": true,
+      "working_tree_matches": true
+    },
+    "firmware": {
+      "git_object": "1a225fc5b9bc4d9da39d1a090a7a382c30a8e4fc",
+      "matches_iteration_2": true,
+      "working_tree_matches": true
+    },
+    "scripts": {
+      "git_object": "c54804a17af4dd1d41fdd61ee5d835b66bc783c0",
+      "matches_iteration_2": true,
+      "working_tree_matches": true
+    },
+    "ThirdParty": {
+      "git_object": "e340eb4b1dbfa76e9b087081d6321a672d0102ed",
+      "matches_iteration_2": true,
+      "working_tree_matches": true
+    },
+    "Package.swift": {
+      "git_object": "d06c7608218e98b19323f3dffc4fb1578b0d0a51",
+      "matches_iteration_2": true,
+      "working_tree_matches": true
+    },
+    "Package.resolved": {
+      "git_object": "015565afcfc5f45d68697797bd92e3b08d1b8135",
+      "matches_iteration_2": true,
+      "working_tree_matches": true
+    },
+    "docs/adrs": {
+      "git_object": "9b52df664e84a25aff60b5ec790e42c61308170e",
+      "matches_iteration_2": true,
+      "working_tree_matches": true
+    },
+    "docs/specs": {
+      "git_object": "0be419fe6fe35d21db60302c439bcdffe00ef324",
+      "matches_iteration_2": true,
+      "working_tree_matches": true
+    },
+    "docs/architecture": {
+      "git_object": "0520faec5a5de423fec02f3b9c915e80fbe6b385",
+      "matches_iteration_2": true,
+      "working_tree_matches": true
+    }
+  },
+  "installed_files": {
+    ".toolchains/host/swift-6.3.2-RELEASE-osx/usr/bin/swift-frontend": {
+      "sha256": "1f0539c14f92dacacde4ca5039e2fdaa232b212a1accf1124fce19f107b5ee70"
+    },
+    ".toolchains/nrf52840/swift/swift-6.3.2-RELEASE-osx/usr/bin/swift-frontend": {
+      "sha256": "1f0539c14f92dacacde4ca5039e2fdaa232b212a1accf1124fce19f107b5ee70"
+    },
+    ".toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6/raspios-bookworm-static.json": {
+      "sha256": "db81f8323c965f9ad31b60a97576f934af909c5e24f5142fbfb6ea92cf90c335"
+    },
+    ".toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6/raspios-bookworm-dynamic.json": {
+      "available": false
+    },
+    ".toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/arm-zephyr-eabi-gcc": {
+      "sha256": "6220ff239e621407ce752563cedd90d086e7f95f9e521ec61b974139de7e224c"
+    },
+    "scripts/raspberry-pi/toolchain.env": {
+      "sha256": "0cf3edcb612598971b042b35792398193dc24196d49af521a5d1d23570f0a51f"
+    },
+    "scripts/nrf52840/toolchain.env": {
+      "sha256": "9f71c8faf46502e920c1e5f1763132166f8136bc0e23a17cc38291ef35f376a5"
+    }
+  },
+  "historical_evidence": {
+    "docs/iterations/iteration-002-cleanup/evidence/18-retention-integration/paired-retention-resources.json": {
+      "sha256": "90c574905cf94a7589dec2b9581d4be5e93b1903ac4de6cbdca30755a3a002bf",
+      "fresh_measurement": false
+    },
+    "docs/iterations/iteration-002-cleanup/evidence/18-retention-integration/maintained-input-hashes.tsv": {
+      "sha256": "0b70311fe163b32e14d266011ee2e01810e796f58953c6485774c26e7c048cf2",
+      "fresh_measurement": false
+    },
+    "docs/iterations/iteration-002-cleanup/evidence/18-retention-integration/metadata.txt": {
+      "sha256": "388c72a4d10a35ea2b0d89f3ce2dd8c5730d850ce0d2e51971ae8568bf540b37",
+      "fresh_measurement": false
+    },
+    "docs/iterations/iteration-002-review/30-pi-aggregate-phase-comparison.md": {
+      "sha256": "671e8d664062eb81768ac52d72c09cf316252514b376f65bb69a0e137d2d76f1",
+      "fresh_measurement": false
+    },
+    "docs/iterations/iteration-002-review/26-connected-nrf-phases-and-failure.md": {
+      "sha256": "40edfa9193b0dde4095691091679363136aeaff8b3b80b11fdeaf44e34c67ccf",
+      "fresh_measurement": false
+    },
+    "docs/iterations/iteration-002-cleanup/evidence/18-retention-integration/reports/spec-001/macos-dynamic/metadata.txt": {
+      "sha256": "cf9289ba050b8fe9986d298ebbe60e0a7aaa4e80ef69affc7cb0eada4837b6e6",
+      "metadata": {
+        "schema_version": "1",
+        "spec": "SPEC-001",
+        "profile": "macos-dynamic",
+        "evidence_kind": "macos-target-execution",
+        "repository_revision": "feb4058920efbbb541787485a28b4d727dcc8b3b",
+        "repository_dirty": "false",
+        "source_identity": "54ae23e29f4754a63bed1599025c3603a2f8afa7a4ef8d9301737d81d73d0c84",
+        "fixture_identity": "ac3f008166fa76be21d9535c7671b04e9a6d14f8258eeb9d8c14f9406af857c3",
+        "native_check_compiler_path": "/usr/bin/swiftc",
+        "native_check_compiler_identity": "swift-driver version: 1.148.6 Apple Swift version 6.3.3 (swiftlang-6.3.3.1.3 clang-2100.1.1.101) Target: arm64-apple-macosx26.0 ",
+        "compiler_path": "/usr/bin/swiftc",
+        "compiler_identity": "swift-driver version: 1.148.6 Apple Swift version 6.3.3 (swiftlang-6.3.3.1.3 clang-2100.1.1.101) Target: arm64-apple-macosx26.0 ",
+        "sdk_identity": "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk",
+        "sdk_version_or_destination_sha256": "26.5",
+        "target_triple": "arm64-apple-macosx",
+        "optimization": "debug-dynamic",
+        "invocation": "scripts/contracts/run-spec-001.sh --profile macos-dynamic",
+        "command_identity": "e00d3f0e9694412f4660a0a127b4917c40007dfe4ba58ef43d3a62008b5b0804",
+        "artifact_path": "/Users/eugene/work/GiftUI/.build/arm64-apple-macosx/debug/SignalAnalyzerMacOSDynamic",
+        "artifact_identity": "3e353d9d3c12d998e94dc52ef433b640d2bfe3d325ae121475741b519a19d5b2",
+        "remote_access": "false",
+        "deployment": "false",
+        "service_restart": "false",
+        "hardware_probe": "false",
+        "flashing": "false",
+        "network_access": "false",
+        "status": "complete",
+        "blocking_reason": "none"
+      },
+      "fresh_measurement": false
+    },
+    "docs/iterations/iteration-002-cleanup/evidence/18-retention-integration/reports/spec-001/macos-static/metadata.txt": {
+      "sha256": "525102d9717ec3db428e5d2d165d7fa7e872528106b94e8d986535bdeb70d916",
+      "metadata": {
+        "schema_version": "1",
+        "spec": "SPEC-001",
+        "profile": "macos-static",
+        "evidence_kind": "macos-target-execution",
+        "repository_revision": "feb4058920efbbb541787485a28b4d727dcc8b3b",
+        "repository_dirty": "true",
+        "source_identity": "54ae23e29f4754a63bed1599025c3603a2f8afa7a4ef8d9301737d81d73d0c84",
+        "fixture_identity": "ac3f008166fa76be21d9535c7671b04e9a6d14f8258eeb9d8c14f9406af857c3",
+        "native_check_compiler_path": "/usr/bin/swiftc",
+        "native_check_compiler_identity": "swift-driver version: 1.148.6 Apple Swift version 6.3.3 (swiftlang-6.3.3.1.3 clang-2100.1.1.101) Target: arm64-apple-macosx26.0 ",
+        "compiler_path": "/usr/bin/swiftc",
+        "compiler_identity": "swift-driver version: 1.148.6 Apple Swift version 6.3.3 (swiftlang-6.3.3.1.3 clang-2100.1.1.101) Target: arm64-apple-macosx26.0 ",
+        "sdk_identity": "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk",
+        "sdk_version_or_destination_sha256": "26.5",
+        "target_triple": "arm64-apple-macosx",
+        "optimization": "debug-static",
+        "invocation": "scripts/contracts/run-spec-001.sh --profile macos-static",
+        "command_identity": "990aad56ec655466c444f8ba046c365f71b1a4ada714993cea849d4ef401a0ff",
+        "artifact_path": "/Users/eugene/work/GiftUI/.build/arm64-apple-macosx/debug/SignalAnalyzerMacOSStatic",
+        "artifact_identity": "47bcf36c8412d8b4005f2a8f49d9d3c8b7160460d161c6b39c06c53b032cf2e2",
+        "remote_access": "false",
+        "deployment": "false",
+        "service_restart": "false",
+        "hardware_probe": "false",
+        "flashing": "false",
+        "network_access": "false",
+        "status": "complete",
+        "blocking_reason": "none"
+      },
+      "fresh_measurement": false
+    },
+    "docs/iterations/iteration-002-cleanup/evidence/18-retention-integration/reports/spec-001/raspberry-pi-armv6/metadata.txt": {
+      "sha256": "d847d0da8e72f8b222852cb3cbb4d5d6cbf78fed78bb45c066c3e90e80be9fef",
+      "metadata": {
+        "schema_version": "1",
+        "spec": "SPEC-001",
+        "profile": "raspberry-pi-armv6",
+        "evidence_kind": "cross-build-inspection",
+        "repository_revision": "8e3e5ee9603177e6fe6cd2f8bdba2fe54d59445c",
+        "repository_dirty": "false",
+        "source_identity": "54ae23e29f4754a63bed1599025c3603a2f8afa7a4ef8d9301737d81d73d0c84",
+        "fixture_identity": "ac3f008166fa76be21d9535c7671b04e9a6d14f8258eeb9d8c14f9406af857c3",
+        "native_check_compiler_path": "/usr/bin/swiftc",
+        "native_check_compiler_identity": "swift-driver version: 1.148.6 Apple Swift version 6.3.3 (swiftlang-6.3.3.1.3 clang-2100.1.1.101) Target: arm64-apple-macosx26.0 ",
+        "compiler_path": "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.3.2-RELEASE-osx/usr/bin/swift",
+        "compiler_identity": "Apple Swift version 6.3.2 (swift-6.3.2-RELEASE) Target: arm64-apple-macosx26.0 ",
+        "sdk_identity": "/Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6/raspios-bookworm-static.json",
+        "sdk_version_or_destination_sha256": "db81f8323c965f9ad31b60a97576f934af909c5e24f5142fbfb6ea92cf90c335",
+        "target_triple": "armv6-unknown-linux-gnueabihf",
+        "optimization": "release",
+        "invocation": "scripts/contracts/run-spec-001.sh --profile raspberry-pi-armv6",
+        "command_identity": "00f87bfd62fc859c15ef2f285e071a8992808ad51d4f91b81d11cb8b482e8fc3",
+        "artifact_path": "/Users/eugene/work/GiftUI/.build/raspberry-pi/artifacts/SignalAnalyzerRaspberryPiARMv6",
+        "artifact_identity": "90dec11ef8cfd39480b888eb0cdef90ac9695d454ef7f9bdd12466ab7c8fa211",
+        "remote_access": "false",
+        "deployment": "false",
+        "service_restart": "false",
+        "hardware_probe": "false",
+        "flashing": "false",
+        "network_access": "false",
+        "status": "complete",
+        "blocking_reason": "connected-execution-not-collected"
+      },
+      "fresh_measurement": false
+    },
+    "docs/iterations/iteration-002-cleanup/evidence/18-retention-integration/reports/spec-001/nrf52840-embedded/metadata.txt": {
+      "sha256": "fc03862e1da2b7ca63d5859fac2084ca6224e9db4f8c9bb743868f53ab90976e",
+      "metadata": {
+        "schema_version": "1",
+        "spec": "SPEC-001",
+        "profile": "nrf52840-embedded",
+        "evidence_kind": "cross-build-inspection",
+        "repository_revision": "8e3e5ee9603177e6fe6cd2f8bdba2fe54d59445c",
+        "repository_dirty": "true",
+        "source_identity": "54ae23e29f4754a63bed1599025c3603a2f8afa7a4ef8d9301737d81d73d0c84",
+        "fixture_identity": "ac3f008166fa76be21d9535c7671b04e9a6d14f8258eeb9d8c14f9406af857c3",
+        "native_check_compiler_path": "/usr/bin/swiftc",
+        "native_check_compiler_identity": "swift-driver version: 1.148.6 Apple Swift version 6.3.3 (swiftlang-6.3.3.1.3 clang-2100.1.1.101) Target: arm64-apple-macosx26.0 ",
+        "zephyr_revision": "3568e1b6d5cdd51a6b964a2a1d6d29200fea2056",
+        "compiler_path": "/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.3.2-RELEASE-osx/usr/bin/swiftc",
+        "compiler_identity": "Apple Swift version 6.3.2 (swift-6.3.2-RELEASE) Target: arm64-apple-macosx26.0 ",
+        "sdk_identity": "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4",
+        "sdk_version_or_destination_sha256": "0.17.4",
+        "target_triple": "armv7em-none-none-eabi",
+        "optimization": "release-size",
+        "invocation": "scripts/contracts/run-spec-001.sh --profile nrf52840-embedded",
+        "command_identity": "5040a7a58622554a15fe652721f5dc2e3d4e3587a5bea32d2809c0745ae7a21d",
+        "artifact_path": "/Users/eugene/work/GiftUI/.build/nrf52840/signal-analyzer-static/zephyr/zephyr.elf",
+        "artifact_identity": "9822838bccedb57f2819e6d3e8b0e796c15f9e8357d5880bced3bb4cb2b68f2f",
+        "remote_access": "false",
+        "deployment": "false",
+        "service_restart": "false",
+        "hardware_probe": "false",
+        "flashing": "false",
+        "network_access": "false",
+        "status": "complete",
+        "blocking_reason": "connected-execution-not-collected"
+      },
+      "fresh_measurement": false
+    }
+  },
+  "local_artifacts": {
+    "macos-dynamic": {
+      "path": "/Users/eugene/work/GiftUI/.build/arm64-apple-macosx/debug/SignalAnalyzerMacOSDynamic",
+      "available": false,
+      "recorded_sha256": "3e353d9d3c12d998e94dc52ef433b640d2bfe3d325ae121475741b519a19d5b2"
+    },
+    "macos-static": {
+      "path": "/Users/eugene/work/GiftUI/.build/arm64-apple-macosx/debug/SignalAnalyzerMacOSStatic",
+      "available": false,
+      "recorded_sha256": "47bcf36c8412d8b4005f2a8f49d9d3c8b7160460d161c6b39c06c53b032cf2e2"
+    },
+    "raspberry-pi-armv6": {
+      "path": "/Users/eugene/work/GiftUI/.build/raspberry-pi/artifacts/SignalAnalyzerRaspberryPiARMv6",
+      "available": false,
+      "recorded_sha256": "90dec11ef8cfd39480b888eb0cdef90ac9695d454ef7f9bdd12466ab7c8fa211"
+    },
+    "nrf52840-embedded": {
+      "path": "/Users/eugene/work/GiftUI/.build/nrf52840/signal-analyzer-static/zephyr/zephyr.elf",
+      "available": false,
+      "recorded_sha256": "9822838bccedb57f2819e6d3e8b0e796c15f9e8357d5880bced3bb4cb2b68f2f"
+    }
+  },
+  "native_swift_version": "Apple Swift version 6.3.3 (swiftlang-6.3.3.1.3 clang-2100.1.1.101)\nTarget: arm64-apple-macosx26.0",
+  "native_sdk_version": "26.5"
+}
