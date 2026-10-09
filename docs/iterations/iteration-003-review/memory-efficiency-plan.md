@@ -18,18 +18,56 @@ checks, resource costs and remaining gates. Existing accepted ADRs and implement
 Specifications remain authority; the generated production graph is retained.
 
 **Current disposition: I3-T01 passed within its hardware-free boundary.**
-The next unresolved iteration work is I3-04 / ME-05–06 runtime design and its
-applicable contract/implementation readiness, not another general preparation
-cycle. Its concrete bounded execution package remains to be established.
+The next work is **I3-T02**, the bounded runtime ownership/derivation design
+package below, addressing I3-04 / ME-05. Production migration remains gated;
+this package does not reopen the stopped feasibility experiments.
 The [findings summary](preparation-findings.md) and stopped studies remain
 historical inputs; this result does not reopen their budgets or experiments.
 
 | Work | Current readiness / missing prerequisite |
 | --- | --- |
 | I3-T01 correction package | Complete within the hardware-free boundary; [result and residual gates](i3-t01-result.md). |
-| I3-04 runtime derivation, ME-05/06 | Concrete ownership/lifetime realization, complete resource bounds, applicable contract approvals and executable implementation tasks remain unresolved. Its next execution package and numeric effort ceiling are not yet fixed. I3-T01 informs this work but is not its only prerequisite. |
+| I3-T02 runtime design, I3-04 / ME-05 | Active design package below; a concrete recommendation, contract-change map and conditional implementation sequence are due. |
+| ME-06 runtime implementation | Blocked on the resulting architecture/contract gates and complete resource/lifetime evidence; no ready migration plan yet. |
 | ME-08 integrated validation | Waits for the adopted implementations and exact artifact identities; connected evidence remains separately authorized. |
 | ME-09 closure/handoff | Waits for the criterion dispositions and maintainer decision; no automatic iteration-4 extraction. |
+
+## I3-T02 — Runtime derivation design package
+
+**Status:** active. **Kind:** RFC design and adoption routing, not a renewed
+feasibility experiment or authorized production migration.
+
+On 2026-10-09, after the next-task explanation distinguished design from blocked
+implementation, Eugene instructed: “Let’s proceed then.” This authorizes this
+bounded design continuation. The standing request is to commit each step.
+Baseline: `710fbd24`; the I3-T01 source/test evidence identifies `7d618db7`.
+
+Use one **60-active-minute ceiling**, including orientation, source review,
+authoring, self-review, governance validation and commits. Launch accounting at
+19:18 UTC charges eight minutes of preceding orientation. No builds, runtime
+experiments, new Spike, hardware operation or budget renewal is selected.
+A missing proof ends in a named blocker and exact required evidence, not an
+automatic experimental continuation. This is an executor-selected ceiling.
+
+| Step | Deliverable | Exit |
+| --- | --- | --- |
+| I3-T02.1 | Scope and authority routing | Commit this launch; separate runtime ownership from external package/API delivery. |
+| I3-T02.2 | Focused draft RFC under accepted PROPOSAL-007 and I3-04 | Concrete record/identity, state/capture, publication/teardown and resource model; alternatives and contract deltas. Commit design with reciprocal links. |
+| I3-T02.3 | Review and conditional implementation sequence | Every blocking question has its reason, owner contract and required resolution; no unapproved task marked ready. Commit final disposition. |
+
+Runtime representation, state access and capture lifetime form one coherent
+review boundary: each controls what a copied declaration can retain through
+post-layout Canvas execution. They can be evaluated without choosing the
+iteration-4 package partition or public host API. Route them to a focused RFC;
+RFC-013 retains external integration and historical candidate evidence.
+Preserve the 4 MHz performance failure independently of representation design.
+A new RFC number does not reopen SPIKE-067/068 or adopt their candidates.
+
+The design must preserve the accepted Semantic Core, Layout, Runtime,
+Observable State, Drawing and Interaction owners. Existing-contract private
+choices may later become implementation notes; changes to declarations,
+resource limits or lifetime obligations require the affected Spec review.
+No approved Specification or ADR is changed by this package.
 
 ## Fixed preparation questions and output
 
