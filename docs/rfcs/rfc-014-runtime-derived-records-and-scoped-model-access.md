@@ -274,6 +274,10 @@ or **(4 + R) × 6,464 bytes**, plus metadata/control. Four slots require a prove
 R=0 for the selected application lifecycle. The experiment models R=1 with five
 slots; it does not select R for either application or approve that reservation.
 Pool exhaustion must precede replacement commit and preserve the old association.
+The subsequent [application ownership audit](../iterations/iteration-003-review/rfc-014-ownership-audit.md)
+identifies retained host/failure/attempt model references and the counter
+replacement requirement. Neither application yet proves R=0; transient retention
+at replacement commit must be included, not just the state after cleanup.
 
 The counter captures its scalar value by value. It needs no analyzer capture
 pool and must not import analyzer owners.
