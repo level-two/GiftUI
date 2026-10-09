@@ -1,0 +1,7 @@
+/Users/eugene/work/GiftUI/.build/iteration-003/spike-068/repair-1/Control.swift:27461:14: warning: external macro implementation type 'GiftUIMacros.ObservableStateHostMacro' could not be found for macro 'ObservableStateHost()'; plugin for module 'GiftUIMacros' not found
+27459 | )
+27460 | @attached(extension, conformances: _GiftUIObservableStateHost)
+27461 | public macro ObservableStateHost() =
+      |              `- warning: external macro implementation type 'GiftUIMacros.ObservableStateHostMacro' could not be found for macro 'ObservableStateHost()'; plugin for module 'GiftUIMacros' not found
+27462 |     #externalMacro(
+27463 |         module: "GiftUIMacros",

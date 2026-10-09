@@ -1,0 +1,83 @@
+// Disposable host geometry probe. This is not a target firmware or runtime candidate.
+struct FillSink: RenderOperationSink {
+    let capacity = RenderSinkCapacity(maximumOperations: 150, maximumPositionedGlyphs: 224)
+    var surface: Rect?
+    var damage: Rect?
+    var pixels: Int64 = 0
+    var fills = 0
+    var finished = false
+
+    mutating func begin(_ header: RenderPlanHeader) -> Bool {
+        surface = header.surfaceBounds
+        damage = header.damageBounds
+        return true
+    }
+
+    mutating func fillRect(_ operation: FillRectOperation) -> Bool {
+        guard let surface, let damage,
+            let a = LayoutGeometry.intersection(operation.bounds, operation.clip),
+            let b = LayoutGeometry.intersection(a, surface),
+            let c = LayoutGeometry.intersection(b, damage)
+        else { return false }
+        let area = Int64(c.size.width) * Int64(c.size.height)
+        pixels += area
+        fills += 1
+        print("fill \(c.origin.x) \(c.origin.y) \(c.size.width) \(c.size.height) \(area)")
+        return true
+    }
+
+    mutating func beginPositionedGlyphs(_: PositionedGlyphOperationHeader) -> Bool { true }
+    mutating func positionedGlyph(_: PositionedGlyph) -> Bool { true }
+    mutating func endPositionedGlyphs() -> Bool { true }
+    mutating func finish() -> Bool { finished = true; return true }
+    mutating func discard() { fatalError("Render discarded the probe") }
+}
+
+@main
+enum Probe {
+    static func main() {
+        let profile = UnsafeMutableRawBufferPointer.allocate(byteCount: 39_696, alignment: 8)
+        let captureBytes = UnsafeMutableRawBufferPointer.allocate(byteCount: 19_392, alignment: 8)
+        defer { profile.deallocate(); captureBytes.deallocate() }
+        profile.initializeMemory(as: UInt8.self, repeating: 0)
+        captureBytes.initializeMemory(as: UInt8.self, repeating: 0)
+        let capture = StaticSignalAnalyzerNRFCaptureRegions(storage: captureBytes)!
+        var model = StaticSignalAnalyzerNRFModelLocation()
+        precondition(model.activate() != nil)
+        precondition(model.beginMutation())
+        precondition(model.setAcquisitionState(.running))
+        precondition(model.endMutation())
+        let candidate = UnsafeMutableRawBufferPointer(rebasing: profile[0..<3_024])
+        precondition(StaticSignalAnalyzerNRFEmbeddedSemanticRegion.stage(
+            variant: .normal, model: model, capture: capture, in: candidate) != nil)
+        let semantic = StaticSignalAnalyzerNRFEmbeddedSemanticView(candidate: candidate, revision: 1)!
+        let text = UnsafeMutableRawBufferPointer(rebasing: profile[9_184..<13_888])
+        var workspace = StaticSignalAnalyzerNRFCommonLayoutWorkspace(
+            packed: StaticSignalAnalyzerNRFEmbeddedLayoutWorkspace(
+                scopes: UnsafeMutableRawBufferPointer(rebasing: profile[6_048..<9_184]),
+                text: text)!)
+        guard case .success(let layout) = StaticSignalAnalyzerNRFCommonLayoutPass.runTyped(
+            semantic: semantic, workspace: &workspace)
+        else { fatalError("Layout failed") }
+        print("root \(layout.rootBounds.size.width) \(layout.rootBounds.size.height)")
+        let limits = RenderLimits(maximumOperations: 150, maximumPositionedGlyphs: 224,
+                                  maximumClipDepth: 5)!
+        var render = StaticSignalAnalyzerNRFRenderWorkspace(
+            region: text, capacity: limits,
+            structuralCapacity: RenderWorkspaceCapacity(
+                maximumSemanticScopes: 98, maximumLayoutScopes: 98,
+                maximumTraversalDepth: 19, maximumTextLines: 128)!)!
+        var sink = FillSink()
+        // The empty Canvas extension omits strokes only. Shared Render still emits
+        // every background fill and text operation with the production layout.
+        let result = RenderProducer.produce(
+            semantic: StaticSignalAnalyzerNRFEmbeddedRenderSemanticAdapter(source: semantic),
+            layout: layout, textMetrics: StaticSignalAnalyzerNRFEmbeddedFontMetrics(),
+            surfaceBounds: Rect(origin: Point(x: 0, y: 0), size: Size(width: 320, height: 240)!)!,
+            damageMode: .initializeCompleteSurface, rootForeground: .white,
+            limits: limits, workspace: &render, sink: &sink)
+        guard case .success = result, sink.finished else { fatalError("Render failed") }
+        print("total \(sink.fills) \(sink.pixels)")
+        model.retire()
+    }
+}

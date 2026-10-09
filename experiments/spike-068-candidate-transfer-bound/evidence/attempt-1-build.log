@@ -1,0 +1,81 @@
+/Users/eugene/work/GiftUI/.build/iteration-003/spike-068/Control.swift:23277:18: error: cannot find type 'StaticSignalAnalyzerNRFSemanticVariant' in scope
+23275 | 
+23276 |     package static func populateShape(
+23277 |         variant: StaticSignalAnalyzerNRFSemanticVariant,
+      |                  `- error: cannot find type 'StaticSignalAnalyzerNRFSemanticVariant' in scope
+23278 |         in region: UnsafeMutableRawBufferPointer
+23279 |     ) -> UInt16? {
+
+/Users/eugene/work/GiftUI/.build/iteration-003/spike-068/Control.swift:24012:18: error: cannot find type 'StaticSignalAnalyzerNRFSemanticVariant' in scope
+24010 | package enum StaticSignalAnalyzerNRFModelTextWriter {
+24011 |     package static func populate(
+24012 |         variant: StaticSignalAnalyzerNRFSemanticVariant,
+      |                  `- error: cannot find type 'StaticSignalAnalyzerNRFSemanticVariant' in scope
+24013 |         model: borrowing StaticSignalAnalyzerNRFModelLocation,
+24014 |         capture: borrowing StaticSignalAnalyzerNRFCaptureRegions,
+
+/Users/eugene/work/GiftUI/.build/iteration-003/spike-068/Control.swift:24078:18: error: cannot find type 'StaticSignalAnalyzerNRFSemanticVariant' in scope
+24076 |     private static func value(
+24077 |         at ordinal: UInt16,
+24078 |         variant: StaticSignalAnalyzerNRFSemanticVariant,
+      |                  `- error: cannot find type 'StaticSignalAnalyzerNRFSemanticVariant' in scope
+24079 |         model: borrowing StaticSignalAnalyzerNRFModelLocation,
+24080 |         capture: borrowing StaticSignalAnalyzerNRFCaptureRegions
+
+/Users/eugene/work/GiftUI/.build/iteration-003/spike-068/Control.swift:24239:18: error: cannot find type 'StaticSignalAnalyzerNRFSemanticVariant' in scope
+24237 | package enum StaticSignalAnalyzerNRFEmbeddedSemanticValidator {
+24238 |     package static func validate(
+24239 |         variant: StaticSignalAnalyzerNRFSemanticVariant,
+      |                  `- error: cannot find type 'StaticSignalAnalyzerNRFSemanticVariant' in scope
+24240 |         textByteCount: UInt16,
+24241 |         in region: UnsafeMutableRawBufferPointer
+
+/Users/eugene/work/GiftUI/.build/iteration-003/spike-068/Control.swift:24429:18: error: cannot find type 'StaticSignalAnalyzerNRFSemanticVariant' in scope
+24427 | 
+24428 |     package static func stage(
+24429 |         variant: StaticSignalAnalyzerNRFSemanticVariant,
+      |                  `- error: cannot find type 'StaticSignalAnalyzerNRFSemanticVariant' in scope
+24430 |         model: borrowing StaticSignalAnalyzerNRFModelLocation,
+24431 |         capture: borrowing StaticSignalAnalyzerNRFCaptureRegions,
+
+/Users/eugene/work/GiftUI/.build/iteration-003/spike-068/Control.swift:24587:18: error: cannot find type 'StaticSignalAnalyzerNRFSemanticVariant' in scope
+24585 | 
+24586 |     private static func encodePrefix(
+24587 |         variant: StaticSignalAnalyzerNRFSemanticVariant,
+      |                  `- error: cannot find type 'StaticSignalAnalyzerNRFSemanticVariant' in scope
+24588 |         model: borrowing StaticSignalAnalyzerNRFModelLocation,
+24589 |         in region: UnsafeMutableRawBufferPointer
+
+/Users/eugene/work/GiftUI/.build/iteration-003/spike-068/Control.swift:27457:14: warning: external macro implementation type 'GiftUIMacros.ObservableStateHostMacro' could not be found for macro 'ObservableStateHost()'; plugin for module 'GiftUIMacros' not found
+27455 | )
+27456 | @attached(extension, conformances: _GiftUIObservableStateHost)
+27457 | public macro ObservableStateHost() =
+      |              `- warning: external macro implementation type 'GiftUIMacros.ObservableStateHostMacro' could not be found for macro 'ObservableStateHost()'; plugin for module 'GiftUIMacros' not found
+27458 |     #externalMacro(
+27459 |         module: "GiftUIMacros",
+
+/Users/eugene/work/GiftUI/.build/iteration-003/spike-068/Control.swift:24508:27: error: cannot find 'StaticSignalAnalyzerNRFSemanticVariant' in scope
+24506 |             loadUInt16(at: 4, in: region) == 1,
+24507 |             region[6] == state,
+24508 |             let variant = StaticSignalAnalyzerNRFSemanticVariant(rawValue: region[7]),
+      |                           `- error: cannot find 'StaticSignalAnalyzerNRFSemanticVariant' in scope
+24509 |             loadUInt32(at: 8, in: region) == rootIdentity,
+24510 |             loadUInt32(at: checksumOffset, in: region) == checksum(region),
+
+/Users/eugene/work/GiftUI/experiments/spike-068-candidate-transfer-bound/Probe.swift:52:23: error: cannot infer contextual base in reference to member 'normal'
+50 |         let candidate = UnsafeMutableRawBufferPointer(rebasing: profile[0..<3_024])
+51 |         precondition(StaticSignalAnalyzerNRFEmbeddedSemanticRegion.stage(
+52 |             variant: .normal, model: model, capture: capture, in: candidate) != nil)
+   |                       `- error: cannot infer contextual base in reference to member 'normal'
+53 |         let semantic = StaticSignalAnalyzerNRFEmbeddedSemanticView(candidate: candidate, revision: 1)!
+54 |         let text = UnsafeMutableRawBufferPointer(rebasing: profile[9_184..<13_888])
+
+/Users/eugene/work/GiftUI/experiments/spike-068-candidate-transfer-bound/Probe.swift:76:28: error: value of optional type 'Rect?' must be unwrapped to a value of type 'Rect'
+74 |             semantic: StaticSignalAnalyzerNRFEmbeddedRenderSemanticAdapter(source: semantic),
+75 |             layout: layout, textMetrics: StaticSignalAnalyzerNRFEmbeddedFontMetrics(),
+76 |             surfaceBounds: Rect(origin: Point(x: 0, y: 0), size: Size(width: 320, height: 240)!),
+   |                            |- error: value of optional type 'Rect?' must be unwrapped to a value of type 'Rect'
+   |                            |- note: coalesce using '??' to provide a default when the optional value contains 'nil'
+   |                            `- note: force-unwrap using '!' to abort execution if the optional value contains 'nil'
+77 |             damageMode: .initializeCompleteSurface, rootForeground: .white,
+78 |             limits: limits, workspace: &render, sink: &sink)

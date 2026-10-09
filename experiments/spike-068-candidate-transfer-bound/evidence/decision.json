@@ -1,0 +1,46 @@
+{
+  "verdict": "NO-GO",
+  "failed_gate": "G3",
+  "method": "native geometry plus physical wire lower bound; not measured target timing",
+  "candidate_freeze_commit": "7d4e8f5993e5dc6ce1c9ee732a459a241077a955",
+  "root_fill_pixels": 70400,
+  "root_fill_bytes": 140800,
+  "root_fill_lower_bound_ms": 281.6,
+  "all_fill_pixels": 127120,
+  "all_fill_bytes": 254240,
+  "all_fill_lower_bound_ms": 508.48,
+  "spi_max_hz": 4000000,
+  "frame_budget_ms": 250,
+  "optimistic_max_fps_from_fills": 1.9666456891126494,
+  "minimum_fill_only_bus_hz_for_4fps": 8135680,
+  "max_pixel_bytes_per_250ms_at_4mhz": 125000,
+  "explicit_driver_build_invocations": 2,
+  "native_execution_invocations": 1,
+  "repair_attempts": 1,
+  "compiler_child_accounting": "Not individually traced. Entire 24-invocation allowance charged closed conservatively; no exact child count claimed.",
+  "experiment_stop_utc": "2026-10-09 15:24:23 UTC",
+  "excluded_costs": [
+    "glyph pixels",
+    "Canvas strokes",
+    "commands",
+    "bus gaps",
+    "CPU work"
+  ],
+  "limitations": [
+    "Generated production control, not runtime-derived candidate",
+    "Native monolithic fixture with imports removed; not supported owner-module firmware",
+    "No target run, stack bound, heap claim or sustained workload pass",
+    "G1/G2 unproved; counter and other profiles not implemented"
+  ],
+  "causal_source_sha256": {
+    "Sources/GiftUIRenderLowering/RenderStreaming.swift": "c522f90d0a7e74aeaa6f2109ddbb6b54738de27f2d36e148eda08621633d7371",
+    "Sources/GiftUIRasterCore/RasterFillCoverage.swift": "e71a27b6a6e5ee0557bef856d70cfa8b7551ab2d3f93e830f31b414a21b03594",
+    "Sources/GiftUIBackendIntegration/OperationMajorRGB565RasterSession.swift": "8b930d7dd1a226a8d4bdf5c827c1fd4471f0084f634ebe1144696fae2f50b4b5",
+    "Sources/GiftUIBackendIntegration/OperationMajorTileTraversal.swift": "a61e6fbe4e1cd2ea1f1325e11ea2e37332fa1c9c2e09a4a0d7dabdd5a7a2d765",
+    "Sources/GiftUIBackendIntegration/RGB565TilePayloadEmitter.swift": "0d0b245435a848f98bbc1996a0768298b1be2a03563d06d8bbd04d8077cf7c34",
+    "Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFSPITFTTransport.swift": "46345a3e848e150be7b640d73f73055f3327f9ee1019b98025b629f09bba878c",
+    "firmware/nrf52840/applications/signal-analyzer-static/src/spi_tft.c": "dda88210a8a70864f3f393ca1057da7b64a84cbe01d3de97da55b1232f1ef00f",
+    "firmware/nrf52840/applications/signal-analyzer-static/app.overlay": "668ebe588c0f9e7e78de757d1642b91d1ee395be13f03ab63f4ff82f5dbf30fd",
+    "firmware/nrf52840/applications/signal-analyzer-static/include/spi_tft.h": "2e2b471d6ac7eab4f2829a32745283139172b322eb1072e1d459324ab800771f"
+  }
+}
