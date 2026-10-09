@@ -94,9 +94,7 @@
     "CONFIG_IDLE_STACK_SIZE": 320,
     "CONFIG_ISR_STACK_SIZE": 2048
   },
-  "known_reserved_total": 92848,
   "historical_linked_ram_bytes": 95104,
-  "unattributed_linked_residual_bytes": 2256,
   "selected_ram_ceiling": 196608,
   "configured_headroom_not_proven_free_memory": 101504,
   "naive_additional_framebuffer": {
@@ -137,6 +135,15 @@
     "experiments/spike-067-integrated-runtime-host/armv6-results-0065.md": {
       "commit": "af5e9559ebf71446dbee4c3b1fcb2aae65a8f769",
       "git_blob": "edd4ef32c8ed71e6037b778b72df6eb84c92a52a"
+    },
+    "experiments/spike-067-integrated-runtime-host/CounterScope.swift": {
+      "commit": "af5e9559ebf71446dbee4c3b1fcb2aae65a8f769",
+      "git_blob": "148ceb2ed471ea9de27bfda740352bc9f7d4b183"
     }
-  }
+  },
+  "outer_reserved_total": 61808,
+  "linked_bytes_outside_outer_regions": 33296,
+  "configured_stack_sum": 31040,
+  "remainder_if_all_configured_stacks_are_linked": 2256,
+  "stack_accounting_limit": "Configured stack values are not a symbol inventory. With CONFIG_MULTITHREADING=n, workqueue/idle allocations may be absent. The 33,296 linked bytes outside the four fixed buffers include actual stacks, globals, guards and alignment; 2,256 is only the conditional remainder if all configured stack values contribute."
 }

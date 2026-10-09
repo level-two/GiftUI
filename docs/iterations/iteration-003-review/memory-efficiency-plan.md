@@ -164,6 +164,9 @@ FW-035 retains the future generated-frontend question.
 | Deploy/flash for connected measurements | Explicit authorization for the operation plus the repository target skills and checks. |
 
 Execution is recorded in the single [feasibility decision packet](feasibility-decision.md).
-ME-01 baseline inventory is complete; ME-02–04 are active preparation. Later ME
-activities remain planned. No production migration or conformance transition
-follows from baseline/toolchain inspection.
+ME-01 baseline inventory is complete; ME-02/03 record partial source/historical
+evidence; ME-04 has a terminal **inconclusive** disposition. The bounded phase
+has ended without establishing complete feasibility. ME-05 readiness and later
+implementation remain open. Further preparation is not an automatic continuation;
+use the packet's exact blockers and next-decision boundary. No production
+migration or conformance transition follows from this assessment.

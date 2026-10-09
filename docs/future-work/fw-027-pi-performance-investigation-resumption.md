@@ -131,3 +131,10 @@ Existing observations and exceptions remain historical; they do not satisfy
 the new sustained-workload or safe-memory criteria. See the
 [current plan](../iterations/iteration-003-review/memory-efficiency-plan.md).
 This changes no algorithm, contract or connected-operation authorization.
+
+The [revision-5 bounded assessment](../iterations/iteration-003-review/feasibility-decision.md)
+reuses the phase evidence and final-image production-loop timings, identifies
+source-deadline rebasing and projection work as candidate cost boundaries, and
+ends inconclusive on complete runtime-derived feasibility. FW-024/025/026 remain
+unselected alternatives; no new measurement, promotion or permission to resume
+an exhausted experiment follows.

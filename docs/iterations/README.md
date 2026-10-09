@@ -16,6 +16,9 @@ See [process rules](../engineering/ITERATION_SCOPES.md) and
 
 Start with the [current activity plan](iteration-003-review/memory-efficiency-plan.md)
 and [reusable findings](iteration-003-review/preparation-findings.md).
+The [bounded feasibility decision](iteration-003-review/feasibility-decision.md)
+is inconclusive; it records the baseline, architectural alternatives and exact
+remaining safety/performance gates. It does not restart archived experiments.
 [Sequencing approval](iteration-003-review/efficiency-sequencing-approval.md)
 preserves criterion transfers and the bounded-preparation amendment.
 [Archived preparation](iteration-003-review/preparation-archive.md)

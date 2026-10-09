@@ -1,6 +1,6 @@
 # Iteration 3 bounded feasibility decision
 
-Status: active preparation. Governing scope: [ITERATION-003 revision 5](../iteration-003-dev-ux-improvement.md).
+Status: terminal **inconclusive** feasibility assessment. Governing scope: [ITERATION-003 revision 5](../iteration-003-dev-ux-improvement.md).
 Coordination: [ME-01–09 activity plan](memory-efficiency-plan.md).
 This is one derived evidence/decision packet, not architecture or an implementation contract.
 
@@ -76,8 +76,14 @@ give the following non-overlapping reserved regions:
 | Three capture stores | 19,392 | 3 × 404 × 16; live, snapshot/model and admitted storage. Five-second retention is already applied. |
 | Raster/payload/in-flight slot + coverage | 2,720 | 2,560 + 160; the tile, payload and in-flight slot are the same backing, counted once. |
 | **Four outer buffers** | **61,808** | Retained C storage. |
-| Configured main/ISR/workqueue/idle stacks | 31,040 | 27,648 + 2,048 + 1,024 + 320; reservation, not proved maximum use. |
-| Linked remainder | 2,256 | Difference to the recorded 95,104-byte image; includes other linked storage/alignment/guards. No current ELF/map exists to attribute every byte. |
+| **Linked bytes outside those buffers** | **33,296** | Remainder of recorded 95,104-byte image; actual stacks, globals, guards and alignment require symbol-level attribution. |
+
+Recorded main/ISR/workqueue/idle configuration values sum to 31,040 bytes
+(27,648 + 2,048 + 1,024 + 320). They are not a linked-symbol inventory: with
+`CONFIG_MULTITHREADING=n`, idle/workqueue reservations may not materialize. The
+2,256-byte difference after subtracting all four configuration values is only
+a conditional reconciliation, not identified extra linked RAM. No current
+ELF/map is available to finish that attribution or establish actual peak use.
 
 The current resource ceiling is 196,608 bytes. The arithmetic difference of
 101,504 bytes is **not a safe additional stack/storage allowance**: the complete
@@ -181,7 +187,109 @@ to those evidence classes.
 
 ## ME-04 — Alternatives and terminal decision
 
-Pending. No architecture is selected and no implementation is authorized.
+### Compared alternatives
+
+These are bounded candidates within the three selected cost boundaries, not
+new work packages. No candidate has a measured end-to-end improvement here.
+
+| Bottleneck | Candidate A | Candidate B | Assessment |
+| --- | --- | --- | --- |
+| Runtime construction/storage | Continue the typed aggregate realization with explicit borrowing/inlining and complete emitted-stack proof. | Derive into bounded caller-owned records at runtime, with small typed state/capture handles and explicit construction/service leases. | A has the archived copy-removal control but unresolved whole-image safety. B is the preferred direction to review because it makes large backing and lifetimes explicit; it is unproved and must preserve portable declarations, not introduce pre-expanded topology. |
+| Layout lookup | Bound an identity-to-ordinal index and per-identity line/glyph ranges within the layout owner. | Keep packed storage and change traversal to carry validated ordinals through the current attempt. | Both avoid repeated scans in principle. A adds bounded storage; B may affect interfaces/validation order. Need actual lookup counts and preservation of identity, refusal and text/layout behavior before choosing. No cross-frame cache is assumed. |
+| nRF raster production | Realize unit-width orthogonal coverage with bounded row/span storage, preserving the canonical fallback and exact pixels. | Replace the tile with a full RGB565 framebuffer. | A has an existing Dynamic algorithmic reference, but its allocating row implementation cannot be copied unchanged. B as an additive change requires 246,144 linked bytes even after removing the 2,560-byte tile, exceeding 196,608 by 49,536; reject that form. This does not rule out every separately redesigned framebuffer architecture. |
+| Pi projection | Reduce repeated region/projection work within synchronous owned-payload submission. | Complete physical-surface staging as explored by FW-026. | A requires payload/coverage counts; current fast paths are already present. FW-026 reports 528–538ms, still above 250ms, and adds 307,200 bytes while bypassing endpoint semantics. B is not an adoptable implementation or a complete performance solution. |
+| Source-service latency | Absolute source deadlines with bounded catch-up/admission between synchronous frames. | Separate source acquisition from frame service through explicitly bounded handoff. | A preserves the simpler service ownership but needs a proven maximum blocking interval and burst bound. B introduces scheduling/queue/lifetime decisions; it cannot silently add threads to Static or change fact/drop semantics. Neither is established by a faster frame alone. |
+
+### Architecture and contract routing
+
+The evidence does **not** require replacing the entire layer architecture.
+[ADR-006](../../adrs/adr-006-shared-semantics-runtime-profiles.md) already permits
+different storage/dispatch strategies under shared semantics.
+[ADR-026](../../adrs/adr-026-profile-equivalent-bounded-observable-state.md) permits
+bounded typed handles while preserving model identity. Runtime derivation does
+not require storing every expanded value inline or abandoning packed records.
+The next design should exploit those freedoms before proposing new ownership.
+
+| Decision boundary | Authority to preserve / required route |
+| --- | --- |
+| Runtime records, state/capture leases and portable root construction | Review the coherent runtime part of draft RFC-013 under PROPOSAL-007. Preserve ADR-006/024/025/026/033; identify changed SPEC-006/010/012/013/015 and application SPEC-001 obligations. Extract new/superseding ADRs only for actual architectural decisions after RFC approval. |
+| Layout indexes or ordinal traversal | Preserve ADR-032's Semantic Core ownership and borrowed layout view, and SPEC-007 layout/validation behavior. Internal changes may fit existing contracts; a durable cross-module interface or material resource decision requires its normal reviewed lifecycle. |
+| Raster/projection work and payload buffering | Preserve ADR-010, SPEC-008/009/012/014 pixels, painter order, one-shot borrow, transfer and failure semantics. Algorithmic changes may fit those contracts; a new retained/full-frame/async policy needs applicable investment, RFC/ADR and contract approval. PROPOSAL-007 is not blanket authority for that redesign. |
+| Source scheduling and admission | Preserve SPEC-001's workload, SPEC-002 execution boundaries and SPEC-015 host ownership. First discriminate a local deadline defect from a new source/queue/synchronization architecture; route the latter through an applicable accepted Proposal and RFC/ADR/Spec gates. |
+
+The counter's archived [`withCounterFixture<R>`](https://github.com/level-two/GiftUI/blob/af5e9559ebf71446dbee4c3b1fcb2aae65a8f769/experiments/spike-067-integrated-runtime-host/CounterScope.swift) lends a pointer-backed model from
+a local cell during a callback. Its fixture results do not establish a supported
+application lifetime or prove that no returned value/capture can outlive the
+cell. Both analyzer and counter need exact owner/borrow/escape and failure/teardown
+evidence, not just successful compilation of a State declaration.
+
+### Terminal disposition and exact blockers
+
+**Inconclusive: the complete runtime-derived analyzer and counter cannot yet be
+certified against IT-AC-008/009.** This is not evidence that runtime derivation is
+impossible. Preparation has produced its bounded decision packet; it has not
+completed the iteration or satisfied the missing measurements.
+
+1. **Construction/lifetime:** the latest experimental realization has no complete
+   feasible-path stack bound, callback/IRQ closure or State/capture alias/escape
+   proof. The earlier stack witness rejects its original image only. Missing
+   proof cannot be repaired by counting the remaining RAM margin as safe stack.
+2. **Supported applications:** exact runtime-derived supported compositions and
+   per-application counter budgets are absent. All four historical production
+   binaries are absent locally; recording links are not substitutes for the
+   supported firmware/framebuffer paths.
+3. **Cost attribution:** historical timings rank layout/production/projection,
+   but do not quantify current candidate copies, full frame-work counts or the
+   benefit of any proposed remedy. All-profile allocation/lifetime accounting
+   remains incomplete.
+4. **Sustained behavior:** no accepted three-run, 30s/80-event/s/four-FPS connected
+   comparison of the adopted runtime-derived images exists. Old exceptions and
+   accelerated rehearsals do not supply it.
+
+No fresh compilation was justified: the complete runtime-host question remains
+the stopped SPIKE-067 question, and this instruction to proceed with preparation
+does not supply the explicit additional experimental allowance required by the
+governing plan. Replaying old successful builds would not resolve these blockers.
+Independent local performance experiments could answer narrower questions, but
+could not establish complete feasibility or remove the stopped lifetime proof;
+they are not launched merely to consume the available command budget.
+
+### Next decision, without automatic continuation
+
+Recommend **reviewing runtime-emitted bounded records and explicit backing/lease
+lifetimes as the next RFC-013 design candidate**, with the archived typed aggregate
+candidate retained as the comparison. This is a design recommendation, not a
+claim that B fits or a choice binding future implementation. Keep performance
+remedies at their existing owners; do not make package extraction a prerequisite.
+
+Before seeking permission for another experiment on the stopped question, its
+reassessment must name the chosen construction/lease mechanism, exact analyzer
+and counter source/composition, discriminating stack/lifetime observation,
+complete proof method and a new numeric allowance. The old reason for stopping
+was correction exhaustion with unresolved whole-image safety; the new scope and
+documentation alone do not materially change that reason. **No experiment
+continuation is recommended until that concrete design/proof change is reviewable.**
+
+Drafting that architecture comparison under the accepted investment remains open.
+Major implementation (ME-06/07) and positive ME-05 readiness are not established.
+The maintainer may authorize a specifically bounded continuation or amend scope;
+neither is inferred. No additional preparation phase or work package is created.
+
+### Deferred boundaries and criterion disposition
+
+FW-027/FW-032 remain selected performance provenance. FW-024 partial frames,
+FW-025 cross-frame reuse and FW-026 complete physical-surface presentation remain
+captured alternatives, with no promotion or new contract selected. Their
+revisit triggers require the named profiling/design evidence; the present
+ranking is not a complete-frame floor or accepted retained-buffer policy.
+FW-031/FW-033 keep unrelated connected work, and FW-035 remains outside this
+runtime-derivation commitment. No new optional idea needs another deferred ID.
+
+IT-AC-004/006/008/009: no new production conformance established. IT-AC-007:
+partial evidence only (reserved-byte reconciliation and ranked historical costs,
+not complete live-memory and paired measurements). IT-AC-005: this packet
+documents preparation and limits, not the complete iteration disposition.
+IT-AC-010 remains open. Transferred IT-AC-001–003 retain their recorded destination.
 
 ## Usage and validation
 
@@ -191,9 +299,21 @@ operation, production change, new conformance claim or study restart.
 
 ME-02 checkpoint, 14:57:26 UTC: 5m18s active elapsed; 0/8 experimental invocations,
 0/2 experimental corrections; no waiting. Region arithmetic reconciles to the
-historical linked total with the residual explicitly unattributed. This does
+historical linked total with non-buffer storage explicitly unattributed. This does
 not satisfy the complete stack/lifetime or all-profile measurement criteria.
 
 ME-03 checkpoint, 14:58:55 UTC: 6m47s active elapsed; 0/8 experimental invocations,
 0/2 experimental corrections; no waiting. Ranked historical timings and current
 source mechanisms are recorded without fresh timing or conformance claims.
+
+ME-04 terminal assessment, 15:05:17 UTC: 13m09s active elapsed, 0/8 experimental
+invocations and 0/2 experimental corrections; no waiting. The unused allowance
+is not permission for a second phase. Final review separates configured stack
+values from actual linked symbols; the 33,296 bytes outside fixed buffers remain
+unattributed rather than being presented as a complete live-memory proof.
+
+Validation: non-probe toolchain doctors, `scripts/validate-governance.rb`,
+`git diff --check`, changed local links/anchors, source/historical/archive
+identities and source-derived arithmetic. Maintained production and authority
+roots match the frozen baseline. Runtime tests were not rerun for this
+documentation/source-inspection assessment; no new platform conformance follows.

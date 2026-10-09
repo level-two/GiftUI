@@ -115,3 +115,11 @@ Existing observations and exceptions remain historical; they do not satisfy
 the new sustained-workload or safe-memory criteria. See the
 [current plan](../iterations/iteration-003-review/memory-efficiency-plan.md).
 This changes no algorithm, contract or connected-operation authorization.
+
+The [revision-5 bounded assessment](../iterations/iteration-003-review/feasibility-decision.md)
+reconciles the five-second production reservation, preserves the archived stack
+failures and unknowns, and identifies Embedded pixel/segment coverage and repeated
+layout scans as source-confirmed mechanisms with unmeasured timing shares. A
+full-frame buffer added without other redesign exceeds the selected RAM ceiling.
+The assessment ends inconclusive; no algorithm, resource exception, promotion or
+experimental continuation is approved.

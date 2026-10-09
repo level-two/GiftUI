@@ -125,6 +125,15 @@ the required decision or missing evidence explicit. The plan's cumulative budget
 and continuation rules apply; unresolved review questions do not automatically
 authorize another experiment.
 
+The [bounded feasibility packet](../iterations/iteration-003-review/feasibility-decision.md)
+ends inconclusive. It recommends reviewing runtime-emitted bounded records and
+explicit backing/lease lifetimes against the archived aggregate candidate,
+without selecting either. Complete stack/callback/escape proof, supported
+compositions and sustained-workload performance remain approval blockers. The
+packet maps local performance remedies to their owners and distinguishes
+independent redesign from this RFC's accepted investment. This RFC remains draft
+and not ready for approval; no follow-up compilation is authorized by the packet.
+
 ## Deferred work
 
 [FW-016](../future-work/fw-016-post-mvp-package-distribution-topology.md) and

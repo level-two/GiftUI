@@ -14,7 +14,8 @@ iterations:
 features:
   external-application-integration:
     title: External Application and Backend Integration
-    # PROPOSAL-007 accepted; RFC-013 remains draft. Preparation is archived.
+    # PROPOSAL-007 accepted; RFC-013 remains draft. Prior experiments are archived.
+    # Current bounded preparation: docs/iterations/iteration-003-review/feasibility-decision.md.
     # Acceptance provenance: docs/iterations/iteration-003-review/proposal-007-acceptance.md.
     status: rfc
     proposal:

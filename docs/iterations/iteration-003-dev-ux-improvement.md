@@ -240,8 +240,12 @@ existing requirements; a percentage speedup alone does not satisfy IT-AC-009.
 
 ## Closure and Follow-up
 
-This iteration is active with closure open. ME-01–09 are planned, and no new
-implementation/conformance completion is claimed by these documentation changes.
+This iteration is active with closure open. The first bounded ME-01–04 phase
+ended with an [inconclusive feasibility decision](iteration-003-review/feasibility-decision.md):
+the baseline is frozen, source/historical memory and performance evidence is
+recorded, and complete runtime-derived safety/performance remains unproved.
+This is a preparation disposition, not iteration closure or implementation
+readiness. ME-05–09 remain open; no automatic experimental continuation follows.
 At closure, report IT-AC-001–003 as transferred, IT-AC-005's split explicitly,
 and IT-AC-004–010 as met, unmet or individually excepted with evidence. Obtain
 human closure; feature architecture, contract and implemented transitions remain
