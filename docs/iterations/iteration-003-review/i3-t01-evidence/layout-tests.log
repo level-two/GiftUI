@@ -1,0 +1,435 @@
+[0/1] Planning build
+Building for debugging...
+[0/16] Write sources
+[3/16] Write swift-version--58304C5D6DBC2206.txt
+[5/32] Compiling SignalAnalyzerDomain SignalAnalyzerDiagnostic.swift
+[6/32] Compiling GiftUIMacros ObservableStateHostMacro.swift
+[7/32] Compiling GiftUIMacros GiftUIMacros.swift
+[8/32] Emitting module GiftUIMacros
+[9/32] Compiling SignalAnalyzerDomain SignalCaptureChange.swift
+[10/32] Compiling SignalAnalyzerDomain SignalPrimitiveValues.swift
+[11/32] Compiling SignalAnalyzerDomain ModuleBoundary.swift
+[12/32] Emitting module SignalAnalyzerDomain
+[13/32] Compiling SignalAnalyzerDomain SignalCapturePublication.swift
+[14/32] Compiling SignalAnalyzerDomain AcquisitionState.swift
+[15/32] Compiling SignalAnalyzerDomain SignalAcquisitionContracts.swift
+[16/32] Compiling SignalAnalyzerDomain SignalValues.swift
+[16/32] Write Objects.LinkFileList
+[18/32] Compiling GiftUIFailureCore GiftUIFailureCore.swift
+[19/32] Emitting module GiftUIFailureCore
+[20/38] Compiling SignalAnalyzerData DeterministicSignalGenerator.swift
+[21/38] Compiling SignalAnalyzerData ModuleBoundary.swift
+[22/38] Compiling SignalAnalyzerData DeterministicSignalDataSource.swift
+[23/38] Emitting module SignalAnalyzerData
+[24/38] Compiling SignalAnalyzerData SignalCaptureStore.swift
+[25/38] Compiling SignalAnalyzerData DefaultSignalAcquisitionRepository.swift
+[26/38] Emitting module GiftUICapabilities
+[27/38] Compiling GiftUICapabilities GiftUICapabilities.swift
+[27/38] Linking GiftUIMacros-tool
+[29/57] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFEmbeddedLayoutWorkspace.swift
+[30/57] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFEmbeddedLayoutTextCodec.swift
+[31/57] Emitting module SignalAnalyzerTargetHost
+[32/58] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFEmbeddedResolvedLayoutView.swift
+[33/58] Compiling GiftUI LayoutValues.swift
+[34/58] Compiling GiftUI DrawingSurface.swift
+[35/58] Compiling GiftUI GiftUI.swift
+[36/58] Compiling GiftUI LayoutContainers.swift
+[37/58] Compiling GiftUI Disabled.swift
+[38/58] Compiling GiftUI DrawingStyles.swift
+[39/58] Compiling GiftUI ActionHandler.swift
+[40/58] Compiling GiftUI BoundedText.swift
+[41/58] Compiling GiftUI Button.swift
+[42/58] Compiling GiftUI Canvas.swift
+[43/58] Compiling GiftUI ObservableState.swift
+[44/58] Compiling GiftUI LayoutModifiers.swift
+[45/58] Compiling GiftUI StyleModifiers.swift
+[46/59] Compiling GiftUI Color.swift
+[47/59] Compiling GiftUI DeclarativeView.swift
+[48/59] Emitting module GiftUI
+[49/59] Compiling GiftUI Text.swift
+[50/86] Emitting module SignalAnalyzerPresentation
+[51/87] Compiling SignalAnalyzerPresentation SignalAnalyzerRuntimeFailureNormalizer.swift
+[52/87] Compiling SignalAnalyzerPresentation SignalAnalyzerRuntimeCondition.swift
+[53/87] Compiling SignalAnalyzerPresentation SignalAnalyzerPresentationValues.swift
+[54/87] Compiling SignalAnalyzerPresentation SignalAnalyzerPresentationAdmissionAdapter.swift
+[55/87] Compiling SignalAnalyzerPresentation SignalAnalyzerOwnerFailureAdapter.swift
+[56/87] Compiling SignalAnalyzerPresentation SignalAnalyzerLayoutConstraints.swift
+[57/87] Compiling SignalAnalyzerPresentation SignalAnalyzerFailureNormalizer.swift
+[58/87] Compiling SignalAnalyzerPresentation SignalAnalyzerFailurePolicyValues.swift
+[59/87] Compiling SignalAnalyzerPresentation ModuleBoundary.swift
+[60/87] Compiling SignalAnalyzerPresentation SignalAnalyzerDiagnostic+BoundedText.swift
+[61/87] Compiling SignalAnalyzerPresentation SignalAnalyzerRuntimeFailureRule.swift
+[62/87] Emitting module GiftUISemanticCore
+[63/87] Compiling GiftUISemanticCore SemanticLayoutView.swift
+[64/87] Compiling GiftUISemanticCore SemanticRenderView.swift
+[65/87] Compiling GiftUISemanticCore GiftUISemanticCore.swift
+[66/87] Compiling SignalAnalyzerPresentation SignalAnalyzerTimelineFormatting.swift
+[67/87] Compiling SignalAnalyzerPresentation SignalAnalyzerView.swift
+[68/87] Compiling SignalAnalyzerPresentation SignalAnalyzerWaveformGeometry.swift
+[69/87] Emitting module GiftUITextResources
+[70/87] Compiling GiftUITextResources GiftUITextResources.swift
+[71/112] Compiling GiftUILayout LayoutResultSink.swift
+[72/112] Compiling GiftUILayout LayoutCounters.swift
+[73/112] Emitting module GiftUILayout
+[74/112] Compiling GiftUILayout Layout.swift
+[75/112] Compiling GiftUIRenderCore RenderRecordingSink.swift
+[76/112] Compiling GiftUIRenderCore RenderOperationSink.swift
+[77/112] Compiling GiftUIRenderCore DrawingOperationSink.swift
+[78/112] Compiling GiftUIRenderCore RenderValues.swift
+[79/112] Emitting module GiftUIRenderCore
+[80/112] Compiling GiftUILayout LayoutPublication.swift
+[81/112] Compiling GiftUILayout LayoutError.swift
+[82/112] Compiling GiftUILayout LayoutGeometry.swift
+[83/112] Compiling GiftUILayout LayoutWorkspace.swift
+[84/112] Compiling GiftUILayout LayoutValues.swift
+[85/112] Compiling GiftUILayout ResolvedRenderLayoutView.swift
+[86/112] Compiling GiftUIHostConfigurationTests StaticSignalAnalyzerNRFEmbeddedLayoutWorkspaceTests.swift
+[87/112] Compiling GiftUIHostConfigurationTests StaticSignalAnalyzerNRFEmbeddedLayoutTextCodecTests.swift
+[88/112] Compiling GiftUIHostConfigurationTests StaticSignalAnalyzerNRFEmbeddedSemanticRegionTests.swift
+[89/112] Compiling GiftUILayout LayoutSemanticValidation.swift
+[90/141] Compiling GiftUIExecution ExecutionAdmissionSealer.swift
+[91/141] Compiling GiftUIExecution ExecutionMutationBatch.swift
+[92/141] Compiling GiftUIExecution ExecutionOpportunityRunner.swift
+[93/143] Compiling GiftUIExecution PointerActionCapture.swift
+[94/143] Compiling GiftUIExecution RecordingCandidateOfferCoordinator.swift
+[95/143] Compiling GiftUIExecution FrameHandoffValues.swift
+[96/143] Compiling GiftUIExecution FrameOfferNormalization.swift
+[97/143] Compiling GiftUIExecution ExecutionPhaseMachine.swift
+[98/143] Compiling GiftUIExecution ExecutionValues.swift
+[99/143] Compiling GiftUIExecution ExecutionWakeAccumulator.swift
+[100/143] Compiling GiftUIExecution IdentityAllocators.swift
+[101/143] Compiling GiftUIExecution InputSourceSequenceState.swift
+[102/143] Emitting module GiftUIExecution
+[103/143] Compiling GiftUIExecution RecordingPresentationPendingCoordinator.swift
+[104/143] Compiling GiftUIExecution RecordingPresentationTerminalRecovery.swift
+[105/143] Compiling GiftUIExecution RecordingCycleCoordinator.swift
+[106/143] Compiling GiftUISurfaceCore SurfaceValues.swift
+[107/143] Compiling GiftUIExecution RecordingCycleFinalizer.swift
+[108/143] Compiling GiftUIExecution RecordingFrameEndpoint.swift
+[109/143] Emitting module GiftUISurfaceCore
+[110/143] Compiling GiftUIExecution RecordingMutationBatch.swift
+[111/143] Compiling GiftUISurfaceCore RasterSurface.swift
+[112/143] Compiling GiftUIExecution RecordingFocusedFailureSelection.swift
+[113/143] Compiling GiftUIExecution RecordingFrameCommitTransaction.swift
+[114/143] Compiling GiftUIExecution RecordingDerivationRecovery.swift
+[115/143] Compiling GiftUIExecution RecordingDerivationTransaction.swift
+[116/143] Compiling GiftUIExecution AdmissionValues.swift
+[117/143] Compiling GiftUIExecution ExecutionAdmissionController.swift
+[118/143] Compiling GiftUIExecution ExecutionAdmissionSealTransaction.swift
+[119/143] Compiling GiftUIExecution RunCycleValues.swift
+[120/143] Compiling GiftUIExecution WakeValues.swift
+[121/143] Compiling GiftUILayout LayoutEngine.swift
+[122/158] Compiling GiftUIRasterCore RasterFrameSink.swift
+[123/158] Compiling GiftUIDisplayCore DisplayContracts.swift
+[124/158] Compiling GiftUIDisplayCore SurfaceDisplayContributionAdapter.swift
+[125/158] Emitting module GiftUIDisplayCore
+[126/196] Compiling GiftUIRasterCore RasterFillCoverage.swift
+[127/196] Compiling GiftUIRasterCore RasterBackendContributionAdapter.swift
+[128/196] Compiling GiftUIRenderLowering RenderProductionValues.swift
+[129/196] Compiling GiftUIRasterCore RasterPayloadLimits.swift
+[130/196] Compiling GiftUIRasterCore RasterWorkTracker.swift
+[131/196] Compiling GiftUIRasterCore RasterFrameWork.swift
+[132/196] Compiling GiftUIObservableState ObservableStateReportRoute.swift
+[133/196] Compiling GiftUIObservableState ObservableStateReportGuard.swift
+[134/196] Compiling GiftUIObservableState ObservableStateTargetLifetime.swift
+[135/196] Compiling GiftUIObservableState ObservableStateValues.swift
+[136/196] Compiling GiftUIObservableState ObservableStateTargetLookupSlot.swift
+[137/196] Compiling GiftUIObservableState ObservableStateProtocols.swift
+[138/196] Compiling GiftUIObservableState ObservableStateRegistrationBridge.swift
+[139/196] Compiling GiftUIObservableState ObservableStateDirtyDerivation.swift
+[140/196] Compiling GiftUIObservableState ObservableStateMutationResultSlot.swift
+[141/196] Compiling GiftUIObservableState ObservableStateReplacementTransaction.swift
+[142/196] Compiling GiftUIObservableState ObservableStateRegistrationLifecycle.swift
+[143/196] Compiling GiftUIObservableState ObservableStateReplacementBridge.swift
+[144/197] Compiling GiftUIRasterCore FullSurfaceRGBA8888Buffer.swift
+[145/197] Compiling GiftUIRasterCore FullSurfaceRGB565Framebuffer.swift
+[146/197] Emitting module GiftUIRasterCore
+[147/197] Compiling GiftUIRasterCore RGB565TileWorkspace.swift
+[148/197] Emitting module GiftUIHostConfigurationTests
+[149/197] Compiling GiftUIObservableState ObservableStateBindingDecorator.swift
+[150/197] Compiling GiftUIObservableState ObservableStateCandidateLifecycle.swift
+[151/197] Emitting module GiftUIObservableState
+[152/197] Compiling GiftUIObservableState ObservableStateAssociationLifecycle.swift
+[153/197] Compiling GiftUIObservableState ObservableStateAttachmentGenerationAllocator.swift
+[154/197] Compiling GiftUIObservableState PresentationFactAdmission.swift
+[155/197] Emitting module GiftUIRenderLowering
+[156/197] Compiling GiftUIRenderLowering RenderStreaming.swift
+[157/197] Compiling GiftUIRenderLowering RenderProducer.swift
+[158/197] Compiling GiftUIRenderLowering RenderExtensions.swift
+[159/197] Compiling GiftUIRenderLowering RenderPreflight.swift
+[160/198] Emitting module GiftUIInteraction
+[161/198] Compiling GiftUIInteraction EffectiveActionEnabledState.swift
+[162/198] Compiling GiftUIInteraction InteractionState.swift
+[163/198] Compiling GiftUIInteraction InteractionFailurePrecedence.swift
+[164/198] Compiling GiftUIInteraction InteractionStorage.swift
+[165/198] Compiling GiftUIInteraction ExecutionGestureAdapter.swift
+[166/198] Compiling GiftUIInteraction InteractionValues.swift
+[167/198] Compiling GiftUIRasterCore RasterGlyphCoverage.swift
+[167/198] Write Objects.LinkFileList
+[169/209] Compiling GiftUIDrawing StaticCanvasCallableTable.swift
+[170/209] Compiling GiftUIDrawing StrokeSnapshot.swift
+[171/209] Compiling GiftUIDrawing DrawingLimits.swift
+[172/209] Compiling GiftUIDrawing DrawingPlan.swift
+[173/209] Compiling GiftUIDrawing GiftUIDrawing.swift
+[174/209] Compiling GiftUIDrawing DrawingValues.swift
+[175/209] Compiling GiftUIDrawing PathConstruction.swift
+[176/209] Compiling GiftUIDrawing CanvasPlanProducer.swift
+[177/209] Compiling GiftUIDrawing CanvasInvocationSource.swift
+[178/209] Compiling GiftUIDrawing CanvasRenderProducer.swift
+[179/209] Emitting module GiftUIDrawing
+[180/209] Compiling GiftUIReferenceTextResources PiCompactCatalogue.generated.swift
+[181/226] Compiling GiftUIRasterCore RasterStrokeCoverage.swift
+[182/237] Compiling GiftUIBackendIntegration RasterFrameWorkAdmission.swift
+[183/237] Compiling GiftUIRuntimeCore RuntimeInteractionCandidateTransaction.swift
+[184/237] Compiling GiftUIRuntimeCore RuntimeInteractionDispatcher.swift
+[185/237] Compiling GiftUIRuntimeCore RuntimeProfileValues.swift
+[186/238] Compiling GiftUIRuntimeCore RuntimeProfileStorage.swift
+[187/238] Compiling GiftUIRuntimeCore RuntimeOwnerFailure.swift
+[188/238] Compiling GiftUIRuntimeCore RuntimeObservableProfileWorkspace.swift
+[189/238] Compiling GiftUIRuntimeCore RuntimeFocusedFailureState.swift
+[190/238] Compiling GiftUIRuntimeCore RuntimeInteractionCandidateCoordinator.swift
+[191/238] Compiling GiftUIRuntimeCore RuntimeCoordinatorQuiescence.swift
+[192/238] Compiling GiftUIRuntimeCore RuntimeCoreBoundary.swift
+[193/238] Compiling GiftUIRuntimeCore RuntimeCoordinatorContracts.swift
+[194/238] Compiling GiftUIRuntimeCore RuntimeCoordinatorLifecycle.swift
+[195/238] Compiling GiftUIRuntimeCore RuntimeInteractionMutationOwner.swift
+[196/238] Compiling GiftUIBackendIntegration RasterTextResourceValidation.swift
+[197/238] Compiling GiftUIBackendIntegration RasterBackendOwnerFailureAdapter.swift
+[198/238] Compiling GiftUIBackendIntegration RasterBackendStartupValidator.swift
+[199/238] Compiling GiftUIBackendIntegration OperationMajorTileTraversal.swift
+[200/238] Compiling GiftUIRuntimeCore RuntimeStorageRegistry.swift
+[201/238] Compiling GiftUIPlatformRaspberryPi LinuxPiScreenDevices.swift
+[202/238] Compiling GiftUIPlatformRaspberryPi PiScreenFramebufferProjection.swift
+[203/238] Compiling GiftUIPlatformRaspberryPi PiScreenInputEventDecoder.swift
+[204/238] Compiling GiftUIPlatformRaspberryPi LinuxPiScreenExercise.swift
+[205/238] Compiling GiftUIPlatformRaspberryPi PiScreenDisplayTarget.swift
+[206/238] Compiling GiftUIPlatformRaspberryPi PiScreenConsoleModeOwner.swift
+[207/238] Compiling GiftUIPlatformRaspberryPi PiScreenGeometry.swift
+[208/238] Emitting module GiftUIPlatformRaspberryPi
+[209/238] Emitting module GiftUIBackendIntegration
+[210/238] Compiling GiftUIBackendIntegration FullSurfacePayloadEmitter.swift
+[211/238] Compiling GiftUIBackendIntegration OperationMajorRGB565RasterSession.swift
+[212/238] Compiling GiftUIRuntimeCore RuntimeCompletePipeline.swift
+[213/238] Compiling GiftUIRuntimeCore RuntimeCoordinatorCleanup.swift
+[214/238] Emitting module GiftUIRuntimeCore
+[215/238] Compiling GiftUIRuntimeCore RuntimeProfileValidation.swift
+[216/238] Compiling GiftUIBackendIntegration OneShotRasterBackendEndpoint.swift
+[217/238] Compiling GiftUIBackendIntegration RasterBackendEndpoint.swift
+[218/238] Compiling GiftUIBackendIntegration RGB565TilePayloadEmitter.swift
+[219/291] Compiling GiftUIRuntimeDynamic DynamicProfileBoundary.swift
+[220/291] Compiling GiftUIRuntimeDynamic DynamicObservableStateReconciler.swift
+[221/292] Compiling GiftUIRuntimeDynamic DynamicRuntimeExecutionCoordinator.swift
+[222/292] Compiling GiftUIRuntimeDynamic DynamicRuntimeProfileBinding.swift
+[223/292] Emitting module GiftUIRuntimeDynamic
+[224/292] Compiling GiftUIHostConfiguration HostPresentationRecovery.swift
+[225/292] Compiling GiftUIHostConfiguration HostPresetBootstrap.swift
+[226/292] Compiling GiftUIRuntimeDynamic DynamicRenderWorkspace.swift
+[227/292] Compiling GiftUIHostConfiguration HostApplicationStartupValidation.swift
+[228/292] Compiling GiftUIHostConfiguration HostComponentGraphValidation.swift
+[229/292] Compiling GiftUIHostConfiguration HostResidualFailureRouting.swift
+[230/292] Compiling GiftUIHostConfiguration HostResidualPolicyContracts.swift
+[235/292] Compiling GiftUIHostConfiguration SignalAnalyzerDrawingStartupValidation.swift
+[236/292] Compiling GiftUIHostConfiguration SignalAnalyzerPresetHostInstance.swift
+[237/292] Compiling GiftUIHostConfiguration HostResidualPolicyTableValidation.swift
+[238/292] Compiling GiftUIHostConfiguration HostScheduledOpportunityController.swift
+[239/292] Compiling GiftUIHostConfiguration HostFailureAdapter.swift
+[240/292] Compiling GiftUIHostConfiguration HostNormalizedInputGate.swift
+[243/293] Compiling GiftUIRuntimeDynamic DynamicProfileStorage.swift
+[244/293] Compiling GiftUIRuntimeStatic StaticObservableRegistrationRecord.swift
+[245/293] Compiling GiftUIRuntimeStatic StaticObservableRootAdapter.swift
+[246/293] Compiling GiftUIRuntimeStatic StaticObservableRootTargetAccess.swift
+[247/293] Compiling GiftUIRuntimeStatic StaticRuntimeExecutionCoordinator.swift
+[248/293] Compiling GiftUIRuntimeStatic StaticProfileStorage.swift
+[249/293] Compiling GiftUIRuntimeStatic StaticProfileBoundary.swift
+[250/294] Compiling GiftUIHostConfiguration SignalAnalyzerWorkloadStartupValidation.swift
+[251/294] Compiling GiftUIRuntimeStatic StaticRuntimeProfileBinding.swift
+[252/294] Compiling GiftUIHostConfiguration HostConfigurationResults.swift
+[253/294] Compiling GiftUIHostConfiguration HostConfigurationValues.swift
+[254/294] Compiling GiftUIHostConfiguration HostActivationController.swift
+[255/294] Compiling GiftUIHostConfiguration HostApplicationOpportunityGate.swift
+[256/294] Emitting module GiftUIHostConfiguration
+[257/294] Compiling GiftUIHostConfiguration HostEndpointHealthController.swift
+[258/294] Compiling GiftUIHostConfiguration HostEndpointStartupValidation.swift
+[259/294] Compiling GiftUIHostConfiguration CheckedMVPHostConfigurationValidator.swift
+[260/294] Compiling GiftUIHostConfiguration SignalAnalyzerPresets.generated.swift
+[261/294] Compiling GiftUIHostConfiguration HostSequencedFactAdmission.swift
+[262/294] Compiling GiftUIHostConfiguration HostWakePacingController.swift
+[263/294] Compiling GiftUIRuntimeStatic StaticObservableModelStorage.swift
+[264/294] Compiling GiftUIRuntimeStatic StaticObservableProfileSlotStorage.swift
+[267/294] Compiling GiftUIRuntimeStatic StaticGeneratedProfileMetadata.swift
+[268/294] Emitting module GiftUIRuntimeStatic
+[269/294] Compiling GiftUIRuntimeStatic StaticInteractionStorage.swift
+[269/296] Linking GiftUIPackageTests
+[275/296] Compiling GiftUIRuntimeDynamic DynamicSemanticHostStorage.swift
+[276/296] Emitting module SignalAnalyzerHost
+[277/296] Compiling SignalAnalyzerHost SignalAnalyzerHostFactAdmission.swift
+[278/298] Compiling SignalAnalyzerPresetHarness HardwareFreePresetRunner.swift
+[279/298] Emitting module SignalAnalyzerPresetHarness
+[279/298] Write Objects.LinkFileList
+[282/298] Linking SignalAnalyzerNRF52840HostOracle
+[283/298] Linking SignalAnalyzerMacOSStatic
+[284/298] Linking SignalAnalyzerMacOSDynamic
+[285/298] Applying SignalAnalyzerNRF52840HostOracle
+[286/298] Applying SignalAnalyzerMacOSStatic
+[287/298] Applying SignalAnalyzerMacOSDynamic
+[289/298] Compiling GiftUIReferenceTextResources ReferenceCatalogue.generated.swift
+[290/298] Compiling GiftUIReferenceTextResources GiftUIPiCompactTextResources.swift
+[291/298] Compiling GiftUIReferenceTextResources ReferenceBitmapPayload.generated.swift
+[292/298] Compiling GiftUIReferenceTextResources PiCompactBitmapPayload.generated.swift
+[293/298] Emitting module GiftUIReferenceTextResources
+[294/298] Compiling GiftUIReferenceTextResources GiftUIReferenceTextResources.swift
+[295/298] Compiling GiftUIReferenceTextResources ReferenceOutlinePayload.generated.swift
+[296/391] Emitting module SignalAnalyzerTargetHost
+[297/399] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFOperationalFailureBridge.swift
+[298/399] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFOperationalFailureFact.swift
+[299/399] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFPacedApplicationStage.swift
+[300/399] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFPresentationCommitter.swift
+[301/399] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFPresentationComposition.swift
+[302/399] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFPresentationHandoff.swift
+[303/399] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFPresentationHealth.swift
+[304/399] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFPresentationIdentityOwner.swift
+[305/399] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFPresentationPreparation.swift
+[306/399] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFPresentationTransaction.swift
+[307/399] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFProfileBinding.swift
+[308/399] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFProfileRegions.swift
+[309/399] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFRegionMap.swift
+[310/399] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFRenderOffer.swift
+[311/399] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFRenderWorkspace.swift
+[312/399] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFRepositoryProducer.swift
+[313/399] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFCaptureFactAdmission.swift
+[314/399] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFCaptureHistory.swift
+[315/399] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFCaptureRecord.swift
+[316/399] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFCaptureSnapshotView.swift
+[317/399] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFCaptureStorage.swift
+[318/399] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFCompactCaptureFact.swift
+[319/399] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFCompactFactRing.swift
+[320/399] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFCompactPresentationFact.swift
+[321/399] Compiling SignalAnalyzerTargetHost SignalAnalyzerCycleOwnerFailure.swift
+[322/399] Compiling SignalAnalyzerTargetHost SignalAnalyzerCycleResidualPolicyOwner.swift
+[323/399] Compiling SignalAnalyzerTargetHost SignalAnalyzerSourceSchedule.swift
+[324/399] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerActionDispatcher.swift
+[325/399] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFApplicationInputOwner.swift
+[326/399] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFApplicationStorage.swift
+[327/399] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFAssembly.swift
+[328/399] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFCanvasInvocationSource.swift
+[329/399] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFCanvasPass.swift
+[330/399] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFEmbeddedLayoutScopeCodec.swift
+[331/399] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFEmbeddedLayoutTextCodec.swift
+[332/399] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFEmbeddedLayoutWorkspace.swift
+[333/399] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFEmbeddedResolvedLayoutView.swift
+[334/399] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFEmbeddedSemanticRegion.swift
+[335/399] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFEmbeddedSemanticValidator.swift
+[336/399] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFEmbeddedSemanticView.swift
+[337/399] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFEndpoint.swift
+[338/399] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFLayoutScopeCodec.swift
+[339/399] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFLayoutTextCodec.swift
+[340/399] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFLayoutWorkspace.swift
+[341/399] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFLivePathStorage.swift
+[342/399] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFModelCaptureState.swift
+[343/399] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFModelLocation.swift
+[344/399] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFModelModifierWriter.swift
+[345/399] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFModelTextWriter.swift
+[346/399] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFGeneratedMetadata.swift
+[347/399] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFInputABI.swift
+[348/399] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFInputCoordinator.swift
+[349/399] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFInteractionCandidateProducer.swift
+[350/399] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFInteractionHandler.swift
+[351/399] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFInteractionOccurrences.swift
+[352/399] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFInteractionTargetProjection.swift
+[353/399] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFLayoutPass.swift
+[354/399] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFPrimitivePayload.generated.swift
+[355/399] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFReferenceMetrics.generated.swift
+[356/399] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFSemanticRegion.generated.swift
+[357/399] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFTextPoolWriter.generated.swift
+[358/399] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFTopologyWriter.generated.swift
+[359/399] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFUTF8LayoutView.generated.swift
+[360/399] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFUTF8RenderView.generated.swift
+[361/399] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFUTF8TextPool.generated.swift
+[362/399] Compiling SignalAnalyzerTargetHost SignalAnalyzerCycleFailureNormalizer.swift
+[363/399] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFDeterministicSource.swift
+[364/399] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFDisplayTarget.swift
+[365/399] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFDrawingPlanRecords.swift
+[366/399] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFDrawingPlanStorage.swift
+[367/399] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFDrawingWorkspace.swift
+[368/399] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFEmbeddedLayoutInterfaces.swift
+[369/399] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFEmbeddedLayoutModifier.swift
+[370/399] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFEmbeddedLayoutPrimitive.swift
+[371/399] Compiling SignalAnalyzerTargetHost DynamicSignalAnalyzerActionDispatcher.swift
+[372/399] Compiling SignalAnalyzerTargetHost DynamicSignalAnalyzerApplicationFailureOwner.swift
+[373/399] Compiling SignalAnalyzerTargetHost DynamicSignalAnalyzerPiAssembly.swift
+[374/399] Compiling SignalAnalyzerTargetHost DynamicSignalAnalyzerPiContactIngress.swift
+[375/399] Compiling SignalAnalyzerTargetHost DynamicSignalAnalyzerPiCorrelationOwner.swift
+[376/399] Compiling SignalAnalyzerTargetHost DynamicSignalAnalyzerPiEndpoint.swift
+[377/399] Compiling SignalAnalyzerTargetHost DynamicSignalAnalyzerPiInitialPresentationOwner.swift
+[378/399] Compiling SignalAnalyzerTargetHost DynamicSignalAnalyzerPiInputCoordinator.swift
+[379/399] Compiling SignalAnalyzerTargetHost DynamicSignalAnalyzerPiLifecycleOwner.swift
+[380/399] Compiling SignalAnalyzerTargetHost DynamicSignalAnalyzerPiWakeAdmission.swift
+[381/399] Compiling SignalAnalyzerTargetHost DynamicSignalAnalyzerPiWakePacingOwner.swift
+[382/399] Compiling SignalAnalyzerTargetHost DynamicSignalAnalyzerPresentationPipeline.swift
+[383/399] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFCanvasTable.generated.swift
+[384/399] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFEmbeddedCanvasTable.generated.swift
+[385/399] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFModelDescriptor.generated.swift
+[386/399] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFModifierPayload.generated.swift
+[387/399] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFPackedSemanticRecords.generated.swift
+[388/399] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFPresentationInputs.generated.swift
+[389/399] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFResidualRouting.swift
+[390/399] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFResolvedLayout.swift
+[391/399] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFRuntimeStorage.swift
+[392/399] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFSPITFTTransport.swift
+[393/399] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFSealedFactApplication.swift
+[394/399] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFSemanticPublication.swift
+[395/399] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFSnapshotFact.swift
+[396/399] Compiling SignalAnalyzerTargetHost StaticSignalAnalyzerNRFTileStorage.swift
+[397/404] Compiling SignalAnalyzerRaspberryPiARMv6 LinuxSignalAnalyzerPiInputPump.swift
+[398/404] Compiling SignalAnalyzerRaspberryPiARMv6 PiHostNativeRehearsal.swift
+[399/404] Compiling SignalAnalyzerRaspberryPiARMv6 LinuxSignalAnalyzerPiProcessLoop.swift
+[400/404] Compiling SignalAnalyzerRaspberryPiARMv6 main.swift
+[401/404] Emitting module SignalAnalyzerRaspberryPiARMv6
+[401/404] Write Objects.LinkFileList
+[402/404] Linking SignalAnalyzerRaspberryPiARMv6
+[403/404] Applying SignalAnalyzerRaspberryPiARMv6
+Build complete! (16.46s)
+Test Suite 'Selected tests' started at 2026-10-09 18:55:58.658.
+Test Suite 'GiftUIPackageTests.xctest' started at 2026-10-09 18:55:58.659.
+Test Suite 'GiftUIPackageTests.xctest' passed at 2026-10-09 18:55:58.659.
+	 Executed 0 tests, with 0 failures (0 unexpected) in 0.000 (0.000) seconds
+Test Suite 'Selected tests' passed at 2026-10-09 18:55:58.659.
+	 Executed 0 tests, with 0 failures (0 unexpected) in 0.000 (0.001) seconds
+◇ Test run started.
+↳ Testing Library Version: 1902
+↳ Target Platform: arm64e-apple-macos14.0
+◇ Test staticNRFCanvasTableHasExactGeneratedLayout() started.
+◇ Test staticNRFLayoutPublicationRejectsMismatchedScopeWithoutPublishing() started.
+◇ Test staticNRFLayoutTextCodecRejectsOverflowDuplicateAndWrongRegion() started.
+◇ Test staticNRFLayoutScopeCodecUsesExactCheckedThirtyTwoByteRecords() started.
+◇ Test staticNRFEmbeddedLayoutScopeCodecMatchesHostBytes() started.
+◇ Test staticNRFLayoutWorkspaceRetainsGeometryAndDerivesTextFieldsInFixedRegions() started.
+◇ Test staticNRFLayoutPublicationReadsExactWorkspaceRecordsWithoutCopying() started.
+◇ Test staticNRFLayoutWorkspaceRejectsWrongRegionsAndTextMetadata() started.
+◇ Test nRFFactPayloadLayoutHasBoundedInlineValues() started.
+◇ Test staticNRFLayoutIndexPreservesSparseIdentitiesAndInsertionOrder() started.
+◇ Test staticNRFLayoutTextCodecKeepsExactDisjointLineGlyphAndScratchRanges() started.
+◇ Test staticNRFRenderWorkspaceKeepsPublishedLayoutAndUsesOnlyScratchTail() started.
+◇ Test staticNRFEmbeddedLayoutTextCodecMatchesHostBytes() started.
+◇ Test staticNRFLayoutScopeCodecRejectsUnrepresentableAndMismatchedGeometry() started.
+◇ Test staticNRFEmbeddedLayoutWorkspaceMatchesHostScopeRecords() started.
+nRF fact payload strides: diagnostic=100 state=100 mutation=80 failure=108
+nRF compact presentation fact stride=112
+◇ Test staticNRFEmbeddedLayoutPublishesTheInPlaceHostRecords() started.
+✔ Test staticNRFCanvasTableHasExactGeneratedLayout() passed after 0.001 seconds.
+✔ Test nRFFactPayloadLayoutHasBoundedInlineValues() passed after 0.001 seconds.
+✔ Test staticNRFLayoutTextCodecRejectsOverflowDuplicateAndWrongRegion() passed after 0.001 seconds.
+✔ Test staticNRFLayoutPublicationRejectsMismatchedScopeWithoutPublishing() passed after 0.001 seconds.
+✔ Test staticNRFLayoutScopeCodecRejectsUnrepresentableAndMismatchedGeometry() passed after 0.001 seconds.
+✔ Test staticNRFLayoutScopeCodecUsesExactCheckedThirtyTwoByteRecords() passed after 0.001 seconds.
+✔ Test staticNRFLayoutWorkspaceRejectsWrongRegionsAndTextMetadata() passed after 0.001 seconds.
+✔ Test staticNRFLayoutWorkspaceRetainsGeometryAndDerivesTextFieldsInFixedRegions() passed after 0.001 seconds.
+✔ Test staticNRFLayoutTextCodecKeepsExactDisjointLineGlyphAndScratchRanges() passed after 0.001 seconds.
+✔ Test staticNRFEmbeddedLayoutScopeCodecMatchesHostBytes() passed after 0.001 seconds.
+✔ Test staticNRFRenderWorkspaceKeepsPublishedLayoutAndUsesOnlyScratchTail() passed after 0.001 seconds.
+✔ Test staticNRFEmbeddedLayoutTextCodecMatchesHostBytes() passed after 0.001 seconds.
+✔ Test staticNRFLayoutPublicationReadsExactWorkspaceRecordsWithoutCopying() passed after 0.001 seconds.
+✔ Test staticNRFEmbeddedLayoutPublishesTheInPlaceHostRecords() passed after 0.001 seconds.
+✔ Test staticNRFEmbeddedLayoutWorkspaceMatchesHostScopeRecords() passed after 0.001 seconds.
+✔ Test staticNRFLayoutIndexPreservesSparseIdentitiesAndInsertionOrder() passed after 0.020 seconds.
+✔ Test run with 16 tests in 0 suites passed after 0.020 seconds.

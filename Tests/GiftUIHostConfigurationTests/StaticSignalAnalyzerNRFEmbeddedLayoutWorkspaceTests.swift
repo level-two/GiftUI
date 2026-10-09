@@ -304,3 +304,63 @@ import Testing
         }
     }
 }
+
+@Test func staticNRFLayoutIndexPreservesSparseIdentitiesAndInsertionOrder() {
+    var scopeBytes = [UInt8](repeating: 0, count: 3_136)
+    var textBytes = [UInt8](repeating: 0, count: 4_704)
+    scopeBytes.withUnsafeMutableBytes { scopes in
+        textBytes.withUnsafeMutableBytes { text in
+            var workspace = StaticSignalAnalyzerNRFEmbeddedLayoutWorkspace(
+                scopes: scopes, text: text)!
+            let acquired = workspace.acquire()
+            #expect(acquired)
+            // Sparse, descending identities exercise every insertion shift;
+            // they cannot be used directly as storage offsets.
+            let identities = (0 ..< 98).map { UInt16(65_535 - $0 * 601) }
+            for (index, identity) in identities.enumerated() {
+                let appended = workspace.appendScope(
+                    identity: identity, idealWidth: 1, idealHeight: 1, width: 1, height: 1)
+                #expect(appended)
+                #expect(workspace.scopeOrdinal(of: identity) == UInt16(index))
+            }
+            for (index, identity) in identities.enumerated() {
+                #expect(workspace.scopeOrdinal(of: identity) == UInt16(index))
+                #expect(workspace.scope(at: UInt16(index))?.identity == identity)
+            }
+            #expect(workspace.scopeOrdinal(of: 0) == nil)
+            #expect(workspace.scopeOrdinal(of: 123) == nil)
+            let excess = workspace.appendScope(
+                identity: 1, idealWidth: 1, idealHeight: 1, width: 1, height: 1)
+            #expect(!excess)
+            // Interleaved glyph identities must still keep local ordinals.
+            for index in 0 ..< 224 {
+                let glyph = StaticSignalAnalyzerNRFEmbeddedLayoutTextCodec.Glyph(
+                    identity: identities[index % 2], lineIndex: 0, glyphID: 1,
+                    baselineX: 0, baselineY: 0
+                )
+                let wrong = workspace.appendGlyph(glyph, glyphIndex: UInt16(index / 2 + 1))
+                #expect(!wrong)
+                let appended = workspace.appendGlyph(glyph, glyphIndex: UInt16(index / 2))
+                #expect(appended)
+            }
+            for index in 0 ..< 224 {
+                #expect(workspace.glyphIndex(at: UInt16(index)) == UInt16(index / 2))
+            }
+            #expect(workspace.glyphIndex(at: 224) == nil)
+            workspace.reset()
+            #expect(workspace.scopeOrdinal(of: identities[0]) == nil)
+            #expect(workspace.glyphIndex(at: 0) == nil)
+            #expect(text.allSatisfy { $0 == 0 })
+            let reacquired = workspace.acquire()
+            #expect(reacquired)
+            let appended = workspace.appendScope(
+                identity: 123, idealWidth: 1, idealHeight: 1, width: 1, height: 1)
+            #expect(appended)
+            #expect(workspace.scopeOrdinal(of: 123) == 0)
+            #expect(workspace.scopeOrdinal(of: identities[0]) == nil)
+            let duplicate = workspace.appendScope(
+                identity: 123, idealWidth: 1, idealHeight: 1, width: 1, height: 1)
+            #expect(!duplicate)
+        }
+    }
+}

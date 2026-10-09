@@ -203,18 +203,11 @@ package struct StaticSignalAnalyzerNRFCommonLayoutWorkspace: LayoutWorkspace {
         at index: UInt16
     ) -> LayoutPositionedGlyph<UInt16>? {
         guard let record = packed.glyph(at: index),
+            let localIndex = packed.glyphIndex(at: index),
             let line = matchingLine(
                 identity: record.identity, lineIndex: record.lineIndex
             )
         else { return nil }
-        var localIndex: UInt16 = 0
-        var prior: UInt16 = 0
-        while prior < index {
-            if packed.glyph(at: prior)?.identity == record.identity {
-                localIndex += 1
-            }
-            prior += 1
-        }
         return LayoutPositionedGlyph(
             identity: record.identity, lineIndex: record.lineIndex,
             glyphIndex: localIndex,

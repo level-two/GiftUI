@@ -5,6 +5,10 @@ package enum StaticSignalAnalyzerNRFEmbeddedLayoutTextCodec {
     package static let maximumGlyphs: UInt16 = 224
     package static let glyphBaseOffset = 2_048
     package static let scratchOffset = 4_288
+    // Layout-only indexes alias later Render scratch; clear before publication.
+    package static let scopeIndexOffset = scratchOffset + 48
+    package static let glyphIndexOffset = scopeIndexOffset + 98
+    package static let indexEndOffset = glyphIndexOffset + 224
 
     package struct Line: Equatable {
         package let identity: UInt16

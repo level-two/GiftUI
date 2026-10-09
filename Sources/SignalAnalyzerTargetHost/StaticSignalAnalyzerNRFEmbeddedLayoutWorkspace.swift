@@ -47,6 +47,7 @@ package struct StaticSignalAnalyzerNRFEmbeddedLayoutWorkspace {
         width: Int16, height: Int16
     ) -> Bool {
         guard isActive, scopeCount < 98, scopeOrdinal(of: identity) == nil,
+            let insertion = scopeInsertionIndex(for: identity),
             StaticSignalAnalyzerNRFEmbeddedLayoutScopeCodec.stage(
                 identity: identity,
                 idealWidth: idealWidth, idealHeight: idealHeight,
@@ -54,6 +55,13 @@ package struct StaticSignalAnalyzerNRFEmbeddedLayoutWorkspace {
                 at: scopeCount, in: scopes
             )
         else { return false }
+        let base = StaticSignalAnalyzerNRFEmbeddedLayoutTextCodec.scopeIndexOffset
+        var index = Int(scopeCount)
+        while index > insertion {
+            text[base + index] = text[base + index - 1]
+            index -= 1
+        }
+        text[base + insertion] = UInt8(scopeCount)
         scopeCount += 1
         return true
     }
@@ -68,13 +76,25 @@ package struct StaticSignalAnalyzerNRFEmbeddedLayoutWorkspace {
     }
 
     package func scopeOrdinal(of identity: UInt16) -> UInt16? {
-        guard isActive, identity != 0 else { return nil }
-        var ordinal: UInt16 = 0
-        while ordinal < scopeCount {
-            if scope(at: ordinal)?.identity == identity { return ordinal }
-            ordinal += 1
+        guard isActive, identity != 0,
+            let index = scopeInsertionIndex(for: identity), index < Int(scopeCount)
+        else { return nil }
+        let ordinal = UInt16(
+            text[StaticSignalAnalyzerNRFEmbeddedLayoutTextCodec.scopeIndexOffset + index])
+        return scope(at: ordinal)?.identity == identity ? ordinal : nil
+    }
+
+    private func scopeInsertionIndex(for identity: UInt16) -> Int? {
+        var lower = 0
+        var upper = Int(scopeCount)
+        while lower < upper {
+            let middle = lower + (upper - lower) / 2
+            let ordinal = UInt16(
+                text[StaticSignalAnalyzerNRFEmbeddedLayoutTextCodec.scopeIndexOffset + middle])
+            guard let record = scope(at: ordinal) else { return nil }
+            if record.identity < identity { lower = middle + 1 } else { upper = middle }
         }
-        return nil
+        return lower
     }
 
     package mutating func replaceMeasurement(
@@ -178,6 +198,9 @@ package struct StaticSignalAnalyzerNRFEmbeddedLayoutWorkspace {
                 glyph, at: positionedGlyphCount, in: text
             )
         else { return false }
+        text[
+            StaticSignalAnalyzerNRFEmbeddedLayoutTextCodec.glyphIndexOffset
+                + Int(positionedGlyphCount)] = UInt8(glyphIndex)
         positionedGlyphCount += 1
         return true
     }
@@ -226,14 +249,23 @@ package struct StaticSignalAnalyzerNRFEmbeddedLayoutWorkspace {
         return false
     }
 
+    package func glyphIndex(at ordinal: UInt16) -> UInt16? {
+        guard isActive, ordinal < positionedGlyphCount else { return nil }
+        return UInt16(
+            text[StaticSignalAnalyzerNRFEmbeddedLayoutTextCodec.glyphIndexOffset + Int(ordinal)])
+    }
+
     private func glyphCount(of identity: UInt16) -> UInt16 {
-        var ordinal: UInt16 = 0
-        var count: UInt16 = 0
-        while ordinal < positionedGlyphCount {
-            if glyph(at: ordinal)?.identity == identity { count += 1 }
-            ordinal += 1
+        // Ordinary text arrives contiguously. Interleaved fixtures retain the
+        // same meaning by finding the last matching record, not counting all.
+        var ordinal = positionedGlyphCount
+        while ordinal > 0 {
+            ordinal -= 1
+            if glyph(at: ordinal)?.identity == identity {
+                return (glyphIndex(at: ordinal) ?? 0) + 1
+            }
         }
-        return count
+        return 0
     }
 
     package mutating func popScope() {
@@ -284,6 +316,13 @@ package struct StaticSignalAnalyzerNRFEmbeddedLayoutWorkspace {
                 hasLine(identity: glyph.identity, index: glyph.lineIndex)
             else { return nil }
             glyphOrdinal += 1
+        }
+        // These derived indexes are never part of the published record view.
+        // Render owns the same tail after this synchronous layout attempt.
+        let indexStart = StaticSignalAnalyzerNRFEmbeddedLayoutTextCodec.scopeIndexOffset
+        let indexEnd = StaticSignalAnalyzerNRFEmbeddedLayoutTextCodec.indexEndOffset
+        for offset in indexStart ..< indexEnd {
+            text[offset] = 0
         }
         text[StaticSignalAnalyzerNRFEmbeddedLayoutTextCodec.scratchOffset + 38] = 1
         isActive = false

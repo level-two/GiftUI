@@ -18,7 +18,7 @@ Cumulative usage at launch: 15 minutes. Waiting: zero.
 | Launch planning | Ready | Seven updated per-Spec plans and three focused design notes |
 | I3-T01.1 scheduling | Implemented; focused checks pass | Swift schedule corpus (3 tests); native production C loop 2,400 simulated deliveries; nRF build/ABI pass |
 | I3-T01.2 raster | Implemented; focused checks pass | 17 independent golden masks, 16 chunk-boundary/style combinations, callback order/refusal, nRF build |
-| I3-T01.3 layout | Pending | Existing scratch-region indexes |
+| I3-T01.3 layout | Implemented; focused checks pass | 16 layout tests, native complete Layout/Drawing storage corpus, nRF build |
 | Integrated validation | Pending | Four-profile gate and exact target builds |
 
 ## Validation boundary and subsequent work
@@ -74,3 +74,28 @@ retaining negative path/clip coordinates.
 Scheduling commit: `2e455320`; launch commit: `c06a6ec3`. The scheduling native
 production rehearsal also passes, including owner partial-mutation/refusal
 controls. Its clock is simulated and its default source is below 80/s.
+
+## Layout step
+
+Scope lookup uses a sorted byte-ordinal index and at most seven binary-search
+comparisons for 98 scopes, plus final record validation, instead of up to 98
+full record scans. Physical append order and all nonzero UInt16 identities
+remain supported. Local glyph ordinals are stored once and read directly;
+ordinary contiguous glyph append finds the last matching glyph immediately.
+Interleaved identities retain a bounded backward search. Existing line scans
+and published Render lookups remain unchanged; this is not a claim that all
+layout traversal is constant-time.
+
+The two indexes occupy 322 bytes at text-region offsets 4,336–4,657 inclusive,
+inside the existing 4,704 bytes. They are cleared before publication and reset.
+No retained codec, allocation, storage limit or published bytes change.
+The independent host/Embedded publication byte comparison and Render scratch
+reuse checks pass.
+
+[Sixteen focused tests](i3-t01-evidence/layout-tests.log),
+[native Layout/Drawing](i3-t01-evidence/layout-native.log), formatter and nRF
+build/ABI pass. A split range-expression syntax error was caught and repaired
+before these passing runs. [Resources](i3-t01-evidence/layout-memory.txt) and
+[artifact](i3-t01-evidence/layout-artifact.sha256) identify the changed image.
+The Pi native production rehearsal and cross-build also pass.
+Raster commit: `5ccf0a63`; combined repository validation follows.
