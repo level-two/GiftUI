@@ -1,0 +1,468 @@
+{
+  "experimental_invocations": 45,
+  "invocation_limit": 48,
+  "repair_rounds": 1,
+  "repair_limit": 3,
+  "negative_diagnostics": [
+    {
+      "trial": 10,
+      "label": "escape_return-macos-dynamic",
+      "errors": [
+        "lifetime-dependent value escapes its scope",
+        "lifetime-dependent value escapes its scope"
+      ]
+    },
+    {
+      "trial": 11,
+      "label": "escape_return-macos-static",
+      "errors": [
+        "lifetime-dependent value escapes its scope",
+        "lifetime-dependent value escapes its scope"
+      ]
+    },
+    {
+      "trial": 12,
+      "label": "escape_return-pi-armv6",
+      "errors": [
+        "lifetime-dependent value escapes its scope",
+        "lifetime-dependent value escapes its scope"
+      ]
+    },
+    {
+      "trial": 13,
+      "label": "escape_return-nrf-embedded",
+      "errors": [
+        "lifetime-dependent value escapes its scope",
+        "lifetime-dependent value escapes its scope"
+      ]
+    },
+    {
+      "trial": 14,
+      "label": "escape_outer-macos-dynamic",
+      "errors": [
+        "lifetime-dependent variable 'escaped' escapes its scope",
+        "lifetime-dependent variable 'escaped' escapes its scope"
+      ]
+    },
+    {
+      "trial": 15,
+      "label": "escape_outer-macos-static",
+      "errors": [
+        "lifetime-dependent variable 'escaped' escapes its scope",
+        "lifetime-dependent variable 'escaped' escapes its scope"
+      ]
+    },
+    {
+      "trial": 16,
+      "label": "escape_outer-pi-armv6",
+      "errors": [
+        "lifetime-dependent variable 'escaped' escapes its scope",
+        "lifetime-dependent variable 'escaped' escapes its scope"
+      ]
+    },
+    {
+      "trial": 17,
+      "label": "escape_outer-nrf-embedded",
+      "errors": [
+        "lifetime-dependent variable 'escaped' escapes its scope",
+        "lifetime-dependent variable 'escaped' escapes its scope"
+      ]
+    },
+    {
+      "trial": 18,
+      "label": "escape_closure-macos-dynamic",
+      "errors": [
+        "lifetime-dependent variable 'view' escapes its scope",
+        "lifetime-dependent variable 'view' escapes its scope"
+      ]
+    },
+    {
+      "trial": 19,
+      "label": "escape_closure-macos-static",
+      "errors": [
+        "lifetime-dependent variable 'view' escapes its scope",
+        "lifetime-dependent variable 'view' escapes its scope"
+      ]
+    },
+    {
+      "trial": 20,
+      "label": "escape_closure-pi-armv6",
+      "errors": [
+        "lifetime-dependent variable 'view' escapes its scope",
+        "lifetime-dependent variable 'view' escapes its scope"
+      ]
+    },
+    {
+      "trial": 21,
+      "label": "escape_closure-nrf-embedded",
+      "errors": [
+        "lifetime-dependent variable 'view' escapes its scope",
+        "lifetime-dependent variable 'view' escapes its scope"
+      ]
+    },
+    {
+      "trial": 22,
+      "label": "overlap_mutation-macos-dynamic",
+      "errors": [
+        "overlapping accesses to 'owner', but modification requires exclusive access [#ExclusivityViolation]",
+        "overlapping accesses to 'owner', but modification requires exclusive access [#ExclusivityViolation]"
+      ]
+    },
+    {
+      "trial": 23,
+      "label": "overlap_mutation-macos-static",
+      "errors": [
+        "overlapping accesses to 'owner', but modification requires exclusive access [#ExclusivityViolation]",
+        "overlapping accesses to 'owner', but modification requires exclusive access [#ExclusivityViolation]"
+      ]
+    },
+    {
+      "trial": 24,
+      "label": "overlap_mutation-pi-armv6",
+      "errors": [
+        "overlapping accesses to 'owner', but modification requires exclusive access [#ExclusivityViolation]",
+        "overlapping accesses to 'owner', but modification requires exclusive access [#ExclusivityViolation]"
+      ]
+    },
+    {
+      "trial": 25,
+      "label": "overlap_mutation-nrf-embedded",
+      "errors": [
+        "overlapping accesses to 'owner', but modification requires exclusive access [#ExclusivityViolation]",
+        "overlapping accesses to 'owner', but modification requires exclusive access [#ExclusivityViolation]"
+      ]
+    },
+    {
+      "trial": 26,
+      "label": "current_declaration_shape-macos-dynamic",
+      "errors": [
+        "stored property 'capture' of 'Escapable'-conforming struct 'StoredDeclaration' has non-Escapable type 'FrozenCapture'",
+        "stored property 'capture' of 'Escapable'-conforming struct 'StoredDeclaration' has non-Escapable type 'FrozenCapture'"
+      ]
+    },
+    {
+      "trial": 27,
+      "label": "current_declaration_shape-macos-static",
+      "errors": [
+        "stored property 'capture' of 'Escapable'-conforming struct 'StoredDeclaration' has non-Escapable type 'FrozenCapture'",
+        "stored property 'capture' of 'Escapable'-conforming struct 'StoredDeclaration' has non-Escapable type 'FrozenCapture'"
+      ]
+    },
+    {
+      "trial": 28,
+      "label": "current_declaration_shape-pi-armv6",
+      "errors": [
+        "stored property 'capture' of 'Escapable'-conforming struct 'StoredDeclaration' has non-Escapable type 'FrozenCapture'",
+        "stored property 'capture' of 'Escapable'-conforming struct 'StoredDeclaration' has non-Escapable type 'FrozenCapture'"
+      ]
+    },
+    {
+      "trial": 29,
+      "label": "current_declaration_shape-nrf-embedded",
+      "errors": [
+        "stored property 'capture' of 'Escapable'-conforming struct 'StoredDeclaration' has non-Escapable type 'FrozenCapture'",
+        "stored property 'capture' of 'Escapable'-conforming struct 'StoredDeclaration' has non-Escapable type 'FrozenCapture'"
+      ]
+    },
+    {
+      "trial": 40,
+      "label": "actual-borrowed-canvas-macos-dynamic",
+      "errors": [
+        "lifetime-dependent variable 'capture' escapes its scope",
+        "lifetime-dependent variable 'capture' escapes its scope"
+      ]
+    },
+    {
+      "trial": 41,
+      "label": "actual-borrowed-canvas-macos-static",
+      "errors": [
+        "lifetime-dependent variable 'capture' escapes its scope",
+        "lifetime-dependent variable 'capture' escapes its scope"
+      ]
+    },
+    {
+      "trial": 42,
+      "label": "actual-borrowed-canvas-pi-armv6",
+      "errors": [
+        "lifetime-dependent variable 'capture' escapes its scope",
+        "lifetime-dependent variable 'capture' escapes its scope"
+      ]
+    },
+    {
+      "trial": 43,
+      "label": "actual-borrowed-canvas-nrf-embedded",
+      "errors": [
+        "lifetime-dependent variable 'capture' escapes its scope",
+        "lifetime-dependent variable 'capture' escapes its scope"
+      ]
+    }
+  ],
+  "inspections": {
+    "lifetime-driver-symbols": {
+      "command": [
+        "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/arm-zephyr-eabi-nm",
+        "-a",
+        "/Users/eugene/work/GiftUI/.build/nrf52840/spike-069/lifetime-driver.o"
+      ],
+      "exit_code": 0,
+      "log": "experiments/spike-069-scoped-model-access/evidence/lifetime-driver-symbols.log",
+      "sha256": "97e4600a402b1f258651f53b53235132788ffb494304529c8d127600a41642ba"
+    },
+    "lifetime-driver-attributes": {
+      "command": [
+        "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/arm-zephyr-eabi-readelf",
+        "-A",
+        "/Users/eugene/work/GiftUI/.build/nrf52840/spike-069/lifetime-driver.o"
+      ],
+      "exit_code": 0,
+      "log": "experiments/spike-069-scoped-model-access/evidence/lifetime-driver-attributes.log",
+      "sha256": "c376d23b0ee201277deed2d5dd650053563bd07dab81be46c69b3a09fa41752d"
+    },
+    "lifetime-driver-relocations": {
+      "command": [
+        "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/arm-zephyr-eabi-readelf",
+        "-rW",
+        "/Users/eugene/work/GiftUI/.build/nrf52840/spike-069/lifetime-driver.o"
+      ],
+      "exit_code": 0,
+      "log": "experiments/spike-069-scoped-model-access/evidence/lifetime-driver-relocations.log",
+      "sha256": "3d82f29cb16db6f717b7ebca3c7e5657d82ffb632e97ac95701ca8a1bfe8a959"
+    },
+    "lifetime-driver-sections": {
+      "command": [
+        "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/arm-zephyr-eabi-readelf",
+        "-SW",
+        "/Users/eugene/work/GiftUI/.build/nrf52840/spike-069/lifetime-driver.o"
+      ],
+      "exit_code": 0,
+      "log": "experiments/spike-069-scoped-model-access/evidence/lifetime-driver-sections.log",
+      "sha256": "656b2efa941301d47a077e797385141bf1f6f3c62c714849e4671cdc4a25dc0b"
+    },
+    "lifetime-driver-disassembly": {
+      "command": [
+        "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/arm-zephyr-eabi-objdump",
+        "-dr",
+        "/Users/eugene/work/GiftUI/.build/nrf52840/spike-069/lifetime-driver.o"
+      ],
+      "exit_code": 0,
+      "log": "experiments/spike-069-scoped-model-access/evidence/lifetime-driver-disassembly.log",
+      "sha256": "28317d376b6b7ed0ed51c11139ecdc8abc1a311c5bf5232e528a086f1cad38fb"
+    },
+    "sectioned-lifetime-driver-symbols": {
+      "command": [
+        "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/arm-zephyr-eabi-nm",
+        "-a",
+        "/Users/eugene/work/GiftUI/.build/nrf52840/spike-069/sectioned-lifetime-driver.o"
+      ],
+      "exit_code": 0,
+      "log": "experiments/spike-069-scoped-model-access/evidence/sectioned-lifetime-driver-symbols.log",
+      "sha256": "9f1853de2526353b971102c4246a3183867ad795eeb9a00342ac35502e75b65f"
+    },
+    "sectioned-lifetime-driver-attributes": {
+      "command": [
+        "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/arm-zephyr-eabi-readelf",
+        "-A",
+        "/Users/eugene/work/GiftUI/.build/nrf52840/spike-069/sectioned-lifetime-driver.o"
+      ],
+      "exit_code": 0,
+      "log": "experiments/spike-069-scoped-model-access/evidence/sectioned-lifetime-driver-attributes.log",
+      "sha256": "c376d23b0ee201277deed2d5dd650053563bd07dab81be46c69b3a09fa41752d"
+    },
+    "sectioned-lifetime-driver-relocations": {
+      "command": [
+        "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/arm-zephyr-eabi-readelf",
+        "-rW",
+        "/Users/eugene/work/GiftUI/.build/nrf52840/spike-069/sectioned-lifetime-driver.o"
+      ],
+      "exit_code": 0,
+      "log": "experiments/spike-069-scoped-model-access/evidence/sectioned-lifetime-driver-relocations.log",
+      "sha256": "196b72b5ecbe6a8dd9135ad6fc1b0f173279d043f74be39d24888bb8f4371784"
+    },
+    "sectioned-lifetime-driver-sections": {
+      "command": [
+        "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/arm-zephyr-eabi-readelf",
+        "-SW",
+        "/Users/eugene/work/GiftUI/.build/nrf52840/spike-069/sectioned-lifetime-driver.o"
+      ],
+      "exit_code": 0,
+      "log": "experiments/spike-069-scoped-model-access/evidence/sectioned-lifetime-driver-sections.log",
+      "sha256": "bb019a7b2abd00a202e600debb340041bc53696af6b11731e3a089e8c0a86250"
+    },
+    "sectioned-lifetime-driver-disassembly": {
+      "command": [
+        "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/arm-zephyr-eabi-objdump",
+        "-dr",
+        "/Users/eugene/work/GiftUI/.build/nrf52840/spike-069/sectioned-lifetime-driver.o"
+      ],
+      "exit_code": 0,
+      "log": "experiments/spike-069-scoped-model-access/evidence/sectioned-lifetime-driver-disassembly.log",
+      "sha256": "b31527b09f240ac0f90fa4ba8a89e050e7b90741bb07065205e63b650caf9e49"
+    },
+    "reachable-symbols": {
+      "command": [
+        "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/arm-zephyr-eabi-nm",
+        "-a",
+        "/Users/eugene/work/GiftUI/.build/nrf52840/spike-069/reachable.o"
+      ],
+      "exit_code": 0,
+      "log": "experiments/spike-069-scoped-model-access/evidence/reachable-symbols.log",
+      "sha256": "e0fa527b62e7520b6b71f2875f74279cc7f4bf791be7fe8ae663caa14e5a07d7"
+    },
+    "reachable-attributes": {
+      "command": [
+        "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/arm-zephyr-eabi-readelf",
+        "-A",
+        "/Users/eugene/work/GiftUI/.build/nrf52840/spike-069/reachable.o"
+      ],
+      "exit_code": 0,
+      "log": "experiments/spike-069-scoped-model-access/evidence/reachable-attributes.log",
+      "sha256": "cfbb6e353d895c5bc84e1168a476dd6add0688709b5b1e6061caba3eb3eb3148"
+    },
+    "reachable-relocations": {
+      "command": [
+        "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/arm-zephyr-eabi-readelf",
+        "-rW",
+        "/Users/eugene/work/GiftUI/.build/nrf52840/spike-069/reachable.o"
+      ],
+      "exit_code": 0,
+      "log": "experiments/spike-069-scoped-model-access/evidence/reachable-relocations.log",
+      "sha256": "e8f6ef31da1cab06f0ef4cb634e73d1ac3204175c5c649f229bc5c806301e7c5"
+    },
+    "reachable-sections": {
+      "command": [
+        "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/arm-zephyr-eabi-readelf",
+        "-SW",
+        "/Users/eugene/work/GiftUI/.build/nrf52840/spike-069/reachable.o"
+      ],
+      "exit_code": 0,
+      "log": "experiments/spike-069-scoped-model-access/evidence/reachable-sections.log",
+      "sha256": "3f011ca2582f71b8fc5b4dacf83185a28ea146935d375358b7edcdb9c9afe862"
+    },
+    "reachable-disassembly": {
+      "command": [
+        "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/arm-zephyr-eabi-objdump",
+        "-dr",
+        "/Users/eugene/work/GiftUI/.build/nrf52840/spike-069/reachable.o"
+      ],
+      "exit_code": 0,
+      "log": "experiments/spike-069-scoped-model-access/evidence/reachable-disassembly.log",
+      "sha256": "f2fb090bf52905253dc0888a5e49aa2c74d51ef55dcdb96c2370adcbd81244ec"
+    },
+    "pi-attributes": {
+      "command": [
+        "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/arm-zephyr-eabi-readelf",
+        "-A",
+        "/Users/eugene/work/GiftUI/.build/raspberry-pi/spike-069/lifetime-driver.o"
+      ],
+      "exit_code": 0,
+      "log": "experiments/spike-069-scoped-model-access/evidence/pi-lifetime-driver-attributes.log",
+      "sha256": "df93c7f7482453f71a27a10729ff2ac4aec6d3c44050f06d0399504a3bd85e9f"
+    }
+  },
+  "artifacts": {
+    ".build/spike-069/macos-dynamic/copyable-escape.o": {
+      "sha256": "3cd5a08e8deaa70994c720f0c09742f6a4b5d625e06d8f949eb4c8bedbd056a7",
+      "file_bytes": 83552
+    },
+    ".build/spike-069/macos-static/copyable-escape.o": {
+      "sha256": "111bbf5cf1411d6d1c6a7d37c877f09615a5e4895058ef8a848beff61c188f62",
+      "file_bytes": 83552
+    },
+    ".build/raspberry-pi/spike-069/copyable-escape.o": {
+      "sha256": "665321d420f5e5269e5c868dd54b036ae5e66855af66a358a29e6b24307ccea2",
+      "file_bytes": 88212
+    },
+    ".build/nrf52840/spike-069/copyable-escape.o": {
+      "sha256": "99eebf83e2acdb386e2811596801df570a68539904325257f7c35417580df2ba",
+      "file_bytes": 11960
+    },
+    ".build/spike-069/macos-dynamic/scoped-positive.o": {
+      "sha256": "515607e3b32866933d9e21664d465eeafc713e0536122e4f69d9066b6d6555c0",
+      "file_bytes": 1320
+    },
+    ".build/spike-069/macos-static/scoped-positive.o": {
+      "sha256": "edbd713e95b2ebc1f4f6d97007c1e18e2d3410f8517bf0b642357dc018e6d953",
+      "file_bytes": 1320
+    },
+    ".build/raspberry-pi/spike-069/scoped-positive.o": {
+      "sha256": "d1e9c599dbda931b7267f1f69ab890fca04696cf994e07ec6419b4f92eb4ce50",
+      "file_bytes": 1580
+    },
+    ".build/nrf52840/spike-069/scoped-positive.o": {
+      "sha256": "0cfaea70dbbe108d2455a1978c89a2d492d2728c4c062adb9ffd56b93ca0248f",
+      "file_bytes": 5056
+    },
+    ".build/spike-069/macos-dynamic/lifetime-driver": {
+      "sha256": "8d445398e9b5ff4cafca1a658faf77cd164b230c8230452631ddeb06e0d327ef",
+      "file_bytes": 57328
+    },
+    ".build/spike-069/macos-static/lifetime-driver": {
+      "sha256": "8d445398e9b5ff4cafca1a658faf77cd164b230c8230452631ddeb06e0d327ef",
+      "file_bytes": 57328
+    },
+    ".build/raspberry-pi/spike-069/lifetime-driver.o": {
+      "sha256": "e8f7d77e5ceabefaad71c38960047f6643026cf09c64f946249214ef1d581f75",
+      "file_bytes": 17152
+    },
+    ".build/nrf52840/spike-069/lifetime-driver.o": {
+      "sha256": "12917b728cc7ca6c5a000ed7ecd0fd578f79b0c1d9f70136bc3a824c2f9dcad9",
+      "file_bytes": 10016
+    },
+    ".build/spike-069/macos-dynamic/actual-owned-body.o": {
+      "sha256": "f9ffd6e4b69a21596a0d97a9e082a18db4dbaddfcdd20ad9adf8102b96517c19",
+      "file_bytes": 324992
+    },
+    ".build/spike-069/macos-static/actual-owned-body.o": {
+      "sha256": "af0045c517ff2921a040cbbedc01b61555f1a6690a74d6486e145cc7891a2fec",
+      "file_bytes": 323552
+    },
+    ".build/raspberry-pi/spike-069/actual-owned-body.o": {
+      "sha256": "52ce8731f7cc7e03045a66eeb377dd6c4453f0c3dc7d2aa3a5cf1d147a84d785",
+      "file_bytes": 406004
+    },
+    ".build/nrf52840/spike-069/actual-owned-body.o": {
+      "sha256": "d49c0b7468ee9f2d99508fa99f0de4587d42384707ea226958075fde51b617bd",
+      "file_bytes": 43296
+    },
+    ".build/nrf52840/spike-069/sectioned-lifetime-driver.o": {
+      "sha256": "64ecb2956d47bf9fdb5b04513fdebc24c00348425d5c450ce46abc819f3145d3",
+      "file_bytes": 24392
+    },
+    ".build/nrf52840/spike-069/reachable.o": {
+      "sha256": "da791e3832bdecbd10031b8b611d168f4132cb8f342ccb049c91ee6b3f50fd60",
+      "file_bytes": 12292
+    }
+  },
+  "initial_failure": {
+    "trial": 5,
+    "reason": "LifetimeDependence flag required; fixed in repair 1"
+  },
+  "macos-dynamic": {
+    "modeled_cases_passed": 16,
+    "executed_on_target_hardware": false,
+    "layout": {
+      "transition-stride": "16",
+      "capture-owner-stride": "24",
+      "snapshot-key-stride": "12",
+      "canvas-work-stride": "20",
+      "snapshot-pool-stride": "112"
+    }
+  },
+  "macos-static": {
+    "modeled_cases_passed": 16,
+    "executed_on_target_hardware": false,
+    "layout": {
+      "transition-stride": "16",
+      "capture-owner-stride": "24",
+      "snapshot-key-stride": "12",
+      "canvas-work-stride": "20",
+      "snapshot-pool-stride": "112"
+    }
+  },
+  "reachable_allocator_relocations": [],
+  "indirect_call_lines": [],
+  "heap_claim": "No allocator relocation remains in the section-GC fixture rooted at both exported entries. Undefined allocator symbol-table entries survive the relocatable link without references. This does not establish complete firmware linkage, external helper behavior, whole-image zero heap or stack safety.",
+  "disposition": "A callback-only enforcement refuted. B borrow/key mechanism supported by bounded fixtures; actual Canvas capture rejected. Full source-compatible lowering, ownership and B1 closure remain unproved.",
+  "input_snapshot_archive_sha256": "55d220d86077d399af56fdb97ea1d79f1fad236849ed203904fef5d139355722",
+  "all_trial_source_snapshots_verified": true
+}

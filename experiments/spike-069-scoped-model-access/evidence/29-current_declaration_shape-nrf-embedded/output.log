@@ -1,0 +1,33 @@
+/Users/eugene/work/GiftUI/experiments/spike-069-scoped-model-access/ScopedCapture.swift:14:6: warning: Unsupported use of @lifetime, use @_lifetime to specify lifetime dependencies
+12 |     let revision: UInt32
+13 | 
+14 |     @lifetime(copy values)
+   |      `- warning: Unsupported use of @lifetime, use @_lifetime to specify lifetime dependencies
+15 |     fileprivate init(values: Span<Transition>, revision: UInt32) {
+16 |         self.values = values
+
+/Users/eugene/work/GiftUI/experiments/spike-069-scoped-model-access/ScopedCapture.swift:37:6: warning: Unsupported use of @lifetime, use @_lifetime to specify lifetime dependencies
+35 |     }
+36 | 
+37 |     @lifetime(borrow self)
+   |      `- warning: Unsupported use of @lifetime, use @_lifetime to specify lifetime dependencies
+38 |     borrowing func view() -> FrozenCapture {
+39 |         FrozenCapture(values: Span(_unsafeElements: storage), revision: revision)
+
+/Users/eugene/work/GiftUI/experiments/spike-069-scoped-model-access/Negative.swift:45:9: error: stored property 'capture' of 'Escapable'-conforming struct 'StoredDeclaration' has non-Escapable type 'FrozenCapture'
+42 | // Canvas requirement. This is a minimal type-system compatibility witness,
+43 | // not a replacement implementation of the GiftUI View protocol.
+44 | struct StoredDeclaration {
+   |        `- note: consider adding '~Escapable' to struct 'StoredDeclaration'
+45 |     let capture: FrozenCapture
+   |         `- error: stored property 'capture' of 'Escapable'-conforming struct 'StoredDeclaration' has non-Escapable type 'FrozenCapture'
+46 | }
+47 | #endif
+
+/Users/eugene/work/GiftUI/experiments/spike-069-scoped-model-access/ScopedCapture.swift:10:8: note: struct 'FrozenCapture' has '~Escapable' constraint preventing 'Escapable' conformance
+ 8 | }
+ 9 | 
+10 | struct FrozenCapture: ~Escapable {
+   |        `- note: struct 'FrozenCapture' has '~Escapable' constraint preventing 'Escapable' conformance
+11 |     private let values: Span<Transition>
+12 |     let revision: UInt32

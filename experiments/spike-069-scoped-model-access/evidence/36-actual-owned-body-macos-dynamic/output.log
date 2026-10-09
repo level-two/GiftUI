@@ -1,0 +1,23 @@
+/Users/eugene/work/GiftUI/Sources/GiftUI/ObservableState.swift:6:14: warning: external macro implementation type 'GiftUIMacros.ObservableStateHostMacro' could not be found for macro 'ObservableStateHost()'; plugin for module 'GiftUIMacros' not found
+  4 | )
+  5 | @attached(extension, conformances: _GiftUIObservableStateHost)
+  6 | public macro ObservableStateHost() =
+    |              `- warning: external macro implementation type 'GiftUIMacros.ObservableStateHostMacro' could not be found for macro 'ObservableStateHost()'; plugin for module 'GiftUIMacros' not found
+  7 |     #externalMacro(
+  8 |         module: "GiftUIMacros",
+
+/Users/eugene/work/GiftUI/experiments/spike-069-scoped-model-access/ScopedCapture.swift:14:6: warning: Unsupported use of @lifetime, use @_lifetime to specify lifetime dependencies
+12 |     let revision: UInt32
+13 | 
+14 |     @lifetime(copy values)
+   |      `- warning: Unsupported use of @lifetime, use @_lifetime to specify lifetime dependencies
+15 |     fileprivate init(values: Span<Transition>, revision: UInt32) {
+16 |         self.values = values
+
+/Users/eugene/work/GiftUI/experiments/spike-069-scoped-model-access/ScopedCapture.swift:37:6: warning: Unsupported use of @lifetime, use @_lifetime to specify lifetime dependencies
+35 |     }
+36 | 
+37 |     @lifetime(borrow self)
+   |      `- warning: Unsupported use of @lifetime, use @_lifetime to specify lifetime dependencies
+38 |     borrowing func view() -> FrozenCapture {
+39 |         FrozenCapture(values: Span(_unsafeElements: storage), revision: revision)

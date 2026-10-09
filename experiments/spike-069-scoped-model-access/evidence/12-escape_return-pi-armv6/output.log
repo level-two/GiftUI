@@ -1,0 +1,38 @@
+/Users/eugene/work/GiftUI/experiments/spike-069-scoped-model-access/ScopedCapture.swift:14:6: warning: Unsupported use of @lifetime, use @_lifetime to specify lifetime dependencies
+12 |     let revision: UInt32
+13 | 
+14 |     @lifetime(copy values)
+   |      `- warning: Unsupported use of @lifetime, use @_lifetime to specify lifetime dependencies
+15 |     fileprivate init(values: Span<Transition>, revision: UInt32) {
+16 |         self.values = values
+
+/Users/eugene/work/GiftUI/experiments/spike-069-scoped-model-access/ScopedCapture.swift:37:6: warning: Unsupported use of @lifetime, use @_lifetime to specify lifetime dependencies
+35 |     }
+36 | 
+37 |     @lifetime(borrow self)
+   |      `- warning: Unsupported use of @lifetime, use @_lifetime to specify lifetime dependencies
+38 |     borrowing func view() -> FrozenCapture {
+39 |         FrozenCapture(values: Span(_unsafeElements: storage), revision: revision)
+
+/Users/eugene/work/GiftUI/experiments/spike-069-scoped-model-access/Negative.swift:3:2: warning: Unsupported use of @lifetime, use @_lifetime to specify lifetime dependencies
+ 1 | // Each branch is compiled independently after the positive candidate.
+ 2 | #if ESCAPE_RETURN
+ 3 | @lifetime(borrow raw)
+   |  `- warning: Unsupported use of @lifetime, use @_lifetime to specify lifetime dependencies
+ 4 | func returnDeadCapture(_ raw: UnsafeMutableRawPointer) -> FrozenCapture {
+ 5 |     let owner = CaptureOwner(
+
+/Users/eugene/work/GiftUI/experiments/spike-069-scoped-model-access/Negative.swift:10:18: error: lifetime-dependent value escapes its scope
+ 3 | @lifetime(borrow raw)
+ 4 | func returnDeadCapture(_ raw: UnsafeMutableRawPointer) -> FrozenCapture {
+ 5 |     let owner = CaptureOwner(
+   |         `- note: it depends on the lifetime of variable 'owner'
+ 6 |         unsafeStorage: UnsafeMutableBufferPointer(
+ 7 |             start: raw.assumingMemoryBound(to: Transition.self), count: 404),
+ 8 |         revision: 1
+ 9 |     )
+10 |     return owner.view()
+   |     |            `- error: lifetime-dependent value escapes its scope
+   |     `- note: this use causes the lifetime-dependent value to escape
+11 | }
+12 | #endif

@@ -1,0 +1,10 @@
+{
+  "terminal": true,
+  "finished_experiment_utc": "2026-10-09T20:22:43.151779+00:00",
+  "invocations": 45,
+  "invocation_ceiling": 48,
+  "repairs": 1,
+  "repair_ceiling": 3,
+  "disposition": "A callback-only enforcement refuted; B scoped-read/key mechanism partially supported; B1 remains open.",
+  "remaining_work": "Review, RFC integration and commits only; no automatic experimental continuation."
+}

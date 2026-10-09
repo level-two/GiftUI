@@ -1,0 +1,27 @@
+/Users/eugene/work/GiftUI/experiments/spike-069-scoped-model-access/ScopedCapture.swift:14:6: warning: Unsupported use of @lifetime, use @_lifetime to specify lifetime dependencies
+12 |     let revision: UInt32
+13 | 
+14 |     @lifetime(copy values)
+   |      `- warning: Unsupported use of @lifetime, use @_lifetime to specify lifetime dependencies
+15 |     fileprivate init(values: Span<Transition>, revision: UInt32) {
+16 |         self.values = values
+
+/Users/eugene/work/GiftUI/experiments/spike-069-scoped-model-access/ScopedCapture.swift:37:6: warning: Unsupported use of @lifetime, use @_lifetime to specify lifetime dependencies
+35 |     }
+36 | 
+37 |     @lifetime(borrow self)
+   |      `- warning: Unsupported use of @lifetime, use @_lifetime to specify lifetime dependencies
+38 |     borrowing func view() -> FrozenCapture {
+39 |         FrozenCapture(values: Span(_unsafeElements: storage), revision: revision)
+
+/Users/eugene/work/GiftUI/experiments/spike-069-scoped-model-access/Negative.swift:35:5: error: overlapping accesses to 'owner', but modification requires exclusive access [#ExclusivityViolation]
+32 | #if OVERLAP_MUTATION
+33 | func mutateWhileBorrowed(_ owner: inout CaptureOwner) -> UInt64 {
+34 |     let view = owner.view()
+   |                `- note: conflicting access is here
+35 |     owner.replaceValues(revision: 2, level: 1)
+   |     `- error: overlapping accesses to 'owner', but modification requires exclusive access [#ExclusivityViolation]
+36 |     return checksum(view)
+37 | }
+
+[#ExclusivityViolation]: <https://docs.swift.org/compiler/documentation/diagnostics/exclusivity-violation>

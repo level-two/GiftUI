@@ -1,0 +1,55 @@
+/Users/eugene/work/GiftUI/experiments/spike-069-scoped-model-access/ScopedCapture.swift:11:17: error: the 'get' accessor cannot return a ~Escapable result
+ 9 | 
+10 | struct FrozenCapture: ~Escapable {
+11 |     private let values: Span<Transition>
+   |                 `- error: the 'get' accessor cannot return a ~Escapable result
+12 |     let revision: UInt32
+13 | 
+
+/Users/eugene/work/GiftUI/experiments/spike-069-scoped-model-access/ScopedCapture.swift:15:17: error: an initializer cannot return a ~Escapable result
+13 | 
+14 |     @lifetime(copy values)
+15 |     fileprivate init(values: Span<Transition>, revision: UInt32) {
+   |                 `- error: an initializer cannot return a ~Escapable result
+16 |         self.values = values
+17 |         self.revision = revision
+
+/Users/eugene/work/GiftUI/experiments/spike-069-scoped-model-access/ScopedCapture.swift:14:6: warning: Unsupported use of @lifetime, use @_lifetime to specify lifetime dependencies
+12 |     let revision: UInt32
+13 | 
+14 |     @lifetime(copy values)
+   |      `- warning: Unsupported use of @lifetime, use @_lifetime to specify lifetime dependencies
+15 |     fileprivate init(values: Span<Transition>, revision: UInt32) {
+16 |         self.values = values
+
+/Users/eugene/work/GiftUI/experiments/spike-069-scoped-model-access/ScopedCapture.swift:14:6: error: '@lifetime' attribute is only valid when experimental feature LifetimeDependence is enabled
+12 |     let revision: UInt32
+13 | 
+14 |     @lifetime(copy values)
+   |      `- error: '@lifetime' attribute is only valid when experimental feature LifetimeDependence is enabled
+15 |     fileprivate init(values: Span<Transition>, revision: UInt32) {
+16 |         self.values = values
+
+/Users/eugene/work/GiftUI/experiments/spike-069-scoped-model-access/ScopedCapture.swift:38:30: error: a method cannot return a ~Escapable result
+36 | 
+37 |     @lifetime(borrow self)
+38 |     borrowing func view() -> FrozenCapture {
+   |                              `- error: a method cannot return a ~Escapable result
+39 |         FrozenCapture(values: Span(_unsafeElements: storage), revision: revision)
+40 |     }
+
+/Users/eugene/work/GiftUI/experiments/spike-069-scoped-model-access/ScopedCapture.swift:37:6: warning: Unsupported use of @lifetime, use @_lifetime to specify lifetime dependencies
+35 |     }
+36 | 
+37 |     @lifetime(borrow self)
+   |      `- warning: Unsupported use of @lifetime, use @_lifetime to specify lifetime dependencies
+38 |     borrowing func view() -> FrozenCapture {
+39 |         FrozenCapture(values: Span(_unsafeElements: storage), revision: revision)
+
+/Users/eugene/work/GiftUI/experiments/spike-069-scoped-model-access/ScopedCapture.swift:37:6: error: '@lifetime' attribute is only valid when experimental feature LifetimeDependence is enabled
+35 |     }
+36 | 
+37 |     @lifetime(borrow self)
+   |      `- error: '@lifetime' attribute is only valid when experimental feature LifetimeDependence is enabled
+38 |     borrowing func view() -> FrozenCapture {
+39 |         FrozenCapture(values: Span(_unsafeElements: storage), revision: revision)

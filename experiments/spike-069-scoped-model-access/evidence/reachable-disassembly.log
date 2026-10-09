@@ -1,0 +1,1216 @@
+
+/Users/eugene/work/GiftUI/.build/nrf52840/spike-069/reachable.o:     file format elf32-littlearm
+
+
+Disassembly of section .text.$e8Spike06912CaptureOwnerV13replaceValues8revision5levelys6UInt32V_AHtF:
+
+00000000 <.text.$e8Spike06912CaptureOwnerV13replaceValues8revision5levelys6UInt32V_AHtF>:
+   0:	b570      	push	{r4, r5, r6, lr}
+   2:	f8ca 0008 	str.w	r0, [sl, #8]
+   6:	f8da 0000 	ldr.w	r0, [sl]
+   a:	460c      	mov	r4, r1
+   c:	2500      	movs	r5, #0
+   e:	f100 0608 	add.w	r6, r0, #8
+  12:	4628      	mov	r0, r5
+  14:	f7ff fffe 	bl	0 <.text.$e8Spike06912CaptureOwnerV13replaceValues8revision5levelys6UInt32V_AHtF>
+			14: R_ARM_THM_CALL	$es17FixedWidthIntegerPsE15_truncatingInityxqd__SzRd__lFZs6UInt64V_SiTt1g5
+  18:	f005 0203 	and.w	r2, r5, #3
+  1c:	3501      	adds	r5, #1
+  1e:	e946 0102 	strd	r0, r1, [r6, #-8]
+  22:	e8e6 4204 	strd	r4, r2, [r6], #16
+  26:	f5b5 7fca 	cmp.w	r5, #404	; 0x194
+  2a:	d1f2      	bne.n	12 <.text.$e8Spike06912CaptureOwnerV13replaceValues8revision5levelys6UInt32V_AHtF+0x12>
+  2c:	bd70      	pop	{r4, r5, r6, pc}
+
+Disassembly of section .text.$e8Spike0698checksumys6UInt64VAA13FrozenCaptureVF:
+
+00000000 <.text.$e8Spike0698checksumys6UInt64VAA13FrozenCaptureVF>:
+   0:	b5f0      	push	{r4, r5, r6, r7, lr}
+   2:	3008      	adds	r0, #8
+   4:	2300      	movs	r3, #0
+   6:	b169      	cbz	r1, 24 <.text.$e8Spike0698checksumys6UInt64VAA13FrozenCaptureVF+0x24>
+   8:	e950 4502 	ldrd	r4, r5, [r0, #-8]
+   c:	e8f0 6704 	ldrd	r6, r7, [r0], #16
+  10:	1912      	adds	r2, r2, r4
+  12:	f143 0300 	adc.w	r3, r3, #0
+  16:	1992      	adds	r2, r2, r6
+  18:	416b      	adcs	r3, r5
+  1a:	19d2      	adds	r2, r2, r7
+  1c:	f143 0300 	adc.w	r3, r3, #0
+  20:	3901      	subs	r1, #1
+  22:	e7f0      	b.n	6 <.text.$e8Spike0698checksumys6UInt64VAA13FrozenCaptureVF+0x6>
+  24:	4610      	mov	r0, r2
+  26:	4619      	mov	r1, r3
+  28:	bdf0      	pop	{r4, r5, r6, r7, pc}
+
+Disassembly of section .text.spike069_read:
+
+00000000 <spike069_read>:
+   0:	f7ff bffe 	b.w	0 <spike069_read>
+			0: R_ARM_THM_JUMP24	$e8Spike06911readCaptureys6UInt64VSv_s6UInt32VtF
+
+Disassembly of section .text.$e8Spike06911readCaptureys6UInt64VSv_s6UInt32VtF:
+
+00000000 <.text.$e8Spike06911readCaptureys6UInt64VSv_s6UInt32VtF>:
+   0:	460a      	mov	r2, r1
+   2:	0741      	lsls	r1, r0, #29
+   4:	d103      	bne.n	e <.text.$e8Spike06911readCaptureys6UInt64VSv_s6UInt32VtF+0xe>
+   6:	f44f 71ca 	mov.w	r1, #404	; 0x194
+   a:	f7ff bffe 	b.w	0 <.text.$e8Spike06911readCaptureys6UInt64VSv_s6UInt32VtF>
+			a: R_ARM_THM_JUMP24	$e8Spike0698checksumys6UInt64VAA13FrozenCaptureVF
+   e:	defe      	udf	#254	; 0xfe
+
+Disassembly of section .text.$e8Spike06912SnapshotPoolV7reserve8revision5levelAA0B3KeyVSgs6UInt32V_AKtF:
+
+00000000 <.text.$e8Spike06912SnapshotPoolV7reserve8revision5levelAA0B3KeyVSgs6UInt32V_AKtF>:
+   0:	e92d 44f0 	stmdb	sp!, {r4, r5, r6, r7, sl, lr}
+   4:	f89a 5028 	ldrb.w	r5, [sl, #40]	; 0x28
+   8:	f89a 3038 	ldrb.w	r3, [sl, #56]	; 0x38
+   c:	f8da 2034 	ldr.w	r2, [sl, #52]	; 0x34
+  10:	f89a 7030 	ldrb.w	r7, [sl, #48]	; 0x30
+  14:	f8da 602c 	ldr.w	r6, [sl, #44]	; 0x2c
+  18:	4654      	mov	r4, sl
+  1a:	b915      	cbnz	r5, 22 <.text.$e8Spike06912SnapshotPoolV7reserve8revision5levelAA0B3KeyVSgs6UInt32V_AKtF+0x22>
+  1c:	6a65      	ldr	r5, [r4, #36]	; 0x24
+  1e:	3501      	adds	r5, #1
+  20:	d30a      	bcc.n	38 <.text.$e8Spike06912SnapshotPoolV7reserve8revision5levelAA0B3KeyVSgs6UInt32V_AKtF+0x38>
+  22:	b90f      	cbnz	r7, 28 <.text.$e8Spike06912SnapshotPoolV7reserve8revision5levelAA0B3KeyVSgs6UInt32V_AKtF+0x28>
+  24:	1c75      	adds	r5, r6, #1
+  26:	d30e      	bcc.n	46 <.text.$e8Spike06912SnapshotPoolV7reserve8revision5levelAA0B3KeyVSgs6UInt32V_AKtF+0x46>
+  28:	b90b      	cbnz	r3, 2e <.text.$e8Spike06912SnapshotPoolV7reserve8revision5levelAA0B3KeyVSgs6UInt32V_AKtF+0x2e>
+  2a:	1c55      	adds	r5, r2, #1
+  2c:	d313      	bcc.n	56 <.text.$e8Spike06912SnapshotPoolV7reserve8revision5levelAA0B3KeyVSgs6UInt32V_AKtF+0x56>
+  2e:	2301      	movs	r3, #1
+  30:	2000      	movs	r0, #0
+  32:	2600      	movs	r6, #0
+  34:	2500      	movs	r5, #0
+  36:	e019      	b.n	6c <.text.$e8Spike06912SnapshotPoolV7reserve8revision5levelAA0B3KeyVSgs6UInt32V_AKtF+0x6c>
+  38:	f240 1201 	movw	r2, #257	; 0x101
+  3c:	2600      	movs	r6, #0
+  3e:	46a2      	mov	sl, r4
+  40:	6265      	str	r5, [r4, #36]	; 0x24
+  42:	8522      	strh	r2, [r4, #40]	; 0x28
+  44:	e00e      	b.n	64 <.text.$e8Spike06912SnapshotPoolV7reserve8revision5levelAA0B3KeyVSgs6UInt32V_AKtF+0x64>
+  46:	f240 1201 	movw	r2, #257	; 0x101
+  4a:	62e5      	str	r5, [r4, #44]	; 0x2c
+  4c:	f104 0a0c 	add.w	sl, r4, #12
+  50:	2601      	movs	r6, #1
+  52:	8622      	strh	r2, [r4, #48]	; 0x30
+  54:	e006      	b.n	64 <.text.$e8Spike06912SnapshotPoolV7reserve8revision5levelAA0B3KeyVSgs6UInt32V_AKtF+0x64>
+  56:	f240 1201 	movw	r2, #257	; 0x101
+  5a:	6365      	str	r5, [r4, #52]	; 0x34
+  5c:	f104 0a18 	add.w	sl, r4, #24
+  60:	2602      	movs	r6, #2
+  62:	8722      	strh	r2, [r4, #56]	; 0x38
+  64:	f7ff fffe 	bl	0 <.text.$e8Spike06912SnapshotPoolV7reserve8revision5levelAA0B3KeyVSgs6UInt32V_AKtF>
+			64: R_ARM_THM_CALL	$e8Spike06912CaptureOwnerV13replaceValues8revision5levelys6UInt32V_AHtF
+  68:	6be0      	ldr	r0, [r4, #60]	; 0x3c
+  6a:	2300      	movs	r3, #0
+  6c:	4631      	mov	r1, r6
+  6e:	462a      	mov	r2, r5
+  70:	e8bd 84f0 	ldmia.w	sp!, {r4, r5, r6, r7, sl, pc}
+
+Disassembly of section .text.$e8Spike06912SnapshotPoolV15reclaimIfUnused33_9A7A077564BAFCEF1546C1A00C871AFALLyyAA0B3KeyVF:
+
+00000000 <.text.$e8Spike06912SnapshotPoolV15reclaimIfUnused33_9A7A077564BAFCEF1546C1A00C871AFALLyyAA0B3KeyVF>:
+   0:	b5b0      	push	{r4, r5, r7, lr}
+   2:	f8da 303c 	ldr.w	r3, [sl, #60]	; 0x3c
+   6:	4298      	cmp	r0, r3
+   8:	d133      	bne.n	72 <.text.$e8Spike06912SnapshotPoolV15reclaimIfUnused33_9A7A077564BAFCEF1546C1A00C871AFALLyyAA0B3KeyVF+0x72>
+   a:	b2c9      	uxtb	r1, r1
+   c:	2902      	cmp	r1, #2
+   e:	d830      	bhi.n	72 <.text.$e8Spike06912SnapshotPoolV15reclaimIfUnused33_9A7A077564BAFCEF1546C1A00C871AFALLyyAA0B3KeyVF+0x72>
+  10:	f10a 0438 	add.w	r4, sl, #56	; 0x38
+  14:	f10a 0334 	add.w	r3, sl, #52	; 0x34
+  18:	2901      	cmp	r1, #1
+  1a:	bf08      	it	eq
+  1c:	f10a 0430 	addeq.w	r4, sl, #48	; 0x30
+  20:	bf08      	it	eq
+  22:	f10a 032c 	addeq.w	r3, sl, #44	; 0x2c
+  26:	2900      	cmp	r1, #0
+  28:	bf04      	itt	eq
+  2a:	f10a 0324 	addeq.w	r3, sl, #36	; 0x24
+  2e:	f10a 0428 	addeq.w	r4, sl, #40	; 0x28
+  32:	7824      	ldrb	r4, [r4, #0]
+  34:	2c01      	cmp	r4, #1
+  36:	d11c      	bne.n	72 <.text.$e8Spike06912SnapshotPoolV15reclaimIfUnused33_9A7A077564BAFCEF1546C1A00C871AFALLyyAA0B3KeyVF+0x72>
+  38:	681b      	ldr	r3, [r3, #0]
+  3a:	4293      	cmp	r3, r2
+  3c:	d119      	bne.n	72 <.text.$e8Spike06912SnapshotPoolV15reclaimIfUnused33_9A7A077564BAFCEF1546C1A00C871AFALLyyAA0B3KeyVF+0x72>
+  3e:	f89a 5039 	ldrb.w	r5, [sl, #57]	; 0x39
+  42:	2901      	cmp	r1, #1
+  44:	f89a 3029 	ldrb.w	r3, [sl, #41]	; 0x29
+  48:	f89a 4031 	ldrb.w	r4, [sl, #49]	; 0x31
+  4c:	bf08      	it	eq
+  4e:	4625      	moveq	r5, r4
+  50:	2900      	cmp	r1, #0
+  52:	bf08      	it	eq
+  54:	461d      	moveq	r5, r3
+  56:	b965      	cbnz	r5, 72 <.text.$e8Spike06912SnapshotPoolV15reclaimIfUnused33_9A7A077564BAFCEF1546C1A00C871AFALLyyAA0B3KeyVF+0x72>
+  58:	f8ba 4032 	ldrh.w	r4, [sl, #50]	; 0x32
+  5c:	2901      	cmp	r1, #1
+  5e:	f8ba 303a 	ldrh.w	r3, [sl, #58]	; 0x3a
+  62:	f8ba 502a 	ldrh.w	r5, [sl, #42]	; 0x2a
+  66:	bf18      	it	ne
+  68:	461c      	movne	r4, r3
+  6a:	2900      	cmp	r1, #0
+  6c:	bf08      	it	eq
+  6e:	462c      	moveq	r4, r5
+  70:	b104      	cbz	r4, 74 <.text.$e8Spike06912SnapshotPoolV15reclaimIfUnused33_9A7A077564BAFCEF1546C1A00C871AFALLyyAA0B3KeyVF+0x74>
+  72:	bdb0      	pop	{r4, r5, r7, pc}
+  74:	f89a 304c 	ldrb.w	r3, [sl, #76]	; 0x4c
+  78:	2b01      	cmp	r3, #1
+  7a:	d10a      	bne.n	92 <.text.$e8Spike06912SnapshotPoolV15reclaimIfUnused33_9A7A077564BAFCEF1546C1A00C871AFALLyyAA0B3KeyVF+0x92>
+  7c:	2038      	movs	r0, #56	; 0x38
+  7e:	2901      	cmp	r1, #1
+  80:	bf08      	it	eq
+  82:	2030      	moveq	r0, #48	; 0x30
+  84:	2900      	cmp	r1, #0
+  86:	bf08      	it	eq
+  88:	2028      	moveq	r0, #40	; 0x28
+  8a:	2100      	movs	r1, #0
+  8c:	f84a 1000 	str.w	r1, [sl, r0]
+  90:	bdb0      	pop	{r4, r5, r7, pc}
+  92:	f8da 3040 	ldr.w	r3, [sl, #64]	; 0x40
+  96:	4283      	cmp	r3, r0
+  98:	d1f0      	bne.n	7c <.text.$e8Spike06912SnapshotPoolV15reclaimIfUnused33_9A7A077564BAFCEF1546C1A00C871AFALLyyAA0B3KeyVF+0x7c>
+  9a:	f89a 0044 	ldrb.w	r0, [sl, #68]	; 0x44
+  9e:	4281      	cmp	r1, r0
+  a0:	d1ec      	bne.n	7c <.text.$e8Spike06912SnapshotPoolV15reclaimIfUnused33_9A7A077564BAFCEF1546C1A00C871AFALLyyAA0B3KeyVF+0x7c>
+  a2:	f8da 0048 	ldr.w	r0, [sl, #72]	; 0x48
+  a6:	4290      	cmp	r0, r2
+  a8:	d0e3      	beq.n	72 <.text.$e8Spike06912SnapshotPoolV15reclaimIfUnused33_9A7A077564BAFCEF1546C1A00C871AFALLyyAA0B3KeyVF+0x72>
+  aa:	e7e7      	b.n	7c <.text.$e8Spike06912SnapshotPoolV15reclaimIfUnused33_9A7A077564BAFCEF1546C1A00C871AFALLyyAA0B3KeyVF+0x7c>
+
+Disassembly of section .text.$e8Spike06912SnapshotPoolV23releaseApplicationOwnerySbAA0B3KeyVF:
+
+00000000 <.text.$e8Spike06912SnapshotPoolV23releaseApplicationOwnerySbAA0B3KeyVF>:
+   0:	b5f8      	push	{r3, r4, r5, r6, r7, lr}
+   2:	f8da 403c 	ldr.w	r4, [sl, #60]	; 0x3c
+   6:	2300      	movs	r3, #0
+   8:	42a0      	cmp	r0, r4
+   a:	d13b      	bne.n	84 <.text.$e8Spike06912SnapshotPoolV23releaseApplicationOwnerySbAA0B3KeyVF+0x84>
+   c:	b2cc      	uxtb	r4, r1
+   e:	2c02      	cmp	r4, #2
+  10:	d838      	bhi.n	84 <.text.$e8Spike06912SnapshotPoolV23releaseApplicationOwnerySbAA0B3KeyVF+0x84>
+  12:	f10a 0634 	add.w	r6, sl, #52	; 0x34
+  16:	f89a e028 	ldrb.w	lr, [sl, #40]	; 0x28
+  1a:	2c01      	cmp	r4, #1
+  1c:	bf08      	it	eq
+  1e:	f10a 062c 	addeq.w	r6, sl, #44	; 0x2c
+  22:	f89a 5038 	ldrb.w	r5, [sl, #56]	; 0x38
+  26:	f89a c030 	ldrb.w	ip, [sl, #48]	; 0x30
+  2a:	462f      	mov	r7, r5
+  2c:	bf08      	it	eq
+  2e:	4667      	moveq	r7, ip
+  30:	2c00      	cmp	r4, #0
+  32:	bf04      	itt	eq
+  34:	f10a 0624 	addeq.w	r6, sl, #36	; 0x24
+  38:	4677      	moveq	r7, lr
+  3a:	b31f      	cbz	r7, 84 <.text.$e8Spike06912SnapshotPoolV23releaseApplicationOwnerySbAA0B3KeyVF+0x84>
+  3c:	6836      	ldr	r6, [r6, #0]
+  3e:	4296      	cmp	r6, r2
+  40:	d120      	bne.n	84 <.text.$e8Spike06912SnapshotPoolV23releaseApplicationOwnerySbAA0B3KeyVF+0x84>
+  42:	060b      	lsls	r3, r1, #24
+  44:	d013      	beq.n	6e <.text.$e8Spike06912SnapshotPoolV23releaseApplicationOwnerySbAA0B3KeyVF+0x6e>
+  46:	f89a 3031 	ldrb.w	r3, [sl, #49]	; 0x31
+  4a:	f89a 6039 	ldrb.w	r6, [sl, #57]	; 0x39
+  4e:	2c01      	cmp	r4, #1
+  50:	bf08      	it	eq
+  52:	461e      	moveq	r6, r3
+  54:	2300      	movs	r3, #0
+  56:	b1ae      	cbz	r6, 84 <.text.$e8Spike06912SnapshotPoolV23releaseApplicationOwnerySbAA0B3KeyVF+0x84>
+  58:	2c01      	cmp	r4, #1
+  5a:	bf07      	ittee	eq
+  5c:	f88a 3031 	strbeq.w	r3, [sl, #49]	; 0x31
+  60:	f88a c030 	strbeq.w	ip, [sl, #48]	; 0x30
+  64:	f88a 3039 	strbne.w	r3, [sl, #57]	; 0x39
+  68:	f88a 5038 	strbne.w	r5, [sl, #56]	; 0x38
+  6c:	e007      	b.n	7e <.text.$e8Spike06912SnapshotPoolV23releaseApplicationOwnerySbAA0B3KeyVF+0x7e>
+  6e:	f89a 4029 	ldrb.w	r4, [sl, #41]	; 0x29
+  72:	2300      	movs	r3, #0
+  74:	b134      	cbz	r4, 84 <.text.$e8Spike06912SnapshotPoolV23releaseApplicationOwnerySbAA0B3KeyVF+0x84>
+  76:	f88a 3029 	strb.w	r3, [sl, #41]	; 0x29
+  7a:	f88a e028 	strb.w	lr, [sl, #40]	; 0x28
+  7e:	f7ff fffe 	bl	0 <.text.$e8Spike06912SnapshotPoolV23releaseApplicationOwnerySbAA0B3KeyVF>
+			7e: R_ARM_THM_CALL	$e8Spike06912SnapshotPoolV15reclaimIfUnused33_9A7A077564BAFCEF1546C1A00C871AFALLyyAA0B3KeyVF
+  82:	2301      	movs	r3, #1
+  84:	4618      	mov	r0, r3
+  86:	bdf8      	pop	{r3, r4, r5, r6, r7, pc}
+
+Disassembly of section .text.$e8Spike06912SnapshotPoolV3pinySbAA0B3KeyVF:
+
+00000000 <.text.$e8Spike06912SnapshotPoolV3pinySbAA0B3KeyVF>:
+   0:	b5f0      	push	{r4, r5, r6, r7, lr}
+   2:	f8da 403c 	ldr.w	r4, [sl, #60]	; 0x3c
+   6:	4603      	mov	r3, r0
+   8:	2000      	movs	r0, #0
+   a:	42a3      	cmp	r3, r4
+   c:	d14c      	bne.n	a8 <.text.$e8Spike06912SnapshotPoolV3pinySbAA0B3KeyVF+0xa8>
+   e:	b2cb      	uxtb	r3, r1
+  10:	2b02      	cmp	r3, #2
+  12:	d849      	bhi.n	a8 <.text.$e8Spike06912SnapshotPoolV3pinySbAA0B3KeyVF+0xa8>
+  14:	f10a 0734 	add.w	r7, sl, #52	; 0x34
+  18:	f89a 6028 	ldrb.w	r6, [sl, #40]	; 0x28
+  1c:	2b01      	cmp	r3, #1
+  1e:	bf08      	it	eq
+  20:	f10a 072c 	addeq.w	r7, sl, #44	; 0x2c
+  24:	f89a 4038 	ldrb.w	r4, [sl, #56]	; 0x38
+  28:	f89a c030 	ldrb.w	ip, [sl, #48]	; 0x30
+  2c:	4625      	mov	r5, r4
+  2e:	bf08      	it	eq
+  30:	4665      	moveq	r5, ip
+  32:	2b00      	cmp	r3, #0
+  34:	bf04      	itt	eq
+  36:	f10a 0724 	addeq.w	r7, sl, #36	; 0x24
+  3a:	4635      	moveq	r5, r6
+  3c:	b3a5      	cbz	r5, a8 <.text.$e8Spike06912SnapshotPoolV3pinySbAA0B3KeyVF+0xa8>
+  3e:	683d      	ldr	r5, [r7, #0]
+  40:	4295      	cmp	r5, r2
+  42:	d131      	bne.n	a8 <.text.$e8Spike06912SnapshotPoolV3pinySbAA0B3KeyVF+0xa8>
+  44:	0608      	lsls	r0, r1, #24
+  46:	f64f 70ff 	movw	r0, #65535	; 0xffff
+  4a:	d014      	beq.n	76 <.text.$e8Spike06912SnapshotPoolV3pinySbAA0B3KeyVF+0x76>
+  4c:	f8ba 1032 	ldrh.w	r1, [sl, #50]	; 0x32
+  50:	2b01      	cmp	r3, #1
+  52:	f8ba 203a 	ldrh.w	r2, [sl, #58]	; 0x3a
+  56:	bf18      	it	ne
+  58:	4611      	movne	r1, r2
+  5a:	4281      	cmp	r1, r0
+  5c:	d019      	beq.n	92 <.text.$e8Spike06912SnapshotPoolV3pinySbAA0B3KeyVF+0x92>
+  5e:	1c48      	adds	r0, r1, #1
+  60:	2b01      	cmp	r3, #1
+  62:	d118      	bne.n	96 <.text.$e8Spike06912SnapshotPoolV3pinySbAA0B3KeyVF+0x96>
+  64:	f89a 1031 	ldrb.w	r1, [sl, #49]	; 0x31
+  68:	f8aa 0032 	strh.w	r0, [sl, #50]	; 0x32
+  6c:	f88a c030 	strb.w	ip, [sl, #48]	; 0x30
+  70:	f88a 1031 	strb.w	r1, [sl, #49]	; 0x31
+  74:	e017      	b.n	a6 <.text.$e8Spike06912SnapshotPoolV3pinySbAA0B3KeyVF+0xa6>
+  76:	f8ba 102a 	ldrh.w	r1, [sl, #42]	; 0x2a
+  7a:	4281      	cmp	r1, r0
+  7c:	d009      	beq.n	92 <.text.$e8Spike06912SnapshotPoolV3pinySbAA0B3KeyVF+0x92>
+  7e:	f89a 0029 	ldrb.w	r0, [sl, #41]	; 0x29
+  82:	f88a 6028 	strb.w	r6, [sl, #40]	; 0x28
+  86:	f88a 0029 	strb.w	r0, [sl, #41]	; 0x29
+  8a:	1c48      	adds	r0, r1, #1
+  8c:	f8aa 002a 	strh.w	r0, [sl, #42]	; 0x2a
+  90:	e009      	b.n	a6 <.text.$e8Spike06912SnapshotPoolV3pinySbAA0B3KeyVF+0xa6>
+  92:	2000      	movs	r0, #0
+  94:	bdf0      	pop	{r4, r5, r6, r7, pc}
+  96:	f89a 1039 	ldrb.w	r1, [sl, #57]	; 0x39
+  9a:	f8aa 003a 	strh.w	r0, [sl, #58]	; 0x3a
+  9e:	f88a 4038 	strb.w	r4, [sl, #56]	; 0x38
+  a2:	f88a 1039 	strb.w	r1, [sl, #57]	; 0x39
+  a6:	2001      	movs	r0, #1
+  a8:	bdf0      	pop	{r4, r5, r6, r7, pc}
+
+Disassembly of section .text.$e8Spike06912SnapshotPoolV5unpinySbAA0B3KeyVF:
+
+00000000 <.text.$e8Spike06912SnapshotPoolV5unpinySbAA0B3KeyVF>:
+   0:	b5f8      	push	{r3, r4, r5, r6, r7, lr}
+   2:	f8da 403c 	ldr.w	r4, [sl, #60]	; 0x3c
+   6:	2300      	movs	r3, #0
+   8:	42a0      	cmp	r0, r4
+   a:	d14a      	bne.n	a2 <.text.$e8Spike06912SnapshotPoolV5unpinySbAA0B3KeyVF+0xa2>
+   c:	b2cc      	uxtb	r4, r1
+   e:	2c02      	cmp	r4, #2
+  10:	d847      	bhi.n	a2 <.text.$e8Spike06912SnapshotPoolV5unpinySbAA0B3KeyVF+0xa2>
+  12:	f10a 0534 	add.w	r5, sl, #52	; 0x34
+  16:	f89a 7028 	ldrb.w	r7, [sl, #40]	; 0x28
+  1a:	2c01      	cmp	r4, #1
+  1c:	bf08      	it	eq
+  1e:	f10a 052c 	addeq.w	r5, sl, #44	; 0x2c
+  22:	f89a e038 	ldrb.w	lr, [sl, #56]	; 0x38
+  26:	f89a c030 	ldrb.w	ip, [sl, #48]	; 0x30
+  2a:	4676      	mov	r6, lr
+  2c:	bf08      	it	eq
+  2e:	4666      	moveq	r6, ip
+  30:	2c00      	cmp	r4, #0
+  32:	bf04      	itt	eq
+  34:	f10a 0524 	addeq.w	r5, sl, #36	; 0x24
+  38:	463e      	moveq	r6, r7
+  3a:	b396      	cbz	r6, a2 <.text.$e8Spike06912SnapshotPoolV5unpinySbAA0B3KeyVF+0xa2>
+  3c:	682d      	ldr	r5, [r5, #0]
+  3e:	4295      	cmp	r5, r2
+  40:	d12f      	bne.n	a2 <.text.$e8Spike06912SnapshotPoolV5unpinySbAA0B3KeyVF+0xa2>
+  42:	060b      	lsls	r3, r1, #24
+  44:	d01c      	beq.n	80 <.text.$e8Spike06912SnapshotPoolV5unpinySbAA0B3KeyVF+0x80>
+  46:	f8ba 3032 	ldrh.w	r3, [sl, #50]	; 0x32
+  4a:	2c01      	cmp	r4, #1
+  4c:	f8ba 503a 	ldrh.w	r5, [sl, #58]	; 0x3a
+  50:	bf18      	it	ne
+  52:	462b      	movne	r3, r5
+  54:	b323      	cbz	r3, a0 <.text.$e8Spike06912SnapshotPoolV5unpinySbAA0B3KeyVF+0xa0>
+  56:	3b01      	subs	r3, #1
+  58:	2c01      	cmp	r4, #1
+  5a:	bf1f      	itttt	ne
+  5c:	f89a 4039 	ldrbne.w	r4, [sl, #57]	; 0x39
+  60:	f8aa 303a 	strhne.w	r3, [sl, #58]	; 0x3a
+  64:	f88a 4039 	strbne.w	r4, [sl, #57]	; 0x39
+  68:	f88a e038 	strbne.w	lr, [sl, #56]	; 0x38
+  6c:	bf01      	itttt	eq
+  6e:	f89a 4031 	ldrbeq.w	r4, [sl, #49]	; 0x31
+  72:	f8aa 3032 	strheq.w	r3, [sl, #50]	; 0x32
+  76:	f88a 4031 	strbeq.w	r4, [sl, #49]	; 0x31
+  7a:	f88a c030 	strbeq.w	ip, [sl, #48]	; 0x30
+  7e:	e00b      	b.n	98 <.text.$e8Spike06912SnapshotPoolV5unpinySbAA0B3KeyVF+0x98>
+  80:	f8ba 302a 	ldrh.w	r3, [sl, #42]	; 0x2a
+  84:	b163      	cbz	r3, a0 <.text.$e8Spike06912SnapshotPoolV5unpinySbAA0B3KeyVF+0xa0>
+  86:	f89a 4029 	ldrb.w	r4, [sl, #41]	; 0x29
+  8a:	3b01      	subs	r3, #1
+  8c:	f88a 7028 	strb.w	r7, [sl, #40]	; 0x28
+  90:	f8aa 302a 	strh.w	r3, [sl, #42]	; 0x2a
+  94:	f88a 4029 	strb.w	r4, [sl, #41]	; 0x29
+  98:	f7ff fffe 	bl	0 <.text.$e8Spike06912SnapshotPoolV5unpinySbAA0B3KeyVF>
+			98: R_ARM_THM_CALL	$e8Spike06912SnapshotPoolV15reclaimIfUnused33_9A7A077564BAFCEF1546C1A00C871AFALLyyAA0B3KeyVF
+  9c:	2301      	movs	r3, #1
+  9e:	e000      	b.n	a2 <.text.$e8Spike06912SnapshotPoolV5unpinySbAA0B3KeyVF+0xa2>
+  a0:	2300      	movs	r3, #0
+  a2:	4618      	mov	r0, r3
+  a4:	bdf8      	pop	{r3, r4, r5, r6, r7, pc}
+
+Disassembly of section .text.$e8Spike06912SnapshotPoolV4readys6UInt64VSgAA0B3KeyVF:
+
+00000000 <.text.$e8Spike06912SnapshotPoolV4readys6UInt64VSgAA0B3KeyVF>:
+   0:	b570      	push	{r4, r5, r6, lr}
+   2:	f8da 503c 	ldr.w	r5, [sl, #60]	; 0x3c
+   6:	460c      	mov	r4, r1
+   8:	4601      	mov	r1, r0
+   a:	2301      	movs	r3, #1
+   c:	2000      	movs	r0, #0
+   e:	42a9      	cmp	r1, r5
+  10:	d123      	bne.n	5a <.text.$e8Spike06912SnapshotPoolV4readys6UInt64VSgAA0B3KeyVF+0x5a>
+  12:	b2e5      	uxtb	r5, r4
+  14:	2100      	movs	r1, #0
+  16:	2d02      	cmp	r5, #2
+  18:	d835      	bhi.n	86 <.text.$e8Spike06912SnapshotPoolV4readys6UInt64VSgAA0B3KeyVF+0x86>
+  1a:	0624      	lsls	r4, r4, #24
+  1c:	d006      	beq.n	2c <.text.$e8Spike06912SnapshotPoolV4readys6UInt64VSgAA0B3KeyVF+0x2c>
+  1e:	2d01      	cmp	r5, #1
+  20:	bf07      	ittee	eq
+  22:	2030      	moveq	r0, #48	; 0x30
+  24:	212c      	moveq	r1, #44	; 0x2c
+  26:	2038      	movne	r0, #56	; 0x38
+  28:	2134      	movne	r1, #52	; 0x34
+  2a:	e001      	b.n	30 <.text.$e8Spike06912SnapshotPoolV4readys6UInt64VSgAA0B3KeyVF+0x30>
+  2c:	2028      	movs	r0, #40	; 0x28
+  2e:	2124      	movs	r1, #36	; 0x24
+  30:	f81a 6000 	ldrb.w	r6, [sl, r0]
+  34:	2000      	movs	r0, #0
+  36:	2e01      	cmp	r6, #1
+  38:	d10f      	bne.n	5a <.text.$e8Spike06912SnapshotPoolV4readys6UInt64VSgAA0B3KeyVF+0x5a>
+  3a:	f85a 1001 	ldr.w	r1, [sl, r1]
+  3e:	4291      	cmp	r1, r2
+  40:	f04f 0100 	mov.w	r1, #0
+  44:	d11f      	bne.n	86 <.text.$e8Spike06912SnapshotPoolV4readys6UInt64VSgAA0B3KeyVF+0x86>
+  46:	b154      	cbz	r4, 5e <.text.$e8Spike06912SnapshotPoolV4readys6UInt64VSgAA0B3KeyVF+0x5e>
+  48:	2d01      	cmp	r5, #1
+  4a:	d10f      	bne.n	6c <.text.$e8Spike06912SnapshotPoolV4readys6UInt64VSgAA0B3KeyVF+0x6c>
+  4c:	f8da 000c 	ldr.w	r0, [sl, #12]
+  50:	0741      	lsls	r1, r0, #29
+  52:	d11b      	bne.n	8c <.text.$e8Spike06912SnapshotPoolV4readys6UInt64VSgAA0B3KeyVF+0x8c>
+  54:	2110      	movs	r1, #16
+  56:	2214      	movs	r2, #20
+  58:	e00e      	b.n	78 <.text.$e8Spike06912SnapshotPoolV4readys6UInt64VSgAA0B3KeyVF+0x78>
+  5a:	2100      	movs	r1, #0
+  5c:	e013      	b.n	86 <.text.$e8Spike06912SnapshotPoolV4readys6UInt64VSgAA0B3KeyVF+0x86>
+  5e:	f8da 0000 	ldr.w	r0, [sl]
+  62:	0741      	lsls	r1, r0, #29
+  64:	d111      	bne.n	8a <.text.$e8Spike06912SnapshotPoolV4readys6UInt64VSgAA0B3KeyVF+0x8a>
+  66:	2104      	movs	r1, #4
+  68:	2208      	movs	r2, #8
+  6a:	e005      	b.n	78 <.text.$e8Spike06912SnapshotPoolV4readys6UInt64VSgAA0B3KeyVF+0x78>
+  6c:	f8da 0018 	ldr.w	r0, [sl, #24]
+  70:	0741      	lsls	r1, r0, #29
+  72:	d10c      	bne.n	8e <.text.$e8Spike06912SnapshotPoolV4readys6UInt64VSgAA0B3KeyVF+0x8e>
+  74:	211c      	movs	r1, #28
+  76:	2220      	movs	r2, #32
+  78:	f85a 1001 	ldr.w	r1, [sl, r1]
+  7c:	f85a 2002 	ldr.w	r2, [sl, r2]
+  80:	f7ff fffe 	bl	0 <.text.$e8Spike06912SnapshotPoolV4readys6UInt64VSgAA0B3KeyVF>
+			80: R_ARM_THM_CALL	$e8Spike0698checksumys6UInt64VAA13FrozenCaptureVF
+  84:	2300      	movs	r3, #0
+  86:	461a      	mov	r2, r3
+  88:	bd70      	pop	{r4, r5, r6, pc}
+  8a:	defe      	udf	#254	; 0xfe
+  8c:	defe      	udf	#254	; 0xfe
+  8e:	defe      	udf	#254	; 0xfe
+
+Disassembly of section .text.$e8Spike06912SnapshotPoolV13occupiedCountSivg:
+
+00000000 <.text.$e8Spike06912SnapshotPoolV13occupiedCountSivg>:
+   0:	f8da 0038 	ldr.w	r0, [sl, #56]	; 0x38
+   4:	f89a 2028 	ldrb.w	r2, [sl, #40]	; 0x28
+   8:	f000 0101 	and.w	r1, r0, #1
+   c:	f8da 0030 	ldr.w	r0, [sl, #48]	; 0x30
+  10:	07d2      	lsls	r2, r2, #31
+  12:	f000 0001 	and.w	r0, r0, #1
+  16:	d102      	bne.n	1e <.text.$e8Spike06912SnapshotPoolV13occupiedCountSivg+0x1e>
+  18:	b139      	cbz	r1, 2a <.text.$e8Spike06912SnapshotPoolV13occupiedCountSivg+0x2a>
+  1a:	2101      	movs	r1, #1
+  1c:	e009      	b.n	32 <.text.$e8Spike06912SnapshotPoolV13occupiedCountSivg+0x32>
+  1e:	2202      	movs	r2, #2
+  20:	2800      	cmp	r0, #0
+  22:	bf08      	it	eq
+  24:	2201      	moveq	r2, #1
+  26:	b911      	cbnz	r1, 2e <.text.$e8Spike06912SnapshotPoolV13occupiedCountSivg+0x2e>
+  28:	4610      	mov	r0, r2
+  2a:	2100      	movs	r1, #0
+  2c:	e001      	b.n	32 <.text.$e8Spike06912SnapshotPoolV13occupiedCountSivg+0x32>
+  2e:	2101      	movs	r1, #1
+  30:	4610      	mov	r0, r2
+  32:	4408      	add	r0, r1
+  34:	4770      	bx	lr
+
+Disassembly of section .text.$e8Spike06910CanvasWorkV6invoke4pools6UInt64VSgAA12SnapshotPoolVz_tF:
+
+00000000 <.text.$e8Spike06910CanvasWorkV6invoke4pools6UInt64VSgAA12SnapshotPoolVz_tF>:
+   0:	e92d 4ff0 	stmdb	sp!, {r4, r5, r6, r7, r8, r9, sl, fp, lr}
+   4:	b095      	sub	sp, #84	; 0x54
+   6:	4606      	mov	r6, r0
+   8:	f89a 0010 	ldrb.w	r0, [sl, #16]
+   c:	b130      	cbz	r0, 1c <.text.$e8Spike06910CanvasWorkV6invoke4pools6UInt64VSgAA12SnapshotPoolVz_tF+0x1c>
+   e:	2501      	movs	r5, #1
+  10:	2000      	movs	r0, #0
+  12:	2100      	movs	r1, #0
+  14:	462a      	mov	r2, r5
+  16:	b015      	add	sp, #84	; 0x54
+  18:	e8bd 8ff0 	ldmia.w	sp!, {r4, r5, r6, r7, r8, r9, sl, fp, pc}
+  1c:	4654      	mov	r4, sl
+  1e:	f8da 8008 	ldr.w	r8, [sl, #8]
+  22:	f89a 7004 	ldrb.w	r7, [sl, #4]
+  26:	f8da 9000 	ldr.w	r9, [sl]
+  2a:	f10d 0a04 	add.w	sl, sp, #4
+  2e:	4631      	mov	r1, r6
+  30:	f7ff fffe 	bl	0 <.text.$e8Spike06910CanvasWorkV6invoke4pools6UInt64VSgAA12SnapshotPoolVz_tF>
+			30: R_ARM_THM_CALL	OUTLINED_FUNCTION_0
+  34:	9910      	ldr	r1, [sp, #64]	; 0x40
+  36:	2501      	movs	r5, #1
+  38:	2000      	movs	r0, #0
+  3a:	4589      	cmp	r9, r1
+  3c:	d1e9      	bne.n	12 <.text.$e8Spike06910CanvasWorkV6invoke4pools6UInt64VSgAA12SnapshotPoolVz_tF+0x12>
+  3e:	2f02      	cmp	r7, #2
+  40:	f04f 0100 	mov.w	r1, #0
+  44:	d8e6      	bhi.n	14 <.text.$e8Spike06910CanvasWorkV6invoke4pools6UInt64VSgAA12SnapshotPoolVz_tF+0x14>
+  46:	b1c7      	cbz	r7, 7a <.text.$e8Spike06910CanvasWorkV6invoke4pools6UInt64VSgAA12SnapshotPoolVz_tF+0x7a>
+  48:	f10a 0134 	add.w	r1, sl, #52	; 0x34
+  4c:	f10a 0038 	add.w	r0, sl, #56	; 0x38
+  50:	2f01      	cmp	r7, #1
+  52:	bf08      	it	eq
+  54:	f10a 012c 	addeq.w	r1, sl, #44	; 0x2c
+  58:	bf08      	it	eq
+  5a:	f10a 0030 	addeq.w	r0, sl, #48	; 0x30
+  5e:	7802      	ldrb	r2, [r0, #0]
+  60:	2000      	movs	r0, #0
+  62:	2a01      	cmp	r2, #1
+  64:	d1d5      	bne.n	12 <.text.$e8Spike06910CanvasWorkV6invoke4pools6UInt64VSgAA12SnapshotPoolVz_tF+0x12>
+  66:	6809      	ldr	r1, [r1, #0]
+  68:	4541      	cmp	r1, r8
+  6a:	f04f 0100 	mov.w	r1, #0
+  6e:	d1d1      	bne.n	14 <.text.$e8Spike06910CanvasWorkV6invoke4pools6UInt64VSgAA12SnapshotPoolVz_tF+0x14>
+  70:	203a      	movs	r0, #58	; 0x3a
+  72:	2f01      	cmp	r7, #1
+  74:	bf08      	it	eq
+  76:	2032      	moveq	r0, #50	; 0x32
+  78:	e009      	b.n	8e <.text.$e8Spike06910CanvasWorkV6invoke4pools6UInt64VSgAA12SnapshotPoolVz_tF+0x8e>
+  7a:	f89d 102c 	ldrb.w	r1, [sp, #44]	; 0x2c
+  7e:	2901      	cmp	r1, #1
+  80:	d1c7      	bne.n	12 <.text.$e8Spike06910CanvasWorkV6invoke4pools6UInt64VSgAA12SnapshotPoolVz_tF+0x12>
+  82:	990a      	ldr	r1, [sp, #40]	; 0x28
+  84:	4541      	cmp	r1, r8
+  86:	f04f 0100 	mov.w	r1, #0
+  8a:	d1c3      	bne.n	14 <.text.$e8Spike06910CanvasWorkV6invoke4pools6UInt64VSgAA12SnapshotPoolVz_tF+0x14>
+  8c:	202a      	movs	r0, #42	; 0x2a
+  8e:	f83a 0000 	ldrh.w	r0, [sl, r0]
+  92:	b340      	cbz	r0, e6 <.text.$e8Spike06910CanvasWorkV6invoke4pools6UInt64VSgAA12SnapshotPoolVz_tF+0xe6>
+  94:	f10d 0a04 	add.w	sl, sp, #4
+  98:	4648      	mov	r0, r9
+  9a:	4639      	mov	r1, r7
+  9c:	4642      	mov	r2, r8
+  9e:	f7ff fffe 	bl	0 <.text.$e8Spike06910CanvasWorkV6invoke4pools6UInt64VSgAA12SnapshotPoolVz_tF>
+			9e: R_ARM_THM_CALL	$e8Spike06912SnapshotPoolV4readys6UInt64VSgAA0B3KeyVF
+  a2:	468b      	mov	fp, r1
+  a4:	b2d1      	uxtb	r1, r2
+  a6:	2501      	movs	r5, #1
+  a8:	2901      	cmp	r1, #1
+  aa:	d0b1      	beq.n	10 <.text.$e8Spike06910CanvasWorkV6invoke4pools6UInt64VSgAA12SnapshotPoolVz_tF+0x10>
+  ac:	9000      	str	r0, [sp, #0]
+  ae:	4648      	mov	r0, r9
+  b0:	4639      	mov	r1, r7
+  b2:	4642      	mov	r2, r8
+  b4:	46b2      	mov	sl, r6
+  b6:	7425      	strb	r5, [r4, #16]
+  b8:	f7ff fffe 	bl	0 <.text.$e8Spike06910CanvasWorkV6invoke4pools6UInt64VSgAA12SnapshotPoolVz_tF>
+			b8: R_ARM_THM_CALL	$e8Spike06912SnapshotPoolV5unpinySbAA0B3KeyVF
+  bc:	07c0      	lsls	r0, r0, #31
+  be:	f04f 0000 	mov.w	r0, #0
+  c2:	d0a6      	beq.n	12 <.text.$e8Spike06910CanvasWorkV6invoke4pools6UInt64VSgAA12SnapshotPoolVz_tF+0x12>
+  c4:	68e1      	ldr	r1, [r4, #12]
+  c6:	9a00      	ldr	r2, [sp, #0]
+  c8:	fbab 3401 	umull	r3, r4, fp, r1
+  cc:	fba2 2101 	umull	r2, r1, r2, r1
+  d0:	18c9      	adds	r1, r1, r3
+  d2:	f140 0000 	adc.w	r0, r0, #0
+  d6:	2c00      	cmp	r4, #0
+  d8:	bf18      	it	ne
+  da:	2401      	movne	r4, #1
+  dc:	4320      	orrs	r0, r4
+  de:	d104      	bne.n	ea <.text.$e8Spike06910CanvasWorkV6invoke4pools6UInt64VSgAA12SnapshotPoolVz_tF+0xea>
+  e0:	2500      	movs	r5, #0
+  e2:	4610      	mov	r0, r2
+  e4:	e796      	b.n	14 <.text.$e8Spike06910CanvasWorkV6invoke4pools6UInt64VSgAA12SnapshotPoolVz_tF+0x14>
+  e6:	2000      	movs	r0, #0
+  e8:	e794      	b.n	14 <.text.$e8Spike06910CanvasWorkV6invoke4pools6UInt64VSgAA12SnapshotPoolVz_tF+0x14>
+  ea:	defe      	udf	#254	; 0xfe
+
+Disassembly of section .text.spike069_lifecycle:
+
+00000000 <spike069_lifecycle>:
+   0:	f7ff bffe 	b.w	0 <spike069_lifecycle>
+			0: R_ARM_THM_JUMP24	$e8Spike06914lifetimeDriverys6UInt64VSvF
+
+Disassembly of section .text.$e8Spike06914lifetimeDriverys6UInt64VSvF:
+
+00000000 <.text.$e8Spike06914lifetimeDriverys6UInt64VSvF>:
+   0:	e92d 4ff0 	stmdb	sp!, {r4, r5, r6, r7, r8, r9, sl, fp, lr}
+   4:	f2ad 4d44 	subw	sp, sp, #1092	; 0x444
+   8:	f647 6140 	movw	r1, #32320	; 0x7e40
+   c:	4604      	mov	r4, r0
+   e:	f7ff fffe 	bl	0 <__aeabi_memclr8>
+			e: R_ARM_THM_CALL	__aeabi_memclr8
+  12:	f10d 0a34 	add.w	sl, sp, #52	; 0x34
+  16:	211c      	movs	r1, #28
+  18:	f10a 0020 	add.w	r0, sl, #32
+  1c:	f7ff fffe 	bl	0 <__aeabi_memclr4>
+			1c: R_ARM_THM_CALL	__aeabi_memclr4
+  20:	2045      	movs	r0, #69	; 0x45
+  22:	f504 514a 	add.w	r1, r4, #12928	; 0x3280
+  26:	2500      	movs	r5, #0
+  28:	901c      	str	r0, [sp, #112]	; 0x70
+  2a:	f44f 70ca 	mov.w	r0, #404	; 0x194
+  2e:	9113      	str	r1, [sp, #76]	; 0x4c
+  30:	f504 51ca 	add.w	r1, r4, #6464	; 0x1940
+  34:	951f      	str	r5, [sp, #124]	; 0x7c
+  36:	e9cd 551d 	strd	r5, r5, [sp, #116]	; 0x74
+  3a:	e9cd 510f 	strd	r5, r1, [sp, #60]	; 0x3c
+  3e:	9014      	str	r0, [sp, #80]	; 0x50
+  40:	e9cd 0511 	strd	r0, r5, [sp, #68]	; 0x44
+  44:	e9cd 400d 	strd	r4, r0, [sp, #52]	; 0x34
+  48:	2001      	movs	r0, #1
+  4a:	2102      	movs	r1, #2
+  4c:	f88d 0080 	strb.w	r0, [sp, #128]	; 0x80
+  50:	f7ff fffe 	bl	0 <.text.$e8Spike06914lifetimeDriverys6UInt64VSvF>
+			50: R_ARM_THM_CALL	$e8Spike06912SnapshotPoolV7reserve8revision5levelAA0B3KeyVSgs6UInt32V_AKtF
+  54:	4680      	mov	r8, r0
+  56:	b2d8      	uxtb	r0, r3
+  58:	2801      	cmp	r0, #1
+  5a:	d00d      	beq.n	78 <.text.$e8Spike06914lifetimeDriverys6UInt64VSvF+0x78>
+  5c:	981c      	ldr	r0, [sp, #112]	; 0x70
+  5e:	4580      	cmp	r8, r0
+  60:	d109      	bne.n	76 <.text.$e8Spike06914lifetimeDriverys6UInt64VSvF+0x76>
+  62:	b2cb      	uxtb	r3, r1
+  64:	460f      	mov	r7, r1
+  66:	4616      	mov	r6, r2
+  68:	2b01      	cmp	r3, #1
+  6a:	d00d      	beq.n	88 <.text.$e8Spike06914lifetimeDriverys6UInt64VSvF+0x88>
+  6c:	b987      	cbnz	r7, 90 <.text.$e8Spike06914lifetimeDriverys6UInt64VSvF+0x90>
+  6e:	9816      	ldr	r0, [sp, #88]	; 0x58
+  70:	f89d 105c 	ldrb.w	r1, [sp, #92]	; 0x5c
+  74:	e00f      	b.n	96 <.text.$e8Spike06914lifetimeDriverys6UInt64VSvF+0x96>
+  76:	2500      	movs	r5, #0
+  78:	f04f 0b00 	mov.w	fp, #0
+  7c:	4628      	mov	r0, r5
+  7e:	4659      	mov	r1, fp
+  80:	f20d 4d44 	addw	sp, sp, #1092	; 0x444
+  84:	e8bd 8ff0 	ldmia.w	sp!, {r4, r5, r6, r7, r8, r9, sl, fp, pc}
+  88:	f89d 1064 	ldrb.w	r1, [sp, #100]	; 0x64
+  8c:	9818      	ldr	r0, [sp, #96]	; 0x60
+  8e:	e002      	b.n	96 <.text.$e8Spike06914lifetimeDriverys6UInt64VSvF+0x96>
+  90:	f89d 106c 	ldrb.w	r1, [sp, #108]	; 0x6c
+  94:	981a      	ldr	r0, [sp, #104]	; 0x68
+  96:	2500      	movs	r5, #0
+  98:	2900      	cmp	r1, #0
+  9a:	d0ed      	beq.n	78 <.text.$e8Spike06914lifetimeDriverys6UInt64VSvF+0x78>
+  9c:	42b0      	cmp	r0, r6
+  9e:	f04f 0b00 	mov.w	fp, #0
+  a2:	d1eb      	bne.n	7c <.text.$e8Spike06914lifetimeDriverys6UInt64VSvF+0x7c>
+  a4:	2000      	movs	r0, #0
+  a6:	f89d 5080 	ldrb.w	r5, [sp, #128]	; 0x80
+  aa:	f88d 0080 	strb.w	r0, [sp, #128]	; 0x80
+  ae:	aa1d      	add	r2, sp, #116	; 0x74
+  b0:	ca07      	ldmia	r2, {r0, r1, r2}
+  b2:	2d01      	cmp	r5, #1
+  b4:	961f      	str	r6, [sp, #124]	; 0x7c
+  b6:	e9cd 831d 	strd	r8, r3, [sp, #116]	; 0x74
+  ba:	d003      	beq.n	c4 <.text.$e8Spike06914lifetimeDriverys6UInt64VSvF+0xc4>
+  bc:	f10d 0a34 	add.w	sl, sp, #52	; 0x34
+  c0:	f7ff fffe 	bl	0 <.text.$e8Spike06914lifetimeDriverys6UInt64VSvF>
+			c0: R_ARM_THM_CALL	$e8Spike06912SnapshotPoolV15reclaimIfUnused33_9A7A077564BAFCEF1546C1A00C871AFALLyyAA0B3KeyVF
+  c4:	f50d 7a7d 	add.w	sl, sp, #1012	; 0x3f4
+  c8:	a90d      	add	r1, sp, #52	; 0x34
+  ca:	f7ff fffe 	bl	0 <.text.$e8Spike06914lifetimeDriverys6UInt64VSvF>
+			ca: R_ARM_THM_CALL	OUTLINED_FUNCTION_0
+  ce:	4640      	mov	r0, r8
+  d0:	4639      	mov	r1, r7
+  d2:	f7ff fffe 	bl	0 <.text.$e8Spike06914lifetimeDriverys6UInt64VSvF>
+			d2: R_ARM_THM_CALL	OUTLINED_FUNCTION_2
+  d6:	b2d2      	uxtb	r2, r2
+  d8:	2a01      	cmp	r2, #1
+  da:	d007      	beq.n	ec <.text.$e8Spike06914lifetimeDriverys6UInt64VSvF+0xec>
+  dc:	4a76      	ldr	r2, [pc, #472]	; (2b8 <.text.$e8Spike06914lifetimeDriverys6UInt64VSvF+0x2b8>)
+  de:	4050      	eors	r0, r2
+  e0:	4308      	orrs	r0, r1
+  e2:	d103      	bne.n	ec <.text.$e8Spike06914lifetimeDriverys6UInt64VSvF+0xec>
+  e4:	f04f 0b00 	mov.w	fp, #0
+  e8:	2501      	movs	r5, #1
+  ea:	e002      	b.n	f2 <.text.$e8Spike06914lifetimeDriverys6UInt64VSvF+0xf2>
+  ec:	2500      	movs	r5, #0
+  ee:	f04f 0b00 	mov.w	fp, #0
+  f2:	f10d 0a34 	add.w	sl, sp, #52	; 0x34
+  f6:	2002      	movs	r0, #2
+  f8:	2104      	movs	r1, #4
+  fa:	f7ff fffe 	bl	0 <.text.$e8Spike06914lifetimeDriverys6UInt64VSvF>
+			fa: R_ARM_THM_CALL	$e8Spike06912SnapshotPoolV7reserve8revision5levelAA0B3KeyVSgs6UInt32V_AKtF
+  fe:	b2db      	uxtb	r3, r3
+ 100:	2b01      	cmp	r3, #1
+ 102:	d0bb      	beq.n	7c <.text.$e8Spike06914lifetimeDriverys6UInt64VSvF+0x7c>
+ 104:	f89d 3080 	ldrb.w	r3, [sp, #128]	; 0x80
+ 108:	e9cd 7b06 	strd	r7, fp, [sp, #24]
+ 10c:	2b01      	cmp	r3, #1
+ 10e:	d022      	beq.n	156 <.text.$e8Spike06914lifetimeDriverys6UInt64VSvF+0x156>
+ 110:	9b1d      	ldr	r3, [sp, #116]	; 0x74
+ 112:	4543      	cmp	r3, r8
+ 114:	d11f      	bne.n	156 <.text.$e8Spike06914lifetimeDriverys6UInt64VSvF+0x156>
+ 116:	9b1e      	ldr	r3, [sp, #120]	; 0x78
+ 118:	b2ff      	uxtb	r7, r7
+ 11a:	b2db      	uxtb	r3, r3
+ 11c:	42bb      	cmp	r3, r7
+ 11e:	d11a      	bne.n	156 <.text.$e8Spike06914lifetimeDriverys6UInt64VSvF+0x156>
+ 120:	9b1f      	ldr	r3, [sp, #124]	; 0x7c
+ 122:	42b3      	cmp	r3, r6
+ 124:	d117      	bne.n	156 <.text.$e8Spike06914lifetimeDriverys6UInt64VSvF+0x156>
+ 126:	f50d 7a69 	add.w	sl, sp, #932	; 0x3a4
+ 12a:	4689      	mov	r9, r1
+ 12c:	4683      	mov	fp, r0
+ 12e:	4617      	mov	r7, r2
+ 130:	a90d      	add	r1, sp, #52	; 0x34
+ 132:	f7ff fffe 	bl	0 <.text.$e8Spike06914lifetimeDriverys6UInt64VSvF>
+			132: R_ARM_THM_CALL	OUTLINED_FUNCTION_0
+ 136:	9906      	ldr	r1, [sp, #24]
+ 138:	4640      	mov	r0, r8
+ 13a:	f7ff fffe 	bl	0 <.text.$e8Spike06914lifetimeDriverys6UInt64VSvF>
+			13a: R_ARM_THM_CALL	OUTLINED_FUNCTION_2
+ 13e:	b2d2      	uxtb	r2, r2
+ 140:	2a01      	cmp	r2, #1
+ 142:	d005      	beq.n	150 <.text.$e8Spike06914lifetimeDriverys6UInt64VSvF+0x150>
+ 144:	4a5c      	ldr	r2, [pc, #368]	; (2b8 <.text.$e8Spike06914lifetimeDriverys6UInt64VSvF+0x2b8>)
+ 146:	4050      	eors	r0, r2
+ 148:	4308      	orrs	r0, r1
+ 14a:	bf08      	it	eq
+ 14c:	f045 0502 	orreq.w	r5, r5, #2
+ 150:	463a      	mov	r2, r7
+ 152:	4658      	mov	r0, fp
+ 154:	4649      	mov	r1, r9
+ 156:	f10d 0a34 	add.w	sl, sp, #52	; 0x34
+ 15a:	4683      	mov	fp, r0
+ 15c:	4689      	mov	r9, r1
+ 15e:	4617      	mov	r7, r2
+ 160:	f7ff fffe 	bl	0 <.text.$e8Spike06914lifetimeDriverys6UInt64VSvF>
+			160: R_ARM_THM_CALL	$e8Spike06912SnapshotPoolV23releaseApplicationOwnerySbAA0B3KeyVF
+ 164:	07c0      	lsls	r0, r0, #31
+ 166:	d019      	beq.n	19c <.text.$e8Spike06914lifetimeDriverys6UInt64VSvF+0x19c>
+ 168:	f50d 7a55 	add.w	sl, sp, #852	; 0x354
+ 16c:	a90d      	add	r1, sp, #52	; 0x34
+ 16e:	f7ff fffe 	bl	0 <.text.$e8Spike06914lifetimeDriverys6UInt64VSvF>
+			16e: R_ARM_THM_CALL	OUTLINED_FUNCTION_0
+ 172:	4658      	mov	r0, fp
+ 174:	4649      	mov	r1, r9
+ 176:	463a      	mov	r2, r7
+ 178:	f7ff fffe 	bl	0 <.text.$e8Spike06914lifetimeDriverys6UInt64VSvF>
+			178: R_ARM_THM_CALL	$e8Spike06912SnapshotPoolV4readys6UInt64VSgAA0B3KeyVF
+ 17c:	b2d0      	uxtb	r0, r2
+ 17e:	2801      	cmp	r0, #1
+ 180:	d10f      	bne.n	1a2 <.text.$e8Spike06914lifetimeDriverys6UInt64VSvF+0x1a2>
+ 182:	f10d 0a34 	add.w	sl, sp, #52	; 0x34
+ 186:	f7ff fffe 	bl	0 <.text.$e8Spike06914lifetimeDriverys6UInt64VSvF>
+			186: R_ARM_THM_CALL	$e8Spike06912SnapshotPoolV13occupiedCountSivg
+ 18a:	2801      	cmp	r0, #1
+ 18c:	f8dd 9018 	ldr.w	r9, [sp, #24]
+ 190:	bf08      	it	eq
+ 192:	f045 0504 	orreq.w	r5, r5, #4
+ 196:	f8dd b01c 	ldr.w	fp, [sp, #28]
+ 19a:	e004      	b.n	1a6 <.text.$e8Spike06914lifetimeDriverys6UInt64VSvF+0x1a6>
+ 19c:	f8dd b01c 	ldr.w	fp, [sp, #28]
+ 1a0:	e76c      	b.n	7c <.text.$e8Spike06914lifetimeDriverys6UInt64VSvF+0x7c>
+ 1a2:	e9dd 9b06 	ldrd	r9, fp, [sp, #24]
+ 1a6:	f10d 0a34 	add.w	sl, sp, #52	; 0x34
+ 1aa:	f7ff fffe 	bl	0 <.text.$e8Spike06914lifetimeDriverys6UInt64VSvF>
+			1aa: R_ARM_THM_CALL	OUTLINED_FUNCTION_5
+ 1ae:	07c0      	lsls	r0, r0, #31
+ 1b0:	f43f af64 	beq.w	7c <.text.$e8Spike06914lifetimeDriverys6UInt64VSvF+0x7c>
+ 1b4:	f10d 0a34 	add.w	sl, sp, #52	; 0x34
+ 1b8:	f7ff fffe 	bl	0 <.text.$e8Spike06914lifetimeDriverys6UInt64VSvF>
+			1b8: R_ARM_THM_CALL	OUTLINED_FUNCTION_5
+ 1bc:	07c0      	lsls	r0, r0, #31
+ 1be:	f43f af5d 	beq.w	7c <.text.$e8Spike06914lifetimeDriverys6UInt64VSvF+0x7c>
+ 1c2:	f644 30c0 	movw	r0, #19392	; 0x4bc0
+ 1c6:	f644 31cc 	movw	r1, #19404	; 0x4bcc
+ 1ca:	f504 4aca 	add.w	sl, r4, #25856	; 0x6500
+ 1ce:	9607      	str	r6, [sp, #28]
+ 1d0:	f88d 9024 	strb.w	r9, [sp, #36]	; 0x24
+ 1d4:	f8cd 8020 	str.w	r8, [sp, #32]
+ 1d8:	4420      	add	r0, r4
+ 1da:	1867      	adds	r7, r4, r1
+ 1dc:	2400      	movs	r4, #0
+ 1de:	9005      	str	r0, [sp, #20]
+ 1e0:	2002      	movs	r0, #2
+ 1e2:	f88d 4030 	strb.w	r4, [sp, #48]	; 0x30
+ 1e6:	e9cd 600a 	strd	r6, r0, [sp, #40]	; 0x28
+ 1ea:	2608      	movs	r6, #8
+ 1ec:	4620      	mov	r0, r4
+ 1ee:	f7ff fffe 	bl	0 <.text.$e8Spike06914lifetimeDriverys6UInt64VSvF>
+			1ee: R_ARM_THM_CALL	$es17FixedWidthIntegerPsE15_truncatingInityxqd__SzRd__lFZs6UInt64V_SiTt1g5
+ 1f2:	f004 0203 	and.w	r2, r4, #3
+ 1f6:	3401      	adds	r4, #1
+ 1f8:	e907 0043 	stmdb	r7, {r0, r1, r6}
+ 1fc:	f847 2b10 	str.w	r2, [r7], #16
+ 200:	f5b4 7fca 	cmp.w	r4, #404	; 0x194
+ 204:	d1f2      	bne.n	1ec <.text.$e8Spike06914lifetimeDriverys6UInt64VSvF+0x1ec>
+ 206:	2400      	movs	r4, #0
+ 208:	2608      	movs	r6, #8
+ 20a:	4657      	mov	r7, sl
+ 20c:	f8cd a010 	str.w	sl, [sp, #16]
+ 210:	4620      	mov	r0, r4
+ 212:	f7ff fffe 	bl	0 <.text.$e8Spike06914lifetimeDriverys6UInt64VSvF>
+			212: R_ARM_THM_CALL	$es17FixedWidthIntegerPsE15_truncatingInityxqd__SzRd__lFZs6UInt64V_SiTt1g5
+ 216:	f004 0203 	and.w	r2, r4, #3
+ 21a:	e887 0043 	stmia.w	r7, {r0, r1, r6}
+ 21e:	3401      	adds	r4, #1
+ 220:	60fa      	str	r2, [r7, #12]
+ 222:	3710      	adds	r7, #16
+ 224:	f5b4 7fca 	cmp.w	r4, #404	; 0x194
+ 228:	d1f2      	bne.n	210 <.text.$e8Spike06914lifetimeDriverys6UInt64VSvF+0x210>
+ 22a:	f50d 7a41 	add.w	sl, sp, #772	; 0x304
+ 22e:	a90d      	add	r1, sp, #52	; 0x34
+ 230:	f7ff fffe 	bl	0 <.text.$e8Spike06914lifetimeDriverys6UInt64VSvF>
+			230: R_ARM_THM_CALL	OUTLINED_FUNCTION_0
+ 234:	9e07      	ldr	r6, [sp, #28]
+ 236:	4640      	mov	r0, r8
+ 238:	4649      	mov	r1, r9
+ 23a:	f7ff fffe 	bl	0 <.text.$e8Spike06914lifetimeDriverys6UInt64VSvF>
+			23a: R_ARM_THM_CALL	OUTLINED_FUNCTION_2
+ 23e:	b2d2      	uxtb	r2, r2
+ 240:	2a01      	cmp	r2, #1
+ 242:	d01b      	beq.n	27c <.text.$e8Spike06914lifetimeDriverys6UInt64VSvF+0x27c>
+ 244:	4cd6      	ldr	r4, [pc, #856]	; (5a0 <.text.$e8Spike06914lifetimeDriverys6UInt64VSvF+0x5a0>)
+ 246:	4060      	eors	r0, r4
+ 248:	4308      	orrs	r0, r1
+ 24a:	d117      	bne.n	27c <.text.$e8Spike06914lifetimeDriverys6UInt64VSvF+0x27c>
+ 24c:	9805      	ldr	r0, [sp, #20]
+ 24e:	0741      	lsls	r1, r0, #29
+ 250:	f040 81a3 	bne.w	59a <.text.$e8Spike06914lifetimeDriverys6UInt64VSvF+0x59a>
+ 254:	f7ff fffe 	bl	0 <.text.$e8Spike06914lifetimeDriverys6UInt64VSvF>
+			254: R_ARM_THM_CALL	OUTLINED_FUNCTION_3
+ 258:	f504 6418 	add.w	r4, r4, #2432	; 0x980
+ 25c:	4060      	eors	r0, r4
+ 25e:	4308      	orrs	r0, r1
+ 260:	9804      	ldr	r0, [sp, #16]
+ 262:	d10b      	bne.n	27c <.text.$e8Spike06914lifetimeDriverys6UInt64VSvF+0x27c>
+ 264:	0741      	lsls	r1, r0, #29
+ 266:	f040 8199 	bne.w	59c <.text.$e8Spike06914lifetimeDriverys6UInt64VSvF+0x59c>
+ 26a:	f7ff fffe 	bl	0 <.text.$e8Spike06914lifetimeDriverys6UInt64VSvF>
+			26a: R_ARM_THM_CALL	OUTLINED_FUNCTION_3
+ 26e:	4060      	eors	r0, r4
+ 270:	4308      	orrs	r0, r1
+ 272:	d103      	bne.n	27c <.text.$e8Spike06914lifetimeDriverys6UInt64VSvF+0x27c>
+ 274:	4634      	mov	r4, r6
+ 276:	f045 0508 	orr.w	r5, r5, #8
+ 27a:	e000      	b.n	27e <.text.$e8Spike06914lifetimeDriverys6UInt64VSvF+0x27e>
+ 27c:	4634      	mov	r4, r6
+ 27e:	f10d 0a34 	add.w	sl, sp, #52	; 0x34
+ 282:	2003      	movs	r0, #3
+ 284:	2106      	movs	r1, #6
+ 286:	f7ff fffe 	bl	0 <.text.$e8Spike06914lifetimeDriverys6UInt64VSvF>
+			286: R_ARM_THM_CALL	$e8Spike06912SnapshotPoolV7reserve8revision5levelAA0B3KeyVSgs6UInt32V_AKtF
+ 28a:	4607      	mov	r7, r0
+ 28c:	b2d8      	uxtb	r0, r3
+ 28e:	2801      	cmp	r0, #1
+ 290:	f43f aef4 	beq.w	7c <.text.$e8Spike06914lifetimeDriverys6UInt64VSvF+0x7c>
+ 294:	981c      	ldr	r0, [sp, #112]	; 0x70
+ 296:	4287      	cmp	r7, r0
+ 298:	f47f aef0 	bne.w	7c <.text.$e8Spike06914lifetimeDriverys6UInt64VSvF+0x7c>
+ 29c:	b2cb      	uxtb	r3, r1
+ 29e:	4616      	mov	r6, r2
+ 2a0:	2b01      	cmp	r3, #1
+ 2a2:	d004      	beq.n	2ae <.text.$e8Spike06914lifetimeDriverys6UInt64VSvF+0x2ae>
+ 2a4:	b951      	cbnz	r1, 2bc <.text.$e8Spike06914lifetimeDriverys6UInt64VSvF+0x2bc>
+ 2a6:	9816      	ldr	r0, [sp, #88]	; 0x58
+ 2a8:	f89d 205c 	ldrb.w	r2, [sp, #92]	; 0x5c
+ 2ac:	e009      	b.n	2c2 <.text.$e8Spike06914lifetimeDriverys6UInt64VSvF+0x2c2>
+ 2ae:	f89d 2064 	ldrb.w	r2, [sp, #100]	; 0x64
+ 2b2:	9818      	ldr	r0, [sp, #96]	; 0x60
+ 2b4:	e005      	b.n	2c2 <.text.$e8Spike06914lifetimeDriverys6UInt64VSvF+0x2c2>
+ 2b6:	bf00      	nop
+ 2b8:	00014385 	.word	0x00014385
+ 2bc:	f89d 206c 	ldrb.w	r2, [sp, #108]	; 0x6c
+ 2c0:	981a      	ldr	r0, [sp, #104]	; 0x68
+ 2c2:	2a00      	cmp	r2, #0
+ 2c4:	f43f aeda 	beq.w	7c <.text.$e8Spike06914lifetimeDriverys6UInt64VSvF+0x7c>
+ 2c8:	42b0      	cmp	r0, r6
+ 2ca:	f47f aed7 	bne.w	7c <.text.$e8Spike06914lifetimeDriverys6UInt64VSvF+0x7c>
+ 2ce:	2000      	movs	r0, #0
+ 2d0:	f89d c080 	ldrb.w	ip, [sp, #128]	; 0x80
+ 2d4:	9104      	str	r1, [sp, #16]
+ 2d6:	f88d 0080 	strb.w	r0, [sp, #128]	; 0x80
+ 2da:	aa1d      	add	r2, sp, #116	; 0x74
+ 2dc:	9605      	str	r6, [sp, #20]
+ 2de:	ca07      	ldmia	r2, {r0, r1, r2}
+ 2e0:	f1bc 0f01 	cmp.w	ip, #1
+ 2e4:	961f      	str	r6, [sp, #124]	; 0x7c
+ 2e6:	e9cd 731d 	strd	r7, r3, [sp, #116]	; 0x74
+ 2ea:	d003      	beq.n	2f4 <.text.$e8Spike06914lifetimeDriverys6UInt64VSvF+0x2f4>
+ 2ec:	f10d 0a34 	add.w	sl, sp, #52	; 0x34
+ 2f0:	f7ff fffe 	bl	0 <.text.$e8Spike06914lifetimeDriverys6UInt64VSvF>
+			2f0: R_ARM_THM_CALL	$e8Spike06912SnapshotPoolV15reclaimIfUnused33_9A7A077564BAFCEF1546C1A00C871AFALLyyAA0B3KeyVF
+ 2f4:	f10d 0a34 	add.w	sl, sp, #52	; 0x34
+ 2f8:	4640      	mov	r0, r8
+ 2fa:	4649      	mov	r1, r9
+ 2fc:	4622      	mov	r2, r4
+ 2fe:	4626      	mov	r6, r4
+ 300:	f7ff fffe 	bl	0 <.text.$e8Spike06914lifetimeDriverys6UInt64VSvF>
+			300: R_ARM_THM_CALL	$e8Spike06912SnapshotPoolV5unpinySbAA0B3KeyVF
+ 304:	07c0      	lsls	r0, r0, #31
+ 306:	d012      	beq.n	32e <.text.$e8Spike06914lifetimeDriverys6UInt64VSvF+0x32e>
+ 308:	f89d 0080 	ldrb.w	r0, [sp, #128]	; 0x80
+ 30c:	2801      	cmp	r0, #1
+ 30e:	d00e      	beq.n	32e <.text.$e8Spike06914lifetimeDriverys6UInt64VSvF+0x32e>
+ 310:	981d      	ldr	r0, [sp, #116]	; 0x74
+ 312:	9a05      	ldr	r2, [sp, #20]
+ 314:	42b8      	cmp	r0, r7
+ 316:	d10a      	bne.n	32e <.text.$e8Spike06914lifetimeDriverys6UInt64VSvF+0x32e>
+ 318:	981e      	ldr	r0, [sp, #120]	; 0x78
+ 31a:	9904      	ldr	r1, [sp, #16]
+ 31c:	b2c9      	uxtb	r1, r1
+ 31e:	b2c0      	uxtb	r0, r0
+ 320:	4288      	cmp	r0, r1
+ 322:	d104      	bne.n	32e <.text.$e8Spike06914lifetimeDriverys6UInt64VSvF+0x32e>
+ 324:	981f      	ldr	r0, [sp, #124]	; 0x7c
+ 326:	4290      	cmp	r0, r2
+ 328:	bf08      	it	eq
+ 32a:	f045 0510 	orreq.w	r5, r5, #16
+ 32e:	f50d 7a2d 	add.w	sl, sp, #692	; 0x2b4
+ 332:	a90d      	add	r1, sp, #52	; 0x34
+ 334:	f7ff fffe 	bl	0 <.text.$e8Spike06914lifetimeDriverys6UInt64VSvF>
+			334: R_ARM_THM_CALL	OUTLINED_FUNCTION_0
+ 338:	4640      	mov	r0, r8
+ 33a:	4649      	mov	r1, r9
+ 33c:	f7ff fffe 	bl	0 <.text.$e8Spike06914lifetimeDriverys6UInt64VSvF>
+			33c: R_ARM_THM_CALL	OUTLINED_FUNCTION_2
+ 340:	b2d2      	uxtb	r2, r2
+ 342:	2a01      	cmp	r2, #1
+ 344:	d00b      	beq.n	35e <.text.$e8Spike06914lifetimeDriverys6UInt64VSvF+0x35e>
+ 346:	4a96      	ldr	r2, [pc, #600]	; (5a0 <.text.$e8Spike06914lifetimeDriverys6UInt64VSvF+0x5a0>)
+ 348:	4050      	eors	r0, r2
+ 34a:	4308      	orrs	r0, r1
+ 34c:	d107      	bne.n	35e <.text.$e8Spike06914lifetimeDriverys6UInt64VSvF+0x35e>
+ 34e:	f10d 0a34 	add.w	sl, sp, #52	; 0x34
+ 352:	f7ff fffe 	bl	0 <.text.$e8Spike06914lifetimeDriverys6UInt64VSvF>
+			352: R_ARM_THM_CALL	$e8Spike06912SnapshotPoolV13occupiedCountSivg
+ 356:	2802      	cmp	r0, #2
+ 358:	bf08      	it	eq
+ 35a:	f045 0520 	orreq.w	r5, r5, #32
+ 35e:	a80d      	add	r0, sp, #52	; 0x34
+ 360:	f10d 0a20 	add.w	sl, sp, #32
+ 364:	f7ff fffe 	bl	0 <.text.$e8Spike06914lifetimeDriverys6UInt64VSvF>
+			364: R_ARM_THM_CALL	$e8Spike06910CanvasWorkV6invoke4pools6UInt64VSgAA12SnapshotPoolVz_tF
+ 368:	b2d2      	uxtb	r2, r2
+ 36a:	9703      	str	r7, [sp, #12]
+ 36c:	2a01      	cmp	r2, #1
+ 36e:	d005      	beq.n	37c <.text.$e8Spike06914lifetimeDriverys6UInt64VSvF+0x37c>
+ 370:	4a8c      	ldr	r2, [pc, #560]	; (5a4 <.text.$e8Spike06914lifetimeDriverys6UInt64VSvF+0x5a4>)
+ 372:	4050      	eors	r0, r2
+ 374:	4308      	orrs	r0, r1
+ 376:	bf08      	it	eq
+ 378:	f045 0540 	orreq.w	r5, r5, #64	; 0x40
+ 37c:	ac0d      	add	r4, sp, #52	; 0x34
+ 37e:	f10d 0a20 	add.w	sl, sp, #32
+ 382:	4620      	mov	r0, r4
+ 384:	f7ff fffe 	bl	0 <.text.$e8Spike06914lifetimeDriverys6UInt64VSvF>
+			384: R_ARM_THM_CALL	$e8Spike06910CanvasWorkV6invoke4pools6UInt64VSgAA12SnapshotPoolVz_tF
+ 388:	2004      	movs	r0, #4
+ 38a:	2108      	movs	r1, #8
+ 38c:	46a2      	mov	sl, r4
+ 38e:	4617      	mov	r7, r2
+ 390:	f7ff fffe 	bl	0 <.text.$e8Spike06914lifetimeDriverys6UInt64VSvF>
+			390: R_ARM_THM_CALL	$e8Spike06912SnapshotPoolV7reserve8revision5levelAA0B3KeyVSgs6UInt32V_AKtF
+ 394:	4604      	mov	r4, r0
+ 396:	b2d8      	uxtb	r0, r3
+ 398:	b2fb      	uxtb	r3, r7
+ 39a:	2b01      	cmp	r3, #1
+ 39c:	bf08      	it	eq
+ 39e:	f045 0580 	orreq.w	r5, r5, #128	; 0x80
+ 3a2:	2801      	cmp	r0, #1
+ 3a4:	f43f ae6a 	beq.w	7c <.text.$e8Spike06914lifetimeDriverys6UInt64VSvF+0x7c>
+ 3a8:	460f      	mov	r7, r1
+ 3aa:	f10d 0a34 	add.w	sl, sp, #52	; 0x34
+ 3ae:	2005      	movs	r0, #5
+ 3b0:	210a      	movs	r1, #10
+ 3b2:	9202      	str	r2, [sp, #8]
+ 3b4:	f7ff fffe 	bl	0 <.text.$e8Spike06914lifetimeDriverys6UInt64VSvF>
+			3b4: R_ARM_THM_CALL	$e8Spike06912SnapshotPoolV7reserve8revision5levelAA0B3KeyVSgs6UInt32V_AKtF
+ 3b8:	b2d8      	uxtb	r0, r3
+ 3ba:	2801      	cmp	r0, #1
+ 3bc:	d126      	bne.n	40c <.text.$e8Spike06914lifetimeDriverys6UInt64VSvF+0x40c>
+ 3be:	f89d 0080 	ldrb.w	r0, [sp, #128]	; 0x80
+ 3c2:	2801      	cmp	r0, #1
+ 3c4:	d022      	beq.n	40c <.text.$e8Spike06914lifetimeDriverys6UInt64VSvF+0x40c>
+ 3c6:	981d      	ldr	r0, [sp, #116]	; 0x74
+ 3c8:	9903      	ldr	r1, [sp, #12]
+ 3ca:	4288      	cmp	r0, r1
+ 3cc:	d11e      	bne.n	40c <.text.$e8Spike06914lifetimeDriverys6UInt64VSvF+0x40c>
+ 3ce:	981e      	ldr	r0, [sp, #120]	; 0x78
+ 3d0:	9904      	ldr	r1, [sp, #16]
+ 3d2:	b2c9      	uxtb	r1, r1
+ 3d4:	b2c0      	uxtb	r0, r0
+ 3d6:	4288      	cmp	r0, r1
+ 3d8:	d116      	bne.n	408 <.text.$e8Spike06914lifetimeDriverys6UInt64VSvF+0x408>
+ 3da:	981f      	ldr	r0, [sp, #124]	; 0x7c
+ 3dc:	9905      	ldr	r1, [sp, #20]
+ 3de:	4288      	cmp	r0, r1
+ 3e0:	d112      	bne.n	408 <.text.$e8Spike06914lifetimeDriverys6UInt64VSvF+0x408>
+ 3e2:	f50d 7a19 	add.w	sl, sp, #612	; 0x264
+ 3e6:	a90d      	add	r1, sp, #52	; 0x34
+ 3e8:	f7ff fffe 	bl	0 <.text.$e8Spike06914lifetimeDriverys6UInt64VSvF>
+			3e8: R_ARM_THM_CALL	OUTLINED_FUNCTION_0
+ 3ec:	e9dd 1206 	ldrd	r1, r2, [sp, #24]
+ 3f0:	4640      	mov	r0, r8
+ 3f2:	f7ff fffe 	bl	0 <.text.$e8Spike06914lifetimeDriverys6UInt64VSvF>
+			3f2: R_ARM_THM_CALL	$e8Spike06912SnapshotPoolV4readys6UInt64VSgAA0B3KeyVF
+ 3f6:	b2d2      	uxtb	r2, r2
+ 3f8:	2a01      	cmp	r2, #1
+ 3fa:	d005      	beq.n	408 <.text.$e8Spike06914lifetimeDriverys6UInt64VSvF+0x408>
+ 3fc:	4a68      	ldr	r2, [pc, #416]	; (5a0 <.text.$e8Spike06914lifetimeDriverys6UInt64VSvF+0x5a0>)
+ 3fe:	4050      	eors	r0, r2
+ 400:	4308      	orrs	r0, r1
+ 402:	bf08      	it	eq
+ 404:	f445 7580 	orreq.w	r5, r5, #256	; 0x100
+ 408:	e9dd 9606 	ldrd	r9, r6, [sp, #24]
+ 40c:	f10d 0a34 	add.w	sl, sp, #52	; 0x34
+ 410:	4640      	mov	r0, r8
+ 412:	4649      	mov	r1, r9
+ 414:	4632      	mov	r2, r6
+ 416:	f7ff fffe 	bl	0 <.text.$e8Spike06914lifetimeDriverys6UInt64VSvF>
+			416: R_ARM_THM_CALL	$e8Spike06912SnapshotPoolV23releaseApplicationOwnerySbAA0B3KeyVF
+ 41a:	07c0      	lsls	r0, r0, #31
+ 41c:	f43f ae2e 	beq.w	7c <.text.$e8Spike06914lifetimeDriverys6UInt64VSvF+0x7c>
+ 420:	f10d 0a34 	add.w	sl, sp, #52	; 0x34
+ 424:	2006      	movs	r0, #6
+ 426:	210c      	movs	r1, #12
+ 428:	f7ff fffe 	bl	0 <.text.$e8Spike06914lifetimeDriverys6UInt64VSvF>
+			428: R_ARM_THM_CALL	$e8Spike06912SnapshotPoolV7reserve8revision5levelAA0B3KeyVSgs6UInt32V_AKtF
+ 42c:	9001      	str	r0, [sp, #4]
+ 42e:	b2d8      	uxtb	r0, r3
+ 430:	2801      	cmp	r0, #1
+ 432:	f43f ae23 	beq.w	7c <.text.$e8Spike06914lifetimeDriverys6UInt64VSvF+0x7c>
+ 436:	9107      	str	r1, [sp, #28]
+ 438:	4549      	cmp	r1, r9
+ 43a:	9200      	str	r2, [sp, #0]
+ 43c:	d10f      	bne.n	45e <.text.$e8Spike06914lifetimeDriverys6UInt64VSvF+0x45e>
+ 43e:	42b2      	cmp	r2, r6
+ 440:	d00d      	beq.n	45e <.text.$e8Spike06914lifetimeDriverys6UInt64VSvF+0x45e>
+ 442:	f50d 7a05 	add.w	sl, sp, #532	; 0x214
+ 446:	a90d      	add	r1, sp, #52	; 0x34
+ 448:	f7ff fffe 	bl	0 <.text.$e8Spike06914lifetimeDriverys6UInt64VSvF>
+			448: R_ARM_THM_CALL	OUTLINED_FUNCTION_0
+ 44c:	9906      	ldr	r1, [sp, #24]
+ 44e:	4640      	mov	r0, r8
+ 450:	f7ff fffe 	bl	0 <.text.$e8Spike06914lifetimeDriverys6UInt64VSvF>
+			450: R_ARM_THM_CALL	OUTLINED_FUNCTION_2
+ 454:	b2d0      	uxtb	r0, r2
+ 456:	2801      	cmp	r0, #1
+ 458:	bf08      	it	eq
+ 45a:	f445 7500 	orreq.w	r5, r5, #512	; 0x200
+ 45e:	f50d 7ae2 	add.w	sl, sp, #452	; 0x1c4
+ 462:	a90d      	add	r1, sp, #52	; 0x34
+ 464:	f7ff fffe 	bl	0 <.text.$e8Spike06914lifetimeDriverys6UInt64VSvF>
+			464: R_ARM_THM_CALL	OUTLINED_FUNCTION_0
+ 468:	9907      	ldr	r1, [sp, #28]
+ 46a:	9a00      	ldr	r2, [sp, #0]
+ 46c:	2046      	movs	r0, #70	; 0x46
+ 46e:	f7ff fffe 	bl	0 <.text.$e8Spike06914lifetimeDriverys6UInt64VSvF>
+			46e: R_ARM_THM_CALL	$e8Spike06912SnapshotPoolV4readys6UInt64VSgAA0B3KeyVF
+ 472:	b2d0      	uxtb	r0, r2
+ 474:	2801      	cmp	r0, #1
+ 476:	d10a      	bne.n	48e <.text.$e8Spike06914lifetimeDriverys6UInt64VSvF+0x48e>
+ 478:	9907      	ldr	r1, [sp, #28]
+ 47a:	9a00      	ldr	r2, [sp, #0]
+ 47c:	f10d 0a34 	add.w	sl, sp, #52	; 0x34
+ 480:	2046      	movs	r0, #70	; 0x46
+ 482:	f7ff fffe 	bl	0 <.text.$e8Spike06914lifetimeDriverys6UInt64VSvF>
+			482: R_ARM_THM_CALL	$e8Spike06912SnapshotPoolV3pinySbAA0B3KeyVF
+ 486:	07c0      	lsls	r0, r0, #31
+ 488:	bf08      	it	eq
+ 48a:	f445 6580 	orreq.w	r5, r5, #1024	; 0x400
+ 48e:	463e      	mov	r6, r7
+ 490:	4639      	mov	r1, r7
+ 492:	9f02      	ldr	r7, [sp, #8]
+ 494:	f10d 0a34 	add.w	sl, sp, #52	; 0x34
+ 498:	4620      	mov	r0, r4
+ 49a:	463a      	mov	r2, r7
+ 49c:	f7ff fffe 	bl	0 <.text.$e8Spike06914lifetimeDriverys6UInt64VSvF>
+			49c: R_ARM_THM_CALL	$e8Spike06912SnapshotPoolV23releaseApplicationOwnerySbAA0B3KeyVF
+ 4a0:	07c0      	lsls	r0, r0, #31
+ 4a2:	d00e      	beq.n	4c2 <.text.$e8Spike06914lifetimeDriverys6UInt64VSvF+0x4c2>
+ 4a4:	f50d 7aba 	add.w	sl, sp, #372	; 0x174
+ 4a8:	a90d      	add	r1, sp, #52	; 0x34
+ 4aa:	f7ff fffe 	bl	0 <.text.$e8Spike06914lifetimeDriverys6UInt64VSvF>
+			4aa: R_ARM_THM_CALL	OUTLINED_FUNCTION_0
+ 4ae:	4620      	mov	r0, r4
+ 4b0:	4631      	mov	r1, r6
+ 4b2:	463a      	mov	r2, r7
+ 4b4:	f7ff fffe 	bl	0 <.text.$e8Spike06914lifetimeDriverys6UInt64VSvF>
+			4b4: R_ARM_THM_CALL	$e8Spike06912SnapshotPoolV4readys6UInt64VSgAA0B3KeyVF
+ 4b8:	b2d0      	uxtb	r0, r2
+ 4ba:	2801      	cmp	r0, #1
+ 4bc:	bf08      	it	eq
+ 4be:	f445 6500 	orreq.w	r5, r5, #2048	; 0x800
+ 4c2:	9e01      	ldr	r6, [sp, #4]
+ 4c4:	9c07      	ldr	r4, [sp, #28]
+ 4c6:	9f00      	ldr	r7, [sp, #0]
+ 4c8:	f10d 0a34 	add.w	sl, sp, #52	; 0x34
+ 4cc:	4630      	mov	r0, r6
+ 4ce:	4621      	mov	r1, r4
+ 4d0:	463a      	mov	r2, r7
+ 4d2:	f7ff fffe 	bl	0 <.text.$e8Spike06914lifetimeDriverys6UInt64VSvF>
+			4d2: R_ARM_THM_CALL	$e8Spike06912SnapshotPoolV3pinySbAA0B3KeyVF
+ 4d6:	07c0      	lsls	r0, r0, #31
+ 4d8:	f445 5880 	orr.w	r8, r5, #4096	; 0x1000
+ 4dc:	d05b      	beq.n	596 <.text.$e8Spike06914lifetimeDriverys6UInt64VSvF+0x596>
+ 4de:	4630      	mov	r0, r6
+ 4e0:	f10d 0a34 	add.w	sl, sp, #52	; 0x34
+ 4e4:	4621      	mov	r1, r4
+ 4e6:	463a      	mov	r2, r7
+ 4e8:	463e      	mov	r6, r7
+ 4ea:	f7ff fffe 	bl	0 <.text.$e8Spike06914lifetimeDriverys6UInt64VSvF>
+			4ea: R_ARM_THM_CALL	$e8Spike06912SnapshotPoolV23releaseApplicationOwnerySbAA0B3KeyVF
+ 4ee:	07c0      	lsls	r0, r0, #31
+ 4f0:	d00d      	beq.n	50e <.text.$e8Spike06914lifetimeDriverys6UInt64VSvF+0x50e>
+ 4f2:	f50d 7a92 	add.w	sl, sp, #292	; 0x124
+ 4f6:	a90d      	add	r1, sp, #52	; 0x34
+ 4f8:	f7ff fffe 	bl	0 <.text.$e8Spike06914lifetimeDriverys6UInt64VSvF>
+			4f8: R_ARM_THM_CALL	OUTLINED_FUNCTION_0
+ 4fc:	9801      	ldr	r0, [sp, #4]
+ 4fe:	9907      	ldr	r1, [sp, #28]
+ 500:	f7ff fffe 	bl	0 <.text.$e8Spike06914lifetimeDriverys6UInt64VSvF>
+			500: R_ARM_THM_CALL	OUTLINED_FUNCTION_2
+ 504:	b2d0      	uxtb	r0, r2
+ 506:	2801      	cmp	r0, #1
+ 508:	bf18      	it	ne
+ 50a:	f445 5840 	orrne.w	r8, r5, #12288	; 0x3000
+ 50e:	9801      	ldr	r0, [sp, #4]
+ 510:	9907      	ldr	r1, [sp, #28]
+ 512:	f10d 0a34 	add.w	sl, sp, #52	; 0x34
+ 516:	4632      	mov	r2, r6
+ 518:	f7ff fffe 	bl	0 <.text.$e8Spike06914lifetimeDriverys6UInt64VSvF>
+			518: R_ARM_THM_CALL	$e8Spike06912SnapshotPoolV5unpinySbAA0B3KeyVF
+ 51c:	07c0      	lsls	r0, r0, #31
+ 51e:	d00d      	beq.n	53c <.text.$e8Spike06914lifetimeDriverys6UInt64VSvF+0x53c>
+ 520:	f10d 0ad4 	add.w	sl, sp, #212	; 0xd4
+ 524:	a90d      	add	r1, sp, #52	; 0x34
+ 526:	f7ff fffe 	bl	0 <.text.$e8Spike06914lifetimeDriverys6UInt64VSvF>
+			526: R_ARM_THM_CALL	OUTLINED_FUNCTION_0
+ 52a:	9801      	ldr	r0, [sp, #4]
+ 52c:	9907      	ldr	r1, [sp, #28]
+ 52e:	f7ff fffe 	bl	0 <.text.$e8Spike06914lifetimeDriverys6UInt64VSvF>
+			52e: R_ARM_THM_CALL	OUTLINED_FUNCTION_2
+ 532:	b2d0      	uxtb	r0, r2
+ 534:	2801      	cmp	r0, #1
+ 536:	bf08      	it	eq
+ 538:	f448 4880 	orreq.w	r8, r8, #16384	; 0x4000
+ 53c:	aa03      	add	r2, sp, #12
+ 53e:	f10d 0a34 	add.w	sl, sp, #52	; 0x34
+ 542:	ca07      	ldmia	r2, {r0, r1, r2}
+ 544:	f7ff fffe 	bl	0 <.text.$e8Spike06914lifetimeDriverys6UInt64VSvF>
+			544: R_ARM_THM_CALL	$e8Spike06912SnapshotPoolV23releaseApplicationOwnerySbAA0B3KeyVF
+ 548:	07c0      	lsls	r0, r0, #31
+ 54a:	d024      	beq.n	596 <.text.$e8Spike06914lifetimeDriverys6UInt64VSvF+0x596>
+ 54c:	2001      	movs	r0, #1
+ 54e:	f89d 3080 	ldrb.w	r3, [sp, #128]	; 0x80
+ 552:	2500      	movs	r5, #0
+ 554:	f88d 0080 	strb.w	r0, [sp, #128]	; 0x80
+ 558:	aa1d      	add	r2, sp, #116	; 0x74
+ 55a:	ca07      	ldmia	r2, {r0, r1, r2}
+ 55c:	2b01      	cmp	r3, #1
+ 55e:	951f      	str	r5, [sp, #124]	; 0x7c
+ 560:	e9cd 551d 	strd	r5, r5, [sp, #116]	; 0x74
+ 564:	d003      	beq.n	56e <.text.$e8Spike06914lifetimeDriverys6UInt64VSvF+0x56e>
+ 566:	f10d 0a34 	add.w	sl, sp, #52	; 0x34
+ 56a:	f7ff fffe 	bl	0 <.text.$e8Spike06914lifetimeDriverys6UInt64VSvF>
+			56a: R_ARM_THM_CALL	$e8Spike06912SnapshotPoolV15reclaimIfUnused33_9A7A077564BAFCEF1546C1A00C871AFALLyyAA0B3KeyVF
+ 56e:	f10d 0a34 	add.w	sl, sp, #52	; 0x34
+ 572:	f7ff fffe 	bl	0 <.text.$e8Spike06914lifetimeDriverys6UInt64VSvF>
+			572: R_ARM_THM_CALL	$e8Spike06912SnapshotPoolV13occupiedCountSivg
+ 576:	b970      	cbnz	r0, 596 <.text.$e8Spike06914lifetimeDriverys6UInt64VSvF+0x596>
+ 578:	f10d 0a84 	add.w	sl, sp, #132	; 0x84
+ 57c:	a90d      	add	r1, sp, #52	; 0x34
+ 57e:	f7ff fffe 	bl	0 <.text.$e8Spike06914lifetimeDriverys6UInt64VSvF>
+			57e: R_ARM_THM_CALL	OUTLINED_FUNCTION_0
+ 582:	aa03      	add	r2, sp, #12
+ 584:	ca07      	ldmia	r2, {r0, r1, r2}
+ 586:	f7ff fffe 	bl	0 <.text.$e8Spike06914lifetimeDriverys6UInt64VSvF>
+			586: R_ARM_THM_CALL	$e8Spike06912SnapshotPoolV4readys6UInt64VSgAA0B3KeyVF
+ 58a:	b2d0      	uxtb	r0, r2
+ 58c:	2801      	cmp	r0, #1
+ 58e:	d102      	bne.n	596 <.text.$e8Spike06914lifetimeDriverys6UInt64VSvF+0x596>
+ 590:	f448 4500 	orr.w	r5, r8, #32768	; 0x8000
+ 594:	e572      	b.n	7c <.text.$e8Spike06914lifetimeDriverys6UInt64VSvF+0x7c>
+ 596:	4645      	mov	r5, r8
+ 598:	e570      	b.n	7c <.text.$e8Spike06914lifetimeDriverys6UInt64VSvF+0x7c>
+ 59a:	defe      	udf	#254	; 0xfe
+ 59c:	defe      	udf	#254	; 0xfe
+ 59e:	bf00      	nop
+ 5a0:	00014385 	.word	0x00014385
+ 5a4:	0002870a 	.word	0x0002870a
+
+Disassembly of section .text.$es17FixedWidthIntegerPsE15_truncatingInityxqd__SzRd__lFZs6UInt64V_SiTt1g5:
+
+00000000 <.text.$es17FixedWidthIntegerPsE15_truncatingInityxqd__SzRd__lFZs6UInt64V_SiTt1g5>:
+   0:	17c1      	asrs	r1, r0, #31
+   2:	4770      	bx	lr
+
+Disassembly of section .text._swift_exceptionPersonality:
+
+00000000 <_swift_exceptionPersonality>:
+   0:	defe      	udf	#254	; 0xfe
+
+Disassembly of section .text.OUTLINED_FUNCTION_0:
+
+00000000 <OUTLINED_FUNCTION_0>:
+   0:	224d      	movs	r2, #77	; 0x4d
+   2:	4650      	mov	r0, sl
+   4:	f7ff bffe 	b.w	0 <__aeabi_memcpy4>
+			4: R_ARM_THM_JUMP24	__aeabi_memcpy4
+
+Disassembly of section .text.OUTLINED_FUNCTION_2:
+
+00000000 <OUTLINED_FUNCTION_2>:
+   0:	4632      	mov	r2, r6
+   2:	f7ff bffe 	b.w	0 <OUTLINED_FUNCTION_2>
+			2: R_ARM_THM_JUMP24	$e8Spike06912SnapshotPoolV4readys6UInt64VSgAA0B3KeyVF
+
+Disassembly of section .text.OUTLINED_FUNCTION_3:
+
+00000000 <OUTLINED_FUNCTION_3>:
+   0:	f44f 71ca 	mov.w	r1, #404	; 0x194
+   4:	2209      	movs	r2, #9
+   6:	f7ff bffe 	b.w	0 <OUTLINED_FUNCTION_3>
+			6: R_ARM_THM_JUMP24	$e8Spike0698checksumys6UInt64VAA13FrozenCaptureVF
+
+Disassembly of section .text.OUTLINED_FUNCTION_5:
+
+00000000 <OUTLINED_FUNCTION_5>:
+   0:	4640      	mov	r0, r8
+   2:	4649      	mov	r1, r9
+   4:	4632      	mov	r2, r6
+   6:	f7ff bffe 	b.w	0 <OUTLINED_FUNCTION_5>
+			6: R_ARM_THM_JUMP24	$e8Spike06912SnapshotPoolV3pinySbAA0B3KeyVF

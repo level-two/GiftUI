@@ -1,0 +1,92 @@
+There are 83 section headers, starting at offset 0x230c:
+
+Section Headers:
+  [Nr] Name              Type            Addr     Off    Size   ES Flg Lk Inf Al
+  [ 0]                   NULL            00000000 000000 000000 00      0   0  0
+  [ 1] .text.$e8Spike06912CaptureOwnerV13replaceValues8revision5levelys6UInt32V_AHtF PROGBITS        00000000 000034 00002e 00  AX  0   0  2
+  [ 2] .rel.text.$e8Spike06912CaptureOwnerV13replaceValues8revision5levelys6UInt32V_AHtF REL             00000000 0017cc 000008 08   I 80   1  4
+  [ 3] .text.$e8Spike0698checksumys6UInt64VAA13FrozenCaptureVF PROGBITS        00000000 000062 00002a 00  AX  0   0  2
+  [ 4] .text.spike069_read PROGBITS        00000000 00008c 000004 00  AX  0   0  2
+  [ 5] .rel.text.spike069_read REL             00000000 0017d4 000008 08   I 80   4  4
+  [ 6] .text.$e8Spike06911readCaptureys6UInt64VSv_s6UInt32VtF PROGBITS        00000000 000090 000010 00  AX  0   0  2
+  [ 7] .rel.text.$e8Spike06911readCaptureys6UInt64VSv_s6UInt32VtF REL             00000000 0017dc 000008 08   I 80   6  4
+  [ 8] .text.$e8Spike06912SnapshotPoolV7reserve8revision5levelAA0B3KeyVSgs6UInt32V_AKtF PROGBITS        00000000 0000a0 000074 00  AX  0   0  2
+  [ 9] .rel.text.$e8Spike06912SnapshotPoolV7reserve8revision5levelAA0B3KeyVSgs6UInt32V_AKtF REL             00000000 0017e4 000008 08   I 80   8  4
+  [10] .text.$e8Spike06912SnapshotPoolV15reclaimIfUnused33_9A7A077564BAFCEF1546C1A00C871AFALLyyAA0B3KeyVF PROGBITS        00000000 000114 0000ac 00  AX  0   0  2
+  [11] .text.$e8Spike06912SnapshotPoolV23releaseApplicationOwnerySbAA0B3KeyVF PROGBITS        00000000 0001c0 000088 00  AX  0   0  2
+  [12] .rel.text.$e8Spike06912SnapshotPoolV23releaseApplicationOwnerySbAA0B3KeyVF REL             00000000 0017ec 000008 08   I 80  11  4
+  [13] .text.$e8Spike06912SnapshotPoolV3pinySbAA0B3KeyVF PROGBITS        00000000 000248 0000aa 00  AX  0   0  2
+  [14] .text.$e8Spike06912SnapshotPoolV5unpinySbAA0B3KeyVF PROGBITS        00000000 0002f2 0000a6 00  AX  0   0  2
+  [15] .rel.text.$e8Spike06912SnapshotPoolV5unpinySbAA0B3KeyVF REL             00000000 0017f4 000008 08   I 80  14  4
+  [16] .text.$e8Spike06912SnapshotPoolV4readys6UInt64VSgAA0B3KeyVF PROGBITS        00000000 000398 000090 00  AX  0   0  2
+  [17] .rel.text.$e8Spike06912SnapshotPoolV4readys6UInt64VSgAA0B3KeyVF REL             00000000 0017fc 000008 08   I 80  16  4
+  [18] .text.$e8Spike06912SnapshotPoolV13occupiedCountSivg PROGBITS        00000000 000428 000036 00  AX  0   0  2
+  [19] .text.$e8Spike06910CanvasWorkV6invoke4pools6UInt64VSgAA12SnapshotPoolVz_tF PROGBITS        00000000 00045e 0000ec 00  AX  0   0  2
+  [20] .rel.text.$e8Spike06910CanvasWorkV6invoke4pools6UInt64VSgAA12SnapshotPoolVz_tF REL             00000000 001804 000018 08   I 80  19  4
+  [21] .text.spike069_lifecycle PROGBITS        00000000 00054a 000004 00  AX  0   0  2
+  [22] .rel.text.spike069_lifecycle REL             00000000 00181c 000008 08   I 80  21  4
+  [23] .text.$e8Spike06914lifetimeDriverys6UInt64VSvF PROGBITS        00000000 000550 0005a8 00  AX  0   0  4
+  [24] .rel.text.$e8Spike06914lifetimeDriverys6UInt64VSvF REL             00000000 001824 0001b8 08   I 80  23  4
+  [25] .text.$es17FixedWidthIntegerPsE15_truncatingInityxqd__SzRd__lFZs6UInt64V_SiTt1g5 PROGBITS        00000000 000af8 000004 00  AX  0   0  2
+  [26] .text._swift_exceptionPersonality PROGBITS        00000000 000afc 000002 00 AXR  0   0  2
+  [27] .text.OUTLINED_FUNCTION_0 PROGBITS        00000000 000afe 000008 00  AX  0   0  2
+  [28] .rel.text.OUTLINED_FUNCTION_0 REL             00000000 0019dc 000008 08   I 80  27  4
+  [29] .text.OUTLINED_FUNCTION_2 PROGBITS        00000000 000b06 000006 00  AX  0   0  2
+  [30] .rel.text.OUTLINED_FUNCTION_2 REL             00000000 0019e4 000008 08   I 80  29  4
+  [31] .text.OUTLINED_FUNCTION_3 PROGBITS        00000000 000b0c 00000a 00  AX  0   0  2
+  [32] .rel.text.OUTLINED_FUNCTION_3 REL             00000000 0019ec 000008 08   I 80  31  4
+  [33] .text.OUTLINED_FUNCTION_5 PROGBITS        00000000 000b16 00000a 00  AX  0   0  2
+  [34] .rel.text.OUTLINED_FUNCTION_5 REL             00000000 0019f4 000008 08   I 80  33  4
+  [35] .ARM.exidx.text.$e8Spike06912CaptureOwnerV13replaceValues8revision5levelys6UInt32V_AHtF ARM_EXIDX       00000000 000b20 000008 00  AL  1   0  4
+  [36] .rel.ARM.exidx.text.$e8Spike06912CaptureOwnerV13replaceValues8revision5levelys6UInt32V_AHtF REL             00000000 0019fc 000008 08   I 80  35  4
+  [37] .ARM.exidx.text.$e8Spike0698checksumys6UInt64VAA13FrozenCaptureVF ARM_EXIDX       00000000 000b28 000008 00  AL  3   0  4
+  [38] .rel.ARM.exidx.text.$e8Spike0698checksumys6UInt64VAA13FrozenCaptureVF REL             00000000 001a04 000008 08   I 80  37  4
+  [39] .ARM.exidx.text.spike069_read ARM_EXIDX       00000000 000b30 000008 00  AL  4   0  4
+  [40] .rel.ARM.exidx.text.spike069_read REL             00000000 001a0c 000008 08   I 80  39  4
+  [41] .ARM.exidx.text.$e8Spike06911readCaptureys6UInt64VSv_s6UInt32VtF ARM_EXIDX       00000000 000b38 000008 00  AL  6   0  4
+  [42] .rel.ARM.exidx.text.$e8Spike06911readCaptureys6UInt64VSv_s6UInt32VtF REL             00000000 001a14 000008 08   I 80  41  4
+  [43] .ARM.exidx.text.$e8Spike06912SnapshotPoolV7reserve8revision5levelAA0B3KeyVSgs6UInt32V_AKtF ARM_EXIDX       00000000 000b40 000008 00  AL  8   0  4
+  [44] .rel.ARM.exidx.text.$e8Spike06912SnapshotPoolV7reserve8revision5levelAA0B3KeyVSgs6UInt32V_AKtF REL             00000000 001a1c 000008 08   I 80  43  4
+  [45] .ARM.exidx.text.$e8Spike06912SnapshotPoolV15reclaimIfUnused33_9A7A077564BAFCEF1546C1A00C871AFALLyyAA0B3KeyVF ARM_EXIDX       00000000 000b48 000008 00  AL 10   0  4
+  [46] .rel.ARM.exidx.text.$e8Spike06912SnapshotPoolV15reclaimIfUnused33_9A7A077564BAFCEF1546C1A00C871AFALLyyAA0B3KeyVF REL             00000000 001a24 000008 08   I 80  45  4
+  [47] .ARM.exidx.text.$e8Spike06912SnapshotPoolV23releaseApplicationOwnerySbAA0B3KeyVF ARM_EXIDX       00000000 000b50 000008 00  AL 11   0  4
+  [48] .rel.ARM.exidx.text.$e8Spike06912SnapshotPoolV23releaseApplicationOwnerySbAA0B3KeyVF REL             00000000 001a2c 000008 08   I 80  47  4
+  [49] .ARM.exidx.text.$e8Spike06912SnapshotPoolV3pinySbAA0B3KeyVF ARM_EXIDX       00000000 000b58 000008 00  AL 13   0  4
+  [50] .rel.ARM.exidx.text.$e8Spike06912SnapshotPoolV3pinySbAA0B3KeyVF REL             00000000 001a34 000008 08   I 80  49  4
+  [51] .ARM.exidx.text.$e8Spike06912SnapshotPoolV5unpinySbAA0B3KeyVF ARM_EXIDX       00000000 000b60 000008 00  AL 14   0  4
+  [52] .rel.ARM.exidx.text.$e8Spike06912SnapshotPoolV5unpinySbAA0B3KeyVF REL             00000000 001a3c 000008 08   I 80  51  4
+  [53] .ARM.exidx.text.$e8Spike06912SnapshotPoolV4readys6UInt64VSgAA0B3KeyVF ARM_EXIDX       00000000 000b68 000008 00  AL 16   0  4
+  [54] .rel.ARM.exidx.text.$e8Spike06912SnapshotPoolV4readys6UInt64VSgAA0B3KeyVF REL             00000000 001a44 000008 08   I 80  53  4
+  [55] .ARM.exidx.text.$e8Spike06912SnapshotPoolV13occupiedCountSivg ARM_EXIDX       00000000 000b70 000008 00  AL 18   0  4
+  [56] .rel.ARM.exidx.text.$e8Spike06912SnapshotPoolV13occupiedCountSivg REL             00000000 001a4c 000008 08   I 80  55  4
+  [57] .ARM.exidx.text.$e8Spike06910CanvasWorkV6invoke4pools6UInt64VSgAA12SnapshotPoolVz_tF ARM_EXIDX       00000000 000b78 000008 00  AL 19   0  4
+  [58] .rel.ARM.exidx.text.$e8Spike06910CanvasWorkV6invoke4pools6UInt64VSgAA12SnapshotPoolVz_tF REL             00000000 001a54 000008 08   I 80  57  4
+  [59] .ARM.exidx.text.spike069_lifecycle ARM_EXIDX       00000000 000b80 000008 00  AL 21   0  4
+  [60] .rel.ARM.exidx.text.spike069_lifecycle REL             00000000 001a5c 000008 08   I 80  59  4
+  [61] .ARM.exidx.text.$e8Spike06914lifetimeDriverys6UInt64VSvF ARM_EXIDX       00000000 000b88 000008 00  AL 23   0  4
+  [62] .rel.ARM.exidx.text.$e8Spike06914lifetimeDriverys6UInt64VSvF REL             00000000 001a64 000008 08   I 80  61  4
+  [63] .ARM.exidx.text.$es17FixedWidthIntegerPsE15_truncatingInityxqd__SzRd__lFZs6UInt64V_SiTt1g5 ARM_EXIDX       00000000 000b90 000008 00  AL 25   0  4
+  [64] .rel.ARM.exidx.text.$es17FixedWidthIntegerPsE15_truncatingInityxqd__SzRd__lFZs6UInt64V_SiTt1g5 REL             00000000 001a6c 000008 08   I 80  63  4
+  [65] .ARM.exidx.text._swift_exceptionPersonality ARM_EXIDX       00000000 000b98 000008 00  AL 26   0  4
+  [66] .rel.ARM.exidx.text._swift_exceptionPersonality REL             00000000 001a74 000008 08   I 80  65  4
+  [67] .ARM.exidx.text.OUTLINED_FUNCTION_0 ARM_EXIDX       00000000 000ba0 000008 00  AL 27   0  4
+  [68] .rel.ARM.exidx.text.OUTLINED_FUNCTION_0 REL             00000000 001a7c 000008 08   I 80  67  4
+  [69] .ARM.exidx.text.OUTLINED_FUNCTION_2 ARM_EXIDX       00000000 000ba8 000008 00  AL 29   0  4
+  [70] .rel.ARM.exidx.text.OUTLINED_FUNCTION_2 REL             00000000 001a84 000008 08   I 80  69  4
+  [71] .ARM.exidx.text.OUTLINED_FUNCTION_3 ARM_EXIDX       00000000 000bb0 000008 00  AL 31   0  4
+  [72] .rel.ARM.exidx.text.OUTLINED_FUNCTION_3 REL             00000000 001a8c 000008 08   I 80  71  4
+  [73] .ARM.exidx.text.OUTLINED_FUNCTION_5 ARM_EXIDX       00000000 000bb8 000008 00  AL 33   0  4
+  [74] .rel.ARM.exidx.text.OUTLINED_FUNCTION_5 REL             00000000 001a94 000008 08   I 80  73  4
+  [75] .swift_modhash    PROGBITS        00000000 000bc0 000010 00  AR  0   0  1
+  [76] .swift1_autolink_entries PROGBITS        00000000 000bd0 000000 00  RE  0   0  4
+  [77] .linker-options   LOOS+0xfff4c01  00000000 000bd0 000000 00   E  0   0  1
+  [78] .note.GNU-stack   PROGBITS        00000000 000bd0 000000 00      0   0  1
+  [79] .ARM.attributes   ARM_ATTRIBUTES  00000000 000bd0 000047 00      0   0  1
+  [80] .symtab           SYMTAB          00000000 000c18 000780 10     81 101  4
+  [81] .strtab           STRTAB          00000000 001398 000431 00      0   0  1
+  [82] .shstrtab         STRTAB          00000000 001a9c 00086f 00      0   0  1
+Key to Flags:
+  W (write), A (alloc), X (execute), M (merge), S (strings), I (info),
+  L (link order), O (extra OS processing required), G (group), T (TLS),
+  C (compressed), x (unknown), o (OS specific), E (exclude),
+  R (retain), D (mbind), y (purecode), p (processor specific)

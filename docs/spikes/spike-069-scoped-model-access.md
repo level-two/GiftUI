@@ -2,7 +2,7 @@
 id: SPIKE-069
 feature: external-application-integration
 title: Scoped Model Access and Escape Enforcement
-status: planned
+status: completed
 authors:
   - codex
 created: 2026-10-09
@@ -175,9 +175,23 @@ is inconclusive for that configuration, never inferred from native success.
 
 ## Results
 
-Not run. Step 1 commits the recipe/ownership candidate and links. Step 2 commits
-disposable code and evidence; step 3 commits the RFC recommendation and terminal
-budget/disposition. Record failed attempts rather than overwriting them.
+Completed with [raw evidence and analysis](../../experiments/spike-069-scoped-model-access/evidence/result.md).
+Step 1: `e22bed02` committed the recipe/ownership contract before compilation.
+Step 2 records code/evidence; step 3 integrates the RFC recommendation. The
+ledger preserves all 45 invocations, including failed trial 05 and its one
+repair; 24 negative checks were compiler rejections for their intended reason.
+
+A's callback-only enforcement is refuted on all four configurations. B's
+positive borrow compiles on all four with experimental LifetimeDependence;
+the compiler also warns about the selected `@lifetime` spelling. Sixteen
+modeled lifetime cases pass in each native profile; Pi/nRF objects compile.
+An owned body built with actual GiftUI sources compiles, but directly capturing
+the nonescapable view in actual Canvas is rejected on all four configurations.
+A delayed owned-key fixture preserves declaration-time snapshot selection.
+
+The nRF section-GC fixture has no retained allocator relocation, with hard-float
+ABI evidence; unreferenced allocator symbols remain in the relocatable symbol
+table. No complete firmware, stack or whole-application zero-heap claim follows.
 
 ## Limitations
 
@@ -189,9 +203,16 @@ budget/disposition. Record failed attempts rather than overwriting them.
 
 ## Disposition
 
-Planned. Feed evidence to RFC-014 B1/B2; retain B0 and all unproved B1–B4
-obligations. A surviving API direction returns to RFC review before ADR/Spec
-changes. Terminal failure/inconclusive results do not renew the allowance.
+Completed, partial support with an exposed API/lowering decision. Recommend
+scoped reads and delayed owned keys as an internal candidate, not an approved
+portable contract. Actual checked lowering or revised declarations, compiler
+support policy, backing/application ownership and complete route coverage remain
+B1 obligations. B0 and B2–B4 remain open. The separate R=1 model illustrates
+five slots; it does not select application R or amend ADR-034.
+
+Compiler work is terminal at **45/48 invocations and 1/3 repair rounds**.
+Remaining work in this allowance is only evidence review, RFC integration and
+commits. Neither completion nor unused allowance authorizes another experiment.
 
 ## References
 

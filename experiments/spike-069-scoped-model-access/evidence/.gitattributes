@@ -1,0 +1,2 @@
+# Preserve hashed compiler/ELF output verbatim, including diagnostic whitespace.
+*.log -whitespace

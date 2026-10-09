@@ -1,0 +1,27 @@
+/Users/eugene/work/GiftUI/experiments/spike-069-scoped-model-access/ScopedCapture.swift:14:6: warning: Unsupported use of @lifetime, use @_lifetime to specify lifetime dependencies
+12 |     let revision: UInt32
+13 | 
+14 |     @lifetime(copy values)
+   |      `- warning: Unsupported use of @lifetime, use @_lifetime to specify lifetime dependencies
+15 |     fileprivate init(values: Span<Transition>, revision: UInt32) {
+16 |         self.values = values
+
+/Users/eugene/work/GiftUI/experiments/spike-069-scoped-model-access/ScopedCapture.swift:37:6: warning: Unsupported use of @lifetime, use @_lifetime to specify lifetime dependencies
+35 |     }
+36 | 
+37 |     @lifetime(borrow self)
+   |      `- warning: Unsupported use of @lifetime, use @_lifetime to specify lifetime dependencies
+38 |     borrowing func view() -> FrozenCapture {
+39 |         FrozenCapture(values: Span(_unsafeElements: storage), revision: revision)
+
+/Users/eugene/work/GiftUI/experiments/spike-069-scoped-model-access/Negative.swift:27:9: error: lifetime-dependent variable 'view' escapes its scope
+24 | 
+25 | #if ESCAPE_CLOSURE
+26 | func retainCapture(_ owner: borrowing CaptureOwner) -> () -> UInt64 {
+   |                      `- note: it depends on the lifetime of argument 'owner'
+27 |     let view = owner.view()
+   |         `- error: lifetime-dependent variable 'view' escapes its scope
+28 |     return { checksum(view) }
+   |            `- note: this use causes the lifetime-dependent value to escape
+29 | }
+30 | #endif

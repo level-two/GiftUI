@@ -1,0 +1,478 @@
+
+Relocation section '.rel.ARM.exidx.text.$e8Spike06913FrozenCaptureV10transition2atAA10TransitionVSgSi_tF' at offset 0x1ed8 contains 1 entry:
+ Offset     Info    Type                Sym. Value  Symbol's Name
+00000000  0000022a R_ARM_PREL31           00000000   .text.$e8Spike06913FrozenCaptureV10transition2atAA10TransitionVSgSi_tF
+
+Relocation section '.rel.text.$e8Spike06912CaptureOwnerV13replaceValues8revision5levelys6UInt32V_AHtF' at offset 0x1ee0 contains 1 entry:
+ Offset     Info    Type                Sym. Value  Symbol's Name
+00000014  0000980a R_ARM_THM_CALL         00000001   $es17FixedWidthIntegerPsE15_truncatingInityxqd__SzRd__lFZs6UInt64V_SiTt1g5
+
+Relocation section '.rel.ARM.exidx.text.$e8Spike06912CaptureOwnerV13replaceValues8revision5levelys6UInt32V_AHtF' at offset 0x1ee8 contains 1 entry:
+ Offset     Info    Type                Sym. Value  Symbol's Name
+00000000  0000042a R_ARM_PREL31           00000000   .text.$e8Spike06912CaptureOwnerV13replaceValues8revision5levelys6UInt32V_AHtF
+
+Relocation section '.rel.ARM.exidx.text.$e8Spike0698checksumys6UInt64VAA13FrozenCaptureVF' at offset 0x1ef0 contains 1 entry:
+ Offset     Info    Type                Sym. Value  Symbol's Name
+00000000  0000062a R_ARM_PREL31           00000000   .text.$e8Spike0698checksumys6UInt64VAA13FrozenCaptureVF
+
+Relocation section '.rel.text.spike069_read' at offset 0x1ef8 contains 1 entry:
+ Offset     Info    Type                Sym. Value  Symbol's Name
+00000000  00009b1e R_ARM_THM_JUMP24       00000001   $e8Spike06911readCaptureys6UInt64VSv_s6UInt32VtF
+
+Relocation section '.rel.ARM.exidx.text.spike069_read' at offset 0x1f00 contains 1 entry:
+ Offset     Info    Type                Sym. Value  Symbol's Name
+00000000  0000082a R_ARM_PREL31           00000000   .text.spike069_read
+
+Relocation section '.rel.text.$e8Spike06911readCaptureys6UInt64VSv_s6UInt32VtF' at offset 0x1f08 contains 1 entry:
+ Offset     Info    Type                Sym. Value  Symbol's Name
+0000000a  0000991e R_ARM_THM_JUMP24       00000001   $e8Spike0698checksumys6UInt64VAA13FrozenCaptureVF
+
+Relocation section '.rel.ARM.exidx.text.$e8Spike06911readCaptureys6UInt64VSv_s6UInt32VtF' at offset 0x1f10 contains 1 entry:
+ Offset     Info    Type                Sym. Value  Symbol's Name
+00000000  00000a2a R_ARM_PREL31           00000000   .text.$e8Spike06911readCaptureys6UInt64VSv_s6UInt32VtF
+
+Relocation section '.rel.ARM.exidx.text.$e8Spike06911SnapshotKeyV23__derived_struct_equalsySbAC_ACtFZ' at offset 0x1f18 contains 1 entry:
+ Offset     Info    Type                Sym. Value  Symbol's Name
+00000000  00000c2a R_ARM_PREL31           00000000   .text.$e8Spike06911SnapshotKeyV23__derived_struct_equalsySbAC_ACtFZ
+
+Relocation section '.rel.text.$e8Spike06911SnapshotKeyVSQAASQ2eeoiySbx_xtFZTW' at offset 0x1f20 contains 1 entry:
+ Offset     Info    Type                Sym. Value  Symbol's Name
+00000014  00009c0a R_ARM_THM_CALL         00000001   $e8Spike06911SnapshotKeyV23__derived_struct_equalsySbAC_ACtFZ
+
+Relocation section '.rel.ARM.exidx.text.$e8Spike06911SnapshotKeyVSQAASQ2eeoiySbx_xtFZTW' at offset 0x1f28 contains 1 entry:
+ Offset     Info    Type                Sym. Value  Symbol's Name
+00000000  00000e2a R_ARM_PREL31           00000000   .text.$e8Spike06911SnapshotKeyVSQAASQ2eeoiySbx_xtFZTW
+
+Relocation section '.rel.text.$e8Spike06912SnapshotPoolV13unsafeBacking7contextACSpyAA10TransitionVG_s6UInt32VtcfC' at offset 0x1f30 contains 1 entry:
+ Offset     Info    Type                Sym. Value  Symbol's Name
+0000002a  00009f0a R_ARM_THM_CALL         00000000   __aeabi_memclr4
+
+Relocation section '.rel.ARM.exidx.text.$e8Spike06912SnapshotPoolV13unsafeBacking7contextACSpyAA10TransitionVG_s6UInt32VtcfC' at offset 0x1f38 contains 1 entry:
+ Offset     Info    Type                Sym. Value  Symbol's Name
+00000000  0000102a R_ARM_PREL31           00000000   .text.$e8Spike06912SnapshotPoolV13unsafeBacking7contextACSpyAA10TransitionVG_s6UInt32VtcfC
+
+Relocation section '.rel.text.$e8Spike06912SnapshotPoolV7reserve8revision5levelAA0B3KeyVSgs6UInt32V_AKtF' at offset 0x1f40 contains 1 entry:
+ Offset     Info    Type                Sym. Value  Symbol's Name
+00000064  0000970a R_ARM_THM_CALL         00000001   $e8Spike06912CaptureOwnerV13replaceValues8revision5levelys6UInt32V_AHtF
+
+Relocation section '.rel.ARM.exidx.text.$e8Spike06912SnapshotPoolV7reserve8revision5levelAA0B3KeyVSgs6UInt32V_AKtF' at offset 0x1f48 contains 1 entry:
+ Offset     Info    Type                Sym. Value  Symbol's Name
+00000000  0000122a R_ARM_PREL31           00000000   .text.$e8Spike06912SnapshotPoolV7reserve8revision5levelAA0B3KeyVSgs6UInt32V_AKtF
+
+Relocation section '.rel.ARM.exidx.text.$e8Spike06912SnapshotPoolV15reclaimIfUnused33_9A7A077564BAFCEF1546C1A00C871AFALLyyAA0B3KeyVF' at offset 0x1f50 contains 1 entry:
+ Offset     Info    Type                Sym. Value  Symbol's Name
+00000000  0000142a R_ARM_PREL31           00000000   .text.$e8Spike06912SnapshotPoolV15reclaimIfUnused33_9A7A077564BAFCEF1546C1A00C871AFALLyyAA0B3KeyVF
+
+Relocation section '.rel.text.$e8Spike06912SnapshotPoolV23releaseApplicationOwnerySbAA0B3KeyVF' at offset 0x1f58 contains 1 entry:
+ Offset     Info    Type                Sym. Value  Symbol's Name
+0000007e  0000a10a R_ARM_THM_CALL         00000001   $e8Spike06912SnapshotPoolV15reclaimIfUnused33_9A7A077564BAFCEF1546C1A00C871AFALLyyAA0B3KeyVF
+
+Relocation section '.rel.ARM.exidx.text.$e8Spike06912SnapshotPoolV23releaseApplicationOwnerySbAA0B3KeyVF' at offset 0x1f60 contains 1 entry:
+ Offset     Info    Type                Sym. Value  Symbol's Name
+00000000  0000162a R_ARM_PREL31           00000000   .text.$e8Spike06912SnapshotPoolV23releaseApplicationOwnerySbAA0B3KeyVF
+
+Relocation section '.rel.ARM.exidx.text.$e8Spike06912SnapshotPoolV3pinySbAA0B3KeyVF' at offset 0x1f68 contains 1 entry:
+ Offset     Info    Type                Sym. Value  Symbol's Name
+00000000  0000182a R_ARM_PREL31           00000000   .text.$e8Spike06912SnapshotPoolV3pinySbAA0B3KeyVF
+
+Relocation section '.rel.text.$e8Spike06912SnapshotPoolV5unpinySbAA0B3KeyVF' at offset 0x1f70 contains 1 entry:
+ Offset     Info    Type                Sym. Value  Symbol's Name
+00000098  0000a10a R_ARM_THM_CALL         00000001   $e8Spike06912SnapshotPoolV15reclaimIfUnused33_9A7A077564BAFCEF1546C1A00C871AFALLyyAA0B3KeyVF
+
+Relocation section '.rel.ARM.exidx.text.$e8Spike06912SnapshotPoolV5unpinySbAA0B3KeyVF' at offset 0x1f78 contains 1 entry:
+ Offset     Info    Type                Sym. Value  Symbol's Name
+00000000  00001a2a R_ARM_PREL31           00000000   .text.$e8Spike06912SnapshotPoolV5unpinySbAA0B3KeyVF
+
+Relocation section '.rel.text.$e8Spike06912SnapshotPoolV4readys6UInt64VSgAA0B3KeyVF' at offset 0x1f80 contains 1 entry:
+ Offset     Info    Type                Sym. Value  Symbol's Name
+00000080  0000990a R_ARM_THM_CALL         00000001   $e8Spike0698checksumys6UInt64VAA13FrozenCaptureVF
+
+Relocation section '.rel.ARM.exidx.text.$e8Spike06912SnapshotPoolV4readys6UInt64VSgAA0B3KeyVF' at offset 0x1f88 contains 1 entry:
+ Offset     Info    Type                Sym. Value  Symbol's Name
+00000000  00001c2a R_ARM_PREL31           00000000   .text.$e8Spike06912SnapshotPoolV4readys6UInt64VSgAA0B3KeyVF
+
+Relocation section '.rel.ARM.exidx.text.$e8Spike06912SnapshotPoolV13occupiedCountSivg' at offset 0x1f90 contains 1 entry:
+ Offset     Info    Type                Sym. Value  Symbol's Name
+00000000  00001e2a R_ARM_PREL31           00000000   .text.$e8Spike06912SnapshotPoolV13occupiedCountSivg
+
+Relocation section '.rel.text.$e8Spike06910CanvasWorkV6invoke4pools6UInt64VSgAA12SnapshotPoolVz_tF' at offset 0x1f98 contains 3 entries:
+ Offset     Info    Type                Sym. Value  Symbol's Name
+00000030  0000220a R_ARM_THM_CALL         00000001   OUTLINED_FUNCTION_0
+0000009e  0000a50a R_ARM_THM_CALL         00000001   $e8Spike06912SnapshotPoolV4readys6UInt64VSgAA0B3KeyVF
+000000b8  0000a40a R_ARM_THM_CALL         00000001   $e8Spike06912SnapshotPoolV5unpinySbAA0B3KeyVF
+
+Relocation section '.rel.ARM.exidx.text.$e8Spike06910CanvasWorkV6invoke4pools6UInt64VSgAA12SnapshotPoolVz_tF' at offset 0x1fb0 contains 1 entry:
+ Offset     Info    Type                Sym. Value  Symbol's Name
+00000000  0000202a R_ARM_PREL31           00000000   .text.$e8Spike06910CanvasWorkV6invoke4pools6UInt64VSgAA12SnapshotPoolVz_tF
+
+Relocation section '.rel.text.spike069_lifecycle' at offset 0x1fb8 contains 1 entry:
+ Offset     Info    Type                Sym. Value  Symbol's Name
+00000000  0000a91e R_ARM_THM_JUMP24       00000001   $e8Spike06914lifetimeDriverys6UInt64VSvF
+
+Relocation section '.rel.ARM.exidx.text.spike069_lifecycle' at offset 0x1fc0 contains 1 entry:
+ Offset     Info    Type                Sym. Value  Symbol's Name
+00000000  0000232a R_ARM_PREL31           00000000   .text.spike069_lifecycle
+
+Relocation section '.rel.text.$e8Spike06914lifetimeDriverys6UInt64VSvF' at offset 0x1fc8 contains 55 entries:
+ Offset     Info    Type                Sym. Value  Symbol's Name
+0000000e  0000aa0a R_ARM_THM_CALL         00000000   __aeabi_memclr8
+0000001c  00009f0a R_ARM_THM_CALL         00000000   __aeabi_memclr4
+00000050  0000a00a R_ARM_THM_CALL         00000001   $e8Spike06912SnapshotPoolV7reserve8revision5levelAA0B3KeyVSgs6UInt32V_AKtF
+000000c0  0000a10a R_ARM_THM_CALL         00000001   $e8Spike06912SnapshotPoolV15reclaimIfUnused33_9A7A077564BAFCEF1546C1A00C871AFALLyyAA0B3KeyVF
+000000ca  0000220a R_ARM_THM_CALL         00000001   OUTLINED_FUNCTION_0
+000000d2  0000270a R_ARM_THM_CALL         00000001   OUTLINED_FUNCTION_2
+000000fa  0000a00a R_ARM_THM_CALL         00000001   $e8Spike06912SnapshotPoolV7reserve8revision5levelAA0B3KeyVSgs6UInt32V_AKtF
+00000132  0000220a R_ARM_THM_CALL         00000001   OUTLINED_FUNCTION_0
+0000013a  0000270a R_ARM_THM_CALL         00000001   OUTLINED_FUNCTION_2
+00000160  0000a20a R_ARM_THM_CALL         00000001   $e8Spike06912SnapshotPoolV23releaseApplicationOwnerySbAA0B3KeyVF
+0000016e  0000220a R_ARM_THM_CALL         00000001   OUTLINED_FUNCTION_0
+00000178  0000a50a R_ARM_THM_CALL         00000001   $e8Spike06912SnapshotPoolV4readys6UInt64VSgAA0B3KeyVF
+00000186  0000a60a R_ARM_THM_CALL         00000001   $e8Spike06912SnapshotPoolV13occupiedCountSivg
+000001aa  0000280a R_ARM_THM_CALL         00000001   OUTLINED_FUNCTION_5
+000001b8  0000280a R_ARM_THM_CALL         00000001   OUTLINED_FUNCTION_5
+000001ee  0000980a R_ARM_THM_CALL         00000001   $es17FixedWidthIntegerPsE15_truncatingInityxqd__SzRd__lFZs6UInt64V_SiTt1g5
+00000212  0000980a R_ARM_THM_CALL         00000001   $es17FixedWidthIntegerPsE15_truncatingInityxqd__SzRd__lFZs6UInt64V_SiTt1g5
+00000230  0000220a R_ARM_THM_CALL         00000001   OUTLINED_FUNCTION_0
+0000023a  0000270a R_ARM_THM_CALL         00000001   OUTLINED_FUNCTION_2
+00000254  0000290a R_ARM_THM_CALL         00000001   OUTLINED_FUNCTION_3
+0000026a  0000290a R_ARM_THM_CALL         00000001   OUTLINED_FUNCTION_3
+00000286  0000a00a R_ARM_THM_CALL         00000001   $e8Spike06912SnapshotPoolV7reserve8revision5levelAA0B3KeyVSgs6UInt32V_AKtF
+000002f0  0000a10a R_ARM_THM_CALL         00000001   $e8Spike06912SnapshotPoolV15reclaimIfUnused33_9A7A077564BAFCEF1546C1A00C871AFALLyyAA0B3KeyVF
+00000300  0000a40a R_ARM_THM_CALL         00000001   $e8Spike06912SnapshotPoolV5unpinySbAA0B3KeyVF
+00000334  0000220a R_ARM_THM_CALL         00000001   OUTLINED_FUNCTION_0
+0000033c  0000270a R_ARM_THM_CALL         00000001   OUTLINED_FUNCTION_2
+00000352  0000a60a R_ARM_THM_CALL         00000001   $e8Spike06912SnapshotPoolV13occupiedCountSivg
+00000364  0000a70a R_ARM_THM_CALL         00000001   $e8Spike06910CanvasWorkV6invoke4pools6UInt64VSgAA12SnapshotPoolVz_tF
+00000384  0000a70a R_ARM_THM_CALL         00000001   $e8Spike06910CanvasWorkV6invoke4pools6UInt64VSgAA12SnapshotPoolVz_tF
+00000390  0000a00a R_ARM_THM_CALL         00000001   $e8Spike06912SnapshotPoolV7reserve8revision5levelAA0B3KeyVSgs6UInt32V_AKtF
+000003b4  0000a00a R_ARM_THM_CALL         00000001   $e8Spike06912SnapshotPoolV7reserve8revision5levelAA0B3KeyVSgs6UInt32V_AKtF
+000003e8  0000220a R_ARM_THM_CALL         00000001   OUTLINED_FUNCTION_0
+000003f2  0000a50a R_ARM_THM_CALL         00000001   $e8Spike06912SnapshotPoolV4readys6UInt64VSgAA0B3KeyVF
+00000416  0000a20a R_ARM_THM_CALL         00000001   $e8Spike06912SnapshotPoolV23releaseApplicationOwnerySbAA0B3KeyVF
+00000428  0000a00a R_ARM_THM_CALL         00000001   $e8Spike06912SnapshotPoolV7reserve8revision5levelAA0B3KeyVSgs6UInt32V_AKtF
+00000448  0000220a R_ARM_THM_CALL         00000001   OUTLINED_FUNCTION_0
+00000450  0000270a R_ARM_THM_CALL         00000001   OUTLINED_FUNCTION_2
+00000464  0000220a R_ARM_THM_CALL         00000001   OUTLINED_FUNCTION_0
+0000046e  0000a50a R_ARM_THM_CALL         00000001   $e8Spike06912SnapshotPoolV4readys6UInt64VSgAA0B3KeyVF
+00000482  0000a30a R_ARM_THM_CALL         00000001   $e8Spike06912SnapshotPoolV3pinySbAA0B3KeyVF
+0000049c  0000a20a R_ARM_THM_CALL         00000001   $e8Spike06912SnapshotPoolV23releaseApplicationOwnerySbAA0B3KeyVF
+000004aa  0000220a R_ARM_THM_CALL         00000001   OUTLINED_FUNCTION_0
+000004b4  0000a50a R_ARM_THM_CALL         00000001   $e8Spike06912SnapshotPoolV4readys6UInt64VSgAA0B3KeyVF
+000004d2  0000a30a R_ARM_THM_CALL         00000001   $e8Spike06912SnapshotPoolV3pinySbAA0B3KeyVF
+000004ea  0000a20a R_ARM_THM_CALL         00000001   $e8Spike06912SnapshotPoolV23releaseApplicationOwnerySbAA0B3KeyVF
+000004f8  0000220a R_ARM_THM_CALL         00000001   OUTLINED_FUNCTION_0
+00000500  0000270a R_ARM_THM_CALL         00000001   OUTLINED_FUNCTION_2
+00000518  0000a40a R_ARM_THM_CALL         00000001   $e8Spike06912SnapshotPoolV5unpinySbAA0B3KeyVF
+00000526  0000220a R_ARM_THM_CALL         00000001   OUTLINED_FUNCTION_0
+0000052e  0000270a R_ARM_THM_CALL         00000001   OUTLINED_FUNCTION_2
+00000544  0000a20a R_ARM_THM_CALL         00000001   $e8Spike06912SnapshotPoolV23releaseApplicationOwnerySbAA0B3KeyVF
+0000056a  0000a10a R_ARM_THM_CALL         00000001   $e8Spike06912SnapshotPoolV15reclaimIfUnused33_9A7A077564BAFCEF1546C1A00C871AFALLyyAA0B3KeyVF
+00000572  0000a60a R_ARM_THM_CALL         00000001   $e8Spike06912SnapshotPoolV13occupiedCountSivg
+0000057e  0000220a R_ARM_THM_CALL         00000001   OUTLINED_FUNCTION_0
+00000586  0000a50a R_ARM_THM_CALL         00000001   $e8Spike06912SnapshotPoolV4readys6UInt64VSgAA0B3KeyVF
+
+Relocation section '.rel.ARM.exidx.text.$e8Spike06914lifetimeDriverys6UInt64VSvF' at offset 0x2180 contains 1 entry:
+ Offset     Info    Type                Sym. Value  Symbol's Name
+00000000  0000252a R_ARM_PREL31           00000000   .text.$e8Spike06914lifetimeDriverys6UInt64VSvF
+
+Relocation section '.rel.ARM.exidx.text.$es17FixedWidthIntegerPsE15_truncatingInityxqd__SzRd__lFZs6UInt64V_SiTt1g5' at offset 0x2188 contains 1 entry:
+ Offset     Info    Type                Sym. Value  Symbol's Name
+00000000  00002d2a R_ARM_PREL31           00000000   .text.$es17FixedWidthIntegerPsE15_truncatingInityxqd__SzRd__lFZs6UInt64V_SiTt1g5
+
+Relocation section '.rel.text.swift_allocEmptyBox' at offset 0x2190 contains 2 entries:
+ Offset     Info    Type                Sym. Value  Symbol's Name
+00000020  0000ac03 R_ARM_REL32            00000000   $es16_emptyBoxStorageSi_Sitvp
+00000024  0000ac03 R_ARM_REL32            00000000   $es16_emptyBoxStorageSi_Sitvp
+
+Relocation section '.rel.ARM.exidx.text.swift_allocEmptyBox' at offset 0x21a0 contains 1 entry:
+ Offset     Info    Type                Sym. Value  Symbol's Name
+00000000  00002f2a R_ARM_PREL31           00000000   .text.swift_allocEmptyBox
+
+Relocation section '.rel.text.swift_allocObject' at offset 0x21a8 contains 1 entry:
+ Offset     Info    Type                Sym. Value  Symbol's Name
+00000000  0000ae1e R_ARM_THM_JUMP24       00000001   $es17swift_allocObject8metadata12requiredSize0E13AlignmentMaskSpys04HeapC0VGSpys13ClassMetadataVG_S2itF
+
+Relocation section '.rel.ARM.exidx.text.swift_allocObject' at offset 0x21b0 contains 1 entry:
+ Offset     Info    Type                Sym. Value  Symbol's Name
+00000000  0000322a R_ARM_PREL31           00000000   .text.swift_allocObject
+
+Relocation section '.rel.text.$es17swift_allocObject8metadata12requiredSize0E13AlignmentMaskSpys04HeapC0VGSpys13ClassMetadataVG_S2itF' at offset 0x21b8 contains 4 entries:
+ Offset     Info    Type                Sym. Value  Symbol's Name
+0000002a  0000af0a R_ARM_THM_CALL         00000000   posix_memalign
+00000048  0000b00a R_ARM_THM_CALL         00000000   __stack_chk_fail
+00000050  0000b160 R_ARM_GOT_PREL         00000000   __stack_chk_guard
+00000054  0000b160 R_ARM_GOT_PREL         00000000   __stack_chk_guard
+
+Relocation section '.rel.ARM.exidx.text.$es17swift_allocObject8metadata12requiredSize0E13AlignmentMaskSpys04HeapC0VGSpys13ClassMetadataVG_S2itF' at offset 0x21d8 contains 1 entry:
+ Offset     Info    Type                Sym. Value  Symbol's Name
+00000000  0000342a R_ARM_PREL31           00000000   .text.$es17swift_allocObject8metadata12requiredSize0E13AlignmentMaskSpys04HeapC0VGSpys13ClassMetadataVG_S2itF
+
+Relocation section '.rel.ARM.exidx.text.swift_initStackObject' at offset 0x21e0 contains 1 entry:
+ Offset     Info    Type                Sym. Value  Symbol's Name
+00000000  0000372a R_ARM_PREL31           00000000   .text.swift_initStackObject
+
+Relocation section '.rel.ARM.exidx.text.swift_initStaticObject' at offset 0x21e8 contains 1 entry:
+ Offset     Info    Type                Sym. Value  Symbol's Name
+00000000  00003a2a R_ARM_PREL31           00000000   .text.swift_initStaticObject
+
+Relocation section '.rel.text..L__unnamed_1' at offset 0x21f0 contains 1 entry:
+ Offset     Info    Type                Sym. Value  Symbol's Name
+00000000  0000b41e R_ARM_THM_JUMP24       00000000   free
+
+Relocation section '.rel.ARM.exidx.text..L__unnamed_1' at offset 0x21f8 contains 1 entry:
+ Offset     Info    Type                Sym. Value  Symbol's Name
+00000000  00003c2a R_ARM_PREL31           00000000   .text..L__unnamed_1
+
+Relocation section '.rel.text.swift_deallocClassInstance' at offset 0x2200 contains 1 entry:
+ Offset     Info    Type                Sym. Value  Symbol's Name
+00000006  0000b41e R_ARM_THM_JUMP24       00000000   free
+
+Relocation section '.rel.ARM.exidx.text.swift_deallocClassInstance' at offset 0x2208 contains 1 entry:
+ Offset     Info    Type                Sym. Value  Symbol's Name
+00000000  00003f2a R_ARM_PREL31           00000000   .text.swift_deallocClassInstance
+
+Relocation section '.rel.ARM.exidx.text.swift_deallocPartialClassInstance' at offset 0x2210 contains 1 entry:
+ Offset     Info    Type                Sym. Value  Symbol's Name
+00000000  0000412a R_ARM_PREL31           00000000   .text.swift_deallocPartialClassInstance
+
+Relocation section '.rel.text.swift_slowAlloc' at offset 0x2218 contains 4 entries:
+ Offset     Info    Type                Sym. Value  Symbol's Name
+00000028  0000af0a R_ARM_THM_CALL         00000000   posix_memalign
+0000003e  0000b00a R_ARM_THM_CALL         00000000   __stack_chk_fail
+00000044  0000b160 R_ARM_GOT_PREL         00000000   __stack_chk_guard
+00000048  0000b160 R_ARM_GOT_PREL         00000000   __stack_chk_guard
+
+Relocation section '.rel.ARM.exidx.text.swift_slowAlloc' at offset 0x2238 contains 1 entry:
+ Offset     Info    Type                Sym. Value  Symbol's Name
+00000000  0000432a R_ARM_PREL31           00000000   .text.swift_slowAlloc
+
+Relocation section '.rel.ARM.exidx.text.swift_willThrow' at offset 0x2240 contains 1 entry:
+ Offset     Info    Type                Sym. Value  Symbol's Name
+00000000  0000462a R_ARM_PREL31           00000000   .text.swift_willThrow
+
+Relocation section '.rel.ARM.exidx.text.swift_errorInMain' at offset 0x2248 contains 1 entry:
+ Offset     Info    Type                Sym. Value  Symbol's Name
+00000000  0000482a R_ARM_PREL31           00000000   .text.swift_errorInMain
+
+Relocation section '.rel.ARM.exidx.text.swift_unexpectedError' at offset 0x2250 contains 1 entry:
+ Offset     Info    Type                Sym. Value  Symbol's Name
+00000000  00004a2a R_ARM_PREL31           00000000   .text.swift_unexpectedError
+
+Relocation section '.rel.text.swift_release' at offset 0x2258 contains 1 entry:
+ Offset     Info    Type                Sym. Value  Symbol's Name
+00000036  00004e0a R_ARM_THM_CALL         00000001   OUTLINED_FUNCTION_4
+
+Relocation section '.rel.ARM.exidx.text.swift_release' at offset 0x2260 contains 1 entry:
+ Offset     Info    Type                Sym. Value  Symbol's Name
+00000000  00004c2a R_ARM_PREL31           00000000   .text.swift_release
+
+Relocation section '.rel.text.swift_release_n' at offset 0x2268 contains 1 entry:
+ Offset     Info    Type                Sym. Value  Symbol's Name
+0000003a  00004e0a R_ARM_THM_CALL         00000001   OUTLINED_FUNCTION_4
+
+Relocation section '.rel.ARM.exidx.text.swift_release_n' at offset 0x2270 contains 1 entry:
+ Offset     Info    Type                Sym. Value  Symbol's Name
+00000000  00004f2a R_ARM_PREL31           00000000   .text.swift_release_n
+
+Relocation section '.rel.ARM.exidx.text.swift_setDeallocating' at offset 0x2278 contains 1 entry:
+ Offset     Info    Type                Sym. Value  Symbol's Name
+00000000  0000512a R_ARM_PREL31           00000000   .text.swift_setDeallocating
+
+Relocation section '.rel.text..L__unnamed_2' at offset 0x2280 contains 1 entry:
+ Offset     Info    Type                Sym. Value  Symbol's Name
+00000000  0000561e R_ARM_THM_JUMP24       00000001   swift_retain_nTm
+
+Relocation section '.rel.ARM.exidx.text..L__unnamed_2' at offset 0x2288 contains 1 entry:
+ Offset     Info    Type                Sym. Value  Symbol's Name
+00000000  0000532a R_ARM_PREL31           00000000   .text..L__unnamed_2
+
+Relocation section '.rel.ARM.exidx.text.swift_retain_nTm' at offset 0x2290 contains 1 entry:
+ Offset     Info    Type                Sym. Value  Symbol's Name
+00000000  0000572a R_ARM_PREL31           00000000   .text.swift_retain_nTm
+
+Relocation section '.rel.text.swift_bridgeObjectRelease_n' at offset 0x2298 contains 1 entry:
+ Offset     Info    Type                Sym. Value  Symbol's Name
+00000000  0000bc1e R_ARM_THM_JUMP24       00000001   swift_release_n
+
+Relocation section '.rel.ARM.exidx.text.swift_bridgeObjectRelease_n' at offset 0x22a0 contains 1 entry:
+ Offset     Info    Type                Sym. Value  Symbol's Name
+00000000  0000592a R_ARM_PREL31           00000000   .text.swift_bridgeObjectRelease_n
+
+Relocation section '.rel.ARM.exidx.text..L__unnamed_3' at offset 0x22a8 contains 1 entry:
+ Offset     Info    Type                Sym. Value  Symbol's Name
+00000000  00005b2a R_ARM_PREL31           00000000   .text..L__unnamed_3
+
+Relocation section '.rel.text.swift_bridgeObjectRelease' at offset 0x22b0 contains 1 entry:
+ Offset     Info    Type                Sym. Value  Symbol's Name
+00000002  0000bc1e R_ARM_THM_JUMP24       00000001   swift_release_n
+
+Relocation section '.rel.ARM.exidx.text.swift_bridgeObjectRelease' at offset 0x22b8 contains 1 entry:
+ Offset     Info    Type                Sym. Value  Symbol's Name
+00000000  00005e2a R_ARM_PREL31           00000000   .text.swift_bridgeObjectRelease
+
+Relocation section '.rel.text.swift_isUniquelyReferenced_native' at offset 0x22c0 contains 1 entry:
+ Offset     Info    Type                Sym. Value  Symbol's Name
+00000002  0000621e R_ARM_THM_JUMP24       00000001   OUTLINED_FUNCTION_1
+
+Relocation section '.rel.ARM.exidx.text.swift_isUniquelyReferenced_native' at offset 0x22c8 contains 1 entry:
+ Offset     Info    Type                Sym. Value  Symbol's Name
+00000000  0000602a R_ARM_PREL31           00000000   .text.swift_isUniquelyReferenced_native
+
+Relocation section '.rel.text.swift_isUniquelyReferenced_nonNull_native' at offset 0x22d0 contains 1 entry:
+ Offset     Info    Type                Sym. Value  Symbol's Name
+00000000  0000621e R_ARM_THM_JUMP24       00000001   OUTLINED_FUNCTION_1
+
+Relocation section '.rel.ARM.exidx.text.swift_isUniquelyReferenced_nonNull_native' at offset 0x22d8 contains 1 entry:
+ Offset     Info    Type                Sym. Value  Symbol's Name
+00000000  0000632a R_ARM_PREL31           00000000   .text.swift_isUniquelyReferenced_nonNull_native
+
+Relocation section '.rel.ARM.exidx.text.swift_isEscapingClosureAtFileLocation' at offset 0x22e0 contains 1 entry:
+ Offset     Info    Type                Sym. Value  Symbol's Name
+00000000  0000652a R_ARM_PREL31           00000000   .text.swift_isEscapingClosureAtFileLocation
+
+Relocation section '.rel.ARM.exidx.text.swift_dynamicCastClass' at offset 0x22e8 contains 1 entry:
+ Offset     Info    Type                Sym. Value  Symbol's Name
+00000000  0000672a R_ARM_PREL31           00000000   .text.swift_dynamicCastClass
+
+Relocation section '.rel.ARM.exidx.text.swift_dynamicCastClassUnconditional' at offset 0x22f0 contains 1 entry:
+ Offset     Info    Type                Sym. Value  Symbol's Name
+00000000  0000692a R_ARM_PREL31           00000000   .text.swift_dynamicCastClassUnconditional
+
+Relocation section '.rel.ARM.exidx.text.swift_once' at offset 0x22f8 contains 1 entry:
+ Offset     Info    Type                Sym. Value  Symbol's Name
+00000000  00006b2a R_ARM_PREL31           00000000   .text.swift_once
+
+Relocation section '.rel.ARM.exidx.text.swift_beginAccess' at offset 0x2300 contains 1 entry:
+ Offset     Info    Type                Sym. Value  Symbol's Name
+00000000  00006d2a R_ARM_PREL31           00000000   .text.swift_beginAccess
+
+Relocation section '.rel.ARM.exidx.text.swift_endAccess' at offset 0x2308 contains 1 entry:
+ Offset     Info    Type                Sym. Value  Symbol's Name
+00000000  00006f2a R_ARM_PREL31           00000000   .text.swift_endAccess
+
+Relocation section '.rel.text.swift_coroFrameAlloc' at offset 0x2310 contains 4 entries:
+ Offset     Info    Type                Sym. Value  Symbol's Name
+00000016  0000af0a R_ARM_THM_CALL         00000000   posix_memalign
+0000002c  0000b00a R_ARM_THM_CALL         00000000   __stack_chk_fail
+00000030  0000b160 R_ARM_GOT_PREL         00000000   __stack_chk_guard
+00000034  0000b160 R_ARM_GOT_PREL         00000000   __stack_chk_guard
+
+Relocation section '.rel.ARM.exidx.text.swift_coroFrameAlloc' at offset 0x2330 contains 1 entry:
+ Offset     Info    Type                Sym. Value  Symbol's Name
+00000000  0000712a R_ARM_PREL31           00000000   .text.swift_coroFrameAlloc
+
+Relocation section '.rel.ARM.exidx.text.swift_deletedMethodError' at offset 0x2338 contains 1 entry:
+ Offset     Info    Type                Sym. Value  Symbol's Name
+00000000  0000742a R_ARM_PREL31           00000000   .text.swift_deletedMethodError
+
+Relocation section '.rel.ARM.exidx.text._swift_exceptionPersonality' at offset 0x2340 contains 1 entry:
+ Offset     Info    Type                Sym. Value  Symbol's Name
+00000000  0000762a R_ARM_PREL31           00000000   .text._swift_exceptionPersonality
+
+Relocation section '.rel.text.swift_clearSensitive' at offset 0x2348 contains 1 entry:
+ Offset     Info    Type                Sym. Value  Symbol's Name
+0000000a  0000cc0a R_ARM_THM_CALL         00000000   __aeabi_memclr
+
+Relocation section '.rel.ARM.exidx.text.swift_clearSensitive' at offset 0x2350 contains 1 entry:
+ Offset     Info    Type                Sym. Value  Symbol's Name
+00000000  0000782a R_ARM_PREL31           00000000   .text.swift_clearSensitive
+
+Relocation section '.rel.ARM.exidx.text.swift_retainCount' at offset 0x2358 contains 1 entry:
+ Offset     Info    Type                Sym. Value  Symbol's Name
+00000000  00007a2a R_ARM_PREL31           00000000   .text.swift_retainCount
+
+Relocation section '.rel.text.swift_retain' at offset 0x2360 contains 1 entry:
+ Offset     Info    Type                Sym. Value  Symbol's Name
+00000000  00005c1e R_ARM_THM_JUMP24       00000001   .L__unnamed_3
+
+Relocation section '.rel.ARM.exidx.text.swift_retain' at offset 0x2368 contains 1 entry:
+ Offset     Info    Type                Sym. Value  Symbol's Name
+00000000  00007c2a R_ARM_PREL31           00000000   .text.swift_retain
+
+Relocation section '.rel.text.swift_bridgeObjectRetain' at offset 0x2370 contains 1 entry:
+ Offset     Info    Type                Sym. Value  Symbol's Name
+00000000  00005c1e R_ARM_THM_JUMP24       00000001   .L__unnamed_3
+
+Relocation section '.rel.ARM.exidx.text.swift_bridgeObjectRetain' at offset 0x2378 contains 1 entry:
+ Offset     Info    Type                Sym. Value  Symbol's Name
+00000000  00007e2a R_ARM_PREL31           00000000   .text.swift_bridgeObjectRetain
+
+Relocation section '.rel.text.swift_retain_n' at offset 0x2380 contains 1 entry:
+ Offset     Info    Type                Sym. Value  Symbol's Name
+00000000  0000541e R_ARM_THM_JUMP24       00000001   .L__unnamed_2
+
+Relocation section '.rel.ARM.exidx.text.swift_retain_n' at offset 0x2388 contains 1 entry:
+ Offset     Info    Type                Sym. Value  Symbol's Name
+00000000  0000802a R_ARM_PREL31           00000000   .text.swift_retain_n
+
+Relocation section '.rel.text.swift_bridgeObjectRetain_n' at offset 0x2390 contains 1 entry:
+ Offset     Info    Type                Sym. Value  Symbol's Name
+00000000  0000541e R_ARM_THM_JUMP24       00000001   .L__unnamed_2
+
+Relocation section '.rel.ARM.exidx.text.swift_bridgeObjectRetain_n' at offset 0x2398 contains 1 entry:
+ Offset     Info    Type                Sym. Value  Symbol's Name
+00000000  0000822a R_ARM_PREL31           00000000   .text.swift_bridgeObjectRetain_n
+
+Relocation section '.rel.text.swift_deallocUninitializedObject' at offset 0x23a0 contains 1 entry:
+ Offset     Info    Type                Sym. Value  Symbol's Name
+00000000  00003d1e R_ARM_THM_JUMP24       00000001   .L__unnamed_1
+
+Relocation section '.rel.ARM.exidx.text.swift_deallocUninitializedObject' at offset 0x23a8 contains 1 entry:
+ Offset     Info    Type                Sym. Value  Symbol's Name
+00000000  0000842a R_ARM_PREL31           00000000   .text.swift_deallocUninitializedObject
+
+Relocation section '.rel.text.swift_deallocObject' at offset 0x23b0 contains 1 entry:
+ Offset     Info    Type                Sym. Value  Symbol's Name
+00000000  00003d1e R_ARM_THM_JUMP24       00000001   .L__unnamed_1
+
+Relocation section '.rel.ARM.exidx.text.swift_deallocObject' at offset 0x23b8 contains 1 entry:
+ Offset     Info    Type                Sym. Value  Symbol's Name
+00000000  0000862a R_ARM_PREL31           00000000   .text.swift_deallocObject
+
+Relocation section '.rel.text.swift_slowDealloc' at offset 0x23c0 contains 1 entry:
+ Offset     Info    Type                Sym. Value  Symbol's Name
+00000000  00003d1e R_ARM_THM_JUMP24       00000001   .L__unnamed_1
+
+Relocation section '.rel.ARM.exidx.text.swift_slowDealloc' at offset 0x23c8 contains 1 entry:
+ Offset     Info    Type                Sym. Value  Symbol's Name
+00000000  0000882a R_ARM_PREL31           00000000   .text.swift_slowDealloc
+
+Relocation section '.rel.text.OUTLINED_FUNCTION_0' at offset 0x23d0 contains 1 entry:
+ Offset     Info    Type                Sym. Value  Symbol's Name
+00000004  0000d51e R_ARM_THM_JUMP24       00000000   __aeabi_memcpy4
+
+Relocation section '.rel.ARM.exidx.text.OUTLINED_FUNCTION_0' at offset 0x23d8 contains 1 entry:
+ Offset     Info    Type                Sym. Value  Symbol's Name
+00000000  00008a2a R_ARM_PREL31           00000000   .text.OUTLINED_FUNCTION_0
+
+Relocation section '.rel.ARM.exidx.text.OUTLINED_FUNCTION_1' at offset 0x23e0 contains 1 entry:
+ Offset     Info    Type                Sym. Value  Symbol's Name
+00000000  00008c2a R_ARM_PREL31           00000000   .text.OUTLINED_FUNCTION_1
+
+Relocation section '.rel.text.OUTLINED_FUNCTION_2' at offset 0x23e8 contains 1 entry:
+ Offset     Info    Type                Sym. Value  Symbol's Name
+00000002  0000a51e R_ARM_THM_JUMP24       00000001   $e8Spike06912SnapshotPoolV4readys6UInt64VSgAA0B3KeyVF
+
+Relocation section '.rel.ARM.exidx.text.OUTLINED_FUNCTION_2' at offset 0x23f0 contains 1 entry:
+ Offset     Info    Type                Sym. Value  Symbol's Name
+00000000  00008e2a R_ARM_PREL31           00000000   .text.OUTLINED_FUNCTION_2
+
+Relocation section '.rel.text.OUTLINED_FUNCTION_3' at offset 0x23f8 contains 1 entry:
+ Offset     Info    Type                Sym. Value  Symbol's Name
+00000006  0000991e R_ARM_THM_JUMP24       00000001   $e8Spike0698checksumys6UInt64VAA13FrozenCaptureVF
+
+Relocation section '.rel.ARM.exidx.text.OUTLINED_FUNCTION_3' at offset 0x2400 contains 1 entry:
+ Offset     Info    Type                Sym. Value  Symbol's Name
+00000000  0000902a R_ARM_PREL31           00000000   .text.OUTLINED_FUNCTION_3
+
+Relocation section '.rel.ARM.exidx.text.OUTLINED_FUNCTION_4' at offset 0x2408 contains 1 entry:
+ Offset     Info    Type                Sym. Value  Symbol's Name
+00000000  0000922a R_ARM_PREL31           00000000   .text.OUTLINED_FUNCTION_4
+
+Relocation section '.rel.text.OUTLINED_FUNCTION_5' at offset 0x2410 contains 1 entry:
+ Offset     Info    Type                Sym. Value  Symbol's Name
+00000006  0000a31e R_ARM_THM_JUMP24       00000001   $e8Spike06912SnapshotPoolV3pinySbAA0B3KeyVF
+
+Relocation section '.rel.ARM.exidx.text.OUTLINED_FUNCTION_5' at offset 0x2418 contains 1 entry:
+ Offset     Info    Type                Sym. Value  Symbol's Name
+00000000  0000942a R_ARM_PREL31           00000000   .text.OUTLINED_FUNCTION_5

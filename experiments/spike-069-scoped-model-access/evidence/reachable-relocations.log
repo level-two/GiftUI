@@ -1,0 +1,192 @@
+
+Relocation section '.rel.text.$e8Spike06912CaptureOwnerV13replaceValues8revision5levelys6UInt32V_AHtF' at offset 0x17cc contains 1 entry:
+ Offset     Info    Type                Sym. Value  Symbol's Name
+00000014  00006c0a R_ARM_THM_CALL         00000001   $es17FixedWidthIntegerPsE15_truncatingInityxqd__SzRd__lFZs6UInt64V_SiTt1g5
+
+Relocation section '.rel.text.spike069_read' at offset 0x17d4 contains 1 entry:
+ Offset     Info    Type                Sym. Value  Symbol's Name
+00000000  0000691e R_ARM_THM_JUMP24       00000001   $e8Spike06911readCaptureys6UInt64VSv_s6UInt32VtF
+
+Relocation section '.rel.text.$e8Spike06911readCaptureys6UInt64VSv_s6UInt32VtF' at offset 0x17dc contains 1 entry:
+ Offset     Info    Type                Sym. Value  Symbol's Name
+0000000a  0000721e R_ARM_THM_JUMP24       00000001   $e8Spike0698checksumys6UInt64VAA13FrozenCaptureVF
+
+Relocation section '.rel.text.$e8Spike06912SnapshotPoolV7reserve8revision5levelAA0B3KeyVSgs6UInt32V_AKtF' at offset 0x17e4 contains 1 entry:
+ Offset     Info    Type                Sym. Value  Symbol's Name
+00000064  0000670a R_ARM_THM_CALL         00000001   $e8Spike06912CaptureOwnerV13replaceValues8revision5levelys6UInt32V_AHtF
+
+Relocation section '.rel.text.$e8Spike06912SnapshotPoolV23releaseApplicationOwnerySbAA0B3KeyVF' at offset 0x17ec contains 1 entry:
+ Offset     Info    Type                Sym. Value  Symbol's Name
+0000007e  0000740a R_ARM_THM_CALL         00000001   $e8Spike06912SnapshotPoolV15reclaimIfUnused33_9A7A077564BAFCEF1546C1A00C871AFALLyyAA0B3KeyVF
+
+Relocation section '.rel.text.$e8Spike06912SnapshotPoolV5unpinySbAA0B3KeyVF' at offset 0x17f4 contains 1 entry:
+ Offset     Info    Type                Sym. Value  Symbol's Name
+00000098  0000740a R_ARM_THM_CALL         00000001   $e8Spike06912SnapshotPoolV15reclaimIfUnused33_9A7A077564BAFCEF1546C1A00C871AFALLyyAA0B3KeyVF
+
+Relocation section '.rel.text.$e8Spike06912SnapshotPoolV4readys6UInt64VSgAA0B3KeyVF' at offset 0x17fc contains 1 entry:
+ Offset     Info    Type                Sym. Value  Symbol's Name
+00000080  0000720a R_ARM_THM_CALL         00000001   $e8Spike0698checksumys6UInt64VAA13FrozenCaptureVF
+
+Relocation section '.rel.text.$e8Spike06910CanvasWorkV6invoke4pools6UInt64VSgAA12SnapshotPoolVz_tF' at offset 0x1804 contains 3 entries:
+ Offset     Info    Type                Sym. Value  Symbol's Name
+00000030  00003b0a R_ARM_THM_CALL         00000001   OUTLINED_FUNCTION_0
+0000009e  0000770a R_ARM_THM_CALL         00000001   $e8Spike06912SnapshotPoolV4readys6UInt64VSgAA0B3KeyVF
+000000b8  00006d0a R_ARM_THM_CALL         00000001   $e8Spike06912SnapshotPoolV5unpinySbAA0B3KeyVF
+
+Relocation section '.rel.text.spike069_lifecycle' at offset 0x181c contains 1 entry:
+ Offset     Info    Type                Sym. Value  Symbol's Name
+00000000  0000731e R_ARM_THM_JUMP24       00000001   $e8Spike06914lifetimeDriverys6UInt64VSvF
+
+Relocation section '.rel.text.$e8Spike06914lifetimeDriverys6UInt64VSvF' at offset 0x1824 contains 55 entries:
+ Offset     Info    Type                Sym. Value  Symbol's Name
+0000000e  00006e0a R_ARM_THM_CALL         00000000   __aeabi_memclr8
+0000001c  0000760a R_ARM_THM_CALL         00000000   __aeabi_memclr4
+00000050  0000750a R_ARM_THM_CALL         00000001   $e8Spike06912SnapshotPoolV7reserve8revision5levelAA0B3KeyVSgs6UInt32V_AKtF
+000000c0  0000740a R_ARM_THM_CALL         00000001   $e8Spike06912SnapshotPoolV15reclaimIfUnused33_9A7A077564BAFCEF1546C1A00C871AFALLyyAA0B3KeyVF
+000000ca  00003b0a R_ARM_THM_CALL         00000001   OUTLINED_FUNCTION_0
+000000d2  00003e0a R_ARM_THM_CALL         00000001   OUTLINED_FUNCTION_2
+000000fa  0000750a R_ARM_THM_CALL         00000001   $e8Spike06912SnapshotPoolV7reserve8revision5levelAA0B3KeyVSgs6UInt32V_AKtF
+00000132  00003b0a R_ARM_THM_CALL         00000001   OUTLINED_FUNCTION_0
+0000013a  00003e0a R_ARM_THM_CALL         00000001   OUTLINED_FUNCTION_2
+00000160  00006f0a R_ARM_THM_CALL         00000001   $e8Spike06912SnapshotPoolV23releaseApplicationOwnerySbAA0B3KeyVF
+0000016e  00003b0a R_ARM_THM_CALL         00000001   OUTLINED_FUNCTION_0
+00000178  0000770a R_ARM_THM_CALL         00000001   $e8Spike06912SnapshotPoolV4readys6UInt64VSgAA0B3KeyVF
+00000186  0000650a R_ARM_THM_CALL         00000001   $e8Spike06912SnapshotPoolV13occupiedCountSivg
+000001aa  00003f0a R_ARM_THM_CALL         00000001   OUTLINED_FUNCTION_5
+000001b8  00003f0a R_ARM_THM_CALL         00000001   OUTLINED_FUNCTION_5
+000001ee  00006c0a R_ARM_THM_CALL         00000001   $es17FixedWidthIntegerPsE15_truncatingInityxqd__SzRd__lFZs6UInt64V_SiTt1g5
+00000212  00006c0a R_ARM_THM_CALL         00000001   $es17FixedWidthIntegerPsE15_truncatingInityxqd__SzRd__lFZs6UInt64V_SiTt1g5
+00000230  00003b0a R_ARM_THM_CALL         00000001   OUTLINED_FUNCTION_0
+0000023a  00003e0a R_ARM_THM_CALL         00000001   OUTLINED_FUNCTION_2
+00000254  0000400a R_ARM_THM_CALL         00000001   OUTLINED_FUNCTION_3
+0000026a  0000400a R_ARM_THM_CALL         00000001   OUTLINED_FUNCTION_3
+00000286  0000750a R_ARM_THM_CALL         00000001   $e8Spike06912SnapshotPoolV7reserve8revision5levelAA0B3KeyVSgs6UInt32V_AKtF
+000002f0  0000740a R_ARM_THM_CALL         00000001   $e8Spike06912SnapshotPoolV15reclaimIfUnused33_9A7A077564BAFCEF1546C1A00C871AFALLyyAA0B3KeyVF
+00000300  00006d0a R_ARM_THM_CALL         00000001   $e8Spike06912SnapshotPoolV5unpinySbAA0B3KeyVF
+00000334  00003b0a R_ARM_THM_CALL         00000001   OUTLINED_FUNCTION_0
+0000033c  00003e0a R_ARM_THM_CALL         00000001   OUTLINED_FUNCTION_2
+00000352  0000650a R_ARM_THM_CALL         00000001   $e8Spike06912SnapshotPoolV13occupiedCountSivg
+00000364  0000660a R_ARM_THM_CALL         00000001   $e8Spike06910CanvasWorkV6invoke4pools6UInt64VSgAA12SnapshotPoolVz_tF
+00000384  0000660a R_ARM_THM_CALL         00000001   $e8Spike06910CanvasWorkV6invoke4pools6UInt64VSgAA12SnapshotPoolVz_tF
+00000390  0000750a R_ARM_THM_CALL         00000001   $e8Spike06912SnapshotPoolV7reserve8revision5levelAA0B3KeyVSgs6UInt32V_AKtF
+000003b4  0000750a R_ARM_THM_CALL         00000001   $e8Spike06912SnapshotPoolV7reserve8revision5levelAA0B3KeyVSgs6UInt32V_AKtF
+000003e8  00003b0a R_ARM_THM_CALL         00000001   OUTLINED_FUNCTION_0
+000003f2  0000770a R_ARM_THM_CALL         00000001   $e8Spike06912SnapshotPoolV4readys6UInt64VSgAA0B3KeyVF
+00000416  00006f0a R_ARM_THM_CALL         00000001   $e8Spike06912SnapshotPoolV23releaseApplicationOwnerySbAA0B3KeyVF
+00000428  0000750a R_ARM_THM_CALL         00000001   $e8Spike06912SnapshotPoolV7reserve8revision5levelAA0B3KeyVSgs6UInt32V_AKtF
+00000448  00003b0a R_ARM_THM_CALL         00000001   OUTLINED_FUNCTION_0
+00000450  00003e0a R_ARM_THM_CALL         00000001   OUTLINED_FUNCTION_2
+00000464  00003b0a R_ARM_THM_CALL         00000001   OUTLINED_FUNCTION_0
+0000046e  0000770a R_ARM_THM_CALL         00000001   $e8Spike06912SnapshotPoolV4readys6UInt64VSgAA0B3KeyVF
+00000482  0000710a R_ARM_THM_CALL         00000001   $e8Spike06912SnapshotPoolV3pinySbAA0B3KeyVF
+0000049c  00006f0a R_ARM_THM_CALL         00000001   $e8Spike06912SnapshotPoolV23releaseApplicationOwnerySbAA0B3KeyVF
+000004aa  00003b0a R_ARM_THM_CALL         00000001   OUTLINED_FUNCTION_0
+000004b4  0000770a R_ARM_THM_CALL         00000001   $e8Spike06912SnapshotPoolV4readys6UInt64VSgAA0B3KeyVF
+000004d2  0000710a R_ARM_THM_CALL         00000001   $e8Spike06912SnapshotPoolV3pinySbAA0B3KeyVF
+000004ea  00006f0a R_ARM_THM_CALL         00000001   $e8Spike06912SnapshotPoolV23releaseApplicationOwnerySbAA0B3KeyVF
+000004f8  00003b0a R_ARM_THM_CALL         00000001   OUTLINED_FUNCTION_0
+00000500  00003e0a R_ARM_THM_CALL         00000001   OUTLINED_FUNCTION_2
+00000518  00006d0a R_ARM_THM_CALL         00000001   $e8Spike06912SnapshotPoolV5unpinySbAA0B3KeyVF
+00000526  00003b0a R_ARM_THM_CALL         00000001   OUTLINED_FUNCTION_0
+0000052e  00003e0a R_ARM_THM_CALL         00000001   OUTLINED_FUNCTION_2
+00000544  00006f0a R_ARM_THM_CALL         00000001   $e8Spike06912SnapshotPoolV23releaseApplicationOwnerySbAA0B3KeyVF
+0000056a  0000740a R_ARM_THM_CALL         00000001   $e8Spike06912SnapshotPoolV15reclaimIfUnused33_9A7A077564BAFCEF1546C1A00C871AFALLyyAA0B3KeyVF
+00000572  0000650a R_ARM_THM_CALL         00000001   $e8Spike06912SnapshotPoolV13occupiedCountSivg
+0000057e  00003b0a R_ARM_THM_CALL         00000001   OUTLINED_FUNCTION_0
+00000586  0000770a R_ARM_THM_CALL         00000001   $e8Spike06912SnapshotPoolV4readys6UInt64VSgAA0B3KeyVF
+
+Relocation section '.rel.text.OUTLINED_FUNCTION_0' at offset 0x19dc contains 1 entry:
+ Offset     Info    Type                Sym. Value  Symbol's Name
+00000004  00006b1e R_ARM_THM_JUMP24       00000000   __aeabi_memcpy4
+
+Relocation section '.rel.text.OUTLINED_FUNCTION_2' at offset 0x19e4 contains 1 entry:
+ Offset     Info    Type                Sym. Value  Symbol's Name
+00000002  0000771e R_ARM_THM_JUMP24       00000001   $e8Spike06912SnapshotPoolV4readys6UInt64VSgAA0B3KeyVF
+
+Relocation section '.rel.text.OUTLINED_FUNCTION_3' at offset 0x19ec contains 1 entry:
+ Offset     Info    Type                Sym. Value  Symbol's Name
+00000006  0000721e R_ARM_THM_JUMP24       00000001   $e8Spike0698checksumys6UInt64VAA13FrozenCaptureVF
+
+Relocation section '.rel.text.OUTLINED_FUNCTION_5' at offset 0x19f4 contains 1 entry:
+ Offset     Info    Type                Sym. Value  Symbol's Name
+00000006  0000711e R_ARM_THM_JUMP24       00000001   $e8Spike06912SnapshotPoolV3pinySbAA0B3KeyVF
+
+Relocation section '.rel.ARM.exidx.text.$e8Spike06912CaptureOwnerV13replaceValues8revision5levelys6UInt32V_AHtF' at offset 0x19fc contains 1 entry:
+ Offset     Info    Type                Sym. Value  Symbol's Name
+00000000  0000012a R_ARM_PREL31           00000000   .text.$e8Spike06912CaptureOwnerV13replaceValues8revision5levelys6UInt32V_AHtF
+
+Relocation section '.rel.ARM.exidx.text.$e8Spike0698checksumys6UInt64VAA13FrozenCaptureVF' at offset 0x1a04 contains 1 entry:
+ Offset     Info    Type                Sym. Value  Symbol's Name
+00000000  0000022a R_ARM_PREL31           00000000   .text.$e8Spike0698checksumys6UInt64VAA13FrozenCaptureVF
+
+Relocation section '.rel.ARM.exidx.text.spike069_read' at offset 0x1a0c contains 1 entry:
+ Offset     Info    Type                Sym. Value  Symbol's Name
+00000000  0000032a R_ARM_PREL31           00000000   .text.spike069_read
+
+Relocation section '.rel.ARM.exidx.text.$e8Spike06911readCaptureys6UInt64VSv_s6UInt32VtF' at offset 0x1a14 contains 1 entry:
+ Offset     Info    Type                Sym. Value  Symbol's Name
+00000000  0000042a R_ARM_PREL31           00000000   .text.$e8Spike06911readCaptureys6UInt64VSv_s6UInt32VtF
+
+Relocation section '.rel.ARM.exidx.text.$e8Spike06912SnapshotPoolV7reserve8revision5levelAA0B3KeyVSgs6UInt32V_AKtF' at offset 0x1a1c contains 1 entry:
+ Offset     Info    Type                Sym. Value  Symbol's Name
+00000000  0000052a R_ARM_PREL31           00000000   .text.$e8Spike06912SnapshotPoolV7reserve8revision5levelAA0B3KeyVSgs6UInt32V_AKtF
+
+Relocation section '.rel.ARM.exidx.text.$e8Spike06912SnapshotPoolV15reclaimIfUnused33_9A7A077564BAFCEF1546C1A00C871AFALLyyAA0B3KeyVF' at offset 0x1a24 contains 1 entry:
+ Offset     Info    Type                Sym. Value  Symbol's Name
+00000000  0000062a R_ARM_PREL31           00000000   .text.$e8Spike06912SnapshotPoolV15reclaimIfUnused33_9A7A077564BAFCEF1546C1A00C871AFALLyyAA0B3KeyVF
+
+Relocation section '.rel.ARM.exidx.text.$e8Spike06912SnapshotPoolV23releaseApplicationOwnerySbAA0B3KeyVF' at offset 0x1a2c contains 1 entry:
+ Offset     Info    Type                Sym. Value  Symbol's Name
+00000000  0000072a R_ARM_PREL31           00000000   .text.$e8Spike06912SnapshotPoolV23releaseApplicationOwnerySbAA0B3KeyVF
+
+Relocation section '.rel.ARM.exidx.text.$e8Spike06912SnapshotPoolV3pinySbAA0B3KeyVF' at offset 0x1a34 contains 1 entry:
+ Offset     Info    Type                Sym. Value  Symbol's Name
+00000000  0000082a R_ARM_PREL31           00000000   .text.$e8Spike06912SnapshotPoolV3pinySbAA0B3KeyVF
+
+Relocation section '.rel.ARM.exidx.text.$e8Spike06912SnapshotPoolV5unpinySbAA0B3KeyVF' at offset 0x1a3c contains 1 entry:
+ Offset     Info    Type                Sym. Value  Symbol's Name
+00000000  0000092a R_ARM_PREL31           00000000   .text.$e8Spike06912SnapshotPoolV5unpinySbAA0B3KeyVF
+
+Relocation section '.rel.ARM.exidx.text.$e8Spike06912SnapshotPoolV4readys6UInt64VSgAA0B3KeyVF' at offset 0x1a44 contains 1 entry:
+ Offset     Info    Type                Sym. Value  Symbol's Name
+00000000  00000a2a R_ARM_PREL31           00000000   .text.$e8Spike06912SnapshotPoolV4readys6UInt64VSgAA0B3KeyVF
+
+Relocation section '.rel.ARM.exidx.text.$e8Spike06912SnapshotPoolV13occupiedCountSivg' at offset 0x1a4c contains 1 entry:
+ Offset     Info    Type                Sym. Value  Symbol's Name
+00000000  00000b2a R_ARM_PREL31           00000000   .text.$e8Spike06912SnapshotPoolV13occupiedCountSivg
+
+Relocation section '.rel.ARM.exidx.text.$e8Spike06910CanvasWorkV6invoke4pools6UInt64VSgAA12SnapshotPoolVz_tF' at offset 0x1a54 contains 1 entry:
+ Offset     Info    Type                Sym. Value  Symbol's Name
+00000000  00000c2a R_ARM_PREL31           00000000   .text.$e8Spike06910CanvasWorkV6invoke4pools6UInt64VSgAA12SnapshotPoolVz_tF
+
+Relocation section '.rel.ARM.exidx.text.spike069_lifecycle' at offset 0x1a5c contains 1 entry:
+ Offset     Info    Type                Sym. Value  Symbol's Name
+00000000  00000d2a R_ARM_PREL31           00000000   .text.spike069_lifecycle
+
+Relocation section '.rel.ARM.exidx.text.$e8Spike06914lifetimeDriverys6UInt64VSvF' at offset 0x1a64 contains 1 entry:
+ Offset     Info    Type                Sym. Value  Symbol's Name
+00000000  00000e2a R_ARM_PREL31           00000000   .text.$e8Spike06914lifetimeDriverys6UInt64VSvF
+
+Relocation section '.rel.ARM.exidx.text.$es17FixedWidthIntegerPsE15_truncatingInityxqd__SzRd__lFZs6UInt64V_SiTt1g5' at offset 0x1a6c contains 1 entry:
+ Offset     Info    Type                Sym. Value  Symbol's Name
+00000000  00000f2a R_ARM_PREL31           00000000   .text.$es17FixedWidthIntegerPsE15_truncatingInityxqd__SzRd__lFZs6UInt64V_SiTt1g5
+
+Relocation section '.rel.ARM.exidx.text._swift_exceptionPersonality' at offset 0x1a74 contains 1 entry:
+ Offset     Info    Type                Sym. Value  Symbol's Name
+00000000  0000102a R_ARM_PREL31           00000000   .text._swift_exceptionPersonality
+
+Relocation section '.rel.ARM.exidx.text.OUTLINED_FUNCTION_0' at offset 0x1a7c contains 1 entry:
+ Offset     Info    Type                Sym. Value  Symbol's Name
+00000000  0000112a R_ARM_PREL31           00000000   .text.OUTLINED_FUNCTION_0
+
+Relocation section '.rel.ARM.exidx.text.OUTLINED_FUNCTION_2' at offset 0x1a84 contains 1 entry:
+ Offset     Info    Type                Sym. Value  Symbol's Name
+00000000  0000122a R_ARM_PREL31           00000000   .text.OUTLINED_FUNCTION_2
+
+Relocation section '.rel.ARM.exidx.text.OUTLINED_FUNCTION_3' at offset 0x1a8c contains 1 entry:
+ Offset     Info    Type                Sym. Value  Symbol's Name
+00000000  0000132a R_ARM_PREL31           00000000   .text.OUTLINED_FUNCTION_3
+
+Relocation section '.rel.ARM.exidx.text.OUTLINED_FUNCTION_5' at offset 0x1a94 contains 1 entry:
+ Offset     Info    Type                Sym. Value  Symbol's Name
+00000000  0000142a R_ARM_PREL31           00000000   .text.OUTLINED_FUNCTION_5
