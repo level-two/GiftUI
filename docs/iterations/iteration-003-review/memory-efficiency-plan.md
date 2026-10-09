@@ -99,6 +99,26 @@ record any technically necessary internal design in their focused design notes.
 That work belongs to this task and its budget. This coordination entry alone is
 not a ready per-Spec plan or authority for a new algorithmic contract.
 
+### How this task informs subsequent work
+
+I3-T01 delivers corrected production code and bounded validation results that
+give the remaining iteration work concrete context: which costs were reduced,
+which constraints remain, and whether further design changes are necessary.
+Its final report must map those findings to the existing activities below and
+recommend their direction within the unchanged iteration goals. This mapping
+is part of the same task and budget, not a separate investigation.
+
+| Subsequent work | Relationship to I3-T01 |
+| --- | --- |
+| ME-05/06 runtime-derived graph design and implementation (I3-04) | Use the corrected code, resource results and remaining constraints when selecting the realization. Ownership/lifetime design can proceed independently; I3-T01 neither proves its safety nor supplies missing architecture/contract approval. |
+| ME-08 integrated validation | Requires the completed implementations together. Revalidate the exact integrated artifacts; I3-T01's local results do not establish runtime-derived or connected-hardware conformance. |
+| ME-09 closure and handoff | Uses integrated validation and explicit dispositions of remaining criteria; I3-T01 completion alone does not enable iteration closure. |
+
+No additional general preparation phase precedes I3-T01: the launch planning
+described above belongs inside it. The unresolved runtime design remains a
+separate current obligation. Findings steer existing work; they do not
+automatically expand scope, create successor tasks or reopen stopped studies.
+
 ### Bound and completion decision
 
 Use one ceiling of **eight active hours** for planning, implementation, builds,
