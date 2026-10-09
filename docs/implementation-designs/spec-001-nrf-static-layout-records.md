@@ -6,7 +6,7 @@ status: draft
 authors:
   - codex
 created: 2026-09-22
-updated: 2026-10-02
+updated: 2026-10-09
 implementation_plan: ../implementation-plans/spec-001-implementation-plan.md
 related_future_work: []
 related_explorations: []
@@ -334,3 +334,21 @@ rehearsals; compiler negative cases exercise those actual firmware invocations.
 ## Iteration 002 startup maintenance
 
 Startup text uses the common LayoutEngine over a one-text semantic adapter and the existing packed workspace. Codec round-trip and publication/reset probes remain separate checks. The two startup-only text algorithms were retired; no additional layout owner or storage was introduced. [Evidence](../iterations/iteration-002-cleanup/evidence/06-startup-text/result.md).
+
+## I3-T01 attempt-local indexes — 2026-10-09
+
+Reuse bytes 48...369 of the 416-byte text scratch tail during layout: 98 bytes
+of scope ordinals sorted by their exact UInt16 identity, followed by 224 bytes
+of glyph-local indices. Scope insertion shifts at most 98 one-byte ordinals;
+lookup takes at most seven binary-search comparisons, preserving the physical
+append order and arbitrary nonzero identities. Each glyph index is captured at
+append; the common adapter reads it directly rather than rescanning prior glyphs.
+Finding the next index uses the last matching glyph's cached ordinal, scanning
+backwards only when identities interleave. Existing line scans remain bounded.
+
+These indexes never outlive the active layout attempt. Acquisition/reset clears
+them; publication validation completes before Render reuses that same scratch.
+The 38-byte depth stack and byte-38 publication marker remain untouched, as do
+all retained record encodings, public views and the exact 4,704-byte region.
+Published Render views retain their existing lookup because Render overwrites
+the temporary index. No second graph, new allocation or region is introduced.

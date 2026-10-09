@@ -24,27 +24,25 @@ superseded_by: null
 
 ## Iteration 3 correction task — 2026-10-09
 
-**Planned participation; execution details pending.** The single
-[I3-T01 task](../iterations/iteration-003-review/memory-efficiency-plan.md#i3-t01--correct-scheduling-and-reduce-rasterlayout-costs)
-owns the three corrections, shared eight-active-hour ceiling, final result and
-handoff to subsequent iteration work. Cover I3-T01.3 layout identity, output
-equivalence, capacity/failure behavior and bounded workspace indexing with the
-application-owned workspace in SPEC-001. No semantic/layout ownership or
-contract change is selected.
+**Ready — I3-T01 launch, 2026-10-09.** I3-T01.3 participates in the
+[single bounded task](../iterations/iteration-003-review/memory-efficiency-plan.md#i3-t01--correct-scheduling-and-reduce-rasterlayout-costs).
+Eugene requested proceeding with iteration-3 tasks and committing each step.
+The existing Specification remains `implemented`; historical ledgers below are preserved.
 
-At I3-T01 launch, record this plan's exact affected files, internal realization,
-acceptance-criterion mapping and validation commands before dependent code
-changes. This belongs to the same task and budget, not another preparation
-phase. This navigation/ownership entry does not claim those details are ready
-or add independently budgeted tasks. Its results inform remaining iteration
-work without automatically enlarging scope.
-
-The governing Specification remains `implemented`; earlier dated readiness,
-progress and closeout statements below retain their historical context. The
-plan's existing status describes its earlier task ledger, not I3-T01 readiness.
-Historical exceptions and test results do not establish iteration-3 conformance.
-No implementation, architecture approval or connected action occurs through
-this documentation update.
+- Contract mapping: LY-003–010. All other criteria retain their existing dispositions.
+- Exact source/test boundary: `Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFEmbeddedLayoutWorkspace.swift`, `StaticSignalAnalyzerNRFCommonLayoutWorkspace.swift`, `StaticSignalAnalyzerNRFEmbeddedLayoutTextCodec.swift`; `Tests/GiftUIHostConfigurationTests/StaticSignalAnalyzerNRFEmbeddedLayoutWorkspaceTests.swift`.
+- Internal realization: Use a sorted 98-byte ordinal index for binary identity lookup and 224 cached glyph-local ordinals in the existing text scratch tail, beginning at tail offset 48. Preserve arbitrary nonzero UInt16 identities, insertion order, record codecs, all ceilings and failure behavior. Index lifetime ends at publication before Render reuses scratch; published records retain their existing lookup.
+- Focused commands: `scripts/contracts/check-spec-001-nrf-full-layout-native.sh`; `scripts/contracts/run-spec-007.sh --profile macos-static`.
+- Run `scripts/format-swift.sh` before the repository gate, then
+  `scripts/test.sh all-hardware-free` for the integrated four-profile result.
+  Focused Swift tests use `swift test --filter` with the named test suites.
+- Order: launch plan commit → scheduling commit → raster commit → layout commit
+  → integrated evidence/disposition commit. Shared eight-active-hour ceiling;
+  dependent production edits begin only after this launch plan is committed.
+- Record correctness, operation counts, storage and exact build identities in
+  [the shared result](../iterations/iteration-003-review/i3-t01-result.md).
+  Connected timing, full stack proof and runtime graph migration remain open.
+  No deployment, flash, SPI clock change or new contract is selected.
 
 > This ready plan derives work from the approved Proposal-Based Layout
 > Contract. It orders implementation and evidence but does not amend the

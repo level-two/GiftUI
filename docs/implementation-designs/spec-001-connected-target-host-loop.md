@@ -6,7 +6,7 @@ status: current
 authors:
   - codex
 created: 2026-09-20
-updated: 2026-10-02
+updated: 2026-10-09
 implementation_plan: ../implementation-plans/spec-001-implementation-plan.md
 related_future_work: []
 related_explorations: []
@@ -855,3 +855,16 @@ records 19,480-byte high-water and its tested scope, not a worst-case or
 physical-input/timing claim.
 
 Five-second retention and coordinated capture slots follow accepted ADR-034 and the approved 2026-10-05 SPEC-001/013/015 amendment. Delivered 30s workload counts stay distinct from retained records.
+
+## I3-T01 anchored scheduling — 2026-10-09
+
+Maintain one optional absolute deadline and source generation. A newly active
+generation anchors its first relative delay to the service timestamp; unchanged
+generations advance from the previous deadline, never a late poll timestamp.
+After an opportunity, detect Stop/restart even when both occurred in that
+opportunity. Clear preserves the source generation and pending deadline.
+Use checked arithmetic and at most twenty deliveries per poll; producer admission
+continues to enforce the total category bound across polls. A further overdue
+transition fails explicitly rather than resetting its timestamp or dropping it.
+The Pi helper is package-internal; the firmware exposes only its existing
+repository's source generation to its C loop. No portable source API changes.

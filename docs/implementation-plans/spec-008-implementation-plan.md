@@ -23,27 +23,25 @@ superseded_by: null
 
 ## Iteration 3 correction task — 2026-10-09
 
-**Planned participation; execution details pending.** The single
-[I3-T01 task](../iterations/iteration-003-review/memory-efficiency-plan.md#i3-t01--correct-scheduling-and-reduce-rasterlayout-costs)
-owns the three corrections, shared eight-active-hour ceiling, final result and
-handoff to subsequent iteration work. Cover I3-T01.2
-render/painter-order/clip/failure regressions with the SPEC-014 raster
-implementation. This is a regression dependency, not a separate Render
-redesign or automatically added production change.
+**Ready — I3-T01 launch, 2026-10-09.** I3-T01.2/3 regression participates in the
+[single bounded task](../iterations/iteration-003-review/memory-efficiency-plan.md#i3-t01--correct-scheduling-and-reduce-rasterlayout-costs).
+Eugene requested proceeding with iteration-3 tasks and committing each step.
+The existing Specification remains `implemented`; historical ledgers below are preserved.
 
-At I3-T01 launch, record this plan's exact affected files, internal realization,
-acceptance-criterion mapping and validation commands before dependent code
-changes. This belongs to the same task and budget, not another preparation
-phase. This navigation/ownership entry does not claim those details are ready
-or add independently budgeted tasks. Its results inform remaining iteration
-work without automatically enlarging scope.
-
-The governing Specification remains `implemented`; earlier dated readiness,
-progress and closeout statements below retain their historical context. The
-plan's existing status describes its earlier task ledger, not I3-T01 readiness.
-Historical exceptions and test results do not establish iteration-3 conformance.
-No implementation, architecture approval or connected action occurs through
-this documentation update.
+- Contract mapping: RD-003–008, 010–011. All other criteria retain their existing dispositions.
+- Exact source/test boundary: No Render production edits planned; existing Render/painter/clip/failure corpus and host-native raster scripts.
+- Internal realization: Preserve operation/painter order, resolved layout values and failure precedence; no changed Render contract.
+- Focused commands: `scripts/contracts/check-spec-001-host-native-rasters.sh`; `scripts/contracts/run-spec-008.sh --profile macos-static`.
+- Run `scripts/format-swift.sh` before the repository gate, then
+  `scripts/test.sh all-hardware-free` for the integrated four-profile result.
+  Focused Swift tests use `swift test --filter` with the named test suites.
+- Order: launch plan commit → scheduling commit → raster commit → layout commit
+  → integrated evidence/disposition commit. Shared eight-active-hour ceiling;
+  dependent production edits begin only after this launch plan is committed.
+- Record correctness, operation counts, storage and exact build identities in
+  [the shared result](../iterations/iteration-003-review/i3-t01-result.md).
+  Connected timing, full stack proof and runtime graph migration remain open.
+  No deployment, flash, SPI clock change or new contract is selected.
 
 > This completed plan incorporates the explicitly approved 2026-09-11
 > foreground-stack and arithmetic-evidence amendment. Completed task records

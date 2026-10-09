@@ -28,27 +28,25 @@ superseded_by: null
 
 ## Iteration 3 correction task — 2026-10-09
 
-**Planned participation; execution details pending.** The single
-[I3-T01 task](../iterations/iteration-003-review/memory-efficiency-plan.md#i3-t01--correct-scheduling-and-reduce-rasterlayout-costs)
-owns the three corrections, shared eight-active-hour ceiling, final result and
-handoff to subsequent iteration work. Own I3-T01.2 bounded Embedded stroke
-raster realization and coverage-storage accounting, preserving synchronous
-operation-major tiled consumption. Coordinate pixel/clip/stroke regressions
-with SPEC-008/012 and target integration with SPEC-001.
+**Ready — I3-T01 launch, 2026-10-09.** I3-T01.2 participates in the
+[single bounded task](../iterations/iteration-003-review/memory-efficiency-plan.md#i3-t01--correct-scheduling-and-reduce-rasterlayout-costs).
+Eugene requested proceeding with iteration-3 tasks and committing each step.
+The existing Specification remains `implemented`; historical ledgers below are preserved.
 
-At I3-T01 launch, record this plan's exact affected files, internal realization,
-acceptance-criterion mapping and validation commands before dependent code
-changes. This belongs to the same task and budget, not another preparation
-phase. This navigation/ownership entry does not claim those details are ready
-or add independently budgeted tasks. Its results inform remaining iteration
-work without automatically enlarging scope.
-
-The governing Specification remains `implemented`; earlier dated readiness,
-progress and closeout statements below retain their historical context. The
-plan's existing status describes its earlier task ledger, not I3-T01 readiness.
-Historical exceptions and test results do not establish iteration-3 conformance.
-No implementation, architecture approval or connected action occurs through
-this documentation update.
+- Contract mapping: BI-003, 006–009, 011, 013–014. All other criteria retain their existing dispositions.
+- Exact source/test boundary: `Sources/GiftUIRasterCore/RasterStrokeCoverage.swift`; `Tests/GiftUIRasterCoreTests/RasterStrokeCoverageTests.swift`.
+- Internal realization: Replace the Dynamic heap row with one UInt64 coverage mask per 64-pixel horizontal chunk for unit-width orthogonal paths in every profile. Preserve row-major callbacks, union coverage, joins, duplicate/zero segments and clipping. All other geometry uses the existing general rasterizer. No borrowed operation escapes.
+- Focused commands: `scripts/contracts/check-spec-012-raster-vectors.rb`; `scripts/contracts/run-spec-014.sh --profile macos-static`.
+- Run `scripts/format-swift.sh` before the repository gate, then
+  `scripts/test.sh all-hardware-free` for the integrated four-profile result.
+  Focused Swift tests use `swift test --filter` with the named test suites.
+- Order: launch plan commit → scheduling commit → raster commit → layout commit
+  → integrated evidence/disposition commit. Shared eight-active-hour ceiling;
+  dependent production edits begin only after this launch plan is committed.
+- Record correctness, operation counts, storage and exact build identities in
+  [the shared result](../iterations/iteration-003-review/i3-t01-result.md).
+  Connected timing, full stack proof and runtime graph migration remain open.
+  No deployment, flash, SPI clock change or new contract is selected.
 
 ## 2026-09-27 Landscape Fixture Correction
 

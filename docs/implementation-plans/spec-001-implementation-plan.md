@@ -30,27 +30,25 @@ superseded_by: null
 
 ## Iteration 3 correction task — 2026-10-09
 
-**Planned participation; execution details pending.** The single
-[I3-T01 task](../iterations/iteration-003-review/memory-efficiency-plan.md#i3-t01--correct-scheduling-and-reduce-rasterlayout-costs)
-owns the three corrections, shared eight-active-hour ceiling, final result and
-handoff to subsequent iteration work. Coordinate I3-T01.1 source scheduling,
-application-owned target host/workspace changes, the stress workload and
-integrated application evidence. Own the common task report; use SPEC-015 for
-host joins, SPEC-007 for layout and SPEC-014 for raster obligations.
+**Ready — I3-T01 launch, 2026-10-09.** I3-T01.1–3 / shared integration participates in the
+[single bounded task](../iterations/iteration-003-review/memory-efficiency-plan.md#i3-t01--correct-scheduling-and-reduce-rasterlayout-costs).
+Eugene requested proceeding with iteration-3 tasks and committing each step.
+The existing Specification remains `implemented`; historical ledgers below are preserved.
 
-At I3-T01 launch, record this plan's exact affected files, internal realization,
-acceptance-criterion mapping and validation commands before dependent code
-changes. This belongs to the same task and budget, not another preparation
-phase. This navigation/ownership entry does not claim those details are ready
-or add independently budgeted tasks. Its results inform remaining iteration
-work without automatically enlarging scope.
-
-The governing Specification remains `implemented`; earlier dated readiness,
-progress and closeout statements below retain their historical context. The
-plan's existing status describes its earlier task ledger, not I3-T01 readiness.
-Historical exceptions and test results do not establish iteration-3 conformance.
-No implementation, architecture approval or connected action occurs through
-this documentation update.
+- Contract mapping: SA-AC-008–015, 019, 021–025, 028–031, 035, 039, 040, 045. All other criteria retain their existing dispositions.
+- Exact source/test boundary: `Sources/SignalAnalyzerRaspberryPiARMv6/LinuxSignalAnalyzerPiProcessLoop.swift`, new `Sources/SignalAnalyzerTargetHost/SignalAnalyzerSourceSchedule.swift`, `StaticSignalAnalyzerNRFRepositoryProducer.swift` in that module; firmware `src/production_host.c`, `src/StaticPreset.swift`, `tests/production_host_tests.c`; `Tests/GiftUIHostConfigurationTests/SignalAnalyzerSourceScheduleTests.swift`. Layout and raster boundaries are owned below.
+- Internal realization: Generation-aware checked absolute deadlines; advance from the previous due time, drain at most 20 overdue transitions in order, and preserve admission-category failure checks. Stop/restart resets scheduling; Clear does not. No source pattern or physical GPIO change.
+- Focused commands: `scripts/contracts/check-spec-001-nrf-production-host.sh`; `scripts/contracts/check-spec-001-nrf-host-native-rehearsal.sh`; `scripts/contracts/check-spec-001-pi-host-native-rehearsal.sh`.
+- Run `scripts/format-swift.sh` before the repository gate, then
+  `scripts/test.sh all-hardware-free` for the integrated four-profile result.
+  Focused Swift tests use `swift test --filter` with the named test suites.
+- Order: launch plan commit → scheduling commit → raster commit → layout commit
+  → integrated evidence/disposition commit. Shared eight-active-hour ceiling;
+  dependent production edits begin only after this launch plan is committed.
+- Record correctness, operation counts, storage and exact build identities in
+  [the shared result](../iterations/iteration-003-review/i3-t01-result.md).
+  Connected timing, full stack proof and runtime graph migration remain open.
+  No deployment, flash, SPI clock change or new contract is selected.
 
 **Current maintenance readiness — 2026-10-04:** [ITERATION-002 revision 7](../iterations/iteration-002-cleanup.md) is explicitly approved. Milestone 11 below adds ready contract-preserving cleanup tasks; implementation has not started. All original milestones, task dispositions and conformance history are retained. The Specification remains `implemented`; this plan update does not reopen its approval or change its contract. [Delivery coordination](../iterations/iteration-002-cleanup/implementation-plan.md) owns cross-plan/tooling dependencies. Retention production tasks remain behind the separate upstream gates. Earlier status statements and matrix baseline evidence are historical; new cleanup task evidence is pending.
 

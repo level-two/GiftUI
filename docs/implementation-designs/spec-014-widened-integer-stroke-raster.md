@@ -6,7 +6,7 @@ status: current
 authors:
   - codex
 created: 2026-09-13
-updated: 2026-09-13
+updated: 2026-10-09
 implementation_plan: ../implementation-plans/spec-014-implementation-plan.md
 related_future_work: []
 related_explorations: []
@@ -185,3 +185,16 @@ The owning upstream corpus remains
 [`raster-vectors.yaml`](../../Tests/ContractFixtures/SPEC012/raster-vectors.yaml),
 and the original dependency history remains in the
 [T4.4 blocker evidence](../../Tests/ContractFixtures/SPEC014/Evidence/milestone-4/spec-012-stroke-vector-blocker.md).
+
+## I3-T01 bounded orthogonal coverage — 2026-10-09
+
+For validated unit-width axis-aligned paths, use one UInt64 mask for each
+successive 64-pixel chunk of a clipped row. Segment coverage ORs bits; joins use
+the existing exact predicate only around vertices. A unit-radius doubled disk
+contains no half-integer pixel centers, so round caps/joins add no pixels.
+Emit set bits in ascending order, then advance the chunk and row. Storage is
+constant (one 8-byte mask and scalar counters), independent of surface width;
+no Array or borrowed pointer survives the synchronous call. Extreme coordinates
+that cannot safely subtract one retain the general path. Nonorthogonal/wider
+strokes keep the existing widened arithmetic. This replaces the Dynamic-only
+heap row while making the same optimization available to Static/Embedded.

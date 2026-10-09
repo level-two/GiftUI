@@ -26,7 +26,7 @@ all remaining iteration work.
 
 | Work | Current readiness / missing prerequisite |
 | --- | --- |
-| I3-T01 correction package | Planned; start with its bounded launch planning, then implement. No additional general preparation phase is required. |
+| I3-T01 correction package | Active; launch plan ready. Implement scheduling, raster and layout in order. No additional general preparation phase is required. |
 | I3-04 runtime derivation, ME-05/06 | Concrete ownership/lifetime realization, complete resource bounds, applicable contract approvals and executable implementation tasks remain unresolved. Its next execution package and numeric effort ceiling are not yet fixed. I3-T01 informs this work but is not its only prerequisite. |
 | ME-08 integrated validation | Waits for the adopted implementations and exact artifact identities; connected evidence remains separately authorized. |
 | ME-09 closure/handoff | Waits for the criterion dispositions and maintainer decision; no automatic iteration-4 extraction. |
@@ -74,7 +74,7 @@ ME-06 onward is implementation and conformance, not an extension of preparation.
 
 ## I3-T01 — Correct scheduling and reduce raster/layout costs
 
-**Status:** planned; production implementation has not started.
+**Status:** active; launch planning ready, production corrections pending.
 **Kind:** one bounded production implementation task, not an experiment.
 **Scope mapping:** I3-05 and its internal host/backend corrections; ME-05
 readiness, ME-07 implementation and the affected portion of ME-08 validation.
@@ -126,7 +126,7 @@ new tasks or independent budgets:
 
 At launch, the executor must freeze the exact affected files, selected internal
 algorithms, criterion-to-check mapping and commands in those plans before the
-dependent code changes. These details are **not yet decided**; the three
+dependent code changes. The per-Spec launch entries now freeze these details; the three
 subtask descriptions are outcomes, not fully specified algorithms. Reuse
 existing contract checks and add targeted regressions where needed, with no
 separate approval loop for ordinary derived planning. A required contract or
@@ -187,8 +187,9 @@ usage in this entry when execution begins and after each work session. Exclude
 waiting for maintainer input or unavailable hardware and report it separately.
 The budget does not reset at a subtask, commit or session boundary.
 This is an executor-selected work ceiling, not a delivery-time guarantee or a
-claim that the maintainer approved that particular number. No I3-T01 execution
-time has been recorded yet; documentation clarification is not a launch.
+claim that the maintainer approved that particular number. Execution launched on 2026-10-09 at 16:43 UTC, with 15 minutes charged for
+launch orientation/source inspection before that timestamp. Cumulative usage
+will be updated in the shared result; no waiting time has been charged.
 The eight-hour limit covers I3-T01 only, not the whole iteration. Subsequent
 work still needs a concrete bounded execution plan; this record does not
 promise a total iteration duration or authorize an indefinite continuation.

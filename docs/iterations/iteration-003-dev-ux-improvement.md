@@ -54,7 +54,8 @@ The planned [I3-T01 implementation task](iteration-003-review/memory-efficiency-
 groups source scheduling, Embedded raster and layout lookup corrections into
 one bounded package with three subtasks and one final disposition. It decomposes
 I3-05 within the existing scope; it is not another experiment or completion of
-I3-04 runtime derivation. Production implementation has not started.
+I3-04 runtime derivation. Launch planning is ready; execution and validation are tracked in the
+[shared result](iteration-003-review/i3-t01-result.md).
 The plan's [current readiness table](iteration-003-review/memory-efficiency-plan.md#start-here)
 and [implementation ownership](iteration-003-review/memory-efficiency-plan.md#implementation-plan-ownership-and-launch-details)
 distinguish executable next work from unresolved runtime design, integrated
