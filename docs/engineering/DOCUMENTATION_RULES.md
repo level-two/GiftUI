@@ -372,9 +372,15 @@ all of the following are true:
   legacy tree into an active archive directory.
 
 Availability through that durable tagged history satisfies preservation for
-retired mixed legacy material. This exception does not permit deletion of
-Proposal, RFC, ADR, Specification, Future Work, Exploration, Spike, or
-implementation-record artifacts governed by this lifecycle.
+retired mixed legacy material. Lifecycle artifacts ordinarily remain in the
+active tree. A maintainer may explicitly authorize archive-only preservation of
+non-authoritative research and preparation during a named history cleanup,
+subject to the same durable tag, inventory, retrieval and active-link conditions
+above. Preserve current approvals and contracts in the active tree; reserve all
+archived IDs and retain one useful disposition index instead of empty per-artifact
+placeholders. This exception does not erase reasoning or authorize lifecycle
+transitions. The [2026-10-09 preparation cleanup](../iterations/iteration-003-review/preparation-archive.md)
+records its explicit authorization and exact boundary.
 
 Rejected, deprecated, and superseded artifacts remain available. A successor
 changes current authority; it does not erase history.

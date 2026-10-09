@@ -11,3 +11,5 @@ It is not a backlog commitment or architectural authority.
 Use `fw-NNN-short-slug.md` and the next unused `FW-NNN` ID. Cross-link the
 source artifact in the same change. A Future Work item may remain short and
 does not require a feature-manifest entry merely to be captured.
+
+FW-034 is reserved in the [preparation archive](../iterations/iteration-003-review/preparation-archive.md); FW-035 is retained by the reconstructed preparation. The next available Future Work ID is FW-036.
