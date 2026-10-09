@@ -51,8 +51,8 @@ automatic experimental continuation. This is an executor-selected ceiling.
 
 | Step | Deliverable | Exit |
 | --- | --- | --- |
-| I3-T02.1 | Scope and authority routing | Commit this launch; separate runtime ownership from external package/API delivery. |
-| I3-T02.2 | Focused draft RFC under accepted PROPOSAL-007 and I3-04 | Concrete record/identity, state/capture, publication/teardown and resource model; alternatives and contract deltas. Commit design with reciprocal links. |
+| I3-T02.1 | Scope and authority routing | Complete: `769ea2de`; separate runtime ownership from external package/API delivery. |
+| I3-T02.2 | [Draft RFC-014](../../rfcs/rfc-014-runtime-derived-records-and-scoped-model-access.md) | Authored; concrete ownership and conditional resource model; review pending. |
 | I3-T02.3 | Review and conditional implementation sequence | Every blocking question has its reason, owner contract and required resolution; no unapproved task marked ready. Commit final disposition. |
 
 Runtime representation, state access and capture lifetime form one coherent

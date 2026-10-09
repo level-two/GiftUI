@@ -10,6 +10,7 @@ updated: 2026-10-09
 proposal:
   - PROPOSAL-007
 related_rfcs:
+  - RFC-014
   - RFC-002
   - RFC-008
   - RFC-009
@@ -53,6 +54,13 @@ candidate designs, alternatives and experimental reasoning remain in the
 [preparation archive](../iterations/iteration-003-review/preparation-archive.md).
 No candidate is accepted by this reconstruction. This is not ready for RFC
 approval or implementation planning.
+
+**Runtime design routing — 2026-10-09:** [RFC-014](rfc-014-runtime-derived-records-and-scoped-model-access.md)
+owns the focused runtime record/identity and scoped model/capture recommendation
+from I3-T02. This RFC retains external API, package, assembly and setup decisions.
+The earlier runtime candidate below is historical evidence; RFC-014 neither
+adopts it nor reopens its experiments. Its blockers must be resolved before
+runtime adoption, independently of the external package decision.
 
 ## Problem and authority
 

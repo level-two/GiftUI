@@ -14,7 +14,7 @@ iterations:
 features:
   external-application-integration:
     title: External Application and Backend Integration
-    # PROPOSAL-007 accepted; RFC-013 remains draft. Prior experiments are archived.
+    # PROPOSAL-007 accepted; RFC-013/014 remain draft. Prior experiments are archived.
     # Current one-candidate assessment: docs/iterations/iteration-003-review/candidate-go-no-go.md.
     # 4 MHz NO-GO preserved; 32 MHz review finds no further unavoidable architecture limit.
     # Scheduler/CPU/lifetime adoption blockers remain; RFC-013 stays draft.
@@ -24,6 +24,7 @@ features:
       - PROPOSAL-007
     rfcs:
       - RFC-013
+      - RFC-014
     adrs: []
     specs: []
     dependencies:

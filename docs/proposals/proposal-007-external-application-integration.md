@@ -10,6 +10,7 @@ updated: 2026-10-09
 proposal: []
 related_rfcs:
   - RFC-013
+  - RFC-014
 related_adrs:
   - ADR-006
   - ADR-007
@@ -269,3 +270,8 @@ under FW-027/031/032/033 is not added to this investment.
 - [Consumer study](../explorations/exp-002/preparation-2026-10-05/consumer-study.md)
 - [FW-016](../future-work/fw-016-post-mvp-package-distribution-topology.md), [FW-030](../future-work/fw-030-application-integration-experience.md)
 - [EXP-002](../explorations/exp-002-backend-and-application-integration-shapes.md), [SPIKE-014](../spikes/spike-014-external-consumer-access-baseline.md)
+
+The focused [RFC-014](../rfcs/rfc-014-runtime-derived-records-and-scoped-model-access.md)
+now develops the iteration-3 runtime record/model/capture decision separately
+from RFC-013 external delivery. Both remain draft; this routing does not approve
+a representation, resource budget or production migration.
