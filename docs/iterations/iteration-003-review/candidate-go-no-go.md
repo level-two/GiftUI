@@ -1,9 +1,16 @@
 # One-candidate adoption assessment
 
-Status: **running**. Parent: [draft RFC-013](../../rfcs/rfc-013-external-application-and-backend-integration.md).
+Status: terminal **NO-GO for adoption**; RFC review verdict **not ready**.
+Parent: [draft RFC-013](../../rfcs/rfc-013-external-application-and-backend-integration.md).
 Candidate: **runtime-emitted records with owner-resolved handles**, defined below.
 This is the RFC's runtime candidate appendix and a finite adoption assessment,
 not an accepted architecture, Specification or implementation plan.
+
+**Decisive result:** the retained nRF rendering/transfer path needs at least
+**508.48 ms for background fills alone**, against the 250 ms frame budget.
+The root background alone needs 281.6 ms. The assessment is closed; no successor
+study or production migration is initiated. The frozen design below is retained
+so the rejection has an exact scope. See the terminal review at the end.
 
 ## Authorization, scope and stopping rule
 
@@ -219,7 +226,7 @@ and [FW-032](../../future-work/fw-032-nrf-performance-improvement.md) retain
 performance provenance. The assessment may identify a necessary different
 decision, but creates no automatic work item, follow-up experiment or milestone.
 Results of [SPIKE-068](../../spikes/spike-068-candidate-transfer-bound.md) feed this
-record. The terminal review and gate dispositions will be recorded here.
+record. The terminal review and gate dispositions follow below.
 
 Potential ADR extraction if supported: runtime record ownership/publication and
 owner-resolved State/capture lifetime. No ADR is accepted by this assessment.
@@ -230,3 +237,95 @@ owner-resolved State/capture lifetime. No ADR is accepted by this assessment.
 - [Coordination plan](memory-efficiency-plan.md)
 - [Baseline and historical source analysis](feasibility-decision.md)
 - [Accepted investment](../../proposals/proposal-007-external-application-integration.md)
+
+## Terminal review — 2026-10-09
+
+**Verdict: not ready. Adoption decision: NO-GO.** Reject this complete candidate
+as a solution to iteration 3 while it preserves the present rendering/transfer
+strategy. This is stronger than a missing benchmark: its mandatory wire work
+already violates the frame budget even if all computation were instantaneous.
+It does not establish that runtime records or typed owner handles are impossible.
+
+### B1 — decisive performance blocker
+
+Location: candidate Service step 4 and its retained operation/transport strategy.
+[SPIKE-068](../../spikes/spike-068-candidate-transfer-bound.md), committed in
+`0afc0b96`, rehearsed current generated nRF semantics, common Layout and shared
+Render on the host. The normal running screen resolves to **320 × 220** root
+bounds and emits **nine background fills totaling 127,120 clipped pixels**.
+Canvas strokes and glyph pixel costs were omitted, making the count conservative.
+
+The target transport encodes two RGB565 bytes per pixel, and
+[`app.overlay`](../../../firmware/nrf52840/applications/signal-analyzer-static/app.overlay)
+sets the display SPI limit to 4,000,000 bits/s. The current operation-major
+endpoint transmits each operation before the next, including overlapping fills.
+The driver sends those bytes directly; it has no rectangle-fill offload or
+retained-pixel comparison. Therefore:
+
+`127120 × 2 × 8 / 4000000 = 0.50848 seconds per frame, for fills alone`.
+
+Even removing every overlapping fill leaves the root background's
+`320 × 220 × 2 × 8 / 4000000 = 0.2816 seconds`. Both exceed 250 ms.
+The nine fills alone imply an optimistic upper bound of about **1.97 FPS**.
+Doubling the bus rate hypothetically would still take 254.24 ms for those fills,
+before commands, waveforms, glyphs or CPU time; no bus change was tested or made.
+
+This argument depends on the explicitly preserved layout/operation/transfer
+semantics. A new damage policy, operation coalescing or transport may change it;
+those would change the frozen candidate and cannot be counted as probe repairs.
+Faster semantic traversal, smaller captures, direct record lookup or stack-frame
+repairs cannot remove these wire bytes. More profiling of this candidate is not
+needed to establish this rejection.
+
+Required resolution **before reconsidering adoption**, not an automatically
+scheduled task: explicitly select a materially different rendering/transfer
+strategy capable of fitting the existing requirement, or explicitly change the
+requirement/target commitment through its approval gates. Memory improvement
+alone does not resolve B1. This report selects neither alternative.
+
+### B2 — safety and compatibility remain unproved
+
+Location: State/capture resolver integration, complete construction/service/
+teardown stack, and supported compositions. No complete runtime-derived image
+was built. Owner-handle compatibility and non-escape, state replacement/failure
+semantics, callback/IRQ closure and exact resource ceilings remain unproved.
+The native fixture is a combined source control with imports removed, not
+separate-owner firmware. It supplies geometry only, not stack, heap, ABI or
+target timing evidence. These are blockers to adoption, not new follow-up tasks.
+
+| Frozen gate | Terminal disposition |
+| --- | --- |
+| G1 — both applications/all profiles/runtime derivation and semantic parity | **Unproved**; no runtime-derived replacement was implemented. |
+| G2 — safe complete storage/lifetimes/stack and resource ceilings | **Unproved**; no supported candidate artifact or whole-path proof. |
+| G3 — sustained acquisition and four-FPS presentation | **Failed necessary condition** on nRF; no paired workload pass claimed. |
+
+An analyzer failure rejects the combined candidate. Counter, macOS and Pi
+implementation/measurement were not continued after the decisive failure.
+The rejection does not reclassify their missing evidence as measured failures.
+Existing MVP exceptions and implemented feature statuses remain historical
+authority, and no iteration criterion is marked met by this assessment.
+
+### Execution, validation and stop
+
+- Candidate/gates frozen before compilation in **`7d4e8f59`**.
+- Experiments stopped at **15:24:23 UTC**, 12 minutes 57 seconds after launch.
+- Terminal report and verification completed at **15:28:54 UTC**, 17 minutes
+  28 seconds after launch, within the 60-minute ceiling.
+- Two explicit compiler-driver invocations and one native execution; one probe
+  repair. The first build omitted the composition enum and a rectangle unwrap;
+  its failure is retained and is not classified as a candidate defect.
+- Compiler/linker subprocesses were not individually traced. The entire
+  24-invocation allowance is conservatively charged closed; no exact child count
+  or unused experiment allowance is claimed. One of two repairs was used.
+- Retained source/recipe hashes verified against the working tree, rectangle
+  areas and byte/time arithmetic checked, and raw logs preserved in the
+  [evidence directory](../../../experiments/spike-068-candidate-transfer-bound/evidence/decision.json).
+- Governance and whitespace validation passed. Production sources, authoritative
+  ADRs/Specs and hardware were not changed. No production test pass is claimed
+  from this disposable probe.
+
+This is the final assessment, not “inconclusive, therefore do another study.”
+No new evidence request, replacement candidate, ADR extraction, implementation
+plan, connected action or preparation phase follows automatically. The existing
+iteration remains active with its delivery gates unmet; closing this assessment
+does not close or abandon the iteration.

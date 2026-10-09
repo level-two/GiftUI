@@ -123,3 +123,12 @@ layout scans as source-confirmed mechanisms with unmeasured timing shares. A
 full-frame buffer added without other redesign exceeds the selected RAM ceiling.
 The assessment ends inconclusive; no algorithm, resource exception, promotion or
 experimental continuation is approved.
+
+The subsequently authorized [one-candidate assessment](../iterations/iteration-003-review/candidate-go-no-go.md)
+ended **NO-GO**. Its native geometry probe and source-derived SPI bound establish
+254,240 background-fill bytes per normal frame, requiring at least 508.48 ms at
+the configured 4 MHz. Even the root fill alone needs 281.6 ms. These are wire
+lower bounds, not target timing measurements. They rule out satisfying 250 ms
+through graph/layout/CPU optimization alone while retaining those transfers.
+This necessary design blocker stays in the candidate report; it is not deferred
+as optional work here. No algorithm is selected and no additional study is opened.

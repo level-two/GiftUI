@@ -147,6 +147,14 @@ runtime decision boundary, not an approved design. Its
 transfer-cost condition within the same single budget. Historical inconclusive
 findings remain unchanged; this explicit authorization is the continuation basis.
 
+The assessment is now terminal **NO-GO** and the RFC review verdict remains
+**not ready**. SPIKE-068 demonstrates that the candidate's retained nRF
+operation-major transfer strategy requires at least 508.48 ms for background
+fills alone, exceeding the 250 ms budget. Complete runtime/lifetime safety and
+cross-profile equivalence remain unproved. Reconsideration requires an explicit
+different rendering/transfer or requirement decision; this result does not
+authorize more experiments, implementation or a successor preparation phase.
+
 [FW-016](../future-work/fw-016-post-mvp-package-distribution-topology.md) and
 [FW-030](../future-work/fw-030-application-integration-experience.md) feed the
 accepted investment. [EXP-002](../explorations/exp-002-backend-and-application-integration-shapes.md)

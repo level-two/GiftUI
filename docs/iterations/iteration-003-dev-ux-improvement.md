@@ -39,6 +39,11 @@ with fixed gates, one budget and no automatic successor. This is an execution
 and disposition update under revision 5; delivery criteria and feature approval
 gates are unchanged.
 
+That assessment is terminal **NO-GO**: the retained nRF fill transfers alone
+exceed the frame budget. No automatic preparation continuation is open, and no
+delivery criterion is marked met. The packet distinguishes this demonstrated
+cost failure from unproved runtime safety and records the exact decision boundary.
+
 ## Goal
 
 Establish a safe, measured runtime-derived Signal Analyzer and finite counter

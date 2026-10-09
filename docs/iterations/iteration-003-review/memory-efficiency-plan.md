@@ -183,3 +183,10 @@ ends experiments early. This specific attempt overrides the three-way reporting
 rule above without rewriting that historical outcome. Later production and
 iteration closure gates remain unchanged. New findings are report findings,
 not automatically additional ME activities or evidence tasks.
+
+**Terminal update:** the one-candidate assessment ended **NO-GO**. SPIKE-068
+establishes a 508.48 ms nRF background-fill wire lower bound against 250 ms;
+G1/G2 remain unproved. ME-05 adoption readiness is not established. Preparation
+is stopped. A different rendering/transfer strategy or a changed requirement is
+a maintainer decision, not a new automatically opened ME step. The same candidate
+must not be reopened merely to gather more profiling or stack evidence.
