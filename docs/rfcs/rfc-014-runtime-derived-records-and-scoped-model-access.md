@@ -54,6 +54,9 @@ and its unresolved proofs. It does not claim a new measured feasible candidate.
 The earlier NO-GO and stopped experiment budgets remain intact.
 [The design review and conditional adoption sequence](../iterations/iteration-003-review/i3-t02-design-review.md)
 record corrections and the remaining approval blockers.
+The subsequent [SPIKE-069 result](../../experiments/spike-069-scoped-model-access/evidence/result.md)
+provides bounded compiler/lifetime evidence and exposes a concrete source/API
+choice; it does not close B1 or establish application feasibility.
 
 ## Summary
 
@@ -61,13 +64,16 @@ Evaluate the real portable declarations through Semantic Core's traversal and
 emit bounded records at runtime. Retain complete structural identity separately
 from each revision's record indices. Keep live models in address-stable typed
 owner storage; freeze application data through post-layout Canvas invocation.
-Stage compact capture views instead of copying the analyzer's full capture into
-nested declaration bodies. Keep existing owner boundaries and transaction order.
+Investigate owned snapshot keys in staged Canvas payloads, resolving fresh
+scoped reads under the live owner instead of copying the analyzer's full capture
+into nested declaration bodies. The source lowering or API change remains an
+explicit choice. Keep existing owner boundaries and transaction order.
 
 The recommendation is to pursue this representation at the contract-design
 boundary, subject to B0–B4 below. This is not a recommendation to approve an
 unsafe or incomplete implementation. No production change or proof experiment
-is part of this RFC-authoring task.
+was part of the original RFC-authoring task. Separately authorized SPIKE-069
+has now completed; its unused budget does not authorize continuation or adoption.
 
 ## Context
 
@@ -218,9 +224,11 @@ Keep owned `SignalCapture` values and their snapshot semantics for existing
 Domain/publication APIs. Do not reinterpret that `Equatable, Sendable` value as
 an alias to mutable storage.
 
-Propose a separate internal presentation capture view: a small, read-only value
-containing immutable metadata, snapshot revision and a reference to the active
-capture lease. The model exposes this view only during bound frozen evaluation.
+Propose a separate internal presentation capture view: a small, read-only borrow
+containing immutable metadata and snapshot revision, valid only under the live
+owner's frozen access scope. Expose it during bound evaluation or a scoped
+Canvas invocation, not as an escaping stored declaration value. SPIKE-069
+demonstrates this distinction for one concrete nonescapable candidate.
 The portable waveform helpers consume that view on all profiles; profile
 storage changes remain below it. A typed application read contract exposes
 metadata and indexed transition values without importing a Runtime module into
@@ -230,13 +238,18 @@ firmware offsets or a runtime lease type. This changes the analyzer's maintained
 contract and requires SPEC-001 review. It is not an unexplained replacement of
 `viewModel.state.capture` by a different lifetime under the same type.
 
-The lease spans body expansion, Layout and all Canvas invocations. The snapshot
-cannot change until the last invocation releases its capture. Generated Static
-Canvas payloads copy only this approved small view and scalar parameters; they
-retain neither the model nor a full 404-record capture. Ordinary captured values
-still preserve capture-at-declaration semantics. Dynamic wrappers are bounded
-and released at the same logical point. Drawing plans contain copied geometry,
-not a capture view, and survive through synchronous rendering independently.
+The freeze lease spans body expansion, Layout and all Canvas invocations. The
+snapshot cannot change until the last invocation/discard releases its pin.
+Proposed Static Canvas payloads hold an owned typed snapshot key and scalar
+parameters; they retain neither a borrowed view nor a full 404-record capture.
+The key identifies the immutable snapshot selected at declaration, not whatever
+capture happens to be current at invocation. The live owner resolves it and
+supplies a fresh scoped read view for that invocation. Exact checked lowering
+or a revised Canvas contract is still B1/B4; this is not an approved source-
+compatible realization. Ordinary owned captures retain capture-at-declaration
+semantics. Dynamic wrappers would remain bounded and release at the same logical
+point. Drawing plans contain copied geometry, not a capture view, and survive
+through synchronous rendering independently.
 
 During replacement, old and staged models can require different captures.
 **Proposed architecture change, blocked by ADR-034:** budget an additional
@@ -254,6 +267,14 @@ alone: it needs an explicitly reviewed successor/amendment to that decision,
 preserving five-second retention and its other semantics (B0). Any later overlay optimization needs
 its own lifetime evidence and cannot be used to make this initial sum fit.
 
+The [SPIKE-069 ownership candidate](../spikes/spike-069-scoped-model-access.md#candidate-ownership-contract-proposed)
+makes the retained-model term explicit: with R distinct detached snapshots
+still application-owned, conservative non-sharing backing needs **4 + R** slots,
+or **(4 + R) × 6,464 bytes**, plus metadata/control. Four slots require a proved
+R=0 for the selected application lifecycle. The experiment models R=1 with five
+slots; it does not select R for either application or approve that reservation.
+Pool exhaustion must precede replacement commit and preserve the old association.
+
 The counter captures its scalar value by value. It needs no analyzer capture
 pool and must not import analyzer owners.
 
@@ -269,12 +290,45 @@ Published semantics and interaction records contain no model/capture pointers.
 This narrows the framework escape surface but does not make copyable Swift
 values nonescaping. The existing `StaticObservableModelStorage.withBoundState`
 uses `withUnsafeMutablePointer` captured by a read closure and permits generic
-results; it is a concrete audit target, **not proof of an observed production
-use-after-free**. B1 requires an actual enforceable borrowing/lowering contract
+results. SPIKE-069 compiled return, outer-storage and delayed-closure escape
+controls on all four configurations, including a Void callback and a fixed
+typed pointer route. This refutes callback restriction alone as enforcement,
+**not proof of an observed production use-after-free**. B1 requires an actual enforceable borrowing/lowering contract
 and negative controls for every framework-owned route. Unsupported direct State
 wrapper use remains SPEC-010 client misuse; no ordinary lifecycle failure is
 converted into a getter trap. If safety needs a new portable restriction or
 API, expose that change for review instead of assuming source compatibility.
+
+### B1 evidence and remaining source decision
+
+SPIKE-069's nonescapable borrow compiles on all four configurations with the
+experimental `LifetimeDependence` flag; twenty negative controls reject return,
+outer storage, escaping closure, overlapping mutation and ordinary declaration
+storage. The compiler also warns that the selected `@lifetime` spelling is
+unsupported and recommends the underscored spelling. Production compiler policy
+and exact supported declarations therefore remain open.
+
+Using all actual GiftUI declaration sources, an owned body made from scoped
+scalar reads compiles; capturing the borrowed view in today's actual Canvas
+is rejected on all four configurations. Sixteen lifetime-model cases pass in
+each native profile, and Pi/nRF objects compile. These are not actual Semantic
+Core/observable-owner executions or Dynamic class-owner equivalence evidence.
+The section-GC nRF fixture has no retained allocator relocations, but no full
+firmware, application stack or complete ownership proof was produced.
+
+Two source realizations remain review candidates:
+
+| Candidate | Required design before adoption | Tradeoff / evidence boundary |
+| --- | --- | --- |
+| Preserve portable source through checked finite lowering | Define accepted model/capture uses; diagnose escapes; transform staged captures into pinned keys; prove every generated route and Dynamic equivalence | Preserves the source objective, adds compiler-tooling obligations; A does not refute this, but no such checker/lowerer was built |
+| Expose scoped model reads and snapshot-aware Canvas invocation | Review exact portable State/body/Canvas declarations and compatibility; supply a fresh borrow at invocation from a declaration-selected key | B supports the internal mechanism, but the existing escaping Canvas signature cannot directly carry its borrowed view |
+
+Recommend scoped reads plus delayed owned keys as the internal mechanism to
+develop. Do not infer selection of either public contract. Neither approach
+permits hidden pre-expanded graphs, an unbounded owner pool, arbitrary unsafe
+backing aliases or unsafe getters after teardown. The next design decision is
+the source-enforcement boundary alongside application ownership/cardinality;
+additional full-image benchmarking cannot decide that API tradeoff.
 
 ### Publication and retirement
 
@@ -301,17 +355,19 @@ pointers and never by replaying admitted mutations.
 | GiftUIObservableState | Bind/reconcile/replace/remove and registration outcomes | No Interaction or application import |
 | GiftUIRuntimeCore + profile modules | Sequence owners, own concrete banks/slots/leases and join action target generations | Preserve current acyclic owner graph |
 | GiftUILayout / GiftUIDrawing / Render owners | Existing layout, synchronous Canvas and copied plan/operation meaning | Consume borrowed inputs; no model resolution in Render/backend |
-| Signal Analyzer model/domain adapters | Owned capture versus scoped presentation view and four-slot snapshot storage | Requires explicit ADR-034 and application contract amendment |
+| Signal Analyzer model/domain adapters | Owned capture versus scoped presentation reads and explicitly bounded snapshot storage | Requires explicit ADR-034 and application contract amendment; four slots alone assume R=0 |
 | Host configuration / target composition | Exact application capacities, backing, validation, activation/quiescence | Counter composition stays separate; no package extraction here |
 
 ## Public API Impact
 
 Retain `View.body`, `@State`, typed Button actions and the portable Canvas source
-shape as the design objective. New public resolver arguments are not proposed.
-Private binding routes and an application-internal capture-view surface change;
-exact declarations are due at Spec review. B1 may refute source-compatible
-realization, in which case this RFC must be revised before approval. A different
-State API cannot be introduced as an implementation detail.
+shape as the design objective. No new public resolver argument is selected.
+SPIKE-069 shows that the concrete nonescapable read view cannot be directly
+captured by the existing Canvas declaration. Checked finite lowering could
+preserve source shape; the explicit-scoped-access alternative changes it.
+Choose that semantic/source boundary in this RFC before approval, with exact
+reviewed declarations carried into the affected Specs. A different State or
+Canvas API cannot be introduced as an implementation detail.
 
 ## Capabilities Impact
 
@@ -362,7 +418,7 @@ charged; no implicit use of leftover platform RAM is permitted.
 | Candidate + published exact path entries | 3,024 | 2 × 126 × 12; count of prefixes must be proven, not equated with endpoints |
 | Candidate + published payload pools | 8,192 | 2 × 4,096, including owned text and modifier payloads; adequacy unproved |
 | Layout + Render/text | 7,840 | Existing 3,136 + 4,704, including I3-T01 indexes during Layout only |
-| Canvas / Path / drawing plan | 16,976 | Existing 160 + 3,280 + 13,536; capture-view fit remains B2 |
+| Canvas / Path / drawing plan | 16,976 | Existing 160 + 3,280 + 13,536; snapshot-key/scalar payload and invocation bookkeeping fit remain B2 |
 | Observable + Interaction | 768 | Existing 256 + 512; copied exact committed keys may require an explicit increase |
 | Active/sealed admission | 7,680 | Existing 2 × 3,840, never aliased to snapshots |
 | Pointer / coordinator / failure | 384 | Existing 96 + 192 + 96; expanded lease bookkeeping fit must be verified |
@@ -379,6 +435,11 @@ Do not silently increase any conditional row if it fails. Revise the reservation
 proposal and dependent contracts explicitly. The extra replacement snapshot is
 a proposed change to ADR-034 as well as SPEC-001/013/015's exact three-slot
 capture reservation; existing authority wins until explicitly changed.
+The table assumes R=0. For a non-sharing analyzer pool with R retained detached
+snapshots, add at least **6,464 × R** transition bytes plus additional model,
+lease and control metadata; the existing 1,024-byte row is not automatically
+sufficient. SPIKE-069's five-slot fixture is evidence about one ownership
+sequence, not permission to add this term to the approved budget.
 The table is incomplete if either application can retain more model/capture
 backing than its stated live/staged allowance; B2 must establish the actual
 finite bound and charge it before approval. The 95,104-byte I3-T01 linked RAM is
@@ -457,14 +518,15 @@ of these risks is resolved by the conditional RAM sum.
 | ID | Blocking issue | Required resolution |
 | --- | --- | --- |
 | B0 | Proposed fourth capture slot contradicts accepted ADR-034 | Explicitly choose an ADR-034 amendment/successor that preserves its retention semantics, or revise the proposal with proven three-slot replacement. Do not modify limits first. |
-| B1 | Enforceable State/model/capture access and callback isolation | Exact compatible declarations/lowering; prove live context before access, no framework escape, no overlapping exclusive borrow, finite routes and zero heap on supported compilers. Revise RFC if portable API change is required. |
+| B1 | Enforceable State/model/capture access and callback isolation | SPIKE-069 refutes callback restriction alone and supports a bounded borrow/key fixture. Choose checked source-compatible lowering or explicit scoped API changes; settle compiler support, live backing/application ownership and every generated route. Full no-escape/exclusivity/zero-heap proof remains open. |
 | B2 | Complete record/payload/path/interaction and model storage | Derive exact worst-case counts/codecs, trie fanout and externally retained model cardinality for both apps, all source cases; validate every proposed byte row, replacement capture and generated Canvas capture size; approve resulting SPEC-001/013/015 limits. |
 | B3 | Complete supported-image stack and Dynamic cost | Bound recursive/indirect/callback/IRQ paths and construction/service/teardown; measure matched Dynamic memory. No unknown edge may be recorded as zero. |
 | B4 | Concrete supported lowering and migration completeness | Inventory graph producers/consumers and replace them with actual runtime traversal; show bounded Static callable/model lowering and full four-profile application behavior. |
 
 B0 is an explicit architectural decision; B1/B2 are design/contract readiness blockers; B3/B4 include evidence required
 before adoption. Which evidence can precede exact Spec approval must be explicitly
-bounded and authorized as a separate experiment; this RFC launches none.
+bounded and authorized as a separate experiment. SPIKE-069 completed under its
+own authorization; this RFC opens no subsequent experimental allowance.
 The preserved 4 MHz failure is an additional **iteration performance blocker**,
 not evidence that record emission is intrinsically impossible. Resolving it
 requires a separately selected transport/rendering or requirement decision.
@@ -476,8 +538,10 @@ iteration 4 already own external API/package/setup decisions; revisit after
 runtime contracts stabilize. Existing FW-035 owns future generated frontends;
 it cannot serve as the runtime-derivation implementation. No stopped experiment
 is resumed. The separately authorized
-[SPIKE-069](../spikes/spike-069-scoped-model-access.md) tests B1 escape enforcement
-and records a proposed finite model/snapshot ownership contract. B1/B2 remain
+[SPIKE-069](../spikes/spike-069-scoped-model-access.md) completed B1 escape controls
+and recorded a proposed finite model/snapshot ownership contract. Its compiler
+counterexamples and bounded positive evidence inform the source decision above.
+B1/B2 remain
 blockers here; the Spike does not approve a buffer count, portable API change
 or production migration, and its allowance does not renew earlier budgets.
 

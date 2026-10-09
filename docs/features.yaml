@@ -18,7 +18,7 @@ features:
     # Current one-candidate assessment: docs/iterations/iteration-003-review/candidate-go-no-go.md.
     # 4 MHz NO-GO preserved; 32 MHz review finds no further unavoidable architecture limit.
     # I3-T02 produced draft RFC-014; ownership/resource adoption blockers remain.
-    # SPIKE-069: bounded B1 compiler/lifetime evidence; no architecture adoption.
+    # SPIKE-069 completed: borrow/key evidence; B1 source/lowering choice remains open.
     # Acceptance provenance: docs/iterations/iteration-003-review/proposal-007-acceptance.md.
     status: rfc
     proposal:

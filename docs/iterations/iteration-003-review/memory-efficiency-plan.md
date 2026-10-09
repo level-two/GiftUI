@@ -19,10 +19,13 @@ Specifications remain authority; the generated production graph is retained.
 
 **Current disposition: I3-T01 passed within its hardware-free boundary.**
 **I3-T02 is delivered with named blockers** in [draft RFC-014](../../rfcs/rfc-014-runtime-derived-records-and-scoped-model-access.md)
-and its [design review](i3-t02-design-review.md). The next unresolved decision
-is the three-versus-four capture-slot decision under ADR-034 (B0), alongside
-the exact Static binding/capture lifetime and external-model ownership bound
-(B1/B2), before runtime implementation. No experiment is automatically launched.
+and its [design review](i3-t02-design-review.md).
+[SPIKE-069](../../spikes/spike-069-scoped-model-access.md) is completed with
+bounded borrow/key evidence and actual Canvas compatibility counterexamples.
+The next decision is checked source-compatible lowering versus explicit scoped
+API changes (B1), alongside the application-retained model bound (B2). Those
+inform three-versus-four-plus-retired capture storage under ADR-034 (B0).
+Runtime implementation remains blocked; no experiment is automatically launched.
 The [findings summary](preparation-findings.md) and stopped studies remain
 historical inputs; this result does not reopen their budgets or experiments.
 
@@ -30,13 +33,12 @@ historical inputs; this result does not reopen their budgets or experiments.
 | --- | --- |
 | I3-T01 correction package | Complete within the hardware-free boundary; [result and residual gates](i3-t01-result.md). |
 | I3-T02 runtime design, I3-04 / ME-05 | Delivered with named blockers: [RFC-014 review and contract map](i3-t02-design-review.md). |
+| RFC-014 B1 follow-up | SPIKE-069 terminal; source-enforcement/API and ownership decisions remain. No full B1 or feasibility closure. |
 | ME-06 runtime implementation | Blocked on the resulting architecture/contract gates and complete resource/lifetime evidence; no ready migration plan yet. |
 | ME-08 integrated validation | Waits for the adopted implementations and exact artifact identities; connected evidence remains separately authorized. |
 | ME-09 closure/handoff | Waits for the criterion dispositions and maintainer decision; no automatic iteration-4 extraction. |
 
-## I3-T02 — Runtime derivation design package
-
-### Authorized B1 follow-up — 2026-10-09
+## RFC-014 B1 follow-up — 2026-10-09
 
 Eugene requested proceeding with the proposed bounded experiment/ownership
 contract and committing each step. [SPIKE-069](../../spikes/spike-069-scoped-model-access.md)
@@ -46,6 +48,24 @@ the recipe and proposed ownership contract, then code/evidence, then the RFC
 disposition. Existing production authority and B0–B4 gates remain unchanged;
 SPIKE-067/068 are not resumed. This is a separate bounded continuation, not a
 renewal of I3-T02's closed authoring allowance.
+
+**Completed:** `e22bed02` records the recipe/ownership proposal; `203c6caf`
+records disposable code and evidence; the final documentation step integrates
+the result into RFC-014 and its review. A's callback-only enforcement is refuted.
+B has bounded compiler/lifetime-model support, but actual Canvas rejects its
+direct borrowed capture. Required source lowering/API changes, compiler policy,
+application ownership and full generated/owner coverage remain open.
+
+Final charged upper bound: **30/90 active minutes**, including orientation,
+authoring, builds, inspection, review, validation, commits and reporting;
+**45/48 experimental invocations**, **1/3 repair rounds**, zero hardware
+operations and zero excluded waiting. The compiler ledger is terminal and the
+runner refuses additional trials. No full repository conformance gate was
+claimed: production sources are unchanged; governance, exact input/log hash
+verification, intended negative diagnostics and the two native model drivers
+provide the reported validation.
+
+## I3-T02 — Runtime derivation design package
 
 **Status:** delivered with named approval/adoption blockers. **Kind:** RFC design and adoption routing, not a renewed
 feasibility experiment or authorized production migration.

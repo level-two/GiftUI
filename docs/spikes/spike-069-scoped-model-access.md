@@ -177,7 +177,7 @@ is inconclusive for that configuration, never inferred from native success.
 
 Completed with [raw evidence and analysis](../../experiments/spike-069-scoped-model-access/evidence/result.md).
 Step 1: `e22bed02` committed the recipe/ownership contract before compilation.
-Step 2 records code/evidence; step 3 integrates the RFC recommendation. The
+Step 2: `203c6caf` records code/evidence; step 3 integrates the RFC recommendation. The
 ledger preserves all 45 invocations, including failed trial 05 and its one
 repair; 24 negative checks were compiler rejections for their intended reason.
 
@@ -211,8 +211,11 @@ B1 obligations. B0 and B2–B4 remain open. The separate R=1 model illustrates
 five slots; it does not select application R or amend ADR-034.
 
 Compiler work is terminal at **45/48 invocations and 1/3 repair rounds**.
-Remaining work in this allowance is only evidence review, RFC integration and
-commits. Neither completion nor unused allowance authorizes another experiment.
+The follow-up documentation integrates the result into RFC-014, the design
+review and current activity plan. Final charged upper bound is **30/90 active
+minutes**, including orientation, code, builds, repairs, inspection, review,
+validation, commits and reporting; zero excluded waiting and zero hardware
+operations. Neither completion nor unused allowance authorizes another experiment.
 
 ## References
 

@@ -6,5 +6,8 @@
   "repairs": 1,
   "repair_ceiling": 3,
   "disposition": "A callback-only enforcement refuted; B scoped-read/key mechanism partially supported; B1 remains open.",
-  "remaining_work": "Review, RFC integration and commits only; no automatic experimental continuation."
+  "remaining_work": "None in this bounded package; RFC design choices and production adoption gates remain open.",
+  "charged_active_minutes_upper_bound": 30,
+  "active_minutes_ceiling": 90,
+  "excluded_waiting_minutes": 0
 }

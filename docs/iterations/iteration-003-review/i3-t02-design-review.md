@@ -6,6 +6,10 @@ executor self-review of [draft RFC-014](../../rfcs/rfc-014-runtime-derived-recor
 not independent reviewer approval or target validation. Initial design commit:
 `2d0a034d`; the final review commit also contains the corrections below.
 
+The original I3-T02 findings below describe the authoring task. The subsequent
+[B1 follow-up](#b1-follow-up--spike-069) adds evidence without approving the RFC
+or changing the original task's budget/history.
+
 ## What this step established
 
 - One runtime decision boundary is now separate from RFC-013's external package,
@@ -54,7 +58,7 @@ These are proposed amendment boundaries, not already approved changes.
 | SPEC-006 | Structural identity, expansion/work limits; DV-001–011, 013, 015–017 | Preserve exact identity and linear work. Specify any new storage/record contract only if existing SPI cannot represent it; no relocation of semantic authority. |
 | SPEC-010 | Public bound State access, registration and lifetime; OS-001–012 | Resolve concrete Static model/context/lowering, non-escape, external owner lifetime and callback isolation without hiding API changes. |
 | SPEC-011 | Committed identity/target records; IN-003–013 | Prove identity keys survive bank reuse and refusal; keep target/action generations and one-shot typed dispatch. New key layout may be private; any changed contract needs review. |
-| SPEC-012 | Static capture lowering and cycle lifetime; DR-001–005, 007–013 | Admit the exact scoped capture-view representation, prove capture-at-declaration meaning and per-occurrence release; preserve fixed table/source-lowering requirement. |
+| SPEC-012 | Static capture lowering and cycle lifetime; DR-001–005, 007–013 | Review exact scoped reads and owned-key payloads through selected lowering/API changes; prove capture-at-declaration meaning and per-occurrence release; preserve fixed table/source-lowering requirement. |
 | SPEC-013 | Exact storage audit, stage sequence, failure/recovery; RP-001–015 | Review proposed record/payload/path/control budgets and lease checks, both profiles, bank swapping and complete byte/stack accounting. |
 | SPEC-015 | Host workload/presets, validated ownership, quiescence; HC-001–006, 009–018 | Exact analyzer replacement resources and independently derived counter workload/resource bounds; supported source/build inputs and platform facts. |
 | SPEC-007/008/009/014 | Existing layout/render/execution/backend contracts | Regression owners; no amendment selected by this RFC. If implementation exposes a contract conflict, stop that choice and route it explicitly. |
@@ -77,7 +81,7 @@ This dependency sequence is not a ready plan or a new execution authorization.
 
 | Order | Scope and owner | Prerequisite | Completion evidence |
 | --- | --- | --- | --- |
-| R0 | Resolve B0 capture-slot architecture direction, then close B1/B2 declarations, ownership/cardinality and exact application resource proposals | Review of RFC-014; any proof experiment requires an explicit bounded recipe and separate authorization | Concrete binder/read-view contract, lowerable source shape, complete model owner/pool lifecycle, exact codec/count budget for both apps; no proof by annotation |
+| R0 | Resolve B1 source-enforcement/API direction and B2 ownership/cardinality; use them to select B0 capture-slot architecture, then finish exact declarations/resource proposals | Review of RFC-014 and SPIKE-069 evidence; any further experiment requires an explicit bounded recipe and separate authorization | Concrete binder/read-view contract, lowerable source shape, complete model owner/pool lifecycle, exact codec/count budget for both apps; no proof by annotation |
 | R1 | RFC decision → ADR extraction → affected Spec amendments | Resolved approval blockers and explicit human approvals at each gate | Accepted architecture and approved declarations/limits/errors; then ready per-Spec task sections |
 | R2 | Runtime record builder, exact identity and independent semantic oracle (SPEC-006/013) | R1 | Both bank and branch-shift tests, linear work bound, bounded failures, no pre-expanded graph inputs |
 | R3 | Typed model/context, capture lease and transaction cleanup (SPEC-010/012/013) | R1; join with R2 | Replacement/removal/external-alias cases, callback isolation, actual compiler non-escape/no-heap evidence, exact release trace |
@@ -92,6 +96,10 @@ Iteration-3 delivery is not complete if the 4 MHz performance gate remains
 unresolved; its remedy is an explicit adjacent decision, not an extra R6 repair.
 
 ## Next actionable decision
+
+This paragraph records the original I3-T02 recommendation. The subsequent
+[SPIKE-069 follow-up](#b1-follow-up--spike-069) refines the next step to the
+source-enforcement/API and ownership choices before finalizing slot count.
 
 Resolve **B0**, the concrete architecture direction: permit the proposed fourth
 snapshot through an ADR-034 amendment, or retain three slots and require a
@@ -108,6 +116,43 @@ candidate or launch another general feasibility review. This package requests no
 RFC approval while these blockers remain.
 
 ## Validation and disposition
+
+### B1 follow-up — SPIKE-069
+
+The separately authorized [SPIKE-069](../../spikes/spike-069-scoped-model-access.md)
+completed after this review. **Verdict remains not ready.** Its
+[evidence](../../../experiments/spike-069-scoped-model-access/evidence/result.md)
+narrows B1 rather than closing it:
+
+- Copyable State escapes through generic results, outer storage from Void
+  callbacks and delayed closures on all four configurations. Fixed typed
+  access alone does not enforce non-escape. No escaped pointer was dereferenced.
+- A concrete nonescapable borrow compiles on all four with experimental
+  LifetimeDependence; twenty negative controls reject intended escapes/overlap
+  and stored declaration use. The compiler's unsupported-`@lifetime` warning
+  remains an adoption issue, not a suppressed diagnostic.
+- An owned body compiles with actual GiftUI declarations; direct borrowed-view
+  capture in actual Canvas rejects on all four. A bounded delayed-key lifetime
+  model passes sixteen cases per native profile and cross-compiles for Pi/nRF.
+- R=1 in the model requires five snapshot slots. The actual applications' R
+  and enforceable application ownership remain unproved. Four slots alone do
+  not resolve B0/B2; observation detachment still cannot destroy owned models.
+- The nRF section-GC fixture has no retained allocator relocation. It is not
+  a final firmware, supported owner integration, whole-image stack/heap or
+  actual application traversal result.
+
+The next design decision is now explicit: preserve source through checked finite
+lowering with diagnosed unsupported escapes, or review scoped State/body/Canvas
+API changes. Both may use scoped reads and delayed owned snapshot keys internally.
+Neither is adopted by the successful fixture. Resolve that choice and the
+application ownership bound before finalizing B0's physical slot count.
+
+The conditional R0–R6 migration sequence remains blocked. SPEC-001/010/012
+amendments must reflect the selected source/capture semantics, not copy the
+prototype. Compiler policy, every generated route, complete storage and full
+image/profile evidence remain required. No automatic next experiment is opened.
+
+### Original authoring validation
 
 `scripts/validate-governance.rb` and `git diff --check` pass for this documentation
 package. Local links, reciprocal Proposal/RFC/manifest references, resource
