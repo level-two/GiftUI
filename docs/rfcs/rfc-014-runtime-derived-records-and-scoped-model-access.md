@@ -38,7 +38,8 @@ related_specs:
   - SPEC-015
 related_future_work: []
 related_explorations: []
-related_spikes: []
+related_spikes:
+  - SPIKE-069
 supersedes: []
 superseded_by: []
 target_milestone: ITERATION-003
@@ -473,8 +474,12 @@ requires a separately selected transport/rendering or requirement decision.
 No correctness or feasibility question above is deferred. RFC-013 and approved
 iteration 4 already own external API/package/setup decisions; revisit after
 runtime contracts stabilize. Existing FW-035 owns future generated frontends;
-it cannot serve as the runtime-derivation implementation. No new optional idea
-or Spike is created and no stopped experiment is resumed.
+it cannot serve as the runtime-derivation implementation. No stopped experiment
+is resumed. The separately authorized
+[SPIKE-069](../spikes/spike-069-scoped-model-access.md) tests B1 escape enforcement
+and records a proposed finite model/snapshot ownership contract. B1/B2 remain
+blockers here; the Spike does not approve a buffer count, portable API change
+or production migration, and its allowance does not renew earlier budgets.
 
 ## Decision Summary
 

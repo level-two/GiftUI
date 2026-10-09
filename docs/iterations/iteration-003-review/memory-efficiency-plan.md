@@ -36,6 +36,17 @@ historical inputs; this result does not reopen their budgets or experiments.
 
 ## I3-T02 — Runtime derivation design package
 
+### Authorized B1 follow-up — 2026-10-09
+
+Eugene requested proceeding with the proposed bounded experiment/ownership
+contract and committing each step. [SPIKE-069](../../spikes/spike-069-scoped-model-access.md)
+owns the recipe, limits and evidence: 90 active minutes from 20:05 UTC,
+48 compiler/link/run calls, three repair rounds, two candidates. First commit
+the recipe and proposed ownership contract, then code/evidence, then the RFC
+disposition. Existing production authority and B0–B4 gates remain unchanged;
+SPIKE-067/068 are not resumed. This is a separate bounded continuation, not a
+renewal of I3-T02's closed authoring allowance.
+
 **Status:** delivered with named approval/adoption blockers. **Kind:** RFC design and adoption routing, not a renewed
 feasibility experiment or authorized production migration.
 
