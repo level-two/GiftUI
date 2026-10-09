@@ -2,8 +2,8 @@
 id: ITERATION-003
 title: Runtime Memory and Efficiency
 status: active
-revision: 4
-approved_revision: 4
+revision: 5
+approved_revision: 5
 created: 2026-10-04
 updated: 2026-10-09
 features:
@@ -14,13 +14,13 @@ related_future_work:
   - FW-027
   - FW-032
   - FW-035
-approval: "Eugene approved the presented sequencing and requested reorganizing the scopes, updating dependent documents and committing everything on 2026-10-09. Evidence: docs/iterations/iteration-003-review/efficiency-sequencing-approval.md."
+approval: "Eugene requested updating governing documents to the presented bounded preparation and architectural reconsideration approach on 2026-10-09. Revision 4 sequencing and criterion transfers remain in force. Evidence: docs/iterations/iteration-003-review/efficiency-sequencing-approval.md."
 closure: null
 ---
 
 # ITERATION-003: Runtime Memory and Efficiency
 
-Approved revision 4 prioritizes safe runtime graph derivation, memory efficiency
+Approved revision 5 prioritizes safe runtime graph derivation, memory efficiency
 and measured frame/acquisition performance. Backend/platform extraction, focused
 packages and the complete external application setup outcome now belong to
 [ITERATION-004](iteration-004-backend-and-application-integration.md).
@@ -28,6 +28,10 @@ packages and the complete external application setup outcome now belong to
 preserves the instruction, criterion transfers and separate lifecycle gates.
 [The detailed activity plan](iteration-003-review/memory-efficiency-plan.md)
 coordinates ME-01–09; it is not a ready Specification Implementation Plan.
+Revision 5 makes ME-01–04 one bounded preparation phase ending in a feasibility
+decision. Architectural reconsideration is part of that assessment; no
+replacement architecture is selected. Revision 4's delivery outcomes, criterion
+transfers, resource constraints and validation obligations remain unchanged.
 
 ## Goal
 
@@ -117,23 +121,33 @@ base or additional core module is selected by this scope.
 
 ## Delivery Order and Gates
 
-1. ME-01: establish exact baselines, authority and evidence gaps.
-2. ME-02 and ME-03: account for memory/lifetimes/data flow and measure target
-   phase, lookup, pixel/transfer and event-service costs against that baseline.
-3. ME-04: compare bounded remedies and record a decision-quality feasibility
-   result; prioritize measured benefit and preserve failed candidates.
-4. ME-05: obtain required architecture/contract approvals, explicit resource
+1. ME-01–04 form one preparation phase with one cumulative budget and one
+   feasibility decision packet. Freeze the baseline; assess complete ownership,
+   representations, lifetimes and execution stages against memory/performance
+   requirements; measure only decision-relevant gaps; compare bounded remedies.
+   Classify structural costs separately from local implementation defects.
+2. ME-05: obtain required architecture/contract approvals, explicit resource
    budgets and ready implementation plans. Do not select algorithms in code.
-5. ME-06 and ME-07: implement the authorized runtime/storage and performance
+3. ME-06 and ME-07: implement the authorized runtime/storage and performance
    changes in attributable steps; coordinate changes sharing an owner.
-6. ME-08: validate exact integrated artifacts, including required connected
+4. ME-08: validate exact integrated artifacts, including required connected
    sustained-workload measurements; publish conformance evidence and gaps.
-7. ME-09: provide the backend handoff and request human iteration disposition.
+5. ME-09: provide the backend handoff and request human iteration disposition.
 
 The [detailed plan](iteration-003-review/memory-efficiency-plan.md) defines
-measurement controls, outputs, responsibilities and stop conditions. Preserve
-SPIKE-067's exhausted allowance; any continuation needs a recorded reassessment.
-A new experiment number cannot reset the same unresolved question or budget.
+the fixed questions, numeric budget declaration, measurement controls and
+terminal outcomes. Preparation ends with a supported recommendation for the
+normal approval gates, an identified incompatibility requiring an upstream
+decision, or an inconclusive result naming the missing evidence. None closes
+the iteration or satisfies unproved acceptance criteria.
+
+New findings must fit the remaining budget, become an explicit blocker, or be
+captured as deferred work when unnecessary for current correctness. They must
+not automatically add work packages, alternatives or another preparation cycle.
+Any extension after a terminal outcome requires an explicit maintainer decision
+on the bounded continuation. Preserve SPIKE-067's exhausted allowance; this
+amendment does not resume it. A recorded reassessment and explicit continuation
+authorization are required before further experiments on that stopped question.
 
 ## Exclusions
 
@@ -191,6 +205,9 @@ existing requirements; a percentage speedup alone does not satisfy IT-AC-009.
 
 - Identify exact dominant costs and credible remedies before selecting major
   changes; no representation, reuse policy or scheduling architecture is approved.
+- Assess whether architectural changes are necessary, rather than assuming
+  either local optimization or a wholesale rewrite. Map each recommended change
+  to existing accepted authority or the precise Proposal/RFC/ADR/Spec gate needed.
 - Resolve complete stack/callback/IRQ/alias/escape and supported-composition
   obligations; zero heap and a successful link alone cannot demonstrate fit.
 - Preserve runtime derivation while fixing resource cost. Isolate any required
@@ -219,11 +236,12 @@ existing requirements; a percentage speedup alone does not satisfy IT-AC-009.
 | 2 | 2026-10-05 | Focused packages, reusable backend and simpler setup with shared consumer/matrix | [Scope review and approval](iteration-003-review/scope-review-and-approval.md) |
 | 3 | 2026-10-06 | Add I3-04 / IT-AC-006 runtime graph derivation | [Runtime amendment](iteration-003-review/runtime-derivation-scope-amendment.md); complete prior scope preserved in `86caf53c` |
 | 4 | 2026-10-09 | Prioritize runtime memory/efficiency, add IT-AC-007–010, transfer package/backend/external-host delivery to iteration 4 and narrow iteration-3 counter eligibility | [Explicit sequencing approval](iteration-003-review/efficiency-sequencing-approval.md) |
+| 5 | 2026-10-09 | Make ME-01–04 one bounded architecture/feasibility assessment with a shared budget, fixed questions, terminal decisions and no automatic scope growth; preserve all delivery criteria | [Bounded preparation authorization](iteration-003-review/efficiency-sequencing-approval.md#bounded-preparation-amendment--2026-10-09) |
 
 ## Closure and Follow-up
 
 This iteration is active with closure open. ME-01–09 are planned, and no new
-implementation/conformance completion is claimed by scope reorganization.
+implementation/conformance completion is claimed by these documentation changes.
 At closure, report IT-AC-001–003 as transferred, IT-AC-005's split explicitly,
 and IT-AC-004–010 as met, unmet or individually excepted with evidence. Obtain
 human closure; feature architecture, contract and implemented transitions remain

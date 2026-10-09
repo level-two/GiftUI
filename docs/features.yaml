@@ -43,10 +43,8 @@ features:
   # All owner Specs implemented by explicit maintainer approval on 2026-10-03, with connected exceptions.
   # Performance selected by ITERATION-003; unrelated connected follow-up remains FW-031/FW-033.
   signal-analyzer:
-    # Cleanup research EXP-001/SPIKE-013 concluded; approved ITERATION-002
-    # revision 7 proposes bounded remediation and retains packed runtime.
-    # Retention-contract approvals remain separate; this feature
-    # lifecycle status is unchanged by research or draft selection.
+    # ITERATION-002 closed at revision 7; ITERATION-003 revision 5 governs
+    # bounded preparation. Existing implemented contracts remain authority.
     title: Signal Analyzer Reference Application
     status: implemented
     proposal:
@@ -67,13 +65,11 @@ features:
       - observable-reference-state
       - canvas-drawing
     milestone: MVP
-  # SPEC-013/SPEC-015 focused seam amendments were approved on 2026-10-02;
-  # SPEC-013 Milestone 9 validated the seam; SPEC-001 production joins now resume.
   giftui-mvp-architecture:
     # Optional source-conditional cleanup: FW-029, linked from SPEC-013.
-    # Approved ITERATION-003 revision 2 selects distribution/reuse/integration outcomes.
+    # ITERATION-003 revision 5 governs bounded runtime/memory/performance preparation.
+    # Distribution/reuse/integration delivery transferred to ITERATION-004.
     # FW-016/FW-030 and EXP-002 supply evidence; topology/access contracts remain gated.
-    # EXP-002 aligns backend reuse/access (IT-AC-002) and integration rework (IT-AC-003).
     # macOS physical-pointer validation is postponed under FW-031.
     title: GiftUI MVP Architecture Establishment
     status: implemented

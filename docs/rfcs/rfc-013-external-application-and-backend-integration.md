@@ -110,6 +110,21 @@ its measured alternatives. The [current plan](../iterations/iteration-003-review
 sets the order. Human RFC approval, accepted ADRs, approved Spec amendments and
 ready implementation plans remain prerequisites for major production adoption.
 
+Under iteration-3 revision 5, ME-01–04 produce one bounded feasibility decision,
+not an open-ended sequence of candidate repairs. Assess the complete ownership,
+representation, lifetime and execution model, and distinguish structural costs
+from local defects. Neither the archived candidate nor a wholesale redesign is
+presumed necessary. The packet must identify the exact accepted decisions and
+contracts that each recommendation preserves or would change.
+
+A supported runtime recommendation may feed this RFC where PROPOSAL-007 covers
+the decision. Independently significant performance changes require their own
+applicable investment and architecture routing; do not use this RFC as blanket
+authority. An incompatible or inconclusive result ends the bounded phase with
+the required decision or missing evidence explicit. The plan's cumulative budget
+and continuation rules apply; unresolved review questions do not automatically
+authorize another experiment.
+
 ## Deferred work
 
 [FW-016](../future-work/fw-016-post-mvp-package-distribution-topology.md) and

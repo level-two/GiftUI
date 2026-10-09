@@ -1,11 +1,14 @@
 # Iteration 3 activity plan
 
 This is the single current coordination plan for
-[approved iteration-3 revision 4](../iteration-003-dev-ux-improvement.md), with
+[approved iteration-3 revision 5](../iteration-003-dev-ux-improvement.md), with
 external delivery in [iteration 4](../iteration-004-backend-and-application-integration.md).
 It replaces the archived preparation/completion checklists under the
 [2026-10-09 cleanup authorization](preparation-archive.md). It is not a ready
 Specification Implementation Plan and does not approve a design.
+The [revision-5 authorization](efficiency-sequencing-approval.md#bounded-preparation-amendment--2026-10-09)
+makes ME-01–04 one bounded phase; their IDs retain traceability, not separate
+budgets or permission to grow independent investigations.
 
 ## Start here
 
@@ -17,9 +20,33 @@ that choice. No blanket replay of SPIKE-015–067 is required.
 
 The immediate output is **one feasibility decision packet**: can a complete
 runtime-derived analyzer and finite counter satisfy reviewed memory/lifetime
-bounds, and which measured costs should be addressed first? A negative or
+and sustained-performance requirements, which architectural changes are needed,
+and which measured costs should be addressed first? A negative or
 inconclusive result is useful if it identifies the exact constraint and the
 scope/design decision needed. It is not permission for an automatic follow-up.
+
+## Fixed preparation questions and output
+
+Answer these three questions for the complete supported compositions:
+
+1. Can runtime derivation, ownership, representations and lifetimes fit the
+   application budgets safely, including simultaneous storage and full stack paths?
+2. Which measured costs prevent the sustained acquisition/frame requirements,
+   and are they consequences of architecture or local implementation defects?
+3. What is the smallest supported remedy, what evidence supports it, and which
+   existing contracts or upstream decisions govern adoption?
+
+Evaluate the whole construction/service/retirement model before spending the
+budget on isolated getter, compiler or fixture repairs. Neither a wholesale
+redesign nor incremental optimization is presumed sufficient. Experimental
+success and sunk effort do not favor a candidate without complete evidence.
+
+Keep one decision packet containing the baseline/gap table, budget and usage,
+memory/lifetime account, ranked costs, at most two remedies per selected
+bottleneck, and a recommendation with authority mapping and residual obligations.
+Supporting raw evidence may be linked; do not create a new coordination plan
+for each attempt. Select the bottlenecks at launch; adding another consumes the
+same budget and cannot silently displace evidence required by the fixed questions.
 
 ## Work sequence
 
@@ -33,8 +60,9 @@ scope/design decision needed. It is not permission for an automatic follow-up.
 | ME-08 | Validate exact integrated production artifacts and disposition every current scope criterion, including the required connected sustained-workload evidence. |
 | ME-09 | Record stable owner/lifetime/API constraints, remaining obligations and iteration-4 handoff; request human iteration disposition. |
 
-ME-02/03 may share a frozen baseline. Work sharing an owner must use one
-coordinated sequence. Do not create a new plan for each compiler or fixture repair.
+ME-01–04 share a frozen baseline, budget and terminal decision. Work sharing an
+owner must use one coordinated sequence. ME-05 is the adoption approval step;
+ME-06 onward is implementation and conformance, not an extension of preparation.
 
 ## Measurement requirements
 
@@ -61,16 +89,48 @@ coordinated sequence. Do not create a new plan for each compiler or fixture repa
 
 ## Stop and decide
 
-Before an experiment, record the choice, discriminating observation, exact inputs,
-smallest adequate method and cumulative command/correction limit. Budget use is
-cumulative for the question; renaming a Spike or checkpoint does not reset it.
-SPIKE-067 is already stopped at 744/768 invocations and 30/30 corrections.
-Continuing that question requires an explicit recorded reassessment before any
-compilation, not a new numbered study that bypasses its stop.
+At launch, record numeric ceilings for active elapsed time, experimental command
+invocations and correction attempts in the same decision packet. Count analysis,
+build/run time and repairs against elapsed time; exclude waiting for a human or
+unavailable device and report that waiting separately. Count underlying build/run
+invocations even when batched in a wrapper. Record usage after each work session.
+The earliest exhausted ceiling ends preparation. No unbounded or per-step-reset
+allowance is permitted. The executor may set conservative limits for otherwise
+authorized work without another permission request; setting limits does not
+renew an exhausted study or authorize hardware operations.
 
-At a failed invariant, unsafe bound or exhausted limit, produce a disposition:
-select a supported remedy, request a specific upstream design/scope decision,
-or leave the gate unmet. Do not automatically append another preparation cycle.
+Before each experiment, record its discriminating observation, exact inputs and
+smallest adequate method. Budget use is cumulative across ME-01–04, questions,
+candidates, repairs and experiment IDs. Historical same-question usage remains
+visible. SPIKE-067 is already stopped at 744/768 invocations and 30/30 corrections.
+Before any new compilation on that question, record why the previous approach
+stopped, what materially changed, why the new observation can decide the issue,
+and the proposed additional bounded allowance. Obtain explicit maintainer
+continuation authorization; this documentation amendment grants no such restart.
+
+Disposition every new finding immediately: address it within the remaining
+budget if necessary for the fixed questions; capture it through the deferred
+track if outside current correctness/scope; or report it as a blocker. A required
+safety or feasibility question cannot be hidden in Future Work. Discoveries do
+not automatically add milestones, alternatives or preparation phases.
+
+At a failed invariant or unsafe bound, stop the affected candidate and record
+the failure; use an already-budgeted alternative only if it addresses that
+failure. At budget exhaustion, or earlier when the evidence decides the issue,
+publish exactly one terminal disposition:
+
+- **Supported recommendation:** identify the feasible approach and route it to
+  ME-05. A recommendation is not architecture or implementation approval.
+- **Incompatible approach:** identify the demonstrated constraint and the
+  specific architecture/scope decision needed. Keep affected criteria unmet.
+- **Inconclusive:** identify the missing evidence and why the bounded study
+  could not obtain it. Do not claim either feasibility or impossibility.
+
+Do not automatically append another preparation cycle. An extension or reopened
+question requires a terminal report and explicit maintainer authorization of
+the changed question/method and additional budget. Meeting preparation's exit
+condition does not waive ME-08 evidence or close the iteration.
+
 Commit coherent findings or changes; ordinary failed attempts stay in the
 study evidence rather than each creating a separate scope/reconciliation commit.
 Freeze inputs before compilation; keep large raw artifacts outside the active
@@ -91,5 +151,17 @@ applicable investment and RFC/ADR/Spec gates. FW-027/FW-032 supply selected
 performance provenance; FW-031/FW-033 retain unrelated connected follow-up;
 FW-035 retains the future generated-frontend question.
 
-All activities remain planned. This cleanup performs no experiment, production
-migration, hardware operation or conformance transition.
+## Actions open after this amendment
+
+| Action | Current permission / prerequisite |
+| --- | --- |
+| Launch the bounded phase: declare numeric limits, freeze identities and map gaps | Open; read-only inventory and budget declaration need no new approval. |
+| Review existing code, accepted contracts and archived evidence; account for costs and compare architectural candidates | Open within the phase budget; candidates remain non-authoritative. |
+| Run new hardware-free evidence work | Open only within a recorded budget and the normal Exploration/Spike rules; first distinguish a new question from a continuation of SPIKE-067. |
+| Reopen the exhausted runtime experiment | Reassessment and explicit bounded continuation authorization required before compilation. |
+| Draft upstream changes | Proposal drafting is open; RFC design requires an accepted Proposal covering the decision. Use RFC-013 for its coherent runtime boundary or separate independently reviewable performance decisions through the normal lifecycle. |
+| Adopt major runtime/storage/performance changes | ME-05: applicable approved RFC, accepted ADRs, approved Specifications and ready implementation plans. Existing-contract maintenance remains eligible for the lightweight path. |
+| Deploy/flash for connected measurements | Explicit authorization for the operation plus the repository target skills and checks. |
+
+All ME activities remain planned. This amendment performs no experiment,
+production migration, hardware operation or conformance transition.

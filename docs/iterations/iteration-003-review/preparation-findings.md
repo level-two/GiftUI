@@ -36,6 +36,13 @@ is exhausted. This cleanup does not restart it. A new ID cannot reset the same
 question or budget. Retrieve its recipes and failures only when they bear on a
 named decision; do not rerun every predecessor to reconstruct the chronology.
 
+[Revision 5's plan](memory-efficiency-plan.md) combines these questions into one
+bounded architecture/feasibility assessment. Existing evidence may be reviewed
+immediately; further experiments on the stopped question require reassessment
+and explicit bounded continuation authorization. A local copy reduction must
+be evaluated against the complete lifetime/stack and performance model, not
+treated as a reason to keep repairing a candidate indefinitely.
+
 ## What to keep out of the active plan
 
 Per-attempt compiler logs, binary snapshots, public-symbol inventories, failed

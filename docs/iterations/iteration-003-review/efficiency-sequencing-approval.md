@@ -74,3 +74,41 @@ closure, architecture approval or study-budget extension is inferred.
 
 The original review/validation transcript remains in tagged history; its results
 are historical, not checks performed against the reconstructed documents.
+
+## Bounded preparation amendment — 2026-10-09
+
+After discussing the possible need for architecture changes and the risk of
+unending incremental preparation, Eugene instructed:
+
+> Okay, so can we then update governing documents accordingly? And are we able after that update to proceed? And which steps are open to us?
+
+The presented approach made ME-01–04 one bounded preparation phase with fixed
+questions, one cumulative time/experiment/correction budget and one feasibility
+decision. It required assessment of the complete ownership, representation,
+lifetime and execution model before isolated optimization, and three terminal
+outcomes: a supported recommendation, a demonstrated incompatibility needing
+an upstream decision, or an inconclusive result naming missing evidence.
+Discoveries must fit the budget, be deferred when outside current correctness,
+or become blockers; they do not automatically create additional work packages.
+
+This instruction authorizes applying that approach as ITERATION-003 revision 5
+and updating its plan, RFC context and navigation. All revision-4 delivery
+criteria, configuration/workload requirements, transfers to iteration 4 and
+feature approval gates are preserved. It authorizes architectural assessment,
+not a chosen replacement architecture or independent performance redesign.
+
+Numeric working limits will be declared at phase launch; this record does not
+claim that the maintainer approved particular numbers. Read-only baseline,
+contract and evidence analysis can proceed without another approval. The stopped
+SPIKE-067 allowance is not renewed: further experiments on the same question
+require a recorded reassessment and explicit bounded continuation authorization.
+The same rule applies after this phase reaches a terminal outcome. No hardware
+operation, resource-ceiling increase, implementation or conformance transition
+is authorized by this amendment.
+
+The current lifecycle remains: implemented MVP owner contracts, accepted
+PROPOSAL-007 and draft RFC-013. No new ADR or Specification is accepted or
+approved. Necessary current feasibility/safety questions remain blockers;
+FW-027/FW-032 remain selected performance provenance, FW-031/FW-033 retain
+unrelated connected follow-up, and FW-035 remains outside runtime-derivation
+delivery. No new deferred idea is introduced by this process amendment.
