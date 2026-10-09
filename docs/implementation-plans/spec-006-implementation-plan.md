@@ -6,7 +6,7 @@ status: completed
 owners:
   - codex
 created: 2026-09-01
-updated: 2026-09-12
+updated: 2026-10-09
 related_design_notes:
   - ../implementation-designs/spec-006-bounded-semantic-expansion.md
 conformance_report: ../conformance/spec-006-conformance.md
@@ -20,6 +20,22 @@ superseded_by: null
 ---
 
 # SPEC-006 Implementation Plan
+
+## I3-T02 conditional runtime migration — 2026-10-09
+
+**Blocked; not ready for production implementation.** [Draft RFC-014](../rfcs/rfc-014-runtime-derived-records-and-scoped-model-access.md)
+and its [review/contract map](../iterations/iteration-003-review/i3-t02-design-review.md)
+propose work under I3-04. Existing approved-contract tasks and the Specification's
+`implemented` status retain their prior dispositions. This section does not
+approve the RFC or make a changed contract executable.
+
+- Relevant current criteria: DV-001–011, 013, 015–017; unchanged criteria retain their existing task/evidence mapping. Amendments must add any new criterion mapping before readiness.
+- Conditional sequence: **R2** in the shared review, after R0/R1 resolve design blockers and obtain applicable RFC/ADR/Spec approvals.
+- Affected source owners: GiftUISemanticCore traversal contracts and Runtime profile record storage.
+- Required realization/evidence: Exact cross-bank paths, finite role tags, linear expansion and source perturbation; no generated topology.
+- Before execution: approve exact application byte/count limits and complete lifetime obligations, then update this section to ready tasks and create focused implementation design notes as needed. No approved contract or source limit changes here.
+- Validation after implementation: focused boundary/failure fixtures plus `scripts/contracts/run-spec-006.sh --profile <profile>` for each of `macos-dynamic`, `macos-static`, `raspberry-pi-armv6`, `nrf52840-embedded`; format Swift before `scripts/test.sh all-hardware-free`. Record native, target-build and connected evidence separately.
+
 
 > **Revision notice:** The original eight milestones remain completed evidence
 > for the previously implemented sixteen-criterion contract. SPEC-006 was

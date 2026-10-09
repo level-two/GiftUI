@@ -24,6 +24,22 @@ superseded_by: null
 
 # SPEC-012 Implementation Plan
 
+## I3-T02 conditional runtime migration — 2026-10-09
+
+**Blocked; not ready for production implementation.** [Draft RFC-014](../rfcs/rfc-014-runtime-derived-records-and-scoped-model-access.md)
+and its [review/contract map](../iterations/iteration-003-review/i3-t02-design-review.md)
+propose work under I3-04. Existing approved-contract tasks and the Specification's
+`implemented` status retain their prior dispositions. This section does not
+approve the RFC or make a changed contract executable.
+
+- Relevant current criteria: DR-001–005, 007–013; unchanged criteria retain their existing task/evidence mapping. Amendments must add any new criterion mapping before readiness.
+- Conditional sequence: **R3/R4** in the shared review, after R0/R1 resolve design blockers and obtain applicable RFC/ADR/Spec approvals.
+- Affected source owners: Static Canvas lowering, typed capture records and drawing attempt adapters.
+- Required realization/evidence: Scoped read-view capture semantics and release before publication; preserve portable syntax and finite table coverage.
+- Before execution: approve exact application byte/count limits and complete lifetime obligations, then update this section to ready tasks and create focused implementation design notes as needed. No approved contract or source limit changes here.
+- Validation after implementation: focused boundary/failure fixtures plus `scripts/contracts/run-spec-012.sh --profile <profile>` for each of `macos-dynamic`, `macos-static`, `raspberry-pi-armv6`, `nrf52840-embedded`; format Swift before `scripts/test.sh all-hardware-free`. Record native, target-build and connected evidence separately.
+
+
 ## Iteration 3 correction task — 2026-10-09
 
 **Complete — I3-T01 passed within the hardware-free validation boundary.** I3-T01.2 regression participates in the

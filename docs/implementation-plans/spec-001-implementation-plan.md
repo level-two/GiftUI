@@ -28,6 +28,23 @@ superseded_by: null
 
 # SPEC-001 Implementation Plan
 
+## I3-T02 conditional runtime migration — 2026-10-09
+
+**Blocked; not ready for production implementation.** [Draft RFC-014](../rfcs/rfc-014-runtime-derived-records-and-scoped-model-access.md)
+and its [review/contract map](../iterations/iteration-003-review/i3-t02-design-review.md)
+propose work under I3-04. Existing approved-contract tasks and the Specification's
+`implemented` status retain their prior dispositions. This section does not
+approve the RFC or make a changed contract executable.
+
+- Relevant current criteria: SA-AC-008–015, 021–025, 028–031, 039–040, 045; unchanged criteria retain their existing task/evidence mapping. Amendments must add any new criterion mapping before readiness.
+- Conditional sequence: **R5** in the shared review, after R0/R1 resolve design blockers and obtain applicable RFC/ADR/Spec approvals.
+- Affected source owners: SignalAnalyzerDomain/Presentation, target capture stores and host composition.
+- Required realization/evidence: Owned capture versus frozen read view; explicit replacement snapshot and unchanged retention/source/action behavior.
+- The proposed fourth analyzer capture slot conflicts with accepted ADR-034; resolve B0 through architecture review before approving dependent byte limits.
+- Before execution: approve exact application byte/count limits and complete lifetime obligations, then update this section to ready tasks and create focused implementation design notes as needed. No approved contract or source limit changes here.
+- Validation after implementation: focused boundary/failure fixtures plus `scripts/contracts/run-spec-001.sh --profile <profile>` for each of `macos-dynamic`, `macos-static`, `raspberry-pi-armv6`, `nrf52840-embedded`; format Swift before `scripts/test.sh all-hardware-free`. Record native, target-build and connected evidence separately.
+
+
 ## Iteration 3 correction task — 2026-10-09
 
 **Complete — I3-T01 passed within the hardware-free validation boundary.** I3-T01.1–3 / shared integration participates in the

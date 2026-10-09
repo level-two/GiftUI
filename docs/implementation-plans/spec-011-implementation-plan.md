@@ -6,7 +6,7 @@ status: ready
 owners:
   - codex
 created: 2026-09-09
-updated: 2026-10-04
+updated: 2026-10-09
 related_design_notes:
   - ../implementation-designs/spec-011-target-bound-dispatch.md
 conformance_report: ../conformance/spec-011-conformance.md
@@ -22,6 +22,22 @@ superseded_by: null
 ---
 
 # SPEC-011 Implementation Plan
+
+## I3-T02 conditional runtime migration — 2026-10-09
+
+**Blocked; not ready for production implementation.** [Draft RFC-014](../rfcs/rfc-014-runtime-derived-records-and-scoped-model-access.md)
+and its [review/contract map](../iterations/iteration-003-review/i3-t02-design-review.md)
+propose work under I3-04. Existing approved-contract tasks and the Specification's
+`implemented` status retain their prior dispositions. This section does not
+approve the RFC or make a changed contract executable.
+
+- Relevant current criteria: IN-003–013; unchanged criteria retain their existing task/evidence mapping. Amendments must add any new criterion mapping before readiness.
+- Conditional sequence: **R4/R5** in the shared review, after R0/R1 resolve design blockers and obtain applicable RFC/ADR/Spec approvals.
+- Affected source owners: GiftUIInteraction records and runtime-composed model target access.
+- Required realization/evidence: Committed identity keys survive bank reuse; stale input never retargets a replaced model.
+- Before execution: approve exact application byte/count limits and complete lifetime obligations, then update this section to ready tasks and create focused implementation design notes as needed. No approved contract or source limit changes here.
+- Validation after implementation: focused boundary/failure fixtures plus `scripts/contracts/run-spec-011.sh --profile <profile>` for each of `macos-dynamic`, `macos-static`, `raspberry-pi-armv6`, `nrf52840-embedded`; format Swift before `scripts/test.sh all-hardware-free`. Record native, target-build and connected evidence separately.
+
 
 **Current maintenance readiness — 2026-10-04:** [ITERATION-002 revision 7](../iterations/iteration-002-cleanup.md) is explicitly approved. Milestone 10 below adds ready contract-preserving cleanup tasks; implementation has not started. All original milestones, task dispositions and conformance history are retained. The Specification remains `implemented`; this plan update does not reopen its approval or change its contract. [Delivery coordination](../iterations/iteration-002-cleanup/implementation-plan.md) owns cross-plan/tooling dependencies. Retention production tasks remain behind the separate upstream gates. Earlier status statements and matrix baseline evidence are historical; new cleanup task evidence is pending.
 

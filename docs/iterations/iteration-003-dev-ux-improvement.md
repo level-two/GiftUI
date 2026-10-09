@@ -58,6 +58,10 @@ I3-04 runtime derivation. All three corrections and the 74-check hardware-free g
 resources and validation limits are recorded in the
 [shared result](iteration-003-review/i3-t01-result.md). Connected performance
 and runtime-derived graph obligations remain open.
+The subsequent I3-T02 design package delivers [draft RFC-014](../rfcs/rfc-014-runtime-derived-records-and-scoped-model-access.md)
+and a [review/conditional migration sequence](iteration-003-review/i3-t02-design-review.md).
+Its ownership, resource and supported-realization blockers remain explicit;
+this updates delivery evidence, not the approved scope or architecture.
 The plan's [current readiness table](iteration-003-review/memory-efficiency-plan.md#start-here)
 and [implementation ownership](iteration-003-review/memory-efficiency-plan.md#implementation-plan-ownership-and-launch-details)
 distinguish executable next work from unresolved runtime design, integrated

@@ -18,23 +18,25 @@ checks, resource costs and remaining gates. Existing accepted ADRs and implement
 Specifications remain authority; the generated production graph is retained.
 
 **Current disposition: I3-T01 passed within its hardware-free boundary.**
-The next work is **I3-T02**, the bounded runtime ownership/derivation design
-package below, addressing I3-04 / ME-05. Production migration remains gated;
-this package does not reopen the stopped feasibility experiments.
+**I3-T02 is delivered with named blockers** in [draft RFC-014](../../rfcs/rfc-014-runtime-derived-records-and-scoped-model-access.md)
+and its [design review](i3-t02-design-review.md). The next unresolved decision
+is the three-versus-four capture-slot decision under ADR-034 (B0), alongside
+the exact Static binding/capture lifetime and external-model ownership bound
+(B1/B2), before runtime implementation. No experiment is automatically launched.
 The [findings summary](preparation-findings.md) and stopped studies remain
 historical inputs; this result does not reopen their budgets or experiments.
 
 | Work | Current readiness / missing prerequisite |
 | --- | --- |
 | I3-T01 correction package | Complete within the hardware-free boundary; [result and residual gates](i3-t01-result.md). |
-| I3-T02 runtime design, I3-04 / ME-05 | Active design package below; a concrete recommendation, contract-change map and conditional implementation sequence are due. |
+| I3-T02 runtime design, I3-04 / ME-05 | Delivered with named blockers: [RFC-014 review and contract map](i3-t02-design-review.md). |
 | ME-06 runtime implementation | Blocked on the resulting architecture/contract gates and complete resource/lifetime evidence; no ready migration plan yet. |
 | ME-08 integrated validation | Waits for the adopted implementations and exact artifact identities; connected evidence remains separately authorized. |
 | ME-09 closure/handoff | Waits for the criterion dispositions and maintainer decision; no automatic iteration-4 extraction. |
 
 ## I3-T02 — Runtime derivation design package
 
-**Status:** active. **Kind:** RFC design and adoption routing, not a renewed
+**Status:** delivered with named approval/adoption blockers. **Kind:** RFC design and adoption routing, not a renewed
 feasibility experiment or authorized production migration.
 
 On 2026-10-09, after the next-task explanation distinguished design from blocked
@@ -52,8 +54,8 @@ automatic experimental continuation. This is an executor-selected ceiling.
 | Step | Deliverable | Exit |
 | --- | --- | --- |
 | I3-T02.1 | Scope and authority routing | Complete: `769ea2de`; separate runtime ownership from external package/API delivery. |
-| I3-T02.2 | [Draft RFC-014](../../rfcs/rfc-014-runtime-derived-records-and-scoped-model-access.md) | Authored; concrete ownership and conditional resource model; review pending. |
-| I3-T02.3 | Review and conditional implementation sequence | Every blocking question has its reason, owner contract and required resolution; no unapproved task marked ready. Commit final disposition. |
+| I3-T02.2 | [Draft RFC-014](../../rfcs/rfc-014-runtime-derived-records-and-scoped-model-access.md) | Complete: `2d0a034d`; concrete ownership and conditional resource model, corrected during final review. |
+| I3-T02.3 | [Review and conditional implementation sequence](i3-t02-design-review.md) | Complete with B0–B4 unresolved; seven per-Spec conditional sections remain blocked. |
 
 Runtime representation, state access and capture lifetime form one coherent
 review boundary: each controls what a copied declaration can retain through
@@ -62,6 +64,13 @@ iteration-4 package partition or public host API. Route them to a focused RFC;
 RFC-013 retains external integration and historical candidate evidence.
 Preserve the 4 MHz performance failure independently of representation design.
 A new RFC number does not reopen SPIKE-067/068 or adopt their candidates.
+
+Final charged upper bound: **25/60 active minutes**, including initial
+orientation and final reporting/commit time rounded up conservatively; zero experimental invocations,
+zero hardware operations and zero excluded waiting. Documentation governance,
+links, budget arithmetic and diff checks pass. This design task is closed;
+compiler feasibility, safe complete resources and iteration performance remain
+unproved. No allowance renews automatically.
 
 The design must preserve the accepted Semantic Core, Layout, Runtime,
 Observable State, Drawing and Interaction owners. Existing-contract private

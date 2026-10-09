@@ -6,7 +6,7 @@ status: completed
 owners:
   - codex
 created: 2026-09-04
-updated: 2026-09-19
+updated: 2026-10-09
 related_design_notes:
   - ../implementation-designs/spec-010-binding-and-report-routing.md
 conformance_report: ../conformance/spec-010-conformance-report.md
@@ -21,6 +21,22 @@ superseded_by: null
 ---
 
 # SPEC-010 Implementation Plan
+
+## I3-T02 conditional runtime migration — 2026-10-09
+
+**Blocked; not ready for production implementation.** [Draft RFC-014](../rfcs/rfc-014-runtime-derived-records-and-scoped-model-access.md)
+and its [review/contract map](../iterations/iteration-003-review/i3-t02-design-review.md)
+propose work under I3-04. Existing approved-contract tasks and the Specification's
+`implemented` status retain their prior dispositions. This section does not
+approve the RFC or make a changed contract executable.
+
+- Relevant current criteria: OS-001–012; unchanged criteria retain their existing task/evidence mapping. Amendments must add any new criterion mapping before readiness.
+- Conditional sequence: **R3** in the shared review, after R0/R1 resolve design blockers and obtain applicable RFC/ADR/Spec approvals.
+- Affected source owners: GiftUI State binding, GiftUIObservableState and both runtime profile model owners.
+- Required realization/evidence: Live explicit context, callback isolation, non-escape, atomic replacement and external model-owner lifetime.
+- Before execution: approve exact application byte/count limits and complete lifetime obligations, then update this section to ready tasks and create focused implementation design notes as needed. No approved contract or source limit changes here.
+- Validation after implementation: focused boundary/failure fixtures plus `scripts/contracts/run-spec-010.sh --profile <profile>` for each of `macos-dynamic`, `macos-static`, `raspberry-pi-armv6`, `nrf52840-embedded`; format Swift before `scripts/test.sh all-hardware-free`. Record native, target-build and connected evidence separately.
+
 
 > This ready plan derives work from the approved Observable Reference State
 > Contract, including its explicitly reapproved 2026-09-05 completeness

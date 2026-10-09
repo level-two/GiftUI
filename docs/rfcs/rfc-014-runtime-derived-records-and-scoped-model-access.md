@@ -11,6 +11,7 @@ proposal:
   - PROPOSAL-007
 related_rfcs:
   - RFC-013
+  - RFC-012
   - RFC-008
   - RFC-009
   - RFC-010
@@ -25,6 +26,7 @@ related_adrs:
   - ADR-028
   - ADR-032
   - ADR-033
+  - ADR-034
 related_specs:
   - SPEC-001
   - SPEC-006
@@ -49,6 +51,8 @@ This is the design output of [I3-T02](../iterations/iteration-003-review/memory-
 using maintained baseline `710fbd24`. It records a concrete proposed realization
 and its unresolved proofs. It does not claim a new measured feasible candidate.
 The earlier NO-GO and stopped experiment budgets remain intact.
+[The design review and conditional adoption sequence](../iterations/iteration-003-review/i3-t02-design-review.md)
+record corrections and the remaining approval blockers.
 
 ## Summary
 
@@ -60,7 +64,7 @@ Stage compact capture views instead of copying the analyzer's full capture into
 nested declaration bodies. Keep existing owner boundaries and transaction order.
 
 The recommendation is to pursue this representation at the contract-design
-boundary, subject to B1–B4 below. This is not a recommendation to approve an
+boundary, subject to B0–B4 below. This is not a recommendation to approve an
 unsafe or incomplete implementation. No production change or proof experiment
 is part of this RFC-authoring task.
 
@@ -142,8 +146,10 @@ byte budgets below are proposals requiring SPEC-013/015 approval.
    pre-expanded positions. Modifier-scope discriminators stay explicit.
 4. Reconcile candidate and published identities by complete component/endpoint
    equality. Numeric table indices may differ between banks. A prefix or hash
-   collision never constitutes equality. A bounded linear comparison is a valid
-   first realization; no unmeasured constant-time lookup claim is made.
+   collision never constitutes equality. Use paired traversal of the candidate and published path tries, matching
+   each child by its exact component key. The closed portable vocabulary must
+   supply a fixed child-fanout bound; prove that bound and charge traversal
+   scratch. Do not use an all-pairs path search inside semantic expansion.
 5. After successful expansion, expose the existing Semantic Core borrowed views
    to Layout and Render. Consumers retain no declaration tree or alternate
    canonical graph. Link/layout order is the semantic order, never hash order.
@@ -168,7 +174,10 @@ State owns the logical association and registration. Dynamic may retain classes
 but follows the same lifetime states and transcript.
 
 A model handle identifies its concrete owner context, slot and non-aliasing
-activation/model generation. It never addresses an initializer's local copy.
+activation/model generation. Model allocation generation is distinct from the
+observable registration/target generation: detaching a registration must not
+invalidate an otherwise application-owned model. It never addresses an
+initializer's local copy.
 The context is passed explicitly from the assembled owner; `(slot, generation)`
 alone is insufficient. Before resolving any framework-owned handle, the caller
 already holds the live owner lease. Generation validation never dereferences an
@@ -194,7 +203,12 @@ Preserve the existing replacement protocol: reserve slot/generation and attach
 candidate registration, validate its return, then commit and retire the former
 registration. Attachment failure leaves the former association unchanged.
 Replacement remains applied if subsequent derivation fails. Removal occurs
-only at semantic publication; reinsertion materializes fresh state. Generation
+only at semantic publication; reinsertion materializes fresh state. Detaching
+a runtime registration does not destroy a model still owned by the application
+(ADR-024). Reclaim its slot only after both framework leases and application
+ownership end. External live models consume a separately declared finite pool;
+no two-slot bound may be assumed sufficient for arbitrary retained replacements.
+That cardinality and exhaustion behavior are part of B1/B2. Generation
 exhaustion refuses reuse. Application start/stop remains explicitly host-owned.
 
 ### Capture access through Canvas
@@ -207,7 +221,11 @@ Propose a separate internal presentation capture view: a small, read-only value
 containing immutable metadata, snapshot revision and a reference to the active
 capture lease. The model exposes this view only during bound frozen evaluation.
 The portable waveform helpers consume that view on all profiles; profile
-storage changes remain below it. This changes the analyzer's maintained source
+storage changes remain below it. A typed application read contract exposes
+metadata and indexed transition values without importing a Runtime module into
+Domain or Presentation. Target composition supplies its storage adapter; the
+16-byte packed record format stays in the target owner. Domain must not learn
+firmware offsets or a runtime lease type. This changes the analyzer's maintained source
 contract and requires SPEC-001 review. It is not an unexplained replacement of
 `viewModel.state.capture` by a different lifetime under the same type.
 
@@ -220,12 +238,19 @@ and released at the same logical point. Drawing plans contain copied geometry,
 not a capture view, and survive through synchronous rendering independently.
 
 During replacement, old and staged models can require different captures.
-Budget an additional 404 × 16-byte snapshot slot rather than assuming the old
+**Proposed architecture change, blocked by ADR-034:** budget an additional
+404 × 16-byte snapshot slot rather than assuming the old
 and replacement values alias the live/admission slots. Four distinct analyzer
 capture slots then cover source-live, admitted, installed-model and staged-model
 storage. On successful replacement swap installed/staged roles; recycle the
-retired slot only after all framework-owned leases end. Source ownership and
-observation attach/detach remain unchanged. Any later overlay optimization needs
+retired slot only after all framework-owned leases and application ownership
+end. The four-slot proposal covers the stated single staged replacement, not an
+unbounded history of externally retained models. Source ownership and
+observation attach/detach remain unchanged. [ADR-034](../adrs/adr-034-five-second-transition-capture.md)
+currently requires exactly three capture slots and states that no fourth buffer
+is introduced. The four-slot branch cannot be adopted through a Spec amendment
+alone: it needs an explicitly reviewed successor/amendment to that decision,
+preserving five-second retention and its other semantics (B0). Any later overlay optimization needs
 its own lifetime evidence and cannot be used to make this initial sum fit.
 
 The counter captures its scalar value by value. It needs no analyzer capture
@@ -275,7 +300,7 @@ pointers and never by replaying admitted mutations.
 | GiftUIObservableState | Bind/reconcile/replace/remove and registration outcomes | No Interaction or application import |
 | GiftUIRuntimeCore + profile modules | Sequence owners, own concrete banks/slots/leases and join action target generations | Preserve current acyclic owner graph |
 | GiftUILayout / GiftUIDrawing / Render owners | Existing layout, synchronous Canvas and copied plan/operation meaning | Consume borrowed inputs; no model resolution in Render/backend |
-| Signal Analyzer model/domain adapters | Owned capture versus scoped presentation view and four-slot snapshot storage | Requires explicit application contract amendment |
+| Signal Analyzer model/domain adapters | Owned capture versus scoped presentation view and four-slot snapshot storage | Requires explicit ADR-034 and application contract amendment |
 | Host configuration / target composition | Exact application capacities, backing, validation, activation/quiescence | Counter composition stays separate; no package extraction here |
 
 ## Public API Impact
@@ -310,8 +335,10 @@ execution is a semantic control, not nRF stack evidence. Existing I3-T01 deadlin
 
 ## Performance
 
-Record append is linear in emitted occurrences; exact path reconciliation can
-cost O(N² × D) for N bounded identities and maximum path depth D. No performance
+SPEC-006 requires linear expansion work. Record/path append and paired trie
+reconciliation are proposed to cost O(N × K), with fixed supported child-fanout
+bound K; emitted code and complete path-prefix counts must substantiate it.
+An all-pairs O(N² × D) identity scan is excluded from this design. No performance
 win is inferred solely from fewer copies. Body-return temporaries, repeated
 identity decoding and specialization remain measurement obligations. Profile
 phase accounting must include derivation, Layout, Canvas, preflight and physical
@@ -341,7 +368,7 @@ charged; no implicit use of leftover platform RAM is permitted.
 | Record/path construction scratch | 512 | Proposed; excludes Swift call-stack/body temporaries |
 | **Frame-store subtotal** | **53,440** | Conditional on all fit obligations above |
 | Four capture slots | 25,856 | 4 × 404 × 16; includes replacement snapshot |
-| Typed model/control slots | 1,024 | Proposed live/replacement metadata and routes; excludes capture bytes above |
+| Typed model/control slots | 1,024 | Proposed live/replacement metadata and routes; externally retained retired models need an additional accounted bound |
 | Raster/payload/coverage backing | 2,720 | Existing 2,560 + 160; aliases counted once |
 | Main / IRQ stack | 29,696 | Existing 27,648 + 2,048; guards belong in remaining bytes |
 | Remaining platform/globals/alignment | 8,192 | Proposed ceiling requiring exact ELF inventory |
@@ -349,8 +376,12 @@ charged; no implicit use of leftover platform RAM is permitted.
 
 Do not silently increase any conditional row if it fails. Revise the reservation
 proposal and dependent contracts explicitly. The extra replacement snapshot is
-a proposed change to SPEC-001/013/015's exact three-slot capture reservation.
-The 95,104-byte I3-T01 linked RAM is a generated-graph baseline, not a prediction.
+a proposed change to ADR-034 as well as SPEC-001/013/015's exact three-slot
+capture reservation; existing authority wins until explicitly changed.
+The table is incomplete if either application can retain more model/capture
+backing than its stated live/staged allowance; B2 must establish the actual
+finite bound and charge it before approval. The 95,104-byte I3-T01 linked RAM is
+a generated-graph baseline, not a prediction.
 
 For the counter, propose ceilings of 8,192 frame-store bytes, 1,024 model/control,
 2,720 raster/coverage, 8,192 main stack, 2,048 IRQ and 8,192 platform/guards:
@@ -373,6 +404,7 @@ one term. Observed stack high-water supplements, never replaces, the bound.
 | --- | --- | --- |
 | Runtime-emitted records with scoped model/capture access | Explicit ownership, avoids retaining full body tree and large capture copies | Recommended direction for contract work; safety/codec/stack proofs open |
 | Retain expanded typed aggregate through Layout/Canvas | Strong ordinary Swift typing; fewer custom codecs | Archived large-copy/stack failures apply to exact past images; compiler behavior and complete lifetime proof still required; not assumed impossible |
+| Keep exactly three capture slots, stage replacement without an extra snapshot | Preserves ADR-034 and saves 6,464 bytes | Must prove where old, admitted and candidate values live through attach failure and externally retained model lifetime; no safe overlay is established here |
 | Keep owned snapshot values in each declaration | Simple independent lifetime and existing API semantics | Large Static copies/body temporaries; useful semantic oracle, not assumed to fit |
 
 ## Rejected Approaches
@@ -423,12 +455,13 @@ of these risks is resolved by the conditional RAM sum.
 
 | ID | Blocking issue | Required resolution |
 | --- | --- | --- |
+| B0 | Proposed fourth capture slot contradicts accepted ADR-034 | Explicitly choose an ADR-034 amendment/successor that preserves its retention semantics, or revise the proposal with proven three-slot replacement. Do not modify limits first. |
 | B1 | Enforceable State/model/capture access and callback isolation | Exact compatible declarations/lowering; prove live context before access, no framework escape, no overlapping exclusive borrow, finite routes and zero heap on supported compilers. Revise RFC if portable API change is required. |
-| B2 | Complete record/payload/path/interaction and model storage | Derive exact worst-case counts/codecs for both apps, all source cases; validate every proposed byte row, replacement capture and generated Canvas capture size; approve resulting SPEC-001/013/015 limits. |
+| B2 | Complete record/payload/path/interaction and model storage | Derive exact worst-case counts/codecs, trie fanout and externally retained model cardinality for both apps, all source cases; validate every proposed byte row, replacement capture and generated Canvas capture size; approve resulting SPEC-001/013/015 limits. |
 | B3 | Complete supported-image stack and Dynamic cost | Bound recursive/indirect/callback/IRQ paths and construction/service/teardown; measure matched Dynamic memory. No unknown edge may be recorded as zero. |
 | B4 | Concrete supported lowering and migration completeness | Inventory graph producers/consumers and replace them with actual runtime traversal; show bounded Static callable/model lowering and full four-profile application behavior. |
 
-B1/B2 are design/contract readiness blockers; B3/B4 include evidence required
+B0 is an explicit architectural decision; B1/B2 are design/contract readiness blockers; B3/B4 include evidence required
 before adoption. Which evidence can precede exact Spec approval must be explicitly
 bounded and authorized as a separate experiment; this RFC launches none.
 The preserved 4 MHz failure is an additional **iteration performance blocker**,
@@ -447,7 +480,10 @@ or Spike is created and no stopped experiment is resumed.
 
 If the blockers are resolved and this RFC is approved, proposed ADR extractions
 are (1) runtime records with exact cross-revision identity and publication,
-and (2) explicit scoped model/capture ownership through Canvas. Preserve
+and (2) explicit scoped model/capture ownership through Canvas. The proposed
+four-slot branch additionally needs an explicit ADR-034 successor/amendment
+preserving five-second retention; it cannot be approved as a private storage
+change. Preserve
 ADR-006/024/025/026/032/033; identify any actual amendment rather than implicitly
 superseding them. Exact API declarations, codecs, capacities and error mapping
 belong in affected Specification amendments, then per-Spec implementation plans.
