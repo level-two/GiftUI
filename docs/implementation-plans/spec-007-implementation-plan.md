@@ -6,7 +6,7 @@ status: completed
 owners:
   - codex
 created: 2026-09-05
-updated: 2026-09-11
+updated: 2026-10-09
 related_design_notes:
   - ../implementation-designs/spec-007-bounded-layout-attempt.md
 conformance_report: ../conformance/spec-007-conformance.md
@@ -21,6 +21,30 @@ superseded_by: null
 ---
 
 # SPEC-007 Implementation Plan
+
+## Iteration 3 correction task — 2026-10-09
+
+**Planned participation; execution details pending.** The single
+[I3-T01 task](../iterations/iteration-003-review/memory-efficiency-plan.md#i3-t01--correct-scheduling-and-reduce-rasterlayout-costs)
+owns the three corrections, shared eight-active-hour ceiling, final result and
+handoff to subsequent iteration work. Cover I3-T01.3 layout identity, output
+equivalence, capacity/failure behavior and bounded workspace indexing with the
+application-owned workspace in SPEC-001. No semantic/layout ownership or
+contract change is selected.
+
+At I3-T01 launch, record this plan's exact affected files, internal realization,
+acceptance-criterion mapping and validation commands before dependent code
+changes. This belongs to the same task and budget, not another preparation
+phase. This navigation/ownership entry does not claim those details are ready
+or add independently budgeted tasks. Its results inform remaining iteration
+work without automatically enlarging scope.
+
+The governing Specification remains `implemented`; earlier dated readiness,
+progress and closeout statements below retain their historical context. The
+plan's existing status describes its earlier task ledger, not I3-T01 readiness.
+Historical exceptions and test results do not establish iteration-3 conformance.
+No implementation, architecture approval or connected action occurs through
+this documentation update.
 
 > This ready plan derives work from the approved Proposal-Based Layout
 > Contract. It orders implementation and evidence but does not amend the

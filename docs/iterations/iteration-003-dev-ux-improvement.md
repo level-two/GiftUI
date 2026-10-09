@@ -55,6 +55,11 @@ groups source scheduling, Embedded raster and layout lookup corrections into
 one bounded package with three subtasks and one final disposition. It decomposes
 I3-05 within the existing scope; it is not another experiment or completion of
 I3-04 runtime derivation. Production implementation has not started.
+The plan's [current readiness table](iteration-003-review/memory-efficiency-plan.md#start-here)
+and [implementation ownership](iteration-003-review/memory-efficiency-plan.md#implementation-plan-ownership-and-launch-details)
+distinguish executable next work from unresolved runtime design, integrated
+validation and closure. The [working assumptions](iteration-003-review/memory-efficiency-plan.md#working-assumptions-and-evidence-boundaries)
+make the production baseline and conditional 32 MHz reasoning explicit.
 
 ## Goal
 
@@ -267,8 +272,11 @@ This iteration is active with closure open. The first bounded ME-01–04 phase
 ended with an [inconclusive feasibility decision](iteration-003-review/feasibility-decision.md):
 the baseline is frozen, source/historical memory and performance evidence is
 recorded, and complete runtime-derived safety/performance remains unproved.
-This is a preparation disposition, not iteration closure or implementation
-readiness. ME-05–09 remain open; no automatic experimental continuation follows.
+This is a preparation disposition, not iteration closure or runtime-candidate
+adoption readiness. The later 4 MHz assessment and conditional 32 MHz review
+are also closed, with their distinct results preserved. I3-T01 is now the
+planned correction task; ME-05–09 remain partly or wholly open as shown in the
+plan's current readiness table. No automatic experimental continuation follows.
 At closure, report IT-AC-001–003 as transferred, IT-AC-005's split explicitly,
 and IT-AC-004–010 as met, unmet or individually excepted with evidence. Obtain
 human closure; feature architecture, contract and implemented transitions remain

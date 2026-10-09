@@ -18,14 +18,22 @@ implemented Specifications, tests and target recipes are unchanged. Read the
 choice the next work will change. Retrieve archived source/evidence only for
 that choice. No blanket replay of SPIKE-015–067 is required.
 
-The immediate output is **one feasibility decision packet**: can a complete
-runtime-derived analyzer and finite counter satisfy reviewed memory/lifetime
-and sustained-performance requirements, which architectural changes are needed,
-and which measured costs should be addressed first? A negative or
-inconclusive result is useful if it identifies the exact constraint and the
-scope/design decision needed. It is not permission for an automatic follow-up.
+**Current next work: I3-T01 below.** The original preparation, one-candidate
+assessment and 32 MHz source review have all ended. Their questions, budgets
+and verdicts below are historical records, not instructions to launch them
+again. There is an executable next task, not yet a fully executable plan for
+all remaining iteration work.
+
+| Work | Current readiness / missing prerequisite |
+| --- | --- |
+| I3-T01 correction package | Planned; start with its bounded launch planning, then implement. No additional general preparation phase is required. |
+| I3-04 runtime derivation, ME-05/06 | Concrete ownership/lifetime realization, complete resource bounds, applicable contract approvals and executable implementation tasks remain unresolved. Its next execution package and numeric effort ceiling are not yet fixed. I3-T01 informs this work but is not its only prerequisite. |
+| ME-08 integrated validation | Waits for the adopted implementations and exact artifact identities; connected evidence remains separately authorized. |
+| ME-09 closure/handoff | Waits for the criterion dispositions and maintainer decision; no automatic iteration-4 extraction. |
 
 ## Fixed preparation questions and output
+
+This section preserves the closed ME-01–04 phase's original brief.
 
 Answer these three questions for the complete supported compositions:
 
@@ -99,6 +107,58 @@ record any technically necessary internal design in their focused design notes.
 That work belongs to this task and its budget. This coordination entry alone is
 not a ready per-Spec plan or authority for a new algorithmic contract.
 
+### Implementation-plan ownership and launch details
+
+The linked per-Spec plans retain their earlier task history. Their historical
+`ready` or `completed` status does not establish I3-T01 execution readiness.
+The following links assign responsibilities within this one task, not seven
+new tasks or independent budgets:
+
+| Plan | I3-T01 responsibility |
+| --- | --- |
+| [SPEC-001](../../implementation-plans/spec-001-implementation-plan.md#iteration-3-correction-task--2026-10-09) | Application scheduling, target-specific host/workspace changes, workload and integrated application evidence; coordinate the shared task report. |
+| [SPEC-015](../../implementation-plans/spec-015-implementation-plan.md#iteration-3-correction-task--2026-10-09) | Host source deadlines, wake/pacing and bounded admission joins with SPEC-001. |
+| [SPEC-007](../../implementation-plans/spec-007-implementation-plan.md#iteration-3-correction-task--2026-10-09) | Layout identity, output equivalence and bounded workspace checks for indexing. |
+| [SPEC-014](../../implementation-plans/spec-014-implementation-plan.md#iteration-3-correction-task--2026-10-09) | Bounded stroke raster implementation, coverage storage and synchronous tiled consumption. |
+| [SPEC-008](../../implementation-plans/spec-008-implementation-plan.md#iteration-3-correction-task--2026-10-09) | Render/painter/clip/failure regression obligations; no Render contract amendment is selected. |
+| [SPEC-012](../../implementation-plans/spec-012-implementation-plan.md#iteration-3-correction-task--2026-10-09) | Stroke coverage and borrowed-path lifetime regression obligations; no drawing contract amendment is selected. |
+| [SPEC-013](../../implementation-plans/spec-013-implementation-plan.md#iteration-3-correction-task--2026-10-09) | Profile equivalence and complete accounting of changed storage, allocations and stack costs. |
+
+At launch, the executor must freeze the exact affected files, selected internal
+algorithms, criterion-to-check mapping and commands in those plans before the
+dependent code changes. These details are **not yet decided**; the three
+subtask descriptions are outcomes, not fully specified algorithms. Reuse
+existing contract checks and add targeted regressions where needed, with no
+separate approval loop for ordinary derived planning. A required contract or
+architecture change still follows its normal gate.
+
+### Working assumptions and evidence boundaries
+
+- Keep the accepted core owner boundaries as the working basis. The source
+  review found no unavoidable contradiction; it did not prove that local
+  corrections will achieve four FPS or eliminate every later design change.
+- I3-T01 starts from maintained production with its existing generated graph.
+  Improve reusable host/raster/layout owners without adopting archived runtime
+  experiments. Graph removal and both applications' runtime derivation remain
+  I3-04; revalidate these corrections on that later integrated representation.
+- The scheduler correction concerns deterministic source deadlines and ordered
+  bounded catch-up. It is not a promise to recover arbitrary unbuffered physical
+  GPIO edges or to tolerate unlimited backlog. The default deterministic source
+  is not the required 80-events/s stress workload; validation must distinguish
+  them and preserve the existing admission capacities.
+- The 32 MHz rate is an analytical assumption for the nRF display only. The
+  production overlay remains at 4 MHz. I3-T01 does not silently change that
+  setting; an actual clock change and device verification must be explicitly
+  recorded before any 32 MHz target claim. Pi/macOS costs are unaffected by
+  the assumption. The known 65.276 ms fill/command wire floor is not a full
+  frame timing prediction.
+- The iteration still covers both applications and four configurations.
+  I3-T01's Pi/nRF scheduling and Embedded raster/layout focus is narrower;
+  cross-profile regressions remain required, and it does not promise to remove
+  every Pi bottleneck or establish counter safety. Account for index/coverage
+  storage and preserve approved limits; faster code is not automatically
+  lower-memory code. Candidate reservations are not approved application budgets.
+
 ### How this task informs subsequent work
 
 I3-T01 delivers corrected production code and bounded validation results that
@@ -126,6 +186,12 @@ tests, repairs and the final report across all three subtasks. Record cumulative
 usage in this entry when execution begins and after each work session. Exclude
 waiting for maintainer input or unavailable hardware and report it separately.
 The budget does not reset at a subtask, commit or session boundary.
+This is an executor-selected work ceiling, not a delivery-time guarantee or a
+claim that the maintainer approved that particular number. No I3-T01 execution
+time has been recorded yet; documentation clarification is not a launch.
+The eight-hour limit covers I3-T01 only, not the whole iteration. Subsequent
+work still needs a concrete bounded execution plan; this record does not
+promise a total iteration duration or authorize an indefinite continuation.
 
 Finish with one integrated report that records each subtask's disposition,
 commits, correctness checks, resource results, performance evidence and its
@@ -178,6 +244,10 @@ Task closure does not close iteration 3 or establish iteration-4 readiness.
   weaken workloads or reuse old MVP exceptions to declare a new criterion met.
 
 ## Stop and decide
+
+The following experimental rules governed the closed preparation phase.
+I3-T01 uses its own implementation bound above; neither allowance renews the
+other or reopens SPIKE-067/068.
 
 At launch, record numeric ceilings for active elapsed time, experimental command
 invocations and correction attempts in the same decision packet. Count analysis,
@@ -241,7 +311,11 @@ applicable investment and RFC/ADR/Spec gates. FW-027/FW-032 supply selected
 performance provenance; FW-031/FW-033 retain unrelated connected follow-up;
 FW-035 retains the future generated-frontend question.
 
-## Actions open after this amendment
+## Historical actions at the preparation amendment
+
+This table records permissions when revision 5 was first adopted. Its phase
+launch and experiment rows are no longer open: the recorded phases have ended.
+Use the current readiness table and I3-T01 task above for the next action.
 
 | Action | Current permission / prerequisite |
 | --- | --- |

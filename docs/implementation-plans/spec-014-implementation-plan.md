@@ -6,7 +6,7 @@ status: completed
 owners:
   - codex
 created: 2026-09-09
-updated: 2026-09-27
+updated: 2026-10-09
 related_design_notes:
   - ../implementation-designs/spec-014-widened-integer-stroke-raster.md
   - ../implementation-designs/spec-014-operation-major-rgb565-tiling.md
@@ -25,6 +25,30 @@ superseded_by: null
 ---
 
 # SPEC-014 Implementation Plan
+
+## Iteration 3 correction task — 2026-10-09
+
+**Planned participation; execution details pending.** The single
+[I3-T01 task](../iterations/iteration-003-review/memory-efficiency-plan.md#i3-t01--correct-scheduling-and-reduce-rasterlayout-costs)
+owns the three corrections, shared eight-active-hour ceiling, final result and
+handoff to subsequent iteration work. Own I3-T01.2 bounded Embedded stroke
+raster realization and coverage-storage accounting, preserving synchronous
+operation-major tiled consumption. Coordinate pixel/clip/stroke regressions
+with SPEC-008/012 and target integration with SPEC-001.
+
+At I3-T01 launch, record this plan's exact affected files, internal realization,
+acceptance-criterion mapping and validation commands before dependent code
+changes. This belongs to the same task and budget, not another preparation
+phase. This navigation/ownership entry does not claim those details are ready
+or add independently budgeted tasks. Its results inform remaining iteration
+work without automatically enlarging scope.
+
+The governing Specification remains `implemented`; earlier dated readiness,
+progress and closeout statements below retain their historical context. The
+plan's existing status describes its earlier task ledger, not I3-T01 readiness.
+Historical exceptions and test results do not establish iteration-3 conformance.
+No implementation, architecture approval or connected action occurs through
+this documentation update.
 
 ## 2026-09-27 Landscape Fixture Correction
 
