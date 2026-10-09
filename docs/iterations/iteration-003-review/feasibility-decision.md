@@ -56,10 +56,77 @@ runtime-derived production feasibility. Missing binaries alone do not justify
 rebuilding an exhausted candidate. Timing and ownership evidence will be assessed
 next to determine the smallest useful upstream decision.
 
-## ME-02 / ME-03 — Memory, lifetimes and performance
+## ME-02 — Memory and lifetime assessment
 
-Pending source/evidence assessment. Historical target measurements will retain
-their original workload, image and instrumentation limitations.
+The [source arithmetic and identities](feasibility-evidence/source-analysis.json)
+reconcile the current generated nRF production reservation, not a runtime-derived
+candidate. [The region map](../../../Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFProfileRegions.swift)
+and [firmware storage](../../../firmware/nrf52840/applications/signal-analyzer-static/src/storage.c)
+give the following non-overlapping reserved regions:
+
+| Region | Bytes | Lifetime / constraint |
+| --- | ---: | --- |
+| Semantic candidate + published | 6,048 | Two 3,024-byte regions; publication/failure behavior prevents assuming they may alias. |
+| Layout + render/text | 7,840 | 3,136 + 4,704; text lines/glyphs and scratch live inside these regions, not extra buffers. Layout results remain inputs to Canvas/render. |
+| Canvas callables + live Path + drawing plan | 16,976 | 160 + 3,280 + 13,536; path mutation and accumulated stroke snapshots can overlap. Plan stays live through render; callable release alone does not release the plan. |
+| Observable live/candidate + interaction candidate/committed | 768 | Declared 128 + 128 + 256 + 256 profile regions; actual firmware also has typed global model/interaction owners. Do not confuse a region reservation with a complete model-memory measurement. |
+| Active + sealed admission | 7,680 | Two 3,840-byte regions; distinct producer/sealed lifetimes. |
+| Pointer/coordinator/failure | 384 | 96 + 192 + 96; coordinator state is stored between opportunities. |
+| **Profile subtotal** | **39,696** | All sixteen subregions are contiguous and non-overlapping. |
+| Three capture stores | 19,392 | 3 × 404 × 16; live, snapshot/model and admitted storage. Five-second retention is already applied. |
+| Raster/payload/in-flight slot + coverage | 2,720 | 2,560 + 160; the tile, payload and in-flight slot are the same backing, counted once. |
+| **Four outer buffers** | **61,808** | Retained C storage. |
+| Configured main/ISR/workqueue/idle stacks | 31,040 | 27,648 + 2,048 + 1,024 + 320; reservation, not proved maximum use. |
+| Linked remainder | 2,256 | Difference to the recorded 95,104-byte image; includes other linked storage/alignment/guards. No current ELF/map exists to attribute every byte. |
+
+The current resource ceiling is 196,608 bytes. The arithmetic difference of
+101,504 bytes is **not a safe additional stack/storage allowance**: the complete
+runtime-derived construction, live backing and feasible-path stack must fit
+together under reviewed application bounds. Increasing a reservation without
+that proof would not answer IT-AC-008.
+
+The actual Embedded service implementation in
+[StaticPreset.swift](../../../firmware/nrf52840/applications/signal-analyzer-static/src/StaticPreset.swift)
+constructs `StaticSignalAnalyzerCommonOwner` over borrowed regions, keeps semantic,
+layout and drawing views through `offerAndProduce`, and persists bounded
+coordinator state. The separate native `withOwners` composition is not substituted
+as evidence for this firmware path. Construction temporaries, reachable recursive
+Layout/Render calls, callback targets and IRQ overlap still need emitted-image
+analysis; source declarations alone cannot bound them.
+
+The archived runtime-derived candidate has a different footprint:
+
+- [Packet 61](https://github.com/level-two/GiftUI/blob/af5e9559ebf71446dbee4c3b1fcb2aae65a8f769/experiments/spike-067-integrated-runtime-host/stack-closure-results-0061.md)
+  records 73,728 frame-backing bytes + 65,536 model/capture-backing bytes +
+  27,712 main-stack allocation including guard + 2,112 IRQ-stack allocation
+  including guard + 896 other/alignment bytes = 169,984-byte RAM envelope.
+  A twelve-frame successful-path witness needs 30,304 bytes against a 27,648-byte
+  main reservation: that exact candidate is unsafe.
+- [Packet 64](https://github.com/level-two/GiftUI/blob/af5e9559ebf71446dbee4c3b1fcb2aae65a8f769/experiments/spike-067-integrated-runtime-host/copy-realization-results-0064.md)
+  keeps that RAM envelope, removes the specific 20,096-byte getter and reports a
+  6,960-byte local helper frame. The old witness cannot be applied to the changed
+  image; neither can the difference between local frames be claimed as whole-stack
+  savings. Its complete upper bound remains unknown.
+- [Packet 65](https://github.com/level-two/GiftUI/blob/af5e9559ebf71446dbee4c3b1fcb2aae65a8f769/experiments/spike-067-integrated-runtime-host/armv6-results-0065.md)
+  retains 73 unresolved register-transfer sites, 58 table sites and eight recursive
+  components, plus State/capture alias/escape and callback/IRQ obligations. It
+  establishes a recording ARMv6 link, not supported target execution.
+
+These are separate images/compositions, not a paired production memory comparison.
+The current Dynamic pipeline retains semantic, layout, drawing, render and
+interaction workspaces, including heap-backed collections; source inspection
+identifies owners but not allocation/RSS peaks or copy-on-write behavior. Actual
+Dynamic and macOS Static/counter live-memory totals remain unmeasured here.
+
+**Memory conclusion:** fixed production reservations are accountable at region
+level; safe complete runtime-derived memory/lifetimes across both applications
+and all four profiles are not established. The open issues are ownership/copy
+realization and whole-path safety, not simply the size of the capture buffer.
+
+## ME-03 — Performance assessment
+
+Pending. Historical target measurements will retain their original workload,
+image and instrumentation limitations.
 
 ## ME-04 — Alternatives and terminal decision
 
@@ -70,3 +137,8 @@ Pending. No architecture is selected and no implementation is authorized.
 ME-01 checkpoint, 14:53:56 UTC: 1m48s active elapsed; 0/8 experimental invocations,
 0/2 experimental corrections; no waiting. Both non-probe doctors pass. No hardware
 operation, production change, new conformance claim or study restart.
+
+ME-02 checkpoint, 14:57:26 UTC: 5m18s active elapsed; 0/8 experimental invocations,
+0/2 experimental corrections; no waiting. Region arithmetic reconciles to the
+historical linked total with the residual explicitly unattributed. This does
+not satisfy the complete stack/lifetime or all-profile measurement criteria.

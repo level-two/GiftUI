@@ -1,0 +1,142 @@
+{
+  "method": "Read-only source arithmetic and historical report reconciliation; no compilation, benchmark or new target observation.",
+  "profile_regions": [
+    {
+      "name": "semanticCandidate",
+      "offset": 0,
+      "bytes": 3024
+    },
+    {
+      "name": "semanticPublished",
+      "offset": 3024,
+      "bytes": 3024
+    },
+    {
+      "name": "layoutCandidate",
+      "offset": 6048,
+      "bytes": 3136
+    },
+    {
+      "name": "renderWorkspace",
+      "offset": 9184,
+      "bytes": 4704
+    },
+    {
+      "name": "canvasCallable",
+      "offset": 13888,
+      "bytes": 160
+    },
+    {
+      "name": "pathWorkspace",
+      "offset": 14048,
+      "bytes": 3280
+    },
+    {
+      "name": "drawingPlan",
+      "offset": 17328,
+      "bytes": 13536
+    },
+    {
+      "name": "observableLive",
+      "offset": 30864,
+      "bytes": 128
+    },
+    {
+      "name": "observableCandidate",
+      "offset": 30992,
+      "bytes": 128
+    },
+    {
+      "name": "interactionCandidate",
+      "offset": 31120,
+      "bytes": 256
+    },
+    {
+      "name": "interactionCommitted",
+      "offset": 31376,
+      "bytes": 256
+    },
+    {
+      "name": "admissionQueue",
+      "offset": 31632,
+      "bytes": 3840
+    },
+    {
+      "name": "sealedBatch",
+      "offset": 35472,
+      "bytes": 3840
+    },
+    {
+      "name": "pointerState",
+      "offset": 39312,
+      "bytes": 96
+    },
+    {
+      "name": "coordinatorState",
+      "offset": 39408,
+      "bytes": 192
+    },
+    {
+      "name": "failureState",
+      "offset": 39600,
+      "bytes": 96
+    }
+  ],
+  "outer_reserved_regions": {
+    "profile": 39696,
+    "capture": 19392,
+    "raster_and_payload_slot": 2560,
+    "coverage": 160
+  },
+  "configured_stack_reservations": {
+    "CONFIG_SYSTEM_WORKQUEUE_STACK_SIZE": 1024,
+    "CONFIG_MAIN_STACK_SIZE": 27648,
+    "CONFIG_IDLE_STACK_SIZE": 320,
+    "CONFIG_ISR_STACK_SIZE": 2048
+  },
+  "known_reserved_total": 92848,
+  "historical_linked_ram_bytes": 95104,
+  "unattributed_linked_residual_bytes": 2256,
+  "selected_ram_ceiling": 196608,
+  "configured_headroom_not_proven_free_memory": 101504,
+  "naive_additional_framebuffer": {
+    "rgb565_320x240_bytes": 153600,
+    "linked_total_if_only_2560_byte_tile_removed": 246144,
+    "excess_over_selected_ceiling": 49536,
+    "limitation": "Arithmetic rejection of this additive candidate only; not a proof that every framebuffer architecture is infeasible."
+  },
+  "source_scan_counts_at_capacity": {
+    "scope_insertion_duplicate_scan_98": 4753,
+    "glyph_insertion_prior_glyph_scan_224": 24976,
+    "limitation": "Comparisons implied by insertion loops at declared capacities; not measured per-frame counts or timing attribution."
+  },
+  "source_sha256": {
+    "Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFProfileRegions.swift": "c5de068b4e506c7ed2ceab5144a8002b64ed465d2b950ca6fd68230ea561f314",
+    "firmware/nrf52840/applications/signal-analyzer-static/src/storage.c": "29ff4f55c84c4818946cc935084fa62fcbc68e02558daa6604835d6b5fa00388",
+    "firmware/nrf52840/applications/signal-analyzer-static/src/StaticPreset.swift": "a09be0b024d82b6582fb7ccd23fafbb30c4b5df86ae25cac4c907afd265bed1c",
+    "firmware/nrf52840/applications/signal-analyzer-static/src/production_host.c": "570cab8c0ea323a3aef8d16983ea97d200dce5057b6428789dc3a962211d144e",
+    "Sources/SignalAnalyzerRaspberryPiARMv6/LinuxSignalAnalyzerPiProcessLoop.swift": "b52a20af5dda856ace051ecdbd24beb3779d9e862b53fd0e0a9057fb9ba44140",
+    "Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFCommonLayoutWorkspace.swift": "c33030f4e8da7fccf014dd8ccc326ba960937370897f8ae668a202d5ca882689",
+    "Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFEmbeddedLayoutWorkspace.swift": "e255de7491bc3aa79c1e84dc767b54337d6282b1cb57d5f92ae391f3a804aa59",
+    "Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFEmbeddedLayoutTextCodec.swift": "5fdac8bd138aa36efdc0b521ecd77642a8b36db07268c8294e4029bde1d37b92",
+    "Sources/GiftUIRasterCore/RasterStrokeCoverage.swift": "4a88309a22aee5c30bc828684fd03d0fae858540fe7ab2e43d0cddfd8da012ac",
+    "Sources/GiftUIPlatformRaspberryPi/PiScreenFramebufferProjection.swift": "f9de0aafe58f2779fe69914e7f7c584b64076f2b7d5f96441542efa6618dbb5b",
+    "Sources/SignalAnalyzerTargetHost/DynamicSignalAnalyzerPresentationPipeline.swift": "e19185857cac3fb7211113efd0946e09ce9ae92cd9e9b29b26171888e49ec609",
+    "Sources/GiftUIHostConfiguration/Generated/SignalAnalyzerPresets.generated.swift": "0b26f0a4365ca013a4f9afc913b762e6d4e325b0b543eb2ee47ac8ddcd797175",
+    "Sources/SignalAnalyzerData/DeterministicSignalGenerator.swift": "3a7f2debdee49fa129ef8b73f3b7e7a0d8a721c75dd32eefb65fac0dd1aa4e0d"
+  },
+  "archive_sources": {
+    "experiments/spike-067-integrated-runtime-host/stack-closure-results-0061.md": {
+      "commit": "af5e9559ebf71446dbee4c3b1fcb2aae65a8f769",
+      "git_blob": "49ce1e76676b4bfdbbda67fbd970e58946aafba7"
+    },
+    "experiments/spike-067-integrated-runtime-host/copy-realization-results-0064.md": {
+      "commit": "af5e9559ebf71446dbee4c3b1fcb2aae65a8f769",
+      "git_blob": "bd3125ba2119686094583549aff2cc958e026666"
+    },
+    "experiments/spike-067-integrated-runtime-host/armv6-results-0065.md": {
+      "commit": "af5e9559ebf71446dbee4c3b1fcb2aae65a8f769",
+      "git_blob": "edd4ef32c8ed71e6037b778b72df6eb84c92a52a"
+    }
+  }
+}
