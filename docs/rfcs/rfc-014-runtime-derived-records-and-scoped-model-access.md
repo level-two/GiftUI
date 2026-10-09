@@ -57,6 +57,10 @@ record corrections and the remaining approval blockers.
 The subsequent [SPIKE-069 result](../../experiments/spike-069-scoped-model-access/evidence/result.md)
 provides bounded compiler/lifetime evidence and exposes a concrete source/API
 choice; it does not close B1 or establish application feasibility.
+The subsequent [source-design comparison](../iterations/iteration-003-review/rfc-014-source-design-options.md)
+and [application ownership audit](../iterations/iteration-003-review/rfc-014-ownership-audit.md)
+make both source choices and retention risks reviewable. Explicit scoped APIs
+are recommended for further design; no source contract or pool bound is selected.
 
 ## Summary
 
@@ -526,8 +530,8 @@ of these risks is resolved by the conditional RAM sum.
 | ID | Blocking issue | Required resolution |
 | --- | --- | --- |
 | B0 | Proposed fourth capture slot contradicts accepted ADR-034 | Explicitly choose an ADR-034 amendment/successor that preserves its retention semantics, or revise the proposal with proven three-slot replacement. Do not modify limits first. |
-| B1 | Enforceable State/model/capture access and callback isolation | SPIKE-069 refutes callback restriction alone and supports a bounded borrow/key fixture. Choose checked source-compatible lowering or explicit scoped API changes; settle compiler support, live backing/application ownership and every generated route. Full no-escape/exclusivity/zero-heap proof remains open. |
-| B2 | Complete record/payload/path/interaction and model storage | Derive exact worst-case counts/codecs, trie fanout and externally retained model cardinality for both apps, all source cases; validate every proposed byte row, replacement capture and generated Canvas capture size; approve resulting SPEC-001/013/015 limits. |
+| B1 | Enforceable State/model/capture access and callback isolation | SPIKE-069 refutes callback restriction alone and supports a bounded borrow/key fixture. Select the source direction from the companion comparison (explicit scoped APIs recommended, not adopted); settle exact declarations/lowering, compiler support, live backing/application ownership and every generated route. Full no-escape/exclusivity/zero-heap proof remains open. |
+| B2 | Complete record/payload/path/interaction and model storage | Derive exact worst-case counts/codecs, trie fanout and peak externally retained model cardinality for both apps (including audited host caches and transient replacement ownership), all source cases; validate every proposed byte row, replacement capture and generated Canvas capture size; approve resulting SPEC-001/013/015 limits. |
 | B3 | Complete supported-image stack and Dynamic cost | Bound recursive/indirect/callback/IRQ paths and construction/service/teardown; measure matched Dynamic memory. No unknown edge may be recorded as zero. |
 | B4 | Concrete supported lowering and migration completeness | Inventory graph producers/consumers and replace them with actual runtime traversal; show bounded Static callable/model lowering and full four-profile application behavior. |
 

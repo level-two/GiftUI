@@ -22,9 +22,12 @@ Specifications remain authority; the generated production graph is retained.
 and its [design review](i3-t02-design-review.md).
 [SPIKE-069](../../spikes/spike-069-scoped-model-access.md) is completed with
 bounded borrow/key evidence and actual Canvas compatibility counterexamples.
-The next decision is checked source-compatible lowering versus explicit scoped
-API changes (B1), alongside the application-retained model bound (B2). Those
-inform three-versus-four-plus-retired capture storage under ADR-034 (B0).
+The [source-design comparison](rfc-014-source-design-options.md) now makes
+checked lowering versus explicit scoped APIs concrete for both applications.
+It recommends developing the explicit API, without selecting it. The
+[ownership audit](rfc-014-ownership-audit.md) identifies host retention and
+replacement obligations; neither app yet proves its peak retained bound (B2).
+These inform capture storage under ADR-034 (B0), whose slot count remains open.
 Runtime implementation remains blocked; no experiment is automatically launched.
 The [findings summary](preparation-findings.md) and stopped studies remain
 historical inputs; this result does not reopen their budgets or experiments.
@@ -33,10 +36,38 @@ historical inputs; this result does not reopen their budgets or experiments.
 | --- | --- |
 | I3-T01 correction package | Complete within the hardware-free boundary; [result and residual gates](i3-t01-result.md). |
 | I3-T02 runtime design, I3-04 / ME-05 | Delivered with named blockers: [RFC-014 review and contract map](i3-t02-design-review.md). |
-| RFC-014 B1 follow-up | SPIKE-069 terminal; source-enforcement/API and ownership decisions remain. No full B1 or feasibility closure. |
+| RFC-014 B1/B2 follow-up | SPIKE-069 terminal; source comparison and ownership audit delivered. Explicit scoped API recommended, not selected; compiler/ownership evidence and B0 remain open. |
 | ME-06 runtime implementation | Blocked on the resulting architecture/contract gates and complete resource/lifetime evidence; no ready migration plan yet. |
 | ME-08 integrated validation | Waits for the adopted implementations and exact artifact identities; connected evidence remains separately authorized. |
 | ME-09 closure/handoff | Waits for the criterion dispositions and maintainer decision; no automatic iteration-4 extraction. |
+
+## RFC-014 source-design follow-up — 2026-10-09
+
+Eugene requested “Let’s proceed then with the next design step” after the
+source/API comparison and application ownership audit were proposed. This
+separate documentation task is complete; it did not renew I3-T02 or SPIKE-069
+budgets and performed no build, compiler probe, benchmark or hardware operation.
+The instruction to commit each step remains in effect.
+
+| Step | Result |
+| --- | --- |
+| Ownership audit | `c21d9e0b`: [analyzer references, counter gaps and proposed ownership rules](rfc-014-ownership-audit.md). Current fixed-root actions do not prove future replacement bounds. |
+| Source comparison | `9e201762`: [concrete A/B source sketches and required lowering](rfc-014-source-design-options.md). Recommend explicit scoped APIs; neither candidate adopted. |
+| Review and integration | This update: RFC/review/manifest links, readiness and decision boundary reconciled; B0–B4 remain open. |
+
+The next directional choice is whether to accept the visible scoped State/Canvas
+migration for further contract design, or prioritize existing syntax and design
+the mandatory finite semantic checker. This is not RFC approval or experiment
+permission. Develop exact declarations and peak ownership ledgers for the chosen
+direction before selecting physical capture capacity. A compiler feasibility
+experiment, if needed after that design, requires its own concrete question and
+bounded authorization; no broad feasibility cycle is opened.
+
+Validation: governance validator, local file-link checks and `git diff --check`.
+Examples are deliberately uncompiled design sketches; no repository test or
+four-profile compatibility result is claimed. Production, accepted ADRs,
+approved Specs and iteration scope are unchanged. The final review remains
+**not ready for RFC approval**, with no blocker hidden as deferred work.
 
 ## RFC-014 B1 follow-up — 2026-10-09
 
@@ -50,7 +81,7 @@ SPIKE-067/068 are not resumed. This is a separate bounded continuation, not a
 renewal of I3-T02's closed authoring allowance.
 
 **Completed:** `e22bed02` records the recipe/ownership proposal; `203c6caf`
-records disposable code and evidence; the final documentation step integrates
+records disposable code and evidence; `e391c632` integrates
 the result into RFC-014 and its review. A's callback-only enforcement is refuted.
 B has bounded compiler/lifetime-model support, but actual Canvas rejects its
 direct borrowed capture. Required source lowering/API changes, compiler policy,

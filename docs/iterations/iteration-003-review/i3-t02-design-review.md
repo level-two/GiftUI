@@ -152,6 +152,39 @@ amendments must reflect the selected source/capture semantics, not copy the
 prototype. Compiler policy, every generated route, complete storage and full
 image/profile evidence remain required. No automatic next experiment is opened.
 
+### Source-design follow-up — 2026-10-09
+
+**Verdict: not ready.** The [source comparison](rfc-014-source-design-options.md)
+and [ownership audit](rfc-014-ownership-audit.md) complete the requested next
+design step. This is an author consistency review, not an independent reviewer
+or human approval. It recommends explicit scoped APIs for further design and
+preserves checked finite lowering as an alternative. No compiler or application
+experiment was run in this follow-up.
+
+| Severity / location | Finding and required resolution |
+| --- | --- |
+| Blocker B1/B4 — source comparison, A lowering table | Preserving familiar syntax needs mandatory type-directed enforcement on every supported profile, including cross-file helpers and copied wrappers. Existing macros do not establish it. If A is selected, define its finite source boundary and mandatory build integration without introducing a general compiler or generated graph. |
+| Blocker B1 — source comparison, B API table | The proposed scoped marker/builder/snapshot Canvas is not a compiled API. Choose exact nonescapable declarations, generic builder constraints, initializer ownership, transparent identity behavior, error mapping and supported compiler policy. Experimental fixture success does not prove these generic interfaces. |
+| Blocker B1/B2 — ownership audit, analyzer owner table | Host, failure and presentation-attempt caches retain model references. A root swap alone is insufficient. Define retarget/release on association commit and failures, including replacement followed by failed derivation. Reclamation must preserve explicit external owners. |
+| Blocker B0/B2 — ownership audit, peak ledger | R=0 after cleanup does not establish peak R=0. Prove transient retention and all simultaneously reserved roles before choosing three or four-plus-retained slots. Four still conflicts with ADR-034 even if R=0 is proven. Counter needs its own finite model ledger, not analyzer slots. |
+| Blocker B1/B4 — source comparison, staged payload ownership | Copyable keys/capture records cannot implicitly own unique pins. Specify ledger acquisition/release per actual occurrence and every partial-failure edge; no key may resolve freed owner backing. |
+| Unchanged blocker B2/B3/B4 — RFC resource and adoption sections | Complete codecs/capacities, actual traversal and four-configuration owner behavior, full-image stack/heap and matched Dynamic costs remain unproved. The 4 MHz performance failure is independent. |
+
+Non-blocking suggestion: finalize public naming only after the logical contract
+is stable; candidate names are not package/export decisions. No new deferred
+artifact is needed for this naming detail. All correctness and feasibility
+questions above remain current blockers rather than future work.
+
+Candidate ADRs remain runtime records/identity and model/snapshot lifetime.
+The chosen source restriction or API migration additionally needs an explicit
+compatibility decision against ADR-024/026/028 and SPEC-010/012. A four-slot
+choice still needs the separate ADR-034 amendment/successor. Neither API
+recommendation nor this review changes current authority.
+
+Governance validation, local file links and whitespace checks pass for the
+follow-up. Design sketches were not compiled; no additional production tests,
+heap/stack measurement, hardware validation or budget extension is claimed.
+
 ### Original authoring validation
 
 `scripts/validate-governance.rb` and `git diff --check` pass for this documentation

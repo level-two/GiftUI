@@ -19,6 +19,8 @@ features:
     # 4 MHz NO-GO preserved; 32 MHz review finds no further unavoidable architecture limit.
     # I3-T02 produced draft RFC-014; ownership/resource adoption blockers remain.
     # SPIKE-069 completed: borrow/key evidence; B1 source/lowering choice remains open.
+    # Design comparison: docs/iterations/iteration-003-review/rfc-014-source-design-options.md.
+    # Ownership audit: docs/iterations/iteration-003-review/rfc-014-ownership-audit.md; peak R unproved.
     # Acceptance provenance: docs/iterations/iteration-003-review/proposal-007-acceptance.md.
     status: rfc
     proposal:

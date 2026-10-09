@@ -26,6 +26,7 @@ owner capacities and enforcement still need design/review after that direction.
 
 ## Reading the examples
 
+A/B below label source-design alternatives, not SPIKE-069's pointer/borrow fixtures.
 All code below is **uncompiled proposed application source**. Names such as
 `PresentationCapture`, `CaptureSelection`, `CaptureRead`, `ScopedState`,
 `WithModel` and `SnapshotCanvas` are candidate names, not existing APIs. Ellipses
