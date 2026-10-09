@@ -99,3 +99,15 @@ before these passing runs. [Resources](i3-t01-evidence/layout-memory.txt) and
 [artifact](i3-t01-evidence/layout-artifact.sha256) identify the changed image.
 The Pi native production rehearsal and cross-build also pass.
 Raster commit: `5ccf0a63`; combined repository validation follows.
+
+## Integration harness repair
+
+The first aggregate run `run-srW7Ywjw` failed the existing interruption fixture:
+its ready marker preceded creation of the staging directory it expected after
+TERM. A focused retry passed, and source inspection confirms the race. The
+fixture now publishes readiness after both staging directory and metadata exist;
+all original interruption/lock/evidence assertions remain. Focused validation:
+`ruby Tests/GovernanceTooling/runner_isolation_test.rb` — 3 tests, 30 assertions,
+zero failures. The original aggregate was interrupted at SPEC-013 nRF checks
+(exit 130) before restarting on the repair; it is not passing evidence.
+This is an in-budget gate repair, not another iteration task.

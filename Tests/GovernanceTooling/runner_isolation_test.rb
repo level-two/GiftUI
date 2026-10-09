@@ -32,10 +32,12 @@ class RunnerIsolationTest < Minitest::Test
         root="$(cd "$(dirname "$0")/../.." && pwd)"
         mkdir "$root/.build/shared-active"
         trap 'rmdir "$root/.build/shared-active"' EXIT
-        printf 'active\\n' > "$root/.build/started"
         if [[ "${FIXTURE_MODE:-}" == interrupt ]]; then
           mkdir -p "$root/.build/spec-014/reports/.tmp-interrupted-$$"
           printf 'run_id=interrupted-$$\\n' > "$root/.build/spec-014/reports/.tmp-interrupted-$$/metadata.txt"
+          # Publish readiness only after the staging evidence exists. The
+          # parent may deliver TERM as soon as it observes this marker.
+          printf 'active\\n' > "$root/.build/started"
           sleep 30
         fi
         sleep 0.2
