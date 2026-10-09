@@ -320,6 +320,10 @@ Core/observable-owner executions or Dynamic class-owner equivalence evidence.
 The section-GC nRF fixture has no retained allocator relocations, but no full
 firmware, application stack or complete ownership proof was produced.
 
+The [source-design comparison](../iterations/iteration-003-review/rfc-014-source-design-options.md)
+now supplies analyzer/counter source sketches, required lowering, compatibility
+costs and a recommendation to develop explicit scoped APIs. This recommendation
+is not a selected contract or a proof that its generic declarations compile.
 Two source realizations remain review candidates:
 
 | Candidate | Required design before adoption | Tradeoff / evidence boundary |

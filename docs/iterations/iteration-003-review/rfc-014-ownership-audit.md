@@ -4,7 +4,7 @@
 [draft RFC-014](../../rfcs/rfc-014-runtime-derived-records-and-scoped-model-access.md),
 B1/B2. Source baseline: `e391c632` (production unchanged since I3-T01).
 This source inspection follows the completed SPIKE-069; it runs no new experiment.
-It is the input to the next source-design comparison.
+It supports the [source-design comparison](rfc-014-source-design-options.md).
 
 ## Result
 
@@ -25,7 +25,7 @@ retention consumes counter model/control storage, never analyzer capture slots.
 | Owner or value | Observed lifetime / behavior | Consequence for the proposed runtime |
 | --- | --- | --- |
 | [SignalAnalyzerView](../../../Sources/SignalAnalyzerPresentation/SignalAnalyzerView.swift), `@State viewModel` | Initializer supplies a model; body reads state and passes an owned `SignalCapture` through waveform/channel/trace declarations into Canvas. | Existing value semantics are safe independently of a borrowed backing scope. Replacing these values with snapshot selections is an explicit presentation migration, even if `@State`, `body` and Canvas syntax survive. |
-| [SignalAnalyzerViewModel](../../../Sources/SignalAnalyzerPresentation/SignalAnalyzerPresentationValues.swift), `handleSignalAnalyzerAction` and model methods | Start, Stop, Clear and window selection mutate the same model. Clear changes capture contents; it does not replace root model identity. Attach/detach controls the sink. | Normal application actions do not create a history of detached models. Sink detachment is not model destruction. |
+| [SignalAnalyzerViewModel](../../../Sources/SignalAnalyzerPresentation/SignalAnalyzerPresentationValues.swift), typed action handler and model methods | Start, Stop, Clear and window selection mutate the same model. Clear changes capture contents; it does not replace root model identity. Attach/detach controls the sink. | Normal application actions do not create a history of detached models. Sink detachment is not model destruction. |
 | [DynamicSignalAnalyzerPiLifecycleOwner](../../../Sources/SignalAnalyzerTargetHost/DynamicSignalAnalyzerPiLifecycleOwner.swift), `constructApplicationOwners`, `applicationState`, `resetProfileStorage` | Stores `model` from construction through profile reset. Exposes its state and uses it for opportunities. | A replacement through a runtime root alone would not retarget this stored reference. The host must either follow the installed association or participate in replacement. |
 | [DynamicSignalAnalyzerApplicationFailureOwner](../../../Sources/SignalAnalyzerTargetHost/DynamicSignalAnalyzerApplicationFailureOwner.swift), effects object | Stores a `let model`; presentation failure mutates that stored model. | Retaining the owner retains the original model. A replacement design must also retarget failure effects; otherwise an error can update the former model. This is a proposed-replacement hazard, not an observed bug in today's fixed-root lifecycle. |
 | [DynamicSignalAnalyzerPiInitialPresentationOwner](../../../Sources/SignalAnalyzerTargetHost/DynamicSignalAnalyzerPiInitialPresentationOwner.swift), `prepareOpportunity`, `cleanup`, `quiesce` | Caches `attemptModel`, copies it to `model` at interaction commit. Quiesce cancels input and admission without clearing these model fields. | An attempt and an installed presentation can retain model references beyond body evaluation. Their release/retarget points must be explicit, including failed derivation and shutdown. |
