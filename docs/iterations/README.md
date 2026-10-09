@@ -1,25 +1,24 @@
 # Iterations
 
-Numbered scopes establish the goal, selected work, exclusions, and success
-criteria of each delivery commitment. The machine-readable index is the
-`iterations` mapping in [features.yaml](../features.yaml).
+Numbered scopes record delivery commitments; feature approvals remain separate.
+See [process rules](../engineering/ITERATION_SCOPES.md) and
+[the manifest](../features.yaml).
 
-- [Process and approval rules](../engineering/ITERATION_SCOPES.md)
-- [Scope template](../templates/iteration-scope.md)
-- [ITERATION-001: GiftUI MVP](iteration-001-mvp.md) — the established MVP
-  baseline and recorded closure with approved exceptions.
+- [ITERATION-001: MVP](iteration-001-mvp.md): closed with recorded exceptions.
+- [ITERATION-002: Cleanup](iteration-002-cleanup.md): closed revision 7; the
+  production baseline for the next work.
+- [ITERATION-003: Runtime Memory and Efficiency](iteration-003-dev-ux-improvement.md):
+  active revision 4; runtime derivation, safe memory/lifetimes and measured
+  sustained performance.
+- [ITERATION-004: Backend and Application Integration](iteration-004-backend-and-application-integration.md):
+  approved revision 1; external packages, adapters and supported setup after
+  iteration-3 entry gates.
 
-- [ITERATION-002: Cleanup](iteration-002-cleanup.md) — closed revision 7,
-  following the completed bounded audit and explicit scope approval; selected
-  remediation and validation remain under their governing contracts.
-- [ITERATION-003: Dev UX Improvement](iteration-003-dev-ux-improvement.md) —
-  approved revision 2: focused packages, backend reuse and simpler application
-  integration, coordinated through one external consumer and four-profile matrix.
-  [Review and approval](iteration-003-review/scope-review-and-approval.md).
-  [PROPOSAL-007 acceptance](iteration-003-review/proposal-007-acceptance.md)
-  clears the investment gate; RFC design and downstream contract gates remain.
+Start with the [current activity plan](iteration-003-review/memory-efficiency-plan.md)
+and [reusable findings](iteration-003-review/preparation-findings.md).
+[Sequencing approval](iteration-003-review/efficiency-sequencing-approval.md)
+preserves criterion transfers. [Archived preparation](iteration-003-review/preparation-archive.md)
+is available for targeted retrieval, not as a competing work order.
 
-The next available ID is `ITERATION-004`. Scope approval establishes the delivery
-commitment; architecture and Specification gates remain separate. Amendments and
-closure require explicit maintainer approval. [Future Work](../future-work/README.md)
-supplies candidates without automatically committing them to an iteration.
+The next iteration ID is ITERATION-005. Neither preparation results nor this
+history reconstruction close an iteration or approve an implementation.

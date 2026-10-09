@@ -6,7 +6,7 @@ status: captured
 authors:
   - codex
 created: 2026-09-30
-updated: 2026-10-04
+updated: 2026-10-09
 source:
   - SPEC-001
 related_future_work:
@@ -123,3 +123,11 @@ optimization, buffering policy or criterion amendment is selected.
 - [Current iteration closeout](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/iteration-closeout-20261003/README.md)
 
 - [nRF performance](fw-032-nrf-performance-improvement.md)
+
+## Current sequencing — 2026-10-09
+
+Approved ITERATION-003 revision 4 selects this performance resumption.
+Existing observations and exceptions remain historical; they do not satisfy
+the new sustained-workload or safe-memory criteria. See the
+[current plan](../iterations/iteration-003-review/memory-efficiency-plan.md).
+This changes no algorithm, contract or connected-operation authorization.

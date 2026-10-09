@@ -15,3 +15,5 @@ When review exposes a valuable question or optimization outside current scope,
 capture it under [Future Work](../future-work/README.md) or
 [Explorations](../explorations/README.md) and cross-link it from the RFC.
 Keep any decision required for RFC coherence as an open approval blocker.
+
+[RFC-013](rfc-013-external-application-and-backend-integration.md) remains a draft design-reconsideration record; original candidate designs are archived.

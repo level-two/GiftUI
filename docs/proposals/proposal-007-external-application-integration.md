@@ -6,9 +6,10 @@ status: accepted
 authors:
   - codex
 created: 2026-10-05
-updated: 2026-10-05
+updated: 2026-10-09
 proposal: []
-related_rfcs: []
+related_rfcs:
+  - RFC-013
 related_adrs:
   - ADR-006
   - ADR-007
@@ -31,7 +32,7 @@ related_spikes:
   - SPIKE-014
 supersedes: []
 superseded_by: []
-target_milestone: ITERATION-003
+target_milestone: ITERATION-004
 ---
 
 # PROPOSAL-007: External Application and Backend Integration
@@ -44,6 +45,14 @@ assembly factories or a generation strategy. Eugene's explicit acceptance on
 
 ## Acceptance History
 
+The [approved 2026-10-09 sequencing](../iterations/iteration-003-review/efficiency-sequencing-approval.md)
+moves external package, backend and host delivery to approved
+[ITERATION-004](../iterations/iteration-004-backend-and-application-integration.md).
+ITERATION-003 revision 4 retains runtime graph derivation and adds memory and
+efficiency work. This updates the delivery milestone and criterion mapping;
+the accepted EI-001–005 investment outcomes remain unchanged. Independent
+performance redesign requires its own applicable lifecycle authority.
+
 The draft was presented for human consideration in commit `995696d4` after the
 authorized preparation study. Eugene then instructed: “Yes, I approve it. Please
 update this document and all dependent documents, including iteration zero zero
@@ -51,9 +60,16 @@ three spec.” This records the presented Proposal's consideration and acceptanc
 its problem, scope and EI-001–005 outcomes are unchanged.
 
 Acceptance authorizes RFC design under the feature lifecycle. The feature
-remains at `proposal` until an RFC is registered. Architectural decisions,
+is now at `rfc` with draft [RFC-013](../rfcs/rfc-013-external-application-and-backend-integration.md).
+Architectural decisions,
 Specifications, implementation plans and implementation retain their own gates;
-the iteration scope remains approved revision 2 with closure open.
+the iteration scope was active at approved revision 2 with closure open.
+
+The maintainer's [2026-10-06 scope amendment](../iterations/iteration-003-review/runtime-derivation-scope-amendment.md)
+subsequently adds runtime view-graph derivation as I3-04 / IT-AC-006 in approved
+iteration revision 3. This is an explicit additional scope constraint carried
+into draft RFC-013; the originally accepted EI-001–005 remain unchanged.
+Architecture, affected contracts and implementation retain their own gates.
 
 ## Summary
 
@@ -94,16 +110,19 @@ paired setup reduction or assembled consumer resource result is established.
 
 ## Motivation
 
-This is post-MVP work, selected by the maintainer in ITERATION-003. It advances
+This is post-MVP work, originally selected in ITERATION-003 and now scheduled
+for external delivery in approved ITERATION-004. It advances
 GiftUI's vision of application code focusing on UI/state/interaction and its
 principles of backend independence, first-class Embedded support and explicit
 costs. A second bounded application tests whether the existing framework can
 be consumed without inheriting the reference application's infrastructure.
 
 Iteration 2 supplies cleanup of the current owners and build/generation paths.
-Its current 74-check final hardware-free packet passed during this preparation;
-the Pi connected dependency and human closure remain open. Refresh that evidence
-before restructuring overlapping owners. This is not a new ITERATION-001 need.
+Its 74-check final hardware-free packet passed during preparation. Subsequent
+Pi connected work and the [final reconciliation](../iterations/iteration-002-cleanup/evidence/23-closeout/result.md)
+closed the selected cleanup at revision 7. Refresh source/evidence identities
+before restructuring overlapping owners; existing exceptions retain their
+limits. This is not a new ITERATION-001 need.
 
 ## Users / Use Cases
 
@@ -166,11 +185,11 @@ before restructuring overlapping owners. This is not a new ITERATION-001 need.
 
 | ID | Observable outcome | Iteration trace |
 | --- | --- | --- |
-| EI-001 | The bounded outside consumer selects focused packages with no analyzer-owner dependency, copied framework source lists or privileged package access; presentation imports only `GiftUI`. | IT-AC-001 |
-| EI-002 | A minimal external recording display adapter uses existing foundation support through the same host path without copied endpoint/session/raster state machines. | IT-AC-002 |
-| EI-003 | Each target's setup requires fewer manual actions and user-maintained infrastructure files than its reproduced control, with no copied analyzer infrastructure or handwritten framework storage offsets. Count generated inputs and hidden prerequisites. | IT-AC-003 |
-| EI-004 | Consumer and Signal Analyzer preserve governing semantics, lifecycle/failure behavior, dependency direction and resource guarantees across the four required configurations, with current identified evidence. | IT-AC-004 |
-| EI-005 | Application and adapter guides explain setup, responsibilities, customization, diagnostics, migration and compatibility; every outcome has an explicit evidence-based disposition. | IT-AC-005 |
+| EI-001 | The bounded outside consumer selects focused packages with no analyzer-owner dependency, copied framework source lists or privileged package access; presentation imports only `GiftUI`. | I4-AC-001 (transferred IT-AC-001) |
+| EI-002 | A minimal external recording display adapter uses existing foundation support through the same host path without copied endpoint/session/raster state machines. | I4-AC-002 (transferred IT-AC-002) |
+| EI-003 | Each target's setup requires fewer manual actions and user-maintained infrastructure files than its reproduced control, with no copied analyzer infrastructure or handwritten framework storage offsets. Count generated inputs and hidden prerequisites. | I4-AC-003 (transferred IT-AC-003) |
+| EI-004 | Consumer and Signal Analyzer preserve governing semantics, lifecycle/failure behavior, dependency direction and resource guarantees across the four required configurations, with current identified evidence. | I4-AC-004; iteration-3 IT-AC-004 remains a prerequisite |
+| EI-005 | Application and adapter guides explain setup, responsibilities, customization, diagnostics, migration and compatibility; every outcome has an explicit evidence-based disposition. | I4-AC-005 (external-author portion of IT-AC-005) |
 
 The [consumer study](../explorations/exp-002/preparation-2026-10-05/consumer-study.md)
 defines the bounded behavior, observations and measurement protocol. A blocked
@@ -226,6 +245,12 @@ EXP-002 remains active while supplying preparation evidence. Their promotion
 preceded the separately recorded human acceptance above. SPIKE-014 remains an
 evidence-only compile/access study.
 
+[RFC-013](../rfcs/rfc-013-external-application-and-backend-integration.md)
+retains the unresolved decision boundary. The
+[preparation findings](../iterations/iteration-003-review/preparation-findings.md)
+link useful archived controls and their limits without carrying experimental
+work orders into the current investment record.
+
 General generation and services remain with
 [FW-006](../future-work/fw-006-generated-target-configuration.md) and
 [FW-009](../future-work/fw-009-shared-delegated-service-foundation.md); simulation
@@ -238,7 +263,8 @@ under FW-027/031/032/033 is not added to this investment.
 ## References
 
 - [GiftUI Vision](../VISION.md), [Principles](../PRINCIPLES.md), [MVP scope](../iterations/iteration-001-mvp.md)
-- [ITERATION-003](../iterations/iteration-003-dev-ux-improvement.md)
+- [ITERATION-003](../iterations/iteration-003-dev-ux-improvement.md) — runtime and efficiency prerequisites
+- [ITERATION-004](../iterations/iteration-004-backend-and-application-integration.md) — external integration delivery
 - [Preparation baseline and triage](../explorations/exp-002/preparation-2026-10-05/README.md)
 - [Consumer study](../explorations/exp-002/preparation-2026-10-05/consumer-study.md)
 - [FW-016](../future-work/fw-016-post-mvp-package-distribution-topology.md), [FW-030](../future-work/fw-030-application-integration-experience.md)

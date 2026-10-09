@@ -1,5 +1,10 @@
 # ITERATION-003 preparation baseline — 2026-10-05
 
+**Current handoff — 2026-10-09:** Iteration 2 is closed; iteration 3 owns
+runtime/memory/efficiency and iteration 4 owns external integration. PROPOSAL-007
+is accepted and RFC-013 remains draft. Use the [current plan](../../../iterations/iteration-003-review/memory-efficiency-plan.md);
+the dated observations and former next steps below are historical context.
+
 Prepared after Eugene's instruction “Please then proceed.” following the
 baseline → consumer study → post-MVP Proposal preparation sequence.
 [ITERATION-003 revision 2](../../../iterations/iteration-003-dev-ux-improvement.md)

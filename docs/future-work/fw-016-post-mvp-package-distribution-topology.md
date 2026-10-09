@@ -6,7 +6,7 @@ status: promoted
 authors:
   - Yauheni Lychkouski
 created: 2026-08-19
-updated: 2026-10-05
+updated: 2026-10-09
 source:
   - RFC-002
   - ADR-008
@@ -151,3 +151,10 @@ contract is approved by promotion.
 - [FW-030: Application Integration Experience](fw-030-application-integration-experience.md)
 - [Host configuration values](../../Sources/GiftUIHostConfiguration/HostConfigurationValues.swift)
 - [Firmware build composition](../../firmware/nrf52840/applications/signal-analyzer-static/CMakeLists.txt)
+
+## Current sequencing — 2026-10-09
+
+External package/backend/application delivery is now owned by approved
+ITERATION-004; its production work waits for iteration-3 entry gates. See the
+[current plan](../iterations/iteration-003-review/memory-efficiency-plan.md).
+This changes no algorithm, contract or connected-operation authorization.

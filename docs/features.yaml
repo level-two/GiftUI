@@ -10,15 +10,17 @@ iterations:
   ITERATION-001: docs/iterations/iteration-001-mvp.md
   ITERATION-002: docs/iterations/iteration-002-cleanup.md
   ITERATION-003: docs/iterations/iteration-003-dev-ux-improvement.md
+  ITERATION-004: docs/iterations/iteration-004-backend-and-application-integration.md
 features:
   external-application-integration:
     title: External Application and Backend Integration
-    # PROPOSAL-007 accepted by Eugene on 2026-10-05; RFC design is next.
+    # PROPOSAL-007 accepted; RFC-013 remains draft. Preparation is archived.
     # Acceptance provenance: docs/iterations/iteration-003-review/proposal-007-acceptance.md.
-    status: proposal
+    status: rfc
     proposal:
       - PROPOSAL-007
-    rfcs: []
+    rfcs:
+      - RFC-013
     adrs: []
     specs: []
     dependencies:
@@ -26,7 +28,7 @@ features:
       - capability-system
       - observable-reference-state
       - canvas-drawing
-    milestone: ITERATION-003
+    milestone: ITERATION-004
   giftui-mvp-baseline:
     title: GiftUI MVP Baseline
     status: proposal
@@ -39,7 +41,7 @@ features:
     milestone: MVP
   # Deferred toolchain question: FW-028 (linked from SPEC-001 and its plan).
   # All owner Specs implemented by explicit maintainer approval on 2026-10-03, with connected exceptions.
-  # Performance postponed under FW-027/FW-032; connected follow-up under FW-031/FW-033.
+  # Performance selected by ITERATION-003; unrelated connected follow-up remains FW-031/FW-033.
   signal-analyzer:
     # Cleanup research EXP-001/SPIKE-013 concluded; approved ITERATION-002
     # revision 7 proposes bounded remediation and retains packed runtime.

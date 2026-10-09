@@ -6,7 +6,7 @@ status: active
 authors:
   - codex
 created: 2026-10-04
-updated: 2026-10-05
+updated: 2026-10-09
 source:
   - FW-030
   - FW-016
@@ -27,6 +27,11 @@ target_milestone: null
 ---
 
 # EXP-002: Backend and Application Integration Shapes
+
+**Current handoff — 2026-10-09:** Iteration 2 is closed; iteration 3 owns
+runtime/memory/efficiency and iteration 4 owns external integration. PROPOSAL-007
+is accepted and RFC-013 remains draft. Use the [current plan](../iterations/iteration-003-review/memory-efficiency-plan.md);
+the dated observations and former next steps below are historical context.
 
 Evidence for [ITERATION-003](../iterations/iteration-003-dev-ux-improvement.md),
 whose reviewed revision 2 was approved on 2026-10-05.

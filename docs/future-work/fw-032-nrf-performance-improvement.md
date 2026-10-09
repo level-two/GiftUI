@@ -6,7 +6,7 @@ status: captured
 authors:
   - codex
 created: 2026-10-03
-updated: 2026-10-04
+updated: 2026-10-09
 source:
   - SPEC-001
   - SPEC-015
@@ -107,3 +107,11 @@ startup probes and are observations, not worst-case bounds.
 - [Connected evidence](fw-033-connected-validation-follow-up.md)
 - [Measured closeout](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/iteration-closeout-20261003/README.md)
 - [Maintainer approval](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/iteration-closeout-20261003/remaining-spec-transition-approval.md)
+
+## Current sequencing — 2026-10-09
+
+Approved ITERATION-003 revision 4 selects this performance resumption.
+Existing observations and exceptions remain historical; they do not satisfy
+the new sustained-workload or safe-memory criteria. See the
+[current plan](../iterations/iteration-003-review/memory-efficiency-plan.md).
+This changes no algorithm, contract or connected-operation authorization.

@@ -26,7 +26,7 @@ Recover a file without checking out the experimental tree:
 
 ```sh
 git fetch origin tag archive/iteration-003-preparation-20261009
-git show archive/iteration-003-preparation-20261009:path/to/file
+git show refs/tags/archive/iteration-003-preparation-20261009:path/to/file
 ```
 
 The exact original preparation path inventory is reproducible with:
@@ -56,10 +56,22 @@ reused. Earlier SPIKE-001–014 remain at the iteration-2 baseline.
 
 The previous RFC candidate appendices, cumulative preparation checklists and raw
 experiment directories are likewise archived. This one record replaces individual
-placeholder files. The forthcoming reusable findings summary identify evidence
-worth retrieving; the forthcoming current plan owns next actions.
+placeholder files. [Reusable findings](preparation-findings.md) identify evidence
+worth retrieving; [the current plan](memory-efficiency-plan.md) owns next actions.
 
 This retirement is explicitly authorized by the instruction above and the
 [documentation preservation rule](../../engineering/DOCUMENTATION_RULES.md).
 It neither abandons the approved iteration commitments nor grants RFC, ADR,
 Specification, implementation, resource-exception or hardware approval.
+
+## Reconstruction validation
+
+The cleanup passes `scripts/validate-governance.rb`, including authority-graph
+and registered task-evidence checks, and `git diff --check`. Local links in
+changed documents resolve. Both approved scopes retain their exact success
+criteria, validation matrices and exclusions from the archived revision.
+Maintained source, tests, scripts, package and accepted authority trees are
+byte-identical to the iteration-2 closeout; runtime and hardware tests were not
+rerun for this documentation-only reconstruction. The complete local recovery
+bundle passed `git bundle verify`; remote archive verification remains a
+separate prerequisite to replacing published main.

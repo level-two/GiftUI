@@ -6,7 +6,7 @@ status: promoted
 authors:
   - codex
 created: 2026-10-02
-updated: 2026-10-05
+updated: 2026-10-09
 source:
   - SPEC-015
 related_future_work:
@@ -146,3 +146,10 @@ pending. The original promotion history and Exploration status are preserved.
 - [FW-006](fw-006-generated-target-configuration.md)
 - [FW-016](fw-016-post-mvp-package-distribution-topology.md)
 - [FW-029](fw-029-reduce-source-conditional-compilation.md)
+
+## Current sequencing — 2026-10-09
+
+External package/backend/application delivery is now owned by approved
+ITERATION-004; its production work waits for iteration-3 entry gates. See the
+[current plan](../iterations/iteration-003-review/memory-efficiency-plan.md).
+This changes no algorithm, contract or connected-operation authorization.

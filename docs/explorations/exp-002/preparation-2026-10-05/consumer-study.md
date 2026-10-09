@@ -1,5 +1,10 @@
 # ITERATION-003 coordinated consumer study
 
+**Current handoff — 2026-10-09:** Iteration 2 is closed; iteration 3 owns
+runtime/memory/efficiency and iteration 4 owns external integration. PROPOSAL-007
+is accepted and RFC-013 remains draft. Use the [current plan](../../../iterations/iteration-003-review/memory-efficiency-plan.md);
+the dated observations and former next steps below are historical context.
+
 Evidence plan under [EXP-002](../../exp-002-backend-and-application-integration-shapes.md)
 for [approved scope revision 2](../../../iterations/iteration-003-dev-ux-improvement.md)
 and [PROPOSAL-007](../../../proposals/proposal-007-external-application-integration.md).

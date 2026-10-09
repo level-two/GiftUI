@@ -1,5 +1,10 @@
 # PROPOSAL-007 Acceptance — 2026-10-05
 
+**Current handoff — 2026-10-09:** Iteration 2 is closed; iteration 3 owns
+runtime/memory/efficiency and iteration 4 owns external integration. PROPOSAL-007
+is accepted and RFC-013 remains draft. Use the [current plan](memory-efficiency-plan.md);
+the dated observations and former next steps below are historical context.
+
 Eugene explicitly accepted the presented
 [PROPOSAL-007: External Application and Backend Integration](../../proposals/proposal-007-external-application-integration.md)
 on 2026-10-05 with this instruction:
