@@ -45,6 +45,8 @@ features:
   # Deferred toolchain question: FW-028 (linked from SPEC-001 and its plan).
   # All owner Specs implemented by explicit maintainer approval on 2026-10-03, with connected exceptions.
   # Performance selected by ITERATION-003; unrelated connected follow-up remains FW-031/FW-033.
+  # Planned I3-T01 scheduling/raster/layout task: docs/iterations/iteration-003-review/memory-efficiency-plan.md.
+  # Task decomposition preserves scope revision 5 and existing feature authority.
   signal-analyzer:
     # ITERATION-002 closed at revision 7; ITERATION-003 revision 5 governs
     # bounded preparation. Existing implemented contracts remain authority.

@@ -50,6 +50,12 @@ That closed review finds no additional unavoidable architectural contradiction
 under the assumption; implementation and safety/performance obligations remain.
 The historical 4 MHz rejection and unchanged iteration delivery gates still stand.
 
+The planned [I3-T01 implementation task](iteration-003-review/memory-efficiency-plan.md#i3-t01--correct-scheduling-and-reduce-rasterlayout-costs)
+groups source scheduling, Embedded raster and layout lookup corrections into
+one bounded package with three subtasks and one final disposition. It decomposes
+I3-05 within the existing scope; it is not another experiment or completion of
+I3-04 runtime derivation. Production implementation has not started.
+
 ## Goal
 
 Establish a safe, measured runtime-derived Signal Analyzer and finite counter

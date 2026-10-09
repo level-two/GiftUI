@@ -64,6 +64,76 @@ ME-01–04 share a frozen baseline, budget and terminal decision. Work sharing a
 owner must use one coordinated sequence. ME-05 is the adoption approval step;
 ME-06 onward is implementation and conformance, not an extension of preparation.
 
+## I3-T01 — Correct scheduling and reduce raster/layout costs
+
+**Status:** planned; production implementation has not started.
+**Kind:** one bounded production implementation task, not an experiment.
+**Scope mapping:** I3-05 and its internal host/backend corrections; ME-05
+readiness, ME-07 implementation and the affected portion of ME-08 validation.
+This task contributes to IT-AC-004/005/007/008/009; it does not independently
+satisfy those iteration-wide criteria.
+
+On 2026-10-09, after the implementation-versus-experiment explanation, Eugene
+requested recording the proposed package as a task in iteration 3. This is a
+decomposition of the existing approved scope, not a new scope commitment,
+architecture decision, or acceptance-criterion amendment.
+
+The [32 MHz review](candidate-go-no-go.md#32-mhz-architectural-reassessment)
+supplies the findings. Retain the existing owner boundaries and approved
+contracts. Applicable contracts include SPEC-001/015 for source admission and
+host service, SPEC-007 for layout, SPEC-008/012/014 for rendering and raster
+consumption, and SPEC-013 for profile/resource obligations. Existing features
+remain implemented; this task record does not change their lifecycle status.
+
+| Subtask | Fixed implementation outcome |
+| --- | --- |
+| I3-T01.1 — Source scheduling | Preserve source deadlines and admit overdue events in bounded, ordered batches. Preserve timestamps, generation boundaries, Start/Stop/Clear behavior, capacity and failure handling. |
+| I3-T01.2 — Embedded raster | Implement a bounded, allocation-free fast path for the analyzer's orthogonal waveforms, preserving pixel coverage, painter order and synchronous borrowed-view lifetime. |
+| I3-T01.3 — Layout lookup | Replace repeated linear workspace searches with bounded indexing while preserving identities, layout results and approved storage limits. |
+
+These are subtasks of one package, not independently renewable investigations.
+Implement and commit coherent changes in this order, then assess the integrated
+result. At launch, update the affected existing per-Spec implementation plans
+with exact source/test boundaries, contract mappings and validation commands;
+record any technically necessary internal design in their focused design notes.
+That work belongs to this task and its budget. This coordination entry alone is
+not a ready per-Spec plan or authority for a new algorithmic contract.
+
+### Bound and completion decision
+
+Use one ceiling of **eight active hours** for planning, implementation, builds,
+tests, repairs and the final report across all three subtasks. Record cumulative
+usage in this entry when execution begins and after each work session. Exclude
+waiting for maintainer input or unavailable hardware and report it separately.
+The budget does not reset at a subtask, commit or session boundary.
+
+Finish with one integrated report that records each subtask's disposition,
+commits, correctness checks, resource results, performance evidence and its
+limits. Run focused regression checks and the applicable repository/profile
+and target build checks; format maintained Swift before the repository test
+gate. Preserve the existing 80 events/s for 30 seconds, four-FPS, semantic/pixel
+correctness and bounded-memory requirements. A speedup or host build alone is
+not a pass for those target requirements.
+
+Close this bounded task as **passed within the stated validation boundary** or
+**ended with named failures or unmet checks**. Budget exhaustion requires the
+latter report; it is not success. Do not mark incomplete subtasks successful.
+Missing connected evidence remains an explicit ME-08 gate and does not keep
+this local implementation task open indefinitely. The assumed 32 MHz rate is
+not a verified display capability; flashing and deployment require explicit
+authorization.
+
+An architecture/contract conflict stops the affected implementation and is
+reported against its governing artifact. New findings do not add subtasks,
+experiments or automatic successors. Any extension needs an explicit maintainer
+decision on the reported result and additional bounded work.
+
+Runtime-derived graph migration and its unresolved ownership/lifetime proof
+remain separate current iteration obligations under I3-04 and ME-05/06; this
+task neither adopts that candidate nor defers those obligations. FW-027/FW-032
+remain the performance provenance, and FW-024/025/026 remain outside this task.
+Task closure does not close iteration 3 or establish iteration-4 readiness.
+
 ## Measurement requirements
 
 - Account for declarations, semantic candidate/publication, identities,
