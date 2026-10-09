@@ -33,6 +33,12 @@ decision. Architectural reconsideration is part of that assessment; no
 replacement architecture is selected. Revision 4's delivery outcomes, criterion
 transfers, resource constraints and validation obligations remain unchanged.
 
+The revision-5 source assessment ended inconclusive. Eugene then explicitly
+authorized [one complete-candidate go/no-go assessment](iteration-003-review/candidate-go-no-go.md),
+with fixed gates, one budget and no automatic successor. This is an execution
+and disposition update under revision 5; delivery criteria and feature approval
+gates are unchanged.
+
 ## Goal
 
 Establish a safe, measured runtime-derived Signal Analyzer and finite counter

@@ -170,3 +170,16 @@ has ended without establishing complete feasibility. ME-05 readiness and later
 implementation remain open. Further preparation is not an automatic continuation;
 use the packet's exact blockers and next-decision boundary. No production
 migration or conformance transition follows from this assessment.
+
+### Explicitly authorized one-candidate assessment
+
+After the above terminal report, Eugene authorized the presented replacement:
+one complete candidate, fixed safety/semantics/performance requirements, one
+time/invocation/repair budget, and **GO or NO-GO** with no automatic successor.
+The [candidate assessment](candidate-go-no-go.md) records the exact instruction,
+design, numeric working limits, mandatory gates and terminal result. Any failed
+or unproved mandatory gate means no-go for adoption; a demonstrated failure
+ends experiments early. This specific attempt overrides the three-way reporting
+rule above without rewriting that historical outcome. Later production and
+iteration closure gates remain unchanged. New findings are report findings,
+not automatically additional ME activities or evidence tasks.

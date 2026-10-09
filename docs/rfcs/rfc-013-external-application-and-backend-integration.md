@@ -39,6 +39,7 @@ related_explorations:
   - EXP-002
 related_spikes:
   - SPIKE-014
+  - SPIKE-068
 supersedes: []
 superseded_by: []
 target_milestone: ITERATION-004
@@ -135,6 +136,16 @@ independent redesign from this RFC's accepted investment. This RFC remains draft
 and not ready for approval; no follow-up compilation is authorized by the packet.
 
 ## Deferred work
+
+Eugene subsequently authorized one complete candidate assessment with a binary
+go/no-go outcome and no automatic successor study. The
+[runtime candidate appendix](../iterations/iteration-003-review/candidate-go-no-go.md)
+defines representation, ownership, construction, service, teardown, proposed
+resource ceilings and fixed adoption gates. It is part of this draft RFC's
+runtime decision boundary, not an approved design. Its
+[SPIKE-068](../spikes/spike-068-candidate-transfer-bound.md) tests a necessary
+transfer-cost condition within the same single budget. Historical inconclusive
+findings remain unchanged; this explicit authorization is the continuation basis.
 
 [FW-016](../future-work/fw-016-post-mvp-package-distribution-topology.md) and
 [FW-030](../future-work/fw-030-application-integration-experience.md) feed the

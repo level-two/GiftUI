@@ -112,3 +112,24 @@ approved. Necessary current feasibility/safety questions remain blockers;
 FW-027/FW-032 remain selected performance provenance, FW-031/FW-033 retain
 unrelated connected follow-up, and FW-035 remains outside runtime-derivation
 delivery. No new deferred idea is introduced by this process amendment.
+
+## One-candidate continuation authorization — 2026-10-09
+
+After the bounded source review ended inconclusive, Eugene challenged the
+proposed next review as potentially another infinite sequence. The replacement
+proposal was one complete candidate with representation, ownership, construction,
+service, teardown and resource limits defined up front; frozen memory/stack,
+semantic and sustained-performance requirements; one time/experiment/repair
+budget; and a terminal GO or NO-GO. Missing proof would mean no-go for adoption,
+and no automatic successor study would follow. Eugene replied:
+
+> Okay, let's do this step.
+
+This is explicit authorization for that bounded assessment, recorded in the
+[candidate packet](candidate-go-no-go.md). Its 60-minute, 24-invocation and
+two-repair working ceilings were declared by the executor at launch; do not
+attribute approval of those particular numbers to the maintainer. The changed
+question/method is complete-candidate adoption with early mandatory-gate
+falsification, not continuing individual archived stack repairs. Existing
+budgets/results remain visible. This authorization changes neither iteration
+delivery criteria nor architecture/contract approval or connected-operation gates.

@@ -4,6 +4,11 @@ Status: terminal **inconclusive** feasibility assessment. Governing scope: [ITER
 Coordination: [ME-01–09 activity plan](memory-efficiency-plan.md).
 This is one derived evidence/decision packet, not architecture or an implementation contract.
 
+This historical phase is closed. Eugene subsequently authorized a
+[single complete-candidate go/no-go assessment](candidate-go-no-go.md), whose
+fixed gates and terminal decision govern that separate attempt. The findings
+below are preserved; they do not independently authorize more experimentation.
+
 ## Launch and limits
 
 Eugene requested committing the governing changes, creating a separate branch,
