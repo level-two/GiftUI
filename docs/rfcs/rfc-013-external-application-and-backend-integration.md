@@ -155,6 +155,12 @@ cross-profile equivalence remain unproved. Reconsideration requires an explicit
 different rendering/transfer or requirement decision; this result does not
 authorize more experiments, implementation or a successor preparation phase.
 
+Subsequently, Eugene explicitly authorized a
+[32 MHz architectural reassessment](../iterations/iteration-003-review/candidate-go-no-go.md#32-mhz-architectural-reassessment)
+of that candidate. Treat 32 MHz as a hypothetical bus rate, not a hardware
+measurement or accepted contract amendment. The review distinguishes inevitable
+architectural limits from correctable implementation behavior and missing proof.
+
 [FW-016](../future-work/fw-016-post-mvp-package-distribution-topology.md) and
 [FW-030](../future-work/fw-030-application-integration-experience.md) feed the
 accepted investment. [EXP-002](../explorations/exp-002-backend-and-application-integration-shapes.md)

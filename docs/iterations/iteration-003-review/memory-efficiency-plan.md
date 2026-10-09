@@ -190,3 +190,10 @@ G1/G2 remain unproved. ME-05 adoption readiness is not established. Preparation
 is stopped. A different rendering/transfer strategy or a changed requirement is
 a maintainer decision, not a new automatically opened ME step. The same candidate
 must not be reopened merely to gather more profiling or stack evidence.
+
+Eugene then explicitly authorized the
+[32 MHz architectural reassessment](candidate-go-no-go.md#32-mhz-architectural-reassessment).
+It changes the analytical bus assumption and asks for unavoidable architectural
+blockers. It is a single bounded source/contract review, not an automatic
+continuation or a hardware change. Preserve the 4 MHz verdict and all adoption
+gates while recording the new review separately in the same packet.

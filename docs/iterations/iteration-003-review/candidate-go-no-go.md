@@ -1,6 +1,9 @@
 # One-candidate adoption assessment
 
 Status: terminal **NO-GO for adoption**; RFC review verdict **not ready**.
+This opening verdict applies to the frozen **4 MHz** candidate. The explicitly
+authorized [32 MHz reassessment](#32-mhz-architectural-reassessment) below keeps
+that historical result and changes the bus assumption for its own analysis.
 Parent: [draft RFC-013](../../rfcs/rfc-013-external-application-and-backend-integration.md).
 Candidate: **runtime-emitted records with owner-resolved handles**, defined below.
 This is the RFC's runtime candidate appendix and a finite adoption assessment,
@@ -329,3 +332,31 @@ No new evidence request, replacement candidate, ADR extraction, implementation
 plan, connected action or preparation phase follows automatically. The existing
 iteration remains active with its delivery gates unmet; closing this assessment
 does not close or abandon the iteration.
+
+## 32 MHz architectural reassessment
+
+Status: **running**. On 2026-10-09 Eugene explicitly requested:
+
+> All right, let's then proceed with investigations. Well, I think that we can at the moment suppose that we are working at 32 megahertz. Let's do so, and we'll see if any other blockers will arise, which will be unavoidable in our architecture.
+
+This authorizes reconsideration under a **hypothetical sustained 32 MHz display
+bus**, not a measured hardware capability or a firmware clock change. Retain
+the candidate's application semantics, resources and architecture; test whether
+its remaining constraints imply an unavoidable contradiction. Existing 4 MHz
+proof and exhausted experimental allowances remain historical and unchanged.
+
+Working bounds: start **15:51:59 UTC**, finish by **16:21:59 UTC** (30 minutes).
+One source/contract/arithmetic review; **zero new compiler, benchmark or hardware
+invocations and zero experimental repairs**. Reuse SPIKE-068's retained geometry
+without reopening it. Numeric working limits are executor-selected. This is
+post-MVP I3-04/05 work at the existing draft RFC-013 stage; the accepted owner
+ADRs and implemented Specifications remain binding.
+
+The fixed coverage is (1) transport volume, (2) acquisition and serialized
+service, (3) storage/stack/lifetime constraints, and (4) representation and
+backend contract compatibility. Finish the entire coverage and give one result.
+Classify findings as **demonstrated architectural incompatibility**, **current
+implementation defect/cost**, or **unproved feasibility**. Do not turn a missing
+measurement into an impossibility claim, or “no contradiction found” into
+production approval. No extra study, prototype or scope extension follows
+automatically from a finding.
