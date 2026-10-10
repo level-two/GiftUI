@@ -29,6 +29,7 @@ related_adrs:
   - ADR-034
   - ADR-035
   - ADR-036
+  - ADR-037
 related_specs:
   - SPEC-001
   - SPEC-006
@@ -535,10 +536,11 @@ RFC's scope; no display or requirement decision is made here.
 ## Deferred and Follow-up Work
 
 The [implementation handoff](../iterations/iteration-003-review/rfc-014-implementation-handoff.md)
-contains IH-1–6 prerequisites and acceptance evidence. After RFC approval, extract
-ADRs, approve affected Specs and derive ready implementation plans. Full source
-migration, production integration, conformance and image measurements belong
-there. No new Future Work item hides a current requirement.
+contains IH-1–6 prerequisites and acceptance evidence. ADR-035/036/037 are extracted
+as proposed records; accept them, approve affected Specs and derive ready
+implementation plans. Full source migration, production integration, conformance
+and image measurements belong there. No new Future Work item hides a current
+requirement.
 
 SPIKE-069–074 are terminal evidence. Their budgets are closed; no successor is
 queued. Earlier copy-freeze/current-version ledgers and expanded-Body experiments
@@ -548,7 +550,8 @@ contracts. General future frontends remain outside this finite application scope
 
 ## Decision Summary
 
-Extract these independently reviewable decisions after RFC approval:
+These independently reviewable decisions were extracted as proposed ADRs on
+2026-10-10 at Eugene's request. Acceptance remains outstanding:
 
 1. [ADR-035 (proposed)](../adrs/adr-035-runtime-derived-records-and-exact-identity.md):
    Runtime-emitted bounded semantic records, exact cross-revision identity and
@@ -556,7 +559,8 @@ Extract these independently reviewable decisions after RFC approval:
 2. [ADR-036 (proposed)](../adrs/adr-036-scoped-model-access-and-bounded-ownership.md):
    Fixed-domain scoped model/property access, stable owned storage, finite source
    transformation and checked mutation, preserving State/invalidation semantics.
-3. Protocol Canvas values with Body == Never and scoped post-layout invocation,
+3. [ADR-037 (proposed)](../adrs/adr-037-protocol-canvas-and-scoped-post-layout-drawing.md):
+   Protocol Canvas values with Body == Never and scoped post-layout invocation,
    replacing ADR-028's retained-closure realization while preserving its lifecycle.
 
 The selected three-bank capacity/refusal policy is part of the ownership decision;

@@ -95,7 +95,18 @@ Current local cross-references are checked as part of finalization. Production
 Sources, Tests, Package.swift, scripts, accepted ADRs and implemented Specs remain
 unchanged from `e2839fb3`.
 
-**Next: extract the three proposed ADR decisions, obtain their acceptance, and
-prepare/approve affected Specifications before implementation.** The feature
-remains at RFC stage until downstream artifacts exist; RFC-013 stays draft.
+At finalization, the next steps were extraction of the three proposed ADRs,
+acceptance and affected Specification approval before implementation. The feature
+remained at RFC stage until downstream artifacts existed; RFC-013 stayed draft.
 No new investigation, iteration closure or production adoption is authorized.
+
+## Downstream extraction — 2026-10-10
+
+Eugene subsequently requested: “Yes, please extract the ADRs.”
+Proposed [ADR-035](../../adrs/adr-035-runtime-derived-records-and-exact-identity.md),
+[ADR-036](../../adrs/adr-036-scoped-model-access-and-bounded-ownership.md) and
+[ADR-037](../../adrs/adr-037-protocol-canvas-and-scoped-post-layout-drawing.md)
+now record the three decisions. The manifest is at `decision`; the next gates
+are ADR acceptance and affected Specification approval, as tracked in the
+[implementation handoff](rfc-014-implementation-handoff.md). ADR-028 remains
+accepted pending the explicit supersession described in proposed ADR-037.

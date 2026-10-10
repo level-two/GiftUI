@@ -21,7 +21,7 @@ features:
     # Final review: docs/iterations/iteration-003-review/rfc-014-final-review.md.
     # SPIKE-069 completed: borrow/key evidence; no proof of the later protocol/versioned design.
     # SPIKE-073 completed: fixed-context inference evidence; access/ownership contracts now selected, integration unproved.
-    # SPIKE-074 complete; investigations and RFC-014 review closed. Next: ADR extraction/acceptance, then Specs.
+    # SPIKE-074 complete; investigations and RFC-014 review closed; ADR-035/036/037 proposed. Next: acceptance, then Specs.
     # Handoff: docs/iterations/iteration-003-review/rfc-014-implementation-handoff.md.
     # Selected three-bank refusal policy: docs/iterations/iteration-003-review/rfc-014-capture-policy-choice.md.
     # Typed access: docs/iterations/iteration-003-review/rfc-014-typed-access-contract.md.
@@ -44,6 +44,7 @@ features:
     adrs:
       - ADR-035
       - ADR-036
+      - ADR-037
     specs: []
     dependencies:
       - giftui-mvp-architecture

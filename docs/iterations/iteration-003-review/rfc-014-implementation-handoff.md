@@ -1,11 +1,17 @@
 # RFC-014: final investigation disposition and implementation handoff
 
-**2026-10-10 — investigation and RFC review complete; proceed to ADR extraction
-and contract preparation.** This is a routing and acceptance
+**2026-10-10 — investigation, RFC review and ADR extraction complete; proceed to
+ADR acceptance and contract preparation.** This is a routing and acceptance
 checklist, not a ready Specification Implementation Plan or approval to modify
 production. Parent [RFC-014](../../rfcs/rfc-014-runtime-derived-records-and-scoped-model-access.md)
 is approved under the [final review and delegated finalization record](rfc-014-final-review.md).
 ADR acceptance and affected Specification approvals remain outstanding.
+
+Extracted at Eugene's request, all **proposed**:
+
+- [ADR-035: Runtime-Derived Records and Exact Identity](../../adrs/adr-035-runtime-derived-records-and-exact-identity.md).
+- [ADR-036: Scoped Model Access and Bounded Ownership](../../adrs/adr-036-scoped-model-access-and-bounded-ownership.md), including the selected three-bank refusal policy.
+- [ADR-037: Protocol Canvas and Scoped Post-Layout Drawing](../../adrs/adr-037-protocol-canvas-and-scoped-post-layout-drawing.md), intended to supersede ADR-028 only upon acceptance.
 
 ## Authorization and result
 
@@ -52,7 +58,7 @@ rows do not allocate a new investigation budget or weaken existing requirements.
 
 | ID | Task and prerequisite | Required acceptance evidence |
 | --- | --- | --- |
-| IH-1 | RFC review is complete; extract the three proposed ADR decisions, obtain acceptance, then amend/review affected Specs. | Explicit compiled View/Canvas contract, generated schema/access boundary, supported compiler policy, model ticket/generation/phase rules, capture-selection migration and configured refusal behavior. Human approvals before relying on changed authority. Preserve ADR-034's three banks. |
+| IH-1 | RFC review and ADR-035/036/037 extraction are complete; obtain ADR acceptance, then amend/review affected Specs. | Explicit compiled View/Canvas contract, generated schema/access boundary, supported compiler policy, model ticket/generation/phase rules, capture-selection migration and configured refusal behavior. Human approvals before relying on changed authority; record ADR-028 supersession when ADR-037 is accepted. Preserve ADR-034's three banks. |
 | IH-2 | Implement supported source lowering after contract approval. Use the existing [counter/analyzer inventory](../../../experiments/spike-072-contextual-traversal-integration/application-coverage.md). | Both real applications compile with unchanged authored body/property/Canvas intent; inferred Body, helper/conditional evaluation order and typed failure transport; deterministic rejection of unsupported effects/escapes. No claim of general Swift source support. |
 | IH-3 | Integrate owner storage, State and registration with both runtimes and actual host owners. | All ticket retain/release and pointer-pointee lifetimes, root/nested binding, ignored seeds, successful replacement, retained-owner refusal, attach/detach/report failures, generation exhaustion/reuse, early draw rejection and teardown. Both profiles produce equivalent outcomes at the same limits. Compiler controls plus behavioral tests; phase bits alone are insufficient. |
 | IH-4 | Implement runtime records, codecs, exact structural identity and Canvas/geometry staging under the approved limits. | Actual counter/analyzer traversal and graph-publication equivalence; bounded resource refusal, no expanded generated topology; last-reader cleanup before reuse, later geometry/backend work independent of model data. Existing SPEC-006/007/010/011/012/013/015 obligations remain. |

@@ -17,6 +17,9 @@ related_adrs:
   - ADR-008
   - ADR-010
   - ADR-033
+  - ADR-035
+  - ADR-036
+  - ADR-037
 related_specs:
   - SPEC-002
   - SPEC-009
@@ -60,8 +63,8 @@ update this document and all dependent documents, including iteration zero zero
 three spec.” This records the presented Proposal's consideration and acceptance;
 its problem, scope and EI-001–005 outcomes are unchanged.
 
-Acceptance authorizes RFC design under the feature lifecycle. The feature
-is now at `rfc` with draft [RFC-013](../rfcs/rfc-013-external-application-and-backend-integration.md).
+Acceptance authorized RFC design under the feature lifecycle. The feature
+entered `rfc` with draft [RFC-013](../rfcs/rfc-013-external-application-and-backend-integration.md).
 Architectural decisions,
 Specifications, implementation plans and implementation retain their own gates;
 the iteration scope was active at approved revision 2 with closure open.
@@ -71,6 +74,11 @@ subsequently adds runtime view-graph derivation as I3-04 / IT-AC-006 in approved
 iteration revision 3. This is an explicit additional scope constraint carried
 into draft RFC-013; the originally accepted EI-001–005 remain unchanged.
 Architecture, affected contracts and implementation retain their own gates.
+
+On 2026-10-10, approved [RFC-014](../rfcs/rfc-014-runtime-derived-records-and-scoped-model-access.md)
+yielded proposed ADR-035/036/037 at Eugene's extraction request. The manifest now
+records the `decision` stage; ADR acceptance and affected Spec approval remain
+outstanding. RFC-013's independent external-delivery design remains draft.
 
 ## Summary
 
