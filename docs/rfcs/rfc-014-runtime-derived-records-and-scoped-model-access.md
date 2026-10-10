@@ -44,6 +44,7 @@ related_spikes:
   - SPIKE-071
   - SPIKE-072
   - SPIKE-073
+  - SPIKE-074
 supersedes: []
 superseded_by: []
 target_milestone: ITERATION-003
@@ -95,6 +96,17 @@ witness. The [application inventory](../../experiments/spike-072-contextual-trav
 shows that complete counter/analyzer source coverage, production binding/ownership
 and full-image feasibility remain unproved. Mandatory transformation is selected
 provisionally for evidence, not adopted as production architecture.
+
+## Final investigation boundary — 2026-10-10
+
+Eugene authorized [SPIKE-074](../spikes/spike-074-final-access-ownership.md) as the
+final bounded validation round: typed module contract, three-bank transaction and
+incremental cost. Its fixed cases and ceilings are committed before execution.
+No automatic successor is allowed. On a positive result, remaining source
+migration, production integration, exhaustive conformance and whole-image
+measurements move to explicit implementation acceptance obligations, subject to
+the normal architecture/Spec gates. A failed assumption returns for a concrete
+maintainer decision; evidence gaps are not relabeled as passes.
 
 ## Current access/ownership work — 2026-10-10
 
