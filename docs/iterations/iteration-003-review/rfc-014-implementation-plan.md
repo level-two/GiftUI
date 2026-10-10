@@ -1,6 +1,6 @@
 # RFC-014 bounded implementation sequence — 2026-10-10
 
-**P01–P02 passed; P03 blocked on lexical visitor safety review.** This is the shared
+**P01–P02 passed; P03 blocked on the lexical visitor contract decision.** This is the shared
 sequencing index for nine owner Implementation Plans, not another contract or
 investigation. It derives only the [approved Spec amendments](rfc-014-spec-approval.md)
 at `3c260bbc` and accepted ADR-035/036/037. ITERATION-003 I3-04/05 supplies the
@@ -319,7 +319,7 @@ Shared inventory routes retain their named ownership, runtime, action, Canvas
 and complete-application integration obligations. The whole-tree migration and
 resource/connected evidence are not inferred from this declaration exit.
 
-P03 is stopped pending Strong review of the lexical visitor safety blocker; P04–P12 remain pending. There is no
+P03 is stopped on the reviewed lexical visitor safety blocker; P04–P12 remain pending. There is no
 remaining P02 exit failure, new package, scope expansion or architecture change.
 
 Planning was prepared without implementation or experiment execution. Optional work remains in the existing deferred track; no new optional
@@ -340,8 +340,9 @@ evidence. A raw-pointer lexical visitor prototype was rejected and removed: the
 public generic host witness can copy its visitor into an escaping closure.
 [Reproduction and bounded options](../../../Tests/ContractFixtures/SPEC010/Evidence/rfc-014-p03/lexical-visitor-blocker.md)
 record successful native compilation and the exact compiler/source identities.
-Strong review must first determine whether an owned-value implementation can
-satisfy the current contract. A necessary contract change goes to the human;
-no SPI amendment, sealed-conformance assumption or capacity change is authorized.
+Separate Strong review rejects literal two-pass enumeration under OS-010; no
+compliant alternative has been demonstrated. Review verification of the bounded
+generation-precedence repair precedes the human contract decision. No SPI
+amendment, sealed-conformance assumption or capacity change is authorized.
 No P03 exit or downstream package start is recorded. Consecutive unproductive
 repair count remains 0 of 2; the stop is a safety/authority question.

@@ -36,9 +36,11 @@ not additional authorization to rerun an MVP implementation or reopen experiment
 ### Current owner checkpoint
 
 **P03 stopped:** the public lexical visitor SPI admits an escaping visitor copy.
-The unsafe raw-pointer join was removed. Strong review must assess the
-[current blocker and bounded options](../../Tests/ContractFixtures/SPEC010/Evidence/rfc-014-p03/lexical-visitor-blocker.md)
-before implementation resumes or a necessary contract change is escalated.
+The unsafe raw-pointer join was removed. Separate Strong review rejects literal
+two-pass enumeration under OS-010; see the
+[current blocker and reviewed options](../../Tests/ContractFixtures/SPEC010/Evidence/rfc-014-p03/lexical-visitor-blocker.md).
+No compliant alternative has been demonstrated. The bounded generation-precedence
+repair receives review verification before the human contract decision.
 Direct scoped callbacks and the fixed report-route repair are incremental
 component evidence only. Consecutive unproductive repairs: 0 of 2.
 

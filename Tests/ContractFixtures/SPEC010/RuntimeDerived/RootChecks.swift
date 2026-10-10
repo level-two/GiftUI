@@ -11,6 +11,9 @@ import GiftUIRuntimeDynamic
             return try root.withLifetime { (scope, owner) throws(ObservableStateError) in try exerciseRoot(scope, owner, trace.baseAddress!) }
         }
         precondition(checks == dynamicChecks && checks > 60)
+        let precedenceChecks = try rootGenerationPrecedenceChecks()
+        precondition(precedenceChecks == 23)
+        print("P03 root generation/capacity precedence checks=\(precedenceChecks) failures=0")
         print("P03 production root callbacks static=\(checks) dynamic=\(dynamicChecks) failures=0")
     }
 }

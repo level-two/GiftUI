@@ -305,3 +305,54 @@ complete runtime differential cleanup/cycle integration belongs to P07, full own
 regression/build closure to P10, and integrated resource/target disposition to
 P11/P12. Those later obligations do not excuse the open P03 work. Separate Strong
 review is pending; no implemented/conformance transition is requested.
+
+## Step 7 — reviewed generation-precedence repair
+
+Dispatch after separate Strong review of `b19a0952`: Strong `gpt-6-astra` / high,
+C3/R3. Only the confirmed P2 seed-path ordering issue is authorized. SPEC-010
+amendment precedence (lines 177–181) and baseline first-failure order
+(lines 852–859) require registration-generation exhaustion before model metadata
+or backing capacity. New seed encounter previously materialized first. The fix
+checks the cursor after applicable seed compatibility and before materialization;
+replacement already performed this early check. Fresh typed seeds cannot already
+have a structural owner, so duplicate ownership is inapplicable to this path.
+
+The real-root fixture supplies an internal exhausted registration cursor over
+actual Static model backing, once with the sole capture entitlement retained and
+once with both metadata slots occupied. It expects generation exhaustion and
+unchanged materializations, attachment/detachment/destruction counts, live ticket
+validation and next allocation generation. The fixture adds 23 assertions;
+existing root callbacks remain the Dynamic/Static differential control. This is
+not whole-module or complete package evidence. The unsafe lexical join remains
+stopped. Separate review rejects literal two-pass enumeration under OS-010;
+see the updated blocker record. Repair counter at entry: 0 of 2 consecutive
+unproductive attempts. Exact validation receipts follow below.
+
+Step-7 validation passed on the first implementation attempt. Exact commands:
+
+```text
+scripts/format-swift.sh
+scripts/contracts/check-spec-010-model-identities.py --giftui-build .build/contracts/spec-006-rfc-014/58ab1755cf57c634-0urm4i3k/macos-static
+scripts/contracts/check-spec-010-model-identities.py --giftui-build .build/contracts/spec-006-rfc-014/58ab1755cf57c634-vlc1nqjo/macos-dynamic
+scripts/contracts/check-spec-010-model-identities.py --giftui-build .build/raspberry-pi/contracts/spec-006-rfc-014/58ab1755cf57c634-wlpjbz9w/raspberry-pi-armv6
+scripts/contracts/check-spec-010-model-identities.py --giftui-build .build/nrf52840/contracts/spec-006-rfc-014/58ab1755cf57c634-v850qxu1/nrf52840-embedded
+git diff --check
+scripts/validate-governance.rb
+```
+
+Both native profiles pass 473 assertions (450 existing plus 23 new), along with
+the existing eight negative controls. ARMv6 and Embedded compile the updated
+real-root probe and pass CPU/VFP checks without target execution. Actual layouts
+remain unchanged, and the Embedded narrow install/replace direct-allocation
+attribution still passes. Source/compiler/artifact-matched receipts:
+
+- macOS Static: `.build/rfc014-p03/state/tmp_lh3fby2/macos-static/result.json`
+- macOS Dynamic: `.build/rfc014-p03/state/tmplg1aflsb/macos-dynamic/result.json`
+- ARMv6: `.build/raspberry-pi/rfc014-p03/state/tmpn6fh41bo/raspberry-pi-armv6/result.json`
+- Embedded: `.build/nrf52840/rfc014-p03/state/tmpjabx3hec/nrf52840-embedded/result.json`
+
+Formatting, governance and whitespace checks pass. No additional implementation
+repair, broad gate, target execution or downstream work was performed. Consecutive
+unproductive repair count remains 0 of 2. The confirmed P2 fix awaits separate
+Strong verification; P03 remains blocked on the reviewed lexical visitor contract
+question and no public contract change or approval is inferred.

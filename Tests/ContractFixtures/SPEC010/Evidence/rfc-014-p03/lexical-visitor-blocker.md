@@ -1,6 +1,6 @@
 # P03 lexical visitor safety blocker — 2026-10-10
 
-Status: P03 stopped pending Strong review of the bounded realization. The unsafe
+Status: P03 stopped for the human contract decision after separate Strong review. The unsafe
 prototype was removed before commit. This is a demonstrated implementation
 safety defect, not yet proof that an approved contract must change. No P03 exit,
 whole-module or integration claim is made.
@@ -43,13 +43,14 @@ visitor and is retained.
 1. Audit an owned-value two-pass implementation under the current contract:
    collect bounded typed `State` values without backing pointers, bind them in
    the root scope after that call, then write back only bound nonowning values.
-   This is unimplemented and unproven. Check SPEC-010 baseline lexical
-   enumeration/pre-body binding (`Build-time state-host generation`,
+   This was unimplemented. Separate Strong review rejects the literal two-pass
+   form because SPEC-010 OS-010 requires exact-once enumeration. The original
+   audit concern was SPEC-010 baseline lexical enumeration/pre-body binding (`Build-time state-host generation`,
    `Declaration discovery and reconciliation`, OS-001) and amendment discovery,
    first-failure, candidate ownership and bounds. It must not add State location
    capacity, evaluate a seed twice, attach twice, or execute a body before every
-   declaration is bound. If compatible, this may be a bounded implementation
-   repair with no public-contract change.
+   declaration is bound. No different compliant owned-value realization has
+   been demonstrated.
 2. If a pointer-backed visitor is necessary, propose noncopyable/nonescapable
    lifetime constraints for the public visitor/host SPI through its owning
    SPEC-006/010 contracts. Existing generated witnesses and all consumer
@@ -59,8 +60,17 @@ visitor and is retained.
    convention about who implements the public protocol. No such enforcement or
    contract authority has been established; it is not a current safe fallback.
 
-Strong review must distinguish a valid current-contract repair from a necessary
-contract decision before human escalation. Repair counter remains 0 consecutive
+Separate Strong review found that the literal two-pass option enumerates each
+State declaration twice and conflicts with SPEC-010 OS-010's exact-once lexical
+enumeration requirement. No compliant alternative has been demonstrated; this
+is not a claim that every possible current-contract realization is impossible.
+The recommended decision is a coordinated SPEC-010 amendment to the visitor/host
+Copyable/Escapable constraints, plus SPEC-006 traversal forwarding if it carries
+the scoped visitor. The necessary signatures and negative controls require
+contract-owner review and human approval; none is changed or approved here.
+The raw-pointer prototype stays removed. The reviewer separately identified a
+bounded seed-generation precedence repair; its result is recorded in progress.
+Repair counter remains 0 consecutive
 unproductive attempts of 2: the adversarial probe produced decisive new evidence;
 no repeated speculative repair was attempted. Stop is for safety/authority,
 not exhaustion of the repair budget. No Future Work item is created for this

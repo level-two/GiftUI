@@ -161,8 +161,8 @@ application operation witnesses belong to their named downstream consumers.
 The attempted raw-pointer lexical visitor was removed after a public host
 witness compiled while saving a generic visitor copy in an escaping closure.
 A private visitor type does not seal that generic public call. P03 is stopped
-for Strong review of an owned-value alternative before any necessary contract
-change goes upstream; see the [blocker](../../Tests/ContractFixtures/SPEC010/Evidence/rfc-014-p03/lexical-visitor-blocker.md). The ledger and typed backing checks are incremental
+on the reviewed contract question: literal two-pass enumeration violates OS-010,
+and no compliant alternative has been demonstrated; see the [blocker](../../Tests/ContractFixtures/SPEC010/Evidence/rfc-014-p03/lexical-visitor-blocker.md). The ledger and typed backing checks are incremental
 evidence, not a claim that these remaining callback obligations already pass.
 
 ## Resource and validation boundary

@@ -1,8 +1,9 @@
 import GiftUI
-import GiftUIObservableState
+@testable import GiftUIObservableState
 import GiftUIRuntimeStatic
 
 package struct RootTrace {
+    var materializations = 0
     var attachments = 0
     var detachments = 0
     var destructions = 0
@@ -25,7 +26,10 @@ package struct RootModel: ~Copyable, ObservableStateModel, ObservableModelMutati
     package typealias Prepared = UInt8
     var seed: RootSeed
     var sink: _GiftUIObservableChangeSink?
-    package static func materialize(_ seed: RootSeed) -> RootModel { RootModel(seed: seed) }
+    package static func materialize(_ seed: RootSeed) -> RootModel {
+        seed.trace.pointee.materializations += 1
+        return RootModel(seed: seed)
+    }
     package var isEmptyReplacement: Bool { seed.count == 0 }
     package mutating func attach(_ sink: consuming _GiftUIObservableChangeSink) -> _GiftUIObservationAttachment? {
         seed.trace.pointee.attachments += 1
@@ -189,5 +193,65 @@ package func staticRootChecks() throws(ObservableStateError) -> UInt32 {
     }
 }
 @_cdecl("giftui_p03_root") public func giftuiP03Root() -> UInt32 {
-    do { return try staticRootChecks() } catch { return 0 }
+    do { return try staticRootChecks() + rootGenerationPrecedenceChecks() } catch { return 0 }
+}
+
+// Exercise the real root and actual Static backing with both later capacity
+// failures visible. The fixture-only exhausted cursor avoids billions of binds.
+package func rootGenerationPrecedenceChecks() throws(ObservableStateError) -> UInt32 {
+    var checks: UInt32 = 0
+    var namespace = ObservableModelOwnerNamespace()
+    for needsCapture in [true, false] {
+        var storage = StaticObservableModelStorage<RootModel, RootSchema>(
+            identity: try namespace.issue(), schema: 7, needsCapture: needsCapture)!
+        try withUnsafeTemporaryAllocation(of: RootTrace.self, capacity: 1) { (trace) throws(ObservableStateError) in
+            trace.initialize(repeating: RootTrace())
+            defer { trace.deinitialize() }
+            try storage.withLifetime { (scope) throws(ObservableStateError) in
+                var first = try scope.materialize(RootModel.materialize(RootSeed(trace: trace.baseAddress!, value: 31)))
+                if needsCapture {
+                    checks += try exhaustedRootCheck(scope, trace.baseAddress!)
+                } else {
+                    var second = try scope.materialize(RootModel.materialize(RootSeed(trace: trace.baseAddress!, value: 37)))
+                    checks += try exhaustedRootCheck(scope, trace.baseAddress!)
+                    try scope.validateTicket(second)
+                    try scope.release(&second)
+                    checks += 1
+                }
+                try scope.validateTicket(first)
+                try scope.release(&first)
+                checks += 1
+                var next = try scope.materialize(RootModel.materialize(RootSeed(trace: trace.baseAddress!)))
+                precondition(next.key._giftUIAllocationGeneration == (needsCapture ? 1 : 2))
+                checks += 1
+                try scope.release(&next)
+            }
+        }
+    }
+    return checks
+}
+
+private func exhaustedRootCheck(
+    _ scope: borrowing ObservableModelScope<RootModel, RootSchema>,
+    _ trace: UnsafeMutablePointer<RootTrace>
+) throws(ObservableStateError) -> UInt32 {
+    var registration = ObservableStateRootStorage<UInt8>(nextGeneration: nil)
+    let before = trace.pointee
+    return try scope.withRoot(storage: &registration) { (root) throws(ObservableStateError) in
+        var state = State<RootSchema>(seed: RootSeed(trace: trace, value: 99))
+        try scope.withFrame { () throws(ObservableStateError) in
+            try scope.withDiscovery {
+                precondition(root.beginCandidate() == .success(.candidateStarted))
+                precondition(root.encounter(identity: 1, ordinal: 0, state: &state) == .failure(.registrationGenerationExhausted))
+                precondition(state._giftUIBinding == nil)
+                precondition(root.modelKey(identity: 1, ordinal: 0) == nil && root.generation(identity: 1, ordinal: 0, publishable: true) == nil)
+                precondition(!root.isDirty)
+                precondition(trace.pointee.materializations == before.materializations)
+                precondition(trace.pointee.attachments == before.attachments && trace.pointee.detachments == before.detachments)
+                precondition(trace.pointee.destructions == before.destructions)
+                precondition(root.finishCandidate(.discard) == .success(.candidateDiscarded))
+            }
+        }
+        return 9
+    }
 }

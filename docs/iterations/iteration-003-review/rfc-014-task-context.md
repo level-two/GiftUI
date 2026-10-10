@@ -70,8 +70,10 @@ migration remain open. P03 is stopped on the
 [lexical visitor safety blocker](../../../Tests/ContractFixtures/SPEC010/Evidence/rfc-014-p03/lexical-visitor-blocker.md):
 `EscapingVisitorProbe.swift` proves the approved public generic witness can save
 an escapable visitor. The unsafe pointer-backed prototype was removed. Next is
-Strong review of safe committed work and the bounded owned-value option; no
-public SPI change is authorized. Do not infer package completion from any probe.
+review verification of the bounded generation-precedence repair, then the human
+contract decision. Separate Strong review rejects literal two-pass enumeration
+under OS-010 and has demonstrated no compliant alternative; no public SPI change
+is authorized. Do not infer package completion from any probe.
 
 These reminders point into contracts; read the full clauses when editing the
 mechanism. They reduce search, not the risk rating of the underlying work.

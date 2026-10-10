@@ -21,6 +21,12 @@ package struct ObservableStateRootStorage<Identity: Equatable & Sendable> {
 
     package init() {}
 
+    // Internal fixture boundary, matching the checked identity cursor controls.
+    // Production construction cannot seed or reset the registration namespace.
+    init(nextGeneration: UInt32?) {
+        self.nextGeneration = nextGeneration
+    }
+
     fileprivate mutating func reserve(_ slot: UInt16) throws(ObservableStateError)
         -> _GiftUIObservationAttachment
     {
@@ -213,6 +219,11 @@ package struct ObservableStateRootScope<
             }
             guard case .seed(let seed)? = state._giftUIInitial else {
                 throw .incompatibleAssociation
+            }
+            // A fresh typed seed has no prior owner to duplicate. Generation
+            // exhaustion precedes every model metadata/backing capacity check.
+            guard records.pointee.nextGeneration != nil else {
+                throw .registrationGenerationExhausted
             }
             var ticket = try models.materialize(Model.materialize(seed))
             do {
