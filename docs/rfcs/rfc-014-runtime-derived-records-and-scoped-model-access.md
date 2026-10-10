@@ -100,8 +100,10 @@ provisionally for evidence, not adopted as production architecture.
 
 The maintainer requested resolution of the two remaining issues. The
 [analyzer capacity choice](../iterations/iteration-003-review/rfc-014-capture-policy-choice.md)
-makes three-bank bounded refusal versus four-bank simultaneous populated models
-reviewable. It is pending maintainer direction; accepted constants are unchanged.
+records the maintainer's explicit selection: keep three banks with bounded
+replacement refusal. Model metadata capacity is separate from capture capacity;
+retained owners are never revoked. The linked ownership transaction and failure
+matrix define the proposed realization. Accepted constants are unchanged.
 Typed property-access design proceeds independently.
 
 ## Current design correction — 2026-10-10
@@ -635,13 +637,13 @@ of these risks is resolved by the conditional RAM sum.
 
 | ID | Blocking issue | Required resolution |
 | --- | --- | --- |
-| B0 | Stable-read revision removes the mandatory F0 copy; K=2 non-sharing ownership still implies four capture banks versus ADR-034's three | Reconcile retained-owner/replacement lifetimes and any safe allocation sharing. Four-bank arithmetic is conditional, not measured fit or approval. The historical five-bank baseline no longer drives the decision. Do not modify limits first. |
+| B0 | Three-bank capacity policy selected; ownership-transfer realization still needs proof | The maintainer selected bounded replacement refusal in the [capacity contract](../iterations/iteration-003-review/rfc-014-capture-policy-choice.md). Separate two metadata slots from one model-bank entitlement; preserve independently retained owners and reject unavailable backing before commit. Validate reservation/attach/rollback and bank reuse against actual owners. No fourth-bank amendment or sharing is selected; no complete-image fit claim. |
 | B1 | Enforceable State/model/capture access and callback isolation | Current SR-Q1–3 support unchanged storage through drawing and finite fixed-context compiler-derived Body; real typed schema/access integration remains open; the following studies describe earlier candidates, not mandatory copy-freeze or frontend Body derivation. SPIKE-069 refutes callback restriction alone and supports a bounded borrow/key fixture. The earlier C contract proposed copy-freeze, contextual property access and typed protocol dispatch. Prove finite context lowering, typed failure transport, compiler support and every owner/access route (C-P1/C-P2); exact Swift realization remains open. SPIKE-070/071 support finite lowering and a four-profile borrow/escape fixture, with root evaluation/draw signature adaptations and experimental lifetime flags; the rooted nRF object has no allocator relocations. The contextual-evaluation draft specifies replacement compiled View witnesses, an explicitly threaded session and short read borrows under a frame lease. SPIKE-072 supports real nested SemanticCore/Drawing module integration using explicit generated Body aliases and leaf-only defaults; automatic opaque witness inference failed. Complete source-shape conformance, production owner routes and compiler-policy adoption remain open (CE-1–CE-6). Fixture results do not close full no-escape/exclusivity/zero-heap proof. |
 | B2 | Complete record/payload/path/interaction and model storage | Reconcile the retained-former ledger with SR-3 (no mandatory F0); verify actual owners and every failure edge (C-P3), complete layouts/codecs/trie fanout and all source cases. The old K=2/F=1 fixture is not a new storage proof. Validate all byte rows before proposing SPEC-001/013/015 limits. |
 | B3 | Complete supported-image stack and Dynamic cost | Bound recursive/indirect/callback/IRQ paths and construction/service/teardown; measure matched Dynamic memory. No unknown edge may be recorded as zero. |
 | B4 | Concrete supported lowering and migration completeness | SR-Q3 first separates required scoped access from obsolete version selection and manual Body derivation; the earlier contextual-evaluation draft proposed mandatory finite lowering and a compiled View SPI change. SPIKE-072 inventories missing counter/analyzer routes and verifies conditional reads plus identity/work counts for a finite corpus. Define and validate the complete source/type/helper/current-write grammar, reject unchecked routes on every profile, and migrate actual graph producers/consumers. The inventory and small generator do not prove full application coverage (CE-1/4/5). |
 
-B0 is an explicit architectural decision; B1/B2 are design/contract readiness blockers; B3/B4 include evidence required
+B0's capacity choice is settled for the draft; its ownership proof and B1/B2 remain design/contract readiness blockers; B3/B4 include evidence required
 before adoption. Which evidence can precede exact Spec approval must be explicitly
 bounded and authorized as a separate experiment. SPIKE-069 completed under its
 own authorization; this RFC opens no subsequent experimental allowance.

@@ -1,10 +1,11 @@
 # RFC-014: analyzer capture capacity choice
 
-**2026-10-10 — reviewable choice; awaiting maintainer direction.** Parent:
+**2026-10-10 — option A selected by the maintainer for the RFC working design.** Parent:
 [RFC-014](../../rfcs/rfc-014-runtime-derived-records-and-scoped-model-access.md).
 The maintainer requested resolution of typed access and three-bank ownership,
-with explicit choices brought back for decision. This is the capacity choice;
-independent access-contract work can continue while it is pending.
+with explicit choices brought back for decision. Eugene answered the concrete
+comparison: “Keep three banks with bounded replacement refusal (Recommended)”.
+This settles the capacity direction, not RFC approval or implementation proof.
 
 ## What the existing contracts establish
 
@@ -42,9 +43,9 @@ replacement of an arbitrary populated analyzer model can succeed in three banks.
 B is not claimed to fit the complete nRF image merely because the additional
 transition cost is known.
 
-## Concrete option-A candidate sequence
+## Selected option-A ownership contract
 
-Model metadata/owner records and transition banks are separate. Propose two
+Model metadata/owner records and transition banks are separate. The draft uses two
 bounded metadata records and one model-capture bank for the analyzer; counter
 has its own two scalar records and no capture bank. Those metadata counts still
 need layout/resource validation and Specification review.
@@ -72,14 +73,69 @@ explicit. An unowned handle is not evidence that a historical owner has released
 Ownership transfer is requested explicitly by the host, never inferred from
 reference counts that are not tracked or from observer detachment.
 
-## Decision requested
+## Reservation, refusal and cleanup
 
-Choose A's bounded-refusal behavior or B's additional capacity as the RFC working
-policy. This is necessary because the options change which populated-analyzer
-replacement scenarios the selected configuration promises to admit. Choosing B
-would authorize preparing the architecture/resource amendment, not automatically
-accept it or change production constants. Choosing A would authorize completing
-its ownership contract and validation, not claim that the sequence above is proven.
+Reserve a **capture entitlement**, not merely the zero bytes occupied by an
+empty candidate. A newly installed analyzer must be able to accept the same
+bounded capture updates as the original. Consequently, installing empty B while
+independently retained populated A owns the only model bank is refused too;
+installation must not succeed only to fail the first normal capture admission.
+Two empty metadata records do not promise two simultaneously usable analyzers.
+
+A populated candidate can be initially materialized when it already owns the
+model bank and no installed model needs it. An installed analyzer always reserves
+its bank entitlement, even while empty; another candidate cannot acquire that
+bank merely because the installed count is zero. Identity/duplicate-owner
+validation precedes capacity reservation; this policy adds no special
+self-replacement semantics.
+After a successful transfer, stale A keys fail by generation even though the
+physical bytes have not been cleared. Generation exhaustion refuses before commit.
+
+Reservation through attach/commit/discard is one synchronous transaction. No
+callback may add owners/pins, start frame reads, mutate either model, or reenter
+replacement and invalidate the reserved transfer. The bridge checks these routes;
+a callback rejection that invalidates attachment causes ordinary precommit
+rollback under SPEC-010. The attach hook may inspect B's actual empty seed within its scoped callback;
+it may not retain a reader. Do not infer exclusion just from single-threaded code.
+A failure while preparing/attaching preserves A's data, attachment generation,
+registration, ownership and dirty state; B's caller-owned seed remains valid.
+Transaction-owned reservations and temporary tickets are released exactly once.
+
+Commit activates B and retires A's association atomically, then releases the
+explicitly transferred last A ticket. All capacity/generation checks precede
+commit. Required detach hooks execute under the same reservation guard; they
+cannot invalidate the transfer or acquire an independent owner. A teardown
+invariant violation follows SPEC-010's safety-not-proven path, not an invented
+rollback of a committed replacement. Detachment
+cannot release independent application ownership. Later derivation or drawing
+failure keeps the committed B, as required by SPEC-010; it does not resurrect A.
+A backend retry does not retain a model read or require another capture bank.
+The source and admission banks retain their existing roles throughout.
+
+| Required conformance case | Expected result |
+| --- | --- |
+| Populated A, no independent retained owner, empty B, all reservations fit | Atomic replacement succeeds; B is empty and owns the model-bank entitlement. |
+| Independent populated A remains owned; B needs the model bank | Refuse before attachment/commit; A remains installed and readable. |
+| Initially materialized B already holds the sole model bank; no installed analyzer exists | May succeed when metadata/registration/ownership checks pass; no extra bank. |
+| Candidate attach reports, metadata/registration capacity is exhausted, or generation cannot advance | Preserve old association and bytes; release candidate-only reservations. |
+| Callback tries to invalidate a transfer reservation | Reject the operation; failed attachment cannot commit. |
+| Frame reads or staged Canvas are outstanding | Replacement is not admitted; phase/lifetime rules apply before bank reuse. |
+| Failure after replacement commit | Keep B; clean up attempt-local readers/payloads. |
+| Counter replacement within its two scalar slots | No analyzer-bank dependency; retain the same atomic failure semantics. |
+
+## Decision and remaining proof
+
+**Selected: A, three banks with bounded refusal.** No fourth-bank amendment is
+requested. No extra transition storage is charged for a model metadata record.
+The earlier conditional K=2 four-bank ledger is not the selected configuration.
+
+The contract above is the proposed realization of the selected policy. Before
+RFC approval, validate reservation/attach/rollback and stale-generation behavior
+against the actual ownership routes on both profiles, lay out the two metadata
+records and tickets, and include them in B2/B3 complete resource accounting.
+These are engineering obligations; they do not reopen the capacity choice.
+The source/admission/model transition subtotal remains 19,392 bytes, not a claim
+that the complete image fits. Existing Specs and production code are unchanged.
 
 No option changes capture horizon, source density, admission capacity, mutation
 ordering, domain snapshot meaning, stale-action behavior or owner validity.
