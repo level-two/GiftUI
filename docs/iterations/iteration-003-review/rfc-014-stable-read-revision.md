@@ -224,19 +224,16 @@ The existing domain SignalCapture value contract is unchanged.
 
 ## Review and next deliverable
 
-Author consistency review only: **not ready for RFC approval**. SR-Q1 and SR-Q2
-have bounded answers. SR-Q3 has a [typed access contract](rfc-014-typed-access-contract.md),
-and SR-Q4 has the maintainer-selected [three-bank ownership policy](rfc-014-capture-policy-choice.md).
-The requested access/ownership design package is delivered. No additional
-maintainer policy choice is currently pending. These dispositions do not prove
-the generated contract or ownership transaction in the real runtime.
+**Final investigation complete.** The separately authorized
+[SPIKE-074](../../spikes/spike-074-final-access-ownership.md) validates the
+representative typed module contract, finite three-bank transaction and
+incremental layout. Its limits remain explicit; it does not prove production
+source transformation, actual runtime ownership integration or whole-image fit.
 
-The next engineering deliverable must validate the exact selected contract
-against real module boundaries and application routes, including replacement
-failure/retention and cleanup. Keep B0–B4 open for their concrete integration,
-lifetime, source-coverage and complete-resource obligations. Do not restart a
-generic compiler experiment or expand a mini-language by trial and error.
-Any pre-adoption executable study needs its own explicit scope and stop conditions;
-no study or production migration is opened by this documentation package.
-Existing architecture/Spec and resource approval gates remain unchanged. No new
-deferred artifact is appropriate because the remaining proofs block this RFC.
+The [implementation handoff](rfc-014-implementation-handoff.md) is now the current
+SR-Q3/4 and B0–B4 disposition. Proceed to focused RFC/ADR/Spec finalization, then
+production integration, full source coverage and resource/conformance acceptance.
+No successor investigation is planned or authorized. A concrete conflict during
+implementation still returns for a decision; unknown costs do not become zero.
+This replaces the earlier requirement for another investigation deliverable,
+following Eugene's explicit instruction to move subsequent work to implementation.

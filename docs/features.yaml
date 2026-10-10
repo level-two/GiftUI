@@ -20,7 +20,8 @@ features:
     # I3-T02 produced draft RFC-014; ownership/resource adoption blockers remain.
     # SPIKE-069 completed: borrow/key evidence; no proof of the later protocol/versioned design.
     # SPIKE-073 completed: fixed-context inference evidence; access/ownership contracts now selected, integration unproved.
-    # Final bounded round: docs/spikes/spike-074-final-access-ownership.md; no automatic successor.
+    # SPIKE-074 complete; investigations closed. Next: RFC/ADR/Spec finalization and implementation acceptance.
+    # Handoff: docs/iterations/iteration-003-review/rfc-014-implementation-handoff.md.
     # Selected three-bank refusal policy: docs/iterations/iteration-003-review/rfc-014-capture-policy-choice.md.
     # Typed access: docs/iterations/iteration-003-review/rfc-014-typed-access-contract.md.
     # Current correction: docs/iterations/iteration-003-review/rfc-014-stable-read-revision.md.

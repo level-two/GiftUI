@@ -10,23 +10,27 @@ The [revision-5 authorization](efficiency-sequencing-approval.md#bounded-prepara
 makes ME-01–04 one bounded phase; their IDs retain traceability, not separate
 budgets or permission to grow independent investigations.
 
-## Current RFC-014 activity — 2026-10-10 stable-read correction
+## Current RFC-014 activity — final investigation complete, 2026-10-10
 
-Eugene authorized [revising the working decisions and answering SR-Q1–4](rfc-014-stable-read-revision.md).
-That package is complete: the last-reader audit supports model access ending
-after Canvas use/discard, and SPIKE-073 supports compiler-derived Body with a
-fixed borrowed context. Four configurations compile; both native runs pass 15
-checks and eight negative controls reject. The 15-invocation study is terminal.
-The follow-up design package is also delivered: the
-[typed access contract](rfc-014-typed-access-contract.md) selects schema-specific
-fixed read domains and facades, and Eugene selected
-[three banks with bounded replacement refusal](rfc-014-capture-policy-choice.md).
-Metadata capacity is separate from capture entitlement. No further maintainer
-policy choice is pending. Actual module integration, ownership/failure proofs,
-complete lowering and full-image costs remain B0–B4 engineering gates.
-Separate copy-freeze and immediate expansion of the source frontend are no longer
-the baseline. Earlier sections below preserve previous activity dispositions.
-Production migration still requires the existing architecture/Spec gates.
+Eugene authorized one final bounded package and directed subsequent work toward
+implementation. [SPIKE-074](../../spikes/spike-074-final-access-ownership.md) is
+terminal: six module boundaries on four configurations, 47 checks per native
+selection, eight intended negative rejections, exact fixture layouts, 48/48
+invocations and one repair. No failed selected assumption within its scope and
+no automatic successor investigation. See the [result](../../../experiments/spike-074-final-access-ownership/evidence/result.md)
+for limitations, particularly actual runtime integration and zero heap.
+
+**Next: IH-1 in the [implementation handoff](rfc-014-implementation-handoff.md):
+focused RFC review, required ADR decisions and approved Specifications.**
+IH-2–6 then become implementation tasks covering source migration, actual owner
+integration, record generation, conformance and final image costs. This is a
+routing checklist, not a ready implementation plan or authority to modify
+production. No further investigative task is queued. Existing human approvals
+and acceptance requirements remain in force.
+
+Earlier sections below preserve historical activity dispositions; this section
+and the handoff supersede earlier wording that requires another investigation
+before addressing production coverage or complete-image measurements.
 
 ## Start here
 
@@ -71,7 +75,7 @@ historical inputs; this result does not reopen their budgets or experiments.
 | --- | --- |
 | I3-T01 correction package | Complete within the hardware-free boundary; [result and residual gates](i3-t01-result.md). |
 | I3-T02 runtime design, I3-04 / ME-05 | Delivered with named blockers: [RFC-014 review and contract map](i3-t02-design-review.md). |
-| RFC-014 B1/B2 follow-up | SPIKE-069 terminal; source comparison and ownership audit delivered. Direction C contract/ledger delivered; SPIKE-070/071 support the finite source/context mechanism with four-profile compiler/escape controls. SPIKE-072 supports contextual module integration and records missing application source families. Production State/reconciler/owner integration, complete source coverage and compiler adoption remain open. SR-Q1–4 package complete; SPIKE-073 supports fixed-context inference. Typed access/ownership contract and selected three-bank policy delivered. Next is validation of the exact contract against actual modules/ownership routes with explicit bounds, not another generic compiler study. No policy decision is pending; exact storage and source/integration proofs remain open. |
+| RFC-014 B1/B2 follow-up | SPIKE-069 terminal; source comparison and ownership audit delivered. Direction C contract/ledger delivered; SPIKE-070/071 support the finite source/context mechanism with four-profile compiler/escape controls. SPIKE-072 supports contextual module integration and records missing application source families. SPIKE-074 completes final bounded contract/ownership validation. No next investigation. Route actual State/reconciler/owner integration, complete source lowering and resource proof to IH-2–6 after IH-1 RFC/ADR/Spec gates. The handoff preserves all remaining acceptance obligations. |
 | ME-06 runtime implementation | Blocked on the resulting architecture/contract gates and complete resource/lifetime evidence; no ready migration plan yet. |
 | ME-08 integrated validation | Waits for the adopted implementations and exact artifact identities; connected evidence remains separately authorized. |
 | ME-09 closure/handoff | Waits for the criterion dispositions and maintainer decision; no automatic iteration-4 extraction. |

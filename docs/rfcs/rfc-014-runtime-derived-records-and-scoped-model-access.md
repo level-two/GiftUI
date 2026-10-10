@@ -52,7 +52,7 @@ target_milestone: ITERATION-003
 
 # RFC-014: Runtime-Derived Records and Scoped Model Access
 
-**Draft recommendation; not ready for approval or production adoption.**
+**Draft recommendation; final investigation complete, pending architecture review and human approval.**
 This is the design output of [I3-T02](../iterations/iteration-003-review/memory-efficiency-plan.md#i3-t02--runtime-derivation-design-package),
 using maintained baseline `710fbd24`. It records a concrete proposed realization
 and its unresolved proofs. It does not claim a new measured feasible candidate.
@@ -100,13 +100,22 @@ provisionally for evidence, not adopted as production architecture.
 ## Final investigation boundary — 2026-10-10
 
 Eugene authorized [SPIKE-074](../spikes/spike-074-final-access-ownership.md) as the
-final bounded validation round: typed module contract, three-bank transaction and
-incremental cost. Its fixed cases and ceilings are committed before execution.
-No automatic successor is allowed. On a positive result, remaining source
-migration, production integration, exhaustive conformance and whole-image
-measurements move to explicit implementation acceptance obligations, subject to
-the normal architecture/Spec gates. A failed assumption returns for a concrete
-maintainer decision; evidence gaps are not relabeled as passes.
+final bounded validation round. It is now terminal: six module boundaries compile
+on four configurations, both native runs pass 47 checks, eight negative controls
+reject, and target model/owner metadata totals 292 bytes alongside the unchanged
+19,392 transition bytes. It used 48/48 invocations and one repair. The
+[result](../../experiments/spike-074-final-access-ownership/evidence/result.md)
+records limitations, including unproved production ownership integration, full
+source lowering and zero heap (object allocator references remain).
+
+**Architectural investigation is complete; no successor study is planned.**
+The [implementation handoff](../iterations/iteration-003-review/rfc-014-implementation-handoff.md)
+is the current B0–B4 disposition and takes precedence over earlier investigation
+blocker wording below. Proceed to focused RFC/ADR/Spec finalization. Production
+integration, complete source migration, conformance and whole-image measurements
+are mandatory implementation acceptance work. A concrete architectural conflict
+returns for decision; it does not automatically open another experiment.
+No authority status or resource requirement changes through this evidence.
 
 ## Current access/ownership work — 2026-10-10
 
@@ -126,10 +135,10 @@ actual counter/analyzer inventory at the contract level, not as an implemented
 frontend. This contract supersedes earlier universal scalar-reader, copy-freeze
 and manually generated Body recommendations where they conflict.
 
-Both requested design issues now have explicit dispositions. The remaining
-B0–B4 work is integration, lifetime, complete source coverage and resource proof;
-no additional maintainer policy choice is currently pending. RFC status remains
-draft, and the selected contract has not been compiled across real modules.
+Both requested design issues have explicit dispositions and bounded validation.
+No additional maintainer policy choice is pending. RFC status remains draft;
+actual runtime integration and complete application/resource conformance belong
+to the linked implementation handoff, not further generic investigations.
 
 ## Current design correction — 2026-10-10
 
@@ -659,20 +668,23 @@ than the proposed path/interaction reservations. Replacement needs simultaneous
 old/new storage. Pointer poisoning cannot prove absence of all escapes. None
 of these risks is resolved by the conditional RAM sum.
 
-## Open Questions
+## Implementation acceptance obligations (formerly open investigation questions)
 
-| ID | Blocking issue | Required resolution |
+The terminal SPIKE-074 result routes these obligations through the
+[implementation handoff](../iterations/iteration-003-review/rfc-014-implementation-handoff.md).
+They remain mandatory before adoption; they are not allowances for more research.
+
+| ID | Obligation | Required resolution |
 | --- | --- | --- |
-| B0 | Three-bank capacity policy selected; ownership-transfer realization still needs proof | The maintainer selected bounded replacement refusal in the [capacity contract](../iterations/iteration-003-review/rfc-014-capture-policy-choice.md). Separate two metadata slots from one model-bank entitlement; preserve independently retained owners and reject unavailable backing before commit. Validate reservation/attach/rollback and bank reuse against actual owners. No fourth-bank amendment or sharing is selected; no complete-image fit claim. |
-| B1 | Enforceable State/model/capture access and callback isolation | Current SR-Q1–3 support unchanged storage through drawing and finite fixed-context compiler-derived Body; the [typed access contract](../iterations/iteration-003-review/rfc-014-typed-access-contract.md) now selects fixed schema domains and scoped facades; real integration remains open; the following studies describe earlier candidates, not mandatory copy-freeze or frontend Body derivation. SPIKE-069 refutes callback restriction alone and supports a bounded borrow/key fixture. The earlier C contract proposed copy-freeze, contextual property access and typed protocol dispatch. Prove finite context lowering, typed failure transport, compiler support and every owner/access route (C-P1/C-P2); exact Swift realization remains open. SPIKE-070/071 support finite lowering and a four-profile borrow/escape fixture, with root evaluation/draw signature adaptations and experimental lifetime flags; the rooted nRF object has no allocator relocations. The contextual-evaluation draft specifies replacement compiled View witnesses, an explicitly threaded session and short read borrows under a frame lease. SPIKE-072 supports real nested SemanticCore/Drawing module integration using explicit generated Body aliases and leaf-only defaults; automatic opaque witness inference failed. Complete source-shape conformance, production owner routes and compiler-policy adoption remain open (CE-1–CE-6). Fixture results do not close full no-escape/exclusivity/zero-heap proof. |
-| B2 | Complete record/payload/path/interaction and model storage | Apply the selected three-bank policy and separate metadata from capture entitlement (no mandatory F0); verify actual owners and every failure edge (C-P3), complete layouts/codecs/trie fanout and all source cases. The old K=2/F=1 fixture is not a new storage proof. Validate all byte rows before proposing SPEC-001/013/015 limits. |
-| B3 | Complete supported-image stack and Dynamic cost | Bound recursive/indirect/callback/IRQ paths and construction/service/teardown; measure matched Dynamic memory. No unknown edge may be recorded as zero. |
-| B4 | Concrete supported lowering and migration completeness | SR-Q3 now defines schema/domain placement, typed facade binding, composition and a real source-route matrix in the access contract; validate that contract rather than obsolete version selection or manual Body derivation; the earlier contextual-evaluation draft proposed mandatory finite lowering and a compiled View SPI change. SPIKE-072 inventories missing counter/analyzer routes and verifies conditional reads plus identity/work counts for a finite corpus. Define and validate the complete source/type/helper/current-write grammar, reject unchecked routes on every profile, and migrate actual graph producers/consumers. The inventory and small generator do not prove full application coverage (CE-1/4/5). |
+| B0 | Selected three-bank ownership policy | Finite transfer/refusal demonstrated in SPIKE-074. IH-3 integrates actual owners, guarded callbacks, rollback and generation reuse; IH-6 accounts complete costs. No fourth bank or retained-owner revocation. |
+| B1 | Typed access and ownership enforcement | SPIKE-074 supports fixed schema domains, inferred Body, nested facades and separate modules. IH-1 adopts the exact compiler/API policy through normal gates; IH-2/3 implement complete lowering and actual owner/pointee lifetime. No full no-escape or zero-heap proof follows from fixture controls. |
+| B2 | Complete record/payload/path/model storage | Measured fixture layouts are inputs, not complete runtime pools. IH-3/4 realize bounded codecs, exact paths, payloads, tickets and every failure edge; IH-6 charges all byte rows. Prior K=2/F=1 fixtures do not authorize additional banks. |
+| B3 | Complete supported-image resource/performance conformance | IH-6 links and measures actual images, bounds stack/IRQ/construction/teardown, proves required zero heap and matched Dynamic costs. Object allocator references and unknown costs remain explicit until resolved. |
+| B4 | Supported source lowering and application migration | IH-2/4/5 cover the existing counter/analyzer inventory, helper/effect grammar, typed failures, generated producer retirement and complete conformance. Representative module validation is not a complete frontend. |
 
-B0's capacity choice is settled for the draft; its ownership proof and B1/B2 remain design/contract readiness blockers; B3/B4 include evidence required
-before adoption. Which evidence can precede exact Spec approval must be explicitly
-bounded and authorized as a separate experiment. SPIKE-069 completed under its
-own authorization; this RFC opens no subsequent experimental allowance.
+No unresolved architectural assumption failed the final bounded package.
+B0–B4 remain adoption/acceptance gates assigned above, not open-ended
+investigations. RFC/ADR/Spec approval is still required before production work.
 The preserved 4 MHz failure is an additional **iteration performance blocker**,
 not evidence that record emission is intrinsically impossible. Resolving it
 requires a separately selected transport/rendering or requirement decision.
@@ -757,3 +769,8 @@ belong in affected Specification amendments, then per-Spec implementation plans.
   [profile regions](../../Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFProfileRegions.swift).
 - [Counter workload](../explorations/exp-002/preparation-2026-10-05/consumer-study.md);
   external-study requirements remain distinct from iteration-3 composition.
+
+The final [SPIKE-074](../spikes/spike-074-final-access-ownership.md) result and
+[implementation handoff](../iterations/iteration-003-review/rfc-014-implementation-handoff.md)
+close the investigation track. Earlier Spike allowances and dispositions above
+remain historical; none authorizes a successor or production migration.

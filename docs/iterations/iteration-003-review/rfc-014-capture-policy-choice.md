@@ -129,11 +129,13 @@ The source and admission banks retain their existing roles throughout.
 requested. No extra transition storage is charged for a model metadata record.
 The earlier conditional K=2 four-bank ledger is not the selected configuration.
 
-The contract above is the proposed realization of the selected policy. Before
-RFC approval, validate reservation/attach/rollback and stale-generation behavior
-against the actual ownership routes on both profiles, lay out the two metadata
-records and tickets, and include them in B2/B3 complete resource accounting.
-These are engineering obligations; they do not reopen the capacity choice.
+The contract above is the proposed realization of the selected policy.
+[SPIKE-074](../../spikes/spike-074-final-access-ownership.md) now validates the
+finite reservation/attach/rollback/reuse cases and measures the fixture layouts.
+The [implementation handoff](rfc-014-implementation-handoff.md) assigns actual
+runtime ownership routes, real callbacks/tickets and complete resource accounting
+to IH-3/6 after the normal architecture/Spec gates. These acceptance obligations
+do not reopen the capacity choice or authorize another investigation.
 The source/admission/model transition subtotal remains 19,392 bytes, not a claim
 that the complete image fits. Existing Specs and production code are unchanged.
 

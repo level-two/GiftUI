@@ -1,6 +1,6 @@
 # I3-T02 runtime design review and adoption sequence
 
-**Verdict: not ready for RFC approval or production implementation.**
+**Current verdict: final investigation complete; proceed to RFC/ADR/Spec finalization.**
 The bounded design package is delivered with named blockers. This is an
 executor self-review of [draft RFC-014](../../rfcs/rfc-014-runtime-derived-records-and-scoped-model-access.md),
 not independent reviewer approval or target validation. Initial design commit:
@@ -9,6 +9,40 @@ not independent reviewer approval or target validation. Initial design commit:
 The original I3-T02 findings below describe the authoring task. The subsequent
 [B1 follow-up](#b1-follow-up--spike-069) adds evidence without approving the RFC
 or changing the original task's budget/history.
+
+## Final investigation review — SPIKE-074, 2026-10-10
+
+**Verdict: ready for focused architecture review and implementation preparation;
+production adoption is not approved.** Author consistency review, not independent
+review or human approval. The [terminal result](../../../experiments/spike-074-final-access-ownership/evidence/result.md)
+and [implementation handoff](rfc-014-implementation-handoff.md) are the current
+disposition; earlier not-ready findings below retain their historical context.
+
+| Question | Result | Limit carried into implementation |
+| --- | --- | --- |
+| F1, typed access | Six separate modules compile on all four configurations; custom Body inference, nested/scalar/indexed reads and deferred Canvas execute in both native selections; eight intended lifetime rejections. | Hand-written lowered representative forms, not the full source transformer or production SemanticCore. Both native flags select the same bridge. |
+| F2, ownership | 47 native checks per selection cover the fixed transaction/failure cases, independent retention, empty installed-model entitlement, stale keys, 404-record reuse and source/admission isolation. | Actual registration/detach callbacks, State reconciliation, host tickets and backing lifetime remain IH-3 conformance work. |
+| F3, costs | Target descriptors + owner = 292 bytes; two keys and one Canvas add 40 bytes; three capture banks remain 19,392 bytes. | Final runtime pools, ABI padding, stack and image cost still require IH-6. Allocator references in target objects are recorded; zero heap is not established. |
+
+No case was added after registration. The single repair corrected test ordering
+to exercise the installed bank while empty. All 48 compiler/link/run invocations
+are recorded, including the original positive transcripts and source snapshots;
+there were no unexpected compiler failures. Time was 69.633 seconds, within the registered
+45-minute ceiling. Target objects preserve ARMv6 and Cortex-M4/VFP ABI evidence.
+Layout IR precedes the test-order repair but its layout function/types did not
+change. No further compiler run is permitted by this terminal package.
+
+B0–B4 now route to IH-1–6. They are still mandatory adoption/acceptance work;
+closing investigation does not certify their unmeasured properties. This routing
+follows Eugene's explicit instruction to move subsequent work to implementation
+where possible. No new deferred item is needed: this is active in-scope work,
+with approval and acceptance prerequisites stated in the handoff.
+
+Final-package validation: Swift formatting, governance validation and
+`git diff --check` pass. All 48 trial log hashes, archived source snapshots,
+final source identities and target ABI evidence verify; 202 local links in the
+changed package resolve. Production Sources/Tests/Package.swift/scripts remain
+unchanged from `4a79467f`. Evidence commit: `41e43c0f`.
 
 ## Typed access and three-bank policy review — 2026-10-10
 

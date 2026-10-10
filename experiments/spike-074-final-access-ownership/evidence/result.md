@@ -6,7 +6,7 @@ ends here.** No architecture/Spec approval or production feasibility is implied.
 [ledger](ledger.json), [machine-readable result](result.json).
 
 48/48 compiler/link/execute invocations, one/two repair rounds, 69.633 seconds
-from first to last invocation (45-minute ceiling). No failed compiler invocation;
+from first to last invocation (45-minute ceiling). No unexpected compiler failure;
 the repair corrected one fixed-case coverage detail, not the design. Initial and
 final Driver sources and all diagnostics are preserved in hashed snapshots.
 The terminal marker refuses further trials; no successor allowance exists.

@@ -24,13 +24,15 @@ schema, and portable presentation does not import a runtime or platform module.
 
 This is a proposed realization within the existing RFC boundary. It resolves
 which contract to develop, not every compiler/integration/resource proof. The
-specific cross-module realization below has not yet been compiled; SPIKE-073
-only proves the simpler concrete-context inference mechanism.
+[final SPIKE-074 result](../../../experiments/spike-074-final-access-ownership/evidence/result.md)
+now supports the representative cross-module realization. Production lowering,
+actual runtime ownership and full resource conformance are implementation
+obligations in the [handoff](rfc-014-implementation-handoff.md).
 
 ## Type and module boundary
 
 The following is **schematic internal Swift**, not new author-facing syntax or
-an already compiled public API:
+an adopted public API (a representative internal realization now compiles in SPIKE-074):
 
 ```swift
 protocol ReadDomain {
@@ -262,13 +264,19 @@ Counter metadata/scalars are accounted independently of analyzer buffers.
 
 ## Review gates and disposition
 
+**Current:** SPIKE-074 is terminal and supports the finite module/ownership
+contract. The [implementation handoff](rfc-014-implementation-handoff.md) routes
+the obligations below to approval and implementation acceptance. No new
+investigation is requested.
+
 The design answer to SR-Q3 is schema-specific typed read domains plus scoped
 facades and checked writes. No further public syntax choice is needed to develop
 it. The unresolved engineering gates are explicit:
 
-1. Compile the domain-parameterized View/container/facade contract across actual
-   module boundaries under pinned compilers; verify inferred Body and that the
-   portable side imports no Runtime module. SPIKE-073 is not that proof.
+1. SPIKE-074 compiles the representative domain-parameterized View/container/facade
+   contract across six module boundaries with inferred Body and no Runtime import
+   in portable code. Adopt the exact compiler/API policy through IH-1; integrate
+   actual production modules through IH-2/3. SPIKE-073 alone was not that proof.
 2. Cover the real source routes above, including compound mutation preflight,
    initializer/replacement effects and typed failures. No complete frontend claim.
 3. Prove owner ticket/slot/borrow lifetime and cleanup, especially descriptor
