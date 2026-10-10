@@ -80,7 +80,12 @@ where Model: ObservableStateModel & ~Copyable, Schema == Model.Schema {
         _ body: (borrowing ObservableStateRootScope<Model, Identity>) throws(ObservableStateError)
             -> Result
     ) throws(ObservableStateError) -> Result {
-        try withUnsafeMutablePointer(to: &storage) { (records) throws(ObservableStateError) in
+        // Activation must enclose frame/read/discovery scopes so their defers
+        // restore mutation phase before automatic registration retirement.
+        // Reject before lending report backing or invoking the caller's body.
+        try validateOperation()
+        return try withUnsafeMutablePointer(to: &storage) {
+            (records) throws(ObservableStateError) in
             try withUnsafeMutablePointer(to: &records.pointee.reports) {
                 (reports) throws(ObservableStateError) in
                 let root = ObservableStateRootScope(

@@ -3,7 +3,8 @@
 Input: `0516f9d0` (P02 declaration exit passed). Owner: SPEC-010 T10.1;
 criteria: OS-RD-001–004 and unchanged OS regression requirements. The historical
 lexical visitor stop was resolved by the explicit step-8 amendment. Step 9 records
-the implementation and finite exit evidence awaiting separate Strong review.
+the implementation; step 10 repairs the confirmed root-entry finding and awaits
+separate Strong bounded verification.
 
 ## Step 1 — identities and failure vocabulary
 
@@ -517,3 +518,52 @@ checks solely because the reviewer restarts. The 602-assertion/four-profile
 receipts above remain component evidence; they do not settle this finding or
 pass P03. Counter remains 0 consecutive unproductive repairs of 2. The approved
 visitor amendment remains in force, and P04–P12 remain pending.
+
+## Step 10 — confirmed root-entry phase repair
+
+Resumed at `f32d4565`, Strong `gpt-6-astra` / high, C3/R3, with explicit user
+authorization for the single confirmed P1. The separate reviewer safely confirmed
+that `withFrame { withRoot { withDiscovery { install/publish } } }` could return
+`invalidPhaseContained` with one attached model, zero detachments and zero
+destructions before the outer activation ended. No stale callback was invoked.
+The exact historical source, compiler command and hashes are preserved in
+[root-entry-review](root-entry-review/provenance.json); this supersedes the
+provisional status above without rewriting the interruption record.
+
+The production repair is one entry validation in `ObservableModelScope.withRoot`,
+before either report-storage pointer-lending callback or caller body. Existing
+precedence is reused: frame/discovery returns `invalidPhaseContained`, active read
+or terminal returns `invalidPhaseSafetyNotProven`, writing/replacement returns
+`reentrancyViolation`. The helper therefore cannot begin in a phase that prevents
+its own normal shutdown. Valid root activation encloses frame/discovery/read;
+those helpers restore phase on normal and throwing exits, while the existing
+terminal cleanup handles failed-detach stop paths before report backing ends.
+No public contract, capacity, identity, replacement or coordinator policy changed.
+
+`rootEntryPhaseChecks` adds 43 assertions: all six rejected entry phases verify
+exact error, no body invocation and unchanged materialization/attach/detach/
+destruction counts; valid root-encloses-frame normal, discovery-throw and
+active-read-throw exits verify detach with an independent ticket still live,
+readability of the retained model and destruction only after final release.
+Existing retaining-sink terminal teardown and postcommit-B checks remain intact.
+The cross-compiled root entry point includes this new fixture.
+
+The first focused run compiled production modules but the pinned compiler asserted
+in the new fixture's local function capturing a noncopyable scope during layout
+IR emission. The failed command/log remain under
+`.build/rfc014-p03/state/tmp0nirxnui/macos-static/`. Replacing that fixture-only
+capture with an explicit borrowing helper produced passing evidence on the first
+bounded repair attempt. Production code was unchanged by that correction.
+Consecutive unproductive repair count: **0 of 2**, preserved from entry.
+
+Formatting preceded focused validation. Final matched receipts are preserved in
+[root-entry-receipts.json](root-entry-receipts.json), including commands,
+compiler/core identities and all changed-source hashes. The unchanged P02 core
+receipts were hash-verified and reused; no broad or unchanged core rerun occurred.
+Each native profile passes **645 assertions** (602 existing plus 43 regression
+assertions). ARMv6 and Embedded compile the changed paths and pass CPU/VFP and
+all 13 negative controls; neither target is executed. Actual layouts and narrow
+Embedded install/replace allocator attribution remain unchanged. Governance and
+whitespace checks pass. Separate Strong bounded verification is next; P03 is not
+marked passed by this implementation receipt. All P04–P12 boundaries and the
+unimplemented T10.1 disposition remain unchanged.

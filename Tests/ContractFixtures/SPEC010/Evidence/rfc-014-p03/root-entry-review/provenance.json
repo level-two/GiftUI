@@ -1,0 +1,10 @@
+{
+  "reviewed_commit": "a38b86f1",
+  "reproduction_reported_by": "separate Strong reviewer; supplied to implementation owner by parent",
+  "observed": "withRoot returned invalidPhaseContained; attached=1 detached=0 destroyed=0 before outer activation exit; no stale callback invoked",
+  "source_and_command_sha256": {
+    "Probe.swift": "507ad9b4aaeadc64acc8ee7faf7804cc530a5f9af20a5644e249ac0acfc148d1",
+    "command.txt": "5f6ce734c17804cd43243eab65c1e16e13b8ea379729780cda52661d60ea2421"
+  },
+  "disposition": "confirmed P1 repaired by pre-borrow entry phase validation; production regression rootEntryPhaseChecks in RuntimeDerived/RootProbe.swift"
+}

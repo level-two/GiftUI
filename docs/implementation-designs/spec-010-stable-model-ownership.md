@@ -172,8 +172,13 @@ They expose no escaping model resolver.
 
 The profile root adapters nest `scope.withRoot(storage: &registration)` directly
 inside `models.withLifetime`. Their registration backing remains owned through
-model teardown. The package helper also supports a shorter root-storage borrow:
-its terminal cleanup is therefore independently enforced, not inferred from the
+model teardown. The package helper first checks the existing mutation/activation phase before
+lending any root/report storage or invoking its body. Frame/discovery entry
+returns contained invalid phase; active-read/terminal entry returns safety-not-proven;
+write/replacement entry returns reentrancy. Valid root activation encloses the
+frame/read/discovery helpers, whose normal and throwing exits restore mutation
+phase before automatic shutdown. The helper also supports a shorter root-storage
+borrow: its terminal cleanup is therefore independently enforced, not inferred from the
 production adapters. Failed detach latches the ledger's existing retired phase;
 normal mutation, reporting, ownership, frame entry and later activation refuse.
 Root shutdown still retires other report routes and attempts remaining detach

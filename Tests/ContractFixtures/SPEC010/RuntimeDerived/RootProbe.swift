@@ -232,7 +232,7 @@ package func staticRootChecks() throws(ObservableStateError) -> UInt32 {
     }
 }
 @_cdecl("giftui_p03_root") public func giftuiP03Root() -> UInt32 {
-    do { return try staticRootChecks() + rootGenerationPrecedenceChecks() + retainingSinkChecks() } catch { return 0 }
+    do { return try staticRootChecks() + rootGenerationPrecedenceChecks() + retainingSinkChecks() + rootEntryPhaseChecks() } catch { return 0 }
 }
 
 // Exercise the real root and actual Static backing with both later capacity
@@ -357,4 +357,93 @@ package func retainingSinkChecks() throws(ObservableStateError) -> UInt32 {
         }
     }
     return checks
+}
+
+// Regression for the independently reproduced frame-encloses-root exit hazard.
+// Reject before report backing/body admission; inverse nesting still tears down.
+package func rootEntryPhaseChecks() throws(ObservableStateError) -> UInt32 {
+    var checks: UInt32 = 0
+    func expect(_ yes: Bool) { checks += 1; precondition(yes) }
+    var namespace = ObservableModelOwnerNamespace()
+    var storage = StaticObservableModelStorage<RootModel, RootSchema>(identity: try namespace.issue(), schema: 7, needsCapture: false)!
+    try withUnsafeTemporaryAllocation(of: RootTrace.self, capacity: 1) { (trace) throws(ObservableStateError) in
+        trace.initialize(repeating: RootTrace()); defer { trace.deinitialize() }
+        try storage.withLifetime { (scope) throws(ObservableStateError) in
+            var ticket = try scope.materialize(RootModel.materialize(RootSeed(trace: trace.baseAddress!)))
+            try scope.withFrame { () throws(ObservableStateError) in
+                checks += rejectedRootEntry(scope, trace.baseAddress!, .invalidPhaseContained)
+                try scope.withDiscovery { checks += rejectedRootEntry(scope, trace.baseAddress!, .invalidPhaseContained) }
+                try scope.pin(ticket.key)
+                do throws(_GiftUIAccessFailure) {
+                    try scope.withRead(RootDomain.self) { _ in checks += rejectedRootEntry(scope, trace.baseAddress!, .invalidPhaseSafetyNotProven) }
+                } catch { throw ObservableStateError(accessFailure: error) }
+            }
+            expect(scope.mutate(ticket.key, mutation: .set(9), report: { checks += rejectedRootEntry(scope, trace.baseAddress!, .reentrancyViolation); return .dirtied }) == .success(.dirtied))
+            try scope.register(ticket)
+            let reservation = try scope.stageReplacement(transferring: ticket, seed: RootSeed(trace: trace.baseAddress!), registrationAvailable: true, stagingAvailable: true)
+            checks += rejectedRootEntry(scope, trace.baseAddress!, .reentrancyViolation)
+            try scope.discardReplacement(reservation)
+            try scope.unregister(ticket.key)
+            try scope.release(&ticket)
+            scope.requireStop()
+            checks += rejectedRootEntry(scope, trace.baseAddress!, .invalidPhaseSafetyNotProven)
+        }
+    }
+    // Normal return, discovery throw, and active-read throw all leave the root
+    // at mutation phase for detachment. An independent owner survives normally.
+    for mode: UInt8 in 0 ... 2 {
+        var backing = StaticObservableModelStorage<RootModel, RootSchema>(identity: try namespace.issue(), schema: 7, needsCapture: false)!
+        try withUnsafeTemporaryAllocation(of: RootTrace.self, capacity: 1) { (trace) throws(ObservableStateError) in
+            trace.initialize(repeating: RootTrace()); defer { trace.deinitialize() }
+            try backing.withLifetime { (scope) throws(ObservableStateError) in
+                var ticket = try scope.materialize(RootModel.materialize(RootSeed(trace: trace.baseAddress!)))
+                var independent = try scope.retain(ticket.key)
+                var registration = ObservableStateRootStorage<UInt8>()
+                do throws(ObservableStateError) {
+                    try scope.withRoot(storage: &registration) { (root) throws(ObservableStateError) in
+                        var state = State<RootSchema>(candidate: ticket.key)
+                        try scope.withFrame { () throws(ObservableStateError) in
+                            try scope.withDiscovery { () throws(ObservableStateError) in
+                                expect(root.beginCandidate() == .success(.candidateStarted))
+                                expect(root.encounter(identity: 1, ordinal: 0, state: &state, transferring: &ticket) == .success(.materialized))
+                                expect(root.finishCandidate(.publish) == .success(.associationsCommitted))
+                                if mode == 1 { throw .incompatibleAssociation }
+                            }
+                            if mode == 2 {
+                                do throws(_GiftUIAccessFailure) { try scope.withRead(RootDomain.self) { _ throws(_GiftUIAccessFailure) in throw .outOfBounds } }
+                                catch { throw ObservableStateError(accessFailure: error) }
+                            }
+                        }
+                    }
+                    expect(mode == 0)
+                } catch { expect(error == (mode == 1 ? .incompatibleAssociation : .modelReadOutOfBounds)) }
+                expect(scope.phase == .mutating)
+                expect(trace[0].attachments == 1 && trace[0].detachments == 1 && trace[0].destructions == 0)
+                try scope.withFrame { () throws(ObservableStateError) in
+                    try scope.pin(independent.key)
+                    do throws(_GiftUIAccessFailure) { try scope.withRead(RootDomain.self) { (read) throws(_GiftUIAccessFailure) in expect(try RootDomain.value(independent.key, read) == 7) } }
+                    catch { throw ObservableStateError(accessFailure: error) }
+                }
+                try scope.release(&independent)
+                expect(trace[0].destructions == 1)
+            }
+        }
+    }
+    return checks
+}
+
+private func rejectedRootEntry(
+    _ scope: borrowing ObservableModelScope<RootModel, RootSchema>,
+    _ trace: UnsafeMutablePointer<RootTrace>, _ expected: ObservableStateError
+) -> UInt32 {
+    var bodyEntered = false
+    var registration = ObservableStateRootStorage<UInt8>()
+    let before = trace.pointee
+    do throws(ObservableStateError) {
+        try scope.withRoot(storage: &registration) { _ in bodyEntered = true }
+        preconditionFailure("root entry unexpectedly admitted")
+    } catch { precondition(error == expected) }
+    precondition(!bodyEntered)
+    precondition(trace.pointee.attachments == before.attachments && trace.pointee.materializations == before.materializations && trace.pointee.detachments == before.detachments && trace.pointee.destructions == before.destructions)
+    return 3
 }
