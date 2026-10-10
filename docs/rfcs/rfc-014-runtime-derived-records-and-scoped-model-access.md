@@ -43,6 +43,7 @@ related_spikes:
   - SPIKE-070
   - SPIKE-071
   - SPIKE-072
+  - SPIKE-073
 supersedes: []
 superseded_by: []
 target_milestone: ITERATION-003
@@ -96,6 +97,9 @@ and full-image feasibility remain unproved. Mandatory transformation is selected
 provisionally for evidence, not adopted as production architecture.
 
 ## Current design correction — 2026-10-10
+
+[SPIKE-073](../spikes/spike-073-fixed-context-body-inference.md) is the single
+bounded SR-Q2 check; all other questions use source/contract analysis.
 
 The maintainer authorized [stable reads without a mandatory snapshot copy](../iterations/iteration-003-review/rfc-014-stable-read-revision.md).
 That revision supersedes conflicting C copy-freeze, five-bank-baseline and
