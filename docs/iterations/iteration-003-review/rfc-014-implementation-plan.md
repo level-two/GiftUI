@@ -1,6 +1,6 @@
 # RFC-014 bounded implementation sequence — 2026-10-10
 
-**P01–P02 passed; P03 implementation awaits separate Strong exit review.** This is the shared
+**P01–P02 passed; P03 exit review is incomplete with a provisional cleanup finding.** This is the shared
 sequencing index for nine owner Implementation Plans, not another contract or
 investigation. It derives only the [approved Spec amendments](rfc-014-spec-approval.md)
 at `3c260bbc` and accepted ADR-035/036/037. ITERATION-003 I3-04/05 supplies the
@@ -364,3 +364,8 @@ contains final source/compiler/target receipts, actual metadata/ticket/pin layou
 commands, fault state transitions and explicit limits. Separate Strong review is
 required before P03 passes; no downstream work or implemented transition is
 claimed. Consecutive unproductive repair count remains 0 of 2.
+
+The review subsequently stopped when the Strong agent hit the account usage
+limit. Its provisional root-entry-during-frame cleanup finding has not yet been
+reproduced or repaired. The [exact resumption point](../../../Tests/ContractFixtures/SPEC010/Evidence/rfc-014-p03/progress.md#exit-review-interruption-and-exact-resumption-point)
+preserves the suspected path and evidence limits. P03 has not passed.

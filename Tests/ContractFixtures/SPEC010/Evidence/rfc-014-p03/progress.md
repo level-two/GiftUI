@@ -486,3 +486,34 @@ handling, P08/P09 application and host wiring, P10 full-module/regression gates,
 and P11/P12 linked resource/target evidence and cutover remain pending. No broader
 test gate, deployed/flashed artifact, connected execution, completed T10.1 or
 implemented Specification transition is claimed.
+
+## Exit-review interruption and exact resumption point
+
+The separate Strong reviewer (`gpt-6-astra`, `high`) began reviewing
+`3e82e2a9..a38b86f1`. Its initial assessment found the visitor constraints and
+concrete binder lifetime consistent with the approved amendment; it requested
+no renewed contract decision. The reviewer then reported a possible P1 cleanup
+path requiring bounded reproduction before package acceptance:
+
+- `ObservableModelScope.withRoot(storage:)` has no entry-phase check.
+- A root entered inside `withFrame` may discover/install a model while reading.
+- Automatic `root.shutdown()` requires the ordinary mutation phase unless the
+  model scope is already terminal. Its first attempt and catch-path retry may
+  therefore both reject with `invalidPhaseContained` before retiring routes.
+- `finishStoppedActivation()` only cleans terminal activations; the report
+  storage borrow could consequently end with a registered model/sink still live.
+
+This is a provisional code-review finding, not a completed reproduction or a
+confirmed failing runtime test. The reviewer planned a bounded probe that checks
+for the surviving registration without invoking any stale callback. No result
+was returned: the agent entered an errored state reporting the account usage
+limit. The working tree was clean; no review edits or repair attempt occurred.
+
+Resume with Strong at this exact path: reproduce safely, determine the required
+entry/exit phase containment under the existing contract, implement a bounded
+repair if confirmed, add the focused regression, and verify final changed-source
+receipts before completing separate exit review. Do not repeat unchanged passed
+checks solely because the reviewer restarts. The 602-assertion/four-profile
+receipts above remain component evidence; they do not settle this finding or
+pass P03. Counter remains 0 consecutive unproductive repairs of 2. The approved
+visitor amendment remains in force, and P04–P12 remain pending.
