@@ -1,0 +1,34 @@
+{
+  "source_revision": "14ea4e18b399ed57f0f7633cc1c800eda1dee398",
+  "compilers": {
+    ".toolchains/host/swift-6.3.2-RELEASE-osx/usr/bin/swiftc": {
+      "sha256": "d8e40107da0e2c1c59640a983faea326d5d2bddfe81f7609db14bade43c4a5b9",
+      "version": "Apple Swift version 6.3.2 (swift-6.3.2-RELEASE)\nTarget: arm64-apple-macosx26.0"
+    },
+    ".toolchains/nrf52840/swift/swift-6.3.2-RELEASE-osx/usr/bin/swiftc": {
+      "sha256": "d8e40107da0e2c1c59640a983faea326d5d2bddfe81f7609db14bade43c4a5b9",
+      "version": "Apple Swift version 6.3.2 (swift-6.3.2-RELEASE)\nTarget: arm64-apple-macosx26.0"
+    }
+  },
+  "sdk_destination_sha256": "faf649770c85f2ba1489e5d433f16f380a5380c656290b1b04e590d818002bca",
+  "production_inputs": {
+    "Sources/GiftUI/ObservableState.swift": "38cf485a5d5a35dd7234d983a39b66c189039e7a0c77548d226954b68178379d",
+    "Sources/GiftUIRuntimeStatic/StaticObservableModelStorage.swift": "85426dcd1f5b2ebb793996c5ff1b78ffce89a002119ce7f11c91f9cdcd014f19",
+    "Sources/GiftUIObservableState/ObservableStateValues.swift": "e42b180efa69e3fd7bda1aea79beb245c52d372a7e9ea3805f5f2a46548d3024",
+    "Sources/GiftUI/DeclarativeView.swift": "4f59508ba6aa85d47e61aa51c1dd8fa6de9a8f27b4ad5418f125641cdb40a415",
+    "Sources/GiftUI/Canvas.swift": "8b8bded5fb7106d1e9a53bb1076a87d51a3ade22a7cd22a0bb0b40b2591024e3"
+  },
+  "fixture_inputs": {
+    "Negative.swift": "c984463eea71e739f10e9a4b8c440fee220e00988618f6c59979da78de90f1f0",
+    "run.py": "742faed469c3d756f63374508510a2ee3d330f333b4e83af47cdbbbe4289e3b9",
+    "CanvasProtocol.swift": "5c3f78c333bb473d0c670103a000e00f14e1fbb9be752fa0ed5c8c2a095b61ce",
+    "generate.py": "c668218ba4188cc031335f647e41d9e4feeb0c6e5e3418e540060c2677de9dfa",
+    "Authoring.swift.txt": "54cdd28686b3335fb41ad8a27544fd83d7939f23371a4528883a0e618877fe98",
+    "Policy.swift": "3fdaffd031b8f58b5115e6fd1b2ab2cb54d2f9e2b988777608ae79ea55445b3b",
+    "Driver.swift": "aad67e0974e2f5ddf926bf594d036b1ad26fbd5f554ea4ecabe6f55ae880c658",
+    "Support.swift": "5c9d0b2d626ada642c3a6c6bf50bc9c65ce0b51627bff54ec829493a8dfe9a22",
+    "Generated.swift": "fb342917ecb0fba162cd1250505b67e12a02ebfb3acf650eeda78b7a22753846",
+    "Main.swift": "db2cf93d2b5f657027b5cde44467b394519cf164b3870d6d563c5590d92453d0",
+    "Owner.swift": "308bd56bac723c025b3e57d638f212f3a7cb441d9fe5a9041d527d360259daad"
+  }
+}

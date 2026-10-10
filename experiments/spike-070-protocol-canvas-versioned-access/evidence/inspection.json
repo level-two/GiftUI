@@ -1,0 +1,129 @@
+{
+  "invocations": 11,
+  "source_snapshots_verified": true,
+  "artifacts": {
+    ".build/spike-070/macos-dynamic/policy-lifetimes.o": {
+      "sha256": "eb9a13eb7223aa0b1aff5a0daed202ad5c3a3ad1a4060c457d7935acf0c7b469",
+      "file_bytes": 880
+    },
+    ".build/spike-070/macos-dynamic/positive": {
+      "sha256": "a2071c0400a7807e3eb2bbfdad1c4d941ffb7bbf97f28894cb1e2a46c2bd4642",
+      "file_bytes": 306008
+    },
+    ".build/spike-070/macos-static/positive": {
+      "sha256": "a2071c0400a7807e3eb2bbfdad1c4d941ffb7bbf97f28894cb1e2a46c2bd4642",
+      "file_bytes": 306008
+    },
+    ".build/raspberry-pi/spike-070/positive.o": {
+      "sha256": "3a5f12c111c66a0010f6a2cd1062b6fae2e68b5f65c7dfa84a0f45a862fbdef0",
+      "file_bytes": 420336
+    }
+  },
+  "native": {
+    "execute-macos-dynamic": {
+      "passed": [
+        "transition-stride",
+        "outside-frame",
+        "coherent-fields",
+        "indexed-helper",
+        "foreign-key",
+        "stale-generation",
+        "invalid-field",
+        "stale-frame",
+        "generated-body-leaf-witness",
+        "deferred-draw",
+        "layout-before-draw",
+        "repeated-canvas",
+        "success-cleanup",
+        "trace-canvas",
+        "body-error",
+        "frozen-mutation",
+        "revision",
+        "draw-error",
+        "failure-cleanup",
+        "publication-dirty",
+        "source-defaults"
+      ],
+      "layout": {
+        "transition-stride": "16",
+        "model-key-stride": "12",
+        "owner-stride": "72"
+      }
+    },
+    "execute-macos-static": {
+      "passed": [
+        "transition-stride",
+        "outside-frame",
+        "coherent-fields",
+        "indexed-helper",
+        "foreign-key",
+        "stale-generation",
+        "invalid-field",
+        "stale-frame",
+        "generated-body-leaf-witness",
+        "deferred-draw",
+        "layout-before-draw",
+        "repeated-canvas",
+        "success-cleanup",
+        "trace-canvas",
+        "body-error",
+        "frozen-mutation",
+        "revision",
+        "draw-error",
+        "failure-cleanup",
+        "publication-dirty",
+        "source-defaults"
+      ],
+      "layout": {
+        "transition-stride": "16",
+        "model-key-stride": "12",
+        "owner-stride": "72"
+      }
+    }
+  },
+  "inspections": {
+    "pi-attributes": {
+      "command": [
+        "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/arm-zephyr-eabi-readelf",
+        "-A",
+        "/Users/eugene/work/GiftUI/.build/raspberry-pi/spike-070/positive.o"
+      ],
+      "log": "experiments/spike-070-protocol-canvas-versioned-access/evidence/pi-attributes.log",
+      "sha256": "df93c7f7482453f71a27a10729ff2ac4aec6d3c44050f06d0399504a3bd85e9f"
+    },
+    "pi-symbols": {
+      "command": [
+        "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/arm-zephyr-eabi-nm",
+        "-a",
+        "/Users/eugene/work/GiftUI/.build/raspberry-pi/spike-070/positive.o"
+      ],
+      "log": "experiments/spike-070-protocol-canvas-versioned-access/evidence/pi-symbols.log",
+      "sha256": "3b15a58cbfb119cb9ddf7aafb2b916c762c35950722c461eaa6187d74526391b"
+    },
+    "pi-relocations": {
+      "command": [
+        "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/arm-zephyr-eabi-readelf",
+        "-rW",
+        "/Users/eugene/work/GiftUI/.build/raspberry-pi/spike-070/positive.o"
+      ],
+      "log": "experiments/spike-070-protocol-canvas-versioned-access/evidence/pi-relocations.log",
+      "sha256": "3863f4f1ca8ad901bf20245ca4206bbacd2451381efe3bf9c3719c5ab4df901e"
+    },
+    "raspberry-pi-doctor": {
+      "command": [
+        "/Users/eugene/work/GiftUI/scripts/raspberry-pi/doctor.sh"
+      ],
+      "log": "experiments/spike-070-protocol-canvas-versioned-access/evidence/raspberry-pi-doctor.log",
+      "sha256": "a74c12b1f674a7864fa05ae914d98b41ef8e8abf174403fa051c52478b62d58e"
+    },
+    "nrf52840-doctor": {
+      "command": [
+        "/Users/eugene/work/GiftUI/scripts/nrf52840/doctor.sh"
+      ],
+      "log": "experiments/spike-070-protocol-canvas-versioned-access/evidence/nrf52840-doctor.log",
+      "sha256": "dc22bfeb24756160a73b8c73983f8f410b40cdbee4b2a69250ecf95e11e0864f"
+    }
+  },
+  "nrf_resource_inspection": "Not run: positive compilation failed; no nRF object or rooted image exists.",
+  "escape_controls": "Not run: repair limit exhausted at nRF positive; no SPIKE-070 compiler-negative evidence."
+}

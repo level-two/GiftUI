@@ -1,0 +1,15 @@
+/Users/eugene/work/GiftUI/experiments/spike-070-protocol-canvas-versioned-access/Policy.swift:3:6: error: '@_lifetime' attribute is only valid when experimental feature Lifetimes is enabled
+ 1 | struct PolicyRead: ~Escapable {
+ 2 |     let values: Span<UInt32>
+ 3 |     @_lifetime(copy values)
+   |      `- error: '@_lifetime' attribute is only valid when experimental feature Lifetimes is enabled
+ 4 |     init(_ values: Span<UInt32>) { self.values = values }
+ 5 | }
+
+/Users/eugene/work/GiftUI/experiments/spike-070-protocol-canvas-versioned-access/Policy.swift:8:6: error: '@_lifetime' attribute is only valid when experimental feature Lifetimes is enabled
+ 6 | struct PolicyOwner: ~Copyable {
+ 7 |     let pointer: UnsafeBufferPointer<UInt32>
+ 8 |     @_lifetime(borrow self)
+   |      `- error: '@_lifetime' attribute is only valid when experimental feature Lifetimes is enabled
+ 9 |     borrowing func read() -> PolicyRead {
+10 |         PolicyRead(Span(_unsafeElements: pointer))

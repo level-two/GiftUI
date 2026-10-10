@@ -1,0 +1,20 @@
+/Users/eugene/work/GiftUI/Sources/GiftUI/ObservableState.swift:6:14: warning: external macro implementation type 'GiftUIMacros.ObservableStateHostMacro' could not be found for macro 'ObservableStateHost()'; plugin for module 'GiftUIMacros' not found
+  4 | )
+  5 | @attached(extension, conformances: _GiftUIObservableStateHost)
+  6 | public macro ObservableStateHost() =
+    |              `- warning: external macro implementation type 'GiftUIMacros.ObservableStateHostMacro' could not be found for macro 'ObservableStateHost()'; plugin for module 'GiftUIMacros' not found
+  7 |     #externalMacro(
+  8 |         module: "GiftUIMacros",
+
+/Users/eugene/work/GiftUI/experiments/spike-070-protocol-canvas-versioned-access/Owner.swift:119:9: error: lifetime-dependent value escapes its scope
+117 |     @_lifetime(borrow self)
+118 |     borrowing func read() -> FrameRead {
+119 |         FrameRead(Span(_unsafeElements: UnsafeBufferPointer(frozen)),
+    |         |                               `- note: it depends on the lifetime of this parent value
+    |         `- error: lifetime-dependent value escapes its scope
+120 |                   value: frozenValue, scale: frozenScale, owner: identity,
+121 |                   generation: 1, epoch: epoch, active: isFrozen)
+122 |     }
+    |     `- note: this use causes the lifetime-dependent value to escape
+123 |     mutating func finish(published: Bool) {
+124 |         isFrozen = false

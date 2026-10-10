@@ -1,0 +1,10 @@
+{
+  "path": ".toolchains/host/swift-6.3.2-RELEASE-osx/usr/lib/swift/macosx/Swift.swiftmodule/arm64-apple-macos.swiftinterface",
+  "sha256": "da1215694517c513d708e93c793176017c7540167a6736164b9dbdea28b0266a",
+  "declarations": [
+    {
+      "line": 2971,
+      "text": "  @_transparent @inline(__always) public static func && (lhs: Swift.Bool, rhs: @autoclosure () throws -> Swift.Bool) rethrows -> Swift.Bool {\n    return lhs ? try rhs() : false\n  }"
+    }
+  ]
+}

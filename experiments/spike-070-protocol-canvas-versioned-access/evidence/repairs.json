@@ -1,0 +1,15 @@
+{
+  "limit": 2,
+  "rounds": [
+    {
+      "round": 1,
+      "after_trial": 4,
+      "reason": "Fixture used nonexistent Rect initializer; corrected to actual failable origin/size API. Also included shared scalarFailure helper in negative compilation inputs before their first trial."
+    },
+    {
+      "round": 2,
+      "after_trial": 5,
+      "reason": "Explicit lifetime checking rejects a Span dependent on a temporary immutable buffer conversion. Borrow the stored mutable buffer directly, preserving dependency on the owner. Final allowed repair."
+    }
+  ]
+}

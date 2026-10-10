@@ -1,0 +1,39 @@
+/Users/eugene/work/GiftUI/Sources/GiftUI/ObservableState.swift:6:14: warning: external macro implementation type 'GiftUIMacros.ObservableStateHostMacro' could not be found for macro 'ObservableStateHost()'; plugin for module 'GiftUIMacros' not found
+  4 | )
+  5 | @attached(extension, conformances: _GiftUIObservableStateHost)
+  6 | public macro ObservableStateHost() =
+    |              `- warning: external macro implementation type 'GiftUIMacros.ObservableStateHostMacro' could not be found for macro 'ObservableStateHost()'; plugin for module 'GiftUIMacros' not found
+  7 |     #externalMacro(
+  8 |         module: "GiftUIMacros",
+
+/Users/eugene/work/GiftUI/experiments/spike-070-protocol-canvas-versioned-access/Support.swift:113:26: error: extra arguments at positions #1, #2, #3, #4 in call
+111 |         guard layoutComplete else { throw .invalidPhase }
+112 |         defer { clear() }
+113 |         let bounds = Rect(x: 0, y: 0, width: 100, height: 10)
+    |                          `- error: extra arguments at positions #1, #2, #3, #4 in call
+114 |         if let first { try first.draw(in: bounds, context: &context, read: read); invoked += 1 }
+115 |         if let second { try second.draw(in: bounds, context: &context, read: read); invoked += 1 }
+
+/Users/eugene/work/GiftUI/Sources/GiftUI/GiftUI.swift:30:12: note: 'init(origin:size:)' declared here
+ 28 |     public let size: Size
+ 29 | 
+ 30 |     public init?(origin: Point, size: Size) {
+    |            `- note: 'init(origin:size:)' declared here
+ 31 |         guard GeometryArithmetic.add(origin.x, size.width) != nil,
+ 32 |             GeometryArithmetic.add(origin.y, size.height) != nil
+
+/Users/eugene/work/GiftUI/experiments/spike-070-protocol-canvas-versioned-access/Support.swift:113:26: error: missing arguments for parameters 'origin', 'size' in call
+111 |         guard layoutComplete else { throw .invalidPhase }
+112 |         defer { clear() }
+113 |         let bounds = Rect(x: 0, y: 0, width: 100, height: 10)
+    |                          `- error: missing arguments for parameters 'origin', 'size' in call
+114 |         if let first { try first.draw(in: bounds, context: &context, read: read); invoked += 1 }
+115 |         if let second { try second.draw(in: bounds, context: &context, read: read); invoked += 1 }
+
+/Users/eugene/work/GiftUI/Sources/GiftUI/GiftUI.swift:30:12: note: 'init(origin:size:)' declared here
+ 28 |     public let size: Size
+ 29 | 
+ 30 |     public init?(origin: Point, size: Size) {
+    |            `- note: 'init(origin:size:)' declared here
+ 31 |         guard GeometryArithmetic.add(origin.x, size.width) != nil,
+ 32 |             GeometryArithmetic.add(origin.y, size.height) != nil

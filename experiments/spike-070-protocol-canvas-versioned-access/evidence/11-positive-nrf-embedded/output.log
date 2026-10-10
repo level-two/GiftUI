@@ -1,0 +1,25 @@
+/Users/eugene/work/GiftUI/Sources/GiftUI/ObservableState.swift:6:14: warning: external macro implementation type 'GiftUIMacros.ObservableStateHostMacro' could not be found for macro 'ObservableStateHost()'; plugin for module 'GiftUIMacros' not found
+  4 | )
+  5 | @attached(extension, conformances: _GiftUIObservableStateHost)
+  6 | public macro ObservableStateHost() =
+    |              `- warning: external macro implementation type 'GiftUIMacros.ObservableStateHostMacro' could not be found for macro 'ObservableStateHost()'; plugin for module 'GiftUIMacros' not found
+  7 |     #externalMacro(
+  8 |         module: "GiftUIMacros",
+
+/Users/eugene/work/GiftUI/experiments/spike-070-protocol-canvas-versioned-access/Driver.swift:72:75: error: cannot use a value of protocol type 'any Error' in embedded Swift [#EmbeddedRestrictions]
+70 |     do {
+71 |         let read = owner.read()
+72 |         check(try read.scalar(initial, field: 0) == CounterModel.initial0 && read.scalar(initial, field: 1) == CounterModel.initial1, 20, &failures)
+   |                                                                           `- error: cannot use a value of protocol type 'any Error' in embedded Swift [#EmbeddedRestrictions]
+73 |     } catch { failures |= 1 << 20 }
+74 |     owner.finish(published: true)
+
+/Users/eugene/work/GiftUI/experiments/spike-070-protocol-canvas-versioned-access/Driver.swift:13:58: error: cannot use a value of protocol type 'any Error' in embedded Swift [#EmbeddedRestrictions]
+11 |     let read = owner.read()
+12 |     do {
+13 |         check(try read.scalar(key, field: 0) == expected && read.scalar(key, field: 1) == scale, 2, &failures)
+   |                                                          `- error: cannot use a value of protocol type 'any Error' in embedded Swift [#EmbeddedRestrictions]
+14 |         check(try traceLevel_read(model: AnalyzerModel(key: key), index: 17, read: read) == 42, 3, &failures)
+15 |     } catch { failures |= (1 << 2) | (1 << 3) }
+
+[#EmbeddedRestrictions]: <https://docs.swift.org/compiler/documentation/diagnostics/embedded-restrictions>

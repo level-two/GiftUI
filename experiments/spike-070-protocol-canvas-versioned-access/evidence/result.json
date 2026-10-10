@@ -1,0 +1,37 @@
+{
+  "status": "inconclusive",
+  "started_utc": "2026-10-10T05:30:54+00:00",
+  "experiments_closed_utc": "2026-10-10T05:46:56.419560+00:00",
+  "deadline_utc": "2026-10-10T07:00:54+00:00",
+  "excluded_wait_seconds": 0,
+  "invocations": 11,
+  "invocation_limit": 48,
+  "repair_rounds": 2,
+  "repair_limit": 2,
+  "stop_reason": "Embedded positive failed after final allowed repair; no further repair or unrun matrix executed.",
+  "native_checks_per_profile": 21,
+  "configurations_compiled": [
+    "macos-dynamic",
+    "macos-static",
+    "pi-armv6"
+  ],
+  "configuration_failed": "nrf-embedded",
+  "compiler_negative_controls_run": 0,
+  "nrf_resource_inspection_run": false,
+  "result": "result.md",
+  "final_inputs": {
+    "Negative.swift": "c984463eea71e739f10e9a4b8c440fee220e00988618f6c59979da78de90f1f0",
+    "run.py": "328662d63bbb389a5f41b2e29700e267e4f9c1da94999d7c385c70b25599c0e0",
+    "CanvasProtocol.swift": "5c3f78c333bb473d0c670103a000e00f14e1fbb9be752fa0ed5c8c2a095b61ce",
+    "generate.py": "c668218ba4188cc031335f647e41d9e4feeb0c6e5e3418e540060c2677de9dfa",
+    "Authoring.swift.txt": "54cdd28686b3335fb41ad8a27544fd83d7939f23371a4528883a0e618877fe98",
+    "Policy.swift": "3fdaffd031b8f58b5115e6fd1b2ab2cb54d2f9e2b988777608ae79ea55445b3b",
+    "README.md": "90c97bb2c222fa923c7567364dc7819b938b8f65fac326cfd27407c359ce462b",
+    "inspect.py": "891b53a16d94553a9d7ab574c3063163e9836cb8a98dbc3a620135895c83a2a0",
+    "Driver.swift": "aad67e0974e2f5ddf926bf594d036b1ad26fbd5f554ea4ecabe6f55ae880c658",
+    "Support.swift": "5c9d0b2d626ada642c3a6c6bf50bc9c65ce0b51627bff54ec829493a8dfe9a22",
+    "Generated.swift": "fb342917ecb0fba162cd1250505b67e12a02ebfb3acf650eeda78b7a22753846",
+    "Main.swift": "db2cf93d2b5f657027b5cde44467b394519cf164b3870d6d563c5590d92453d0",
+    "Owner.swift": "308bd56bac723c025b3e57d638f212f3a7cb441d9fe5a9041d527d360259daad"
+  }
+}
