@@ -21,10 +21,15 @@ superseded_by: null
 
 ## RFC-014 migration scope
 
-P03 is in progress under the approved amendment. The results below describe
-historical baseline inputs; they do not establish OS-RD-001–004 or renewed
-baseline conformance. Ownership, replacement, profile and final adoption checks
-remain open under the active implementation plan.
+P03 passed its finite package exit at `15b47e2a` after separate Strong review.
+The [package receipt](../../Tests/ContractFixtures/SPEC010/Evidence/rfc-014-p03/progress.md#final-p03-package-exit)
+links scoped ownership, binding, replacement, target access and teardown evidence:
+645 assertions per native profile, cross-profile compile/ABI checks, 13 negative
+controls and actual layouts. This is selected-component evidence, not full
+OS-RD-001–004 or renewed baseline conformance. P10–P12 retain whole-module,
+complete criterion, linked resource, connected and adoption dispositions.
+The results below describe historical baseline inputs. T10.1 and this report
+remain open; no Specification transition is requested.
 
 ## Historical Review Scope
 

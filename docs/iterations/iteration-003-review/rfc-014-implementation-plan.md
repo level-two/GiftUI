@@ -1,6 +1,6 @@
 # RFC-014 bounded implementation sequence — 2026-10-10
 
-**P01–P02 passed; P03 awaits bounded verification of the repaired root-entry finding.** This is the shared
+**P01–P03 passed; P04–P12 pending.** This is the shared
 sequencing index for nine owner Implementation Plans, not another contract or
 investigation. It derives only the [approved Spec amendments](rfc-014-spec-approval.md)
 at `3c260bbc` and accepted ADR-035/036/037. ITERATION-003 I3-04/05 supplies the
@@ -319,12 +319,14 @@ Shared inventory routes retain their named ownership, runtime, action, Canvas
 and complete-application integration obligations. The whole-tree migration and
 resource/connected evidence are not inferred from this declaration exit.
 
-P03 implements the explicitly approved scoped visitor correction and awaits
-separate Strong exit review; P04–P12 remain pending. There is no
+P03 passed its finite package exit at `15b47e2a` after separate Strong review
+of the explicitly approved scoped visitor correction and root-entry repair;
+P04–P12 remain pending. There is no
 remaining P02 exit failure, new package, scope expansion or architecture change.
 
 Planning was prepared without implementation or experiment execution. Optional work remains in the existing deferred track; no new optional
-deliverable was added. Next action is P03 within the existing bounded sequence.
+deliverable was added. The next package is P04 within the existing bounded sequence;
+this execution stopped at the requested P03 package boundary.
 
 
 Planning validation: all nine approved Spec statuses and ready plan templates
@@ -361,13 +363,19 @@ matching candidate-ticket transfer, checked generation-based profile target acce
 and retaining-sink terminal teardown. Copy/escape controls exercise both public
 visitor protocols on all four pinned configurations. The [step-9 progress record](../../../Tests/ContractFixtures/SPEC010/Evidence/rfc-014-p03/progress.md)
 contains final source/compiler/target receipts, actual metadata/ticket/pin layouts,
-commands, fault state transitions and explicit limits. Separate Strong review is
-required before P03 passes; no downstream work or implemented transition is
-claimed. Consecutive unproductive repair count remains 0 of 2.
+commands, fault state transitions and explicit limits. Separate Strong review
+passed the finite P03 exit after the step-10 repair; no downstream work or
+implemented transition is claimed. Consecutive unproductive repair count remains
+0 of 2.
 
 The review initially stopped when the Strong agent hit the account usage
 limit. Its provisional root-entry-during-frame cleanup finding was subsequently
 confirmed by a safe separate-review reproduction and repaired locally in step 10. The [exact resumption point](../../../Tests/ContractFixtures/SPEC010/Evidence/rfc-014-p03/progress.md#exit-review-interruption-and-exact-resumption-point)
 preserves the historical suspected path and evidence limits. Step 10 adds the
-pre-borrow phase guard and all-phase entry/exit regression; separate bounded
-verification remains required. P03 has not passed.
+pre-borrow phase guard and all-phase entry/exit regression. Separate bounded
+verification at `15b47e2a` reran the original reproduction with zero attachments,
+verified final receipt hashes, and found no remaining blocker. The
+[final P03 package exit](../../../Tests/ContractFixtures/SPEC010/Evidence/rfc-014-p03/progress.md#final-p03-package-exit)
+records 645 assertions per native profile, all four compile/negative routes and
+the remaining integration/resource evidence boundaries. P03 has passed; owner
+T10.1 remains open through P10–P12.

@@ -35,14 +35,16 @@ not additional authorization to rerun an MVP implementation or reopen experiment
 
 ### Current owner checkpoint
 
-**P03 stopped:** the public lexical visitor SPI admits an escaping visitor copy.
-The unsafe raw-pointer join was removed. Separate Strong review rejects literal
-two-pass enumeration under OS-010; see the
-[current blocker and reviewed options](../../Tests/ContractFixtures/SPEC010/Evidence/rfc-014-p03/lexical-visitor-blocker.md).
-No compliant alternative has been demonstrated. The bounded generation-precedence
-repair receives review verification before the human contract decision.
-Direct scoped callbacks and the fixed report-route repair are incremental
-component evidence only. Consecutive unproductive repairs: 0 of 2.
+**P03 passed at `15b47e2a` after separate Strong review.** The explicitly approved
+scoped-visitor amendment resolves the historical visitor blocker. Scoped binding,
+candidate ownership, checked target access, replacement/refusal and teardown have
+focused evidence, including the separately reviewed root-entry phase repair.
+Both native profiles pass 645 assertions; ARMv6/Embedded compile and ABI checks
+and 13 negative controls pass. See the
+[package exit](../../Tests/ContractFixtures/SPEC010/Evidence/rfc-014-p03/progress.md#final-p03-package-exit).
+T10.1 remains open through P10–P12 for complete criterion, resource and adoption
+dispositions; package passage is not whole-module or Specification completion.
+Consecutive unproductive repairs: 0 of 2.
 
 - [ ] `T10.1` — Stable typed backing, bounded tickets/pins, checked writes, nested State discovery, exact final-ticket replacement/refusal and teardown.
   **Scope:** GiftUIObservableState, Dynamic/Static model/registration stores and target-access bridges and directly corresponding tests/fixtures/build wiring.
@@ -212,10 +214,10 @@ listed prerequisite is satisfied.
 | `OS-010` — Generated lexical visitation and bind-before-body | `T1.2`–`T1.5`, `T3.2`, `T10.1` | Macro expansion and stateful traversal transcript; RFC-014 P10 functional / P11 resource-connected / P12 conformance evidence | migration pending; prior evidence remains baseline only |
 | `OS-011` — Exact report outcomes and phase/lifecycle effects | `T5.1`–`T5.4`, `T7.2`, `T10.1` | Report-outcome and mandatory-disposition corpus; RFC-014 P10 functional / P11 resource-connected / P12 conformance evidence | migration pending; prior evidence remains baseline only |
 | `OS-012` — Candidate publishable lookup timing and commit/discard | `T3.1`, `T4.3`, `T4.4`, `T6.1`, `T10.1` | Candidate lookup timing/equality transcript; RFC-014 P10 functional / P11 resource-connected / P12 conformance evidence | migration pending; prior evidence remains baseline only |
-| `OS-RD-001` | `T10.1` | P03 exit fixtures; P10 differential/negative tests; P11 actual resource/connected disposition; P12 owner report | pending |
-| `OS-RD-002` | `T10.1` | P03 exit fixtures; P10 differential/negative tests; P11 actual resource/connected disposition; P12 owner report | pending |
-| `OS-RD-003` | `T10.1` | P03 exit fixtures; P10 differential/negative tests; P11 actual resource/connected disposition; P12 owner report | pending |
-| `OS-RD-004` | `T10.1` | P03 exit fixtures; P10 differential/negative tests; P11 actual resource/connected disposition; P12 owner report | pending |
+| `OS-RD-001` | `T10.1` | P03 exit fixtures; P10 differential/negative tests; P11 actual resource/connected disposition; P12 owner report | P03 passed at `15b47e2a`; P10–P12 pending |
+| `OS-RD-002` | `T10.1` | P03 exit fixtures; P10 differential/negative tests; P11 actual resource/connected disposition; P12 owner report | P03 passed at `15b47e2a`; P10–P12 pending |
+| `OS-RD-003` | `T10.1` | P03 exit fixtures; P10 differential/negative tests; P11 actual resource/connected disposition; P12 owner report | P03 passed at `15b47e2a`; P10–P12 pending |
+| `OS-RD-004` | `T10.1` | P03 exit fixtures; P10 differential/negative tests; P11 actual resource/connected disposition; P12 owner report | P03 passed at `15b47e2a`; P10–P12 pending |
 
 ## Milestones and Tasks
 

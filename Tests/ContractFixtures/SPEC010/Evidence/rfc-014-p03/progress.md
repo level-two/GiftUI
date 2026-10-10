@@ -567,3 +567,34 @@ Embedded install/replace allocator attribution remain unchanged. Governance and
 whitespace checks pass. Separate Strong bounded verification is next; P03 is not
 marked passed by this implementation receipt. All P04–P12 boundaries and the
 unimplemented T10.1 disposition remain unchanged.
+
+## Final P03 package exit
+
+**Passed at `15b47e2a` after separate Strong review (`gpt-6-astra`, high).**
+The reviewer verified the pre-borrow phase guard against the original reported
+failure: compilation and execution of the repaired reproduction succeeded with
+zero attachments, detachments and destructions, because the invalid entry never
+invoked installation. The [verification provenance](root-entry-review/fixed-provenance.json)
+preserves the exact source and compiler command. No stale callback was invoked.
+
+The final review confirmed existing failure precedence, all six rejected entry
+phases, normal/throwing valid nesting and independent-owner preservation. All
+four final receipt input hashes match the committed sources. No additional
+blocker remained after the reviewed ownership, lexical binding, candidate-ticket,
+target-generation and terminal-teardown paths. This closes the provisional
+finding and interruption above without replacing their historical evidence.
+
+Final validation is 645 assertions per native profile, ARMv6/Embedded changed-path
+compilation and CPU/VFP checks, and 13 negative controls on all four configurations.
+The actual layouts and narrow allocation-attribution evidence remain as recorded
+in steps 9–10. The last production repair is `15b47e2a`; the approved amendment
+is `567b59fb` and scoped integration is `a38b86f1`. Earlier validated increments
+and repairs remain in the sequential history. Consecutive unproductive repair
+count remains **0 of 2**.
+
+P01–P03 have passed; P04–P12 remain pending. Execution stops at the requested P03
+boundary. SPEC-010 remains implementing and T10.1 remains open through P10–P12:
+selected-component passage does not claim complete-module integration, linked
+zero heap or whole-image resource fit, target execution, full conformance or a
+Specification completion transition. No new scope or contract decision remains
+open for P03.

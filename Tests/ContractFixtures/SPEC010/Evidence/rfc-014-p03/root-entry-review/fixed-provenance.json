@@ -1,0 +1,14 @@
+{
+  "reviewed_commit": "15b47e2a",
+  "reviewer_model": "gpt-6-astra",
+  "reasoning": "high",
+  "source_and_command_sha256": {
+    "FixedProbe.swift": "8382376a42d34f0277e2c256c38d87e38c6a04841fe60e03abf91b43cacbe65d",
+    "fixed-command.txt": "bc3312d81d620eae0f93344bf4679e7e2bd21c7f03354ade65ca2382cb95d2a1"
+  },
+  "reported_compilation_exit": 0,
+  "reported_execution_exit": 0,
+  "reported_output": "FIX VERIFIED: withRoot rejected frame entry; attached=0 detached=0 destroyed=0; body installation never ran",
+  "result_source": "Separate Strong reviewer final report; source and command preserved by parent without rerunning",
+  "disposition": "P1 fixed; finite P03 package exit passed; full-module, linked resource, connected and Specification completion remain separate"
+}

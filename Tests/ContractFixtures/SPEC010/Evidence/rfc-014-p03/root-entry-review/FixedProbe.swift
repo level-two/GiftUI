@@ -1,0 +1,46 @@
+import GiftUI
+import GiftUIObservableState
+import GiftUIRuntimeStatic
+struct Trace { var attached = 0; var detached = 0; var destroyed = 0 }
+enum Schema: _GiftUIModelSchema { typealias Seed = UnsafeMutablePointer<Trace> }
+struct Model: ~Copyable, ObservableStateModel {
+ typealias Schema = Probe.Schema
+ var trace: UnsafeMutablePointer<Trace>
+ var sink: _GiftUIObservableChangeSink?
+ static func materialize(_ seed: UnsafeMutablePointer<Trace>) -> Self { Self(trace: seed) }
+ var isEmptyReplacement: Bool { true }
+ mutating func attach(_ sink: consuming _GiftUIObservableChangeSink) -> _GiftUIObservationAttachment? {
+  trace.pointee.attached += 1; let id = sink.attachment; self.sink = consume sink; return id
+ }
+ mutating func detach(_ attachment: _GiftUIObservationAttachment) -> Bool { trace.pointee.detached += 1; sink = nil; return true }
+ mutating func reportChange() -> _GiftUIObservableChangeReportOutcome { .coalesced }
+ deinit { trace.pointee.destroyed += 1 }
+}
+@main struct Main {
+ static func main() throws {
+  var ns = ObservableModelOwnerNamespace()
+  var storage = StaticObservableModelStorage<Model, Schema>(identity: try ns.issue(), schema: 1, needsCapture: false)!
+  try withUnsafeTemporaryAllocation(of: Trace.self, capacity: 1) { t in
+   t.initialize(repeating: Trace()); defer { t.deinitialize() }
+   try storage.withLifetime { (scope) throws(ObservableStateError) in
+    do throws(ObservableStateError) {
+     try scope.withFrame { () throws(ObservableStateError) in
+      var roots = ObservableStateRootStorage<UInt8>()
+      try scope.withRoot(storage: &roots) { (root) throws(ObservableStateError) in
+       var state = State<Schema>(seed: t.baseAddress!)
+       try scope.withDiscovery {
+        precondition(root.beginCandidate() == .success(.candidateStarted))
+        precondition(root.encounter(identity: 1, ordinal: 0, state: &state) == .success(.materialized))
+        precondition(root.finishCandidate(.publish) == .success(.associationsCommitted))
+       }
+      }
+     }
+     preconditionFailure("expected teardown failure")
+    } catch { precondition(error == .invalidPhaseContained) }
+    precondition(t[0].attached == 0 && t[0].detached == 0 && t[0].destroyed == 0)
+    print("FIX VERIFIED: withRoot rejected frame entry; attached=0 detached=0 destroyed=0; body installation never ran")
+   }
+   precondition(t[0].destroyed == 0)
+  }
+ }
+}

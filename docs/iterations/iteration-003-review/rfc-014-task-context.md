@@ -74,8 +74,9 @@ is resolved by that amendment; its original reproduction remains evidence
 against the former contract. Step 10 repairs the separately confirmed root-entry
 phase finding by rejecting invalid activation before lending report storage.
 The regression covers every rejected phase, valid inverse nesting, scoped throws
-and retained-owner cleanup. P03 awaits separate Strong bounded verification of
-that repair and final matched receipts; P04–P12 remain pending. Do not infer complete-module,
+and retained-owner cleanup. Separate Strong verification passes P03 at `15b47e2a`;
+the [final package exit](../../../Tests/ContractFixtures/SPEC010/Evidence/rfc-014-p03/progress.md#final-p03-package-exit)
+records matched receipts and review limits. P04–P12 remain pending. Do not infer complete-module,
 semantic-record, coordinator or linked-resource completion from these probes.
 
 These reminders point into contracts; read the full clauses when editing the
