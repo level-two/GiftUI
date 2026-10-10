@@ -10,7 +10,7 @@ The [revision-5 authorization](efficiency-sequencing-approval.md#bounded-prepara
 makes ME-01–04 one bounded phase; their IDs retain traceability, not separate
 budgets or permission to grow independent investigations.
 
-## Current RFC-014 activity — final investigation complete, 2026-10-10
+## Current RFC-014 activity — RFC approved, 2026-10-10
 
 Eugene authorized one final bounded package and directed subsequent work toward
 implementation. [SPIKE-074](../../spikes/spike-074-final-access-ownership.md) is
@@ -20,8 +20,13 @@ invocations and one repair. No failed selected assumption within its scope and
 no automatic successor investigation. See the [result](../../../experiments/spike-074-final-access-ownership/evidence/result.md)
 for limitations, particularly actual runtime integration and zero heap.
 
-**Next: IH-1 in the [implementation handoff](rfc-014-implementation-handoff.md):
-focused RFC review, required ADR decisions and approved Specifications.**
+[RFC-014 review is closed and approval recorded](rfc-014-final-review.md) under
+Eugene's conditional finalization instruction. The final text consolidates the
+selected design and preserves all implementation acceptance obligations.
+
+**Next: remaining IH-1 in the [implementation handoff](rfc-014-implementation-handoff.md):
+extract the three proposed ADRs, obtain acceptance, then prepare/approve affected
+Specifications.**
 IH-2–6 then become implementation tasks covering source migration, actual owner
 integration, record generation, conformance and final image costs. This is a
 routing checklist, not a ready implementation plan or authority to modify
@@ -32,7 +37,7 @@ Earlier sections below preserve historical activity dispositions; this section
 and the handoff supersede earlier wording that requires another investigation
 before addressing production coverage or complete-image measurements.
 
-## Start here
+## Baseline and investigation history
 
 Production now includes the I3-T01 corrections on the iteration-2 baseline.
 [The completed package](i3-t01-result.md) records commits, all 74 hardware-free

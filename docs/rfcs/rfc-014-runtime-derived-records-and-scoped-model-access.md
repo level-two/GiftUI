@@ -2,7 +2,7 @@
 id: RFC-014
 feature: external-application-integration
 title: Runtime-Derived Records and Scoped Model Access
-status: review
+status: approved
 authors:
   - codex
 created: 2026-10-09
@@ -52,7 +52,9 @@ target_milestone: ITERATION-003
 
 # RFC-014: Runtime-Derived Records and Scoped Model Access
 
-**Final design under review.** This document describes the selected design only.
+**Approved — 2026-10-10.** Finalized under Eugene's explicit conditional
+review-and-close instruction after correcting all review findings. This document
+describes the selected design only.
 The [final review](../iterations/iteration-003-review/rfc-014-final-review.md)
 records findings, corrections, evidence limits and finalization provenance.
 RFC approval enables ADR extraction; it does not change accepted ADRs, approve

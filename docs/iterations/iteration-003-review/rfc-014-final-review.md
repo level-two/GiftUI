@@ -1,7 +1,7 @@
 # RFC-014 final architecture and lifecycle review
 
-**2026-10-10 — ready for finalization under the maintainer's conditional
-instruction.** No unresolved architectural decision or RFC-blocking finding
+**2026-10-10 — review closed; RFC-014 approved under the maintainer's conditional
+finalization instruction.** No unresolved architectural decision or RFC-blocking finding
 remains after the corrections below. This is an author review using the
 RFC-reviewer and lifecycle-reviewer checklists, not an independent review or
 production conformance report.
@@ -42,7 +42,7 @@ RFCs have no `closed` status: successful closure of this review is recorded as
 | FR-4 / ambiguity, fixed | Compiler support was repeatedly described as “open” without distinguishing the tested dependency from final build integration. | Recorded the tested project-local Swift 6.3.2 lifetime-feature configuration as the initial implementation dependency. No upgrade, public annotation, global compiler change or unchecked fallback. Pin/build/diagnostic integration belongs to the Spec. |
 | FR-5 / blocker, fixed | The RFC carried an obsolete conditional 120,928-byte estimate, conflicting capture totals and premature feasibility language. | Replaced it with the selected three-bank reservation and exact scoped fixture observations. Kept all missing pool/stack/image/allocator costs explicit and mandatory in IH-6. |
 | FR-6 / ambiguity, fixed | Historical “next Spike” and before-approval full-migration work remained mixed with terminal results. | Closed investigation language; routed IH-1–6 through ADR/Spec/implementation gates. No new research allowance; concrete implementation contradictions still return for decision. |
-| FR-7 / lifecycle, fixed at finalization | RFC, manifest, Proposal routing and handoff would disagree after closure unless updated together. | Update current status/navigation and finalization provenance atomically; preserve prior evidence and historical review verdicts. |
+| FR-7 / lifecycle, fixed | RFC, manifest, Proposal routing and handoff would disagree after closure unless updated together. | Update current status/navigation and finalization provenance atomically; preserve prior evidence and historical review verdicts. |
 
 All corrections realize already selected decisions or repair their presentation.
 Exact public spelling, failure-code values, codecs, physical offsets and generator
@@ -81,8 +81,21 @@ new decision; it cannot be cured by silently increasing a limit. The independent
 
 ## Finalization record
 
-Pending final consistency/governance checks in this review step. If those checks
-pass without revealing a new decision, record RFC-014 as approved under Eugene's
-conditional instruction above. Only then is ADR extraction the next activity.
-The feature remains at RFC stage until downstream artifacts are actually created;
-RFC-013 stays draft and production remains unchanged.
+**Condition satisfied; finalization applied.** The corrected RFC was committed
+for review as `8de55124`. All review findings above are resolved without a new
+architectural/product choice. RFC-014 is now `approved` under Eugene's exact
+conditional instruction in this record. This records delegated finalization;
+it does not claim that Eugene independently read the edited text or that an
+independent reviewer approved it.
+
+Validation passes: `scripts/format-swift.sh`, governance validation, RFC template
+section coverage and `git diff --check`. The 48 recorded trial logs and final
+SPIKE-074 source hashes remain intact; no new compiler experiment was run.
+Current local cross-references are checked as part of finalization. Production
+Sources, Tests, Package.swift, scripts, accepted ADRs and implemented Specs remain
+unchanged from `e2839fb3`.
+
+**Next: extract the three proposed ADR decisions, obtain their acceptance, and
+prepare/approve affected Specifications before implementation.** The feature
+remains at RFC stage until downstream artifacts exist; RFC-013 stays draft.
+No new investigation, iteration closure or production adoption is authorized.

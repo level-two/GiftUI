@@ -14,14 +14,14 @@ iterations:
 features:
   external-application-integration:
     title: External Application and Backend Integration
-    # PROPOSAL-007 accepted; RFC-013 draft; RFC-014 in final review. Prior experiments are archived.
+    # PROPOSAL-007 accepted; RFC-013 draft; RFC-014 approved 2026-10-10 under conditional finalization.
     # Current one-candidate assessment: docs/iterations/iteration-003-review/candidate-go-no-go.md.
     # 4 MHz NO-GO preserved; 32 MHz review finds no further unavoidable architecture limit.
     # I3-T02/RFC-014 investigation complete; downstream implementation acceptance remains.
     # Final review: docs/iterations/iteration-003-review/rfc-014-final-review.md.
     # SPIKE-069 completed: borrow/key evidence; no proof of the later protocol/versioned design.
     # SPIKE-073 completed: fixed-context inference evidence; access/ownership contracts now selected, integration unproved.
-    # SPIKE-074 complete; investigations closed. Next: RFC/ADR/Spec finalization and implementation acceptance.
+    # SPIKE-074 complete; investigations and RFC-014 review closed. Next: ADR extraction/acceptance, then Specs.
     # Handoff: docs/iterations/iteration-003-review/rfc-014-implementation-handoff.md.
     # Selected three-bank refusal policy: docs/iterations/iteration-003-review/rfc-014-capture-policy-choice.md.
     # Typed access: docs/iterations/iteration-003-review/rfc-014-typed-access-contract.md.

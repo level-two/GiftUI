@@ -1,8 +1,11 @@
 # I3-T02 runtime design review and adoption sequence
 
-**Current verdict: final investigation complete; proceed to RFC/ADR/Spec finalization.**
-The bounded design package is delivered with named blockers. This is an
-executor self-review of [draft RFC-014](../../rfcs/rfc-014-runtime-derived-records-and-scoped-model-access.md),
+**Current verdict: RFC-014 approved; final review closed.** The
+[final review](rfc-014-final-review.md) records corrections and Eugene's conditional
+finalization authority. Next are ADR extraction/acceptance and affected Specs.
+The sections below preserve historical evidence and verdicts; they do not reopen
+investigation or supersede the final disposition. This is an
+executor self-review of [RFC-014](../../rfcs/rfc-014-runtime-derived-records-and-scoped-model-access.md),
 not independent reviewer approval or target validation. Initial design commit:
 `2d0a034d`; the final review commit also contains the corrections below.
 

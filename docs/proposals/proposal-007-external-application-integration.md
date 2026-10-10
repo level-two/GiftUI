@@ -6,7 +6,7 @@ status: accepted
 authors:
   - codex
 created: 2026-10-05
-updated: 2026-10-09
+updated: 2026-10-10
 proposal: []
 related_rfcs:
   - RFC-013
@@ -273,5 +273,7 @@ under FW-027/031/032/033 is not added to this investment.
 
 The focused [RFC-014](../rfcs/rfc-014-runtime-derived-records-and-scoped-model-access.md)
 now develops the iteration-3 runtime record/model/capture decision separately
-from RFC-013 external delivery. Both remain draft; this routing does not approve
-a representation, resource budget or production migration.
+from RFC-013 external delivery. RFC-014 was approved on 2026-10-10 under the
+[final review and conditional finalization instruction](../iterations/iteration-003-review/rfc-014-final-review.md).
+RFC-013 remains draft. This updates routing only; Proposal outcomes are unchanged,
+and RFC approval does not approve downstream ADRs, Specs or production migration.

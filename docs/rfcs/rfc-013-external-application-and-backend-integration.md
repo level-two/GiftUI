@@ -6,7 +6,7 @@ status: draft
 authors:
   - codex
 created: 2026-10-05
-updated: 2026-10-09
+updated: 2026-10-10
 proposal:
   - PROPOSAL-007
 related_rfcs:
@@ -59,8 +59,10 @@ approval or implementation planning.
 owns the focused runtime record/identity and scoped model/capture recommendation
 from I3-T02. This RFC retains external API, package, assembly and setup decisions.
 The earlier runtime candidate below is historical evidence; RFC-014 neither
-adopts it nor reopens its experiments. Its blockers must be resolved before
-runtime adoption, independently of the external package decision.
+adopts it nor reopens its experiments. RFC-014 is now approved under its
+[final review](../iterations/iteration-003-review/rfc-014-final-review.md); its ADR/Spec
+and implementation acceptance gates still precede runtime adoption. This does
+not resolve or approve the independent external package decisions in RFC-013.
 
 ## Problem and authority
 
