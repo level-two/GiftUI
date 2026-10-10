@@ -159,3 +159,54 @@ The negative driver now requires the exact non-Escapable-result diagnostic,
 preventing an unrelated lifetime error from counting as the rejection proof.
 This was one productive repair; consecutive unproductive counter is **0 of 2**.
 All four registered routes will be recollected against this fixture revision.
+
+
+## Implementation exit packet — independent review pending
+
+Implementation commits: `36834e01` (scoped join), `7e6fdcd6` (bank/codec
+primitives), `c75d3105` (actual declaration/profile checks), `7be2c837`
+(Embedded finite witness repair). Dispatch is `3a6927c4`; P02/P03 input is
+`40c619dc`. `final-profile-receipts.json` snapshots the four clean-source
+`7be2c837` receipts, paired core receipts, exact commands, source/compiler/core
+hashes, object/module/executable identities and target layouts. Every recorded
+input and artifact hash was reread and matched before this packet was saved.
+
+Sequential final commands, after `scripts/format-swift.sh`:
+
+- `scripts/contracts/run-spec-006.sh --profile nrf52840-embedded --compiler-baseline rfc-014`
+- `scripts/contracts/run-spec-006.sh --profile macos-static --compiler-baseline rfc-014`
+- `scripts/contracts/run-spec-006.sh --profile macos-dynamic --compiler-baseline rfc-014`
+- `scripts/contracts/run-spec-006.sh --profile raspberry-pi-armv6 --compiler-baseline rfc-014`
+
+All four commands passed. Each native route executes 120 P02 assertions, 30
+scoped traversal checks, 58 bank checks, and 57 actual-record checks for each
+of Static and Dynamic storage. Cross routes compile the selected components,
+check ARMv6 or v7E-M/VFP-register ABI, extract layouts and reject the view escape;
+they do **not** execute on a target. All four require the exact negative
+non-Escapable-result diagnostic. P02 compiler checks remain 28 native/27 cross.
+
+Every measured target has record/prefix/component/key/metadata/payload/reference
+strides of 20/22/6/206/48/32/16 bytes and 29,832 bytes for the configured two
+reserved record banks. This excludes owner backing, Dynamic allocation/header
+overhead, descriptors, independent Interaction keys, codec scratch and complete
+feasible-path stack. Actual declaration high water remains 5/11/3/2 records,
+prefixes, payloads and scalars, depth 9, 100 payload bytes on native. The
+conservative 378-prefix/98-payload envelope preserves approved logical limits;
+full application peak measurement and byte/stack budget fit remain P08/P09/P11.
+
+Review boundary: selected current core/State/profile files; a single production
+visitor; finite codecs; no generated occurrence tables, retained expanded tree,
+second engine, capacity increase or compatibility fallback. P03 Static model
+ownership is used by the component fixture in both record profiles. This is not
+a full Dynamic model owner, whole-module, application, coordinator atomic join,
+Layout/Interaction adapter, Canvas, connected target, broad regression or
+allocation/stack certification. Those joins remain P05–P12 as specified.
+
+Required independent Strong review should inspect the dispatch-to-head diff,
+approved SPEC-006/013/015 bounds, exact key algebra and paired matcher, typed
+backing/reader lifetimes, failure/discard behavior, finite payload copying,
+scoped State ordering and the independent test oracles/receipt boundaries.
+No missing authority or contract/scope decision was found. No new deferred item
+was introduced. Consecutive unproductive repair count is **0 of 2**.
+**P04 is not marked passed. SPEC-006 T10.1 and all final owner criteria remain
+open through P10–P12.** Parent arranges the separate Strong exit review.
