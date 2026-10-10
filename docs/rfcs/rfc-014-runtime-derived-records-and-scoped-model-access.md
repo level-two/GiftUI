@@ -28,6 +28,7 @@ related_adrs:
   - ADR-033
   - ADR-034
   - ADR-035
+  - ADR-036
 related_specs:
   - SPEC-001
   - SPEC-006
@@ -552,7 +553,8 @@ Extract these independently reviewable decisions after RFC approval:
 1. [ADR-035 (proposed)](../adrs/adr-035-runtime-derived-records-and-exact-identity.md):
    Runtime-emitted bounded semantic records, exact cross-revision identity and
    publication/retirement, preserving Semantic Core/Layout/Interaction ownership.
-2. Fixed-domain scoped model/property access, stable owned storage, finite source
+2. [ADR-036 (proposed)](../adrs/adr-036-scoped-model-access-and-bounded-ownership.md):
+   Fixed-domain scoped model/property access, stable owned storage, finite source
    transformation and checked mutation, preserving State/invalidation semantics.
 3. Protocol Canvas values with Body == Never and scoped post-layout invocation,
    replacing ADR-028's retained-closure realization while preserving its lifecycle.

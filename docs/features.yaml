@@ -43,6 +43,7 @@ features:
       - RFC-014
     adrs:
       - ADR-035
+      - ADR-036
     specs: []
     dependencies:
       - giftui-mvp-architecture
