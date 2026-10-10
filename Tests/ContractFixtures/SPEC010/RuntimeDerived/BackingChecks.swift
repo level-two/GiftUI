@@ -107,6 +107,19 @@ private enum Domain: _GiftUIReadDomain {
                 expect(deaths[0] == 1)
             }
         }
+        try withUnsafeTemporaryAllocation(of: Int.self, capacity: 1) { (deaths) throws(ObservableStateError) in
+            deaths.initialize(repeating: 0)
+            defer { deaths.deinitialize() }
+            let abandoned = try dynamic.withLifetime { (scope) throws(ObservableStateError) in
+                let ticket = try scope.materialize(Model(value: 5, destructions: deaths.baseAddress!))
+                return ticket.key
+            }
+            expect(deaths[0] == 1)
+            try dynamic.withLifetime { (scope) throws(ObservableStateError) in
+                do throws(ObservableStateError) { _ = try scope.retain(abandoned); expect(false) }
+                catch { expect(error == .staleModel) }
+            }
+        }
         expect(giftuiP03Backing() == 0)
         print("P03 actual static/dynamic backing checks=\(checks) failures=0")
     }

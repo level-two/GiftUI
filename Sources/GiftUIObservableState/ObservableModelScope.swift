@@ -13,6 +13,7 @@ package func withObservableModelScope<Model: ~Copyable, Schema, Result>(
         try models.withUnsafeMutableBufferPointer { (buffer) throws(ObservableStateError) in
             let scope = ObservableModelScope<Model, Schema>(
                 ownership: owner, models: buffer, schema: schema, needsCapture: needsCapture)
+            defer { scope.finishActivation() }
             return try body(scope)
         }
     }
@@ -35,6 +36,114 @@ package struct ObservableModelScope<Model: ~Copyable, Schema>: ~Copyable, ~Escap
         self.models = copy models
         self.schema = schema
         self.needsCapture = needsCapture
+    }
+
+    @_lifetime(copy self)
+    package borrowing func borrowedScope() -> ObservableModelScope<Model, Schema> {
+        ObservableModelScope(borrowing: self)
+    }
+
+    @_lifetime(copy other)
+    private init(borrowing other: borrowing ObservableModelScope<Model, Schema>) {
+        ownership = other.ownership
+        models = other.models
+        schema = other.schema
+        needsCapture = other.needsCapture
+    }
+
+    package borrowing func validateTicket(_ ticket: borrowing ObservableModelTicket<Schema>)
+        throws(ObservableStateError)
+    {
+        _ = try ownership.pointee.validatedClaim(ticket.requireClaim(), schema: schema)
+    }
+
+    package borrowing func validateAssociation(_ key: _GiftUIModelKey<Schema>)
+        throws(ObservableStateError)
+    {
+        try ownership.pointee.validateAssociation(
+            ownership.pointee.address(for: key), schema: schema)
+    }
+
+    package var phase: ObservableModelOwnership.Phase { ownership.pointee.phase }
+
+    fileprivate borrowing func finishActivation() {
+        let occupied = ownership.pointee.finishActivation()
+        for index in 0 ..< models.count where occupied & (1 << index) != 0 {
+            models[index] = nil
+        }
+    }
+
+    package borrowing func attach(
+        _ key: _GiftUIModelKey<Schema>, sink: consuming _GiftUIObservableChangeSink
+    ) throws(ObservableStateError) -> _GiftUIObservationAttachment?
+    where Model: ObservableStateModel, Model.Schema == Schema {
+        let index = try ownership.pointee.callbackIndex(
+            ownership.pointee.address(for: key), schema: schema)
+        guard models[index] != nil else { throw .invariantViolation }
+        return models[index]!.attach(consume sink)
+    }
+
+    package borrowing func detach(
+        _ key: _GiftUIModelKey<Schema>, attachment: _GiftUIObservationAttachment
+    ) throws(ObservableStateError)
+    where Model: ObservableStateModel, Model.Schema == Schema {
+        let index = try ownership.pointee.callbackIndex(
+            ownership.pointee.address(for: key), schema: schema)
+        guard models[index] != nil, models[index]!.detach(attachment) else {
+            throw .invariantViolation
+        }
+    }
+
+    package borrowing func report(_ key: _GiftUIModelKey<Schema>)
+        -> _GiftUIObservableChangeReportOutcome
+    where Model: ObservableStateModel, Model.Schema == Schema {
+        do throws(ObservableStateError) {
+            let index = try ownership.pointee.callbackIndex(
+                ownership.pointee.address(for: key), schema: schema)
+            guard models[index] != nil else { return .invariantViolation }
+            return models[index]!.reportChange()
+        } catch { return .invariantViolation }
+    }
+
+    package borrowing func stageReplacement(
+        transferring ticket: borrowing ObservableModelTicket<Schema>, seed: Schema.Seed,
+        registrationAvailable: Bool, stagingAvailable: Bool
+    ) throws(ObservableStateError) -> ObservableModelOwnership.Replacement
+    where Model: ObservableStateModel, Model.Schema == Schema {
+        let model = Model.materialize(seed)
+        let reservation = try ownership.pointee.reserveReplacement(
+            transferring: ticket.requireClaim(), schema: schema,
+            candidateIsEmpty: model.isEmptyReplacement,
+            registrationAvailable: registrationAvailable, stagingAvailable: stagingAvailable)
+        models[Int(reservation.candidate.slot)] = consume model
+        return reservation
+    }
+
+    package borrowing func discardReplacement(_ reservation: ObservableModelOwnership.Replacement)
+        throws(ObservableStateError)
+    {
+        _ = try ownership.pointee.finishReplacement(reservation, commit: false)
+        models[Int(reservation.candidate.slot)] = nil
+    }
+
+    @_lifetime(copy self)
+    package borrowing func commitReplacement(
+        _ reservation: ObservableModelOwnership.Replacement,
+        transferring ticket: inout ObservableModelTicket<Schema>
+    ) throws(ObservableStateError) -> ObservableModelTicket<Schema> {
+        guard try ticket.requireClaim().address == reservation.former else { throw .staleModel }
+        guard let claim = try ownership.pointee.finishReplacement(reservation, commit: true) else {
+            throw .invariantViolation
+        }
+        ticket.endOwnership()
+        models[Int(reservation.former.slot)] = nil
+        return ObservableModelTicket(claim: claim, lifetime: self)
+    }
+
+    package borrowing func key(for address: ObservableModelOwnership.Address) -> _GiftUIModelKey<
+        Schema
+    > {
+        ownership.pointee.key(for: address, as: Schema.self)
     }
 
     @_lifetime(copy self)

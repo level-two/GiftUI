@@ -186,3 +186,58 @@ A report failure preserves the committed bytes. The compound fixture has a
 2-byte payload and scalar preflight data; it is not analyzer capture or complete
 application evidence. The real root/callback, guarded replacement, teardown and
 complete-layout exits remain open. Formatting passes; no broad gate was run.
+
+## Step 5 — production registration and guarded replacement join (active)
+
+Dispatch: P03 / OS-RD-001–004, after step 4 `12896815`. Strong
+`gpt-6-astra` / `high`, C3/R3; no lower-tier assignment. Allowed files are
+GiftUIObservableState ownership/root/registration adapters, the existing Dynamic
+and Static root/model/target-access files, the focused driver/fixtures and
+related implementation records. SPEC-010's Materialization and identity,
+Replacement and amendment transaction clauses are the expected-outcome oracle.
+The real attach hook must see actual candidate bytes; synchronous reports use
+separate registration storage; precommit failure preserves A and postcommit
+failure preserves B. Candidate publication/discard remains distinct from reads.
+Root activation owns callback lifetimes and must retire callbacks before the
+owning storage borrow ends. Generated schema/application adoption remains in
+its named consumer packages; no topology or P04 work is authorized here.
+Consecutive unproductive repair count at entry: 0 of 2. Exact focused commands
+and artifact receipts will be recorded with the implementation result.
+
+Step-5 focused result: both native profiles pass 450 assertions (324 existing
+component assertions plus 63 callbacks through each actual root adapter).
+ARMv6 and Embedded compile the real root callback probe and verify CPU/VFP
+attributes. The final selected-component receipts are:
+
+- macOS Static: `.build/rfc014-p03/state/tmpxpouw0f4/macos-static/result.json`
+- macOS Dynamic: `.build/rfc014-p03/state/tmp22sbxjpd/macos-dynamic/result.json`
+- ARMv6: `.build/raspberry-pi/rfc014-p03/state/tmpven7jeqv/raspberry-pi-armv6/result.json`
+- Embedded: `.build/nrf52840/rfc014-p03/state/tmpd4qea7bo/nrf52840-embedded/result.json`
+
+Each receipt now includes `layouts.json` and the exact compiler IR from fourteen
+layout probes. On all four: ledger 188 B; model metadata record 16 B; frame-pin
+field 1 B at offset 11 within that record; claim/claim-record 16 B; ticket 20 B,
+alignment 4; replacement 56 B; UInt8-identity registration record 36 B and root
+storage 84 B. Native read-slot/scope/sink are 24/32/24 B; ARMv6 and Embedded are
+12/16/16 B. These are actual instantiated component layouts, not an analyzer
+payload, final exact-path registration, full stack or linked RAM total.
+
+The root uses actual model-owned attach/report/detach callbacks and exact
+registration lifecycle validation. Tests cover precommit retention/second-
+populated/capacity/attach-return/attach-report refusal, preserved A data and dirty
+generation, installed-empty entitlement, final-ticket commit, stale A access,
+postcommit draw/detach failure, candidate transfer/discard, removal/reinsertion,
+detached retention and shutdown. Activation end invalidates remaining claims
+and destroys models even if a callback drops a ticket without explicit release;
+allocation and claim serial cursors remain non-reusing.
+
+Productive compiler adjustments: typed-throws cleanup inference, an explicit
+noncopyable extension constraint, and copying the original scope lifetime rather
+than its temporary pointer fields. The layout probe replaced Embedded-unsupported
+key paths with actual field addresses; the extractor follows its constant-return
+thunk. Every adjustment either narrowed diagnostics or produced a passing check;
+consecutive unproductive repair count remains 0 of 2. Formatting, governance and
+whitespace checks pass. No whole-module, linked zero-heap, complete analyzer,
+connected or P03 exit claim: the callback fixture contains allocation symbols,
+which still require attribution, and lexical reconciler/target access plus final
+exit controls remain open. No P04 work or broad test gate was run.

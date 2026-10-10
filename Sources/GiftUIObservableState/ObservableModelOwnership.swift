@@ -28,7 +28,7 @@ package struct ObservableModelOwnership: ~Copyable {
         fileprivate let candidateClaim: Claim
     }
 
-    private struct Record {
+    struct Record {
         var generation: UInt32 = 0
         var schema: UInt16 = 0
         var occupied = false
@@ -38,7 +38,7 @@ package struct ObservableModelOwnership: ~Copyable {
         var ownsCapture = false
     }
 
-    private struct ClaimRecord {
+    struct ClaimRecord {
         var serial: UInt32 = 0
         var address: Address?
     }
@@ -96,6 +96,22 @@ package struct ObservableModelOwnership: ~Copyable {
         var count = 0
         for index in 0 ..< Int(modelLimit) where records[index].ownsCapture { count += 1 }
         return count
+    }
+
+    // The activation callback has ended: its nonescapable tickets and readers
+    // cannot remain live. Retire every remaining claim before destroying model
+    // values, while preserving both non-reusing identity cursors.
+    package mutating func finishActivation() -> UInt8 {
+        var occupied: UInt8 = 0
+        for index in 0 ..< Int(modelLimit) {
+            if records[index].occupied { occupied |= 1 << index }
+            records[index] = Record()
+        }
+        for index in 0 ..< Int(claimLimit) { claims[index].address = nil }
+        activeRead = false
+        replacement = nil
+        phase = .mutating
+        return occupied
     }
 
     package func key<Schema>(for address: Address, as schema: Schema.Type) -> _GiftUIModelKey<
@@ -161,6 +177,23 @@ package struct ObservableModelOwnership: ~Copyable {
         if let failure = operationAllowed(discovery: true) { throw failure }
         let index = try validate(claim)
         guard records[index].schema == schema else { throw .staleModel }
+        return index
+    }
+
+    package func validateAssociation(_ address: Address, schema: UInt16)
+        throws(ObservableStateError)
+    {
+        if let failure = operationAllowed(discovery: true) { throw failure }
+        let index = try validate(address)
+        guard records[index].schema == schema else { throw .incompatibleAssociation }
+        guard !records[index].registered else { throw .duplicateOwner }
+    }
+
+    package func callbackIndex(_ address: Address, schema: UInt16)
+        throws(ObservableStateError) -> Int
+    {
+        let index = try validate(address)
+        guard records[index].schema == schema else { throw .incompatibleAssociation }
         return index
     }
 

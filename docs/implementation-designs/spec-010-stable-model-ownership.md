@@ -110,7 +110,10 @@ macro recognizes the resulting generic State attribute. Explicit authored
 `State(wrappedValue: model)` initialization becomes a candidate key descriptor;
 the host must still present, validate and explicitly transfer its corresponding
 owning ticket during new-location binding. The descriptor alone neither owns
-the candidate nor authorizes attachment. This callback join remains unfinished.
+the candidate nor authorizes attachment. The scoped root now validates the matching candidate ticket and transfers its
+claim to the separately retained registration only after real attachment
+verification. Preserved locations discard fresh seeds without attachment. The
+lexical visitor join remains pending.
 Effectful/malformed seed construction, computed State and unsupported local
 shadowing fail before generated output is emitted.
 
@@ -121,8 +124,9 @@ the sole analyzer capture entitlement. Retained A or a second populated B refuse
 The ledger reserves B's metadata and claim while A remains installed and owns the
 bank, then blocks reentrant reads, writes and ownership changes.
 
-The profile must construct B's actual empty seed and invoke the existing attach
-verification route under that guard. Precommit failure detaches only a successfully
+The scoped root constructs B's actual empty seed and invokes the existing
+registration lifecycle verifier through the real model attach hook under that
+guard. Precommit failure detaches only a successfully
 attached candidate and releases candidate reservations once. Commit retires A's
 registration, transfers its final claim and bank entitlement, and activates B.
 The profile resets B's count/baselines without copying or clearing the bank.
@@ -141,19 +145,35 @@ borrow ends before synchronous reporting, while the ledger remains guarded
 against reentrant mutation/retention until reporting returns. Preflight failure
 changes no bytes; report failure preserves already committed bytes.
 
-Real State discovery binding, attach/detach/report joins, application operation
-witnesses and teardown are still being wired in P03 and their named consumers. The ledger and typed backing checks are incremental
+The existing Dynamic and Static root adapters now lend actual model and
+registration storage into one nonescapable root callback. That root implements
+new/preserved State binding, explicit candidate-ticket transfer, guarded
+replacement, candidate publication/discard and registration shutdown. Reports
+travel through the model-owned sink into the disjoint registration record.
+Shutdown retires routing before detach; the owning activation then releases all
+remaining nonescapable claims and destroys model values before backing ends,
+without resetting allocation or claim serials.
+
+The lexical generated visitor, target-access join and complete application
+operation witnesses remain pending in P03 and the named downstream consumers. The ledger and typed backing checks are incremental
 evidence, not a claim that these remaining callback obligations already pass.
 
 ## Resource and validation boundary
 
-The native ledger stride is currently 188 bytes, including its bounded records,
+The ledger stride is 188 bytes on all four tested profiles, including its bounded records,
 claim serials, namespaces, phase and replacement reservation. Profile model data,
 the Dynamic object, scoped tickets, two read descriptors, registration, frame and
 callback stack costs remain separate charges. The analyzer's three transition
 banks remain 19,392 bytes; this ledger reserves no transition payload or fallback.
-Target layouts, complete model/registration accounting and P11's linked heap/stack
-measurements must be reported separately from this native metadata measurement.
+Each model metadata record is 16 bytes, with its one-byte frame pin at offset
+11. Claims and claim records are 16 bytes, scoped tickets 20 bytes aligned to 4,
+and replacement bookkeeping 56 bytes. With the fixture's UInt8 structural
+identity, each actual registration record is 36 bytes and root storage 84 bytes.
+Read-slot/scope/sink strides are respectively 24/32/24 bytes on native macOS and
+12/16/16 on ARMv6/Embedded. The final exact-path identity and application model
+payloads remain separate charges. Compiler IR supplies target layouts without
+claiming target execution. P11 linked heap/stack measurements remain separate;
+the callback fixture has allocation symbols, so it is not zero-heap evidence.
 
 The focused suite exercises the production ledger and both concrete backing
 factories, not a substitute owner. Its current boundary is recorded in

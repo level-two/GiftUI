@@ -4,6 +4,7 @@ import argparse
 import hashlib
 import json
 import pathlib
+import re
 import shlex
 import subprocess
 import tempfile
@@ -48,9 +49,9 @@ def run(command, log):
 
 modules = [
     ('GiftUIObservableState', [root / 'Sources/GiftUIObservableState' / name for name in
-                              ('ObservableStateValues.swift', 'ObservableModelIdentity.swift', 'ObservableModelOwnership.swift', 'ObservableModelTicket.swift', 'ObservableModelScope.swift', 'ObservableModelMutation.swift')]),
-    ('GiftUIRuntimeStatic', [root / 'Sources/GiftUIRuntimeStatic/StaticObservableModelStorage.swift']),
-    ('GiftUIRuntimeDynamic', [root / 'Sources/GiftUIRuntimeDynamic/DynamicObservableModelStorage.swift']),
+                              ('ObservableStateValues.swift', 'ObservableModelIdentity.swift', 'ObservableModelOwnership.swift', 'ObservableModelTicket.swift', 'ObservableModelScope.swift', 'ObservableModelMutation.swift', 'ObservableStateModel.swift', 'ObservableStateRegistrationLifecycle.swift', 'ObservableStateRootScope.swift')]),
+    ('GiftUIRuntimeStatic', [root / 'Sources/GiftUIRuntimeStatic' / name for name in ('StaticObservableModelStorage.swift', 'StaticObservableRootAdapter.swift')]),
+    ('GiftUIRuntimeDynamic', [root / 'Sources/GiftUIRuntimeDynamic' / name for name in ('DynamicObservableModelStorage.swift', 'DynamicObservableModelRegistration.swift', 'DynamicObservableRootAdapter.swift')]),
     ('GiftUIFailureCore', sorted((root / 'Sources/GiftUIFailureCore').glob('*.swift'))),
     ('GiftUIObservableStateFailureAdapterFixture', [root / 'Sources/GiftUIObservableStateFailureAdapterFixture/ObservableStateFailureAdapter.swift']),
 ]
@@ -92,6 +93,26 @@ for name in ('StateSchema', 'StatePresentation'):
 state_probe = fixture_root / 'StateProbe.swift'
 run([swift, *flags, '-module-name', 'P03StateProbe', '-emit-object', state_probe,
      '-o', out / 'state-probe.o'], 'state-probe')
+layout_probe = fixture_root / 'LayoutProbe.swift'
+run([swift, *flags, '-module-name', 'P03LayoutProbe', '-emit-ir', layout_probe,
+     '-o', out / 'layout-probe.ll'], 'layout-probe')
+layout_ir = (out / 'layout-probe.ll').read_text()
+layouts = {}
+for name, body in re.findall(r'define[^\n]*@giftui_p03_layout_([a-z0-9_]+)\([^\n]*\)[^{]*\{(.*?)^}', layout_ir, re.S | re.M):
+    constant = re.search(r'ret i(?:32|64) (\d+)', body)
+    if not constant:
+        thunk = re.search(r'tail call swiftcc i(?:32|64) @"([^"]+)"\(\)', body)
+        assert thunk, (name, body)
+        target = re.search(r'define[^\n]*@"' + re.escape(thunk.group(1)) + r'"\([^\n]*\)[^{]*\{(.*?)^}', layout_ir, re.S | re.M)
+        assert target, thunk.group(1)
+        constant = re.search(r'ret i(?:32|64) (\d+)', target.group(1))
+    assert constant, (name, body)
+    layouts[name] = int(constant.group(1))
+assert len(layouts) == 14, layouts
+(out / 'layouts.json').write_text(json.dumps(layouts, sort_keys=True, indent=2) + '\n')
+root_probe = fixture_root / 'RootProbe.swift'
+run([swift, *flags, '-module-name', 'P03RootProbe', '-emit-object', root_probe,
+     '-o', out / 'root-probe.o'], 'root-probe')
 mutation_probe = fixture_root / 'MutationProbe.swift'
 run([swift, *flags, '-module-name', 'P03MutationProbe', '-emit-object', mutation_probe,
      '-o', out / 'mutation-probe.o'], 'mutation-probe')
@@ -99,12 +120,13 @@ probe = root / 'Tests/ContractFixtures/SPEC010/RuntimeDerived' / (
     'DynamicBackingProbe.swift' if profile in ('macos-dynamic', 'raspberry-pi-armv6') else 'BackingProbe.swift')
 run([swift, *flags, '-module-name', 'P03BackingProbe', '-emit-object', probe, '-o', out / 'backing-probe.o'], 'backing-probe')
 if profile.startswith('macos'):
-    for fixture in ('IdentityChecks', 'OwnershipChecks', 'BackingChecks', 'StateChecks', 'MutationChecks'):
+    for fixture in ('IdentityChecks', 'OwnershipChecks', 'BackingChecks', 'StateChecks', 'MutationChecks', 'RootChecks'):
         executable = out / fixture
         sources = [root / ('Tests/ContractFixtures/SPEC010/RuntimeDerived/' + fixture + '.swift')]
         if fixture == 'BackingChecks': sources.append(probe)
         if fixture == 'StateChecks': sources.append(state_probe)
         if fixture == 'MutationChecks': sources.append(mutation_probe)
+        if fixture == 'RootChecks': sources.append(root_probe)
         run([swift, *flags, *sources,
              base / 'GiftUI.o', *[out / (name + '.o') for name, _ in modules], '-o', executable], fixture + '-link')
         execution = run([executable], fixture + '-execution').strip()
@@ -112,7 +134,7 @@ if profile.startswith('macos'):
         print(execution)
 else:
     readelf = root / '.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/arm-zephyr-eabi-readelf'
-    for artifact in ('backing-probe', 'state-probe', 'mutation-probe'):
+    for artifact in ('backing-probe', 'state-probe', 'mutation-probe', 'root-probe'):
         abi = run([readelf, '-h', '-A', out / (artifact + '.o')], artifact + '-target-abi')
         assert 'Tag_ABI_VFP_args: VFP registers' in abi
         assert ('Tag_CPU_arch: v6' if profile == 'raspberry-pi-armv6' else 'Tag_CPU_arch: v7E-M') in abi
@@ -163,10 +185,10 @@ receipt = {
     'core_receipt': str(base / 'result.json'),
     'core_receipt_sha256': hashlib.sha256((base / 'result.json').read_bytes()).hexdigest(),
     'inputs': {str(p.relative_to(root)): hashlib.sha256(p.read_bytes()).hexdigest() for p in inputs if p.is_file()},
-    'executions': executions, 'negative_controls': [*negatives, 'state-effectful-seed', 'state-wrong-seed', 'state-shadow', 'state-computed'],
+    'executions': executions, 'layouts': layouts, 'negative_controls': [*negatives, 'state-effectful-seed', 'state-wrong-seed', 'state-shadow', 'state-computed'],
     'artifacts': {p.name: hashlib.sha256(p.read_bytes()).hexdigest() for p in out.iterdir()
                   if p.suffix in ('.o', '.swiftmodule', '.swift')},
-    'boundary': 'No production reconciler/callback, complete-module, whole-image or target execution claim.',
+    'boundary': 'Actual scoped root callbacks; lexical reconciler and target-access join still pending. No complete-module, whole-image or target execution claim.',
 }
 (out / 'result.json').write_text(json.dumps(receipt, indent=2, sort_keys=True) + '\n')
 print('P03 State/ownership controls passed: ' + profile + '; ' + str(out / 'result.json'))

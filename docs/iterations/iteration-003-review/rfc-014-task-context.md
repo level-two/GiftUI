@@ -61,8 +61,10 @@ probe is `Tests/ContractFixtures/SPEC010/RuntimeDerived/StateProbe.swift`; the
 progress record's step 3 supplies current four-profile core and component receipts.
 It uses a fixture binder. Step 4 adds `ObservableModelMutation.swift` and
 `MutationProbe.swift` for checked operation/discovery component evidence; its
-receipt does not prove application operation adoption. The production root/reconciler callback migration,
-ticket transfer, checked mutation, capture replacement and teardown remain open;
+receipt does not prove application operation adoption. Step 5 adds `ObservableStateRootScope.swift`, `RootProbe.swift` and
+`LayoutProbe.swift`, and migrates both profile root activation factories. Its
+real callback/transfer/replacement/retirement checks remain selected-component
+evidence. The lexical reconciler and target-access migration remain open;
 do not infer their completion from the State probe.
 
 These reminders point into contracts; read the full clauses when editing the
