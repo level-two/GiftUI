@@ -35,6 +35,13 @@ not additional authorization to rerun an MVP implementation or reopen experiment
 
 ### Current owner checkpoint
 
+**P03 stopped:** the public lexical visitor SPI admits an escaping visitor copy.
+The unsafe raw-pointer join was removed. Strong review must assess the
+[current blocker and bounded options](../../Tests/ContractFixtures/SPEC010/Evidence/rfc-014-p03/lexical-visitor-blocker.md)
+before implementation resumes or a necessary contract change is escalated.
+Direct scoped callbacks and the fixed report-route repair are incremental
+component evidence only. Consecutive unproductive repairs: 0 of 2.
+
 - [ ] `T10.1` — Stable typed backing, bounded tickets/pins, checked writes, nested State discovery, exact final-ticket replacement/refusal and teardown.
   **Scope:** GiftUIObservableState, Dynamic/Static model/registration stores and target-access bridges and directly corresponding tests/fixtures/build wiring.
   **Dependencies:** P02; obey each shared package's entry conditions.

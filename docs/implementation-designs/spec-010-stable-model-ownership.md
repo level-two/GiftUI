@@ -149,13 +149,20 @@ The existing Dynamic and Static root adapters now lend actual model and
 registration storage into one nonescapable root callback. That root implements
 new/preserved State binding, explicit candidate-ticket transfer, guarded
 replacement, candidate publication/discard and registration shutdown. Reports
-travel through the model-owned sink into the disjoint registration record.
+travel through a fixed C callback/context in the model-owned sink into disjoint
+nongeneric report storage. This avoids captured generic closure contexts in
+Static install/replace while preserving the model/report storage separation.
 Shutdown retires routing before detach; the owning activation then releases all
 remaining nonescapable claims and destroys model values before backing ends,
 without resetting allocation or claim serials.
 
-The lexical generated visitor, target-access join and complete application
-operation witnesses remain pending in P03 and the named downstream consumers. The ledger and typed backing checks are incremental
+The lexical generated visitor and target-access join remain P03 work; complete
+application operation witnesses belong to their named downstream consumers.
+The attempted raw-pointer lexical visitor was removed after a public host
+witness compiled while saving a generic visitor copy in an escaping closure.
+A private visitor type does not seal that generic public call. P03 is stopped
+for Strong review of an owned-value alternative before any necessary contract
+change goes upstream; see the [blocker](../../Tests/ContractFixtures/SPEC010/Evidence/rfc-014-p03/lexical-visitor-blocker.md). The ledger and typed backing checks are incremental
 evidence, not a claim that these remaining callback obligations already pass.
 
 ## Resource and validation boundary
@@ -168,12 +175,16 @@ banks remain 19,392 bytes; this ledger reserves no transition payload or fallbac
 Each model metadata record is 16 bytes, with its one-byte frame pin at offset
 11. Claims and claim records are 16 bytes, scoped tickets 20 bytes aligned to 4,
 and replacement bookkeeping 56 bytes. With the fixture's UInt8 structural
-identity, each actual registration record is 36 bytes and root storage 84 bytes.
+identity, each actual registration record is 24 bytes, each report route 12 bytes,
+the two-route report store 28 bytes, and root storage remains 84 bytes.
 Read-slot/scope/sink strides are respectively 24/32/24 bytes on native macOS and
 12/16/16 on ARMv6/Embedded. The final exact-path identity and application model
 payloads remain separate charges. Compiler IR supplies target layouts without
 claiming target execution. P11 linked heap/stack measurements remain separate;
 the callback fixture has allocation symbols, so it is not zero-heap evidence.
+After the fixed-route repair, emitted Embedded IR has no direct allocator calls
+in the two specialized production install/replace bodies. This narrow attribution
+does not prove their transitive call graph or linked Static zero heap.
 
 The focused suite exercises the production ledger and both concrete backing
 factories, not a substitute owner. Its current boundary is recorded in

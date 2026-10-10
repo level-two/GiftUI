@@ -64,8 +64,14 @@ It uses a fixture binder. Step 4 adds `ObservableModelMutation.swift` and
 receipt does not prove application operation adoption. Step 5 adds `ObservableStateRootScope.swift`, `RootProbe.swift` and
 `LayoutProbe.swift`, and migrates both profile root activation factories. Its
 real callback/transfer/replacement/retirement checks remain selected-component
-evidence. The lexical reconciler and target-access migration remain open;
-do not infer their completion from the State probe.
+evidence. Step 6 removes captured allocation contexts from report routing and
+records actual split report layouts. The lexical reconciler and target-access
+migration remain open. P03 is stopped on the
+[lexical visitor safety blocker](../../../Tests/ContractFixtures/SPEC010/Evidence/rfc-014-p03/lexical-visitor-blocker.md):
+`EscapingVisitorProbe.swift` proves the approved public generic witness can save
+an escapable visitor. The unsafe pointer-backed prototype was removed. Next is
+Strong review of safe committed work and the bounded owned-value option; no
+public SPI change is authorized. Do not infer package completion from any probe.
 
 These reminders point into contracts; read the full clauses when editing the
 mechanism. They reduce search, not the risk rating of the underlying work.
