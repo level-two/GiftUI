@@ -45,12 +45,10 @@ package struct StaticObservableRegistrationRecord {
     }
 
     package mutating func makeSink(
-        reportRoute:
-            @escaping (
-                _GiftUIObservationAttachment
-            ) -> _GiftUIObservableChangeReportOutcome
+        context: UnsafeMutableRawPointer,
+        reportRoute: @escaping @convention(c) (UnsafeMutableRawPointer, UInt16, UInt32) -> UInt8
     ) -> _GiftUIObservableChangeSink? {
-        bridge.makeSink(reportRoute: reportRoute)
+        bridge.makeSink(context: context, reportRoute: reportRoute)
     }
 
     package mutating func acceptAttachmentReturn(
@@ -149,10 +147,8 @@ package struct StaticObservableRegistrationRecord {
     }
 
     package mutating func makeReplacementSink(
-        reportRoute:
-            @escaping (
-                _GiftUIObservationAttachment
-            ) -> _GiftUIObservableChangeReportOutcome
+        context: UnsafeMutableRawPointer,
+        reportRoute: @escaping @convention(c) (UnsafeMutableRawPointer, UInt16, UInt32) -> UInt8
     ) -> _GiftUIObservableChangeSink? {
         guard
             let candidate = replacementBridge?.pendingAttachment,
@@ -163,7 +159,7 @@ package struct StaticObservableRegistrationRecord {
         replacementSinkWasIssued = true
         return _GiftUIObservableChangeSink(
             attachment: candidate,
-            reportRoute: reportRoute
+            context: context, reportRoute: reportRoute
         )
     }
 

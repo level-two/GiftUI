@@ -108,11 +108,34 @@ for name, body in re.findall(r'define[^\n]*@giftui_p03_layout_([a-z0-9_]+)\([^\n
         constant = re.search(r'ret i(?:32|64) (\d+)', target.group(1))
     assert constant, (name, body)
     layouts[name] = int(constant.group(1))
-assert len(layouts) == 14, layouts
+assert len(layouts) == 16, layouts
 (out / 'layouts.json').write_text(json.dumps(layouts, sort_keys=True, indent=2) + '\n')
 root_probe = fixture_root / 'RootProbe.swift'
 run([swift, *flags, '-module-name', 'P03RootProbe', '-emit-object', root_probe,
      '-o', out / 'root-probe.o'], 'root-probe')
+allocation_attribution = None
+if profile == 'nrf52840-embedded':
+    run([swift, *flags, '-module-name', 'P03RootProbe', '-emit-ir', root_probe,
+         '-o', out / 'root-allocation-attribution.ll'], 'root-allocation-attribution')
+    ir = (out / 'root-allocation-attribution.ll').read_text()
+    definitions = re.findall(r'^define[^\n]*@"([^"\n]+)"\([^\n]*\)[^{]*\{(.*?)^}', ir, re.S | re.M)
+    selected = [(name, body) for name, body in definitions
+                if 'GiftUIObservableState' in name and ('7install' in name or '7replace' in name)]
+    assert len(selected) == 2, [name for name, _ in selected]
+    allocator_call = r'(?:call|invoke)[^\n]*@[^\n]*(?:swift_allocObject|posix_memalign|malloc)'
+    assert not any(re.search(allocator_call, body) for _, body in selected)
+    allocation_attribution = {
+        'claim': 'No direct allocator calls in the two specialized production install/replace bodies. Not transitive or linked zero-heap evidence.',
+        'functions': {name: hashlib.sha256(body.encode()).hexdigest() for name, body in selected},
+        'ir_sha256': hashlib.sha256(ir.encode()).hexdigest(),
+    }
+    (out / 'root-allocation-attribution.json').write_text(json.dumps(allocation_attribution, indent=2) + '\n')
+visitor_escape = None
+if profile.startswith('macos'):
+    escaping_probe = fixture_root / 'EscapingVisitorProbe.swift'
+    run([swift, *flags, '-module-name', 'P03EscapingVisitor', '-emit-object', escaping_probe,
+         '-o', out / 'escaping-public-visitor.o'], 'escaping-public-visitor')
+    visitor_escape = 'Confirmed: public generic witness can save visitor in an escaping closure. Unsafe lexical join omitted; contract decision required.'
 mutation_probe = fixture_root / 'MutationProbe.swift'
 run([swift, *flags, '-module-name', 'P03MutationProbe', '-emit-object', mutation_probe,
      '-o', out / 'mutation-probe.o'], 'mutation-probe')
@@ -185,10 +208,10 @@ receipt = {
     'core_receipt': str(base / 'result.json'),
     'core_receipt_sha256': hashlib.sha256((base / 'result.json').read_bytes()).hexdigest(),
     'inputs': {str(p.relative_to(root)): hashlib.sha256(p.read_bytes()).hexdigest() for p in inputs if p.is_file()},
-    'executions': executions, 'layouts': layouts, 'negative_controls': [*negatives, 'state-effectful-seed', 'state-wrong-seed', 'state-shadow', 'state-computed'],
+    'executions': executions, 'layouts': layouts, 'allocation_attribution': allocation_attribution, 'visitor_escape_blocker': visitor_escape, 'negative_controls': [*negatives, 'state-effectful-seed', 'state-wrong-seed', 'state-shadow', 'state-computed'],
     'artifacts': {p.name: hashlib.sha256(p.read_bytes()).hexdigest() for p in out.iterdir()
                   if p.suffix in ('.o', '.swiftmodule', '.swift')},
-    'boundary': 'Actual scoped root callbacks; lexical reconciler and target-access join still pending. No complete-module, whole-image or target execution claim.',
+    'boundary': 'Actual direct scoped root callbacks. P03 blocked on escapable public lexical visitor; unsafe lexical join omitted, target-access and final exits pending. No complete-module, whole-image or target execution claim.',
 }
 (out / 'result.json').write_text(json.dumps(receipt, indent=2, sort_keys=True) + '\n')
 print('P03 State/ownership controls passed: ' + profile + '; ' + str(out / 'result.json'))

@@ -9,17 +9,15 @@ package struct ObservableStateRootStorage<Identity: Equatable & Sendable> {
         var keyOwner: UInt32 = 0
         var keyGeneration: UInt32 = 0
         var attachment: _GiftUIObservationAttachment?
-        var lifecycle = ObservableStateRegistrationLifecycle()
         var published = false
         var encountered = false
-        var dirty = false
     }
     fileprivate var records: InlineArray<2, Record> = .init(repeating: Record())
+    fileprivate var reports = ObservableStateRootReports()
     fileprivate var nextGeneration: UInt32? = 0
     fileprivate var candidateActive = false
     fileprivate var operationActive = false
     fileprivate var retired = false
-    fileprivate var mutationReporting = false
 
     package init() {}
 
@@ -31,20 +29,39 @@ package struct ObservableStateRootStorage<Identity: Equatable & Sendable> {
         nextGeneration = successor.overflow ? nil : successor.partialValue
         return _GiftUIObservationAttachment(slot: slot, generation: generation)
     }
+}
 
-    fileprivate mutating func report(_ attachment: _GiftUIObservationAttachment)
+/// A fixed callback needs no captured generic metadata or heap context. Its
+/// pointer is lent independently from model storage for the activation interval.
+struct ObservableStateRootReports {
+    struct Route {
+        var lifecycle = ObservableStateRegistrationLifecycle()
+        var dirty = false
+    }
+    var routes: InlineArray<2, Route> = .init(repeating: Route())
+    var mutationReporting = false
+
+    mutating func report(_ attachment: _GiftUIObservationAttachment)
         -> _GiftUIObservableChangeReportOutcome
     {
         guard attachment.slot < 2 else { return .staleAttachment }
         let slot = Int(attachment.slot)
-        if let failure = records[slot].lifecycle.acceptReport(attachment) {
+        if let failure = routes[slot].lifecycle.acceptReport(attachment) {
             return failure == .staleAttachment ? .staleAttachment : .invariantViolation
         }
         guard mutationReporting else { return .invalidPhaseSafetyNotProven }
-        guard !records[slot].dirty else { return .coalesced }
-        records[slot].dirty = true
+        guard !routes[slot].dirty else { return .coalesced }
+        routes[slot].dirty = true
         return .dirtied
     }
+}
+
+func reportObservableStateRoot(
+    _ context: UnsafeMutableRawPointer, _ slot: UInt16, _ generation: UInt32
+) -> UInt8 {
+    context.assumingMemoryBound(to: ObservableStateRootReports.self).pointee.report(
+        _GiftUIObservationAttachment(slot: slot, generation: generation)
+    ).rawValue
 }
 
 extension ObservableModelScope
@@ -55,14 +72,18 @@ where Model: ObservableStateModel & ~Copyable, Schema == Model.Schema {
             -> Result
     ) throws(ObservableStateError) -> Result {
         try withUnsafeMutablePointer(to: &storage) { (records) throws(ObservableStateError) in
-            let root = ObservableStateRootScope(models: borrowedScope(), records: records)
-            do throws(ObservableStateError) {
-                let result = try body(root)
-                try root.shutdown()
-                return result
-            } catch {
-                try? root.shutdown()
-                throw error
+            try withUnsafeMutablePointer(to: &records.pointee.reports) {
+                (reports) throws(ObservableStateError) in
+                let root = ObservableStateRootScope(
+                    models: borrowedScope(), records: records, reports: reports)
+                do throws(ObservableStateError) {
+                    let result = try body(root)
+                    try root.shutdown()
+                    return result
+                } catch {
+                    try? root.shutdown()
+                    throw error
+                }
             }
         }
     }
@@ -74,17 +95,21 @@ package struct ObservableStateRootScope<
     private let models: ObservableModelScope<Model, Model.Schema>
     private let records: UnsafeMutablePointer<ObservableStateRootStorage<Identity>>
 
-    @_lifetime(copy models, borrow records)
+    private let reports: UnsafeMutablePointer<ObservableStateRootReports>
+
+    @_lifetime(copy models, borrow records, borrow reports)
     fileprivate init(
         models: consuming ObservableModelScope<Model, Model.Schema>,
-        records: borrowing UnsafeMutablePointer<ObservableStateRootStorage<Identity>>
+        records: borrowing UnsafeMutablePointer<ObservableStateRootStorage<Identity>>,
+        reports: borrowing UnsafeMutablePointer<ObservableStateRootReports>
     ) {
         self.models = consume models
         self.records = copy records
+        self.reports = copy reports
     }
 
     package var isDirty: Bool {
-        records.pointee.records[0].dirty || records.pointee.records[1].dirty
+        reports.pointee.routes[0].dirty || reports.pointee.routes[1].dirty
     }
 
     private borrowing func checkOperation(discovery: Bool = false) throws(ObservableStateError) {
@@ -238,14 +263,15 @@ package struct ObservableStateRootScope<
             identity: identity, ordinal: ordinal,
             keyOwner: key._giftUIOwnerInstance, keyGeneration: key._giftUIAllocationGeneration,
             attachment: attachment, encountered: true)
-        if let failure = records.pointee.records[slot].lifecycle.beginAttachment(attachment) {
+        reports.pointee.routes[slot] = .init()
+        if let failure = reports.pointee.routes[slot].lifecycle.beginAttachment(attachment) {
             throw failure
         }
-        let route = records
         let sink = _GiftUIObservableChangeSink(
-            attachment: attachment, reportRoute: { route.pointee.report($0) })
+            attachment: attachment, context: UnsafeMutableRawPointer(reports),
+            reportRoute: reportObservableStateRoot)
         let returned = try models.attach(key, sink: consume sink)
-        if let failure = records.pointee.records[slot].lifecycle.acceptAttachmentReturn(returned) {
+        if let failure = reports.pointee.routes[slot].lifecycle.acceptAttachmentReturn(returned) {
             if returned != nil { try? models.detach(key, attachment: attachment) }
             records.pointee.records[slot] = .init()
             throw failure
@@ -260,7 +286,7 @@ package struct ObservableStateRootScope<
             throw .invariantViolation
         }
         let former = key(at: slot)
-        if let failure = records.pointee.records[slot].lifecycle.retire(attachment: attachment) {
+        if let failure = reports.pointee.routes[slot].lifecycle.retire(attachment: attachment) {
             throw failure
         }
         var firstFailure: ObservableStateError?
@@ -269,6 +295,7 @@ package struct ObservableStateRootScope<
             if firstFailure == nil { firstFailure = error }
         }
         records.pointee.records[slot] = .init()
+        reports.pointee.routes[slot].dirty = false
         if let firstFailure { throw firstFailure }
     }
 
@@ -297,7 +324,7 @@ package struct ObservableStateRootScope<
                     if disposition == .publish {
                         changed = changed || !record.published
                         records.pointee.records[i].published = true
-                        records.pointee.records[i].dirty = false
+                        reports.pointee.routes[i].dirty = false
                     }
                     records.pointee.records[i].encountered = false
                 }
@@ -339,12 +366,13 @@ package struct ObservableStateRootScope<
                 keyOwner: candidate._giftUIOwnerInstance,
                 keyGeneration: candidate._giftUIAllocationGeneration,
                 attachment: attachment)
-            _ = records.pointee.records[new].lifecycle.beginAttachment(attachment)
-            let route = records
+            reports.pointee.routes[new] = .init()
+            _ = reports.pointee.routes[new].lifecycle.beginAttachment(attachment)
             let sink = _GiftUIObservableChangeSink(
-                attachment: attachment, reportRoute: { route.pointee.report($0) })
+                attachment: attachment, context: UnsafeMutableRawPointer(reports),
+                reportRoute: reportObservableStateRoot)
             let returned = try models.attach(candidate, sink: consume sink)
-            if let failure = records.pointee.records[new].lifecycle.acceptAttachmentReturn(returned)
+            if let failure = reports.pointee.routes[new].lifecycle.acceptAttachmentReturn(returned)
             {
                 if returned != nil { try? models.detach(candidate, attachment: attachment) }
                 records.pointee.records[new] = .init()
@@ -356,10 +384,10 @@ package struct ObservableStateRootScope<
             }
             // This is the commit boundary. Retire old routing before invoking its
             // detach hook; a detach invariant failure cannot roll back B.
-            let retirementFailure = records.pointee.records[old].lifecycle.retire(
+            let retirementFailure = reports.pointee.routes[old].lifecycle.retire(
                 attachment: formerAttachment)
             records.pointee.records[new].published = true
-            records.pointee.records[new].dirty = true
+            reports.pointee.routes[new].dirty = true
             var failure = retirementFailure
             do { try models.detach(ticket.key, attachment: formerAttachment) } catch {
                 if failure == nil { failure = error }
@@ -367,6 +395,7 @@ package struct ObservableStateRootScope<
             var activated = try models.commitReplacement(reservation, transferring: &ticket)
             try models.release(&activated)
             records.pointee.records[old] = .init()
+            reports.pointee.routes[old].dirty = false
             if let failure { throw failure }
             return .success(.replaced)
         } catch { return .failure(error) }
@@ -377,8 +406,8 @@ package struct ObservableStateRootScope<
     {
         guard !records.pointee.retired else { return .failure(.invalidPhaseSafetyNotProven) }
         guard !records.pointee.operationActive else { return .failure(.reentrancyViolation) }
-        records.pointee.mutationReporting = true
-        defer { records.pointee.mutationReporting = false }
+        reports.pointee.mutationReporting = true
+        defer { reports.pointee.mutationReporting = false }
         return models.mutate(key, mutation: mutation) {
             models.report(key)
         }

@@ -108,17 +108,16 @@ public struct _GiftUIObservationAttachment: Equatable, Sendable {
 
 public struct _GiftUIObservableChangeSink: ~Copyable {
     private let storedAttachment: _GiftUIObservationAttachment
-    private let reportRoute:
-        (_GiftUIObservationAttachment) ->
-            _GiftUIObservableChangeReportOutcome
+    private let context: UnsafeMutableRawPointer
+    private let reportRoute: @convention(c) (UnsafeMutableRawPointer, UInt16, UInt32) -> UInt8
 
     package init(
         attachment: _GiftUIObservationAttachment,
-        reportRoute:
-            @escaping (_GiftUIObservationAttachment) ->
-            _GiftUIObservableChangeReportOutcome
+        context: UnsafeMutableRawPointer,
+        reportRoute: @escaping @convention(c) (UnsafeMutableRawPointer, UInt16, UInt32) -> UInt8
     ) {
         storedAttachment = attachment
+        self.context = context
         self.reportRoute = reportRoute
     }
 
@@ -129,7 +128,9 @@ public struct _GiftUIObservableChangeSink: ~Copyable {
     public mutating func reportChange()
         -> _GiftUIObservableChangeReportOutcome
     {
-        reportRoute(storedAttachment)
+        _GiftUIObservableChangeReportOutcome(
+            rawValue: reportRoute(
+                context, storedAttachment.slot, storedAttachment.generation)) ?? .invariantViolation
     }
 }
 

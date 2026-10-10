@@ -19,3 +19,6 @@ import GiftUI
 @_cdecl("giftui_p03_layout_registration_record_u8") public func registrationRecordLayout() -> Int { MemoryLayout<ObservableStateRootStorage<UInt8>.Record>.stride }
 @_cdecl("giftui_p03_layout_root_storage_u8") public func rootStorageLayout() -> Int { MemoryLayout<ObservableStateRootStorage<UInt8>>.stride }
 @_cdecl("giftui_p03_layout_sink") public func sinkLayout() -> Int { MemoryLayout<_GiftUIObservableChangeSink>.stride }
+
+@_cdecl("giftui_p03_layout_report_storage") public func reportStorageLayout() -> Int { MemoryLayout<ObservableStateRootReports>.stride }
+@_cdecl("giftui_p03_layout_report_route") public func reportRouteLayout() -> Int { MemoryLayout<ObservableStateRootReports.Route>.stride }

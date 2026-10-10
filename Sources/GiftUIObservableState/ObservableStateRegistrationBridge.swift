@@ -26,16 +26,14 @@ package struct ObservableStateRegistrationBridge {
     }
 
     package mutating func makeSink(
-        reportRoute:
-            @escaping (
-                _GiftUIObservationAttachment
-            ) -> _GiftUIObservableChangeReportOutcome
+        context: UnsafeMutableRawPointer,
+        reportRoute: @escaping @convention(c) (UnsafeMutableRawPointer, UInt16, UInt32) -> UInt8
     ) -> _GiftUIObservableChangeSink? {
         guard let pendingAttachment, !sinkWasIssued else { return nil }
         sinkWasIssued = true
         return _GiftUIObservableChangeSink(
             attachment: pendingAttachment,
-            reportRoute: reportRoute
+            context: context, reportRoute: reportRoute
         )
     }
 

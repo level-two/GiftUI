@@ -1,7 +1,8 @@
 # P03 implementation progress — 2026-10-10
 
 Input: `0516f9d0` (P02 declaration exit passed). Owner: SPEC-010 T10.1;
-criteria: OS-RD-001–004 and unchanged OS regression requirements. P03 is in progress.
+criteria: OS-RD-001–004 and unchanged OS regression requirements. P03 is stopped
+on the lexical visitor safety question; see step 6 and the blocker record.
 
 ## Step 1 — identities and failure vocabulary
 
@@ -187,7 +188,7 @@ A report failure preserves the committed bytes. The compound fixture has a
 application evidence. The real root/callback, guarded replacement, teardown and
 complete-layout exits remain open. Formatting passes; no broad gate was run.
 
-## Step 5 — production registration and guarded replacement join (active)
+## Step 5 — production registration and guarded replacement join
 
 Dispatch: P03 / OS-RD-001–004, after step 4 `12896815`. Strong
 `gpt-6-astra` / `high`, C3/R3; no lower-tier assignment. Allowed files are
@@ -241,3 +242,66 @@ whitespace checks pass. No whole-module, linked zero-heap, complete analyzer,
 connected or P03 exit claim: the callback fixture contains allocation symbols,
 which still require attribution, and lexical reconciler/target access plus final
 exit controls remain open. No P04 work or broad test gate was run.
+
+## Step 6 — fixed callback repair; lexical join stopped
+
+Strong `gpt-6-astra` / `high`, C3/R3; dependencies through `e1cb8711`.
+The Embedded root probe IR attributes 12-byte context allocations to the real
+root `install` and `replace`, separately from the fixture's counter box. This is
+an implementation defect under the existing Static contract, not permission for
+heap fallback. The bounded fix replaces captured report closures with the
+existing contract's fixed callback/context route and separately borrowed
+nongeneric report storage. Public sink behavior and capacities remain unchanged;
+private/package constructors and their owner adapters may change. GiftUI changes
+require refreshed four-profile P02 core receipts before further P03 reuse.
+Lexical reconciler/target access and final escape/fault controls remain in this
+step. Repair counter at entry: 0 consecutive unproductive attempts of 2.
+
+Step-6 frozen selected-component checks pass with these refreshed core receipts:
+
+| Profile | P02 core directory | P03 component result |
+| --- | --- | --- |
+| macOS Static | `.build/contracts/spec-006-rfc-014/58ab1755cf57c634-0urm4i3k/macos-static` | `.build/rfc014-p03/state/tmpgqre2h5_/macos-static/result.json` |
+| macOS Dynamic | `.build/contracts/spec-006-rfc-014/58ab1755cf57c634-vlc1nqjo/macos-dynamic` | `.build/rfc014-p03/state/tmp2u7h8rdh/macos-dynamic/result.json` |
+| ARMv6 | `.build/raspberry-pi/contracts/spec-006-rfc-014/58ab1755cf57c634-wlpjbz9w/raspberry-pi-armv6` | `.build/raspberry-pi/rfc014-p03/state/tmp9ay63b6t/raspberry-pi-armv6/result.json` |
+| Embedded | `.build/nrf52840/contracts/spec-006-rfc-014/58ab1755cf57c634-v850qxu1/nrf52840-embedded` | `.build/nrf52840/rfc014-p03/state/tmp04qis62p/nrf52840-embedded/result.json` |
+
+Each run uses `scripts/contracts/check-spec-010-model-identities.py --giftui-build`
+with the exact core directory above. Both native profiles retain 450 passing
+assertions and eight expected compiler/lowering rejections. Both cross builds
+compile the four probes and pass CPU/VFP ABI checks; there is no target execution.
+Sixteen actual-layout measurements now separate registration record (24 B),
+report route (12 B) and report store (28 B); total UInt8-identity root storage
+remains 84 B on all four. Other step-5 sizes, including ticket/pin, are unchanged.
+
+The Embedded `root-allocation-attribution.json` hashes both specialized production
+`install` and `replace` IR bodies and verifies no direct allocator calls remain.
+The corresponding IR is hashed too. This attributes the two prior allocations;
+it is not a transitive call-graph, linked zero-heap, stack or analyzer budget proof.
+The driver's exact selected files remain the evidence boundary. In particular,
+mechanical fixed-sink signature updates in the legacy registration bridge and
+Static registration record have not been validated as complete modules; their
+old consumer/test migration is still outstanding.
+
+The new adversarial public host fixture compiles successfully on each native
+profile: a generic witness saves a visitor copy in an escaping closure. Therefore
+the attempted private visitor containing backing pointers was unsafe and has
+been removed, together with its untested candidate-offer and reconciler edits.
+See [exact reproduction and options](lexical-visitor-blocker.md). Strong review
+must determine whether a bounded owned-value adapter meets current contracts;
+only a necessary contract decision goes upstream. No public visitor SPI change,
+new location capacity or generated-only trust assumption was accepted.
+
+Productive repairs: fixed C callback routing removed the two attributed production
+context allocations; the adversarial compile supplied decisive lifetime evidence.
+Consecutive unproductive count remains 0 of 2. Formatting, governance and whitespace
+checks pass. No P04 work, broad regression gate, deployment or flashing occurred.
+
+P03 remains incomplete: safe lexical binding/nested generated traversal, matching
+candidate-offer ownership in that traversal, profile target-access migration,
+remaining actual callback phase/exhaustion/escape controls and the finite package
+exit still require completion. Application operation adoption belongs to P08/P09;
+complete runtime differential cleanup/cycle integration belongs to P07, full owner
+regression/build closure to P10, and integrated resource/target disposition to
+P11/P12. Those later obligations do not excuse the open P03 work. Separate Strong
+review is pending; no implemented/conformance transition is requested.
