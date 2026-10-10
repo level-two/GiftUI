@@ -1,7 +1,7 @@
 # RFC-014 task context guide
 
 Navigation and assignment clarification for the [P01–P12 sequence](rfc-014-implementation-plan.md),
-checked against the working tree on 2026-10-10. This derives from the approved
+checked against the working tree on 2026-10-11. This derives from the approved
 contracts; it does not define APIs or prove task completion. Read the relevant
 package entry after required repository/role orientation. Refresh changed entries
 when a package changes its source or validation entry points.
@@ -43,7 +43,7 @@ regression and four-configuration obligations remain in the owner matrices.
 | P01 | [SPEC-002](../../specs/spec-002-portable-foundation.md); PF-006/007 and compiler amendment | `scripts/contracts/compiler-baseline.sh`, `scripts/contracts/run-spec-002.sh`; [completed receipt](../../../Tests/ContractFixtures/SPEC002/Evidence/rfc-014-p01/result.md). Reuse its identities, not a new baseline study. |
 | P02 | [SPEC-006 amendment](../../specs/spec-006-declarative-view-semantics.md#rfc-014-runtime-amendment); DV-RD-001–004 | `Sources/GiftUI/DeclarativeView.swift`, `Sources/GiftUIMacros/FiniteSourceLowering.swift`; [finite lowering note](../../implementation-designs/spec-006-finite-source-lowering.md), [completed receipt](../../../Tests/ContractFixtures/SPEC006/Evidence/rfc-014-p02/result.md). |
 | P03 | [SPEC-010 amendment](../../specs/spec-010-observable-reference-state.md#rfc-014-runtime-amendment); OS-RD-001–004; owner **T10.1** | `Sources/GiftUIObservableState/ObservableModelOwnership.swift`, `Sources/GiftUIObservableState/ObservableModelScope.swift`, `Sources/GiftUIObservableState/ObservableStateReplacementTransaction.swift`; `Tests/GiftUIObservableStateTests/ObservableStateReplacementTransactionTests.swift`; [ownership note](../../implementation-designs/spec-010-stable-model-ownership.md), [current progress](../../../Tests/ContractFixtures/SPEC010/Evidence/rfc-014-p03/progress.md). |
-| P04 | [SPEC-006 amendment](../../specs/spec-006-declarative-view-semantics.md#rfc-014-runtime-amendment); DV-RD-001–004 | `Sources/GiftUISemanticCore/SemanticRuntimeRecords.swift`, `SemanticRecordStore.swift`, `SemanticRecordExpansion.swift`, `SemanticStandardPayload.swift`; `Sources/GiftUIObservableState/ObservableSemanticBodyBinding.swift`; both profile `*SemanticRecordStorage.swift` files. `Tests/ContractFixtures/SPEC006/RuntimeRecords` and `scripts/contracts/check-spec-006-runtime-records.py`; [implementation packet](../../../Tests/ContractFixtures/SPEC006/Evidence/rfc-014-p04/progress.md#implementation-exit-packet--independent-review-pending), [bank note](../../implementation-designs/spec-006-runtime-record-banks.md). Independent exit review remains pending. |
+| P04 | [SPEC-006 amendment](../../specs/spec-006-declarative-view-semantics.md#rfc-014-runtime-amendment); DV-RD-001–004 | `Sources/GiftUISemanticCore/SemanticRuntimeRecords.swift`, `SemanticRecordStore.swift`, `SemanticRecordExpansion.swift`, `SemanticStandardPayload.swift`; `Sources/GiftUIObservableState/ObservableSemanticBodyBinding.swift`; both profile `*SemanticRecordStorage.swift` files. `Tests/ContractFixtures/SPEC006/RuntimeRecords` and `scripts/contracts/check-spec-006-runtime-records.py`; [passed package exit](../../../Tests/ContractFixtures/SPEC006/Evidence/rfc-014-p04/progress.md#final-p04-package-exit--2026-10-11), [independent review](../../../Tests/ContractFixtures/SPEC006/Evidence/rfc-014-p04/exit-review.md), [bank note](../../implementation-designs/spec-006-runtime-record-banks.md). |
 | P05 | [SPEC-007 amendment](../../specs/spec-007-layout.md#rfc-014-runtime-amendment), [SPEC-011 amendment](../../specs/spec-011-interaction.md#rfc-014-runtime-amendment); LY-RD-001–002, IN-RD-001–002 | `Sources/GiftUISemanticCore/SemanticLayoutView.swift`, `Sources/GiftUIInteraction/InteractionStorage.swift`; `Tests/GiftUISemanticCoreTests/SemanticLayoutViewTests.swift`, `Tests/GiftUIInteractionTests/InteractionCandidateAppendTests.swift`. |
 | P06 | [SPEC-012 amendment](../../specs/spec-012-canvas-path-stroke-drawing.md#rfc-014-runtime-amendment); DR-RD-001–004 | `Sources/GiftUI/Canvas.swift`, `Sources/GiftUIDrawing/CanvasPlanProducer.swift`; `Tests/GiftUIDrawingTests/CanvasPlanProducerTests.swift`, `Tests/GiftUIDrawingTests/DrawingLifetimeTests.swift`. |
 | P07 | [SPEC-013 amendment](../../specs/spec-013-runtime-profiles.md#rfc-014-runtime-amendment); RP-RD-001–004 | `Sources/GiftUIRuntimeCore/RuntimeCompletePipeline.swift`, `Sources/GiftUIRuntimeCore/RuntimeCoordinatorCleanup.swift`; `Sources/GiftUIRuntimeDynamic/DynamicRuntimeExecutionCoordinator.swift`, `Sources/GiftUIRuntimeStatic/StaticRuntimeExecutionCoordinator.swift`; `Tests/GiftUIRuntimeCoreTests/RuntimeCompletePipelineTests.swift`. |
@@ -76,7 +76,8 @@ phase finding by rejecting invalid activation before lending report storage.
 The regression covers every rejected phase, valid inverse nesting, scoped throws
 and retained-owner cleanup. Separate Strong verification passes P03 at `15b47e2a`;
 the [final package exit](../../../Tests/ContractFixtures/SPEC010/Evidence/rfc-014-p03/progress.md#final-p03-package-exit)
-records matched receipts and review limits. P04–P12 remain pending. Do not infer complete-module,
+records matched receipts and review limits. P04 subsequently passed after separate
+Strong review at `037607c7`; P05–P12 remain pending. Do not infer complete-module,
 semantic-record, coordinator or linked-resource completion from these probes.
 
 These reminders point into contracts; read the full clauses when editing the
@@ -99,7 +100,7 @@ dispatch fields: exact criterion, source symbols, one test exemplar, independent
 expected result, commands with concrete arguments and evidence destination.
 State **remaining implementation choice: none** only when true. Otherwise name
 the choice and keep its resolution with the appropriate tier. Do not invent
-future APIs now: fill P04–P12 packets when their dependencies stabilize, using
+future APIs now: fill P05–P12 packets when their dependencies stabilize, using
 the navigation above. This is preparation within existing packages, not a new
 planning phase or approval gate.
 

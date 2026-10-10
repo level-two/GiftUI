@@ -1,5 +1,28 @@
 # RFC-014 P04 progress
 
+## Final P04 package exit — 2026-10-11
+
+**P04 passed. P01–P04 are complete at their finite package boundaries;
+P05–P12 remain pending.** Execution stops at the requested P04 boundary.
+Independent Strong review at `037607c7` found no blocking issue and verified
+646 source/compiler/receipt/artifact hash and size entries. See
+[exit-review.md](exit-review.md) for invariant assessment, source references
+and evidence limitations. Implementation commits and matched four-profile
+receipts are preserved in the implementation exit packet below.
+
+The implemented output is the scoped production traversal join, bounded
+record/path/payload banks, exact paired identity matching, profile storage,
+reader-aware reuse and finite typed codecs. All four registered profile routes
+pass; native execution and cross-compilation evidence remain distinct.
+No contract/scope decision, capacity waiver or new deferred work was required.
+Consecutive unproductive repairs remain **0 of 2**.
+
+SPEC-006 stays `implementing`, its plan stays `active`, and T10.1/full criterion
+dispositions remain open through P10–P12. P05 owns Layout/committed Interaction
+joins; P06–P09 own the remaining Canvas/runtime/application joins; full workload,
+allocation/stack/linked-resource and production adoption gates remain pending.
+The measured 29,832-byte bank reservation is not a complete resource-fit claim.
+
 ## Independent exit-review dispatch — 2026-10-11
 
 - Slice: separate Strong review of P04, DV-RD-002–004 and applicable retained

@@ -6,7 +6,7 @@ status: collecting
 reviewers:
   - codex
 created: 2026-09-09
-updated: 2026-10-10
+updated: 2026-10-11
 implementation_plan: ../implementation-plans/spec-006-implementation-plan.md
 related_future_work:
   - FW-017
@@ -31,9 +31,20 @@ records the clean implementation commit, four-profile compile/rejection checks,
 120 native assertions per profile and macro golden checks. This is partial
 criterion evidence, not complete DV-RD-001 application coverage or a runtime,
 resource or whole-tree pass. DV-RD-001–004 and renewed baseline applicability
-remain pending through P04 and P10–P12, with shared source routes completed by
+remain pending through P10–P12, with shared source routes completed by
 their named P03/P06/P08/P09 owners. The results below are historical baseline
 evidence, not passes for the amended ABI.
+
+P04 passed its finite runtime-record package after
+[independent Strong review](../../Tests/ContractFixtures/SPEC006/Evidence/rfc-014-p04/exit-review.md)
+at `037607c7`. The [package receipt](../../Tests/ContractFixtures/SPEC006/Evidence/rfc-014-p04/progress.md)
+links all four passing profile routes at clean source `7be2c837`, exact identity,
+first-excess, State/modifier/order and bank-reader evidence, plus measured
+component layouts. Native routes execute 30 scoped, 58 bank and 57 checks per
+record-storage profile in addition to P02 assertions. Target routes provide
+compile/ABI/negative/layout evidence only. This does not establish whole-module
+integration, actual application peaks, committed Interaction routing or complete
+resource fit; their existing P05–P12 gates and T10.1 remain open.
 
 ## Historical baseline review scope
 

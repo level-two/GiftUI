@@ -1,6 +1,6 @@
 # RFC-014 bounded implementation sequence — 2026-10-10
 
-**P01–P03 passed; P04–P12 pending.** This is the shared
+**P01–P04 passed; P05–P12 pending.** This is the shared
 sequencing index for nine owner Implementation Plans, not another contract or
 investigation. It derives only the [approved Spec amendments](rfc-014-spec-approval.md)
 at `3c260bbc` and accepted ADR-035/036/037. ITERATION-003 I3-04/05 supplies the
@@ -321,12 +321,23 @@ resource/connected evidence are not inferred from this declaration exit.
 
 P03 passed its finite package exit at `15b47e2a` after separate Strong review
 of the explicitly approved scoped visitor correction and root-entry repair;
-P04–P12 remain pending. There is no
+P04 subsequently passed as recorded below; P05–P12 remain pending. There is no
 remaining P02 exit failure, new package, scope expansion or architecture change.
 
 Planning was prepared without implementation or experiment execution. Optional work remains in the existing deferred track; no new optional
-deliverable was added. The next package is P04 within the existing bounded sequence;
-this execution stopped at the requested P03 package boundary.
+deliverable was added. The next package is P05 within the existing bounded sequence;
+the current execution stopped at the requested P04 package boundary.
+
+P04's scoped traversal, runtime records, exact paired paths, bounded payloads and
+reader-aware profile banks are implemented in `36834e01`, `7e6fdcd6`,
+`c75d3105` and `7be2c837`. All four final registered owner routes pass against
+clean source `7be2c837`. Separate Strong review at `037607c7` found no blocking
+finding and matched 646 evidence hash/size entries. The
+[final P04 exit](../../../Tests/ContractFixtures/SPEC006/Evidence/rfc-014-p04/progress.md#final-p04-package-exit--2026-10-11)
+records native/cross-build limits, measured component bounds and remaining
+integration/resource gates. T10.1 remains open through P10–P12. No contract,
+scope or capacity change was needed; consecutive unproductive repairs remain
+0 of 2. No P05 work was started.
 
 
 Planning validation: all nine approved Spec statuses and ready plan templates

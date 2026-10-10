@@ -145,8 +145,8 @@ not affect a type's role/discriminator.
 The [P04 progress receipt](../../Tests/ContractFixtures/SPEC006/Evidence/rfc-014-p04/progress.md)
 records each step's source/artifact identity and explicit limits. The final implementation packet covers
 the actual scoped join, bank primitives, declaration emission/profile differential,
-four-profile compilation/layouts and borrowed-view escape rejection; independent
-package review remains pending. Object sizes alone do not prove allocation freedom, physical
+four-profile compilation/layouts and borrowed-view escape rejection. Separate Strong
+review passes the finite P04 exit. Object sizes alone do not prove allocation freedom, physical
 budget fit, full feasible-path stack or target execution. P10–P12 retain the
 owner's complete criterion/resource/adoption dispositions.
 

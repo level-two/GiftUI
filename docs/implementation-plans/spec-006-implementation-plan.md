@@ -6,7 +6,7 @@ status: active
 owners:
   - codex
 created: 2026-09-01
-updated: 2026-10-10
+updated: 2026-10-11
 related_design_notes:
   - ../implementation-designs/spec-006-finite-source-lowering.md
   - ../implementation-designs/spec-006-bounded-semantic-expansion.md
@@ -25,7 +25,7 @@ superseded_by: null
 ## RFC-014 implementation readiness — 2026-10-10
 
 **Ready under [explicit Spec approval](../iterations/iteration-003-review/rfc-014-spec-approval.md).**
-P02/P03 passed their bounded exits; P04 is executing after P03. The [bounded sequence](../iterations/iteration-003-review/rfc-014-implementation-plan.md)
+P02/P03/P04 passed their bounded exits. The [bounded sequence](../iterations/iteration-003-review/rfc-014-implementation-plan.md)
 is the shared ordering/scope index: exactly P01–P12, not an expandable backlog.
 This owner contributes P02, P04; its final regression/resource/disposition
 obligations run through P10–P12. Only the current checkpoint below is new work.
@@ -45,7 +45,7 @@ not additional authorization to rerun an MVP implementation or reopen experiment
   on the four governed configurations, focused unit/negative checks named by the
   shared sequence, then P10's registered hardware-free gate. Compiler-selection
   propagation follows P01; no historical check is weakened.
-  **P04 progress:** [step receipts](../../Tests/ContractFixtures/SPEC006/Evidence/rfc-014-p04/progress.md) and [runtime bank design](../implementation-designs/spec-006-runtime-record-banks.md); package exit remains pending.
+  **P04 passed:** [step receipts and package exit](../../Tests/ContractFixtures/SPEC006/Evidence/rfc-014-p04/progress.md), [independent Strong review](../../Tests/ContractFixtures/SPEC006/Evidence/rfc-014-p04/exit-review.md) and [runtime bank design](../implementation-designs/spec-006-runtime-record-banks.md). T10.1 remains open through P10–P12.
   **Evidence:** existing owner conformance report and immutable owner-driver
   reports linked to exact commits/artifacts; the [P02 receipt](../../Tests/ContractFixtures/SPEC006/Evidence/rfc-014-p02/result.md) records the four-profile declaration exit and remaining joint-package obligations. T10.1 remains open.
 
