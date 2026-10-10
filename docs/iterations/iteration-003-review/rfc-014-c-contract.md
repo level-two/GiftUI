@@ -5,6 +5,8 @@ Parent: [RFC-014](../../rfcs/rfc-014-runtime-derived-records-and-scoped-model-ac
 Direction: [C1–C6](rfc-014-decision-direction.md). Baseline: `d2c4be83`.
 Eugene authorized this detailed design step after recording that direction.
 No compiler experiment or production change is part of this step.
+The [application storage ledger](rfc-014-c-storage-ledger.md) supplies concrete
+K=2/F=1 capacities, replacement traces and the proposed five-bank analyzer cost.
 
 The feature remains at RFC stage under accepted PROPOSAL-007. Post-MVP
 iteration 3 requires real analyzer/counter traversal on all four configurations.
@@ -299,6 +301,7 @@ must enforce that obligation. Safe keys alone do not solve owning-ticket lifetim
 
 | Condition | Proposed bounded outcome / required behavior |
 | --- | --- |
+| No model slot during application-owned construction | Proposed `modelStorageCapacityExhausted`; no live identity/ticket published |
 | No model slot for replacement | Existing `replacementStagingCapacityExhausted`; preserve old association and first failure |
 | Initial association / registration full | Existing location/association/registration capacity outcomes at the matching owner; skip affected body |
 | Frozen model/property backing full | Proposed `frozenStorageCapacityExhausted` in the observable owner; abort before the affected body, release frame staging, keep current dirty |

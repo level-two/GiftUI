@@ -171,7 +171,12 @@ The runtime identity and publication principles below remain proposed shared
 requirements. The per-Canvas key realization, callback-only restriction and
 four-slot arithmetic below describe the earlier branch and its evidence; they
 are not automatically the realization or reservation for C. Recompute the
-resource model from C's complete owner/version ledger before approval.
+resource model from C's complete owner/version ledger before approval. The
+[C storage ledger](../iterations/iteration-003-review/rfc-014-c-storage-ledger.md)
+now proposes K=2 current model slots and F=1 frozen slot: five analyzer
+capture-sized banks (32,320 transition bytes), with first-excess replacement
+refusal while a former owner occupies the second current slot. This conflicts
+with ADR-034 and remains a proposed resource branch, not an approved increase.
 
 ### Runtime records and exact identity
 
