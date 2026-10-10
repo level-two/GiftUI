@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""P02 declaration/lowering exit. P03/P04/P06 own runtime integration."""
+"""P02 declaration/lowering exit followed by the registered P04 component checks."""
 import argparse
 import hashlib
 import json
@@ -217,3 +217,7 @@ report = {'package': 'P02', 'profile': profile, 'source_commit': source_commit,
                         or p.name in ('declarations', 'macro-checks')}}
 (out / 'result.json').write_text(json.dumps(report, indent=2, sort_keys=True) + '\n')
 print(f'P02 {profile}: {len(checks)} checks passed; {execution}; {out / "result.json"}')
+
+# Keep the existing four-profile owner route explicit during staged migration.
+subprocess.run(["python3", str(ROOT / "scripts/contracts/check-spec-006-runtime-records.py"),
+                "--giftui-build", str(out)], cwd=ROOT, check=True)

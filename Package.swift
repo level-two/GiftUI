@@ -85,7 +85,11 @@ let package = Package(
         ),
         .target(
             name: "GiftUISemanticCore",
-            dependencies: ["GiftUI"]
+            dependencies: ["GiftUI"],
+            swiftSettings: [
+                .enableExperimentalFeature("LifetimeDependence"),
+                .enableExperimentalFeature("Lifetimes"),
+            ]
         ),
         .target(
             name: "GiftUITextResources",

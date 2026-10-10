@@ -42,3 +42,36 @@
 - Consecutive unproductive repair count: **0 of 2**. Preserve the counter across
   handoffs; stop after two attempts without a new pass or narrowed cause.
 - Result: dispatched; package exit pending. No contract/scope change requested.
+
+## Step 1 — scoped production traversal join
+
+The existing `SemanticExpansionTraversal` now implements the approved Domain
+and scoped accessor ABI. Its body bridge is noncopyable/nonescapable and follows
+the actual borrowed State owner lifetime. `ObservableSemanticBodyBinding` uses
+P03's existing State binding and model-read operations; Semantic Core still
+imports only GiftUI. Binding precedes body-count reservation/evaluation, each
+read ends before recursive child discovery, and all traversal helpers stop on
+the first semantic, binding or access failure. Access failures remain typed and
+separate for the coordinator's SPEC-010 route. The old unscoped entry helper is
+removed rather than retained as a compatibility fallback.
+
+`ScopedTraversalProbe.swift` exercises actual generated State witnesses through
+the production Semantic Core visitor. Its small test workspace/sink isolates
+that join; it is explicitly not record, exact-identity or bank-lifetime evidence.
+The fixture uses P03's Static owner even in a Dynamic compiler configuration.
+No whole-module, Dynamic storage, application, heap/stack or connected-target
+claim follows from this step. Historical baseline callers remain migration work.
+
+Commands: `scripts/format-swift.sh`; both platform `doctor.sh` commands; then
+`python3 scripts/contracts/check-spec-006-runtime-records.py --giftui-build <core>`
+using the four exact P03-approved core directories in `step-1-receipts.json`.
+Pinned Swift 6.3.2 compiles the selected Semantic Core and owner/profile files;
+macOS Static and Dynamic configurations each execute 30 counted assertions with zero
+failures. ARMv6 and nRF component compilation/ABI checks are recorded separately.
+The receipt snapshots include commands, input/compiler/core-receipt identities,
+artifact hashes and byte sizes. Sizes are not complete runtime resource costs.
+
+Initial native compilation and every subsequent check passed. Consecutive
+unproductive repair count remains **0 of 2**. P04 exit and T10.1 remain open.
+Next step: bounded runtime records, exact path pools and paired reconciliation,
+then bank/payload realization and first-excess/reader-aware publication checks.

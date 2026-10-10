@@ -60,22 +60,35 @@ package enum SemanticExpansionResult: Equatable, Sendable {
     case failure(SemanticExpansionError)
 }
 
-package enum SemanticStateBindingOutcome<Failure> {
-    case bound
-    case failure(Failure)
-    case unavailable
+/// The body bridge owns State binding and checked model access. Its scoped
+/// implementation borrows real backing; Semantic Core owns only traversal.
+package enum SemanticBodyEvaluation<Body, BindingFailure> {
+    case body(Body)
+    case semanticFailure(SemanticExpansionError)
+    case bindingFailure(BindingFailure)
+    case accessFailure(_GiftUIAccessFailure)
 }
 
-package protocol SemanticStatefulBinding {
+package protocol SemanticStatefulBinding: ~Copyable, ~Escapable {
+    associatedtype Domain: _GiftUIReadDomain
     associatedtype Identity: Equatable
     associatedtype Failure: Equatable & Sendable
 
-    mutating func bind<Declaration>(
+    borrowing func evaluate<Declaration: View>(
+        _ declaration: borrowing Declaration,
+        beforeBody: () -> SemanticExpansionError?,
+        body: (borrowing _GiftUIFrameRead<Domain>) throws(_GiftUIAccessFailure) -> Declaration.Body
+    ) -> SemanticBodyEvaluation<Declaration.Body, Failure>
+    where Declaration.Domain == Domain, Declaration.Body.Domain == Domain
+
+    borrowing func evaluateStateful<Declaration: View & _GiftUIObservableStateHost>(
         _ declaration: borrowing Declaration,
         structuralIdentity: Identity,
-        body: (borrowing Declaration) -> Void
-    ) -> SemanticStateBindingOutcome<Failure>
-    where Declaration: View & _GiftUIObservableStateHost
+        beforeBody: () -> SemanticExpansionError?,
+        body: (borrowing Declaration, borrowing _GiftUIFrameRead<Domain>)
+            throws(_GiftUIAccessFailure) -> Declaration.Body
+    ) -> SemanticBodyEvaluation<Declaration.Body, Failure>
+    where Declaration.Domain == Domain, Declaration.Body.Domain == Domain
 }
 
 package enum BoundSemanticExpansionResult<BindingFailure>: Equatable, Sendable
@@ -83,6 +96,7 @@ where BindingFailure: Equatable & Sendable {
     case success(SemanticExpansionSummary)
     case semanticFailure(SemanticExpansionError)
     case bindingFailure(BindingFailure)
+    case accessFailure(_GiftUIAccessFailure)
 }
 
 package protocol SemanticExpansionWorkspace {
@@ -858,40 +872,45 @@ struct SemanticExpansionAttempt {
     }
 }
 
-private struct SemanticExpansionTraversal<Workspace, Sink, StateBinding>:
+private struct SemanticExpansionTraversal<Workspace, Sink, StateBinding>: ~Copyable, ~Escapable,
     _GiftUISemanticTraversalVisitor
 where
     Workspace: SemanticExpansionWorkspace,
     Sink: SemanticExpansionSink,
-    StateBinding: SemanticStatefulBinding,
+    StateBinding: SemanticStatefulBinding & ~Copyable & ~Escapable,
     Workspace.Identity == Sink.Identity,
     Workspace.Identity == StateBinding.Identity
 {
+    typealias Domain = StateBinding.Domain
+
     private(set) var attempt: SemanticExpansionAttempt
     private(set) var workspace: Workspace
     private(set) var sink: Sink
-    private(set) var stateBinding: StateBinding
+    private let stateBinding: StateBinding
 
     private(set) var failure: SemanticExpansionError?
     private(set) var bindingFailure: StateBinding.Failure?
+    private(set) var accessFailure: _GiftUIAccessFailure?
+    private var stopped: Bool { failure != nil || bindingFailure != nil || accessFailure != nil }
     private var currentIdentity: Workspace.Identity?
     private var currentCategoryWasVisited = false
     private var nextModifierChainIndex: UInt16 = 0
 
+    @_lifetime(copy stateBinding)
     init(
         attempt: SemanticExpansionAttempt,
         workspace: Workspace,
         sink: Sink,
-        stateBinding: StateBinding
+        stateBinding: consuming StateBinding
     ) {
         self.attempt = attempt
         self.workspace = workspace
         self.sink = sink
-        self.stateBinding = stateBinding
+        self.stateBinding = consume stateBinding
     }
 
-    mutating func expandRoot<Root: View>(_ root: borrowing Root) {
-        guard failure == nil else { return }
+    mutating func expandRoot<Root: View>(_ root: borrowing Root) where Root.Domain == Domain {
+        guard !stopped else { return }
         var rootIdentity: Workspace.Identity?
         if let error = attempt.enterRoot(
             Root.self,
@@ -908,7 +927,7 @@ where
 
         currentIdentity = rootIdentity
         expandDeclaration(root)
-        guard failure == nil else { return }
+        guard !stopped else { return }
         if let error = attempt.leavePathComponent(workspace: &workspace) {
             stop(error)
         }
@@ -916,109 +935,62 @@ where
 
     mutating func visitCustomView<Declaration: View>(
         _ declaration: borrowing Declaration,
-        body: () -> Declaration.Body
-    ) {
-        guard beginCategory() else { return }
-        var bodyIdentity: Workspace.Identity?
-        if let error = attempt.enterCustomBody(
-            Declaration.self,
-            workspace: &workspace,
-            identity: &bodyIdentity
-        ) {
-            stop(error)
-            return
-        }
-        guard let bodyIdentity else {
-            stop(.invalidIdentity)
-            return
-        }
-        currentIdentity = bodyIdentity
-
-        if let error = attempt.stageBodyEvaluation(
-            identity: bodyIdentity,
-            workspace: &workspace,
-            sink: &sink
-        ) {
-            stop(error)
-            return
-        }
-        guard Declaration.Body.self != Never.self else {
-            stop(.invariantViolation)
-            return
-        }
-        let evaluatedBody = body()
-        expandDeclaration(evaluatedBody)
-        guard failure == nil else { return }
-        if let error = attempt.leavePathComponent(workspace: &workspace) {
-            stop(error)
-        }
+        body: (borrowing _GiftUIFrameRead<Domain>) throws(_GiftUIAccessFailure) -> Declaration.Body
+    ) where Declaration.Domain == Domain, Declaration.Body.Domain == Domain {
+        guard let bodyIdentity = beginBody(Declaration.self) else { return }
+        let result = stateBinding.evaluate(
+            declaration,
+            beforeBody: {
+                attempt.stageBodyEvaluation(
+                    identity: bodyIdentity, workspace: &workspace, sink: &sink)
+            }, body: body)
+        finishBody(result)
     }
 
-    mutating func visitStatefulCustomView<
-        Declaration: View & _GiftUIObservableStateHost
-    >(
+    mutating func visitStatefulCustomView<Declaration: View & _GiftUIObservableStateHost>(
         _ declaration: borrowing Declaration,
-        body: (borrowing Declaration) -> Declaration.Body
-    ) {
-        guard beginCategory() else { return }
-        var bodyIdentity: Workspace.Identity?
-        if let error = attempt.enterCustomBody(
-            Declaration.self,
-            workspace: &workspace,
-            identity: &bodyIdentity
-        ) {
+        body: (borrowing Declaration, borrowing _GiftUIFrameRead<Domain>)
+            throws(_GiftUIAccessFailure) -> Declaration.Body
+    ) where Declaration.Domain == Domain, Declaration.Body.Domain == Domain {
+        guard let bodyIdentity = beginBody(Declaration.self) else { return }
+        let result = stateBinding.evaluateStateful(
+            declaration, structuralIdentity: bodyIdentity,
+            beforeBody: {
+                attempt.stageBodyEvaluation(
+                    identity: bodyIdentity, workspace: &workspace, sink: &sink)
+            }, body: body)
+        finishBody(result)
+    }
+
+    private mutating func beginBody<Declaration: View>(_ type: Declaration.Type) -> Workspace
+        .Identity?
+    {
+        guard beginCategory() else { return nil }
+        var identity: Workspace.Identity?
+        if let error = attempt.enterCustomBody(type, workspace: &workspace, identity: &identity) {
             stop(error)
-            return
+            return nil
         }
-        guard let bodyIdentity else {
+        guard let identity else {
             stop(.invalidIdentity)
-            return
+            return nil
         }
-        currentIdentity = bodyIdentity
+        currentIdentity = identity
+        return identity
+    }
 
-        var evaluatedBody: Declaration.Body?
-        var bodyFailure: SemanticExpansionError?
-        let bindingOutcome = stateBinding.bind(
-            declaration,
-            structuralIdentity: bodyIdentity
-        ) { boundDeclaration in
-            if let error = attempt.stageBodyEvaluation(
-                identity: bodyIdentity,
-                workspace: &workspace,
-                sink: &sink
-            ) {
-                bodyFailure = error
-                return
-            }
-            guard Declaration.Body.self != Never.self else {
-                bodyFailure = .invariantViolation
-                return
-            }
-            evaluatedBody = body(boundDeclaration)
-        }
-
-        switch bindingOutcome {
-        case .failure(let error):
-            bindingFailure = error
-            return
-        case .unavailable:
-            stop(.invariantViolation)
-            return
-        case .bound:
-            break
-        }
-        if let bodyFailure {
-            stop(bodyFailure)
-            return
-        }
-        guard let evaluatedBody else {
-            stop(.invariantViolation)
-            return
-        }
-        expandDeclaration(evaluatedBody)
-        guard failure == nil, bindingFailure == nil else { return }
-        if let error = attempt.leavePathComponent(workspace: &workspace) {
-            stop(error)
+    private mutating func finishBody<Body: View>(
+        _ result: SemanticBodyEvaluation<Body, StateBinding.Failure>
+    )
+    where Body.Domain == Domain {
+        switch result {
+        case .body(let body):
+            expandDeclaration(body)
+            guard !stopped else { return }
+            if let error = attempt.leavePathComponent(workspace: &workspace) { stop(error) }
+        case .semanticFailure(let error): stop(error)
+        case .bindingFailure(let error): bindingFailure = error
+        case .accessFailure(let error): accessFailure = error
         }
     }
 
@@ -1029,7 +1001,7 @@ where
     mutating func visitFixed<A: View, B: View>(
         _ a: borrowing A,
         _ b: borrowing B
-    ) {
+    ) where A.Domain == Domain, B.Domain == Domain {
         guard beginCategory() else { return }
         expandFixedChild(a, index: 0)
         expandFixedChild(b, index: 1)
@@ -1039,7 +1011,7 @@ where
         _ a: borrowing A,
         _ b: borrowing B,
         _ c: borrowing C
-    ) {
+    ) where A.Domain == Domain, B.Domain == Domain, C.Domain == Domain {
         guard beginCategory() else { return }
         expandFixedChild(a, index: 0)
         expandFixedChild(b, index: 1)
@@ -1051,7 +1023,7 @@ where
         _ b: borrowing B,
         _ c: borrowing C,
         _ d: borrowing D
-    ) {
+    ) where A.Domain == Domain, B.Domain == Domain, C.Domain == Domain, D.Domain == Domain {
         guard beginCategory() else { return }
         expandFixedChild(a, index: 0)
         expandFixedChild(b, index: 1)
@@ -1065,7 +1037,11 @@ where
         _ c: borrowing C,
         _ d: borrowing D,
         _ e: borrowing E
-    ) {
+    )
+    where
+        A.Domain == Domain, B.Domain == Domain, C.Domain == Domain, D.Domain == Domain,
+        E.Domain == Domain
+    {
         guard beginCategory() else { return }
         expandFixedChild(a, index: 0)
         expandFixedChild(b, index: 1)
@@ -1077,7 +1053,7 @@ where
     mutating func visitConditionalFirst<First: View, Second: View>(
         _ content: borrowing First,
         second: Second.Type
-    ) {
+    ) where First.Domain == Domain, Second.Domain == Domain {
         guard beginCategory() else { return }
         expandConditionalChild(content, branch: 0)
     }
@@ -1085,18 +1061,19 @@ where
     mutating func visitConditionalSecond<First: View, Second: View>(
         first: First.Type,
         _ content: borrowing Second
-    ) {
+    ) where First.Domain == Domain, Second.Domain == Domain {
         guard beginCategory() else { return }
         expandConditionalChild(content, branch: 1)
     }
 
-    mutating func visitOptionalAbsent<Content: View>(_ content: Content.Type) {
+    mutating func visitOptionalAbsent<Content: View>(_ content: Content.Type)
+    where Content.Domain == Domain {
         _ = beginCategory()
     }
 
     mutating func visitOptionalPresent<Content: View>(
         _ content: borrowing Content
-    ) {
+    ) where Content.Domain == Domain {
         guard beginCategory() else { return }
         var presenceIdentity: Workspace.Identity?
         if let error = attempt.enterOptionalPresence(
@@ -1113,7 +1090,7 @@ where
         currentIdentity = presenceIdentity
 
         expandFixedChild(content, index: 0)
-        guard failure == nil else { return }
+        guard !stopped else { return }
         if let error = attempt.leavePathComponent(workspace: &workspace) {
             stop(error)
         }
@@ -1144,7 +1121,7 @@ where
     >(
         content: borrowing Content,
         payload: borrowing Payload
-    ) {
+    ) where Content.Domain == Domain {
         guard beginCategory(), let currentIdentity else {
             if failure == nil {
                 stop(.invalidIdentity)
@@ -1189,7 +1166,7 @@ where
     >(
         content: borrowing Content,
         payload: borrowing Payload
-    ) {
+    ) where Content.Domain == Domain {
         guard beginCategory(), let currentIdentity else {
             if failure == nil {
                 stop(.invalidIdentity)
@@ -1215,7 +1192,7 @@ where
     >(
         content: borrowing Content,
         payload: borrowing Payload
-    ) {
+    ) where Content.Domain == Domain {
         guard beginCategory(), let modifierIdentity = currentIdentity else {
             if failure == nil {
                 stop(.invalidIdentity)
@@ -1224,7 +1201,7 @@ where
         }
 
         expandDeclaration(content, continuingModifierChain: true)
-        guard failure == nil else { return }
+        guard !stopped else { return }
         let chainIndex = nextModifierChainIndex
         if let error = attempt.stageModifierApplication(
             identity: modifierIdentity,
@@ -1242,8 +1219,8 @@ where
     private mutating func expandDeclaration<Declaration: View>(
         _ declaration: borrowing Declaration,
         continuingModifierChain: Bool = false
-    ) {
-        guard failure == nil else { return }
+    ) where Declaration.Domain == Domain {
+        guard !stopped else { return }
         let parentIdentity = currentIdentity
         let parentCategoryWasVisited = currentCategoryWasVisited
         let parentModifierChainIndex = nextModifierChainIndex
@@ -1276,10 +1253,10 @@ where
         }
 
         declaration._giftUITraverse(&self)
-        if failure == nil, !currentCategoryWasVisited {
+        if !stopped, !currentCategoryWasVisited {
             stop(.invariantViolation)
         }
-        guard failure == nil else { return }
+        guard !stopped else { return }
         if let error = attempt.leavePathComponent(workspace: &workspace) {
             stop(error)
             return
@@ -1295,8 +1272,8 @@ where
     private mutating func expandFixedChild<Content: View>(
         _ content: borrowing Content,
         index: UInt8
-    ) {
-        guard failure == nil else { return }
+    ) where Content.Domain == Domain {
+        guard !stopped else { return }
         let parentIdentity = currentIdentity
         var childIdentity: Workspace.Identity?
         if let error = attempt.enterFixedChild(
@@ -1314,7 +1291,7 @@ where
         currentIdentity = childIdentity
 
         expandDeclaration(content)
-        guard failure == nil else { return }
+        guard !stopped else { return }
         if let error = attempt.leavePathComponent(workspace: &workspace) {
             stop(error)
             return
@@ -1325,8 +1302,8 @@ where
     private mutating func expandConditionalChild<Content: View>(
         _ content: borrowing Content,
         branch: UInt8
-    ) {
-        guard failure == nil else { return }
+    ) where Content.Domain == Domain {
+        guard !stopped else { return }
         let parentIdentity = currentIdentity
         var branchIdentity: Workspace.Identity?
         if let error = attempt.enterConditionalBranch(
@@ -1344,7 +1321,7 @@ where
         currentIdentity = branchIdentity
 
         expandFixedChild(content, index: 0)
-        guard failure == nil else { return }
+        guard !stopped else { return }
         if let error = attempt.leavePathComponent(workspace: &workspace) {
             stop(error)
             return
@@ -1353,7 +1330,7 @@ where
     }
 
     private mutating func beginCategory() -> Bool {
-        guard failure == nil else { return false }
+        guard !stopped else { return false }
         guard !currentCategoryWasVisited else {
             stop(.invariantViolation)
             return false
@@ -1369,63 +1346,22 @@ where
     }
 }
 
-private enum UnsupportedStateBindingFailure: UInt8, Equatable, Sendable {
-    case unreachable = 0
-}
-
-private struct UnsupportedStateBinding<Identity>: SemanticStatefulBinding
-where Identity: Equatable {
-    mutating func bind<Declaration>(
-        _ declaration: borrowing Declaration,
-        structuralIdentity: Identity,
-        body: (borrowing Declaration) -> Void
-    ) -> SemanticStateBindingOutcome<UnsupportedStateBindingFailure>
-    where Declaration: View & _GiftUIObservableStateHost {
-        .unavailable
-    }
-}
-
-package func expandSemanticTree<
-    Root: View,
-    Workspace: SemanticExpansionWorkspace,
-    Sink: SemanticExpansionSink
->(
-    _ root: borrowing Root,
-    limits: SemanticExpansionLimits,
-    workspace: inout Workspace,
-    sink: inout Sink
-) -> SemanticExpansionResult where Workspace.Identity == Sink.Identity {
-    var stateBinding = UnsupportedStateBinding<Workspace.Identity>()
-    let result = expandSemanticTreeWithStateBinding(
-        root,
-        limits: limits,
-        workspace: &workspace,
-        sink: &sink,
-        stateBinding: &stateBinding
-    )
-    switch result {
-    case .success(let summary):
-        return .success(summary)
-    case .semanticFailure(let error):
-        return .failure(error)
-    case .bindingFailure:
-        return .failure(.invariantViolation)
-    }
-}
-
+/// The caller supplies a lexical body bridge. Success makes a complete candidate
+/// available to the next owner; it does not commit global semantic publication.
 package func expandSemanticTreeWithStateBinding<
     Root: View,
     Workspace: SemanticExpansionWorkspace,
     Sink: SemanticExpansionSink,
-    StateBinding: SemanticStatefulBinding
+    StateBinding: SemanticStatefulBinding & ~Copyable & ~Escapable
 >(
     _ root: borrowing Root,
     limits: SemanticExpansionLimits,
     workspace: inout Workspace,
     sink: inout Sink,
-    stateBinding: inout StateBinding
+    stateBinding: consuming StateBinding
 ) -> BoundSemanticExpansionResult<StateBinding.Failure>
 where
+    Root.Domain == StateBinding.Domain,
     Workspace.Identity == Sink.Identity,
     Workspace.Identity == StateBinding.Identity
 {
@@ -1433,33 +1369,25 @@ where
     if let error = attempt.begin(workspace: &workspace, sink: &sink) {
         return .semanticFailure(error)
     }
-
     var traversal = SemanticExpansionTraversal(
-        attempt: attempt,
-        workspace: workspace,
-        sink: sink,
-        stateBinding: stateBinding
-    )
+        attempt: attempt, workspace: workspace, sink: sink, stateBinding: consume stateBinding)
     traversal.expandRoot(root)
     attempt = traversal.attempt
     workspace = traversal.workspace
     sink = traversal.sink
-    stateBinding = traversal.stateBinding
-
-    if let bindingFailure = traversal.bindingFailure {
+    if let failure = traversal.bindingFailure {
         attempt.discardForOwnerFailure(workspace: &workspace, sink: &sink)
-        return .bindingFailure(bindingFailure)
+        return .bindingFailure(failure)
     }
-
-    if let traversalFailure = traversal.failure {
-        return .semanticFailure(
-            attempt.fail(traversalFailure, workspace: &workspace, sink: &sink)
-        )
+    if let failure = traversal.accessFailure {
+        attempt.discardForOwnerFailure(workspace: &workspace, sink: &sink)
+        return .accessFailure(failure)
+    }
+    if let failure = traversal.failure {
+        return .semanticFailure(attempt.fail(failure, workspace: &workspace, sink: &sink))
     }
     switch attempt.succeed(workspace: &workspace, sink: &sink) {
-    case .success(let summary):
-        return .success(summary)
-    case .failure(let error):
-        return .semanticFailure(error)
+    case .success(let summary): return .success(summary)
+    case .failure(let error): return .semanticFailure(error)
     }
 }
