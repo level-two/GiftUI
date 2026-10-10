@@ -97,7 +97,7 @@ commands.append(shlex.join(escape_cmd))
 (out / 'commands.txt').write_text('\n'.join(commands) + '\n')
 negative = subprocess.run(escape_cmd, cwd=ROOT, text=True, capture_output=True)
 (out / 'escape.log').write_text(negative.stdout + negative.stderr)
-assert negative.returncode != 0 and ('Escapable' in negative.stderr or 'lifetime' in negative.stderr), negative.stderr
+assert negative.returncode != 0 and ("requires that 'SemanticRecordView<UInt32>' conform to 'Escapable'" in negative.stderr), negative.stderr
 checks.append({'name': 'borrowed-view-escape-rejected', 'exit': negative.returncode, 'expected_failure': True})
 if profile.startswith('macos'):
     main = out / 'Main.swift'
@@ -111,7 +111,7 @@ else:
     arch = 'v6' if profile == 'raspberry-pi-armv6' else 'v7E-M'
     assert re.search(r'Tag_CPU_arch: ' + arch + r'\s*$', abi, re.MULTILINE)
     execution = 'cross-compiled only; no target execution'
-report = {'package': 'P04', 'step': 'scoped-traversal', 'profile': profile,
+report = {'package': 'P04', 'step': 'runtime-records', 'profile': profile,
           'source_commit': subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=ROOT, text=True).strip(),
           'source_dirty': bool(subprocess.check_output(['git', 'status', '--porcelain'], cwd=ROOT, text=True)),
           'inputs': {str(p.relative_to(ROOT)): digest(p) for p in sorted(set(inputs))},

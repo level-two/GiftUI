@@ -143,3 +143,19 @@ pass. The preflight additionally guards huge scalar counts before UInt32
 conversion, and complete-key export rejects non-role endpoints.
 Consecutive unproductive repairs remain **0 of 2**. Four final owner-profile
 routes and independent exit review remain open; no owner criterion is closed.
+
+
+## Step 4 — Embedded finite type witness repair
+
+The first final Embedded route rejected the fixture's `type(of: Text.padding)`
+opaque metatype expression (preserved in `step-4-initial-embedded-failure.log`).
+The finite codec now uses the inferred `Body` type of an ordinary padding witness
+View; it never evaluates that witness or generates occurrences. This preserves
+the same role and uses the approved inferred ordinary-body surface.
+Targeted nRF object generation/ABI/lifetime/layout checks pass, and the native
+rerun still executes 57 + 57 declaration, 58 bank and 30 scoped checks.
+`step-4-repair-receipts.json` identifies both artifacts and all source inputs.
+The negative driver now requires the exact non-Escapable-result diagnostic,
+preventing an unrelated lifetime error from counting as the rejection proof.
+This was one productive repair; consecutive unproductive counter is **0 of 2**.
+All four registered routes will be recollected against this fixture revision.

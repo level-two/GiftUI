@@ -1,0 +1,136 @@
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC006/RuntimeRecords/ScopedTraversalProbe.swift:207:22: error: cannot use metatype of type 'GiftUILayoutModifiedContent<Text<RootDomain>, _GiftUIPaddingPayload>' in embedded Swift [#EmbeddedRestrictions]
+205 |     static func modifierDiscriminator<D>(of type: D.Type) -> UInt16 {
+206 |         if D.self == RecordParent.Body.self || D.self == ModifierRoot.Body.self { return 1 }
+207 |         if D.self == Swift.type(of: Text<RootDomain>("type").padding(0)) { return 2 }
+    |                      `- error: cannot use metatype of type 'GiftUILayoutModifiedContent<Text<RootDomain>, _GiftUIPaddingPayload>' in embedded Swift [#EmbeddedRestrictions]
+208 |         return 0
+209 |     }
+    :
+242 |         let declaration = RecordParent(candidate: key, seed: RootSeed(trace: trace, value: 37))
+243 |         let binding = ObservableSemanticBodyBinding(models: scope.borrowedScope(), root: root.borrowedRoot(), domain: RootDomain.self)
+244 |         let result = store.expand(declaration, roles: RecordRoles.self, codec: SemanticStandardPayloadCodec<RecordRoles>.self,
+    |                            `- note: generic specialization called here
+245 |                                   limits: semanticLimits, binding: consume binding)
+246 |         guard case .success(let summary) = result else { preconditionFailure() }
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC006/RuntimeRecords/ScopedTraversalProbe.swift:207:22: error: cannot use metatype of type 'GiftUILayoutModifiedContent<Text<RootDomain>, _GiftUIPaddingPayload>' in embedded Swift [#EmbeddedRestrictions]
+205 |     static func modifierDiscriminator<D>(of type: D.Type) -> UInt16 {
+206 |         if D.self == RecordParent.Body.self || D.self == ModifierRoot.Body.self { return 1 }
+207 |         if D.self == Swift.type(of: Text<RootDomain>("type").padding(0)) { return 2 }
+    |                      `- error: cannot use metatype of type 'GiftUILayoutModifiedContent<Text<RootDomain>, _GiftUIPaddingPayload>' in embedded Swift [#EmbeddedRestrictions]
+208 |         return 0
+209 |     }
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC006/RuntimeRecords/ScopedTraversalProbe.swift:207:22: error: cannot use metatype of type 'GiftUILayoutModifiedContent<Text<RootDomain>, _GiftUIPaddingPayload>' in embedded Swift [#EmbeddedRestrictions]
+205 |     static func modifierDiscriminator<D>(of type: D.Type) -> UInt16 {
+206 |         if D.self == RecordParent.Body.self || D.self == ModifierRoot.Body.self { return 1 }
+207 |         if D.self == Swift.type(of: Text<RootDomain>("type").padding(0)) { return 2 }
+    |                      `- error: cannot use metatype of type 'GiftUILayoutModifiedContent<Text<RootDomain>, _GiftUIPaddingPayload>' in embedded Swift [#EmbeddedRestrictions]
+208 |         return 0
+209 |     }
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC006/RuntimeRecords/ScopedTraversalProbe.swift:198:17: error: cannot use metatype of type 'GiftUILayoutModifiedContent<Text<RootDomain>, _GiftUIPaddingPayload>' in embedded Swift [#EmbeddedRestrictions]
+196 |         // This is a finite concrete type witness, never an occurrence/graph input.
+197 |         // Constructing a framework leaf wrapper does not evaluate any body.
+198 |         else if D.self == Swift.type(of: Text<RootDomain>("type").padding(0)) { role = 10 }
+    |                 `- error: cannot use metatype of type 'GiftUILayoutModifiedContent<Text<RootDomain>, _GiftUIPaddingPayload>' in embedded Swift [#EmbeddedRestrictions]
+199 |         else if D.self == ActionRoot.self { role = 11 }
+200 |         else if D.self == ActionRoot.Body.self { role = 12 }
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC006/RuntimeRecords/ScopedTraversalProbe.swift:198:27: error: cannot use metatype of type 'GiftUILayoutModifiedContent<Text<RootDomain>, _GiftUIPaddingPayload>' in embedded Swift [#EmbeddedRestrictions]
+196 |         // This is a finite concrete type witness, never an occurrence/graph input.
+197 |         // Constructing a framework leaf wrapper does not evaluate any body.
+198 |         else if D.self == Swift.type(of: Text<RootDomain>("type").padding(0)) { role = 10 }
+    |                           `- error: cannot use metatype of type 'GiftUILayoutModifiedContent<Text<RootDomain>, _GiftUIPaddingPayload>' in embedded Swift [#EmbeddedRestrictions]
+199 |         else if D.self == ActionRoot.self { role = 11 }
+200 |         else if D.self == ActionRoot.Body.self { role = 12 }
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC006/RuntimeRecords/ScopedTraversalProbe.swift:207:22: error: cannot use metatype of type 'GiftUILayoutModifiedContent<Text<RootDomain>, _GiftUIPaddingPayload>' in embedded Swift [#EmbeddedRestrictions]
+205 |     static func modifierDiscriminator<D>(of type: D.Type) -> UInt16 {
+206 |         if D.self == RecordParent.Body.self || D.self == ModifierRoot.Body.self { return 1 }
+207 |         if D.self == Swift.type(of: Text<RootDomain>("type").padding(0)) { return 2 }
+    |                      `- error: cannot use metatype of type 'GiftUILayoutModifiedContent<Text<RootDomain>, _GiftUIPaddingPayload>' in embedded Swift [#EmbeddedRestrictions]
+208 |         return 0
+209 |     }
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC006/RuntimeRecords/ScopedTraversalProbe.swift:198:27: error: cannot use metatype of type 'GiftUILayoutModifiedContent<Text<RootDomain>, _GiftUIPaddingPayload>' in embedded Swift [#EmbeddedRestrictions]
+196 |         // This is a finite concrete type witness, never an occurrence/graph input.
+197 |         // Constructing a framework leaf wrapper does not evaluate any body.
+198 |         else if D.self == Swift.type(of: Text<RootDomain>("type").padding(0)) { role = 10 }
+    |                           `- error: cannot use metatype of type 'GiftUILayoutModifiedContent<Text<RootDomain>, _GiftUIPaddingPayload>' in embedded Swift [#EmbeddedRestrictions]
+199 |         else if D.self == ActionRoot.self { role = 11 }
+200 |         else if D.self == ActionRoot.Body.self { role = 12 }
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC006/RuntimeRecords/ScopedTraversalProbe.swift:207:22: error: cannot use metatype of type 'GiftUILayoutModifiedContent<Text<RootDomain>, _GiftUIPaddingPayload>' in embedded Swift [#EmbeddedRestrictions]
+205 |     static func modifierDiscriminator<D>(of type: D.Type) -> UInt16 {
+206 |         if D.self == RecordParent.Body.self || D.self == ModifierRoot.Body.self { return 1 }
+207 |         if D.self == Swift.type(of: Text<RootDomain>("type").padding(0)) { return 2 }
+    |                      `- error: cannot use metatype of type 'GiftUILayoutModifiedContent<Text<RootDomain>, _GiftUIPaddingPayload>' in embedded Swift [#EmbeddedRestrictions]
+208 |         return 0
+209 |     }
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC006/RuntimeRecords/ScopedTraversalProbe.swift:198:27: error: cannot use metatype of type 'GiftUILayoutModifiedContent<Text<RootDomain>, _GiftUIPaddingPayload>' in embedded Swift [#EmbeddedRestrictions]
+196 |         // This is a finite concrete type witness, never an occurrence/graph input.
+197 |         // Constructing a framework leaf wrapper does not evaluate any body.
+198 |         else if D.self == Swift.type(of: Text<RootDomain>("type").padding(0)) { role = 10 }
+    |                           `- error: cannot use metatype of type 'GiftUILayoutModifiedContent<Text<RootDomain>, _GiftUIPaddingPayload>' in embedded Swift [#EmbeddedRestrictions]
+199 |         else if D.self == ActionRoot.self { role = 11 }
+200 |         else if D.self == ActionRoot.Body.self { role = 12 }
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC006/RuntimeRecords/ScopedTraversalProbe.swift:207:22: error: cannot use metatype of type 'GiftUILayoutModifiedContent<Text<RootDomain>, _GiftUIPaddingPayload>' in embedded Swift [#EmbeddedRestrictions]
+205 |     static func modifierDiscriminator<D>(of type: D.Type) -> UInt16 {
+206 |         if D.self == RecordParent.Body.self || D.self == ModifierRoot.Body.self { return 1 }
+207 |         if D.self == Swift.type(of: Text<RootDomain>("type").padding(0)) { return 2 }
+    |                      `- error: cannot use metatype of type 'GiftUILayoutModifiedContent<Text<RootDomain>, _GiftUIPaddingPayload>' in embedded Swift [#EmbeddedRestrictions]
+208 |         return 0
+209 |     }
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC006/RuntimeRecords/ScopedTraversalProbe.swift:198:27: error: cannot use metatype of type 'GiftUILayoutModifiedContent<Text<RootDomain>, _GiftUIPaddingPayload>' in embedded Swift [#EmbeddedRestrictions]
+196 |         // This is a finite concrete type witness, never an occurrence/graph input.
+197 |         // Constructing a framework leaf wrapper does not evaluate any body.
+198 |         else if D.self == Swift.type(of: Text<RootDomain>("type").padding(0)) { role = 10 }
+    |                           `- error: cannot use metatype of type 'GiftUILayoutModifiedContent<Text<RootDomain>, _GiftUIPaddingPayload>' in embedded Swift [#EmbeddedRestrictions]
+199 |         else if D.self == ActionRoot.self { role = 11 }
+200 |         else if D.self == ActionRoot.Body.self { role = 12 }
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC006/RuntimeRecords/ScopedTraversalProbe.swift:207:22: error: cannot use metatype of type 'GiftUILayoutModifiedContent<Text<RootDomain>, _GiftUIPaddingPayload>' in embedded Swift [#EmbeddedRestrictions]
+205 |     static func modifierDiscriminator<D>(of type: D.Type) -> UInt16 {
+206 |         if D.self == RecordParent.Body.self || D.self == ModifierRoot.Body.self { return 1 }
+207 |         if D.self == Swift.type(of: Text<RootDomain>("type").padding(0)) { return 2 }
+    |                      `- error: cannot use metatype of type 'GiftUILayoutModifiedContent<Text<RootDomain>, _GiftUIPaddingPayload>' in embedded Swift [#EmbeddedRestrictions]
+208 |         return 0
+209 |     }
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC006/RuntimeRecords/ScopedTraversalProbe.swift:207:12: error: cannot use metatype of type 'GiftUILayoutModifiedContent<Text<RootDomain>, _GiftUIPaddingPayload>' in embedded Swift [#EmbeddedRestrictions]
+205 |     static func modifierDiscriminator<D>(of type: D.Type) -> UInt16 {
+206 |         if D.self == RecordParent.Body.self || D.self == ModifierRoot.Body.self { return 1 }
+207 |         if D.self == Swift.type(of: Text<RootDomain>("type").padding(0)) { return 2 }
+    |            `- error: cannot use metatype of type 'GiftUILayoutModifiedContent<Text<RootDomain>, _GiftUIPaddingPayload>' in embedded Swift [#EmbeddedRestrictions]
+208 |         return 0
+209 |     }
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC006/RuntimeRecords/ScopedTraversalProbe.swift:207:22: error: cannot use metatype of type 'GiftUILayoutModifiedContent<Text<RootDomain>, _GiftUIPaddingPayload>' in embedded Swift [#EmbeddedRestrictions]
+205 |     static func modifierDiscriminator<D>(of type: D.Type) -> UInt16 {
+206 |         if D.self == RecordParent.Body.self || D.self == ModifierRoot.Body.self { return 1 }
+207 |         if D.self == Swift.type(of: Text<RootDomain>("type").padding(0)) { return 2 }
+    |                      `- error: cannot use metatype of type 'GiftUILayoutModifiedContent<Text<RootDomain>, _GiftUIPaddingPayload>' in embedded Swift [#EmbeddedRestrictions]
+208 |         return 0
+209 |     }
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC006/RuntimeRecords/ScopedTraversalProbe.swift:207:22: error: cannot use metatype of type 'GiftUILayoutModifiedContent<Text<RootDomain>, _GiftUIPaddingPayload>' in embedded Swift [#EmbeddedRestrictions]
+205 |     static func modifierDiscriminator<D>(of type: D.Type) -> UInt16 {
+206 |         if D.self == RecordParent.Body.self || D.self == ModifierRoot.Body.self { return 1 }
+207 |         if D.self == Swift.type(of: Text<RootDomain>("type").padding(0)) { return 2 }
+    |                      `- error: cannot use metatype of type 'GiftUILayoutModifiedContent<Text<RootDomain>, _GiftUIPaddingPayload>' in embedded Swift [#EmbeddedRestrictions]
+208 |         return 0
+209 |     }
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC006/RuntimeRecords/ScopedTraversalProbe.swift:207:22: error: cannot use metatype of type 'GiftUILayoutModifiedContent<Text<RootDomain>, _GiftUIPaddingPayload>' in embedded Swift [#EmbeddedRestrictions]
+205 |     static func modifierDiscriminator<D>(of type: D.Type) -> UInt16 {
+206 |         if D.self == RecordParent.Body.self || D.self == ModifierRoot.Body.self { return 1 }
+207 |         if D.self == Swift.type(of: Text<RootDomain>("type").padding(0)) { return 2 }
+    |                      `- error: cannot use metatype of type 'GiftUILayoutModifiedContent<Text<RootDomain>, _GiftUIPaddingPayload>' in embedded Swift [#EmbeddedRestrictions]
+208 |         return 0
+209 |     }
+
+[#EmbeddedRestrictions]: <https://docs.swift.org/compiler/documentation/diagnostics/embedded-restrictions>

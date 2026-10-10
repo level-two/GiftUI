@@ -181,6 +181,14 @@ private struct UnknownRoot: View {
     typealias Domain = RootDomain
     func _giftUIEvaluate(read: borrowing _GiftUIFrameRead<RootDomain>) throws(_GiftUIAccessFailure) -> some View<RootDomain> { Text<RootDomain>("unknown") }
 }
+// A static inferred Body witness names the opaque padding type without a
+// runtime metatype operation. This declaration is never expanded by the test.
+private struct PaddingRoleWitness: View {
+    typealias Domain = RootDomain
+    func _giftUIEvaluate(read: borrowing _GiftUIFrameRead<RootDomain>) throws(_GiftUIAccessFailure) -> some View<RootDomain> {
+        Text<RootDomain>("type").padding(0)
+    }
+}
 private enum RecordRoles: SemanticDeclarationRoles {
     static func role<D>(of type: D.Type) -> SemanticRecordingRole? {
         let role: UInt16
@@ -193,9 +201,7 @@ private enum RecordRoles: SemanticDeclarationRoles {
         else if D.self == TupleView<Text<RootDomain>, Text<RootDomain>>.self { role = 7 }
         else if D.self == ModifierRoot.self { role = 8 }
         else if D.self == ModifierRoot.Body.self { role = 9 }
-        // This is a finite concrete type witness, never an occurrence/graph input.
-        // Constructing a framework leaf wrapper does not evaluate any body.
-        else if D.self == Swift.type(of: Text<RootDomain>("type").padding(0)) { role = 10 }
+        else if D.self == PaddingRoleWitness.Body.self { role = 10 }
         else if D.self == ActionRoot.self { role = 11 }
         else if D.self == ActionRoot.Body.self { role = 12 }
         else if D.self == RecordAction.self { role = 13 }
@@ -204,7 +210,7 @@ private enum RecordRoles: SemanticDeclarationRoles {
     }
     static func modifierDiscriminator<D>(of type: D.Type) -> UInt16 {
         if D.self == RecordParent.Body.self || D.self == ModifierRoot.Body.self { return 1 }
-        if D.self == Swift.type(of: Text<RootDomain>("type").padding(0)) { return 2 }
+        if D.self == PaddingRoleWitness.Body.self { return 2 }
         return 0
     }
 }
