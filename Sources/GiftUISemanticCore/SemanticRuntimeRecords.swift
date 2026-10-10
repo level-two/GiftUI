@@ -303,6 +303,7 @@ package struct SemanticRecordBankBuffers<Payload> {
         guard record < metadata.pointee.records, records[Int(record)].path == path,
             records[Int(record)].payload == .max
         else { return fail(.invalidIdentity) }
+        guard text.count <= Int(limits.textScalars) else { return .capacityExhausted }
         let scalarEnd = UInt32(metadata.pointee.scalars) + UInt32(text.count)
         let bytes =
             UInt64(metadata.pointee.payloadBytes) + UInt64(MemoryLayout<Payload?>.stride) + UInt64(

@@ -152,3 +152,25 @@ owner's complete criterion/resource/adoption dispositions.
 
 No optional deferred work or new architecture was introduced. A missing current
 capacity/lifetime contract would stop P04 and return to its owning Spec.
+
+## P04 component resource envelope
+
+A record is emitted for each entered declaration role. Its path adds that role
+and at most two incoming boundaries: conditional/optional adds a branch/presence
+plus fixed child; root, custom body and ordinary children need one. Structural
+declarations that introduce boundaries themselves also emit a role. Thus the
+selected visitor needs at most three entries per structural occurrence;
+the independently configured 378-entry pool covers 126 × 3. This is not permission to raise the approved
+record/depth/fanout limits. Finite supported roles are checked explicitly.
+Payload slots need at most semantic nodes plus modifiers: 48 + 50 = 98, since
+action is included in semantic nodes. Text retains its separate 224-scalar
+bound. Unknown payload vocabulary refuses rather than adding hidden storage.
+
+The actual-declaration fixture observes peaks 5 records / 11 prefixes / 3 payloads /
+2 scalars / depth 9; maximum fixed fanout is separately exercised at five.
+These component probes are not the actual counter/analyzer applications.
+P08/P09 must measure their vocabulary/workload peaks before host integration;
+P11 must include physical reserved banks, headers, independent committed keys,
+206-byte complete-key temporaries/recursive copies and 384-byte scalar decode
+scratch in target storage and feasible-path stack totals. Compiler layout
+receipts distinguish each target; object size is not a resource proof.

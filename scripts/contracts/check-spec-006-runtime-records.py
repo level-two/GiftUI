@@ -71,9 +71,37 @@ if profile != 'nrf52840-embedded':
 module('ScopedTraversal', [ROOT / 'Tests/ContractFixtures/SPEC010/RuntimeDerived/RootProbe.swift',
                            ROOT / 'Tests/ContractFixtures/SPEC006/RuntimeRecords/ScopedTraversalProbe.swift',
                            ROOT / 'Tests/ContractFixtures/SPEC006/RuntimeRecords/RecordBankProbe.swift'])
+fixture = ROOT / 'Tests/ContractFixtures/SPEC006/RuntimeRecords'
+layout = fixture / 'LayoutProbe.swift'
+inputs.append(layout)
+run('layouts', [compiler, *flags, '-module-name', 'RecordLayouts', '-emit-ir', layout, '-o', out / 'layouts.ll'])
+layout_ir = (out / 'layouts.ll').read_text()
+layouts = {}
+for name, body in re.findall(r'define[^\n]*@giftui_p04_layout_([a-z0-9_]+)\([^\n]*\)[^{]*\{(.*?)^}', layout_ir, re.S | re.M):
+    constant = re.search(r'ret i(?:32|64) (\d+)', body)
+    if not constant:
+        thunk = re.search(r'tail call swiftcc i(?:32|64) @"([^"]+)"\(\)', body)
+        assert thunk, (name, body)
+        target = re.search(r'define[^\n]*@"' + re.escape(thunk.group(1)) + r'"\([^\n]*\)[^{]*\{(.*?)^}', layout_ir, re.S | re.M)
+        assert target
+        constant = re.search(r'ret i(?:32|64) (\d+)', target.group(1))
+    assert constant, (name, body)
+    layouts[name] = int(constant.group(1))
+assert len(layouts) == 7, layouts
+layouts['two_bank_reserved_bytes'] = 2 * (layouts['metadata'] + 126 * layouts['record'] + 378 * layouts['prefix'] + 98 * layouts['payload_slot'] + 224 * 4)
+(out / 'layouts.json').write_text(json.dumps(layouts, indent=2, sort_keys=True) + '\n')
+escape = fixture / 'EscapeView.swift'
+inputs.append(escape)
+escape_cmd = list(map(str, [compiler, *flags, '-module-name', 'EscapeView', '-emit-object', escape, '-o', out / 'escape.o']))
+commands.append(shlex.join(escape_cmd))
+(out / 'commands.txt').write_text('\n'.join(commands) + '\n')
+negative = subprocess.run(escape_cmd, cwd=ROOT, text=True, capture_output=True)
+(out / 'escape.log').write_text(negative.stdout + negative.stderr)
+assert negative.returncode != 0 and ('Escapable' in negative.stderr or 'lifetime' in negative.stderr), negative.stderr
+checks.append({'name': 'borrowed-view-escape-rejected', 'exit': negative.returncode, 'expected_failure': True})
 if profile.startswith('macos'):
     main = out / 'Main.swift'
-    main.write_text('import ScopedTraversal\n@main struct Main { static func main() { let count = giftuiP04ScopedTraversal(); precondition(count == 30); let banks = giftuiP04RecordBanks(); precondition(banks > 0); print("record-bank checks=\(banks)"); print("scoped-traversal assertions=30 failures=0") } }\n')
+    main.write_text('import ScopedTraversal\n@main struct Main { static func main() { let count = giftuiP04ScopedTraversal(); precondition(count == 30); let banks = giftuiP04RecordBanks(); precondition(banks == 58); let derived = giftuiP04DerivedRecords(); let dynamic = giftuiP04DynamicRecords(); precondition(derived > 0 && derived == dynamic); print("derived-records checks=\(derived) per-profile"); print("record-bank checks=\(banks)"); print("scoped-traversal assertions=30 failures=0") } }\n')
     run('link', [compiler, *flags, main, base / 'GiftUI.o', *sorted(out.glob('*.o')), '-o', out / 'records'])
     execution = run('execute', [out / 'records']).strip()
 else:
@@ -89,7 +117,7 @@ report = {'package': 'P04', 'step': 'scoped-traversal', 'profile': profile,
           'inputs': {str(p.relative_to(ROOT)): digest(p) for p in sorted(set(inputs))},
           'core_receipt': str((base / 'result.json').relative_to(ROOT)), 'core_receipt_sha256': digest(base / 'result.json'),
           'compiler': core['compiler'], 'compiler_sha256': core['compiler_sha256'],
-          'commands': commands, 'checks': checks, 'execution': execution,
+          'commands': commands, 'checks': checks, 'execution': execution, 'layouts': layouts,
           'artifacts': {p.name: {'sha256': digest(p), 'bytes': p.stat().st_size} for p in out.iterdir()
                         if p.is_file() and p.name != 'result.json'}}
 (out / 'result.json').write_text(json.dumps(report, indent=2, sort_keys=True) + '\n')

@@ -236,7 +236,9 @@ package struct SemanticRecordView<Payload>: ~Escapable {
     package func completeIdentity(for reference: SemanticRecordReference)
         -> SemanticCompleteIdentity?
     {
-        guard let record = record(reference) else { return nil }
+        guard let record = record(reference), record.path < pathCount,
+            bank.paths[Int(record.path)].component.kind == .declarationRole
+        else { return nil }
         var reversed: InlineArray<34, SemanticPathComponent> = .init(repeating: .init(kind: .root))
         var cursor = record.path
         var count = 0

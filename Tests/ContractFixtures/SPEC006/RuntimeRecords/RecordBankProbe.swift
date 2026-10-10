@@ -159,6 +159,31 @@ private func lifetimeChecks(_ store: borrowing SemanticRecordStore<UInt32>) thro
             expect(next.enter(.init(kind: .fixedChild), limits: store.limits) == .invalidIdentity, &local)
             try store.discardCandidate(); return local
         }
+        // Maximum authored fixed fanout: five siblings, with exact matching
+        // comparisons 1 root + 1 role + (1+2+3+4+5) children + 5 leaf roles.
+        checks += try banks.withStore(limits(), owner: namespace.issue()) { (store) throws(SemanticExpansionError) in
+            var local: UInt32 = 0
+            for _ in 0..<2 {
+                let bank = store.expansionBank(try store.beginCandidate())!
+                try enter(bank, .init(kind: .root), store.limits)
+                try enter(bank, .init(kind: .declarationRole, role: 1), store.limits)
+                if let error = bank.appendRecord(limits: store.limits) { throw error }
+                for ordinal: UInt8 in 0..<5 {
+                    try enter(bank, .init(kind: .fixedChild, ordinal: ordinal), store.limits)
+                    try enter(bank, .init(kind: .declarationRole, role: 2), store.limits)
+                    if let error = bank.appendRecord(limits: store.limits) { throw error }
+                    bank.leave(); bank.leave()
+                }
+                bank.leave(); bank.leave(); bank.metadata.pointee.phase = .candidate
+                try store.publishCandidate()
+            }
+            try store.withPublishedView { (view) throws(SemanticExpansionError) in
+                expect(view.recordCount == 6 && view.pathCount == 12, &local)
+                expect(view.componentComparisons == 22, &local)
+                expect(view.componentComparisons <= UInt32(view.pathCount) * 5, &local)
+            }
+            return local
+        }
         return checks
     } catch { return 0 }
 }

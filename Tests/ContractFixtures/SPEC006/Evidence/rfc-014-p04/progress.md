@@ -103,3 +103,43 @@ This was one productive local repair. Consecutive unproductive repair count
 remains **0 of 2**. Native receipt/source hashes identify the current code; final
 four-profile owner routes, negative lifetimes, resource layouts and independent
 exit review remain pending. No Spec criterion or package is marked passed.
+
+
+## Step 3 — actual declaration emission and profile differential
+
+The actual production visitor now has independent expected record/payload tests
+for nested State, conditional 3→5→3 topology, UTF scalar decoding, source-order
+modifier indices with inner-to-outer payload emission, action-before-label,
+unknown-role refusal preserving publication, and State key/model preservation
+after repeated bank reuse. Both Static and Dynamic storage execute **57** checks;
+primitive bank checks now total **58**, including five-child exact matching with
+22 comparisons for 12 prefixes (below N×K = 60). Scoped join checks remain 30.
+The native receipt is `step-3-native-receipt.json`.
+
+Measured actual-declaration fixture high water is 5 records, 11 prefixes,
+3 payload slots, 2 scalars, depth 9, and 100 payload bytes on arm64 macOS.
+These compare with retained logical ceilings 126 records, semantic depth 34,
+48 semantic nodes, 14 bodies, 50 modifiers, six actions, and 224 text slots.
+The selected component backing has 378 independently bounded prefixes and
+98 typed payload slots. This is a conservative envelope, not a measured
+application maximum; P08/P09 must measure the real application vocabulary and
+P11 must account for full physical fit. The note explains the derivation.
+
+Compiler IR measures record stride 20, prefix 22, component 6, complete key 206,
+metadata 48, typed optional payload slot 32 and reference 16 bytes on macOS.
+The two reserved component banks total 29,832 bytes, excluding the owner,
+Dynamic array headers/allocation overhead, scope descriptors, recursive stack
+and codec scratch. A borrowed view cannot escape its callback (compiler rejects
+non-Escapable result); this negative is compiled, not just typechecked.
+
+Two fixture corrections were productive: Action construction needed `try`;
+and the new same-association State revisit initially expected
+`.associationsCommitted`. SPEC-010 table lines 607–608 and 615–616 require
+`.unchanged` for an unchanged live set, as already independently checked by
+P03 `RuntimeDerived/RootProbe.swift` lines 112–118. The initial failing execution
+is `.build/contracts/spec-006-records/tmpy3mx4s2g/macos-static/execute.log`;
+LLDB narrowed it to that fixture disposition assertion. Corrected expectations
+pass. The preflight additionally guards huge scalar counts before UInt32
+conversion, and complete-key export rejects non-role endpoints.
+Consecutive unproductive repairs remain **0 of 2**. Four final owner-profile
+routes and independent exit review remain open; no owner criterion is closed.
