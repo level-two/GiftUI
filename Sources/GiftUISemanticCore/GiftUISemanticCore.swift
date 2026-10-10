@@ -48,7 +48,7 @@ package struct SemanticExpansionSummary: Equatable, Sendable {
     }
 }
 
-package enum SemanticExpansionError: UInt8, Equatable, Sendable {
+package enum SemanticExpansionError: UInt8, Error, Equatable, Sendable {
     case capacityExhausted = 0
     case invalidIdentity = 1
     case reentrancyViolation = 2
@@ -146,6 +146,9 @@ package protocol SemanticExpansionWorkspace {
 package protocol SemanticExpansionSink {
     associatedtype Identity: Equatable
 
+    /// A reported independent path/payload bound preserves the exact local error.
+    var stagingFailure: SemanticExpansionError? { get }
+
     var maximumStructuralOccurrences: UInt16 { get }
     var maximumBodyEvaluations: UInt16 { get }
     var maximumSemanticOccurrences: UInt16 { get }
@@ -185,6 +188,12 @@ package protocol SemanticExpansionSink {
     mutating func publishExpansion(_ summary: SemanticExpansionSummary) -> Bool
     mutating func discardExpansion()
     mutating func resetExpansion()
+}
+
+extension SemanticExpansionSink {
+    // Count-only sinks have no separately bounded payload pool. A refusal after
+    // their reported count preflight remains an invariant failure.
+    package var stagingFailure: SemanticExpansionError? { nil }
 }
 
 package struct SemanticRecordingRole: RawRepresentable, Hashable, Sendable {
@@ -611,7 +620,7 @@ struct SemanticExpansionAttempt {
         }
         structuralOccurrenceCount = next
         guard sink.stageStructuralOccurrence(identity: identity) else {
-            return record(.invariantViolation)
+            return record(sink.stagingFailure ?? .invariantViolation)
         }
         return nil
     }
@@ -642,7 +651,7 @@ struct SemanticExpansionAttempt {
             return record(.capacityExhausted)
         }
         guard sink.stageSemanticOccurrence(identity: identity, payload: payload) else {
-            return record(.invariantViolation)
+            return record(sink.stagingFailure ?? .invariantViolation)
         }
         return nil
     }
@@ -680,7 +689,7 @@ struct SemanticExpansionAttempt {
                 chainIndex: chainIndex
             )
         else {
-            return record(.invariantViolation)
+            return record(sink.stagingFailure ?? .invariantViolation)
         }
         return nil
     }
@@ -723,7 +732,7 @@ struct SemanticExpansionAttempt {
             return record(.capacityExhausted)
         }
         guard sink.stageActionOccurrence(identity: identity, action: action) else {
-            return record(.invariantViolation)
+            return record(sink.stagingFailure ?? .invariantViolation)
         }
         return nil
     }

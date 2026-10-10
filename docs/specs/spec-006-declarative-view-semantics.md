@@ -198,6 +198,8 @@ Render consumes the corresponding semantic order and typed payloads. Neither
 builds another canonical graph. Explicit stacks, Swift body-return temporaries,
 recursive visitor frames and specialized calls all count toward resource evidence.
 
+Implementation realization: [runtime record banks](../implementation-designs/spec-006-runtime-record-banks.md) (P04; non-authoritative).
+
 ### Amendment acceptance criteria
 
 Old DV criteria remain regression requirements, with the amended compiled ABI.

@@ -75,3 +75,31 @@ Initial native compilation and every subsequent check passed. Consecutive
 unproductive repair count remains **0 of 2**. P04 exit and T10.1 remain open.
 Next step: bounded runtime records, exact path pools and paired reconciliation,
 then bank/payload realization and first-excess/reader-aware publication checks.
+
+
+## Step 2 — bounded bank primitives and profile storage
+
+`SemanticRuntimeRecords`, `SemanticRecordStore`, `SemanticRecordExpansion` and
+`SemanticStandardPayload` implement typed records/prefixes/payloads, disjoint
+banks, exact complete keys, bounded paired matching and the join into the sole
+visitor. Static lends caller-owned typed backing; Dynamic owns exactly configured
+arrays. The [focused note](../../../../../docs/implementation-designs/spec-006-runtime-record-banks.md)
+explains lifetimes, physical versus logical bounds and remaining owner joins.
+
+Targeted native check: `python3 scripts/contracts/check-spec-006-runtime-records.py
+--giftui-build .build/contracts/spec-006-rfc-014/f967611596d09deb-vzdyfrzf/macos-static`.
+The receipt in `step-2-native-receipt.json` records 55 independent bank checks and
+30 scoped traversal checks. The bank fixture covers exact-at-limit/first-excess
+records, prefixes, depth, payload slots, scalar slots and payload bytes; prior
+publication on failure; fanout; malformed/duplicate paths; roles/modifiers/prefix
+inequality; payload-independent exact matches; borrowed retired banks; stale
+references and independently copied keys. These are primitive tests: actual
+traversal-to-record declaration perturbation is the next step. Both profile
+storage files compile, but their full differential execution is not yet claimed.
+
+The first codec compilation failed because InlineArray itself has no
+`withUnsafeBufferPointer`; the corrected Span projection passes the same check.
+This was one productive local repair. Consecutive unproductive repair count
+remains **0 of 2**. Native receipt/source hashes identify the current code; final
+four-profile owner routes, negative lifetimes, resource layouts and independent
+exit review remain pending. No Spec criterion or package is marked passed.

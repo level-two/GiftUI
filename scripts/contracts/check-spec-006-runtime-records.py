@@ -57,7 +57,7 @@ def module(name, sources):
     run(name, [compiler, *flags, '-module-name', name, '-emit-module', '-emit-object', *sources,
                '-emit-module-path', out / (name + '.swiftmodule'), '-o', out / (name + '.o')])
 
-module('GiftUISemanticCore', [ROOT / 'Sources/GiftUISemanticCore/GiftUISemanticCore.swift'])
+module('GiftUISemanticCore', [ROOT / 'Sources/GiftUISemanticCore/GiftUISemanticCore.swift', ROOT / 'Sources/GiftUISemanticCore/SemanticRuntimeRecords.swift', ROOT / 'Sources/GiftUISemanticCore/SemanticRecordStore.swift', ROOT / 'Sources/GiftUISemanticCore/SemanticRecordExpansion.swift', ROOT / 'Sources/GiftUISemanticCore/SemanticStandardPayload.swift'])
 module('GiftUIExecution', [ROOT / 'Sources/GiftUIExecution/ObservableTargetGeneration.swift'])
 module('GiftUIObservableState', [ROOT / 'Sources/GiftUIObservableState' / name for name in (
     'ObservableStateValues.swift', 'ObservableModelIdentity.swift', 'ObservableModelOwnership.swift',
@@ -65,12 +65,15 @@ module('GiftUIObservableState', [ROOT / 'Sources/GiftUIObservableState' / name f
     'ObservableStateModel.swift', 'ObservableStateRegistrationLifecycle.swift', 'ObservableStateRootScope.swift',
     'ObservableStateRootTargetAccess.swift', 'ObservableStateBindingDecorator.swift', 'ObservableSemanticBodyBinding.swift')])
 module('GiftUIRuntimeStatic', [ROOT / 'Sources/GiftUIRuntimeStatic' / name for name in (
-    'StaticObservableModelStorage.swift', 'StaticObservableRootAdapter.swift', 'StaticObservableRootTargetAccess.swift')])
+    'StaticObservableModelStorage.swift', 'StaticObservableRootAdapter.swift', 'StaticObservableRootTargetAccess.swift', 'StaticSemanticRecordStorage.swift')])
+if profile != 'nrf52840-embedded':
+    module('GiftUIRuntimeDynamic', [ROOT / 'Sources/GiftUIRuntimeDynamic/DynamicSemanticRecordStorage.swift'])
 module('ScopedTraversal', [ROOT / 'Tests/ContractFixtures/SPEC010/RuntimeDerived/RootProbe.swift',
-                           ROOT / 'Tests/ContractFixtures/SPEC006/RuntimeRecords/ScopedTraversalProbe.swift'])
+                           ROOT / 'Tests/ContractFixtures/SPEC006/RuntimeRecords/ScopedTraversalProbe.swift',
+                           ROOT / 'Tests/ContractFixtures/SPEC006/RuntimeRecords/RecordBankProbe.swift'])
 if profile.startswith('macos'):
     main = out / 'Main.swift'
-    main.write_text('import ScopedTraversal\n@main struct Main { static func main() { let count = giftuiP04ScopedTraversal(); precondition(count == 30); print("scoped-traversal assertions=30 failures=0") } }\n')
+    main.write_text('import ScopedTraversal\n@main struct Main { static func main() { let count = giftuiP04ScopedTraversal(); precondition(count == 30); let banks = giftuiP04RecordBanks(); precondition(banks > 0); print("record-bank checks=\(banks)"); print("scoped-traversal assertions=30 failures=0") } }\n')
     run('link', [compiler, *flags, main, base / 'GiftUI.o', *sorted(out.glob('*.o')), '-o', out / 'records'])
     execution = run('execute', [out / 'records']).strip()
 else:
