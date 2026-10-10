@@ -64,35 +64,38 @@ private struct GiftUILayoutModifiedContent<
     Content: View,
     Payload: _GiftUISemanticModifierPayload
 >: View {
+    typealias Domain = Content.Domain
     typealias Body = Never
 
     let content: Content
     let payload: Payload
 
-    var body: Never {
+    func _giftUIEvaluate(read: borrowing _GiftUIFrameRead<Domain>) throws(_GiftUIAccessFailure)
+        -> Never
+    {
         fatalError("GiftUI layout modifiers have no view body")
     }
 
     func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor>(
         _ visitor: inout Visitor
-    ) {
+    ) where Visitor.Domain == Domain {
         visitor.visitModifier(content: content, payload: payload)
     }
 }
 
 public extension View {
-    func padding(_ length: GeometryScalar) -> some View {
+    func padding(_ length: GeometryScalar) -> some View<Domain> {
         padding(.all, length)
     }
 
-    func padding(_ edges: EdgeSet, _ length: GeometryScalar) -> some View {
+    func padding(_ edges: EdgeSet, _ length: GeometryScalar) -> some View<Domain> {
         GiftUILayoutModifiedContent(
             content: self,
             payload: _GiftUIPaddingPayload(edges: edges, length: length)
         )
     }
 
-    func padding(_ insets: EdgeInsets) -> some View {
+    func padding(_ insets: EdgeInsets) -> some View<Domain> {
         GiftUILayoutModifiedContent(
             content: self,
             payload: _GiftUIPaddingInsetsPayload(insets: insets)
@@ -103,7 +106,7 @@ public extension View {
         width: GeometryScalar? = nil,
         height: GeometryScalar? = nil,
         alignment: Alignment = .center
-    ) -> some View {
+    ) -> some View<Domain> {
         GiftUILayoutModifiedContent(
             content: self,
             payload: _GiftUIFixedFramePayload(
@@ -120,7 +123,7 @@ public extension View {
         minHeight: GeometryScalar? = nil,
         maxHeight: FrameLimit? = nil,
         alignment: Alignment = .center
-    ) -> some View {
+    ) -> some View<Domain> {
         GiftUILayoutModifiedContent(
             content: self,
             payload: _GiftUIFlexibleFramePayload(

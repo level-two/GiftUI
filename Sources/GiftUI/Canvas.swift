@@ -1,4 +1,5 @@
-public struct Canvas: View, _GiftUISemanticPrimitivePayload {
+public struct Canvas<D: _GiftUIReadDomain>: View, _GiftUISemanticPrimitivePayload {
+    public typealias Domain = D
     public typealias Body = Never
 
     #if GIFTUI_DYNAMIC_PROFILE
@@ -23,13 +24,15 @@ public struct Canvas: View, _GiftUISemanticPrimitivePayload {
         #endif
     }
 
-    public var body: Never {
+    public func _giftUIEvaluate(read: borrowing _GiftUIFrameRead<D>) throws(_GiftUIAccessFailure)
+        -> Never
+    {
         fatalError("Canvas has no view body")
     }
 
     public func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor>(
         _ visitor: inout Visitor
-    ) {
+    ) where Visitor.Domain == Domain {
         visitor.visitPrimitive(self)
     }
 

@@ -43,6 +43,7 @@ public struct _GiftUISpacerPayload: _GiftUISemanticPrimitivePayload,
 }
 
 public struct VStack<Content: View>: View {
+    public typealias Domain = Content.Domain
     public typealias Body = Never
 
     package let content: Content
@@ -51,24 +52,27 @@ public struct VStack<Content: View>: View {
     public init(
         alignment: HorizontalAlignment = .center,
         spacing: GeometryScalar = 0,
-        @ViewBuilder content: () -> Content
-    ) {
-        self.content = content()
+        @ViewBuilder content: () throws(_GiftUIAccessFailure) -> Content
+    ) throws(_GiftUIAccessFailure) {
+        self.content = try content()
         payload = _GiftUIVStackPayload(alignment: alignment, spacing: spacing)
     }
 
-    public var body: Never {
+    public func _giftUIEvaluate(read: borrowing _GiftUIFrameRead<Domain>)
+        throws(_GiftUIAccessFailure) -> Never
+    {
         fatalError("VStack has no view body")
     }
 
     public func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor>(
         _ visitor: inout Visitor
-    ) {
+    ) where Visitor.Domain == Domain {
         visitor.visitPrimitive(content: content, payload: payload)
     }
 }
 
 public struct HStack<Content: View>: View {
+    public typealias Domain = Content.Domain
     public typealias Body = Never
 
     package let content: Content
@@ -77,24 +81,27 @@ public struct HStack<Content: View>: View {
     public init(
         alignment: VerticalAlignment = .center,
         spacing: GeometryScalar = 0,
-        @ViewBuilder content: () -> Content
-    ) {
-        self.content = content()
+        @ViewBuilder content: () throws(_GiftUIAccessFailure) -> Content
+    ) throws(_GiftUIAccessFailure) {
+        self.content = try content()
         payload = _GiftUIHStackPayload(alignment: alignment, spacing: spacing)
     }
 
-    public var body: Never {
+    public func _giftUIEvaluate(read: borrowing _GiftUIFrameRead<Domain>)
+        throws(_GiftUIAccessFailure) -> Never
+    {
         fatalError("HStack has no view body")
     }
 
     public func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor>(
         _ visitor: inout Visitor
-    ) {
+    ) where Visitor.Domain == Domain {
         visitor.visitPrimitive(content: content, payload: payload)
     }
 }
 
 public struct ZStack<Content: View>: View {
+    public typealias Domain = Content.Domain
     public typealias Body = Never
 
     package let content: Content
@@ -102,24 +109,27 @@ public struct ZStack<Content: View>: View {
 
     public init(
         alignment: Alignment = .center,
-        @ViewBuilder content: () -> Content
-    ) {
-        self.content = content()
+        @ViewBuilder content: () throws(_GiftUIAccessFailure) -> Content
+    ) throws(_GiftUIAccessFailure) {
+        self.content = try content()
         payload = _GiftUIZStackPayload(alignment: alignment)
     }
 
-    public var body: Never {
+    public func _giftUIEvaluate(read: borrowing _GiftUIFrameRead<Domain>)
+        throws(_GiftUIAccessFailure) -> Never
+    {
         fatalError("ZStack has no view body")
     }
 
     public func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor>(
         _ visitor: inout Visitor
-    ) {
+    ) where Visitor.Domain == Domain {
         visitor.visitPrimitive(content: content, payload: payload)
     }
 }
 
-public struct Spacer: View {
+public struct Spacer<D: _GiftUIReadDomain>: View {
+    public typealias Domain = D
     public typealias Body = Never
 
     package let payload: _GiftUISpacerPayload
@@ -128,13 +138,15 @@ public struct Spacer: View {
         payload = _GiftUISpacerPayload(minLength: minLength)
     }
 
-    public var body: Never {
+    public func _giftUIEvaluate(read: borrowing _GiftUIFrameRead<Domain>)
+        throws(_GiftUIAccessFailure) -> Never
+    {
         fatalError("Spacer has no view body")
     }
 
     public func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor>(
         _ visitor: inout Visitor
-    ) {
+    ) where Visitor.Domain == Domain {
         visitor.visitPrimitive(payload)
     }
 }

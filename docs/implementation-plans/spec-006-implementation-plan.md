@@ -2,12 +2,13 @@
 spec: SPEC-006
 feature: giftui-mvp-architecture
 title: SPEC-006 Implementation Plan
-status: ready
+status: active
 owners:
   - codex
 created: 2026-09-01
 updated: 2026-10-10
 related_design_notes:
+  - ../implementation-designs/spec-006-finite-source-lowering.md
   - ../implementation-designs/spec-006-bounded-semantic-expansion.md
 conformance_report: ../conformance/spec-006-conformance.md
 related_future_work:
@@ -24,7 +25,7 @@ superseded_by: null
 ## RFC-014 implementation readiness — 2026-10-10
 
 **Ready under [explicit Spec approval](../iterations/iteration-003-review/rfc-014-spec-approval.md).**
-Implementation has not started. The [bounded sequence](../iterations/iteration-003-review/rfc-014-implementation-plan.md)
+P02 implementation started after P01 passed. The [bounded sequence](../iterations/iteration-003-review/rfc-014-implementation-plan.md)
 is the shared ordering/scope index: exactly P01–P12, not an expandable backlog.
 This owner contributes P02, P04; its final regression/resource/disposition
 obligations run through P10–P12. Only the current checkpoint below is new work.
@@ -45,7 +46,7 @@ not additional authorization to rerun an MVP implementation or reopen experiment
   shared sequence, then P10's registered hardware-free gate. Compiler-selection
   propagation follows P01; no historical check is weakened.
   **Evidence:** existing owner conformance report and immutable owner-driver
-  reports linked to exact commits/artifacts; no success evidence exists yet.
+  reports linked to exact commits/artifacts; [P02 progress](../../Tests/ContractFixtures/SPEC006/Evidence/rfc-014-p02/progress.md) records completed steps and remaining checks.
 
 The single current acceptance matrix retains each criterion once. Its historical
 task IDs remain provenance; `T10.1` adds fresh migration verification without

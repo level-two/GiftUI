@@ -1,6 +1,6 @@
 # RFC-014 bounded implementation sequence — 2026-10-10
 
-**P01 passed; ready to start P02.** This is the shared
+**P01 passed; P02 in progress.** This is the shared
 sequencing index for nine owner Implementation Plans, not another contract or
 investigation. It derives only the [approved Spec amendments](rfc-014-spec-approval.md)
 at `3c260bbc` and accepted ADR-035/036/037. ITERATION-003 I3-04/05 supplies the
@@ -52,6 +52,17 @@ No elapsed-time or feasibility promise is inferred from task count. The bound is
 the named delivery surface, fixed package list, finite acceptance evidence and
 failure stop rules. A checkpoint report records completed/remaining package IDs,
 criterion failures and any proposed scope change after every package.
+
+## P02 direction correction — 2026-10-10
+
+Eugene requested removal of the separate lowering module and migration ifdefs.
+P02 therefore amends the existing GiftUI declaration files in place and locates
+finite source lowering in the existing GiftUIMacros target. No new target or
+parallel declaration implementation is introduced. Historical comparisons use
+the pinned P01 baseline revision and receipts. Downstream consumer migration
+remains in P03–P09; P10 is the integrated build/conformance gate. P12 still owns
+removal of superseded generated topology and final production adoption, and does
+not require a second compiled View ABI to be maintained until that point.
 
 ## Current repository and permitted footprints
 

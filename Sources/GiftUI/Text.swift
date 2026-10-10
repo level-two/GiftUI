@@ -11,7 +11,8 @@ public struct _GiftUITextPayload: _GiftUISemanticPrimitivePayload, Equatable, Se
     }
 }
 
-public struct Text: View {
+public struct Text<D: _GiftUIReadDomain>: View {
+    public typealias Domain = D
     public typealias Body = Never
 
     package let _giftUITextPayload: _GiftUITextPayload
@@ -28,13 +29,15 @@ public struct Text: View {
         _giftUITextPayload = _GiftUITextPayload(content: .admitted(content))
     }
 
-    public var body: Never {
+    public func _giftUIEvaluate(read: borrowing _GiftUIFrameRead<Domain>)
+        throws(_GiftUIAccessFailure) -> Never
+    {
         fatalError("Text has no view body")
     }
 
     public func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor>(
         _ visitor: inout Visitor
-    ) {
+    ) where Visitor.Domain == Domain {
         visitor.visitPrimitive(_giftUITextPayload)
     }
 }

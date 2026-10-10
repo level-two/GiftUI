@@ -10,41 +10,32 @@ package struct ButtonSemanticPayload<Action: GiftUIAction, Label: View>:
 }
 
 public struct Button<Action: GiftUIAction, Label: View>: View {
+    public typealias Domain = Label.Domain
     public typealias Body = Never
 
     package let _giftUIButtonPayload: ButtonSemanticPayload<Action, Label>
 
-    public init(action: Action, @ViewBuilder label: () -> Label) {
+    public init(action: Action, @ViewBuilder label: () throws(_GiftUIAccessFailure) -> Label)
+        throws(_GiftUIAccessFailure)
+    {
         _giftUIButtonPayload = ButtonSemanticPayload(
-            label: label(),
+            label: try label(),
             action: action
         )
     }
 
-    public var body: Never {
+    public func _giftUIEvaluate(read: borrowing _GiftUIFrameRead<Domain>)
+        throws(_GiftUIAccessFailure) -> Never
+    {
         fatalError("Button has no view body")
     }
 
     public func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor>(
         _ visitor: inout Visitor
-    ) {
+    ) where Visitor.Domain == Domain {
         visitor.visitActionPrimitive(
             content: _giftUIButtonPayload.label,
             payload: _giftUIButtonPayload
         )
-    }
-}
-
-public extension Button where Label == Text {
-    init(_ title: StaticString, action: Action) {
-        self.init(action: action) {
-            Text(title)
-        }
-    }
-
-    init(_ title: BoundedText, action: Action) {
-        self.init(action: action) {
-            Text(title)
-        }
     }
 }

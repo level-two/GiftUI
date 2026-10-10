@@ -13,6 +13,8 @@ targets:
     dependencies: []
     external_dependencies:
       - SwiftCompilerPlugin@swift-syntax
+      - SwiftParser@swift-syntax
+      - SwiftOperators@swift-syntax
       - SwiftDiagnostics@swift-syntax
       - SwiftSyntax@swift-syntax
       - SwiftSyntaxBuilder@swift-syntax

@@ -58,13 +58,21 @@ let package = Package(
             name: "GiftUIMacros",
             dependencies: [
                 .product(name: "SwiftCompilerPlugin", package: "swift-syntax"),
+                .product(name: "SwiftParser", package: "swift-syntax"),
+                .product(name: "SwiftOperators", package: "swift-syntax"),
                 .product(name: "SwiftDiagnostics", package: "swift-syntax"),
                 .product(name: "SwiftSyntax", package: "swift-syntax"),
                 .product(name: "SwiftSyntaxBuilder", package: "swift-syntax"),
                 .product(name: "SwiftSyntaxMacros", package: "swift-syntax"),
             ]
         ),
-        .target(name: "GiftUI", dependencies: ["GiftUIMacros"]),
+        .target(
+            name: "GiftUI", dependencies: ["GiftUIMacros"],
+            swiftSettings: [
+                .enableExperimentalFeature("LifetimeDependence"),
+                .enableExperimentalFeature("Lifetimes"),
+            ]
+        ),
         .target(name: "GiftUIFailureCore"),
         .target(
             name: "GiftUIFailureDiagnostics",

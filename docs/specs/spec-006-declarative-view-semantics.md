@@ -2,7 +2,7 @@
 id: SPEC-006
 feature: giftui-mvp-architecture
 title: Declarative View Semantics Specification
-status: approved
+status: implementing
 authors:
   - codex
 created: 2026-08-25
@@ -141,6 +141,8 @@ is allowed. Lowering preserves helper order, short-circuiting, optional/switch
 selection and mutation/report ordering. It diagnoses unsupported escapes,
 unknown mutable-reference effects and arbitrary unchecked inout callbacks with
 source locations; it MUST NOT generate a permissive fallback.
+
+Implementation realization: [finite source lowering](../implementation-designs/spec-006-finite-source-lowering.md) (P02; non-authoritative).
 
 ### Runtime records and exact identity
 

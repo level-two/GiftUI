@@ -2,11 +2,11 @@
 spec: SPEC-006
 feature: giftui-mvp-architecture
 title: SPEC-006 Conformance Report
-status: complete
+status: collecting
 reviewers:
   - codex
 created: 2026-09-09
-updated: 2026-10-03
+updated: 2026-10-10
 implementation_plan: ../implementation-plans/spec-006-implementation-plan.md
 related_future_work:
   - FW-017
@@ -23,7 +23,14 @@ superseded_by: null
 > itself authorize or perform the governing Specification's `implemented`
 > transition.
 
-## Review Scope
+## RFC-014 migration scope
+
+P02 implementation is in progress under the approved amendment and active owner
+plan. The results below are historical baseline evidence, not passes for the
+amended ABI. DV-RD-001–004 and renewed baseline applicability remain pending
+through P02/P04 and P10–P12.
+
+## Historical baseline review scope
 
 - Governing contract: [SPEC-006 Declarative View Semantics](../specs/spec-006-declarative-view-semantics.md), status `implementing` after explicit maintainer reapproval of the action-primitive-with-content amendment on 2026-09-12.
 - Derived plan: [SPEC-006 Implementation Plan](../implementation-plans/spec-006-implementation-plan.md), status `completed` after all amendment tasks received dispositions.

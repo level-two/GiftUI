@@ -21,31 +21,34 @@ public struct _GiftUIBackgroundPayload: _GiftUISemanticModifierPayload,
 private struct GiftUIModifiedContent<Content: View, Payload: _GiftUISemanticModifierPayload>:
     View
 {
+    typealias Domain = Content.Domain
     typealias Body = Never
 
     let content: Content
     let payload: Payload
 
-    var body: Never {
+    func _giftUIEvaluate(read: borrowing _GiftUIFrameRead<Domain>) throws(_GiftUIAccessFailure)
+        -> Never
+    {
         fatalError("GiftUI modifiers have no view body")
     }
 
     func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor>(
         _ visitor: inout Visitor
-    ) {
+    ) where Visitor.Domain == Domain {
         visitor.visitModifier(content: content, payload: payload)
     }
 }
 
 public extension View {
-    func foregroundStyle(_ color: Color) -> some View {
+    func foregroundStyle(_ color: Color) -> some View<Domain> {
         GiftUIModifiedContent(
             content: self,
             payload: _GiftUIForegroundStylePayload(color: color)
         )
     }
 
-    func background(_ color: Color) -> some View {
+    func background(_ color: Color) -> some View<Domain> {
         GiftUIModifiedContent(
             content: self,
             payload: _GiftUIBackgroundPayload(color: color)
