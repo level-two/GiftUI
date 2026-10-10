@@ -10,7 +10,7 @@ The [revision-5 authorization](efficiency-sequencing-approval.md#bounded-prepara
 makes ME-01–04 one bounded phase; their IDs retain traceability, not separate
 budgets or permission to grow independent investigations.
 
-## Current RFC-014 activity — Spec amendments approved, 2026-10-10
+## Current RFC-014 activity — bounded implementation plan ready, 2026-10-10
 
 Eugene authorized one final bounded package and directed subsequent work toward
 implementation. [SPIKE-074](../../spikes/spike-074-final-access-ownership.md) is
@@ -24,14 +24,12 @@ for limitations, particularly actual runtime integration and zero heap.
 Eugene's conditional finalization instruction. The final text consolidates the
 selected design and preserves all implementation acceptance obligations.
 
-**Next: remaining IH-1 in the [implementation handoff](rfc-014-implementation-handoff.md):
-derive bounded implementation tasks under the [nine approved Spec amendments](rfc-014-spec-approval.md).**
-The [acceptance record](rfc-014-adr-acceptance.md) includes ADR-028 supersession.
-IH-2–6 then become implementation tasks covering source migration, actual owner
-integration, record generation, conformance and final image costs. This is a
-routing checklist, not a ready implementation plan or authority to modify
-production. No further investigative task is queued. Existing human approvals
-and acceptance requirements remain in force.
+**Next: P01 in the [bounded implementation sequence](rfc-014-implementation-plan.md).**
+IH-1 is complete: ADR-035/036/037 accepted, nine Specs approved and nine owner plans
+ready. Exactly twelve packages cover IH-2–6, with all 180 criteria mapped, explicit
+footprints/exits and stop rules. No investigation or automatically growing backlog
+is authorized. Production implementation has not started; connected authorization,
+conformance and implemented/iteration-closure decisions remain separate gates.
 
 Earlier sections below preserve historical activity dispositions; this section
 and the handoff supersede earlier wording that requires another investigation

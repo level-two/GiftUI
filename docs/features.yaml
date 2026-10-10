@@ -21,7 +21,7 @@ features:
     # Final review: docs/iterations/iteration-003-review/rfc-014-final-review.md.
     # SPIKE-069 completed: borrow/key evidence; no proof of the later protocol/versioned design.
     # SPIKE-073 completed: fixed-context inference evidence; access/ownership contracts now selected, integration unproved.
-    # SPIKE-074 and RFC review closed; ADR-035/036/037 accepted; nine related Spec amendments approved; planning requested.
+    # SPIKE-074 and RFC review closed; ADR-035/036/037 accepted; nine related Spec amendments approved; nine owner plans ready (fixed P01–P12).
     # Handoff: docs/iterations/iteration-003-review/rfc-014-implementation-handoff.md.
     # Selected three-bank refusal policy: docs/iterations/iteration-003-review/rfc-014-capture-policy-choice.md.
     # Typed access: docs/iterations/iteration-003-review/rfc-014-typed-access-contract.md.

@@ -2,7 +2,7 @@
 spec: SPEC-007
 feature: giftui-mvp-architecture
 title: SPEC-007 Implementation Plan
-status: draft
+status: ready
 owners:
   - codex
 created: 2026-09-05
@@ -22,16 +22,38 @@ superseded_by: null
 
 # SPEC-007 Implementation Plan
 
-## RFC-014 amendment gate — 2026-10-10
+## RFC-014 implementation readiness — 2026-10-10
 
-Accepted ADR-035/036/037 now govern the runtime migration. The governing Spec is
-an amendment draft; this plan is not ready for that work. Historical completed
-rows/evidence below remain the `53740a73` production baseline, not conformance to
-new RD criteria. Earlier conditional fourth-bank/closure wording is superseded
-by the [current handoff](../iterations/iteration-003-review/rfc-014-implementation-handoff.md).
-After coordinated Spec approval, derive ordered tasks/design notes for IH-2–6
-and review readiness before implementation. No additional investigation is queued.
+**Ready under [explicit Spec approval](../iterations/iteration-003-review/rfc-014-spec-approval.md).**
+Implementation has not started. The [bounded sequence](../iterations/iteration-003-review/rfc-014-implementation-plan.md)
+is the shared ordering/scope index: exactly P01–P12, not an expandable backlog.
+This owner contributes P05; its final regression/resource/disposition
+obligations run through P10–P12. Only the current checkpoint below is new work.
+Earlier tasks and readiness/closure statements remain historical baseline evidence,
+not additional authorization to rerun an MVP implementation or reopen experiments.
 
+### Current owner checkpoint
+
+- [ ] `T9.1` — Bank-scoped semantic queries and cleanup, unchanged layout/geometry and logical limits, without a second graph.
+  **Scope:** Semantic Core Layout projection and existing Layout/Render consumer adapters and directly corresponding tests/fixtures/build wiring.
+  **Dependencies:** P04; obey each shared package's entry conditions.
+  **Exit:** the package-specific evidence in P05, fresh applicable tests for
+  every criterion in the matrix, P11 resource/connected dispositions, and P12
+  conformance/cutover disposition. A failed or unauthorized gate stays unmet;
+  do not mark this checkpoint completed from an old fixture or a shared mock.
+  **Checks:** owner driver `scripts/contracts/run-spec-007.sh --profile <profile>`
+  on the four governed configurations, focused unit/negative checks named by the
+  shared sequence, then P10's registered hardware-free gate. Compiler-selection
+  propagation follows P01; no historical check is weakened.
+  **Evidence:** existing owner conformance report and immutable owner-driver
+  reports linked to exact commits/artifacts; no success evidence exists yet.
+
+The single current acceptance matrix retains each criterion once. Its historical
+task IDs remain provenance; `T9.1` adds fresh migration verification without
+reopening unrelated implementation. P01–P12 define exact footprints/exits, three
+in-package design-note triggers and the stop/escalation rules. Optional ideas use
+the deferred track and do not become tasks. A required contract failure cannot
+be deferred. Commit each completed package with its test/evidence disposition.
 
 ## Iteration 3 correction task — 2026-10-09
 
@@ -197,15 +219,17 @@ once below and maps to implementation tasks and reproducible evidence.
 
 | Criterion | Implementation tasks | Evidence | Status |
 | --- | --- | --- | --- |
-| `LY-001` — Exact Rank 1 declarations/constants and layout-time rejection of every preserved invalid value | `T1.1`-`T1.5`, `T4.1`, `T8.1` | Public-interface, positive/negative declaration, payload-preservation, and four-profile compile reports | pass |
-| `LY-002` — Exact borrowed Semantic Core view, vocabulary, identity, flattening, ordering, text access, and index behavior | `T2.1`-`T2.5`, `T6.1`, `T8.2` | Semantic-view API audit, direct recording corpus, malformed-view corpus, borrow probe, and no-second-graph report | pass |
-| `LY-003` — Exact stack, spacer, alignment, padding, frame, proposal, placement, and clipping behavior | `T4.1`-`T4.5`, `T6.2`, `T8.2` | Table-driven golden layout transcripts, including minimum/fixed 100 under parent 50 | pass |
-| `LY-004` — Exact canonical text IDs, counts, bounds, baselines, advances, positions, and clips | `T5.1`-`T5.4`, `T6.3`, `T8.2` | SPEC-005-backed canonical text corpus and checked-geometry transcripts | pass |
-| `LY-005` — Exact local errors/facts, acquisition and discard lifecycle, and atomic publication | `T3.1`-`T3.5`, `T6.4`, `T8.2` | Limit, malformed-input, overflow, reentry, lookup-failure, sink-refusal, and owner-mapping matrix | pass |
-| `LY-006` — Equal recording/dynamic/static meaning with zero static allocation and no retained borrow | `T2.4`, `T3.4`, `T6.1`, `T6.5`, `T8.2`-`T8.4` | Canonical normalized comparisons, allocation interposer, lifetime probe, and graph/materialization audit | pass |
-| `LY-007` — Exact import graph and sibling separation | `T0.2`, `T2.5`, `T7.1`, `T8.1` | Package graph, target allow-list, import-negative fixtures, and source dependency scan | pass |
-| `LY-008` — Signal Analyzer approval fixture under the five exact limits and complete admitted layout surface | `T7.2`, `T7.3`, `T8.2` | Approval transcript, exact limits and high-water counts, and surface-coverage audit | pass |
-| `LY-009` — Four exact driver commands and complete owned-value/resource/ELF evidence without hardware claims | `T0.3`, `T7.3`, `T8.2`-`T8.4` | Registered per-profile reports, value layouts, allocation/workspace/stack/link evidence, and nRF hard-float ELF inspection | pass |
+| `LY-001` — Exact Rank 1 declarations/constants and layout-time rejection of every preserved invalid value | `T1.1`-`T1.5`, `T4.1`, `T8.1`, `T9.1` | Public-interface, positive/negative declaration, payload-preservation, and four-profile compile reports; RFC-014 P10 functional / P11 resource-connected / P12 conformance evidence | migration pending; prior evidence remains baseline only |
+| `LY-002` — Exact borrowed Semantic Core view, vocabulary, identity, flattening, ordering, text access, and index behavior | `T2.1`-`T2.5`, `T6.1`, `T8.2`, `T9.1` | Semantic-view API audit, direct recording corpus, malformed-view corpus, borrow probe, and no-second-graph report; RFC-014 P10 functional / P11 resource-connected / P12 conformance evidence | migration pending; prior evidence remains baseline only |
+| `LY-003` — Exact stack, spacer, alignment, padding, frame, proposal, placement, and clipping behavior | `T4.1`-`T4.5`, `T6.2`, `T8.2`, `T9.1` | Table-driven golden layout transcripts, including minimum/fixed 100 under parent 50; RFC-014 P10 functional / P11 resource-connected / P12 conformance evidence | migration pending; prior evidence remains baseline only |
+| `LY-004` — Exact canonical text IDs, counts, bounds, baselines, advances, positions, and clips | `T5.1`-`T5.4`, `T6.3`, `T8.2`, `T9.1` | SPEC-005-backed canonical text corpus and checked-geometry transcripts; RFC-014 P10 functional / P11 resource-connected / P12 conformance evidence | migration pending; prior evidence remains baseline only |
+| `LY-005` — Exact local errors/facts, acquisition and discard lifecycle, and atomic publication | `T3.1`-`T3.5`, `T6.4`, `T8.2`, `T9.1` | Limit, malformed-input, overflow, reentry, lookup-failure, sink-refusal, and owner-mapping matrix; RFC-014 P10 functional / P11 resource-connected / P12 conformance evidence | migration pending; prior evidence remains baseline only |
+| `LY-006` — Equal recording/dynamic/static meaning with zero static allocation and no retained borrow | `T2.4`, `T3.4`, `T6.1`, `T6.5`, `T8.2`-`T8.4`, `T9.1` | Canonical normalized comparisons, allocation interposer, lifetime probe, and graph/materialization audit; RFC-014 P10 functional / P11 resource-connected / P12 conformance evidence | migration pending; prior evidence remains baseline only |
+| `LY-007` — Exact import graph and sibling separation | `T0.2`, `T2.5`, `T7.1`, `T8.1`, `T9.1` | Package graph, target allow-list, import-negative fixtures, and source dependency scan; RFC-014 P10 functional / P11 resource-connected / P12 conformance evidence | migration pending; prior evidence remains baseline only |
+| `LY-008` — Signal Analyzer approval fixture under the five exact limits and complete admitted layout surface | `T7.2`, `T7.3`, `T8.2`, `T9.1` | Approval transcript, exact limits and high-water counts, and surface-coverage audit; RFC-014 P10 functional / P11 resource-connected / P12 conformance evidence | migration pending; prior evidence remains baseline only |
+| `LY-009` — Four exact driver commands and complete owned-value/resource/ELF evidence without hardware claims | `T0.3`, `T7.3`, `T8.2`-`T8.4`, `T9.1` | Registered per-profile reports, value layouts, allocation/workspace/stack/link evidence, and nRF hard-float ELF inspection; RFC-014 P10 functional / P11 resource-connected / P12 conformance evidence | migration pending; prior evidence remains baseline only |
+| `LY-RD-001` | `T9.1` | P05 exit fixtures; P10 differential/negative tests; P11 actual resource/connected disposition; P12 owner report | pending |
+| `LY-RD-002` | `T9.1` | P05 exit fixtures; P10 differential/negative tests; P11 actual resource/connected disposition; P12 owner report | pending |
 
 ## Milestones and Tasks
 

@@ -1007,6 +1007,8 @@ that downstream work does not define or weaken SPEC-010.
 
 ## References
 
+- [Bounded RFC-014 implementation sequence](../iterations/iteration-003-review/rfc-014-implementation-plan.md).
+
 - [SPEC-010 Implementation Plan](../implementation-plans/spec-010-implementation-plan.md)
 - [SPEC-010 Conformance Report](../conformance/spec-010-conformance-report.md)
 - [Observable Binding and Report Routing design note](../implementation-designs/spec-010-binding-and-report-routing.md)

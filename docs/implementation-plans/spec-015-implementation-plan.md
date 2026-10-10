@@ -2,7 +2,7 @@
 spec: SPEC-015
 feature: giftui-mvp-architecture
 title: SPEC-015 Implementation Plan
-status: draft
+status: ready
 owners:
   - codex
 created: 2026-09-09
@@ -22,18 +22,43 @@ superseded_by: null
 
 # SPEC-015 Implementation Plan
 
-## RFC-014 amendment gate — 2026-10-10
+## RFC-014 implementation readiness — 2026-10-10
 
-Accepted ADR-035/036/037 now govern the runtime migration. The governing Spec is
-an amendment draft; this plan is not ready for that work. Historical completed
-rows/evidence below remain the `53740a73` production baseline, not conformance to
-new RD criteria. Earlier conditional fourth-bank/closure wording is superseded
-by the [current handoff](../iterations/iteration-003-review/rfc-014-implementation-handoff.md).
-After coordinated Spec approval, derive ordered tasks/design notes for IH-2–6
-and review readiness before implementation. No additional investigation is queued.
+**Ready under [explicit Spec approval](../iterations/iteration-003-review/rfc-014-spec-approval.md).**
+Implementation has not started. The [bounded sequence](../iterations/iteration-003-review/rfc-014-implementation-plan.md)
+is the shared ordering/scope index: exactly P01–P12, not an expandable backlog.
+This owner contributes P08; its final regression/resource/disposition
+obligations run through P10–P12. Only the current checkpoint below is new work.
+Earlier tasks and readiness/closure statements remain historical baseline evidence,
+not additional authorization to rerun an MVP implementation or reopen experiments.
 
+### Current owner checkpoint
+
+- [ ] `T8.1` — Schema-4 validation and explicit limits, real host owners, four-config counter, complete host ledger and lifetime checks.
+  **Scope:** GiftUIHostConfiguration, scalar workload generator/validator and finite counter repository composition and directly corresponding tests/fixtures/build wiring.
+  **Dependencies:** P07; obey each shared package's entry conditions.
+  **Exit:** the package-specific evidence in P08, fresh applicable tests for
+  every criterion in the matrix, P11 resource/connected dispositions, and P12
+  conformance/cutover disposition. A failed or unauthorized gate stays unmet;
+  do not mark this checkpoint completed from an old fixture or a shared mock.
+  **Checks:** owner driver `scripts/contracts/run-spec-015.sh --profile <profile>`
+  on the four governed configurations, focused unit/negative checks named by the
+  shared sequence, then P10's registered hardware-free gate. Compiler-selection
+  propagation follows P01; no historical check is weakened.
+  **Evidence:** existing owner conformance report and immutable owner-driver
+  reports linked to exact commits/artifacts; no success evidence exists yet.
+
+The single current acceptance matrix retains each criterion once. Its historical
+task IDs remain provenance; `T8.1` adds fresh migration verification without
+reopening unrelated implementation. P01–P12 define exact footprints/exits, three
+in-package design-note triggers and the stop/escalation rules. Optional ideas use
+the deferred track and do not become tasks. A required contract failure cannot
+be deferred. Commit each completed package with its test/evidence disposition.
 
 ## I3-T02 conditional runtime migration — 2026-10-09
+
+Historical record. Its readiness and candidate assumptions are superseded by
+the current RFC-014 implementation section above; retain it as provenance only.
 
 **Blocked; not ready for production implementation.** [Draft RFC-014](../rfcs/rfc-014-runtime-derived-records-and-scoped-model-access.md)
 and its [review/contract map](../iterations/iteration-003-review/i3-t02-design-review.md)
@@ -261,24 +286,28 @@ exactly once here with its implementation work and expected evidence.
 
 | Criterion | Implementation tasks | Evidence | Status |
 | --- | --- | --- | --- |
-| `HC-001` — Complete authority, metadata, manifest, portfolio, and upstream linkage without implied SPEC-001 approval | `T0.1`, `T7.4` | Governance and reciprocal-link audit | pending |
-| `HC-002` — Pure ordered validation, first failure, no side effects or partial assembly, and valid-only instance exposure | `T1.4`, `T3.6`, `T4.1`, `T7.1` | Access-order probes, owner-call ledger, repeat-call corpus, construction transcript | pending |
-| `HC-003` — Exact acyclic one-owner graph, portable import boundary, and no ambient/platform stack | `T0.2`, `T1.2`, `T7.1` | Exact graph corpus, source/import/link scans, negative compile fixtures | pending |
-| `HC-004` — Exact SPEC-013 audit and complete schema-3 runtime-limit equality, including four 224-slot scalar/glyph leaves and 128 text lines | `T0.4`, `T2.1`, `T2.2`, `T3.1`, `T3.2`, `T6.4` | Fresh four-manifest generation, schema-version rejection, per-leaf equality/lowering corpus including semantic structural and render-workspace source/limit pairs, audit identity reports, static-table and byte-total checks | pending |
-| `HC-005` — Exact five-Canvas minima, 214-scalar/glyph maximal printable diagnostic, 117-line maximal LF fixture, and equal bounded render structural/ordinary operation counts | `T2.1`, `T2.3`, `T3.2`, `T6.4` | Generated workload manifests, checked arithmetic and capacity reports plus full-pipeline W/LF diagnostic tests | pending |
-| `HC-006` — Independent conjunctive Drawing and capability gates | `T3.2`, `T3.3`, `T7.1` | Two independent negatives, combined success, capability-vocabulary audit | pending |
-| `HC-007` — Four contributions, five operation bits, required absence, one resolver call, exact endpoint equality | `T3.3`, `T6.4` | Permutation corpus, resolver instrumentation, effective-value transcripts | pending |
-| `HC-008` — Exact immutable compatible text package and nine exact validation mappings | `T3.1`, `T4.2`, `T7.1` | Resource identity/lifetime probes and nine-row failure matrix | pending |
-| `HC-009` — Exact action/model/fact/input cardinalities and fail-closed generation behavior without retention | `T1.3`, `T3.5`, `T5.4` | Action decode, replacement race, stale generation, borrow/non-retention transcripts | pending |
-| `HC-010` — Equivalent bounded same-thread and distinct-executor fact admission without reentrant mutation | `T5.1`, `T6.4` | Ordered admission, callback, mutation, and normalized-equivalence transcripts | pending |
-| `HC-011` — Non-reentrant wake, exact pacing and burst limits, bounded refusal termination, and no replay | `T1.3`, `T5.2`, `T5.3`, `T7.1` | Deadline-boundary, 28/32/33-fact, category-excess, refusal, supersession, and replay corpus | pending |
-| `HC-012` — Total post-effect policy routing, exact no-policy rows, defective-table safety, and diagnostic independence | `T3.6`, `T4.2`, `T5.5`, `T7.1` | Complete routing/allowed-selection matrix, mandatory-effect ledger, diagnostic fault corpus | pending |
-| `HC-013` — Equal macOS fixtures and exact Pi/nRF tiled endpoint joins | `T2.4`, `T3.4`, `T6.1`-`T6.3` | Four preset reports and exact extent/row/region/payload assertions | pending |
-| `HC-014` — Complete activation/teardown state coverage, stale-work prevention, identity retirement, and fresh reconstruction | `T4.3`, `T4.4`, `T5.5` | State-transition, fault-at-step, callback cancellation, identity and reconstruction corpus | pending |
-| `HC-015` — Static zero-prohibited-runtime/allocation and exact resource costs under pinned toolchains | `T6.2`-`T6.4`, `T7.2` | ELF, symbols, imports, allocation, RAM/stack/flash and component cost reports | pending |
-| `HC-016` — Root runner executes all hardware-free fixtures and confines evidence | `T0.3`, `T7.2`, `T7.3` | Driver registry, output-boundary negatives, four immutable reports | pending |
-| `HC-017` — Connected-target evidence remains separate and is never inferred from simulation/build | `T0.3`, `T6.2`, `T6.3`, `T7.4` | Evidence-kind labels and conformance disposition audit | pending |
-| `HC-018` — Finite instance lifecycle, illegal-state rejection, exact local payloads, and validated report access | `T1.1`, `T4.3`, `T4.4`, `T5.2` | API/raw-value audit and complete lifecycle call matrix | pending |
+| `HC-001` — Complete authority, metadata, manifest, portfolio, and upstream linkage without implied SPEC-001 approval | `T0.1`, `T7.4`, `T8.1` | Governance and reciprocal-link audit; RFC-014 P10 functional / P11 resource-connected / P12 conformance evidence | migration pending; prior evidence remains baseline only |
+| `HC-002` — Pure ordered validation, first failure, no side effects or partial assembly, and valid-only instance exposure | `T1.4`, `T3.6`, `T4.1`, `T7.1`, `T8.1` | Access-order probes, owner-call ledger, repeat-call corpus, construction transcript; RFC-014 P10 functional / P11 resource-connected / P12 conformance evidence | migration pending; prior evidence remains baseline only |
+| `HC-003` — Exact acyclic one-owner graph, portable import boundary, and no ambient/platform stack | `T0.2`, `T1.2`, `T7.1`, `T8.1` | Exact graph corpus, source/import/link scans, negative compile fixtures; RFC-014 P10 functional / P11 resource-connected / P12 conformance evidence | migration pending; prior evidence remains baseline only |
+| `HC-004` — Exact SPEC-013 audit and complete schema-3 runtime-limit equality, including four 224-slot scalar/glyph leaves and 128 text lines | `T0.4`, `T2.1`, `T2.2`, `T3.1`, `T3.2`, `T6.4`, `T8.1` | Fresh four-manifest generation, schema-version rejection, per-leaf equality/lowering corpus including semantic structural and render-workspace source/limit pairs, audit identity reports, static-table and byte-total checks; RFC-014 P10 functional / P11 resource-connected / P12 conformance evidence | migration pending; prior evidence remains baseline only |
+| `HC-005` — Exact five-Canvas minima, 214-scalar/glyph maximal printable diagnostic, 117-line maximal LF fixture, and equal bounded render structural/ordinary operation counts | `T2.1`, `T2.3`, `T3.2`, `T6.4`, `T8.1` | Generated workload manifests, checked arithmetic and capacity reports plus full-pipeline W/LF diagnostic tests; RFC-014 P10 functional / P11 resource-connected / P12 conformance evidence | migration pending; prior evidence remains baseline only |
+| `HC-006` — Independent conjunctive Drawing and capability gates | `T3.2`, `T3.3`, `T7.1`, `T8.1` | Two independent negatives, combined success, capability-vocabulary audit; RFC-014 P10 functional / P11 resource-connected / P12 conformance evidence | migration pending; prior evidence remains baseline only |
+| `HC-007` — Four contributions, five operation bits, required absence, one resolver call, exact endpoint equality | `T3.3`, `T6.4`, `T8.1` | Permutation corpus, resolver instrumentation, effective-value transcripts; RFC-014 P10 functional / P11 resource-connected / P12 conformance evidence | migration pending; prior evidence remains baseline only |
+| `HC-008` — Exact immutable compatible text package and nine exact validation mappings | `T3.1`, `T4.2`, `T7.1`, `T8.1` | Resource identity/lifetime probes and nine-row failure matrix; RFC-014 P10 functional / P11 resource-connected / P12 conformance evidence | migration pending; prior evidence remains baseline only |
+| `HC-009` — Exact action/model/fact/input cardinalities and fail-closed generation behavior without retention | `T1.3`, `T3.5`, `T5.4`, `T8.1` | Action decode, replacement race, stale generation, borrow/non-retention transcripts; RFC-014 P10 functional / P11 resource-connected / P12 conformance evidence | migration pending; prior evidence remains baseline only |
+| `HC-010` — Equivalent bounded same-thread and distinct-executor fact admission without reentrant mutation | `T5.1`, `T6.4`, `T8.1` | Ordered admission, callback, mutation, and normalized-equivalence transcripts; RFC-014 P10 functional / P11 resource-connected / P12 conformance evidence | migration pending; prior evidence remains baseline only |
+| `HC-011` — Non-reentrant wake, exact pacing and burst limits, bounded refusal termination, and no replay | `T1.3`, `T5.2`, `T5.3`, `T7.1`, `T8.1` | Deadline-boundary, 28/32/33-fact, category-excess, refusal, supersession, and replay corpus; RFC-014 P10 functional / P11 resource-connected / P12 conformance evidence | migration pending; prior evidence remains baseline only |
+| `HC-012` — Total post-effect policy routing, exact no-policy rows, defective-table safety, and diagnostic independence | `T3.6`, `T4.2`, `T5.5`, `T7.1`, `T8.1` | Complete routing/allowed-selection matrix, mandatory-effect ledger, diagnostic fault corpus; RFC-014 P10 functional / P11 resource-connected / P12 conformance evidence | migration pending; prior evidence remains baseline only |
+| `HC-013` — Equal macOS fixtures and exact Pi/nRF tiled endpoint joins | `T2.4`, `T3.4`, `T6.1`-`T6.3`, `T8.1` | Four preset reports and exact extent/row/region/payload assertions; RFC-014 P10 functional / P11 resource-connected / P12 conformance evidence | migration pending; prior evidence remains baseline only |
+| `HC-014` — Complete activation/teardown state coverage, stale-work prevention, identity retirement, and fresh reconstruction | `T4.3`, `T4.4`, `T5.5`, `T8.1` | State-transition, fault-at-step, callback cancellation, identity and reconstruction corpus; RFC-014 P10 functional / P11 resource-connected / P12 conformance evidence | migration pending; prior evidence remains baseline only |
+| `HC-015` — Static zero-prohibited-runtime/allocation and exact resource costs under pinned toolchains | `T6.2`-`T6.4`, `T7.2`, `T8.1` | ELF, symbols, imports, allocation, RAM/stack/flash and component cost reports; RFC-014 P10 functional / P11 resource-connected / P12 conformance evidence | migration pending; prior evidence remains baseline only |
+| `HC-016` — Root runner executes all hardware-free fixtures and confines evidence | `T0.3`, `T7.2`, `T7.3`, `T8.1` | Driver registry, output-boundary negatives, four immutable reports; RFC-014 P10 functional / P11 resource-connected / P12 conformance evidence | migration pending; prior evidence remains baseline only |
+| `HC-017` — Connected-target evidence remains separate and is never inferred from simulation/build | `T0.3`, `T6.2`, `T6.3`, `T7.4`, `T8.1` | Evidence-kind labels and conformance disposition audit; RFC-014 P10 functional / P11 resource-connected / P12 conformance evidence | migration pending; prior evidence remains baseline only |
+| `HC-018` — Finite instance lifecycle, illegal-state rejection, exact local payloads, and validated report access | `T1.1`, `T4.3`, `T4.4`, `T5.2`, `T8.1` | API/raw-value audit and complete lifecycle call matrix; RFC-014 P10 functional / P11 resource-connected / P12 conformance evidence | migration pending; prior evidence remains baseline only |
+| `HC-RD-001` | `T8.1` | P08 exit fixtures; P10 differential/negative tests; P11 actual resource/connected disposition; P12 owner report | pending |
+| `HC-RD-002` | `T8.1` | P08 exit fixtures; P10 differential/negative tests; P11 actual resource/connected disposition; P12 owner report | pending |
+| `HC-RD-003` | `T8.1` | P08 exit fixtures; P10 differential/negative tests; P11 actual resource/connected disposition; P12 owner report | pending |
+| `HC-RD-004` | `T8.1` | P08 exit fixtures; P10 differential/negative tests; P11 actual resource/connected disposition; P12 owner report | pending |
 
 ## Milestones and Tasks
 

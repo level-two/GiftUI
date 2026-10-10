@@ -1392,6 +1392,8 @@ the separately gated post-MVP declarative-extensibility cluster.
 
 ## References
 
+- [Bounded RFC-014 implementation sequence](../iterations/iteration-003-review/rfc-014-implementation-plan.md).
+
 - [SPEC-006 Implementation Plan](../implementation-plans/spec-006-implementation-plan.md)
 - [SPEC-006 Conformance Report](../conformance/spec-006-conformance.md)
 - [Bounded Semantic Expansion Implementation Design](../implementation-designs/spec-006-bounded-semantic-expansion.md)

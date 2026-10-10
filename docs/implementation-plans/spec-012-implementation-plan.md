@@ -2,7 +2,7 @@
 spec: SPEC-012
 feature: canvas-drawing
 title: SPEC-012 Implementation Plan
-status: draft
+status: ready
 owners:
   - codex
 created: 2026-09-09
@@ -24,18 +24,43 @@ superseded_by: null
 
 # SPEC-012 Implementation Plan
 
-## RFC-014 amendment gate — 2026-10-10
+## RFC-014 implementation readiness — 2026-10-10
 
-Accepted ADR-035/036/037 now govern the runtime migration. The governing Spec is
-an amendment draft; this plan is not ready for that work. Historical completed
-rows/evidence below remain the `53740a73` production baseline, not conformance to
-new RD criteria. Earlier conditional fourth-bank/closure wording is superseded
-by the [current handoff](../iterations/iteration-003-review/rfc-014-implementation-handoff.md).
-After coordinated Spec approval, derive ordered tasks/design notes for IH-2–6
-and review readiness before implementation. No additional investigation is queued.
+**Ready under [explicit Spec approval](../iterations/iteration-003-review/rfc-014-spec-approval.md).**
+Implementation has not started. The [bounded sequence](../iterations/iteration-003-review/rfc-014-implementation-plan.md)
+is the shared ordering/scope index: exactly P01–P12, not an expandable backlog.
+This owner contributes P06; its final regression/resource/disposition
+obligations run through P10–P12. Only the current checkpoint below is new work.
+Earlier tasks and readiness/closure statements remain historical baseline evidence,
+not additional authorization to rerun an MVP implementation or reopen experiments.
 
+### Current owner checkpoint
+
+- [ ] `T10.1` — Protocol Canvas, scoped exact-model post-layout reads and exactly-once early/failure cleanup with unchanged geometry/pixel meaning.
+  **Scope:** GiftUI Canvas, GiftUIDrawing adapters, finite witness lowering and both profile Canvas stores and directly corresponding tests/fixtures/build wiring.
+  **Dependencies:** P03 and P04; obey each shared package's entry conditions.
+  **Exit:** the package-specific evidence in P06, fresh applicable tests for
+  every criterion in the matrix, P11 resource/connected dispositions, and P12
+  conformance/cutover disposition. A failed or unauthorized gate stays unmet;
+  do not mark this checkpoint completed from an old fixture or a shared mock.
+  **Checks:** owner driver `scripts/contracts/run-spec-012.sh --profile <profile>`
+  on the four governed configurations, focused unit/negative checks named by the
+  shared sequence, then P10's registered hardware-free gate. Compiler-selection
+  propagation follows P01; no historical check is weakened.
+  **Evidence:** existing owner conformance report and immutable owner-driver
+  reports linked to exact commits/artifacts; no success evidence exists yet.
+
+The single current acceptance matrix retains each criterion once. Its historical
+task IDs remain provenance; `T10.1` adds fresh migration verification without
+reopening unrelated implementation. P01–P12 define exact footprints/exits, three
+in-package design-note triggers and the stop/escalation rules. Optional ideas use
+the deferred track and do not become tasks. A required contract failure cannot
+be deferred. Commit each completed package with its test/evidence disposition.
 
 ## I3-T02 conditional runtime migration — 2026-10-09
+
+Historical record. Its readiness and candidate assumptions are superseded by
+the current RFC-014 implementation section above; retain it as provenance only.
 
 **Blocked; not ready for production implementation.** [Draft RFC-014](../rfcs/rfc-014-runtime-derived-records-and-scoped-model-access.md)
 and its [review/contract map](../iterations/iteration-003-review/i3-t02-design-review.md)
@@ -200,19 +225,23 @@ once below and maps to implementation tasks and reproducible evidence.
 
 | Criterion | Implementation tasks | Evidence | Status |
 | --- | --- | --- | --- |
-| `DR-001` — Exact public declarations and typed-throws scoped source compile; illegal context/Path use fails | `T1.1`-`T1.5`, `T6.2`, `T9.1` | Public-interface audit plus four-profile positive and negative compile transcripts | pending |
-| `DR-002` — Canvas is one identity-preserving `Body == Never` semantic/layout/render leaf with no unrelated output | `T1.1`, `T2.1`, `T2.4`, `T4.1`, `T4.2`, `T9.2` | Semantic, layout, and render event transcript with zero-child/zero-unrelated-event assertions | pending |
-| `DR-003` — Each occurrence invokes once after layout in `.deriving`, releases before publication, and re-expands after refusal | `T4.1`-`T4.5`, `T7.4`, `T9.2` | Cycle timeline, invocation/release counts, revision tokens, throwing cleanup, and refusal-recovery transcript | pending |
-| `DR-004` — Stroke snapshots are immutable and preserve every explicit subpath | `T3.3`-`T3.6`, `T9.2` | Stroke-mutate-stroke, multiple-subpath, zero-length, atomic-capacity, and snapshot-isolation fixtures | pending |
-| `DR-005` — Combined sink receives exact header, operations, styles, geometry, clips, no-ops, order, begin, and finish | `T2.2`, `T5.1`-`T5.5`, `T9.2` | Cross-profile canonical combined recording transcript and header comparison | pending |
-| `DR-006` — RGBA8888 and tiled RGB565 match every normative mask and byte vector exactly | `T8.1`-`T8.4`, `T9.2`, `T9.4` | Shared vector corpus, zero-difference mask/byte reports, and full-surface/tiled equality report | pending |
-| `DR-007` — Every validation/capacity edge follows exact precedence, SPEC-003 mapping, and lifecycle disposition | `T3.2`-`T3.6`, `T5.2`-`T5.5`, `T7.3`-`T7.4`, `T9.2` | Ordered injected-failure matrix, mapping transcript, discard/dirty/refusal/invariant effect counts | pending |
-| `DR-008` — B2 and semantic capability startup gates pass/fail independently without drawing capacity in capability state | `T6.4`, `T7.1`, `T7.2`, `T9.2` | Equality/first-excess workload matrix, capability matrix, snapshot-field audit, and Signal Analyzer host proof | pending |
-| `DR-009` — No sink borrow, plan, or closure outlives its required scope | `T3.5`, `T4.3`-`T4.5`, `T5.4`, `T9.3` | Poison-borrow probes and accepted/refused/failed lifecycle storage audits | pending |
-| `DR-010` — Static generation uses complete nonzero IDs and bounded inline captures, rejecting unsupported/over-limit cases | `T6.1`-`T6.5`, `T9.1`, `T9.4` | Generated-source manifest, switch-coverage audit, repeated-occurrence records, compile-failure corpus, and no-fallback scan | pending |
-| `DR-011` — Static typed errors and cleanup use zero heap and exclude forbidden runtime/symbol dependencies | `T1.5`, `T6.2`-`T6.5`, `T9.3`, `T9.4` | Throwing cleanup transcripts, allocation interposer, linked-symbol/section reports, and nRF ELF inspection | pending |
-| `DR-012` — Normative value ceilings and separate capture/path/plan/render/raster/derived/stack/RAM/flash/timing costs are evidenced | `T2.3`, `T3.1`, `T9.3`-`T9.5` | Per-compiler layout reports and separately itemized resource/high-water/link/timing evidence | pending |
-| `DR-013` — Module ownership/import graph and portable target independence remain exact | `T0.2`, `T2.5`, `T5.5`, `T9.1`, `T9.5` | Target dependency allow-list, import-negative fixtures, symbol-owner audit, and portable-source scan | pending |
+| `DR-001` — Exact public declarations and typed-throws scoped source compile; illegal context/Path use fails | `T1.1`-`T1.5`, `T6.2`, `T9.1`, `T10.1` | Public-interface audit plus four-profile positive and negative compile transcripts; RFC-014 P10 functional / P11 resource-connected / P12 conformance evidence | migration pending; prior evidence remains baseline only |
+| `DR-002` — Canvas is one identity-preserving `Body == Never` semantic/layout/render leaf with no unrelated output | `T1.1`, `T2.1`, `T2.4`, `T4.1`, `T4.2`, `T9.2`, `T10.1` | Semantic, layout, and render event transcript with zero-child/zero-unrelated-event assertions; RFC-014 P10 functional / P11 resource-connected / P12 conformance evidence | migration pending; prior evidence remains baseline only |
+| `DR-003` — Each occurrence invokes once after layout in `.deriving`, releases before publication, and re-expands after refusal | `T4.1`-`T4.5`, `T7.4`, `T9.2`, `T10.1` | Cycle timeline, invocation/release counts, revision tokens, throwing cleanup, and refusal-recovery transcript; RFC-014 P10 functional / P11 resource-connected / P12 conformance evidence | migration pending; prior evidence remains baseline only |
+| `DR-004` — Stroke snapshots are immutable and preserve every explicit subpath | `T3.3`-`T3.6`, `T9.2`, `T10.1` | Stroke-mutate-stroke, multiple-subpath, zero-length, atomic-capacity, and snapshot-isolation fixtures; RFC-014 P10 functional / P11 resource-connected / P12 conformance evidence | migration pending; prior evidence remains baseline only |
+| `DR-005` — Combined sink receives exact header, operations, styles, geometry, clips, no-ops, order, begin, and finish | `T2.2`, `T5.1`-`T5.5`, `T9.2`, `T10.1` | Cross-profile canonical combined recording transcript and header comparison; RFC-014 P10 functional / P11 resource-connected / P12 conformance evidence | migration pending; prior evidence remains baseline only |
+| `DR-006` — RGBA8888 and tiled RGB565 match every normative mask and byte vector exactly | `T8.1`-`T8.4`, `T9.2`, `T9.4`, `T10.1` | Shared vector corpus, zero-difference mask/byte reports, and full-surface/tiled equality report; RFC-014 P10 functional / P11 resource-connected / P12 conformance evidence | migration pending; prior evidence remains baseline only |
+| `DR-007` — Every validation/capacity edge follows exact precedence, SPEC-003 mapping, and lifecycle disposition | `T3.2`-`T3.6`, `T5.2`-`T5.5`, `T7.3`-`T7.4`, `T9.2`, `T10.1` | Ordered injected-failure matrix, mapping transcript, discard/dirty/refusal/invariant effect counts; RFC-014 P10 functional / P11 resource-connected / P12 conformance evidence | migration pending; prior evidence remains baseline only |
+| `DR-008` — B2 and semantic capability startup gates pass/fail independently without drawing capacity in capability state | `T6.4`, `T7.1`, `T7.2`, `T9.2`, `T10.1` | Equality/first-excess workload matrix, capability matrix, snapshot-field audit, and Signal Analyzer host proof; RFC-014 P10 functional / P11 resource-connected / P12 conformance evidence | migration pending; prior evidence remains baseline only |
+| `DR-009` — No sink borrow, plan, or closure outlives its required scope | `T3.5`, `T4.3`-`T4.5`, `T5.4`, `T9.3`, `T10.1` | Poison-borrow probes and accepted/refused/failed lifecycle storage audits; RFC-014 P10 functional / P11 resource-connected / P12 conformance evidence | migration pending; prior evidence remains baseline only |
+| `DR-010` — Static generation uses complete nonzero IDs and bounded inline captures, rejecting unsupported/over-limit cases | `T6.1`-`T6.5`, `T9.1`, `T9.4`, `T10.1` | Generated-source manifest, switch-coverage audit, repeated-occurrence records, compile-failure corpus, and no-fallback scan; RFC-014 P10 functional / P11 resource-connected / P12 conformance evidence | migration pending; prior evidence remains baseline only |
+| `DR-011` — Static typed errors and cleanup use zero heap and exclude forbidden runtime/symbol dependencies | `T1.5`, `T6.2`-`T6.5`, `T9.3`, `T9.4`, `T10.1` | Throwing cleanup transcripts, allocation interposer, linked-symbol/section reports, and nRF ELF inspection; RFC-014 P10 functional / P11 resource-connected / P12 conformance evidence | migration pending; prior evidence remains baseline only |
+| `DR-012` — Normative value ceilings and separate capture/path/plan/render/raster/derived/stack/RAM/flash/timing costs are evidenced | `T2.3`, `T3.1`, `T9.3`-`T9.5`, `T10.1` | Per-compiler layout reports and separately itemized resource/high-water/link/timing evidence; RFC-014 P10 functional / P11 resource-connected / P12 conformance evidence | migration pending; prior evidence remains baseline only |
+| `DR-013` — Module ownership/import graph and portable target independence remain exact | `T0.2`, `T2.5`, `T5.5`, `T9.1`, `T9.5`, `T10.1` | Target dependency allow-list, import-negative fixtures, symbol-owner audit, and portable-source scan; RFC-014 P10 functional / P11 resource-connected / P12 conformance evidence | migration pending; prior evidence remains baseline only |
+| `DR-RD-001` | `T10.1` | P06 exit fixtures; P10 differential/negative tests; P11 actual resource/connected disposition; P12 owner report | pending |
+| `DR-RD-002` | `T10.1` | P06 exit fixtures; P10 differential/negative tests; P11 actual resource/connected disposition; P12 owner report | pending |
+| `DR-RD-003` | `T10.1` | P06 exit fixtures; P10 differential/negative tests; P11 actual resource/connected disposition; P12 owner report | pending |
+| `DR-RD-004` | `T10.1` | P06 exit fixtures; P10 differential/negative tests; P11 actual resource/connected disposition; P12 owner report | pending |
 
 ## Milestones and Tasks
 

@@ -2196,6 +2196,8 @@ contract, and this Specification does not create an additional relationship.
 
 ## References
 
+- [Bounded RFC-014 implementation sequence](../iterations/iteration-003-review/rfc-014-implementation-plan.md).
+
 - [ADR-001: Signal Analyzer Application Boundaries](../adrs/adr-001-signal-analyzer-application-boundaries.md)
 - [ADR-002: Serialized Synchronous Acquisition Delivery](../adrs/adr-002-serialized-synchronous-acquisition-delivery.md)
 - [ADR-034: Five-Second Transition Capture](../adrs/adr-034-five-second-transition-capture.md)

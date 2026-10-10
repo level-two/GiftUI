@@ -1178,6 +1178,8 @@ profiles remain in their existing lifecycle or deferred tracks.
 
 ## References
 
+- [Bounded RFC-014 implementation sequence](../iterations/iteration-003-review/rfc-014-implementation-plan.md).
+
 - [2026-10-02 Shared Pipeline Amendment Review](../../Tests/ContractFixtures/SPEC013/Evidence/milestone-9/seam-amendment-review.md)
 - [SPEC-013 Implementation Plan](../implementation-plans/spec-013-implementation-plan.md)
 - [SPEC-013 Conformance Report](../conformance/spec-013-conformance.md)

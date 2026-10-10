@@ -2,7 +2,7 @@
 spec: SPEC-006
 feature: giftui-mvp-architecture
 title: SPEC-006 Implementation Plan
-status: draft
+status: ready
 owners:
   - codex
 created: 2026-09-01
@@ -21,18 +21,43 @@ superseded_by: null
 
 # SPEC-006 Implementation Plan
 
-## RFC-014 amendment gate — 2026-10-10
+## RFC-014 implementation readiness — 2026-10-10
 
-Accepted ADR-035/036/037 now govern the runtime migration. The governing Spec is
-an amendment draft; this plan is not ready for that work. Historical completed
-rows/evidence below remain the `53740a73` production baseline, not conformance to
-new RD criteria. Earlier conditional fourth-bank/closure wording is superseded
-by the [current handoff](../iterations/iteration-003-review/rfc-014-implementation-handoff.md).
-After coordinated Spec approval, derive ordered tasks/design notes for IH-2–6
-and review readiness before implementation. No additional investigation is queued.
+**Ready under [explicit Spec approval](../iterations/iteration-003-review/rfc-014-spec-approval.md).**
+Implementation has not started. The [bounded sequence](../iterations/iteration-003-review/rfc-014-implementation-plan.md)
+is the shared ordering/scope index: exactly P01–P12, not an expandable backlog.
+This owner contributes P02, P04; its final regression/resource/disposition
+obligations run through P10–P12. Only the current checkpoint below is new work.
+Earlier tasks and readiness/closure statements remain historical baseline evidence,
+not additional authorization to rerun an MVP implementation or reopen experiments.
 
+### Current owner checkpoint
+
+- [ ] `T10.1` — Fixed-domain inferred Body and checked source lowering; runtime records/exact identity; bounded failure and bank lifetime evidence.
+  **Scope:** GiftUI, GiftUIMacros, finite application-schema/lowering build step, GiftUISemanticCore and profile semantic stores and directly corresponding tests/fixtures/build wiring.
+  **Dependencies:** P01; P03 before P04; obey each shared package's entry conditions.
+  **Exit:** the package-specific evidence in P02, P04, fresh applicable tests for
+  every criterion in the matrix, P11 resource/connected dispositions, and P12
+  conformance/cutover disposition. A failed or unauthorized gate stays unmet;
+  do not mark this checkpoint completed from an old fixture or a shared mock.
+  **Checks:** owner driver `scripts/contracts/run-spec-006.sh --profile <profile>`
+  on the four governed configurations, focused unit/negative checks named by the
+  shared sequence, then P10's registered hardware-free gate. Compiler-selection
+  propagation follows P01; no historical check is weakened.
+  **Evidence:** existing owner conformance report and immutable owner-driver
+  reports linked to exact commits/artifacts; no success evidence exists yet.
+
+The single current acceptance matrix retains each criterion once. Its historical
+task IDs remain provenance; `T10.1` adds fresh migration verification without
+reopening unrelated implementation. P01–P12 define exact footprints/exits, three
+in-package design-note triggers and the stop/escalation rules. Optional ideas use
+the deferred track and do not become tasks. A required contract failure cannot
+be deferred. Commit each completed package with its test/evidence disposition.
 
 ## I3-T02 conditional runtime migration — 2026-10-09
+
+Historical record. Its readiness and candidate assumptions are superseded by
+the current RFC-014 implementation section above; retain it as provenance only.
 
 **Blocked; not ready for production implementation.** [Draft RFC-014](../rfcs/rfc-014-runtime-derived-records-and-scoped-model-access.md)
 and its [review/contract map](../iterations/iteration-003-review/i3-t02-design-review.md)
@@ -162,23 +187,27 @@ once below and maps to implementation tasks and reproducible evidence.
 
 | Criterion | Implementation tasks | Evidence | Status |
 | --- | --- | --- | --- |
-| `DV-001` — Exact `GiftUIAction`, Rank 0 source contract, sole portable import, and unevaluated `Never` | `T1.1`, `T1.2`, `T1.4`, `T6.1` | Public-interface, action-code/domain, external-conformance, wrapper-dispatch, and four-profile compile reports | pass |
-| `DV-002` — Arity zero through five, conditionals, optionals, and absence of direct six-child/dynamic-array composition | `T1.2`, `T1.3`, `T6.1` | Positive and compile-negative builder corpus | pass |
-| `DV-003` — Synchronous once-only active bodies and exact depth-first, left-to-right transcript and summary | `T2.3`, `T3.1`, `T3.2`, `T6.2`, `T6.5` | Canonical nested-declaration transcripts, invocation counters, and linear-work instrumentation | pass |
-| `DV-004` — Exact structural-identity equality and inequality with no collision or client-visible raw form | `T2.1`, `T2.2`, `T3.3`, `T4.3` | Identity relation corpus, alias injection, and public-surface scan | pass |
-| `DV-005` — Exact modifier source/nesting order without semantic-node or layout/render meaning | `T1.4`, `T2.3`, `T3.4` | Typed modifier fixture transcripts and count/identity comparisons | pass |
-| `DV-006` — Stable distinct semantic action identities with no generation, target, callable, model retention, or invocation | `T1.1`, `T1.4`, `T2.3`, `T3.5`, `T6.3` | Typed action corpus, identity relations, lifetime probes, and forbidden-symbol/surface scans | pass |
-| `DV-007` — Exact-at-limit success, one-over capacity failure, atomic discard, detection order, reuse, and owner mapping | `T2.2`, `T4.1`, `T4.2`, `T4.4`, `T6.2`, `T6.5` | Independent and coincident bound corpus, work counters, and mapped-failure transcripts | pass |
-| `DV-008` — Exact identity, reentrancy, invalid-limit, and invariant failures unaffected by diagnostics | `T2.2`, `T4.2`, `T4.3`, `T4.4` | Framework-only fault injection, adapter mapping, and diagnostic-isolation matrix | pass |
-| `DV-009` — Equal dynamic/static canonical semantics and failure facts | `T3.2`, `T3.3`, `T3.4`, `T3.5`, `T4.4`, `T6.2` | Event-by-event normalized corpus comparison for all four profiles | pass |
-| `DV-010` — Static zero allocation, bounded depth/counters/layout, and nRF hard-float ELF evidence | `T0.3`, `T2.2`, `T4.1`, `T6.2`, `T6.4`, `T6.5` | Registered four-profile driver, allocation interposer, layout report, depth/work/overflow probes, commands, and ELF attributes | pass |
-| `DV-011` — Exact dependency direction and restricted underscored traversal references | `T0.2`, `T1.4`, `T4.4`, `T6.3` | Package graph, import-negative fixtures, source/reference allow-list, adapter-boundary audit | pass |
-| `DV-012` — No layout, render, state ownership, interaction, capability, backend, frame, or host policy | `T0.1`, `T7.1` | Scope and public/package-surface audit | pass |
-| `DV-013` — Complete proof-of-concept migration closure with no second expansion engine | `T0.4`, `T1.4`, `T6.3`, `T7.1` | Migration inventory and repository-wide forbidden-surface scan | pass |
-| `DV-014` — FW-017/FW-020 remain reciprocal optional post-MVP captures | `T0.1`, `T7.2` | Governance and reciprocal-link audit | pass |
-| `DV-015` — Generated SPEC-010 witness binds before body, preserves successful semantics, and publishes nothing on binding failure | `T5.1`, `T5.2`, `T5.3` | Macro expansion, lexical binding transcript, bound-copy probe, and failure atomicity report | pass |
-| `DV-016` — Exact primitive-with-content dispatch, primitive-before-child traversal, canonical identity/order, unevaluated body, and atomic failure across all profiles | `T8.1`-`T8.4` | Public-interface and visitor-conformance audit, focused traversal tests, canonical corpus, allocation/dependency probes, four-profile reports, and renewed conformance review | pass |
-| `DV-017` — Exact action-primitive-with-content dispatch, action-before-child traversal, canonical identity/order, unevaluated body, and atomic failure across all profiles | `T9.1`-`T9.4` | Public-interface and visitor-conformance audit, focused action traversal tests, canonical action corpus, allocation/dependency probes, four-profile reports, and renewed conformance review | pass |
+| `DV-001` — Exact `GiftUIAction`, Rank 0 source contract, sole portable import, and unevaluated `Never` | `T1.1`, `T1.2`, `T1.4`, `T6.1`, `T10.1` | Public-interface, action-code/domain, external-conformance, wrapper-dispatch, and four-profile compile reports; RFC-014 P10 functional / P11 resource-connected / P12 conformance evidence | migration pending; prior evidence remains baseline only |
+| `DV-002` — Arity zero through five, conditionals, optionals, and absence of direct six-child/dynamic-array composition | `T1.2`, `T1.3`, `T6.1`, `T10.1` | Positive and compile-negative builder corpus; RFC-014 P10 functional / P11 resource-connected / P12 conformance evidence | migration pending; prior evidence remains baseline only |
+| `DV-003` — Synchronous once-only active bodies and exact depth-first, left-to-right transcript and summary | `T2.3`, `T3.1`, `T3.2`, `T6.2`, `T6.5`, `T10.1` | Canonical nested-declaration transcripts, invocation counters, and linear-work instrumentation; RFC-014 P10 functional / P11 resource-connected / P12 conformance evidence | migration pending; prior evidence remains baseline only |
+| `DV-004` — Exact structural-identity equality and inequality with no collision or client-visible raw form | `T2.1`, `T2.2`, `T3.3`, `T4.3`, `T10.1` | Identity relation corpus, alias injection, and public-surface scan; RFC-014 P10 functional / P11 resource-connected / P12 conformance evidence | migration pending; prior evidence remains baseline only |
+| `DV-005` — Exact modifier source/nesting order without semantic-node or layout/render meaning | `T1.4`, `T2.3`, `T3.4`, `T10.1` | Typed modifier fixture transcripts and count/identity comparisons; RFC-014 P10 functional / P11 resource-connected / P12 conformance evidence | migration pending; prior evidence remains baseline only |
+| `DV-006` — Stable distinct semantic action identities with no generation, target, callable, model retention, or invocation | `T1.1`, `T1.4`, `T2.3`, `T3.5`, `T6.3`, `T10.1` | Typed action corpus, identity relations, lifetime probes, and forbidden-symbol/surface scans; RFC-014 P10 functional / P11 resource-connected / P12 conformance evidence | migration pending; prior evidence remains baseline only |
+| `DV-007` — Exact-at-limit success, one-over capacity failure, atomic discard, detection order, reuse, and owner mapping | `T2.2`, `T4.1`, `T4.2`, `T4.4`, `T6.2`, `T6.5`, `T10.1` | Independent and coincident bound corpus, work counters, and mapped-failure transcripts; RFC-014 P10 functional / P11 resource-connected / P12 conformance evidence | migration pending; prior evidence remains baseline only |
+| `DV-008` — Exact identity, reentrancy, invalid-limit, and invariant failures unaffected by diagnostics | `T2.2`, `T4.2`, `T4.3`, `T4.4`, `T10.1` | Framework-only fault injection, adapter mapping, and diagnostic-isolation matrix; RFC-014 P10 functional / P11 resource-connected / P12 conformance evidence | migration pending; prior evidence remains baseline only |
+| `DV-009` — Equal dynamic/static canonical semantics and failure facts | `T3.2`, `T3.3`, `T3.4`, `T3.5`, `T4.4`, `T6.2`, `T10.1` | Event-by-event normalized corpus comparison for all four profiles; RFC-014 P10 functional / P11 resource-connected / P12 conformance evidence | migration pending; prior evidence remains baseline only |
+| `DV-010` — Static zero allocation, bounded depth/counters/layout, and nRF hard-float ELF evidence | `T0.3`, `T2.2`, `T4.1`, `T6.2`, `T6.4`, `T6.5`, `T10.1` | Registered four-profile driver, allocation interposer, layout report, depth/work/overflow probes, commands, and ELF attributes; RFC-014 P10 functional / P11 resource-connected / P12 conformance evidence | migration pending; prior evidence remains baseline only |
+| `DV-011` — Exact dependency direction and restricted underscored traversal references | `T0.2`, `T1.4`, `T4.4`, `T6.3`, `T10.1` | Package graph, import-negative fixtures, source/reference allow-list, adapter-boundary audit; RFC-014 P10 functional / P11 resource-connected / P12 conformance evidence | migration pending; prior evidence remains baseline only |
+| `DV-012` — No layout, render, state ownership, interaction, capability, backend, frame, or host policy | `T0.1`, `T7.1`, `T10.1` | Scope and public/package-surface audit; RFC-014 P10 functional / P11 resource-connected / P12 conformance evidence | migration pending; prior evidence remains baseline only |
+| `DV-013` — Complete proof-of-concept migration closure with no second expansion engine | `T0.4`, `T1.4`, `T6.3`, `T7.1`, `T10.1` | Migration inventory and repository-wide forbidden-surface scan; RFC-014 P10 functional / P11 resource-connected / P12 conformance evidence | migration pending; prior evidence remains baseline only |
+| `DV-014` — FW-017/FW-020 remain reciprocal optional post-MVP captures | `T0.1`, `T7.2`, `T10.1` | Governance and reciprocal-link audit; RFC-014 P10 functional / P11 resource-connected / P12 conformance evidence | migration pending; prior evidence remains baseline only |
+| `DV-015` — Generated SPEC-010 witness binds before body, preserves successful semantics, and publishes nothing on binding failure | `T5.1`, `T5.2`, `T5.3`, `T10.1` | Macro expansion, lexical binding transcript, bound-copy probe, and failure atomicity report; RFC-014 P10 functional / P11 resource-connected / P12 conformance evidence | migration pending; prior evidence remains baseline only |
+| `DV-016` — Exact primitive-with-content dispatch, primitive-before-child traversal, canonical identity/order, unevaluated body, and atomic failure across all profiles | `T8.1`-`T8.4`, `T10.1` | Public-interface and visitor-conformance audit, focused traversal tests, canonical corpus, allocation/dependency probes, four-profile reports, and renewed conformance review; RFC-014 P10 functional / P11 resource-connected / P12 conformance evidence | migration pending; prior evidence remains baseline only |
+| `DV-017` — Exact action-primitive-with-content dispatch, action-before-child traversal, canonical identity/order, unevaluated body, and atomic failure across all profiles | `T9.1`-`T9.4`, `T10.1` | Public-interface and visitor-conformance audit, focused action traversal tests, canonical action corpus, allocation/dependency probes, four-profile reports, and renewed conformance review; RFC-014 P10 functional / P11 resource-connected / P12 conformance evidence | migration pending; prior evidence remains baseline only |
+| `DV-RD-001` | `T10.1` | P02, P04 exit fixtures; P10 differential/negative tests; P11 actual resource/connected disposition; P12 owner report | pending |
+| `DV-RD-002` | `T10.1` | P02, P04 exit fixtures; P10 differential/negative tests; P11 actual resource/connected disposition; P12 owner report | pending |
+| `DV-RD-003` | `T10.1` | P02, P04 exit fixtures; P10 differential/negative tests; P11 actual resource/connected disposition; P12 owner report | pending |
+| `DV-RD-004` | `T10.1` | P02, P04 exit fixtures; P10 differential/negative tests; P11 actual resource/connected disposition; P12 owner report | pending |
 
 ## Milestones and Tasks
 

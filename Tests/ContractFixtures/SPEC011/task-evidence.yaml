@@ -77,10 +77,10 @@ tasks:
     blockers: []
 
   T12.1:
-    disposition: blocked
-    requirements: [IN-RD-001, IN-RD-002]
+    disposition: pending
+    requirements: [IN-RD-001, IN-RD-002, IN-001, IN-002, IN-003, IN-004, IN-005, IN-006, IN-007, IN-008, IN-009, IN-010, IN-011, IN-012, IN-013]
     implementation: []
     checks: []
     profiles: []
     evidence: []
-    blockers: [SPEC-011]
+    blockers: []

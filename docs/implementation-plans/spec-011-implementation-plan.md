@@ -2,7 +2,7 @@
 spec: SPEC-011
 feature: giftui-mvp-architecture
 title: SPEC-011 Implementation Plan
-status: draft
+status: ready
 owners:
   - codex
 created: 2026-09-09
@@ -23,35 +23,43 @@ superseded_by: null
 
 # SPEC-011 Implementation Plan
 
-## RFC-014 amendment gate — 2026-10-10
+## RFC-014 implementation readiness — 2026-10-10
 
-Accepted ADR-035/036/037 now govern the runtime migration. The governing Spec is
-an amendment draft; this plan is not ready for that work. Historical completed
-rows/evidence below remain the `53740a73` production baseline, not conformance to
-new RD criteria. Earlier conditional fourth-bank/closure wording is superseded
-by the [current handoff](../iterations/iteration-003-review/rfc-014-implementation-handoff.md).
-After coordinated Spec approval, derive ordered tasks/design notes for IH-2–6
-and review readiness before implementation. No additional investigation is queued.
+**Ready under [explicit Spec approval](../iterations/iteration-003-review/rfc-014-spec-approval.md).**
+Implementation has not started. The [bounded sequence](../iterations/iteration-003-review/rfc-014-implementation-plan.md)
+is the shared ordering/scope index: exactly P01–P12, not an expandable backlog.
+This owner contributes P05; its final regression/resource/disposition
+obligations run through P10–P12. Only the current checkpoint below is new work.
+Earlier tasks and readiness/closure statements remain historical baseline evidence,
+not additional authorization to rerun an MVP implementation or reopen experiments.
 
+### Current owner checkpoint
 
+- [ ] `T12.1` — Independently owned full keys across bank reuse/refusal, accepted-offer routing commit and stale target/action rejection.
+  **Scope:** GiftUIInteraction candidate/committed storage and runtime-composed target access and directly corresponding tests/fixtures/build wiring.
+  **Dependencies:** P04; obey each shared package's entry conditions.
+  **Exit:** the package-specific evidence in P05, fresh applicable tests for
+  every criterion in the matrix, P11 resource/connected dispositions, and P12
+  conformance/cutover disposition. A failed or unauthorized gate stays unmet;
+  do not mark this checkpoint completed from an old fixture or a shared mock.
+  **Checks:** owner driver `scripts/contracts/run-spec-011.sh --profile <profile>`
+  on the four governed configurations, focused unit/negative checks named by the
+  shared sequence, then P10's registered hardware-free gate. Compiler-selection
+  propagation follows P01; no historical check is weakened.
+  **Evidence:** existing owner conformance report and immutable owner-driver
+  reports linked to exact commits/artifacts; no success evidence exists yet.
 
-### Blocked migration traceability reservation
-
-This is a blocked scope reservation required by the existing evidence ledger,
-not a ready implementation decomposition. Replace it with ordered, bounded tasks
-covering every mapped criterion after approval and before readiness. Empty
-implementation/check/evidence lists deliberately claim no execution or pass.
-
-- [ ] `T12.1` — Realize and verify the RFC-014 amendment criteria after coordinated
-  Spec approval and plan decomposition. Currently blocked on the governing draft
-  Spec; no source work or experiment is authorized by this reservation.
-
-| Criterion | Reserved task |
-| --- | --- |
-| `IN-RD-001` | `T12.1` |
-| `IN-RD-002` | `T12.1` |
+The single current acceptance matrix retains each criterion once. Its historical
+task IDs remain provenance; `T12.1` adds fresh migration verification without
+reopening unrelated implementation. P01–P12 define exact footprints/exits, three
+in-package design-note triggers and the stop/escalation rules. Optional ideas use
+the deferred track and do not become tasks. A required contract failure cannot
+be deferred. Commit each completed package with its test/evidence disposition.
 
 ## I3-T02 conditional runtime migration — 2026-10-09
+
+Historical record. Its readiness and candidate assumptions are superseded by
+the current RFC-014 implementation section above; retain it as provenance only.
 
 **Blocked; not ready for production implementation.** [Draft RFC-014](../rfcs/rfc-014-runtime-derived-records-and-scoped-model-access.md)
 and its [review/contract map](../iterations/iteration-003-review/i3-t02-design-review.md)
@@ -235,19 +243,21 @@ exactly once below.
 
 | Criterion | Implementation tasks | Evidence | Status |
 | --- | --- | --- | --- |
-| `IN-001` — Exact `GiftUIAction`, qualified `Button`, handler, and `disabled` source compiles in all MVP profiles | `T1.1`-`T1.5`, `T7.4`, `T8.1`-`T8.3` | Exact public/package surface audit, declaration corpus, and four-profile compile reports | pending |
-| `IN-002` — Six exact action normalizations/decodes; wrong type and invalid code dispatch nothing and map exactly | `T2.3`-`T2.5`, `T5.3`, `T5.4`, `T7.4`, `T8.2` | Action-domain/code corpus, dispatch transcript, and failure mapping | pending |
-| `IN-003` — One stable identity and exact bounded value per Button without handler/model retention | `T1.2`, `T2.1`-`T2.4`, `T3.2`, `T8.4` | Semantic transcript, payload/borrow audit, record layout, and forbidden-retention scan | pending |
-| `IN-004` — Exact clipped bounds, reverse painter order, and disabled blocking without retargeting | `T2.2`, `T3.3`, `T3.4`, `T4.1`, `T8.2` | Candidate and hit-resolution golden corpus | pending |
-| `IN-005` — Identity/generation-only capture and cancellation of every invalid, stale, moved, disabled, removed, or rebound release | `T4.1`-`T4.4`, `T5.2`, `T8.2` | Capture-layout audit and complete gesture/commit interleaving transcript | pending |
-| `IN-006` — Replacement after down/admission invokes neither model; failed replacement preserves the former binding | `T5.1`-`T5.5`, `T7.2`, `T8.2` | Observable-target replacement/removal/failure dispatch corpus | pending |
-| `IN-007` — Valid activation dispatches once in SPEC-009 order to the borrowed current model and reports synchronously | `T5.2`-`T5.6`, `T7.4`, `T8.2` | Mutation-order, borrow-lifetime, exact-once handler, report, and later-fact transcript | pending |
-| `IN-008` — Exact candidate lifecycle and all-or-nothing commit/discard/refusal behavior | `T3.3`-`T3.6`, `T5.1`, `T5.2`, `T8.2`, `T10.1`, `T10.2`, `T10.3` | State-machine, fault-injection, generation-reservation, offer, and atomic-publication corpus | prior conformance retained; cleanup pending |
-| `IN-009` — Exact error/cancellation precedence, mapping, mandatory effects, policy bounds, and no fallback/alias | `T3.5`, `T4.4`, `T5.4`, `T6.1`-`T6.4`, `T8.2`, `T10.1`, `T10.2`, `T10.3` | Exhaustive individual/simultaneous failure matrix and diagnostic-isolation transcript | prior conformance retained; cleanup pending |
-| `IN-010` — Equal-limit dynamic/static results and zero static heap allocation | `T7.1`-`T7.3`, `T8.2`-`T8.4`, `T10.2`, `T10.3` | Normalized profile comparison and allocation interposer reports | prior conformance retained; cleanup pending |
-| `IN-011` — No forbidden Interaction imports/dependencies, reflection, unrestricted existential, or allocator | `T0.2`, `T3.2`, `T7.3`, `T8.4`, `T9.1`, `T10.3` | Exact target graph, import-negative corpus, source/SIL/symbol/link-map audit | prior conformance retained; cleanup pending |
-| `IN-012` — nRF52840 and ARMv6 ABI, fixed storage, stack, flash, RAM, direct dispatch, and forbidden-symbol evidence | `T7.3`, `T8.3`-`T8.5`, `T10.3` | Cross-target compiler/ELF/link/resource reports and direct-switch inspection | prior conformance retained; cleanup pending |
-| `IN-013` — Every staged record binds the exact publishable target generation before finish and observable non-publication discards Interaction once | `T3.4`-`T3.6`, `T5.1`, `T5.5`, `T7.2`, `T8.2`, `T10.1`, `T10.2`, `T10.3` | Initial/preserved/replaced/discarded target-generation and exact-once discard transcript | prior conformance retained; cleanup pending |
+| `IN-001` — Exact `GiftUIAction`, qualified `Button`, handler, and `disabled` source compiles in all MVP profiles | `T1.1`-`T1.5`, `T7.4`, `T8.1`-`T8.3`, `T12.1` | Exact public/package surface audit, declaration corpus, and four-profile compile reports; RFC-014 P10 functional / P11 resource-connected / P12 conformance evidence | migration pending; prior evidence remains baseline only |
+| `IN-002` — Six exact action normalizations/decodes; wrong type and invalid code dispatch nothing and map exactly | `T2.3`-`T2.5`, `T5.3`, `T5.4`, `T7.4`, `T8.2`, `T12.1` | Action-domain/code corpus, dispatch transcript, and failure mapping; RFC-014 P10 functional / P11 resource-connected / P12 conformance evidence | migration pending; prior evidence remains baseline only |
+| `IN-003` — One stable identity and exact bounded value per Button without handler/model retention | `T1.2`, `T2.1`-`T2.4`, `T3.2`, `T8.4`, `T12.1` | Semantic transcript, payload/borrow audit, record layout, and forbidden-retention scan; RFC-014 P10 functional / P11 resource-connected / P12 conformance evidence | migration pending; prior evidence remains baseline only |
+| `IN-004` — Exact clipped bounds, reverse painter order, and disabled blocking without retargeting | `T2.2`, `T3.3`, `T3.4`, `T4.1`, `T8.2`, `T12.1` | Candidate and hit-resolution golden corpus; RFC-014 P10 functional / P11 resource-connected / P12 conformance evidence | migration pending; prior evidence remains baseline only |
+| `IN-005` — Identity/generation-only capture and cancellation of every invalid, stale, moved, disabled, removed, or rebound release | `T4.1`-`T4.4`, `T5.2`, `T8.2`, `T12.1` | Capture-layout audit and complete gesture/commit interleaving transcript; RFC-014 P10 functional / P11 resource-connected / P12 conformance evidence | migration pending; prior evidence remains baseline only |
+| `IN-006` — Replacement after down/admission invokes neither model; failed replacement preserves the former binding | `T5.1`-`T5.5`, `T7.2`, `T8.2`, `T12.1` | Observable-target replacement/removal/failure dispatch corpus; RFC-014 P10 functional / P11 resource-connected / P12 conformance evidence | migration pending; prior evidence remains baseline only |
+| `IN-007` — Valid activation dispatches once in SPEC-009 order to the borrowed current model and reports synchronously | `T5.2`-`T5.6`, `T7.4`, `T8.2`, `T12.1` | Mutation-order, borrow-lifetime, exact-once handler, report, and later-fact transcript; RFC-014 P10 functional / P11 resource-connected / P12 conformance evidence | migration pending; prior evidence remains baseline only |
+| `IN-008` — Exact candidate lifecycle and all-or-nothing commit/discard/refusal behavior | `T3.3`-`T3.6`, `T5.1`, `T5.2`, `T8.2`, `T10.1`, `T10.2`, `T10.3`, `T12.1` | State-machine, fault-injection, generation-reservation, offer, and atomic-publication corpus; RFC-014 P10 functional / P11 resource-connected / P12 conformance evidence | migration pending; prior evidence remains baseline only |
+| `IN-009` — Exact error/cancellation precedence, mapping, mandatory effects, policy bounds, and no fallback/alias | `T3.5`, `T4.4`, `T5.4`, `T6.1`-`T6.4`, `T8.2`, `T10.1`, `T10.2`, `T10.3`, `T12.1` | Exhaustive individual/simultaneous failure matrix and diagnostic-isolation transcript; RFC-014 P10 functional / P11 resource-connected / P12 conformance evidence | migration pending; prior evidence remains baseline only |
+| `IN-010` — Equal-limit dynamic/static results and zero static heap allocation | `T7.1`-`T7.3`, `T8.2`-`T8.4`, `T10.2`, `T10.3`, `T12.1` | Normalized profile comparison and allocation interposer reports; RFC-014 P10 functional / P11 resource-connected / P12 conformance evidence | migration pending; prior evidence remains baseline only |
+| `IN-011` — No forbidden Interaction imports/dependencies, reflection, unrestricted existential, or allocator | `T0.2`, `T3.2`, `T7.3`, `T8.4`, `T9.1`, `T10.3`, `T12.1` | Exact target graph, import-negative corpus, source/SIL/symbol/link-map audit; RFC-014 P10 functional / P11 resource-connected / P12 conformance evidence | migration pending; prior evidence remains baseline only |
+| `IN-012` — nRF52840 and ARMv6 ABI, fixed storage, stack, flash, RAM, direct dispatch, and forbidden-symbol evidence | `T7.3`, `T8.3`-`T8.5`, `T10.3`, `T12.1` | Cross-target compiler/ELF/link/resource reports and direct-switch inspection; RFC-014 P10 functional / P11 resource-connected / P12 conformance evidence | migration pending; prior evidence remains baseline only |
+| `IN-013` — Every staged record binds the exact publishable target generation before finish and observable non-publication discards Interaction once | `T3.4`-`T3.6`, `T5.1`, `T5.5`, `T7.2`, `T8.2`, `T10.1`, `T10.2`, `T10.3`, `T12.1` | Initial/preserved/replaced/discarded target-generation and exact-once discard transcript; RFC-014 P10 functional / P11 resource-connected / P12 conformance evidence | migration pending; prior evidence remains baseline only |
+| `IN-RD-001` | `T12.1` | P05 exit fixtures; P10 differential/negative tests; P11 actual resource/connected disposition; P12 owner report | pending |
+| `IN-RD-002` | `T12.1` | P05 exit fixtures; P10 differential/negative tests; P11 actual resource/connected disposition; P12 owner report | pending |
 
 ## Milestones and Tasks
 

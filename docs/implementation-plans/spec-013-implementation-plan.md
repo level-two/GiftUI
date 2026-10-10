@@ -2,7 +2,7 @@
 spec: SPEC-013
 feature: giftui-mvp-architecture
 title: SPEC-013 Implementation Plan
-status: draft
+status: ready
 owners:
   - codex
 created: 2026-09-09
@@ -25,18 +25,43 @@ superseded_by: null
 
 # SPEC-013 Implementation Plan
 
-## RFC-014 amendment gate — 2026-10-10
+## RFC-014 implementation readiness — 2026-10-10
 
-Accepted ADR-035/036/037 now govern the runtime migration. The governing Spec is
-an amendment draft; this plan is not ready for that work. Historical completed
-rows/evidence below remain the `53740a73` production baseline, not conformance to
-new RD criteria. Earlier conditional fourth-bank/closure wording is superseded
-by the [current handoff](../iterations/iteration-003-review/rfc-014-implementation-handoff.md).
-After coordinated Spec approval, derive ordered tasks/design notes for IH-2–6
-and review readiness before implementation. No additional investigation is queued.
+**Ready under [explicit Spec approval](../iterations/iteration-003-review/rfc-014-spec-approval.md).**
+Implementation has not started. The [bounded sequence](../iterations/iteration-003-review/rfc-014-implementation-plan.md)
+is the shared ordering/scope index: exactly P01–P12, not an expandable backlog.
+This owner contributes P07; its final regression/resource/disposition
+obligations run through P10–P12. Only the current checkpoint below is new work.
+Earlier tasks and readiness/closure statements remain historical baseline evidence,
+not additional authorization to rerun an MVP implementation or reopen experiments.
 
+### Current owner checkpoint
+
+- [ ] `T11.1` — Actual owner integration, disjoint pool accounting, read/publication/offer retirement and all fault/differential resource obligations.
+  **Scope:** RuntimeCore limits, audit, complete pipeline/cleanup and concrete Dynamic/Static coordinators and directly corresponding tests/fixtures/build wiring.
+  **Dependencies:** P05 and P06; obey each shared package's entry conditions.
+  **Exit:** the package-specific evidence in P07, fresh applicable tests for
+  every criterion in the matrix, P11 resource/connected dispositions, and P12
+  conformance/cutover disposition. A failed or unauthorized gate stays unmet;
+  do not mark this checkpoint completed from an old fixture or a shared mock.
+  **Checks:** owner driver `scripts/contracts/run-spec-013.sh --profile <profile>`
+  on the four governed configurations, focused unit/negative checks named by the
+  shared sequence, then P10's registered hardware-free gate. Compiler-selection
+  propagation follows P01; no historical check is weakened.
+  **Evidence:** existing owner conformance report and immutable owner-driver
+  reports linked to exact commits/artifacts; no success evidence exists yet.
+
+The single current acceptance matrix retains each criterion once. Its historical
+task IDs remain provenance; `T11.1` adds fresh migration verification without
+reopening unrelated implementation. P01–P12 define exact footprints/exits, three
+in-package design-note triggers and the stop/escalation rules. Optional ideas use
+the deferred track and do not become tasks. A required contract failure cannot
+be deferred. Commit each completed package with its test/evidence disposition.
 
 ## I3-T02 conditional runtime migration — 2026-10-09
+
+Historical record. Its readiness and candidate assumptions are superseded by
+the current RFC-014 implementation section above; retain it as provenance only.
 
 **Blocked; not ready for production implementation.** [Draft RFC-014](../rfcs/rfc-014-runtime-derived-records-and-scoped-model-access.md)
 and its [review/contract map](../iterations/iteration-003-review/i3-t02-design-review.md)
@@ -227,21 +252,25 @@ exactly once below.
 
 | Criterion | Implementation tasks | Evidence | Status |
 | --- | --- | --- | --- |
-| `RP-001` — Both runtime targets use one portable root and focused owners without sibling/backend imports | `T0.2`, `T3.5`, `T4.6`, `T8.1`, `T9.1`, `T9.3`, `T9.4`, `T10.1`, `T10.2`, `T10.3` | Package graph, source-import audit, same-root positive compile, and forbidden-import negatives | prior conformance retained; cleanup pending |
-| `RP-002` — One successful audit accounts exactly for every correctness store and configured render-workspace capacity | `T1.2`-`T1.4`, `T3.2`, `T4.2`, `T6.1`, `T9.3`, `T9.4`, `T10.2`, `T10.3` | Field ownership registry, four-field capacity equality, exact byte reports, checked-total tests, and overlap/overlay audit | prior conformance retained; cleanup pending |
-| `RP-003` — Invalid configurations and static tables fail before client/endpoint use | `T1.1`-`T1.5`, `T4.3`, `T6.2`, `T9.4`, `T10.1`, `T10.2`, `T10.3` | Ordered startup-failure and exact SPEC-003 mapping corpus with poisoned client, callback, policy, and endpoint probes | prior conformance retained; cleanup pending |
-| `RP-004` — Exact stage order, pre-body binding, Canvas release, and cleanup rows | `T2.1`-`T2.4`, `T5.1`-`T5.5`, `T6.3`, `T9.1`, `T9.2`, `T9.4`, `T10.2`, `T10.3` | Stage transcript, injected-failure cleanup matrix, and release/finalization counters | prior conformance retained; cleanup pending |
-| `RP-005` — Value-equal cross-profile semantic through disposition transcripts | `T0.1`, `T5.5`, `T6.6`, `T7.4`, `T9.2`, `T9.4`, `T10.2`, `T10.3` | Canonical tagged transcripts and zero-tolerance differential comparison | prior conformance retained; cleanup pending |
-| `RP-006` — Exact-limit success and deterministic first-excess for every store | `T3.2`, `T4.2`, `T6.1`, `T9.4`, `T10.2`, `T10.3` | Table-driven boundary corpus and high-water reports for every storage family | prior conformance retained; cleanup pending |
-| `RP-007` — Failed derivation never replays effects and clears attempt/candidate storage | `T2.3`, `T3.3`, `T4.4`, `T6.3`, `T9.1`, `T9.2`, `T9.4`, `T10.2`, `T10.3` | Replay-poisoning scripts, mutation counters, reset counters, and residual-state audit | prior conformance retained; cleanup pending |
-| `RP-008` — Accepted handoff alone commits routing | `T2.2`, `T5.4`, `T6.4`, `T9.2`, `T9.4`, `T10.2`, `T10.3` | Accepted/refused/failed offer matrix with prior/candidate routing snapshots | prior conformance retained; cleanup pending |
-| `RP-009` — Refusal recovery retains only constant-space presentation intent | `T2.2`, `T3.3`, `T4.4`, `T6.4`, `T9.4`, `T10.2`, `T10.3` | Repeated-refusal high-water, pending-intent, and no-retained-payload evidence | prior conformance retained; cleanup pending |
-| `RP-010` — Static generation, complete callable dispatch, destruction, zero allocation, and forbidden-facility exclusion | `T4.1`-`T4.6`, `T6.5`, `T7.2`-`T7.3`, `T9.3`, `T9.4`, `T10.1`, `T10.2`, `T10.3` | Typed-source negatives, table coverage, capture destruction, allocation, symbol, SIL, and ELF reports | prior conformance retained; cleanup pending |
-| `RP-011` — Dynamic conveniences stay outside `GiftUI` and preserve portable results | `T3.4`, `T6.6`, `T8.1`, `T9.4`, `T10.1`, `T10.3` | Product/import audit and baseline-versus-convenience transcript comparison | prior conformance retained; cleanup pending |
-| `RP-012` — Dependency, typed-source, borrow-poisoning, and generated coverage tests pass | `T0.2`, `T4.3`, `T6.5`, `T8.1`, `T9.3`, `T9.4`, `T10.1`, `T10.2`, `T10.3` | Negative compile suite, lifetime probes, exact generated-case coverage, and graph checks | prior conformance retained; cleanup pending |
-| `RP-013` — Reproducible resource and timing evidence under pinned toolchains | `T7.1`-`T7.5`, `T8.3`, `T9.3`, `T9.4`, `T10.2`, `T10.3` | Two pristine builds per profile with compiler/SDK/target, stack, allocation, section, timing, and digest reports | prior conformance retained; cleanup pending |
-| `RP-014` — Interaction binds the exact publishable target generation and discards candidate-only generations | `T5.3`-`T5.4`, `T6.3`-`T6.4`, `T9.2`, `T9.4`, `T10.2`, `T10.3` | Initial/replacement/discard generation transcripts and committed-state preservation checks | prior conformance retained; cleanup pending |
-| `RP-015` — Exact focused owner failures survive generic carrier, mapping, cleanup, and comparison | `T1.5`, `T2.4`, `T5.5`, `T6.3`, `T6.6`, `T9.1`, `T9.2`, `T9.3`, `T9.4`, `T10.2`, `T10.3` | 2-byte layout proof, per-owner injected failure corpus, correlated fact/disposition records, and differential report | prior conformance retained; cleanup pending |
+| `RP-001` — Both runtime targets use one portable root and focused owners without sibling/backend imports | `T0.2`, `T3.5`, `T4.6`, `T8.1`, `T9.1`, `T9.3`, `T9.4`, `T10.1`, `T10.2`, `T10.3`, `T11.1` | Package graph, source-import audit, same-root positive compile, and forbidden-import negatives; RFC-014 P10 functional / P11 resource-connected / P12 conformance evidence | migration pending; prior evidence remains baseline only |
+| `RP-002` — One successful audit accounts exactly for every correctness store and configured render-workspace capacity | `T1.2`-`T1.4`, `T3.2`, `T4.2`, `T6.1`, `T9.3`, `T9.4`, `T10.2`, `T10.3`, `T11.1` | Field ownership registry, four-field capacity equality, exact byte reports, checked-total tests, and overlap/overlay audit; RFC-014 P10 functional / P11 resource-connected / P12 conformance evidence | migration pending; prior evidence remains baseline only |
+| `RP-003` — Invalid configurations and static tables fail before client/endpoint use | `T1.1`-`T1.5`, `T4.3`, `T6.2`, `T9.4`, `T10.1`, `T10.2`, `T10.3`, `T11.1` | Ordered startup-failure and exact SPEC-003 mapping corpus with poisoned client, callback, policy, and endpoint probes; RFC-014 P10 functional / P11 resource-connected / P12 conformance evidence | migration pending; prior evidence remains baseline only |
+| `RP-004` — Exact stage order, pre-body binding, Canvas release, and cleanup rows | `T2.1`-`T2.4`, `T5.1`-`T5.5`, `T6.3`, `T9.1`, `T9.2`, `T9.4`, `T10.2`, `T10.3`, `T11.1` | Stage transcript, injected-failure cleanup matrix, and release/finalization counters; RFC-014 P10 functional / P11 resource-connected / P12 conformance evidence | migration pending; prior evidence remains baseline only |
+| `RP-005` — Value-equal cross-profile semantic through disposition transcripts | `T0.1`, `T5.5`, `T6.6`, `T7.4`, `T9.2`, `T9.4`, `T10.2`, `T10.3`, `T11.1` | Canonical tagged transcripts and zero-tolerance differential comparison; RFC-014 P10 functional / P11 resource-connected / P12 conformance evidence | migration pending; prior evidence remains baseline only |
+| `RP-006` — Exact-limit success and deterministic first-excess for every store | `T3.2`, `T4.2`, `T6.1`, `T9.4`, `T10.2`, `T10.3`, `T11.1` | Table-driven boundary corpus and high-water reports for every storage family; RFC-014 P10 functional / P11 resource-connected / P12 conformance evidence | migration pending; prior evidence remains baseline only |
+| `RP-007` — Failed derivation never replays effects and clears attempt/candidate storage | `T2.3`, `T3.3`, `T4.4`, `T6.3`, `T9.1`, `T9.2`, `T9.4`, `T10.2`, `T10.3`, `T11.1` | Replay-poisoning scripts, mutation counters, reset counters, and residual-state audit; RFC-014 P10 functional / P11 resource-connected / P12 conformance evidence | migration pending; prior evidence remains baseline only |
+| `RP-008` — Accepted handoff alone commits routing | `T2.2`, `T5.4`, `T6.4`, `T9.2`, `T9.4`, `T10.2`, `T10.3`, `T11.1` | Accepted/refused/failed offer matrix with prior/candidate routing snapshots; RFC-014 P10 functional / P11 resource-connected / P12 conformance evidence | migration pending; prior evidence remains baseline only |
+| `RP-009` — Refusal recovery retains only constant-space presentation intent | `T2.2`, `T3.3`, `T4.4`, `T6.4`, `T9.4`, `T10.2`, `T10.3`, `T11.1` | Repeated-refusal high-water, pending-intent, and no-retained-payload evidence; RFC-014 P10 functional / P11 resource-connected / P12 conformance evidence | migration pending; prior evidence remains baseline only |
+| `RP-010` — Static generation, complete callable dispatch, destruction, zero allocation, and forbidden-facility exclusion | `T4.1`-`T4.6`, `T6.5`, `T7.2`-`T7.3`, `T9.3`, `T9.4`, `T10.1`, `T10.2`, `T10.3`, `T11.1` | Typed-source negatives, table coverage, capture destruction, allocation, symbol, SIL, and ELF reports; RFC-014 P10 functional / P11 resource-connected / P12 conformance evidence | migration pending; prior evidence remains baseline only |
+| `RP-011` — Dynamic conveniences stay outside `GiftUI` and preserve portable results | `T3.4`, `T6.6`, `T8.1`, `T9.4`, `T10.1`, `T10.3`, `T11.1` | Product/import audit and baseline-versus-convenience transcript comparison; RFC-014 P10 functional / P11 resource-connected / P12 conformance evidence | migration pending; prior evidence remains baseline only |
+| `RP-012` — Dependency, typed-source, borrow-poisoning, and generated coverage tests pass | `T0.2`, `T4.3`, `T6.5`, `T8.1`, `T9.3`, `T9.4`, `T10.1`, `T10.2`, `T10.3`, `T11.1` | Negative compile suite, lifetime probes, exact generated-case coverage, and graph checks; RFC-014 P10 functional / P11 resource-connected / P12 conformance evidence | migration pending; prior evidence remains baseline only |
+| `RP-013` — Reproducible resource and timing evidence under pinned toolchains | `T7.1`-`T7.5`, `T8.3`, `T9.3`, `T9.4`, `T10.2`, `T10.3`, `T11.1` | Two pristine builds per profile with compiler/SDK/target, stack, allocation, section, timing, and digest reports; RFC-014 P10 functional / P11 resource-connected / P12 conformance evidence | migration pending; prior evidence remains baseline only |
+| `RP-014` — Interaction binds the exact publishable target generation and discards candidate-only generations | `T5.3`-`T5.4`, `T6.3`-`T6.4`, `T9.2`, `T9.4`, `T10.2`, `T10.3`, `T11.1` | Initial/replacement/discard generation transcripts and committed-state preservation checks; RFC-014 P10 functional / P11 resource-connected / P12 conformance evidence | migration pending; prior evidence remains baseline only |
+| `RP-015` — Exact focused owner failures survive generic carrier, mapping, cleanup, and comparison | `T1.5`, `T2.4`, `T5.5`, `T6.3`, `T6.6`, `T9.1`, `T9.2`, `T9.3`, `T9.4`, `T10.2`, `T10.3`, `T11.1` | 2-byte layout proof, per-owner injected failure corpus, correlated fact/disposition records, and differential report; RFC-014 P10 functional / P11 resource-connected / P12 conformance evidence | migration pending; prior evidence remains baseline only |
+| `RP-RD-001` | `T11.1` | P07 exit fixtures; P10 differential/negative tests; P11 actual resource/connected disposition; P12 owner report | pending |
+| `RP-RD-002` | `T11.1` | P07 exit fixtures; P10 differential/negative tests; P11 actual resource/connected disposition; P12 owner report | pending |
+| `RP-RD-003` | `T11.1` | P07 exit fixtures; P10 differential/negative tests; P11 actual resource/connected disposition; P12 owner report | pending |
+| `RP-RD-004` | `T11.1` | P07 exit fixtures; P10 differential/negative tests; P11 actual resource/connected disposition; P12 owner report | pending |
 
 ## Milestones and Tasks
 

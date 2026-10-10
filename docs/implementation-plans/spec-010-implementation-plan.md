@@ -2,7 +2,7 @@
 spec: SPEC-010
 feature: observable-reference-state
 title: SPEC-010 Implementation Plan
-status: draft
+status: ready
 owners:
   - codex
 created: 2026-09-04
@@ -22,18 +22,43 @@ superseded_by: null
 
 # SPEC-010 Implementation Plan
 
-## RFC-014 amendment gate — 2026-10-10
+## RFC-014 implementation readiness — 2026-10-10
 
-Accepted ADR-035/036/037 now govern the runtime migration. The governing Spec is
-an amendment draft; this plan is not ready for that work. Historical completed
-rows/evidence below remain the `53740a73` production baseline, not conformance to
-new RD criteria. Earlier conditional fourth-bank/closure wording is superseded
-by the [current handoff](../iterations/iteration-003-review/rfc-014-implementation-handoff.md).
-After coordinated Spec approval, derive ordered tasks/design notes for IH-2–6
-and review readiness before implementation. No additional investigation is queued.
+**Ready under [explicit Spec approval](../iterations/iteration-003-review/rfc-014-spec-approval.md).**
+Implementation has not started. The [bounded sequence](../iterations/iteration-003-review/rfc-014-implementation-plan.md)
+is the shared ordering/scope index: exactly P01–P12, not an expandable backlog.
+This owner contributes P03; its final regression/resource/disposition
+obligations run through P10–P12. Only the current checkpoint below is new work.
+Earlier tasks and readiness/closure statements remain historical baseline evidence,
+not additional authorization to rerun an MVP implementation or reopen experiments.
 
+### Current owner checkpoint
+
+- [ ] `T10.1` — Stable typed backing, bounded tickets/pins, checked writes, nested State discovery, exact final-ticket replacement/refusal and teardown.
+  **Scope:** GiftUIObservableState, Dynamic/Static model/registration stores and target-access bridges and directly corresponding tests/fixtures/build wiring.
+  **Dependencies:** P02; obey each shared package's entry conditions.
+  **Exit:** the package-specific evidence in P03, fresh applicable tests for
+  every criterion in the matrix, P11 resource/connected dispositions, and P12
+  conformance/cutover disposition. A failed or unauthorized gate stays unmet;
+  do not mark this checkpoint completed from an old fixture or a shared mock.
+  **Checks:** owner driver `scripts/contracts/run-spec-010.sh --profile <profile>`
+  on the four governed configurations, focused unit/negative checks named by the
+  shared sequence, then P10's registered hardware-free gate. Compiler-selection
+  propagation follows P01; no historical check is weakened.
+  **Evidence:** existing owner conformance report and immutable owner-driver
+  reports linked to exact commits/artifacts; no success evidence exists yet.
+
+The single current acceptance matrix retains each criterion once. Its historical
+task IDs remain provenance; `T10.1` adds fresh migration verification without
+reopening unrelated implementation. P01–P12 define exact footprints/exits, three
+in-package design-note triggers and the stop/escalation rules. Optional ideas use
+the deferred track and do not become tasks. A required contract failure cannot
+be deferred. Commit each completed package with its test/evidence disposition.
 
 ## I3-T02 conditional runtime migration — 2026-10-09
+
+Historical record. Its readiness and candidate assumptions are superseded by
+the current RFC-014 implementation section above; retain it as provenance only.
 
 **Blocked; not ready for production implementation.** [Draft RFC-014](../rfcs/rfc-014-runtime-derived-records-and-scoped-model-access.md)
 and its [review/contract map](../iterations/iteration-003-review/i3-t02-design-review.md)
@@ -165,18 +190,22 @@ listed prerequisite is satisfied.
 
 | Criterion | Implementation tasks | Evidence | Status |
 | --- | --- | --- | --- |
-| `OS-001` — Exact portable declarations and deterministic macro on every profile | `T1.1`–`T1.5`, `T8.1`–`T8.3` | Public/package surface audit, macro snapshots, four-profile compile/link reports | pending |
-| `OS-002` — Same-location preservation and distinct ordinals | `T3.1`, `T3.2`, `T6.1` | Shared identity/preservation transcript | pending |
-| `OS-003` — Atomic replacement/removal and no stale alias | `T3.3`, `T4.1`, `T4.2` | Replacement/removal/slot-reuse fault corpus | pending |
-| `OS-004` — Twenty changes produce one dirty owner/wake/reevaluation | `T5.1`, `T5.2`, `T6.2` | Exact operation and publication transcript | pending |
-| `OS-005` — Exact local mapping and no partial publication | `T2.2`, `T3.4`, `T7.1`–`T7.3` | Exhaustive error/mapping/mandatory-effect matrix | pending |
-| `OS-006` — Equal profile transcripts and zero static heap | `T6.1`–`T6.3`, `T8.2`–`T8.4` | Normalized comparison and allocation reports | pending |
-| `OS-007` — Ordered later fact application and no direct/reentrant mutation | `T2.3`, `T5.3`, `T6.4` | Admission/refusal/order/reentrancy fixtures | pending |
-| `OS-008` — No forbidden static dependencies | `T0.2`, `T6.3`, `T8.3`, `T9.1` | Target graph, import-negative, symbols, link-map audit | pending |
-| `OS-009` — Fresh target generations and retirement/exhaustion | `T4.1`–`T4.4`, `T6.1` | Live/publishable target transcript and lifetime probes | pending |
-| `OS-010` — Generated lexical visitation and bind-before-body | `T1.2`–`T1.5`, `T3.2` | Macro expansion and stateful traversal transcript | pending |
-| `OS-011` — Exact report outcomes and phase/lifecycle effects | `T5.1`–`T5.4`, `T7.2` | Report-outcome and mandatory-disposition corpus | pending |
-| `OS-012` — Candidate publishable lookup timing and commit/discard | `T3.1`, `T4.3`, `T4.4`, `T6.1` | Candidate lookup timing/equality transcript | pending |
+| `OS-001` — Exact portable declarations and deterministic macro on every profile | `T1.1`–`T1.5`, `T8.1`–`T8.3`, `T10.1` | Public/package surface audit, macro snapshots, four-profile compile/link reports; RFC-014 P10 functional / P11 resource-connected / P12 conformance evidence | migration pending; prior evidence remains baseline only |
+| `OS-002` — Same-location preservation and distinct ordinals | `T3.1`, `T3.2`, `T6.1`, `T10.1` | Shared identity/preservation transcript; RFC-014 P10 functional / P11 resource-connected / P12 conformance evidence | migration pending; prior evidence remains baseline only |
+| `OS-003` — Atomic replacement/removal and no stale alias | `T3.3`, `T4.1`, `T4.2`, `T10.1` | Replacement/removal/slot-reuse fault corpus; RFC-014 P10 functional / P11 resource-connected / P12 conformance evidence | migration pending; prior evidence remains baseline only |
+| `OS-004` — Twenty changes produce one dirty owner/wake/reevaluation | `T5.1`, `T5.2`, `T6.2`, `T10.1` | Exact operation and publication transcript; RFC-014 P10 functional / P11 resource-connected / P12 conformance evidence | migration pending; prior evidence remains baseline only |
+| `OS-005` — Exact local mapping and no partial publication | `T2.2`, `T3.4`, `T7.1`–`T7.3`, `T10.1` | Exhaustive error/mapping/mandatory-effect matrix; RFC-014 P10 functional / P11 resource-connected / P12 conformance evidence | migration pending; prior evidence remains baseline only |
+| `OS-006` — Equal profile transcripts and zero static heap | `T6.1`–`T6.3`, `T8.2`–`T8.4`, `T10.1` | Normalized comparison and allocation reports; RFC-014 P10 functional / P11 resource-connected / P12 conformance evidence | migration pending; prior evidence remains baseline only |
+| `OS-007` — Ordered later fact application and no direct/reentrant mutation | `T2.3`, `T5.3`, `T6.4`, `T10.1` | Admission/refusal/order/reentrancy fixtures; RFC-014 P10 functional / P11 resource-connected / P12 conformance evidence | migration pending; prior evidence remains baseline only |
+| `OS-008` — No forbidden static dependencies | `T0.2`, `T6.3`, `T8.3`, `T9.1`, `T10.1` | Target graph, import-negative, symbols, link-map audit; RFC-014 P10 functional / P11 resource-connected / P12 conformance evidence | migration pending; prior evidence remains baseline only |
+| `OS-009` — Fresh target generations and retirement/exhaustion | `T4.1`–`T4.4`, `T6.1`, `T10.1` | Live/publishable target transcript and lifetime probes; RFC-014 P10 functional / P11 resource-connected / P12 conformance evidence | migration pending; prior evidence remains baseline only |
+| `OS-010` — Generated lexical visitation and bind-before-body | `T1.2`–`T1.5`, `T3.2`, `T10.1` | Macro expansion and stateful traversal transcript; RFC-014 P10 functional / P11 resource-connected / P12 conformance evidence | migration pending; prior evidence remains baseline only |
+| `OS-011` — Exact report outcomes and phase/lifecycle effects | `T5.1`–`T5.4`, `T7.2`, `T10.1` | Report-outcome and mandatory-disposition corpus; RFC-014 P10 functional / P11 resource-connected / P12 conformance evidence | migration pending; prior evidence remains baseline only |
+| `OS-012` — Candidate publishable lookup timing and commit/discard | `T3.1`, `T4.3`, `T4.4`, `T6.1`, `T10.1` | Candidate lookup timing/equality transcript; RFC-014 P10 functional / P11 resource-connected / P12 conformance evidence | migration pending; prior evidence remains baseline only |
+| `OS-RD-001` | `T10.1` | P03 exit fixtures; P10 differential/negative tests; P11 actual resource/connected disposition; P12 owner report | pending |
+| `OS-RD-002` | `T10.1` | P03 exit fixtures; P10 differential/negative tests; P11 actual resource/connected disposition; P12 owner report | pending |
+| `OS-RD-003` | `T10.1` | P03 exit fixtures; P10 differential/negative tests; P11 actual resource/connected disposition; P12 owner report | pending |
+| `OS-RD-004` | `T10.1` | P03 exit fixtures; P10 differential/negative tests; P11 actual resource/connected disposition; P12 owner report | pending |
 
 ## Milestones and Tasks
 

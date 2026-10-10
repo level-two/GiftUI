@@ -20,7 +20,9 @@ its required acceptance criteria.
 - [RFC-014 coordinated amendments](../iterations/iteration-003-review/rfc-014-spec-amendment-review.md):
   SPEC-001/002/006/007/010/011/012/013/015 are **approved** under accepted ADR-035/036/037; see the
   [approval record](../iterations/iteration-003-review/rfc-014-spec-approval.md). Their prior implemented baseline is
-  preserved at `53740a73`; old evidence does not establish amended conformance.
+  preserved at `53740a73`; old evidence does not establish amended conformance. The
+  [bounded implementation sequence](../iterations/iteration-003-review/rfc-014-implementation-plan.md)
+  links nine ready owner plans and their finite P01–P12 work packages.
 - SPEC-003/004/005/008/009/014 retain their existing implemented status and
   approval/exception records. They are unchanged by these amendments.
 - SPEC-001 through SPEC-015 are allocated; each document's metadata is the current

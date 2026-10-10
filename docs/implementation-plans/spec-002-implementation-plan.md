@@ -2,7 +2,7 @@
 spec: SPEC-002
 feature: giftui-mvp-architecture
 title: SPEC-002 Implementation Plan
-status: draft
+status: ready
 owners:
   - codex
 created: 2026-08-28
@@ -20,17 +20,38 @@ superseded_by: null
 
 # SPEC-002 Implementation Plan
 
-## RFC-014 measurement amendment gate — 2026-10-10
+## RFC-014 implementation readiness — 2026-10-10
 
-SPEC-002's focused compiler amendment is draft under accepted ADR-036. Historical
-completed tasks/evidence remain the `53740a73` baseline. No implementation of the
-new driver selection is ready until coordinated Spec approval and updated task
-planning. PF-006/007 require fresh migration measurements, also required by
-SPEC-013 RP-RD-003; old compiler evidence is not a pass for the new matrix.
+**Ready under [explicit Spec approval](../iterations/iteration-003-review/rfc-014-spec-approval.md).**
+Implementation has not started. The [bounded sequence](../iterations/iteration-003-review/rfc-014-implementation-plan.md)
+is the shared ordering/scope index: exactly P01–P12, not an expandable backlog.
+This owner contributes P01; its final regression/resource/disposition
+obligations run through P10–P12. Only the current checkpoint below is new work.
+Earlier tasks and readiness/closure statements remain historical baseline evidence,
+not additional authorization to rerun an MVP implementation or reopen experiments.
 
+### Current owner checkpoint
 
-> This plan derives work from the approved Portable Foundation Specification.
-> It orders implementation and evidence but does not amend the contract.
+- [ ] `T7.1` — Pinned migration compiler selector and four-profile Foundation measurements, preserving historical baseline mode.
+  **Scope:** scripts/contracts/run-spec-002.sh and required shared-driver/runner argument forwarding and directly corresponding tests/fixtures/build wiring.
+  **Dependencies:** none; obey each shared package's entry conditions.
+  **Exit:** the package-specific evidence in P01, fresh applicable tests for
+  every criterion in the matrix, P11 resource/connected dispositions, and P12
+  conformance/cutover disposition. A failed or unauthorized gate stays unmet;
+  do not mark this checkpoint completed from an old fixture or a shared mock.
+  **Checks:** owner driver `scripts/contracts/run-spec-002.sh --profile <profile>`
+  on the four governed configurations, focused unit/negative checks named by the
+  shared sequence, then P10's registered hardware-free gate. Compiler-selection
+  propagation follows P01; no historical check is weakened.
+  **Evidence:** existing owner conformance report and immutable owner-driver
+  reports linked to exact commits/artifacts; no success evidence exists yet.
+
+The single current acceptance matrix retains each criterion once. Its historical
+task IDs remain provenance; `T7.1` adds fresh migration verification without
+reopening unrelated implementation. P01–P12 define exact footprints/exits, three
+in-package design-note triggers and the stop/escalation rules. Optional ideas use
+the deferred track and do not become tasks. A required contract failure cannot
+be deferred. Commit each completed package with its test/evidence disposition.
 
 ## Authority and Scope
 
@@ -162,16 +183,16 @@ confirm the exact `T0.3` path manifest before `T0.5` executes.
 
 | Criterion | Implementation tasks | Evidence | Status |
 | --- | --- | --- | --- |
-| `PF-001` | `T2.1`, `T2.4`, `T5.2` | API/visibility fixtures, geometry tests, four-profile declaration reports | pending |
-| `PF-002` | `T2.2`, `T2.4`, `T4.2` | Rejection corpus and exact SPEC-003 owner-adapter mapping fixtures | pending |
-| `PF-003` | `T2.3` | Complete rectangle boundary and half-open containment corpus | pending |
-| `PF-004` | `T3.1`, `T3.2`, `T3.3` | Package-SPI inspection, raw-boundary fixtures, concrete-type exclusions | pending |
-| `PF-005` | `T0.7`, `T1.3`, `T1.6`, `T4.1`, `T4.3` | Clean package bootstrap, skeleton-readiness transcript, exact graph/cycle check, import fixtures, compiled re-export inspection | pending |
-| `PF-006` | `T5.1`, `T5.2` | Four exact driver commands and equal host/Embedded transcripts | pending |
-| `PF-007` | `T5.3`, `T5.4` | Layout, allocation, section-delta, compiler, command, revision, and link-map reports | pending |
-| `PF-008` | `T0.2`, `T0.5`, `T2.4`, `T3.3`, `T6.1` | Tag-derived migration ledger, clean-baseline removal record, and forbidden-shim audit | pending |
-| `PF-009` | `T4.1`, `T4.2`, `T6.2` | Ownership fixtures plus reciprocal lifecycle-link audit | pending |
-| `PF-010` | `T6.3` | Normative scope audit across code, fixtures, and notes | pending |
+| `PF-001` | `T2.1`, `T2.4`, `T5.2`, `T7.1` | API/visibility fixtures, geometry tests, four-profile declaration reports; RFC-014 P10 functional / P11 resource-connected / P12 conformance evidence | migration pending; prior evidence remains baseline only |
+| `PF-002` | `T2.2`, `T2.4`, `T4.2`, `T7.1` | Rejection corpus and exact SPEC-003 owner-adapter mapping fixtures; RFC-014 P10 functional / P11 resource-connected / P12 conformance evidence | migration pending; prior evidence remains baseline only |
+| `PF-003` | `T2.3`, `T7.1` | Complete rectangle boundary and half-open containment corpus; RFC-014 P10 functional / P11 resource-connected / P12 conformance evidence | migration pending; prior evidence remains baseline only |
+| `PF-004` | `T3.1`, `T3.2`, `T3.3`, `T7.1` | Package-SPI inspection, raw-boundary fixtures, concrete-type exclusions; RFC-014 P10 functional / P11 resource-connected / P12 conformance evidence | migration pending; prior evidence remains baseline only |
+| `PF-005` | `T0.7`, `T1.3`, `T1.6`, `T4.1`, `T4.3`, `T7.1` | Clean package bootstrap, skeleton-readiness transcript, exact graph/cycle check, import fixtures, compiled re-export inspection; RFC-014 P10 functional / P11 resource-connected / P12 conformance evidence | migration pending; prior evidence remains baseline only |
+| `PF-006` | `T5.1`, `T5.2`, `T7.1` | Four exact driver commands and equal host/Embedded transcripts; RFC-014 P10 functional / P11 resource-connected / P12 conformance evidence | migration pending; prior evidence remains baseline only |
+| `PF-007` | `T5.3`, `T5.4`, `T7.1` | Layout, allocation, section-delta, compiler, command, revision, and link-map reports; RFC-014 P10 functional / P11 resource-connected / P12 conformance evidence | migration pending; prior evidence remains baseline only |
+| `PF-008` | `T0.2`, `T0.5`, `T2.4`, `T3.3`, `T6.1`, `T7.1` | Tag-derived migration ledger, clean-baseline removal record, and forbidden-shim audit; RFC-014 P10 functional / P11 resource-connected / P12 conformance evidence | migration pending; prior evidence remains baseline only |
+| `PF-009` | `T4.1`, `T4.2`, `T6.2`, `T7.1` | Ownership fixtures plus reciprocal lifecycle-link audit; RFC-014 P10 functional / P11 resource-connected / P12 conformance evidence | migration pending; prior evidence remains baseline only |
+| `PF-010` | `T6.3`, `T7.1` | Normative scope audit across code, fixtures, and notes; RFC-014 P10 functional / P11 resource-connected / P12 conformance evidence | migration pending; prior evidence remains baseline only |
 
 ## Milestones and Tasks
 

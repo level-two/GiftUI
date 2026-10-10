@@ -889,6 +889,8 @@ geometry model is architectural or post-MVP work and must not be decided here.
 
 ## References
 
+- [Bounded RFC-014 implementation sequence](../iterations/iteration-003-review/rfc-014-implementation-plan.md).
+
 - [SPEC-007 Implementation Plan](../implementation-plans/spec-007-implementation-plan.md)
 - [SPEC-007 Conformance Report](../conformance/spec-007-conformance.md)
 - [Bounded Layout Attempt Implementation Design](../implementation-designs/spec-007-bounded-layout-attempt.md)

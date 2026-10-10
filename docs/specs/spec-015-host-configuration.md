@@ -1593,6 +1593,8 @@ Specification:
 
 ## References
 
+- [Bounded RFC-014 implementation sequence](../iterations/iteration-003-review/rfc-014-implementation-plan.md).
+
 - [SPEC-015 Implementation Plan](../implementation-plans/spec-015-implementation-plan.md)
 - [SPEC-015 Conformance Report](../conformance/spec-015-conformance.md)
 - [Generated Workload and Presets Implementation Design](../implementation-designs/spec-015-generated-workload-and-presets.md)

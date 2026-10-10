@@ -10,8 +10,9 @@ these newly written contracts.
 
 Eugene explicitly approved all nine amendments presented in `9b2ff666`; see the
 [2026-10-10 approval record](rfc-014-spec-approval.md). The review below preserves
-its pre-approval findings. The next deliverable is bounded implementation planning,
-not another approval or investigation of these decisions.
+its pre-approval findings. The [bounded implementation sequence](rfc-014-implementation-plan.md) and nine
+owner plans are now ready. The review below is historical, not a request for
+another approval or investigation of these decisions.
 
 ## Amendment and authority map
 

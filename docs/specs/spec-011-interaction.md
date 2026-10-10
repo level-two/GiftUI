@@ -811,6 +811,8 @@ configuration contracts.
 
 ## References
 
+- [Bounded RFC-014 implementation sequence](../iterations/iteration-003-review/rfc-014-implementation-plan.md).
+
 - [SPEC-011 Implementation Plan](../implementation-plans/spec-011-implementation-plan.md)
 - [SPEC-011 Conformance Report](../conformance/spec-011-conformance.md)
 - [Target-Bound Interaction Coordination Design](../implementation-designs/spec-011-target-bound-dispatch.md)

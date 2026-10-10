@@ -1391,6 +1391,8 @@ Richer drawing and retained paths remain outside the accepted MVP scope.
 
 ## References
 
+- [Bounded RFC-014 implementation sequence](../iterations/iteration-003-review/rfc-014-implementation-plan.md).
+
 - [SPEC-012 Implementation Plan](../implementation-plans/spec-012-implementation-plan.md)
 - [SPEC-012 Conformance Report](../conformance/spec-012-conformance.md)
 

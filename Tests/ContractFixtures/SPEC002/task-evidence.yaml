@@ -34,3 +34,12 @@ tasks:
   T6.2: {"disposition":"completed","requirements":["PF-009"],"implementation":["docs/implementation-plans/spec-002-implementation-plan.md"],"checks":["scripts/contracts/run-spec-002.sh"],"profiles":["macos-dynamic"],"evidence":["Tests/ContractFixtures/SPEC002/Evidence/milestone-6/traceability-and-adapter-ownership.md"],"blockers":[]}
   T6.3: {"disposition":"completed","requirements":["PF-010"],"implementation":["docs/implementation-plans/spec-002-implementation-plan.md"],"checks":["scripts/contracts/run-spec-002.sh"],"profiles":["macos-dynamic"],"evidence":["Tests/ContractFixtures/SPEC002/Evidence/milestone-6/scope-boundary.md"],"blockers":[]}
   T6.4: {"disposition":"completed","requirements":[],"implementation":["docs/implementation-plans/spec-002-implementation-plan.md"],"checks":["scripts/contracts/run-spec-002.sh"],"profiles":["macos-dynamic"],"evidence":["Tests/ContractFixtures/SPEC002/Evidence/milestone-6/migration-closure.md"],"blockers":[]}
+
+  T7.1:
+    disposition: pending
+    requirements: [PF-001, PF-002, PF-003, PF-004, PF-005, PF-006, PF-007, PF-008, PF-009, PF-010]
+    implementation: []
+    checks: []
+    profiles: []
+    evidence: []
+    blockers: []
