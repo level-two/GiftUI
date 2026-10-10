@@ -25,7 +25,7 @@ superseded_by: null
 ## RFC-014 implementation readiness — 2026-10-10
 
 **Ready under [explicit Spec approval](../iterations/iteration-003-review/rfc-014-spec-approval.md).**
-P05 implementation began on 2026-10-11. The [shared P05 receipt](../../Tests/ContractFixtures/SPEC011/Evidence/rfc-014-p05/progress.md) serves both owners. The [bounded sequence](../iterations/iteration-003-review/rfc-014-implementation-plan.md)
+P05 passed its finite exit on 2026-10-11 after [independent Strong review](../../Tests/ContractFixtures/SPEC011/Evidence/rfc-014-p05/independent-exit-review.md). The [shared P05 receipt](../../Tests/ContractFixtures/SPEC011/Evidence/rfc-014-p05/progress.md) serves both owners. The [bounded sequence](../iterations/iteration-003-review/rfc-014-implementation-plan.md)
 is the shared ordering/scope index: exactly P01–P12, not an expandable backlog.
 This owner contributes P05; its final regression/resource/disposition
 obligations run through P10–P12. Only the current checkpoint below is new work.
@@ -46,7 +46,7 @@ not additional authorization to rerun an MVP implementation or reopen experiment
   shared sequence, then P10's registered hardware-free gate. Compiler-selection
   propagation follows P01; no historical check is weakened.
   **Evidence:** existing owner conformance report and immutable owner-driver
-  reports linked to exact commits/artifacts; no success evidence exists yet.
+  reports linked to exact commits/artifacts; the [P05 exit](../../Tests/ContractFixtures/SPEC011/Evidence/rfc-014-p05/progress.md#final-p05-package-exit--2026-10-11) records all eight passing component routes at `fec8a27c` and remaining gates. T9.1 remains open.
 
 The single current acceptance matrix retains each criterion once. Its historical
 task IDs remain provenance; `T9.1` adds fresh migration verification without

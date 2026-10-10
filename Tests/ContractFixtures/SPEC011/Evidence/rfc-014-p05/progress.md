@@ -1,5 +1,32 @@
 # RFC-014 P05 progress
 
+## Final P05 package exit — 2026-10-11
+
+**P05 passed. P01–P05 are complete at their finite package boundaries;
+P06–P12 remain pending.** Execution stops at the requested P05 boundary.
+Separate Strong review at `42b5f639` found no blockers and independently
+verified all eight owner/profile receipts and 500 retained artifacts. See
+[independent-exit-review.md](independent-exit-review.md) for invariant assessment
+and evidence limitations.
+
+Implementation steps are committed as `a7c9c6b1` (borrowed Layout/Render),
+`f86dfbde` (owned action keys and checked dispatch) and `fec8a27c` (oracles and
+physical key accounting). Final receipts use clean tested `fec8a27c`; evidence
+handoff is `9bcd5ed6`. Native profiles each pass 196 Layout, 215 Interaction and
+183 P03 root assertions; cross routes establish compilation, lifetime rejection,
+layout and CPU/VFP ABI only. Both native bridge fixtures use Static root
+ownership; concrete profile coordinator/root composition remains P07.
+
+No contract/scope change, exception or new deferred item was required. The
+optional global dependency checker remains explicitly unverified as recorded
+below; it is not included among passing checks. Consecutive unproductive repairs
+remain **0 of 2**.
+
+SPEC-007/011 stay `implementing`, plans `active`, reports `collecting`, and
+T9.1/T12.1 remain open through final conformance/resource/adoption dispositions.
+P06 is next; no P06 work was started. Full application, coordinator, workload,
+allocation/stack/linked-resource and connected gates remain with P06–P12.
+
 ## Independent review completion
 
 Separate Strong exit review of `2aa5c7cc..9bcd5ed6`, dispatched at `5b3ff038`,

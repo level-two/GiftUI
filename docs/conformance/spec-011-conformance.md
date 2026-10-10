@@ -38,7 +38,7 @@ Earlier open-gate statements below describe the pre-approval history.
 
 ## RFC-014 P05 collection
 
-Current amendment evidence is collecting in the [shared P05 receipt](../../Tests/ContractFixtures/SPEC011/Evidence/rfc-014-p05/progress.md). Earlier completed tables below are historical baseline results, not amendment conformance. Owner checkpoints remain open through P10–P12. Eight fresh selected-component owner routes pass from clean `fec8a27c`; the receipt records their precise coverage, resource limits and independent Strong review pending disposition.
+P05 passed its finite package exit after [independent Strong review](../../Tests/ContractFixtures/SPEC011/Evidence/rfc-014-p05/independent-exit-review.md) at `42b5f639`. The [shared receipt](../../Tests/ContractFixtures/SPEC011/Evidence/rfc-014-p05/progress.md) records eight passing selected-component owner routes at clean `fec8a27c`, exact resource costs and remaining gates. Native bridge fixtures use Static root ownership in both configurations; concrete profile coordinator/root integration remains P07. Earlier completed tables below are historical baseline results, not amendment conformance. Owner checkpoints and full criteria remain open through P10–P12. The optional global dependency check is explicitly unverified and is not counted as a pass.
 
 ## Review Scope
 

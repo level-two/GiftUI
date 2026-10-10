@@ -44,7 +44,7 @@ regression and four-configuration obligations remain in the owner matrices.
 | P02 | [SPEC-006 amendment](../../specs/spec-006-declarative-view-semantics.md#rfc-014-runtime-amendment); DV-RD-001–004 | `Sources/GiftUI/DeclarativeView.swift`, `Sources/GiftUIMacros/FiniteSourceLowering.swift`; [finite lowering note](../../implementation-designs/spec-006-finite-source-lowering.md), [completed receipt](../../../Tests/ContractFixtures/SPEC006/Evidence/rfc-014-p02/result.md). |
 | P03 | [SPEC-010 amendment](../../specs/spec-010-observable-reference-state.md#rfc-014-runtime-amendment); OS-RD-001–004; owner **T10.1** | `Sources/GiftUIObservableState/ObservableModelOwnership.swift`, `Sources/GiftUIObservableState/ObservableModelScope.swift`, `Sources/GiftUIObservableState/ObservableStateReplacementTransaction.swift`; `Tests/GiftUIObservableStateTests/ObservableStateReplacementTransactionTests.swift`; [ownership note](../../implementation-designs/spec-010-stable-model-ownership.md), [current progress](../../../Tests/ContractFixtures/SPEC010/Evidence/rfc-014-p03/progress.md). |
 | P04 | [SPEC-006 amendment](../../specs/spec-006-declarative-view-semantics.md#rfc-014-runtime-amendment); DV-RD-001–004 | `Sources/GiftUISemanticCore/SemanticRuntimeRecords.swift`, `SemanticRecordStore.swift`, `SemanticRecordExpansion.swift`, `SemanticStandardPayload.swift`; `Sources/GiftUIObservableState/ObservableSemanticBodyBinding.swift`; both profile `*SemanticRecordStorage.swift` files. `Tests/ContractFixtures/SPEC006/RuntimeRecords` and `scripts/contracts/check-spec-006-runtime-records.py`; [passed package exit](../../../Tests/ContractFixtures/SPEC006/Evidence/rfc-014-p04/progress.md#final-p04-package-exit--2026-10-11), [independent review](../../../Tests/ContractFixtures/SPEC006/Evidence/rfc-014-p04/exit-review.md), [bank note](../../implementation-designs/spec-006-runtime-record-banks.md). |
-| P05 | [SPEC-007 amendment](../../specs/spec-007-layout.md#rfc-014-runtime-amendment), [SPEC-011 amendment](../../specs/spec-011-interaction.md#rfc-014-runtime-amendment); LY-RD-001–002, IN-RD-001–002 | `Sources/GiftUISemanticCore/SemanticLayoutView.swift`, `Sources/GiftUIInteraction/InteractionStorage.swift`; `Tests/GiftUISemanticCoreTests/SemanticLayoutViewTests.swift`, `Tests/GiftUIInteractionTests/InteractionCandidateAppendTests.swift`. |
+| P05 | [SPEC-007 amendment](../../specs/spec-007-layout.md#rfc-014-runtime-amendment), [SPEC-011 amendment](../../specs/spec-011-interaction.md#rfc-014-runtime-amendment); LY-RD-001–002, IN-RD-001–002 | `Sources/GiftUISemanticCore/SemanticRecordLayoutView.swift`, `SemanticRecordRenderView.swift`; `Sources/GiftUIInteraction/InteractionOwnedKeyState.swift`; `Sources/GiftUIRuntimeCore/RuntimeRecordInteractionBridge.swift`, `RuntimeInteractionCandidateResolution.swift`. Fixtures: `Tests/ContractFixtures/SPEC007/RuntimeDerived` and `SPEC011/RuntimeDerived`; drivers `check-spec-007-bank-layout.py` and `check-spec-011-owned-keys.py` under `scripts/contracts`. [Passed shared exit](../../../Tests/ContractFixtures/SPEC011/Evidence/rfc-014-p05/progress.md#final-p05-package-exit--2026-10-11), [independent review](../../../Tests/ContractFixtures/SPEC011/Evidence/rfc-014-p05/independent-exit-review.md). |
 | P06 | [SPEC-012 amendment](../../specs/spec-012-canvas-path-stroke-drawing.md#rfc-014-runtime-amendment); DR-RD-001–004 | `Sources/GiftUI/Canvas.swift`, `Sources/GiftUIDrawing/CanvasPlanProducer.swift`; `Tests/GiftUIDrawingTests/CanvasPlanProducerTests.swift`, `Tests/GiftUIDrawingTests/DrawingLifetimeTests.swift`. |
 | P07 | [SPEC-013 amendment](../../specs/spec-013-runtime-profiles.md#rfc-014-runtime-amendment); RP-RD-001–004 | `Sources/GiftUIRuntimeCore/RuntimeCompletePipeline.swift`, `Sources/GiftUIRuntimeCore/RuntimeCoordinatorCleanup.swift`; `Sources/GiftUIRuntimeDynamic/DynamicRuntimeExecutionCoordinator.swift`, `Sources/GiftUIRuntimeStatic/StaticRuntimeExecutionCoordinator.swift`; `Tests/GiftUIRuntimeCoreTests/RuntimeCompletePipelineTests.swift`. |
 | P08 | [SPEC-015 amendment](../../specs/spec-015-host-configuration.md#rfc-014-runtime-amendment); HC-RD-001–004 | `Sources/GiftUIHostConfiguration/CheckedMVPHostConfigurationValidator.swift`, `scripts/contracts/generate-spec-015-workload.rb`; `Tests/GiftUIHostConfigurationTests/HostConfigurationTests.swift`; [finite counter inventory](../../../experiments/spike-072-contextual-traversal-integration/application-coverage.md). This inventory is not an implemented counter host. |
@@ -77,7 +77,8 @@ The regression covers every rejected phase, valid inverse nesting, scoped throws
 and retained-owner cleanup. Separate Strong verification passes P03 at `15b47e2a`;
 the [final package exit](../../../Tests/ContractFixtures/SPEC010/Evidence/rfc-014-p03/progress.md#final-p03-package-exit)
 records matched receipts and review limits. P04 subsequently passed after separate
-Strong review at `037607c7`; P05–P12 remain pending. Do not infer complete-module,
+Strong review at `037607c7`. P05 passed after separate Strong review at
+`42b5f639`; P06–P12 remain pending. Do not infer complete-module,
 semantic-record, coordinator or linked-resource completion from these probes.
 
 These reminders point into contracts; read the full clauses when editing the
@@ -100,7 +101,7 @@ dispatch fields: exact criterion, source symbols, one test exemplar, independent
 expected result, commands with concrete arguments and evidence destination.
 State **remaining implementation choice: none** only when true. Otherwise name
 the choice and keep its resolution with the appropriate tier. Do not invent
-future APIs now: fill P05–P12 packets when their dependencies stabilize, using
+future APIs now: fill P06–P12 packets when their dependencies stabilize, using
 the navigation above. This is preparation within existing packages, not a new
 planning phase or approval gate.
 
@@ -132,7 +133,10 @@ not establish correctness.
   and `scripts/contracts/run-spec-006.sh --profile <profile> --compiler-baseline rfc-014`.
   P03 now uses the registered `scripts/contracts/run-spec-010.sh --profile <profile>
   --compiler-baseline rfc-014 --giftui-build <verified-core-directory>` route.
-  It validates the explicit P02 receipt before reuse; the legacy default gate
+  P05 similarly uses the registered SPEC-007 and SPEC-011 routes with
+  `--compiler-baseline rfc-014 --giftui-build <verified-core-directory>`; its
+  shared receipt supplies exact commands and pinned inputs. These validate the
+  explicit P02 receipt before reuse; the legacy default gate
   is preserved for P10 rather than weakened during staged migration.
 - P03 progress records selected-file component builds, not passing complete
   modules. Broad failures during staged migration need owner attribution; they

@@ -1,6 +1,6 @@
 # RFC-014 bounded implementation sequence — 2026-10-10
 
-**P01–P04 passed; P05–P12 pending.** This is the shared
+**P01–P05 passed; P06–P12 pending.** This is the shared
 sequencing index for nine owner Implementation Plans, not another contract or
 investigation. It derives only the [approved Spec amendments](rfc-014-spec-approval.md)
 at `3c260bbc` and accepted ADR-035/036/037. ITERATION-003 I3-04/05 supplies the
@@ -321,12 +321,12 @@ resource/connected evidence are not inferred from this declaration exit.
 
 P03 passed its finite package exit at `15b47e2a` after separate Strong review
 of the explicitly approved scoped visitor correction and root-entry repair;
-P04 subsequently passed as recorded below; P05–P12 remain pending. There is no
+P04/P05 subsequently passed as recorded below; P06–P12 remain pending. There is no
 remaining P02 exit failure, new package, scope expansion or architecture change.
 
 Planning was prepared without implementation or experiment execution. Optional work remains in the existing deferred track; no new optional
-deliverable was added. The next package is P05 within the existing bounded sequence;
-the current execution stopped at the requested P04 package boundary.
+deliverable was added. The next package is P06 within the existing bounded sequence;
+the current execution stopped at the requested P05 package boundary.
 
 P04's scoped traversal, runtime records, exact paired paths, bounded payloads and
 reader-aware profile banks are implemented in `36834e01`, `7e6fdcd6`,
@@ -338,6 +338,16 @@ records native/cross-build limits, measured component bounds and remaining
 integration/resource gates. T10.1 remains open through P10–P12. No contract,
 scope or capacity change was needed; consecutive unproductive repairs remain
 0 of 2. No P05 work was started.
+
+P05 subsequently implemented borrowed Layout/Render views, complete owned
+Interaction keys and checked target dispatch in `a7c9c6b1`, `f86dfbde` and
+`fec8a27c`. All eight owner/profile routes pass on clean source `fec8a27c`.
+Independent Strong review `42b5f639` found no blockers and verified all receipts
+and 500 artifacts. The [final P05 exit](../../../Tests/ContractFixtures/SPEC011/Evidence/rfc-014-p05/progress.md#final-p05-package-exit--2026-10-11)
+records native/cross-build scope, physical key/capture costs, the unverified
+optional dependency check and later integration/resource gates. T9.1/T12.1
+remain open. No contract/scope change or exception was needed; consecutive
+unproductive repairs remain 0 of 2. No P06 work was started.
 
 
 Planning validation: all nine approved Spec statuses and ready plan templates

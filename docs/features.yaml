@@ -92,8 +92,8 @@ features:
       - canvas-drawing
     milestone: MVP
   giftui-mvp-architecture:
-    # SPEC-007/011 P05 implementing; shared receipt Tests/ContractFixtures/SPEC011/Evidence/rfc-014-p05/progress.md.
-    # RFC-014 P01–P04 passed; P04 separate Strong review: 037607c7; P05–P12 pending.
+    # SPEC-007/011 P05 passed; T9.1/T12.1 remain open; shared receipt Tests/ContractFixtures/SPEC011/Evidence/rfc-014-p05/progress.md.
+    # RFC-014 P01–P05 passed; P05 separate Strong review: 42b5f639; P06–P12 pending.
     # Optional source-conditional cleanup: FW-029, linked from SPEC-013.
     # ITERATION-003 revision 5 governs bounded runtime/memory/performance preparation.
     # Distribution/reuse/integration delivery transferred to ITERATION-004.
