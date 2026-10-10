@@ -1,5 +1,14 @@
 # RFC-014 C: application storage and ownership ledger
 
+> **Revised working direction, 2026-10-10:**
+> [Stable reads without a mandatory snapshot copy](rfc-014-stable-read-revision.md)
+> supersedes this document's separate frozen-bank baseline and its assumption
+> that the frontend must derive concrete Body aliases. The remaining text
+> preserves the previous candidate and its evidence; it is not the current
+> implementation direction. Lifetime, ownership and source-coverage questions
+> remain open. No accepted contract changed.
+
+
 **2026-10-10 — proposed capacity contract, not approved limits or measured RAM.**
 Parent: [RFC-014](../../rfcs/rfc-014-runtime-derived-records-and-scoped-model-access.md).
 Read with the [C access/lifecycle contract](rfc-014-c-contract.md) and

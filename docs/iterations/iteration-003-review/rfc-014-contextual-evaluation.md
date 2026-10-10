@@ -1,5 +1,14 @@
 # RFC-014: contextual View evaluation and frame access
 
+> **Revised working direction, 2026-10-10:**
+> [Stable reads without a mandatory snapshot copy](rfc-014-stable-read-revision.md)
+> supersedes this document's separate frozen-bank baseline and its assumption
+> that the frontend must derive concrete Body aliases. The remaining text
+> preserves the previous candidate and its evidence; it is not the current
+> implementation direction. Lifetime, ownership and source-coverage questions
+> remain open. No accepted contract changed.
+
+
 **2026-10-10 — proposed design, not an approved contract.** Parent:
 [RFC-014](../../rfcs/rfc-014-runtime-derived-records-and-scoped-model-access.md).
 This delivers Eugene's next-design-step instruction after

@@ -1,5 +1,17 @@
 # RFC-014 working direction and approval process
 
+## Current revision — stable reads, 2026-10-10
+
+The maintainer authorized the [stable-read revision](rfc-014-stable-read-revision.md).
+Keep protocol Canvas and stable model ownership. Exclude model mutation during
+synchronous derivation, retaining existing storage through the final Canvas read;
+do not require a separate copied snapshot. Prefer compiler-derived Body through
+a revised internal evaluation contract. SR-1–6 replace conflicting C3/C4 and
+copy-freeze refinements below; the older text preserves their provenance.
+RFC approval and production adoption remain open. The bounded SR-Q1–4 activities
+replace the previous recommendation to expand the finite frontend immediately.
+
+
 **2026-10-10 — working RFC direction; not accepted architecture.** Parent:
 [RFC-014](../../rfcs/rfc-014-runtime-derived-records-and-scoped-model-access.md).
 Eugene proposed a Canvas protocol with deferred drawing, then observable

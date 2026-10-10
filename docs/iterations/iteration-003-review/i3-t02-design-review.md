@@ -10,6 +10,18 @@ The original I3-T02 findings below describe the authoring task. The subsequent
 [B1 follow-up](#b1-follow-up--spike-069) adds evidence without approving the RFC
 or changing the original task's budget/history.
 
+## Stable-read correction review — 2026-10-10
+
+Current [SR-1–6 and bounded activities](rfc-014-stable-read-revision.md) supersede
+copy-freeze and mandatory frontend Body derivation as the working baseline.
+The author review finds no need to amend accepted ADR-011/025: they require
+mutation exclusion, not a copied model. B0 remains open for retained-owner storage;
+B1/B2 remain open for safe access/ownership. CE-2 now asks whether a non-generic
+evaluation requirement permits compiler-derived Body. Existing SPIKE-072 results
+are preserved; they do not require retaining its method-generic interface.
+No production or RFC approval follows. Evidence dispositions will be recorded
+against SR-Q1–4 before this bounded package ends.
+
 ## Contextual integration evidence review — SPIKE-072, 2026-10-10
 
 **Verdict: not ready for RFC approval; bounded integration mechanism supported.**

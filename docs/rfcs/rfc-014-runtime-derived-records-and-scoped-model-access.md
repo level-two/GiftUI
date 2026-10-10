@@ -95,15 +95,25 @@ shows that complete counter/analyzer source coverage, production binding/ownersh
 and full-image feasibility remain unproved. Mandatory transformation is selected
 provisionally for evidence, not adopted as production architecture.
 
+## Current design correction — 2026-10-10
+
+The maintainer authorized [stable reads without a mandatory snapshot copy](../iterations/iteration-003-review/rfc-014-stable-read-revision.md).
+That revision supersedes conflicting C copy-freeze, five-bank-baseline and
+mandatory frontend Body-derivation recommendations below. Retain protocol Canvas
+and stable model ownership, preserve mutation exclusion, and first investigate
+compiler-derived Body with a fixed read context. Previous studies remain evidence
+for their exact candidates. Accepted ADR-011/025 already require serialized
+mutation; this correction changes a draft realization, not those decisions.
+
 ## Summary
 
 Evaluate the real portable declarations through Semantic Core's traversal and
 emit bounded records at runtime. Retain complete structural identity separately
 from each revision's record indices. Keep live models in address-stable typed
-owner storage; freeze application data through post-layout Canvas invocation.
+owner storage; exclude mutation through post-layout Canvas invocation.
 Develop a Canvas protocol with explicit draw invocation and observable properties
-backed by current/frozen logical model versions. Bind graph and drawing reads
-to one frozen frame revision under a live owner. Preserve serialized mutation
+backed by retained model storage. Graph and drawing read the same unchanged
+version; a separate snapshot copy is not required by this baseline. Preserve serialized mutation
 and existing transaction order. Per-Canvas snapshot keys remain an earlier
 alternative, not a required mechanism when the frame owner covers every read.
 
@@ -609,11 +619,11 @@ of these risks is resolved by the conditional RAM sum.
 
 | ID | Blocking issue | Required resolution |
 | --- | --- | --- |
-| B0 | C proposes five capture banks; accepted ADR-034 requires exactly three | Review C's K=2/F=1 non-sharing ledger and choose an ADR-034 amendment/successor preserving retention, or prove a compatible alternative. Earlier four-slot arithmetic does not cover this baseline. Do not modify limits first. |
-| B1 | Enforceable State/model/capture access and callback isolation | SPIKE-069 refutes callback restriction alone and supports a bounded borrow/key fixture. The C contract now proposes coherent copy-freeze, contextual property access and typed protocol dispatch. Prove finite context lowering, typed failure transport, compiler support and every owner/access route (C-P1/C-P2); exact Swift realization remains open. SPIKE-070/071 support finite lowering and a four-profile borrow/escape fixture, with root evaluation/draw signature adaptations and experimental lifetime flags; the rooted nRF object has no allocator relocations. The contextual-evaluation draft specifies replacement compiled View witnesses, an explicitly threaded session and short read borrows under a frame lease. SPIKE-072 supports real nested SemanticCore/Drawing module integration using explicit generated Body aliases and leaf-only defaults; automatic opaque witness inference failed. Complete source-shape conformance, production owner routes and compiler-policy adoption remain open (CE-1–CE-6). Fixture results do not close full no-escape/exclusivity/zero-heap proof. |
-| B2 | Complete record/payload/path/interaction and model storage | C proposes K=2/F=1 with a retained-former ledger and exact first-excess refusal; verify actual owners and every failure edge (C-P3), complete layouts/codecs/trie fanout and all source cases; validate every proposed byte row, replacement capture and generated Canvas capture size; approve resulting SPEC-001/013/015 limits. |
+| B0 | Stable-read revision removes the mandatory F0 copy; K=2 non-sharing ownership still implies four capture banks versus ADR-034's three | Reconcile retained-owner/replacement lifetimes and any safe allocation sharing. Four-bank arithmetic is conditional, not measured fit or approval. The historical five-bank baseline no longer drives the decision. Do not modify limits first. |
+| B1 | Enforceable State/model/capture access and callback isolation | Current SR-Q1–3 revise this candidate toward unchanged storage and compiler-derived Body; the following studies describe earlier candidates, not mandatory copy-freeze or frontend Body derivation. SPIKE-069 refutes callback restriction alone and supports a bounded borrow/key fixture. The earlier C contract proposed copy-freeze, contextual property access and typed protocol dispatch. Prove finite context lowering, typed failure transport, compiler support and every owner/access route (C-P1/C-P2); exact Swift realization remains open. SPIKE-070/071 support finite lowering and a four-profile borrow/escape fixture, with root evaluation/draw signature adaptations and experimental lifetime flags; the rooted nRF object has no allocator relocations. The contextual-evaluation draft specifies replacement compiled View witnesses, an explicitly threaded session and short read borrows under a frame lease. SPIKE-072 supports real nested SemanticCore/Drawing module integration using explicit generated Body aliases and leaf-only defaults; automatic opaque witness inference failed. Complete source-shape conformance, production owner routes and compiler-policy adoption remain open (CE-1–CE-6). Fixture results do not close full no-escape/exclusivity/zero-heap proof. |
+| B2 | Complete record/payload/path/interaction and model storage | Reconcile the retained-former ledger with SR-3 (no mandatory F0); verify actual owners and every failure edge (C-P3), complete layouts/codecs/trie fanout and all source cases. The old K=2/F=1 fixture is not a new storage proof. Validate all byte rows before proposing SPEC-001/013/015 limits. |
 | B3 | Complete supported-image stack and Dynamic cost | Bound recursive/indirect/callback/IRQ paths and construction/service/teardown; measure matched Dynamic memory. No unknown edge may be recorded as zero. |
-| B4 | Concrete supported lowering and migration completeness | The contextual-evaluation draft makes mandatory finite source lowering and the compiled View SPI change explicit. SPIKE-072 inventories missing counter/analyzer routes and verifies conditional reads plus identity/work counts for a finite corpus. Define and validate the complete source/type/helper/current-write grammar, reject unchecked routes on every profile, and migrate actual graph producers/consumers. The inventory and small generator do not prove full application coverage (CE-1/4/5). |
+| B4 | Concrete supported lowering and migration completeness | SR-Q3 first separates required scoped access from obsolete version selection and manual Body derivation; the earlier contextual-evaluation draft proposed mandatory finite lowering and a compiled View SPI change. SPIKE-072 inventories missing counter/analyzer routes and verifies conditional reads plus identity/work counts for a finite corpus. Define and validate the complete source/type/helper/current-write grammar, reject unchecked routes on every profile, and migrate actual graph producers/consumers. The inventory and small generator do not prove full application coverage (CE-1/4/5). |
 
 B0 is an explicit architectural decision; B1/B2 are design/contract readiness blockers; B3/B4 include evidence required
 before adoption. Which evidence can precede exact Spec approval must be explicitly
