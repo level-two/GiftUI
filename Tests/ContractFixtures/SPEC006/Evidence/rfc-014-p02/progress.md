@@ -41,3 +41,30 @@ This step does not claim native execution, four-profile P02 exit, complete
 source-inventory coverage, stable model ownership, State binding, protocol
 Canvas, full application migration or resource conformance. Those checks and
 package dispositions remain open.
+
+## Step 2 — declaration exit suite
+
+The driver now invokes the existing macro executable, emits separate core,
+application schema, Presentation and host modules, and retains unique run
+receipts with source/compiler/SwiftSyntax hashes, commands, logs and artifact
+sizes/hashes. It is registered as `SPEC-006-rfc-014-<profile>` beside the existing
+owner checks. Historical owner checks are preserved; their baseline revision
+remains the reproduction point until P10 completes consumer migration.
+
+The native development suite passes 120 assertions: all digits 0–9, builder
+arities 0–5, nested/free/member view helpers, nested read facades, indexed read
+failure, custom and stateful accessor dispatch, optional/conditional/switch
+selection, lazy `&&`/`||`/`??`, left-to-right argument failure and early sibling
+termination. Twelve negative controls cover compiler-enforced domain/lifetime/
+construction restrictions and original-source-located unsupported effects.
+The same production macro passes six existing expansion goldens plus both
+UInt16 declaration-limit controls, compiled with SwiftPM's pinned SwiftSyntax
+prebuilt and its shim paths. No additional package target is introduced.
+
+`DeclarationHost` is an isolated traversal oracle, not the runtime owner or
+Semantic Core implementation. Its Analyzer input uses nested state/capture
+syntax and three actual Domain value files; it does not compile the complete
+Signal Analyzer. Shared inventory routes remain assigned to P03/P04/P06/P08/P09
+for their storage, runtime, drawing, action and application integration portions.
+The final four-profile receipt follows the implementation commit. SPEC-006
+T10.1 and all complete-application/resource criteria remain open.

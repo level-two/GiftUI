@@ -18,7 +18,7 @@ REPORT_ROOT="${PROJECT_ROOT}/.build/contract-reports/spec-006"
 
 usage() {
     printf '%s\n' \
-        'Usage: scripts/contracts/run-spec-006.sh --profile <profile>' \
+        'Usage: scripts/contracts/run-spec-006.sh --profile <profile> [--compiler-baseline rfc-014]' \
         '' \
         'Profiles:' \
         '  macos-dynamic' \
@@ -33,11 +33,18 @@ fail() {
 }
 
 profile=""
+compiler_baseline=""
 while [[ $# -gt 0 ]]; do
     case "$1" in
         --profile)
             [[ $# -ge 2 ]] || fail '--profile requires a value'
             profile="$2"
+            shift 2
+            ;;
+        --compiler-baseline)
+            [[ $# -ge 2 ]] || fail '--compiler-baseline requires a value'
+            [[ "$2" == rfc-014 ]] || fail "unknown compiler baseline: $2"
+            compiler_baseline="$2"
             shift 2
             ;;
         -h | --help)
@@ -53,6 +60,10 @@ case "${profile}" in
     "") fail '--profile is required' ;;
     *) fail "unknown profile: ${profile}" ;;
 esac
+
+if [[ "${compiler_baseline}" == rfc-014 ]]; then
+    exec python3 "${SCRIPT_DIR}/check-spec-006-typed-lowering.py" --profile "${profile}"
+fi
 
 declared_inputs() {
     {

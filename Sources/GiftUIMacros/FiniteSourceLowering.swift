@@ -10,6 +10,7 @@ struct Field: Decodable {
     let name: String
     let type: String
     let indexed: Bool
+    let members: [Field]?
 }
 
 struct Model: Decodable {
@@ -33,12 +34,46 @@ struct LoweringFailure: Error, CustomStringConvertible {
 
 final class Inventory: SyntaxVisitor {
     var views: Set<String> = []
+    var viewFunctions: Set<String> = []
+    var memberViewFunctions: Set<String> = []
+    var functions: Set<String> = []
+    var values: Set<String> = []
+    var valueTypes: Set<String> = []
     override func visit(_ node: StructDeclSyntax) -> SyntaxVisitorContinueKind {
+        valueTypes.insert(node.name.text)
         if node.inheritanceClause?.inheritedTypes.contains(where: {
             $0.type.trimmedDescription == "View"
         }) == true {
             views.insert(node.name.text)
+            for member in node.memberBlock.members {
+                if let function = member.decl.as(FunctionDeclSyntax.self),
+                    function.signature.returnClause?.type.trimmedDescription == "some View"
+                {
+                    memberViewFunctions.insert(function.name.text)
+                }
+            }
         }
+        return .visitChildren
+    }
+    override func visit(_ node: FunctionDeclSyntax) -> SyntaxVisitorContinueKind {
+        functions.insert(node.name.text)
+        if node.signature.returnClause?.type.trimmedDescription == "some View" {
+            viewFunctions.insert(node.name.text)
+        }
+        return .visitChildren
+    }
+    override func visit(_ node: EnumDeclSyntax) -> SyntaxVisitorContinueKind {
+        valueTypes.insert(node.name.text)
+        return .visitChildren
+    }
+    override func visit(_ node: PatternBindingSyntax) -> SyntaxVisitorContinueKind {
+        if let name = node.pattern.as(IdentifierPatternSyntax.self)?.identifier.text {
+            values.insert(name)
+        }
+        return .visitChildren
+    }
+    override func visit(_ node: FunctionParameterSyntax) -> SyntaxVisitorContinueKind {
+        values.insert((node.secondName ?? node.firstName).text)
         return .visitChildren
     }
 }
@@ -52,6 +87,11 @@ private final class ThrowingExpressionScan: SyntaxVisitor {
 }
 
 final class Lowerer: SyntaxRewriter {
+    static let ownedTypes: Set<String> = [
+        "Bool", "UInt8", "UInt16", "UInt32", "Int", "Int32", "Int64", "Duration",
+        "BoundedText", "Color", "GeometryScalar", "AcquisitionState", "DigitalLevel",
+        "SignalChannelID", "SignalTransition", "Range<Duration>",
+    ]
     let configuration: Configuration
     let inventory: Inventory
     let location: SourceLocationConverter
@@ -59,6 +99,7 @@ final class Lowerer: SyntaxRewriter {
     var bindings: [String: Model] = [:]
     var evaluating = false
     var insideView = false
+    var viewProperties: Set<String> = []
 
     init(configuration: Configuration, inventory: Inventory, source: SourceFileSyntax, file: String)
     {
@@ -73,6 +114,14 @@ final class Lowerer: SyntaxRewriter {
         errors.append("\(point.file):\(point.line):\(point.column): error: RFC014: \(reason)")
     }
 
+    override func visit(_ node: ImportDeclSyntax) -> DeclSyntax {
+        let name = node.path.trimmedDescription
+        if name != "GiftUI" && !configuration.imports.contains(name) {
+            reject(node, "import '\(name)' is outside the finite presentation boundary")
+        }
+        return super.visit(node)
+    }
+
     override func visit(_ node: ClassDeclSyntax) -> DeclSyntax {
         reject(node, "mutable reference declarations belong in the checked model owner")
         return DeclSyntax(node)
@@ -83,6 +132,20 @@ final class Lowerer: SyntaxRewriter {
         return ExprSyntax(node)
     }
 
+    override func visit(_ node: FunctionParameterSyntax) -> FunctionParameterSyntax {
+        let type = node.type.trimmedDescription
+        if !Self.ownedTypes.contains(type.replacingOccurrences(of: "?", with: "")),
+            !inventory.valueTypes.contains(type),
+            !configuration.models.contains(where: { $0.authoredType == type })
+        {
+            reject(
+                node,
+                "parameter type '\(type)' has no inventoried owned-value or model-key representation"
+            )
+        }
+        return super.visit(node)
+    }
+
     override func visit(_ node: StructDeclSyntax) -> DeclSyntax {
         guard inventory.views.contains(node.name.text) else { return super.visit(node) }
         guard node.genericParameterClause == nil else {
@@ -91,11 +154,19 @@ final class Lowerer: SyntaxRewriter {
         }
         let previousBindings = bindings
         let previousView = insideView
+        let previousProperties = viewProperties
         insideView = true
         bindings = [:]
+        viewProperties = []
         for member in node.memberBlock.members {
             guard let variable = member.decl.as(VariableDeclSyntax.self) else { continue }
             for binding in variable.bindings {
+                if binding.typeAnnotation?.type.trimmedDescription == "some View",
+                    let name = binding.pattern.as(IdentifierPatternSyntax.self)?.identifier.text,
+                    name != "body"
+                {
+                    viewProperties.insert(name)
+                }
                 if let name = binding.pattern.as(IdentifierPatternSyntax.self)?.identifier.text,
                     let model = configuration.models.first(where: {
                         $0.authoredType == binding.typeAnnotation?.type.trimmedDescription
@@ -120,10 +191,95 @@ final class Lowerer: SyntaxRewriter {
         )
         bindings = previousBindings
         insideView = previousView
+        viewProperties = previousProperties
+        return DeclSyntax(result)
+    }
+
+    override func visit(_ node: IdentifierTypeSyntax) -> TypeSyntax {
+        if insideView,
+            let model = configuration.models.first(where: { $0.authoredType == node.name.text })
+        {
+            return TypeSyntax(stringLiteral: "_GiftUIModelKey<\(model.schema)>")
+                .with(\.leadingTrivia, node.leadingTrivia)
+                .with(\.trailingTrivia, node.trailingTrivia)
+        }
+        return super.visit(node)
+    }
+
+    override func visit(_ node: DeclReferenceExprSyntax) -> ExprSyntax {
+        if evaluating && viewProperties.contains(node.baseName.text) {
+            return ExprSyntax(stringLiteral: "(try _giftUI_\(node.baseName.text)(read: read))")
+                .with(\.leadingTrivia, node.leadingTrivia)
+                .with(\.trailingTrivia, node.trailingTrivia)
+        }
+        return super.visit(node)
+    }
+
+    override func visit(_ node: FunctionDeclSyntax) -> DeclSyntax {
+        guard node.signature.returnClause?.type.trimmedDescription == "some View" else {
+            return super.visit(node)
+        }
+        guard node.genericParameterClause == nil else {
+            reject(node, "generic view helpers are outside the finite inventory")
+            return DeclSyntax(node)
+        }
+        let previous = evaluating
+        evaluating = insideView
+        var result = super.visit(node).cast(FunctionDeclSyntax.self)
+        evaluating = previous
+        result.signature.returnClause!.type = TypeSyntax(stringLiteral: "some View<D> ")
+        result.signature.effectSpecifiers = FunctionEffectSpecifiersSyntax(
+            throwsClause: ThrowsClauseSyntax(
+                throwsSpecifier: .keyword(.throws),
+                leftParen: .leftParenToken(),
+                type: TypeSyntax(stringLiteral: "_GiftUIAccessFailure"),
+                rightParen: .rightParenToken())
+        )
+        var parameters = result.signature.parameterClause.parameters
+        if !parameters.isEmpty {
+            parameters[parameters.index(before: parameters.endIndex)].trailingComma = .commaToken(
+                trailingTrivia: .space)
+        }
+        parameters.append(
+            FunctionParameterSyntax(
+                firstName: .identifier(insideView ? "read" : "domain"),
+                type: TypeSyntax(
+                    stringLiteral: insideView ? "borrowing _GiftUIFrameRead<D>" : "D.Type")))
+        result.signature.parameterClause.parameters = parameters
+        if !insideView {
+            result.genericParameterClause = GenericParameterClauseSyntax(
+                parameters: GenericParameterListSyntax([
+                    GenericParameterSyntax(
+                        name: .identifier("D"), colon: .colonToken(),
+                        inheritedType: TypeSyntax(stringLiteral: configuration.domain))
+                ]))
+        }
+        if !node.attributes.contains(where: {
+            $0.as(AttributeSyntax.self)?.attributeName.trimmedDescription == "ViewBuilder"
+        }) {
+            result.attributes.append(
+                .attribute(
+                    AttributeSyntax(
+                        attributeName: TypeSyntax(stringLiteral: "ViewBuilder"),
+                        trailingTrivia: .newline)))
+        }
         return DeclSyntax(result)
     }
 
     override func visit(_ node: VariableDeclSyntax) -> DeclSyntax {
+        for binding in node.bindings {
+            if let type = binding.typeAnnotation?.type.trimmedDescription,
+                type != "some View",
+                !Self.ownedTypes.contains(type.replacingOccurrences(of: "?", with: "")),
+                !inventory.valueTypes.contains(type),
+                !configuration.models.contains(where: { $0.authoredType == type })
+            {
+                reject(
+                    binding,
+                    "value type '\(type)' has no inventoried owned-value or model-key representation"
+                )
+            }
+        }
         guard insideView, node.bindings.count == 1, let binding = node.bindings.first,
             let name = binding.pattern.as(IdentifierPatternSyntax.self)?.identifier.text
         else { return super.visit(node) }
@@ -136,7 +292,7 @@ final class Lowerer: SyntaxRewriter {
             result.bindings = PatternBindingListSyntax([newBinding])
             return DeclSyntax(result)
         }
-        guard name == "body" else { return super.visit(node) }
+        guard name == "body" || viewProperties.contains(name) else { return super.visit(node) }
         guard binding.typeAnnotation?.type.trimmedDescription == "some View",
             let accessors = binding.accessorBlock,
             case .getter = accessors.accessors
@@ -156,7 +312,7 @@ final class Lowerer: SyntaxRewriter {
             stringLiteral: """
 
                 @ViewBuilder
-                \(access) func _giftUIEvaluate(read: borrowing _GiftUIFrameRead<D>)
+                \(access) func \(name == "body" ? "_giftUIEvaluate" : "_giftUI_" + name)(read: borrowing _GiftUIFrameRead<D>)
                     throws(_GiftUIAccessFailure) -> some View<D> {
                     \(statements.isEmpty ? "EmptyView<D>()" : statements.description)
                 }
@@ -168,14 +324,36 @@ final class Lowerer: SyntaxRewriter {
         let name = called.split(separator: ".").last.map(String.init) ?? called
         let framework: Set<String> = [
             "Text", "Spacer", "EmptyView", "VStack", "HStack", "ZStack", "Button",
-            "padding", "frame", "foregroundStyle", "background", "disabled",
         ]
-        if !framework.contains(name) && !inventory.views.contains(name)
+        let modifier: Bool
+        if let member = node.calledExpression.as(MemberAccessExprSyntax.self),
+            ["padding", "frame", "foregroundStyle", "background", "disabled"].contains(name),
+            let receiver = member.base
+        {
+            modifier = isViewExpression(receiver)
+        } else {
+            modifier = false
+        }
+        let indexed = modelPath(node.calledExpression)?.fields.last?.indexed == true
+        if !framework.contains(called) && !modifier && !inventory.views.contains(called) && !indexed
+            && !inventory.viewFunctions.contains(name)
             && !configuration.calls.contains(called)
         {
             reject(node, "unsupported call/effect '\(called)'")
         }
         var result = super.visit(node).cast(FunctionCallExprSyntax.self)
+        if inventory.viewFunctions.contains(name) {
+            if !result.arguments.isEmpty {
+                result.arguments[result.arguments.index(before: result.arguments.endIndex)]
+                    .trailingComma = .commaToken(trailingTrivia: .space)
+            }
+            let member = inventory.memberViewFunctions.contains(name)
+            result.arguments.append(
+                LabeledExprSyntax(
+                    label: .identifier(member ? "read" : "domain"),
+                    colon: .colonToken(trailingTrivia: .space),
+                    expression: ExprSyntax(stringLiteral: member ? "read" : "D.self")))
+        }
         if ["Text", "Spacer", "EmptyView"].contains(called) || inventory.views.contains(called) {
             result.calledExpression = ExprSyntax(stringLiteral: "\(called)<D>")
                 .with(\.leadingTrivia, node.calledExpression.leadingTrivia)
@@ -198,24 +376,90 @@ final class Lowerer: SyntaxRewriter {
                 .with(\.leadingTrivia, node.leadingTrivia)
                 .with(\.trailingTrivia, node.trailingTrivia)
         }
+        if indexed || inventory.viewFunctions.contains(name) {
+            return ExprSyntax(stringLiteral: "try \(result.trimmedDescription)")
+                .with(\.leadingTrivia, node.leadingTrivia)
+                .with(\.trailingTrivia, node.trailingTrivia)
+        }
         return ExprSyntax(result)
     }
 
+    private func isViewExpression(_ expression: ExprSyntax) -> Bool {
+        if let name = expression.as(DeclReferenceExprSyntax.self)?.baseName.text {
+            return viewProperties.contains(name)
+        }
+        guard let call = expression.as(FunctionCallExprSyntax.self) else { return false }
+        let callee = call.calledExpression.trimmedDescription
+        if ["Text", "Spacer", "EmptyView", "VStack", "HStack", "ZStack", "Button"].contains(callee)
+            || inventory.views.contains(callee) || inventory.viewFunctions.contains(callee)
+        {
+            return true
+        }
+        if let member = call.calledExpression.as(MemberAccessExprSyntax.self),
+            let base = member.base,
+            ["padding", "frame", "foregroundStyle", "background", "disabled"].contains(
+                member.declName.baseName.text)
+        {
+            return isViewExpression(base)
+        }
+        return false
+    }
+
+    private func modelPath(_ expression: ExprSyntax) -> (
+        root: String, model: Model, fields: [Field]
+    )? {
+        if let reference = expression.as(DeclReferenceExprSyntax.self),
+            let model = bindings[reference.baseName.text]
+        {
+            return (reference.baseName.text, model, [])
+        }
+        guard let member = expression.as(MemberAccessExprSyntax.self), let base = member.base else {
+            return nil
+        }
+        if base.trimmedDescription == "self", let model = bindings[member.declName.baseName.text] {
+            return ("self." + member.declName.baseName.text, model, [])
+        }
+        guard var path = modelPath(base) else { return nil }
+        let fields = path.fields.last.map { $0.members ?? [] } ?? path.model.fields
+        guard let field = fields.first(where: { $0.name == member.declName.baseName.text }) else {
+            return nil
+        }
+        path.fields.append(field)
+        return path
+    }
+
     override func visit(_ node: MemberAccessExprSyntax) -> ExprSyntax {
-        guard evaluating, let base = node.base?.as(DeclReferenceExprSyntax.self),
-            let model = bindings[base.baseName.text]
-        else { return super.visit(node) }
-        guard let field = model.fields.first(where: { $0.name == node.declName.baseName.text })
-        else {
+        if let base = node.base?.as(DeclReferenceExprSyntax.self)?.baseName.text,
+            !inventory.values.contains(base), !inventory.valueTypes.contains(base),
+            !Self.ownedTypes.contains(base), !["self", "Self"].contains(base)
+        {
+            reject(node, "member access through unknown value '\(base)'")
+        }
+        guard evaluating else { return super.visit(node) }
+        if node.base?.trimmedDescription == "self",
+            viewProperties.contains(node.declName.baseName.text)
+        {
+            return ExprSyntax(
+                stringLiteral: "(try _giftUI_\(node.declName.baseName.text)(read: read))"
+            )
+            .with(\.leadingTrivia, node.leadingTrivia).with(\.trailingTrivia, node.trailingTrivia)
+        }
+        if let path = modelPath(ExprSyntax(node)), !path.fields.isEmpty {
+            let fields = path.fields.map { "." + $0.name + ($0.members == nil ? "" : "()") }
+                .joined()
+            return ExprSyntax(
+                stringLiteral: "(try \(path.model.facade)<D>(\(path.root), read: read))\(fields)"
+            )
+            .with(\.leadingTrivia, node.leadingTrivia)
+            .with(\.trailingTrivia, node.trailingTrivia)
+        }
+        if let base = node.base, modelPath(base) != nil {
             reject(
                 node,
                 "model member '\(node.declName.baseName.text)' has no checked schema operation")
             return ExprSyntax(node)
         }
-        let expression = "(try \(model.facade)<D>(\(base), read: read)).\(field.name)"
-        return ExprSyntax(stringLiteral: expression)
-            .with(\.leadingTrivia, node.leadingTrivia)
-            .with(\.trailingTrivia, node.trailingTrivia)
+        return super.visit(node)
     }
 
     override func visit(_ node: InfixOperatorExprSyntax) -> ExprSyntax {
@@ -246,69 +490,104 @@ final class Lowerer: SyntaxRewriter {
 func schema(_ configuration: Configuration) throws -> String {
     let ownedTypes: Set<String> = [
         "Bool", "UInt8", "UInt16", "UInt32", "Int", "Int64", "Duration", "BoundedText",
-        "AcquisitionState", "DigitalLevel", "SignalChannelID", "SignalTransition",
-        "Range<Duration>",
+        "UInt8?", "BoundedText?", "AcquisitionState", "DigitalLevel", "SignalChannelID",
+        "SignalTransition", "Range<Duration>",
     ]
+    func identifier(_ name: String) -> Bool {
+        name.range(of: "^[A-Za-z_][A-Za-z_0-9]*$", options: .regularExpression) != nil
+    }
+    func valid(_ fields: [Field]) -> Bool {
+        Set(fields.map(\.name)).count == fields.count
+            && fields.allSatisfy { field in
+                identifier(field.name)
+                    && (field.members.map {
+                        field.type == "aggregate" && !field.indexed && valid($0)
+                    }
+                        ?? ownedTypes.contains(field.type))
+            }
+    }
     let names =
         [configuration.module, configuration.domain] + configuration.imports
-        + configuration.models.flatMap {
-            [$0.authoredType, $0.schema, $0.facade] + $0.fields.map(\.name)
-        }
-    guard
-        names.allSatisfy({
-            $0.range(of: "^[A-Za-z_][A-Za-z_0-9]*$", options: .regularExpression) != nil
-        })
-    else {
-        throw LoweringFailure(description: "invalid finite schema identifier")
+        + configuration.models.flatMap { [$0.authoredType, $0.schema, $0.facade] }
+    guard names.allSatisfy(identifier), configuration.models.allSatisfy({ valid($0.fields) }) else {
+        throw LoweringFailure(
+            description: "schema requires unique identifiers and inventoried owned getters")
     }
-    guard configuration.models.allSatisfy({ $0.fields.allSatisfy { ownedTypes.contains($0.type) } })
-    else {
-        throw LoweringFailure(description: "schema getter must return an inventoried owned value")
-    }
-    var result = "import GiftUI\n" + configuration.imports.map { "import \($0)\n" }.joined()
-    result += "package protocol \(configuration.domain): _GiftUIReadDomain {\n"
-    for model in configuration.models {
-        result += """
-            static func bind(_ key: _GiftUIModelKey<\(model.schema)>, slots: Span<Slot>)
-                throws(_GiftUIAccessFailure) -> Int
-
-            """
-        for field in model.fields {
+    func requirements(_ fields: [Field], prefix: String) -> String {
+        fields.map { field in
+            let name = prefix + "_" + field.name
+            if let nested = field.members { return requirements(nested, prefix: name) }
             let position = field.indexed ? "_ position: Int, " : ""
             let failure = field.indexed ? " throws(_GiftUIAccessFailure)" : ""
-            result +=
-                "static func \(model.facade)_\(field.name)(\(position)at index: Int, slots: Span<Slot>)\(failure) -> \(field.type)\n"
-        }
+            return
+                "static func \(name)(\(position)at index: Int, slots: Span<Slot>)\(failure) -> \(field.type)\n"
+        }.joined()
     }
-    result += "}\n"
-    for model in configuration.models {
-        result += """
-            package enum \(model.schema) {}
-            package struct \(model.facade)<D: \(configuration.domain)>: ~Escapable {
+    func facade(_ fields: [Field], name: String, schema: String?) -> String {
+        var result = """
+            package struct \(name)<D: \(configuration.domain)>: ~Escapable {
                 private let slots: Span<D.Slot>
                 private let index: Int
+
+            """
+        if let schema {
+            result += """
                 @_lifetime(copy read)
-                package init(_ key: _GiftUIModelKey<\(model.schema)>, read: borrowing _GiftUIFrameRead<D>)
+                package init(_ key: _GiftUIModelKey<\(schema)>, read: borrowing _GiftUIFrameRead<D>)
                     throws(_GiftUIAccessFailure) {
                     index = try D.bind(key, slots: read.slots)
                     slots = read.slots
                 }
 
-            """
-        for field in model.fields {
-            if field.indexed {
+                """
+        } else {
+            result += """
+                @_lifetime(copy slots)
+                fileprivate init(slots: Span<D.Slot>, index: Int) {
+                    self.slots = slots
+                    self.index = index
+                }
+
+                """
+        }
+        var nestedFacades = ""
+        for field in fields {
+            let member = name + "_" + field.name
+            if let nested = field.members {
+                result += """
+                    @_lifetime(copy self)
+                    package func \(field.name)() -> \(member)<D> {
+                        \(member)<D>(slots: slots, index: index)
+                    }
+
+                    """
+                nestedFacades += facade(nested, name: member, schema: nil)
+            } else if field.indexed {
                 result += """
                     package func \(field.name)(_ position: Int) throws(_GiftUIAccessFailure) -> \(field.type) {
-                        try D.\(model.facade)_\(field.name)(position, at: index, slots: slots)
+                        try D.\(member)(position, at: index, slots: slots)
                     }
 
                     """
             } else {
                 result +=
-                    "package var \(field.name): \(field.type) { D.\(model.facade)_\(field.name)(at: index, slots: slots) }\n"
+                    "package var \(field.name): \(field.type) { D.\(member)(at: index, slots: slots) }\n"
             }
         }
-        result += "}\n"
+        return result + "}\n" + nestedFacades
+    }
+    var result = "import GiftUI\n" + configuration.imports.map { "import \($0)\n" }.joined()
+    result += "package protocol \(configuration.domain): _GiftUIReadDomain {\n"
+    for model in configuration.models {
+        result +=
+            "static func bind(_ key: _GiftUIModelKey<\(model.schema)>, slots: Span<Slot>) throws(_GiftUIAccessFailure) -> Int\n"
+        result += requirements(model.fields, prefix: model.facade)
+    }
+    result += "}\n"
+    for model in configuration.models {
+        result +=
+            "package enum \(model.schema) {}\n"
+            + facade(model.fields, name: model.facade, schema: model.schema)
     }
     return result
 }
@@ -330,6 +609,13 @@ func lowerGiftUISource(arguments: [String]) throws {
     }
     let inventory = Inventory(viewMode: .sourceAccurate)
     inventory.walk(source)
+    let pureCalls = Lowerer.ownedTypes.union(inventory.functions).union(["min", "max"])
+    guard configuration.imports.allSatisfy({ $0 == "SignalAnalyzerDomain" }),
+        configuration.calls.allSatisfy({ pureCalls.contains($0) })
+    else {
+        throw LoweringFailure(
+            description: "schema imports/calls exceed the finite owned-value inventory")
+    }
     let lowerer = Lowerer(
         configuration: configuration, inventory: inventory, source: source, file: arguments[2])
     let lowered = lowerer.rewrite(source)

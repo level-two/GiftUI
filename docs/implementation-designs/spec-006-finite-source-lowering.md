@@ -79,11 +79,17 @@ mutable reference declarations and unchecked inout receive original file/line/
 column diagnostics. Swift checks mixed domains, missing Body and scoped-value
 escapes in generated modules. No output is accepted after a diagnostic.
 
+Nested schema aggregates produce nested nonescapable facades. Each keeps the
+original slot span and index; its lifetime follows the read, including when a
+local facade outlives a temporary parent facade. Getter results are owned values.
+
 Pure value helpers retain their input/output semantics. Helpers returning views
 need D for composition; ordinary arithmetic/formatting helpers do not acquire a
-model generic merely because they are called from a view. Additional inventory
-syntax is implemented within P02; unknown effects cannot be silently admitted
-by adding a permissive default. Checked mutation and Canvas implementations
+model generic merely because they are called from a view. View-returning functions and computed properties receive scoped evaluate
+helpers, while free view factories receive only D. The checked declaration
+corpus covers builder arities 0–5, conditionals, switches, nested helpers and
+short-circuit/order controls. Unknown effects cannot be silently admitted by
+adding a permissive default. Checked mutation and Canvas implementations
 remain their named packages' obligations.
 
 ## Profiles, Resources and Failure Behavior
@@ -113,4 +119,5 @@ the governing contract. No architecture decision remains open here.
 - [Typed declarations](../../Sources/GiftUI/DeclarativeView.swift)
 - [Finite lowering](../../Sources/GiftUIMacros/FiniteSourceLowering.swift)
 - [State-host macro](../../Sources/GiftUIMacros/ObservableStateHostMacro.swift)
+- [Focused four-profile driver](../../scripts/contracts/check-spec-006-typed-lowering.py)
 - [P02 progress and validation](../../Tests/ContractFixtures/SPEC006/Evidence/rfc-014-p02/progress.md).

@@ -10,9 +10,11 @@ private struct PrivateHost: View {
 
     fileprivate func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor>(
         _ visitor: inout Visitor
-    ) {
-        visitor.visitStatefulCustomView(self) { declaration in
-            declaration.body
+    ) where Visitor.Domain == Domain {
+        visitor.visitStatefulCustomView(self) {
+            (declaration: borrowing Self, read: borrowing _GiftUIFrameRead<Domain>)
+                throws(_GiftUIAccessFailure) in
+            try declaration._giftUIEvaluate(read: read)
         }
     }
 }

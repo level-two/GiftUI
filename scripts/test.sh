@@ -189,6 +189,9 @@ for selected_profile in "${selected_profiles[@]}"; do
     run_check "SPEC-002-rfc-014-${selected_profile}" \
         "${PROJECT_ROOT}/scripts/contracts/run-spec-002.sh" \
         --profile "${selected_profile}" --compiler-baseline rfc-014
+    run_check "SPEC-006-rfc-014-${selected_profile}" \
+        "${PROJECT_ROOT}/scripts/contracts/run-spec-006.sh" \
+        --profile "${selected_profile}" --compiler-baseline rfc-014
     if [[ "${matched}" -eq 0 ]]; then
         failures=$((failures + 1))
         printf 'missing-driver-%s\t1\t-\n' "${selected_profile}" >>"${results_path}"
