@@ -19,7 +19,7 @@ RESOURCE_PROBE_ROOT="${FIXTURE_ROOT}/ResourceProbe"
 
 usage() {
     printf '%s\n' \
-        'Usage: scripts/contracts/run-spec-002.sh --profile <profile>' \
+        'Usage: scripts/contracts/run-spec-002.sh --profile <profile> [--compiler-baseline rfc-014]' \
         '' \
         'Profiles:' \
         '  macos-dynamic' \
@@ -34,11 +34,18 @@ fail() {
 }
 
 profile=""
+compiler_baseline="historical"
 while [[ $# -gt 0 ]]; do
     case "$1" in
         --profile)
             [[ $# -ge 2 ]] || fail '--profile requires a value'
             profile="$2"
+            shift 2
+            ;;
+        --compiler-baseline)
+            [[ $# -ge 2 ]] || fail '--compiler-baseline requires a value'
+            [[ "$2" == rfc-014 ]] || fail "unknown compiler baseline: $2"
+            compiler_baseline="$2"
             shift 2
             ;;
         -h | --help)
@@ -57,9 +64,18 @@ case "${profile}" in
     *) fail "unknown profile: ${profile}" ;;
 esac
 
+# Keep migration/historical reports and counterpart lookups disjoint. Include
+# the actual compiler bytes in immutable identity through the shared wrapper.
+baseline_arguments=(--spec SPEC-002 --profile "${profile}" --driver "$0")
+if [[ "${compiler_baseline}" == rfc-014 ]]; then
+    source "${SCRIPT_DIR}/compiler-baseline.sh"
+    giftui_rfc014_select_compiler "${PROJECT_ROOT}" "${profile}"
+    REPORT_ROOT+="/rfc-014"
+    baseline_arguments+=(--compiler-baseline rfc-014)
+fi
 if [[ "${GIFTUI_IMMUTABLE_REPORT_INNER:-false}" != true ]]; then
     exec "${SCRIPT_DIR}/run-immutable-contract-driver.sh" \
-        --spec SPEC-002 --profile "${profile}" --driver "$0"
+        "${baseline_arguments[@]}"
 fi
 report_dir="${GIFTUI_CONTRACT_REPORT_DIR:-"${REPORT_ROOT}/${profile}"}"
 rm -rf "${report_dir}"
@@ -80,7 +96,10 @@ revision="$(git -C "${PROJECT_ROOT}" rev-parse HEAD)"
     printf 'profile=%s\n' "${profile}"
     printf 'repository_revision=%s\n' "${revision}"
     printf 'report_directory=.build/contract-reports/spec-002/%s\n' "${profile}"
-    printf 'invocation=scripts/contracts/run-spec-002.sh --profile %s\n' "${profile}"
+    printf 'compiler_baseline=%s\n' "${compiler_baseline}"
+    printf 'invocation=scripts/contracts/run-spec-002.sh --profile %s' "${profile}"
+    [[ "${compiler_baseline}" != rfc-014 ]] || printf ' --compiler-baseline rfc-014'
+    printf '\n'
 } >"${metadata_path}"
 : >"${commands_path}"
 : >"${log_path}"
@@ -118,6 +137,20 @@ require_exact_fragment() {
     local label="$3"
     [[ "${value}" == *"${fragment}"* ]] ||
         fail "${label} mismatch; expected ${fragment}, found ${value}"
+}
+
+check_migration_compiler() {
+    local compiler="$1"
+    shift
+    [[ "${compiler_baseline}" == rfc-014 ]] || return 0
+    record_command "${compiler}" "$@" -typecheck \
+        "${FIXTURE_ROOT}/CompilerBaseline/RequiredFeatures.swift"
+    giftui_rfc014_check_compiler "${compiler}" \
+        "${FIXTURE_ROOT}/CompilerBaseline/RequiredFeatures.swift" "${report_dir}/build" "$@"
+    printf 'compiler_path=%s\n' "${compiler}" >>"${metadata_path}"
+    printf 'compiler_sha256=%s\n' "$(shasum -a 256 "${compiler}" | awk '{print $1}')" >>"${metadata_path}"
+    printf 'compiler_features=LifetimeDependence,Lifetimes\n' >>"${metadata_path}"
+    printf 'compiler_feature_check=passed\n' >>"${metadata_path}"
 }
 
 run_fixture_set() {
@@ -173,6 +206,10 @@ record_resource_inputs() {
     mkdir -p "${output_dir}"
     shasum -a 256 \
         "${FOUNDATION_SOURCE}" \
+        "${SCRIPT_DIR}/run-spec-002.sh" \
+        "${SCRIPT_DIR}/compiler-baseline.sh" \
+        "${FIXTURE_ROOT}/CompilerBaseline/RequiredFeatures.swift" \
+        "${FIXTURE_ROOT}/CompilerBaseline/route-inventory.tsv" \
         "${RESOURCE_PROBE_ROOT}/ResourceProbe.swift" \
         "${RESOURCE_PROBE_ROOT}/main.c" \
         "${PROJECT_ROOT}/firmware/nrf52840/applications/spec002-resource-probe/CMakeLists.txt" \
@@ -212,10 +249,18 @@ run_macos() {
     command -v swift >/dev/null || fail 'swift is missing'
     command -v xcrun >/dev/null || fail 'xcrun is missing'
 
-    local compiler_version sdk_path sdk_version profile_flag module_dir extension image
-    compiler_version="$(swiftc --version 2>&1)"
-    require_exact_fragment "${compiler_version}" 'Apple Swift version 6.3.3' 'macOS compiler'
-    require_exact_fragment "${compiler_version}" 'swiftlang-6.3.3.1.3' 'macOS compiler build'
+    local compiler swift_driver compiler_version sdk_path sdk_version profile_flag module_dir extension image
+    compiler="$(command -v swiftc)"
+    swift_driver="$(command -v swift)"
+    if [[ "${compiler_baseline}" == rfc-014 ]]; then
+        compiler="${GIFTUI_CONTRACT_SWIFTC}"
+        swift_driver="$(dirname "${compiler}")/swift"
+    fi
+    compiler_version="$("${compiler}" --version 2>&1)"
+    if [[ "${compiler_baseline}" == historical ]]; then
+        require_exact_fragment "${compiler_version}" 'Apple Swift version 6.3.3' 'macOS compiler'
+        require_exact_fragment "${compiler_version}" 'swiftlang-6.3.3.1.3' 'macOS compiler build'
+    fi
     sdk_path="$(xcrun --sdk macosx --show-sdk-path)"
     sdk_version="$(xcrun --sdk macosx --show-sdk-version)"
     [[ -d "${sdk_path}" ]] || fail "macOS SDK is missing: ${sdk_path}"
@@ -231,6 +276,10 @@ run_macos() {
         -target arm64-apple-macosx26.0 -sdk "${sdk_path}"
         -O -whole-module-optimization "${profile_flag}"
     )
+    if [[ "${compiler_baseline}" == rfc-014 ]]; then
+        flags+=("${GIFTUI_CONTRACT_FEATURE_FLAGS[@]}")
+    fi
+    check_migration_compiler "${compiler}" "${flags[@]}"
     module_dir="${report_dir}/build/modules"
     mkdir -p "${module_dir}"
     image="${report_dir}/build/libGiftUI.${extension}"
@@ -243,7 +292,7 @@ run_macos() {
     printf 'profile_flag=%s\n' "${profile_flag}" >>"${metadata_path}"
 
     local -a module_command=(
-        swiftc "${flags[@]}" -language-mode 6 -package-name GiftUI
+        "${compiler}" "${flags[@]}" -language-mode 6 -package-name GiftUI
         -enable-library-evolution -parse-as-library -emit-module
         -emit-library
         -emit-module-interface-path "${module_dir}/GiftUI.swiftinterface"
@@ -265,17 +314,17 @@ run_macos() {
         "${module_dir}/GiftUI.swiftinterface" \
         "${module_dir}/GiftUI.package.swiftinterface" >>"${log_path}" 2>&1
 
-    record_command swift package dump-package
+    record_command "${swift_driver}" package dump-package
     CLANG_MODULE_CACHE_PATH="${report_dir}/build/clang-cache" \
         SWIFTPM_MODULECACHE_OVERRIDE="${report_dir}/build/swiftpm-cache" \
-        swift package dump-package >"${report_dir}/package.json" 2>>"${log_path}"
+        "${swift_driver}" package dump-package >"${report_dir}/package.json" 2>>"${log_path}"
     record_command "${SCRIPT_DIR}/check-target-dependencies.rb"
     "${SCRIPT_DIR}/check-target-dependencies.rb" \
         <"${report_dir}/package.json" >>"${log_path}" 2>&1
 
     local dependency_scan="${report_dir}/build/GiftUI.dependencies.json"
     local -a scan_command=(
-        swiftc "${flags[@]}" -language-mode 6 -package-name GiftUI
+        "${compiler}" "${flags[@]}" -language-mode 6 -package-name GiftUI
         -module-name GiftUI -module-cache-path "${report_dir}/build/clang-cache"
         -scan-dependencies "${PROJECT_ROOT}/Sources/GiftUI/GiftUI.swift"
     )
@@ -296,12 +345,12 @@ run_macos() {
         "${module_dir}/GiftUI.package.swiftinterface" \
         "${dependency_scan}" "${product_links}" >>"${log_path}" 2>&1
 
-    run_fixture_set swiftc "${module_dir}" "${flags[@]}"
+    run_fixture_set "${compiler}" "${module_dir}" "${flags[@]}"
 
     local probe="${report_dir}/build/profile-corpus-probe"
     local transcript="${report_dir}/semantics/profile-corpus.txt"
     local -a probe_command=(
-        swiftc "${flags[@]}" -language-mode 6 -package-name GiftUI
+        "${compiler}" "${flags[@]}" -language-mode 6 -package-name GiftUI
         -module-cache-path "${report_dir}/build/clang-cache"
         -module-name GiftUIFoundationProfileCorpusProbe
         "${FOUNDATION_SOURCE}"
@@ -338,7 +387,7 @@ run_macos() {
     local layout_ir="${report_dir}/build/foundation-layout.ll"
     local layout_report="${report_dir}/semantics/layout.tsv"
     local -a layout_command=(
-        swiftc "${flags[@]}" -language-mode 6 -package-name GiftUI
+        "${compiler}" "${flags[@]}" -language-mode 6 -package-name GiftUI
         -module-cache-path "${report_dir}/build/clang-cache"
         -module-name GiftUIFoundationLayoutProbe -emit-ir
         "${FOUNDATION_SOURCE}" "${FIXTURE_ROOT}/Instrumentation/LayoutProbe.swift"
@@ -368,7 +417,7 @@ run_macos() {
     record_command "${interposer_command[@]}"
     "${interposer_command[@]}" >>"${log_path}" 2>&1
     local -a object_command=(
-        swiftc "${flags[@]}" -language-mode 6 -package-name GiftUI
+        "${compiler}" "${flags[@]}" -language-mode 6 -package-name GiftUI
         -module-cache-path "${report_dir}/build/clang-cache"
         -module-name GiftUIFoundationOperationProbe -parse-as-library
         -I "${module_dir}" -emit-object
@@ -384,7 +433,7 @@ run_macos() {
     "${SCRIPT_DIR}/check-spec-002-resource-boundary.rb" \
         "${undefined_symbols}" >>"${log_path}" 2>&1
     local -a allocation_command=(
-        swiftc "${flags[@]}" -language-mode 6 -package-name GiftUI
+        "${compiler}" "${flags[@]}" -language-mode 6 -package-name GiftUI
         -module-cache-path "${report_dir}/build/clang-cache"
         -module-name GiftUIFoundationAllocationProbe
         -L "${resource_dir}" -lGiftUIAllocationInterposer
@@ -416,7 +465,7 @@ run_macos() {
     local variant
     for variant in baseline candidate; do
         local -a resource_command=(
-            swiftc "${flags[@]}" -language-mode 6 -package-name GiftUI
+            "${compiler}" "${flags[@]}" -language-mode 6 -package-name GiftUI
             -module-cache-path "${report_dir}/build/clang-cache"
         )
         if [[ "${variant}" == candidate ]]; then
@@ -430,6 +479,13 @@ run_macos() {
         )
         record_command "${resource_command[@]}"
         "${resource_command[@]}" >>"${log_path}" 2>&1
+        if [[ "${compiler_baseline}" == rfc-014 ]]; then
+            record_command xcrun lipo -archs "${matched_dir}/${variant}/image"
+            xcrun lipo -archs "${matched_dir}/${variant}/image" \
+                >"${matched_dir}/${variant}/architecture.txt"
+            grep -Fxq arm64 "${matched_dir}/${variant}/architecture.txt" ||
+                fail "${variant} macOS resource image is not arm64"
+        fi
     done
     report_linked_sections macho "$(xcrun --find size)" "${matched_dir}"
 }
@@ -440,6 +496,11 @@ run_raspberry_pi() {
     local compiler swiftc compiler_version sdk_identity sdk_root probe_ir
     compiler="$(giftui_pi_host_swift)"
     swiftc="$(dirname "${compiler}")/swiftc"
+    # The migration ignores machine-local compiler overrides.
+    if [[ "${compiler_baseline}" == rfc-014 ]]; then
+        swiftc="${GIFTUI_CONTRACT_SWIFTC}"
+        compiler="$(dirname "${swiftc}")/swift"
+    fi
     [[ -x "${compiler}" ]] || fail 'pinned Raspberry Pi Swift compiler is missing; run scripts/raspberry-pi/setup-toolchain.sh'
     giftui_pi_require_sdk
     record_command "${PROJECT_ROOT}/scripts/raspberry-pi/doctor.sh"
@@ -457,6 +518,10 @@ run_raspberry_pi() {
     printf 'destination=%s\n' "${GIFTUI_PI_STATIC_DESTINATION}" >>"${metadata_path}"
     printf 'optimization=-O -whole-module-optimization\n' >>"${metadata_path}"
 
+    local -a migration_flags=("__historical__")
+    if [[ "${compiler_baseline}" == rfc-014 ]]; then
+        migration_flags=("${GIFTUI_CONTRACT_FEATURE_FLAGS[@]}")
+    fi
     giftui_pi_prepare_build_environment
     local -a command=(
         "${compiler}" build --package-path "${PROJECT_ROOT}"
@@ -465,6 +530,16 @@ run_raspberry_pi() {
         --configuration release --product GiftUI --static-swift-stdlib
         -Xswiftc -whole-module-optimization
     )
+    if [[ "${compiler_baseline}" == rfc-014 ]]; then
+        for flag in "${migration_flags[@]}"; do command+=(-Xswiftc "${flag}"); done
+    fi
+    sdk_root="${GIFTUI_PI_SDK_DIR}/${GIFTUI_PI_DISTRIBUTION}"
+    if [[ "${compiler_baseline}" == rfc-014 ]]; then
+        check_migration_compiler "${swiftc}" "${migration_flags[@]}" \
+            -target "${GIFTUI_PI_TARGET}" -sdk "${sdk_root}" \
+            -resource-dir "${sdk_root}/usr/lib/swift_static" \
+            -Xcc "--gcc-toolchain=${sdk_root}/usr"
+    fi
     record_command "${command[@]}"
     "${command[@]}" >>"${log_path}" 2>&1
 
@@ -481,6 +556,9 @@ run_raspberry_pi() {
         "${FOUNDATION_SOURCE}" "${PROFILE_PROBE_ROOT}/ProfileCorpusProbe.swift"
         -o "${probe_ir}"
     )
+    if [[ "${compiler_baseline}" == rfc-014 ]]; then
+        probe_command+=("${migration_flags[@]}")
+    fi
     record_command "${probe_command[@]}"
     "${probe_command[@]}" >>"${log_path}" 2>&1
     record_command "${SCRIPT_DIR}/check-spec-002-cross-profile-semantics.rb" "${probe_ir}"
@@ -500,6 +578,9 @@ run_raspberry_pi() {
         "${FOUNDATION_SOURCE}" "${FIXTURE_ROOT}/Instrumentation/LayoutProbe.swift"
         -o "${layout_ir}"
     )
+    if [[ "${compiler_baseline}" == rfc-014 ]]; then
+        layout_command+=("${migration_flags[@]}")
+    fi
     record_command "${layout_command[@]}"
     "${layout_command[@]}" >>"${log_path}" 2>&1
     record_command "${SCRIPT_DIR}/check-spec-002-layout.rb" \
@@ -518,6 +599,9 @@ run_raspberry_pi() {
         "${FOUNDATION_SOURCE}" "${FIXTURE_ROOT}/Instrumentation/OperationProbe.swift"
         -o "${operation_ir}"
     )
+    if [[ "${compiler_baseline}" == rfc-014 ]]; then
+        object_command+=("${migration_flags[@]}")
+    fi
     record_command "${object_command[@]}"
     "${object_command[@]}" >>"${log_path}" 2>&1
     record_command "${SCRIPT_DIR}/check-spec-002-resource-boundary.rb" \
@@ -557,6 +641,9 @@ run_raspberry_pi() {
             -Xlinker "-Map=${matched_dir}/${variant}/link.map"
             -o "${matched_dir}/${variant}/image"
         )
+        if [[ "${compiler_baseline}" == rfc-014 ]]; then
+            resource_command+=("${migration_flags[@]}")
+        fi
         record_command "${resource_command[@]}"
         "${resource_command[@]}" >>"${log_path}" 2>&1
         giftui_pi_verify_armv6_binary "${matched_dir}/${variant}/image" \
@@ -588,6 +675,9 @@ run_nrf52840() {
     printf 'embedded_swift=-enable-experimental-feature Embedded\n' >>"${metadata_path}"
     printf 'float_abi=hard\n' >>"${metadata_path}"
 
+    if [[ "${compiler_baseline}" == rfc-014 ]]; then
+        [[ "${GIFTUI_NRF_SWIFTC}" == "${GIFTUI_CONTRACT_SWIFTC}" ]] || fail 'nRF migration compiler path differs'
+    fi
     module_dir="${report_dir}/build/modules"
     mkdir -p "${module_dir}" "${report_dir}/build/clang-cache"
     export CLANG_MODULE_CACHE_PATH="${report_dir}/build/clang-cache"
@@ -597,6 +687,10 @@ run_nrf52840() {
         -Osize -whole-module-optimization
         -Xcc -mfloat-abi=hard -Xcc -mcpu=cortex-m4 -Xcc -mfpu=fpv4-sp-d16
     )
+    if [[ "${compiler_baseline}" == rfc-014 ]]; then
+        flags+=("${GIFTUI_CONTRACT_FEATURE_FLAGS[@]}")
+    fi
+    check_migration_compiler "${GIFTUI_NRF_SWIFTC}" "${flags[@]}"
     local -a command=(
         "${GIFTUI_NRF_SWIFTC}" "${flags[@]}" -package-name GiftUI
         -parse-as-library -emit-module
@@ -669,6 +763,7 @@ run_nrf52840() {
             "-DCMAKE_Swift_COMPILER=${GIFTUI_NRF_SWIFTC}"
             "-DGIFTUI_SWIFT_TARGET=${GIFTUI_NRF_SWIFT_TARGET}"
             "-DGIFTUI_SPEC002_CANDIDATE=${candidate_flag}"
+            "-DGIFTUI_COMPILER_BASELINE=${compiler_baseline}"
             "-DDTC=$(giftui_nrf_dtc)" -DUSE_CCACHE=0
         )
         record_command "${resource_command[@]}"

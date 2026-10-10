@@ -41,6 +41,14 @@ target_compile_options(app_swift PRIVATE
     "SHELL:-Xcc -fno-pie"
     "SHELL:-Xcc -I -Xcc ${ZEPHYR_SDK_INSTALL_DIR}/arm-zephyr-eabi/picolibc/include"
 )
+if(GIFTUI_COMPILER_BASELINE STREQUAL "rfc-014")
+    target_compile_options(app_swift PRIVATE
+        "SHELL:-enable-experimental-feature LifetimeDependence"
+        "SHELL:-enable-experimental-feature Lifetimes"
+    )
+elseif(DEFINED GIFTUI_COMPILER_BASELINE AND NOT GIFTUI_COMPILER_BASELINE STREQUAL "historical")
+    message(FATAL_ERROR "Unknown SPEC-002 compiler baseline")
+endif()
 if(GIFTUI_SPEC002_CANDIDATE)
     target_compile_options(app_swift PRIVATE -DGIFTUI_SPEC002_CANDIDATE)
 endif()

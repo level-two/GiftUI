@@ -98,7 +98,7 @@ features:
     # FW-016/FW-030 and EXP-002 supply evidence; topology/access contracts remain gated.
     # macOS physical-pointer validation is postponed under FW-031.
     title: GiftUI MVP Architecture Establishment
-    status: specification
+    status: implementation
     proposal:
       - PROPOSAL-003
     rfcs:

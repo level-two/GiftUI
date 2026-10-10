@@ -2,7 +2,7 @@
 spec: SPEC-002
 feature: giftui-mvp-architecture
 title: SPEC-002 Implementation Plan
-status: ready
+status: active
 owners:
   - codex
 created: 2026-08-28
@@ -22,8 +22,8 @@ superseded_by: null
 
 ## RFC-014 implementation readiness — 2026-10-10
 
-**Ready under [explicit Spec approval](../iterations/iteration-003-review/rfc-014-spec-approval.md).**
-Implementation has not started. The [bounded sequence](../iterations/iteration-003-review/rfc-014-implementation-plan.md)
+**Active under [explicit Spec approval](../iterations/iteration-003-review/rfc-014-spec-approval.md).**
+P01 implementation began on 2026-10-10. T7.1 remains open through P10–P12. The [bounded sequence](../iterations/iteration-003-review/rfc-014-implementation-plan.md)
 is the shared ordering/scope index: exactly P01–P12, not an expandable backlog.
 This owner contributes P01; its final regression/resource/disposition
 obligations run through P10–P12. Only the current checkpoint below is new work.

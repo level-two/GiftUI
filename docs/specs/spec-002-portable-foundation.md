@@ -2,7 +2,7 @@
 id: SPEC-002
 feature: giftui-mvp-architecture
 title: Portable Foundation Specification
-status: approved
+status: implementing
 authors:
   - codex
 created: 2026-08-22
@@ -86,8 +86,9 @@ below their consumers. It deliberately leaves declarative semantics, failure
 and containment semantics, capability contribution and resolution semantics,
 and pointer admission behavior to their owning Specifications.
 
-This Specification is `implemented`; its approved contract authorizes the
-active implementation. The value representations, visibility classes, and
+The RFC-014 amendment is `implementing`; its approved contract authorizes
+P01 of the bounded migration. The earlier `implemented` disposition remains
+historical baseline evidence. The value representations, visibility classes, and
 cross-layer mapping of local Foundation rejection into SPEC-003 outcomes are
 fixed here.
 

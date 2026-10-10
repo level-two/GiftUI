@@ -3,12 +3,15 @@
 set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd -P)"
 PROJECT_ROOT="$(cd "${SCRIPT_DIR}/../.." && pwd -P)"
-spec=""; profile=""; driver=""
+spec=""; profile=""; driver=""; compiler_baseline="historical"
 while [[ $# -gt 0 ]]; do
     case "$1" in
         --spec) spec="$2"; shift 2 ;;
         --profile) profile="$2"; shift 2 ;;
         --driver) driver="$2"; shift 2 ;;
+        --compiler-baseline)
+            [[ $# -ge 2 && "$2" == rfc-014 ]] || { printf 'error: unknown or missing compiler baseline\n' >&2; exit 2; }
+            compiler_baseline="$2"; shift 2 ;;
         *) printf 'error: unknown immutable-driver option: %s\n' "$1" >&2; exit 2 ;;
     esac
 done
@@ -17,11 +20,21 @@ done
 }
 spec_slug="$(printf '%s' "${spec}" | tr '[:upper:]' '[:lower:]')"
 report_root="${PROJECT_ROOT}/.build/contract-reports/${spec_slug}"
+driver_arguments=(--profile "${profile}")
+if [[ "${compiler_baseline}" == rfc-014 ]]; then
+    source "${SCRIPT_DIR}/compiler-baseline.sh"
+    giftui_rfc014_select_compiler "${PROJECT_ROOT}" "${profile}"
+    report_root+="/rfc-014"
+    driver_arguments+=(--compiler-baseline rfc-014)
+fi
 revision="$(git -C "${PROJECT_ROOT}" rev-parse HEAD)"
 mkdir -p "${report_root}"
 preflight_inventory="${report_root}/.input-${profile}-$$.tsv"
 {
     git -C "${PROJECT_ROOT}" ls-files
+    if [[ "${compiler_baseline}" == rfc-014 ]]; then
+        printf '%s\n' "${GIFTUI_CONTRACT_SWIFTC}"
+    fi
     printf '%s\n' \
         "scripts/contracts/report-input-identity.rb" \
         "scripts/contracts/publish-contract-report.rb" \
@@ -50,7 +63,7 @@ staging="${report_root}/.tmp-${profile}-$$"
 if ! GIFTUI_IMMUTABLE_REPORT_INNER=true \
     GIFTUI_CONTRACT_REPORT_DIR="${staging}" \
     GIFTUI_CONTRACT_RUN_ID="${run_id}" \
-    "${driver}" --profile "${profile}"; then
+    "${driver}" "${driver_arguments[@]}"; then
     rm -f "${preflight_inventory}" "${preflight_inventory}.identity"
     exit 1
 fi

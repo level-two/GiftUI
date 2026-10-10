@@ -2,11 +2,11 @@
 spec: SPEC-002
 feature: giftui-mvp-architecture
 title: SPEC-002 Conformance Report
-status: complete
+status: collecting
 reviewers:
   - codex
 created: 2026-08-31
-updated: 2026-10-03
+updated: 2026-10-10
 implementation_plan: ../implementation-plans/spec-002-implementation-plan.md
 related_future_work:
   - FW-005
@@ -21,6 +21,12 @@ superseded_by: null
 
 > This report records evidence. A review-ready report does not authorize the
 > governing Specification's `implemented` transition.
+
+## RFC-014 migration evidence
+
+P01 implements the approved compiler amendment. The report is collecting new
+migration evidence; the results below describe the earlier baseline only.
+T7.1 and all migration criterion dispositions remain open through P10–P12.
 
 ## Review Scope
 

@@ -1,0 +1,28 @@
+# RFC-014 finite source inventory frozen at P01; routes are source/effect families, never expanded graph nodes.
+# id	application	source	entry	effects	owner-package
+SA01	analyzer	Sources/SignalAnalyzerPresentation/SignalAnalyzerView.swift	SignalAnalyzerView.body	State; nested reads; inferred body; modifiers	P02,P03,P04,P09
+SA02	analyzer	Sources/SignalAnalyzerPresentation/SignalAnalyzerView.swift	SignalAnalyzerHeaderView.body	custom body; let; enum/optional; bounded diagnostic text; actions	P02,P04,P05,P09
+SA03	analyzer	Sources/SignalAnalyzerPresentation/SignalAnalyzerView.swift	SignalAnalyzerWaveformView.body	stacks; child arity; capture selection; range; modifiers	P02,P04,P06,P09
+SA04	analyzer	Sources/SignalAnalyzerPresentation/SignalAnalyzerView.swift	SignalAnalyzerGridView/SignalAnalyzerTraceView/SignalAnalyzerChannelWaveformView	ordinary stateless/custom dispatch; geometry; Canvas staging	P02,P04,P06,P09
+SA05	analyzer	Sources/SignalAnalyzerPresentation/SignalAnalyzerWaveformGeometry.swift	SignalAnalyzerRulerLabels	bounded formatting; pure helpers; Text	P02,P04,P09
+SA06	analyzer	Sources/SignalAnalyzerPresentation/SignalAnalyzerView.swift	SignalAnalyzerSquareButton	owned typed action; disabled; style/frame modifiers	P02,P04,P05,P09
+SA07	analyzer	Sources/SignalAnalyzerPresentation/SignalAnalyzerView.swift	SignalAnalyzerControlState (VisibleTimeWindow input)	computed enum selection; equality; ternary	P02,P09
+SA08	analyzer	Sources/SignalAnalyzerPresentation/SignalAnalyzerPresentationValues.swift	SignalAnalyzerViewModel.visibleRange	transitive reads; duration; min/max	P02,P03,P09
+SA09	analyzer	Sources/SignalAnalyzerPresentation/SignalAnalyzerPresentationValues.swift	startTapped/stopTapped/clearTapped	ordered side effects; diagnostic/report; typed failure	P02,P03,P09
+SA10	analyzer	Sources/SignalAnalyzerPresentation/SignalAnalyzerPresentationValues.swift	visibleDurationChanged	checked mutation; no-op; report	P02,P03,P09
+SA11	analyzer	Sources/SignalAnalyzerPresentation/SignalAnalyzerPresentationValues.swift	apply	compound capture/revision preflight; admitted facts; coarse report	P02,P03,P09
+SA12	analyzer	Sources/SignalAnalyzerPresentation/SignalAnalyzerPresentationValues.swift	attach/detach/reportChange	registration; checked generation; report refusal	P03,P07,P09
+SA13	analyzer	Sources/SignalAnalyzerPresentation/SignalAnalyzerView.swift	makeSignalAnalyzerGridCanvas/drawSignalAnalyzerGrid	protocol Canvas; loops; scoped path operations	P02,P06,P09
+SA14	analyzer	Sources/SignalAnalyzerPresentation/SignalAnalyzerView.swift	makeSignalAnalyzerTraceCanvas/drawSignalAnalyzerTrace	exact capture selection; indexed reads; conditional loops; withPath	P02,P03,P06,P09
+SA15	analyzer	Sources/SignalAnalyzerPresentation/SignalAnalyzerWaveformGeometry.swift	startingLevel/tracePointCount/x/y/milliseconds	pure helper effects; enum switch; overflow; short-circuit order	P02,P06,P09
+SA16	analyzer	Sources/SignalAnalyzerPresentation/SignalAnalyzerTimelineFormatting.swift	seconds/withUTF8	bounded bytes; arithmetic; callback	P02,P09
+SA17	analyzer	Sources/SignalAnalyzerDomain/SignalValues.swift	SignalCapture/baselineLevel	owned immutable snapshot; bounded transition iteration; explicit presentation migration	P03,P06,P09
+SA18	analyzer	Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFModelLocation.swift	model activation/mutation/retirement	stable ownership; generation; phase; report	P03,P07,P09
+SA19	analyzer	Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFModelCaptureState.swift	capture setters/snapshot/mutation	three-bank entitlement; 404/405; horizon/baseline/Clear	P03,P09
+SA20	analyzer	Sources/SignalAnalyzerTargetHost/DynamicSignalAnalyzerPiInitialPresentationOwner.swift	initial composition/replacement	actual host tickets; registration; lifetime	P03,P07,P09
+CT01	counter	counter-requirement	State model initialization/value	UInt8 0-9; same-domain read; ignored repeated seed	P02,P03,P08
+CT02	counter	counter-requirement	counterText/Text	bounded digit helper; inferred ordinary body	P02,P04,P08
+CT03	counter	counter-requirement	Increment/Reset/disabled	owned typed actions; equality 9/0; checked mutation/no-op/report	P02,P03,P05,P08
+CT04	counter	counter-requirement	CounterCanvas/counterStroke	zero/nonzero optional stroke; scalar geometry; exact model key	P02,P06,P08
+CT05	counter	counter-requirement	host replacement/retained former owner	bounded owner/registration/frame lifetime; refusal	P03,P07,P08
+SY01	both	finite-grammar-controls	builder arity 0-5; if/else/optional; nested helpers	left-to-right; short-circuit; wrong domain; escape; unsupported-effect rejection	P02

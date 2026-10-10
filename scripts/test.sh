@@ -139,6 +139,7 @@ run_check() {
 run_check governance "${PROJECT_ROOT}/scripts/validate-governance.rb"
 run_check governance-tooling "${PROJECT_ROOT}/scripts/governance/test.sh"
 run_check swift-format "${PROJECT_ROOT}/scripts/format-swift.sh" --lint
+run_check spec-002-compiler-baseline python3 "${PROJECT_ROOT}/scripts/contracts/check-spec-002-compiler-baseline.py"
 run_check driver-registry "${PROJECT_ROOT}/scripts/contracts/check-driver-registry.rb"
 run_check nrf-topology python3 "${PROJECT_ROOT}/scripts/contracts/check-spec-001-nrf-topology.py"
 run_check nrf-source-selection python3 "${PROJECT_ROOT}/scripts/contracts/check-nrf-source-selection.py"
@@ -183,6 +184,11 @@ for selected_profile in "${selected_profiles[@]}"; do
                 ;;
         esac
     done <"${REGISTRY}"
+    # P01's approved matrix is additional explicit evidence. Historical driver
+    # invocations above retain their own compiler checks and report namespace.
+    run_check "SPEC-002-rfc-014-${selected_profile}" \
+        "${PROJECT_ROOT}/scripts/contracts/run-spec-002.sh" \
+        --profile "${selected_profile}" --compiler-baseline rfc-014
     if [[ "${matched}" -eq 0 ]]; then
         failures=$((failures + 1))
         printf 'missing-driver-%s\t1\t-\n' "${selected_profile}" >>"${results_path}"
