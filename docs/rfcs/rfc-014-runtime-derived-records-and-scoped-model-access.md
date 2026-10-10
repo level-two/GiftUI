@@ -2,7 +2,7 @@
 id: RFC-014
 feature: external-application-integration
 title: Runtime-Derived Records and Scoped Model Access
-status: draft
+status: review
 authors:
   - codex
 created: 2026-10-09
@@ -52,725 +52,532 @@ target_milestone: ITERATION-003
 
 # RFC-014: Runtime-Derived Records and Scoped Model Access
 
-**Draft recommendation; final investigation complete, pending architecture review and human approval.**
-This is the design output of [I3-T02](../iterations/iteration-003-review/memory-efficiency-plan.md#i3-t02--runtime-derivation-design-package),
-using maintained baseline `710fbd24`. It records a concrete proposed realization
-and its unresolved proofs. It does not claim a new measured feasible candidate.
-The earlier NO-GO and stopped experiment budgets remain intact.
-[The design review and conditional adoption sequence](../iterations/iteration-003-review/i3-t02-design-review.md)
-record corrections and the remaining approval blockers.
-The subsequent [SPIKE-069 result](../../experiments/spike-069-scoped-model-access/evidence/result.md)
-provides bounded compiler/lifetime evidence and exposes a concrete source/API
-choice; it does not close B1 or establish application feasibility.
-The subsequent [source-design comparison](../iterations/iteration-003-review/rfc-014-source-design-options.md)
-and [application ownership audit](../iterations/iteration-003-review/rfc-014-ownership-audit.md)
-make the earlier A/B choices and retention risks reviewable. The maintainer
-subsequently proposed a Canvas protocol and versioned observable storage.
-The [2026-10-10 working direction C](../iterations/iteration-003-review/rfc-014-decision-direction.md)
-replaces the earlier recommendation to develop closure-based SnapshotCanvas first.
-RFC approval, exact declarations and physical pool bounds remain open.
-[SPIKE-070](../spikes/spike-070-protocol-canvas-versioned-access.md) is now terminal
-**inconclusive**: the finite C fixture passes both native runs and ARMv6
-compilation, but its Embedded positive fails after the two allowed repairs.
-The escape matrix and nRF resource inspection are unrun. The
-[result](../../experiments/spike-070-protocol-canvas-versioned-access/evidence/result.md)
-identifies generated body/draw signature adaptations and keeps B1/B4 open.
-The separately authorized [SPIKE-071](../spikes/spike-071-canvas-embedded-escape-continuation.md)
-now completes that bounded matrix: four-profile positives, 21 native checks per
-profile, 24 intended negative controls and no allocator relocations in the rooted
-nRF fixture. Its [result](../../experiments/spike-071-canvas-embedded-escape-continuation/evidence/result.md)
-supports the mechanism under experimental lifetime flags, not complete production
-binding, source compatibility, whole-image feasibility or RFC approval.
-
-The [contextual evaluation design](../iterations/iteration-003-review/rfc-014-contextual-evaluation.md)
-now proposes the production connection: a contextual compiled View contract,
-explicit traversal session, short body/draw read borrows under a frame lease,
-and typed access-failure transport. It distinguishes familiar authoring syntax
-from an unchanged Swift protocol or macro-only implementation. The draft SPI,
-compiler policy remain unapproved. The subsequent
-[SPIKE-072](../spikes/spike-072-contextual-traversal-integration.md) supports the
-contextual connection through actual adapted SemanticCore/Drawing modules on
-four configurations, with 111 passing native checks per profile. Explicit
-generated Body aliases and leaf-only defaults avoid an observed incorrect Never
-witness. The [application inventory](../../experiments/spike-072-contextual-traversal-integration/application-coverage.md)
-shows that complete counter/analyzer source coverage, production binding/ownership
-and full-image feasibility remain unproved. Mandatory transformation is selected
-provisionally for evidence, not adopted as production architecture.
-
-## Final investigation boundary — 2026-10-10
-
-Eugene authorized [SPIKE-074](../spikes/spike-074-final-access-ownership.md) as the
-final bounded validation round. It is now terminal: six module boundaries compile
-on four configurations, both native runs pass 47 checks, eight negative controls
-reject, and target model/owner metadata totals 292 bytes alongside the unchanged
-19,392 transition bytes. It used 48/48 invocations and one repair. The
-[result](../../experiments/spike-074-final-access-ownership/evidence/result.md)
-records limitations, including unproved production ownership integration, full
-source lowering and zero heap (object allocator references remain).
-
-**Architectural investigation is complete; no successor study is planned.**
-The [implementation handoff](../iterations/iteration-003-review/rfc-014-implementation-handoff.md)
-is the current B0–B4 disposition and takes precedence over earlier investigation
-blocker wording below. Proceed to focused RFC/ADR/Spec finalization. Production
-integration, complete source migration, conformance and whole-image measurements
-are mandatory implementation acceptance work. A concrete architectural conflict
-returns for decision; it does not automatically open another experiment.
-No authority status or resource requirement changes through this evidence.
-
-## Current access/ownership work — 2026-10-10
-
-The maintainer requested resolution of the two remaining issues. The
-[analyzer capacity choice](../iterations/iteration-003-review/rfc-014-capture-policy-choice.md)
-records the maintainer's explicit selection: keep three banks with bounded
-replacement refusal. Model metadata capacity is separate from capture capacity;
-retained owners are never revoked. The linked ownership transaction and failure
-matrix define the proposed realization. Accepted constants are unchanged.
-The [typed access contract](../iterations/iteration-003-review/rfc-014-typed-access-contract.md)
-selects schema-specific read domains fixed by each compiled View conformance,
-scoped typed facades and separate checked mutation. Generated application schema
-requirements keep GiftUI independent of analyzer/counter fields and portable
-presentation independent of Runtime. Swift derives Body; generated code supplies
-the domain type arguments and access binding. The source-route matrix covers the
-actual counter/analyzer inventory at the contract level, not as an implemented
-frontend. This contract supersedes earlier universal scalar-reader, copy-freeze
-and manually generated Body recommendations where they conflict.
-
-Both requested design issues have explicit dispositions and bounded validation.
-No additional maintainer policy choice is pending. RFC status remains draft;
-actual runtime integration and complete application/resource conformance belong
-to the linked implementation handoff, not further generic investigations.
-
-## Current design correction — 2026-10-10
-
-[SPIKE-073](../spikes/spike-073-fixed-context-body-inference.md) completed the
-single bounded SR-Q2 check: fixed-context Body inference compiles on all four
-configurations, both native runs pass 15 checks, and eight negative controls
-reject. [SR-Q1–4 dispositions](../iterations/iteration-003-review/rfc-014-stable-read-revision.md#activity-results--2026-10-10)
-record the accompanying source/contract audit. The access/ownership contracts
-above answer the follow-up design questions; their integration and resource
-proofs remain open. No successor study is opened.
-
-The maintainer authorized [stable reads without a mandatory snapshot copy](../iterations/iteration-003-review/rfc-014-stable-read-revision.md).
-That revision supersedes conflicting C copy-freeze, five-bank-baseline and
-mandatory frontend Body-derivation recommendations below. Retain protocol Canvas
-and stable model ownership, preserve mutation exclusion, and first investigate
-compiler-derived Body with a fixed read context. Previous studies remain evidence
-for their exact candidates. Accepted ADR-011/025 already require serialized
-mutation; this correction changes a draft realization, not those decisions.
+**Final design under review.** This document describes the selected design only.
+The [final review](../iterations/iteration-003-review/rfc-014-final-review.md)
+records findings, corrections, evidence limits and finalization provenance.
+RFC approval enables ADR extraction; it does not change accepted ADRs, approve
+Specifications or authorize production migration.
 
 ## Summary
 
-Evaluate the real portable declarations through Semantic Core's traversal and
-emit bounded records at runtime. Retain complete structural identity separately
-from each revision's record indices. Keep live models in address-stable typed
-owner storage; exclude mutation through post-layout Canvas invocation.
-Develop a Canvas protocol with explicit draw invocation and observable properties
-backed by retained model storage. Graph and drawing read the same unchanged
-version; a separate snapshot copy is not required by this baseline. Preserve serialized mutation
-and existing transaction order. Per-Canvas snapshot keys remain an earlier
-alternative, not a required mechanism when the frame owner covers every read.
+Traverse actual portable View declarations at runtime and emit bounded semantic
+records. Preserve structural identity independently of record ordinals. Keep
+model storage alive and exclude mutation through graph derivation, Layout and
+post-layout Canvas drawing. A separate frozen copy is not required.
 
-The recommendation is to pursue this representation at the contract-design
-boundary, subject to B0–B4 below. This is not a recommendation to approve an
-unsafe or incomplete implementation. No production change or proof experiment
-was part of the original RFC-authoring task. Separately authorized SPIKE-069
-has now completed; its unused budget does not authorize continuation or adoption.
+Canvas becomes a `View`-refining protocol with `Body == Never` and synchronous
+scoped drawing. Generated access code supplies a fixed typed read domain to each
+compiled View conformance; Swift infers custom Body types. Authored body and
+property syntax remain the source contract, not an unchanged compiled ABI.
+
+Preserve three analyzer capture banks: source, admission and model. Model metadata
+capacity is separate from capture capacity. Replacement refuses before commit
+when resources cannot accommodate it; independently retained owners remain valid.
+
+The final bounded investigation supports this design's representative mechanisms.
+Production integration, complete source coverage and final resource/conformance
+proof belong to implementation acceptance. No further investigation is queued.
 
 ## Context
 
-[PROPOSAL-007](../proposals/proposal-007-external-application-integration.md) is
-accepted. Its [runtime scope amendment](../iterations/iteration-003-review/runtime-derivation-scope-amendment.md)
-requires the analyzer and finite counter to derive their graph at runtime on
-macOS Dynamic/Static, Pi 1 ARMv6 Dynamic and nRF52840 Embedded Static.
-This is post-MVP work; the MVP analyzer supplies regression contracts, not a
-new MVP commitment. External delivery remains in iteration 4.
+[Accepted PROPOSAL-007](../proposals/proposal-007-external-application-integration.md)
+and its [runtime scope amendment](../iterations/iteration-003-review/runtime-derivation-scope-amendment.md)
+cover iteration-3 runtime derivation for the analyzer and finite counter on
+macOS Dynamic/Static, Pi 1 ARMv6 Dynamic and nRF52840 Embedded Static. External
+application delivery remains in iteration 4. This is post-MVP work; the
+[MVP analyzer](../iterations/iteration-001-mvp.md) supplies regression semantics
+and stack requirements, not a new MVP commitment.
 
-[I3-T01](../iterations/iteration-003-review/i3-t01-result.md) corrected source
-deadlines and raster/layout costs. It retained generated production topology.
-Its 74 passing hardware-free checks are baseline controls, not evidence for
-this proposed representation. The retained 4 MHz transfer path still fails the
-250 ms necessary condition; hypothetical 32 MHz is neither configured nor proved.
+The [I3-T01 baseline](../iterations/iteration-003-review/i3-t01-result.md) retains
+generated production topology. Its passing checks and linked memory figures
+are baseline controls, not evidence for the new representation. The known
+operation-major 4 MHz display path cannot meet the 250 ms frame requirement;
+this RFC changes neither transport nor the requirement.
 
 ## Scope and Decision Boundary
 
-This RFC owns runtime record construction and identity, the live-model access
-context, capture validity through Canvas, storage lifetimes, and publication/
-retirement. These are coupled: a representation is incomplete if it copies a
-state wrapper or capture beyond the storage it addresses.
+This RFC owns runtime record construction and exact identity, compiled View/model
+access, Canvas representation, model/capture ownership, storage lifetimes and
+publication/retirement. These form one decision cluster: runtime declarations
+must not outlive the state or capture data they reference.
 
-[RFC-013](rfc-013-external-application-and-backend-integration.md) retains package
-partition, supported external APIs, host assembly, setup and migration for
-external authors. Those decisions can consume this runtime contract without
-this RFC choosing a package partition. This is a focused extraction of its
-runtime question, not supersession of RFC-013 or adoption of its rejected
-candidate. Neither RFC requires the other draft to be approved to define its
-own contract. External implementation will depend on the accepted runtime result.
+[RFC-013](rfc-013-external-application-and-backend-integration.md) independently
+owns external package partition, supported external APIs, host assembly and setup.
+This RFC specifies semantic dependencies, not a distributable package topology.
+The finite counter may use repository composition; that is not external-consumer
+compatibility evidence.
 
-Display strategy/rate, asynchronous rendering, a different source workload,
-fine-grained invalidation and general application compilation are excluded.
-The finite counter may use isolated repository composition under iteration 3;
-external-package success is not required here and cannot be claimed from it.
+Display transport/rate, asynchronous rendering, fine-grained invalidation,
+general Swift compilation and arbitrary cross-domain view composition are outside
+this decision. Accepted owner responsibilities and workload limits remain intact.
 
 ## Requirements
 
-| Requirement | Governing source / proposed evidence |
-| --- | --- |
-| Actual body/state-dependent traversal, no pre-expanded topology input | I3-04 / IT-AC-006; source inventory and declaration/branch perturbation oracles |
-| Exact paths, state preservation, action generations, layout and pixels | SPEC-006/010/011; compare both profiles and independent expected transcripts |
-| One serialized mutation/freeze/publication sequence | ADR-011/025 and SPEC-013; failure injection at every acquisition/publication edge |
-| Bounded Static storage with no allocator or dynamic fallback | ADR-026 and SPEC-013; exact target layouts, ELF, complete feasible-path stack and capacity controls |
-| Same analyzer/counter behavior on all four configurations | IT-AC-004/008; application-specific limits and matrix, not analyzer limits reused for counter |
-| Existing sustained workload remains an independent iteration gate | IT-AC-009 / SPEC-001; connected 30 s at 80 events/s and four-FPS cadence |
+| ID | Required outcome | Trace / acceptance |
+| --- | --- | --- |
+| RD-1 | Evaluate actual body/state-dependent declarations; no pre-expanded topology input. | I3-04 / IT-AC-006; source inventory and declaration/branch perturbation. |
+| RD-2 | Preserve exact identity, state, action generations, layout, painter order and pixels across profiles. | SPEC-006/010/011; independent semantic/action/pixel oracles. |
+| RD-3 | Preserve serialized mutation, complete semantic publication and no replay of admitted mutations. | ADR-011/024/025 and SPEC-013; failure-edge coverage. |
+| RD-4 | Model/capture reads cannot escape or survive their backing; ordinary failures are typed. | Compiler controls, actual owner/teardown tests and SPEC-010/012 failure routing. |
+| RD-5 | Static has finite declared storage and no heap/dynamic fallback. | ADR-026; linked image, complete stack/IRQ and capacity evidence. |
+| RD-6 | Keep the three-bank capture policy, five-second horizon and required admission/workload semantics. | ADR-034 / SPEC-001; 404/405 boundary, baselines, replay/Clear and 30s workload. |
+| RD-7 | Both applications use the same portable semantics on four configurations. | IT-AC-004/008; per-application limits and full source coverage. |
 
 ## Constraints
 
-`GiftUI` remains the portable framework import. No owner lookup singleton,
-task-local state, reflection, existential registry or application model in a
-backend is introduced. Fixed callable code and type-role tags may be generated;
-parent/child links, expanded branches and per-application scope tables may not.
-The Static Canvas syntax lowering required by SPEC-012 remains mandatory for
-current production; direction C proposes replacing that source contract through
-explicit ADR/Spec changes, while retaining bounded typed storage and dispatch.
-Generating code for a syntactic callable is distinct from generating its runtime
-occurrences and captures.
-
-The current analyzer logical maxima, including 126 structural identities,
-98 layout/render scopes and 404 transitions per capture, remain the starting
-workload limits. Record allocation does not silently raise them. New physical
-byte budgets below are proposals requiring SPEC-013/015 approval.
+- Authored portable framework usage imports `GiftUI`; existing application Domain
+  imports remain allowed. Runtime/backend/platform selection stays at the host.
+- No global resolver, task-local binding, reflection, `Any` registry or application
+  schema in the generic GiftUI core. Backends never resolve models or run Canvas.
+- Generated schema witnesses, type-role tags, access adapters and finite source
+  lowering are allowed. Expanded runtime occurrences, parent/child links or
+  per-application graph tables are not production inputs.
+- Existing analyzer maxima, including 126 structural identities, 98 layout/render
+  scopes and 404 transitions, are not silently raised by record allocation.
+- Accepted ADRs and implemented Specs remain production authority until required
+  ADR decisions and Spec amendments pass their own gates. Experimental source is
+  evidence, not production code to copy without review.
 
 ## Proposed Design
 
-### Current direction — protocol Canvas and versioned observable storage
-
-The [working decision record](../iterations/iteration-003-review/rfc-014-decision-direction.md)
-defines C1–C6 and the approval process. The subsequent
-[detailed C contract](../iterations/iteration-003-review/rfc-014-c-contract.md)
-proposes exact access operations, copy-freeze semantics, public authoring shapes
-and lifecycle/error rules. Its finite context-injection mechanism remains an
-explicit compiler/tooling proof obligation, not an implemented wrapper. Canvas becomes a View-refining protocol
-with Body == Never, framework-supplied leaf traversal and an explicit draw method.
-Observable properties delegate to stable typed owner storage with current/frozen
-logical versions. One coherent frame freeze covers graph, Layout and drawing;
-external facts still enter admission rather than mutating a frozen model.
-
-This is the working RFC direction, not accepted architecture. It does not adopt
-the earlier ScopedState/WithModel/SnapshotCanvas surface or prove that implicit
-property reads can be safely bound. Exact API/compiler/access design is B1/B4.
-Graph association does not transfer all application ownership to transient nodes.
-Physical buffer mapping, replacement and retained owners remain B0/B2.
-
-The runtime identity and publication principles below remain proposed shared
-requirements. The per-Canvas key realization, callback-only restriction and
-four-slot arithmetic below describe the earlier branch and its evidence; they
-are not automatically the realization or reservation for C. Recompute the
-resource model from C's complete owner/version ledger before approval. The
-[C storage ledger](../iterations/iteration-003-review/rfc-014-c-storage-ledger.md)
-now proposes K=2 current model slots and F=1 frozen slot: five analyzer
-capture-sized banks (32,320 transition bytes), with first-excess replacement
-refusal while a former owner occupies the second current slot. This conflicts
-with ADR-034 and remains a proposed resource branch, not an approved increase.
-The [detailed C review](../iterations/iteration-003-review/i3-t02-design-review.md#detailed-c-contract-review--2026-10-10)
-maps those changes to existing authority and names C-P1/C-P2 as the next
-proposed bounded proof. No experiment is launched by the contract design.
-
 ### Runtime records and exact identity
 
-1. Semantic Core traverses the actual root using the existing visitor and state
-   binding decorator. Bind each state host before invoking its body. Evaluate
-   each encountered body once; do not derive a second graph in Runtime or Layout.
-2. Append one compact record per retained occurrence into the candidate bank.
-   Store ordered parent/child/sibling links, kind, exact identity reference and
-   typed payload reference. Text and modifier payloads use bounded side pools.
-   A record ordinal is valid only in its bank/revision.
-3. Intern structural path components in a separate bank-owned path table. Each
-   entry identifies its parent, component kind, branch/child ordinal and finite
-   concrete declaration-role tag. Type tags identify declaration types, not
-   pre-expanded positions. Modifier-scope discriminators stay explicit.
-4. Reconcile candidate and published identities by complete component/endpoint
-   equality. Numeric table indices may differ between banks. A prefix or hash
-   collision never constitutes equality. Use paired traversal of the candidate and published path tries, matching
-   each child by its exact component key. The closed portable vocabulary must
-   supply a fixed child-fanout bound; prove that bound and charge traversal
-   scratch. Do not use an all-pairs path search inside semantic expansion.
-5. After successful expansion, expose the existing Semantic Core borrowed views
-   to Layout and Render. Consumers retain no declaration tree or alternate
-   canonical graph. Link/layout order is the semantic order, never hash order.
+Semantic Core traverses the actual root using its visitor and state-binding
+orchestration. Bind each stateful custom declaration before invoking its body;
+evaluate each encountered body once. Runtime and Layout do not derive another
+graph or retain the expanded declaration tree.
 
-Candidate and published banks stay disjoint. On failure, discard the candidate;
-on publication, swap bank roles and retire old semantic records only after
-all old-bank borrows end. Committed interaction identities cannot point into a
-reused bank: copy their complete bounded identity key into Interaction-owned
-storage, or retain a separately charged immutable identity owner. The proposed
-first implementation uses copied keys; its exact capacity is a B2 obligation.
+Append compact candidate occurrence records containing ordered links, kind,
+exact identity reference and typed payload reference. Text, modifier and other
+owned payloads use bounded side pools. A record ordinal identifies only its
+own bank/revision; it is never persistent state or interaction identity.
 
-An explicit path/record traversal stack does **not** eliminate compiler body
-return temporaries or the existing recursive generic visitor's stack. Keep both
-in the stack account. Replacing that visitor with a continuation machine is not
-silently included in this proposal.
+Each bank has an exact path table. Entries encode parent, component kind,
+branch/child ordinal, concrete declaration-role tag and modifier discriminator.
+Tags describe finite declaration types, not generated topology. Reconcile
+candidate/published path tries by complete component and endpoint equality,
+using paired traversal and exact bounded child matching. Neither a hash match
+nor equal table indices establishes identity. Prove the supported child-fanout
+and path-prefix bounds in the implementation; an all-pairs identity scan inside
+expansion is excluded.
 
-### Model storage, binding and callback isolation
+Candidate and published banks remain disjoint. Failure discards the candidate;
+complete semantic publication swaps bank roles. Reuse waits for all old-bank
+borrows. Interaction copies its complete bounded committed identity keys into
+its own accounted storage, so later bank reuse cannot invalidate action routing.
+Layout/Render consume Semantic Core's borrowed views in semantic order, without
+an alternate canonical graph or application-owned layout representation.
 
-RuntimeStatic owns typed live and replacement model slots at stable addresses
-provided before activation. The host supplies the backing lifetime; Observable
-State owns the logical association and registration. Dynamic may retain classes
-but follows the same lifetime states and transcript.
+An explicit record/path work stack does not eliminate Swift body-return
+temporaries or recursive generic visitor frames. Both remain in stack accounting.
 
-A model handle identifies its concrete owner context, slot and non-aliasing
-activation/model generation. Model allocation generation is distinct from the
-observable registration/target generation: detaching a registration must not
-invalidate an otherwise application-owned model. It never addresses an
-initializer's local copy.
-The context is passed explicitly from the assembled owner; `(slot, generation)`
-alone is insufficient. Before resolving any framework-owned handle, the caller
-already holds the live owner lease. Generation validation never dereferences an
-owner whose backing has been released.
+### Typed access and inferred Body
 
-The proposed Static binding uses a bounded context record and specialized read,
-replacement and report routes. Read addresses the installed typed slot;
-replacement records the exact result in the coordinator's existing mutation
-result slot; report touches separate registration/dirty storage. No route owns a
-model, starts a cycle or allocates a closure context. Whether the compiler can
-realize these routes and model copies without allocation is B1, not inferred
-from this prose or a `borrowing` annotation.
+Each compiled View conformance has one fixed read-domain type. The nonescapable
+read context is a concrete generic type parameterized by that domain; no
+nonescapable associated type or method-generic body context is required. The
+[typed access contract](../iterations/iteration-003-review/rfc-014-typed-access-contract.md)
+provides the schematic interface and real application source-route matrix.
 
-Do not hold a mutable borrow of an aggregate owner across callbacks that mutate
-its fields. Split model, registration/dirty, coordinator-result and admission
-storage into disjoint subregions with explicit phase access. Mutation handlers
-hold only the model access needed for their invocation; the report route writes
-its separate registration record. Derivation freezes model data. IRQ/input
-callbacks may submit bounded facts into admission storage only; they cannot
-resolve a model, call a getter, invoke Canvas or mutate the frozen snapshot.
+The generic GiftUI core owns View/builder/key/read-scope and failure contracts.
+An application-generated schema surface owns field types, schema-specific read
+requirements, facades and pure computed getters. A host/profile bridge implements
+those requirements against its storage. The generated presentation imports that
+schema surface; authored presentation does not import Runtime or write target
+storage offsets. Package visibility/external delivery remain RFC-013's concern.
 
-Preserve the existing replacement protocol: reserve slot/generation and attach
-candidate registration, validate its return, then commit and retire the former
-registration. Attachment failure leaves the former association unchanged.
-Replacement remains applied if subsequent derivation fails. Removal occurs
-only at semantic publication; reinsertion materializes fresh state. Detaching
-a runtime registration does not destroy a model still owned by the application
-(ADR-024). Reclaim its slot only after both framework leases and application
-ownership end. External live models consume a separately declared finite pool;
-no two-slot bound may be assumed sufficient for arbitrary retained replacements.
-That cardinality and exhaustion behavior are part of B1/B2. Generation
-exhaustion refuses reuse. Application start/stop remains explicitly host-owned.
+Generated custom views and core containers carry the same domain as a type
+argument, not a stored context. Their opaque body witnesses constrain the result
+to that domain and let Swift infer the concrete Body. Stateless primitive values
+are lifted as leaves; stateless custom components retain custom traversal. Never
+remains the leaf Body, so universal `Body.Domain == Domain` is not imposed on all
+Views. A broad Never default must never mask a custom body witness.
 
-### Capture access through Canvas — earlier key-based branch
+Before exposing a facade, validate owner identity, schema, occupied slot,
+allocation generation and read phase. Owned scalar getters then need no repeated
+owner lookup; indexed capture reads still check bounds. Nested aggregates expose
+further scoped facades. A read facade returns no mutable reference, storage
+descriptor, service object or owning ticket.
 
-Keep owned `SignalCapture` values and their snapshot semantics for existing
-Domain/publication APIs. Do not reinterpret that `Equatable, Sendable` value as
-an alias to mutable storage.
+Borrowing a descriptor containing a pointer is not proof of its pointee lifetime.
+The trusted bridge must establish backing ownership, initialization, alignment,
+bounds, disjoint writes and lifetime before constructing a read view. Application
+lowering must reject unchecked aliases and unsupported escaping uses; there is
+no runtime fallback that bypasses this boundary.
 
-Propose a separate internal presentation capture view: a small, read-only borrow
-containing immutable metadata and snapshot revision, valid only under the live
-owner's frozen access scope. Expose it during bound evaluation or a scoped
-Canvas invocation, not as an escaping stored declaration value. SPIKE-069
-demonstrates this distinction for one concrete nonescapable candidate.
-The portable waveform helpers consume that view on all profiles; profile
-storage changes remain below it. A typed application read contract exposes
-metadata and indexed transition values without importing a Runtime module into
-Domain or Presentation. Target composition supplies its storage adapter; the
-16-byte packed record format stays in the target owner. Domain must not learn
-firmware offsets or a runtime lease type. This changes the analyzer's maintained source
-contract and requires SPEC-001 review. It is not an unexplained replacement of
-`viewModel.state.capture` by a different lifetime under the same type.
+### Mutation, State discovery and ownership
 
-The freeze lease spans body expansion, Layout and all Canvas invocations. The
-snapshot cannot change until the last invocation/discard releases its pin.
-Proposed Static Canvas payloads hold an owned typed snapshot key and scalar
-parameters; they retain neither a borrowed view nor a full 404-record capture.
-The key identifies the immutable snapshot selected at declaration, not whatever
-capture happens to be current at invocation. The live owner resolves it and
-supplies a fresh scoped read view for that invocation. Exact checked lowering
-or a revised Canvas contract is still B1/B4; this is not an approved source-
-compatible realization. Ordinary owned captures retain capture-at-declaration
-semantics. Dynamic wrappers would remain bounded and release at the same logical
-point. Drawing plans contain copied geometry, not a capture view, and survive
-through synchronous rendering independently.
+Static models use stable typed storage supplied before activation; Dynamic may
+use retained objects internally but enforces equivalent configured limits and
+outcomes. Keep model schema, owner-instance identity, model allocation generation
+and structural registration/target generation distinct. Detaching a registration
+does not invalidate an independently owned model.
 
-During replacement, old and staged models can require different captures.
-**Proposed architecture change, blocked by ADR-034:** budget an additional
-404 × 16-byte snapshot slot rather than assuming the old
-and replacement values alias the live/admission slots. Four distinct analyzer
-capture slots then cover source-live, admitted, installed-model and staged-model
-storage. On successful replacement swap installed/staged roles; recycle the
-retired slot only after all framework-owned leases and application ownership
-end. The four-slot proposal covers the stated single staged replacement, not an
-unbounded history of externally retained models. Source ownership and
-observation attach/detach remain unchanged. [ADR-034](../adrs/adr-034-five-second-transition-capture.md)
-currently requires exactly three capture slots and states that no fourth buffer
-is introduced. The four-slot branch cannot be adopted through a Spec amendment
-alone: it needs an explicitly reviewed successor/amendment to that decision,
-preserving five-second retention and its other semantics (B0). Any later overlay optimization needs
-its own lifetime evidence and cannot be used to make this initial sum fit.
+A copied model key is nonowning. A live owner must already retain its backing
+before validating the key; checking a generation through freed storage is invalid.
+Owning tickets, frame pins and registration references have explicit bounded
+lifetimes and release paths. Reclaim storage only after every relevant owner and
+reader has ended. Host caches cannot hide independent ownership behind a
+current-root alias or assume observer detachment destroyed a model.
 
-The [SPIKE-069 ownership candidate](../spikes/spike-069-scoped-model-access.md#candidate-ownership-contract-proposed)
-makes the retained-model term explicit: with R distinct detached snapshots
-still application-owned, conservative non-sharing backing needs **4 + R** slots,
-or **(4 + R) × 6,464 bytes**, plus metadata/control. Four slots require a proved
-R=0 for the selected application lifecycle. The experiment models R=1 with five
-slots; it does not select R for either application or approve that reservation.
-Pool exhaustion must precede replacement commit and preserve the old association.
-The subsequent [application ownership audit](../iterations/iteration-003-review/rfc-014-ownership-audit.md)
-identifies retained host/failure/attempt model references and the counter
-replacement requirement. Neither application yet proves R=0; transient retention
-at replacement commit must be included, not just the state after cleanup.
+Observable writes use an exclusive checked mutation route. Validate phase,
+identity, capacity and fallible operation preconditions before modifying data.
+Keep model data separate from registration/dirty and coordinator result storage,
+so synchronous reporting does not overlap a mutable model borrow. Preserve coarse
+model-owned reports, proven no-op omission and existing mutation order. Do not
+add property-read dependency tracking, Combine or Apple Observation.
 
-The counter captures its scalar value by value. It needs no analyzer capture
-pool and must not import analyzer owners.
+A fallible compound capture update needs preflight followed by non-failing commit;
+a complete capture rollback copy is not an unaccounted stack solution. Service
+side effects or admitted mutations are not replayed because later derivation
+fails. Unsupported arbitrary `inout` callbacks or unmanaged reference writes are
+rejected by the supported source/build contract.
 
-### Non-escape boundary — earlier callback branch
+Read scopes end between parent body evaluation and child State discovery. The
+frame's ownership/mutation exclusion persists. Discovery may reserve metadata,
+materialize a new inert model and stage a registration under its dedicated
+authority; it may not mutate an existing frame-visible model. Newly encountered
+State is bound before its body; preserved State ignores repeated initializer
+seeds. This is distinct from ordinary replacement, which remains mutation-phase
+only. Candidate associations publish/discard under SPEC-010's existing rules.
 
-A live lease is an ownership precondition, not a magic safety token. All
-framework callbacks that receive bound state or capture access return only
-status/scalar summaries; no unconstrained generic `Result` can carry the bound
-wrapper out. Explicit owners of transient declarations and staged Canvas
-payloads are registered in the phase ledger and destroyed before lease release.
-Published semantics and interaction records contain no model/capture pointers.
+### Protocol Canvas and capture values
 
-This narrows the framework escape surface but does not make copyable Swift
-values nonescaping. The existing `StaticObservableModelStorage.withBoundState`
-uses `withUnsafeMutablePointer` captured by a read closure and permits generic
-results. SPIKE-069 compiled return, outer-storage and delayed-closure escape
-controls on all four configurations, including a Void callback and a fixed
-typed pointer route. This refutes callback restriction alone as enforcement,
-**not proof of an observed production use-after-free**. B1 requires an actual enforceable borrowing/lowering contract
-and negative controls for every framework-owned route. Unsupported direct State
-wrapper use remains SPEC-010 client misuse; no ordinary lifecycle failure is
-converted into a getter trap. If safety needs a new portable restriction or
-API, expose that change for review instead of assuming source compatibility.
+Canvas refines View with `Body == Never`; concrete authors provide a synchronous
+drawing method receiving checked local bounds and a scoped GraphicsContext,
+without authoring body or traversal. The compiled draw witness additionally
+receives the same domain's scoped read context. Invocation occurs after Layout,
+at most once per occurrence per attempt, in resolved painter order. Local bounds
+have nonnegative checked dimensions; framework translation and clipping retain
+their existing ownership.
 
-### B1 evidence and remaining source decision
+Owned Canvas values stage model identity and bounded scalar/selection payloads.
+They never retain a read facade or copy a full 404-record capture. Each invocation
+binds a fresh scoped read to the exact selected owner/model/generation, not the
+host's current-root route. Model mutation is excluded for the entire attempt's
+model-reading interval; a separate historical snapshot bank is unnecessary.
 
-SPIKE-069's nonescapable borrow compiles on all four configurations with the
-experimental `LifetimeDependence` flag; twenty negative controls reject return,
-outer storage, escaping closure, overlapping mutation and ordinary declaration
-storage. The compiler also warns that the selected `@lifetime` spelling is
-unsupported and recommends the underscored spelling. Production compiler policy
-and exact supported declarations therefore remain open.
+Existing owned Domain `SignalCapture` values retain their independent immutable
+snapshot meaning. A distinct presentation selection/read type is an explicit
+migration, not a silent conversion of that value into an alias. Export of an
+owned full capture needs an explicitly accounted destination and is outside
+body/draw evaluation. Counter scalar values need no analyzer bank.
 
-Using all actual GiftUI declaration sources, an owned body made from scoped
-scalar reads compiles; capturing the borrowed view in today's actual Canvas
-is rejected on all four configurations. Sixteen lifetime-model cases pass in
-each native profile, and Pi/nRF objects compile. These are not actual Semantic
-Core/observable-owner executions or Dynamic class-owner equivalence evidence.
-The section-GC nRF fixture has no retained allocator relocations, but no full
-firmware, application stack or complete ownership proof was produced.
+Drawing produces a complete bounded immutable geometry plan before frame offer.
+Backend consumption does not call client drawing code. Synchronous path-building
+closures may remain; the retained escaping Canvas closure is replaced by the
+protocol value. State writes, suspension, action dispatch and reentrant cycles
+remain forbidden during drawing. Contexts/workspace borrows do not escape.
 
-The [source-design comparison](../iterations/iteration-003-review/rfc-014-source-design-options.md)
-now supplies analyzer/counter source sketches, required lowering, compatibility
-costs and the earlier recommendation to develop explicit scoped APIs. The
-[working direction C](../iterations/iteration-003-review/rfc-014-decision-direction.md)
-now leads further design. The following two alternatives remain comparison
-inputs, not a proof that any generic declarations compile:
+Release every staged value on success or discard, including caller cleanup when
+a producer rejects before acquiring its workspace/payloads. End model-data reads
+after their last body/Canvas use; keep any still-needed registration/model ownership
+until its own retirement point. Owned geometry may survive those reads through
+the synchronous offer; it is not a retained replay display list.
 
-| Candidate | Required design before adoption | Tradeoff / evidence boundary |
-| --- | --- | --- |
-| Preserve portable source through checked finite lowering | Define accepted model/capture uses; diagnose escapes; transform staged captures into pinned keys; prove every generated route and Dynamic equivalence | Preserves the source objective, adds compiler-tooling obligations; A does not refute this, but no such checker/lowerer was built |
-| Expose scoped model reads and snapshot-aware Canvas invocation | Review exact portable State/body/Canvas declarations and compatibility; supply a fresh borrow at invocation from a declaration-selected key | B supports the internal mechanism, but the existing escaping Canvas signature cannot directly carry its borrowed view |
+### Three-bank replacement policy
 
-Scoped reads plus delayed owned keys remain the earlier internal candidate.
-Direction C first tests whether a frame-owned frozen model covers all drawing
-reads without separate Canvas snapshot ownership. No exact public contract is
-approved. None of these candidates permits hidden pre-expanded graphs, an unbounded owner pool, arbitrary unsafe
-backing aliases or unsafe getters after teardown. The next design decision is
-the source-enforcement boundary alongside application ownership/cardinality;
-additional full-image benchmarking cannot decide that API tradeoff.
+Keep ADR-034's source/admission/model backing at **3 × 404 × 16 = 19,392 bytes**.
+The selected analyzer configuration has two bounded model metadata records and
+one model-capture entitlement. An installed analyzer reserves that entitlement
+even while empty. Scalar counter metadata has independent small storage.
+
+The [capacity contract](../iterations/iteration-003-review/rfc-014-capture-policy-choice.md)
+defines the transaction and failure matrix. For populated installed A and inert
+empty candidate B, successful replacement requires explicit transfer of A's last
+owning ticket, no surviving independent A owner/reader, and all metadata,
+registration and generation reservations. Candidate attachment sees B's actual
+empty seed. Guard reservation through commit/discard against reentrant writes,
+frame reads and ownership changes that would invalidate it.
+
+On precommit failure, keep A's data, identity, attachment and dirty state; release
+candidate-only reservations exactly once. On success, activate B, retire A's
+association and release the explicitly transferred final ownership, then make
+the model-bank entitlement available to B. Old bytes need not be cleared: B's
+count/baselines define its empty state and generations reject stale A keys.
+Later derivation/drawing failure keeps the committed B. Required detach hooks
+follow existing invariant-failure rules; there is no invented postcommit rollback.
+
+If an independently retained A prevents transfer, replacement refuses before
+commit. A second populated candidate needs unavailable backing and refuses; an
+empty candidate cannot bypass this check merely to fail its first normal capture
+update. Metadata capacity never implies additional transition capacity. Initial
+materialization may use a candidate that already owns the sole bank when no
+installed analyzer requires it. Source/admission banks are never stolen, and
+there is no implicit sharing, COW, fourth bank or heap fallback.
 
 ### Publication and retirement
 
-| Phase | Live objects / access | Exit obligation |
+| Phase | Access / live storage | Exit obligation |
 | --- | --- | --- |
-| Validate/construct | Backing, immutable limits, typed slots; no active registration or user callback before validation | Account construction temporaries and partial failure |
-| Admit/mutate | Live model, active/sealed facts, optional replacement model/capture; separate dirty/result routes | Apply each accepted fact/action once; consume first mutation failure |
-| Freeze/derive | Installed model and snapshot read lease; candidate bank, path table, payload pools and compiler body temporaries | Preserve old published bank; release all transient declaration owners |
-| Layout/Canvas | Candidate borrowed semantic view, layout, staged captures, Path and accumulating plan | Release each callable/capture after its one invocation, then end capture lease |
-| Preflight/publish | Candidate products and interaction; prior committed routing still valid | Follow SPEC-013 ordering, publish semantics/observable set atomically |
-| Offer/finalize | Immutable drawing plan/layout/render; committed and candidate routing until offer disposition | Synchronous one-shot offer; no semantic rollback; discard/commit routing as governed; clear borrows once |
-| Quiesce/teardown | Stop admission and external producers, wait for active synchronous calls/IRQ handoff, retire registrations | Drop staged callables, invalidate generations, release backing last |
+| Validate/construct | Caller backing, immutable limits, typed slots | Validate before callbacks; account partial construction and shutdown. |
+| Admit/mutate | Installed model, accepted facts/actions, optional bounded replacement | Apply each admitted mutation once; synchronous reports; retain first failure. |
+| Derive | Model mutation excluded; short body reads; candidate records/path/payloads; new-State binding authority | Preserve published bank/live set; end parent reads before child discovery. |
+| Layout/Canvas | Borrowed candidate semantics, layout, staged Canvas and owned plan under construction | One invocation per occurrence; release payloads on success/discard. |
+| Preflight/publish | Complete candidate products and interaction; prior committed routing | Preserve SPEC-013 atomic publication/order and failure classifications. |
+| Offer/finalize | Owned plan/layout/render and governed routing state | Synchronous one-shot offer; no semantic rollback; drop attempt-local state. |
+| Quiesce/teardown | Stop admission/producers and drain active synchronous/IRQ handoffs | Retire registrations, invalidate generations and release backing last. |
 
-Backend refusal retains only existing pending presentation intent. Retry
-rederives from current model state, never from retained declaration/capture
-pointers and never by replaying admitted mutations.
+Backend refusal retains only pending presentation intent. Retry derives from
+current model state; it does not retain model-reading declarations or replay
+already admitted mutations. No lock is required by the selected serialized
+baseline. External facts enter the existing admission owner, not frozen model data.
 
 ## Module Responsibilities
 
 | Owner | Responsibility | Dependency impact |
 | --- | --- | --- |
-| GiftUI / host compiler tooling | Existing declarations, traversal witnesses, bounded Static callable/model adaptation | No runtime owner import or global resolver in GiftUI |
-| GiftUISemanticCore | Expansion, exact identity and borrowed semantic contracts | Runtime supplies storage; Layout still imports Semantic Core one way |
-| GiftUIObservableState | Bind/reconcile/replace/remove and registration outcomes | No Interaction or application import |
-| GiftUIRuntimeCore + profile modules | Sequence owners, own concrete banks/slots/leases and join action target generations | Preserve current acyclic owner graph |
-| GiftUILayout / GiftUIDrawing / Render owners | Existing layout, synchronous Canvas and copied plan/operation meaning | Consume borrowed inputs; no model resolution in Render/backend |
-| Signal Analyzer model/domain adapters | Owned capture versus scoped presentation reads and explicitly bounded snapshot storage | Requires explicit ADR-034 and application contract amendment; four slots alone assume R=0 |
-| Host configuration / target composition | Exact application capacities, backing, validation, activation/quiescence | Counter composition stays separate; no package extraction here |
+| GiftUI / source tooling | Portable declarations, compiled View/Canvas contracts, finite access lowering | No application schema or Runtime lookup in generic GiftUI. |
+| Application schema / Presentation | Typed fields/read requirements, computed semantics, domain-parameterized compiled views | Authored framework import remains GiftUI; generated schema has no Runtime/backend dependency. |
+| GiftUISemanticCore | Actual expansion, exact structural identity, borrowed semantic outputs | Runtime supplies storage; Layout consumes Semantic Core one way. |
+| GiftUIObservableState | Logical State binding, registration, replacement/removal outcomes | No Interaction/application import; model data and registration remain separate. |
+| RuntimeCore / profile bridge | Phase coordination, concrete slots/banks/tickets, checked access and action generations | Preserve the accepted acyclic owner graph and cross-profile outcomes. |
+| Layout / Drawing / Render | Existing layout, post-layout drawing, owned geometry and operation meaning | No model resolution in Render/backend. |
+| Analyzer Domain / target adapter | Independent owned capture values and separate scoped presentation access; packed decoding below portable code | No firmware offsets or runtime leases in Domain. |
+| Host / target composition | Application capacities, backing lifetime, services, activation/quiescence | Counter does not acquire analyzer storage; no package extraction here. |
 
 ## Public API Impact
 
-Retain ordinary `View.body`, typed Button actions and common portable semantics.
-Direction C intentionally changes concrete closure-based Canvas into a protocol
-with explicit context/bounds invocation. Its proposed observable property wrapper
-uses stable versioned storage; spelling, initialization and read-context binding
-remain open. It is not automatically Apple's `@Published` semantics or a Combine
-dependency. Review compatibility against ADR-024/025/026/028 and SPEC-010/012.
-Current source remains authoritative until the required decisions and contracts
-are approved. Neither property storage nor Canvas replacement is a private
-implementation-only change.
+Keep authored `var body: some View`, model-property reads, `@State` identity and
+typed actions. Replace closure-based Canvas with the protocol drawing surface.
+Observable field annotations/schema generation may use @Published-like spelling;
+exact names belong to the Spec and do not imply publishers or Combine semantics.
+Ordinary computed properties use checked typed inputs; arbitrary mutable external
+references are not made frame-stable merely by looking like a property read.
+
+The supported build performs finite source transformation for both profiles.
+The compiled contextual View witness differs from today's getter ABI. This is
+not a macro-only promise, unchanged binary ABI, general Swift compiler, or claim
+that the complete lowerer already exists. The current counter/analyzer
+[source inventory](../../experiments/spike-072-contextual-traversal-integration/application-coverage.md)
+is the required implementation corpus. New unsupported effects/escapes fail the
+build deterministically rather than silently selecting an unsafe path.
 
 ## Capabilities Impact
 
-No capability, negotiation rule, default or fallback changes. Capacity and
-lifetime rejection remain focused-owner failures; zero heap is a construction
-constraint, not an optional capability.
+No capability negotiation, absence behavior, default or fallback changes.
+Capacity and access rejection remain focused-owner outcomes. Zero heap on the
+Static target is a requirement, not an optional capability.
 
 ## Backend Impact
 
-Keep the existing one-shot operation stream, RGB565 raster/session/display
-owners and target transport. No framebuffer, async queue, damage policy or SPI
-rate change is proposed. The 4 MHz transfer lower bound remains an iteration
-blocker independent of runtime representation.
+Preserve one-shot operation streaming, RGB565 raster/session/display owners and
+transport. No asynchronous queue, framebuffer strategy, damage policy or SPI
+rate change is selected. The known 4 MHz performance issue is independent
+iteration work, not a reason to reopen this model-access investigation.
 
 ## Static / Embedded Impact
 
-Fixed typed stores and finite generated code replace retained nested declaration
-aggregates. This still needs supported nRF hard-float compilation, zero forbidden
-symbols, exact source ownership and actual ARMv6 composition. Static macOS
-execution is a semantic control, not nRF stack evidence. Existing I3-T01 deadlines,
-20-event catch-up bound and Layout-to-Render scratch transition remain intact.
+Static uses finite typed storage and specialized dispatch; Dynamic enforces the
+same configured failure and publication behavior. Host phase checks are not a
+substitute for safe backing lifetime, zero heap or target ABI verification.
+
+The initial implementation baseline is the already tested project-local Swift
+6.3.2 configuration with `LifetimeDependence` and `Lifetimes` and its internal
+lifetime annotations. This dependency is explicit: generated/internal access
+code may require those compiler features; authored application source does not
+expose them. Implementation must pin/check the supported tools and fail clearly
+when required features are unavailable. No global compiler change, newer Swift
+associated-type feature or unchecked fallback is implied. Exact build integration
+and all escape diagnostics are Spec/implementation acceptance work; a compiler
+change that forces different public semantics returns for a decision.
 
 ## Performance
 
-SPEC-006 requires linear expansion work. Record/path append and paired trie
-reconciliation are proposed to cost O(N × K), with fixed supported child-fanout
-bound K; emitted code and complete path-prefix counts must substantiate it.
-An all-pairs O(N² × D) identity scan is excluded from this design. No performance
-win is inferred solely from fewer copies. Body-return temporaries, repeated
-identity decoding and specialization remain measurement obligations. Profile
-phase accounting must include derivation, Layout, Canvas, preflight and physical
-offer without double-counting nested timing intervals.
+Preserve SPEC-006 linear expansion: paired path-trie traversal costs O(N × K)
+with fixed bounded child fanout K, not an all-pairs O(N² × D) scan. Prove the
+finite vocabulary/fanout and charge its scratch in implementation. No speedup is
+inferred solely from avoiding copies. Account body temporaries, indirect calls,
+specialization and identity processing as well as explicit record buffers.
 
-The analyzer must still satisfy 80 events/s for 30 seconds and four-FPS cadence.
-Counter has its finite action/pixel workload, not that acquisition requirement.
-Preserving operation-major 4 MHz transfer cannot meet the analyzer frame target;
-no CPU optimization in this proposal removes that necessary-condition failure.
+Measure derivation, Layout, Canvas, preflight and offer without double-counting
+nested intervals. Existing source deadlines, catch-up bounds and scratch
+transitions remain. The analyzer's 30s/80-events-per-second/four-FPS requirements
+and the counter's separate finite workload remain acceptance gates. This RFC
+does not claim that CPU optimization solves a transport lower bound.
 
 ## Memory / Binary Size
 
-The following is the **earlier key-based branch's proposed reservation model**;
-direction C requires a fresh mapping of logical versions to physical backing.
-It establishes neither approved limits nor measured consumption, a complete
-codec, or a safe-stack finding. Extra pools are explicitly
-charged; no implicit use of leftover platform RAM is permitted.
+The selected capture reservation is three banks; earlier four/five-bank totals
+are rejected alternatives, not a new budget. Complete image limits continue to
+come from approved SPEC-001/013/015. The old conditional 120,928-byte estimate is
+not a measured image, approved limit or allocation plan and is not carried forward.
 
-| Analyzer frame-store family | Proposed bytes | Basis / unresolved detail |
-| --- | ---: | --- |
-| Candidate + published occurrence records | 8,064 | 2 × 126 × 32; codec must cover all typed variants |
-| Candidate + published exact path entries | 3,024 | 2 × 126 × 12; count of prefixes must be proven, not equated with endpoints |
-| Candidate + published payload pools | 8,192 | 2 × 4,096, including owned text and modifier payloads; adequacy unproved |
-| Layout + Render/text | 7,840 | Existing 3,136 + 4,704, including I3-T01 indexes during Layout only |
-| Canvas / Path / drawing plan | 16,976 | Existing 160 + 3,280 + 13,536; snapshot-key/scalar payload and invocation bookkeeping fit remain B2 |
-| Observable + Interaction | 768 | Existing 256 + 512; copied exact committed keys may require an explicit increase |
-| Active/sealed admission | 7,680 | Existing 2 × 3,840, never aliased to snapshots |
-| Pointer / coordinator / failure | 384 | Existing 96 + 192 + 96; expanded lease bookkeeping fit must be verified |
-| Record/path construction scratch | 512 | Proposed; excludes Swift call-stack/body temporaries |
-| **Frame-store subtotal** | **53,440** | Conditional on all fit obligations above |
-| Four capture slots | 25,856 | 4 × 404 × 16; includes replacement snapshot |
-| Typed model/control slots | 1,024 | Proposed live/replacement metadata and routes; externally retained retired models need an additional accounted bound |
-| Raster/payload/coverage backing | 2,720 | Existing 2,560 + 160; aliases counted once |
-| Main / IRQ stack | 29,696 | Existing 27,648 + 2,048; guards belong in remaining bytes |
-| Remaining platform/globals/alignment | 8,192 | Proposed ceiling requiring exact ELF inventory |
-| **Conditional total** | **120,928** | Under 196,608 application ceiling arithmetically; no safety proof |
+[SPIKE-074 layout evidence](../../experiments/spike-074-final-access-ownership/evidence/result.md#f3--concrete-incremental-storage)
+measures the representative mechanism:
 
-Do not silently increase any conditional row if it fails. Revise the reservation
-proposal and dependent contracts explicitly. The extra replacement snapshot is
-a proposed change to ADR-034 as well as SPEC-001/013/015's exact three-slot
-capture reservation; existing authority wins until explicitly changed.
-The table assumes R=0. For a non-sharing analyzer pool with R retained detached
-snapshots, add at least **6,464 × R** transition bytes plus additional model,
-lease and control metadata; the existing 1,024-byte row is not automatically
-sufficient. SPIKE-069's five-slot fixture is evidence about one ownership
-sequence, not permission to add this term to the approved budget.
-The table is incomplete if either application can retain more model/capture
-backing than its stated live/staged allowance; B2 must establish the actual
-finite bound and charge it before approval. The 95,104-byte I3-T01 linked RAM is
-a generated-graph baseline, not a prediction.
+| Storage | Native arm64 bytes | ARMv6 / nRF bytes |
+| --- | ---: | ---: |
+| Three transition banks | 19,392 | 19,392 |
+| Two analyzer descriptors | 272 | 248 |
+| Owner control | 72 | 44 |
+| Two model keys | 24 | 24 |
+| One staged Canvas | 24 | 16 |
+| Descriptor/control/key/Canvas subtotal | 392 | 332 |
+| Independent counter scalar slot | 1 | 1 |
 
-For the counter, propose ceilings of 8,192 frame-store bytes, 1,024 model/control,
-2,720 raster/coverage, 8,192 main stack, 2,048 IRQ and 8,192 platform/guards:
-**30,368 bytes** total. Provisional logical bounds are 32 identities/scopes,
-16 path levels, one root model plus replacement staging, two actions, one Canvas
-and 32 text scalars. Every count must be derived from its complete portable
-hierarchy and all ten states before approval; these are not borrowed analyzer
-capacities or validated counter contracts.
+These are fixture layout observations, not production allocations. Registration,
+host tickets, actual payload counts, text, paths, graph banks, read/body stack,
+IRQ overlap, construction/service/teardown and alignment all still need accounting.
+Do not charge a key or descriptor twice when it belongs to an existing pool;
+do not count missing costs as zero. Separate application-owned retention and
+metadata bounds must be explicit even though transition bytes stay fixed.
 
-Both nRF images retain the 1,048,576-byte flash ceiling and zero heap. Dynamic
-allocation/peak-memory budgets need a matched runtime-derived application control;
-source arithmetic cannot invent one. Full feasible-path stack analysis includes
-construction, replacement, callback chains, recursive SCC bounds, indirect target
-sets, finalization and IRQ overlap. I3-T01's 360-byte local raster frame is only
-one term. Observed stack high-water supplements, never replaces, the bound.
+The earlier proposed 1,024-byte model/control allowance and provisional counter
+limits require per-application Spec validation before implementation relies on
+them. A changed physical limit needs the normal reviewed Spec amendment; exceeding
+an accepted architectural bound returns for decision. Neither fixture arithmetic
+nor a generated-graph baseline predicts complete-image feasibility.
+
+Target objects contain allocator references. Final linking, rooted allocation
+reachability, complete feasible-path stack bounds and matched Dynamic allocation
+costs remain mandatory. Static keeps its zero-heap requirement and the applicable
+RAM/flash limits. Stack high-water observations supplement, not replace, bounds.
 
 ## Alternatives
 
-| Alternative | Benefit | Cost / disposition |
+| Alternative | Benefit | Disposition / cost |
 | --- | --- | --- |
-| Runtime-emitted records with scoped model/capture access | Explicit ownership, avoids retaining full body tree and large capture copies | Recommended direction for contract work; safety/codec/stack proofs open |
-| Retain expanded typed aggregate through Layout/Canvas | Strong ordinary Swift typing; fewer custom codecs | Archived large-copy/stack failures apply to exact past images; compiler behavior and complete lifetime proof still required; not assumed impossible |
-| Keep exactly three capture slots, stage replacement without an extra snapshot | Preserves ADR-034 and saves 6,464 bytes | Must prove where old, admitted and candidate values live through attach failure and externally retained model lifetime; no safe overlay is established here |
-| Keep owned snapshot values in each declaration | Simple independent lifetime and existing API semantics | Large Static copies/body temporaries; useful semantic oracle, not assumed to fit |
+| Selected runtime records, typed scoped reads and protocol Canvas | Keeps runtime topology, inferred Body, explicit lifetimes and three banks | Requires source lowering, owner integration and full implementation conformance. |
+| Retain an expanded typed declaration tree through drawing | Ordinary Swift values, fewer codecs | Large aggregate/capture copies and stack costs in earlier images; not selected for this runtime representation. |
+| Keep separate copied frozen model versions | Independent version lifetime | Unnecessary under serialized mutation exclusion; adds capture storage and ownership work. |
+| Four banks for two populated analyzer models | Permits additional replacement/retention scenarios | Maintainer selected three-bank bounded refusal; extra capacity would need a new ADR-034 decision. |
+| Explicit user-facing scoped-read APIs | Makes access arguments visible without hiding transformation | Changes the selected authoring surface; retained as earlier comparison, not this design. |
+| Keep owned full captures in every declaration | Simple independent value semantics | Remains valid at explicit Domain export boundaries, but is not the scoped presentation representation. |
 
 ## Rejected Approaches
 
-Generated pre-expanded topology as the delivered graph violates IT-AC-006.
-A global resolver violates the existing module/state constraints. Merely
-checking generation through a potentially freed pointer does not make access
-safe. Reusing a revision's ordinal as persistent structural identity violates
-SPEC-006. These exclusions follow existing requirements, not new approval.
+Pre-expanded production topology violates runtime derivation. Global/task-local
+resolvers violate dependency/access constraints. A potentially freed pointer does
+not become safe through generation checks. Callback restrictions alone do not
+prevent copyable wrappers escaping. Arbitrary retained-owner revocation, hidden
+bank overlays and capacity fallback violate the chosen ownership/resource policy.
+Manual frontend reconstruction of every Body type is unnecessary for the tested
+fixed-domain design. Making all custom views Never leaves to bypass inference is
+incorrect dispatch and is excluded.
 
 ## Compatibility
 
-Do not remove the generated production path until runtime behavior, exact
-resource limits and supported builds pass approved replacement gates. Generated
-fonts, bounded model/callable source lowering and typed role tags may remain;
-a production-input audit must distinguish them from forbidden graph outputs.
-No ABI stability or external package surface is established here. Existing
-accepted ADRs and implemented Specs remain unchanged until normal approvals.
+Preserve ADR-006/008/011/024/025/026/032/033 ownership and behavior; this RFC does
+not supersede them. Preserve ADR-034's three banks and capture semantics. Extract
+an explicit Canvas representation decision against ADR-028's closure wording
+while preserving its timing, local context, occurrence order and plan lifetime.
+
+| Contract family | Required downstream work |
+| --- | --- |
+| SPEC-006 / SPEC-007 | Contextual View/traversal declarations and runtime-owned record/identity inputs while preserving semantic/layout ownership. |
+| SPEC-010 / SPEC-011 | Checked schema binding, model ownership/generations, bounded replacement and failure routing; preserve state/action semantics. |
+| SPEC-012 / ADR-028 | Replace retained Canvas closure realization with protocol values and scoped draw witnesses; preserve the existing drawing lifecycle. |
+| SPEC-001 | Explicit analyzer presentation-capture type migration and complete source/action/capture behavior. |
+| SPEC-013 / SPEC-015 | Exact profile storage, capacities, offsets, lifetimes, costs and configuration/conformance evidence. |
+
+Retain the generated production path until replacement gates pass. Generated
+fonts, type roles and finite access code may remain; graph output may not. No
+external ABI stability or outside-package eligibility is established here.
+Application-specific target files/offsets stay below portable declarations.
 
 ## Testing Strategy
 
-C's [contract controls and proposed proof recipe](../iterations/iteration-003-review/rfc-014-c-contract.md#7-contract-controls-for-the-next-proof)
-add coherent multi-field freezing, unchanged-field preservation, new State
-materialization, context-injection/failure transport, protocol-witness selection,
-foreign/stale frame keys and retained-former first-excess cases. These are future
-controls, not executed tests or authorization to run another Spike.
+The [terminal SPIKE-074 result](../../experiments/spike-074-final-access-ownership/evidence/result.md)
+supports six separate compiled module boundaries on four configurations, 47 checks
+in each native selection, eight intended escape/exclusivity rejections and target
+layout/ABI observations. It used 48/48 invocations and one case-order repair.
+The native selections use the same bounded bridge, not actual runtime-profile
+integration; target objects were not linked/executed. Hand-written lowered forms
+are not proof of the source transformer or complete application coverage.
 
-- Independent structural path and modifier-order corpus, branch/optional shape
-  changes, declaration insertion that shifts record indices, and exact first-
-  excess limits. Source perturbations must change runtime output without graph
-  generation. Canonical fixtures may contain expected trees; production may not.
-- State preservation, replacement attach failure, replacement then derivation
-  failure, published removal/reinsertion, stale action target and generation
-  exhaustion. Verify prior committed routing after offer refusal.
-- Capture-at-declaration meaning, concurrent source admission while frozen,
-  zero/multiple Canvas occurrences, and cleanup on every preflight/failure edge.
-  Poison retired storage in host tests; audit/compiler-negative escape controls
-  must cover the actual supported binder and every generated callable case.
-- Separate module builds, target ABI/heap inspection, exact storage offsets and
-  exclusive lifetimes; capacity tests cannot substitute for compiled stack proof.
-- Both applications on four configurations, current independent semantic/action/
-  pixel oracles and complete owner drivers. Connected sustained-workload and
-  stack observations remain separately authorized operations.
+Implementation acceptance must cover:
+
+- Actual declaration/branch perturbations, exact identity and modifier order,
+  first-excess capacities, state preservation and published-bank reuse.
+- All supported counter/analyzer source routes, helper/short-circuit order,
+  typed failure transport, computed/nested reads and compound write preflight.
+- Actual owner tickets and pointer lifetimes, nested State discovery, initializer
+  behavior, replacement success/refusal, attach/detach/report errors, generation
+  exhaustion/reuse, removal/reinsertion and stale action routing on both profiles.
+- Zero/multiple Canvas occurrences, exact model selection, postcommit failure,
+  source/admission isolation, early draw rejection and every cleanup/teardown path.
+- Complete linked resource/allocation/stack proof and independent semantic/action/
+  pixel comparisons on the four configurations. Connected workload evidence
+  requires its existing explicit hardware authorization.
 
 ## Risks
 
-The compiler may allocate captured routes, copy a large model despite a handle
-facade, or create oversized body temporaries. Exact identities may cost more
-than the proposed path/interaction reservations. Replacement needs simultaneous
-old/new storage. Pointer poisoning cannot prove absence of all escapes. None
-of these risks is resolved by the conditional RAM sum.
+Source lowering is substantial engineering work and may expose unsupported source
+forms. Compiler features and specialization may change code size or escape
+behavior. Exact path/payload counts or indirect/recursive stack costs may exceed
+provisional estimates. Real host callbacks may retain owners absent from the
+fixture. Implementation must expose these as failed acceptance cases with exact
+causes; it must not change the contract silently or automatically open new research.
 
-## Implementation acceptance obligations (formerly open investigation questions)
+## Open Questions
 
-The terminal SPIKE-074 result routes these obligations through the
-[implementation handoff](../iterations/iteration-003-review/rfc-014-implementation-handoff.md).
-They remain mandatory before adoption; they are not allowances for more research.
+No architectural choice remains open after final review. Exact API spelling,
+source-lowering mechanics, layouts and error-code mappings are Specification
+work within the decisions above. Actual production feasibility remains unproved
+and cannot be labeled implemented/conformant until acceptance passes.
 
-| ID | Obligation | Required resolution |
+| Former question | Resolution | Remaining owner |
 | --- | --- | --- |
-| B0 | Selected three-bank ownership policy | Finite transfer/refusal demonstrated in SPIKE-074. IH-3 integrates actual owners, guarded callbacks, rollback and generation reuse; IH-6 accounts complete costs. No fourth bank or retained-owner revocation. |
-| B1 | Typed access and ownership enforcement | SPIKE-074 supports fixed schema domains, inferred Body, nested facades and separate modules. IH-1 adopts the exact compiler/API policy through normal gates; IH-2/3 implement complete lowering and actual owner/pointee lifetime. No full no-escape or zero-heap proof follows from fixture controls. |
-| B2 | Complete record/payload/path/model storage | Measured fixture layouts are inputs, not complete runtime pools. IH-3/4 realize bounded codecs, exact paths, payloads, tickets and every failure edge; IH-6 charges all byte rows. Prior K=2/F=1 fixtures do not authorize additional banks. |
-| B3 | Complete supported-image resource/performance conformance | IH-6 links and measures actual images, bounds stack/IRQ/construction/teardown, proves required zero heap and matched Dynamic costs. Object allocator references and unknown costs remain explicit until resolved. |
-| B4 | Supported source lowering and application migration | IH-2/4/5 cover the existing counter/analyzer inventory, helper/effect grammar, typed failures, generated producer retirement and complete conformance. Representative module validation is not a complete frontend. |
+| B0, capture capacity | Three-bank bounded refusal selected; representative transaction validated. | IH-3 actual ownership integration, IH-6 complete costs. |
+| B1, typed access / Body | Fixed schema domains and scoped facades; representative compiled inference/module boundary validated. | IH-1 exact contracts/compiler integration, IH-2/3 production enforcement. |
+| B2, complete storage | Bounded separate pools and ownership model selected; representative layouts measured. | IH-3/4 exact realization, IH-6 total accounting. |
+| B3, full image / Dynamic cost | Remains required implementation acceptance, not a further architecture experiment. | IH-6 linked/stack/allocation/performance evidence. |
+| B4, full source / migration | Finite source transformation selected; representative forms validated and inventory fixed. | IH-2/4/5 full lowering, migration and conformance. |
 
-No unresolved architectural assumption failed the final bounded package.
-B0–B4 remain adoption/acceptance gates assigned above, not open-ended
-investigations. RFC/ADR/Spec approval is still required before production work.
-The preserved 4 MHz failure is an additional **iteration performance blocker**,
-not evidence that record emission is intrinsically impossible. Resolving it
-requires a separately selected transport/rendering or requirement decision.
+The separate 4 MHz iteration performance issue remains unresolved outside this
+RFC's scope; no display or requirement decision is made here.
 
 ## Deferred and Follow-up Work
 
-Eugene's subsequent “Let's do it” authorizes
-[SPIKE-072](../spikes/spike-072-contextual-traversal-integration.md): provisionally
-pursue mandatory source transformation and test actual contextual traversal and
-drawing integration. This is bounded evidence work, not RFC approval or adoption
-of the compiler flags, changed View contract or proposed five-bank budget.
-The experiment is now completed with supported finite integration and explicit
-application coverage gaps; its terminal report retains the repair-limit deviation.
+The [implementation handoff](../iterations/iteration-003-review/rfc-014-implementation-handoff.md)
+contains IH-1–6 prerequisites and acceptance evidence. After RFC approval, extract
+ADRs, approve affected Specs and derive ready implementation plans. Full source
+migration, production integration, conformance and image measurements belong
+there. No new Future Work item hides a current requirement.
 
-The authorized [contextual evaluation design](../iterations/iteration-003-review/rfc-014-contextual-evaluation.md)
-is now delivered with [CE-1–CE-7 review findings](../iterations/iteration-003-review/i3-t02-design-review.md#contextual-evaluation-design-review--2026-10-10).
-It proposes the production contract and explicit compatibility cost; it runs no
-new experiment and approves no compiler flags, storage budget or architecture.
-All integration/enforcement questions remain current B1/B4 blockers.
-
-Eugene separately authorized [SPIKE-071](../spikes/spike-071-canvas-embedded-escape-continuation.md)
-for the assertion correction and missing Embedded/escape/resource checks. It
-completed with a supported recommendation for the bounded mechanism: 40/48
-calls, 2/3 repairs, four-profile positives and 24 valid negative controls. The
-rooted nRF fixture has no allocator relocations and retains five indirect drawing
-sites. Earlier terminal evidence stays intact. Next specify production contextual
-View evaluation/failure transport and binding coverage; the generic escape matrix
-need not be repeated without a changed candidate. No further run is authorized.
-
-Eugene separately authorized [SPIKE-070](../spikes/spike-070-protocol-canvas-versioned-access.md)
-on 2026-10-10 for C-P1/C-P2. It completed **inconclusive**, using 11 of 48
-invocations and both repair rounds before the 90-minute deadline. Both native
-profiles pass 21 fixture checks and ARMv6 compiles; Embedded rejects two throwing
-assertions and the escape/resource matrix is unrun. No production or connected
-work occurred. A further proof needs separate bounded authorization; neither
-this result nor unused invocation/time budget reopens a terminal Spike.
-
-The later SPIKE-071 supplies the previously missing Embedded checks without
-changing that historical result. Next contract work remains the contextual View
-evaluation/failure seam, complete finite read/helper/current-write coverage and
-experimental compiler policy. No current blocker is deferred.
-
-No correctness or feasibility question above is deferred. RFC-013 and approved
-iteration 4 already own external API/package/setup decisions; revisit after
-runtime contracts stabilize. Existing FW-035 owns future generated frontends;
-it cannot serve as the runtime-derivation implementation. No stopped experiment
-is resumed. The separately authorized
-[SPIKE-069](../spikes/spike-069-scoped-model-access.md) completed B1 escape controls
-and recorded a proposed finite model/snapshot ownership contract. Its compiler
-counterexamples and bounded positive evidence inform the source decision above.
-B1/B2 remain
-blockers here; the Spike does not approve a buffer count, portable API change
-or production migration, and its allowance does not renew earlier budgets.
+SPIKE-069–074 are terminal evidence. Their budgets are closed; no successor is
+queued. Earlier copy-freeze/current-version ledgers and expanded-Body experiments
+remain historical records, not competing current requirements. RFC-013 and
+iteration 4 retain external delivery work, triggered by stabilized runtime
+contracts. General future frontends remain outside this finite application scope.
 
 ## Decision Summary
 
-If the blockers are resolved and this RFC is approved, proposed ADR extractions
-are (1) runtime records with exact cross-revision identity and publication,
-and (2) frame-scoped versioned model/property ownership. Direction C additionally
-requires an explicit Canvas representation decision against ADR-028 and the
-closure-specific SPEC-012 contract. Final ADR boundaries follow the reviewed
-choices, not provisional API names. The earlier proposed
-four-slot branch additionally needs an explicit ADR-034 successor/amendment
-preserving five-second retention; it cannot be approved as a private storage
-change. Preserve
-ADR-006/024/025/026/032/033; identify any actual amendment rather than implicitly
-superseding them. Exact API declarations, codecs, capacities and error mapping
-belong in affected Specification amendments, then per-Spec implementation plans.
+Extract these independently reviewable decisions after RFC approval:
+
+1. Runtime-emitted bounded semantic records, exact cross-revision identity and
+   publication/retirement, preserving Semantic Core/Layout/Interaction ownership.
+2. Fixed-domain scoped model/property access, stable owned storage, finite source
+   transformation and checked mutation, preserving State/invalidation semantics.
+3. Protocol Canvas values with Body == Never and scoped post-layout invocation,
+   replacing ADR-028's retained-closure realization while preserving its lifecycle.
+
+The selected three-bank capacity/refusal policy is part of the ownership decision;
+it does not require an ADR-034 storage amendment. Exact declarations and resource
+limits follow in the affected Specifications. RFC finalization alone accepts no
+new ADR, changes no production code and closes no implementation acceptance gate.
 
 ## References
 
-- [Current activity plan](../iterations/iteration-003-review/memory-efficiency-plan.md)
-  and [iteration-3 scope](../iterations/iteration-003-dev-ux-improvement.md).
-- [Prior candidate and 32 MHz review](../iterations/iteration-003-review/candidate-go-no-go.md),
-  retained as historical evidence rather than resumed work.
-- [State implementation](../../Sources/GiftUI/ObservableState.swift),
-  [Static binding](../../Sources/GiftUIRuntimeStatic/StaticObservableModelStorage.swift),
-  [Semantic traversal](../../Sources/GiftUISemanticCore/GiftUISemanticCore.swift).
-- [Analyzer view](../../Sources/SignalAnalyzerPresentation/SignalAnalyzerView.swift),
-  [owned capture](../../Sources/SignalAnalyzerDomain/SignalValues.swift),
-  [existing snapshot view](../../Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFCaptureSnapshotView.swift),
-  [profile regions](../../Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFProfileRegions.swift).
-- [Counter workload](../explorations/exp-002/preparation-2026-10-05/consumer-study.md);
-  external-study requirements remain distinct from iteration-3 composition.
-
-The final [SPIKE-074](../spikes/spike-074-final-access-ownership.md) result and
-[implementation handoff](../iterations/iteration-003-review/rfc-014-implementation-handoff.md)
-close the investigation track. Earlier Spike allowances and dispositions above
-remain historical; none authorizes a successor or production migration.
+- [Final review and finalization record](../iterations/iteration-003-review/rfc-014-final-review.md).
+- [Current iteration plan](../iterations/iteration-003-review/memory-efficiency-plan.md)
+  and [approved iteration-3 scope](../iterations/iteration-003-dev-ux-improvement.md).
+- [Typed access contract](../iterations/iteration-003-review/rfc-014-typed-access-contract.md),
+  [three-bank ownership contract](../iterations/iteration-003-review/rfc-014-capture-policy-choice.md),
+  [ownership audit](../iterations/iteration-003-review/rfc-014-ownership-audit.md).
+- [SPIKE-074](../spikes/spike-074-final-access-ownership.md) and its
+  [terminal result](../../experiments/spike-074-final-access-ownership/evidence/result.md).
+- Historical [SPIKE-069](../spikes/spike-069-scoped-model-access.md),
+  [SPIKE-070](../spikes/spike-070-protocol-canvas-versioned-access.md),
+  [SPIKE-071](../spikes/spike-071-canvas-embedded-escape-continuation.md),
+  [SPIKE-072](../spikes/spike-072-contextual-traversal-integration.md),
+  [SPIKE-073](../spikes/spike-073-fixed-context-body-inference.md): evidence applies
+  only to each exact candidate, not to the full final implementation.
+- Historical [source comparison](../iterations/iteration-003-review/rfc-014-source-design-options.md),
+  [working direction](../iterations/iteration-003-review/rfc-014-decision-direction.md),
+  [copy-freeze contract](../iterations/iteration-003-review/rfc-014-c-contract.md),
+  [storage ledger](../iterations/iteration-003-review/rfc-014-c-storage-ledger.md) and
+  [contextual design](../iterations/iteration-003-review/rfc-014-contextual-evaluation.md).
+  The prior accumulated RFC text is preserved in Git at `e2839fb3`; this final
+  document supersedes conflicting recommendations in those supporting drafts.
