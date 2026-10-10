@@ -1,0 +1,70 @@
+{
+  "tested_source": "fec8a27cf6cf0ae679a1e34ebb90738e8d592f85",
+  "verification": "PASS",
+  "routes": [
+    {
+      "spec": "SPEC-007",
+      "profile": "macos-static",
+      "receipt_sha256": "f5fb39f347ffcc7fe28ca23e9650906f48a7899b99494379245fb8548c21db88",
+      "inputs_verified": 60,
+      "artifacts_verified": 67,
+      "status": "PASS"
+    },
+    {
+      "spec": "SPEC-007",
+      "profile": "macos-dynamic",
+      "receipt_sha256": "276d6505ff7446128f58b3edad70a1c7ce479a46a77306eefb84127c036dccaa",
+      "inputs_verified": 60,
+      "artifacts_verified": 67,
+      "status": "PASS"
+    },
+    {
+      "spec": "SPEC-007",
+      "profile": "raspberry-pi-armv6",
+      "receipt_sha256": "0b512fd1da3b37c93a799e4edb8fc751bb7e4760481f4bd4dae8592d2b50034b",
+      "inputs_verified": 60,
+      "artifacts_verified": 54,
+      "status": "PASS"
+    },
+    {
+      "spec": "SPEC-007",
+      "profile": "nrf52840-embedded",
+      "receipt_sha256": "bd599b2f25938df4e830f798974c0e2783af01b01d60e695e7ca75e9b059f727",
+      "inputs_verified": 59,
+      "artifacts_verified": 49,
+      "status": "PASS"
+    },
+    {
+      "spec": "SPEC-011",
+      "profile": "macos-static",
+      "receipt_sha256": "75127936c93794bdc1dd1d2eefeb0c4cf46675fa84ce2d94fcb01c454dbd62a0",
+      "inputs_verified": 88,
+      "artifacts_verified": 74,
+      "status": "PASS"
+    },
+    {
+      "spec": "SPEC-011",
+      "profile": "macos-dynamic",
+      "receipt_sha256": "7c030fe5c38ff0248c91798d7e1424f97a8bfd503ef8b2bb6f8245cad68aa854",
+      "inputs_verified": 88,
+      "artifacts_verified": 74,
+      "status": "PASS"
+    },
+    {
+      "spec": "SPEC-011",
+      "profile": "raspberry-pi-armv6",
+      "receipt_sha256": "d329b371b0e02de7271a580213cb0c8f82b6652d7b80c283365530ce9f5cb4ed",
+      "inputs_verified": 88,
+      "artifacts_verified": 60,
+      "status": "PASS"
+    },
+    {
+      "spec": "SPEC-011",
+      "profile": "nrf52840-embedded",
+      "receipt_sha256": "f713766c914dfa52983614006eb0c6ff40504b79e78d96d86e0996bcb85ad868",
+      "inputs_verified": 86,
+      "artifacts_verified": 55,
+      "status": "PASS"
+    }
+  ]
+}
