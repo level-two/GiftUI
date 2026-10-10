@@ -160,7 +160,7 @@ body syntax or make the frontend spell every Body type. A fixed scalar context
 still does not settle a schema-independent portable context across real modules.
 The experimental lifetime flags are evidence configuration, not adopted policy.
 
-### SR-Q3 — property access: reduced, still a design blocker
+### SR-Q3 — property access: draft contract selected, integration unproved
 
 Version selection is gone: the property need not choose between current and
 historical frame banks. Lifetime and write authority remain independent of that
@@ -187,13 +187,15 @@ remains useful for computed properties, nested aggregates, loops, mutation and
 helper effects; its frozen-bank and manual Body-derivation assumptions are no
 longer requirements. No complete frontend is built by this package.
 
-Next design seam: specify typed property access and mutation authority against
-that inventory, including where the fixed context type lives without a Runtime
-import in portable declarations. Any app-specific context ABI, runtime erasure,
-per-conformance context family or new ownership ticket must be explicit. Do not
-mistake this scalar fixture for an answer to that module/schema question.
+Follow-up disposition: the [typed access contract](rfc-014-typed-access-contract.md)
+now defines that boundary: application-generated schema protocols, a domain fixed
+per compiled View conformance, concrete nonescapable facades, compiler-derived
+Body, typed capture selections and checked writes. Its matrix maps the real
+counter/analyzer source routes. This settles the draft contract direction, not
+cross-module compilation, complete lowering, pointer lifetime or physical costs.
+Those remain B1/B2/B4 engineering gates; no public syntax decision is pending.
 
-### SR-Q4 — storage: copy term removed; retention policy remains open
+### SR-Q4 — storage: three-bank policy selected, ownership proof remains
 
 | Simultaneous capture reservation | Previous candidate | Stable-read candidate, same K=2 non-sharing assumption |
 | --- | --- | --- |
@@ -210,23 +212,31 @@ by ADR-034. The [ownership audit](rfc-014-ownership-audit.md) still identifies
 independent host caches and retained application owners; removing a frame copy
 does not release them or authorize revocation.
 
-B0 now concerns a concrete choice: either prove a three-bank realization with
-explicit replacement/retention/admission lifetimes, or propose an ADR-034 storage
-amendment with complete resource evidence. Simply imposing R=0, revoking former
-owners, or declaring a staging overlay safe would silently change semantics.
+Follow-up disposition: Eugene explicitly selected
+[three banks with bounded replacement refusal](rfc-014-capture-policy-choice.md).
+Two metadata slots do not reserve two populated captures; an installed analyzer
+owns one model-bank entitlement, even when empty. Independently retained owners
+remain valid and can prevent replacement. A guarded transaction may transfer the
+bank to an empty candidate only when the former model's last ownership is
+explicitly released. The linked failure matrix defines the required checks.
+B0 now needs proof of this realization, not a fourth-bank policy decision.
 The existing domain SignalCapture value contract is unchanged.
 
 ## Review and next deliverable
 
 Author consistency review only: **not ready for RFC approval**. SR-Q1 and SR-Q2
-have bounded answers; SR-Q3 is narrowed to typed access/ownership, and SR-Q4 to
-replacement/retention accounting. They no longer justify a second frame bank or
-manual Body reconstruction as automatic requirements. No new deferred artifact
-is needed because these remaining issues block the active RFC.
+have bounded answers. SR-Q3 has a [typed access contract](rfc-014-typed-access-contract.md),
+and SR-Q4 has the maintainer-selected [three-bank ownership policy](rfc-014-capture-policy-choice.md).
+The requested access/ownership design package is delivered. No additional
+maintainer policy choice is currently pending. These dispositions do not prove
+the generated contract or ownership transaction in the real runtime.
 
-The next deliverable is one access/ownership contract revision covering real
-counter/analyzer reads, writes, replacement and cleanup, including the fixed
-context's module boundary and a reviewed storage policy. It must use the existing
-source inventory rather than expand another mini-language by trial and error.
-No successor experiment or production migration is opened by this disposition.
-Existing architecture/Spec and resource approval gates remain unchanged.
+The next engineering deliverable must validate the exact selected contract
+against real module boundaries and application routes, including replacement
+failure/retention and cleanup. Keep B0–B4 open for their concrete integration,
+lifetime, source-coverage and complete-resource obligations. Do not restart a
+generic compiler experiment or expand a mini-language by trial and error.
+Any pre-adoption executable study needs its own explicit scope and stop conditions;
+no study or production migration is opened by this documentation package.
+Existing architecture/Spec and resource approval gates remain unchanged. No new
+deferred artifact is appropriate because the remaining proofs block this RFC.

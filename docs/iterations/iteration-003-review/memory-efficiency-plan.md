@@ -17,8 +17,13 @@ That package is complete: the last-reader audit supports model access ending
 after Canvas use/discard, and SPIKE-073 supports compiler-derived Body with a
 fixed borrowed context. Four configurations compile; both native runs pass 15
 checks and eight negative controls reject. The 15-invocation study is terminal.
-[SR-Q1–4 dispositions](rfc-014-stable-read-revision.md#activity-results--2026-10-10)
-retain the typed access/schema and replacement/retention decisions as blockers.
+The follow-up design package is also delivered: the
+[typed access contract](rfc-014-typed-access-contract.md) selects schema-specific
+fixed read domains and facades, and Eugene selected
+[three banks with bounded replacement refusal](rfc-014-capture-policy-choice.md).
+Metadata capacity is separate from capture entitlement. No further maintainer
+policy choice is pending. Actual module integration, ownership/failure proofs,
+complete lowering and full-image costs remain B0–B4 engineering gates.
 Separate copy-freeze and immediate expansion of the source frontend are no longer
 the baseline. Earlier sections below preserve previous activity dispositions.
 Production migration still requires the existing architecture/Spec gates.
@@ -56,7 +61,8 @@ Complete application source coverage, actual owner/reconciler integration,
 layouts/costs and formal approval remain open. The
 [ownership audit](rfc-014-ownership-audit.md) identifies host retention and
 replacement obligations; neither app yet proves its peak retained bound (B2).
-These inform capture storage under ADR-034 (B0), whose slot count remains open.
+These inform the selected three-bank ownership proof under ADR-034 (B0); the
+four-bank K=2 candidate is no longer the working policy.
 Runtime implementation remains blocked; no experiment is automatically launched.
 The [findings summary](preparation-findings.md) and stopped studies remain
 historical inputs; this result does not reopen their budgets or experiments.
@@ -65,7 +71,7 @@ historical inputs; this result does not reopen their budgets or experiments.
 | --- | --- |
 | I3-T01 correction package | Complete within the hardware-free boundary; [result and residual gates](i3-t01-result.md). |
 | I3-T02 runtime design, I3-04 / ME-05 | Delivered with named blockers: [RFC-014 review and contract map](i3-t02-design-review.md). |
-| RFC-014 B1/B2 follow-up | SPIKE-069 terminal; source comparison and ownership audit delivered. Direction C contract/ledger delivered; SPIKE-070/071 support the finite source/context mechanism with four-profile compiler/escape controls. SPIKE-072 supports contextual module integration and records missing application source families. Production State/reconciler/owner integration, complete source coverage and compiler adoption remain open. SR-Q1–4 package complete; SPIKE-073 supports fixed-context inference. Next is the typed access/ownership contract and replacement/retention policy, not another generic compiler study. The K=2 non-sharing candidate still exceeds ADR-034 by one bank; the old five-bank baseline is superseded. |
+| RFC-014 B1/B2 follow-up | SPIKE-069 terminal; source comparison and ownership audit delivered. Direction C contract/ledger delivered; SPIKE-070/071 support the finite source/context mechanism with four-profile compiler/escape controls. SPIKE-072 supports contextual module integration and records missing application source families. Production State/reconciler/owner integration, complete source coverage and compiler adoption remain open. SR-Q1–4 package complete; SPIKE-073 supports fixed-context inference. Typed access/ownership contract and selected three-bank policy delivered. Next is validation of the exact contract against actual modules/ownership routes with explicit bounds, not another generic compiler study. No policy decision is pending; exact storage and source/integration proofs remain open. |
 | ME-06 runtime implementation | Blocked on the resulting architecture/contract gates and complete resource/lifetime evidence; no ready migration plan yet. |
 | ME-08 integrated validation | Waits for the adopted implementations and exact artifact identities; connected evidence remains separately authorized. |
 | ME-09 closure/handoff | Waits for the criterion dispositions and maintainer decision; no automatic iteration-4 extraction. |

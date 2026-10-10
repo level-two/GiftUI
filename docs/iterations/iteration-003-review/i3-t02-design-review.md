@@ -10,6 +10,42 @@ The original I3-T02 findings below describe the authoring task. The subsequent
 [B1 follow-up](#b1-follow-up--spike-069) adds evidence without approving the RFC
 or changing the original task's budget/history.
 
+## Typed access and three-bank policy review — 2026-10-10
+
+**Verdict: not ready for RFC approval; requested design package delivered.**
+Author consistency review using the RFC-reviewer checklist; not independent
+review, compiler evidence or human RFC approval. Eugene explicitly selected
+[three-bank bounded refusal](rfc-014-capture-policy-choice.md). The
+[typed access contract](rfc-014-typed-access-contract.md) is the resulting draft
+engineering recommendation. No additional maintainer policy choice is pending.
+Earlier sections below retain the evidence and decisions at their recorded stage.
+
+| Severity / location | Finding and required resolution |
+| --- | --- |
+| Resolved design direction / SR-Q3 | Generated application schema requirements and fixed per-conformance domains avoid an app-aware GiftUI core. Scoped facades and explicit checked writes replace the universal scalar-reader candidate. Body remains compiler-derived. The complete contract is now reviewable. |
+| Resolved policy / SR-Q4 | Keep source/admission/model at 3 × 404 × 16 = 19,392 transition bytes. Separate model metadata from bank entitlement; preserve independently retained owners and refuse unavailable capacity before commit. No ADR-034 resource amendment is requested. |
+| Blocker / B1, access composition | Compile the primary-associated-domain View, same-domain containers, custom children and leaf lifting across actual modules. SPIKE-073 tested a simpler concrete context; it does not prove this generic schema ABI. No nonescapable associated type or newer compiler is assumed. |
+| Blocker / B0/B2, transfer and lifetime | Verify the capacity contract's failure matrix on actual ownership routes. An installed empty analyzer still reserves a bank; transfer requires explicit last-owner release. Guard callbacks against invalidating reservations, keep attach seed reads scoped, and preserve SPEC-010 invariant-failure behavior. Descriptor pointees, all host caches, cleanup and generation reuse still require evidence. |
+| Blocker / B4, real source behavior | Validate every source-route row, including capture preflight before writes, short-circuit/helper order, initializer effects and failure transport. A mapping is not an implemented frontend. Existing owned Domain capture semantics require an explicit presentation-type migration. |
+| Blocker / B2/B3, costs | Lay out model metadata, descriptors, tickets and registration separately from the transition subtotal; measure full supported images and stack paths. Two metadata slots have no measured footprint yet. Dynamic and Static must enforce the same configured outcomes. |
+
+Corrections made during review: expose the same-domain opaque constraint rather
+than assume unconstrained `some View` carries it; keep Never out of the universal
+Body-domain equality; reject the empty-candidate loophole that would steal a
+retained model's bank on its first update; distinguish initial materialization
+from replacement; preserve detach-hook invariant failures instead of promising
+rollback after commit. These are contract corrections, not new test results.
+
+No non-blocking follow-up was extracted: the missing proofs are current RFC
+blockers. Candidate ADR extraction remains contingent on RFC approval, including
+the compiled View/access boundary and bounded ownership realization. Do not
+create a fourth-bank ADR or reopen the terminated compiler studies.
+
+Package validation: `scripts/format-swift.sh`, `ruby scripts/validate-governance.rb`
+and `git diff --check` pass; 164 local links in the affected design documents
+resolve. Production Sources, Tests, Package.swift and scripts are unchanged from
+`a948e221`. No compiler, runtime or hardware test is claimed for the new contract.
+
 ## Stable-read evidence disposition — 2026-10-10
 
 **Verdict: not ready for RFC approval; bounded correction package complete.**
