@@ -35,13 +35,14 @@ features:
     # Design comparison: docs/iterations/iteration-003-review/rfc-014-source-design-options.md.
     # Ownership audit: docs/iterations/iteration-003-review/rfc-014-ownership-audit.md; peak R unproved.
     # Acceptance provenance: docs/iterations/iteration-003-review/proposal-007-acceptance.md.
-    status: rfc
+    status: decision
     proposal:
       - PROPOSAL-007
     rfcs:
       - RFC-013
       - RFC-014
-    adrs: []
+    adrs:
+      - ADR-035
     specs: []
     dependencies:
       - giftui-mvp-architecture

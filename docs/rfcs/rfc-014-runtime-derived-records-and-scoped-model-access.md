@@ -27,6 +27,7 @@ related_adrs:
   - ADR-032
   - ADR-033
   - ADR-034
+  - ADR-035
 related_specs:
   - SPEC-001
   - SPEC-006
@@ -548,7 +549,8 @@ contracts. General future frontends remain outside this finite application scope
 
 Extract these independently reviewable decisions after RFC approval:
 
-1. Runtime-emitted bounded semantic records, exact cross-revision identity and
+1. [ADR-035 (proposed)](../adrs/adr-035-runtime-derived-records-and-exact-identity.md):
+   Runtime-emitted bounded semantic records, exact cross-revision identity and
    publication/retirement, preserving Semantic Core/Layout/Interaction ownership.
 2. Fixed-domain scoped model/property access, stable owned storage, finite source
    transformation and checked mutation, preserving State/invalidation semantics.
