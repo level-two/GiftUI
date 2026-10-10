@@ -1,0 +1,66 @@
+[
+  {
+    "spec": "SPEC-007",
+    "profile": "macos-static",
+    "source_receipt": ".build/contracts/spec-007-bank-layout/tmpr_xm_6xw/macos-static/result.json",
+    "snapshot": "Tests/ContractFixtures/SPEC011/Evidence/rfc-014-p05/final-spec007-macos-static.json",
+    "receipt_sha256": "f5fb39f347ffcc7fe28ca23e9650906f48a7899b99494379245fb8548c21db88",
+    "execution": "P05 Layout assertions=196 failures=0"
+  },
+  {
+    "spec": "SPEC-007",
+    "profile": "macos-dynamic",
+    "source_receipt": ".build/contracts/spec-007-bank-layout/tmp5kkje3_n/macos-dynamic/result.json",
+    "snapshot": "Tests/ContractFixtures/SPEC011/Evidence/rfc-014-p05/final-spec007-macos-dynamic.json",
+    "receipt_sha256": "276d6505ff7446128f58b3edad70a1c7ce479a46a77306eefb84127c036dccaa",
+    "execution": "P05 Layout assertions=196 failures=0"
+  },
+  {
+    "spec": "SPEC-007",
+    "profile": "raspberry-pi-armv6",
+    "source_receipt": ".build/raspberry-pi/contracts/spec-007-bank-layout/tmpm7hzzvrb/raspberry-pi-armv6/result.json",
+    "snapshot": "Tests/ContractFixtures/SPEC011/Evidence/rfc-014-p05/final-spec007-raspberry-pi-armv6.json",
+    "receipt_sha256": "0b512fd1da3b37c93a799e4edb8fc751bb7e4760481f4bd4dae8592d2b50034b",
+    "execution": "cross-compiled only; no target execution"
+  },
+  {
+    "spec": "SPEC-007",
+    "profile": "nrf52840-embedded",
+    "source_receipt": ".build/nrf52840/contracts/spec-007-bank-layout/tmpzf483k2m/nrf52840-embedded/result.json",
+    "snapshot": "Tests/ContractFixtures/SPEC011/Evidence/rfc-014-p05/final-spec007-nrf52840-embedded.json",
+    "receipt_sha256": "bd599b2f25938df4e830f798974c0e2783af01b01d60e695e7ca75e9b059f727",
+    "execution": "cross-compiled only; no target execution"
+  },
+  {
+    "spec": "SPEC-011",
+    "profile": "macos-static",
+    "source_receipt": ".build/contracts/spec-011-owned-keys/tmpezstnac7/macos-static/result.json",
+    "snapshot": "Tests/ContractFixtures/SPEC011/Evidence/rfc-014-p05/final-spec011-macos-static.json",
+    "receipt_sha256": "75127936c93794bdc1dd1d2eefeb0c4cf46675fa84ce2d94fcb01c454dbd62a0",
+    "execution": "P05 Interaction assertions=215 P03 root regressions=183 failures=0"
+  },
+  {
+    "spec": "SPEC-011",
+    "profile": "macos-dynamic",
+    "source_receipt": ".build/contracts/spec-011-owned-keys/tmplootrts9/macos-dynamic/result.json",
+    "snapshot": "Tests/ContractFixtures/SPEC011/Evidence/rfc-014-p05/final-spec011-macos-dynamic.json",
+    "receipt_sha256": "7c030fe5c38ff0248c91798d7e1424f97a8bfd503ef8b2bb6f8245cad68aa854",
+    "execution": "P05 Interaction assertions=215 P03 root regressions=183 failures=0"
+  },
+  {
+    "spec": "SPEC-011",
+    "profile": "raspberry-pi-armv6",
+    "source_receipt": ".build/raspberry-pi/contracts/spec-011-owned-keys/tmpvfpw_63r/raspberry-pi-armv6/result.json",
+    "snapshot": "Tests/ContractFixtures/SPEC011/Evidence/rfc-014-p05/final-spec011-raspberry-pi-armv6.json",
+    "receipt_sha256": "d329b371b0e02de7271a580213cb0c8f82b6652d7b80c283365530ce9f5cb4ed",
+    "execution": "cross-compiled only; no target execution"
+  },
+  {
+    "spec": "SPEC-011",
+    "profile": "nrf52840-embedded",
+    "source_receipt": ".build/nrf52840/contracts/spec-011-owned-keys/tmpd7uutv0z/nrf52840-embedded/result.json",
+    "snapshot": "Tests/ContractFixtures/SPEC011/Evidence/rfc-014-p05/final-spec011-nrf52840-embedded.json",
+    "receipt_sha256": "f713766c914dfa52983614006eb0c6ff40504b79e78d96d86e0996bcb85ad868",
+    "execution": "cross-compiled only; no target execution"
+  }
+]

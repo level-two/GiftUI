@@ -182,3 +182,86 @@ reported the six new step1/2 P05 files unreferenced in SPEC-011 task-evidence.ya
 T12.1 now links shared artifacts without claiming completion. SPEC-007 has no
 separate task-evidence YAML; its T9.1 plan and conformance share this receipt.
 All narrowed corrections subsequently pass; unproductive repairs remain0/2.
+
+## P05 implementation handoff — independent Strong review required
+
+Implementation commits: `a7c9c6b1` (borrowed Layout/Render), `f86dfbde`
+(owned keys/checked target bridge), `fec8a27c` (oracle/storage evidence).
+All **eight** registered owner commands passed sequentially from clean source
+`fec8a27c`. [Receipt index](final-profile-receipts.json) links immutable copied
+results and original local artifacts. Each result records exact source hashes,
+owner command, compiler path/hash, P02 input receipt/hash, command list, checks,
+and every module/object/log artifact hash. Current declared inputs were rehashed
+and matched all eight receipts before this evidence-only handoff update.
+
+| Profiles | SPEC-007 | SPEC-011 | Execution boundary |
+| --- | --- | --- | --- |
+| macos-static, macos-dynamic |196 assertions; two expected escape rejections each|215 assertions plus183 P03 root regressions each|Native arm64 macOS execution, real profile storage selection|
+| raspberry-pi-armv6 |Compile/negative controls pass|Compile/key-layout IR pass|ARMv6 object CPUv6 and VFP-register ABI; no target execution|
+| nrf52840-embedded |Compile/negative controls pass|Compile/key-layout IR pass|Embedded armv7em CPUv7E-M and VFP-register ABI; no board execution|
+
+All four key-layout results agree: component6, complete key206, candidate key
+regions3708, committed2472, complete six-slot Static state7108, remainder928,
+external pointer capture212 bytes. These are actual component ABI measurements,
+not complete application memory/stack/allocator evidence. Toolchain doctors
+passed before cross compilation; no deployment, flash or remote change occurred.
+
+The independent reviewer should inspect `2aa5c7cc..fec8a27c` (dispatch/status
+included) against the approved P05 row and both owner checkpoints. Review core
+mechanisms at SemanticRecordLayoutView/RenderView, InteractionOwnedKeyState,
+InteractionState append precedence, RuntimeRecordInteractionBridge and the
+P03 checked operation-thunk additions; confirm accepted-offer factoring is
+behavior preserving and every bank-owned reference is copied or remains borrowed.
+Assess the explicit inline-pool interpretation against SPEC-013/015 and verify
+all five per-slot retained key copies plus external capture are accounted for.
+The two focused driver scripts give exact reproducible commands through the
+existing registered routes; use the receipt index to select the pinned P02 input.
+Failures/corrections and independently derived expected outcomes are retained
+above. Repair counter remains **0/2**, including handoff.
+
+Package exit evidence now covers every P05 row: borrowed immutable queries and
+no model access in full Layout, unchanged geometry/limits under independent
+oracles, lifecycle cleanup on malformed lookup and sink failures, copied exact
+keys across twelve bank publications/ten refused offers, stale target/release
+cancellation and atomic component-pool failure preserving old routing. Full
+RenderLowering compiles; raster algorithms were untouched. Selected SemanticCore,
+ObservableState/profile/RuntimeCore sources are explicitly listed in receipts;
+these are not full module or full application adoption reports.
+
+Remaining owner obligations are intentionally open: all retained baseline corpora
+and complete analyzer/counter layouts and authored application-handler wiring,
+P06 Canvas integration, P07 concrete coordinator/fault transcripts and limits/audit,
+P08/P09 application/workload adoption, P10 broad hardware-free/differential gates,
+P11 complete resource/stack/allocator/linked-image and connected dispositions,
+and P12 conformance/cutover. New fixtures exercise applicable P05 behavior, but
+cannot mark LY-RD-001/002, IN-RD-001/002 or baseline criteria fully conformant.
+No new deferred item or design note was needed; no successor implementation began.
+
+**Disposition: implemented and validated at the selected P05 component boundary;
+independent Strong review and parent package disposition pending. P05 is not yet
+passed. SPEC-007/011 remain implementing; plans active; T9.1/T12.1 open.**
+
+### Final ancillary-check disposition
+
+`scripts/validate-governance.rb` passes (191 authority nodes/1939 edges;
+SPEC-01153 task mappings;7 features/73 artifacts/9 skills), and
+`ruby scripts/contracts/check-driver-registry.rb` passes15 drivers.
+`git diff --check` passes. These do not replace the exact eight owner receipts.
+
+An optional bare `ruby scripts/contracts/check-target-dependencies.rb` invocation
+failed with `SPEC-002 dependency check failed: 767: unexpected token at ''`.
+Inspection showed that this script requires dump-package JSON on stdin; none was
+supplied. Follow-up `swift package dump-package` used default Xcode Swift6.3.3
+and failed with sandbox denial opening the user clang ModuleCache, before emitting
+a package manifest. The mandated escalation attempted pinned Swift6.3.2
+`swift package dump-package > .build/rfc014-p05-package.json`, followed by the
+checker with redirected stdin. Its approval tool was user-aborted after341s;
+no process session ID or execution result was returned, and no output file was
+observed. A subsequent read-only process listing was itself sandbox-denied.
+No process was terminated and no optional-check pass is claimed. This invocation
+issue is outside the selected P05 owner gates and did not change sources or the
+passing receipts. Parent directed no further investigation/retry. The repository
+package dependency check remains unverified here; P10 retains the broad gate.
+
+No concrete contract blocker was found. Consecutive unproductive repairs remain
+**0/2**. Final changes after clean tested `fec8a27c` are evidence/navigation only.

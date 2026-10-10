@@ -5,7 +5,7 @@ title: SPEC-011 Conformance Report
 status: collecting
 reviewers: [codex]
 created: 2026-09-19
-updated: 2026-10-05
+updated: 2026-10-11
 implementation_plan: ../implementation-plans/spec-011-implementation-plan.md
 related_future_work:
   - FW-021
@@ -38,7 +38,7 @@ Earlier open-gate statements below describe the pre-approval history.
 
 ## RFC-014 P05 collection
 
-Current amendment evidence is collecting in the [shared P05 receipt](../../Tests/ContractFixtures/SPEC011/Evidence/rfc-014-p05/progress.md). Earlier completed tables below are historical baseline results, not amendment conformance. Owner checkpoints remain open through P10–P12.
+Current amendment evidence is collecting in the [shared P05 receipt](../../Tests/ContractFixtures/SPEC011/Evidence/rfc-014-p05/progress.md). Earlier completed tables below are historical baseline results, not amendment conformance. Owner checkpoints remain open through P10–P12. Eight fresh selected-component owner routes pass from clean `fec8a27c`; the receipt records their precise coverage, resource limits and independent Strong review pending disposition.
 
 ## Review Scope
 

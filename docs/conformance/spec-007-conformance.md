@@ -25,7 +25,7 @@ superseded_by: null
 
 ## RFC-014 P05 collection
 
-Current amendment evidence is collecting in the [shared P05 receipt](../../Tests/ContractFixtures/SPEC011/Evidence/rfc-014-p05/progress.md). Earlier completed tables below are historical baseline results, not amendment conformance. Owner checkpoints remain open through P10–P12.
+Current amendment evidence is collecting in the [shared P05 receipt](../../Tests/ContractFixtures/SPEC011/Evidence/rfc-014-p05/progress.md). Earlier completed tables below are historical baseline results, not amendment conformance. Owner checkpoints remain open through P10–P12. Eight fresh selected-component owner routes pass from clean `fec8a27c`; the receipt records their precise coverage, resource limits and independent Strong review pending disposition.
 
 ## Review Scope
 
