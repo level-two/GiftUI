@@ -523,9 +523,15 @@ run_raspberry_pi() {
         migration_flags=("${GIFTUI_CONTRACT_FEATURE_FLAGS[@]}")
     fi
     giftui_pi_prepare_build_environment
+    local build_dir="${report_dir}/build"
+    if [[ "${compiler_baseline}" == rfc-014 ]]; then
+        build_dir="${GIFTUI_PI_BUILD_ROOT}/contracts/spec-002/${GIFTUI_CONTRACT_RUN_ID:-manual}"
+        mkdir -p "${build_dir}"
+    fi
+    printf 'build_directory=%s\n' "${build_dir}" >>"${metadata_path}"
     local -a command=(
         "${compiler}" build --package-path "${PROJECT_ROOT}"
-        --scratch-path "${report_dir}/build/swiftpm"
+        --scratch-path "${build_dir}/swiftpm"
         --destination "${GIFTUI_PI_STATIC_DESTINATION}"
         --configuration release --product GiftUI --static-swift-stdlib
         -Xswiftc -whole-module-optimization
@@ -544,7 +550,7 @@ run_raspberry_pi() {
     "${command[@]}" >>"${log_path}" 2>&1
 
     sdk_root="${GIFTUI_PI_SDK_DIR}/${GIFTUI_PI_DISTRIBUTION}"
-    probe_ir="${report_dir}/build/GiftUIFoundationProfileCorpusProbe.ll"
+    probe_ir="${build_dir}/GiftUIFoundationProfileCorpusProbe.ll"
     local -a probe_command=(
         "${swiftc}" -target "${GIFTUI_PI_TARGET}"
         -use-ld=lld -Xcc "--gcc-toolchain=${sdk_root}/usr"
@@ -567,7 +573,7 @@ run_raspberry_pi() {
     printf 'profile_corpus_checksum=28\nevidence=optimized-target-ir\nexecution=cross-build-only\n' \
         >"${report_dir}/semantics/profile-corpus.txt"
 
-    local layout_ir="${report_dir}/build/foundation-layout.ll"
+    local layout_ir="${build_dir}/foundation-layout.ll"
     local -a layout_command=(
         "${swiftc}" -target "${GIFTUI_PI_TARGET}"
         -use-ld=lld -Xcc "--gcc-toolchain=${sdk_root}/usr"
@@ -588,7 +594,7 @@ run_raspberry_pi() {
     "${SCRIPT_DIR}/check-spec-002-layout.rb" \
         "${layout_ir}" "${report_dir}/semantics/layout.tsv" >>"${log_path}" 2>&1
 
-    local operation_ir="${report_dir}/build/foundation-operation.ll"
+    local operation_ir="${build_dir}/foundation-operation.ll"
     local -a object_command=(
         "${swiftc}" -target "${GIFTUI_PI_TARGET}"
         -use-ld=lld -Xcc "--gcc-toolchain=${sdk_root}/usr"
@@ -610,6 +616,9 @@ run_raspberry_pi() {
         --ir "${operation_ir}" >>"${log_path}" 2>&1
 
     local matched_dir="${report_dir}/resources"
+    if [[ "${compiler_baseline}" == rfc-014 ]]; then
+        matched_dir="${build_dir}/resources"
+    fi
     local resource_main="${matched_dir}/main.o"
     local clang="${GIFTUI_PI_HOST_BIN_DIR}/clang"
     local inspector="${GIFTUI_PI_HOST_BIN_DIR}/llvm-objdump"
@@ -650,6 +659,12 @@ run_raspberry_pi() {
             >>"${log_path}" 2>&1
     done
     report_linked_sections elf "${inspector}" "${matched_dir}"
+    if [[ "${compiler_baseline}" == rfc-014 ]]; then
+        # Reports retain immutable evidence copies; generated target builds live
+        # under the repository's required Raspberry Pi output root.
+        cp "${probe_ir}" "${layout_ir}" "${operation_ir}" "${report_dir}/build/"
+        cp -R "${matched_dir}" "${report_dir}/resources"
+    fi
 }
 
 run_nrf52840() {
