@@ -31,7 +31,10 @@ now propose explicit access/phase rules and a five-bank analyzer baseline.
 inconclusive in its original boundary. The separately authorized
 [SPIKE-071](../../spikes/spike-071-canvas-embedded-escape-continuation.md) now
 completes four-profile positives, 24 escape controls and bounded nRF object
-inspection. Production binding, layouts/costs and formal approval remain open. The
+inspection. The [contextual evaluation design](rfc-014-contextual-evaluation.md)
+now defines the proposed compiled View/session/read-borrow connection and its
+source compatibility costs. Actual integration, layouts/costs and formal approval
+remain open. The
 [ownership audit](rfc-014-ownership-audit.md) identifies host retention and
 replacement obligations; neither app yet proves its peak retained bound (B2).
 These inform capture storage under ADR-034 (B0), whose slot count remains open.
@@ -43,10 +46,33 @@ historical inputs; this result does not reopen their budgets or experiments.
 | --- | --- |
 | I3-T01 correction package | Complete within the hardware-free boundary; [result and residual gates](i3-t01-result.md). |
 | I3-T02 runtime design, I3-04 / ME-05 | Delivered with named blockers: [RFC-014 review and contract map](i3-t02-design-review.md). |
-| RFC-014 B1/B2 follow-up | SPIKE-069 terminal; source comparison and ownership audit delivered. Direction C contract/ledger delivered; SPIKE-070/071 support the finite source/context mechanism with four-profile compiler/escape controls. Production View/owner binding and compiler policy remain open; five-bank baseline conflicts with ADR-034. No new proof authorized. |
+| RFC-014 B1/B2 follow-up | SPIKE-069 terminal; source comparison and ownership audit delivered. Direction C contract/ledger delivered; SPIKE-070/071 support the finite source/context mechanism with four-profile compiler/escape controls. Contextual View/session design delivered; actual nested binding, complete source coverage and compiler adoption remain open. Five-bank baseline conflicts with ADR-034. No new proof authorized. |
 | ME-06 runtime implementation | Blocked on the resulting architecture/contract gates and complete resource/lifetime evidence; no ready migration plan yet. |
 | ME-08 integrated validation | Waits for the adopted implementations and exact artifact identities; connected evidence remains separately authorized. |
 | ME-09 closure/handoff | Waits for the criterion dispositions and maintainer decision; no automatic iteration-4 extraction. |
+
+## RFC-014 contextual evaluation design — 2026-10-10
+
+Eugene's “Please proceed. What?” after the SPIKE-071 result authorizes the next
+production evaluation/binding design step. Delivered as draft analysis, with no
+new experiment, production implementation or inferred architecture approval.
+Commit `8ba066c3` records the [proposed runtime/source contract](rfc-014-contextual-evaluation.md);
+this update records the [review and remaining gates](i3-t02-design-review.md#contextual-evaluation-design-review--2026-10-10).
+
+The proposal replaces the context-free compiled body getter with contextual
+witnesses while preserving authored `body` syntax through finite lowering.
+Traversal threads an explicit session, binds State, evaluates with a short
+frozen read borrow, releases it, then visits owned children. A frame lease pins
+data through post-layout drawing. Errors remain typed and short-circuit source
+effects must survive transformation. Drawing gets a separate access argument.
+
+This is a source/build contract decision for RFC review, not a transparent
+property-wrapper implementation. Exact Swift generic conformance and real nested
+State/SemanticCore/Drawing integration remain unproved; experimental compiler
+policy, source coverage and ownership/storage approval remain open. The next
+readiness boundary is CE-1–CE-7 in the review. No generic escape rerun, new Spike
+or production migration is automatically launched. Governance, local links,
+source comparison and whitespace validation pass.
 
 ## RFC-014 Embedded/escape continuation — 2026-10-10
 

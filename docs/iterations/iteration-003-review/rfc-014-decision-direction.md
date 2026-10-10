@@ -32,11 +32,22 @@ inspection. It supports the finite mechanism, while production binding and
 compiler-policy adoption remain open. Direction C stays a working design;
 these results approve no API or storage budget.
 
+## Contextual evaluation refinement
+
+The [next design step](rfc-014-contextual-evaluation.md) makes the production
+connection explicit: contextual compiled View witnesses, a separately passed
+traversal session and short body/draw borrows under the frame lease. Familiar
+`body` syntax becomes supported finite-lowering input; the context-free getter
+is not retained as a fake/trapping witness. This is a proposed runtime/source
+contract refinement for review, not approval or compiled integration evidence.
+Compiler adoption, nested State/real traversal, complete source coverage and
+storage gates remain open in the [review](i3-t02-design-review.md#contextual-evaluation-design-review--2026-10-10).
+
 ## Decisions to carry into the RFC
 
 | ID | Working design choice | Meaning and limit |
 | --- | --- | --- |
-| C1 | Canvas is a protocol refining View, with a draw method and framework-supplied leaf traversal | Application conformers need no body implementation. The protocol constrains Body to Never; the framework supplies the invariant body witness. Draw receives checked local bounds and an explicit scoped GraphicsContext. This changes today's concrete closure-based Canvas contract. |
+| C1 | Canvas is a protocol refining View, with a draw method and framework-supplied leaf traversal | Application conformers need no body implementation. The leaf marker is Body = Never. The contextual compiled View refinement supplies leaf/draw witnesses without requiring a context-free body getter. Draw receives checked local bounds and an explicit scoped GraphicsContext. This changes today's concrete closure-based Canvas contract. |
 | C2 | Observable properties delegate storage to stable typed runtime-owned model locations | The property wrapper identifies a location; it need not embed the large value in each copied View or Canvas. “Graph-backed” means associated with structural identity, not stored inside disposable graph nodes. An application-owned model can outlive its graph registration. |
 | C3 | Model storage exposes current and frozen logical versions | Application mutation uses current data; body evaluation and drawing use the same frozen frame revision. Freeze is coherent across participating properties/models, not lazily chosen on first read. No torn frame combining different revisions. |
 | C4 | One frame freeze covers graph construction, Layout and drawing | The framework retains the owner/backing until all frame readers and staged Canvas values are released. Canvas does not independently need a historical snapshot if all its reads are covered by that frame owner. Bounds checking alone does not make an escaped pointer safe. |

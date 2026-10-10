@@ -84,7 +84,11 @@ named remaining compiler-realization obligation, not supplied by the notation.
 All participating portable declarations use the same contextual contract on
 Dynamic and Static. Pure bodies can ignore the read facade but still use the
 same entrypoint and traversal. A raw Dynamic `body` path is not a parity oracle.
-An external precompiled view with only the old body witness is incompatible with
+Direct authored `.body` evaluation or model-reading `.draw` calls outside the
+supported evaluation/invocation entrypoints are build diagnostics, not a way to
+obtain an implicit frame. Construction of owned declaration values remains
+separate from their evaluation. An external precompiled view with only the old
+body witness is incompatible with
 this candidate unless separately given a reviewed adapter; automatic mixed-mode
 compatibility is not included. RFC-013 owns later package/product delivery.
 
@@ -299,7 +303,7 @@ maximum-depth/feasible-path stack bound; indirect drawing calls are not zero cos
 This step makes the proposed runtime contract, sequencing and compatibility
 cost reviewable. It does not claim those amendments are approved or implemented.
 Current blockers remain in RFC-014, not Future Work. No new non-blocking idea
-requires a deferred artifact; interchangeable non-Swift frontends remain outside this design under existing
+requires a deferred artifact; interchangeable frontends and generated graph representations remain outside this design under existing
 [FW-035](../../future-work/fw-035-generated-view-graph-for-interchangeable-frontends.md).
 That item does not own or excuse any missing required Swift source lowering;
 those gaps stay B1/B4 in this RFC.

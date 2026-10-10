@@ -601,10 +601,10 @@ of these risks is resolved by the conditional RAM sum.
 | ID | Blocking issue | Required resolution |
 | --- | --- | --- |
 | B0 | C proposes five capture banks; accepted ADR-034 requires exactly three | Review C's K=2/F=1 non-sharing ledger and choose an ADR-034 amendment/successor preserving retention, or prove a compatible alternative. Earlier four-slot arithmetic does not cover this baseline. Do not modify limits first. |
-| B1 | Enforceable State/model/capture access and callback isolation | SPIKE-069 refutes callback restriction alone and supports a bounded borrow/key fixture. The C contract now proposes coherent copy-freeze, contextual property access and typed protocol dispatch. Prove finite context lowering, typed failure transport, compiler support and every owner/access route (C-P1/C-P2); exact Swift realization remains open. SPIKE-070/071 support finite lowering and a four-profile borrow/escape fixture, with root evaluation/draw signature adaptations and experimental lifetime flags; the rooted nRF object has no allocator relocations. Complete production contextual View evaluation, current-write/helper coverage, owner routes and compiler-policy adoption remain open. Fixture results do not close full no-escape/exclusivity/zero-heap proof. |
+| B1 | Enforceable State/model/capture access and callback isolation | SPIKE-069 refutes callback restriction alone and supports a bounded borrow/key fixture. The C contract now proposes coherent copy-freeze, contextual property access and typed protocol dispatch. Prove finite context lowering, typed failure transport, compiler support and every owner/access route (C-P1/C-P2); exact Swift realization remains open. SPIKE-070/071 support finite lowering and a four-profile borrow/escape fixture, with root evaluation/draw signature adaptations and experimental lifetime flags; the rooted nRF object has no allocator relocations. The contextual-evaluation draft specifies replacement compiled View witnesses, an explicitly threaded session and short read borrows under a frame lease. Exact generic conformance through real nested SemanticCore/Drawing, owner routes and compiler-policy adoption remain open (CE-1–CE-6). Fixture results do not close full no-escape/exclusivity/zero-heap proof. |
 | B2 | Complete record/payload/path/interaction and model storage | C proposes K=2/F=1 with a retained-former ledger and exact first-excess refusal; verify actual owners and every failure edge (C-P3), complete layouts/codecs/trie fanout and all source cases; validate every proposed byte row, replacement capture and generated Canvas capture size; approve resulting SPEC-001/013/015 limits. |
 | B3 | Complete supported-image stack and Dynamic cost | Bound recursive/indirect/callback/IRQ paths and construction/service/teardown; measure matched Dynamic memory. No unknown edge may be recorded as zero. |
-| B4 | Concrete supported lowering and migration completeness | Inventory graph producers/consumers and replace them with actual runtime traversal; show bounded Static callable/model lowering and full four-profile application behavior. |
+| B4 | Concrete supported lowering and migration completeness | The contextual-evaluation draft makes mandatory finite source lowering and the compiled View SPI change explicit. Complete the source/helper/current-write inventory, preserve conditional effects and identity/work counts, reject unchecked routes on every profile, and migrate actual graph producers/consumers. The small generator is not full application coverage (CE-1/4/5). |
 
 B0 is an explicit architectural decision; B1/B2 are design/contract readiness blockers; B3/B4 include evidence required
 before adoption. Which evidence can precede exact Spec approval must be explicitly
@@ -615,6 +615,12 @@ not evidence that record emission is intrinsically impossible. Resolving it
 requires a separately selected transport/rendering or requirement decision.
 
 ## Deferred and Follow-up Work
+
+The authorized [contextual evaluation design](../iterations/iteration-003-review/rfc-014-contextual-evaluation.md)
+is now delivered with [CE-1–CE-7 review findings](../iterations/iteration-003-review/i3-t02-design-review.md#contextual-evaluation-design-review--2026-10-10).
+It proposes the production contract and explicit compatibility cost; it runs no
+new experiment and approves no compiler flags, storage budget or architecture.
+All integration/enforcement questions remain current B1/B4 blockers.
 
 Eugene separately authorized [SPIKE-071](../spikes/spike-071-canvas-embedded-escape-continuation.md)
 for the assertion correction and missing Embedded/escape/resource checks. It

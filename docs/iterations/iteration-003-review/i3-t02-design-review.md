@@ -10,7 +10,45 @@ The original I3-T02 findings below describe the authoring task. The subsequent
 [B1 follow-up](#b1-follow-up--spike-069) adds evidence without approving the RFC
 or changing the original task's budget/history.
 
-## Latest C evidence — SPIKE-071, 2026-10-10
+## Contextual evaluation design review — 2026-10-10
+
+**Verdict: not ready for RFC approval; requested design step delivered.** This
+is an author consistency review using the RFC-reviewer checklist, not independent
+review or human approval. [Design commit `8ba066c3`](rfc-014-contextual-evaluation.md)
+replaces the unspecified production seam with an explicit proposed compiled View
+contract and sequencing. No compiler or production experiment occurred here.
+
+The main design correction is to distinguish a frame lease from a Swift read
+borrow: pin the complete frame, borrow for one body, return owned children, end
+the borrow, then bind/traverse children. A long FrameRead stored in the current
+ordinary visitor cannot be inferred from SPIKE-071. The proposed visitor instead
+receives a separate scoped session, and Drawing receives a separate typed access
+argument. The draft also preserves conditional evaluation when lowering typed
+reads; unconditional hoisting would change short-circuit behavior.
+
+| Finding | Severity / location | Required resolution |
+| --- | --- | --- |
+| CE-1: authoring/runtime split changes the View contract | Blocker B1/B4; design §2/§7 | Explicitly review the mandatory finite transformation and contextual compiled witness proposal. It preserves source forms, not untransformed Swift/old-protocol compatibility; direct body/draw bypasses and precompiled old views need diagnostics. An ordinary wrapper/macro addition is not claimed. |
+| CE-2: exact contextual generic conformance remains uncompiled | Blocker B1; §2/§3 | Establish concrete Swift read/session lifetime constraints, stable opaque Body type, root and nested custom View conformance through real SemanticCore, and absence of runtime storage imports/existential fallback. SPIKE-071's root descriptor does not settle this. |
+| CE-3: State discovery must not overlap read borrows | Blocker B1/B2; §3/§4 | Demonstrate parent borrow ends before child binding; new same-epoch frozen entry is fully reserved/initialized without modifying prior entries. Exercise first-excess failure, failed-candidate cleanup and retained independent ownership. Ending a borrow must not free frame storage. |
+| CE-4: expression effects and write coverage need complete inventory | Blocker B4; §5/§6 | Preserve branch/short-circuit order, read count and typed error paths; diagnose unsupported helper/escape routes. Cover both applications' body/draw/current-mutation paths, compound updates and synchronous reports. The finite Spike grammar is insufficient. |
+| CE-5: actual post-layout adapter and failure origin mapping | Blocker B1/B4; §5/§6 | Carry access separately through actual CanvasPlanProducer/CanvasInvocationSource; no context field in an escapable source. Specify access vs semantic/binding/drawing outcomes and preserve first failure/cleanup without default getter values. |
+| CE-6: compiler adoption and whole-image costs | Blocker B1/B3; §7 | Review pinned LifetimeDependence/Lifetimes policy and fail-closed build coverage on all profiles. Bound recursive Body temporaries, helper specialization and drawing indirect calls in the complete image; the rooted object is not that proof. |
+| CE-7: physical storage authority is unchanged | Blocker B0/B2; §4/§8 | The five-bank proposal still conflicts with ADR-034; keep exact ownership/peak storage and the formal amendment decision separate from this traversal refinement. |
+
+The contract map names the relevant ADR-006/024/025/026/028 and
+SPEC-006/010/012 amendments; ADR-034 remains binding. No accepted ADR, approved
+Spec, iteration scope or production build flag changed. Current requirements
+were not moved into Future Work. Existing FW-035 remains outside the finite
+Swift design and does not absorb its missing enforcement obligations.
+
+Optional feedback: stabilize helper/entrypoint names after the generic interface
+is established. Names are not a blocker; exact ownership and source/build
+compatibility are. Candidate ADR extraction remains after RFC approval.
+Validation covers source-to-contract comparison, local links, governance and
+whitespace; no new compilation, runtime, memory or performance evidence.
+
+## Prior C evidence — SPIKE-071, 2026-10-10
 
 **Verdict: bounded mechanism supported; RFC still not ready for approval.** This
 is an author evidence/consistency review, not independent or human approval.
