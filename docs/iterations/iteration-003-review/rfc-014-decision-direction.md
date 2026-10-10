@@ -45,6 +45,15 @@ storage gates remain open in the [review](i3-t02-design-review.md#contextual-eva
 
 ## Decisions to carry into the RFC
 
+Eugene subsequently selected mandatory finite source transformation **provisionally
+for the next integration experiment** (“Let's do it”).
+[SPIKE-072](../../spikes/spike-072-contextual-traversal-integration.md) supports
+adapted module integration, with explicit generated Body types and leaf-only
+defaults. Complete counter/analyzer source coverage remains absent; this is not
+approval of the compiled View contract, experimental compiler policy or storage
+budget. The public explicit-context alternative remains available if the required
+finite frontend proves disproportionate or infeasible.
+
 | ID | Working design choice | Meaning and limit |
 | --- | --- | --- |
 | C1 | Canvas is a protocol refining View, with a draw method and framework-supplied leaf traversal | Application conformers need no body implementation. The leaf marker is Body = Never. The contextual compiled View refinement supplies leaf/draw witnesses without requiring a context-free body getter. Draw receives checked local bounds and an explicit scoped GraphicsContext. This changes today's concrete closure-based Canvas contract. |

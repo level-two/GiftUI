@@ -33,8 +33,12 @@ inconclusive in its original boundary. The separately authorized
 completes four-profile positives, 24 escape controls and bounded nRF object
 inspection. The [contextual evaluation design](rfc-014-contextual-evaluation.md)
 now defines the proposed compiled View/session/read-borrow connection and its
-source compatibility costs. Actual integration, layouts/costs and formal approval
-remain open. The
+source compatibility costs. [SPIKE-072](../../spikes/spike-072-contextual-traversal-integration.md)
+now supports contextual integration through seven separately compiled adapted
+modules on four configurations, with 111 passing native checks per profile.
+Explicit generated Body aliases avoid an observed Never-witness inference trap.
+Complete application source coverage, actual owner/reconciler integration,
+layouts/costs and formal approval remain open. The
 [ownership audit](rfc-014-ownership-audit.md) identifies host retention and
 replacement obligations; neither app yet proves its peak retained bound (B2).
 These inform capture storage under ADR-034 (B0), whose slot count remains open.
@@ -46,10 +50,29 @@ historical inputs; this result does not reopen their budgets or experiments.
 | --- | --- |
 | I3-T01 correction package | Complete within the hardware-free boundary; [result and residual gates](i3-t01-result.md). |
 | I3-T02 runtime design, I3-04 / ME-05 | Delivered with named blockers: [RFC-014 review and contract map](i3-t02-design-review.md). |
-| RFC-014 B1/B2 follow-up | SPIKE-069 terminal; source comparison and ownership audit delivered. Direction C contract/ledger delivered; SPIKE-070/071 support the finite source/context mechanism with four-profile compiler/escape controls. Contextual View/session design delivered; actual nested binding, complete source coverage and compiler adoption remain open. Five-bank baseline conflicts with ADR-034. No new proof authorized. |
+| RFC-014 B1/B2 follow-up | SPIKE-069 terminal; source comparison and ownership audit delivered. Direction C contract/ledger delivered; SPIKE-070/071 support the finite source/context mechanism with four-profile compiler/escape controls. SPIKE-072 supports contextual module integration and records missing application source families. Production State/reconciler/owner integration, complete source coverage and compiler adoption remain open. Five-bank baseline conflicts with ADR-034. No follow-on experiment opened. |
 | ME-06 runtime implementation | Blocked on the resulting architecture/contract gates and complete resource/lifetime evidence; no ready migration plan yet. |
 | ME-08 integrated validation | Waits for the adopted implementations and exact artifact identities; connected evidence remains separately authorized. |
 | ME-09 closure/handoff | Waits for the criterion dispositions and maintainer decision; no automatic iteration-4 extraction. |
+
+## RFC-014 contextual integration result — 2026-10-10
+
+Eugene's “Let's do it” provisionally selected mandatory source transformation
+and authorized [SPIKE-072](../../spikes/spike-072-contextual-traversal-integration.md).
+Registration `cb54c57c`; experiment/evidence `9e0d49b3`. The terminal result uses
+60/64 invocations and explicitly records a fifth repair beyond the executor's
+initial four-round ceiling for a missed multiline leaf declaration. No broader
+candidate or production scope changed.
+
+Actual adapted SemanticCore and CanvasPlanProducer orchestration works across
+seven module boundaries on all four configurations. Both native profiles pass
+111 checks; the parent-read/child-discovery overlap rejects on all four. The
+[review](i3-t02-design-review.md#contextual-integration-evidence-review--spike-072-2026-10-10)
+separates these results from missing complete application lowering, real owner
+integration and resources. The next design artifact is the finite supported
+source/type/effect contract with complete candidate application coverage; C-P3
+and the five-bank decision remain separate. No general escape matrix rerun or
+production adoption is implied.
 
 ## RFC-014 contextual evaluation design — 2026-10-10
 

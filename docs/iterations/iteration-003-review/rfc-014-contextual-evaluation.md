@@ -17,6 +17,35 @@ storage lifetime from an individual Swift borrow.
 
 ## 1. The actual integration gap
 
+### Subsequent bounded evidence — SPIKE-072
+
+Eugene's “Let's do it” provisionally selected mandatory finite transformation
+for the integration experiment, not production adoption.
+[SPIKE-072](../../spikes/spike-072-contextual-traversal-integration.md) now compiles
+seven adapted modules plus a generated application across four configurations;
+both native profiles pass 111 checks. It exercises actual SemanticCore and
+CanvasPlanProducer orchestration with fixture binding, storage and resolved layout.
+The parent-read/child-discovery conflict rejects on all four configurations.
+
+The concrete Swift realization needs **explicit generated associated Body
+types** for this corpus. A universal `View where Body == Never` default caused
+Swift to select Never for the custom root and nested view despite their generic
+opaque-return methods. Native checks failed; SIL confirmed the wrong witnesses.
+The corrected candidate limits default evaluation to an explicit leaf marker and
+derives `ConditionalContent<Nested, Nested>` / `HStack<TupleView3<...>>` aliases
+from the source AST. No custom view is assigned Never or routed around traversal.
+Authored `some View` remains a supported source form; automatic generic opaque
+witness inference is not established. Supported body shapes must be derived and
+checked by the frontend, which adds to its completeness obligation.
+
+This narrows the integration uncertainty; it does not prove the full source
+language, production State wrapper/reconciler, owner tickets, immutable geometry
+plan, nominal identity codec, Dynamic ownership or resources. The
+[application inventory](../../../experiments/spike-072-contextual-traversal-integration/application-coverage.md)
+shows that the tested grammar does not cover either complete application.
+The original analysis below describes the pre-experiment gap; its remaining
+full-integration obligations still apply.
+
 The current [View/visitor declarations](../../../Sources/GiftUI/DeclarativeView.swift)
 require a nonthrowing `body` getter and context-free `_giftUITraverse`.
 [ObservableStateHostMacro](../../../Sources/GiftUIMacros/ObservableStateHostMacro.swift)

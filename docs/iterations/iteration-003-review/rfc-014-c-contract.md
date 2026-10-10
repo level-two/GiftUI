@@ -47,6 +47,15 @@ design; SPIKE-071 does not validate this larger integration.
 
 ## Design commitments in this draft
 
+Subsequent [SPIKE-072](../../spikes/spike-072-contextual-traversal-integration.md)
+supports the contextual connection through adapted SemanticCore/Drawing modules,
+including discriminating painter-order and mid-list failure controls. Its
+generated custom Body types are explicit, with leaf-only default evaluation.
+The [coverage inventory](../../../experiments/spike-072-contextual-traversal-integration/application-coverage.md)
+keeps complete property/helper/current-write lowering open. Actual State/reconciler
+and independent owner/storage proof remain C-P3; this scalar fixture does not
+resolve five-bank accounting or replace the earlier studies' limits.
+
 - Keep one serialized mutation domain. External producers submit immutable
   bounded facts; they never write current or frozen model banks directly.
 - Store model data in stable typed owner storage. `@State` associates a model

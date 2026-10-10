@@ -2,7 +2,7 @@
 id: SPIKE-072
 feature: external-application-integration
 title: Contextual Traversal Integration
-status: active
+status: completed
 authors:
   - codex
 created: 2026-10-10
@@ -85,7 +85,34 @@ with Pi and nRF artifacts under their established target directories.
 
 ## Results
 
-Pending bounded experiment.
+**Supported bounded integration; full application feasibility remains unproved.**
+Registration commit `cb54c57c`; experiment/evidence commit `9e0d49b3`.
+The [terminal report](../../experiments/spike-072-contextual-traversal-integration/evidence/result.md)
+and [ledger](../../experiments/spike-072-contextual-traversal-integration/evidence/ledger.json)
+preserve 60/64 invocations, all failures, and five repairs. The fifth repair is
+an explicit executor deviation from the original four-round ceiling for a missed
+multiline leaf declaration; it is not attributed to maintainer approval.
+
+- Seven adapted framework modules and a separate application compile on all four
+  configurations without a Runtime module. Both final native runs pass 111 checks.
+- Real SemanticCore traverses generated root/nested State hosts, with concrete
+  non-Never Body types, scoped reads, same-frame child discovery, independent
+  expected path/count checks, access versus capacity failure and candidate discard.
+- Real CanvasPlanProducer/CanvasInvocationSource receive separate generic reads;
+  three distinct draws preserve order, mid-list failure cleanup and access-error
+  mapping. Workspace/storage/layout implementations remain bounded test adapters.
+- Holding the parent's read facade while binding a child rejects for overlapping
+  access on all four configurations. Six source rejection controls pass.
+- The first apparent compiler success was invalid: a universal leaf default made
+  Swift infer Never for custom Body types. Native checks and SIL exposed it. The
+  corrected frontend derives explicit Body aliases; generic opaque-return witness
+  inference is not proved. This requirement feeds the contextual design.
+- [Application coverage](../../experiments/spike-072-contextual-traversal-integration/application-coverage.md)
+  identifies unsupported counter and analyzer routes; the small scalar grammar
+  is insufficient for either complete application.
+
+Native execution is behavioral evidence; ARMv6/Cortex-M4F object attributes are
+ABI evidence. Neither is target execution or a complete linked-image cost proof.
 
 ## Limitations
 
@@ -96,7 +123,11 @@ items even if the tested mechanism succeeds.
 
 ## Disposition
 
-Active. Feed terminal evidence into RFC-014 and its CE-1–CE-7 review findings.
+Completed. Feed the supported mechanism and frontend limitation into RFC-014 and
+CE-1–CE-7. Keep B1/B4 open for complete supported source/type/effect lowering,
+production binding and compiler-policy adoption. C-P3 owner/registration/frame
+lifetime, five-bank accounting and full-image costs remain separate gates.
+No production change, automatic follow-on experiment or architecture approval.
 
 ## References
 

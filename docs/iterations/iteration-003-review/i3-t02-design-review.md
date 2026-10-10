@@ -10,6 +10,34 @@ The original I3-T02 findings below describe the authoring task. The subsequent
 [B1 follow-up](#b1-follow-up--spike-069) adds evidence without approving the RFC
 or changing the original task's budget/history.
 
+## Contextual integration evidence review — SPIKE-072, 2026-10-10
+
+**Verdict: not ready for RFC approval; bounded integration mechanism supported.**
+Author consistency review, not independent or human approval.
+[SPIKE-072](../../spikes/spike-072-contextual-traversal-integration.md), experiment
+commit `9e0d49b3`, supplies seven separately compiled adapted modules plus an
+application on four configurations, 111 passing checks on each native profile,
+and four intended parent-read/child-discovery rejections. The
+[terminal report](../../../experiments/spike-072-contextual-traversal-integration/evidence/result.md)
+preserves 60 invocations and the explicit fifth-repair deviation from the initial
+four-round estimate. Production sources, compiler policy and authority are unchanged.
+
+| Finding | Updated disposition / required resolution |
+| --- | --- |
+| CE-1, source/build compatibility | Maintainer provisionally selected finite transformation for this experiment. Mandatory transformation and changed compiled View remain candidate contracts, not adopted source/binary compatibility. |
+| CE-2, generic conformance | Root and nested custom hosts now traverse actual SemanticCore across real module boundaries. The successful realization derives concrete Body aliases; automatic generic opaque Body inference is unproved. A universal leaf default inferred Never and failed native checks; constrain leaf defaults and prove all supported Body shapes. |
+| CE-3, read versus State discovery | Same-frame scalar child discovery works after parent evaluation returns; simultaneous parent-read/child-binding rejects on all four configurations. Fixture Binding/Session do not replace the production State reconciler, registration rollback, independent ownership, owner generations or C-P3. |
+| CE-4, source effects / coverage | Runtime branch identities/counts and poisoned short-circuit reads pass for the finite corpus. The [application inventory](../../../experiments/spike-072-contextual-traversal-integration/application-coverage.md) shows that neither complete application fits the current grammar. Define complete source/type/helper/current-mutation coverage before claiming frontend feasibility. |
+| CE-5, Drawing connection | Actual CanvasPlanProducer/CanvasInvocationSource accept a separately borrowed generic read facade across modules. Distinct draw order, mid-list failure, access-to-invalidScope mapping and release checks pass. Resolved layout, recording workspace and occurrence store are fixtures; actual immutable geometry storage/host publication remain unproved. |
+| CE-6, compiler / resources | Four supported configurations and separate modules compile with the pinned experimental flags. Native flags use the same scalar owner; Dynamic class equivalence and complete-image heap/stack/indirect-call costs are not proved. No target execution claim. |
+| CE-7, physical storage | Unchanged: scalar two-entry backing does not settle independent capture owners or amend ADR-034. Complete C-P3 and exact resource accounting before the five-bank decision. |
+
+The next useful design work is a finite source/type/effect contract and complete
+counter/analyzer candidate corpus, including explicit Body derivation, helper
+classification and current mutation/report routes. Keep independent owner/frame
+storage proof separate. Do not repeat the general escape matrix or hide required
+frontend work in FW-035. Candidate ADR extraction remains after RFC approval.
+
 ## Contextual evaluation design review — 2026-10-10
 
 **Verdict: not ready for RFC approval; requested design step delivered.** This
