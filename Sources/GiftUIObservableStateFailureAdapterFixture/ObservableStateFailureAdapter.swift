@@ -12,14 +12,14 @@ package enum ObservableStateFailureDetectionContext: UInt8, Equatable, Sendable 
 }
 
 package struct ObservableStateVisibleFailures: OptionSet, Equatable, Sendable {
-    package let rawValue: UInt16
+    package let rawValue: UInt32
 
-    package init(rawValue: UInt16) {
-        self.rawValue = rawValue & 0x0FFF
+    package init(rawValue: UInt32) {
+        self.rawValue = rawValue & 0x0003_FFFF
     }
 
     package static func failure(_ error: ObservableStateError) -> Self {
-        Self(rawValue: 1 << UInt16(error.rawValue))
+        Self(rawValue: 1 << UInt32(error.rawValue))
     }
 }
 
@@ -39,10 +39,17 @@ package enum GiftUIObservableStateFailureAdapter {
         }
         if visible.contains(.failure(.invalidPhaseContained)) { return .invalidPhaseContained }
         if visible.contains(.failure(.incompatibleAssociation)) { return .incompatibleAssociation }
+        if visible.contains(.failure(.staleModel)) { return .staleModel }
         if visible.contains(.failure(.duplicateOwner)) { return .duplicateOwner }
         if visible.contains(.failure(.registrationGenerationExhausted)) {
             return .registrationGenerationExhausted
         }
+        if visible.contains(.failure(.modelGenerationExhausted)) {
+            return .modelGenerationExhausted
+        }
+        if visible.contains(.failure(.retainedModel)) { return .retainedModel }
+        if visible.contains(.failure(.modelCapacityExhausted)) { return .modelCapacityExhausted }
+        if visible.contains(.failure(.ownerCapacityExhausted)) { return .ownerCapacityExhausted }
         if visible.contains(.failure(.locationCapacityExhausted)) {
             return .locationCapacityExhausted
         }
@@ -56,6 +63,7 @@ package enum GiftUIObservableStateFailureAdapter {
             return .replacementStagingCapacityExhausted
         }
         if visible.contains(.failure(.staleAttachment)) { return .staleAttachment }
+        if visible.contains(.failure(.modelReadOutOfBounds)) { return .modelReadOutOfBounds }
         if visible.contains(.failure(.invariantViolation)) { return .invariantViolation }
         return nil
     }
@@ -93,18 +101,26 @@ package enum GiftUIObservableStateFailureAdapter {
             return nil
         case (.staleAttachment, .retiredReport):
             allowed = .continueOperation
-        case (.registrationCapacityExhausted, .replacement),
+        case (.modelCapacityExhausted, .replacement),
+            (.ownerCapacityExhausted, .replacement),
+            (.retainedModel, .replacement),
+            (.staleModel, .replacement),
+            (.modelReadOutOfBounds, .activeCycle),
+            (.registrationCapacityExhausted, .replacement),
             (.replacementStagingCapacityExhausted, .replacement),
             (.duplicateOwner, .replacement),
             (.incompatibleAssociation, .replacement),
             (.staleAttachment, .replacementAttachment):
             allowed = [.continueOperation, .quiesceAffectedScope]
-        case (.registrationGenerationExhausted, .runtime),
+        case (.modelGenerationExhausted, .runtime),
+            (.registrationGenerationExhausted, .runtime),
             (.invalidPhaseSafetyNotProven, .activeCycle),
             (.reentrancyViolation, .activeCycle),
             (.invariantViolation, .runtime):
             allowed = [.quiesceAffectedScope, .invokeFatalHook]
-        case (.locationCapacityExhausted, .initialOrCandidateBinding),
+        case (.modelCapacityExhausted, .initialOrCandidateBinding),
+            (.ownerCapacityExhausted, .initialOrCandidateBinding),
+            (.locationCapacityExhausted, .initialOrCandidateBinding),
             (.registrationCapacityExhausted, .initialOrCandidateBinding),
             (.associationStagingCapacityExhausted, .activeCycle),
             (.duplicateOwner, .initialOrCandidateBinding),
@@ -137,15 +153,20 @@ package enum GiftUIObservableStateFailureAdapter {
         containment: GiftUIContainment
     )? {
         switch (error, context) {
-        case (.locationCapacityExhausted, .initialOrCandidateBinding),
+        case (.modelCapacityExhausted, .initialOrCandidateBinding),
+            (.ownerCapacityExhausted, .initialOrCandidateBinding),
+            (.locationCapacityExhausted, .initialOrCandidateBinding),
             (.registrationCapacityExhausted, .initialOrCandidateBinding):
             (.capacityExhausted, .component, .contained)
-        case (.registrationCapacityExhausted, .replacement),
+        case (.modelCapacityExhausted, .replacement),
+            (.ownerCapacityExhausted, .replacement),
+            (.retainedModel, .replacement),
+            (.registrationCapacityExhausted, .replacement),
             (.replacementStagingCapacityExhausted, .replacement):
             (.capacityExhausted, .operation, .contained)
         case (.associationStagingCapacityExhausted, .activeCycle):
             (.capacityExhausted, .activeCycle, .contained)
-        case (.registrationGenerationExhausted, .runtime):
+        case (.modelGenerationExhausted, .runtime), (.registrationGenerationExhausted, .runtime):
             (.invalidIdentity, .runtime, .safetyNotProven)
         case (.duplicateOwner, .initialOrCandidateBinding),
             (.incompatibleAssociation, .initialOrCandidateBinding),
@@ -156,6 +177,11 @@ package enum GiftUIObservableStateFailureAdapter {
             (.staleAttachment, .replacementAttachment),
             (.staleAttachment, .retiredReport):
             (.invalidIdentity, .operation, .contained)
+        case (.staleModel, .replacement), (.staleModel, .initialOrCandidateBinding),
+            (.staleModel, .activeCycle):
+            (.invalidIdentity, .operation, .contained)
+        case (.modelReadOutOfBounds, .activeCycle):
+            (.invalidValue, .activeCycle, .contained)
         case (.invalidPhaseContained, .activeCycle):
             (.invalidPhase, .activeCycle, .contained)
         case (.invalidPhaseSafetyNotProven, .activeCycle):

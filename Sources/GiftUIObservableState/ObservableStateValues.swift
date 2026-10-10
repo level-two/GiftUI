@@ -1,4 +1,4 @@
-import GiftUIExecution
+import GiftUI
 
 package struct ObservableStateLimits: Equatable, Sendable {
     package let maximumLocations: UInt16
@@ -21,7 +21,7 @@ package struct ObservableStateLimits: Equatable, Sendable {
     }
 }
 
-package enum ObservableStateError: UInt8, Equatable, Sendable {
+package enum ObservableStateError: UInt8, Error, Equatable, Sendable {
     case locationCapacityExhausted = 0
     case registrationCapacityExhausted = 1
     case associationStagingCapacityExhausted = 2
@@ -34,6 +34,20 @@ package enum ObservableStateError: UInt8, Equatable, Sendable {
     case invalidPhaseSafetyNotProven = 9
     case reentrancyViolation = 10
     case invariantViolation = 11
+    case modelCapacityExhausted = 12
+    case ownerCapacityExhausted = 13
+    case retainedModel = 14
+    case modelGenerationExhausted = 15
+    case staleModel = 16
+    case modelReadOutOfBounds = 17
+
+    package init(accessFailure: _GiftUIAccessFailure) {
+        switch accessFailure {
+        case .invalidPhase: self = .invalidPhaseSafetyNotProven
+        case .wrongOwner, .wrongSchema, .staleModel: self = .staleModel
+        case .outOfBounds: self = .modelReadOutOfBounds
+        }
+    }
 }
 
 package enum ObservableStateOperational: UInt8, Equatable, Sendable {

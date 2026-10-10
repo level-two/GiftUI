@@ -107,7 +107,19 @@ package enum SignalAnalyzerCycleFailureNormalizer {
                 fact(.capacityExhausted, .observableState, .activeCycle, .contained)
             case .replacementStagingCapacityExhausted:
                 fact(.capacityExhausted, .observableState, .operation, .contained)
-            case .registrationGenerationExhausted:
+            case .modelCapacityExhausted, .ownerCapacityExhausted:
+                fact(
+                    .capacityExhausted, .observableState,
+                    context.phase == .mutating ? .operation : .component,
+                    .contained
+                )
+            case .retainedModel:
+                fact(.capacityExhausted, .observableState, .operation, .contained)
+            case .staleModel:
+                fact(.invalidIdentity, .observableState, .operation, .contained)
+            case .modelReadOutOfBounds:
+                fact(.invalidValue, .observableState, .activeCycle, .contained)
+            case .registrationGenerationExhausted, .modelGenerationExhausted:
                 fact(.invalidIdentity, .observableState, .runtime, .safetyNotProven)
             case .duplicateOwner, .incompatibleAssociation, .staleAttachment:
                 fact(

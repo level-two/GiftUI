@@ -161,8 +161,9 @@ features:
       - giftui-mvp-architecture
     milestone: MVP
   observable-reference-state:
+    # SPEC-010 RFC-014 implementation started at P03 after P02 passed.
     title: Observable Reference State
-    status: specification
+    status: implementation
     proposal:
       - PROPOSAL-005
     rfcs:

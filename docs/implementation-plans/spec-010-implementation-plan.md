@@ -2,7 +2,7 @@
 spec: SPEC-010
 feature: observable-reference-state
 title: SPEC-010 Implementation Plan
-status: ready
+status: active
 owners:
   - codex
 created: 2026-09-04
@@ -25,7 +25,7 @@ superseded_by: null
 ## RFC-014 implementation readiness — 2026-10-10
 
 **Ready under [explicit Spec approval](../iterations/iteration-003-review/rfc-014-spec-approval.md).**
-Implementation has not started. The [bounded sequence](../iterations/iteration-003-review/rfc-014-implementation-plan.md)
+P03 implementation started after the recorded P02 exit passed. The [bounded sequence](../iterations/iteration-003-review/rfc-014-implementation-plan.md)
 is the shared ordering/scope index: exactly P01–P12, not an expandable backlog.
 This owner contributes P03; its final regression/resource/disposition
 obligations run through P10–P12. Only the current checkpoint below is new work.
@@ -46,7 +46,7 @@ not additional authorization to rerun an MVP implementation or reopen experiment
   shared sequence, then P10's registered hardware-free gate. Compiler-selection
   propagation follows P01; no historical check is weakened.
   **Evidence:** existing owner conformance report and immutable owner-driver
-  reports linked to exact commits/artifacts; no success evidence exists yet.
+  reports linked to exact commits/artifacts; [P03 progress](../../Tests/ContractFixtures/SPEC010/Evidence/rfc-014-p03/progress.md) records the validated increments and remaining checks.
 
 The single current acceptance matrix retains each criterion once. Its historical
 task IDs remain provenance; `T10.1` adds fresh migration verification without

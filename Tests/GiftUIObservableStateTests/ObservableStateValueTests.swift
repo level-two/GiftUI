@@ -60,13 +60,19 @@ func observableStateErrorsHaveExactClosedRawValues() {
         (.invalidPhaseSafetyNotProven, 9),
         (.reentrancyViolation, 10),
         (.invariantViolation, 11),
+        (.modelCapacityExhausted, 12),
+        (.ownerCapacityExhausted, 13),
+        (.retainedModel, 14),
+        (.modelGenerationExhausted, 15),
+        (.staleModel, 16),
+        (.modelReadOutOfBounds, 17),
     ]
 
     for (value, rawValue) in cases {
         #expect(value.rawValue == rawValue)
         #expect(ObservableStateError(rawValue: rawValue) == value)
     }
-    #expect(ObservableStateError(rawValue: 12) == nil)
+    #expect(ObservableStateError(rawValue: 18) == nil)
     #expect(ObservableStateError(rawValue: .max) == nil)
 }
 

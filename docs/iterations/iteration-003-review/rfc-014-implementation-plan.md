@@ -1,6 +1,6 @@
 # RFC-014 bounded implementation sequence — 2026-10-10
 
-**P01–P02 passed; P03 is next.** This is the shared
+**P01–P02 passed; P03 in progress.** This is the shared
 sequencing index for nine owner Implementation Plans, not another contract or
 investigation. It derives only the [approved Spec amendments](rfc-014-spec-approval.md)
 at `3c260bbc` and accepted ADR-035/036/037. ITERATION-003 I3-04/05 supplies the
@@ -210,7 +210,7 @@ Shared inventory routes retain their named ownership, runtime, action, Canvas
 and complete-application integration obligations. The whole-tree migration and
 resource/connected evidence are not inferred from this declaration exit.
 
-P03–P12 remain pending; P03 is the next dependency-complete package. There is no
+P03 implementation is active; P04–P12 remain pending. There is no
 remaining P02 exit failure, new package, scope expansion or architecture change.
 
 Planning was prepared without implementation or experiment execution. Optional work remains in the existing deferred track; no new optional

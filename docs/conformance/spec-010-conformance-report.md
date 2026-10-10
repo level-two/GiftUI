@@ -2,10 +2,10 @@
 spec: SPEC-010
 feature: observable-reference-state
 title: SPEC-010 Conformance Report
-status: complete
+status: collecting
 reviewers: [codex]
 created: 2026-09-19
-updated: 2026-10-03
+updated: 2026-10-10
 implementation_plan: ../implementation-plans/spec-010-implementation-plan.md
 related_future_work: [FW-019]
 related_explorations: []
@@ -19,7 +19,14 @@ superseded_by: null
 > This report records evidence. It does not authorize the governing
 > Specification's `implemented` transition.
 
-## Review Scope
+## RFC-014 migration scope
+
+P03 is in progress under the approved amendment. The results below describe
+historical baseline inputs; they do not establish OS-RD-001–004 or renewed
+baseline conformance. Ownership, replacement, profile and final adoption checks
+remain open under the active implementation plan.
+
+## Historical Review Scope
 
 The review freezes [SPEC-010](../specs/spec-010-observable-reference-state.md)
 at pre-report SHA-256
