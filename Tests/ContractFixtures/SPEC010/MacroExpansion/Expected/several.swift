@@ -8,13 +8,13 @@ public struct SeveralHost: View {
     public var body: Never { fatalError() }
 
     public mutating func _giftUIVisitObservableStateDeclarations<
-        Visitor: _GiftUIObservableStateDeclarationVisitor
+        Visitor: _GiftUIObservableStateDeclarationVisitor & ~Copyable & ~Escapable
     >(_ visitor: inout Visitor) {
         visitor.visit(&_first, declarationOrdinal: 0)
         visitor.visit(&_second, declarationOrdinal: 1)
     }
 
-    public func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor>(
+    public func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor & ~Copyable & ~Escapable>(
         _ visitor: inout Visitor
     ) where Visitor.Domain == Domain {
         visitor.visitStatefulCustomView(self) {

@@ -11,11 +11,13 @@ import tempfile
 
 root = pathlib.Path(__file__).resolve().parents[2]
 parser = argparse.ArgumentParser()
+parser.add_argument('--profile', choices=('macos-static', 'macos-dynamic', 'raspberry-pi-armv6', 'nrf52840-embedded'))
 parser.add_argument('--giftui-build', type=pathlib.Path, required=True)
 args = parser.parse_args()
 base = args.giftui_build.resolve()
 report = json.loads((base / 'result.json').read_text())
 profile = report['profile']
+assert args.profile is None or args.profile == profile, 'requested profile differs from core receipt'
 for name, digest in report['inputs'].items():
     if name.startswith(('Sources/GiftUI/', 'Sources/GiftUIMacros/')):
         assert hashlib.sha256((root / name).read_bytes()).hexdigest() == digest, name
@@ -48,10 +50,11 @@ def run(command, log):
     return result.stdout
 
 modules = [
+    ('GiftUIExecution', [root / 'Sources/GiftUIExecution/ObservableTargetGeneration.swift']),
     ('GiftUIObservableState', [root / 'Sources/GiftUIObservableState' / name for name in
-                              ('ObservableStateValues.swift', 'ObservableModelIdentity.swift', 'ObservableModelOwnership.swift', 'ObservableModelTicket.swift', 'ObservableModelScope.swift', 'ObservableModelMutation.swift', 'ObservableStateModel.swift', 'ObservableStateRegistrationLifecycle.swift', 'ObservableStateRootScope.swift')]),
-    ('GiftUIRuntimeStatic', [root / 'Sources/GiftUIRuntimeStatic' / name for name in ('StaticObservableModelStorage.swift', 'StaticObservableRootAdapter.swift')]),
-    ('GiftUIRuntimeDynamic', [root / 'Sources/GiftUIRuntimeDynamic' / name for name in ('DynamicObservableModelStorage.swift', 'DynamicObservableModelRegistration.swift', 'DynamicObservableRootAdapter.swift')]),
+                              ('ObservableStateValues.swift', 'ObservableModelIdentity.swift', 'ObservableModelOwnership.swift', 'ObservableModelTicket.swift', 'ObservableModelScope.swift', 'ObservableModelMutation.swift', 'ObservableStateModel.swift', 'ObservableStateRegistrationLifecycle.swift', 'ObservableStateRootScope.swift', 'ObservableStateRootTargetAccess.swift', 'ObservableStateBindingDecorator.swift')]),
+    ('GiftUIRuntimeStatic', [root / 'Sources/GiftUIRuntimeStatic' / name for name in ('StaticObservableModelStorage.swift', 'StaticObservableRootAdapter.swift', 'StaticObservableRootTargetAccess.swift')]),
+    ('GiftUIRuntimeDynamic', [root / 'Sources/GiftUIRuntimeDynamic' / name for name in ('DynamicObservableModelStorage.swift', 'DynamicObservableModelRegistration.swift', 'DynamicObservableRootAdapter.swift', 'DynamicObservableRootTargetAccess.swift', 'DynamicObservableStateReconciler.swift')]),
     ('GiftUIFailureCore', sorted((root / 'Sources/GiftUIFailureCore').glob('*.swift'))),
     ('GiftUIObservableStateFailureAdapterFixture', [root / 'Sources/GiftUIObservableStateFailureAdapterFixture/ObservableStateFailureAdapter.swift']),
 ]
@@ -94,7 +97,7 @@ state_probe = fixture_root / 'StateProbe.swift'
 run([swift, *flags, '-module-name', 'P03StateProbe', '-emit-object', state_probe,
      '-o', out / 'state-probe.o'], 'state-probe')
 layout_probe = fixture_root / 'LayoutProbe.swift'
-run([swift, *flags, '-module-name', 'P03LayoutProbe', '-emit-ir', layout_probe,
+run([swift, *flags, '-module-name', 'P03LayoutProbe', '-emit-ir', layout_probe, fixture_root / 'RootProbe.swift', fixture_root / 'LexicalProbe.swift',
      '-o', out / 'layout-probe.ll'], 'layout-probe')
 layout_ir = (out / 'layout-probe.ll').read_text()
 layouts = {}
@@ -108,14 +111,15 @@ for name, body in re.findall(r'define[^\n]*@giftui_p03_layout_([a-z0-9_]+)\([^\n
         constant = re.search(r'ret i(?:32|64) (\d+)', target.group(1))
     assert constant, (name, body)
     layouts[name] = int(constant.group(1))
-assert len(layouts) == 16, layouts
+assert len(layouts) == 19, layouts
 (out / 'layouts.json').write_text(json.dumps(layouts, sort_keys=True, indent=2) + '\n')
 root_probe = fixture_root / 'RootProbe.swift'
-run([swift, *flags, '-module-name', 'P03RootProbe', '-emit-object', root_probe,
+lexical_probe = fixture_root / 'LexicalProbe.swift'
+run([swift, *flags, '-module-name', 'P03RootProbe', '-emit-object', root_probe, lexical_probe,
      '-o', out / 'root-probe.o'], 'root-probe')
 allocation_attribution = None
 if profile == 'nrf52840-embedded':
-    run([swift, *flags, '-module-name', 'P03RootProbe', '-emit-ir', root_probe,
+    run([swift, *flags, '-module-name', 'P03RootProbe', '-emit-ir', root_probe, lexical_probe,
          '-o', out / 'root-allocation-attribution.ll'], 'root-allocation-attribution')
     ir = (out / 'root-allocation-attribution.ll').read_text()
     definitions = re.findall(r'^define[^\n]*@"([^"\n]+)"\([^\n]*\)[^{]*\{(.*?)^}', ir, re.S | re.M)
@@ -130,12 +134,6 @@ if profile == 'nrf52840-embedded':
         'ir_sha256': hashlib.sha256(ir.encode()).hexdigest(),
     }
     (out / 'root-allocation-attribution.json').write_text(json.dumps(allocation_attribution, indent=2) + '\n')
-visitor_escape = None
-if profile.startswith('macos'):
-    escaping_probe = fixture_root / 'EscapingVisitorProbe.swift'
-    run([swift, *flags, '-module-name', 'P03EscapingVisitor', '-emit-object', escaping_probe,
-         '-o', out / 'escaping-public-visitor.o'], 'escaping-public-visitor')
-    visitor_escape = 'Confirmed: public generic witness can save visitor in an escaping closure. Unsafe lexical join omitted; contract decision required.'
 mutation_probe = fixture_root / 'MutationProbe.swift'
 run([swift, *flags, '-module-name', 'P03MutationProbe', '-emit-object', mutation_probe,
      '-o', out / 'mutation-probe.o'], 'mutation-probe')
@@ -149,7 +147,7 @@ if profile.startswith('macos'):
         if fixture == 'BackingChecks': sources.append(probe)
         if fixture == 'StateChecks': sources.append(state_probe)
         if fixture == 'MutationChecks': sources.append(mutation_probe)
-        if fixture == 'RootChecks': sources.append(root_probe)
+        if fixture == 'RootChecks': sources.extend([root_probe, lexical_probe])
         run([swift, *flags, *sources,
              base / 'GiftUI.o', *[out / (name + '.o') for name, _ in modules], '-o', executable], fixture + '-link')
         execution = run([executable], fixture + '-execution').strip()
@@ -164,6 +162,34 @@ else:
     print('P03 ownership/backing components: ' + profile + ' compilation/ABI passed; no target execution')
 
 negatives = {
+    'declaration-visitor-copy': ('Copyable', """import GiftUI
+        func bad<V: _GiftUIObservableStateDeclarationVisitor & ~Copyable & ~Escapable>(_ visitor: borrowing V) {
+            let saved = copy visitor
+            _ = saved
+        }
+    """),
+    'declaration-visitor-escape': ('Escapable', """import GiftUI
+        func bad<V: _GiftUIObservableStateDeclarationVisitor & ~Escapable>(_ visitor: V) -> () -> Void {
+            return { _ = visitor }
+        }
+    """),
+    'semantic-visitor-copy': ('Copyable', """import GiftUI
+        func bad<V: _GiftUISemanticTraversalVisitor & ~Copyable & ~Escapable>(_ visitor: borrowing V) {
+            let saved = copy visitor
+            _ = saved
+        }
+    """),
+    'semantic-visitor-escape': ('Escapable', """import GiftUI
+        func bad<V: _GiftUISemanticTraversalVisitor & ~Escapable>(_ visitor: V) -> () -> Void {
+            return { _ = visitor }
+        }
+    """),
+    'root-escape': ('Escapable', """import GiftUIObservableState
+        import GiftUIRuntimeStatic
+        func bad<M: ObservableStateModel & ~Copyable>(_ root: inout StaticObservableRootAdapter<M, UInt8>) throws(ObservableStateError) -> ObservableStateRootScope<M, UInt8> {
+            try root.withLifetime { (scope, owner) throws(ObservableStateError) in owner.borrowedRoot() }
+        }
+    """),
     'state-raw-reference': ('does not conform', '''import GiftUI
         class Model {}
         let state = State<Model>(seed: Model())
@@ -200,7 +226,7 @@ for name, (diagnostic, source) in negatives.items():
     (out / (name + '.log')).write_text(result.stdout + result.stderr)
     assert result.returncode != 0 and diagnostic in result.stderr, result.stdout + result.stderr
 (out / 'commands.txt').write_text('\n'.join(commands) + '\n')
-inputs = sorted(set([pathlib.Path(__file__).resolve(), *[path for _, files in modules for path in files],
+inputs = sorted(set([pathlib.Path(__file__).resolve(), root / 'scripts/contracts/run-spec-010.sh', root / 'scripts/contracts/driver-registry.tsv', *[path for _, files in modules for path in files],
                      *fixture_root.glob('*')]))
 receipt = {
     'package': 'P03', 'slice': 'State representation and lowering; selected production components',
@@ -208,10 +234,10 @@ receipt = {
     'core_receipt': str(base / 'result.json'),
     'core_receipt_sha256': hashlib.sha256((base / 'result.json').read_bytes()).hexdigest(),
     'inputs': {str(p.relative_to(root)): hashlib.sha256(p.read_bytes()).hexdigest() for p in inputs if p.is_file()},
-    'executions': executions, 'layouts': layouts, 'allocation_attribution': allocation_attribution, 'visitor_escape_blocker': visitor_escape, 'negative_controls': [*negatives, 'state-effectful-seed', 'state-wrong-seed', 'state-shadow', 'state-computed'],
+    'executions': executions, 'layouts': layouts, 'allocation_attribution': allocation_attribution, 'visitor_escape_blocker': 'Historical defect resolved by approved constraints; negative controls required below', 'negative_controls': [*negatives, 'state-effectful-seed', 'state-wrong-seed', 'state-shadow', 'state-computed'],
     'artifacts': {p.name: hashlib.sha256(p.read_bytes()).hexdigest() for p in out.iterdir()
                   if p.suffix in ('.o', '.swiftmodule', '.swift')},
-    'boundary': 'Actual direct scoped root callbacks. P03 blocked on escapable public lexical visitor; unsafe lexical join omitted, target-access and final exits pending. No complete-module, whole-image or target execution claim.',
+    'boundary': 'Selected real scoped owner/root/binder/target components and generated nested traversal; no complete-module, semantic-record, coordinator, whole-image or target-execution claim.',
 }
 (out / 'result.json').write_text(json.dumps(receipt, indent=2, sort_keys=True) + '\n')
 print('P03 State/ownership controls passed: ' + profile + '; ' + str(out / 'result.json'))

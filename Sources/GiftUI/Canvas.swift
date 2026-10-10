@@ -30,7 +30,7 @@ public struct Canvas<D: _GiftUIReadDomain>: View, _GiftUISemanticPrimitivePayloa
         fatalError("Canvas has no view body")
     }
 
-    public func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor>(
+    public func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor & ~Copyable & ~Escapable>(
         _ visitor: inout Visitor
     ) where Visitor.Domain == Domain {
         visitor.visitPrimitive(self)

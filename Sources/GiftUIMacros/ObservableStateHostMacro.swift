@@ -39,13 +39,13 @@ public struct ObservableStateHostMacro: MemberMacro, ExtensionMacro {
 
         let declarationVisitor: DeclSyntax = """
             \(raw: access)\(raw: mutation)func _giftUIVisitObservableStateDeclarations<
-                Visitor: _GiftUIObservableStateDeclarationVisitor
+                Visitor: _GiftUIObservableStateDeclarationVisitor & ~Copyable & ~Escapable
             >(_ visitor: inout Visitor) {
                 \(raw: visits)
             }
             """
         let traversal: DeclSyntax = """
-            \(raw: access)func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor>(
+            \(raw: access)func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor & ~Copyable & ~Escapable>(
                 _ visitor: inout Visitor
             ) where Visitor.Domain == Domain {
                 visitor.visitStatefulCustomView(self) {

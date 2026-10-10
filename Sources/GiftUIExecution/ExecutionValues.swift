@@ -33,14 +33,6 @@ package struct ActionGeneration: Equatable, Hashable, Sendable {
     }
 }
 
-package struct ObservableTargetGeneration: Equatable, Hashable, Sendable {
-    package let rawValue: UInt32
-
-    package init(rawValue: UInt32) {
-        self.rawValue = rawValue
-    }
-}
-
 package enum ExecutionPhase: UInt8, Equatable, Sendable {
     case idle = 0
     case admitting = 1

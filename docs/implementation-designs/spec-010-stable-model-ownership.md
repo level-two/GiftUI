@@ -113,7 +113,9 @@ owning ticket during new-location binding. The descriptor alone neither owns
 the candidate nor authorizes attachment. The scoped root now validates the matching candidate ticket and transfers its
 claim to the separately retained registration only after real attachment
 verification. Preserved locations discard fresh seeds without attachment. The
-lexical visitor join remains pending.
+lexical visitor consumes matching offers from four bounded claim-descriptor slots;
+o additional owner is acquired. Unused offers release their existing claims at
+candidate completion or root shutdown.
 Effectful/malformed seed construction, computed State and unsupported local
 shadowing fail before generated output is emitted.
 
@@ -156,14 +158,42 @@ Shutdown retires routing before detach; the owning activation then releases all
 remaining nonescapable claims and destroys model values before backing ends,
 without resetting allocation or claim serials.
 
-The lexical generated visitor and target-access join remain P03 work; complete
-application operation witnesses belong to their named downstream consumers.
-The attempted raw-pointer lexical visitor was removed after a public host
-witness compiled while saving a generic visitor copy in an escaping closure.
-A private visitor type does not seal that generic public call. P03 is stopped
-on the reviewed contract question: literal two-pass enumeration violates OS-010,
-and no compliant alternative has been demonstrated; see the [blocker](../../Tests/ContractFixtures/SPEC010/Evidence/rfc-014-p03/lexical-visitor-blocker.md). The ledger and typed backing checks are incremental
-evidence, not a claim that these remaining callback obligations already pass.
+The approved scoped-visitor amendment is now realized in both public generic
+visitor protocols and their host/View witnesses. Suppressed Copyable/Escapable
+requirements propagate through generated declarations, containers and modifiers.
+The private declaration binder is noncopyable and nonescapable, contains the
+actual borrowed root scope, and is lifetime-dependent on that scope. Generic
+custom witnesses therefore cannot copy or escape it. The root copies the ordinary
+View declaration, visits its State declarations once in discovery, and invokes
+the body only after successful binding. Each read ends before the owned child
+View reenters discovery. The two profile target-access aliases also carry the
+actual root borrow and reject stale registration generation before checked writes.
+They expose no escaping model resolver.
+
+The profile root adapters nest `scope.withRoot(storage: &registration)` directly
+inside `models.withLifetime`. Their registration backing remains owned through
+model teardown. The package helper also supports a shorter root-storage borrow:
+its terminal cleanup is therefore independently enforced, not inferred from the
+production adapters. Failed detach latches the ledger's existing retired phase;
+normal mutation, reporting, ownership, frame entry and later activation refuse.
+Root shutdown still retires other report routes and attempts remaining detach
+hooks. Before either pointer-lending callback for root/report storage ends,
+`finishStoppedActivation` invalidates all remaining claims and destroys model
+values, including models retained by independent tickets. Destructors that retain
+a sink can only see retired routes while the report storage still exists. The
+terminal phase survives the outer activation cleanup; it requires fresh storage.
+Rejected-attachment cleanup, candidate removal, replacement postcommit detach
+and explicit shutdown all participate. Normal detach preserves independent
+ownership as before. The postcommit invariant test proves B's selected identity,
+attachment value and dirtiness remain committed, then verifies stopped reads;
+it does not reopen a normal cycle to inspect B. For these detach-invariant paths this implements SPEC-010's mandatory stop and
+teardown requirements; P07 still owns complete-cycle handling of the full
+safety-not-proven/reentrancy/invariant family, policy and publication cleanup.
+
+The historical unsafe copyable visitor reproduction is retained in the
+[resolved blocker record](../../Tests/ContractFixtures/SPEC010/Evidence/rfc-014-p03/lexical-visitor-blocker.md).
+It is not retroactively classified as safe. Complete application operation
+witnesses and semantic-record production remain downstream work.
 
 ## Resource and validation boundary
 
@@ -176,7 +206,9 @@ Each model metadata record is 16 bytes, with its one-byte frame pin at offset
 11. Claims and claim records are 16 bytes, scoped tickets 20 bytes aligned to 4,
 and replacement bookkeeping 56 bytes. With the fixture's UInt8 structural
 identity, each actual registration record is 24 bytes, each report route 12 bytes,
-the two-route report store 28 bytes, and root storage remains 84 bytes.
+the two-route report store 28 bytes, and root storage is 164 bytes, including four 20-byte optional offer descriptors.
+Actual root/target scoped values are 48/56 bytes on native macOS and 24/28 bytes
+on ARMv6/Embedded; these descriptors do not own additional model backing.
 Read-slot/scope/sink strides are respectively 24/32/24 bytes on native macOS and
 12/16/16 on ARMv6/Embedded. The final exact-path identity and application model
 payloads remain separate charges. Compiler IR supplies target layouts without

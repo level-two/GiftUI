@@ -1,4 +1,5 @@
 import GiftUI
+import GiftUIExecution
 
 /// Registration/dirty storage is separate from model bytes and ownership. The
 /// activation factory lends this entire value until all model sinks are retired.
@@ -14,6 +15,8 @@ package struct ObservableStateRootStorage<Identity: Equatable & Sendable> {
     }
     fileprivate var records: InlineArray<2, Record> = .init(repeating: Record())
     fileprivate var reports = ObservableStateRootReports()
+    fileprivate var offeredClaims: InlineArray<4, ObservableModelOwnership.Claim?> = .init(
+        repeating: nil)
     fileprivate var nextGeneration: UInt32? = 0
     fileprivate var candidateActive = false
     fileprivate var operationActive = false
@@ -82,6 +85,7 @@ where Model: ObservableStateModel & ~Copyable, Schema == Model.Schema {
                 (reports) throws(ObservableStateError) in
                 let root = ObservableStateRootScope(
                     models: borrowedScope(), records: records, reports: reports)
+                defer { finishStoppedActivation() }
                 do throws(ObservableStateError) {
                     let result = try body(root)
                     try root.shutdown()
@@ -114,6 +118,18 @@ package struct ObservableStateRootScope<
         self.reports = copy reports
     }
 
+    @_lifetime(copy self)
+    package borrowing func borrowedRoot() -> ObservableStateRootScope<Model, Identity> {
+        ObservableStateRootScope(borrowing: self)
+    }
+
+    @_lifetime(copy other)
+    private init(borrowing other: borrowing ObservableStateRootScope<Model, Identity>) {
+        models = other.models.borrowedScope()
+        records = other.records
+        reports = other.reports
+    }
+
     package var isDirty: Bool {
         reports.pointee.routes[0].dirty || reports.pointee.routes[1].dirty
     }
@@ -121,10 +137,7 @@ package struct ObservableStateRootScope<
     private borrowing func checkOperation(discovery: Bool = false) throws(ObservableStateError) {
         guard !records.pointee.retired else { throw .invalidPhaseSafetyNotProven }
         guard !records.pointee.operationActive else { throw .reentrancyViolation }
-        if models.phase == .replacing || models.phase == .writing { throw .reentrancyViolation }
-        guard models.phase == .mutating || (discovery && models.phase == .discovering) else {
-            throw .invalidPhaseContained
-        }
+        try models.validateOperation(discovery: discovery)
     }
 
     package borrowing func beginCandidate() -> ObservableStateResult {
@@ -217,6 +230,18 @@ package struct ObservableStateRootScope<
             if try preserved(identity, ordinal: ordinal, state: &state) {
                 return .success(.preserved)
             }
+            if case .candidate(let key)? = state._giftUIInitial {
+                for i in 0 ..< 4 {
+                    guard let claim = records.pointee.offeredClaims[i],
+                        models.key(for: claim.address) == key
+                    else { continue }
+                    var ticket = ObservableModelTicket<Model.Schema>(claim: claim, lifetime: models)
+                    try install(identity, ordinal: ordinal, state: &state, ticket: &ticket)
+                    records.pointee.offeredClaims[i] = nil
+                    return .success(.materialized)
+                }
+                throw .incompatibleAssociation
+            }
             guard case .seed(let seed)? = state._giftUIInitial else {
                 throw .incompatibleAssociation
             }
@@ -256,6 +281,34 @@ package struct ObservableStateRootScope<
         } catch { return .failure(error) }
     }
 
+    /// Transfers an explicit claim into this activation's bounded candidate set.
+    /// Unused claims are released on candidate completion or activation teardown.
+    package borrowing func offerCandidate(_ ticket: inout ObservableModelTicket<Model.Schema>)
+        -> ObservableStateResult
+    {
+        do throws(ObservableStateError) {
+            try checkOperation()
+            try models.validateTicket(ticket)
+            for i in 0 ..< 4 where records.pointee.offeredClaims[i] == nil {
+                records.pointee.offeredClaims[i] = try ticket.requireClaim()
+                ticket.endOwnership()
+                return .success(.unchanged)
+            }
+            throw .ownerCapacityExhausted
+        } catch { return .failure(error) }
+    }
+
+    private borrowing func releaseOffers() throws(ObservableStateError) {
+        var failure: ObservableStateError?
+        for i in 0 ..< 4 {
+            guard let claim = records.pointee.offeredClaims[i] else { continue }
+            var ticket = ObservableModelTicket<Model.Schema>(claim: claim, lifetime: models)
+            do { try models.release(&ticket) } catch { if failure == nil { failure = error } }
+            records.pointee.offeredClaims[i] = nil
+        }
+        if let failure { throw failure }
+    }
+
     private borrowing func install(
         _ identity: Identity, ordinal: UInt16, state: inout State<Model.Schema>,
         ticket: inout ObservableModelTicket<Model.Schema>
@@ -283,7 +336,9 @@ package struct ObservableStateRootScope<
             reportRoute: reportObservableStateRoot)
         let returned = try models.attach(key, sink: consume sink)
         if let failure = reports.pointee.routes[slot].lifecycle.acceptAttachmentReturn(returned) {
-            if returned != nil { try? models.detach(key, attachment: attachment) }
+            if returned != nil {
+                do { try models.detach(key, attachment: attachment) } catch { models.requireStop() }
+            }
             records.pointee.records[slot] = .init()
             throw failure
         }
@@ -307,7 +362,10 @@ package struct ObservableStateRootScope<
         }
         records.pointee.records[slot] = .init()
         reports.pointee.routes[slot].dirty = false
-        if let firstFailure { throw firstFailure }
+        if let firstFailure {
+            models.requireStop()
+            throw firstFailure
+        }
     }
 
     package borrowing func finishCandidate(_ disposition: ObservableStateCandidateDisposition)
@@ -340,6 +398,7 @@ package struct ObservableStateRootScope<
                     records.pointee.records[i].encountered = false
                 }
             }
+            do { try releaseOffers() } catch { if failure == nil { failure = error } }
             if let failure { throw failure }
             return .success(
                 disposition == .discard
@@ -385,9 +444,15 @@ package struct ObservableStateRootScope<
             let returned = try models.attach(candidate, sink: consume sink)
             if let failure = reports.pointee.routes[new].lifecycle.acceptAttachmentReturn(returned)
             {
-                if returned != nil { try? models.detach(candidate, attachment: attachment) }
+                var cleanupFailed = false
+                if returned != nil {
+                    do { try models.detach(candidate, attachment: attachment) } catch {
+                        cleanupFailed = true
+                    }
+                }
                 records.pointee.records[new] = .init()
                 try? models.discardReplacement(reservation)
+                if cleanupFailed { models.requireStop() }
                 throw failure
             }
             guard let formerAttachment = records.pointee.records[old].attachment else {
@@ -407,7 +472,10 @@ package struct ObservableStateRootScope<
             try models.release(&activated)
             records.pointee.records[old] = .init()
             reports.pointee.routes[old].dirty = false
-            if let failure { throw failure }
+            if let failure {
+                models.requireStop()
+                throw failure
+            }
             return .success(.replaced)
         } catch { return .failure(error) }
     }
@@ -424,9 +492,25 @@ package struct ObservableStateRootScope<
         }
     }
 
+    package borrowing func mutate(
+        identity: Identity, ordinal: UInt16, matching generation: ObservableTargetGeneration,
+        mutation: Model.Mutation
+    ) -> ObservableStateResult where Model: ObservableModelMutation {
+        do throws(ObservableStateError) {
+            try checkOperation()
+            guard let slot = matching(identity, ordinal: ordinal),
+                records.pointee.records[slot].published,
+                records.pointee.records[slot].attachment?.generation == generation.rawValue
+            else { throw .staleModel }
+            return mutate(key(at: slot), mutation: mutation)
+        } catch { return .failure(error) }
+    }
+
     package borrowing func shutdown() throws(ObservableStateError) {
         if records.pointee.retired { return }
-        try checkOperation()
+        // A terminal activation still needs to retire all callback routes while
+        // their report storage exists. Normal operations remain forbidden.
+        if models.phase != .retired { try checkOperation() }
         records.pointee.operationActive = true
         defer {
             records.pointee.operationActive = false
@@ -437,6 +521,74 @@ package struct ObservableStateRootScope<
             do { try retire(i) } catch { if failure == nil { failure = error } }
         }
         records.pointee.candidateActive = false
+        do { try releaseOffers() } catch { if failure == nil { failure = error } }
         if let failure { throw failure }
+    }
+}
+
+extension ObservableStateRootScope where Model: ~Copyable {
+    /// Exactly one generated lexical visit. The binder's actual root borrow
+    /// cannot be copied or escaped by a public generic host witness.
+    package borrowing func withBoundDeclaration<Declaration: _GiftUIObservableStateHost, Result>(
+        _ declaration: borrowing Declaration, identity: Identity,
+        body: (borrowing Declaration) throws(ObservableStateError) -> Result
+    ) throws(ObservableStateError) -> Result {
+        var transient = copy declaration
+        try models.withDiscovery { () throws(ObservableStateError) in
+            var visitor = ScopedObservableDeclarationVisitor(
+                root: borrowedRoot(), identity: identity)
+            transient._giftUIVisitObservableStateDeclarations(&visitor)
+            if let failure = visitor.failure { throw failure }
+        }
+        return try body(transient)
+    }
+
+    /// End the body read before returning owned child declarations to traversal.
+    package borrowing func evaluate<Declaration: View & _GiftUIObservableStateHost>(
+        _ declaration: borrowing Declaration, identity: Identity,
+        body: (borrowing Declaration, borrowing _GiftUIFrameRead<Declaration.Domain>)
+            throws(_GiftUIAccessFailure) -> Declaration.Body
+    ) throws(ObservableStateError) -> Declaration.Body
+    where Declaration.Domain.Slot == ObservableModelReadSlot<Model> {
+        try withBoundDeclaration(declaration, identity: identity) {
+            (bound) throws(ObservableStateError) in
+            do throws(_GiftUIAccessFailure) {
+                return try models.withRead(Declaration.Domain.self) {
+                    (read) throws(_GiftUIAccessFailure) in
+                    try body(bound, read)
+                }
+            } catch { throw ObservableStateError(accessFailure: error) }
+        }
+    }
+}
+
+private struct ScopedObservableDeclarationVisitor<
+    Model: ObservableStateModel & ~Copyable, Identity: Equatable & Sendable
+>: ~Copyable, ~Escapable, _GiftUIObservableStateDeclarationVisitor {
+    let root: ObservableStateRootScope<Model, Identity>
+    let identity: Identity
+    var failure: ObservableStateError?
+
+    @_lifetime(copy root)
+    init(root: consuming ObservableStateRootScope<Model, Identity>, identity: Identity) {
+        self.root = consume root
+        self.identity = identity
+    }
+
+    mutating func visit<Schema: _GiftUIModelSchema>(
+        _ state: inout State<Schema>, declarationOrdinal: UInt16
+    ) {
+        guard failure == nil else { return }
+        guard Schema.self == Model.Schema.self else {
+            failure = .incompatibleAssociation
+            return
+        }
+        let result = withUnsafeMutablePointer(to: &state) { pointer in
+            pointer.withMemoryRebound(to: State<Model.Schema>.self, capacity: 1) { typed in
+                root.encounter(
+                    identity: identity, ordinal: declarationOrdinal, state: &typed.pointee)
+            }
+        }
+        if case .failure(let error) = result { failure = error }
     }
 }

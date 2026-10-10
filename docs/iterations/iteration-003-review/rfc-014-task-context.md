@@ -65,15 +65,15 @@ receipt does not prove application operation adoption. Step 5 adds `ObservableSt
 `LayoutProbe.swift`, and migrates both profile root activation factories. Its
 real callback/transfer/replacement/retirement checks remain selected-component
 evidence. Step 6 removes captured allocation contexts from report routing and
-records actual split report layouts. The lexical reconciler and target-access
-migration remain open. P03 is stopped on the
-[lexical visitor safety blocker](../../../Tests/ContractFixtures/SPEC010/Evidence/rfc-014-p03/lexical-visitor-blocker.md):
-`EscapingVisitorProbe.swift` proves the approved public generic witness can save
-an escapable visitor. The unsafe pointer-backed prototype was removed. Next is
-review verification of the bounded generation-precedence repair, then the human
-contract decision. Separate Strong review rejects literal two-pass enumeration
-under OS-010 and has demonstrated no compliant alternative; no public SPI change
-is authorized. Do not infer package completion from any probe.
+records actual split report layouts. Step 7 repairs generation precedence. Step 8 records the explicitly approved
+[SPEC-006/010 scoped visitor amendment](rfc-014-spec-approval.md#scoped-visitor-constraint-amendment--2026-10-10).
+Step 9 implements the noncopyable/nonescapable lexical binder, nested generated
+traversal, matching candidate-offer transfer, profile target access and terminal
+retaining-sink teardown. The historical [visitor blocker](../../../Tests/ContractFixtures/SPEC010/Evidence/rfc-014-p03/lexical-visitor-blocker.md)
+is resolved by that amendment; its original reproduction remains evidence
+against the former contract. P03's implementation awaits separate Strong review
+of the finite exit receipts; P04–P12 remain pending. Do not infer complete-module,
+semantic-record, coordinator or linked-resource completion from these probes.
 
 These reminders point into contracts; read the full clauses when editing the
 mechanism. They reduce search, not the risk rating of the underlying work.
@@ -112,9 +112,9 @@ identity/backing component driver:
 - Record exit status, commands, assertion counts, diagnostics and report paths.
   Compare to the matching recorded profile, distinguishing native execution from
   cross-compilation. Do not edit Swift, fix failures or mark OS-RD criteria met.
-- Stop after the requested runs. Full State/reconciler callbacks and replacement
-  integration remain P03 obligations; this component result cannot pass the
-  package. This example requests no rerun by itself.
+- Stop after the requested runs. Only the separate Strong review can disposition
+  the P03 exit; a collected receipt alone cannot pass the package. This example
+  requests no rerun by itself.
 
 For new tests, derive expected outcomes from the contract or preserved oracle
 before cheaper execution. Copying production output into expected values does
@@ -125,9 +125,10 @@ not establish correctness.
 - P01/P02 receipts supply the verified migration invocations:
   `scripts/contracts/run-spec-002.sh --profile <profile> --compiler-baseline rfc-014`
   and `scripts/contracts/run-spec-006.sh --profile <profile> --compiler-baseline rfc-014`.
-  At this review, `run-spec-010.sh` accepts only `--profile`; do not append the
-  compiler option blindly to every driver. Remaining driver/compiler integration
-  is package work; freeze the actual invocation in its receipt first.
+  P03 now uses the registered `scripts/contracts/run-spec-010.sh --profile <profile>
+  --compiler-baseline rfc-014 --giftui-build <verified-core-directory>` route.
+  It validates the explicit P02 receipt before reuse; the legacy default gate
+  is preserved for P10 rather than weakened during staged migration.
 - P03 progress records selected-file component builds, not passing complete
   modules. Broad failures during staged migration need owner attribution; they
   do not authorize compatibility shims or unrelated repairs.

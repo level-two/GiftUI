@@ -22,13 +22,13 @@ public struct PortableProfileHost: View {
     public var body: Never { fatalError() }
 
     public mutating func _giftUIVisitObservableStateDeclarations<
-        Visitor: _GiftUIObservableStateDeclarationVisitor
+        Visitor: _GiftUIObservableStateDeclarationVisitor & ~Copyable & ~Escapable
     >(_ visitor: inout Visitor) {
         visitor.visit(&_primary, declarationOrdinal: 0)
         visitor.visit(&_secondary, declarationOrdinal: 1)
     }
 
-    public func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor>(
+    public func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor & ~Copyable & ~Escapable>(
         _ visitor: inout Visitor
     ) where Visitor.Domain == Domain {
         visitor.visitStatefulCustomView(self) {

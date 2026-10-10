@@ -3,12 +3,12 @@ struct InvalidHost: View {
     var body: Never { fatalError() }
 
     mutating func _giftUIVisitObservableStateDeclarations<
-        Visitor: _GiftUIObservableStateDeclarationVisitor
+        Visitor: _GiftUIObservableStateDeclarationVisitor & ~Copyable & ~Escapable
     >(_ visitor: inout Visitor) {
 
     }
 
-    func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor>(
+    func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor & ~Copyable & ~Escapable>(
         _ visitor: inout Visitor
     ) where Visitor.Domain == Domain {
         visitor.visitStatefulCustomView(self) {

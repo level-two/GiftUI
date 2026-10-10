@@ -33,7 +33,7 @@ private struct GiftUIModifiedContent<Content: View, Payload: _GiftUISemanticModi
         fatalError("GiftUI modifiers have no view body")
     }
 
-    func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor>(
+    func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor & ~Copyable & ~Escapable>(
         _ visitor: inout Visitor
     ) where Visitor.Domain == Domain {
         visitor.visitModifier(content: content, payload: payload)

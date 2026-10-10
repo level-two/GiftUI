@@ -110,7 +110,7 @@ package struct ObservableModelOwnership: ~Copyable {
         for index in 0 ..< Int(claimLimit) { claims[index].address = nil }
         activeRead = false
         replacement = nil
-        phase = .mutating
+        if phase != .retired { phase = .mutating }
         return occupied
     }
 
@@ -128,7 +128,10 @@ package struct ObservableModelOwnership: ~Copyable {
             slot: key._giftUISlot)
     }
 
+    package mutating func retireActivation() { phase = .retired }
+
     package func operationAllowed(discovery: Bool = false) -> ObservableStateError? {
+        if phase == .retired { return .invalidPhaseSafetyNotProven }
         if phase == .replacing || phase == .writing { return .reentrancyViolation }
         if activeRead { return .invalidPhaseSafetyNotProven }
         if phase == .mutating || (discovery && phase == .discovering) { return nil }

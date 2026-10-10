@@ -8,6 +8,7 @@ package func withObservableModelScope<Model: ~Copyable, Schema, Result>(
     schema: UInt16, needsCapture: Bool,
     _ body: (borrowing ObservableModelScope<Model, Schema>) throws(ObservableStateError) -> Result
 ) throws(ObservableStateError) -> Result {
+    if let failure = ownership.operationAllowed() { throw failure }
     guard models.count == 2 else { throw .modelCapacityExhausted }
     return try withUnsafeMutablePointer(to: &ownership) { (owner) throws(ObservableStateError) in
         try models.withUnsafeMutableBufferPointer { (buffer) throws(ObservableStateError) in
@@ -64,7 +65,19 @@ package struct ObservableModelScope<Model: ~Copyable, Schema>: ~Copyable, ~Escap
             ownership.pointee.address(for: key), schema: schema)
     }
 
+    package borrowing func validateOperation(discovery: Bool = false) throws(ObservableStateError) {
+        if let failure = ownership.pointee.operationAllowed(discovery: discovery) { throw failure }
+    }
+
     package var phase: ObservableModelOwnership.Phase { ownership.pointee.phase }
+
+    package borrowing func requireStop() { ownership.pointee.retireActivation() }
+
+    // Called before the root report-storage borrow ends, even if an independent
+    // ticket survives a failed detach. Terminal activation cannot be reopened.
+    package borrowing func finishStoppedActivation() {
+        if ownership.pointee.phase == .retired { finishActivation() }
+    }
 
     fileprivate borrowing func finishActivation() {
         let occupied = ownership.pointee.finishActivation()
@@ -97,6 +110,7 @@ package struct ObservableModelScope<Model: ~Copyable, Schema>: ~Copyable, ~Escap
     package borrowing func report(_ key: _GiftUIModelKey<Schema>)
         -> _GiftUIObservableChangeReportOutcome
     where Model: ObservableStateModel, Model.Schema == Schema {
+        if phase == .retired { return .invalidPhaseSafetyNotProven }
         do throws(ObservableStateError) {
             let index = try ownership.pointee.callbackIndex(
                 ownership.pointee.address(for: key), schema: schema)

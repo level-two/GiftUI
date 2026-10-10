@@ -1,4 +1,5 @@
 import GiftUI
+import GiftUIExecution
 @testable import GiftUIObservableState
 import GiftUIRuntimeStatic
 
@@ -8,9 +9,13 @@ package struct RootTrace {
     var detachments = 0
     var destructions = 0
     var reports = 0
+    var parentBodies = 0
+    var childBodies = 0
+    var leaves = 0
     var lastAttachedValue: UInt8 = 0
     var lastAttachedCount = 0
     var attachReport: _GiftUIObservableChangeReportOutcome?
+    var destructionReport: _GiftUIObservableChangeReportOutcome?
     var detachReport: _GiftUIObservableChangeReportOutcome?
 }
 package struct RootSeed {
@@ -39,13 +44,14 @@ package struct RootModel: ~Copyable, ObservableStateModel, ObservableModelMutati
         let attachment = sink.attachment
         self.sink = consume sink
         if seed.fault == 3 { seed.trace.pointee.attachReport = self.sink!.reportChange() }
-        if seed.fault == 2 { return _GiftUIObservationAttachment(slot: attachment.slot, generation: attachment.generation + 100) }
+        if seed.fault == 2 || seed.fault == 7 { return _GiftUIObservationAttachment(slot: attachment.slot, generation: attachment.generation + 100) }
         return attachment
     }
     package mutating func detach(_ attachment: _GiftUIObservationAttachment) -> Bool {
         seed.trace.pointee.detachments += 1
         guard sink?.attachment == attachment else { return false }
         seed.trace.pointee.detachReport = sink!.reportChange()
+        if seed.fault == 6 || seed.fault == 7 { return false }
         sink = nil
         return seed.fault != 4
     }
@@ -61,11 +67,14 @@ package struct RootModel: ~Copyable, ObservableStateModel, ObservableModelMutati
         seed.value = value
         return changed
     }
-    deinit { seed.trace.pointee.destructions += 1 }
+    deinit {
+        if var sink { seed.trace.pointee.destructionReport = sink.reportChange() }
+        seed.trace.pointee.destructions += 1
+    }
 }
-private enum RootDomain: _GiftUIReadDomain {
-    typealias Slot = ObservableModelReadSlot<RootModel>
-    static func value(_ key: _GiftUIModelKey<RootSchema>, _ read: borrowing _GiftUIFrameRead<Self>) throws(_GiftUIAccessFailure) -> UInt8 {
+package enum RootDomain: _GiftUIReadDomain {
+    package typealias Slot = ObservableModelReadSlot<RootModel>
+    package static func value(_ key: _GiftUIModelKey<RootSchema>, _ read: borrowing _GiftUIFrameRead<Self>) throws(_GiftUIAccessFailure) -> UInt8 {
         let index = try read.slots[0].ownership.pointee.bind(key, schema: 7)
         switch read.slots[index].model.pointee { case .some(let model): return model.seed.value; case .none: throw .staleModel }
     }
@@ -95,6 +104,10 @@ package func exerciseRoot(_ scope: borrowing ObservableModelScope<RootModel, Roo
         try scope.withDiscovery { expect(root.finishCandidate(.publish) == .success(.associationsCommitted)) }
     }
     let a = root.modelKey(identity: 1, ordinal: 0)!
+    let target = StaticObservableRootTargetAccess(root: root, identity: UInt8(1), ordinal: 0)
+    let initialTarget = target.currentGeneration()!
+    expect(initialTarget.rawValue == generation)
+    expect(target.mutate(matching: initialTarget, mutation: .set(7)) == .success(.unchanged))
     expect(trace.pointee.attachments == 1 && trace.pointee.lastAttachedValue == 7)
     var ignored = State<RootSchema>(seed: RootSeed(trace: trace, value: 42))
     try scope.withFrame { () throws(ObservableStateError) in
@@ -109,6 +122,25 @@ package func exerciseRoot(_ scope: borrowing ObservableModelScope<RootModel, Roo
     expect(root.mutate(a, mutation: .set(11)) == .success(.dirtied) && trace.pointee.reports == 1)
     expect(root.mutate(a, mutation: .fail) == .failure(.incompatibleAssociation) && root.isDirty)
     expect(try value(a) == 11)
+    try scope.withFrame { () throws(ObservableStateError) in
+        expect(target.mutate(matching: initialTarget, mutation: .set(99)) == .failure(.invalidPhaseContained))
+        try scope.pin(a)
+        do throws(_GiftUIAccessFailure) {
+            try scope.withRead(RootDomain.self) { (read) throws(_GiftUIAccessFailure) in
+                expect(target.mutate(matching: initialTarget, mutation: .set(99)) == .failure(.invalidPhaseSafetyNotProven))
+                expect(root.mutate(a, mutation: .set(99)) == .failure(.invalidPhaseSafetyNotProven))
+                expect(root.beginCandidate() == .failure(.invalidPhaseSafetyNotProven))
+                expect(scope.report(a) == .invalidPhaseSafetyNotProven)
+                expect(try RootDomain.value(a, read) == 11)
+            }
+        } catch { throw ObservableStateError(accessFailure: error) }
+        try scope.withDiscovery {
+            expect(root.mutate(a, mutation: .set(99)) == .failure(.invalidPhaseContained))
+            expect(root.beginCandidate() == .success(.candidateStarted))
+            expect(root.beginCandidate() == .failure(.reentrancyViolation))
+            expect(root.finishCandidate(.discard) == .success(.candidateDiscarded))
+        }
+    }
     var transfer = try scope.retain(a)
     var independent = try scope.retain(a)
     expect(root.replace(identity: 1, ordinal: 0, transferring: &transfer, seed: RootSeed(trace: trace)) == .failure(.retainedModel))
@@ -130,6 +162,8 @@ package func exerciseRoot(_ scope: borrowing ObservableModelScope<RootModel, Roo
     expect(trace.pointee.attachReport == .staleAttachment)
     expect(root.replace(identity: 1, ordinal: 0, transferring: &transfer, seed: RootSeed(trace: trace, value: 9)) == .success(.replaced))
     let b = root.modelKey(identity: 1, ordinal: 0)!
+    expect(target.currentGeneration() != initialTarget)
+    expect(target.mutate(matching: initialTarget, mutation: .set(99)) == .failure(.staleModel))
     expect(b != a && root.generation(identity: 1, ordinal: 0) != generation && root.isDirty)
     expect(trace.pointee.lastAttachedValue == 9 && trace.pointee.lastAttachedCount == 0)
     expect(trace.pointee.detachReport == .staleAttachment)
@@ -147,6 +181,8 @@ package func exerciseRoot(_ scope: borrowing ObservableModelScope<RootModel, Roo
         try scope.withDiscovery { expect(root.beginCandidate() == .success(.candidateStarted)); expect(root.finishCandidate(.publish) == .success(.associationsCommitted)) }
     }
     expect(root.modelKey(identity: 1, ordinal: 0) == nil)
+    expect(target.currentGeneration() == nil)
+    expect(target.mutate(matching: initialTarget, mutation: .set(99)) == .failure(.staleModel))
     expect(try value(retainedB.key) == 9)
     expect(root.mutate(retainedB.key, mutation: .set(10)) == .success(.coalesced))
     try scope.release(&retainedB)
@@ -175,10 +211,13 @@ package func exerciseRoot(_ scope: borrowing ObservableModelScope<RootModel, Roo
     var dTicket = try scope.retain(d)
     expect(root.replace(identity: 1, ordinal: 0, transferring: &dTicket, seed: RootSeed(trace: trace, value: 29)) == .failure(.invariantViolation))
     let e = root.modelKey(identity: 1, ordinal: 0)!
-    let committedValue = try value(e)
-    expect(e != d && committedValue == 29)
-    expect(root.mutate(d, mutation: .set(3)) == .failure(.staleModel))
-    try root.shutdown()
+    // SPEC-010 required-stop table: B remains selected after commit, but an
+    // invariant cannot admit a later normal cycle. Inspect owned identity and
+    // attachment evidence; do not reopen a read merely to inspect B.
+    expect(e != d && trace.pointee.lastAttachedValue == 29 && root.isDirty)
+    expect(root.mutate(e, mutation: .set(3)) == .failure(.invalidPhaseSafetyNotProven))
+    do throws(ObservableStateError) { _ = try value(e); expect(false) } catch { expect(error == .invalidPhaseSafetyNotProven) }
+    try? root.shutdown()
     expect(root.modelKey(identity: 1, ordinal: 0) == nil)
     expect(root.mutate(e, mutation: .set(3)) == .failure(.invalidPhaseSafetyNotProven))
     return checks
@@ -193,7 +232,7 @@ package func staticRootChecks() throws(ObservableStateError) -> UInt32 {
     }
 }
 @_cdecl("giftui_p03_root") public func giftuiP03Root() -> UInt32 {
-    do { return try staticRootChecks() + rootGenerationPrecedenceChecks() } catch { return 0 }
+    do { return try staticRootChecks() + rootGenerationPrecedenceChecks() + retainingSinkChecks() } catch { return 0 }
 }
 
 // Exercise the real root and actual Static backing with both later capacity
@@ -254,4 +293,68 @@ private func exhaustedRootCheck(
         }
         return 9
     }
+}
+
+// A safe package caller catches the error, keeps an independent ticket, and
+// ends temporary report storage before its wider model activation ends.
+package func retainingSinkChecks() throws(ObservableStateError) -> UInt32 {
+    var checks: UInt32 = 0
+    func expect(_ yes: Bool) { checks += 1; precondition(yes) }
+    var namespace = ObservableModelOwnerNamespace()
+    for mode: UInt8 in 0 ... 2 {
+        var storage = StaticObservableModelStorage<RootModel, RootSchema>(identity: try namespace.issue(), schema: 7, needsCapture: false)!
+        try withUnsafeTemporaryAllocation(of: RootTrace.self, capacity: 1) { (trace) throws(ObservableStateError) in
+            trace.initialize(repeating: RootTrace()); defer { trace.deinitialize() }
+            try storage.withLifetime { (scope) throws(ObservableStateError) in
+                var ticket = try scope.materialize(RootModel.materialize(RootSeed(trace: trace.baseAddress!, fault: mode == 2 ? 7 : 6)))
+                let key = ticket.key
+                var independent = try scope.retain(key)
+                do throws(ObservableStateError) {
+                    var registration = ObservableStateRootStorage<UInt8>()
+                    try scope.withRoot(storage: &registration) { (root) throws(ObservableStateError) in
+                        var state = State<RootSchema>(candidate: key)
+                        if mode == 2 {
+                            try scope.withFrame { () throws(ObservableStateError) in
+                                try scope.withDiscovery { () throws(ObservableStateError) in
+                                    expect(root.beginCandidate() == .success(.candidateStarted))
+                                    expect(root.encounter(identity: 1, ordinal: 0, state: &state, transferring: &ticket) == .failure(.invariantViolation))
+                                    throw .invariantViolation
+                                }
+                            }
+                        }
+                        try scope.withFrame { () throws(ObservableStateError) in
+                            try scope.withDiscovery {
+                                expect(root.beginCandidate() == .success(.candidateStarted))
+                                expect(root.encounter(identity: 1, ordinal: 0, state: &state, transferring: &ticket) == .success(.materialized))
+                                expect(root.finishCandidate(.publish) == .success(.associationsCommitted))
+                            }
+                        }
+                        if mode == 1 {
+                            do throws(ObservableStateError) {
+                                try scope.withFrame { () throws(ObservableStateError) in
+                                    try scope.withDiscovery {
+                                        expect(root.beginCandidate() == .success(.candidateStarted))
+                                        expect(root.finishCandidate(.publish) == .failure(.invariantViolation))
+                                    }
+                                }
+                            } catch { expect(error == .invalidPhaseSafetyNotProven) }
+                            expect(scope.mutate(key, mutation: .set(99), report: { .dirtied }) == .failure(.invalidPhaseSafetyNotProven))
+                            expect(scope.report(key) == .invalidPhaseSafetyNotProven)
+                            // Preserve the caught failure as the outer disposition.
+                            throw .invariantViolation
+                        }
+                    }
+                    expect(false)
+                } catch { expect(error == .invariantViolation) }
+                expect(trace[0].detachments == 1 && trace[0].destructions == 1)
+                expect(trace[0].destructionReport == .staleAttachment)
+                expect(scope.mutate(key, mutation: .set(99), report: { .dirtied }) == .failure(.invalidPhaseSafetyNotProven))
+                expect(scope.report(key) == .invalidPhaseSafetyNotProven)
+                do throws(ObservableStateError) { try scope.release(&independent); expect(false) } catch { expect(error == .invalidPhaseSafetyNotProven) }
+                do throws(ObservableStateError) { _ = try scope.materialize(RootModel.materialize(RootSeed(trace: trace.baseAddress!))); expect(false) } catch { expect(error == .invalidPhaseSafetyNotProven) }
+            }
+            do throws(ObservableStateError) { try storage.withLifetime { _ in () }; expect(false) } catch { expect(error == .invalidPhaseSafetyNotProven) }
+        }
+    }
+    return checks
 }

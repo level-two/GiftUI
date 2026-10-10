@@ -30,7 +30,7 @@ public struct Button<Action: GiftUIAction, Label: View>: View {
         fatalError("Button has no view body")
     }
 
-    public func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor>(
+    public func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor & ~Copyable & ~Escapable>(
         _ visitor: inout Visitor
     ) where Visitor.Domain == Domain {
         visitor.visitActionPrimitive(

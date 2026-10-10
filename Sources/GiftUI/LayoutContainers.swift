@@ -64,7 +64,7 @@ public struct VStack<Content: View>: View {
         fatalError("VStack has no view body")
     }
 
-    public func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor>(
+    public func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor & ~Copyable & ~Escapable>(
         _ visitor: inout Visitor
     ) where Visitor.Domain == Domain {
         visitor.visitPrimitive(content: content, payload: payload)
@@ -93,7 +93,7 @@ public struct HStack<Content: View>: View {
         fatalError("HStack has no view body")
     }
 
-    public func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor>(
+    public func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor & ~Copyable & ~Escapable>(
         _ visitor: inout Visitor
     ) where Visitor.Domain == Domain {
         visitor.visitPrimitive(content: content, payload: payload)
@@ -121,7 +121,7 @@ public struct ZStack<Content: View>: View {
         fatalError("ZStack has no view body")
     }
 
-    public func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor>(
+    public func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor & ~Copyable & ~Escapable>(
         _ visitor: inout Visitor
     ) where Visitor.Domain == Domain {
         visitor.visitPrimitive(content: content, payload: payload)
@@ -144,7 +144,7 @@ public struct Spacer<D: _GiftUIReadDomain>: View {
         fatalError("Spacer has no view body")
     }
 
-    public func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor>(
+    public func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor & ~Copyable & ~Escapable>(
         _ visitor: inout Visitor
     ) where Visitor.Domain == Domain {
         visitor.visitPrimitive(payload)

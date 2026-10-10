@@ -22,3 +22,7 @@ import GiftUI
 
 @_cdecl("giftui_p03_layout_report_storage") public func reportStorageLayout() -> Int { MemoryLayout<ObservableStateRootReports>.stride }
 @_cdecl("giftui_p03_layout_report_route") public func reportRouteLayout() -> Int { MemoryLayout<ObservableStateRootReports.Route>.stride }
+
+@_cdecl("giftui_p03_layout_root_scope") public func rootScopeLayout() -> Int { MemoryLayout<ObservableStateRootScope<RootModel, UInt8>>.stride }
+@_cdecl("giftui_p03_layout_target_scope") public func targetScopeLayout() -> Int { MemoryLayout<ObservableStateRootTargetAccess<RootModel, UInt8>>.stride }
+@_cdecl("giftui_p03_layout_offer_claim") public func offerClaimLayout() -> Int { MemoryLayout<ObservableModelOwnership.Claim?>.stride }

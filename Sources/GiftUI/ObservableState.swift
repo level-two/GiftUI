@@ -144,7 +144,7 @@ public protocol _GiftUIObservableReference {
     )
 }
 
-public protocol _GiftUIObservableStateDeclarationVisitor {
+public protocol _GiftUIObservableStateDeclarationVisitor: ~Copyable, ~Escapable {
     mutating func visit<Schema: _GiftUIModelSchema>(
         _ state: inout State<Schema>,
         declarationOrdinal: UInt16
@@ -153,6 +153,6 @@ public protocol _GiftUIObservableStateDeclarationVisitor {
 
 public protocol _GiftUIObservableStateHost {
     mutating func _giftUIVisitObservableStateDeclarations<
-        Visitor: _GiftUIObservableStateDeclarationVisitor
+        Visitor: _GiftUIObservableStateDeclarationVisitor & ~Copyable & ~Escapable
     >(_ visitor: inout Visitor)
 }

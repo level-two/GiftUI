@@ -54,13 +54,13 @@ public protocol View<Domain> {
     associatedtype Body: View
     func _giftUIEvaluate(read: borrowing _GiftUIFrameRead<Domain>)
         throws(_GiftUIAccessFailure) -> Body
-    func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor>(
+    func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor & ~Copyable & ~Escapable>(
         _ visitor: inout Visitor
     ) where Visitor.Domain == Domain
 }
 
 public extension View where Body.Domain == Domain {
-    func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor>(
+    func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor & ~Copyable & ~Escapable>(
         _ visitor: inout Visitor
     ) where Visitor.Domain == Domain {
         visitor.visitCustomView(self) {
@@ -76,11 +76,11 @@ extension Never: View {
     public func _giftUIEvaluate(read: borrowing _GiftUIFrameRead<Domain>)
         throws(_GiftUIAccessFailure) -> Never
     { switch self {} }
-    public func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor>(
+    public func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor & ~Copyable & ~Escapable>(
         _ visitor: inout Visitor
     ) where Visitor.Domain == Domain { switch self {} }
 }
-public protocol _GiftUISemanticTraversalVisitor {
+public protocol _GiftUISemanticTraversalVisitor: ~Copyable, ~Escapable {
     associatedtype Domain: _GiftUIReadDomain
 
     mutating func visitCustomView<Declaration: View>(
@@ -258,7 +258,7 @@ public struct EmptyView<D: _GiftUIReadDomain>: View {
         fatalError("EmptyView has no view body")
     }
 
-    public func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor>(
+    public func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor & ~Copyable & ~Escapable>(
         _ visitor: inout Visitor
     ) where Visitor.Domain == Domain {
         visitor.visitEmpty()
@@ -283,7 +283,7 @@ public struct TupleView<A: View, B: View>: View where A.Domain == B.Domain {
         fatalError("TupleView has no view body")
     }
 
-    public func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor>(
+    public func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor & ~Copyable & ~Escapable>(
         _ visitor: inout Visitor
     ) where Visitor.Domain == Domain {
         visitor.visitFixed(a, b)
@@ -311,7 +311,7 @@ where A.Domain == B.Domain, A.Domain == C.Domain {
         fatalError("TupleView3 has no view body")
     }
 
-    public func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor>(
+    public func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor & ~Copyable & ~Escapable>(
         _ visitor: inout Visitor
     ) where Visitor.Domain == Domain {
         visitor.visitFixed(a, b, c)
@@ -341,7 +341,7 @@ where A.Domain == B.Domain, A.Domain == C.Domain, A.Domain == D.Domain {
         fatalError("TupleView4 has no view body")
     }
 
-    public func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor>(
+    public func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor & ~Copyable & ~Escapable>(
         _ visitor: inout Visitor
     ) where Visitor.Domain == Domain {
         visitor.visitFixed(a, b, c, d)
@@ -373,7 +373,7 @@ where A.Domain == B.Domain, A.Domain == C.Domain, A.Domain == D.Domain, A.Domain
         fatalError("TupleView5 has no view body")
     }
 
-    public func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor>(
+    public func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor & ~Copyable & ~Escapable>(
         _ visitor: inout Visitor
     ) where Visitor.Domain == Domain {
         visitor.visitFixed(a, b, c, d, e)
@@ -406,7 +406,7 @@ where First.Domain == Second.Domain {
         fatalError("ConditionalContent has no view body")
     }
 
-    public func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor>(
+    public func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor & ~Copyable & ~Escapable>(
         _ visitor: inout Visitor
     ) where Visitor.Domain == Domain {
         switch storage {
@@ -434,7 +434,7 @@ public struct OptionalContent<Content: View>: View {
         fatalError("OptionalContent has no view body")
     }
 
-    public func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor>(
+    public func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor & ~Copyable & ~Escapable>(
         _ visitor: inout Visitor
     ) where Visitor.Domain == Domain {
         if let content {

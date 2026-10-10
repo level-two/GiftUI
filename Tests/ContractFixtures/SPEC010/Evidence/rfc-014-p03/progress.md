@@ -1,8 +1,9 @@
 # P03 implementation progress — 2026-10-10
 
 Input: `0516f9d0` (P02 declaration exit passed). Owner: SPEC-010 T10.1;
-criteria: OS-RD-001–004 and unchanged OS regression requirements. P03 is stopped
-on the lexical visitor safety question; see step 6 and the blocker record.
+criteria: OS-RD-001–004 and unchanged OS regression requirements. The historical
+lexical visitor stop was resolved by the explicit step-8 amendment. Step 9 records
+the implementation and finite exit evidence awaiting separate Strong review.
 
 ## Step 1 — identities and failure vocabulary
 
@@ -398,3 +399,90 @@ identity/replacement semantics. The manifest cross-reference and historical
 blocker disposition are updated. No code or implemented transition is part of
 this contract step. Governance/whitespace checks validate the recording; no old
 receipt is claimed as implementation evidence. Repair counter remains 0 of 2.
+
+## Step 9 — scoped lexical ownership and finite P03 exit
+
+Actual dispatch: Strong `gpt-6-astra` / high, C3/R3; sequential implementation,
+no child delegation. Authority is the explicitly approved step-8 amendment in
+`567b59fb`, SPEC-010 OS-RD-001–004/OS-010 and unchanged ADR-036. This step awaits
+separate Strong review; it does not itself mark P03 passed or T10.1 complete.
+
+The public declaration and semantic visitor protocols now permit noncopyable,
+nonescapable conformers, and host/View generic witnesses retain both suppressions
+through the macro, built-in containers and modifiers. Ordinary View declarations
+remain copyable. The concrete private binder contains a borrowed actual root
+scope with a lifetime dependency; the root visits the copied declaration once,
+binds before body, suppresses the body on failure and ends each read before child
+discovery. The generated parent/child fixture traverses a modifier and proves
+exact-once bodies, preserved-seed behavior and attachment failure suppression
+on both real backing profiles. Four offered claim descriptors transfer existing
+candidate ownership into the matching registration without acquiring another
+claim; unused offers are released on candidate completion/shutdown.
+
+Both profile target adapters now alias a scoped root target with generation
+validation followed by checked model mutation. The Dynamic reconciler and binding
+decorator alias the scoped root, replacing their copyable raw-model routes.
+`ObservableTargetGeneration` moved unchanged from ExecutionValues into its own
+Execution source file, allowing the selected-path driver to compile that real
+four-byte contract value without claiming the complete Execution module.
+Legacy coordinator protocols and the Interaction consumer are downstream P07/P05
+migration, not compatibility shims in these new scoped joins.
+
+The retaining-sink teardown audit found a package-helper lifetime hazard: a caller
+could catch a failed detach and retain a ticket after temporary report storage
+ended. A failed detach now latches the ledger's retired phase after mandatory
+local commit/cleanup. Normal mutation/report, owner operations, frame entry and
+reactivation refuse. Remaining route retirement/detach still occurs under the
+root borrow. Before report-storage scope ends, terminal cleanup retires all
+remaining claims and destroys retained models; destructor reports see stale
+routes while their backing exists. The terminal phase survives outer cleanup.
+The 37 dedicated assertions exercise shutdown, candidate removal and rejected
+attachment with a sink deliberately retained on failed detach. The two real-root
+postcommit tests prove B's selected identity, attached value and dirtiness, then
+verify that a normal read cannot reopen after invariant failure. This follows
+SPEC-010's “Safety-not-proven phase, reentrancy, or invariant failure” mandatory
+stop row and shutdown requirement. It does not reinterpret rollback or grant
+permission for a later normal cycle. Full coordinator containment/policy remains
+P07; independent normal detach/release semantics are unchanged.
+
+Validation is limited to the changed P03 paths and the amended P02 public/generic
+surface. Formatter ran before focused gates. The macro snapshots initially needed
+the approved signature update; the retaining-sink destructor fixture initially
+needed a mutable sink binding. Both bounded corrections produced passing evidence;
+no two consecutive unproductive attempts occurred. Counter: **0 of 2**.
+
+Final results: **602 assertions on each native profile**, comprising 324 prior
+identity/ledger/backing/State/mutation assertions, 58 generated nested lexical
+assertions, 37 retaining-sink assertions, 23 generation-precedence assertions and
+160 real Static/Dynamic root callback assertions. All four profiles pass 13
+negative controls: declaration and semantic visitor copy/escape, root/ticket
+escape, backing overlap, raw-reference State, State assignment and four malformed
+lowering inputs. ARMv6 and Embedded compile the actual root/nested/teardown paths
+and pass CPU/VFP checks; neither target was executed. P02 core refresh passes
+120 assertions/28 checks on each native profile and 27 checks on each cross profile.
+
+Actual compiler layouts remain: ledger 188B; model metadata 16B (one-byte pin at
+offset 11); claim/claim record 16B; ticket 20B aligned to 4; replacement 56B;
+UInt8 registration record 24B; report route/store 12/28B. Root metadata is now
+164B including four 20B optional offered-claim descriptors. Native scope/read-slot/
+sink/root-scope/target-scope are 32/24/24/48/56B; ARMv6/Embedded are
+16/12/16/24/28B. These actual specialized layouts are not complete application
+identity/model/stack accounting. Embedded IR still has no direct allocator calls
+in the two specialized production install/replace bodies; this is not transitive
+or linked zero-heap proof. The three analyzer transition banks remain 19,392B;
+no payload copy, fourth bank or capacity relaxation is introduced.
+
+Exact final commands/receipts and their source/compiler/artifact identities are
+preserved in the [step-9 receipt bundle](scoped-binding-receipts.json). The bundle
+also preserves the core receipt and component command-file hashes; original logs
+remain at the recorded build paths. Whitespace and governance checks pass.
+The registered SPEC-010 top-level driver owns the optional `rfc-014` route and
+requires an explicit matching P02 directory. Its default legacy gate is unchanged.
+
+Finite boundary: remaining P03 implementation is ready for separate Strong exit
+review, including the retaining-sink stop and public custom-witness escape
+boundary. P04 semantic records, P05 Interaction adoption, P07 coordinator/full-cycle
+handling, P08/P09 application and host wiring, P10 full-module/regression gates,
+and P11/P12 linked resource/target evidence and cutover remain pending. No broader
+test gate, deployed/flashed artifact, connected execution, completed T10.1 or
+implemented Specification transition is claimed.

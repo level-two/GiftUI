@@ -1,6 +1,6 @@
 # RFC-014 bounded implementation sequence — 2026-10-10
 
-**P01–P02 passed; P03 blocked on the lexical visitor contract decision.** This is the shared
+**P01–P02 passed; P03 implementation awaits separate Strong exit review.** This is the shared
 sequencing index for nine owner Implementation Plans, not another contract or
 investigation. It derives only the [approved Spec amendments](rfc-014-spec-approval.md)
 at `3c260bbc` and accepted ADR-035/036/037. ITERATION-003 I3-04/05 supplies the
@@ -319,7 +319,8 @@ Shared inventory routes retain their named ownership, runtime, action, Canvas
 and complete-application integration obligations. The whole-tree migration and
 resource/connected evidence are not inferred from this declaration exit.
 
-P03 is stopped on the reviewed lexical visitor safety blocker; P04–P12 remain pending. There is no
+P03 implements the explicitly approved scoped visitor correction and awaits
+separate Strong exit review; P04–P12 remain pending. There is no
 remaining P02 exit failure, new package, scope expansion or architecture change.
 
 Planning was prepared without implementation or experiment execution. Optional work remains in the existing deferred track; no new optional
@@ -333,7 +334,10 @@ authority graph, task-evidence validation and `git diff --check` pass. This chec
 planning integrity only; subsequent P01/P02 evidence is recorded above, and
 remaining implementation/conformance evidence stays pending.
 
-### P03 safety stop — 2026-10-10
+### P03 historical safety stop — 2026-10-10
+
+Resolved by the explicitly approved scoped visitor amendment recorded below.
+The following checkpoint preserves the earlier evidence and authority boundary.
 
 The direct scoped owner/root increments are committed and have selected-component
 evidence. A raw-pointer lexical visitor prototype was rejected and removed: the
@@ -346,3 +350,17 @@ generation-precedence repair precedes the human contract decision. No SPI
 amendment, sealed-conformance assumption or capacity change is authorized.
 No P03 exit or downstream package start is recorded. Consecutive unproductive
 repair count remains 0 of 2; the stop is a safety/authority question.
+
+### P03 scoped ownership exit review — 2026-10-10
+
+The user explicitly approved the precise visitor lifetime correction recorded in
+[the approval record](rfc-014-spec-approval.md#scoped-visitor-constraint-amendment--2026-10-10)
+and committed as `567b59fb`. The remaining P03 implementation now supplies a
+noncopyable/nonescapable actual-root binder, generated nested exact-once traversal,
+matching candidate-ticket transfer, checked generation-based profile target access,
+and retaining-sink terminal teardown. Copy/escape controls exercise both public
+visitor protocols on all four pinned configurations. The [step-9 progress record](../../../Tests/ContractFixtures/SPEC010/Evidence/rfc-014-p03/progress.md)
+contains final source/compiler/target receipts, actual metadata/ticket/pin layouts,
+commands, fault state transitions and explicit limits. Separate Strong review is
+required before P03 passes; no downstream work or implemented transition is
+claimed. Consecutive unproductive repair count remains 0 of 2.

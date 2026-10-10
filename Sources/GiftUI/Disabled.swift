@@ -21,7 +21,7 @@ private struct GiftUIDisabledContent<Content: View>: View {
         fatalError("GiftUI disabled scopes have no view body")
     }
 
-    func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor>(
+    func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor & ~Copyable & ~Escapable>(
         _ visitor: inout Visitor
     ) where Visitor.Domain == Domain {
         visitor.visitModifier(content: content, payload: payload)
