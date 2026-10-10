@@ -26,7 +26,10 @@ superseded_by: null
 
 P01 implements the approved compiler amendment. The report is collecting new
 migration evidence; the results below describe the earlier baseline only.
-T7.1 and all migration criterion dispositions remain open through P10–P12.
+The [P01 receipt](../../Tests/ContractFixtures/SPEC002/Evidence/rfc-014-p01/result.md)
+records fresh PF-006/PF-007 compiler, layouts, allocation-path and linked-size
+measurements on all four configurations, plus the historical macOS control.
+T7.1 and full migration criterion dispositions remain open through P10–P12.
 
 ## Review Scope
 

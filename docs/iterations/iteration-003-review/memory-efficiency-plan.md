@@ -24,11 +24,12 @@ for limitations, particularly actual runtime integration and zero heap.
 Eugene's conditional finalization instruction. The final text consolidates the
 selected design and preserves all implementation acceptance obligations.
 
-**Next: P01 in the [bounded implementation sequence](rfc-014-implementation-plan.md).**
-IH-1 is complete: ADR-035/036/037 accepted, nine Specs approved and nine owner plans
-ready. Exactly twelve packages cover IH-2–6, with all 180 criteria mapped, explicit
+**Next: P02 in the [bounded implementation sequence](rfc-014-implementation-plan.md).**
+IH-1 is complete: ADR-035/036/037 accepted, nine Spec amendments approved and nine owner plans
+ready or active. Exactly twelve packages cover IH-2–6, with all 180 criteria mapped, explicit
 footprints/exits and stop rules. No investigation or automatically growing backlog
-is authorized. Production implementation has not started; connected authorization,
+is authorized. P01 passed in `bb61d4ef`: [compiler/Foundation receipt](../../../Tests/ContractFixtures/SPEC002/Evidence/rfc-014-p01/result.md).
+SPEC-002 implementation has begun; P02–P12 remain pending. Connected authorization,
 conformance and implemented/iteration-closure decisions remain separate gates.
 
 Earlier sections below preserve historical activity dispositions; this section

@@ -1,0 +1,1116 @@
+{
+  "package": "P01",
+  "input_commit": "b05e22870f4493c11cf8b662fdd4614e7fdf1c9f",
+  "implementation_commit": "bb61d4efec54cd7d363b5dd898027f25318be822",
+  "authority": "SPEC-002 PF-006/PF-007, RFC-014 amendment; SPEC-013 RP-RD-003 compiler portion",
+  "route_inventory": {
+    "path": "Tests/ContractFixtures/SPEC002/CompilerBaseline/route-inventory.tsv",
+    "sha256": "a740d8524e54241fea11669c2f5feae9b638ac166542730f7049f6c3359a5672",
+    "route_families": 26,
+    "counter_status": "Finite requirement inventory; implementation belongs to P02/P08, no existing production counter claimed."
+  },
+  "source_recipe_sha256": {
+    "Package.resolved": "e8bac048051bf38b3d064110cb165689b83d9e23c469d575a7e549b2d68efb00",
+    "Package.swift": "9ab02ff80ef2e5d4d60d025807acb050368234e76adb3acbd0862beef29cd84c",
+    "Sources/GiftUI/GiftUI.swift": "d8953ebaa6cdd525bc702e3d8de79eafb9f621e6f7c30c9d756805b251a2fe6c",
+    "Sources/SignalAnalyzerDomain/SignalValues.swift": "4efb99632dc8b8a255e56daa257074b91041d6f20fdad71084a9da548588f493",
+    "Sources/SignalAnalyzerPresentation/SignalAnalyzerPresentationValues.swift": "aa678d815356fb3a73b496f44a2494a29b3f8d0e8a2e68dc973946657a65ee8e",
+    "Sources/SignalAnalyzerPresentation/SignalAnalyzerTimelineFormatting.swift": "ac98b6acccfb2eef4b7621cc5552c532498df830fde9fa235480b552b4fa6605",
+    "Sources/SignalAnalyzerPresentation/SignalAnalyzerView.swift": "c21ec7f17548c511a61e36e13000787b07a02746ad1720f70736d05dceb93b2d",
+    "Sources/SignalAnalyzerPresentation/SignalAnalyzerWaveformGeometry.swift": "288e7f302fe604d9f8a504cd1eeae9f631e5ef2e5b12acf7f883d4e736a2b992",
+    "Sources/SignalAnalyzerTargetHost/DynamicSignalAnalyzerPiInitialPresentationOwner.swift": "fe8503d64cbfc53f451f4f923a9951a9205c4ee62aed63197f0e3c61e126cce2",
+    "Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFModelCaptureState.swift": "37fe877d5f5c7de2fee9a3538ab92494373f762586af79ead456647f3ebc9d15",
+    "Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFModelLocation.swift": "65c5f17074e74d3adf822f7965eb356ec7b2e5b8c778b84b58410935017c7aaa",
+    "Tests/ContractFixtures/SPEC002/CompilerBaseline/RequiredFeatures.swift": "db13c5049c92b7f94d440381640064b2e243f42dbf04542de2a38ada9716d2b5",
+    "Tests/ContractFixtures/SPEC002/CompilerBaseline/route-inventory.tsv": "a740d8524e54241fea11669c2f5feae9b638ac166542730f7049f6c3359a5672",
+    "Tests/ContractFixtures/SPEC002/ResourceProbe/ResourceProbe.swift": "27812d79fe15727fcfb9897aee84582d784b7fccd39213ace3df68692dbf14b0",
+    "Tests/ContractFixtures/SPEC002/ResourceProbe/main.c": "ae16a47963487df1077806617766a1e400c184b0788f98b98470e059f4b8d2c2",
+    "Tests/ContractFixtures/SPEC002/SemanticCorpus/cases.tsv": "3add894045d330ea1441f2a6ff6d5465840c867ba02fb83912657819a20f3ccb",
+    "firmware/nrf52840/applications/spec002-resource-probe/CMakeLists.txt": "dd52996b208866a0b8f37391a278ca8cb9f501f6a5a34e904f2a607423d5dec9",
+    "scripts/contracts/compiler-baseline.sh": "cd827a8be0544e167fa6340448115227171d72dfbd225f6319ae3acb989bb9d3",
+    "scripts/contracts/run-immutable-contract-driver.sh": "de5186d6888e317a2aea301a8c0d6bfa3bcc989466c748eeafb001bff1c9a513",
+    "scripts/contracts/run-spec-002.sh": "4b8b7a97e954a88a54f04ba2673252f03aeea6aa9be16c2fd841252cea229298",
+    "scripts/nrf52840/toolchain.env": "9f71c8faf46502e920c1e5f1763132166f8136bc0e23a17cc38291ef35f376a5",
+    "scripts/raspberry-pi/toolchain.env": "0cf3edcb612598971b042b35792398193dc24196d49af521a5d1d23570f0a51f",
+    "scripts/test.sh": "c3ce55aef4c4e31b493689254b77bbf08c18d297475cf4504e5713ed44986e17"
+  },
+  "changed_paths": [
+    "Tests/ContractFixtures/SPEC002/CompilerBaseline/RequiredFeatures.swift",
+    "Tests/ContractFixtures/SPEC002/CompilerBaseline/route-inventory.tsv",
+    "docs/conformance/spec-002-conformance.md",
+    "docs/features.yaml",
+    "docs/implementation-plans/spec-002-implementation-plan.md",
+    "docs/specs/spec-002-portable-foundation.md",
+    "firmware/nrf52840/applications/spec002-resource-probe/CMakeLists.txt",
+    "scripts/contracts/check-spec-002-compiler-baseline.py",
+    "scripts/contracts/compiler-baseline.sh",
+    "scripts/contracts/run-immutable-contract-driver.sh",
+    "scripts/contracts/run-spec-002.sh",
+    "scripts/test.sh"
+  ],
+  "compiler_controls": [
+    {
+      "label": "reject-baseline-unknown",
+      "command": [
+        "scripts/contracts/run-spec-002.sh",
+        "--profile",
+        "macos-dynamic",
+        "--compiler-baseline",
+        "unknown"
+      ],
+      "exit_code": 1,
+      "passed": true
+    },
+    {
+      "label": "reject-baseline-missing",
+      "command": [
+        "scripts/contracts/run-spec-002.sh",
+        "--profile",
+        "macos-dynamic",
+        "--compiler-baseline"
+      ],
+      "exit_code": 1,
+      "passed": true
+    },
+    {
+      "label": "missing-compiler",
+      "command": [
+        "bash",
+        "-eu",
+        "-c",
+        "source \"$1\"; shift; giftui_rfc014_select_compiler \"$1\" macos-dynamic",
+        "compiler-control",
+        "/Users/eugene/work/GiftUI/scripts/contracts/compiler-baseline.sh",
+        "/Users/eugene/work/GiftUI/.build/rfc-014/p01/compiler-controls/absent"
+      ],
+      "exit_code": 1,
+      "passed": true
+    },
+    {
+      "label": "unknown-profile",
+      "command": [
+        "bash",
+        "-eu",
+        "-c",
+        "source \"$1\"; shift; giftui_rfc014_select_compiler \"$1\" armv7",
+        "compiler-control",
+        "/Users/eugene/work/GiftUI/scripts/contracts/compiler-baseline.sh",
+        "/Users/eugene/work/GiftUI"
+      ],
+      "exit_code": 1,
+      "passed": true
+    },
+    {
+      "label": "compiler-drift",
+      "command": [
+        "bash",
+        "-eu",
+        "-c",
+        "source \"$1\"; shift; giftui_rfc014_check_compiler \"$1\" \"$2\" \"$3\"",
+        "compiler-control",
+        "/Users/eugene/work/GiftUI/scripts/contracts/compiler-baseline.sh",
+        "/Users/eugene/work/GiftUI/.build/rfc-014/p01/compiler-controls/tmpwosy5oie/swiftc",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC002/CompilerBaseline/RequiredFeatures.swift",
+        "/Users/eugene/work/GiftUI/.build/rfc-014/p01/compiler-controls"
+      ],
+      "exit_code": 1,
+      "passed": true
+    },
+    {
+      "label": "macos-dynamic-features",
+      "command": [
+        "bash",
+        "-eu",
+        "-c",
+        "source \"$1\"; shift; giftui_rfc014_select_compiler \"$1\" \"$2\"; shift 2; giftui_rfc014_check_compiler \"$GIFTUI_CONTRACT_SWIFTC\" \"$1\" \"$2\" \"${GIFTUI_CONTRACT_FEATURE_FLAGS[@]}\" \"${@:3}\"",
+        "compiler-control",
+        "/Users/eugene/work/GiftUI/scripts/contracts/compiler-baseline.sh",
+        "/Users/eugene/work/GiftUI",
+        "macos-dynamic",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC002/CompilerBaseline/RequiredFeatures.swift",
+        "/Users/eugene/work/GiftUI/.build/rfc-014/p01/compiler-controls/macos-dynamic",
+        "-target",
+        "arm64-apple-macosx26.0",
+        "-DGIFTUI_DYNAMIC_PROFILE",
+        "-module-cache-path",
+        "/Users/eugene/work/GiftUI/.build/rfc-014/p01/compiler-controls/module-cache"
+      ],
+      "exit_code": 0,
+      "passed": true
+    },
+    {
+      "label": "macos-dynamic-missing-LifetimeDependence",
+      "command": [
+        "bash",
+        "-eu",
+        "-c",
+        "source \"$1\"; shift; giftui_rfc014_select_compiler \"$1\" \"$2\"; shift 2; \"$GIFTUI_CONTRACT_SWIFTC\" -enable-experimental-feature \"$1\" -typecheck \"$2\" \"${@:3}\"",
+        "compiler-control",
+        "/Users/eugene/work/GiftUI/scripts/contracts/compiler-baseline.sh",
+        "/Users/eugene/work/GiftUI",
+        "macos-dynamic",
+        "Lifetimes",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC002/CompilerBaseline/RequiredFeatures.swift",
+        "-target",
+        "arm64-apple-macosx26.0",
+        "-DGIFTUI_DYNAMIC_PROFILE",
+        "-module-cache-path",
+        "/Users/eugene/work/GiftUI/.build/rfc-014/p01/compiler-controls/module-cache"
+      ],
+      "exit_code": 1,
+      "passed": true
+    },
+    {
+      "label": "macos-dynamic-missing-Lifetimes",
+      "command": [
+        "bash",
+        "-eu",
+        "-c",
+        "source \"$1\"; shift; giftui_rfc014_select_compiler \"$1\" \"$2\"; shift 2; \"$GIFTUI_CONTRACT_SWIFTC\" -enable-experimental-feature \"$1\" -typecheck \"$2\" \"${@:3}\"",
+        "compiler-control",
+        "/Users/eugene/work/GiftUI/scripts/contracts/compiler-baseline.sh",
+        "/Users/eugene/work/GiftUI",
+        "macos-dynamic",
+        "LifetimeDependence",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC002/CompilerBaseline/RequiredFeatures.swift",
+        "-target",
+        "arm64-apple-macosx26.0",
+        "-DGIFTUI_DYNAMIC_PROFILE",
+        "-module-cache-path",
+        "/Users/eugene/work/GiftUI/.build/rfc-014/p01/compiler-controls/module-cache"
+      ],
+      "exit_code": 1,
+      "passed": true
+    },
+    {
+      "label": "macos-static-features",
+      "command": [
+        "bash",
+        "-eu",
+        "-c",
+        "source \"$1\"; shift; giftui_rfc014_select_compiler \"$1\" \"$2\"; shift 2; giftui_rfc014_check_compiler \"$GIFTUI_CONTRACT_SWIFTC\" \"$1\" \"$2\" \"${GIFTUI_CONTRACT_FEATURE_FLAGS[@]}\" \"${@:3}\"",
+        "compiler-control",
+        "/Users/eugene/work/GiftUI/scripts/contracts/compiler-baseline.sh",
+        "/Users/eugene/work/GiftUI",
+        "macos-static",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC002/CompilerBaseline/RequiredFeatures.swift",
+        "/Users/eugene/work/GiftUI/.build/rfc-014/p01/compiler-controls/macos-static",
+        "-target",
+        "arm64-apple-macosx26.0",
+        "-DGIFTUI_STATIC_PROFILE",
+        "-module-cache-path",
+        "/Users/eugene/work/GiftUI/.build/rfc-014/p01/compiler-controls/module-cache"
+      ],
+      "exit_code": 0,
+      "passed": true
+    },
+    {
+      "label": "macos-static-missing-LifetimeDependence",
+      "command": [
+        "bash",
+        "-eu",
+        "-c",
+        "source \"$1\"; shift; giftui_rfc014_select_compiler \"$1\" \"$2\"; shift 2; \"$GIFTUI_CONTRACT_SWIFTC\" -enable-experimental-feature \"$1\" -typecheck \"$2\" \"${@:3}\"",
+        "compiler-control",
+        "/Users/eugene/work/GiftUI/scripts/contracts/compiler-baseline.sh",
+        "/Users/eugene/work/GiftUI",
+        "macos-static",
+        "Lifetimes",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC002/CompilerBaseline/RequiredFeatures.swift",
+        "-target",
+        "arm64-apple-macosx26.0",
+        "-DGIFTUI_STATIC_PROFILE",
+        "-module-cache-path",
+        "/Users/eugene/work/GiftUI/.build/rfc-014/p01/compiler-controls/module-cache"
+      ],
+      "exit_code": 1,
+      "passed": true
+    },
+    {
+      "label": "macos-static-missing-Lifetimes",
+      "command": [
+        "bash",
+        "-eu",
+        "-c",
+        "source \"$1\"; shift; giftui_rfc014_select_compiler \"$1\" \"$2\"; shift 2; \"$GIFTUI_CONTRACT_SWIFTC\" -enable-experimental-feature \"$1\" -typecheck \"$2\" \"${@:3}\"",
+        "compiler-control",
+        "/Users/eugene/work/GiftUI/scripts/contracts/compiler-baseline.sh",
+        "/Users/eugene/work/GiftUI",
+        "macos-static",
+        "LifetimeDependence",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC002/CompilerBaseline/RequiredFeatures.swift",
+        "-target",
+        "arm64-apple-macosx26.0",
+        "-DGIFTUI_STATIC_PROFILE",
+        "-module-cache-path",
+        "/Users/eugene/work/GiftUI/.build/rfc-014/p01/compiler-controls/module-cache"
+      ],
+      "exit_code": 1,
+      "passed": true
+    },
+    {
+      "label": "raspberry-pi-armv6-features",
+      "command": [
+        "bash",
+        "-eu",
+        "-c",
+        "source \"$1\"; shift; giftui_rfc014_select_compiler \"$1\" \"$2\"; shift 2; giftui_rfc014_check_compiler \"$GIFTUI_CONTRACT_SWIFTC\" \"$1\" \"$2\" \"${GIFTUI_CONTRACT_FEATURE_FLAGS[@]}\" \"${@:3}\"",
+        "compiler-control",
+        "/Users/eugene/work/GiftUI/scripts/contracts/compiler-baseline.sh",
+        "/Users/eugene/work/GiftUI",
+        "raspberry-pi-armv6",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC002/CompilerBaseline/RequiredFeatures.swift",
+        "/Users/eugene/work/GiftUI/.build/rfc-014/p01/compiler-controls/raspberry-pi-armv6",
+        "-target",
+        "armv6-unknown-linux-gnueabihf",
+        "-target",
+        "armv6-unknown-linux-gnueabihf",
+        "-use-ld=lld",
+        "-Xcc",
+        "--gcc-toolchain=/Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6/raspios-bookworm/usr",
+        "-Xlinker",
+        "-rpath",
+        "-Xlinker",
+        "/usr/lib/swift_static/linux",
+        "-Xlinker",
+        "-rpath",
+        "-Xlinker",
+        "/usr/lib/swift_static/linux/armv6",
+        "-resource-dir",
+        "/Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6/raspios-bookworm/usr/lib/swift_static",
+        "-sdk",
+        "/Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6/raspios-bookworm",
+        "-latomic",
+        "-Xcc",
+        "-march=armv6",
+        "-Xcc",
+        "-mfpu=vfp",
+        "-Xcc",
+        "-mfloat-abi=hard",
+        "-Xcc",
+        "-D_FILE_OFFSET_BITS=64",
+        "-Xcc",
+        "-fPIC",
+        "-module-cache-path",
+        "/Users/eugene/work/GiftUI/.build/rfc-014/p01/compiler-controls/module-cache"
+      ],
+      "exit_code": 0,
+      "passed": true
+    },
+    {
+      "label": "raspberry-pi-armv6-missing-LifetimeDependence",
+      "command": [
+        "bash",
+        "-eu",
+        "-c",
+        "source \"$1\"; shift; giftui_rfc014_select_compiler \"$1\" \"$2\"; shift 2; \"$GIFTUI_CONTRACT_SWIFTC\" -enable-experimental-feature \"$1\" -typecheck \"$2\" \"${@:3}\"",
+        "compiler-control",
+        "/Users/eugene/work/GiftUI/scripts/contracts/compiler-baseline.sh",
+        "/Users/eugene/work/GiftUI",
+        "raspberry-pi-armv6",
+        "Lifetimes",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC002/CompilerBaseline/RequiredFeatures.swift",
+        "-target",
+        "armv6-unknown-linux-gnueabihf",
+        "-target",
+        "armv6-unknown-linux-gnueabihf",
+        "-use-ld=lld",
+        "-Xcc",
+        "--gcc-toolchain=/Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6/raspios-bookworm/usr",
+        "-Xlinker",
+        "-rpath",
+        "-Xlinker",
+        "/usr/lib/swift_static/linux",
+        "-Xlinker",
+        "-rpath",
+        "-Xlinker",
+        "/usr/lib/swift_static/linux/armv6",
+        "-resource-dir",
+        "/Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6/raspios-bookworm/usr/lib/swift_static",
+        "-sdk",
+        "/Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6/raspios-bookworm",
+        "-latomic",
+        "-Xcc",
+        "-march=armv6",
+        "-Xcc",
+        "-mfpu=vfp",
+        "-Xcc",
+        "-mfloat-abi=hard",
+        "-Xcc",
+        "-D_FILE_OFFSET_BITS=64",
+        "-Xcc",
+        "-fPIC",
+        "-module-cache-path",
+        "/Users/eugene/work/GiftUI/.build/rfc-014/p01/compiler-controls/module-cache"
+      ],
+      "exit_code": 1,
+      "passed": true
+    },
+    {
+      "label": "raspberry-pi-armv6-missing-Lifetimes",
+      "command": [
+        "bash",
+        "-eu",
+        "-c",
+        "source \"$1\"; shift; giftui_rfc014_select_compiler \"$1\" \"$2\"; shift 2; \"$GIFTUI_CONTRACT_SWIFTC\" -enable-experimental-feature \"$1\" -typecheck \"$2\" \"${@:3}\"",
+        "compiler-control",
+        "/Users/eugene/work/GiftUI/scripts/contracts/compiler-baseline.sh",
+        "/Users/eugene/work/GiftUI",
+        "raspberry-pi-armv6",
+        "LifetimeDependence",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC002/CompilerBaseline/RequiredFeatures.swift",
+        "-target",
+        "armv6-unknown-linux-gnueabihf",
+        "-target",
+        "armv6-unknown-linux-gnueabihf",
+        "-use-ld=lld",
+        "-Xcc",
+        "--gcc-toolchain=/Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6/raspios-bookworm/usr",
+        "-Xlinker",
+        "-rpath",
+        "-Xlinker",
+        "/usr/lib/swift_static/linux",
+        "-Xlinker",
+        "-rpath",
+        "-Xlinker",
+        "/usr/lib/swift_static/linux/armv6",
+        "-resource-dir",
+        "/Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6/raspios-bookworm/usr/lib/swift_static",
+        "-sdk",
+        "/Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6/raspios-bookworm",
+        "-latomic",
+        "-Xcc",
+        "-march=armv6",
+        "-Xcc",
+        "-mfpu=vfp",
+        "-Xcc",
+        "-mfloat-abi=hard",
+        "-Xcc",
+        "-D_FILE_OFFSET_BITS=64",
+        "-Xcc",
+        "-fPIC",
+        "-module-cache-path",
+        "/Users/eugene/work/GiftUI/.build/rfc-014/p01/compiler-controls/module-cache"
+      ],
+      "exit_code": 1,
+      "passed": true
+    },
+    {
+      "label": "nrf52840-embedded-features",
+      "command": [
+        "bash",
+        "-eu",
+        "-c",
+        "source \"$1\"; shift; giftui_rfc014_select_compiler \"$1\" \"$2\"; shift 2; giftui_rfc014_check_compiler \"$GIFTUI_CONTRACT_SWIFTC\" \"$1\" \"$2\" \"${GIFTUI_CONTRACT_FEATURE_FLAGS[@]}\" \"${@:3}\"",
+        "compiler-control",
+        "/Users/eugene/work/GiftUI/scripts/contracts/compiler-baseline.sh",
+        "/Users/eugene/work/GiftUI",
+        "nrf52840-embedded",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC002/CompilerBaseline/RequiredFeatures.swift",
+        "/Users/eugene/work/GiftUI/.build/rfc-014/p01/compiler-controls/nrf52840-embedded",
+        "-target",
+        "armv7em-none-none-eabi",
+        "-enable-experimental-feature",
+        "Embedded",
+        "-Xcc",
+        "-mcpu=cortex-m4",
+        "-Xcc",
+        "-mfpu=fpv4-sp-d16",
+        "-Xcc",
+        "-mfloat-abi=hard",
+        "-module-cache-path",
+        "/Users/eugene/work/GiftUI/.build/rfc-014/p01/compiler-controls/module-cache"
+      ],
+      "exit_code": 0,
+      "passed": true
+    },
+    {
+      "label": "nrf52840-embedded-missing-LifetimeDependence",
+      "command": [
+        "bash",
+        "-eu",
+        "-c",
+        "source \"$1\"; shift; giftui_rfc014_select_compiler \"$1\" \"$2\"; shift 2; \"$GIFTUI_CONTRACT_SWIFTC\" -enable-experimental-feature \"$1\" -typecheck \"$2\" \"${@:3}\"",
+        "compiler-control",
+        "/Users/eugene/work/GiftUI/scripts/contracts/compiler-baseline.sh",
+        "/Users/eugene/work/GiftUI",
+        "nrf52840-embedded",
+        "Lifetimes",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC002/CompilerBaseline/RequiredFeatures.swift",
+        "-target",
+        "armv7em-none-none-eabi",
+        "-enable-experimental-feature",
+        "Embedded",
+        "-Xcc",
+        "-mcpu=cortex-m4",
+        "-Xcc",
+        "-mfpu=fpv4-sp-d16",
+        "-Xcc",
+        "-mfloat-abi=hard",
+        "-module-cache-path",
+        "/Users/eugene/work/GiftUI/.build/rfc-014/p01/compiler-controls/module-cache"
+      ],
+      "exit_code": 1,
+      "passed": true
+    },
+    {
+      "label": "nrf52840-embedded-missing-Lifetimes",
+      "command": [
+        "bash",
+        "-eu",
+        "-c",
+        "source \"$1\"; shift; giftui_rfc014_select_compiler \"$1\" \"$2\"; shift 2; \"$GIFTUI_CONTRACT_SWIFTC\" -enable-experimental-feature \"$1\" -typecheck \"$2\" \"${@:3}\"",
+        "compiler-control",
+        "/Users/eugene/work/GiftUI/scripts/contracts/compiler-baseline.sh",
+        "/Users/eugene/work/GiftUI",
+        "nrf52840-embedded",
+        "LifetimeDependence",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC002/CompilerBaseline/RequiredFeatures.swift",
+        "-target",
+        "armv7em-none-none-eabi",
+        "-enable-experimental-feature",
+        "Embedded",
+        "-Xcc",
+        "-mcpu=cortex-m4",
+        "-Xcc",
+        "-mfpu=fpv4-sp-d16",
+        "-Xcc",
+        "-mfloat-abi=hard",
+        "-module-cache-path",
+        "/Users/eugene/work/GiftUI/.build/rfc-014/p01/compiler-controls/module-cache"
+      ],
+      "exit_code": 1,
+      "passed": true
+    }
+  ],
+  "migration_reports": {
+    "macos-dynamic": {
+      "report_directory": ".build/contract-reports/spec-002/rfc-014/b05e22870f4493c11cf8b662fdd4614e7fdf1c9f-0d0d0232a035be39/macos-dynamic",
+      "run_id": "b05e22870f4493c11cf8b662fdd4614e7fdf1c9f-0d0d0232a035be39",
+      "invocation": "scripts/contracts/run-spec-002.sh --profile macos-dynamic --compiler-baseline rfc-014",
+      "metadata": "schema_version=2\ninput_set_sha256=0d0d0232a035be39fc2f41adc2cc0d984b08905f7bec10a86773cd82b021b9e7\nrun_id=b05e22870f4493c11cf8b662fdd4614e7fdf1c9f-0d0d0232a035be39\nreport_directory=.build/contract-reports/spec-002/b05e22870f4493c11cf8b662fdd4614e7fdf1c9f-0d0d0232a035be39/macos-dynamic\nspec=SPEC-002\nprofile=macos-dynamic\nrepository_revision=b05e22870f4493c11cf8b662fdd4614e7fdf1c9f\ncompiler_baseline=rfc-014\ninvocation=scripts/contracts/run-spec-002.sh --profile macos-dynamic --compiler-baseline rfc-014\nsemantic_corpus_sha256=3add894045d330ea1441f2a6ff6d5465840c867ba02fb83912657819a20f3ccb\ncompiler_path=/Users/eugene/work/GiftUI/.toolchains/host/swift-6.3.2-RELEASE-osx/usr/bin/swiftc\ncompiler_sha256=d8e40107da0e2c1c59640a983faea326d5d2bddfe81f7609db14bade43c4a5b9\ncompiler_features=LifetimeDependence,Lifetimes\ncompiler_feature_check=passed\ncompiler_version<<EOF\nApple Swift version 6.3.2 (swift-6.3.2-RELEASE)\nTarget: arm64-apple-macosx26.0\nEOF\ntarget=arm64-apple-macosx26.0\nsdk_path=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk\nsdk_version=26.5\noptimization=-O -whole-module-optimization\nprofile_flag=-DGIFTUI_DYNAMIC_PROFILE\nlinked_section_inspector<<EOF\n/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/size: Xcode 26.6;Build version 17F113;\nEOF\nexit_code=0\n",
+      "artifact_sha256": {
+        ".build/contract-reports/spec-002/rfc-014/b05e22870f4493c11cf8b662fdd4614e7fdf1c9f-0d0d0232a035be39/macos-dynamic/commands.txt": "22d898146428f73a39257168711ece8d5eff5d6c5046ffadb83efe240aefe416",
+        ".build/contract-reports/spec-002/rfc-014/b05e22870f4493c11cf8b662fdd4614e7fdf1c9f-0d0d0232a035be39/macos-dynamic/input-hashes.tsv": "0d0d0232a035be39fc2f41adc2cc0d984b08905f7bec10a86773cd82b021b9e7",
+        ".build/contract-reports/spec-002/rfc-014/b05e22870f4493c11cf8b662fdd4614e7fdf1c9f-0d0d0232a035be39/macos-dynamic/metadata.txt": "19d9b65010b3b6368a810481e396b5f5bb79acfcfe261b51425e1b1f234b7c7b",
+        ".build/contract-reports/spec-002/rfc-014/b05e22870f4493c11cf8b662fdd4614e7fdf1c9f-0d0d0232a035be39/macos-dynamic/report-hashes.tsv": "f4cf7f1ad695b8f86d1cb946d8d6f4e0427fdbc66d89cc84ddcd0eea92e00274",
+        ".build/contract-reports/spec-002/rfc-014/b05e22870f4493c11cf8b662fdd4614e7fdf1c9f-0d0d0232a035be39/macos-dynamic/resources/baseline/architecture.txt": "c1669e1d8edca98769c37d494b76442a1d6e5ffffd7b4da1fb63aef8ebaf6f01",
+        ".build/contract-reports/spec-002/rfc-014/b05e22870f4493c11cf8b662fdd4614e7fdf1c9f-0d0d0232a035be39/macos-dynamic/resources/baseline/image": "7fd77ef964bf9d1d2a90309860aaa6fbec31a241e171657ea8d318a58fbc157d",
+        ".build/contract-reports/spec-002/rfc-014/b05e22870f4493c11cf8b662fdd4614e7fdf1c9f-0d0d0232a035be39/macos-dynamic/resources/baseline/link.map": "b14b524fb231aab951ade64e24f289aa2f342e192d648af9f46922c68af5d684",
+        ".build/contract-reports/spec-002/rfc-014/b05e22870f4493c11cf8b662fdd4614e7fdf1c9f-0d0d0232a035be39/macos-dynamic/resources/candidate/architecture.txt": "c1669e1d8edca98769c37d494b76442a1d6e5ffffd7b4da1fb63aef8ebaf6f01",
+        ".build/contract-reports/spec-002/rfc-014/b05e22870f4493c11cf8b662fdd4614e7fdf1c9f-0d0d0232a035be39/macos-dynamic/resources/candidate/image": "1e4826d5496b5b16e8c715bee3219e4aa7c0b872100159027ce8d3070c3aaa4c",
+        ".build/contract-reports/spec-002/rfc-014/b05e22870f4493c11cf8b662fdd4614e7fdf1c9f-0d0d0232a035be39/macos-dynamic/resources/candidate/link.map": "cd4ac6cd296cfb5bac7d640d48b6d0fb9e8e16fe278b9d34d918daf50de6ae5f",
+        ".build/contract-reports/spec-002/rfc-014/b05e22870f4493c11cf8b662fdd4614e7fdf1c9f-0d0d0232a035be39/macos-dynamic/resources/linked-section-deltas.tsv": "2cf149983a27e193abc6aa669450da22193e5cac8bb271f48eae47534c3a5e5b",
+        ".build/contract-reports/spec-002/rfc-014/b05e22870f4493c11cf8b662fdd4614e7fdf1c9f-0d0d0232a035be39/macos-dynamic/semantics/allocation-probe.txt": "41d9365bae5e081478776a55bfa31e6a11232fa4eb7136e3a9c6400fe1c940e5",
+        ".build/contract-reports/spec-002/rfc-014/b05e22870f4493c11cf8b662fdd4614e7fdf1c9f-0d0d0232a035be39/macos-dynamic/semantics/layout.tsv": "d6cea172ff815f658db50182c0e1efe8b9cc1adf0aad7934c01f7564b38d3211",
+        ".build/contract-reports/spec-002/rfc-014/b05e22870f4493c11cf8b662fdd4614e7fdf1c9f-0d0d0232a035be39/macos-dynamic/semantics/profile-corpus.txt": "98924f8d233c0882fbd0cd82b8c8758dd22ee25aaff0cc15f36c4d2882607e38"
+      },
+      "layout": [
+        {
+          "value": "geometryScalar",
+          "size": "4",
+          "stride": "4",
+          "alignment": "4"
+        },
+        {
+          "value": "point",
+          "size": "8",
+          "stride": "8",
+          "alignment": "4"
+        },
+        {
+          "value": "size",
+          "size": "8",
+          "stride": "8",
+          "alignment": "4"
+        },
+        {
+          "value": "rect",
+          "size": "16",
+          "stride": "16",
+          "alignment": "4"
+        },
+        {
+          "value": "proposedSize",
+          "size": "13",
+          "stride": "16",
+          "alignment": "4"
+        },
+        {
+          "value": "pointerPhase",
+          "size": "1",
+          "stride": "1",
+          "alignment": "1"
+        },
+        {
+          "value": "inputSourceID",
+          "size": "2",
+          "stride": "2",
+          "alignment": "2"
+        },
+        {
+          "value": "pointerSequenceID",
+          "size": "4",
+          "stride": "4",
+          "alignment": "4"
+        },
+        {
+          "value": "inputOrdinal",
+          "size": "4",
+          "stride": "4",
+          "alignment": "4"
+        },
+        {
+          "value": "presentationRevision",
+          "size": "4",
+          "stride": "4",
+          "alignment": "4"
+        },
+        {
+          "value": "normalizedPointerEvent",
+          "size": "28",
+          "stride": "28",
+          "alignment": "4"
+        }
+      ],
+      "linked_deltas": [
+        {
+          "category": "code",
+          "baseline_bytes": "5200",
+          "candidate_bytes": "5492",
+          "delta_bytes": "292"
+        },
+        {
+          "category": "read_only",
+          "baseline_bytes": "3871",
+          "candidate_bytes": "3871",
+          "delta_bytes": "0"
+        },
+        {
+          "category": "initialized",
+          "baseline_bytes": "72",
+          "candidate_bytes": "72",
+          "delta_bytes": "0"
+        },
+        {
+          "category": "zero_initialized",
+          "baseline_bytes": "2564",
+          "candidate_bytes": "2564",
+          "delta_bytes": "0"
+        },
+        {
+          "category": "file_size",
+          "baseline_bytes": "73000",
+          "candidate_bytes": "73080",
+          "delta_bytes": "80"
+        }
+      ],
+      "input_applicability": "Executed against staged implementation before commit. CMake SHELL grouping changed only for the nRF repair; this input is unused by native/ARMv6 commands. Foundation, drivers and their effective recipe hashes otherwise match the implementation commit.",
+      "recorded_cmake_sha256": "997ff9a0c9ded163e264fde96d821fc018369ae82cfad75b8ccf4ed7696d1b11"
+    },
+    "macos-static": {
+      "report_directory": ".build/contract-reports/spec-002/rfc-014/b05e22870f4493c11cf8b662fdd4614e7fdf1c9f-0d0d0232a035be39/macos-static",
+      "run_id": "b05e22870f4493c11cf8b662fdd4614e7fdf1c9f-0d0d0232a035be39",
+      "invocation": "scripts/contracts/run-spec-002.sh --profile macos-static --compiler-baseline rfc-014",
+      "metadata": "schema_version=2\ninput_set_sha256=0d0d0232a035be39fc2f41adc2cc0d984b08905f7bec10a86773cd82b021b9e7\nrun_id=b05e22870f4493c11cf8b662fdd4614e7fdf1c9f-0d0d0232a035be39\nreport_directory=.build/contract-reports/spec-002/b05e22870f4493c11cf8b662fdd4614e7fdf1c9f-0d0d0232a035be39/macos-static\nspec=SPEC-002\nprofile=macos-static\nrepository_revision=b05e22870f4493c11cf8b662fdd4614e7fdf1c9f\ncompiler_baseline=rfc-014\ninvocation=scripts/contracts/run-spec-002.sh --profile macos-static --compiler-baseline rfc-014\nsemantic_corpus_sha256=3add894045d330ea1441f2a6ff6d5465840c867ba02fb83912657819a20f3ccb\ncompiler_path=/Users/eugene/work/GiftUI/.toolchains/host/swift-6.3.2-RELEASE-osx/usr/bin/swiftc\ncompiler_sha256=d8e40107da0e2c1c59640a983faea326d5d2bddfe81f7609db14bade43c4a5b9\ncompiler_features=LifetimeDependence,Lifetimes\ncompiler_feature_check=passed\ncompiler_version<<EOF\nApple Swift version 6.3.2 (swift-6.3.2-RELEASE)\nTarget: arm64-apple-macosx26.0\nEOF\ntarget=arm64-apple-macosx26.0\nsdk_path=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk\nsdk_version=26.5\noptimization=-O -whole-module-optimization\nprofile_flag=-DGIFTUI_STATIC_PROFILE\nlinked_section_inspector<<EOF\n/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/size: Xcode 26.6;Build version 17F113;\nEOF\nexit_code=0\n",
+      "artifact_sha256": {
+        ".build/contract-reports/spec-002/rfc-014/b05e22870f4493c11cf8b662fdd4614e7fdf1c9f-0d0d0232a035be39/macos-static/commands.txt": "8e1705b062e340ec466dc463ac5d74edbc19697d4af0a2a7da8a0cb02bfbc107",
+        ".build/contract-reports/spec-002/rfc-014/b05e22870f4493c11cf8b662fdd4614e7fdf1c9f-0d0d0232a035be39/macos-static/input-hashes.tsv": "0d0d0232a035be39fc2f41adc2cc0d984b08905f7bec10a86773cd82b021b9e7",
+        ".build/contract-reports/spec-002/rfc-014/b05e22870f4493c11cf8b662fdd4614e7fdf1c9f-0d0d0232a035be39/macos-static/metadata.txt": "ef605cfd315dffd3bba1c81fab7fb142347a7e8448dd5a48e2741fa0ae23a946",
+        ".build/contract-reports/spec-002/rfc-014/b05e22870f4493c11cf8b662fdd4614e7fdf1c9f-0d0d0232a035be39/macos-static/report-hashes.tsv": "375d8461b2474a02f928e5bd3716934c61d71c30e7ec859b4732a8997a7873a2",
+        ".build/contract-reports/spec-002/rfc-014/b05e22870f4493c11cf8b662fdd4614e7fdf1c9f-0d0d0232a035be39/macos-static/resources/baseline/architecture.txt": "c1669e1d8edca98769c37d494b76442a1d6e5ffffd7b4da1fb63aef8ebaf6f01",
+        ".build/contract-reports/spec-002/rfc-014/b05e22870f4493c11cf8b662fdd4614e7fdf1c9f-0d0d0232a035be39/macos-static/resources/baseline/image": "7fd77ef964bf9d1d2a90309860aaa6fbec31a241e171657ea8d318a58fbc157d",
+        ".build/contract-reports/spec-002/rfc-014/b05e22870f4493c11cf8b662fdd4614e7fdf1c9f-0d0d0232a035be39/macos-static/resources/baseline/link.map": "a32b5a6d3962129e15d04f06d3fd50702208e96449f6b9c93e11e3a75c4351c3",
+        ".build/contract-reports/spec-002/rfc-014/b05e22870f4493c11cf8b662fdd4614e7fdf1c9f-0d0d0232a035be39/macos-static/resources/candidate/architecture.txt": "c1669e1d8edca98769c37d494b76442a1d6e5ffffd7b4da1fb63aef8ebaf6f01",
+        ".build/contract-reports/spec-002/rfc-014/b05e22870f4493c11cf8b662fdd4614e7fdf1c9f-0d0d0232a035be39/macos-static/resources/candidate/image": "1e4826d5496b5b16e8c715bee3219e4aa7c0b872100159027ce8d3070c3aaa4c",
+        ".build/contract-reports/spec-002/rfc-014/b05e22870f4493c11cf8b662fdd4614e7fdf1c9f-0d0d0232a035be39/macos-static/resources/candidate/link.map": "2b12e57443a1a95ee9ebb1c181d01171936a6624dd03bff22523ef27d4776e36",
+        ".build/contract-reports/spec-002/rfc-014/b05e22870f4493c11cf8b662fdd4614e7fdf1c9f-0d0d0232a035be39/macos-static/resources/linked-section-deltas.tsv": "2cf149983a27e193abc6aa669450da22193e5cac8bb271f48eae47534c3a5e5b",
+        ".build/contract-reports/spec-002/rfc-014/b05e22870f4493c11cf8b662fdd4614e7fdf1c9f-0d0d0232a035be39/macos-static/semantics/allocation-probe.txt": "41d9365bae5e081478776a55bfa31e6a11232fa4eb7136e3a9c6400fe1c940e5",
+        ".build/contract-reports/spec-002/rfc-014/b05e22870f4493c11cf8b662fdd4614e7fdf1c9f-0d0d0232a035be39/macos-static/semantics/layout.tsv": "d6cea172ff815f658db50182c0e1efe8b9cc1adf0aad7934c01f7564b38d3211",
+        ".build/contract-reports/spec-002/rfc-014/b05e22870f4493c11cf8b662fdd4614e7fdf1c9f-0d0d0232a035be39/macos-static/semantics/profile-corpus.txt": "98924f8d233c0882fbd0cd82b8c8758dd22ee25aaff0cc15f36c4d2882607e38"
+      },
+      "layout": [
+        {
+          "value": "geometryScalar",
+          "size": "4",
+          "stride": "4",
+          "alignment": "4"
+        },
+        {
+          "value": "point",
+          "size": "8",
+          "stride": "8",
+          "alignment": "4"
+        },
+        {
+          "value": "size",
+          "size": "8",
+          "stride": "8",
+          "alignment": "4"
+        },
+        {
+          "value": "rect",
+          "size": "16",
+          "stride": "16",
+          "alignment": "4"
+        },
+        {
+          "value": "proposedSize",
+          "size": "13",
+          "stride": "16",
+          "alignment": "4"
+        },
+        {
+          "value": "pointerPhase",
+          "size": "1",
+          "stride": "1",
+          "alignment": "1"
+        },
+        {
+          "value": "inputSourceID",
+          "size": "2",
+          "stride": "2",
+          "alignment": "2"
+        },
+        {
+          "value": "pointerSequenceID",
+          "size": "4",
+          "stride": "4",
+          "alignment": "4"
+        },
+        {
+          "value": "inputOrdinal",
+          "size": "4",
+          "stride": "4",
+          "alignment": "4"
+        },
+        {
+          "value": "presentationRevision",
+          "size": "4",
+          "stride": "4",
+          "alignment": "4"
+        },
+        {
+          "value": "normalizedPointerEvent",
+          "size": "28",
+          "stride": "28",
+          "alignment": "4"
+        }
+      ],
+      "linked_deltas": [
+        {
+          "category": "code",
+          "baseline_bytes": "5200",
+          "candidate_bytes": "5492",
+          "delta_bytes": "292"
+        },
+        {
+          "category": "read_only",
+          "baseline_bytes": "3871",
+          "candidate_bytes": "3871",
+          "delta_bytes": "0"
+        },
+        {
+          "category": "initialized",
+          "baseline_bytes": "72",
+          "candidate_bytes": "72",
+          "delta_bytes": "0"
+        },
+        {
+          "category": "zero_initialized",
+          "baseline_bytes": "2564",
+          "candidate_bytes": "2564",
+          "delta_bytes": "0"
+        },
+        {
+          "category": "file_size",
+          "baseline_bytes": "73000",
+          "candidate_bytes": "73080",
+          "delta_bytes": "80"
+        }
+      ],
+      "input_applicability": "Executed against staged implementation before commit. CMake SHELL grouping changed only for the nRF repair; this input is unused by native/ARMv6 commands. Foundation, drivers and their effective recipe hashes otherwise match the implementation commit.",
+      "recorded_cmake_sha256": "997ff9a0c9ded163e264fde96d821fc018369ae82cfad75b8ccf4ed7696d1b11"
+    },
+    "raspberry-pi-armv6": {
+      "report_directory": ".build/contract-reports/spec-002/rfc-014/b05e22870f4493c11cf8b662fdd4614e7fdf1c9f-0d0d0232a035be39/raspberry-pi-armv6",
+      "run_id": "b05e22870f4493c11cf8b662fdd4614e7fdf1c9f-0d0d0232a035be39",
+      "invocation": "scripts/contracts/run-spec-002.sh --profile raspberry-pi-armv6 --compiler-baseline rfc-014",
+      "metadata": "schema_version=2\ninput_set_sha256=0d0d0232a035be39fc2f41adc2cc0d984b08905f7bec10a86773cd82b021b9e7\nrun_id=b05e22870f4493c11cf8b662fdd4614e7fdf1c9f-0d0d0232a035be39\nreport_directory=.build/contract-reports/spec-002/b05e22870f4493c11cf8b662fdd4614e7fdf1c9f-0d0d0232a035be39/raspberry-pi-armv6\nspec=SPEC-002\nprofile=raspberry-pi-armv6\nrepository_revision=b05e22870f4493c11cf8b662fdd4614e7fdf1c9f\ncompiler_baseline=rfc-014\ninvocation=scripts/contracts/run-spec-002.sh --profile raspberry-pi-armv6 --compiler-baseline rfc-014\nsemantic_corpus_sha256=3add894045d330ea1441f2a6ff6d5465840c867ba02fb83912657819a20f3ccb\ncompiler_version<<EOF\nApple Swift version 6.3.2 (swift-6.3.2-RELEASE)\nTarget: arm64-apple-macosx26.0\nEOF\nsdk_identity<<EOF\nswift_version=6.3.2\ntarget=armv6-unknown-linux-gnueabihf\ndistribution=raspios-bookworm\nsha256=bd09f97b693aa2097df281d9b5490d51c6c01a2241b890c7d05623d4134d7fc8\nEOF\ntarget=armv6-unknown-linux-gnueabihf\nsdk_path=/Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6\ndestination=/Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6/raspios-bookworm-static.json\noptimization=-O -whole-module-optimization\ncompiler_path=/Users/eugene/work/GiftUI/.toolchains/host/swift-6.3.2-RELEASE-osx/usr/bin/swiftc\ncompiler_sha256=d8e40107da0e2c1c59640a983faea326d5d2bddfe81f7609db14bade43c4a5b9\ncompiler_features=LifetimeDependence,Lifetimes\ncompiler_feature_check=passed\nlinked_section_inspector<<EOF\n/Users/eugene/work/GiftUI/.toolchains/host/swift-6.3.2-RELEASE-osx/usr/bin/llvm-objdump: LLVM (http://llvm.org/):\nEOF\nexit_code=0\n",
+      "artifact_sha256": {
+        ".build/contract-reports/spec-002/rfc-014/b05e22870f4493c11cf8b662fdd4614e7fdf1c9f-0d0d0232a035be39/raspberry-pi-armv6/commands.txt": "7a1a5a57786c09af591d358cc7a7d5f9a5414cf6ee79735a2367dc746a39c1d1",
+        ".build/contract-reports/spec-002/rfc-014/b05e22870f4493c11cf8b662fdd4614e7fdf1c9f-0d0d0232a035be39/raspberry-pi-armv6/input-hashes.tsv": "0d0d0232a035be39fc2f41adc2cc0d984b08905f7bec10a86773cd82b021b9e7",
+        ".build/contract-reports/spec-002/rfc-014/b05e22870f4493c11cf8b662fdd4614e7fdf1c9f-0d0d0232a035be39/raspberry-pi-armv6/metadata.txt": "c67515500cdcf652c9da4b89e7e3aa17788be7954db1ee276cae7ac33cd65034",
+        ".build/contract-reports/spec-002/rfc-014/b05e22870f4493c11cf8b662fdd4614e7fdf1c9f-0d0d0232a035be39/raspberry-pi-armv6/report-hashes.tsv": "8505c45596a481264732f50d962e3719df2c3eea0f4783446a71dfa25c285ad8",
+        ".build/contract-reports/spec-002/rfc-014/b05e22870f4493c11cf8b662fdd4614e7fdf1c9f-0d0d0232a035be39/raspberry-pi-armv6/resources/baseline/image": "8522d4788c2713bb88ff5ab9fa4620d1bd8423edc2f57d2fa75dd948c617f164",
+        ".build/contract-reports/spec-002/rfc-014/b05e22870f4493c11cf8b662fdd4614e7fdf1c9f-0d0d0232a035be39/raspberry-pi-armv6/resources/baseline/link.map": "f2e6c95f9dc510379cd90e133b8c6b931bc433d22187a76a2df47e6219cd034f",
+        ".build/contract-reports/spec-002/rfc-014/b05e22870f4493c11cf8b662fdd4614e7fdf1c9f-0d0d0232a035be39/raspberry-pi-armv6/resources/candidate/image": "7e44e4878240e6bb726bda1517f42887628dc8c344f9837d545b2e04b1d0bfea",
+        ".build/contract-reports/spec-002/rfc-014/b05e22870f4493c11cf8b662fdd4614e7fdf1c9f-0d0d0232a035be39/raspberry-pi-armv6/resources/candidate/link.map": "0b6f087ff1a87c17754db6e3e3ed121d5d0c768e92f0f1db83992b5019a94b19",
+        ".build/contract-reports/spec-002/rfc-014/b05e22870f4493c11cf8b662fdd4614e7fdf1c9f-0d0d0232a035be39/raspberry-pi-armv6/resources/linked-section-deltas.tsv": "0f610728a33b5326100130a2449724aa9e0cb32d4835fb548fb113521e66e076",
+        ".build/contract-reports/spec-002/rfc-014/b05e22870f4493c11cf8b662fdd4614e7fdf1c9f-0d0d0232a035be39/raspberry-pi-armv6/semantics/layout.tsv": "d6cea172ff815f658db50182c0e1efe8b9cc1adf0aad7934c01f7564b38d3211",
+        ".build/contract-reports/spec-002/rfc-014/b05e22870f4493c11cf8b662fdd4614e7fdf1c9f-0d0d0232a035be39/raspberry-pi-armv6/semantics/profile-corpus.txt": "1f1a821b4927681e96bddfba1dcac617f6f4fb5c5dd4ef3b37a84bdf4a2b8cde"
+      },
+      "layout": [
+        {
+          "value": "geometryScalar",
+          "size": "4",
+          "stride": "4",
+          "alignment": "4"
+        },
+        {
+          "value": "point",
+          "size": "8",
+          "stride": "8",
+          "alignment": "4"
+        },
+        {
+          "value": "size",
+          "size": "8",
+          "stride": "8",
+          "alignment": "4"
+        },
+        {
+          "value": "rect",
+          "size": "16",
+          "stride": "16",
+          "alignment": "4"
+        },
+        {
+          "value": "proposedSize",
+          "size": "13",
+          "stride": "16",
+          "alignment": "4"
+        },
+        {
+          "value": "pointerPhase",
+          "size": "1",
+          "stride": "1",
+          "alignment": "1"
+        },
+        {
+          "value": "inputSourceID",
+          "size": "2",
+          "stride": "2",
+          "alignment": "2"
+        },
+        {
+          "value": "pointerSequenceID",
+          "size": "4",
+          "stride": "4",
+          "alignment": "4"
+        },
+        {
+          "value": "inputOrdinal",
+          "size": "4",
+          "stride": "4",
+          "alignment": "4"
+        },
+        {
+          "value": "presentationRevision",
+          "size": "4",
+          "stride": "4",
+          "alignment": "4"
+        },
+        {
+          "value": "normalizedPointerEvent",
+          "size": "28",
+          "stride": "28",
+          "alignment": "4"
+        }
+      ],
+      "linked_deltas": [
+        {
+          "category": "code",
+          "baseline_bytes": "5037528",
+          "candidate_bytes": "5037800",
+          "delta_bytes": "272"
+        },
+        {
+          "category": "read_only",
+          "baseline_bytes": "1287331",
+          "candidate_bytes": "1287339",
+          "delta_bytes": "8"
+        },
+        {
+          "category": "initialized",
+          "baseline_bytes": "89244",
+          "candidate_bytes": "89244",
+          "delta_bytes": "0"
+        },
+        {
+          "category": "zero_initialized",
+          "baseline_bytes": "131656",
+          "candidate_bytes": "131368",
+          "delta_bytes": "-288"
+        },
+        {
+          "category": "file_size",
+          "baseline_bytes": "9531840",
+          "candidate_bytes": "9532208",
+          "delta_bytes": "368"
+        }
+      ],
+      "input_applicability": "Executed against staged implementation before commit. CMake SHELL grouping changed only for the nRF repair; this input is unused by native/ARMv6 commands. Foundation, drivers and their effective recipe hashes otherwise match the implementation commit.",
+      "recorded_cmake_sha256": "997ff9a0c9ded163e264fde96d821fc018369ae82cfad75b8ccf4ed7696d1b11"
+    },
+    "nrf52840-embedded": {
+      "report_directory": ".build/contract-reports/spec-002/rfc-014/b05e22870f4493c11cf8b662fdd4614e7fdf1c9f-7f862e09215192c6/nrf52840-embedded",
+      "run_id": "b05e22870f4493c11cf8b662fdd4614e7fdf1c9f-7f862e09215192c6",
+      "invocation": "scripts/contracts/run-spec-002.sh --profile nrf52840-embedded --compiler-baseline rfc-014",
+      "metadata": "schema_version=2\ninput_set_sha256=7f862e09215192c63236f2b4ef703d1f5418d7c5db37b417de73a1720b83da94\nrun_id=b05e22870f4493c11cf8b662fdd4614e7fdf1c9f-7f862e09215192c6\nreport_directory=.build/contract-reports/spec-002/b05e22870f4493c11cf8b662fdd4614e7fdf1c9f-7f862e09215192c6/nrf52840-embedded\nspec=SPEC-002\nprofile=nrf52840-embedded\nrepository_revision=b05e22870f4493c11cf8b662fdd4614e7fdf1c9f\ncompiler_baseline=rfc-014\ninvocation=scripts/contracts/run-spec-002.sh --profile nrf52840-embedded --compiler-baseline rfc-014\nsemantic_corpus_sha256=3add894045d330ea1441f2a6ff6d5465840c867ba02fb83912657819a20f3ccb\ncompiler_version<<EOF\nApple Swift version 6.3.2 (swift-6.3.2-RELEASE)\nTarget: arm64-apple-macosx26.0\nEOF\ntarget=armv7em-none-none-eabi\nboard=nrf52840dk/nrf52840\nzephyr_version=4.3.0\nzephyr_revision=3568e1b6d5cdd51a6b964a2a1d6d29200fea2056\nzephyr_sdk_version=0.17.4\nsdk_path=/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4\noptimization=-Osize -whole-module-optimization\nembedded_swift=-enable-experimental-feature Embedded\nfloat_abi=hard\ncompiler_path=/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.3.2-RELEASE-osx/usr/bin/swiftc\ncompiler_sha256=d8e40107da0e2c1c59640a983faea326d5d2bddfe81f7609db14bade43c4a5b9\ncompiler_features=LifetimeDependence,Lifetimes\ncompiler_feature_check=passed\nlinked_section_inspector<<EOF\n/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/arm-zephyr-eabi-objdump: GNU objdump (Zephyr SDK 0.17.4) 2.38\nEOF\nexit_code=0\n",
+      "artifact_sha256": {
+        ".build/contract-reports/spec-002/rfc-014/b05e22870f4493c11cf8b662fdd4614e7fdf1c9f-7f862e09215192c6/nrf52840-embedded/commands.txt": "510109779a2f256b37fcfc828d6bf1ca3e00e1d28ce358be2c79e6e0a53d749b",
+        ".build/contract-reports/spec-002/rfc-014/b05e22870f4493c11cf8b662fdd4614e7fdf1c9f-7f862e09215192c6/nrf52840-embedded/input-hashes.tsv": "7f862e09215192c63236f2b4ef703d1f5418d7c5db37b417de73a1720b83da94",
+        ".build/contract-reports/spec-002/rfc-014/b05e22870f4493c11cf8b662fdd4614e7fdf1c9f-7f862e09215192c6/nrf52840-embedded/metadata.txt": "ac484f97a301c5e2323e3010185332d3a07b96554d136c9d256f6238c647aa72",
+        ".build/contract-reports/spec-002/rfc-014/b05e22870f4493c11cf8b662fdd4614e7fdf1c9f-7f862e09215192c6/nrf52840-embedded/report-hashes.tsv": "c7f1173fdd315cf26073c0e178945f93b5aa23978ba47d203a29b0ba9a85d109",
+        ".build/contract-reports/spec-002/rfc-014/b05e22870f4493c11cf8b662fdd4614e7fdf1c9f-7f862e09215192c6/nrf52840-embedded/resources/baseline/arm-attributes.txt": "b1cf2c133bb70839666f3326d91a0da2d075641c44ddc64a4157c80a30a7230a",
+        ".build/contract-reports/spec-002/rfc-014/b05e22870f4493c11cf8b662fdd4614e7fdf1c9f-7f862e09215192c6/nrf52840-embedded/resources/baseline/image": "d19400c48c35cb56881b792674d3808e8d2bc23207849b878d41758c605e046c",
+        ".build/contract-reports/spec-002/rfc-014/b05e22870f4493c11cf8b662fdd4614e7fdf1c9f-7f862e09215192c6/nrf52840-embedded/resources/baseline/link.map": "0c1335c5d86f6ab060f3a9897f545b41444b7b2963ce62e59d35e99e670fb386",
+        ".build/contract-reports/spec-002/rfc-014/b05e22870f4493c11cf8b662fdd4614e7fdf1c9f-7f862e09215192c6/nrf52840-embedded/resources/candidate/arm-attributes.txt": "b1cf2c133bb70839666f3326d91a0da2d075641c44ddc64a4157c80a30a7230a",
+        ".build/contract-reports/spec-002/rfc-014/b05e22870f4493c11cf8b662fdd4614e7fdf1c9f-7f862e09215192c6/nrf52840-embedded/resources/candidate/image": "ede8fff988f8976628c822a5be3174ded7589027af47d633df4d47561bbe75f2",
+        ".build/contract-reports/spec-002/rfc-014/b05e22870f4493c11cf8b662fdd4614e7fdf1c9f-7f862e09215192c6/nrf52840-embedded/resources/candidate/link.map": "e4a970a80287ff22e642de4581de5a0560427a8e5810c20d3a809b35b6e59b45",
+        ".build/contract-reports/spec-002/rfc-014/b05e22870f4493c11cf8b662fdd4614e7fdf1c9f-7f862e09215192c6/nrf52840-embedded/resources/linked-section-deltas.tsv": "c692676a096b73a2b4cfbbc16ccb6f772227b48cfa33566dcf51136e5d4fe711",
+        ".build/contract-reports/spec-002/rfc-014/b05e22870f4493c11cf8b662fdd4614e7fdf1c9f-7f862e09215192c6/nrf52840-embedded/semantics/layout.tsv": "d6cea172ff815f658db50182c0e1efe8b9cc1adf0aad7934c01f7564b38d3211",
+        ".build/contract-reports/spec-002/rfc-014/b05e22870f4493c11cf8b662fdd4614e7fdf1c9f-7f862e09215192c6/nrf52840-embedded/semantics/profile-corpus.txt": "1f1a821b4927681e96bddfba1dcac617f6f4fb5c5dd4ef3b37a84bdf4a2b8cde"
+      },
+      "layout": [
+        {
+          "value": "geometryScalar",
+          "size": "4",
+          "stride": "4",
+          "alignment": "4"
+        },
+        {
+          "value": "point",
+          "size": "8",
+          "stride": "8",
+          "alignment": "4"
+        },
+        {
+          "value": "size",
+          "size": "8",
+          "stride": "8",
+          "alignment": "4"
+        },
+        {
+          "value": "rect",
+          "size": "16",
+          "stride": "16",
+          "alignment": "4"
+        },
+        {
+          "value": "proposedSize",
+          "size": "13",
+          "stride": "16",
+          "alignment": "4"
+        },
+        {
+          "value": "pointerPhase",
+          "size": "1",
+          "stride": "1",
+          "alignment": "1"
+        },
+        {
+          "value": "inputSourceID",
+          "size": "2",
+          "stride": "2",
+          "alignment": "2"
+        },
+        {
+          "value": "pointerSequenceID",
+          "size": "4",
+          "stride": "4",
+          "alignment": "4"
+        },
+        {
+          "value": "inputOrdinal",
+          "size": "4",
+          "stride": "4",
+          "alignment": "4"
+        },
+        {
+          "value": "presentationRevision",
+          "size": "4",
+          "stride": "4",
+          "alignment": "4"
+        },
+        {
+          "value": "normalizedPointerEvent",
+          "size": "28",
+          "stride": "28",
+          "alignment": "4"
+        }
+      ],
+      "linked_deltas": [
+        {
+          "category": "code",
+          "baseline_bytes": "22900",
+          "candidate_bytes": "23148",
+          "delta_bytes": "248"
+        },
+        {
+          "category": "read_only",
+          "baseline_bytes": "3076",
+          "candidate_bytes": "3076",
+          "delta_bytes": "0"
+        },
+        {
+          "category": "initialized",
+          "baseline_bytes": "52",
+          "candidate_bytes": "52",
+          "delta_bytes": "0"
+        },
+        {
+          "category": "zero_initialized",
+          "baseline_bytes": "5901",
+          "candidate_bytes": "5901",
+          "delta_bytes": "0"
+        },
+        {
+          "category": "file_size",
+          "baseline_bytes": "702416",
+          "candidate_bytes": "702948",
+          "delta_bytes": "532"
+        }
+      ],
+      "input_applicability": "Executed against staged implementation before commit. CMake SHELL grouping changed only for the nRF repair; this input is unused by native/ARMv6 commands. Foundation, drivers and their effective recipe hashes otherwise match the implementation commit.",
+      "recorded_cmake_sha256": "dd52996b208866a0b8f37391a278ca8cb9f501f6a5a34e904f2a607423d5dec9"
+    }
+  },
+  "historical_report": {
+    "report_directory": ".build/contract-reports/spec-002/b05e22870f4493c11cf8b662fdd4614e7fdf1c9f-6eea5bbc841f3f09/macos-dynamic",
+    "run_id": "b05e22870f4493c11cf8b662fdd4614e7fdf1c9f-6eea5bbc841f3f09",
+    "invocation": "scripts/contracts/run-spec-002.sh --profile macos-dynamic",
+    "metadata": "schema_version=2\ninput_set_sha256=6eea5bbc841f3f0967ffdfab44fa03c2f15318348790f691c46051b71fe0fae6\nrun_id=b05e22870f4493c11cf8b662fdd4614e7fdf1c9f-6eea5bbc841f3f09\nreport_directory=.build/contract-reports/spec-002/b05e22870f4493c11cf8b662fdd4614e7fdf1c9f-6eea5bbc841f3f09/macos-dynamic\nspec=SPEC-002\nprofile=macos-dynamic\nrepository_revision=b05e22870f4493c11cf8b662fdd4614e7fdf1c9f\ncompiler_baseline=historical\ninvocation=scripts/contracts/run-spec-002.sh --profile macos-dynamic\nsemantic_corpus_sha256=3add894045d330ea1441f2a6ff6d5465840c867ba02fb83912657819a20f3ccb\ncompiler_version<<EOF\nswift-driver version: 1.148.6 Apple Swift version 6.3.3 (swiftlang-6.3.3.1.3 clang-2100.1.1.101)\nTarget: arm64-apple-macosx26.0\nEOF\ntarget=arm64-apple-macosx26.0\nsdk_path=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk\nsdk_version=26.5\noptimization=-O -whole-module-optimization\nprofile_flag=-DGIFTUI_DYNAMIC_PROFILE\nlinked_section_inspector<<EOF\n/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/size: Xcode 26.6;Build version 17F113;\nEOF\nexit_code=0\n",
+    "artifact_sha256": {
+      ".build/contract-reports/spec-002/b05e22870f4493c11cf8b662fdd4614e7fdf1c9f-6eea5bbc841f3f09/macos-dynamic/commands.txt": "2edf652aa59381a43eea2fd9c37c8ed2ffd0a5a8ee9b513b26c27643a663b159",
+      ".build/contract-reports/spec-002/b05e22870f4493c11cf8b662fdd4614e7fdf1c9f-6eea5bbc841f3f09/macos-dynamic/input-hashes.tsv": "6eea5bbc841f3f0967ffdfab44fa03c2f15318348790f691c46051b71fe0fae6",
+      ".build/contract-reports/spec-002/b05e22870f4493c11cf8b662fdd4614e7fdf1c9f-6eea5bbc841f3f09/macos-dynamic/metadata.txt": "0197f654ce1538db2c45ea8a635ac305a94c58dac65138bb4465b9ca1be30645",
+      ".build/contract-reports/spec-002/b05e22870f4493c11cf8b662fdd4614e7fdf1c9f-6eea5bbc841f3f09/macos-dynamic/report-hashes.tsv": "623ee0831857004759caac68667b12549fff5d118c42f4ce602cfd3ca9aea0d3",
+      ".build/contract-reports/spec-002/b05e22870f4493c11cf8b662fdd4614e7fdf1c9f-6eea5bbc841f3f09/macos-dynamic/resources/baseline/image": "748068c00caec3316ea885817fd09999e8fa9b49c2ea76b77081d2377ec3aa70",
+      ".build/contract-reports/spec-002/b05e22870f4493c11cf8b662fdd4614e7fdf1c9f-6eea5bbc841f3f09/macos-dynamic/resources/baseline/link.map": "df98d35b6ae24b98d854b61c48b9711494a0aa4df3f563a2834a8ffdd79cc00e",
+      ".build/contract-reports/spec-002/b05e22870f4493c11cf8b662fdd4614e7fdf1c9f-6eea5bbc841f3f09/macos-dynamic/resources/candidate/image": "dbea99c54c5317b870b1ffc476906537d80d66b7153c9d0aff5905c9d5508ca8",
+      ".build/contract-reports/spec-002/b05e22870f4493c11cf8b662fdd4614e7fdf1c9f-6eea5bbc841f3f09/macos-dynamic/resources/candidate/link.map": "d0c3b80989c8191d1883633f1bd15d571c6afb5ddf2e06d7469777af7fd766c4",
+      ".build/contract-reports/spec-002/b05e22870f4493c11cf8b662fdd4614e7fdf1c9f-6eea5bbc841f3f09/macos-dynamic/resources/linked-section-deltas.tsv": "976a4191b65b7260187893e9288f06a62037ce4ad38b7a48bc9b7036efdfcfa1",
+      ".build/contract-reports/spec-002/b05e22870f4493c11cf8b662fdd4614e7fdf1c9f-6eea5bbc841f3f09/macos-dynamic/semantics/allocation-probe.txt": "41d9365bae5e081478776a55bfa31e6a11232fa4eb7136e3a9c6400fe1c940e5",
+      ".build/contract-reports/spec-002/b05e22870f4493c11cf8b662fdd4614e7fdf1c9f-6eea5bbc841f3f09/macos-dynamic/semantics/layout.tsv": "d6cea172ff815f658db50182c0e1efe8b9cc1adf0aad7934c01f7564b38d3211",
+      ".build/contract-reports/spec-002/b05e22870f4493c11cf8b662fdd4614e7fdf1c9f-6eea5bbc841f3f09/macos-dynamic/semantics/profile-corpus.txt": "98924f8d233c0882fbd0cd82b8c8758dd22ee25aaff0cc15f36c4d2882607e38"
+    },
+    "layout": [
+      {
+        "value": "geometryScalar",
+        "size": "4",
+        "stride": "4",
+        "alignment": "4"
+      },
+      {
+        "value": "point",
+        "size": "8",
+        "stride": "8",
+        "alignment": "4"
+      },
+      {
+        "value": "size",
+        "size": "8",
+        "stride": "8",
+        "alignment": "4"
+      },
+      {
+        "value": "rect",
+        "size": "16",
+        "stride": "16",
+        "alignment": "4"
+      },
+      {
+        "value": "proposedSize",
+        "size": "13",
+        "stride": "16",
+        "alignment": "4"
+      },
+      {
+        "value": "pointerPhase",
+        "size": "1",
+        "stride": "1",
+        "alignment": "1"
+      },
+      {
+        "value": "inputSourceID",
+        "size": "2",
+        "stride": "2",
+        "alignment": "2"
+      },
+      {
+        "value": "pointerSequenceID",
+        "size": "4",
+        "stride": "4",
+        "alignment": "4"
+      },
+      {
+        "value": "inputOrdinal",
+        "size": "4",
+        "stride": "4",
+        "alignment": "4"
+      },
+      {
+        "value": "presentationRevision",
+        "size": "4",
+        "stride": "4",
+        "alignment": "4"
+      },
+      {
+        "value": "normalizedPointerEvent",
+        "size": "28",
+        "stride": "28",
+        "alignment": "4"
+      }
+    ],
+    "linked_deltas": [
+      {
+        "category": "code",
+        "baseline_bytes": "5092",
+        "candidate_bytes": "5388",
+        "delta_bytes": "296"
+      },
+      {
+        "category": "read_only",
+        "baseline_bytes": "3871",
+        "candidate_bytes": "3871",
+        "delta_bytes": "0"
+      },
+      {
+        "category": "initialized",
+        "baseline_bytes": "72",
+        "candidate_bytes": "72",
+        "delta_bytes": "0"
+      },
+      {
+        "category": "zero_initialized",
+        "baseline_bytes": "2564",
+        "candidate_bytes": "2564",
+        "delta_bytes": "0"
+      },
+      {
+        "category": "file_size",
+        "baseline_bytes": "72968",
+        "candidate_bytes": "73064",
+        "delta_bytes": "96"
+      }
+    ],
+    "input_applicability": "Executed against staged implementation before commit. CMake SHELL grouping changed only for the nRF repair; this input is unused by native/ARMv6 commands. Foundation, drivers and their effective recipe hashes otherwise match the implementation commit.",
+    "recorded_cmake_sha256": "997ff9a0c9ded163e264fde96d821fc018369ae82cfad75b8ccf4ed7696d1b11"
+  },
+  "hardware": "No connected execution, deployment or flashing.",
+  "remaining_packages": [
+    "P02",
+    "P03",
+    "P04",
+    "P05",
+    "P06",
+    "P07",
+    "P08",
+    "P09",
+    "P10",
+    "P11",
+    "P12"
+  ]
+}

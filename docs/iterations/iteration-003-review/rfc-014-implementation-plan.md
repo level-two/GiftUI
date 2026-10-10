@@ -1,6 +1,6 @@
 # RFC-014 bounded implementation sequence — 2026-10-10
 
-**Ready to start P01; implementation has not started.** This is the shared
+**P01 passed; ready to start P02.** This is the shared
 sequencing index for nine owner Implementation Plans, not another contract or
 investigation. It derives only the [approved Spec amendments](rfc-014-spec-approval.md)
 at `3c260bbc` and accepted ADR-035/036/037. ITERATION-003 I3-04/05 supplies the
@@ -180,10 +180,16 @@ completion nor approval marks any Spec implemented or closes the iteration.
 
 ## Completion record
 
-Plan prepared; P01–P12 pending. No implementation or experiment was run during
-planning. Optional work remains in the existing deferred track; no new optional
-deliverable was added. Next action is P01, not another investigation or planning
-round.
+P01 implemented in `bb61d4ef`; all four migration Foundation drivers, the
+historical macOS control and all 17 compiler controls pass. The
+[P01 receipt](../../../Tests/ContractFixtures/SPEC002/Evidence/rfc-014-p01/result.md)
+pins source/recipe/route/compiler/artifact identities, deltas and the single
+successful CMake repair. SPEC-002 is implementing and its plan active; T7.1
+remains open through P10–P12. P02–P12 remain pending with no scope change,
+P01 blocker or new package. P02 is the next dependency-complete package.
+
+Planning was prepared without implementation or experiment execution. Optional work remains in the existing deferred track; no new optional
+deliverable was added. Next action is P02 within the existing bounded sequence.
 
 
 Planning validation: all nine approved Spec statuses and ready plan templates

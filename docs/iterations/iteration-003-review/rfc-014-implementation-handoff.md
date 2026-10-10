@@ -70,7 +70,9 @@ rows do not allocate a new investigation budget or weaken existing requirements.
 | IH-6 | Measure and enforce final resource/performance limits on actual supported artifacts. | Complete pool/descriptor/registration/host-ticket/stack/IRQ accounting, linked ELF RAM/flash, allocator reachability and zero heap where required, matched Dynamic costs, accepted capture/admission limits and frame/acquisition requirements. Inspect the fixture's allocator references in the actual linked implementation; never treat unresolved references or unknown stack paths as zero. |
 
 IH-1 is complete. IH-2–6 are realized by the fixed P01–P12 packages in the
-[bounded sequence](rfc-014-implementation-plan.md); P01 is next. Full
+[bounded sequence](rfc-014-implementation-plan.md); P01 passed and P02 is next.
+The [P01 receipt](../../../Tests/ContractFixtures/SPEC002/Evidence/rfc-014-p01/result.md)
+records the implementation and hardware-free compiler/Foundation evidence. Full
 migration/conformance/cost work is deliberately not a prerequisite to *finishing
 architectural investigation*. It is still mandatory before production adoption
 or an implemented/conformant claim.

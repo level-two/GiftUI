@@ -43,8 +43,10 @@ not additional authorization to rerun an MVP implementation or reopen experiment
   on the four governed configurations, focused unit/negative checks named by the
   shared sequence, then P10's registered hardware-free gate. Compiler-selection
   propagation follows P01; no historical check is weakened.
-  **Evidence:** existing owner conformance report and immutable owner-driver
-  reports linked to exact commits/artifacts; no success evidence exists yet.
+  **Evidence:** [P01 receipt](../../Tests/ContractFixtures/SPEC002/Evidence/rfc-014-p01/result.md)
+  records implementation `bb61d4ef`, four passing migration drivers, the historical
+  control, 17 compiler controls and exact source/recipe/compiler/artifact hashes.
+  P01 is complete; T7.1 remains open for P10–P12 evidence/dispositions.
 
 The single current acceptance matrix retains each criterion once. Its historical
 task IDs remain provenance; `T7.1` adds fresh migration verification without

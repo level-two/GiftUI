@@ -36,10 +36,19 @@ tasks:
   T6.4: {"disposition":"completed","requirements":[],"implementation":["docs/implementation-plans/spec-002-implementation-plan.md"],"checks":["scripts/contracts/run-spec-002.sh"],"profiles":["macos-dynamic"],"evidence":["Tests/ContractFixtures/SPEC002/Evidence/milestone-6/migration-closure.md"],"blockers":[]}
 
   T7.1:
-    disposition: pending
+    disposition: in_progress
     requirements: [PF-001, PF-002, PF-003, PF-004, PF-005, PF-006, PF-007, PF-008, PF-009, PF-010]
-    implementation: []
-    checks: []
-    profiles: []
-    evidence: []
+    implementation:
+      - scripts/contracts/run-spec-002.sh
+      - scripts/contracts/compiler-baseline.sh
+      - scripts/contracts/run-immutable-contract-driver.sh
+      - scripts/test.sh
+      - firmware/nrf52840/applications/spec002-resource-probe/CMakeLists.txt
+    checks:
+      - scripts/contracts/run-spec-002.sh
+      - scripts/contracts/check-spec-002-compiler-baseline.py
+    profiles: [macos-dynamic, macos-static, raspberry-pi-armv6, nrf52840-embedded]
+    evidence:
+      - Tests/ContractFixtures/SPEC002/Evidence/rfc-014-p01/result.md
+      - Tests/ContractFixtures/SPEC002/Evidence/rfc-014-p01/baseline.json
     blockers: []
