@@ -22,6 +22,7 @@ features:
     # Working direction C: docs/iterations/iteration-003-review/rfc-014-decision-direction.md.
     # Detailed C contract/ledger: docs/iterations/iteration-003-review/rfc-014-c-contract.md.
     # SPIKE-070 terminal inconclusive: native/ARMv6 positives, Embedded/escape proof incomplete; five-bank baseline unapproved.
+    # SPIKE-071 authorized: bounded assertion correction and missing Embedded/escape/resource controls.
     # Design comparison: docs/iterations/iteration-003-review/rfc-014-source-design-options.md.
     # Ownership audit: docs/iterations/iteration-003-review/rfc-014-ownership-audit.md; peak R unproved.
     # Acceptance provenance: docs/iterations/iteration-003-review/proposal-007-acceptance.md.

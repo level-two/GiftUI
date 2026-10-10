@@ -47,6 +47,14 @@ historical inputs; this result does not reopen their budgets or experiments.
 | ME-08 integrated validation | Waits for the adopted implementations and exact artifact identities; connected evidence remains separately authorized. |
 | ME-09 closure/handoff | Waits for the criterion dispositions and maintainer decision; no automatic iteration-4 extraction. |
 
+## RFC-014 Embedded/escape continuation — 2026-10-10
+
+Eugene's follow-up “Please proceed” authorizes [SPIKE-071](../../spikes/spike-071-canvas-embedded-escape-continuation.md).
+Start 06:26:14 UTC, deadline 07:26:14 UTC: 60 active minutes, 48 invocations,
+three repair rounds including the known assertion correction. Preserve the
+terminal SPIKE-070 files; complete its missing positive/negative/object checks
+in a separate experiment. No production, connected or C-P3 work is included.
+
 ## RFC-014 C-P1/C-P2 experiment — 2026-10-10
 
 Eugene's “Please proceed” authorizes [SPIKE-070](../../spikes/spike-070-protocol-canvas-versioned-access.md)

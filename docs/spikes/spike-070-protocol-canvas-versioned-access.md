@@ -13,6 +13,7 @@ related_future_work: []
 related_explorations: []
 related_spikes:
   - SPIKE-069
+  - SPIKE-071
 promoted_to: []
 supersedes: []
 superseded_by: []
@@ -169,3 +170,9 @@ silently launched. RFC/ADR/Spec gates still precede production migration.
 - [C contract and proof controls](../iterations/iteration-003-review/rfc-014-c-contract.md)
 - [C storage ledger](../iterations/iteration-003-review/rfc-014-c-storage-ledger.md)
 - [Current plan](../iterations/iteration-003-review/memory-efficiency-plan.md)
+
+## Separately authorized continuation
+
+After this terminal report Eugene authorized [SPIKE-071](spike-071-canvas-embedded-escape-continuation.md)
+for the assertion correction and remaining Embedded/escape/resource checks.
+This result and its experiment budget remain closed.

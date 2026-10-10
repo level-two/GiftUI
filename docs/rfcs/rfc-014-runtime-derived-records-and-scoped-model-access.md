@@ -41,6 +41,7 @@ related_explorations: []
 related_spikes:
   - SPIKE-069
   - SPIKE-070
+  - SPIKE-071
 supersedes: []
 superseded_by: []
 target_milestone: ITERATION-003
@@ -601,6 +602,11 @@ not evidence that record emission is intrinsically impossible. Resolving it
 requires a separately selected transport/rendering or requirement decision.
 
 ## Deferred and Follow-up Work
+
+Eugene has now authorized [SPIKE-071](../spikes/spike-071-canvas-embedded-escape-continuation.md)
+for the known assertion correction and missing Embedded/escape/resource checks.
+Its independent ceiling is 60 active minutes, 48 invocations and three repair
+rounds including the known correction. Earlier terminal evidence stays intact.
 
 Eugene separately authorized [SPIKE-070](../spikes/spike-070-protocol-canvas-versioned-access.md)
 on 2026-10-10 for C-P1/C-P2. It completed **inconclusive**, using 11 of 48
