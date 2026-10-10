@@ -2,7 +2,7 @@
 id: SPEC-011
 feature: giftui-mvp-architecture
 title: Button Interaction and Activation Contract
-status: draft
+status: approved
 authors:
   - codex
 created: 2026-08-26
@@ -54,11 +54,11 @@ target_milestone: MVP
 
 # SPEC-011: Button Interaction and Activation Contract
 
-> **RFC-014 amendment draft — 2026-10-10.** Governed by accepted ADR-035/036/037
-> as applicable below. The previously implemented contract and evidence are
-> preserved at commit `53740a73`; this amendment is not approved or implemented.
-> Earlier approval notices and completed checkboxes describe that baseline only.
-> See the [ADR acceptance record](../iterations/iteration-003-review/rfc-014-adr-acceptance.md).
+> **RFC-014 amendment approved — 2026-10-10.** Eugene explicitly approved the
+> coordinated amendments presented in `9b2ff666` and requested a precisely scoped
+> implementation plan. [Approval record](../iterations/iteration-003-review/rfc-014-spec-approval.md).
+> The amendment section controls conflicts with the retained baseline realization.
+> Earlier completed evidence applies to `53740a73`, not to this new implementation.
 
 **Current disposition — 2026-10-03:** The maintainer explicitly directed
 performance work to future iterations and closure of the remaining Specifications.
@@ -77,7 +77,7 @@ Earlier open-gate statements below describe the pre-approval history.
 
 Amendment map and review: [RFC-014 specification review](../iterations/iteration-003-review/rfc-014-spec-amendment-review.md).
 
-**Draft contract under ADR-035/036; ADR-033 dispatch semantics remain unchanged.**
+**Approved contract under ADR-035/036; ADR-033 dispatch semantics remain unchanged.**
 This section makes bank-independent identity ownership explicit. Existing Button,
 action value/generation, pointer capture, handler, publication and refusal behavior
 remain. Model allocation generations are not action or registration generations.

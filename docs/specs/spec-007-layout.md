@@ -2,7 +2,7 @@
 id: SPEC-007
 feature: giftui-mvp-architecture
 title: Proposal-Based Layout Contract
-status: draft
+status: approved
 authors:
   - codex
 created: 2026-08-25
@@ -47,11 +47,11 @@ target_milestone: MVP
 
 # SPEC-007: Proposal-Based Layout Contract
 
-> **RFC-014 amendment draft — 2026-10-10.** Governed by accepted ADR-035/036/037
-> as applicable below. The previously implemented contract and evidence are
-> preserved at commit `53740a73`; this amendment is not approved or implemented.
-> Earlier approval notices and completed checkboxes describe that baseline only.
-> See the [ADR acceptance record](../iterations/iteration-003-review/rfc-014-adr-acceptance.md).
+> **RFC-014 amendment approved — 2026-10-10.** Eugene explicitly approved the
+> coordinated amendments presented in `9b2ff666` and requested a precisely scoped
+> implementation plan. [Approval record](../iterations/iteration-003-review/rfc-014-spec-approval.md).
+> The amendment section controls conflicts with the retained baseline realization.
+> Earlier completed evidence applies to `53740a73`, not to this new implementation.
 
 > **Implementation status:** Implemented on 2026-09-11 after complete
 > conformance review and explicit maintainer authorization. The governing
@@ -63,10 +63,10 @@ target_milestone: MVP
 
 Amendment map and review: [RFC-014 specification review](../iterations/iteration-003-review/rfc-014-spec-amendment-review.md).
 
-**Draft contract under ADR-035.** Layout algorithms, geometry, errors, arithmetic,
+**Approved contract under ADR-035.** Layout algorithms, geometry, errors, arithmetic,
 text and counting rules below remain unchanged. The semantic input is now the
 bounded runtime record bank defined by SPEC-006, not an application-generated
-expanded graph. This section controls input lifetime in the amended draft.
+expanded graph. This section controls input lifetime in the amended contract.
 
 SemanticLayoutView keeps its existing query signatures and remains owned by
 Semantic Core under ADR-032. Its adapter MUST borrow one complete candidate bank

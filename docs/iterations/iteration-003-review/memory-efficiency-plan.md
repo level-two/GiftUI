@@ -10,7 +10,7 @@ The [revision-5 authorization](efficiency-sequencing-approval.md#bounded-prepara
 makes ME-01–04 one bounded phase; their IDs retain traceability, not separate
 budgets or permission to grow independent investigations.
 
-## Current RFC-014 activity — Spec amendments drafted, 2026-10-10
+## Current RFC-014 activity — Spec amendments approved, 2026-10-10
 
 Eugene authorized one final bounded package and directed subsequent work toward
 implementation. [SPIKE-074](../../spikes/spike-074-final-access-ownership.md) is
@@ -25,8 +25,7 @@ Eugene's conditional finalization instruction. The final text consolidates the
 selected design and preserves all implementation acceptance obligations.
 
 **Next: remaining IH-1 in the [implementation handoff](rfc-014-implementation-handoff.md):
-approve the [nine coordinated draft Spec amendments](rfc-014-spec-amendment-review.md)
-under accepted ADR-035/036/037.**
+derive bounded implementation tasks under the [nine approved Spec amendments](rfc-014-spec-approval.md).**
 The [acceptance record](rfc-014-adr-acceptance.md) includes ADR-028 supersession.
 IH-2–6 then become implementation tasks covering source migration, actual owner
 integration, record generation, conformance and final image costs. This is a

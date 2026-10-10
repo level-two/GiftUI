@@ -2,7 +2,7 @@
 id: SPEC-001
 feature: signal-analyzer
 title: Signal Analyzer Reference Application Contract
-status: draft
+status: approved
 authors:
   - Yauheni Lychkouski
 created: 2026-08-14
@@ -70,12 +70,11 @@ target_milestone: MVP
 
 # SPEC-001: Signal Analyzer Reference Application Contract
 
-> **RFC-014 amendment draft — 2026-10-10.** ADR-035/036/037 are now accepted;
-> ADR-037 supersedes ADR-028. This contract is reopened for amendment, not newly
-> approved or implemented. The previously implemented contract and its approval
-> history are preserved at commit `53740a73`. Earlier approval notices and
-> completed checkboxes describe that baseline only. Historical completion evidence
-> applies to that baseline only. See the [ADR acceptance record](../iterations/iteration-003-review/rfc-014-adr-acceptance.md).
+> **RFC-014 amendment approved — 2026-10-10.** Eugene explicitly approved the
+> coordinated amendments presented in `9b2ff666` and requested a precisely scoped
+> implementation plan. [Approval record](../iterations/iteration-003-review/rfc-014-spec-approval.md).
+> The amendment section controls conflicts with the retained baseline realization.
+> Earlier completed evidence applies to `53740a73`, not to this new implementation.
 
 **Current disposition — 2026-10-03:** The maintainer explicitly directed
 performance work to future iterations and closure of the remaining Specifications.
@@ -126,7 +125,7 @@ Earlier open-gate statements below describe the pre-approval history.
 
 Amendment map and review: [RFC-014 specification review](../iterations/iteration-003-review/rfc-014-spec-amendment-review.md).
 
-**Draft contract under ADR-035/036/037; ADR-034 is unchanged.** This section
+**Approved contract under ADR-035/036/037; ADR-034 is unchanged.** This section
 amends presentation access, runtime derivation and model ownership. Domain value
 semantics, source/repository/admission behavior, five-second retention, actions,
 errors, dimensions, text and loaded-workload requirements below remain. Historical

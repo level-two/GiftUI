@@ -2,7 +2,7 @@
 id: SPEC-012
 feature: canvas-drawing
 title: Canvas, Path, and Stroke Drawing Contract
-status: draft
+status: approved
 authors:
   - codex
 created: 2026-08-26
@@ -45,12 +45,11 @@ target_milestone: MVP
 
 # SPEC-012: Canvas, Path, and Stroke Drawing Contract
 
-> **RFC-014 amendment draft — 2026-10-10.** ADR-035/036/037 are now accepted;
-> ADR-037 supersedes ADR-028. This contract is reopened for amendment, not newly
-> approved or implemented. The previously implemented contract and its approval
-> history are preserved at commit `53740a73`. Earlier approval notices and
-> completed checkboxes describe that baseline only. Historical completion evidence
-> applies to that baseline only. See the [ADR acceptance record](../iterations/iteration-003-review/rfc-014-adr-acceptance.md).
+> **RFC-014 amendment approved — 2026-10-10.** Eugene explicitly approved the
+> coordinated amendments presented in `9b2ff666` and requested a precisely scoped
+> implementation plan. [Approval record](../iterations/iteration-003-review/rfc-014-spec-approval.md).
+> The amendment section controls conflicts with the retained baseline realization.
+> Earlier completed evidence applies to `53740a73`, not to this new implementation.
 
 > **Current implementation status — 2026-10-03:** Eugene explicitly authorized this Specification's `implemented` transition after conformance review and the complete 72-check gate. [Human approval](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/iteration-closeout-20261003/owner-transition-approval.md) supersedes earlier pending-transition statements; the approved contract is unchanged.
 
@@ -80,7 +79,7 @@ target_milestone: MVP
 
 Amendment map and review: [RFC-014 specification review](../iterations/iteration-003-review/rfc-014-spec-amendment-review.md).
 
-**Draft contract under ADR-037, with ADR-035/036 access and storage.** This
+**Approved contract under ADR-037, with ADR-035/036 access and storage.** This
 section replaces the closure-based Canvas declaration, capture lowering and
 callable-table representation below. It preserves Path, GraphicsContext stroke
 operations, geometry/raster meaning, plan limits, capability/B2 gates and one-shot

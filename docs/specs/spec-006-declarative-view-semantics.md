@@ -2,7 +2,7 @@
 id: SPEC-006
 feature: giftui-mvp-architecture
 title: Declarative View Semantics Specification
-status: draft
+status: approved
 authors:
   - codex
 created: 2026-08-25
@@ -46,11 +46,11 @@ target_milestone: MVP
 
 # SPEC-006: Declarative View Semantics Specification
 
-> **RFC-014 amendment draft — 2026-10-10.** Governed by accepted ADR-035/036/037
-> as applicable below. The previously implemented contract and evidence are
-> preserved at commit `53740a73`; this amendment is not approved or implemented.
-> Earlier approval notices and completed checkboxes describe that baseline only.
-> See the [ADR acceptance record](../iterations/iteration-003-review/rfc-014-adr-acceptance.md).
+> **RFC-014 amendment approved — 2026-10-10.** Eugene explicitly approved the
+> coordinated amendments presented in `9b2ff666` and requested a precisely scoped
+> implementation plan. [Approval record](../iterations/iteration-003-review/rfc-014-spec-approval.md).
+> The amendment section controls conflicts with the retained baseline realization.
+> Earlier completed evidence applies to `53740a73`, not to this new implementation.
 
 > **Current implementation status — 2026-10-03:** Eugene explicitly authorized this Specification's `implemented` transition after conformance review and the complete 72-check gate. [Human approval](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/iteration-closeout-20261003/owner-transition-approval.md) supersedes earlier pending-transition statements; the approved contract is unchanged.
 
@@ -65,11 +65,11 @@ target_milestone: MVP
 
 Amendment map and review: [RFC-014 specification review](../iterations/iteration-003-review/rfc-014-spec-amendment-review.md).
 
-**Draft contract under ADR-035/036.** This section replaces the compiled View,
+**Approved contract under ADR-035/036.** This section replaces the compiled View,
 visitor/body-access and identity-representation requirements below. Existing
 Rank 0 authored syntax, builder arity, event/counting meaning, modifier order,
 primitive payloads and owner dependencies remain. In a conflict this section
-controls the amended draft; it does not approve the amendment. Historical
+controls the amended contract; approval provenance is recorded above. Historical
 baseline APIs below describe authored intent where retained, not a second
 compiled ABI. SPEC-010 owns access validation and SPEC-013/015 own physical limits.
 

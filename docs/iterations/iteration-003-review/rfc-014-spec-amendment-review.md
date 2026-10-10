@@ -1,10 +1,17 @@
 # RFC-014 coordinated Specification amendment review — 2026-10-10
 
-**Ready for human approval consideration.** The nine coordinated amendments are
+**Review outcome: ready for human approval consideration; subsequently approved.** The nine coordinated amendments are
 drafts under accepted ADR-035/036/037. This is Codex's author/self-review, not an
 independent review, human approval or implementation conformance result. Eugene
 authorized Spec updates after accepting the ADRs; that instruction did not approve
 these newly written contracts.
+
+## Subsequent approval
+
+Eugene explicitly approved all nine amendments presented in `9b2ff666`; see the
+[2026-10-10 approval record](rfc-014-spec-approval.md). The review below preserves
+its pre-approval findings. The next deliverable is bounded implementation planning,
+not another approval or investigation of these decisions.
 
 ## Amendment and authority map
 
