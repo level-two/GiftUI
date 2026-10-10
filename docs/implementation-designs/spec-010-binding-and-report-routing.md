@@ -6,7 +6,7 @@ status: current
 authors:
   - codex
 created: 2026-09-07
-updated: 2026-09-07
+updated: 2026-10-10
 implementation_plan: ../implementation-plans/spec-010-implementation-plan.md
 related_future_work: []
 related_explorations: []
@@ -20,6 +20,13 @@ superseded_by: null
 > This note explains one replaceable internal realization of an approved
 > contract. It is non-authoritative and cannot introduce architecture or amend
 > the governing Specification.
+
+## RFC-014 realization update
+
+The [stable model ownership note](spec-010-stable-model-ownership.md) owns the
+current P03 backing/read/ticket realization. The raw-reference transient State
+binding described below is historical; unchanged registration, candidate and
+first-failure behavior remains applicable under the approved amendment.
 
 ## Purpose and Boundary
 

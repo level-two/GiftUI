@@ -1,112 +1,33 @@
 import GiftUI
 import GiftUIObservableState
 
-package final class DynamicObservableModelStorage<Model>
-where Model: _GiftUIObservableReference {
-    private var model: Model?
-    private var candidate: Model?
+package final class DynamicObservableModelStorage<Model: ~Copyable, Schema> {
+    private var ownership: ObservableModelOwnership
+    private var models: InlineArray<2, Model?> = .init { _ in nil }
+    private let schema: UInt16
+    private let needsCapture: Bool
+    private var activationActive = false
 
-    package init() {}
-
-    package var isOccupied: Bool {
-        model != nil
+    package init?(identity: ObservableModelOwnerIdentity, schema: UInt16, needsCapture: Bool) {
+        guard
+            let ownership = ObservableModelOwnership(
+                identity: identity, captureLimit: needsCapture ? 1 : 0)
+        else { return nil }
+        self.ownership = consume ownership
+        self.schema = schema
+        self.needsCapture = needsCapture
     }
 
-    package func bind(
-        _ state: inout State<Model>,
-        replacementRoute: @escaping (Model) -> Void
-    ) -> ObservableStateResult {
-        let initializer = state._giftUIBind(
-            read: { [unowned self] in
-                guard let model = self.model else {
-                    fatalError("observable model read before materialization")
-                }
-                return model
-            },
-            replace: replacementRoute
-        )
-        guard let initializer else {
-            return .failure(.invariantViolation)
-        }
-
-        if model == nil {
-            model = initializer
-            return .success(.materialized)
-        }
-        return .success(.preserved)
-    }
-
-    package borrowing func withModel<Result>(
-        _ body: (borrowing Model) -> Result
-    ) -> Result? {
-        guard let model else { return nil }
-        return body(model)
-    }
-
-    package func withMutableModel<Result>(
-        _ body: (inout Model) -> Result
-    ) -> Result? {
-        guard model != nil else { return nil }
-        return body(&model!)
-    }
-
-    package func attachChangeSink(
-        _ sink: consuming _GiftUIObservableChangeSink
-    ) -> _GiftUIObservationAttachment? {
-        guard model != nil else { return nil }
-        return model!._giftUIAttachChangeSink(consume sink)
-    }
-
-    package func detachChangeSink(
-        _ attachment: _GiftUIObservationAttachment
-    ) -> Bool {
-        guard model != nil else { return false }
-        model!._giftUIDetachChangeSink(attachment)
-        return true
-    }
-
-    @discardableResult
-    package func removeModel() -> Model? {
-        defer { model = nil }
-        return model
-    }
-
-    package var hasStagedReplacement: Bool {
-        candidate != nil
-    }
-
-    package func stageReplacement(_ replacement: consuming Model) -> Bool {
-        guard candidate == nil else { return false }
-        candidate = replacement
-        return true
-    }
-
-    package func attachCandidateChangeSink(
-        _ sink: consuming _GiftUIObservableChangeSink
-    ) -> _GiftUIObservationAttachment? {
-        guard candidate != nil else { return nil }
-        return candidate!._giftUIAttachChangeSink(consume sink)
-    }
-
-    package func detachCandidateChangeSink(
-        _ attachment: _GiftUIObservationAttachment
-    ) -> Bool {
-        guard candidate != nil else { return false }
-        candidate!._giftUIDetachChangeSink(attachment)
-        return true
-    }
-
-    package func commitReplacement() -> Model? {
-        guard let candidate else { return nil }
-        let former = model
-        model = candidate
-        self.candidate = nil
-        return former
-    }
-
-    @discardableResult
-    package func discardReplacement() -> Model? {
-        defer { candidate = nil }
-        return candidate
+    package func withLifetime<Result>(
+        _ body: (borrowing ObservableModelScope<Model, Schema>) throws(ObservableStateError) ->
+            Result
+    ) throws(ObservableStateError) -> Result {
+        guard !activationActive else { throw .reentrancyViolation }
+        activationActive = true
+        defer { activationActive = false }
+        var modelSpan = models.mutableSpan
+        return try withObservableModelScope(
+            ownership: &ownership, models: &modelSpan,
+            schema: schema, needsCapture: needsCapture, body)
     }
 }

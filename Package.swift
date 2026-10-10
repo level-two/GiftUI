@@ -197,7 +197,11 @@ let package = Package(
         ),
         .target(
             name: "GiftUIObservableState",
-            dependencies: ["GiftUI", "GiftUISemanticCore", "GiftUIExecution"]
+            dependencies: ["GiftUI", "GiftUISemanticCore", "GiftUIExecution"],
+            swiftSettings: [
+                .enableExperimentalFeature("LifetimeDependence"),
+                .enableExperimentalFeature("Lifetimes"),
+            ]
         ),
         .target(
             name: "GiftUIObservableStateFailureAdapterFixture",
@@ -232,6 +236,10 @@ let package = Package(
                 "GiftUIRuntimeCore",
                 "GiftUISemanticCore",
                 "GiftUITextResources",
+            ],
+            swiftSettings: [
+                .enableExperimentalFeature("LifetimeDependence"),
+                .enableExperimentalFeature("Lifetimes"),
             ]
         ),
         .target(
@@ -247,6 +255,10 @@ let package = Package(
                 "GiftUIRenderLowering",
                 "GiftUIRuntimeCore",
                 "GiftUISemanticCore",
+            ],
+            swiftSettings: [
+                .enableExperimentalFeature("LifetimeDependence"),
+                .enableExperimentalFeature("Lifetimes"),
             ]
         ),
         .target(

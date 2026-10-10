@@ -970,6 +970,9 @@ for Specification approval.
 
 ## Implementation Notes
 
+The [stable model ownership note](../implementation-designs/spec-010-stable-model-ownership.md)
+explains the current P03 realization of the RFC-014 amendment.
+
 SPIKE-003 is feasibility evidence only. Generated typed slots or a dynamic
 table are both suitable when they preserve this contract.
 

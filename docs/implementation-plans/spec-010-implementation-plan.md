@@ -8,6 +8,7 @@ owners:
 created: 2026-09-04
 updated: 2026-10-10
 related_design_notes:
+  - ../implementation-designs/spec-010-stable-model-ownership.md
   - ../implementation-designs/spec-010-binding-and-report-routing.md
 conformance_report: ../conformance/spec-010-conformance-report.md
 related_future_work:

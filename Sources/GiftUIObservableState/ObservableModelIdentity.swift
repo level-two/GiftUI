@@ -21,6 +21,8 @@ package struct ObservableModelOwnerNamespace: ~Copyable {
         self.nextValue = nextValue
     }
 
+    package var isExhausted: Bool { nextValue == nil }
+
     package mutating func issue() throws(ObservableStateError) -> ObservableModelOwnerIdentity {
         guard let value = nextValue else { throw .modelGenerationExhausted }
         let successor = value.addingReportingOverflow(1)
@@ -40,6 +42,8 @@ package struct ObservableModelAllocationNamespace: ~Copyable {
     init(nextValue: UInt32?) {
         self.nextValue = nextValue
     }
+
+    package var isExhausted: Bool { nextValue == nil }
 
     package mutating func issue() throws(ObservableStateError) -> UInt32 {
         guard let value = nextValue else { throw .modelGenerationExhausted }
