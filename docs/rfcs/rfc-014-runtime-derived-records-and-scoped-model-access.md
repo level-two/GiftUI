@@ -96,6 +96,14 @@ shows that complete counter/analyzer source coverage, production binding/ownersh
 and full-image feasibility remain unproved. Mandatory transformation is selected
 provisionally for evidence, not adopted as production architecture.
 
+## Current access/ownership work — 2026-10-10
+
+The maintainer requested resolution of the two remaining issues. The
+[analyzer capacity choice](../iterations/iteration-003-review/rfc-014-capture-policy-choice.md)
+makes three-bank bounded refusal versus four-bank simultaneous populated models
+reviewable. It is pending maintainer direction; accepted constants are unchanged.
+Typed property-access design proceeds independently.
+
 ## Current design correction — 2026-10-10
 
 [SPIKE-073](../spikes/spike-073-fixed-context-body-inference.md) completed the
