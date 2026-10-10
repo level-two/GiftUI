@@ -151,7 +151,11 @@ byte budgets below are proposals requiring SPEC-013/015 approval.
 ### Current direction — protocol Canvas and versioned observable storage
 
 The [working decision record](../iterations/iteration-003-review/rfc-014-decision-direction.md)
-defines C1–C6 and the approval process. Canvas becomes a View-refining protocol
+defines C1–C6 and the approval process. The subsequent
+[detailed C contract](../iterations/iteration-003-review/rfc-014-c-contract.md)
+proposes exact access operations, copy-freeze semantics, public authoring shapes
+and lifecycle/error rules. Its finite context-injection mechanism remains an
+explicit compiler/tooling proof obligation, not an implemented wrapper. Canvas becomes a View-refining protocol
 with Body == Never, framework-supplied leaf traversal and an explicit draw method.
 Observable properties delegate to stable typed owner storage with current/frozen
 logical versions. One coherent frame freeze covers graph, Layout and drawing;
