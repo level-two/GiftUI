@@ -2,7 +2,7 @@
 id: SPIKE-071
 feature: external-application-integration
 title: Canvas Embedded and Escape Continuation
-status: active
+status: completed
 authors:
   - codex
 created: 2026-10-10
@@ -89,7 +89,27 @@ linked from [SPIKE-070](spike-070-protocol-canvas-versioned-access.md).
 
 ## Results
 
-Pending within the authorized bounds.
+**Supported recommendation for the bounded mechanism.** Registration commit:
+`d3bc1978`; source/evidence commit: `3db5e20b`. The
+[terminal report](../../experiments/spike-071-canvas-embedded-escape-continuation/evidence/result.md)
+and [ledger](../../experiments/spike-071-canvas-embedded-escape-continuation/evidence/ledger.json)
+preserve all **40/48 invocations and 2/3 repair rounds**, completed before the
+60-minute deadline with no excluded waiting.
+
+- The assertion correction restores Embedded compilation; all four positive
+  configurations pass. Both native executions pass 21 checks each.
+- Six intended negative controls reject on all four configurations: 24 valid
+  rejections. The original nested-helper test also consumed a borrowed value;
+  its four confounded diagnostics are retained. Repair 2 adds explicit copy,
+  four live-owner positive controls and four clean dead-owner rejections.
+- Sectioned nRF compilation and the rooted relocatable link pass. Cortex-M4F/VFP
+  attributes match; no allocator relocations remain. Five indirect sites inside
+  drawing remain, and unused allocator symbol entries are not live references.
+- The seven generator rejection samples and three source-dependent perturbations
+  reproduce. Their grammar/production limitations are unchanged.
+
+No production, prior experiment files or accepted contracts changed. Object
+inspection does not establish full firmware memory/stack or hardware behavior.
 
 ## Limitations
 
@@ -102,8 +122,14 @@ RFC blockers regardless of this experiment's result.
 
 ## Disposition
 
-Active. Feed the terminal evidence into RFC-014 without changing approval state.
-A further extension requires explicit authorization and a new bounded method.
+Completed with a supported recommendation limited to the tested context/Canvas
+mechanism. Feed that evidence into RFC-014; keep B1/B4 open for complete contextual
+View evaluation, source/current-write lowering, actual State/owner integration
+and compiler-policy adoption. B0/B2/C-P3 storage/ownership and B3 full-image costs
+remain open. Do not repeat this generic escape matrix absent a changed candidate.
+The next design work should specify the production evaluation/binding seam and
+its authority amendments. No further experiment or production work is launched;
+a changed proof requires separately bounded authorization.
 
 ## References
 

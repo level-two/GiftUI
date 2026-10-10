@@ -26,7 +26,11 @@ ADRs/Specs. Source-context injection, precise layouts and complete target costs
 remain unproved in full. The subsequently authorized
 [SPIKE-070](../../spikes/spike-070-protocol-canvas-versioned-access.md) is terminal
 inconclusive, with native/ARMv6 positives and unrun Embedded escape/resource
-gates. Direction C remains a working design; the result approves no API or budget.
+gates in that original study. [SPIKE-071](../../spikes/spike-071-canvas-embedded-escape-continuation.md)
+now supplies the four-profile compiler/escape matrix and bounded nRF object
+inspection. It supports the finite mechanism, while production binding and
+compiler-policy adoption remain open. Direction C stays a working design;
+these results approve no API or storage budget.
 
 ## Decisions to carry into the RFC
 

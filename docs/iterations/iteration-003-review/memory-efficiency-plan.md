@@ -28,9 +28,10 @@ It replaces the earlier recommendation from the [A/B comparison](rfc-014-source-
 the [detailed contract](rfc-014-c-contract.md) and [storage ledger](rfc-014-c-storage-ledger.md)
 now propose explicit access/phase rules and a five-bank analyzer baseline.
 [SPIKE-070](../../spikes/spike-070-protocol-canvas-versioned-access.md) is terminal
-inconclusive: narrow native/ARMv6 evidence, failed Embedded positive and unrun
-escape/resource checks. Full compiler realization, layouts/costs and formal
-approval remain open. The
+inconclusive in its original boundary. The separately authorized
+[SPIKE-071](../../spikes/spike-071-canvas-embedded-escape-continuation.md) now
+completes four-profile positives, 24 escape controls and bounded nRF object
+inspection. Production binding, layouts/costs and formal approval remain open. The
 [ownership audit](rfc-014-ownership-audit.md) identifies host retention and
 replacement obligations; neither app yet proves its peak retained bound (B2).
 These inform capture storage under ADR-034 (B0), whose slot count remains open.
@@ -42,7 +43,7 @@ historical inputs; this result does not reopen their budgets or experiments.
 | --- | --- |
 | I3-T01 correction package | Complete within the hardware-free boundary; [result and residual gates](i3-t01-result.md). |
 | I3-T02 runtime design, I3-04 / ME-05 | Delivered with named blockers: [RFC-014 review and contract map](i3-t02-design-review.md). |
-| RFC-014 B1/B2 follow-up | SPIKE-069 terminal; source comparison and ownership audit delivered. Direction C contract/ledger delivered; finite context lowering unproved, five-bank baseline conflicts with ADR-034. SPIKE-070 terminal inconclusive; Embedded positive and escape/resource matrix incomplete. No new proof authorized. |
+| RFC-014 B1/B2 follow-up | SPIKE-069 terminal; source comparison and ownership audit delivered. Direction C contract/ledger delivered; SPIKE-070/071 support the finite source/context mechanism with four-profile compiler/escape controls. Production View/owner binding and compiler policy remain open; five-bank baseline conflicts with ADR-034. No new proof authorized. |
 | ME-06 runtime implementation | Blocked on the resulting architecture/contract gates and complete resource/lifetime evidence; no ready migration plan yet. |
 | ME-08 integrated validation | Waits for the adopted implementations and exact artifact identities; connected evidence remains separately authorized. |
 | ME-09 closure/handoff | Waits for the criterion dispositions and maintainer decision; no automatic iteration-4 extraction. |
@@ -54,6 +55,17 @@ Start 06:26:14 UTC, deadline 07:26:14 UTC: 60 active minutes, 48 invocations,
 three repair rounds including the known assertion correction. Preserve the
 terminal SPIKE-070 files; complete its missing positive/negative/object checks
 in a separate experiment. No production, connected or C-P3 work is included.
+
+**Completed: supported recommendation for the bounded mechanism.** Registration
+`d3bc1978`; evidence `3db5e20b`; terminal report linked from SPIKE-071. All four
+positive configurations pass, both native runs pass 21 checks, and the six-case
+negative matrix has 24 valid rejections. Four additional positive controls
+remove a confounding error from the nested-helper test. Rooted nRF inspection
+finds no allocator relocation, five indirect drawing sites and correct VFP ABI.
+40/48 calls and 2/3 repairs, before the deadline; no excluded waiting. Production
+binding/current-write/helper coverage, compiler adoption, C-P3/storage and full
+image costs remain open. The next step is the production evaluation/binding
+contract; no generic rerun or implementation is automatically opened.
 
 ## RFC-014 C-P1/C-P2 experiment — 2026-10-10
 

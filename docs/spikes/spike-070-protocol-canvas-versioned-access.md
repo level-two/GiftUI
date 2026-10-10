@@ -175,4 +175,6 @@ silently launched. RFC/ADR/Spec gates still precede production migration.
 
 After this terminal report Eugene authorized [SPIKE-071](spike-071-canvas-embedded-escape-continuation.md)
 for the assertion correction and remaining Embedded/escape/resource checks.
-This result and its experiment budget remain closed.
+SPIKE-071 completed with four-profile positives, 24 valid negative controls and
+bounded nRF object evidence. This original result, experiment files and budget
+remain closed and unchanged; the successor evidence is separate.

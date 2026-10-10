@@ -13,22 +13,26 @@ iteration 3 requires real analyzer/counter traversal on all four configurations.
 Accepted ADRs and implemented Specs remain authoritative. “Requires” below
 specifies the candidate being reviewed, not a new production requirement.
 
-## Subsequent proof boundary — SPIKE-070
+## Subsequent proof boundary — SPIKE-070 and SPIKE-071
 
-The separately authorized [SPIKE-070](../../spikes/spike-070-protocol-canvas-versioned-access.md)
-is terminal **inconclusive**. Its finite transformer, native runs and ARMv6
-object support a narrow context-injection/leaf-traversal mechanism. The root
-becomes a throwing descriptor entrypoint without View conformance; Canvas's
-target draw receives FrameRead. Those seams are not complete production binding.
-Embedded fails in two throwing test assertions after the final allowed repair;
-compiler negatives and nRF resource checks remain unrun. See
-[results and limits](../../../experiments/spike-070-protocol-canvas-versioned-access/evidence/result.md).
+[SPIKE-070](../../spikes/spike-070-protocol-canvas-versioned-access.md) ended
+inconclusive after its Embedded assertion failure. The separately authorized
+[SPIKE-071](../../spikes/spike-071-canvas-embedded-escape-continuation.md) fixes
+that fixture issue and completes four-profile positive compilation, 24 intended
+compiler-negative controls and bounded nRF object inspection. Both native runs
+pass 21 checks; no allocator relocations remain in the rooted nRF fixture.
+See [results and limits](../../../experiments/spike-071-canvas-embedded-escape-continuation/evidence/result.md).
 
-The numbered controls below remain requirements for the candidate, not a passed
-suite. Earlier “not authorized” statements describe the original design step;
-SPIKE-070 was later authorized and is now closed, with no successor allowance.
-Production View evaluation/error transport, full schema/helper coverage and
-experimental lifetime policy remain explicit B1/B4 design obligations.
+This supports the finite context/Canvas mechanism under the tested experimental
+lifetime flags. The root still becomes a throwing descriptor without View
+conformance, and Canvas's target draw receives FrameRead. Complete production
+binding, current-write/helper coverage, actual State/owner integration, compiler
+adoption and full-image resources remain B1/B4 and C-P3 obligations. The numbered
+controls below are not all a passed suite: painter order, mid-list failure and
+full replacement/materialization/teardown remain unproved.
+
+Earlier “not authorized” statements describe the original design step. Both
+subsequent Spikes are now terminal, with no additional experiment allowance.
 
 ## Design commitments in this draft
 

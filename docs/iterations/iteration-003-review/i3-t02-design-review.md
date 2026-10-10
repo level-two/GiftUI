@@ -10,7 +10,31 @@ The original I3-T02 findings below describe the authoring task. The subsequent
 [B1 follow-up](#b1-follow-up--spike-069) adds evidence without approving the RFC
 or changing the original task's budget/history.
 
-## Latest C evidence — SPIKE-070, 2026-10-10
+## Latest C evidence — SPIKE-071, 2026-10-10
+
+**Verdict: bounded mechanism supported; RFC still not ready for approval.** This
+is an author evidence/consistency review, not independent or human approval.
+[SPIKE-071](../../spikes/spike-071-canvas-embedded-escape-continuation.md) completes
+the earlier missing matrix; [exact results](../../../experiments/spike-071-canvas-embedded-escape-continuation/evidence/result.md)
+preserve 40 calls and two repair rounds.
+
+All four configurations compile; both native profiles pass 21 checks. Six
+negative cases reject for the intended reason on all four configurations. The
+nested-helper test required a correction to remove a borrowed-value consumption
+error, followed by four positive forwarding controls and four clean negative
+rejections. The original confounded diagnostics remain in evidence. Rooted nRF
+inspection finds no allocator relocations, five indirect drawing call sites and
+correct Cortex-M4F/VFP attributes. No full-image heap/stack claim follows.
+
+B1/B4 now have a supported finite compiler mechanism; the next design boundary
+is production contextual View evaluation/error transport, complete field/helper/
+current-write coverage, actual State/owner integration and experimental compiler
+policy. Existing root descriptor and draw-signature adaptations are not public
+compatibility proof. B0 five-bank storage, B2/C-P3 owner/accounting and B3 costs
+remain open. No generic matrix rerun is needed absent a candidate change, and no
+further experiment or production migration is automatically authorized.
+
+## Prior C evidence — SPIKE-070, 2026-10-10
 
 **Verdict remains not ready.** This is an author evidence/consistency review,
 not independent approval. The separately authorized
