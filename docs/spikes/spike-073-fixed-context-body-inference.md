@@ -13,6 +13,7 @@ related_future_work: []
 related_explorations: []
 related_spikes:
   - SPIKE-072
+  - SPIKE-074
 promoted_to: []
 supersedes: []
 superseded_by: []
@@ -97,3 +98,6 @@ The source is disposable and cannot become production through this experiment.
 - [RFC-014](../rfcs/rfc-014-runtime-derived-records-and-scoped-model-access.md).
 - [SPIKE-072](spike-072-contextual-traversal-integration.md).
 - [SE-0244 associated type inference](https://github.com/swiftlang/swift-evolution/blob/main/proposals/0244-opaque-result-types.md#associated-type-inference).
+
+The separately authorized [SPIKE-074](spike-074-final-access-ownership.md) is the
+final contract/ownership validation round. It does not reopen this terminal study.
