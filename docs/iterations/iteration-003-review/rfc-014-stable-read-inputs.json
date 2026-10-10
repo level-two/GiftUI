@@ -1,0 +1,23 @@
+{
+  "baseline": "3a6b119913b29ebb70cdfce7966d975bbb53fac9",
+  "method": "Read-only source/contract audit; not a whole-host conformance test.",
+  "inputs": {
+    "Sources/GiftUIRuntimeCore/RuntimeCompletePipeline.swift": "d55e75af82a611eb3a47f8bdafcf585f3fd75bdcc364d1a7f18f33d2e5cfc72d",
+    "Sources/GiftUIRuntimeCore/RuntimeCoordinatorCleanup.swift": "bc912a0f80009ea097042ae4eeb357be895d161602f00add63868ce05a733597",
+    "Sources/GiftUIExecution/ExecutionPhaseMachine.swift": "f2047c05efd5f2f2f7c96f57e3b20fd9b3826635c2fa922bdd1c0d81f545da34",
+    "Sources/GiftUIDrawing/CanvasPlanProducer.swift": "4d2d5d21dee5920aa9a5e527acb4ffdacdbe47f5ade04af2791689b6ddf33f42",
+    "Sources/GiftUIDrawing/DrawingPlan.swift": "93e3216f2faaee98e2c025deef50cfb7513911efacdd56e90980be3cb6264da9",
+    "Sources/GiftUIDrawing/CanvasRenderProducer.swift": "6a91501430f7a926c871137a98843368c4006ed87b365de08d65234fad46a749",
+    "Sources/GiftUIRuntimeDynamic/DynamicCanvasCallableStorage.swift": "e7624e4978ee2f3c4c7ad98ec530f71af951c440bf776790af27284fff8e95ec",
+    "Sources/GiftUIRuntimeDynamic/DynamicSemanticHostStorage.swift": "c0d545e0ac666eb98a7c6649e73ee0e93539faebba780f980e32b51d37f1aca8",
+    "Sources/SignalAnalyzerTargetHost/DynamicSignalAnalyzerPresentationPipeline.swift": "e19185857cac3fb7211113efd0946e09ce9ae92cd9e9b29b26171888e49ec609",
+    "Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFCanvasPass.swift": "af033e305b7f8486db0a92e6c5a53b885678e88bf344eb06bf2259f2c871e566",
+    "Sources/GiftUI/ObservableState.swift": "38cf485a5d5a35dd7234d983a39b66c189039e7a0c77548d226954b68178379d",
+    "Sources/GiftUIRuntimeStatic/StaticObservableModelStorage.swift": "85426dcd1f5b2ebb793996c5ff1b78ffce89a002119ce7f11c91f9cdcd014f19",
+    "Sources/GiftUIRuntimeDynamic/DynamicObservableModelStorage.swift": "71609f6d8c77073522d279fe802d5e46f6f0df6673b05e403869087bb8132d23",
+    "docs/adrs/adr-011-serialized-run-cycle-and-publication.md": "56f09da34b9302219285cb5dc7d3e6d1af181dde3231711d3cf54ae5b0f4a05f",
+    "docs/adrs/adr-025-coarse-model-owned-observable-invalidation.md": "04587524721b4c04ee74a6552d71874b94c51f5ccb94547d7a90a9d1b25bb499",
+    "docs/adrs/adr-034-five-second-transition-capture.md": "69cb8aa46ca05f662915a4a002f42d39416bf61a99dc3d9cafc8bc0eaa092eb5",
+    "docs/specs/spec-012-canvas-path-stroke-drawing.md": "88c0af9215f7ebc259c0ac85aabc433e005cea60ded3596b7d335f753aec9306"
+  }
+}

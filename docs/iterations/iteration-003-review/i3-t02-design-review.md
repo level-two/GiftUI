@@ -10,6 +10,26 @@ The original I3-T02 findings below describe the authoring task. The subsequent
 [B1 follow-up](#b1-follow-up--spike-069) adds evidence without approving the RFC
 or changing the original task's budget/history.
 
+## Stable-read evidence disposition — 2026-10-10
+
+**Verdict: not ready for RFC approval; bounded correction package complete.**
+This is an author consistency review, not independent reviewer approval.
+[SR-Q1–4 results](rfc-014-stable-read-revision.md#activity-results--2026-10-10)
+record the source audit and terminal SPIKE-073 (`3a6b1199`).
+
+| Finding | Disposition |
+| --- | --- |
+| SR-Q1 / CE-5, model-read lifetime | Existing synchronous ordering and owned drawing-plan interface permit model-data access to end after Canvas invocation/discard. Caller cleanup is required for early failure; no new owner-pool or all-host conformance claim. |
+| SR-Q2 / CE-2, Body inference | Fixed concrete borrowed context supports inferred non-Never custom Body in the finite fixture on all four compiler configurations. Both native runs pass 15 checks; eight negative controls reject. Real schema/module integration remains open. |
+| SR-Q3 / CE-1/3/4, access contract | Separate snapshot selection disappears. Scoped access, helper transformation or safe owner-bound getters, checked mutation and ownership still need a complete application contract. Existing wrappers do not prove safe borrowed access. |
+| SR-Q4 / B0/CE-7, memory | Mandatory F0 removed; conditional K=2 non-sharing cost is four banks, 25,856 bytes. ADR-034 remains three banks. Resolve replacement/retention policy or prove safe allocation before requesting resource approval. |
+| B2/B3, full feasibility | No production migration, actual Runtime profile exercise, target link/run or full-image memory/stack proof. Existing blockers remain. |
+
+The experiment stopped within its original ceilings: 15/16 invocations, one/two
+repair rounds, approximately 41 seconds. Its diagnostics, snapshots, ABI evidence
+and limitations are recorded. Do not rerun a generic escape matrix or expand
+frontend grammar merely because other contract details remain unresolved.
+
 ## Stable-read correction review — 2026-10-10
 
 Current [SR-1–6 and bounded activities](rfc-014-stable-read-revision.md) supersede

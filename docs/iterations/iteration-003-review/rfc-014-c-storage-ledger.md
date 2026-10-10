@@ -9,6 +9,11 @@
 > remain open. No accepted contract changed.
 
 
+Current accounting: [SR-Q4](rfc-014-stable-read-revision.md#sr-q4--storage-copy-term-removed-retention-policy-remains-open)
+removes F0 under the same K=2 non-sharing assumption: four banks / 25,856
+transition bytes. This remains one bank above ADR-034, before other costs, and
+is conditional arithmetic rather than a measured or accepted allocation.
+
 **2026-10-10 — proposed capacity contract, not approved limits or measured RAM.**
 Parent: [RFC-014](../../rfcs/rfc-014-runtime-derived-records-and-scoped-model-access.md).
 Read with the [C access/lifecycle contract](rfc-014-c-contract.md) and

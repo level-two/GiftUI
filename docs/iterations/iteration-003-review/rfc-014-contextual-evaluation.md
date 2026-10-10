@@ -9,6 +9,12 @@
 > remain open. No accepted contract changed.
 
 
+Current evidence: [SPIKE-073](../../spikes/spike-073-fixed-context-body-inference.md)
+compiles a fixed-context evaluation requirement with compiler-derived custom Body
+on all four configurations. Its miniature protocol is not the module integration
+fixture below. The remaining question is the real context/schema/access contract;
+manual Body aliases are no longer the preferred baseline.
+
 **2026-10-10 — proposed design, not an approved contract.** Parent:
 [RFC-014](../../rfcs/rfc-014-runtime-derived-records-and-scoped-model-access.md).
 This delivers Eugene's next-design-step instruction after

@@ -8,8 +8,12 @@ synchronous derivation, retaining existing storage through the final Canvas read
 do not require a separate copied snapshot. Prefer compiler-derived Body through
 a revised internal evaluation contract. SR-1–6 replace conflicting C3/C4 and
 copy-freeze refinements below; the older text preserves their provenance.
-RFC approval and production adoption remain open. The bounded SR-Q1–4 activities
-replace the previous recommendation to expand the finite frontend immediately.
+RFC approval and production adoption remain open. The completed SR-Q1–4 package
+replaces the previous recommendation to expand the finite frontend immediately.
+[SPIKE-073](../../spikes/spike-073-fixed-context-body-inference.md) supports fixed
+context Body inference on the four compiler configurations; the result is narrow.
+[Remaining access/ownership decisions](rfc-014-stable-read-revision.md#review-and-next-deliverable)
+are explicit. No successor experiment is opened.
 
 
 **2026-10-10 — working RFC direction; not accepted architecture.** Parent:

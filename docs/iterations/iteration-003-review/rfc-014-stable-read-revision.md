@@ -99,3 +99,134 @@ Record one disposition for SR-Q1–4 and stop this package. The next deliverable
 the resulting ownership/access contract amendment, with any remaining decision
 stated precisely. No accepted architecture, production source, compiler policy,
 resource limit or iteration completion changes through this evidence work.
+
+## Activity results — 2026-10-10
+
+**This bounded package is complete; RFC approval remains blocked.**
+[Source input identities](rfc-014-stable-read-inputs.json) record the audit
+baseline and hashes. The language check is terminal
+[SPIKE-073](../../spikes/spike-073-fixed-context-body-inference.md), scope commit
+`0f1ea949`, evidence commit `3a6b1199`. No production sources changed.
+
+### SR-Q1 — last model-data consumer: answered at the contract boundary
+
+The existing ordering supports SR-3 without new overlapping writes:
+
+| Inspected route | Finding | Implication |
+| --- | --- | --- |
+| [RuntimeCompletePipeline.run](../../../Sources/GiftUIRuntimeCore/RuntimeCompletePipeline.swift) | Applies admitted work, freezes mutation, expands semantics, resolves layout, invokes Canvas/plan, then preflights render, builds interaction, publishes and offers. All calls are synchronous. | No application-model write stage is inserted between body and drawing. Future action dispatch belongs to a later mutation phase. |
+| [CanvasPlanProducer.derive](../../../Sources/GiftUIDrawing/CanvasPlanProducer.swift) | Requires deriving; releases each successful callable; failure after acquiring workspace releases pending callables and discards/resets the plan. | No successful callable needs to survive as a model reader after plan construction. Early invalid-phase/reentrancy rejection does not acquire ownership or release the caller's payloads. |
+| [RuntimeCoordinatorCleanup](../../../Sources/GiftUIRuntimeCore/RuntimeCoordinatorCleanup.swift), [Dynamic pipeline](../../../Sources/SignalAnalyzerTargetHost/DynamicSignalAnalyzerPresentationPipeline.swift) | Caller tracks acquired storage; Canvas-stage failure includes release/discard actions. Semantic discard also clears Canvas storage. | A model lease must end after this cleanup on failures; do not release it merely because the producer returned an error. |
+| [DynamicCanvasCallableStorage](../../../Sources/GiftUIRuntimeDynamic/DynamicCanvasCallableStorage.swift) | Release clears the payload; discard releases all staged payloads. | Staging ownership is explicit and separate from the model's application/registration lifetime. |
+| [Static Canvas pass](../../../Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFCanvasPass.swift) | Uses the same producer and checks `allReleased` on success. | The shared producer's boundary applies to the existing generated Static path; this does not validate a new runtime-derived owner pool. |
+| [DrawingPlanView](../../../Sources/GiftUIDrawing/DrawingPlan.swift), [CanvasRenderProducer](../../../Sources/GiftUIDrawing/CanvasRenderProducer.swift) | Rendering reads stroke headers, points and subpaths from the plan; it receives no model or Canvas callable. | Keep plan storage through rendering/offer as required, without retaining a model-data read for that purpose. |
+
+Conclusion: retain model-data access through final Canvas use/discard. Later
+interaction/publication can still need registration identity and owner metadata;
+ending a data borrow does not authorize destroying a registered/application-owned
+model. Keep the existing mutation phase schedule rather than moving writes into
+the remainder of the current cycle. This source audit is not a new conformance
+proof for every host cleanup path or future borrowed-storage implementation.
+
+### SR-Q2 — compiler-derived Body: answered for the finite mechanism
+
+The [terminal result](../../../experiments/spike-073-fixed-context-body-inference/evidence/result.md)
+shows four positive configurations, 15 passing checks in each native run and
+eight intended negative rejections. There are no generated custom Body aliases.
+Generic callers invoke the custom associated Body witnesses successfully; a
+conditional and opaque helper participate in builder inference. One repair made
+fixture catch scopes explicitly typed. The total is 15/16 invocations, one/two
+repairs and approximately 41 seconds; no ceiling was extended.
+
+The successful *internal* shape is:
+
+```swift
+protocol View {
+    associatedtype Body: View
+    func evaluate(read: borrowing FrameRead) throws(AccessFailure) -> Body
+}
+// Concrete custom implementation: same non-generic parameters, -> some View.
+```
+
+FrameRead borrows a Span over the same scalar storage used during mutation.
+Writes between read borrows are refused by the phase guard; ending the owner
+phase during a live read rejects at compile time. Storing FrameRead in an
+Escapable struct also rejects. These two controls do not prove all possible
+escape routes. Root/Nested are evaluated separately, not through real recursive
+State discovery. Canvas returns scalar surrogate geometry, not a real plan.
+
+This removes the specific generic-witness obstacle as a reason to change public
+body syntax or make the frontend spell every Body type. A fixed scalar context
+still does not settle a schema-independent portable context across real modules.
+The experimental lifetime flags are evidence configuration, not adopted policy.
+
+### SR-Q3 — property access: reduced, still a design blocker
+
+Version selection is gone: the property need not choose between current and
+historical frame banks. Lifetime and write authority remain independent of that
+simplification. [State](../../../Sources/GiftUI/ObservableState.swift) currently
+stores escaping read/replace closures. [Static model storage](../../../Sources/GiftUIRuntimeStatic/StaticObservableModelStorage.swift)
+binds a read closure around a temporary unsafe pointer scope and permits a generic
+callback result. [Dynamic model storage](../../../Sources/GiftUIRuntimeDynamic/DynamicObservableModelStorage.swift)
+uses an unowned capture. These are existing mechanisms, not proof that a new
+key-only View safely carries borrowed model access through drawing. A phase bit
+alone cannot prove pointee lifetime or prevent raw aliases bypassing it.
+
+| Access route | What remains necessary | Disposition |
+| --- | --- | --- |
+| Generated explicit context, with borrowed typed model facades | Bind/check owner and generation before reads; forward access into model-reading helpers; reject escape; preflight writes and preserve coarse reporting. | Preferred next internal contract candidate. Remove snapshot-selection logic and manual Body-type derivation from its responsibilities. |
+| Owner-bound ordinary property getters | Give every stored handle a real lifetime/ownership rule and a safe typed route on both profiles; prevent unchecked reference/alias writes. | Viable comparison, not ruled out by Body inference. Existing unowned/raw-pointer closures are insufficient evidence. |
+| Global or task-local current context | Implicit owner routing and runtime/profile coupling. | Not selected; removing a copy does not justify this new dependency. |
+
+A borrowed typed facade could expose ordinary `model.value` getters inside a
+bound evaluation, checking identity once when binding the facade. That is a
+candidate contract, not a tested macro or a guarantee that all reads become
+infallible (capture indexing and user helpers still have their own errors).
+[The existing application inventory](../../../experiments/spike-072-contextual-traversal-integration/application-coverage.md)
+remains useful for computed properties, nested aggregates, loops, mutation and
+helper effects; its frozen-bank and manual Body-derivation assumptions are no
+longer requirements. No complete frontend is built by this package.
+
+Next design seam: specify typed property access and mutation authority against
+that inventory, including where the fixed context type lives without a Runtime
+import in portable declarations. Any app-specific context ABI, runtime erasure,
+per-conformance context family or new ownership ticket must be explicit. Do not
+mistake this scalar fixture for an answer to that module/schema question.
+
+### SR-Q4 — storage: copy term removed; retention policy remains open
+
+| Simultaneous capture reservation | Previous candidate | Stable-read candidate, same K=2 non-sharing assumption |
+| --- | --- | --- |
+| Acquisition source | 6,464 | 6,464 |
+| Admission | 6,464 | 6,464 |
+| Installed/current model | 6,464 | 6,464 |
+| Replacement or retained former model | 6,464 | 6,464 |
+| Separate frame copy F0 | 6,464 | 0 |
+| Transition bytes only | 32,320 | 25,856 |
+
+The 6,464-byte reduction is conditional accounting, not a measurement. It does
+not establish that four banks are minimal, fit in the whole image, or are allowed
+by ADR-034. The [ownership audit](rfc-014-ownership-audit.md) still identifies
+independent host caches and retained application owners; removing a frame copy
+does not release them or authorize revocation.
+
+B0 now concerns a concrete choice: either prove a three-bank realization with
+explicit replacement/retention/admission lifetimes, or propose an ADR-034 storage
+amendment with complete resource evidence. Simply imposing R=0, revoking former
+owners, or declaring a staging overlay safe would silently change semantics.
+The existing domain SignalCapture value contract is unchanged.
+
+## Review and next deliverable
+
+Author consistency review only: **not ready for RFC approval**. SR-Q1 and SR-Q2
+have bounded answers; SR-Q3 is narrowed to typed access/ownership, and SR-Q4 to
+replacement/retention accounting. They no longer justify a second frame bank or
+manual Body reconstruction as automatic requirements. No new deferred artifact
+is needed because these remaining issues block the active RFC.
+
+The next deliverable is one access/ownership contract revision covering real
+counter/analyzer reads, writes, replacement and cleanup, including the fixed
+context's module boundary and a reviewed storage policy. It must use the existing
+source inventory rather than expand another mini-language by trial and error.
+No successor experiment or production migration is opened by this disposition.
+Existing architecture/Spec and resource approval gates remain unchanged.

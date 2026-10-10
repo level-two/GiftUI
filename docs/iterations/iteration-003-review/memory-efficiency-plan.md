@@ -13,8 +13,12 @@ budgets or permission to grow independent investigations.
 ## Current RFC-014 activity — 2026-10-10 stable-read correction
 
 Eugene authorized [revising the working decisions and answering SR-Q1–4](rfc-014-stable-read-revision.md).
-That package is now the next activity: audit last-reader lifetime and storage,
-compare property-access routes, and one bounded fixed-context Body check.
+That package is complete: the last-reader audit supports model access ending
+after Canvas use/discard, and SPIKE-073 supports compiler-derived Body with a
+fixed borrowed context. Four configurations compile; both native runs pass 15
+checks and eight negative controls reject. The 15-invocation study is terminal.
+[SR-Q1–4 dispositions](rfc-014-stable-read-revision.md#activity-results--2026-10-10)
+retain the typed access/schema and replacement/retention decisions as blockers.
 Separate copy-freeze and immediate expansion of the source frontend are no longer
 the baseline. Earlier sections below preserve previous activity dispositions.
 Production migration still requires the existing architecture/Spec gates.
@@ -32,7 +36,8 @@ and its [design review](i3-t02-design-review.md).
 [SPIKE-069](../../spikes/spike-069-scoped-model-access.md) is completed with
 bounded borrow/key evidence and actual Canvas compatibility counterexamples.
 The [2026-10-10 working direction C](rfc-014-decision-direction.md) now leads:
-protocol Canvas plus observable properties in current/frozen owner storage.
+protocol Canvas plus stable typed model ownership; the current revision excludes
+mutation during model reads without requiring separate frozen storage.
 It replaces the earlier recommendation from the [A/B comparison](rfc-014-source-design-options.md);
 the [detailed contract](rfc-014-c-contract.md) and [storage ledger](rfc-014-c-storage-ledger.md)
 record the earlier access/phase rules and five-bank analyzer candidate; the
@@ -60,7 +65,7 @@ historical inputs; this result does not reopen their budgets or experiments.
 | --- | --- |
 | I3-T01 correction package | Complete within the hardware-free boundary; [result and residual gates](i3-t01-result.md). |
 | I3-T02 runtime design, I3-04 / ME-05 | Delivered with named blockers: [RFC-014 review and contract map](i3-t02-design-review.md). |
-| RFC-014 B1/B2 follow-up | SPIKE-069 terminal; source comparison and ownership audit delivered. Direction C contract/ledger delivered; SPIKE-070/071 support the finite source/context mechanism with four-profile compiler/escape controls. SPIKE-072 supports contextual module integration and records missing application source families. Production State/reconciler/owner integration, complete source coverage and compiler adoption remain open. SR-Q1–4 now govern the follow-up. Removing the frame-copy term leaves the K=2 retained-owner bank question open against ADR-034; the old five-bank baseline is superseded. |
+| RFC-014 B1/B2 follow-up | SPIKE-069 terminal; source comparison and ownership audit delivered. Direction C contract/ledger delivered; SPIKE-070/071 support the finite source/context mechanism with four-profile compiler/escape controls. SPIKE-072 supports contextual module integration and records missing application source families. Production State/reconciler/owner integration, complete source coverage and compiler adoption remain open. SR-Q1–4 package complete; SPIKE-073 supports fixed-context inference. Next is the typed access/ownership contract and replacement/retention policy, not another generic compiler study. The K=2 non-sharing candidate still exceeds ADR-034 by one bank; the old five-bank baseline is superseded. |
 | ME-06 runtime implementation | Blocked on the resulting architecture/contract gates and complete resource/lifetime evidence; no ready migration plan yet. |
 | ME-08 integrated validation | Waits for the adopted implementations and exact artifact identities; connected evidence remains separately authorized. |
 | ME-09 closure/handoff | Waits for the criterion dispositions and maintainer decision; no automatic iteration-4 extraction. |
