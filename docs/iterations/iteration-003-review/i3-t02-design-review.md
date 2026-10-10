@@ -10,6 +10,35 @@ The original I3-T02 findings below describe the authoring task. The subsequent
 [B1 follow-up](#b1-follow-up--spike-069) adds evidence without approving the RFC
 or changing the original task's budget/history.
 
+## Latest C evidence — SPIKE-070, 2026-10-10
+
+**Verdict remains not ready.** This is an author evidence/consistency review,
+not independent approval. The separately authorized
+[SPIKE-070](../../spikes/spike-070-protocol-canvas-versioned-access.md) is terminal
+inconclusive; [exact evidence](../../../experiments/spike-070-protocol-canvas-versioned-access/evidence/result.md)
+preserves all 11 invocations and two repairs.
+
+- Finite source-dependent generation and real child View/Canvas traversal work
+  in both native profile runs (21 checks each); ARMv6 object compilation passes.
+- The root's throwing evaluation descriptor and the Canvas draw FrameRead
+  parameter are explicit adaptations. Public View conformance/integration,
+  actual State/macro ownership and complete helper coverage remain B1/B4.
+- Underscored lifetime attributes need the tested Lifetimes/LifetimeDependence
+  feature configuration. This is experimental compiler-policy evidence, not
+  automatic adoption of those flags.
+- Embedded rejects two assertions through the untyped throwing `&&` autoclosure.
+  No repair allowance remains. The source correction is plausible but untested;
+  none of the 24 negative controls or nRF reachability checks ran. Do not infer
+  C-P2 safety, zero heap, nRF ABI or architecture impossibility from this result.
+- Equal repeated Canvas values and a first-Canvas failure do not establish
+  discriminating painter order or a mid-list failure case. Those candidate
+  controls, full C-P3 ownership, B0 storage and complete B2/B3 costs remain open.
+
+Registration and evidence are committed separately. Governance, snapshot/hash,
+local-link and whitespace validation do not replace the missing compiler gates.
+No experiment is opened automatically; another run needs explicit bounded
+authorization. Historical “not launched” paragraphs below predate SPIKE-070.
+
 ## Current review boundary — 2026-10-10
 
 The [maintainer-proposed direction C](rfc-014-decision-direction.md) now leads

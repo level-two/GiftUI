@@ -65,6 +65,12 @@ subsequently proposed a Canvas protocol and versioned observable storage.
 The [2026-10-10 working direction C](../iterations/iteration-003-review/rfc-014-decision-direction.md)
 replaces the earlier recommendation to develop closure-based SnapshotCanvas first.
 RFC approval, exact declarations and physical pool bounds remain open.
+[SPIKE-070](../spikes/spike-070-protocol-canvas-versioned-access.md) is now terminal
+**inconclusive**: the finite C fixture passes both native runs and ARMv6
+compilation, but its Embedded positive fails after the two allowed repairs.
+The escape matrix and nRF resource inspection are unrun. The
+[result](../../experiments/spike-070-protocol-canvas-versioned-access/evidence/result.md)
+identifies generated body/draw signature adaptations and keeps B1/B4 open.
 
 ## Summary
 
@@ -581,7 +587,7 @@ of these risks is resolved by the conditional RAM sum.
 | ID | Blocking issue | Required resolution |
 | --- | --- | --- |
 | B0 | C proposes five capture banks; accepted ADR-034 requires exactly three | Review C's K=2/F=1 non-sharing ledger and choose an ADR-034 amendment/successor preserving retention, or prove a compatible alternative. Earlier four-slot arithmetic does not cover this baseline. Do not modify limits first. |
-| B1 | Enforceable State/model/capture access and callback isolation | SPIKE-069 refutes callback restriction alone and supports a bounded borrow/key fixture. The C contract now proposes coherent copy-freeze, contextual property access and typed protocol dispatch. Prove finite context lowering, typed failure transport, compiler support and every owner/access route (C-P1/C-P2); exact Swift realization remains open. Prior Spike evidence does not validate C. Full no-escape/exclusivity/zero-heap proof remains open. |
+| B1 | Enforceable State/model/capture access and callback isolation | SPIKE-069 refutes callback restriction alone and supports a bounded borrow/key fixture. The C contract now proposes coherent copy-freeze, contextual property access and typed protocol dispatch. Prove finite context lowering, typed failure transport, compiler support and every owner/access route (C-P1/C-P2); exact Swift realization remains open. SPIKE-070 supplies narrow native/ARMv6 C evidence, with root evaluation/draw signature adaptations; its Embedded positive failed and escape/resource controls are unrun. Full no-escape/exclusivity/zero-heap proof remains open. |
 | B2 | Complete record/payload/path/interaction and model storage | C proposes K=2/F=1 with a retained-former ledger and exact first-excess refusal; verify actual owners and every failure edge (C-P3), complete layouts/codecs/trie fanout and all source cases; validate every proposed byte row, replacement capture and generated Canvas capture size; approve resulting SPEC-001/013/015 limits. |
 | B3 | Complete supported-image stack and Dynamic cost | Bound recursive/indirect/callback/IRQ paths and construction/service/teardown; measure matched Dynamic memory. No unknown edge may be recorded as zero. |
 | B4 | Concrete supported lowering and migration completeness | Inventory graph producers/consumers and replace them with actual runtime traversal; show bounded Static callable/model lowering and full four-profile application behavior. |
@@ -597,9 +603,17 @@ requires a separately selected transport/rendering or requirement decision.
 ## Deferred and Follow-up Work
 
 Eugene separately authorized [SPIKE-070](../spikes/spike-070-protocol-canvas-versioned-access.md)
-on 2026-10-10 for C-P1/C-P2. It has a 90-active-minute/48-invocation/two-repair
-ceiling and runs no production or connected work. This is new bounded evidence
-work, not renewed SPIKE-069 allowance or approval of direction C.
+on 2026-10-10 for C-P1/C-P2. It completed **inconclusive**, using 11 of 48
+invocations and both repair rounds before the 90-minute deadline. Both native
+profiles pass 21 fixture checks and ARMv6 compiles; Embedded rejects two throwing
+assertions and the escape/resource matrix is unrun. No production or connected
+work occurred. A further proof needs separate bounded authorization; neither
+this result nor unused invocation/time budget reopens a terminal Spike.
+
+The next contract work remains the contextual View evaluation/failure seam,
+complete finite read/helper coverage and experimental compiler policy. The
+likely test-assertion correction is not an architectural decision or evidence
+that the unrun Embedded checks would pass. No current blocker is deferred.
 
 No correctness or feasibility question above is deferred. RFC-013 and approved
 iteration 4 already own external API/package/setup decisions; revisit after

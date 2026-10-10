@@ -13,6 +13,23 @@ iteration 3 requires real analyzer/counter traversal on all four configurations.
 Accepted ADRs and implemented Specs remain authoritative. “Requires” below
 specifies the candidate being reviewed, not a new production requirement.
 
+## Subsequent proof boundary — SPIKE-070
+
+The separately authorized [SPIKE-070](../../spikes/spike-070-protocol-canvas-versioned-access.md)
+is terminal **inconclusive**. Its finite transformer, native runs and ARMv6
+object support a narrow context-injection/leaf-traversal mechanism. The root
+becomes a throwing descriptor entrypoint without View conformance; Canvas's
+target draw receives FrameRead. Those seams are not complete production binding.
+Embedded fails in two throwing test assertions after the final allowed repair;
+compiler negatives and nRF resource checks remain unrun. See
+[results and limits](../../../experiments/spike-070-protocol-canvas-versioned-access/evidence/result.md).
+
+The numbered controls below remain requirements for the candidate, not a passed
+suite. Earlier “not authorized” statements describe the original design step;
+SPIKE-070 was later authorized and is now closed, with no successor allowance.
+Production View evaluation/error transport, full schema/helper coverage and
+experimental lifetime policy remain explicit B1/B4 design obligations.
+
 ## Design commitments in this draft
 
 - Keep one serialized mutation domain. External producers submit immutable
@@ -33,7 +50,7 @@ specifies the candidate being reviewed, not a new production requirement.
 The main remaining feasibility question is explicit: ordinary `model.property`
 syntax has no context parameter in Swift. This draft proposes finite generated
 access routes with a hidden context argument, not a property wrapper that
-magically finds the runtime. That machinery is unbuilt/unproved. It is narrower
+magically finds the runtime. Its production realization remains unbuilt/unproved; SPIKE-070 tests only a finite disposable subset. It is narrower
 than arbitrary closure-capture analysis but is still a source-tooling obligation.
 
 ## 1. Public authoring surface

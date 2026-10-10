@@ -23,7 +23,10 @@ current models and F=1 frozen frame model for both apps, with five analyzer
 capture-sized banks and bounded refusal when a former owner occupies capacity.
 These are proposed refinements under the instruction to proceed, not accepted
 ADRs/Specs. Source-context injection, precise layouts and complete target costs
-remain unproved; the contract supplies a bounded next-proof proposal.
+remain unproved in full. The subsequently authorized
+[SPIKE-070](../../spikes/spike-070-protocol-canvas-versioned-access.md) is terminal
+inconclusive, with native/ARMv6 positives and unrun Embedded escape/resource
+gates. Direction C remains a working design; the result approves no API or budget.
 
 ## Decisions to carry into the RFC
 

@@ -27,7 +27,10 @@ protocol Canvas plus observable properties in current/frozen owner storage.
 It replaces the earlier recommendation from the [A/B comparison](rfc-014-source-design-options.md);
 the [detailed contract](rfc-014-c-contract.md) and [storage ledger](rfc-014-c-storage-ledger.md)
 now propose explicit access/phase rules and a five-bank analyzer baseline.
-Compiler realization, full layouts/costs and formal approval remain open. The
+[SPIKE-070](../../spikes/spike-070-protocol-canvas-versioned-access.md) is terminal
+inconclusive: narrow native/ARMv6 evidence, failed Embedded positive and unrun
+escape/resource checks. Full compiler realization, layouts/costs and formal
+approval remain open. The
 [ownership audit](rfc-014-ownership-audit.md) identifies host retention and
 replacement obligations; neither app yet proves its peak retained bound (B2).
 These inform capture storage under ADR-034 (B0), whose slot count remains open.
@@ -39,7 +42,7 @@ historical inputs; this result does not reopen their budgets or experiments.
 | --- | --- |
 | I3-T01 correction package | Complete within the hardware-free boundary; [result and residual gates](i3-t01-result.md). |
 | I3-T02 runtime design, I3-04 / ME-05 | Delivered with named blockers: [RFC-014 review and contract map](i3-t02-design-review.md). |
-| RFC-014 B1/B2 follow-up | SPIKE-069 terminal; source comparison and ownership audit delivered. Direction C contract/ledger delivered; finite context lowering unproved, five-bank baseline conflicts with ADR-034. Focused proof proposed, not authorized. |
+| RFC-014 B1/B2 follow-up | SPIKE-069 terminal; source comparison and ownership audit delivered. Direction C contract/ledger delivered; finite context lowering unproved, five-bank baseline conflicts with ADR-034. SPIKE-070 terminal inconclusive; Embedded positive and escape/resource matrix incomplete. No new proof authorized. |
 | ME-06 runtime implementation | Blocked on the resulting architecture/contract gates and complete resource/lifetime evidence; no ready migration plan yet. |
 | ME-08 integrated validation | Waits for the adopted implementations and exact artifact identities; connected evidence remains separately authorized. |
 | ME-09 closure/handoff | Waits for the criterion dispositions and maintainer decision; no automatic iteration-4 extraction. |
@@ -48,9 +51,19 @@ historical inputs; this result does not reopen their budgets or experiments.
 
 Eugene's “Please proceed” authorizes [SPIKE-070](../../spikes/spike-070-protocol-canvas-versioned-access.md)
 under the proposed 90-active-minute/48-compiler-link-run/two-repair ceiling.
-Start 05:30:54 UTC; no excluded waiting initially. Commit registration, then
-code/evidence, then the terminal RFC disposition. No production, hardware,
-full application/firmware or renewed prior experiment scope is included.
+Start 05:30:54 UTC; no excluded waiting. **Completed inconclusive** after 11
+invocations and both repair rounds, before the 07:00:54 UTC deadline.
+Registration: `14ea4e18`; code/evidence: `c0abc624`; this update records the
+terminal disposition. Both native profiles pass 21 checks and ARMv6 compiles.
+Embedded compilation rejects two test assertions using throwing `&&`; no third
+repair, escape-control matrix or nRF reachability work occurred. See the
+[terminal result](../../../experiments/spike-070-protocol-canvas-versioned-access/evidence/result.md)
+for exact source/compiler evidence and seams.
+
+No production, hardware, full application/firmware or renewed prior experiment
+scope was included. B0–B4 stay open. A successor requires explicit bounded
+authorization, starting with the identified assertion correction and Embedded
+positive before unrun controls; no continuation is automatically launched.
 
 ## RFC-014 detailed C contract — 2026-10-10
 
@@ -70,11 +83,12 @@ nonthrowing body source. The protocol itself does not solve it. The conservative
 five-bank physical proposal requires an ADR-034 amendment; no complete linked
 RAM/stack claim follows from its transition-backing arithmetic.
 
-Next proposed evidence is a single C-P1/C-P2 compiler/source proof: 90 active
+At completion of that earlier design step, the proposed evidence was a single C-P1/C-P2 compiler/source proof: 90 active
 minutes, 48 compiler/link/run invocations and two repair rounds across the four
 configurations, no hardware. The [recipe and controls](rfc-014-c-contract.md#7-contract-controls-for-the-next-proof)
-are reviewable but not authorized or registered as a launched Spike. C-P3 and
-whole-image evidence remain separate; no general feasibility cycle is opened.
+were then reviewable but not yet authorized or registered. The subsequent
+SPIKE-070 authorization and terminal result above supersede that launch status.
+C-P3 and whole-image evidence remain separate; no general feasibility cycle is opened.
 
 Validation: governance validator, local file links, source inventory of analyzer
 State/Canvas sites, exact reservation arithmetic and `git diff --check`. Examples

@@ -10,8 +10,8 @@ nor demonstrates that protocol Canvas or versioned properties are impossible.
 
 | Evidence | Result |
 | --- | --- |
-| Finite source transformation | Seven unsupported-use samples reject; three source perturbations change generated output. No complete source-checker or compiled-perturbation claim. |
-| Lifetime policy, trials 1–3 | Default flags reject; LifetimeDependence alone rejects `@_lifetime`; LifetimeDependence plus Lifetimes compiles the same policy source without the old unsupported-annotation warning. Still experimental policy, not adopted configuration. |
+| Finite source transformation | Seven unsupported-use samples reject; three source perturbations change generated output. Only frozen reads are lowered; current mutation methods are handwritten. No complete source-checker or compiled-perturbation claim. |
+| Lifetime policy, trials 1–3 | Default flags reject; LifetimeDependence alone rejects `@_lifetime`; LifetimeDependence plus Lifetimes compiles the same policy source without the old unsupported-annotation warning. Lifetimes alone was not tested. Still experimental policy, not adopted configuration. |
 | Native Dynamic / Static, trials 6–9 | Both actual declaration compositions compile and execute 21 checks each. |
 | Pi ARMv6, trial 10 | Composition compiles to an ARMv6 object; ELF attributes include VFP register arguments. No Pi execution. |
 | nRF Embedded, trial 11 | Rejects two test assertions at `&&` right-hand scalar reads: “cannot use a value of protocol type 'any Error' in embedded Swift.” No successful nRF object. |

@@ -2,7 +2,7 @@
 id: SPIKE-070
 feature: external-application-integration
 title: Protocol Canvas and Versioned Property Access
-status: active
+status: completed
 authors:
   - codex
 created: 2026-10-10
@@ -114,7 +114,32 @@ the input inventory. No change to compiler/SDK pins or global selection.
 
 ## Results
 
-Pending. No positive result is implied by registering the experiment.
+**Terminal: inconclusive.** [Exact results and limits](../../experiments/spike-070-protocol-canvas-versioned-access/evidence/result.md),
+[ledger](../../experiments/spike-070-protocol-canvas-versioned-access/evidence/ledger.json)
+and [source/reproduction boundary](../../experiments/spike-070-protocol-canvas-versioned-access/README.md)
+are committed in `c0abc624`; registration was `14ea4e18`.
+
+- A strict finite source transformer rejects seven unsupported-use samples and
+  changes output for three source perturbations. Perturbed outputs were not
+  compiled; this is not complete Swift or a production macro implementation.
+- Both native profiles compile with actual GiftUI declarations except the
+  replaced Canvas file and pass 21 fixture checks each. ARMv6 object compilation
+  succeeds with ARMv6/VFP attributes; no target execution occurred.
+- `@_lifetime` needs experimental Lifetimes as well as the tested
+  LifetimeDependence configuration. The default and Dependence-only controls
+  reject. Experimental policy is not adopted by this evidence.
+- After two fixture repairs, nRF compilation rejects `any Error` introduced at
+  two throwing `&&` assertions. The likely assertion correction is untested;
+  this does not refute C. The repair ceiling requires a terminal report.
+- **11/48 invocations, 2/2 repairs**, stopped before the 90-minute deadline;
+  no excluded waiting. All 24 compiler-negative controls and both nRF
+  reachability invocations remain unrun. There is no C-P2 non-escape/heap proof.
+
+The root is lowered to a throwing descriptor entrypoint without View conformance;
+Canvas's generated draw signature gains FrameRead. Actual child traversal and
+GraphicsContext run through a disposable visitor/recorder. Those adaptations
+are explicit, not proof of unchanged public source contracts or actual Layout.
+No production files, accepted ADRs, Specifications or hardware changed.
 
 ## Limitations
 
@@ -126,9 +151,18 @@ Experimental lifetime requirements remain an adoption issue even if tests pass.
 
 ## Disposition
 
-Active within the one authorized budget. End with supported recommendation,
-incompatible or inconclusive, naming the exact tested boundary and remaining
-B1/B4 gaps. Never approve the RFC or copy Spike code into production implicitly.
+Completed with an **inconclusive** result and no automatic successor. Feed the
+narrow positive evidence and exact remaining gaps into RFC-014. Keep B1/B4 open:
+production contextual View evaluation/error transport, complete finite getter/
+helper coverage, compiler adoption policy, Embedded positives, escape controls
+and target resources remain unproved. B0/B2/C-P3 storage/ownership and B3 costs
+also remain open.
+
+Revisit only after explicit maintainer authorization of a separately bounded
+follow-up. Its first experimental step would correct the identified assertions,
+then require Embedded positive compilation before interpreting the remaining
+negative matrix and resource inspection. No alternative API or budget is
+silently launched. RFC/ADR/Spec gates still precede production migration.
 
 ## References
 
