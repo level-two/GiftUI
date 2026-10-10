@@ -13,6 +13,7 @@ related_future_work: []
 related_explorations: []
 related_spikes:
   - SPIKE-070
+  - SPIKE-072
 promoted_to: []
 supersedes: []
 superseded_by: []

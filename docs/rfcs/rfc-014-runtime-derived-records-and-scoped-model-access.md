@@ -42,6 +42,7 @@ related_spikes:
   - SPIKE-069
   - SPIKE-070
   - SPIKE-071
+  - SPIKE-072
 supersedes: []
 superseded_by: []
 target_milestone: ITERATION-003
@@ -615,6 +616,12 @@ not evidence that record emission is intrinsically impossible. Resolving it
 requires a separately selected transport/rendering or requirement decision.
 
 ## Deferred and Follow-up Work
+
+Eugene's subsequent “Let's do it” authorizes
+[SPIKE-072](../spikes/spike-072-contextual-traversal-integration.md): provisionally
+pursue mandatory source transformation and test actual contextual traversal and
+drawing integration. This is bounded evidence work, not RFC approval or adoption
+of the compiler flags, changed View contract or proposed five-bank budget.
 
 The authorized [contextual evaluation design](../iterations/iteration-003-review/rfc-014-contextual-evaluation.md)
 is now delivered with [CE-1–CE-7 review findings](../iterations/iteration-003-review/i3-t02-design-review.md#contextual-evaluation-design-review--2026-10-10).
