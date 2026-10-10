@@ -25,7 +25,7 @@ superseded_by: null
 ## RFC-014 implementation readiness — 2026-10-10
 
 **Ready under [explicit Spec approval](../iterations/iteration-003-review/rfc-014-spec-approval.md).**
-P02 implementation started after P01 passed. The [bounded sequence](../iterations/iteration-003-review/rfc-014-implementation-plan.md)
+P02 passed its declaration exit after P01; P04 awaits P03. The [bounded sequence](../iterations/iteration-003-review/rfc-014-implementation-plan.md)
 is the shared ordering/scope index: exactly P01–P12, not an expandable backlog.
 This owner contributes P02, P04; its final regression/resource/disposition
 obligations run through P10–P12. Only the current checkpoint below is new work.
@@ -41,12 +41,12 @@ not additional authorization to rerun an MVP implementation or reopen experiment
   every criterion in the matrix, P11 resource/connected dispositions, and P12
   conformance/cutover disposition. A failed or unauthorized gate stays unmet;
   do not mark this checkpoint completed from an old fixture or a shared mock.
-  **Checks:** owner driver `scripts/contracts/run-spec-006.sh --profile <profile>`
+  **Checks:** P02 owner driver `scripts/contracts/run-spec-006.sh --profile <profile> --compiler-baseline rfc-014`
   on the four governed configurations, focused unit/negative checks named by the
   shared sequence, then P10's registered hardware-free gate. Compiler-selection
   propagation follows P01; no historical check is weakened.
   **Evidence:** existing owner conformance report and immutable owner-driver
-  reports linked to exact commits/artifacts; [P02 progress](../../Tests/ContractFixtures/SPEC006/Evidence/rfc-014-p02/progress.md) records completed steps and remaining checks.
+  reports linked to exact commits/artifacts; the [P02 receipt](../../Tests/ContractFixtures/SPEC006/Evidence/rfc-014-p02/result.md) records the four-profile declaration exit and remaining joint-package obligations. T10.1 remains open.
 
 The single current acceptance matrix retains each criterion once. Its historical
 task IDs remain provenance; `T10.1` adds fresh migration verification without

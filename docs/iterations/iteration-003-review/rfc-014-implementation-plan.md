@@ -1,6 +1,6 @@
 # RFC-014 bounded implementation sequence — 2026-10-10
 
-**P01 passed; P02 in progress.** This is the shared
+**P01–P02 passed; P03 is next.** This is the shared
 sequencing index for nine owner Implementation Plans, not another contract or
 investigation. It derives only the [approved Spec amendments](rfc-014-spec-approval.md)
 at `3c260bbc` and accepted ADR-035/036/037. ITERATION-003 I3-04/05 supplies the
@@ -197,15 +197,29 @@ historical macOS control and all 17 compiler controls pass. The
 [P01 receipt](../../../Tests/ContractFixtures/SPEC002/Evidence/rfc-014-p01/result.md)
 pins source/recipe/route/compiler/artifact identities, deltas and the single
 successful CMake repair. SPEC-002 is implementing and its plan active; T7.1
-remains open through P10–P12. P02–P12 remain pending with no scope change,
-P01 blocker or new package. P02 is the next dependency-complete package.
+remains open through P10–P12.
+
+P02's direction correction is committed in `117f49cf`; its declaration exit and
+focused suite are implemented in `53de09c6`. All four final profile drivers pass
+at that commit: both native profiles execute 120 assertions; ARMv6 and Embedded
+compile the separate modules and verify target CPU/VFP object attributes. The
+[P02 receipt](../../../Tests/ContractFixtures/SPEC006/Evidence/rfc-014-p02/result.md)
+preserves exact inputs, commands, diagnostics and artifact identities. SPEC-006
+is implementing and its plan active; T10.1 remains open through P04/P10–P12.
+Shared inventory routes retain their named ownership, runtime, action, Canvas
+and complete-application integration obligations. The whole-tree migration and
+resource/connected evidence are not inferred from this declaration exit.
+
+P03–P12 remain pending; P03 is the next dependency-complete package. There is no
+remaining P02 exit failure, new package, scope expansion or architecture change.
 
 Planning was prepared without implementation or experiment execution. Optional work remains in the existing deferred track; no new optional
-deliverable was added. Next action is P02 within the existing bounded sequence.
+deliverable was added. Next action is P03 within the existing bounded sequence.
 
 
 Planning validation: all nine approved Spec statuses and ready plan templates
 checked; every one of 180 criteria appears exactly once in its owner matrix;
 P01–P12 are the only packages; owner drivers and local links exist. Governance,
 authority graph, task-evidence validation and `git diff --check` pass. This checks
-planning integrity only; all implementation/conformance evidence remains pending.
+planning integrity only; subsequent P01/P02 evidence is recorded above, and
+remaining implementation/conformance evidence stays pending.

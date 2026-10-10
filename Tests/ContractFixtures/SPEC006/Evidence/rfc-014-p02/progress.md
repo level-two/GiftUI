@@ -1,7 +1,8 @@
 # P02 implementation progress
 
 Input: `df7f8da6` (P01 passed). Package: P02; owner: SPEC-006 T10.1;
-criteria: DV-RD-001 and DV-001/002/011/015–017. P02 is **in progress**.
+criteria: DV-RD-001 and DV-001/002/011/015–017. This file preserves the two
+implementation checkpoints. P02 subsequently passed; see the [final receipt](result.md).
 
 ## Step 1 — declaration ABI and existing macro build route
 
@@ -68,3 +69,9 @@ Signal Analyzer. Shared inventory routes remain assigned to P03/P04/P06/P08/P09
 for their storage, runtime, drawing, action and application integration portions.
 The final four-profile receipt follows the implementation commit. SPEC-006
 T10.1 and all complete-application/resource criteria remain open.
+
+## Step 3 — final four-profile receipt
+
+All final profile runs passed at clean commit `53de09c6`. The [receipt](result.md)
+and [validation snapshot](validation.json) close the P02 declaration exit and
+identify the still-open joint-package obligations. P03 is next; T10.1 remains open.

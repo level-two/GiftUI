@@ -25,10 +25,15 @@ superseded_by: null
 
 ## RFC-014 migration scope
 
-P02 implementation is in progress under the approved amendment and active owner
-plan. The results below are historical baseline evidence, not passes for the
-amended ABI. DV-RD-001–004 and renewed baseline applicability remain pending
-through P02/P04 and P10–P12.
+P02's declaration exit passes under the approved amendment and active owner
+plan. The [P02 receipt](../../Tests/ContractFixtures/SPEC006/Evidence/rfc-014-p02/result.md)
+records the clean implementation commit, four-profile compile/rejection checks,
+120 native assertions per profile and macro golden checks. This is partial
+criterion evidence, not complete DV-RD-001 application coverage or a runtime,
+resource or whole-tree pass. DV-RD-001–004 and renewed baseline applicability
+remain pending through P04 and P10–P12, with shared source routes completed by
+their named P03/P06/P08/P09 owners. The results below are historical baseline
+evidence, not passes for the amended ABI.
 
 ## Historical baseline review scope
 
