@@ -112,6 +112,20 @@ private func keyChecks() -> UInt32 {
     expect(state.assignGeneration(.init(rawValue: 9), to: key()) == nil, &checks)
     expect(state.finishCandidate() == nil, &checks); state.resolveCandidate(.commit(.init(rawValue: 2)))
     expect(state.resolveUp(captured, at: .init(x: 1, y: 1)) == .cancelled, &checks)
+    // Pool first excess after a prior accepted presentation cannot replace it.
+    var bounded = storage(key: 3, pool: 5)
+    expect(bounded.beginCandidate(limits: limits) == nil, &checks)
+    expect(append(&bounded, key()) == .requiresGeneration, &checks)
+    expect(bounded.assignGeneration(.init(rawValue: 1), to: key()) == nil, &checks)
+    expect(bounded.finishCandidate() == nil, &checks); bounded.resolveCandidate(.commit(.init(rawValue: 1)))
+    expect(bounded.beginCandidate(limits: limits) == nil, &checks)
+    expect(append(&bounded, key()) == .preserved, &checks)
+    expect(append(&bounded, key(1), order: 1) == .failure(.capacityExhausted), &checks)
+    expect(bounded.finishCandidate() == .capacityExhausted, &checks)
+    bounded.resolveCandidate(.commit(.init(rawValue: 2)))
+    expect(bounded.committedRevision == .init(rawValue: 1) && bounded.committedComponents == 3, &checks)
+    expect(bounded.resolveUp(captured, at: .init(x: 1, y: 1)) == .activationAdmitted(captured), &checks)
+    bounded.resolveCandidate(.discard)
     // Duplicate/geometry precedence over the same boundary's first-excess pool.
     var tiny = storage(key: 3, pool: 3); expect(tiny.beginCandidate(limits: limits) == nil, &checks)
     expect(append(&tiny, key()) == .requiresGeneration, &checks)
@@ -159,6 +173,18 @@ private func hostChecks(_ scope: borrowing ObservableModelScope<RootModel, RootS
             expect(root.encounter(identity: 1, ordinal: 0, state: &initial) == .success(.materialized), &checks)
         }
         do throws(SemanticExpansionError) {
+            for invalid in 0..<2 {
+                try store.discardCandidate()
+                try emit(store, branch: 0, actionRole: invalid == 0 ? 8 : 9, code: 99)
+                try store.withCandidateView { view in
+                    let expected: InteractionError = invalid == 0 ? .incompatibleActionDomain : .invalidActionValue
+                    expect(RuntimeRecordInteractionBridge.append(record: view.reference(at: 1)!, semantic: view, root: root, rootIdentity: 1, rootOrdinal: 0, actionType: Action.self, roles: Roles.self, isEnabled: true, bounds: rect, clip: rect, paintOrder: 0, interaction: &state) == .failure(expected), &checks)
+                    expect(state.finishCandidate() == expected, &checks)
+                }
+                state.resolveCandidate(.discard)
+                expect(state.beginCandidate(limits: limits) == nil, &checks)
+            }
+            try store.discardCandidate(); try emit(store, branch: 0)
             try store.withCandidateView { view in
                 let record = view.reference(at: 1)!; identity = view.completeIdentity(for: record)
                 expect(RuntimeRecordInteractionBridge.append(record: record, semantic: view, root: root, rootIdentity: 1, rootOrdinal: 0, actionType: Action.self, roles: Roles.self, isEnabled: true, bounds: rect, clip: rect, paintOrder: 0, interaction: &state) == .requiresGeneration, &checks)

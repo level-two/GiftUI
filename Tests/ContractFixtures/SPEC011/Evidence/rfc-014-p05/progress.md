@@ -140,3 +140,45 @@ needed an explicit ObservableStateError annotation on a nested closure. Both
 corrections passed the subsequent owner route; consecutive unproductive repairs
 remain **0 of 2**. Four-profile receipts and broader Layout oracle evidence remain
 pending before independent Strong exit review.
+
+## Step 3 — broader oracle and physical key evidence
+
+Fresh native Dynamic and Static owner routes agree at **196 Layout assertions**
+and **215 Interaction assertions**, plus **183 P03 root regressions**. Layout now
+also compiles full RenderLowering. The declaration path selects actual Dynamic
+semantic backing under the Dynamic flag; Interaction selects actual Dynamic
+or Static table adapters. [Layout receipt](step-3-layout-receipt.json) and
+[physical key receipt](step-3-key-layout-receipt.json) are intermediate evidence;
+clean-revision four-profile exit receipts follow.
+
+The new hand-seeded canonical-bank oracle fixture isolates the borrowed adapter;
+it is not a substitute for actual declaration traversal (the first fixture
+continues to exercise that). Expectations are fixed from the retained
+LayoutStackTests/LayoutTextTests and SPEC-007 rules: early spacer remainder,
+minimum overflow, stack clipping/capping, horizontal and overlay behavior,
+empty stack, wrapping/newlines/empty text, padding/insets/fixed/flexible frames,
+and disabled passthrough. Exact depth13 and scopes98 pass, configured12/97 fail
+before sink publication. Malformed child lookup releases workspace and bank
+borrow. Invalid action domains and codes are rejected in established precedence;
+key-pool excess leaves a prior accepted revision and capture usable.
+
+The IR layout fixture measures every retained table-key copy: six slots times
+three candidate and two committed regions. On native arm64 the exact owned key
+stride is206, candidate key regions3708 bytes, committed2472, and complete Static
+state7108 (928 remaining control/non-key/padding bytes). Dynamic slot strides
+are also reported without assuming Array allocator overhead. Execution's external
+pointer capture is212 bytes and owns another206-byte key; it is outside the
+Interaction state total and must be counted by its actual coordinator owner.
+Transient argument/return copies, Dynamic allocator overhead and call-stack
+high-water remain explicit P07/P11 host audit obligations. No zero-allocation,
+whole-host resource-fit or production-workload claim is made by this fixture.
+
+Failed checks retained: [optional insets/unsupported alignment fixture spelling](step-3-modifier-fixture-failure.log),
+then [unsupported trailing spelling](step-3-alignment-fixture-failure.log).
+Existing supported center/bottom alignment replaced the uncontracted fixture
+case before execution; its explicit zero-child origin is(4,6). No implementation
+or contract changed. Governance passed authority graph191nodes/1939edges but
+reported the six new step1/2 P05 files unreferenced in SPEC-011 task-evidence.yaml;
+T12.1 now links shared artifacts without claiming completion. SPEC-007 has no
+separate task-evidence YAML; its T9.1 plan and conformance share this receipt.
+All narrowed corrections subsequently pass; unproductive repairs remain0/2.

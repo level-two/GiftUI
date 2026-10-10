@@ -1,0 +1,7 @@
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC007/RuntimeDerived/LayoutOracleProbe.swift:108:78: error: type 'HorizontalAlignment' has no member 'trailing'
+106 |         .padding(.init(edges: .all, length: 2)),
+107 |         .insets(.init(insets: .init(top: 1, leading: 2, bottom: 3, trailing: 4)!)),
+108 |         .fixedFrame(.init(width: 8, height: 6, alignment: .init(horizontal: .trailing, vertical: .bottom))),
+    |                                                                              `- error: type 'HorizontalAlignment' has no member 'trailing'
+109 |         .flexibleFrame(.init(minWidth: 8, maxWidth: nil, minHeight: 6, maxHeight: nil, alignment: .center)),
+110 |         .disabled(true)

@@ -79,8 +79,8 @@ tasks:
   T12.1:
     disposition: pending
     requirements: [IN-RD-001, IN-RD-002, IN-001, IN-002, IN-003, IN-004, IN-005, IN-006, IN-007, IN-008, IN-009, IN-010, IN-011, IN-012, IN-013]
-    implementation: []
-    checks: []
-    profiles: []
-    evidence: []
+    implementation: [Sources/GiftUIInteraction/InteractionOwnedKeyState.swift, Sources/GiftUIRuntimeCore/RuntimeRecordInteractionBridge.swift]
+    checks: [scripts/contracts/run-spec-011.sh, scripts/contracts/run-spec-007.sh]
+    profiles: [macos-dynamic, macos-static, raspberry-pi-armv6, nrf52840-embedded]
+    evidence: [Tests/ContractFixtures/SPEC011/Evidence/rfc-014-p05/progress.md, Tests/ContractFixtures/SPEC011/Evidence/rfc-014-p05/step-1-fixture-label-failure.log, Tests/ContractFixtures/SPEC011/Evidence/rfc-014-p05/step-1-layout-receipt.json, Tests/ContractFixtures/SPEC011/Evidence/rfc-014-p05/step-2-borrow-check-failure.log, Tests/ContractFixtures/SPEC011/Evidence/rfc-014-p05/step-2-fixture-typed-throws-failure.log, Tests/ContractFixtures/SPEC011/Evidence/rfc-014-p05/step-2-interaction-receipt.json, Tests/ContractFixtures/SPEC011/Evidence/rfc-014-p05/step-3-alignment-fixture-failure.log, Tests/ContractFixtures/SPEC011/Evidence/rfc-014-p05/step-3-key-layout-receipt.json, Tests/ContractFixtures/SPEC011/Evidence/rfc-014-p05/step-3-layout-receipt.json, Tests/ContractFixtures/SPEC011/Evidence/rfc-014-p05/step-3-modifier-fixture-failure.log]
     blockers: []

@@ -40,7 +40,8 @@ out.mkdir()
 flags[flags.index('-module-cache-path') + 1] = str(out / 'cache')
 flags += ['-I', str(out), '-I', str(base), '-enable-testing']
 commands = []
-inputs = [pathlib.Path(__file__).resolve(), ROOT / 'Package.swift']
+inputs = [pathlib.Path(__file__).resolve(), ROOT / 'Package.swift', ROOT / 'scripts/contracts/run-spec-007.sh', ROOT / 'scripts/contracts/driver-registry.tsv']
+inputs.extend(ROOT / 'Tests/GiftUILayoutTests' / name for name in ('LayoutStackTests.swift', 'LayoutTextTests.swift', 'LayoutGeometryTests.swift'))
 checks = []
 
 def run(label, args):
@@ -72,9 +73,11 @@ if profile != 'nrf52840-embedded':
     module('GiftUIRuntimeDynamic', [ROOT / 'Sources/GiftUIRuntimeDynamic/DynamicSemanticRecordStorage.swift'])
 module('GiftUITextResources', sorted((ROOT / 'Sources/GiftUITextResources').glob('*.swift')))
 module('GiftUILayout', sorted((ROOT / 'Sources/GiftUILayout').glob('*.swift')))
+module('GiftUIRenderCore', sorted((ROOT / 'Sources/GiftUIRenderCore').glob('*.swift')))
+module('GiftUIRenderLowering', sorted((ROOT / 'Sources/GiftUIRenderLowering').glob('*.swift')))
 
 fixture = ROOT / 'Tests/ContractFixtures/SPEC007/RuntimeDerived'
-module('BankLayoutProbe', [fixture / 'LayoutSupport.swift', fixture / 'LayoutProbe.swift'])
+module('BankLayoutProbe', [fixture / 'LayoutSupport.swift', fixture / 'LayoutProbe.swift', fixture / 'LayoutOracleProbe.swift'])
 for name in ('EscapeLayout', 'EscapeRender'):
     source = fixture / (name + '.swift')
     inputs.append(source)
@@ -87,7 +90,7 @@ for name in ('EscapeLayout', 'EscapeRender'):
     checks.append({'name': name, 'exit': negative.returncode, 'expected_failure': True})
 if profile.startswith('macos'):
     main = out / 'Main.swift'
-    main.write_text('import BankLayoutProbe\n@main struct Main { static func main() { let count = giftuiP05Layout(); print("P05 Layout assertions=\\(count) failures=0") } }\n')
+    main.write_text('import BankLayoutProbe\n@main struct Main { static func main() { let count = giftuiP05Layout() + giftuiP05LayoutOracle(); print("P05 Layout assertions=\\(count) failures=0") } }\n')
     run('link', [compiler, *flags, main, base / 'GiftUI.o', *sorted(out.glob('*.o')), '-o', out / 'layout'])
     execution = run('execute', [out / 'layout']).strip()
 else:
@@ -101,6 +104,7 @@ report = {'package': 'P05', 'step': 'borrowed-layout', 'profile': profile,
           'source_commit': subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=ROOT, text=True).strip(),
           'source_dirty': bool(subprocess.check_output(['git', 'status', '--porcelain'], cwd=ROOT, text=True)),
           'inputs': {str(p.relative_to(ROOT)): digest(p) for p in sorted(set(inputs))},
+          'owner_command': 'scripts/contracts/run-spec-007.sh --profile ' + profile + ' --compiler-baseline rfc-014 --giftui-build ' + str(base.relative_to(ROOT)),
           'core_receipt': str((base / 'result.json').relative_to(ROOT)), 'core_receipt_sha256': digest(base / 'result.json'),
           'compiler': core['compiler'], 'compiler_sha256': core['compiler_sha256'],
           'commands': commands, 'checks': checks, 'execution': execution,

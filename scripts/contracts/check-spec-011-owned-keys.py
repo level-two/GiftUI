@@ -40,7 +40,7 @@ out.mkdir()
 flags[flags.index('-module-cache-path') + 1] = str(out / 'cache')
 flags += ['-I', str(out), '-I', str(base), '-enable-testing']
 commands = []
-inputs = [pathlib.Path(__file__).resolve(), ROOT / 'Package.swift']
+inputs = [pathlib.Path(__file__).resolve(), ROOT / 'Package.swift', ROOT / 'scripts/contracts/run-spec-011.sh', ROOT / 'scripts/contracts/driver-registry.tsv']
 checks = []
 
 def run(label, args):
@@ -75,6 +75,20 @@ module('GiftUIRuntimeStatic', [ROOT / 'Sources/GiftUIRuntimeStatic' / name for n
 if profile != 'nrf52840-embedded':
     module('GiftUIRuntimeDynamic', [ROOT / 'Sources/GiftUIRuntimeDynamic/DynamicSemanticRecordStorage.swift', ROOT / 'Sources/GiftUIRuntimeDynamic/DynamicInteractionStorage.swift'])
 module('GiftUIRuntimeCore', [ROOT / 'Sources/GiftUIRuntimeCore/RuntimeRecordInteractionBridge.swift', ROOT / 'Sources/GiftUIRuntimeCore/RuntimeInteractionCandidateResolution.swift'])
+layout_source = ROOT / 'Tests/ContractFixtures/SPEC011/RuntimeDerived/KeyLayoutProbe.swift'
+inputs.append(layout_source)
+run('key-layout', [compiler, *flags, '-module-name', 'KeyLayoutProbe', '-emit-ir', layout_source, '-o', out / 'key-layout.ll'])
+ir = (out / 'key-layout.ll').read_text()
+layouts = {}
+for name, body in re.findall(r'define[^\n]*@p05_([a-z_]+)\([^\n]*\)[^{]*\{(.*?)^}', ir, re.S | re.M):
+    result = re.search(r'ret i32 (\d+)', body)
+    assert result, name
+    layouts[name] = int(result.group(1))
+assert len(layouts) == 14, layouts
+layouts['candidate_inline_key_regions'] = 6 * 3 * layouts['key_stride']
+layouts['committed_inline_key_regions'] = 6 * 2 * layouts['key_stride']
+layouts['static_remaining_bytes_including_control_and_padding'] = layouts['static_owned_state_stride'] - layouts['candidate_inline_key_regions'] - layouts['committed_inline_key_regions']
+(out / 'key-layout.json').write_text(json.dumps(layouts, indent=2, sort_keys=True) + '\n')
 module('OwnedKeyProbe', [ROOT / 'Tests/ContractFixtures/SPEC010/RuntimeDerived/RootProbe.swift', ROOT / 'Tests/ContractFixtures/SPEC011/RuntimeDerived/InteractionProbe.swift'])
 if profile.startswith('macos'):
     main = out / 'Main.swift'
@@ -92,9 +106,10 @@ report = {'package': 'P05', 'step': 'owned-keys', 'profile': profile,
           'source_commit': subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=ROOT, text=True).strip(),
           'source_dirty': bool(subprocess.check_output(['git', 'status', '--porcelain'], cwd=ROOT, text=True)),
           'inputs': {str(p.relative_to(ROOT)): digest(p) for p in sorted(set(inputs))},
+          'owner_command': 'scripts/contracts/run-spec-011.sh --profile ' + profile + ' --compiler-baseline rfc-014 --giftui-build ' + str(base.relative_to(ROOT)),
           'core_receipt': str((base / 'result.json').relative_to(ROOT)), 'core_receipt_sha256': digest(base / 'result.json'),
           'compiler': core['compiler'], 'compiler_sha256': core['compiler_sha256'],
-          'commands': commands, 'checks': checks, 'execution': execution,
+          'commands': commands, 'checks': checks, 'execution': execution, 'physical_key_layout': layouts,
           'artifacts': {p.name: {'sha256': digest(p), 'bytes': p.stat().st_size} for p in out.iterdir()
                         if p.is_file() and p.name != 'result.json'}}
 (out / 'result.json').write_text(json.dumps(report, indent=2, sort_keys=True) + '\n')

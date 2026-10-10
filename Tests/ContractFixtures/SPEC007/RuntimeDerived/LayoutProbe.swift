@@ -3,6 +3,9 @@ import GiftUILayout
 import GiftUISemanticCore
 import GiftUITextResources
 import GiftUIRuntimeStatic
+#if GIFTUI_DYNAMIC_PROFILE
+import GiftUIRuntimeDynamic
+#endif
 
 private typealias D = _GiftUIEmptyReadDomain
 private struct GeometryRoot: View {
@@ -129,10 +132,15 @@ private func exercise(_ store: borrowing SemanticRecordStore<SemanticStandardPay
     do throws(SemanticExpansionError) {
         var namespace = SemanticRecordOwnerNamespace()
         let limits = SemanticRecordLimits(records: 126, paths: 378, depth: 34, fanout: 5, payloads: 98, textScalars: 224, payloadBytes: UInt32(98 * MemoryLayout<SemanticStandardPayload?>.stride + 224 * 4))!
+        #if GIFTUI_DYNAMIC_PROFILE
+        let storage = DynamicSemanticRecordStorage<SemanticStandardPayload>(limits: limits, owner: try namespace.issue())
+        return try storage.withLifetime { (store) throws(SemanticExpansionError) in try exercise(store) }
+        #else
         var storage = StaticSemanticRecordStorage(limits: limits, owner: try namespace.issue())
         var backing = Backing()
         var records = backing.records.mutableSpan; var paths = backing.paths.mutableSpan
         var payloads = backing.payloads.mutableSpan; var scalars = backing.scalars.mutableSpan
         return try storage.withLifetime(records: &records, paths: &paths, payloads: &payloads, scalars: &scalars) { (store) throws(SemanticExpansionError) in try exercise(store) }
+        #endif
     } catch { preconditionFailure() }
 }

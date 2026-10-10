@@ -20,7 +20,7 @@ package struct StaticTextMetricsView: CanonicalTextMetricsView {
         guard index == 0 else { return nil }
         return FontInstanceDescriptor(
             id: FontInstanceID(resource: resource, instanceIndex: 0),
-            lineMetrics: FontLineMetrics(ascent: 1, descent: 0, lineGap: 0),
+            lineMetrics: FontLineMetrics(ascent: 7, descent: 3, lineGap: 2),
             replacementGlyph: GlyphID(rawValue: 0),
             glyphCount: 1,
             mappingCount: 0
@@ -35,7 +35,10 @@ package struct StaticTextMetricsView: CanonicalTextMetricsView {
     package func metrics(
         for glyph: GlyphID,
         in instance: FontInstanceID
-    ) -> GlyphMetrics? { nil }
+    ) -> GlyphMetrics? {
+        guard glyph.rawValue == 0 else { return nil }
+        return GlyphMetrics(advanceX: 4, offsetX: 0, offsetY: -7, inkSize: Size(width: 4, height: 10)!)
+    }
 
     private var resource: FontResourceID {
         FontResourceID(
