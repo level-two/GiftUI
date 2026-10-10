@@ -2,11 +2,11 @@
 id: SPEC-011
 feature: giftui-mvp-architecture
 title: Button Interaction and Activation Contract
-status: approved
+status: implementing
 authors:
   - codex
 created: 2026-08-26
-updated: 2026-10-10
+updated: 2026-10-11
 proposal:
   - PROPOSAL-003
   - PROPOSAL-007

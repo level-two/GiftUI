@@ -17,7 +17,7 @@ extension RenderProducer {
         sink: inout Sink
     ) -> RenderProductionResult
     where
-        Semantic: SemanticRenderView,
+        Semantic: SemanticRenderView & ~Escapable,
         Layout: ResolvedRenderLayoutView,
         Metrics: CanonicalTextMetricsView,
         Workspace: RenderProductionWorkspace,
@@ -80,7 +80,7 @@ extension RenderProducer {
         sink: inout Sink
     ) -> RenderProductionResult
     where
-        Semantic: SemanticRenderView,
+        Semantic: SemanticRenderView & ~Escapable,
         Layout: ResolvedRenderLayoutView,
         Metrics: CanonicalTextMetricsView,
         Workspace: RenderProductionWorkspace,

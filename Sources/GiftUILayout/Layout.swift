@@ -11,7 +11,7 @@ package func layout<Semantic, Metrics, Workspace, Sink>(
     sink: inout Sink
 ) -> LayoutResult
 where
-    Semantic: SemanticLayoutView,
+    Semantic: SemanticLayoutView & ~Escapable,
     Metrics: CanonicalTextMetricsView,
     Workspace: LayoutWorkspace,
     Sink: LayoutResultSink & LayoutResultSinkState,

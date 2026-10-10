@@ -29,7 +29,7 @@ package struct LayoutEngine {
         workspace: inout Workspace
     ) -> LayoutMeasurement?
     where
-        Semantic: SemanticLayoutView,
+        Semantic: SemanticLayoutView & ~Escapable,
         Metrics: CanonicalTextMetricsView,
         Workspace: LayoutWorkspace,
         Semantic.Identity == Workspace.Identity
@@ -51,7 +51,7 @@ package struct LayoutEngine {
         workspace: inout Workspace
     ) -> Bool
     where
-        Semantic: SemanticLayoutView,
+        Semantic: SemanticLayoutView & ~Escapable,
         Metrics: CanonicalTextMetricsView,
         Workspace: LayoutWorkspace,
         Semantic.Identity == Workspace.Identity
@@ -74,7 +74,7 @@ package struct LayoutEngine {
         workspace: inout Workspace
     ) -> LayoutMeasurement?
     where
-        Semantic: SemanticLayoutView,
+        Semantic: SemanticLayoutView & ~Escapable,
         Metrics: CanonicalTextMetricsView,
         Workspace: LayoutWorkspace,
         Semantic.Identity == Workspace.Identity
@@ -110,7 +110,7 @@ package struct LayoutEngine {
         workspace: inout Workspace
     ) -> LayoutMeasurement?
     where
-        Semantic: SemanticLayoutView,
+        Semantic: SemanticLayoutView & ~Escapable,
         Metrics: CanonicalTextMetricsView,
         Workspace: LayoutWorkspace,
         Semantic.Identity == Workspace.Identity
@@ -193,7 +193,7 @@ package struct LayoutEngine {
         workspace: inout Workspace
     ) -> LayoutMeasurement?
     where
-        Semantic: SemanticLayoutView,
+        Semantic: SemanticLayoutView & ~Escapable,
         Metrics: CanonicalTextMetricsView,
         Workspace: LayoutWorkspace,
         Semantic.Identity == Workspace.Identity
@@ -439,7 +439,7 @@ package struct LayoutEngine {
         workspace: inout Workspace
     ) -> LayoutMeasurement?
     where
-        Semantic: SemanticLayoutView,
+        Semantic: SemanticLayoutView & ~Escapable,
         Metrics: CanonicalTextMetricsView,
         Workspace: LayoutWorkspace,
         Semantic.Identity == Workspace.Identity
@@ -523,7 +523,7 @@ package struct LayoutEngine {
         workspace: inout Workspace
     ) -> LayoutMeasurement?
     where
-        Semantic: SemanticLayoutView,
+        Semantic: SemanticLayoutView & ~Escapable,
         Metrics: CanonicalTextMetricsView,
         Workspace: LayoutWorkspace,
         Semantic.Identity == Workspace.Identity
@@ -562,7 +562,7 @@ package struct LayoutEngine {
         workspace: inout Workspace
     ) -> LayoutMeasurement?
     where
-        Semantic: SemanticLayoutView,
+        Semantic: SemanticLayoutView & ~Escapable,
         Metrics: CanonicalTextMetricsView,
         Workspace: LayoutWorkspace,
         Semantic.Identity == Workspace.Identity
@@ -599,7 +599,7 @@ package struct LayoutEngine {
         workspace: inout Workspace
     ) -> LayoutMeasurement?
     where
-        Semantic: SemanticLayoutView,
+        Semantic: SemanticLayoutView & ~Escapable,
         Metrics: CanonicalTextMetricsView,
         Workspace: LayoutWorkspace,
         Semantic.Identity == Workspace.Identity
@@ -689,7 +689,7 @@ package struct LayoutEngine {
         each: (LayoutMeasurement) -> Bool
     ) -> Bool
     where
-        Semantic: SemanticLayoutView,
+        Semantic: SemanticLayoutView & ~Escapable,
         Metrics: CanonicalTextMetricsView,
         Workspace: LayoutWorkspace,
         Semantic.Identity == Workspace.Identity
@@ -730,7 +730,7 @@ package struct LayoutEngine {
         each: (LayoutMeasurement) -> Bool
     ) -> Bool
     where
-        Semantic: SemanticLayoutView,
+        Semantic: SemanticLayoutView & ~Escapable,
         Metrics: CanonicalTextMetricsView,
         Workspace: LayoutWorkspace,
         Semantic.Identity == Workspace.Identity
@@ -812,7 +812,7 @@ package struct LayoutEngine {
         workspace: inout Workspace
     ) -> Bool
     where
-        Semantic: SemanticLayoutView,
+        Semantic: SemanticLayoutView & ~Escapable,
         Workspace: LayoutWorkspace,
         Semantic.Identity == Workspace.Identity
     {
@@ -875,7 +875,7 @@ package struct LayoutEngine {
         workspace: inout Workspace
     ) -> Bool
     where
-        Semantic: SemanticLayoutView,
+        Semantic: SemanticLayoutView & ~Escapable,
         Workspace: LayoutWorkspace,
         Semantic.Identity == Workspace.Identity
     {
@@ -911,7 +911,7 @@ package struct LayoutEngine {
         workspace: inout Workspace
     ) -> Bool
     where
-        Semantic: SemanticLayoutView,
+        Semantic: SemanticLayoutView & ~Escapable,
         Workspace: LayoutWorkspace,
         Semantic.Identity == Workspace.Identity
     {
@@ -1012,7 +1012,7 @@ package struct LayoutEngine {
         workspace: inout Workspace
     ) -> Bool
     where
-        Semantic: SemanticLayoutView,
+        Semantic: SemanticLayoutView & ~Escapable,
         Workspace: LayoutWorkspace,
         Semantic.Identity == Workspace.Identity
     {
@@ -1198,7 +1198,7 @@ package struct LayoutEngine {
         workspace: inout Workspace
     ) -> Bool
     where
-        Semantic: SemanticLayoutView,
+        Semantic: SemanticLayoutView & ~Escapable,
         Workspace: LayoutWorkspace,
         Semantic.Identity == Workspace.Identity
     {
@@ -1231,7 +1231,7 @@ package struct LayoutEngine {
         workspace: inout Workspace
     ) -> Bool
     where
-        Semantic: SemanticLayoutView,
+        Semantic: SemanticLayoutView & ~Escapable,
         Workspace: LayoutWorkspace,
         Semantic.Identity == Workspace.Identity
     {
@@ -1314,7 +1314,7 @@ package struct LayoutEngine {
         workspace: borrowing Workspace
     ) -> LayoutMeasurement?
     where
-        Semantic: SemanticLayoutView,
+        Semantic: SemanticLayoutView & ~Escapable,
         Workspace: LayoutWorkspace,
         Semantic.Identity == Workspace.Identity
     {
@@ -1340,7 +1340,7 @@ package struct LayoutEngine {
         workspace: borrowing Workspace
     ) -> LayoutMeasurement?
     where
-        Semantic: SemanticLayoutView,
+        Semantic: SemanticLayoutView & ~Escapable,
         Workspace: LayoutWorkspace,
         Semantic.Identity == Workspace.Identity
     {
@@ -1369,7 +1369,7 @@ package struct LayoutEngine {
         workspace: borrowing Workspace
     ) -> LayoutMeasurement?
     where
-        Semantic: SemanticLayoutView,
+        Semantic: SemanticLayoutView & ~Escapable,
         Workspace: LayoutWorkspace,
         Semantic.Identity == Workspace.Identity
     {
@@ -1528,7 +1528,7 @@ package struct LayoutEngine {
         workspace: inout Workspace
     ) -> Bool
     where
-        Semantic: SemanticLayoutView,
+        Semantic: SemanticLayoutView & ~Escapable,
         Workspace: LayoutWorkspace,
         Semantic.Identity == Workspace.Identity
     {
@@ -1559,7 +1559,7 @@ package struct LayoutEngine {
         workspace: inout Workspace
     ) -> Bool
     where
-        Semantic: SemanticLayoutView,
+        Semantic: SemanticLayoutView & ~Escapable,
         Workspace: LayoutWorkspace,
         Semantic.Identity == Workspace.Identity
     {
@@ -1595,7 +1595,7 @@ package struct LayoutEngine {
         workspace: inout Workspace
     ) -> UInt16?
     where
-        Semantic: SemanticLayoutView,
+        Semantic: SemanticLayoutView & ~Escapable,
         Workspace: LayoutWorkspace,
         Semantic.Identity == Workspace.Identity
     {
@@ -1655,7 +1655,7 @@ package struct LayoutEngine {
         workspace: inout Workspace,
     ) -> Bool
     where
-        Semantic: SemanticLayoutView,
+        Semantic: SemanticLayoutView & ~Escapable,
         Workspace: LayoutWorkspace,
         Semantic.Identity == Workspace.Identity
     {
@@ -1749,7 +1749,7 @@ package struct LayoutEngine {
         return true
     }
 
-    private mutating func flattenedChildCount<Semantic: SemanticLayoutView>(
+    private mutating func flattenedChildCount<Semantic: SemanticLayoutView & ~Escapable>(
         of identity: Semantic.Identity,
         semantic: borrowing Semantic
     ) -> UInt16? {

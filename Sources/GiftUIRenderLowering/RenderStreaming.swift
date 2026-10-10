@@ -17,7 +17,7 @@ extension RenderProducer {
         sink: inout Sink
     ) -> RenderProductionResult
     where
-        Semantic: SemanticRenderView,
+        Semantic: SemanticRenderView & ~Escapable,
         Layout: ResolvedRenderLayoutView,
         Metrics: CanonicalTextMetricsView,
         Workspace: RenderProductionWorkspace,
@@ -57,7 +57,7 @@ extension RenderProducer {
         sink: inout Sink
     ) -> RenderProductionResult
     where
-        Semantic: SemanticRenderView,
+        Semantic: SemanticRenderView & ~Escapable,
         Layout: ResolvedRenderLayoutView,
         Metrics: CanonicalTextMetricsView,
         Workspace: RenderProductionWorkspace,
@@ -162,7 +162,7 @@ extension RenderProducer {
         layout: borrowing Layout
     ) -> Bool
     where
-        Semantic: SemanticRenderView,
+        Semantic: SemanticRenderView & ~Escapable,
         Layout: ResolvedRenderLayoutView,
         Semantic.Identity == Layout.Identity
     {
@@ -192,7 +192,7 @@ private struct RenderStreamingState {
         sink: inout Sink
     ) -> RenderProductionError?
     where
-        Semantic: SemanticRenderView,
+        Semantic: SemanticRenderView & ~Escapable,
         Layout: ResolvedRenderLayoutView,
         Metrics: CanonicalTextMetricsView,
         Workspace: RenderProductionWorkspace,

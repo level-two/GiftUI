@@ -201,6 +201,10 @@ package struct SemanticRecordView<Payload>: ~Escapable {
                 || bank.metadata.pointee.phase == .published
                 || bank.metadata.pointee.phase == .retired)
     }
+    package var isCandidate: Bool { valid && bank.metadata.pointee.phase == .candidate }
+    package var rootReference: SemanticRecordReference {
+        SemanticRecordReference(owner: owner, bank: bankNumber, revision: revision, ordinal: 0)
+    }
     package var recordCount: UInt16 { valid ? bank.metadata.pointee.records : 0 }
     package var pathCount: UInt16 { valid ? bank.metadata.pointee.paths : 0 }
     package var payloadCount: UInt16 { valid ? bank.metadata.pointee.payloads : 0 }

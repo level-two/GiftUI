@@ -51,3 +51,44 @@
   the same blocker without a new passing check or narrowed cause; preserve the
   count across all handoffs. No scope/contract change has been identified.
 - Result: implementation dispatched; P05 exit pending.
+
+## Step 1 — borrowed Layout/Render projection
+
+SPEC-007/011 are now implementing and owner plans active; both owner reports
+link this single receipt and retain P10–P12 obligations. This work is required
+by ITERATION-003 I3-04/05 runtime-derived analyzer/counter delivery; the closed
+MVP's stack/layout/interaction behavior remains the regression oracle.
+
+Semantic Core lends nonescapable Layout and Render projections of the exact P04
+bank/owner/revision. Layout generics propagate the lifetime suppression; query
+signatures, engine algorithms, geometry and limits are unchanged. Each modifier
+record is one scoped wrapper; transparent declarations add no layout scope.
+Render skips structural records using existing links and retains no second graph.
+The original declaration-result staging extensions are separated into existing
+owner files; they remain historical migration inputs, excluded from the selected
+component compile rather than supplied with compatibility shims. Full module
+adoption stays in its later owner packages.
+
+Command after completed `scripts/format-swift.sh`:
+` scripts/contracts/run-spec-007.sh --profile macos-static --compiler-baseline rfc-014 --giftui-build .build/contracts/spec-006-rfc-014/a1acc9ca8fb45d5e-830jmqh3/macos-static `
+passes 152 runtime assertions and two expected compiler escape rejections.
+[Exact receipt](step-1-layout-receipt.json) records compiler, source/input hashes,
+commands and artifacts; raw output lives at its corresponding `.build` path.
+Full GiftUILayout compiles with selected SemanticCore/P03 profile components.
+This is not a full application, all-baseline-fixture, cross-target, resource-fit
+or full RenderLowering execution result. Broader P05 geometry/oracle and failure
+coverage and four-route receipts remain pending, before separate exit review.
+
+Independent expected values come from SPEC007's fixed100-under-parent50 and
+padding2 rules, not production output. Actual declarations expand to three
+layout scopes; first-excess scope/depth checks, invalid declaration, sink begin,
+stage and publish refusal preserve publication. The fixture repeatedly reuses
+banks, rejects stale references, and verifies Render/Layout identity joins.
+
+Failed checks retained: [fixture witness label](step-1-fixture-label-failure.log)
+used `identity:` rather than the exact `structuralIdentity:` requirement; its
+correction passed compilation. The next check correctly rejected Array escape
+but its matcher omitted the word `protocol` in the actual diagnostic; fixing
+that diagnostic spelling produced the required two negative passes. No production
+repair, oracle change or contract decision occurred. Consecutive unproductive
+repairs remain **0 of 2**. P05 exit is pending.

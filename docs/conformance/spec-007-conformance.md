@@ -2,11 +2,11 @@
 spec: SPEC-007
 feature: giftui-mvp-architecture
 title: SPEC-007 Conformance Report
-status: complete
+status: collecting
 reviewers:
   - codex
 created: 2026-09-11
-updated: 2026-10-09
+updated: 2026-10-11
 implementation_plan: ../implementation-plans/spec-007-implementation-plan.md
 related_future_work:
   - FW-001
@@ -22,6 +22,10 @@ superseded_by: null
 
 > This complete report records evidence. The maintainer separately authorized
 > the governing Specification's `implemented` transition on 2026-09-11.
+
+## RFC-014 P05 collection
+
+Current amendment evidence is collecting in the [shared P05 receipt](../../Tests/ContractFixtures/SPEC011/Evidence/rfc-014-p05/progress.md). Earlier completed tables below are historical baseline results, not amendment conformance. Owner checkpoints remain open through P10–P12.
 
 ## Review Scope
 

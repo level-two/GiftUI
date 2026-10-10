@@ -1,0 +1,15 @@
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC007/RuntimeDerived/LayoutProbe.swift:44:20: error: instance method 'evaluateStateful(_:identity:beforeBody:body:)' has different argument labels from those required by protocol 'SemanticStatefulBinding' ('evaluateStateful(_:structuralIdentity:beforeBody:body:)')
+ 42 |         catch { return .accessFailure(error) }
+ 43 |     }
+ 44 |     borrowing func evaluateStateful<V: View & _GiftUIObservableStateHost>(_ declaration: borrowing V, identity: borrowing Identity, beforeBody: () -> SemanticExpansionError?, body: (borrowing V, borrowing _GiftUIFrameRead<D>) throws(_GiftUIAccessFailure) -> V.Body) -> SemanticBodyEvaluation<V.Body, UInt8> where V.Domain == D, V.Body.Domain == D { .bindingFailure(1) }
+    |                    `- error: instance method 'evaluateStateful(_:identity:beforeBody:body:)' has different argument labels from those required by protocol 'SemanticStatefulBinding' ('evaluateStateful(_:structuralIdentity:beforeBody:body:)')
+ 45 | }
+ 46 | private struct Backing: ~Copyable {
+
+/Users/eugene/work/GiftUI/Sources/GiftUISemanticCore/GiftUISemanticCore.swift:84:20: note: requirement 'evaluateStateful(_:structuralIdentity:beforeBody:body:)' declared here
+  82 |     where Declaration.Domain == Domain, Declaration.Body.Domain == Domain
+  83 | 
+  84 |     borrowing func evaluateStateful<Declaration: View & _GiftUIObservableStateHost>(
+     |                    `- note: requirement 'evaluateStateful(_:structuralIdentity:beforeBody:body:)' declared here
+  85 |         _ declaration: borrowing Declaration,
+  86 |         structuralIdentity: Identity,

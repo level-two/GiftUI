@@ -19,7 +19,7 @@ package struct LayoutSemanticValidation {
         workspace: inout Workspace
     ) -> LayoutError?
     where
-        Semantic: SemanticLayoutView,
+        Semantic: SemanticLayoutView & ~Escapable,
         Metrics: CanonicalTextMetricsView,
         Workspace: LayoutWorkspace,
         Semantic.Identity == Workspace.Identity
@@ -57,7 +57,7 @@ package struct LayoutSemanticValidation {
         flattenedCount: inout UInt16
     ) -> LayoutError?
     where
-        Semantic: SemanticLayoutView,
+        Semantic: SemanticLayoutView & ~Escapable,
         Metrics: CanonicalTextMetricsView,
         Workspace: LayoutWorkspace,
         Semantic.Identity == Workspace.Identity
@@ -169,7 +169,7 @@ package struct LayoutSemanticValidation {
         workspace: inout Workspace
     ) -> LayoutError?
     where
-        Semantic: SemanticLayoutView,
+        Semantic: SemanticLayoutView & ~Escapable,
         Metrics: CanonicalTextMetricsView,
         Workspace: LayoutWorkspace,
         Semantic.Identity == Workspace.Identity
@@ -229,7 +229,7 @@ package struct LayoutSemanticValidation {
         metrics: borrowing Metrics,
         instance: inout FontInstanceDescriptor?
     ) -> LayoutError?
-    where Semantic: SemanticLayoutView, Metrics: CanonicalTextMetricsView {
+    where Semantic: SemanticLayoutView & ~Escapable, Metrics: CanonicalTextMetricsView {
         guard let scalarCount = semantic.textScalarCount(of: identity) else {
             return .invariantViolation
         }

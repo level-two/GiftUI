@@ -24,6 +24,8 @@ fail() {
 }
 
 profile=""
+compiler_baseline=""
+giftui_build=""
 while [[ $# -gt 0 ]]; do
     case "$1" in
         --profile)
@@ -31,6 +33,12 @@ while [[ $# -gt 0 ]]; do
             profile="$2"
             shift 2
             ;;
+        --compiler-baseline)
+            [[ "${2:-}" == rfc-014 ]] || fail '--compiler-baseline requires rfc-014'
+            compiler_baseline="$2"; shift 2 ;;
+        --giftui-build)
+            [[ -n "${2:-}" ]] || fail '--giftui-build requires a directory'
+            giftui_build="$2"; shift 2 ;;
         -h | --help) usage; exit 0 ;;
         *) fail "unknown option: $1" ;;
     esac
@@ -40,6 +48,12 @@ case "$profile" in
     "") fail '--profile is required' ;;
     *) fail "unknown profile: $profile" ;;
 esac
+
+if [[ "$compiler_baseline" == rfc-014 ]]; then
+    [[ -n "$giftui_build" ]] || fail 'RFC-014 requires --giftui-build with a verified P02 receipt'
+    exec python3 "$SCRIPT_DIR/check-spec-007-bank-layout.py" --profile "$profile" --giftui-build "$giftui_build"
+fi
+[[ -z "$giftui_build" ]] || fail '--giftui-build requires --compiler-baseline rfc-014'
 
 declared_inputs() {
     {

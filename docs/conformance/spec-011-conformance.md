@@ -2,7 +2,7 @@
 spec: SPEC-011
 feature: giftui-mvp-architecture
 title: SPEC-011 Conformance Report
-status: complete
+status: collecting
 reviewers: [codex]
 created: 2026-09-19
 updated: 2026-10-05
@@ -35,6 +35,10 @@ Earlier open-gate statements below describe the pre-approval history.
 > approved nRF target is now the 240 x 320 `KMRTM24024-SPI` direct-SPI module.
 > Its [hardware-free application and input follow-up](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-8/nrf52840-240x320-hardware-free.md)
 > passes; connected touch and display routing remain open for `T9.4`.
+
+## RFC-014 P05 collection
+
+Current amendment evidence is collecting in the [shared P05 receipt](../../Tests/ContractFixtures/SPEC011/Evidence/rfc-014-p05/progress.md). Earlier completed tables below are historical baseline results, not amendment conformance. Owner checkpoints remain open through P10–P12.
 
 ## Review Scope
 

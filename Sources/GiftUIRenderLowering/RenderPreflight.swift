@@ -30,7 +30,7 @@ extension RenderProducer {
         sink: inout Sink
     ) -> RenderPreflightResult
     where
-        Semantic: SemanticRenderView,
+        Semantic: SemanticRenderView & ~Escapable,
         Layout: ResolvedRenderLayoutView,
         Metrics: CanonicalTextMetricsView,
         Workspace: RenderProductionWorkspace,
@@ -77,7 +77,7 @@ extension RenderProducer {
         extensionVisitor: inout Extension
     ) -> RenderProductionResult
     where
-        Semantic: SemanticRenderView,
+        Semantic: SemanticRenderView & ~Escapable,
         Layout: ResolvedRenderLayoutView,
         Metrics: CanonicalTextMetricsView,
         Workspace: RenderProductionWorkspace,
@@ -136,7 +136,7 @@ extension RenderProducer {
         extensionVisitor: inout Extension
     ) -> RenderPreflightResult
     where
-        Semantic: SemanticRenderView,
+        Semantic: SemanticRenderView & ~Escapable,
         Layout: ResolvedRenderLayoutView,
         Metrics: CanonicalTextMetricsView,
         Workspace: RenderProductionWorkspace,
@@ -258,7 +258,7 @@ private struct RenderPreflightState {
         extensionVisitor: inout Extension
     ) -> RenderProductionError?
     where
-        Semantic: SemanticRenderView,
+        Semantic: SemanticRenderView & ~Escapable,
         Layout: ResolvedRenderLayoutView,
         Metrics: CanonicalTextMetricsView,
         Workspace: RenderProductionWorkspace,
