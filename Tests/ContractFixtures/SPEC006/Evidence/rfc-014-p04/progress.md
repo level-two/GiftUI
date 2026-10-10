@@ -1,5 +1,34 @@
 # RFC-014 P04 progress
 
+## Independent exit-review dispatch — 2026-10-11
+
+- Slice: separate Strong review of P04, DV-RD-002–004 and applicable retained
+  baseline criteria; P02/P03 dependencies passed. Input `593e2cf9`, clean tree;
+  implementation range `3a6927c4..593e2cf9`, compiled source `7be2c837`.
+- Allowed output: independent findings and P04 exit disposition in this evidence
+  directory. Do not implement repairs, change contracts or start successors.
+- Context: SPEC-006 runtime records/exact identity and baseline traversal,
+  ADR-035/036, the current owner checkpoint/matrix, scoped visitor amendment,
+  `spec-006-runtime-record-banks.md`, this receipt and final profile snapshots.
+- Review exact identity algebra, paired matching and fanout bound, typed backing
+  and borrow lifetimes, complete candidate failure/reader-aware reuse, finite
+  payload copying, State binding/read order and independent oracle provenance.
+  Verify that pool/physical-bound evidence satisfies the finite P04 exit while
+  honestly preserving P05–P12 obligations.
+- Fixed expected outcomes are the approved contract, existing independent
+  baseline controls and the recorded package exit; passing fixtures alone do
+  not establish them. No remaining contract decision is delegated to the reviewer.
+- C3/R3 → Strong `gpt-6-astra` / `high`, separate from implementation. Read-only
+  inspection and narrowly justified reproductions; reuse valid passed receipts.
+  Inspect receipt command arrays for exact reproduction arguments. Do not rerun
+  all four routes merely because review uses another agent.
+- Commands: `git diff 3a6927c4..593e2cf9`, source/receipt hash verification,
+  focused reproductions only for an identified concern, and `git diff --check`.
+  Record any added command and its result. Do not claim connected evidence.
+- Repair allowance remains **0 of 2** consecutive unproductive attempts;
+  switching to review does not reset it. Return blockers to implementation or
+  contract/scope questions to the maintainer via the parent. Package exit pending.
+
 ## Entry and dispatch — 2026-10-11
 
 - Input: `40c619dc`; working tree clean. P02 passed at `53de09c6`; P03
