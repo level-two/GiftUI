@@ -97,6 +97,23 @@ frame read releases pins and reclaims only otherwise-unowned models.
 
 ## Guarded replacement and callback integration
 
+Compiled State now stores either an initial schema seed/candidate descriptor or
+a bound location slot, declaration ordinal, registration generation and typed
+model key. It has no resolver/replacement closures. The initial descriptor is
+discarded when binding; a bound value cannot retain another seed. An unbound
+generated read throws invalidPhase before resolving model storage. Copying a
+bound State copies only the nonowning descriptor.
+
+The existing macro tool lowers inventoried authored model constructors into
+owned seed structs and State reads into checked key/facade reads. The host
+macro recognizes the resulting generic State attribute. Explicit authored
+`State(wrappedValue: model)` initialization becomes a candidate key descriptor;
+the host must still present, validate and explicitly transfer its corresponding
+owning ticket during new-location binding. The descriptor alone neither owns
+the candidate nor authorizes attachment. This callback join remains unfinished.
+Effectful/malformed seed construction, computed State and unsupported local
+shadowing fail before generated output is emitted.
+
 Reservation validates mutation phase, current identity/association, generations,
 the transferred final claim, metadata/claim/backing capacity and registration/
 staging capacity before touching candidate data. Installed-empty A still owns

@@ -113,8 +113,10 @@ public struct ObservableStateHostMacro: MemberMacro, ExtensionMacro {
             return false
         }
 
-        let name = attribute.attributeName.trimmedDescription
-        return name == "State" || name.hasSuffix(".State")
+        if let name = attribute.attributeName.as(IdentifierTypeSyntax.self)?.name.text {
+            return name == "State"
+        }
+        return attribute.attributeName.as(MemberTypeSyntax.self)?.name.text == "State"
     }
 
     static func exceedsDeclarationLimit(_ count: Int) -> Bool {

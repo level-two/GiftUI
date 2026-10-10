@@ -79,3 +79,69 @@ still require migration to these stores. Real attach/detach/report callbacks,
 checked mutation, candidate publication, full guarded capture replacement and
 teardown remain P03 work; neither full profile modules nor the P03 exit pass
 is claimed from the selected-file component build.
+
+## Step 3 — typed State representation and authored lowering
+
+Assignment: P03 / OS-RD-002 and its DV-RD-001/002 declaration dependency;
+P02 is passed and the step-2 store is the fixed backing input. Allowed owners:
+GiftUI State, GiftUIMacros, existing declaration visitors/reconciler signatures,
+the focused SPEC-010 fixtures/driver and this design/evidence documentation.
+C3/R3: source transformation and State ownership representation affect the
+checked-access boundary. Implementation and a separate invariant review used
+the current inherited Codex model; its exact model ID and reasoning setting
+are not exposed in this session, so no model-tier verification or cost claim
+is made. No agents were spawned. The two-unproductive-repair stop rule remains
+in force; no such consecutive blocker occurred in this slice.
+
+State's resolver/replacement closures and raw-model projection are removed.
+Its exclusive cases are initial schema seed/candidate descriptor or bound
+location/ordinal/registration generation/key. An initial checked read throws
+invalidPhase. Binding returns/discards the initial value and does not overwrite
+an already bound value. A candidate descriptor is nonowning: production binding
+must still validate and transfer the host's matching ticket. This increment does
+not claim that transfer has been wired.
+
+The existing macro target generates finite owned seed types, lowers seeded and
+explicit-candidate State declarations, and routes bare/self-qualified model reads
+through the checked key/facade accessor. Generic State attributes participate in
+the existing lexical discovery macro. No new target or migration conditional.
+Independent review found that local shadowing could otherwise be rewritten as
+State access; the finite lowerer now rejects it, and rejects computed State before
+rewriting can hide the invalid declaration. These controls accompany effectful
+and malformed-seed rejection, with no partial generated outputs.
+
+The component suite adds 15 checks for initial read rejection, seed discard,
+bound metadata, stable rebinding, candidate descriptors, fresh ignored seeds,
+generic macro discovery, actual scoped backing reads and all three authored
+declaration forms (seeded, candidate and nested). Its binder is explicitly a
+test fixture, not the production root reconciler. Raw-reference State and
+assignment through wrappedValue are compiler rejection controls. Existing
+identity/ledger/backing checks remain: 303 assertions per native profile.
+
+Validation uses the same commands as step 2 after refreshing core/lowering with
+`scripts/contracts/run-spec-006.sh --profile <profile> --compiler-baseline rfc-014`.
+The component driver now creates unique receipts with source, core-receipt and
+artifact hashes, command logs and explicit evidence boundaries. The final
+four-profile receipt locations are recorded below.
+
+| Profile | Refreshed core receipt directory | Component receipt directory |
+| --- | --- | --- |
+| macOS Static | `.build/contracts/spec-006-rfc-014/fa8126ad57f71d7f-uvu301dh/macos-static` | `.build/rfc014-p03/state/tmpj1b7ntly/macos-static` |
+| macOS Dynamic | `.build/contracts/spec-006-rfc-014/fa8126ad57f71d7f-o_uuzhdj/macos-dynamic` | `.build/rfc014-p03/state/tmpyijh7opx/macos-dynamic` |
+| ARMv6 Dynamic | `.build/raspberry-pi/contracts/spec-006-rfc-014/fa8126ad57f71d7f-lh1h85ij/raspberry-pi-armv6` | `.build/raspberry-pi/rfc014-p03/state/tmp5xhnd5jg/raspberry-pi-armv6` |
+| nRF Embedded Static | `.build/nrf52840/contracts/spec-006-rfc-014/fa8126ad57f71d7f-86ab0vco/nrf52840-embedded` | `.build/nrf52840/rfc014-p03/state/tmp72cl55q4/nrf52840-embedded` |
+
+Each directory contains `result.json` and command logs. Both native profiles
+pass 120 P02 declaration assertions and 303 P03 component assertions. All four
+pass six macro goldens, the existing P02 controls and eight P03 negative controls.
+Both cross profiles compile the concrete backing and State probe, with checked
+ARM CPU/VFP attributes for each object; execution is native-only. Formatting,
+governance and whitespace validation pass. The package dependency check passes
+84 targets and 375 direct edges, acyclic. The driver verifies both core and
+macro source hashes before reusing the refreshed receipt.
+
+Production root/reconciler callbacks, candidate ticket transfer, checked mutation,
+guarded capture replacement and teardown remain P03 work. The three mechanical
+visitor/reconciler signature changes are not evidence of a complete profile-module
+build. P03 remains in progress; P04 has not started. Full conformance, resource
+and adoption gates remain P10–P12. No hardware execution, deployment or flashing.

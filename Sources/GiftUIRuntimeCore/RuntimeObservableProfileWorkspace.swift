@@ -78,7 +78,7 @@ where Storage: RuntimeObservableProfileSlotStorage {
         return .success(.candidateStarted)
     }
 
-    package mutating func encounter<Model: _GiftUIObservableReference>(
+    package mutating func encounter<Model: _GiftUIModelSchema>(
         structuralIdentity: Storage.Identity,
         declarationOrdinal: UInt16,
         state: inout State<Model>

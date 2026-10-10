@@ -6,7 +6,7 @@ package protocol ObservableStateReconciler {
 
     mutating func beginCandidate() -> ObservableStateResult
 
-    mutating func encounter<Model: _GiftUIObservableReference>(
+    mutating func encounter<Model: _GiftUIModelSchema>(
         structuralIdentity: StructuralIdentity,
         declarationOrdinal: UInt16,
         state: inout State<Model>

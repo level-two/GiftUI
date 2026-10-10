@@ -9,47 +9,80 @@ public macro ObservableStateHost() =
         type: "ObservableStateHostMacro"
     )
 
-@propertyWrapper
-public struct State<Value: _GiftUIObservableReference> {
-    private enum Storage {
-        case initial(Value)
-        case bound(read: () -> Value, replace: (Value) -> Void)
-    }
+/// Generated application schemas provide only an inert, owned initializer seed.
+public protocol _GiftUIModelSchema {
+    associatedtype Seed
+}
 
+package struct _GiftUIBoundState<Schema> {
+    package let locationSlot: UInt16
+    package let declarationOrdinal: UInt16
+    package let registrationGeneration: UInt32
+    package let key: _GiftUIModelKey<Schema>
+
+    package init(
+        locationSlot: UInt16, declarationOrdinal: UInt16,
+        registrationGeneration: UInt32, key: _GiftUIModelKey<Schema>
+    ) {
+        self.locationSlot = locationSlot
+        self.declarationOrdinal = declarationOrdinal
+        self.registrationGeneration = registrationGeneration
+        self.key = key
+    }
+}
+
+package enum _GiftUIStateInitial<Schema: _GiftUIModelSchema> {
+    case seed(Schema.Seed)
+    // The host holds the candidate's owning ticket until the binder explicitly
+    // transfers it. This key alone never creates or transfers ownership.
+    case candidate(_GiftUIModelKey<Schema>)
+}
+
+@propertyWrapper
+public struct State<Schema: _GiftUIModelSchema> {
+    private enum Storage {
+        case initial(_GiftUIStateInitial<Schema>)
+        case bound(_GiftUIBoundState<Schema>)
+    }
     private var storage: Storage
 
-    public init(wrappedValue: Value) {
-        storage = .initial(wrappedValue)
+    public init(seed: Schema.Seed) {
+        storage = .initial(.seed(seed))
     }
 
-    public var wrappedValue: Value {
-        get {
-            switch storage {
-            case .initial:
-                fatalError("observable state accessed before runtime binding")
-            case .bound(let read, _):
-                return read()
-            }
-        }
-        nonmutating set {
-            switch storage {
-            case .initial:
-                fatalError("observable state replaced before runtime binding")
-            case .bound(_, let replace):
-                replace(newValue)
-            }
-        }
+    public init(candidate: _GiftUIModelKey<Schema>) {
+        storage = .initial(.candidate(candidate))
     }
 
-    package mutating func _giftUIBind(
-        read: @escaping () -> Value,
-        replace: @escaping (Value) -> Void
-    ) -> Value? {
-        guard case .initial(let initial) = storage else {
-            return nil
-        }
-        storage = .bound(read: read, replace: replace)
-        return initial
+    // Generated reads use the checked accessor below. This inert projection is
+    // never a raw model reference or an escaping runtime resolver.
+    public var wrappedValue: _GiftUIModelKey<Schema>? {
+        if case .bound(let binding) = storage { return binding.key }
+        return nil
+    }
+
+    package func _giftUIKey() throws(_GiftUIAccessFailure) -> _GiftUIModelKey<Schema> {
+        guard case .bound(let binding) = storage else { throw .invalidPhase }
+        return binding.key
+    }
+
+    package var _giftUIInitial: _GiftUIStateInitial<Schema>? {
+        if case .initial(let seed) = storage { return seed }
+        return nil
+    }
+
+    package var _giftUIBinding: _GiftUIBoundState<Schema>? {
+        if case .bound(let binding) = storage { return binding }
+        return nil
+    }
+
+    @discardableResult
+    package mutating func _giftUIBind(_ binding: _GiftUIBoundState<Schema>) -> _GiftUIStateInitial<
+        Schema
+    >? {
+        guard case .initial(let seed) = storage else { return nil }
+        storage = .bound(binding)
+        return seed
     }
 }
 
@@ -111,8 +144,8 @@ public protocol _GiftUIObservableReference {
 }
 
 public protocol _GiftUIObservableStateDeclarationVisitor {
-    mutating func visit<Value: _GiftUIObservableReference>(
-        _ state: inout State<Value>,
+    mutating func visit<Schema: _GiftUIModelSchema>(
+        _ state: inout State<Schema>,
         declarationOrdinal: UInt16
     )
 }

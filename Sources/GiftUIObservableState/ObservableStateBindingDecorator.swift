@@ -62,7 +62,7 @@ where Reconciler: ObservableStateReconciler {
     var reconciler: Reconciler
     private(set) var failure: ObservableStateError?
 
-    mutating func visit<Model: _GiftUIObservableReference>(
+    mutating func visit<Model: _GiftUIModelSchema>(
         _ state: inout State<Model>,
         declarationOrdinal: UInt16
     ) {

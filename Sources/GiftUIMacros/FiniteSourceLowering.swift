@@ -13,8 +13,14 @@ struct Field: Decodable {
     let members: [Field]?
 }
 
+struct SeedField: Decodable {
+    let name: String
+    let type: String
+}
+
 struct Model: Decodable {
     let authoredType: String
+    let seedFields: [SeedField]?
     let schema: String
     let facade: String
     let fields: [Field]
@@ -100,6 +106,7 @@ final class Lowerer: SyntaxRewriter {
     var evaluating = false
     var insideView = false
     var viewProperties: Set<String> = []
+    var stateProperties: Set<String> = []
 
     init(configuration: Configuration, inventory: Inventory, source: SourceFileSyntax, file: String)
     {
@@ -133,6 +140,10 @@ final class Lowerer: SyntaxRewriter {
     }
 
     override func visit(_ node: FunctionParameterSyntax) -> FunctionParameterSyntax {
+        if evaluating, stateProperties.contains((node.secondName ?? node.firstName).text) {
+            reject(
+                node, "parameter shadows a State declaration outside the finite source inventory")
+        }
         let type = node.type.trimmedDescription
         if !Self.ownedTypes.contains(type.replacingOccurrences(of: "?", with: "")),
             !inventory.valueTypes.contains(type),
@@ -155,9 +166,11 @@ final class Lowerer: SyntaxRewriter {
         let previousBindings = bindings
         let previousView = insideView
         let previousProperties = viewProperties
+        let previousState = stateProperties
         insideView = true
         bindings = [:]
         viewProperties = []
+        stateProperties = []
         for member in node.memberBlock.members {
             guard let variable = member.decl.as(VariableDeclSyntax.self) else { continue }
             for binding in variable.bindings {
@@ -169,10 +182,18 @@ final class Lowerer: SyntaxRewriter {
                 }
                 if let name = binding.pattern.as(IdentifierPatternSyntax.self)?.identifier.text,
                     let model = configuration.models.first(where: {
-                        $0.authoredType == binding.typeAnnotation?.type.trimmedDescription
+                        $0.authoredType
+                            == (binding.typeAnnotation?.type.trimmedDescription
+                                ?? binding.initializer?.value.as(FunctionCallExprSyntax.self)?
+                                .calledExpression.trimmedDescription)
                     })
                 {
                     bindings[name] = model
+                    if variable.attributes.contains(where: {
+                        $0.as(AttributeSyntax.self)?.attributeName.trimmedDescription == "State"
+                    }) {
+                        stateProperties.insert(name)
+                    }
                 }
             }
         }
@@ -192,6 +213,7 @@ final class Lowerer: SyntaxRewriter {
         bindings = previousBindings
         insideView = previousView
         viewProperties = previousProperties
+        stateProperties = previousState
         return DeclSyntax(result)
     }
 
@@ -207,6 +229,11 @@ final class Lowerer: SyntaxRewriter {
     }
 
     override func visit(_ node: DeclReferenceExprSyntax) -> ExprSyntax {
+        if evaluating && stateProperties.contains(node.baseName.text) {
+            return ExprSyntax(stringLiteral: "(try _\(node.baseName.text)._giftUIKey())")
+                .with(\.leadingTrivia, node.leadingTrivia).with(
+                    \.trailingTrivia, node.trailingTrivia)
+        }
         if evaluating && viewProperties.contains(node.baseName.text) {
             return ExprSyntax(stringLiteral: "(try _giftUI_\(node.baseName.text)(read: read))")
                 .with(\.leadingTrivia, node.leadingTrivia)
@@ -268,6 +295,16 @@ final class Lowerer: SyntaxRewriter {
 
     override func visit(_ node: VariableDeclSyntax) -> DeclSyntax {
         for binding in node.bindings {
+            if evaluating,
+                let name = binding.pattern.as(IdentifierPatternSyntax.self)?.identifier.text,
+                stateProperties.contains(name)
+            {
+                reject(
+                    binding,
+                    "local declaration shadows a State declaration outside the finite source inventory"
+                )
+                return DeclSyntax(node)
+            }
             if let type = binding.typeAnnotation?.type.trimmedDescription,
                 type != "some View",
                 !Self.ownedTypes.contains(type.replacingOccurrences(of: "?", with: "")),
@@ -283,6 +320,34 @@ final class Lowerer: SyntaxRewriter {
         guard insideView, node.bindings.count == 1, let binding = node.bindings.first,
             let name = binding.pattern.as(IdentifierPatternSyntax.self)?.identifier.text
         else { return super.visit(node) }
+        if let model = bindings[name], stateProperties.contains(name) {
+            guard binding.accessorBlock == nil,
+                node.bindingSpecifier.tokenKind == .keyword(.var),
+                !node.modifiers.contains(where: { $0.name.tokenKind == .keyword(.static) })
+            else {
+                reject(node, "State requires one direct stored instance variable")
+                return DeclSyntax(node)
+            }
+            var seed = ""
+            if let initial = binding.initializer {
+                guard let call = initial.value.as(FunctionCallExprSyntax.self),
+                    call.calledExpression.trimmedDescription == model.authoredType,
+                    call.trailingClosure == nil,
+                    call.arguments.map({ $0.label?.text ?? "" })
+                        == (model.seedFields ?? []).map(\.name)
+                else {
+                    reject(initial, "State initializer must use the inventoried inert model seed")
+                    return DeclSyntax(node)
+                }
+                let arguments = rewrite(call.arguments).cast(LabeledExprListSyntax.self)
+                seed = "(seed: \(model.schema)Seed(\(arguments)))"
+            }
+            return DeclSyntax(
+                stringLiteral:
+                    "@State<\(model.schema)>\(seed) \(node.modifiers.trimmedDescription) var \(name): _GiftUIModelKey<\(model.schema)>?\n"
+            )
+            .with(\.leadingTrivia, node.leadingTrivia)
+        }
         if let model = bindings[name] {
             var result = node
             var newBinding = binding
@@ -322,6 +387,16 @@ final class Lowerer: SyntaxRewriter {
     override func visit(_ node: FunctionCallExprSyntax) -> ExprSyntax {
         let called = node.calledExpression.trimmedDescription
         let name = called.split(separator: ".").last.map(String.init) ?? called
+        if called == "State", insideView, !evaluating,
+            node.arguments.count == 1, node.arguments.first?.label?.text == "wrappedValue",
+            let argument = node.arguments.first?.expression.as(DeclReferenceExprSyntax.self)?
+                .baseName.text,
+            stateProperties.contains(argument), let model = bindings[argument]
+        {
+            return ExprSyntax(stringLiteral: "State<\(model.schema)>(candidate: \(argument))")
+                .with(\.leadingTrivia, node.leadingTrivia).with(
+                    \.trailingTrivia, node.trailingTrivia)
+        }
         let framework: Set<String> = [
             "Text", "Spacer", "EmptyView", "VStack", "HStack", "ZStack", "Button",
         ]
@@ -437,6 +512,13 @@ final class Lowerer: SyntaxRewriter {
         }
         guard evaluating else { return super.visit(node) }
         if node.base?.trimmedDescription == "self",
+            stateProperties.contains(node.declName.baseName.text)
+        {
+            return ExprSyntax(stringLiteral: "(try _\(node.declName.baseName.text)._giftUIKey())")
+                .with(\.leadingTrivia, node.leadingTrivia).with(
+                    \.trailingTrivia, node.trailingTrivia)
+        }
+        if node.base?.trimmedDescription == "self",
             viewProperties.contains(node.declName.baseName.text)
         {
             return ExprSyntax(
@@ -445,10 +527,13 @@ final class Lowerer: SyntaxRewriter {
             .with(\.leadingTrivia, node.leadingTrivia).with(\.trailingTrivia, node.trailingTrivia)
         }
         if let path = modelPath(ExprSyntax(node)), !path.fields.isEmpty {
+            let rootName = path.root.hasPrefix("self.") ? String(path.root.dropFirst(5)) : path.root
+            let root =
+                stateProperties.contains(rootName) ? "try _\(rootName)._giftUIKey()" : path.root
             let fields = path.fields.map { "." + $0.name + ($0.members == nil ? "" : "()") }
                 .joined()
             return ExprSyntax(
-                stringLiteral: "(try \(path.model.facade)<D>(\(path.root), read: read))\(fields)"
+                stringLiteral: "(try \(path.model.facade)<D>(\(root), read: read))\(fields)"
             )
             .with(\.leadingTrivia, node.leadingTrivia)
             .with(\.trailingTrivia, node.trailingTrivia)
@@ -509,7 +594,15 @@ func schema(_ configuration: Configuration) throws -> String {
     let names =
         [configuration.module, configuration.domain] + configuration.imports
         + configuration.models.flatMap { [$0.authoredType, $0.schema, $0.facade] }
-    guard names.allSatisfy(identifier), configuration.models.allSatisfy({ valid($0.fields) }) else {
+    guard names.allSatisfy(identifier),
+        configuration.models.allSatisfy({ model in
+            valid(model.fields)
+                && Set((model.seedFields ?? []).map(\.name)).count == (model.seedFields ?? []).count
+                && (model.seedFields ?? []).allSatisfy {
+                    identifier($0.name) && ownedTypes.contains($0.type)
+                }
+        })
+    else {
         throw LoweringFailure(
             description: "schema requires unique identifiers and inventoried owned getters")
     }
@@ -585,8 +678,20 @@ func schema(_ configuration: Configuration) throws -> String {
     }
     result += "}\n"
     for model in configuration.models {
+        let seedFields = model.seedFields ?? []
+        result += "package struct \(model.schema)Seed {\n"
+        for field in seedFields {
+            result += "package let \(field.name): \(field.type)\n"
+        }
         result +=
-            "package enum \(model.schema) {}\n"
+            "package init(" + seedFields.map { "\($0.name): \($0.type)" }.joined(separator: ", ")
+            + ") {\n"
+        for field in seedFields {
+            result += "self.\(field.name) = \(field.name)\n"
+        }
+        result += "}\n}\n"
+        result +=
+            "package enum \(model.schema): _GiftUIModelSchema { package typealias Seed = \(model.schema)Seed }\n"
             + facade(model.fields, name: model.facade, schema: model.schema)
     }
     return result

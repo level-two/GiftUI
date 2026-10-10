@@ -55,6 +55,14 @@ regression and four-configuration obligations remain in the owner matrices.
 
 ## Settled decisions that do not need rediscovery
 
+P03's State declaration slice now starts at `Sources/GiftUI/ObservableState.swift`
+and the same finite lowering owner used by P02. Its generated-source/storage
+probe is `Tests/ContractFixtures/SPEC010/RuntimeDerived/StateProbe.swift`; the
+progress record's step 3 supplies current four-profile core and component receipts.
+It uses a fixture binder. The production root/reconciler callback migration,
+ticket transfer, checked mutation, capture replacement and teardown remain open;
+do not infer their completion from the State probe.
+
 These reminders point into contracts; read the full clauses when editing the
 mechanism. They reduce search, not the risk rating of the underlying work.
 

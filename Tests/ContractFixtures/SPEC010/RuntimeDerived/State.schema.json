@@ -1,0 +1,13 @@
+{
+  "module": "StateSchema",
+  "domain": "StateReadDomain",
+  "imports": [],
+  "models": [{
+    "authoredType": "CounterModel",
+    "schema": "CounterSchema",
+    "facade": "CounterRead",
+    "seedFields": [{"name": "value", "type": "UInt8"}],
+    "fields": [{"name": "value", "type": "UInt8", "indexed": false}]
+  }],
+  "calls": ["BoundedText", "Int32"]
+}

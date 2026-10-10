@@ -64,6 +64,12 @@ because Swift's standard rethrows operators otherwise erase the failure type.
 Model binding remains at the original access site, including lazy operands.
 No rewritten expression may manufacture a read, resolver or owning ticket.
 
+P03 extends the same lowering owner with finite `seedFields` and generic State
+declarations. Its [State realization](spec-010-stable-model-ownership.md#guarded-replacement-and-callback-integration)
+describes seed/candidate descriptors, checked key reads and the remaining runtime
+binding obligations. Source diagnostics reject effectful seed construction and
+unsupported State shadowing before emitting either generated file.
+
 The custom visitor owns read creation after binding. Its accessor returns an
 owned body; the read's scope ends before traversing that body's children. P04
 implements this sequence in Semantic Core, and P03 supplies its State bridge.
