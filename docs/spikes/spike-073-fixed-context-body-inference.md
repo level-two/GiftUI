@@ -2,7 +2,7 @@
 id: SPIKE-073
 feature: external-application-integration
 title: Fixed Context Body Inference
-status: planned
+status: completed
 authors:
   - codex
 created: 2026-10-10
@@ -58,15 +58,26 @@ unchanged authored Swift has already been transformed correctly.
 
 ## Reproduction
 
-Run from the repository root with the script to be recorded under
-`experiments/spike-073-fixed-context-body-inference/`. Record commands, compiler
+Run details and exact commands are recorded in the
+[experiment README](../../experiments/spike-073-fixed-context-body-inference/README.md).
+The runner is terminal and refuses further trials. Record commands, compiler
 versions, input hashes, diagnostics, repairs and invocation count. Build outputs
 stay under `.build/`, ARMv6 under `.build/raspberry-pi/`, nRF under
 `.build/nrf52840/`. No global toolchain changes.
 
 ## Results
 
-Pending; no compiler trial has started.
+**Completed: finite mechanism supported.** Four positive configurations compile;
+both native runs pass 15 checks each, and both negative controls reject as intended
+on all four configurations (eight rejections). There are no explicit custom Body
+aliases. The final candidate reads a single scalar bank and preserves previously
+owned output across the next mutation cycle.
+
+15/16 compiler/link/execution invocations, one of two allowed repair rounds,
+approximately 41 seconds of the 30-minute budget. No extension. The initial typed
+catch error and correction remain in the [exact ledger](../../experiments/spike-073-fixed-context-body-inference/evidence/ledger.json).
+[Terminal result and limits](../../experiments/spike-073-fixed-context-body-inference/evidence/result.md)
+include ABI inspection and reproduction links.
 
 ## Limitations
 
@@ -77,7 +88,8 @@ The two native flags do not exercise the real runtime profiles.
 
 ## Disposition
 
-Planned. Feed a terminal result into RFC-014 SR-Q2, retaining all other blockers.
+SR-Q2's narrow language question is answered. Feed this result into RFC-014;
+full context/schema/module and source-coverage integration remain blockers.
 The source is disposable and cannot become production through this experiment.
 
 ## References

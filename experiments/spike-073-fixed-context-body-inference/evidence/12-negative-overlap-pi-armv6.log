@@ -1,0 +1,11 @@
+/Users/eugene/work/GiftUI/experiments/spike-073-fixed-context-body-inference/Fixture.swift:177:5: error: overlapping accesses to 'owner', but modification requires exclusive access [#ExclusivityViolation]
+174 | #if NEG_OVERLAP
+175 | func invalidMutation(_ owner: inout Owner) throws(AccessFailure) -> UInt32 {
+176 |     let read = try owner.read()
+    |                    `- note: conflicting access is here
+177 |     owner.finish()
+    |     `- error: overlapping accesses to 'owner', but modification requires exclusive access [#ExclusivityViolation]
+178 |     return try read.scalar(ModelKey(index: 0))
+179 | }
+
+[#ExclusivityViolation]: <https://docs.swift.org/compiler/documentation/diagnostics/exclusivity-violation>

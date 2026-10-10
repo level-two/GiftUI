@@ -1,0 +1,25 @@
+{
+  "status": "completed",
+  "outcome": "finite mechanism supported",
+  "invocations": 15,
+  "limit": 16,
+  "repairs": [
+    {
+      "reason": "Explicit typed do scopes and Equatable AccessFailure keep catch values concrete; initial catch inferred any Error.",
+      "at": "2026-10-10T13:04:45.039865+00:00"
+    }
+  ],
+  "elapsed_through_last_trial_seconds": 40.493366,
+  "checks_per_native_run": 15,
+  "negative_rejections": 8,
+  "production_changed": false,
+  "limitations": [
+    "handwritten miniature protocol, not production modules",
+    "profile flags do not exercise runtime profiles",
+    "opaque helper and conditional only, not all Swift bodies",
+    "no generic schema ABI or generated source transformation",
+    "two scalar entries with caller-owned unsafe backing precondition; no owner pool/generation proof",
+    "Canvas returns a scalar geometry surrogate; no real layout or drawing plan",
+    "target objects only; no firmware link, target execution or heap/stack claim"
+  ]
+}

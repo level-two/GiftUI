@@ -1,0 +1,2 @@
+# Preserve byte-exact diagnostics and the recorded input snapshot hashes.
+evidence/** -whitespace

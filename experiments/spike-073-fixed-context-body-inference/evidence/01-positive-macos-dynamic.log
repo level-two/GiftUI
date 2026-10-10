@@ -1,0 +1,16 @@
+/Users/eugene/work/GiftUI/experiments/spike-073-fixed-context-body-inference/Fixture.swift:129:41: error: binary operator '==' cannot be applied to operands of type 'any Error' and '()'
+127 |         do {
+128 |             do { _ = try owner.read(); checks.expect(false) }
+129 |             catch { checks.expect(error == .invalidPhase) }
+    |                                         |- error: binary operator '==' cannot be applied to operands of type 'any Error' and '()'
+    |                                         `- note: overloads for '==' exist with these partially matching parameter lists: ((), ()), (AnyHashable, AnyHashable), (AnyIndex, AnyIndex), (AnyKeyPath, AnyKeyPath), (Bool, Bool), (Character, Character), (CodingUserInfoKey, CodingUserInfoKey), (ContinuousClock.Instant, ContinuousClock.Instant), (DSLTree.Atom.CharacterClass, DSLTree.Atom.CharacterClass), (Duration, Duration), (FloatingPointClassification, FloatingPointClassification), (FloatingPointRoundingRule, FloatingPointRoundingRule), (FloatingPointSign, FloatingPointSign), (Int, Int), (Int128, Int128), (Int16, Int16), (Int32, Int32), (Int64, Int64), (Int8, Int8), (JobPriority, JobPriority), (Mirror.DisplayStyle, Mirror.DisplayStyle), (Never, Never), (ObjectIdentifier, ObjectIdentifier), (ReferenceID, ReferenceID), (RegexRepetitionBehavior, RegexRepetitionBehavior), (RegexSemanticLevel, RegexSemanticLevel), (RegexWordBoundaryKind, RegexWordBoundaryKind), (String, String), (String.Index, String.Index), (SuspendingClock.Instant, SuspendingClock.Instant), (TaskPriority, TaskPriority), (UInt, UInt), (UInt128, UInt128), (UInt16, UInt16), (UInt32, UInt32), (UInt64, UInt64), (UInt8, UInt8), (Unicode.CanonicalCombiningClass, Unicode.CanonicalCombiningClass), (Unicode.GeneralCategory, Unicode.GeneralCategory), (Unicode.NumericType, Unicode.NumericType), (Unicode.Scalar, Unicode.Scalar), (Unicode.UTF32, Unicode.UTF32), (Unicode.UTF8.ValidationError, Unicode.UTF8.ValidationError), (Unicode._CharacterRecognizer, Unicode._CharacterRecognizer), (UnicodeDecodingResult, UnicodeDecodingResult), (UnownedTaskExecutor, UnownedTaskExecutor), (UnsafeCurrentTask, UnsafeCurrentTask), (_DependenceType, _DependenceType), (_ValidUTF8Buffer.Index, _ValidUTF8Buffer.Index)
+130 |             try owner.write(7, key: rootKey)
+131 |             try owner.write(19, key: childKey)
+
+/Users/eugene/work/GiftUI/experiments/spike-073-fixed-context-body-inference/Fixture.swift:129:45: error: reference to member 'invalidPhase' cannot be resolved without a contextual type
+127 |         do {
+128 |             do { _ = try owner.read(); checks.expect(false) }
+129 |             catch { checks.expect(error == .invalidPhase) }
+    |                                             `- error: reference to member 'invalidPhase' cannot be resolved without a contextual type
+130 |             try owner.write(7, key: rootKey)
+131 |             try owner.write(19, key: childKey)

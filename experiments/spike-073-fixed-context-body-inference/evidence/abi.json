@@ -1,0 +1,20 @@
+[
+  {
+    "command": [
+      ".toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/arm-zephyr-eabi-readelf",
+      "-A",
+      ".build/raspberry-pi/spike-073/fixture.o"
+    ],
+    "sha256": "82de372e2f563d5b1b9002c488932ac4ae6289b000fbd2b19a9a56ed4d1626cc",
+    "output": "Attribute Section: aeabi\nFile Attributes\n  Tag_conformance: \"2.09\"\n  Tag_CPU_name: \"arm1136jf-s\"\n  Tag_CPU_arch: v6\n  Tag_ARM_ISA_use: Yes\n  Tag_THUMB_ISA_use: Thumb-1\n  Tag_FP_arch: VFPv2\n  Tag_ABI_PCS_R9_use: V6\n  Tag_ABI_PCS_RW_data: PC-relative\n  Tag_ABI_PCS_RO_data: PC-relative\n  Tag_ABI_PCS_GOT_use: GOT-indirect\n  Tag_ABI_PCS_wchar_t: 4\n  Tag_ABI_FP_denormal: Needed\n  Tag_ABI_FP_exceptions: Unused\n  Tag_ABI_FP_number_model: IEEE 754\n  Tag_ABI_align_needed: 8-byte\n  Tag_ABI_align_preserved: 8-byte, except leaf SP\n  Tag_ABI_enum_size: int\n  Tag_ABI_VFP_args: VFP registers\n  Tag_ABI_optimization_goals: Aggressive Size\n  Tag_CPU_unaligned_access: None\n  Tag_ABI_FP_16bit_format: IEEE 754\n"
+  },
+  {
+    "command": [
+      ".toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/arm-zephyr-eabi-readelf",
+      "-A",
+      ".build/nrf52840/spike-073/fixture.o"
+    ],
+    "sha256": "e9f0ecb782ee2a5e86963ec3831012e46297d4ccbe0b36f72493f4fb6164abb9",
+    "output": "Attribute Section: aeabi\nFile Attributes\n  Tag_conformance: \"2.09\"\n  Tag_CPU_name: \"cortex-m4\"\n  Tag_CPU_arch: v7E-M\n  Tag_CPU_arch_profile: Microcontroller\n  Tag_ARM_ISA_use: No\n  Tag_THUMB_ISA_use: Thumb-2\n  Tag_FP_arch: VFPv4-D16\n  Tag_ABI_PCS_R9_use: V6\n  Tag_ABI_PCS_RW_data: PC-relative\n  Tag_ABI_PCS_RO_data: PC-relative\n  Tag_ABI_PCS_GOT_use: GOT-indirect\n  Tag_ABI_PCS_wchar_t: 4\n  Tag_ABI_FP_denormal: Needed\n  Tag_ABI_FP_exceptions: Unused\n  Tag_ABI_FP_number_model: IEEE 754\n  Tag_ABI_align_needed: 8-byte\n  Tag_ABI_align_preserved: 8-byte, except leaf SP\n  Tag_ABI_enum_size: int\n  Tag_ABI_HardFP_use: SP only\n  Tag_ABI_VFP_args: VFP registers\n  Tag_ABI_optimization_goals: Aggressive Size\n  Tag_CPU_unaligned_access: v6\n  Tag_FP_HP_extension: Allowed\n  Tag_ABI_FP_16bit_format: IEEE 754\n"
+  }
+]

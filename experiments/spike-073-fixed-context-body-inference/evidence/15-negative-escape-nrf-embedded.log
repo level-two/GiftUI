@@ -1,0 +1,15 @@
+/Users/eugene/work/GiftUI/experiments/spike-073-fixed-context-body-inference/Fixture.swift:182:37: error: stored property 'read' of 'Escapable'-conforming struct 'InvalidEscapingStorage' has non-Escapable type 'FrameRead'
+  4 | struct ModelKey { let index: Int }
+  5 | 
+  6 | struct FrameRead: ~Escapable {
+    |        `- note: struct 'FrameRead' has '~Escapable' constraint preventing 'Escapable' conformance
+  7 |     private let entries: Span<Entry>
+  8 |     @_lifetime(copy entries)
+    :
+180 | #endif
+181 | #if NEG_ESCAPE
+182 | struct InvalidEscapingStorage { let read: FrameRead }
+    |        |                            `- error: stored property 'read' of 'Escapable'-conforming struct 'InvalidEscapingStorage' has non-Escapable type 'FrameRead'
+    |        `- note: consider adding '~Escapable' to struct 'InvalidEscapingStorage'
+183 | #endif
+184 | 
