@@ -1,7 +1,7 @@
 {
   "package": "P01",
   "input_commit": "b05e22870f4493c11cf8b662fdd4614e7fdf1c9f",
-  "implementation_commit": "bb61d4efec54cd7d363b5dd898027f25318be822",
+  "implementation_commit": "b77d85f7cbe14eb207cc5df1d80395f6dd76a23f",
   "authority": "SPEC-002 PF-006/PF-007, RFC-014 amendment; SPEC-013 RP-RD-003 compiler portion",
   "route_inventory": {
     "path": "Tests/ContractFixtures/SPEC002/CompilerBaseline/route-inventory.tsv",
@@ -29,17 +29,25 @@
     "firmware/nrf52840/applications/spec002-resource-probe/CMakeLists.txt": "dd52996b208866a0b8f37391a278ca8cb9f501f6a5a34e904f2a607423d5dec9",
     "scripts/contracts/compiler-baseline.sh": "cd827a8be0544e167fa6340448115227171d72dfbd225f6319ae3acb989bb9d3",
     "scripts/contracts/run-immutable-contract-driver.sh": "de5186d6888e317a2aea301a8c0d6bfa3bcc989466c748eeafb001bff1c9a513",
-    "scripts/contracts/run-spec-002.sh": "4b8b7a97e954a88a54f04ba2673252f03aeea6aa9be16c2fd841252cea229298",
+    "scripts/contracts/run-spec-002.sh": "19e30cdd07ccc8036d32eb9ae7e477b16ccb34ca005e01d1f6d9f640b9203647",
     "scripts/nrf52840/toolchain.env": "9f71c8faf46502e920c1e5f1763132166f8136bc0e23a17cc38291ef35f376a5",
     "scripts/raspberry-pi/toolchain.env": "0cf3edcb612598971b042b35792398193dc24196d49af521a5d1d23570f0a51f",
     "scripts/test.sh": "c3ce55aef4c4e31b493689254b77bbf08c18d297475cf4504e5713ed44986e17"
   },
+  "initial_implementation_commit": "bb61d4ef",
+  "path_correction_input_commit": "6add7f4bf779e4abb9de97b19bb69bbce7255901",
   "changed_paths": [
     "Tests/ContractFixtures/SPEC002/CompilerBaseline/RequiredFeatures.swift",
     "Tests/ContractFixtures/SPEC002/CompilerBaseline/route-inventory.tsv",
+    "Tests/ContractFixtures/SPEC002/Evidence/rfc-014-p01/baseline.json",
+    "Tests/ContractFixtures/SPEC002/Evidence/rfc-014-p01/result.md",
+    "Tests/ContractFixtures/SPEC002/task-evidence.yaml",
     "docs/conformance/spec-002-conformance.md",
     "docs/features.yaml",
     "docs/implementation-plans/spec-002-implementation-plan.md",
+    "docs/iterations/iteration-003-review/memory-efficiency-plan.md",
+    "docs/iterations/iteration-003-review/rfc-014-implementation-handoff.md",
+    "docs/iterations/iteration-003-review/rfc-014-implementation-plan.md",
     "docs/specs/spec-002-portable-foundation.md",
     "firmware/nrf52840/applications/spec002-resource-probe/CMakeLists.txt",
     "scripts/contracts/check-spec-002-compiler-baseline.py",
@@ -605,7 +613,7 @@
           "delta_bytes": "80"
         }
       ],
-      "input_applicability": "Executed against staged implementation before commit. CMake SHELL grouping changed only for the nRF repair; this input is unused by native/ARMv6 commands. Foundation, drivers and their effective recipe hashes otherwise match the implementation commit.",
+      "input_applicability": "Executed against the staged initial implementation before bb61d4ef. Later changes only affect the ARMv6 build/output paths and nRF CMake feature grouping (the nRF report includes the grouped flags). Foundation and this profile-specific effective recipe are unchanged; each full original driver/input hash remains in the immutable inventory.",
       "recorded_cmake_sha256": "997ff9a0c9ded163e264fde96d821fc018369ae82cfad75b8ccf4ed7696d1b11"
     },
     "macos-static": {
@@ -729,26 +737,26 @@
           "delta_bytes": "80"
         }
       ],
-      "input_applicability": "Executed against staged implementation before commit. CMake SHELL grouping changed only for the nRF repair; this input is unused by native/ARMv6 commands. Foundation, drivers and their effective recipe hashes otherwise match the implementation commit.",
+      "input_applicability": "Executed against the staged initial implementation before bb61d4ef. Later changes only affect the ARMv6 build/output paths and nRF CMake feature grouping (the nRF report includes the grouped flags). Foundation and this profile-specific effective recipe are unchanged; each full original driver/input hash remains in the immutable inventory.",
       "recorded_cmake_sha256": "997ff9a0c9ded163e264fde96d821fc018369ae82cfad75b8ccf4ed7696d1b11"
     },
     "raspberry-pi-armv6": {
-      "report_directory": ".build/contract-reports/spec-002/rfc-014/b05e22870f4493c11cf8b662fdd4614e7fdf1c9f-0d0d0232a035be39/raspberry-pi-armv6",
-      "run_id": "b05e22870f4493c11cf8b662fdd4614e7fdf1c9f-0d0d0232a035be39",
+      "report_directory": ".build/contract-reports/spec-002/rfc-014/6add7f4bf779e4abb9de97b19bb69bbce7255901-132fabf243cc881c/raspberry-pi-armv6",
+      "run_id": "6add7f4bf779e4abb9de97b19bb69bbce7255901-132fabf243cc881c",
       "invocation": "scripts/contracts/run-spec-002.sh --profile raspberry-pi-armv6 --compiler-baseline rfc-014",
-      "metadata": "schema_version=2\ninput_set_sha256=0d0d0232a035be39fc2f41adc2cc0d984b08905f7bec10a86773cd82b021b9e7\nrun_id=b05e22870f4493c11cf8b662fdd4614e7fdf1c9f-0d0d0232a035be39\nreport_directory=.build/contract-reports/spec-002/b05e22870f4493c11cf8b662fdd4614e7fdf1c9f-0d0d0232a035be39/raspberry-pi-armv6\nspec=SPEC-002\nprofile=raspberry-pi-armv6\nrepository_revision=b05e22870f4493c11cf8b662fdd4614e7fdf1c9f\ncompiler_baseline=rfc-014\ninvocation=scripts/contracts/run-spec-002.sh --profile raspberry-pi-armv6 --compiler-baseline rfc-014\nsemantic_corpus_sha256=3add894045d330ea1441f2a6ff6d5465840c867ba02fb83912657819a20f3ccb\ncompiler_version<<EOF\nApple Swift version 6.3.2 (swift-6.3.2-RELEASE)\nTarget: arm64-apple-macosx26.0\nEOF\nsdk_identity<<EOF\nswift_version=6.3.2\ntarget=armv6-unknown-linux-gnueabihf\ndistribution=raspios-bookworm\nsha256=bd09f97b693aa2097df281d9b5490d51c6c01a2241b890c7d05623d4134d7fc8\nEOF\ntarget=armv6-unknown-linux-gnueabihf\nsdk_path=/Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6\ndestination=/Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6/raspios-bookworm-static.json\noptimization=-O -whole-module-optimization\ncompiler_path=/Users/eugene/work/GiftUI/.toolchains/host/swift-6.3.2-RELEASE-osx/usr/bin/swiftc\ncompiler_sha256=d8e40107da0e2c1c59640a983faea326d5d2bddfe81f7609db14bade43c4a5b9\ncompiler_features=LifetimeDependence,Lifetimes\ncompiler_feature_check=passed\nlinked_section_inspector<<EOF\n/Users/eugene/work/GiftUI/.toolchains/host/swift-6.3.2-RELEASE-osx/usr/bin/llvm-objdump: LLVM (http://llvm.org/):\nEOF\nexit_code=0\n",
+      "metadata": "schema_version=2\ninput_set_sha256=132fabf243cc881cd374a8b0752d2081eb3a74384fff100722a69e1fb1679fa0\nrun_id=6add7f4bf779e4abb9de97b19bb69bbce7255901-132fabf243cc881c\nreport_directory=.build/contract-reports/spec-002/6add7f4bf779e4abb9de97b19bb69bbce7255901-132fabf243cc881c/raspberry-pi-armv6\nspec=SPEC-002\nprofile=raspberry-pi-armv6\nrepository_revision=6add7f4bf779e4abb9de97b19bb69bbce7255901\ncompiler_baseline=rfc-014\ninvocation=scripts/contracts/run-spec-002.sh --profile raspberry-pi-armv6 --compiler-baseline rfc-014\nsemantic_corpus_sha256=3add894045d330ea1441f2a6ff6d5465840c867ba02fb83912657819a20f3ccb\ncompiler_version<<EOF\nApple Swift version 6.3.2 (swift-6.3.2-RELEASE)\nTarget: arm64-apple-macosx26.0\nEOF\nsdk_identity<<EOF\nswift_version=6.3.2\ntarget=armv6-unknown-linux-gnueabihf\ndistribution=raspios-bookworm\nsha256=bd09f97b693aa2097df281d9b5490d51c6c01a2241b890c7d05623d4134d7fc8\nEOF\ntarget=armv6-unknown-linux-gnueabihf\nsdk_path=/Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6\ndestination=/Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6/raspios-bookworm-static.json\noptimization=-O -whole-module-optimization\nbuild_directory=/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-002/6add7f4bf779e4abb9de97b19bb69bbce7255901-132fabf243cc881c\ncompiler_path=/Users/eugene/work/GiftUI/.toolchains/host/swift-6.3.2-RELEASE-osx/usr/bin/swiftc\ncompiler_sha256=d8e40107da0e2c1c59640a983faea326d5d2bddfe81f7609db14bade43c4a5b9\ncompiler_features=LifetimeDependence,Lifetimes\ncompiler_feature_check=passed\nlinked_section_inspector<<EOF\n/Users/eugene/work/GiftUI/.toolchains/host/swift-6.3.2-RELEASE-osx/usr/bin/llvm-objdump: LLVM (http://llvm.org/):\nEOF\nexit_code=0\n",
       "artifact_sha256": {
-        ".build/contract-reports/spec-002/rfc-014/b05e22870f4493c11cf8b662fdd4614e7fdf1c9f-0d0d0232a035be39/raspberry-pi-armv6/commands.txt": "7a1a5a57786c09af591d358cc7a7d5f9a5414cf6ee79735a2367dc746a39c1d1",
-        ".build/contract-reports/spec-002/rfc-014/b05e22870f4493c11cf8b662fdd4614e7fdf1c9f-0d0d0232a035be39/raspberry-pi-armv6/input-hashes.tsv": "0d0d0232a035be39fc2f41adc2cc0d984b08905f7bec10a86773cd82b021b9e7",
-        ".build/contract-reports/spec-002/rfc-014/b05e22870f4493c11cf8b662fdd4614e7fdf1c9f-0d0d0232a035be39/raspberry-pi-armv6/metadata.txt": "c67515500cdcf652c9da4b89e7e3aa17788be7954db1ee276cae7ac33cd65034",
-        ".build/contract-reports/spec-002/rfc-014/b05e22870f4493c11cf8b662fdd4614e7fdf1c9f-0d0d0232a035be39/raspberry-pi-armv6/report-hashes.tsv": "8505c45596a481264732f50d962e3719df2c3eea0f4783446a71dfa25c285ad8",
-        ".build/contract-reports/spec-002/rfc-014/b05e22870f4493c11cf8b662fdd4614e7fdf1c9f-0d0d0232a035be39/raspberry-pi-armv6/resources/baseline/image": "8522d4788c2713bb88ff5ab9fa4620d1bd8423edc2f57d2fa75dd948c617f164",
-        ".build/contract-reports/spec-002/rfc-014/b05e22870f4493c11cf8b662fdd4614e7fdf1c9f-0d0d0232a035be39/raspberry-pi-armv6/resources/baseline/link.map": "f2e6c95f9dc510379cd90e133b8c6b931bc433d22187a76a2df47e6219cd034f",
-        ".build/contract-reports/spec-002/rfc-014/b05e22870f4493c11cf8b662fdd4614e7fdf1c9f-0d0d0232a035be39/raspberry-pi-armv6/resources/candidate/image": "7e44e4878240e6bb726bda1517f42887628dc8c344f9837d545b2e04b1d0bfea",
-        ".build/contract-reports/spec-002/rfc-014/b05e22870f4493c11cf8b662fdd4614e7fdf1c9f-0d0d0232a035be39/raspberry-pi-armv6/resources/candidate/link.map": "0b6f087ff1a87c17754db6e3e3ed121d5d0c768e92f0f1db83992b5019a94b19",
-        ".build/contract-reports/spec-002/rfc-014/b05e22870f4493c11cf8b662fdd4614e7fdf1c9f-0d0d0232a035be39/raspberry-pi-armv6/resources/linked-section-deltas.tsv": "0f610728a33b5326100130a2449724aa9e0cb32d4835fb548fb113521e66e076",
-        ".build/contract-reports/spec-002/rfc-014/b05e22870f4493c11cf8b662fdd4614e7fdf1c9f-0d0d0232a035be39/raspberry-pi-armv6/semantics/layout.tsv": "d6cea172ff815f658db50182c0e1efe8b9cc1adf0aad7934c01f7564b38d3211",
-        ".build/contract-reports/spec-002/rfc-014/b05e22870f4493c11cf8b662fdd4614e7fdf1c9f-0d0d0232a035be39/raspberry-pi-armv6/semantics/profile-corpus.txt": "1f1a821b4927681e96bddfba1dcac617f6f4fb5c5dd4ef3b37a84bdf4a2b8cde"
+        ".build/contract-reports/spec-002/rfc-014/6add7f4bf779e4abb9de97b19bb69bbce7255901-132fabf243cc881c/raspberry-pi-armv6/commands.txt": "55952d7ab7b1491b429d13628aeb6f3936f1c6c421de7cdd7cdbc836f99a09ce",
+        ".build/contract-reports/spec-002/rfc-014/6add7f4bf779e4abb9de97b19bb69bbce7255901-132fabf243cc881c/raspberry-pi-armv6/input-hashes.tsv": "132fabf243cc881cd374a8b0752d2081eb3a74384fff100722a69e1fb1679fa0",
+        ".build/contract-reports/spec-002/rfc-014/6add7f4bf779e4abb9de97b19bb69bbce7255901-132fabf243cc881c/raspberry-pi-armv6/metadata.txt": "7e69b84f00b8527fbd8e3dd11d26ec413ca433f1989ff2c50fd80d5e0583bacd",
+        ".build/contract-reports/spec-002/rfc-014/6add7f4bf779e4abb9de97b19bb69bbce7255901-132fabf243cc881c/raspberry-pi-armv6/report-hashes.tsv": "33be54f74bc2e0199dcb78855d78ca5d1074c91ae98c37caaa482976f4a972ff",
+        ".build/contract-reports/spec-002/rfc-014/6add7f4bf779e4abb9de97b19bb69bbce7255901-132fabf243cc881c/raspberry-pi-armv6/resources/baseline/image": "e4d3bc275ca5605d7e320ce6ce63d052a53ae0b9a2a9412417ed54a2c7a51deb",
+        ".build/contract-reports/spec-002/rfc-014/6add7f4bf779e4abb9de97b19bb69bbce7255901-132fabf243cc881c/raspberry-pi-armv6/resources/baseline/link.map": "2808de2e9deaecd0d1285266c698634db8bdd3a1ed85d32fcbc8044174f5bcfa",
+        ".build/contract-reports/spec-002/rfc-014/6add7f4bf779e4abb9de97b19bb69bbce7255901-132fabf243cc881c/raspberry-pi-armv6/resources/candidate/image": "382d4c54d7fdc7b1f83ac2a172ace2ce4bd97cf057136b5e7cce14408086fe6b",
+        ".build/contract-reports/spec-002/rfc-014/6add7f4bf779e4abb9de97b19bb69bbce7255901-132fabf243cc881c/raspberry-pi-armv6/resources/candidate/link.map": "696a0801d6ddb6f698f242957009d2c1250a0471c17f220d47eb0adb2afde364",
+        ".build/contract-reports/spec-002/rfc-014/6add7f4bf779e4abb9de97b19bb69bbce7255901-132fabf243cc881c/raspberry-pi-armv6/resources/linked-section-deltas.tsv": "0f610728a33b5326100130a2449724aa9e0cb32d4835fb548fb113521e66e076",
+        ".build/contract-reports/spec-002/rfc-014/6add7f4bf779e4abb9de97b19bb69bbce7255901-132fabf243cc881c/raspberry-pi-armv6/semantics/layout.tsv": "d6cea172ff815f658db50182c0e1efe8b9cc1adf0aad7934c01f7564b38d3211",
+        ".build/contract-reports/spec-002/rfc-014/6add7f4bf779e4abb9de97b19bb69bbce7255901-132fabf243cc881c/raspberry-pi-armv6/semantics/profile-corpus.txt": "1f1a821b4927681e96bddfba1dcac617f6f4fb5c5dd4ef3b37a84bdf4a2b8cde"
       },
       "layout": [
         {
@@ -850,8 +858,8 @@
           "delta_bytes": "368"
         }
       ],
-      "input_applicability": "Executed against staged implementation before commit. CMake SHELL grouping changed only for the nRF repair; this input is unused by native/ARMv6 commands. Foundation, drivers and their effective recipe hashes otherwise match the implementation commit.",
-      "recorded_cmake_sha256": "997ff9a0c9ded163e264fde96d821fc018369ae82cfad75b8ccf4ed7696d1b11"
+      "input_applicability": "Executed against staged ARMv6 path correction before commit; all generated builds are under .build/raspberry-pi and report artifacts are immutable copies.",
+      "recorded_cmake_sha256": "dd52996b208866a0b8f37391a278ca8cb9f501f6a5a34e904f2a607423d5dec9"
     },
     "nrf52840-embedded": {
       "report_directory": ".build/contract-reports/spec-002/rfc-014/b05e22870f4493c11cf8b662fdd4614e7fdf1c9f-7f862e09215192c6/nrf52840-embedded",
@@ -973,7 +981,7 @@
           "delta_bytes": "532"
         }
       ],
-      "input_applicability": "Executed against staged implementation before commit. CMake SHELL grouping changed only for the nRF repair; this input is unused by native/ARMv6 commands. Foundation, drivers and their effective recipe hashes otherwise match the implementation commit.",
+      "input_applicability": "Executed against the staged initial implementation before bb61d4ef. Later changes only affect the ARMv6 build/output paths and nRF CMake feature grouping (the nRF report includes the grouped flags). Foundation and this profile-specific effective recipe are unchanged; each full original driver/input hash remains in the immutable inventory.",
       "recorded_cmake_sha256": "dd52996b208866a0b8f37391a278ca8cb9f501f6a5a34e904f2a607423d5dec9"
     }
   },
@@ -1096,7 +1104,7 @@
         "delta_bytes": "96"
       }
     ],
-    "input_applicability": "Executed against staged implementation before commit. CMake SHELL grouping changed only for the nRF repair; this input is unused by native/ARMv6 commands. Foundation, drivers and their effective recipe hashes otherwise match the implementation commit.",
+    "input_applicability": "Executed against the staged initial implementation before bb61d4ef. Later changes only affect the ARMv6 build/output paths and nRF CMake feature grouping (the nRF report includes the grouped flags). Foundation and this profile-specific effective recipe are unchanged; each full original driver/input hash remains in the immutable inventory.",
     "recorded_cmake_sha256": "997ff9a0c9ded163e264fde96d821fc018369ae82cfad75b8ccf4ed7696d1b11"
   },
   "hardware": "No connected execution, deployment or flashing.",
@@ -1112,5 +1120,126 @@
     "P10",
     "P11",
     "P12"
-  ]
+  ],
+  "superseded_armv6_report": {
+    "report_directory": ".build/contract-reports/spec-002/rfc-014/b05e22870f4493c11cf8b662fdd4614e7fdf1c9f-0d0d0232a035be39/raspberry-pi-armv6",
+    "run_id": "b05e22870f4493c11cf8b662fdd4614e7fdf1c9f-0d0d0232a035be39",
+    "invocation": "scripts/contracts/run-spec-002.sh --profile raspberry-pi-armv6 --compiler-baseline rfc-014",
+    "metadata": "schema_version=2\ninput_set_sha256=0d0d0232a035be39fc2f41adc2cc0d984b08905f7bec10a86773cd82b021b9e7\nrun_id=b05e22870f4493c11cf8b662fdd4614e7fdf1c9f-0d0d0232a035be39\nreport_directory=.build/contract-reports/spec-002/b05e22870f4493c11cf8b662fdd4614e7fdf1c9f-0d0d0232a035be39/raspberry-pi-armv6\nspec=SPEC-002\nprofile=raspberry-pi-armv6\nrepository_revision=b05e22870f4493c11cf8b662fdd4614e7fdf1c9f\ncompiler_baseline=rfc-014\ninvocation=scripts/contracts/run-spec-002.sh --profile raspberry-pi-armv6 --compiler-baseline rfc-014\nsemantic_corpus_sha256=3add894045d330ea1441f2a6ff6d5465840c867ba02fb83912657819a20f3ccb\ncompiler_version<<EOF\nApple Swift version 6.3.2 (swift-6.3.2-RELEASE)\nTarget: arm64-apple-macosx26.0\nEOF\nsdk_identity<<EOF\nswift_version=6.3.2\ntarget=armv6-unknown-linux-gnueabihf\ndistribution=raspios-bookworm\nsha256=bd09f97b693aa2097df281d9b5490d51c6c01a2241b890c7d05623d4134d7fc8\nEOF\ntarget=armv6-unknown-linux-gnueabihf\nsdk_path=/Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6\ndestination=/Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6/raspios-bookworm-static.json\noptimization=-O -whole-module-optimization\ncompiler_path=/Users/eugene/work/GiftUI/.toolchains/host/swift-6.3.2-RELEASE-osx/usr/bin/swiftc\ncompiler_sha256=d8e40107da0e2c1c59640a983faea326d5d2bddfe81f7609db14bade43c4a5b9\ncompiler_features=LifetimeDependence,Lifetimes\ncompiler_feature_check=passed\nlinked_section_inspector<<EOF\n/Users/eugene/work/GiftUI/.toolchains/host/swift-6.3.2-RELEASE-osx/usr/bin/llvm-objdump: LLVM (http://llvm.org/):\nEOF\nexit_code=0\n",
+    "artifact_sha256": {
+      ".build/contract-reports/spec-002/rfc-014/b05e22870f4493c11cf8b662fdd4614e7fdf1c9f-0d0d0232a035be39/raspberry-pi-armv6/commands.txt": "7a1a5a57786c09af591d358cc7a7d5f9a5414cf6ee79735a2367dc746a39c1d1",
+      ".build/contract-reports/spec-002/rfc-014/b05e22870f4493c11cf8b662fdd4614e7fdf1c9f-0d0d0232a035be39/raspberry-pi-armv6/input-hashes.tsv": "0d0d0232a035be39fc2f41adc2cc0d984b08905f7bec10a86773cd82b021b9e7",
+      ".build/contract-reports/spec-002/rfc-014/b05e22870f4493c11cf8b662fdd4614e7fdf1c9f-0d0d0232a035be39/raspberry-pi-armv6/metadata.txt": "c67515500cdcf652c9da4b89e7e3aa17788be7954db1ee276cae7ac33cd65034",
+      ".build/contract-reports/spec-002/rfc-014/b05e22870f4493c11cf8b662fdd4614e7fdf1c9f-0d0d0232a035be39/raspberry-pi-armv6/report-hashes.tsv": "8505c45596a481264732f50d962e3719df2c3eea0f4783446a71dfa25c285ad8",
+      ".build/contract-reports/spec-002/rfc-014/b05e22870f4493c11cf8b662fdd4614e7fdf1c9f-0d0d0232a035be39/raspberry-pi-armv6/resources/baseline/image": "8522d4788c2713bb88ff5ab9fa4620d1bd8423edc2f57d2fa75dd948c617f164",
+      ".build/contract-reports/spec-002/rfc-014/b05e22870f4493c11cf8b662fdd4614e7fdf1c9f-0d0d0232a035be39/raspberry-pi-armv6/resources/baseline/link.map": "f2e6c95f9dc510379cd90e133b8c6b931bc433d22187a76a2df47e6219cd034f",
+      ".build/contract-reports/spec-002/rfc-014/b05e22870f4493c11cf8b662fdd4614e7fdf1c9f-0d0d0232a035be39/raspberry-pi-armv6/resources/candidate/image": "7e44e4878240e6bb726bda1517f42887628dc8c344f9837d545b2e04b1d0bfea",
+      ".build/contract-reports/spec-002/rfc-014/b05e22870f4493c11cf8b662fdd4614e7fdf1c9f-0d0d0232a035be39/raspberry-pi-armv6/resources/candidate/link.map": "0b6f087ff1a87c17754db6e3e3ed121d5d0c768e92f0f1db83992b5019a94b19",
+      ".build/contract-reports/spec-002/rfc-014/b05e22870f4493c11cf8b662fdd4614e7fdf1c9f-0d0d0232a035be39/raspberry-pi-armv6/resources/linked-section-deltas.tsv": "0f610728a33b5326100130a2449724aa9e0cb32d4835fb548fb113521e66e076",
+      ".build/contract-reports/spec-002/rfc-014/b05e22870f4493c11cf8b662fdd4614e7fdf1c9f-0d0d0232a035be39/raspberry-pi-armv6/semantics/layout.tsv": "d6cea172ff815f658db50182c0e1efe8b9cc1adf0aad7934c01f7564b38d3211",
+      ".build/contract-reports/spec-002/rfc-014/b05e22870f4493c11cf8b662fdd4614e7fdf1c9f-0d0d0232a035be39/raspberry-pi-armv6/semantics/profile-corpus.txt": "1f1a821b4927681e96bddfba1dcac617f6f4fb5c5dd4ef3b37a84bdf4a2b8cde"
+    },
+    "layout": [
+      {
+        "value": "geometryScalar",
+        "size": "4",
+        "stride": "4",
+        "alignment": "4"
+      },
+      {
+        "value": "point",
+        "size": "8",
+        "stride": "8",
+        "alignment": "4"
+      },
+      {
+        "value": "size",
+        "size": "8",
+        "stride": "8",
+        "alignment": "4"
+      },
+      {
+        "value": "rect",
+        "size": "16",
+        "stride": "16",
+        "alignment": "4"
+      },
+      {
+        "value": "proposedSize",
+        "size": "13",
+        "stride": "16",
+        "alignment": "4"
+      },
+      {
+        "value": "pointerPhase",
+        "size": "1",
+        "stride": "1",
+        "alignment": "1"
+      },
+      {
+        "value": "inputSourceID",
+        "size": "2",
+        "stride": "2",
+        "alignment": "2"
+      },
+      {
+        "value": "pointerSequenceID",
+        "size": "4",
+        "stride": "4",
+        "alignment": "4"
+      },
+      {
+        "value": "inputOrdinal",
+        "size": "4",
+        "stride": "4",
+        "alignment": "4"
+      },
+      {
+        "value": "presentationRevision",
+        "size": "4",
+        "stride": "4",
+        "alignment": "4"
+      },
+      {
+        "value": "normalizedPointerEvent",
+        "size": "28",
+        "stride": "28",
+        "alignment": "4"
+      }
+    ],
+    "linked_deltas": [
+      {
+        "category": "code",
+        "baseline_bytes": "5037528",
+        "candidate_bytes": "5037800",
+        "delta_bytes": "272"
+      },
+      {
+        "category": "read_only",
+        "baseline_bytes": "1287331",
+        "candidate_bytes": "1287339",
+        "delta_bytes": "8"
+      },
+      {
+        "category": "initialized",
+        "baseline_bytes": "89244",
+        "candidate_bytes": "89244",
+        "delta_bytes": "0"
+      },
+      {
+        "category": "zero_initialized",
+        "baseline_bytes": "131656",
+        "candidate_bytes": "131368",
+        "delta_bytes": "-288"
+      },
+      {
+        "category": "file_size",
+        "baseline_bytes": "9531840",
+        "candidate_bytes": "9532208",
+        "delta_bytes": "368"
+      }
+    ],
+    "input_applicability": "Executed against staged implementation before commit. CMake SHELL grouping changed only for the nRF repair; this input is unused by native/ARMv6 commands. Foundation, drivers and their effective recipe hashes otherwise match the implementation commit.",
+    "recorded_cmake_sha256": "997ff9a0c9ded163e264fde96d821fc018369ae82cfad75b8ccf4ed7696d1b11"
+  }
 }

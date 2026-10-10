@@ -6,8 +6,9 @@ compiler/measurement seam and SPEC-013 RP-RD-003's compiler-selection portion;
 it does not establish runtime/application conformance or complete T7.1.
 
 Input commit: `b05e22870f4493c11cf8b662fdd4614e7fdf1c9f`.
-Implementation commit: `bb61d4ef` (full identity in the [baseline snapshot](baseline.json)).
-Validation ran against the staged implementation before that commit. The snapshot
+Initial implementation commit: `bb61d4ef`; ARMv6 path correction: `b77d85f7`
+(full final identity in the [baseline snapshot](baseline.json)). Validation ran
+against the staged inputs before each implementation commit. The snapshot
 records changed files, source/recipe/route hashes, all exact commands, compiler
 executable hashes, SDK/target/optimization identities and linked artifacts/maps.
 The implementation and this evidence receipt are separate attributable commits.
@@ -73,6 +74,19 @@ implementation commit and do not invoke that CMake branch. Their input inventori
 retain the earlier CMake hash rather than falsely claiming a uniform input set.
 The failed staging log remains generated evidence under
 `.build/contract-reports/spec-002/rfc-014/.tmp-nrf52840-embedded-63497/run.log`.
+
+## ARMv6 output-root correction
+
+After the initial receipt in `6add7f4b`, review found that the inherited driver
+placed generated ARMv6 builds beneath the report directory. `b77d85f7` moves
+migration scratch builds, IR and linked artifacts under `.build/raspberry-pi/`,
+retaining immutable evidence copies in the report. Historical reproduction is
+unchanged. The complete ARMv6 migration driver was rerun and passed; generated
+images and report copies match byte-for-byte and every linked delta above is
+unchanged. The snapshot preserves the superseded ARMv6 report separately.
+Native/nRF effective build branches were unchanged, so their earlier reports
+remain applicable with their original full input hashes. No broad rerun was
+needed for this path-only correction.
 
 ## Remaining boundary
 

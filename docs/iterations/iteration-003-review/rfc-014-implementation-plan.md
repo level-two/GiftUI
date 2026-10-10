@@ -180,7 +180,8 @@ completion nor approval marks any Spec implemented or closes the iteration.
 
 ## Completion record
 
-P01 implemented in `bb61d4ef`; all four migration Foundation drivers, the
+P01 implemented in `bb61d4ef`, with the ARMv6 output-root correction in
+`b77d85f7`; all four migration Foundation drivers, the
 historical macOS control and all 17 compiler controls pass. The
 [P01 receipt](../../../Tests/ContractFixtures/SPEC002/Evidence/rfc-014-p01/result.md)
 pins source/recipe/route/compiler/artifact identities, deltas and the single
