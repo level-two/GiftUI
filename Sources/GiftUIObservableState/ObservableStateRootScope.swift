@@ -511,6 +511,23 @@ package struct ObservableStateRootScope<
         } catch { return .failure(error) }
     }
 
+    package borrowing func mutate(
+        identity: Identity, ordinal: UInt16, matching generation: ObservableTargetGeneration,
+        operation: () -> Model.Mutation
+    ) -> ObservableStateResult where Model: ObservableModelMutation {
+        do throws(ObservableStateError) {
+            try checkOperation()
+            guard let slot = matching(identity, ordinal: ordinal),
+                records.pointee.records[slot].published,
+                records.pointee.records[slot].attachment?.generation == generation.rawValue
+            else { throw .staleModel }
+            let key = key(at: slot)
+            reports.pointee.mutationReporting = true
+            defer { reports.pointee.mutationReporting = false }
+            return models.mutate(key, operation: operation) { models.report(key) }
+        } catch { return .failure(error) }
+    }
+
     package borrowing func shutdown() throws(ObservableStateError) {
         if records.pointee.retired { return }
         // A terminal activation still needs to retire all callback routes while

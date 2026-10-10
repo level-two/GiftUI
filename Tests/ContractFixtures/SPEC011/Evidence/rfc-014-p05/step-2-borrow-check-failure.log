@@ -1,0 +1,29 @@
+/Users/eugene/work/GiftUI/Sources/GiftUIInteraction/InteractionState.swift:118:28: error: 'self' is borrowed and cannot be consumed
+116 |     /// Shared nonmutating preflight lets the owning key adapter include its pool
+117 |     /// failure in the existing deterministic precedence without staging a record.
+118 |     package borrowing func appendFailure(
+    |                            `- error: 'self' is borrowed and cannot be consumed
+119 |         identity: Identity, bounds: Rect, clip: Rect, paintOrder: UInt16
+120 |     ) -> InteractionError? {
+    :
+127 |         if let hitBounds = LayoutGeometry.intersection(bounds, clip) {
+128 |             if hitBounds.size.width != 0 && hitBounds.size.height != 0
+129 |                 && candidateHitRegions.count >= limits.maximumHitRegions
+    |                    `- note: consumed here
+130 |             {
+131 |                 failures.insert(.capacityExhausted)
+
+/Users/eugene/work/GiftUI/Sources/GiftUIInteraction/InteractionOwnedKeyState.swift:86:28: error: 'self' is borrowed and cannot be consumed
+ 84 |         }
+ 85 |     }
+ 86 |     package borrowing func appendFailure(
+    |                            `- error: 'self' is borrowed and cannot be consumed
+ 87 |         identity: Identity, bounds: Rect, clip: Rect, paintOrder: UInt16
+ 88 |     ) -> InteractionError? {
+    :
+102 |         let next = candidateComponents.addingReportingOverflow(UInt32(identity.count))
+103 |         if identity.count > maximumComponentsPerKey || next.overflow
+104 |             || next.partialValue > maximumComponents
+    |                `- note: consumed here
+105 |         {
+106 |             failures.insert(.capacityExhausted)

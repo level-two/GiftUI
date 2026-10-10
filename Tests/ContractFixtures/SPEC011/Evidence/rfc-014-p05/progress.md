@@ -92,3 +92,51 @@ but its matcher omitted the word `protocol` in the actual diagnostic; fixing
 that diagnostic spelling produced the required two negative passes. No production
 repair, oracle change or contract decision occurred. Consecutive unproductive
 repairs remain **0 of 2**. P05 exit is pending.
+
+## Step 2 — owned Interaction keys and target bridge
+
+Interaction owns complete inline identity values in distinct candidate and
+committed typed stores. Logical component usage is independently limited per
+candidate/committed pool; first excess poisons the candidate without publishing
+partial routing. Exact equality/generation, hit testing and offer disposition
+algorithms remain the existing implementations. The unchanged accepted-offer
+resolution is factored from the coordinator for selected-component compilation.
+
+SPEC-013 runtime amendment “Limits, ownership and storage” requires separate
+candidate/committed key pools and permits finite typed side pools; it does not
+require separate heap allocations. The realization uses inline key regions:
+three candidate copies per slot (candidate record, prepared committed record,
+hit map), two committed copies (record, hit map). Every physical copy must be
+counted in the P05 layout evidence and later audit, with record bytes excluding
+key regions. These six-slot fixture capacities are not a production preset or
+fit claim. SPEC-015 requires actual immutable workload equality and complete
+audit at production adoption; P07/P09/P10 retain those integration obligations.
+
+The package host bridge validates action domain/code and publishable P03 target
+generation before staging. Dispatch uses the current target registration and
+P03 checked mutation authority. Its narrow operation-thunk overload admits the
+mutation phase before lowering an action, avoiding user work during rejected
+access. It preserves typed preflight/commit/reporting and the authored handler
+contract; no P07 coordinator is introduced. Parent confirmed this lies within
+the named P05 host target bridge, subject to independent review.
+
+After formatting, registered command:
+`scripts/contracts/run-spec-011.sh --profile macos-static --compiler-baseline rfc-014 --giftui-build .build/contracts/spec-006-rfc-014/a1acc9ca8fb45d5e-830jmqh3/macos-static`
+passes **199 P05 assertions and 183 P03 root regressions**. See
+[exact receipt](step-2-interaction-receipt.json). Expected outcomes derive from
+SPEC-011 generation/offer rules and SPEC-010 registration/retirement: twelve
+semantic publications including ten refused offers retain old routing, restored
+complete keys preserve generation, changed keys/action/target/enabled state need
+new generation, exact component bounds admit and first excess rejects atomically,
+stale releases/retired targets cancel before operation execution. Model replacement
+refusal retains the old target; independent model retention cannot preserve a
+removed registration target. These are selected-owner fixtures, not complete
+coordinator/application or broad conformance evidence.
+
+Failed checks: [borrow-check diagnostic](step-2-borrow-check-failure.log) narrowed
+to Swift consuming borrowed self through boolean autoclosures; copying scalar
+limits/counts to locals passes. [Fixture diagnostic](step-2-fixture-typed-throws-failure.log)
+needed an explicit ObservableStateError annotation on a nested closure. Both
+corrections passed the subsequent owner route; consecutive unproductive repairs
+remain **0 of 2**. Four-profile receipts and broader Layout oracle evidence remain
+pending before independent Strong exit review.

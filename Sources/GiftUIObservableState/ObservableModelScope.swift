@@ -211,11 +211,21 @@ package struct ObservableModelScope<Model: ~Copyable, Schema>: ~Copyable, ~Escap
         _ key: _GiftUIModelKey<Schema>, mutation: Model.Mutation,
         report: () -> _GiftUIObservableChangeReportOutcome
     ) -> ObservableStateResult where Model: ObservableModelMutation {
+        mutate(key, operation: { mutation }, report: report)
+    }
+
+    /// The finite host action operation is constructed only after mutation
+    /// authority is acquired; no unchecked model callback is exposed.
+    package borrowing func mutate(
+        _ key: _GiftUIModelKey<Schema>, operation: () -> Model.Mutation,
+        report: () -> _GiftUIObservableChangeReportOutcome
+    ) -> ObservableStateResult where Model: ObservableModelMutation {
         do throws(ObservableStateError) {
             let index = try ownership.pointee.beginMutation(
                 ownership.pointee.address(for: key), schema: schema)
             defer { ownership.pointee.endMutation() }
             guard models[index] != nil else { throw .invariantViolation }
+            let mutation = operation()
             let prepared = try models[index]!.preflight(mutation)
             // The only mutable model borrow ends before the report route begins.
             let changed = models[index]!.commit(prepared)

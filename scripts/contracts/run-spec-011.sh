@@ -10,9 +10,13 @@ if [[ -z "${GIFTUI_VALIDATION_LOCK_OWNER:-}" ]]; then
 fi
 
 profile=""
+compiler_baseline=""
+giftui_build=""
 while [[ $# -gt 0 ]]; do
     case "$1" in
         --profile) profile="${2:-}"; shift 2 ;;
+        --compiler-baseline) compiler_baseline="${2:-}"; shift 2 ;;
+        --giftui-build) giftui_build="${2:-}"; shift 2 ;;
         -h | --help)
             printf 'Usage: scripts/contracts/run-spec-011.sh --profile <profile>\n'
             exit 0
@@ -26,6 +30,12 @@ case "${profile}" in
     "") printf 'error: --profile is required\n' >&2; exit 2 ;;
     *) printf 'error: unknown profile: %s\n' "${profile}" >&2; exit 2 ;;
 esac
+
+if [[ "${compiler_baseline}" == rfc-014 ]]; then
+    [[ -n "${giftui_build}" ]] || { printf 'error: RFC-014 requires --giftui-build\n' >&2; exit 2; }
+    exec python3 "${SCRIPT_DIR}/check-spec-011-owned-keys.py" --profile "${profile}" --giftui-build "${giftui_build}"
+fi
+[[ -z "${compiler_baseline}" && -z "${giftui_build}" ]] || { printf 'error: expected --compiler-baseline rfc-014 and --giftui-build\n' >&2; exit 2; }
 
 if [[ "${GIFTUI_IMMUTABLE_REPORT_INNER:-false}" != true ]]; then
     exec "${SCRIPT_DIR}/run-immutable-contract-driver.sh" \

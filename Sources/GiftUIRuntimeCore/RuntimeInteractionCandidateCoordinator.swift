@@ -38,13 +38,6 @@ package protocol RuntimeInteractionOccurrenceView {
     ) -> RuntimeInteractionOccurrence<Identity>?
 }
 
-package protocol RuntimeActionGenerationSource {
-    associatedtype Identity: Equatable & Sendable
-
-    mutating func generation(for identity: Identity) -> ActionGeneration?
-    mutating func resolveCandidate(committed: Bool)
-}
-
 package enum RuntimeInteractionCandidateBuildResult: Equatable, Sendable {
     case ready
     case ownerFailure(RuntimeOwnerFailure)

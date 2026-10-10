@@ -32,4 +32,11 @@ package struct ObservableStateRootTargetAccess<
     ) -> ObservableStateResult {
         root.mutate(identity: identity, ordinal: ordinal, matching: generation, mutation: mutation)
     }
+    package borrowing func mutate(
+        matching generation: ObservableTargetGeneration, operation: () -> Model.Mutation
+    ) -> ObservableStateResult {
+        root.mutate(
+            identity: identity, ordinal: ordinal, matching: generation, operation: operation)
+    }
+
 }

@@ -1,0 +1,7 @@
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC011/RuntimeDerived/InteractionProbe.swift:203:25: error: invalid conversion of thrown error type 'any Error' to 'ObservableStateError'
+201 |     expect(RuntimeRecordInteractionBridge.dispatch(newCapture, records: state, target: target, actionType: Action.self, operation: { _ in operations += 1; return .set(34) }) == .interaction(.dispatched), &checks)
+202 |     let destructed = trace.pointee.destructions
+203 |     try scope.withFrame {
+    |                         `- error: invalid conversion of thrown error type 'any Error' to 'ObservableStateError'
+204 |         try scope.withDiscovery {
+205 |             expect(root.beginCandidate() == .success(.candidateStarted), &checks)

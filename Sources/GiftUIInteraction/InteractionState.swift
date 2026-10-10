@@ -71,28 +71,14 @@ where
         action: BoundedApplicationAction,
         targetGeneration: ObservableTargetGeneration
     ) -> InteractionCandidateAppendResult {
-        guard phase == .staging, let limits else {
-            return .failure(.invalidPhase)
+        if let error = appendFailure(
+            identity: identity, bounds: bounds, clip: clip, paintOrder: paintOrder)
+        {
+            guard phase == .staging else { return .failure(error) }
+            return failCandidate(error)
         }
-        if let candidateError {
-            return .failure(candidateError)
-        }
-        guard !containsCandidate(identity: identity) else {
-            return failCandidate(.invalidIdentity)
-        }
-        guard paintOrder == candidateRecords.count else {
-            return failCandidate(.invalidGeometry)
-        }
-        guard candidateRecords.count < limits.maximumActions else {
-            return failCandidate(.capacityExhausted)
-        }
-        guard let hitBounds = LayoutGeometry.intersection(bounds, clip) else {
-            return failCandidate(.invalidGeometry)
-        }
+        let hitBounds = LayoutGeometry.intersection(bounds, clip)!
         let isEmpty = hitBounds.size.width == 0 || hitBounds.size.height == 0
-        if !isEmpty, candidateHitRegions.count >= limits.maximumHitRegions {
-            return failCandidate(.capacityExhausted)
-        }
 
         let preservedGeneration = matchingCommittedGeneration(
             identity: identity,
@@ -125,6 +111,30 @@ where
             }
         }
         return preservedGeneration == nil ? .requiresGeneration : .preserved
+    }
+
+    /// Shared nonmutating preflight lets the owning key adapter include its pool
+    /// failure in the existing deterministic precedence without staging a record.
+    package borrowing func appendFailure(
+        identity: Identity, bounds: Rect, clip: Rect, paintOrder: UInt16
+    ) -> InteractionError? {
+        guard phase == .staging, let limits else { return .invalidPhase }
+        if let candidateError { return candidateError }
+        var failures = InteractionVisibleFailures()
+        if containsCandidate(identity: identity) { failures.insert(.invalidIdentity) }
+        if paintOrder != candidateRecords.count { failures.insert(.invalidGeometry) }
+        if candidateRecords.count >= limits.maximumActions { failures.insert(.capacityExhausted) }
+        let hitCount = candidateHitRegions.count
+        if let hitBounds = LayoutGeometry.intersection(bounds, clip) {
+            if hitBounds.size.width != 0 && hitBounds.size.height != 0
+                && hitCount >= limits.maximumHitRegions
+            {
+                failures.insert(.capacityExhausted)
+            }
+        } else {
+            failures.insert(.invalidGeometry)
+        }
+        return InteractionFailurePrecedence.select(from: failures)
     }
 
     private borrowing func matchingCommittedGeneration(
