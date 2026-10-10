@@ -41,7 +41,8 @@ than arbitrary closure-capture analysis but is still a source-tooling obligation
 The proposed Canvas declaration is:
 
 ```swift
-public protocol Canvas: View where Body == Never {
+public protocol Canvas: View, _GiftUISemanticPrimitivePayload
+where Body == Never {
     func draw(
         in bounds: Rect,
         context: inout GraphicsContext
@@ -49,13 +50,16 @@ public protocol Canvas: View where Body == Never {
 }
 ```
 
+The existing public bridge marker is inherited to permit `visitPrimitive(self)`.
 The framework supplies `body: Never` and primitive traversal witnesses. Reading
 that body is an invariant violation; normal traversal visits one leaf without
 reading body or calling draw. Concrete Canvas types need neither a body nor
 user-written traversal. Bounds are local `(0, 0, width, height)` with checked
 nonnegative resolved dimensions; parent translation and clip remain framework
 responsibilities. This preserves today's local-size semantics without exposing
-backend or absolute device coordinates.
+backend or absolute device coordinates. Synchronous `GraphicsContext.withPath`
+closures remain supported; this change removes the retained drawing closure,
+not every closure in drawing source.
 
 A proposed model-schema macro, provisionally `@ObservableModel`, recognizes
 `@Published` fields, emits finite property identities and current/frozen access
@@ -204,6 +208,23 @@ Finite access lowering performs the following exact jobs:
    linking. Apply the same semantic rules to Dynamic and Static. No raw Dynamic
    build may bypass required context selection and serve as a parity oracle.
 
+The public GraphicsContext remains a drawing capability, not a model resolver.
+The generated invocation adapter receives two separate arguments: frozen-model
+read access and the scoped graphics context. Drawing/Core supplies its existing
+invocation seam; target composition supplies the concrete typed model adapter.
+
+| Module boundary | Proposed responsibility |
+| --- | --- |
+| GiftUI / host-only tooling | Canvas/property authoring declarations, primitive witnesses, safe identity/access interface shapes and finite source transformation; no concrete Runtime storage import |
+| Application Presentation/schema | Typed model/property descriptors and contextual body/draw/helper entrypoints; no backend or Runtime dependency |
+| Observable State | Structural association, registration, model-value revisions and local access failures |
+| Runtime/target composition | Concrete typed banks, frame/mutation capabilities, owner lifetime and application-specific adapters; pass these explicitly to generated entrypoints |
+| Drawing/Layout/Render | Existing geometry, ordering and owned plan contracts; no application model or owner resolver in a backend |
+
+Exact generic access-interface declarations and compiler-visible target boundaries
+are part of C-P1. A hidden dependency from GiftUI/Drawing into Runtime or an
+existential model registry is not an acceptable implementation shortcut.
+
 This is a finite model/schema/callable binding proposal, not a general Swift
 compiler. The emitted traversal still evaluates actual source branches at
 runtime. If the two real applications cannot fit that finite boundary, record
@@ -257,7 +278,12 @@ No property-level dependency graph is introduced. A changed current property
 reports coarse model dirtiness before mutation returns; no-op omission requires
 proven equality. Compound field/collection changes use finite checked mutation
 operations; do not expose raw mutable storage or unconstrained `_modify` yields.
-The frame's model revision is recorded at freeze. Dirty clearing follows existing
+Each successful changed property operation advances a bounded model-value
+revision and reports dirtiness; reserve the revision before changing data and
+refuse exhaustion without wrapping. This revision is distinct from allocation,
+registration and frame generations. It adds a proposed model-value-generation
+exhaustion outcome to the Spec error mapping. The frame records the revision
+whose complete values it copied. Dirty clearing follows existing
 semantic publication rules, not Canvas success or physical display acceptance.
 
 ## 4. Canvas staging and release
@@ -341,3 +367,42 @@ applicable warnings; its positive borrow fixture does not validate this source
 contract. A future bounded proof must use these exact interfaces and cases;
 if context injection exceeds finite binding scope, report the incompatibility
 rather than silently turning C into A or substituting explicit read APIs.
+
+## 7. Contract controls for the next proof
+
+These are required future observations, not tests executed by this design task.
+
+| Control | Required observation |
+| --- | --- |
+| Two fields changed before freeze | Body and draw see the same final pair and model-value revision, even when property read order differs |
+| Next frame with only one field changed | The other field retains its latest value; no stale-bank swap or copy-back |
+| Current write attempted during body/draw | Rejected before any write; incoming source event is admitted separately and appears only after its later mutation phase |
+| Saved frame key used in the next frame or another owner | Bounded stale/foreign-context failure before access; no lookup of the newest model |
+| Generated getter/helper without a context | Build diagnostic; no unlowered fallback, global lookup or nominal default-valued getter |
+| Access failure inside nonthrowing body source | Generated attempt propagates exact failure, discards candidate and never draws/offers incomplete output |
+| Multiple instances of the same Canvas conformer | Distinct occurrence values and order; one shared frozen model version; no body evaluation or draw during Layout |
+| New State encountered after initial freeze | Both versions initialized from one seed before its body; a known State ignores replacement seeds; failed candidate preserves published associations |
+| Retained former model and another replacement request | Installed and former stay valid; first-excess reservation fails without overwrite; release permits fresh-generation reuse |
+| Failure after replacement / halfway through Canvas list | New association remains; dirty survives; all pending payloads/context borrows released once; no mutation replay |
+| Teardown with stale key vs owning ticket | A key alone cannot access freed storage; an owning ticket prevents premature destruction of its backing |
+
+First proposed experiment: C-P1/C-P2 source/context feasibility only, with the
+counter model, one analyzer capture-reader/helper and concrete protocol Canvas
+staging/invocation under a disposable adapter. Include actual GiftUI declaration
+sources where compatible and identify every draft replacement. Manual generated
+code alone can test calling/lifetime feasibility but cannot prove source lowering;
+that claim needs a reproducible finite transformation and unsupported-use checks.
+
+Proposed ceiling: **90 active minutes, 48 compiler/link/executable invocations,
+two repair rounds, one candidate**, all hardware-free on macOS Dynamic/Static,
+Pi ARMv6 Dynamic and nRF Embedded Static. Freeze the positive/negative call matrix
+and exact compiler versions before execution. Source/property context coverage,
+typed failure propagation and negative escape controls are mandatory; no broad
+performance campaign or production migration is included. Stop on an unavoidable
+contract/scope contradiction or the first exhausted limit and report supported,
+incompatible or inconclusive. No automatic successor or renewed budget.
+
+This is a reviewable proposed recipe, not launch authorization or a new Spike
+record. If authorized, register the bounded Spike under RFC-014 before writing
+or running experimental code. Keep C-P3 application/complete-image proof distinct;
+a successful small compiler probe cannot close B0/B2/B3/B4.

@@ -25,7 +25,9 @@ bounded borrow/key evidence and actual Canvas compatibility counterexamples.
 The [2026-10-10 working direction C](rfc-014-decision-direction.md) now leads:
 protocol Canvas plus observable properties in current/frozen owner storage.
 It replaces the earlier recommendation from the [A/B comparison](rfc-014-source-design-options.md);
-exact API/access rules, physical backing and formal approval remain open. The
+the [detailed contract](rfc-014-c-contract.md) and [storage ledger](rfc-014-c-storage-ledger.md)
+now propose explicit access/phase rules and a five-bank analyzer baseline.
+Compiler realization, full layouts/costs and formal approval remain open. The
 [ownership audit](rfc-014-ownership-audit.md) identifies host retention and
 replacement obligations; neither app yet proves its peak retained bound (B2).
 These inform capture storage under ADR-034 (B0), whose slot count remains open.
@@ -37,10 +39,39 @@ historical inputs; this result does not reopen their budgets or experiments.
 | --- | --- |
 | I3-T01 correction package | Complete within the hardware-free boundary; [result and residual gates](i3-t01-result.md). |
 | I3-T02 runtime design, I3-04 / ME-05 | Delivered with named blockers: [RFC-014 review and contract map](i3-t02-design-review.md). |
-| RFC-014 B1/B2 follow-up | SPIKE-069 terminal; source comparison and ownership audit delivered. Direction C recorded: protocol Canvas and versioned properties. Exact binding, compiler/ownership evidence and B0 remain open. |
+| RFC-014 B1/B2 follow-up | SPIKE-069 terminal; source comparison and ownership audit delivered. Direction C contract/ledger delivered; finite context lowering unproved, five-bank baseline conflicts with ADR-034. Focused proof proposed, not authorized. |
 | ME-06 runtime implementation | Blocked on the resulting architecture/contract gates and complete resource/lifetime evidence; no ready migration plan yet. |
 | ME-08 integrated validation | Waits for the adopted implementations and exact artifact identities; connected evidence remains separately authorized. |
 | ME-09 closure/handoff | Waits for the criterion dispositions and maintainer decision; no automatic iteration-4 extraction. |
+
+## RFC-014 detailed C contract — 2026-10-10
+
+Eugene instructed “Let’s proceed” after the working-direction/process record,
+authorizing this detailed design step. It is complete as a draft contract and
+source/ownership review, with no new experiment or production implementation.
+
+| Step | Result |
+| --- | --- |
+| Access and lifecycle contract | `7fddb2fa`: [Canvas/property source, contextual read operations, copy-freeze, initialization and error behavior](rfc-014-c-contract.md). |
+| Application storage ledger | `a45b67fe`: [K=2/F=1 ownership and replacement traces](rfc-014-c-storage-ledger.md); five analyzer banks cost 32,320 transition bytes before other storage. |
+| Review and integration | This update: revised RFC blockers/decision links, authority conflict map and focused proof controls; no acceptance or experiment launch. |
+
+The key remaining feasibility issue is finite context injection for ordinary
+property syntax and safe scoped access, including failure propagation from
+nonthrowing body source. The protocol itself does not solve it. The conservative
+five-bank physical proposal requires an ADR-034 amendment; no complete linked
+RAM/stack claim follows from its transition-backing arithmetic.
+
+Next proposed evidence is a single C-P1/C-P2 compiler/source proof: 90 active
+minutes, 48 compiler/link/run invocations and two repair rounds across the four
+configurations, no hardware. The [recipe and controls](rfc-014-c-contract.md#7-contract-controls-for-the-next-proof)
+are reviewable but not authorized or registered as a launched Spike. C-P3 and
+whole-image evidence remain separate; no general feasibility cycle is opened.
+
+Validation: governance validator, local file links, source inventory of analyzer
+State/Canvas sites, exact reservation arithmetic and `git diff --check`. Examples
+are uncompiled. Existing authority, iteration scope and terminal experiment
+budgets are unchanged. Review remains not ready for RFC approval.
 
 ## RFC-014 working-direction record — 2026-10-10
 

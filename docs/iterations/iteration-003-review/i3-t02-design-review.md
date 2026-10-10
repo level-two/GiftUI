@@ -15,8 +15,10 @@ or changing the original task's budget/history.
 The [maintainer-proposed direction C](rfc-014-decision-direction.md) now leads
 further RFC design: protocol Canvas and observable properties backed by current
 and frozen versions. Earlier A/B recommendations below are historical. **Verdict
-remains not ready:** no exact getter binding, version-transfer protocol, peak
-storage ledger or target proof for C exists yet. SPIKE-069 did not test it.
+remains not ready:** the later [C contract](rfc-014-c-contract.md) and
+[storage ledger](rfc-014-c-storage-ledger.md) now specify candidate binding,
+copy-freeze and peak logical roles. Their compiler realization, exact layouts
+and target costs remain unproved. SPIKE-069 did not test C.
 
 Review C against ADR-028's closure-specific contract and ADR-024/025/026's model
 ownership/phase rules. Keep current mutation serialized; the presence of two
@@ -27,6 +29,46 @@ Do not carry the earlier four-slot arithmetic into C without recomputation.
 
 This follow-up records direction and process only, with governance/link/whitespace
 validation. It performs no new experiment and changes no approval status.
+
+## Detailed C contract review — 2026-10-10
+
+**Verdict: not ready for RFC approval; detailed design step delivered.** This is
+an author consistency review of the proposed contract/ledger, not independent
+review, compiled evidence or approval. Exact operation meanings and first-excess
+behavior replace the previous unspecified version-selection/storage questions.
+They remain candidate contracts until the lifecycle approvals.
+
+| Severity / location | Finding | Required resolution |
+| --- | --- | --- |
+| Blocker B1/B4 — C contract §2 | `@Published` syntax has no implicit runtime-context argument in Swift. The design now explicitly requires finite generated current/frozen access routes, including typed error transport from nonthrowing body source. | C-P1 must demonstrate the real source transformation and reject unchecked paths; manually written contextual functions alone do not validate the authoring surface. Stop if it requires a general compiler outside iteration scope. |
+| Blocker B1 — C contract §2/§4 | Safe identity keys remove stored raw pointers, but actual read/GraphicsContext/owner borrows must remain confined. Protocol conformance and noncopyable values alone do not establish that. | C-P2 negative controls and actual traversal/staging invocation; resolve supported lifetime policy without importing SPIKE-069's experimental-warning result as approval. |
+| Blocker B0/B2 — C storage ledger | K=2/F=1 with independent source/admission requires five non-sharing capture banks: 32,320 transition bytes, +12,928 over ADR-034. Four-bank staging reuse fails the retained-former + installed + frozen case. | Explicit storage decision/ADR-034 amendment or a separately proven sharing realization; complete metadata, ABI/alignment, stack and Dynamic accounting. |
+| Blocker B1/B2/B4 — owner ticket and host migration | Separate application ownership, registration and frame leases now have an explicit logical ledger; actual Static ticket lifetime and Dynamic equivalence remain unimplemented. Failure effects cannot mutate during freeze. | C-P3 host sequence including failed attach with independently owned candidate, retained former, first-excess/retry, failure-effect ordering and teardown before caller storage release. |
+| Blocker B4 — source/model schema | New model schema, presentation capture projection and Canvas methods require migration beyond changing a type name. Newly materialized State must get a same-epoch frozen copy before its body. | Implementable declarations and finite complete field/helper inventory for analyzer/counter; verify normal initialization, ignored seed, structural-removal and branch-capacity behavior. |
+| Unchanged B2/B3 / iteration performance | The ledger counts capture backing, not complete firmware resources. Runtime record codecs/path bounds and full-image costs remain open; 4 MHz performance failure is independent. | Preserve their original evidence gates and distinguish approval evidence from post-Spec implementation conformance; no arithmetic-only feasibility claim. |
+
+### Authority conflict and migration map
+
+| Existing authority | Candidate disposition |
+| --- | --- |
+| ADR-006 / SPEC-006 runtime structural traversal | Preserve runtime traversal and exact identity; amend Canvas protocol leaf recognition/contextual evaluation seams. Never generate graph topology. |
+| ADR-024 / SPEC-010 structural State ownership | Preserve materialization, replacement, removal and external ownership. Add separate property identity, model-value/frame epochs, typed owner tickets and frozen-map outcomes. |
+| ADR-025 / ADR-011 serialized invalidation/publication | Preserve coarse synchronous reporting, mutation phases, non-reentrancy and failed-frame dirty state. No current writes while frozen and no concurrent mutation feature. |
+| ADR-026 bounded equivalent profiles | Preserve source semantics and zero-heap Static requirements; explicitly review model-schema/context lowering and corresponding Dynamic rules. |
+| ADR-028 / SPEC-012 closure-based Canvas | Requires an explicit Canvas representation decision/amendment: protocol values replace stored drawing closures. Preserve scoped context, checked local geometry, order, once-per-attempt and cycle-local plan. |
+| ADR-034 / SPEC-001/013/015 capture reservation | Five-bank baseline conflicts with exact three-bank authority. Retention stays five seconds/404 entries; no unilateral constant/budget change. |
+| SPEC-003/009/010/013/015 errors and owner composition | Review new capacity/epoch/access outcomes and their adapter mappings, versioned property/failure-effect sequencing and host cache removal. Existing production mappings are not silently reused. |
+
+Non-blocking naming detail: `@ObservableModel`, `@Published` and presentation
+projection spelling are provisional, with no Combine compatibility commitment.
+The logical access/ownership contract must be reviewed before stabilizing names.
+No correctness blocker is hidden in a deferred item; storage alternatives remain
+current RFC choices until B0 is resolved.
+
+The proposed next proof is precisely C-P1/C-P2 and has a 90-minute/48-invocation/
+two-repair ceiling. It is not launched, and the design request does not reset
+any prior Spike budget. Governance, links, arithmetic and whitespace checks pass;
+no source examples were compiled and no supported-image feasibility is claimed.
 
 ## What this step established
 

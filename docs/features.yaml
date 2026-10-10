@@ -20,7 +20,8 @@ features:
     # I3-T02 produced draft RFC-014; ownership/resource adoption blockers remain.
     # SPIKE-069 completed: borrow/key evidence; no proof of the later protocol/versioned design.
     # Working direction C: docs/iterations/iteration-003-review/rfc-014-decision-direction.md.
-    # Protocol Canvas and versioned properties; exact contracts/approval remain open.
+    # Detailed C contract/ledger: docs/iterations/iteration-003-review/rfc-014-c-contract.md.
+    # Finite context lowering unproved; five-bank baseline proposed, no approval/experiment launch.
     # Design comparison: docs/iterations/iteration-003-review/rfc-014-source-design-options.md.
     # Ownership audit: docs/iterations/iteration-003-review/rfc-014-ownership-audit.md; peak R unproved.
     # Acceptance provenance: docs/iterations/iteration-003-review/proposal-007-acceptance.md.

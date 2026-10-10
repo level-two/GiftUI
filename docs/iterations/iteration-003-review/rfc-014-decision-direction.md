@@ -14,6 +14,17 @@ commitment. Earlier [A/B designs](rfc-014-source-design-options.md) remain
 alternatives. The recommendation to develop closure-based SnapshotCanvas first
 is replaced by the following working direction, C.
 
+## Detailed design follow-up
+
+The [C contract draft](rfc-014-c-contract.md) now specifies Canvas source,
+contextual property reads, eager copy-freeze, initialization, replacement and
+error behavior. The [storage ledger](rfc-014-c-storage-ledger.md) proposes K=2
+current models and F=1 frozen frame model for both apps, with five analyzer
+capture-sized banks and bounded refusal when a former owner occupies capacity.
+These are proposed refinements under the instruction to proceed, not accepted
+ADRs/Specs. Source-context injection, precise layouts and complete target costs
+remain unproved; the contract supplies a bounded next-proof proposal.
+
 ## Decisions to carry into the RFC
 
 | ID | Working design choice | Meaning and limit |

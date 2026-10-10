@@ -177,6 +177,9 @@ now proposes K=2 current model slots and F=1 frozen slot: five analyzer
 capture-sized banks (32,320 transition bytes), with first-excess replacement
 refusal while a former owner occupies the second current slot. This conflicts
 with ADR-034 and remains a proposed resource branch, not an approved increase.
+The [detailed C review](../iterations/iteration-003-review/i3-t02-design-review.md#detailed-c-contract-review--2026-10-10)
+maps those changes to existing authority and names C-P1/C-P2 as the next
+proposed bounded proof. No experiment is launched by the contract design.
 
 ### Runtime records and exact identity
 
@@ -322,7 +325,7 @@ at replacement commit must be included, not just the state after cleanup.
 The counter captures its scalar value by value. It needs no analyzer capture
 pool and must not import analyzer owners.
 
-### Non-escape boundary
+### Non-escape boundary — earlier callback branch
 
 A live lease is an ownership precondition, not a magic safety token. All
 framework callbacks that receive bound state or capture access return only
@@ -541,6 +544,12 @@ accepted ADRs and implemented Specs remain unchanged until normal approvals.
 
 ## Testing Strategy
 
+C's [contract controls and proposed proof recipe](../iterations/iteration-003-review/rfc-014-c-contract.md#7-contract-controls-for-the-next-proof)
+add coherent multi-field freezing, unchanged-field preservation, new State
+materialization, context-injection/failure transport, protocol-witness selection,
+foreign/stale frame keys and retained-former first-excess cases. These are future
+controls, not executed tests or authorization to run another Spike.
+
 - Independent structural path and modifier-order corpus, branch/optional shape
   changes, declaration insertion that shifts record indices, and exact first-
   excess limits. Source perturbations must change runtime output without graph
@@ -570,9 +579,9 @@ of these risks is resolved by the conditional RAM sum.
 
 | ID | Blocking issue | Required resolution |
 | --- | --- | --- |
-| B0 | Proposed fourth capture slot contradicts accepted ADR-034 | Explicitly choose an ADR-034 amendment/successor that preserves its retention semantics, or revise the proposal with proven three-slot replacement. Do not modify limits first. |
-| B1 | Enforceable State/model/capture access and callback isolation | SPIKE-069 refutes callback restriction alone and supports a bounded borrow/key fixture. Develop direction C (protocol Canvas and versioned observable storage): settle coherent freeze, current/frozen binding, exact declarations, finite dispatch, compiler support and every owner/access route. Prior Spike evidence does not validate C. Full no-escape/exclusivity/zero-heap proof remains open. |
-| B2 | Complete record/payload/path/interaction and model storage | Derive exact worst-case counts/codecs, trie fanout and peak externally retained model cardinality for both apps (including audited host caches and transient replacement ownership), all source cases; validate every proposed byte row, replacement capture and generated Canvas capture size; approve resulting SPEC-001/013/015 limits. |
+| B0 | C proposes five capture banks; accepted ADR-034 requires exactly three | Review C's K=2/F=1 non-sharing ledger and choose an ADR-034 amendment/successor preserving retention, or prove a compatible alternative. Earlier four-slot arithmetic does not cover this baseline. Do not modify limits first. |
+| B1 | Enforceable State/model/capture access and callback isolation | SPIKE-069 refutes callback restriction alone and supports a bounded borrow/key fixture. The C contract now proposes coherent copy-freeze, contextual property access and typed protocol dispatch. Prove finite context lowering, typed failure transport, compiler support and every owner/access route (C-P1/C-P2); exact Swift realization remains open. Prior Spike evidence does not validate C. Full no-escape/exclusivity/zero-heap proof remains open. |
+| B2 | Complete record/payload/path/interaction and model storage | C proposes K=2/F=1 with a retained-former ledger and exact first-excess refusal; verify actual owners and every failure edge (C-P3), complete layouts/codecs/trie fanout and all source cases; validate every proposed byte row, replacement capture and generated Canvas capture size; approve resulting SPEC-001/013/015 limits. |
 | B3 | Complete supported-image stack and Dynamic cost | Bound recursive/indirect/callback/IRQ paths and construction/service/teardown; measure matched Dynamic memory. No unknown edge may be recorded as zero. |
 | B4 | Concrete supported lowering and migration completeness | Inventory graph producers/consumers and replace them with actual runtime traversal; show bounded Static callable/model lowering and full four-profile application behavior. |
 

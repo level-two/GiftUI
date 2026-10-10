@@ -18,6 +18,8 @@ Use the same model cardinality proposal for both selected applications:
 | Active root State associations | 1 | Stable root of each selected application; candidate replacement does not create a second structural location. |
 | Registration reservation during replacement | 2 | Old active plus attaching candidate; existing registration-generation semantics apply. |
 | Per-Canvas model owner tickets | 0 | Concrete payload stores safe identity/epoch; one frame owner covers every read. |
+| Analyzer Canvas occurrences / concrete types | 5 / 2 | One grid plus four channel traces; type count differs from occurrence count. |
+| Counter Canvas occurrences / concrete types | At most 1 / 1 | Zero in the non-Canvas mode; one in the Canvas mode, even when value zero emits no stroke. |
 
 K=2 does **not** promise installed + detached former + another candidate at once.
 If a former application owner remains, both current slots are occupied and the
@@ -64,7 +66,7 @@ lower bound, four channel baselines and revision metadata. The proposed analyzer
 schema contains acquisition state, visible window, diagnostic, capture revision
 and the separate presentation capture field. Keep the capture revision and
 its metadata consistent; do not independently snapshot duplicate state fields.
-All model, ownership, registration, dirty, frame-map and alignment bytes are
+All model, ownership, registration, model-value revision, dirty, frame-map and alignment bytes are
 additional and remain B2 layout obligations. No reuse of RFC-014's earlier
 1,024-byte model/control estimate is assumed.
 
