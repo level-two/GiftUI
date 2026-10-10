@@ -356,3 +356,34 @@ repair, broad gate, target execution or downstream work was performed. Consecuti
 unproductive repair count remains 0 of 2. The confirmed P2 fix awaits separate
 Strong verification; P03 remains blocked on the reviewed lexical visitor contract
 question and no public contract change or approval is inferred.
+
+## Package checkpoint — separate Strong review complete
+
+Sequential implementation and independent review were dispatched to
+`gpt-6-astra` with `high` reasoning. The review covered `d1b1f2df..b19a0952`,
+then separately verified the bounded repair in `7594b724`. The implementation
+commits are `12896815` (checked mutation/discovery), `e1cb8711` (scoped roots and
+replacement), `8b726ce3` (fixed callbacks and escape evidence), and `7594b724`
+(registration-generation precedence); `b19a0952` records the safety checkpoint.
+
+The review's P2 precedence finding is resolved. The preflight preserves phase
+and compatibility ordering and existing bindings, while checking exhaustion
+before materialization. The reviewer verified that all four step-7 receipts
+hash the committed changed inputs. The 23 new checks cover combined generation
+and capacity failures with unchanged ownership, callbacks and allocation
+identity. No additional confirmed issue was found in the bounded repair.
+No redundant test rerun was needed for this read-only review.
+
+The P1 lexical visitor finding remains open as the
+[contract decision](lexical-visitor-blocker.md). Literal two-pass enumeration
+violates OS-010, and no safe current-contract replacement has been demonstrated.
+The recommended next decision is a coordinated SPEC-010/006 visitor lifetime
+amendment preserving exactly-once discovery, binding before body, failure
+suppression and existing capacities. No amendment is approved or implemented.
+
+Package boundary: P01/P02 passed; P03 incomplete and stopped for that decision;
+P04–P12 pending. Remaining P03 work is listed in step 6. The repair guard remains
+0 consecutive unproductive attempts of 2. The evidence establishes selected
+components only, with 473 assertions per native profile and cross-compilation/ABI
+checks on ARMv6 and Embedded. There is no whole-module, linked zero-heap,
+connected-hardware or implemented-Spec claim.
