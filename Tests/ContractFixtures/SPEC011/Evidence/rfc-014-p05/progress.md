@@ -1,5 +1,39 @@
 # RFC-014 P05 progress
 
+## Independent Strong exit-review dispatch — 2026-10-11
+
+- Slice: separate review of the finite P05 exit, LY-RD-001–002 / T9.1 and
+  IN-RD-001–002 / T12.1 applicable package portions. P04 prerequisite passed.
+- Input: clean `9bcd5ed6`; implementation range `2aa5c7cc..9bcd5ed6`;
+  clean tested source `fec8a27c`. Later commit contains evidence/documentation.
+- Read the P05 sequence/task context, both owner matrices and amendments,
+  retained baseline query/layout/dispatch rules, ADR-032/033/035/036 and
+  SPEC-013/015 key/lifetime bounds. This receipt links exact fixtures, baseline
+  oracles, source/compiler/artifact identities and eight final owner/profile runs.
+- Inspect SemanticRecordLayoutView/RenderView, owned Interaction key regions,
+  append error precedence and complete abort, accepted-offer resolution,
+  RuntimeRecordInteractionBridge and the P03 checked operation-thunk extension.
+  Verify stale target/release cancellation, bank reuse/refusal, borrowed-view
+  safety, unchanged geometry/limits and independent oracle applicability.
+- Expected outcomes are the approved contracts and preserved baseline controls;
+  fixtures alone are not authority. Assess inline pool-limit interpretation and
+  every retained key/capture copy in resource accounting. No contract decision
+  is delegated to the reviewer.
+- C2/R3 → Strong `gpt-6-astra` / `high`, separate from implementation. Allowed
+  output: independent findings/disposition in this evidence directory, relevant
+  task-evidence links and a committed review receipt. No implementation repairs,
+  successor work, contract change or package-pass edits by the reviewer.
+- Commands: inspect `git diff 2aa5c7cc..9bcd5ed6`, verify the exact saved input/
+  compiler/artifact hashes, run narrowly justified reproductions only for a
+  concrete concern, `scripts/validate-governance.rb` and `git diff --check` after
+  review records. Reuse valid passing routes; do not repeat all eight by default.
+  Do not rerun the optional dependency-check investigation recorded below.
+- Keep native execution distinct from target compile/ABI evidence and P05
+  component exit distinct from P06–P12 application/coordinator/resource gates.
+- Consecutive unproductive repair count remains **0 of 2** across this handoff.
+  Report blockers or missing contract/scope authority to the parent; do not
+  supply an unapproved resolution. Independent review and P05 exit pending.
+
 ## Entry and implementation dispatch — 2026-10-11
 
 - Input `2aa5c7cc`, clean working tree. P04 passed at its finite package boundary
