@@ -6,7 +6,7 @@ status: draft
 authors:
   - codex
 created: 2026-10-09
-updated: 2026-10-09
+updated: 2026-10-10
 proposal:
   - PROPOSAL-007
 related_rfcs:
@@ -59,8 +59,11 @@ provides bounded compiler/lifetime evidence and exposes a concrete source/API
 choice; it does not close B1 or establish application feasibility.
 The subsequent [source-design comparison](../iterations/iteration-003-review/rfc-014-source-design-options.md)
 and [application ownership audit](../iterations/iteration-003-review/rfc-014-ownership-audit.md)
-make both source choices and retention risks reviewable. Explicit scoped APIs
-are recommended for further design; no source contract or pool bound is selected.
+make the earlier A/B choices and retention risks reviewable. The maintainer
+subsequently proposed a Canvas protocol and versioned observable storage.
+The [2026-10-10 working direction C](../iterations/iteration-003-review/rfc-014-decision-direction.md)
+replaces the earlier recommendation to develop closure-based SnapshotCanvas first.
+RFC approval, exact declarations and physical pool bounds remain open.
 
 ## Summary
 
@@ -68,10 +71,11 @@ Evaluate the real portable declarations through Semantic Core's traversal and
 emit bounded records at runtime. Retain complete structural identity separately
 from each revision's record indices. Keep live models in address-stable typed
 owner storage; freeze application data through post-layout Canvas invocation.
-Investigate owned snapshot keys in staged Canvas payloads, resolving fresh
-scoped reads under the live owner instead of copying the analyzer's full capture
-into nested declaration bodies. The source lowering or API change remains an
-explicit choice. Keep existing owner boundaries and transaction order.
+Develop a Canvas protocol with explicit draw invocation and observable properties
+backed by current/frozen logical model versions. Bind graph and drawing reads
+to one frozen frame revision under a live owner. Preserve serialized mutation
+and existing transaction order. Per-Canvas snapshot keys remain an earlier
+alternative, not a required mechanism when the frame owner covers every read.
 
 The recommendation is to pursue this representation at the contract-design
 boundary, subject to B0–B4 below. This is not a recommendation to approve an
@@ -131,7 +135,9 @@ external-package success is not required here and cannot be claimed from it.
 task-local state, reflection, existential registry or application model in a
 backend is introduced. Fixed callable code and type-role tags may be generated;
 parent/child links, expanded branches and per-application scope tables may not.
-The Static Canvas syntax lowering required by SPEC-012 remains mandatory.
+The Static Canvas syntax lowering required by SPEC-012 remains mandatory for
+current production; direction C proposes replacing that source contract through
+explicit ADR/Spec changes, while retaining bounded typed storage and dispatch.
 Generating code for a syntactic callable is distinct from generating its runtime
 occurrences and captures.
 
@@ -141,6 +147,27 @@ workload limits. Record allocation does not silently raise them. New physical
 byte budgets below are proposals requiring SPEC-013/015 approval.
 
 ## Proposed Design
+
+### Current direction — protocol Canvas and versioned observable storage
+
+The [working decision record](../iterations/iteration-003-review/rfc-014-decision-direction.md)
+defines C1–C6 and the approval process. Canvas becomes a View-refining protocol
+with Body == Never, framework-supplied leaf traversal and an explicit draw method.
+Observable properties delegate to stable typed owner storage with current/frozen
+logical versions. One coherent frame freeze covers graph, Layout and drawing;
+external facts still enter admission rather than mutating a frozen model.
+
+This is the working RFC direction, not accepted architecture. It does not adopt
+the earlier ScopedState/WithModel/SnapshotCanvas surface or prove that implicit
+property reads can be safely bound. Exact API/compiler/access design is B1/B4.
+Graph association does not transfer all application ownership to transient nodes.
+Physical buffer mapping, replacement and retained owners remain B0/B2.
+
+The runtime identity and publication principles below remain proposed shared
+requirements. The per-Canvas key realization, callback-only restriction and
+four-slot arithmetic below describe the earlier branch and its evidence; they
+are not automatically the realization or reservation for C. Recompute the
+resource model from C's complete owner/version ledger before approval.
 
 ### Runtime records and exact identity
 
@@ -222,7 +249,7 @@ no two-slot bound may be assumed sufficient for arbitrary retained replacements.
 That cardinality and exhaustion behavior are part of B1/B2. Generation
 exhaustion refuses reuse. Application start/stop remains explicitly host-owned.
 
-### Capture access through Canvas
+### Capture access through Canvas — earlier key-based branch
 
 Keep owned `SignalCapture` values and their snapshot semantics for existing
 Domain/publication APIs. Do not reinterpret that `Equatable, Sendable` value as
@@ -326,18 +353,20 @@ firmware, application stack or complete ownership proof was produced.
 
 The [source-design comparison](../iterations/iteration-003-review/rfc-014-source-design-options.md)
 now supplies analyzer/counter source sketches, required lowering, compatibility
-costs and a recommendation to develop explicit scoped APIs. This recommendation
-is not a selected contract or a proof that its generic declarations compile.
-Two source realizations remain review candidates:
+costs and the earlier recommendation to develop explicit scoped APIs. The
+[working direction C](../iterations/iteration-003-review/rfc-014-decision-direction.md)
+now leads further design. The following two alternatives remain comparison
+inputs, not a proof that any generic declarations compile:
 
 | Candidate | Required design before adoption | Tradeoff / evidence boundary |
 | --- | --- | --- |
 | Preserve portable source through checked finite lowering | Define accepted model/capture uses; diagnose escapes; transform staged captures into pinned keys; prove every generated route and Dynamic equivalence | Preserves the source objective, adds compiler-tooling obligations; A does not refute this, but no such checker/lowerer was built |
 | Expose scoped model reads and snapshot-aware Canvas invocation | Review exact portable State/body/Canvas declarations and compatibility; supply a fresh borrow at invocation from a declaration-selected key | B supports the internal mechanism, but the existing escaping Canvas signature cannot directly carry its borrowed view |
 
-Recommend scoped reads plus delayed owned keys as the internal mechanism to
-develop. Do not infer selection of either public contract. Neither approach
-permits hidden pre-expanded graphs, an unbounded owner pool, arbitrary unsafe
+Scoped reads plus delayed owned keys remain the earlier internal candidate.
+Direction C first tests whether a frame-owned frozen model covers all drawing
+reads without separate Canvas snapshot ownership. No exact public contract is
+approved. None of these candidates permits hidden pre-expanded graphs, an unbounded owner pool, arbitrary unsafe
 backing aliases or unsafe getters after teardown. The next design decision is
 the source-enforcement boundary alongside application ownership/cardinality;
 additional full-image benchmarking cannot decide that API tradeoff.
@@ -372,14 +401,15 @@ pointers and never by replaying admitted mutations.
 
 ## Public API Impact
 
-Retain `View.body`, `@State`, typed Button actions and the portable Canvas source
-shape as the design objective. No new public resolver argument is selected.
-SPIKE-069 shows that the concrete nonescapable read view cannot be directly
-captured by the existing Canvas declaration. Checked finite lowering could
-preserve source shape; the explicit-scoped-access alternative changes it.
-Choose that semantic/source boundary in this RFC before approval, with exact
-reviewed declarations carried into the affected Specs. A different State or
-Canvas API cannot be introduced as an implementation detail.
+Retain ordinary `View.body`, typed Button actions and common portable semantics.
+Direction C intentionally changes concrete closure-based Canvas into a protocol
+with explicit context/bounds invocation. Its proposed observable property wrapper
+uses stable versioned storage; spelling, initialization and read-context binding
+remain open. It is not automatically Apple's `@Published` semantics or a Combine
+dependency. Review compatibility against ADR-024/025/026/028 and SPEC-010/012.
+Current source remains authoritative until the required decisions and contracts
+are approved. Neither property storage nor Canvas replacement is a private
+implementation-only change.
 
 ## Capabilities Impact
 
@@ -420,8 +450,10 @@ no CPU optimization in this proposal removes that necessary-condition failure.
 
 ## Memory / Binary Size
 
-The following is a **proposed reservation model**, not approved limits, measured
-consumption, a complete codec, or a safe-stack finding. Extra pools are explicitly
+The following is the **earlier key-based branch's proposed reservation model**;
+direction C requires a fresh mapping of logical versions to physical backing.
+It establishes neither approved limits nor measured consumption, a complete
+codec, or a safe-stack finding. Extra pools are explicitly
 charged; no implicit use of leftover platform RAM is permitted.
 
 | Analyzer frame-store family | Proposed bytes | Basis / unresolved detail |
@@ -530,7 +562,7 @@ of these risks is resolved by the conditional RAM sum.
 | ID | Blocking issue | Required resolution |
 | --- | --- | --- |
 | B0 | Proposed fourth capture slot contradicts accepted ADR-034 | Explicitly choose an ADR-034 amendment/successor that preserves its retention semantics, or revise the proposal with proven three-slot replacement. Do not modify limits first. |
-| B1 | Enforceable State/model/capture access and callback isolation | SPIKE-069 refutes callback restriction alone and supports a bounded borrow/key fixture. Select the source direction from the companion comparison (explicit scoped APIs recommended, not adopted); settle exact declarations/lowering, compiler support, live backing/application ownership and every generated route. Full no-escape/exclusivity/zero-heap proof remains open. |
+| B1 | Enforceable State/model/capture access and callback isolation | SPIKE-069 refutes callback restriction alone and supports a bounded borrow/key fixture. Develop direction C (protocol Canvas and versioned observable storage): settle coherent freeze, current/frozen binding, exact declarations, finite dispatch, compiler support and every owner/access route. Prior Spike evidence does not validate C. Full no-escape/exclusivity/zero-heap proof remains open. |
 | B2 | Complete record/payload/path/interaction and model storage | Derive exact worst-case counts/codecs, trie fanout and peak externally retained model cardinality for both apps (including audited host caches and transient replacement ownership), all source cases; validate every proposed byte row, replacement capture and generated Canvas capture size; approve resulting SPEC-001/013/015 limits. |
 | B3 | Complete supported-image stack and Dynamic cost | Bound recursive/indirect/callback/IRQ paths and construction/service/teardown; measure matched Dynamic memory. No unknown edge may be recorded as zero. |
 | B4 | Concrete supported lowering and migration completeness | Inventory graph producers/consumers and replace them with actual runtime traversal; show bounded Static callable/model lowering and full four-profile application behavior. |
@@ -561,7 +593,10 @@ or production migration, and its allowance does not renew earlier budgets.
 
 If the blockers are resolved and this RFC is approved, proposed ADR extractions
 are (1) runtime records with exact cross-revision identity and publication,
-and (2) explicit scoped model/capture ownership through Canvas. The proposed
+and (2) frame-scoped versioned model/property ownership. Direction C additionally
+requires an explicit Canvas representation decision against ADR-028 and the
+closure-specific SPEC-012 contract. Final ADR boundaries follow the reviewed
+choices, not provisional API names. The earlier proposed
 four-slot branch additionally needs an explicit ADR-034 successor/amendment
 preserving five-second retention; it cannot be approved as a private storage
 change. Preserve

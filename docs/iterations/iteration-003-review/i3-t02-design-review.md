@@ -10,6 +10,24 @@ The original I3-T02 findings below describe the authoring task. The subsequent
 [B1 follow-up](#b1-follow-up--spike-069) adds evidence without approving the RFC
 or changing the original task's budget/history.
 
+## Current review boundary — 2026-10-10
+
+The [maintainer-proposed direction C](rfc-014-decision-direction.md) now leads
+further RFC design: protocol Canvas and observable properties backed by current
+and frozen versions. Earlier A/B recommendations below are historical. **Verdict
+remains not ready:** no exact getter binding, version-transfer protocol, peak
+storage ledger or target proof for C exists yet. SPIKE-069 did not test it.
+
+Review C against ADR-028's closure-specific contract and ADR-024/025/026's model
+ownership/phase rules. Keep current mutation serialized; the presence of two
+versions alone must not implicitly authorize writes during frozen derivation.
+Require coherent multi-property reads and stable reachable backing, safe finite
+Canvas dispatch, release on every failure edge and retained-owner accounting.
+Do not carry the earlier four-slot arithmetic into C without recomputation.
+
+This follow-up records direction and process only, with governance/link/whitespace
+validation. It performs no new experiment and changes no approval status.
+
 ## What this step established
 
 - One runtime decision boundary is now separate from RFC-013's external package,

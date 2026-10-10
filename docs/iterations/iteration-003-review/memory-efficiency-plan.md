@@ -22,9 +22,10 @@ Specifications remain authority; the generated production graph is retained.
 and its [design review](i3-t02-design-review.md).
 [SPIKE-069](../../spikes/spike-069-scoped-model-access.md) is completed with
 bounded borrow/key evidence and actual Canvas compatibility counterexamples.
-The [source-design comparison](rfc-014-source-design-options.md) now makes
-checked lowering versus explicit scoped APIs concrete for both applications.
-It recommends developing the explicit API, without selecting it. The
+The [2026-10-10 working direction C](rfc-014-decision-direction.md) now leads:
+protocol Canvas plus observable properties in current/frozen owner storage.
+It replaces the earlier recommendation from the [A/B comparison](rfc-014-source-design-options.md);
+exact API/access rules, physical backing and formal approval remain open. The
 [ownership audit](rfc-014-ownership-audit.md) identifies host retention and
 replacement obligations; neither app yet proves its peak retained bound (B2).
 These inform capture storage under ADR-034 (B0), whose slot count remains open.
@@ -36,10 +37,32 @@ historical inputs; this result does not reopen their budgets or experiments.
 | --- | --- |
 | I3-T01 correction package | Complete within the hardware-free boundary; [result and residual gates](i3-t01-result.md). |
 | I3-T02 runtime design, I3-04 / ME-05 | Delivered with named blockers: [RFC-014 review and contract map](i3-t02-design-review.md). |
-| RFC-014 B1/B2 follow-up | SPIKE-069 terminal; source comparison and ownership audit delivered. Explicit scoped API recommended, not selected; compiler/ownership evidence and B0 remain open. |
+| RFC-014 B1/B2 follow-up | SPIKE-069 terminal; source comparison and ownership audit delivered. Direction C recorded: protocol Canvas and versioned properties. Exact binding, compiler/ownership evidence and B0 remain open. |
 | ME-06 runtime implementation | Blocked on the resulting architecture/contract gates and complete resource/lifetime evidence; no ready migration plan yet. |
 | ME-08 integrated validation | Waits for the adopted implementations and exact artifact identities; connected evidence remains separately authorized. |
 | ME-09 closure/handoff | Waits for the criterion dispositions and maintainer decision; no automatic iteration-4 extraction. |
+
+## RFC-014 working-direction record — 2026-10-10
+
+Eugene proposed Canvas as a View-refining protocol with a deferred draw method,
+then graph-associated observable property storage with current/frozen versions,
+and asked to fix the decisions and explain the process. The [decision record](rfc-014-decision-direction.md)
+captures this as direction C for RFC work, replacing the prior recommendation
+to develop closure-based SnapshotCanvas first. It is not RFC approval or a
+resource/phase-policy amendment. Changes are committed as one coherent direction
+and process step under the continuing instruction to commit each step.
+
+Next: complete C's source/access contract and coherent freeze/replacement/owner
+ledger; map its versions to existing physical buffers. Preserve serialized
+mutation and bounded admission; two versions do not authorize concurrent writes.
+Then commission only a specifically bounded proof if required, review the RFC,
+obtain approval, extract/accept ADRs, approve Specifications and plan implementation.
+No Spike is created or run by this record; SPIKE-069 remains terminal.
+
+Governance, local file-link and whitespace checks cover this documentation-only
+change. No compiler, production, hardware or full conformance result is claimed.
+The earlier source-design record below is historical; its A/B next-choice text
+is superseded by this direction, while its ownership findings remain inputs.
 
 ## RFC-014 source-design follow-up — 2026-10-09
 

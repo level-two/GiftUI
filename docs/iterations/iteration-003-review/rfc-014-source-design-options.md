@@ -6,7 +6,16 @@ B1/B4, under accepted PROPOSAL-007 and iteration-3 runtime derivation scope.
 The [ownership audit](rfc-014-ownership-audit.md) informs B1/B2 independently.
 SPIKE-069 is complete; this document runs or authorizes no experiment.
 
-## Recommendation and decision
+## Current direction — 2026-10-10
+
+The maintainer subsequently proposed protocol-based Canvas and graph-associated
+observable properties with current/frozen storage. [Direction C and its approval
+process](rfc-014-decision-direction.md) now lead RFC work. It replaces the
+recommendation to develop B first, without selecting A or B or approving C's
+exact implementation. The comparison and examples below remain dated design
+history and alternatives; the storage audit still applies.
+
+## Earlier recommendation and decision — 2026-10-09
 
 Prefer **B, explicit scoped reads and snapshot-aware Canvas**, for the next
 contract-design pass. It makes the lifetime boundary inspectable in portable
