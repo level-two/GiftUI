@@ -4,7 +4,7 @@ import GiftUI
 // bytes separately; this ledger never contains or copies capture payloads.
 package struct ObservableModelOwnership: ~Copyable {
     package enum Phase: UInt8 {
-        case mutating, reading, discovering, replacing, retired
+        case mutating, writing, reading, discovering, replacing, retired
     }
 
     package struct Address: Equatable {
@@ -113,7 +113,7 @@ package struct ObservableModelOwnership: ~Copyable {
     }
 
     package func operationAllowed(discovery: Bool = false) -> ObservableStateError? {
-        if phase == .replacing { return .reentrancyViolation }
+        if phase == .replacing || phase == .writing { return .reentrancyViolation }
         if activeRead { return .invalidPhaseSafetyNotProven }
         if phase == .mutating || (discovery && phase == .discovering) { return nil }
         return .invalidPhaseContained
@@ -136,6 +136,31 @@ package struct ObservableModelOwnership: ~Copyable {
             claims[Int(claim.index)].address == claim.address,
             claims[Int(claim.index)].serial == claim.serial
         else { throw .staleModel }
+        return index
+    }
+
+    package mutating func beginMutation(_ address: Address, schema: UInt16)
+        throws(ObservableStateError) -> Int
+    {
+        if let failure = operationAllowed() { throw failure }
+        let index = try validate(address)
+        guard records[index].schema == schema else { throw .staleModel }
+        phase = .writing
+        return index
+    }
+
+    package mutating func endMutation() {
+        // Only the checked operation route can enter this phase. Keeping its
+        // end non-failing avoids inventing a rollback after an admitted commit.
+        if phase == .writing { phase = .mutating }
+    }
+
+    package func validatedClaim(_ claim: Claim, schema: UInt16)
+        throws(ObservableStateError) -> Int
+    {
+        if let failure = operationAllowed(discovery: true) { throw failure }
+        let index = try validate(claim)
+        guard records[index].schema == schema else { throw .staleModel }
         return index
     }
 

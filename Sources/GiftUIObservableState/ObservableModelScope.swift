@@ -76,6 +76,39 @@ package struct ObservableModelScope<Model: ~Copyable, Schema>: ~Copyable, ~Escap
         }
     }
 
+    package borrowing func withDiscovery<Result>(
+        _ body: () throws(ObservableStateError) -> Result
+    ) throws(ObservableStateError) -> Result {
+        try ownership.pointee.beginDiscovery()
+        defer { try? ownership.pointee.endDiscovery() }
+        return try body()
+    }
+
+    package borrowing func mutate(
+        _ key: _GiftUIModelKey<Schema>, mutation: Model.Mutation,
+        report: () -> _GiftUIObservableChangeReportOutcome
+    ) -> ObservableStateResult where Model: ObservableModelMutation {
+        do throws(ObservableStateError) {
+            let index = try ownership.pointee.beginMutation(
+                ownership.pointee.address(for: key), schema: schema)
+            defer { ownership.pointee.endMutation() }
+            guard models[index] != nil else { throw .invariantViolation }
+            let prepared = try models[index]!.preflight(mutation)
+            // The only mutable model borrow ends before the report route begins.
+            let changed = models[index]!.commit(prepared)
+            guard changed else { return .success(.unchanged) }
+            switch report() {
+            case .dirtied: return .success(.dirtied)
+            case .coalesced: return .success(.coalesced)
+            case .staleAttachment: return .failure(.staleAttachment)
+            case .invalidPhaseContained: return .failure(.invalidPhaseContained)
+            case .invalidPhaseSafetyNotProven: return .failure(.invalidPhaseSafetyNotProven)
+            case .reentrancyViolation: return .failure(.reentrancyViolation)
+            case .invariantViolation: return .failure(.invariantViolation)
+            }
+        } catch { return .failure(error) }
+    }
+
     package borrowing func withFrame<Result>(
         _ body: () throws(ObservableStateError) -> Result
     ) throws(ObservableStateError) -> Result {

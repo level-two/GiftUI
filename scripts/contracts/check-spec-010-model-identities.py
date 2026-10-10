@@ -48,7 +48,7 @@ def run(command, log):
 
 modules = [
     ('GiftUIObservableState', [root / 'Sources/GiftUIObservableState' / name for name in
-                              ('ObservableStateValues.swift', 'ObservableModelIdentity.swift', 'ObservableModelOwnership.swift', 'ObservableModelTicket.swift', 'ObservableModelScope.swift')]),
+                              ('ObservableStateValues.swift', 'ObservableModelIdentity.swift', 'ObservableModelOwnership.swift', 'ObservableModelTicket.swift', 'ObservableModelScope.swift', 'ObservableModelMutation.swift')]),
     ('GiftUIRuntimeStatic', [root / 'Sources/GiftUIRuntimeStatic/StaticObservableModelStorage.swift']),
     ('GiftUIRuntimeDynamic', [root / 'Sources/GiftUIRuntimeDynamic/DynamicObservableModelStorage.swift']),
     ('GiftUIFailureCore', sorted((root / 'Sources/GiftUIFailureCore').glob('*.swift'))),
@@ -92,15 +92,19 @@ for name in ('StateSchema', 'StatePresentation'):
 state_probe = fixture_root / 'StateProbe.swift'
 run([swift, *flags, '-module-name', 'P03StateProbe', '-emit-object', state_probe,
      '-o', out / 'state-probe.o'], 'state-probe')
+mutation_probe = fixture_root / 'MutationProbe.swift'
+run([swift, *flags, '-module-name', 'P03MutationProbe', '-emit-object', mutation_probe,
+     '-o', out / 'mutation-probe.o'], 'mutation-probe')
 probe = root / 'Tests/ContractFixtures/SPEC010/RuntimeDerived' / (
     'DynamicBackingProbe.swift' if profile in ('macos-dynamic', 'raspberry-pi-armv6') else 'BackingProbe.swift')
 run([swift, *flags, '-module-name', 'P03BackingProbe', '-emit-object', probe, '-o', out / 'backing-probe.o'], 'backing-probe')
 if profile.startswith('macos'):
-    for fixture in ('IdentityChecks', 'OwnershipChecks', 'BackingChecks', 'StateChecks'):
+    for fixture in ('IdentityChecks', 'OwnershipChecks', 'BackingChecks', 'StateChecks', 'MutationChecks'):
         executable = out / fixture
         sources = [root / ('Tests/ContractFixtures/SPEC010/RuntimeDerived/' + fixture + '.swift')]
         if fixture == 'BackingChecks': sources.append(probe)
         if fixture == 'StateChecks': sources.append(state_probe)
+        if fixture == 'MutationChecks': sources.append(mutation_probe)
         run([swift, *flags, *sources,
              base / 'GiftUI.o', *[out / (name + '.o') for name, _ in modules], '-o', executable], fixture + '-link')
         execution = run([executable], fixture + '-execution').strip()
@@ -108,7 +112,7 @@ if profile.startswith('macos'):
         print(execution)
 else:
     readelf = root / '.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/arm-zephyr-eabi-readelf'
-    for artifact in ('backing-probe', 'state-probe'):
+    for artifact in ('backing-probe', 'state-probe', 'mutation-probe'):
         abi = run([readelf, '-h', '-A', out / (artifact + '.o')], artifact + '-target-abi')
         assert 'Tag_ABI_VFP_args: VFP registers' in abi
         assert ('Tag_CPU_arch: v6' if profile == 'raspberry-pi-armv6' else 'Tag_CPU_arch: v7E-M') in abi

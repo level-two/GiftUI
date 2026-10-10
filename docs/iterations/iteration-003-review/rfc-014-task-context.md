@@ -59,7 +59,9 @@ P03's State declaration slice now starts at `Sources/GiftUI/ObservableState.swif
 and the same finite lowering owner used by P02. Its generated-source/storage
 probe is `Tests/ContractFixtures/SPEC010/RuntimeDerived/StateProbe.swift`; the
 progress record's step 3 supplies current four-profile core and component receipts.
-It uses a fixture binder. The production root/reconciler callback migration,
+It uses a fixture binder. Step 4 adds `ObservableModelMutation.swift` and
+`MutationProbe.swift` for checked operation/discovery component evidence; its
+receipt does not prove application operation adoption. The production root/reconciler callback migration,
 ticket transfer, checked mutation, capture replacement and teardown remain open;
 do not infer their completion from the State probe.
 

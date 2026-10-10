@@ -134,8 +134,15 @@ scalar/compound writes perform fallible preflight followed by non-failing commit
 no full-capture rollback value is created. Teardown must quiesce admission/handoffs,
 retire registrations and invalidate generations before releasing backing last.
 
-State discovery, real attach/detach/report joins, checked mutation and teardown
-are still being wired in P03. The ledger and typed backing checks are incremental
+The scoped adapter now brackets nested discovery and finite checked mutations.
+A concrete storage model supplies a borrowing preflight and non-failing commit
+witness; this avoids a noncopyable associated-type dependency. The mutation
+borrow ends before synchronous reporting, while the ledger remains guarded
+against reentrant mutation/retention until reporting returns. Preflight failure
+changes no bytes; report failure preserves already committed bytes.
+
+Real State discovery binding, attach/detach/report joins, application operation
+witnesses and teardown are still being wired in P03 and their named consumers. The ledger and typed backing checks are incremental
 evidence, not a claim that these remaining callback obligations already pass.
 
 ## Resource and validation boundary

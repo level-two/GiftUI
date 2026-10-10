@@ -145,3 +145,44 @@ guarded capture replacement and teardown remain P03 work. The three mechanical
 visitor/reconciler signature changes are not evidence of a complete profile-module
 build. P03 remains in progress; P04 has not started. Full conformance, resource
 and adoption gates remain P10–P12. No hardware execution, deployment or flashing.
+
+## Step 4 — checked operation and nested discovery join (active)
+
+Dispatch: P03 / OS-RD-001/002/004; P02 and steps 1–3 are fixed inputs.
+C3/R3 because phase exclusion and disjoint mutable borrows affect memory safety.
+Strong implementation: `gpt-6-astra`, reasoning `high`; separate Strong review
+remains required. Allowed source: ObservableModelOwnership/Scope/Mutation and
+focused RuntimeDerived fixtures/driver, plus this note. The approved SPEC-010
+**Model read, ownership and mutation contract** supplies the oracle: validate
+phase and identity before preflight; a failed preflight changes no bytes;
+non-failing commit precedes a synchronous report; a no-op omits that report;
+nested discovery occurs only after the parent read ends. No architecture or
+public contract choice is delegated. The internal typed operation witness is a
+replaceable realization; authored arbitrary inout callbacks remain unavailable.
+
+Validation command is the existing identity component driver with the step-3
+macOS Static core receipt first; then the other three pinned core inputs above.
+Evidence remains component-only until the real root/callback migration passes.
+Consecutive unproductive repair count at entry: 0 of 2. No package exit or
+whole-module claim is made by this in-progress dispatch.
+
+Step-4 implementation/check result: 322 assertions pass on each native profile
+(303 prior plus 19 checked-operation/discovery assertions). Both cross profiles
+compile the concrete noncopyable scalar/compound operation, verify CPU/VFP ABI
+and pass existing eight negative controls. Receipts:
+
+- macOS Static: `.build/rfc014-p03/state/tmpm2qw6_ox/macos-static/result.json`
+- macOS Dynamic: `.build/rfc014-p03/state/tmpt9phwypr/macos-dynamic/result.json`
+- ARMv6: `.build/raspberry-pi/rfc014-p03/state/tmpj76q4pcb/raspberry-pi-armv6/result.json`
+- Embedded: `.build/nrf52840/rfc014-p03/state/tmpymfdrd_s/nrf52840-embedded/result.json`
+
+The first compile rejected a noncopyable associated Model type. Moving the
+finite operation witness onto the concrete storage model passes without changing
+the pinned compiler/features. This was one productive internal repair; the
+consecutive unproductive count remains 0 of 2. The witness preflights by borrowing
+the model, performs a non-failing bounded commit, ends that mutable borrow, then
+reports synchronously. Its writing phase rejects reentry until reporting ends.
+A report failure preserves the committed bytes. The compound fixture has a
+2-byte payload and scalar preflight data; it is not analyzer capture or complete
+application evidence. The real root/callback, guarded replacement, teardown and
+complete-layout exits remain open. Formatting passes; no broad gate was run.
