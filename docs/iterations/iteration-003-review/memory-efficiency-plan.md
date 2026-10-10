@@ -44,6 +44,14 @@ historical inputs; this result does not reopen their budgets or experiments.
 | ME-08 integrated validation | Waits for the adopted implementations and exact artifact identities; connected evidence remains separately authorized. |
 | ME-09 closure/handoff | Waits for the criterion dispositions and maintainer decision; no automatic iteration-4 extraction. |
 
+## RFC-014 C-P1/C-P2 experiment — 2026-10-10
+
+Eugene's “Please proceed” authorizes [SPIKE-070](../../spikes/spike-070-protocol-canvas-versioned-access.md)
+under the proposed 90-active-minute/48-compiler-link-run/two-repair ceiling.
+Start 05:30:54 UTC; no excluded waiting initially. Commit registration, then
+code/evidence, then the terminal RFC disposition. No production, hardware,
+full application/firmware or renewed prior experiment scope is included.
+
 ## RFC-014 detailed C contract — 2026-10-10
 
 Eugene instructed “Let’s proceed” after the working-direction/process record,

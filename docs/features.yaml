@@ -21,7 +21,7 @@ features:
     # SPIKE-069 completed: borrow/key evidence; no proof of the later protocol/versioned design.
     # Working direction C: docs/iterations/iteration-003-review/rfc-014-decision-direction.md.
     # Detailed C contract/ledger: docs/iterations/iteration-003-review/rfc-014-c-contract.md.
-    # Finite context lowering unproved; five-bank baseline proposed, no approval/experiment launch.
+    # SPIKE-070 authorized for bounded C-P1/C-P2 proof; five-bank baseline remains unapproved.
     # Design comparison: docs/iterations/iteration-003-review/rfc-014-source-design-options.md.
     # Ownership audit: docs/iterations/iteration-003-review/rfc-014-ownership-audit.md; peak R unproved.
     # Acceptance provenance: docs/iterations/iteration-003-review/proposal-007-acceptance.md.

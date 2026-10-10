@@ -40,6 +40,7 @@ related_future_work: []
 related_explorations: []
 related_spikes:
   - SPIKE-069
+  - SPIKE-070
 supersedes: []
 superseded_by: []
 target_milestone: ITERATION-003
@@ -594,6 +595,11 @@ not evidence that record emission is intrinsically impossible. Resolving it
 requires a separately selected transport/rendering or requirement decision.
 
 ## Deferred and Follow-up Work
+
+Eugene separately authorized [SPIKE-070](../spikes/spike-070-protocol-canvas-versioned-access.md)
+on 2026-10-10 for C-P1/C-P2. It has a 90-active-minute/48-invocation/two-repair
+ceiling and runs no production or connected work. This is new bounded evidence
+work, not renewed SPIKE-069 allowance or approval of direction C.
 
 No correctness or feasibility question above is deferred. RFC-013 and approved
 iteration 4 already own external API/package/setup decisions; revisit after

@@ -6,12 +6,13 @@ status: completed
 authors:
   - codex
 created: 2026-10-09
-updated: 2026-10-09
+updated: 2026-10-10
 source:
   - RFC-014
 related_future_work: []
 related_explorations: []
-related_spikes: []
+related_spikes:
+  - SPIKE-070
 promoted_to: []
 supersedes: []
 superseded_by: []
@@ -225,3 +226,7 @@ operations. Neither completion nor unused allowance authorizes another experimen
 - [ADR-024](../adrs/adr-024-structurally-owned-observable-reference-state.md)
 - [ADR-026](../adrs/adr-026-profile-equivalent-bounded-observable-state.md)
 - [ADR-034](../adrs/adr-034-five-second-transition-capture.md)
+
+Subsequent [SPIKE-070](spike-070-protocol-canvas-versioned-access.md) tests the
+separately authorized protocol/versioned direction. This record remains terminal;
+its original result and budget are unchanged.
