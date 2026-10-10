@@ -387,3 +387,14 @@ P04–P12 pending. Remaining P03 work is listed in step 6. The repair guard rema
 components only, with 473 assertions per native profile and cross-compilation/ABI
 checks on ARMv6 and Embedded. There is no whole-module, linked zero-heap,
 connected-hardware or implemented-Spec claim.
+
+## Step 8 — approved scoped visitor contract correction
+
+Following separate Strong review `3e82e2a9`, Eugene explicitly approved the
+precise SPEC-006/010 generic Copyable/Escapable suppressions and concrete binder
+lifetime requirement. The approval record and both normative amendments preserve
+ordinary View values, authored syntax, exact-once binding, capacities and all
+identity/replacement semantics. The manifest cross-reference and historical
+blocker disposition are updated. No code or implemented transition is part of
+this contract step. Governance/whitespace checks validate the recording; no old
+receipt is claimed as implementation evidence. Repair counter remains 0 of 2.

@@ -162,6 +162,7 @@ features:
     milestone: MVP
   observable-reference-state:
     # SPEC-010 RFC-014 implementation started at P03 after P02 passed.
+    # Approved SPEC-006/010 scoped visitors: docs/iterations/iteration-003-review/rfc-014-spec-approval.md#scoped-visitor-constraint-amendment--2026-10-10.
     title: Observable Reference State
     status: implementation
     proposal:

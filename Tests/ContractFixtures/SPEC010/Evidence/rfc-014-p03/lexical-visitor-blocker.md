@@ -1,6 +1,9 @@
 # P03 lexical visitor safety blocker — 2026-10-10
 
-Status: P03 stopped for the human contract decision after separate Strong review. The unsafe
+Status: resolved by the explicitly approved [scoped visitor constraint amendment](../../../../../docs/iterations/iteration-003-review/rfc-014-spec-approval.md#scoped-visitor-constraint-amendment--2026-10-10).
+The account below is historical evidence against the pre-amendment SPI; no old
+compile result is reclassified. New scoped implementation and rejection evidence
+remain required before P03 can pass. The unsafe
 prototype was removed before commit. This is a demonstrated implementation
 safety defect, not yet proof that an approved contract must change. No P03 exit,
 whole-module or integration claim is made.

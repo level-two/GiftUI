@@ -74,6 +74,37 @@ ignored repeated seeds, coarse synchronous reporting, target generations and all
 publication/failure semantics below. Authored State syntax is lowered; baseline
 raw-reference access MUST NOT bypass the checked compiled route.
 
+### Scoped declaration visitor
+
+The [approved scoped visitor amendment](../iterations/iteration-003-review/rfc-014-spec-approval.md#scoped-visitor-constraint-amendment--2026-10-10)
+replaces the baseline declaration-visitor generic constraints:
+
+```swift
+public protocol _GiftUIObservableStateDeclarationVisitor: ~Copyable, ~Escapable {
+    mutating func visit<Schema: _GiftUIModelSchema>(
+        _ state: inout State<Schema>, declarationOrdinal: UInt16
+    )
+}
+public protocol _GiftUIObservableStateHost {
+    mutating func _giftUIVisitObservableStateDeclarations<
+        Visitor: _GiftUIObservableStateDeclarationVisitor & ~Copyable & ~Escapable
+    >(_ visitor: inout Visitor)
+}
+```
+
+The concrete binder that carries backing access MUST be noncopyable and
+nonescapable with compiler-visible lifetime dependence on actual borrowed root
+and model storage. All generated witnesses and forwarding preserve both
+suppressions; SPEC-006 applies the matching constraints to semantic traversal.
+The protocol admits ordinary copyable/escapable visitors too. No convention that
+public conformers are generated or synchronous substitutes for lifetime safety.
+State declarations are still enumerated exactly once in lexical order and all
+bindings succeed before body evaluation; binding failure suppresses the body.
+No authored syntax, View value ownership, location/capture/ticket/pin capacity,
+identity, replacement or publication behavior changes. OS-010 and OS-RD-001
+require positive generated/nested traversal and compile-negative copying/escape
+controls on all four pinned configurations under these amended signatures.
+
 ### Model read, ownership and mutation contract
 
 SPEC-006 owns `_GiftUIReadDomain`, FrameRead, ModelKey and AccessFailure. Each

@@ -96,11 +96,25 @@ public protocol View<Domain> {
     associatedtype Body: View
     func _giftUIEvaluate(read: borrowing _GiftUIFrameRead<Domain>)
         throws(_GiftUIAccessFailure) -> Body
-    func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor>(
+    func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor & ~Copyable & ~Escapable>(
         _ visitor: inout Visitor
     ) where Visitor.Domain == Domain
 }
 ```
+
+The semantic visitor protocol MUST declare support for `~Copyable, ~Escapable`.
+Every generated witness, container, modifier and forwarding helper MUST preserve
+both suppressions on its visitor generic parameter and the existing Domain
+equality. These constraints permit scoped visitors without forcing all concrete
+visitors to suppress copying/escaping; ordinary View values and authored syntax
+are unchanged. A concrete backing-dependent visitor MUST be noncopyable and
+nonescapable and depend on the actual borrowed backing lifetime. Public generic
+witnesses MUST NOT be able to copy or escape that visitor. This narrow correction
+was [explicitly approved](../iterations/iteration-003-review/rfc-014-spec-approval.md#scoped-visitor-constraint-amendment--2026-10-10)
+after the P03 lifetime defect; it supersedes the baseline visitor signatures.
+All four pinned configurations MUST reject visitor copying/escape and demonstrate
+positive generated/nested exact-once traversal, pre-body State binding and body
+suppression on binding failure (with SPEC-010 OS-010/OS-RD-001).
 
 FrameRead and ModelKey have no application-callable initializer or descriptor
 projection. A key's private logical fields are owner-instance UInt32, allocation

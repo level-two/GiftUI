@@ -23,3 +23,34 @@ No new investigation, platform, application, transport redesign, external packag
 delivery, remote deployment or board flashing is authorized by this planning
 request. Required implementation/conformance work must remain visible rather than
 being deferred merely to obtain a completion label.
+
+## Scoped visitor constraint amendment — 2026-10-10
+
+After the P03 safety review recorded in `3e82e2a9`, Eugene replied
+“Makes sense. Please proceed” to the precise proposal below. This explicitly
+approves this narrow coordinated SPEC-006/SPEC-010 contract delta and continued
+P03 implementation. It does not mark either Specification implemented.
+
+- SPEC-010's declaration visitor protocol supports `~Copyable, ~Escapable`;
+  the host witness accepts `Visitor: _GiftUIObservableStateDeclarationVisitor &
+  ~Copyable & ~Escapable` by inout.
+- SPEC-006's semantic visitor protocol supports `~Copyable, ~Escapable`;
+  `View._giftUITraverse` accepts `Visitor: _GiftUISemanticTraversalVisitor &
+  ~Copyable & ~Escapable`, retaining `Visitor.Domain == Domain`.
+- Generated witnesses, fixed containers, modifiers and forwarding preserve these
+  constraints. Generic suppressions permit scoped conformers; they do not require
+  every concrete visitor to be noncopyable or nonescapable. Ordinary View values
+  and authored syntax remain unchanged.
+- The backing-dependent binder is concretely noncopyable and nonescapable, with
+  its lifetime tied to actual borrowed root/model storage. It must not rely on a
+  convention that public witnesses are generated or synchronous.
+- All four pinned configurations require copy/escape rejection controls and
+  positive generated/nested exact-once, bind-before-body and failure-suppression
+  evidence. Existing capacities, identity, replacement and publication semantics
+  remain fixed.
+
+This makes ADR-036's scoped access enforceable at both public generic forwarding
+boundaries without introducing another runtime, alternate traversal or a new RFC.
+The [historical blocker](../../../Tests/ContractFixtures/SPEC010/Evidence/rfc-014-p03/lexical-visitor-blocker.md)
+is preserved as evidence and resolved by this approved amendment; implementation
+and package-exit evidence are still required.
