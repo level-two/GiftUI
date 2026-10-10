@@ -1,0 +1,37 @@
+@ObservableModel
+final class CounterModel {
+    @Published var value: UInt32 = 0
+    @Published var scale: UInt32 = 7
+}
+@ObservableStateHost
+struct Root: View {
+    @State var model: CounterModel
+    var body: some View {
+        if model.value > 0 && enabled(model: model) {
+            Nested(seed: model.value)
+        } else {
+            Nested(seed: 0)
+        }
+    }
+}
+@ObservableStateHost
+struct Nested: View {
+    @State var model: CounterModel
+    var body: some View {
+        HStack(spacing: 0) {
+            Meter(model: model, offset: 1)
+            Meter(model: model, offset: 2)
+            Meter(model: model, offset: 3)
+        }
+    }
+}
+struct Meter: Canvas {
+    let model: CounterModel
+    let offset: UInt32
+    func draw(in bounds: Rect, context: inout GraphicsContext) throws(DrawingError) {
+        drawBar(value: model.value, scale: offset, context: &context)
+    }
+}
+func enabled(model: CounterModel) -> Bool {
+    model.scale > 0
+}

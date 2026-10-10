@@ -1,0 +1,16 @@
+/Users/eugene/work/GiftUI/experiments/spike-072-contextual-traversal-integration/adapted/GiftUI_StyleModifiers.swift:21:16: error: type 'GiftUIModifiedContent<Content, Payload>' does not conform to protocol 'View'
+19 | }
+20 | 
+21 | private struct GiftUIModifiedContent<Content: View, Payload: _GiftUISemanticModifierPayload>:
+   |                |- error: type 'GiftUIModifiedContent<Content, Payload>' does not conform to protocol 'View'
+   |                `- note: add stubs for conformance
+22 |     View
+23 | {
+
+/Users/eugene/work/GiftUI/experiments/spike-072-contextual-traversal-integration/adapted/GiftUI_DeclarativeView.swift:105:10: note: protocol requires function '_evaluate(read:)' with type '<Reads> (read: borrowing Reads) throws(AccessFailure) -> GiftUIModifiedContent<Content, Payload>.Body' (aka '<Reads> (read: borrowing Reads) throws(AccessFailure) -> Never')
+103 |     associatedtype Body: View
+104 | 
+105 |     func _evaluate<Reads: FrozenAccess & ~Escapable>(read: borrowing Reads) throws(AccessFailure) -> Body
+    |          `- note: protocol requires function '_evaluate(read:)' with type '<Reads> (read: borrowing Reads) throws(AccessFailure) -> GiftUIModifiedContent<Content, Payload>.Body' (aka '<Reads> (read: borrowing Reads) throws(AccessFailure) -> Never')
+106 | 
+107 |     func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor, Session: EvaluationSession & ~Copyable>(

@@ -1,0 +1,28 @@
+--- Sources/GiftUI/Button.swift
++++ experiments/spike-072-contextual-traversal-integration/adapted/GiftUI_Button.swift
+@@ -9,7 +9,7 @@
+     }
+ }
+ 
+-public struct Button<Action: GiftUIAction, Label: View>: View {
++public struct Button<Action: GiftUIAction, Label: View>: _GiftUILeaf {
+     public typealias Body = Never
+ 
+     package let _giftUIButtonPayload: ButtonSemanticPayload<Action, Label>
+@@ -25,13 +25,13 @@
+         fatalError("Button has no view body")
+     }
+ 
+-    public func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor>(
++    public func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor, Session: EvaluationSession & ~Copyable>(
+         _ visitor: inout Visitor
+-    ) {
++    , session: inout Session) {
+         visitor.visitActionPrimitive(
+             content: _giftUIButtonPayload.label,
+             payload: _giftUIButtonPayload
+-        )
++        , session: &session)
+     }
+ }
+ 

@@ -1,0 +1,43 @@
+/Users/eugene/work/GiftUI/experiments/spike-072-contextual-traversal-integration/adapted/GiftUIDrawing_CanvasPlanProducer.swift:9:7: error: 'read' is borrowed and cannot be consumed
+  7 |         limits: DrawingLimits,
+  8 |         workspace: inout Workspace
+  9 |     , read: borrowing Reads) -> DrawingPlanResult
+    |       `- error: 'read' is borrowed and cannot be consumed
+ 10 |     where
+ 11 |         Source: CanvasInvocationSource,
+    :
+ 71 |                     surfaceOrigin: bounds.origin,
+ 72 |                     inheritedClip: clip
+ 73 |                 ) { (context) throws(DrawingError) in
+    |                   `- note: consumed here
+ 74 |                     try source.invokeCanvas(
+ 75 |                         at: identity,
+
+/Users/eugene/work/GiftUI/experiments/spike-072-contextual-traversal-integration/Fixtures.swift:53:79: error: 'identity' is borrowed and cannot be consumed
+ 51 |     mutating func stageStructuralOccurrence(identity: borrowing UInt64) -> Bool { structural+=1; return true }
+ 52 |     mutating func stageBodyEvaluation(identity: borrowing UInt64) -> Bool { bodies+=1; return true }
+ 53 |     mutating func stageSemanticOccurrence<P: _GiftUISemanticPrimitivePayload>(identity: borrowing UInt64,payload: borrowing P) -> Bool {
+    |                                                                               `- error: 'identity' is borrowed and cannot be consumed
+ 54 |         let value=copy payload
+ 55 |         if let canvas=value as? Meter {
+ 56 |             let occurrence=Occurrence(identity:identity,canvas:canvas)
+ 57 |             switch canvasOccurrenceCount {
+ 58 |             case 0: first=occurrence; savedFirst=identity
+    |                                                 `- note: consumed here
+ 59 |             case 1: second=occurrence; savedSecond=identity
+    |                                                   `- note: consumed here
+ 60 |             case 2: third=occurrence; savedThird=identity
+    |                                                 `- note: consumed here
+ 61 |             default: return false
+ 62 |             }
+
+/Users/eugene/work/GiftUI/experiments/spike-072-contextual-traversal-integration/Access.swift:74:9: error: lifetime-dependent value escapes its scope
+ 72 |     @_lifetime(borrow self)
+ 73 |     borrowing func read() -> Reads {
+ 74 |         Reads(entries: Span(_unsafeElements: UnsafeBufferPointer(start: entries.baseAddress,count: count)),epoch: epoch,poison: poison)
+    |         |                                    `- note: it depends on the lifetime of this parent value
+    |         `- error: lifetime-dependent value escapes its scope
+ 75 |     }
+    |     `- note: this use causes the lifetime-dependent value to escape
+ 76 |     borrowing func evaluate<D: View>(_ declaration: borrowing D) throws(AccessFailure) -> D.Body {
+ 77 |         let scoped=read()

@@ -1,0 +1,11 @@
+/Users/eugene/work/GiftUI/experiments/spike-072-contextual-traversal-integration/Negative.swift:6:13: error: overlapping accesses to 'session', but modification requires exclusive access [#ExclusivityViolation]
+3 |     var session=Session(storage)
+4 |     let key=try session.bind(location:1,ordinal:0,seed:3)
+5 |     let parentRead=session.read()
+  |                    `- note: conflicting access is here
+6 |     _ = try session.bind(location:2,ordinal:0,seed:4)
+  |             `- error: overlapping accesses to 'session', but modification requires exclusive access [#ExclusivityViolation]
+7 |     return try parentRead.scalar(key,field:0)
+8 | }
+
+[#ExclusivityViolation]: <https://docs.swift.org/compiler/documentation/diagnostics/exclusivity-violation>

@@ -1,0 +1,4 @@
+# Byte-exact compiler evidence and generated inputs retain their recorded hashes.
+evidence/** -whitespace
+adapted/*.swift -whitespace
+modules/*.swift -whitespace

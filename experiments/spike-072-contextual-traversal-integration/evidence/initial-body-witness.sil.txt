@@ -1,0 +1,13 @@
+sil_witness_table hidden Root: View module Spike072 {
+  associated_conformance (Body: View): Never: View module Spike072
+  associated_type Body: Never
+  method #View._evaluate: <Self where Self : View><Reads where Reads : FrozenAccess, Reads : ~Escapable> (Self) -> (borrowing Reads) throws(AccessFailure) -> Self.Body : @$s8Spike0724RootVAA4ViewA2aDP9_evaluate4read4BodyQzqd___tAA13AccessFailureOYKAA06FrozenG0Rd__Ri0_d__lFTW	// protocol witness for View._evaluate<A>(read:) in conformance Root
+  method #View._giftUITraverse: <Self where Self : View><Visitor, Session where Visitor : _GiftUISemanticTraversalVisitor, Session : EvaluationSession, Session : ~Copyable> (Self) -> (inout Visitor, inout Session) -> () : @$s8Spike0724RootVAA4ViewA2aDP15_giftUITraverse_7sessionyqd__z_qd_0_ztAA31_GiftUISemanticTraversalVisitorRd__AA17EvaluationSessionRd_0_Ri_d_0_r0_lFTW	// protocol witness for View._giftUITraverse<A, B>(_:session:) in conformance Root
+}
+
+sil_witness_table hidden Nested: View module Spike072 {
+  associated_conformance (Body: View): Never: View module Spike072
+  associated_type Body: Never
+  method #View._evaluate: <Self where Self : View><Reads where Reads : FrozenAccess, Reads : ~Escapable> (Self) -> (borrowing Reads) throws(AccessFailure) -> Self.Body : @$s8Spike0726NestedVAA4ViewA2aDP9_evaluate4read4BodyQzqd___tAA13AccessFailureOYKAA06FrozenG0Rd__Ri0_d__lFTW	// protocol witness for View._evaluate<A>(read:) in conformance Nested
+  method #View._giftUITraverse: <Self where Self : View><Visitor, Session where Visitor : _GiftUISemanticTraversalVisitor, Session : EvaluationSession, Session : ~Copyable> (Self) -> (inout Visitor, inout Session) -> () : @$s8Spike0726NestedVAA4ViewA2aDP15_giftUITraverse_7sessionyqd__z_qd_0_ztAA31_GiftUISemanticTraversalVisitorRd__AA17EvaluationSessionRd_0_Ri_d_0_r0_lFTW	// protocol witness for View._giftUITraverse<A, B>(_:session:) in conformance Nested
+}

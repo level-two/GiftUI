@@ -1,0 +1,351 @@
+--- Sources/GiftUI/DeclarativeView.swift
++++ experiments/spike-072-contextual-traversal-integration/adapted/GiftUI_DeclarativeView.swift
+@@ -12,115 +12,120 @@
+ public protocol _GiftUISemanticModifierPayload {}
+ 
+ public protocol _GiftUISemanticTraversalVisitor {
+-    mutating func visitCustomView<Declaration: View>(
+-        _ declaration: borrowing Declaration,
+-        body: () -> Declaration.Body
+-    )
++    mutating func visitCustomView<Declaration: View, Session: EvaluationSession & ~Copyable>(
++        _ declaration: borrowing Declaration
++    , session: inout Session)
+ 
+     mutating func visitStatefulCustomView<
+         Declaration: View & _GiftUIObservableStateHost
+-    >(
+-        _ declaration: borrowing Declaration,
+-        body: (borrowing Declaration) -> Declaration.Body
+-    )
+-
+-    mutating func visitEmpty()
+-
+-    mutating func visitFixed<A: View, B: View>(
++    , Session: EvaluationSession & ~Copyable>(
++        _ declaration: borrowing Declaration
++    , session: inout Session)
++
++    mutating func visitEmpty<Session: EvaluationSession & ~Copyable>(session: inout Session)
++
++    mutating func visitFixed<A: View, B: View, Session: EvaluationSession & ~Copyable>(
+         _ a: borrowing A,
+         _ b: borrowing B
+-    )
+-
+-    mutating func visitFixed<A: View, B: View, C: View>(
++    , session: inout Session)
++
++    mutating func visitFixed<A: View, B: View, C: View, Session: EvaluationSession & ~Copyable>(
+         _ a: borrowing A,
+         _ b: borrowing B,
+         _ c: borrowing C
+-    )
+-
+-    mutating func visitFixed<A: View, B: View, C: View, D: View>(
++    , session: inout Session)
++
++    mutating func visitFixed<A: View, B: View, C: View, D: View, Session: EvaluationSession & ~Copyable>(
+         _ a: borrowing A,
+         _ b: borrowing B,
+         _ c: borrowing C,
+         _ d: borrowing D
+-    )
+-
+-    mutating func visitFixed<A: View, B: View, C: View, D: View, E: View>(
++    , session: inout Session)
++
++    mutating func visitFixed<A: View, B: View, C: View, D: View, E: View, Session: EvaluationSession & ~Copyable>(
+         _ a: borrowing A,
+         _ b: borrowing B,
+         _ c: borrowing C,
+         _ d: borrowing D,
+         _ e: borrowing E
+-    )
+-
+-    mutating func visitConditionalFirst<First: View, Second: View>(
++    , session: inout Session)
++
++    mutating func visitConditionalFirst<First: View, Second: View, Session: EvaluationSession & ~Copyable>(
+         _ content: borrowing First,
+         second: Second.Type
+-    )
+-
+-    mutating func visitConditionalSecond<First: View, Second: View>(
++    , session: inout Session)
++
++    mutating func visitConditionalSecond<First: View, Second: View, Session: EvaluationSession & ~Copyable>(
+         first: First.Type,
+         _ content: borrowing Second
+-    )
+-
+-    mutating func visitOptionalAbsent<Content: View>(_ content: Content.Type)
+-
+-    mutating func visitOptionalPresent<Content: View>(
++    , session: inout Session)
++
++    mutating func visitOptionalAbsent<Content: View, Session: EvaluationSession & ~Copyable>(_ content: Content.Type, session: inout Session)
++
++    mutating func visitOptionalPresent<Content: View, Session: EvaluationSession & ~Copyable>(
+         _ content: borrowing Content
+-    )
+-
+-    mutating func visitPrimitive<Payload: _GiftUISemanticPrimitivePayload>(
++    , session: inout Session)
++
++    mutating func visitPrimitive<Payload: _GiftUISemanticPrimitivePayload, Session: EvaluationSession & ~Copyable>(
+         _ payload: borrowing Payload
+-    )
++    , session: inout Session)
+ 
+     mutating func visitPrimitive<
+         Content: View,
+         Payload: _GiftUISemanticPrimitivePayload
+-    >(
++    , Session: EvaluationSession & ~Copyable>(
+         content: borrowing Content,
+         payload: borrowing Payload
+-    )
+-
+-    mutating func visitActionPrimitive<Payload: _GiftUISemanticActionPayload>(
++    , session: inout Session)
++
++    mutating func visitActionPrimitive<Payload: _GiftUISemanticActionPayload, Session: EvaluationSession & ~Copyable>(
+         _ payload: borrowing Payload
+-    )
++    , session: inout Session)
+ 
+     mutating func visitActionPrimitive<
+         Content: View,
+         Payload: _GiftUISemanticActionPayload
+-    >(
++    , Session: EvaluationSession & ~Copyable>(
+         content: borrowing Content,
+         payload: borrowing Payload
+-    )
++    , session: inout Session)
+ 
+     mutating func visitModifier<
+         Content: View,
+         Payload: _GiftUISemanticModifierPayload
+-    >(
++    , Session: EvaluationSession & ~Copyable>(
+         content: borrowing Content,
+         payload: borrowing Payload
+-    )
++    , session: inout Session)
+ }
+ 
+ public protocol View {
+     associatedtype Body: View
+ 
+-    @ViewBuilder
+-    var body: Body { get }
+-
+-    func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor>(
+-        _ visitor: inout Visitor
+-    )
++    func _evaluate<Reads: FrozenAccess & ~Escapable>(read: borrowing Reads) throws(AccessFailure) -> Body
++
++    func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor, Session: EvaluationSession & ~Copyable>(
++        _ visitor: inout Visitor
++    , session: inout Session)
+ }
+ 
+ extension View {
+-    public func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor>(
+-        _ visitor: inout Visitor
+-    ) {
+-        visitor.visitCustomView(self) { body }
+-    }
+-}
+-
+-extension Never: View {
++    public func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor, Session: EvaluationSession & ~Copyable>(
++        _ visitor: inout Visitor
++    , session: inout Session) {
++        visitor.visitCustomView(self, session: &session)
++    }
++}
++
++public protocol _GiftUILeaf: View where Body == Never {}
++
++extension _GiftUILeaf {
++    public func _evaluate<Reads: FrozenAccess & ~Escapable>(read: borrowing Reads) throws(AccessFailure) -> Never {
++        throw .invalidField
++    }
++}
++
++extension Never: _GiftUILeaf {
+     public typealias Body = Never
+ 
+     public var body: Never {
+@@ -191,7 +196,7 @@
+     }
+ }
+ 
+-public struct EmptyView: View {
++public struct EmptyView: _GiftUILeaf {
+     public typealias Body = Never
+ 
+     package init() {}
+@@ -200,14 +205,14 @@
+         fatalError("EmptyView has no view body")
+     }
+ 
+-    public func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor>(
+-        _ visitor: inout Visitor
+-    ) {
+-        visitor.visitEmpty()
+-    }
+-}
+-
+-public struct TupleView<A: View, B: View>: View {
++    public func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor, Session: EvaluationSession & ~Copyable>(
++        _ visitor: inout Visitor
++    , session: inout Session) {
++        visitor.visitEmpty(session: &session)
++    }
++}
++
++public struct TupleView<A: View, B: View>: _GiftUILeaf {
+     public typealias Body = Never
+ 
+     package let a: A
+@@ -222,14 +227,14 @@
+         fatalError("TupleView has no view body")
+     }
+ 
+-    public func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor>(
+-        _ visitor: inout Visitor
+-    ) {
+-        visitor.visitFixed(a, b)
+-    }
+-}
+-
+-public struct TupleView3<A: View, B: View, C: View>: View {
++    public func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor, Session: EvaluationSession & ~Copyable>(
++        _ visitor: inout Visitor
++    , session: inout Session) {
++        visitor.visitFixed(a, b, session: &session)
++    }
++}
++
++public struct TupleView3<A: View, B: View, C: View>: _GiftUILeaf {
+     public typealias Body = Never
+ 
+     package let a: A
+@@ -246,14 +251,14 @@
+         fatalError("TupleView3 has no view body")
+     }
+ 
+-    public func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor>(
+-        _ visitor: inout Visitor
+-    ) {
+-        visitor.visitFixed(a, b, c)
+-    }
+-}
+-
+-public struct TupleView4<A: View, B: View, C: View, D: View>: View {
++    public func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor, Session: EvaluationSession & ~Copyable>(
++        _ visitor: inout Visitor
++    , session: inout Session) {
++        visitor.visitFixed(a, b, c, session: &session)
++    }
++}
++
++public struct TupleView4<A: View, B: View, C: View, D: View>: _GiftUILeaf {
+     public typealias Body = Never
+ 
+     package let a: A
+@@ -272,14 +277,14 @@
+         fatalError("TupleView4 has no view body")
+     }
+ 
+-    public func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor>(
+-        _ visitor: inout Visitor
+-    ) {
+-        visitor.visitFixed(a, b, c, d)
+-    }
+-}
+-
+-public struct TupleView5<A: View, B: View, C: View, D: View, E: View>: View {
++    public func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor, Session: EvaluationSession & ~Copyable>(
++        _ visitor: inout Visitor
++    , session: inout Session) {
++        visitor.visitFixed(a, b, c, d, session: &session)
++    }
++}
++
++public struct TupleView5<A: View, B: View, C: View, D: View, E: View>: _GiftUILeaf {
+     public typealias Body = Never
+ 
+     package let a: A
+@@ -300,14 +305,14 @@
+         fatalError("TupleView5 has no view body")
+     }
+ 
+-    public func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor>(
+-        _ visitor: inout Visitor
+-    ) {
+-        visitor.visitFixed(a, b, c, d, e)
+-    }
+-}
+-
+-public struct ConditionalContent<First: View, Second: View>: View {
++    public func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor, Session: EvaluationSession & ~Copyable>(
++        _ visitor: inout Visitor
++    , session: inout Session) {
++        visitor.visitFixed(a, b, c, d, e, session: &session)
++    }
++}
++
++public struct ConditionalContent<First: View, Second: View>: _GiftUILeaf {
+     public typealias Body = Never
+ 
+     private enum Storage {
+@@ -329,19 +334,19 @@
+         fatalError("ConditionalContent has no view body")
+     }
+ 
+-    public func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor>(
+-        _ visitor: inout Visitor
+-    ) {
++    public func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor, Session: EvaluationSession & ~Copyable>(
++        _ visitor: inout Visitor
++    , session: inout Session) {
+         switch storage {
+         case .first(let content):
+-            visitor.visitConditionalFirst(content, second: Second.self)
++            visitor.visitConditionalFirst(content, second: Second.self, session: &session)
+         case .second(let content):
+-            visitor.visitConditionalSecond(first: First.self, content)
++            visitor.visitConditionalSecond(first: First.self, content, session: &session)
+         }
+     }
+ }
+ 
+-public struct OptionalContent<Content: View>: View {
++public struct OptionalContent<Content: View>: _GiftUILeaf {
+     public typealias Body = Never
+ 
+     package let content: Content?
+@@ -354,13 +359,13 @@
+         fatalError("OptionalContent has no view body")
+     }
+ 
+-    public func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor>(
+-        _ visitor: inout Visitor
+-    ) {
++    public func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor, Session: EvaluationSession & ~Copyable>(
++        _ visitor: inout Visitor
++    , session: inout Session) {
+         if let content {
+-            visitor.visitOptionalPresent(content)
++            visitor.visitOptionalPresent(content, session: &session)
+         } else {
+-            visitor.visitOptionalAbsent(Content.self)
++            visitor.visitOptionalAbsent(Content.self, session: &session)
+         }
+     }
+ }

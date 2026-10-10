@@ -1,0 +1,2480 @@
+[
+  {
+    "path": "Sources/SignalAnalyzerPresentation/SignalAnalyzerView.swift",
+    "sha256": "c21ec7f17548c511a61e36e13000787b07a02746ad1720f70736d05dceb93b2d",
+    "symbols": [
+      {
+        "line": 5,
+        "text": "package struct SignalAnalyzerView: View {"
+      },
+      {
+        "line": 6,
+        "text": "@State private var viewModel: SignalAnalyzerViewModel"
+      },
+      {
+        "line": 7,
+        "text": "private let layout: SignalAnalyzerLayoutConstraints"
+      },
+      {
+        "line": 17,
+        "text": "package var body: some View {"
+      },
+      {
+        "line": 20,
+        "text": "acquisitionState: viewModel.state.acquisitionState,"
+      },
+      {
+        "line": 21,
+        "text": "errorMessage: viewModel.state.errorMessage, layout: layout)"
+      },
+      {
+        "line": 23,
+        "text": "capture: viewModel.state.capture,"
+      },
+      {
+        "line": 24,
+        "text": "visibleRange: viewModel.visibleRange,"
+      },
+      {
+        "line": 25,
+        "text": "selectedWindow: viewModel.state.visibleWindow,"
+      },
+      {
+        "line": 35,
+        "text": "package struct SignalAnalyzerHeaderView: View {"
+      },
+      {
+        "line": 36,
+        "text": "package let acquisitionState: AcquisitionState"
+      },
+      {
+        "line": 37,
+        "text": "package let errorMessage: SignalAnalyzerDiagnostic?"
+      },
+      {
+        "line": 38,
+        "text": "package let layout: SignalAnalyzerLayoutConstraints"
+      },
+      {
+        "line": 40,
+        "text": "package var body: some View {"
+      },
+      {
+        "line": 41,
+        "text": "let controls = SignalAnalyzerControlState("
+      },
+      {
+        "line": 64,
+        "text": "package struct SignalAnalyzerWaveformView: View {"
+      },
+      {
+        "line": 65,
+        "text": "package let layout: SignalAnalyzerLayoutConstraints"
+      },
+      {
+        "line": 77,
+        "text": "package let capture: SignalCapture"
+      },
+      {
+        "line": 78,
+        "text": "package let visibleRange: Range<Duration>"
+      },
+      {
+        "line": 79,
+        "text": "package let selectedWindow: VisibleTimeWindow"
+      },
+      {
+        "line": 81,
+        "text": "package var body: some View {"
+      },
+      {
+        "line": 144,
+        "text": "package struct SignalAnalyzerTimeRulerView: View {"
+      },
+      {
+        "line": 145,
+        "text": "package let visibleRange: Range<Duration>"
+      },
+      {
+        "line": 146,
+        "text": "package var labelWidth: GeometryScalar = 72"
+      },
+      {
+        "line": 148,
+        "text": "package var body: some View {"
+      },
+      {
+        "line": 149,
+        "text": "let labels = SignalAnalyzerRulerLabels(visibleRange: visibleRange)"
+      },
+      {
+        "line": 168,
+        "text": "package struct SignalAnalyzerChannelWaveformView: View {"
+      },
+      {
+        "line": 169,
+        "text": "package var layout: SignalAnalyzerLayoutConstraints = .reference"
+      },
+      {
+        "line": 170,
+        "text": "package let channelID: SignalChannelID"
+      },
+      {
+        "line": 171,
+        "text": "package let name: BoundedText"
+      },
+      {
+        "line": 172,
+        "text": "package let capture: SignalCapture"
+      },
+      {
+        "line": 173,
+        "text": "package let visibleRange: Range<Duration>"
+      },
+      {
+        "line": 175,
+        "text": "package var body: some View {"
+      },
+      {
+        "line": 176,
+        "text": "let level = capture.currentLevel(for: channelID)"
+      },
+      {
+        "line": 193,
+        "text": "package struct SignalAnalyzerGridView: View {"
+      },
+      {
+        "line": 194,
+        "text": "package var body: some View {"
+      },
+      {
+        "line": 199,
+        "text": "package struct SignalAnalyzerTraceView: View {"
+      },
+      {
+        "line": 200,
+        "text": "package let channelID: SignalChannelID"
+      },
+      {
+        "line": 201,
+        "text": "package let capture: SignalCapture"
+      },
+      {
+        "line": 202,
+        "text": "package let visibleRange: Range<Duration>"
+      },
+      {
+        "line": 204,
+        "text": "package var body: some View {"
+      },
+      {
+        "line": 213,
+        "text": "package func makeSignalAnalyzerGridCanvas() -> Canvas {"
+      },
+      {
+        "line": 219,
+        "text": "package func makeSignalAnalyzerTraceCanvas("
+      },
+      {
+        "line": 235,
+        "text": "package func drawSignalAnalyzerGrid("
+      },
+      {
+        "line": 242,
+        "text": "let x = GeometryScalar(Int64(size.width) * Int64(index) / 10)"
+      },
+      {
+        "line": 246,
+        "text": "let centerY = size.height / 2"
+      },
+      {
+        "line": 253,
+        "text": "package func drawSignalAnalyzerTrace("
+      },
+      {
+        "line": 261,
+        "text": "var level = SignalAnalyzerWaveformGeometry.startingLevel("
+      },
+      {
+        "line": 273,
+        "text": "for transition in capture.transitions"
+      },
+      {
+        "line": 278,
+        "text": "let x = SignalAnalyzerWaveformGeometry.x("
+      },
+      {
+        "line": 307,
+        "text": "package struct SignalAnalyzerSquareButton: View {"
+      },
+      {
+        "line": 308,
+        "text": "package let label: BoundedText"
+      },
+      {
+        "line": 309,
+        "text": "package let action: SignalAnalyzerAction"
+      },
+      {
+        "line": 310,
+        "text": "package let color: Color"
+      },
+      {
+        "line": 311,
+        "text": "package let fill: Color"
+      },
+      {
+        "line": 312,
+        "text": "package let size: GeometryScalar"
+      },
+      {
+        "line": 313,
+        "text": "package var isDisabled = false"
+      },
+      {
+        "line": 315,
+        "text": "package var body: some View {"
+      },
+      {
+        "line": 331,
+        "text": "package struct SignalAnalyzerControlState: Equatable, Sendable {"
+      },
+      {
+        "line": 332,
+        "text": "package let recordingLabel: BoundedText"
+      },
+      {
+        "line": 333,
+        "text": "package let recordingAction: SignalAnalyzerAction"
+      },
+      {
+        "line": 334,
+        "text": "package let recordingColor: Color"
+      },
+      {
+        "line": 335,
+        "text": "package let recordingFill: Color"
+      },
+      {
+        "line": 336,
+        "text": "package let statusText: BoundedText"
+      },
+      {
+        "line": 337,
+        "text": "package let startDisabled: Bool"
+      },
+      {
+        "line": 338,
+        "text": "package let stopDisabled: Bool"
+      },
+      {
+        "line": 339,
+        "text": "package let oneSecondDisabled: Bool"
+      },
+      {
+        "line": 340,
+        "text": "package let twoSecondsDisabled: Bool"
+      },
+      {
+        "line": 341,
+        "text": "package let fiveSecondsDisabled: Bool"
+      },
+      {
+        "line": 344,
+        "text": "let isRecording: Bool"
+      },
+      {
+        "line": 376,
+        "text": "var statusText: BoundedText {"
+      },
+      {
+        "line": 385,
+        "text": "var statusColor: Color {"
+      },
+      {
+        "line": 395,
+        "text": "var label: BoundedText {"
+      },
+      {
+        "line": 402,
+        "text": "var foregroundColor: Color {"
+      },
+      {
+        "line": 411,
+        "text": "static let channelLow = Color(red: 0, green: 128, blue: 255)"
+      },
+      {
+        "line": 412,
+        "text": "static let waveformBackground = Color(red: 16, green: 16, blue: 16)"
+      },
+      {
+        "line": 413,
+        "text": "static let statusBackground = Color(red: 32, green: 32, blue: 32)"
+      },
+      {
+        "line": 414,
+        "text": "static let controlsBackground = Color(red: 48, green: 48, blue: 48)"
+      },
+      {
+        "line": 415,
+        "text": "static let rulerBackground = Color(red: 24, green: 24, blue: 24)"
+      },
+      {
+        "line": 419,
+        "text": "func currentLevel(for channelID: SignalChannelID) -> DigitalLevel {"
+      },
+      {
+        "line": 420,
+        "text": "var result = baselineLevel(for: channelID)"
+      }
+    ]
+  },
+  {
+    "path": "Sources/SignalAnalyzerPresentation/SignalAnalyzerPresentationValues.swift",
+    "sha256": "aa678d815356fb3a73b496f44a2494a29b3f8d0e8a2e68dc973946657a65ee8e",
+    "symbols": [
+      {
+        "line": 10,
+        "text": "package var shorterAction: SignalAnalyzerAction {"
+      },
+      {
+        "line": 14,
+        "text": "package var longerAction: SignalAnalyzerAction {"
+      },
+      {
+        "line": 18,
+        "text": "package var duration: Duration {"
+      },
+      {
+        "line": 27,
+        "text": "package struct SignalAnalyzerViewState: Equatable, Sendable {"
+      },
+      {
+        "line": 28,
+        "text": "package var acquisitionState: AcquisitionState"
+      },
+      {
+        "line": 29,
+        "text": "package var capture: SignalCapture"
+      },
+      {
+        "line": 30,
+        "text": "package var visibleWindow: VisibleTimeWindow"
+      },
+      {
+        "line": 31,
+        "text": "package var errorMessage: SignalAnalyzerDiagnostic?"
+      },
+      {
+        "line": 62,
+        "text": "package struct SignalAnalyzerOperationalFailure: Equatable, Sendable {"
+      },
+      {
+        "line": 63,
+        "text": "package let failure: GiftUIFailureFact"
+      },
+      {
+        "line": 64,
+        "text": "package let diagnostic: SignalAnalyzerDiagnostic"
+      },
+      {
+        "line": 79,
+        "text": "func submit(_ fact: SignalAnalyzerPresentationFact) -> SignalSinkDeliveryOutcome"
+      },
+      {
+        "line": 87,
+        "text": "package final class SignalAnalyzerViewModel: _GiftUIObservableReference {"
+      },
+      {
+        "line": 88,
+        "text": "package private(set) var state = SignalAnalyzerViewState()"
+      },
+      {
+        "line": 89,
+        "text": "package private(set) var captureRevision: UInt32 = 0"
+      },
+      {
+        "line": 91,
+        "text": "private let startAcquisition: StartSignalAcquisitionUseCase"
+      },
+      {
+        "line": 92,
+        "text": "private let stopAcquisition: StopSignalAcquisitionUseCase"
+      },
+      {
+        "line": 93,
+        "text": "private let clearCapture: ClearSignalCaptureUseCase"
+      },
+      {
+        "line": 94,
+        "text": "private var changeSink: _GiftUIObservableChangeSink?"
+      },
+      {
+        "line": 106,
+        "text": "package var visibleRange: Range<Duration> {"
+      },
+      {
+        "line": 107,
+        "text": "let window = state.visibleWindow.duration"
+      },
+      {
+        "line": 108,
+        "text": "let end = max(window, state.capture.duration)"
+      },
+      {
+        "line": 112,
+        "text": "package func startTapped() {"
+      },
+      {
+        "line": 113,
+        "text": "let clearedError = state.errorMessage != nil"
+      },
+      {
+        "line": 114,
+        "text": "state.errorMessage = nil"
+      },
+      {
+        "line": 118,
+        "text": "} catch let failure as any SignalAnalyzerDiagnosticError {"
+      },
+      {
+        "line": 119,
+        "text": "let changed = state.errorMessage != failure.signalAnalyzerDiagnostic"
+      },
+      {
+        "line": 120,
+        "text": "state.errorMessage = failure.signalAnalyzerDiagnostic"
+      },
+      {
+        "line": 123,
+        "text": "let diagnostic = SignalAnalyzerDiagnostic(exactUTF8: Array(\"start failed\".utf8))!"
+      },
+      {
+        "line": 124,
+        "text": "let changed = state.errorMessage != diagnostic"
+      },
+      {
+        "line": 125,
+        "text": "state.errorMessage = diagnostic"
+      },
+      {
+        "line": 130,
+        "text": "package func stopTapped() {"
+      },
+      {
+        "line": 134,
+        "text": "package func clearTapped() {"
+      },
+      {
+        "line": 138,
+        "text": "package func visibleDurationChanged(_ window: VisibleTimeWindow) {"
+      },
+      {
+        "line": 139,
+        "text": "let changed = state.visibleWindow != window"
+      },
+      {
+        "line": 140,
+        "text": "state.visibleWindow = window"
+      },
+      {
+        "line": 144,
+        "text": "package func apply("
+      },
+      {
+        "line": 147,
+        "text": "let previousState = state"
+      },
+      {
+        "line": 150,
+        "text": "case .captureSnapshot(let revision, let capture):"
+      },
+      {
+        "line": 151,
+        "text": "let publication = SignalCapturePublication.snapshot("
+      },
+      {
+        "line": 156,
+        "text": "case .applied(let next) = publication.replay("
+      },
+      {
+        "line": 159,
+        "text": "capture: state.capture"
+      },
+      {
+        "line": 166,
+        "text": "state.capture = next.capture"
+      },
+      {
+        "line": 168,
+        "text": "case .captureMutation(let revision, let change):"
+      },
+      {
+        "line": 169,
+        "text": "let publication = SignalCapturePublication.mutation("
+      },
+      {
+        "line": 174,
+        "text": "case .applied(let next) = publication.replay("
+      },
+      {
+        "line": 177,
+        "text": "capture: state.capture"
+      },
+      {
+        "line": 184,
+        "text": "state.capture = next.capture"
+      },
+      {
+        "line": 186,
+        "text": "case .acquisitionState(let acquisitionState):"
+      },
+      {
+        "line": 187,
+        "text": "state.acquisitionState = acquisitionState"
+      },
+      {
+        "line": 188,
+        "text": "if case .failed(let diagnostic) = acquisitionState {"
+      },
+      {
+        "line": 189,
+        "text": "state.errorMessage = diagnostic"
+      },
+      {
+        "line": 192,
+        "text": "case .operationalFailure(let failure):"
+      },
+      {
+        "line": 193,
+        "text": "state.acquisitionState = .failed(failure.diagnostic)"
+      },
+      {
+        "line": 194,
+        "text": "state.errorMessage = failure.diagnostic"
+      },
+      {
+        "line": 197,
+        "text": "let changed = state != previousState"
+      },
+      {
+        "line": 202,
+        "text": "package func _giftUIAttachChangeSink("
+      },
+      {
+        "line": 205,
+        "text": "let attachment = sink.attachment"
+      },
+      {
+        "line": 210,
+        "text": "package func _giftUIDetachChangeSink(_ attachment: _GiftUIObservationAttachment) {"
+      },
+      {
+        "line": 215,
+        "text": "private func reportChange(if changed: Bool) {"
+      },
+      {
+        "line": 221,
+        "text": "package struct SignalAnalyzerActionHandler: GiftUIActionHandler {"
+      },
+      {
+        "line": 224,
+        "text": "package mutating func handle("
+      },
+      {
+        "line": 229,
+        "text": "case .start: model.startTapped()"
+      },
+      {
+        "line": 230,
+        "text": "case .stop: model.stopTapped()"
+      },
+      {
+        "line": 231,
+        "text": "case .clear: model.clearTapped()"
+      },
+      {
+        "line": 232,
+        "text": "case .selectOneSecond: model.visibleDurationChanged(.oneSecond)"
+      },
+      {
+        "line": 233,
+        "text": "case .selectTwoSeconds: model.visibleDurationChanged(.twoSeconds)"
+      },
+      {
+        "line": 234,
+        "text": "case .selectFiveSeconds: model.visibleDurationChanged(.fiveSeconds)"
+      }
+    ]
+  },
+  {
+    "path": "Sources/SignalAnalyzerPresentation/SignalAnalyzerWaveformGeometry.swift",
+    "sha256": "288e7f302fe604d9f8a504cd1eeae9f631e5ef2e5b12acf7f883d4e736a2b992",
+    "symbols": [
+      {
+        "line": 4,
+        "text": "package struct SignalAnalyzerRulerLabels: Equatable, Sendable {"
+      },
+      {
+        "line": 5,
+        "text": "package let lowerBound: BoundedText"
+      },
+      {
+        "line": 6,
+        "text": "package let midpoint: BoundedText"
+      },
+      {
+        "line": 7,
+        "text": "package let upperBound: BoundedText"
+      },
+      {
+        "line": 10,
+        "text": "let span = visibleRange.upperBound - visibleRange.lowerBound"
+      },
+      {
+        "line": 20,
+        "text": "package static let canvasOccurrenceCount = 5"
+      },
+      {
+        "line": 21,
+        "text": "package static let strokeCount = 5"
+      },
+      {
+        "line": 22,
+        "text": "package static let gridSubpathCount = 12"
+      },
+      {
+        "line": 23,
+        "text": "package static let gridPointCount = 24"
+      },
+      {
+        "line": 24,
+        "text": "package static let maximumLiveTracePointCount = 202"
+      },
+      {
+        "line": 25,
+        "text": "package static let snapshotPointCount = 832"
+      },
+      {
+        "line": 26,
+        "text": "package static let snapshotSubpathCount = 16"
+      },
+      {
+        "line": 28,
+        "text": "package static func startingLevel("
+      },
+      {
+        "line": 33,
+        "text": "var result = capture.baselineLevel(for: channelID)"
+      },
+      {
+        "line": 34,
+        "text": "for transition in capture.transitions"
+      },
+      {
+        "line": 41,
+        "text": "package static func tracePointCount("
+      },
+      {
+        "line": 46,
+        "text": "var count = 2"
+      },
+      {
+        "line": 47,
+        "text": "for transition in capture.transitions"
+      },
+      {
+        "line": 57,
+        "text": "package static func x("
+      },
+      {
+        "line": 63,
+        "text": "let span = milliseconds(visibleRange.upperBound - visibleRange.lowerBound)"
+      },
+      {
+        "line": 65,
+        "text": "let elapsed = milliseconds(timestamp - visibleRange.lowerBound)"
+      },
+      {
+        "line": 66,
+        "text": "let boundedElapsed = min(span, max(0, elapsed))"
+      },
+      {
+        "line": 70,
+        "text": "package static func y("
+      },
+      {
+        "line": 80,
+        "text": "package static func formattedSeconds(_ duration: Duration) -> BoundedText {"
+      },
+      {
+        "line": 86,
+        "text": "private static func milliseconds(_ duration: Duration) -> Int64 {"
+      },
+      {
+        "line": 87,
+        "text": "let components = duration.components"
+      },
+      {
+        "line": 88,
+        "text": "let seconds = components.seconds.multipliedReportingOverflow(by: 1_000)"
+      },
+      {
+        "line": 90,
+        "text": "let fractional = components.attoseconds / 1_000_000_000_000_000"
+      },
+      {
+        "line": 91,
+        "text": "let result = seconds.partialValue.addingReportingOverflow(fractional)"
+      }
+    ]
+  },
+  {
+    "path": "Sources/SignalAnalyzerPresentation/SignalAnalyzerTimelineFormatting.swift",
+    "sha256": "ac98b6acccfb2eef4b7621cc5552c532498df830fde9fa235480b552b4fa6605",
+    "symbols": [
+      {
+        "line": 5,
+        "text": "package static func seconds(_ duration: Duration) -> SignalAnalyzerDiagnostic {"
+      },
+      {
+        "line": 6,
+        "text": "let components = duration.components"
+      },
+      {
+        "line": 7,
+        "text": "var whole = max(0, components.seconds)"
+      },
+      {
+        "line": 8,
+        "text": "var fraction: Int64 = 0"
+      },
+      {
+        "line": 10,
+        "text": "let attoseconds = max(0, components.attoseconds)"
+      },
+      {
+        "line": 16,
+        "text": "let next = whole.addingReportingOverflow(1)"
+      },
+      {
+        "line": 21,
+        "text": "var storage = ("
+      },
+      {
+        "line": 28,
+        "text": "var count = 0"
+      }
+    ]
+  },
+  {
+    "path": "Sources/SignalAnalyzerPresentation/SignalAnalyzerOwnerFailureAdapter.swift",
+    "sha256": "4223a225b8ea0c8a572642ec154b8d0baebd75b1689b8ad235ab9324334d9259",
+    "symbols": [
+      {
+        "line": 4,
+        "text": "package final class SignalAnalyzerOwnerFailureAdapter<Effects>:"
+      },
+      {
+        "line": 7,
+        "text": "private let effects: Effects"
+      },
+      {
+        "line": 8,
+        "text": "private let stopAcquisition: StopSignalAcquisitionUseCase"
+      },
+      {
+        "line": 9,
+        "text": "private var policy = SignalAnalyzerResidualFailurePolicy()"
+      },
+      {
+        "line": 10,
+        "text": "package private(set) var lastDisposition: GiftUIResidualDisposition?"
+      },
+      {
+        "line": 11,
+        "text": "package private(set) var policyCallCount: UInt8 = 0"
+      },
+      {
+        "line": 12,
+        "text": "package private(set) var lastPolicyContext: SignalAnalyzerResidualPolicyContext?"
+      },
+      {
+        "line": 13,
+        "text": "package private(set) var lastAllowedDispositions: GiftUIAllowedDispositions?"
+      },
+      {
+        "line": 20,
+        "text": "package func failure("
+      },
+      {
+        "line": 31,
+        "text": "package func failure("
+      },
+      {
+        "line": 38,
+        "text": "package func completeAdmissionFailure("
+      },
+      {
+        "line": 52,
+        "text": "let allowed: GiftUIAllowedDispositions"
+      },
+      {
+        "line": 62,
+        "text": "let reservedFailure = SignalAnalyzerFailureNormalizer.operationalFailure("
+      },
+      {
+        "line": 77,
+        "text": "package func completeRepositoryFailure("
+      },
+      {
+        "line": 96,
+        "text": "package func handleRuntimeFailure("
+      },
+      {
+        "line": 103,
+        "text": "let failure = SignalAnalyzerFailureNormalizer.operationalFailure("
+      },
+      {
+        "line": 108,
+        "text": "let rule = SignalAnalyzerRuntimeFailureRule.evaluate("
+      },
+      {
+        "line": 112,
+        "text": "var effectIndex: UInt8 = 0"
+      },
+      {
+        "line": 113,
+        "text": "while let effect = rule.effect(at: effectIndex) {"
+      },
+      {
+        "line": 117,
+        "text": "if let allowed = rule.allowed {"
+      },
+      {
+        "line": 125,
+        "text": "private func offer("
+      },
+      {
+        "line": 131,
+        "text": "let input = GiftUIResidualPolicyInput("
+      },
+      {
+        "line": 146,
+        "text": "let disposition = policy.disposition(for: input)"
+      },
+      {
+        "line": 147,
+        "text": "let selected = GiftUIAllowedDispositions(rawValue: 1 << disposition.rawValue)"
+      },
+      {
+        "line": 157,
+        "text": "private func apply(_ values: SignalAnalyzerMandatoryEffect...) {"
+      },
+      {
+        "line": 161,
+        "text": "private func diagnostic(_ text: String) -> SignalAnalyzerDiagnostic {"
+      }
+    ]
+  },
+  {
+    "path": "Sources/SignalAnalyzerPresentation/SignalAnalyzerPresentationAdmissionAdapter.swift",
+    "sha256": "0f80cfdd8a34286a8b73de2e6a54e153e560a8f8eab4c17635fb264a467a2c12",
+    "symbols": [
+      {
+        "line": 4,
+        "text": "func failure("
+      },
+      {
+        "line": 9,
+        "text": "func failure("
+      },
+      {
+        "line": 14,
+        "text": "func completeAdmissionFailure("
+      },
+      {
+        "line": 21,
+        "text": "func completeRepositoryFailure("
+      },
+      {
+        "line": 29,
+        "text": "func completeAdmissionFailure("
+      },
+      {
+        "line": 36,
+        "text": "func completeRepositoryFailure("
+      },
+      {
+        "line": 43,
+        "text": "package final class SignalAnalyzerPresentationAdmissionAdapter: SignalCaptureSink,"
+      },
+      {
+        "line": 46,
+        "text": "private let observeCapture: ObserveSignalCaptureUseCase"
+      },
+      {
+        "line": 47,
+        "text": "private let observeState: ObserveAcquisitionStateUseCase"
+      },
+      {
+        "line": 48,
+        "text": "private let admission: any SignalAnalyzerFactAdmission"
+      },
+      {
+        "line": 49,
+        "text": "private let failureFactory: any SignalAnalyzerOperationalFailureFactory"
+      },
+      {
+        "line": 50,
+        "text": "private var isObserving = false"
+      },
+      {
+        "line": 51,
+        "text": "private var isStarting = false"
+      },
+      {
+        "line": 52,
+        "text": "private var captureStartOutcome: SignalSinkDeliveryOutcome?"
+      },
+      {
+        "line": 53,
+        "text": "private var stateStartOutcome: SignalSinkDeliveryOutcome?"
+      },
+      {
+        "line": 67,
+        "text": "package func startObserving() -> SignalAnalyzerObservationStartOutcome {"
+      },
+      {
+        "line": 74,
+        "text": "guard case .accepted(let captureSequence) = captureStartOutcome else {"
+      },
+      {
+        "line": 78,
+        "text": "guard case .accepted(let stateSequence) = stateStartOutcome else {"
+      },
+      {
+        "line": 87,
+        "text": "package func stopObserving() {"
+      },
+      {
+        "line": 95,
+        "text": "package func receive(_ publication: SignalCapturePublication) -> SignalSinkDeliveryOutcome {"
+      },
+      {
+        "line": 96,
+        "text": "let outcome: SignalSinkDeliveryOutcome"
+      },
+      {
+        "line": 97,
+        "text": "let reportsRejection: Bool"
+      },
+      {
+        "line": 99,
+        "text": "case .snapshot(let revision, let capture):"
+      },
+      {
+        "line": 102,
+        "text": "case .mutation(let revision, let change):"
+      },
+      {
+        "line": 105,
+        "text": "case .terminalFailure(let condition, let diagnostic):"
+      },
+      {
+        "line": 106,
+        "text": "let failure = failureFactory.failure(for: condition, diagnostic: diagnostic)"
+      },
+      {
+        "line": 121,
+        "text": "package func receive(_ state: AcquisitionState) -> SignalSinkDeliveryOutcome {"
+      },
+      {
+        "line": 122,
+        "text": "let outcome = admission.submit(.acquisitionState(state))"
+      },
+      {
+        "line": 128,
+        "text": "private func recordStartOutcome(_ outcome: SignalSinkDeliveryOutcome, capture: Bool) {"
+      },
+      {
+        "line": 133,
+        "text": "private func reportActiveRejection(_ outcome: SignalSinkDeliveryOutcome) {"
+      },
+      {
+        "line": 134,
+        "text": "guard !isStarting, case .rejected(let rejection) = outcome else { return }"
+      },
+      {
+        "line": 135,
+        "text": "let failure = failureFactory.failure(for: rejection, context: .activeDelivery)"
+      },
+      {
+        "line": 136,
+        "text": "let reservedOutcome = admission.submit(.operationalFailure(failure))"
+      },
+      {
+        "line": 146,
+        "text": "private func rejectStart("
+      },
+      {
+        "line": 152,
+        "text": "guard case .rejected(let rejection) = outcome else {"
+      },
+      {
+        "line": 155,
+        "text": "let failure = failureFactory.failure(for: rejection, context: .observationStart)"
+      },
+      {
+        "line": 156,
+        "text": "let reservedOutcome = admission.submit(.operationalFailure(failure))"
+      }
+    ]
+  },
+  {
+    "path": "Sources/SignalAnalyzerDomain/SignalValues.swift",
+    "sha256": "4efb99632dc8b8a255e56daa257074b91041d6f20fdad71084a9da548588f493",
+    "symbols": [
+      {
+        "line": 1,
+        "text": "package struct SignalChannel: Identifiable, Equatable, Sendable {"
+      },
+      {
+        "line": 2,
+        "text": "package let id: SignalChannelID"
+      },
+      {
+        "line": 3,
+        "text": "package let name: String"
+      },
+      {
+        "line": 10,
+        "text": "package static let standard = SignalChannelCollection("
+      },
+      {
+        "line": 18,
+        "text": "package struct SignalChannelCollection: RandomAccessCollection, Equatable, Sendable {"
+      },
+      {
+        "line": 22,
+        "text": "private let values: (SignalChannel, SignalChannel, SignalChannel, SignalChannel)"
+      },
+      {
+        "line": 33,
+        "text": "package var startIndex: Int { 0 }"
+      },
+      {
+        "line": 34,
+        "text": "package var endIndex: Int { 4 }"
+      },
+      {
+        "line": 46,
+        "text": "package static func == (lhs: Self, rhs: Self) -> Bool {"
+      },
+      {
+        "line": 51,
+        "text": "package struct SignalTransitionCollection: RandomAccessCollection, Equatable, Sendable {"
+      },
+      {
+        "line": 55,
+        "text": "private let values: [SignalTransition]"
+      },
+      {
+        "line": 61,
+        "text": "package var startIndex: Int { values.startIndex }"
+      },
+      {
+        "line": 62,
+        "text": "package var endIndex: Int { values.endIndex }"
+      },
+      {
+        "line": 63,
+        "text": "package var count: Int { values.count }"
+      },
+      {
+        "line": 69,
+        "text": "package func element(at position: UInt16) -> SignalTransition? {"
+      },
+      {
+        "line": 70,
+        "text": "let index = Int(position)"
+      },
+      {
+        "line": 76,
+        "text": "package struct SignalCapture: Equatable, Sendable {"
+      },
+      {
+        "line": 77,
+        "text": "package static let maximumTransitionCount = 404"
+      },
+      {
+        "line": 79,
+        "text": "package let channels: SignalChannelCollection"
+      },
+      {
+        "line": 80,
+        "text": "package let transitions: SignalTransitionCollection"
+      },
+      {
+        "line": 81,
+        "text": "package let duration: Duration"
+      },
+      {
+        "line": 82,
+        "text": "package let retainedLowerBound: Duration"
+      },
+      {
+        "line": 83,
+        "text": "package let baselineLevels: SignalChannelLevels"
+      },
+      {
+        "line": 108,
+        "text": "package static func empty() -> SignalCapture {"
+      },
+      {
+        "line": 115,
+        "text": "package func baselineLevel(for channelID: SignalChannelID) -> DigitalLevel {"
+      },
+      {
+        "line": 119,
+        "text": "fileprivate static func validate<S: Collection>("
+      },
+      {
+        "line": 131,
+        "text": "var previousTimestamp = retainedLowerBound"
+      },
+      {
+        "line": 148,
+        "text": "package struct SignalCaptureStaticStorage: ~Copyable {"
+      },
+      {
+        "line": 149,
+        "text": "package static let requiredCapacity = SignalCapture.maximumTransitionCount"
+      },
+      {
+        "line": 151,
+        "text": "private var buffer: UnsafeMutableBufferPointer<SignalTransition?>"
+      },
+      {
+        "line": 152,
+        "text": "package private(set) var count: UInt16"
+      },
+      {
+        "line": 153,
+        "text": "package let duration: Duration"
+      },
+      {
+        "line": 154,
+        "text": "package let retainedLowerBound: Duration"
+      },
+      {
+        "line": 155,
+        "text": "package let baselineLevels: SignalChannelLevels"
+      },
+      {
+        "line": 186,
+        "text": "package func element(at position: UInt16) -> SignalTransition? {"
+      },
+      {
+        "line": 191,
+        "text": "package func baselineLevel(for channelID: SignalChannelID) -> DigitalLevel {"
+      }
+    ]
+  },
+  {
+    "path": "Sources/SignalAnalyzerDomain/SignalCapturePublication.swift",
+    "sha256": "2d2a648a49e96f6020eb8a55080bc14f24c2f3a9748dd12694bfefb14a940a1b",
+    "symbols": [
+      {
+        "line": 26,
+        "text": "package struct SignalCaptureRevisionState: Equatable, Sendable {"
+      },
+      {
+        "line": 27,
+        "text": "package let revision: UInt32"
+      },
+      {
+        "line": 28,
+        "text": "package let capture: SignalCapture"
+      },
+      {
+        "line": 35,
+        "text": "package static let initial = SignalCaptureRevisionState("
+      },
+      {
+        "line": 51,
+        "text": "func replay(on preceding: SignalCaptureRevisionState) -> SignalCaptureReplayResult {"
+      },
+      {
+        "line": 53,
+        "text": "case .snapshot(let revision, let capture):"
+      },
+      {
+        "line": 59,
+        "text": "case .mutation(let revision, let change):"
+      },
+      {
+        "line": 60,
+        "text": "guard let expectedRevision = preceding.revision.nonwrappingSuccessor,"
+      },
+      {
+        "line": 63,
+        "text": "let capture = change.applying(to: preceding.capture)"
+      },
+      {
+        "line": 69,
+        "text": "case .terminalFailure(let condition, let diagnostic):"
+      },
+      {
+        "line": 76,
+        "text": "var baseRevision: UInt32 {"
+      },
+      {
+        "line": 78,
+        "text": "case .insertAndTrim(let baseRevision, _, _, _, _, _, _):"
+      },
+      {
+        "line": 80,
+        "text": "case .reset(let baseRevision, _):"
+      },
+      {
+        "line": 85,
+        "text": "func applying(to capture: SignalCapture) -> SignalCapture? {"
+      },
+      {
+        "line": 89,
+        "text": "let"
+      },
+      {
+        "line": 91,
+        "text": "let"
+      },
+      {
+        "line": 93,
+        "text": "let"
+      },
+      {
+        "line": 95,
+        "text": "let"
+      },
+      {
+        "line": 97,
+        "text": "let"
+      },
+      {
+        "line": 99,
+        "text": "let"
+      },
+      {
+        "line": 102,
+        "text": "var transitions = Array(capture.transitions)"
+      },
+      {
+        "line": 103,
+        "text": "let insertion = Int(insertionIndex)"
+      },
+      {
+        "line": 111,
+        "text": "let eviction = Int(evictedPrefixCount)"
+      },
+      {
+        "line": 126,
+        "text": "case .reset(_, let baselines):"
+      },
+      {
+        "line": 138,
+        "text": "var nonwrappingSuccessor: UInt32? {"
+      }
+    ]
+  },
+  {
+    "path": "Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFModelLocation.swift",
+    "sha256": "65c5f17074e74d3adf822f7965eb356ec7b2e5b8c778b84b58410935017c7aaa",
+    "symbols": [
+      {
+        "line": 5,
+        "text": "package struct StaticSignalAnalyzerNRFModelLocation {"
+      },
+      {
+        "line": 6,
+        "text": "package let structuralIdentity = StaticSignalAnalyzerNRFModelDescriptor.structuralIdentity"
+      },
+      {
+        "line": 7,
+        "text": "package let declarationOrdinal = StaticSignalAnalyzerNRFModelDescriptor.declarationOrdinal"
+      },
+      {
+        "line": 8,
+        "text": "private var nextGeneration: UInt32? = 0"
+      },
+      {
+        "line": 9,
+        "text": "package private(set) var activeGeneration: UInt32?"
+      },
+      {
+        "line": 10,
+        "text": "package private(set) var visibleWindowRawValue: UInt8 = 1"
+      },
+      {
+        "line": 11,
+        "text": "package private(set) var isDirty = false"
+      },
+      {
+        "line": 12,
+        "text": "package private(set) var isMutating = false"
+      },
+      {
+        "line": 13,
+        "text": "package private(set) var errorMessage: SignalAnalyzerDiagnostic?"
+      },
+      {
+        "line": 14,
+        "text": "package private(set) var acquisitionState: AcquisitionState = .idle"
+      },
+      {
+        "line": 15,
+        "text": "package private(set) var capture = StaticSignalAnalyzerNRFModelCaptureState()"
+      },
+      {
+        "line": 16,
+        "text": "private var captureSnapshotInstalled = false"
+      },
+      {
+        "line": 20,
+        "text": "package mutating func activate() -> UInt32? {"
+      },
+      {
+        "line": 21,
+        "text": "guard activeGeneration == nil, let generation = nextGeneration else {"
+      },
+      {
+        "line": 36,
+        "text": "package mutating func retire() {"
+      },
+      {
+        "line": 42,
+        "text": "package mutating func beginMutation() -> Bool {"
+      },
+      {
+        "line": 48,
+        "text": "package mutating func endMutation() -> Bool {"
+      },
+      {
+        "line": 54,
+        "text": "package mutating func clearDirtyAfterPublication() {"
+      },
+      {
+        "line": 58,
+        "text": "package mutating func setDiagnostic(_ diagnostic: SignalAnalyzerDiagnostic?) -> Bool {"
+      },
+      {
+        "line": 59,
+        "text": "guard let generation = activeGeneration, isMutating else { return false }"
+      },
+      {
+        "line": 61,
+        "text": "let previous = errorMessage"
+      },
+      {
+        "line": 63,
+        "text": "let token = StaticSignalAnalyzerNRFRegistrationToken(slot: 0, generation: generation)"
+      },
+      {
+        "line": 71,
+        "text": "package mutating func setAcquisitionState(_ state: AcquisitionState) -> Bool {"
+      },
+      {
+        "line": 72,
+        "text": "guard let generation = activeGeneration, isMutating else { return false }"
+      },
+      {
+        "line": 73,
+        "text": "let nextDiagnostic: SignalAnalyzerDiagnostic?"
+      },
+      {
+        "line": 74,
+        "text": "if case .failed(let diagnostic) = state {"
+      },
+      {
+        "line": 80,
+        "text": "let previousState = acquisitionState"
+      },
+      {
+        "line": 81,
+        "text": "let previousDiagnostic = errorMessage"
+      },
+      {
+        "line": 84,
+        "text": "let token = StaticSignalAnalyzerNRFRegistrationToken(slot: 0, generation: generation)"
+      },
+      {
+        "line": 93,
+        "text": "package mutating func installCaptureSnapshot("
+      },
+      {
+        "line": 97,
+        "text": "guard let generation = activeGeneration, isMutating, !captureSnapshotInstalled"
+      },
+      {
+        "line": 99,
+        "text": "let next = StaticSignalAnalyzerNRFModelCaptureState(snapshot: snapshot)"
+      },
+      {
+        "line": 100,
+        "text": "var changed ="
+      },
+      {
+        "line": 101,
+        "text": "next.count != capture.count || next.duration != capture.duration"
+      },
+      {
+        "line": 102,
+        "text": "|| next.retainedLowerBound != capture.retainedLowerBound"
+      },
+      {
+        "line": 103,
+        "text": "|| next.baselineLevels != capture.baselineLevels"
+      },
+      {
+        "line": 105,
+        "text": "guard let transition = snapshot.transition(at: UInt16(index)),"
+      },
+      {
+        "line": 106,
+        "text": "let record = StaticSignalAnalyzerNRFCaptureRecord(transition)"
+      },
+      {
+        "line": 108,
+        "text": "if index >= Int(capture.count)"
+      },
+      {
+        "line": 118,
+        "text": "let token = StaticSignalAnalyzerNRFRegistrationToken(slot: 0, generation: generation)"
+      },
+      {
+        "line": 128,
+        "text": "package mutating func applyCaptureMutation("
+      },
+      {
+        "line": 133,
+        "text": "guard let generation = activeGeneration, isMutating, captureSnapshotInstalled"
+      },
+      {
+        "line": 135,
+        "text": "let result = capture.apply(revision: revision, change: change, in: &regions)"
+      },
+      {
+        "line": 136,
+        "text": "guard case .applied(let changed) = result else { return result }"
+      },
+      {
+        "line": 138,
+        "text": "let token = StaticSignalAnalyzerNRFRegistrationToken(slot: 0, generation: generation)"
+      },
+      {
+        "line": 146,
+        "text": "package var visibleRange: Range<Duration> {"
+      },
+      {
+        "line": 147,
+        "text": "let window: Duration"
+      },
+      {
+        "line": 153,
+        "text": "let end = max(window, capture.duration)"
+      },
+      {
+        "line": 157,
+        "text": "package mutating func reportChange("
+      },
+      {
+        "line": 168,
+        "text": "fileprivate mutating func selectWindow(_ rawValue: UInt8) -> Bool {"
+      },
+      {
+        "line": 169,
+        "text": "guard let generation = activeGeneration, isMutating, rawValue <= 2 else {"
+      },
+      {
+        "line": 173,
+        "text": "let previous = visibleWindowRawValue"
+      },
+      {
+        "line": 175,
+        "text": "let token = StaticSignalAnalyzerNRFRegistrationToken("
+      },
+      {
+        "line": 187,
+        "text": "package struct StaticSignalAnalyzerNRFRegistrationToken: Equatable, Sendable {"
+      },
+      {
+        "line": 188,
+        "text": "package let slot: UInt16"
+      },
+      {
+        "line": 189,
+        "text": "package let generation: UInt32"
+      },
+      {
+        "line": 204,
+        "text": "package struct StaticSignalAnalyzerNRFChangeRegistration {"
+      },
+      {
+        "line": 205,
+        "text": "private let location: UnsafeMutablePointer<StaticSignalAnalyzerNRFModelLocation>"
+      },
+      {
+        "line": 206,
+        "text": "package let token: StaticSignalAnalyzerNRFRegistrationToken"
+      },
+      {
+        "line": 219,
+        "text": "package func reportChange() -> StaticSignalAnalyzerNRFChangeReportOutcome {"
+      },
+      {
+        "line": 233,
+        "text": "package struct StaticSignalAnalyzerNRFModelHandle {"
+      },
+      {
+        "line": 234,
+        "text": "private let location: UnsafeMutablePointer<StaticSignalAnalyzerNRFModelLocation>"
+      },
+      {
+        "line": 235,
+        "text": "private let generation: UInt32"
+      },
+      {
+        "line": 246,
+        "text": "package func dispatch(actionRawValue: UInt16) -> StaticSignalAnalyzerNRFModelIntent? {"
+      },
+      {
+        "line": 262,
+        "text": "private func selectWindow(_ rawValue: UInt8) -> StaticSignalAnalyzerNRFModelIntent? {"
+      }
+    ]
+  },
+  {
+    "path": "Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFModelCaptureState.swift",
+    "sha256": "37fe877d5f5c7de2fee9a3538ab92494373f762586af79ead456647f3ebc9d15",
+    "symbols": [
+      {
+        "line": 11,
+        "text": "package struct StaticSignalAnalyzerNRFModelCaptureState {"
+      },
+      {
+        "line": 12,
+        "text": "package private(set) var revision: UInt32 = 0"
+      },
+      {
+        "line": 13,
+        "text": "package private(set) var count: UInt16 = 0"
+      },
+      {
+        "line": 14,
+        "text": "package private(set) var duration: Duration = .zero"
+      },
+      {
+        "line": 15,
+        "text": "package private(set) var retainedLowerBound: Duration = .zero"
+      },
+      {
+        "line": 16,
+        "text": "package private(set) var baselineLevels: SignalChannelLevels = .allLow"
+      },
+      {
+        "line": 28,
+        "text": "package func visibleRange(window: Duration) -> Range<Duration>? {"
+      },
+      {
+        "line": 30,
+        "text": "let end = max(window, duration)"
+      },
+      {
+        "line": 34,
+        "text": "package func currentLevel("
+      },
+      {
+        "line": 38,
+        "text": "guard var current = baselineLevels[channelID] else { return nil }"
+      },
+      {
+        "line": 39,
+        "text": "var index = 0"
+      },
+      {
+        "line": 41,
+        "text": "guard let transition = regions.load(from: .snapshot, at: index)?.transition"
+      },
+      {
+        "line": 49,
+        "text": "package mutating func apply("
+      },
+      {
+        "line": 56,
+        "text": "case .reset(let baseRevision, let baselines):"
+      },
+      {
+        "line": 58,
+        "text": "let changed ="
+      },
+      {
+        "line": 69,
+        "text": "let baseRevision, let insertionIndex, let transition,"
+      },
+      {
+        "line": 70,
+        "text": "let evictedPrefixCount, let nextDuration, let nextLowerBound,"
+      },
+      {
+        "line": 71,
+        "text": "let nextBaselines"
+      },
+      {
+        "line": 73,
+        "text": "let oldCount = Int(count)"
+      },
+      {
+        "line": 74,
+        "text": "let insertion = Int(insertionIndex)"
+      },
+      {
+        "line": 75,
+        "text": "let eviction = Int(evictedPrefixCount)"
+      },
+      {
+        "line": 76,
+        "text": "let combinedCount = oldCount + 1"
+      },
+      {
+        "line": 77,
+        "text": "let nextCount = combinedCount - eviction"
+      },
+      {
+        "line": 85,
+        "text": "let insertedRecord = StaticSignalAnalyzerNRFCaptureRecord(transition)"
+      },
+      {
+        "line": 88,
+        "text": "var previousTimestamp = nextLowerBound"
+      },
+      {
+        "line": 89,
+        "text": "var changed ="
+      },
+      {
+        "line": 94,
+        "text": "let record = mergedRecord("
+      },
+      {
+        "line": 97,
+        "text": "), let value = record.transition,"
+      },
+      {
+        "line": 102,
+        "text": "let destination = sourceIndex - eviction"
+      },
+      {
+        "line": 111,
+        "text": "guard let record = regions.load(from: .snapshot, at: index - 1),"
+      },
+      {
+        "line": 121,
+        "text": "let record = mergedRecord("
+      },
+      {
+        "line": 141,
+        "text": "private func mergedRecord("
+      }
+    ]
+  },
+  {
+    "path": "Sources/SignalAnalyzerTargetHost/DynamicSignalAnalyzerPiInitialPresentationOwner.swift",
+    "sha256": "fe8503d64cbfc53f451f4f923a9951a9205c4ee62aed63197f0e3c61e126cce2",
+    "symbols": [
+      {
+        "line": 57,
+        "text": "package struct DynamicSignalAnalyzerPiInitialPresentationOwner<Target>"
+      },
+      {
+        "line": 59,
+        "text": "private var pipeline: DynamicSignalAnalyzerPresentationPipeline<GiftUIReferenceTextMetricsView>"
+      },
+      {
+        "line": 60,
+        "text": "private var endpoint: DynamicSignalAnalyzerPiEndpoint<Target>"
+      },
+      {
+        "line": 61,
+        "text": "private let envelopeValidator: DynamicSignalAnalyzerFrameEnvelopeValidator"
+      },
+      {
+        "line": 62,
+        "text": "private var provenance: FrameProvenance"
+      },
+      {
+        "line": 63,
+        "text": "private var presentationRevision: PresentationRevision"
+      },
+      {
+        "line": 64,
+        "text": "private var activeInputSource: InputSourceID?"
+      },
+      {
+        "line": 65,
+        "text": "private var activeInputSequence: PointerSequenceID?"
+      },
+      {
+        "line": 66,
+        "text": "private var lastInputOrdinal: InputOrdinal?"
+      },
+      {
+        "line": 67,
+        "text": "private var capturedAction: CapturedAction<DynamicSemanticIdentity>?"
+      },
+      {
+        "line": 68,
+        "text": "private var model: SignalAnalyzerViewModel?"
+      },
+      {
+        "line": 70,
+        "text": "package private(set) var state: DynamicSignalAnalyzerPiInitialPresentationState = .ready"
+      },
+      {
+        "line": 71,
+        "text": "private var attemptModel: SignalAnalyzerViewModel?"
+      },
+      {
+        "line": 72,
+        "text": "private var attemptAdmission: DynamicSignalAnalyzerHostFactAdmission?"
+      },
+      {
+        "line": 73,
+        "text": "private var attemptEvents: [NormalizedPointerEvent] = []"
+      },
+      {
+        "line": 74,
+        "text": "private var attemptCorrelations: DynamicSignalAnalyzerPiCorrelationOwner?"
+      },
+      {
+        "line": 75,
+        "text": "private var attemptFixedCorrelation: DynamicSignalAnalyzerPiPresentationCorrelation?"
+      },
+      {
+        "line": 76,
+        "text": "private var attemptCycle: RunCycleID?"
+      },
+      {
+        "line": 77,
+        "text": "private var attemptSemanticRevision: SemanticRevision?"
+      },
+      {
+        "line": 78,
+        "text": "private var attemptCorrelation: DynamicSignalAnalyzerPiPresentationCorrelation?"
+      },
+      {
+        "line": 79,
+        "text": "private var attemptSummary: DynamicSignalAnalyzerPresentationSummary?"
+      },
+      {
+        "line": 80,
+        "text": "private var derivesPresentation = false"
+      },
+      {
+        "line": 81,
+        "text": "private var semanticChanged = false"
+      },
+      {
+        "line": 82,
+        "text": "private var presentationPending = false"
+      },
+      {
+        "line": 83,
+        "text": "private var requiresSemanticRetry = false"
+      },
+      {
+        "line": 84,
+        "text": "private var recovery = HostPresentationRecovery("
+      },
+      {
+        "line": 87,
+        "text": "private var health: HostEndpointHealthController"
+      },
+      {
+        "line": 88,
+        "text": "private var applicationFailureOwner: (any DynamicSignalAnalyzerApplicationFailureHandling)?"
+      },
+      {
+        "line": 89,
+        "text": "private var applicationFailureWasAlreadyHandled = false"
+      },
+      {
+        "line": 90,
+        "text": "private var attemptApplicationFailure: SignalAnalyzerRuntimeCondition?"
+      },
+      {
+        "line": 91,
+        "text": "package private(set) var residualPolicy = SignalAnalyzerCycleResidualPolicyOwner()"
+      },
+      {
+        "line": 92,
+        "text": "package private(set) var lastNormalizedFailure: GiftUIFailureFact?"
+      },
+      {
+        "line": 93,
+        "text": "package private(set) var lastRecoveryTransition: HostPresentationRecoveryTransition?"
+      },
+      {
+        "line": 94,
+        "text": "package private(set) var lastHealthFailure: HostEndpointHealthError?"
+      },
+      {
+        "line": 95,
+        "text": "package private(set) var lastHealthTransition: HostEndpointHealthTransition?"
+      },
+      {
+        "line": 97,
+        "text": "private var publishedSemanticRevision: SemanticRevision"
+      },
+      {
+        "line": 98,
+        "text": "package var injectingFailure: DynamicSignalAnalyzerPresentationFailure?"
+      },
+      {
+        "line": 99,
+        "text": "package private(set) var retainedFailure = RuntimeFocusedFailureState<"
+      },
+      {
+        "line": 102,
+        "text": "private var attemptOffer: FrameOfferResult?"
+      },
+      {
+        "line": 103,
+        "text": "private var applicationSummary = DynamicSignalAnalyzerFactApplicationSummary("
+      },
+      {
+        "line": 105,
+        "text": "private var inputSummary = DynamicSignalAnalyzerPiInputDrainSummary("
+      },
+      {
+        "line": 107,
+        "text": "package private(set) var lastPipelineResult:"
+      },
+      {
+        "line": 109,
+        "text": "package private(set) var pipelineFinalizationCount: UInt32 = 0"
+      },
+      {
+        "line": 110,
+        "text": "package private(set) var lastPresentedSummary: DynamicSignalAnalyzerPresentationSummary?"
+      },
+      {
+        "line": 120,
+        "text": "let envelopeValidator = DynamicSignalAnalyzerFrameEnvelopeValidator("
+      },
+      {
+        "line": 124,
+        "text": "let pipeline = DynamicSignalAnalyzerPresentationPipeline("
+      },
+      {
+        "line": 131,
+        "text": "let endpoint = DynamicSignalAnalyzerPiEndpointFactory.make("
+      },
+      {
+        "line": 147,
+        "text": "package mutating func installApplicationFailureOwner("
+      },
+      {
+        "line": 153,
+        "text": "package var pendingWakeReasons: ExecutionWakeReasons {"
+      },
+      {
+        "line": 155,
+        "text": "var reasons: ExecutionWakeReasons"
+      },
+      {
+        "line": 157,
+        "text": "case .completed(let completion): reasons = completion.disposition.wakeReasons"
+      },
+      {
+        "line": 158,
+        "text": "case .failed(let failure): reasons = failure.disposition.wakeReasons"
+      },
+      {
+        "line": 166,
+        "text": "package var lastCleanupActions: RuntimeCleanupActions { pipeline.lastFailureCleanupActions }"
+      },
+      {
+        "line": 168,
+        "text": "package var lastCommittedPresentationRevision: PresentationRevision { presentationRevision }"
+      },
+      {
+        "line": 169,
+        "text": "package var pendingPresentationIntent: PresentationPendingIntent? { recovery.pendingIntent }"
+      },
+      {
+        "line": 170,
+        "text": "package var inputIsEligible: Bool { state == .inputEligible }"
+      },
+      {
+        "line": 171,
+        "text": "package var currentPresentationRevision: PresentationRevision? {"
+      },
+      {
+        "line": 175,
+        "text": "package var eligibleActionCount: UInt16 {"
+      },
+      {
+        "line": 179,
+        "text": "package borrowing func eligibleAction("
+      },
+      {
+        "line": 186,
+        "text": "package mutating func presentInitial("
+      },
+      {
+        "line": 198,
+        "text": "package mutating func presentInitial("
+      },
+      {
+        "line": 207,
+        "text": "let result = RuntimeCompletePipeline.run(owner: &self)"
+      },
+      {
+        "line": 213,
+        "text": "package mutating func presentNext("
+      },
+      {
+        "line": 227,
+        "text": "package mutating func presentNext("
+      },
+      {
+        "line": 231,
+        "text": "guard let model else { return .failure(.invalidLifecycle) }"
+      },
+      {
+        "line": 239,
+        "text": "package func applySealedFacts("
+      },
+      {
+        "line": 246,
+        "text": "package func beginApplicationMutation() -> Bool {"
+      },
+      {
+        "line": 250,
+        "text": "package func endApplicationMutation() -> Bool? {"
+      },
+      {
+        "line": 255,
+        "text": "private mutating func present("
+      },
+      {
+        "line": 265,
+        "text": "let result = RuntimeCompletePipeline.run(owner: &self)"
+      },
+      {
+        "line": 271,
+        "text": "package mutating func runOwnedOpportunity("
+      },
+      {
+        "line": 276,
+        "text": "guard let model, state == .inputEligible else { return .failure(.mutationUnavailable) }"
+      },
+      {
+        "line": 280,
+        "text": "let result = RuntimeCompletePipeline.run(owner: &self)"
+      },
+      {
+        "line": 284,
+        "text": "case .failed(let record):"
+      },
+      {
+        "line": 287,
+        "text": "if let lastHealthFailure {"
+      },
+      {
+        "line": 290,
+        "text": "if let offer = attemptOffer, offer.disposition != .accepted {"
+      },
+      {
+        "line": 293,
+        "text": "if let transition = lastHealthTransition, transition.residualRouteRequest() != nil {"
+      },
+      {
+        "line": 303,
+        "text": "private mutating func prepareOpportunity("
+      },
+      {
+        "line": 335,
+        "text": "private mutating func finishResult(_ result: RuntimeCompletePipelineResult<OwnerFailure>) {"
+      },
+      {
+        "line": 337,
+        "text": "case .failed(let record):"
+      },
+      {
+        "line": 338,
+        "text": "let context = failureContext(record)"
+      },
+      {
+        "line": 339,
+        "text": "if case .focusedOwner(let failure) = record.failure {"
+      },
+      {
+        "line": 342,
+        "text": "let fact = SignalAnalyzerCycleFailureNormalizer.cycleFailure("
+      },
+      {
+        "line": 384,
+        "text": "case .completed(let completion):"
+      },
+      {
+        "line": 386,
+        "text": "let fact = GiftUIFailureFact("
+      },
+      {
+        "line": 395,
+        "text": "} else if let transition = lastHealthTransition,"
+      },
+      {
+        "line": 396,
+        "text": "let request = transition.residualRouteRequest()"
+      },
+      {
+        "line": 399,
+        "text": "} else if let transition = lastRecoveryTransition,"
+      },
+      {
+        "line": 400,
+        "text": "let context = transition.policyContext"
+      },
+      {
+        "line": 402,
+        "text": "let outcome: GiftUIOutcome<Void>"
+      },
+      {
+        "line": 428,
+        "text": "private func failureContext("
+      },
+      {
+        "line": 437,
+        "text": "private func phase(for stage: RuntimeCompletePipelineStage) -> ExecutionPhase {"
+      },
+      {
+        "line": 447,
+        "text": "private func presentationResult("
+      },
+      {
+        "line": 451,
+        "text": "case .failed(let record):"
+      },
+      {
+        "line": 452,
+        "text": "if let offer = attemptOffer { return .failure(.offer(offer)) }"
+      },
+      {
+        "line": 455,
+        "text": "if let lastHealthFailure { return .failure(.endpointHealthFailure(lastHealthFailure)) }"
+      },
+      {
+        "line": 456,
+        "text": "if let transition = lastHealthTransition, transition.residualRouteRequest() != nil {"
+      },
+      {
+        "line": 459,
+        "text": "if let offer = attemptOffer, offer.disposition != .accepted {"
+      },
+      {
+        "line": 462,
+        "text": "guard let summary = attemptSummary else { return .failure(.invalidLifecycle) }"
+      },
+      {
+        "line": 467,
+        "text": "package mutating func handle("
+      },
+      {
+        "line": 486,
+        "text": "case .captured(let captured):"
+      },
+      {
+        "line": 499,
+        "text": "let previous = lastInputOrdinal,"
+      },
+      {
+        "line": 507,
+        "text": "guard let capturedAction else {"
+      },
+      {
+        "line": 525,
+        "text": "case .activationAdmitted(let admitted):"
+      },
+      {
+        "line": 535,
+        "text": "package mutating func quiesce() {"
+      },
+      {
+        "line": 542,
+        "text": "private mutating func cancelInputSequence() {"
+      },
+      {
+        "line": 553,
+        "text": "package mutating func admitAndSeal() -> RuntimePipelineStepResult<OwnerFailure> {"
+      },
+      {
+        "line": 555,
+        "text": "if let applicationFailureOwner, !applicationFailureOwner.isAvailable {"
+      },
+      {
+        "line": 558,
+        "text": "if let condition = applicationFailureOwner.terminalCondition {"
+      },
+      {
+        "line": 564,
+        "text": "guard let cycle = attemptCorrelations?.reserveOpportunityCycle() else {"
+      },
+      {
+        "line": 573,
+        "text": "package mutating func applyAdmittedWork() -> RuntimePipelineMutationResult<OwnerFailure> {"
+      },
+      {
+        "line": 574,
+        "text": "var applied = false"
+      },
+      {
+        "line": 575,
+        "text": "if let admission = attemptAdmission {"
+      },
+      {
+        "line": 577,
+        "text": "case .applied(let summary):"
+      },
+      {
+        "line": 580,
+        "text": "case .rejected(let condition, let mutationApplied):"
+      },
+      {
+        "line": 584,
+        "text": "case .unavailable(let mutationApplied):"
+      },
+      {
+        "line": 596,
+        "text": "var dispatched: UInt16 = 0"
+      },
+      {
+        "line": 597,
+        "text": "var cancelled: UInt16 = 0"
+      },
+      {
+        "line": 617,
+        "text": "package mutating func freezeObservableMutation() -> RuntimePipelineStepResult<OwnerFailure> {"
+      },
+      {
+        "line": 622,
+        "text": "package mutating func beginObservableCandidateAndExpandSemantics() -> RuntimePipelineStepResult<"
+      },
+      {
+        "line": 634,
+        "text": "guard attemptSemanticRevision != nil, let attemptModel else {"
+      },
+      {
+        "line": 637,
+        "text": "let failure = pipeline.expandSemantics("
+      },
+      {
+        "line": 642,
+        "text": "package mutating func resolveLayout() -> RuntimePipelineStepResult<OwnerFailure> {"
+      },
+      {
+        "line": 644,
+        "text": "let failure = pipeline.resolveLayout(injectingFailure: injectingFailure)"
+      },
+      {
+        "line": 648,
+        "text": "package mutating func invokeCanvasesAndDerivePlan() -> RuntimePipelineStepResult<OwnerFailure> {"
+      },
+      {
+        "line": 650,
+        "text": "let failure = pipeline.invokeCanvases("
+      },
+      {
+        "line": 656,
+        "text": "package mutating func preflightCombinedRender() -> RuntimePipelineStepResult<OwnerFailure> {"
+      },
+      {
+        "line": 658,
+        "text": "let failure = pipeline.preflightRender(injectingFailure: injectingFailure)"
+      },
+      {
+        "line": 662,
+        "text": "package mutating func buildInteractionCandidate() -> RuntimePipelineStepResult<OwnerFailure> {"
+      },
+      {
+        "line": 664,
+        "text": "let failure = pipeline.buildInteraction(injectingFailure: injectingFailure)"
+      },
+      {
+        "line": 669,
+        "text": "package mutating func publishSemanticAndObservableCandidate()"
+      },
+      {
+        "line": 673,
+        "text": "if let failure = pipeline.publishObservableCandidate() {"
+      },
+      {
+        "line": 676,
+        "text": "guard let summary = pipeline.preparedSummary else {"
+      },
+      {
+        "line": 688,
+        "text": "package mutating func allocateCandidate() -> RuntimePipelineStepResult<OwnerFailure> {"
+      },
+      {
+        "line": 697,
+        "text": "package mutating func offerAndProduce() -> RuntimePipelineOfferResult<OwnerFailure> {"
+      },
+      {
+        "line": 699,
+        "text": "let correlation = attemptCorrelation!"
+      },
+      {
+        "line": 701,
+        "text": "let offer = pipeline.offer("
+      },
+      {
+        "line": 713,
+        "text": "if let error = endpoint.retainedProducerError {"
+      },
+      {
+        "line": 720,
+        "text": "package mutating func cleanup(_ action: RuntimeCleanupAction) {"
+      },
+      {
+        "line": 723,
+        "text": "let correlation = attemptCorrelation!"
+      },
+      {
+        "line": 743,
+        "text": "package mutating func applyDisposition(_ disposition: RuntimePipelineDisposition) {"
+      },
+      {
+        "line": 745,
+        "text": "guard let offer = attemptOffer else { return }"
+      },
+      {
+        "line": 754,
+        "text": "case .success(let transition):"
+      },
+      {
+        "line": 761,
+        "text": "case .failure(let error):"
+      },
+      {
+        "line": 773,
+        "text": "if let transition = lastRecoveryTransition, transition.disposition == .unavailable {"
+      },
+      {
+        "line": 779,
+        "text": "package mutating func finalizePipeline() {"
+      },
+      {
+        "line": 781,
+        "text": "if let admission = attemptAdmission { while admission.takeNextSealed() != nil {} }"
+      },
+      {
+        "line": 782,
+        "text": "if let condition = attemptApplicationFailure {"
+      },
+      {
+        "line": 784,
+        "text": "if let applicationFailureOwner {"
+      },
+      {
+        "line": 795,
+        "text": "private func step(_ failure: DynamicSignalAnalyzerPresentationFailure?)"
+      },
+      {
+        "line": 801,
+        "text": "private func mapped(_ failure: DynamicSignalAnalyzerPresentationFailure) -> RunCycleFailure<"
+      },
+      {
+        "line": 805,
+        "text": "case .observable(let error): return .focusedOwner(.runtime(.observableState(error)))"
+      },
+      {
+        "line": 806,
+        "text": "case .semantic(let error): return .focusedOwner(.runtime(.semantic(error)))"
+      },
+      {
+        "line": 807,
+        "text": "case .layout(let error): return .focusedOwner(.runtime(.layout(error)))"
+      },
+      {
+        "line": 808,
+        "text": "case .drawing(let error): return .focusedOwner(.runtime(.drawing(error)))"
+      },
+      {
+        "line": 809,
+        "text": "case .interaction(let error): return .focusedOwner(.runtime(.interaction(error)))"
+      },
+      {
+        "line": 810,
+        "text": "case .runtime(let failure): return .focusedOwner(.runtime(failure))"
+      },
+      {
+        "line": 811,
+        "text": "case .render(let error): return .renderProduction(error)"
+      },
+      {
+        "line": 812,
+        "text": "case .execution(let error): return .execution(error)"
+      }
+    ]
+  },
+  {
+    "path": "experiments/spike-014-external-consumer-access/PortableCounter.swift",
+    "sha256": "4ac49019e33145098141b739f0958b68375d2eb9f6d0d7a47a30f991a2b6c637",
+    "symbols": [
+      {
+        "line": 8,
+        "text": "struct CounterScreen: View {"
+      },
+      {
+        "line": 9,
+        "text": "let value: BoundedText"
+      },
+      {
+        "line": 10,
+        "text": "let resetDisabled: Bool"
+      },
+      {
+        "line": 12,
+        "text": "var body: some View {"
+      },
+      {
+        "line": 23,
+        "text": "public func declarationProbe() {"
+      },
+      {
+        "line": 24,
+        "text": "let screen = CounterScreen(value: BoundedText(\"0\")!, resetDisabled: true)"
+      }
+    ]
+  },
+  {
+    "path": "docs/iterations/iteration-003-review/rfc-014-c-contract.md",
+    "sha256": "55ee2b481052783c51fd716a6f9e597be6582a94d4f66c12dd632f4e809e0de8",
+    "symbols": [
+      {
+        "line": 54,
+        "text": "property storage within that model. These are different identities."
+      },
+      {
+        "line": 65,
+        "text": "The main remaining feasibility question is explicit: ordinary `model.property`"
+      },
+      {
+        "line": 78,
+        "text": "func draw("
+      },
+      {
+        "line": 103,
+        "text": "class-shaped model schema; a Static image uses its generated typed model identity"
+      },
+      {
+        "line": 104,
+        "text": "and stores, not an ordinary heap-allocated class. Exact macro/compiler declarations"
+      },
+      {
+        "line": 105,
+        "text": "and the class-to-identity realization require C-P1 evidence below."
+      },
+      {
+        "line": 111,
+        "text": "final class CounterModel {"
+      },
+      {
+        "line": 112,
+        "text": "@Published var value: UInt8 = 0"
+      },
+      {
+        "line": 116,
+        "text": "struct CounterScreen: View {"
+      },
+      {
+        "line": 117,
+        "text": "@State var model: CounterModel"
+      },
+      {
+        "line": 119,
+        "text": "var body: some View {"
+      },
+      {
+        "line": 122,
+        "text": "Text(counterText(model.value))"
+      },
+      {
+        "line": 124,
+        "text": ".disabled(model.value == 9)"
+      },
+      {
+        "line": 126,
+        "text": ".disabled(model.value == 0)"
+      },
+      {
+        "line": 132,
+        "text": "struct CounterCanvas: Canvas {"
+      },
+      {
+        "line": 133,
+        "text": "let model: CounterModel"
+      },
+      {
+        "line": 135,
+        "text": "func draw("
+      },
+      {
+        "line": 140,
+        "text": "context: &context, size: bounds.size, value: model.value)"
+      },
+      {
+        "line": 157,
+        "text": "struct SignalAnalyzerTraceCanvas: Canvas {"
+      },
+      {
+        "line": 158,
+        "text": "let model: SignalAnalyzerViewModel"
+      },
+      {
+        "line": 159,
+        "text": "let channelID: SignalChannelID"
+      },
+      {
+        "line": 160,
+        "text": "let visibleRange: Range<Duration>"
+      },
+      {
+        "line": 162,
+        "text": "func draw("
+      },
+      {
+        "line": 168,
+        "text": "capture: model.presentationCapture, visibleRange: visibleRange)"
+      },
+      {
+        "line": 271,
+        "text": "epoch; it never silently resolves the newest model. The actual context must be"
+      },
+      {
+        "line": 294,
+        "text": "whole freeze. Copying only a class/array pointer is not a deep-freeze proof."
+      },
+      {
+        "line": 302,
+        "text": "allocating another live model. Fact/action dispatch and observation startup are"
+      },
+      {
+        "line": 357,
+        "text": "do not remove previously published state. Teardown cancels/drains admission and"
+      }
+    ]
+  }
+]

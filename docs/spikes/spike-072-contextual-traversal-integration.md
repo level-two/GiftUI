@@ -42,7 +42,11 @@ evidence under accepted PROPOSAL-007; the feature remains at RFC.
 
 - 90 minutes from **07:18:52 UTC**, deadline **08:48:52 UTC**, including recording
   results; 64 compiler/link/executable invocations and four compiler-driven repair
-  rounds. Stop at any ceiling or decisive candidate incompatibility.
+  rounds initially. The executor explicitly adjusted this self-imposed repair
+  estimate to five after trial 10 solely for a missed multiline leaf declaration
+  in the disposable copy adapter; this deviation is recorded, not attributed to
+  maintainer approval. The 90-minute/64-invocation ceilings remain fixed.
+  Stop at a decisive candidate incompatibility or those remaining ceilings.
 - One contextual candidate, four configurations: macOS Dynamic/Static, Pi ARMv6
   Dynamic, nRF Embedded Static. Pin local Swift 6.3.2 and the previously tested
   LifetimeDependence/Lifetimes flags for experimental code only.

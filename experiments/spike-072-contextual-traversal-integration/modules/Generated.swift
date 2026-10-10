@@ -1,0 +1,68 @@
+import GiftUI
+import GiftUISemanticCore
+import GiftUIRenderCore
+import GiftUITextResources
+import GiftUILayout
+import GiftUIExecution
+import GiftUIDrawing
+// Generated finite contextual authoring output.
+struct CounterModel { let key: ModelKey }
+struct Root: View, _GiftUIObservableStateHost {
+    typealias Body = ConditionalContent<Nested, Nested>
+    let seed: UInt32
+    private var model = CounterModel(key: ModelKey(index: UInt16.max, epoch: 0))
+    init(seed: UInt32) { self.seed=seed }
+    mutating func _bind<S: EvaluationSession & ~Copyable>(location: UInt64, session: inout S) throws(AccessFailure) {
+        model = CounterModel(key: try session.bind(location: location, ordinal: 0, seed: seed))
+    }
+    func _giftUITraverse<V: _GiftUISemanticTraversalVisitor,S: EvaluationSession & ~Copyable>(_ visitor: inout V, session: inout S) {
+        visitor.visitStatefulCustomView(self, session: &session)
+    }
+    func _evaluate<R: FrozenAccess & ~Escapable>(read: borrowing R) throws(AccessFailure) -> Body {
+        let _r1 = try read.scalar(model.key, field: 0)
+        var _r3 = false
+        if (_r1 > 0) {
+            let _r2 = try enabled_read(model: model, read: read)
+            _r3 = _r2
+        }
+        let _result: ConditionalContent<Nested, Nested>
+        if _r3 {
+            let _r4 = try read.scalar(model.key, field: 0)
+            _result = ConditionalContent(first: Nested(seed: _r4))
+        } else {
+            _result = ConditionalContent(second: Nested(seed: 0))
+        }
+        return _result
+    }
+}
+struct Nested: View, _GiftUIObservableStateHost {
+    typealias Body = HStack<TupleView3<Meter, Meter, Meter>>
+    let seed: UInt32
+    private var model = CounterModel(key: ModelKey(index: UInt16.max, epoch: 0))
+    init(seed: UInt32) { self.seed=seed }
+    mutating func _bind<S: EvaluationSession & ~Copyable>(location: UInt64, session: inout S) throws(AccessFailure) {
+        model = CounterModel(key: try session.bind(location: location, ordinal: 0, seed: seed))
+    }
+    func _giftUITraverse<V: _GiftUISemanticTraversalVisitor,S: EvaluationSession & ~Copyable>(_ visitor: inout V, session: inout S) {
+        visitor.visitStatefulCustomView(self, session: &session)
+    }
+    func _evaluate<R: FrozenAccess & ~Escapable>(read: borrowing R) throws(AccessFailure) -> Body {
+        return HStack(spacing: 0) {
+            Meter(model: model, offset: 1)
+            Meter(model: model, offset: 2)
+            Meter(model: model, offset: 3)
+        }
+    }
+}
+struct Meter: Canvas {
+    let model: CounterModel
+    let offset: UInt32
+    func draw<R: FrozenAccess & ~Escapable>(in bounds: Rect, context: inout GraphicsContext, read: borrowing R) throws(DrawingError) {
+        let _r5 = try read.drawScalar(model.key, field: 0)
+        try drawBar(value: _r5, scale: offset, context: &context)
+    }
+}
+func enabled_read<R: FrozenAccess & ~Escapable>(model: CounterModel, read: borrowing R) throws(AccessFailure) -> Bool {
+    let _r6 = try read.scalar(model.key, field: 1)
+    return (_r6 > 0)
+}

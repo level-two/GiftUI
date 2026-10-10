@@ -1,0 +1,16 @@
+--- Sources/GiftUIRenderCore/DrawingOperationSink.swift
++++ experiments/spike-072-contextual-traversal-integration/adapted/GiftUIRenderCore_DrawingOperationSink.swift
+@@ -1,4 +1,3 @@
+-import GiftUI
+ 
+ package struct SubpathRange: Equatable, Sendable {
+     package let firstPoint: UInt16
+@@ -50,8 +49,3 @@
+     func subpath(at index: UInt16) -> SubpathRange?
+ }
+ 
+-package protocol DrawingOperationSink: RenderOperationSink {
+-    mutating func straightLineStroke<Stroke: StraightLineStrokeView>(
+-        _ stroke: borrowing Stroke
+-    ) -> Bool
+-}

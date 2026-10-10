@@ -1,0 +1,552 @@
+--- Sources/GiftUISemanticCore/GiftUISemanticCore.swift
++++ experiments/spike-072-contextual-traversal-integration/adapted/GiftUISemanticCore_GiftUISemanticCore.swift
+@@ -1,4 +1,3 @@
+-import GiftUI
+ 
+ package struct SemanticExpansionLimits: Equatable, Sendable {
+     package let maximumDepth: UInt16
+@@ -70,10 +69,11 @@
+     associatedtype Identity: Equatable
+     associatedtype Failure: Equatable & Sendable
+ 
+-    mutating func bind<Declaration>(
++    mutating func bind<Declaration, Session: EvaluationSession & ~Copyable>(
+         _ declaration: borrowing Declaration,
+         structuralIdentity: Identity,
+-        body: (borrowing Declaration) -> Void
++        session: inout Session,
++        body: (borrowing Declaration, inout Session) -> Void
+     ) -> SemanticStateBindingOutcome<Failure>
+     where Declaration: View & _GiftUIObservableStateHost
+ }
+@@ -83,6 +83,7 @@
+     case success(SemanticExpansionSummary)
+     case semanticFailure(SemanticExpansionError)
+     case bindingFailure(BindingFailure)
++    case accessFailure(AccessFailure)
+ }
+ 
+ package protocol SemanticExpansionWorkspace {
+@@ -874,6 +875,7 @@
+ 
+     private(set) var failure: SemanticExpansionError?
+     private(set) var bindingFailure: StateBinding.Failure?
++    private(set) var accessFailure: AccessFailure?
+     private var currentIdentity: Workspace.Identity?
+     private var currentCategoryWasVisited = false
+     private var nextModifierChainIndex: UInt16 = 0
+@@ -890,8 +892,8 @@
+         self.stateBinding = stateBinding
+     }
+ 
+-    mutating func expandRoot<Root: View>(_ root: borrowing Root) {
+-        guard failure == nil else { return }
++    mutating func expandRoot<Root: View, Session: EvaluationSession & ~Copyable>(_ root: borrowing Root, session: inout Session) {
++        guard failure == nil, bindingFailure == nil, accessFailure == nil else { return }
+         var rootIdentity: Workspace.Identity?
+         if let error = attempt.enterRoot(
+             Root.self,
+@@ -907,17 +909,16 @@
+         }
+ 
+         currentIdentity = rootIdentity
+-        expandDeclaration(root)
+-        guard failure == nil else { return }
++        expandDeclaration(root, session: &session)
++        guard failure == nil, bindingFailure == nil, accessFailure == nil else { return }
+         if let error = attempt.leavePathComponent(workspace: &workspace) {
+             stop(error)
+         }
+     }
+ 
+-    mutating func visitCustomView<Declaration: View>(
+-        _ declaration: borrowing Declaration,
+-        body: () -> Declaration.Body
+-    ) {
++    mutating func visitCustomView<Declaration: View, Session: EvaluationSession & ~Copyable>(
++        _ declaration: borrowing Declaration
++    , session: inout Session) {
+         guard beginCategory() else { return }
+         var bodyIdentity: Workspace.Identity?
+         if let error = attempt.enterCustomBody(
+@@ -946,9 +947,11 @@
+             stop(.invariantViolation)
+             return
+         }
+-        let evaluatedBody = body()
+-        expandDeclaration(evaluatedBody)
+-        guard failure == nil else { return }
++        let evaluatedBody: Declaration.Body
++        do { evaluatedBody = try session.evaluate(declaration) }
++        catch { accessFailure = error; return }
++        expandDeclaration(evaluatedBody, session: &session)
++        guard failure == nil, bindingFailure == nil, accessFailure == nil else { return }
+         if let error = attempt.leavePathComponent(workspace: &workspace) {
+             stop(error)
+         }
+@@ -956,10 +959,9 @@
+ 
+     mutating func visitStatefulCustomView<
+         Declaration: View & _GiftUIObservableStateHost
+-    >(
+-        _ declaration: borrowing Declaration,
+-        body: (borrowing Declaration) -> Declaration.Body
+-    ) {
++    , Session: EvaluationSession & ~Copyable>(
++        _ declaration: borrowing Declaration
++    , session: inout Session) {
+         guard beginCategory() else { return }
+         var bodyIdentity: Workspace.Identity?
+         if let error = attempt.enterCustomBody(
+@@ -980,8 +982,8 @@
+         var bodyFailure: SemanticExpansionError?
+         let bindingOutcome = stateBinding.bind(
+             declaration,
+-            structuralIdentity: bodyIdentity
+-        ) { boundDeclaration in
++            structuralIdentity: bodyIdentity, session: &session
++        ) { boundDeclaration, scopedSession in
+             if let error = attempt.stageBodyEvaluation(
+                 identity: bodyIdentity,
+                 workspace: &workspace,
+@@ -994,7 +996,8 @@
+                 bodyFailure = .invariantViolation
+                 return
+             }
+-            evaluatedBody = body(boundDeclaration)
++            do throws(AccessFailure) { evaluatedBody = try scopedSession.evaluate(boundDeclaration) }
++            catch { accessFailure = error }
+         }
+ 
+         switch bindingOutcome {
+@@ -1007,6 +1010,7 @@
+         case .bound:
+             break
+         }
++        guard accessFailure == nil else { return }
+         if let bodyFailure {
+             stop(bodyFailure)
+             return
+@@ -1015,88 +1019,88 @@
+             stop(.invariantViolation)
+             return
+         }
+-        expandDeclaration(evaluatedBody)
+-        guard failure == nil, bindingFailure == nil else { return }
++        expandDeclaration(evaluatedBody, session: &session)
++        guard failure == nil, bindingFailure == nil, accessFailure == nil, bindingFailure == nil else { return }
+         if let error = attempt.leavePathComponent(workspace: &workspace) {
+             stop(error)
+         }
+     }
+ 
+-    mutating func visitEmpty() {
++    mutating func visitEmpty<Session: EvaluationSession & ~Copyable>(session: inout Session) {
+         _ = beginCategory()
+     }
+ 
+-    mutating func visitFixed<A: View, B: View>(
++    mutating func visitFixed<A: View, B: View, Session: EvaluationSession & ~Copyable>(
+         _ a: borrowing A,
+         _ b: borrowing B
+-    ) {
++    , session: inout Session) {
+         guard beginCategory() else { return }
+-        expandFixedChild(a, index: 0)
+-        expandFixedChild(b, index: 1)
+-    }
+-
+-    mutating func visitFixed<A: View, B: View, C: View>(
++        expandFixedChild(a, index: 0, session: &session)
++        expandFixedChild(b, index: 1, session: &session)
++    }
++
++    mutating func visitFixed<A: View, B: View, C: View, Session: EvaluationSession & ~Copyable>(
+         _ a: borrowing A,
+         _ b: borrowing B,
+         _ c: borrowing C
+-    ) {
++    , session: inout Session) {
+         guard beginCategory() else { return }
+-        expandFixedChild(a, index: 0)
+-        expandFixedChild(b, index: 1)
+-        expandFixedChild(c, index: 2)
+-    }
+-
+-    mutating func visitFixed<A: View, B: View, C: View, D: View>(
++        expandFixedChild(a, index: 0, session: &session)
++        expandFixedChild(b, index: 1, session: &session)
++        expandFixedChild(c, index: 2, session: &session)
++    }
++
++    mutating func visitFixed<A: View, B: View, C: View, D: View, Session: EvaluationSession & ~Copyable>(
+         _ a: borrowing A,
+         _ b: borrowing B,
+         _ c: borrowing C,
+         _ d: borrowing D
+-    ) {
++    , session: inout Session) {
+         guard beginCategory() else { return }
+-        expandFixedChild(a, index: 0)
+-        expandFixedChild(b, index: 1)
+-        expandFixedChild(c, index: 2)
+-        expandFixedChild(d, index: 3)
+-    }
+-
+-    mutating func visitFixed<A: View, B: View, C: View, D: View, E: View>(
++        expandFixedChild(a, index: 0, session: &session)
++        expandFixedChild(b, index: 1, session: &session)
++        expandFixedChild(c, index: 2, session: &session)
++        expandFixedChild(d, index: 3, session: &session)
++    }
++
++    mutating func visitFixed<A: View, B: View, C: View, D: View, E: View, Session: EvaluationSession & ~Copyable>(
+         _ a: borrowing A,
+         _ b: borrowing B,
+         _ c: borrowing C,
+         _ d: borrowing D,
+         _ e: borrowing E
+-    ) {
++    , session: inout Session) {
+         guard beginCategory() else { return }
+-        expandFixedChild(a, index: 0)
+-        expandFixedChild(b, index: 1)
+-        expandFixedChild(c, index: 2)
+-        expandFixedChild(d, index: 3)
+-        expandFixedChild(e, index: 4)
+-    }
+-
+-    mutating func visitConditionalFirst<First: View, Second: View>(
++        expandFixedChild(a, index: 0, session: &session)
++        expandFixedChild(b, index: 1, session: &session)
++        expandFixedChild(c, index: 2, session: &session)
++        expandFixedChild(d, index: 3, session: &session)
++        expandFixedChild(e, index: 4, session: &session)
++    }
++
++    mutating func visitConditionalFirst<First: View, Second: View, Session: EvaluationSession & ~Copyable>(
+         _ content: borrowing First,
+         second: Second.Type
+-    ) {
++    , session: inout Session) {
+         guard beginCategory() else { return }
+-        expandConditionalChild(content, branch: 0)
+-    }
+-
+-    mutating func visitConditionalSecond<First: View, Second: View>(
++        expandConditionalChild(content, branch: 0, session: &session)
++    }
++
++    mutating func visitConditionalSecond<First: View, Second: View, Session: EvaluationSession & ~Copyable>(
+         first: First.Type,
+         _ content: borrowing Second
+-    ) {
++    , session: inout Session) {
+         guard beginCategory() else { return }
+-        expandConditionalChild(content, branch: 1)
+-    }
+-
+-    mutating func visitOptionalAbsent<Content: View>(_ content: Content.Type) {
++        expandConditionalChild(content, branch: 1, session: &session)
++    }
++
++    mutating func visitOptionalAbsent<Content: View, Session: EvaluationSession & ~Copyable>(_ content: Content.Type, session: inout Session) {
+         _ = beginCategory()
+     }
+ 
+-    mutating func visitOptionalPresent<Content: View>(
++    mutating func visitOptionalPresent<Content: View, Session: EvaluationSession & ~Copyable>(
+         _ content: borrowing Content
+-    ) {
++    , session: inout Session) {
+         guard beginCategory() else { return }
+         var presenceIdentity: Workspace.Identity?
+         if let error = attempt.enterOptionalPresence(
+@@ -1112,18 +1116,18 @@
+         }
+         currentIdentity = presenceIdentity
+ 
+-        expandFixedChild(content, index: 0)
+-        guard failure == nil else { return }
++        expandFixedChild(content, index: 0, session: &session)
++        guard failure == nil, bindingFailure == nil, accessFailure == nil else { return }
+         if let error = attempt.leavePathComponent(workspace: &workspace) {
+             stop(error)
+         }
+     }
+ 
+-    mutating func visitPrimitive<Payload: _GiftUISemanticPrimitivePayload>(
++    mutating func visitPrimitive<Payload: _GiftUISemanticPrimitivePayload, Session: EvaluationSession & ~Copyable>(
+         _ payload: borrowing Payload
+-    ) {
++    , session: inout Session) {
+         guard beginCategory(), let currentIdentity else {
+-            if failure == nil {
++            if failure == nil, bindingFailure == nil, accessFailure == nil {
+                 stop(.invalidIdentity)
+             }
+             return
+@@ -1141,12 +1145,12 @@
+     mutating func visitPrimitive<
+         Content: View,
+         Payload: _GiftUISemanticPrimitivePayload
+-    >(
++    , Session: EvaluationSession & ~Copyable>(
+         content: borrowing Content,
+         payload: borrowing Payload
+-    ) {
++    , session: inout Session) {
+         guard beginCategory(), let currentIdentity else {
+-            if failure == nil {
++            if failure == nil, bindingFailure == nil, accessFailure == nil {
+                 stop(.invalidIdentity)
+             }
+             return
+@@ -1161,14 +1165,14 @@
+             return
+         }
+ 
+-        expandFixedChild(content, index: 0)
+-    }
+-
+-    mutating func visitActionPrimitive<Payload: _GiftUISemanticActionPayload>(
++        expandFixedChild(content, index: 0, session: &session)
++    }
++
++    mutating func visitActionPrimitive<Payload: _GiftUISemanticActionPayload, Session: EvaluationSession & ~Copyable>(
+         _ payload: borrowing Payload
+-    ) {
++    , session: inout Session) {
+         guard beginCategory(), let currentIdentity else {
+-            if failure == nil {
++            if failure == nil, bindingFailure == nil, accessFailure == nil {
+                 stop(.invalidIdentity)
+             }
+             return
+@@ -1186,12 +1190,12 @@
+     mutating func visitActionPrimitive<
+         Content: View,
+         Payload: _GiftUISemanticActionPayload
+-    >(
++    , Session: EvaluationSession & ~Copyable>(
+         content: borrowing Content,
+         payload: borrowing Payload
+-    ) {
++    , session: inout Session) {
+         guard beginCategory(), let currentIdentity else {
+-            if failure == nil {
++            if failure == nil, bindingFailure == nil, accessFailure == nil {
+                 stop(.invalidIdentity)
+             }
+             return
+@@ -1206,25 +1210,25 @@
+             return
+         }
+ 
+-        expandFixedChild(content, index: 0)
++        expandFixedChild(content, index: 0, session: &session)
+     }
+ 
+     mutating func visitModifier<
+         Content: View,
+         Payload: _GiftUISemanticModifierPayload
+-    >(
++    , Session: EvaluationSession & ~Copyable>(
+         content: borrowing Content,
+         payload: borrowing Payload
+-    ) {
++    , session: inout Session) {
+         guard beginCategory(), let modifierIdentity = currentIdentity else {
+-            if failure == nil {
++            if failure == nil, bindingFailure == nil, accessFailure == nil {
+                 stop(.invalidIdentity)
+             }
+             return
+         }
+ 
+-        expandDeclaration(content, continuingModifierChain: true)
+-        guard failure == nil else { return }
++        expandDeclaration(content, continuingModifierChain: true, session: &session)
++        guard failure == nil, bindingFailure == nil, accessFailure == nil else { return }
+         let chainIndex = nextModifierChainIndex
+         if let error = attempt.stageModifierApplication(
+             identity: modifierIdentity,
+@@ -1239,11 +1243,11 @@
+         nextModifierChainIndex += 1
+     }
+ 
+-    private mutating func expandDeclaration<Declaration: View>(
++    private mutating func expandDeclaration<Declaration: View, Session: EvaluationSession & ~Copyable>(
+         _ declaration: borrowing Declaration,
+         continuingModifierChain: Bool = false
+-    ) {
+-        guard failure == nil else { return }
++    , session: inout Session) {
++        guard failure == nil, bindingFailure == nil, accessFailure == nil else { return }
+         let parentIdentity = currentIdentity
+         let parentCategoryWasVisited = currentCategoryWasVisited
+         let parentModifierChainIndex = nextModifierChainIndex
+@@ -1275,11 +1279,11 @@
+             return
+         }
+ 
+-        declaration._giftUITraverse(&self)
+-        if failure == nil, !currentCategoryWasVisited {
++        declaration._giftUITraverse(&self, session: &session)
++        if failure == nil, bindingFailure == nil, accessFailure == nil, !currentCategoryWasVisited {
+             stop(.invariantViolation)
+         }
+-        guard failure == nil else { return }
++        guard failure == nil, bindingFailure == nil, accessFailure == nil else { return }
+         if let error = attempt.leavePathComponent(workspace: &workspace) {
+             stop(error)
+             return
+@@ -1292,11 +1296,11 @@
+         }
+     }
+ 
+-    private mutating func expandFixedChild<Content: View>(
++    private mutating func expandFixedChild<Content: View, Session: EvaluationSession & ~Copyable>(
+         _ content: borrowing Content,
+         index: UInt8
+-    ) {
+-        guard failure == nil else { return }
++    , session: inout Session) {
++        guard failure == nil, bindingFailure == nil, accessFailure == nil else { return }
+         let parentIdentity = currentIdentity
+         var childIdentity: Workspace.Identity?
+         if let error = attempt.enterFixedChild(
+@@ -1313,8 +1317,8 @@
+         }
+         currentIdentity = childIdentity
+ 
+-        expandDeclaration(content)
+-        guard failure == nil else { return }
++        expandDeclaration(content, session: &session)
++        guard failure == nil, bindingFailure == nil, accessFailure == nil else { return }
+         if let error = attempt.leavePathComponent(workspace: &workspace) {
+             stop(error)
+             return
+@@ -1322,11 +1326,11 @@
+         currentIdentity = parentIdentity
+     }
+ 
+-    private mutating func expandConditionalChild<Content: View>(
++    private mutating func expandConditionalChild<Content: View, Session: EvaluationSession & ~Copyable>(
+         _ content: borrowing Content,
+         branch: UInt8
+-    ) {
+-        guard failure == nil else { return }
++    , session: inout Session) {
++        guard failure == nil, bindingFailure == nil, accessFailure == nil else { return }
+         let parentIdentity = currentIdentity
+         var branchIdentity: Workspace.Identity?
+         if let error = attempt.enterConditionalBranch(
+@@ -1343,8 +1347,8 @@
+         }
+         currentIdentity = branchIdentity
+ 
+-        expandFixedChild(content, index: 0)
+-        guard failure == nil else { return }
++        expandFixedChild(content, index: 0, session: &session)
++        guard failure == nil, bindingFailure == nil, accessFailure == nil else { return }
+         if let error = attempt.leavePathComponent(workspace: &workspace) {
+             stop(error)
+             return
+@@ -1353,7 +1357,7 @@
+     }
+ 
+     private mutating func beginCategory() -> Bool {
+-        guard failure == nil else { return false }
++        guard failure == nil, bindingFailure == nil, accessFailure == nil else { return false }
+         guard !currentCategoryWasVisited else {
+             stop(.invariantViolation)
+             return false
+@@ -1363,7 +1367,7 @@
+     }
+ 
+     private mutating func stop(_ error: SemanticExpansionError) {
+-        if failure == nil {
++        if failure == nil, bindingFailure == nil, accessFailure == nil {
+             failure = error
+         }
+     }
+@@ -1375,10 +1379,11 @@
+ 
+ private struct UnsupportedStateBinding<Identity>: SemanticStatefulBinding
+ where Identity: Equatable {
+-    mutating func bind<Declaration>(
++    mutating func bind<Declaration, Session: EvaluationSession & ~Copyable>(
+         _ declaration: borrowing Declaration,
+         structuralIdentity: Identity,
+-        body: (borrowing Declaration) -> Void
++        session: inout Session,
++        body: (borrowing Declaration, inout Session) -> Void
+     ) -> SemanticStateBindingOutcome<UnsupportedStateBindingFailure>
+     where Declaration: View & _GiftUIObservableStateHost {
+         .unavailable
+@@ -1389,12 +1394,12 @@
+     Root: View,
+     Workspace: SemanticExpansionWorkspace,
+     Sink: SemanticExpansionSink
+->(
++, Session: EvaluationSession & ~Copyable>(
+     _ root: borrowing Root,
+     limits: SemanticExpansionLimits,
+     workspace: inout Workspace,
+     sink: inout Sink
+-) -> SemanticExpansionResult where Workspace.Identity == Sink.Identity {
++, session: inout Session) -> SemanticExpansionResult where Workspace.Identity == Sink.Identity {
+     var stateBinding = UnsupportedStateBinding<Workspace.Identity>()
+     let result = expandSemanticTreeWithStateBinding(
+         root,
+@@ -1402,13 +1407,13 @@
+         workspace: &workspace,
+         sink: &sink,
+         stateBinding: &stateBinding
+-    )
++    , session: &session)
+     switch result {
+     case .success(let summary):
+         return .success(summary)
+     case .semanticFailure(let error):
+         return .failure(error)
+-    case .bindingFailure:
++    case .bindingFailure, .accessFailure:
+         return .failure(.invariantViolation)
+     }
+ }
+@@ -1418,13 +1423,13 @@
+     Workspace: SemanticExpansionWorkspace,
+     Sink: SemanticExpansionSink,
+     StateBinding: SemanticStatefulBinding
+->(
++, Session: EvaluationSession & ~Copyable>(
+     _ root: borrowing Root,
+     limits: SemanticExpansionLimits,
+     workspace: inout Workspace,
+     sink: inout Sink,
+     stateBinding: inout StateBinding
+-) -> BoundSemanticExpansionResult<StateBinding.Failure>
++, session: inout Session) -> BoundSemanticExpansionResult<StateBinding.Failure>
+ where
+     Workspace.Identity == Sink.Identity,
+     Workspace.Identity == StateBinding.Identity
+@@ -1440,12 +1445,16 @@
+         sink: sink,
+         stateBinding: stateBinding
+     )
+-    traversal.expandRoot(root)
++    traversal.expandRoot(root, session: &session)
+     attempt = traversal.attempt
+     workspace = traversal.workspace
+     sink = traversal.sink
+     stateBinding = traversal.stateBinding
+ 
++    if let accessFailure = traversal.accessFailure {
++        attempt.discardForOwnerFailure(workspace: &workspace, sink: &sink)
++        return .accessFailure(accessFailure)
++    }
+     if let bindingFailure = traversal.bindingFailure {
+         attempt.discardForOwnerFailure(workspace: &workspace, sink: &sink)
+         return .bindingFailure(bindingFailure)

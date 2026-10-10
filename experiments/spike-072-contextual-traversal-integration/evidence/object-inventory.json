@@ -1,0 +1,20 @@
+[
+  {
+    "path": ".build/nrf52840/spike-072/modules/integration.o",
+    "sha256": "cf23da6ec03087a516c9040b9a3ca8e4211d5064cd6143b4c481627e422a01e0",
+    "inspection_command": [
+      "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/arm-zephyr-eabi-readelf",
+      "-A",
+      "/Users/eugene/work/GiftUI/.build/nrf52840/spike-072/modules/integration.o"
+    ]
+  },
+  {
+    "path": ".build/raspberry-pi/spike-072/modules/integration.o",
+    "sha256": "d3a80f9e700410507dfb4787671286c2f28de68f5f1129eaa4bb3bf457fa99c9",
+    "inspection_command": [
+      "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/arm-zephyr-eabi-readelf",
+      "-A",
+      "/Users/eugene/work/GiftUI/.build/raspberry-pi/spike-072/modules/integration.o"
+    ]
+  }
+]

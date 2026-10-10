@@ -1,0 +1,34 @@
+{
+  "imports": {
+    "GiftUI": [],
+    "GiftUISemanticCore": [
+      "GiftUI"
+    ],
+    "GiftUIRenderCore": [
+      "GiftUI"
+    ],
+    "GiftUITextResources": [
+      "GiftUI"
+    ],
+    "GiftUILayout": [
+      "GiftUI",
+      "GiftUITextResources"
+    ],
+    "GiftUIExecution": [
+      "GiftUI",
+      "GiftUIRenderCore"
+    ],
+    "GiftUIDrawing": [
+      "GiftUI",
+      "GiftUIExecution",
+      "GiftUILayout",
+      "GiftUIRenderCore"
+    ]
+  },
+  "notes": [
+    "No GiftUIRuntimeDynamic/Static module is built or available on the module search path.",
+    "Finite portable access initializer/helper explicitly exported; exact split in modules.py.",
+    "One package-name GiftUI allows existing package APIs. External package delivery is not tested.",
+    "Original unrelated modules are reduced to their actual required declarations; no type stubs."
+  ]
+}

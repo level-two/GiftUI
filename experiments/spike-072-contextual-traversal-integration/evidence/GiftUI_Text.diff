@@ -1,0 +1,24 @@
+--- Sources/GiftUI/Text.swift
++++ experiments/spike-072-contextual-traversal-integration/adapted/GiftUI_Text.swift
+@@ -11,7 +11,7 @@
+     }
+ }
+ 
+-public struct Text: View {
++public struct Text: _GiftUILeaf {
+     public typealias Body = Never
+ 
+     package let _giftUITextPayload: _GiftUITextPayload
+@@ -32,9 +32,9 @@
+         fatalError("Text has no view body")
+     }
+ 
+-    public func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor>(
++    public func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor, Session: EvaluationSession & ~Copyable>(
+         _ visitor: inout Visitor
+-    ) {
+-        visitor.visitPrimitive(_giftUITextPayload)
++    , session: inout Session) {
++        visitor.visitPrimitive(_giftUITextPayload, session: &session)
+     }
+ }

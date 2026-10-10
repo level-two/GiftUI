@@ -1,0 +1,107 @@
+import GiftUI
+import GiftUISemanticCore
+import GiftUIRenderCore
+import GiftUITextResources
+import GiftUILayout
+import GiftUIExecution
+import GiftUIDrawing
+let expansionLimits=SemanticExpansionLimits(maximumDepth:15,maximumSemanticNodes:16,maximumBodyEvaluations:16,maximumModifierApplications:16,maximumActionOccurrences:16)!
+let executionContext=ExecutionContext(cycle:RunCycleID(rawValue:1),semanticRevision:nil,candidateFrame:nil,phase:.deriving)
+struct Checks {
+    var count: UInt32 = 0
+    var failures: UInt32 = 0
+    mutating func expect(_ condition: Bool) { count+=1; if !condition { failures+=1 } }
+}
+func expand(_ root: Root, session: inout Session, graph: inout GraphWorkspace, sink: inout GraphSink) -> BoundSemanticExpansionResult<AccessFailure> {
+    var binding=Binding()
+    return expandSemanticTreeWithStateBinding(root,limits:expansionLimits,workspace:&graph,sink:&sink,stateBinding:&binding,session:&session)
+}
+func scenario(_ storage: UnsafeMutableBufferPointer<Entry>, seed: UInt32, poison: UInt16, capacity: Int, failAt: UInt16, drawPoison: UInt16 = UInt16.max, checks: inout Checks) {
+    var session=Session(UnsafeMutableBufferPointer(start:storage.baseAddress,count:capacity))
+    session.poison=poison
+    var graph=GraphWorkspace()
+    var sink=GraphSink()
+    let result=expand(Root(seed:seed),session:&session,graph:&graph,sink:&sink)
+    if poison==0 || poison==1 && seed>0 {
+        checks.expect(result == .accessFailure(.invalidField))
+        checks.expect(sink.discarded && !sink.published && graph.discarded)
+        checks.expect(session.count==1 && session.binds==1)
+        checks.expect(sink.bodies==1 && sink.canvasOccurrenceCount==0)
+        checks.expect(!graph.isExpanding)
+        return
+    }
+    if capacity==1 {
+        checks.expect(result == .bindingFailure(.capacity))
+        checks.expect(sink.discarded && !sink.published && graph.discarded)
+        checks.expect(session.count==1 && session.binds==2)
+        checks.expect(sink.bodies==1 && sink.canvasOccurrenceCount==0)
+        checks.expect(storage[0].frozen==seed)
+        return
+    }
+    if case .success(let summary)=result {
+        checks.expect(summary.bodyEvaluationCount==2)
+        checks.expect(summary.semanticNodeCount==4)
+    } else { checks.expect(false); checks.expect(false) }
+    checks.expect(sink.structural==8 && sink.bodies==2 && sink.published)
+    checks.expect(session.count==2 && session.binds==2 && session.frozen)
+    checks.expect(storage[0].frozen==seed && storage[1].frozen==seed)
+    checks.expect(storage[0].location != storage[1].location)
+    checks.expect(sink.first?.canvas.model.key.index==1)
+    checks.expect(sink.second?.canvas.model.key==sink.first?.canvas.model.key)
+    checks.expect(sink.third?.canvas.model.key==sink.first?.canvas.model.key)
+    let firstPath: UInt64 = seed > 0 ? 0x1f2f93f2f3f3f : 0x1f2fa3f2f3f3f
+    checks.expect(sink.savedFirst==firstPath && sink.savedSecond==firstPath+16 && sink.savedThird==firstPath+32)
+    checks.expect(Root.Body.self != Never.self && Nested.Body.self != Never.self)
+    checks.expect(sink.invoked==0) // Semantic expansion never draws.
+    do { try session.write(100); checks.expect(false) }
+    catch { checks.expect(error == .invalidPhase) }
+    checks.expect(storage[0].current==seed && storage[0].frozen==seed)
+    // Repeat within the pinned frame: existing locations ignore a fresh seed.
+    var repeated=GraphSink()
+    let again=expand(Root(seed:999),session:&session,graph:&graph,sink:&repeated)
+    if case .success=again { checks.expect(true) } else { checks.expect(false) }
+    checks.expect(session.count==2 && session.binds==4 && storage[0].frozen==seed)
+    checks.expect(repeated.savedFirst==sink.savedFirst && repeated.savedSecond==sink.savedSecond && repeated.savedThird==sink.savedThird)
+    let layout=LayoutFixture(first:sink.savedFirst,second:sink.savedSecond,third:sink.savedThird)
+    var drawing=DrawingWorkspace()
+    sink.failAt=failAt
+    if drawPoison != UInt16.max { session.poison=drawPoison }
+    let plan=CanvasPlanProducer.derive(source:&sink,layout:layout,executionContext:executionContext,limits:drawing.capacity,workspace:&drawing,read:session.read())
+    if drawPoison==0 {
+        checks.expect(plan == .failure(.invalidScope))
+        checks.expect(sink.invoked==1 && sink.released==123)
+        checks.expect(drawing.discarded && drawing.resetCount==1)
+        checks.expect(drawing.recorder.begins==0 && drawing.recorder.ends==0)
+    } else if failAt==1 {
+        checks.expect(plan == .failure(.invalidValue))
+        checks.expect(sink.invoked==12 && sink.released==123)
+        checks.expect(drawing.discarded && drawing.resetCount==1)
+        checks.expect(drawing.recorder.begins==2 && drawing.recorder.ends==2 && drawing.recorder.strokes==1)
+    } else {
+        if case .success(let summary)=plan { checks.expect(summary.canvasOccurrenceCount==3 && summary.strokeCount==3) }
+        else { checks.expect(false) }
+        checks.expect(sink.invoked==123 && sink.released==123)
+        checks.expect(drawing.recorder.begins==3 && drawing.recorder.ends==3)
+        checks.expect(drawing.recorder.order==(seed+1)*100+(seed+2)*10+seed+3)
+    }
+    checks.expect(sink.first==nil && sink.second==nil && sink.third==nil && sink.releaseMask==14)
+    checks.expect(session.frozen && session.count==2)
+    session.finish()
+    checks.expect(!session.frozen)
+}
+func runChecks(_ storage: UnsafeMutableBufferPointer<Entry>) -> Checks {
+    var checks=Checks()
+    scenario(storage,seed:3,poison:UInt16.max,capacity:2,failAt:UInt16.max,checks:&checks)
+    scenario(storage,seed:0,poison:1,capacity:2,failAt:UInt16.max,checks:&checks)
+    scenario(storage,seed:3,poison:1,capacity:2,failAt:UInt16.max,checks:&checks)
+    scenario(storage,seed:3,poison:0,capacity:2,failAt:UInt16.max,checks:&checks)
+    scenario(storage,seed:3,poison:UInt16.max,capacity:1,failAt:UInt16.max,checks:&checks)
+    scenario(storage,seed:3,poison:UInt16.max,capacity:2,failAt:1,checks:&checks)
+    scenario(storage,seed:3,poison:UInt16.max,capacity:2,failAt:UInt16.max,drawPoison:0,checks:&checks)
+    return checks
+}
+@_cdecl("spike072_driver")
+public func spike072_driver(_ raw: UnsafeMutableRawPointer) -> UInt32 {
+    let storage=UnsafeMutableBufferPointer(start:raw.assumingMemoryBound(to:Entry.self),count:2)
+    return runChecks(storage).failures
+}

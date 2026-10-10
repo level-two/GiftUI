@@ -1,0 +1,35 @@
+--- Sources/GiftUIDrawing/CanvasPlanProducer.swift
++++ experiments/spike-072-contextual-traversal-integration/adapted/GiftUIDrawing_CanvasPlanProducer.swift
+@@ -1,15 +1,12 @@
+-import GiftUI
+-import GiftUIExecution
+-import GiftUILayout
+ 
+ package enum CanvasPlanProducer {
+-    package static func derive<Source, Layout, Workspace>(
++    package static func derive<Source, Layout, Workspace, Reads: FrozenAccess & ~Escapable>(
+         source: inout Source,
+         layout: borrowing Layout,
+         executionContext: ExecutionContext,
+         limits: DrawingLimits,
+         workspace: inout Workspace
+-    ) -> DrawingPlanResult
++    , read: borrowing Reads) -> DrawingPlanResult
+     where
+         Source: CanvasInvocationSource,
+         Layout: ResolvedRenderLayoutView,
+@@ -73,12 +70,12 @@
+                     identity: identity,
+                     surfaceOrigin: bounds.origin,
+                     inheritedClip: clip
+-                ) { (context) throws(DrawingError) in
++                ) { [read = copy read] (context) throws(DrawingError) in
+                     try source.invokeCanvas(
+                         at: identity,
+                         context: &context,
+                         size: bounds.size
+-                    )
++                    , read: read)
+                 }
+             } catch {
+                 return fail(

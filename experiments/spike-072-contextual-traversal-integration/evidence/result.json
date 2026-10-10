@@ -1,0 +1,19 @@
+{
+  "outcome": "supported bounded integration; incomplete application coverage",
+  "completed_utc": "2026-10-10T07:38:57.833085+00:00",
+  "invocations": 60,
+  "limit": 64,
+  "repair_rounds": 5,
+  "initial_repair_limit": 4,
+  "repair_deviation": "Executor added one mechanical multiline-leaf adapter repair; not maintainer-approved revised ceiling.",
+  "native_checks_per_profile": 111,
+  "negative_integration_controls": 4,
+  "source_rejections": 6,
+  "targets": [
+    "macos-dynamic",
+    "macos-static",
+    "pi-armv6",
+    "nrf-embedded"
+  ],
+  "production_changes": false
+}

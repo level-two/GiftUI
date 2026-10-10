@@ -1,0 +1,18 @@
+/Users/eugene/work/GiftUI/experiments/spike-072-contextual-traversal-integration/Fixtures.swift:132:28: error: cannot use a value of protocol type 'any Error' in embedded Swift [#EmbeddedRestrictions]
+130 |                 var context=makeContext(UnsafeMutableRawPointer(pointer))
+131 |                 defer { context.invalidate() }
+132 |                 return try body(&context)
+    |                            `- error: cannot use a value of protocol type 'any Error' in embedded Swift [#EmbeddedRestrictions]
+133 |             }
+134 |         } catch let error as DrawingError { throw error }
+
+<unknown>:0: note: generic specialization called here
+/Users/eugene/work/GiftUI/experiments/spike-072-contextual-traversal-integration/Driver.swift:58:33: note: generic specialization called here
+56 |     var drawing=DrawingWorkspace()
+57 |     sink.failAt=failAt
+58 |     let plan=CanvasPlanProducer.derive(source:&sink,layout:layout,executionContext:executionContext,limits:drawing.capacity,workspace:&drawing,read:session.read())
+   |                                 `- note: generic specialization called here
+59 |     if failAt==1 {
+60 |         checks.expect(plan == .failure(.invalidValue))
+
+[#EmbeddedRestrictions]: <https://docs.swift.org/compiler/documentation/diagnostics/embedded-restrictions>

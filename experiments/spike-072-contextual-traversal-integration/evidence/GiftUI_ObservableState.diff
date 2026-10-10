@@ -1,0 +1,77 @@
+--- Sources/GiftUI/ObservableState.swift
++++ experiments/spike-072-contextual-traversal-integration/adapted/GiftUI_ObservableState.swift
+@@ -1,58 +1,3 @@
+-@attached(
+-    member,
+-    names: named(_giftUIVisitObservableStateDeclarations), named(_giftUITraverse)
+-)
+-@attached(extension, conformances: _GiftUIObservableStateHost)
+-public macro ObservableStateHost() =
+-    #externalMacro(
+-        module: "GiftUIMacros",
+-        type: "ObservableStateHostMacro"
+-    )
+-
+-@propertyWrapper
+-public struct State<Value: _GiftUIObservableReference> {
+-    private enum Storage {
+-        case initial(Value)
+-        case bound(read: () -> Value, replace: (Value) -> Void)
+-    }
+-
+-    private var storage: Storage
+-
+-    public init(wrappedValue: Value) {
+-        storage = .initial(wrappedValue)
+-    }
+-
+-    public var wrappedValue: Value {
+-        get {
+-            switch storage {
+-            case .initial:
+-                fatalError("observable state accessed before runtime binding")
+-            case .bound(let read, _):
+-                return read()
+-            }
+-        }
+-        nonmutating set {
+-            switch storage {
+-            case .initial:
+-                fatalError("observable state replaced before runtime binding")
+-            case .bound(_, let replace):
+-                replace(newValue)
+-            }
+-        }
+-    }
+-
+-    package mutating func _giftUIBind(
+-        read: @escaping () -> Value,
+-        replace: @escaping (Value) -> Void
+-    ) -> Value? {
+-        guard case .initial(let initial) = storage else {
+-            return nil
+-        }
+-        storage = .bound(read: read, replace: replace)
+-        return initial
+-    }
+-}
+-
+ public enum _GiftUIObservableChangeReportOutcome: UInt8, Equatable, Sendable {
+     case dirtied = 0
+     case coalesced = 1
+@@ -110,15 +55,3 @@
+     )
+ }
+ 
+-public protocol _GiftUIObservableStateDeclarationVisitor {
+-    mutating func visit<Value: _GiftUIObservableReference>(
+-        _ state: inout State<Value>,
+-        declarationOrdinal: UInt16
+-    )
+-}
+-
+-public protocol _GiftUIObservableStateHost {
+-    mutating func _giftUIVisitObservableStateDeclarations<
+-        Visitor: _GiftUIObservableStateDeclarationVisitor
+-    >(_ visitor: inout Visitor)
+-}

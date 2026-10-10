@@ -1,0 +1,7 @@
+--- Sources/GiftUIDrawing/DrawingLimits.swift
++++ experiments/spike-072-contextual-traversal-integration/adapted/GiftUIDrawing_DrawingLimits.swift
+@@ -1,4 +1,3 @@
+-import GiftUI
+ 
+ package struct DrawingLimits: Equatable, Sendable {
+     package let maximumLineWidth: GeometryScalar

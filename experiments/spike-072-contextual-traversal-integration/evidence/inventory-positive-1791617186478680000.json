@@ -1,0 +1,33 @@
+{
+  "source_revision": "cb54c57cf5a7620e9bbc81b85521dd49cfeca227",
+  "compilers": {
+    ".toolchains/host/swift-6.3.2-RELEASE-osx/usr/bin/swiftc": {
+      "sha256": "d8e40107da0e2c1c59640a983faea326d5d2bddfe81f7609db14bade43c4a5b9",
+      "version": "Apple Swift version 6.3.2 (swift-6.3.2-RELEASE)\nTarget: arm64-apple-macosx26.0"
+    },
+    ".toolchains/nrf52840/swift/swift-6.3.2-RELEASE-osx/usr/bin/swiftc": {
+      "sha256": "d8e40107da0e2c1c59640a983faea326d5d2bddfe81f7609db14bade43c4a5b9",
+      "version": "Apple Swift version 6.3.2 (swift-6.3.2-RELEASE)\nTarget: arm64-apple-macosx26.0"
+    }
+  },
+  "sdk_destination_sha256": "faf649770c85f2ba1489e5d433f16f380a5380c656290b1b04e590d818002bca",
+  "production_inputs": {
+    "Sources/GiftUI/ObservableState.swift": "38cf485a5d5a35dd7234d983a39b66c189039e7a0c77548d226954b68178379d",
+    "Sources/GiftUIRuntimeStatic/StaticObservableModelStorage.swift": "85426dcd1f5b2ebb793996c5ff1b78ffce89a002119ce7f11c91f9cdcd014f19",
+    "Sources/GiftUIObservableState/ObservableStateValues.swift": "e42b180efa69e3fd7bda1aea79beb245c52d372a7e9ea3805f5f2a46548d3024",
+    "Sources/GiftUI/DeclarativeView.swift": "4f59508ba6aa85d47e61aa51c1dd8fa6de9a8f27b4ad5418f125641cdb40a415",
+    "Sources/GiftUI/Canvas.swift": "8b8bded5fb7106d1e9a53bb1076a87d51a3ade22a7cd22a0bb0b40b2591024e3"
+  },
+  "fixture_inputs": {
+    "run.py": "1be21ae73d2cc3286eb4b1961fdfcbadd4bbadb1e8c1bc39dbc8a54821f64794",
+    "generate.py": "14571e02b950230d336230cc0816f3572f61d997495e42dbe963effa43fd9130",
+    "Authoring.swift.txt": "960dd20b3cf62d7c6b28275a6aa9f403d3ad281355fd6edef38db342d1fec0d9",
+    "GraphicsRecorder.swift": "debba80dc218dd4dc4e402a128c8ef7b1a57805d5ed356870048f2ea52af9fc6",
+    "Driver.swift": "f89eddcdd92d8461762b9988dd2b062d29dd166e87644b603b9a87c53acae40f",
+    "Generated.swift": "7dc3efc99da7a8d81ed5a578c068b3d849d2264de82c381a1f1467ebae6f4c45",
+    "Access.swift": "071b72d20f9801e3b4290139864af3d768121d25ad36864c76522b6624eee889",
+    "Main.swift": "635f2847fa265e128be763b8f1a2598d08a14a7b32edfb2ae9952f69ba527450",
+    "prepare.py": "8cbcdaddb1239520f01963247c6968d591ff6ba00c3df816d0b886ac313b2a29",
+    "Fixtures.swift": "c56a8d0bfe58e4040254dfd0be6f7f83bebed72090b5fa677e78597c60bce599"
+  }
+}

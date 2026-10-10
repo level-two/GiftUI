@@ -1,0 +1,152 @@
+[
+  {
+    "source": "Sources/GiftUI/ActionHandler.swift",
+    "sha256": "d36a53f45d18892c235c02355cbed0e6bf92a20b7c64bc7e84ac39a03fa34d01",
+    "output": "GiftUI_ActionHandler.swift",
+    "output_sha256": "d36a53f45d18892c235c02355cbed0e6bf92a20b7c64bc7e84ac39a03fa34d01"
+  },
+  {
+    "source": "Sources/GiftUI/BoundedText.swift",
+    "sha256": "ff468d5e3f17bd2fa05a027a3d487a1db81b4639b60981fd91db3d91f93f68ce",
+    "output": "GiftUI_BoundedText.swift",
+    "output_sha256": "ff468d5e3f17bd2fa05a027a3d487a1db81b4639b60981fd91db3d91f93f68ce"
+  },
+  {
+    "source": "Sources/GiftUI/Button.swift",
+    "sha256": "6db4adcd0d267e93fd0a37be769ff997f62ae584efa81ec5b30a72c6da734dbf",
+    "output": "GiftUI_Button.swift",
+    "output_sha256": "a4b8d758482d2d34a00f21a3676efbc272441bad74bf6f22dc92359b56a803a4"
+  },
+  {
+    "source": "Sources/GiftUI/Color.swift",
+    "sha256": "60009e3d58dcdfe65ba39bf6d036047207707837d73db308a5a25e81fc2ee835",
+    "output": "GiftUI_Color.swift",
+    "output_sha256": "60009e3d58dcdfe65ba39bf6d036047207707837d73db308a5a25e81fc2ee835"
+  },
+  {
+    "source": "Sources/GiftUI/DeclarativeView.swift",
+    "sha256": "4f59508ba6aa85d47e61aa51c1dd8fa6de9a8f27b4ad5418f125641cdb40a415",
+    "output": "GiftUI_DeclarativeView.swift",
+    "output_sha256": "bcaf4794c275233cdf1f603729a133d76cd2e39915ea1098554c129eef115707"
+  },
+  {
+    "source": "Sources/GiftUI/Disabled.swift",
+    "sha256": "ec3d7d84fab9313af279a037dc1ae59ed07dda7a075b9cb496fcdec41cc20332",
+    "output": "GiftUI_Disabled.swift",
+    "output_sha256": "4fa30b247556c3e2a1eecf8aab73556fcfebd973379315cf7f2a171c1a27b334"
+  },
+  {
+    "source": "Sources/GiftUI/DrawingStyles.swift",
+    "sha256": "eb28147b2dd565006f9d6b97c7b98e5bcfc52f42e19ebfae1dad1f79b08d130a",
+    "output": "GiftUI_DrawingStyles.swift",
+    "output_sha256": "eb28147b2dd565006f9d6b97c7b98e5bcfc52f42e19ebfae1dad1f79b08d130a"
+  },
+  {
+    "source": "Sources/GiftUI/DrawingSurface.swift",
+    "sha256": "2c9f6682548be40b014f985b3ca3b2d82e0c5783c4ec6cd114080d14a4d8609b",
+    "output": "GiftUI_DrawingSurface.swift",
+    "output_sha256": "2c9f6682548be40b014f985b3ca3b2d82e0c5783c4ec6cd114080d14a4d8609b"
+  },
+  {
+    "source": "Sources/GiftUI/GiftUI.swift",
+    "sha256": "d8953ebaa6cdd525bc702e3d8de79eafb9f621e6f7c30c9d756805b251a2fe6c",
+    "output": "GiftUI_GiftUI.swift",
+    "output_sha256": "d8953ebaa6cdd525bc702e3d8de79eafb9f621e6f7c30c9d756805b251a2fe6c"
+  },
+  {
+    "source": "Sources/GiftUI/LayoutContainers.swift",
+    "sha256": "512c94c88cb0e3901c05fdcc4440207aebe6aeaa4f6287f070e07cfce64c1e1c",
+    "output": "GiftUI_LayoutContainers.swift",
+    "output_sha256": "32d2f658c10a71b77e4b17d2edf2df46e42532e8a7d4a59a1aed8cd77b1acab2"
+  },
+  {
+    "source": "Sources/GiftUI/LayoutModifiers.swift",
+    "sha256": "6c6ae925365aa3ef089b6063754428db22e9d3cf90a87a3e0e1814e3e8087848",
+    "output": "GiftUI_LayoutModifiers.swift",
+    "output_sha256": "cd702b7f75ce82a6b40e6926fe6368a1232ba257cc0b02e0d1e79e596c81c192"
+  },
+  {
+    "source": "Sources/GiftUI/LayoutValues.swift",
+    "sha256": "70c7b34276f6f2d41382d14ee844fcf65d92c075f7caa0a12e79d17181c817f5",
+    "output": "GiftUI_LayoutValues.swift",
+    "output_sha256": "70c7b34276f6f2d41382d14ee844fcf65d92c075f7caa0a12e79d17181c817f5"
+  },
+  {
+    "source": "Sources/GiftUI/StyleModifiers.swift",
+    "sha256": "b208b8b4d4b32909567401b6943b94308315e9634509d8da3da8742cf29585c9",
+    "output": "GiftUI_StyleModifiers.swift",
+    "output_sha256": "2687294e7b0edbe1bc19fce4f4bb6472883a007c7cf7418e02a853a13366b99e"
+  },
+  {
+    "source": "Sources/GiftUI/Text.swift",
+    "sha256": "ad9a46bfddca57460338dc7b966f141763fe00343dc46f94aaac6f239b1fefe7",
+    "output": "GiftUI_Text.swift",
+    "output_sha256": "539a980b936dbcd134cb7e9bf6ba018fb6bab4a33a4cfe70a588737e4e0f06cd"
+  },
+  {
+    "source": "Sources/GiftUISemanticCore/GiftUISemanticCore.swift",
+    "sha256": "30223e28b9d4e3de12662d7d1ceac8d1356a16a84e9719555ad581c5dc756dd9",
+    "output": "GiftUISemanticCore_GiftUISemanticCore.swift",
+    "output_sha256": "02cf8060c0e6ce0125bcca92025d4319694fe3eb38a70ed75ee8e1e2fd82ab64"
+  },
+  {
+    "source": "Sources/GiftUI/ObservableState.swift",
+    "sha256": "38cf485a5d5a35dd7234d983a39b66c189039e7a0c77548d226954b68178379d",
+    "output": "GiftUI_ObservableState.swift",
+    "output_sha256": "69fde9e9476d41e57210894d4d809a2c6223b859f8851865ea83309e9cb46473"
+  },
+  {
+    "source": "Sources/GiftUIDrawing/CanvasInvocationSource.swift",
+    "sha256": "b526ad4cfc331cbb8d9dd10362919ef163fffe17485fa9bb385d9c4712c807f5",
+    "output": "GiftUIDrawing_CanvasInvocationSource.swift",
+    "output_sha256": "a538d7dd9600f9fe1a4f7bec86ddf31db1955563cf7b89226f804f09a9ab2e27"
+  },
+  {
+    "source": "Sources/GiftUIDrawing/CanvasPlanProducer.swift",
+    "sha256": "4d2d5d21dee5920aa9a5e527acb4ffdacdbe47f5ade04af2791689b6ddf33f42",
+    "output": "GiftUIDrawing_CanvasPlanProducer.swift",
+    "output_sha256": "4ff60fe76670ad3e30bd512e239c5c683590bf75bfedf2591584557946a561ab"
+  },
+  {
+    "source": "Sources/GiftUIDrawing/DrawingLimits.swift",
+    "sha256": "df5dfad39c4b0fc81ac6c21c2cae5979eb11a15ffe373c955ca218215cad3943",
+    "output": "GiftUIDrawing_DrawingLimits.swift",
+    "output_sha256": "930ef4cf81d508ac0cd96fd7b0b87ff1e613ecdc75fd79332290f0cce184c98a"
+  },
+  {
+    "source": "Sources/GiftUIDrawing/DrawingPlan.swift",
+    "sha256": "93e3216f2faaee98e2c025deef50cfb7513911efacdd56e90980be3cb6264da9",
+    "output": "GiftUIDrawing_DrawingPlan.swift",
+    "output_sha256": "c01edecceaff675d33303c5b03455d8eada72e0c17d60c5300e9d2f2d10ef298"
+  },
+  {
+    "source": "Sources/GiftUIDrawing/DrawingValues.swift",
+    "sha256": "90b34c17edf1fa531d028fdc9d89e8871482e21ab1128fbc090d9ca4e7302979",
+    "output": "GiftUIDrawing_DrawingValues.swift",
+    "output_sha256": "90b34c17edf1fa531d028fdc9d89e8871482e21ab1128fbc090d9ca4e7302979"
+  },
+  {
+    "source": "Sources/GiftUIExecution/ExecutionValues.swift",
+    "sha256": "eac8904fd800d7b17c1f4362e5a8c2384142683d5acd49f6712e3db645d69c98",
+    "output": "GiftUIExecution_ExecutionValues.swift",
+    "output_sha256": "1f3f861f1324ea6519221fb37992237d06c17df76ea8965ce1d335e29c6e81fb"
+  },
+  {
+    "source": "Sources/GiftUIRenderCore/DrawingOperationSink.swift",
+    "sha256": "4d35496afb8dc6b4827b52b3441a8258a5f91754c765a8828cb5ff7ebaafba88",
+    "output": "GiftUIRenderCore_DrawingOperationSink.swift",
+    "output_sha256": "7d40be913102933cf98f97d01485c3c4b02052823ec3dded15d8b4c4b53395e3"
+  },
+  {
+    "source": "Sources/GiftUITextResources/GiftUITextResources.swift",
+    "sha256": "7dc3dc0e55b22c9edee699d51272d16c8d364073cf43a840467bf98424efbf9f",
+    "output": "GiftUITextResources_GiftUITextResources.swift",
+    "output_sha256": "bfeec8b7740ee9889b07a0ec7a152ed4db586b2848c3feea175854d5460a8df9"
+  },
+  {
+    "source": "Sources/GiftUILayout/ResolvedRenderLayoutView.swift",
+    "sha256": "7278d5216c075b499bee43e8b646f00a34f70f6b877ab9b4fc72de1878f10b33",
+    "output": "GiftUILayout_ResolvedRenderLayoutView.swift",
+    "output_sha256": "434fddafc27a91a12b84019096dacf553633f066063177054e8a7f9bb02b2ef3"
+  }
+]

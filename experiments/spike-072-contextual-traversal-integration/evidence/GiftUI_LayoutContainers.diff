@@ -1,0 +1,81 @@
+--- Sources/GiftUI/LayoutContainers.swift
++++ experiments/spike-072-contextual-traversal-integration/adapted/GiftUI_LayoutContainers.swift
+@@ -42,7 +42,7 @@
+     }
+ }
+ 
+-public struct VStack<Content: View>: View {
++public struct VStack<Content: View>: _GiftUILeaf {
+     public typealias Body = Never
+ 
+     package let content: Content
+@@ -61,14 +61,14 @@
+         fatalError("VStack has no view body")
+     }
+ 
+-    public func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor>(
++    public func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor, Session: EvaluationSession & ~Copyable>(
+         _ visitor: inout Visitor
+-    ) {
+-        visitor.visitPrimitive(content: content, payload: payload)
++    , session: inout Session) {
++        visitor.visitPrimitive(content: content, payload: payload, session: &session)
+     }
+ }
+ 
+-public struct HStack<Content: View>: View {
++public struct HStack<Content: View>: _GiftUILeaf {
+     public typealias Body = Never
+ 
+     package let content: Content
+@@ -87,14 +87,14 @@
+         fatalError("HStack has no view body")
+     }
+ 
+-    public func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor>(
++    public func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor, Session: EvaluationSession & ~Copyable>(
+         _ visitor: inout Visitor
+-    ) {
+-        visitor.visitPrimitive(content: content, payload: payload)
++    , session: inout Session) {
++        visitor.visitPrimitive(content: content, payload: payload, session: &session)
+     }
+ }
+ 
+-public struct ZStack<Content: View>: View {
++public struct ZStack<Content: View>: _GiftUILeaf {
+     public typealias Body = Never
+ 
+     package let content: Content
+@@ -112,14 +112,14 @@
+         fatalError("ZStack has no view body")
+     }
+ 
+-    public func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor>(
++    public func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor, Session: EvaluationSession & ~Copyable>(
+         _ visitor: inout Visitor
+-    ) {
+-        visitor.visitPrimitive(content: content, payload: payload)
++    , session: inout Session) {
++        visitor.visitPrimitive(content: content, payload: payload, session: &session)
+     }
+ }
+ 
+-public struct Spacer: View {
++public struct Spacer: _GiftUILeaf {
+     public typealias Body = Never
+ 
+     package let payload: _GiftUISpacerPayload
+@@ -132,9 +132,9 @@
+         fatalError("Spacer has no view body")
+     }
+ 
+-    public func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor>(
++    public func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor, Session: EvaluationSession & ~Copyable>(
+         _ visitor: inout Visitor
+-    ) {
+-        visitor.visitPrimitive(payload)
++    , session: inout Session) {
++        visitor.visitPrimitive(payload, session: &session)
+     }
+ }

@@ -1,0 +1,15 @@
+/Users/eugene/work/GiftUI/experiments/spike-072-contextual-traversal-integration/adapted/GiftUISemanticCore_GiftUISemanticCore.swift:1000:37: error: cannot assign value of type 'any Error' to type 'AccessFailure'
+ 998 |             }
+ 999 |             do { evaluatedBody = try scopedSession.evaluate(boundDeclaration) }
+1000 |             catch { accessFailure = error }
+     |                                     `- error: cannot assign value of type 'any Error' to type 'AccessFailure'
+1001 |         }
+1002 | 
+
+/Users/eugene/work/GiftUI/experiments/spike-072-contextual-traversal-integration/adapted/GiftUI_ActionHandler.swift:3:27: error: cannot find type '_GiftUIObservableReference' in scope
+1 | public protocol GiftUIActionHandler {
+2 |     associatedtype Action: GiftUIAction
+3 |     associatedtype Model: _GiftUIObservableReference
+  |                           `- error: cannot find type '_GiftUIObservableReference' in scope
+4 | 
+5 |     mutating func handle(_ action: Action, model: borrowing Model)

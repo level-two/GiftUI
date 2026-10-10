@@ -1,0 +1,26 @@
+--- Sources/GiftUI/StyleModifiers.swift
++++ experiments/spike-072-contextual-traversal-integration/adapted/GiftUI_StyleModifiers.swift
+@@ -18,8 +18,7 @@
+     }
+ }
+ 
+-private struct GiftUIModifiedContent<Content: View, Payload: _GiftUISemanticModifierPayload>:
+-    View
++private struct GiftUIModifiedContent<Content: View, Payload: _GiftUISemanticModifierPayload>: _GiftUILeaf
+ {
+     typealias Body = Never
+ 
+@@ -30,10 +29,10 @@
+         fatalError("GiftUI modifiers have no view body")
+     }
+ 
+-    func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor>(
++    func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor, Session: EvaluationSession & ~Copyable>(
+         _ visitor: inout Visitor
+-    ) {
+-        visitor.visitModifier(content: content, payload: payload)
++    , session: inout Session) {
++        visitor.visitModifier(content: content, payload: payload, session: &session)
+     }
+ }
+ 
