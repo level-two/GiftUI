@@ -2,7 +2,7 @@
 id: ADR-037
 feature: external-application-integration
 title: Protocol Canvas and Scoped Post-Layout Drawing
-status: proposed
+status: accepted
 authors:
   - codex
 created: 2026-10-10
@@ -29,7 +29,8 @@ related_specs:
 related_future_work: []
 related_explorations: []
 related_spikes: []
-supersedes: []
+supersedes:
+  - ADR-028
 superseded_by: []
 target_milestone: ITERATION-003
 ---
@@ -38,9 +39,10 @@ target_milestone: ITERATION-003
 
 ## Status
 
-Proposed. Extracted from approved RFC-014, Decision Summary item 3, at Eugene's
-request on 2026-10-10. Acceptance remains outstanding. ADR-028 remains accepted
-and authoritative; no supersession takes effect from this proposed record.
+Accepted by Eugene on 2026-10-10: “Let's accept ADRs and commit everything.
+And after that let's proceed with specs update.” The
+[acceptance record](../iterations/iteration-003-review/rfc-014-adr-acceptance.md)
+preserves the reviewed commits, supersession and downstream contract gate.
 
 ## Context
 
@@ -58,17 +60,16 @@ not resolved drawing order, path/stroke semantics or backend responsibility.
 ## Decision Boundary
 
 This record owns protocol Canvas representation and its scoped post-layout
-invocation and plan lifetime. On acceptance it is intended to supersede ADR-028:
-replace the retained-closure requirement with a protocol value and restate its
-timing, context, order and plan-lifetime requirements below. Acceptance must
-record reciprocal supersession metadata and the historical ADR-028 status; this
-extraction deliberately leaves both unchanged.
+invocation and plan lifetime. It supersedes ADR-028: the retained-closure
+requirement is replaced with a protocol value while its timing, context, order and plan-lifetime requirements
+are restated below. ADR-028 remains available as the historical predecessor.
 
 ADR-029 transient Path snapshots, ADR-030 normalized strokes and ADR-031 failure
 and startup-gate ownership remain unchanged. Fixed-domain access and safe backing
-ownership follow the separate proposed ADR-036; semantic records follow proposed
+ownership follow the separate accepted ADR-036; semantic records follow accepted
 ADR-035. Exact method spellings, payload layouts and failure codes belong in
-Specifications. These related proposed records are not yet production authority.
+Specifications. Their acceptance establishes architecture; affected Specification
+amendments need approval before production migration.
 
 ## Decision
 
@@ -159,8 +160,7 @@ complete target image costs or production conformance.
 
 ### Follow-up
 
-- At explicit acceptance, supersede ADR-028 with reciprocal links while preserving
-  its historical text. Amend/review SPEC-012 for the protocol, invocation, storage,
+- Amend/review SPEC-012 for the protocol, invocation, storage,
   cleanup and failure contracts; align SPEC-006 compiled traversal, SPEC-001
   presentation-capture migration and SPEC-013/015 profile storage/lifetimes.
 - Under IH-2/3/4/5, cover both applications and all four configurations: inferred
@@ -204,6 +204,6 @@ identity, ownership and replay semantics excluded by the one-shot lifecycle.
 - [Approved RFC-014](../rfcs/rfc-014-runtime-derived-records-and-scoped-model-access.md), especially Protocol Canvas and capture values, Publication and retirement, Compatibility, and Decision Summary item 3.
 - [Accepted PROPOSAL-007](../proposals/proposal-007-external-application-integration.md) and [runtime scope amendment](../iterations/iteration-003-review/runtime-derivation-scope-amendment.md).
 - [RFC approval provenance](../iterations/iteration-003-review/rfc-014-final-review.md).
-- [ADR-028: Post-Layout Canvas Derivation and Cycle-Local Plan](adr-028-post-layout-canvas-derivation-and-cycle-local-plan.md), accepted predecessor pending this record's acceptance.
-- [Proposed ADR-036: Scoped Model Access and Bounded Ownership](adr-036-scoped-model-access-and-bounded-ownership.md).
+- [ADR-028: Post-Layout Canvas Derivation and Cycle-Local Plan](adr-028-post-layout-canvas-derivation-and-cycle-local-plan.md), superseded predecessor.
+- [Accepted ADR-036: Scoped Model Access and Bounded Ownership](adr-036-scoped-model-access-and-bounded-ownership.md).
 - [Implementation handoff](../iterations/iteration-003-review/rfc-014-implementation-handoff.md).

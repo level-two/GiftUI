@@ -2,11 +2,11 @@
 id: SPEC-013
 feature: giftui-mvp-architecture
 title: Dynamic and Static Runtime Profile Contract
-status: implemented
+status: draft
 authors:
   - codex
 created: 2026-08-27
-updated: 2026-10-05
+updated: 2026-10-10
 proposal:
   - PROPOSAL-003
   - PROPOSAL-005
@@ -35,7 +35,7 @@ related_adrs:
   - ADR-024
   - ADR-025
   - ADR-026
-  - ADR-028
+  - ADR-037
   - ADR-029
   - ADR-031
   - ADR-032
@@ -69,6 +69,13 @@ target_milestone: MVP
 ---
 
 # SPEC-013: Dynamic and Static Runtime Profile Contract
+
+> **RFC-014 amendment draft — 2026-10-10.** ADR-035/036/037 are now accepted;
+> ADR-037 supersedes ADR-028. This contract is reopened for amendment, not newly
+> approved or implemented. The previously implemented contract and its approval
+> history are preserved at commit `53740a73`. Historical completion evidence
+> applies to that baseline only. See the [ADR acceptance record](../iterations/iteration-003-review/rfc-014-adr-acceptance.md).
+
 
 > **Current implementation status — 2026-10-03:** Eugene explicitly authorized this Specification's `implemented` transition after conformance review and the complete 72-check gate. [Human approval](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/iteration-closeout-20261003/owner-transition-approval.md) supersedes earlier pending-transition statements; the approved contract is unchanged.
 

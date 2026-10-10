@@ -2,11 +2,11 @@
 id: SPEC-001
 feature: signal-analyzer
 title: Signal Analyzer Reference Application Contract
-status: implemented
+status: draft
 authors:
   - Yauheni Lychkouski
 created: 2026-08-14
-updated: 2026-10-05
+updated: 2026-10-10
 proposal:
   - PROPOSAL-002
 related_rfcs:
@@ -27,7 +27,7 @@ related_adrs:
   - ADR-025
   - ADR-026
   - ADR-027
-  - ADR-028
+  - ADR-037
   - ADR-029
   - ADR-030
   - ADR-031
@@ -65,6 +65,13 @@ target_milestone: MVP
 ---
 
 # SPEC-001: Signal Analyzer Reference Application Contract
+
+> **RFC-014 amendment draft — 2026-10-10.** ADR-035/036/037 are now accepted;
+> ADR-037 supersedes ADR-028. This contract is reopened for amendment, not newly
+> approved or implemented. The previously implemented contract and its approval
+> history are preserved at commit `53740a73`. Historical completion evidence
+> applies to that baseline only. See the [ADR acceptance record](../iterations/iteration-003-review/rfc-014-adr-acceptance.md).
+
 
 **Current disposition — 2026-10-03:** The maintainer explicitly directed
 performance work to future iterations and closure of the remaining Specifications.

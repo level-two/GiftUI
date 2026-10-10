@@ -2,17 +2,17 @@
 id: SPEC-012
 feature: canvas-drawing
 title: Canvas, Path, and Stroke Drawing Contract
-status: implemented
+status: draft
 authors:
   - codex
 created: 2026-08-26
-updated: 2026-10-03
+updated: 2026-10-10
 proposal:
   - PROPOSAL-006
 related_rfcs:
   - RFC-009
 related_adrs:
-  - ADR-028
+  - ADR-037
   - ADR-029
   - ADR-030
   - ADR-031
@@ -40,6 +40,13 @@ target_milestone: MVP
 ---
 
 # SPEC-012: Canvas, Path, and Stroke Drawing Contract
+
+> **RFC-014 amendment draft — 2026-10-10.** ADR-035/036/037 are now accepted;
+> ADR-037 supersedes ADR-028. This contract is reopened for amendment, not newly
+> approved or implemented. The previously implemented contract and its approval
+> history are preserved at commit `53740a73`. Historical completion evidence
+> applies to that baseline only. See the [ADR acceptance record](../iterations/iteration-003-review/rfc-014-adr-acceptance.md).
+
 
 > **Current implementation status — 2026-10-03:** Eugene explicitly authorized this Specification's `implemented` transition after conformance review and the complete 72-check gate. [Human approval](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/iteration-closeout-20261003/owner-transition-approval.md) supersedes earlier pending-transition statements; the approved contract is unchanged.
 

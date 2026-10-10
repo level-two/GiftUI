@@ -16,3 +16,18 @@ active tree or through a recorded durable tagged baseline under the
 [documentation preservation rules](../engineering/DOCUMENTATION_RULES.md#legacy-and-historical-documents).
 
 See [Documentation Rules](../engineering/DOCUMENTATION_RULES.md).
+
+## Accepted runtime derivation architecture
+
+On 2026-10-10, [ADR-035](../adrs/adr-035-runtime-derived-records-and-exact-identity.md),
+[ADR-036](../adrs/adr-036-scoped-model-access-and-bounded-ownership.md) and
+[ADR-037](../adrs/adr-037-protocol-canvas-and-scoped-post-layout-drawing.md) were accepted.
+Semantic Core emits bounded runtime records with exact structural identity;
+fixed-domain scoped access reads stable owned models under serialized mutation
+exclusion; protocol Canvas invokes scoped drawing after Layout. Analyzer capture
+storage remains three banks with bounded replacement refusal. ADR-037 supersedes
+ADR-028's retained-closure representation and preserves its drawing lifecycle.
+
+This is accepted architecture, not a production conformance claim. Affected
+Specification amendments and their approval precede migration; the current
+production graph and historical implementation evidence remain the baseline.

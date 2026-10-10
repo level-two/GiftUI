@@ -2,7 +2,7 @@
 id: ADR-035
 feature: external-application-integration
 title: Runtime-Derived Records and Exact Identity
-status: proposed
+status: accepted
 authors:
   - codex
 created: 2026-10-10
@@ -36,9 +36,10 @@ target_milestone: ITERATION-003
 
 ## Status
 
-Proposed. Extracted from approved RFC-014, Decision Summary item 1, at Eugene's
-request on 2026-10-10. Acceptance remains outstanding; existing accepted ADRs
-and implemented Specifications remain production authority.
+Accepted by Eugene on 2026-10-10: “Let's accept ADRs and commit everything.
+And after that let's proceed with specs update.” The
+[acceptance record](../iterations/iteration-003-review/rfc-014-adr-acceptance.md)
+preserves the reviewed commits, supersession and downstream contract gate.
 
 ## Context
 

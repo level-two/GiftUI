@@ -2,11 +2,11 @@
 id: ADR-028
 feature: canvas-drawing
 title: Post-Layout Canvas Derivation and Cycle-Local Plan
-status: accepted
+status: superseded
 authors:
   - Yauheni Lychkouski
 created: 2026-08-25
-updated: 2026-08-27
+updated: 2026-10-10
 proposal:
   - PROPOSAL-006
 related_rfcs:
@@ -32,7 +32,8 @@ related_explorations: []
 related_spikes:
   - SPIKE-004
 supersedes: []
-superseded_by: []
+superseded_by:
+  - ADR-037
 target_milestone: MVP
 ---
 
@@ -40,7 +41,11 @@ target_milestone: MVP
 
 ## Status
 
-Accepted.
+Superseded on 2026-10-10 by accepted
+[ADR-037](adr-037-protocol-canvas-and-scoped-post-layout-drawing.md).
+The retained-closure representation is replaced by protocol Canvas; timing,
+scoped invocation, order and plan lifetime are preserved in the successor.
+The decision text below is retained as history.
 
 ## Context
 

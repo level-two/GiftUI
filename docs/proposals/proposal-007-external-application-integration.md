@@ -77,8 +77,10 @@ Architecture, affected contracts and implementation retain their own gates.
 
 On 2026-10-10, approved [RFC-014](../rfcs/rfc-014-runtime-derived-records-and-scoped-model-access.md)
 yielded proposed ADR-035/036/037 at Eugene's extraction request. The manifest now
-records the `decision` stage; ADR acceptance and affected Spec approval remain
-outstanding. RFC-013's independent external-delivery design remains draft.
+records the `decision` stage. Eugene then explicitly accepted all three ADRs;
+the [acceptance record](../iterations/iteration-003-review/rfc-014-adr-acceptance.md)
+preserves that gate. Affected Spec approval remains outstanding. RFC-013's
+independent external-delivery design remains draft.
 
 ## Summary
 
