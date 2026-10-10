@@ -1,0 +1,8 @@
+/Users/eugene/work/GiftUI/experiments/spike-074-final-access-ownership/Negative.swift:6:32: error: stored property 'read' of 'Escapable'-conforming struct 'InvalidStoredRead' has non-Escapable type 'FrameRead<AnalyzerDomain>'
+ 4 | import HostBridge
+ 5 | #if NEG_ESCAPE
+ 6 | struct InvalidStoredRead { let read: FrameRead<AnalyzerDomain> }
+   |        |                       `- error: stored property 'read' of 'Escapable'-conforming struct 'InvalidStoredRead' has non-Escapable type 'FrameRead<AnalyzerDomain>'
+   |        `- note: consider adding '~Escapable' to struct 'InvalidStoredRead'
+ 7 | #endif
+ 8 | #if NEG_OVERLAP

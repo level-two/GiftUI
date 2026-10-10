@@ -1,0 +1,7 @@
+   text	   data	    bss	    dec	    hex	filename
+   2010	    176	    192	   2378	    94a	/Users/eugene/work/GiftUI/.build/raspberry-pi/spike-074/ApplicationSchema.o
+   7261	    100	     16	   7377	   1cd1	/Users/eugene/work/GiftUI/.build/raspberry-pi/spike-074/Driver.o
+  12106	    520	   1048	  13674	   356a	/Users/eugene/work/GiftUI/.build/raspberry-pi/spike-074/GiftUI.o
+  10905	    720	    432	  12057	   2f19	/Users/eugene/work/GiftUI/.build/raspberry-pi/spike-074/HostBridge.o
+   6098	    324	    656	   7078	   1ba6	/Users/eugene/work/GiftUI/.build/raspberry-pi/spike-074/PortablePresentation.o
+   9504	    772	    672	  10948	   2ac4	/Users/eugene/work/GiftUI/.build/raspberry-pi/spike-074/SignalAnalyzerDomain.o

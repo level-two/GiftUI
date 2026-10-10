@@ -1,0 +1,10 @@
+         U __aeabi_llsl
+         U __aeabi_memclr
+         U __aeabi_memclr4
+         U __aeabi_memcpy
+         U __aeabi_memcpy4
+         U __aeabi_memset
+         U __stack_chk_fail
+         U __stack_chk_guard
+         U free
+         U posix_memalign

@@ -1,0 +1,36 @@
+{
+  "verdict": "proceed-to-implementation-preparation",
+  "terminal": true,
+  "questions": {
+    "F1": "supported within fixed scope",
+    "F2": "supported within fixed scope",
+    "F3": "layout measured; no fourth bank required; whole-image and zero-heap unproved"
+  },
+  "invocations": 48,
+  "invocation_limit": 48,
+  "repairs": 1,
+  "repair_limit": 2,
+  "elapsed_seconds": 69.633,
+  "time_limit_seconds": 2700,
+  "native_checks_per_configuration": 47,
+  "negative_controls": 8,
+  "new_swift_lines": 520,
+  "limitations": [
+    "Handwritten lowered forms, not a production source transformer.",
+    "Six real compilation boundaries, not production SemanticCore/reconciler integration.",
+    "Native profile flags select the same bounded bridge, not actual Dynamic/Static runtimes.",
+    "Caller-owned buffer lifetime and disjointness remain trusted bridge preconditions.",
+    "Target objects are not linked or executed.",
+    "Object allocator references exist; zero heap and final stack/RAM/flash remain implementation acceptance gates.",
+    "Driver layout IR predates the one test-order repair; layout-return function and its types are unchanged."
+  ],
+  "final_inputs": {
+    "experiments/spike-074-final-access-ownership/Negative.swift": "c1ae3b437b8a293053281d28610fe4f644c1bc49227701b9f7afdf223ae4dd08",
+    "experiments/spike-074-final-access-ownership/Bridge.swift": "eea0894d8756e0de2f145e586c33022252c4d03f374d90d35738a8e91a5f2245",
+    "experiments/spike-074-final-access-ownership/Presentation.swift": "cc7b42c3ff4d074e232dd581294d02186ce095d7ff0d366fec92e1906ae6c1e8",
+    "experiments/spike-074-final-access-ownership/Driver.swift": "4e297675e6e71b3400933d0ed67ed2e4b0e7f7294c2cf54555dec3fcdea76eec",
+    "experiments/spike-074-final-access-ownership/Core.swift": "2bc49c0483babc0183038525438d69b01747affd5695405f6b823c8f46f93158",
+    "experiments/spike-074-final-access-ownership/Schema.swift": "f1096dd12e03402fab79253f4f023fbebc5217b665f9987f48673d198c564242",
+    "experiments/spike-074-final-access-ownership/Main.swift": "609734d8cd9c7eb61968a7000543a293d7f9975162252cc73ecc0b9cf87e4101"
+  }
+}

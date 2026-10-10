@@ -1,0 +1,92 @@
+{
+  "commands": [
+    {
+      "command": [
+        "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/arm-zephyr-eabi-readelf",
+        "-h",
+        "-A",
+        "/Users/eugene/work/GiftUI/.build/raspberry-pi/spike-074/Driver.o"
+      ],
+      "exit_code": 0,
+      "log": "experiments/spike-074-final-access-ownership/evidence/pi-armv6-abi.txt",
+      "sha256": "55f79796535497959fae70c344429a1deeed3606562da2bc1046d28884f71333"
+    },
+    {
+      "command": [
+        "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/arm-zephyr-eabi-size",
+        "/Users/eugene/work/GiftUI/.build/raspberry-pi/spike-074/ApplicationSchema.o",
+        "/Users/eugene/work/GiftUI/.build/raspberry-pi/spike-074/Driver.o",
+        "/Users/eugene/work/GiftUI/.build/raspberry-pi/spike-074/GiftUI.o",
+        "/Users/eugene/work/GiftUI/.build/raspberry-pi/spike-074/HostBridge.o",
+        "/Users/eugene/work/GiftUI/.build/raspberry-pi/spike-074/PortablePresentation.o",
+        "/Users/eugene/work/GiftUI/.build/raspberry-pi/spike-074/SignalAnalyzerDomain.o"
+      ],
+      "exit_code": 0,
+      "log": "experiments/spike-074-final-access-ownership/evidence/pi-armv6-size.txt",
+      "sha256": "b136df529562b0cfd3cddac354aa0a6b7d74b6049ef503549ee16633d3c8ac34"
+    },
+    {
+      "command": [
+        "/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.3.2-RELEASE-osx/usr/bin/llvm-nm",
+        "--undefined-only",
+        "/Users/eugene/work/GiftUI/.build/raspberry-pi/spike-074/Driver.o"
+      ],
+      "exit_code": 0,
+      "log": "experiments/spike-074-final-access-ownership/evidence/pi-armv6-undefined.txt",
+      "sha256": "c693f816439eebbb985f43b5834b123aa773cbdec1ea781d65ff36823231f2ce"
+    },
+    {
+      "command": [
+        "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/arm-zephyr-eabi-readelf",
+        "-h",
+        "-A",
+        "/Users/eugene/work/GiftUI/.build/nrf52840/spike-074/Driver.o"
+      ],
+      "exit_code": 0,
+      "log": "experiments/spike-074-final-access-ownership/evidence/nrf-embedded-abi.txt",
+      "sha256": "5cc16dbd81f955b714d3812833525bd674e4715f284dee95861695c1560699b3"
+    },
+    {
+      "command": [
+        "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/arm-zephyr-eabi-size",
+        "/Users/eugene/work/GiftUI/.build/nrf52840/spike-074/ApplicationSchema.o",
+        "/Users/eugene/work/GiftUI/.build/nrf52840/spike-074/Driver.o",
+        "/Users/eugene/work/GiftUI/.build/nrf52840/spike-074/GiftUI.o",
+        "/Users/eugene/work/GiftUI/.build/nrf52840/spike-074/HostBridge.o",
+        "/Users/eugene/work/GiftUI/.build/nrf52840/spike-074/PortablePresentation.o",
+        "/Users/eugene/work/GiftUI/.build/nrf52840/spike-074/SignalAnalyzerDomain.o"
+      ],
+      "exit_code": 0,
+      "log": "experiments/spike-074-final-access-ownership/evidence/nrf-embedded-size.txt",
+      "sha256": "6e82e823df0dbfcf6fc272730d867904c6f86971e6bdf5cce6b9f02baf848879"
+    },
+    {
+      "command": [
+        "/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.3.2-RELEASE-osx/usr/bin/llvm-nm",
+        "--undefined-only",
+        "/Users/eugene/work/GiftUI/.build/nrf52840/spike-074/Driver.o"
+      ],
+      "exit_code": 0,
+      "log": "experiments/spike-074-final-access-ownership/evidence/nrf-embedded-undefined.txt",
+      "sha256": "07d1f695dd0e848f615044283d436b3eaeead52915194d28a2da155ebf90762b"
+    }
+  ],
+  "layouts": {
+    "pi-armv6": {
+      "slot": 124,
+      "owner": 44,
+      "key": 12,
+      "record": 16,
+      "counter": 1,
+      "canvas": 16
+    },
+    "nrf-embedded": {
+      "slot": 124,
+      "owner": 44,
+      "key": 12,
+      "record": 16,
+      "counter": 1,
+      "canvas": 16
+    }
+  }
+}

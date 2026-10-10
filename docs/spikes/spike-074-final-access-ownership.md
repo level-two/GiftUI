@@ -2,7 +2,7 @@
 id: SPIKE-074
 feature: external-application-integration
 title: Final Typed Access and Three-Bank Validation
-status: planned
+status: completed
 authors:
   - codex
 created: 2026-10-10
@@ -102,7 +102,16 @@ Builds stay under `.build/spike-074/`, `.build/raspberry-pi/spike-074/` and
 
 ## Results
 
-Pending; no compiler invocation at registration.
+**Completed: proceed to implementation preparation within the fixed scope.**
+All six modules compile on four configurations; both native runs pass 47 checks.
+Eight negative controls reject as intended. The target model/owner storage is
+292 bytes, plus 40 bytes for two keys and one Canvas; transition backing remains
+19,392 bytes. Object allocator references remain, so zero heap is unproved.
+
+48/48 invocations, one/two repairs, 69.633 seconds; terminal with no extension.
+The repair fixes the empty-installed-model case order, not the selected design.
+[Full result and limits](../../experiments/spike-074-final-access-ownership/evidence/result.md)
+preserve exact diagnostics, hashes, ABI evidence, costs and assertion coverage.
 
 ## Limitations
 
@@ -113,9 +122,11 @@ These limits must survive a positive result.
 
 ## Disposition
 
-Final investigation round authorized; no successor allowance. Remaining
-implementation obligations will be recorded with concrete acceptance gates,
-not as fresh research questions. Approval remains the normal human lifecycle gate.
+Final investigation round complete; no successor allowance. Proceed to
+[implementation preparation](../iterations/iteration-003-review/rfc-014-implementation-handoff.md).
+Remaining source/production-integration/conformance/resource obligations are
+explicit downstream gates, not fresh research rounds. RFC/ADR/Spec approval
+remains the normal human lifecycle gate; no production implementation is approved.
 
 ## References
 

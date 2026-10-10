@@ -1,0 +1,29 @@
+define protected noundef i32 @spike074_slot_stride() local_unnamed_addr #0 {
+entry:
+  ret i32 124
+}
+
+define protected noundef i32 @spike074_owner_stride() local_unnamed_addr #0 {
+entry:
+  ret i32 44
+}
+
+define protected noundef i32 @spike074_key_stride() local_unnamed_addr #0 {
+entry:
+  ret i32 12
+}
+
+define protected noundef i32 @spike074_record_stride() local_unnamed_addr #0 {
+entry:
+  ret i32 16
+}
+
+define protected noundef i32 @spike074_counter_stride() local_unnamed_addr #0 {
+entry:
+  ret i32 1
+}
+
+define protected noundef i32 @spike074_canvas_stride() local_unnamed_addr #0 {
+entry:
+  ret i32 16
+}

@@ -1,0 +1,11 @@
+/Users/eugene/work/GiftUI/experiments/spike-074-final-access-ownership/Negative.swift:12:9: error: overlapping accesses to 'owner', but modification requires exclusive access [#ExclusivityViolation]
+ 9 | func invalid(_ owner: inout Owner) throws(AccessFailure) -> UInt16 {
+10 |     let key = owner.key(0)
+11 |     let read = try owner.read()
+   |                    `- note: conflicting access is here
+12 |     try owner.finish()
+   |         `- error: overlapping accesses to 'owner', but modification requires exclusive access [#ExclusivityViolation]
+13 |     let model = try AnalyzerRead(key, read: read)
+14 |     return model.count
+
+[#ExclusivityViolation]: <https://docs.swift.org/compiler/documentation/diagnostics/exclusivity-violation>

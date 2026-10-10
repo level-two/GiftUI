@@ -1,0 +1,7 @@
+   text	   data	    bss	    dec	    hex	filename
+   1140	      8	      0	   1148	    47c	/Users/eugene/work/GiftUI/.build/nrf52840/spike-074/ApplicationSchema.o
+   6368	      8	     16	   6392	   18f8	/Users/eugene/work/GiftUI/.build/nrf52840/spike-074/Driver.o
+   1260	      8	      0	   1268	    4f4	/Users/eugene/work/GiftUI/.build/nrf52840/spike-074/GiftUI.o
+   6614	      8	     48	   6670	   1a0e	/Users/eugene/work/GiftUI/.build/nrf52840/spike-074/HostBridge.o
+   1140	      8	      0	   1148	    47c	/Users/eugene/work/GiftUI/.build/nrf52840/spike-074/PortablePresentation.o
+   3626	      8	     32	   3666	    e52	/Users/eugene/work/GiftUI/.build/nrf52840/spike-074/SignalAnalyzerDomain.o
