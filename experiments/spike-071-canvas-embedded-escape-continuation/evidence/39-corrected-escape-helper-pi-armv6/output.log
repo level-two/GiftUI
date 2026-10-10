@@ -1,0 +1,19 @@
+/Users/eugene/work/GiftUI/Sources/GiftUI/ObservableState.swift:6:14: warning: external macro implementation type 'GiftUIMacros.ObservableStateHostMacro' could not be found for macro 'ObservableStateHost()'; plugin for module 'GiftUIMacros' not found
+  4 | )
+  5 | @attached(extension, conformances: _GiftUIObservableStateHost)
+  6 | public macro ObservableStateHost() =
+    |              `- warning: external macro implementation type 'GiftUIMacros.ObservableStateHostMacro' could not be found for macro 'ObservableStateHost()'; plugin for module 'GiftUIMacros' not found
+  7 |     #externalMacro(
+  8 |         module: "GiftUIMacros",
+
+/Users/eugene/work/GiftUI/experiments/spike-071-canvas-embedded-escape-continuation/Negative.swift:45:12: error: lifetime-dependent value escapes its scope
+41 | func nestedEscape(_ raw: UnsafeMutableRawPointer) -> FrameRead {
+42 |     let p = raw.assumingMemoryBound(to: Transition.self)
+43 |     let local = ModelOwner(current: UnsafeMutableBufferPointer(start: p, count: 404),
+   |         `- note: it depends on the lifetime of variable 'local'
+44 |                            frozen: UnsafeMutableBufferPointer(start: p + 404, count: 404), identity: 7)
+45 |     return forward(local.read())
+   |     |      `- error: lifetime-dependent value escapes its scope
+   |     `- note: this use causes the lifetime-dependent value to escape
+46 | }
+47 | #endif

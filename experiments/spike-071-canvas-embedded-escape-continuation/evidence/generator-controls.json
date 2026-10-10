@@ -1,0 +1,1133 @@
+[
+  {
+    "case": "unknown_field",
+    "result": "rejected",
+    "diagnostic": "unknown published field CounterModel.missing",
+    "source": "@ObservableModel\nfinal class CounterModel {\n    @Published var value: UInt32 = 0\n    @Published var scale: UInt32 = 7\n}\n\n@ObservableModel\nfinal class AnalyzerModel {\n    @Published var capture: Capture = Capture()\n}\n\n@ObservableStateHost\nstruct CounterScreen: View {\n    @State var model: CounterModel\n    var body: some View {\n        HStack(spacing: 0) {\n            Text(counterText(model.missing))\n            CounterCanvas(model: model)\n            CounterCanvas(model: model)\n        }\n    }\n}\n\nstruct CounterCanvas: Canvas {\n    let model: CounterModel\n    func draw(in bounds: Rect, context: inout GraphicsContext) throws(DrawingError) {\n        try drawBar(value: model.value, scale: model.scale, context: &context)\n    }\n}\n\nstruct TraceCanvas: Canvas {\n    let model: AnalyzerModel\n    func draw(in bounds: Rect, context: inout GraphicsContext) throws(DrawingError) {\n        try drawBar(value: traceLevel(model: model, index: 17), scale: 1, context: &context)\n    }\n}\n\nfunc traceLevel(model: AnalyzerModel, index: UInt16) -> UInt32 {\n    return model.capture.level(at: index)\n}\n"
+  },
+  {
+    "case": "unchecked_helper",
+    "result": "rejected",
+    "diagnostic": "unchecked helper unreviewed",
+    "source": "@ObservableModel\nfinal class CounterModel {\n    @Published var value: UInt32 = 0\n    @Published var scale: UInt32 = 7\n}\n\n@ObservableModel\nfinal class AnalyzerModel {\n    @Published var capture: Capture = Capture()\n}\n\n@ObservableStateHost\nstruct CounterScreen: View {\n    @State var model: CounterModel\n    var body: some View {\n        HStack(spacing: 0) {\n            Text(counterText(model.value))\n            CounterCanvas(model: model)\n            CounterCanvas(model: model)\n        }\n    }\n}\n\nstruct CounterCanvas: Canvas {\n    let model: CounterModel\n    func draw(in bounds: Rect, context: inout GraphicsContext) throws(DrawingError) {\n        try drawBar(value: model.value, scale: model.scale, context: &context)\n    }\n}\n\nstruct TraceCanvas: Canvas {\n    let model: AnalyzerModel\n    func draw(in bounds: Rect, context: inout GraphicsContext) throws(DrawingError) {\n        try drawBar(value: unreviewed(model: model, index: 17), scale: 1, context: &context)\n    }\n}\n\nfunc traceLevel(model: AnalyzerModel, index: UInt16) -> UInt32 {\n    return model.capture.level(at: index)\n}\n"
+  },
+  {
+    "case": "outside_entrypoint",
+    "result": "rejected",
+    "diagnostic": "unsupported declaration",
+    "source": "@ObservableModel\nfinal class CounterModel {\n    @Published var value: UInt32 = 0\n    @Published var scale: UInt32 = 7\n}\n\n@ObservableModel\nfinal class AnalyzerModel {\n    @Published var capture: Capture = Capture()\n}\n\n@ObservableStateHost\nstruct CounterScreen: View {\n    @State var model: CounterModel\n    var body: some View {\n        HStack(spacing: 0) {\n            Text(counterText(model.value))\n            CounterCanvas(model: model)\n            CounterCanvas(model: model)\n        }\n    }\n}\n\nstruct CounterCanvas: Canvas {\n    let model: CounterModel\n    func draw(in bounds: Rect, context: inout GraphicsContext) throws(DrawingError) {\n        try drawBar(value: model.value, scale: model.scale, context: &context)\n    }\n}\n\nstruct TraceCanvas: Canvas {\n    let model: AnalyzerModel\n    func draw(in bounds: Rect, context: inout GraphicsContext) throws(DrawingError) {\n        try drawBar(value: traceLevel(model: model, index: 17), scale: 1, context: &context)\n    }\n}\n\nfunc traceLevel(model: AnalyzerModel, index: UInt16) -> UInt32 {\n    return model.capture.level(at: index)\n}\n\nlet escaped = model.value\n"
+  },
+  {
+    "case": "capture_stored",
+    "result": "rejected",
+    "diagnostic": "capture may only be indexed, not returned/stored",
+    "source": "@ObservableModel\nfinal class CounterModel {\n    @Published var value: UInt32 = 0\n    @Published var scale: UInt32 = 7\n}\n\n@ObservableModel\nfinal class AnalyzerModel {\n    @Published var capture: Capture = Capture()\n}\n\n@ObservableStateHost\nstruct CounterScreen: View {\n    @State var model: CounterModel\n    var body: some View {\n        HStack(spacing: 0) {\n            Text(counterText(model.value))\n            CounterCanvas(model: model)\n            CounterCanvas(model: model)\n        }\n    }\n}\n\nstruct CounterCanvas: Canvas {\n    let model: CounterModel\n    func draw(in bounds: Rect, context: inout GraphicsContext) throws(DrawingError) {\n        try drawBar(value: model.value, scale: model.scale, context: &context)\n    }\n}\n\nstruct TraceCanvas: Canvas {\n    let model: AnalyzerModel\n    func draw(in bounds: Rect, context: inout GraphicsContext) throws(DrawingError) {\n        try drawBar(value: traceLevel(model: model, index: 17), scale: 1, context: &context)\n    }\n}\n\nfunc traceLevel(model: AnalyzerModel, index: UInt16) -> UInt32 {\n    return model.capture\n}\n"
+  },
+  {
+    "case": "raw_pointer_schema",
+    "result": "rejected",
+    "diagnostic": "unsupported property type UnsafeRawPointer",
+    "source": "@ObservableModel\nfinal class CounterModel {\n    @Published var value: UnsafeRawPointer = 0\n    @Published var scale: UInt32 = 7\n}\n\n@ObservableModel\nfinal class AnalyzerModel {\n    @Published var capture: Capture = Capture()\n}\n\n@ObservableStateHost\nstruct CounterScreen: View {\n    @State var model: CounterModel\n    var body: some View {\n        HStack(spacing: 0) {\n            Text(counterText(model.value))\n            CounterCanvas(model: model)\n            CounterCanvas(model: model)\n        }\n    }\n}\n\nstruct CounterCanvas: Canvas {\n    let model: CounterModel\n    func draw(in bounds: Rect, context: inout GraphicsContext) throws(DrawingError) {\n        try drawBar(value: model.value, scale: model.scale, context: &context)\n    }\n}\n\nstruct TraceCanvas: Canvas {\n    let model: AnalyzerModel\n    func draw(in bounds: Rect, context: inout GraphicsContext) throws(DrawingError) {\n        try drawBar(value: traceLevel(model: model, index: 17), scale: 1, context: &context)\n    }\n}\n\nfunc traceLevel(model: AnalyzerModel, index: UInt16) -> UInt32 {\n    return model.capture.level(at: index)\n}\n"
+  },
+  {
+    "case": "escaping_closure",
+    "result": "rejected",
+    "diagnostic": "unsupported expression {",
+    "source": "@ObservableModel\nfinal class CounterModel {\n    @Published var value: UInt32 = 0\n    @Published var scale: UInt32 = 7\n}\n\n@ObservableModel\nfinal class AnalyzerModel {\n    @Published var capture: Capture = Capture()\n}\n\n@ObservableStateHost\nstruct CounterScreen: View {\n    @State var model: CounterModel\n    var body: some View {\n        HStack(spacing: 0) {\n            Text(counterText(model.value))\n            CounterCanvas(model: model)\n            CounterCanvas(model: model)\n        }\n    }\n}\n\nstruct CounterCanvas: Canvas {\n    let model: CounterModel\n    func draw(in bounds: Rect, context: inout GraphicsContext) throws(DrawingError) {\n        try drawBar(value: model.value, scale: model.scale, context: &context)\n    }\n}\n\nstruct TraceCanvas: Canvas {\n    let model: AnalyzerModel\n    func draw(in bounds: Rect, context: inout GraphicsContext) throws(DrawingError) {\n        try drawBar(value: traceLevel(model: model, index: 17), scale: 1, context: &context)\n    }\n}\n\nfunc traceLevel(model: AnalyzerModel, index: UInt16) -> UInt32 {\n    return { model.capture.level(at: index) }\n}\n"
+  },
+  {
+    "case": "wrong_model_type",
+    "result": "rejected",
+    "diagnostic": "helper model type mismatch",
+    "source": "@ObservableModel\nfinal class CounterModel {\n    @Published var value: UInt32 = 0\n    @Published var scale: UInt32 = 7\n}\n\n@ObservableModel\nfinal class AnalyzerModel {\n    @Published var capture: Capture = Capture()\n}\n\n@ObservableStateHost\nstruct CounterScreen: View {\n    @State var model: CounterModel\n    var body: some View {\n        HStack(spacing: 0) {\n            Text(counterText(model.value))\n            CounterCanvas(model: model)\n            CounterCanvas(model: model)\n        }\n    }\n}\n\nstruct CounterCanvas: Canvas {\n    let model: CounterModel\n    func draw(in bounds: Rect, context: inout GraphicsContext) throws(DrawingError) {\n        try drawBar(value: model.value, scale: model.scale, context: &context)\n    }\n}\n\nstruct TraceCanvas: Canvas {\n    let model: AnalyzerModel\n    func draw(in bounds: Rect, context: inout GraphicsContext) throws(DrawingError) {\n        try drawBar(value: traceLevel(model: bounds, index: 17), scale: 1, context: &context)\n    }\n}\n\nfunc traceLevel(model: AnalyzerModel, index: UInt16) -> UInt32 {\n    return model.capture.level(at: index)\n}\n"
+  },
+  {
+    "case": "property_selection",
+    "result": "source-dependent output",
+    "source": "@ObservableModel\nfinal class CounterModel {\n    @Published var value: UInt32 = 0\n    @Published var scale: UInt32 = 7\n}\n\n@ObservableModel\nfinal class AnalyzerModel {\n    @Published var capture: Capture = Capture()\n}\n\n@ObservableStateHost\nstruct CounterScreen: View {\n    @State var model: CounterModel\n    var body: some View {\n        HStack(spacing: 0) {\n            Text(counterText(model.scale))\n            CounterCanvas(model: model)\n            CounterCanvas(model: model)\n        }\n    }\n}\n\nstruct CounterCanvas: Canvas {\n    let model: CounterModel\n    func draw(in bounds: Rect, context: inout GraphicsContext) throws(DrawingError) {\n        try drawBar(value: model.value, scale: model.scale, context: &context)\n    }\n}\n\nstruct TraceCanvas: Canvas {\n    let model: AnalyzerModel\n    func draw(in bounds: Rect, context: inout GraphicsContext) throws(DrawingError) {\n        try drawBar(value: traceLevel(model: model, index: 17), scale: 1, context: &context)\n    }\n}\n\nfunc traceLevel(model: AnalyzerModel, index: UInt16) -> UInt32 {\n    return model.capture.level(at: index)\n}\n",
+    "output": "// Generated by the strict SPIKE-070 finite corpus transformer.\nstruct CounterModel {\n    let key: ModelKey\n    static let initial0: UInt32 = 0\n    static let initial1: UInt32 = 7\n}\nstruct AnalyzerModel {\n    let key: ModelKey\n}\nstruct CounterScreen {\n    let model: CounterModel\n    func evaluate(read: borrowing FrameRead) throws(AccessFailure) -> some View {\n        let _read0 = try read.scalar(model.key, field: 1)\n        return HStack(spacing: 0) {\n            Text(counterText(_read0))\n            CounterCanvas(model: model)\n            CounterCanvas(model: model)\n        }\n    }\n}\nstruct CounterCanvas: Canvas {\n    let model: CounterModel\n    func draw(in bounds: Rect, context: inout GraphicsContext,\n              read: borrowing FrameRead) throws(DrawingError) {\n        try drawBar(value: (try read.drawScalar(model.key, field: 0)), scale: (try read.drawScalar(model.key, field: 1)), context: &context)\n    }\n}\nstruct TraceCanvas: Canvas {\n    let model: AnalyzerModel\n    func draw(in bounds: Rect, context: inout GraphicsContext,\n              read: borrowing FrameRead) throws(DrawingError) {\n        try drawBar(value: (try traceLevel_draw(model: model, index: 17, read: read)), scale: 1, context: &context)\n    }\n}\nfunc traceLevel_read(model: AnalyzerModel, index: UInt16, read: borrowing FrameRead) throws(AccessFailure) -> UInt32 {\n    return (try read.level(model.key, at: index))\n}\nfunc traceLevel_draw(model: AnalyzerModel, index: UInt16, read: borrowing FrameRead) throws(DrawingError) -> UInt32 {\n    return (try read.drawLevel(model.key, at: index))\n}\n",
+    "manifest": {
+      "source_sha256": "494fa29cbc1cf95e50acb6c8399a62c00040e06a698332094df1cbeba8e39517",
+      "output_sha256": "12598774b18abbed3a9018ab5d67df5a3a1758cc694a1ca38035280b098140c5",
+      "ast": {
+        "models": {
+          "CounterModel": [
+            [
+              "value",
+              "UInt32",
+              [
+                "atom",
+                "0"
+              ]
+            ],
+            [
+              "scale",
+              "UInt32",
+              [
+                "atom",
+                "7"
+              ]
+            ]
+          ],
+          "AnalyzerModel": [
+            [
+              "capture",
+              "Capture",
+              [
+                "call",
+                [
+                  "atom",
+                  "Capture"
+                ],
+                []
+              ]
+            ]
+          ]
+        },
+        "views": {
+          "CounterScreen": {
+            "fields": [
+              [
+                "model",
+                "CounterModel"
+              ]
+            ],
+            "expr": [
+              "builder",
+              [
+                "call",
+                [
+                  "atom",
+                  "HStack"
+                ],
+                [
+                  [
+                    "spacing",
+                    [
+                      "atom",
+                      "0"
+                    ]
+                  ]
+                ]
+              ],
+              [
+                [
+                  "call",
+                  [
+                    "atom",
+                    "Text"
+                  ],
+                  [
+                    [
+                      null,
+                      [
+                        "call",
+                        [
+                          "atom",
+                          "counterText"
+                        ],
+                        [
+                          [
+                            null,
+                            [
+                              "member",
+                              [
+                                "atom",
+                                "model"
+                              ],
+                              "scale"
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ],
+                [
+                  "call",
+                  [
+                    "atom",
+                    "CounterCanvas"
+                  ],
+                  [
+                    [
+                      "model",
+                      [
+                        "atom",
+                        "model"
+                      ]
+                    ]
+                  ]
+                ],
+                [
+                  "call",
+                  [
+                    "atom",
+                    "CounterCanvas"
+                  ],
+                  [
+                    [
+                      "model",
+                      [
+                        "atom",
+                        "model"
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          }
+        },
+        "canvases": {
+          "CounterCanvas": {
+            "fields": [
+              [
+                "model",
+                "CounterModel"
+              ]
+            ],
+            "fn": {
+              "name": "draw",
+              "params": [
+                [
+                  "in",
+                  "bounds",
+                  "Rect"
+                ],
+                [
+                  "context",
+                  "context",
+                  "inout GraphicsContext"
+                ]
+              ],
+              "error": "DrawingError",
+              "result": null,
+              "expr": [
+                "call",
+                [
+                  "atom",
+                  "drawBar"
+                ],
+                [
+                  [
+                    "value",
+                    [
+                      "member",
+                      [
+                        "atom",
+                        "model"
+                      ],
+                      "value"
+                    ]
+                  ],
+                  [
+                    "scale",
+                    [
+                      "member",
+                      [
+                        "atom",
+                        "model"
+                      ],
+                      "scale"
+                    ]
+                  ],
+                  [
+                    "context",
+                    [
+                      "address",
+                      [
+                        "atom",
+                        "context"
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            }
+          },
+          "TraceCanvas": {
+            "fields": [
+              [
+                "model",
+                "AnalyzerModel"
+              ]
+            ],
+            "fn": {
+              "name": "draw",
+              "params": [
+                [
+                  "in",
+                  "bounds",
+                  "Rect"
+                ],
+                [
+                  "context",
+                  "context",
+                  "inout GraphicsContext"
+                ]
+              ],
+              "error": "DrawingError",
+              "result": null,
+              "expr": [
+                "call",
+                [
+                  "atom",
+                  "drawBar"
+                ],
+                [
+                  [
+                    "value",
+                    [
+                      "call",
+                      [
+                        "atom",
+                        "traceLevel"
+                      ],
+                      [
+                        [
+                          "model",
+                          [
+                            "atom",
+                            "model"
+                          ]
+                        ],
+                        [
+                          "index",
+                          [
+                            "atom",
+                            "17"
+                          ]
+                        ]
+                      ]
+                    ]
+                  ],
+                  [
+                    "scale",
+                    [
+                      "atom",
+                      "1"
+                    ]
+                  ],
+                  [
+                    "context",
+                    [
+                      "address",
+                      [
+                        "atom",
+                        "context"
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            }
+          }
+        },
+        "helpers": {
+          "traceLevel": {
+            "name": "traceLevel",
+            "params": [
+              [
+                "model",
+                "model",
+                "AnalyzerModel"
+              ],
+              [
+                "index",
+                "index",
+                "UInt16"
+              ]
+            ],
+            "error": null,
+            "result": "UInt32",
+            "expr": [
+              "call",
+              [
+                "member",
+                [
+                  "member",
+                  [
+                    "atom",
+                    "model"
+                  ],
+                  "capture"
+                ],
+                "level"
+              ],
+              [
+                [
+                  "at",
+                  [
+                    "atom",
+                    "index"
+                  ]
+                ]
+              ]
+            ]
+          }
+        }
+      },
+      "routes": [
+        {
+          "model": "CounterModel",
+          "property": 1,
+          "mode": "body"
+        },
+        {
+          "model": "CounterModel",
+          "property": 0,
+          "mode": "draw"
+        },
+        {
+          "model": "CounterModel",
+          "property": 1,
+          "mode": "draw"
+        },
+        {
+          "model": "AnalyzerModel",
+          "property": 0,
+          "mode": "read",
+          "indexed": true
+        },
+        {
+          "model": "AnalyzerModel",
+          "property": 0,
+          "mode": "draw",
+          "indexed": true
+        }
+      ],
+      "adaptations": [
+        "Canvas target draw receives explicit FrameRead",
+        "root View body becomes a throwing evaluate method on an owned root descriptor",
+        "actual child View/Canvas traversal uses a disposable visitor, not Semantic Core"
+      ]
+    }
+  },
+  {
+    "case": "initializer",
+    "result": "source-dependent output",
+    "source": "@ObservableModel\nfinal class CounterModel {\n    @Published var value: UInt32 = 0\n    @Published var scale: UInt32 = 11\n}\n\n@ObservableModel\nfinal class AnalyzerModel {\n    @Published var capture: Capture = Capture()\n}\n\n@ObservableStateHost\nstruct CounterScreen: View {\n    @State var model: CounterModel\n    var body: some View {\n        HStack(spacing: 0) {\n            Text(counterText(model.value))\n            CounterCanvas(model: model)\n            CounterCanvas(model: model)\n        }\n    }\n}\n\nstruct CounterCanvas: Canvas {\n    let model: CounterModel\n    func draw(in bounds: Rect, context: inout GraphicsContext) throws(DrawingError) {\n        try drawBar(value: model.value, scale: model.scale, context: &context)\n    }\n}\n\nstruct TraceCanvas: Canvas {\n    let model: AnalyzerModel\n    func draw(in bounds: Rect, context: inout GraphicsContext) throws(DrawingError) {\n        try drawBar(value: traceLevel(model: model, index: 17), scale: 1, context: &context)\n    }\n}\n\nfunc traceLevel(model: AnalyzerModel, index: UInt16) -> UInt32 {\n    return model.capture.level(at: index)\n}\n",
+    "output": "// Generated by the strict SPIKE-070 finite corpus transformer.\nstruct CounterModel {\n    let key: ModelKey\n    static let initial0: UInt32 = 0\n    static let initial1: UInt32 = 11\n}\nstruct AnalyzerModel {\n    let key: ModelKey\n}\nstruct CounterScreen {\n    let model: CounterModel\n    func evaluate(read: borrowing FrameRead) throws(AccessFailure) -> some View {\n        let _read0 = try read.scalar(model.key, field: 0)\n        return HStack(spacing: 0) {\n            Text(counterText(_read0))\n            CounterCanvas(model: model)\n            CounterCanvas(model: model)\n        }\n    }\n}\nstruct CounterCanvas: Canvas {\n    let model: CounterModel\n    func draw(in bounds: Rect, context: inout GraphicsContext,\n              read: borrowing FrameRead) throws(DrawingError) {\n        try drawBar(value: (try read.drawScalar(model.key, field: 0)), scale: (try read.drawScalar(model.key, field: 1)), context: &context)\n    }\n}\nstruct TraceCanvas: Canvas {\n    let model: AnalyzerModel\n    func draw(in bounds: Rect, context: inout GraphicsContext,\n              read: borrowing FrameRead) throws(DrawingError) {\n        try drawBar(value: (try traceLevel_draw(model: model, index: 17, read: read)), scale: 1, context: &context)\n    }\n}\nfunc traceLevel_read(model: AnalyzerModel, index: UInt16, read: borrowing FrameRead) throws(AccessFailure) -> UInt32 {\n    return (try read.level(model.key, at: index))\n}\nfunc traceLevel_draw(model: AnalyzerModel, index: UInt16, read: borrowing FrameRead) throws(DrawingError) -> UInt32 {\n    return (try read.drawLevel(model.key, at: index))\n}\n",
+    "manifest": {
+      "source_sha256": "232da6ae61b2af763164c3dd65e4d497a0fd539ecd8bed9acc0e92f00d28b0bb",
+      "output_sha256": "4fce0b198c90477e94e0286cc6041cfc1c0ed6611d77f259708a630bbdb56da6",
+      "ast": {
+        "models": {
+          "CounterModel": [
+            [
+              "value",
+              "UInt32",
+              [
+                "atom",
+                "0"
+              ]
+            ],
+            [
+              "scale",
+              "UInt32",
+              [
+                "atom",
+                "11"
+              ]
+            ]
+          ],
+          "AnalyzerModel": [
+            [
+              "capture",
+              "Capture",
+              [
+                "call",
+                [
+                  "atom",
+                  "Capture"
+                ],
+                []
+              ]
+            ]
+          ]
+        },
+        "views": {
+          "CounterScreen": {
+            "fields": [
+              [
+                "model",
+                "CounterModel"
+              ]
+            ],
+            "expr": [
+              "builder",
+              [
+                "call",
+                [
+                  "atom",
+                  "HStack"
+                ],
+                [
+                  [
+                    "spacing",
+                    [
+                      "atom",
+                      "0"
+                    ]
+                  ]
+                ]
+              ],
+              [
+                [
+                  "call",
+                  [
+                    "atom",
+                    "Text"
+                  ],
+                  [
+                    [
+                      null,
+                      [
+                        "call",
+                        [
+                          "atom",
+                          "counterText"
+                        ],
+                        [
+                          [
+                            null,
+                            [
+                              "member",
+                              [
+                                "atom",
+                                "model"
+                              ],
+                              "value"
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ],
+                [
+                  "call",
+                  [
+                    "atom",
+                    "CounterCanvas"
+                  ],
+                  [
+                    [
+                      "model",
+                      [
+                        "atom",
+                        "model"
+                      ]
+                    ]
+                  ]
+                ],
+                [
+                  "call",
+                  [
+                    "atom",
+                    "CounterCanvas"
+                  ],
+                  [
+                    [
+                      "model",
+                      [
+                        "atom",
+                        "model"
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          }
+        },
+        "canvases": {
+          "CounterCanvas": {
+            "fields": [
+              [
+                "model",
+                "CounterModel"
+              ]
+            ],
+            "fn": {
+              "name": "draw",
+              "params": [
+                [
+                  "in",
+                  "bounds",
+                  "Rect"
+                ],
+                [
+                  "context",
+                  "context",
+                  "inout GraphicsContext"
+                ]
+              ],
+              "error": "DrawingError",
+              "result": null,
+              "expr": [
+                "call",
+                [
+                  "atom",
+                  "drawBar"
+                ],
+                [
+                  [
+                    "value",
+                    [
+                      "member",
+                      [
+                        "atom",
+                        "model"
+                      ],
+                      "value"
+                    ]
+                  ],
+                  [
+                    "scale",
+                    [
+                      "member",
+                      [
+                        "atom",
+                        "model"
+                      ],
+                      "scale"
+                    ]
+                  ],
+                  [
+                    "context",
+                    [
+                      "address",
+                      [
+                        "atom",
+                        "context"
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            }
+          },
+          "TraceCanvas": {
+            "fields": [
+              [
+                "model",
+                "AnalyzerModel"
+              ]
+            ],
+            "fn": {
+              "name": "draw",
+              "params": [
+                [
+                  "in",
+                  "bounds",
+                  "Rect"
+                ],
+                [
+                  "context",
+                  "context",
+                  "inout GraphicsContext"
+                ]
+              ],
+              "error": "DrawingError",
+              "result": null,
+              "expr": [
+                "call",
+                [
+                  "atom",
+                  "drawBar"
+                ],
+                [
+                  [
+                    "value",
+                    [
+                      "call",
+                      [
+                        "atom",
+                        "traceLevel"
+                      ],
+                      [
+                        [
+                          "model",
+                          [
+                            "atom",
+                            "model"
+                          ]
+                        ],
+                        [
+                          "index",
+                          [
+                            "atom",
+                            "17"
+                          ]
+                        ]
+                      ]
+                    ]
+                  ],
+                  [
+                    "scale",
+                    [
+                      "atom",
+                      "1"
+                    ]
+                  ],
+                  [
+                    "context",
+                    [
+                      "address",
+                      [
+                        "atom",
+                        "context"
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            }
+          }
+        },
+        "helpers": {
+          "traceLevel": {
+            "name": "traceLevel",
+            "params": [
+              [
+                "model",
+                "model",
+                "AnalyzerModel"
+              ],
+              [
+                "index",
+                "index",
+                "UInt16"
+              ]
+            ],
+            "error": null,
+            "result": "UInt32",
+            "expr": [
+              "call",
+              [
+                "member",
+                [
+                  "member",
+                  [
+                    "atom",
+                    "model"
+                  ],
+                  "capture"
+                ],
+                "level"
+              ],
+              [
+                [
+                  "at",
+                  [
+                    "atom",
+                    "index"
+                  ]
+                ]
+              ]
+            ]
+          }
+        }
+      },
+      "routes": [
+        {
+          "model": "CounterModel",
+          "property": 0,
+          "mode": "body"
+        },
+        {
+          "model": "CounterModel",
+          "property": 0,
+          "mode": "draw"
+        },
+        {
+          "model": "CounterModel",
+          "property": 1,
+          "mode": "draw"
+        },
+        {
+          "model": "AnalyzerModel",
+          "property": 0,
+          "mode": "read",
+          "indexed": true
+        },
+        {
+          "model": "AnalyzerModel",
+          "property": 0,
+          "mode": "draw",
+          "indexed": true
+        }
+      ],
+      "adaptations": [
+        "Canvas target draw receives explicit FrameRead",
+        "root View body becomes a throwing evaluate method on an owned root descriptor",
+        "actual child View/Canvas traversal uses a disposable visitor, not Semantic Core"
+      ]
+    }
+  },
+  {
+    "case": "body_topology",
+    "result": "source-dependent output",
+    "source": "@ObservableModel\nfinal class CounterModel {\n    @Published var value: UInt32 = 0\n    @Published var scale: UInt32 = 7\n}\n\n@ObservableModel\nfinal class AnalyzerModel {\n    @Published var capture: Capture = Capture()\n}\n\n@ObservableStateHost\nstruct CounterScreen: View {\n    @State var model: CounterModel\n    var body: some View {\n        VStack(spacing: 0) {\n            Text(counterText(model.value))\n            CounterCanvas(model: model)\n            CounterCanvas(model: model)\n        }\n    }\n}\n\nstruct CounterCanvas: Canvas {\n    let model: CounterModel\n    func draw(in bounds: Rect, context: inout GraphicsContext) throws(DrawingError) {\n        try drawBar(value: model.value, scale: model.scale, context: &context)\n    }\n}\n\nstruct TraceCanvas: Canvas {\n    let model: AnalyzerModel\n    func draw(in bounds: Rect, context: inout GraphicsContext) throws(DrawingError) {\n        try drawBar(value: traceLevel(model: model, index: 17), scale: 1, context: &context)\n    }\n}\n\nfunc traceLevel(model: AnalyzerModel, index: UInt16) -> UInt32 {\n    return model.capture.level(at: index)\n}\n",
+    "output": "// Generated by the strict SPIKE-070 finite corpus transformer.\nstruct CounterModel {\n    let key: ModelKey\n    static let initial0: UInt32 = 0\n    static let initial1: UInt32 = 7\n}\nstruct AnalyzerModel {\n    let key: ModelKey\n}\nstruct CounterScreen {\n    let model: CounterModel\n    func evaluate(read: borrowing FrameRead) throws(AccessFailure) -> some View {\n        let _read0 = try read.scalar(model.key, field: 0)\n        return VStack(spacing: 0) {\n            Text(counterText(_read0))\n            CounterCanvas(model: model)\n            CounterCanvas(model: model)\n        }\n    }\n}\nstruct CounterCanvas: Canvas {\n    let model: CounterModel\n    func draw(in bounds: Rect, context: inout GraphicsContext,\n              read: borrowing FrameRead) throws(DrawingError) {\n        try drawBar(value: (try read.drawScalar(model.key, field: 0)), scale: (try read.drawScalar(model.key, field: 1)), context: &context)\n    }\n}\nstruct TraceCanvas: Canvas {\n    let model: AnalyzerModel\n    func draw(in bounds: Rect, context: inout GraphicsContext,\n              read: borrowing FrameRead) throws(DrawingError) {\n        try drawBar(value: (try traceLevel_draw(model: model, index: 17, read: read)), scale: 1, context: &context)\n    }\n}\nfunc traceLevel_read(model: AnalyzerModel, index: UInt16, read: borrowing FrameRead) throws(AccessFailure) -> UInt32 {\n    return (try read.level(model.key, at: index))\n}\nfunc traceLevel_draw(model: AnalyzerModel, index: UInt16, read: borrowing FrameRead) throws(DrawingError) -> UInt32 {\n    return (try read.drawLevel(model.key, at: index))\n}\n",
+    "manifest": {
+      "source_sha256": "e2a475ae4b12f5d0bf27c828ff340b6bc7acb48a16a937976dd24ce93fb76da0",
+      "output_sha256": "65af0631c9491bafb830f38e6c8c0ee60feafca5a2e59f4cefddfbf2c4f5a563",
+      "ast": {
+        "models": {
+          "CounterModel": [
+            [
+              "value",
+              "UInt32",
+              [
+                "atom",
+                "0"
+              ]
+            ],
+            [
+              "scale",
+              "UInt32",
+              [
+                "atom",
+                "7"
+              ]
+            ]
+          ],
+          "AnalyzerModel": [
+            [
+              "capture",
+              "Capture",
+              [
+                "call",
+                [
+                  "atom",
+                  "Capture"
+                ],
+                []
+              ]
+            ]
+          ]
+        },
+        "views": {
+          "CounterScreen": {
+            "fields": [
+              [
+                "model",
+                "CounterModel"
+              ]
+            ],
+            "expr": [
+              "builder",
+              [
+                "call",
+                [
+                  "atom",
+                  "VStack"
+                ],
+                [
+                  [
+                    "spacing",
+                    [
+                      "atom",
+                      "0"
+                    ]
+                  ]
+                ]
+              ],
+              [
+                [
+                  "call",
+                  [
+                    "atom",
+                    "Text"
+                  ],
+                  [
+                    [
+                      null,
+                      [
+                        "call",
+                        [
+                          "atom",
+                          "counterText"
+                        ],
+                        [
+                          [
+                            null,
+                            [
+                              "member",
+                              [
+                                "atom",
+                                "model"
+                              ],
+                              "value"
+                            ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                ],
+                [
+                  "call",
+                  [
+                    "atom",
+                    "CounterCanvas"
+                  ],
+                  [
+                    [
+                      "model",
+                      [
+                        "atom",
+                        "model"
+                      ]
+                    ]
+                  ]
+                ],
+                [
+                  "call",
+                  [
+                    "atom",
+                    "CounterCanvas"
+                  ],
+                  [
+                    [
+                      "model",
+                      [
+                        "atom",
+                        "model"
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          }
+        },
+        "canvases": {
+          "CounterCanvas": {
+            "fields": [
+              [
+                "model",
+                "CounterModel"
+              ]
+            ],
+            "fn": {
+              "name": "draw",
+              "params": [
+                [
+                  "in",
+                  "bounds",
+                  "Rect"
+                ],
+                [
+                  "context",
+                  "context",
+                  "inout GraphicsContext"
+                ]
+              ],
+              "error": "DrawingError",
+              "result": null,
+              "expr": [
+                "call",
+                [
+                  "atom",
+                  "drawBar"
+                ],
+                [
+                  [
+                    "value",
+                    [
+                      "member",
+                      [
+                        "atom",
+                        "model"
+                      ],
+                      "value"
+                    ]
+                  ],
+                  [
+                    "scale",
+                    [
+                      "member",
+                      [
+                        "atom",
+                        "model"
+                      ],
+                      "scale"
+                    ]
+                  ],
+                  [
+                    "context",
+                    [
+                      "address",
+                      [
+                        "atom",
+                        "context"
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            }
+          },
+          "TraceCanvas": {
+            "fields": [
+              [
+                "model",
+                "AnalyzerModel"
+              ]
+            ],
+            "fn": {
+              "name": "draw",
+              "params": [
+                [
+                  "in",
+                  "bounds",
+                  "Rect"
+                ],
+                [
+                  "context",
+                  "context",
+                  "inout GraphicsContext"
+                ]
+              ],
+              "error": "DrawingError",
+              "result": null,
+              "expr": [
+                "call",
+                [
+                  "atom",
+                  "drawBar"
+                ],
+                [
+                  [
+                    "value",
+                    [
+                      "call",
+                      [
+                        "atom",
+                        "traceLevel"
+                      ],
+                      [
+                        [
+                          "model",
+                          [
+                            "atom",
+                            "model"
+                          ]
+                        ],
+                        [
+                          "index",
+                          [
+                            "atom",
+                            "17"
+                          ]
+                        ]
+                      ]
+                    ]
+                  ],
+                  [
+                    "scale",
+                    [
+                      "atom",
+                      "1"
+                    ]
+                  ],
+                  [
+                    "context",
+                    [
+                      "address",
+                      [
+                        "atom",
+                        "context"
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            }
+          }
+        },
+        "helpers": {
+          "traceLevel": {
+            "name": "traceLevel",
+            "params": [
+              [
+                "model",
+                "model",
+                "AnalyzerModel"
+              ],
+              [
+                "index",
+                "index",
+                "UInt16"
+              ]
+            ],
+            "error": null,
+            "result": "UInt32",
+            "expr": [
+              "call",
+              [
+                "member",
+                [
+                  "member",
+                  [
+                    "atom",
+                    "model"
+                  ],
+                  "capture"
+                ],
+                "level"
+              ],
+              [
+                [
+                  "at",
+                  [
+                    "atom",
+                    "index"
+                  ]
+                ]
+              ]
+            ]
+          }
+        }
+      },
+      "routes": [
+        {
+          "model": "CounterModel",
+          "property": 0,
+          "mode": "body"
+        },
+        {
+          "model": "CounterModel",
+          "property": 0,
+          "mode": "draw"
+        },
+        {
+          "model": "CounterModel",
+          "property": 1,
+          "mode": "draw"
+        },
+        {
+          "model": "AnalyzerModel",
+          "property": 0,
+          "mode": "read",
+          "indexed": true
+        },
+        {
+          "model": "AnalyzerModel",
+          "property": 0,
+          "mode": "draw",
+          "indexed": true
+        }
+      ],
+      "adaptations": [
+        "Canvas target draw receives explicit FrameRead",
+        "root View body becomes a throwing evaluate method on an owned root descriptor",
+        "actual child View/Canvas traversal uses a disposable visitor, not Semantic Core"
+      ]
+    }
+  }
+]

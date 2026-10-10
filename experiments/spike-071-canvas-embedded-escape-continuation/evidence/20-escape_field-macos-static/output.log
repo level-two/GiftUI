@@ -1,0 +1,24 @@
+/Users/eugene/work/GiftUI/Sources/GiftUI/ObservableState.swift:6:14: warning: external macro implementation type 'GiftUIMacros.ObservableStateHostMacro' could not be found for macro 'ObservableStateHost()'; plugin for module 'GiftUIMacros' not found
+  4 | )
+  5 | @attached(extension, conformances: _GiftUIObservableStateHost)
+  6 | public macro ObservableStateHost() =
+    |              `- warning: external macro implementation type 'GiftUIMacros.ObservableStateHostMacro' could not be found for macro 'ObservableStateHost()'; plugin for module 'GiftUIMacros' not found
+  7 |     #externalMacro(
+  8 |         module: "GiftUIMacros",
+
+/Users/eugene/work/GiftUI/experiments/spike-071-canvas-embedded-escape-continuation/Negative.swift:29:26: error: stored property 'read' of 'Escapable'-conforming struct 'StoredFrame' has non-Escapable type 'FrameRead'
+27 | #endif
+28 | #if ESCAPE_FIELD
+29 | struct StoredFrame { let read: FrameRead }
+   |        |                 `- error: stored property 'read' of 'Escapable'-conforming struct 'StoredFrame' has non-Escapable type 'FrameRead'
+   |        `- note: consider adding '~Escapable' to struct 'StoredFrame'
+30 | #endif
+31 | #if ESCAPE_HELPER
+
+/Users/eugene/work/GiftUI/experiments/spike-071-canvas-embedded-escape-continuation/Owner.swift:16:8: note: struct 'FrameRead' has '~Escapable' constraint preventing 'Escapable' conformance
+ 14 |     let epoch: UInt32
+ 15 | }
+ 16 | struct FrameRead: ~Escapable {
+    |        `- note: struct 'FrameRead' has '~Escapable' constraint preventing 'Escapable' conformance
+ 17 |     private let transitions: Span<Transition>
+ 18 |     private let value: UInt32

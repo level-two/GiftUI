@@ -1,0 +1,177 @@
+There are 168 section headers, starting at offset 0x44c0:
+
+Section Headers:
+  [Nr] Name              Type            Addr     Off    Size   ES Flg Lk Inf Al
+  [ 0]                   NULL            00000000 000000 000000 00      0   0  0
+  [ 1] .text.$e8Spike07111BoundedTextVyACSgs12StaticStringVcfC PROGBITS        00000000 000034 000058 00  AX  0   0  2
+  [ 2] .rel.text.$e8Spike07111BoundedTextVyACSgs12StaticStringVcfC REL             00000000 002c00 000018 08   I 165   1  4
+  [ 3] .text.$eSlsE6prefixy11SubSequenceQzSiFSRys5UInt8VG_Tg5 PROGBITS        00000000 00008c 000022 00  AX  0   0  2
+  [ 4] .text.$e8Spike07111BoundedTextV4utf8ACSgx_tcSlRzs5UInt8V7ElementRtzlufCs5SliceVySRyAGGG_Tt0g5 PROGBITS        00000000 0000b0 000098 00  AX  0   0  4
+  [ 5] .rel.text.$e8Spike07111BoundedTextV4utf8ACSgx_tcSlRzs5UInt8V7ElementRtzlufCs5SliceVySRyAGGG_Tt0g5 REL             00000000 002c18 000050 08   I 165   4  4
+  [ 6] .text.$e8Spike07111BoundedTextV16isWellFormedUTF833_008D40B586E1D98DBDF8A78EF57BA60DLL_5countSbAA0bC7StorageAELLV_SitFZ PROGBITS        00000000 000148 00004c 00  AX  0   0  4
+  [ 7] .rel.text.$e8Spike07111BoundedTextV16isWellFormedUTF833_008D40B586E1D98DBDF8A78EF57BA60DLL_5countSbAA0bC7StorageAELLV_SitFZ REL             00000000 002c68 000030 08   I 165   6  4
+  [ 8] .text.$e8Spike07111BoundedTextV2eeoiySbAC_ACtFZ PROGBITS        00000000 000194 000068 00  AX  0   0  4
+  [ 9] .rel.text.$e8Spike07111BoundedTextV2eeoiySbAC_ACtFZ REL             00000000 002c98 000030 08   I 165   8  4
+  [10] .text.$e8Spike07111BoundedTextV16isWellFormedUTF833_008D40B586E1D98DBDF8A78EF57BA60DLL_5countSbAA0bC7StorageAELLV_SitFZSbSWXEfU_ PROGBITS        00000000 0001fc 0000c6 00  AX  0   0  2
+  [11] .text..L__unnamed_3 PROGBITS        00000000 0002c2 000010 00  AX  0   0  2
+  [12] .text.$e8Spike07120_GiftUIDrawingStatusO8rawValueACSgs5UInt8V_tcfC PROGBITS        00000000 0002d2 00000a 00  AX  0   0  2
+  [13] .text.$e8Spike07121requireDrawingSuccess33_9CB5166BE76D057987ABFF638FB9C0F6LLyys5UInt8VAA0C5ErrorOYKF PROGBITS        00000000 0002dc 00003a 00  AX  0   0  4
+  [14] .rel.text.$e8Spike07121requireDrawingSuccess33_9CB5166BE76D057987ABFF638FB9C0F6LLyys5UInt8VAA0C5ErrorOYKF REL             00000000 002cc8 000008 08   I 165  13  4
+  [15] .text.$e8Spike0719FrameReadV5level_2ats6UInt32VAA8ModelKeyV_s6UInt16VtAA13AccessFailureOYKF PROGBITS        00000000 000316 000050 00  AX  0   0  2
+  [16] .text.$e8Spike07110ModelOwnerV6freezeAA0B3KeyVSgyF PROGBITS        00000000 000366 000060 00  AX  0   0  2
+  [17] .text.$e8Spike07110ModelOwnerV4readAA9FrameReadVyF PROGBITS        00000000 0003c6 00002e 00  AX  0   0  2
+  [18] .text.$e8Spike07111counterTextyAA07BoundedC0Vs6UInt32VF PROGBITS        00000000 0003f4 000090 00  AX  0   0  4
+  [19] .rel.text.$e8Spike07111counterTextyAA07BoundedC0Vs6UInt32VF REL             00000000 002cd0 000070 08   I 165  18  4
+  [20] .text.$e8Spike0717drawBar5value5scale7contextys6UInt32V_AgA15GraphicsContextVztAA12DrawingErrorOYKF PROGBITS        00000000 000484 000120 00  AX  0   0  4
+  [21] .rel.text.$e8Spike0717drawBar5value5scale7contextys6UInt32V_AgA15GraphicsContextVztAA12DrawingErrorOYKF REL             00000000 002d40 000040 08   I 165  20  4
+  [22] .text.$e8Spike0719beginPathys5UInt8VSv_s6UInt32VSpyAFGtF PROGBITS        00000000 0005a4 000014 00  AX  0   0  2
+  [23] .text.$e8Spike0717endPathys5UInt8VSv_s6UInt32VAFtF PROGBITS        00000000 0005b8 00000e 00  AX  0   0  2
+  [24] .text.$e8Spike0718linePathys5UInt8VSv_s6UInt32VAFs5Int32VAHtF PROGBITS        00000000 0005c6 000018 00  AX  0   0  2
+  [25] .text.$e8Spike07110strokePathys5UInt8VSv_s6UInt32VAf3Ds5Int32VA2DtF PROGBITS        00000000 0005de 00000e 00  AX  0   0  2
+  [26] .text.$e8Spike0719beginPathys5UInt8VSv_s6UInt32VSpyAFGtFTo PROGBITS        00000000 0005ec 00000a 00  AX  0   0  2
+  [27] .rel.text.$e8Spike0719beginPathys5UInt8VSv_s6UInt32VSpyAFGtFTo REL             00000000 002d80 000008 08   I 165  26  4
+  [28] .text.$e8Spike0717endPathys5UInt8VSv_s6UInt32VAFtFTo PROGBITS        00000000 0005f6 00000a 00  AX  0   0  2
+  [29] .rel.text.$e8Spike0717endPathys5UInt8VSv_s6UInt32VAFtFTo REL             00000000 002d88 000008 08   I 165  28  4
+  [30] .text.$e8Spike0718movePathys5UInt8VSv_s6UInt32VAFs5Int32VAHtFTo PROGBITS        00000000 000600 000004 00  AX  0   0  2
+  [31] .text.$e8Spike0718linePathys5UInt8VSv_s6UInt32VAFs5Int32VAHtFTo PROGBITS        00000000 000604 00000a 00  AX  0   0  2
+  [32] .rel.text.$e8Spike0718linePathys5UInt8VSv_s6UInt32VAFs5Int32VAHtFTo REL             00000000 002d90 000008 08   I 165  31  4
+  [33] .text.$e8Spike07110strokePathys5UInt8VSv_s6UInt32VAf3Ds5Int32VA2DtFTo PROGBITS        00000000 00060e 00000c 00  AX  0   0  2
+  [34] .rel.text.$e8Spike07110strokePathys5UInt8VSv_s6UInt32VAf3Ds5Int32VA2DtFTo REL             00000000 002d98 000008 08   I 165  33  4
+  [35] .text.$e8Spike07113StagedVisitorV4draw4read7contextyAA9FrameReadV_AA15GraphicsContextVztAA12DrawingErrorOYKF PROGBITS        00000000 00061a 000124 00  AX  0   0  2
+  [36] .rel.text.$e8Spike07113StagedVisitorV4draw4read7contextyAA9FrameReadV_AA15GraphicsContextVztAA12DrawingErrorOYKF REL             00000000 002da0 000020 08   I 165  35  4
+  [37] .text.$e8Spike0719testFrame___8expected5scale3old8failuresyAA10ModelOwnerV_AA0H3KeyVSpyAA8RecorderVGs6UInt32VAoJSgAOztF PROGBITS        00000000 000740 0005a4 00  AX  0   0  4
+  [38] .rel.text.$e8Spike0719testFrame___8expected5scale3old8failuresyAA10ModelOwnerV_AA0H3KeyVSpyAA8RecorderVGs6UInt32VAoJSgAOztF REL             00000000 002dc0 000208 08   I 165  37  4
+  [39] .text.$e8Spike07115testDrawFailure___8failuresyAA10ModelOwnerV_AA0F3KeyVSpyAA8RecorderVGs6UInt32VztF PROGBITS        00000000 000ce4 0000f8 00  AX  0   0  4
+  [40] .rel.text.$e8Spike07115testDrawFailure___8failuresyAA10ModelOwnerV_AA0F3KeyVSpyAA8RecorderVGs6UInt32VztF REL             00000000 002fc8 000058 08   I 165  39  4
+  [41] .text.spike071_driver PROGBITS        00000000 000ddc 000004 00  AX  0   0  2
+  [42] .rel.text.spike071_driver REL             00000000 003020 000008 08   I 165  41  4
+  [43] .text.$e8Spike0716driverys6UInt32VSv_SvtF PROGBITS        00000000 000de0 000270 00  AX  0   0  2
+  [44] .rel.text.$e8Spike0716driverys6UInt32VSv_SvtF REL             00000000 003028 000070 08   I 165  43  4
+  [45] .text._swift_exceptionPersonality PROGBITS        00000000 001050 000002 00 AXR  0   0  2
+  [46] .text..L__unnamed_2 PROGBITS        00000000 001052 000012 00  AX  0   0  2
+  [47] .rel.text..L__unnamed_2 REL             00000000 003098 000008 08   I 165  46  4
+  [48] .text.$e8Spike0719FrameReadVWOh PROGBITS        00000000 001064 000002 00  AX  0   0  2
+  [49] .text..L__unnamed_1 PROGBITS        00000000 001066 000008 00  AX  0   0  2
+  [50] .text.OUTLINED_FUNCTION_1 PROGBITS        00000000 00106e 00000a 00  AX  0   0  2
+  [51] .rel.text.OUTLINED_FUNCTION_1 REL             00000000 0030a0 000008 08   I 165  50  4
+  [52] .text.OUTLINED_FUNCTION_4 PROGBITS        00000000 001078 000012 00  AX  0   0  2
+  [53] .rel.text.OUTLINED_FUNCTION_4 REL             00000000 0030a8 000008 08   I 165  52  4
+  [54] .text.OUTLINED_FUNCTION_5 PROGBITS        00000000 00108a 000012 00  AX  0   0  2
+  [55] .rel.text.OUTLINED_FUNCTION_5 REL             00000000 0030b0 000008 08   I 165  54  4
+  [56] .text.OUTLINED_FUNCTION_6 PROGBITS        00000000 00109c 000006 00  AX  0   0  2
+  [57] .rel.text.OUTLINED_FUNCTION_6 REL             00000000 0030b8 000008 08   I 165  56  4
+  [58] .text.OUTLINED_FUNCTION_7 PROGBITS        00000000 0010a2 000006 00  AX  0   0  2
+  [59] .rel.text.OUTLINED_FUNCTION_7 REL             00000000 0030c0 000008 08   I 165  58  4
+  [60] .text.OUTLINED_FUNCTION_8 PROGBITS        00000000 0010a8 000006 00  AX  0   0  2
+  [61] .rel.text.OUTLINED_FUNCTION_8 REL             00000000 0030c8 000008 08   I 165  60  4
+  [62] .text.OUTLINED_FUNCTION_9 PROGBITS        00000000 0010ae 000008 00  AX  0   0  2
+  [63] .rel.text.OUTLINED_FUNCTION_9 REL             00000000 0030d0 000008 08   I 165  62  4
+  [64] .text.OUTLINED_FUNCTION_10 PROGBITS        00000000 0010b6 000006 00  AX  0   0  2
+  [65] .rel.text.OUTLINED_FUNCTION_10 REL             00000000 0030d8 000008 08   I 165  64  4
+  [66] .text.OUTLINED_FUNCTION_11 PROGBITS        00000000 0010bc 000008 00  AX  0   0  2
+  [67] .text.OUTLINED_FUNCTION_12 PROGBITS        00000000 0010c4 00000a 00  AX  0   0  2
+  [68] .rel.text.OUTLINED_FUNCTION_12 REL             00000000 0030e0 000008 08   I 165  67  4
+  [69] .text.OUTLINED_FUNCTION_16 PROGBITS        00000000 0010ce 00000e 00  AX  0   0  2
+  [70] .text.OUTLINED_FUNCTION_17 PROGBITS        00000000 0010dc 00000e 00  AX  0   0  2
+  [71] .ARM.exidx.text.$e8Spike07111BoundedTextVyACSgs12StaticStringVcfC ARM_EXIDX       00000000 0010ec 000008 00  AL  1   0  4
+  [72] .rel.ARM.exidx.text.$e8Spike07111BoundedTextVyACSgs12StaticStringVcfC REL             00000000 0030e8 000008 08   I 165  71  4
+  [73] .ARM.exidx.text.$eSlsE6prefixy11SubSequenceQzSiFSRys5UInt8VG_Tg5 ARM_EXIDX       00000000 0010f4 000008 00  AL  3   0  4
+  [74] .rel.ARM.exidx.text.$eSlsE6prefixy11SubSequenceQzSiFSRys5UInt8VG_Tg5 REL             00000000 0030f0 000008 08   I 165  73  4
+  [75] .ARM.exidx.text.$e8Spike07111BoundedTextV4utf8ACSgx_tcSlRzs5UInt8V7ElementRtzlufCs5SliceVySRyAGGG_Tt0g5 ARM_EXIDX       00000000 0010fc 000008 00  AL  4   0  4
+  [76] .rel.ARM.exidx.text.$e8Spike07111BoundedTextV4utf8ACSgx_tcSlRzs5UInt8V7ElementRtzlufCs5SliceVySRyAGGG_Tt0g5 REL             00000000 0030f8 000008 08   I 165  75  4
+  [77] .ARM.exidx.text.$e8Spike07111BoundedTextV16isWellFormedUTF833_008D40B586E1D98DBDF8A78EF57BA60DLL_5countSbAA0bC7StorageAELLV_SitFZ ARM_EXIDX       00000000 001104 000008 00  AL  6   0  4
+  [78] .rel.ARM.exidx.text.$e8Spike07111BoundedTextV16isWellFormedUTF833_008D40B586E1D98DBDF8A78EF57BA60DLL_5countSbAA0bC7StorageAELLV_SitFZ REL             00000000 003100 000008 08   I 165  77  4
+  [79] .ARM.exidx.text.$e8Spike07111BoundedTextV2eeoiySbAC_ACtFZ ARM_EXIDX       00000000 00110c 000008 00  AL  8   0  4
+  [80] .rel.ARM.exidx.text.$e8Spike07111BoundedTextV2eeoiySbAC_ACtFZ REL             00000000 003108 000008 08   I 165  79  4
+  [81] .ARM.exidx.text.$e8Spike07111BoundedTextV16isWellFormedUTF833_008D40B586E1D98DBDF8A78EF57BA60DLL_5countSbAA0bC7StorageAELLV_SitFZSbSWXEfU_ ARM_EXIDX       00000000 001114 000008 00  AL 10   0  4
+  [82] .rel.ARM.exidx.text.$e8Spike07111BoundedTextV16isWellFormedUTF833_008D40B586E1D98DBDF8A78EF57BA60DLL_5countSbAA0bC7StorageAELLV_SitFZSbSWXEfU_ REL             00000000 003110 000008 08   I 165  81  4
+  [83] .ARM.exidx.text..L__unnamed_3 ARM_EXIDX       00000000 00111c 000008 00  AL 11   0  4
+  [84] .rel.ARM.exidx.text..L__unnamed_3 REL             00000000 003118 000008 08   I 165  83  4
+  [85] .ARM.exidx.text.$e8Spike07120_GiftUIDrawingStatusO8rawValueACSgs5UInt8V_tcfC ARM_EXIDX       00000000 001124 000008 00  AL 12   0  4
+  [86] .rel.ARM.exidx.text.$e8Spike07120_GiftUIDrawingStatusO8rawValueACSgs5UInt8V_tcfC REL             00000000 003120 000008 08   I 165  85  4
+  [87] .ARM.exidx.text.$e8Spike07121requireDrawingSuccess33_9CB5166BE76D057987ABFF638FB9C0F6LLyys5UInt8VAA0C5ErrorOYKF ARM_EXIDX       00000000 00112c 000008 00  AL 13   0  4
+  [88] .rel.ARM.exidx.text.$e8Spike07121requireDrawingSuccess33_9CB5166BE76D057987ABFF638FB9C0F6LLyys5UInt8VAA0C5ErrorOYKF REL             00000000 003128 000008 08   I 165  87  4
+  [89] .ARM.exidx.text.$e8Spike0719FrameReadV5level_2ats6UInt32VAA8ModelKeyV_s6UInt16VtAA13AccessFailureOYKF ARM_EXIDX       00000000 001134 000008 00  AL 15   0  4
+  [90] .rel.ARM.exidx.text.$e8Spike0719FrameReadV5level_2ats6UInt32VAA8ModelKeyV_s6UInt16VtAA13AccessFailureOYKF REL             00000000 003130 000008 08   I 165  89  4
+  [91] .ARM.exidx.text.$e8Spike07110ModelOwnerV6freezeAA0B3KeyVSgyF ARM_EXIDX       00000000 00113c 000008 00  AL 16   0  4
+  [92] .rel.ARM.exidx.text.$e8Spike07110ModelOwnerV6freezeAA0B3KeyVSgyF REL             00000000 003138 000008 08   I 165  91  4
+  [93] .ARM.exidx.text.$e8Spike07110ModelOwnerV4readAA9FrameReadVyF ARM_EXIDX       00000000 001144 000008 00  AL 17   0  4
+  [94] .rel.ARM.exidx.text.$e8Spike07110ModelOwnerV4readAA9FrameReadVyF REL             00000000 003140 000008 08   I 165  93  4
+  [95] .ARM.exidx.text.$e8Spike07111counterTextyAA07BoundedC0Vs6UInt32VF ARM_EXIDX       00000000 00114c 000008 00  AL 18   0  4
+  [96] .rel.ARM.exidx.text.$e8Spike07111counterTextyAA07BoundedC0Vs6UInt32VF REL             00000000 003148 000008 08   I 165  95  4
+  [97] .ARM.exidx.text.$e8Spike0717drawBar5value5scale7contextys6UInt32V_AgA15GraphicsContextVztAA12DrawingErrorOYKF ARM_EXIDX       00000000 001154 000008 00  AL 20   0  4
+  [98] .rel.ARM.exidx.text.$e8Spike0717drawBar5value5scale7contextys6UInt32V_AgA15GraphicsContextVztAA12DrawingErrorOYKF REL             00000000 003150 000008 08   I 165  97  4
+  [99] .ARM.exidx.text.$e8Spike0719beginPathys5UInt8VSv_s6UInt32VSpyAFGtF ARM_EXIDX       00000000 00115c 000008 00  AL 22   0  4
+  [100] .rel.ARM.exidx.text.$e8Spike0719beginPathys5UInt8VSv_s6UInt32VSpyAFGtF REL             00000000 003158 000008 08   I 165  99  4
+  [101] .ARM.exidx.text.$e8Spike0717endPathys5UInt8VSv_s6UInt32VAFtF ARM_EXIDX       00000000 001164 000008 00  AL 23   0  4
+  [102] .rel.ARM.exidx.text.$e8Spike0717endPathys5UInt8VSv_s6UInt32VAFtF REL             00000000 003160 000008 08   I 165 101  4
+  [103] .ARM.exidx.text.$e8Spike0718linePathys5UInt8VSv_s6UInt32VAFs5Int32VAHtF ARM_EXIDX       00000000 00116c 000008 00  AL 24   0  4
+  [104] .rel.ARM.exidx.text.$e8Spike0718linePathys5UInt8VSv_s6UInt32VAFs5Int32VAHtF REL             00000000 003168 000008 08   I 165 103  4
+  [105] .ARM.exidx.text.$e8Spike07110strokePathys5UInt8VSv_s6UInt32VAf3Ds5Int32VA2DtF ARM_EXIDX       00000000 001174 000008 00  AL 25   0  4
+  [106] .rel.ARM.exidx.text.$e8Spike07110strokePathys5UInt8VSv_s6UInt32VAf3Ds5Int32VA2DtF REL             00000000 003170 000008 08   I 165 105  4
+  [107] .ARM.exidx.text.$e8Spike0719beginPathys5UInt8VSv_s6UInt32VSpyAFGtFTo ARM_EXIDX       00000000 00117c 000008 00  AL 26   0  4
+  [108] .rel.ARM.exidx.text.$e8Spike0719beginPathys5UInt8VSv_s6UInt32VSpyAFGtFTo REL             00000000 003178 000008 08   I 165 107  4
+  [109] .ARM.exidx.text.$e8Spike0717endPathys5UInt8VSv_s6UInt32VAFtFTo ARM_EXIDX       00000000 001184 000008 00  AL 28   0  4
+  [110] .rel.ARM.exidx.text.$e8Spike0717endPathys5UInt8VSv_s6UInt32VAFtFTo REL             00000000 003180 000008 08   I 165 109  4
+  [111] .ARM.exidx.text.$e8Spike0718movePathys5UInt8VSv_s6UInt32VAFs5Int32VAHtFTo ARM_EXIDX       00000000 00118c 000008 00  AL 30   0  4
+  [112] .rel.ARM.exidx.text.$e8Spike0718movePathys5UInt8VSv_s6UInt32VAFs5Int32VAHtFTo REL             00000000 003188 000008 08   I 165 111  4
+  [113] .ARM.exidx.text.$e8Spike0718linePathys5UInt8VSv_s6UInt32VAFs5Int32VAHtFTo ARM_EXIDX       00000000 001194 000008 00  AL 31   0  4
+  [114] .rel.ARM.exidx.text.$e8Spike0718linePathys5UInt8VSv_s6UInt32VAFs5Int32VAHtFTo REL             00000000 003190 000008 08   I 165 113  4
+  [115] .ARM.exidx.text.$e8Spike07110strokePathys5UInt8VSv_s6UInt32VAf3Ds5Int32VA2DtFTo ARM_EXIDX       00000000 00119c 000008 00  AL 33   0  4
+  [116] .rel.ARM.exidx.text.$e8Spike07110strokePathys5UInt8VSv_s6UInt32VAf3Ds5Int32VA2DtFTo REL             00000000 003198 000008 08   I 165 115  4
+  [117] .ARM.exidx.text.$e8Spike07113StagedVisitorV4draw4read7contextyAA9FrameReadV_AA15GraphicsContextVztAA12DrawingErrorOYKF ARM_EXIDX       00000000 0011a4 000008 00  AL 35   0  4
+  [118] .rel.ARM.exidx.text.$e8Spike07113StagedVisitorV4draw4read7contextyAA9FrameReadV_AA15GraphicsContextVztAA12DrawingErrorOYKF REL             00000000 0031a0 000008 08   I 165 117  4
+  [119] .ARM.exidx.text.$e8Spike0719testFrame___8expected5scale3old8failuresyAA10ModelOwnerV_AA0H3KeyVSpyAA8RecorderVGs6UInt32VAoJSgAOztF ARM_EXIDX       00000000 0011ac 000008 00  AL 37   0  4
+  [120] .rel.ARM.exidx.text.$e8Spike0719testFrame___8expected5scale3old8failuresyAA10ModelOwnerV_AA0H3KeyVSpyAA8RecorderVGs6UInt32VAoJSgAOztF REL             00000000 0031a8 000008 08   I 165 119  4
+  [121] .ARM.exidx.text.$e8Spike07115testDrawFailure___8failuresyAA10ModelOwnerV_AA0F3KeyVSpyAA8RecorderVGs6UInt32VztF ARM_EXIDX       00000000 0011b4 000008 00  AL 39   0  4
+  [122] .rel.ARM.exidx.text.$e8Spike07115testDrawFailure___8failuresyAA10ModelOwnerV_AA0F3KeyVSpyAA8RecorderVGs6UInt32VztF REL             00000000 0031b0 000008 08   I 165 121  4
+  [123] .ARM.exidx.text.spike071_driver ARM_EXIDX       00000000 0011bc 000008 00  AL 41   0  4
+  [124] .rel.ARM.exidx.text.spike071_driver REL             00000000 0031b8 000008 08   I 165 123  4
+  [125] .ARM.exidx.text.$e8Spike0716driverys6UInt32VSv_SvtF ARM_EXIDX       00000000 0011c4 000008 00  AL 43   0  4
+  [126] .rel.ARM.exidx.text.$e8Spike0716driverys6UInt32VSv_SvtF REL             00000000 0031c0 000008 08   I 165 125  4
+  [127] .ARM.exidx.text._swift_exceptionPersonality ARM_EXIDX       00000000 0011cc 000008 00  AL 45   0  4
+  [128] .rel.ARM.exidx.text._swift_exceptionPersonality REL             00000000 0031c8 000008 08   I 165 127  4
+  [129] .ARM.exidx.text..L__unnamed_2 ARM_EXIDX       00000000 0011d4 000008 00  AL 46   0  4
+  [130] .rel.ARM.exidx.text..L__unnamed_2 REL             00000000 0031d0 000008 08   I 165 129  4
+  [131] .ARM.exidx.text.$e8Spike0719FrameReadVWOh ARM_EXIDX       00000000 0011dc 000008 00  AL 48   0  4
+  [132] .rel.ARM.exidx.text.$e8Spike0719FrameReadVWOh REL             00000000 0031d8 000008 08   I 165 131  4
+  [133] .ARM.exidx.text..L__unnamed_1 ARM_EXIDX       00000000 0011e4 000008 00  AL 49   0  4
+  [134] .rel.ARM.exidx.text..L__unnamed_1 REL             00000000 0031e0 000008 08   I 165 133  4
+  [135] .ARM.exidx.text.OUTLINED_FUNCTION_1 ARM_EXIDX       00000000 0011ec 000008 00  AL 50   0  4
+  [136] .rel.ARM.exidx.text.OUTLINED_FUNCTION_1 REL             00000000 0031e8 000008 08   I 165 135  4
+  [137] .ARM.exidx.text.OUTLINED_FUNCTION_4 ARM_EXIDX       00000000 0011f4 000008 00  AL 52   0  4
+  [138] .rel.ARM.exidx.text.OUTLINED_FUNCTION_4 REL             00000000 0031f0 000008 08   I 165 137  4
+  [139] .ARM.exidx.text.OUTLINED_FUNCTION_5 ARM_EXIDX       00000000 0011fc 000008 00  AL 54   0  4
+  [140] .rel.ARM.exidx.text.OUTLINED_FUNCTION_5 REL             00000000 0031f8 000008 08   I 165 139  4
+  [141] .ARM.exidx.text.OUTLINED_FUNCTION_6 ARM_EXIDX       00000000 001204 000008 00  AL 56   0  4
+  [142] .rel.ARM.exidx.text.OUTLINED_FUNCTION_6 REL             00000000 003200 000008 08   I 165 141  4
+  [143] .ARM.exidx.text.OUTLINED_FUNCTION_7 ARM_EXIDX       00000000 00120c 000008 00  AL 58   0  4
+  [144] .rel.ARM.exidx.text.OUTLINED_FUNCTION_7 REL             00000000 003208 000008 08   I 165 143  4
+  [145] .ARM.exidx.text.OUTLINED_FUNCTION_8 ARM_EXIDX       00000000 001214 000008 00  AL 60   0  4
+  [146] .rel.ARM.exidx.text.OUTLINED_FUNCTION_8 REL             00000000 003210 000008 08   I 165 145  4
+  [147] .ARM.exidx.text.OUTLINED_FUNCTION_9 ARM_EXIDX       00000000 00121c 000008 00  AL 62   0  4
+  [148] .rel.ARM.exidx.text.OUTLINED_FUNCTION_9 REL             00000000 003218 000008 08   I 165 147  4
+  [149] .ARM.exidx.text.OUTLINED_FUNCTION_10 ARM_EXIDX       00000000 001224 000008 00  AL 64   0  4
+  [150] .rel.ARM.exidx.text.OUTLINED_FUNCTION_10 REL             00000000 003220 000008 08   I 165 149  4
+  [151] .ARM.exidx.text.OUTLINED_FUNCTION_11 ARM_EXIDX       00000000 00122c 000008 00  AL 66   0  4
+  [152] .rel.ARM.exidx.text.OUTLINED_FUNCTION_11 REL             00000000 003228 000008 08   I 165 151  4
+  [153] .ARM.exidx.text.OUTLINED_FUNCTION_12 ARM_EXIDX       00000000 001234 000008 00  AL 67   0  4
+  [154] .rel.ARM.exidx.text.OUTLINED_FUNCTION_12 REL             00000000 003230 000008 08   I 165 153  4
+  [155] .ARM.exidx.text.OUTLINED_FUNCTION_16 ARM_EXIDX       00000000 00123c 000008 00  AL 69   0  4
+  [156] .rel.ARM.exidx.text.OUTLINED_FUNCTION_16 REL             00000000 003238 000008 08   I 165 155  4
+  [157] .ARM.exidx.text.OUTLINED_FUNCTION_17 ARM_EXIDX       00000000 001244 000008 00  AL 70   0  4
+  [158] .rel.ARM.exidx.text.OUTLINED_FUNCTION_17 REL             00000000 003240 000008 08   I 165 157  4
+  [159] .rodata.str1.1    PROGBITS        00000000 00124c 000008 01 AMS  0   0  1
+  [160] .swift_modhash    PROGBITS        00000000 001254 000010 00  AR  0   0  1
+  [161] .swift1_autolink_entries PROGBITS        00000000 001264 000000 00  RE  0   0  4
+  [162] .linker-options   LOOS+0xfff4c01  00000000 001264 000000 00   E  0   0  1
+  [163] .note.GNU-stack   PROGBITS        00000000 001264 000000 00      0   0  1
+  [164] .ARM.attributes   ARM_ATTRIBUTES  00000000 001264 000047 00      0   0  1
+  [165] .symtab           SYMTAB          00000000 0012ac 001000 10     166 222  4
+  [166] .strtab           STRTAB          00000000 0022ac 000954 00      0   0  1
+  [167] .shstrtab         STRTAB          00000000 003248 001278 00      0   0  1
+Key to Flags:
+  W (write), A (alloc), X (execute), M (merge), S (strings), I (info),
+  L (link order), O (extra OS processing required), G (group), T (TLS),
+  C (compressed), x (unknown), o (OS specific), E (exclude),
+  R (retain), D (mbind), y (purecode), p (processor specific)

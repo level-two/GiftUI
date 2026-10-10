@@ -1,0 +1,357 @@
+{
+  "source_sha256": "54cdd28686b3335fb41ad8a27544fd83d7939f23371a4528883a0e618877fe98",
+  "output_sha256": "fb342917ecb0fba162cd1250505b67e12a02ebfb3acf650eeda78b7a22753846",
+  "ast": {
+    "models": {
+      "CounterModel": [
+        [
+          "value",
+          "UInt32",
+          [
+            "atom",
+            "0"
+          ]
+        ],
+        [
+          "scale",
+          "UInt32",
+          [
+            "atom",
+            "7"
+          ]
+        ]
+      ],
+      "AnalyzerModel": [
+        [
+          "capture",
+          "Capture",
+          [
+            "call",
+            [
+              "atom",
+              "Capture"
+            ],
+            []
+          ]
+        ]
+      ]
+    },
+    "views": {
+      "CounterScreen": {
+        "fields": [
+          [
+            "model",
+            "CounterModel"
+          ]
+        ],
+        "expr": [
+          "builder",
+          [
+            "call",
+            [
+              "atom",
+              "HStack"
+            ],
+            [
+              [
+                "spacing",
+                [
+                  "atom",
+                  "0"
+                ]
+              ]
+            ]
+          ],
+          [
+            [
+              "call",
+              [
+                "atom",
+                "Text"
+              ],
+              [
+                [
+                  null,
+                  [
+                    "call",
+                    [
+                      "atom",
+                      "counterText"
+                    ],
+                    [
+                      [
+                        null,
+                        [
+                          "member",
+                          [
+                            "atom",
+                            "model"
+                          ],
+                          "value"
+                        ]
+                      ]
+                    ]
+                  ]
+                ]
+              ]
+            ],
+            [
+              "call",
+              [
+                "atom",
+                "CounterCanvas"
+              ],
+              [
+                [
+                  "model",
+                  [
+                    "atom",
+                    "model"
+                  ]
+                ]
+              ]
+            ],
+            [
+              "call",
+              [
+                "atom",
+                "CounterCanvas"
+              ],
+              [
+                [
+                  "model",
+                  [
+                    "atom",
+                    "model"
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      }
+    },
+    "canvases": {
+      "CounterCanvas": {
+        "fields": [
+          [
+            "model",
+            "CounterModel"
+          ]
+        ],
+        "fn": {
+          "name": "draw",
+          "params": [
+            [
+              "in",
+              "bounds",
+              "Rect"
+            ],
+            [
+              "context",
+              "context",
+              "inout GraphicsContext"
+            ]
+          ],
+          "error": "DrawingError",
+          "result": null,
+          "expr": [
+            "call",
+            [
+              "atom",
+              "drawBar"
+            ],
+            [
+              [
+                "value",
+                [
+                  "member",
+                  [
+                    "atom",
+                    "model"
+                  ],
+                  "value"
+                ]
+              ],
+              [
+                "scale",
+                [
+                  "member",
+                  [
+                    "atom",
+                    "model"
+                  ],
+                  "scale"
+                ]
+              ],
+              [
+                "context",
+                [
+                  "address",
+                  [
+                    "atom",
+                    "context"
+                  ]
+                ]
+              ]
+            ]
+          ]
+        }
+      },
+      "TraceCanvas": {
+        "fields": [
+          [
+            "model",
+            "AnalyzerModel"
+          ]
+        ],
+        "fn": {
+          "name": "draw",
+          "params": [
+            [
+              "in",
+              "bounds",
+              "Rect"
+            ],
+            [
+              "context",
+              "context",
+              "inout GraphicsContext"
+            ]
+          ],
+          "error": "DrawingError",
+          "result": null,
+          "expr": [
+            "call",
+            [
+              "atom",
+              "drawBar"
+            ],
+            [
+              [
+                "value",
+                [
+                  "call",
+                  [
+                    "atom",
+                    "traceLevel"
+                  ],
+                  [
+                    [
+                      "model",
+                      [
+                        "atom",
+                        "model"
+                      ]
+                    ],
+                    [
+                      "index",
+                      [
+                        "atom",
+                        "17"
+                      ]
+                    ]
+                  ]
+                ]
+              ],
+              [
+                "scale",
+                [
+                  "atom",
+                  "1"
+                ]
+              ],
+              [
+                "context",
+                [
+                  "address",
+                  [
+                    "atom",
+                    "context"
+                  ]
+                ]
+              ]
+            ]
+          ]
+        }
+      }
+    },
+    "helpers": {
+      "traceLevel": {
+        "name": "traceLevel",
+        "params": [
+          [
+            "model",
+            "model",
+            "AnalyzerModel"
+          ],
+          [
+            "index",
+            "index",
+            "UInt16"
+          ]
+        ],
+        "error": null,
+        "result": "UInt32",
+        "expr": [
+          "call",
+          [
+            "member",
+            [
+              "member",
+              [
+                "atom",
+                "model"
+              ],
+              "capture"
+            ],
+            "level"
+          ],
+          [
+            [
+              "at",
+              [
+                "atom",
+                "index"
+              ]
+            ]
+          ]
+        ]
+      }
+    }
+  },
+  "routes": [
+    {
+      "model": "CounterModel",
+      "property": 0,
+      "mode": "body"
+    },
+    {
+      "model": "CounterModel",
+      "property": 0,
+      "mode": "draw"
+    },
+    {
+      "model": "CounterModel",
+      "property": 1,
+      "mode": "draw"
+    },
+    {
+      "model": "AnalyzerModel",
+      "property": 0,
+      "mode": "read",
+      "indexed": true
+    },
+    {
+      "model": "AnalyzerModel",
+      "property": 0,
+      "mode": "draw",
+      "indexed": true
+    }
+  ],
+  "adaptations": [
+    "Canvas target draw receives explicit FrameRead",
+    "root View body becomes a throwing evaluate method on an owned root descriptor",
+    "actual child View/Canvas traversal uses a disposable visitor, not Semantic Core"
+  ]
+}

@@ -1,0 +1,4268 @@
+
+/Users/eugene/work/GiftUI/.build/nrf52840/spike-071/positive.o:     file format elf32-littlearm
+
+
+Disassembly of section .text:
+
+00000000 <spike071_driver-0x1af8>:
+       0:	4801      	ldr	r0, [pc, #4]	; (8 <spike071_driver-0x1af0>)
+       2:	4478      	add	r0, pc
+       4:	4770      	bx	lr
+       6:	bf00      	nop
+       8:	00000002 	.word	0x00000002
+			8: R_ARM_REL32	$e8Spike07111BoundedTextV20maximumUTF8ByteCounts6UInt16VvpZ
+       c:	2060      	movs	r0, #96	; 0x60
+       e:	4770      	bx	lr
+      10:	f8ba 0060 	ldrh.w	r0, [sl, #96]	; 0x60
+      14:	4770      	bx	lr
+      16:	e92d 41f0 	stmdb	sp!, {r4, r5, r6, r7, r8, lr}
+      1a:	b09a      	sub	sp, #104	; 0x68
+      1c:	4680      	mov	r8, r0
+      1e:	07d8      	lsls	r0, r3, #31
+      20:	d123      	bne.n	6a <spike071_driver-0x1a8e>
+      22:	b319      	cbz	r1, 6c <spike071_driver-0x1a8c>
+      24:	b132      	cbz	r2, 34 <spike071_driver-0x1ac4>
+      26:	1888      	adds	r0, r1, r2
+      28:	f810 0c01 	ldrb.w	r0, [r0, #-1]
+      2c:	fab0 f080 	clz	r0, r0
+      30:	0940      	lsrs	r0, r0, #5
+      32:	e000      	b.n	36 <spike071_driver-0x1ac2>
+      34:	2001      	movs	r0, #1
+      36:	2a00      	cmp	r2, #0
+      38:	4613      	mov	r3, r2
+      3a:	bf18      	it	ne
+      3c:	2301      	movne	r3, #1
+      3e:	4018      	ands	r0, r3
+      40:	1a10      	subs	r0, r2, r0
+      42:	f7ff fffe 	bl	6e <spike071_driver-0x1a8a>
+			42: R_ARM_THM_CALL	$eSlsE6prefixy11SubSequenceQzSiFSRys5UInt8VG_Tg5
+      46:	9300      	str	r3, [sp, #0]
+      48:	4617      	mov	r7, r2
+      4a:	460e      	mov	r6, r1
+      4c:	4605      	mov	r5, r0
+      4e:	ac01      	add	r4, sp, #4
+      50:	4620      	mov	r0, r4
+      52:	4629      	mov	r1, r5
+      54:	4632      	mov	r2, r6
+      56:	463b      	mov	r3, r7
+      58:	f7ff fffe 	bl	90 <spike071_driver-0x1a68>
+			58: R_ARM_THM_CALL	$e8Spike07111BoundedTextV4utf8ACSgx_tcSlRzs5UInt8V7ElementRtzlufCs5SliceVySRyAGGG_Tt0g5
+      5c:	4640      	mov	r0, r8
+      5e:	4621      	mov	r1, r4
+      60:	f002 fb7e 	bl	2760 <OUTLINED_FUNCTION_7>
+      64:	b01a      	add	sp, #104	; 0x68
+      66:	e8bd 81f0 	ldmia.w	sp!, {r4, r5, r6, r7, r8, pc}
+      6a:	defe      	udf	#254	; 0xfe
+      6c:	defe      	udf	#254	; 0xfe
+      6e:	2800      	cmp	r0, #0
+      70:	d40d      	bmi.n	8e <spike071_driver-0x1a6a>
+      72:	4613      	mov	r3, r2
+      74:	460a      	mov	r2, r1
+      76:	4601      	mov	r1, r0
+      78:	4283      	cmp	r3, r0
+      7a:	bfb8      	it	lt
+      7c:	4619      	movlt	r1, r3
+      7e:	2b00      	cmp	r3, #0
+      80:	bf48      	it	mi
+      82:	4601      	movmi	r1, r0
+      84:	2800      	cmp	r0, #0
+      86:	bf08      	it	eq
+      88:	4601      	moveq	r1, r0
+      8a:	2000      	movs	r0, #0
+      8c:	4770      	bx	lr
+      8e:	defe      	udf	#254	; 0xfe
+      90:	e92d 41f0 	stmdb	sp!, {r4, r5, r6, r7, r8, lr}
+      94:	b0cc      	sub	sp, #304	; 0x130
+      96:	4680      	mov	r8, r0
+      98:	4821      	ldr	r0, [pc, #132]	; (120 <spike071_driver-0x19d8>)
+      9a:	460c      	mov	r4, r1
+      9c:	2160      	movs	r1, #96	; 0x60
+      9e:	461d      	mov	r5, r3
+      a0:	4617      	mov	r7, r2
+      a2:	4478      	add	r0, pc
+      a4:	6800      	ldr	r0, [r0, #0]
+      a6:	6800      	ldr	r0, [r0, #0]
+      a8:	904b      	str	r0, [sp, #300]	; 0x12c
+      aa:	ae01      	add	r6, sp, #4
+      ac:	4630      	mov	r0, r6
+      ae:	f7ff fffe 	bl	0 <__aeabi_memclr4>
+			ae: R_ARM_THM_CALL	__aeabi_memclr4
+      b2:	1929      	adds	r1, r5, r4
+      b4:	1b38      	subs	r0, r7, r4
+      b6:	2500      	movs	r5, #0
+      b8:	42a8      	cmp	r0, r5
+      ba:	d005      	beq.n	c8 <spike071_driver-0x1a30>
+      bc:	2d60      	cmp	r5, #96	; 0x60
+      be:	d01a      	beq.n	f6 <spike071_driver-0x1a02>
+      c0:	5d4a      	ldrb	r2, [r1, r5]
+      c2:	5572      	strb	r2, [r6, r5]
+      c4:	3501      	adds	r5, #1
+      c6:	e7f7      	b.n	b8 <spike071_driver-0x1a40>
+      c8:	a801      	add	r0, sp, #4
+      ca:	4629      	mov	r1, r5
+      cc:	f7ff fffe 	bl	128 <spike071_driver-0x19d0>
+			cc: R_ARM_THM_CALL	$e8Spike07111BoundedTextV16isWellFormedUTF833_008D40B586E1D98DBDF8A78EF57BA60DLL_5countSbAA0bC7StorageAELLV_SitFZ
+      d0:	07c0      	lsls	r0, r0, #31
+      d2:	d010      	beq.n	f6 <spike071_driver-0x1a02>
+      d4:	ac19      	add	r4, sp, #100	; 0x64
+      d6:	a901      	add	r1, sp, #4
+      d8:	2260      	movs	r2, #96	; 0x60
+      da:	4620      	mov	r0, r4
+      dc:	f7ff fffe 	bl	0 <__aeabi_memcpy4>
+			dc: R_ARM_THM_CALL	__aeabi_memcpy4
+      e0:	4620      	mov	r0, r4
+      e2:	f8ad 50c4 	strh.w	r5, [sp, #196]	; 0xc4
+      e6:	f002 fabb 	bl	2660 <swift_retainCount+0x336>
+      ea:	a832      	add	r0, sp, #200	; 0xc8
+      ec:	4621      	mov	r1, r4
+      ee:	2263      	movs	r2, #99	; 0x63
+      f0:	f7ff fffe 	bl	0 <__aeabi_memcpy4>
+			f0: R_ARM_THM_CALL	__aeabi_memcpy4
+      f4:	e002      	b.n	fc <spike071_driver-0x19fc>
+      f6:	a832      	add	r0, sp, #200	; 0xc8
+      f8:	f002 faa8 	bl	264c <swift_retainCount+0x322>
+      fc:	a932      	add	r1, sp, #200	; 0xc8
+      fe:	4640      	mov	r0, r8
+     100:	2263      	movs	r2, #99	; 0x63
+     102:	f7ff fffe 	bl	0 <__aeabi_memcpy4>
+			102: R_ARM_THM_CALL	__aeabi_memcpy4
+     106:	984b      	ldr	r0, [sp, #300]	; 0x12c
+     108:	4906      	ldr	r1, [pc, #24]	; (124 <spike071_driver-0x19d4>)
+     10a:	4479      	add	r1, pc
+     10c:	6809      	ldr	r1, [r1, #0]
+     10e:	6809      	ldr	r1, [r1, #0]
+     110:	4281      	cmp	r1, r0
+     112:	bf04      	itt	eq
+     114:	b04c      	addeq	sp, #304	; 0x130
+     116:	e8bd 81f0 	ldmiaeq.w	sp!, {r4, r5, r6, r7, r8, pc}
+     11a:	f7ff fffe 	bl	0 <__stack_chk_fail>
+			11a: R_ARM_THM_CALL	__stack_chk_fail
+     11e:	bf00      	nop
+     120:	0000007a 	.word	0x0000007a
+			120: R_ARM_GOT_PREL	__stack_chk_guard
+     124:	00000016 	.word	0x00000016
+			124: R_ARM_GOT_PREL	__stack_chk_guard
+     128:	e92d 4130 	stmdb	sp!, {r4, r5, r8, lr}
+     12c:	b09c      	sub	sp, #112	; 0x70
+     12e:	460c      	mov	r4, r1
+     130:	4601      	mov	r1, r0
+     132:	480e      	ldr	r0, [pc, #56]	; (16c <spike071_driver-0x198c>)
+     134:	2260      	movs	r2, #96	; 0x60
+     136:	4478      	add	r0, pc
+     138:	6800      	ldr	r0, [r0, #0]
+     13a:	6800      	ldr	r0, [r0, #0]
+     13c:	901b      	str	r0, [sp, #108]	; 0x6c
+     13e:	ad02      	add	r5, sp, #8
+     140:	f002 fb0b 	bl	275a <OUTLINED_FUNCTION_6>
+     144:	f10d 006b 	add.w	r0, sp, #107	; 0x6b
+     148:	4629      	mov	r1, r5
+     14a:	4623      	mov	r3, r4
+     14c:	f7ff fffe 	bl	2ae <spike071_driver-0x184a>
+			14c: R_ARM_THM_CALL	$e8Spike07111BoundedTextV16isWellFormedUTF833_008D40B586E1D98DBDF8A78EF57BA60DLL_5countSbAA0bC7StorageAELLV_SitFZSbSWXEfU_
+     150:	f89d 006b 	ldrb.w	r0, [sp, #107]	; 0x6b
+     154:	991b      	ldr	r1, [sp, #108]	; 0x6c
+     156:	4a06      	ldr	r2, [pc, #24]	; (170 <spike071_driver-0x1988>)
+     158:	447a      	add	r2, pc
+     15a:	f002 fb0e 	bl	277a <OUTLINED_FUNCTION_11>
+     15e:	bf04      	itt	eq
+     160:	b01c      	addeq	sp, #112	; 0x70
+     162:	e8bd 8130 	ldmiaeq.w	sp!, {r4, r5, r8, pc}
+     166:	f7ff fffe 	bl	0 <__stack_chk_fail>
+			166: R_ARM_THM_CALL	__stack_chk_fail
+     16a:	bf00      	nop
+     16c:	00000032 	.word	0x00000032
+			16c: R_ARM_GOT_PREL	__stack_chk_guard
+     170:	00000014 	.word	0x00000014
+			170: R_ARM_GOT_PREL	__stack_chk_guard
+     174:	b5f0      	push	{r4, r5, r6, r7, lr}
+     176:	b09b      	sub	sp, #108	; 0x6c
+     178:	4604      	mov	r4, r0
+     17a:	4828      	ldr	r0, [pc, #160]	; (21c <spike071_driver-0x18dc>)
+     17c:	460e      	mov	r6, r1
+     17e:	2160      	movs	r1, #96	; 0x60
+     180:	4478      	add	r0, pc
+     182:	6800      	ldr	r0, [r0, #0]
+     184:	6800      	ldr	r0, [r0, #0]
+     186:	901a      	str	r0, [sp, #104]	; 0x68
+     188:	ad01      	add	r5, sp, #4
+     18a:	4628      	mov	r0, r5
+     18c:	f7ff fffe 	bl	0 <__aeabi_memclr4>
+			18c: R_ARM_THM_CALL	__aeabi_memclr4
+     190:	2e00      	cmp	r6, #0
+     192:	4631      	mov	r1, r6
+     194:	d500      	bpl.n	198 <spike071_driver-0x1960>
+     196:	4271      	negs	r1, r6
+     198:	2000      	movs	r0, #0
+     19a:	220a      	movs	r2, #10
+     19c:	fbb1 f3f2 	udiv	r3, r1, r2
+     1a0:	eb03 0783 	add.w	r7, r3, r3, lsl #2
+     1a4:	eba1 0747 	sub.w	r7, r1, r7, lsl #1
+     1a8:	f047 0730 	orr.w	r7, r7, #48	; 0x30
+     1ac:	542f      	strb	r7, [r5, r0]
+     1ae:	3001      	adds	r0, #1
+     1b0:	d62f      	bvs.n	212 <spike071_driver-0x18e6>
+     1b2:	2909      	cmp	r1, #9
+     1b4:	4619      	mov	r1, r3
+     1b6:	d8f1      	bhi.n	19c <spike071_driver-0x195c>
+     1b8:	f1b6 3fff 	cmp.w	r6, #4294967295	; 0xffffffff
+     1bc:	dc03      	bgt.n	1c6 <spike071_driver-0x1932>
+     1be:	212d      	movs	r1, #45	; 0x2d
+     1c0:	5429      	strb	r1, [r5, r0]
+     1c2:	3001      	adds	r0, #1
+     1c4:	d629      	bvs.n	21a <spike071_driver-0x18de>
+     1c6:	1e41      	subs	r1, r0, #1
+     1c8:	4281      	cmp	r1, r0
+     1ca:	d623      	bvs.n	214 <spike071_driver-0x18e4>
+     1cc:	2901      	cmp	r1, #1
+     1ce:	db08      	blt.n	1e2 <spike071_driver-0x1916>
+     1d0:	2200      	movs	r2, #0
+     1d2:	5cab      	ldrb	r3, [r5, r2]
+     1d4:	5c6e      	ldrb	r6, [r5, r1]
+     1d6:	54ae      	strb	r6, [r5, r2]
+     1d8:	546b      	strb	r3, [r5, r1]
+     1da:	3901      	subs	r1, #1
+     1dc:	3201      	adds	r2, #1
+     1de:	428a      	cmp	r2, r1
+     1e0:	dbf7      	blt.n	1d2 <spike071_driver-0x1926>
+     1e2:	2800      	cmp	r0, #0
+     1e4:	d417      	bmi.n	216 <spike071_driver-0x18e2>
+     1e6:	2100      	movs	r1, #0
+     1e8:	ebb1 4f10 	cmp.w	r1, r0, lsr #16
+     1ec:	d114      	bne.n	218 <spike071_driver-0x18e0>
+     1ee:	f8ad 0064 	strh.w	r0, [sp, #100]	; 0x64
+     1f2:	a901      	add	r1, sp, #4
+     1f4:	4620      	mov	r0, r4
+     1f6:	2262      	movs	r2, #98	; 0x62
+     1f8:	f7ff fffe 	bl	0 <__aeabi_memcpy4>
+			1f8: R_ARM_THM_CALL	__aeabi_memcpy4
+     1fc:	981a      	ldr	r0, [sp, #104]	; 0x68
+     1fe:	4908      	ldr	r1, [pc, #32]	; (220 <spike071_driver-0x18d8>)
+     200:	4479      	add	r1, pc
+     202:	6809      	ldr	r1, [r1, #0]
+     204:	6809      	ldr	r1, [r1, #0]
+     206:	4281      	cmp	r1, r0
+     208:	bf04      	itt	eq
+     20a:	b01b      	addeq	sp, #108	; 0x6c
+     20c:	bdf0      	popeq	{r4, r5, r6, r7, pc}
+     20e:	f7ff fffe 	bl	0 <__stack_chk_fail>
+			20e: R_ARM_THM_CALL	__stack_chk_fail
+     212:	defe      	udf	#254	; 0xfe
+     214:	defe      	udf	#254	; 0xfe
+     216:	defe      	udf	#254	; 0xfe
+     218:	defe      	udf	#254	; 0xfe
+     21a:	defe      	udf	#254	; 0xfe
+     21c:	00000098 	.word	0x00000098
+			21c: R_ARM_GOT_PREL	__stack_chk_guard
+     220:	0000001c 	.word	0x0000001c
+			220: R_ARM_GOT_PREL	__stack_chk_guard
+     224:	b5f0      	push	{r4, r5, r6, r7, lr}
+     226:	b0b1      	sub	sp, #196	; 0xc4
+     228:	460e      	mov	r6, r1
+     22a:	4601      	mov	r1, r0
+     22c:	4815      	ldr	r0, [pc, #84]	; (284 <spike071_driver-0x1874>)
+     22e:	4478      	add	r0, pc
+     230:	6800      	ldr	r0, [r0, #0]
+     232:	6800      	ldr	r0, [r0, #0]
+     234:	9030      	str	r0, [sp, #192]	; 0xc0
+     236:	f8b1 7060 	ldrh.w	r7, [r1, #96]	; 0x60
+     23a:	f8b6 0060 	ldrh.w	r0, [r6, #96]	; 0x60
+     23e:	4287      	cmp	r7, r0
+     240:	d114      	bne.n	26c <spike071_driver-0x188c>
+     242:	ac18      	add	r4, sp, #96	; 0x60
+     244:	2260      	movs	r2, #96	; 0x60
+     246:	f002 fa8e 	bl	2766 <OUTLINED_FUNCTION_8>
+     24a:	466d      	mov	r5, sp
+     24c:	4631      	mov	r1, r6
+     24e:	2260      	movs	r2, #96	; 0x60
+     250:	f002 fa83 	bl	275a <OUTLINED_FUNCTION_6>
+     254:	2000      	movs	r0, #0
+     256:	1a39      	subs	r1, r7, r0
+     258:	d004      	beq.n	264 <spike071_driver-0x1894>
+     25a:	5c2a      	ldrb	r2, [r5, r0]
+     25c:	5c23      	ldrb	r3, [r4, r0]
+     25e:	3001      	adds	r0, #1
+     260:	4293      	cmp	r3, r2
+     262:	d0f8      	beq.n	256 <spike071_driver-0x18a2>
+     264:	fab1 f081 	clz	r0, r1
+     268:	0940      	lsrs	r0, r0, #5
+     26a:	e000      	b.n	26e <spike071_driver-0x188a>
+     26c:	2000      	movs	r0, #0
+     26e:	9930      	ldr	r1, [sp, #192]	; 0xc0
+     270:	4a05      	ldr	r2, [pc, #20]	; (288 <spike071_driver-0x1870>)
+     272:	447a      	add	r2, pc
+     274:	f002 fa81 	bl	277a <OUTLINED_FUNCTION_11>
+     278:	bf04      	itt	eq
+     27a:	b031      	addeq	sp, #196	; 0xc4
+     27c:	bdf0      	popeq	{r4, r5, r6, r7, pc}
+     27e:	f7ff fffe 	bl	0 <__stack_chk_fail>
+			27e: R_ARM_THM_CALL	__stack_chk_fail
+     282:	bf00      	nop
+     284:	00000052 	.word	0x00000052
+			284: R_ARM_GOT_PREL	__stack_chk_guard
+     288:	00000012 	.word	0x00000012
+			288: R_ARM_GOT_PREL	__stack_chk_guard
+     28c:	b5b0      	push	{r4, r5, r7, lr}
+     28e:	9a05      	ldr	r2, [sp, #20]
+     290:	f8b2 2060 	ldrh.w	r2, [r2, #96]	; 0x60
+     294:	b142      	cbz	r2, 2a8 <spike071_driver-0x1850>
+     296:	f811 4b01 	ldrb.w	r4, [r1], #1
+     29a:	f813 5b01 	ldrb.w	r5, [r3], #1
+     29e:	3a01      	subs	r2, #1
+     2a0:	42a5      	cmp	r5, r4
+     2a2:	d0f7      	beq.n	294 <spike071_driver-0x1864>
+     2a4:	2100      	movs	r1, #0
+     2a6:	e000      	b.n	2aa <spike071_driver-0x184e>
+     2a8:	2101      	movs	r1, #1
+     2aa:	7001      	strb	r1, [r0, #0]
+     2ac:	bdb0      	pop	{r4, r5, r7, pc}
+     2ae:	b5f0      	push	{r4, r5, r6, r7, lr}
+     2b0:	2b01      	cmp	r3, #1
+     2b2:	db56      	blt.n	362 <spike071_driver-0x1796>
+     2b4:	2200      	movs	r2, #0
+     2b6:	568c      	ldrsb	r4, [r1, r2]
+     2b8:	1c55      	adds	r5, r2, #1
+     2ba:	2c00      	cmp	r4, #0
+     2bc:	d401      	bmi.n	2c2 <spike071_driver-0x1836>
+     2be:	462a      	mov	r2, r5
+     2c0:	e04d      	b.n	35e <spike071_driver-0x179a>
+     2c2:	b2e4      	uxtb	r4, r4
+     2c4:	f1a4 06c2 	sub.w	r6, r4, #194	; 0xc2
+     2c8:	2e1d      	cmp	r6, #29
+     2ca:	d807      	bhi.n	2dc <spike071_driver-0x181c>
+     2cc:	429d      	cmp	r5, r3
+     2ce:	da4a      	bge.n	366 <spike071_driver-0x1792>
+     2d0:	574c      	ldrsb	r4, [r1, r5]
+     2d2:	f114 0f41 	cmn.w	r4, #65	; 0x41
+     2d6:	dc46      	bgt.n	366 <spike071_driver-0x1792>
+     2d8:	3202      	adds	r2, #2
+     2da:	e040      	b.n	35e <spike071_driver-0x179a>
+     2dc:	188d      	adds	r5, r1, r2
+     2de:	f004 06f0 	and.w	r6, r4, #240	; 0xf0
+     2e2:	2ee0      	cmp	r6, #224	; 0xe0
+     2e4:	d114      	bne.n	310 <spike071_driver-0x17e8>
+     2e6:	1c96      	adds	r6, r2, #2
+     2e8:	d640      	bvs.n	36c <spike071_driver-0x178c>
+     2ea:	429e      	cmp	r6, r3
+     2ec:	da3b      	bge.n	366 <spike071_driver-0x1792>
+     2ee:	f995 5001 	ldrsb.w	r5, [r5, #1]
+     2f2:	f115 0f41 	cmn.w	r5, #65	; 0x41
+     2f6:	dc36      	bgt.n	366 <spike071_driver-0x1792>
+     2f8:	578e      	ldrsb	r6, [r1, r6]
+     2fa:	f116 0f41 	cmn.w	r6, #65	; 0x41
+     2fe:	dc32      	bgt.n	366 <spike071_driver-0x1792>
+     300:	b2ed      	uxtb	r5, r5
+     302:	2ced      	cmp	r4, #237	; 0xed
+     304:	d022      	beq.n	34c <spike071_driver-0x17ac>
+     306:	2ce0      	cmp	r4, #224	; 0xe0
+     308:	d122      	bne.n	350 <spike071_driver-0x17a8>
+     30a:	2d9f      	cmp	r5, #159	; 0x9f
+     30c:	d92b      	bls.n	366 <spike071_driver-0x1792>
+     30e:	e01f      	b.n	350 <spike071_driver-0x17a8>
+     310:	f1a4 06f0 	sub.w	r6, r4, #240	; 0xf0
+     314:	2e04      	cmp	r6, #4
+     316:	d826      	bhi.n	366 <spike071_driver-0x1792>
+     318:	1cd6      	adds	r6, r2, #3
+     31a:	d628      	bvs.n	36e <spike071_driver-0x178a>
+     31c:	429e      	cmp	r6, r3
+     31e:	da22      	bge.n	366 <spike071_driver-0x1792>
+     320:	f995 7001 	ldrsb.w	r7, [r5, #1]
+     324:	f117 0f41 	cmn.w	r7, #65	; 0x41
+     328:	dc1d      	bgt.n	366 <spike071_driver-0x1792>
+     32a:	f995 5002 	ldrsb.w	r5, [r5, #2]
+     32e:	f115 0f41 	cmn.w	r5, #65	; 0x41
+     332:	dc18      	bgt.n	366 <spike071_driver-0x1792>
+     334:	578d      	ldrsb	r5, [r1, r6]
+     336:	f115 0f41 	cmn.w	r5, #65	; 0x41
+     33a:	dc14      	bgt.n	366 <spike071_driver-0x1792>
+     33c:	b2fd      	uxtb	r5, r7
+     33e:	2cf4      	cmp	r4, #244	; 0xf4
+     340:	d009      	beq.n	356 <spike071_driver-0x17a2>
+     342:	2cf0      	cmp	r4, #240	; 0xf0
+     344:	d109      	bne.n	35a <spike071_driver-0x179e>
+     346:	2d8f      	cmp	r5, #143	; 0x8f
+     348:	d90d      	bls.n	366 <spike071_driver-0x1792>
+     34a:	e006      	b.n	35a <spike071_driver-0x179e>
+     34c:	2d9f      	cmp	r5, #159	; 0x9f
+     34e:	d80a      	bhi.n	366 <spike071_driver-0x1792>
+     350:	3203      	adds	r2, #3
+     352:	d60d      	bvs.n	370 <spike071_driver-0x1788>
+     354:	e003      	b.n	35e <spike071_driver-0x179a>
+     356:	2d8f      	cmp	r5, #143	; 0x8f
+     358:	d805      	bhi.n	366 <spike071_driver-0x1792>
+     35a:	3204      	adds	r2, #4
+     35c:	d609      	bvs.n	372 <spike071_driver-0x1786>
+     35e:	429a      	cmp	r2, r3
+     360:	dba9      	blt.n	2b6 <spike071_driver-0x1842>
+     362:	2101      	movs	r1, #1
+     364:	e000      	b.n	368 <spike071_driver-0x1790>
+     366:	2100      	movs	r1, #0
+     368:	7001      	strb	r1, [r0, #0]
+     36a:	bdf0      	pop	{r4, r5, r6, r7, pc}
+     36c:	defe      	udf	#254	; 0xfe
+     36e:	defe      	udf	#254	; 0xfe
+     370:	defe      	udf	#254	; 0xfe
+     372:	defe      	udf	#254	; 0xfe
+     374:	b5b0      	push	{r4, r5, r7, lr}
+     376:	b0cc      	sub	sp, #304	; 0x130
+     378:	ad1a      	add	r5, sp, #104	; 0x68
+     37a:	4604      	mov	r4, r0
+     37c:	4628      	mov	r0, r5
+     37e:	f7ff fffe 	bl	16 <spike071_driver-0x1ae2>
+			37e: R_ARM_THM_CALL	$e8Spike07111BoundedTextVyACSgs12StaticStringVcfC
+     382:	f002 f9d8 	bl	2736 <OUTLINED_FUNCTION_4>
+     386:	d103      	bne.n	390 <spike071_driver-0x1768>
+     388:	a833      	add	r0, sp, #204	; 0xcc
+     38a:	f002 f95f 	bl	264c <swift_retainCount+0x322>
+     38e:	e00b      	b.n	3a8 <spike071_driver-0x1750>
+     390:	ad01      	add	r5, sp, #4
+     392:	a91a      	add	r1, sp, #104	; 0x68
+     394:	2262      	movs	r2, #98	; 0x62
+     396:	f002 f9e0 	bl	275a <OUTLINED_FUNCTION_6>
+     39a:	4628      	mov	r0, r5
+     39c:	f002 f960 	bl	2660 <swift_retainCount+0x336>
+     3a0:	a833      	add	r0, sp, #204	; 0xcc
+     3a2:	4629      	mov	r1, r5
+     3a4:	f002 f9dc 	bl	2760 <OUTLINED_FUNCTION_7>
+     3a8:	a933      	add	r1, sp, #204	; 0xcc
+     3aa:	4620      	mov	r0, r4
+     3ac:	f002 f9d8 	bl	2760 <OUTLINED_FUNCTION_7>
+     3b0:	b04c      	add	sp, #304	; 0x130
+     3b2:	bdb0      	pop	{r4, r5, r7, pc}
+     3b4:	f890 1062 	ldrb.w	r1, [r0, #98]	; 0x62
+     3b8:	b111      	cbz	r1, 3c0 <spike071_driver-0x1738>
+     3ba:	6800      	ldr	r0, [r0, #0]
+     3bc:	3001      	adds	r0, #1
+     3be:	4770      	bx	lr
+     3c0:	2000      	movs	r0, #0
+     3c2:	4770      	bx	lr
+     3c4:	b5b0      	push	{r4, r5, r7, lr}
+     3c6:	b09a      	sub	sp, #104	; 0x68
+     3c8:	ad01      	add	r5, sp, #4
+     3ca:	4604      	mov	r4, r0
+     3cc:	2262      	movs	r2, #98	; 0x62
+     3ce:	f002 f9c4 	bl	275a <OUTLINED_FUNCTION_6>
+     3d2:	4628      	mov	r0, r5
+     3d4:	f002 f944 	bl	2660 <swift_retainCount+0x336>
+     3d8:	4620      	mov	r0, r4
+     3da:	4629      	mov	r1, r5
+     3dc:	f002 f9c0 	bl	2760 <OUTLINED_FUNCTION_7>
+     3e0:	b01a      	add	sp, #104	; 0x68
+     3e2:	bdb0      	pop	{r4, r5, r7, pc}
+     3e4:	4770      	bx	lr
+     3e6:	0a00      	lsrs	r0, r0, #8
+     3e8:	4770      	bx	lr
+     3ea:	0c00      	lsrs	r0, r0, #16
+     3ec:	4770      	bx	lr
+     3ee:	b2d2      	uxtb	r2, r2
+     3f0:	b2c9      	uxtb	r1, r1
+     3f2:	b2c0      	uxtb	r0, r0
+     3f4:	0412      	lsls	r2, r2, #16
+     3f6:	ea42 2101 	orr.w	r1, r2, r1, lsl #8
+     3fa:	4408      	add	r0, r1
+     3fc:	4770      	bx	lr
+     3fe:	bf00      	nop
+     400:	4801      	ldr	r0, [pc, #4]	; (408 <spike071_driver-0x16f0>)
+     402:	4478      	add	r0, pc
+     404:	4770      	bx	lr
+     406:	bf00      	nop
+     408:	00000002 	.word	0x00000002
+			408: R_ARM_REL32	$e8Spike0715ColorV5blackACvpZ
+     40c:	2000      	movs	r0, #0
+     40e:	4770      	bx	lr
+     410:	4801      	ldr	r0, [pc, #4]	; (418 <spike071_driver-0x16e0>)
+     412:	4478      	add	r0, pc
+     414:	4770      	bx	lr
+     416:	bf00      	nop
+     418:	00000002 	.word	0x00000002
+			418: R_ARM_REL32	$e8Spike0715ColorV5whiteACvpZ
+     41c:	f06f 407f 	mvn.w	r0, #4278190080	; 0xff000000
+     420:	4770      	bx	lr
+     422:	bf00      	nop
+     424:	4801      	ldr	r0, [pc, #4]	; (42c <spike071_driver-0x16cc>)
+     426:	4478      	add	r0, pc
+     428:	4770      	bx	lr
+     42a:	bf00      	nop
+     42c:	00000002 	.word	0x00000002
+			42c: R_ARM_REL32	$e8Spike0715ColorV3redACvpZ
+     430:	20ff      	movs	r0, #255	; 0xff
+     432:	4770      	bx	lr
+     434:	4801      	ldr	r0, [pc, #4]	; (43c <spike071_driver-0x16bc>)
+     436:	4478      	add	r0, pc
+     438:	4770      	bx	lr
+     43a:	bf00      	nop
+     43c:	00000002 	.word	0x00000002
+			43c: R_ARM_REL32	$e8Spike0715ColorV5greenACvpZ
+     440:	f44f 407f 	mov.w	r0, #65280	; 0xff00
+     444:	4770      	bx	lr
+     446:	bf00      	nop
+     448:	4801      	ldr	r0, [pc, #4]	; (450 <spike071_driver-0x16a8>)
+     44a:	4478      	add	r0, pc
+     44c:	4770      	bx	lr
+     44e:	bf00      	nop
+     450:	00000002 	.word	0x00000002
+			450: R_ARM_REL32	$e8Spike0715ColorV4blueACvpZ
+     454:	f44f 007f 	mov.w	r0, #16711680	; 0xff0000
+     458:	4770      	bx	lr
+     45a:	bf00      	nop
+     45c:	4801      	ldr	r0, [pc, #4]	; (464 <spike071_driver-0x1694>)
+     45e:	4478      	add	r0, pc
+     460:	4770      	bx	lr
+     462:	bf00      	nop
+     464:	00000002 	.word	0x00000002
+			464: R_ARM_REL32	$e8Spike0715ColorV4grayACvpZ
+     468:	4800      	ldr	r0, [pc, #0]	; (46c <spike071_driver-0x168c>)
+     46a:	4770      	bx	lr
+     46c:	00808080 	.word	0x00808080
+     470:	e92d 4430 	stmdb	sp!, {r4, r5, sl, lr}
+     474:	4d05      	ldr	r5, [pc, #20]	; (48c <spike071_driver-0x166c>)
+     476:	4682      	mov	sl, r0
+     478:	4608      	mov	r0, r1
+     47a:	460c      	mov	r4, r1
+     47c:	447d      	add	r5, pc
+     47e:	47a8      	blx	r5
+     480:	0a20      	lsrs	r0, r4, #8
+     482:	47a8      	blx	r5
+     484:	0c20      	lsrs	r0, r4, #16
+     486:	47a8      	blx	r5
+     488:	e8bd 8430 	ldmia.w	sp!, {r4, r5, sl, pc}
+     48c:	00001ebd 	.word	0x00001ebd
+     490:	e92d 4430 	stmdb	sp!, {r4, r5, sl, lr}
+     494:	b092      	sub	sp, #72	; 0x48
+     496:	46ea      	mov	sl, sp
+     498:	f002 f943 	bl	2722 <OUTLINED_FUNCTION_2>
+     49c:	4d06      	ldr	r5, [pc, #24]	; (4b8 <spike071_driver-0x1640>)
+     49e:	4620      	mov	r0, r4
+     4a0:	447d      	add	r5, pc
+     4a2:	47a8      	blx	r5
+     4a4:	0a20      	lsrs	r0, r4, #8
+     4a6:	47a8      	blx	r5
+     4a8:	0c20      	lsrs	r0, r4, #16
+     4aa:	47a8      	blx	r5
+     4ac:	f7ff fffe 	bl	1dfc <spike071_driver+0x304>
+			4ac: R_ARM_THM_CALL	$es6HasherV9_finalizeSiyF
+     4b0:	b012      	add	sp, #72	; 0x48
+     4b2:	e8bd 8430 	ldmia.w	sp!, {r4, r5, sl, pc}
+     4b6:	bf00      	nop
+     4b8:	00001e99 	.word	0x00001e99
+     4bc:	4770      	bx	lr
+     4be:	4770      	bx	lr
+     4c0:	4770      	bx	lr
+     4c2:	4770      	bx	lr
+     4c4:	4048      	eors	r0, r1
+     4c6:	f080 0001 	eor.w	r0, r0, #1
+     4ca:	4770      	bx	lr
+     4cc:	7809      	ldrb	r1, [r1, #0]
+     4ce:	7800      	ldrb	r0, [r0, #0]
+     4d0:	f7ff bffe 	b.w	4c4 <spike071_driver-0x1634>
+			4d0: R_ARM_THM_JUMP24	$e8Spike07123DisabledSemanticPayloadV23__derived_struct_equalsySbAC_ACtFZ
+     4d4:	4770      	bx	lr
+     4d6:	4770      	bx	lr
+     4d8:	4770      	bx	lr
+     4da:	4608      	mov	r0, r1
+     4dc:	4770      	bx	lr
+     4de:	b288      	uxth	r0, r1
+     4e0:	0a00      	lsrs	r0, r0, #8
+     4e2:	4770      	bx	lr
+     4e4:	b2c9      	uxtb	r1, r1
+     4e6:	ea41 2102 	orr.w	r1, r1, r2, lsl #8
+     4ea:	4770      	bx	lr
+     4ec:	4290      	cmp	r0, r2
+     4ee:	bf1c      	itt	ne
+     4f0:	2000      	movne	r0, #0
+     4f2:	4770      	bxne	lr
+     4f4:	b288      	uxth	r0, r1
+     4f6:	b299      	uxth	r1, r3
+     4f8:	4041      	eors	r1, r0
+     4fa:	0608      	lsls	r0, r1, #24
+     4fc:	f04f 0000 	mov.w	r0, #0
+     500:	d000      	beq.n	504 <spike071_driver-0x15f4>
+     502:	4770      	bx	lr
+     504:	f5b1 7f80 	cmp.w	r1, #256	; 0x100
+     508:	bf38      	it	cc
+     50a:	2001      	movcc	r0, #1
+     50c:	4770      	bx	lr
+     50e:	b2c0      	uxtb	r0, r0
+     510:	2809      	cmp	r0, #9
+     512:	bf28      	it	cs
+     514:	2009      	movcs	r0, #9
+     516:	4770      	bx	lr
+     518:	4770      	bx	lr
+     51a:	b510      	push	{r4, lr}
+     51c:	4604      	mov	r4, r0
+     51e:	7808      	ldrb	r0, [r1, #0]
+     520:	f7ff fffe 	bl	50e <spike071_driver-0x15ea>
+			520: R_ARM_THM_CALL	$e8Spike07120_GiftUIDrawingStatusO8rawValueACSgs5UInt8V_tcfC
+     524:	b2c0      	uxtb	r0, r0
+     526:	7020      	strb	r0, [r4, #0]
+     528:	bd10      	pop	{r4, pc}
+     52a:	f8da 0000 	ldr.w	r0, [sl]
+     52e:	4770      	bx	lr
+     530:	f8da 0004 	ldr.w	r0, [sl, #4]
+     534:	4770      	bx	lr
+     536:	f8da 0008 	ldr.w	r0, [sl, #8]
+     53a:	4770      	bx	lr
+     53c:	f8da 000c 	ldr.w	r0, [sl, #12]
+     540:	4770      	bx	lr
+     542:	f8da 0010 	ldr.w	r0, [sl, #16]
+     546:	4770      	bx	lr
+     548:	b510      	push	{r4, lr}
+     54a:	9c03      	ldr	r4, [sp, #12]
+     54c:	6104      	str	r4, [r0, #16]
+     54e:	9c02      	ldr	r4, [sp, #8]
+     550:	c01e      	stmia	r0!, {r1, r2, r3, r4}
+     552:	bd10      	pop	{r4, pc}
+     554:	b5f0      	push	{r4, r5, r6, r7, lr}
+     556:	e9c0 1200 	strd	r1, r2, [r0]
+     55a:	f100 0108 	add.w	r1, r0, #8
+     55e:	e893 00f4 	ldmia.w	r3, {r2, r4, r5, r6, r7}
+     562:	c1f4      	stmia	r1!, {r2, r4, r5, r6, r7}
+     564:	2101      	movs	r1, #1
+     566:	7701      	strb	r1, [r0, #28]
+     568:	bdf0      	pop	{r4, r5, r6, r7, pc}
+     56a:	bf00      	nop
+     56c:	b510      	push	{r4, lr}
+     56e:	4644      	mov	r4, r8
+     570:	f7ff fffe 	bl	50e <spike071_driver-0x15ea>
+			570: R_ARM_THM_CALL	$e8Spike07120_GiftUIDrawingStatusO8rawValueACSgs5UInt8V_tcfC
+     574:	b2c1      	uxtb	r1, r0
+     576:	2000      	movs	r0, #0
+     578:	e8df f001 	tbb	[pc, r1]
+     57c:	0b091213 	.word	0x0b091213
+     580:	0d110f07 	.word	0x0d110f07
+     584:	0505      	.short	0x0505
+     586:	2007      	movs	r0, #7
+     588:	e00a      	b.n	5a0 <spike071_driver-0x1558>
+     58a:	2003      	movs	r0, #3
+     58c:	e008      	b.n	5a0 <spike071_driver-0x1558>
+     58e:	2001      	movs	r0, #1
+     590:	e006      	b.n	5a0 <spike071_driver-0x1558>
+     592:	2002      	movs	r0, #2
+     594:	e004      	b.n	5a0 <spike071_driver-0x1558>
+     596:	2006      	movs	r0, #6
+     598:	e002      	b.n	5a0 <spike071_driver-0x1558>
+     59a:	2004      	movs	r0, #4
+     59c:	e000      	b.n	5a0 <spike071_driver-0x1558>
+     59e:	2005      	movs	r0, #5
+     5a0:	2401      	movs	r4, #1
+     5a2:	46a0      	mov	r8, r4
+     5a4:	bd10      	pop	{r4, pc}
+     5a6:	b580      	push	{r7, lr}
+     5a8:	f021 417f 	bic.w	r1, r1, #4278190080	; 0xff000000
+     5ac:	2300      	movs	r3, #0
+     5ae:	f7ff fffe 	bl	5c0 <spike071_driver-0x1538>
+			5ae: R_ARM_THM_CALL	$e8Spike07115GraphicsContextV6stroke_4with5styleyAA4PathV_AA7ShadingVAA11StrokeStyleVtAA12DrawingErrorOYKF
+     5b2:	f1b8 0f00 	cmp.w	r8, #0
+     5b6:	bf1c      	itt	ne
+     5b8:	f04f 0801 	movne.w	r8, #1
+     5bc:	bd80      	popne	{r7, pc}
+     5be:	bd80      	pop	{r7, pc}
+     5c0:	b5f0      	push	{r4, r5, r6, r7, lr}
+     5c2:	b085      	sub	sp, #20
+     5c4:	f89a 501c 	ldrb.w	r5, [sl, #28]
+     5c8:	2d01      	cmp	r5, #1
+     5ca:	d123      	bne.n	614 <spike071_driver-0x14e4>
+     5cc:	f890 5020 	ldrb.w	r5, [r0, #32]
+     5d0:	07ed      	lsls	r5, r5, #31
+     5d2:	d01f      	beq.n	614 <spike071_driver-0x14e4>
+     5d4:	2a01      	cmp	r2, #1
+     5d6:	db22      	blt.n	61e <spike071_driver-0x14da>
+     5d8:	0c0f      	lsrs	r7, r1, #16
+     5da:	0a0d      	lsrs	r5, r1, #8
+     5dc:	b29e      	uxth	r6, r3
+     5de:	f8d0 c008 	ldr.w	ip, [r0, #8]
+     5e2:	4644      	mov	r4, r8
+     5e4:	f8da 8018 	ldr.w	r8, [sl, #24]
+     5e8:	b2db      	uxtb	r3, r3
+     5ea:	ea4f 2e16 	mov.w	lr, r6, lsr #8
+     5ee:	e9da 0600 	ldrd	r0, r6, [sl]
+     5f2:	b2ff      	uxtb	r7, r7
+     5f4:	b2ed      	uxtb	r5, r5
+     5f6:	e9cd 5700 	strd	r5, r7, [sp]
+     5fa:	ad02      	add	r5, sp, #8
+     5fc:	e8a5 400c 	stmia.w	r5!, {r2, r3, lr}
+     600:	b2cb      	uxtb	r3, r1
+     602:	4631      	mov	r1, r6
+     604:	4662      	mov	r2, ip
+     606:	47c0      	blx	r8
+     608:	f002 f8b4 	bl	2774 <OUTLINED_FUNCTION_10>
+     60c:	f1b8 0f00 	cmp.w	r8, #0
+     610:	d101      	bne.n	616 <spike071_driver-0x14e2>
+     612:	e002      	b.n	61a <spike071_driver-0x14de>
+     614:	2004      	movs	r0, #4
+     616:	f04f 0801 	mov.w	r8, #1
+     61a:	b005      	add	sp, #20
+     61c:	bdf0      	pop	{r4, r5, r6, r7, pc}
+     61e:	2000      	movs	r0, #0
+     620:	e7f9      	b.n	616 <spike071_driver-0x14e2>
+     622:	2000      	movs	r0, #0
+     624:	f88a 001c 	strb.w	r0, [sl, #28]
+     628:	4770      	bx	lr
+     62a:	b57c      	push	{r2, r3, r4, r5, r6, lr}
+     62c:	4603      	mov	r3, r0
+     62e:	f89a 0020 	ldrb.w	r0, [sl, #32]
+     632:	2801      	cmp	r0, #1
+     634:	d10f      	bne.n	656 <spike071_driver-0x14a2>
+     636:	e9da 0500 	ldrd	r0, r5, [sl]
+     63a:	f8da 2008 	ldr.w	r2, [sl, #8]
+     63e:	f8da 6014 	ldr.w	r6, [sl, #20]
+     642:	9100      	str	r1, [sp, #0]
+     644:	4644      	mov	r4, r8
+     646:	4629      	mov	r1, r5
+     648:	47b0      	blx	r6
+     64a:	f002 f893 	bl	2774 <OUTLINED_FUNCTION_10>
+     64e:	f1b8 0f00 	cmp.w	r8, #0
+     652:	d101      	bne.n	658 <spike071_driver-0x14a0>
+     654:	bd7c      	pop	{r2, r3, r4, r5, r6, pc}
+     656:	2004      	movs	r0, #4
+     658:	f04f 0801 	mov.w	r8, #1
+     65c:	bd7c      	pop	{r2, r3, r4, r5, r6, pc}
+     65e:	b57c      	push	{r2, r3, r4, r5, r6, lr}
+     660:	4603      	mov	r3, r0
+     662:	f89a 0020 	ldrb.w	r0, [sl, #32]
+     666:	2801      	cmp	r0, #1
+     668:	d10f      	bne.n	68a <spike071_driver-0x146e>
+     66a:	e9da 0500 	ldrd	r0, r5, [sl]
+     66e:	f8da 2008 	ldr.w	r2, [sl, #8]
+     672:	f8da 6018 	ldr.w	r6, [sl, #24]
+     676:	9100      	str	r1, [sp, #0]
+     678:	4644      	mov	r4, r8
+     67a:	4629      	mov	r1, r5
+     67c:	47b0      	blx	r6
+     67e:	f002 f879 	bl	2774 <OUTLINED_FUNCTION_10>
+     682:	f1b8 0f00 	cmp.w	r8, #0
+     686:	d101      	bne.n	68c <spike071_driver-0x146c>
+     688:	bd7c      	pop	{r2, r3, r4, r5, r6, pc}
+     68a:	2004      	movs	r0, #4
+     68c:	f04f 0801 	mov.w	r8, #1
+     690:	bd7c      	pop	{r2, r3, r4, r5, r6, pc}
+     692:	b2c9      	uxtb	r1, r1
+     694:	b2c0      	uxtb	r0, r0
+     696:	1a40      	subs	r0, r0, r1
+     698:	f002 b83a 	b.w	2710 <OUTLINED_FUNCTION_0>
+     69c:	e92d 4400 	stmdb	sp!, {sl, lr}
+     6a0:	4682      	mov	sl, r0
+     6a2:	b2c8      	uxtb	r0, r1
+     6a4:	f001 ff4d 	bl	2542 <swift_retainCount+0x218>
+     6a8:	e8bd 8400 	ldmia.w	sp!, {sl, pc}
+     6ac:	e92d 4490 	stmdb	sp!, {r4, r7, sl, lr}
+     6b0:	b092      	sub	sp, #72	; 0x48
+     6b2:	46ea      	mov	sl, sp
+     6b4:	f002 f835 	bl	2722 <OUTLINED_FUNCTION_2>
+     6b8:	b2e0      	uxtb	r0, r4
+     6ba:	f001 ff42 	bl	2542 <swift_retainCount+0x218>
+     6be:	f7ff fffe 	bl	1dfc <spike071_driver+0x304>
+			6be: R_ARM_THM_CALL	$es6HasherV9_finalizeSiyF
+     6c2:	b012      	add	sp, #72	; 0x48
+     6c4:	e8bd 8490 	ldmia.w	sp!, {r4, r7, sl, pc}
+     6c8:	4770      	bx	lr
+     6ca:	4608      	mov	r0, r1
+     6cc:	4770      	bx	lr
+     6ce:	4770      	bx	lr
+     6d0:	4770      	bx	lr
+     6d2:	4608      	mov	r0, r1
+     6d4:	4770      	bx	lr
+     6d6:	ea50 0201 	orrs.w	r2, r0, r1
+     6da:	bf44      	itt	mi
+     6dc:	2000      	movmi	r0, #0
+     6de:	2100      	movmi	r1, #0
+     6e0:	0fd2      	lsrs	r2, r2, #31
+     6e2:	4770      	bx	lr
+     6e4:	4059      	eors	r1, r3
+     6e6:	4050      	eors	r0, r2
+     6e8:	4308      	orrs	r0, r1
+     6ea:	f002 b811 	b.w	2710 <OUTLINED_FUNCTION_0>
+     6ee:	e92d 4490 	stmdb	sp!, {r4, r7, sl, lr}
+     6f2:	4682      	mov	sl, r0
+     6f4:	4608      	mov	r0, r1
+     6f6:	4614      	mov	r4, r2
+     6f8:	f001 ff23 	bl	2542 <swift_retainCount+0x218>
+     6fc:	f002 f850 	bl	27a0 <OUTLINED_FUNCTION_15>
+     700:	e8bd 8490 	ldmia.w	sp!, {r4, r7, sl, pc}
+     704:	e7ff      	b.n	706 <spike071_driver-0x13f2>
+     706:	e92d 4430 	stmdb	sp!, {r4, r5, sl, lr}
+     70a:	b092      	sub	sp, #72	; 0x48
+     70c:	46ea      	mov	sl, sp
+     70e:	460c      	mov	r4, r1
+     710:	4605      	mov	r5, r0
+     712:	2100      	movs	r1, #0
+     714:	4650      	mov	r0, sl
+     716:	f7ff fffe 	bl	1d6c <spike071_driver+0x274>
+			716: R_ARM_THM_CALL	$es6HasherV5_seedABSi_tcfC
+     71a:	4628      	mov	r0, r5
+     71c:	f001 ff11 	bl	2542 <swift_retainCount+0x218>
+     720:	f002 f83e 	bl	27a0 <OUTLINED_FUNCTION_15>
+     724:	f7ff fffe 	bl	1dfc <spike071_driver+0x304>
+			724: R_ARM_THM_CALL	$es6HasherV9_finalizeSiyF
+     728:	b012      	add	sp, #72	; 0x48
+     72a:	e8bd 8430 	ldmia.w	sp!, {r4, r5, sl, pc}
+     72e:	4770      	bx	lr
+     730:	4619      	mov	r1, r3
+     732:	4610      	mov	r0, r2
+     734:	4770      	bx	lr
+     736:	b5b0      	push	{r4, r5, r7, lr}
+     738:	18cc      	adds	r4, r1, r3
+     73a:	d602      	bvs.n	742 <spike071_driver-0x13b6>
+     73c:	9c04      	ldr	r4, [sp, #16]
+     73e:	1915      	adds	r5, r2, r4
+     740:	d705      	bvc.n	74e <spike071_driver-0x13aa>
+     742:	2501      	movs	r5, #1
+     744:	2100      	movs	r1, #0
+     746:	2200      	movs	r2, #0
+     748:	2300      	movs	r3, #0
+     74a:	2400      	movs	r4, #0
+     74c:	e000      	b.n	750 <spike071_driver-0x13a8>
+     74e:	2500      	movs	r5, #0
+     750:	7405      	strb	r5, [r0, #16]
+     752:	c01e      	stmia	r0!, {r1, r2, r3, r4}
+     754:	bdb0      	pop	{r4, r5, r7, pc}
+     756:	1840      	adds	r0, r0, r1
+     758:	f04f 0101 	mov.w	r1, #1
+     75c:	bf68      	it	vs
+     75e:	2000      	movvs	r0, #0
+     760:	bf78      	it	vc
+     762:	2100      	movvc	r1, #0
+     764:	4770      	bx	lr
+     766:	4770      	bx	lr
+     768:	4608      	mov	r0, r1
+     76a:	4770      	bx	lr
+     76c:	1881      	adds	r1, r0, r2
+     76e:	bf78      	it	vc
+     770:	4608      	movvc	r0, r1
+     772:	4770      	bx	lr
+     774:	18c8      	adds	r0, r1, r3
+     776:	bf68      	it	vs
+     778:	4608      	movvs	r0, r1
+     77a:	4770      	bx	lr
+     77c:	4290      	cmp	r0, r2
+     77e:	bfbc      	itt	lt
+     780:	2000      	movlt	r0, #0
+     782:	4770      	bxlt	lr
+     784:	b5b0      	push	{r4, r5, r7, lr}
+     786:	4604      	mov	r4, r0
+     788:	9804      	ldr	r0, [sp, #16]
+     78a:	1815      	adds	r5, r2, r0
+     78c:	bf68      	it	vs
+     78e:	4615      	movvs	r5, r2
+     790:	2000      	movs	r0, #0
+     792:	42ac      	cmp	r4, r5
+     794:	da09      	bge.n	7aa <spike071_driver-0x134e>
+     796:	4299      	cmp	r1, r3
+     798:	db07      	blt.n	7aa <spike071_driver-0x134e>
+     79a:	9805      	ldr	r0, [sp, #20]
+     79c:	181a      	adds	r2, r3, r0
+     79e:	bf68      	it	vs
+     7a0:	461a      	movvs	r2, r3
+     7a2:	2000      	movs	r0, #0
+     7a4:	4291      	cmp	r1, r2
+     7a6:	bfb8      	it	lt
+     7a8:	2001      	movlt	r0, #1
+     7aa:	bdb0      	pop	{r4, r5, r7, pc}
+     7ac:	b5b0      	push	{r4, r5, r7, lr}
+     7ae:	9d04      	ldr	r5, [sp, #16]
+     7b0:	4604      	mov	r4, r0
+     7b2:	2000      	movs	r0, #0
+     7b4:	42ac      	cmp	r4, r5
+     7b6:	d10b      	bne.n	7d0 <spike071_driver-0x1328>
+     7b8:	9c05      	ldr	r4, [sp, #20]
+     7ba:	42a1      	cmp	r1, r4
+     7bc:	d108      	bne.n	7d0 <spike071_driver-0x1328>
+     7be:	9806      	ldr	r0, [sp, #24]
+     7c0:	4282      	cmp	r2, r0
+     7c2:	d104      	bne.n	7ce <spike071_driver-0x132a>
+     7c4:	9807      	ldr	r0, [sp, #28]
+     7c6:	4283      	cmp	r3, r0
+     7c8:	bf04      	itt	eq
+     7ca:	2001      	moveq	r0, #1
+     7cc:	bdb0      	popeq	{r4, r5, r7, pc}
+     7ce:	2000      	movs	r0, #0
+     7d0:	bdb0      	pop	{r4, r5, r7, pc}
+     7d2:	bf00      	nop
+     7d4:	e92d 44f0 	stmdb	sp!, {r4, r5, r6, r7, sl, lr}
+     7d8:	4e07      	ldr	r6, [pc, #28]	; (7f8 <spike071_driver-0x1300>)
+     7da:	4682      	mov	sl, r0
+     7dc:	4608      	mov	r0, r1
+     7de:	461c      	mov	r4, r3
+     7e0:	4615      	mov	r5, r2
+     7e2:	447e      	add	r6, pc
+     7e4:	47b0      	blx	r6
+     7e6:	4628      	mov	r0, r5
+     7e8:	47b0      	blx	r6
+     7ea:	4620      	mov	r0, r4
+     7ec:	47b0      	blx	r6
+     7ee:	9806      	ldr	r0, [sp, #24]
+     7f0:	47b0      	blx	r6
+     7f2:	e8bd 84f0 	ldmia.w	sp!, {r4, r5, r6, r7, sl, pc}
+     7f6:	bf00      	nop
+     7f8:	00001d5d 	.word	0x00001d5d
+     7fc:	e92d 45f0 	stmdb	sp!, {r4, r5, r6, r7, r8, sl, lr}
+     800:	b093      	sub	sp, #76	; 0x4c
+     802:	46ea      	mov	sl, sp
+     804:	460e      	mov	r6, r1
+     806:	4607      	mov	r7, r0
+     808:	2100      	movs	r1, #0
+     80a:	4698      	mov	r8, r3
+     80c:	4615      	mov	r5, r2
+     80e:	4650      	mov	r0, sl
+     810:	f7ff fffe 	bl	1d6c <spike071_driver+0x274>
+			810: R_ARM_THM_CALL	$es6HasherV5_seedABSi_tcfC
+     814:	4c07      	ldr	r4, [pc, #28]	; (834 <spike071_driver-0x12c4>)
+     816:	4638      	mov	r0, r7
+     818:	447c      	add	r4, pc
+     81a:	47a0      	blx	r4
+     81c:	4630      	mov	r0, r6
+     81e:	47a0      	blx	r4
+     820:	4628      	mov	r0, r5
+     822:	47a0      	blx	r4
+     824:	4640      	mov	r0, r8
+     826:	47a0      	blx	r4
+     828:	f7ff fffe 	bl	1dfc <spike071_driver+0x304>
+			828: R_ARM_THM_CALL	$es6HasherV9_finalizeSiyF
+     82c:	b013      	add	sp, #76	; 0x4c
+     82e:	e8bd 85f0 	ldmia.w	sp!, {r4, r5, r6, r7, r8, sl, pc}
+     832:	bf00      	nop
+     834:	00001d27 	.word	0x00001d27
+     838:	4770      	bx	lr
+     83a:	4619      	mov	r1, r3
+     83c:	4610      	mov	r0, r2
+     83e:	4770      	bx	lr
+     840:	b510      	push	{r4, lr}
+     842:	b2c9      	uxtb	r1, r1
+     844:	2901      	cmp	r1, #1
+     846:	d001      	beq.n	84c <spike071_driver-0x12ac>
+     848:	2800      	cmp	r0, #0
+     84a:	d404      	bmi.n	856 <spike071_driver-0x12a2>
+     84c:	b2dc      	uxtb	r4, r3
+     84e:	2c01      	cmp	r4, #1
+     850:	d007      	beq.n	862 <spike071_driver-0x1296>
+     852:	2a00      	cmp	r2, #0
+     854:	d505      	bpl.n	862 <spike071_driver-0x1296>
+     856:	2401      	movs	r4, #1
+     858:	2000      	movs	r0, #0
+     85a:	2100      	movs	r1, #0
+     85c:	2200      	movs	r2, #0
+     85e:	2300      	movs	r3, #0
+     860:	e000      	b.n	864 <spike071_driver-0x1294>
+     862:	2400      	movs	r4, #0
+     864:	b2db      	uxtb	r3, r3
+     866:	ea43 2304 	orr.w	r3, r3, r4, lsl #8
+     86a:	bd10      	pop	{r4, pc}
+     86c:	b510      	push	{r4, lr}
+     86e:	4604      	mov	r4, r0
+     870:	b2c9      	uxtb	r1, r1
+     872:	9803      	ldr	r0, [sp, #12]
+     874:	2901      	cmp	r1, #1
+     876:	d103      	bne.n	880 <spike071_driver-0x1278>
+     878:	b2c0      	uxtb	r0, r0
+     87a:	2801      	cmp	r0, #1
+     87c:	d007      	beq.n	88e <spike071_driver-0x126a>
+     87e:	e015      	b.n	8ac <spike071_driver-0x124c>
+     880:	b2c1      	uxtb	r1, r0
+     882:	2000      	movs	r0, #0
+     884:	2901      	cmp	r1, #1
+     886:	d012      	beq.n	8ae <spike071_driver-0x124a>
+     888:	9902      	ldr	r1, [sp, #8]
+     88a:	428c      	cmp	r4, r1
+     88c:	d10f      	bne.n	8ae <spike071_driver-0x124a>
+     88e:	9805      	ldr	r0, [sp, #20]
+     890:	b2d9      	uxtb	r1, r3
+     892:	2901      	cmp	r1, #1
+     894:	b2c0      	uxtb	r0, r0
+     896:	d102      	bne.n	89e <spike071_driver-0x125a>
+     898:	2801      	cmp	r0, #1
+     89a:	d005      	beq.n	8a8 <spike071_driver-0x1250>
+     89c:	e006      	b.n	8ac <spike071_driver-0x124c>
+     89e:	2801      	cmp	r0, #1
+     8a0:	d004      	beq.n	8ac <spike071_driver-0x124c>
+     8a2:	9804      	ldr	r0, [sp, #16]
+     8a4:	4282      	cmp	r2, r0
+     8a6:	d101      	bne.n	8ac <spike071_driver-0x124c>
+     8a8:	2001      	movs	r0, #1
+     8aa:	bd10      	pop	{r4, pc}
+     8ac:	2000      	movs	r0, #0
+     8ae:	bd10      	pop	{r4, pc}
+     8b0:	e92d 44f0 	stmdb	sp!, {r4, r5, r6, r7, sl, lr}
+     8b4:	4682      	mov	sl, r0
+     8b6:	b2d0      	uxtb	r0, r2
+     8b8:	9e06      	ldr	r6, [sp, #24]
+     8ba:	461c      	mov	r4, r3
+     8bc:	2801      	cmp	r0, #1
+     8be:	d103      	bne.n	8c8 <spike071_driver-0x1230>
+     8c0:	2000      	movs	r0, #0
+     8c2:	f7ff fffe 	bl	233c <swift_retainCount+0x12>
+			8c2: R_ARM_THM_CALL	$es6HasherV8_combineyys5UInt8VF
+     8c6:	e006      	b.n	8d6 <spike071_driver-0x1222>
+     8c8:	2001      	movs	r0, #1
+     8ca:	460d      	mov	r5, r1
+     8cc:	f7ff fffe 	bl	233c <swift_retainCount+0x12>
+			8cc: R_ARM_THM_CALL	$es6HasherV8_combineyys5UInt8VF
+     8d0:	4628      	mov	r0, r5
+     8d2:	f001 fe36 	bl	2542 <swift_retainCount+0x218>
+     8d6:	b2f0      	uxtb	r0, r6
+     8d8:	2801      	cmp	r0, #1
+     8da:	d104      	bne.n	8e6 <spike071_driver-0x1212>
+     8dc:	2000      	movs	r0, #0
+     8de:	f7ff fffe 	bl	233c <swift_retainCount+0x12>
+			8de: R_ARM_THM_CALL	$es6HasherV8_combineyys5UInt8VF
+     8e2:	e8bd 84f0 	ldmia.w	sp!, {r4, r5, r6, r7, sl, pc}
+     8e6:	2001      	movs	r0, #1
+     8e8:	f7ff fffe 	bl	233c <swift_retainCount+0x12>
+			8e8: R_ARM_THM_CALL	$es6HasherV8_combineyys5UInt8VF
+     8ec:	f001 ff58 	bl	27a0 <OUTLINED_FUNCTION_15>
+     8f0:	e8bd 84f0 	ldmia.w	sp!, {r4, r5, r6, r7, sl, pc}
+     8f4:	e92d 44f0 	stmdb	sp!, {r4, r5, r6, r7, sl, lr}
+     8f8:	b094      	sub	sp, #80	; 0x50
+     8fa:	f10d 0a08 	add.w	sl, sp, #8
+     8fe:	460e      	mov	r6, r1
+     900:	4607      	mov	r7, r0
+     902:	2100      	movs	r1, #0
+     904:	461c      	mov	r4, r3
+     906:	4615      	mov	r5, r2
+     908:	4650      	mov	r0, sl
+     90a:	f7ff fffe 	bl	1d6c <spike071_driver+0x274>
+			90a: R_ARM_THM_CALL	$es6HasherV5_seedABSi_tcfC
+     90e:	4650      	mov	r0, sl
+     910:	4639      	mov	r1, r7
+     912:	4632      	mov	r2, r6
+     914:	462b      	mov	r3, r5
+     916:	9400      	str	r4, [sp, #0]
+     918:	f7ff fffe 	bl	8b0 <spike071_driver-0x1248>
+			918: R_ARM_THM_CALL	$e8Spike07112ProposedSizeV4hash4intoys6HasherVz_tF
+     91c:	f7ff fffe 	bl	1dfc <spike071_driver+0x304>
+			91c: R_ARM_THM_CALL	$es6HasherV9_finalizeSiyF
+     920:	b014      	add	sp, #80	; 0x50
+     922:	e8bd 84f0 	ldmia.w	sp!, {r4, r5, r6, r7, sl, pc}
+     926:	1a40      	subs	r0, r0, r1
+     928:	f04f 0101 	mov.w	r1, #1
+     92c:	bf68      	it	vs
+     92e:	2000      	movvs	r0, #0
+     930:	bf78      	it	vc
+     932:	2100      	movvc	r1, #0
+     934:	4770      	bx	lr
+     936:	fb00 f201 	mul.w	r2, r0, r1
+     93a:	fb50 f001 	smmul	r0, r0, r1
+     93e:	ebb0 71e2 	subs.w	r1, r0, r2, asr #31
+     942:	bf18      	it	ne
+     944:	2101      	movne	r1, #1
+     946:	2900      	cmp	r1, #0
+     948:	bf18      	it	ne
+     94a:	2200      	movne	r2, #0
+     94c:	4610      	mov	r0, r2
+     94e:	4770      	bx	lr
+     950:	b2c0      	uxtb	r0, r0
+     952:	2803      	cmp	r0, #3
+     954:	bf28      	it	cs
+     956:	2003      	movcs	r0, #3
+     958:	4770      	bx	lr
+     95a:	4770      	bx	lr
+     95c:	b510      	push	{r4, lr}
+     95e:	4604      	mov	r4, r0
+     960:	7808      	ldrb	r0, [r1, #0]
+     962:	f7ff fffe 	bl	950 <spike071_driver-0x11a8>
+			962: R_ARM_THM_CALL	$e8Spike07112PointerPhaseO8rawValueACSgs5UInt8V_tcfC
+     966:	b2c0      	uxtb	r0, r0
+     968:	7020      	strb	r0, [r4, #0]
+     96a:	bd10      	pop	{r4, pc}
+     96c:	f89a 1000 	ldrb.w	r1, [sl]
+     970:	7001      	strb	r1, [r0, #0]
+     972:	4770      	bx	lr
+     974:	4770      	bx	lr
+     976:	4770      	bx	lr
+     978:	b289      	uxth	r1, r1
+     97a:	b280      	uxth	r0, r0
+     97c:	1a40      	subs	r0, r0, r1
+     97e:	f001 bec7 	b.w	2710 <OUTLINED_FUNCTION_0>
+     982:	e92d 4400 	stmdb	sp!, {sl, lr}
+     986:	4682      	mov	sl, r0
+     988:	4608      	mov	r0, r1
+     98a:	f7ff fffe 	bl	2432 <swift_retainCount+0x108>
+			98a: R_ARM_THM_CALL	$es6HasherV8_combineyys6UInt16VF
+     98e:	e8bd 8400 	ldmia.w	sp!, {sl, pc}
+     992:	e92d 4490 	stmdb	sp!, {r4, r7, sl, lr}
+     996:	b092      	sub	sp, #72	; 0x48
+     998:	46ea      	mov	sl, sp
+     99a:	f001 fec2 	bl	2722 <OUTLINED_FUNCTION_2>
+     99e:	4620      	mov	r0, r4
+     9a0:	f7ff fffe 	bl	2432 <swift_retainCount+0x108>
+			9a0: R_ARM_THM_CALL	$es6HasherV8_combineyys6UInt16VF
+     9a4:	f7ff fffe 	bl	1dfc <spike071_driver+0x304>
+			9a4: R_ARM_THM_CALL	$es6HasherV9_finalizeSiyF
+     9a8:	b012      	add	sp, #72	; 0x48
+     9aa:	e8bd 8490 	ldmia.w	sp!, {r4, r7, sl, pc}
+     9ae:	8809      	ldrh	r1, [r1, #0]
+     9b0:	8800      	ldrh	r0, [r0, #0]
+     9b2:	f7ff bffe 	b.w	978 <spike071_driver-0x1180>
+			9b2: R_ARM_THM_JUMP24	$e8Spike07113InputSourceIDV23__derived_struct_equalsySbAC_ACtFZ
+     9b6:	f8ba 0000 	ldrh.w	r0, [sl]
+     9ba:	f7ff bffe 	b.w	992 <spike071_driver-0x1166>
+			9ba: R_ARM_THM_JUMP24	$e8Spike07113InputSourceIDV9hashValueSivg
+     9be:	f8ba 1000 	ldrh.w	r1, [sl]
+     9c2:	f7ff bffe 	b.w	982 <spike071_driver-0x1176>
+			9c2: R_ARM_THM_JUMP24	$e8Spike07113InputSourceIDV4hash4intoys6HasherVz_tF
+     9c6:	4770      	bx	lr
+     9c8:	4770      	bx	lr
+     9ca:	4770      	bx	lr
+     9cc:	4770      	bx	lr
+     9ce:	1a40      	subs	r0, r0, r1
+     9d0:	f001 be9e 	b.w	2710 <OUTLINED_FUNCTION_0>
+     9d4:	e92d 4400 	stmdb	sp!, {sl, lr}
+     9d8:	4682      	mov	sl, r0
+     9da:	4608      	mov	r0, r1
+     9dc:	f001 fdb1 	bl	2542 <swift_retainCount+0x218>
+     9e0:	e8bd 8400 	ldmia.w	sp!, {sl, pc}
+     9e4:	e7ff      	b.n	9e6 <spike071_driver-0x1112>
+     9e6:	e92d 4490 	stmdb	sp!, {r4, r7, sl, lr}
+     9ea:	b092      	sub	sp, #72	; 0x48
+     9ec:	46ea      	mov	sl, sp
+     9ee:	f001 fe98 	bl	2722 <OUTLINED_FUNCTION_2>
+     9f2:	f001 fed5 	bl	27a0 <OUTLINED_FUNCTION_15>
+     9f6:	f7ff fffe 	bl	1dfc <spike071_driver+0x304>
+			9f6: R_ARM_THM_CALL	$es6HasherV9_finalizeSiyF
+     9fa:	b012      	add	sp, #72	; 0x48
+     9fc:	e8bd 8490 	ldmia.w	sp!, {r4, r7, sl, pc}
+     a00:	6809      	ldr	r1, [r1, #0]
+     a02:	6800      	ldr	r0, [r0, #0]
+     a04:	f7ff bffe 	b.w	9ce <spike071_driver-0x112a>
+			a04: R_ARM_THM_JUMP24	$e8Spike07112InputOrdinalV23__derived_struct_equalsySbAC_ACtFZ
+     a08:	b580      	push	{r7, lr}
+     a0a:	f8da 0000 	ldr.w	r0, [sl]
+     a0e:	f7ff ffea 	bl	9e6 <spike071_driver-0x1112>
+     a12:	bd80      	pop	{r7, pc}
+     a14:	f8da 1000 	ldr.w	r1, [sl]
+     a18:	f7ff bffe 	b.w	9d4 <spike071_driver-0x1124>
+			a18: R_ARM_THM_JUMP24	$e8Spike07112InputOrdinalV4hash4intoys6HasherVz_tF
+     a1c:	4770      	bx	lr
+     a1e:	4770      	bx	lr
+     a20:	f89a 0000 	ldrb.w	r0, [sl]
+     a24:	4770      	bx	lr
+     a26:	e9da 0101 	ldrd	r0, r1, [sl, #4]
+     a2a:	4770      	bx	lr
+     a2c:	f8ba 000c 	ldrh.w	r0, [sl, #12]
+     a30:	4770      	bx	lr
+     a32:	f8da 0010 	ldr.w	r0, [sl, #16]
+     a36:	4770      	bx	lr
+     a38:	f8da 0014 	ldr.w	r0, [sl, #20]
+     a3c:	4770      	bx	lr
+     a3e:	f8da 0018 	ldr.w	r0, [sl, #24]
+     a42:	4770      	bx	lr
+     a44:	b510      	push	{r4, lr}
+     a46:	9c05      	ldr	r4, [sp, #20]
+     a48:	e9c0 2301 	strd	r2, r3, [r0, #4]
+     a4c:	7001      	strb	r1, [r0, #0]
+     a4e:	6184      	str	r4, [r0, #24]
+     a50:	9c04      	ldr	r4, [sp, #16]
+     a52:	6144      	str	r4, [r0, #20]
+     a54:	9c03      	ldr	r4, [sp, #12]
+     a56:	6104      	str	r4, [r0, #16]
+     a58:	9c02      	ldr	r4, [sp, #8]
+     a5a:	8184      	strh	r4, [r0, #12]
+     a5c:	bd10      	pop	{r4, pc}
+     a5e:	780a      	ldrb	r2, [r1, #0]
+     a60:	7803      	ldrb	r3, [r0, #0]
+     a62:	4293      	cmp	r3, r2
+     a64:	d118      	bne.n	a98 <spike071_driver-0x1060>
+     a66:	684a      	ldr	r2, [r1, #4]
+     a68:	6843      	ldr	r3, [r0, #4]
+     a6a:	4293      	cmp	r3, r2
+     a6c:	d114      	bne.n	a98 <spike071_driver-0x1060>
+     a6e:	688a      	ldr	r2, [r1, #8]
+     a70:	6883      	ldr	r3, [r0, #8]
+     a72:	4293      	cmp	r3, r2
+     a74:	d110      	bne.n	a98 <spike071_driver-0x1060>
+     a76:	898a      	ldrh	r2, [r1, #12]
+     a78:	8983      	ldrh	r3, [r0, #12]
+     a7a:	4293      	cmp	r3, r2
+     a7c:	d10c      	bne.n	a98 <spike071_driver-0x1060>
+     a7e:	690a      	ldr	r2, [r1, #16]
+     a80:	6903      	ldr	r3, [r0, #16]
+     a82:	4293      	cmp	r3, r2
+     a84:	d108      	bne.n	a98 <spike071_driver-0x1060>
+     a86:	694a      	ldr	r2, [r1, #20]
+     a88:	6943      	ldr	r3, [r0, #20]
+     a8a:	4293      	cmp	r3, r2
+     a8c:	d104      	bne.n	a98 <spike071_driver-0x1060>
+     a8e:	6989      	ldr	r1, [r1, #24]
+     a90:	6980      	ldr	r0, [r0, #24]
+     a92:	1a40      	subs	r0, r0, r1
+     a94:	f001 be3c 	b.w	2710 <OUTLINED_FUNCTION_0>
+     a98:	2000      	movs	r0, #0
+     a9a:	4770      	bx	lr
+     a9c:	f7ff bffe 	b.w	a5e <spike071_driver-0x109a>
+			a9c: R_ARM_THM_JUMP24	$e8Spike07122NormalizedPointerEventV23__derived_struct_equalsySbAC_ACtFZ
+     aa0:	4770      	bx	lr
+     aa2:	4608      	mov	r0, r1
+     aa4:	4770      	bx	lr
+     aa6:	4770      	bx	lr
+     aa8:	4608      	mov	r0, r1
+     aaa:	4770      	bx	lr
+     aac:	4770      	bx	lr
+     aae:	4050      	eors	r0, r2
+     ab0:	4059      	eors	r1, r3
+     ab2:	b2c0      	uxtb	r0, r0
+     ab4:	4308      	orrs	r0, r1
+     ab6:	f001 be2b 	b.w	2710 <OUTLINED_FUNCTION_0>
+     aba:	4770      	bx	lr
+     abc:	4770      	bx	lr
+     abe:	4770      	bx	lr
+     ac0:	4770      	bx	lr
+     ac2:	bf00      	nop
+     ac4:	4801      	ldr	r0, [pc, #4]	; (acc <spike071_driver-0x102c>)
+     ac6:	4478      	add	r0, pc
+     ac8:	4770      	bx	lr
+     aca:	bf00      	nop
+     acc:	00000002 	.word	0x00000002
+			acc: R_ARM_REL32	$e8Spike0719AlignmentV6centerACvpZ
+     ad0:	4770      	bx	lr
+     ad2:	4770      	bx	lr
+     ad4:	4770      	bx	lr
+     ad6:	4608      	mov	r0, r1
+     ad8:	4770      	bx	lr
+     ada:	4770      	bx	lr
+     adc:	b510      	push	{r4, lr}
+     ade:	9c02      	ldr	r4, [sp, #8]
+     ae0:	4060      	eors	r0, r4
+     ae2:	9c03      	ldr	r4, [sp, #12]
+     ae4:	4061      	eors	r1, r4
+     ae6:	4308      	orrs	r0, r1
+     ae8:	9904      	ldr	r1, [sp, #16]
+     aea:	4051      	eors	r1, r2
+     aec:	4308      	orrs	r0, r1
+     aee:	9905      	ldr	r1, [sp, #20]
+     af0:	4059      	eors	r1, r3
+     af2:	4308      	orrs	r0, r1
+     af4:	fab0 f080 	clz	r0, r0
+     af8:	0940      	lsrs	r0, r0, #5
+     afa:	bd10      	pop	{r4, pc}
+     afc:	4770      	bx	lr
+     afe:	4619      	mov	r1, r3
+     b00:	4610      	mov	r0, r2
+     b02:	4770      	bx	lr
+     b04:	f06f 00ff 	mvn.w	r0, #255	; 0xff
+     b08:	b299      	uxth	r1, r3
+     b0a:	ea00 2013 	and.w	r0, r0, r3, lsr #8
+     b0e:	ea40 2011 	orr.w	r0, r0, r1, lsr #8
+     b12:	4770      	bx	lr
+     b14:	b510      	push	{r4, lr}
+     b16:	f8bd 4008 	ldrh.w	r4, [sp, #8]
+     b1a:	b2db      	uxtb	r3, r3
+     b1c:	ea43 2304 	orr.w	r3, r3, r4, lsl #8
+     b20:	f024 04ff 	bic.w	r4, r4, #255	; 0xff
+     b24:	b29b      	uxth	r3, r3
+     b26:	ea43 2304 	orr.w	r3, r3, r4, lsl #8
+     b2a:	bd10      	pop	{r4, pc}
+     b2c:	b510      	push	{r4, lr}
+     b2e:	4604      	mov	r4, r0
+     b30:	b2c9      	uxtb	r1, r1
+     b32:	9803      	ldr	r0, [sp, #12]
+     b34:	2901      	cmp	r1, #1
+     b36:	d103      	bne.n	b40 <spike071_driver-0xfb8>
+     b38:	b2c0      	uxtb	r0, r0
+     b3a:	2801      	cmp	r0, #1
+     b3c:	d007      	beq.n	b4e <spike071_driver-0xfaa>
+     b3e:	e01b      	b.n	b78 <spike071_driver-0xf80>
+     b40:	b2c1      	uxtb	r1, r0
+     b42:	2000      	movs	r0, #0
+     b44:	2901      	cmp	r1, #1
+     b46:	d018      	beq.n	b7a <spike071_driver-0xf7e>
+     b48:	9902      	ldr	r1, [sp, #8]
+     b4a:	428c      	cmp	r4, r1
+     b4c:	d115      	bne.n	b7a <spike071_driver-0xf7e>
+     b4e:	9905      	ldr	r1, [sp, #20]
+     b50:	b2d8      	uxtb	r0, r3
+     b52:	2801      	cmp	r0, #1
+     b54:	b2cc      	uxtb	r4, r1
+     b56:	d102      	bne.n	b5e <spike071_driver-0xf9a>
+     b58:	2c01      	cmp	r4, #1
+     b5a:	d006      	beq.n	b6a <spike071_driver-0xf8e>
+     b5c:	e00c      	b.n	b78 <spike071_driver-0xf80>
+     b5e:	2000      	movs	r0, #0
+     b60:	2c01      	cmp	r4, #1
+     b62:	d00a      	beq.n	b7a <spike071_driver-0xf7e>
+     b64:	9c04      	ldr	r4, [sp, #16]
+     b66:	42a2      	cmp	r2, r4
+     b68:	d107      	bne.n	b7a <spike071_driver-0xf7e>
+     b6a:	ea81 0003 	eor.w	r0, r1, r3
+     b6e:	4903      	ldr	r1, [pc, #12]	; (b7c <spike071_driver-0xf7c>)
+     b70:	4208      	tst	r0, r1
+     b72:	bf04      	itt	eq
+     b74:	2001      	moveq	r0, #1
+     b76:	bd10      	popeq	{r4, pc}
+     b78:	2000      	movs	r0, #0
+     b7a:	bd10      	pop	{r4, pc}
+     b7c:	00ffff00 	.word	0x00ffff00
+     b80:	f8da 0000 	ldr.w	r0, [sl]
+     b84:	f89a 1004 	ldrb.w	r1, [sl, #4]
+     b88:	4770      	bx	lr
+     b8a:	f8da 0008 	ldr.w	r0, [sl, #8]
+     b8e:	f8ba 100c 	ldrh.w	r1, [sl, #12]
+     b92:	4770      	bx	lr
+     b94:	f8da 0010 	ldr.w	r0, [sl, #16]
+     b98:	f89a 1014 	ldrb.w	r1, [sl, #20]
+     b9c:	4770      	bx	lr
+     b9e:	f8da 0018 	ldr.w	r0, [sl, #24]
+     ba2:	f8ba 101c 	ldrh.w	r1, [sl, #28]
+     ba6:	4770      	bx	lr
+     ba8:	f8ba 001e 	ldrh.w	r0, [sl, #30]
+     bac:	4770      	bx	lr
+     bae:	b570      	push	{r4, r5, r6, lr}
+     bb0:	9e07      	ldr	r6, [sp, #28]
+     bb2:	9c09      	ldr	r4, [sp, #36]	; 0x24
+     bb4:	9d08      	ldr	r5, [sp, #32]
+     bb6:	6001      	str	r1, [r0, #0]
+     bb8:	6083      	str	r3, [r0, #8]
+     bba:	7102      	strb	r2, [r0, #4]
+     bbc:	6186      	str	r6, [r0, #24]
+     bbe:	9e06      	ldr	r6, [sp, #24]
+     bc0:	0a21      	lsrs	r1, r4, #8
+     bc2:	7784      	strb	r4, [r0, #30]
+     bc4:	7705      	strb	r5, [r0, #28]
+     bc6:	77c1      	strb	r1, [r0, #31]
+     bc8:	0a29      	lsrs	r1, r5, #8
+     bca:	7506      	strb	r6, [r0, #20]
+     bcc:	9e05      	ldr	r6, [sp, #20]
+     bce:	7741      	strb	r1, [r0, #29]
+     bd0:	6106      	str	r6, [r0, #16]
+     bd2:	9e04      	ldr	r6, [sp, #16]
+     bd4:	0a31      	lsrs	r1, r6, #8
+     bd6:	7306      	strb	r6, [r0, #12]
+     bd8:	7341      	strb	r1, [r0, #13]
+     bda:	bd70      	pop	{r4, r5, r6, pc}
+     bdc:	b510      	push	{r4, lr}
+     bde:	7902      	ldrb	r2, [r0, #4]
+     be0:	790b      	ldrb	r3, [r1, #4]
+     be2:	2a01      	cmp	r2, #1
+     be4:	d102      	bne.n	bec <spike071_driver-0xf0c>
+     be6:	2b01      	cmp	r3, #1
+     be8:	d007      	beq.n	bfa <spike071_driver-0xefe>
+     bea:	e015      	b.n	c18 <spike071_driver-0xee0>
+     bec:	2200      	movs	r2, #0
+     bee:	2b01      	cmp	r3, #1
+     bf0:	d013      	beq.n	c1a <spike071_driver-0xede>
+     bf2:	680b      	ldr	r3, [r1, #0]
+     bf4:	6804      	ldr	r4, [r0, #0]
+     bf6:	429c      	cmp	r4, r3
+     bf8:	d10f      	bne.n	c1a <spike071_driver-0xede>
+     bfa:	7b43      	ldrb	r3, [r0, #13]
+     bfc:	7b4a      	ldrb	r2, [r1, #13]
+     bfe:	2b01      	cmp	r3, #1
+     c00:	d108      	bne.n	c14 <spike071_driver-0xee4>
+     c02:	2a01      	cmp	r2, #1
+     c04:	d108      	bne.n	c18 <spike071_driver-0xee0>
+     c06:	7d02      	ldrb	r2, [r0, #20]
+     c08:	7d0b      	ldrb	r3, [r1, #20]
+     c0a:	2a01      	cmp	r2, #1
+     c0c:	d10e      	bne.n	c2c <spike071_driver-0xecc>
+     c0e:	2b01      	cmp	r3, #1
+     c10:	d102      	bne.n	c18 <spike071_driver-0xee0>
+     c12:	e012      	b.n	c3a <spike071_driver-0xebe>
+     c14:	2a01      	cmp	r2, #1
+     c16:	d102      	bne.n	c1e <spike071_driver-0xeda>
+     c18:	2200      	movs	r2, #0
+     c1a:	4610      	mov	r0, r2
+     c1c:	bd10      	pop	{r4, pc}
+     c1e:	7b02      	ldrb	r2, [r0, #12]
+     c20:	7b0b      	ldrb	r3, [r1, #12]
+     c22:	2a01      	cmp	r2, #1
+     c24:	d116      	bne.n	c54 <spike071_driver-0xea4>
+     c26:	2b01      	cmp	r3, #1
+     c28:	d0ed      	beq.n	c06 <spike071_driver-0xef2>
+     c2a:	e7f5      	b.n	c18 <spike071_driver-0xee0>
+     c2c:	2200      	movs	r2, #0
+     c2e:	2b01      	cmp	r3, #1
+     c30:	d0f3      	beq.n	c1a <spike071_driver-0xede>
+     c32:	690b      	ldr	r3, [r1, #16]
+     c34:	6904      	ldr	r4, [r0, #16]
+     c36:	429c      	cmp	r4, r3
+     c38:	d1ef      	bne.n	c1a <spike071_driver-0xede>
+     c3a:	7f43      	ldrb	r3, [r0, #29]
+     c3c:	7f4a      	ldrb	r2, [r1, #29]
+     c3e:	2b01      	cmp	r3, #1
+     c40:	d110      	bne.n	c64 <spike071_driver-0xe94>
+     c42:	2a01      	cmp	r2, #1
+     c44:	d1e8      	bne.n	c18 <spike071_driver-0xee0>
+     c46:	8bc9      	ldrh	r1, [r1, #30]
+     c48:	8bc0      	ldrh	r0, [r0, #30]
+     c4a:	1a40      	subs	r0, r0, r1
+     c4c:	fab0 f080 	clz	r0, r0
+     c50:	0942      	lsrs	r2, r0, #5
+     c52:	e7e2      	b.n	c1a <spike071_driver-0xede>
+     c54:	2200      	movs	r2, #0
+     c56:	2b01      	cmp	r3, #1
+     c58:	d0df      	beq.n	c1a <spike071_driver-0xede>
+     c5a:	688b      	ldr	r3, [r1, #8]
+     c5c:	6884      	ldr	r4, [r0, #8]
+     c5e:	429c      	cmp	r4, r3
+     c60:	d0d1      	beq.n	c06 <spike071_driver-0xef2>
+     c62:	e7da      	b.n	c1a <spike071_driver-0xede>
+     c64:	2a01      	cmp	r2, #1
+     c66:	d0d7      	beq.n	c18 <spike071_driver-0xee0>
+     c68:	7f02      	ldrb	r2, [r0, #28]
+     c6a:	7f0b      	ldrb	r3, [r1, #28]
+     c6c:	2a01      	cmp	r2, #1
+     c6e:	d102      	bne.n	c76 <spike071_driver-0xe82>
+     c70:	2b01      	cmp	r3, #1
+     c72:	d1d1      	bne.n	c18 <spike071_driver-0xee0>
+     c74:	e7e7      	b.n	c46 <spike071_driver-0xeb2>
+     c76:	2200      	movs	r2, #0
+     c78:	2b01      	cmp	r3, #1
+     c7a:	d0ce      	beq.n	c1a <spike071_driver-0xede>
+     c7c:	698b      	ldr	r3, [r1, #24]
+     c7e:	6984      	ldr	r4, [r0, #24]
+     c80:	429c      	cmp	r4, r3
+     c82:	d1ca      	bne.n	c1a <spike071_driver-0xede>
+     c84:	e7df      	b.n	c46 <spike071_driver-0xeb2>
+     c86:	bf00      	nop
+     c88:	4801      	ldr	r0, [pc, #4]	; (c90 <spike071_driver-0xe68>)
+     c8a:	4478      	add	r0, pc
+     c8c:	4770      	bx	lr
+     c8e:	bf00      	nop
+     c90:	00000002 	.word	0x00000002
+			c90: R_ARM_REL32	$e8Spike0717EdgeSetV3allACvpZ
+     c94:	b2c1      	uxtb	r1, r0
+     c96:	4608      	mov	r0, r1
+     c98:	2901      	cmp	r1, #1
+     c9a:	bf18      	it	ne
+     c9c:	2002      	movne	r0, #2
+     c9e:	2900      	cmp	r1, #0
+     ca0:	bf08      	it	eq
+     ca2:	4608      	moveq	r0, r1
+     ca4:	4770      	bx	lr
+     ca6:	4770      	bx	lr
+     ca8:	4770      	bx	lr
+     caa:	4770      	bx	lr
+     cac:	b280      	uxth	r0, r0
+     cae:	0a00      	lsrs	r0, r0, #8
+     cb0:	4770      	bx	lr
+     cb2:	b2c0      	uxtb	r0, r0
+     cb4:	ea40 2001 	orr.w	r0, r0, r1, lsl #8
+     cb8:	4770      	bx	lr
+     cba:	f240 1001 	movw	r0, #257	; 0x101
+     cbe:	4770      	bx	lr
+     cc0:	4801      	ldr	r0, [pc, #4]	; (cc8 <spike071_driver-0xe30>)
+     cc2:	4478      	add	r0, pc
+     cc4:	4770      	bx	lr
+     cc6:	bf00      	nop
+     cc8:	00000002 	.word	0x00000002
+			cc8: R_ARM_REL32	$e8Spike0719AlignmentV7leadingACvpZ
+     ccc:	f44f 7080 	mov.w	r0, #256	; 0x100
+     cd0:	4770      	bx	lr
+     cd2:	4770      	bx	lr
+     cd4:	4608      	mov	r0, r1
+     cd6:	4770      	bx	lr
+     cd8:	4610      	mov	r0, r2
+     cda:	4770      	bx	lr
+     cdc:	4618      	mov	r0, r3
+     cde:	4770      	bx	lr
+     ce0:	b5b0      	push	{r4, r5, r7, lr}
+     ce2:	2900      	cmp	r1, #0
+     ce4:	d409      	bmi.n	cfa <spike071_driver-0xdfe>
+     ce6:	2a00      	cmp	r2, #0
+     ce8:	d407      	bmi.n	cfa <spike071_driver-0xdfe>
+     cea:	2b00      	cmp	r3, #0
+     cec:	d405      	bmi.n	cfa <spike071_driver-0xdfe>
+     cee:	9c04      	ldr	r4, [sp, #16]
+     cf0:	f1b4 3fff 	cmp.w	r4, #4294967295	; 0xffffffff
+     cf4:	dd01      	ble.n	cfa <spike071_driver-0xdfe>
+     cf6:	2500      	movs	r5, #0
+     cf8:	e004      	b.n	d04 <spike071_driver-0xdf4>
+     cfa:	2501      	movs	r5, #1
+     cfc:	2100      	movs	r1, #0
+     cfe:	2200      	movs	r2, #0
+     d00:	2300      	movs	r3, #0
+     d02:	2400      	movs	r4, #0
+     d04:	7405      	strb	r5, [r0, #16]
+     d06:	c01e      	stmia	r0!, {r1, r2, r3, r4}
+     d08:	bdb0      	pop	{r4, r5, r7, pc}
+     d0a:	b5b0      	push	{r4, r5, r7, lr}
+     d0c:	9d04      	ldr	r5, [sp, #16]
+     d0e:	4604      	mov	r4, r0
+     d10:	2000      	movs	r0, #0
+     d12:	42ac      	cmp	r4, r5
+     d14:	d10a      	bne.n	d2c <spike071_driver-0xdcc>
+     d16:	9c05      	ldr	r4, [sp, #20]
+     d18:	42a1      	cmp	r1, r4
+     d1a:	d107      	bne.n	d2c <spike071_driver-0xdcc>
+     d1c:	9906      	ldr	r1, [sp, #24]
+     d1e:	428a      	cmp	r2, r1
+     d20:	d104      	bne.n	d2c <spike071_driver-0xdcc>
+     d22:	9807      	ldr	r0, [sp, #28]
+     d24:	1a18      	subs	r0, r3, r0
+     d26:	fab0 f080 	clz	r0, r0
+     d2a:	0940      	lsrs	r0, r0, #5
+     d2c:	bdb0      	pop	{r4, r5, r7, pc}
+     d2e:	4770      	bx	lr
+     d30:	4770      	bx	lr
+     d32:	bf00      	nop
+     d34:	4801      	ldr	r0, [pc, #4]	; (d3c <spike071_driver-0xdbc>)
+     d36:	4478      	add	r0, pc
+     d38:	4770      	bx	lr
+     d3a:	bf00      	nop
+     d3c:	00000002 	.word	0x00000002
+			d3c: R_ARM_REL32	$e8Spike0717EdgeSetV3topACvpZ
+     d40:	2001      	movs	r0, #1
+     d42:	4770      	bx	lr
+     d44:	4801      	ldr	r0, [pc, #4]	; (d4c <spike071_driver-0xdac>)
+     d46:	4478      	add	r0, pc
+     d48:	4770      	bx	lr
+     d4a:	bf00      	nop
+     d4c:	00000002 	.word	0x00000002
+			d4c: R_ARM_REL32	$e8Spike0717EdgeSetV7leadingACvpZ
+     d50:	2002      	movs	r0, #2
+     d52:	4770      	bx	lr
+     d54:	4801      	ldr	r0, [pc, #4]	; (d5c <spike071_driver-0xd9c>)
+     d56:	4478      	add	r0, pc
+     d58:	4770      	bx	lr
+     d5a:	bf00      	nop
+     d5c:	00000002 	.word	0x00000002
+			d5c: R_ARM_REL32	$e8Spike0717EdgeSetV6bottomACvpZ
+     d60:	2004      	movs	r0, #4
+     d62:	4770      	bx	lr
+     d64:	4801      	ldr	r0, [pc, #4]	; (d6c <spike071_driver-0xd8c>)
+     d66:	4478      	add	r0, pc
+     d68:	4770      	bx	lr
+     d6a:	bf00      	nop
+     d6c:	00000002 	.word	0x00000002
+			d6c: R_ARM_REL32	$e8Spike0717EdgeSetV8trailingACvpZ
+     d70:	2008      	movs	r0, #8
+     d72:	4770      	bx	lr
+     d74:	4770      	bx	lr
+     d76:	bf00      	nop
+     d78:	4801      	ldr	r0, [pc, #4]	; (d80 <spike071_driver-0xd78>)
+     d7a:	4478      	add	r0, pc
+     d7c:	4770      	bx	lr
+     d7e:	bf00      	nop
+     d80:	00000002 	.word	0x00000002
+			d80: R_ARM_REL32	$e8Spike0717EdgeSetV10horizontalACvpZ
+     d84:	200a      	movs	r0, #10
+     d86:	4770      	bx	lr
+     d88:	4770      	bx	lr
+     d8a:	bf00      	nop
+     d8c:	4801      	ldr	r0, [pc, #4]	; (d94 <spike071_driver-0xd64>)
+     d8e:	4478      	add	r0, pc
+     d90:	4770      	bx	lr
+     d92:	bf00      	nop
+     d94:	00000002 	.word	0x00000002
+			d94: R_ARM_REL32	$e8Spike0717EdgeSetV8verticalACvpZ
+     d98:	2005      	movs	r0, #5
+     d9a:	4770      	bx	lr
+     d9c:	4770      	bx	lr
+     d9e:	200f      	movs	r0, #15
+     da0:	4770      	bx	lr
+     da2:	b2c9      	uxtb	r1, r1
+     da4:	2901      	cmp	r1, #1
+     da6:	d106      	bne.n	db6 <spike071_driver-0xd42>
+     da8:	b2d8      	uxtb	r0, r3
+     daa:	2801      	cmp	r0, #1
+     dac:	bf04      	itt	eq
+     dae:	2001      	moveq	r0, #1
+     db0:	4770      	bxeq	lr
+     db2:	2000      	movs	r0, #0
+     db4:	4770      	bx	lr
+     db6:	b2d9      	uxtb	r1, r3
+     db8:	2901      	cmp	r1, #1
+     dba:	d0fa      	beq.n	db2 <spike071_driver-0xd46>
+     dbc:	1a80      	subs	r0, r0, r2
+     dbe:	f001 bca7 	b.w	2710 <OUTLINED_FUNCTION_0>
+     dc2:	b2c0      	uxtb	r0, r0
+     dc4:	2807      	cmp	r0, #7
+     dc6:	bf28      	it	cs
+     dc8:	2007      	movcs	r0, #7
+     dca:	4770      	bx	lr
+     dcc:	4770      	bx	lr
+     dce:	4770      	bx	lr
+     dd0:	4608      	mov	r0, r1
+     dd2:	4770      	bx	lr
+     dd4:	4770      	bx	lr
+     dd6:	4050      	eors	r0, r2
+     dd8:	4059      	eors	r1, r3
+     dda:	b280      	uxth	r0, r0
+     ddc:	4308      	orrs	r0, r1
+     dde:	f001 bc97 	b.w	2710 <OUTLINED_FUNCTION_0>
+     de2:	4770      	bx	lr
+     de4:	4770      	bx	lr
+     de6:	e92d 4400 	stmdb	sp!, {sl, lr}
+     dea:	f8ba 0000 	ldrh.w	r0, [sl]
+     dee:	f10a 0a04 	add.w	sl, sl, #4
+     df2:	e89a 0406 	ldmia.w	sl, {r1, r2, sl}
+     df6:	4790      	blx	r2
+     df8:	e8bd 8400 	ldmia.w	sp!, {sl, pc}
+     dfc:	f020 407f 	bic.w	r0, r0, #4278190080	; 0xff000000
+     e00:	4770      	bx	lr
+     e02:	f021 417f 	bic.w	r1, r1, #4278190080	; 0xff000000
+     e06:	f020 407f 	bic.w	r0, r0, #4278190080	; 0xff000000
+     e0a:	1a40      	subs	r0, r0, r1
+     e0c:	f001 bc80 	b.w	2710 <OUTLINED_FUNCTION_0>
+     e10:	b570      	push	{r4, r5, r6, lr}
+     e12:	b0fc      	sub	sp, #496	; 0x1f0
+     e14:	460c      	mov	r4, r1
+     e16:	4601      	mov	r1, r0
+     e18:	4822      	ldr	r0, [pc, #136]	; (ea4 <spike071_driver-0xc54>)
+     e1a:	2263      	movs	r2, #99	; 0x63
+     e1c:	4478      	add	r0, pc
+     e1e:	6800      	ldr	r0, [r0, #0]
+     e20:	6800      	ldr	r0, [r0, #0]
+     e22:	907b      	str	r0, [sp, #492]	; 0x1ec
+     e24:	ad62      	add	r5, sp, #392	; 0x188
+     e26:	f001 fc98 	bl	275a <OUTLINED_FUNCTION_6>
+     e2a:	f001 fc84 	bl	2736 <OUTLINED_FUNCTION_4>
+     e2e:	d107      	bne.n	e40 <spike071_driver-0xcb8>
+     e30:	ad49      	add	r5, sp, #292	; 0x124
+     e32:	f001 fc7b 	bl	272c <OUTLINED_FUNCTION_3>
+     e36:	f001 fc7e 	bl	2736 <OUTLINED_FUNCTION_4>
+     e3a:	d128      	bne.n	e8e <spike071_driver-0xc6a>
+     e3c:	2001      	movs	r0, #1
+     e3e:	e027      	b.n	e90 <spike071_driver-0xc68>
+     e40:	a831      	add	r0, sp, #196	; 0xc4
+     e42:	a962      	add	r1, sp, #392	; 0x188
+     e44:	2260      	movs	r2, #96	; 0x60
+     e46:	f7ff fffe 	bl	0 <__aeabi_memcpy4>
+			e46: R_ARM_THM_CALL	__aeabi_memcpy4
+     e4a:	f8bd 61e8 	ldrh.w	r6, [sp, #488]	; 0x1e8
+     e4e:	ad49      	add	r5, sp, #292	; 0x124
+     e50:	f001 fc6c 	bl	272c <OUTLINED_FUNCTION_3>
+     e54:	4628      	mov	r0, r5
+     e56:	f7ff faad 	bl	3b4 <spike071_driver-0x1744>
+     e5a:	4601      	mov	r1, r0
+     e5c:	2000      	movs	r0, #0
+     e5e:	2901      	cmp	r1, #1
+     e60:	d016      	beq.n	e90 <spike071_driver-0xc68>
+     e62:	f8bd 1184 	ldrh.w	r1, [sp, #388]	; 0x184
+     e66:	428e      	cmp	r6, r1
+     e68:	d112      	bne.n	e90 <spike071_driver-0xc68>
+     e6a:	ac19      	add	r4, sp, #100	; 0x64
+     e6c:	a931      	add	r1, sp, #196	; 0xc4
+     e6e:	2260      	movs	r2, #96	; 0x60
+     e70:	f001 fc79 	bl	2766 <OUTLINED_FUNCTION_8>
+     e74:	ad01      	add	r5, sp, #4
+     e76:	a949      	add	r1, sp, #292	; 0x124
+     e78:	2260      	movs	r2, #96	; 0x60
+     e7a:	f001 fc6e 	bl	275a <OUTLINED_FUNCTION_6>
+     e7e:	2000      	movs	r0, #0
+     e80:	4286      	cmp	r6, r0
+     e82:	d0db      	beq.n	e3c <spike071_driver-0xcbc>
+     e84:	5c29      	ldrb	r1, [r5, r0]
+     e86:	5c22      	ldrb	r2, [r4, r0]
+     e88:	3001      	adds	r0, #1
+     e8a:	428a      	cmp	r2, r1
+     e8c:	d0f8      	beq.n	e80 <spike071_driver-0xc78>
+     e8e:	2000      	movs	r0, #0
+     e90:	997b      	ldr	r1, [sp, #492]	; 0x1ec
+     e92:	4a05      	ldr	r2, [pc, #20]	; (ea8 <spike071_driver-0xc50>)
+     e94:	447a      	add	r2, pc
+     e96:	f001 fc70 	bl	277a <OUTLINED_FUNCTION_11>
+     e9a:	bf04      	itt	eq
+     e9c:	b07c      	addeq	sp, #496	; 0x1f0
+     e9e:	bd70      	popeq	{r4, r5, r6, pc}
+     ea0:	f7ff fffe 	bl	0 <__stack_chk_fail>
+			ea0: R_ARM_THM_CALL	__stack_chk_fail
+     ea4:	00000084 	.word	0x00000084
+			ea4: R_ARM_GOT_PREL	__stack_chk_guard
+     ea8:	00000010 	.word	0x00000010
+			ea8: R_ARM_GOT_PREL	__stack_chk_guard
+     eac:	f7ff bffe 	b.w	e10 <spike071_driver-0xce8>
+			eac: R_ARM_THM_JUMP24	$e8Spike07118_GiftUITextContentO21__derived_enum_equalsySbAC_ACtFZ
+     eb0:	b580      	push	{r7, lr}
+     eb2:	4651      	mov	r1, sl
+     eb4:	f001 fc54 	bl	2760 <OUTLINED_FUNCTION_7>
+     eb8:	bd80      	pop	{r7, pc}
+     eba:	b580      	push	{r7, lr}
+     ebc:	f001 fc50 	bl	2760 <OUTLINED_FUNCTION_7>
+     ec0:	bd80      	pop	{r7, pc}
+     ec2:	bf00      	nop
+     ec4:	b570      	push	{r4, r5, r6, lr}
+     ec6:	b0fc      	sub	sp, #496	; 0x1f0
+     ec8:	460c      	mov	r4, r1
+     eca:	4601      	mov	r1, r0
+     ecc:	4820      	ldr	r0, [pc, #128]	; (f50 <spike071_driver-0xba8>)
+     ece:	2263      	movs	r2, #99	; 0x63
+     ed0:	4478      	add	r0, pc
+     ed2:	6800      	ldr	r0, [r0, #0]
+     ed4:	6800      	ldr	r0, [r0, #0]
+     ed6:	907b      	str	r0, [sp, #492]	; 0x1ec
+     ed8:	ad49      	add	r5, sp, #292	; 0x124
+     eda:	f001 fc3e 	bl	275a <OUTLINED_FUNCTION_6>
+     ede:	f001 fc2a 	bl	2736 <OUTLINED_FUNCTION_4>
+     ee2:	d107      	bne.n	ef4 <spike071_driver-0xc04>
+     ee4:	ad62      	add	r5, sp, #392	; 0x188
+     ee6:	f001 fc21 	bl	272c <OUTLINED_FUNCTION_3>
+     eea:	f001 fc24 	bl	2736 <OUTLINED_FUNCTION_4>
+     eee:	d124      	bne.n	f3a <spike071_driver-0xbbe>
+     ef0:	2001      	movs	r0, #1
+     ef2:	e023      	b.n	f3c <spike071_driver-0xbbc>
+     ef4:	a831      	add	r0, sp, #196	; 0xc4
+     ef6:	a949      	add	r1, sp, #292	; 0x124
+     ef8:	2260      	movs	r2, #96	; 0x60
+     efa:	f7ff fffe 	bl	0 <__aeabi_memcpy4>
+			efa: R_ARM_THM_CALL	__aeabi_memcpy4
+     efe:	f8bd 6184 	ldrh.w	r6, [sp, #388]	; 0x184
+     f02:	ad62      	add	r5, sp, #392	; 0x188
+     f04:	f001 fc12 	bl	272c <OUTLINED_FUNCTION_3>
+     f08:	f001 fc15 	bl	2736 <OUTLINED_FUNCTION_4>
+     f0c:	d015      	beq.n	f3a <spike071_driver-0xbbe>
+     f0e:	f8bd 01e8 	ldrh.w	r0, [sp, #488]	; 0x1e8
+     f12:	4286      	cmp	r6, r0
+     f14:	d111      	bne.n	f3a <spike071_driver-0xbbe>
+     f16:	ac19      	add	r4, sp, #100	; 0x64
+     f18:	a931      	add	r1, sp, #196	; 0xc4
+     f1a:	2260      	movs	r2, #96	; 0x60
+     f1c:	f001 fc23 	bl	2766 <OUTLINED_FUNCTION_8>
+     f20:	ad01      	add	r5, sp, #4
+     f22:	a962      	add	r1, sp, #392	; 0x188
+     f24:	2260      	movs	r2, #96	; 0x60
+     f26:	f001 fc18 	bl	275a <OUTLINED_FUNCTION_6>
+     f2a:	2000      	movs	r0, #0
+     f2c:	4286      	cmp	r6, r0
+     f2e:	d0df      	beq.n	ef0 <spike071_driver-0xc08>
+     f30:	5c29      	ldrb	r1, [r5, r0]
+     f32:	5c22      	ldrb	r2, [r4, r0]
+     f34:	3001      	adds	r0, #1
+     f36:	428a      	cmp	r2, r1
+     f38:	d0f8      	beq.n	f2c <spike071_driver-0xbcc>
+     f3a:	2000      	movs	r0, #0
+     f3c:	997b      	ldr	r1, [sp, #492]	; 0x1ec
+     f3e:	4a05      	ldr	r2, [pc, #20]	; (f54 <spike071_driver-0xba4>)
+     f40:	447a      	add	r2, pc
+     f42:	f001 fc1a 	bl	277a <OUTLINED_FUNCTION_11>
+     f46:	bf04      	itt	eq
+     f48:	b07c      	addeq	sp, #496	; 0x1f0
+     f4a:	bd70      	popeq	{r4, r5, r6, pc}
+     f4c:	f7ff fffe 	bl	0 <__stack_chk_fail>
+			f4c: R_ARM_THM_CALL	__stack_chk_fail
+     f50:	0000007c 	.word	0x0000007c
+			f50: R_ARM_GOT_PREL	__stack_chk_guard
+     f54:	00000010 	.word	0x00000010
+			f54: R_ARM_GOT_PREL	__stack_chk_guard
+     f58:	b580      	push	{r7, lr}
+     f5a:	4651      	mov	r1, sl
+     f5c:	f001 fc00 	bl	2760 <OUTLINED_FUNCTION_7>
+     f60:	bd80      	pop	{r7, pc}
+     f62:	b2c0      	uxtb	r0, r0
+     f64:	2805      	cmp	r0, #5
+     f66:	bf28      	it	cs
+     f68:	2005      	movcs	r0, #5
+     f6a:	4770      	bx	lr
+     f6c:	4770      	bx	lr
+     f6e:	b510      	push	{r4, lr}
+     f70:	4604      	mov	r4, r0
+     f72:	2000      	movs	r0, #0
+     f74:	429c      	cmp	r4, r3
+     f76:	d107      	bne.n	f88 <spike071_driver-0xb70>
+     f78:	9b02      	ldr	r3, [sp, #8]
+     f7a:	4299      	cmp	r1, r3
+     f7c:	d104      	bne.n	f88 <spike071_driver-0xb70>
+     f7e:	9803      	ldr	r0, [sp, #12]
+     f80:	1a10      	subs	r0, r2, r0
+     f82:	fab0 f080 	clz	r0, r0
+     f86:	0940      	lsrs	r0, r0, #5
+     f88:	bd10      	pop	{r4, pc}
+     f8a:	b510      	push	{r4, lr}
+     f8c:	4604      	mov	r4, r0
+     f8e:	7808      	ldrb	r0, [r1, #0]
+     f90:	f7ff fffe 	bl	f62 <spike071_driver-0xb96>
+			f90: R_ARM_THM_CALL	$e8Spike07113AccessFailureO8rawValueACSgs5UInt8V_tcfC
+     f94:	b2c0      	uxtb	r0, r0
+     f96:	7020      	strb	r0, [r4, #0]
+     f98:	bd10      	pop	{r4, pc}
+     f9a:	b5bc      	push	{r2, r3, r4, r5, r7, lr}
+     f9c:	e9d0 4500 	ldrd	r4, r5, [r0]
+     fa0:	6882      	ldr	r2, [r0, #8]
+     fa2:	e9d1 3000 	ldrd	r3, r0, [r1]
+     fa6:	6889      	ldr	r1, [r1, #8]
+     fa8:	e9cd 0100 	strd	r0, r1, [sp]
+     fac:	4620      	mov	r0, r4
+     fae:	4629      	mov	r1, r5
+     fb0:	f7ff fffe 	bl	f6e <spike071_driver-0xb8a>
+			fb0: R_ARM_THM_CALL	$e8Spike0718ModelKeyV23__derived_struct_equalsySbAC_ACtFZ
+     fb4:	bdbc      	pop	{r2, r3, r4, r5, r7, pc}
+     fb6:	f89a 301c 	ldrb.w	r3, [sl, #28]
+     fba:	07db      	lsls	r3, r3, #31
+     fbc:	d00d      	beq.n	fda <spike071_driver-0xb1e>
+     fbe:	f8da 3010 	ldr.w	r3, [sl, #16]
+     fc2:	4298      	cmp	r0, r3
+     fc4:	d10b      	bne.n	fde <spike071_driver-0xb1a>
+     fc6:	f8da 0014 	ldr.w	r0, [sl, #20]
+     fca:	4281      	cmp	r1, r0
+     fcc:	d109      	bne.n	fe2 <spike071_driver-0xb16>
+     fce:	f8da 0018 	ldr.w	r0, [sl, #24]
+     fd2:	4282      	cmp	r2, r0
+     fd4:	d008      	beq.n	fe8 <spike071_driver-0xb10>
+     fd6:	2002      	movs	r0, #2
+     fd8:	e004      	b.n	fe4 <spike071_driver-0xb14>
+     fda:	2003      	movs	r0, #3
+     fdc:	e002      	b.n	fe4 <spike071_driver-0xb14>
+     fde:	2000      	movs	r0, #0
+     fe0:	e000      	b.n	fe4 <spike071_driver-0xb14>
+     fe2:	2001      	movs	r0, #1
+     fe4:	f04f 0801 	mov.w	r8, #1
+     fe8:	4770      	bx	lr
+     fea:	b510      	push	{r4, lr}
+     fec:	f89a 401c 	ldrb.w	r4, [sl, #28]
+     ff0:	07e4      	lsls	r4, r4, #31
+     ff2:	d016      	beq.n	1022 <spike071_driver-0xad6>
+     ff4:	f8da 4010 	ldr.w	r4, [sl, #16]
+     ff8:	42a0      	cmp	r0, r4
+     ffa:	d114      	bne.n	1026 <spike071_driver-0xad2>
+     ffc:	f8da 0014 	ldr.w	r0, [sl, #20]
+    1000:	4281      	cmp	r1, r0
+    1002:	d112      	bne.n	102a <spike071_driver-0xace>
+    1004:	f8da 0018 	ldr.w	r0, [sl, #24]
+    1008:	4282      	cmp	r2, r0
+    100a:	d110      	bne.n	102e <spike071_driver-0xaca>
+    100c:	f8da 1004 	ldr.w	r1, [sl, #4]
+    1010:	b298      	uxth	r0, r3
+    1012:	4281      	cmp	r1, r0
+    1014:	dd0d      	ble.n	1032 <spike071_driver-0xac6>
+    1016:	f8da 1000 	ldr.w	r1, [sl]
+    101a:	eb01 1000 	add.w	r0, r1, r0, lsl #4
+    101e:	6880      	ldr	r0, [r0, #8]
+    1020:	bd10      	pop	{r4, pc}
+    1022:	2003      	movs	r0, #3
+    1024:	e006      	b.n	1034 <spike071_driver-0xac4>
+    1026:	2000      	movs	r0, #0
+    1028:	e004      	b.n	1034 <spike071_driver-0xac4>
+    102a:	2001      	movs	r0, #1
+    102c:	e002      	b.n	1034 <spike071_driver-0xac4>
+    102e:	2002      	movs	r0, #2
+    1030:	e000      	b.n	1034 <spike071_driver-0xac4>
+    1032:	2004      	movs	r0, #4
+    1034:	f04f 0801 	mov.w	r8, #1
+    1038:	bd10      	pop	{r4, pc}
+    103a:	b570      	push	{r4, r5, r6, lr}
+    103c:	f5b2 7fca 	cmp.w	r2, #404	; 0x194
+    1040:	d114      	bne.n	106c <spike071_driver-0xa8c>
+    1042:	9a04      	ldr	r2, [sp, #16]
+    1044:	f5b2 7fca 	cmp.w	r2, #404	; 0x194
+    1048:	d110      	bne.n	106c <spike071_driver-0xa8c>
+    104a:	9a05      	ldr	r2, [sp, #20]
+    104c:	f44f 76ca 	mov.w	r6, #404	; 0x194
+    1050:	2407      	movs	r4, #7
+    1052:	2500      	movs	r5, #0
+    1054:	e9c0 1600 	strd	r1, r6, [r0]
+    1058:	e9c0 3602 	strd	r3, r6, [r0, #8]
+    105c:	6184      	str	r4, [r0, #24]
+    105e:	2116      	movs	r1, #22
+    1060:	e9c0 2504 	strd	r2, r5, [r0, #16]
+    1064:	301c      	adds	r0, #28
+    1066:	f7ff fffe 	bl	0 <__aeabi_memclr4>
+			1066: R_ARM_THM_CALL	__aeabi_memclr4
+    106a:	bd70      	pop	{r4, r5, r6, pc}
+    106c:	defe      	udf	#254	; 0xfe
+    106e:	b5f0      	push	{r4, r5, r6, r7, lr}
+    1070:	f89a 0030 	ldrb.w	r0, [sl, #48]	; 0x30
+    1074:	bb30      	cbnz	r0, 10c4 <spike071_driver-0xa34>
+    1076:	f8da 0024 	ldr.w	r0, [sl, #36]	; 0x24
+    107a:	1c42      	adds	r2, r0, #1
+    107c:	d022      	beq.n	10c4 <spike071_driver-0xa34>
+    107e:	f8da 0000 	ldr.w	r0, [sl]
+    1082:	f8da 1008 	ldr.w	r1, [sl, #8]
+    1086:	2300      	movs	r3, #0
+    1088:	58c7      	ldr	r7, [r0, r3]
+    108a:	18c4      	adds	r4, r0, r3
+    108c:	e9d4 5601 	ldrd	r5, r6, [r4, #4]
+    1090:	68e4      	ldr	r4, [r4, #12]
+    1092:	50cf      	str	r7, [r1, r3]
+    1094:	18cf      	adds	r7, r1, r3
+    1096:	3310      	adds	r3, #16
+    1098:	f5b3 5fca 	cmp.w	r3, #6464	; 0x1940
+    109c:	e9c7 5601 	strd	r5, r6, [r7, #4]
+    10a0:	60fc      	str	r4, [r7, #12]
+    10a2:	d1f1      	bne.n	1088 <spike071_driver-0xa70>
+    10a4:	f10a 0410 	add.w	r4, sl, #16
+    10a8:	f8da 5028 	ldr.w	r5, [sl, #40]	; 0x28
+    10ac:	2101      	movs	r1, #1
+    10ae:	f8ca 2024 	str.w	r2, [sl, #36]	; 0x24
+    10b2:	cc19      	ldmia	r4, {r0, r3, r4}
+    10b4:	e9ca 3407 	strd	r3, r4, [sl, #28]
+    10b8:	f88a 1030 	strb.w	r1, [sl, #48]	; 0x30
+    10bc:	2300      	movs	r3, #0
+    10be:	f8ca 502c 	str.w	r5, [sl, #44]	; 0x2c
+    10c2:	bdf0      	pop	{r4, r5, r6, r7, pc}
+    10c4:	2301      	movs	r3, #1
+    10c6:	2000      	movs	r0, #0
+    10c8:	2100      	movs	r1, #0
+    10ca:	2200      	movs	r2, #0
+    10cc:	bdf0      	pop	{r4, r5, r6, r7, pc}
+    10ce:	b5f0      	push	{r4, r5, r6, r7, lr}
+    10d0:	f8da 1008 	ldr.w	r1, [sl, #8]
+    10d4:	074a      	lsls	r2, r1, #29
+    10d6:	d110      	bne.n	10fa <spike071_driver-0x9fe>
+    10d8:	f89a 3030 	ldrb.w	r3, [sl, #48]	; 0x30
+    10dc:	e9da 6703 	ldrd	r6, r7, [sl, #12]
+    10e0:	f10a 051c 	add.w	r5, sl, #28
+    10e4:	2201      	movs	r2, #1
+    10e6:	7703      	strb	r3, [r0, #28]
+    10e8:	cd38      	ldmia	r5, {r3, r4, r5}
+    10ea:	e9c0 1600 	strd	r1, r6, [r0]
+    10ee:	f100 0108 	add.w	r1, r0, #8
+    10f2:	e9c0 2505 	strd	r2, r5, [r0, #20]
+    10f6:	c198      	stmia	r1!, {r3, r4, r7}
+    10f8:	bdf0      	pop	{r4, r5, r6, r7, pc}
+    10fa:	defe      	udf	#254	; 0xfe
+    10fc:	defe      	udf	#254	; 0xfe
+    10fe:	bf00      	nop
+    1100:	b570      	push	{r4, r5, r6, lr}
+    1102:	b0b2      	sub	sp, #200	; 0xc8
+    1104:	4604      	mov	r4, r0
+    1106:	466d      	mov	r5, sp
+    1108:	2903      	cmp	r1, #3
+    110a:	d018      	beq.n	113e <spike071_driver-0x9ba>
+    110c:	2902      	cmp	r1, #2
+    110e:	d00b      	beq.n	1128 <spike071_driver-0x9d0>
+    1110:	bb01      	cbnz	r1, 1154 <spike071_driver-0x9a4>
+    1112:	491b      	ldr	r1, [pc, #108]	; (1180 <spike071_driver-0x978>)
+    1114:	4628      	mov	r0, r5
+    1116:	2201      	movs	r2, #1
+    1118:	2302      	movs	r3, #2
+    111a:	4479      	add	r1, pc
+    111c:	f7ff fffe 	bl	16 <spike071_driver-0x1ae2>
+			111c: R_ARM_THM_CALL	$e8Spike07111BoundedTextVyACSgs12StaticStringVcfC
+    1120:	f001 fb09 	bl	2736 <OUTLINED_FUNCTION_4>
+    1124:	d120      	bne.n	1168 <spike071_driver-0x990>
+    1126:	defe      	udf	#254	; 0xfe
+    1128:	4918      	ldr	r1, [pc, #96]	; (118c <spike071_driver-0x96c>)
+    112a:	4628      	mov	r0, r5
+    112c:	2201      	movs	r2, #1
+    112e:	2302      	movs	r3, #2
+    1130:	4479      	add	r1, pc
+    1132:	f7ff fffe 	bl	16 <spike071_driver-0x1ae2>
+			1132: R_ARM_THM_CALL	$e8Spike07111BoundedTextVyACSgs12StaticStringVcfC
+    1136:	f001 fafe 	bl	2736 <OUTLINED_FUNCTION_4>
+    113a:	d115      	bne.n	1168 <spike071_driver-0x990>
+    113c:	defe      	udf	#254	; 0xfe
+    113e:	4912      	ldr	r1, [pc, #72]	; (1188 <spike071_driver-0x970>)
+    1140:	4628      	mov	r0, r5
+    1142:	2201      	movs	r2, #1
+    1144:	2302      	movs	r3, #2
+    1146:	4479      	add	r1, pc
+    1148:	f7ff fffe 	bl	16 <spike071_driver-0x1ae2>
+			1148: R_ARM_THM_CALL	$e8Spike07111BoundedTextVyACSgs12StaticStringVcfC
+    114c:	f001 faf3 	bl	2736 <OUTLINED_FUNCTION_4>
+    1150:	d10a      	bne.n	1168 <spike071_driver-0x990>
+    1152:	defe      	udf	#254	; 0xfe
+    1154:	490b      	ldr	r1, [pc, #44]	; (1184 <spike071_driver-0x974>)
+    1156:	4628      	mov	r0, r5
+    1158:	2201      	movs	r2, #1
+    115a:	2302      	movs	r3, #2
+    115c:	4479      	add	r1, pc
+    115e:	f7ff fffe 	bl	16 <spike071_driver-0x1ae2>
+			115e: R_ARM_THM_CALL	$e8Spike07111BoundedTextVyACSgs12StaticStringVcfC
+    1162:	f001 fae8 	bl	2736 <OUTLINED_FUNCTION_4>
+    1166:	d00a      	beq.n	117e <spike071_driver-0x97a>
+    1168:	ae19      	add	r6, sp, #100	; 0x64
+    116a:	4629      	mov	r1, r5
+    116c:	f001 fafe 	bl	276c <OUTLINED_FUNCTION_9>
+    1170:	4620      	mov	r0, r4
+    1172:	4631      	mov	r1, r6
+    1174:	2262      	movs	r2, #98	; 0x62
+    1176:	f7ff fffe 	bl	0 <__aeabi_memcpy4>
+			1176: R_ARM_THM_CALL	__aeabi_memcpy4
+    117a:	b032      	add	sp, #200	; 0xc8
+    117c:	bd70      	pop	{r4, r5, r6, pc}
+    117e:	defe      	udf	#254	; 0xfe
+    1180:	00000062 	.word	0x00000062
+			1180: R_ARM_REL32	.L.str.1.0
+    1184:	00000024 	.word	0x00000024
+			1184: R_ARM_REL32	.L.str.1.?
+    1188:	0000003e 	.word	0x0000003e
+			1188: R_ARM_REL32	.L.str.1.3
+    118c:	00000058 	.word	0x00000058
+			118c: R_ARM_REL32	.L.str.1.2
+    1190:	e92d 4ef0 	stmdb	sp!, {r4, r5, r6, r7, r9, sl, fp, lr}
+    1194:	b08a      	sub	sp, #40	; 0x28
+    1196:	4604      	mov	r4, r0
+    1198:	4843      	ldr	r0, [pc, #268]	; (12a8 <spike071_driver-0x850>)
+    119a:	4478      	add	r0, pc
+    119c:	6800      	ldr	r0, [r0, #0]
+    119e:	6800      	ldr	r0, [r0, #0]
+    11a0:	9009      	str	r0, [sp, #36]	; 0x24
+    11a2:	7f10      	ldrb	r0, [r2, #28]
+    11a4:	2801      	cmp	r0, #1
+    11a6:	d113      	bne.n	11d0 <spike071_driver-0x928>
+    11a8:	e9d2 9b00 	ldrd	r9, fp, [r2]
+    11ac:	2000      	movs	r0, #0
+    11ae:	6893      	ldr	r3, [r2, #8]
+    11b0:	460f      	mov	r7, r1
+    11b2:	4615      	mov	r5, r2
+    11b4:	4646      	mov	r6, r8
+    11b6:	9008      	str	r0, [sp, #32]
+    11b8:	aa08      	add	r2, sp, #32
+    11ba:	4648      	mov	r0, r9
+    11bc:	4659      	mov	r1, fp
+    11be:	4798      	blx	r3
+    11c0:	46b0      	mov	r8, r6
+    11c2:	f7ff fffe 	bl	56c <spike071_driver-0x158c>
+			11c2: R_ARM_THM_CALL	$e8Spike07121requireDrawingSuccess33_9CB5166BE76D057987ABFF638FB9C0F6LLyys5UInt8VAA0C5ErrorOYKF
+    11c6:	f1b8 0f00 	cmp.w	r8, #0
+    11ca:	d003      	beq.n	11d4 <spike071_driver-0x924>
+    11cc:	4606      	mov	r6, r0
+    11ce:	e01d      	b.n	120c <spike071_driver-0x8ec>
+    11d0:	2604      	movs	r6, #4
+    11d2:	e01b      	b.n	120c <spike071_driver-0x8ec>
+    11d4:	68e8      	ldr	r0, [r5, #12]
+    11d6:	4659      	mov	r1, fp
+    11d8:	2300      	movs	r3, #0
+    11da:	46c2      	mov	sl, r8
+    11dc:	9007      	str	r0, [sp, #28]
+    11de:	e9d5 6004 	ldrd	r6, r0, [r5, #16]
+    11e2:	9006      	str	r0, [sp, #24]
+    11e4:	69a8      	ldr	r0, [r5, #24]
+    11e6:	9d08      	ldr	r5, [sp, #32]
+    11e8:	9005      	str	r0, [sp, #20]
+    11ea:	2000      	movs	r0, #0
+    11ec:	462a      	mov	r2, r5
+    11ee:	9000      	str	r0, [sp, #0]
+    11f0:	4648      	mov	r0, r9
+    11f2:	47b0      	blx	r6
+    11f4:	46d0      	mov	r8, sl
+    11f6:	f7ff fffe 	bl	56c <spike071_driver-0x158c>
+			11f6: R_ARM_THM_CALL	$e8Spike07121requireDrawingSuccess33_9CB5166BE76D057987ABFF638FB9C0F6LLyys5UInt8VAA0C5ErrorOYKF
+    11fa:	4606      	mov	r6, r0
+    11fc:	f1b8 0f00 	cmp.w	r8, #0
+    1200:	4659      	mov	r1, fp
+    1202:	4648      	mov	r0, r9
+    1204:	d011      	beq.n	122a <spike071_driver-0x8ce>
+    1206:	e9dd 3207 	ldrd	r3, r2, [sp, #28]
+    120a:	4798      	blx	r3
+    120c:	f04f 0801 	mov.w	r8, #1
+    1210:	9809      	ldr	r0, [sp, #36]	; 0x24
+    1212:	4926      	ldr	r1, [pc, #152]	; (12ac <spike071_driver-0x84c>)
+    1214:	4479      	add	r1, pc
+    1216:	6809      	ldr	r1, [r1, #0]
+    1218:	6809      	ldr	r1, [r1, #0]
+    121a:	4281      	cmp	r1, r0
+    121c:	bf02      	ittt	eq
+    121e:	4630      	moveq	r0, r6
+    1220:	b00a      	addeq	sp, #40	; 0x28
+    1222:	e8bd 8ef0 	ldmiaeq.w	sp!, {r4, r5, r6, r7, r9, sl, fp, pc}
+    1226:	f7ff fffe 	bl	0 <__stack_chk_fail>
+			1226: R_ARM_THM_CALL	__stack_chk_fail
+    122a:	2600      	movs	r6, #0
+    122c:	e9dd 9c05 	ldrd	r9, ip, [sp, #20]
+    1230:	2c63      	cmp	r4, #99	; 0x63
+    1232:	d0e8      	beq.n	1206 <spike071_driver-0x8f2>
+    1234:	f5b4 7f7a 	cmp.w	r4, #1000	; 0x3e8
+    1238:	d8e5      	bhi.n	1206 <spike071_driver-0x8f2>
+    123a:	f5b7 7f7a 	cmp.w	r7, #1000	; 0x3e8
+    123e:	d8e2      	bhi.n	1206 <spike071_driver-0x8f2>
+    1240:	4683      	mov	fp, r0
+    1242:	2001      	movs	r0, #1
+    1244:	462a      	mov	r2, r5
+    1246:	193b      	adds	r3, r7, r4
+    1248:	46c2      	mov	sl, r8
+    124a:	460d      	mov	r5, r1
+    124c:	9000      	str	r0, [sp, #0]
+    124e:	4658      	mov	r0, fp
+    1250:	4617      	mov	r7, r2
+    1252:	47e0      	blx	ip
+    1254:	46d0      	mov	r8, sl
+    1256:	f7ff fffe 	bl	56c <spike071_driver-0x158c>
+			1256: R_ARM_THM_CALL	$e8Spike07121requireDrawingSuccess33_9CB5166BE76D057987ABFF638FB9C0F6LLyys5UInt8VAA0C5ErrorOYKF
+    125a:	f1b8 0f00 	cmp.w	r8, #0
+    125e:	d003      	beq.n	1268 <spike071_driver-0x890>
+    1260:	4606      	mov	r6, r0
+    1262:	4629      	mov	r1, r5
+    1264:	4658      	mov	r0, fp
+    1266:	e7ce      	b.n	1206 <spike071_driver-0x8f2>
+    1268:	21ff      	movs	r1, #255	; 0xff
+    126a:	2000      	movs	r0, #0
+    126c:	463a      	mov	r2, r7
+    126e:	23ff      	movs	r3, #255	; 0xff
+    1270:	4644      	mov	r4, r8
+    1272:	e9cd 1100 	strd	r1, r1, [sp]
+    1276:	2101      	movs	r1, #1
+    1278:	9004      	str	r0, [sp, #16]
+    127a:	e9cd 1002 	strd	r1, r0, [sp, #8]
+    127e:	4658      	mov	r0, fp
+    1280:	4629      	mov	r1, r5
+    1282:	47c8      	blx	r9
+    1284:	f001 fa76 	bl	2774 <OUTLINED_FUNCTION_10>
+    1288:	4606      	mov	r6, r0
+    128a:	f1b8 0f00 	cmp.w	r8, #0
+    128e:	4629      	mov	r1, r5
+    1290:	4658      	mov	r0, fp
+    1292:	d1b8      	bne.n	1206 <spike071_driver-0x8f2>
+    1294:	e9dd 3207 	ldrd	r3, r2, [sp, #28]
+    1298:	4644      	mov	r4, r8
+    129a:	4798      	blx	r3
+    129c:	f001 fa6a 	bl	2774 <OUTLINED_FUNCTION_10>
+    12a0:	f1b8 0f00 	cmp.w	r8, #0
+    12a4:	d192      	bne.n	11cc <spike071_driver-0x92c>
+    12a6:	e7b3      	b.n	1210 <spike071_driver-0x8e8>
+    12a8:	0000010a 	.word	0x0000010a
+			12a8: R_ARM_GOT_PREL	__stack_chk_guard
+    12ac:	00000094 	.word	0x00000094
+			12ac: R_ARM_GOT_PREL	__stack_chk_guard
+    12b0:	e8ba 0007 	ldmia.w	sl!, {r0, r1, r2}
+    12b4:	f7ff ff22 	bl	10fc <spike071_driver-0x9fc>
+    12b8:	6801      	ldr	r1, [r0, #0]
+    12ba:	3101      	adds	r1, #1
+    12bc:	bf3f      	itttt	cc
+    12be:	6001      	strcc	r1, [r0, #0]
+    12c0:	2001      	movcc	r0, #1
+    12c2:	6010      	strcc	r0, [r2, #0]
+    12c4:	2000      	movcc	r0, #0
+    12c6:	bf38      	it	cc
+    12c8:	4770      	bxcc	lr
+    12ca:	defe      	udf	#254	; 0xfe
+    12cc:	6841      	ldr	r1, [r0, #4]
+    12ce:	3101      	adds	r1, #1
+    12d0:	bf3e      	ittt	cc
+    12d2:	6041      	strcc	r1, [r0, #4]
+    12d4:	2000      	movcc	r0, #0
+    12d6:	4770      	bxcc	lr
+    12d8:	defe      	udf	#254	; 0xfe
+    12da:	2000      	movs	r0, #0
+    12dc:	4770      	bx	lr
+    12de:	6881      	ldr	r1, [r0, #8]
+    12e0:	3101      	adds	r1, #1
+    12e2:	d207      	bcs.n	12f4 <spike071_driver-0x804>
+    12e4:	6081      	str	r1, [r0, #8]
+    12e6:	68c1      	ldr	r1, [r0, #12]
+    12e8:	18c9      	adds	r1, r1, r3
+    12ea:	bf7e      	ittt	vc
+    12ec:	60c1      	strvc	r1, [r0, #12]
+    12ee:	2000      	movvc	r0, #0
+    12f0:	4770      	bxvc	lr
+    12f2:	defe      	udf	#254	; 0xfe
+    12f4:	defe      	udf	#254	; 0xfe
+    12f6:	6901      	ldr	r1, [r0, #16]
+    12f8:	3101      	adds	r1, #1
+    12fa:	bf3e      	ittt	cc
+    12fc:	6101      	strcc	r1, [r0, #16]
+    12fe:	2000      	movcc	r0, #0
+    1300:	4770      	bxcc	lr
+    1302:	defe      	udf	#254	; 0xfe
+    1304:	b580      	push	{r7, lr}
+    1306:	f7ff fffe 	bl	12b8 <spike071_driver-0x840>
+			1306: R_ARM_THM_CALL	$e8Spike0719beginPathys5UInt8VSv_s6UInt32VSpyAFGtF
+    130a:	2000      	movs	r0, #0
+    130c:	bd80      	pop	{r7, pc}
+    130e:	b580      	push	{r7, lr}
+    1310:	f7ff fffe 	bl	12cc <spike071_driver-0x82c>
+			1310: R_ARM_THM_CALL	$e8Spike0717endPathys5UInt8VSv_s6UInt32VAFtF
+    1314:	2000      	movs	r0, #0
+    1316:	bd80      	pop	{r7, pc}
+    1318:	2000      	movs	r0, #0
+    131a:	4770      	bx	lr
+    131c:	b5e0      	push	{r5, r6, r7, lr}
+    131e:	f7ff fffe 	bl	12de <spike071_driver-0x81a>
+			131e: R_ARM_THM_CALL	$e8Spike0718linePathys5UInt8VSv_s6UInt32VAFs5Int32VAHtF
+    1322:	2000      	movs	r0, #0
+    1324:	bd8c      	pop	{r2, r3, r7, pc}
+    1326:	b5fe      	push	{r1, r2, r3, r4, r5, r6, r7, lr}
+    1328:	f7ff fffe 	bl	12f6 <spike071_driver-0x802>
+			1328: R_ARM_THM_CALL	$e8Spike07110strokePathys5UInt8VSv_s6UInt32VAf3Ds5Int32VA2DtF
+    132c:	2000      	movs	r0, #0
+    132e:	b006      	add	sp, #24
+    1330:	bd80      	pop	{r7, pc}
+    1332:	4770      	bx	lr
+    1334:	e92d 4430 	stmdb	sp!, {r4, r5, sl, lr}
+    1338:	4654      	mov	r4, sl
+    133a:	4682      	mov	sl, r0
+    133c:	f894 00a0 	ldrb.w	r0, [r4, #160]	; 0xa0
+    1340:	2801      	cmp	r0, #1
+    1342:	d11b      	bne.n	137c <spike071_driver-0x77c>
+    1344:	7b20      	ldrb	r0, [r4, #12]
+    1346:	460d      	mov	r5, r1
+    1348:	2801      	cmp	r0, #1
+    134a:	d119      	bne.n	1380 <spike071_driver-0x778>
+    134c:	7f20      	ldrb	r0, [r4, #28]
+    134e:	2801      	cmp	r0, #1
+    1350:	d135      	bne.n	13be <spike071_driver-0x73a>
+    1352:	f894 002c 	ldrb.w	r0, [r4, #44]	; 0x2c
+    1356:	2801      	cmp	r0, #1
+    1358:	d150      	bne.n	13fc <spike071_driver-0x6fc>
+    135a:	2100      	movs	r1, #0
+    135c:	2001      	movs	r0, #1
+    135e:	f884 002c 	strb.w	r0, [r4, #44]	; 0x2c
+    1362:	e9c4 1108 	strd	r1, r1, [r4, #32]
+    1366:	62a1      	str	r1, [r4, #40]	; 0x28
+    1368:	7720      	strb	r0, [r4, #28]
+    136a:	7320      	strb	r0, [r4, #12]
+    136c:	e9c4 1104 	strd	r1, r1, [r4, #16]
+    1370:	61a1      	str	r1, [r4, #24]
+    1372:	e9c4 1100 	strd	r1, r1, [r4]
+    1376:	60a1      	str	r1, [r4, #8]
+    1378:	e8bd 8430 	ldmia.w	sp!, {r4, r5, sl, pc}
+    137c:	2005      	movs	r0, #5
+    137e:	e056      	b.n	142e <spike071_driver-0x6ca>
+    1380:	f89a 001c 	ldrb.w	r0, [sl, #28]
+    1384:	07c0      	lsls	r0, r0, #31
+    1386:	d042      	beq.n	140e <spike071_driver-0x6ea>
+    1388:	6820      	ldr	r0, [r4, #0]
+    138a:	f8da 1010 	ldr.w	r1, [sl, #16]
+    138e:	4288      	cmp	r0, r1
+    1390:	d13d      	bne.n	140e <spike071_driver-0x6ea>
+    1392:	6860      	ldr	r0, [r4, #4]
+    1394:	f8da 1014 	ldr.w	r1, [sl, #20]
+    1398:	4288      	cmp	r0, r1
+    139a:	d138      	bne.n	140e <spike071_driver-0x6ea>
+    139c:	68a0      	ldr	r0, [r4, #8]
+    139e:	f8da 1018 	ldr.w	r1, [sl, #24]
+    13a2:	4288      	cmp	r0, r1
+    13a4:	d133      	bne.n	140e <spike071_driver-0x6ea>
+    13a6:	f001 f9ec 	bl	2782 <OUTLINED_FUNCTION_12>
+    13aa:	f1b8 0f00 	cmp.w	r8, #0
+    13ae:	d12f      	bne.n	1410 <spike071_driver-0x6e8>
+    13b0:	f8d4 009c 	ldr.w	r0, [r4, #156]	; 0x9c
+    13b4:	3001      	adds	r0, #1
+    13b6:	d24d      	bcs.n	1454 <spike071_driver-0x6a4>
+    13b8:	f8c4 009c 	str.w	r0, [r4, #156]	; 0x9c
+    13bc:	e7c6      	b.n	134c <spike071_driver-0x7ac>
+    13be:	f89a 001c 	ldrb.w	r0, [sl, #28]
+    13c2:	07c0      	lsls	r0, r0, #31
+    13c4:	d023      	beq.n	140e <spike071_driver-0x6ea>
+    13c6:	6920      	ldr	r0, [r4, #16]
+    13c8:	f8da 1010 	ldr.w	r1, [sl, #16]
+    13cc:	4288      	cmp	r0, r1
+    13ce:	d11e      	bne.n	140e <spike071_driver-0x6ea>
+    13d0:	6960      	ldr	r0, [r4, #20]
+    13d2:	f8da 1014 	ldr.w	r1, [sl, #20]
+    13d6:	4288      	cmp	r0, r1
+    13d8:	d119      	bne.n	140e <spike071_driver-0x6ea>
+    13da:	69a0      	ldr	r0, [r4, #24]
+    13dc:	f8da 1018 	ldr.w	r1, [sl, #24]
+    13e0:	4288      	cmp	r0, r1
+    13e2:	d114      	bne.n	140e <spike071_driver-0x6ea>
+    13e4:	f001 f9cd 	bl	2782 <OUTLINED_FUNCTION_12>
+    13e8:	f1b8 0f00 	cmp.w	r8, #0
+    13ec:	d110      	bne.n	1410 <spike071_driver-0x6e8>
+    13ee:	f8d4 009c 	ldr.w	r0, [r4, #156]	; 0x9c
+    13f2:	3001      	adds	r0, #1
+    13f4:	d22f      	bcs.n	1456 <spike071_driver-0x6a2>
+    13f6:	f8c4 009c 	str.w	r0, [r4, #156]	; 0x9c
+    13fa:	e7aa      	b.n	1352 <spike071_driver-0x7a6>
+    13fc:	f104 0220 	add.w	r2, r4, #32
+    1400:	2311      	movs	r3, #17
+    1402:	ca07      	ldmia	r2, {r0, r1, r2}
+    1404:	f7ff fffe 	bl	fea <spike071_driver-0xb0e>
+			1404: R_ARM_THM_CALL	$e8Spike0719FrameReadV5level_2ats6UInt32VAA8ModelKeyV_s6UInt16VtAA13AccessFailureOYKF
+    1408:	f1b8 0f00 	cmp.w	r8, #0
+    140c:	d013      	beq.n	1436 <spike071_driver-0x6c2>
+    140e:	2004      	movs	r0, #4
+    1410:	2200      	movs	r2, #0
+    1412:	2101      	movs	r1, #1
+    1414:	f884 102c 	strb.w	r1, [r4, #44]	; 0x2c
+    1418:	6222      	str	r2, [r4, #32]
+    141a:	6262      	str	r2, [r4, #36]	; 0x24
+    141c:	62a2      	str	r2, [r4, #40]	; 0x28
+    141e:	7721      	strb	r1, [r4, #28]
+    1420:	6122      	str	r2, [r4, #16]
+    1422:	6162      	str	r2, [r4, #20]
+    1424:	61a2      	str	r2, [r4, #24]
+    1426:	7321      	strb	r1, [r4, #12]
+    1428:	6022      	str	r2, [r4, #0]
+    142a:	6062      	str	r2, [r4, #4]
+    142c:	60a2      	str	r2, [r4, #8]
+    142e:	f04f 0801 	mov.w	r8, #1
+    1432:	e8bd 8430 	ldmia.w	sp!, {r4, r5, sl, pc}
+    1436:	2101      	movs	r1, #1
+    1438:	462a      	mov	r2, r5
+    143a:	f7ff fffe 	bl	1190 <spike071_driver-0x968>
+			143a: R_ARM_THM_CALL	$e8Spike0717drawBar5value5scale7contextys6UInt32V_AgA15GraphicsContextVztAA12DrawingErrorOYKF
+    143e:	f1b8 0f00 	cmp.w	r8, #0
+    1442:	d1e5      	bne.n	1410 <spike071_driver-0x6e8>
+    1444:	f8d4 009c 	ldr.w	r0, [r4, #156]	; 0x9c
+    1448:	3001      	adds	r0, #1
+    144a:	d202      	bcs.n	1452 <spike071_driver-0x6a6>
+    144c:	f8c4 009c 	str.w	r0, [r4, #156]	; 0x9c
+    1450:	e783      	b.n	135a <spike071_driver-0x79e>
+    1452:	defe      	udf	#254	; 0xfe
+    1454:	defe      	udf	#254	; 0xfe
+    1456:	defe      	udf	#254	; 0xfe
+    1458:	4770      	bx	lr
+    145a:	bf00      	nop
+    145c:	e92d 4ff0 	stmdb	sp!, {r4, r5, r6, r7, r8, r9, sl, fp, lr}
+    1460:	f2ad 5db4 	subw	sp, sp, #1460	; 0x5b4
+    1464:	4682      	mov	sl, r0
+    1466:	2000      	movs	r0, #0
+    1468:	f50d 6489 	add.w	r4, sp, #1096	; 0x448
+    146c:	461e      	mov	r6, r3
+    146e:	4615      	mov	r5, r2
+    1470:	468b      	mov	fp, r1
+    1472:	9005      	str	r0, [sp, #20]
+    1474:	4620      	mov	r0, r4
+    1476:	f7ff fffe 	bl	10ce <spike071_driver-0xa2a>
+			1476: R_ARM_THM_CALL	$e8Spike07110ModelOwnerV4readAA9FrameReadVyF
+    147a:	f20d 5094 	addw	r0, sp, #1428	; 0x594
+    147e:	4621      	mov	r1, r4
+    1480:	221d      	movs	r2, #29
+    1482:	f7ff fffe 	bl	0 <__aeabi_memcpy>
+			1482: R_ARM_THM_CALL	__aeabi_memcpy
+    1486:	f8dd 7458 	ldr.w	r7, [sp, #1112]	; 0x458
+    148a:	f8dd 445c 	ldr.w	r4, [sp, #1116]	; 0x45c
+    148e:	f8dd c460 	ldr.w	ip, [sp, #1120]	; 0x460
+    1492:	f89d 3464 	ldrb.w	r3, [sp, #1124]	; 0x464
+    1496:	9506      	str	r5, [sp, #24]
+    1498:	f8dd 95f4 	ldr.w	r9, [sp, #1524]	; 0x5f4
+    149c:	ebab 0007 	sub.w	r0, fp, r7
+    14a0:	1b29      	subs	r1, r5, r4
+    14a2:	eba6 020c 	sub.w	r2, r6, ip
+    14a6:	fab0 f080 	clz	r0, r0
+    14aa:	fab1 f181 	clz	r1, r1
+    14ae:	fab2 f282 	clz	r2, r2
+    14b2:	0940      	lsrs	r0, r0, #5
+    14b4:	0949      	lsrs	r1, r1, #5
+    14b6:	0952      	lsrs	r2, r2, #5
+    14b8:	4018      	ands	r0, r3
+    14ba:	4001      	ands	r1, r0
+    14bc:	ea01 0502 	and.w	r5, r1, r2
+    14c0:	f8dd 25dc 	ldr.w	r2, [sp, #1500]	; 0x5dc
+    14c4:	2d01      	cmp	r5, #1
+    14c6:	d12f      	bne.n	1528 <spike071_driver-0x5d0>
+    14c8:	f8dd 1450 	ldr.w	r1, [sp, #1104]	; 0x450
+    14cc:	4690      	mov	r8, r2
+    14ce:	4291      	cmp	r1, r2
+    14d0:	d105      	bne.n	14de <spike071_driver-0x61a>
+    14d2:	f8dd 1454 	ldr.w	r1, [sp, #1108]	; 0x454
+    14d6:	f8dd 25e0 	ldr.w	r2, [sp, #1504]	; 0x5e0
+    14da:	4291      	cmp	r1, r2
+    14dc:	d005      	beq.n	14ea <spike071_driver-0x60e>
+    14de:	f8d9 1000 	ldr.w	r1, [r9]
+    14e2:	f041 0104 	orr.w	r1, r1, #4
+    14e6:	f8c9 1000 	str.w	r1, [r9]
+    14ea:	f89d 15b0 	ldrb.w	r1, [sp, #1456]	; 0x5b0
+    14ee:	07c9      	lsls	r1, r1, #31
+    14f0:	d01c      	beq.n	152c <spike071_driver-0x5cc>
+    14f2:	f8dd 15a4 	ldr.w	r1, [sp, #1444]	; 0x5a4
+    14f6:	458b      	cmp	fp, r1
+    14f8:	d118      	bne.n	152c <spike071_driver-0x5cc>
+    14fa:	f8dd 15a8 	ldr.w	r1, [sp, #1448]	; 0x5a8
+    14fe:	9a06      	ldr	r2, [sp, #24]
+    1500:	428a      	cmp	r2, r1
+    1502:	d113      	bne.n	152c <spike071_driver-0x5cc>
+    1504:	f8dd 15ac 	ldr.w	r1, [sp, #1452]	; 0x5ac
+    1508:	428e      	cmp	r6, r1
+    150a:	d10f      	bne.n	152c <spike071_driver-0x5cc>
+    150c:	f8dd 1598 	ldr.w	r1, [sp, #1432]	; 0x598
+    1510:	2911      	cmp	r1, #17
+    1512:	dd0b      	ble.n	152c <spike071_driver-0x5cc>
+    1514:	f8dd 1594 	ldr.w	r1, [sp, #1428]	; 0x594
+    1518:	f8d1 1118 	ldr.w	r1, [r1, #280]	; 0x118
+    151c:	292a      	cmp	r1, #42	; 0x2a
+    151e:	d113      	bne.n	1548 <spike071_driver-0x5b0>
+    1520:	f11b 0201 	adds.w	r2, fp, #1
+    1524:	d31a      	bcc.n	155c <spike071_driver-0x59c>
+    1526:	defe      	udf	#254	; 0xfe
+    1528:	4690      	mov	r8, r2
+    152a:	e001      	b.n	1530 <spike071_driver-0x5c8>
+    152c:	2100      	movs	r1, #0
+    152e:	9105      	str	r1, [sp, #20]
+    1530:	f8d9 1000 	ldr.w	r1, [r9]
+    1534:	f11b 0201 	adds.w	r2, fp, #1
+    1538:	f041 010c 	orr.w	r1, r1, #12
+    153c:	f8c9 1000 	str.w	r1, [r9]
+    1540:	f080 8238 	bcs.w	19b4 <spike071_driver-0x144>
+    1544:	b953      	cbnz	r3, 155c <spike071_driver-0x59c>
+    1546:	e00e      	b.n	1566 <spike071_driver-0x592>
+    1548:	f8d9 1000 	ldr.w	r1, [r9]
+    154c:	f11b 0201 	adds.w	r2, fp, #1
+    1550:	f041 0108 	orr.w	r1, r1, #8
+    1554:	f8c9 1000 	str.w	r1, [r9]
+    1558:	f080 8234 	bcs.w	19c4 <spike071_driver-0x134>
+    155c:	42ba      	cmp	r2, r7
+    155e:	d106      	bne.n	156e <spike071_driver-0x58a>
+    1560:	f8d9 1000 	ldr.w	r1, [r9]
+    1564:	463a      	mov	r2, r7
+    1566:	f041 0110 	orr.w	r1, r1, #16
+    156a:	f8c9 1000 	str.w	r1, [r9]
+    156e:	b108      	cbz	r0, 1574 <spike071_driver-0x584>
+    1570:	2c02      	cmp	r4, #2
+    1572:	d105      	bne.n	1580 <spike071_driver-0x578>
+    1574:	f8d9 0000 	ldr.w	r0, [r9]
+    1578:	f040 0020 	orr.w	r0, r0, #32
+    157c:	f8c9 0000 	str.w	r0, [r9]
+    1580:	f8dd 05f0 	ldr.w	r0, [sp, #1520]	; 0x5f0
+    1584:	b92d      	cbnz	r5, 1592 <spike071_driver-0x566>
+    1586:	f8d9 1000 	ldr.w	r1, [r9]
+    158a:	f041 0140 	orr.w	r1, r1, #64	; 0x40
+    158e:	f8c9 1000 	str.w	r1, [r9]
+    1592:	b2c0      	uxtb	r0, r0
+    1594:	46b2      	mov	sl, r6
+    1596:	9202      	str	r2, [sp, #8]
+    1598:	2801      	cmp	r0, #1
+    159a:	d016      	beq.n	15ca <spike071_driver-0x52e>
+    159c:	f8dd 05e4 	ldr.w	r0, [sp, #1508]	; 0x5e4
+    15a0:	1bc0      	subs	r0, r0, r7
+    15a2:	fab0 f080 	clz	r0, r0
+    15a6:	0940      	lsrs	r0, r0, #5
+    15a8:	4018      	ands	r0, r3
+    15aa:	2801      	cmp	r0, #1
+    15ac:	d107      	bne.n	15be <spike071_driver-0x53a>
+    15ae:	f8dd 05e8 	ldr.w	r0, [sp, #1512]	; 0x5e8
+    15b2:	42a0      	cmp	r0, r4
+    15b4:	d103      	bne.n	15be <spike071_driver-0x53a>
+    15b6:	f8dd 05ec 	ldr.w	r0, [sp, #1516]	; 0x5ec
+    15ba:	4560      	cmp	r0, ip
+    15bc:	d105      	bne.n	15ca <spike071_driver-0x52e>
+    15be:	f8d9 0000 	ldr.w	r0, [r9]
+    15c2:	f040 0080 	orr.w	r0, r0, #128	; 0x80
+    15c6:	f8c9 0000 	str.w	r0, [r9]
+    15ca:	2600      	movs	r6, #0
+    15cc:	2001      	movs	r0, #1
+    15ce:	e9cd 3703 	strd	r3, r7, [sp, #12]
+    15d2:	e9cd c400 	strd	ip, r4, [sp]
+    15d6:	f88d 036c 	strb.w	r0, [sp, #876]	; 0x36c
+    15da:	96da      	str	r6, [sp, #872]	; 0x368
+    15dc:	e9cd 66d8 	strd	r6, r6, [sp, #864]	; 0x360
+    15e0:	f88d 035c 	strb.w	r0, [sp, #860]	; 0x35c
+    15e4:	96d6      	str	r6, [sp, #856]	; 0x358
+    15e6:	e9cd 66d4 	strd	r6, r6, [sp, #848]	; 0x350
+    15ea:	f88d 034c 	strb.w	r0, [sp, #844]	; 0x34c
+    15ee:	96d2      	str	r6, [sp, #840]	; 0x348
+    15f0:	e9cd 66d0 	strd	r6, r6, [sp, #832]	; 0x340
+    15f4:	acf9      	add	r4, sp, #996	; 0x3e4
+    15f6:	4620      	mov	r0, r4
+    15f8:	f001 f828 	bl	264c <swift_retainCount+0x322>
+    15fc:	a8d0      	add	r0, sp, #832	; 0x340
+    15fe:	4621      	mov	r1, r4
+    1600:	2263      	movs	r2, #99	; 0x63
+    1602:	f100 0730 	add.w	r7, r0, #48	; 0x30
+    1606:	4638      	mov	r0, r7
+    1608:	f7ff fffe 	bl	0 <__aeabi_memcpy4>
+			1608: R_ARM_THM_CALL	__aeabi_memcpy4
+    160c:	f88d 63e0 	strb.w	r6, [sp, #992]	; 0x3e0
+    1610:	96f7      	str	r6, [sp, #988]	; 0x3dc
+    1612:	e9cd 66f5 	strd	r6, r6, [sp, #980]	; 0x3d4
+    1616:	b1f5      	cbz	r5, 1656 <spike071_driver-0x4a2>
+    1618:	f8dd 0450 	ldr.w	r0, [sp, #1104]	; 0x450
+    161c:	2803      	cmp	r0, #3
+    161e:	f000 810e 	beq.w	183e <spike071_driver-0x2ba>
+    1622:	2802      	cmp	r0, #2
+    1624:	f000 80fa 	beq.w	181c <spike071_driver-0x2dc>
+    1628:	2800      	cmp	r0, #0
+    162a:	f040 8119 	bne.w	1860 <spike071_driver-0x298>
+    162e:	49e7      	ldr	r1, [pc, #924]	; (19cc <spike071_driver-0x12c>)
+    1630:	f50d 658d 	add.w	r5, sp, #1128	; 0x468
+    1634:	2201      	movs	r2, #1
+    1636:	2302      	movs	r3, #2
+    1638:	4628      	mov	r0, r5
+    163a:	4479      	add	r1, pc
+    163c:	f7ff fffe 	bl	16 <spike071_driver-0x1ae2>
+			163c: R_ARM_THM_CALL	$e8Spike07111BoundedTextVyACSgs12StaticStringVcfC
+    1640:	f50d 64a6 	add.w	r4, sp, #1328	; 0x530
+    1644:	4629      	mov	r1, r5
+    1646:	2263      	movs	r2, #99	; 0x63
+    1648:	f001 f88d 	bl	2766 <OUTLINED_FUNCTION_8>
+    164c:	f001 f87c 	bl	2748 <OUTLINED_FUNCTION_5>
+    1650:	f040 8117 	bne.w	1882 <spike071_driver-0x276>
+    1654:	defe      	udf	#254	; 0xfe
+    1656:	f001 f8ac 	bl	27b2 <OUTLINED_FUNCTION_17>
+    165a:	4655      	mov	r5, sl
+    165c:	4646      	mov	r6, r8
+    165e:	f001 f8a8 	bl	27b2 <OUTLINED_FUNCTION_17>
+    1662:	f8dd 45d8 	ldr.w	r4, [sp, #1496]	; 0x5d8
+    1666:	6820      	ldr	r0, [r4, #0]
+    1668:	b128      	cbz	r0, 1676 <spike071_driver-0x482>
+    166a:	f8d9 0000 	ldr.w	r0, [r9]
+    166e:	f440 7000 	orr.w	r0, r0, #512	; 0x200
+    1672:	f8c9 0000 	str.w	r0, [r9]
+    1676:	2001      	movs	r0, #1
+    1678:	f50d 7a50 	add.w	sl, sp, #832	; 0x340
+    167c:	f88d 0290 	strb.w	r0, [sp, #656]	; 0x290
+    1680:	49d3      	ldr	r1, [pc, #844]	; (19d0 <spike071_driver-0x128>)
+    1682:	4479      	add	r1, pc
+    1684:	91a3      	str	r1, [sp, #652]	; 0x28c
+    1686:	49d3      	ldr	r1, [pc, #844]	; (19d4 <spike071_driver-0x124>)
+    1688:	4479      	add	r1, pc
+    168a:	91a2      	str	r1, [sp, #648]	; 0x288
+    168c:	49d2      	ldr	r1, [pc, #840]	; (19d8 <spike071_driver-0x120>)
+    168e:	4479      	add	r1, pc
+    1690:	91a1      	str	r1, [sp, #644]	; 0x284
+    1692:	49d2      	ldr	r1, [pc, #840]	; (19dc <spike071_driver-0x11c>)
+    1694:	4479      	add	r1, pc
+    1696:	91a0      	str	r1, [sp, #640]	; 0x280
+    1698:	49d1      	ldr	r1, [pc, #836]	; (19e0 <spike071_driver-0x118>)
+    169a:	e9cd 409d 	strd	r4, r0, [sp, #628]	; 0x274
+    169e:	f20d 5094 	addw	r0, sp, #1428	; 0x594
+    16a2:	4479      	add	r1, pc
+    16a4:	919f      	str	r1, [sp, #636]	; 0x27c
+    16a6:	a99d      	add	r1, sp, #628	; 0x274
+    16a8:	f8dd 8014 	ldr.w	r8, [sp, #20]
+    16ac:	f7ff fffe 	bl	1334 <spike071_driver-0x7c4>
+			16ac: R_ARM_THM_CALL	$e8Spike07113StagedVisitorV4draw4read7contextyAA9FrameReadV_AA15GraphicsContextVztAA12DrawingErrorOYKF
+    16b0:	f1b8 0f00 	cmp.w	r8, #0
+    16b4:	d008      	beq.n	16c8 <spike071_driver-0x430>
+    16b6:	b2c0      	uxtb	r0, r0
+    16b8:	f04f 0800 	mov.w	r8, #0
+    16bc:	2805      	cmp	r0, #5
+    16be:	d103      	bne.n	16c8 <spike071_driver-0x430>
+    16c0:	f89d 034c 	ldrb.w	r0, [sp, #844]	; 0x34c
+    16c4:	2801      	cmp	r0, #1
+    16c6:	d105      	bne.n	16d4 <spike071_driver-0x424>
+    16c8:	f8d9 0000 	ldr.w	r0, [r9]
+    16cc:	f440 6080 	orr.w	r0, r0, #1024	; 0x400
+    16d0:	f8c9 0000 	str.w	r0, [r9]
+    16d4:	2001      	movs	r0, #1
+    16d6:	f50d 7a50 	add.w	sl, sp, #832	; 0x340
+    16da:	f88d 03e0 	strb.w	r0, [sp, #992]	; 0x3e0
+    16de:	f20d 5094 	addw	r0, sp, #1428	; 0x594
+    16e2:	a99d      	add	r1, sp, #628	; 0x274
+    16e4:	f7ff fffe 	bl	1334 <spike071_driver-0x7c4>
+			16e4: R_ARM_THM_CALL	$e8Spike07113StagedVisitorV4draw4read7contextyAA9FrameReadV_AA15GraphicsContextVztAA12DrawingErrorOYKF
+    16e8:	f1b8 0f00 	cmp.w	r8, #0
+    16ec:	d007      	beq.n	16fe <spike071_driver-0x3fa>
+    16ee:	f8d9 0000 	ldr.w	r0, [r9]
+    16f2:	f04f 0800 	mov.w	r8, #0
+    16f6:	f440 6000 	orr.w	r0, r0, #2048	; 0x800
+    16fa:	f8c9 0000 	str.w	r0, [r9]
+    16fe:	98f7      	ldr	r0, [sp, #988]	; 0x3dc
+    1700:	2802      	cmp	r0, #2
+    1702:	d10d      	bne.n	1720 <spike071_driver-0x3d8>
+    1704:	f8dd 05e0 	ldr.w	r0, [sp, #1504]	; 0x5e0
+    1708:	1980      	adds	r0, r0, r6
+    170a:	f080 8154 	bcs.w	19b6 <spike071_driver-0x142>
+    170e:	2800      	cmp	r0, #0
+    1710:	f100 8152 	bmi.w	19b8 <spike071_driver-0x140>
+    1714:	0040      	lsls	r0, r0, #1
+    1716:	f100 8150 	bmi.w	19ba <spike071_driver-0x13e>
+    171a:	68e1      	ldr	r1, [r4, #12]
+    171c:	4281      	cmp	r1, r0
+    171e:	d005      	beq.n	172c <spike071_driver-0x3cc>
+    1720:	f8d9 0000 	ldr.w	r0, [r9]
+    1724:	f440 6000 	orr.w	r0, r0, #2048	; 0x800
+    1728:	f8c9 0000 	str.w	r0, [r9]
+    172c:	f89d 034c 	ldrb.w	r0, [sp, #844]	; 0x34c
+    1730:	2801      	cmp	r0, #1
+    1732:	d109      	bne.n	1748 <spike071_driver-0x3b0>
+    1734:	f89d 035c 	ldrb.w	r0, [sp, #860]	; 0x35c
+    1738:	2801      	cmp	r0, #1
+    173a:	d105      	bne.n	1748 <spike071_driver-0x3b0>
+    173c:	6820      	ldr	r0, [r4, #0]
+    173e:	2802      	cmp	r0, #2
+    1740:	d102      	bne.n	1748 <spike071_driver-0x3b0>
+    1742:	6860      	ldr	r0, [r4, #4]
+    1744:	2802      	cmp	r0, #2
+    1746:	d005      	beq.n	1754 <spike071_driver-0x3a4>
+    1748:	f8d9 0000 	ldr.w	r0, [r9]
+    174c:	f440 5080 	orr.w	r0, r0, #4096	; 0x1000
+    1750:	f8c9 0000 	str.w	r0, [r9]
+    1754:	f89d 036c 	ldrb.w	r0, [sp, #876]	; 0x36c
+    1758:	2801      	cmp	r0, #1
+    175a:	f040 8129 	bne.w	19b0 <spike071_driver-0x148>
+    175e:	9806      	ldr	r0, [sp, #24]
+    1760:	95da      	str	r5, [sp, #872]	; 0x368
+    1762:	e9cd b0d8 	strd	fp, r0, [sp, #864]	; 0x360
+    1766:	2000      	movs	r0, #0
+    1768:	f88d 036c 	strb.w	r0, [sp, #876]	; 0x36c
+    176c:	98f5      	ldr	r0, [sp, #980]	; 0x3d4
+    176e:	3001      	adds	r0, #1
+    1770:	f080 811f 	bcs.w	19b2 <spike071_driver-0x146>
+    1774:	90f5      	str	r0, [sp, #980]	; 0x3d4
+    1776:	f20d 5094 	addw	r0, sp, #1428	; 0x594
+    177a:	a99d      	add	r1, sp, #628	; 0x274
+    177c:	f50d 7a50 	add.w	sl, sp, #832	; 0x340
+    1780:	f7ff fffe 	bl	1334 <spike071_driver-0x7c4>
+			1780: R_ARM_THM_CALL	$e8Spike07113StagedVisitorV4draw4read7contextyAA9FrameReadV_AA15GraphicsContextVztAA12DrawingErrorOYKF
+    1784:	f1b8 0f00 	cmp.w	r8, #0
+    1788:	d001      	beq.n	178e <spike071_driver-0x36a>
+    178a:	f001 f80b 	bl	27a4 <OUTLINED_FUNCTION_16>
+    178e:	98f7      	ldr	r0, [sp, #988]	; 0x3dc
+    1790:	e9dd 3203 	ldrd	r3, r2, [sp, #12]
+    1794:	2803      	cmp	r0, #3
+    1796:	d114      	bne.n	17c2 <spike071_driver-0x336>
+    1798:	f8dd 05e0 	ldr.w	r0, [sp, #1504]	; 0x5e0
+    179c:	1980      	adds	r0, r0, r6
+    179e:	f080 810d 	bcs.w	19bc <spike071_driver-0x13c>
+    17a2:	2800      	cmp	r0, #0
+    17a4:	f100 810b 	bmi.w	19be <spike071_driver-0x13a>
+    17a8:	212b      	movs	r1, #43	; 0x2b
+    17aa:	eb01 0140 	add.w	r1, r1, r0, lsl #1
+    17ae:	ebb1 0f40 	cmp.w	r1, r0, lsl #1
+    17b2:	f0c0 8105 	bcc.w	19c0 <spike071_driver-0x138>
+    17b6:	2900      	cmp	r1, #0
+    17b8:	f100 8103 	bmi.w	19c2 <spike071_driver-0x136>
+    17bc:	68e0      	ldr	r0, [r4, #12]
+    17be:	4288      	cmp	r0, r1
+    17c0:	d001      	beq.n	17c6 <spike071_driver-0x332>
+    17c2:	f000 ffef 	bl	27a4 <OUTLINED_FUNCTION_16>
+    17c6:	2b00      	cmp	r3, #0
+    17c8:	f000 80e4 	beq.w	1994 <spike071_driver-0x164>
+    17cc:	9802      	ldr	r0, [sp, #8]
+    17ce:	4290      	cmp	r0, r2
+    17d0:	d11f      	bne.n	1812 <spike071_driver-0x2e6>
+    17d2:	9801      	ldr	r0, [sp, #4]
+    17d4:	2801      	cmp	r0, #1
+    17d6:	f040 80dd 	bne.w	1994 <spike071_driver-0x164>
+    17da:	9800      	ldr	r0, [sp, #0]
+    17dc:	4285      	cmp	r5, r0
+    17de:	f040 80d9 	bne.w	1994 <spike071_driver-0x164>
+    17e2:	f8dd 0450 	ldr.w	r0, [sp, #1104]	; 0x450
+    17e6:	ac20      	add	r4, sp, #128	; 0x80
+    17e8:	2803      	cmp	r0, #3
+    17ea:	f000 80be 	beq.w	196a <spike071_driver-0x18e>
+    17ee:	2802      	cmp	r0, #2
+    17f0:	f000 80b0 	beq.w	1954 <spike071_driver-0x1a4>
+    17f4:	2800      	cmp	r0, #0
+    17f6:	f040 80c3 	bne.w	1980 <spike071_driver-0x178>
+    17fa:	497a      	ldr	r1, [pc, #488]	; (19e4 <spike071_driver-0x114>)
+    17fc:	4620      	mov	r0, r4
+    17fe:	2201      	movs	r2, #1
+    1800:	2302      	movs	r3, #2
+    1802:	4479      	add	r1, pc
+    1804:	f7ff fffe 	bl	16 <spike071_driver-0x1ae2>
+			1804: R_ARM_THM_CALL	$e8Spike07111BoundedTextVyACSgs12StaticStringVcfC
+    1808:	f000 ff9e 	bl	2748 <OUTLINED_FUNCTION_5>
+    180c:	f040 80c2 	bne.w	1994 <spike071_driver-0x164>
+    1810:	defe      	udf	#254	; 0xfe
+    1812:	f50d 6089 	add.w	r0, sp, #1096	; 0x448
+    1816:	f7ff fffe 	bl	265e <swift_retainCount+0x334>
+			1816: R_ARM_THM_CALL	$e8Spike0719FrameReadVWOh
+    181a:	e0c5      	b.n	19a8 <spike071_driver-0x150>
+    181c:	4977      	ldr	r1, [pc, #476]	; (19fc <spike071_driver-0xfc>)
+    181e:	f50d 668d 	add.w	r6, sp, #1128	; 0x468
+    1822:	2201      	movs	r2, #1
+    1824:	2302      	movs	r3, #2
+    1826:	4630      	mov	r0, r6
+    1828:	4479      	add	r1, pc
+    182a:	f7ff fffe 	bl	16 <spike071_driver-0x1ae2>
+			182a: R_ARM_THM_CALL	$e8Spike07111BoundedTextVyACSgs12StaticStringVcfC
+    182e:	f50d 64a6 	add.w	r4, sp, #1328	; 0x530
+    1832:	f000 ff71 	bl	2718 <OUTLINED_FUNCTION_1>
+    1836:	f000 ff87 	bl	2748 <OUTLINED_FUNCTION_5>
+    183a:	d122      	bne.n	1882 <spike071_driver-0x276>
+    183c:	defe      	udf	#254	; 0xfe
+    183e:	496e      	ldr	r1, [pc, #440]	; (19f8 <spike071_driver-0x100>)
+    1840:	f50d 668d 	add.w	r6, sp, #1128	; 0x468
+    1844:	2201      	movs	r2, #1
+    1846:	2302      	movs	r3, #2
+    1848:	4630      	mov	r0, r6
+    184a:	4479      	add	r1, pc
+    184c:	f7ff fffe 	bl	16 <spike071_driver-0x1ae2>
+			184c: R_ARM_THM_CALL	$e8Spike07111BoundedTextVyACSgs12StaticStringVcfC
+    1850:	f50d 64a6 	add.w	r4, sp, #1328	; 0x530
+    1854:	f000 ff60 	bl	2718 <OUTLINED_FUNCTION_1>
+    1858:	f000 ff76 	bl	2748 <OUTLINED_FUNCTION_5>
+    185c:	d111      	bne.n	1882 <spike071_driver-0x276>
+    185e:	defe      	udf	#254	; 0xfe
+    1860:	4964      	ldr	r1, [pc, #400]	; (19f4 <spike071_driver-0x104>)
+    1862:	f50d 668d 	add.w	r6, sp, #1128	; 0x468
+    1866:	2201      	movs	r2, #1
+    1868:	2302      	movs	r3, #2
+    186a:	4630      	mov	r0, r6
+    186c:	4479      	add	r1, pc
+    186e:	f7ff fffe 	bl	16 <spike071_driver-0x1ae2>
+			186e: R_ARM_THM_CALL	$e8Spike07111BoundedTextVyACSgs12StaticStringVcfC
+    1872:	f50d 64a6 	add.w	r4, sp, #1328	; 0x530
+    1876:	f000 ff4f 	bl	2718 <OUTLINED_FUNCTION_1>
+    187a:	f000 ff65 	bl	2748 <OUTLINED_FUNCTION_5>
+    187e:	f000 80a2 	beq.w	19c6 <spike071_driver-0x132>
+    1882:	aeb6      	add	r6, sp, #728	; 0x2d8
+    1884:	4621      	mov	r1, r4
+    1886:	f000 ff71 	bl	276c <OUTLINED_FUNCTION_9>
+    188a:	ac6b      	add	r4, sp, #428	; 0x1ac
+    188c:	4631      	mov	r1, r6
+    188e:	2262      	movs	r2, #98	; 0x62
+    1890:	f000 ff69 	bl	2766 <OUTLINED_FUNCTION_8>
+    1894:	4620      	mov	r0, r4
+    1896:	f000 fee3 	bl	2660 <swift_retainCount+0x336>
+    189a:	ae84      	add	r6, sp, #528	; 0x210
+    189c:	4621      	mov	r1, r4
+    189e:	2263      	movs	r2, #99	; 0x63
+    18a0:	4630      	mov	r0, r6
+    18a2:	f7ff fffe 	bl	0 <__aeabi_memcpy4>
+			18a2: R_ARM_THM_CALL	__aeabi_memcpy4
+    18a6:	a89d      	add	r0, sp, #628	; 0x274
+    18a8:	4621      	mov	r1, r4
+    18aa:	f000 ff59 	bl	2760 <OUTLINED_FUNCTION_7>
+    18ae:	4630      	mov	r0, r6
+    18b0:	f7fe fd80 	bl	3b4 <spike071_driver-0x1744>
+    18b4:	2801      	cmp	r0, #1
+    18b6:	d00b      	beq.n	18d0 <spike071_driver-0x228>
+    18b8:	ac20      	add	r4, sp, #128	; 0x80
+    18ba:	a99d      	add	r1, sp, #628	; 0x274
+    18bc:	2262      	movs	r2, #98	; 0x62
+    18be:	f000 ff52 	bl	2766 <OUTLINED_FUNCTION_8>
+    18c2:	4620      	mov	r0, r4
+    18c4:	f000 fecc 	bl	2660 <swift_retainCount+0x336>
+    18c8:	4638      	mov	r0, r7
+    18ca:	4621      	mov	r1, r4
+    18cc:	f000 ff48 	bl	2760 <OUTLINED_FUNCTION_7>
+    18d0:	2002      	movs	r0, #2
+    18d2:	9a06      	ldr	r2, [sp, #24]
+    18d4:	f20d 44cc 	addw	r4, sp, #1228	; 0x4cc
+    18d8:	4641      	mov	r1, r8
+    18da:	f8cd a358 	str.w	sl, [sp, #856]	; 0x358
+    18de:	f8cd a348 	str.w	sl, [sp, #840]	; 0x348
+    18e2:	90f5      	str	r0, [sp, #980]	; 0x3d4
+    18e4:	2000      	movs	r0, #0
+    18e6:	f88d 035c 	strb.w	r0, [sp, #860]	; 0x35c
+    18ea:	f88d 034c 	strb.w	r0, [sp, #844]	; 0x34c
+    18ee:	4620      	mov	r0, r4
+    18f0:	e9cd b2d4 	strd	fp, r2, [sp, #848]	; 0x350
+    18f4:	e9cd b2d0 	strd	fp, r2, [sp, #832]	; 0x340
+    18f8:	f7ff fffe 	bl	1100 <spike071_driver-0x9f8>
+			18f8: R_ARM_THM_CALL	$e8Spike07111counterTextyAA07BoundedC0Vs6UInt32VF
+    18fc:	ae52      	add	r6, sp, #328	; 0x148
+    18fe:	4621      	mov	r1, r4
+    1900:	f000 ff34 	bl	276c <OUTLINED_FUNCTION_9>
+    1904:	4630      	mov	r0, r6
+    1906:	f000 feab 	bl	2660 <swift_retainCount+0x336>
+    190a:	ad20      	add	r5, sp, #128	; 0x80
+    190c:	4639      	mov	r1, r7
+    190e:	2263      	movs	r2, #99	; 0x63
+    1910:	f000 ff23 	bl	275a <OUTLINED_FUNCTION_6>
+    1914:	f105 0464 	add.w	r4, r5, #100	; 0x64
+    1918:	f000 fefe 	bl	2718 <OUTLINED_FUNCTION_1>
+    191c:	f000 ff0b 	bl	2736 <OUTLINED_FUNCTION_4>
+    1920:	d106      	bne.n	1930 <spike071_driver-0x1c8>
+    1922:	f000 ff11 	bl	2748 <OUTLINED_FUNCTION_5>
+    1926:	4655      	mov	r5, sl
+    1928:	4646      	mov	r6, r8
+    192a:	f47f ae98 	bne.w	165e <spike071_driver-0x49a>
+    192e:	e698      	b.n	1662 <spike071_driver-0x496>
+    1930:	a807      	add	r0, sp, #28
+    1932:	a920      	add	r1, sp, #128	; 0x80
+    1934:	f000 ff14 	bl	2760 <OUTLINED_FUNCTION_7>
+    1938:	f000 ff06 	bl	2748 <OUTLINED_FUNCTION_5>
+    193c:	f43f ae8d 	beq.w	165a <spike071_driver-0x49e>
+    1940:	a807      	add	r0, sp, #28
+    1942:	4621      	mov	r1, r4
+    1944:	f7ff fffe 	bl	224 <spike071_driver-0x18d4>
+			1944: R_ARM_THM_CALL	$e8Spike07111BoundedTextV2eeoiySbAC_ACtFZ
+    1948:	07c0      	lsls	r0, r0, #31
+    194a:	4655      	mov	r5, sl
+    194c:	4646      	mov	r6, r8
+    194e:	f43f ae86 	beq.w	165e <spike071_driver-0x49a>
+    1952:	e686      	b.n	1662 <spike071_driver-0x496>
+    1954:	4926      	ldr	r1, [pc, #152]	; (19f0 <spike071_driver-0x108>)
+    1956:	4620      	mov	r0, r4
+    1958:	2201      	movs	r2, #1
+    195a:	2302      	movs	r3, #2
+    195c:	4479      	add	r1, pc
+    195e:	f7ff fffe 	bl	16 <spike071_driver-0x1ae2>
+			195e: R_ARM_THM_CALL	$e8Spike07111BoundedTextVyACSgs12StaticStringVcfC
+    1962:	f000 fef1 	bl	2748 <OUTLINED_FUNCTION_5>
+    1966:	d115      	bne.n	1994 <spike071_driver-0x164>
+    1968:	defe      	udf	#254	; 0xfe
+    196a:	4920      	ldr	r1, [pc, #128]	; (19ec <spike071_driver-0x10c>)
+    196c:	4620      	mov	r0, r4
+    196e:	2201      	movs	r2, #1
+    1970:	2302      	movs	r3, #2
+    1972:	4479      	add	r1, pc
+    1974:	f7ff fffe 	bl	16 <spike071_driver-0x1ae2>
+			1974: R_ARM_THM_CALL	$e8Spike07111BoundedTextVyACSgs12StaticStringVcfC
+    1978:	f000 fee6 	bl	2748 <OUTLINED_FUNCTION_5>
+    197c:	d10a      	bne.n	1994 <spike071_driver-0x164>
+    197e:	defe      	udf	#254	; 0xfe
+    1980:	4919      	ldr	r1, [pc, #100]	; (19e8 <spike071_driver-0x110>)
+    1982:	4620      	mov	r0, r4
+    1984:	2201      	movs	r2, #1
+    1986:	2302      	movs	r3, #2
+    1988:	4479      	add	r1, pc
+    198a:	f7ff fffe 	bl	16 <spike071_driver-0x1ae2>
+			198a: R_ARM_THM_CALL	$e8Spike07111BoundedTextVyACSgs12StaticStringVcfC
+    198e:	f000 fedb 	bl	2748 <OUTLINED_FUNCTION_5>
+    1992:	d019      	beq.n	19c8 <spike071_driver-0x130>
+    1994:	f50d 6089 	add.w	r0, sp, #1096	; 0x448
+    1998:	f7ff fffe 	bl	265e <swift_retainCount+0x334>
+			1998: R_ARM_THM_CALL	$e8Spike0719FrameReadVWOh
+    199c:	f8d9 0000 	ldr.w	r0, [r9]
+    19a0:	f440 4080 	orr.w	r0, r0, #16384	; 0x4000
+    19a4:	f8c9 0000 	str.w	r0, [r9]
+    19a8:	f20d 5db4 	addw	sp, sp, #1460	; 0x5b4
+    19ac:	e8bd 8ff0 	ldmia.w	sp!, {r4, r5, r6, r7, r8, r9, sl, fp, pc}
+    19b0:	defe      	udf	#254	; 0xfe
+    19b2:	defe      	udf	#254	; 0xfe
+    19b4:	defe      	udf	#254	; 0xfe
+    19b6:	defe      	udf	#254	; 0xfe
+    19b8:	defe      	udf	#254	; 0xfe
+    19ba:	defe      	udf	#254	; 0xfe
+    19bc:	defe      	udf	#254	; 0xfe
+    19be:	defe      	udf	#254	; 0xfe
+    19c0:	defe      	udf	#254	; 0xfe
+    19c2:	defe      	udf	#254	; 0xfe
+    19c4:	defe      	udf	#254	; 0xfe
+    19c6:	defe      	udf	#254	; 0xfe
+    19c8:	defe      	udf	#254	; 0xfe
+    19ca:	bf00      	nop
+    19cc:	0000038e 	.word	0x0000038e
+			19cc: R_ARM_REL32	.L.str.1.0
+    19d0:	fffffca1 	.word	0xfffffca1
+    19d4:	fffffc91 	.word	0xfffffc91
+    19d8:	fffffc87 	.word	0xfffffc87
+    19dc:	fffffc77 	.word	0xfffffc77
+    19e0:	fffffc5f 	.word	0xfffffc5f
+    19e4:	000001de 	.word	0x000001de
+			19e4: R_ARM_REL32	.L.str.1.0
+    19e8:	0000005c 	.word	0x0000005c
+			19e8: R_ARM_REL32	.L.str.1.?
+    19ec:	00000076 	.word	0x00000076
+			19ec: R_ARM_REL32	.L.str.1.3
+    19f0:	00000090 	.word	0x00000090
+			19f0: R_ARM_REL32	.L.str.1.2
+    19f4:	00000184 	.word	0x00000184
+			19f4: R_ARM_REL32	.L.str.1.?
+    19f8:	000001aa 	.word	0x000001aa
+			19f8: R_ARM_REL32	.L.str.1.3
+    19fc:	000001d0 	.word	0x000001d0
+			19fc: R_ARM_REL32	.L.str.1.2
+    1a00:	e92d 4ff0 	stmdb	sp!, {r4, r5, r6, r7, r8, r9, sl, fp, lr}
+    1a04:	b0d3      	sub	sp, #332	; 0x14c
+    1a06:	f10d 08c8 	add.w	r8, sp, #200	; 0xc8
+    1a0a:	4682      	mov	sl, r0
+    1a0c:	461f      	mov	r7, r3
+    1a0e:	4616      	mov	r6, r2
+    1a10:	460d      	mov	r5, r1
+    1a12:	2400      	movs	r4, #0
+    1a14:	4640      	mov	r0, r8
+    1a16:	f7ff fffe 	bl	10ce <spike071_driver-0xa2a>
+			1a16: R_ARM_THM_CALL	$e8Spike07110ModelOwnerV4readAA9FrameReadVyF
+    1a1a:	f10d 0be8 	add.w	fp, sp, #232	; 0xe8
+    1a1e:	f04f 0901 	mov.w	r9, #1
+    1a22:	9413      	str	r4, [sp, #76]	; 0x4c
+    1a24:	e9cd 4411 	strd	r4, r4, [sp, #68]	; 0x44
+    1a28:	4658      	mov	r0, fp
+    1a2a:	f88d 9050 	strb.w	r9, [sp, #80]	; 0x50
+    1a2e:	f000 fe0d 	bl	264c <swift_retainCount+0x322>
+    1a32:	f10d 0a24 	add.w	sl, sp, #36	; 0x24
+    1a36:	4659      	mov	r1, fp
+    1a38:	2263      	movs	r2, #99	; 0x63
+    1a3a:	f10a 0030 	add.w	r0, sl, #48	; 0x30
+    1a3e:	f7ff fffe 	bl	0 <__aeabi_memcpy4>
+			1a3e: R_ARM_THM_CALL	__aeabi_memcpy4
+    1a42:	2002      	movs	r0, #2
+    1a44:	e9cd 442f 	strd	r4, r4, [sp, #188]	; 0xbc
+    1a48:	f88d 90c4 	strb.w	r9, [sp, #196]	; 0xc4
+    1a4c:	f88d 4040 	strb.w	r4, [sp, #64]	; 0x40
+    1a50:	902e      	str	r0, [sp, #184]	; 0xb8
+    1a52:	a80d      	add	r0, sp, #52	; 0x34
+    1a54:	f88d 4030 	strb.w	r4, [sp, #48]	; 0x30
+    1a58:	c0e0      	stmia	r0!, {r5, r6, r7}
+    1a5a:	a809      	add	r0, sp, #36	; 0x24
+    1a5c:	f88d 9020 	strb.w	r9, [sp, #32]
+    1a60:	c0e0      	stmia	r0!, {r5, r6, r7}
+    1a62:	9d5c      	ldr	r5, [sp, #368]	; 0x170
+    1a64:	481f      	ldr	r0, [pc, #124]	; (1ae4 <spike071_driver-0x14>)
+    1a66:	4478      	add	r0, pc
+    1a68:	9007      	str	r0, [sp, #28]
+    1a6a:	481f      	ldr	r0, [pc, #124]	; (1ae8 <spike071_driver-0x10>)
+    1a6c:	4478      	add	r0, pc
+    1a6e:	9006      	str	r0, [sp, #24]
+    1a70:	481e      	ldr	r0, [pc, #120]	; (1aec <spike071_driver-0xc>)
+    1a72:	4478      	add	r0, pc
+    1a74:	9005      	str	r0, [sp, #20]
+    1a76:	481e      	ldr	r0, [pc, #120]	; (1af0 <spike071_driver-0x8>)
+    1a78:	4478      	add	r0, pc
+    1a7a:	9004      	str	r0, [sp, #16]
+    1a7c:	481d      	ldr	r0, [pc, #116]	; (1af4 <spike071_driver-0x4>)
+    1a7e:	9501      	str	r5, [sp, #4]
+    1a80:	4478      	add	r0, pc
+    1a82:	e9cd 9002 	strd	r9, r0, [sp, #8]
+    1a86:	4640      	mov	r0, r8
+    1a88:	a901      	add	r1, sp, #4
+    1a8a:	f04f 0800 	mov.w	r8, #0
+    1a8e:	f7ff fffe 	bl	1334 <spike071_driver-0x7c4>
+			1a8e: R_ARM_THM_CALL	$e8Spike07113StagedVisitorV4draw4read7contextyAA9FrameReadV_AA15GraphicsContextVztAA12DrawingErrorOYKF
+    1a92:	9c5d      	ldr	r4, [sp, #372]	; 0x174
+    1a94:	f1b8 0f00 	cmp.w	r8, #0
+    1a98:	d001      	beq.n	1a9e <spike071_driver-0x5a>
+    1a9a:	0600      	lsls	r0, r0, #24
+    1a9c:	d003      	beq.n	1aa6 <spike071_driver-0x52>
+    1a9e:	6820      	ldr	r0, [r4, #0]
+    1aa0:	f440 3000 	orr.w	r0, r0, #131072	; 0x20000
+    1aa4:	6020      	str	r0, [r4, #0]
+    1aa6:	f89d 0030 	ldrb.w	r0, [sp, #48]	; 0x30
+    1aaa:	2801      	cmp	r0, #1
+    1aac:	d10f      	bne.n	1ace <spike071_driver-0x2a>
+    1aae:	f89d 0040 	ldrb.w	r0, [sp, #64]	; 0x40
+    1ab2:	2801      	cmp	r0, #1
+    1ab4:	d10b      	bne.n	1ace <spike071_driver-0x2a>
+    1ab6:	9830      	ldr	r0, [sp, #192]	; 0xc0
+    1ab8:	b948      	cbnz	r0, 1ace <spike071_driver-0x2a>
+    1aba:	6828      	ldr	r0, [r5, #0]
+    1abc:	2801      	cmp	r0, #1
+    1abe:	d106      	bne.n	1ace <spike071_driver-0x2a>
+    1ac0:	686d      	ldr	r5, [r5, #4]
+    1ac2:	a832      	add	r0, sp, #200	; 0xc8
+    1ac4:	f7ff fffe 	bl	265e <swift_retainCount+0x334>
+			1ac4: R_ARM_THM_CALL	$e8Spike0719FrameReadVWOh
+    1ac8:	2d01      	cmp	r5, #1
+    1aca:	d103      	bne.n	1ad4 <spike071_driver-0x24>
+    1acc:	e006      	b.n	1adc <spike071_driver-0x1c>
+    1ace:	a832      	add	r0, sp, #200	; 0xc8
+    1ad0:	f7ff fffe 	bl	265e <swift_retainCount+0x334>
+			1ad0: R_ARM_THM_CALL	$e8Spike0719FrameReadVWOh
+    1ad4:	6820      	ldr	r0, [r4, #0]
+    1ad6:	f440 2080 	orr.w	r0, r0, #262144	; 0x40000
+    1ada:	6020      	str	r0, [r4, #0]
+    1adc:	b053      	add	sp, #332	; 0x14c
+    1ade:	e8bd 8ff0 	ldmia.w	sp!, {r4, r5, r6, r7, r8, r9, sl, fp, pc}
+    1ae2:	bf00      	nop
+    1ae4:	fffff8bd 	.word	0xfffff8bd
+    1ae8:	fffff8ad 	.word	0xfffff8ad
+    1aec:	fffff8a3 	.word	0xfffff8a3
+    1af0:	fffff893 	.word	0xfffff893
+    1af4:	fffff881 	.word	0xfffff881
+
+00001af8 <spike071_driver>:
+    1af8:	f7ff bffe 	b.w	1afc <spike071_driver+0x4>
+			1af8: R_ARM_THM_JUMP24	$e8Spike0716driverys6UInt32VSv_SvtF
+    1afc:	e92d 4ff0 	stmdb	sp!, {r4, r5, r6, r7, r8, r9, sl, fp, lr}
+    1b00:	b0a9      	sub	sp, #164	; 0xa4
+    1b02:	910a      	str	r1, [sp, #40]	; 0x28
+    1b04:	4605      	mov	r5, r0
+    1b06:	a80c      	add	r0, sp, #48	; 0x30
+    1b08:	2116      	movs	r1, #22
+    1b0a:	301c      	adds	r0, #28
+    1b0c:	f7ff fffe 	bl	0 <__aeabi_memclr4>
+			1b0c: R_ARM_THM_CALL	__aeabi_memclr4
+    1b10:	2007      	movs	r0, #7
+    1b12:	2300      	movs	r3, #0
+    1b14:	f505 52ca 	add.w	r2, r5, #6464	; 0x1940
+    1b18:	f44f 71ca 	mov.w	r1, #404	; 0x194
+    1b1c:	e9cd 0310 	strd	r0, r3, [sp, #64]	; 0x40
+    1b20:	930b      	str	r3, [sp, #44]	; 0x2c
+    1b22:	0753      	lsls	r3, r2, #29
+    1b24:	9012      	str	r0, [sp, #72]	; 0x48
+    1b26:	910f      	str	r1, [sp, #60]	; 0x3c
+    1b28:	e9cd 510c 	strd	r5, r1, [sp, #48]	; 0x30
+    1b2c:	920e      	str	r2, [sp, #56]	; 0x38
+    1b2e:	f040 8117 	bne.w	1d60 <spike071_driver+0x268>
+    1b32:	f89d 3060 	ldrb.w	r3, [sp, #96]	; 0x60
+    1b36:	ae13      	add	r6, sp, #76	; 0x4c
+    1b38:	e9cd 2119 	strd	r2, r1, [sp, #100]	; 0x64
+    1b3c:	ce70      	ldmia	r6, {r4, r5, r6}
+    1b3e:	961f      	str	r6, [sp, #124]	; 0x7c
+    1b40:	f88d 3080 	strb.w	r3, [sp, #128]	; 0x80
+    1b44:	2301      	movs	r3, #1
+    1b46:	e9cd 031d 	strd	r0, r3, [sp, #116]	; 0x74
+    1b4a:	e9cd 451b 	strd	r4, r5, [sp, #108]	; 0x6c
+    1b4e:	a819      	add	r0, sp, #100	; 0x64
+    1b50:	f7ff fffe 	bl	265e <swift_retainCount+0x334>
+			1b50: R_ARM_THM_CALL	$e8Spike0719FrameReadVWOh
+    1b54:	f89d 0080 	ldrb.w	r0, [sp, #128]	; 0x80
+    1b58:	b120      	cbz	r0, 1b64 <spike071_driver+0x6c>
+    1b5a:	f04f 0802 	mov.w	r8, #2
+    1b5e:	f8cd 802c 	str.w	r8, [sp, #44]	; 0x2c
+    1b62:	e001      	b.n	1b68 <spike071_driver+0x70>
+    1b64:	f04f 0800 	mov.w	r8, #0
+    1b68:	f10d 0a30 	add.w	sl, sp, #48	; 0x30
+    1b6c:	f7ff fffe 	bl	106e <spike071_driver-0xa8a>
+			1b6c: R_ARM_THM_CALL	$e8Spike07110ModelOwnerV6freezeAA0B3KeyVSgyF
+    1b70:	4607      	mov	r7, r0
+    1b72:	b2d8      	uxtb	r0, r3
+    1b74:	2801      	cmp	r0, #1
+    1b76:	f000 80f5 	beq.w	1d64 <spike071_driver+0x26c>
+    1b7a:	980e      	ldr	r0, [sp, #56]	; 0x38
+    1b7c:	4689      	mov	r9, r1
+    1b7e:	0741      	lsls	r1, r0, #29
+    1b80:	f040 80ef 	bne.w	1d62 <spike071_driver+0x26a>
+    1b84:	990c      	ldr	r1, [sp, #48]	; 0x30
+    1b86:	4693      	mov	fp, r2
+    1b88:	f89d 2060 	ldrb.w	r2, [sp, #96]	; 0x60
+    1b8c:	e9dd 3a15 	ldrd	r3, sl, [sp, #84]	; 0x54
+    1b90:	e9dd 5413 	ldrd	r5, r4, [sp, #76]	; 0x4c
+    1b94:	9e10      	ldr	r6, [sp, #64]	; 0x40
+    1b96:	9108      	str	r1, [sp, #32]
+    1b98:	990d      	ldr	r1, [sp, #52]	; 0x34
+    1b9a:	f88d 20a0 	strb.w	r2, [sp, #160]	; 0xa0
+    1b9e:	2201      	movs	r2, #1
+    1ba0:	9327      	str	r3, [sp, #156]	; 0x9c
+    1ba2:	e9cd 4624 	strd	r4, r6, [sp, #144]	; 0x90
+    1ba6:	9226      	str	r2, [sp, #152]	; 0x98
+    1ba8:	9109      	str	r1, [sp, #36]	; 0x24
+    1baa:	990f      	ldr	r1, [sp, #60]	; 0x3c
+    1bac:	aa21      	add	r2, sp, #132	; 0x84
+    1bae:	c223      	stmia	r2!, {r0, r1, r5}
+    1bb0:	a821      	add	r0, sp, #132	; 0x84
+    1bb2:	f7ff fffe 	bl	265e <swift_retainCount+0x334>
+			1bb2: R_ARM_THM_CALL	$e8Spike0719FrameReadVWOh
+    1bb6:	f89d 00a0 	ldrb.w	r0, [sp, #160]	; 0xa0
+    1bba:	2801      	cmp	r0, #1
+    1bbc:	d10d      	bne.n	1bda <spike071_driver+0xe2>
+    1bbe:	9825      	ldr	r0, [sp, #148]	; 0x94
+    1bc0:	4287      	cmp	r7, r0
+    1bc2:	d10a      	bne.n	1bda <spike071_driver+0xe2>
+    1bc4:	9826      	ldr	r0, [sp, #152]	; 0x98
+    1bc6:	4581      	cmp	r9, r0
+    1bc8:	d107      	bne.n	1bda <spike071_driver+0xe2>
+    1bca:	9827      	ldr	r0, [sp, #156]	; 0x9c
+    1bcc:	4583      	cmp	fp, r0
+    1bce:	d104      	bne.n	1bda <spike071_driver+0xe2>
+    1bd0:	9823      	ldr	r0, [sp, #140]	; 0x8c
+    1bd2:	b910      	cbnz	r0, 1bda <spike071_driver+0xe2>
+    1bd4:	9824      	ldr	r0, [sp, #144]	; 0x90
+    1bd6:	2807      	cmp	r0, #7
+    1bd8:	d003      	beq.n	1be2 <spike071_driver+0xea>
+    1bda:	f508 1880 	add.w	r8, r8, #1048576	; 0x100000
+    1bde:	f8cd 802c 	str.w	r8, [sp, #44]	; 0x2c
+    1be2:	2000      	movs	r0, #0
+    1be4:	f8ad 0060 	strh.w	r0, [sp, #96]	; 0x60
+    1be8:	f11a 0001 	adds.w	r0, sl, #1
+    1bec:	d213      	bcs.n	1c16 <spike071_driver+0x11e>
+    1bee:	2101      	movs	r1, #1
+    1bf0:	9016      	str	r0, [sp, #88]	; 0x58
+    1bf2:	f88d 1061 	strb.w	r1, [sp, #97]	; 0x61
+    1bf6:	2108      	movs	r1, #8
+    1bf8:	9112      	str	r1, [sp, #72]	; 0x48
+    1bfa:	2102      	movs	r1, #2
+    1bfc:	9111      	str	r1, [sp, #68]	; 0x44
+    1bfe:	9909      	ldr	r1, [sp, #36]	; 0x24
+    1c00:	2912      	cmp	r1, #18
+    1c02:	db08      	blt.n	1c16 <spike071_driver+0x11e>
+    1c04:	3001      	adds	r0, #1
+    1c06:	d006      	beq.n	1c16 <spike071_driver+0x11e>
+    1c08:	9908      	ldr	r1, [sp, #32]
+    1c0a:	202a      	movs	r0, #42	; 0x2a
+    1c0c:	f8c1 0118 	str.w	r0, [r1, #280]	; 0x118
+    1c10:	f10a 0002 	add.w	r0, sl, #2
+    1c14:	9016      	str	r0, [sp, #88]	; 0x58
+    1c16:	f10d 0a30 	add.w	sl, sp, #48	; 0x30
+    1c1a:	f7ff fffe 	bl	106e <spike071_driver-0xa8a>
+			1c1a: R_ARM_THM_CALL	$e8Spike07110ModelOwnerV6freezeAA0B3KeyVSgyF
+    1c1e:	4681      	mov	r9, r0
+    1c20:	b2d8      	uxtb	r0, r3
+    1c22:	9209      	str	r2, [sp, #36]	; 0x24
+    1c24:	2801      	cmp	r0, #1
+    1c26:	f000 809e 	beq.w	1d66 <spike071_driver+0x26e>
+    1c2a:	f10d 0a30 	add.w	sl, sp, #48	; 0x30
+    1c2e:	468b      	mov	fp, r1
+    1c30:	f7ff fffe 	bl	106e <spike071_driver-0xa8a>
+			1c30: R_ARM_THM_CALL	$e8Spike07110ModelOwnerV6freezeAA0B3KeyVSgyF
+    1c34:	b2d9      	uxtb	r1, r3
+    1c36:	9816      	ldr	r0, [sp, #88]	; 0x58
+    1c38:	2901      	cmp	r1, #1
+    1c3a:	d10d      	bne.n	1c58 <spike071_driver+0x160>
+    1c3c:	f89d 1060 	ldrb.w	r1, [sp, #96]	; 0x60
+    1c40:	b971      	cbnz	r1, 1c60 <spike071_driver+0x168>
+    1c42:	3001      	adds	r0, #1
+    1c44:	d302      	bcc.n	1c4c <spike071_driver+0x154>
+    1c46:	f04f 30ff 	mov.w	r0, #4294967295	; 0xffffffff
+    1c4a:	e005      	b.n	1c58 <spike071_driver+0x160>
+    1c4c:	2101      	movs	r1, #1
+    1c4e:	9016      	str	r0, [sp, #88]	; 0x58
+    1c50:	f88d 1061 	strb.w	r1, [sp, #97]	; 0x61
+    1c54:	2146      	movs	r1, #70	; 0x46
+    1c56:	9111      	str	r1, [sp, #68]	; 0x44
+    1c58:	f448 4800 	orr.w	r8, r8, #32768	; 0x8000
+    1c5c:	f8cd 802c 	str.w	r8, [sp, #44]	; 0x2c
+    1c60:	9917      	ldr	r1, [sp, #92]	; 0x5c
+    1c62:	4281      	cmp	r1, r0
+    1c64:	bf1c      	itt	ne
+    1c66:	f448 3080 	orrne.w	r0, r8, #65536	; 0x10000
+    1c6a:	900b      	strne	r0, [sp, #44]	; 0x2c
+    1c6c:	9c0a      	ldr	r4, [sp, #40]	; 0x28
+    1c6e:	2114      	movs	r1, #20
+    1c70:	4620      	mov	r0, r4
+    1c72:	f7ff fffe 	bl	0 <__aeabi_memclr4>
+			1c72: R_ARM_THM_CALL	__aeabi_memclr4
+    1c76:	9d12      	ldr	r5, [sp, #72]	; 0x48
+    1c78:	9e16      	ldr	r6, [sp, #88]	; 0x58
+    1c7a:	aa0b      	add	r2, sp, #44	; 0x2c
+    1c7c:	f04f 0801 	mov.w	r8, #1
+    1c80:	2700      	movs	r7, #0
+    1c82:	2008      	movs	r0, #8
+    1c84:	2102      	movs	r1, #2
+    1c86:	e9cd 4100 	strd	r4, r1, [sp]
+    1c8a:	e9cd 8206 	strd	r8, r2, [sp, #24]
+    1c8e:	e9cd 0702 	strd	r0, r7, [sp, #8]
+    1c92:	e9cd 7704 	strd	r7, r7, [sp, #16]
+    1c96:	a80c      	add	r0, sp, #48	; 0x30
+    1c98:	9b09      	ldr	r3, [sp, #36]	; 0x24
+    1c9a:	4649      	mov	r1, r9
+    1c9c:	465a      	mov	r2, fp
+    1c9e:	f7ff fffe 	bl	145c <spike071_driver-0x69c>
+			1c9e: R_ARM_THM_CALL	$e8Spike0719testFrame___8expected5scale3old8failuresyAA10ModelOwnerV_AA0H3KeyVSpyAA8RecorderVGs6UInt32VAoJSgAOztF
+    1ca2:	1c70      	adds	r0, r6, #1
+    1ca4:	f8ad 7060 	strh.w	r7, [sp, #96]	; 0x60
+    1ca8:	d205      	bcs.n	1cb6 <spike071_driver+0x1be>
+    1caa:	9016      	str	r0, [sp, #88]	; 0x58
+    1cac:	2003      	movs	r0, #3
+    1cae:	f88d 8061 	strb.w	r8, [sp, #97]	; 0x61
+    1cb2:	9512      	str	r5, [sp, #72]	; 0x48
+    1cb4:	9011      	str	r0, [sp, #68]	; 0x44
+    1cb6:	f10d 0a30 	add.w	sl, sp, #48	; 0x30
+    1cba:	f7ff fffe 	bl	106e <spike071_driver-0xa8a>
+			1cba: R_ARM_THM_CALL	$e8Spike07110ModelOwnerV6freezeAA0B3KeyVSgyF
+    1cbe:	4682      	mov	sl, r0
+    1cc0:	b2d8      	uxtb	r0, r3
+    1cc2:	2801      	cmp	r0, #1
+    1cc4:	d050      	beq.n	1d68 <spike071_driver+0x270>
+    1cc6:	f8dd 8028 	ldr.w	r8, [sp, #40]	; 0x28
+    1cca:	460e      	mov	r6, r1
+    1ccc:	2114      	movs	r1, #20
+    1cce:	4617      	mov	r7, r2
+    1cd0:	4640      	mov	r0, r8
+    1cd2:	f7ff fffe 	bl	0 <__aeabi_memclr4>
+			1cd2: R_ARM_THM_CALL	__aeabi_memclr4
+    1cd6:	9812      	ldr	r0, [sp, #72]	; 0x48
+    1cd8:	2103      	movs	r1, #3
+    1cda:	9c16      	ldr	r4, [sp, #88]	; 0x58
+    1cdc:	2500      	movs	r5, #0
+    1cde:	4632      	mov	r2, r6
+    1ce0:	463b      	mov	r3, r7
+    1ce2:	e9cd 8100 	strd	r8, r1, [sp]
+    1ce6:	9008      	str	r0, [sp, #32]
+    1ce8:	2008      	movs	r0, #8
+    1cea:	a902      	add	r1, sp, #8
+    1cec:	e881 0a01 	stmia.w	r1, {r0, r9, fp}
+    1cf0:	9809      	ldr	r0, [sp, #36]	; 0x24
+    1cf2:	f10d 092c 	add.w	r9, sp, #44	; 0x2c
+    1cf6:	4651      	mov	r1, sl
+    1cf8:	f8cd 901c 	str.w	r9, [sp, #28]
+    1cfc:	e9cd 0505 	strd	r0, r5, [sp, #20]
+    1d00:	a80c      	add	r0, sp, #48	; 0x30
+    1d02:	f7ff fffe 	bl	145c <spike071_driver-0x69c>
+			1d02: R_ARM_THM_CALL	$e8Spike0719testFrame___8expected5scale3old8failuresyAA10ModelOwnerV_AA0H3KeyVSpyAA8RecorderVGs6UInt32VAoJSgAOztF
+    1d06:	1c60      	adds	r0, r4, #1
+    1d08:	f8ad 5060 	strh.w	r5, [sp, #96]	; 0x60
+    1d0c:	d207      	bcs.n	1d1e <spike071_driver+0x226>
+    1d0e:	9016      	str	r0, [sp, #88]	; 0x58
+    1d10:	9808      	ldr	r0, [sp, #32]
+    1d12:	2101      	movs	r1, #1
+    1d14:	f88d 1061 	strb.w	r1, [sp, #97]	; 0x61
+    1d18:	9012      	str	r0, [sp, #72]	; 0x48
+    1d1a:	2063      	movs	r0, #99	; 0x63
+    1d1c:	9011      	str	r0, [sp, #68]	; 0x44
+    1d1e:	f10d 0a30 	add.w	sl, sp, #48	; 0x30
+    1d22:	f7ff fffe 	bl	106e <spike071_driver-0xa8a>
+			1d22: R_ARM_THM_CALL	$e8Spike07110ModelOwnerV6freezeAA0B3KeyVSgyF
+    1d26:	4680      	mov	r8, r0
+    1d28:	b2d8      	uxtb	r0, r3
+    1d2a:	2801      	cmp	r0, #1
+    1d2c:	d01d      	beq.n	1d6a <spike071_driver+0x272>
+    1d2e:	9d0a      	ldr	r5, [sp, #40]	; 0x28
+    1d30:	460e      	mov	r6, r1
+    1d32:	2114      	movs	r1, #20
+    1d34:	4617      	mov	r7, r2
+    1d36:	4628      	mov	r0, r5
+    1d38:	f7ff fffe 	bl	0 <__aeabi_memclr4>
+			1d38: R_ARM_THM_CALL	__aeabi_memclr4
+    1d3c:	f89d 4061 	ldrb.w	r4, [sp, #97]	; 0x61
+    1d40:	e9cd 5900 	strd	r5, r9, [sp]
+    1d44:	a80c      	add	r0, sp, #48	; 0x30
+    1d46:	4641      	mov	r1, r8
+    1d48:	4632      	mov	r2, r6
+    1d4a:	463b      	mov	r3, r7
+    1d4c:	f7ff fffe 	bl	1a00 <spike071_driver-0xf8>
+			1d4c: R_ARM_THM_CALL	$e8Spike07115testDrawFailure___8failuresyAA10ModelOwnerV_AA0F3KeyVSpyAA8RecorderVGs6UInt32VztF
+    1d50:	980b      	ldr	r0, [sp, #44]	; 0x2c
+    1d52:	07e1      	lsls	r1, r4, #31
+    1d54:	bf08      	it	eq
+    1d56:	f440 2000 	orreq.w	r0, r0, #524288	; 0x80000
+    1d5a:	b029      	add	sp, #164	; 0xa4
+    1d5c:	e8bd 8ff0 	ldmia.w	sp!, {r4, r5, r6, r7, r8, r9, sl, fp, pc}
+    1d60:	defe      	udf	#254	; 0xfe
+    1d62:	defe      	udf	#254	; 0xfe
+    1d64:	defe      	udf	#254	; 0xfe
+    1d66:	defe      	udf	#254	; 0xfe
+    1d68:	defe      	udf	#254	; 0xfe
+    1d6a:	defe      	udf	#254	; 0xfe
+    1d6c:	b5f8      	push	{r3, r4, r5, r6, r7, lr}
+    1d6e:	4604      	mov	r4, r0
+    1d70:	481f      	ldr	r0, [pc, #124]	; (1df0 <spike071_driver+0x2f8>)
+    1d72:	460d      	mov	r5, r1
+    1d74:	491f      	ldr	r1, [pc, #124]	; (1df4 <spike071_driver+0x2fc>)
+    1d76:	4478      	add	r0, pc
+    1d78:	4479      	add	r1, pc
+    1d7a:	f7ff fffe 	bl	229a <swift_once>
+			1d7a: R_ARM_THM_CALL	swift_once
+    1d7e:	2000      	movs	r0, #0
+    1d80:	4e13      	ldr	r6, [pc, #76]	; (1dd0 <spike071_driver+0x2d8>)
+    1d82:	4f14      	ldr	r7, [pc, #80]	; (1dd4 <spike071_driver+0x2dc>)
+    1d84:	e9c4 0000 	strd	r0, r0, [r4]
+    1d88:	481b      	ldr	r0, [pc, #108]	; (1df8 <spike071_driver+0x300>)
+    1d8a:	4478      	add	r0, pc
+    1d8c:	e890 000e 	ldmia.w	r0, {r1, r2, r3}
+    1d90:	68c0      	ldr	r0, [r0, #12]
+    1d92:	405f      	eors	r7, r3
+    1d94:	4046      	eors	r6, r0
+    1d96:	e9c4 7608 	strd	r7, r6, [r4, #32]
+    1d9a:	4e0f      	ldr	r6, [pc, #60]	; (1dd8 <spike071_driver+0x2e0>)
+    1d9c:	4056      	eors	r6, r2
+    1d9e:	61e6      	str	r6, [r4, #28]
+    1da0:	4e0e      	ldr	r6, [pc, #56]	; (1ddc <spike071_driver+0x2e4>)
+    1da2:	4070      	eors	r0, r6
+    1da4:	6160      	str	r0, [r4, #20]
+    1da6:	480e      	ldr	r0, [pc, #56]	; (1de0 <spike071_driver+0x2e8>)
+    1da8:	4058      	eors	r0, r3
+    1daa:	6120      	str	r0, [r4, #16]
+    1dac:	480d      	ldr	r0, [pc, #52]	; (1de4 <spike071_driver+0x2ec>)
+    1dae:	4050      	eors	r0, r2
+    1db0:	60e0      	str	r0, [r4, #12]
+    1db2:	ea81 0005 	eor.w	r0, r1, r5
+    1db6:	490c      	ldr	r1, [pc, #48]	; (1de8 <spike071_driver+0x2f0>)
+    1db8:	4041      	eors	r1, r0
+    1dba:	61a1      	str	r1, [r4, #24]
+    1dbc:	490b      	ldr	r1, [pc, #44]	; (1dec <spike071_driver+0x2f4>)
+    1dbe:	4048      	eors	r0, r1
+    1dc0:	2120      	movs	r1, #32
+    1dc2:	60a0      	str	r0, [r4, #8]
+    1dc4:	f104 0028 	add.w	r0, r4, #40	; 0x28
+    1dc8:	f7ff fffe 	bl	0 <__aeabi_memclr8>
+			1dc8: R_ARM_THM_CALL	__aeabi_memclr8
+    1dcc:	bdf8      	pop	{r3, r4, r5, r6, r7, pc}
+    1dce:	bf00      	nop
+    1dd0:	74656462 	.word	0x74656462
+    1dd4:	79746573 	.word	0x79746573
+    1dd8:	6c796765 	.word	0x6c796765
+    1ddc:	646f7261 	.word	0x646f7261
+    1de0:	6e646f6d 	.word	0x6e646f6d
+    1de4:	736f6d65 	.word	0x736f6d65
+    1de8:	6e657261 	.word	0x6e657261
+    1dec:	70736575 	.word	0x70736575
+    1df0:	00000076 	.word	0x00000076
+			1df0: R_ARM_REL32	$es32_swift_stdlib_Hashing_parameters_Wz
+    1df4:	00000281 	.word	0x00000281
+    1df8:	0000006a 	.word	0x0000006a
+			1df8: R_ARM_REL32	$es32_swift_stdlib_Hashing_parametersSo06_SwiftC10ParametersVvp
+    1dfc:	e92d 4bfc 	stmdb	sp!, {r2, r3, r4, r5, r6, r7, r8, r9, fp, lr}
+    1e00:	f8da 2000 	ldr.w	r2, [sl]
+    1e04:	e9da 1008 	ldrd	r1, r0, [sl, #32]
+    1e08:	f8da 3004 	ldr.w	r3, [sl, #4]
+    1e0c:	f10a 0710 	add.w	r7, sl, #16
+    1e10:	e9da 8902 	ldrd	r8, r9, [sl, #8]
+    1e14:	cff0      	ldmia	r7, {r4, r5, r6, r7}
+    1e16:	ea4f 3c45 	mov.w	ip, r5, lsl #13
+    1e1a:	4058      	eors	r0, r3
+    1e1c:	4051      	eors	r1, r2
+    1e1e:	9201      	str	r2, [sp, #4]
+    1e20:	9300      	str	r3, [sp, #0]
+    1e22:	eb16 0b01 	adds.w	fp, r6, r1
+    1e26:	eb47 0e00 	adc.w	lr, r7, r0
+    1e2a:	0402      	lsls	r2, r0, #16
+    1e2c:	ea4c 47d4 	orr.w	r7, ip, r4, lsr #19
+    1e30:	ea42 4211 	orr.w	r2, r2, r1, lsr #16
+    1e34:	0409      	lsls	r1, r1, #16
+    1e36:	ea41 4010 	orr.w	r0, r1, r0, lsr #16
+    1e3a:	eb14 0108 	adds.w	r1, r4, r8
+    1e3e:	ea8e 0302 	eor.w	r3, lr, r2
+    1e42:	ea80 000b 	eor.w	r0, r0, fp
+    1e46:	eb45 0209 	adc.w	r2, r5, r9
+    1e4a:	eb10 0802 	adds.w	r8, r0, r2
+    1e4e:	eb43 0901 	adc.w	r9, r3, r1
+    1e52:	0364      	lsls	r4, r4, #13
+    1e54:	055e      	lsls	r6, r3, #21
+    1e56:	407a      	eors	r2, r7
+    1e58:	ea44 44d5 	orr.w	r4, r4, r5, lsr #19
+    1e5c:	ea46 26d0 	orr.w	r6, r6, r0, lsr #11
+    1e60:	4061      	eors	r1, r4
+    1e62:	ea86 0609 	eor.w	r6, r6, r9
+    1e66:	eb1b 0501 	adds.w	r5, fp, r1
+    1e6a:	eb4e 0702 	adc.w	r7, lr, r2
+    1e6e:	0540      	lsls	r0, r0, #21
+    1e70:	ea40 20d3 	orr.w	r0, r0, r3, lsr #11
+    1e74:	f087 04ff 	eor.w	r4, r7, #255	; 0xff
+    1e78:	ea80 0008 	eor.w	r0, r0, r8
+    1e7c:	eb14 0c00 	adds.w	ip, r4, r0
+    1e80:	eb45 0b06 	adc.w	fp, r5, r6
+    1e84:	0433      	lsls	r3, r6, #16
+    1e86:	ea43 4310 	orr.w	r3, r3, r0, lsr #16
+    1e8a:	0400      	lsls	r0, r0, #16
+    1e8c:	ea40 4016 	orr.w	r0, r0, r6, lsr #16
+    1e90:	ea83 030b 	eor.w	r3, r3, fp
+    1e94:	ea80 060c 	eor.w	r6, r0, ip
+    1e98:	0450      	lsls	r0, r2, #17
+    1e9a:	ea40 30d1 	orr.w	r0, r0, r1, lsr #15
+    1e9e:	0449      	lsls	r1, r1, #17
+    1ea0:	ea41 31d2 	orr.w	r1, r1, r2, lsr #15
+    1ea4:	4047      	eors	r7, r0
+    1ea6:	9800      	ldr	r0, [sp, #0]
+    1ea8:	ea81 0205 	eor.w	r2, r1, r5
+    1eac:	9901      	ldr	r1, [sp, #4]
+    1eae:	ea80 0009 	eor.w	r0, r0, r9
+    1eb2:	ea81 0108 	eor.w	r1, r1, r8
+    1eb6:	188d      	adds	r5, r1, r2
+    1eb8:	4178      	adcs	r0, r7
+    1eba:	eb10 0e06 	adds.w	lr, r0, r6
+    1ebe:	eb45 0803 	adc.w	r8, r5, r3
+    1ec2:	037c      	lsls	r4, r7, #13
+    1ec4:	0559      	lsls	r1, r3, #21
+    1ec6:	ea44 44d2 	orr.w	r4, r4, r2, lsr #19
+    1eca:	0352      	lsls	r2, r2, #13
+    1ecc:	ea41 21d6 	orr.w	r1, r1, r6, lsr #11
+    1ed0:	ea42 42d7 	orr.w	r2, r2, r7, lsr #19
+    1ed4:	4060      	eors	r0, r4
+    1ed6:	ea81 0108 	eor.w	r1, r1, r8
+    1eda:	406a      	eors	r2, r5
+    1edc:	eb12 040c 	adds.w	r4, r2, ip
+    1ee0:	eb40 050b 	adc.w	r5, r0, fp
+    1ee4:	0576      	lsls	r6, r6, #21
+    1ee6:	ea46 23d3 	orr.w	r3, r6, r3, lsr #11
+    1eea:	ea83 030e 	eor.w	r3, r3, lr
+    1eee:	eb15 0c03 	adds.w	ip, r5, r3
+    1ef2:	eb44 0901 	adc.w	r9, r4, r1
+    1ef6:	040e      	lsls	r6, r1, #16
+    1ef8:	ea46 4613 	orr.w	r6, r6, r3, lsr #16
+    1efc:	041b      	lsls	r3, r3, #16
+    1efe:	ea43 4111 	orr.w	r1, r3, r1, lsr #16
+    1f02:	0443      	lsls	r3, r0, #17
+    1f04:	ea86 0609 	eor.w	r6, r6, r9
+    1f08:	ea43 33d2 	orr.w	r3, r3, r2, lsr #15
+    1f0c:	0452      	lsls	r2, r2, #17
+    1f0e:	ea81 010c 	eor.w	r1, r1, ip
+    1f12:	ea42 30d0 	orr.w	r0, r2, r0, lsr #15
+    1f16:	406b      	eors	r3, r5
+    1f18:	ea80 0204 	eor.w	r2, r0, r4
+    1f1c:	eb12 040e 	adds.w	r4, r2, lr
+    1f20:	eb43 0508 	adc.w	r5, r3, r8
+    1f24:	eb15 0801 	adds.w	r8, r5, r1
+    1f28:	eb44 0706 	adc.w	r7, r4, r6
+    1f2c:	0570      	lsls	r0, r6, #21
+    1f2e:	ea40 20d1 	orr.w	r0, r0, r1, lsr #11
+    1f32:	ea80 0e07 	eor.w	lr, r0, r7
+    1f36:	0358      	lsls	r0, r3, #13
+    1f38:	ea40 40d2 	orr.w	r0, r0, r2, lsr #19
+    1f3c:	0352      	lsls	r2, r2, #13
+    1f3e:	ea42 42d3 	orr.w	r2, r2, r3, lsr #19
+    1f42:	4068      	eors	r0, r5
+    1f44:	ea82 0304 	eor.w	r3, r2, r4
+    1f48:	eb13 040c 	adds.w	r4, r3, ip
+    1f4c:	eb40 0509 	adc.w	r5, r0, r9
+    1f50:	0549      	lsls	r1, r1, #21
+    1f52:	ea41 21d6 	orr.w	r1, r1, r6, lsr #11
+    1f56:	ea81 0108 	eor.w	r1, r1, r8
+    1f5a:	186e      	adds	r6, r5, r1
+    1f5c:	eb44 0c0e 	adc.w	ip, r4, lr
+    1f60:	0442      	lsls	r2, r0, #17
+    1f62:	ea42 32d3 	orr.w	r2, r2, r3, lsr #15
+    1f66:	045b      	lsls	r3, r3, #17
+    1f68:	ea43 30d0 	orr.w	r0, r3, r0, lsr #15
+    1f6c:	406a      	eors	r2, r5
+    1f6e:	4060      	eors	r0, r4
+    1f70:	eb18 0800 	adds.w	r8, r8, r0
+    1f74:	eb42 0507 	adc.w	r5, r2, r7
+    1f78:	0343      	lsls	r3, r0, #13
+    1f7a:	ea43 43d2 	orr.w	r3, r3, r2, lsr #19
+    1f7e:	0352      	lsls	r2, r2, #13
+    1f80:	ea42 40d0 	orr.w	r0, r2, r0, lsr #19
+    1f84:	ea83 0708 	eor.w	r7, r3, r8
+    1f88:	19bc      	adds	r4, r7, r6
+    1f8a:	ea80 0005 	eor.w	r0, r0, r5
+    1f8e:	eb40 030c 	adc.w	r3, r0, ip
+    1f92:	040a      	lsls	r2, r1, #16
+    1f94:	f8ca 401c 	str.w	r4, [sl, #28]
+    1f98:	ea42 421e 	orr.w	r2, r2, lr, lsr #16
+    1f9c:	f8ca 3018 	str.w	r3, [sl, #24]
+    1fa0:	4072      	eors	r2, r6
+    1fa2:	047e      	lsls	r6, r7, #17
+    1fa4:	ea46 36d0 	orr.w	r6, r6, r0, lsr #15
+    1fa8:	0440      	lsls	r0, r0, #17
+    1faa:	18ad      	adds	r5, r5, r2
+    1fac:	ea40 30d7 	orr.w	r0, r0, r7, lsr #15
+    1fb0:	ea84 0406 	eor.w	r4, r4, r6
+    1fb4:	f8ca 5008 	str.w	r5, [sl, #8]
+    1fb8:	ea80 0003 	eor.w	r0, r0, r3
+    1fbc:	f8ca 4010 	str.w	r4, [sl, #16]
+    1fc0:	f8ca 0014 	str.w	r0, [sl, #20]
+    1fc4:	ea4f 400e 	mov.w	r0, lr, lsl #16
+    1fc8:	ea40 4011 	orr.w	r0, r0, r1, lsr #16
+    1fcc:	ea80 000c 	eor.w	r0, r0, ip
+    1fd0:	eb48 0100 	adc.w	r1, r8, r0
+    1fd4:	0556      	lsls	r6, r2, #21
+    1fd6:	ea46 26d0 	orr.w	r6, r6, r0, lsr #11
+    1fda:	0540      	lsls	r0, r0, #21
+    1fdc:	f8ca 100c 	str.w	r1, [sl, #12]
+    1fe0:	ea40 20d2 	orr.w	r0, r0, r2, lsr #11
+    1fe4:	406e      	eors	r6, r5
+    1fe6:	4048      	eors	r0, r1
+    1fe8:	f8ca 6020 	str.w	r6, [sl, #32]
+    1fec:	f8ca 0024 	str.w	r0, [sl, #36]	; 0x24
+    1ff0:	ea84 0005 	eor.w	r0, r4, r5
+    1ff4:	4058      	eors	r0, r3
+    1ff6:	4070      	eors	r0, r6
+    1ff8:	e8bd 8bfc 	ldmia.w	sp!, {r2, r3, r4, r5, r6, r7, r8, r9, fp, pc}
+    1ffc:	b510      	push	{r4, lr}
+    1ffe:	b086      	sub	sp, #24
+    2000:	4812      	ldr	r0, [pc, #72]	; (204c <spike071_driver+0x554>)
+    2002:	2400      	movs	r4, #0
+    2004:	2108      	movs	r1, #8
+    2006:	4478      	add	r0, pc
+    2008:	6800      	ldr	r0, [r0, #0]
+    200a:	6800      	ldr	r0, [r0, #0]
+    200c:	9005      	str	r0, [sp, #20]
+    200e:	e9cd 4402 	strd	r4, r4, [sp, #8]
+    2012:	e9cd 4400 	strd	r4, r4, [sp]
+    2016:	a802      	add	r0, sp, #8
+    2018:	f7ff fffe 	bl	0 <arc4random_buf>
+			2018: R_ARM_THM_CALL	arc4random_buf
+    201c:	4668      	mov	r0, sp
+    201e:	2108      	movs	r1, #8
+    2020:	f7ff fffe 	bl	0 <arc4random_buf>
+			2020: R_ARM_THM_CALL	arc4random_buf
+    2024:	480a      	ldr	r0, [pc, #40]	; (2050 <spike071_driver+0x558>)
+    2026:	4478      	add	r0, pc
+    2028:	7404      	strb	r4, [r0, #16]
+    202a:	e89d 001e 	ldmia.w	sp, {r1, r2, r3, r4}
+    202e:	e9c0 3400 	strd	r3, r4, [r0]
+    2032:	e9c0 1202 	strd	r1, r2, [r0, #8]
+    2036:	9805      	ldr	r0, [sp, #20]
+    2038:	4906      	ldr	r1, [pc, #24]	; (2054 <spike071_driver+0x55c>)
+    203a:	4479      	add	r1, pc
+    203c:	6809      	ldr	r1, [r1, #0]
+    203e:	6809      	ldr	r1, [r1, #0]
+    2040:	4281      	cmp	r1, r0
+    2042:	bf04      	itt	eq
+    2044:	b006      	addeq	sp, #24
+    2046:	bd10      	popeq	{r4, pc}
+    2048:	f7ff fffe 	bl	0 <__stack_chk_fail>
+			2048: R_ARM_THM_CALL	__stack_chk_fail
+    204c:	00000042 	.word	0x00000042
+			204c: R_ARM_GOT_PREL	__stack_chk_guard
+    2050:	00000026 	.word	0x00000026
+			2050: R_ARM_REL32	$es32_swift_stdlib_Hashing_parametersSo06_SwiftC10ParametersVvp
+    2054:	00000016 	.word	0x00000016
+			2054: R_ARM_GOT_PREL	__stack_chk_guard
+
+00002058 <swift_allocEmptyBox>:
+    2058:	4807      	ldr	r0, [pc, #28]	; (2078 <swift_allocEmptyBox+0x20>)
+    205a:	4478      	add	r0, pc
+    205c:	6841      	ldr	r1, [r0, #4]
+    205e:	43c9      	mvns	r1, r1
+    2060:	0049      	lsls	r1, r1, #1
+    2062:	d006      	beq.n	2072 <swift_allocEmptyBox+0x1a>
+    2064:	e850 1f01 	ldrex	r1, [r0, #4]
+    2068:	3101      	adds	r1, #1
+    206a:	e840 1201 	strex	r2, r1, [r0, #4]
+    206e:	2a00      	cmp	r2, #0
+    2070:	d1f8      	bne.n	2064 <swift_allocEmptyBox+0xc>
+    2072:	4802      	ldr	r0, [pc, #8]	; (207c <swift_allocEmptyBox+0x24>)
+    2074:	4478      	add	r0, pc
+    2076:	4770      	bx	lr
+    2078:	0000001a 	.word	0x0000001a
+			2078: R_ARM_REL32	$es16_emptyBoxStorageSi_Sitvp
+    207c:	00000004 	.word	0x00000004
+			207c: R_ARM_REL32	$es16_emptyBoxStorageSi_Sitvp
+
+00002080 <swift_allocObject>:
+    2080:	f7ff bffe 	b.w	2084 <swift_allocObject+0x4>
+			2080: R_ARM_THM_JUMP24	$es17swift_allocObject8metadata12requiredSize0E13AlignmentMaskSpys04HeapC0VGSpys13ClassMetadataVG_S2itF
+    2084:	b51c      	push	{r2, r3, r4, lr}
+    2086:	4604      	mov	r4, r0
+    2088:	4812      	ldr	r0, [pc, #72]	; (20d4 <swift_allocObject+0x54>)
+    208a:	460b      	mov	r3, r1
+    208c:	1c51      	adds	r1, r2, #1
+    208e:	4478      	add	r0, pc
+    2090:	6800      	ldr	r0, [r0, #0]
+    2092:	6800      	ldr	r0, [r0, #0]
+    2094:	9001      	str	r0, [sp, #4]
+    2096:	d005      	beq.n	20a4 <swift_allocObject+0x24>
+    2098:	4291      	cmp	r1, r2
+    209a:	d619      	bvs.n	20d0 <swift_allocObject+0x50>
+    209c:	2904      	cmp	r1, #4
+    209e:	bfd8      	it	le
+    20a0:	2104      	movle	r1, #4
+    20a2:	e000      	b.n	20a6 <swift_allocObject+0x26>
+    20a4:	2110      	movs	r1, #16
+    20a6:	2000      	movs	r0, #0
+    20a8:	461a      	mov	r2, r3
+    20aa:	9000      	str	r0, [sp, #0]
+    20ac:	4668      	mov	r0, sp
+    20ae:	f7ff fffe 	bl	0 <posix_memalign>
+			20ae: R_ARM_THM_CALL	posix_memalign
+    20b2:	9800      	ldr	r0, [sp, #0]
+    20b4:	b168      	cbz	r0, 20d2 <swift_allocObject+0x52>
+    20b6:	2101      	movs	r1, #1
+    20b8:	e9c0 4100 	strd	r4, r1, [r0]
+    20bc:	9901      	ldr	r1, [sp, #4]
+    20be:	4a06      	ldr	r2, [pc, #24]	; (20d8 <swift_allocObject+0x58>)
+    20c0:	447a      	add	r2, pc
+    20c2:	6812      	ldr	r2, [r2, #0]
+    20c4:	6812      	ldr	r2, [r2, #0]
+    20c6:	428a      	cmp	r2, r1
+    20c8:	bf08      	it	eq
+    20ca:	bd1c      	popeq	{r2, r3, r4, pc}
+    20cc:	f7ff fffe 	bl	0 <__stack_chk_fail>
+			20cc: R_ARM_THM_CALL	__stack_chk_fail
+    20d0:	defe      	udf	#254	; 0xfe
+    20d2:	defe      	udf	#254	; 0xfe
+    20d4:	00000042 	.word	0x00000042
+			20d4: R_ARM_GOT_PREL	__stack_chk_guard
+    20d8:	00000014 	.word	0x00000014
+			20d8: R_ARM_GOT_PREL	__stack_chk_guard
+
+000020dc <swift_initStackObject>:
+    20dc:	4a02      	ldr	r2, [pc, #8]	; (20e8 <swift_initStackObject+0xc>)
+    20de:	e9c1 0200 	strd	r0, r2, [r1]
+    20e2:	4608      	mov	r0, r1
+    20e4:	4770      	bx	lr
+    20e6:	bf00      	nop
+    20e8:	80000001 	.word	0x80000001
+
+000020ec <swift_initStaticObject>:
+    20ec:	f04f 32ff 	mov.w	r2, #4294967295	; 0xffffffff
+    20f0:	e9c1 0200 	strd	r0, r2, [r1]
+    20f4:	4608      	mov	r0, r1
+    20f6:	4770      	bx	lr
+    20f8:	f7ff bffe 	b.w	0 <free>
+			20f8: R_ARM_THM_JUMP24	free
+
+000020fc <swift_deallocClassInstance>:
+    20fc:	6841      	ldr	r1, [r0, #4]
+    20fe:	2900      	cmp	r1, #0
+    2100:	d401      	bmi.n	2106 <swift_deallocClassInstance+0xa>
+    2102:	f7ff bffe 	b.w	0 <free>
+			2102: R_ARM_THM_JUMP24	free
+    2106:	4770      	bx	lr
+
+00002108 <swift_deallocPartialClassInstance>:
+    2108:	e92d 4430 	stmdb	sp!, {r4, r5, sl, lr}
+    210c:	6805      	ldr	r5, [r0, #0]
+    210e:	460c      	mov	r4, r1
+    2110:	4682      	mov	sl, r0
+    2112:	42a5      	cmp	r5, r4
+    2114:	d005      	beq.n	2122 <swift_deallocPartialClassInstance+0x1a>
+    2116:	68a8      	ldr	r0, [r5, #8]
+    2118:	b100      	cbz	r0, 211c <swift_deallocPartialClassInstance+0x14>
+    211a:	4780      	blx	r0
+    211c:	682d      	ldr	r5, [r5, #0]
+    211e:	2d00      	cmp	r5, #0
+    2120:	d1f7      	bne.n	2112 <swift_deallocPartialClassInstance+0xa>
+    2122:	e8bd 8430 	ldmia.w	sp!, {r4, r5, sl, pc}
+    2126:	bf00      	nop
+
+00002128 <swift_slowAlloc>:
+    2128:	b5e0      	push	{r5, r6, r7, lr}
+    212a:	4602      	mov	r2, r0
+    212c:	480f      	ldr	r0, [pc, #60]	; (216c <swift_slowAlloc+0x44>)
+    212e:	460b      	mov	r3, r1
+    2130:	3101      	adds	r1, #1
+    2132:	4478      	add	r0, pc
+    2134:	6800      	ldr	r0, [r0, #0]
+    2136:	6800      	ldr	r0, [r0, #0]
+    2138:	9001      	str	r0, [sp, #4]
+    213a:	d005      	beq.n	2148 <swift_slowAlloc+0x20>
+    213c:	4299      	cmp	r1, r3
+    213e:	d613      	bvs.n	2168 <swift_slowAlloc+0x40>
+    2140:	2904      	cmp	r1, #4
+    2142:	bfd8      	it	le
+    2144:	2104      	movle	r1, #4
+    2146:	e000      	b.n	214a <swift_slowAlloc+0x22>
+    2148:	2110      	movs	r1, #16
+    214a:	2000      	movs	r0, #0
+    214c:	9000      	str	r0, [sp, #0]
+    214e:	4668      	mov	r0, sp
+    2150:	f7ff fffe 	bl	0 <posix_memalign>
+			2150: R_ARM_THM_CALL	posix_memalign
+    2154:	9800      	ldr	r0, [sp, #0]
+    2156:	9901      	ldr	r1, [sp, #4]
+    2158:	4a05      	ldr	r2, [pc, #20]	; (2170 <swift_slowAlloc+0x48>)
+    215a:	447a      	add	r2, pc
+    215c:	f000 fb0d 	bl	277a <OUTLINED_FUNCTION_11>
+    2160:	bf08      	it	eq
+    2162:	bd8c      	popeq	{r2, r3, r7, pc}
+    2164:	f7ff fffe 	bl	0 <__stack_chk_fail>
+			2164: R_ARM_THM_CALL	__stack_chk_fail
+    2168:	defe      	udf	#254	; 0xfe
+    216a:	bf00      	nop
+    216c:	00000036 	.word	0x00000036
+			216c: R_ARM_GOT_PREL	__stack_chk_guard
+    2170:	00000012 	.word	0x00000012
+			2170: R_ARM_GOT_PREL	__stack_chk_guard
+
+00002174 <swift_willThrow>:
+    2174:	4770      	bx	lr
+
+00002176 <swift_errorInMain>:
+    2176:	defe      	udf	#254	; 0xfe
+
+00002178 <swift_unexpectedError>:
+    2178:	defe      	udf	#254	; 0xfe
+
+0000217a <swift_release>:
+    217a:	e92d 4430 	stmdb	sp!, {r4, r5, sl, lr}
+    217e:	b198      	cbz	r0, 21a8 <swift_release+0x2e>
+    2180:	6841      	ldr	r1, [r0, #4]
+    2182:	43ca      	mvns	r2, r1
+    2184:	0052      	lsls	r2, r2, #1
+    2186:	d00f      	beq.n	21a8 <swift_release+0x2e>
+    2188:	1d03      	adds	r3, r0, #4
+    218a:	f3bf 8f5f 	dmb	sy
+    218e:	e853 4f00 	ldrex	r4, [r3]
+    2192:	1e62      	subs	r2, r4, #1
+    2194:	e843 2500 	strex	r5, r2, [r3]
+    2198:	2d00      	cmp	r5, #0
+    219a:	d1f8      	bne.n	218e <swift_release+0x14>
+    219c:	42a2      	cmp	r2, r4
+    219e:	f3bf 8f5f 	dmb	sy
+    21a2:	d609      	bvs.n	21b8 <swift_release+0x3e>
+    21a4:	0052      	lsls	r2, r2, #1
+    21a6:	d001      	beq.n	21ac <swift_release+0x32>
+    21a8:	e8bd 8430 	ldmia.w	sp!, {r4, r5, sl, pc}
+    21ac:	f061 4100 	orn	r1, r1, #2147483648	; 0x80000000
+    21b0:	f000 faec 	bl	278c <OUTLINED_FUNCTION_13>
+    21b4:	e8bd 8430 	ldmia.w	sp!, {r4, r5, sl, pc}
+    21b8:	defe      	udf	#254	; 0xfe
+
+000021ba <swift_release_n>:
+    21ba:	e92d 44f0 	stmdb	sp!, {r4, r5, r6, r7, sl, lr}
+    21be:	b1a8      	cbz	r0, 21ec <swift_release_n+0x32>
+    21c0:	6842      	ldr	r2, [r0, #4]
+    21c2:	43d3      	mvns	r3, r2
+    21c4:	005b      	lsls	r3, r3, #1
+    21c6:	d011      	beq.n	21ec <swift_release_n+0x32>
+    21c8:	2900      	cmp	r1, #0
+    21ca:	d417      	bmi.n	21fc <swift_release_n+0x42>
+    21cc:	1d04      	adds	r4, r0, #4
+    21ce:	f3bf 8f5f 	dmb	sy
+    21d2:	e854 5f00 	ldrex	r5, [r4]
+    21d6:	1a6b      	subs	r3, r5, r1
+    21d8:	e844 3600 	strex	r6, r3, [r4]
+    21dc:	2e00      	cmp	r6, #0
+    21de:	d1f8      	bne.n	21d2 <swift_release_n+0x18>
+    21e0:	428d      	cmp	r5, r1
+    21e2:	f3bf 8f5f 	dmb	sy
+    21e6:	d60a      	bvs.n	21fe <swift_release_n+0x44>
+    21e8:	0059      	lsls	r1, r3, #1
+    21ea:	d001      	beq.n	21f0 <swift_release_n+0x36>
+    21ec:	e8bd 84f0 	ldmia.w	sp!, {r4, r5, r6, r7, sl, pc}
+    21f0:	f062 4100 	orn	r1, r2, #2147483648	; 0x80000000
+    21f4:	f000 faca 	bl	278c <OUTLINED_FUNCTION_13>
+    21f8:	e8bd 84f0 	ldmia.w	sp!, {r4, r5, r6, r7, sl, pc}
+    21fc:	defe      	udf	#254	; 0xfe
+    21fe:	defe      	udf	#254	; 0xfe
+
+00002200 <swift_setDeallocating>:
+    2200:	4770      	bx	lr
+    2202:	e7ff      	b.n	2204 <swift_retain_nTm>
+
+00002204 <swift_retain_nTm>:
+    2204:	b510      	push	{r4, lr}
+    2206:	b168      	cbz	r0, 2224 <swift_retain_nTm+0x20>
+    2208:	6842      	ldr	r2, [r0, #4]
+    220a:	43d2      	mvns	r2, r2
+    220c:	0052      	lsls	r2, r2, #1
+    220e:	d009      	beq.n	2224 <swift_retain_nTm+0x20>
+    2210:	2900      	cmp	r1, #0
+    2212:	d408      	bmi.n	2226 <swift_retain_nTm+0x22>
+    2214:	1d02      	adds	r2, r0, #4
+    2216:	e852 3f00 	ldrex	r3, [r2]
+    221a:	440b      	add	r3, r1
+    221c:	e842 3400 	strex	r4, r3, [r2]
+    2220:	2c00      	cmp	r4, #0
+    2222:	d1f8      	bne.n	2216 <swift_retain_nTm+0x12>
+    2224:	bd10      	pop	{r4, pc}
+    2226:	defe      	udf	#254	; 0xfe
+
+00002228 <swift_bridgeObjectRelease_n>:
+    2228:	f7ff bffe 	b.w	21ba <swift_release_n>
+			2228: R_ARM_THM_JUMP24	swift_release_n
+    222c:	b158      	cbz	r0, 2246 <swift_bridgeObjectRelease_n+0x1e>
+    222e:	6841      	ldr	r1, [r0, #4]
+    2230:	43c9      	mvns	r1, r1
+    2232:	0049      	lsls	r1, r1, #1
+    2234:	d007      	beq.n	2246 <swift_bridgeObjectRelease_n+0x1e>
+    2236:	1d01      	adds	r1, r0, #4
+    2238:	e851 2f00 	ldrex	r2, [r1]
+    223c:	3201      	adds	r2, #1
+    223e:	e841 2300 	strex	r3, r2, [r1]
+    2242:	2b00      	cmp	r3, #0
+    2244:	d1f8      	bne.n	2238 <swift_bridgeObjectRelease_n+0x10>
+    2246:	4770      	bx	lr
+
+00002248 <swift_bridgeObjectRelease>:
+    2248:	2101      	movs	r1, #1
+    224a:	f7ff bffe 	b.w	21ba <swift_release_n>
+			224a: R_ARM_THM_JUMP24	swift_release_n
+
+0000224e <swift_isUniquelyReferenced_native>:
+    224e:	b120      	cbz	r0, 225a <swift_isUniquelyReferenced_native+0xc>
+    2250:	6840      	ldr	r0, [r0, #4]
+    2252:	f3bf 8f5f 	dmb	sy
+    2256:	3801      	subs	r0, #1
+    2258:	e25a      	b.n	2710 <OUTLINED_FUNCTION_0>
+    225a:	2000      	movs	r0, #0
+    225c:	4770      	bx	lr
+
+0000225e <swift_isUniquelyReferenced_nonNull_native>:
+    225e:	6840      	ldr	r0, [r0, #4]
+    2260:	f3bf 8f5f 	dmb	sy
+    2264:	3801      	subs	r0, #1
+    2266:	e253      	b.n	2710 <OUTLINED_FUNCTION_0>
+
+00002268 <swift_isEscapingClosureAtFileLocation>:
+    2268:	b120      	cbz	r0, 2274 <swift_isEscapingClosureAtFileLocation+0xc>
+    226a:	6840      	ldr	r0, [r0, #4]
+    226c:	f3bf 8f5f 	dmb	sy
+    2270:	2801      	cmp	r0, #1
+    2272:	d101      	bne.n	2278 <swift_isEscapingClosureAtFileLocation+0x10>
+    2274:	2000      	movs	r0, #0
+    2276:	4770      	bx	lr
+    2278:	defe      	udf	#254	; 0xfe
+
+0000227a <swift_dynamicCastClass>:
+    227a:	6802      	ldr	r2, [r0, #0]
+    227c:	428a      	cmp	r2, r1
+    227e:	d003      	beq.n	2288 <swift_dynamicCastClass+0xe>
+    2280:	6812      	ldr	r2, [r2, #0]
+    2282:	2a00      	cmp	r2, #0
+    2284:	d1fa      	bne.n	227c <swift_dynamicCastClass+0x2>
+    2286:	2000      	movs	r0, #0
+    2288:	4770      	bx	lr
+
+0000228a <swift_dynamicCastClassUnconditional>:
+    228a:	6802      	ldr	r2, [r0, #0]
+    228c:	428a      	cmp	r2, r1
+    228e:	bf08      	it	eq
+    2290:	4770      	bxeq	lr
+    2292:	6812      	ldr	r2, [r2, #0]
+    2294:	2a00      	cmp	r2, #0
+    2296:	d1f9      	bne.n	228c <swift_dynamicCastClassUnconditional+0x2>
+    2298:	defe      	udf	#254	; 0xfe
+
+0000229a <swift_once>:
+    229a:	b510      	push	{r4, lr}
+    229c:	4604      	mov	r4, r0
+    229e:	6800      	ldr	r0, [r0, #0]
+    22a0:	f3bf 8f5f 	dmb	sy
+    22a4:	2800      	cmp	r0, #0
+    22a6:	d417      	bmi.n	22d8 <swift_once+0x3e>
+    22a8:	2001      	movs	r0, #1
+    22aa:	e854 3f00 	ldrex	r3, [r4]
+    22ae:	b95b      	cbnz	r3, 22c8 <swift_once+0x2e>
+    22b0:	e844 0300 	strex	r3, r0, [r4]
+    22b4:	2b00      	cmp	r3, #0
+    22b6:	d1f8      	bne.n	22aa <swift_once+0x10>
+    22b8:	4610      	mov	r0, r2
+    22ba:	4788      	blx	r1
+    22bc:	f04f 30ff 	mov.w	r0, #4294967295	; 0xffffffff
+    22c0:	f3bf 8f5f 	dmb	sy
+    22c4:	6020      	str	r0, [r4, #0]
+    22c6:	bd10      	pop	{r4, pc}
+    22c8:	f3bf 8f2f 	clrex
+    22cc:	6820      	ldr	r0, [r4, #0]
+    22ce:	f3bf 8f5f 	dmb	sy
+    22d2:	f1b0 3fff 	cmp.w	r0, #4294967295	; 0xffffffff
+    22d6:	dcf9      	bgt.n	22cc <swift_once+0x32>
+    22d8:	bd10      	pop	{r4, pc}
+
+000022da <swift_beginAccess>:
+    22da:	4770      	bx	lr
+
+000022dc <swift_endAccess>:
+    22dc:	4770      	bx	lr
+    22de:	bf00      	nop
+
+000022e0 <swift_coroFrameAlloc>:
+    22e0:	b5e0      	push	{r5, r6, r7, lr}
+    22e2:	4602      	mov	r2, r0
+    22e4:	480a      	ldr	r0, [pc, #40]	; (2310 <swift_coroFrameAlloc+0x30>)
+    22e6:	2110      	movs	r1, #16
+    22e8:	4478      	add	r0, pc
+    22ea:	6800      	ldr	r0, [r0, #0]
+    22ec:	6800      	ldr	r0, [r0, #0]
+    22ee:	9001      	str	r0, [sp, #4]
+    22f0:	2000      	movs	r0, #0
+    22f2:	9000      	str	r0, [sp, #0]
+    22f4:	4668      	mov	r0, sp
+    22f6:	f7ff fffe 	bl	0 <posix_memalign>
+			22f6: R_ARM_THM_CALL	posix_memalign
+    22fa:	9800      	ldr	r0, [sp, #0]
+    22fc:	9901      	ldr	r1, [sp, #4]
+    22fe:	4a05      	ldr	r2, [pc, #20]	; (2314 <swift_coroFrameAlloc+0x34>)
+    2300:	447a      	add	r2, pc
+    2302:	f000 fa3a 	bl	277a <OUTLINED_FUNCTION_11>
+    2306:	bf08      	it	eq
+    2308:	bd8c      	popeq	{r2, r3, r7, pc}
+    230a:	f7ff fffe 	bl	0 <__stack_chk_fail>
+			230a: R_ARM_THM_CALL	__stack_chk_fail
+    230e:	bf00      	nop
+    2310:	00000024 	.word	0x00000024
+			2310: R_ARM_GOT_PREL	__stack_chk_guard
+    2314:	00000010 	.word	0x00000010
+			2314: R_ARM_GOT_PREL	__stack_chk_guard
+
+00002318 <swift_clearSensitive>:
+    2318:	2900      	cmp	r1, #0
+    231a:	d405      	bmi.n	2328 <swift_clearSensitive+0x10>
+    231c:	bf08      	it	eq
+    231e:	4770      	bxeq	lr
+    2320:	b580      	push	{r7, lr}
+    2322:	f7ff fffe 	bl	0 <__aeabi_memclr>
+			2322: R_ARM_THM_CALL	__aeabi_memclr
+    2326:	bd80      	pop	{r7, pc}
+    2328:	defe      	udf	#254	; 0xfe
+
+0000232a <swift_retainCount>:
+    232a:	b128      	cbz	r0, 2338 <swift_retainCount+0xe>
+    232c:	6840      	ldr	r0, [r0, #4]
+    232e:	f3bf 8f5f 	dmb	sy
+    2332:	f020 4000 	bic.w	r0, r0, #2147483648	; 0x80000000
+    2336:	4770      	bx	lr
+    2338:	2000      	movs	r0, #0
+    233a:	4770      	bx	lr
+    233c:	e92d 4bfc 	stmdb	sp!, {r2, r3, r4, r5, r6, r7, r8, r9, fp, lr}
+    2340:	e9da b400 	ldrd	fp, r4, [sl]
+    2344:	b2c0      	uxtb	r0, r0
+    2346:	f3c4 6102 	ubfx	r1, r4, #24, #3
+    234a:	00ca      	lsls	r2, r1, #3
+    234c:	2907      	cmp	r1, #7
+    234e:	d164      	bne.n	241a <swift_retainCount+0xf0>
+    2350:	2100      	movs	r1, #0
+    2352:	f7ff fffe 	bl	0 <__aeabi_llsl>
+			2352: R_ARM_THM_CALL	__aeabi_llsl
+    2356:	f024 427f 	bic.w	r2, r4, #4278190080	; 0xff000000
+    235a:	e9da 6307 	ldrd	r6, r3, [sl, #28]
+    235e:	ea40 090b 	orr.w	r9, r0, fp
+    2362:	f10a 0810 	add.w	r8, sl, #16
+    2366:	e9da ce02 	ldrd	ip, lr, [sl, #8]
+    236a:	ea41 0702 	orr.w	r7, r1, r2
+    236e:	f8da 2024 	ldr.w	r2, [sl, #36]	; 0x24
+    2372:	e898 0122 	ldmia.w	r8, {r1, r5, r8}
+    2376:	ea83 0309 	eor.w	r3, r3, r9
+    237a:	9701      	str	r7, [sp, #4]
+    237c:	407a      	eors	r2, r7
+    237e:	eb18 0803 	adds.w	r8, r8, r3
+    2382:	eb46 0b02 	adc.w	fp, r6, r2
+    2386:	eb11 060c 	adds.w	r6, r1, ip
+    238a:	eb4e 0e05 	adc.w	lr, lr, r5
+    238e:	0348      	lsls	r0, r1, #13
+    2390:	9600      	str	r6, [sp, #0]
+    2392:	ea40 40d5 	orr.w	r0, r0, r5, lsr #19
+    2396:	036d      	lsls	r5, r5, #13
+    2398:	4070      	eors	r0, r6
+    239a:	ea45 41d1 	orr.w	r1, r5, r1, lsr #19
+    239e:	eb18 0600 	adds.w	r6, r8, r0
+    23a2:	ea81 010e 	eor.w	r1, r1, lr
+    23a6:	ea4f 4c40 	mov.w	ip, r0, lsl #17
+    23aa:	eb4b 0501 	adc.w	r5, fp, r1
+    23ae:	ea4c 37d1 	orr.w	r7, ip, r1, lsr #15
+    23b2:	0449      	lsls	r1, r1, #17
+    23b4:	f8ca 601c 	str.w	r6, [sl, #28]
+    23b8:	ea41 30d0 	orr.w	r0, r1, r0, lsr #15
+    23bc:	407e      	eors	r6, r7
+    23be:	f8ca 5018 	str.w	r5, [sl, #24]
+    23c2:	4068      	eors	r0, r5
+    23c4:	f8ca 6010 	str.w	r6, [sl, #16]
+    23c8:	f8ca 0014 	str.w	r0, [sl, #20]
+    23cc:	0418      	lsls	r0, r3, #16
+    23ce:	ea40 4012 	orr.w	r0, r0, r2, lsr #16
+    23d2:	0412      	lsls	r2, r2, #16
+    23d4:	ea42 4213 	orr.w	r2, r2, r3, lsr #16
+    23d8:	ea80 0008 	eor.w	r0, r0, r8
+    23dc:	ea82 020b 	eor.w	r2, r2, fp
+    23e0:	0543      	lsls	r3, r0, #21
+    23e2:	eb10 010e 	adds.w	r1, r0, lr
+    23e6:	ea43 23d2 	orr.w	r3, r3, r2, lsr #11
+    23ea:	ea81 0509 	eor.w	r5, r1, r9
+    23ee:	ea81 0103 	eor.w	r1, r1, r3
+    23f2:	f8ca 5008 	str.w	r5, [sl, #8]
+    23f6:	f8ca 1020 	str.w	r1, [sl, #32]
+    23fa:	9900      	ldr	r1, [sp, #0]
+    23fc:	4151      	adcs	r1, r2
+    23fe:	0552      	lsls	r2, r2, #21
+    2400:	ea42 20d0 	orr.w	r0, r2, r0, lsr #11
+    2404:	2200      	movs	r2, #0
+    2406:	4048      	eors	r0, r1
+    2408:	f8ca 0024 	str.w	r0, [sl, #36]	; 0x24
+    240c:	9801      	ldr	r0, [sp, #4]
+    240e:	4048      	eors	r0, r1
+    2410:	f004 417f 	and.w	r1, r4, #4278190080	; 0xff000000
+    2414:	f8ca 000c 	str.w	r0, [sl, #12]
+    2418:	e005      	b.n	2426 <swift_retainCount+0xfc>
+    241a:	2100      	movs	r1, #0
+    241c:	f7ff fffe 	bl	0 <__aeabi_llsl>
+			241c: R_ARM_THM_CALL	__aeabi_llsl
+    2420:	4321      	orrs	r1, r4
+    2422:	ea40 020b 	orr.w	r2, r0, fp
+    2426:	f101 7080 	add.w	r0, r1, #16777216	; 0x1000000
+    242a:	e9ca 2000 	strd	r2, r0, [sl]
+    242e:	e8bd 8bfc 	ldmia.w	sp!, {r2, r3, r4, r5, r6, r7, r8, r9, fp, pc}
+    2432:	e92d 4bf0 	stmdb	sp!, {r4, r5, r6, r7, r8, r9, fp, lr}
+    2436:	e9da 8700 	ldrd	r8, r7, [sl]
+    243a:	4605      	mov	r5, r0
+    243c:	f3c7 6002 	ubfx	r0, r7, #24, #3
+    2440:	00c4      	lsls	r4, r0, #3
+    2442:	2806      	cmp	r0, #6
+    2444:	d20d      	bcs.n	2462 <swift_retainCount+0x138>
+    2446:	b2a8      	uxth	r0, r5
+    2448:	2100      	movs	r1, #0
+    244a:	4622      	mov	r2, r4
+    244c:	f7ff fffe 	bl	0 <__aeabi_llsl>
+			244c: R_ARM_THM_CALL	__aeabi_llsl
+    2450:	4339      	orrs	r1, r7
+    2452:	ea40 0008 	orr.w	r0, r0, r8
+    2456:	f101 7100 	add.w	r1, r1, #33554432	; 0x2000000
+    245a:	e9ca 0100 	strd	r0, r1, [sl]
+    245e:	e8bd 8bf0 	ldmia.w	sp!, {r4, r5, r6, r7, r8, r9, fp, pc}
+    2462:	f007 417f 	and.w	r1, r7, #4278190080	; 0xff000000
+    2466:	2806      	cmp	r0, #6
+    2468:	f101 7600 	add.w	r6, r1, #33554432	; 0x2000000
+    246c:	d101      	bne.n	2472 <swift_retainCount+0x148>
+    246e:	2000      	movs	r0, #0
+    2470:	e007      	b.n	2482 <swift_retainCount+0x158>
+    2472:	4261      	negs	r1, r4
+    2474:	b2a8      	uxth	r0, r5
+    2476:	f001 0238 	and.w	r2, r1, #56	; 0x38
+    247a:	2100      	movs	r1, #0
+    247c:	f7ff fffe 	bl	0 <__aeabi_llsr>
+			247c: R_ARM_THM_CALL	__aeabi_llsr
+    2480:	430e      	orrs	r6, r1
+    2482:	e9ca 0600 	strd	r0, r6, [sl]
+    2486:	b2a8      	uxth	r0, r5
+    2488:	2100      	movs	r1, #0
+    248a:	4622      	mov	r2, r4
+    248c:	f7ff fffe 	bl	0 <__aeabi_llsl>
+			248c: R_ARM_THM_CALL	__aeabi_llsl
+    2490:	f027 427f 	bic.w	r2, r7, #4278190080	; 0xff000000
+    2494:	e9da 4506 	ldrd	r4, r5, [sl, #24]
+    2498:	ea40 0b08 	orr.w	fp, r0, r8
+    249c:	e9da e902 	ldrd	lr, r9, [sl, #8]
+    24a0:	ea41 0c02 	orr.w	ip, r1, r2
+    24a4:	e9da 3208 	ldrd	r3, r2, [sl, #32]
+    24a8:	e9da 7104 	ldrd	r7, r1, [sl, #16]
+    24ac:	ea83 030b 	eor.w	r3, r3, fp
+    24b0:	ea82 020c 	eor.w	r2, r2, ip
+    24b4:	18e6      	adds	r6, r4, r3
+    24b6:	eb45 0802 	adc.w	r8, r5, r2
+    24ba:	eb1e 0e07 	adds.w	lr, lr, r7
+    24be:	eb41 0509 	adc.w	r5, r1, r9
+    24c2:	037c      	lsls	r4, r7, #13
+    24c4:	ea44 44d1 	orr.w	r4, r4, r1, lsr #19
+    24c8:	0349      	lsls	r1, r1, #13
+    24ca:	ea41 41d7 	orr.w	r1, r1, r7, lsr #19
+    24ce:	ea84 040e 	eor.w	r4, r4, lr
+    24d2:	4069      	eors	r1, r5
+    24d4:	0467      	lsls	r7, r4, #17
+    24d6:	1930      	adds	r0, r6, r4
+    24d8:	ea47 37d1 	orr.w	r7, r7, r1, lsr #15
+    24dc:	f8ca 001c 	str.w	r0, [sl, #28]
+    24e0:	ea80 0007 	eor.w	r0, r0, r7
+    24e4:	f8ca 0010 	str.w	r0, [sl, #16]
+    24e8:	eb48 0001 	adc.w	r0, r8, r1
+    24ec:	0449      	lsls	r1, r1, #17
+    24ee:	ea41 31d4 	orr.w	r1, r1, r4, lsr #15
+    24f2:	f8ca 0018 	str.w	r0, [sl, #24]
+    24f6:	4048      	eors	r0, r1
+    24f8:	f8ca 0014 	str.w	r0, [sl, #20]
+    24fc:	0418      	lsls	r0, r3, #16
+    24fe:	ea40 4012 	orr.w	r0, r0, r2, lsr #16
+    2502:	0412      	lsls	r2, r2, #16
+    2504:	4070      	eors	r0, r6
+    2506:	ea42 4213 	orr.w	r2, r2, r3, lsr #16
+    250a:	ea82 0208 	eor.w	r2, r2, r8
+    250e:	0543      	lsls	r3, r0, #21
+    2510:	1941      	adds	r1, r0, r5
+    2512:	ea43 23d2 	orr.w	r3, r3, r2, lsr #11
+    2516:	ea81 040b 	eor.w	r4, r1, fp
+    251a:	ea81 0103 	eor.w	r1, r1, r3
+    251e:	f8ca 4008 	str.w	r4, [sl, #8]
+    2522:	f8ca 1020 	str.w	r1, [sl, #32]
+    2526:	eb42 010e 	adc.w	r1, r2, lr
+    252a:	0552      	lsls	r2, r2, #21
+    252c:	ea42 20d0 	orr.w	r0, r2, r0, lsr #11
+    2530:	4048      	eors	r0, r1
+    2532:	f8ca 0024 	str.w	r0, [sl, #36]	; 0x24
+    2536:	ea81 000c 	eor.w	r0, r1, ip
+    253a:	f8ca 000c 	str.w	r0, [sl, #12]
+    253e:	e8bd 8bf0 	ldmia.w	sp!, {r4, r5, r6, r7, r8, r9, fp, pc}
+    2542:	e92d 4bfc 	stmdb	sp!, {r2, r3, r4, r5, r6, r7, r8, r9, fp, lr}
+    2546:	e9da 8700 	ldrd	r8, r7, [sl]
+    254a:	4605      	mov	r5, r0
+    254c:	f3c7 6002 	ubfx	r0, r7, #24, #3
+    2550:	00c4      	lsls	r4, r0, #3
+    2552:	2804      	cmp	r0, #4
+    2554:	d20a      	bcs.n	256c <swift_retainCount+0x242>
+    2556:	f000 f91e 	bl	2796 <OUTLINED_FUNCTION_14>
+    255a:	4339      	orrs	r1, r7
+    255c:	ea40 0008 	orr.w	r0, r0, r8
+    2560:	f101 6180 	add.w	r1, r1, #67108864	; 0x4000000
+    2564:	e9ca 0100 	strd	r0, r1, [sl]
+    2568:	e8bd 8bfc 	ldmia.w	sp!, {r2, r3, r4, r5, r6, r7, r8, r9, fp, pc}
+    256c:	f007 417f 	and.w	r1, r7, #4278190080	; 0xff000000
+    2570:	2804      	cmp	r0, #4
+    2572:	f101 6680 	add.w	r6, r1, #67108864	; 0x4000000
+    2576:	d101      	bne.n	257c <swift_retainCount+0x252>
+    2578:	2000      	movs	r0, #0
+    257a:	e007      	b.n	258c <swift_retainCount+0x262>
+    257c:	4260      	negs	r0, r4
+    257e:	2100      	movs	r1, #0
+    2580:	f000 0238 	and.w	r2, r0, #56	; 0x38
+    2584:	4628      	mov	r0, r5
+    2586:	f7ff fffe 	bl	0 <__aeabi_llsr>
+			2586: R_ARM_THM_CALL	__aeabi_llsr
+    258a:	430e      	orrs	r6, r1
+    258c:	e9ca 0600 	strd	r0, r6, [sl]
+    2590:	f000 f901 	bl	2796 <OUTLINED_FUNCTION_14>
+    2594:	f027 427f 	bic.w	r2, r7, #4278190080	; 0xff000000
+    2598:	e9da 4506 	ldrd	r4, r5, [sl, #24]
+    259c:	ea40 0b08 	orr.w	fp, r0, r8
+    25a0:	e9da e902 	ldrd	lr, r9, [sl, #8]
+    25a4:	ea41 0602 	orr.w	r6, r1, r2
+    25a8:	e9da 3208 	ldrd	r3, r2, [sl, #32]
+    25ac:	e9da 7104 	ldrd	r7, r1, [sl, #16]
+    25b0:	9601      	str	r6, [sp, #4]
+    25b2:	4072      	eors	r2, r6
+    25b4:	ea83 030b 	eor.w	r3, r3, fp
+    25b8:	eb14 0c03 	adds.w	ip, r4, r3
+    25bc:	eb45 0802 	adc.w	r8, r5, r2
+    25c0:	eb1e 0e07 	adds.w	lr, lr, r7
+    25c4:	eb41 0509 	adc.w	r5, r1, r9
+    25c8:	037c      	lsls	r4, r7, #13
+    25ca:	ea44 44d1 	orr.w	r4, r4, r1, lsr #19
+    25ce:	0349      	lsls	r1, r1, #13
+    25d0:	ea41 41d7 	orr.w	r1, r1, r7, lsr #19
+    25d4:	ea84 040e 	eor.w	r4, r4, lr
+    25d8:	eb1c 0004 	adds.w	r0, ip, r4
+    25dc:	ea81 0105 	eor.w	r1, r1, r5
+    25e0:	eb48 0701 	adc.w	r7, r8, r1
+    25e4:	0466      	lsls	r6, r4, #17
+    25e6:	f8ca 001c 	str.w	r0, [sl, #28]
+    25ea:	ea46 36d1 	orr.w	r6, r6, r1, lsr #15
+    25ee:	f8ca 7018 	str.w	r7, [sl, #24]
+    25f2:	4070      	eors	r0, r6
+    25f4:	f8ca 0010 	str.w	r0, [sl, #16]
+    25f8:	0448      	lsls	r0, r1, #17
+    25fa:	ea40 30d4 	orr.w	r0, r0, r4, lsr #15
+    25fe:	4078      	eors	r0, r7
+    2600:	f8ca 0014 	str.w	r0, [sl, #20]
+    2604:	0418      	lsls	r0, r3, #16
+    2606:	ea40 4012 	orr.w	r0, r0, r2, lsr #16
+    260a:	0412      	lsls	r2, r2, #16
+    260c:	ea42 4213 	orr.w	r2, r2, r3, lsr #16
+    2610:	ea80 000c 	eor.w	r0, r0, ip
+    2614:	ea82 0208 	eor.w	r2, r2, r8
+    2618:	0543      	lsls	r3, r0, #21
+    261a:	1941      	adds	r1, r0, r5
+    261c:	ea43 23d2 	orr.w	r3, r3, r2, lsr #11
+    2620:	ea81 040b 	eor.w	r4, r1, fp
+    2624:	ea81 0103 	eor.w	r1, r1, r3
+    2628:	9b01      	ldr	r3, [sp, #4]
+    262a:	f8ca 4008 	str.w	r4, [sl, #8]
+    262e:	f8ca 1020 	str.w	r1, [sl, #32]
+    2632:	eb42 010e 	adc.w	r1, r2, lr
+    2636:	0552      	lsls	r2, r2, #21
+    2638:	ea42 20d0 	orr.w	r0, r2, r0, lsr #11
+    263c:	404b      	eors	r3, r1
+    263e:	4048      	eors	r0, r1
+    2640:	f8ca 300c 	str.w	r3, [sl, #12]
+    2644:	f8ca 0024 	str.w	r0, [sl, #36]	; 0x24
+    2648:	e8bd 8bfc 	ldmia.w	sp!, {r2, r3, r4, r5, r6, r7, r8, r9, fp, pc}
+    264c:	b510      	push	{r4, lr}
+    264e:	2162      	movs	r1, #98	; 0x62
+    2650:	4604      	mov	r4, r0
+    2652:	f7ff fffe 	bl	0 <__aeabi_memclr4>
+			2652: R_ARM_THM_CALL	__aeabi_memclr4
+    2656:	2001      	movs	r0, #1
+    2658:	f884 0062 	strb.w	r0, [r4, #98]	; 0x62
+    265c:	bd10      	pop	{r4, pc}
+    265e:	4770      	bx	lr
+    2660:	2100      	movs	r1, #0
+    2662:	f880 1062 	strb.w	r1, [r0, #98]	; 0x62
+    2666:	4770      	bx	lr
+    2668:	defe      	udf	#254	; 0xfe
+    266a:	f7ff bffe 	b.w	a08 <spike071_driver-0x10f0>
+			266a: R_ARM_THM_JUMP24	$e8Spike07112InputOrdinalVSHAASH9hashValueSivgTW
+    266e:	f7ff bffe 	b.w	a08 <spike071_driver-0x10f0>
+			266e: R_ARM_THM_JUMP24	$e8Spike07112InputOrdinalVSHAASH9hashValueSivgTW
+    2672:	f7ff bffe 	b.w	6ee <spike071_driver-0x140a>
+			2672: R_ARM_THM_JUMP24	$e8Spike0714SizeV4hash4intoys6HasherVz_tF
+    2676:	f7ff bffe 	b.w	ada <spike071_driver-0x101e>
+			2676: R_ARM_THM_JUMP24	$e8Spike07127_GiftUIPaddingInsetsPayloadV6insetsAA04EdgeD0Vvg
+    267a:	f7ff bffe 	b.w	dfc <spike071_driver-0xcfc>
+			267a: R_ARM_THM_JUMP24	$e8Spike07124_GiftUIBackgroundPayloadV5colorAA5ColorVvg
+    267e:	f7ff bffe 	b.w	dfc <spike071_driver-0xcfc>
+			267e: R_ARM_THM_JUMP24	$e8Spike07124_GiftUIBackgroundPayloadV5colorAA5ColorVvg
+    2682:	f7ff bffe 	b.w	dfc <spike071_driver-0xcfc>
+			2682: R_ARM_THM_JUMP24	$e8Spike07124_GiftUIBackgroundPayloadV5colorAA5ColorVvg
+    2686:	f7ff bffe 	b.w	dfc <spike071_driver-0xcfc>
+			2686: R_ARM_THM_JUMP24	$e8Spike07124_GiftUIBackgroundPayloadV5colorAA5ColorVvg
+    268a:	f7ff bffe 	b.w	dfc <spike071_driver-0xcfc>
+			268a: R_ARM_THM_JUMP24	$e8Spike07124_GiftUIBackgroundPayloadV5colorAA5ColorVvg
+    268e:	f7ff bffe 	b.w	aac <spike071_driver-0x104c>
+			268e: R_ARM_THM_JUMP24	$e8Spike07120_GiftUIHStackPayloadV9alignment7spacingAcA17VerticalAlignmentO_s5Int32VtcfC
+    2692:	f7ff bffe 	b.w	aac <spike071_driver-0x104c>
+			2692: R_ARM_THM_JUMP24	$e8Spike07120_GiftUIHStackPayloadV9alignment7spacingAcA17VerticalAlignmentO_s5Int32VtcfC
+    2696:	f7ff bffe 	b.w	9ce <spike071_driver-0x112a>
+			2696: R_ARM_THM_JUMP24	$e8Spike07112InputOrdinalV23__derived_struct_equalsySbAC_ACtFZ
+    269a:	f7ff bffe 	b.w	9ce <spike071_driver-0x112a>
+			269a: R_ARM_THM_JUMP24	$e8Spike07112InputOrdinalV23__derived_struct_equalsySbAC_ACtFZ
+    269e:	f7ff bffe 	b.w	978 <spike071_driver-0x1180>
+			269e: R_ARM_THM_JUMP24	$e8Spike07113InputSourceIDV23__derived_struct_equalsySbAC_ACtFZ
+    26a2:	f7ff bffe 	b.w	9ce <spike071_driver-0x112a>
+			26a2: R_ARM_THM_JUMP24	$e8Spike07112InputOrdinalV23__derived_struct_equalsySbAC_ACtFZ
+    26a6:	f7ff bffe 	b.w	978 <spike071_driver-0x1180>
+			26a6: R_ARM_THM_JUMP24	$e8Spike07113InputSourceIDV23__derived_struct_equalsySbAC_ACtFZ
+    26aa:	f7ff bffe 	b.w	e02 <spike071_driver-0xcf6>
+			26aa: R_ARM_THM_JUMP24	$e8Spike07124_GiftUIBackgroundPayloadV23__derived_struct_equalsySbAC_ACtFZ
+    26ae:	f7ff bffe 	b.w	e02 <spike071_driver-0xcf6>
+			26ae: R_ARM_THM_JUMP24	$e8Spike07124_GiftUIBackgroundPayloadV23__derived_struct_equalsySbAC_ACtFZ
+    26b2:	f7ff bffe 	b.w	e02 <spike071_driver-0xcf6>
+			26b2: R_ARM_THM_JUMP24	$e8Spike07124_GiftUIBackgroundPayloadV23__derived_struct_equalsySbAC_ACtFZ
+
+000026b6 <swift_retain>:
+    26b6:	e5b9      	b.n	222c <swift_bridgeObjectRelease_n+0x4>
+
+000026b8 <swift_bridgeObjectRetain>:
+    26b8:	e5b8      	b.n	222c <swift_bridgeObjectRelease_n+0x4>
+    26ba:	f7ff bffe 	b.w	6e4 <spike071_driver-0x1414>
+			26ba: R_ARM_THM_JUMP24	$e8Spike0714SizeV23__derived_struct_equalsySbAC_ACtFZ
+    26be:	f7ff bffe 	b.w	aae <spike071_driver-0x104a>
+			26be: R_ARM_THM_JUMP24	$e8Spike07120_GiftUIHStackPayloadV23__derived_struct_equalsySbAC_ACtFZ
+    26c2:	f7ff bffe 	b.w	aae <spike071_driver-0x104a>
+			26c2: R_ARM_THM_JUMP24	$e8Spike07120_GiftUIHStackPayloadV23__derived_struct_equalsySbAC_ACtFZ
+
+000026c6 <swift_deletedMethodError>:
+    26c6:	e7cf      	b.n	2668 <swift_retainCount+0x33e>
+
+000026c8 <_swift_dead_method_stub>:
+    26c8:	e7ce      	b.n	2668 <swift_retainCount+0x33e>
+    26ca:	f7ff bffe 	b.w	96c <spike071_driver-0x118c>
+			26ca: R_ARM_THM_JUMP24	$e8Spike07112PointerPhaseOSYAASY8rawValue03RawE0QzvgTW
+    26ce:	f7ff bffe 	b.w	96c <spike071_driver-0x118c>
+			26ce: R_ARM_THM_JUMP24	$e8Spike07112PointerPhaseOSYAASY8rawValue03RawE0QzvgTW
+    26d2:	f7ff bffe 	b.w	c94 <spike071_driver-0xe64>
+			26d2: R_ARM_THM_JUMP24	$e8Spike07119HorizontalAlignmentO8rawValueACSgs5UInt8V_tcfC
+    26d6:	f7ff bffe 	b.w	c94 <spike071_driver-0xe64>
+			26d6: R_ARM_THM_JUMP24	$e8Spike07119HorizontalAlignmentO8rawValueACSgs5UInt8V_tcfC
+    26da:	f7ff bffe 	b.w	704 <spike071_driver-0x13f4>
+			26da: R_ARM_THM_JUMP24	$e8Spike0714SizeV9hashValueSivg
+    26de:	f7ff bffe 	b.w	9d4 <spike071_driver-0x1124>
+			26de: R_ARM_THM_JUMP24	$e8Spike07112InputOrdinalV4hash4intoys6HasherVz_tF
+    26e2:	f7ff bffe 	b.w	9d4 <spike071_driver-0x1124>
+			26e2: R_ARM_THM_JUMP24	$e8Spike07112InputOrdinalV4hash4intoys6HasherVz_tF
+
+000026e6 <swift_retain_n>:
+    26e6:	e58c      	b.n	2202 <swift_setDeallocating+0x2>
+
+000026e8 <swift_bridgeObjectRetain_n>:
+    26e8:	e58b      	b.n	2202 <swift_setDeallocating+0x2>
+    26ea:	f7ff bffe 	b.w	a14 <spike071_driver-0x10e4>
+			26ea: R_ARM_THM_JUMP24	$e8Spike07112InputOrdinalVSHAASH4hash4intoys6HasherVz_tFTW
+    26ee:	f7ff bffe 	b.w	a14 <spike071_driver-0x10e4>
+			26ee: R_ARM_THM_JUMP24	$e8Spike07112InputOrdinalVSHAASH4hash4intoys6HasherVz_tFTW
+
+000026f2 <swift_deallocUninitializedObject>:
+    26f2:	e501      	b.n	20f8 <swift_initStaticObject+0xc>
+
+000026f4 <swift_deallocObject>:
+    26f4:	e500      	b.n	20f8 <swift_initStaticObject+0xc>
+
+000026f6 <swift_slowDealloc>:
+    26f6:	e4ff      	b.n	20f8 <swift_initStaticObject+0xc>
+    26f8:	f7ff bffe 	b.w	9e4 <spike071_driver-0x1114>
+			26f8: R_ARM_THM_JUMP24	$e8Spike07112InputOrdinalV9hashValueSivg
+    26fc:	f7ff bffe 	b.w	9e4 <spike071_driver-0x1114>
+			26fc: R_ARM_THM_JUMP24	$e8Spike07112InputOrdinalV9hashValueSivg
+    2700:	f7ff bffe 	b.w	950 <spike071_driver-0x11a8>
+			2700: R_ARM_THM_JUMP24	$e8Spike07112PointerPhaseO8rawValueACSgs5UInt8V_tcfC
+    2704:	f7ff fffe 	bl	12b0 <spike071_driver-0x848>
+			2704: R_ARM_THM_CALL	$e8Spike07111TraceCanvasVAA4ViewA2aDP4body4BodyQzvgTW
+    2708:	f7ff bffe 	b.w	a00 <spike071_driver-0x10f8>
+			2708: R_ARM_THM_JUMP24	$e8Spike07112InputOrdinalVSQAASQ2eeoiySbx_xtFZTW
+    270c:	f7ff bffe 	b.w	a00 <spike071_driver-0x10f8>
+			270c: R_ARM_THM_JUMP24	$e8Spike07112InputOrdinalVSQAASQ2eeoiySbx_xtFZTW
+
+00002710 <OUTLINED_FUNCTION_0>:
+    2710:	fab0 f080 	clz	r0, r0
+    2714:	0940      	lsrs	r0, r0, #5
+    2716:	4770      	bx	lr
+
+00002718 <OUTLINED_FUNCTION_1>:
+    2718:	4631      	mov	r1, r6
+    271a:	2263      	movs	r2, #99	; 0x63
+    271c:	4620      	mov	r0, r4
+    271e:	f7ff bffe 	b.w	0 <__aeabi_memcpy4>
+			271e: R_ARM_THM_JUMP24	__aeabi_memcpy4
+
+00002722 <OUTLINED_FUNCTION_2>:
+    2722:	4604      	mov	r4, r0
+    2724:	2100      	movs	r1, #0
+    2726:	4650      	mov	r0, sl
+    2728:	f7ff bffe 	b.w	1d6c <spike071_driver+0x274>
+			2728: R_ARM_THM_JUMP24	$es6HasherV5_seedABSi_tcfC
+
+0000272c <OUTLINED_FUNCTION_3>:
+    272c:	4621      	mov	r1, r4
+    272e:	2263      	movs	r2, #99	; 0x63
+    2730:	4628      	mov	r0, r5
+    2732:	f7ff bffe 	b.w	0 <__aeabi_memcpy4>
+			2732: R_ARM_THM_JUMP24	__aeabi_memcpy4
+
+00002736 <OUTLINED_FUNCTION_4>:
+    2736:	f84d ed08 	str.w	lr, [sp, #-8]!
+    273a:	4628      	mov	r0, r5
+    273c:	f7fd fe3a 	bl	3b4 <spike071_driver-0x1744>
+    2740:	2801      	cmp	r0, #1
+    2742:	f85d eb08 	ldr.w	lr, [sp], #8
+    2746:	4770      	bx	lr
+
+00002748 <OUTLINED_FUNCTION_5>:
+    2748:	f84d ed08 	str.w	lr, [sp, #-8]!
+    274c:	4620      	mov	r0, r4
+    274e:	f7fd fe31 	bl	3b4 <spike071_driver-0x1744>
+    2752:	2801      	cmp	r0, #1
+    2754:	f85d eb08 	ldr.w	lr, [sp], #8
+    2758:	4770      	bx	lr
+
+0000275a <OUTLINED_FUNCTION_6>:
+    275a:	4628      	mov	r0, r5
+    275c:	f7ff bffe 	b.w	0 <__aeabi_memcpy4>
+			275c: R_ARM_THM_JUMP24	__aeabi_memcpy4
+
+00002760 <OUTLINED_FUNCTION_7>:
+    2760:	2263      	movs	r2, #99	; 0x63
+    2762:	f7ff bffe 	b.w	0 <__aeabi_memcpy4>
+			2762: R_ARM_THM_JUMP24	__aeabi_memcpy4
+
+00002766 <OUTLINED_FUNCTION_8>:
+    2766:	4620      	mov	r0, r4
+    2768:	f7ff bffe 	b.w	0 <__aeabi_memcpy4>
+			2768: R_ARM_THM_JUMP24	__aeabi_memcpy4
+
+0000276c <OUTLINED_FUNCTION_9>:
+    276c:	2262      	movs	r2, #98	; 0x62
+    276e:	4630      	mov	r0, r6
+    2770:	f7ff bffe 	b.w	0 <__aeabi_memcpy4>
+			2770: R_ARM_THM_JUMP24	__aeabi_memcpy4
+
+00002774 <OUTLINED_FUNCTION_10>:
+    2774:	46a0      	mov	r8, r4
+    2776:	f7ff bffe 	b.w	56c <spike071_driver-0x158c>
+			2776: R_ARM_THM_JUMP24	$e8Spike07121requireDrawingSuccess33_9CB5166BE76D057987ABFF638FB9C0F6LLyys5UInt8VAA0C5ErrorOYKF
+
+0000277a <OUTLINED_FUNCTION_11>:
+    277a:	6812      	ldr	r2, [r2, #0]
+    277c:	6812      	ldr	r2, [r2, #0]
+    277e:	428a      	cmp	r2, r1
+    2780:	4770      	bx	lr
+
+00002782 <OUTLINED_FUNCTION_12>:
+    2782:	e9da 0102 	ldrd	r0, r1, [sl, #8]
+    2786:	462a      	mov	r2, r5
+    2788:	f7ff bffe 	b.w	1190 <spike071_driver-0x968>
+			2788: R_ARM_THM_JUMP24	$e8Spike0717drawBar5value5scale7contextys6UInt32V_AgA15GraphicsContextVztAA12DrawingErrorOYKF
+
+0000278c <OUTLINED_FUNCTION_13>:
+    278c:	4682      	mov	sl, r0
+    278e:	6041      	str	r1, [r0, #4]
+    2790:	6801      	ldr	r1, [r0, #0]
+    2792:	6849      	ldr	r1, [r1, #4]
+    2794:	4708      	bx	r1
+
+00002796 <OUTLINED_FUNCTION_14>:
+    2796:	4628      	mov	r0, r5
+    2798:	2100      	movs	r1, #0
+    279a:	4622      	mov	r2, r4
+    279c:	f7ff bffe 	b.w	0 <__aeabi_llsl>
+			279c: R_ARM_THM_JUMP24	__aeabi_llsl
+
+000027a0 <OUTLINED_FUNCTION_15>:
+    27a0:	4620      	mov	r0, r4
+    27a2:	e6ce      	b.n	2542 <swift_retainCount+0x218>
+
+000027a4 <OUTLINED_FUNCTION_16>:
+    27a4:	f8d9 0000 	ldr.w	r0, [r9]
+    27a8:	f440 5000 	orr.w	r0, r0, #8192	; 0x2000
+    27ac:	f8c9 0000 	str.w	r0, [r9]
+    27b0:	4770      	bx	lr
+
+000027b2 <OUTLINED_FUNCTION_17>:
+    27b2:	f8d9 0000 	ldr.w	r0, [r9]
+    27b6:	f440 7080 	orr.w	r0, r0, #256	; 0x100
+    27ba:	f8c9 0000 	str.w	r0, [r9]
+    27be:	4770      	bx	lr
+
+Disassembly of section .text.unlikely.:
+
+00000000 <.text.unlikely.>:
+   0:	defe      	udf	#254	; 0xfe
+   2:	defe      	udf	#254	; 0xfe
+   4:	defe      	udf	#254	; 0xfe
+   6:	f7ff fffe 	bl	0 <.text.unlikely.>
+			6: R_ARM_THM_CALL	$e8Spike0719EmptyViewV4bodys5NeverOvg
+
+Disassembly of section .text._swift_exceptionPersonality:
+
+00000000 <_swift_exceptionPersonality>:
+   0:	defe      	udf	#254	; 0xfe

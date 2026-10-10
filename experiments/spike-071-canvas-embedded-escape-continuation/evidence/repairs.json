@@ -1,0 +1,15 @@
+{
+  "limit": 3,
+  "rounds": [
+    {
+      "round": 1,
+      "before_trial": 1,
+      "reason": "Authorized known correction: avoid untyped throwing Bool autoclosures in two test assertions; candidate mechanism unchanged."
+    },
+    {
+      "round": 2,
+      "after_trial": 32,
+      "reason": "Nested-helper negatives also reported an invalid implicit consume of a borrowed argument. Return an explicit copy, require positive forwarding controls on all four targets, then rerun only nested-helper escape negatives to isolate intended lifetime rejection."
+    }
+  ]
+}

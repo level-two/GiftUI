@@ -1,0 +1,40 @@
+@ObservableModel
+final class CounterModel {
+    @Published var value: UInt32 = 0
+    @Published var scale: UInt32 = 7
+}
+
+@ObservableModel
+final class AnalyzerModel {
+    @Published var capture: Capture = Capture()
+}
+
+@ObservableStateHost
+struct CounterScreen: View {
+    @State var model: CounterModel
+    var body: some View {
+        HStack(spacing: 0) {
+            Text(counterText(model.value))
+            CounterCanvas(model: model)
+            CounterCanvas(model: model)
+        }
+    }
+}
+
+struct CounterCanvas: Canvas {
+    let model: CounterModel
+    func draw(in bounds: Rect, context: inout GraphicsContext) throws(DrawingError) {
+        try drawBar(value: model.value, scale: model.scale, context: &context)
+    }
+}
+
+struct TraceCanvas: Canvas {
+    let model: AnalyzerModel
+    func draw(in bounds: Rect, context: inout GraphicsContext) throws(DrawingError) {
+        try drawBar(value: traceLevel(model: model, index: 17), scale: 1, context: &context)
+    }
+}
+
+func traceLevel(model: AnalyzerModel, index: UInt16) -> UInt32 {
+    return model.capture.level(at: index)
+}
