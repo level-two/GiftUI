@@ -79,6 +79,13 @@ nRF fixture. Its [result](../../experiments/spike-071-canvas-embedded-escape-con
 supports the mechanism under experimental lifetime flags, not complete production
 binding, source compatibility, whole-image feasibility or RFC approval.
 
+The [contextual evaluation design](../iterations/iteration-003-review/rfc-014-contextual-evaluation.md)
+now proposes the production connection: a contextual compiled View contract,
+explicit traversal session, short body/draw read borrows under a frame lease,
+and typed access-failure transport. It distinguishes familiar authoring syntax
+from an unchanged Swift protocol or macro-only implementation. The draft SPI,
+compiler policy and actual nested integration remain unapproved/unproved.
+
 ## Summary
 
 Evaluate the real portable declarations through Semantic Core's traversal and

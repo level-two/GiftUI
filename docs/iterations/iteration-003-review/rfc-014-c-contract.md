@@ -34,6 +34,17 @@ full replacement/materialization/teardown remain unproved.
 Earlier “not authorized” statements describe the original design step. Both
 subsequent Spikes are now terminal, with no additional experiment allowance.
 
+## Contextual evaluation follow-up
+
+The [production evaluation/binding design](rfc-014-contextual-evaluation.md)
+refines §§2–4: the compiled View contract needs contextual witnesses and typed
+failure transport; source `body` syntax is a finite-lowering input, not an
+unchanged context-free runtime getter. A frame lease pins frozen storage while
+short body/draw read borrows end before nested State binding. The design also
+covers short-circuit effects, current-write routes, the Drawing access argument
+and explicit compiler-policy/authority implications. It is uncompiled draft
+design; SPIKE-071 does not validate this larger integration.
+
 ## Design commitments in this draft
 
 - Keep one serialized mutation domain. External producers submit immutable
@@ -72,9 +83,12 @@ where Body == Never {
 ```
 
 The existing public bridge marker is inherited to permit `visitPrimitive(self)`.
-The framework supplies `body: Never` and primitive traversal witnesses. Reading
-that body is an invariant violation; normal traversal visits one leaf without
-reading body or calling draw. Concrete Canvas types need neither a body nor
+The initial proposal supplied `body: Never` to satisfy today's View getter.
+The subsequent [contextual evaluation design](rfc-014-contextual-evaluation.md)
+replaces that compiled getter requirement: retain the leaf category/Body marker
+and generated primitive/draw witnesses, without a fake body getter to make
+contextual dispatch work. Normal traversal visits one leaf without evaluating
+body or calling draw. Concrete Canvas authors need neither a body nor
 user-written traversal. Bounds are local `(0, 0, width, height)` with checked
 nonnegative resolved dimensions; parent translation and clip remain framework
 responsibilities. This preserves today's local-size semantics without exposing
