@@ -9,12 +9,14 @@ created: 2026-08-14
 updated: 2026-10-10
 proposal:
   - PROPOSAL-002
+  - PROPOSAL-007
 related_rfcs:
   - RFC-012
   - RFC-001
   - RFC-008
   - RFC-009
   - RFC-011
+  - RFC-014
 related_adrs:
   - ADR-001
   - ADR-034
@@ -32,6 +34,8 @@ related_adrs:
   - ADR-030
   - ADR-031
   - ADR-033
+  - ADR-035
+  - ADR-036
 related_specs:
   - SPEC-002
   - SPEC-003
@@ -69,9 +73,9 @@ target_milestone: MVP
 > **RFC-014 amendment draft — 2026-10-10.** ADR-035/036/037 are now accepted;
 > ADR-037 supersedes ADR-028. This contract is reopened for amendment, not newly
 > approved or implemented. The previously implemented contract and its approval
-> history are preserved at commit `53740a73`. Historical completion evidence
+> history are preserved at commit `53740a73`. Earlier approval notices and
+> completed checkboxes describe that baseline only. Historical completion evidence
 > applies to that baseline only. See the [ADR acceptance record](../iterations/iteration-003-review/rfc-014-adr-acceptance.md).
-
 
 **Current disposition — 2026-10-03:** The maintainer explicitly directed
 performance work to future iterations and closure of the remaining Specifications.
@@ -117,6 +121,99 @@ Earlier open-gate statements below describe the pre-approval history.
 > with a 320 x 4 RGB565 region, 640-byte rows, and 2,560-byte raster,
 > payload, and in-flight bounds. Controller scan direction and touch
 > calibration require connected verification.
+
+## RFC-014 runtime amendment
+
+Amendment map and review: [RFC-014 specification review](../iterations/iteration-003-review/rfc-014-spec-amendment-review.md).
+
+**Draft contract under ADR-035/036/037; ADR-034 is unchanged.** This section
+amends presentation access, runtime derivation and model ownership. Domain value
+semantics, source/repository/admission behavior, five-second retention, actions,
+errors, dimensions, text and loaded-workload requirements below remain. Historical
+closure-based Canvas examples and full-capture presentation arguments are replaced
+by the protocol/selection contract here, not by a new application behavior.
+
+### Presentation and model contract
+
+The analyzer's root, header, controls, status, ruler, waveform panel and channel
+rows MUST derive their graph from the actual portable declaration and current
+bound model. Generated topology/expanded graph files cannot feed production.
+Finite schema/field witnesses, font resources and access lowering are permitted.
+Authored framework imports remain GiftUI, with existing Domain imports allowed;
+Runtime/backend/platform selection remains in target hosting.
+
+Generated schema exposes typed AcquisitionState, visible window, bounded
+SignalAnalyzerDiagnostic, capture count/revision/baselines and checked transition
+reads. Pure `visibleRange`, `currentLevel`, `startingLevel`, trace-point-count and
+trace helpers preserve the existing source order, short-circuit behavior and
+boundary algorithms. Services and commands are absent from read facades. Start,
+Stop, Clear and window changes enter the existing host-owned mutation/action route.
+
+Introduce an owned, bounded `SignalCaptureSelection` in generated Presentation,
+containing `_GiftUIModelKey<AnalyzerSchema>`; channel/window/range inputs remain
+owned child/Canvas values. Its initializer is supplied only by validated generated
+model access. It owns no capture or model ticket and resolves only through the
+current frame's scoped read for that exact key. `CaptureRead<D>` exposes baseline,
+count and `transition(at:) throws(_GiftUIAccessFailure)` with bounds checks.
+A selection is attempt-local; it cannot be retained as an application snapshot.
+
+`SignalCapture` in Domain remains an independent immutable owned value. Public
+capture publications, admission facts and replay retain their existing semantics;
+this amendment does not turn them into borrowed aliases. Only internal
+presentation helper/child/Canvas parameters migrate from full capture values to
+selection or scoped read facades. An explicit full owned export requires an
+accounted destination outside body/draw; it does not claim another bank in the
+selected production frame path. No graph/body/Canvas value copies 404 records.
+
+Use concrete Canvas types with SPEC-012's `draw(in:context:)` authoring contract.
+Each carries its exact model selection and bounded values. Protocol invocation
+uses post-layout local bounds and scoped capture reads; the same independent
+waveform, diagnostic, disabled-state and pixel oracles remain required.
+
+The analyzer configures two metadata slots and ONE model-capture entitlement.
+An installed empty model reserves it. Independent host caches/owners must use
+bounded tickets; replacing an installed populated model with an inert empty seed
+requires explicit transfer of its final ticket under SPEC-010. Retained previous
+owners and a second populated candidate force precommit refusal. No fourth bank,
+heap/COW/sharing fallback, source/admission borrowing or owner revocation is allowed.
+Committed replacement is preserved if subsequent drawing fails.
+
+All capture writes preserve revision/error/order semantics by preflight followed
+by non-failing commit. Reading frame data excludes model mutation, not source
+acquisition: external source facts continue through the existing bounded admission
+owner. Three transition banks remain exactly 19,392 bytes at 404 × 16 bytes each.
+Counter-only storage is independent and never reserves analyzer buffers.
+
+### Workload and migration acceptance
+
+Keep 126 structural identities, 98 layout/render scopes, 404 transitions, the
+five-second inclusive horizon, four baselines and replay/Clear behavior. Full
+resource audits include newly introduced metadata, ownership and record pools;
+they cannot subtract them from source/admission capacity. Keep the 30-second,
+80-events/second workload, 2,404 delivered facts including initial levels, revision
+2,404 and final retained 25–30 second window of 404 transitions. Delivery and
+retention counts remain distinct. Frame target stays 250 milliseconds; the known
+4 MHz transport limitation is not waived by this amendment.
+
+The existing production path stays until the approved amended contracts and
+migration acceptance pass. Source inventory must cover every analyzer route in
+RFC-014's typed-access contract, including diagnostic optional/default text,
+window predicates, nested helpers and compound capture mutations. Hand-written
+fixture lowering is not evidence of full application support.
+
+- [ ] **SA-RD-001:** The complete analyzer source inventory compiles through actual
+  lowering on macOS Dynamic/Static, ARMv6 Dynamic and Embedded Static without
+  generated topology inputs, target offsets or Runtime imports in Presentation.
+- [ ] **SA-RD-002:** Independent source/action/capture/waveform/pixel oracles match
+  the baseline, including full diagnostics, window boundaries, replay/Clear,
+  short-circuit/helper order, no-op reports and stale action/model selection.
+- [ ] **SA-RD-003:** Real host owners exercise empty entitlement, retained-owner
+  and second-populated refusal, successful final-ticket transfer, failed attach,
+  later draw failure and teardown without data loss or leaked owners/banks.
+- [ ] **SA-RD-004:** Complete four-configuration resource/conformance evidence
+  proves preserved logical limits, all three bank roles, lifetime safety and
+  Static zero heap. Connected workload evidence remains separately identified
+  and required; hardware-free fixtures do not mark timing or hardware criteria met.
 
 ## Summary
 

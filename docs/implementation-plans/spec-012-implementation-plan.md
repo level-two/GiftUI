@@ -2,11 +2,11 @@
 spec: SPEC-012
 feature: canvas-drawing
 title: SPEC-012 Implementation Plan
-status: completed
+status: draft
 owners:
   - codex
 created: 2026-09-09
-updated: 2026-10-09
+updated: 2026-10-10
 related_design_notes:
   - ../implementation-designs/spec-012-scoped-path-and-plan-storage.md
   - ../implementation-designs/spec-012-static-canvas-lowering.md
@@ -23,6 +23,17 @@ superseded_by: null
 ---
 
 # SPEC-012 Implementation Plan
+
+## RFC-014 amendment gate — 2026-10-10
+
+Accepted ADR-035/036/037 now govern the runtime migration. The governing Spec is
+an amendment draft; this plan is not ready for that work. Historical completed
+rows/evidence below remain the `53740a73` production baseline, not conformance to
+new RD criteria. Earlier conditional fourth-bank/closure wording is superseded
+by the [current handoff](../iterations/iteration-003-review/rfc-014-implementation-handoff.md).
+After coordinated Spec approval, derive ordered tasks/design notes for IH-2–6
+and review readiness before implementation. No additional investigation is queued.
+
 
 ## I3-T02 conditional runtime migration — 2026-10-09
 

@@ -2,17 +2,19 @@
 id: SPEC-011
 feature: giftui-mvp-architecture
 title: Button Interaction and Activation Contract
-status: implemented
+status: draft
 authors:
   - codex
 created: 2026-08-26
-updated: 2026-10-03
+updated: 2026-10-10
 proposal:
   - PROPOSAL-003
+  - PROPOSAL-007
 related_rfcs:
   - RFC-002
   - RFC-004
   - RFC-011
+  - RFC-014
 related_adrs:
   - ADR-005
   - ADR-006
@@ -26,6 +28,8 @@ related_adrs:
   - ADR-025
   - ADR-026
   - ADR-033
+  - ADR-035
+  - ADR-036
 related_specs:
   - SPEC-002
   - SPEC-003
@@ -50,6 +54,12 @@ target_milestone: MVP
 
 # SPEC-011: Button Interaction and Activation Contract
 
+> **RFC-014 amendment draft — 2026-10-10.** Governed by accepted ADR-035/036/037
+> as applicable below. The previously implemented contract and evidence are
+> preserved at commit `53740a73`; this amendment is not approved or implemented.
+> Earlier approval notices and completed checkboxes describe that baseline only.
+> See the [ADR acceptance record](../iterations/iteration-003-review/rfc-014-adr-acceptance.md).
+
 **Current disposition — 2026-10-03:** The maintainer explicitly directed
 performance work to future iterations and closure of the remaining Specifications.
 [Recorded authorization](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/iteration-closeout-20261003/remaining-spec-transition-approval.md) closes SPEC-001, SPEC-011, and SPEC-015
@@ -62,6 +72,52 @@ Earlier open-gate statements below describe the pre-approval history.
 > 2026-08-28 amendment binding candidate actions to SPEC-010's exact
 > publishable target generation. The amended contract is authoritative for
 > implementation.
+
+## RFC-014 runtime amendment
+
+Amendment map and review: [RFC-014 specification review](../iterations/iteration-003-review/rfc-014-spec-amendment-review.md).
+
+**Draft contract under ADR-035/036; ADR-033 dispatch semantics remain unchanged.**
+This section makes bank-independent identity ownership explicit. Existing Button,
+action value/generation, pointer capture, handler, publication and refusal behavior
+remain. Model allocation generations are not action or registration generations.
+
+Interaction candidate and committed storage MUST each own a complete bounded
+copy of every identity key they retain: all path components and endpoint role,
+not a hash or borrowed Semantic Core table index. The exact existing equality
+relation is unchanged. SPEC-013 accounts for these copies independently from
+semantic banks; scratch or pointer capture may share immutable committed keys
+only within that committed storage's governed lifetime, never a retired bank.
+
+`append` validates the borrowed current candidate identity and its exact model
+target generation, then copies the key before returning. An oversized key/pool
+returns existing `InteractionError.capacityExhausted`, aborts the complete
+candidate, preserves committed routing and dispatches nothing. Invalid identity
+uses the existing invalidIdentity route. All generation reservations, full record
+equality and target-generation validation below still apply. No bank ordinal is
+a stable action identity, and no raw pointer comparison defines equality.
+
+Semantic publication and Interaction commit are distinct: preserve the SPEC-013
+rule that committed routing changes only on accepted offer under its reserved
+presentation revision. Refused/failed offer aborts the Interaction candidate and
+preserves prior committed routing even if new semantics have published. Semantic
+bank reuse must therefore leave those independently owned old keys valid.
+
+Dispatch enters admitted mutation authority, validates action/registration target
+against the current association and obtains a checked typed write route from the
+host bridge. It does not resolve a stale target to the new root or promote a
+nonowning key to an owning ticket. Retained detached models do not make retired
+registration targets dispatchable. Replacement changes target generation under
+SPEC-010; allocation generation and bank/revision tokens remain separate.
+
+- [ ] **IN-RD-001:** Reuse both semantic banks repeatedly while retaining committed
+  routing through refused offers; previously captured identity/action generation
+  still resolves or cancels according to exact current target rules, never an
+  aliased bank index. Complete keys appear in storage accounting.
+- [ ] **IN-RD-002:** Changed path/role/modifier/target/action and first-excess key
+  capacities preserve atomic candidate failure and existing generation behavior.
+  Replacement, retained detached owners and stale pointer releases cannot dispatch
+  against a new model; independent action transcripts agree across all profiles.
 
 ## Summary
 

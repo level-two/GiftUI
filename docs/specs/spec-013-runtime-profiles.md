@@ -11,6 +11,7 @@ proposal:
   - PROPOSAL-003
   - PROPOSAL-005
   - PROPOSAL-006
+  - PROPOSAL-007
 related_rfcs:
   - RFC-012
   - RFC-002
@@ -20,6 +21,7 @@ related_rfcs:
   - RFC-009
   - RFC-010
   - RFC-011
+  - RFC-014
 related_adrs:
   - ADR-034
   - ADR-005
@@ -40,6 +42,8 @@ related_adrs:
   - ADR-031
   - ADR-032
   - ADR-033
+  - ADR-035
+  - ADR-036
 related_specs:
   - SPEC-001
   - SPEC-002
@@ -73,9 +77,9 @@ target_milestone: MVP
 > **RFC-014 amendment draft — 2026-10-10.** ADR-035/036/037 are now accepted;
 > ADR-037 supersedes ADR-028. This contract is reopened for amendment, not newly
 > approved or implemented. The previously implemented contract and its approval
-> history are preserved at commit `53740a73`. Historical completion evidence
+> history are preserved at commit `53740a73`. Earlier approval notices and
+> completed checkboxes describe that baseline only. Historical completion evidence
 > applies to that baseline only. See the [ADR acceptance record](../iterations/iteration-003-review/rfc-014-adr-acceptance.md).
-
 
 > **Current implementation status — 2026-10-03:** Eugene explicitly authorized this Specification's `implemented` transition after conformance review and the complete 72-check gate. [Human approval](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/iteration-closeout-20261003/owner-transition-approval.md) supersedes earlier pending-transition statements; the approved contract is unchanged.
 
@@ -116,6 +120,152 @@ target_milestone: MVP
 > applications. The corresponding checked profile totals are 41,376 Dynamic
 > bytes and 36,368 Static bytes. This amendment changes capacity values only;
 > storage ownership and counting contracts are unchanged.
+
+## RFC-014 runtime amendment
+
+Amendment map and review: [RFC-014 specification review](../iterations/iteration-003-review/rfc-014-spec-amendment-review.md).
+
+**Draft contract under ADR-035/036/037.** This section replaces generated expanded
+semantic storage and retained Canvas-closure realization, extends limits/audits,
+and defines scoped access in the existing cycle. Execution, failure carriers,
+semantic publication versus accepted-offer Interaction commit, admission and
+retry policy below remain unchanged. Old schema-3 byte projections are historical
+controls, not the new record allocation plan or proof of fit.
+
+### Limits, ownership and storage
+
+Add these immutable package value types and required fields to RuntimeProfileLimits:
+
+```swift
+package struct RuntimeRecordLimits: Equatable, Sendable {
+    package let maximumPathEntries: UInt16
+    package let maximumPathDepth: UInt16
+    package let maximumPathChildFanout: UInt16
+    package let maximumPayloadBytesPerBank: UInt32
+    package let maximumIdentityComponentsPerKey: UInt16
+    package let maximumInteractionIdentityComponents: UInt32
+}
+package struct RuntimeModelLimits: Equatable, Sendable {
+    package let maximumModelSlots: UInt16
+    package let maximumOwningTickets: UInt16
+    package let maximumFramePins: UInt16
+    package let maximumModelCaptureBanks: UInt16
+}
+// Required additional RuntimeProfileLimits properties and initializer arguments:
+// package let records: RuntimeRecordLimits
+// package let models: RuntimeModelLimits
+```
+
+Existing maximumSemanticStructuralOccurrences bounds record occurrences in EACH
+of the candidate and published banks. Path-prefix storage is independently bounded;
+a path entry is not silently charged as a semantic node. Path fields and identity
+component bounds must be nonzero and cover supported depth/fanout; payload capacity
+covers the selected typed payload vocabulary. Model slots/tickets/pins are nonzero;
+maximumModelCaptureBanks is one for analyzer and zero for counter-only composition.
+Checked arithmetic and workload validation reject insufficient or inconsistent
+limits before activation. Equal configured limits have equal failure outcomes
+in Dynamic and Static; neither profile grows past them.
+
+Both banks own initialized records, exact path tables and typed side pools.
+Maintain separate counts, bank/revision identity and borrows. The interaction
+component limit applies independently to each candidate/committed key pool. Canvas staging is
+attempt-owned even when referenced by candidate records: release leaves no live
+model-reading value in published semantics. Reuse/reset is legal only after all
+borrows and acquired payloads end. Interaction owns separate candidate/committed
+key component pools. Side pools may be specialized by finite types but may not
+hide an expanded graph, own unbounded payloads or expose application offsets.
+
+Static backing is stable, typed and allocated before activation. Dynamic may own
+bounded objects with equivalent outcomes. Metadata, capture entitlement, application
+tickets, registration references and frame pins are separately tracked. One frame
+pin retains one distinct participating model, shared across its body/Canvas reads;
+repeated reads do not consume another pin. A key is
+not a pin. Logical ownership transfer and all pointer pointees must be valid from
+partial construction through teardown. Caller storage outlives every model owner.
+All mutation/read/discovery transitions follow SPEC-010; no global/task-local
+lookup or lock is required to implement the serialized baseline.
+
+Extend RuntimeStorageAudit with these UInt32 byte fields:
+`semanticCandidatePathBytes`, `semanticPublishedPathBytes`,
+`semanticCandidatePayloadBytes`, `semanticPublishedPayloadBytes`,
+`identityMatchWorkspaceBytes`, `interactionCandidateIdentityBytes`,
+`interactionCommittedIdentityBytes`, `modelMetadataBytes`, `modelOwnerBytes`,
+`framePinBytes`. Existing semanticCandidate/PublishedBytes now count record
+arrays/control only; canvasCallableBytes counts staged owned Canvas values and
+runtime witness descriptors. Existing observable fields count associations and
+registration, not the same model metadata again. Existing interaction record
+bytes exclude newly separated key pools. TotalProfileBytes is the checked sum
+of all profile-owned fields, including these additions, each allocation once.
+
+Application/source/admission/model backing is classified by actual owner. Packed
+transition backing remains exactly three disjoint 404 × 16 regions, counted once
+in the complete host/application ledger, not again as a key/descriptor or spare
+profile pool. Shared/reserved/overlaid memory requires proof that lifetimes are
+disjoint; source/admission banks may NEVER overlay replacement model storage.
+Stack/IRQ, alignment, static data, dispatch text and allocator overhead remain
+separate explicit costs. Fixture 392/332-byte subtotals and the old 120,928-byte
+estimate are not approved totals. SPEC-015 must validate the actual layout.
+
+### Cycle and retirement order
+
+| Phase | Required access and cleanup |
+| --- | --- |
+| Construction | Validate storage, schema, codecs, owner identities, limits and compiler contract before any client callback or service activation. Partial failure releases only acquired ownership. |
+| Admission/mutation | Existing bounded queues; checked writes/replacement/reporting; preserve first failure and actual admitted-work mutation flag. |
+| Derivation | Acquire frame ownership/mutation exclusion; begin candidate; bind State before body; end each read before child discovery; append records under Semantic Core. |
+| Layout/draw | Pin candidate semantic bank; Layout borrows it without model access; each Canvas gets a fresh exact-key read, draws once and releases its payload. |
+| Preflight/publication | All ordinary fallible checks precede semantic/association publication. Prepare Interaction candidate using owned copied keys and publishable target generations. End model reads at last use, not artificially at offer. |
+| Offer | Owned geometry and governed render/layout views supply one synchronous offer. Publish no semantic rollback. Commit Interaction only on accepted offer; refusal/failure discards its candidate and preserves prior committed routing. |
+| Finalize | Drop plan, staging, borrows and frame pins exactly once; keep surviving registration/application owners. Refusal keeps pending intent only. |
+| Teardown | Stop admission/producers, drain active synchronous/IRQ handoffs, release attempt state, retire associations, invalidate identities and release backing last. |
+
+The existing pipeline first-failure table still governs. No cleanup may reenter a
+body/draw/action, offer twice or substitute a later error. A producer that refuses
+before acquisition leaves its caller responsible for staged values. Successful
+model replacement survives any later candidate/offer failure. Published semantic
+bank retirement and committed routing retirement are independent lifetimes.
+
+### Compiler, capability and performance contract
+
+For this migration, pin the already tested project-local Swift 6.3.2 configuration
+with LifetimeDependence and Lifetimes, including required internal annotations.
+Record exact executable identity, feature flags, target triple and optimization
+for each build. This is the migration compiler baseline where older fixture
+instructions name a different version; existing ABI, geometry and public behavior
+constraints remain. Missing features fail before production compilation; generated
+code may carry annotations, authored Presentation may not. No global toolchain
+mutation or unchecked compatibility branch is allowed. Public-semantic changes
+caused by a compiler upgrade return for a decision.
+
+No capability/backend vocabulary changes. Backends never receive model keys,
+FrameRead, Canvas values or application callbacks. Static construction and every
+later phase allocate zero heap; linked rooted allocator reachability, not object
+symbol presence/absence alone, establishes this. ARMv6 and Cortex-M4F/VFP calling
+conventions require artifact verification. Native profile-selection flags on a
+shared test bridge are not actual runtime-profile evidence.
+
+Identity work must meet SPEC-006's O(N × K) bound. Report body temporaries,
+recursive frames, concrete facade/value layouts, full feasible call-path stack
+and IRQ overlap, all linked RAM/flash regions and Dynamic allocator costs.
+Retain compact failure/result ceilings below and existing host/workload ceilings.
+Layout/resource algorithm choices are implementation details within these limits;
+unaccounted costs or exceeded limits fail acceptance, not trigger fallback.
+
+### Amendment acceptance criteria
+
+- [ ] **RP-RD-001:** All storage families have measured count/stride/alignment and
+  lifetime ownership, a checked total and below/equal/above capacity tests; no
+  double-counted keys, hidden full capture, graph tree or fourth bank exists.
+- [ ] **RP-RD-002:** Actual Dynamic/Static owners exercise every phase, failure,
+  early acquisition, publication, accepted/refused offer, bank reuse and teardown
+  with identical logical transcripts and exactly-once cleanup/no replay.
+- [ ] **RP-RD-003:** Pinned four-configuration builds enforce lifetime negatives,
+  separate schema/presentation/bridge boundaries, target ABI and typed errors.
+  Actual linked Static images prove zero heap and complete stack/RAM/flash bounds;
+  Dynamic reports matched allocations and specialization/dispatch costs.
+- [ ] **RP-RD-004:** Existing limits and loaded frame/acquisition obligations hold
+  for the migrated applications; any unproved complete-image/timing property stays
+  an unmet acceptance item, with no new investigation automatically authorized.
 
 ## Summary
 

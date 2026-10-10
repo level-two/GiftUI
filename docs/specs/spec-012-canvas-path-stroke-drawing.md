@@ -9,13 +9,17 @@ created: 2026-08-26
 updated: 2026-10-10
 proposal:
   - PROPOSAL-006
+  - PROPOSAL-007
 related_rfcs:
   - RFC-009
+  - RFC-014
 related_adrs:
   - ADR-037
   - ADR-029
   - ADR-030
   - ADR-031
+  - ADR-035
+  - ADR-036
 related_specs:
   - SPEC-001
   - SPEC-002
@@ -44,9 +48,9 @@ target_milestone: MVP
 > **RFC-014 amendment draft — 2026-10-10.** ADR-035/036/037 are now accepted;
 > ADR-037 supersedes ADR-028. This contract is reopened for amendment, not newly
 > approved or implemented. The previously implemented contract and its approval
-> history are preserved at commit `53740a73`. Historical completion evidence
+> history are preserved at commit `53740a73`. Earlier approval notices and
+> completed checkboxes describe that baseline only. Historical completion evidence
 > applies to that baseline only. See the [ADR acceptance record](../iterations/iteration-003-review/rfc-014-adr-acceptance.md).
-
 
 > **Current implementation status — 2026-10-03:** Eugene explicitly authorized this Specification's `implemented` transition after conformance review and the complete 72-check gate. [Human approval](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/iteration-closeout-20261003/owner-transition-approval.md) supersedes earlier pending-transition statements; the approved contract is unchanged.
 
@@ -71,6 +75,124 @@ target_milestone: MVP
 > traversal extension and requires preflight completion after the sole
 > traversal and before `sink.begin`, with paired streaming completion before
 > `sink.finish`. Implementation may resume through the active plan.
+
+## RFC-014 runtime amendment
+
+Amendment map and review: [RFC-014 specification review](../iterations/iteration-003-review/rfc-014-spec-amendment-review.md).
+
+**Draft contract under ADR-037, with ADR-035/036 access and storage.** This
+section replaces the closure-based Canvas declaration, capture lowering and
+callable-table representation below. It preserves Path, GraphicsContext stroke
+operations, geometry/raster meaning, plan limits, capability/B2 gates and one-shot
+handoff. References below to retained closures/capture records mean owned concrete
+Canvas values under this amendment; they do not permit an escaping closure fallback.
+
+### Protocol and invocation contract
+
+The authored surface is a View-refining protocol with no authored body/traversal:
+
+```swift
+public protocol Canvas: View where Body == Never {
+    func draw(in bounds: Rect, context: inout GraphicsContext)
+        throws(DrawingError)
+}
+```
+
+This is an authored-source contract. Required source lowering replaces the draw
+witness with the following compiled requirement on the same fixed View domain:
+
+```swift
+func _giftUIDraw(in bounds: Rect, context: inout GraphicsContext,
+                read: borrowing _GiftUIFrameRead<Domain>) throws(DrawingError)
+```
+
+Generated conformance and framework leaf defaults supply Never Body and the
+primitive traversal witness; the latter stages once and never evaluates a body
+or draws. There is no public `Canvas { ... }` initializer in the amended contract.
+An authored concrete Canvas may hold typed model identity and bounded owned
+scalars/selection metadata. Its compiled value has no facade, mutable model
+reference, service, escaping closure or complete capture buffer. Ordinary custom
+views retain SPEC-006's inferred Body; the Canvas default cannot mask them.
+
+`bounds.origin` is `(0, 0)` and bounds.size is the checked resolved nonnegative
+Layout size; zero dimensions are valid. The existing framework translation/clip
+applies when lowering local geometry. The private invocation bridge constructs
+these bounds from the existing CanvasInvocationSource `size` parameter and
+receives a freshly validated read for the exact staged owner/model/generation.
+Client code never chooses the currently installed model by global/root lookup.
+
+CanvasInvocationSource keeps its existing lookup/invoke/release signatures.
+Its host/schema-specialized adapter supplies the FrameRead internally, invokes
+exactly one typed witness, maps any access failure and ends the read before
+release. No context/pointer/callable-returning lookup is exposed. Static may use
+a finite typed switch over concrete Canvas types; Dynamic may use bounded typed
+storage. Both stage the same value meaning and enforce identical configured
+limits. A type-role table is permitted; pre-expanded occurrence topology is not.
+
+The existing `StaticCanvasLimits` field names remain build-local compatibility
+names: maximumStaticCallableCases bounds concrete Canvas witness cases, and
+maximumStaticCaptureBytes bounds the largest inline owned Canvas payload. The
+case ID is nonzero UInt16, unique per concrete compiled witness type, not per
+runtime occurrence or source closure. Repeated occurrences own separate payloads.
+`StaticCanvasCallableTable.invoke` additionally receives
+`read: borrowing _GiftUIFrameRead<Domain>` with `associatedtype Domain: _GiftUIReadDomain`; the
+adapter validates case/payload/schema agreement before invocation. There is no
+unlowered-closure fallback. Complete witness coverage is checked before linking
+and during structural validation. No target-specific pointer layout enters
+portable declarations.
+
+All drawings run after Layout, at most once per occurrence per attempt, in
+resolved painter order. Drawing remains synchronous and non-suspending; mutation,
+action dispatch, reentry, asynchronous work and escaping context/workspace reads
+are forbidden. The existing two-inout `withPath` closure remains supported and
+scoped. Body/draw reads require stable live backing and whole-frame mutation
+exclusion; no copied frozen model or extra analyzer bank is introduced.
+
+Each staged value is consumed/released immediately after its invocation, or on
+abandonment before invocation, exactly once. The caller retains cleanup duty if
+producer admission fails before acquisition. No value survives into semantic
+publication, pending intent or the backend payload. End all model-data reads at
+last use/discard; independent registration/model ownership may remain. Complete
+owned geometry survives only through synchronous one-shot offer, then is
+released for accepted AND refused offers. Retry uses fresh derivation/current
+state, never the old staged value, plan or already-applied mutation.
+
+### Access errors and migration tests
+
+Add `invalidModelAccess` to DrawingError and append
+`DrawingProductionError.invalidModelAccess = 9`. A generated witness maps
+AccessFailure.invalidPhase to DrawingError.invalidPhase;
+wrongOwner/wrongSchema/staleModel to invalidModelAccess; outOfBounds to
+invalidValue. Typed DrawingError propagation is otherwise unchanged. The new
+production case maps to SPEC-003 `.invalidIdentity`, `.rendering`, `.activeCycle`,
+`.contained`. It discards the complete candidate and preserves admitted effects.
+Unsafe backing or violated ownership remains invariant/safety-not-proven failure.
+
+Existing detection order remains, with model-key binding immediately before
+invoking that occurrence (after identity/order checks). No later occurrence runs
+after failure. Early producer rejection, failed key binding, client throw, plan
+exhaustion and postcommit failure MUST all discharge acquired staged-value/read
+obligations exactly once. One-byte DrawingProductionError and existing compact
+result ceilings remain unchanged.
+
+### Amendment acceptance criteria
+
+Baseline DR criteria apply to the protocol witness instead of retained closure
+count/size; withPath and raster oracles are unchanged.
+
+- [ ] **DR-RD-001:** Both applications compile authored protocol Canvas without
+  body/traversal, preserve ordinary inferred custom Body, and reject missing draw
+  witnesses, facade/context escape, wrong domain and forbidden effects on four
+  configurations. Static links no retained escaping Canvas closure fallback.
+- [ ] **DR-RD-002:** Zero/multiple/repeated concrete Canvas occurrences observe
+  exact selected model identity, checked local dimensions and painter order,
+  with one invocation per attempt after Layout and no backend client callback.
+- [ ] **DR-RD-003:** Every early-acquisition, binding, draw, plan and offer failure
+  exercises release counters/owner lifetimes. Accepted/refused offer discards
+  geometry; committed replacement remains committed; retries derive fresh state.
+- [ ] **DR-RD-004:** Actual concrete payload/witness layouts, plan/scratch, complete
+  call-stack and linked allocator evidence fit validated host bounds and Static
+  zero heap. Unchanged independent geometry/pixel oracles pass across profiles.
 
 ## Summary
 

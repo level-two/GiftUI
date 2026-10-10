@@ -31,6 +31,7 @@ related_adrs:
   - ADR-036
   - ADR-037
 related_specs:
+  - SPEC-002
   - SPEC-001
   - SPEC-006
   - SPEC-007
@@ -569,6 +570,8 @@ limits follow in the affected Specifications. RFC finalization alone accepts no
 new ADR, changes no production code and closes no implementation acceptance gate.
 
 ## References
+
+- [Coordinated draft Specification amendments and review](../iterations/iteration-003-review/rfc-014-spec-amendment-review.md).
 
 - [Final review and finalization record](../iterations/iteration-003-review/rfc-014-final-review.md).
 - [Current iteration plan](../iterations/iteration-003-review/memory-efficiency-plan.md)

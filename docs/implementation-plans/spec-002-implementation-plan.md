@@ -2,11 +2,11 @@
 spec: SPEC-002
 feature: giftui-mvp-architecture
 title: SPEC-002 Implementation Plan
-status: completed
+status: draft
 owners:
   - codex
 created: 2026-08-28
-updated: 2026-08-31
+updated: 2026-10-10
 related_design_notes: []
 conformance_report: ../conformance/spec-002-conformance.md
 related_future_work:
@@ -19,6 +19,15 @@ superseded_by: null
 ---
 
 # SPEC-002 Implementation Plan
+
+## RFC-014 measurement amendment gate — 2026-10-10
+
+SPEC-002's focused compiler amendment is draft under accepted ADR-036. Historical
+completed tasks/evidence remain the `53740a73` baseline. No implementation of the
+new driver selection is ready until coordinated Spec approval and updated task
+planning. PF-006/007 require fresh migration measurements, also required by
+SPEC-013 RP-RD-003; old compiler evidence is not a pass for the new matrix.
+
 
 > This plan derives work from the approved Portable Foundation Specification.
 > It orders implementation and evidence but does not amend the contract.

@@ -2,24 +2,28 @@
 id: SPEC-006
 feature: giftui-mvp-architecture
 title: Declarative View Semantics Specification
-status: implemented
+status: draft
 authors:
   - codex
 created: 2026-08-25
-updated: 2026-10-03
+updated: 2026-10-10
 proposal:
   - PROPOSAL-003
+  - PROPOSAL-007
 related_rfcs:
   - RFC-002
   - RFC-004
   - RFC-010
   - RFC-011
+  - RFC-014
 related_adrs:
   - ADR-005
   - ADR-006
   - ADR-008
   - ADR-033
   - ADR-032
+  - ADR-035
+  - ADR-036
 related_specs:
   - SPEC-002
   - SPEC-003
@@ -42,6 +46,12 @@ target_milestone: MVP
 
 # SPEC-006: Declarative View Semantics Specification
 
+> **RFC-014 amendment draft — 2026-10-10.** Governed by accepted ADR-035/036/037
+> as applicable below. The previously implemented contract and evidence are
+> preserved at commit `53740a73`; this amendment is not approved or implemented.
+> Earlier approval notices and completed checkboxes describe that baseline only.
+> See the [ADR acceptance record](../iterations/iteration-003-review/rfc-014-adr-acceptance.md).
+
 > **Current implementation status — 2026-10-03:** Eugene explicitly authorized this Specification's `implemented` transition after conformance review and the complete 72-check gate. [Human approval](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/iteration-closeout-20261003/owner-transition-approval.md) supersedes earlier pending-transition statements; the approved contract is unchanged.
 
 > **Implementation status:** Implementation resumed on 2026-09-12 after the
@@ -50,6 +60,148 @@ target_milestone: MVP
 > required by approved SPEC-011 so Button can stage one action at its identity
 > and expand its stored label as a fixed semantic child. The amended contract
 > is authoritative for implementation.
+
+## RFC-014 runtime amendment
+
+Amendment map and review: [RFC-014 specification review](../iterations/iteration-003-review/rfc-014-spec-amendment-review.md).
+
+**Draft contract under ADR-035/036.** This section replaces the compiled View,
+visitor/body-access and identity-representation requirements below. Existing
+Rank 0 authored syntax, builder arity, event/counting meaning, modifier order,
+primitive payloads and owner dependencies remain. In a conflict this section
+controls the amended draft; it does not approve the amendment. Historical
+baseline APIs below describe authored intent where retained, not a second
+compiled ABI. SPEC-010 owns access validation and SPEC-013/015 own physical limits.
+
+### Compiled View and traversal
+
+Authored custom views continue to use `var body: some View`, model-property
+syntax and zero-through-five expression builders. Required source lowering MUST
+produce the following public underscored support contract in GiftUI (shown as
+interface declarations; storage and lifetime annotations are internal):
+
+```swift
+public protocol _GiftUIReadDomain { associatedtype Slot }
+public struct _GiftUIFrameRead<D: _GiftUIReadDomain>: ~Escapable {}
+public struct _GiftUIModelKey<Schema>: Equatable {}
+public enum _GiftUIAccessFailure: UInt8, Error, Equatable {
+    case invalidPhase = 0
+    case wrongOwner = 1
+    case wrongSchema = 2
+    case staleModel = 3
+    case outOfBounds = 4
+}
+public protocol View<Domain> {
+    associatedtype Domain: _GiftUIReadDomain
+    associatedtype Body: View
+    func _giftUIEvaluate(read: borrowing _GiftUIFrameRead<Domain>)
+        throws(_GiftUIAccessFailure) -> Body
+    func _giftUITraverse<Visitor: _GiftUISemanticTraversalVisitor>(
+        _ visitor: inout Visitor
+    ) where Visitor.Domain == Domain
+}
+```
+
+FrameRead and ModelKey have no application-callable initializer or descriptor
+projection. A key's private logical fields are owner-instance UInt32, allocation
+generation UInt32 and slot UInt16; Schema is a compile-time marker. Keys own no
+storage. Slot is an ordinary associated type; FrameRead is the concrete
+nonescapable type. No associated nonescapable facade is required. Public SPI
+visibility only supports generated separate modules; it is not external package
+API stability or permission for clients to manufacture access.
+
+Generated body witnesses return `some View<D>` for their fixed D; Swift MUST
+infer the underlying Body. The visitor gains `associatedtype Domain:
+_GiftUIReadDomain`. Every Declaration/Content/A–E generic parameter in the
+existing visitor operations MUST have that same Domain. Custom body accessors
+become `(borrowing _GiftUIFrameRead<Domain>) throws(_GiftUIAccessFailure) ->
+Declaration.Body`; stateful accessors additionally receive `borrowing Declaration`.
+The visitor creates a read only after State binding, evaluates the accessor once,
+ends that read, then traverses the returned owned Body. It MUST NOT hold a read
+across child State discovery. Body/access failure terminates expansion before
+later sibling evaluation and travels through the coordinator's SPEC-010 route;
+Semantic Core does not import Observable State or reinterpret it as a capacity
+error. Existing semantic and state-binding errors retain their exact routes.
+
+Never conforms using a framework empty domain and remains Body for leaves.
+Same-domain constraints apply to custom-body/container composition, NOT the
+universal `View.Body` constraint. Empty/primitive wrappers lift to D with owned
+payloads and explicit leaf dispatch. Fixed/conditional/optional wrappers use
+same-domain children, preserve the existing visitor event/counting rules and
+never evaluate a leaf body. Stateless custom components retain custom traversal.
+Only framework leaves and Canvas receive Never defaults. A custom witness
+missing a valid inferred Body MUST fail the supported build.
+
+The application schema owns typed read requirements, nested facades and pure
+computed getters. The host/profile bridge owns concrete Slot storage. Generated
+Presentation imports the schema and GiftUI; authored framework imports remain
+GiftUI, with existing application Domain imports permitted. No Runtime import,
+application schema in GiftUI, global resolver or unbounded existential registry
+is allowed. Lowering preserves helper order, short-circuiting, optional/switch
+selection and mutation/report ordering. It diagnoses unsupported escapes,
+unknown mutable-reference effects and arbitrary unchecked inout callbacks with
+source locations; it MUST NOT generate a permissive fallback.
+
+### Runtime records and exact identity
+
+The actual root is the only topology input. Semantic Core MUST append records
+as the visitor encounters declarations. Each record logically contains bank-local
+ordinal, ordered parent/child/sibling links, kind, exact-path reference and typed
+payload reference. Side pools own text scalars, ordered modifiers and other
+payloads; they never retain the expanded declaration tree. Bounded finite type
+or payload-codec tags may be generated, but occurrence positions, active branch
+choices and parent/child tables MUST NOT be generated production inputs.
+
+An exact-path entry contains parent, component kind, branch/child ordinal,
+concrete declaration-role tag and modifier discriminator. Root has no parent;
+all other links address initialized entries in the same bank, are acyclic, and
+encode the complete existing identity path including custom/body boundaries.
+Payload changes do not change modifier identity. Complete endpoint/component
+equality determines identity; ordinals, addresses, prefix equality or hashes do
+not. State and Interaction MUST NOT store a bank-local index as persistent identity.
+
+Compare candidate/published tries by paired traversal and exact bounded child
+matching. Configured prefix-entry, component-depth and child-fanout bounds MUST
+cover every supported declaration role and branch. Reject first excess with
+`SemanticExpansionError.capacityExhausted`; malformed identity is `.invalidIdentity`.
+Failure discards the complete candidate, never truncates output. With declared
+fixed fanout K, comparison MUST be O(N × K), not an all-pairs O(N² × D) scan.
+SPEC-015 validation and conformance MUST prove the configured bounds; merely
+asserting the application node limit does not prove prefix capacity.
+
+Published and candidate records/path/payload pools are disjoint. A successful
+expansion yields a candidate borrowed view; it is not yet global publication.
+SPEC-013 atomically publishes complete semantics and associations after preparing
+the Interaction candidate. Committed routing changes only on accepted offer;
+refused/failed offer preserves prior committed routing under existing ordering. Failure preserves the prior committed products. Bank
+reuse waits for every old-bank consumer borrow; Interaction copies complete keys
+into independently accounted committed storage before that bank can be reused.
+
+Layout consumes the existing SemanticLayoutView projected from these records;
+Render consumes the corresponding semantic order and typed payloads. Neither
+builds another canonical graph. Explicit stacks, Swift body-return temporaries,
+recursive visitor frames and specialized calls all count toward resource evidence.
+
+### Amendment acceptance criteria
+
+Old DV criteria remain regression requirements, with the amended compiled ABI.
+Completed baseline boxes do not satisfy these additional criteria:
+
+- [ ] **DV-RD-001:** Both real applications compile through finite lowering across
+  separate core/schema/presentation/host modules on all four configurations;
+  inferred Body, nested/custom/stateless components and arities 0–5 pass, while
+  missing custom Body, mixed domains and unsupported escapes fail diagnostically.
+- [ ] **DV-RD-002:** Runtime declaration/branch perturbations change emitted records
+  without regenerating graph inputs. Independent traces prove once-only body
+  evaluation, inactive-branch exclusion, unchanged identities/modifier order and
+  stateful binding before body; no expanded declaration tree survives expansion.
+- [ ] **DV-RD-003:** Exact identity tests distinguish equal indices in different
+  banks, hash collisions, prefixes, siblings, roles and modifiers; paired matching
+  obeys measured fixed-fanout operation bounds, with no all-pairs scan.
+- [ ] **DV-RD-004:** Every record/path/payload first-excess boundary fails atomically;
+  publication and bank-reuse tests cover live readers, stale references and
+  independent committed action keys. Record/prefix and actual stack costs enter
+  the SPEC-013 audit; no missing cost is treated as zero.
 
 ## Summary
 

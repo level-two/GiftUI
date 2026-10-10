@@ -2,16 +2,18 @@
 id: SPEC-010
 feature: observable-reference-state
 title: Observable Reference State Contract
-status: implemented
+status: draft
 authors:
   - codex
 created: 2026-08-26
-updated: 2026-10-03
+updated: 2026-10-10
 proposal:
   - PROPOSAL-005
+  - PROPOSAL-007
 related_rfcs:
   - RFC-008
   - RFC-011
+  - RFC-014
 related_adrs:
   - ADR-008
   - ADR-011
@@ -23,6 +25,8 @@ related_adrs:
   - ADR-026
   - ADR-027
   - ADR-033
+  - ADR-035
+  - ADR-036
 related_specs:
   - SPEC-001
   - SPEC-002
@@ -45,6 +49,12 @@ target_milestone: MVP
 
 # SPEC-010: Observable Reference State Contract
 
+> **RFC-014 amendment draft — 2026-10-10.** Governed by accepted ADR-035/036/037
+> as applicable below. The previously implemented contract and evidence are
+> preserved at commit `53740a73`; this amendment is not approved or implemented.
+> Earlier approval notices and completed checkboxes describe that baseline only.
+> See the [ADR acceptance record](../iterations/iteration-003-review/rfc-014-adr-acceptance.md).
+
 > **Current implementation status — 2026-10-03:** Eugene explicitly authorized this Specification's `implemented` transition after conformance review and the complete 72-check gate. [Human approval](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/iteration-closeout-20261003/owner-transition-approval.md) supersedes earlier pending-transition statements; the approved contract is unchanged.
 
 > **Implementation status:** Implementing after explicit maintainer reapproval
@@ -52,6 +62,159 @@ target_milestone: MVP
 > after the completeness amendment closed result, storage, replacement-
 > lifecycle, attach-time-report, and focused-owner precedence gaps. This
 > contract is authoritative for implementation.
+
+## RFC-014 runtime amendment
+
+Amendment map and review: [RFC-014 specification review](../iterations/iteration-003-review/rfc-014-spec-amendment-review.md).
+
+**Draft contract under ADR-035/036.** This section replaces the raw-reference
+realization of compiled State/model access and extends bounded errors. It preserves
+structural locations, lexical declaration ordinals, one active registration,
+ignored repeated seeds, coarse synchronous reporting, target generations and all
+publication/failure semantics below. Authored State syntax is lowered; baseline
+raw-reference access MUST NOT bypass the checked compiled route.
+
+### Model read, ownership and mutation contract
+
+SPEC-006 owns `_GiftUIReadDomain`, FrameRead, ModelKey and AccessFailure. Each
+application schema MUST generate a concrete nonescapable `ModelRead<D>` facade
+and nested facades for aggregates. Binding takes a typed key and borrowing
+FrameRead and throws AccessFailure; scalar getters return owned typed values,
+indexed getters check bounds, and nested getters return lifetime-dependent
+facades. No facade returns a service, raw descriptor/pointer, mutable reference
+or owning ticket. Pure computed getters operate on the same scoped typed inputs.
+
+The bridge checks in order: read phase, owner identity, schema, occupied slot and
+allocation generation, then an indexed operation's bounds. It reports respectively
+invalidPhase, wrongOwner, wrongSchema, staleModel or outOfBounds. It MUST hold a
+live backing owner BEFORE inspecting storage; generation checks cannot validate a
+freed pointer. Safe construction proves pointee lifetime, initialization,
+alignment, bounds and disjoint writes, including caller-supplied storage.
+
+Model owner-instance and allocation generations are distinct from the existing
+registration/target generation namespace. Both use checked UInt32 values starting
+at zero, never wrap or reuse a live/stale identity in their namespace. Owner IDs
+are issued by host-owned assembly bookkeeping that outlives replacement assemblies;
+reassembly must not reset it and make an old key valid. Exhaustion requires a fresh
+identity namespace with no admissible old keys, not counter wrap or slot reuse. A frame
+pin, owning application ticket and registration reference are separately bounded
+ownership claims. Copying a key adds none. Explicit retain/release operations on
+an owning store may create/release tickets only within configured capacity.
+Exhaustion returns an error before transfer; every successful ownership transfer
+has exactly one release obligation. An application ticket cannot outlive its
+caller-supplied backing. Detached retained models stay valid and obey that store's
+serialized mutation authority.
+
+Compiled State has `initial` inert seed/owned candidate and `bound` structural
+location/ordinal/registration generation plus the validated typed model key.
+It never retains both cases. Binding a preserved location consumes/discards the
+fresh seed without attaching it. Binding a new location reserves metadata,
+backing entitlement, registration, generation and frame ownership before its body.
+An ordinary reference-shaped authored model is not an unchecked runtime pointer.
+Existing model attach/detach/report contracts remain; host-owned services remain
+outside read facades. Initialization/State discovery must not start services.
+
+A parent body read ends before child discovery. Dedicated discovery authority
+may allocate an inert candidate and stage registration while frame mutation
+exclusion persists; it cannot change existing frame-visible model data. Candidate
+associations publish/discard with the complete semantic candidate. Removal retires
+registration, not independent ownership; reuse waits for all owners/readers and
+uses a fresh allocation generation. A stale key never resolves to a replacement.
+
+All observable writes use generated checked operations under exclusive admitted
+mutation authority. Validate identity, phase, resources and fallible domain
+preconditions before bytes change. Report coarse changes synchronously before
+return; proven no-ops may omit reports. Keep model storage disjoint from dirty,
+registration and mutation-result bookkeeping. Compound capture writes use
+preflight/non-failing commit, not a full stack rollback copy. Retain the first
+mutation failure and actual partial admitted-work flag. Later drawing/offer
+failure does not replay service effects or roll back committed mutations.
+
+### Analyzer replacement transaction
+
+Two analyzer metadata slots share ONE model-bank entitlement, separate from the
+source and admission banks (SPEC-001/013/015). An installed empty model owns that
+entitlement. Counter scalar slots are independent. The ordinary replacement API
+must carry an explicit transfer of the installed model's final owning ticket when
+that entitlement is needed; consuming the nonowning ModelKey is not a transfer.
+No candidate independently populated from a second model bank is supported.
+
+For installed A and inert empty B, the transaction MUST:
+
+1. Validate `.mutating`, compatible schema/location, available metadata and the
+   explicit final-ticket transfer. Any independent A ticket or reader that would
+   retain its bank refuses before candidate attachment or mutation of A.
+2. Reserve replacement staging, registration/target generation and B's allocation
+   generation. Guard the reservation against reentrant writes, reads and ownership
+   changes through commit/discard; candidate attachment observes B's empty seed.
+3. On any precommit failure, undo only candidate attachment/reservations once;
+   preserve A's bytes, identity, attachment, target generation and dirty state.
+4. On success, activate B, retire A's association, release transferred final A
+   ownership and assign B the bank entitlement. Reset B's count/baselines; old
+   bank bytes need not be cleared. Stale A generations cannot address B.
+5. Keep B after any later derivation/drawing failure. Detach invariant failure
+   follows the existing safety-not-proven policy, without a fictitious rollback.
+
+Initial materialization may use a candidate already owning the sole model bank
+when no installed model needs it. Retained A, second-populated B, insufficient
+metadata or missing transfer refuse deterministically. Empty B cannot bypass
+reservation and fail only on its first normal update. Refusal never revokes an
+existing owner, borrows source/admission bytes or allocates fallback storage.
+
+### Extended failures and precedence
+
+Append these UInt8 cases to ObservableStateError; preserve existing 0–11 values:
+
+| Case | Raw value | Meaning |
+| --- | ---: | --- |
+| modelCapacityExhausted | 12 | No model metadata slot or backing entitlement. |
+| ownerCapacityExhausted | 13 | No bounded ticket/frame-owner capacity. |
+| retainedModel | 14 | A required final-ticket transfer cannot release retained backing. |
+| modelGenerationExhausted | 15 | Owner/allocation identity successor cannot be formed. |
+| staleModel | 16 | Wrong owner/schema, unoccupied slot or stale allocation key. |
+| modelReadOutOfBounds | 17 | Invalid indexed read after successful binding. |
+
+For a model operation, check reentry/unsafe phase/contained phase first; identity
+and association compatibility next; then duplicate ownership, identity-generation
+exhaustion, retained-model transfer, metadata/owner/backing capacities,
+registration/staging capacity and attachment verification. Inapplicable checks
+are skipped. Existing precedence between unchanged cases stays intact. No later
+check or cleanup failure replaces the first result.
+
+AccessFailure.invalidPhase maps to `.invalidPhaseSafetyNotProven`;
+wrongOwner/wrongSchema/staleModel map to `.staleModel`; outOfBounds maps to
+`.modelReadOutOfBounds`. The first coordinator adapter performs this mapping for
+body evaluation. Canvas access uses SPEC-012's draw-error mapping instead.
+
+Model/owner capacity maps to SPEC-003 `.capacityExhausted`, `.observableState`,
+`.component` for discovery or `.operation` for replacement, `.contained`.
+Retained-model refusal maps to the same capacity condition at operation scope.
+Generation exhaustion maps to `.invalidIdentity`, `.observableState`, `.runtime`,
+`.safetyNotProven`, requires fresh assembly and preserves existing storage.
+StaleModel maps to `.invalidIdentity`, `.observableState`, `.operation`, `.contained`;
+modelReadOutOfBounds maps to `.invalidValue`, `.observableState`, `.activeCycle`,
+`.contained`. A body failure discards the complete candidate; stale mutation
+requests preserve the current model. Unknown backing safety remains the existing
+invariant/safety-not-proven route, never an ordinary stale-key excuse.
+
+### Amendment acceptance criteria
+
+Baseline OS criteria remain regression obligations under the amended access route.
+
+- [ ] **OS-RD-001:** Actual host/profile backing and tickets survive independent
+  retention, detach, nested discovery and last-read cleanup; compiler negatives
+  reject facade escape and overlapping writes on all four configurations.
+- [ ] **OS-RD-002:** First install, ignored seeds, removal/reinsertion, stale keys,
+  allocation versus target generations and every exhaustion/phase failure produce
+  the specified outcomes without unsafe dereference, ordinary trap or fallback.
+- [ ] **OS-RD-003:** Real attach/detach/report callbacks exercise all five transaction
+  steps, retained-owner/second-populated refusal, installed-empty entitlement,
+  precommit preservation and postcommit draw failure. Tickets/reservations release
+  exactly once; source/admission remain untouched. Both profiles agree.
+- [ ] **OS-RD-004:** Every supported scalar/compound write preserves application
+  order, no-op rules, synchronous coarse reports, partial mutation and no replay;
+  unsupported effects fail the build. Complete storage and stack evidence includes
+  tickets, registration, frame pins and preflight without a full rollback copy.
 
 ## Summary
 

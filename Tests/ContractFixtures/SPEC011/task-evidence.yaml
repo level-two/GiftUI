@@ -75,3 +75,12 @@ tasks:
     profiles: ["macos-dynamic", "macos-static", "raspberry-pi-armv6", "nrf52840-embedded"]
     evidence: ["docs/iterations/iteration-002-cleanup/evidence/02-capacity/concrete-stores/result.md", "docs/iterations/iteration-002-cleanup/evidence/02-capacity/driver-integration/result.md", "docs/iterations/iteration-002-cleanup/evidence/10-integration/result.md"]
     blockers: []
+
+  T12.1:
+    disposition: blocked
+    requirements: [IN-RD-001, IN-RD-002]
+    implementation: []
+    checks: []
+    profiles: []
+    evidence: []
+    blockers: [SPEC-011]

@@ -2,17 +2,19 @@
 id: SPEC-007
 feature: giftui-mvp-architecture
 title: Proposal-Based Layout Contract
-status: implemented
+status: draft
 authors:
   - codex
 created: 2026-08-25
-updated: 2026-09-11
+updated: 2026-10-10
 proposal:
   - PROPOSAL-003
+  - PROPOSAL-007
 related_rfcs:
   - RFC-002
   - RFC-003
   - RFC-010
+  - RFC-014
 related_adrs:
   - ADR-005
   - ADR-006
@@ -21,6 +23,7 @@ related_adrs:
   - ADR-021
   - ADR-023
   - ADR-032
+  - ADR-035
 related_specs:
   - SPEC-002
   - SPEC-003
@@ -44,11 +47,55 @@ target_milestone: MVP
 
 # SPEC-007: Proposal-Based Layout Contract
 
+> **RFC-014 amendment draft — 2026-10-10.** Governed by accepted ADR-035/036/037
+> as applicable below. The previously implemented contract and evidence are
+> preserved at commit `53740a73`; this amendment is not approved or implemented.
+> Earlier approval notices and completed checkboxes describe that baseline only.
+> See the [ADR acceptance record](../iterations/iteration-003-review/rfc-014-adr-acceptance.md).
+
 > **Implementation status:** Implemented on 2026-09-11 after complete
 > conformance review and explicit maintainer authorization. The governing
 > Proposal and RFCs, accepted architectural decisions, and approved
 > Foundation, Failure, Text Resource, and Declarative contracts remain
 > authoritative prerequisites.
+
+## RFC-014 runtime amendment
+
+Amendment map and review: [RFC-014 specification review](../iterations/iteration-003-review/rfc-014-spec-amendment-review.md).
+
+**Draft contract under ADR-035.** Layout algorithms, geometry, errors, arithmetic,
+text and counting rules below remain unchanged. The semantic input is now the
+bounded runtime record bank defined by SPEC-006, not an application-generated
+expanded graph. This section controls input lifetime in the amended draft.
+
+SemanticLayoutView keeps its existing query signatures and remains owned by
+Semantic Core under ADR-032. Its adapter MUST borrow one complete candidate bank
+with an immutable bank/revision token. Root/child/modifier/text queries return
+only identities or bounded values belonging to that bank. `nil` retains its
+existing invalid-query meaning; it is not an invitation to evaluate a body or
+materialize a second tree. A token check must not dereference retired storage.
+
+The caller pins the bank for Layout's full synchronous use. Every temporary
+identity/index refers to that bank only, cannot become persistent State/action
+identity and cannot survive bank retirement. End Layout's borrow on success and
+all failure paths before resetting/reusing storage. Result geometry remains owned
+under existing candidate publication rules; runtime/Render retain a bank borrow
+separately while they need semantic queries. No model read or Canvas invocation
+occurs in Layout, and no state mutation is permitted while the frame is deriving.
+
+Existing capacities, including the analyzer's 98 scopes and layout depth 13,
+remain; runtime records cannot silently increase them. All query bounds and
+scratch remain in the SPEC-013 audit. The independent semantic/layout/pixel
+oracle must compare actual runtime-generated inputs with the accepted baseline.
+
+### Amendment acceptance criteria
+
+- [ ] **LY-RD-001:** All baseline LY fixtures and both application layouts pass
+  against runtime bank adapters on all four configurations, including modifiers,
+  diagnostic branches and checked nonnegative Canvas dimensions.
+- [ ] **LY-RD-002:** Failed begin/lookup/finish and first-excess capacities end every
+  acquired borrow exactly once, preserve prior publication and permit subsequent
+  safe bank reuse; no Layout-owned graph, body evaluation or model resolution exists.
 
 ## Summary
 

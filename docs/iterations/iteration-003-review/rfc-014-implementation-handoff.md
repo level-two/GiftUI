@@ -1,12 +1,14 @@
 # RFC-014: final investigation disposition and implementation handoff
 
 **2026-10-10 — investigation, RFC review and ADR acceptance complete; proceed to
-contract preparation.** This is a routing and acceptance
+Spec approval.** This is a routing and acceptance
 checklist, not a ready Specification Implementation Plan or approval to modify
 production. Parent [RFC-014](../../rfcs/rfc-014-runtime-derived-records-and-scoped-model-access.md)
 is approved under the [final review and delegated finalization record](rfc-014-final-review.md).
 ADR-035/036/037 are [accepted](rfc-014-adr-acceptance.md); affected Specification
-approvals remain outstanding.
+approvals remain outstanding. Nine coordinated draft amendments are prepared and
+[self-reviewed](rfc-014-spec-amendment-review.md), including the focused SPEC-002
+compiler measurement update.
 
 Extracted and explicitly **accepted** at Eugene's request:
 
@@ -47,10 +49,10 @@ indefinitely or silently repaired by changing the contract.
 - Generated access/write lowering is finite and checked; no unchecked fallback,
   universal application registry or change to owned Domain capture meaning.
 
-These choices are approved at the RFC design level. The compiler dependency,
-compiled View changes and explicit presentation-capture migration must appear
-in the downstream ADRs/Specs before production relies on them. RFC approval does
-not accept those ADRs, approve the Specs or certify implementation feasibility.
+These choices are now accepted architecture in ADR-035/036/037. The compiler
+dependency, compiled View changes and presentation-capture migration are specified
+in the coordinated draft amendments. Their approval remains required; neither
+ADR acceptance nor documentation review certifies implementation feasibility.
 
 ## Remaining work belongs to implementation
 
@@ -59,14 +61,14 @@ rows do not allocate a new investigation budget or weaken existing requirements.
 
 | ID | Task and prerequisite | Required acceptance evidence |
 | --- | --- | --- |
-| IH-1 | RFC review and ADR-035/036/037 acceptance are complete; amend/review affected Specs. | Explicit compiled View/Canvas contract, generated schema/access boundary, supported compiler policy, model ticket/generation/phase rules, capture-selection migration and configured refusal behavior. Human approvals before relying on changed authority; ADR-037 supersedes ADR-028. Preserve ADR-034's three banks. |
+| IH-1 | RFC review and ADR acceptance are complete; nine Spec amendments are drafted/self-reviewed. Obtain coordinated Spec approval. | Explicit compiled View/Canvas contract, generated schema/access boundary, supported compiler policy, model ticket/generation/phase rules, capture-selection migration and configured refusal behavior. Human approvals before relying on changed authority; ADR-037 supersedes ADR-028. Preserve ADR-034's three banks. |
 | IH-2 | Implement supported source lowering after contract approval. Use the existing [counter/analyzer inventory](../../../experiments/spike-072-contextual-traversal-integration/application-coverage.md). | Both real applications compile with unchanged authored body/property/Canvas intent; inferred Body, helper/conditional evaluation order and typed failure transport; deterministic rejection of unsupported effects/escapes. No claim of general Swift source support. |
 | IH-3 | Integrate owner storage, State and registration with both runtimes and actual host owners. | All ticket retain/release and pointer-pointee lifetimes, root/nested binding, ignored seeds, successful replacement, retained-owner refusal, attach/detach/report failures, generation exhaustion/reuse, early draw rejection and teardown. Both profiles produce equivalent outcomes at the same limits. Compiler controls plus behavioral tests; phase bits alone are insufficient. |
 | IH-4 | Implement runtime records, codecs, exact structural identity and Canvas/geometry staging under the approved limits. | Actual counter/analyzer traversal and graph-publication equivalence; bounded resource refusal, no expanded generated topology; last-reader cleanup before reuse, later geometry/backend work independent of model data. Existing SPEC-006/007/010/011/012/013/015 obligations remain. |
 | IH-5 | Complete end-to-end conformance of the migrated applications after IH-2–4. | Full action/acquisition/capture replay and error ordering, no-op/report behavior, retained-model semantics, domain snapshot meaning, publication/failure/retry behavior on supported configurations. The 47-check fixture is not this conformance suite. Hardware work requires its existing explicit authorization. |
 | IH-6 | Measure and enforce final resource/performance limits on actual supported artifacts. | Complete pool/descriptor/registration/host-ticket/stack/IRQ accounting, linked ELF RAM/flash, allocator reachability and zero heap where required, matched Dynamic costs, accepted capture/admission limits and frame/acquisition requirements. Inspect the fixture's allocator references in the actual linked implementation; never treat unresolved references or unknown stack paths as zero. |
 
-The remaining ADR/Spec portion of IH-1 is the immediate next deliverable. IH-2–6 become ordered tasks in the ready
+The remaining Spec approval portion of IH-1 is the immediate next gate. IH-2–6 become ordered tasks in the ready
 Implementation Plan only after the relevant Specification is approved. Full
 migration/conformance/cost work is deliberately not a prerequisite to *finishing
 architectural investigation*. It is still mandatory before production adoption

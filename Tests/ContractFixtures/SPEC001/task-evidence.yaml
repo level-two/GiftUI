@@ -157,3 +157,12 @@ tasks:
     profiles: ["macos-dynamic", "macos-static", "raspberry-pi-armv6", "nrf52840-embedded"]
     evidence: ["docs/iterations/iteration-002-cleanup/evidence/16-nrf-connected/result.md", "docs/iterations/iteration-002-cleanup/evidence/19-current-handoff/result.md", "docs/iterations/iteration-002-cleanup/evidence/22-pi-connected/result.md"]
     blockers: []
+
+  T13.1:
+    disposition: blocked
+    requirements: [SA-RD-001, SA-RD-002, SA-RD-003, SA-RD-004]
+    implementation: []
+    checks: []
+    profiles: []
+    evidence: []
+    blockers: [SPEC-001]

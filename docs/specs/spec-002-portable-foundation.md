@@ -2,17 +2,19 @@
 id: SPEC-002
 feature: giftui-mvp-architecture
 title: Portable Foundation Specification
-status: implemented
+status: draft
 authors:
   - codex
 created: 2026-08-22
-updated: 2026-10-03
+updated: 2026-10-10
 proposal:
   - PROPOSAL-003
+  - PROPOSAL-007
 related_rfcs:
   - RFC-002
   - RFC-004
   - RFC-011
+  - RFC-014
 related_adrs:
   - ADR-005
   - ADR-006
@@ -20,6 +22,7 @@ related_adrs:
   - ADR-008
   - ADR-009
   - ADR-033
+  - ADR-036
 related_specs:
   - SPEC-003
   - SPEC-004
@@ -45,7 +48,33 @@ target_milestone: MVP
 
 # SPEC-002: Portable Foundation Specification
 
+> **RFC-014 measurement amendment draft — 2026-10-10.** The previous implemented
+> contract/evidence is preserved at `53740a73`. The compiler exception below is
+> derived from accepted ADR-036; approval and implementation remain outstanding.
+> Older approval notices describe the baseline only.
+
 > **Current implementation status — 2026-10-03:** Eugene explicitly authorized this Specification's `implemented` transition after conformance review and the complete 72-check gate. [Human approval](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/iteration-closeout-20261003/owner-transition-approval.md) supersedes earlier pending-transition statements; the approved contract is unchanged.
+
+## RFC-014 runtime amendment
+
+Amendment map and review: [RFC-014 specification review](../iterations/iteration-003-review/rfc-014-spec-amendment-review.md).
+
+Accepted ADR-036 selects project-local Swift 6.3.2 with LifetimeDependence and
+Lifetimes for the runtime migration. For that migration's Foundation measurement
+runs, the SPEC-013 pinned compiler configuration takes precedence over the
+historical macOS 6.3.3 measurement row below. Preserve target triples, optimization,
+ABI, value-size/allocation ceilings, linked-delta method and exact identity checks.
+Record migration and historical baselines separately; results cannot be pooled.
+
+The existing contract driver gains `--compiler-baseline rfc-014` to select this
+explicit matrix; omission reproduces the historical table. Unknown baselines or
+missing compiler/features fail clearly. This selects project-local executables,
+never Xcode/global compiler settings. For each migrated application/target,
+PF-006/007 and SPEC-013 RP-RD-003 require fresh compiler/ABI/value-size/allocation
+and linked-size evidence. This is an implementation acceptance requirement, not
+another pre-approval compiler experiment or a waiver of any Foundation constraint.
+
+All other Foundation APIs, arithmetic and module contracts remain unchanged.
 
 ## Summary
 

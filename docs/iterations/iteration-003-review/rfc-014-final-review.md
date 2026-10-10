@@ -110,3 +110,12 @@ now record the three decisions. The manifest is at `decision`; the next gates
 are ADR acceptance and affected Specification approval, as tracked in the
 [implementation handoff](rfc-014-implementation-handoff.md). ADR-028 remains
 accepted pending the explicit supersession described in proposed ADR-037.
+
+
+## Subsequent acceptance and Spec drafting
+
+Eugene explicitly accepted ADR-035/036/037 in the
+[acceptance record](rfc-014-adr-acceptance.md), including ADR-028 supersession.
+The [coordinated Spec amendment review](rfc-014-spec-amendment-review.md) now
+tracks nine drafted contracts and the pending approval gate. These later events
+do not change the RFC finalization provenance above.

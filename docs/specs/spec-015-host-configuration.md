@@ -2,17 +2,18 @@
 id: SPEC-015
 feature: giftui-mvp-architecture
 title: MVP Target-Host Configuration Contract
-status: implemented
+status: draft
 authors:
   - codex
 created: 2026-08-28
-updated: 2026-10-05
+updated: 2026-10-10
 proposal:
   - PROPOSAL-002
   - PROPOSAL-003
   - PROPOSAL-004
   - PROPOSAL-005
   - PROPOSAL-006
+  - PROPOSAL-007
 related_rfcs:
   - RFC-012
   - RFC-001
@@ -24,6 +25,7 @@ related_rfcs:
   - RFC-008
   - RFC-009
   - RFC-011
+  - RFC-014
 related_adrs:
   - ADR-001
   - ADR-034
@@ -43,6 +45,9 @@ related_adrs:
   - ADR-027
   - ADR-031
   - ADR-033
+  - ADR-035
+  - ADR-036
+  - ADR-037
 related_specs:
   - SPEC-001
   - SPEC-003
@@ -68,6 +73,12 @@ target_milestone: MVP
 ---
 
 # SPEC-015: MVP Target-Host Configuration Contract
+
+> **RFC-014 amendment draft — 2026-10-10.** Governed by accepted ADR-035/036/037
+> as applicable below. The previously implemented contract and evidence are
+> preserved at commit `53740a73`; this amendment is not approved or implemented.
+> Earlier approval notices and completed checkboxes describe that baseline only.
+> See the [ADR acceptance record](../iterations/iteration-003-review/rfc-014-adr-acceptance.md).
 
 **Current disposition — 2026-10-03:** The maintainer explicitly directed
 performance work to future iterations and closure of the remaining Specifications.
@@ -158,6 +169,130 @@ Earlier open-gate statements below describe the pre-approval history.
 > is the structural upper bound; the release ceiling adds five slots. The
 > same limits apply to all four presets without changing the profile-store
 > byte projections or the rendering counting rules.
+
+## RFC-014 runtime amendment
+
+Amendment map and review: [RFC-014 specification review](../iterations/iteration-003-review/rfc-014-spec-amendment-review.md).
+
+**Draft contract under ADR-035/036/037.** This section replaces the schema-3
+expanded-hierarchy production input and root-reference access realization. The
+existing host role graph, activation, failure policy, extents, queues, pacing,
+capabilities, transports and application service ownership remain. Scalar workload
+bounds may be generated; occurrence topology may not. No external-package API
+or new host abstraction is authorized (RFC-013 / ITERATION-004 owns that work).
+
+### Schema-4 runtime workload and validation
+
+`SignalAnalyzerHostWorkload.schemaVersion` becomes exactly **4**. Its required
+RuntimeProfileLimits includes every SPEC-013 records/models field. Add these
+UInt32 workload fields: `requiredPathEntries`, `requiredPayloadBytesPerBank`,
+`requiredInteractionIdentityComponents`; add UInt16 `requiredPathDepth`,
+`requiredPathChildFanout`, `requiredIdentityComponentsPerKey`. Their non-narrowed
+values must fit the corresponding limits; checked conversion failure is rejected.
+Existing schema-3/older inputs are rejected by validation before activation; no
+runtime defaulting silently fills the new fields.
+
+The checked-in workload descriptor specifies scalar capacities and supported
+source/type vocabulary, not expanded occurrences, parent/child tables or active
+branches. It may derive conservative path/payload bounds from that finite
+vocabulary. Before approving production adoption, actual runtime traversal over
+the full supported workload must prove those bounds, including every conditional
+shape and diagnostics. An incorrect descriptor fails implementation conformance;
+it is never substituted for runtime topology. Type-role/codecs, schema witnesses
+and fonts remain permitted generated inputs. Both source and build dependency
+scans must prove removal of generated expanded graph consumers at migration.
+
+Preserve analyzer logical limits: 48 semantic nodes, 126 structural occurrences,
+14 bodies, 50 modifiers, six actions, depth 34; 98 layout/render scopes at depth
+13; 224 text/glyph slots, 128 text-line slots; existing five-Canvas drawing and
+145 ordinary/150 combined operation bounds. The runtime record implementation
+must not enlarge these to fit. The new independent path/payload/identity capacities
+must be declared in each immutable workload and covered by actual supplied pools;
+they are not fabricated from the historical 24/32-byte record assumptions.
+
+For analyzer, RuntimeModelLimits selects two metadata slots, four owning tickets,
+two frame pins and one model-capture bank. Owning-ticket capacity includes live
+application/candidate tickets; registration references and frame pins are separate.
+For the finite counter composition use two scalar-model slots, four owning tickets,
+two frame pins and zero capture banks. Only one active root registration is required
+by either selected application; metadata/ticket capacity does not add locations
+or guarantee replacement. Independent conformance fixtures may configure other
+finite limits but cannot be presented as the production preset.
+
+Every profile validates exact equality of RuntimeProfileLimits with its workload
+requirements, complete storage and audit fields, finite Canvas witness coverage,
+model schema compatibility and three-bank ownership. Changed record/descriptor
+layouts invalidate the audit and require regeneration/revalidation. Structural
+stage checks precede workload sufficiency, then existing capability/backend and
+service validation in the existing order. Missing model/pool storage maps through
+SPEC-013 missingStorage/insufficientStorage; mismatched schema/limits use existing
+host workload mismatch/insufficientWorkloadCapacity routes. No client code or
+service runs during validation. The first error remains primary during cleanup.
+
+Schema-4 retains scalar descriptor values as compile-time inputs, but validation
+MUST NOT require a generated graph or execute a body to discover whether startup
+is safe. Finite descriptor bounds authorize supplied storage; runtime first-excess
+checks still contain an unexpected candidate. Full-source/workload conformance
+proves that all supported production paths fit those supplied capacities.
+
+### Owners, resource ledger and migration
+
+The host/profile bridge owns stable storage and the scoped read/write witnesses;
+Presentation sees only its schema. Host caches that independently retain a model
+must own accounted tickets, not a root alias. Replacement explicitly transfers
+the installed final ticket or refuses under SPEC-010. A callback must not acquire
+an independent owner or read inside a guarded replacement reservation. Host-owned checked owner-instance issuance survives replacement assemblies and
+is included in the host ledger. Frame pins and registration lifetimes prevent
+backing reuse; callbacks after shutdown cannot
+resolve stale generations. Stop/drain producers and IRQ handoffs before releasing
+model backing, including partial initialization and failed activation.
+
+A schema-4 audit replaces historical schema-3 byte projections for the migration,
+not applicable physical ceilings. Report a complete per-application/per-target
+ledger: application/source/admission/model, profile, layout/render/Canvas, text,
+capability, backend payload/in-flight regions, host/service/owner control, static
+initialization and feasible stack/IRQ overlap. Each allocation has one owner,
+count, stride/alignment, lifetime and actual linked section or stack path. Static
+must fit target RAM/flash with zero heap; Dynamic reports bounded heap plus
+allocator overhead. No provisional control allowance or fixture subtotal is a
+budget, no missing path is zero, and no source/admission storage is loaned out.
+
+Retain ADR-034's three 6,464-byte transition regions (19,392 total), the existing
+nRF raster/payload/in-flight limit and all board/toolchain/ABI constraints.
+Pin/check SPEC-013's compiler configuration for the migration. Retain 250,000 µs
+frame pace and admitted-fact service bound, production burst/queue limits and
+retry counting. The known 4 MHz transfer issue remains unmet separately; smaller
+records do not prove timing. Connected Pi/nRF validation requires its existing
+explicit authorization and cannot be inferred from a cross-build.
+
+The counter is the existing finite root/typed-actions/changing-text/disabled-Button/
+optional-stroke corpus. Its own immutable scalar workload descriptor and actual
+storage ledger use the same schema-4 contracts without analyzer storage or external
+package claims. Source-route completeness and behavior must match that corpus;
+this amendment adds no counter feature or new production platform.
+
+Retain the old production route until approved Spec amendments, a ready plan and
+migration acceptance authorize replacement. Then remove expanded graph production
+inputs while retaining independent recording/oracle controls. Do not reclassify
+existing baseline evidence as schema-4 conformance. Physical limit changes require
+a reviewed Spec amendment; architectural bound changes return to the maintainer.
+
+### Amendment acceptance criteria
+
+- [ ] **HC-RD-001:** All four analyzer manifests and finite counter compositions
+  use schema 4 with explicit records/models bounds and exact validated audits;
+  missing/mismatched fields, schema 3, missing witness and each first-excess case
+  fail before activation without topology-generation dependency or fallback.
+- [ ] **HC-RD-002:** Actual host caches/tickets, service callbacks, guarded replacement,
+  frame reads, partial construction, activation and teardown prove backing lifetime
+  and no stale key/action dispatch. Both profiles agree under equal limits.
+- [ ] **HC-RD-003:** Complete linked ledger, actual source-route inventory, runtime
+  branch coverage, zero-heap/stack/ABI checks and independent semantic/action/pixel
+  oracles establish both applications' migration under unchanged logical/physical
+  constraints. Cross-builds and the prior hand-written bridge are not substitutes.
+- [ ] **HC-RD-004:** Existing pacing/admission/queue/workload and connected-validation
+  criteria retain their actual dispositions. The migration report names artifacts,
+  limits, unsupported forms and any unmet gate without reopening investigation.
 
 ## Summary
 

@@ -21,7 +21,7 @@ features:
     # Final review: docs/iterations/iteration-003-review/rfc-014-final-review.md.
     # SPIKE-069 completed: borrow/key evidence; no proof of the later protocol/versioned design.
     # SPIKE-073 completed: fixed-context inference evidence; access/ownership contracts now selected, integration unproved.
-    # SPIKE-074 complete; investigations and RFC-014 review closed; ADR-035/036/037 accepted. Next: Spec amendments/approval.
+    # SPIKE-074 and RFC review closed; ADR-035/036/037 accepted; nine related Spec amendments draft.
     # Handoff: docs/iterations/iteration-003-review/rfc-014-implementation-handoff.md.
     # Selected three-bank refusal policy: docs/iterations/iteration-003-review/rfc-014-capture-policy-choice.md.
     # Typed access: docs/iterations/iteration-003-review/rfc-014-typed-access-contract.md.
@@ -63,16 +63,16 @@ features:
     dependencies: []
     milestone: MVP
   # Deferred toolchain question: FW-028 (linked from SPEC-001 and its plan).
-  # All owner Specs implemented by explicit maintainer approval on 2026-10-03, with connected exceptions.
+  # Prior owner Specs implemented on 2026-10-03 with exceptions; RFC-014 amendments now draft.
   # Performance selected by ITERATION-003; unrelated connected follow-up remains FW-031/FW-033.
   # Completed I3-T01 scheduling/raster/layout task (hardware-free boundary): docs/iterations/iteration-003-review/memory-efficiency-plan.md.
   # Task decomposition preserves scope revision 5 and existing feature authority.
   signal-analyzer:
     # SPEC-001 reopened as an RFC-014 amendment draft; prior implemented baseline: 53740a73.
     # ITERATION-002 closed at revision 7; ITERATION-003 revision 5 governs
-    # bounded preparation. Existing implemented contracts remain authority.
+    # bounded preparation. Prior implemented baseline retained; RFC-014 amendment draft.
     title: Signal Analyzer Reference Application
-    status: implemented
+    status: specification
     proposal:
       - PROPOSAL-002
     rfcs:
@@ -98,7 +98,7 @@ features:
     # FW-016/FW-030 and EXP-002 supply evidence; topology/access contracts remain gated.
     # macOS physical-pointer validation is postponed under FW-031.
     title: GiftUI MVP Architecture Establishment
-    status: implemented
+    status: specification
     proposal:
       - PROPOSAL-003
     rfcs:
@@ -161,7 +161,7 @@ features:
     milestone: MVP
   observable-reference-state:
     title: Observable Reference State
-    status: implemented
+    status: specification
     proposal:
       - PROPOSAL-005
     rfcs:
@@ -178,7 +178,7 @@ features:
   canvas-drawing:
     # SPEC-012 reopened as an RFC-014 amendment draft; ADR-037 supersedes ADR-028.
     title: Canvas, Path, and Stroke Drawing
-    status: implemented
+    status: specification
     proposal:
       - PROPOSAL-006
     rfcs:

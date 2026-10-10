@@ -2,11 +2,11 @@
 spec: SPEC-011
 feature: giftui-mvp-architecture
 title: SPEC-011 Implementation Plan
-status: ready
+status: draft
 owners:
   - codex
 created: 2026-09-09
-updated: 2026-10-09
+updated: 2026-10-10
 related_design_notes:
   - ../implementation-designs/spec-011-target-bound-dispatch.md
 conformance_report: ../conformance/spec-011-conformance.md
@@ -22,6 +22,34 @@ superseded_by: null
 ---
 
 # SPEC-011 Implementation Plan
+
+## RFC-014 amendment gate — 2026-10-10
+
+Accepted ADR-035/036/037 now govern the runtime migration. The governing Spec is
+an amendment draft; this plan is not ready for that work. Historical completed
+rows/evidence below remain the `53740a73` production baseline, not conformance to
+new RD criteria. Earlier conditional fourth-bank/closure wording is superseded
+by the [current handoff](../iterations/iteration-003-review/rfc-014-implementation-handoff.md).
+After coordinated Spec approval, derive ordered tasks/design notes for IH-2–6
+and review readiness before implementation. No additional investigation is queued.
+
+
+
+### Blocked migration traceability reservation
+
+This is a blocked scope reservation required by the existing evidence ledger,
+not a ready implementation decomposition. Replace it with ordered, bounded tasks
+covering every mapped criterion after approval and before readiness. Empty
+implementation/check/evidence lists deliberately claim no execution or pass.
+
+- [ ] `T12.1` — Realize and verify the RFC-014 amendment criteria after coordinated
+  Spec approval and plan decomposition. Currently blocked on the governing draft
+  Spec; no source work or experiment is authorized by this reservation.
+
+| Criterion | Reserved task |
+| --- | --- |
+| `IN-RD-001` | `T12.1` |
+| `IN-RD-002` | `T12.1` |
 
 ## I3-T02 conditional runtime migration — 2026-10-09
 
