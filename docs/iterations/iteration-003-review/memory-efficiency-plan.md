@@ -24,13 +24,19 @@ for limitations, particularly actual runtime integration and zero heap.
 Eugene's conditional finalization instruction. The final text consolidates the
 selected design and preserves all implementation acceptance obligations.
 
-**Next: P02 in the [bounded implementation sequence](rfc-014-implementation-plan.md).**
+**Current: P03 in the [bounded implementation sequence](rfc-014-implementation-plan.md).**
 IH-1 is complete: ADR-035/036/037 accepted, nine Spec amendments approved and nine owner plans
 ready or active. Exactly twelve packages cover IH-2–6, with all 180 criteria mapped, explicit
 footprints/exits and stop rules. No investigation or automatically growing backlog
 is authorized. P01 passed in `bb61d4ef`: [compiler/Foundation receipt](../../../Tests/ContractFixtures/SPEC002/Evidence/rfc-014-p01/result.md).
-SPEC-002 implementation has begun; P02–P12 remain pending. Connected authorization,
-conformance and implemented/iteration-closure decisions remain separate gates.
+P02 passed in `53de09c6`: [declarations/lowering receipt](../../../Tests/ContractFixtures/SPEC006/Evidence/rfc-014-p02/result.md).
+P03 implementation is active; P04–P12 remain pending. Use the sequence's
+[complexity, risk and model-routing annotations](rfc-014-implementation-plan.md#complexity-risk-and-model-routing)
+to choose the model for each bounded assignment. Strong models own lifetime,
+identity, resource-proof and adoption decisions; cheaper models can execute the
+listed fixed-input slices. Ratings do not change package scope or approval gates.
+Connected authorization, conformance and implemented/iteration-closure decisions
+remain separate gates.
 
 Earlier sections below preserve historical activity dispositions; this section
 and the handoff supersede earlier wording that requires another investigation

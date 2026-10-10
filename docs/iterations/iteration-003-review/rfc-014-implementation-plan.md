@@ -7,6 +7,11 @@ at `3c260bbc` and accepted ADR-035/036/037. ITERATION-003 I3-04/05 supplies the
 analyzer/counter and four-configuration delivery scope; the closed MVP supplies
 regression semantics. ITERATION-004 external delivery remains separate.
 
+For a new or resumed assignment, use the [task context guide](rfc-014-task-context.md)
+to reach the relevant contract, source, tests and current evidence without
+reconstructing the investigation history. Package boundaries and model routing
+remain in this sequence.
+
 ## Fixed deliverable and scope rules
 
 Deliver one runtime-derived implementation for the existing analyzer and finite
@@ -66,11 +71,14 @@ not require a second compiled View ABI to be maintained until that point.
 
 ## Current repository and permitted footprints
 
-Inspected baseline source still has context-free `View.body` in
+The pre-P02 baseline had context-free `View.body` in
 `Sources/GiftUI/DeclarativeView.swift`, retained Canvas closures in
 `Sources/GiftUI/Canvas.swift`, existing ObservableState transaction/reconciler
 owners, Dynamic/Static model and semantic stores, and RuntimeCore's complete
-pipeline/cleanup. Reuse these owners and their failure tests.
+pipeline/cleanup. P02 has since replaced the declaration ABI in place with
+typed domain/read contracts; consumers migrate in P03–P09. Use current source
+and package receipts for implementation state, not this baseline description.
+Reuse the existing owners and their failure tests.
 
 `scripts/contracts/generate-spec-001-nrf-topology.py`, Canvas-table generation and
 `generate-spec-015-workload.rb` still serve generated production inputs. Replace
@@ -106,6 +114,107 @@ contract and be traceable to a failing migration check.
 Default execution is sequential in the listed order. P05 and P06 have independent
 owner surfaces after their dependencies, but this plan does not authorize new
 parallel agents. All shared interfaces are fixed by the approved Specs.
+
+## Complexity, risk and model routing
+
+Added 2026-10-10 at Eugene's request to reserve the strongest model for complex
+or consequential work and reduce cost on routine execution. These are planning
+estimates for the existing packages, not measured model performance, new work
+packages or changes to acceptance criteria. P01/P02 ratings are retrospective;
+their completed work does not need rerunning. P03's remaining work uses this
+routing from its next safe handoff.
+
+Rate the actual assignment on two independent axes. File count, diff size and
+test duration do not determine either rating.
+
+| Level | Complexity (C): reasoning required | Risk (R): consequence of a wrong result |
+| --- | --- | --- |
+| 1 | Mechanical execution with exact inputs, an established pattern and an objective check | Local, readily detected and reversible; no behavioral or acceptance decision |
+| 2 | Bounded implementation across known interfaces; several interacting cases | Behavior or integration regression within an established owner; targeted evidence can establish correctness |
+| 3 | Cross-owner invariants, unfamiliar compiler behavior, lifetime/transaction reasoning or whole-image resource proof | Memory safety, stale identity, atomic publication, data loss, resource guarantees or adoption/conformance decisions |
+
+Use three model tiers, mapped to concrete available model IDs and reasoning
+settings at execution time. **Economy** is the least expensive model already
+adequate for mechanical tasks; **Standard** handles bounded implementation;
+**Strong** is the most capable reasoning model available for difficult or
+consequential decisions. Price and model names are deliberately not frozen here.
+If a cheaper tier has not demonstrated adequacy, start one tier higher.
+
+| Assignment rating | Minimum implementation tier | Review before accepting its result |
+| --- | --- | --- |
+| C1 / R1 | Economy | Objective checks and normal package review; no separate Strong review for clerical output |
+| C2 / R1 | Standard | Normal package review and focused checks |
+| C1–2 / R2 | Standard | Strong review of changed behavior and criterion evidence |
+| C3 or R3 | Strong | Explicit Strong review of invariants, failure paths and evidence, separate from the implementation pass |
+
+A review pass can use the same implementing agent with the relevant context;
+these tiers do not authorize spawning agents or require duplicate implementation.
+Model review never substitutes for tests or human lifecycle decisions. Missing
+authority or an ambiguous contract is an upstream blocker, not a reason to ask a
+larger model to invent a resolution.
+
+### Package ratings and lower-cost assignments
+
+The core rating applies if a package is assigned as a whole. The bounded slices
+below allow cheaper execution after their inputs and expected results are fixed.
+Their parent dependencies, exit evidence and repair limits remain in force.
+
+| Package | Core C / R | Core tier | Reason for rating | Lower-cost slice and prerequisite |
+| --- | --- | --- | --- | --- |
+| P01 | C2 / R2 | Standard | Compiler selection, ABI forwarding and baseline provenance affect every later result | Economy C1/R1: execute fixed identity commands and collect hashes; unexpected compiler/ABI results return to the core owner. Already complete. |
+| P02 | C3 / R3 | Strong | Domain inference, source transformation and escape rejection define the typed safety boundary | Standard C2/R2: add cases from a reviewed syntax/diagnostic matrix without changing lowering or expected semantics. Already complete. |
+| P03 | C3 / R3 | Strong | Backing lifetime, pins, registration retirement and three-bank transfer/refusal must agree on every failure path | Economy C1/R1: run fixed owner tests and collect layout sizes after Strong supplies the cases; Strong interprets lifetime and bound results. |
+| P04 | C3 / R3 | Strong | Exact identity, bank reuse and bounded reconciliation couple semantics to storage | Standard C2/R2: implement enumerated first-excess fixtures after Strong fixes pool rules and independent expected outcomes. |
+| P05 | C2 / R3 | Strong | Small consumer joins can misroute committed actions after bank reuse or refused offers | Standard C2/R2: adapt Layout fixtures to the fixed borrowed-view interface; committed-key ownership and retirement stay Strong. |
+| P06 | C3 / R3 | Strong | Deferred Canvas values, scoped reads, staged storage and exactly-once cleanup cross lifetime boundaries | Standard C2/R2: add reviewed occurrence/order fixtures against unchanged geometry and pixel controls; ownership and escape handling stay Strong. |
+| P07 | C3 / R3 | Strong | The complete cycle coordinates mutation, publication, offer acceptance, retirement and fault cleanup | Economy C1/R1: execute fixed differential transcripts and index results; Strong diagnoses mismatches and assesses cleanup. |
+| P08 | C3 / R3 | Strong | Owner caches, backing layout and audited resource limits accompany otherwise bounded host wiring | Standard C2/R2: implement schema validation and finite counter wiring against fixed contracts. Economy C1/R1: transcribe reviewed schema fixtures and collect four-route build reports. |
+| P09 | C3 / R3 | Strong | Real host replacement and compound capture mutation must preserve application semantics and admission | Standard C2/R2: migrate inventoried presentation call sites after one reviewed pattern and API are fixed; capture ownership and mutation remain Strong. |
+| P10 | C3 / R3 | Strong | Applicability of evidence across 180 criteria determines whether integration actually conforms | Economy C1/R1: run named suites and populate raw command/result links. Strong owns criterion dispositions, oracle differences and exception identification. |
+| P11 | C3 / R3 | Strong | Complete overlapping storage, stack/IRQ, zero-heap and sustained-workload proof require whole-system reasoning | Economy C1/R1: extract exact artifact/map values and run fixed, authorized measurements. Strong reconciles the ledger and decides what the evidence establishes. |
+| P12 | C2 / R3 | Strong | Production cutover removes the fallback and depends on valid adoption dispositions | Economy C1/R1: update links and execute dependency scans from a reviewed cutover list. Strong owns removals, gate assessment and final conformance review. |
+
+P08's Standard slice covers only fixed-contract schema/counter wiring; if the
+assignment includes its owner-cache or resource-layout work, route that combined
+assignment to Strong. Likewise, a lower-cost slice inherits the core rating
+unless its boundary actually excludes the listed critical decisions. A passing
+test does not by itself justify downgrading lifetime or resource-proof work.
+
+### Dispatch, escalation and handoff
+
+Before each assignment, record a short entry in the existing package receipt:
+
+```text
+Package / slice; governing criterion IDs; dependencies satisfied
+Allowed files and output; fixed inputs / pattern / independent expected results
+Context: exact contract headings, source symbols, test exemplars and receipt
+Settled decisions; remaining implementation choice (or explicitly none)
+C / R and reason; tier -> actual model ID / reasoning setting
+Required commands and reviewer tier; remaining package repair allowance
+Result / evidence links; unresolved issues; handoff or escalation reason
+```
+
+Switch models between bounded slices or at a recorded failure handoff, with the
+current diff, source revision, uncommitted work, commands/results and remaining
+work preserved. Do not restart the package or repeat passed checks solely because
+the model changed. These annotations support manual selection or a future
+dispatcher; editing this plan does not implement automatic model switching.
+
+Escalate Economy to Standard when work requires behavioral interpretation or a
+repair beyond the prescribed pattern. Escalate directly to Strong on unsafe
+access, lifetime/identity uncertainty, transaction or failure-order changes,
+cross-profile disagreement, unexpected resource growth, oracle changes or
+unclear acceptance evidence. Escalate after the first failed repair that produces
+no new passing check or narrower cause; preserve the existing two-attempt package
+stop rule. Switching models never resets that counter or a closed work budget.
+
+Strong may return a precisely bounded mechanical slice to a cheaper tier once
+its inputs, invariants and checks are settled. Keep critical review with Strong;
+do not downgrade a task merely because it took longer or used more tokens.
+Record actual model usage, repair counts and review rework in the same receipt
+when available; do not invent cost estimates or promise savings. Reassess the
+tier mapping using that evidence at package checkpoints, without creating a
+benchmark project or expanding P01–P12.
 
 ## Owner plan and criterion mapping
 
