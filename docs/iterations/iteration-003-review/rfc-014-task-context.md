@@ -1,15 +1,16 @@
 # RFC-014 task context guide
 
-**Current P07 checkpoint — ready for independent exit review, 2026-10-11:**
+**Current P07 checkpoint — repaired candidate pending independent rereview, 2026-10-11:**
 The explicitly [resumed consuming-owner implementation](../../../Tests/ContractFixtures/SPEC013/Evidence/rfc-014-p07/consuming-owner-resumption.md)
-now has audited construction, configured-limit enforcement and lifecycle steps
-1–6 committed through `af796ed8`. Latest native evidence: 3917 assertions and
-12 compiler negatives; [progress and exact receipts](../../../Tests/ContractFixtures/SPEC013/Evidence/rfc-014-p07/progress.md).
-All four [final candidate routes](../../../Tests/ContractFixtures/SPEC013/Evidence/rfc-014-p07/final-evidence.md)
-and traceability reconciliation are complete; independent Strong exit review
-remains required. P07 is not accepted here.
-Resumed consecutive unproductive repairs: **0/2**. The historical 2/2 stop is
-preserved. P08–P12 have not started.
+includes audited construction and lifecycle steps 1–6, followed by R1 (`0741894a`)
+and R2 (`ad671ea6`) repairs. The original [independent FAIL](../../../Tests/ContractFixtures/SPEC013/Evidence/rfc-014-p07/independent-exit-review.md)
+remains preserved. Fresh [repaired four-route evidence](../../../Tests/ContractFixtures/SPEC013/Evidence/rfc-014-p07/repair-final-evidence.md)
+uses clean `ad671ea6`; each native route passes 5904 assertions and twelve
+compiler negatives across 26 actual Static/Dynamic case pairs. Cross routes pass
+selected-module compilation and CPU/VFP checks; no target execution is claimed.
+Independent Strong rereview remains required; P07 is not accepted here.
+Resumed consecutive unproductive repairs: **0/2**. Historical 2/2 stop preserved.
+T9.1/T11.1 and P10–P12 remain open. P08–P12 have not started.
 
 The bench and stop records below describe earlier boundaries; their statements
 that continuation is unauthorized are superseded only by the resumption above.
@@ -101,7 +102,7 @@ regression and four-configuration obligations remain in the owner matrices.
 
 ## Current P07 validation entry
 
-Read [final candidate evidence](../../../Tests/ContractFixtures/SPEC013/Evidence/rfc-014-p07/final-evidence.md)
+Read [final candidate evidence](../../../Tests/ContractFixtures/SPEC013/Evidence/rfc-014-p07/repair-final-evidence.md)
 for exact route arguments, source/receipt identities, criterion mapping and limits.
 The current selected composition lives in `Tests/ContractFixtures/SPEC013/RuntimeDerived/`:
 start with `CycleProfileStorage.swift`, `CyclePipelineOwner.swift`,
@@ -137,12 +138,13 @@ Strong review at `037607c7`. P05 passed after separate Strong review at
 `42b5f639`. P06 passed after the explicitly approved scoped-source amendment
 and separate Strong repair review at `59c80b52`; all captured Canvas model keys
 bind before authored drawing, including read-free paths. P07 has committed
-actual audited consuming-owner construction and lifecycle steps 1–6 through
-`af796ed8`, with 3917 native assertions and twelve negatives. The earlier
-[constraint-boundary review](../../../Tests/ContractFixtures/SPEC013/Evidence/rfc-014-p07/independent-blocker-review.md)
-is historical after the approved amendments. Resume from the
-[current progress receipt](../../../Tests/ContractFixtures/SPEC013/Evidence/rfc-014-p07/progress.md);
-final four-route evidence is collected; independent package review remains pending. P08–P12 remain pending.
+actual audited consuming-owner construction/lifecycle and both reviewed-defect
+repairs through `ad671ea6`, with 5904 native assertions and twelve negatives.
+The earlier [constraint-boundary review](../../../Tests/ContractFixtures/SPEC013/Evidence/rfc-014-p07/independent-blocker-review.md)
+is historical after approved amendments. The [original exit FAIL](../../../Tests/ContractFixtures/SPEC013/Evidence/rfc-014-p07/independent-exit-review.md)
+remains preserved; [current progress](../../../Tests/ContractFixtures/SPEC013/Evidence/rfc-014-p07/progress.md)
+records R1/R2 repairs and fresh final routes. Separate independent rereview remains
+pending. P08–P12 remain pending.
 Do not infer complete-module, coordinator or linked-resource completion from
 these component probes.
 

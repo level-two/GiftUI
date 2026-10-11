@@ -22,11 +22,14 @@ Collecting, not conformant for the amended implementation. The
 [approved scoped coordinator correction](../iterations/iteration-003-review/rfc-014-spec-approval.md#scoped-coordinator-constraint-amendment--2026-10-11)
 and [P07 progress](../../Tests/ContractFixtures/SPEC013/Evidence/rfc-014-p07/progress.md)
 control current applicability. Prior pass rows below remain historical evidence
-for their frozen revisions. Actual audited consuming-owner construction and lifecycle steps 1–6 are now
-committed through `af796ed8`, with 3917 native assertions and twelve compiler
-negatives. All four [final routes](../../Tests/ContractFixtures/SPEC013/Evidence/rfc-014-p07/final-evidence.md)
-are collected; independent Strong review remains pending; no earlier implemented transition satisfies the amendment. P07
-acceptance and complete P10–P12 conformance remain separate.
+for their frozen revisions. Actual audited consuming-owner construction/lifecycle and both reviewed-defect
+repairs are committed through `ad671ea6`. The original
+[independent FAIL](../../Tests/ContractFixtures/SPEC013/Evidence/rfc-014-p07/independent-exit-review.md)
+remains preserved. Fresh [repaired four routes](../../Tests/ContractFixtures/SPEC013/Evidence/rfc-014-p07/repair-final-evidence.md)
+pass 5904 native assertions, twelve compiler negatives and 26 complete actual-profile
+pairs; cross routes provide selected-module CPU/VFP evidence only. R1/R2 are
+repaired pending separate Strong rereview. No earlier implemented transition
+satisfies the amendment; P07 acceptance and full P10–P12 conformance stay separate.
 
 
 > This report records evidence. It does not authorize the governing

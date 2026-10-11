@@ -1,5 +1,9 @@
 # P07 final candidate evidence — 2026-10-11
 
+> **Historical candidate:** independent review failed R1/R2 at `c1500b86`.
+> The original evidence below is preserved. See [repaired candidate evidence](repair-final-evidence.md)
+> for the later bounded repair and pending independent rereview.
+
 Implementation is ready for independent Strong exit review; this record does not
 accept P07 or close SPEC-009 T9.1 / SPEC-013 T11.1. The approved SPEC-009/013
 coordinator amendments, accepted ADR-035/036/037 and the explicit

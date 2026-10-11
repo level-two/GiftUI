@@ -1129,3 +1129,29 @@ known cause. The bounded repair made progress and the resumed consecutive
 unproductive-repair count remains **0/2**. Formatter, whitespace and governance
 checks pass. Final fresh four routes and separate rereview remain required;
 the original FAIL is preserved and P07 is not accepted.
+
+
+## Repaired P07 candidate — final four routes
+
+R1 (`0741894a`) and R2 (`ad671ea6`) are repaired pending separate independent
+Strong rereview. The original [FAIL](independent-exit-review.md) and its frozen
+receipts remain untouched. New [repaired candidate evidence](repair-final-evidence.md)
+records all four fresh routes from clean `ad671ea6`, with no intervening source or
+driver change: each native route has **5904 assertions, zero failures, twelve
+compiler negatives and 26 complete actual Static/Dynamic pairs**. ARMv6 and nRF
+cross routes pass twelve negatives and CPU/VFP attributes, with no target execution.
+
+[Repaired integrity verification](repair-final-integrity.json) rehashes every
+input/artifact, compiler/core receipt and driver; both native routes have equal
+[complete values](repair-final-logical-transcripts.json) and
+[26-field descriptors](repair-final-storage-regions.json). Measured selected
+backing totals are Static **68,503** / Dynamic **166,240** bytes, including the
+additional actual cleanup-completion state. No complete image/resource claim.
+Current shared/owner plans, task-context, manifest comment, owner criterion links
+and conformance applicability now identify this repaired candidate. Historical
+baseline claims, original FAIL, diagnostics and prior exhausted stop are preserved.
+
+Formatter lint, whitespace and governance checks pass. The resumed shared
+consecutive-unproductive-repair guard remains **0/2**. Independent rereview is the
+next boundary; no P07 self-acceptance, T9.1/T11.1 closure, P08 start or full
+P10–P12/resource/image/timing/hardware claim is made.
