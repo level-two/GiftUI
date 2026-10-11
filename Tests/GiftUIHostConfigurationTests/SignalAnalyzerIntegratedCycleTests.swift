@@ -85,6 +85,9 @@ private struct IntegratedCycleTranscript: Equatable {
 }
 
 private struct IntegratedCycleOwner: RuntimeCompletePipelineOwner {
+    var presentationIntentState: PresentationIntentState {
+        disposition?.presentationIntentState ?? .satisfied
+    }
     let admission: any IntegratedFactAdmission
     let model: SignalAnalyzerViewModel
     let root: IntegratedRootHooks

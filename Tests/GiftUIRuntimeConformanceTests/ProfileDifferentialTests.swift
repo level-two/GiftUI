@@ -43,6 +43,7 @@ private struct DifferentialTranscript: Equatable {
 }
 
 private struct DifferentialPipelineOwner: RuntimeCompletePipelineOwner {
+    var presentationIntentState: PresentationIntentState { .satisfied }
     private(set) var stages: [RuntimeCompletePipelineStage] = []
     private(set) var cleanups: [RuntimeCleanupAction] = []
     private(set) var finalizationCount = UInt16(0)
@@ -625,6 +626,9 @@ private let partialMutationContext = ExecutionContext(
 )
 
 private struct PartialMutationPipelineOwner: RuntimeCompletePipelineOwner {
+    var presentationIntentState: PresentationIntentState {
+        lastDisposition?.presentationIntentState ?? .satisfied
+    }
     var rejectedAfterEffects: UInt16?
     private(set) var appliedEffects: UInt16 = 0
     private(set) var admittedEffects: UInt16 = 0

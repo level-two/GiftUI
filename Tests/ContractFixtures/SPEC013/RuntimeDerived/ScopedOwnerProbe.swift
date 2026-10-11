@@ -4,6 +4,7 @@ import GiftUIObservableState
 import GiftUIRuntimeCore
 
 struct ScopedOwner<Model: ~Copyable, Schema>: ~Copyable, ~Escapable, RuntimeCompletePipelineOwner {
+    var presentationIntentState: PresentationIntentState { .satisfied }
     let models: ObservableModelScope<Model, Schema>
     @_lifetime(copy models)
     init(models: consuming ObservableModelScope<Model, Schema>) { self.models = consume models }

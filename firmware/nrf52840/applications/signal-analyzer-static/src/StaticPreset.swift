@@ -2673,6 +2673,11 @@ private struct StaticSignalAnalyzerHealthSnapshot: MVPHostEndpointHealthSource {
 }
 
 private struct StaticSignalAnalyzerCommonOwner: RuntimeCompletePipelineOwner, ~Copyable {
+    var presentationIntentState: PresentationIntentState {
+        !state.isAvailable || !state.recovery.isAvailable ? .unavailable
+            : state.recovery.pendingIntent != nil ? .pending : .satisfied
+    }
+
     typealias OwnerFailure = SignalAnalyzerCycleOwnerFailure
     let profile: UnsafeMutableRawBufferPointer
     let capture: UnsafeMutableRawBufferPointer

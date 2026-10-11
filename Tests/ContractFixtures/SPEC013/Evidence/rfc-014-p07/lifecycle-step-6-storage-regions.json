@@ -1,0 +1,1419 @@
+{
+  "dynamic": {
+    "checked_total_bytes": 166239,
+    "fields": [
+      {
+        "bytes": 7560,
+        "index": 0,
+        "name": "semanticCandidatePathBytes"
+      },
+      {
+        "bytes": 11020,
+        "index": 1,
+        "name": "semanticPublishedPathBytes"
+      },
+      {
+        "bytes": 4424,
+        "index": 2,
+        "name": "semanticCandidatePayloadBytes"
+      },
+      {
+        "bytes": 4720,
+        "index": 3,
+        "name": "semanticPublishedPayloadBytes"
+      },
+      {
+        "bytes": 1874,
+        "index": 4,
+        "name": "identityMatchWorkspaceBytes"
+      },
+      {
+        "bytes": 3708,
+        "index": 5,
+        "name": "interactionCandidateIdentityBytes"
+      },
+      {
+        "bytes": 2472,
+        "index": 6,
+        "name": "interactionCommittedIdentityBytes"
+      },
+      {
+        "bytes": 195,
+        "index": 7,
+        "name": "modelMetadataBytes"
+      },
+      {
+        "bytes": 64,
+        "index": 8,
+        "name": "modelOwnerBytes"
+      },
+      {
+        "bytes": 2,
+        "index": 9,
+        "name": "framePinBytes"
+      },
+      {
+        "bytes": 2653,
+        "index": 10,
+        "name": "semanticCandidateBytes"
+      },
+      {
+        "bytes": 2560,
+        "index": 11,
+        "name": "semanticPublishedBytes"
+      },
+      {
+        "bytes": 110570,
+        "index": 12,
+        "name": "layoutCandidateBytes"
+      },
+      {
+        "bytes": 359,
+        "index": 13,
+        "name": "renderWorkspaceBytes"
+      },
+      {
+        "bytes": 158,
+        "index": 14,
+        "name": "canvasCallableBytes"
+      },
+      {
+        "bytes": 1808,
+        "index": 15,
+        "name": "pathWorkspaceBytes"
+      },
+      {
+        "bytes": 7886,
+        "index": 16,
+        "name": "drawingPlanBytes"
+      },
+      {
+        "bytes": 497,
+        "index": 17,
+        "name": "observableLiveBytes"
+      },
+      {
+        "bytes": 81,
+        "index": 18,
+        "name": "observableCandidateBytes"
+      },
+      {
+        "bytes": 626,
+        "index": 19,
+        "name": "interactionCandidateBytes"
+      },
+      {
+        "bytes": 368,
+        "index": 20,
+        "name": "interactionCommittedBytes"
+      },
+      {
+        "bytes": 58,
+        "index": 21,
+        "name": "admissionQueueBytes"
+      },
+      {
+        "bytes": 277,
+        "index": 22,
+        "name": "sealedBatchBytes"
+      },
+      {
+        "bytes": 256,
+        "index": 23,
+        "name": "pointerStateBytes"
+      },
+      {
+        "bytes": 2022,
+        "index": 24,
+        "name": "coordinatorStateBytes"
+      },
+      {
+        "bytes": 21,
+        "index": 25,
+        "name": "failureStateBytes"
+      }
+    ],
+    "regions": [
+      {
+        "alignment": 2,
+        "charged_bytes": 7560,
+        "count": 378,
+        "family": 0,
+        "kind": 0,
+        "size": 22,
+        "stride": 22
+      },
+      {
+        "alignment": 2,
+        "charged_bytes": 11020,
+        "count": 551,
+        "family": 1,
+        "kind": 0,
+        "size": 22,
+        "stride": 22
+      },
+      {
+        "alignment": 4,
+        "charged_bytes": 3528,
+        "count": 98,
+        "family": 2,
+        "kind": 0,
+        "size": 33,
+        "stride": 36
+      },
+      {
+        "alignment": 4,
+        "charged_bytes": 896,
+        "count": 224,
+        "family": 2,
+        "kind": 0,
+        "size": 4,
+        "stride": 4
+      },
+      {
+        "alignment": 4,
+        "charged_bytes": 3600,
+        "count": 100,
+        "family": 3,
+        "kind": 0,
+        "size": 33,
+        "stride": 36
+      },
+      {
+        "alignment": 4,
+        "charged_bytes": 1120,
+        "count": 280,
+        "family": 3,
+        "kind": 0,
+        "size": 4,
+        "stride": 4
+      },
+      {
+        "alignment": 2,
+        "charged_bytes": 1858,
+        "count": 929,
+        "family": 4,
+        "kind": 0,
+        "size": 2,
+        "stride": 2
+      },
+      {
+        "alignment": 4,
+        "charged_bytes": 16,
+        "count": 4,
+        "family": 4,
+        "kind": 0,
+        "size": 4,
+        "stride": 4
+      },
+      {
+        "alignment": 4,
+        "charged_bytes": 183,
+        "count": 1,
+        "family": 7,
+        "kind": 2,
+        "size": 185,
+        "stride": 188
+      },
+      {
+        "alignment": 8,
+        "charged_bytes": 64,
+        "count": 2,
+        "family": 8,
+        "kind": 0,
+        "size": 32,
+        "stride": 32
+      },
+      {
+        "alignment": 1,
+        "charged_bytes": 2,
+        "count": 2,
+        "family": 9,
+        "kind": 0,
+        "size": 1,
+        "stride": 1
+      },
+      {
+        "alignment": 2,
+        "charged_bytes": 2520,
+        "count": 126,
+        "family": 10,
+        "kind": 0,
+        "size": 20,
+        "stride": 20
+      },
+      {
+        "alignment": 2,
+        "charged_bytes": 2,
+        "count": 1,
+        "family": 7,
+        "kind": 1,
+        "size": 2,
+        "stride": 2
+      },
+      {
+        "alignment": 1,
+        "charged_bytes": 2,
+        "count": 2,
+        "family": 7,
+        "kind": 0,
+        "size": 1,
+        "stride": 1
+      },
+      {
+        "alignment": 8,
+        "charged_bytes": 8,
+        "count": 1,
+        "family": 7,
+        "kind": 1,
+        "size": 8,
+        "stride": 8
+      },
+      {
+        "alignment": 4,
+        "charged_bytes": 80,
+        "count": 1,
+        "family": 10,
+        "kind": 2,
+        "size": 96,
+        "stride": 96
+      },
+      {
+        "alignment": 8,
+        "charged_bytes": 8,
+        "count": 1,
+        "family": 10,
+        "kind": 1,
+        "size": 8,
+        "stride": 8
+      },
+      {
+        "alignment": 8,
+        "charged_bytes": 8,
+        "count": 1,
+        "family": 10,
+        "kind": 1,
+        "size": 8,
+        "stride": 8
+      },
+      {
+        "alignment": 8,
+        "charged_bytes": 8,
+        "count": 1,
+        "family": 10,
+        "kind": 1,
+        "size": 8,
+        "stride": 8
+      },
+      {
+        "alignment": 8,
+        "charged_bytes": 8,
+        "count": 1,
+        "family": 10,
+        "kind": 1,
+        "size": 8,
+        "stride": 8
+      },
+      {
+        "alignment": 4,
+        "charged_bytes": 16,
+        "count": 1,
+        "family": 10,
+        "kind": 1,
+        "size": 16,
+        "stride": 16
+      },
+      {
+        "alignment": 4,
+        "charged_bytes": 4,
+        "count": 1,
+        "family": 10,
+        "kind": 1,
+        "size": 4,
+        "stride": 4
+      },
+      {
+        "alignment": 1,
+        "charged_bytes": 1,
+        "count": 1,
+        "family": 10,
+        "kind": 1,
+        "size": 1,
+        "stride": 1
+      },
+      {
+        "alignment": 2,
+        "charged_bytes": 2560,
+        "count": 128,
+        "family": 11,
+        "kind": 0,
+        "size": 20,
+        "stride": 20
+      },
+      {
+        "alignment": 8,
+        "charged_bytes": 194,
+        "count": 1,
+        "family": 12,
+        "kind": 3,
+        "size": 400,
+        "stride": 400
+      },
+      {
+        "alignment": 4,
+        "charged_bytes": 8160,
+        "count": 102,
+        "family": 12,
+        "kind": 0,
+        "size": 77,
+        "stride": 80
+      },
+      {
+        "alignment": 8,
+        "charged_bytes": 2016,
+        "count": 126,
+        "family": 12,
+        "kind": 0,
+        "size": 9,
+        "stride": 16
+      },
+      {
+        "alignment": 4,
+        "charged_bytes": 8120,
+        "count": 145,
+        "family": 12,
+        "kind": 0,
+        "size": 56,
+        "stride": 56
+      },
+      {
+        "alignment": 4,
+        "charged_bytes": 20400,
+        "count": 255,
+        "family": 12,
+        "kind": 0,
+        "size": 80,
+        "stride": 80
+      },
+      {
+        "alignment": 4,
+        "charged_bytes": 352,
+        "count": 22,
+        "family": 12,
+        "kind": 0,
+        "size": 14,
+        "stride": 16
+      },
+      {
+        "alignment": 4,
+        "charged_bytes": 5088,
+        "count": 106,
+        "family": 12,
+        "kind": 0,
+        "size": 48,
+        "stride": 48
+      },
+      {
+        "alignment": 4,
+        "charged_bytes": 10176,
+        "count": 159,
+        "family": 12,
+        "kind": 0,
+        "size": 62,
+        "stride": 64
+      },
+      {
+        "alignment": 4,
+        "charged_bytes": 20400,
+        "count": 255,
+        "family": 12,
+        "kind": 0,
+        "size": 80,
+        "stride": 80
+      },
+      {
+        "alignment": 4,
+        "charged_bytes": 5088,
+        "count": 106,
+        "family": 12,
+        "kind": 0,
+        "size": 48,
+        "stride": 48
+      },
+      {
+        "alignment": 4,
+        "charged_bytes": 10176,
+        "count": 159,
+        "family": 12,
+        "kind": 0,
+        "size": 62,
+        "stride": 64
+      },
+      {
+        "alignment": 4,
+        "charged_bytes": 20400,
+        "count": 255,
+        "family": 12,
+        "kind": 0,
+        "size": 80,
+        "stride": 80
+      },
+      {
+        "alignment": 8,
+        "charged_bytes": 40,
+        "count": 1,
+        "family": 13,
+        "kind": 1,
+        "size": 40,
+        "stride": 40
+      },
+      {
+        "alignment": 1,
+        "charged_bytes": 128,
+        "count": 128,
+        "family": 13,
+        "kind": 0,
+        "size": 1,
+        "stride": 1
+      },
+      {
+        "alignment": 1,
+        "charged_bytes": 128,
+        "count": 128,
+        "family": 13,
+        "kind": 0,
+        "size": 1,
+        "stride": 1
+      },
+      {
+        "alignment": 1,
+        "charged_bytes": 63,
+        "count": 21,
+        "family": 13,
+        "kind": 0,
+        "size": 3,
+        "stride": 3
+      },
+      {
+        "alignment": 4,
+        "charged_bytes": 1760,
+        "count": 220,
+        "family": 15,
+        "kind": 0,
+        "size": 8,
+        "stride": 8
+      },
+      {
+        "alignment": 2,
+        "charged_bytes": 48,
+        "count": 12,
+        "family": 15,
+        "kind": 0,
+        "size": 4,
+        "stride": 4
+      },
+      {
+        "alignment": 8,
+        "charged_bytes": 166,
+        "count": 1,
+        "family": 16,
+        "kind": 1,
+        "size": 166,
+        "stride": 168
+      },
+      {
+        "alignment": 4,
+        "charged_bytes": 80,
+        "count": 5,
+        "family": 16,
+        "kind": 0,
+        "size": 14,
+        "stride": 16
+      },
+      {
+        "alignment": 8,
+        "charged_bytes": 440,
+        "count": 5,
+        "family": 16,
+        "kind": 0,
+        "size": 88,
+        "stride": 88
+      },
+      {
+        "alignment": 4,
+        "charged_bytes": 7136,
+        "count": 892,
+        "family": 16,
+        "kind": 0,
+        "size": 8,
+        "stride": 8
+      },
+      {
+        "alignment": 2,
+        "charged_bytes": 64,
+        "count": 16,
+        "family": 16,
+        "kind": 0,
+        "size": 4,
+        "stride": 4
+      },
+      {
+        "alignment": 4,
+        "charged_bytes": 140,
+        "count": 5,
+        "family": 14,
+        "kind": 0,
+        "size": 28,
+        "stride": 28
+      },
+      {
+        "alignment": 8,
+        "charged_bytes": 18,
+        "count": 1,
+        "family": 14,
+        "kind": 1,
+        "size": 18,
+        "stride": 24
+      },
+      {
+        "alignment": 4,
+        "charged_bytes": 497,
+        "count": 1,
+        "family": 17,
+        "kind": 2,
+        "size": 578,
+        "stride": 580
+      },
+      {
+        "alignment": 4,
+        "charged_bytes": 81,
+        "count": 1,
+        "family": 18,
+        "kind": 2,
+        "size": 578,
+        "stride": 580
+      },
+      {
+        "alignment": 2,
+        "charged_bytes": 1236,
+        "count": 6,
+        "family": 5,
+        "kind": 0,
+        "size": 206,
+        "stride": 206
+      },
+      {
+        "alignment": 4,
+        "charged_bytes": 204,
+        "count": 6,
+        "family": 19,
+        "kind": 0,
+        "size": 240,
+        "stride": 240
+      },
+      {
+        "alignment": 8,
+        "charged_bytes": 16,
+        "count": 1,
+        "family": 19,
+        "kind": 1,
+        "size": 16,
+        "stride": 16
+      },
+      {
+        "alignment": 2,
+        "charged_bytes": 1236,
+        "count": 6,
+        "family": 5,
+        "kind": 0,
+        "size": 206,
+        "stride": 206
+      },
+      {
+        "alignment": 4,
+        "charged_bytes": 132,
+        "count": 6,
+        "family": 19,
+        "kind": 0,
+        "size": 226,
+        "stride": 228
+      },
+      {
+        "alignment": 8,
+        "charged_bytes": 16,
+        "count": 1,
+        "family": 19,
+        "kind": 1,
+        "size": 16,
+        "stride": 16
+      },
+      {
+        "alignment": 2,
+        "charged_bytes": 1236,
+        "count": 6,
+        "family": 5,
+        "kind": 0,
+        "size": 206,
+        "stride": 206
+      },
+      {
+        "alignment": 4,
+        "charged_bytes": 204,
+        "count": 6,
+        "family": 19,
+        "kind": 0,
+        "size": 240,
+        "stride": 240
+      },
+      {
+        "alignment": 8,
+        "charged_bytes": 16,
+        "count": 1,
+        "family": 19,
+        "kind": 1,
+        "size": 16,
+        "stride": 16
+      },
+      {
+        "alignment": 2,
+        "charged_bytes": 1236,
+        "count": 6,
+        "family": 6,
+        "kind": 0,
+        "size": 206,
+        "stride": 206
+      },
+      {
+        "alignment": 4,
+        "charged_bytes": 204,
+        "count": 6,
+        "family": 20,
+        "kind": 0,
+        "size": 240,
+        "stride": 240
+      },
+      {
+        "alignment": 8,
+        "charged_bytes": 16,
+        "count": 1,
+        "family": 20,
+        "kind": 1,
+        "size": 16,
+        "stride": 16
+      },
+      {
+        "alignment": 2,
+        "charged_bytes": 1236,
+        "count": 6,
+        "family": 6,
+        "kind": 0,
+        "size": 206,
+        "stride": 206
+      },
+      {
+        "alignment": 4,
+        "charged_bytes": 132,
+        "count": 6,
+        "family": 20,
+        "kind": 0,
+        "size": 226,
+        "stride": 228
+      },
+      {
+        "alignment": 8,
+        "charged_bytes": 16,
+        "count": 1,
+        "family": 20,
+        "kind": 1,
+        "size": 16,
+        "stride": 16
+      },
+      {
+        "alignment": 8,
+        "charged_bytes": 38,
+        "count": 1,
+        "family": 19,
+        "kind": 3,
+        "size": 118,
+        "stride": 120
+      },
+      {
+        "alignment": 4,
+        "charged_bytes": 56,
+        "count": 2,
+        "family": 21,
+        "kind": 0,
+        "size": 28,
+        "stride": 28
+      },
+      {
+        "alignment": 1,
+        "charged_bytes": 2,
+        "count": 1,
+        "family": 21,
+        "kind": 1,
+        "size": 2,
+        "stride": 2
+      },
+      {
+        "alignment": 4,
+        "charged_bytes": 277,
+        "count": 1,
+        "family": 22,
+        "kind": 2,
+        "size": 335,
+        "stride": 336
+      },
+      {
+        "alignment": 8,
+        "charged_bytes": 20,
+        "count": 1,
+        "family": 23,
+        "kind": 2,
+        "size": 104,
+        "stride": 104
+      },
+      {
+        "alignment": 4,
+        "charged_bytes": 236,
+        "count": 1,
+        "family": 23,
+        "kind": 1,
+        "size": 236,
+        "stride": 236
+      },
+      {
+        "alignment": 8,
+        "charged_bytes": 1842,
+        "count": 1,
+        "family": 24,
+        "kind": 3,
+        "size": 2476,
+        "stride": 2480
+      },
+      {
+        "alignment": 4,
+        "charged_bytes": 35,
+        "count": 1,
+        "family": 24,
+        "kind": 3,
+        "size": 627,
+        "stride": 628
+      },
+      {
+        "alignment": 8,
+        "charged_bytes": 145,
+        "count": 1,
+        "family": 24,
+        "kind": 3,
+        "size": 1381,
+        "stride": 1384
+      },
+      {
+        "alignment": 4,
+        "charged_bytes": 21,
+        "count": 1,
+        "family": 25,
+        "kind": 1,
+        "size": 21,
+        "stride": 24
+      }
+    ]
+  },
+  "static": {
+    "checked_total_bytes": 68502,
+    "fields": [
+      {
+        "bytes": 7560,
+        "index": 0,
+        "name": "semanticCandidatePathBytes"
+      },
+      {
+        "bytes": 7560,
+        "index": 1,
+        "name": "semanticPublishedPathBytes"
+      },
+      {
+        "bytes": 4424,
+        "index": 2,
+        "name": "semanticCandidatePayloadBytes"
+      },
+      {
+        "bytes": 4424,
+        "index": 3,
+        "name": "semanticPublishedPayloadBytes"
+      },
+      {
+        "bytes": 1528,
+        "index": 4,
+        "name": "identityMatchWorkspaceBytes"
+      },
+      {
+        "bytes": 3708,
+        "index": 5,
+        "name": "interactionCandidateIdentityBytes"
+      },
+      {
+        "bytes": 2472,
+        "index": 6,
+        "name": "interactionCommittedIdentityBytes"
+      },
+      {
+        "bytes": 194,
+        "index": 7,
+        "name": "modelMetadataBytes"
+      },
+      {
+        "bytes": 64,
+        "index": 8,
+        "name": "modelOwnerBytes"
+      },
+      {
+        "bytes": 2,
+        "index": 9,
+        "name": "framePinBytes"
+      },
+      {
+        "bytes": 2620,
+        "index": 10,
+        "name": "semanticCandidateBytes"
+      },
+      {
+        "bytes": 2520,
+        "index": 11,
+        "name": "semanticPublishedBytes"
+      },
+      {
+        "bytes": 10109,
+        "index": 12,
+        "name": "layoutCandidateBytes"
+      },
+      {
+        "bytes": 34,
+        "index": 13,
+        "name": "renderWorkspaceBytes"
+      },
+      {
+        "bytes": 144,
+        "index": 14,
+        "name": "canvasCallableBytes"
+      },
+      {
+        "bytes": 3280,
+        "index": 15,
+        "name": "pathWorkspaceBytes"
+      },
+      {
+        "bytes": 13731,
+        "index": 16,
+        "name": "drawingPlanBytes"
+      },
+      {
+        "bytes": 497,
+        "index": 17,
+        "name": "observableLiveBytes"
+      },
+      {
+        "bytes": 81,
+        "index": 18,
+        "name": "observableCandidateBytes"
+      },
+      {
+        "bytes": 592,
+        "index": 19,
+        "name": "interactionCandidateBytes"
+      },
+      {
+        "bytes": 342,
+        "index": 20,
+        "name": "interactionCommittedBytes"
+      },
+      {
+        "bytes": 58,
+        "index": 21,
+        "name": "admissionQueueBytes"
+      },
+      {
+        "bytes": 277,
+        "index": 22,
+        "name": "sealedBatchBytes"
+      },
+      {
+        "bytes": 256,
+        "index": 23,
+        "name": "pointerStateBytes"
+      },
+      {
+        "bytes": 2004,
+        "index": 24,
+        "name": "coordinatorStateBytes"
+      },
+      {
+        "bytes": 21,
+        "index": 25,
+        "name": "failureStateBytes"
+      }
+    ],
+    "regions": [
+      {
+        "alignment": 2,
+        "charged_bytes": 7560,
+        "count": 378,
+        "family": 0,
+        "kind": 0,
+        "size": 22,
+        "stride": 22
+      },
+      {
+        "alignment": 2,
+        "charged_bytes": 7560,
+        "count": 378,
+        "family": 1,
+        "kind": 0,
+        "size": 22,
+        "stride": 22
+      },
+      {
+        "alignment": 4,
+        "charged_bytes": 3528,
+        "count": 98,
+        "family": 2,
+        "kind": 0,
+        "size": 33,
+        "stride": 36
+      },
+      {
+        "alignment": 4,
+        "charged_bytes": 896,
+        "count": 224,
+        "family": 2,
+        "kind": 0,
+        "size": 4,
+        "stride": 4
+      },
+      {
+        "alignment": 4,
+        "charged_bytes": 3528,
+        "count": 98,
+        "family": 3,
+        "kind": 0,
+        "size": 33,
+        "stride": 36
+      },
+      {
+        "alignment": 4,
+        "charged_bytes": 896,
+        "count": 224,
+        "family": 3,
+        "kind": 0,
+        "size": 4,
+        "stride": 4
+      },
+      {
+        "alignment": 2,
+        "charged_bytes": 1512,
+        "count": 756,
+        "family": 4,
+        "kind": 0,
+        "size": 2,
+        "stride": 2
+      },
+      {
+        "alignment": 4,
+        "charged_bytes": 16,
+        "count": 4,
+        "family": 4,
+        "kind": 0,
+        "size": 4,
+        "stride": 4
+      },
+      {
+        "alignment": 8,
+        "charged_bytes": 194,
+        "count": 1,
+        "family": 7,
+        "kind": 3,
+        "size": 838,
+        "stride": 840
+      },
+      {
+        "alignment": 8,
+        "charged_bytes": 64,
+        "count": 2,
+        "family": 8,
+        "kind": 0,
+        "size": 32,
+        "stride": 32
+      },
+      {
+        "alignment": 1,
+        "charged_bytes": 2,
+        "count": 2,
+        "family": 9,
+        "kind": 0,
+        "size": 1,
+        "stride": 1
+      },
+      {
+        "alignment": 2,
+        "charged_bytes": 2520,
+        "count": 126,
+        "family": 10,
+        "kind": 0,
+        "size": 20,
+        "stride": 20
+      },
+      {
+        "alignment": 4,
+        "charged_bytes": 0,
+        "count": 1,
+        "family": 10,
+        "kind": 3,
+        "size": 30520,
+        "stride": 30520
+      },
+      {
+        "alignment": 4,
+        "charged_bytes": 100,
+        "count": 1,
+        "family": 10,
+        "kind": 2,
+        "size": 116,
+        "stride": 116
+      },
+      {
+        "alignment": 2,
+        "charged_bytes": 2520,
+        "count": 126,
+        "family": 11,
+        "kind": 0,
+        "size": 20,
+        "stride": 20
+      },
+      {
+        "alignment": 1,
+        "charged_bytes": 3136,
+        "count": 3136,
+        "family": 12,
+        "kind": 0,
+        "size": 1,
+        "stride": 1
+      },
+      {
+        "alignment": 1,
+        "charged_bytes": 4704,
+        "count": 4704,
+        "family": 12,
+        "kind": 0,
+        "size": 1,
+        "stride": 1
+      },
+      {
+        "alignment": 8,
+        "charged_bytes": 2269,
+        "count": 1,
+        "family": 12,
+        "kind": 3,
+        "size": 2498,
+        "stride": 2504
+      },
+      {
+        "alignment": 8,
+        "charged_bytes": 34,
+        "count": 1,
+        "family": 13,
+        "kind": 1,
+        "size": 34,
+        "stride": 40
+      },
+      {
+        "alignment": 1,
+        "charged_bytes": 3280,
+        "count": 3280,
+        "family": 15,
+        "kind": 0,
+        "size": 1,
+        "stride": 1
+      },
+      {
+        "alignment": 1,
+        "charged_bytes": 13536,
+        "count": 13536,
+        "family": 16,
+        "kind": 0,
+        "size": 1,
+        "stride": 1
+      },
+      {
+        "alignment": 8,
+        "charged_bytes": 195,
+        "count": 1,
+        "family": 16,
+        "kind": 1,
+        "size": 195,
+        "stride": 200
+      },
+      {
+        "alignment": 4,
+        "charged_bytes": 140,
+        "count": 5,
+        "family": 14,
+        "kind": 0,
+        "size": 28,
+        "stride": 28
+      },
+      {
+        "alignment": 2,
+        "charged_bytes": 4,
+        "count": 1,
+        "family": 14,
+        "kind": 1,
+        "size": 4,
+        "stride": 4
+      },
+      {
+        "alignment": 4,
+        "charged_bytes": 497,
+        "count": 1,
+        "family": 17,
+        "kind": 2,
+        "size": 578,
+        "stride": 580
+      },
+      {
+        "alignment": 4,
+        "charged_bytes": 81,
+        "count": 1,
+        "family": 18,
+        "kind": 2,
+        "size": 578,
+        "stride": 580
+      },
+      {
+        "alignment": 2,
+        "charged_bytes": 1236,
+        "count": 6,
+        "family": 5,
+        "kind": 0,
+        "size": 206,
+        "stride": 206
+      },
+      {
+        "alignment": 4,
+        "charged_bytes": 204,
+        "count": 6,
+        "family": 19,
+        "kind": 0,
+        "size": 240,
+        "stride": 240
+      },
+      {
+        "alignment": 4,
+        "charged_bytes": 4,
+        "count": 1,
+        "family": 19,
+        "kind": 3,
+        "size": 1444,
+        "stride": 1444
+      },
+      {
+        "alignment": 2,
+        "charged_bytes": 1236,
+        "count": 6,
+        "family": 5,
+        "kind": 0,
+        "size": 206,
+        "stride": 206
+      },
+      {
+        "alignment": 4,
+        "charged_bytes": 132,
+        "count": 6,
+        "family": 19,
+        "kind": 0,
+        "size": 226,
+        "stride": 228
+      },
+      {
+        "alignment": 4,
+        "charged_bytes": 2,
+        "count": 1,
+        "family": 19,
+        "kind": 3,
+        "size": 1370,
+        "stride": 1372
+      },
+      {
+        "alignment": 2,
+        "charged_bytes": 1236,
+        "count": 6,
+        "family": 5,
+        "kind": 0,
+        "size": 206,
+        "stride": 206
+      },
+      {
+        "alignment": 4,
+        "charged_bytes": 204,
+        "count": 6,
+        "family": 19,
+        "kind": 0,
+        "size": 240,
+        "stride": 240
+      },
+      {
+        "alignment": 4,
+        "charged_bytes": 4,
+        "count": 1,
+        "family": 19,
+        "kind": 3,
+        "size": 1444,
+        "stride": 1444
+      },
+      {
+        "alignment": 2,
+        "charged_bytes": 1236,
+        "count": 6,
+        "family": 6,
+        "kind": 0,
+        "size": 206,
+        "stride": 206
+      },
+      {
+        "alignment": 4,
+        "charged_bytes": 204,
+        "count": 6,
+        "family": 20,
+        "kind": 0,
+        "size": 240,
+        "stride": 240
+      },
+      {
+        "alignment": 4,
+        "charged_bytes": 4,
+        "count": 1,
+        "family": 20,
+        "kind": 3,
+        "size": 1444,
+        "stride": 1444
+      },
+      {
+        "alignment": 2,
+        "charged_bytes": 1236,
+        "count": 6,
+        "family": 6,
+        "kind": 0,
+        "size": 206,
+        "stride": 206
+      },
+      {
+        "alignment": 4,
+        "charged_bytes": 132,
+        "count": 6,
+        "family": 20,
+        "kind": 0,
+        "size": 226,
+        "stride": 228
+      },
+      {
+        "alignment": 4,
+        "charged_bytes": 2,
+        "count": 1,
+        "family": 20,
+        "kind": 3,
+        "size": 1370,
+        "stride": 1372
+      },
+      {
+        "alignment": 4,
+        "charged_bytes": 42,
+        "count": 1,
+        "family": 19,
+        "kind": 3,
+        "size": 7114,
+        "stride": 7116
+      },
+      {
+        "alignment": 4,
+        "charged_bytes": 56,
+        "count": 2,
+        "family": 21,
+        "kind": 0,
+        "size": 28,
+        "stride": 28
+      },
+      {
+        "alignment": 1,
+        "charged_bytes": 2,
+        "count": 1,
+        "family": 21,
+        "kind": 1,
+        "size": 2,
+        "stride": 2
+      },
+      {
+        "alignment": 4,
+        "charged_bytes": 277,
+        "count": 1,
+        "family": 22,
+        "kind": 2,
+        "size": 335,
+        "stride": 336
+      },
+      {
+        "alignment": 8,
+        "charged_bytes": 20,
+        "count": 1,
+        "family": 23,
+        "kind": 2,
+        "size": 104,
+        "stride": 104
+      },
+      {
+        "alignment": 4,
+        "charged_bytes": 236,
+        "count": 1,
+        "family": 23,
+        "kind": 1,
+        "size": 236,
+        "stride": 236
+      },
+      {
+        "alignment": 8,
+        "charged_bytes": 1844,
+        "count": 1,
+        "family": 24,
+        "kind": 3,
+        "size": 11572,
+        "stride": 11576
+      },
+      {
+        "alignment": 4,
+        "charged_bytes": 35,
+        "count": 1,
+        "family": 24,
+        "kind": 3,
+        "size": 627,
+        "stride": 628
+      },
+      {
+        "alignment": 8,
+        "charged_bytes": 125,
+        "count": 1,
+        "family": 24,
+        "kind": 3,
+        "size": 64213,
+        "stride": 64216
+      },
+      {
+        "alignment": 4,
+        "charged_bytes": 21,
+        "count": 1,
+        "family": 25,
+        "kind": 1,
+        "size": 21,
+        "stride": 24
+      }
+    ]
+  }
+}

@@ -131,6 +131,7 @@ where Geometry: CycleGeometry, Candidate: CycleCandidateBacking, Committed: Cycl
     var presentation: PresentationRevision?
     var changed = true
     var pending = false
+    var presentationIntentState: PresentationIntentState { quiescent || control.pointee.unavailable ? .unavailable : pending ? .pending : .satisfied }
     var quiescent = false
     @_lifetime(copy models, copy root, copy semantic, copy values, borrow control)
     init(models: consuming ObservableModelScope<CycleOwnedModel, CycleModelSchema>, root: consuming ObservableStateRootScope<CycleOwnedModel, SemanticCompleteIdentity>, semantic: consuming SemanticRecordStore<CyclePayload>, values: consuming CanvasStagedValues<SemanticRecordReference, CycleValueTable>, geometry: consuming Geometry, interaction: consuming InteractionOwnedKeyState<Candidate, Committed, Hits>, control: borrowing UnsafeMutablePointer<CycleControl>, limits: RuntimeProfileLimits) {

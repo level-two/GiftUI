@@ -84,6 +84,7 @@ package enum RuntimeCompletePipelineResult<OwnerFailure: Equatable & Sendable>: 
 
 package protocol RuntimeCompletePipelineOwner: ~Copyable, ~Escapable {
     associatedtype OwnerFailure: Equatable & Sendable = RuntimeOwnerFailure
+    var presentationIntentState: PresentationIntentState { get }
     mutating func admitAndSeal() -> RuntimePipelineStepResult<OwnerFailure>
     mutating func applyAdmittedWork() -> RuntimePipelineMutationResult<OwnerFailure>
     mutating func freezeObservableMutation() -> RuntimePipelineStepResult<OwnerFailure>
@@ -110,6 +111,7 @@ package enum RuntimeCompletePipeline {
     ) -> RuntimeCompletePipelineResult<Owner.OwnerFailure>
     where Owner: RuntimeCompletePipelineOwner & ~Copyable & ~Escapable {
         fail(
+            priorIntent: owner.presentationIntentState,
             at: .admissionAndSeal,
             failure: .execution(.invalidPhase),
             mutationApplied: false,
@@ -123,12 +125,14 @@ package enum RuntimeCompletePipeline {
         owner: inout Owner
     ) -> RuntimeCompletePipelineResult<Owner.OwnerFailure>
     where Owner: RuntimeCompletePipelineOwner & ~Copyable & ~Escapable {
+        let priorIntent = owner.presentationIntentState
         var acquired: RuntimeCleanupActions = []
         var mutationApplied = false
         var publication: RuntimePipelinePublication?
 
         if case .failure(let failure) = owner.admitAndSeal() {
             return fail(
+                priorIntent: priorIntent,
                 at: .admissionAndSeal,
                 failure: failure,
                 mutationApplied: false,
@@ -142,6 +146,7 @@ package enum RuntimeCompletePipeline {
             mutationApplied = applied
         case .failure(let failure, let applied):
             return fail(
+                priorIntent: priorIntent,
                 at: .applyAdmittedWork,
                 failure: failure,
                 mutationApplied: applied,
@@ -152,6 +157,7 @@ package enum RuntimeCompletePipeline {
         }
         if case .failure(let failure) = owner.freezeObservableMutation() {
             return fail(
+                priorIntent: priorIntent,
                 at: .freezeObservableMutation,
                 failure: failure,
                 mutationApplied: mutationApplied,
@@ -166,6 +172,7 @@ package enum RuntimeCompletePipeline {
 
         if case .failure(let failure) = owner.beginObservableCandidateAndExpandSemantics() {
             return fail(
+                priorIntent: priorIntent,
                 at: .observableCandidateAndSemanticExpansion,
                 failure: failure,
                 mutationApplied: mutationApplied,
@@ -183,6 +190,7 @@ package enum RuntimeCompletePipeline {
 
         if case .failure(let failure) = owner.resolveLayout() {
             return fail(
+                priorIntent: priorIntent,
                 at: .layout,
                 failure: failure,
                 mutationApplied: mutationApplied,
@@ -195,6 +203,7 @@ package enum RuntimeCompletePipeline {
 
         if case .failure(let failure) = owner.invokeCanvasesAndDerivePlan() {
             return fail(
+                priorIntent: priorIntent,
                 at: .canvasInvocationAndPlan,
                 failure: failure,
                 mutationApplied: mutationApplied,
@@ -208,6 +217,7 @@ package enum RuntimeCompletePipeline {
 
         if case .failure(let failure) = owner.preflightCombinedRender() {
             return fail(
+                priorIntent: priorIntent,
                 at: .combinedRenderPreflight,
                 failure: failure,
                 mutationApplied: mutationApplied,
@@ -220,6 +230,7 @@ package enum RuntimeCompletePipeline {
 
         if case .failure(let failure) = owner.buildInteractionCandidate() {
             return fail(
+                priorIntent: priorIntent,
                 at: .interactionCandidate,
                 failure: failure,
                 mutationApplied: mutationApplied,
@@ -235,6 +246,7 @@ package enum RuntimeCompletePipeline {
             publication = value
         case .failure(let failure):
             return fail(
+                priorIntent: priorIntent,
                 at: .semanticAndObservablePublication,
                 failure: failure,
                 mutationApplied: mutationApplied,
@@ -251,6 +263,7 @@ package enum RuntimeCompletePipeline {
 
         if case .failure(let failure) = owner.allocateCandidate() {
             return fail(
+                priorIntent: priorIntent,
                 at: .candidateAllocation,
                 failure: failure,
                 mutationApplied: mutationApplied,
@@ -293,6 +306,7 @@ package enum RuntimeCompletePipeline {
         case .noChange:
             guard !publication!.changed else {
                 return fail(
+                    priorIntent: priorIntent,
                     at: .offerAndProduction,
                     failure: .execution(.invariantViolation),
                     mutationApplied: mutationApplied,
@@ -332,6 +346,7 @@ package enum RuntimeCompletePipeline {
             )
         case .nonRetryableRefusal(let origin):
             result = fail(
+                priorIntent: priorIntent,
                 at: .offerAndProduction,
                 failure: .nonRetryableRefusal(origin),
                 mutationApplied: mutationApplied,
@@ -341,6 +356,7 @@ package enum RuntimeCompletePipeline {
             )
         case .failure(let failure):
             result = fail(
+                priorIntent: priorIntent,
                 at: .offerAndProduction,
                 failure: failure,
                 mutationApplied: mutationApplied,
@@ -384,6 +400,7 @@ package enum RuntimeCompletePipeline {
     }
 
     private static func fail<Owner>(
+        priorIntent: PresentationIntentState,
         at stage: RuntimeCompletePipelineStage,
         failure: RunCycleFailure<Owner.OwnerFailure>,
         mutationApplied: Bool,
@@ -397,7 +414,7 @@ package enum RuntimeCompletePipeline {
             semanticDisposition: publication.map { $0.changed ? .published : .unchanged }
                 ?? (mutationApplied ? .dirty : .unchanged),
             logicalFrameDisposition: wasPublished ? .aborted : .notProduced,
-            presentationIntentState: wasPublished ? .unavailable : .satisfied,
+            presentationIntentState: wasPublished ? .unavailable : priorIntent,
             wakeReasons: !wasPublished && mutationApplied ? [.semanticDirty] : [],
             commitsInteractionCandidate: false,
             preservesPublishedSemanticRevision: wasPublished

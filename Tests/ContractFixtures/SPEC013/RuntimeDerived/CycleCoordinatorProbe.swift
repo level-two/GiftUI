@@ -18,6 +18,8 @@ extension CyclePipelineOwner: ExecutionOpportunityRunner {
         guard !control.pointee.unavailable else {
             return .failure(phase.context, .execution(.requiredFacilityUnavailable), nil)
         }
+        let priorIntent = recovery.pendingIntent
+        _ = recovery.acknowledgeWakeAtIdleOpportunity()
         let result = runTracedPipeline()
         control.pointee.result = result
         let disposition: RuntimePipelineDisposition
@@ -34,24 +36,38 @@ extension CyclePipelineOwner: ExecutionOpportunityRunner {
             return .failure(completedContext, failure ?? .execution(.invariantViolation), nil)
         }
         var events: ExecutionOperationalEvents = []
+        if disposition.semanticDisposition == .published,
+            let priorIntent, priorIntent.semanticRevision != phase.context.semanticRevision {
+            events.insert(.superseded)
+        }
         var intent: PresentationPendingIntent?
         var terminal = false
         if operational == .backpressured {
             let transition = recovery.recordBackpressure(for: phase.context.semanticRevision!)
-            events = transition.operationalEvents; intent = transition.intent
+            events.formUnion(transition.operationalEvents); intent = transition.intent
         } else if operational == .retryableRefusal {
             let transition = recovery.recordRetryableRefusal(for: phase.context.semanticRevision!)
-            events = transition.operationalEvents; intent = transition.intent; terminal = transition.exhausted
-        } else {
-            if let revision = phase.context.semanticRevision { recovery.clearPending(for: revision) }
+            events.formUnion(transition.operationalEvents); intent = transition.intent; terminal = transition.exhausted
+        } else if disposition.presentationIntentState == .pending {
+            intent = priorIntent
+        } else if let priorIntent {
+            // Accepted/newer publication or a post-publication failure satisfies
+            // the obligation even when its stored revision is older.
+            recovery.clearPending(for: priorIntent.semanticRevision)
         }
         if case .nonRetryableRefusal = failure { terminal = true }
         if failure == .execution(.requiredFacilityUnavailable) { terminal = true }
-        if terminal { terminatePresentation() }
+        if terminal {
+            if let retained = recovery.pendingIntent { recovery.clearPending(for: retained.semanticRevision) }
+            intent = nil
+            terminatePresentation()
+        }
+        cycleTrace("recovery", (recovery.pendingIntent, recovery.wakes.wakeOutstanding, recovery.wakes.requester.requestCount))
         let summary = RunCycleSummary(cycle: cycle, admission: admission, semanticRevision: phase.context.semanticRevision, semanticDisposition: disposition.semanticDisposition, logicalFrameDisposition: disposition.logicalFrameDisposition, committedPresentationRevision: committedPresentation, presentationIntentState: terminal ? .unavailable : disposition.presentationIntentState, presentationPending: intent, operationalEvents: events)!
         cycleTrace("summary", summary)
         if let failure { return .failure(completedContext, failure, summary) }
         if let operational { return .operational(operational, summary) }
+        if events.contains(.superseded) { return .operational(.superseded, summary) }
         return .success(summary)
     }
 }
@@ -136,7 +152,13 @@ struct CyclePointerState {
 }
 struct CycleWake: ExecutionWakeRequester, Sendable {
     var reasons: ExecutionWakeReasons = []
-    mutating func requestWake(for reasons: ExecutionWakeReasons) { self.reasons.formUnion(reasons) }
+    var requestCount: UInt32 = 0
+    mutating func requestWake(for reasons: ExecutionWakeReasons) {
+        let next = requestCount.addingReportingOverflow(1)
+        precondition(!next.overflow)
+        requestCount = next.partialValue
+        self.reasons.formUnion(reasons)
+    }
 }
 
 func cycleConcreteCoordinator<G, C, R, H>(owner: consuming CyclePipelineOwner<G, C, R, H>, dynamic: Bool, control: UnsafeMutablePointer<CycleControl>, audit: RuntimeStorageAudit, admission: consuming CycleAdmission, stopAfterFailure: Bool = false) -> CycleReturnedWorkspaces<G, C, R, H> where G: CycleGeometry, C: CycleCandidateBacking, R: CycleCommittedBacking, H: CycleHitBacking, C.Identity == SemanticCompleteIdentity, R.Identity == SemanticCompleteIdentity, H.Identity == SemanticCompleteIdentity {
@@ -327,5 +349,52 @@ func exerciseConcreteLifecycle<C: GiftUIRuntimeProfileCoordinator & ~Copyable & 
     expect(coordinator.submit(stateChange: 1).result == .unavailable)
     guard case .failure(_, .execution(.requiredFacilityUnavailable), nil) = coordinator.runOpportunity() else { preconditionFailure("terminal entry") }
     expect(control.pointee.finalized == finalized && control.pointee.applied == applied)
+    return checks
+}
+
+
+func exercisePendingSupersession<G, C, R, H>(_ owner: inout CyclePipelineOwner<G, C, R, H>, admission: inout CycleAdmission) -> Int {
+    var checks = 0
+    func expect(_ value: Bool) { checks += 1; precondition(value, "actual pending supersession") }
+    guard case .success = owner.runOpportunity() else { preconditionFailure("supersession baseline") }
+    let applied = owner.control.pointee.applied
+    let wakeCount = owner.recovery.wakes.requester.requestCount
+    owner.control.pointee.offer = .retryableRefusal
+    guard case .operational(.retryableRefusal, let old) = owner.runOpportunity() else { preconditionFailure("old refusal") }
+    expect(old.operationalEvents == [.retryableRefusal] && old.presentationPending?.retryableRefusalCount == 1)
+    expect(owner.recovery.pendingIntent == old.presentationPending)
+    expect(owner.recovery.wakes.wakeOutstanding && owner.recovery.wakes.requester.requestCount == wakeCount + 1)
+    owner.control.pointee.fault = .layout
+    guard case .failure(_, _, let failed) = owner.runOpportunity() else { preconditionFailure("pending prepublication failure") }
+    expect(failed?.presentationPending == old.presentationPending && failed?.operationalEvents == [])
+    expect(owner.recovery.pendingIntent == old.presentationPending && !owner.recovery.wakes.wakeOutstanding)
+    expect(owner.recovery.wakes.requester.requestCount == wakeCount + 1 && owner.control.pointee.applied == applied)
+    owner.control.pointee.fault = nil
+    expect(admission.submit(stateChange: 1).result == .queued)
+    guard case .operational(.retryableRefusal, let newer) = owner.runOpportunity() else { preconditionFailure("new refusal") }
+    expect(newer.semanticRevision != old.semanticRevision && newer.semanticDisposition == .published)
+    expect(newer.operationalEvents == [.retryableRefusal, .superseded] && newer.presentationPending?.retryableRefusalCount == 1)
+    expect(owner.recovery.pendingIntent == newer.presentationPending && owner.control.pointee.applied == applied + 1)
+    expect(owner.recovery.wakes.wakeOutstanding && owner.recovery.wakes.requester.requestCount == wakeCount + 2)
+    owner.control.pointee.offer = .backpressured
+    guard case .operational(.backpressured, let same) = owner.runOpportunity() else { preconditionFailure("same backpressure") }
+    expect(same.semanticRevision == newer.semanticRevision && same.operationalEvents == [.backpressured])
+    expect(same.presentationPending?.retryableRefusalCount == 1 && owner.control.pointee.applied == applied + 1)
+    expect(owner.recovery.wakes.requester.requestCount == wakeCount + 3)
+    expect(admission.submit(stateChange: 1).result == .queued)
+    guard case .operational(.backpressured, let latest) = owner.runOpportunity() else { preconditionFailure("new backpressure") }
+    expect(latest.semanticRevision != newer.semanticRevision && latest.operationalEvents == [.backpressured, .superseded])
+    expect(latest.presentationPending?.retryableRefusalCount == 0 && owner.control.pointee.applied == applied + 2)
+    expect(owner.recovery.pendingIntent == latest.presentationPending && owner.recovery.wakes.requester.requestCount == wakeCount + 4)
+    expect(admission.submit(stateChange: 1).result == .queued)
+    owner.control.pointee.offer = .accepted
+    guard case .operational(.superseded, let accepted) = owner.runOpportunity() else { preconditionFailure("new acceptance supersedes") }
+    expect(accepted.semanticRevision != latest.semanticRevision && accepted.operationalEvents == [.superseded])
+    expect(accepted.logicalFrameDisposition == .committed && accepted.presentationIntentState == .satisfied && accepted.presentationPending == nil)
+    expect(owner.recovery.pendingIntent == nil && !owner.recovery.wakes.wakeOutstanding && !owner.pending)
+    expect(owner.recovery.wakes.requester.requestCount == wakeCount + 4 && owner.control.pointee.applied == applied + 3)
+    guard case .success(let after) = owner.runOpportunity() else { preconditionFailure("after supersession") }
+    expect(after.semanticRevision == accepted.semanticRevision && after.operationalEvents == [] && after.presentationPending == nil)
+    expect(owner.control.pointee.applied == applied + 3 && owner.recovery.wakes.requester.requestCount == wakeCount + 4)
     return checks
 }

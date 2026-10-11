@@ -10,6 +10,7 @@ import Testing
 @testable import GiftUIRuntimeCore
 
 private struct CompletePipelineRecorder: RuntimeCompletePipelineOwner {
+    var presentationIntentState: PresentationIntentState = .satisfied
     var failureStage: RuntimeCompletePipelineStage?
     var injectedFailure: RunCycleFailure<RuntimeOwnerFailure>?
     var mutationApplied = true
@@ -509,4 +510,17 @@ private func measureSPEC013Nanoseconds(_ operation: () -> Void) -> UInt64 {
     let (whole, wholeOverflow) = seconds.multipliedReportingOverflow(by: 1_000_000_000)
     let (total, totalOverflow) = whole.addingReportingOverflow(attoseconds / 1_000_000_000)
     return wholeOverflow || totalOverflow ? .max : total
+}
+
+@Test(arguments: [PresentationIntentState.satisfied, .pending, .unavailable])
+func prepublicationFailurePreservesPriorPresentationIntent(_ prior: PresentationIntentState) {
+    var owner = CompletePipelineRecorder(presentationIntentState: prior, failureStage: .layout)
+    guard case .failed(let failure) = RuntimeCompletePipeline.run(owner: &owner) else {
+        Issue.record("Expected prepublication failure")
+        return
+    }
+    #expect(failure.publication == nil)
+    #expect(failure.disposition.presentationIntentState == prior)
+    #expect(owner.dispositions.last?.presentationIntentState == prior)
+    #expect(owner.finalizationCount == 1)
 }

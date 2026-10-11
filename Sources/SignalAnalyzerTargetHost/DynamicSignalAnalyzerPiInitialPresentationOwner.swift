@@ -548,6 +548,12 @@ where Target: DisplayTarget {
 }
 
 extension DynamicSignalAnalyzerPiInitialPresentationOwner: RuntimeCompletePipelineOwner {
+    package var presentationIntentState: PresentationIntentState {
+        !recovery.isAvailable || state == .quiescent
+            ? .unavailable
+            : recovery.pendingIntent != nil ? .pending : .satisfied
+    }
+
     package typealias OwnerFailure = SignalAnalyzerCycleOwnerFailure
 
     package mutating func admitAndSeal() -> RuntimePipelineStepResult<OwnerFailure> {

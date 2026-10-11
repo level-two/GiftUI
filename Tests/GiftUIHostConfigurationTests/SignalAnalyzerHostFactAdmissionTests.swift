@@ -12,6 +12,7 @@ import Testing
 @testable import GiftUIHostConfiguration
 
 private struct SignalAnalyzerMutationPipelineOwner: RuntimeCompletePipelineOwner {
+    var presentationIntentState: PresentationIntentState { .satisfied }
     let admission: DynamicSignalAnalyzerHostFactAdmission
     let model: SignalAnalyzerViewModel
     let observableRoot: DynamicObservableRootAdapter<SignalAnalyzerViewModel, UInt32>

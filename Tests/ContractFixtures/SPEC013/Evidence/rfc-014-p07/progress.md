@@ -981,3 +981,48 @@ whitespace and governance gates pass. Resumed guard remains **0/2**.
 - T9.1/T11.1 and later complete-image/resource/application gates remain open.
   No full-image zero-heap/stack/RAM/timing/hardware conformance or P08 work is
   claimed by these focused lifecycle/storage tests.
+
+
+## Lifecycle step 6 — latest-revision recovery and prior intent
+
+Reviewed and retained the 13-file recovery continuation already present after
+`2193a6c0`; no inherited edits were discarded. The actual coordinator previously
+cleared pending recovery by the *current* semantic revision, but the maintained
+checked helper only clears a matching stored revision. An accepted newer
+publication could therefore leave the old obligation behind. The coordinator now
+snapshots the prior intent, acknowledges the opportunity wake, records supersession
+when publication replaces that intent, replaces counters for a newer refusal,
+and clears the actual stored revision after acceptance or post-publication failure.
+Terminal cleanup explicitly drops retained intent.
+
+The common pipeline also now snapshots the owner's presentation intent before
+admission. A pre-publication failure preserves that state, as required by
+SPEC-009's outcome table; it no longer unconditionally reports satisfied.
+The package-only read-only `RuntimeCompletePipelineOwner.presentationIntentState`
+observation realizes that existing disposition contract. SPEC-013 does not freeze
+its full internal method list; its exact associated failure carrier and stage/result
+shapes remain unchanged. Existing host conformers only supply that observation;
+this is not P08/P09 migration or a new public/action/host contract.
+
+The focused actual-owner sequence covers old retry count 1, pre-publication Layout
+failure retaining the intent, newer refusal resetting count to 1, same-revision
+backpressure preserving count, newer backpressure resetting to 0, and acceptance
+of a still-newer revision clearing intent and wakes. Each newer publication records
+superseded; wake requests are counted exactly once per pending opportunity.
+Only the three newly admitted mutations/report/dispatches occur; a final opportunity
+proves no replay or retained intent. Frame-lease cleanup additionally preserves each
+of satisfied, pending and unavailable prior states across early acquisition failure.
+The configured-limit adequate case now independently expects 8 actual mutations
+(the prior 5 plus the 3 newly admitted in this regression).
+
+Fresh [native receipt](lifecycle-step-6-macos-static.json): **3917 assertions,
+12 negative controls**, zero failures. [Complete logical transcripts](lifecycle-step-6-logical-transcripts.json)
+and [26-field storage descriptors](lifecycle-step-6-storage-regions.json) match the
+actual profiles. Receipt input hashes were verified against final formatted source;
+formatting completed before gate completion and no file changed during compilation.
+Whitespace and governance checks pass. The supplied continuation passed its first
+validation; resumed consecutive unproductive repairs remain **0/2**.
+
+Remaining: final fresh four-route evidence, reconciliation of current traceability,
+and independent Strong exit review. T9.1/T11.1 and P10–P12 remain open; no package
+acceptance, complete-image/resource/timing/hardware or P08 claim is made.

@@ -174,6 +174,7 @@ func exercisePipeline<G, C, R, H>(models: borrowing ObservableModelScope<CycleOw
         expect(owner.rootIdentity == nil && owner.interaction.committedRecordCount == 0)
         expect(models.phase == .mutating && values.count == 0)
         trace.pointee.show = true; owner.changed = true
+        checks += exercisePendingSupersession(&owner, admission: &admission)
         var returned = cycleConcreteCoordinator(owner: consume owner, dynamic: dynamic, control: trace, audit: audit, admission: consume admission)
         returned.checks += checks
         return consume returned
