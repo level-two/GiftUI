@@ -1,5 +1,17 @@
 # RFC-014 P07 progress
 
+## Current stop — audited construction, 2/2 repair guard
+
+The next audited-construction slice reached the shared consecutive unproductive
+repair limit. P07 is stopped, incomplete and not accepted. See the
+[exact stop and preserved source](audited-construction-stop/stop.md).
+The validated maintained source is `c234058e` (531 assertions, ten negatives).
+An intermediate 547-assertion prerequisite pass and the later failed in-place
+borrow factoring are preserved as evidence only. No actual RuntimeProfileStorage
+factory or audited common-coordinator conformance is established. Do not reset
+**2/2** through another context, agent, toolchain or factoring; the remaining
+work requires a maintainer decision under the existing package guard.
+
 ## Approved concrete-binding resumption — 2026-10-11
 
 Eugene replied “Nice, please proceed either way proposed solution” to the

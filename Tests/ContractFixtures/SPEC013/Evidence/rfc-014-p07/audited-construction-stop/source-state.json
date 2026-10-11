@@ -1,0 +1,77 @@
+{
+  "base_commit": "c234058e743c6d366a345e6c722ca253cd7b9776",
+  "source_patch_sha256": "d41aadf6a92971f3241a69e63d0a73bc4cc5180290c3d03e45e3200748941b89",
+  "files": [
+    {
+      "path": "Sources/GiftUIInteraction/InteractionOwnedKeyState.swift",
+      "sha256": "8846c3b95fe0db298717b92cc61d29e3ff3e0fae0001969cda67c4cac5dfd9f5"
+    },
+    {
+      "path": "Sources/GiftUIInteraction/InteractionState.swift",
+      "sha256": "b2b744d2fae504cd35706aebbd2f40eb410dd1cff226bd22e919b4a255eb9eb6"
+    },
+    {
+      "path": "Sources/GiftUIObservableState/ObservableModelOwnership.swift",
+      "sha256": "6a572ca44df61b39e6f50add6407f014394795aa687dd8484a54828cc95595a9"
+    },
+    {
+      "path": "Sources/GiftUIObservableState/ObservableStateRootScope.swift",
+      "sha256": "f3c4818c95b5223eea194e7d77777162e48d2445c30884e79405294bf91e8119"
+    },
+    {
+      "path": "Sources/GiftUIRuntimeDynamic/DynamicCanvasCallableStorage.swift",
+      "sha256": "ea9342f0a0424fe1d30a3331d180cc4286cd0fdae733d4ddaec19563d369f891"
+    },
+    {
+      "path": "Sources/GiftUIRuntimeDynamic/DynamicInteractionStorage.swift",
+      "sha256": "374c7412495790f1de8e7e336be2902d7012d223edb0130c15ad4e422fdba904"
+    },
+    {
+      "path": "Sources/GiftUIRuntimeDynamic/DynamicObservableModelStorage.swift",
+      "sha256": "fc208927b73b752f5824ef539de832283ead9024f585d4c55d21215e5b3f1f77"
+    },
+    {
+      "path": "Sources/GiftUIRuntimeDynamic/DynamicObservableRootAdapter.swift",
+      "sha256": "3ef3ddfd5a67dc1190e8143976c438bc4094bbf308b62845d94f37cadcd5821a"
+    },
+    {
+      "path": "Sources/GiftUIRuntimeDynamic/DynamicRenderWorkspace.swift",
+      "sha256": "4e1817cfa170c64b9e0730c8b690aaa722b38c9aef563d149541108926bc0be1"
+    },
+    {
+      "path": "Sources/GiftUIRuntimeDynamic/DynamicSemanticRecordStorage.swift",
+      "sha256": "aa95949556bbc9dc7cf5b0155f2fcfe288553e556e6ed5d5a5aa6af1ef1f17a0"
+    },
+    {
+      "path": "Sources/GiftUIRuntimeStatic/StaticObservableModelStorage.swift",
+      "sha256": "0c7e2fe489206c8dd5fc9382f9f3cc6eef48bf0c448941ddf8ea9dd4c26c5f6e"
+    },
+    {
+      "path": "Sources/GiftUIRuntimeStatic/StaticObservableRootAdapter.swift",
+      "sha256": "323c876eb999b2987c743bc83dbbc44d33349ba40ef97dfdf2f4ab9c9b04336e"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC013/RuntimeDerived/CycleCoordinatorProbe.swift",
+      "sha256": "4a9e52c42bdb62514c88ddc1f21914c7cb996b69d20468592af67fe099fa863e"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC013/RuntimeDerived/CycleDynamicDrawing.swift",
+      "sha256": "b91c39639eaeb2f969554443c199edd75e09ee7e20e95fead55a5921737055bc"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC013/RuntimeDerived/CyclePipelineOwner.swift",
+      "sha256": "f03f79361e999eb53f24d3798c50e2b961c0950dc2173de30ab07da3081370da"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC013/RuntimeDerived/CyclePipelineProbe.swift",
+      "sha256": "62f3a86b688aa60b2daf26d2b7c80c6581bdcbadba7ee3c7cb30e2d9cc8ca010"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC013/RuntimeDerived/CycleSemanticProbe.swift",
+      "sha256": "c37d8bc1fa469b64d3d9fd513e73f83074d75f8c74e189059d0d2e4939c0fd92"
+    }
+  ],
+  "direct_compile_exit": 1,
+  "consecutive_unproductive_repairs": 2,
+  "final_log_provenance": "Exact four stderr diagnostics returned by final direct compile tool invocation; no diagnostic location was emitted."
+}

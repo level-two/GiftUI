@@ -1,5 +1,12 @@
 # P07 audited-construction context handoff
 
+> **Superseding current checkpoint:** the next slice stopped at **2/2**
+> consecutive unproductive repairs. Read
+> [audited-construction-stop/stop.md](audited-construction-stop/stop.md) first.
+> Maintained source is restored to validated `c234058e`; actual audited
+> construction is still incomplete. The 0/2 statements below are historical
+> and MUST NOT be used to reset the shared allowance.
+
 This is a sequential Strong context handoff, not a blocker escalation, contract
 amendment, exit review, acceptance or new package. Stop point: 2026-10-11, after
 3478c788. Consecutive unproductive repair allowance remains **0/2**. No process

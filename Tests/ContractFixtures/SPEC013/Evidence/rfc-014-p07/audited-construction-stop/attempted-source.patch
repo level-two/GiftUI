@@ -1,0 +1,778 @@
+diff --git a/Sources/GiftUIInteraction/InteractionOwnedKeyState.swift b/Sources/GiftUIInteraction/InteractionOwnedKeyState.swift
+index 76c646b4..d2972f4b 100644
+--- a/Sources/GiftUIInteraction/InteractionOwnedKeyState.swift
++++ b/Sources/GiftUIInteraction/InteractionOwnedKeyState.swift
+@@ -31,6 +31,18 @@ where
+         self.maximumComponentsPerKey = maximumComponentsPerKey
+         self.maximumComponents = maximumComponents
+     }
++    package borrowing func withBacking<Result>(
++        _ body: (
++            borrowing Candidate, borrowing Hits, borrowing Committed,
++            borrowing Committed, borrowing Hits
++        ) -> Result
++    ) -> Result {
++        state.withBacking(body)
++    }
++    package var identityCapacities: (perKey: UInt16, perBank: UInt32) {
++        (maximumComponentsPerKey, maximumComponents)
++    }
++
+     package mutating func beginCandidate(limits: InteractionLimits) -> InteractionError? {
+         if let error = state.beginCandidate(limits: limits) { return error }
+         candidateComponents = 0
+diff --git a/Sources/GiftUIInteraction/InteractionState.swift b/Sources/GiftUIInteraction/InteractionState.swift
+index fbe74299..0ee5ee21 100644
+--- a/Sources/GiftUIInteraction/InteractionState.swift
++++ b/Sources/GiftUIInteraction/InteractionState.swift
+@@ -44,6 +44,17 @@ where
+         self.committedHitRegions = committedHitRegions
+     }
+ 
++    package borrowing func withBacking<Result>(
++        _ body: (
++            borrowing CandidateRecords, borrowing HitRegions, borrowing CommittedRecords,
++            borrowing CommittedRecords, borrowing HitRegions
++        ) -> Result
++    ) -> Result {
++        body(
++            candidateRecords, candidateHitRegions, candidateCommittedRecords, committedRecords,
++            committedHitRegions)
++    }
++
+     package mutating func beginCandidate(
+         limits: InteractionLimits
+     ) -> InteractionError? {
+diff --git a/Sources/GiftUIObservableState/ObservableModelOwnership.swift b/Sources/GiftUIObservableState/ObservableModelOwnership.swift
+index 46198bf6..c092e197 100644
+--- a/Sources/GiftUIObservableState/ObservableModelOwnership.swift
++++ b/Sources/GiftUIObservableState/ObservableModelOwnership.swift
+@@ -74,6 +74,14 @@ package struct ObservableModelOwnership: ~Copyable {
+         self.captureLimit = captureLimit
+     }
+ 
++    package var storageCapacities: (models: UInt16, claims: UInt16, pins: UInt16, captures: UInt16)
++    {
++        (modelLimit, claimLimit, pinLimit, captureLimit)
++    }
++    // The two actual pinned fields are partitioned out of the ledger exactly once.
++    package static var framePinStorageBytes: Int { 2 * MemoryLayout<Bool>.size }
++    package static var metadataStorageBytes: Int { MemoryLayout<Self>.size - framePinStorageBytes }
++
+     package var occupiedCount: Int {
+         var count = 0
+         for index in 0 ..< Int(modelLimit) where records[index].occupied { count += 1 }
+diff --git a/Sources/GiftUIObservableState/ObservableStateRootScope.swift b/Sources/GiftUIObservableState/ObservableStateRootScope.swift
+index 299aeefc..5509f187 100644
+--- a/Sources/GiftUIObservableState/ObservableStateRootScope.swift
++++ b/Sources/GiftUIObservableState/ObservableStateRootScope.swift
+@@ -22,6 +22,11 @@ package struct ObservableStateRootStorage<Identity: Equatable & Sendable> {
+     fileprivate var operationActive = false
+     fileprivate var retired = false
+ 
++    package static var candidateStorageBytes: Int {
++        MemoryLayout<InlineArray<4, ObservableModelOwnership.Claim?>>.size + MemoryLayout<Bool>.size
++    }
++    package static var liveStorageBytes: Int { MemoryLayout<Self>.size - candidateStorageBytes }
++
+     package init() {}
+ 
+     // Internal fixture boundary, matching the checked identity cursor controls.
+diff --git a/Sources/GiftUIRuntimeDynamic/DynamicCanvasCallableStorage.swift b/Sources/GiftUIRuntimeDynamic/DynamicCanvasCallableStorage.swift
+index e091f3a6..99c1faf3 100644
+--- a/Sources/GiftUIRuntimeDynamic/DynamicCanvasCallableStorage.swift
++++ b/Sources/GiftUIRuntimeDynamic/DynamicCanvasCallableStorage.swift
+@@ -12,6 +12,10 @@ package struct DynamicCanvasCallableStorage<
+         self.capacity = capacity
+         entries = .init(repeating: nil, count: Int(capacity))
+     }
++    package var reservedPayloadBytes: Int {
++        entries.capacity * MemoryLayout<CanvasStagedEntry<Identity, Table.CaptureStorage>?>.stride
++    }
++
+     package mutating func withLifetime<Result>(
+         table: borrowing Table, limits: StaticCanvasLimits,
+         _ body: (borrowing CanvasStagedValues<Identity, Table>) throws(DrawingError) -> Result
+diff --git a/Sources/GiftUIRuntimeDynamic/DynamicInteractionStorage.swift b/Sources/GiftUIRuntimeDynamic/DynamicInteractionStorage.swift
+index f7ff4473..862a5969 100644
+--- a/Sources/GiftUIRuntimeDynamic/DynamicInteractionStorage.swift
++++ b/Sources/GiftUIRuntimeDynamic/DynamicInteractionStorage.swift
+@@ -15,6 +15,11 @@ where Identity: Equatable & Sendable {
+ 
+     package var count: UInt16 { UInt16(records.count) }
+ 
++    package var retainedElementCapacity: Int { records.capacity }
++    package var reservedPayloadBytes: Int {
++        records.capacity * MemoryLayout<InteractionCandidateRecord<Identity>>.stride
++    }
++
+     package mutating func reset() {
+         records.removeAll(keepingCapacity: true)
+     }
+@@ -58,6 +63,11 @@ where Identity: Equatable & Sendable {
+ 
+     package var count: UInt16 { UInt16(records.count) }
+ 
++    package var retainedElementCapacity: Int { records.capacity }
++    package var reservedPayloadBytes: Int {
++        records.capacity * MemoryLayout<BoundActionRecord<Identity>>.stride
++    }
++
+     package mutating func reset() {
+         records.removeAll(keepingCapacity: true)
+     }
+@@ -97,6 +107,11 @@ where Identity: Equatable & Sendable {
+ 
+     package var count: UInt16 { UInt16(regions.count) }
+ 
++    package var retainedElementCapacity: Int { regions.capacity }
++    package var reservedPayloadBytes: Int {
++        regions.capacity * MemoryLayout<InteractionHitRegion<Identity>>.stride
++    }
++
+     package mutating func reset() {
+         regions.removeAll(keepingCapacity: true)
+     }
+diff --git a/Sources/GiftUIRuntimeDynamic/DynamicObservableModelStorage.swift b/Sources/GiftUIRuntimeDynamic/DynamicObservableModelStorage.swift
+index ed3b66de..99e11af2 100644
+--- a/Sources/GiftUIRuntimeDynamic/DynamicObservableModelStorage.swift
++++ b/Sources/GiftUIRuntimeDynamic/DynamicObservableModelStorage.swift
+@@ -18,6 +18,22 @@ package final class DynamicObservableModelStorage<Model: ~Copyable, Schema> {
+         self.needsCapture = needsCapture
+     }
+ 
++    package var storageLayout:
++        (
++            owner: ObservableModelOwnerIdentity, models: UInt16, claims: UInt16, pins: UInt16,
++            captures: UInt16, metadataBytes: Int, modelBytes: Int, pinBytes: Int
++        )
++    {
++        let capacities = ownership.storageCapacities
++        return (
++            ownership.identity, capacities.models, capacities.claims, capacities.pins,
++            capacities.captures,
++            ObservableModelOwnership.metadataStorageBytes + MemoryLayout<UInt16>.size
++                + MemoryLayout<Bool>.size + MemoryLayout<Bool>.size,
++            MemoryLayout<InlineArray<2, Model?>>.size, ObservableModelOwnership.framePinStorageBytes
++        )
++    }
++
+     package func withLifetime<Result>(
+         _ body: (borrowing ObservableModelScope<Model, Schema>) throws(ObservableStateError) ->
+             Result
+diff --git a/Sources/GiftUIRuntimeDynamic/DynamicObservableRootAdapter.swift b/Sources/GiftUIRuntimeDynamic/DynamicObservableRootAdapter.swift
+index 38447e51..3bbd4ad7 100644
+--- a/Sources/GiftUIRuntimeDynamic/DynamicObservableRootAdapter.swift
++++ b/Sources/GiftUIRuntimeDynamic/DynamicObservableRootAdapter.swift
+@@ -17,6 +17,24 @@ package final class DynamicObservableRootAdapter<
+         self.models = models
+     }
+ 
++    package var storageLayout:
++        (
++            owner: ObservableModelOwnerIdentity, models: UInt16, claims: UInt16, pins: UInt16,
++            captures: UInt16, metadataBytes: Int, modelBytes: Int, pinBytes: Int, liveBytes: Int,
++            candidateBytes: Int
++        )
++    {
++        let layout = models.storageLayout
++        return (
++            layout.owner, layout.models, layout.claims, layout.pins, layout.captures,
++            layout.metadataBytes
++                + MemoryLayout<DynamicObservableModelStorage<Model, Model.Schema>>.size,
++            layout.modelBytes, layout.pinBytes,
++            ObservableStateRootStorage<Identity>.liveStorageBytes,
++            ObservableStateRootStorage<Identity>.candidateStorageBytes
++        )
++    }
++
+     package func withLifetime<Result>(
+         _ body: (
+             borrowing ObservableModelScope<Model, Model.Schema>,
+diff --git a/Sources/GiftUIRuntimeDynamic/DynamicRenderWorkspace.swift b/Sources/GiftUIRuntimeDynamic/DynamicRenderWorkspace.swift
+index a6232fb4..c0d1a279 100644
+--- a/Sources/GiftUIRuntimeDynamic/DynamicRenderWorkspace.swift
++++ b/Sources/GiftUIRuntimeDynamic/DynamicRenderWorkspace.swift
+@@ -32,6 +32,13 @@ package struct DynamicRenderWorkspace: RenderProductionWorkspace {
+         )
+     }
+ 
++    /// Retained element extents; the owning value's inline layout is separate.
++    package var reservedPayloadBytes: Int {
++        semanticVisits.capacity * MemoryLayout<Bool>.stride
++            + layoutVisits.capacity * MemoryLayout<Bool>.stride
++            + foregrounds.capacity * MemoryLayout<Color>.stride
++    }
++
+     package var currentForeground: Color? {
+         guard isActive else { return nil }
+         return foregrounds.last
+diff --git a/Sources/GiftUIRuntimeDynamic/DynamicSemanticRecordStorage.swift b/Sources/GiftUIRuntimeDynamic/DynamicSemanticRecordStorage.swift
+index bb39d6b6..6055af79 100644
+--- a/Sources/GiftUIRuntimeDynamic/DynamicSemanticRecordStorage.swift
++++ b/Sources/GiftUIRuntimeDynamic/DynamicSemanticRecordStorage.swift
+@@ -19,6 +19,30 @@ package final class DynamicSemanticRecordStorage<Payload> {
+         payloads = .init(repeating: nil, count: Int(limits.payloads) * 2)
+         scalars = .init(repeating: 0, count: Int(limits.textScalars) * 2)
+     }
++    /// Counts include allocator-rounded Array capacity, never only live elements.
++    /// Class/object headers and inter-field alignment are separate allocator costs.
++    package var retainedExtents:
++        (
++            records: Int, paths: Int, payloads: Int, scalars: Int,
++            recordBytes: Int, pathBytes: Int, payloadBytes: Int, controlBytes: Int
++        )
++    {
++        (
++            records.capacity, paths.capacity, payloads.capacity, scalars.capacity,
++            records.capacity * MemoryLayout<SemanticRuntimeRecord>.stride,
++            paths.capacity * MemoryLayout<SemanticPathEntry>.stride,
++            payloads.capacity * MemoryLayout<Payload?>.stride + scalars.capacity
++                * MemoryLayout<UInt32>.stride,
++            MemoryLayout<InlineArray<2, SemanticRecordBankMetadata>>.size
++                + MemoryLayout<[SemanticRuntimeRecord]>.size
++                + MemoryLayout<[SemanticPathEntry]>.size
++                + MemoryLayout<[Payload?]>.size + MemoryLayout<[UInt32]>.size
++                + MemoryLayout<SemanticRecordLimits>.size
++                + MemoryLayout<SemanticRecordOwnerIdentity>.size
++                + MemoryLayout<Bool>.size
++        )
++    }
++
+     package func withLifetime<Result>(
+         _ body: (borrowing SemanticRecordStore<Payload>) throws(SemanticExpansionError) -> Result
+     ) throws(SemanticExpansionError) -> Result {
+diff --git a/Sources/GiftUIRuntimeStatic/StaticObservableModelStorage.swift b/Sources/GiftUIRuntimeStatic/StaticObservableModelStorage.swift
+index a6c2abb8..c25e5f60 100644
+--- a/Sources/GiftUIRuntimeStatic/StaticObservableModelStorage.swift
++++ b/Sources/GiftUIRuntimeStatic/StaticObservableModelStorage.swift
+@@ -19,6 +19,22 @@ package struct StaticObservableModelStorage<Model: ~Copyable, Schema>: ~Copyable
+         self.needsCapture = needsCapture
+     }
+ 
++    package var storageLayout:
++        (
++            owner: ObservableModelOwnerIdentity, models: UInt16, claims: UInt16, pins: UInt16,
++            captures: UInt16, metadataBytes: Int, modelBytes: Int, pinBytes: Int
++        )
++    {
++        let capacities = ownership.storageCapacities
++        return (
++            ownership.identity, capacities.models, capacities.claims, capacities.pins,
++            capacities.captures,
++            ObservableModelOwnership.metadataStorageBytes + MemoryLayout<UInt16>.size
++                + MemoryLayout<Bool>.size,
++            MemoryLayout<InlineArray<2, Model?>>.size, ObservableModelOwnership.framePinStorageBytes
++        )
++    }
++
+     package mutating func withLifetime<Result>(
+         _ body: (borrowing ObservableModelScope<Model, Schema>) throws(ObservableStateError) ->
+             Result
+diff --git a/Sources/GiftUIRuntimeStatic/StaticObservableRootAdapter.swift b/Sources/GiftUIRuntimeStatic/StaticObservableRootAdapter.swift
+index d489cf72..a2b86575 100644
+--- a/Sources/GiftUIRuntimeStatic/StaticObservableRootAdapter.swift
++++ b/Sources/GiftUIRuntimeStatic/StaticObservableRootAdapter.swift
+@@ -17,6 +17,22 @@ package struct StaticObservableRootAdapter<
+         self.models = consume models
+     }
+ 
++    package var storageLayout:
++        (
++            owner: ObservableModelOwnerIdentity, models: UInt16, claims: UInt16, pins: UInt16,
++            captures: UInt16, metadataBytes: Int, modelBytes: Int, pinBytes: Int, liveBytes: Int,
++            candidateBytes: Int
++        )
++    {
++        let layout = models.storageLayout
++        return (
++            layout.owner, layout.models, layout.claims, layout.pins, layout.captures,
++            layout.metadataBytes, layout.modelBytes, layout.pinBytes,
++            ObservableStateRootStorage<Identity>.liveStorageBytes,
++            ObservableStateRootStorage<Identity>.candidateStorageBytes
++        )
++    }
++
+     package mutating func withLifetime<Result>(
+         _ body: (
+             borrowing ObservableModelScope<Model, Model.Schema>,
+diff --git a/Tests/ContractFixtures/SPEC013/RuntimeDerived/CycleCoordinatorProbe.swift b/Tests/ContractFixtures/SPEC013/RuntimeDerived/CycleCoordinatorProbe.swift
+index f789a36d..adbff76a 100644
+--- a/Tests/ContractFixtures/SPEC013/RuntimeDerived/CycleCoordinatorProbe.swift
++++ b/Tests/ContractFixtures/SPEC013/RuntimeDerived/CycleCoordinatorProbe.swift
+@@ -60,7 +60,7 @@ struct CycleExecutionBinding: ~Copyable, ~Escapable, StaticExecutionProfileBindi
+     mutating func quiesce() {
+         guard !isQuiescent else { return }
+         control.pointee.unavailable = true
+-        control.pointee.mutate = false
++        control.pointee.admission.resetAll()
+         do throws(ObservableStateError) { try root.shutdown() }
+         catch { models.requireStop() }
+     }
+@@ -72,15 +72,15 @@ struct CycleQueuedFacts: ExecutionPendingAdmissionStorage {
+     typealias StateChangeFact = UInt8
+     typealias CompletionFact = UInt16
+     let control: UnsafeMutablePointer<CycleControl>
+-    var pointerCount: UInt16 { 0 }
++    var pointerCount: UInt16 { control.pointee.admission.pointerCount }
+     var stateChangeCount: UInt16 { control.pointee.mutate ? 1 : 0 }
+     var completionCount: UInt16 { 0 }
+     func isValid(stateChange: borrowing UInt8) -> Bool { stateChange == 1 }
+     func isValid(completion: borrowing UInt16) -> Bool { false }
+-    mutating func enqueue(pointer: NormalizedPointerEvent) -> Bool { false }
++    mutating func enqueue(pointer: NormalizedPointerEvent) -> Bool { control.pointee.admission.enqueue(pointer) }
+     mutating func enqueue(stateChange: UInt8) -> Bool { guard !control.pointee.mutate else { return false }; control.pointee.mutate = true; return true }
+     mutating func enqueue(completion: UInt16) -> Bool { false }
+-    mutating func cancelPointerSequence(source: InputSourceID, sequence: PointerSequenceID) {}
++    mutating func cancelPointerSequence(source: InputSourceID, sequence: PointerSequenceID) { control.pointee.admission.cancel(source: source, sequence: sequence) }
+ }
+ struct CycleWake: ExecutionWakeRequester, Sendable {
+     var reasons: ExecutionWakeReasons = []
+@@ -115,3 +115,72 @@ func cycleConcreteCoordinator<G, C, R, H>(owner: consuming CyclePipelineOwner<G,
+     guard case .failure(_, .execution(.requiredFacilityUnavailable), nil) = coordinator.runOpportunity() else { preconditionFailure("Static stopped entry") }
+     return 7
+ }
++
++// Actual disjoint finite stores used by admission and sealing. Completion capacity
++// is zero, so it owns no completion entries. Later arrivals remain in pending.
++struct CycleAdmissionBacking {
++    var pendingPointers: InlineArray<2, NormalizedPointerEvent?> = .init(repeating: nil)
++    var pendingState: UInt8?
++    var sealedPointers: InlineArray<2, NormalizedPointerEvent?> = .init(repeating: nil)
++    var sealedState: UInt8?
++    var sealedAction: CapturedAction<SemanticCompleteIdentity>?
++    var sealedPointerCount: UInt16 = 0
++    var sealActive = false
++    var pointerCount: UInt16 {
++        var count: UInt16 = 0
++        for i in 0..<2 where pendingPointers[i] != nil { count += 1 }
++        return count
++    }
++    mutating func enqueue(_ pointer: NormalizedPointerEvent) -> Bool {
++        for i in 0..<2 where pendingPointers[i] == nil { pendingPointers[i] = pointer; return true }
++        return false
++    }
++    mutating func cancel(source: InputSourceID, sequence: PointerSequenceID) {
++        for i in 0..<2 {
++            if let event = pendingPointers[i], event.source == source && event.sequence == sequence { pendingPointers[i] = nil }
++        }
++    }
++    mutating func seal(_ summary: AdmissionSummary) -> Bool {
++        guard !sealActive, summary.inputEventCount <= pointerCount,
++            summary.stateChangeFactCount <= (pendingState == nil ? 0 : 1), summary.completionFactCount == 0,
++            summary.semanticActionCount <= 1 else { return false }
++        sealedPointerCount = 0
++        for i in 0..<2 where sealedPointerCount < summary.inputEventCount {
++            if let event = pendingPointers[i] {
++                sealedPointers[Int(sealedPointerCount)] = event
++                pendingPointers[i] = nil; sealedPointerCount += 1
++            }
++        }
++        sealedState = summary.stateChangeFactCount == 0 ? nil : pendingState.take()
++        sealActive = true
++        return true
++    }
++    mutating func takeState() -> UInt8? { sealedState.take() }
++    mutating func finishAttempt() {
++        sealedPointers = .init(repeating: nil); sealedPointerCount = 0
++        sealedState = nil; sealedAction = nil; sealActive = false
++    }
++    mutating func resetAll() { finishAttempt(); pendingPointers = .init(repeating: nil); pendingState = nil }
++}
++
++func cycleAdmissionBackingProbe() -> Int {
++    var backing = CycleAdmissionBacking()
++    var checks = 0
++    func expect(_ okay: Bool) { checks += 1; precondition(okay) }
++    let event = NormalizedPointerEvent(phase: .down, position: Point(x: 0, y: 0), source: .init(rawValue: 1), sequence: .init(rawValue: 1), ordinal: .init(rawValue: 0), presentationRevision: .init(rawValue: 1))
++    expect(backing.enqueue(event)); expect(backing.enqueue(event)); expect(!backing.enqueue(event))
++    backing.pendingState = 1
++    let limits = ExecutionLimits(maximumInputEvents: 2, maximumStateChangeFacts: 1, maximumCompletionFacts: 0, maximumSemanticActions: 1, maximumActiveInputSources: 1, maximumCommittedActions: 6)!
++    let summary = ExecutionAdmissionSealer.select(pendingInputEvents: 2, pendingStateChangeFacts: 1, pendingCompletionFacts: 0, sameCycleActivationCandidates: 0, includesDirtyRederivation: false, includesPresentationRecovery: false, limits: limits)!.summary
++    expect(backing.seal(summary)); expect(!backing.seal(summary))
++    expect(backing.pointerCount == 0 && backing.sealedPointerCount == 2)
++    expect(backing.enqueue(event)); backing.pendingState = 1
++    expect(backing.takeState() == 1); expect(backing.takeState() == nil)
++    backing.finishAttempt()
++    expect(backing.pointerCount == 1 && backing.pendingState == 1 && backing.sealedPointerCount == 0)
++    backing.cancel(source: event.source, sequence: event.sequence)
++    expect(backing.pointerCount == 0 && backing.pendingState == 1)
++    backing.resetAll()
++    expect(backing.pendingState == nil && !backing.sealActive)
++    return checks
++}
+diff --git a/Tests/ContractFixtures/SPEC013/RuntimeDerived/CycleDynamicDrawing.swift b/Tests/ContractFixtures/SPEC013/RuntimeDerived/CycleDynamicDrawing.swift
+index e6b0bb94..406343f3 100644
+--- a/Tests/ContractFixtures/SPEC013/RuntimeDerived/CycleDynamicDrawing.swift
++++ b/Tests/ContractFixtures/SPEC013/RuntimeDerived/CycleDynamicDrawing.swift
+@@ -10,6 +10,7 @@ import GiftUIObservableState
+ import CycleSchema
+ #if !hasFeature(Embedded)
+ import GiftUIRuntimeCore
++import GiftUIInteraction
+ import GiftUIRuntimeDynamic
+ 
+ package func cycleDynamicDrawing(
+@@ -47,16 +48,25 @@ package func cycleDynamicDrawing(
+         precondition(plan.point(of: canvas, stroke: 0, at: 0) == Point(x: bounds.origin.x, y: bounds.origin.y + 3))
+     }
+     var render = DynamicRenderWorkspace(capacity: cycleRenderLimits, structuralCapacity: cycleRenderCapacity)
++    let renderBytes = render.reservedPayloadBytes
+     let renderChecks = cycleRender(semantic: semantic, layout: resolved.renderView, plan: plan, workspace: &render, shown: shown)
+     plan.discard(); plan.reset()
++    precondition(render.reservedPayloadBytes == renderBytes)
+     precondition(workspace.reservedPayloadBytes == layoutBytes)
+     precondition(resolved.reservedPayloadBytes == resolvedBytes)
+     precondition(plan.planReservedPayloadBytes == planBytes && plan.livePathReservedPayloadBytes == pathBytes)
+-    return (shown ? 5 : 3) + renderChecks + 3
++    return (shown ? 5 : 3) + renderChecks + 4
+ }
+ package func cycleDynamicStorageEdges() -> Int {
+     var checks = 0
+     func expect(_ value: Bool) { checks += 1; precondition(value) }
++    var candidates = DynamicInteractionCandidateStorage<SemanticCompleteIdentity>(capacity: 6)
++    var committed = DynamicInteractionCommittedStorage<SemanticCompleteIdentity>(capacity: 6)
++    var hits = DynamicInteractionHitStorage<SemanticCompleteIdentity>(capacity: 6)
++    let candidateBytes = candidates.reservedPayloadBytes, committedBytes = committed.reservedPayloadBytes, hitBytes = hits.reservedPayloadBytes
++    expect(candidates.retainedElementCapacity >= 6 && committed.retainedElementCapacity >= 6 && hits.retainedElementCapacity >= 6)
++    candidates.reset(); committed.reset(); hits.reset()
++    expect(candidates.reservedPayloadBytes == candidateBytes && committed.reservedPayloadBytes == committedBytes && hits.reservedPayloadBytes == hitBytes)
+     let limits = LayoutLimits(maximumScopes: 2, maximumDepth: 2, maximumTextScalars: 2, maximumTextLines: 2, maximumPositionedGlyphs: 2)!
+     var workspace = DynamicLayoutWorkspace(limits: limits, maximumSemanticRecords: 4)
+     let bytes = workspace.reservedPayloadBytes
+diff --git a/Tests/ContractFixtures/SPEC013/RuntimeDerived/CyclePipelineOwner.swift b/Tests/ContractFixtures/SPEC013/RuntimeDerived/CyclePipelineOwner.swift
+index 43d5fd2a..254d8ee7 100644
+--- a/Tests/ContractFixtures/SPEC013/RuntimeDerived/CyclePipelineOwner.swift
++++ b/Tests/ContractFixtures/SPEC013/RuntimeDerived/CyclePipelineOwner.swift
+@@ -14,7 +14,11 @@ import CyclePresentation
+ 
+ struct CycleControl {
+     var show = true
+-    var mutate = false
++    var admission = CycleAdmissionBacking()
++    var mutate: Bool {
++        get { admission.pendingState != nil }
++        set { admission.pendingState = newValue ? 1 : nil }
++    }
+     var failAfterMutation = false
+     var cleanupOrder: InlineArray<9, UInt8> = .init(repeating: 255)
+     var cleanupCount = 0
+@@ -59,8 +63,8 @@ where Geometry: CycleGeometry, Candidate: InteractionCandidateRecordStorage, Com
+     let semantic: SemanticRecordStore<CyclePayload>
+     let values: CanvasStagedValues<SemanticRecordReference, CycleValueTable>
+     let control: UnsafeMutablePointer<CycleControl>
+-    var geometry: Geometry
+-    var interaction: InteractionOwnedKeyState<Candidate, Committed, Hits>
++    let geometryStorage: UnsafeMutablePointer<Geometry>
++    let interactionStorage: UnsafeMutablePointer<InteractionOwnedKeyState<Candidate, Committed, Hits>>
+     var phase = ExecutionPhaseMachine()
+     var cycles = RunCycleIDAllocator()
+     var revisions = SemanticRevisionAllocator()
+@@ -84,10 +88,10 @@ where Geometry: CycleGeometry, Candidate: InteractionCandidateRecordStorage, Com
+     var changed = true
+     var pending = false
+     var quiescent = false
+-    @_lifetime(copy models, copy root, copy semantic, copy values, borrow control)
+-    init(models: consuming ObservableModelScope<CycleOwnedModel, CycleModelSchema>, root: consuming ObservableStateRootScope<CycleOwnedModel, SemanticCompleteIdentity>, semantic: consuming SemanticRecordStore<CyclePayload>, values: consuming CanvasStagedValues<SemanticRecordReference, CycleValueTable>, geometry: consuming Geometry, interaction: consuming InteractionOwnedKeyState<Candidate, Committed, Hits>, control: borrowing UnsafeMutablePointer<CycleControl>) {
++    @_lifetime(copy models, copy root, copy semantic, copy values, borrow control, borrow geometry, borrow interaction)
++    init(models: consuming ObservableModelScope<CycleOwnedModel, CycleModelSchema>, root: consuming ObservableStateRootScope<CycleOwnedModel, SemanticCompleteIdentity>, semantic: consuming SemanticRecordStore<CyclePayload>, values: consuming CanvasStagedValues<SemanticRecordReference, CycleValueTable>, geometry: borrowing UnsafeMutablePointer<Geometry>, interaction: borrowing UnsafeMutablePointer<InteractionOwnedKeyState<Candidate, Committed, Hits>>, control: borrowing UnsafeMutablePointer<CycleControl>) {
+         self.models = consume models; self.root = consume root; self.semantic = consume semantic; self.values = consume values
+-        self.geometry = consume geometry; self.interaction = consume interaction; self.control = copy control
++        self.geometryStorage = copy geometry; self.interactionStorage = copy interaction; self.control = copy control
+         precondition(self.root.belongs(to: self.models))
+     }
+     mutating func boundary(_ stage: RuntimeCompletePipelineStage) -> RunCycleFailure<RuntimeOwnerFailure>? {
+@@ -100,19 +104,24 @@ where Geometry: CycleGeometry, Candidate: InteractionCandidateRecordStorage, Com
+         guard !quiescent else { return .failure(.execution(.requiredFacilityUnavailable)) }
+         if let error = phase.beginCycle(reservingFrom: &cycles) { return .failure(.execution(error)) }
+         if let error = boundary(.admissionAndSeal) { return .failure(error) }
+-        guard let selection = ExecutionAdmissionSealer.select(pendingInputEvents: 0, pendingStateChangeFacts: control.pointee.mutate ? 1 : 0, pendingCompletionFacts: 0, sameCycleActivationCandidates: 0, includesDirtyRederivation: changed, includesPresentationRecovery: pending, limits: ExecutionLimits(maximumInputEvents: 2, maximumStateChangeFacts: 1, maximumCompletionFacts: 0, maximumSemanticActions: 1, maximumActiveInputSources: 1, maximumCommittedActions: 6)!) else { return .failure(.execution(.invariantViolation)) }
++        guard let selection = ExecutionAdmissionSealer.select(pendingInputEvents: control.pointee.admission.pointerCount, pendingStateChangeFacts: control.pointee.admission.pendingState == nil ? 0 : 1, pendingCompletionFacts: 0, sameCycleActivationCandidates: 0, includesDirtyRederivation: changed, includesPresentationRecovery: pending, limits: ExecutionLimits(maximumInputEvents: 2, maximumStateChangeFacts: 1, maximumCompletionFacts: 0, maximumSemanticActions: 1, maximumActiveInputSources: 1, maximumCommittedActions: 6)!) else { return .failure(.execution(.invariantViolation)) }
++        guard control.pointee.admission.seal(selection.summary) else { return .failure(.execution(.invariantViolation)) }
+         sealedAdmission = selection.summary
+         return .advanced
+     }
+     mutating func applyAdmittedWork() -> RuntimePipelineMutationResult<RuntimeOwnerFailure> {
+         if let error = phase.transition(to: .mutating) { return .failure(.execution(error), mutationApplied: false) }
+         if let error = boundary(.applyAdmittedWork) { return .failure(error, mutationApplied: false) }
+-        guard control.pointee.mutate else { return .applied(false) }
+-        control.pointee.mutate = false
+-        guard let rootIdentity, let actionIdentity, let record = interaction.committedRecord(for: actionIdentity) else { return .failure(.execution(.invalidProvenance), mutationApplied: false) }
++        // Pointer gesture cases are completed by the later P07 admission slice;
++        // do not silently discard a sealed pointer that this adapter cannot apply.
++        guard control.pointee.admission.sealedPointerCount == 0 else {
++            return .failure(.execution(.requiredFacilityUnavailable), mutationApplied: false)
++        }
++        guard control.pointee.admission.takeState() != nil else { return .applied(false) }
++        guard let rootIdentity, let actionIdentity, let record = interactionStorage.pointee.committedRecord(for: actionIdentity) else { return .failure(.execution(.invalidProvenance), mutationApplied: false) }
+         let target = ObservableStateRootTargetAccess(root: root, identity: rootIdentity, ordinal: 0)
+         let captured = CapturedAction(identity: actionIdentity, generation: record.generation)
+-        switch RuntimeRecordInteractionBridge.dispatch(captured, records: interaction, target: target, actionType: CycleAction.self, operation: CycleHandler.operation) {
++        switch RuntimeRecordInteractionBridge.dispatch(captured, records: interactionStorage.pointee, target: target, actionType: CycleAction.self, operation: CycleHandler.operation) {
+         case .interaction(.dispatched):
+             control.pointee.applied += 1; changed = true
+             if control.pointee.failAfterMutation { return .failure(.execution(.capacityExhausted), mutationApplied: true) }
+@@ -166,26 +175,26 @@ where Geometry: CycleGeometry, Candidate: InteractionCandidateRecordStorage, Com
+         if let error = boundary(.layout) { return .failure(error) }
+         do throws(SemanticExpansionError) {
+             return try semantic.withCandidateView { bank in
+-                switch geometry.layout(bank) { case .success: return .advanced; case .failure(let error): return .failure(.focusedOwner(.layout(error))) }
++                switch geometryStorage.pointee.layout(bank) { case .success: return .advanced; case .failure(let error): return .failure(.focusedOwner(.layout(error))) }
+             }
+         } catch { return .failure(.focusedOwner(.semantic(error))) }
+     }
+     mutating func invokeCanvasesAndDerivePlan() -> RuntimePipelineStepResult<RuntimeOwnerFailure> {
+         if let error = boundary(.canvasInvocationAndPlan) { return .failure(error) }
+         var source = CycleSource(models: models.borrowedScope(), values: values.borrowedValues(), table: CycleValueTable())
+-        switch geometry.draw(source: &source, context: phase.context) { case .success: return .advanced; case .failure(let error): return .failure(.focusedOwner(.drawing(error))) }
++        switch geometryStorage.pointee.draw(source: &source, context: phase.context) { case .success: return .advanced; case .failure(let error): return .failure(.focusedOwner(.drawing(error))) }
+     }
+     mutating func preflightCombinedRender() -> RuntimePipelineStepResult<RuntimeOwnerFailure> {
+         if let error = boundary(.combinedRenderPreflight) { return .failure(error) }
+         do throws(SemanticExpansionError) {
+             return try semantic.withCandidateView { bank in
+-                switch geometry.preflight(bank) { case .success(let value): header = value; return .advanced; case .failure(let error): return .failure(.renderProduction(error)) }
++                switch geometryStorage.pointee.preflight(bank) { case .success(let value): header = value; return .advanced; case .failure(let error): return .failure(.renderProduction(error)) }
+             }
+         } catch { return .failure(.focusedOwner(.semantic(error))) }
+     }
+     mutating func buildInteractionCandidate() -> RuntimePipelineStepResult<RuntimeOwnerFailure> {
+         if let error = boundary(.interactionCandidate) { return .failure(error) }
+-        if let error = interaction.beginCandidate(limits: InteractionLimits(maximumActions: 6, maximumHitRegions: 6)!) { return .failure(.focusedOwner(.interaction(error))) }
++        if let error = interactionStorage.pointee.beginCandidate(limits: InteractionLimits(maximumActions: 6, maximumHitRegions: 6)!) { return .failure(.focusedOwner(.interaction(error))) }
+         interactionCandidate = true
+         do throws(SemanticExpansionError) {
+             return try semantic.withCandidateView { bank in
+@@ -198,18 +207,18 @@ where Geometry: CycleGeometry, Candidate: InteractionCandidateRecordStorage, Com
+                 for index: UInt16 in 0..<bank.recordCount {
+                     let ref = bank.reference(at: index)!
+                     guard bank.record(ref)?.kind == .action else { continue }
+-                    guard let target, let bounds = geometry.bounds(ref), let clip = geometry.clip(ref) else { return .failure(.execution(.invariantViolation)) }
++                    guard let target, let bounds = geometryStorage.pointee.bounds(ref), let clip = geometryStorage.pointee.clip(ref) else { return .failure(.execution(.invariantViolation)) }
+                     let identity = bank.completeIdentity(for: ref)!
+-                    switch RuntimeRecordInteractionBridge.append(record: ref, semantic: bank, root: root, rootIdentity: target, rootOrdinal: 0, actionType: CycleAction.self, roles: CycleRoles.self, isEnabled: true, bounds: bounds, clip: clip, paintOrder: 0, interaction: &interaction) {
++                    switch RuntimeRecordInteractionBridge.append(record: ref, semantic: bank, root: root, rootIdentity: target, rootOrdinal: 0, actionType: CycleAction.self, roles: CycleRoles.self, isEnabled: true, bounds: bounds, clip: clip, paintOrder: 0, interaction: &interactionStorage.pointee) {
+                     case .failure(let error): return .failure(.focusedOwner(.interaction(error)))
+                     case .requiresGeneration:
+-                        guard let generation = generations.generation(for: identity), interaction.assignGeneration(generation, to: identity) == nil else { return .failure(.execution(.identityExhausted)) }
++                        guard let generation = generations.generation(for: identity), interactionStorage.pointee.assignGeneration(generation, to: identity) == nil else { return .failure(.execution(.identityExhausted)) }
+                     case .preserved: break
+                     }
+                     actionIdentity = identity
+                 }
+                 rootIdentity = target
+-                if let error = interaction.finishCandidate() { return .failure(.focusedOwner(.interaction(error))) }
++                if let error = interactionStorage.pointee.finishCandidate() { return .failure(.focusedOwner(.interaction(error))) }
+                 return .advanced
+             }
+         } catch { return .failure(.focusedOwner(.semantic(error))) }
+@@ -247,7 +256,7 @@ where Geometry: CycleGeometry, Candidate: InteractionCandidateRecordStorage, Com
+             control.pointee.streams += 1
+             do throws(SemanticExpansionError) {
+                 return try semantic.withPublishedView { bank in
+-                    switch geometry.produce(bank, header: header!, sink: &sink) {
++                    switch geometryStorage.pointee.produce(bank, header: header!, sink: &sink) {
+                     case .success: return .complete
+                     case .failure(let error): retained = error; return RecordingRenderProductionAdapter.observe(error: error).streamResult!
+                     }
+@@ -281,18 +290,18 @@ where Geometry: CycleGeometry, Candidate: InteractionCandidateRecordStorage, Com
+         control.pointee.cleanups |= UInt16(1) << action.rawValue
+         switch action {
+         case .releaseCanvasCallable: values.discard()
+-        case .resetRenderWorkspace: geometry.resetRender()
+-        case .resetDrawingPlan: geometry.resetPlan()
+-        case .resetLayoutCandidate: geometry.resetLayout()
++        case .resetRenderWorkspace: geometryStorage.pointee.resetRender()
++        case .resetDrawingPlan: geometryStorage.pointee.resetPlan()
++        case .resetLayoutCandidate: geometryStorage.pointee.resetLayout()
+         case .discardSemanticCandidate: if semanticCandidate { do throws(SemanticExpansionError) { try semantic.discardCandidate() } catch { quiescent = true }; semanticCandidate = false }
+         case .discardObservableCandidate:
+             if observableCandidate { discardLocalCandidates() }
+-        case .discardInteractionCandidate: interaction.resolveCandidate(.discard); generations.resolveCandidate(committed: false); interactionCandidate = false
+-        case .commitInteractionCandidate: interaction.resolveCandidate(.commit(presentation!)); generations.resolveCandidate(committed: true); interactionCandidate = false; control.pointee.commits += 1
++        case .discardInteractionCandidate: interactionStorage.pointee.resolveCandidate(.discard); generations.resolveCandidate(committed: false); interactionCandidate = false
++        case .commitInteractionCandidate: interactionStorage.pointee.resolveCandidate(.commit(presentation!)); generations.resolveCandidate(committed: true); interactionCandidate = false; control.pointee.commits += 1
+         case .resetAttemptStorage:
+             discardLocalCandidates()
+-            if interactionCandidate { interaction.resolveCandidate(.discard); generations.resolveCandidate(committed: false); interactionCandidate = false }
+-            geometry.reset()
++            if interactionCandidate { interactionStorage.pointee.resolveCandidate(.discard); generations.resolveCandidate(committed: false); interactionCandidate = false }
++            geometryStorage.pointee.reset()
+             if frameActive { do throws(ObservableStateError) { try models.endFrame() } catch { quiescent = true }; frameActive = false }
+         }
+     }
+@@ -301,8 +310,9 @@ where Geometry: CycleGeometry, Candidate: InteractionCandidateRecordStorage, Com
+         pending = disposition.presentationIntentState == .pending
+     }
+     mutating func finalizePipeline() {
++        control.pointee.admission.finishAttempt()
+         completedContext = phase.context
+-        control.pointee.committedRecords = interaction.committedRecordCount
++        control.pointee.committedRecords = interactionStorage.pointee.committedRecordCount
+         control.pointee.hasRoot = rootIdentity != nil
+         control.pointee.frameActive = frameActive
+         if phase.context.phase != .idle {
+diff --git a/Tests/ContractFixtures/SPEC013/RuntimeDerived/CyclePipelineProbe.swift b/Tests/ContractFixtures/SPEC013/RuntimeDerived/CyclePipelineProbe.swift
+index 3b63a6f8..7b980b9d 100644
+--- a/Tests/ContractFixtures/SPEC013/RuntimeDerived/CyclePipelineProbe.swift
++++ b/Tests/ContractFixtures/SPEC013/RuntimeDerived/CyclePipelineProbe.swift
+@@ -12,20 +12,26 @@ import GiftUIRuntimeDynamic
+ import GiftUISemanticCore
+ import CycleSchema
+ 
+-private func exercisePipeline<G, C, R, H>(models: borrowing ObservableModelScope<CycleOwnedModel, CycleModelSchema>, root: borrowing ObservableStateRootScope<CycleOwnedModel, SemanticCompleteIdentity>, semantic: borrowing SemanticRecordStore<CyclePayload>, values: borrowing CanvasStagedValues<SemanticRecordReference, CycleValueTable>, dynamic: Bool, geometry: consuming G, interaction: consuming InteractionOwnedKeyState<C, R, H>) -> Int where G: CycleGeometry, C: InteractionCandidateRecordStorage, R: InteractionCommittedRecordStorage, H: InteractionHitRegionStorage, C.Identity == SemanticCompleteIdentity, R.Identity == SemanticCompleteIdentity, H.Identity == SemanticCompleteIdentity {
++func exercisePipeline<G, C, R, H>(models: borrowing ObservableModelScope<CycleOwnedModel, CycleModelSchema>, root: borrowing ObservableStateRootScope<CycleOwnedModel, SemanticCompleteIdentity>, semantic: borrowing SemanticRecordStore<CyclePayload>, values: borrowing CanvasStagedValues<SemanticRecordReference, CycleValueTable>, dynamic: Bool, geometry: inout G, interaction: inout InteractionOwnedKeyState<C, R, H>) -> Int where G: CycleGeometry, C: InteractionCandidateRecordStorage, R: InteractionCommittedRecordStorage, H: InteractionHitRegionStorage, C.Identity == SemanticCompleteIdentity, R.Identity == SemanticCompleteIdentity, H.Identity == SemanticCompleteIdentity {
++    // Give the nested nonescaping pointer callbacks owned lexical scope values
++    // to borrow; do not capture the borrowing parameters by value.
++    let modelScope = models.borrowedScope()
++    let rootScope = root.borrowedRoot()
++    let semanticScope = semantic.borrowedStore()
++    let valueScope = values.borrowedValues()
+     var control = CycleControl()
+-    var transferredGeometry: G? = consume geometry
+-    var transferredInteraction: InteractionOwnedKeyState<C, R, H>? = consume interaction
+     return withUnsafeMutablePointer(to: &control) { trace in
+-        var owner = CyclePipelineOwner(models: models.borrowedScope(), root: root.borrowedRoot(), semantic: semantic.borrowedStore(), values: values.borrowedValues(), geometry: transferredGeometry.take()!, interaction: transferredInteraction.take()!, control: trace)
++      withUnsafeMutablePointer(to: &geometry) { geometry in
++       withUnsafeMutablePointer(to: &interaction) { interaction in
++        var owner = CyclePipelineOwner(models: modelScope.borrowedScope(), root: rootScope.borrowedRoot(), semantic: semanticScope.borrowedStore(), values: valueScope.borrowedValues(), geometry: geometry, interaction: interaction, control: trace)
+         var checks = 0
+         func expect(_ value: Bool) { checks += 1; precondition(value) }
+         var result = RuntimeCompletePipeline.run(owner: &owner)
+         guard case .completed(let initial) = result else { preconditionFailure("initial complete pipeline") }
+         expect(initial.disposition.logicalFrameDisposition == .committed)
+         expect(trace.pointee.stages == 2047 && trace.pointee.finalized == 1 && trace.pointee.commits == 1)
+-        expect(models.phase == .mutating && values.count == 0)
+-        expect(owner.interaction.committedRecordCount == 1)
++        expect(modelScope.phase == .mutating && valueScope.count == 0)
++        expect(owner.interactionStorage.pointee.committedRecordCount == 1)
+         trace.pointee.mutate = true; trace.pointee.offer = .retryableRefusal
+         result = RuntimeCompletePipeline.run(owner: &owner)
+         guard case .completed(let refused) = result else { preconditionFailure("refusal pipeline") }
+@@ -36,7 +42,7 @@ private func exercisePipeline<G, C, R, H>(models: borrowing ObservableModelScope
+         guard case .completed(let retried) = result else { preconditionFailure("retry pipeline") }
+         expect(retried.publication.semanticRevision == refused.publication.semanticRevision && !retried.publication.changed)
+         expect(trace.pointee.applied == 1 && trace.pointee.commits == 2)
+-        expect(models.phase == .mutating && values.count == 0)
++        expect(modelScope.phase == .mutating && valueScope.count == 0)
+         trace.pointee.mutate = true; trace.pointee.failAfterMutation = true
+         result = RuntimeCompletePipeline.run(owner: &owner)
+         guard case .failed(let partial) = result else { preconditionFailure("partial mutation") }
+@@ -59,7 +65,7 @@ private func exercisePipeline<G, C, R, H>(models: borrowing ObservableModelScope
+                 expect(refusal.disposition.presentationIntentState == .unavailable)
+             }
+             expect(trace.pointee.streams == streams && trace.pointee.commits == commits)
+-            expect(models.phase == .mutating && values.count == 0)
++            expect(modelScope.phase == .mutating && valueScope.count == 0)
+         }
+         trace.pointee.offer = .accepted
+         for raw: UInt8 in 0...10 {
+@@ -71,7 +77,7 @@ private func exercisePipeline<G, C, R, H>(models: borrowing ObservableModelScope
+             expect(failed.stage.rawValue == raw && failed.failure == .execution(.capacityExhausted))
+             expect(trace.pointee.stages == (UInt16(1) << (raw + 1)) - 1)
+             expect(trace.pointee.finalized == finalized + 1)
+-            expect(models.phase == .mutating && values.count == 0 && !owner.frameActive)
++            expect(modelScope.phase == .mutating && valueScope.count == 0 && !owner.frameActive)
+             for index in 1..<max(1, trace.pointee.cleanupCount) {
+                 expect(trace.pointee.cleanupOrder[index - 1] < trace.pointee.cleanupOrder[index])
+             }
+@@ -79,17 +85,19 @@ private func exercisePipeline<G, C, R, H>(models: borrowing ObservableModelScope
+         trace.pointee.fault = nil; trace.pointee.show = false; owner.changed = true
+         result = RuntimeCompletePipeline.run(owner: &owner)
+         guard case .completed = result else { preconditionFailure("retirement pipeline") }
+-        expect(owner.rootIdentity == nil && owner.interaction.committedRecordCount == 0)
+-        expect(models.phase == .mutating && values.count == 0)
++        expect(owner.rootIdentity == nil && owner.interactionStorage.pointee.committedRecordCount == 0)
++        expect(modelScope.phase == .mutating && valueScope.count == 0)
+         owner.quiescent = true
+         result = RuntimeCompletePipeline.run(owner: &owner)
+         guard case .failed(let stopped) = result else { preconditionFailure("quiescence pipeline") }
+         expect(stopped.failure == .execution(.requiredFacilityUnavailable))
+-        expect(models.phase == .mutating)
++        expect(modelScope.phase == .mutating)
+         owner.quiescent = false
+         trace.pointee.show = true; owner.changed = true
+         checks += cycleConcreteCoordinator(owner: consume owner, dynamic: dynamic, control: trace)
+         return checks
++       }
++      }
+     }
+ }
+ func cyclePipelineProbe(models: borrowing ObservableModelScope<CycleOwnedModel, CycleModelSchema>, root: borrowing ObservableStateRootScope<CycleOwnedModel, SemanticCompleteIdentity>, semantic: borrowing SemanticRecordStore<CyclePayload>, dynamic: Bool) -> Int {
+@@ -102,8 +110,9 @@ func cyclePipelineProbe(models: borrowing ObservableModelScope<CycleOwnedModel,
+                 typealias R = DynamicInteractionCommittedStorage<SemanticCompleteIdentity>
+                 typealias H = DynamicInteractionHitStorage<SemanticCompleteIdentity>
+                 let state = InteractionState(candidateRecords: C(capacity: 6), candidateHitRegions: H(capacity: 6), candidateCommittedRecords: R(capacity: 6), committedRecords: R(capacity: 6), committedHitRegions: H(capacity: 6))
+-                let keys = InteractionOwnedKeyState(state: state, maximumComponentsPerKey: 34, maximumComponents: 204)!
+-                checks += exercisePipeline(models: models, root: root, semantic: semantic, values: values, dynamic: dynamic, geometry: DynamicCycleGeometry(), interaction: keys)
++                var keys = InteractionOwnedKeyState(state: consume state, maximumComponentsPerKey: 34, maximumComponents: 204)!
++                var geometry = DynamicCycleGeometry()
++                checks += exercisePipeline(models: models, root: root, semantic: semantic, values: values, dynamic: dynamic, geometry: &geometry, interaction: &keys)
+                 return
+             }
+             #endif
+@@ -111,13 +120,14 @@ func cyclePipelineProbe(models: borrowing ObservableModelScope<CycleOwnedModel,
+             typealias R = StaticSixInteractionCommittedStorage<SemanticCompleteIdentity>
+             typealias H = StaticSixInteractionHitStorage<SemanticCompleteIdentity>
+             let state = InteractionState(candidateRecords: C(capacity: 6)!, candidateHitRegions: H(capacity: 6)!, candidateCommittedRecords: R(capacity: 6)!, committedRecords: R(capacity: 6)!, committedHitRegions: H(capacity: 6)!)
+-            let keys = InteractionOwnedKeyState(state: state, maximumComponentsPerKey: 34, maximumComponents: 204)!
++            var keys = InteractionOwnedKeyState(state: consume state, maximumComponentsPerKey: 34, maximumComponents: 204)!
+             var scopes: InlineArray<3136, UInt8> = .init(repeating: 0)
+             var text: InlineArray<4704, UInt8> = .init(repeating: 0)
+             var path: InlineArray<3280, UInt8> = .init(repeating: 0)
+             var plan: InlineArray<13536, UInt8> = .init(repeating: 0)
+             withUnsafeMutableBytes(of: &scopes) { s in withUnsafeMutableBytes(of: &text) { t in withUnsafeMutableBytes(of: &path) { p in withUnsafeMutableBytes(of: &plan) { d in
+-                checks += exercisePipeline(models: models, root: root, semantic: semantic, values: values, dynamic: dynamic, geometry: StaticCycleGeometry(scopes: s, text: t, path: p, plan: d), interaction: keys)
++                var geometry = StaticCycleGeometry(scopes: s, text: t, path: p, plan: d)
++                checks += exercisePipeline(models: models, root: root, semantic: semantic, values: values, dynamic: dynamic, geometry: &geometry, interaction: &keys)
+             } } } }
+         }
+     } catch { preconditionFailure("pipeline Canvas owner") }
+diff --git a/Tests/ContractFixtures/SPEC013/RuntimeDerived/CycleSemanticProbe.swift b/Tests/ContractFixtures/SPEC013/RuntimeDerived/CycleSemanticProbe.swift
+index 42971be1..f7048d6c 100644
+--- a/Tests/ContractFixtures/SPEC013/RuntimeDerived/CycleSemanticProbe.swift
++++ b/Tests/ContractFixtures/SPEC013/RuntimeDerived/CycleSemanticProbe.swift
+@@ -88,9 +88,15 @@ private func withSemantic(models: borrowing ObservableModelScope<CycleOwnedModel
+         #if !hasFeature(Embedded)
+         if dynamic {
+             let storage = DynamicSemanticRecordStorage<Payload>(limits: limits, owner: try namespace.issue())
+-            return try storage.withLifetime { (semantic) throws(SemanticExpansionError) in
++            let before = storage.retainedExtents
++            precondition(before.records >= 252 && before.paths >= 756 && before.payloads >= 196 && before.scalars >= 448)
++            let result = try storage.withLifetime { (semantic) throws(SemanticExpansionError) in
+                 try exercise(semantic, models: models, root: root, dynamic: dynamic)
+             }
++            let after = storage.retainedExtents
++            precondition(before.recordBytes == after.recordBytes && before.pathBytes == after.pathBytes)
++            precondition(before.payloadBytes == after.payloadBytes && before.controlBytes == after.controlBytes)
++            return result + 3
+         }
+         #endif
+         var storage = StaticSemanticRecordStorage(limits: limits, owner: try namespace.issue())
+@@ -103,16 +109,25 @@ private func withSemantic(models: borrowing ObservableModelScope<CycleOwnedModel
+     } catch { preconditionFailure("semantic owner") }
+ }
+ public func giftuiP07CycleSemantic() -> Int {
+-    var checks = 0
++    var checks = cycleAdmissionBackingProbe()
+     do throws(ObservableStateError) {
+         var namespace = ObservableModelOwnerNamespace()
+         var storage = StaticObservableRootAdapter<CycleOwnedModel, SemanticCompleteIdentity>(identity: try namespace.issue(), schema: 1, needsCapture: false)!
++        let staticLayout = storage.storageLayout
++        precondition(staticLayout.models == 2 && staticLayout.claims == 4 && staticLayout.pins == 2 && staticLayout.captures == 0)
++        precondition(staticLayout.pinBytes == 2 * MemoryLayout<Bool>.size)
++        checks += 2
+         checks += try storage.withLifetime { (models, root) throws(ObservableStateError) in
+             withSemantic(models: models, root: root, dynamic: false)
+         }
+         #if !hasFeature(Embedded)
+         checks += cycleDynamicStorageEdges()
+         let dynamic = DynamicObservableRootAdapter<CycleOwnedModel, SemanticCompleteIdentity>(identity: try namespace.issue(), schema: 1, needsCapture: false)!
++        let dynamicLayout = dynamic.storageLayout
++        precondition(dynamicLayout.models == staticLayout.models && dynamicLayout.claims == staticLayout.claims && dynamicLayout.pins == staticLayout.pins)
++        precondition(dynamicLayout.modelBytes == staticLayout.modelBytes && dynamicLayout.pinBytes == staticLayout.pinBytes)
++        precondition(dynamicLayout.liveBytes == staticLayout.liveBytes && dynamicLayout.candidateBytes == staticLayout.candidateBytes)
++        checks += 3
+         checks += try dynamic.withLifetime { (models, root) throws(ObservableStateError) in
+             withSemantic(models: models, root: root, dynamic: true)
+         }
