@@ -6,7 +6,7 @@ status: approved
 authors:
   - codex
 created: 2026-08-28
-updated: 2026-10-10
+updated: 2026-10-11
 proposal:
   - PROPOSAL-002
   - PROPOSAL-003
@@ -73,6 +73,8 @@ target_milestone: MVP
 ---
 
 # SPEC-015: MVP Target-Host Configuration Contract
+
+> **Scoped host correction approved — 2026-10-11.** Eugene replied “Approved, please proceed” after separate review of the exact P08 proposal. [Approval record](../iterations/iteration-003-review/rfc-014-spec-approval.md#scoped-host-lifetime-amendment--2026-10-11). The host permits `~Escapable` conformers with compiler-checked dependence on supplied backing; existing construction, activation and teardown duties remain. Implementation/evidence are still required.
 
 > **RFC-014 amendment approved — 2026-10-10.** Eugene explicitly approved the
 > coordinated amendments presented in `9b2ff666` and requested a precisely scoped
@@ -736,7 +738,7 @@ package enum HostOpportunityResult<OwnerFailure: Equatable & Sendable>:
     case invalidLifecycle
 }
 
-package protocol MVPHostInstance: ~Copyable {
+package protocol MVPHostInstance: ~Copyable, ~Escapable {
     associatedtype ActivationFailure: Equatable & Sendable
     associatedtype OwnerFailure: Equatable & Sendable = RuntimeOwnerFailure
     var lifecycleState: MVPHostLifecycleState { get }
@@ -765,6 +767,15 @@ package protocol MVPHostConfigurationValidator: ~Copyable {
 package protocol MVPHostResidualPolicy: GiftUIResidualFailurePolicy
 where Context == HostResidualPolicyContext {}
 ```
+
+A scope-bearing `MVPHostInstance` returned by a concrete construction function
+MUST retain a compiler-checked lifetime dependence on its supplied backing or
+consumed scoped coordinator. It MUST remain within every backing owner's
+activation lifetime and MUST NOT escape an activation callback or survive backing
+release. Validation MUST still precede live-owner construction and instance
+exposure. The existing lifecycle methods remain the only activation, opportunity
+and teardown entry points. Escapable conformers remain permitted; no new host
+abstraction, role, policy or fallback is introduced by this constraint correction.
 
 Each first-party preset exposes one concrete construction function with two
 phases: it constructs its concrete validator from the exact inputs in the

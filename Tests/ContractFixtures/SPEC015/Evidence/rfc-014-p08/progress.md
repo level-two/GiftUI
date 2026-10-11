@@ -43,3 +43,14 @@ compatibility and required negative/lifecycle proof; explicit maintainer decisio
 then implementation only under the resulting approved contract. No independent
 schema expansion, P09 work, compiler change, hardware operation, resource claim
 or package acceptance accompanies this blocker record.
+
+
+## Approved correction — 2026-10-11
+
+Eugene explicitly replied “Approved, please proceed” after the separate
+[independent proposal review](independent-blocker-review.md). The exact reviewed
+[diff](proposed-spec-015.diff) is applied to SPEC-015; the
+[approval map](../../../../../docs/iterations/iteration-003-review/rfc-014-spec-approval.md#scoped-host-lifetime-amendment--2026-10-11)
+records the decision and unchanged construction/activation/teardown obligations.
+Original packet/probes/review remain intact. This commit changes authority and
+traceability only; production implementation starts afterward. Guard **0/2**.

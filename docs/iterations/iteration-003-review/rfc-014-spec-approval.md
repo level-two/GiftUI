@@ -130,3 +130,36 @@ action API is introduced. SPEC-015, P08, compiler upgrades and owner/module
 moves are outside this decision. SPEC-013 remains implementing, its plan active,
 report collecting, T11.1 open through P10–P12. P07 requires separate Strong exit
 review. Historical blocker evidence stays intact.
+
+
+## Scoped host lifetime amendment — 2026-10-11
+
+After the [independent Strong review](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/independent-blocker-review.md)
+of packet `2579e980` and its exact [proposed diff](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/proposed-spec-015.diff),
+Eugene replied: “Approved, please proceed”. This explicitly approves that precise
+SPEC-015 correction and resumes the existing P08 package:
+
+- `MVPHostInstance: ~Copyable, ~Escapable`, with every associated type, lifecycle
+  method, argument/result and failure unchanged. Existing escapable conformers
+  remain permitted.
+- A returned scope-bearing host retains compiler-checked dependence on supplied
+  backing or consumed scoped coordinator, remains inside every backing activation,
+  and cannot escape an activation callback or survive backing release.
+- Pure ordered validation still precedes live-owner construction and instance
+  exposure. Runtime coordinator and endpoint construction remain the first
+  `activate()` step; the compile-only preexisting-coordinator proof is not
+  production-pattern authority. Exact graph/report/endpoint audits, first-error
+  handling, partial construction, lifecycle and backing-last teardown remain.
+- Internal finite concrete construction/return constraints may be propagated to
+  realize that approved boundary. The source-only associated factory is not fixed
+  by a spelling edit; pinned Swift 6.3.2, no associated-type feature upgrade, no
+  unchecked escape and no new host abstraction remain requirements.
+- P08 must provide actual four-route host ownership/copy/escape/consume/closed-
+  backing negatives, activation/teardown and counter/schema/resource evidence,
+  then separate Strong exit review. T8.1 and later P10–P12 duties remain open.
+
+This is consistent with accepted ADR-036 and changes no architecture, capacity,
+pacing, role graph, policy, hardware authorization or package scope. The original
+blocker packet, probes and review are preserved as historical decision evidence.
+SPEC-015 remains approved until implementation begins; P08 guard remains **0/2**.
+No P08 acceptance, implemented transition or P09 authorization is implied.

@@ -1,14 +1,13 @@
 # RFC-014 task context guide
 
-**Current P08 checkpoint — host lifetime decision required, 2026-10-11:**
-User authorized proceeding after P07. Entry orientation at clean `9fa495dd`
-reproduces the exact SPEC-015 containing-host constraint mismatch with actual
-scoped P07 coordinator types. The [decision packet](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-host-constraint.md)
-and [proposed diff](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/proposed-spec-015.diff) are evidence-only, not approved.
-Seven pinned compile controls match their expected results; no production or
-schema implementation has begun. Independent review and explicit maintainer
-contract approval are required before affected work. P08 guard **0/2**;
-[P08 receipt](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/progress.md). P09–P12 remain pending.
+**Current P08 checkpoint — approved host correction, implementation next, 2026-10-11:**
+Eugene explicitly replied “Approved, please proceed” after the separate
+[independent proposal review](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/independent-blocker-review.md).
+The exact SPEC-015 correction is applied and [approval recorded](rfc-014-spec-approval.md#scoped-host-lifetime-amendment--2026-10-11).
+Original packet/probes/review remain historical. P08 construction/activation,
+schema-4/counter and early-image evidence remain required; no package acceptance.
+Guard **0/2**; [receipt](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/progress.md).
+P09–P12 remain pending.
 
 **Current P07 checkpoint — finite package exit passed, 2026-10-11:**
 The explicitly [resumed consuming-owner implementation](../../../Tests/ContractFixtures/SPEC013/Evidence/rfc-014-p07/consuming-owner-resumption.md)

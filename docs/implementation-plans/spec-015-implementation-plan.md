@@ -34,14 +34,13 @@ not additional authorization to rerun an MVP implementation or reopen experiment
 
 ### Current owner checkpoint
 
-P08 entry orientation is authorized after P07, but affected integration is
-blocked on the [exact containing-host decision](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-host-constraint.md).
-The [proposed diff](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/proposed-spec-015.diff)
-is not approved. Seven pinned compile controls verify the host constraint,
-concrete-return feasibility and remaining internal factory limitation. No source
-or schema implementation has begun; SPEC-015 stays approved and this plan ready.
-[P08 progress](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/progress.md)
-records the 0/2 guard and required independent review/maintainer decision.
+The exact scoped-host correction is now explicitly approved and applied; see
+[approval](../iterations/iteration-003-review/rfc-014-spec-approval.md#scoped-host-lifetime-amendment--2026-10-11).
+The original packet/probes and independent review remain historical evidence.
+Production implementation/evidence remain required; the construction, activation
+and backing-last teardown obligations are unchanged. [P08 progress](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/progress.md)
+records guard **0/2** and sequential work. SPEC-015 remains approved and this plan
+ready until production implementation begins; no P08 pass is claimed.
 
 - [ ] `T8.1` — Schema-4 validation and explicit limits, real host owners, four-config counter, complete host ledger and lifetime checks.
   **Scope:** GiftUIHostConfiguration, scalar workload generator/validator and finite counter repository composition and directly corresponding tests/fixtures/build wiring.
