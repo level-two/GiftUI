@@ -11,6 +11,14 @@ construction proofs. No proposal is applied or approved. Separate Strong review
 and human decision remain. Commits: `498720fc`, `2fe8a86e`, `db78cf9c`, and partial
 WIP `027bdc11`. P07 incomplete; T9.1/T11.1 open; repair counter **0/2**.
 
+The [independent Strong associated-type review](independent-associated-type-review.md)
+confirms the compiler blocker and recommends one explicit SPEC-013 amendment
+that relocates the removed generic checks into mandatory concrete construction
+proofs. It confirms RFC-014 checked-write precedence over legacy dispatch
+realization without waiving finite typed handler semantics. Independent replay
+passed all four cases with compiler/input/module-artifact identity checks.
+P07 acceptance, full integration and SPEC-015's host boundary remain open.
+
 
 ## Approved resumption assignment — 2026-10-11
 
