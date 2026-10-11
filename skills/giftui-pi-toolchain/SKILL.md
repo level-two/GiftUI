@@ -27,7 +27,8 @@ automatically.
 - Do not install under `/opt`.
 - Do not run the downloaded `.pkg` installer or change Xcode's selected
   toolchain.
-- Require host Swift `6.3.2`; do not wave through a version mismatch.
+- Require the host Swift version and matching ARMv6 SDK recorded in
+  `scripts/raspberry-pi/toolchain.env`; do not wave through a version mismatch.
 - Keep the target `armv6-unknown-linux-gnueabihf`.
 - Do not replace the SDK with ARMv7 or AArch64 artifacts.
 - Treat `setup-toolchain.sh --force` as a repair of generated local state only.
