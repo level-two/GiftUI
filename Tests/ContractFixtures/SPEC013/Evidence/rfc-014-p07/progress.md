@@ -25,6 +25,16 @@ the finite P07 exit and hand off to separate Strong review. Contract/scope
 decisions outside this correction still return to Eugene. Consecutive
 unproductive repair count remains **0/2** across resumption.
 
+## Step 17 — complete finite fixture Embedded compilation
+
+The pinned nrf52840-embedded migration route compiles the actual Static complete
+cycle/coordinator fixture and all ten compiler negatives; target ABI inspection
+passes. Receipt: step-17-nrf52840-embedded.json. This is object/ABI evidence only,
+not board execution, linked image, stack/heap/RAM/flash or full P07 acceptance.
+The first Embedded compile required direct CycleTable imports in each fixture
+using its aliased capture type/initializer. Adding explicit imports preserved
+module separation and the next fresh route passed after formatting. **0/2**.
+
 ## Step 16 — existing concrete execution coordinator ownership
 
 The finite assembly now moves each real scoped pipeline owner into the existing
