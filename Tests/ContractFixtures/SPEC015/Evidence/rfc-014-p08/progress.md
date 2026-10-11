@@ -1,6 +1,6 @@
 # RFC-014 P08 execution receipt — 2026-10-11
 
-**Current: activation-time containing-owner implementation stopped at2/2.**
+**Current: production remains stopped at2/2; bounded evidence-only investigation authorized.**
 The [bounded stop packet](activation-join-stop/stop.md) preserves exact controls,
 commands and narrowed cause. `c39733de` is the last validated maintained source;
 P08 remains incomplete. Earlier0/2 checkpoints below are historical.
@@ -165,3 +165,17 @@ selected. Current authority remains unchanged and no compiler-bug attribution
 is established. Parent will arrange independent confirmation and a concrete
 maintainer decision before further affected implementation. Remaining package
 requirements and smallest bounded next decision are explicit in the packet.
+
+
+## Separately authorized evidence-only investigation — 2026-10-11
+
+Eugene replied “Agree, Please proceed” after independent stop review. The
+[authorization and fixed hypotheses](activation-join-investigation/authorization.md)
+reserve at most6 fresh compiler invocations and2 internal layouts, each requiring
+positive initialization/activation/real supplying-scope caller plus separate copy
+and outliving-backing negatives. All corrections count; negatives skip failed
+positives; stop on first complete pass, budget exhaustion or2 unproductive
+candidates. Initial counters0/6 invocations,0/2 layouts; no compile has run.
+This allowance does not reset the historical2/2 production guard, authorize
+integration or change any contract. Independent review and separate production
+resumption remain required after the finite evidence result.

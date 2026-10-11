@@ -1,0 +1,13 @@
+{
+  "authorization": "Eugene: Agree, Please proceed; 2026-10-11",
+  "entry_commit": "984a0afc",
+  "scope": "evidence-only; no production integration",
+  "compiler_invocation_limit": 6,
+  "candidate_layout_limit": 2,
+  "compiler_invocations_used": 0,
+  "candidate_layouts_used": 0,
+  "consecutive_unproductive_candidates": 0,
+  "historical_production_guard": "2/2 (not reset)",
+  "status": "authorized; no fresh compiler invocation yet",
+  "runs": []
+}
