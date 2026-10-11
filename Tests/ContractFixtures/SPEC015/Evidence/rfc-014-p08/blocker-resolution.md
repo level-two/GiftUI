@@ -2,14 +2,14 @@
 
 ## Current conclusion
 
-P08 remains open; the supported compiler-baseline decision is now the next gate.
-The independently reviewed minimal comparison verifies Swift 6.4 as a remedy
-candidate, and fresh actual native feasibility passes activation/opportunity/
-quiescence plus intended callback-escape rejection. Its [independent review](compiler-native-join/final-review.md)
-at `156f3fb4` passes the bounded pair and supports presenting the proposal. No
-experimental owner or new compiler baseline has been adopted into maintained implementation. SPEC-015 remains implementing and its
-plan active. The [baseline correction proposal](../../../../../docs/iterations/iteration-003-review/rfc-014-compiler-baseline-correction.md)
-at `ba9fc7ce` awaits explicit maintainer approval.
+The maintainer approved the Swift 6.4 compiler correction at `267616c9`.
+Normative configuration `470137b7` and compiler/SDK pins `b594997b` are applied.
+The [maintained actual generic-host join](activation-integration/result.md)
+`4b1d642b` passes 48 lifecycle assertions and four intended ownership negatives.
+[Independent component review](activation-integration/final-review.md) at
+`0512209f` passes. Fresh macro/native/cross-target baseline regressions and the
+maintained P08 component checker remain required before activation-blocker
+closure. Full P08 remains open; SPEC-015 remains implementing and its plan active.
 
 The maintainer authorized resolution, bounded delegation and a commit for each
 step. Strong Astra 6 Medium owns mechanism investigation and separate review;
@@ -68,13 +68,11 @@ not full profile coverage. The existing macro executable remains a separately
 executed host plugin, so complete macro/compiler compatibility is also unproved.
 No old GiftUI module/object was reused with the candidate compiler.
 
-The [proposed baseline correction](../../../../../docs/iterations/iteration-003-review/rfc-014-compiler-baseline-correction.md)
-at `ba9fc7ce` awaits explicit maintainer approval; normative pins and maintained
-sources remain unchanged. [Target artifact availability](compiler-comparison/target-availability.md)
-identifies a published matching ARMv6 SDK and bundled Embedded module, without
-claiming target compatibility, ABI or resources. SPEC-015's containment contract
-remains intact. Historical failures, closed budgets and production guards remain
-preserved; positive feasibility does not reopen prior allowances.
+The [baseline correction](../../../../../docs/iterations/iteration-003-review/rfc-014-compiler-baseline-correction.md)
+is now approved and applied. [Target setup](activation-integration/pin-step/result.md)
+records compiler/SDK identities and metadata checks; fresh target compatibility,
+ABI and resource evidence must be assessed separately. Historical failures,
+closed budgets and production guards remain preserved.
 
 ## Evidence required to actually unblock implementation
 
@@ -90,5 +88,5 @@ preserved; positive feasibility does not reopen prior allowances.
 
 Only then can the activation blocker be marked resolved. The finite counter,
 four routes, early images, resources and complete P08 acceptance remain separate
-work in the approved sequence. The prepared optional regression-checker patch
-remains unapplied pending the baseline decision and complete maintained integration evidence.
+work in the approved sequence. The maintained optional regression checker is integrated at `6631d119` and
+`9ccfd2d8`; its fresh execution receipts remain required.

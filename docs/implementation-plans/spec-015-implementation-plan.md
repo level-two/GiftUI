@@ -47,11 +47,15 @@ at `ceaed326` / `6a0fb348` passes 25 dependency rebuilds, positive execution and
 intended callback rejection. [Independent review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/compiler-native-join/final-review.md)
 at `156f3fb4` passes the bounded pair and supports proposal presentation. Its
 Static coordinator runs under preserved Dynamic-profile flags, not full profile coverage.
-The [baseline correction proposal](../iterations/iteration-003-review/rfc-014-compiler-baseline-correction.md)
-at `ba9fc7ce` awaits explicit maintainer approval. No normative pin or maintained
-implementation changed. Generic host integration, remaining ownership/backing
-controls, full lifecycle, target and resource validation remain open. SPEC-015
-remains `implementing`, this plan `active`, and P08 incomplete.
+The [baseline correction is approved](../iterations/iteration-003-review/rfc-014-spec-approval.md#swift-64-compiler-baseline-correction--2026-10-12)
+at `267616c9`, applied in normative configuration `470137b7` and pins `b594997b`.
+The maintained actual generic-host join `4b1d642b` passes 48 lifecycle assertions
+and four ownership negatives; [independent component review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-integration/final-review.md)
+`0512209f` passes. Fresh macro/native/cross-target baseline and maintained P08
+component regressions remain closure prerequisites. Full validator/application
+owners, counter/four routes/early images/resources and P08 exit remain open.
+Historical guards and closed budgets are preserved; SPEC-015 remains implementing
+and its plan active.
 
 - [ ] `T8.1` — Schema-4 validation and explicit limits, real host owners, four-config counter, complete host ledger and lifetime checks.
   **Scope:** GiftUIHostConfiguration, scalar workload generator/validator and finite counter repository composition and directly corresponding tests/fixtures/build wiring.

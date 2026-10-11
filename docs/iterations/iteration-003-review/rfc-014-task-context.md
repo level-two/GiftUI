@@ -1,19 +1,17 @@
 # RFC-014 task context guide
 
-**Current P08 checkpoint — compiler remedy proposed; approval pending, 2026-10-12:**
-The [minimal compiler comparison](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/compiler-comparison/final-review.md)
-at `80161faa` independently verifies the 6.4 candidate: its positive executes and
-wrapped callback escape rejects; 6.3.3 accepts the escape, matching frozen 6.3.2
-controls. The [fresh actual feasibility pair](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/compiler-native-join/result.md)
-at `ceaed326` / `6a0fb348` rebuilds 25 dependencies, executes the positive and
-rejects reachable callback escape. [Independent review](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/compiler-native-join/final-review.md)
-at `156f3fb4` passes the bounded pair and supports proposal presentation. It uses
-a Static coordinator under preserved Dynamic-profile flags, not full profile coverage.
-The [baseline proposal](rfc-014-compiler-baseline-correction.md) at `ba9fc7ce`
-awaits explicit maintainer approval. No normative compiler pin or maintained
-source changed. [Current evidence](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/progress.md)
-retains histories and closed budgets. Generic host/lifecycle integration, remaining
-ownership controls, target and resource evidence, T8.1 and P08 exit remain open.
+**Current P08 checkpoint — approved baseline; fresh regression underway, 2026-10-12:**
+The maintainer [approved the Swift 6.4 correction](rfc-014-spec-approval.md#swift-64-compiler-baseline-correction--2026-10-12)
+at `267616c9`. Normative configuration `470137b7` and compiler/SDK pins
+`b594997b` are applied. The maintained actual generic-host activation join
+`4b1d642b` passes 48 lifecycle assertions and four ownership negatives;
+[independent review](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-integration/final-review.md)
+`0512209f` passes its bounded component scope. Fresh macro, native and cross-target
+baseline regressions and the maintained P08 checker remain closure prerequisites.
+[Current evidence](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/progress.md)
+preserves historical guards and closed budgets. Synthetic component reports and
+application-stage trace adapters do not establish full application validation;
+T8.1, counter/four routes/early images/resources and full P08 exit remain open.
 
 **Historical P08 stop checkpoint, superseded only by later explicitly bounded work:**
 Approved correction `4dbdc2e0`, host propagation `6eda65d0` and schema4 slice

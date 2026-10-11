@@ -1,27 +1,17 @@
 # RFC-014 P08 execution receipt — 2026-10-11
 
-**Current checkpoint — compiler remedy proposed; approval pending, 2026-10-12.**
-The [independently reviewed minimal comparison](compiler-comparison/final-review.md)
-at `80161faa` verifies Swift 6.4 as a candidate for the unchanged minimal control:
-its positive executes and its wrapped-owner callback escape rejects for the
-intended lifetime condition. Swift 6.3.3 accepts that escape, matching frozen
-6.3.2 controls; the comparison did not rerun 6.3.2.
+**Current checkpoint — approved baseline; fresh regression underway, 2026-10-12.**
+The [compiler correction is approved](../../../../../docs/iterations/iteration-003-review/rfc-014-spec-approval.md#swift-64-compiler-baseline-correction--2026-10-12)
+at `267616c9`; normative configuration `470137b7` and pins `b594997b` are applied.
+The [maintained actual generic-host join](activation-integration/result.md),
+committed `4b1d642b`, passes 48 lifecycle assertions and four intended ownership
+negatives. [Independent review](activation-integration/final-review.md) at
+`0512209f` passes the bounded component. Fresh macro/core/runtime four-profile
+baseline checks and the [native component regression](activation-integration/component-regression-scope.md)
+remain required before closure. Full validator/application owners, counter,
+four routes, early images/resources and P08 exit retain their existing obligations.
 
-[Fresh actual native feasibility](compiler-native-join/result.md), frozen at
-`ceaed326` with `6a0fb348` reconciliation, rebuilds 25 dependencies, executes the
-actual positive and rejects its reachable callback negative. [Independent review](compiler-native-join/final-review.md) at `156f3fb4` passes
-the bounded pair and supports presenting the proposal for approval. This uses
-the actual Static coordinator under preserved Dynamic-profile flags; it does not establish full Static/Dynamic profile coverage. The existing
-macro executable is a separate host plugin, not a freshly validated macro baseline.
-
-The [compiler-baseline correction proposal](../../../../../docs/iterations/iteration-003-review/rfc-014-compiler-baseline-correction.md)
-at `ba9fc7ce` awaits explicit maintainer approval. No normative pin or maintained
-implementation changed. Generic host integration, additional ownership/backing
-controls, complete lifecycle, target compatibility and resources remain unproved;
-P08 and T8.1 remain open. Historical closed budgets and 2/2 guards are preserved.
-[Blocker resolution record](blocker-resolution.md) summarizes the decision boundary.
-
-**Historical checkpoint — invariant struct anchor pending, 2026-10-12.**
+**Historical investigations below retain their original scopes and closed budgets.**
 The latest [bounded scope](activation-struct/scope.md), committed at `99d4ddd1`,
 tests a private invariant Span field outside the mutable inert/active enum state.
 This is an unverified internal representation hypothesis under the maintainer's

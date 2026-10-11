@@ -46,11 +46,15 @@ at `ceaed326` / `6a0fb348` rebuilds 25 dependencies, executes the actual positiv
 and rejects reachable callback escape. [Independent review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/compiler-native-join/final-review.md)
 at `156f3fb4` passes the bounded pair and supports proposal presentation. This is a
 Static coordinator under preserved Dynamic-profile flags, not full profile coverage.
-The [baseline proposal](../iterations/iteration-003-review/rfc-014-compiler-baseline-correction.md)
-at `ba9fc7ce` awaits explicit maintainer approval. No normative pin or maintained
-implementation changed; amended host conformance, remaining ownership/lifecycle,
-target and resource obligations are unproved. Historical guards and closed budgets
-remain unchanged; P08 remains incomplete.
+The [baseline correction is approved](../iterations/iteration-003-review/rfc-014-spec-approval.md#swift-64-compiler-baseline-correction--2026-10-12)
+at `267616c9`, applied in normative configuration `470137b7` and pins `b594997b`.
+The maintained actual generic-host join `4b1d642b` passes 48 lifecycle assertions
+and four ownership negatives; [independent component review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-integration/final-review.md)
+`0512209f` passes. Fresh macro/native/cross-target baseline and maintained P08
+component regressions remain closure prerequisites. Full validator/application
+owners, counter/four routes/early images/resources and P08 exit remain open.
+Historical guards and closed budgets are preserved; SPEC-015 remains implementing
+and its plan active.
 
 **Current amendment — 2026-10-05:** Approved five-second retention is implemented and all four hardware-free profiles pass in the [fresh integration](../iterations/iteration-002-cleanup/evidence/18-retention-integration/result.md). Focused nRF connected checks/restoration and current Pi deployment/ARMv6 rehearsal/bounded physical endpoint loop succeed. Original exception authority remains unchanged.
 

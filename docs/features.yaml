@@ -102,7 +102,8 @@ features:
     # P08 activation-resolution/fence/span/boundary independent reviews complete: reject adoption; all budgets closed.
     # Minimal compiler comparison reviewed80161faa:6.4 candidate passes;6.3.3 accepts wrapped escape, matching frozen6.3.2.
     # Actual native feasibility ceaed326/6a0fb348 passes25deps+positive+callbacknegative; independent review156f3fb4 passes bounded pair; Static coordinator/Dynamic-profile flags only.
-    # Baseline proposal ba9fc7ce awaits explicit maintainer approval; no normative pin/adoption/P08 exit; historical guards preserved.
+    # Baseline correction approved267616c9; normative470137b7/pinsb594997b applied.
+    # Maintained activation4b1d642b passes48+four negatives; independent0512209f pass; fresh baseline/component regressions pending, fullP08 open; historical guards preserved.
     # SPEC-009 scoped coordinator correction implementing; T9.1 belongs to P07, amended conformance pending.
     # Optional source-conditional cleanup: FW-029, linked from SPEC-013.
     # ITERATION-003 revision 5 governs bounded runtime/memory/performance preparation.
