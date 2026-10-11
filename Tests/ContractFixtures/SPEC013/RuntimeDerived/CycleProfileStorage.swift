@@ -425,6 +425,7 @@ func cycleFactoryProbe() -> Int {
     do throws(ObservableStateError) {
         let staticOwner = try models.issue()
         let dynamicOwner = try models.issue()
+        let retryStaticOwner = try models.issue(), retryDynamicOwner = try models.issue()
         do throws(SemanticExpansionError) {
             var storage = StaticCycleProfileStorage(modelOwner: staticOwner, semanticOwner: try semantic.issue())
             precondition({ if case .valid = storage.audit() { return true }; return false }())
@@ -449,6 +450,14 @@ func cycleFactoryProbe() -> Int {
             dynamic.resetAllStorage()
             precondition(dynamic.control.admission.pendingState == nil && dynamic.audit() == initialDynamic)
             checks += dynamic.run() + 3
+            #endif
+            var retryStatic = StaticCycleProfileStorage(modelOwner: retryStaticOwner, semanticOwner: try semantic.issue())
+            retryStatic.control.terminalRetry = true
+            checks += retryStatic.run()
+            #if !hasFeature(Embedded)
+            var retryDynamic = DynamicCycleProfileStorage(modelOwner: retryDynamicOwner, semanticOwner: try semantic.issue())
+            retryDynamic.control.terminalRetry = true
+            checks += retryDynamic.run()
             #endif
             return checks
         } catch { preconditionFailure("factory semantic identity") }
@@ -579,7 +588,12 @@ func cycleConfiguredLimitProbe() -> Int {
     var checks = 0
     func expected(_ control: CycleControl, axis: Int) {
         if axis == 1 || axis == 3 || axis >= 17 {
-            guard case .completed? = control.result else { preconditionFailure("adequate configured limits") }
+            // Adequate capacities already passed the successful cycle assertions;
+            // the final operation now deliberately proves terminal refusal.
+            guard case .failed(let terminal)? = control.result else { preconditionFailure("adequate configured limits reach terminal probe") }
+            precondition(terminal.failure == .nonRetryableRefusal(.endpoint))
+            precondition(terminal.disposition.presentationIntentState == .unavailable)
+            precondition(control.unavailable && control.committedRecords == 0)
             precondition(control.applied == 3)
         } else {
             let stage: RuntimeCompletePipelineStage = switch axis {

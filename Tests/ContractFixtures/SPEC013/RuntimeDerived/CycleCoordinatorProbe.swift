@@ -34,11 +34,22 @@ extension CyclePipelineOwner: ExecutionOpportunityRunner {
             return .failure(completedContext, failure ?? .execution(.invariantViolation), nil)
         }
         var events: ExecutionOperationalEvents = []
-        if operational == .backpressured { events = .backpressured }
-        if operational == .retryableRefusal { events = .retryableRefusal; retryCount += 1 }
-        let pending = disposition.presentationIntentState == .pending
-            ? PresentationPendingIntent(semanticRevision: phase.context.semanticRevision!, retryableRefusalCount: retryCount) : nil
-        let summary = RunCycleSummary(cycle: cycle, admission: admission, semanticRevision: phase.context.semanticRevision, semanticDisposition: disposition.semanticDisposition, logicalFrameDisposition: disposition.logicalFrameDisposition, committedPresentationRevision: committedPresentation, presentationIntentState: disposition.presentationIntentState, presentationPending: pending, operationalEvents: events)!
+        var intent: PresentationPendingIntent?
+        var terminal = false
+        if operational == .backpressured {
+            let transition = recovery.recordBackpressure(for: phase.context.semanticRevision!)
+            events = transition.operationalEvents; intent = transition.intent
+        } else if operational == .retryableRefusal {
+            let transition = recovery.recordRetryableRefusal(for: phase.context.semanticRevision!)
+            events = transition.operationalEvents; intent = transition.intent; terminal = transition.exhausted
+        } else {
+            if let revision = phase.context.semanticRevision { recovery.clearPending(for: revision) }
+        }
+        if case .nonRetryableRefusal = failure { terminal = true }
+        if failure == .execution(.requiredFacilityUnavailable) { terminal = true }
+        if terminal { terminatePresentation() }
+        let summary = RunCycleSummary(cycle: cycle, admission: admission, semanticRevision: phase.context.semanticRevision, semanticDisposition: disposition.semanticDisposition, logicalFrameDisposition: disposition.logicalFrameDisposition, committedPresentationRevision: committedPresentation, presentationIntentState: terminal ? .unavailable : disposition.presentationIntentState, presentationPending: intent, operationalEvents: events)!
+        cycleTrace("summary", summary)
         if let failure { return .failure(completedContext, failure, summary) }
         if let operational { return .operational(operational, summary) }
         return .success(summary)
@@ -108,16 +119,7 @@ func cycleConcreteCoordinator<G, C, R, H>(owner: consuming CyclePipelineOwner<G,
         }
         precondition(coordinator.opportunity.geometry.storageMeasurement() == geometryBefore)
         precondition(cycleMeasureInteraction(coordinator.opportunity.interaction) == interactionBefore)
-        guard case .success = coordinator.runOpportunity() else { preconditionFailure("Dynamic concrete coordinator") }
-        precondition(coordinator.submit(stateChange: 1).result == .queued)
-        precondition(coordinator.submit(stateChange: 1).result == .capacityRefused)
-        guard case .success(let summary) = coordinator.runOpportunity() else { preconditionFailure("Dynamic admitted mutation") }
-        precondition(summary.admission.stateChangeFactCount == 1)
-        coordinator.quiesce(); coordinator.quiesce()
-        precondition(coordinator.opportunity.geometry.storageMeasurement() == geometryBefore)
-        precondition(cycleMeasureInteraction(coordinator.opportunity.interaction) == interactionBefore)
-        precondition(coordinator.submit(stateChange: 1).result == .unavailable)
-        guard case .failure(_, .execution(.requiredFacilityUnavailable), nil) = coordinator.runOpportunity() else { preconditionFailure("Dynamic stopped entry") }
+        let lifecycleChecks = exerciseConcreteLifecycle(&coordinator, control: control)
         var returned = coordinator.takeQuiescedOpportunity()!
         precondition(returned.geometry.storageMeasurement() == geometryBefore)
         precondition(cycleMeasureInteraction(returned.interaction) == interactionBefore)
@@ -126,7 +128,7 @@ func cycleConcreteCoordinator<G, C, R, H>(owner: consuming CyclePipelineOwner<G,
         precondition(returned.interaction.committedRecordCount == 0 && returned.interaction.committedComponents == 0)
         precondition(cycleMeasureInteraction(returned.interaction) == interactionBefore)
         precondition(returned.geometry.storageMeasurement() == geometryBefore)
-        return returned.returnWorkspaces(checks: 16)
+        return returned.returnWorkspaces(checks: lifecycleChecks + 8)
     }
     #endif
     var coordinator = StaticRuntimeExecutionCoordinator(binding: binding, admission: admission, opportunity: owner)
@@ -138,16 +140,7 @@ func cycleConcreteCoordinator<G, C, R, H>(owner: consuming CyclePipelineOwner<G,
     }
     precondition(coordinator.opportunity.geometry.storageMeasurement() == geometryBefore)
     precondition(cycleMeasureInteraction(coordinator.opportunity.interaction) == interactionBefore)
-    guard case .success = coordinator.runOpportunity() else { preconditionFailure("Static concrete coordinator") }
-    precondition(coordinator.submit(stateChange: 1).result == .queued)
-    precondition(coordinator.submit(stateChange: 1).result == .capacityRefused)
-    guard case .success(let summary) = coordinator.runOpportunity() else { preconditionFailure("Static admitted mutation") }
-    precondition(summary.admission.stateChangeFactCount == 1)
-    coordinator.quiesce(); coordinator.quiesce()
-        precondition(coordinator.opportunity.geometry.storageMeasurement() == geometryBefore)
-        precondition(cycleMeasureInteraction(coordinator.opportunity.interaction) == interactionBefore)
-    precondition(coordinator.submit(stateChange: 1).result == .unavailable)
-    guard case .failure(_, .execution(.requiredFacilityUnavailable), nil) = coordinator.runOpportunity() else { preconditionFailure("Static stopped entry") }
+    let lifecycleChecks = exerciseConcreteLifecycle(&coordinator, control: control)
     var returned = coordinator.takeQuiescedOpportunity()!
     precondition(returned.geometry.storageMeasurement() == geometryBefore)
     precondition(cycleMeasureInteraction(returned.interaction) == interactionBefore)
@@ -156,7 +149,7 @@ func cycleConcreteCoordinator<G, C, R, H>(owner: consuming CyclePipelineOwner<G,
         precondition(returned.interaction.committedRecordCount == 0 && returned.interaction.committedComponents == 0)
         precondition(cycleMeasureInteraction(returned.interaction) == interactionBefore)
     precondition(returned.geometry.storageMeasurement() == geometryBefore)
-    return returned.returnWorkspaces(checks: 16)
+    return returned.returnWorkspaces(checks: lifecycleChecks + 8)
 }
 
 // Actual disjoint finite stores used by admission and sealing. Completion capacity
@@ -235,4 +228,37 @@ func verifyCommonCoordinator<C: GiftUIRuntimeProfileCoordinator & ~Copyable & ~E
     precondition(coordinator.profile == audit.profile)
     precondition(coordinator.storageAudit == audit)
     precondition(!coordinator.isQuiescent)
+}
+
+func exerciseConcreteLifecycle<C: GiftUIRuntimeProfileCoordinator & ~Copyable & ~Escapable>(_ coordinator: inout C, control: UnsafeMutablePointer<CycleControl>) -> Int where C.StateChangeFact == UInt8, C.CompletionFact == UInt16, C.OwnerFailure == RuntimeOwnerFailure {
+    var checks = 0
+    func expect(_ value: Bool) { checks += 1; precondition(value) }
+    guard case .success = coordinator.runOpportunity() else { preconditionFailure("concrete coordinator") }
+    expect(coordinator.submit(stateChange: 1).result == .queued)
+    expect(coordinator.submit(stateChange: 1).result == .capacityRefused)
+    guard case .success(let summary) = coordinator.runOpportunity() else { preconditionFailure("admitted mutation") }
+    expect(summary.admission.stateChangeFactCount == 1)
+    let applied = control.pointee.applied, streams = control.pointee.streams
+    if control.pointee.terminalRetry {
+        control.pointee.offer = .retryableRefusal
+        for count: UInt8 in 1...3 {
+            guard case .operational(.retryableRefusal, let refused) = coordinator.runOpportunity() else { preconditionFailure("bounded refusal") }
+            expect(refused.presentationIntentState == (count < 3 ? .pending : .unavailable))
+            expect(refused.presentationPending?.retryableRefusalCount == (count < 3 ? count : nil))
+            expect(coordinator.isQuiescent == (count == 3))
+        }
+    } else {
+        control.pointee.offer = .nonRetryableRefusal
+        guard case .failure(_, .nonRetryableRefusal(.endpoint), let stopped) = coordinator.runOpportunity() else { preconditionFailure("nonretryable terminal") }
+        expect(stopped?.presentationIntentState == .unavailable && stopped?.presentationPending == nil)
+    }
+    expect(coordinator.isQuiescent && control.pointee.committedRecords == 0)
+    expect(control.pointee.admission.pointerCount == 0 && !control.pointee.mutate)
+    expect(control.pointee.applied == applied && control.pointee.streams == streams)
+    let finalized = control.pointee.finalized
+    coordinator.quiesce(); coordinator.quiesce()
+    expect(coordinator.submit(stateChange: 1).result == .unavailable)
+    guard case .failure(_, .execution(.requiredFacilityUnavailable), nil) = coordinator.runOpportunity() else { preconditionFailure("terminal entry") }
+    expect(control.pointee.finalized == finalized && control.pointee.applied == applied)
+    return checks
 }

@@ -820,3 +820,43 @@ identical profile transcripts. Resumed consecutive unproductive repairs: 0/2.
 This extends evidence; it does not pass P07 or cover the still-open pointer,
 terminal lifecycle, finite retry and malformed Drawing append cases. Final four
 routes and independent Strong exit review remain required.
+
+
+## Lifecycle continuation step 2 — terminal refusal and finite recovery (2026-10-11)
+
+The actual scoped opportunity now uses the existing checked pending-recovery
+algorithm with immutable maximum 3. Each concrete coordinator proves counts 1
+and 2 retain pending intent, count 3 clears intent and makes the coordinator
+unavailable, and no admitted mutation or stream is replayed. A separate fresh
+assembly proves exact nonretryable endpoint refusal. Terminal cleanup occurs
+only after synchronous attempt cleanup: admission is stopped/cleared, Interaction
+routing is reset, and the actual root is shut down before backing is returned.
+Repeated quiesce, later admission and later opportunities cannot reactivate it.
+The old test-only quiescent flag reset was removed.
+
+Fresh [native receipt](lifecycle-step-2-macos-static.json): **2945 assertions,
+12 negative controls**, with exact Static/Dynamic
+[logical transcripts](lifecycle-step-2-logical-transcripts.json). New recovery
+state is included by the existing actual coordinator MemoryLayout partition;
+[fresh 26-field storage descriptors](lifecycle-step-2-storage-regions.json)
+reconcile before/after the execution and returned ownership. Formatter,
+`git diff --check`, and governance validation pass.
+
+The first run compiled and reached real terminal teardown, then trapped because
+the adequate-capacity oracle still expected its final result to be completed.
+The final operation is now an intentional nonretryable refusal. An isolated
+`-Onone -g` build and a line-buffered execution located the stale oracle; it now
+requires the exact refusal, unavailable disposition and zero committed routing,
+while retaining all preceding successful-cycle checks and applied count 3.
+Failed run: `.build/contracts/spec-013-runtime-cycle/tmpoc_929io/macos-static`;
+its `diagnostic` subdirectory preserves compile/link commands and execution.
+No production compiler or global setting changed. One cause-backed correction
+passed; resumed consecutive unproductive repair count remains **0/2**.
+
+Remaining P07 work is not satisfied by this checkpoint: actual pointer seal and
+late-admission current-context integration; stale target cancellation and explicit
+exactly-once report evidence; nested/reentrant coordinator evidence; malformed
+Drawing pool append rollback; any remaining early acquisition cases; fresh final
+four-route receipts, traceability reconciliation and separate Strong exit review.
+The existing stage-fault and partial-acquisition controls remain in the transcript.
+P08–P12, complete images/resources and connected hardware remain outside this slice.

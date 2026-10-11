@@ -80,7 +80,7 @@ func exercisePipeline<G, C, R, H>(models: borrowing ObservableModelScope<CycleOw
         result = owner.runTracedPipeline()
         guard case .completed(let recovered) = result else { preconditionFailure("partial recovery") }
         expect(recovered.publication.changed && trace.pointee.applied == 2)
-        for offer: FrameOfferDisposition in [.backpressured, .nonRetryableRefusal] {
+        for offer: FrameOfferDisposition in [.backpressured] {
             trace.pointee.offer = offer
             let streams = trace.pointee.streams, commits = trace.pointee.commits
             result = owner.runTracedPipeline()
@@ -115,12 +115,6 @@ func exercisePipeline<G, C, R, H>(models: borrowing ObservableModelScope<CycleOw
         guard case .completed = result else { preconditionFailure("retirement pipeline") }
         expect(owner.rootIdentity == nil && owner.interaction.committedRecordCount == 0)
         expect(models.phase == .mutating && values.count == 0)
-        owner.quiescent = true
-        result = owner.runTracedPipeline()
-        guard case .failed(let stopped) = result else { preconditionFailure("quiescence pipeline") }
-        expect(stopped.failure == .execution(.requiredFacilityUnavailable))
-        expect(models.phase == .mutating)
-        owner.quiescent = false
         trace.pointee.show = true; owner.changed = true
         var returned = cycleConcreteCoordinator(owner: consume owner, dynamic: dynamic, control: trace, audit: audit)
         returned.checks += checks

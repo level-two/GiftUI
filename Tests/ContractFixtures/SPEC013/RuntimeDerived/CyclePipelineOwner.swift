@@ -42,6 +42,7 @@ struct CycleControl {
         get { admission.pendingState != nil }
         set { admission.pendingState = newValue ? 1 : nil }
     }
+    var terminalRetry = false
     var failAfterMutation = false
     var cleanupOrder: InlineArray<9, UInt8> = .init(repeating: 255)
     var cleanupCount = 0
@@ -96,7 +97,7 @@ where Geometry: CycleGeometry, Candidate: CycleCandidateBacking, Committed: Cycl
     var completedContext = ExecutionContext(cycle: nil, semanticRevision: nil, candidateFrame: nil, phase: .idle)
     var committedPresentation: PresentationRevision?
     var sealedAdmission: AdmissionSummary?
-    var retryCount: UInt8 = 0
+    var recovery = RecordingPresentationPendingCoordinator(maximumRetryableRefusals: 3, requester: CycleWake())!
     var endpoint = CycleEndpoint()
     var frameActive = false
     var observableCandidate = false
@@ -127,6 +128,19 @@ where Geometry: CycleGeometry, Candidate: CycleCandidateBacking, Committed: Cycl
         let result = RuntimeCompletePipeline.run(owner: &self)
         cycleTrace("result", result)
         return result
+    }
+    mutating func terminatePresentation() {
+        guard !control.pointee.unavailable else { return }
+        // Called only after the synchronous attempt finalized and released reads.
+        precondition(!frameActive && !observableCandidate && !semanticCandidate && !interactionCandidate)
+        control.pointee.unavailable = true
+        quiescent = true; pending = false
+        control.pointee.admission.resetAll()
+        interaction.resetAllStorage()
+        control.pointee.committedRecords = 0
+        do throws(ObservableStateError) { try root.shutdown() }
+        catch { models.requireStop() }
+        cycleTrace("terminal", (interaction.committedRecordCount, values.count, models.phase))
     }
     mutating func boundary(_ stage: RuntimeCompletePipelineStage) -> RunCycleFailure<RuntimeOwnerFailure>? {
         cycleTrace("stage", stage)
