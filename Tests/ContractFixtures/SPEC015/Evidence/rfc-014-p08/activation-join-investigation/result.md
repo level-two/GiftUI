@@ -6,6 +6,9 @@ High, sequential, no delegation. Authorization `0bc51d70` preceded every fresh
 compile. The [accounting review](accounting-review.md), committed at `c05e6d35`,
 permitted the fixed second layout under the original allowance, without a reset.
 
+[Independent final read-only review](final-review.md) confirms the finite
+investigation is complete without a verified candidate; P08 remains blocked.
+
 ## Finite result and counters
 
 Exactly **3/6 fresh compiler invocations**, **2/2 layouts**, **zero negatives**,
