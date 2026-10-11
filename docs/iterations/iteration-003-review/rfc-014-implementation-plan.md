@@ -1,17 +1,21 @@
 # RFC-014 bounded implementation sequence — 2026-10-10
 
-**Current P08 checkpoint — invariant struct anchor pending, 2026-10-12:**
-The [latest bounded scope](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-struct/scope.md)
-at `99d4ddd1` tests a private invariant Span field outside mutable enum state.
-Strong Astra 6 Medium owns the sequential compiler work; the hypothesis is
-unverified. The [current evidence index](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/progress.md)
-links completed independent reviews rejecting all four preceding candidates.
-The latest [matched-boundary review](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-boundary/final-review.md)
-confirms accepted callback escape even in the minimal enum reduction.
-Historical guards and closed bench budgets remain unchanged. No complete join
-with passing lifetime containment, maintained adoption, or P08 exit is claimed.
+**Current P08 checkpoint — compiler remedy proposed; approval pending, 2026-10-12:**
+The [minimal compiler comparison](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/compiler-comparison/final-review.md)
+at `80161faa` independently verifies the 6.4 candidate: its positive executes and
+wrapped callback escape rejects; 6.3.3 accepts the escape, matching frozen 6.3.2
+controls. The [fresh actual feasibility pair](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/compiler-native-join/result.md)
+at `ceaed326` / `6a0fb348` rebuilds 25 dependencies, executes the positive and
+rejects reachable callback escape. [Independent review](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/compiler-native-join/final-review.md)
+at `156f3fb4` passes the bounded pair and supports proposal presentation. It uses
+a Static coordinator under preserved Dynamic-profile flags, not full profile coverage.
+The [baseline proposal](rfc-014-compiler-baseline-correction.md) at `ba9fc7ce`
+awaits explicit maintainer approval. No normative compiler pin or maintained
+source changed. [Current evidence](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/progress.md)
+retains histories and closed budgets. Generic host/lifecycle integration, remaining
+ownership controls, target and resource evidence, T8.1 and P08 exit remain open.
 
-**Historical P08 stop checkpoint, superseded only by the bounded scope above:**
+**Historical P08 stop checkpoint, superseded only by later explicitly bounded work:**
 Approved correction `4dbdc2e0`, host propagation `6eda65d0` and schema4 slice
 `c39733de` are committed. Both native complete HostConfiguration component gates
 pass320 assertions plus ownership/missing-field/generator controls. The attempted

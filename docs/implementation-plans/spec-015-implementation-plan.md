@@ -39,16 +39,19 @@ The exact scoped-host correction is now explicitly approved and applied; see
 The original packet/probes and independent review remain historical evidence.
 Production implementation/evidence remain required; the construction, activation
 and backing-last teardown obligations are unchanged. [P08 progress](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/progress.md)
-preserves the historical **2/2** guards and closed bench budgets. Independent
-reviews of the four subsequent activation candidates reject adoption; the latest
-[matched-boundary review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-boundary/final-review.md)
-confirms accepted callback escape, including a minimal enum reduction.
-The [invariant struct scope](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-struct/scope.md)
-at `99d4ddd1` is the current unverified hypothesis as of 2026-10-12, under the
-maintainer's continuing bounded blocker-resolution request. No complete join
-with passing lifetime containment is verified; maintained adoption and regression
-integration remain pending. SPEC-015 remains `implementing`, this plan `active`,
-and P08 incomplete.
+preserves historical **2/2** guards and closed bench budgets. The
+[independent minimal comparison](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/compiler-comparison/final-review.md)
+at `80161faa` verifies the 6.4 candidate; 6.3.3 accepts the wrapped escape,
+matching frozen 6.3.2 controls. [Fresh actual native feasibility](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/compiler-native-join/result.md)
+at `ceaed326` / `6a0fb348` passes 25 dependency rebuilds, positive execution and
+intended callback rejection. [Independent review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/compiler-native-join/final-review.md)
+at `156f3fb4` passes the bounded pair and supports proposal presentation. Its
+Static coordinator runs under preserved Dynamic-profile flags, not full profile coverage.
+The [baseline correction proposal](../iterations/iteration-003-review/rfc-014-compiler-baseline-correction.md)
+at `ba9fc7ce` awaits explicit maintainer approval. No normative pin or maintained
+implementation changed. Generic host integration, remaining ownership/backing
+controls, full lifecycle, target and resource validation remain open. SPEC-015
+remains `implementing`, this plan `active`, and P08 incomplete.
 
 - [ ] `T8.1` — Schema-4 validation and explicit limits, real host owners, four-config counter, complete host ledger and lifetime checks.
   **Scope:** GiftUIHostConfiguration, scalar workload generator/validator and finite counter repository composition and directly corresponding tests/fixtures/build wiring.

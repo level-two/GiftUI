@@ -2,10 +2,14 @@
 
 ## Current conclusion
 
-P08 is not unblocked. The original positive construction failure has a working
-experimental realization, but no candidate has passed the required callback
-containment control. No experimental owner has been adopted into maintained
-implementation. SPEC-015 remains implementing, its plan active, and P08 open.
+P08 remains open; the supported compiler-baseline decision is now the next gate.
+The independently reviewed minimal comparison verifies Swift 6.4 as a remedy
+candidate, and fresh actual native feasibility passes activation/opportunity/
+quiescence plus intended callback-escape rejection. Its [independent review](compiler-native-join/final-review.md)
+at `156f3fb4` passes the bounded pair and supports presenting the proposal. No
+experimental owner or new compiler baseline has been adopted into maintained implementation. SPEC-015 remains implementing and its
+plan active. The [baseline correction proposal](../../../../../docs/iterations/iteration-003-review/rfc-014-compiler-baseline-correction.md)
+at `ba9fc7ce` awaits explicit maintainer approval.
 
 The maintainer authorized resolution, bounded delegation and a commit for each
 step. Strong Astra 6 Medium owns mechanism investigation and separate review;
@@ -24,7 +28,7 @@ is mechanism evidence, not a complete host-construction or application gate.
 
 The blocking result is now lifetime containment. A reachable negative program
 stores the scoped owner outside the backing activation callback and reads it
-after callback return. The compiler accepts the tested owner forms. The backing
+after callback return. Swift 6.3.2 accepts the tested owner forms. The backing
 callback is a semantic retirement boundary, even when enclosing storage remains
 allocated. Accepted negative executables were never run.
 
@@ -45,22 +49,32 @@ No further representation trial is authorized by the closed final control.
 
 ## Concrete remedy assessment
 
-An [evidence-only compiler comparison](compiler-comparison/scope.md) is in
-progress, using official Swift 6.3.3 and 6.4.0 packages extracted only beneath
-`.toolchains/`. Both official package signatures and Apple notarization passed
-the approved system trust check; extraction is underway. No alternate compiler
-test result is claimed. The fixed matrix preserves the frozen sources, target, SDK,
-optimization and feature flags. A syntax or feature rejection is not a passing
-containment check. Accepted architecture, supported compiler pins and maintained
-source remain unchanged throughout the comparison.
+The [fixed minimal compiler comparison](compiler-comparison/result.md) is closed
+at six of six calls and [independently reviewed](compiler-comparison/final-review.md)
+at `80161faa`. Both official packages were extracted project-locally; their signatures and
+notarization were verified before alternate compiler executables ran. Swift 6.3.3 executes the positive but
+accepts wrapped-owner escape, matching the frozen 6.3.2 controls. Swift 6.4
+executes the unchanged positive and rejects both the unchanged wrapped-owner
+negative and direct Span.take negative for the intended marker-lifetime condition.
+The comparison did not rerun 6.3.2 or establish an upstream fix attribution.
 
-If an alternative passes, it supplies a concrete candidate for an explicit
-baseline decision; it does not authorize adoption. The affected authority starts
-with ADR-036's initial compiler pin, SPEC-013's migration configuration and
-SPEC-002's migration/measurement configuration, plus target-specific normative
-pins in SPEC-003/004. Native minimal evidence cannot establish ARMv6 or Embedded
-Swift compatibility, ABI or resource results. SPEC-015's containment requirement
-must remain intact.
+[Fresh actual native feasibility](compiler-native-join/result.md), frozen at
+`ceaed326` with `6a0fb348` reconciliation, successfully rebuilds 25 dependencies,
+executes the actual activation/opportunity/quiescence positive and rejects its
+reachable callback negative. [Independent review](compiler-native-join/final-review.md)
+at `156f3fb4` passes this bounded pair. The fixture uses
+an actual Static coordinator under its preserved Dynamic-profile flags; this is
+not full profile coverage. The existing macro executable remains a separately
+executed host plugin, so complete macro/compiler compatibility is also unproved.
+No old GiftUI module/object was reused with the candidate compiler.
+
+The [proposed baseline correction](../../../../../docs/iterations/iteration-003-review/rfc-014-compiler-baseline-correction.md)
+at `ba9fc7ce` awaits explicit maintainer approval; normative pins and maintained
+sources remain unchanged. [Target artifact availability](compiler-comparison/target-availability.md)
+identifies a published matching ARMv6 SDK and bundled Embedded module, without
+claiming target compatibility, ABI or resources. SPEC-015's containment contract
+remains intact. Historical failures, closed budgets and production guards remain
+preserved; positive feasibility does not reopen prior allowances.
 
 ## Evidence required to actually unblock implementation
 
@@ -77,4 +91,4 @@ must remain intact.
 Only then can the activation blocker be marked resolved. The finite counter,
 four routes, early images, resources and complete P08 acceptance remain separate
 work in the approved sequence. The prepared optional regression-checker patch
-has not been applied because no activation candidate is verified yet.
+remains unapplied pending the baseline decision and complete maintained integration evidence.

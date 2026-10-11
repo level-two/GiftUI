@@ -38,15 +38,19 @@ accounting review `c05e6d35`, stopped after3/6 invocations on2/2 layouts with no
 positive/negative pass; conservative candidate guard2/2, production guard2/2 unchanged.
 Its [finite result](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-join-investigation/result.md)
 has completed [independent final review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-join-investigation/final-review.md).
-The maintainer subsequently authorized bounded blocker resolution under unchanged
-contracts. The four later candidates have completed independent reviews rejecting
-adoption; the latest [matched-boundary review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-boundary/final-review.md)
-confirms accepted actual-owner and minimal enum callback escapes. The
-[invariant struct scope](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-struct/scope.md)
-at `99d4ddd1` is the latest unverified hypothesis. No complete activation join
-with passing lifetime containment, maintained adoption, or amended host
-conformance is established. Historical guards and closed budgets remain unchanged;
-P08 remains incomplete.
+The maintainer subsequently authorized bounded blocker resolution. The
+[independently reviewed minimal comparison](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/compiler-comparison/final-review.md)
+at `80161faa` verifies Swift 6.4 as a candidate while 6.3.3 accepts the wrapped
+escape, matching frozen 6.3.2 controls. [Fresh actual native feasibility](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/compiler-native-join/result.md)
+at `ceaed326` / `6a0fb348` rebuilds 25 dependencies, executes the actual positive
+and rejects reachable callback escape. [Independent review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/compiler-native-join/final-review.md)
+at `156f3fb4` passes the bounded pair and supports proposal presentation. This is a
+Static coordinator under preserved Dynamic-profile flags, not full profile coverage.
+The [baseline proposal](../iterations/iteration-003-review/rfc-014-compiler-baseline-correction.md)
+at `ba9fc7ce` awaits explicit maintainer approval. No normative pin or maintained
+implementation changed; amended host conformance, remaining ownership/lifecycle,
+target and resource obligations are unproved. Historical guards and closed budgets
+remain unchanged; P08 remains incomplete.
 
 **Current amendment — 2026-10-05:** Approved five-second retention is implemented and all four hardware-free profiles pass in the [fresh integration](../iterations/iteration-002-cleanup/evidence/18-retention-integration/result.md). Focused nRF connected checks/restoration and current Pi deployment/ARMv6 rehearsal/bounded physical endpoint loop succeed. Original exception authority remains unchanged.
 
