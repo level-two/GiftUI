@@ -1,0 +1,7 @@
+{
+  "command": ".build/contracts/p08-activation-struct-1",
+  "exit": 0,
+  "executable_sha256": "f445edf6eb5ee607165bf1e9a4ead92dbf6e6ab24bfdb75ee3865e5fb1eb9d2f",
+  "stdout_sha256": "61a202f836e3c8992459ddc0e97dcd7e17cb298c5d57258a1a3ad51794c432fc",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}
