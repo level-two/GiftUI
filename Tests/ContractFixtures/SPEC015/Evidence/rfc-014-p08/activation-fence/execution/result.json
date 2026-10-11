@@ -1,0 +1,8 @@
+{
+  "command": ".build/contracts/p08-activation-fence-2",
+  "exit": 0,
+  "executable_sha256": "c3852ee8d9da213b94b5550dece49211ae4152415150a61da0a5e254403a2f9d",
+  "stdout_sha256": "e0555811da6b84d1e67e1b365308c6ed3cae60a1d5b40c0f5f8b7c219c018fc1",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "note": "Second identical execution retained to make complete output durable; no compiler invocation."
+}

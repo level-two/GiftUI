@@ -1,0 +1,6 @@
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-fence/CopyNegative.swift:2:21: error: 'copy' cannot be applied to noncopyable types
+1 | func rejectCopy(_ owner: borrowing InvestigationOwner) {
+2 |     let duplicate = copy owner
+  |                     `- error: 'copy' cannot be applied to noncopyable types
+3 |     _ = duplicate
+4 | }

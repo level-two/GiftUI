@@ -1,0 +1,7 @@
+{
+  "command": ".build/contracts/p08-activation-fence-6",
+  "exit": 0,
+  "executable_sha256": "5f10c24c06a265a06b4f6e6f6bc9bec956a25c47f616934f054d677014c43aa9",
+  "stdout_sha256": "e0555811da6b84d1e67e1b365308c6ed3cae60a1d5b40c0f5f8b7c219c018fc1",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}

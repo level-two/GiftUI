@@ -1,0 +1,8 @@
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-fence/Layout.swift:35:24: error: 'self' is borrowed and cannot be consumed
+33 |         }
+34 |     }
+35 |     var isActive: Bool { if case .active = self { true } else { false } }
+   |                        | `- note: consumed here
+   |                        `- error: 'self' is borrowed and cannot be consumed
+36 |     mutating func runOpportunity() -> Bool {
+37 |         switch consume self {
