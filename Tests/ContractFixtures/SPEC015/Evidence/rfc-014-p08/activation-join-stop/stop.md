@@ -6,6 +6,9 @@ Last validated maintained implementation: `c39733de`; approved lifetime authorit
 host source changed for this failed join. No further compiler runs or alternative
 factoring occurred after guard exhaustion. P07 history is unchanged.
 
+[Independent read-only stop review and finite next authorization option](independent-stop-review.md)
+confirm the stop without new compiler runs or production changes.
+
 ## Required behavior and attempted implementation
 
 The approved SPEC-015 correction permits a scoped host, but preserves pure
