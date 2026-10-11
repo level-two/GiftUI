@@ -6,7 +6,7 @@ status: implementing
 authors:
   - codex
 created: 2026-08-26
-updated: 2026-10-10
+updated: 2026-10-11
 proposal:
   - PROPOSAL-006
   - PROPOSAL-007
@@ -121,6 +121,13 @@ receives a freshly validated read for the exact staged owner/model/generation.
 Client code never chooses the currently installed model by global/root lookup.
 
 CanvasInvocationSource keeps its existing lookup/invoke/release signatures.
+Under the explicitly approved [scoped-source amendment](../iterations/iteration-003-review/rfc-014-spec-approval.md#scoped-canvas-source-constraint-amendment--2026-10-11),
+the protocol permits `~Copyable, ~Escapable` conformers, and the producer's
+Source constraint and directly necessary forwarding preserve both suppressions.
+The lifetime-bearing adapter MUST itself be noncopyable and nonescapable, with
+its lifetime tied to actual borrowed owner and staged-value storage. Existing
+owned sources remain permitted. These constraints do not change associated
+types, invocation signatures, limits, failure order or early-rejection cleanup.
 Its host/schema-specialized adapter supplies the FrameRead internally, invokes
 exactly one typed witness, maps any access failure and ends the read before
 release. No context/pointer/callable-returning lookup is exposed. Static may use
@@ -513,7 +520,7 @@ package protocol StaticCanvasCallableTable {
     ) throws(DrawingError)
 }
 
-package protocol CanvasInvocationSource {
+package protocol CanvasInvocationSource: ~Copyable, ~Escapable {
     associatedtype Identity: Equatable, Sendable
     var canvasOccurrenceCount: UInt16 { get }
     func canvasIdentity(at index: UInt16) -> Identity?
@@ -726,7 +733,7 @@ package enum CanvasPlanProducer {
         limits: DrawingLimits,
         workspace: inout Workspace
     ) -> DrawingPlanResult
-    where Source: CanvasInvocationSource,
+    where Source: CanvasInvocationSource & ~Copyable & ~Escapable,
           Layout: ResolvedRenderLayoutView,
           Workspace: DrawingPlanConstructionWorkspace,
           Source.Identity == Layout.Identity,

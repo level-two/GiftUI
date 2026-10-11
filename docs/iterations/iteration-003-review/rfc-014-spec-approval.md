@@ -54,3 +54,28 @@ boundaries without introducing another runtime, alternate traversal or a new RFC
 The [historical blocker](../../../Tests/ContractFixtures/SPEC010/Evidence/rfc-014-p03/lexical-visitor-blocker.md)
 is preserved as evidence and resolved by this approved amendment; implementation
 and package-exit evidence are still required.
+
+## Scoped Canvas source constraint amendment — 2026-10-11
+
+Eugene replied “Approved. Please proceed” to the concrete P06 proposal committed
+as `67331c11`. This explicitly approves the narrow SPEC-012 amendment described
+in the [constraint packet](../../../Tests/ContractFixtures/SPEC012/Evidence/rfc-014-p06/scoped-source-constraint.md)
+and continued P06 implementation:
+
+- `CanvasInvocationSource` permits `~Copyable, ~Escapable` conformers.
+- `CanvasPlanProducer.derive` permits `Source: CanvasInvocationSource &
+  ~Copyable & ~Escapable`; private validation/failure helpers and directly
+  necessary adapters forward those suppressions.
+- The lifetime-bearing adapter is noncopyable/nonescapable and tied to actual
+  borrowed P03 owner and staged-value storage. Existing owned conformers remain
+  permitted; the suppressions do not require all sources to borrow.
+- All lookup/invoke/release method signatures, associated types, bounds,
+  failure ordering and early-rejection caller cleanup duties remain unchanged.
+- P06 must still prove positive and noncopy/escape controls, exact-selected-model
+  reads, normal/throwing/early cleanup, witness coverage and order across the four
+  pinned configurations. Geometry/pixel controls and resource accounting remain.
+
+This realizes accepted ADR-036/037; no architecture change, relaxed acceptance
+criterion, capacity increase, package expansion or implemented transition is
+approved. The original compiler proof remains historical evidence. SPEC-012
+stays implementing and P06 remains open until its implementation and review pass.

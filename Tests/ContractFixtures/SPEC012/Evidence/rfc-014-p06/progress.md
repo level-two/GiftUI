@@ -1,5 +1,25 @@
 # RFC-014 P06 progress
 
+## Approved resumption dispatch — 2026-10-11
+
+Eugene approved the precise source-constraint proposal at `67331c11` with
+“Approved. Please proceed”. The [approval record](../../../../../docs/iterations/iteration-003-review/rfc-014-spec-approval.md#scoped-canvas-source-constraint-amendment--2026-10-11)
+and updated SPEC-012 resolve the contract blocker; the proof/earlier stop remain
+historical. Input tree was clean at `67331c11`. Safe step 1 is `58cf89c7`.
+
+Resume the existing P06 packet below using Strong `gpt-6-astra`/`high`, C3/R3.
+Implement only the approved protocol/producer/helper suppressions and their
+lifetime-bearing adapter, then the already-scoped staged stores, semantic joins,
+runtime/negative/geometry/error/resource checks and four-profile receipts.
+Keep all method signatures, bounds, error order and caller cleanup duties.
+The concrete adapter lifetime must depend on actual owner and staged backing.
+Record exact commands before checks, preserve independent oracles and artifact
+identities, format before validation, commit each coherent step and stop at P06.
+The prior implementation context/receipt remains the handoff; do not restart
+passed work solely due to this approval. Separate Strong exit review remains
+required. Counter **0 of 2** is preserved, not reset by resumption.
+No successor work or further contract/scope change is authorized.
+
 ## Entry and implementation dispatch — 2026-10-11
 
 - Input `a17724b2`, clean tree. P03/P04 prerequisite exits passed; sequential

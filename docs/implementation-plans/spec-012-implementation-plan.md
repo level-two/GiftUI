@@ -34,6 +34,10 @@ obligations run through P10–P12. Only the current checkpoint below is new work
 Earlier tasks and readiness/closure statements remain historical baseline evidence,
 not additional authorization to rerun an MVP implementation or reopen experiments.
 
+The [scoped Canvas Source amendment](../iterations/iteration-003-review/rfc-014-spec-approval.md#scoped-canvas-source-constraint-amendment--2026-10-11)
+was explicitly approved after the step-1 compiler blocker. P06 may resume the
+scoped invocation/store work; existing package scope, checks and bounds remain.
+
 ### Current owner checkpoint
 
 - [ ] `T10.1` — Protocol Canvas, scoped exact-model post-layout reads and exactly-once early/failure cleanup with unchanged geometry/pixel meaning.

@@ -181,6 +181,7 @@ features:
     milestone: MVP
   canvas-drawing:
     # SPEC-012 implementing RFC-014 P06; ADR-037 supersedes ADR-028.
+    # Scoped Canvas Source constraints explicitly approved: rfc-014-spec-approval.md, 2026-10-11.
     title: Canvas, Path, and Stroke Drawing
     status: implementation
     proposal:

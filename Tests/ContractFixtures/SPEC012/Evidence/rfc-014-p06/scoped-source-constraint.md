@@ -1,6 +1,12 @@
 # P06 scoped drawing source constraint — 2026-10-11
 
-**Current contract blocker; proposed correction, not approved or implemented.**
+**Resolved contract blocker by explicit maintainer approval on 2026-10-11.**
+Eugene replied “Approved. Please proceed” to this committed proposal (`67331c11`).
+The [approval record](../../../../../docs/iterations/iteration-003-review/rfc-014-spec-approval.md#scoped-canvas-source-constraint-amendment--2026-10-11)
+and amended SPEC-012 authorize the narrow correction. Implementation and P06
+exit proof remain required. The original analysis below preserves the preapproval
+state and compiler evidence; its proposed/unchanged language is historical.
+
 Step 1 is committed as `58cf89c7`. P06 is incomplete. The package's next scoped
 invocation adapter cannot retain its actual P03 owner lifetime through the exact
 currently specified Source constraints. This is not a request for a different
