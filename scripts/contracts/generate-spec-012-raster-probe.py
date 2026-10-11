@@ -65,7 +65,7 @@ for number, vector in enumerate(data['vectors']):
             palette = vector['palette'][symbol]
             def packed(values):
                 return sum(value << (8 * index) for index, value in enumerate(values))
-            expected = f'UInt64(encoded == 0 ? {packed(palette["rgba8888"])} : {packed(palette["rgb565"])})'
+            expected = f'(encoded == 0 ? UInt64({packed(palette["rgba8888"])}) : UInt64({packed(palette["rgb565"])}))'
         lines += [f'precondition(pixels[{i}] == {expected}); checks += 1']
     lines += ['}', '}', 'return checks', '}']
 lines += ['public func giftuiP06Raster() -> UInt32 {', 'var checks: UInt32 = 0']

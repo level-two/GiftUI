@@ -84,6 +84,12 @@ public func giftuiP06FiniteTables() -> UInt32 {
                     try table.invoke(id: 2, captures: first, context: &context, size: Size(width: 5, height: 7)!, read: read)
                     preconditionFailure("mismatched witness accepted")
                 } catch { expect(error == .invariantViolation) }
+                let wrongKey = _GiftUIModelKey<CounterModelSchema>(ownerInstance: 8, allocationGeneration: 3, slot: 0)
+                let wrongPayload = CounterSchemaCanvasTable<TableCounterDomain>.payload(CounterTrace<TableCounterDomain>(model: wrongKey, offset: 2))!
+                do throws(DrawingError) {
+                    try table.invoke(id: 1, captures: wrongPayload, context: &context, size: Size(width: 5, height: 7)!, read: read)
+                    preconditionFailure("wrong owner accepted")
+                } catch { expect(error == .invalidModelAccess) }
             }
         } catch { preconditionFailure("Counter witness failed") }
         expect(pointer.pointee.readCount == 1)
@@ -110,6 +116,11 @@ public func giftuiP06FiniteTables() -> UInt32 {
                     try analyzerTable.invoke(id: 0, captures: analyzerPayload, context: &context, size: Size(width: 5, height: 7)!, read: analyzerRead)
                     preconditionFailure("invalid Analyzer ID accepted")
                 } catch { expect(error == .invariantViolation) }
+                let invalidIndex = AnalyzerSchemaCanvasTable<TableAnalyzerDomain>.payload(AnalyzerTrace<TableAnalyzerDomain>(model: analyzerKey, index: 2))!
+                do throws(DrawingError) {
+                    try analyzerTable.invoke(id: 1, captures: invalidIndex, context: &context, size: Size(width: 5, height: 7)!, read: analyzerRead)
+                    preconditionFailure("invalid index accepted")
+                } catch { expect(error == .invalidValue) }
             }
         } catch { preconditionFailure("Analyzer witness failed") }
         expect(pointer.pointee.readCount == 2)

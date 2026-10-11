@@ -12,6 +12,7 @@ import GiftUIRuntimeDynamic
 #endif
 import CounterSchema
 import CounterCanvas
+import CounterCanvasTable
 
 private typealias Payload = CanvasSemanticPayload<CanvasTable.CaptureStorage>
 private enum Roles: SemanticDeclarationRoles {

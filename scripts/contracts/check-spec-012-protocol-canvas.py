@@ -42,6 +42,9 @@ out = pathlib.Path(tempfile.mkdtemp(dir=parent)) / profile
 out.mkdir()
 flags[flags.index('-module-cache-path') + 1] = str(out / 'cache')
 flags += ['-I', str(out), '-I', str(base), '-enable-testing']
+if profile == 'nrf52840-embedded':
+    # Same bounded wide-integer path selected by the retained firmware target.
+    flags += ['-D', 'GIFTUI_NRF_EMBEDDED']
 commands = []
 inputs = [pathlib.Path(__file__).resolve(), ROOT / 'scripts/contracts/run-spec-012.sh',
           ROOT / 'scripts/contracts/driver-registry.tsv']
@@ -56,7 +59,7 @@ def run(label, args, failure=None):
     (out / (label + '.log')).write_text(output)
     okay = result.returncode == 0 if failure is None else result.returncode != 0 and failure in output
     checks.append({'name': label, 'exit': result.returncode, 'pass': okay, 'expected_failure': failure})
-    if not okay: raise SystemExit(f'{label}: {out}\n{output}')
+    if not okay: raise SystemExit(f'{label}: {out}\n{output[:6000]}')
     return output
 
 def module(name, sources):
@@ -124,10 +127,56 @@ generator = ROOT / 'scripts/contracts/generate-spec-012-raster-probe.py'
 inputs.extend([oracle, vectors, generator])
 run('independent-raster-oracle', [oracle])
 run('generate-raster-probe', ['python3', generator, vectors, out / 'RasterProbe.swift'])
-module('CanvasStoreProbe', [FIXTURE / 'CanvasStoreProbe.swift', FIXTURE / 'CanvasSemanticProbe.swift',
+probe_sources = [FIXTURE / 'CanvasStoreProbe.swift', FIXTURE / 'CanvasSemanticProbe.swift',
                             FIXTURE / 'CanvasErrorProbe.swift', FIXTURE / 'CanvasTableProbe.swift',
                             FIXTURE / 'CanvasGeometryProbe.swift', out / 'RasterProbe.swift',
-                            ROOT / 'Tests/ContractFixtures/SPEC007/RuntimeDerived/LayoutSupport.swift'])
+                            FIXTURE / 'CanvasResourceProbe.swift',
+                            ROOT / 'Tests/ContractFixtures/SPEC007/RuntimeDerived/LayoutSupport.swift']
+module('CanvasStoreProbe', probe_sources)
+layout_source = FIXTURE / 'CanvasLayoutProbe.swift'
+inputs.append(layout_source)
+run('layouts', [compiler, *flags, '-module-name', 'CanvasLayouts', '-emit-ir', layout_source, '-o', out / 'layouts.ll'])
+layout_ir = (out / 'layouts.ll').read_text()
+layouts = {}
+for name, body in re.findall(r'define[^\n]*@giftui_p06_layout_([a-z0-9_]+)\([^\n]*\)[^{]*\{(.*?)^}', layout_ir, re.S | re.M):
+    constant = re.search(r'ret i(?:32|64) (\d+)', body)
+    if not constant:
+        thunk = re.search(r'tail call swiftcc i(?:32|64) @"([^"]+)"\(\)', body)
+        assert thunk, (name, body)
+        target = re.search(r'define[^\n]*@"' + re.escape(thunk.group(1)) + r'"\([^\n]*\)[^{]*\{(.*?)^}', layout_ir, re.S | re.M)
+        assert target
+        constant = re.search(r'ret i(?:32|64) (\d+)', target.group(1))
+    assert constant, (name, body)
+    layouts[name] = int(constant.group(1))
+assert len(layouts) == 60, layouts
+layouts['counter_two_bank_payload_reserved_bytes'] = 2 * 98 * layouts['semantic_slot_stride']
+layouts['analyzer_two_bank_payload_reserved_bytes'] = 2 * 98 * layouts['analyzer_semantic_slot_stride']
+layouts['baseline_two_bank_payload_reserved_bytes'] = 2 * 98 * layouts['standard_slot_stride']
+layouts['counter_two_bank_payload_delta'] = 2 * 98 * (layouts['semantic_slot_stride'] - layouts['standard_slot_stride'])
+layouts['analyzer_two_bank_payload_delta'] = 2 * 98 * (layouts['analyzer_semantic_slot_stride'] - layouts['standard_slot_stride'])
+layouts['counter_two_bank_total_reserved_bytes'] = 2 * (layouts['semantic_metadata_stride'] + 126 * layouts['semantic_record_stride'] + 378 * layouts['semantic_prefix_stride'] + 98 * layouts['semantic_slot_stride'] + 224 * 4)
+layouts['staged_three_fixture_reserved_bytes'] = layouts['staged_metadata_stride'] + 3 * layouts['staged_slot_stride']
+layouts['staged_five_analyzer_reserved_bytes'] = layouts['staged_metadata_stride'] + 5 * layouts['analyzer_staged_slot_stride']
+(out / 'layouts.json').write_text(json.dumps(layouts, indent=2, sort_keys=True) + '\n')
+allocation_attribution = None
+if profile == 'nrf52840-embedded':
+    run('static-resource-ir', [compiler, *flags, '-module-name', 'CanvasStoreProbe', '-emit-ir', *probe_sources, '-o', out / 'static-resources.ll'])
+    ir = (out / 'static-resources.ll').read_text()
+    definitions = re.findall(r'^define[^\n]*@"([^"\n]+)"\([^\n]*\)[^{]*\{(.*?)^}', ir, re.S | re.M)
+    selected = [(name, body) for name, body in definitions if 'CanvasStagedValues' in name or 'ObservableCanvasInvocationSource' in name]
+    allocator_call = r'(?:call|invoke)[^\n]*@[^\n]*(?:swift_allocObject|posix_memalign|malloc)'
+    allocation_attribution = {'claim': 'Direct allocator call inspection of emitted selected staged/invocation bodies; not transitive linked or complete application zero-heap proof.',
+        'functions': {name: {'sha256': hashlib.sha256(body.encode()).hexdigest(), 'direct_allocator_calls': re.findall(allocator_call, body)} for name, body in selected},
+        'ir_sha256': digest(out / 'static-resources.ll')}
+    assert selected, 'no selected resource bodies were emitted'
+    assert not any(re.search(allocator_call, body) for _, body in selected), allocation_attribution
+    (out / 'allocation-attribution.json').write_text(json.dumps(allocation_attribution, indent=2, sort_keys=True) + '\n')
+if not profile.startswith('macos'):
+    readelf = ROOT / '.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/arm-zephyr-eabi-readelf'
+    abi = run('target-abi', [readelf, '-h', '-A', out / 'CanvasStoreProbe.o'])
+    assert 'Tag_ABI_VFP_args: VFP registers' in abi
+    arch = 'v6' if profile == 'raspberry-pi-armv6' else 'v7E-M'
+    assert re.search(r'Tag_CPU_arch: ' + arch + r'\s*$', abi, re.MULTILINE)
 if profile.startswith('macos'):
     main = out / 'Main.swift'
     main.write_text('import CanvasStoreProbe\n@main struct Main { static func main() { print("P06 stores assertions=\\(giftuiP06Stores(dynamic: false) + giftuiP06Stores(dynamic: true)) errorMappings=\\(giftuiP06ErrorMappings()) finiteTables=\\(giftuiP06FiniteTables()) geometry=\\(giftuiP06Geometry()) raster=\\(giftuiP06Raster()) failures=0") } }\n')
@@ -207,6 +256,8 @@ report = {'package': 'P06', 'step': 'protocol-lowering', 'profile': profile,
           'core_receipt': str((base / 'result.json').relative_to(ROOT)), 'core_receipt_sha256': digest(base / 'result.json'),
           'compiler': core['compiler'], 'compiler_sha256': core['compiler_sha256'],
           'commands': commands, 'checks': checks,
+          'layouts': layouts, 'allocation_attribution': allocation_attribution,
+          'execution': 'native component execution' if profile.startswith('macos') else 'cross-compiled components/ABI only; no board execution',
           'artifacts': {p.name: {'sha256': digest(p), 'bytes': p.stat().st_size} for p in out.iterdir()
                         if p.is_file() and p.name != 'result.json'}}
 (out / 'result.json').write_text(json.dumps(report, indent=2, sort_keys=True) + '\n')

@@ -1,5 +1,40 @@
 # RFC-014 P06 progress
 
+## Step 9 — target layouts and rooted Embedded component evidence
+
+After formatting, native resource checks passed at
+`.build/contracts/spec-012-protocol-canvas/tmpq2rsgmp0/macos-static/result.json`,
+using core `d4469901da4c0259-9wtdw756`. The nRF route passed42 checks at
+`.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded/result.json`,
+using verified core `25124cd324d60cb1-2hchpear`. Both platform doctors passed
+Swift6.3.2 and tracked SDK pins. nRF includes the existing firmware
+`-DGIFTUI_NRF_EMBEDDED` define (SignalAnalyzer CMakeLists line355), giving the
+retained raster's bounded wide-integer division implementation. Exported fixture
+roots materialize actual static store/transfer and other component bodies; the
+artifact is ARMv7E-M ELF32 with VFP register calling convention, not a linked
+firmware or board execution result.
+
+Sixty target-derived size/stride/alignment constants are in layouts.json.
+All196 reserved semantic payload slots are charged, along with unchanged448
+scalar slots and both126-record/378-prefix banks. Native Counter slots32→36B
+cost+784B; Analyzer slots32→40B cost+1,568B. nRF both slots32→36B cost+784B.
+Counter semantic backing totals30,616B. Native staged3 Counter112B/staged5
+Analyzer244B; nRF staged5 Analyzer184B. Source adapter stride64B native/32B nRF.
+These are concrete selected representations, not new count/limit authority or
+proof of full overlapping host RAM/stack feasibility. Eleven emitted nRF
+staged/invocation bodies have no direct allocator calls; their hashes and exact
+claim are in allocation-attribution.json. This does not establish transitive
+linked zero-heap or complete application costs (P11).
+
+Narrow fixture repairs: `tmphi6e8_hf` required the explicit CounterCanvasTable
+import for Embedded serialization; `tmp_uxknwyv` required UInt64 typing on each
+golden literal before a ternary on32-bit targets; `tmprn86stic` crashed compiler
+IR generation when a separate module re-instantiated imported noncopyable
+CanvasModel test bodies. Placing exported roots in the original probe module
+and emitting its IR resolved that compiler boundary without unsafe annotations
+or relaxed tests. Generated wrong-owner and indexed out-of-bounds witnesses now
+execute their real mapped failures as well. Counter remains0/2.
+
 ## Step 8 — authored context alias preservation
 
 Finite lowering already tracked draw's local context alias for its body, but
