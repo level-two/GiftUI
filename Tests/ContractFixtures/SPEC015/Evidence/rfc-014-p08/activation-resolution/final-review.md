@@ -3,7 +3,7 @@
 Reviewed 2026-10-11 by the independent Strong agent (Astra 6 Medium).
 Frozen evidence: `8c1bf351`, with final failure classification `a7d4697e`.
 Scope: the bounded activation join experiment under
-[authorization](activation-resolution/authorization.md), not P08 acceptance or
+[authorization](authorization.md), not P08 acceptance or
 the complete SPEC-015 conformance review. No compiler invocation, runtime
 execution, source edit, or hardware operation was performed by this reviewer.
 
@@ -17,9 +17,9 @@ impossibility or authorize changing the contract.
 `run-12/OutliveNegative.swift:14–55` explicitly retains dependence on the mutable
 profile receiver, assigns the activated/quiesced owner into an outer optional at
 line 44, and returns it after every lending callback has ended at line 55.
-[Run 12](activation-resolution/run-12/result.json) exits successfully with empty
+[Run 12](run-12/result.json) exits successfully with empty
 diagnostics. The negative therefore fails; it must not be counted as protection
-against escape. [SPEC-015](../../../../../docs/specs/spec-015-host-configuration.md)
+against escape. [SPEC-015](../../../../../../docs/specs/spec-015-host-configuration.md)
 lines 771–775 require compiler-checked dependence and expressly prohibit escape
 from an activation callback.
 
@@ -30,7 +30,7 @@ This is not made valid by keeping the profile's physical allocation alive:
 - `Sources/GiftUIObservableState/ObservableStateRootScope.swift:110–117` shuts
   down the root and finishes a stopped activation on callback exit.
 - `Sources/GiftUISemanticCore/SemanticRecordStore.swift:56–59` clears both banks.
-- `Sources/GiftUIDrawing/CanvasStagedValues.swift:47` discards staged values.
+- `Sources/GiftUIDrawing/CanvasStagedValues.swift:48` discards staged values.
 
 Those are semantic retirement boundaries, independently of allocation lifetime.
 The returned value still contains the scoped coordinator. Quiescence does not
