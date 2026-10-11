@@ -1,0 +1,117 @@
+{
+  "scope": "Candidate target availability only; no compatibility or adoption result",
+  "observed_date": "2026-10-12",
+  "release_provenance": {
+    "retrieved_by": "parent agent",
+    "retrieved_date": "2026-10-12",
+    "local_response": "/tmp/p08-armv6-sdk-release.json",
+    "full_response_sha256": "617c653f75512ba0a813ab6a2cad69ab9d3d6428bfae66487172d30dbdb5088b",
+    "canonical_api_url": "https://api.github.com/repos/swift-embedded-linux/armhf-debian/releases/390698916",
+    "queried_api_url": "https://api.github.com/repos/swift-embedded-linux/armhf-debian/releases/tags/6.4.0",
+    "exact_query_command": "curl --fail --silent --show-error --output /tmp/p08-armv6-sdk-release.json https://api.github.com/repos/swift-embedded-linux/armhf-debian/releases/tags/6.4.0",
+    "query_exit": 0
+  },
+  "release": {
+    "id": 390698916,
+    "url": "https://api.github.com/repos/swift-embedded-linux/armhf-debian/releases/390698916",
+    "html_url": "https://github.com/swift-embedded-linux/armhf-debian/releases/tag/6.4.0",
+    "tag_name": "6.4.0",
+    "name": "Swift 6.4.0 for armhf",
+    "draft": false,
+    "prerelease": false,
+    "published_at": "2026-09-17T12:35:17Z",
+    "updated_at": "2026-09-18T01:57:55Z"
+  },
+  "armv6_sdk_asset": {
+    "id": 571580642,
+    "url": "https://api.github.com/repos/swift-embedded-linux/armhf-debian/releases/assets/571580642",
+    "name": "swift-6.4.0-RELEASE-raspios-bookworm-armv6-sdk.tar.gz",
+    "state": "uploaded",
+    "content_type": "raw",
+    "size": 231261913,
+    "digest": "sha256:3332907e1fe366a24cdd9b4af566cb4f1a1f39aa8fad785cb328af17c7484848",
+    "created_at": "2026-09-18T01:56:29Z",
+    "updated_at": "2026-09-18T01:56:36Z",
+    "browser_download_url": "https://github.com/swift-embedded-linux/armhf-debian/releases/download/6.4.0/swift-6.4.0-RELEASE-raspios-bookworm-armv6-sdk.tar.gz"
+  },
+  "armv6_sdk_downloaded": false,
+  "compiler_identity_receipt": "metadata-6.4.0.json",
+  "candidate_embedded_modules": [
+    {
+      "path": ".toolchains/p08-comparison/expanded/swift-6.4.0-RELEASE-osx/swift-6.4.0-RELEASE-osx-package.pkg/Payload/usr/lib/swift/embedded/EmbeddedPlatformPOSIX.swiftmodule/armv7em-none-none-eabi.swiftmodule",
+      "bytes": 89820,
+      "sha256": "ae09ddf1a8957c1a0a131a2e313795c159254aa88b2ce44648b768ffb51f47ce"
+    },
+    {
+      "path": ".toolchains/p08-comparison/expanded/swift-6.4.0-RELEASE-osx/swift-6.4.0-RELEASE-osx-package.pkg/Payload/usr/lib/swift/embedded/Swift.swiftmodule/armv7em-none-none-eabi.swiftmodule",
+      "bytes": 22290788,
+      "sha256": "15912e1951ad3738d0dd98e10c5d08d8a48189ad918e59a7156764578705836b"
+    },
+    {
+      "path": ".toolchains/p08-comparison/expanded/swift-6.4.0-RELEASE-osx/swift-6.4.0-RELEASE-osx-package.pkg/Payload/usr/lib/swift/embedded/Synchronization.swiftmodule/armv7em-none-none-eabi.swiftmodule",
+      "bytes": 786480,
+      "sha256": "20ca2108831eaae5651fa8811717be4c793de66f363aa20def088b903f7f51d5"
+    },
+    {
+      "path": ".toolchains/p08-comparison/expanded/swift-6.4.0-RELEASE-osx/swift-6.4.0-RELEASE-osx-package.pkg/Payload/usr/lib/swift/embedded/_Builtin_float.swiftmodule/armv7em-none-none-eabi.swiftmodule",
+      "bytes": 83780,
+      "sha256": "38d7ff0b356f1defaca9656a7b3846ed4d1d682da35f86d1852411fc80558fb3"
+    },
+    {
+      "path": ".toolchains/p08-comparison/expanded/swift-6.4.0-RELEASE-osx/swift-6.4.0-RELEASE-osx-package.pkg/Payload/usr/lib/swift/embedded/_Concurrency.swiftmodule/armv7em-none-none-eabi.swiftmodule",
+      "bytes": 1486216,
+      "sha256": "62f7c423c15c794e569904da02a9a6c4bbe575b81b2c0efc2dc0dce338b65f4e"
+    },
+    {
+      "path": ".toolchains/p08-comparison/expanded/swift-6.4.0-RELEASE-osx/swift-6.4.0-RELEASE-osx-package.pkg/Payload/usr/lib/swift/embedded/_Volatile.swiftmodule/armv7em-none-none-eabi.swiftmodule",
+      "bytes": 76536,
+      "sha256": "dcd30dbfe18069ac8038751b983b4de6bf2836779c564deabc4762915f849998"
+    }
+  ],
+  "current_pins": {
+    "raspberry-pi": {
+      "path": "scripts/raspberry-pi/toolchain.env",
+      "sha256": "0cf3edcb612598971b042b35792398193dc24196d49af521a5d1d23570f0a51f",
+      "values": {
+        "GIFTUI_PI_SWIFT_VERSION": "6.3.2",
+        "GIFTUI_PI_TARGET": "armv6-unknown-linux-gnueabihf",
+        "GIFTUI_PI_DISTRIBUTION": "raspios-bookworm",
+        "GIFTUI_PI_SDK_SHA256": "bd09f97b693aa2097df281d9b5490d51c6c01a2241b890c7d05623d4134d7fc8"
+      }
+    },
+    "nrf52840": {
+      "path": "scripts/nrf52840/toolchain.env",
+      "sha256": "9f71c8faf46502e920c1e5f1763132166f8136bc0e23a17cc38291ef35f376a5",
+      "values": {
+        "GIFTUI_NRF_SWIFT_VERSION": "6.3.2",
+        "GIFTUI_NRF_ZEPHYR_VERSION": "4.3.0",
+        "GIFTUI_NRF_ZEPHYR_REVISION": "3568e1b6d5cdd51a6b964a2a1d6d29200fea2056",
+        "GIFTUI_NRF_ZEPHYR_SDK_VERSION": "0.17.4",
+        "GIFTUI_NRF_BOARD": "nrf52840dk/nrf52840",
+        "GIFTUI_NRF_SWIFT_TARGET": "armv7em-none-none-eabi",
+        "GIFTUI_NRF_FLOAT_ABI": "hard",
+        "GIFTUI_NRF_RAM_LIMIT_BYTES": "196608",
+        "GIFTUI_NRF_FLASH_LIMIT_BYTES": "1048576"
+      }
+    }
+  },
+  "subsequent_checks": {
+    "governance": [
+      "Explicit compiler-baseline ADR/Specification decision before changing supported pins; retain current6.3.2 baseline until approved."
+    ],
+    "armv6": [
+      "Download exact Raspberry Pi OS Bookworm ARMv6 SDK project-locally and verify its advertised SHA256; inspect destination target and sysroot.",
+      "Freshly compile macro tools, all GiftUI modules and ownership/lifetime negatives with paired candidate compiler and SDK; never reuse6.3.2 module binaries.",
+      "Compile and link supported armv6-unknown-linux-gnueabihf probe/application; verify ARMv6 and VFP register ABI, target dependencies and linker compatibility.",
+      "Run complete native/target regression and linked-image RAM/stack/heap/allocator/resource checks before claiming compatibility."
+    ],
+    "nrf52840": [
+      "Use bundled armv7em-none-none-eabi Embedded Swift module with pinned Zephyr4.3.0/SDK0.17.4 and nrf52840dk/nrf52840; retain Zephyr Cortex-M4F hard-float flags.",
+      "Freshly compile/link probe, GiftUI modules, ownership/lifetime negatives and full firmware with candidate compiler; inspect final ELF CPUv7E-M and Tag_ABI_VFP_args:VFP registers.",
+      "Check192KiB RAM/1MiB flash limits, stack, disabled heap and zero-heap symbol checks for applicable firmware; run complete applicable regression."
+    ]
+  },
+  "compiler_tests": 0,
+  "hardware_actions": false,
+  "source_or_pin_changes": false
+}
