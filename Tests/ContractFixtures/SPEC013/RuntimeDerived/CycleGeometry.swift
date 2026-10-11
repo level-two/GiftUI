@@ -25,6 +25,7 @@ let cycleSurface = Rect(origin: Point(x: 0, y: 0), size: Size(width: 100, height
 // Finite fixture assembly over actual profile owners. No stage is substituted
 // by a recorded answer; each method invokes its maintained focused algorithm.
 protocol CycleGeometry {
+    borrowing func storageMeasurement() -> CycleGeometryMeasurement
     mutating func layout(_ bank: borrowing SemanticRecordView<CyclePayload>) -> LayoutResult
     mutating func draw(source: inout CycleSource, context: ExecutionContext) -> DrawingPlanResult
     mutating func preflight(_ bank: borrowing SemanticRecordView<CyclePayload>) -> RenderProductionResult
@@ -38,6 +39,15 @@ protocol CycleGeometry {
 }
 #if !hasFeature(Embedded)
 struct DynamicCycleGeometry: CycleGeometry {
+    borrowing func storageMeasurement() -> CycleGeometryMeasurement {
+        .init(layout: LayoutLimits(maximumScopes: workspace.maximumScopes, maximumDepth: workspace.maximumDepth, maximumTextScalars: workspace.maximumTextScalars, maximumTextLines: workspace.maximumTextLines, maximumPositionedGlyphs: workspace.maximumPositionedGlyphs)!,
+            render: render.capacity, renderWorkspace: render.structuralCapacity, drawing: plan.capacity,
+            layoutBytes: UInt64(MemoryLayout<Self>.size - MemoryLayout<DynamicRenderWorkspace>.size - MemoryLayout<DynamicDrawingPlanWorkspace>.size) + workspace.reservedPayloadBytes + resolved.reservedPayloadBytes,
+            renderBytes: UInt64(MemoryLayout<DynamicRenderWorkspace>.size + render.reservedPayloadBytes),
+            pathBytes: plan.livePathReservedPayloadBytes,
+            planBytes: UInt64(MemoryLayout<DynamicDrawingPlanWorkspace>.size) + plan.planReservedPayloadBytes)
+    }
+
     var workspace = DynamicLayoutWorkspace(limits: cycleLayoutLimits, maximumSemanticRecords: 126)
     var resolved = DynamicResolvedLayoutStorage(limits: cycleLayoutLimits)
     var plan = DynamicDrawingPlanWorkspace(capacity: cycleDrawingLimits)
@@ -63,12 +73,28 @@ struct DynamicCycleGeometry: CycleGeometry {
 }
 #endif
 struct StaticCycleGeometry: CycleGeometry {
+    // Actual supplied extents, retained through the enclosing factory lifetime.
+    let scopeRegionBytes: Int
+    let textRegionBytes: Int
+    let pathRegionBytes: Int
+    let planRegionBytes: Int
+    borrowing func storageMeasurement() -> CycleGeometryMeasurement {
+        .init(layout: LayoutLimits(maximumScopes: workspace.maximumScopes, maximumDepth: workspace.maximumDepth, maximumTextScalars: workspace.maximumTextScalars, maximumTextLines: workspace.maximumTextLines, maximumPositionedGlyphs: workspace.maximumPositionedGlyphs)!,
+            render: render.capacity, renderWorkspace: render.structuralCapacity, drawing: plan.capacity,
+            layoutBytes: UInt64(scopeRegionBytes + textRegionBytes + MemoryLayout<Self>.size - MemoryLayout<QualifiedRender>.size - MemoryLayout<StaticRecordDrawingWorkspace<StaticSignalAnalyzerNRFDrawingWorkspace>>.size),
+            renderBytes: UInt64(MemoryLayout<QualifiedRender>.size),
+            pathBytes: UInt64(pathRegionBytes),
+            planBytes: UInt64(planRegionBytes + MemoryLayout<StaticRecordDrawingWorkspace<StaticSignalAnalyzerNRFDrawingWorkspace>>.size))
+    }
+
     var workspace: StaticSignalAnalyzerNRFLayoutWorkspace
     var resolved: StaticSignalAnalyzerNRFResolvedLayoutStorage
     var references: InlineArray<126, SemanticRecordReference?> = .init(repeating: nil)
     var plan: StaticRecordDrawingWorkspace<StaticSignalAnalyzerNRFDrawingWorkspace>
     var render: QualifiedRender
     init(scopes: UnsafeMutableRawBufferPointer, text: UnsafeMutableRawBufferPointer, path: UnsafeMutableRawBufferPointer, plan: UnsafeMutableRawBufferPointer) {
+        scopeRegionBytes = scopes.count; textRegionBytes = text.count
+        pathRegionBytes = path.count; planRegionBytes = plan.count
         workspace = StaticSignalAnalyzerNRFLayoutWorkspace(scopes: scopes, text: text)!
         resolved = StaticSignalAnalyzerNRFResolvedLayoutStorage(scopes: scopes, text: text)!
         self.plan = StaticRecordDrawingWorkspace(base: StaticSignalAnalyzerNRFDrawingWorkspace(pathRegion: path, planRegion: plan, capacity: cycleDrawingLimits)!)

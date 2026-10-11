@@ -87,33 +87,43 @@ struct CycleWake: ExecutionWakeRequester, Sendable {
     mutating func requestWake(for reasons: ExecutionWakeReasons) { self.reasons.formUnion(reasons) }
 }
 
-func cycleConcreteCoordinator<G, C, R, H>(owner: consuming CyclePipelineOwner<G, C, R, H>, dynamic: Bool, control: UnsafeMutablePointer<CycleControl>) -> Int where G: CycleGeometry, C: InteractionCandidateRecordStorage, R: InteractionCommittedRecordStorage, H: InteractionHitRegionStorage, C.Identity == SemanticCompleteIdentity, R.Identity == SemanticCompleteIdentity, H.Identity == SemanticCompleteIdentity {
+func cycleConcreteCoordinator<G, C, R, H>(owner: consuming CyclePipelineOwner<G, C, R, H>, dynamic: Bool, control: UnsafeMutablePointer<CycleControl>) -> Int where G: CycleGeometry, C: CycleCandidateBacking, R: CycleCommittedBacking, H: CycleHitBacking, C.Identity == SemanticCompleteIdentity, R.Identity == SemanticCompleteIdentity, H.Identity == SemanticCompleteIdentity {
+    let geometryBefore = owner.geometry.storageMeasurement()
+    let interactionBefore = cycleMeasureInteraction(owner.interaction)
     let binding = CycleExecutionBinding(models: owner.models.borrowedScope(), root: owner.root.borrowedRoot(), control: control)
     let admission = SingleSourceExecutionAdmissionController(limits: ExecutionLimits(maximumInputEvents: 2, maximumStateChangeFacts: 1, maximumCompletionFacts: 0, maximumSemanticActions: 1, maximumActiveInputSources: 1, maximumCommittedActions: 6)!, context: control.pointee.context, committedPresentationRevision: nil, storage: CycleQueuedFacts(control: control), requester: CycleWake())
     #if !hasFeature(Embedded)
     if dynamic {
         var coordinator = DynamicRuntimeExecutionCoordinator(binding: binding, admission: admission, opportunity: owner)
+        precondition(coordinator.opportunity.geometry.storageMeasurement() == geometryBefore)
+        precondition(cycleMeasureInteraction(coordinator.opportunity.interaction) == interactionBefore)
         guard case .success = coordinator.runOpportunity() else { preconditionFailure("Dynamic concrete coordinator") }
         precondition(coordinator.submit(stateChange: 1).result == .queued)
         precondition(coordinator.submit(stateChange: 1).result == .capacityRefused)
         guard case .success(let summary) = coordinator.runOpportunity() else { preconditionFailure("Dynamic admitted mutation") }
         precondition(summary.admission.stateChangeFactCount == 1)
         coordinator.quiesce(); coordinator.quiesce()
+        precondition(coordinator.opportunity.geometry.storageMeasurement() == geometryBefore)
+        precondition(cycleMeasureInteraction(coordinator.opportunity.interaction) == interactionBefore)
         precondition(coordinator.submit(stateChange: 1).result == .unavailable)
         guard case .failure(_, .execution(.requiredFacilityUnavailable), nil) = coordinator.runOpportunity() else { preconditionFailure("Dynamic stopped entry") }
-        return 7
+        return 11
     }
     #endif
     var coordinator = StaticRuntimeExecutionCoordinator(binding: binding, admission: admission, opportunity: owner)
+    precondition(coordinator.opportunity.geometry.storageMeasurement() == geometryBefore)
+    precondition(cycleMeasureInteraction(coordinator.opportunity.interaction) == interactionBefore)
     guard case .success = coordinator.runOpportunity() else { preconditionFailure("Static concrete coordinator") }
     precondition(coordinator.submit(stateChange: 1).result == .queued)
     precondition(coordinator.submit(stateChange: 1).result == .capacityRefused)
     guard case .success(let summary) = coordinator.runOpportunity() else { preconditionFailure("Static admitted mutation") }
     precondition(summary.admission.stateChangeFactCount == 1)
     coordinator.quiesce(); coordinator.quiesce()
+        precondition(coordinator.opportunity.geometry.storageMeasurement() == geometryBefore)
+        precondition(cycleMeasureInteraction(coordinator.opportunity.interaction) == interactionBefore)
     precondition(coordinator.submit(stateChange: 1).result == .unavailable)
     guard case .failure(_, .execution(.requiredFacilityUnavailable), nil) = coordinator.runOpportunity() else { preconditionFailure("Static stopped entry") }
-    return 7
+    return 11
 }
 
 // Actual disjoint finite stores used by admission and sealing. Completion capacity
@@ -167,6 +177,9 @@ func cycleAdmissionBackingProbe() -> Int {
     var backing = CycleAdmissionBacking()
     var checks = 0
     func expect(_ okay: Bool) { checks += 1; precondition(okay) }
+    expect(CycleExtent.elements(SemanticCompleteIdentity.self, count: 6).bytes == UInt64(6 * MemoryLayout<SemanticCompleteIdentity>.stride))
+    expect(CycleExtent(count: -1, stride: 1, alignment: 1).bytes == nil)
+    expect(CycleExtent(count: Int.max, stride: Int.max, alignment: 1).bytes == nil)
     let event = NormalizedPointerEvent(phase: .down, position: Point(x: 0, y: 0), source: .init(rawValue: 1), sequence: .init(rawValue: 1), ordinal: .init(rawValue: 0), presentationRevision: .init(rawValue: 1))
     expect(backing.enqueue(event)); expect(backing.enqueue(event)); expect(!backing.enqueue(event))
     backing.pendingState = 1

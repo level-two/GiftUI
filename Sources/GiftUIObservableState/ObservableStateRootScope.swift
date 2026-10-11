@@ -22,6 +22,10 @@ package struct ObservableStateRootStorage<Identity: Equatable & Sendable> {
     fileprivate var operationActive = false
     fileprivate var retired = false
 
+    package static var storageCapacities:
+        (locations: UInt16, registrations: UInt16, associations: UInt16)
+    { (2, 2, 2) }
+
     package static var candidateStorageBytes: Int {
         MemoryLayout<InlineArray<4, ObservableModelOwnership.Claim?>>.size + MemoryLayout<Bool>.size
     }

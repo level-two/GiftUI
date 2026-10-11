@@ -56,7 +56,7 @@ struct CycleEndpoint: SynchronousFrameEndpoint {
     }
 }
 struct CyclePipelineOwner<Geometry, Candidate, Committed, Hits>: ~Copyable, ~Escapable, RuntimeCompletePipelineOwner
-where Geometry: CycleGeometry, Candidate: InteractionCandidateRecordStorage, Committed: InteractionCommittedRecordStorage, Hits: InteractionHitRegionStorage, Candidate.Identity == SemanticCompleteIdentity, Committed.Identity == SemanticCompleteIdentity, Hits.Identity == SemanticCompleteIdentity {
+where Geometry: CycleGeometry, Candidate: CycleCandidateBacking, Committed: CycleCommittedBacking, Hits: CycleHitBacking, Candidate.Identity == SemanticCompleteIdentity, Committed.Identity == SemanticCompleteIdentity, Hits.Identity == SemanticCompleteIdentity {
     typealias OwnerFailure = RuntimeOwnerFailure
     let models: ObservableModelScope<CycleOwnedModel, CycleModelSchema>
     let root: ObservableStateRootScope<CycleOwnedModel, SemanticCompleteIdentity>

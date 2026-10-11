@@ -43,6 +43,9 @@ package final class DynamicSemanticRecordStorage<Payload> {
         )
     }
 
+    package var storageLimits: SemanticRecordLimits { limits }
+    package var storageOwner: SemanticRecordOwnerIdentity { owner }
+
     package func withLifetime<Result>(
         _ body: (borrowing SemanticRecordStore<Payload>) throws(SemanticExpansionError) -> Result
     ) throws(SemanticExpansionError) -> Result {

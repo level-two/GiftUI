@@ -10,6 +10,9 @@ package struct StaticSemanticRecordStorage: ~Copyable {
         self.limits = limits
         self.owner = owner
     }
+    package var storageLimits: SemanticRecordLimits { limits }
+    package var storageOwner: SemanticRecordOwnerIdentity { owner }
+
     package mutating func withLifetime<Payload, Result>(
         records: inout MutableSpan<SemanticRuntimeRecord>,
         paths: inout MutableSpan<SemanticPathEntry>,

@@ -12,6 +12,7 @@ package struct DynamicCanvasCallableStorage<
         self.capacity = capacity
         entries = .init(repeating: nil, count: Int(capacity))
     }
+    package var retainedElementCapacity: Int { entries.capacity }
     package var reservedPayloadBytes: Int {
         entries.capacity * MemoryLayout<CanvasStagedEntry<Identity, Table.CaptureStorage>?>.stride
     }

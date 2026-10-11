@@ -611,3 +611,27 @@ prerequisites, not a completed26-field audit or factory.
 
 Resumed consecutive-unproductive counter: **0/2** (passing fresh gate).
 Historical production2/2 and bounded bench evidence remain unchanged.
+
+## Consuming-owner resumption — step 2 (2026-10-11)
+
+The finite fixture now measures Geometry and all five Interaction stores through
+the actual consuming owner, both before coordinator transfer and after quiescence.
+Dynamic uses actual retained Array capacities. Static reports actual supplied
+region lengths; text/layout/render overlay payload is charged once to layout.
+Each Interaction record's complete identity bytes are partitioned out of the
+record extent; prepared-committed records belong to the candidate lifetime.
+Geometry inline residual metadata/padding is included once in layout; render and
+Drawing value metadata are separate. This is component measurement, not yet a
+full26-field audit or an instantiated audited construction.
+
+Count/stride/alignment descriptors include checked multiplication controls for
+negative count and overflow. Added exact root storage capacities (two model
+records/report routes), Canvas retained element capacity, and semantic owner /
+configured-storage limit accessors for factory validation.
+
+Fresh formatted native gate: **568 assertions, zero failures and ten expected
+compiler negatives**, [receipt](resumption-step-2-macos-static.json). All retained
+component measurements are unchanged across the consuming coordinator cycles.
+Resumed guard remains **0/2**. Next: the actual typed RuntimeProfileStorage factory,
+full exclusive field partition, audited binding/common conformance, and factory
+profile/limit/capacity/provenance rejection controls. Other P07 obligations remain.
