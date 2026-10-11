@@ -48,7 +48,7 @@ not additional authorization to rerun an MVP implementation or reopen experiment
   on the four governed configurations, focused unit/negative checks named by the
   shared sequence, then P10's registered hardware-free gate. Compiler-selection
   propagation follows P01; no historical check is weakened.
-  **Evidence:** [P07 progress](../../Tests/ContractFixtures/SPEC013/Evidence/rfc-014-p07/progress.md) records the validated limits/audit and scoped internal runner slices. The [concrete coordinator constraint](../../Tests/ContractFixtures/SPEC013/Evidence/rfc-014-p07/scoped-coordinator-constraint.md) currently stops the actual integration pending a contract decision; no finite P07 exit or complete owner success is claimed.
+  **Evidence:** [P07 progress](../../Tests/ContractFixtures/SPEC013/Evidence/rfc-014-p07/progress.md) records the validated limits/audit and scoped internal runner slices. The [scoped coordinator correction is approved](../iterations/iteration-003-review/rfc-014-spec-approval.md#scoped-coordinator-constraint-amendment--2026-10-11), resuming actual integration with the narrow SPEC-009 T9.1 checkpoint inside P07. No finite P07 exit or complete owner success is claimed.
 
 The single current acceptance matrix retains each criterion once. Its historical
 task IDs remain provenance; `T11.1` adds fresh migration verification without

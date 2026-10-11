@@ -131,6 +131,18 @@ semantic publication versus accepted-offer Interaction commit, admission and
 retry policy below remain unchanged. Old schema-3 byte projections are historical
 controls, not the new record allocation plan or proof of fit.
 
+### Scoped coordinator correction — approved 2026-10-11
+
+[Explicit approval](../iterations/iteration-003-review/rfc-014-spec-approval.md#scoped-coordinator-constraint-amendment--2026-10-11)
+permits `~Copyable, ~Escapable` conformers at GiftUIRuntimeProfileCoordinator
+and the two inherited SPEC-009 admission/opportunity protocols. The declarations
+below and directly necessary generic forwarding MUST preserve both permissions.
+A scoped concrete coordinator remains tied to the actual borrowed owner storage.
+Existing owned conformers remain permitted; associated types, signatures,
+phase/failure/cleanup behavior and limits remain unchanged. RP-RD-002/003 and
+RP-001/004/005/007/008/009/012 retain actual integration and four-configuration
+lifetime evidence duties. SPEC-015's containing host lifetime remains separate.
+
 ### Limits, ownership and storage
 
 Add these immutable package value types and required fields to RuntimeProfileLimits:
@@ -563,7 +575,7 @@ package protocol RuntimeProfileStorage: ~Copyable {
 }
 
 package protocol GiftUIRuntimeProfileCoordinator:
-    ExecutionAdmissionSink, ExecutionOpportunityRunner
+    ~Copyable, ~Escapable, ExecutionAdmissionSink, ExecutionOpportunityRunner
 {
     associatedtype Storage: RuntimeProfileStorage
     associatedtype Endpoint: SynchronousFrameEndpoint

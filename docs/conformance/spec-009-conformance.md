@@ -2,10 +2,10 @@
 spec: SPEC-009
 feature: giftui-mvp-architecture
 title: SPEC-009 Conformance Report
-status: complete
+status: collecting
 reviewers: [codex]
 created: 2026-09-19
-updated: 2026-10-03
+updated: 2026-10-11
 implementation_plan: ../implementation-plans/spec-009-implementation-plan.md
 related_future_work: [FW-010, FW-014]
 related_explorations: []
@@ -15,6 +15,17 @@ superseded_by: null
 ---
 
 # SPEC-009 Conformance Report
+
+## Current RFC-014 amendment disposition — 2026-10-11
+
+Collecting, not conformant for the amended implementation. The
+[approved scoped coordinator correction](../iterations/iteration-003-review/rfc-014-spec-approval.md#scoped-coordinator-constraint-amendment--2026-10-11)
+and [P07 progress](../../Tests/ContractFixtures/SPEC013/Evidence/rfc-014-p07/progress.md)
+control current applicability. Prior pass rows below remain historical evidence
+for their frozen revisions. Actual scoped coordinator/fault integration and
+four-configuration checks remain pending; no earlier implemented transition
+satisfies them. P07 acceptance and complete P10–P12 conformance remain separate.
+
 
 > This report records evidence. It does not authorize the governing
 > Specification's `implemented` transition.

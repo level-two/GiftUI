@@ -1,6 +1,6 @@
 # RFC-014 bounded implementation sequence — 2026-10-10
 
-**P01–P06 passed; P07 partially implemented and blocked on a contract decision;
+**P01–P06 passed; P07 resumed under the approved scoped coordinator correction;
 P08–P12 pending.** This is the shared
 sequencing index for nine owner Implementation Plans, not another contract or
 investigation. It derives only the [approved Spec amendments](rfc-014-spec-approval.md)
@@ -19,7 +19,7 @@ records committed limits/audit and internal scoped-runner steps. The
 at `d7d6cdd1` confirms the explicit SPEC-009/013 coordinator constraints conflict
 with the selected scoped owner realization. The
 [concrete decision packet](../../../Tests/ContractFixtures/SPEC013/Evidence/rfc-014-p07/scoped-coordinator-constraint.md)
-proposes a narrow correction; it is not approved. Complete profile integration
+is historical; the [narrow correction is now approved](rfc-014-spec-approval.md#scoped-coordinator-constraint-amendment--2026-10-11). SPEC-009 T9.1 is a directly necessary P07 checkpoint, not another package. Complete profile integration
 and package exit remain open; SPEC-015 host lifetime remains a separately
 reviewed boundary. Consecutive unproductive repairs: **0/2**. No successor work
 has started.

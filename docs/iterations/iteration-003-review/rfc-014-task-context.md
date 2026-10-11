@@ -6,6 +6,12 @@ contracts; it does not define APIs or prove task completion. Read the relevant
 package entry after required repository/role orientation. Refresh changed entries
 when a package changes its source or validation entry points.
 
+P07 resumed after [explicit approval of the SPEC-009/013 scoped coordinator correction](rfc-014-spec-approval.md#scoped-coordinator-constraint-amendment--2026-10-11).
+Read SPEC-009's scoped coordinator amendment and owner T9.1 together with the
+SPEC-013 current checkpoint. The historical blocker proof is not current
+production evidence after the constraints change. SPEC-015 host lifetime is
+still separate; no P08 work is authorized by this correction.
+
 ## Build context in this order
 
 1. Read the assigned package's dependency/exit and model-routing rows in the

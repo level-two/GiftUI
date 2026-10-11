@@ -2,19 +2,21 @@
 id: SPEC-009
 feature: giftui-mvp-architecture
 title: Execution Cycle and Frame Handoff Contract
-status: implemented
+status: approved
 authors:
   - codex
 created: 2026-08-26
-updated: 2026-10-03
+updated: 2026-10-11
 proposal:
   - PROPOSAL-003
 related_rfcs:
+  - RFC-014
   - RFC-002
   - RFC-004
   - RFC-005
   - RFC-011
 related_adrs:
+  - ADR-036
   - ADR-010
   - ADR-011
   - ADR-012
@@ -46,6 +48,29 @@ target_milestone: MVP
 ---
 
 # SPEC-009: Execution Cycle and Frame Handoff Contract
+
+> **Scoped coordinator amendment approved — 2026-10-11.** Eugene explicitly
+> approved the reviewed SPEC-009/SPEC-013 suppression of implicit Copyable and
+> Escapable requirements. [Approval record](../iterations/iteration-003-review/rfc-014-spec-approval.md#scoped-coordinator-constraint-amendment--2026-10-11).
+> The earlier implemented baseline at `0ff7756a` remains historical; amended
+> implementation and conformance are pending within RFC-014 P07.
+
+## RFC-014 scoped coordinator amendment
+
+Under accepted ADR-036, ExecutionAdmissionSink and ExecutionOpportunityRunner
+MUST permit both `~Copyable` and `~Escapable` conformers as declared below.
+Directly necessary generic forwarding MUST preserve both permissions without
+changing associated types or method signatures. Existing owned conformers remain
+permitted; a borrowing coordinator MUST remain tied to the actual owner-storage
+lifetime. No copied raw descriptor, escaped read, implicit replay or newly
+retained frame is authorized. All phase, admission, mutation, publication, offer,
+failure, cleanup, limits and resource semantics remain unchanged.
+
+EX-001/010/012/013 require fresh positive scoped conformance and copy/escape
+negative evidence on all four pinned RFC-014 configurations, plus P07's actual
+profile integration coverage under the existing criteria. Other criteria retain
+their regression obligations. SPEC-015 host construction and activation remain
+a separately reviewed boundary; this amendment does not change that contract.
 
 > **Current implementation status — 2026-10-03:** Eugene explicitly authorized this Specification's `implemented` transition after conformance review and the complete 72-check gate. [Human approval](../../Tests/ContractFixtures/SPEC001/Evidence/milestone-10/iteration-closeout-20261003/owner-transition-approval.md) supersedes earlier pending-transition statements; the approved contract is unchanged.
 
@@ -609,7 +634,7 @@ package struct ExecutionAdmissionOutcome: Equatable, Sendable {
                  context: ExecutionContext)
 }
 
-package protocol ExecutionAdmissionSink {
+package protocol ExecutionAdmissionSink: ~Copyable, ~Escapable {
     associatedtype StateChangeFact: Sendable
     associatedtype CompletionFact: Sendable
 
@@ -621,7 +646,7 @@ package protocol ExecutionAdmissionSink {
         -> ExecutionAdmissionOutcome
 }
 
-package protocol ExecutionOpportunityRunner {
+package protocol ExecutionOpportunityRunner: ~Copyable, ~Escapable {
     associatedtype OwnerFailure: Equatable & Sendable
     mutating func runOpportunity() -> RunCycleResult<OwnerFailure>
 }

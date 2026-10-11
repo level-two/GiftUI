@@ -2,10 +2,10 @@
 spec: SPEC-013
 feature: giftui-mvp-architecture
 title: SPEC-013 Conformance Report
-status: complete
+status: collecting
 reviewers: [codex]
 created: 2026-09-19
-updated: 2026-10-09
+updated: 2026-10-11
 implementation_plan: ../implementation-plans/spec-013-implementation-plan.md
 related_future_work: []
 related_explorations: []
@@ -15,6 +15,17 @@ superseded_by: null
 ---
 
 # SPEC-013 Conformance Report
+
+## Current RFC-014 amendment disposition — 2026-10-11
+
+Collecting, not conformant for the amended implementation. The
+[approved scoped coordinator correction](../iterations/iteration-003-review/rfc-014-spec-approval.md#scoped-coordinator-constraint-amendment--2026-10-11)
+and [P07 progress](../../Tests/ContractFixtures/SPEC013/Evidence/rfc-014-p07/progress.md)
+control current applicability. Prior pass rows below remain historical evidence
+for their frozen revisions. Actual scoped coordinator/fault integration and
+four-configuration checks remain pending; no earlier implemented transition
+satisfies them. P07 acceptance and complete P10–P12 conformance remain separate.
+
 
 **Current amendment — 2026-10-05:** Approved five-second retention is implemented and all four hardware-free profiles pass in the [fresh integration](../iterations/iteration-002-cleanup/evidence/18-retention-integration/result.md). Focused nRF connected checks/restoration and current Pi deployment/ARMv6 rehearsal/bounded physical endpoint loop succeed. Original exception authority remains unchanged.
 

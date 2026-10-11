@@ -24,6 +24,16 @@ coherent step. Remaining implementation choices are internal realization
 within the approved contracts; new contract/scope questions return to Eugene.
 Consecutive unproductive repair count remains **0/2**, not reset by resumption.
 
+## Step 4 — record approved coordinator correction
+
+The exact SPEC-009/SPEC-013 protocol suppressions are recorded with the human
+approval ledger before code changes. SPEC-009 is approved/plan ready with a
+narrow T9.1 checkpoint inside P07; both affected reports are collecting and
+preserve historical passes without claiming amended conformance. Shared
+sequence/context and manifest are reconciled. SPEC-015 is unchanged.
+Validation: `scripts/validate-governance.rb`, `git diff --check`.
+Repair count remains **0/2**.
+
 ## Parent checkpoint — contract escalation, 2026-10-11
 
 P07 is **incomplete and blocked on the scoped coordinator contract decision**.

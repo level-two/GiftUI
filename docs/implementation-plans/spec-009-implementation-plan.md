@@ -2,11 +2,11 @@
 spec: SPEC-009
 feature: giftui-mvp-architecture
 title: SPEC-009 Implementation Plan
-status: completed
+status: ready
 owners:
   - codex
 created: 2026-09-06
-updated: 2026-09-19
+updated: 2026-10-11
 related_design_notes:
   - ../implementation-designs/spec-009-execution-state-axes.md
 conformance_report: ../conformance/spec-009-conformance.md
@@ -21,6 +21,23 @@ superseded_by: null
 ---
 
 # SPEC-009 Implementation Plan
+
+## Current P07 owner checkpoint — 2026-10-11
+
+Ready under the [explicit scoped coordinator approval](../iterations/iteration-003-review/rfc-014-spec-approval.md#scoped-coordinator-constraint-amendment--2026-10-11).
+The prior implemented baseline is `0ff7756a`; historical task/evidence records
+below do not establish conformance to the new constraint correction.
+
+- [ ] `T9.1` — Within existing RFC-014 P07, apply the two approved protocol
+  suppressions and directly necessary forwarding. Preserve every signature,
+  phase, failure, admission and limit. Prove actual scoped conformance plus
+  copy/escape rejection on four pinned configurations and participate in P07's
+  actual Dynamic/Static cycle/fault comparison. Map fresh evidence to
+  EX-001/010/012/013; all existing regression/resource duties remain.
+  [P07 progress](../../Tests/ContractFixtures/SPEC013/Evidence/rfc-014-p07/progress.md)
+  owns sequential commands, commits, repair counts and separate review. Full
+  P10–P12 obligations stay open; this is no new package or P08 host work.
+
 
 > This ready plan derives work from the approved Execution Cycle and Frame
 > Handoff Contract, including its explicitly reapproved bounded generic
@@ -175,7 +192,7 @@ exactly once below.
 
 | Criterion | Implementation tasks | Evidence | Status |
 | --- | --- | --- | --- |
-| `EX-001` — Exact execution declarations, normalization, widths, construction, and layouts | `T1.1`-`T1.5`, `T2.1`, `T8.1`, `T8.4` | API/source audit, initializer and option-set corpus, four-profile layout reports | pending |
+| `EX-001` — Exact execution declarations, normalization, widths, construction, and layouts | `T1.1`-`T1.5`, `T2.1`, `T8.1`, `T8.4` | API/source audit, initializer and option-set corpus, four-profile layout reports | pending; P07 T9.1 amendment verification |
 | `EX-002` — Exact sealing, late deferral, at-most-once application, frozen derivation, complete publication, and finalization | `T3.4`-`T3.6`, `T4.1`-`T4.4`, `T7.2` | Canonical phase/membership/effect/publication transcripts | pending |
 | `EX-003` — Dirty pre-publication recovery without replay and post-publication render-failure behavior | `T4.3`-`T4.5`, `T5.4`, `T7.2` | Failure-at-every-phase and dirty-rederivation transcript matrix | pending |
 | `EX-004` — Pre-offer reservations, one offer, complete consumption/reservation, atomic frame/routing commit, and no retained borrow | `T2.2`, `T5.1`-`T5.4`, `T7.3` | Identity-reservation, endpoint-call, commit, capacity, and lifetime probes | pending |
@@ -184,10 +201,10 @@ exactly once below.
 | `EX-007` — Target/runtime provenance, exact sequencing, cancellation, resynchronization, and exhaustion | `T3.2`-`T3.6`, `T7.2` | Complete `input.yaml` transcript with per-source before/after state | pending |
 | `EX-008` — Identity-generation-only capture and cancellation on every record/hit/enabled/target change | `T3.3`-`T3.6`, `T4.2`, `T7.2` | Capture lifetime, revision-preservation, release, replacement, and no-retention probes | pending |
 | `EX-009` — Exact admission, cycle, offer, focused-owner, operational, containment, policy, context, and diagnostic behavior | `T2.4`, `T4.5`, `T4.6`, `T6.1`-`T6.5`, `T7.5` | Exhaustive mapping/precedence/mandatory-effect corpus with diagnostic fault injection | pending |
-| `EX-010` — Recording/dynamic/static equality through common admission and opportunity protocols | `T4.1`, `T7.2`-`T7.5`, `T8.2`, `T8.3` | Field-by-field normalized profile comparison | pending |
+| `EX-010` — Recording/dynamic/static equality through common admission and opportunity protocols | `T4.1`, `T7.2`-`T7.5`, `T8.2`, `T8.3` | Field-by-field normalized profile comparison | pending; P07 T9.1 amendment verification |
 | `EX-011` — Signal Analyzer 80-facts/second workload with coalesced wakes/publications and one pending intent | `T5.5`, `T7.4`, `T8.2` | Timestamped `signal-analyzer.yaml` transcript and high-water report | pending |
-| `EX-012` — Four exact drivers, complete corpus, static zero heap, layouts, high-water/resource evidence, graph checks, and cross-builds | `T0.3`, `T7.1`-`T7.5`, `T8.1`-`T8.5` | Registered reports, allocation/stack/timing/link maps, ARMv6 and nRF ELF inspection | pending |
-| `EX-013` — No downstream/public/profile/backend/host/hardware contract leakage | `T0.2`, `T0.4`, `T8.1`, `T8.5` | Public/package surface, import graph, migration, symbol, and connected-hardware-claim audits | pending |
+| `EX-012` — Four exact drivers, complete corpus, static zero heap, layouts, high-water/resource evidence, graph checks, and cross-builds | `T0.3`, `T7.1`-`T7.5`, `T8.1`-`T8.5` | Registered reports, allocation/stack/timing/link maps, ARMv6 and nRF ELF inspection | pending; P07 T9.1 amendment verification |
+| `EX-013` — No downstream/public/profile/backend/host/hardware contract leakage | `T0.2`, `T0.4`, `T8.1`, `T8.5` | Public/package surface, import graph, migration, symbol, and connected-hardware-claim audits | pending; P07 T9.1 amendment verification |
 | `EX-014` — Finite focused-owner value preservation, first-failure selection, exact mapping, and static zero heap | `T1.5`, `T4.5`, `T4.6`, `T6.2`, `T7.5`, `T8.4` | Complete `owner-failures.yaml`, context/mapping transcript, layout and allocation report | pending |
 
 ## Milestones and Tasks

@@ -79,3 +79,32 @@ This realizes accepted ADR-036/037; no architecture change, relaxed acceptance
 criterion, capacity increase, package expansion or implemented transition is
 approved. The original compiler proof remains historical evidence. SPEC-012
 stays implementing and P06 remains open until its implementation and review pass.
+
+## Scoped coordinator constraint amendment — 2026-10-11
+
+After the [P07 independent Strong blocker review](../../../Tests/ContractFixtures/SPEC013/Evidence/rfc-014-p07/independent-blocker-review.md)
+and the concrete explanation of the three protocol suppressions, Eugene replied:
+“Got it. Please proceed then.” This explicitly approves and reapproves the narrow
+SPEC-009/SPEC-013 correction and resumes the existing P07 package:
+
+- `ExecutionAdmissionSink: ~Copyable, ~Escapable`.
+- `ExecutionOpportunityRunner: ~Copyable, ~Escapable`.
+- `GiftUIRuntimeProfileCoordinator: ~Copyable, ~Escapable,
+  ExecutionAdmissionSink, ExecutionOpportunityRunner`.
+- Directly necessary generic callers/forwarding preserve these permissions.
+  Existing copyable/escapable conformers remain permitted. Associated types,
+  method signatures, bounded failures, stage order, admission, publication,
+  accepted-offer commit, cleanup, quiescence and all limits remain unchanged.
+- The concrete scoped coordinator must remain tied to actual borrowed owner
+  storage; copying an unmanaged descriptor is not an alternative lifetime proof.
+  Positive and copy/escape negative checks apply on the four pinned routes,
+  followed by actual profile cycle/fault/cleanup evidence and separate review.
+
+This realizes accepted ADR-036. The [historical decision packet](../../../Tests/ContractFixtures/SPEC013/Evidence/rfc-014-p07/scoped-coordinator-constraint.md)
+and its compiler evidence remain unchanged. SPEC-009's previously implemented
+baseline is preserved at `0ff7756a`; it does not prove amended conformance.
+SPEC-009 returns to approved for this correction; SPEC-013 remains implementing.
+The narrow SPEC-009 owner checkpoint belongs inside P07, not a new package.
+SPEC-015's containing host construction/activation lifetime is a separately
+reviewed boundary and receives no blanket approval here. P08 is not started,
+and no implemented transition, waived criterion or enlarged scope is approved.
