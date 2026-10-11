@@ -1,0 +1,7 @@
+{
+  "command": ".build/contracts/p08-activation-span-3",
+  "exit": 0,
+  "executable_sha256": "fd7c5db6448d4254772822444095a9063fbb696f4e36f779f794bf9d369761ce",
+  "stdout_sha256": "fcaf82d27211a9843e3a6dd86f2fd5d59240984f7232e74fb9e62b49711c47fb",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}
