@@ -1,5 +1,86 @@
 # RFC-014 P06 progress
 
+## Implementation handoff — finite P06 evidence complete, review pending
+
+Implementation source ends at `909a7dab`. The final evidence index and owner
+cross-references are a following documentation-only commit. This implementation
+pass does **not** mark P06 passed or authorize any successor package.
+Counter remains **0 of 2**. No unresolved contract decision is known.
+
+[Final index](final-index.json) identifies all four receipt paths, copied receipt
+hashes, compiler hashes and verified core inputs. Every recorded input and output
+artifact hash was reconciled with the current files before copying the receipts.
+Native Static and nRF receipts were collected during the coherent resource step
+and accurately retain `source_dirty: true`; their recorded inputs match final
+implementation source. Native Dynamic and ARMv6 were collected from clean
+`909a7dab`. No result is silently relabeled as clean or board-executed.
+
+| Profile | Checks | Negative checks | Execution |
+| --- | ---: | ---: | --- |
+| [macos-dynamic](macos-dynamic.json) |43|13|3,944 native runtime assertions|
+| [macos-static](macos-static.json) |43|13|3,944 native runtime assertions|
+| [raspberry-pi-armv6](raspberry-pi-armv6.json) |42|13|Rooted component object, ARMv6/VFP ABI and layouts; no board execution|
+| [nrf52840-embedded](nrf52840-embedded.json) |42|13|Rooted component object, ARMv7E-M/VFP ABI, layouts and direct allocator attribution; no board execution|
+
+Each native total is266 staged/semantic assertions,13 error mappings,24 finite
+witness assertions,17 retained production geometry checks and3,624 raster
+checks. All17 independent golden vectors run both encodings and full/one-row
+tiled damage against literal masks/palette bytes. The unchanged Q160 oracle
+passes separately. Wrong owner and indexed out-of-bounds execute through actual
+generated witnesses. Negative cases include missing authored/compiled witness,
+async/effect/inout/legacy closure use, wrong domain, escaped read/context, and
+escaped/copied source/staged values. Ordinary Body inference and context aliases
+remain covered.
+
+Exact final owner commands (all after formatter):
+
+```text
+scripts/contracts/run-spec-012.sh --profile macos-static --compiler-baseline rfc-014 --giftui-build .build/contracts/spec-006-rfc-014/d4469901da4c0259-9wtdw756/macos-static
+scripts/contracts/run-spec-012.sh --profile macos-dynamic --compiler-baseline rfc-014 --giftui-build .build/contracts/spec-006-rfc-014/1ebb999f319d770c-7z96f1lo/macos-dynamic
+scripts/contracts/run-spec-012.sh --profile raspberry-pi-armv6 --compiler-baseline rfc-014 --giftui-build .build/raspberry-pi/contracts/spec-006-rfc-014/1ebb999f319d770c-rghi6e_f/raspberry-pi-armv6
+scripts/contracts/run-spec-012.sh --profile nrf52840-embedded --compiler-baseline rfc-014 --giftui-build .build/nrf52840/contracts/spec-006-rfc-014/25124cd324d60cb1-2hchpear/nrf52840-embedded
+```
+
+Each core directory came from the matching
+`scripts/contracts/run-spec-006.sh --profile <profile> --compiler-baseline rfc-014`;
+native P02/P04 regression assertions and target selected builds passed. Exact
+compiler commands are retained in each receipt and artifact directory.
+
+Resource interpretation: two unchanged98-slot payload pools cost7,056 bytes
+for Counter on all targets; Analyzer costs7,840 native/7,056 target, compared
+with6,272 baseline. Counter's complete two semantic banks (including unchanged
+record/path/scalar extents) cost30,616 bytes. The additional784/1,568 payload
+bytes must be included in P11's full overlap budget, not hidden as live-only
+usage or treated as authority to raise a limit. Both staged profile lenders use
+the configured extents. Selected nRF staged/invocation bodies show no direct
+allocator calls; full transitive/linked heap, stack, complete hosts and target
+execution remain unproved here.
+
+### Separate Strong review packet
+
+Review `a17724b2..909a7dab` plus the final documentation-only evidence commit;
+the exact constraint approval is `e6f10f67` and must not be reinterpreted as a
+broader generic or lifetime exception. Strong `gpt-6-astra`/`high`, C3/R3, must
+review independently of this implementation pass. Focus on:
+
+- Compiled Canvas/source-lowering contract, finite case completeness, ordinary
+  Body inference, typed key/domain agreement and error/raw9 owner mapping.
+- Actual owner+staged backing lifetime dependence, fresh per-invocation reads,
+  painter order/local bounds, no suffix after failure and exactly-once cleanup
+  including producer rejection before acquisition.
+- Pending semantic value transfer/fences, partial failure cleanup, preservation
+  of prior publication, marker-only published semantics and both profile stores.
+- Applicability of immutable geometry/pixel controls, actual source/compiler/
+  artifact hashes, reserved union slot costs and scope of direct allocator claims.
+
+This is selected component evidence, not complete GiftUIDrawing/Runtime host
+adoption or application/firmware conformance. Existing Static analyzer geometry
+workspace retains its five/five profile; its only production change is the
+approved status case. P07 coordinator implementation, P08/P09 application/host
+adoption and P10/P11/P12 full gates remain outside this pass. There is no new
+bank, application, retained closure fallback, limit authority or successor work.
+Independent review may require repairs before the parent records package exit.
+
 ## Step 9 — target layouts and rooted Embedded component evidence
 
 After formatting, native resource checks passed at

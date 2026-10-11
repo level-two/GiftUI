@@ -1,0 +1,1114 @@
+{
+  "allocation_attribution": null,
+  "artifacts": {
+    "Analyzer-lowering.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "Analyzer.json": {
+      "bytes": 598,
+      "sha256": "291f370f2dafb6793698f205abb87d9f0a02e759b55e5737e3c277aa0ca64bf0"
+    },
+    "AnalyzerCanvas.log": {
+      "bytes": 662,
+      "sha256": "a4ca8e68da9735bcff8e147725b8d14f6579da376fd8cee1aa37640aa3c9132a"
+    },
+    "AnalyzerCanvas.o": {
+      "bytes": 11944,
+      "sha256": "a50b13705d54eb3c87375f05dc67c976d7234ad91a3cefb424920a9a22599afd"
+    },
+    "AnalyzerCanvas.swift": {
+      "bytes": 1148,
+      "sha256": "d77f63a6117b8c9b18409cfdafbf5f836072603c73383d571e5a5d546658d46e"
+    },
+    "AnalyzerCanvas.swiftdoc": {
+      "bytes": 392,
+      "sha256": "77a6d67e8edb7f06a729f77ab5c9a83be3bbe42cbd58d2ca79db95e602a170ab"
+    },
+    "AnalyzerCanvas.swiftmodule": {
+      "bytes": 26040,
+      "sha256": "4821663139799b1ec8de0d19820504fd00b82fd28188a92a9aae9d9a224d5c4d"
+    },
+    "AnalyzerCanvas.swiftsourceinfo": {
+      "bytes": 1816,
+      "sha256": "c943f2d36d8f96428533e01019787447dc4c81f816a75b1a69ba5e3b2027f93b"
+    },
+    "AnalyzerCanvasTable.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "AnalyzerCanvasTable.o": {
+      "bytes": 14576,
+      "sha256": "9dd41f04ac363c22222d0510dc917ce348e882b7215893757ed1dbff25b8de32"
+    },
+    "AnalyzerCanvasTable.swift": {
+      "bytes": 1379,
+      "sha256": "f410e9ea2ee560e8c5c90c5d646cacf4932fcf416a8bbfaef99f09c86ee01d9b"
+    },
+    "AnalyzerCanvasTable.swiftdoc": {
+      "bytes": 396,
+      "sha256": "7999efee990fa78f980bc7a10e9f231266c11eba341758c77e60734504ee7d2b"
+    },
+    "AnalyzerCanvasTable.swiftmodule": {
+      "bytes": 28420,
+      "sha256": "a6ee5986b2cc795ad44440eb7ed8f83d948471f22398ecdd574209e662b44ec0"
+    },
+    "AnalyzerCanvasTable.swiftsourceinfo": {
+      "bytes": 3000,
+      "sha256": "6c0d3b4ea0118974ea711eb209468b713bb0f8d9bc8e7d89fbf9f0b8cd7dead9"
+    },
+    "AnalyzerSchema.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "AnalyzerSchema.o": {
+      "bytes": 15804,
+      "sha256": "5691b91089ca6eff532f1d57ab4d2e15016b899380f10bb5d7d7972058c520c8"
+    },
+    "AnalyzerSchema.swift": {
+      "bytes": 2892,
+      "sha256": "a68eafe25b6eb00d7787f5eddbe1113cd7006e16bba7421edf0ce72459528782"
+    },
+    "AnalyzerSchema.swiftdoc": {
+      "bytes": 392,
+      "sha256": "d11f06fb1ec2153799176e6a02b218da2f1bc12d8d2d3f45ff6f0d9c4209ce54"
+    },
+    "AnalyzerSchema.swiftmodule": {
+      "bytes": 29700,
+      "sha256": "63b9709d6035c1e3278f38b086fed350cf8fcb78d596f89db2aa77413d090417"
+    },
+    "AnalyzerSchema.swiftsourceinfo": {
+      "bytes": 4824,
+      "sha256": "7c90d6e65707b956f68a0e80cfbf5f3193c75f3d7cd6befdd178ef154d5bb1a1"
+    },
+    "CanvasStoreProbe.log": {
+      "bytes": 1506,
+      "sha256": "381f5a8890157e1899153d0cdf584e9210f233e6e3d61e367b8983243372d235"
+    },
+    "CanvasStoreProbe.o": {
+      "bytes": 299524,
+      "sha256": "104d9c5843852bf793e9e1b99ec421f9274647c4cb3bd8824232e68d912576d8"
+    },
+    "CanvasStoreProbe.swiftdoc": {
+      "bytes": 616,
+      "sha256": "4d21a87329b9f4b8ef3191a19ae4b522420160a5c5d95055c8278b8c65a5e1a9"
+    },
+    "CanvasStoreProbe.swiftmodule": {
+      "bytes": 148776,
+      "sha256": "ba3af118c6f897d39ed3bd95b36d002e883fac9255425c8600e5be707e318424"
+    },
+    "CanvasStoreProbe.swiftsourceinfo": {
+      "bytes": 21036,
+      "sha256": "b143b353895c481468bbf0468e3d59e8bfc27f6fae8ce8665a85a9ddb0e5109d"
+    },
+    "Counter-lowering.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "Counter.json": {
+      "bytes": 271,
+      "sha256": "df5b622f67b8bc767e7c04a00ee9bc0015464002e567536a4578ed2e840b5773"
+    },
+    "CounterCanvas.log": {
+      "bytes": 566,
+      "sha256": "6b00bd609c506e611266ce07b77fe53352aa83379a90fca776a88d9ef63e29ab"
+    },
+    "CounterCanvas.o": {
+      "bytes": 24380,
+      "sha256": "00e60b48d49c1a67e591fa61824f22404b0d82290540d3e76cd6ef10fe6e9156"
+    },
+    "CounterCanvas.swift": {
+      "bytes": 1702,
+      "sha256": "a79d67cc604cba1b547e6434836c5d7e87946cc08b63bf52f61d48faa3e40047"
+    },
+    "CounterCanvas.swiftdoc": {
+      "bytes": 392,
+      "sha256": "105de61229c63acc3dcaa138de2c206fd8ef24f7f8868ed6c66e38ed290bf9c4"
+    },
+    "CounterCanvas.swiftmodule": {
+      "bytes": 34140,
+      "sha256": "335d9b95dd06595b8b4acf9d7169fc225401ec985a1732f98c1817b91b7c1331"
+    },
+    "CounterCanvas.swiftsourceinfo": {
+      "bytes": 3408,
+      "sha256": "f93af3c1f22001e94be7dbb801ce62e8768fc55dbb8bbe1cc1997ea1b7e51512"
+    },
+    "CounterCanvasTable.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "CounterCanvasTable.o": {
+      "bytes": 15700,
+      "sha256": "4ba1bf15d11033952c785512e24eb6e3aeff9b881c6c6e564155a312b893f58e"
+    },
+    "CounterCanvasTable.swift": {
+      "bytes": 1751,
+      "sha256": "22f7846e64d2f322423ca1a2b6c46b11b8da4fb2ca55caadff33dae7067a2e8d"
+    },
+    "CounterCanvasTable.swiftdoc": {
+      "bytes": 396,
+      "sha256": "d83d346c9ec35ec22fddc65d61240ab175aa470f9eb3006bb86569e339bf8811"
+    },
+    "CounterCanvasTable.swiftmodule": {
+      "bytes": 28824,
+      "sha256": "9141aa5f93acc0df1734040be74387841dceeec955764d6e749c823c48e434e3"
+    },
+    "CounterCanvasTable.swiftsourceinfo": {
+      "bytes": 3184,
+      "sha256": "cec955adf359d5f07714b436eff5e54778717deb857e6fddaf3acb21cd61bfc4"
+    },
+    "CounterSchema.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "CounterSchema.o": {
+      "bytes": 9928,
+      "sha256": "f63dcdc9df0203de4b660c6accf49a8ddc923a40335fc3ac116c755c05e784f7"
+    },
+    "CounterSchema.swift": {
+      "bytes": 1194,
+      "sha256": "a36e7b5efba867006cb1f5c3932bd80fc5969f93b33dc3a9e936c61b7af67ccc"
+    },
+    "CounterSchema.swiftdoc": {
+      "bytes": 392,
+      "sha256": "455b826e50ee1a612a804fa0e46c77ff9d599987793f058d12a3aa6623808da7"
+    },
+    "CounterSchema.swiftmodule": {
+      "bytes": 24184,
+      "sha256": "115ece4f2b98e0f7cbef643c19d29bbc98e25727159c35c0f15fd23ed10be90a"
+    },
+    "CounterSchema.swiftsourceinfo": {
+      "bytes": 2844,
+      "sha256": "56f156027bbc975180272354e29045f10487b32b38638e8e7a1dcb6fa149f75b"
+    },
+    "GiftUICapabilities.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "GiftUICapabilities.o": {
+      "bytes": 282288,
+      "sha256": "d9e43d37b72b8bc0ff37cc0dd9dbb8a38104da6fed82848cd90dff9568d145f6"
+    },
+    "GiftUICapabilities.swiftdoc": {
+      "bytes": 396,
+      "sha256": "e9bb0c79a10a696a9837476c1db6b3ba688414c807593fa567f37abb767b9238"
+    },
+    "GiftUICapabilities.swiftmodule": {
+      "bytes": 307496,
+      "sha256": "63be28b1ea709147dce3d553469f3db7726c838e6580b9be64d4ca49a433baeb"
+    },
+    "GiftUICapabilities.swiftsourceinfo": {
+      "bytes": 47948,
+      "sha256": "addb043a1e4cbb1b0b1db57efba35ccde5a9317922b4cf4beff2a5ce8fb32dbd"
+    },
+    "GiftUIDrawing.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "GiftUIDrawing.o": {
+      "bytes": 110052,
+      "sha256": "ac3785a79b1d0a60fa6fc42e6f230c481dd81e421861dd02708fab10467e0f8f"
+    },
+    "GiftUIDrawing.swiftdoc": {
+      "bytes": 1508,
+      "sha256": "2277408a83d167e260b30856fe5d0ce7de4f264601df6b235785c9155a8445bb"
+    },
+    "GiftUIDrawing.swiftmodule": {
+      "bytes": 87424,
+      "sha256": "1a10ffcdfd2e8a773ff2c64d5a24973f8d215af33e5e62b9cc51172f1dd337e1"
+    },
+    "GiftUIDrawing.swiftsourceinfo": {
+      "bytes": 29680,
+      "sha256": "4b9050041191e3cbbd1b45a0b4989f620f73ffe7086691b182c6cfeb39e38dcd"
+    },
+    "GiftUIDrawingFailureAdapterFixture.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "GiftUIDrawingFailureAdapterFixture.o": {
+      "bytes": 7544,
+      "sha256": "ca4bca192eed4ca3445ba8c822cbccf779f7a234e2641ef67ce0ddd65fe177f1"
+    },
+    "GiftUIDrawingFailureAdapterFixture.swiftdoc": {
+      "bytes": 412,
+      "sha256": "b901de5213c96ea92c68048bf8dac67ddebfa1e5dc29929b72d6a272cbea6bc3"
+    },
+    "GiftUIDrawingFailureAdapterFixture.swiftmodule": {
+      "bytes": 21208,
+      "sha256": "8b18a977290dd27f3f20b66549d72f20d340357f877e3e87580cf1a69498e7bc"
+    },
+    "GiftUIDrawingFailureAdapterFixture.swiftsourceinfo": {
+      "bytes": 1492,
+      "sha256": "f4272898bb7655014241acddd6436b2fea82b91289c47296a5e1092667f05dd3"
+    },
+    "GiftUIExecution.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "GiftUIExecution.o": {
+      "bytes": 83340,
+      "sha256": "0f02a046a384696dfa2c3928116e3db19f6ec3d9c185df12f9538e1d9861e45f"
+    },
+    "GiftUIExecution.swiftdoc": {
+      "bytes": 392,
+      "sha256": "e8d2c43706064f04b89b67f6664d49fa0eb46910774ffca62d78f51c2b3e3b2f"
+    },
+    "GiftUIExecution.swiftmodule": {
+      "bytes": 92440,
+      "sha256": "f33632a14f4cf3c24a917157981f7a0f2c6995dae1fad79b5b272320b8987959"
+    },
+    "GiftUIExecution.swiftsourceinfo": {
+      "bytes": 13752,
+      "sha256": "281a7eb7679a0aa074af185f8662b199b8ad5ffafd591e83cf66e70ac7adf1de"
+    },
+    "GiftUIFailureCore.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "GiftUIFailureCore.o": {
+      "bytes": 160724,
+      "sha256": "da69fe1eba8c7503e52da738cafb9bf8d0e4447757fc3443fc49d6de26cd12ee"
+    },
+    "GiftUIFailureCore.swiftdoc": {
+      "bytes": 396,
+      "sha256": "a1cfbf39026b8bfb65f21f68b5c53fcc651aa0f2ac5380154e27176d6584bd1b"
+    },
+    "GiftUIFailureCore.swiftmodule": {
+      "bytes": 174348,
+      "sha256": "123a292b60bd2fb9a7db65bb77da0b15d3628f95ff403cd5bbd40a42121e993e"
+    },
+    "GiftUIFailureCore.swiftsourceinfo": {
+      "bytes": 30760,
+      "sha256": "429fb8525d129a002be63a535f51f717f3bc3636906409fa04abcf6757805605"
+    },
+    "GiftUILayout.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "GiftUILayout.o": {
+      "bytes": 155460,
+      "sha256": "b501f5f57db16e0e1083c206660a822e6443dee5c191dcd6af2ba81ce2613136"
+    },
+    "GiftUILayout.swiftdoc": {
+      "bytes": 388,
+      "sha256": "d19deabfaa6911abda9d95d7a8c1cc69891a03d2e3cb29b50fe59ab8d78bdcbe"
+    },
+    "GiftUILayout.swiftmodule": {
+      "bytes": 140072,
+      "sha256": "357a19ba2909d0a05146adce2690b9b318d691a866e5a28c4abe84381a52b7ea"
+    },
+    "GiftUILayout.swiftsourceinfo": {
+      "bytes": 36164,
+      "sha256": "027438604ac4fd3dbae3c64f41e3eaf26036429a5776c53ee78a781b56f18d49"
+    },
+    "GiftUIObservableState.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "GiftUIObservableState.o": {
+      "bytes": 299528,
+      "sha256": "a25740239bc18c023a7dca398d406a85618ac2acc45a1bed4fd28145f95fe157"
+    },
+    "GiftUIObservableState.swiftdoc": {
+      "bytes": 8172,
+      "sha256": "a8ca361f20781b4a429bfaf208f3b8cf82a034075c17c24492879fb79f09e4f2"
+    },
+    "GiftUIObservableState.swiftmodule": {
+      "bytes": 210684,
+      "sha256": "a9df77d7f02aef9fb43b986a6dc09d08d1d67818069972a14a916cab174f0065"
+    },
+    "GiftUIObservableState.swiftsourceinfo": {
+      "bytes": 52804,
+      "sha256": "aa7c4dd7eee376f54a6fb45bb11cb7f69fae564c7e4a39f6085d0d218b335e4b"
+    },
+    "GiftUIRasterCore.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "GiftUIRasterCore.o": {
+      "bytes": 58928,
+      "sha256": "a889e2a63052f87aae34afbd813c76728828cf596d2daa2c24d6ec82427cfd01"
+    },
+    "GiftUIRasterCore.swiftdoc": {
+      "bytes": 392,
+      "sha256": "a0242702bc4bfb60db1acf0b257b9e17c1401ef2297c6929e647c86655a89d09"
+    },
+    "GiftUIRasterCore.swiftmodule": {
+      "bytes": 39688,
+      "sha256": "0f997b5b2e381d4aacc71359ceb82e9e53c08fc6fc92c33547c7c38dac286cc5"
+    },
+    "GiftUIRasterCore.swiftsourceinfo": {
+      "bytes": 3896,
+      "sha256": "43ea10554a1727491dbe7d1e81601b8bad02a4061453a452dbaf851051bef0a3"
+    },
+    "GiftUIRenderCore.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "GiftUIRenderCore.o": {
+      "bytes": 83584,
+      "sha256": "70154808472f9d07efff757a1e76704d9d7d9e9ee22d676012109749d0f3f7d0"
+    },
+    "GiftUIRenderCore.swiftdoc": {
+      "bytes": 392,
+      "sha256": "e4cb8b558e18ac406d8884e8b2bc60abc9418abefb3d8fe3247e686cdaf50c19"
+    },
+    "GiftUIRenderCore.swiftmodule": {
+      "bytes": 83968,
+      "sha256": "b56e35af370060d9c114cc46168fd3e3be351e537dc5aad8c53b63eb30de94de"
+    },
+    "GiftUIRenderCore.swiftsourceinfo": {
+      "bytes": 20208,
+      "sha256": "5d6802877ad1a573e2e672282af1a66221e043834421ae867253c7f6efef16d3"
+    },
+    "GiftUIRuntimeCore.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "GiftUIRuntimeCore.o": {
+      "bytes": 16332,
+      "sha256": "2512bace1968e034bf30586c0ba4ab10eef19bc75ad07d7d78a76c68ac8bf6a3"
+    },
+    "GiftUIRuntimeCore.swiftdoc": {
+      "bytes": 816,
+      "sha256": "41dbeb0a0aa91f9bcfc3cd36babcfe764d523112e51d209bc27cfcf3645d91c2"
+    },
+    "GiftUIRuntimeCore.swiftmodule": {
+      "bytes": 29376,
+      "sha256": "a33e5e6d1c52c3fd639df5b4d4382aae50a619025c0afa2fb9237430fc67ac88"
+    },
+    "GiftUIRuntimeCore.swiftsourceinfo": {
+      "bytes": 2320,
+      "sha256": "84f1b4f6c5ef6302d27f85b439cd5374bf2d78028c23c88be5d3663f9fcf63af"
+    },
+    "GiftUIRuntimeDynamic.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "GiftUIRuntimeDynamic.o": {
+      "bytes": 24800,
+      "sha256": "00d83fbf117805de5e07d832e85900c06e52233f62aceed6ccd3009530873f7e"
+    },
+    "GiftUIRuntimeDynamic.swiftdoc": {
+      "bytes": 1004,
+      "sha256": "c96f1c60dd7fc55b3bea973b822af8e17918dc2f8d3a56c5c4550509d53229d3"
+    },
+    "GiftUIRuntimeDynamic.swiftmodule": {
+      "bytes": 31596,
+      "sha256": "fbcea22a9bb5fe8b4bbb00bbc9fc8e66657cf130096833ae69a3940fd8999ed6"
+    },
+    "GiftUIRuntimeDynamic.swiftsourceinfo": {
+      "bytes": 2440,
+      "sha256": "ef053c9df1f36d71256a7cd5e7c75534ad15c309e77c1e8b87e314870b391595"
+    },
+    "GiftUIRuntimeStatic.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "GiftUIRuntimeStatic.o": {
+      "bytes": 21388,
+      "sha256": "29e39077abecf05bf59acccbcbccb9426ea011890f7eb604b80ddb06a54bf982"
+    },
+    "GiftUIRuntimeStatic.swiftdoc": {
+      "bytes": 1460,
+      "sha256": "cd5b7306ab0448f938f3d9df7b9e742ff490ec1192272a8ec23363a0bc4cae43"
+    },
+    "GiftUIRuntimeStatic.swiftmodule": {
+      "bytes": 33736,
+      "sha256": "545d5ee7b5b625b368897f811c399544dc4c0226ad70afcb1b67f1577d735e1e"
+    },
+    "GiftUIRuntimeStatic.swiftsourceinfo": {
+      "bytes": 3316,
+      "sha256": "6560ccb3070d900f650cca56e8d6173bc880497c90ddc78e2fcff2c702f64577"
+    },
+    "GiftUISemanticCore.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "GiftUISemanticCore.o": {
+      "bytes": 401000,
+      "sha256": "bc0e0e687e34dedf909e1a3d081b95ac14acf81b64c747af47b0dd76f3777f1b"
+    },
+    "GiftUISemanticCore.swiftdoc": {
+      "bytes": 7868,
+      "sha256": "1c1fc651661399d2eeae63e1ecb77e6d79d4824658aec17ead723cdf0824df00"
+    },
+    "GiftUISemanticCore.swiftmodule": {
+      "bytes": 313044,
+      "sha256": "1a309830f7f458f46c1e778e405d958918f4ba4f043f66978b8a3bfeb98583d2"
+    },
+    "GiftUISemanticCore.swiftsourceinfo": {
+      "bytes": 91104,
+      "sha256": "21f7379e89fbeff88bf4fb3585e4e8a7c120512ab5854bcda33bfc80e824839f"
+    },
+    "GiftUISurfaceCore.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "GiftUISurfaceCore.o": {
+      "bytes": 16072,
+      "sha256": "8f60eae0d35e86ad2aab36d2d7d66d4dd16fe8f0827a162a55bb3056a4b38ec0"
+    },
+    "GiftUISurfaceCore.swiftdoc": {
+      "bytes": 396,
+      "sha256": "965cf3a4e7849deca9bfc656b8f428fd3864212212fc9d49b716e9f3a7c7d549"
+    },
+    "GiftUISurfaceCore.swiftmodule": {
+      "bytes": 31736,
+      "sha256": "d5c9efffc5b7449794aae34edc3c960b050bfcaf0a84634f52a1efeb2b9b0be2"
+    },
+    "GiftUISurfaceCore.swiftsourceinfo": {
+      "bytes": 6384,
+      "sha256": "86ce3634c94779774810f2600e1e3b7d3d5eab202a2bb319b87f7b1b35556945"
+    },
+    "GiftUITextResources.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "GiftUITextResources.o": {
+      "bytes": 123720,
+      "sha256": "db992ad78f9d9c4db54410165c8178590278b1641a0ac39f793c87047338e59f"
+    },
+    "GiftUITextResources.swiftdoc": {
+      "bytes": 1732,
+      "sha256": "cfca1e81fc64ffd762f10a76a9cad8ff80b0720d919493709d30a0dd49e331ed"
+    },
+    "GiftUITextResources.swiftmodule": {
+      "bytes": 130392,
+      "sha256": "d9774ccb1eed97173b50f44bb9cac7c2ba8891f73d13ec13fc4ba54e1cdb104b"
+    },
+    "GiftUITextResources.swiftsourceinfo": {
+      "bytes": 25672,
+      "sha256": "0151f4c305320ec39264461998547bb0437b810520839602bff008b7b2b14c7b"
+    },
+    "P06DrawingWorkspace.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "P06DrawingWorkspace.o": {
+      "bytes": 102136,
+      "sha256": "f5e88eb512b28c98c17a6141d72feea05effa33ec2b182b1d619183cff0bca30"
+    },
+    "P06DrawingWorkspace.swiftdoc": {
+      "bytes": 1924,
+      "sha256": "ee87517bd62325396db07d2dd5ab5b0edcce21b4232e4d0f2f70207208b41794"
+    },
+    "P06DrawingWorkspace.swiftmodule": {
+      "bytes": 106284,
+      "sha256": "231d79df2aa70edfb8a79fec58c6b0a6325a1da2dd0a652982501cbdc112d094"
+    },
+    "P06DrawingWorkspace.swiftsourceinfo": {
+      "bytes": 22092,
+      "sha256": "55c81605964a046ce26b6697e0fa336551b8e1db901c271befc57638d020a28b"
+    },
+    "RasterProbe.swift": {
+      "bytes": 85397,
+      "sha256": "f03ea9878dc0c5c4c6870fc5248be8b776c3893aaa77d7a56125d6099d85423e"
+    },
+    "async-draw.log": {
+      "bytes": 246,
+      "sha256": "0e46e25df1c52e9014162debf84040395127236e46174a9a0e741a835719364e"
+    },
+    "async-draw.swift": {
+      "bytes": 126,
+      "sha256": "d23f1465406f5b1fea5d42ea1514b9af778bde5c6564f7205822167b229372b7"
+    },
+    "closure-fallback.log": {
+      "bytes": 189,
+      "sha256": "dfeb3c47b45c822b0b99d18375f4af2dcf45a79628f8caf985d5bf54ae9f4504"
+    },
+    "closure-fallback.swift": {
+      "bytes": 87,
+      "sha256": "94707dfef82214a70f1f786dd78ab3d7fea46c83e6731fe2c0238a5405cfd731"
+    },
+    "commands.txt": {
+      "bytes": 66981,
+      "sha256": "be1eba5d74b57955bfd5e72140c7bb7e3f2a23f9d6bba2e40fcbee77a2a36af0"
+    },
+    "copy-source.log": {
+      "bytes": 555,
+      "sha256": "0a21c27f2f72d308a13de8d5ffcfb3fc1ddffe1faa9a585afde60311ea8b551d"
+    },
+    "copy-source.swift": {
+      "bytes": 406,
+      "sha256": "d56f67423d67b43ea4120c2e6ca8caf8f3e671898a40129f6d2558e9998a9096"
+    },
+    "copy-staged-values.log": {
+      "bytes": 493,
+      "sha256": "f17050e2089784602f3e6f05a35e4e687b0129d3bceab18bd45276e7fbe7fd2a"
+    },
+    "copy-staged-values.swift": {
+      "bytes": 222,
+      "sha256": "06ae89716fc1f1c8ff34950a5fab58a6146b7e0a3459ceae7e52fb818829ded1"
+    },
+    "effect.log": {
+      "bytes": 378,
+      "sha256": "efd806978ef0bb4f24bdb32a9618c0a5583e95fa23754356a444654c33c11c03"
+    },
+    "effect.swift": {
+      "bytes": 135,
+      "sha256": "eaa7584291c3c046cf69764fc242741c2b0323a81b5b054ea19d5dd1680071bf"
+    },
+    "escape-context.log": {
+      "bytes": 536,
+      "sha256": "6fd3480cc50b794bfc926385df2120860bced37bc6cce16251313dbb50978efd"
+    },
+    "escape-context.swift": {
+      "bytes": 121,
+      "sha256": "89a64ced04c212152589c04f3c848818f5b045ff475b1fa730ee4ed17263e77a"
+    },
+    "escape-read.log": {
+      "bytes": 627,
+      "sha256": "a4e0e64602acd4388c6da534bf0877671f9a7dfbfc428bbc1ce2e98d79dc5076"
+    },
+    "escape-read.swift": {
+      "bytes": 91,
+      "sha256": "ebc06e252395f8e29a9e0d41e5004a87ff004bfb45f6b884a865c9f93b4556ce"
+    },
+    "escape-source.log": {
+      "bytes": 1098,
+      "sha256": "91207b3db3a21a428c7c6311b43f2d600dd7bf0d19339706f1e2fe5e4b4d5ef8"
+    },
+    "escape-source.swift": {
+      "bytes": 318,
+      "sha256": "ff69e1dbebe35db628f90fba2d11546da3aaee07d5b7b1c9914dcd1c54f5fd53"
+    },
+    "escape-staged-values.log": {
+      "bytes": 862,
+      "sha256": "794784d5171cd9c2260307296c814937e0e3ea203ac981a44a0ef41082eadf3f"
+    },
+    "escape-staged-values.swift": {
+      "bytes": 150,
+      "sha256": "0beb6d79abd5d86c670cd931d568d20eafcc0a2d67fc89c606fc8e32b4cfda56"
+    },
+    "generate-raster-probe.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "independent-raster-oracle.log": {
+      "bytes": 74,
+      "sha256": "d0bf5ce25dc8c3d07e043508ecbc922a948880ec8d455f9acf2bcab6d5878352"
+    },
+    "inout-effect.log": {
+      "bytes": 391,
+      "sha256": "ba5b23a1fb48ccb2470b78f98207b4bdb5e1f9db6eb42b7cd9c3f14704391b9c"
+    },
+    "inout-effect.swift": {
+      "bytes": 135,
+      "sha256": "953fd9274c67108dbe6884a6b1e7755b440fb6dd8b32f6bb1ece40a20ab956d4"
+    },
+    "layouts.json": {
+      "bytes": 2279,
+      "sha256": "743972e392aff3520d77be0c231c74796f52f16da39eb69cae6ecd00157bd7c1"
+    },
+    "layouts.ll": {
+      "bytes": 33955,
+      "sha256": "f96b3493d457403be07f9ae2fdb701adf9b5b89d32e643acfb9b21f5a040b1c6"
+    },
+    "layouts.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "missing-compiled-witness.log": {
+      "bytes": 1415,
+      "sha256": "5da558d3fd3c8e80fef1d9645008758ff7dac30c5c90aaa94934b1b8d83ef0a4"
+    },
+    "missing-compiled-witness.swift": {
+      "bytes": 86,
+      "sha256": "07872bcfb67bdcff4586072efdcfcda050c55ab98dc10b90dd15c1c377d8002b"
+    },
+    "missing-witness.log": {
+      "bytes": 195,
+      "sha256": "d349f9b3ad7c932e36fe9d1203619573e1bc60e30474022a9fb4c33bbe61e359"
+    },
+    "missing-witness.swift": {
+      "bytes": 36,
+      "sha256": "83b3e934eb712e3451a415980ed29903515a349cfae2f63ff069a5a03bfa3ed9"
+    },
+    "target-abi.log": {
+      "bytes": 1642,
+      "sha256": "7de989224032d242ac9c4df047d47828dbac4857fa96c76438786fe33f2c1c7d"
+    },
+    "wrong-domain.log": {
+      "bytes": 942,
+      "sha256": "4ea025522707e6cd854c04be46015611aaef0b83d3363c3f2dc781c3b56f73e2"
+    },
+    "wrong-domain.swift": {
+      "bytes": 348,
+      "sha256": "f1e6598f4e60e4a43b57b6252d803505871bc4374c84eded26b6e7525cb3a7bd"
+    }
+  },
+  "checks": [
+    {
+      "exit": 0,
+      "expected_failure": null,
+      "name": "GiftUISemanticCore",
+      "pass": true
+    },
+    {
+      "exit": 0,
+      "expected_failure": null,
+      "name": "GiftUITextResources",
+      "pass": true
+    },
+    {
+      "exit": 0,
+      "expected_failure": null,
+      "name": "GiftUILayout",
+      "pass": true
+    },
+    {
+      "exit": 0,
+      "expected_failure": null,
+      "name": "GiftUIRenderCore",
+      "pass": true
+    },
+    {
+      "exit": 0,
+      "expected_failure": null,
+      "name": "GiftUICapabilities",
+      "pass": true
+    },
+    {
+      "exit": 0,
+      "expected_failure": null,
+      "name": "GiftUISurfaceCore",
+      "pass": true
+    },
+    {
+      "exit": 0,
+      "expected_failure": null,
+      "name": "GiftUIRasterCore",
+      "pass": true
+    },
+    {
+      "exit": 0,
+      "expected_failure": null,
+      "name": "GiftUIExecution",
+      "pass": true
+    },
+    {
+      "exit": 0,
+      "expected_failure": null,
+      "name": "GiftUIObservableState",
+      "pass": true
+    },
+    {
+      "exit": 0,
+      "expected_failure": null,
+      "name": "GiftUIDrawing",
+      "pass": true
+    },
+    {
+      "exit": 0,
+      "expected_failure": null,
+      "name": "GiftUIFailureCore",
+      "pass": true
+    },
+    {
+      "exit": 0,
+      "expected_failure": null,
+      "name": "GiftUIDrawingFailureAdapterFixture",
+      "pass": true
+    },
+    {
+      "exit": 0,
+      "expected_failure": null,
+      "name": "GiftUIRuntimeCore",
+      "pass": true
+    },
+    {
+      "exit": 0,
+      "expected_failure": null,
+      "name": "P06DrawingWorkspace",
+      "pass": true
+    },
+    {
+      "exit": 0,
+      "expected_failure": null,
+      "name": "GiftUIRuntimeStatic",
+      "pass": true
+    },
+    {
+      "exit": 0,
+      "expected_failure": null,
+      "name": "GiftUIRuntimeDynamic",
+      "pass": true
+    },
+    {
+      "exit": 0,
+      "expected_failure": null,
+      "name": "Counter-lowering",
+      "pass": true
+    },
+    {
+      "exit": 0,
+      "expected_failure": null,
+      "name": "CounterSchema",
+      "pass": true
+    },
+    {
+      "exit": 0,
+      "expected_failure": null,
+      "name": "CounterCanvas",
+      "pass": true
+    },
+    {
+      "exit": 0,
+      "expected_failure": null,
+      "name": "CounterCanvasTable",
+      "pass": true
+    },
+    {
+      "exit": 0,
+      "expected_failure": null,
+      "name": "Analyzer-lowering",
+      "pass": true
+    },
+    {
+      "exit": 0,
+      "expected_failure": null,
+      "name": "AnalyzerSchema",
+      "pass": true
+    },
+    {
+      "exit": 0,
+      "expected_failure": null,
+      "name": "AnalyzerCanvas",
+      "pass": true
+    },
+    {
+      "exit": 0,
+      "expected_failure": null,
+      "name": "AnalyzerCanvasTable",
+      "pass": true
+    },
+    {
+      "exit": 0,
+      "expected_failure": null,
+      "name": "independent-raster-oracle",
+      "pass": true
+    },
+    {
+      "exit": 0,
+      "expected_failure": null,
+      "name": "generate-raster-probe",
+      "pass": true
+    },
+    {
+      "exit": 0,
+      "expected_failure": null,
+      "name": "CanvasStoreProbe",
+      "pass": true
+    },
+    {
+      "exit": 0,
+      "expected_failure": null,
+      "name": "layouts",
+      "pass": true
+    },
+    {
+      "exit": 0,
+      "expected_failure": null,
+      "name": "target-abi",
+      "pass": true
+    },
+    {
+      "exit": 1,
+      "expected_failure": "requires exactly one draw witness",
+      "name": "missing-witness",
+      "pass": true
+    },
+    {
+      "exit": 1,
+      "expected_failure": "requires synchronous draw",
+      "name": "async-draw",
+      "pass": true
+    },
+    {
+      "exit": 1,
+      "expected_failure": "unsupported call/effect",
+      "name": "effect",
+      "pass": true
+    },
+    {
+      "exit": 1,
+      "expected_failure": "unchecked inout",
+      "name": "inout-effect",
+      "pass": true
+    },
+    {
+      "exit": 1,
+      "expected_failure": "unsupported call/effect",
+      "name": "closure-fallback",
+      "pass": true
+    },
+    {
+      "exit": 1,
+      "expected_failure": "non-Escapable",
+      "name": "escape-staged-values",
+      "pass": true
+    },
+    {
+      "exit": 1,
+      "expected_failure": "noncopyable",
+      "name": "copy-staged-values",
+      "pass": true
+    },
+    {
+      "exit": 1,
+      "expected_failure": "non-Escapable",
+      "name": "escape-source",
+      "pass": true
+    },
+    {
+      "exit": 1,
+      "expected_failure": "noncopyable",
+      "name": "copy-source",
+      "pass": true
+    },
+    {
+      "exit": 1,
+      "expected_failure": "cannot convert",
+      "name": "wrong-domain",
+      "pass": true
+    },
+    {
+      "exit": 1,
+      "expected_failure": "non-Escapable",
+      "name": "escape-read",
+      "pass": true
+    },
+    {
+      "exit": 1,
+      "expected_failure": "escaping closure captures",
+      "name": "escape-context",
+      "pass": true
+    },
+    {
+      "exit": 1,
+      "expected_failure": "does not conform",
+      "name": "missing-compiled-witness",
+      "pass": true
+    }
+  ],
+  "commands": [
+    "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.3.2-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6/cache -disable-sandbox -target armv6-unknown-linux-gnueabihf -sdk /Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6/raspios-bookworm -resource-dir /Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6/raspios-bookworm/usr/lib/swift_static -use-ld=lld -Xcc --gcc-toolchain=/Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6/raspios-bookworm/usr -Xcc -march=armv6 -Xcc -mfloat-abi=hard -Xcc -mfpu=vfp -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-006-rfc-014/1ebb999f319d770c-rghi6e_f/raspberry-pi-armv6 -parse-as-library -I /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6 -I /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-006-rfc-014/1ebb999f319d770c-rghi6e_f/raspberry-pi-armv6 -enable-testing -module-name GiftUISemanticCore -emit-module -emit-object /Users/eugene/work/GiftUI/Sources/GiftUISemanticCore/GiftUISemanticCore.swift /Users/eugene/work/GiftUI/Sources/GiftUISemanticCore/SemanticRuntimeRecords.swift /Users/eugene/work/GiftUI/Sources/GiftUISemanticCore/SemanticRecordStore.swift /Users/eugene/work/GiftUI/Sources/GiftUISemanticCore/SemanticRecordExpansion.swift /Users/eugene/work/GiftUI/Sources/GiftUISemanticCore/SemanticStandardPayload.swift /Users/eugene/work/GiftUI/Sources/GiftUISemanticCore/SemanticLayoutView.swift /Users/eugene/work/GiftUI/Sources/GiftUISemanticCore/SemanticRenderView.swift /Users/eugene/work/GiftUI/Sources/GiftUISemanticCore/SemanticRecordLayoutView.swift /Users/eugene/work/GiftUI/Sources/GiftUISemanticCore/SemanticRecordRenderView.swift -emit-module-path /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6/GiftUISemanticCore.swiftmodule -o /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6/GiftUISemanticCore.o",
+    "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.3.2-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6/cache -disable-sandbox -target armv6-unknown-linux-gnueabihf -sdk /Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6/raspios-bookworm -resource-dir /Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6/raspios-bookworm/usr/lib/swift_static -use-ld=lld -Xcc --gcc-toolchain=/Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6/raspios-bookworm/usr -Xcc -march=armv6 -Xcc -mfloat-abi=hard -Xcc -mfpu=vfp -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-006-rfc-014/1ebb999f319d770c-rghi6e_f/raspberry-pi-armv6 -parse-as-library -I /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6 -I /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-006-rfc-014/1ebb999f319d770c-rghi6e_f/raspberry-pi-armv6 -enable-testing -module-name GiftUITextResources -emit-module -emit-object /Users/eugene/work/GiftUI/Sources/GiftUITextResources/GiftUITextResources.swift -emit-module-path /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6/GiftUITextResources.swiftmodule -o /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6/GiftUITextResources.o",
+    "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.3.2-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6/cache -disable-sandbox -target armv6-unknown-linux-gnueabihf -sdk /Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6/raspios-bookworm -resource-dir /Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6/raspios-bookworm/usr/lib/swift_static -use-ld=lld -Xcc --gcc-toolchain=/Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6/raspios-bookworm/usr -Xcc -march=armv6 -Xcc -mfloat-abi=hard -Xcc -mfpu=vfp -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-006-rfc-014/1ebb999f319d770c-rghi6e_f/raspberry-pi-armv6 -parse-as-library -I /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6 -I /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-006-rfc-014/1ebb999f319d770c-rghi6e_f/raspberry-pi-armv6 -enable-testing -module-name GiftUILayout -emit-module -emit-object /Users/eugene/work/GiftUI/Sources/GiftUILayout/Layout.swift /Users/eugene/work/GiftUI/Sources/GiftUILayout/LayoutCounters.swift /Users/eugene/work/GiftUI/Sources/GiftUILayout/LayoutEngine.swift /Users/eugene/work/GiftUI/Sources/GiftUILayout/LayoutError.swift /Users/eugene/work/GiftUI/Sources/GiftUILayout/LayoutGeometry.swift /Users/eugene/work/GiftUI/Sources/GiftUILayout/LayoutPublication.swift /Users/eugene/work/GiftUI/Sources/GiftUILayout/LayoutResultSink.swift /Users/eugene/work/GiftUI/Sources/GiftUILayout/LayoutSemanticValidation.swift /Users/eugene/work/GiftUI/Sources/GiftUILayout/LayoutValues.swift /Users/eugene/work/GiftUI/Sources/GiftUILayout/LayoutWorkspace.swift /Users/eugene/work/GiftUI/Sources/GiftUILayout/ResolvedRenderLayoutView.swift -emit-module-path /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6/GiftUILayout.swiftmodule -o /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6/GiftUILayout.o",
+    "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.3.2-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6/cache -disable-sandbox -target armv6-unknown-linux-gnueabihf -sdk /Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6/raspios-bookworm -resource-dir /Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6/raspios-bookworm/usr/lib/swift_static -use-ld=lld -Xcc --gcc-toolchain=/Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6/raspios-bookworm/usr -Xcc -march=armv6 -Xcc -mfloat-abi=hard -Xcc -mfpu=vfp -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-006-rfc-014/1ebb999f319d770c-rghi6e_f/raspberry-pi-armv6 -parse-as-library -I /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6 -I /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-006-rfc-014/1ebb999f319d770c-rghi6e_f/raspberry-pi-armv6 -enable-testing -module-name GiftUIRenderCore -emit-module -emit-object /Users/eugene/work/GiftUI/Sources/GiftUIRenderCore/DrawingOperationSink.swift /Users/eugene/work/GiftUI/Sources/GiftUIRenderCore/RenderOperationSink.swift /Users/eugene/work/GiftUI/Sources/GiftUIRenderCore/RenderRecordingSink.swift /Users/eugene/work/GiftUI/Sources/GiftUIRenderCore/RenderValues.swift -emit-module-path /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6/GiftUIRenderCore.swiftmodule -o /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6/GiftUIRenderCore.o",
+    "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.3.2-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6/cache -disable-sandbox -target armv6-unknown-linux-gnueabihf -sdk /Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6/raspios-bookworm -resource-dir /Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6/raspios-bookworm/usr/lib/swift_static -use-ld=lld -Xcc --gcc-toolchain=/Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6/raspios-bookworm/usr -Xcc -march=armv6 -Xcc -mfloat-abi=hard -Xcc -mfpu=vfp -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-006-rfc-014/1ebb999f319d770c-rghi6e_f/raspberry-pi-armv6 -parse-as-library -I /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6 -I /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-006-rfc-014/1ebb999f319d770c-rghi6e_f/raspberry-pi-armv6 -enable-testing -module-name GiftUICapabilities -emit-module -emit-object /Users/eugene/work/GiftUI/Sources/GiftUICapabilities/GiftUICapabilities.swift -emit-module-path /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6/GiftUICapabilities.swiftmodule -o /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6/GiftUICapabilities.o",
+    "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.3.2-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6/cache -disable-sandbox -target armv6-unknown-linux-gnueabihf -sdk /Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6/raspios-bookworm -resource-dir /Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6/raspios-bookworm/usr/lib/swift_static -use-ld=lld -Xcc --gcc-toolchain=/Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6/raspios-bookworm/usr -Xcc -march=armv6 -Xcc -mfloat-abi=hard -Xcc -mfpu=vfp -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-006-rfc-014/1ebb999f319d770c-rghi6e_f/raspberry-pi-armv6 -parse-as-library -I /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6 -I /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-006-rfc-014/1ebb999f319d770c-rghi6e_f/raspberry-pi-armv6 -enable-testing -module-name GiftUISurfaceCore -emit-module -emit-object /Users/eugene/work/GiftUI/Sources/GiftUISurfaceCore/RasterSurface.swift /Users/eugene/work/GiftUI/Sources/GiftUISurfaceCore/SurfaceValues.swift -emit-module-path /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6/GiftUISurfaceCore.swiftmodule -o /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6/GiftUISurfaceCore.o",
+    "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.3.2-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6/cache -disable-sandbox -target armv6-unknown-linux-gnueabihf -sdk /Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6/raspios-bookworm -resource-dir /Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6/raspios-bookworm/usr/lib/swift_static -use-ld=lld -Xcc --gcc-toolchain=/Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6/raspios-bookworm/usr -Xcc -march=armv6 -Xcc -mfloat-abi=hard -Xcc -mfpu=vfp -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-006-rfc-014/1ebb999f319d770c-rghi6e_f/raspberry-pi-armv6 -parse-as-library -I /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6 -I /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-006-rfc-014/1ebb999f319d770c-rghi6e_f/raspberry-pi-armv6 -enable-testing -module-name GiftUIRasterCore -emit-module -emit-object /Users/eugene/work/GiftUI/Sources/GiftUIRasterCore/RasterStrokeCoverage.swift /Users/eugene/work/GiftUI/Sources/GiftUIRasterCore/RasterFillCoverage.swift -emit-module-path /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6/GiftUIRasterCore.swiftmodule -o /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6/GiftUIRasterCore.o",
+    "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.3.2-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6/cache -disable-sandbox -target armv6-unknown-linux-gnueabihf -sdk /Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6/raspios-bookworm -resource-dir /Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6/raspios-bookworm/usr/lib/swift_static -use-ld=lld -Xcc --gcc-toolchain=/Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6/raspios-bookworm/usr -Xcc -march=armv6 -Xcc -mfloat-abi=hard -Xcc -mfpu=vfp -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-006-rfc-014/1ebb999f319d770c-rghi6e_f/raspberry-pi-armv6 -parse-as-library -I /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6 -I /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-006-rfc-014/1ebb999f319d770c-rghi6e_f/raspberry-pi-armv6 -enable-testing -module-name GiftUIExecution -emit-module -emit-object /Users/eugene/work/GiftUI/Sources/GiftUIExecution/ObservableTargetGeneration.swift /Users/eugene/work/GiftUI/Sources/GiftUIExecution/ExecutionValues.swift /Users/eugene/work/GiftUI/Sources/GiftUIExecution/FrameHandoffValues.swift -emit-module-path /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6/GiftUIExecution.swiftmodule -o /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6/GiftUIExecution.o",
+    "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.3.2-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6/cache -disable-sandbox -target armv6-unknown-linux-gnueabihf -sdk /Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6/raspios-bookworm -resource-dir /Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6/raspios-bookworm/usr/lib/swift_static -use-ld=lld -Xcc --gcc-toolchain=/Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6/raspios-bookworm/usr -Xcc -march=armv6 -Xcc -mfloat-abi=hard -Xcc -mfpu=vfp -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-006-rfc-014/1ebb999f319d770c-rghi6e_f/raspberry-pi-armv6 -parse-as-library -I /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6 -I /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-006-rfc-014/1ebb999f319d770c-rghi6e_f/raspberry-pi-armv6 -enable-testing -module-name GiftUIObservableState -emit-module -emit-object /Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableStateValues.swift /Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableModelIdentity.swift /Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableModelOwnership.swift /Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableModelTicket.swift /Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableModelScope.swift /Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableModelMutation.swift /Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableStateModel.swift /Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableStateRegistrationLifecycle.swift /Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableStateRootScope.swift /Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableStateRootTargetAccess.swift /Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableStateBindingDecorator.swift /Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableSemanticBodyBinding.swift -emit-module-path /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6/GiftUIObservableState.swiftmodule -o /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6/GiftUIObservableState.o",
+    "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.3.2-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6/cache -disable-sandbox -target armv6-unknown-linux-gnueabihf -sdk /Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6/raspios-bookworm -resource-dir /Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6/raspios-bookworm/usr/lib/swift_static -use-ld=lld -Xcc --gcc-toolchain=/Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6/raspios-bookworm/usr -Xcc -march=armv6 -Xcc -mfloat-abi=hard -Xcc -mfpu=vfp -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-006-rfc-014/1ebb999f319d770c-rghi6e_f/raspberry-pi-armv6 -parse-as-library -I /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6 -I /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-006-rfc-014/1ebb999f319d770c-rghi6e_f/raspberry-pi-armv6 -enable-testing -module-name GiftUIDrawing -emit-module -emit-object /Users/eugene/work/GiftUI/Sources/GiftUIDrawing/CanvasInvocationSource.swift /Users/eugene/work/GiftUI/Sources/GiftUIDrawing/CanvasPlanProducer.swift /Users/eugene/work/GiftUI/Sources/GiftUIDrawing/CanvasStagedValues.swift /Users/eugene/work/GiftUI/Sources/GiftUIDrawing/CanvasSemanticPayload.swift /Users/eugene/work/GiftUI/Sources/GiftUIDrawing/DrawingLimits.swift /Users/eugene/work/GiftUI/Sources/GiftUIDrawing/DrawingPlan.swift /Users/eugene/work/GiftUI/Sources/GiftUIDrawing/DrawingValues.swift /Users/eugene/work/GiftUI/Sources/GiftUIDrawing/StaticCanvasCallableTable.swift /Users/eugene/work/GiftUI/Sources/GiftUIDrawing/PathConstruction.swift /Users/eugene/work/GiftUI/Sources/GiftUIDrawing/StrokeSnapshot.swift -emit-module-path /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6/GiftUIDrawing.swiftmodule -o /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6/GiftUIDrawing.o",
+    "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.3.2-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6/cache -disable-sandbox -target armv6-unknown-linux-gnueabihf -sdk /Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6/raspios-bookworm -resource-dir /Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6/raspios-bookworm/usr/lib/swift_static -use-ld=lld -Xcc --gcc-toolchain=/Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6/raspios-bookworm/usr -Xcc -march=armv6 -Xcc -mfloat-abi=hard -Xcc -mfpu=vfp -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-006-rfc-014/1ebb999f319d770c-rghi6e_f/raspberry-pi-armv6 -parse-as-library -I /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6 -I /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-006-rfc-014/1ebb999f319d770c-rghi6e_f/raspberry-pi-armv6 -enable-testing -module-name GiftUIFailureCore -emit-module -emit-object /Users/eugene/work/GiftUI/Sources/GiftUIFailureCore/GiftUIFailureCore.swift -emit-module-path /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6/GiftUIFailureCore.swiftmodule -o /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6/GiftUIFailureCore.o",
+    "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.3.2-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6/cache -disable-sandbox -target armv6-unknown-linux-gnueabihf -sdk /Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6/raspios-bookworm -resource-dir /Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6/raspios-bookworm/usr/lib/swift_static -use-ld=lld -Xcc --gcc-toolchain=/Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6/raspios-bookworm/usr -Xcc -march=armv6 -Xcc -mfloat-abi=hard -Xcc -mfpu=vfp -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-006-rfc-014/1ebb999f319d770c-rghi6e_f/raspberry-pi-armv6 -parse-as-library -I /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6 -I /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-006-rfc-014/1ebb999f319d770c-rghi6e_f/raspberry-pi-armv6 -enable-testing -module-name GiftUIDrawingFailureAdapterFixture -emit-module -emit-object /Users/eugene/work/GiftUI/Sources/GiftUIDrawingFailureAdapterFixture/GiftUIDrawingFailureAdapterFixture.swift -emit-module-path /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6/GiftUIDrawingFailureAdapterFixture.swiftmodule -o /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6/GiftUIDrawingFailureAdapterFixture.o",
+    "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.3.2-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6/cache -disable-sandbox -target armv6-unknown-linux-gnueabihf -sdk /Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6/raspios-bookworm -resource-dir /Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6/raspios-bookworm/usr/lib/swift_static -use-ld=lld -Xcc --gcc-toolchain=/Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6/raspios-bookworm/usr -Xcc -march=armv6 -Xcc -mfloat-abi=hard -Xcc -mfpu=vfp -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-006-rfc-014/1ebb999f319d770c-rghi6e_f/raspberry-pi-armv6 -parse-as-library -I /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6 -I /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-006-rfc-014/1ebb999f319d770c-rghi6e_f/raspberry-pi-armv6 -enable-testing -module-name GiftUIRuntimeCore -emit-module -emit-object /Users/eugene/work/GiftUI/Sources/GiftUIRuntimeCore/ObservableCanvasInvocationSource.swift -emit-module-path /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6/GiftUIRuntimeCore.swiftmodule -o /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6/GiftUIRuntimeCore.o",
+    "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.3.2-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6/cache -disable-sandbox -target armv6-unknown-linux-gnueabihf -sdk /Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6/raspios-bookworm -resource-dir /Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6/raspios-bookworm/usr/lib/swift_static -use-ld=lld -Xcc --gcc-toolchain=/Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6/raspios-bookworm/usr -Xcc -march=armv6 -Xcc -mfloat-abi=hard -Xcc -mfpu=vfp -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-006-rfc-014/1ebb999f319d770c-rghi6e_f/raspberry-pi-armv6 -parse-as-library -I /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6 -I /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-006-rfc-014/1ebb999f319d770c-rghi6e_f/raspberry-pi-armv6 -enable-testing -module-name P06DrawingWorkspace -emit-module -emit-object /Users/eugene/work/GiftUI/Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFDrawingPlanRecords.swift /Users/eugene/work/GiftUI/Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFDrawingPlanStorage.swift /Users/eugene/work/GiftUI/Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFLivePathStorage.swift /Users/eugene/work/GiftUI/Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFDrawingWorkspace.swift -emit-module-path /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6/P06DrawingWorkspace.swiftmodule -o /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6/P06DrawingWorkspace.o",
+    "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.3.2-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6/cache -disable-sandbox -target armv6-unknown-linux-gnueabihf -sdk /Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6/raspios-bookworm -resource-dir /Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6/raspios-bookworm/usr/lib/swift_static -use-ld=lld -Xcc --gcc-toolchain=/Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6/raspios-bookworm/usr -Xcc -march=armv6 -Xcc -mfloat-abi=hard -Xcc -mfpu=vfp -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-006-rfc-014/1ebb999f319d770c-rghi6e_f/raspberry-pi-armv6 -parse-as-library -I /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6 -I /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-006-rfc-014/1ebb999f319d770c-rghi6e_f/raspberry-pi-armv6 -enable-testing -module-name GiftUIRuntimeStatic -emit-module -emit-object /Users/eugene/work/GiftUI/Sources/GiftUIRuntimeStatic/StaticObservableModelStorage.swift /Users/eugene/work/GiftUI/Sources/GiftUIRuntimeStatic/StaticCanvasValueStorage.swift /Users/eugene/work/GiftUI/Sources/GiftUIRuntimeStatic/StaticSemanticRecordStorage.swift -emit-module-path /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6/GiftUIRuntimeStatic.swiftmodule -o /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6/GiftUIRuntimeStatic.o",
+    "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.3.2-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6/cache -disable-sandbox -target armv6-unknown-linux-gnueabihf -sdk /Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6/raspios-bookworm -resource-dir /Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6/raspios-bookworm/usr/lib/swift_static -use-ld=lld -Xcc --gcc-toolchain=/Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6/raspios-bookworm/usr -Xcc -march=armv6 -Xcc -mfloat-abi=hard -Xcc -mfpu=vfp -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-006-rfc-014/1ebb999f319d770c-rghi6e_f/raspberry-pi-armv6 -parse-as-library -I /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6 -I /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-006-rfc-014/1ebb999f319d770c-rghi6e_f/raspberry-pi-armv6 -enable-testing -module-name GiftUIRuntimeDynamic -emit-module -emit-object /Users/eugene/work/GiftUI/Sources/GiftUIRuntimeDynamic/DynamicCanvasCallableStorage.swift /Users/eugene/work/GiftUI/Sources/GiftUIRuntimeDynamic/DynamicSemanticRecordStorage.swift -emit-module-path /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6/GiftUIRuntimeDynamic.swiftmodule -o /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6/GiftUIRuntimeDynamic.o",
+    "/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool --lower-source /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6/Counter.json /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC012/RuntimeDerived/CounterCanvas.swift /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6/CounterSchema.swift /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6/CounterCanvas.swift /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6/CounterCanvasTable.swift CounterCanvas",
+    "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.3.2-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6/cache -disable-sandbox -target armv6-unknown-linux-gnueabihf -sdk /Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6/raspios-bookworm -resource-dir /Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6/raspios-bookworm/usr/lib/swift_static -use-ld=lld -Xcc --gcc-toolchain=/Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6/raspios-bookworm/usr -Xcc -march=armv6 -Xcc -mfloat-abi=hard -Xcc -mfpu=vfp -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-006-rfc-014/1ebb999f319d770c-rghi6e_f/raspberry-pi-armv6 -parse-as-library -I /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6 -I /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-006-rfc-014/1ebb999f319d770c-rghi6e_f/raspberry-pi-armv6 -enable-testing -module-name CounterSchema -emit-module -emit-object /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6/CounterSchema.swift -emit-module-path /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6/CounterSchema.swiftmodule -o /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6/CounterSchema.o",
+    "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.3.2-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6/cache -disable-sandbox -target armv6-unknown-linux-gnueabihf -sdk /Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6/raspios-bookworm -resource-dir /Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6/raspios-bookworm/usr/lib/swift_static -use-ld=lld -Xcc --gcc-toolchain=/Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6/raspios-bookworm/usr -Xcc -march=armv6 -Xcc -mfloat-abi=hard -Xcc -mfpu=vfp -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-006-rfc-014/1ebb999f319d770c-rghi6e_f/raspberry-pi-armv6 -parse-as-library -I /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6 -I /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-006-rfc-014/1ebb999f319d770c-rghi6e_f/raspberry-pi-armv6 -enable-testing -module-name CounterCanvas -emit-module -emit-object /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6/CounterCanvas.swift -emit-module-path /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6/CounterCanvas.swiftmodule -o /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6/CounterCanvas.o",
+    "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.3.2-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6/cache -disable-sandbox -target armv6-unknown-linux-gnueabihf -sdk /Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6/raspios-bookworm -resource-dir /Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6/raspios-bookworm/usr/lib/swift_static -use-ld=lld -Xcc --gcc-toolchain=/Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6/raspios-bookworm/usr -Xcc -march=armv6 -Xcc -mfloat-abi=hard -Xcc -mfpu=vfp -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-006-rfc-014/1ebb999f319d770c-rghi6e_f/raspberry-pi-armv6 -parse-as-library -I /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6 -I /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-006-rfc-014/1ebb999f319d770c-rghi6e_f/raspberry-pi-armv6 -enable-testing -module-name CounterCanvasTable -emit-module -emit-object /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6/CounterCanvasTable.swift -emit-module-path /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6/CounterCanvasTable.swiftmodule -o /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6/CounterCanvasTable.o",
+    "/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool --lower-source /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6/Analyzer.json /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC012/RuntimeDerived/AnalyzerCanvas.swift /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6/AnalyzerSchema.swift /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6/AnalyzerCanvas.swift /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6/AnalyzerCanvasTable.swift AnalyzerCanvas",
+    "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.3.2-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6/cache -disable-sandbox -target armv6-unknown-linux-gnueabihf -sdk /Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6/raspios-bookworm -resource-dir /Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6/raspios-bookworm/usr/lib/swift_static -use-ld=lld -Xcc --gcc-toolchain=/Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6/raspios-bookworm/usr -Xcc -march=armv6 -Xcc -mfloat-abi=hard -Xcc -mfpu=vfp -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-006-rfc-014/1ebb999f319d770c-rghi6e_f/raspberry-pi-armv6 -parse-as-library -I /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6 -I /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-006-rfc-014/1ebb999f319d770c-rghi6e_f/raspberry-pi-armv6 -enable-testing -module-name AnalyzerSchema -emit-module -emit-object /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6/AnalyzerSchema.swift -emit-module-path /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6/AnalyzerSchema.swiftmodule -o /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6/AnalyzerSchema.o",
+    "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.3.2-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6/cache -disable-sandbox -target armv6-unknown-linux-gnueabihf -sdk /Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6/raspios-bookworm -resource-dir /Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6/raspios-bookworm/usr/lib/swift_static -use-ld=lld -Xcc --gcc-toolchain=/Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6/raspios-bookworm/usr -Xcc -march=armv6 -Xcc -mfloat-abi=hard -Xcc -mfpu=vfp -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-006-rfc-014/1ebb999f319d770c-rghi6e_f/raspberry-pi-armv6 -parse-as-library -I /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6 -I /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-006-rfc-014/1ebb999f319d770c-rghi6e_f/raspberry-pi-armv6 -enable-testing -module-name AnalyzerCanvas -emit-module -emit-object /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6/AnalyzerCanvas.swift -emit-module-path /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6/AnalyzerCanvas.swiftmodule -o /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6/AnalyzerCanvas.o",
+    "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.3.2-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6/cache -disable-sandbox -target armv6-unknown-linux-gnueabihf -sdk /Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6/raspios-bookworm -resource-dir /Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6/raspios-bookworm/usr/lib/swift_static -use-ld=lld -Xcc --gcc-toolchain=/Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6/raspios-bookworm/usr -Xcc -march=armv6 -Xcc -mfloat-abi=hard -Xcc -mfpu=vfp -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-006-rfc-014/1ebb999f319d770c-rghi6e_f/raspberry-pi-armv6 -parse-as-library -I /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6 -I /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-006-rfc-014/1ebb999f319d770c-rghi6e_f/raspberry-pi-armv6 -enable-testing -module-name AnalyzerCanvasTable -emit-module -emit-object /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6/AnalyzerCanvasTable.swift -emit-module-path /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6/AnalyzerCanvasTable.swiftmodule -o /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6/AnalyzerCanvasTable.o",
+    "/Users/eugene/work/GiftUI/scripts/contracts/check-spec-012-raster-vectors.rb",
+    "python3 /Users/eugene/work/GiftUI/scripts/contracts/generate-spec-012-raster-probe.py /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC012/raster-vectors.yaml /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6/RasterProbe.swift",
+    "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.3.2-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6/cache -disable-sandbox -target armv6-unknown-linux-gnueabihf -sdk /Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6/raspios-bookworm -resource-dir /Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6/raspios-bookworm/usr/lib/swift_static -use-ld=lld -Xcc --gcc-toolchain=/Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6/raspios-bookworm/usr -Xcc -march=armv6 -Xcc -mfloat-abi=hard -Xcc -mfpu=vfp -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-006-rfc-014/1ebb999f319d770c-rghi6e_f/raspberry-pi-armv6 -parse-as-library -I /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6 -I /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-006-rfc-014/1ebb999f319d770c-rghi6e_f/raspberry-pi-armv6 -enable-testing -module-name CanvasStoreProbe -emit-module -emit-object /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC012/RuntimeDerived/CanvasStoreProbe.swift /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC012/RuntimeDerived/CanvasSemanticProbe.swift /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC012/RuntimeDerived/CanvasErrorProbe.swift /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC012/RuntimeDerived/CanvasTableProbe.swift /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC012/RuntimeDerived/CanvasGeometryProbe.swift /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6/RasterProbe.swift /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC012/RuntimeDerived/CanvasResourceProbe.swift /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC007/RuntimeDerived/LayoutSupport.swift -emit-module-path /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6/CanvasStoreProbe.swiftmodule -o /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6/CanvasStoreProbe.o",
+    "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.3.2-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6/cache -disable-sandbox -target armv6-unknown-linux-gnueabihf -sdk /Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6/raspios-bookworm -resource-dir /Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6/raspios-bookworm/usr/lib/swift_static -use-ld=lld -Xcc --gcc-toolchain=/Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6/raspios-bookworm/usr -Xcc -march=armv6 -Xcc -mfloat-abi=hard -Xcc -mfpu=vfp -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-006-rfc-014/1ebb999f319d770c-rghi6e_f/raspberry-pi-armv6 -parse-as-library -I /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6 -I /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-006-rfc-014/1ebb999f319d770c-rghi6e_f/raspberry-pi-armv6 -enable-testing -module-name CanvasLayouts -emit-ir /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC012/RuntimeDerived/CanvasLayoutProbe.swift -o /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6/layouts.ll",
+    "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/arm-zephyr-eabi-readelf -h -A /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6/CanvasStoreProbe.o",
+    "/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool --lower-source /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6/Counter.json /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6/missing-witness.swift /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6/missing-witness-schema.swift /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6/missing-witness-lowered.swift",
+    "/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool --lower-source /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6/Counter.json /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6/async-draw.swift /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6/async-draw-schema.swift /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6/async-draw-lowered.swift",
+    "/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool --lower-source /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6/Counter.json /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6/effect.swift /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6/effect-schema.swift /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6/effect-lowered.swift",
+    "/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool --lower-source /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6/Counter.json /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6/inout-effect.swift /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6/inout-effect-schema.swift /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6/inout-effect-lowered.swift",
+    "/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool --lower-source /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6/Counter.json /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6/closure-fallback.swift /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6/closure-fallback-schema.swift /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6/closure-fallback-lowered.swift",
+    "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.3.2-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6/cache -disable-sandbox -target armv6-unknown-linux-gnueabihf -sdk /Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6/raspios-bookworm -resource-dir /Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6/raspios-bookworm/usr/lib/swift_static -use-ld=lld -Xcc --gcc-toolchain=/Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6/raspios-bookworm/usr -Xcc -march=armv6 -Xcc -mfloat-abi=hard -Xcc -mfpu=vfp -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-006-rfc-014/1ebb999f319d770c-rghi6e_f/raspberry-pi-armv6 -parse-as-library -I /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6 -I /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-006-rfc-014/1ebb999f319d770c-rghi6e_f/raspberry-pi-armv6 -enable-testing -module-name escapestagedvalues -emit-object /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6/escape-staged-values.swift -o /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6/escape-staged-values.o",
+    "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.3.2-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6/cache -disable-sandbox -target armv6-unknown-linux-gnueabihf -sdk /Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6/raspios-bookworm -resource-dir /Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6/raspios-bookworm/usr/lib/swift_static -use-ld=lld -Xcc --gcc-toolchain=/Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6/raspios-bookworm/usr -Xcc -march=armv6 -Xcc -mfloat-abi=hard -Xcc -mfpu=vfp -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-006-rfc-014/1ebb999f319d770c-rghi6e_f/raspberry-pi-armv6 -parse-as-library -I /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6 -I /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-006-rfc-014/1ebb999f319d770c-rghi6e_f/raspberry-pi-armv6 -enable-testing -module-name copystagedvalues -emit-object /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6/copy-staged-values.swift -o /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6/copy-staged-values.o",
+    "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.3.2-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6/cache -disable-sandbox -target armv6-unknown-linux-gnueabihf -sdk /Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6/raspios-bookworm -resource-dir /Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6/raspios-bookworm/usr/lib/swift_static -use-ld=lld -Xcc --gcc-toolchain=/Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6/raspios-bookworm/usr -Xcc -march=armv6 -Xcc -mfloat-abi=hard -Xcc -mfpu=vfp -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-006-rfc-014/1ebb999f319d770c-rghi6e_f/raspberry-pi-armv6 -parse-as-library -I /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6 -I /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-006-rfc-014/1ebb999f319d770c-rghi6e_f/raspberry-pi-armv6 -enable-testing -module-name escapesource -emit-object /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6/escape-source.swift -o /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6/escape-source.o",
+    "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.3.2-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6/cache -disable-sandbox -target armv6-unknown-linux-gnueabihf -sdk /Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6/raspios-bookworm -resource-dir /Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6/raspios-bookworm/usr/lib/swift_static -use-ld=lld -Xcc --gcc-toolchain=/Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6/raspios-bookworm/usr -Xcc -march=armv6 -Xcc -mfloat-abi=hard -Xcc -mfpu=vfp -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-006-rfc-014/1ebb999f319d770c-rghi6e_f/raspberry-pi-armv6 -parse-as-library -I /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6 -I /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-006-rfc-014/1ebb999f319d770c-rghi6e_f/raspberry-pi-armv6 -enable-testing -module-name copysource -emit-object /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6/copy-source.swift -o /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6/copy-source.o",
+    "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.3.2-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6/cache -disable-sandbox -target armv6-unknown-linux-gnueabihf -sdk /Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6/raspios-bookworm -resource-dir /Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6/raspios-bookworm/usr/lib/swift_static -use-ld=lld -Xcc --gcc-toolchain=/Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6/raspios-bookworm/usr -Xcc -march=armv6 -Xcc -mfloat-abi=hard -Xcc -mfpu=vfp -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-006-rfc-014/1ebb999f319d770c-rghi6e_f/raspberry-pi-armv6 -parse-as-library -I /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6 -I /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-006-rfc-014/1ebb999f319d770c-rghi6e_f/raspberry-pi-armv6 -enable-testing -module-name wrongdomain -emit-object /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6/wrong-domain.swift -o /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6/wrong-domain.o",
+    "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.3.2-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6/cache -disable-sandbox -target armv6-unknown-linux-gnueabihf -sdk /Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6/raspios-bookworm -resource-dir /Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6/raspios-bookworm/usr/lib/swift_static -use-ld=lld -Xcc --gcc-toolchain=/Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6/raspios-bookworm/usr -Xcc -march=armv6 -Xcc -mfloat-abi=hard -Xcc -mfpu=vfp -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-006-rfc-014/1ebb999f319d770c-rghi6e_f/raspberry-pi-armv6 -parse-as-library -I /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6 -I /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-006-rfc-014/1ebb999f319d770c-rghi6e_f/raspberry-pi-armv6 -enable-testing -module-name escaperead -emit-object /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6/escape-read.swift -o /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6/escape-read.o",
+    "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.3.2-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6/cache -disable-sandbox -target armv6-unknown-linux-gnueabihf -sdk /Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6/raspios-bookworm -resource-dir /Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6/raspios-bookworm/usr/lib/swift_static -use-ld=lld -Xcc --gcc-toolchain=/Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6/raspios-bookworm/usr -Xcc -march=armv6 -Xcc -mfloat-abi=hard -Xcc -mfpu=vfp -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-006-rfc-014/1ebb999f319d770c-rghi6e_f/raspberry-pi-armv6 -parse-as-library -I /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6 -I /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-006-rfc-014/1ebb999f319d770c-rghi6e_f/raspberry-pi-armv6 -enable-testing -module-name escapecontext -emit-object /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6/escape-context.swift -o /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6/escape-context.o",
+    "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.3.2-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6/cache -disable-sandbox -target armv6-unknown-linux-gnueabihf -sdk /Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6/raspios-bookworm -resource-dir /Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6/raspios-bookworm/usr/lib/swift_static -use-ld=lld -Xcc --gcc-toolchain=/Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6/raspios-bookworm/usr -Xcc -march=armv6 -Xcc -mfloat-abi=hard -Xcc -mfpu=vfp -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-006-rfc-014/1ebb999f319d770c-rghi6e_f/raspberry-pi-armv6 -parse-as-library -I /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6 -I /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-006-rfc-014/1ebb999f319d770c-rghi6e_f/raspberry-pi-armv6 -enable-testing -module-name missingcompiledwitness -emit-object /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6/missing-compiled-witness.swift -o /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6/missing-compiled-witness.o"
+  ],
+  "compiler": ".toolchains/host/swift-6.3.2-RELEASE-osx/usr/bin/swiftc",
+  "compiler_sha256": "d8e40107da0e2c1c59640a983faea326d5d2bddfe81f7609db14bade43c4a5b9",
+  "core_receipt": ".build/raspberry-pi/contracts/spec-006-rfc-014/1ebb999f319d770c-rghi6e_f/raspberry-pi-armv6/result.json",
+  "core_receipt_sha256": "4f0421613c5467a312f612017a031d57e6dbecb9953b9c25605c34ebbc9d1b67",
+  "execution": "cross-compiled components/ABI only; no board execution",
+  "inputs": {
+    ".build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6/AnalyzerCanvas.swift": "d77f63a6117b8c9b18409cfdafbf5f836072603c73383d571e5a5d546658d46e",
+    ".build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6/AnalyzerCanvasTable.swift": "f410e9ea2ee560e8c5c90c5d646cacf4932fcf416a8bbfaef99f09c86ee01d9b",
+    ".build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6/AnalyzerSchema.swift": "a68eafe25b6eb00d7787f5eddbe1113cd7006e16bba7421edf0ce72459528782",
+    ".build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6/CounterCanvas.swift": "a79d67cc604cba1b547e6434836c5d7e87946cc08b63bf52f61d48faa3e40047",
+    ".build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6/CounterCanvasTable.swift": "22f7846e64d2f322423ca1a2b6c46b11b8da4fb2ca55caadff33dae7067a2e8d",
+    ".build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6/CounterSchema.swift": "a36e7b5efba867006cb1f5c3932bd80fc5969f93b33dc3a9e936c61b7af67ccc",
+    ".build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6/RasterProbe.swift": "f03ea9878dc0c5c4c6870fc5248be8b776c3893aaa77d7a56125d6099d85423e",
+    ".build/rfc014-p02/tool/debug/GiftUIMacros-tool": "b4ff672eb0ae64b64571223a0c17e1dcd95ddcf45a0d6465b0407ec28b226a1b",
+    "Sources/GiftUICapabilities/GiftUICapabilities.swift": "79a2f7a749cbe3e8033d1d118f9c94fadb67b985d36dbc185996fc255e8ba884",
+    "Sources/GiftUIDrawing/CanvasInvocationSource.swift": "9b992bc729e793959c0d8ad3fcb374c0bf3ced7edb1cdd098c57e6ba48c451f2",
+    "Sources/GiftUIDrawing/CanvasPlanProducer.swift": "8a75acb55af64e06ad4aad12553c1e6c4c1a6c11aa937599f65e63a7bef68db7",
+    "Sources/GiftUIDrawing/CanvasSemanticPayload.swift": "8ff2bf5049d4393d459fef253cf6a137a9796a70c2ad4c413111d7928070b531",
+    "Sources/GiftUIDrawing/CanvasStagedValues.swift": "2fa24cfc2cca8813002241d77d67429b0eb8895e044da683aa5fd19891ae6437",
+    "Sources/GiftUIDrawing/DrawingLimits.swift": "df5dfad39c4b0fc81ac6c21c2cae5979eb11a15ffe373c955ca218215cad3943",
+    "Sources/GiftUIDrawing/DrawingPlan.swift": "93e3216f2faaee98e2c025deef50cfb7513911efacdd56e90980be3cb6264da9",
+    "Sources/GiftUIDrawing/DrawingValues.swift": "d1008926323fdb292ec32e95e2cefb17958ea5ccbfb8d2e0c48fb67e565f0874",
+    "Sources/GiftUIDrawing/PathConstruction.swift": "7fd45fdc43dc48defcd6edc4e4ba694767ff6c2ac47314a3b613ea72fb6fad41",
+    "Sources/GiftUIDrawing/StaticCanvasCallableTable.swift": "9c644426cf7f594dddff99cea8a21eb4c2fd57f295f4afdfbe049c55413ff9b6",
+    "Sources/GiftUIDrawing/StrokeSnapshot.swift": "3345b05fb9f6f219fb09e7aa4e7e7a9a18c70f77d192734c36a08d0f84836a51",
+    "Sources/GiftUIDrawingFailureAdapterFixture/GiftUIDrawingFailureAdapterFixture.swift": "0ec9a5f3d2ebbc80ba8cf3a4c1708da53656cc1f703cca17faa7710431412716",
+    "Sources/GiftUIExecution/ExecutionValues.swift": "9b1278a5878f4123aa1e92fe723d068a3501a562b75b2e7e6940bf75869a80e2",
+    "Sources/GiftUIExecution/FrameHandoffValues.swift": "8eb1c0aa7c895fb50517e76ef9b4bd96568b2c2059b9a398c8f05486de0b87ba",
+    "Sources/GiftUIExecution/ObservableTargetGeneration.swift": "07e995cb7594bb54a8018020960a98258482dc771abd86858fd052307e89417f",
+    "Sources/GiftUIFailureCore/GiftUIFailureCore.swift": "9e1e92643cdf2aed4efea9684697481af01034b9ad34ef42aff8c6ff6445cae7",
+    "Sources/GiftUILayout/Layout.swift": "17bd1188e891289330a447eaad77a5c53d149e653862939916b221589a9bf1a3",
+    "Sources/GiftUILayout/LayoutCounters.swift": "735a80dc1133d7fcae6ba5ba455b520a8f0224494b2357af224ddea8c200bc12",
+    "Sources/GiftUILayout/LayoutEngine.swift": "d79d5e5d2069c21353a64fb0e31d3cff2ecd6e49dd2c4b369c9a162997ee5ddb",
+    "Sources/GiftUILayout/LayoutError.swift": "5733fe30105131fe00b87c4812e787a4efa6aed7236c84d5f93a0e0ddbcf629b",
+    "Sources/GiftUILayout/LayoutGeometry.swift": "0ac0320ec58947aa4bc7c3f8ec0ff662e57f598d2a7764faa0d1c2bc33acfa92",
+    "Sources/GiftUILayout/LayoutPublication.swift": "02e05a2d5e4031cde4940a33f42b52ffd0f87b9b7ad411b87a8e306cd15aad3a",
+    "Sources/GiftUILayout/LayoutResultSink.swift": "57a52e0187904a317a7d3b00acf28afcd1854d2e62120cafd4fd12011e2ad06a",
+    "Sources/GiftUILayout/LayoutSemanticValidation.swift": "cd50b36ea3ba48c33b56ba2fcf448c988ba057ffae934a973521d9ec16a5d69a",
+    "Sources/GiftUILayout/LayoutValues.swift": "ec168c1eb9bc6dff3cfb5144ab752958dad62d4bc1c419e8f0dea1b4149e704b",
+    "Sources/GiftUILayout/LayoutWorkspace.swift": "bbec7289fc9cb6c1f506e895231257c58bdd818ba6d0a020258cb7c97b342f81",
+    "Sources/GiftUILayout/ResolvedRenderLayoutView.swift": "7278d5216c075b499bee43e8b646f00a34f70f6b877ab9b4fc72de1878f10b33",
+    "Sources/GiftUIObservableState/ObservableModelIdentity.swift": "b3100dea3f31eb0b508d07da66dc1aafb3da4235774502a36db9f46c9fd82a0a",
+    "Sources/GiftUIObservableState/ObservableModelMutation.swift": "8fca003edbd06c94c55e870a0fc06a143654b1cc99bc662f3a181ec441bf062d",
+    "Sources/GiftUIObservableState/ObservableModelOwnership.swift": "2182f0091d31e517951b3fa38148fa1ae1ae6d4713720e90aa2e464ab55c0ee0",
+    "Sources/GiftUIObservableState/ObservableModelScope.swift": "6a370d5d89868af7d45197e360166b2ca30dc3b231efbc0e415872161956d77b",
+    "Sources/GiftUIObservableState/ObservableModelTicket.swift": "ac0e6a5e986da34197ceb103c656147cf57f87ffb71717fe754301d489d374d7",
+    "Sources/GiftUIObservableState/ObservableSemanticBodyBinding.swift": "cb23da49f7e9c923773ad356cc1782e3c74e0cd1b5b7d2726775c786f0523692",
+    "Sources/GiftUIObservableState/ObservableStateBindingDecorator.swift": "b88f911561ac3405bd4ed7264122488162828c395a6668ad9b314f54c37b04d6",
+    "Sources/GiftUIObservableState/ObservableStateModel.swift": "5cf0f406693e42324823c6ce6e2f4e45600b1afd4ce4f59049418f5d125b7959",
+    "Sources/GiftUIObservableState/ObservableStateRegistrationLifecycle.swift": "58367baadd5b6213f1bf3809106c2aba2639ddc86ec01907b6d1e9e79a706774",
+    "Sources/GiftUIObservableState/ObservableStateRootScope.swift": "2cefc4293a933f3e47eb15f4c32678b9860641c515144fe4d8b787f3724cdfc0",
+    "Sources/GiftUIObservableState/ObservableStateRootTargetAccess.swift": "0ab15cca11e67014c99dc9d1db13303bd25bf2472f069e02f89e98cd9ef2dbc5",
+    "Sources/GiftUIObservableState/ObservableStateValues.swift": "58ab30ae29b27233ed5288422849f58c1b43e3ccbf0ddd78f9726f1aef97bbfb",
+    "Sources/GiftUIRasterCore/RasterFillCoverage.swift": "e71a27b6a6e5ee0557bef856d70cfa8b7551ab2d3f93e830f31b414a21b03594",
+    "Sources/GiftUIRasterCore/RasterStrokeCoverage.swift": "9e26044f3f7e99516742b686767cfe5a03d24d1efceee28f4d7ee6e21a90b579",
+    "Sources/GiftUIRenderCore/DrawingOperationSink.swift": "4d35496afb8dc6b4827b52b3441a8258a5f91754c765a8828cb5ff7ebaafba88",
+    "Sources/GiftUIRenderCore/RenderOperationSink.swift": "02ba1989d36434e1e7db7984acce9ccc4a7861857c53de7d49676968aaaf1f43",
+    "Sources/GiftUIRenderCore/RenderRecordingSink.swift": "3db5511a8127d03eb51c6e6bf232a817d0eb6a2768583433767a05267ebdead2",
+    "Sources/GiftUIRenderCore/RenderValues.swift": "d4a0e5274c7c8e88a4e7c6c9c0bf5345ea1e83b5086b1f32373f01c7a4940722",
+    "Sources/GiftUIRuntimeCore/ObservableCanvasInvocationSource.swift": "ad361c8c2e1237cc1e8b4604c9f030198c77786b52a9c1d70ab78d3dfa08bc34",
+    "Sources/GiftUIRuntimeDynamic/DynamicCanvasCallableStorage.swift": "7eb0a5c842026c6ba7ac3b41364c4b35394b2080fc7bb936202135e752daff4a",
+    "Sources/GiftUIRuntimeDynamic/DynamicSemanticRecordStorage.swift": "2fb35310177b13f9727f5bb4a1b224fc69ad9c6fa114d58ce407076322344bb0",
+    "Sources/GiftUIRuntimeStatic/StaticCanvasValueStorage.swift": "5f49964bca470e962471968f1010570732425ebe45cad74ed4ab19c79839b09b",
+    "Sources/GiftUIRuntimeStatic/StaticObservableModelStorage.swift": "24755136e2d21a1f2d575ab68f8b25a18a91de1e8b503aae23553b39d4c4f40e",
+    "Sources/GiftUIRuntimeStatic/StaticSemanticRecordStorage.swift": "a7282b33c4bdf7b63ea7fd946eaba1bb0fa2d831d77449d3c463d4f1d8852792",
+    "Sources/GiftUISemanticCore/GiftUISemanticCore.swift": "88214d8af4ac0db6c490e6f8a9c8fa671b1490816f5447792e4dfe0927e9efb5",
+    "Sources/GiftUISemanticCore/SemanticLayoutView.swift": "f7d067f23913efcab81ebc27ef3c22073c00c2536360b8f866c2f10e5205196b",
+    "Sources/GiftUISemanticCore/SemanticRecordExpansion.swift": "63b71e4511c486e6481e0e64961e14975f5105cf465ed09342e1eaf2dd24bef3",
+    "Sources/GiftUISemanticCore/SemanticRecordLayoutView.swift": "6f2eb6c53e7849ed9cf489ac8b2165a3ab318ff89bb7253076043acfc42ea144",
+    "Sources/GiftUISemanticCore/SemanticRecordRenderView.swift": "5d0628083f3ebe29142f7c2245ae7831328ef93c40a28d27b2c2dd20dd029515",
+    "Sources/GiftUISemanticCore/SemanticRecordStore.swift": "e3bb2229cc52efe899771c6951c1185c8ef0267b9f30a09af755c20b006a0515",
+    "Sources/GiftUISemanticCore/SemanticRenderView.swift": "53f052d9cf5f4dba04edecb9713a11518718f315da8d83855623e41d6e8ebaca",
+    "Sources/GiftUISemanticCore/SemanticRuntimeRecords.swift": "f92786cd8bfae1eb36546e88bbc34c5e864f5a059b7280a2882edc62d57810ba",
+    "Sources/GiftUISemanticCore/SemanticStandardPayload.swift": "2dd204c2c7b5d4fe06e58a085ac7a59aa70dd734e56981231c414c10f7389c70",
+    "Sources/GiftUISurfaceCore/RasterSurface.swift": "cf0aa2fe88d7cf825e5b9bddb8b8e2fc48d76555f4a8ac94ff4ec0b884fe3b42",
+    "Sources/GiftUISurfaceCore/SurfaceValues.swift": "96e161fdf3d1f58dd4c1de04c043df647a3fa279d17993c57e2b0ce15e19d60c",
+    "Sources/GiftUITextResources/GiftUITextResources.swift": "7dc3dc0e55b22c9edee699d51272d16c8d364073cf43a840467bf98424efbf9f",
+    "Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFDrawingPlanRecords.swift": "d64b167157bcae57d20e1bae17c17e5c9d0e2fb554e63f150483366717ca93b2",
+    "Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFDrawingPlanStorage.swift": "e3e8680e972cc1c5dbdf188cc30aa007cd6a45a963968b310ead6cc039a0a855",
+    "Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFDrawingWorkspace.swift": "8a176f3a98f06f4e5a6919b8f58b42205fb7a74121a8fd2fa734263267a98179",
+    "Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFLivePathStorage.swift": "c7cc2e652dafdfd1cbfd2fe8db1ae8d98c2ab628743ecf2d8dafad553d364eef",
+    "Tests/ContractFixtures/SPEC006/RuntimeDerived/Analyzer.schema.json": "291cf667a93110a8a9dfbd68f7c67370f4b6f5e0d95f22acc92e5a67050c151a",
+    "Tests/ContractFixtures/SPEC006/RuntimeDerived/Counter.schema.json": "e092ddce53ab55b051c8489c81e3214ce6e294affaec69ee6cfb5cb16d38a0f1",
+    "Tests/ContractFixtures/SPEC007/RuntimeDerived/LayoutSupport.swift": "2b96ae87f9e9e7dde6adf7d4049e785af608def64a0fa4b78b8a7bf131363a26",
+    "Tests/ContractFixtures/SPEC012/RuntimeDerived/AnalyzerCanvas.swift": "52a9ee86c3b6439d1e054f0a32b0df42ffb8d3d97a6bad9ba10c5bad9333bf2b",
+    "Tests/ContractFixtures/SPEC012/RuntimeDerived/CanvasErrorProbe.swift": "6442967fd6a3385907ef1af8a3c5bca6f8b0d41f01f0d10f6dc73caff6863864",
+    "Tests/ContractFixtures/SPEC012/RuntimeDerived/CanvasGeometryProbe.swift": "ac1290fd78f1001c46acb1a5ba4cb8e263c4657c601e28f905df5892acfd900f",
+    "Tests/ContractFixtures/SPEC012/RuntimeDerived/CanvasLayoutProbe.swift": "95ed5c8ce44786fefe6de50a4c2f174609bd8bf93d0c37fcb73ef7070d4253b4",
+    "Tests/ContractFixtures/SPEC012/RuntimeDerived/CanvasResourceProbe.swift": "56c0a309f9b9282cf6086e4736bb6b10c19b3bed09a4244770610fba97a7efc8",
+    "Tests/ContractFixtures/SPEC012/RuntimeDerived/CanvasSemanticProbe.swift": "2023839f4c4da51f867f64df842c8a88fc26a5a7f08b13a2ef505024c042db97",
+    "Tests/ContractFixtures/SPEC012/RuntimeDerived/CanvasStoreProbe.swift": "4818e794e92ec8caa8f1a7adbf4ad878ee02b95301a205eb01ded7bcac2cc257",
+    "Tests/ContractFixtures/SPEC012/RuntimeDerived/CanvasTableProbe.swift": "fe78f66a854ed853c8c3d4fc945e98f365bb36f4767e67c45db90da125192882",
+    "Tests/ContractFixtures/SPEC012/RuntimeDerived/CounterCanvas.swift": "3f1a2cb6724264f2ce74ca55a70d5dd9e85e7f033f614c768a57f5cd0c98fb82",
+    "Tests/ContractFixtures/SPEC012/raster-vectors.yaml": "37ec5e69867dbc04c053e050e3a74bc21e14695f990ce4405c735e177cf20afb",
+    "scripts/contracts/check-spec-012-protocol-canvas.py": "91de9ef47d7c836672c4fe0b8ea5577a9727afbcac125eb930baedcf58c17e03",
+    "scripts/contracts/check-spec-012-raster-vectors.rb": "e1f8fbc582cb95834c26a3dab137850d4692fdca2a5de26e162db44aafb5f58e",
+    "scripts/contracts/driver-registry.tsv": "adc249c867be88f2dd6106cf740bb2f7e75476f90ef79a3b8061951539e5a24b",
+    "scripts/contracts/generate-spec-012-raster-probe.py": "aacfee8e50a47aea08b685991c8724c1a8422eff45a1240bd294ff5e4a9e8a33",
+    "scripts/contracts/run-spec-012.sh": "508f0559d6a746fd37ddc2c5442d5f6aedbfa1b564fc77592a9ce1b7695ccf50"
+  },
+  "layouts": {
+    "analyzer_semantic_slot_alignment": 4,
+    "analyzer_semantic_slot_size": 33,
+    "analyzer_semantic_slot_stride": 36,
+    "analyzer_staged_slot_alignment": 4,
+    "analyzer_staged_slot_size": 34,
+    "analyzer_staged_slot_stride": 36,
+    "analyzer_two_bank_payload_delta": 784,
+    "analyzer_two_bank_payload_reserved_bytes": 7056,
+    "analyzer_union_alignment": 4,
+    "analyzer_union_size": 16,
+    "analyzer_union_stride": 16,
+    "analyzer_value_alignment": 4,
+    "analyzer_value_size": 16,
+    "analyzer_value_stride": 16,
+    "baseline_two_bank_payload_reserved_bytes": 6272,
+    "counter_two_bank_payload_delta": 784,
+    "counter_two_bank_payload_reserved_bytes": 7056,
+    "counter_two_bank_total_reserved_bytes": 30616,
+    "counter_union_alignment": 4,
+    "counter_union_size": 17,
+    "counter_union_stride": 20,
+    "counter_value_alignment": 4,
+    "counter_value_size": 16,
+    "counter_value_stride": 16,
+    "empty_value_alignment": 1,
+    "empty_value_size": 0,
+    "empty_value_stride": 1,
+    "invocation_source_alignment": 4,
+    "invocation_source_size": 30,
+    "invocation_source_stride": 32,
+    "semantic_metadata_alignment": 4,
+    "semantic_metadata_size": 48,
+    "semantic_metadata_stride": 48,
+    "semantic_payload_alignment": 4,
+    "semantic_payload_size": 33,
+    "semantic_payload_stride": 36,
+    "semantic_prefix_alignment": 2,
+    "semantic_prefix_size": 22,
+    "semantic_prefix_stride": 22,
+    "semantic_record_alignment": 2,
+    "semantic_record_size": 20,
+    "semantic_record_stride": 20,
+    "semantic_reference_alignment": 4,
+    "semantic_reference_size": 14,
+    "semantic_reference_stride": 16,
+    "semantic_slot_alignment": 4,
+    "semantic_slot_size": 33,
+    "semantic_slot_stride": 36,
+    "staged_entry_alignment": 4,
+    "staged_entry_size": 35,
+    "staged_entry_stride": 36,
+    "staged_five_analyzer_reserved_bytes": 184,
+    "staged_metadata_alignment": 2,
+    "staged_metadata_size": 4,
+    "staged_metadata_stride": 4,
+    "staged_scope_alignment": 4,
+    "staged_scope_size": 14,
+    "staged_scope_stride": 16,
+    "staged_slot_alignment": 4,
+    "staged_slot_size": 35,
+    "staged_slot_stride": 36,
+    "staged_three_fixture_reserved_bytes": 112,
+    "standard_slot_alignment": 4,
+    "standard_slot_size": 32,
+    "standard_slot_stride": 32,
+    "witness_table_alignment": 1,
+    "witness_table_size": 0,
+    "witness_table_stride": 1
+  },
+  "package": "P06",
+  "profile": "raspberry-pi-armv6",
+  "source_commit": "909a7dab8581368aa776c5d93f7f2b0e33d68ec2",
+  "source_dirty": false,
+  "step": "protocol-lowering"
+}

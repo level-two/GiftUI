@@ -63,8 +63,15 @@ concrete codec. No additional bank or field is introduced. The generic payload
 union can enlarge every reserved payload slot; target measurements must report
 the full two-bank cost, not merely the count of live Canvas values.
 
-Final four-profile/oracle/resource evidence remains P06 work in the
-[shared progress record](../../Tests/ContractFixtures/SPEC012/Evidence/rfc-014-p06/progress.md).
+Four-profile selected evidence is now in the
+[shared progress record](../../Tests/ContractFixtures/SPEC012/Evidence/rfc-014-p06/progress.md),
+pending independent P06 review. Actual Counter semantic payload slots grow32→36
+bytes on all measured targets (+784 bytes for196 reserved slots); Analyzer
+slots grow32→40 on64-bit native (+1,568 bytes),32→36 on32-bit targets (+784).
+The source descriptor is64 bytes native/32 target. Five Analyzer staged slots
+plus metadata are244 bytes native/184 target. The single P11 ledger must include
+these costs with full overlapping host/stack/linked evidence; component IR's
+absence of direct allocator calls is not a transitive zero-heap conclusion.
 The sections below describe the historical baseline, not the current protocol
 representation or permission to retain a closure fallback.
 

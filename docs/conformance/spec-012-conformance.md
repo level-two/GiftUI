@@ -21,12 +21,15 @@ superseded_by: null
 
 ## RFC-014 migration checkpoint
 
-P06 implementation has started under SPEC-012 T10.1. The
+P06 implementation evidence is ready for independent review under SPEC-012 T10.1. The
 [shared receipt](../../Tests/ContractFixtures/SPEC012/Evidence/rfc-014-p06/progress.md)
-records the selected declaration/lowering checks and the scoped-source constraint
-issue. DR-RD-001–004 and all applicable retained criteria remain open; the prior
-results below are historical baseline evidence only. No package exit, whole-module,
-application, resource, or connected-target completion is claimed.
+records four selected-component profiles, scoped stores/reads/semantic transfer,
+error and negative checks, retained production geometry, all17 immutable pixel
+vectors and actual layout/resource costs. The approved scoped-source constraint
+correction is resolved. DR-RD-001–004 and full retained criteria remain open;
+the prior results below are historical baseline evidence only. No package exit,
+whole-module, application, full linked resource, or connected-target completion
+is claimed by this implementation pass.
 
 ## Historical Review Scope
 

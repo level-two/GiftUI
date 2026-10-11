@@ -53,13 +53,19 @@ scoped invocation/store work; existing package scope, checks and bounds remain.
   propagation follows P01; no historical check is weakened.
   **Evidence:** [P06 shared receipt](../../Tests/ContractFixtures/SPEC012/Evidence/rfc-014-p06/progress.md),
   `RuntimeDerived/CounterCanvas.swift`, `AnalyzerCanvas.swift`,
-  `CanvasStoreProbe.swift`, `CanvasSemanticProbe.swift` and
+  `CanvasStoreProbe.swift`, `CanvasSemanticProbe.swift`, `CanvasTableProbe.swift`,
+  `CanvasErrorProbe.swift`, `CanvasGeometryProbe.swift`, `CanvasLayoutProbe.swift`,
+  `CanvasResourceProbe.swift`, the immutable `raster-vectors.yaml` and
+  `scripts/contracts/generate-spec-012-raster-probe.py`, through
   `scripts/contracts/check-spec-012-protocol-canvas.py` through the registered
   `--compiler-baseline rfc-014 --giftui-build` route. These map T10.1 to the
   selected declaration/lowering, scoped invocation, staged cleanup and semantic
-  transfer portions of DR-001/002/003/007/009/010 and DR-RD-001/002/003;
-  final target/oracle/resource checks, mapping execution and full acceptance
-  remain pending. The shared receipt maps actual artifacts to each tested seam.
+  transfer portions of DR-001/002/003/007/009/010 and DR-RD-001/002/003.
+  Fresh geometry/pixel controls map to DR-004/006; target layouts and narrowly
+  stated allocation attribution map to DR-011/012. Four selected-component
+  profiles are indexed in `Evidence/rfc-014-p06/final-index.json`. Independent
+  P06 review and full acceptance remain pending. The shared receipt records
+  scope limits and actual artifact identities for every tested seam.
 
 The single current acceptance matrix retains each criterion once. Its historical
 task IDs remain provenance; `T10.1` adds fresh migration verification without

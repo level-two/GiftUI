@@ -1,0 +1,58 @@
+{
+  "macos-dynamic": {
+    "artifact_hashes_verified": true,
+    "checks": 43,
+    "compiler": ".toolchains/host/swift-6.3.2-RELEASE-osx/usr/bin/swiftc",
+    "compiler_sha256": "d8e40107da0e2c1c59640a983faea326d5d2bddfe81f7609db14bade43c4a5b9",
+    "core_receipt": ".build/contracts/spec-006-rfc-014/1ebb999f319d770c-7z96f1lo/macos-dynamic/result.json",
+    "current_inputs_reconciled": true,
+    "execution": "native component execution",
+    "negative_checks": 13,
+    "receipt": ".build/contracts/spec-012-protocol-canvas/tmpvuc3h2sb/macos-dynamic/result.json",
+    "receipt_sha256": "b6af8ecaed1a50a5f027dee7609e8fbd89f494ea91af1f710b0a98dcb9da1791",
+    "source_commit": "909a7dab8581368aa776c5d93f7f2b0e33d68ec2",
+    "source_dirty": false
+  },
+  "macos-static": {
+    "artifact_hashes_verified": true,
+    "checks": 43,
+    "compiler": ".toolchains/host/swift-6.3.2-RELEASE-osx/usr/bin/swiftc",
+    "compiler_sha256": "d8e40107da0e2c1c59640a983faea326d5d2bddfe81f7609db14bade43c4a5b9",
+    "core_receipt": ".build/contracts/spec-006-rfc-014/d4469901da4c0259-9wtdw756/macos-static/result.json",
+    "current_inputs_reconciled": true,
+    "execution": "native component execution",
+    "negative_checks": 13,
+    "receipt": ".build/contracts/spec-012-protocol-canvas/tmpq2rsgmp0/macos-static/result.json",
+    "receipt_sha256": "66d8c8768e9411da3098ea0cd1acba8788180572c695380ddf4d8df6575191c0",
+    "source_commit": "d75890238e37de987d169fae5ce248ea0b0f4c23",
+    "source_dirty": true
+  },
+  "nrf52840-embedded": {
+    "artifact_hashes_verified": true,
+    "checks": 42,
+    "compiler": ".toolchains/nrf52840/swift/swift-6.3.2-RELEASE-osx/usr/bin/swiftc",
+    "compiler_sha256": "d8e40107da0e2c1c59640a983faea326d5d2bddfe81f7609db14bade43c4a5b9",
+    "core_receipt": ".build/nrf52840/contracts/spec-006-rfc-014/25124cd324d60cb1-2hchpear/nrf52840-embedded/result.json",
+    "current_inputs_reconciled": true,
+    "execution": "cross-compiled components/ABI only; no board execution",
+    "negative_checks": 13,
+    "receipt": ".build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded/result.json",
+    "receipt_sha256": "517b5dbef832177609e0ca952b9edb830efb1d3ce6d8ec7bae2f8769286da450",
+    "source_commit": "d75890238e37de987d169fae5ce248ea0b0f4c23",
+    "source_dirty": true
+  },
+  "raspberry-pi-armv6": {
+    "artifact_hashes_verified": true,
+    "checks": 42,
+    "compiler": ".toolchains/host/swift-6.3.2-RELEASE-osx/usr/bin/swiftc",
+    "compiler_sha256": "d8e40107da0e2c1c59640a983faea326d5d2bddfe81f7609db14bade43c4a5b9",
+    "core_receipt": ".build/raspberry-pi/contracts/spec-006-rfc-014/1ebb999f319d770c-rghi6e_f/raspberry-pi-armv6/result.json",
+    "current_inputs_reconciled": true,
+    "execution": "cross-compiled components/ABI only; no board execution",
+    "negative_checks": 13,
+    "receipt": ".build/raspberry-pi/contracts/spec-012-protocol-canvas/tmpyf76u0_x/raspberry-pi-armv6/result.json",
+    "receipt_sha256": "8e027f32bf2544a1c35ff19b3d704320359d1850df10fb6e39df99d52a33da78",
+    "source_commit": "909a7dab8581368aa776c5d93f7f2b0e33d68ec2",
+    "source_dirty": false
+  }
+}
