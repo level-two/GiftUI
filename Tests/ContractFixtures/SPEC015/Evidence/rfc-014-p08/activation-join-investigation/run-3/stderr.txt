@@ -1,0 +1,46 @@
+<unknown>:0: error: copy of noncopyable typed value. This is a compiler bug. Please file a bug with a small example of the bug
+<unknown>:0: error: copy of noncopyable typed value. This is a compiler bug. Please file a bug with a small example of the bug
+<unknown>:0: error: copy of noncopyable typed value. This is a compiler bug. Please file a bug with a small example of the bug
+<unknown>:0: error: copy of noncopyable typed value. This is a compiler bug. Please file a bug with a small example of the bug
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-join-investigation/LayoutB.swift:22:22: error: 'unknown' used after consume
+20 | 
+21 |     mutating func activate() {
+22 |         switch state.take()! {
+   |                      |     `- note: consumed here
+   |                      `- error: 'unknown' used after consume
+23 |         case .inert(let supplied):
+24 |             let pipeline = InvestigationPipeline(
+   :
+35 |         case .active(let coordinator):
+36 |             state = .some(.active(consume coordinator))
+37 |         }
+   |         `- note: used here
+38 |     }
+39 |     mutating func quiesce() {
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-join-investigation/LayoutB.swift:22:22: error: lifetime-dependent value escapes its scope
+19 |     init(supplied: consuming InvestigationSupplied) { state = .some(.inert(consume supplied)) }
+20 | 
+21 |     mutating func activate() {
+   |                   `- note: it depends on the lifetime of argument 'self'
+22 |         switch state.take()! {
+   |                      `- error: lifetime-dependent value escapes its scope
+23 |         case .inert(let supplied):
+   |                         `- note: this use causes the lifetime-dependent value to escape
+24 |             let pipeline = InvestigationPipeline(
+25 |                 models: supplied.models.borrowedScope(), root: supplied.root.borrowedRoot(),
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-join-investigation/LayoutB.swift:40:22: error: 'unknown' used after consume
+38 |     }
+39 |     mutating func quiesce() {
+40 |         switch state.take()! {
+   |                      |     `- note: consumed here
+   |                      `- error: 'unknown' used after consume
+41 |         case .inert(let supplied): state = .some(.inert(consume supplied))
+42 |         case .active(var coordinator):
+43 |             coordinator.quiesce()
+44 |             state = .some(.active(consume coordinator))
+45 |         }
+   |         `- note: used here
+46 |     }
+47 | }

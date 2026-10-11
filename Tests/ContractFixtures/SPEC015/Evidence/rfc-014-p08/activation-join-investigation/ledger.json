@@ -4,11 +4,11 @@
   "scope": "evidence-only; no production integration",
   "compiler_invocation_limit": 6,
   "candidate_layout_limit": 2,
-  "compiler_invocations_used": 2,
-  "candidate_layouts_used": 1,
-  "consecutive_unproductive_candidates": null,
+  "compiler_invocations_used": 3,
+  "candidate_layouts_used": 2,
+  "consecutive_unproductive_candidates": 2,
   "historical_production_guard": "2/2 (not reset)",
-  "status": "held pending independent guard-accounting review; no further compiler invocation",
+  "status": "STOPPED: both authorized layouts failed positive; 3/6 invocations, 2/2 layouts, conservative 2/2 unproductive candidate attempts; no further compiler invocation or production integration authorized",
   "runs": [
     {
       "number": 1,
@@ -54,10 +54,38 @@
       "accepted": false,
       "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "stderr_sha256": "1cc9aa06e04c00f03af48632a96e61572c1cfe3a42343c68db010cba1cf4c7a1"
+    },
+    {
+      "number": 3,
+      "candidate": "B",
+      "control": "positive",
+      "command": "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.3.2-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/contracts/p08-activation-investigation-cache -disable-sandbox -target arm64-apple-macosx26.0 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk -D GIFTUI_DYNAMIC_PROFILE -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014/189dda86d331e15d-wpk82ft7/macos-dynamic -parse-as-library -I /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpke3zvfyl/macos-dynamic -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014/189dda86d331e15d-wpk82ft7/macos-dynamic -enable-testing -I /Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-ie3r3cmc -module-name P08ActivationJoinInvestigation -emit-object /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-join-investigation/Supplied.swift /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-join-investigation/LayoutB.swift /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-join-investigation/Positive.swift -o /Users/eugene/work/GiftUI/.build/contracts/p08-activation-investigation-run-3.o",
+      "compiler_sha256": "d8e40107da0e2c1c59640a983faea326d5d2bddfe81f7609db14bade43c4a5b9",
+      "inputs": {
+        "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-join-investigation/Supplied.swift": "8f740852e5e627d2b2a16f6aba69a3bd3b12b87a8ab774731997a2fe2aaa0cf6",
+        "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-join-investigation/LayoutB.swift": "2fc421c3088b5504ebe732532113e102a930033d77ce53dc91c724e1b8c0a04a",
+        "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-join-investigation/Positive.swift": "150c4a897a76b66b9ca3140b713bb8b7462344f2b8f5a6155dc90ac8f4866cc4"
+      },
+      "status": "completed",
+      "source_snapshots": {
+        "Supplied.swift": "run-3/Supplied.swift",
+        "LayoutB.swift": "run-3/LayoutB.swift",
+        "Positive.swift": "run-3/Positive.swift"
+      },
+      "exit": 1,
+      "accepted": false,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "1a1408cca7ccf56c3b01ac404648e05c6ea91802b4f26ae8049809850fe71ef8"
     }
   ],
-  "held_for_guard_accounting_review": true,
+  "held_for_guard_accounting_review": false,
   "provisional_runner_unproductive_count": 2,
-  "unsuccessful_positive_invocations": 2,
-  "accounting_note": "Original runner counted two failed positive invocations as two candidate attempts although only layout A was used. Original ledger retained in ledger-after-run-2.json. Parent requires independent interpretation before any exhaustion/continuation disposition."
+  "unsuccessful_positive_invocations": 3,
+  "accounting_note": "Independent read-only review distinguishes invocations from candidate attempts. Candidate A conservatively charged 1/2; original provisional count and ledger-after-run-2.json retained. Original six-call/two-layout allowance unchanged.",
+  "accounting_review": "accounting-review.md (c05e6d35)",
+  "next_authorized_control": null,
+  "stop_reason": "Failed Candidate A charged 1/2 by independent accounting review; failed Candidate B retains actual activation self-lifetime rejection. No verified candidate; both layouts exhausted. Negatives skipped.",
+  "investigation_closed": true,
+  "negative_invocations": 0,
+  "passing_controls": 0
 }

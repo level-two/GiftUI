@@ -13,11 +13,12 @@ P08 incomplete, counter/four routes/early images and independent exit review ope
 Original approval packet/probes/review and earlier checkpoints remain historical.
 [Receipt](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/progress.md).
 Evidence-only investigation was separately approved and authorized in `0bc51d70`.
-It used2/6 fresh invocations on1/2 layouts with no passing positive or negatives;
-[raw result](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-join-investigation/result.md)
-is held pending independent guard-accounting interpretation. No further compile
-or production integration is authorized while held; historical productionguard2/2
-is unchanged. Unused numerical allowance is not continuation authority.
+Independent accounting review `c05e6d35` permitted predeclared B under that same
+allowance. Its positive failed:3/6 fresh invocations on2/2 layouts, no passing
+controls or negatives; conservative candidate guard2/2, productionguard2/2
+unchanged. [Finite result](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-join-investigation/result.md)
+requires independent read-only final review and a separate decision before any
+further compiler work or production integration. Unused calls are not authority.
 P09–P12 remain pending.
 
 **Current P07 checkpoint — finite package exit passed, 2026-10-11:**

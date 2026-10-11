@@ -1,6 +1,6 @@
 # RFC-014 P08 execution receipt — 2026-10-11
 
-**Current: production remains stopped at2/2; investigation held for accounting review after2/6 invocations on1/2 layouts.**
+**Current: production remains stopped at2/2; evidence investigation stopped after3/6 invocations on2/2 layouts, no passing controls, conservative candidate guard2/2.**
 The [bounded stop packet](activation-join-stop/stop.md) preserves exact controls,
 commands and narrowed cause. `c39733de` is the last validated maintained source;
 P08 remains incomplete. Earlier0/2 checkpoints below are historical.
@@ -193,3 +193,18 @@ independent interpretation because only1 layout was used and the approved guard
 names candidate attempts. Current ledger hard-holds further compiler work;
 exhaustion/continuation accounting is unresolved. Historical productionguard2/2
 unchanged; no compiler bug/rootcause/feasible host or P08 pass is claimed.
+
+
+## Evidence-only investigation: reviewed continuation and finite stop
+
+Independent [accounting review](activation-join-investigation/accounting-review.md)
+`c05e6d35` charged failed A conservatively1/2 and permitted only predeclared B's
+positive with a caller-only correction under the original allowance. Invocation3
+used unchanged B/Supplied and actual profile lending scopes in place; compiler
+exit1 retains activation self-lifetime plus use-after-consume/internal-copy
+failures. Imported-field partial-consumption diagnostics are absent; no isolated
+caller pass or compiler-bug attribution follows. Exactly3/6 calls,2/2 layouts,
+zero negatives/positive passes; conservative candidate guard2/2, production2/2
+unchanged. No further compiles or implementation. The [finite result](activation-join-investigation/result.md)
+preserves all diagnostics/hashes, original held receipt and accounting record.
+Next: independent read-only final review and separate explicit resumption decision.

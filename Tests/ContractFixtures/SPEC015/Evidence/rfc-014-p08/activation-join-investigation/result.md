@@ -1,84 +1,74 @@
-# P08 evidence-only investigation: held for accounting review — 2026-10-11
+# P08 evidence-only investigation: stopped — 2026-10-11
 
-**Held pending independent guard-accounting interpretation. No further compiler
-invocation is authorized while held. No production integration occurred.**
-The maintainer's [bounded authorization](authorization.md) was committed as
-`0bc51d70` before any fresh compiler invocation. Entry was clean `984a0afc`.
-Strong Sol6.1 High, sequential, no delegation. Historical production repair guard
-remains **2/2**, with no reset from this evidence-only allowance.
+**No verified candidate. Both authorized layouts failed their positive controls;
+compiler work is stopped. No production integration occurred.** Strong Sol6.1
+High, sequential, no delegation. Authorization `0bc51d70` preceded every fresh
+compile. The [accounting review](accounting-review.md), committed at `c05e6d35`,
+permitted the fixed second layout under the original allowance, without a reset.
 
-## Used allowance and actual result
+## Finite result and counters
 
-Exactly **2/6 fresh compiler invocations**, **1/2 candidate internal layouts**,
-**0 negative invocations**, no executable or target execution. CandidateA's
-positive control did not pass; CandidateB and both negatives remain uncompiled.
-All source snapshots, exact commands, complete stdout/stderr and identities are
-preserved in [run1](run-1/result.json), [run2](run-2/result.json) and the
-[current ledger](ledger.json). [Hashes](manifest.json) cover the evidence files.
-The compiler was pinned Swift6.3.2, SHA256
-`d8e40107da0e2c1c59640a983faea326d5d2bddfe81f7609db14bade43c4a5b9`.
+Exactly **3/6 fresh compiler invocations**, **2/2 layouts**, **zero negatives**,
+**zero passing controls**. Failed A is conservatively charged1/2 by independent
+review; failed B is charged the second candidate attempt, **2/2**. The historical
+production repair guard remains **2/2**, unchanged. Three unused numerical calls
+are not continuation authority: both authorized layouts have been tried and
+neither positive passed. No negative may establish ownership/lifetime proof after
+a failed positive. No further compiler work or production resumption is inferred.
 
-| Fresh invocation | Scope | Actual result |
+| Invocation | Control | Actual result |
 | --- | --- | --- |
-| 1 | A positive initialization/activation/real caller | exit1: caller incorrectly used `consume` on two Copyable fields; no positive lifetime proof |
-| 2 | SameA layout, exact two-token caller correction | exit1: activation self-lifetime escapes; internal noncopyable-copy diagnostics; imported non-frozen profile field-consumption errors |
+| [1](run-1/result.json) | A positive | exit1: two caller consumes of Copyable fields rejected |
+| [2](run-2/result.json) | same A, exact two-token caller correction | exit1: activation self-lifetime, internal noncopyable-copy and imported non-frozen partial-consumption diagnostics |
+| [3](run-3/result.json) | predeclared unchanged B, caller-only in-place lending correction | exit1: activate state transfer escapes self lifetime, activate/quiesce used-after-consume and internal noncopyable-copy diagnostics |
 
-Run1 source is retained separately from the corrected run2 caller. The only
-caller correction removes `consume` before `profile.canvasBacking` and
-`profile.workspace`; layoutA and supplied-owner source hashes are identical in
-both invocations. The correction counts as a fresh compiler invocation, with
-no free rerun. No negative followed a failed positive. No historical controls,
-additional module builds, hidden probes, compiler changes or unsafe escape
-workarounds were run.
+Run3 command: `python3 Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-join-investigation/run-one.py B positive`.
+The [expanded compiler command](run-3/command.txt), [complete stdout](run-3/stdout.txt),
+[complete stderr](run-3/stderr.txt), exact sources and hashes are retained. Its
+caller-only correction borrows the actual imported `StaticCycleProfileStorage`
+fields in an extension method with no added state, instead of partially consuming
+them. It retains the profile's actual audit and model/root, semantic typed-array,
+Canvas typed-array, geometry and control lending scopes. The concrete caller
+constructs an inert owner, calls `activate()` and `quiesce()` within all scopes.
+Imported-field consumption diagnostics are absent in run3; that observation is
+not an isolated passing caller or initializer proof.
 
-Run2 [full stderr](run-2/stderr.txt) includes `lifetime-dependent variable 'self'
-escapes its scope` at `activate()`, diagnostics literally describing `copy of
-noncopyable typed value` as a compiler bug, and `cannot partially consume
-'profile' of non-frozen type ... imported from 'RuntimeCycleProbe'` in the caller.
-These mixed diagnostics establish neither a lawful construction pattern nor a
-root-cause attribution. No isolated initializer pass, ownership rejection pass,
-backing-lifetime pass, completed host or P08 acceptance is claimed.
+LayoutB and Supplied hashes remain respectively
+`2fc421c3088b5504ebe732532113e102a930033d77ce53dc91c724e1b8c0a04a` and
+`8f740852e5e627d2b2a16f6aba69a3bd3b12b87a8ab774731997a2fe2aaa0cf6`.
+At `LayoutB.swift:22`, `state.take()` produces a lifetime escape depending on
+argument `self`, used in the inert pattern capture. Both `activate()` and
+`quiesce()` also report use-after-consume. Four diagnostics literally mention
+noncopyable copies as a compiler bug; these mixed failures do **not** establish a
+compiler root cause, language impossibility or correct host construction.
+The candidate attempts share an unresolved actual activation ownership/lifetime
+boundary; no passing control justifies another repair. No variant or third
+layout was attempted. Both prepared negatives remain uncompiled.
 
-## Guard accounting requiring independent interpretation
+## Identity, retained history and limits
 
-The runner conservatively counted both unsuccessful positive invocations as two
-unproductive candidate attempts and stopped. The authorization names **two
-consecutive unproductive candidate attempts**, while only one layout was used.
-Run1 was caller setup; run2 exposed new diagnostics and a narrower activation
-location. The parent requires independent read-only interpretation of that
-literal approved condition before finalizing exhaustion or permitting any further
-run. Neither the executor nor this receipt reclassifies the failures to continue.
+Pinned Swift6.3.2 compiler SHA256:
+`d8e40107da0e2c1c59640a983faea326d5d2bddfe81f7609db14bade43c4a5b9`.
+[Verified identities](verified-inputs.json) cover60 schema inputs/83 artifacts,
+165 runtime inputs/143 artifacts, core receipt/artifacts and compiler. The runner
+rechecked its frozen schema inputs/artifacts and compiler before run3. No imported
+module was rebuilt or changed, no compiler flags/features were added and no
+historical controls were rerun. No executable or target run occurred.
+[Manifest](manifest.json) covers the evidence; [ledger](ledger.json) is the current
+stop. The [provisional original ledger](ledger-after-run-2.json) and
+[held receipt](held-result-after-run-2.md) preserve the earlier accounting hold.
+[Continuation](continuation.md) records the exact independently reviewed release
+of that hold. Raw run1/run2 results are unchanged.
 
-The [original runner ledger after run2](ledger-after-run-2.json) preserves its
-provisional count2 and stop text. The current ledger marks candidate accounting
-unresolved, records both unsuccessful invocations and adds a hard hold before
-any compiler launch. Four of the numerical six-call allowance are unused; unused
-capacity is **not** continuation authority while held. CandidateB source is
-prepared under the original second hypothesis and explicitly has no compile
-result. No third layout exists.
+All fixtures remain isolated evidence. Actual pipeline/endpoint, binding,
+admission and coordinator constructors appear only inside candidate `activate()`;
+failed compilation supplies no production pattern authority. No extra host
+abstraction, unsafe escape, contract amendment or hardware action occurred.
 
-## Provenance, scope and limitations
-
-[Read-only identity verification](verified-inputs.json) confirms60 schema inputs/
-83 artifacts,165 runtime inputs/143 artifacts, core receipt/GiftUI artifact and
-compiler hashes. The original approved compiler flags/features were inherited;
-only output/module-cache locations changed. The frozen actual modules are used
-as dependencies, with no modification or rebuild.
-
-The concrete positive caller enters actual model/root, semantic typed-array,
-Canvas typed-array, layout/render/path/plan and control backing scopes before
-initializing an inert owner. The attempted state stores supplied scopes before
-activation; actual pipeline/endpoint, binding, admission and Static coordinator
-constructors occur only inside `activate()` source. Compilation failed, so none
-of this is a proven complete host pattern. The caller's imported non-frozen
-partial-consumption issue remains unresolved. Evidence fixtures are isolated
-from production and cannot be adopted without separate reviewed resumption.
-
-P08 remains incomplete. Last validated maintained implementation is `c39733de`;
-the prior schema and host component passes retain their limited applicability.
-The full counter, all nine validation stages, actual endpoint/report/role audits,
+P08 is incomplete. Last validated maintained implementation remains `c39733de`.
+Counter composition/all nine validation stages, endpoint/report/role audits,
 cache tickets/replacement callbacks/frame lifetimes/partial teardown, four build
-routes and early linked target-image checks remain open. P09, hardware, physical
-resource/timing claims and package acceptance remain outside this investigation.
-Next action is the parent's independent read-only accounting/result review and
-resulting explicit disposition; no production resumption is inferred.
+routes and early linked target images remain open. P09 and package acceptance
+are outside this investigation. The next action is independent read-only final
+result review and a separate explicit decision before any production resumption
+or further compiler work.
