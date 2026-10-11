@@ -102,7 +102,7 @@ if profile != 'nrf52840-embedded':
     module('GiftUIRuntimeDynamic', [ROOT / 'Sources/GiftUIRuntimeDynamic' / name for name in (
         'DynamicCanvasCallableStorage.swift', 'DynamicSemanticRecordStorage.swift')])
 
-macro = ROOT / '.build/rfc014-p02/tool/debug/GiftUIMacros-tool'
+macro = ROOT / core.get('macro_tool', '.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool')
 assert digest(macro) == core['macro_tool_sha256']
 inputs.append(macro)
 for application in ('Counter', 'Analyzer'):

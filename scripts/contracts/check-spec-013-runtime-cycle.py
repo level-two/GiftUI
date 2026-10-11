@@ -80,7 +80,7 @@ module('GiftUIRuntimeCore', [ROOT / 'Sources/GiftUIRuntimeCore' / name for name 
 module('GiftUIRuntimeStatic', [ROOT / 'Sources/GiftUIRuntimeStatic' / name for name in ('StaticRuntimeExecutionCoordinator.swift', 'StaticObservableModelStorage.swift', 'StaticObservableRootAdapter.swift', 'StaticObservableRootTargetAccess.swift', 'StaticCanvasValueStorage.swift', 'StaticSemanticRecordStorage.swift', 'StaticInteractionStorage.swift', 'StaticRecordDrawingWorkspace.swift')])
 if profile != 'nrf52840-embedded':
     module('GiftUIRuntimeDynamic', [ROOT / 'Sources/GiftUIRuntimeDynamic' / name for name in ('DynamicRuntimeExecutionCoordinator.swift', 'DynamicObservableModelStorage.swift', 'DynamicObservableModelRegistration.swift', 'DynamicObservableRootAdapter.swift', 'DynamicObservableRootTargetAccess.swift', 'DynamicObservableStateReconciler.swift', 'DynamicCanvasCallableStorage.swift', 'DynamicSemanticRecordStorage.swift', 'DynamicInteractionStorage.swift', 'DynamicLayoutHostStorage.swift', 'DynamicDrawingPlanWorkspace.swift', 'DynamicLivePathStorage.swift', 'DynamicRenderWorkspace.swift')])
-macro = ROOT / '.build/rfc014-p02/tool/debug/GiftUIMacros-tool'
+macro = ROOT / core.get('macro_tool', '.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool')
 assert digest(macro) == core['macro_tool_sha256']
 fixture = ROOT / 'Tests/ContractFixtures/SPEC013/RuntimeDerived'
 inputs.extend([macro, fixture / 'Cycle.schema.json', fixture / 'Cycle.swift'])

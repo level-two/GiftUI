@@ -63,7 +63,7 @@ for name, files in modules:
     run([swift, *flags, '-module-name', name, '-emit-module', '-emit-object', *files,
          '-emit-module-path', out / (name + '.swiftmodule'), '-o', out / (name + '.o')], name)
 fixture_root = root / 'Tests/ContractFixtures/SPEC010/RuntimeDerived'
-macro = root / '.build/rfc014-p02/tool/debug/GiftUIMacros-tool'
+macro = root / report.get('macro_tool', '.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool')
 assert hashlib.sha256(macro.read_bytes()).hexdigest() == report['macro_tool_sha256']
 run([macro, '--lower-source', fixture_root / 'State.schema.json', fixture_root / 'State.swift',
      out / 'StateSchema.swift', out / 'StatePresentation.swift'], 'state-lowering')
