@@ -82,6 +82,9 @@ module('GiftUIDrawing', [ROOT / 'Sources/GiftUIDrawing' / name for name in (
     'CanvasInvocationSource.swift', 'CanvasPlanProducer.swift', 'CanvasStagedValues.swift', 'CanvasSemanticPayload.swift',
     'DrawingLimits.swift', 'DrawingPlan.swift', 'DrawingValues.swift', 'StaticCanvasCallableTable.swift',
     'PathConstruction.swift', 'StrokeSnapshot.swift')])
+module('GiftUIFailureCore', [ROOT / 'Sources/GiftUIFailureCore/GiftUIFailureCore.swift'])
+module('GiftUIDrawingFailureAdapterFixture', [
+    ROOT / 'Sources/GiftUIDrawingFailureAdapterFixture/GiftUIDrawingFailureAdapterFixture.swift'])
 module('GiftUIRuntimeCore', [ROOT / 'Sources/GiftUIRuntimeCore/ObservableCanvasInvocationSource.swift'])
 module('GiftUIRuntimeStatic', [ROOT / 'Sources/GiftUIRuntimeStatic' / name for name in (
     'StaticObservableModelStorage.swift', 'StaticCanvasValueStorage.swift', 'StaticSemanticRecordStorage.swift')])
@@ -108,10 +111,12 @@ for application in ('Counter', 'Analyzer'):
     module(application + 'Canvas', [out / (application + 'Canvas.swift')])
     module(application + 'CanvasTable', [out / (application + 'CanvasTable.swift')])
 
-module('CanvasStoreProbe', [FIXTURE / 'CanvasStoreProbe.swift', FIXTURE / 'CanvasSemanticProbe.swift', ROOT / 'Tests/ContractFixtures/SPEC007/RuntimeDerived/LayoutSupport.swift'])
+module('CanvasStoreProbe', [FIXTURE / 'CanvasStoreProbe.swift', FIXTURE / 'CanvasSemanticProbe.swift',
+                            FIXTURE / 'CanvasErrorProbe.swift',
+                            ROOT / 'Tests/ContractFixtures/SPEC007/RuntimeDerived/LayoutSupport.swift'])
 if profile.startswith('macos'):
     main = out / 'Main.swift'
-    main.write_text('import CanvasStoreProbe\n@main struct Main { static func main() { print("P06 stores assertions=\\(giftuiP06Stores(dynamic: false) + giftuiP06Stores(dynamic: true)) failures=0") } }\n')
+    main.write_text('import CanvasStoreProbe\n@main struct Main { static func main() { print("P06 stores assertions=\\(giftuiP06Stores(dynamic: false) + giftuiP06Stores(dynamic: true)) errorMappings=\\(giftuiP06ErrorMappings()) failures=0") } }\n')
     run('native-link', [compiler, *flags, main, base / 'GiftUI.o', base / 'SignalAnalyzerDomain.o',
                         *sorted(out.glob('*.o')), '-o', out / 'canvas-stores'])
     run('native-execute', [out / 'canvas-stores'])

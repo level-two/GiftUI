@@ -311,3 +311,29 @@ complete modules/applications, cross builds, resource certification and P07+
 integration are not claimed. P06 still requires semantic payload transfer,
 finite coverage/error/boundary extension, retained geometry/pixel controls and
 four-profile matched receipts before its independent review.
+
+## Step 4a — fixed drawing error mapping fixture
+
+The registered P06 owner route now compiles the selected drawing failure
+adapter and runs 13 independent assertions for all five approved access-error
+cases, raw value 9, one-byte enum size/stride, and the four fields of the
+invalid-model-access failure fact. This maps SPEC-012's amended failure
+requirements to T10.1. The fixture does not change production error semantics.
+
+After `scripts/format-swift.sh`, the exact commands were:
+
+```
+scripts/contracts/run-spec-006.sh --profile macos-static --compiler-baseline rfc-014
+scripts/contracts/run-spec-012.sh --profile macos-static --compiler-baseline rfc-014 --giftui-build .build/contracts/spec-006-rfc-014/f28bb03491f0640c-ot0b940_/macos-static
+```
+
+The core receipt is `.build/contracts/spec-006-rfc-014/f28bb03491f0640c-ot0b940_/macos-static/result.json`;
+the P06 report is `.build/contracts/spec-012-protocol-canvas/tmpoaxq75u3/macos-static/result.json`.
+The native result says `stores assertions=216 errorMappings=13 failures=0`.
+The report includes all selected compile and negative checks passing; its
+`source_dirty=true` reflects this pre-commit fixture validation. The pinned
+compiler SHA-256 is `d8e40107da0e2c1c59640a983faea326d5d2bddfe81f7609db14bade43c4a5b9`.
+The report's core-receipt SHA-256 is
+`255a8b48f34f85d2ff6626729dc7ca774e8a9cc594722a2f67102709860e745b`.
+This is a partial native mapping check. P06 and T10.1 remain open, and the
+consecutive unproductive-repair counter remains **0/2**.

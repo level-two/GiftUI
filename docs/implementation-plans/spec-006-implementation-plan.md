@@ -48,6 +48,7 @@ not additional authorization to rerun an MVP implementation or reopen experiment
   **P04 passed:** [step receipts and package exit](../../Tests/ContractFixtures/SPEC006/Evidence/rfc-014-p04/progress.md), [independent Strong review](../../Tests/ContractFixtures/SPEC006/Evidence/rfc-014-p04/exit-review.md) and [runtime bank design](../implementation-designs/spec-006-runtime-record-banks.md). T10.1 remains open through P10–P12.
   **Evidence:** existing owner conformance report and immutable owner-driver
   reports linked to exact commits/artifacts; the [P02 receipt](../../Tests/ContractFixtures/SPEC006/Evidence/rfc-014-p02/result.md) records the four-profile declaration exit and remaining joint-package obligations. T10.1 remains open.
+  **P06 in progress:** the [Canvas evidence receipt](../../Tests/ContractFixtures/SPEC012/Evidence/rfc-014-p06/progress.md) maps the selected source, store, transfer, failure, geometry and four-profile checks to this still-open task. Its partial checks are not a P06 exit.
 
 The single current acceptance matrix retains each criterion once. Its historical
 task IDs remain provenance; `T10.1` adds fresh migration verification without
