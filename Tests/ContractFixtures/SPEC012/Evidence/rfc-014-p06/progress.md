@@ -1,5 +1,17 @@
 # RFC-014 P06 progress
 
+## Step 8 — authored context alias preservation
+
+Finite lowering already tracked draw's local context alias for its body, but
+emitted a hardcoded local witness parameter name. The witness now preserves
+that local name while retaining the required external `context` label.
+CounterTrace uses `context drawing:` and its existing execution verifies the
+alias through scoped withPath. After formatting, P02/P04 native regression
+passed at `.build/contracts/spec-006-rfc-014/d4469901da4c0259-9wtdw756/macos-static`;
+the exact P06 owner route against that verified input passed at
+`.build/contracts/spec-012-protocol-canvas/tmp6zqd51ki/macos-static/result.json`.
+No signature contract, oracle or ownership behavior changed. Counter0/2.
+
 ## Step 7 — retained production geometry and independent pixel controls
 
 The owner route now compiles the unchanged path/plan storage and workspace

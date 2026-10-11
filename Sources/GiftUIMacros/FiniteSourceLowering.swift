@@ -291,7 +291,8 @@ final class Lowerer: SyntaxRewriter {
             let oldContext = drawingContext
             evaluating = true
             drawing = true
-            drawingContext = (parameters.last!.secondName ?? parameters.last!.firstName).text
+            let context = (parameters.last!.secondName ?? parameters.last!.firstName).text
+            drawingContext = context
             let lowered = rewrite(body).cast(CodeBlockSyntax.self)
             evaluating = oldEvaluating
             drawing = oldDrawing
@@ -299,7 +300,7 @@ final class Lowerer: SyntaxRewriter {
             let bounds = (parameters.first!.secondName ?? parameters.first!.firstName).text
             return DeclSyntax(
                 stringLiteral: """
-                    \(node.modifiers.trimmedDescription) func _giftUIDraw(in \(bounds): Rect, context: inout GraphicsContext,
+                    \(node.modifiers.trimmedDescription) func _giftUIDraw(in \(bounds): Rect, context \(context): inout GraphicsContext,
                         read: borrowing _GiftUIFrameRead<D>) throws(DrawingError) \(lowered)
                     """
             )
