@@ -1026,3 +1026,39 @@ validation; resumed consecutive unproductive repairs remain **0/2**.
 Remaining: final fresh four-route evidence, reconciliation of current traceability,
 and independent Strong exit review. T9.1/T11.1 and P10–P12 remain open; no package
 acceptance, complete-image/resource/timing/hardware or P08 claim is made.
+
+
+## Final P07 candidate routes and traceability — 2026-10-11
+
+Fresh final routes all pass from recovery implementation `af796ed8` and the same
+final driver source: [macos-static](final-macos-static.json),
+[macos-dynamic](final-macos-dynamic.json), [ARMv6](final-raspberry-pi-armv6.json),
+[nRF Embedded](final-nrf52840-embedded.json). Each native route executes **3917
+assertions, zero failures, twelve compiler negatives**, comparing 23 complete
+actual Static/Dynamic cases. The complete native outputs also match between
+routes. Both cross-build routes pass all twelve required negatives and CPU/VFP
+attribute checks; no target execution is claimed.
+
+[Final candidate evidence](final-evidence.md) records exact commands, build
+paths, contract/owner mapping and remaining acceptance limits.
+[Integrity verification](final-integrity.json) rechecks every receipt input and
+artifact, core receipt and compiler SHA-256, identical final driver hash on all
+four routes, native transcript equality and native storage-report equality.
+[Logical values](final-logical-transcripts.json) and
+[actual 26-field descriptors](final-storage-regions.json) are preserved. Checked
+native profile backing totals are Static 68,502 / Dynamic 166,239 bytes; they are
+not whole-image/resource budgets. The driver receipt label now accurately names
+runtime cycle and audited storage; this clerical label changes no validation.
+
+Current shared plan, task-context guide, both owner checkpoints, SPEC-013 RD
+matrix links, conformance applicability paragraphs and manifest comments now
+identify final candidate evidence and independent-review status. Historical stop,
+bench, earlier receipts and baseline pass rows remain intact. No Specification
+acceptance checkbox, lifecycle stage or task completion gate was advanced.
+
+Formatter, whitespace and governance checks pass. Project-local Pi/nRF doctor
+checks pass with pinned Swift 6.3.2 and the supported SDK/board targets. Final
+route collection needed no repair; the resumed guard remains **0/2**. Independent
+Strong exit review is the next required boundary and is assigned separately;
+P07 is not self-accepted. T9.1/T11.1, full P10–P12/resource/image/timing/hardware
+obligations remain open. P08 has not started.

@@ -28,6 +28,13 @@ Active under the [explicit scoped coordinator approval](../iterations/iteration-
 The prior implemented baseline is `0ff7756a`; historical task/evidence records
 below do not establish conformance to the new constraint correction.
 
+The explicitly resumed P07 construction/lifecycle implementation is committed
+through `af796ed8`. Fresh native evidence has 3917 assertions and twelve negatives,
+including checked pointer admission, latest-revision recovery and terminal
+quiescence. All four [final route receipts](../../Tests/ContractFixtures/SPEC013/Evidence/rfc-014-p07/final-evidence.md)
+are collected; independent Strong exit review remains pending. The resumed repair guard is 0/2; the historical 2/2 stop remains evidence.
+T9.1 is still open through its P10–P12 duties.
+
 - [ ] `T9.1` — Within existing RFC-014 P07, apply the two approved protocol
   suppressions and directly necessary forwarding. Preserve every signature,
   phase, failure, admission and limit. Prove actual scoped conformance plus

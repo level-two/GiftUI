@@ -44,18 +44,19 @@ not additional authorization to rerun an MVP implementation or reopen experiment
 
 ### Current owner checkpoint
 
-P07 is currently stopped at the shared **2/2** unproductive-repair limit.
-The [stop record](../../Tests/ContractFixtures/SPEC013/Evidence/rfc-014-p07/audited-construction-stop/stop.md)
-preserves the attempted audited-construction patch and exact compiler failure.
-Maintained source is restored to validated `c234058e`. The approvals below
-remain valid but do not reset the guard; T11.1 and the package exit remain open.
+P07's actual consuming-owner construction and lifecycle evidence is committed
+through `af796ed8`, under the [explicit resumption](../../Tests/ContractFixtures/SPEC013/Evidence/rfc-014-p07/consuming-owner-resumption.md).
+Latest native evidence is 3917 assertions and twelve required compiler negatives.
+The shared resumed guard is **0/2**; the [historical 2/2 stop](../../Tests/ContractFixtures/SPEC013/Evidence/rfc-014-p07/audited-construction-stop/stop.md)
+remains preserved. All four [final routes](../../Tests/ContractFixtures/SPEC013/Evidence/rfc-014-p07/final-evidence.md)
+are collected; independent Strong exit review remains pending; this is not P07 acceptance or complete T11.1 conformance.
 
-P07 resumes under the [approved concrete-binding correction](../iterations/iteration-003-review/rfc-014-spec-approval.md#concrete-coordinator-binding-amendment--2026-10-11).
-Apply the exact three associated-requirement removals. T11.1 must prove concrete
-storage/audit and common Model/Schema bindings, immutable finite action domain
-and statically known mapping to Model.Mutation; add mismatched model/schema,
-action-domain and mutation-type negatives plus runtime owner/provenance checks.
-Prior partial WIP is preserved, not accepted.
+The [approved concrete-binding correction](../iterations/iteration-003-review/rfc-014-spec-approval.md#concrete-coordinator-binding-amendment--2026-10-11)
+is implemented in the actual scoped factories, audits and both coordinators.
+The current fixture binds one Model/Schema and immutable finite handler/mutation
+mapping, enforces configured limits, rejects mismatch/provenance, and checks real
+pointer dispatch/reporting. Lifecycle transcripts cover failure, publication,
+accepted/refused offers, cleanup/retirement, terminal and superseding recovery.
 
 - [ ] `T11.1` — Actual owner integration, disjoint pool accounting, read/publication/offer retirement and all fault/differential resource obligations.
   **Scope:** RuntimeCore limits, audit, complete pipeline/cleanup and concrete Dynamic/Static coordinators and directly corresponding tests/fixtures/build wiring.
@@ -68,7 +69,7 @@ Prior partial WIP is preserved, not accepted.
   on the four governed configurations, focused unit/negative checks named by the
   shared sequence, then P10's registered hardware-free gate. Compiler-selection
   propagation follows P01; no historical check is weakened.
-  **Evidence:** [P07 progress](../../Tests/ContractFixtures/SPEC013/Evidence/rfc-014-p07/progress.md) records the validated limits/audit and scoped internal runner slices. The [scoped coordinator correction is approved](../iterations/iteration-003-review/rfc-014-spec-approval.md#scoped-coordinator-constraint-amendment--2026-10-11), resuming actual integration with the narrow SPEC-009 T9.1 checkpoint inside P07. No finite P07 exit or complete owner success is claimed.
+  **Evidence:** [P07 progress](../../Tests/ContractFixtures/SPEC013/Evidence/rfc-014-p07/progress.md) records current actual construction/lifecycle receipts and the narrow SPEC-009 T9.1 integration. Final four-route evidence is collected; independent Strong review is required before a finite P07 exit; complete owner regression/resource/cutover obligations remain open.
 
 The single current acceptance matrix retains each criterion once. Its historical
 task IDs remain provenance; `T11.1` adds fresh migration verification without
@@ -286,10 +287,10 @@ exactly once below.
 | `RP-013` — Reproducible resource and timing evidence under pinned toolchains | `T7.1`-`T7.5`, `T8.3`, `T9.3`, `T9.4`, `T10.2`, `T10.3`, `T11.1` | Two pristine builds per profile with compiler/SDK/target, stack, allocation, section, timing, and digest reports; RFC-014 P10 functional / P11 resource-connected / P12 conformance evidence | migration pending; prior evidence remains baseline only |
 | `RP-014` — Interaction binds the exact publishable target generation and discards candidate-only generations | `T5.3`-`T5.4`, `T6.3`-`T6.4`, `T9.2`, `T9.4`, `T10.2`, `T10.3`, `T11.1` | Initial/replacement/discard generation transcripts and committed-state preservation checks; RFC-014 P10 functional / P11 resource-connected / P12 conformance evidence | migration pending; prior evidence remains baseline only |
 | `RP-015` — Exact focused owner failures survive generic carrier, mapping, cleanup, and comparison | `T1.5`, `T2.4`, `T5.5`, `T6.3`, `T6.6`, `T9.1`, `T9.2`, `T9.3`, `T9.4`, `T10.2`, `T10.3`, `T11.1` | 2-byte layout proof, per-owner injected failure corpus, correlated fact/disposition records, and differential report; RFC-014 P10 functional / P11 resource-connected / P12 conformance evidence | migration pending; prior evidence remains baseline only |
-| `RP-RD-001` | `T11.1` | P07 exit fixtures; P10 differential/negative tests; P11 actual resource/connected disposition; P12 owner report | pending |
-| `RP-RD-002` | `T11.1` | P07 exit fixtures; P10 differential/negative tests; P11 actual resource/connected disposition; P12 owner report | pending |
-| `RP-RD-003` | `T11.1` | P07 exit fixtures; P10 differential/negative tests; P11 actual resource/connected disposition; P12 owner report | pending |
-| `RP-RD-004` | `T11.1` | P07 exit fixtures; P10 differential/negative tests; P11 actual resource/connected disposition; P12 owner report | pending |
+| `RP-RD-001` | `T11.1` | P07 exit fixtures; P10 differential/negative tests; P11 actual resource/connected disposition; P12 owner report | P07 [candidate evidence](../../Tests/ContractFixtures/SPEC013/Evidence/rfc-014-p07/final-evidence.md); independent review pending; P10–P12 obligations open |
+| `RP-RD-002` | `T11.1` | P07 exit fixtures; P10 differential/negative tests; P11 actual resource/connected disposition; P12 owner report | P07 [candidate evidence](../../Tests/ContractFixtures/SPEC013/Evidence/rfc-014-p07/final-evidence.md); independent review pending; P10–P12 obligations open |
+| `RP-RD-003` | `T11.1` | P07 exit fixtures; P10 differential/negative tests; P11 actual resource/connected disposition; P12 owner report | P07 [candidate evidence](../../Tests/ContractFixtures/SPEC013/Evidence/rfc-014-p07/final-evidence.md); independent review pending; P10–P12 obligations open |
+| `RP-RD-004` | `T11.1` | P07 exit fixtures; P10 differential/negative tests; P11 actual resource/connected disposition; P12 owner report | P07 [candidate evidence](../../Tests/ContractFixtures/SPEC013/Evidence/rfc-014-p07/final-evidence.md); independent review pending; P10–P12 obligations open |
 
 ## Milestones and Tasks
 

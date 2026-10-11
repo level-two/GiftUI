@@ -1,10 +1,15 @@
 # RFC-014 bounded implementation sequence — 2026-10-10
 
-**Current P07 checkpoint — resumed 2026-10-11:** Eugene explicitly authorized
-[production continuation using candidate 2](../../../Tests/ContractFixtures/SPEC013/Evidence/rfc-014-p07/consuming-owner-resumption.md). Use consuming ownership and
-audit access while coordinator-owned. Resumed consecutive unproductive repairs:
-**0/2**; historical 2/2 stop remains preserved. Actual audited construction and
-P07 exit are still pending; P08–P12 have not started.
+**Current P07 checkpoint — ready for independent exit review, 2026-10-11:**
+The explicitly [resumed consuming-owner implementation](../../../Tests/ContractFixtures/SPEC013/Evidence/rfc-014-p07/consuming-owner-resumption.md)
+now has audited construction, configured-limit enforcement and lifecycle steps
+1–6 committed through `af796ed8`. Latest native evidence: 3917 assertions and
+12 compiler negatives; [progress and exact receipts](../../../Tests/ContractFixtures/SPEC013/Evidence/rfc-014-p07/progress.md).
+All four [final candidate routes](../../../Tests/ContractFixtures/SPEC013/Evidence/rfc-014-p07/final-evidence.md)
+and traceability reconciliation are complete; independent Strong exit review
+remains required. P07 is not accepted here.
+Resumed consecutive unproductive repairs: **0/2**. The historical 2/2 stop is
+preserved. P08–P12 have not started.
 
 The bench and stop records below describe earlier boundaries; their statements
 that continuation is unauthorized are superseded only by the resumption above.
@@ -23,7 +28,7 @@ that continuation is unauthorized are superseded only by the resumption above.
 > historical; production integration and P08 remain stopped. The new bounded
 > bench allowance must not be interpreted as an unlimited P07 restart.
 
-**P01–P06 passed; P07 stopped at the 2/2 unproductive-repair limit;
+**P01–P06 passed; P07 independent exit review pending;
 P08–P12 pending.** This is the shared
 sequencing index for nine owner Implementation Plans, not another contract or
 investigation. It derives only the [approved Spec amendments](rfc-014-spec-approval.md)
@@ -37,17 +42,14 @@ reconstructing the investigation history. Package boundaries and model routing
 remain in this sequence.
 
 P07's [progress receipt](../../../Tests/ContractFixtures/SPEC013/Evidence/rfc-014-p07/progress.md)
-records committed limits/audit and internal scoped-runner steps. The
-[independent Strong review](../../../Tests/ContractFixtures/SPEC013/Evidence/rfc-014-p07/independent-blocker-review.md)
-at `d7d6cdd1` confirms the explicit SPEC-009/013 coordinator constraints conflict
-with the selected scoped owner realization. The
-[concrete decision packet](../../../Tests/ContractFixtures/SPEC013/Evidence/rfc-014-p07/scoped-coordinator-constraint.md)
-is historical; the [narrow correction is now approved](rfc-014-spec-approval.md#scoped-coordinator-constraint-amendment--2026-10-11). SPEC-009 T9.1 is a directly necessary P07 checkpoint, not another package. Complete profile integration
-and package exit remain open; SPEC-015 host lifetime remains a separately
-reviewed boundary. Consecutive unproductive repairs: **2/2**. No successor work
-has started.
+records actual audited construction and enforced configured limits, complete
+Static/Dynamic logical transcripts, terminal recovery, actual pointer admission
+and checked dispatch, discarded-removal preservation, malformed Drawing rollback
+and latest-revision supersession. SPEC-009 T9.1 participates within P07; SPEC-015
+host work remains P08. Historical constraint decisions and stop evidence below
+are provenance, not the current execution checkpoint.
 
-Current stop: [audited-construction repair record](../../../Tests/ContractFixtures/SPEC013/Evidence/rfc-014-p07/audited-construction-stop/stop.md),
+Historical stop before explicit consuming-owner resumption: [audited-construction repair record](../../../Tests/ContractFixtures/SPEC013/Evidence/rfc-014-p07/audited-construction-stop/stop.md),
 committed at `e132dfe5`. Maintained source is restored to validated `c234058e`
 (531 native assertions and ten compiler negatives); the failed in-place-lend
 patch, exact command, diagnostics and intermediate evidence are preserved.

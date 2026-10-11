@@ -1,10 +1,15 @@
 # RFC-014 task context guide
 
-**Current P07 checkpoint — resumed 2026-10-11:** Eugene explicitly authorized
-[production continuation using candidate 2](../../../Tests/ContractFixtures/SPEC013/Evidence/rfc-014-p07/consuming-owner-resumption.md). Use consuming ownership and
-audit access while coordinator-owned. Resumed consecutive unproductive repairs:
-**0/2**; historical 2/2 stop remains preserved. Actual audited construction and
-P07 exit are still pending; P08–P12 have not started.
+**Current P07 checkpoint — ready for independent exit review, 2026-10-11:**
+The explicitly [resumed consuming-owner implementation](../../../Tests/ContractFixtures/SPEC013/Evidence/rfc-014-p07/consuming-owner-resumption.md)
+now has audited construction, configured-limit enforcement and lifecycle steps
+1–6 committed through `af796ed8`. Latest native evidence: 3917 assertions and
+12 compiler negatives; [progress and exact receipts](../../../Tests/ContractFixtures/SPEC013/Evidence/rfc-014-p07/progress.md).
+All four [final candidate routes](../../../Tests/ContractFixtures/SPEC013/Evidence/rfc-014-p07/final-evidence.md)
+and traceability reconciliation are complete; independent Strong exit review
+remains required. P07 is not accepted here.
+Resumed consecutive unproductive repairs: **0/2**. The historical 2/2 stop is
+preserved. P08–P12 have not started.
 
 The bench and stop records below describe earlier boundaries; their statements
 that continuation is unauthorized are superseded only by the resumption above.
@@ -23,7 +28,7 @@ that continuation is unauthorized are superseded only by the resumption above.
 > historical; production integration and P08 remain stopped. The new bounded
 > bench allowance must not be interpreted as an unlimited P07 restart.
 
-**Current P07 stop:** the [audited-construction repair guard](../../../Tests/ContractFixtures/SPEC013/Evidence/rfc-014-p07/audited-construction-stop/stop.md)
+**Historical P07 stop before explicit consuming-owner resumption:** the [audited-construction repair guard](../../../Tests/ContractFixtures/SPEC013/Evidence/rfc-014-p07/audited-construction-stop/stop.md)
 is exhausted at **2/2**. Source is restored to validated `c234058e`; failed
 work and commands are preserved at `e132dfe5`. Earlier resumption instructions
 below do not authorize further repair. Actual audited construction, remaining
@@ -94,6 +99,16 @@ regression and four-configuration obligations remain in the owner matrices.
 | P11 | Resource/workload clauses of [SPEC-001](../../specs/spec-001-signal-analyzer-reference-application.md), [SPEC-002](../../specs/spec-002-portable-foundation.md), [SPEC-013](../../specs/spec-013-runtime-profiles.md), [SPEC-015](../../specs/spec-015-host-configuration.md) and affected owner matrices | P10's exact artifacts and reports; `scripts/contracts/check-spec-013-resource-instrumentation.sh`; [measurement requirements](memory-efficiency-plan.md#measurement-requirements). Collection and interpretation are separate assignments. |
 | P12 | [Migration gates and completion boundary](rfc-014-implementation-plan.md#known-blockers-and-completion-boundary) and nine owner matrices | `scripts/contracts/inventory-spec-001-production-sources.py`, `scripts/contracts/generate-spec-001-nrf-topology.py`, `Package.swift`; owner reports. Strong prepares the exact removal list after adoption gates; `Generated` in a filename is not a sufficient removal criterion. |
 
+## Current P07 validation entry
+
+Read [final candidate evidence](../../../Tests/ContractFixtures/SPEC013/Evidence/rfc-014-p07/final-evidence.md)
+for exact route arguments, source/receipt identities, criterion mapping and limits.
+The current selected composition lives in `Tests/ContractFixtures/SPEC013/RuntimeDerived/`:
+start with `CycleProfileStorage.swift`, `CyclePipelineOwner.swift`,
+`CyclePipelineProbe.swift` and `CycleCoordinatorProbe.swift`. The registered
+SPEC-013 migration route builds fresh modules and compares all actual native
+profile cases; preserved legacy drivers and the full gate remain P10 work.
+
 ## Settled decisions that do not need rediscovery
 
 P03's State declaration slice now starts at `Sources/GiftUI/ObservableState.swift`
@@ -122,10 +137,12 @@ Strong review at `037607c7`. P05 passed after separate Strong review at
 `42b5f639`. P06 passed after the explicitly approved scoped-source amendment
 and separate Strong repair review at `59c80b52`; all captured Canvas model keys
 bind before authored drawing, including read-free paths. P07 has committed
-limits/audit and internal scoped-runner steps, but its actual coordinator join
-is stopped at the [reviewed SPEC-009/013 constraint boundary](../../../Tests/ContractFixtures/SPEC013/Evidence/rfc-014-p07/independent-blocker-review.md).
-Resume from its [progress receipt and decision packet](../../../Tests/ContractFixtures/SPEC013/Evidence/rfc-014-p07/progress.md),
-not a package-pass assumption. P08–P12 remain pending.
+actual audited consuming-owner construction and lifecycle steps 1–6 through
+`af796ed8`, with 3917 native assertions and twelve negatives. The earlier
+[constraint-boundary review](../../../Tests/ContractFixtures/SPEC013/Evidence/rfc-014-p07/independent-blocker-review.md)
+is historical after the approved amendments. Resume from the
+[current progress receipt](../../../Tests/ContractFixtures/SPEC013/Evidence/rfc-014-p07/progress.md);
+final four-route evidence is collected; independent package review remains pending. P08–P12 remain pending.
 Do not infer complete-module, coordinator or linked-resource completion from
 these component probes.
 

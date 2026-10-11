@@ -1,0 +1,64 @@
+{
+  "complete_native_transcript_pairs": 23,
+  "guard_limit": 2,
+  "native_routes_equal": true,
+  "native_storage_reports_equal": true,
+  "package_acceptance": "pending independent Strong exit review",
+  "profiles": {
+    "macos-dynamic": {
+      "artifact_files_verified": 143,
+      "build_directory": ".build/contracts/spec-013-runtime-cycle/tmpgg125a6_/macos-dynamic",
+      "compiler_sha256": "d8e40107da0e2c1c59640a983faea326d5d2bddfe81f7609db14bade43c4a5b9",
+      "driver_sha256": "db2db2462c3132cefb4d4656763eecd67ce5e62bc5b7fecc64f3b844b71d762c",
+      "execution": "P07 values assertions=3917 failures=0",
+      "expected_compiler_negatives": 12,
+      "input_files_verified": 165,
+      "receipt": "final-macos-dynamic.json",
+      "receipt_sha256": "87a57c742d6c49793087825f9aa1dfdcff991edd3599fb3baf662aae0882fdf7",
+      "source_commit": "af796ed8e3321da9800cfe732c268265adef10ae",
+      "source_dirty": true
+    },
+    "macos-static": {
+      "artifact_files_verified": 143,
+      "build_directory": ".build/contracts/spec-013-runtime-cycle/tmpt5trq269/macos-static",
+      "compiler_sha256": "d8e40107da0e2c1c59640a983faea326d5d2bddfe81f7609db14bade43c4a5b9",
+      "driver_sha256": "db2db2462c3132cefb4d4656763eecd67ce5e62bc5b7fecc64f3b844b71d762c",
+      "execution": "P07 values assertions=3917 failures=0",
+      "expected_compiler_negatives": 12,
+      "input_files_verified": 165,
+      "receipt": "final-macos-static.json",
+      "receipt_sha256": "e04b18a59d5842a4aae1d53f6eb73f81bacb1d5cf1c6b28ca4d7e2ff027e1787",
+      "source_commit": "af796ed8e3321da9800cfe732c268265adef10ae",
+      "source_dirty": true
+    },
+    "nrf52840-embedded": {
+      "artifact_files_verified": 115,
+      "build_directory": ".build/nrf52840/contracts/spec-013-runtime-cycle/tmpgdl73h43/nrf52840-embedded",
+      "compiler_sha256": "d8e40107da0e2c1c59640a983faea326d5d2bddfe81f7609db14bade43c4a5b9",
+      "cpu_and_vfp_verified": true,
+      "driver_sha256": "db2db2462c3132cefb4d4656763eecd67ce5e62bc5b7fecc64f3b844b71d762c",
+      "execution": "cross-compiled only; no target execution",
+      "expected_compiler_negatives": 12,
+      "input_files_verified": 152,
+      "receipt": "final-nrf52840-embedded.json",
+      "receipt_sha256": "727db72aa078eb6163582523a9835075f6bdf22c35fc6b2f41a1a000410b2131",
+      "source_commit": "af796ed8e3321da9800cfe732c268265adef10ae",
+      "source_dirty": true
+    },
+    "raspberry-pi-armv6": {
+      "artifact_files_verified": 120,
+      "build_directory": ".build/raspberry-pi/contracts/spec-013-runtime-cycle/tmpw8w6bg_4/raspberry-pi-armv6",
+      "compiler_sha256": "d8e40107da0e2c1c59640a983faea326d5d2bddfe81f7609db14bade43c4a5b9",
+      "cpu_and_vfp_verified": true,
+      "driver_sha256": "db2db2462c3132cefb4d4656763eecd67ce5e62bc5b7fecc64f3b844b71d762c",
+      "execution": "cross-compiled only; no target execution",
+      "expected_compiler_negatives": 12,
+      "input_files_verified": 165,
+      "receipt": "final-raspberry-pi-armv6.json",
+      "receipt_sha256": "c3346806b0efb19cd5597b3af66977060b6116fc4df3d9e05aeaa6c7282fb69a",
+      "source_commit": "af796ed8e3321da9800cfe732c268265adef10ae",
+      "source_dirty": true
+    }
+  },
+  "resumed_consecutive_unproductive_repairs": 0
+}

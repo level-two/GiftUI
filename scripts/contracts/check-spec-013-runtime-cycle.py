@@ -192,7 +192,7 @@ else:
     arch = 'v6' if profile == 'raspberry-pi-armv6' else 'v7E-M'
     assert re.search(r'Tag_CPU_arch: ' + arch + r'\s*$', abi, re.MULTILINE)
     execution = 'cross-compiled only; no target execution'
-report = {'package': 'P07', 'step': 'actual-profile-logical-transcripts', 'profile': profile,
+report = {'package': 'P07', 'step': 'runtime-cycle-and-audited-storage', 'profile': profile,
           'source_commit': subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=ROOT, text=True).strip(),
           'source_dirty': bool(subprocess.check_output(['git', 'status', '--porcelain'], cwd=ROOT, text=True)),
           'inputs': {str(p.relative_to(ROOT)): digest(p) for p in sorted(set(inputs))},
