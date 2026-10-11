@@ -1,5 +1,30 @@
 # RFC-014 P07 progress
 
+## Approved concrete-binding resumption — 2026-10-11
+
+Eugene replied “Nice, please proceed either way proposed solution” to the
+reviewed SPEC-013 proposal, including mandatory construction proofs. This
+approves the exact decision in `independent-associated-type-review.md` and
+resumes P07 from `a17f54d6`. Record the normative amendment and human approval
+before changing the coordinator protocol. Preserve prior blocker evidence.
+
+Sequential Strong assignment: `gpt-6-astra` / `medium`, C3/R3. Remove only the
+Storage/Handler/TargetAccess associated requirements and their Model equality
+from the common coordinator protocol, retaining Endpoint/Sink and all
+operational members. Concrete construction must bind actual storage/audit,
+common Model/Schema, finite action domain and statically known handler mapping
+producing the matching Model.Mutation. Include mismatched-type/domain compiler
+negatives, actual owner/provenance checks, and existing lifecycle/fault evidence.
+This approves relocating those guarantees, not weakening them. No new action
+API, type-erasure registry, compiler upgrade, P08 or SPEC-015 host amendment.
+
+Use the existing exact receipt commands and update pinned inputs only when
+changed source requires it. Resume committed WIP `027bdc11` without presenting
+its compile-only result as cycle evidence. Commit each coherent step; complete
+the finite P07 exit and hand off to separate Strong review. Contract/scope
+decisions outside this correction still return to Eugene. Consecutive
+unproductive repair count remains **0/2** across resumption.
+
 ## Current stop — associated requirements, 2026-10-11
 
 The prior approved correction is implemented. A newly confirmed exact
