@@ -10,12 +10,8 @@ import GiftUISemanticCore
 package protocol GiftUIRuntimeProfileCoordinator:
     ~Copyable, ~Escapable, ExecutionAdmissionSink, ExecutionOpportunityRunner
 {
-    associatedtype Storage: RuntimeProfileStorage
     associatedtype Endpoint: SynchronousFrameEndpoint
     where Endpoint.Sink: DrawingOperationSink
-    associatedtype Handler: GiftUIActionHandler
-    associatedtype TargetAccess: ActionModelTargetAccess
-    where TargetAccess.Model == Handler.Model
 
     var profile: RuntimeProfileKind { get }
     var storageAudit: RuntimeStorageAudit { get }

@@ -33,6 +33,17 @@ Eugene's approval in the human ledger. Owner plan, collecting conformance,
 manifest and shared context/sequence are reconciled. No other contract changes.
 Validation: scripts/validate-governance.rb and git diff --check. Repair **0/2**.
 
+## Step 9 — operational protocol correction
+
+The source removes only the approved three associated requirements and Model
+equality. ConcreteBindingProbe compiles the actual common protocol with stored
+noncopyable RuntimeProfileStorage, ObservableModelScope and checked root target.
+Its operational stubs are compile-only evidence, not executed cycle evidence.
+After scripts/format-swift.sh, the registered macos-static RFC-014 command using
+core dd5d4849463055f2-hwlll28l passes 179 assertions and six lifetime negatives.
+Receipt: step-9-macos-static.json. Concrete constructor mismatch negatives and
+full cycle/provenance guarantees remain pending. Repair count **0/2**.
+
 ## Historical stop — associated requirements, 2026-10-11
 
 The prior approved correction is implemented. A newly confirmed exact

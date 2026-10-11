@@ -88,7 +88,7 @@ run('cycle-lowering', [macro, '--lower-source', fixture / 'Cycle.schema.json', f
 module('CycleSchema', [out / 'CycleSchema.swift'])
 module('CyclePresentation', [out / 'Cycle.swift'])
 module('CycleTable', [out / 'CycleTable.swift'])
-module('RuntimeCycleProbe', [ROOT / 'Tests/ContractFixtures/SPEC013/RuntimeDerived/RuntimeValuesProbe.swift', ROOT / 'Tests/ContractFixtures/SPEC013/RuntimeDerived/ScopedOwnerProbe.swift', ROOT / 'Tests/ContractFixtures/SPEC013/RuntimeDerived/ScopedCoordinatorProbe.swift', ROOT / 'Tests/ContractFixtures/SPEC013/RuntimeDerived/FrameLeaseProbe.swift', ROOT / 'Tests/ContractFixtures/SPEC013/RuntimeDerived/ScopedSemanticProbe.swift'])
+module('RuntimeCycleProbe', [ROOT / 'Tests/ContractFixtures/SPEC013/RuntimeDerived/RuntimeValuesProbe.swift', ROOT / 'Tests/ContractFixtures/SPEC013/RuntimeDerived/ScopedOwnerProbe.swift', ROOT / 'Tests/ContractFixtures/SPEC013/RuntimeDerived/ScopedCoordinatorProbe.swift', ROOT / 'Tests/ContractFixtures/SPEC013/RuntimeDerived/FrameLeaseProbe.swift', ROOT / 'Tests/ContractFixtures/SPEC013/RuntimeDerived/ScopedSemanticProbe.swift', ROOT / 'Tests/ContractFixtures/SPEC013/RuntimeDerived/ConcreteBindingProbe.swift'])
 for name, source, diagnostic in (
     ('escape-owner', 'struct Escape<M: ~Copyable, S>: ~Copyable { let owner: ScopedOwner<M, S> }', 'non-Escapable'),
     ('copy-owner', 'func copyOwner<M: ~Copyable, S>(_ owner: borrowing ScopedOwner<M, S>) { let other = copy owner; _ = other }', 'noncopyable'),
