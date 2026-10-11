@@ -5,46 +5,19 @@ import GiftUIRuntimeCore
 
 /// Connects a caller-owned Static profile binding to the common SPEC-009 seams
 /// without moving either focused owner's fixed storage.
-package protocol StaticExecutionProfileBinding {
+package protocol StaticExecutionProfileBinding: ~Copyable, ~Escapable {
     var executionContext: ExecutionContext { get }
     var isQuiescent: Bool { get }
 
     mutating func quiesce()
 }
 
-package struct StaticRuntimeExecutionBindingAdapter<Regions, Metadata>:
-    StaticExecutionProfileBinding
-where
-    Regions: StaticProfileStorageRegions & ~Copyable,
-    Metadata: RuntimeStaticCanvasAuditMetadata & StaticCanvasCallableTable
-{
-    private let binding: UnsafeMutablePointer<StaticRuntimeProfileBinding<Regions, Metadata>>
-
-    package init(
-        binding: UnsafeMutablePointer<StaticRuntimeProfileBinding<Regions, Metadata>>
-    ) {
-        self.binding = binding
-    }
-
-    package var executionContext: ExecutionContext {
-        binding.pointee.executionContext
-    }
-
-    package var isQuiescent: Bool {
-        binding.pointee.isQuiescent
-    }
-
-    package mutating func quiesce() {
-        binding.pointee.quiesce()
-    }
-}
-
 package struct StaticRuntimeExecutionCoordinator<Binding, Admission, Opportunity>:
-    ExecutionAdmissionSink, ExecutionOpportunityRunner
+    ~Copyable, ~Escapable, ExecutionAdmissionSink, ExecutionOpportunityRunner
 where
-    Binding: StaticExecutionProfileBinding,
-    Admission: ExecutionAdmissionSink,
-    Opportunity: ExecutionOpportunityRunner
+    Binding: StaticExecutionProfileBinding & ~Copyable & ~Escapable,
+    Admission: ExecutionAdmissionSink & ~Copyable & ~Escapable,
+    Opportunity: ExecutionOpportunityRunner & ~Copyable & ~Escapable
 {
     package typealias StateChangeFact = Admission.StateChangeFact
     package typealias CompletionFact = Admission.CompletionFact
@@ -54,14 +27,15 @@ where
     package private(set) var admission: Admission
     package private(set) var opportunity: Opportunity
 
+    @_lifetime(copy binding, copy admission, copy opportunity)
     package init(
-        binding: Binding,
-        admission: Admission,
-        opportunity: Opportunity
+        binding: consuming Binding,
+        admission: consuming Admission,
+        opportunity: consuming Opportunity
     ) {
-        self.binding = binding
-        self.admission = admission
-        self.opportunity = opportunity
+        self.binding = consume binding
+        self.admission = consume admission
+        self.opportunity = consume opportunity
     }
 
     package mutating func submit(

@@ -259,5 +259,11 @@ scopes can remain lexical. The same result values and stage ordering apply.
 The [P07 progress record](../../Tests/ContractFixtures/SPEC013/Evidence/rfc-014-p07/progress.md)
 links the actual model-scope compile proof and copy/escape negatives. No
 complete profile cycle or acceptance is claimed by this constraint correction.
-The separately specified Execution and host interfaces require their own
-authority analysis before the concrete activation join changes them.
+The subsequently approved SPEC-009/SPEC-013 correction permits the same
+suppression on the two execution seams and profile coordinator protocol.
+Existing Dynamic/Static execution coordinator types now consume and retain
+scoped concrete bindings and focused owners. The pre-cutover pointer binding
+adapters are isolated in their own files solely to retain old source compatibility;
+they are not selected by current scope evidence and are not a second production
+pipeline. The actual owner/cycle join remains pending. SPEC-015 host lifetime
+remains a separate authority boundary.

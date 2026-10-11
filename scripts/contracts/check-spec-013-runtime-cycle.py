@@ -75,8 +75,11 @@ module('GiftUIRenderLowering', [ROOT / 'Sources/GiftUIRenderLowering/RenderProdu
 module('GiftUIDrawing', [ROOT / 'Sources/GiftUIDrawing' / name for name in ('DrawingLimits.swift', 'DrawingValues.swift')])
 module('GiftUIRuntimeCore', [ROOT / 'Sources/GiftUIRuntimeCore' / name for name in (
     'RuntimeProfileValues.swift', 'RuntimeProfileValidation.swift', 'RuntimeStorageRegistry.swift',
-    'RuntimeOwnerFailure.swift', 'RuntimeCoordinatorCleanup.swift', 'RuntimeCompletePipeline.swift')])
-module('RuntimeCycleProbe', [ROOT / 'Tests/ContractFixtures/SPEC013/RuntimeDerived/RuntimeValuesProbe.swift', ROOT / 'Tests/ContractFixtures/SPEC013/RuntimeDerived/ScopedOwnerProbe.swift'])
+    'RuntimeOwnerFailure.swift', 'RuntimeCoordinatorCleanup.swift', 'RuntimeCompletePipeline.swift', 'RuntimeCoordinatorContracts.swift', 'RuntimeProfileStorage.swift')])
+module('GiftUIRuntimeStatic', [ROOT / 'Sources/GiftUIRuntimeStatic/StaticRuntimeExecutionCoordinator.swift'])
+if profile != 'nrf52840-embedded':
+    module('GiftUIRuntimeDynamic', [ROOT / 'Sources/GiftUIRuntimeDynamic/DynamicRuntimeExecutionCoordinator.swift'])
+module('RuntimeCycleProbe', [ROOT / 'Tests/ContractFixtures/SPEC013/RuntimeDerived/RuntimeValuesProbe.swift', ROOT / 'Tests/ContractFixtures/SPEC013/RuntimeDerived/ScopedOwnerProbe.swift', ROOT / 'Tests/ContractFixtures/SPEC013/RuntimeDerived/ScopedCoordinatorProbe.swift'])
 for name, source, diagnostic in (
     ('escape-owner', 'struct Escape<M: ~Copyable, S>: ~Copyable { let owner: ScopedOwner<M, S> }', 'non-Escapable'),
     ('copy-owner', 'func copyOwner<M: ~Copyable, S>(_ owner: borrowing ScopedOwner<M, S>) { let other = copy owner; _ = other }', 'noncopyable'),
@@ -85,6 +88,15 @@ for name, source, diagnostic in (
     negative.write_text(source + '\n')
     run(name, [compiler, *flags, '-module-name', 'ScopedOwnerNegative', '-emit-object',
                ROOT / 'Tests/ContractFixtures/SPEC013/RuntimeDerived/ScopedOwnerProbe.swift', negative,
+               '-o', out / (name + '.o')], failure=diagnostic)
+for name, source, diagnostic in (
+    ('escape-coordinator', 'struct Escape<M: ~Copyable, S>: ~Copyable { let coordinator: ScopedCoordinator<M, S> }', 'non-Escapable'),
+    ('copy-coordinator', 'func copyCoordinator<M: ~Copyable, S>(_ coordinator: borrowing ScopedCoordinator<M, S>) { let other = copy coordinator; _ = other }', 'noncopyable'),
+):
+    negative = out / (name + '.swift')
+    negative.write_text(source + '\n')
+    run(name, [compiler, *flags, '-module-name', 'ScopedCoordinatorNegative', '-emit-object',
+               ROOT / 'Tests/ContractFixtures/SPEC013/RuntimeDerived/ScopedCoordinatorProbe.swift', negative,
                '-o', out / (name + '.o')], failure=diagnostic)
 if profile.startswith('macos'):
     main = out / 'Main.swift'
@@ -98,7 +110,7 @@ else:
     arch = 'v6' if profile == 'raspberry-pi-armv6' else 'v7E-M'
     assert re.search(r'Tag_CPU_arch: ' + arch + r'\s*$', abi, re.MULTILINE)
     execution = 'cross-compiled only; no target execution'
-report = {'package': 'P07', 'step': 'values-audit', 'profile': profile,
+report = {'package': 'P07', 'step': 'scoped-coordinator-forwarding', 'profile': profile,
           'source_commit': subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=ROOT, text=True).strip(),
           'source_dirty': bool(subprocess.check_output(['git', 'status', '--porcelain'], cwd=ROOT, text=True)),
           'inputs': {str(p.relative_to(ROOT)): digest(p) for p in sorted(set(inputs))},

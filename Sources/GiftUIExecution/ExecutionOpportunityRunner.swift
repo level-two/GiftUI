@@ -1,4 +1,4 @@
-package protocol ExecutionOpportunityRunner {
+package protocol ExecutionOpportunityRunner: ~Copyable, ~Escapable {
     associatedtype OwnerFailure: Equatable & Sendable
 
     mutating func runOpportunity() -> RunCycleResult<OwnerFailure>

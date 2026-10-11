@@ -2,7 +2,7 @@
 spec: SPEC-009
 feature: giftui-mvp-architecture
 title: SPEC-009 Implementation Plan
-status: ready
+status: active
 owners:
   - codex
 created: 2026-09-06
@@ -24,7 +24,7 @@ superseded_by: null
 
 ## Current P07 owner checkpoint — 2026-10-11
 
-Ready under the [explicit scoped coordinator approval](../iterations/iteration-003-review/rfc-014-spec-approval.md#scoped-coordinator-constraint-amendment--2026-10-11).
+Active under the [explicit scoped coordinator approval](../iterations/iteration-003-review/rfc-014-spec-approval.md#scoped-coordinator-constraint-amendment--2026-10-11).
 The prior implemented baseline is `0ff7756a`; historical task/evidence records
 below do not establish conformance to the new constraint correction.
 

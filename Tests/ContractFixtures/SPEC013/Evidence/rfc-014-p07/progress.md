@@ -34,6 +34,37 @@ sequence/context and manifest are reconciled. SPEC-015 is unchanged.
 Validation: `scripts/validate-governance.rb`, `git diff --check`.
 Repair count remains **0/2**.
 
+## Step 5 — implement the approved scoped forwarding correction
+
+The exact three protocol suppressions are implemented. SPEC-009 is implementing
+and its existing owner plan active. Both existing profile execution coordinator
+types now retain consuming, lifetime-dependent concrete binding/admission/runner
+values with `~Copyable & ~Escapable` generic forwarding. The real model-scope
+fixture constructs those actual wrappers and calls submit/run/quiesce. This is
+a declaration/forwarding proof, not evidence of a complete production cycle.
+
+The old Static pointer binding adapter was extracted unchanged to its own file;
+Dynamic's former pointer binding is represented by a compatibility adapter and
+initializer. These retained pre-cutover adapters are not selected by current
+scope proofs and are not alternate coordinators or completion evidence. The
+current concrete coordinator types are migrated in place. Full old Canvas-backed
+binding source is still pending migration; no full-module pass is claimed.
+
+Validation was sequential after `scripts/format-swift.sh`, using the four exact
+Step 2 invocations with the same pinned core receipts. `step-5-*.json` records
+commands, source hashes, compiler, logs and outputs. Both macOS routes pass 159
+value assertions; all four compile actual scoped forwarding and reject copying
+or escaping the scoped owner and admission/opportunity conformer. ARMv6/nRF
+are cross-compilation plus exact architecture/VFP checks only, not execution.
+`RuntimeProfileStorage.swift` had to join the selected core source set after the
+new coordinator contract import exposed its required associated type. A scoped
+fixture extension required explicit `where Model: ~Copyable`; each diagnostic
+narrowed the cause and the next check passed. Unproductive repair count: **0/2**.
+
+Remaining: actual production owner/cycle integration, fault/cleanup differential,
+physical audit and quiescence evidence, then separate Strong review. T9.1 and
+T11.1 remain open. No SPEC-015 host lifetime change or P08 work was made.
+
 ## Parent checkpoint — contract escalation, 2026-10-11
 
 P07 is **incomplete and blocked on the scoped coordinator contract decision**.

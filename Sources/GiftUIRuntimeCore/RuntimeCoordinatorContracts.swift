@@ -8,7 +8,7 @@ import GiftUIRenderCore
 import GiftUISemanticCore
 
 package protocol GiftUIRuntimeProfileCoordinator:
-    ExecutionAdmissionSink, ExecutionOpportunityRunner
+    ~Copyable, ~Escapable, ExecutionAdmissionSink, ExecutionOpportunityRunner
 {
     associatedtype Storage: RuntimeProfileStorage
     associatedtype Endpoint: SynchronousFrameEndpoint

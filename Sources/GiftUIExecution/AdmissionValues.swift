@@ -30,7 +30,7 @@ package struct ExecutionAdmissionOutcome: Equatable, Sendable {
     }
 }
 
-package protocol ExecutionAdmissionSink {
+package protocol ExecutionAdmissionSink: ~Copyable, ~Escapable {
     associatedtype StateChangeFact: Sendable
     associatedtype CompletionFact: Sendable
 
