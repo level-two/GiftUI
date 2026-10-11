@@ -6,8 +6,10 @@ positive and two containment controls pass on the verified Swift 6.4 compiler,
 while Swift 6.3.3 accepts the wrapped escape. This scope makes a proposed compiler
 remedy concrete without adopting a different accepted baseline.
 
-Strong Astra 6 Medium owns a single native macOS Static rebuild. Derive the exact
-source inventory and dependency order from the frozen P07 native Static receipt,
+Strong Astra 6 Medium owns a single native macOS Dynamic-profile rebuild. The
+frozen fixture uses an actual Static coordinator under `GIFTUI_DYNAMIC_PROFILE`;
+preserve that exact tested composition rather than changing its profile flags.
+Derive the exact source inventory and dependency order from its P07 native Dynamic receipt,
 its P02 core receipt, and the P08 complete host-component receipt. Revalidate
 their source identities. Rebuild required Swift modules and objects with the
 verified Swift 6.4 executable into a new isolated output tree; no 6.3.2 module or
