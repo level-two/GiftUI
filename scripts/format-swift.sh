@@ -45,6 +45,9 @@ fi
 files=()
 while IFS= read -r path; do
   case "${path}" in
+    # Frozen evidence can contain nested Tests/ and Sources/ paths. Shell
+    # wildcards span slashes, so exclude snapshots before maintained test paths.
+    Tests/ContractFixtures/*/Evidence/*) ;;
     Package.swift | Sources/*.swift | Tests/*Tests/*.swift | \
       demo/SignalAnalyzer/Package.swift | demo/SignalAnalyzer/Sources/*.swift | \
       demo/SignalAnalyzer/Tests/*.swift | scripts/raspberry-pi/probe/Package.swift | \
