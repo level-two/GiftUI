@@ -1,5 +1,16 @@
 # RFC-014 P06 progress
 
+## Step 6 — both transfer profiles and staged adversarial checks
+
+Both Dynamic and Static now execute the same semantic transfer/fence/failure/
+retry fixture using their own staged and semantic backing. New native checks
+exercise exact capacity/first excess, duplicate identity, repeated invocation,
+idempotent release and empty witness on both stores. Staged-value copy/escape
+compiler negatives preserve the lexical backing requirement. After formatting,
+the existing exact native route passed at
+`.build/contracts/spec-012-protocol-canvas/tmp76p6g43s/macos-static/result.json`.
+No production source changed. Counter remains0/2.
+
 ## Step 5 — finite witnesses and scoped fixture repair
 
 Strong C3/R3 diagnosed the Standard handoff as fixture lifetime placement:

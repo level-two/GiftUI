@@ -7,6 +7,9 @@ import GiftUITextResources
 import GiftUIObservableState
 import GiftUIRuntimeCore
 import GiftUIRuntimeStatic
+#if !hasFeature(Embedded)
+import GiftUIRuntimeDynamic
+#endif
 import CounterSchema
 import CounterCanvas
 
@@ -53,7 +56,20 @@ private struct Sink: LayoutResultSink, LayoutResultSinkState {
     mutating func publish() -> Bool { isLayoutActive = false; return true }
     mutating func discard() { isLayoutActive = false }
 }
-private func exercise(_ semantic: borrowing SemanticRecordStore<Payload>, scope: borrowing ObservableModelScope<CanvasModel, CounterModelSchema>, key: _GiftUIModelKey<CounterModelSchema>, trace: UnsafeMutablePointer<CanvasTrace>) throws(SemanticExpansionError) -> UInt32 {
+private func withValues(dynamic: Bool, capacity: UInt16, _ body: (borrowing CanvasStagedValues<SemanticRecordReference, CanvasTable>) throws(DrawingError) -> Void) throws(DrawingError) {
+    let limits = StaticCanvasLimits(maximumStaticCallableCases: 2, maximumStaticCaptureBytes: 32)!
+    #if !hasFeature(Embedded)
+    if dynamic {
+        var storage = DynamicCanvasCallableStorage<SemanticRecordReference, CanvasTable>(capacity: capacity)
+        return try storage.withLifetime(table: CanvasTable(), limits: limits, body)
+    }
+    #endif
+    var storage = StaticCanvasValueStorage()
+    var backing: InlineArray<2, CanvasStagedEntry<SemanticRecordReference, CanvasTable.CaptureStorage>?> = .init(repeating: nil)
+    var entries = backing.mutableSpan
+    try storage.withLifetime(entries: &entries, table: CanvasTable(), capacity: capacity, limits: limits, body)
+}
+private func exercise(_ semantic: borrowing SemanticRecordStore<Payload>, scope: borrowing ObservableModelScope<CanvasModel, CounterModelSchema>, key: _GiftUIModelKey<CounterModelSchema>, trace: UnsafeMutablePointer<CanvasTrace>, dynamic: Bool) throws(SemanticExpansionError) -> UInt32 {
     var checks: UInt32 = 0
     func expect(_ okay: Bool) { checks += 1; precondition(okay) }
     let expansion = SemanticExpansionLimits(maximumDepth: 34, maximumSemanticNodes: 48, maximumBodyEvaluations: 14, maximumModifierApplications: 50, maximumActionOccurrences: 6)!
@@ -67,11 +83,8 @@ private func exercise(_ semantic: borrowing SemanticRecordStore<Payload>, scope:
         catch { expect(error == .invariantViolation) }
         do throws(SemanticExpansionError) { try semantic.withCandidateView { _ in preconditionFailure("pending borrowed") } }
         catch { expect(error == .invariantViolation) }
-        var storage = StaticCanvasValueStorage()
-        var backing: InlineArray<2, CanvasStagedEntry<SemanticRecordReference, CanvasTable.CaptureStorage>?> = .init(repeating: nil)
-        var entries = backing.mutableSpan
         do throws(DrawingError) {
-            try storage.withLifetime(entries: &entries, table: table, capacity: attempt == 1 ? 1 : 2, limits: StaticCanvasLimits(maximumStaticCallableCases: 2, maximumStaticCaptureBytes: 32)!) { (values) throws(DrawingError) in
+            try withValues(dynamic: dynamic, capacity: attempt == 1 ? 1 : 2) { (values) throws(DrawingError) in
                 do throws(DrawingError) { try CanvasSemanticTransfer.stage(from: semantic, into: values, table: table) }
                 catch {
                     expect(attempt == 1 && error == .capacityExhausted)
@@ -132,16 +145,24 @@ private func exercise(_ semantic: borrowing SemanticRecordStore<Payload>, scope:
     }
     return checks
 }
-package func giftuiP06Semantic(scope: borrowing ObservableModelScope<CanvasModel, CounterModelSchema>, key: _GiftUIModelKey<CounterModelSchema>, trace: UnsafeMutablePointer<CanvasTrace>) -> UInt32 {
+package func giftuiP06Semantic(scope: borrowing ObservableModelScope<CanvasModel, CounterModelSchema>, key: _GiftUIModelKey<CounterModelSchema>, trace: UnsafeMutablePointer<CanvasTrace>, dynamic: Bool) -> UInt32 {
     do throws(SemanticExpansionError) {
         var namespace = SemanticRecordOwnerNamespace()
         let limits = SemanticRecordLimits(records: 126, paths: 378, depth: 34, fanout: 5, payloads: 98, textScalars: 224, payloadBytes: UInt32(98 * MemoryLayout<Payload?>.stride + 224 * 4))!
+        #if !hasFeature(Embedded)
+        if dynamic {
+            let storage = DynamicSemanticRecordStorage<Payload>(limits: limits, owner: try namespace.issue())
+            return try storage.withLifetime { (semantic) throws(SemanticExpansionError) in
+                try exercise(semantic, scope: scope, key: key, trace: trace, dynamic: true)
+            }
+        }
+        #endif
         var storage = StaticSemanticRecordStorage(limits: limits, owner: try namespace.issue())
         var backing = Backing()
         var records = backing.records.mutableSpan; var paths = backing.paths.mutableSpan
         var payloads = backing.payloads.mutableSpan; var scalars = backing.scalars.mutableSpan
         return try storage.withLifetime(records: &records, paths: &paths, payloads: &payloads, scalars: &scalars) { (semantic) throws(SemanticExpansionError) in
-            try exercise(semantic, scope: scope, key: key, trace: trace)
+            try exercise(semantic, scope: scope, key: key, trace: trace, dynamic: false)
         }
     } catch { preconditionFailure("semantic owner failed") }
 }

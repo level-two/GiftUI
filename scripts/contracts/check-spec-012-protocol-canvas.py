@@ -90,7 +90,7 @@ module('GiftUIRuntimeStatic', [ROOT / 'Sources/GiftUIRuntimeStatic' / name for n
     'StaticObservableModelStorage.swift', 'StaticCanvasValueStorage.swift', 'StaticSemanticRecordStorage.swift')])
 if profile != 'nrf52840-embedded':
     module('GiftUIRuntimeDynamic', [ROOT / 'Sources/GiftUIRuntimeDynamic' / name for name in (
-        'DynamicCanvasCallableStorage.swift',)])
+        'DynamicCanvasCallableStorage.swift', 'DynamicSemanticRecordStorage.swift')])
 
 macro = ROOT / '.build/rfc014-p02/tool/debug/GiftUIMacros-tool'
 assert digest(macro) == core['macro_tool_sha256']
@@ -136,6 +136,17 @@ for name, source, diagnostic in (
     assert not generated.exists()
 
 for name, source, diagnostic in (
+    ('escape-staged-values', '''import GiftUIDrawing
+        import CanvasStoreProbe
+        struct Escape: ~Copyable { let values: CanvasStagedValues<UInt16, CanvasTable> }
+        ''', 'non-Escapable'),
+    ('copy-staged-values', '''import GiftUIDrawing
+        import CanvasStoreProbe
+        func copyValues(_ values: borrowing CanvasStagedValues<UInt16, CanvasTable>) {
+            let other = copy values
+            _ = other.count
+        }
+        ''', 'noncopyable'),
     ('escape-source', '''import GiftUI
         import GiftUIDrawing
         import GiftUIObservableState

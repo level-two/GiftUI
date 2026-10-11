@@ -178,6 +178,24 @@ private func exerciseValues(_ values: borrowing CanvasStagedValues<UInt16, Canva
     catch { preconditionFailure("read leaked") }
     values.discard()
     expect(values.count == 0 && values.releaseCount == (mode == 9 ? 0 : 3))
+    if mode == 0 {
+        let empty = CanvasTable.payload(EmptyCanvas<CanvasDomain>())!
+        try values.stage(identity: 1, value: empty, table: table)
+        do throws(DrawingError) { try values.stage(identity: 1, value: empty, table: table); preconditionFailure("duplicate accepted") }
+        catch { expect(error == .invariantViolation) }
+        try values.stage(identity: 2, value: empty, table: table)
+        try values.stage(identity: 3, value: empty, table: table)
+        do throws(DrawingError) { try values.stage(identity: 4, value: empty, table: table); preconditionFailure("capacity exceeded") }
+        catch { expect(error == .capacityExhausted && values.count == 3) }
+        try workspace.withCanvasContext(identity: 1, surfaceOrigin: Point(x: 10, y: 20), inheritedClip: CanvasLayout().rootBounds) { (context) throws(DrawingError) in
+            try source.invokeCanvas(at: 1, context: &context, size: Size(width: 0, height: 0)!)
+            do throws(DrawingError) { try source.invokeCanvas(at: 1, context: &context, size: Size(width: 0, height: 0)!); preconditionFailure("double invoke") }
+            catch { expect(error == .invariantViolation) }
+        }
+        source.releaseCanvas(at: 1); source.releaseCanvas(at: 1)
+        expect(values.releaseCount == 4)
+        values.discard(); expect(values.releaseCount == 6 && values.count == 0)
+    }
     return checks
 }
 
@@ -194,7 +212,7 @@ public func giftuiP06Stores(dynamic: Bool) -> UInt32 {
                     var b = try scope.materialize(CanvasModel(value: 7, trace: trace))
                     try scope.withFrame { () throws(ObservableStateError) in
                         try scope.pin(a.key); try scope.pin(b.key)
-                        if mode == 0 && !dynamic { checks += giftuiP06Semantic(scope: scope, key: a.key, trace: trace); trace.pointee = CanvasTrace() }
+                        if mode == 0 { checks += giftuiP06Semantic(scope: scope, key: a.key, trace: trace, dynamic: dynamic); trace.pointee = CanvasTrace() }
                         let limits = StaticCanvasLimits(maximumStaticCallableCases: 2, maximumStaticCaptureBytes: 32)!
                         do throws(DrawingError) {
                             #if !hasFeature(Embedded)
