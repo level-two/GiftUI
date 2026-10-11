@@ -43,14 +43,15 @@ commands = []
 inputs = [pathlib.Path(__file__).resolve(), ROOT / 'Package.swift', ROOT / 'scripts/contracts/run-spec-013.sh', ROOT / 'scripts/contracts/driver-registry.tsv']
 checks = []
 
-def run(label, args):
+def run(label, args, failure=None):
     args = list(map(str, args))
     commands.append(shlex.join(args))
     (out / 'commands.txt').write_text('\n'.join(commands) + '\n')
     result = subprocess.run(args, cwd=ROOT, text=True, capture_output=True)
     (out / (label + '.log')).write_text(result.stdout + result.stderr)
-    checks.append({'name': label, 'exit': result.returncode})
-    if result.returncode:
+    okay = result.returncode == 0 if failure is None else result.returncode != 0 and failure in result.stdout + result.stderr
+    checks.append({'name': label, 'exit': result.returncode, 'pass': okay, 'expected_failure': failure})
+    if not okay:
         raise SystemExit(f'{label}: {out}\n{result.stdout}{result.stderr}')
     return result.stdout
 
@@ -75,7 +76,16 @@ module('GiftUIDrawing', [ROOT / 'Sources/GiftUIDrawing' / name for name in ('Dra
 module('GiftUIRuntimeCore', [ROOT / 'Sources/GiftUIRuntimeCore' / name for name in (
     'RuntimeProfileValues.swift', 'RuntimeProfileValidation.swift', 'RuntimeStorageRegistry.swift',
     'RuntimeOwnerFailure.swift', 'RuntimeCoordinatorCleanup.swift', 'RuntimeCompletePipeline.swift')])
-module('RuntimeCycleProbe', [ROOT / 'Tests/ContractFixtures/SPEC013/RuntimeDerived/RuntimeValuesProbe.swift'])
+module('RuntimeCycleProbe', [ROOT / 'Tests/ContractFixtures/SPEC013/RuntimeDerived/RuntimeValuesProbe.swift', ROOT / 'Tests/ContractFixtures/SPEC013/RuntimeDerived/ScopedOwnerProbe.swift'])
+for name, source, diagnostic in (
+    ('escape-owner', 'struct Escape<M: ~Copyable, S>: ~Copyable { let owner: ScopedOwner<M, S> }', 'non-Escapable'),
+    ('copy-owner', 'func copyOwner<M: ~Copyable, S>(_ owner: borrowing ScopedOwner<M, S>) { let other = copy owner; _ = other }', 'noncopyable'),
+):
+    negative = out / (name + '.swift')
+    negative.write_text(source + '\n')
+    run(name, [compiler, *flags, '-module-name', 'ScopedOwnerNegative', '-emit-object',
+               ROOT / 'Tests/ContractFixtures/SPEC013/RuntimeDerived/ScopedOwnerProbe.swift', negative,
+               '-o', out / (name + '.o')], failure=diagnostic)
 if profile.startswith('macos'):
     main = out / 'Main.swift'
     main.write_text('import RuntimeCycleProbe\n@main struct Main { static func main() { print("P07 values assertions=\\(giftuiP07Values()) failures=0") } }\n')

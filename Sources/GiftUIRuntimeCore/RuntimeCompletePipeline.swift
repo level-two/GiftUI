@@ -82,7 +82,7 @@ package enum RuntimeCompletePipelineResult<OwnerFailure: Equatable & Sendable>: 
     case failed(RuntimePipelineFailureRecord<OwnerFailure>)
 }
 
-package protocol RuntimeCompletePipelineOwner: ~Copyable {
+package protocol RuntimeCompletePipelineOwner: ~Copyable, ~Escapable {
     associatedtype OwnerFailure: Equatable & Sendable = RuntimeOwnerFailure
     mutating func admitAndSeal() -> RuntimePipelineStepResult<OwnerFailure>
     mutating func applyAdmittedWork() -> RuntimePipelineMutationResult<OwnerFailure>
@@ -108,7 +108,7 @@ package enum RuntimeCompletePipeline {
     package static func rejectInactive<Owner>(
         owner: inout Owner
     ) -> RuntimeCompletePipelineResult<Owner.OwnerFailure>
-    where Owner: RuntimeCompletePipelineOwner & ~Copyable {
+    where Owner: RuntimeCompletePipelineOwner & ~Copyable & ~Escapable {
         fail(
             at: .admissionAndSeal,
             failure: .execution(.invalidPhase),
@@ -122,7 +122,7 @@ package enum RuntimeCompletePipeline {
     package static func run<Owner>(
         owner: inout Owner
     ) -> RuntimeCompletePipelineResult<Owner.OwnerFailure>
-    where Owner: RuntimeCompletePipelineOwner & ~Copyable {
+    where Owner: RuntimeCompletePipelineOwner & ~Copyable & ~Escapable {
         var acquired: RuntimeCleanupActions = []
         var mutationApplied = false
         var publication: RuntimePipelinePublication?
@@ -358,7 +358,7 @@ package enum RuntimeCompletePipeline {
         acquired: RuntimeCleanupActions,
         owner: inout Owner
     ) -> RuntimeCompletePipelineResult<Owner.OwnerFailure>
-    where Owner: RuntimeCompletePipelineOwner & ~Copyable {
+    where Owner: RuntimeCompletePipelineOwner & ~Copyable & ~Escapable {
         let disposition = RuntimePipelineDisposition(
             semanticDisposition: publication.changed ? .published : .unchanged,
             logicalFrameDisposition: frameDisposition,
@@ -388,7 +388,7 @@ package enum RuntimeCompletePipeline {
         acquired: RuntimeCleanupActions,
         owner: inout Owner
     ) -> RuntimeCompletePipelineResult<Owner.OwnerFailure>
-    where Owner: RuntimeCompletePipelineOwner & ~Copyable {
+    where Owner: RuntimeCompletePipelineOwner & ~Copyable & ~Escapable {
         let wasPublished = publication != nil
         let disposition = RuntimePipelineDisposition(
             semanticDisposition: publication.map { $0.changed ? .published : .unchanged }
@@ -420,7 +420,7 @@ package enum RuntimeCompletePipeline {
         after stage: RuntimeCoordinatorStage,
         acquired: RuntimeCleanupActions,
         owner: inout Owner
-    ) where Owner: RuntimeCompletePipelineOwner & ~Copyable {
+    ) where Owner: RuntimeCompletePipelineOwner & ~Copyable & ~Escapable {
         var tracker = RuntimeCleanupTracker(
             plan: RuntimeCoordinatorCleanupOracle.plan(after: stage),
             acquired: acquired

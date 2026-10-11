@@ -6,7 +6,7 @@ status: current
 authors:
   - codex
 created: 2026-09-12
-updated: 2026-10-02
+updated: 2026-10-11
 implementation_plan: ../implementation-plans/spec-013-implementation-plan.md
 related_future_work: []
 related_explorations: []
@@ -250,3 +250,14 @@ The common finalizer leaves partially applied state dirty with semantic wake
 and skips derivation; owners still perform mandatory containment and quiescence.
 A wake does not reactivate a quiescent owner. No failure causes replay or
 rollback, and no application type is imported by Runtime Core.
+
+## RFC-014 scoped runner update — 2026-10-11
+
+The internal complete-pipeline protocol and its generic forwarding now permit
+`~Copyable & ~Escapable` owners, so the actual model/record/Canvas activation
+scopes can remain lexical. The same result values and stage ordering apply.
+The [P07 progress record](../../Tests/ContractFixtures/SPEC013/Evidence/rfc-014-p07/progress.md)
+links the actual model-scope compile proof and copy/escape negatives. No
+complete profile cycle or acceptance is claimed by this constraint correction.
+The separately specified Execution and host interfaces require their own
+authority analysis before the concrete activation join changes them.

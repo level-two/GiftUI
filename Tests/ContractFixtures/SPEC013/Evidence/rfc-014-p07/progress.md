@@ -97,3 +97,27 @@ This slice does not migrate legacy profile bindings or P08/P09 host/application
 initializers. Required new arguments intentionally have no schema-3 defaults;
 the migration driver currently proves the values/audit slice only. Full P07
 cycle, focused review and T11.1 remain open.
+
+## Step 3 — lexical complete-pipeline owner
+
+The internal RuntimeCompletePipelineOwner now permits nonescapable concrete
+owners; its runner/helpers and both existing profile forwarding constraints
+propagate that permission. The actual P03 ObservableModelScope-backed compile
+probe now conforms, while owner copy and escape negatives reject. The runner
+order, failure carriers, publication/disposition values and cleanup table are
+unchanged. SPEC-013's Shared pipeline failure and mutation seam prescribes
+the associated failure/result shapes, not an Escapable owner inheritance
+clause. This internal correction realizes ADR-036's approved scoped ownership
+and does not amend the contract.
+
+After `scripts/format-swift.sh`, the same registered macOS Static and nRF
+commands from step 2 pass: native 159 assertions plus two expected compiler
+negatives; nRF compiles the concrete scoped owner and both negatives and
+verifies Cortex-M4F/VFP ABI. Exact receipts are `step-3-macos-static.json` and
+`step-3-nrf52840-embedded.json`. These are scoped forwarding evidence, not
+actual complete coordinator execution; old profile bindings remain unmigrated.
+Governance and whitespace checks pass. Repair count: **0/2**.
+
+A different constraint issue exists on the explicitly specified Execution
+protocols inherited by concrete coordinators. That issue is tracked separately;
+this internal repair does not authorize changing those contracts.
