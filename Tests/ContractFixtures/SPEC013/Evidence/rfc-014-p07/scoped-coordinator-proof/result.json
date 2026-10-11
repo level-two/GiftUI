@@ -1,0 +1,26 @@
+{
+  "compiler": ".toolchains/host/swift-6.3.2-RELEASE-osx/usr/bin/swiftc",
+  "compiler_sha256": "d8e40107da0e2c1c59640a983faea326d5d2bddfe81f7609db14bade43c4a5b9",
+  "results": {
+    "CopyableOnly": {
+      "exit": 1,
+      "log_sha256": "07cc6b746ef8bea0d2fc1558a00f9d7db71dfb457cf5175992903953695fc84c",
+      "source_sha256": "82cbcfe1f68bb67369bf83357d14a9adf858a3db37957a7102d438ca88479a3e"
+    },
+    "Current": {
+      "exit": 1,
+      "log_sha256": "c476fba252009442cc93bf4cd82537442d40be01d18966c4c692155412aa93ac",
+      "source_sha256": "9887b5714f2b879e156bf9c7f8633e0a47217b48a5b77bf69991d5069563906d"
+    },
+    "Proposed": {
+      "exit": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_sha256": "b3fd485a405091be498ee5d7ef9a838ccafb5fe4409794c761d81595c4656ed8"
+    }
+  },
+  "runtime_receipt": "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmp79wv0dbn/macos-static/result.json",
+  "runtime_receipt_sha256": "624c54b830922454a0565df4b924b37267e4fbee2f234b7da27227f59ac154c8",
+  "scope": "compile-only actual model-scope conformance; no integrated runtime execution or acceptance",
+  "source_commit": "bbc753e5833e816863c30e6aeb39a7e062b732b1",
+  "source_dirty": true
+}

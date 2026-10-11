@@ -1,0 +1,29 @@
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC013/Evidence/rfc-014-p07/scoped-coordinator-proof/Current.swift:7:8: error: type 'ScopedCoordinator<Model, Schema>' does not conform to protocol 'Copyable'
+ 5 | 
+ 6 | // Real P03 storage scope, not a pointer descriptor or mock read domain.
+ 7 | struct ScopedCoordinator<Model: ~Copyable, Schema>:
+   |        `- error: type 'ScopedCoordinator<Model, Schema>' does not conform to protocol 'Copyable'
+ 8 |     ~Copyable, ~Escapable, ExecutionAdmissionSink, ExecutionOpportunityRunner
+ 9 | {
+
+/Users/eugene/work/GiftUI/Sources/GiftUIExecution/AdmissionValues.swift:33:18: note: type 'ScopedCoordinator<Model, Schema>' does not conform to inherited protocol 'Copyable'
+31 | }
+32 | 
+33 | package protocol ExecutionAdmissionSink {
+   |                  `- note: type 'ScopedCoordinator<Model, Schema>' does not conform to inherited protocol 'Copyable'
+34 |     associatedtype StateChangeFact: Sendable
+35 |     associatedtype CompletionFact: Sendable
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC013/Evidence/rfc-014-p07/scoped-coordinator-proof/Current.swift:7:8: error: type 'ScopedCoordinator<Model, Schema>' does not conform to protocol 'Copyable'
+ 5 | 
+ 6 | // Real P03 storage scope, not a pointer descriptor or mock read domain.
+ 7 | struct ScopedCoordinator<Model: ~Copyable, Schema>:
+   |        `- error: type 'ScopedCoordinator<Model, Schema>' does not conform to protocol 'Copyable'
+ 8 |     ~Copyable, ~Escapable, ExecutionAdmissionSink, ExecutionOpportunityRunner
+ 9 | {
+
+/Users/eugene/work/GiftUI/Sources/GiftUIExecution/ExecutionOpportunityRunner.swift:1:18: note: type 'ScopedCoordinator<Model, Schema>' does not conform to inherited protocol 'Copyable'
+1 | package protocol ExecutionOpportunityRunner {
+  |                  `- note: type 'ScopedCoordinator<Model, Schema>' does not conform to inherited protocol 'Copyable'
+2 |     associatedtype OwnerFailure: Equatable & Sendable
+3 | 

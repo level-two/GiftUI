@@ -1,0 +1,29 @@
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC013/Evidence/rfc-014-p07/scoped-coordinator-proof/CopyableOnly.swift:7:8: error: type 'ScopedCoordinator<Model, Schema>' does not conform to protocol 'Escapable'
+ 5 | 
+ 6 | // Real P03 storage scope, not a pointer descriptor or mock read domain.
+ 7 | struct ScopedCoordinator<Model: ~Copyable, Schema>:
+   |        `- error: type 'ScopedCoordinator<Model, Schema>' does not conform to protocol 'Escapable'
+ 8 |     ~Copyable, ~Escapable, ProposedAdmissionSink, ProposedOpportunityRunner
+ 9 | {
+   :
+35 | 
+36 | // Proposed declaration correction only. Exact fact/result signatures retained.
+37 | protocol ProposedAdmissionSink: ~Copyable {
+   |          `- note: type 'ScopedCoordinator<Model, Schema>' does not conform to inherited protocol 'Escapable'
+38 |     associatedtype StateChangeFact: Sendable
+39 |     associatedtype CompletionFact: Sendable
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC013/Evidence/rfc-014-p07/scoped-coordinator-proof/CopyableOnly.swift:7:8: error: type 'ScopedCoordinator<Model, Schema>' does not conform to protocol 'Escapable'
+ 5 | 
+ 6 | // Real P03 storage scope, not a pointer descriptor or mock read domain.
+ 7 | struct ScopedCoordinator<Model: ~Copyable, Schema>:
+   |        `- error: type 'ScopedCoordinator<Model, Schema>' does not conform to protocol 'Escapable'
+ 8 |     ~Copyable, ~Escapable, ProposedAdmissionSink, ProposedOpportunityRunner
+ 9 | {
+   :
+42 |     mutating func submit(completion: CompletionFact) -> ExecutionAdmissionOutcome
+43 | }
+44 | protocol ProposedOpportunityRunner: ~Copyable {
+   |          `- note: type 'ScopedCoordinator<Model, Schema>' does not conform to inherited protocol 'Escapable'
+45 |     associatedtype OwnerFailure: Equatable & Sendable
+46 |     mutating func runOpportunity() -> RunCycleResult<OwnerFailure>

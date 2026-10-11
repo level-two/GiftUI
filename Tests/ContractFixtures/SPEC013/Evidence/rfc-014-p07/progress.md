@@ -121,3 +121,19 @@ Governance and whitespace checks pass. Repair count: **0/2**.
 A different constraint issue exists on the explicitly specified Execution
 protocols inherited by concrete coordinators. That issue is tracked separately;
 this internal repair does not authorize changing those contracts.
+
+## Concrete coordinator contract boundary — 2026-10-11
+
+The [exact constraint report](scoped-coordinator-constraint.md) demonstrates
+that the real model-scope-backed coordinator cannot conform to SPEC-009's
+explicit Copyable/Escapable admission/opportunity protocols. Evidence-only
+shadows isolate both constraints and the narrowly proposed suppressions compile.
+SPEC-009, SPEC-015 and the concrete coordinator interfaces are unchanged.
+The internal runner repair is committed separately at `bbc753e5`; it supplies
+no approval for the explicit contract correction.
+
+Affected P07 integration is stopped for the parent/maintainer decision, with
+all diffs, commands, source/artifact identities and limits preserved. No new
+ownership workaround, further package or P08 work is authorized by this finding.
+P07 and T11.1 remain open; separate Strong review has not run.
+Consecutive unproductive repair count: **0 of 2**.
