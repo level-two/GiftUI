@@ -6,7 +6,7 @@ status: captured
 authors:
   - codex
 created: 2026-10-11
-updated: 2026-10-11
+updated: 2026-10-12
 source:
   - RFC-014
 related_future_work: []
@@ -19,6 +19,24 @@ target_milestone: ITERATION-004
 ---
 
 # FW-036: Swift Compiler Upgrade Assessment
+
+## Revisit — 2026-10-12
+
+The separate-authorization trigger occurred during P08. The maintainer approved
+the [reviewed Swift 6.4 baseline correction](../iterations/iteration-003-review/rfc-014-spec-approval.md#swift-64-compiler-baseline-correction--2026-10-12)
+after the minimal and actual scoped activation controls established that 6.4
+rejects the wrapped lifetime escape accepted by 6.3.2 and 6.3.3. The compiler and
+matching ARMv6 SDK pins are now applied. The
+[activation integration evidence](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-integration/result.md)
+and [blocker resolution record](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/blocker-resolution.md)
+track the fresh compatibility checks and their limits.
+
+Disposition: continue this captured ITERATION-004 assessment with the approved
+6.4 baseline as its starting point. Reuse the recorded comparison, macro/build
+compatibility and target/resource evidence instead of repeating the original
+version-selection question. The iteration's broader integration criterion is
+unchanged; this revisit does not claim its completion. The observations below
+preserve the original 6.3.2 context and are not the current adoption restriction.
 
 ## Observation / Opportunity
 
