@@ -72,7 +72,8 @@ the full two-bank cost, not merely the count of live Canvas values.
 
 Four-profile selected evidence is now in the
 [shared progress record](../../Tests/ContractFixtures/SPEC012/Evidence/rfc-014-p06/progress.md),
-pending independent P06 review. Actual Counter semantic payload slots grow32→36
+with finite P06 PASS after [independent repair review](../../Tests/ContractFixtures/SPEC012/Evidence/rfc-014-p06/repair-exit-review.md).
+Actual Counter semantic payload slots grow32→36
 bytes on all measured targets (+784 bytes for196 reserved slots); Analyzer
 slots grow32→40 on64-bit native (+1,568 bytes),32→36 on32-bit targets (+784).
 The source descriptor is64 bytes native/32 target. Five Analyzer staged slots

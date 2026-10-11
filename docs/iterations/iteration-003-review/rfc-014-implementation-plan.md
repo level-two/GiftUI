@@ -1,6 +1,6 @@
 # RFC-014 bounded implementation sequence — 2026-10-10
 
-**P01–P05 passed; P06–P12 pending.** This is the shared
+**P01–P06 passed; P07–P12 pending.** This is the shared
 sequencing index for nine owner Implementation Plans, not another contract or
 investigation. It derives only the [approved Spec amendments](rfc-014-spec-approval.md)
 at `3c260bbc` and accepted ADR-035/036/037. ITERATION-003 I3-04/05 supplies the
@@ -321,12 +321,12 @@ resource/connected evidence are not inferred from this declaration exit.
 
 P03 passed its finite package exit at `15b47e2a` after separate Strong review
 of the explicitly approved scoped visitor correction and root-entry repair;
-P04/P05 subsequently passed as recorded below; P06–P12 remain pending. There is no
+P04–P06 subsequently passed as recorded below; P07–P12 remain pending. There is no
 remaining P02 exit failure, new package, scope expansion or architecture change.
 
 Planning was prepared without implementation or experiment execution. Optional work remains in the existing deferred track; no new optional
-deliverable was added. The next package is P06 within the existing bounded sequence;
-the current execution stopped at the requested P05 package boundary.
+deliverable was added. The next package is P07 within the existing bounded sequence;
+the current execution stopped at the requested P06 package boundary.
 
 P04's scoped traversal, runtime records, exact paired paths, bounded payloads and
 reader-aware profile banks are implemented in `36834e01`, `7e6fdcd6`,
@@ -348,6 +348,21 @@ records native/cross-build scope, physical key/capture costs, the unverified
 optional dependency check and later integration/resource gates. T9.1/T12.1
 remain open. No contract/scope change or exception was needed; consecutive
 unproductive repairs remain 0 of 2. No P06 work was started.
+
+P06 subsequently implemented protocol Canvas, finite witness lowering, scoped
+exact-model invocation, bounded staged values and marker-only semantic transfer.
+The scoped-source constraint amendment was explicitly approved in `e6f10f67`.
+Independent review `72438931` found P06-R1: lazy model binding allowed client
+drawing before rejection. Repair `431293f9` prebinds all captured keys; separate
+Strong review `59c80b52` passes the finite exit and independently reproduces the
+corrected outcome. Four refreshed owner routes pass: each native profile executes
+4,042 assertions and 13 negative controls; ARMv6/nRF provide compilation, ABI,
+layout and 13 negative controls, without target execution. The
+[final P06 exit](../../../Tests/ContractFixtures/SPEC012/Evidence/rfc-014-p06/progress.md#final-p06-package-exit--2026-10-11)
+records exact provenance, unchanged geometry/pixel controls, complete reserved
+payload growth and remaining integration/resource obligations. SPEC-012 T10.1
+stays open through P10–P12. Consecutive unproductive repairs remain 0 of 2;
+no P07 work was started.
 
 
 Planning validation: all nine approved Spec statuses and ready plan templates

@@ -27,8 +27,8 @@ Canvas model key could reach path construction before binding, changing failure
 order. Repair `431293f9` now prebinds captured model keys before authored drawing.
 The [separate repair review](../../Tests/ContractFixtures/SPEC012/Evidence/rfc-014-p06/repair-exit-review.md)
 resolves P06-R1 and recommends finite P06 PASS after independent counterexample
-replay and evidence reconciliation. Parent package disposition is separate;
-T10.1 and full acceptance remain open.
+replay and evidence reconciliation. The parent recorded the finite P06 package
+PASS after review `59c80b52`; T10.1 and full acceptance remain open.
 The actual-owner native reproduction and independently verified receipts are
 linked from that report. No production repair was made by the reviewer. The
 [shared receipt](../../Tests/ContractFixtures/SPEC012/Evidence/rfc-014-p06/progress.md)
@@ -36,9 +36,9 @@ records four selected-component profiles, scoped stores/reads/semantic transfer,
 error and negative checks, retained production geometry, all 17 immutable pixel
 vectors and actual layout/resource costs. The approved scoped-source constraint
 correction is resolved. DR-RD-001–004 and full retained criteria remain open;
-the prior results below are historical baseline evidence only. No package exit,
-whole-module, application, full linked resource, or connected-target completion
-is claimed by this implementation pass.
+the prior results below are historical baseline evidence only. This finite
+package exit does not establish whole-module, application, full linked resource
+or connected-target completion; those obligations remain assigned to P07–P12.
 
 ## Historical Review Scope
 

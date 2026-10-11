@@ -93,7 +93,7 @@ features:
     milestone: MVP
   giftui-mvp-architecture:
     # SPEC-007/011 P05 passed; T9.1/T12.1 remain open; shared receipt Tests/ContractFixtures/SPEC011/Evidence/rfc-014-p05/progress.md.
-    # RFC-014 P01–P05 passed; P05 separate Strong review: 42b5f639; P06–P12 pending.
+    # RFC-014 P01–P06 passed; P06 separate Strong review: 59c80b52; P07–P12 pending.
     # Optional source-conditional cleanup: FW-029, linked from SPEC-013.
     # ITERATION-003 revision 5 governs bounded runtime/memory/performance preparation.
     # Distribution/reuse/integration delivery transferred to ITERATION-004.
@@ -180,7 +180,8 @@ features:
       - giftui-mvp-architecture
     milestone: MVP
   canvas-drawing:
-    # SPEC-012 implementing RFC-014 P06; ADR-037 supersedes ADR-028.
+    # RFC-014 P06 passed; SPEC-012 remains implementing, T10.1 open through P10–P12.
+    # Separate Strong review: 59c80b52; ADR-037 supersedes ADR-028.
     # Scoped Canvas Source constraints explicitly approved: rfc-014-spec-approval.md, 2026-10-11.
     title: Canvas, Path, and Stroke Drawing
     status: implementation

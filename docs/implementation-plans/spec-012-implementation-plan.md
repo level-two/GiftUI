@@ -35,8 +35,9 @@ Earlier tasks and readiness/closure statements remain historical baseline eviden
 not additional authorization to rerun an MVP implementation or reopen experiments.
 
 The [scoped Canvas Source amendment](../iterations/iteration-003-review/rfc-014-spec-approval.md#scoped-canvas-source-constraint-amendment--2026-10-11)
-was explicitly approved after the step-1 compiler blocker. P06 may resume the
-scoped invocation/store work; existing package scope, checks and bounds remain.
+was explicitly approved after the step-1 compiler blocker. P06 passed its finite
+package exit on 2026-10-11 after separate Strong review `59c80b52`; existing
+package scope, checks and bounds remain. T10.1 stays open through P10–P12.
 
 ### Current owner checkpoint
 
@@ -73,8 +74,9 @@ scoped invocation/store work; existing package scope, checks and bounds remain.
   DR-RD-002/003. The original actual-owner reproduction and independent review
   remain preserved. [Separate repair review](../../Tests/ContractFixtures/SPEC012/Evidence/rfc-014-p06/repair-exit-review.md)
   resolves P06-R1 and recommends finite P06 PASS, with independent original-proof
-  replay and receipt verification. Parent package disposition and full acceptance
-  remain separate; T10.1 stays open. The shared receipt records
+  replay and receipt verification. The parent recorded the finite P06 package
+  PASS in the shared receipt; full acceptance remains separate and T10.1 stays open.
+  The shared receipt records
   scope limits and actual artifact identities for every tested seam.
 
 The single current acceptance matrix retains each criterion once. Its historical

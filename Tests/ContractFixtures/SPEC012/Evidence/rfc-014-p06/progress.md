@@ -1,5 +1,45 @@
 # RFC-014 P06 progress
 
+## Final P06 package exit — 2026-10-11
+
+**PASS at the finite P06 boundary. P01–P06 passed; P07–P12 remain pending.**
+The parent accepts the [independent repair review](repair-exit-review.md),
+committed in `59c80b52`. Implementation ends at `431293f9`; refreshed evidence
+is committed in `ddf092a1`. The original [blocked review](exit-review.md) and
+counterexample remain historical evidence: P06-R1 was repaired and independently
+replayed with zero path calls, `invalidModelAccess` and exactly one release.
+
+The explicitly approved scoped-source amendment is recorded in `e6f10f67` and
+the [approval record](../../../../../docs/iterations/iteration-003-review/rfc-014-spec-approval.md#scoped-canvas-source-constraint-amendment--2026-10-11).
+Protocol Canvas, finite typed witness lowering, scoped actual-owner reads,
+bounded profile staging, semantic marker transfer and failure cleanup now meet
+this package's exit. The ordering repair implements the existing contract;
+no further contract, capacity or scope change was made.
+
+All four registered owner routes pass. Each native profile executes **4,042
+assertions**, with 43 checks and 13 negative controls. Each cross profile passes
+42 checks and 13 negatives, with rooted target compilation, ABI and layout
+evidence only. Independent reconciliation matched 602 input hashes and 812
+artifact hashes/sizes. The Static receipt accurately retains dirty collection
+provenance with inputs matching final source; the other three record clean
+`431293f9`. Exact commands and identities remain in the repair handoff below
+and [final index](final-index.json).
+
+Geometry/pixel controls and physical layouts are unchanged by the repair.
+Reserved semantic payload growth remains +784 bytes, or +1,568 bytes for native
+Analyzer, across both banks; P11 must count it in the complete overlap budget.
+Component evidence does not prove complete applications/coordinators, linked
+allocator reachability, full stack/IRQ overlap or connected-target execution.
+SPEC-012 remains implementing, its plan active, report collecting and T10.1 open.
+P07–P12 retain integration, broad regression, resource and cutover obligations.
+
+Execution and review remained sequential, with each coherent step committed.
+Consecutive unproductive repairs remain **0 of 2**. No P07 work was started;
+P07 is the next package in the existing sequence.
+
+Final disposition checks passed: `scripts/validate-governance.rb` and
+`git diff --check`. No production changes followed the reviewed implementation.
+
 ## Independent repair exit-review recommendation — 2026-10-11
 
 [Separate Strong repair review](repair-exit-review.md) resolves P06-R1 and
