@@ -4,6 +4,10 @@ import SignalAnalyzerDomain
 package struct AnalyzerTrace: Canvas {
     package let model: SignalAnalyzerViewModel
     package let index: Int
+    package init(model: SignalAnalyzerViewModel, index: Int) {
+        self.model = model
+        self.index = index
+    }
     package func draw(in bounds: Rect, context: inout GraphicsContext) throws(DrawingError) {
         let capture = model.state.capture
         if capture.count > 0 {

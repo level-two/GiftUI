@@ -1,5 +1,19 @@
 # RFC-014 P06 progress
 
+## Step 5 — finite witnesses and scoped fixture repair
+
+Strong C3/R3 diagnosed the Standard handoff as fixture lifetime placement:
+FrameRead created outside the workspace callback was captured across that
+callback. Constructing it inside the callback from the same live InlineArray
+span keeps the borrow lexical. No production change, unsafe annotation, or
+weakened negative was needed. The exact handoff route passed after formatting:
+`.build/contracts/spec-012-protocol-canvas/tmp1zdctush/macos-static/result.json`.
+Counter's two witness cases and Analyzer's indexed read execute; generated
+case IDs, payload sizes, absent types, out-of-range lookup and mismatched
+payload/ID checks pass. Existing error/store/semantic checks remain green.
+The retained failure is `tmpt7qpmsm0/macos-static/CanvasStoreProbe.log`.
+Counter remains0/2; final evidence and independent review remain open.
+
 ## Strong lifetime-fixture handoff — 2026-10-11
 
 Standard `gpt-6-sol`/`medium` committed fixed error-mapping evidence in

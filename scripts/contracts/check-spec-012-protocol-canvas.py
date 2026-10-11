@@ -112,11 +112,11 @@ for application in ('Counter', 'Analyzer'):
     module(application + 'CanvasTable', [out / (application + 'CanvasTable.swift')])
 
 module('CanvasStoreProbe', [FIXTURE / 'CanvasStoreProbe.swift', FIXTURE / 'CanvasSemanticProbe.swift',
-                            FIXTURE / 'CanvasErrorProbe.swift',
+                            FIXTURE / 'CanvasErrorProbe.swift', FIXTURE / 'CanvasTableProbe.swift',
                             ROOT / 'Tests/ContractFixtures/SPEC007/RuntimeDerived/LayoutSupport.swift'])
 if profile.startswith('macos'):
     main = out / 'Main.swift'
-    main.write_text('import CanvasStoreProbe\n@main struct Main { static func main() { print("P06 stores assertions=\\(giftuiP06Stores(dynamic: false) + giftuiP06Stores(dynamic: true)) errorMappings=\\(giftuiP06ErrorMappings()) failures=0") } }\n')
+    main.write_text('import CanvasStoreProbe\n@main struct Main { static func main() { print("P06 stores assertions=\\(giftuiP06Stores(dynamic: false) + giftuiP06Stores(dynamic: true)) errorMappings=\\(giftuiP06ErrorMappings()) finiteTables=\\(giftuiP06FiniteTables()) failures=0") } }\n')
     run('native-link', [compiler, *flags, main, base / 'GiftUI.o', base / 'SignalAnalyzerDomain.o',
                         *sorted(out.glob('*.o')), '-o', out / 'canvas-stores'])
     run('native-execute', [out / 'canvas-stores'])
