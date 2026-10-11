@@ -1,0 +1,13 @@
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-span/PrimitiveNegative.swift:8:13: error: lifetime-dependent variable 'escaped' escapes its scope
+ 6 |     static func main() {
+ 7 |         let expected = UInt8(truncatingIfNeeded: CommandLine.arguments.count)
+ 8 |         var escaped: Span<UInt8>? = nil
+   |             `- error: lifetime-dependent variable 'escaped' escapes its scope
+ 9 |         _ = invokeActivationCallback {
+10 |             let marker: InlineArray<1, UInt8> = [expected]
+   |                 `- note: it depends on the lifetime of variable 'marker'
+11 |             escaped = marker.span
+12 |             return 1
+   |             `- note: this use causes the lifetime-dependent value to escape
+13 |         }
+14 |         precondition(readActivationSpan(escaped!) == expected)

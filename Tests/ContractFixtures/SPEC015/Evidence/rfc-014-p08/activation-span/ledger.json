@@ -1,0 +1,41 @@
+{
+  "limit": 8,
+  "used": 2,
+  "unproductive": 0,
+  "runs": [
+    {
+      "number": 1,
+      "hypothesis": "direct-span-positive",
+      "command": "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.3.2-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/contracts/p08-activation-span-cache -disable-sandbox -target arm64-apple-macosx26.0 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk -D GIFTUI_DYNAMIC_PROFILE -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014/189dda86d331e15d-wpk82ft7/macos-dynamic -parse-as-library -I /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpke3zvfyl/macos-dynamic -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014/189dda86d331e15d-wpk82ft7/macos-dynamic -enable-testing -I /Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-ie3r3cmc -module-name P08ActivationResolution /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-span/PrimitivePositive.swift -o /Users/eugene/work/GiftUI/.build/contracts/p08-activation-span-1",
+      "compiler_sha256": "d8e40107da0e2c1c59640a983faea326d5d2bddfe81f7609db14bade43c4a5b9",
+      "schema_receipt_sha256": "397d42439c721526962baf584e13885a9e04835c81e567d06ab03b8161b9b664",
+      "sources": {
+        "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-span/PrimitivePositive.swift": "0ecd622365bba6f1c0deb81fa87dcdbebac87f215dcc7af31521b1218b16ad95"
+      },
+      "link_objects": {},
+      "status": "completed",
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "disposition": "PASS direct callback-local InlineArray.span positive compile/link/execution with runtime marker value and noinline callback/read."
+    },
+    {
+      "number": 2,
+      "hypothesis": "direct-span-reachable-callback-negative",
+      "command": "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.3.2-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/contracts/p08-activation-span-cache -disable-sandbox -target arm64-apple-macosx26.0 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk -D GIFTUI_DYNAMIC_PROFILE -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014/189dda86d331e15d-wpk82ft7/macos-dynamic -parse-as-library -I /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpke3zvfyl/macos-dynamic -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014/189dda86d331e15d-wpk82ft7/macos-dynamic -enable-testing -I /Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-ie3r3cmc -module-name P08ActivationResolution /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-span/PrimitiveNegative.swift -o /Users/eugene/work/GiftUI/.build/contracts/p08-activation-span-2",
+      "compiler_sha256": "d8e40107da0e2c1c59640a983faea326d5d2bddfe81f7609db14bade43c4a5b9",
+      "schema_receipt_sha256": "397d42439c721526962baf584e13885a9e04835c81e567d06ab03b8161b9b664",
+      "sources": {
+        "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-span/PrimitiveNegative.swift": "8beeb4fdb05fbc1e821003b70cb4b4f9479ebf7e5dfd7fba4b0f571d8075f44b"
+      },
+      "link_objects": {},
+      "status": "completed",
+      "exit": 1,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "1abf574c077910d4320f75707a59078fbb97b7a839f6408b6128f3f56ee6976a",
+      "disposition": "PASS reachable direct span escape negative: escaped variable depends on callback-local marker and escapes at callback return."
+    }
+  ],
+  "historical_production_guard": "2/2 unchanged",
+  "historical_investigation_guard": "2/2 unchanged"
+}
