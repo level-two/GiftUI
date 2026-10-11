@@ -1,0 +1,17 @@
+{
+  "number": 20,
+  "label": "GiftUIFailureCore",
+  "original_command": "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.3.2-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-ie3r3cmc/cache -disable-sandbox -target arm64-apple-macosx26.0 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk -D GIFTUI_DYNAMIC_PROFILE -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014/189dda86d331e15d-wpk82ft7/macos-dynamic -parse-as-library -I /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpke3zvfyl/macos-dynamic -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014/189dda86d331e15d-wpk82ft7/macos-dynamic -enable-testing -I /Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-ie3r3cmc -module-name GiftUIFailureCore -emit-module -emit-object /Users/eugene/work/GiftUI/Sources/GiftUIFailureCore/GiftUIFailureCore.swift -emit-module-path /Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-ie3r3cmc/GiftUIFailureCore.swiftmodule -o /Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-ie3r3cmc/GiftUIFailureCore.o",
+  "command": "/Users/eugene/work/GiftUI/.toolchains/p08-comparison/expanded/swift-6.4.0-RELEASE-osx/swift-6.4.0-RELEASE-osx-package.pkg/Payload/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/contracts/p08-native-6.4/cache -disable-sandbox -target arm64-apple-macosx26.0 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk -D GIFTUI_DYNAMIC_PROFILE -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/contracts/p08-native-6.4 -parse-as-library -I /Users/eugene/work/GiftUI/.build/contracts/p08-native-6.4 -I /Users/eugene/work/GiftUI/.build/contracts/p08-native-6.4 -enable-testing -I /Users/eugene/work/GiftUI/.build/contracts/p08-native-6.4 -module-name GiftUIFailureCore -emit-module -emit-object /Users/eugene/work/GiftUI/Sources/GiftUIFailureCore/GiftUIFailureCore.swift -emit-module-path /Users/eugene/work/GiftUI/.build/contracts/p08-native-6.4/GiftUIFailureCore.swiftmodule -o /Users/eugene/work/GiftUI/.build/contracts/p08-native-6.4/GiftUIFailureCore.o",
+  "status": "complete",
+  "sources": {
+    "/Users/eugene/work/GiftUI/Sources/GiftUIFailureCore/GiftUIFailureCore.swift": "9e1e92643cdf2aed4efea9684697481af01034b9ad34ef42aff8c6ff6445cae7"
+  },
+  "exit": 0,
+  "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "artifacts": {
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-native-6.4/GiftUIFailureCore.swiftmodule": "ce7ffbc90a1067d01bc0eabf58048af72941c51cc2325a3573dcd2a30e25b465",
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-native-6.4/GiftUIFailureCore.o": "8db941a027d2c4a873e9867ffd523ac6a05a57801d455549e48249ccb8c1d8cc"
+  }
+}

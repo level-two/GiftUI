@@ -1,0 +1,131 @@
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-boundary/CallbackNegative.swift:15:13: error: lifetime-dependent variable 'escaped' escapes its scope
+13 | extension StaticCycleProfileStorage {
+14 |     mutating func rejectActiveAfterCallbacks(seed: UInt8) -> Int {
+15 |         var escaped: InvestigationOwner? = nil
+   |             `- error: lifetime-dependent variable 'escaped' escapes its scope
+16 |         guard case .valid(let audit) = audit() else { preconditionFailure("actual profile audit") }
+17 |         let limits = self.limits
+   :
+19 |         var checks = 0
+20 |         do throws(ObservableStateError) {
+21 |             try root.withLifetime(limits: limits.observableState) { (models, root) throws(ObservableStateError) in
+   |                                                                      `- note: it depends on a closure capture; this is not yet supported
+22 |                 do throws(SemanticExpansionError) {
+23 |                     var records = semanticBacking.records.mutableSpan
+   :
+45 |                                         precondition(!pointer.pointee.unavailable)
+46 |                                         escaped = consume owner
+47 |                                         return 1
+   |                                         `- note: this use causes the lifetime-dependent value to escape
+48 |                                         }
+49 |                                     }
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-boundary/CallbackNegative.swift:15:13: error: lifetime-dependent variable 'escaped' escapes its scope
+13 | extension StaticCycleProfileStorage {
+14 |     mutating func rejectActiveAfterCallbacks(seed: UInt8) -> Int {
+15 |         var escaped: InvestigationOwner? = nil
+   |             `- error: lifetime-dependent variable 'escaped' escapes its scope
+16 |         guard case .valid(let audit) = audit() else { preconditionFailure("actual profile audit") }
+17 |         let limits = self.limits
+   :
+19 |         var checks = 0
+20 |         do throws(ObservableStateError) {
+21 |             try root.withLifetime(limits: limits.observableState) { (models, root) throws(ObservableStateError) in
+   |                                                                              `- note: it depends on a closure capture; this is not yet supported
+22 |                 do throws(SemanticExpansionError) {
+23 |                     var records = semanticBacking.records.mutableSpan
+   :
+45 |                                         precondition(!pointer.pointee.unavailable)
+46 |                                         escaped = consume owner
+47 |                                         return 1
+   |                                         `- note: this use causes the lifetime-dependent value to escape
+48 |                                         }
+49 |                                     }
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-boundary/CallbackNegative.swift:15:13: error: lifetime-dependent variable 'escaped' escapes its scope
+13 | extension StaticCycleProfileStorage {
+14 |     mutating func rejectActiveAfterCallbacks(seed: UInt8) -> Int {
+15 |         var escaped: InvestigationOwner? = nil
+   |             `- error: lifetime-dependent variable 'escaped' escapes its scope
+16 |         guard case .valid(let audit) = audit() else { preconditionFailure("actual profile audit") }
+17 |         let limits = self.limits
+   :
+27 |                     try semantic.withLifetime(configuredLimits: cycleSemanticConfiguration(limits),
+28 |                         records: &records, paths: &paths, payloads: &payloads, scalars: &scalars) {
+29 |                         (semantic) throws(SemanticExpansionError) in
+   |                          `- note: it depends on a closure capture; this is not yet supported
+30 |                         do throws(DrawingError) {
+31 |                             var entries = canvasBacking.mutableSpan
+   :
+45 |                                         precondition(!pointer.pointee.unavailable)
+46 |                                         escaped = consume owner
+47 |                                         return 1
+   |                                         `- note: this use causes the lifetime-dependent value to escape
+48 |                                         }
+49 |                                     }
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-boundary/CallbackNegative.swift:15:13: error: lifetime-dependent variable 'escaped' escapes its scope
+13 | extension StaticCycleProfileStorage {
+14 |     mutating func rejectActiveAfterCallbacks(seed: UInt8) -> Int {
+15 |         var escaped: InvestigationOwner? = nil
+   |             `- error: lifetime-dependent variable 'escaped' escapes its scope
+16 |         guard case .valid(let audit) = audit() else { preconditionFailure("actual profile audit") }
+17 |         let limits = self.limits
+   :
+31 |                             var entries = canvasBacking.mutableSpan
+32 |                             try canvas.withLifetime(entries: &entries, table: CycleValueTable(),
+33 |                                 capacity: limits.drawing.maximumCanvasOccurrences, limits: limits.staticCanvas!) { values in
+   |                                                                                                                    `- note: it depends on a closure capture; this is not yet supported
+34 |                                 checks = workspace.withGeometry { geometry in
+35 |                                     withUnsafeMutablePointer(to: &control) { pointer in
+   :
+45 |                                         precondition(!pointer.pointee.unavailable)
+46 |                                         escaped = consume owner
+47 |                                         return 1
+   |                                         `- note: this use causes the lifetime-dependent value to escape
+48 |                                         }
+49 |                                     }
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-boundary/CallbackNegative.swift:15:13: error: lifetime-dependent variable 'escaped' escapes its scope
+13 | extension StaticCycleProfileStorage {
+14 |     mutating func rejectActiveAfterCallbacks(seed: UInt8) -> Int {
+15 |         var escaped: InvestigationOwner? = nil
+   |             `- error: lifetime-dependent variable 'escaped' escapes its scope
+16 |         guard case .valid(let audit) = audit() else { preconditionFailure("actual profile audit") }
+17 |         let limits = self.limits
+   :
+33 |                                 capacity: limits.drawing.maximumCanvasOccurrences, limits: limits.staticCanvas!) { values in
+34 |                                 checks = workspace.withGeometry { geometry in
+35 |                                     withUnsafeMutablePointer(to: &control) { pointer in
+   |                                                                              `- note: it depends on a closure capture; this is not yet supported
+36 |                                         invokeActivationCallback {
+37 |                                         let activationBacking: InlineArray<1, UInt8> = [seed]
+   :
+45 |                                         precondition(!pointer.pointee.unavailable)
+46 |                                         escaped = consume owner
+47 |                                         return 1
+   |                                         `- note: this use causes the lifetime-dependent value to escape
+48 |                                         }
+49 |                                     }
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-boundary/CallbackNegative.swift:15:13: error: lifetime-dependent variable 'escaped' escapes its scope
+13 | extension StaticCycleProfileStorage {
+14 |     mutating func rejectActiveAfterCallbacks(seed: UInt8) -> Int {
+15 |         var escaped: InvestigationOwner? = nil
+   |             `- error: lifetime-dependent variable 'escaped' escapes its scope
+16 |         guard case .valid(let audit) = audit() else { preconditionFailure("actual profile audit") }
+17 |         let limits = self.limits
+   :
+35 |                                     withUnsafeMutablePointer(to: &control) { pointer in
+36 |                                         invokeActivationCallback {
+37 |                                         let activationBacking: InlineArray<1, UInt8> = [seed]
+   |                                             `- note: it depends on the lifetime of variable 'activationBacking'
+38 |                                         let supplied = InvestigationSupplied(models: models.borrowedScope(),
+39 |                                             root: root.borrowedRoot(), semantic: semantic.borrowedStore(),
+   :
+45 |                                         precondition(!pointer.pointee.unavailable)
+46 |                                         escaped = consume owner
+47 |                                         return 1
+   |                                         `- note: this use causes the lifetime-dependent value to escape
+48 |                                         }
+49 |                                     }

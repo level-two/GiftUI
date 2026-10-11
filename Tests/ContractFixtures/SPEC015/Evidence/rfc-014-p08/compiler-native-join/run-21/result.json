@@ -1,0 +1,18 @@
+{
+  "number": 21,
+  "label": "GiftUISurfaceCore",
+  "original_command": "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.3.2-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-ie3r3cmc/cache -disable-sandbox -target arm64-apple-macosx26.0 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk -D GIFTUI_DYNAMIC_PROFILE -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014/189dda86d331e15d-wpk82ft7/macos-dynamic -parse-as-library -I /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpke3zvfyl/macos-dynamic -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014/189dda86d331e15d-wpk82ft7/macos-dynamic -enable-testing -I /Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-ie3r3cmc -module-name GiftUISurfaceCore -emit-module -emit-object /Users/eugene/work/GiftUI/Sources/GiftUISurfaceCore/RasterSurface.swift /Users/eugene/work/GiftUI/Sources/GiftUISurfaceCore/SurfaceValues.swift -emit-module-path /Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-ie3r3cmc/GiftUISurfaceCore.swiftmodule -o /Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-ie3r3cmc/GiftUISurfaceCore.o",
+  "command": "/Users/eugene/work/GiftUI/.toolchains/p08-comparison/expanded/swift-6.4.0-RELEASE-osx/swift-6.4.0-RELEASE-osx-package.pkg/Payload/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/contracts/p08-native-6.4/cache -disable-sandbox -target arm64-apple-macosx26.0 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk -D GIFTUI_DYNAMIC_PROFILE -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/contracts/p08-native-6.4 -parse-as-library -I /Users/eugene/work/GiftUI/.build/contracts/p08-native-6.4 -I /Users/eugene/work/GiftUI/.build/contracts/p08-native-6.4 -enable-testing -I /Users/eugene/work/GiftUI/.build/contracts/p08-native-6.4 -module-name GiftUISurfaceCore -emit-module -emit-object /Users/eugene/work/GiftUI/Sources/GiftUISurfaceCore/RasterSurface.swift /Users/eugene/work/GiftUI/Sources/GiftUISurfaceCore/SurfaceValues.swift -emit-module-path /Users/eugene/work/GiftUI/.build/contracts/p08-native-6.4/GiftUISurfaceCore.swiftmodule -o /Users/eugene/work/GiftUI/.build/contracts/p08-native-6.4/GiftUISurfaceCore.o",
+  "status": "complete",
+  "sources": {
+    "/Users/eugene/work/GiftUI/Sources/GiftUISurfaceCore/RasterSurface.swift": "cf0aa2fe88d7cf825e5b9bddb8b8e2fc48d76555f4a8ac94ff4ec0b884fe3b42",
+    "/Users/eugene/work/GiftUI/Sources/GiftUISurfaceCore/SurfaceValues.swift": "96e161fdf3d1f58dd4c1de04c043df647a3fa279d17993c57e2b0ce15e19d60c"
+  },
+  "exit": 0,
+  "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "artifacts": {
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-native-6.4/GiftUISurfaceCore.swiftmodule": "ebfeb04dfebf4e6c2c5f1d36d50c670968f482fb5f1161362f686545b79373b1",
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-native-6.4/GiftUISurfaceCore.o": "bf008a28204a611f5f64cde7012f990bb2602aca9e7524ddb0f98d47e0036e21"
+  }
+}

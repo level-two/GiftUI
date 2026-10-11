@@ -1,0 +1,17 @@
+{
+  "number": 19,
+  "label": "GiftUICapabilities",
+  "original_command": "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.3.2-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-ie3r3cmc/cache -disable-sandbox -target arm64-apple-macosx26.0 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk -D GIFTUI_DYNAMIC_PROFILE -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014/189dda86d331e15d-wpk82ft7/macos-dynamic -parse-as-library -I /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpke3zvfyl/macos-dynamic -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014/189dda86d331e15d-wpk82ft7/macos-dynamic -enable-testing -I /Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-ie3r3cmc -module-name GiftUICapabilities -emit-module -emit-object /Users/eugene/work/GiftUI/Sources/GiftUICapabilities/GiftUICapabilities.swift -emit-module-path /Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-ie3r3cmc/GiftUICapabilities.swiftmodule -o /Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-ie3r3cmc/GiftUICapabilities.o",
+  "command": "/Users/eugene/work/GiftUI/.toolchains/p08-comparison/expanded/swift-6.4.0-RELEASE-osx/swift-6.4.0-RELEASE-osx-package.pkg/Payload/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/contracts/p08-native-6.4/cache -disable-sandbox -target arm64-apple-macosx26.0 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk -D GIFTUI_DYNAMIC_PROFILE -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/contracts/p08-native-6.4 -parse-as-library -I /Users/eugene/work/GiftUI/.build/contracts/p08-native-6.4 -I /Users/eugene/work/GiftUI/.build/contracts/p08-native-6.4 -enable-testing -I /Users/eugene/work/GiftUI/.build/contracts/p08-native-6.4 -module-name GiftUICapabilities -emit-module -emit-object /Users/eugene/work/GiftUI/Sources/GiftUICapabilities/GiftUICapabilities.swift -emit-module-path /Users/eugene/work/GiftUI/.build/contracts/p08-native-6.4/GiftUICapabilities.swiftmodule -o /Users/eugene/work/GiftUI/.build/contracts/p08-native-6.4/GiftUICapabilities.o",
+  "status": "complete",
+  "sources": {
+    "/Users/eugene/work/GiftUI/Sources/GiftUICapabilities/GiftUICapabilities.swift": "79a2f7a749cbe3e8033d1d118f9c94fadb67b985d36dbc185996fc255e8ba884"
+  },
+  "exit": 0,
+  "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "artifacts": {
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-native-6.4/GiftUICapabilities.swiftmodule": "2154b7cd248e8a93e309f4508aee7798275c35df6981876e0871139232814faf",
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-native-6.4/GiftUICapabilities.o": "215cadc0dc2623b807cee7895d44e1ea0dcc3dca46bacbbb078e33b69c1bca68"
+  }
+}

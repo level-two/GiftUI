@@ -1,0 +1,476 @@
+public struct GiftUIConditionID: RawRepresentable, Sendable, Equatable {
+    public let rawValue: UInt16
+
+    public init(rawValue: UInt16) {
+        self.rawValue = rawValue
+    }
+
+    public static let unknownProducerCondition = Self(rawValue: 0)
+    public static let invalidValue = Self(rawValue: 1)
+    public static let arithmeticOverflow = Self(rawValue: 2)
+    public static let capacityExhausted = Self(rawValue: 3)
+    public static let invalidIdentity = Self(rawValue: 4)
+    public static let invalidProvenance = Self(rawValue: 5)
+    public static let invalidPhase = Self(rawValue: 6)
+    public static let reentrancyViolation = Self(rawValue: 7)
+    public static let requiredFacilityUnavailable = Self(rawValue: 8)
+    public static let nonRetryableRefusal = Self(rawValue: 9)
+    public static let invariantViolation = Self(rawValue: 10)
+
+    public static let rasterMalformedRequirement = Self(rawValue: 12)
+    public static let rasterDuplicateContributor = Self(rawValue: 13)
+    public static let rasterMissingContributor = Self(rawValue: 14)
+    public static let rasterMalformedContribution = Self(rawValue: 15)
+    public static let rasterInsufficientCapacity = Self(rawValue: 16)
+    public static let rasterOperationSetMismatch = Self(rawValue: 17)
+    public static let rasterOperationStreamMismatch = Self(rawValue: 18)
+    public static let rasterLogicalExtentOverflow = Self(rawValue: 19)
+    public static let rasterUnsupportedLogicalExtent = Self(rawValue: 20)
+    public static let rasterNoCommonCanonicalPixelEncoding = Self(rawValue: 21)
+    public static let rasterIncompatibleSubmissionLifetime = Self(rawValue: 22)
+    public static let rasterIncompatibleSubmissionHandoff = Self(rawValue: 23)
+    public static let rasterPolicyHasNoConformingRealization = Self(rawValue: 24)
+    public static let rasterByteCountOverflow = Self(rawValue: 25)
+}
+
+public enum GiftUIFailureOrigin: UInt8, Sendable {
+    case foundation = 0
+    case capability = 1
+    case semantic = 2
+    case layout = 3
+    case rendering = 4
+    case execution = 5
+    case observableState = 6
+    case interaction = 7
+    case backend = 8
+    case presentationIntegration = 9
+    case inputIntegration = 10
+    case hostComposition = 11
+    case displayDriver = 12
+    case inputDriver = 13
+    case transport = 14
+}
+
+public enum GiftUIAffectedScope: UInt8, Sendable {
+    case operation = 0
+    case activeCycle = 1
+    case candidateFrame = 2
+    case component = 3
+    case runtime = 4
+}
+
+public enum GiftUIContainment: UInt8, Sendable {
+    case contained = 0
+    case safetyNotProven = 1
+}
+
+public struct GiftUIFailureFact: Sendable, Equatable {
+    public let condition: GiftUIConditionID
+    public let origin: GiftUIFailureOrigin
+    public let affectedScope: GiftUIAffectedScope
+    public let containment: GiftUIContainment
+
+    public init(
+        condition: GiftUIConditionID,
+        origin: GiftUIFailureOrigin,
+        affectedScope: GiftUIAffectedScope,
+        containment: GiftUIContainment
+    ) {
+        self.condition = condition
+        self.origin = origin
+        self.affectedScope = affectedScope
+        self.containment = containment
+    }
+}
+
+public enum GiftUIOperationalKind: UInt8, Sendable {
+    case noChange = 0
+    case cacheMiss = 1
+    case backpressured = 2
+    case superseded = 3
+    case deferredToLaterAdmission = 4
+    case retryableRefusal = 5
+}
+
+public struct GiftUIOperationalFact: Sendable, Equatable {
+    public let kind: GiftUIOperationalKind
+    public let origin: GiftUIFailureOrigin
+    public let affectedScope: GiftUIAffectedScope
+
+    public init(
+        kind: GiftUIOperationalKind,
+        origin: GiftUIFailureOrigin,
+        affectedScope: GiftUIAffectedScope
+    ) {
+        self.kind = kind
+        self.origin = origin
+        self.affectedScope = affectedScope
+    }
+}
+
+public enum GiftUIOutcome<Success> {
+    case success(Success)
+    case operational(GiftUIOperationalFact)
+    case failure(GiftUIFailureFact)
+}
+
+extension GiftUIOutcome: Sendable where Success: Sendable {}
+extension GiftUIOutcome: Equatable where Success: Equatable {}
+
+public struct GiftUIFailureAnnotation: Sendable, Equatable {
+    public let key: UInt16
+    public let value: UInt32
+
+    public init(key: UInt16, value: UInt32) {
+        self.key = key
+        self.value = value
+    }
+}
+
+public struct GiftUIFailureAnnotations: Sendable, Equatable {
+    public static let capacity: UInt8 = 2
+
+    public private(set) var count: UInt8
+    private var first: GiftUIFailureAnnotation
+    private var second: GiftUIFailureAnnotation
+
+    public init() {
+        count = 0
+        first = GiftUIFailureAnnotation(key: 0, value: 0)
+        second = GiftUIFailureAnnotation(key: 0, value: 0)
+    }
+
+    public mutating func append(_ annotation: GiftUIFailureAnnotation) -> Bool {
+        switch count {
+        case 0:
+            first = annotation
+            count = 1
+            return true
+        case 1:
+            second = annotation
+            count = Self.capacity
+            return true
+        default:
+            return false
+        }
+    }
+
+    public subscript(index: UInt8) -> GiftUIFailureAnnotation? {
+        switch index {
+        case 0 where count > 0:
+            first
+        case 1 where count > 1:
+            second
+        default:
+            nil
+        }
+    }
+}
+
+enum GiftUIFailureNormalization {
+    static func normalizeFailure(
+        condition: GiftUIConditionID,
+        origin: GiftUIFailureOrigin,
+        affectedScope: GiftUIAffectedScope,
+        producerContainmentRawValue: UInt8
+    ) -> GiftUIFailureFact {
+        GiftUIFailureFact(
+            condition: condition,
+            origin: origin,
+            affectedScope: affectedScope,
+            containment: producerContainmentRawValue == GiftUIContainment.contained.rawValue
+                ? .contained
+                : .safetyNotProven
+        )
+    }
+
+    static func propagate(
+        _ fact: GiftUIFailureFact,
+        provenAffectedScope: GiftUIAffectedScope? = nil
+    ) -> GiftUIFailureFact {
+        GiftUIFailureFact(
+            condition: fact.condition,
+            origin: fact.origin,
+            affectedScope: provenAffectedScope ?? fact.affectedScope,
+            containment: fact.containment
+        )
+    }
+
+    static func unknownProducerFailure(
+        origin: GiftUIFailureOrigin,
+        affectedScope: GiftUIAffectedScope
+    ) -> GiftUIFailureFact {
+        GiftUIFailureFact(
+            condition: .unknownProducerCondition,
+            origin: origin,
+            affectedScope: affectedScope,
+            containment: .safetyNotProven
+        )
+    }
+}
+
+public enum GiftUIResidualDisposition: UInt8, Sendable {
+    case continueOperation = 0
+    case requestPacedRetry = 1
+    case markFacilityUnavailable = 2
+    case quiesceAffectedScope = 3
+    case invokeFatalHook = 4
+}
+
+public struct GiftUIAllowedDispositions: OptionSet, Sendable, Equatable {
+    public let rawValue: UInt8
+
+    public init(rawValue: UInt8) {
+        self.rawValue = rawValue
+    }
+
+    public static let continueOperation = Self(
+        rawValue: 1 << GiftUIResidualDisposition.continueOperation.rawValue)
+    public static let requestPacedRetry = Self(
+        rawValue: 1 << GiftUIResidualDisposition.requestPacedRetry.rawValue)
+    public static let markFacilityUnavailable = Self(
+        rawValue: 1 << GiftUIResidualDisposition.markFacilityUnavailable.rawValue)
+    public static let quiesceAffectedScope = Self(
+        rawValue: 1 << GiftUIResidualDisposition.quiesceAffectedScope.rawValue)
+    public static let invokeFatalHook = Self(
+        rawValue: 1 << GiftUIResidualDisposition.invokeFatalHook.rawValue)
+}
+
+public struct GiftUIResidualPolicyInput<Context> {
+    public let outcome: GiftUIOutcome<Void>
+    public let context: Context
+    public let allowed: GiftUIAllowedDispositions
+    public let attemptOrdinal: UInt8
+    public let attemptLimit: UInt8
+
+    public init?(
+        outcome: GiftUIOutcome<Void>,
+        context: Context,
+        allowed: GiftUIAllowedDispositions,
+        attemptOrdinal: UInt8,
+        attemptLimit: UInt8
+    ) {
+        let allDeclared = GiftUIAllowedDispositions(rawValue: (1 << 5) - 1)
+        guard !allowed.isEmpty, allowed.subtracting(allDeclared).isEmpty else {
+            return nil
+        }
+        guard attemptLimit > 0, attemptOrdinal < attemptLimit else {
+            return nil
+        }
+
+        switch outcome {
+        case .success:
+            return nil
+        case .operational(let fact):
+            if allowed.contains(.requestPacedRetry) {
+                guard fact.kind == .backpressured || fact.kind == .retryableRefusal else {
+                    return nil
+                }
+                guard attemptOrdinal < attemptLimit - 1 else {
+                    return nil
+                }
+            }
+        case .failure(let fact):
+            guard !allowed.contains(.requestPacedRetry) else {
+                return nil
+            }
+            if fact.containment == .safetyNotProven {
+                guard !allowed.contains(.continueOperation) else {
+                    return nil
+                }
+                if fact.affectedScope == .runtime {
+                    let terminal: GiftUIAllowedDispositions = [
+                        .quiesceAffectedScope,
+                        .invokeFatalHook,
+                    ]
+                    guard allowed.subtracting(terminal).isEmpty else {
+                        return nil
+                    }
+                }
+            }
+        }
+
+        self.outcome = outcome
+        self.context = context
+        self.allowed = allowed
+        self.attemptOrdinal = attemptOrdinal
+        self.attemptLimit = attemptLimit
+    }
+}
+
+public protocol GiftUIResidualFailurePolicy {
+    associatedtype Context
+
+    mutating func disposition(
+        for input: GiftUIResidualPolicyInput<Context>
+    ) -> GiftUIResidualDisposition
+}
+
+public enum GiftUIOperationalHealthState: UInt8, Sendable {
+    case available = 0
+    case degraded = 1
+    case unavailable = 2
+    case quiesced = 3
+}
+
+public struct GiftUIOperationalHealth: Sendable, Equatable {
+    public private(set) var state: GiftUIOperationalHealthState
+    public private(set) var transitionCount: UInt32
+    public private(set) var operationalCount: UInt32
+    public private(set) var failureCount: UInt32
+    public private(set) var countersSaturated: Bool
+
+    public init(state: GiftUIOperationalHealthState = .available) {
+        self.state = state
+        transitionCount = 0
+        operationalCount = 0
+        failureCount = 0
+        countersSaturated = false
+    }
+
+    init(
+        state: GiftUIOperationalHealthState,
+        transitionCount: UInt32,
+        operationalCount: UInt32,
+        failureCount: UInt32,
+        countersSaturated: Bool
+    ) {
+        self.state = state
+        self.transitionCount = transitionCount
+        self.operationalCount = operationalCount
+        self.failureCount = failureCount
+        self.countersSaturated = countersSaturated
+    }
+
+    public mutating func recordOperational(
+        _ fact: GiftUIOperationalFact,
+        resultingState: GiftUIOperationalHealthState
+    ) {
+        _ = fact
+        let increment = Self.incremented(operationalCount)
+        operationalCount = increment.value
+        countersSaturated = countersSaturated || increment.saturated
+        transition(to: resultingState)
+    }
+
+    public mutating func recordFailure(
+        _ fact: GiftUIFailureFact,
+        resultingState: GiftUIOperationalHealthState
+    ) {
+        _ = fact
+        let increment = Self.incremented(failureCount)
+        failureCount = increment.value
+        countersSaturated = countersSaturated || increment.saturated
+        transition(to: resultingState)
+    }
+
+    private static func incremented(_ counter: UInt32) -> (value: UInt32, saturated: Bool) {
+        counter == .max ? (.max, true) : (counter + 1, false)
+    }
+
+    private mutating func transition(to resultingState: GiftUIOperationalHealthState) {
+        guard state != .quiesced else {
+            return
+        }
+        if state != resultingState {
+            let increment = Self.incremented(transitionCount)
+            transitionCount = increment.value
+            countersSaturated = countersSaturated || increment.saturated
+            state = resultingState
+        }
+    }
+}
+
+public enum GiftUIDiagnosticKind: UInt8, Sendable {
+    case operationalOutcome = 0
+    case failureOutcome = 1
+    case healthTransition = 2
+    case residualDisposition = 3
+}
+
+public enum GiftUIDiagnosticSeverity: UInt8, Sendable {
+    case debug = 0
+    case information = 1
+    case notice = 2
+    case warning = 3
+    case error = 4
+    case critical = 5
+}
+
+public struct GiftUIDiagnosticSelection: Sendable, Equatable {
+    public let kindMask: UInt8
+    public let originMask: UInt16
+    public let minimumSeverity: GiftUIDiagnosticSeverity
+
+    public init(
+        kindMask: UInt8,
+        originMask: UInt16,
+        minimumSeverity: GiftUIDiagnosticSeverity
+    ) {
+        self.kindMask = kindMask
+        self.originMask = originMask
+        self.minimumSeverity = minimumSeverity
+    }
+
+    public func includes(
+        kind: GiftUIDiagnosticKind,
+        origin: GiftUIFailureOrigin,
+        severity: GiftUIDiagnosticSeverity
+    ) -> Bool {
+        let kindBit: UInt8 = 1 << kind.rawValue
+        let originBit: UInt16 = 1 << origin.rawValue
+        return kindMask & kindBit != 0
+            && originMask & originBit != 0
+            && severity.rawValue >= minimumSeverity.rawValue
+    }
+}
+
+public struct GiftUIDiagnosticRecord: Sendable, Equatable {
+    public let kind: GiftUIDiagnosticKind
+    public let severity: GiftUIDiagnosticSeverity
+    public let flags: UInt16
+    public let origin: GiftUIFailureOrigin
+    public let affectedScope: GiftUIAffectedScope
+    public let condition: UInt16
+    public let correlation0: UInt32
+    public let correlation1: UInt32
+    public let observation0: UInt32
+    public let observation1: UInt32
+
+    public init(
+        kind: GiftUIDiagnosticKind,
+        severity: GiftUIDiagnosticSeverity,
+        flags: UInt16,
+        origin: GiftUIFailureOrigin,
+        affectedScope: GiftUIAffectedScope,
+        condition: UInt16,
+        correlation0: UInt32 = 0,
+        correlation1: UInt32 = 0,
+        observation0: UInt32 = 0,
+        observation1: UInt32 = 0
+    ) {
+        self.kind = kind
+        self.severity = severity
+        self.flags = flags & 0x000F
+        self.origin = origin
+        self.affectedScope = affectedScope
+        self.condition = condition
+        self.correlation0 = correlation0
+        self.correlation1 = correlation1
+        self.observation0 = observation0
+        self.observation1 = observation1
+    }
+}
+
+public enum GiftUIDiagnosticSinkResult: UInt8, Sendable {
+    case accepted = 0
+    case dropped = 1
+    case saturated = 2
+    case failed = 3
+}
+
+public protocol GiftUIDiagnosticSink {
+    mutating func consume(
+        _ record: GiftUIDiagnosticRecord
+    ) -> GiftUIDiagnosticSinkResult
+}

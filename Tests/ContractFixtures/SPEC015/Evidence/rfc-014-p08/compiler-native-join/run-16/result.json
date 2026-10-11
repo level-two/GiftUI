@@ -1,0 +1,17 @@
+{
+  "number": 16,
+  "label": "CyclePresentation",
+  "original_command": "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.3.2-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpke3zvfyl/macos-dynamic/cache -disable-sandbox -target arm64-apple-macosx26.0 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk -D GIFTUI_DYNAMIC_PROFILE -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014/189dda86d331e15d-wpk82ft7/macos-dynamic -parse-as-library -I /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpke3zvfyl/macos-dynamic -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014/189dda86d331e15d-wpk82ft7/macos-dynamic -enable-testing -module-name CyclePresentation -emit-module -emit-object /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpke3zvfyl/macos-dynamic/Cycle.swift -emit-module-path /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpke3zvfyl/macos-dynamic/CyclePresentation.swiftmodule -o /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpke3zvfyl/macos-dynamic/CyclePresentation.o",
+  "command": "/Users/eugene/work/GiftUI/.toolchains/p08-comparison/expanded/swift-6.4.0-RELEASE-osx/swift-6.4.0-RELEASE-osx-package.pkg/Payload/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/contracts/p08-native-6.4/cache -disable-sandbox -target arm64-apple-macosx26.0 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk -D GIFTUI_DYNAMIC_PROFILE -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/contracts/p08-native-6.4 -parse-as-library -I /Users/eugene/work/GiftUI/.build/contracts/p08-native-6.4 -I /Users/eugene/work/GiftUI/.build/contracts/p08-native-6.4 -enable-testing -module-name CyclePresentation -emit-module -emit-object /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpke3zvfyl/macos-dynamic/Cycle.swift -emit-module-path /Users/eugene/work/GiftUI/.build/contracts/p08-native-6.4/CyclePresentation.swiftmodule -o /Users/eugene/work/GiftUI/.build/contracts/p08-native-6.4/CyclePresentation.o",
+  "status": "complete",
+  "sources": {
+    "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpke3zvfyl/macos-dynamic/Cycle.swift": "ebb0bdbbec49dcb7945453fff664dbf6da6350de06b0ffd438eec95e2ea8f9f3"
+  },
+  "exit": 0,
+  "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "artifacts": {
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-native-6.4/CyclePresentation.swiftmodule": "90ae70b4289f9de4bcc45ecac4f6c739bd02eb7fb52ab9087f8e7ee37c77ea2b",
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-native-6.4/CyclePresentation.o": "054361f0fdf529e6f53d43818c4d41d1928697615ba50ce1b62fe960a118bbe6"
+  }
+}
