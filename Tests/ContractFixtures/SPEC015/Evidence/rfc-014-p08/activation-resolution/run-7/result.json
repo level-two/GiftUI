@@ -1,0 +1,16 @@
+{
+  "number": 7,
+  "hypothesis": "actual-activation-private-scopes",
+  "command": "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.3.2-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/contracts/p08-activation-resolution-cache -disable-sandbox -target arm64-apple-macosx26.0 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk -D GIFTUI_DYNAMIC_PROFILE -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014/189dda86d331e15d-wpk82ft7/macos-dynamic -parse-as-library -I /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpke3zvfyl/macos-dynamic -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014/189dda86d331e15d-wpk82ft7/macos-dynamic -enable-testing -I /Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-ie3r3cmc -module-name P08ActivationResolution -emit-object /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-resolution/Supplied.swift /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-resolution/Layout.swift /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-resolution/Positive.swift -o /Users/eugene/work/GiftUI/.build/contracts/p08-activation-resolution-7.o",
+  "compiler_sha256": "d8e40107da0e2c1c59640a983faea326d5d2bddfe81f7609db14bade43c4a5b9",
+  "schema_receipt_sha256": "397d42439c721526962baf584e13885a9e04835c81e567d06ab03b8161b9b664",
+  "sources": {
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-resolution/Supplied.swift": "78dba61ac66738a5c6b62a75e1d789336aa40f3d63099872458691183d015454",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-resolution/Layout.swift": "f93757a105ed286c724ffc775825e8a52ea843bc8f922827c24b515b5c2c2364",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-resolution/Positive.swift": "150c4a897a76b66b9ca3140b713bb8b7462344f2b8f5a6155dc90ac8f4866cc4"
+  },
+  "status": "completed",
+  "exit": 1,
+  "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stderr_sha256": "9eebb8d4a3a7f337b0218a8b97ff4d5d3579c6276ad09e058d5fcdd04c3da8e6"
+}

@@ -1,0 +1,79 @@
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-resolution/Supplied.swift:43:98: error: copy of noncopyable typed value. This is a compiler bug. Please file a bug with a small example of the bug
+41 |     }
+42 |     @_lifetime(copy self)
+43 |     borrowing func borrowedModels() -> ObservableModelScope<CycleOwnedModel, CycleModelSchema> { models.borrowedScope() }
+   |                                                                                                  `- error: copy of noncopyable typed value. This is a compiler bug. Please file a bug with a small example of the bug
+44 |     @_lifetime(copy self)
+45 |     borrowing func borrowedRoot() -> ObservableStateRootScope<CycleOwnedModel, SemanticCompleteIdentity> { root.borrowedRoot() }
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-resolution/Supplied.swift:45:108: error: copy of noncopyable typed value. This is a compiler bug. Please file a bug with a small example of the bug
+43 |     borrowing func borrowedModels() -> ObservableModelScope<CycleOwnedModel, CycleModelSchema> { models.borrowedScope() }
+44 |     @_lifetime(copy self)
+45 |     borrowing func borrowedRoot() -> ObservableStateRootScope<CycleOwnedModel, SemanticCompleteIdentity> { root.borrowedRoot() }
+   |                                                                                                            `- error: copy of noncopyable typed value. This is a compiler bug. Please file a bug with a small example of the bug
+46 |     @_lifetime(copy self)
+47 |     borrowing func borrowedSemantic() -> SemanticRecordStore<CyclePayload> { semantic.borrowedStore() }
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-resolution/Supplied.swift:47:78: error: copy of noncopyable typed value. This is a compiler bug. Please file a bug with a small example of the bug
+45 |     borrowing func borrowedRoot() -> ObservableStateRootScope<CycleOwnedModel, SemanticCompleteIdentity> { root.borrowedRoot() }
+46 |     @_lifetime(copy self)
+47 |     borrowing func borrowedSemantic() -> SemanticRecordStore<CyclePayload> { semantic.borrowedStore() }
+   |                                                                              `- error: copy of noncopyable typed value. This is a compiler bug. Please file a bug with a small example of the bug
+48 |     @_lifetime(copy self)
+49 |     borrowing func borrowedValues() -> CanvasStagedValues<SemanticRecordReference, CycleValueTable> { values.borrowedValues() }
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-resolution/Supplied.swift:49:103: error: copy of noncopyable typed value. This is a compiler bug. Please file a bug with a small example of the bug
+47 |     borrowing func borrowedSemantic() -> SemanticRecordStore<CyclePayload> { semantic.borrowedStore() }
+48 |     @_lifetime(copy self)
+49 |     borrowing func borrowedValues() -> CanvasStagedValues<SemanticRecordReference, CycleValueTable> { values.borrowedValues() }
+   |                                                                                                       `- error: copy of noncopyable typed value. This is a compiler bug. Please file a bug with a small example of the bug
+50 | }
+51 | 
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-resolution/Layout.swift:18:19: error: lifetime-dependent variable 'self' escapes its scope
+16 |     init(supplied: consuming InvestigationSupplied) { self = .inert(consume supplied) }
+17 | 
+18 |     mutating func activate() {
+   |                   |- error: lifetime-dependent variable 'self' escapes its scope
+   |                   `- note: it depends on the lifetime of argument 'self'
+19 |         switch consume self {
+20 |         case .inert(let supplied):
+   |                         `- note: this use causes the lifetime-dependent value to escape
+21 |             let pipeline = InvestigationPipeline(
+22 |                 models: supplied.borrowedModels(), root: supplied.borrowedRoot(),
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-resolution/Layout.swift:18:19: error: lifetime-dependent variable 'self' escapes its scope
+16 |     init(supplied: consuming InvestigationSupplied) { self = .inert(consume supplied) }
+17 | 
+18 |     mutating func activate() {
+   |                   `- error: lifetime-dependent variable 'self' escapes its scope
+19 |         switch consume self {
+20 |         case .inert(let supplied):
+   |                         `- note: it depends on the lifetime of variable 'supplied'
+21 |             let pipeline = InvestigationPipeline(
+22 |                 models: supplied.borrowedModels(), root: supplied.borrowedRoot(),
+   :
+33 |             self = .active(consume coordinator)
+34 |         }
+35 |     }
+   |     `- note: this use causes the lifetime-dependent value to escape
+36 |     mutating func quiesce() {
+37 |         switch consume self {
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-resolution/Layout.swift:18:19: error: lifetime-dependent variable 'self' escapes its scope
+16 |     init(supplied: consuming InvestigationSupplied) { self = .inert(consume supplied) }
+17 | 
+18 |     mutating func activate() {
+   |                   `- error: lifetime-dependent variable 'self' escapes its scope
+19 |         switch consume self {
+20 |         case .inert(let supplied):
+   |                         `- note: it depends on the lifetime of variable 'supplied'
+21 |             let pipeline = InvestigationPipeline(
+22 |                 models: supplied.borrowedModels(), root: supplied.borrowedRoot(),
+   :
+33 |             self = .active(consume coordinator)
+34 |         }
+35 |     }
+   |     `- note: this use causes the lifetime-dependent value to escape
+36 |     mutating func quiesce() {
+37 |         switch consume self {

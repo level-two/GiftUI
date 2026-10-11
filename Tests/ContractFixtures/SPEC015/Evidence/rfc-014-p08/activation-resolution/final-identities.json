@@ -1,0 +1,8 @@
+{
+  "runtime_receipt_sha256": "f05c530abf34e698f216ba0e6259d78c9cc312b83a4cfc47bf70f67f0280bf6a",
+  "runtime_inputs_verified": 165,
+  "runtime_artifacts_verified": 143,
+  "compiler_sha256": "d8e40107da0e2c1c59640a983faea326d5d2bddfe81f7609db14bade43c4a5b9",
+  "positive_object_sha256": "80fcc21faaab086e828b18b67a3cc7436e7dfc34d3c1f8b331bc58aa0c241109",
+  "compiled_scoped_return_object_sha256": "aa98e50606c6f699276e049046dafb00984898984c1e481668708830b711c106"
+}
