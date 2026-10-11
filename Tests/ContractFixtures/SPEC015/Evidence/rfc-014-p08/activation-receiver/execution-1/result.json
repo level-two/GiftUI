@@ -1,0 +1,7 @@
+{
+  "command": ".build/contracts/p08-activation-receiver-1",
+  "exit": 0,
+  "executable_sha256": "3516ae566f28f3f527075cadffe62fe4c1dcd590c0a4257eb58953c9c5b41539",
+  "stdout_sha256": "61a202f836e3c8992459ddc0e97dcd7e17cb298c5d57258a1a3ad51794c432fc",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}
