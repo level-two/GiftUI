@@ -47,7 +47,7 @@ package enum CanvasDomain: CounterReadDomain {
 }
 package typealias CanvasTable = CounterSchemaCanvasTable<CanvasDomain>
 
-private struct CanvasLayout: ResolvedRenderLayoutView {
+struct CanvasLayout: ResolvedRenderLayoutView {
     var malformed = false
     var zeroSize = false
     var rootIdentity: UInt16 { 1 }
@@ -68,7 +68,7 @@ private struct CanvasLayout: ResolvedRenderLayoutView {
 private let canvasLimits = DrawingLimits(maximumLineWidth: 4, maximumCanvasOccurrences: 3,
     maximumLivePathPoints: 4, maximumLivePathSubpaths: 2, maximumPlanStrokes: 3,
     maximumPlanPoints: 12, maximumPlanSubpaths: 6, maximumNormalizedStrokeOperations: 3)!
-private struct CanvasWorkspace: DrawingPlanConstructionWorkspace {
+struct CanvasWorkspace: DrawingPlanConstructionWorkspace {
     let trace: UnsafeMutablePointer<CanvasTrace>
     let capacity = canvasLimits
     var isActive = false
@@ -194,6 +194,7 @@ public func giftuiP06Stores(dynamic: Bool) -> UInt32 {
                     var b = try scope.materialize(CanvasModel(value: 7, trace: trace))
                     try scope.withFrame { () throws(ObservableStateError) in
                         try scope.pin(a.key); try scope.pin(b.key)
+                        if mode == 0 && !dynamic { checks += giftuiP06Semantic(scope: scope, key: a.key, trace: trace); trace.pointee = CanvasTrace() }
                         let limits = StaticCanvasLimits(maximumStaticCallableCases: 2, maximumStaticCaptureBytes: 32)!
                         do throws(DrawingError) {
                             #if !hasFeature(Embedded)

@@ -36,21 +36,27 @@ package enum SemanticStandardPayloadCodec<Roles: SemanticDeclarationRoles>:
     package static func primitive<Value: _GiftUISemanticPrimitivePayload>(
         _ value: borrowing Value, writer: borrowing SemanticPayloadWriter<Payload>
     ) -> SemanticExpansionError? {
+        primitive(value, writer: writer, wrapping: { $0 })
+    }
+    package static func primitive<Value: _GiftUISemanticPrimitivePayload, Target>(
+        _ value: borrowing Value, writer: borrowing SemanticPayloadWriter<Target>,
+        wrapping wrap: (Payload) -> Target
+    ) -> SemanticExpansionError? {
         if Value.self == _GiftUIVStackPayload.self {
             return writer.store(
-                .vStack(project(value, as: _GiftUIVStackPayload.self)), kind: .primitive)
+                wrap(.vStack(project(value, as: _GiftUIVStackPayload.self))), kind: .primitive)
         }
         if Value.self == _GiftUIHStackPayload.self {
             return writer.store(
-                .hStack(project(value, as: _GiftUIHStackPayload.self)), kind: .primitive)
+                wrap(.hStack(project(value, as: _GiftUIHStackPayload.self))), kind: .primitive)
         }
         if Value.self == _GiftUIZStackPayload.self {
             return writer.store(
-                .zStack(project(value, as: _GiftUIZStackPayload.self)), kind: .primitive)
+                wrap(.zStack(project(value, as: _GiftUIZStackPayload.self))), kind: .primitive)
         }
         if Value.self == _GiftUISpacerPayload.self {
             return writer.store(
-                .spacer(project(value, as: _GiftUISpacerPayload.self)), kind: .primitive)
+                wrap(.spacer(project(value, as: _GiftUISpacerPayload.self))), kind: .primitive)
         }
         if Value.self == _GiftUITextPayload.self {
             let text = project(value, as: _GiftUITextPayload.self)
@@ -95,15 +101,22 @@ package enum SemanticStandardPayloadCodec<Roles: SemanticDeclarationRoles>:
             return scalars.span.withUnsafeBufferPointer { values in
                 let admitted = UnsafeBufferPointer(start: values.baseAddress, count: count)
                 let span = Span(_unsafeElements: admitted)
-                return writer.store(.text, kind: .primitive, text: span)
+                return writer.store(wrap(.text), kind: .primitive, text: span)
             }
         }
-        // P06 supplies its own finite owned Canvas codec through this same seam.
+        // Unknown finite payloads fail closed; Canvas uses its dedicated wrapper codec.
         return .invariantViolation
     }
     package static func modifier<Value: _GiftUISemanticModifierPayload>(
         _ value: borrowing Value, chainIndex: UInt16,
         writer: borrowing SemanticPayloadWriter<Payload>
+    ) -> SemanticExpansionError? {
+        modifier(value, chainIndex: chainIndex, writer: writer, wrapping: { $0 })
+    }
+    package static func modifier<Value: _GiftUISemanticModifierPayload, Target>(
+        _ value: borrowing Value, chainIndex: UInt16,
+        writer: borrowing SemanticPayloadWriter<Target>,
+        wrapping wrap: (Payload) -> Target
     ) -> SemanticExpansionError? {
         let owned: Payload
         if Value.self == _GiftUIPaddingPayload.self {
@@ -123,14 +136,20 @@ package enum SemanticStandardPayloadCodec<Roles: SemanticDeclarationRoles>:
         } else {
             return .invariantViolation
         }
-        return writer.store(owned, kind: .modifier, chainIndex: chainIndex)
+        return writer.store(wrap(owned), kind: .modifier, chainIndex: chainIndex)
     }
     package static func action<Value: GiftUIAction>(
         _ value: borrowing Value, writer: borrowing SemanticPayloadWriter<Payload>
     ) -> SemanticExpansionError? {
+        action(value, writer: writer, wrapping: { $0 })
+    }
+    package static func action<Value: GiftUIAction, Target>(
+        _ value: borrowing Value, writer: borrowing SemanticPayloadWriter<Target>,
+        wrapping wrap: (Payload) -> Target
+    ) -> SemanticExpansionError? {
         guard let role = Roles.role(of: Value.self), role.rawValue != 0 else {
             return .invalidIdentity
         }
-        return writer.store(.action(role: role.rawValue, code: value.rawValue), kind: .action)
+        return writer.store(wrap(.action(role: role.rawValue, code: value.rawValue)), kind: .action)
     }
 }

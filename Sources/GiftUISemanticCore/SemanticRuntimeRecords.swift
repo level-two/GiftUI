@@ -107,7 +107,9 @@ package struct SemanticPathEntry: Sendable {
 }
 
 package struct SemanticRuntimeRecord: Sendable {
-    package enum Kind: UInt8, Sendable { case structural, primitive, action, modifier }
+    package enum Kind: UInt8, Sendable {
+        case structural, primitive, action, modifier, pendingCanvas
+    }
     package var parent: UInt16 = .max
     package var firstChild: UInt16 = .max
     package var lastChild: UInt16 = .max

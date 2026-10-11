@@ -53,8 +53,18 @@ P03 model scope and slot scope. Each invoke opens a fresh model read, passes it
 to exactly one validated table case and ends it before release. DrawingError is
 transported as a closed optional result across the access-error callback.
 
-Semantic transfer and final four-profile/oracle/resource evidence remain P06
-work in the [shared progress record](../../Tests/ContractFixtures/SPEC012/Evidence/rfc-014-p06/progress.md).
+Candidate expansion stores concrete Canvas values in the existing bounded generic
+payload pool tagged pendingCanvas. Before any consumer borrow or publication,
+CanvasSemanticTransfer moves each occurrence into the staged store and replaces
+the semantic payload with an empty Canvas marker. A failed transfer discards its
+staged prefix and candidate while preserving the published bank. Semantic Core
+only provides the pending-payload transfer operation and fences; Drawing owns the
+concrete codec. No additional bank or field is introduced. The generic payload
+union can enlarge every reserved payload slot; target measurements must report
+the full two-bank cost, not merely the count of live Canvas values.
+
+Final four-profile/oracle/resource evidence remains P06 work in the
+[shared progress record](../../Tests/ContractFixtures/SPEC012/Evidence/rfc-014-p06/progress.md).
 The sections below describe the historical baseline, not the current protocol
 representation or permission to retain a closure fallback.
 

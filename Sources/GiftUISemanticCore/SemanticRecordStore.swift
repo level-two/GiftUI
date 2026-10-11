@@ -132,6 +132,7 @@ package struct SemanticRecordStore<Payload>: ~Copyable, ~Escapable {
     package borrowing func publishCandidate() throws(SemanticExpansionError) {
         guard let candidate else { throw .invariantViolation }
         let next = bank(candidate)
+        guard !hasPendingCanvas(next) else { throw .invariantViolation }
         if let published {
             let prior = bank(published)
             if let failure = next.reconcile(with: prior, limits: limits) { throw failure }
@@ -143,9 +144,39 @@ package struct SemanticRecordStore<Payload>: ~Copyable, ~Escapable {
     package borrowing func withCandidateView<Result>(
         _ body: (borrowing SemanticRecordView<Payload>) throws(SemanticExpansionError) -> Result
     ) throws(SemanticExpansionError) -> Result {
-        guard let candidate else { throw .invariantViolation }
+        guard let candidate, !hasPendingCanvas(bank(candidate)) else { throw .invariantViolation }
         return try withView(candidate, body)
     }
+    private borrowing func hasPendingCanvas(_ bank: SemanticRecordBankBuffers<Payload>) -> Bool {
+        for index in 0 ..< Int(bank.metadata.pointee.records) {
+            if bank.records[index].kind == .pendingCanvas { return true }
+        }
+        return false
+    }
+
+    /// Transfer transient owned Canvas values before lending consumer views.
+    /// A failed transfer remains unpublished; the drawing adapter discards both
+    /// this candidate and any already-transferred entries.
+    package borrowing func takePendingCanvas(
+        _ body: (SemanticRecordReference, inout Payload) throws(SemanticExpansionError) -> Void
+    ) throws(SemanticExpansionError) {
+        guard let candidate else { throw .invariantViolation }
+        let selected = bank(candidate)
+        guard selected.metadata.pointee.readers == 0 else { throw .reentrancyViolation }
+        for index in 0 ..< Int(selected.metadata.pointee.records) {
+            let record = selected.records[index]
+            guard record.kind == .pendingCanvas else { continue }
+            guard record.payload < selected.metadata.pointee.payloads,
+                selected.payloads[Int(record.payload)] != nil
+            else { throw .invariantViolation }
+            let reference = SemanticRecordReference(
+                owner: owner, bank: candidate,
+                revision: selected.metadata.pointee.revision, ordinal: UInt16(index))
+            try body(reference, &selected.payloads[Int(record.payload)]!)
+            selected.records[index].kind = .primitive
+        }
+    }
+
     package borrowing func withPublishedView<Result>(
         _ body: (borrowing SemanticRecordView<Payload>) throws(SemanticExpansionError) -> Result
     ) throws(SemanticExpansionError) -> Result {

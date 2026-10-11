@@ -79,17 +79,18 @@ module('GiftUIObservableState', [ROOT / 'Sources/GiftUIObservableState' / name f
     'ObservableStateModel.swift', 'ObservableStateRegistrationLifecycle.swift', 'ObservableStateRootScope.swift',
     'ObservableStateRootTargetAccess.swift', 'ObservableStateBindingDecorator.swift', 'ObservableSemanticBodyBinding.swift')])
 module('GiftUIDrawing', [ROOT / 'Sources/GiftUIDrawing' / name for name in (
-    'CanvasInvocationSource.swift', 'CanvasPlanProducer.swift', 'CanvasStagedValues.swift',
+    'CanvasInvocationSource.swift', 'CanvasPlanProducer.swift', 'CanvasStagedValues.swift', 'CanvasSemanticPayload.swift',
     'DrawingLimits.swift', 'DrawingPlan.swift', 'DrawingValues.swift', 'StaticCanvasCallableTable.swift',
     'PathConstruction.swift', 'StrokeSnapshot.swift')])
 module('GiftUIRuntimeCore', [ROOT / 'Sources/GiftUIRuntimeCore/ObservableCanvasInvocationSource.swift'])
 module('GiftUIRuntimeStatic', [ROOT / 'Sources/GiftUIRuntimeStatic' / name for name in (
-    'StaticObservableModelStorage.swift', 'StaticCanvasValueStorage.swift')])
+    'StaticObservableModelStorage.swift', 'StaticCanvasValueStorage.swift', 'StaticSemanticRecordStorage.swift')])
 if profile != 'nrf52840-embedded':
     module('GiftUIRuntimeDynamic', [ROOT / 'Sources/GiftUIRuntimeDynamic' / name for name in (
         'DynamicCanvasCallableStorage.swift',)])
 
 macro = ROOT / '.build/rfc014-p02/tool/debug/GiftUIMacros-tool'
+assert digest(macro) == core['macro_tool_sha256']
 inputs.append(macro)
 for application in ('Counter', 'Analyzer'):
     source_schema = ROOT / 'Tests/ContractFixtures/SPEC006/RuntimeDerived' / (application + '.schema.json')
@@ -107,7 +108,7 @@ for application in ('Counter', 'Analyzer'):
     module(application + 'Canvas', [out / (application + 'Canvas.swift')])
     module(application + 'CanvasTable', [out / (application + 'CanvasTable.swift')])
 
-module('CanvasStoreProbe', [FIXTURE / 'CanvasStoreProbe.swift'])
+module('CanvasStoreProbe', [FIXTURE / 'CanvasStoreProbe.swift', FIXTURE / 'CanvasSemanticProbe.swift', ROOT / 'Tests/ContractFixtures/SPEC007/RuntimeDerived/LayoutSupport.swift'])
 if profile.startswith('macos'):
     main = out / 'Main.swift'
     main.write_text('import CanvasStoreProbe\n@main struct Main { static func main() { print("P06 stores assertions=\\(giftuiP06Stores(dynamic: false) + giftuiP06Stores(dynamic: true)) failures=0") } }\n')

@@ -1,5 +1,133 @@
 # RFC-014 P06 progress
 
+## Step 3 — bounded semantic transfer, ready for sequential evidence slice
+
+The semantic candidate codec now stages the concrete typed union in the existing
+generic payload pool with a pendingCanvas tag. Publication and consumer views
+reject pending values. CanvasSemanticTransfer transfers occurrence identities
+into staged storage and clears semantic values to markers; partial transfer
+failure releases its staged prefix and discards the candidate. Published prior
+semantics survive, and the next candidate can reuse the same banks. The generic
+payload slot size can increase; final resource evidence must include every
+reserved slot in both banks rather than only live Canvas payloads.
+
+After formatting, the native owner route passed **216 assertions** (176 prior
+stores plus 40 semantic/actual Layout transfer checks), 5 authored lowering
+negatives and 6 compiled negatives. The authored ordinary HStack Body remains
+inferred. The semantic fixture exercises a real P03 owner, P04 record store,
+P05 borrowed Layout/Render consumers and production Layout. Its final draw uses
+the actual scoped invocation adapter with the instrumentation workspace; this
+is not yet production geometry/raster evidence. Both staged profiles run the
+store matrix; the semantic transfer fixture currently uses Static backing.
+
+Exact validation:
+
+- `scripts/format-swift.sh` completed before the final run.
+- `scripts/contracts/run-spec-006.sh --profile macos-static --compiler-baseline rfc-014`
+  passed 28 checks/120 assertions, 30 traversal, 58 bank and 57 records checks
+  per profile. Verified core directory
+  `.build/contracts/spec-006-rfc-014/110c46dd2d3f6ca3-7luv6r5o/macos-static`;
+  copied receipt [step-3-core-regression.json](step-3-core-regression.json).
+- `scripts/contracts/run-spec-012.sh --profile macos-static --compiler-baseline rfc-014 --giftui-build .build/contracts/spec-006-rfc-014/110c46dd2d3f6ca3-7luv6r5o/macos-static`
+  passed. Artifact directory
+  `.build/contracts/spec-012-protocol-canvas/tmpcfs5jy8a/macos-static`;
+  copied receipt [step-3-macos-static.json](step-3-macos-static.json), including
+  source/compiler/macro/artifact hashes and all exact compiler commands.
+
+Failures preserved: `tmpmkoqqz97/macos-static` diagnosed a borrowed copyable
+table descriptor captured by the transfer callback; explicit descriptor copy
+fixed it. `tmp80xamygc/macos-static` compiled but trapped at semantic assertion12;
+an Onone fixture rebuild plus LLDB isolated an incorrect test expectation that
+Canvas would flex in HStack. SPEC-007 “Stacks and spacer” transposes the absent
+main-axis proposal, and SPEC-012 baseline lines940–941 resolves absent Canvas
+axes to zero. Those independent clauses corrected the expected width/origin to
+zero; production Layout and its oracles were unchanged. Final optimized run
+passed. These were productive narrowed repairs; counter remains **0 of 2**.
+
+### Sequential Standard packet — fixed-rule evidence only
+
+Parent may dispatch Standard `gpt-6-sol` / `medium` after the coherent Step3
+commit. No concurrent implementation. Read this receipt, exact Step3 commit,
+AGENTS, implementation-executor/deferred-work-curator, SPEC012 amendment and
+its baseline, and the current static-canvas design note. Keep P06 open for
+separate Strong review. Commit each coherent completed evidence step. Stop and
+return ownership/lifetime implementation fixes, unexpected resource excess,
+oracle disagreement, or unresolved contract meaning to Strong; do not change
+production algorithms, approved constraints, limits or baseline golden vectors.
+
+Fixed work and authority:
+
+1. Extend `RuntimeDerived/CanvasStoreProbe.swift`, `CanvasSemanticProbe.swift`
+   and the registered `check-spec-012-protocol-canvas.py` owner route. Exercise
+   every generated table case, including Counter EmptyCanvas and Analyzer
+   indexed read; dense IDs1...count, ID0/count+1 reject, payload/ID disagreement
+   rejects, unknown primitive has no payload, duplicate occurrence rejects,
+   exact capacity accepted/first extra rejects, repeated invoke rejects and
+   repeated release does not increment. These derive from SPEC012 DR-010 and
+   amendment per-type witness/owned-value rules. Test staged copy/escape
+   negatives as well as existing source/read negatives. Existing array values
+   3/7/3 and sizes5x7/15x21 are fixture inputs, not production-derived oracles.
+2. Execute all five AccessFailure-to-DrawingError mappings (amendment): wrong
+   owner/schema/stale -> invalidModelAccess; invalid phase -> invalidPhase;
+   out-of-bounds -> invalidValue. Execute raw value9 and one-byte production
+   enum checks plus `GiftUIDrawingFailureAdapterFixture.fact` mapping to
+   invalidIdentity/rendering/activeCycle/contained. The runtime failure adapter
+   has the same case but needs only bounded selected evidence, not a new host.
+3. Extend semantic transfer coverage to Dynamic staged/semantic backing using
+   the same already-tested identity/order/fence assertions. Preserve no
+   Canvas value in published semantics. Test empty Canvas, zero occurrences,
+   cleanup and fresh retry without adding a P07 coordinator. Existing stores
+   cover initial phase/reentry/acquire rejection (caller discard), stale second
+   key, path/client error, stroke capacity, layout order mismatch and seal
+   failure, each suffix uninvoked and all values released exactly once.
+4. Preserve/run `scripts/contracts/check-spec-012-raster-vectors.rb` and its
+   `Tests/ContractFixtures/SPEC012/raster-vectors.yaml` Q160 oracle unchanged.
+   The Ruby checker alone is not a production pixel check. Add selected
+   production geometry/raster fixture execution to the owner route, reusing
+   the immutable expected masks/bytes and geometry expectations in
+   `Tests/GiftUIRasterCoreTests/RasterStrokeCoverageTests.swift`,
+   `Tests/GiftUIDrawingTests/PathConstructionTests.swift`,
+   `StrokeSnapshotTests.swift`, `DrawingLifetimeTests.swift` and
+   `DrawingWorkspaceFixtures.swift`. RasterStrokeCoverage.rasterize's direct
+   API is shown in the golden-mask test at line381. Adapt only harness plumbing
+   for the selected compiler/modules; do not derive expected outputs from the
+   implementation. Full app/old host closure migration remains P07/P10 scope;
+   compilation difficulty is not permission to omit finite P06 oracle checks.
+5. Record target ABI size/stride/alignment using constant exported functions
+   and LLVM IR under the selected profile flags (see
+   `scripts/contracts/check-spec-006-runtime-records.py` for established pattern).
+   Include Counter/Analyzer concrete Canvas values, generated unions, witness
+   descriptors, staged entries with SemanticRecordReference, metadata, source
+   adapter, semantic wrapper and optional wrapper versus old standard payload.
+   Report both98-slot banks, unchanged224 scalar slots per bank, and configured
+   staged occurrence counts; do not present union enlargement as only live
+   payload cost. Inspect selected Embedded artifacts for closure fallback/heap
+   dependencies and report actual reachable component limitations. Complete
+   application stack/linked resources remain P11 and must not be claimed here.
+6. Read platform skills before cross checks. Doctors already passed earlier,
+   but rerun if environment changed. For each of macos-dynamic, macos-static,
+   raspberry-pi-armv6, nrf52840-embedded run
+   `scripts/contracts/run-spec-006.sh --profile <profile> --compiler-baseline rfc-014`,
+   then `scripts/contracts/run-spec-012.sh --profile <profile> --compiler-baseline rfc-014 --giftui-build <the verified core directory>`.
+   Compiler inputs/macro must match, as enforced by the driver. Native runs
+   execute; cross results are compile/ABI/artifact evidence, not board execution.
+   Output roots remain `.build/contracts`, `.build/raspberry-pi/contracts`,
+   `.build/nrf52840/contracts`. Format before validation; do not run the optional
+   global dependency checker that was unverified in P05.
+
+Evidence destination remains this one directory/receipt. Copy final per-profile
+result JSON and a small index of paths/hashes; update T10.1 evidence mappings and
+the existing static-canvas note as needed. Register any additional focused
+checks within the current owner route. Preserve actual failure output and
+counter. Do not mark P06 passed. At completion provide parent exact committed
+span and separate Strong review packet with scope/limitations/residual findings.
+
+Remaining implementation choices are **not delegated**: any needed ownership
+repair, representation/resource-budget change, new generic suppression beyond
+approved exact corrections, error-precedence ambiguity, or geometry change.
+Current code is a local realization under existing limits; tests/resource
+measurements may expose issues requiring Strong. No successor task is started.
+
 ## Approved resumption dispatch — 2026-10-11
 
 Eugene approved the precise source-constraint proposal at `67331c11` with

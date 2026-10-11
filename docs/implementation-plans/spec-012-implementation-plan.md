@@ -52,11 +52,14 @@ scoped invocation/store work; existing package scope, checks and bounds remain.
   shared sequence, then P10's registered hardware-free gate. Compiler-selection
   propagation follows P01; no historical check is weakened.
   **Evidence:** [P06 shared receipt](../../Tests/ContractFixtures/SPEC012/Evidence/rfc-014-p06/progress.md),
-  `RuntimeDerived/CounterCanvas.swift`, `AnalyzerCanvas.swift` and
+  `RuntimeDerived/CounterCanvas.swift`, `AnalyzerCanvas.swift`,
+  `CanvasStoreProbe.swift`, `CanvasSemanticProbe.swift` and
   `scripts/contracts/check-spec-012-protocol-canvas.py` through the registered
   `--compiler-baseline rfc-014 --giftui-build` route. These map T10.1 to the
-  selected declaration/lowering portions of DR-001/002/007/010 and DR-RD-001;
-  runtime/profile/error-mapping execution and full acceptance remain pending.
+  selected declaration/lowering, scoped invocation, staged cleanup and semantic
+  transfer portions of DR-001/002/003/007/009/010 and DR-RD-001/002/003;
+  final target/oracle/resource checks, mapping execution and full acceptance
+  remain pending. The shared receipt maps actual artifacts to each tested seam.
 
 The single current acceptance matrix retains each criterion once. Its historical
 task IDs remain provenance; `T10.1` adds fresh migration verification without

@@ -15,9 +15,12 @@ package struct CounterTrace: Canvas {
 }
 package struct CounterCanvasRoot: View {
     package let model: CounterModel
+    package init(model: CounterModel) { self.model = model }
     package var body: some View {
-        CounterTrace(model: model, offset: 0)
-        CounterTrace(model: model, offset: 2)
+        HStack {
+            CounterTrace(model: model, offset: 0)
+            CounterTrace(model: model, offset: 2)
+        }
     }
 }
 
