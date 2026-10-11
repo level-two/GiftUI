@@ -1,0 +1,18 @@
+{
+  "verified": {
+    "schema": {
+      "inputs": 60,
+      "artifacts": 83
+    },
+    "runtime": {
+      "inputs": 165,
+      "artifacts": 143
+    }
+  },
+  "compiler": ".toolchains/host/swift-6.3.2-RELEASE-osx/usr/bin/swiftc",
+  "compiler_sha256": "d8e40107da0e2c1c59640a983faea326d5d2bddfe81f7609db14bade43c4a5b9",
+  "schema_receipt_sha256": "397d42439c721526962baf584e13885a9e04835c81e567d06ab03b8161b9b664",
+  "runtime_receipt_sha256": "f05c530abf34e698f216ba0e6259d78c9cc312b83a4cfc47bf70f67f0280bf6a",
+  "core_receipt_sha256": "150bc766410a98a82d8a8ce9167083fe86bad01fa4d97d70afdc1af8b7f72032",
+  "method": "read-only SHA256; no compiler invocation"
+}

@@ -1,0 +1,22 @@
+{
+  "number": 2,
+  "candidate": "A",
+  "control": "positive",
+  "command": "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.3.2-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/contracts/p08-activation-investigation-cache -disable-sandbox -target arm64-apple-macosx26.0 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk -D GIFTUI_DYNAMIC_PROFILE -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014/189dda86d331e15d-wpk82ft7/macos-dynamic -parse-as-library -I /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpke3zvfyl/macos-dynamic -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014/189dda86d331e15d-wpk82ft7/macos-dynamic -enable-testing -I /Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-ie3r3cmc -module-name P08ActivationJoinInvestigation -emit-object /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-join-investigation/Supplied.swift /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-join-investigation/LayoutA.swift /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-join-investigation/Positive.swift -o /Users/eugene/work/GiftUI/.build/contracts/p08-activation-investigation-run-2.o",
+  "compiler_sha256": "d8e40107da0e2c1c59640a983faea326d5d2bddfe81f7609db14bade43c4a5b9",
+  "inputs": {
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-join-investigation/Supplied.swift": "8f740852e5e627d2b2a16f6aba69a3bd3b12b87a8ab774731997a2fe2aaa0cf6",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-join-investigation/LayoutA.swift": "80a8cc9b61e93b0119d54335d67875dd55e2388d7f4c107998a425fbda1ca52a",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-join-investigation/Positive.swift": "894e56f215b74508ac6f37e631d1fc1d3eaa0dce6e97a197ce19614d73ac3e0b"
+  },
+  "status": "completed",
+  "source_snapshots": {
+    "Supplied.swift": "run-2/Supplied.swift",
+    "LayoutA.swift": "run-2/LayoutA.swift",
+    "Positive.swift": "run-2/Positive.swift"
+  },
+  "exit": 1,
+  "accepted": false,
+  "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stderr_sha256": "1cc9aa06e04c00f03af48632a96e61572c1cfe3a42343c68db010cba1cf4c7a1"
+}

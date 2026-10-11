@@ -1,0 +1,23 @@
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-join-investigation/Positive.swift:26:29: error: 'consume' can only be used to partially consume storage of a noncopyable type
+24 |         var semanticBacking = consume profile.semanticBacking
+25 |         var canvas = consume profile.canvas
+26 |         var canvasBacking = consume profile.canvasBacking
+   |                             `- error: 'consume' can only be used to partially consume storage of a noncopyable type
+27 |         var workspace = consume profile.workspace
+28 |         var interaction = profile.interaction.take()!
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-join-investigation/Positive.swift:27:25: error: 'consume' can only be used to partially consume storage of a noncopyable type
+25 |         var canvas = consume profile.canvas
+26 |         var canvasBacking = consume profile.canvasBacking
+27 |         var workspace = consume profile.workspace
+   |                         `- error: 'consume' can only be used to partially consume storage of a noncopyable type
+28 |         var interaction = profile.interaction.take()!
+29 |         var control = profile.control
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-join-investigation/Positive.swift:28:13: warning: variable 'interaction' was never mutated; consider changing to 'let' constant
+26 |         var canvasBacking = consume profile.canvasBacking
+27 |         var workspace = consume profile.workspace
+28 |         var interaction = profile.interaction.take()!
+   |             `- warning: variable 'interaction' was never mutated; consider changing to 'let' constant
+29 |         var control = profile.control
+30 |         var checks = 0

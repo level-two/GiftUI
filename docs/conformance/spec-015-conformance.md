@@ -33,6 +33,9 @@ not satisfy them. [P08 receipt](../../Tests/ContractFixtures/SPEC015/Evidence/rf
 records source/compiler identities, expected compile controls and current guard2/2.
 The [activation-time containing-owner stop](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-join-stop/stop.md)
 preserves exact failed controls; no package acceptance or compiler-bug attribution is claimed.
+Separately authorized evidence-only investigation used2/6 invocations on1/2 layouts,
+with no positive/negative pass. Its [raw result](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-join-investigation/result.md)
+is held for independent guard-accounting interpretation; production remains stopped.
 
 **Current amendment — 2026-10-05:** Approved five-second retention is implemented and all four hardware-free profiles pass in the [fresh integration](../iterations/iteration-002-cleanup/evidence/18-retention-integration/result.md). Focused nRF connected checks/restoration and current Pi deployment/ARMv6 rehearsal/bounded physical endpoint loop succeed. Original exception authority remains unchanged.
 

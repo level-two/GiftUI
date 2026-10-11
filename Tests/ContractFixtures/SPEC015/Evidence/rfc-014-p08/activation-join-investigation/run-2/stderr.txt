@@ -1,0 +1,139 @@
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-join-investigation/Positive.swift:28:13: warning: variable 'interaction' was never mutated; consider changing to 'let' constant
+26 |         var canvasBacking = profile.canvasBacking
+27 |         var workspace = profile.workspace
+28 |         var interaction = profile.interaction.take()!
+   |             `- warning: variable 'interaction' was never mutated; consider changing to 'let' constant
+29 |         var control = profile.control
+30 |         var checks = 0
+
+<unknown>:0: error: copy of noncopyable typed value. This is a compiler bug. Please file a bug with a small example of the bug
+<unknown>:0: error: copy of noncopyable typed value. This is a compiler bug. Please file a bug with a small example of the bug
+<unknown>:0: error: copy of noncopyable typed value. This is a compiler bug. Please file a bug with a small example of the bug
+<unknown>:0: error: copy of noncopyable typed value. This is a compiler bug. Please file a bug with a small example of the bug
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-join-investigation/LayoutA.swift:22:34: error: copy of noncopyable typed value. This is a compiler bug. Please file a bug with a small example of the bug
+20 |         case .inert(let supplied):
+21 |             let pipeline = InvestigationPipeline(
+22 |                 models: supplied.models.borrowedScope(), root: supplied.root.borrowedRoot(),
+   |                                  `- error: copy of noncopyable typed value. This is a compiler bug. Please file a bug with a small example of the bug
+23 |                 semantic: supplied.semantic.borrowedStore(), values: supplied.values.borrowedValues(),
+24 |                 geometry: supplied.geometry, interaction: supplied.interaction,
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-join-investigation/LayoutA.swift:22:73: error: copy of noncopyable typed value. This is a compiler bug. Please file a bug with a small example of the bug
+20 |         case .inert(let supplied):
+21 |             let pipeline = InvestigationPipeline(
+22 |                 models: supplied.models.borrowedScope(), root: supplied.root.borrowedRoot(),
+   |                                                                         `- error: copy of noncopyable typed value. This is a compiler bug. Please file a bug with a small example of the bug
+23 |                 semantic: supplied.semantic.borrowedStore(), values: supplied.values.borrowedValues(),
+24 |                 geometry: supplied.geometry, interaction: supplied.interaction,
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-join-investigation/LayoutA.swift:23:36: error: copy of noncopyable typed value. This is a compiler bug. Please file a bug with a small example of the bug
+21 |             let pipeline = InvestigationPipeline(
+22 |                 models: supplied.models.borrowedScope(), root: supplied.root.borrowedRoot(),
+23 |                 semantic: supplied.semantic.borrowedStore(), values: supplied.values.borrowedValues(),
+   |                                    `- error: copy of noncopyable typed value. This is a compiler bug. Please file a bug with a small example of the bug
+24 |                 geometry: supplied.geometry, interaction: supplied.interaction,
+25 |                 control: supplied.control, limits: supplied.audit.limits)
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-join-investigation/LayoutA.swift:23:79: error: copy of noncopyable typed value. This is a compiler bug. Please file a bug with a small example of the bug
+21 |             let pipeline = InvestigationPipeline(
+22 |                 models: supplied.models.borrowedScope(), root: supplied.root.borrowedRoot(),
+23 |                 semantic: supplied.semantic.borrowedStore(), values: supplied.values.borrowedValues(),
+   |                                                                               `- error: copy of noncopyable typed value. This is a compiler bug. Please file a bug with a small example of the bug
+24 |                 geometry: supplied.geometry, interaction: supplied.interaction,
+25 |                 control: supplied.control, limits: supplied.audit.limits)
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-join-investigation/LayoutA.swift:26:66: error: copy of noncopyable typed value. This is a compiler bug. Please file a bug with a small example of the bug
+24 |                 geometry: supplied.geometry, interaction: supplied.interaction,
+25 |                 control: supplied.control, limits: supplied.audit.limits)
+26 |             let binding = CycleExecutionBinding(models: supplied.models.borrowedScope(),
+   |                                                                  `- error: copy of noncopyable typed value. This is a compiler bug. Please file a bug with a small example of the bug
+27 |                 root: supplied.root.borrowedRoot(), control: supplied.control, audit: supplied.audit)!
+28 |             let coordinator = InvestigationCoordinator(binding: binding,
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-join-investigation/LayoutA.swift:27:32: error: copy of noncopyable typed value. This is a compiler bug. Please file a bug with a small example of the bug
+25 |                 control: supplied.control, limits: supplied.audit.limits)
+26 |             let binding = CycleExecutionBinding(models: supplied.models.borrowedScope(),
+27 |                 root: supplied.root.borrowedRoot(), control: supplied.control, audit: supplied.audit)!
+   |                                `- error: copy of noncopyable typed value. This is a compiler bug. Please file a bug with a small example of the bug
+28 |             let coordinator = InvestigationCoordinator(binding: binding,
+29 |                 admission: CycleAdmission(control: supplied.control, limits: supplied.audit.limits.execution),
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-join-investigation/LayoutA.swift:18:19: error: lifetime-dependent variable 'self' escapes its scope
+16 |     init(supplied: consuming InvestigationSupplied) { self = .inert(consume supplied) }
+17 | 
+18 |     mutating func activate() {
+   |                   |- error: lifetime-dependent variable 'self' escapes its scope
+   |                   `- note: it depends on the lifetime of argument 'self'
+19 |         switch consume self {
+20 |         case .inert(let supplied):
+   |                         `- note: this use causes the lifetime-dependent value to escape
+21 |             let pipeline = InvestigationPipeline(
+22 |                 models: supplied.models.borrowedScope(), root: supplied.root.borrowedRoot(),
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-join-investigation/LayoutA.swift:18:19: error: lifetime-dependent variable 'self' escapes its scope
+16 |     init(supplied: consuming InvestigationSupplied) { self = .inert(consume supplied) }
+17 | 
+18 |     mutating func activate() {
+   |                   `- error: lifetime-dependent variable 'self' escapes its scope
+19 |         switch consume self {
+20 |         case .inert(let supplied):
+   |                         `- note: it depends on the lifetime of variable 'supplied'
+21 |             let pipeline = InvestigationPipeline(
+22 |                 models: supplied.models.borrowedScope(), root: supplied.root.borrowedRoot(),
+   :
+33 |             self = .active(consume coordinator)
+34 |         }
+35 |     }
+   |     `- note: this use causes the lifetime-dependent value to escape
+36 |     mutating func quiesce() {
+37 |         switch consume self {
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-join-investigation/LayoutA.swift:18:19: error: lifetime-dependent variable 'self' escapes its scope
+16 |     init(supplied: consuming InvestigationSupplied) { self = .inert(consume supplied) }
+17 | 
+18 |     mutating func activate() {
+   |                   `- error: lifetime-dependent variable 'self' escapes its scope
+19 |         switch consume self {
+20 |         case .inert(let supplied):
+   |                         `- note: it depends on the lifetime of variable 'supplied'
+21 |             let pipeline = InvestigationPipeline(
+22 |                 models: supplied.models.borrowedScope(), root: supplied.root.borrowedRoot(),
+   :
+33 |             self = .active(consume coordinator)
+34 |         }
+35 |     }
+   |     `- note: this use causes the lifetime-dependent value to escape
+36 |     mutating func quiesce() {
+37 |         switch consume self {
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-join-investigation/Positive.swift:22:36: error: cannot partially consume 'profile' of non-frozen type 'StaticCycleProfileStorage' imported from 'RuntimeCycleProbe'
+20 |         guard case .valid(let audit) = profile.audit() else { preconditionFailure("actual profile audit") }
+21 |         let limits = profile.limits
+22 |         var root = consume profile.root
+   |                                    `- error: cannot partially consume 'profile' of non-frozen type 'StaticCycleProfileStorage' imported from 'RuntimeCycleProbe'
+23 |         var semantic = consume profile.semantic
+24 |         var semanticBacking = consume profile.semanticBacking
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-join-investigation/Positive.swift:23:40: error: cannot partially consume 'profile' of non-frozen type 'StaticCycleProfileStorage' imported from 'RuntimeCycleProbe'
+21 |         let limits = profile.limits
+22 |         var root = consume profile.root
+23 |         var semantic = consume profile.semantic
+   |                                        `- error: cannot partially consume 'profile' of non-frozen type 'StaticCycleProfileStorage' imported from 'RuntimeCycleProbe'
+24 |         var semanticBacking = consume profile.semanticBacking
+25 |         var canvas = consume profile.canvas
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-join-investigation/Positive.swift:24:47: error: cannot partially consume 'profile' of non-frozen type 'StaticCycleProfileStorage' imported from 'RuntimeCycleProbe'
+22 |         var root = consume profile.root
+23 |         var semantic = consume profile.semantic
+24 |         var semanticBacking = consume profile.semanticBacking
+   |                                               `- error: cannot partially consume 'profile' of non-frozen type 'StaticCycleProfileStorage' imported from 'RuntimeCycleProbe'
+25 |         var canvas = consume profile.canvas
+26 |         var canvasBacking = profile.canvasBacking
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-join-investigation/Positive.swift:25:38: error: cannot partially consume 'profile' of non-frozen type 'StaticCycleProfileStorage' imported from 'RuntimeCycleProbe'
+23 |         var semantic = consume profile.semantic
+24 |         var semanticBacking = consume profile.semanticBacking
+25 |         var canvas = consume profile.canvas
+   |                                      `- error: cannot partially consume 'profile' of non-frozen type 'StaticCycleProfileStorage' imported from 'RuntimeCycleProbe'
+26 |         var canvasBacking = profile.canvasBacking
+27 |         var workspace = profile.workspace

@@ -1,6 +1,6 @@
 # RFC-014 P08 execution receipt — 2026-10-11
 
-**Current: production remains stopped at2/2; bounded evidence-only investigation authorized.**
+**Current: production remains stopped at2/2; investigation held for accounting review after2/6 invocations on1/2 layouts.**
 The [bounded stop packet](activation-join-stop/stop.md) preserves exact controls,
 commands and narrowed cause. `c39733de` is the last validated maintained source;
 P08 remains incomplete. Earlier0/2 checkpoints below are historical.
@@ -179,3 +179,17 @@ candidates. Initial counters0/6 invocations,0/2 layouts; no compile has run.
 This allowance does not reset the historical2/2 production guard, authorize
 integration or change any contract. Independent review and separate production
 resumption remain required after the finite evidence result.
+
+
+## Evidence-only investigation: raw result held for independent accounting
+
+Authorization `0bc51d70` preceded all fresh compiles. Exactly2/6 invocations used
+one layoutA; positive run1 failed caller setup, corrected run2 failed with mixed
+activation lifetime/internal-copy/imported non-frozen caller diagnostics. No
+negative or layoutB compile ran. The [raw result packet](activation-join-investigation/result.md)
+preserves exact sources, full diagnostics, commands and hashes. Runner counted
+both failed positives as2 unproductive candidate attempts; parent requires
+independent interpretation because only1 layout was used and the approved guard
+names candidate attempts. Current ledger hard-holds further compiler work;
+exhaustion/continuation accounting is unresolved. Historical productionguard2/2
+unchanged; no compiler bug/rootcause/feasible host or P08 pass is claimed.

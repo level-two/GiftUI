@@ -12,6 +12,12 @@ or justify changing the approved contract. SPEC-015 implementing/plan active;
 P08 incomplete, counter/four routes/early images and independent exit review open.
 Original approval packet/probes/review and earlier checkpoints remain historical.
 [Receipt](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/progress.md).
+Evidence-only investigation was separately approved and authorized in `0bc51d70`.
+It used2/6 fresh invocations on1/2 layouts with no passing positive or negatives;
+[raw result](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-join-investigation/result.md)
+is held pending independent guard-accounting interpretation. No further compile
+or production integration is authorized while held; historical productionguard2/2
+is unchanged. Unused numerical allowance is not continuation authority.
 P09–P12 remain pending.
 
 **Current P07 checkpoint — finite package exit passed, 2026-10-11:**
