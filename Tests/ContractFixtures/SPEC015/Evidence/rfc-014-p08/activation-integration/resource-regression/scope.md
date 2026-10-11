@@ -62,3 +62,13 @@ The overall maximum remains two narrowed repair cycles and the two-unproductive
 stop guard. No003/004 maintained driver edit is needed for these exact functions.
 Raw initial failure is retained. Full resource pairs cannot be substituted by
 layout/allocator results; all unmeasured dimensions remain explicit blockers.
+
+## Final target-layout coverage
+
+All eleven initial/continued stages are complete (SPEC002 transferred to Standard
+for its parser and full four-profile routes; no002 edit here). Before closure,
+run exactly `003-arm-layout` and `004-arm-layout` once each using the existing
+unchanged layout functions and the exact ARMv6 SDK/resource/linker flags already
+specified by their maintained drivers. nRF's32-bit layouts are not substituted
+for ARMv6 ABI evidence. These are missing fixed coverage rows, not a representation
+trial or ceiling change. No repairs have been used. No further stages are implied.
