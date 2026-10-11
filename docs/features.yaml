@@ -94,9 +94,9 @@ features:
   giftui-mvp-architecture:
     # Compiler-upgrade assessment: FW-036, ITERATION-004 revision 2 I4-05 / I4-AC-006.
     # SPEC-007/011 P05 passed; T9.1/T12.1 remain open; shared receipt Tests/ContractFixtures/SPEC011/Evidence/rfc-014-p05/progress.md.
-    # P07 through ad671ea6: R1/R2 repaired; fresh four routes; original FAIL preserved; independent rereview pending.
+    # P07 passed independent repair exit review at 329570ab; R1/R2 resolved; original FAIL preserved.
     # Explicit consuming-owner resumption 2026-10-11; repair count 0/2; historical 2/2 stop preserved.
-    # RFC-014 P01–P06 passed; P07 resumed after historical2/2 stop and passing bench3997da73; P08–P12 pending.
+    # RFC-014 P01–P07 passed; historical2/2 stop and bench3997da73 preserved; P08–P12 pending.
     # SPEC-013 implementing; T11.1 open through P10–P12.
     # SPEC-009 scoped coordinator correction implementing; T9.1 belongs to P07, amended conformance pending.
     # Optional source-conditional cleanup: FW-029, linked from SPEC-013.

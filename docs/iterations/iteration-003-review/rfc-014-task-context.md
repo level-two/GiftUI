@@ -1,6 +1,6 @@
 # RFC-014 task context guide
 
-**Current P07 checkpoint — repaired candidate pending independent rereview, 2026-10-11:**
+**Current P07 checkpoint — finite package exit passed, 2026-10-11:**
 The explicitly [resumed consuming-owner implementation](../../../Tests/ContractFixtures/SPEC013/Evidence/rfc-014-p07/consuming-owner-resumption.md)
 includes audited construction and lifecycle steps 1–6, followed by R1 (`0741894a`)
 and R2 (`ad671ea6`) repairs. The original [independent FAIL](../../../Tests/ContractFixtures/SPEC013/Evidence/rfc-014-p07/independent-exit-review.md)
@@ -8,7 +8,7 @@ remains preserved. Fresh [repaired four-route evidence](../../../Tests/ContractF
 uses clean `ad671ea6`; each native route passes 5904 assertions and twelve
 compiler negatives across 26 actual Static/Dynamic case pairs. Cross routes pass
 selected-module compilation and CPU/VFP checks; no target execution is claimed.
-Independent Strong rereview remains required; P07 is not accepted here.
+Independent Strong [repair exit review](../../../Tests/ContractFixtures/SPEC013/Evidence/rfc-014-p07/independent-repair-exit-review.md) passes the finite P07 exit at `329570ab`, resolving R1/R2. Full owner conformance remains separate.
 Resumed consecutive unproductive repairs: **0/2**. Historical 2/2 stop preserved.
 T9.1/T11.1 and P10–P12 remain open. P08–P12 have not started.
 

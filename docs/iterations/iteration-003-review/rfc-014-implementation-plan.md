@@ -1,6 +1,6 @@
 # RFC-014 bounded implementation sequence — 2026-10-10
 
-**Current P07 checkpoint — repaired candidate pending independent rereview, 2026-10-11:**
+**Current P07 checkpoint — finite package exit passed, 2026-10-11:**
 The explicitly [resumed consuming-owner implementation](../../../Tests/ContractFixtures/SPEC013/Evidence/rfc-014-p07/consuming-owner-resumption.md)
 includes audited construction and lifecycle steps 1–6, followed by R1 (`0741894a`)
 and R2 (`ad671ea6`) repairs. The original [independent FAIL](../../../Tests/ContractFixtures/SPEC013/Evidence/rfc-014-p07/independent-exit-review.md)
@@ -8,7 +8,7 @@ remains preserved. Fresh [repaired four-route evidence](../../../Tests/ContractF
 uses clean `ad671ea6`; each native route passes 5904 assertions and twelve
 compiler negatives across 26 actual Static/Dynamic case pairs. Cross routes pass
 selected-module compilation and CPU/VFP checks; no target execution is claimed.
-Independent Strong rereview remains required; P07 is not accepted here.
+Independent Strong [repair exit review](../../../Tests/ContractFixtures/SPEC013/Evidence/rfc-014-p07/independent-repair-exit-review.md) passes the finite P07 exit at `329570ab`, resolving R1/R2. Full owner conformance remains separate.
 Resumed consecutive unproductive repairs: **0/2**. Historical 2/2 stop preserved.
 T9.1/T11.1 and P10–P12 remain open. P08–P12 have not started.
 
@@ -29,8 +29,7 @@ that continuation is unauthorized are superseded only by the resumption above.
 > historical; production integration and P08 remain stopped. The new bounded
 > bench allowance must not be interpreted as an unlimited P07 restart.
 
-**P01–P06 passed; P07 independent exit rereview pending;
-P08–P12 pending.** This is the shared
+**P01–P07 passed; P08–P12 pending.** This is the shared
 sequencing index for nine owner Implementation Plans, not another contract or
 investigation. It derives only the [approved Spec amendments](rfc-014-spec-approval.md)
 at `3c260bbc` and accepted ADR-035/036/037. ITERATION-003 I3-04/05 supplies the
@@ -376,12 +375,12 @@ resource/connected evidence are not inferred from this declaration exit.
 
 P03 passed its finite package exit at `15b47e2a` after separate Strong review
 of the explicitly approved scoped visitor correction and root-entry repair;
-P04–P06 subsequently passed as recorded below; P07–P12 remain pending. There is no
+P04–P07 subsequently passed as recorded below and in the current checkpoint; P08–P12 remain pending. There is no
 remaining P02 exit failure, new package, scope expansion or architecture change.
 
 Planning was prepared without implementation or experiment execution. Optional work remains in the existing deferred track; no new optional
-deliverable was added. The next package is P07 within the existing bounded sequence;
-the current execution stopped at the requested P06 package boundary.
+deliverable was added. That historical checkpoint stopped at the requested P06
+boundary; the current P07 exit is recorded above and below.
 
 P04's scoped traversal, runtime records, exact paired paths, bounded payloads and
 reader-aware profile banks are implemented in `36834e01`, `7e6fdcd6`,
@@ -419,6 +418,18 @@ payload growth and remaining integration/resource obligations. SPEC-012 T10.1
 stays open through P10–P12. Consecutive unproductive repairs remain 0 of 2;
 no P07 work was started.
 
+
+P07 subsequently passed its finite package exit after the original review found
+R1/R2 at `c1500b86`. Repairs `0741894a` and `ad671ea6` correct exact failure
+frame/intent and actual idle/deferred opportunity quiescence. Independent Strong
+[rereview](../../../Tests/ContractFixtures/SPEC013/Evidence/rfc-014-p07/independent-repair-exit-review.md) at `329570ab`
+resolves both findings, rehashes all four fresh routes, and independently executes
+both native binaries: 5904 assertions/zero failures, twelve negatives and 26
+complete actual-profile pairs each. Cross routes provide selected-module CPU/VFP
+and twelve negatives only. Selected audited backing is Static 68,503 / Dynamic
+166,240 bytes; whole-image/resource obligations remain later gates. T9.1/T11.1
+and P10–P12 remain open; no Spec transition or P08 start is implied. The resumed
+guard remains 0/2 and historical 2/2 stop/original FAIL are preserved.
 
 Planning validation: all nine approved Spec statuses and ready plan templates
 checked; every one of 180 criteria appears exactly once in its owner matrix;

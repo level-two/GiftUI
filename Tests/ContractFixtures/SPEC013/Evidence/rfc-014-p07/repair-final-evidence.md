@@ -1,5 +1,9 @@
 # P07 repaired final candidate evidence — 2026-10-11
 
+> **Independent package exit: PASS.** [Repair exit review](independent-repair-exit-review.md)
+> at `329570ab` resolves R1/R2 and passes finite P07. The collection/handoff
+> record below preserves the pre-review boundary; owner tasks and P10–P12 stay open.
+
 The original [independent exit review](independent-exit-review.md) remains **FAIL**
 for its frozen `c1500b86` candidate. R1 and R2 are now repaired in `0741894a` and
 `ad671ea6`, with refreshed four-route evidence below. The repaired candidate is

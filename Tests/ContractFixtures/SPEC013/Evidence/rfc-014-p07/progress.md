@@ -3,7 +3,9 @@
 > **Current continuation — 2026-10-11:** [Eugene authorized adoption of the
 > consuming-owner direction](consuming-owner-resumption.md). Resume P07 under the
 > shared guard, initially 0/2; original stop and bench remain historical evidence.
-> Actual audited construction and package exit remain pending.
+> Actual audited construction and finite P07 exit now pass under the
+> [independent repair exit review](independent-repair-exit-review.md) at `329570ab`.
+> T9.1/T11.1 and later-package obligations remain open; P08 has not started.
 
 > **2026-10-11 focused bench boundary:** the separately authorized
 > [bench result](focused-bench/result.md) recommends preserving consuming ownership
@@ -1155,3 +1157,29 @@ Formatter lint, whitespace and governance checks pass. The resumed shared
 consecutive-unproductive-repair guard remains **0/2**. Independent rereview is the
 next boundary; no P07 self-acceptance, T9.1/T11.1 closure, P08 start or full
 P10–P12/resource/image/timing/hardware claim is made.
+
+
+## Final P07 package exit — independent repair review
+
+Independent Strong [repair exit review](independent-repair-exit-review.md) freezes
+`329570ab` and passes the finite P07 exit. R1 (`0741894a`) and R2 (`ad671ea6`)
+are resolved: ordinary failures follow exact SPEC-009 frame/intent outcomes,
+and both concrete coordinators complete actual idle opportunity teardown before
+return/extraction while scoped active cleanup completes exactly once at finalization.
+The original [FAIL](independent-exit-review.md), historical receipts/diagnostics
+and exhausted 2/2 stop remain preserved.
+
+The reviewer independently rehashed 647 receipt inputs and 521 retained artifacts,
+compiler/core receipts and four-route identities, then executed both native
+binaries: **5904 assertions, zero failures, twelve compiler negatives and 26
+complete actual Static/Dynamic transcript pairs each**. Independent checks confirm
+the original R1 rows' exact states and R2 healthy/pending/deferred cleanup outputs.
+ARMv6/nRF remain selected-object cross-build/CPU/VFP/negative evidence only.
+All 26 exclusive backing families reconcile: Static **68,503**, Dynamic
+**166,240** bytes, including actual cleanup-completion state.
+
+Stop P07 work at this package boundary. SPEC-009/013 remain implementing;
+T9.1/T11.1 and complete P10–P12 regression/resource/connected/cutover obligations
+remain open. No full image, timing/hardware, Spec transition or P08 start is claimed.
+Resumed consecutive unproductive repairs remain **0/2**. No contract/scope
+amendment, waiver or optional follow-up was introduced by these bounded repairs.

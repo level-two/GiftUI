@@ -30,9 +30,10 @@ repairs are committed through `ad671ea6`. The original
 [independent FAIL](../../Tests/ContractFixtures/SPEC013/Evidence/rfc-014-p07/independent-exit-review.md)
 remains preserved. Fresh [repaired four routes](../../Tests/ContractFixtures/SPEC013/Evidence/rfc-014-p07/repair-final-evidence.md)
 pass 5904 native assertions, twelve compiler negatives and 26 complete actual-profile
-pairs; cross routes provide selected-module CPU/VFP evidence only. R1/R2 are
-repaired pending separate Strong rereview. No earlier implemented transition
-satisfies the amendment; P07 acceptance and full P10–P12 conformance stay separate.
+pairs; cross routes provide selected-module CPU/VFP evidence only. Independent
+Strong [repair exit review](../../Tests/ContractFixtures/SPEC013/Evidence/rfc-014-p07/independent-repair-exit-review.md) at `329570ab` resolves R1/R2 and passes
+the finite P07 package exit. No earlier implemented transition satisfies the
+amendment; complete P10–P12 conformance and the owner checkpoint remain open.
 
 
 **Current amendment — 2026-10-05:** Approved five-second retention is implemented and all four hardware-free profiles pass in the [fresh integration](../iterations/iteration-002-cleanup/evidence/18-retention-integration/result.md). Focused nRF connected checks/restoration and current Pi deployment/ARMv6 rehearsal/bounded physical endpoint loop succeed. Original exception authority remains unchanged.
