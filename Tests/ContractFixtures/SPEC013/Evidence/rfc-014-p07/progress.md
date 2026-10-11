@@ -1,5 +1,10 @@
 # RFC-014 P07 progress
 
+> **Current continuation — 2026-10-11:** [Eugene authorized adoption of the
+> consuming-owner direction](consuming-owner-resumption.md). Resume P07 under the
+> shared guard, initially 0/2; original stop and bench remain historical evidence.
+> Actual audited construction and package exit remain pending.
+
 > **2026-10-11 focused bench boundary:** the separately authorized
 > [bench result](focused-bench/result.md) recommends preserving consuming ownership
 > and observing backing while coordinator-owned. Candidate 2 passes 535 assertions

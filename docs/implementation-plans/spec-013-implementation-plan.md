@@ -25,6 +25,13 @@ superseded_by: null
 
 # SPEC-013 Implementation Plan
 
+## Current consuming-owner resumption — 2026-10-11
+
+P07 production integration is explicitly resumed using the passing bench direction;
+see [authorization, scope and repair guard](../../Tests/ContractFixtures/SPEC013/Evidence/rfc-014-p07/consuming-owner-resumption.md).
+T11.1 remains open. Historical stopped checkpoints below are preserved as evidence;
+current progress and exact validation are in the linked P07 receipt.
+
 ## RFC-014 implementation readiness — 2026-10-10
 
 **Ready under [explicit Spec approval](../iterations/iteration-003-review/rfc-014-spec-approval.md).**

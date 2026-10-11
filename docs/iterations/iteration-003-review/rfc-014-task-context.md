@@ -1,5 +1,14 @@
 # RFC-014 task context guide
 
+**Current P07 checkpoint — resumed 2026-10-11:** Eugene explicitly authorized
+[production continuation using candidate 2](../../../Tests/ContractFixtures/SPEC013/Evidence/rfc-014-p07/consuming-owner-resumption.md). Use consuming ownership and
+audit access while coordinator-owned. Resumed consecutive unproductive repairs:
+**0/2**; historical 2/2 stop remains preserved. Actual audited construction and
+P07 exit are still pending; P08–P12 have not started.
+
+The bench and stop records below describe earlier boundaries; their statements
+that continuation is unauthorized are superseded only by the resumption above.
+
 > **Focused bench complete (2026-10-11):** [candidate 2 passes](../../../Tests/ContractFixtures/SPEC013/Evidence/rfc-014-p07/focused-bench/result.md)
 > on Swift 6.3.2: consuming ownership with audit access while coordinator-owned;
 > 535 native assertions and one positive / three negative ownership controls.
