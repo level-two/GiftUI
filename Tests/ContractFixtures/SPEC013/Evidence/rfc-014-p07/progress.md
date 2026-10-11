@@ -25,6 +25,17 @@ the finite P07 exit and hand off to separate Strong review. Contract/scope
 decisions outside this correction still return to Eugene. Consecutive
 unproductive repair count remains **0/2** across resumption.
 
+## Step 18 — bounded actual Dynamic backing repair (in progress)
+
+Actual Dynamic layout dictionary indices and per-stroke Drawing arrays cannot be
+accounted as the old raw-region recipe. The existing storage-audit design note
+records the narrow internal replacement before code: constant-time complete-reference-qualified ordinal indexing
+(sized from actual semantic capacity; occupied-only reset), preallocated aggregate drawing pools and retained live-path backing. Focused
+algorithms, logical limits, identity/error/lifetime behavior and owner boundaries
+remain fixed. This is required P07 construction-audit work under RP-002 and
+RP-RD-001–002, not deferred accounting or a new package. Actual runtime/audit join
+and finite exit remain pending. Repair allowance remains **0/2**.
+
 ## Step 17 — complete finite fixture Embedded compilation
 
 The pinned nrf52840-embedded migration route compiles the actual Static complete

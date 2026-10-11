@@ -6,7 +6,7 @@ status: current
 authors:
   - codex
 created: 2026-09-12
-updated: 2026-09-12
+updated: 2026-10-11
 implementation_plan: ../implementation-plans/spec-013-implementation-plan.md
 related_future_work: []
 related_explorations: []
@@ -20,6 +20,50 @@ superseded_by: null
 > This note explains one replaceable internal realization of an approved
 > contract. It is non-authoritative and cannot introduce architecture or amend
 > the governing Specification.
+
+## RFC-014 P07 — actual Dynamic backing repair
+
+This current section governs the replacement implementation direction under
+[the active P07 sequence](../iterations/iteration-003-review/rfc-014-implementation-plan.md)
+and SPEC-013 T11.1 / RP-002 / RP-RD-001–002. The sixteen-region description below
+is the retained schema-3 baseline, not evidence for the migrated typed owners.
+The amended contract requires 26 exclusive fields and actual construction/audit
+agreement before client traversal; later allocator/full-image gates do not waive
+that requirement.
+
+The actual Dynamic layout workspace currently has a private Dictionary index,
+and Drawing creates separate point/subpath arrays for each stroke and a fresh
+live-path store per path. Neither is the old raw-region recipe. Do not report
+that recipe or guessed Dictionary/object sizes as their actual storage.
+
+The bounded repair keeps the shared focused algorithms, owner boundaries,
+complete record identity semantics, limits and failure precedence unchanged:
+
+- Dynamic layout uses a preallocated ordinal-to-scope table sized from the actual
+  semantic structural capacity. Every lookup also checks the complete stored
+  owner/bank/revision/ordinal reference. Reset clears only occupied entries.
+  Lookup remains constant work and reset is linear in occupied scopes, preserving
+  SPEC-007 O(n + g) and ITERATION-003 I3-T01 indexing obligations. Out-of-range
+  ordinals and duplicate occupied ordinals fail before writes; one attempt reads
+  one qualified semantic snapshot. No general map subsystem is introduced.
+- Dynamic Drawing reserves aggregate point and subpath pools before use. Each
+  stroke stores ranges into those pools. Failed appends roll back both pool
+  cursors, preserving the existing all-or-nothing append behavior.
+- One preallocated live-path backing remains owned by the workspace. Begin/end
+  path and Canvas cleanup reset its logical contents and scope state without
+  dropping its allocation. Borrowed stroke views remain scoped to the owned plan.
+- Payload extent reports use actual retained Array capacities and element
+  strides; value metadata uses the pinned compiler's MemoryLayout. Runtime Core
+  still performs checked summation. Runtime allocator headers/spare allocation
+  overhead and complete linked-image accounting stay separately reported at
+  their existing gates, never substituted for owned payload extents.
+
+Focused evidence must cover complete Static/Dynamic cycle equivalence, drawing
+rollback and capacity edges, reset/reuse, full owner identity lookup and unchanged
+fault outcomes. Focused index evidence includes foreign owner/bank/revision,
+out-of-range ordinal, duplicate and first-excess rejection, reset/reuse and
+constant indexed lookup work. Existing controls remain historical evidence; no approval or
+conformance transition is implied by this note.
 
 ## Purpose and Boundary
 
