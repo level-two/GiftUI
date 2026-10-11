@@ -34,6 +34,31 @@ private func exercisePipeline<G, C, R, H>(models: borrowing ObservableModelScope
         expect(retried.publication.semanticRevision == refused.publication.semanticRevision && !retried.publication.changed)
         expect(trace.pointee.applied == 1 && trace.pointee.commits == 2)
         expect(models.phase == .mutating && values.count == 0)
+        trace.pointee.mutate = true; trace.pointee.failAfterMutation = true
+        result = RuntimeCompletePipeline.run(owner: &owner)
+        guard case .failed(let partial) = result else { preconditionFailure("partial mutation") }
+        expect(partial.stage == .applyAdmittedWork && partial.disposition.semanticDisposition == .dirty)
+        expect(trace.pointee.applied == 2 && partial.disposition.wakeReasons.contains(.semanticDirty))
+        trace.pointee.failAfterMutation = false
+        result = RuntimeCompletePipeline.run(owner: &owner)
+        guard case .completed(let recovered) = result else { preconditionFailure("partial recovery") }
+        expect(recovered.publication.changed && trace.pointee.applied == 2)
+        for offer: FrameOfferDisposition in [.backpressured, .nonRetryableRefusal] {
+            trace.pointee.offer = offer
+            let streams = trace.pointee.streams, commits = trace.pointee.commits
+            result = RuntimeCompletePipeline.run(owner: &owner)
+            switch result {
+            case .completed(let refusal):
+                expect(offer == .backpressured && refusal.disposition.logicalFrameDisposition == .aborted)
+                expect(refusal.disposition.presentationIntentState == .pending)
+            case .failed(let refusal):
+                expect(offer == .nonRetryableRefusal && refusal.failure == .nonRetryableRefusal(.endpoint))
+                expect(refusal.disposition.presentationIntentState == .unavailable)
+            }
+            expect(trace.pointee.streams == streams && trace.pointee.commits == commits)
+            expect(models.phase == .mutating && values.count == 0)
+        }
+        trace.pointee.offer = .accepted
         for raw: UInt8 in 0...10 {
             trace.pointee.fault = RuntimeCompletePipelineStage(rawValue: raw)!
             trace.pointee.stages = 0; trace.pointee.cleanups = 0
@@ -44,6 +69,9 @@ private func exercisePipeline<G, C, R, H>(models: borrowing ObservableModelScope
             expect(trace.pointee.stages == (UInt16(1) << (raw + 1)) - 1)
             expect(trace.pointee.finalized == finalized + 1)
             expect(models.phase == .mutating && values.count == 0 && !owner.frameActive)
+            for index in 1..<max(1, trace.pointee.cleanupCount) {
+                expect(trace.pointee.cleanupOrder[index - 1] < trace.pointee.cleanupOrder[index])
+            }
         }
         trace.pointee.fault = nil; trace.pointee.show = false; owner.changed = true
         result = RuntimeCompletePipeline.run(owner: &owner)

@@ -30,6 +30,9 @@ protocol CycleGeometry {
     mutating func produce(_ bank: borrowing SemanticRecordView<CyclePayload>, header: RenderPlanHeader, sink: inout CycleRenderSink) -> RenderProductionResult
     func bounds(_ record: SemanticRecordReference) -> Rect?
     func clip(_ record: SemanticRecordReference) -> Rect?
+    mutating func resetLayout()
+    mutating func resetPlan()
+    mutating func resetRender()
     mutating func reset()
 }
 #if !hasFeature(Embedded)
@@ -52,9 +55,10 @@ struct DynamicCycleGeometry: CycleGeometry {
     }
     func bounds(_ record: SemanticRecordReference) -> Rect? { resolved.renderView.bounds(of: record) }
     func clip(_ record: SemanticRecordReference) -> Rect? { resolved.renderView.clip(of: record) }
-    mutating func reset() {
-        plan.discard(); plan.reset(); render.reset(); workspace.resetLayout(); resolved.discard()
-    }
+    mutating func resetLayout() { workspace.resetLayout(); resolved.discard() }
+    mutating func resetPlan() { plan.discard(); plan.reset() }
+    mutating func resetRender() { render.reset() }
+    mutating func reset() { resetRender(); resetPlan(); resetLayout() }
 }
 #endif
 struct StaticCycleGeometry: CycleGeometry {
@@ -86,8 +90,8 @@ struct StaticCycleGeometry: CycleGeometry {
     }
     func bounds(_ record: SemanticRecordReference) -> Rect? { view.bounds(of: record) }
     func clip(_ record: SemanticRecordReference) -> Rect? { view.clip(of: record) }
-    mutating func reset() {
-        plan.discard(); plan.reset(); render.reset(); resolved.discard(); workspace.resetLayout()
-        references = .init(repeating: nil)
-    }
+    mutating func resetLayout() { resolved.discard(); workspace.resetLayout(); references = .init(repeating: nil) }
+    mutating func resetPlan() { plan.discard(); plan.reset() }
+    mutating func resetRender() { render.reset() }
+    mutating func reset() { resetRender(); resetPlan(); resetLayout() }
 }

@@ -25,6 +25,29 @@ the finite P07 exit and hand off to separate Strong review. Contract/scope
 decisions outside this correction still return to Eugene. Consecutive
 unproductive repair count remains **0/2** across resumption.
 
+## Step 15 — cleanup boundaries and additional failure dispositions
+
+The actual profile geometry receives each reset at its named cleanup boundary;
+trace checks reject duplicate cleanup actions and verify ordering on eleven
+fault exits. Semantic revision reservation precedes irreversible publication.
+Canvas transfer errors map exhaustively to DrawingProductionError. Added a
+successful checked mutation followed by failure and recovery without replay,
+backpressure and endpoint-origin nonretryable refusal. These are incremental
+pipeline disposition checks; complete terminal Interaction teardown, coordinator
+summary/admission and actual aggregate audit assembly remain pending.
+
+The oracle is SPEC-009 RunCycleSummary rules (lines 903–914) and Refusal recovery
+(lines 1075–1111): backpressure aborts with pending intent; nonretryable endpoint
+refusal fails with unavailable intent; recovery rederives without mutation replay.
+SPEC-013 Storage/reset/quiescence (lines 773–805) supplies cleanup and retained
+state requirements. Implementation comparison is corroboration, not authority.
+
+After scripts/format-swift.sh, the registered native Static RFC-014 command passes
+477 assertions and ten compiler negatives; step-15-macos-static.json. A first
+compile identified the distinct DrawingError/ DrawingProductionError enums;
+the exhaustive mapping fixed it and the next fresh gate passed. No repeated
+unproductive repair; **0/2** remains. No other acceptance claim is advanced.
+
 ## Step 14 — actual complete-pipeline entry fixture
 
 Both concrete profile storage joins now execute RuntimeCompletePipeline with

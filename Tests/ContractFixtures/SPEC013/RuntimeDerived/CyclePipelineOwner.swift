@@ -14,6 +14,9 @@ import CyclePresentation
 struct CycleControl {
     var show = true
     var mutate = false
+    var failAfterMutation = false
+    var cleanupOrder: InlineArray<9, UInt8> = .init(repeating: 255)
+    var cleanupCount = 0
     var fault: RuntimeCompletePipelineStage?
     var offer: FrameOfferDisposition = .accepted
     var stages: UInt16 = 0
@@ -83,6 +86,7 @@ where Geometry: CycleGeometry, Candidate: InteractionCandidateRecordStorage, Com
         return nil
     }
     mutating func admitAndSeal() -> RuntimePipelineStepResult<RuntimeOwnerFailure> {
+        control.pointee.cleanups = 0; control.pointee.cleanupCount = 0
         guard !quiescent else { return .failure(.execution(.requiredFacilityUnavailable)) }
         if let error = phase.beginCycle(reservingFrom: &cycles) { return .failure(.execution(error)) }
         if let error = boundary(.admissionAndSeal) { return .failure(error) }
@@ -98,7 +102,10 @@ where Geometry: CycleGeometry, Candidate: InteractionCandidateRecordStorage, Com
         let target = ObservableStateRootTargetAccess(root: root, identity: rootIdentity, ordinal: 0)
         let captured = CapturedAction(identity: actionIdentity, generation: record.generation)
         switch RuntimeRecordInteractionBridge.dispatch(captured, records: interaction, target: target, actionType: CycleAction.self, operation: CycleHandler.operation) {
-        case .interaction(.dispatched): control.pointee.applied += 1; changed = true; return .applied(true)
+        case .interaction(.dispatched):
+            control.pointee.applied += 1; changed = true
+            if control.pointee.failAfterMutation { return .failure(.execution(.capacityExhausted), mutationApplied: true) }
+            return .applied(true)
         case .observableFailure(let error): return .failure(.focusedOwner(.observableState(error)), mutationApplied: false)
         default: return .failure(.execution(.invalidProvenance), mutationApplied: false)
         }
@@ -127,7 +134,21 @@ where Geometry: CycleGeometry, Candidate: InteractionCandidateRecordStorage, Com
         case .accessFailure: discardLocalCandidates(); return .failure(.focusedOwner(.observableState(.staleModel)))
         }
         do throws(DrawingError) { try CanvasSemanticTransfer.stage(from: semantic, into: values, table: CycleValueTable()) }
-        catch { discardLocalCandidates(); return .failure(.focusedOwner(.drawing(.invariantViolation))) }
+        catch {
+            discardLocalCandidates()
+            let production: DrawingProductionError = switch error {
+            case .invalidModelAccess: .invalidModelAccess
+            case .invalidValue: .invalidValue
+            case .invalidPathState: .invalidPathState
+            case .arithmeticOverflow: .arithmeticOverflow
+            case .capacityExhausted: .capacityExhausted
+            case .invalidScope: .invalidScope
+            case .invalidPhase: .invalidPhase
+            case .reentrancyViolation: .reentrancyViolation
+            case .invariantViolation: .invariantViolation
+            }
+            return .failure(.focusedOwner(.drawing(production)))
+        }
         return .advanced
     }
     mutating func resolveLayout() -> RuntimePipelineStepResult<RuntimeOwnerFailure> {
@@ -184,6 +205,9 @@ where Geometry: CycleGeometry, Candidate: InteractionCandidateRecordStorage, Com
     }
     mutating func publishSemanticAndObservableCandidate() -> RuntimePipelinePublicationResult<RuntimeOwnerFailure> {
         if let error = boundary(.semanticAndObservablePublication) { return .failure(error) }
+        let revision: SemanticRevision
+        if changed || phase.context.semanticRevision == nil { guard let next = revisions.reserve() else { return .failure(.execution(.identityExhausted)) }; revision = next }
+        else { revision = phase.context.semanticRevision! }
         if let error = phase.transition(to: .publishing) { return .failure(.execution(error)) }
         do throws(ObservableStateError) {
             try models.withDiscovery { () throws(ObservableStateError) in
@@ -193,9 +217,6 @@ where Geometry: CycleGeometry, Candidate: InteractionCandidateRecordStorage, Com
         } catch { quiescent = true; return .failure(.focusedOwner(.observableState(error))) }
         do throws(SemanticExpansionError) { try semantic.publishCandidate(); semanticCandidate = false }
         catch { quiescent = true; return .failure(.focusedOwner(.semantic(error))) }
-        let revision: SemanticRevision
-        if changed || phase.context.semanticRevision == nil { guard let next = revisions.reserve() else { return .failure(.execution(.identityExhausted)) }; revision = next }
-        else { revision = phase.context.semanticRevision! }
         if let error = phase.recordPublishedSemanticRevision(revision) { return .failure(.execution(error)) }
         return .published(.init(semanticRevision: revision, changed: changed))
     }
@@ -233,7 +254,7 @@ where Geometry: CycleGeometry, Candidate: InteractionCandidateRecordStorage, Com
     }
     mutating func discardLocalCandidates() {
         values.discard()
-        if semanticCandidate { try? semantic.discardCandidate(); semanticCandidate = false }
+        if semanticCandidate { do throws(SemanticExpansionError) { try semantic.discardCandidate() } catch { quiescent = true }; semanticCandidate = false }
         if observableCandidate {
             do throws(ObservableStateError) { try models.withDiscovery { () throws(ObservableStateError) in
                 if case .failure(let error) = root.finishCandidate(.discard) { throw error }
@@ -242,10 +263,17 @@ where Geometry: CycleGeometry, Candidate: InteractionCandidateRecordStorage, Com
         }
     }
     mutating func cleanup(_ action: RuntimeCleanupAction) {
+        precondition(control.pointee.cleanupCount < 9)
+        control.pointee.cleanupOrder[control.pointee.cleanupCount] = action.rawValue
+        control.pointee.cleanupCount += 1
+        precondition(control.pointee.cleanups & (UInt16(1) << action.rawValue) == 0)
         control.pointee.cleanups |= UInt16(1) << action.rawValue
         switch action {
         case .releaseCanvasCallable: values.discard()
-        case .discardSemanticCandidate: if semanticCandidate { try? semantic.discardCandidate(); semanticCandidate = false }
+        case .resetRenderWorkspace: geometry.resetRender()
+        case .resetDrawingPlan: geometry.resetPlan()
+        case .resetLayoutCandidate: geometry.resetLayout()
+        case .discardSemanticCandidate: if semanticCandidate { do throws(SemanticExpansionError) { try semantic.discardCandidate() } catch { quiescent = true }; semanticCandidate = false }
         case .discardObservableCandidate:
             if observableCandidate { discardLocalCandidates() }
         case .discardInteractionCandidate: interaction.resolveCandidate(.discard); generations.resolveCandidate(committed: false); interactionCandidate = false
@@ -255,7 +283,6 @@ where Geometry: CycleGeometry, Candidate: InteractionCandidateRecordStorage, Com
             if interactionCandidate { interaction.resolveCandidate(.discard); generations.resolveCandidate(committed: false); interactionCandidate = false }
             geometry.reset()
             if frameActive { do throws(ObservableStateError) { try models.endFrame() } catch { quiescent = true }; frameActive = false }
-        default: break
         }
     }
     mutating func applyDisposition(_ disposition: RuntimePipelineDisposition) {
