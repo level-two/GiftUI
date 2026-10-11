@@ -33,3 +33,17 @@ Bench consecutive unproductive workaround repairs: **0/2**.
 Next: candidate 1 keeps stored scopes private and supplies explicit lifetime-bound
 borrow methods to the external coordinator join, preserving every real method.
 Then test the consuming-owned alternative, with positive and negative evidence.
+
+## Step 2 — bounded candidates and result
+
+Candidate 1 failed with two source-located borrowed field projection errors,
+narrowing the accessor localization. Candidate 2 compiled and ran **535/0** with
+four same-backing observations across the existing Dynamic/Static coordinators.
+Actual-owner borrowing passed; copy, use-after-consume and Escapable storage
+controls rejected for their intended reasons. See [result.md](result.md).
+
+Final budget: **7/12 diagnostic variants; 2/2 candidates**. Bench consecutive
+unproductive repairs: **0/2**; historical production stop: **2/2, unchanged**.
+No maintained files changed. Compiler/imported/auxiliary cached inputs are now
+hash-verified at preflight. Cached prerequisites and fresh-rebuild limitation are
+explicit in the result. This is the bench boundary; no production adoption.

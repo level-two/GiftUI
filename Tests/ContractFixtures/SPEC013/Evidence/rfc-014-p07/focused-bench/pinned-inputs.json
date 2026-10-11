@@ -51,5 +51,10 @@
     ".build/contracts/spec-006-rfc-014/dd5d4849463055f2-hwlll28l/macos-static/CounterSchema.o": "dfb7b0f39efebd08be5b04a8e12fd54c78b689416526fb186591772ac514eedf",
     ".build/contracts/spec-006-rfc-014/dd5d4849463055f2-hwlll28l/macos-static/DeclarationHost.swiftmodule": "7e69b1dda19b3d4ac275b7b4e84e4caaa7974a8a42f443c1122963dd200f4132",
     ".build/contracts/spec-006-rfc-014/dd5d4849463055f2-hwlll28l/macos-static/AnalyzerPresentation.o": "0ed359d0cc2fef222613042c4c700ad9fbd4b56ebc3a866b227672682f5b6a90"
+  },
+  "auxiliary_inputs": {
+    ".build/contracts/spec-013-runtime-cycle/tmpuzqrfive/macos-static/commands.txt": "9fda6a1c3a54c6b455692fc96876119cbddbd8147f40f16b7084ad7781b33f95",
+    ".build/contracts/spec-013-runtime-cycle/tmp_zcszbtn/macos-static/commands.txt": "18e3fca7909ec0e682801fbb6e5b21868c06fdc4c82ae818a8c48e7b53590b6c",
+    ".build/contracts/spec-013-runtime-cycle/tmp_zcszbtn/macos-static/Main.swift": "ae350b2aaaf0ad1906a29438c5bc9ce54fc9391c5c3b64c0ceec00282666aa92"
   }
 }

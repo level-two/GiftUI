@@ -1,0 +1,9 @@
+{
+  "name": "c02-run",
+  "command": [
+    "/Users/eugene/work/GiftUI/.build/p07-focused-bench/c02-owned-audit/runtime-cycle"
+  ],
+  "exit_code": 0,
+  "stdout": "P07 values assertions=535 failures=0\n",
+  "stderr": ""
+}

@@ -11,6 +11,18 @@ BASE = 'c234058e'
 original = shlex.split((STOP / 'failed-command.txt').read_text())
 def digest(p): return hashlib.sha256(p.read_bytes()).hexdigest()
 def prepare():
+    pinned_path = HERE / 'pinned-inputs.json'
+    if pinned_path.exists():
+        pinned=json.loads(pinned_path.read_text())
+        compiler=Path(pinned['compiler'])
+        if not compiler.is_file(): raise SystemExit('Missing pinned compiler: '+str(compiler))
+        if digest(compiler) != pinned['compiler_sha256']: raise SystemExit('Compiler identity mismatch')
+        for name, expected in (pinned['imported_artifacts'] | pinned.get('auxiliary_inputs', {})).items():
+            path=ROOT/name
+            if not path.is_file(): raise SystemExit('Missing pinned prerequisite: '+name)
+            if digest(path) != expected: raise SystemExit('Changed pinned prerequisite: '+name)
+    else:
+        raise SystemExit('Missing pinned-inputs.json; do not silently regenerate identities')
     state = json.loads((STOP / 'source-state.json').read_text())
     paths = {f['path'] for f in state['files']}
     paths.update(str(Path(x).relative_to(ROOT)) for x in original if x.endswith('.swift'))
@@ -20,7 +32,7 @@ def prepare():
     subprocess.run(['git','apply','--directory',str(INPUTS.relative_to(ROOT)),str(STOP/'attempted-source.patch')],cwd=ROOT,check=True)
     for item in state['files']:
         assert digest(INPUTS / item['path']) == item['sha256'], item['path']
-def run(name, changes=None):
+def run(name, changes=None, imports=None):
     out = BUILD / name; out.mkdir(parents=True,exist_ok=True)
     sources = []
     command = []
@@ -33,6 +45,8 @@ def run(name, changes=None):
         else: command.append(arg)
     for flag, value in [('-module-cache-path',out/'cache'),('-emit-module-path',out/'RuntimeCycleProbe.swiftmodule'),('-o',out/'RuntimeCycleProbe.o')]:
         command[command.index(flag)+1] = str(value)
+    if imports:
+        command[1:1] = ['-I', str(imports)]
     if name == 'd06-silgen':
         command.remove('-emit-module'); command.remove('-emit-object')
         index=command.index('-emit-module-path'); del command[index:index+2]
@@ -91,5 +105,22 @@ if __name__ == '__main__':
                 depth += (s[end]=='{')-(s[end]=='}'); end+=1
             return s[:brace+1]+' return 0 '+s[end-1:]
         changes={'CyclePipelineOwner.swift':private_scopes,'CycleCoordinatorProbe.swift':trap_reader}
+    elif name == 'c01-explicit-scope-borrows':
+        def explicit_borrows(s):
+            for field in ['models','root','semantic','values']:
+                s=s.replace('    let '+field+':','    private let '+field+':',1)
+            marker='    mutating func boundary'
+            methods = """    @_lifetime(copy self)
+    borrowing func borrowModels() -> ObservableModelScope<CycleOwnedModel, CycleModelSchema> {
+        models.borrowedScope()
+    }
+    @_lifetime(copy self)
+    borrowing func borrowRoot() -> ObservableStateRootScope<CycleOwnedModel, SemanticCompleteIdentity> {
+        root.borrowedRoot()
+    }
+"""
+            return s.replace(marker, methods+marker,1)
+        changes={'CyclePipelineOwner.swift':explicit_borrows,
+                 'CycleCoordinatorProbe.swift':lambda s:s.replace('owner.models.borrowedScope()', 'owner.borrowModels()').replace('owner.root.borrowedRoot()', 'owner.borrowRoot()')}
     elif name not in ['baseline', 'd06-silgen']: raise SystemExit('unknown variant')
     run(name, changes)
