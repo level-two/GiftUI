@@ -21,7 +21,10 @@ superseded_by: null
 Collecting, not conformant for the amended implementation. The
 [approved scoped coordinator correction](../iterations/iteration-003-review/rfc-014-spec-approval.md#scoped-coordinator-constraint-amendment--2026-10-11)
 and [P07 progress](../../Tests/ContractFixtures/SPEC013/Evidence/rfc-014-p07/progress.md)
-control current applicability. Prior pass rows below remain historical evidence
+control current applicability. The additionally
+[approved concrete-binding correction](../iterations/iteration-003-review/rfc-014-spec-approval.md#concrete-coordinator-binding-amendment--2026-10-11)
+requires fresh concrete storage/audit, Model/Schema and finite handler/mutation
+bindings, mismatch negatives and runtime provenance evidence. Prior pass rows below remain historical evidence
 for their frozen revisions. Actual scoped coordinator/fault integration and
 four-configuration checks remain pending; no earlier implemented transition
 satisfies them. P07 acceptance and complete P10–P12 conformance remain separate.

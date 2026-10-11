@@ -25,7 +25,15 @@ the finite P07 exit and hand off to separate Strong review. Contract/scope
 decisions outside this correction still return to Eugene. Consecutive
 unproductive repair count remains **0/2** across resumption.
 
-## Current stop — associated requirements, 2026-10-11
+## Step 8 — approved concrete-binding contract recorded
+
+The exact SPEC-013 associated-requirement removals and mandatory relocated
+construction/negative/provenance guarantees are recorded before code, with
+Eugene's approval in the human ledger. Owner plan, collecting conformance,
+manifest and shared context/sequence are reconciled. No other contract changes.
+Validation: scripts/validate-governance.rb and git diff --check. Repair **0/2**.
+
+## Historical stop — associated requirements, 2026-10-11
 
 The prior approved correction is implemented. A newly confirmed exact
 Storage/Handler/TargetAccess boundary stops affected integration. Read the

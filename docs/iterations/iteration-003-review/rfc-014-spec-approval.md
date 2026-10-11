@@ -108,3 +108,25 @@ The narrow SPEC-009 owner checkpoint belongs inside P07, not a new package.
 SPEC-015's containing host construction/activation lifetime is a separately
 reviewed boundary and receives no blanket approval here. P08 is not started,
 and no implemented transition, waived criterion or enlarged scope is approved.
+
+
+## Concrete coordinator binding amendment — 2026-10-11
+
+After the [independent associated-type review](../../../Tests/ContractFixtures/SPEC013/Evidence/rfc-014-p07/independent-associated-type-review.md)
+and the proposed relocation with mandatory construction proofs were explained,
+Eugene replied: “Nice, please proceed either way proposed solution.” This approves
+and reapproves the exact SPEC-013 correction: remove only Storage, Handler and
+TargetAccess and their Model equality from GiftUIRuntimeProfileCoordinator;
+retain Endpoint/Sink and every operational/inherited requirement.
+
+Concrete construction MUST bind actual storage and validated audit, common
+Model/Schema and one immutable finite action domain with a statically known
+handler mapping to that Model.Mutation. Mismatch compiler negatives and runtime
+provenance/lifecycle evidence are mandatory. This relocates guarantees; it does
+not drop them. The previous associated-types-unchanged restriction is superseded
+only for these removals. Existing RFC-014 precedence already resolves checked
+writes versus baseline raw callbacks; no separate SPEC-011 approval gate or new
+action API is introduced. SPEC-015, P08, compiler upgrades and owner/module
+moves are outside this decision. SPEC-013 remains implementing, its plan active,
+report collecting, T11.1 open through P10–P12. P07 requires separate Strong exit
+review. Historical blocker evidence stays intact.

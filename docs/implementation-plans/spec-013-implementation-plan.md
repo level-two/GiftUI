@@ -37,9 +37,12 @@ not additional authorization to rerun an MVP implementation or reopen experiment
 
 ### Current owner checkpoint
 
-P07 is currently stopped at the [associated-type contract boundary](../../Tests/ContractFixtures/SPEC013/Evidence/rfc-014-p07/associated-type-constraint.md).
-The previous approved suppression correction is implemented; the new proposal
-requires separate review/decision. Partial WIP is preserved, not accepted.
+P07 resumes under the [approved concrete-binding correction](../iterations/iteration-003-review/rfc-014-spec-approval.md#concrete-coordinator-binding-amendment--2026-10-11).
+Apply the exact three associated-requirement removals. T11.1 must prove concrete
+storage/audit and common Model/Schema bindings, immutable finite action domain
+and statically known mapping to Model.Mutation; add mismatched model/schema,
+action-domain and mutation-type negatives plus runtime owner/provenance checks.
+Prior partial WIP is preserved, not accepted.
 
 - [ ] `T11.1` — Actual owner integration, disjoint pool accounting, read/publication/offer retirement and all fault/differential resource obligations.
   **Scope:** RuntimeCore limits, audit, complete pipeline/cleanup and concrete Dynamic/Static coordinators and directly corresponding tests/fixtures/build wiring.

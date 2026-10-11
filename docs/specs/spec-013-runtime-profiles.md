@@ -262,6 +262,30 @@ Retain compact failure/result ceilings below and existing host/workload ceilings
 Layout/resource algorithm choices are implementation details within these limits;
 unaccounted costs or exceeded limits fail acceptance, not trigger fallback.
 
+### Approved concrete coordinator binding correction — 2026-10-11
+
+Under [explicit human approval](../iterations/iteration-003-review/rfc-014-spec-approval.md#concrete-coordinator-binding-amendment--2026-10-11),
+the common coordinator protocol removes only Storage, Handler and TargetAccess
+associated requirements and their Model equality. Endpoint/Sink, ownership
+suppressions, inherited admission/opportunity seams and operational members stay.
+This supersedes the earlier correction's associated-types-unchanged restriction.
+
+Concrete coordinator construction MUST bind actual RuntimeProfileStorage and
+its validated audit, common Model/Schema for model/root/target scopes, and one
+immutable finite action domain and statically known handler mapping whose
+checked operations produce that Model.Mutation. Conformance to the common
+protocol alone MUST NOT be presented as proof of those relationships. Compiler
+negatives MUST reject mismatched Model/Schema, action domain and mutation type;
+runtime checks MUST exercise actual audit/owner identity agreement, stale target
+cancellation and exactly-once dispatch/reporting. Copy/escape controls remain.
+
+Runtime retains this join in its existing owner/dependency graph. Existing
+RFC-014 precedence selects the SPEC-011 checked-write realization over the
+legacy raw-model callback spelling; finite typed handler semantics remain.
+No new action API, type erasure, ownership registry, compiler upgrade, SPEC-015
+host amendment or behavior/resource waiver is introduced by this correction.
+Full phase/failure/publication/offer/cleanup obligations remain unchanged.
+
 ### Amendment acceptance criteria
 
 - [ ] **RP-RD-001:** All storage families have measured count/stride/alignment and
@@ -577,12 +601,8 @@ package protocol RuntimeProfileStorage: ~Copyable {
 package protocol GiftUIRuntimeProfileCoordinator:
     ~Copyable, ~Escapable, ExecutionAdmissionSink, ExecutionOpportunityRunner
 {
-    associatedtype Storage: RuntimeProfileStorage
     associatedtype Endpoint: SynchronousFrameEndpoint
         where Endpoint.Sink: DrawingOperationSink
-    associatedtype Handler: GiftUIActionHandler
-    associatedtype TargetAccess: ActionModelTargetAccess
-        where TargetAccess.Model == Handler.Model
     var profile: RuntimeProfileKind { get }
     var storageAudit: RuntimeStorageAudit { get }
     var executionContext: ExecutionContext { get }

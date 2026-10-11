@@ -1,6 +1,6 @@
 # RFC-014 bounded implementation sequence — 2026-10-10
 
-**P01–P06 passed; P07 stopped at a newly confirmed associated-type contract boundary;
+**P01–P06 passed; P07 resumed under the approved concrete-binding correction;
 P08–P12 pending.** This is the shared
 sequencing index for nine owner Implementation Plans, not another contract or
 investigation. It derives only the [approved Spec amendments](rfc-014-spec-approval.md)
@@ -27,11 +27,11 @@ has started.
 The prior correction is implemented. The new [associated-type decision packet](../../../Tests/ContractFixtures/SPEC013/Evidence/rfc-014-p07/associated-type-constraint.md)
 records the remaining Storage/Handler/TargetAccess boundary, bounded compiler
 proof, concrete proposed operational-protocol correction and lost static checks.
-It is not approved. Validated slices and an honest partial WIP are committed.
+The [exact reviewed correction is approved](rfc-014-spec-approval.md#concrete-coordinator-binding-amendment--2026-10-11). Validated slices and honest partial WIP are preserved.
 The [independent Strong review](../../../Tests/ContractFixtures/SPEC013/Evidence/rfc-014-p07/independent-associated-type-review.md)
 at `8d9f76c9` confirms the blocker and recommends the exact correction with
-mandatory concrete binding proofs. Human decision precedes affected integration
-resumption; this review does not accept the package.
+mandatory concrete binding proofs. Those proofs accompany resumed integration;
+separate Strong package exit review remains required.
 
 ## Fixed deliverable and scope rules
 
