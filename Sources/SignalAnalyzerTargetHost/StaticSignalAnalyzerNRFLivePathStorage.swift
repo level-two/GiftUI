@@ -5,8 +5,8 @@ import GiftUIRenderCore
 /// One transient Canvas path in the caller-owned 3,280-byte profile region.
 /// Counts live in this scoped value; no path point or subpath escapes the borrow.
 package struct StaticSignalAnalyzerNRFLivePathStorage: LivePathStorage {
-    package let maximumPointCount: UInt16 = 202
-    package let maximumSubpathCount: UInt16 = 12
+    package let maximumPointCount: UInt16
+    package let maximumSubpathCount: UInt16
     package private(set) var pointCount: UInt16 = 0
     package private(set) var subpathCount: UInt16 = 0
 
@@ -16,8 +16,15 @@ package struct StaticSignalAnalyzerNRFLivePathStorage: LivePathStorage {
     private static let subpathOffset = 202 * pointStride
     package static let regionByteCount = 3_280
 
-    package init?(region: UnsafeMutableRawBufferPointer) {
-        guard region.count == Self.regionByteCount else { return nil }
+    package init?(
+        region: UnsafeMutableRawBufferPointer, maximumPointCount: UInt16 = 202,
+        maximumSubpathCount: UInt16 = 12
+    ) {
+        guard region.count == Self.regionByteCount, maximumPointCount > 0, maximumPointCount <= 202,
+            maximumSubpathCount > 0, maximumSubpathCount <= 12
+        else { return nil }
+        self.maximumPointCount = maximumPointCount
+        self.maximumSubpathCount = maximumSubpathCount
         self.region = region
         region.initializeMemory(as: UInt8.self, repeating: 0)
     }

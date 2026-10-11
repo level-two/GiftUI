@@ -30,6 +30,7 @@ package struct DynamicDrawingPlanWorkspace: DrawingPlanConstructionWorkspace,
 
     package init(capacity: DrawingLimits) {
         self.capacity = capacity
+        self.limits = capacity
         livePath = LivePathBuilder(
             storage: DynamicLivePathStorage(
                 maximumPointCount: capacity.maximumLivePathPoints,
@@ -76,7 +77,16 @@ package struct DynamicDrawingPlanWorkspace: DrawingPlanConstructionWorkspace,
         return publishedSummary!
     }
 
-    package var limits: DrawingLimits { capacity }
+    package private(set) var limits: DrawingLimits
+    package mutating func configure(limits: DrawingLimits) -> Bool {
+        guard !isActive, capacity.coversStorage(for: limits) else { return false }
+        self.limits = limits
+        return livePath.withStorage {
+            $0.configure(
+                maximumPointCount: limits.maximumLivePathPoints,
+                maximumSubpathCount: limits.maximumLivePathSubpaths)
+        }
+    }
     package var strokeCount: UInt16 { UInt16(strokes.count) }
     package var pointCount: UInt16 {
         UInt16(points.count)
@@ -101,7 +111,7 @@ package struct DynamicDrawingPlanWorkspace: DrawingPlanConstructionWorkspace,
         _ body: (inout GraphicsContext) throws(DrawingError) -> Result
     ) throws(DrawingError) -> Result {
         guard isActive,
-            canvasIdentities.count < Int(capacity.maximumCanvasOccurrences),
+            canvasIdentities.count < Int(limits.maximumCanvasOccurrences),
             !canvasIdentities.contains(identity),
             currentIdentity == nil,
             !pathActive
@@ -221,9 +231,9 @@ package struct DynamicDrawingPlanWorkspace: DrawingPlanConstructionWorkspace,
         path: borrowing PathStorage
     ) -> Bool where PathStorage: LivePathStorage {
         guard let canvas = currentIdentity, let origin = currentOrigin,
-            strokes.count < Int(capacity.maximumPlanStrokes),
-            points.count + Int(path.pointCount) <= Int(capacity.maximumPlanPoints),
-            subpaths.count + Int(path.subpathCount) <= Int(capacity.maximumPlanSubpaths)
+            strokes.count < Int(limits.maximumPlanStrokes),
+            points.count + Int(path.pointCount) <= Int(limits.maximumPlanPoints),
+            subpaths.count + Int(path.subpathCount) <= Int(limits.maximumPlanSubpaths)
         else { return false }
         let pointStart = points.count
         let subpathStart = subpaths.count

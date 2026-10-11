@@ -108,7 +108,7 @@ private func withSemantic(models: borrowing ObservableModelScope<CycleOwnedModel
     } catch { preconditionFailure("semantic owner") }
 }
 public func giftuiP07CycleSemantic() -> Int {
-    var checks = cycleAdmissionBackingProbe() + cycleFactoryProbe() + cycleFactoryCapacityProbe()
+    var checks = cycleAdmissionBackingProbe() + cycleFactoryProbe() + cycleFactoryCapacityProbe() + cycleConfiguredLimitProbe()
     do throws(ObservableStateError) {
         var namespace = ObservableModelOwnerNamespace()
         var storage = StaticObservableRootAdapter<CycleOwnedModel, SemanticCompleteIdentity>(identity: try namespace.issue(), schema: 1, needsCapture: false)!

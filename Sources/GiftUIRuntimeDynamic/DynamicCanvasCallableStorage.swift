@@ -18,7 +18,7 @@ package struct DynamicCanvasCallableStorage<
     }
 
     package mutating func withLifetime<Result>(
-        table: borrowing Table, limits: StaticCanvasLimits,
+        table: borrowing Table, limits: StaticCanvasLimits, configuredCapacity: UInt16? = nil,
         _ body: (borrowing CanvasStagedValues<Identity, Table>) throws(DrawingError) -> Result
     ) throws(DrawingError) -> Result {
         let table = copy table
@@ -26,7 +26,7 @@ package struct DynamicCanvasCallableStorage<
             var span = MutableSpan(_unsafeElements: buffer)
             return try withCanvasStagedValues(
                 metadata: &metadata, entries: &span, table: table,
-                capacity: capacity, limits: limits, body)
+                capacity: configuredCapacity ?? capacity, limits: limits, body)
         }
     }
 }

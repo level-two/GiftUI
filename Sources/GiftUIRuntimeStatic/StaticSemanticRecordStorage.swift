@@ -14,6 +14,7 @@ package struct StaticSemanticRecordStorage: ~Copyable {
     package var storageOwner: SemanticRecordOwnerIdentity { owner }
 
     package mutating func withLifetime<Payload, Result>(
+        configuredLimits: SemanticRecordLimits? = nil,
         records: inout MutableSpan<SemanticRuntimeRecord>,
         paths: inout MutableSpan<SemanticPathEntry>,
         payloads: inout MutableSpan<Payload?>, scalars: inout MutableSpan<UInt32>,
@@ -22,6 +23,7 @@ package struct StaticSemanticRecordStorage: ~Copyable {
         var metadata = metadata.mutableSpan
         return try withSemanticRecordStore(
             metadata: &metadata, records: &records, paths: &paths,
-            payloads: &payloads, scalars: &scalars, limits: limits, owner: owner, body)
+            payloads: &payloads, scalars: &scalars, limits: configuredLimits ?? limits,
+            capacity: limits, owner: owner, body)
     }
 }

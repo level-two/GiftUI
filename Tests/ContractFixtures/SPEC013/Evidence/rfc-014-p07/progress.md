@@ -767,3 +767,39 @@ inside the active owner, never by invalidating its outer borrowed factory.
 Remaining P07 lifecycle/transcript, malformed Drawing rollback, four final routes,
 traceability and independent Strong exit review are still pending; no P07 or
 P08 completion is claimed. No compiler/contract or hardware changes.
+
+
+## Consuming-owner resumption — step 6: construction C1 (2026-10-11)
+
+Implemented the root-authorized correction from the independent construction
+review. Audited configured limits now bind the actual scoped owner, admission,
+semantic bank operations, model/root storage, Canvas staging, Layout, Drawing,
+Render and Interaction. Physical backing remains separately measured. The full
+[source mapping and21-axis matrix](construction-c1-correction.md) identifies the
+specific enforcement points and expected typed failures.
+
+Fresh formatted native gate: **2,752 assertions, zero failures and twelve expected
+compiler negatives**, [receipt](resumption-step-6-macos-static.json), directory
+`.build/contracts/spec-013-runtime-cycle/tmpl44e4dw4/macos-static`. All21 actual
+configured-limit cases execute on both profiles; failures require exact capacity
+errors and stages with zero streams/commits/applied mutations, while adequate
+smaller configurations retain the complete prior fixture. The unmodified
+reviewer LimitProbe now reports one-point audit success followed by Static11 /
+Dynamic10 checks with **zero applied mutations**, rather than the previously
+successful three mutations. The maintained regression checks the exact Drawing
+failure; the [supplemental probe](construction-c1-review-probe.txt) preserves its
+unchanged source command and output against the fresh modules.
+
+[Current descriptors](construction-c1-storage-regions.json) contain all26 checked
+fields and totals, Static67,814 and Dynamic165,551 bytes on this host/compiler.
+Additional configured-limit metadata explains the size change. Historical
+construction-storage-regions.json and step5 receipt remain untouched. Current
+receipt input hashes cover the final sources, including the one-operation
+ordinary Render budget (zero is reserved for drawing-only workloads).
+
+Governance and diff checks pass. Shared guard remains **0/2**: source exclusivity,
+related-field test setup and exported Render configuration repairs each narrowed
+the failure and progressed to a passing run. No contract, compiler, hardware or
+scope change. This is the requested fix milestone awaiting the same independent
+reviewer; no other P07 work has started, and later lifecycle/transcript/final-route
+and exit review obligations remain open.

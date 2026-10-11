@@ -30,6 +30,9 @@ package struct StaticSignalAnalyzerNRFDrawingWorkspace:
         self.plan = plan
     }
 
+    package mutating func configure(limits: DrawingLimits) -> Bool {
+        plan.configure(limits: limits)
+    }
     package var capacity: DrawingLimits { plan.capacity }
     package var limits: DrawingLimits { plan.limits }
     package var isActive: Bool { plan.isActive }
@@ -146,7 +149,9 @@ package struct StaticSignalAnalyzerNRFDrawingWorkspace:
     ) -> UInt8 {
         guard contextGeneration == self.contextGeneration,
             currentIdentity != nil, livePath == nil,
-            let storage = StaticSignalAnalyzerNRFLivePathStorage(region: pathRegion)
+            let storage = StaticSignalAnalyzerNRFLivePathStorage(
+                region: pathRegion, maximumPointCount: limits.maximumLivePathPoints,
+                maximumSubpathCount: limits.maximumLivePathSubpaths)
         else { return _GiftUIDrawingStatus.reentrancyViolation.rawValue }
         livePath = LivePathBuilder(storage: storage)
         pathGeneration = 1

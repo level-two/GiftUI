@@ -21,6 +21,8 @@ package struct ObservableStateRootStorage<Identity: Equatable & Sendable> {
     fileprivate var candidateActive = false
     fileprivate var operationActive = false
     fileprivate var retired = false
+    fileprivate var limits = ObservableStateLimits(
+        maximumLocations: 2, maximumRegistrations: 2, maximumStagedAssociations: 2)!
 
     package static var storageCapacities:
         (locations: UInt16, registrations: UInt16, associations: UInt16)
@@ -86,6 +88,8 @@ extension ObservableModelScope
 where Model: ObservableStateModel & ~Copyable, Schema == Model.Schema {
     package borrowing func withRoot<Identity: Equatable & Sendable, Result>(
         storage: inout ObservableStateRootStorage<Identity>,
+        limits: ObservableStateLimits = .init(
+            maximumLocations: 2, maximumRegistrations: 2, maximumStagedAssociations: 2)!,
         _ body: (borrowing ObservableStateRootScope<Model, Identity>) throws(ObservableStateError)
             -> Result
     ) throws(ObservableStateError) -> Result {
@@ -93,6 +97,10 @@ where Model: ObservableStateModel & ~Copyable, Schema == Model.Schema {
         // restore mutation phase before automatic registration retirement.
         // Reject before lending report backing or invoking the caller's body.
         try validateOperation()
+        guard limits.maximumLocations <= 2, limits.maximumRegistrations <= 2,
+            limits.maximumStagedAssociations <= 2
+        else { throw .locationCapacityExhausted }
+        storage.limits = limits
         return try withUnsafeMutablePointer(to: &storage) {
             (records) throws(ObservableStateError) in
             try withUnsafeMutablePointer(to: &records.pointee.reports) {
@@ -339,6 +347,24 @@ package struct ObservableStateRootScope<
         guard records.pointee.records[slot].identity == nil else {
             throw .locationCapacityExhausted
         }
+        var locations = 0
+        var registrations = 0
+        var associations = 0
+        for index in 0 ..< 2 {
+            let item = records.pointee.records[index]
+            if item.identity != nil { locations += 1 }
+            if item.attachment != nil { registrations += 1 }
+            if item.encountered { associations += 1 }
+        }
+        guard locations < Int(records.pointee.limits.maximumLocations) else {
+            throw .locationCapacityExhausted
+        }
+        guard registrations < Int(records.pointee.limits.maximumRegistrations) else {
+            throw .registrationCapacityExhausted
+        }
+        guard associations < Int(records.pointee.limits.maximumStagedAssociations) else {
+            throw .associationStagingCapacityExhausted
+        }
         let attachment = try records.pointee.reserve(UInt16(slot))
         try models.pin(key)
         records.pointee.operationActive = true
@@ -443,9 +469,18 @@ package struct ObservableStateRootScope<
             guard records.pointee.nextGeneration != nil else {
                 throw .registrationGenerationExhausted
             }
+            var registrations = 0
+            var associations = 0
+            for index in 0 ..< 2 {
+                if records.pointee.records[index].attachment != nil { registrations += 1 }
+                if records.pointee.records[index].identity != nil { associations += 1 }
+            }
             let reservation = try models.stageReplacement(
                 transferring: ticket, seed: seed,
-                registrationAvailable: registrationAvailable, stagingAvailable: stagingAvailable)
+                registrationAvailable: registrationAvailable
+                    && registrations < Int(records.pointee.limits.maximumRegistrations),
+                stagingAvailable: stagingAvailable
+                    && associations < Int(records.pointee.limits.maximumStagedAssociations))
             let candidate = models.key(for: reservation.candidate)
             let new = Int(reservation.candidate.slot)
             let attachment = try records.pointee.reserve(UInt16(new))

@@ -16,11 +16,20 @@ func exercisePipeline<G, C, R, H>(models: borrowing ObservableModelScope<CycleOw
     var transferredGeometry: G? = consume geometry
     var transferredInteraction: InteractionOwnedKeyState<C, R, H>? = consume interaction
     return withUnsafeMutablePointer(to: &control) { trace in
-        var owner = CyclePipelineOwner(models: models.borrowedScope(), root: root.borrowedRoot(), semantic: semantic.borrowedStore(), values: values.borrowedValues(), geometry: transferredGeometry.take()!, interaction: transferredInteraction.take()!, control: trace)
+        var owner = CyclePipelineOwner(models: models.borrowedScope(), root: root.borrowedRoot(), semantic: semantic.borrowedStore(), values: values.borrowedValues(), geometry: transferredGeometry.take()!, interaction: transferredInteraction.take()!, control: trace, limits: audit.limits)
         var checks = 0
         func expect(_ value: Bool) { checks += 1; precondition(value) }
         var result = RuntimeCompletePipeline.run(owner: &owner)
-        guard case .completed(let initial) = result else { preconditionFailure("initial complete pipeline") }
+        trace.pointee.result = result
+        if case .failed = result {
+            expect(models.phase == .mutating && values.count == 0 && !owner.frameActive)
+            expect(trace.pointee.applied == 0 && trace.pointee.streams == 0 && trace.pointee.commits == 0)
+            expect(owner.interaction.committedRecordCount == 0)
+            var returned = cycleConcreteCoordinator(owner: consume owner, dynamic: dynamic, control: trace, audit: audit, stopAfterFailure: true)
+            returned.checks += checks
+            return consume returned
+        }
+        guard case .completed(let initial) = result else { preconditionFailure("unreachable initial result") }
         expect(initial.disposition.logicalFrameDisposition == .committed)
         expect(trace.pointee.stages == 2047 && trace.pointee.finalized == 1 && trace.pointee.commits == 1)
         expect(models.phase == .mutating && values.count == 0)

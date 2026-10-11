@@ -9,10 +9,15 @@ package struct StaticObservableModelStorage<Model: ~Copyable, Schema>: ~Copyable
     private let schema: UInt16
     private let needsCapture: Bool
 
-    package init?(identity: ObservableModelOwnerIdentity, schema: UInt16, needsCapture: Bool) {
+    package init?(
+        identity: ObservableModelOwnerIdentity, schema: UInt16, needsCapture: Bool,
+        modelLimit: UInt16 = 2, claimLimit: UInt16 = 4, pinLimit: UInt16 = 2,
+        captureLimit: UInt16? = nil
+    ) {
         guard
             let ownership = ObservableModelOwnership(
-                identity: identity, captureLimit: needsCapture ? 1 : 0)
+                identity: identity, modelLimit: modelLimit, claimLimit: claimLimit,
+                pinLimit: pinLimit, captureLimit: captureLimit ?? (needsCapture ? 1 : 0))
         else { return nil }
         self.ownership = consume ownership
         self.schema = schema
@@ -27,7 +32,7 @@ package struct StaticObservableModelStorage<Model: ~Copyable, Schema>: ~Copyable
     {
         let capacities = ownership.storageCapacities
         return (
-            ownership.identity, capacities.models, capacities.claims, capacities.pins,
+            ownership.identity, 2, 4, 2,
             capacities.captures,
             ObservableModelOwnership.metadataStorageBytes + MemoryLayout<UInt16>.size
                 + MemoryLayout<Bool>.size,

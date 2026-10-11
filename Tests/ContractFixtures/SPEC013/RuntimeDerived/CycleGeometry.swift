@@ -26,10 +26,10 @@ let cycleSurface = Rect(origin: Point(x: 0, y: 0), size: Size(width: 100, height
 // by a recorded answer; each method invokes its maintained focused algorithm.
 protocol CycleGeometry {
     borrowing func storageMeasurement() -> CycleGeometryMeasurement
-    mutating func layout(_ bank: borrowing SemanticRecordView<CyclePayload>) -> LayoutResult
-    mutating func draw(source: inout CycleSource, context: ExecutionContext) -> DrawingPlanResult
-    mutating func preflight(_ bank: borrowing SemanticRecordView<CyclePayload>) -> RenderProductionResult
-    mutating func produce(_ bank: borrowing SemanticRecordView<CyclePayload>, header: RenderPlanHeader, sink: inout CycleRenderSink) -> RenderProductionResult
+    mutating func layout(_ bank: borrowing SemanticRecordView<CyclePayload>, limits: RuntimeProfileLimits) -> LayoutResult
+    mutating func draw(source: inout CycleSource, context: ExecutionContext, limits: RuntimeProfileLimits) -> DrawingPlanResult
+    mutating func preflight(_ bank: borrowing SemanticRecordView<CyclePayload>, limits: RuntimeProfileLimits) -> RenderProductionResult
+    mutating func produce(_ bank: borrowing SemanticRecordView<CyclePayload>, header: RenderPlanHeader, sink: inout CycleRenderSink, limits: RuntimeProfileLimits) -> RenderProductionResult
     func bounds(_ record: SemanticRecordReference) -> Rect?
     func clip(_ record: SemanticRecordReference) -> Rect?
     mutating func resetLayout()
@@ -52,17 +52,23 @@ struct DynamicCycleGeometry: CycleGeometry {
     var resolved = DynamicResolvedLayoutStorage(limits: cycleLayoutLimits)
     var plan = DynamicDrawingPlanWorkspace(capacity: cycleDrawingLimits)
     var render = DynamicRenderWorkspace(capacity: cycleRenderLimits, structuralCapacity: cycleRenderCapacity)
-    mutating func layout(_ bank: borrowing SemanticRecordView<CyclePayload>) -> LayoutResult {
-        GiftUILayout.layout(semantic: SemanticRecordLayoutView(bank), metrics: GiftUIReferenceTextMetricsView(), proposal: ProposedSize(width: 100, height: 100)!, limits: cycleLayoutLimits, workspace: &workspace, sink: &resolved)
+    mutating func layout(_ bank: borrowing SemanticRecordView<CyclePayload>, limits: RuntimeProfileLimits) -> LayoutResult {
+        GiftUILayout.layout(semantic: SemanticRecordLayoutView(bank), metrics: GiftUIReferenceTextMetricsView(), proposal: ProposedSize(width: 100, height: 100)!, limits: limits.layout, workspace: &workspace, sink: &resolved)
     }
-    mutating func draw(source: inout CycleSource, context: ExecutionContext) -> DrawingPlanResult {
-        CanvasPlanProducer.derive(source: &source, layout: resolved.renderView, executionContext: context, limits: cycleDrawingLimits, workspace: &plan)
+    mutating func draw(source: inout CycleSource, context: ExecutionContext, limits: RuntimeProfileLimits) -> DrawingPlanResult {
+        precondition(plan.configure(limits: limits.drawing))
+        return CanvasPlanProducer.derive(source: &source, layout: resolved.renderView, executionContext: context, limits: limits.drawing, workspace: &plan)
     }
-    mutating func preflight(_ bank: borrowing SemanticRecordView<CyclePayload>) -> RenderProductionResult {
-        CanvasRenderProducer.preflight(semantic: SemanticRecordRenderView(bank), layout: resolved.renderView, textMetrics: GiftUIReferenceTextMetricsView(), drawingPlan: plan, surfaceBounds: cycleSurface, damageMode: .initializeCompleteSurface, rootForeground: .white, limits: cycleRenderLimits, configuredSinkCapacity: CycleRenderSink().capacity, workspace: &render)
+    mutating func preflight(_ bank: borrowing SemanticRecordView<CyclePayload>, limits: RuntimeProfileLimits) -> RenderProductionResult {
+        let result = withCycleRenderLimits(&render, limits: limits) { render in CanvasRenderProducer.preflight(semantic: SemanticRecordRenderView(bank), layout: resolved.renderView, textMetrics: GiftUIReferenceTextMetricsView(), drawingPlan: plan, surfaceBounds: cycleSurface, damageMode: .initializeCompleteSurface, rootForeground: .white, limits: limits.render, configuredSinkCapacity: limits.renderSink, workspace: &render) }
+        if case .success(let header) = result {
+            guard header.operationCount >= plan.summary.normalizedStrokeOperationCount,
+                header.operationCount - plan.summary.normalizedStrokeOperationCount <= limits.maximumOrdinaryRenderOperations else { return .failure(.capacityExhausted) }
+        }
+        return result
     }
-    mutating func produce(_ bank: borrowing SemanticRecordView<CyclePayload>, header: RenderPlanHeader, sink: inout CycleRenderSink) -> RenderProductionResult {
-        CanvasRenderProducer.produce(semantic: SemanticRecordRenderView(bank), layout: resolved.renderView, textMetrics: GiftUIReferenceTextMetricsView(), drawingPlan: plan, surfaceBounds: cycleSurface, damageMode: .initializeCompleteSurface, rootForeground: .white, limits: cycleRenderLimits, expectedHeader: header, workspace: &render, sink: &sink)
+    mutating func produce(_ bank: borrowing SemanticRecordView<CyclePayload>, header: RenderPlanHeader, sink: inout CycleRenderSink, limits: RuntimeProfileLimits) -> RenderProductionResult {
+        return withCycleRenderLimits(&render, limits: limits) { render in CanvasRenderProducer.produce(semantic: SemanticRecordRenderView(bank), layout: resolved.renderView, textMetrics: GiftUIReferenceTextMetricsView(), drawingPlan: plan, surfaceBounds: cycleSurface, damageMode: .initializeCompleteSurface, rootForeground: .white, limits: limits.render, expectedHeader: header, workspace: &render, sink: &sink) }
     }
     func bounds(_ record: SemanticRecordReference) -> Rect? { resolved.renderView.bounds(of: record) }
     func clip(_ record: SemanticRecordReference) -> Rect? { resolved.renderView.clip(of: record) }
@@ -101,19 +107,27 @@ struct StaticCycleGeometry: CycleGeometry {
         render = QualifiedRender(base: StaticSignalAnalyzerNRFRenderWorkspace(region: text, capacity: cycleRenderLimits, structuralCapacity: cycleRenderCapacity)!)
     }
     var view: QualifiedLayout { QualifiedLayout(base: resolved.renderView, references: references) }
-    mutating func layout(_ bank: borrowing SemanticRecordView<CyclePayload>) -> LayoutResult {
+    mutating func layout(_ bank: borrowing SemanticRecordView<CyclePayload>, limits: RuntimeProfileLimits) -> LayoutResult {
         references = .init(repeating: nil)
         for index: UInt16 in 0..<bank.recordCount { references[Int(index)] = bank.reference(at: index) }
-        return GiftUILayout.layout(semantic: LocalSemantic(bank), metrics: GiftUIReferenceTextMetricsView(), proposal: ProposedSize(width: 100, height: 100)!, limits: cycleLayoutLimits, workspace: &workspace, sink: &resolved)
+        return GiftUILayout.layout(semantic: LocalSemantic(bank), metrics: GiftUIReferenceTextMetricsView(), proposal: ProposedSize(width: 100, height: 100)!, limits: limits.layout, workspace: &workspace, sink: &resolved)
     }
-    mutating func draw(source: inout CycleSource, context: ExecutionContext) -> DrawingPlanResult {
-        CanvasPlanProducer.derive(source: &source, layout: view, executionContext: context, limits: cycleDrawingLimits, workspace: &plan)
+    mutating func draw(source: inout CycleSource, context: ExecutionContext, limits: RuntimeProfileLimits) -> DrawingPlanResult {
+        precondition(plan.withBase { $0.configure(limits: limits.drawing) })
+        return CanvasPlanProducer.derive(source: &source, layout: view, executionContext: context, limits: limits.drawing, workspace: &plan)
     }
-    mutating func preflight(_ bank: borrowing SemanticRecordView<CyclePayload>) -> RenderProductionResult {
-        CanvasRenderProducer.preflight(semantic: SemanticRecordRenderView(bank), layout: view, textMetrics: GiftUIReferenceTextMetricsView(), drawingPlan: plan, surfaceBounds: cycleSurface, damageMode: .initializeCompleteSurface, rootForeground: .white, limits: cycleRenderLimits, configuredSinkCapacity: CycleRenderSink().capacity, workspace: &render)
+    mutating func preflight(_ bank: borrowing SemanticRecordView<CyclePayload>, limits: RuntimeProfileLimits) -> RenderProductionResult {
+        let layout = view
+        let result = withCycleRenderLimits(&render, limits: limits) { render in CanvasRenderProducer.preflight(semantic: SemanticRecordRenderView(bank), layout: layout, textMetrics: GiftUIReferenceTextMetricsView(), drawingPlan: plan, surfaceBounds: cycleSurface, damageMode: .initializeCompleteSurface, rootForeground: .white, limits: limits.render, configuredSinkCapacity: limits.renderSink, workspace: &render) }
+        if case .success(let header) = result {
+            guard header.operationCount >= plan.summary.normalizedStrokeOperationCount,
+                header.operationCount - plan.summary.normalizedStrokeOperationCount <= limits.maximumOrdinaryRenderOperations else { return .failure(.capacityExhausted) }
+        }
+        return result
     }
-    mutating func produce(_ bank: borrowing SemanticRecordView<CyclePayload>, header: RenderPlanHeader, sink: inout CycleRenderSink) -> RenderProductionResult {
-        CanvasRenderProducer.produce(semantic: SemanticRecordRenderView(bank), layout: view, textMetrics: GiftUIReferenceTextMetricsView(), drawingPlan: plan, surfaceBounds: cycleSurface, damageMode: .initializeCompleteSurface, rootForeground: .white, limits: cycleRenderLimits, expectedHeader: header, workspace: &render, sink: &sink)
+    mutating func produce(_ bank: borrowing SemanticRecordView<CyclePayload>, header: RenderPlanHeader, sink: inout CycleRenderSink, limits: RuntimeProfileLimits) -> RenderProductionResult {
+        let layout = view
+        return withCycleRenderLimits(&render, limits: limits) { render in CanvasRenderProducer.produce(semantic: SemanticRecordRenderView(bank), layout: layout, textMetrics: GiftUIReferenceTextMetricsView(), drawingPlan: plan, surfaceBounds: cycleSurface, damageMode: .initializeCompleteSurface, rootForeground: .white, limits: limits.render, expectedHeader: header, workspace: &render, sink: &sink) }
     }
     func bounds(_ record: SemanticRecordReference) -> Rect? { view.bounds(of: record) }
     func clip(_ record: SemanticRecordReference) -> Rect? { view.clip(of: record) }
@@ -121,4 +135,32 @@ struct StaticCycleGeometry: CycleGeometry {
     mutating func resetPlan() { plan.discard(); plan.reset() }
     mutating func resetRender() { render.reset() }
     mutating func reset() { resetRender(); resetPlan(); resetLayout() }
+}
+
+// The pointer is created and destroyed inside this callback; the result is only
+// a RenderProductionResult. The underlying typed workspace remains the owner.
+private func withCycleRenderLimits<Base: RenderProductionWorkspace>(_ base: inout Base, limits: RuntimeProfileLimits, _ body: (inout CycleConfiguredRender<Base>) -> RenderProductionResult) -> RenderProductionResult {
+    precondition(cycleRenderWorkspaceCovers(base.structuralCapacity, limits.renderWorkspace))
+    return withUnsafeMutablePointer(to: &base) { pointer in
+        var bounded = CycleConfiguredRender(base: pointer, capacity: limits.render, structuralCapacity: limits.renderWorkspace)
+        return body(&bounded)
+    }
+}
+private struct CycleConfiguredRender<Base: RenderProductionWorkspace>: RenderProductionWorkspace {
+    typealias Identity = Base.Identity
+    let base: UnsafeMutablePointer<Base>
+    let capacity: RenderLimits
+    let structuralCapacity: RenderWorkspaceCapacity
+    var isActive: Bool { base.pointee.isActive }
+    var currentForeground: Color? { base.pointee.currentForeground }
+    mutating func acquire() -> Bool { base.pointee.acquire() }
+    mutating func visitSemanticScope(at ordinal: UInt16) -> RenderWorkspaceVisit { base.pointee.visitSemanticScope(at: ordinal) }
+    mutating func visitLayoutScope(at ordinal: UInt16) -> RenderWorkspaceVisit { base.pointee.visitLayoutScope(at: ordinal) }
+    mutating func pushForeground(_ color: Color) -> Bool { base.pointee.pushForeground(color) }
+    mutating func popForeground() -> Bool { base.pointee.popForeground() }
+    mutating func reset() { base.pointee.reset() }
+}
+
+func cycleRenderWorkspaceCovers(_ physical: RenderWorkspaceCapacity, _ configured: RenderWorkspaceCapacity) -> Bool {
+    physical.maximumSemanticScopes >= configured.maximumSemanticScopes && physical.maximumLayoutScopes >= configured.maximumLayoutScopes && physical.maximumTraversalDepth >= configured.maximumTraversalDepth && physical.maximumTextLines >= configured.maximumTextLines
 }

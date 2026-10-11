@@ -47,6 +47,7 @@ package final class DynamicSemanticRecordStorage<Payload> {
     package var storageOwner: SemanticRecordOwnerIdentity { owner }
 
     package func withLifetime<Result>(
+        configuredLimits: SemanticRecordLimits? = nil,
         _ body: (borrowing SemanticRecordStore<Payload>) throws(SemanticExpansionError) -> Result
     ) throws(SemanticExpansionError) -> Result {
         guard !active else { throw .reentrancyViolation }
@@ -66,7 +67,8 @@ package final class DynamicSemanticRecordStorage<Payload> {
                         var s = MutableSpan(_unsafeElements: scalars)
                         return try withSemanticRecordStore(
                             metadata: &m, records: &r, paths: &p, payloads: &v, scalars: &s,
-                            limits: limits, owner: owner, body)
+                            limits: configuredLimits ?? limits, capacity: limits, owner: owner, body
+                        )
                     }
                 }
             }

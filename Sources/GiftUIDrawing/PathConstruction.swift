@@ -19,6 +19,9 @@ package protocol LivePathStorage {
 
 package struct LivePathBuilder<Storage> where Storage: LivePathStorage {
     package private(set) var storage: Storage
+    package mutating func withStorage<Result>(_ body: (inout Storage) -> Result) -> Result {
+        body(&storage)
+    }
     package private(set) var isActive: Bool
 
     package init(storage: Storage) {

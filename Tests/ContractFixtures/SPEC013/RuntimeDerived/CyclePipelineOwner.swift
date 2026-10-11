@@ -87,6 +87,7 @@ where Geometry: CycleGeometry, Candidate: CycleCandidateBacking, Committed: Cycl
     var interaction: InteractionOwnedKeyState<Candidate, Committed, Hits>
     var phase = ExecutionPhaseMachine()
     var cycles = RunCycleIDAllocator()
+    let limits: RuntimeProfileLimits
     var revisions = SemanticRevisionAllocator()
     var candidates = CandidateFrameIDAllocator()
     var presentations = PresentationRevisionAllocator()
@@ -109,8 +110,9 @@ where Geometry: CycleGeometry, Candidate: CycleCandidateBacking, Committed: Cycl
     var pending = false
     var quiescent = false
     @_lifetime(copy models, copy root, copy semantic, copy values, borrow control)
-    init(models: consuming ObservableModelScope<CycleOwnedModel, CycleModelSchema>, root: consuming ObservableStateRootScope<CycleOwnedModel, SemanticCompleteIdentity>, semantic: consuming SemanticRecordStore<CyclePayload>, values: consuming CanvasStagedValues<SemanticRecordReference, CycleValueTable>, geometry: consuming Geometry, interaction: consuming InteractionOwnedKeyState<Candidate, Committed, Hits>, control: borrowing UnsafeMutablePointer<CycleControl>) {
+    init(models: consuming ObservableModelScope<CycleOwnedModel, CycleModelSchema>, root: consuming ObservableStateRootScope<CycleOwnedModel, SemanticCompleteIdentity>, semantic: consuming SemanticRecordStore<CyclePayload>, values: consuming CanvasStagedValues<SemanticRecordReference, CycleValueTable>, geometry: consuming Geometry, interaction: consuming InteractionOwnedKeyState<Candidate, Committed, Hits>, control: borrowing UnsafeMutablePointer<CycleControl>, limits: RuntimeProfileLimits) {
         self.models = consume models; self.root = consume root; self.semantic = consume semantic; self.values = consume values
+        self.limits = limits
         self.geometry = consume geometry; self.interaction = consume interaction; self.control = copy control
         precondition(self.root.belongs(to: self.models))
     }
@@ -130,7 +132,7 @@ where Geometry: CycleGeometry, Candidate: CycleCandidateBacking, Committed: Cycl
         guard !quiescent else { return .failure(.execution(.requiredFacilityUnavailable)) }
         if let error = phase.beginCycle(reservingFrom: &cycles) { return .failure(.execution(error)) }
         if let error = boundary(.admissionAndSeal) { return .failure(error) }
-        guard let selection = ExecutionAdmissionSealer.select(pendingInputEvents: control.pointee.admission.pointerCount, pendingStateChangeFacts: control.pointee.admission.pendingState == nil ? 0 : 1, pendingCompletionFacts: 0, sameCycleActivationCandidates: 0, includesDirtyRederivation: changed, includesPresentationRecovery: pending, limits: ExecutionLimits(maximumInputEvents: 2, maximumStateChangeFacts: 1, maximumCompletionFacts: 0, maximumSemanticActions: 1, maximumActiveInputSources: 1, maximumCommittedActions: 6)!) else { return .failure(.execution(.invariantViolation)) }
+        guard let selection = ExecutionAdmissionSealer.select(pendingInputEvents: control.pointee.admission.pointerCount, pendingStateChangeFacts: control.pointee.admission.pendingState == nil ? 0 : 1, pendingCompletionFacts: 0, sameCycleActivationCandidates: 0, includesDirtyRederivation: changed, includesPresentationRecovery: pending, limits: limits.execution) else { return .failure(.execution(.invariantViolation)) }
         guard control.pointee.admission.seal(selection.summary) else { return .failure(.execution(.invariantViolation)) }
         sealedAdmission = selection.summary
         return .advanced
@@ -171,8 +173,7 @@ where Geometry: CycleGeometry, Candidate: CycleCandidateBacking, Committed: Cycl
             }
             observableCandidate = true
         } catch { return .failure(.focusedOwner(.observableState(error))) }
-        let limits = SemanticExpansionLimits(maximumDepth: 34, maximumSemanticNodes: 48, maximumBodyEvaluations: 14, maximumModifierApplications: 50, maximumActionOccurrences: 6)!
-        let result = semantic.expand(CycleScene<CycleDomain>(show: control.pointee.show), roles: CycleRoles.self, codec: CanvasSemanticPayloadCodec<CycleRoles, CycleValueTable>.self, limits: limits, binding: ObservableSemanticBodyBinding(models: models.borrowedScope(), root: root.borrowedRoot(), domain: CycleDomain.self))
+        let result = semantic.expand(CycleScene<CycleDomain>(show: control.pointee.show), roles: CycleRoles.self, codec: CanvasSemanticPayloadCodec<CycleRoles, CycleValueTable>.self, limits: limits.semantic, binding: ObservableSemanticBodyBinding(models: models.borrowedScope(), root: root.borrowedRoot(), domain: CycleDomain.self))
         switch result {
         case .success: semanticCandidate = true
         case .semanticFailure(let error): discardLocalCandidates(); return .failure(.focusedOwner(.semantic(error)))
@@ -201,26 +202,26 @@ where Geometry: CycleGeometry, Candidate: CycleCandidateBacking, Committed: Cycl
         if let error = boundary(.layout) { return .failure(error) }
         do throws(SemanticExpansionError) {
             return try semantic.withCandidateView { bank in
-                switch geometry.layout(bank) { case .success: return .advanced; case .failure(let error): return .failure(.focusedOwner(.layout(error))) }
+                switch geometry.layout(bank, limits: limits) { case .success: return .advanced; case .failure(let error): return .failure(.focusedOwner(.layout(error))) }
             }
         } catch { return .failure(.focusedOwner(.semantic(error))) }
     }
     mutating func invokeCanvasesAndDerivePlan() -> RuntimePipelineStepResult<RuntimeOwnerFailure> {
         if let error = boundary(.canvasInvocationAndPlan) { return .failure(error) }
         var source = CycleSource(models: models.borrowedScope(), values: values.borrowedValues(), table: CycleValueTable())
-        switch geometry.draw(source: &source, context: phase.context) { case .success: return .advanced; case .failure(let error): return .failure(.focusedOwner(.drawing(error))) }
+        switch geometry.draw(source: &source, context: phase.context, limits: limits) { case .success: return .advanced; case .failure(let error): return .failure(.focusedOwner(.drawing(error))) }
     }
     mutating func preflightCombinedRender() -> RuntimePipelineStepResult<RuntimeOwnerFailure> {
         if let error = boundary(.combinedRenderPreflight) { return .failure(error) }
         do throws(SemanticExpansionError) {
             return try semantic.withCandidateView { bank in
-                switch geometry.preflight(bank) { case .success(let value): header = value; return .advanced; case .failure(let error): return .failure(.renderProduction(error)) }
+                switch geometry.preflight(bank, limits: limits) { case .success(let value): header = value; return .advanced; case .failure(let error): return .failure(.renderProduction(error)) }
             }
         } catch { return .failure(.focusedOwner(.semantic(error))) }
     }
     mutating func buildInteractionCandidate() -> RuntimePipelineStepResult<RuntimeOwnerFailure> {
         if let error = boundary(.interactionCandidate) { return .failure(error) }
-        if let error = interaction.beginCandidate(limits: InteractionLimits(maximumActions: 6, maximumHitRegions: 6)!) { return .failure(.focusedOwner(.interaction(error))) }
+        if let error = interaction.beginCandidate(limits: limits.interaction) { return .failure(.focusedOwner(.interaction(error))) }
         interactionCandidate = true
         do throws(SemanticExpansionError) {
             return try semantic.withCandidateView { bank in
@@ -282,7 +283,7 @@ where Geometry: CycleGeometry, Candidate: CycleCandidateBacking, Committed: Cycl
             control.pointee.streams += 1
             do throws(SemanticExpansionError) {
                 return try semantic.withPublishedView { bank in
-                    switch geometry.produce(bank, header: header!, sink: &sink) {
+                    switch geometry.produce(bank, header: header!, sink: &sink, limits: limits) {
                     case .success: return .complete
                     case .failure(let error): retained = error; return RecordingRenderProductionAdapter.observe(error: error).streamResult!
                     }

@@ -15,7 +15,12 @@ package struct StaticSignalAnalyzerNRFDrawingPlanStorage:
     package private(set) var pointCount: UInt16 = 0
     package private(set) var subpathCount: UInt16 = 0
     package var normalizedStrokeOperationCount: UInt16 { strokeCount }
-    package var limits: DrawingLimits { capacity }
+    package private(set) var limits: DrawingLimits
+    package mutating func configure(limits: DrawingLimits) -> Bool {
+        guard !isActive, capacity.coversStorage(for: limits) else { return false }
+        self.limits = limits
+        return true
+    }
 
     private let region: UnsafeMutableRawBufferPointer
     private var canvasCount: UInt16 = 0
@@ -34,6 +39,7 @@ package struct StaticSignalAnalyzerNRFDrawingPlanStorage:
         else { return nil }
         self.region = region
         self.capacity = capacity
+        self.limits = capacity
     }
 
     package var summary: DrawingPlanSummary {
@@ -50,7 +56,7 @@ package struct StaticSignalAnalyzerNRFDrawingPlanStorage:
 
     package mutating func beginCanvas(identity: UInt16, origin: Point) -> Bool {
         guard isActive, currentCanvas == nil, identity != 0,
-            canvasCount < capacity.maximumCanvasOccurrences,
+            canvasCount < limits.maximumCanvasOccurrences,
             canvasRecord(for: identity) == nil
         else { return false }
         currentCanvas = identity
@@ -79,13 +85,13 @@ package struct StaticSignalAnalyzerNRFDrawingPlanStorage:
     ) -> Bool where PathStorage: LivePathStorage {
         guard isActive, let canvas = currentCanvas,
             header.surfaceOrigin == currentOrigin,
-            strokeCount < capacity.maximumPlanStrokes,
+            strokeCount < limits.maximumPlanStrokes,
             header.pointCount == path.pointCount,
             header.subpathCount == path.subpathCount,
             let nextPoints = checkedSum(pointCount, path.pointCount),
-            nextPoints <= capacity.maximumPlanPoints,
+            nextPoints <= limits.maximumPlanPoints,
             let nextSubpaths = checkedSum(subpathCount, path.subpathCount),
-            nextSubpaths <= capacity.maximumPlanSubpaths
+            nextSubpaths <= limits.maximumPlanSubpaths
         else { return false }
 
         // Check all translations before writing any plan record.
@@ -145,8 +151,8 @@ package struct StaticSignalAnalyzerNRFDrawingPlanStorage:
     package mutating func seal(canvasOccurrenceCount: UInt16) -> DrawingPlanResult {
         guard isActive, currentCanvas == nil,
             canvasOccurrenceCount == canvasCount,
-            canvasCount <= capacity.maximumCanvasOccurrences,
-            strokeCount <= capacity.maximumPlanStrokes,
+            canvasCount <= limits.maximumCanvasOccurrences,
+            strokeCount <= limits.maximumPlanStrokes,
             normalizedStrokeOperationCount == strokeCount,
             validateRecords()
         else { return .failure(.invariantViolation) }

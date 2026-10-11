@@ -10,6 +10,16 @@ package struct DrawingLimits: Equatable, Sendable {
     package let maximumPlanSubpaths: UInt16
     package let maximumNormalizedStrokeOperations: UInt16
 
+    package func coversStorage(for other: Self) -> Bool {
+        maximumCanvasOccurrences >= other.maximumCanvasOccurrences
+            && maximumLivePathPoints >= other.maximumLivePathPoints
+            && maximumLivePathSubpaths >= other.maximumLivePathSubpaths
+            && maximumPlanStrokes >= other.maximumPlanStrokes
+            && maximumPlanPoints >= other.maximumPlanPoints
+            && maximumPlanSubpaths >= other.maximumPlanSubpaths
+            && maximumNormalizedStrokeOperations >= other.maximumNormalizedStrokeOperations
+    }
+
     package init?(
         maximumLineWidth: GeometryScalar,
         maximumCanvasOccurrences: UInt16,

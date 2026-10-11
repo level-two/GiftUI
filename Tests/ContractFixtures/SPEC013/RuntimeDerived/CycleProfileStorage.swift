@@ -86,6 +86,10 @@ func cycleProfileLimits(_ profile: RuntimeProfileKind, paths: UInt16 = 378, stru
         staticCanvas: profile == .static ? cycleCanvasLimits : nil, profile: profile)!
 }
 
+func cycleSemanticConfiguration(_ limits: RuntimeProfileLimits) -> SemanticRecordLimits {
+    SemanticRecordLimits(records: limits.maximumSemanticStructuralOccurrences, paths: limits.records.maximumPathEntries, depth: limits.records.maximumPathDepth, fanout: limits.records.maximumPathChildFanout, payloads: cycleSemanticLimits.payloads, textScalars: cycleSemanticLimits.textScalars, payloadBytes: limits.records.maximumPayloadBytesPerBank)!
+}
+
 // A report is a value, never RuntimeProfileStorage. Each typed physical region
 // contributes to exactly one family, with complete identities partitioned out
 // of Interaction records by cycleMeasureInteraction.
@@ -107,6 +111,9 @@ func cycleValidateBacking<G, C, R, H, GR: CycleStorageRegionSource>(profile: Run
     report: (CycleStorageRegion) -> Void) -> RuntimeProfileValidationResult
 where G: CycleGeometry, C: CycleCandidateBacking, R: CycleCommittedBacking, H: CycleHitBacking,
     C.Identity == SemanticCompleteIdentity, R.Identity == SemanticCompleteIdentity, H.Identity == SemanticCompleteIdentity {
+    // The concrete scoped render adapter exports exactly the configured view;
+    // inaccessible physical headroom remains measured in the backing regions.
+    guard cycleRenderWorkspaceCovers(geometry.renderWorkspace, limits.renderWorkspace) else { return .invalid(.insufficientStorage) }
     let keys = cycleMeasureInteraction(interaction)
     let keyLimits = interaction.identityCapacities
     let semanticLimits = semantic.limits
@@ -234,7 +241,7 @@ where G: CycleGeometry, C: CycleCandidateBacking, R: CycleCommittedBacking, H: C
         semanticCandidate: .init(maximumDepth: semanticLimits.depth, maximumSemanticNodes: semanticLimits.records, maximumBodyEvaluations: semanticLimits.records, maximumModifierApplications: semanticLimits.records, maximumActionOccurrences: semanticLimits.records),
         semanticPublished: .init(maximumDepth: semanticLimits.depth, maximumSemanticNodes: semanticLimits.records, maximumBodyEvaluations: semanticLimits.records, maximumModifierApplications: semanticLimits.records, maximumActionOccurrences: semanticLimits.records),
         semanticCandidateStructuralOccurrences: semanticLimits.records, semanticPublishedStructuralOccurrences: semanticLimits.records,
-        layoutCandidate: geometry.layout, render: geometry.render, renderWorkspace: geometry.renderWorkspace,
+        layoutCandidate: geometry.layout, render: geometry.render, renderWorkspace: limits.renderWorkspace,
         canvasCallableOccurrences: canvasCapacity, staticCanvasCaptureBytes: UInt16(MemoryLayout<CycleValueTable.CaptureStorage>.stride),
         pathPoints: geometry.drawing.maximumLivePathPoints, pathSubpaths: geometry.drawing.maximumLivePathSubpaths,
         drawingPlanStrokes: geometry.drawing.maximumPlanStrokes, drawingPlanPoints: geometry.drawing.maximumPlanPoints, drawingPlanSubpaths: geometry.drawing.maximumPlanSubpaths, normalizedStrokeOperations: geometry.drawing.maximumNormalizedStrokeOperations,
@@ -264,7 +271,7 @@ struct DynamicCycleProfileStorage: ~Copyable, RuntimeProfileStorage {
     var used = false
     init(modelOwner: ObservableModelOwnerIdentity, semanticOwner: SemanticRecordOwnerIdentity, limits: RuntimeProfileLimits = cycleProfileLimits(.dynamic)) {
         self.limits = limits
-        root = DynamicObservableRootAdapter(identity: modelOwner, schema: 1, needsCapture: false)!
+        root = DynamicObservableRootAdapter(identity: modelOwner, schema: 1, needsCapture: false, modelLimit: min(2, max(1, limits.models.maximumModelSlots)), claimLimit: min(4, max(1, limits.models.maximumOwningTickets)), pinLimit: min(2, max(1, limits.models.maximumFramePins)), captureLimit: 0)!
         semantic = DynamicSemanticRecordStorage(limits: cycleSemanticLimits, owner: semanticOwner)
         interaction = CycleDynamicKeys(state: InteractionState(candidateRecords: CycleDynamicCandidate(capacity: 6), candidateHitRegions: CycleDynamicHits(capacity: 6), candidateCommittedRecords: CycleDynamicCommitted(capacity: 6), committedRecords: CycleDynamicCommitted(capacity: 6), committedHitRegions: CycleDynamicHits(capacity: 6)), maximumComponentsPerKey: 34, maximumComponents: 204)!
     }
@@ -295,16 +302,17 @@ struct DynamicCycleProfileStorage: ~Copyable, RuntimeProfileStorage {
     mutating func run() -> Int {
         guard !used, case .valid(let audited) = audit() else { return 0 }
         used = true
+        precondition(interaction!.configureIdentityLimits(perKey: limits.records.maximumIdentityComponentsPerKey, perBank: limits.records.maximumInteractionIdentityComponents))
         var movedGeometry = geometry.take()
         var movedInteraction = interaction.take()
         var returned: CycleReturnedWorkspaces<DynamicCycleGeometry, CycleDynamicCandidate, CycleDynamicCommitted, CycleDynamicHits>?
         do throws(ObservableStateError) {
-            try root.withLifetime { (models, root) throws(ObservableStateError) in
+            try root.withLifetime(limits: limits.observableState) { (models, root) throws(ObservableStateError) in
                 cycleRejectForeignBinding(models: models, root: root, audit: audited, control: &control)
                 do throws(SemanticExpansionError) {
-                    try semantic.withLifetime { (semantic) throws(SemanticExpansionError) in
+                    try semantic.withLifetime(configuredLimits: cycleSemanticConfiguration(limits)) { (semantic) throws(SemanticExpansionError) in
                         do throws(DrawingError) {
-                            try canvas.withLifetime(table: CycleValueTable(), limits: cycleCanvasLimits) { values in
+                            try canvas.withLifetime(table: CycleValueTable(), limits: limits.staticCanvas ?? cycleCanvasLimits, configuredCapacity: limits.drawing.maximumCanvasOccurrences) { values in
                                 returned = exercisePipeline(models: models, root: root, semantic: semantic, values: values, dynamic: true, geometry: movedGeometry.take()!, interaction: movedInteraction.take()!, audit: audited, control: &control)
                             }
                         } catch { preconditionFailure("factory Canvas") }
@@ -338,7 +346,7 @@ struct StaticCycleProfileStorage: ~Copyable, RuntimeProfileStorage {
     var used = false
     init(modelOwner: ObservableModelOwnerIdentity, semanticOwner: SemanticRecordOwnerIdentity, limits: RuntimeProfileLimits = cycleProfileLimits(.static)) {
         self.limits = limits
-        root = StaticObservableRootAdapter(identity: modelOwner, schema: 1, needsCapture: false)!
+        root = StaticObservableRootAdapter(identity: modelOwner, schema: 1, needsCapture: false, modelLimit: min(2, max(1, limits.models.maximumModelSlots)), claimLimit: min(4, max(1, limits.models.maximumOwningTickets)), pinLimit: min(2, max(1, limits.models.maximumFramePins)), captureLimit: 0)!
         semantic = StaticSemanticRecordStorage(limits: cycleSemanticLimits, owner: semanticOwner)
         interaction = CycleStaticKeys(state: InteractionState(candidateRecords: CycleStaticCandidate(capacity: 6)!, candidateHitRegions: CycleStaticHits(capacity: 6)!, candidateCommittedRecords: CycleStaticCommitted(capacity: 6)!, committedRecords: CycleStaticCommitted(capacity: 6)!, committedHitRegions: CycleStaticHits(capacity: 6)!), maximumComponentsPerKey: 34, maximumComponents: 204)!
     }
@@ -372,20 +380,21 @@ struct StaticCycleProfileStorage: ~Copyable, RuntimeProfileStorage {
     mutating func run() -> Int {
         guard !used, case .valid(let audited) = audit() else { return 0 }
         used = true
+        precondition(interaction!.configureIdentityLimits(perKey: limits.records.maximumIdentityComponentsPerKey, perBank: limits.records.maximumInteractionIdentityComponents))
         var movedInteraction = interaction.take()
         var checks = 0
         do throws(ObservableStateError) {
-            try root.withLifetime { (models, root) throws(ObservableStateError) in
+            try root.withLifetime(limits: limits.observableState) { (models, root) throws(ObservableStateError) in
                 cycleRejectForeignBinding(models: models, root: root, audit: audited, control: &control)
                 do throws(SemanticExpansionError) {
                     var records = semanticBacking.records.mutableSpan
                     var paths = semanticBacking.paths.mutableSpan
                     var payloads = semanticBacking.payloads.mutableSpan
                     var scalars = semanticBacking.scalars.mutableSpan
-                    try semantic.withLifetime(records: &records, paths: &paths, payloads: &payloads, scalars: &scalars) { (semantic) throws(SemanticExpansionError) in
+                    try semantic.withLifetime(configuredLimits: cycleSemanticConfiguration(limits), records: &records, paths: &paths, payloads: &payloads, scalars: &scalars) { (semantic) throws(SemanticExpansionError) in
                         do throws(DrawingError) {
                             var entries = canvasBacking.mutableSpan
-                            try canvas.withLifetime(entries: &entries, table: CycleValueTable(), capacity: 5, limits: cycleCanvasLimits) { values in
+                            try canvas.withLifetime(entries: &entries, table: CycleValueTable(), capacity: limits.drawing.maximumCanvasOccurrences, limits: limits.staticCanvas ?? cycleCanvasLimits) { values in
                                 checks = workspace.withGeometry { geometry in
                                     let measured = geometry.storageMeasurement()
                                     var returned = exercisePipeline(models: models, root: root, semantic: semantic, values: values, dynamic: false, geometry: geometry, interaction: movedInteraction.take()!, audit: audited, control: &control)
@@ -547,3 +556,78 @@ private func cyclePrintRegion(_ region: CycleStorageRegion, profile: String) {
     print("P07-REGION \(profile) \(region.family) \(region.kind.rawValue) \(region.count) \(region.size) \(region.stride) \(region.alignment) \(region.chargedBytes)")
 }
 #endif
+
+// Accepted configurations are exercised, not merely audited. Every case keeps
+// the physical backing fixed while narrowing one operational budget (and any
+// dependent configured bounds required by RuntimeProfileLimits).
+func cycleConfiguredLimits(_ profile: RuntimeProfileKind, axis: Int) -> RuntimeProfileLimits {
+    let base = cycleProfileLimits(profile, paths: axis == 4 ? 1 : 378,
+        models: axis == 17 ? 1 : 2, tickets: axis == 17 ? 1 : 4, pins: axis == 17 ? 1 : 2,
+        canvas: axis == 11 || axis == 8 ? 1 : 5,
+        pathPoints: axis == 0 ? 1 : (axis == 1 ? 2 : 202), planPoints: axis == 2 ? 1 : (axis == 3 ? 2 : 832), inputs: axis == 19 ? 1 : 2)
+    let records = RuntimeRecordLimits(maximumPathEntries: base.records.maximumPathEntries, maximumPathDepth: axis == 5 ? 1 : 34, maximumPathChildFanout: axis == 6 ? 1 : 5, maximumPayloadBytesPerBank: axis == 7 ? 0 : base.records.maximumPayloadBytesPerBank, maximumIdentityComponentsPerKey: 34, maximumInteractionIdentityComponents: axis == 16 ? 1 : 204)
+    let semantic = SemanticExpansionLimits(maximumDepth: 34, maximumSemanticNodes: axis == 8 ? 1 : 48, maximumBodyEvaluations: axis == 9 ? 1 : 14, maximumModifierApplications: 50, maximumActionOccurrences: axis == 18 ? 1 : 6)!
+    let layout = LayoutLimits(maximumScopes: axis == 11 ? 1 : 98, maximumDepth: axis == 10 ? 1 : 19, maximumTextScalars: 224, maximumTextLines: 128, maximumPositionedGlyphs: axis == 12 ? 1 : 224)!
+    let workspace = RenderWorkspaceCapacity(maximumSemanticScopes: axis == 13 ? 1 : base.renderWorkspace.maximumSemanticScopes, maximumLayoutScopes: base.renderWorkspace.maximumLayoutScopes, maximumTraversalDepth: axis == 14 ? 1 : base.renderWorkspace.maximumTraversalDepth, maximumTextLines: base.renderWorkspace.maximumTextLines)!
+    let drawing = DrawingLimits(maximumLineWidth: axis == 20 ? 5 : base.drawing.maximumLineWidth, maximumCanvasOccurrences: base.drawing.maximumCanvasOccurrences, maximumLivePathPoints: base.drawing.maximumLivePathPoints, maximumLivePathSubpaths: base.drawing.maximumLivePathSubpaths, maximumPlanStrokes: base.drawing.maximumPlanStrokes, maximumPlanPoints: base.drawing.maximumPlanPoints, maximumPlanSubpaths: base.drawing.maximumPlanSubpaths, maximumNormalizedStrokeOperations: base.drawing.maximumNormalizedStrokeOperations)!
+    return RuntimeProfileLimits(records: records, models: base.models, semantic: semantic, maximumSemanticStructuralOccurrences: axis == 8 ? 1 : 126, layout: layout, render: base.render, renderWorkspace: workspace, renderSink: base.renderSink, maximumOrdinaryRenderOperations: axis == 15 ? 1 : base.maximumOrdinaryRenderOperations, execution: base.execution, observableState: axis == 17 ? .init(maximumLocations: 1, maximumRegistrations: 1, maximumStagedAssociations: 1)! : base.observableState, interaction: axis == 18 ? .init(maximumActions: 1, maximumHitRegions: 1)! : base.interaction, drawing: drawing, staticCanvas: base.staticCanvas, profile: profile)!
+}
+
+func cycleConfiguredLimitProbe() -> Int {
+    var models = ObservableModelOwnerNamespace()
+    var semantics = SemanticRecordOwnerNamespace()
+    var checks = 0
+    func expected(_ control: CycleControl, axis: Int) {
+        if axis == 1 || axis == 3 || axis >= 17 {
+            guard case .completed? = control.result else { preconditionFailure("adequate configured limits") }
+            precondition(control.applied == 3)
+        } else {
+            let stage: RuntimeCompletePipelineStage = switch axis {
+            case 0, 2: .canvasInvocationAndPlan
+            case 4...9: .observableCandidateAndSemanticExpansion
+            case 10...12: .layout
+            case 13...15: .combinedRenderPreflight
+            default: .interactionCandidate
+            }
+            guard case .failed(let failure)? = control.result else { preconditionFailure("configured excess must fail") }
+            let expectedFailure: RunCycleFailure<RuntimeOwnerFailure> = switch axis {
+            case 0, 2: .focusedOwner(.drawing(.capacityExhausted))
+            case 4...9: .focusedOwner(.semantic(.capacityExhausted))
+            case 10...12: .focusedOwner(.layout(.capacityExhausted))
+            case 13...15: .renderProduction(.capacityExhausted)
+            default: .focusedOwner(.interaction(.capacityExhausted))
+            }
+            precondition(failure.stage == stage && failure.failure == expectedFailure)
+            precondition(control.applied == 0 && control.commits == 0 && control.streams == 0)
+            precondition(control.unavailable && !control.frameActive && control.admission.pointerCount == 0)
+        }
+    }
+    for axis in 0..<21 {
+        do throws(ObservableStateError) {
+            let modelOwner = try models.issue()
+            do throws(SemanticExpansionError) {
+                let semanticOwner = try semantics.issue()
+                let limits = cycleConfiguredLimits(.static, axis: axis)
+                var storage = StaticCycleProfileStorage(modelOwner: modelOwner, semanticOwner: semanticOwner, limits: limits)
+                guard case .valid(let before) = storage.audit() else { preconditionFailure("accepted configured Static limit") }
+                precondition(before.limits == limits)
+                checks += storage.run()
+                expected(storage.control, axis: axis)
+                precondition(storage.audit() == .valid(before))
+                checks += 5
+                #if !hasFeature(Embedded)
+                let dynamicLimits = cycleConfiguredLimits(.dynamic, axis: axis)
+                var dynamic = DynamicCycleProfileStorage(modelOwner: modelOwner, semanticOwner: semanticOwner, limits: dynamicLimits)
+                guard case .valid(let dynamicBefore) = dynamic.audit() else { preconditionFailure("accepted configured Dynamic limit") }
+                precondition(dynamicBefore.limits == dynamicLimits)
+                checks += dynamic.run()
+                expected(dynamic.control, axis: axis)
+                precondition(dynamic.audit() == .valid(dynamicBefore))
+                checks += 5
+                print("P07 configured-limit axis=\(axis) both profiles passed")
+                #endif
+            } catch { preconditionFailure("configured semantic owner") }
+        } catch { preconditionFailure("configured model owner") }
+    }
+    return checks
+}

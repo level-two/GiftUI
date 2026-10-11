@@ -9,10 +9,16 @@ package final class DynamicObservableRootAdapter<
     private let models: DynamicObservableModelStorage<Model, Model.Schema>
     private var registration = DynamicObservableModelRegistration<Identity>()
 
-    package init?(identity: ObservableModelOwnerIdentity, schema: UInt16, needsCapture: Bool) {
+    package init?(
+        identity: ObservableModelOwnerIdentity, schema: UInt16, needsCapture: Bool,
+        modelLimit: UInt16 = 2, claimLimit: UInt16 = 4, pinLimit: UInt16 = 2,
+        captureLimit: UInt16? = nil
+    ) {
         guard
             let models = DynamicObservableModelStorage<Model, Model.Schema>(
-                identity: identity, schema: schema, needsCapture: needsCapture)
+                identity: identity, schema: schema, needsCapture: needsCapture,
+                modelLimit: modelLimit, claimLimit: claimLimit, pinLimit: pinLimit,
+                captureLimit: captureLimit)
         else { return nil }
         self.models = models
     }
@@ -36,13 +42,16 @@ package final class DynamicObservableRootAdapter<
     }
 
     package func withLifetime<Result>(
+        limits: ObservableStateLimits = .init(
+            maximumLocations: 2, maximumRegistrations: 2, maximumStagedAssociations: 2)!,
         _ body: (
             borrowing ObservableModelScope<Model, Model.Schema>,
             borrowing ObservableStateRootScope<Model, Identity>
         ) throws(ObservableStateError) -> Result
     ) throws(ObservableStateError) -> Result {
         try models.withLifetime { (scope) throws(ObservableStateError) in
-            try scope.withRoot(storage: &registration) { (root) throws(ObservableStateError) in
+            try scope.withRoot(storage: &registration, limits: limits) {
+                (root) throws(ObservableStateError) in
                 try body(scope, root)
             }
         }

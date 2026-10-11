@@ -1,0 +1,22 @@
+P07 configured-limit axis=0 both profiles passed
+P07 configured-limit axis=1 both profiles passed
+P07 configured-limit axis=2 both profiles passed
+P07 configured-limit axis=3 both profiles passed
+P07 configured-limit axis=4 both profiles passed
+P07 configured-limit axis=5 both profiles passed
+P07 configured-limit axis=6 both profiles passed
+P07 configured-limit axis=7 both profiles passed
+P07 configured-limit axis=8 both profiles passed
+P07 configured-limit axis=9 both profiles passed
+P07 configured-limit axis=10 both profiles passed
+P07 configured-limit axis=11 both profiles passed
+P07 configured-limit axis=12 both profiles passed
+P07 configured-limit axis=13 both profiles passed
+P07 configured-limit axis=14 both profiles passed
+P07 configured-limit axis=15 both profiles passed
+P07 configured-limit axis=16 both profiles passed
+P07 configured-limit axis=17 both profiles passed
+P07 configured-limit axis=18 both profiles passed
+P07 configured-limit axis=19 both profiles passed
+P07 configured-limit axis=20 both profiles passed
+P07 values assertions=2752 failures=0

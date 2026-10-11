@@ -14,6 +14,7 @@ where Base.Identity == UInt16 {
     private var qualification: SemanticRecordReference?
 
     package init(base: consuming Base) { self.base = consume base }
+    package mutating func withBase<Result>(_ body: (inout Base) -> Result) -> Result { body(&base) }
     package var capacity: DrawingLimits { base.capacity }
     package var isActive: Bool { base.isActive }
     package var summary: DrawingPlanSummary { base.summary }

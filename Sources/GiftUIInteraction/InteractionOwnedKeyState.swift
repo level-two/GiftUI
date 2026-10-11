@@ -16,6 +16,8 @@ where
     private var state: InteractionState<Candidate, Committed, Hits>
     private let maximumComponentsPerKey: UInt16
     private let maximumComponents: UInt32
+    private var configuredComponentsPerKey: UInt16
+    private var configuredComponents: UInt32
     private var candidateComponents: UInt32 = 0
     package private(set) var committedComponents: UInt32 = 0
     private var isStaging = false
@@ -30,6 +32,8 @@ where
         self.state = consume state
         self.maximumComponentsPerKey = maximumComponentsPerKey
         self.maximumComponents = maximumComponents
+        configuredComponentsPerKey = maximumComponentsPerKey
+        configuredComponents = maximumComponents
     }
     package borrowing func withBacking<Result>(
         _ body: (
@@ -41,6 +45,15 @@ where
     }
     package var identityCapacities: (perKey: UInt16, perBank: UInt32) {
         (maximumComponentsPerKey, maximumComponents)
+    }
+
+    package mutating func configureIdentityLimits(perKey: UInt16, perBank: UInt32) -> Bool {
+        guard !isStaging, committedComponents == 0, perKey > 0, perKey <= maximumComponentsPerKey,
+            perBank > 0, perBank <= maximumComponents
+        else { return false }
+        configuredComponentsPerKey = perKey
+        configuredComponents = perBank
+        return true
     }
 
     package mutating func beginCandidate(limits: InteractionLimits) -> InteractionError? {
@@ -112,8 +125,8 @@ where
             failures.insert(.invalidIdentity)
         }
         let next = candidateComponents.addingReportingOverflow(UInt32(identity.count))
-        let keyLimit = maximumComponentsPerKey
-        let poolLimit = maximumComponents
+        let keyLimit = configuredComponentsPerKey
+        let poolLimit = configuredComponents
         if identity.count > keyLimit || next.overflow
             || next.partialValue > poolLimit
         {

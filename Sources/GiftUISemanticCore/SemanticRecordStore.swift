@@ -9,12 +9,16 @@ package func withSemanticRecordStore<Payload, Result>(
     payloads: inout MutableSpan<Payload?>,
     scalars: inout MutableSpan<UInt32>,
     limits: SemanticRecordLimits,
+    capacity: SemanticRecordLimits? = nil,
     owner: SemanticRecordOwnerIdentity,
     _ body: (borrowing SemanticRecordStore<Payload>) throws(SemanticExpansionError) -> Result
 ) throws(SemanticExpansionError) -> Result {
-    guard metadata.count == 2, records.count >= Int(limits.records) * 2,
-        paths.count >= Int(limits.paths) * 2, payloads.count >= Int(limits.payloads) * 2,
-        scalars.count >= Int(limits.textScalars) * 2
+    let capacity = capacity ?? limits
+    guard capacity.records >= limits.records, capacity.paths >= limits.paths,
+        capacity.payloads >= limits.payloads, capacity.textScalars >= limits.textScalars,
+        metadata.count == 2, records.count >= Int(capacity.records) * 2,
+        paths.count >= Int(capacity.paths) * 2, payloads.count >= Int(capacity.payloads) * 2,
+        scalars.count >= Int(capacity.textScalars) * 2
     else { throw .capacityExhausted }
     guard metadata[0].phase == .idle, metadata[1].phase == .idle else { throw .reentrancyViolation }
     return try metadata.withUnsafeMutableBufferPointer { (meta) throws(SemanticExpansionError) in
@@ -31,20 +35,20 @@ package func withSemanticRecordStore<Payload, Result>(
                                 metadata: meta.baseAddress! + number,
                                 records: .init(
                                     rebasing: recordBuffer[
-                                        (number * Int(limits.records))
-                                            ..< ((number + 1) * Int(limits.records))]),
+                                        (number * Int(capacity.records))
+                                            ..< ((number + 1) * Int(capacity.records))]),
                                 paths: .init(
                                     rebasing: pathBuffer[
-                                        (number * Int(limits.paths))
-                                            ..< ((number + 1) * Int(limits.paths))]),
+                                        (number * Int(capacity.paths))
+                                            ..< ((number + 1) * Int(capacity.paths))]),
                                 payloads: .init(
                                     rebasing: payloadBuffer[
-                                        (number * Int(limits.payloads))
-                                            ..< ((number + 1) * Int(limits.payloads))]),
+                                        (number * Int(capacity.payloads))
+                                            ..< ((number + 1) * Int(capacity.payloads))]),
                                 scalars: .init(
                                     rebasing: scalarBuffer[
-                                        (number * Int(limits.textScalars))
-                                            ..< ((number + 1) * Int(limits.textScalars))]))
+                                        (number * Int(capacity.textScalars))
+                                            ..< ((number + 1) * Int(capacity.textScalars))]))
                         }
                         let a = bank(0)
                         let b = bank(1)

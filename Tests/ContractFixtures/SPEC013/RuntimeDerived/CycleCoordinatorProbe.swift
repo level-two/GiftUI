@@ -91,15 +91,21 @@ struct CycleWake: ExecutionWakeRequester, Sendable {
     mutating func requestWake(for reasons: ExecutionWakeReasons) { self.reasons.formUnion(reasons) }
 }
 
-func cycleConcreteCoordinator<G, C, R, H>(owner: consuming CyclePipelineOwner<G, C, R, H>, dynamic: Bool, control: UnsafeMutablePointer<CycleControl>, audit: RuntimeStorageAudit) -> CycleReturnedWorkspaces<G, C, R, H> where G: CycleGeometry, C: CycleCandidateBacking, R: CycleCommittedBacking, H: CycleHitBacking, C.Identity == SemanticCompleteIdentity, R.Identity == SemanticCompleteIdentity, H.Identity == SemanticCompleteIdentity {
+func cycleConcreteCoordinator<G, C, R, H>(owner: consuming CyclePipelineOwner<G, C, R, H>, dynamic: Bool, control: UnsafeMutablePointer<CycleControl>, audit: RuntimeStorageAudit, stopAfterFailure: Bool = false) -> CycleReturnedWorkspaces<G, C, R, H> where G: CycleGeometry, C: CycleCandidateBacking, R: CycleCommittedBacking, H: CycleHitBacking, C.Identity == SemanticCompleteIdentity, R.Identity == SemanticCompleteIdentity, H.Identity == SemanticCompleteIdentity {
+    precondition(owner.limits == audit.limits)
     let geometryBefore = owner.geometry.storageMeasurement()
     let interactionBefore = cycleMeasureInteraction(owner.interaction)
     let binding = CycleExecutionBinding(models: owner.models.borrowedScope(), root: owner.root.borrowedRoot(), control: control, audit: audit)!
-    let admission = SingleSourceExecutionAdmissionController(limits: ExecutionLimits(maximumInputEvents: 2, maximumStateChangeFacts: 1, maximumCompletionFacts: 0, maximumSemanticActions: 1, maximumActiveInputSources: 1, maximumCommittedActions: 6)!, context: control.pointee.context, committedPresentationRevision: nil, storage: CycleQueuedFacts(control: control), requester: CycleWake())
+    let admission = SingleSourceExecutionAdmissionController(limits: audit.limits.execution, context: control.pointee.context, committedPresentationRevision: nil, storage: CycleQueuedFacts(control: control), requester: CycleWake())
     #if !hasFeature(Embedded)
     if dynamic {
         var coordinator = DynamicRuntimeExecutionCoordinator(binding: binding, admission: admission, opportunity: owner)
         verifyCommonCoordinator(&coordinator, audit: audit)
+        if stopAfterFailure {
+            coordinator.quiesce()
+            let returned = coordinator.takeQuiescedOpportunity()!
+            return returned.returnWorkspaces(checks: 1)
+        }
         precondition(coordinator.opportunity.geometry.storageMeasurement() == geometryBefore)
         precondition(cycleMeasureInteraction(coordinator.opportunity.interaction) == interactionBefore)
         guard case .success = coordinator.runOpportunity() else { preconditionFailure("Dynamic concrete coordinator") }
@@ -125,6 +131,11 @@ func cycleConcreteCoordinator<G, C, R, H>(owner: consuming CyclePipelineOwner<G,
     #endif
     var coordinator = StaticRuntimeExecutionCoordinator(binding: binding, admission: admission, opportunity: owner)
     verifyCommonCoordinator(&coordinator, audit: audit)
+    if stopAfterFailure {
+        coordinator.quiesce()
+        let returned = coordinator.takeQuiescedOpportunity()!
+        return returned.returnWorkspaces(checks: 1)
+    }
     precondition(coordinator.opportunity.geometry.storageMeasurement() == geometryBefore)
     precondition(cycleMeasureInteraction(coordinator.opportunity.interaction) == interactionBefore)
     guard case .success = coordinator.runOpportunity() else { preconditionFailure("Static concrete coordinator") }

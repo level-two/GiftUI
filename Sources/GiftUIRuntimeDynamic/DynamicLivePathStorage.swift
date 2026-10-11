@@ -3,8 +3,8 @@ import GiftUIDrawing
 import GiftUIRenderCore
 
 package struct DynamicLivePathStorage: LivePathStorage {
-    package let maximumPointCount: UInt16
-    package let maximumSubpathCount: UInt16
+    package private(set) var maximumPointCount: UInt16
+    package private(set) var maximumSubpathCount: UInt16
 
     private var points: [Point] = []
     private var subpaths: [SubpathRange] = []
@@ -16,6 +16,16 @@ package struct DynamicLivePathStorage: LivePathStorage {
         self.maximumSubpathCount = maximumSubpathCount
         points.reserveCapacity(Int(maximumPointCount))
         subpaths.reserveCapacity(Int(maximumSubpathCount))
+    }
+
+    package mutating func configure(maximumPointCount: UInt16, maximumSubpathCount: UInt16) -> Bool
+    {
+        guard points.isEmpty, subpaths.isEmpty, maximumPointCount > 0, maximumSubpathCount > 0,
+            Int(maximumPointCount) <= points.capacity, Int(maximumSubpathCount) <= subpaths.capacity
+        else { return false }
+        self.maximumPointCount = maximumPointCount
+        self.maximumSubpathCount = maximumSubpathCount
+        return true
     }
 
     /// Reports the actual retained typed buffers; live occupancy is not capacity.
