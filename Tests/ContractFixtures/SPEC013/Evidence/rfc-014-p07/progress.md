@@ -25,16 +25,34 @@ the finite P07 exit and hand off to separate Strong review. Contract/scope
 decisions outside this correction still return to Eugene. Consecutive
 unproductive repair count remains **0/2** across resumption.
 
-## Step 18 — bounded actual Dynamic backing repair (in progress)
+## Step 18 — measured Dynamic backing repair
 
-Actual Dynamic layout dictionary indices and per-stroke Drawing arrays cannot be
-accounted as the old raw-region recipe. The existing storage-audit design note
-records the narrow internal replacement before code: constant-time complete-reference-qualified ordinal indexing
-(sized from actual semantic capacity; occupied-only reset), preallocated aggregate drawing pools and retained live-path backing. Focused
-algorithms, logical limits, identity/error/lifetime behavior and owner boundaries
-remain fixed. This is required P07 construction-audit work under RP-002 and
-RP-RD-001–002, not deferred accounting or a new package. Actual runtime/audit join
-and finite exit remain pending. Repair allowance remains **0/2**.
+Design-before-code receipt: cd29fae0. Dynamic layout now uses an ordinal table
+sized from the actual semantic capacity, with one table access and one complete
+reference comparison per lookup; reset visits occupied scopes only. It preserves
+I3-T01 indexing and introduces no repeated-scan lookup. Dynamic drawing retains
+aggregate plan pools and live-path backing; failed append rolls back pool cursors.
+Resolved-layout publication swaps preallocated scope/glyph banks and fills the
+retained line bank. Payload measurements use actual retained capacities/strides.
+
+Validation after `scripts/format-swift.sh`: `scripts/contracts/run-spec-013.sh
+--profile macos-static --compiler-baseline rfc-014 --giftui-build
+.build/contracts/spec-006-rfc-014/dd5d4849463055f2-hwlll28l/macos-static`
+passes **531 assertions and ten compiler negatives**, receipt
+`step-18-macos-static.json` (tmpb0yehscy). Both actual profiles run. New checks
+cover foreign owner/bank/revision, duplicate/out-of-range/first-excess indexing,
+reset/reuse, repeated live-path/plan first-excess refusal, and unchanged retained
+payload capacity through actual derivation/reset. Full construction audit and
+explicit malformed-storage append rollback proof remain pending.
+
+First native run (tmp9awi6b24) compiled, then found retained LivePathBuilder's
+reset also deactivates its scope. Debug replay localized `.invalidScope`; beginPath
+now recreates only builder metadata over retained backing. Next run (tmpza72cv2o)
+identified fixture-only inaccessible memberwise initializer and untyped catches;
+`@testable` access and typed do blocks corrected these without source API changes.
+Fresh optimized run passes. No repeated unproductive repair; **0/2**. No P07
+acceptance or later gate is claimed. Pending common-coordinator audit extensions
+are separate unfinished work.
 
 ## Step 17 — complete finite fixture Embedded compilation
 

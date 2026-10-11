@@ -1729,8 +1729,9 @@ private final class LogicalFrameCapture {
     #expect(duplicateScopeCount == 0)
 
     let layoutLimits = preset.runtimeLimits.layout
-    var layoutWorkspace = DynamicLayoutWorkspace(limits: layoutLimits)
-    var validationWorkspace = DynamicLayoutWorkspace(limits: layoutLimits)
+    var layoutWorkspace = DynamicLayoutWorkspace(limits: layoutLimits, maximumSemanticRecords: 512)
+    var validationWorkspace = DynamicLayoutWorkspace(
+        limits: layoutLimits, maximumSemanticRecords: 512)
     var validation = LayoutSemanticValidation(limits: layoutLimits)
     let validationError = validation.validate(
         semantic: semanticStorage,
@@ -2967,7 +2968,7 @@ func signalAnalyzerWaveformResolvesSurfaceConstraints(width: Int32, height: Int3
         return
     }
     let layoutLimits = preset.runtimeLimits.layout
-    var workspace = DynamicLayoutWorkspace(limits: layoutLimits)
+    var workspace = DynamicLayoutWorkspace(limits: layoutLimits, maximumSemanticRecords: 512)
     var sink = ResolvedRenderLayoutResultSink(
         storage: DynamicResolvedLayoutStorage(limits: layoutLimits))
     let layoutResult = layout(

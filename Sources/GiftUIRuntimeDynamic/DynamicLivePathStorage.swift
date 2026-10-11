@@ -18,6 +18,11 @@ package struct DynamicLivePathStorage: LivePathStorage {
         subpaths.reserveCapacity(Int(maximumSubpathCount))
     }
 
+    package var reservedPayloadBytes: UInt64 {
+        UInt64(points.capacity * MemoryLayout<Point>.stride)
+            + UInt64(subpaths.capacity * MemoryLayout<SubpathRange>.stride)
+    }
+
     package var pointCount: UInt16 { UInt16(points.count) }
     package var subpathCount: UInt16 { UInt16(subpaths.count) }
 

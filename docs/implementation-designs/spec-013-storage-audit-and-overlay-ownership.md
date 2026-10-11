@@ -46,6 +46,8 @@ complete record identity semantics, limits and failure precedence unchanged:
   SPEC-007 O(n + g) and ITERATION-003 I3-T01 indexing obligations. Out-of-range
   ordinals and duplicate occupied ordinals fail before writes; one attempt reads
   one qualified semantic snapshot. No general map subsystem is introduced.
+- Resolved-layout publication swaps retained scope/glyph banks and fills the
+  preallocated line bank, keeping publication data and retained extents separate.
 - Dynamic Drawing reserves aggregate point and subpath pools before use. Each
   stroke stores ranges into those pools. Failed appends roll back both pool
   cursors, preserving the existing all-or-nothing append behavior.

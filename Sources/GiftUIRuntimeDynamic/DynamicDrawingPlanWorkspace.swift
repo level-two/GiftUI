@@ -6,8 +6,8 @@ import GiftUISemanticCore
 private struct DynamicDrawingPlanStroke {
     let canvas: SemanticRecordReference
     let header: StraightLineStrokeHeader
-    let points: [Point]
-    let subpaths: [SubpathRange]
+    let points: Range<Int>
+    let subpaths: Range<Int>
 }
 
 package struct DynamicDrawingPlanWorkspace: DrawingPlanConstructionWorkspace,
@@ -19,17 +19,35 @@ package struct DynamicDrawingPlanWorkspace: DrawingPlanConstructionWorkspace,
     private var publishedSummary: DrawingPlanSummary?
     private var canvasIdentities: [SemanticRecordReference] = []
     private var strokes: [DynamicDrawingPlanStroke] = []
+    private var points: [Point] = []
+    private var subpaths: [SubpathRange] = []
     private var currentIdentity: SemanticRecordReference?
     private var currentOrigin: Point?
     private var currentClip: Rect?
     private var contextGeneration: UInt32 = 0
-    private var livePath: LivePathBuilder<DynamicLivePathStorage>?
+    private var livePath: LivePathBuilder<DynamicLivePathStorage>
+    private var pathActive = false
 
     package init(capacity: DrawingLimits) {
         self.capacity = capacity
+        livePath = LivePathBuilder(
+            storage: DynamicLivePathStorage(
+                maximumPointCount: capacity.maximumLivePathPoints,
+                maximumSubpathCount: capacity.maximumLivePathSubpaths))
+        points.reserveCapacity(Int(capacity.maximumPlanPoints))
+        subpaths.reserveCapacity(Int(capacity.maximumPlanSubpaths))
         canvasIdentities.reserveCapacity(Int(capacity.maximumCanvasOccurrences))
         strokes.reserveCapacity(Int(capacity.maximumPlanStrokes))
     }
+
+    package var planReservedPayloadBytes: UInt64 {
+        UInt64(canvasIdentities.capacity * MemoryLayout<SemanticRecordReference>.stride)
+            + UInt64(strokes.capacity * MemoryLayout<DynamicDrawingPlanStroke>.stride)
+            + UInt64(points.capacity * MemoryLayout<Point>.stride)
+            + UInt64(subpaths.capacity * MemoryLayout<SubpathRange>.stride)
+    }
+
+    package var livePathReservedPayloadBytes: UInt64 { livePath.storage.reservedPayloadBytes }
 
     package var summary: DrawingPlanSummary {
         precondition(publishedSummary != nil)
@@ -39,11 +57,11 @@ package struct DynamicDrawingPlanWorkspace: DrawingPlanConstructionWorkspace,
     package var limits: DrawingLimits { capacity }
     package var strokeCount: UInt16 { UInt16(strokes.count) }
     package var pointCount: UInt16 {
-        UInt16(strokes.reduce(0) { $0 + $1.points.count })
+        UInt16(points.count)
     }
 
     package var subpathCount: UInt16 {
-        UInt16(strokes.reduce(0) { $0 + $1.subpaths.count })
+        UInt16(subpaths.count)
     }
 
     package var normalizedStrokeOperationCount: UInt16 { strokeCount }
@@ -64,7 +82,7 @@ package struct DynamicDrawingPlanWorkspace: DrawingPlanConstructionWorkspace,
             canvasIdentities.count < Int(capacity.maximumCanvasOccurrences),
             !canvasIdentities.contains(identity),
             currentIdentity == nil,
-            livePath == nil
+            !pathActive
         else { throw .invariantViolation }
         let nextGeneration = contextGeneration.addingReportingOverflow(1)
         guard !nextGeneration.overflow, nextGeneration.partialValue != 0 else {
@@ -77,8 +95,8 @@ package struct DynamicDrawingPlanWorkspace: DrawingPlanConstructionWorkspace,
         currentClip = inheritedClip
         let activeGeneration = contextGeneration
         defer {
-            livePath?.reset()
-            livePath = nil
+            livePath.reset()
+            pathActive = false
             currentIdentity = nil
             currentOrigin = nil
             currentClip = nil
@@ -106,7 +124,7 @@ package struct DynamicDrawingPlanWorkspace: DrawingPlanConstructionWorkspace,
     ) -> DrawingPlanResult {
         guard isActive,
             currentIdentity == nil,
-            livePath == nil,
+            !pathActive,
             canvasOccurrenceCount == UInt16(canvasIdentities.count),
             normalizedStrokeOperationCount == strokeCount
         else { return .failure(.invariantViolation) }
@@ -128,9 +146,11 @@ package struct DynamicDrawingPlanWorkspace: DrawingPlanConstructionWorkspace,
         currentIdentity = nil
         currentOrigin = nil
         currentClip = nil
-        livePath?.reset()
-        livePath = nil
+        livePath.reset()
+        pathActive = false
         strokes.removeAll(keepingCapacity: true)
+        points.removeAll(keepingCapacity: true)
+        subpaths.removeAll(keepingCapacity: true)
     }
 
     package mutating func reset() {
@@ -142,7 +162,7 @@ package struct DynamicDrawingPlanWorkspace: DrawingPlanConstructionWorkspace,
         guard publishedSummary != nil, canvasIdentities.contains(canvas) else {
             return nil
         }
-        return UInt16(strokes.filter { $0.canvas == canvas }.count)
+        return UInt16(strokes.lazy.filter { $0.canvas == canvas }.count)
     }
 
     package func strokeHeader(
@@ -160,7 +180,7 @@ package struct DynamicDrawingPlanWorkspace: DrawingPlanConstructionWorkspace,
         guard let stroke = stroke(of: canvas, at: strokeIndex),
             Int(index) < stroke.points.count
         else { return nil }
-        return stroke.points[Int(index)]
+        return points[stroke.points.lowerBound + Int(index)]
     }
 
     package func subpath(
@@ -171,7 +191,7 @@ package struct DynamicDrawingPlanWorkspace: DrawingPlanConstructionWorkspace,
         guard let stroke = stroke(of: canvas, at: strokeIndex),
             Int(index) < stroke.subpaths.count
         else { return nil }
-        return stroke.subpaths[Int(index)]
+        return subpaths[stroke.subpaths.lowerBound + Int(index)]
     }
 
     package mutating func appendStroke<PathStorage>(
@@ -179,10 +199,19 @@ package struct DynamicDrawingPlanWorkspace: DrawingPlanConstructionWorkspace,
         path: borrowing PathStorage
     ) -> Bool where PathStorage: LivePathStorage {
         guard let canvas = currentIdentity, let origin = currentOrigin,
-            strokes.count < Int(capacity.maximumPlanStrokes)
+            strokes.count < Int(capacity.maximumPlanStrokes),
+            points.count + Int(path.pointCount) <= Int(capacity.maximumPlanPoints),
+            subpaths.count + Int(path.subpathCount) <= Int(capacity.maximumPlanSubpaths)
         else { return false }
-        var points: [Point] = []
-        points.reserveCapacity(Int(path.pointCount))
+        let pointStart = points.count
+        let subpathStart = subpaths.count
+        var committed = false
+        defer {
+            if !committed {
+                points.removeLast(points.count - pointStart)
+                subpaths.removeLast(subpaths.count - subpathStart)
+            }
+        }
         var pointIndex: UInt16 = 0
         while pointIndex < path.pointCount {
             guard let point = path.point(at: pointIndex) else { return false }
@@ -192,8 +221,6 @@ package struct DynamicDrawingPlanWorkspace: DrawingPlanConstructionWorkspace,
             points.append(Point(x: x.partialValue, y: y.partialValue))
             pointIndex += 1
         }
-        var subpaths: [SubpathRange] = []
-        subpaths.reserveCapacity(Int(path.subpathCount))
         var subpathIndex: UInt16 = 0
         while subpathIndex < path.subpathCount {
             guard let subpath = path.subpath(at: subpathIndex) else { return false }
@@ -204,10 +231,11 @@ package struct DynamicDrawingPlanWorkspace: DrawingPlanConstructionWorkspace,
             DynamicDrawingPlanStroke(
                 canvas: canvas,
                 header: header,
-                points: points,
-                subpaths: subpaths
+                points: pointStart ..< points.count,
+                subpaths: subpathStart ..< subpaths.count
             )
         )
+        committed = true
         return true
     }
 
@@ -215,15 +243,12 @@ package struct DynamicDrawingPlanWorkspace: DrawingPlanConstructionWorkspace,
         contextGeneration: UInt32,
         pathGeneration: inout UInt32
     ) -> UInt8 {
-        guard contextGeneration == self.contextGeneration, livePath == nil else {
+        guard contextGeneration == self.contextGeneration, !pathActive else {
             return _GiftUIDrawingStatus.reentrancyViolation.rawValue
         }
-        livePath = LivePathBuilder(
-            storage: DynamicLivePathStorage(
-                maximumPointCount: capacity.maximumLivePathPoints,
-                maximumSubpathCount: capacity.maximumLivePathSubpaths
-            )
-        )
+        livePath.reset()
+        livePath = LivePathBuilder(storage: livePath.storage)
+        pathActive = true
         pathGeneration = 1
         return _GiftUIDrawingStatus.success.rawValue
     }
@@ -234,10 +259,10 @@ package struct DynamicDrawingPlanWorkspace: DrawingPlanConstructionWorkspace,
     ) -> UInt8 {
         guard contextGeneration == self.contextGeneration,
             pathGeneration == 1,
-            var path = livePath
+            pathActive
         else { return _GiftUIDrawingStatus.invalidScope.rawValue }
-        path.reset()
-        livePath = nil
+        livePath.reset()
+        pathActive = false
         return _GiftUIDrawingStatus.success.rawValue
     }
 
@@ -249,11 +274,10 @@ package struct DynamicDrawingPlanWorkspace: DrawingPlanConstructionWorkspace,
     ) -> UInt8 {
         guard contextGeneration == self.contextGeneration,
             pathGeneration == 1,
-            var path = livePath
+            pathActive
         else { return _GiftUIDrawingStatus.invalidScope.rawValue }
         do {
-            if move { try path.move(to: point) } else { try path.addLine(to: point) }
-            livePath = path
+            if move { try livePath.move(to: point) } else { try livePath.addLine(to: point) }
             return _GiftUIDrawingStatus.success.rawValue
         } catch {
             return dynamicDrawingStatus(for: error)
@@ -268,13 +292,14 @@ package struct DynamicDrawingPlanWorkspace: DrawingPlanConstructionWorkspace,
     ) -> UInt8 {
         guard contextGeneration == self.contextGeneration,
             pathGeneration == 1,
-            let path = livePath,
+            pathActive,
             let origin = currentOrigin,
             let clip = currentClip
         else { return _GiftUIDrawingStatus.invalidScope.rawValue }
+        let path = livePath.storage
         do {
             try StrokeSnapshotProducer.snapshot(
-                path: path.storage,
+                path: path,
                 shading: .color(color),
                 style: style,
                 surfaceOrigin: origin,
@@ -292,9 +317,12 @@ package struct DynamicDrawingPlanWorkspace: DrawingPlanConstructionWorkspace,
         at index: UInt16
     ) -> DynamicDrawingPlanStroke? {
         guard publishedSummary != nil else { return nil }
-        let matches = strokes.filter { $0.canvas == canvas }
-        guard Int(index) < matches.count else { return nil }
-        return matches[Int(index)]
+        var ordinal: UInt16 = 0
+        for stroke in strokes where stroke.canvas == canvas {
+            if ordinal == index { return stroke }
+            ordinal += 1
+        }
+        return nil
     }
 }
 

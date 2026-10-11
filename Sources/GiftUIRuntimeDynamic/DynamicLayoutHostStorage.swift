@@ -3,21 +3,6 @@ import GiftUILayout
 import GiftUISemanticCore
 import GiftUITextResources
 
-/// Exact transient record lookup; all owner/bank/revision/ordinal fields
-/// participate. This does not replace owned complete Interaction identities.
-private struct DynamicRecordLookupKey: Hashable {
-    let owner: UInt32
-    let bank: UInt8
-    let revision: UInt32
-    let ordinal: UInt16
-    init(_ reference: SemanticRecordReference) {
-        owner = reference.owner.rawValue
-        bank = reference.bank
-        revision = reference.revision
-        ordinal = reference.ordinal
-    }
-}
-
 private struct DynamicLayoutWorkspaceScope {
     let identity: SemanticRecordReference
     var measurement: LayoutMeasurement
@@ -35,22 +20,42 @@ package struct DynamicLayoutWorkspace: LayoutWorkspace {
     package private(set) var isLayoutActive = false
 
     private var scopes: [DynamicLayoutWorkspaceScope] = []
-    private var scopeIndex: [DynamicRecordLookupKey: Int] = [:]
+    private var scopeIndex: [Int?]
     private var lines: [LayoutTextLine<SemanticRecordReference>] = []
     private var glyphs: [LayoutPositionedGlyph<SemanticRecordReference>] = []
     private var depth: [SemanticRecordReference] = []
 
-    package init(limits: LayoutLimits) {
+    package init(limits: LayoutLimits, maximumSemanticRecords: UInt16) {
         maximumScopes = limits.maximumScopes
         maximumDepth = limits.maximumDepth
         maximumTextScalars = limits.maximumTextScalars
         maximumTextLines = limits.maximumTextLines
         maximumPositionedGlyphs = limits.maximumPositionedGlyphs
         scopes.reserveCapacity(Int(limits.maximumScopes))
-        scopeIndex.reserveCapacity(Int(limits.maximumScopes))
+        scopeIndex = Array(repeating: nil, count: Int(maximumSemanticRecords))
         lines.reserveCapacity(Int(limits.maximumTextLines))
         glyphs.reserveCapacity(Int(limits.maximumPositionedGlyphs))
         depth.reserveCapacity(Int(limits.maximumDepth))
+    }
+
+    /// One indexed entry and one complete-reference comparison per lookup.
+    private func index(of identity: SemanticRecordReference) -> Int? {
+        guard Int(identity.ordinal) < scopeIndex.count,
+            let index = scopeIndex[Int(identity.ordinal)],
+            scopes[index].identity == identity
+        else { return nil }
+        return index
+    }
+
+    /// Exclusive retained Array payload; value metadata is accounted by its owner.
+    package var reservedPayloadBytes: UInt64 {
+        UInt64(scopes.capacity * MemoryLayout<DynamicLayoutWorkspaceScope>.stride)
+            + UInt64(scopeIndex.capacity * MemoryLayout<Int?>.stride)
+            + UInt64(lines.capacity * MemoryLayout<LayoutTextLine<SemanticRecordReference>>.stride)
+            + UInt64(
+                glyphs.capacity
+                    * MemoryLayout<LayoutPositionedGlyph<SemanticRecordReference>>.stride)
+            + UInt64(depth.capacity * MemoryLayout<SemanticRecordReference>.stride)
     }
 
     package mutating func acquireLayout() -> Bool {
@@ -65,9 +70,10 @@ package struct DynamicLayoutWorkspace: LayoutWorkspace {
     ) -> Bool {
         let identity = copy identity
         guard scopes.count < Int(maximumScopes),
-            scopeIndex[DynamicRecordLookupKey(identity)] == nil
+            Int(identity.ordinal) < scopeIndex.count,
+            scopeIndex[Int(identity.ordinal)] == nil
         else { return false }
-        scopeIndex[DynamicRecordLookupKey(identity)] = scopes.count
+        scopeIndex[Int(identity.ordinal)] = scopes.count
         scopes.append(
             DynamicLayoutWorkspaceScope(
                 identity: identity,
@@ -91,7 +97,7 @@ package struct DynamicLayoutWorkspace: LayoutWorkspace {
         for identity: borrowing SemanticRecordReference
     ) -> LayoutMeasurement? {
         let identity = copy identity
-        guard let index = scopeIndex[DynamicRecordLookupKey(identity)] else { return nil }
+        guard let index = index(of: identity) else { return nil }
         return scopes[index].measurement
     }
 
@@ -100,7 +106,7 @@ package struct DynamicLayoutWorkspace: LayoutWorkspace {
         for identity: borrowing SemanticRecordReference
     ) -> Bool {
         let identity = copy identity
-        guard let index = scopeIndex[DynamicRecordLookupKey(identity)]
+        guard let index = index(of: identity)
         else { return false }
         scopes[index].measurement = measurement
         return true
@@ -111,7 +117,7 @@ package struct DynamicLayoutWorkspace: LayoutWorkspace {
         for identity: borrowing SemanticRecordReference
     ) -> Bool {
         let identity = copy identity
-        guard let index = scopeIndex[DynamicRecordLookupKey(identity)],
+        guard let index = index(of: identity),
             scopes[index].placement == nil
         else { return false }
         scopes[index].placement = placement
@@ -122,7 +128,7 @@ package struct DynamicLayoutWorkspace: LayoutWorkspace {
         for identity: borrowing SemanticRecordReference
     ) -> LayoutPlacement? {
         let identity = copy identity
-        guard let index = scopeIndex[DynamicRecordLookupKey(identity)] else { return nil }
+        guard let index = index(of: identity) else { return nil }
         return scopes[index].placement
     }
 
@@ -132,7 +138,7 @@ package struct DynamicLayoutWorkspace: LayoutWorkspace {
         _ line: LayoutTextLine<SemanticRecordReference>
     ) -> Bool {
         guard lines.count < Int(maximumTextLines),
-            let index = scopeIndex[DynamicRecordLookupKey(line.identity)]
+            let index = index(of: line.identity)
         else { return false }
         let ordinal = UInt16(lines.count)
         if let range = scopes[index].lineRange {
@@ -149,7 +155,7 @@ package struct DynamicLayoutWorkspace: LayoutWorkspace {
         for identity: borrowing SemanticRecordReference
     ) -> Range<UInt16>? {
         let identity = copy identity
-        guard let index = scopeIndex[DynamicRecordLookupKey(identity)] else { return nil }
+        guard let index = index(of: identity) else { return nil }
         return scopes[index].lineRange
     }
 
@@ -175,7 +181,7 @@ package struct DynamicLayoutWorkspace: LayoutWorkspace {
         _ glyph: LayoutPositionedGlyph<SemanticRecordReference>
     ) -> Bool {
         guard glyphs.count < Int(maximumPositionedGlyphs),
-            let index = scopeIndex[DynamicRecordLookupKey(glyph.identity)]
+            let index = index(of: glyph.identity)
         else { return false }
         let ordinal = UInt16(glyphs.count)
         if let range = scopes[index].glyphRange {
@@ -192,7 +198,7 @@ package struct DynamicLayoutWorkspace: LayoutWorkspace {
         for identity: borrowing SemanticRecordReference
     ) -> Range<UInt16>? {
         let identity = copy identity
-        guard let index = scopeIndex[DynamicRecordLookupKey(identity)] else { return nil }
+        guard let index = index(of: identity) else { return nil }
         return scopes[index].glyphRange
     }
 
@@ -225,8 +231,8 @@ package struct DynamicLayoutWorkspace: LayoutWorkspace {
     }
 
     package mutating func resetLayout() {
+        for scope in scopes { scopeIndex[Int(scope.identity.ordinal)] = nil }
         scopes.removeAll(keepingCapacity: true)
-        scopeIndex.removeAll(keepingCapacity: true)
         lines.removeAll(keepingCapacity: true)
         glyphs.removeAll(keepingCapacity: true)
         depth.removeAll(keepingCapacity: true)
@@ -343,6 +349,18 @@ package struct DynamicResolvedLayoutStorage: ResolvedRenderLayoutResultStorage {
         publishedGlyphs.reserveCapacity(Int(limits.maximumPositionedGlyphs))
     }
 
+    package var reservedPayloadBytes: UInt64 {
+        UInt64(
+            (candidateScopes.capacity + publishedScopes.capacity)
+                * MemoryLayout<DynamicResolvedLayoutScope>.stride)
+            + UInt64(
+                (candidateLines.capacity + publishedLines.capacity)
+                    * MemoryLayout<DynamicResolvedLayoutLine>.stride)
+            + UInt64(
+                (candidateGlyphs.capacity + publishedGlyphs.capacity)
+                    * MemoryLayout<DynamicResolvedLayoutGlyph>.stride)
+    }
+
     package var renderView: DynamicResolvedLayoutView {
         precondition(hasPublishedResult)
         let summary = publishedSummary!
@@ -453,25 +471,27 @@ package struct DynamicResolvedLayoutStorage: ResolvedRenderLayoutResultStorage {
         let nextVersion = version.addingReportingOverflow(1)
         guard !nextVersion.overflow, nextVersion.partialValue != 0 else { return false }
         publishedSummary = summary
-        publishedScopes = candidateScopes
-        publishedLines = candidateLines.map { record in
-            DynamicResolvedLayoutLine(
-                identity: record.identity,
-                line: ResolvedRenderTextLine(
-                    lineIndex: record.line.lineIndex,
-                    bounds: record.line.bounds,
-                    baseline: record.line.baseline,
-                    clip: record.line.clip,
-                    glyphCount: UInt16(
-                        candidateGlyphs.lazy.filter {
-                            $0.identity == record.identity
-                                && $0.glyph.lineIndex == record.line.lineIndex
-                        }.count
+        swap(&publishedScopes, &candidateScopes)
+        publishedLines.removeAll(keepingCapacity: true)
+        for record in candidateLines {
+            publishedLines.append(
+                DynamicResolvedLayoutLine(
+                    identity: record.identity,
+                    line: ResolvedRenderTextLine(
+                        lineIndex: record.line.lineIndex,
+                        bounds: record.line.bounds,
+                        baseline: record.line.baseline,
+                        clip: record.line.clip,
+                        glyphCount: UInt16(
+                            candidateGlyphs.lazy.filter {
+                                $0.identity == record.identity
+                                    && $0.glyph.lineIndex == record.line.lineIndex
+                            }.count
+                        )
                     )
-                )
-            )
+                ))
         }
-        publishedGlyphs = candidateGlyphs
+        swap(&publishedGlyphs, &candidateGlyphs)
         version = nextVersion.partialValue
         hasPublishedResult = true
         clearCandidate()

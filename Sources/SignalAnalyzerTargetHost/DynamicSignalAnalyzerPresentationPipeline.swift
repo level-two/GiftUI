@@ -268,7 +268,9 @@ package struct DynamicSignalAnalyzerPresentationPipeline<Metrics: CanonicalTextM
             maximumStructuralOccurrences: limits.maximumSemanticStructuralOccurrences,
             canvasCapacity: limits.drawing.maximumCanvasOccurrences
         )
-        layoutWorkspace = DynamicLayoutWorkspace(limits: limits.layout)
+        layoutWorkspace = DynamicLayoutWorkspace(
+            limits: limits.layout,
+            maximumSemanticRecords: limits.maximumSemanticStructuralOccurrences)
         layoutSink = ResolvedRenderLayoutResultSink(
             storage: DynamicResolvedLayoutStorage(limits: limits.layout)
         )

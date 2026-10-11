@@ -3,9 +3,10 @@ import GiftUI
 import GiftUIDrawing
 import GiftUIExecution
 import GiftUILayout
+import GiftUIRenderCore
 import GiftUIReferenceTextResources
 import GiftUIObservableState
-import GiftUISemanticCore
+@testable import GiftUISemanticCore
 import CycleSchema
 #if !hasFeature(Embedded)
 import GiftUIRuntimeCore
@@ -18,8 +19,10 @@ package func cycleDynamicDrawing(
     shown: Bool
 ) -> Int {
     let layoutLimits = LayoutLimits(maximumScopes: 98, maximumDepth: 19, maximumTextScalars: 224, maximumTextLines: 98, maximumPositionedGlyphs: 224)!
-    var workspace = DynamicLayoutWorkspace(limits: layoutLimits)
+    var workspace = DynamicLayoutWorkspace(limits: layoutLimits, maximumSemanticRecords: 126)
+    let layoutBytes = workspace.reservedPayloadBytes
     var resolved = DynamicResolvedLayoutStorage(limits: layoutLimits)
+    let resolvedBytes = resolved.reservedPayloadBytes
     do throws(SemanticExpansionError) {
         try semantic.withCandidateView { bank in
             let result = layout(semantic: SemanticRecordLayoutView(bank), metrics: GiftUIReferenceTextMetricsView(), proposal: ProposedSize(width: 100, height: 100)!, limits: layoutLimits, workspace: &workspace, sink: &resolved)
@@ -28,6 +31,8 @@ package func cycleDynamicDrawing(
     } catch { preconditionFailure("Dynamic semantic borrow") }
     let drawingLimits = DrawingLimits(maximumLineWidth: 4, maximumCanvasOccurrences: 1, maximumLivePathPoints: 4, maximumLivePathSubpaths: 2, maximumPlanStrokes: 1, maximumPlanPoints: 4, maximumPlanSubpaths: 2, maximumNormalizedStrokeOperations: 1)!
     var plan = DynamicDrawingPlanWorkspace(capacity: drawingLimits)
+    let planBytes = plan.planReservedPayloadBytes
+    let pathBytes = plan.livePathReservedPayloadBytes
     var source = ObservableCanvasInvocationSource(models: models.borrowedScope(), values: values.borrowedValues(), table: CycleValueTable())
     let context = ExecutionContext(cycle: RunCycleID(rawValue: 1), semanticRevision: nil, candidateFrame: nil, phase: .deriving)
     let canvas = values.identity(at: 0)
@@ -44,6 +49,64 @@ package func cycleDynamicDrawing(
     var render = DynamicRenderWorkspace(capacity: cycleRenderLimits, structuralCapacity: cycleRenderCapacity)
     let renderChecks = cycleRender(semantic: semantic, layout: resolved.renderView, plan: plan, workspace: &render, shown: shown)
     plan.discard(); plan.reset()
-    return (shown ? 5 : 3) + renderChecks
+    precondition(workspace.reservedPayloadBytes == layoutBytes)
+    precondition(resolved.reservedPayloadBytes == resolvedBytes)
+    precondition(plan.planReservedPayloadBytes == planBytes && plan.livePathReservedPayloadBytes == pathBytes)
+    return (shown ? 5 : 3) + renderChecks + 3
+}
+package func cycleDynamicStorageEdges() -> Int {
+    var checks = 0
+    func expect(_ value: Bool) { checks += 1; precondition(value) }
+    let limits = LayoutLimits(maximumScopes: 2, maximumDepth: 2, maximumTextScalars: 2, maximumTextLines: 2, maximumPositionedGlyphs: 2)!
+    var workspace = DynamicLayoutWorkspace(limits: limits, maximumSemanticRecords: 4)
+    let bytes = workspace.reservedPayloadBytes
+    let measurement = LayoutMeasurement(idealSize: Size(width: 1, height: 1)!, resolvedSize: Size(width: 1, height: 1)!)
+    var namespace = SemanticRecordOwnerNamespace()
+    let firstOwner = try! namespace.issue(), secondOwner = try! namespace.issue()
+    func ref(_ ordinal: UInt16, _ owner: UInt32 = 1, _ bank: UInt8 = 0, _ revision: UInt32 = 1) -> SemanticRecordReference {
+        .init(owner: owner == 1 ? firstOwner : secondOwner, bank: bank, revision: revision, ordinal: ordinal)
+    }
+    expect(workspace.acquireLayout())
+    expect(workspace.appendScope(identity: ref(3), measurement: measurement))
+    expect(workspace.measurement(for: ref(3)) == measurement)
+    expect(workspace.measurement(for: ref(3, 2)) == nil)
+    expect(workspace.measurement(for: ref(3, 1, 1)) == nil)
+    expect(workspace.measurement(for: ref(3, 1, 0, 2)) == nil)
+    expect(!workspace.appendScope(identity: ref(3), measurement: measurement))
+    expect(!workspace.appendScope(identity: ref(4), measurement: measurement))
+    expect(workspace.appendScope(identity: ref(0), measurement: measurement))
+    expect(!workspace.appendScope(identity: ref(1), measurement: measurement))
+    expect(workspace.scopeCount == 2)
+    workspace.resetLayout()
+    expect(workspace.measurement(for: ref(3)) == nil)
+    expect(workspace.appendScope(identity: ref(3, 2, 1, 2), measurement: measurement))
+    expect(workspace.reservedPayloadBytes == bytes)
+
+    let drawing = DrawingLimits(maximumLineWidth: 4, maximumCanvasOccurrences: 1, maximumLivePathPoints: 2, maximumLivePathSubpaths: 1, maximumPlanStrokes: 1, maximumPlanPoints: 2, maximumPlanSubpaths: 1, maximumNormalizedStrokeOperations: 1)!
+    var plan = DynamicDrawingPlanWorkspace(capacity: drawing)
+    let planBytes = plan.planReservedPayloadBytes, pathBytes = plan.livePathReservedPayloadBytes
+    for _ in 0..<2 {
+        expect(plan.acquire())
+        do throws(DrawingError) {
+            try plan.withCanvasContext(identity: ref(0), surfaceOrigin: Point(x: 0, y: 0), inheritedClip: Rect(origin: Point(x: 0, y: 0), size: Size(width: 10, height: 10)!)!) { (context) throws(DrawingError) in
+                try context.withPath { (context, path) throws(DrawingError) in
+                    try path.move(to: Point(x: 0, y: 0))
+                    try path.addLine(to: Point(x: 1, y: 1))
+                    do throws(DrawingError) { try path.addLine(to: Point(x: 2, y: 2)); preconditionFailure("live first excess accepted") }
+                    catch { expect(error == .capacityExhausted) }
+                    try context.stroke(path, with: .color(.white), lineWidth: 1)
+                    do throws(DrawingError) { try context.stroke(path, with: .color(.white), lineWidth: 1); preconditionFailure("plan first excess accepted") }
+                    catch { expect(error == .capacityExhausted) }
+                }
+            }
+        } catch { preconditionFailure("drawing edges") }
+        expect(plan.pointCount == 2 && plan.subpathCount == 1 && plan.strokeCount == 1)
+        guard case .success = plan.seal(canvasOccurrenceCount: 1) else { preconditionFailure("seal") }
+        expect(plan.point(of: ref(0), stroke: 0, at: 1) == Point(x: 1, y: 1))
+        plan.reset()
+        expect(plan.pointCount == 0 && plan.subpathCount == 0 && plan.strokeCount == 0)
+        expect(plan.planReservedPayloadBytes == planBytes && plan.livePathReservedPayloadBytes == pathBytes)
+    }
+    return checks
 }
 #endif

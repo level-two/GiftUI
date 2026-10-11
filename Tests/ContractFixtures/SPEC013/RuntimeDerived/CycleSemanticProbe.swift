@@ -111,6 +111,7 @@ public func giftuiP07CycleSemantic() -> Int {
             withSemantic(models: models, root: root, dynamic: false)
         }
         #if !hasFeature(Embedded)
+        checks += cycleDynamicStorageEdges()
         let dynamic = DynamicObservableRootAdapter<CycleOwnedModel, SemanticCompleteIdentity>(identity: try namespace.issue(), schema: 1, needsCapture: false)!
         checks += try dynamic.withLifetime { (models, root) throws(ObservableStateError) in
             withSemantic(models: models, root: root, dynamic: true)

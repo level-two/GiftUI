@@ -38,7 +38,7 @@ protocol CycleGeometry {
 }
 #if !hasFeature(Embedded)
 struct DynamicCycleGeometry: CycleGeometry {
-    var workspace = DynamicLayoutWorkspace(limits: cycleLayoutLimits)
+    var workspace = DynamicLayoutWorkspace(limits: cycleLayoutLimits, maximumSemanticRecords: 126)
     var resolved = DynamicResolvedLayoutStorage(limits: cycleLayoutLimits)
     var plan = DynamicDrawingPlanWorkspace(capacity: cycleDrawingLimits)
     var render = DynamicRenderWorkspace(capacity: cycleRenderLimits, structuralCapacity: cycleRenderCapacity)
