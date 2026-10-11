@@ -10,7 +10,7 @@ import CycleSchema
 import CyclePresentation
 
 private typealias Payload = CanvasSemanticPayload<CycleValueTable.CaptureStorage>
-private enum CycleRoles: SemanticDeclarationRoles {
+enum CycleRoles: SemanticDeclarationRoles {
     static func role<V>(of type: V.Type) -> SemanticRecordingRole? {
         if V.self == CycleScene<CycleDomain>.self { return .init(rawValue: 1) }
         if V.self == CycleScene<CycleDomain>.Body.self { return .init(rawValue: 2) }
@@ -77,6 +77,7 @@ private func exercise(_ semantic: borrowing SemanticRecordStore<Payload>, models
             catch { preconditionFailure("semantic publication") }
         }
     } catch { preconditionFailure("model phase") }
+    checks += cyclePipelineProbe(models: models, root: root, semantic: semantic, dynamic: dynamic)
     return checks
 }
 private func withSemantic(models: borrowing ObservableModelScope<CycleOwnedModel, CycleModelSchema>, root: borrowing ObservableStateRootScope<CycleOwnedModel, SemanticCompleteIdentity>, dynamic: Bool) -> Int {

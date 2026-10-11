@@ -23,6 +23,31 @@ package enum RuntimeRecordInteractionBridge {
         Model: ObservableStateModel & ~Copyable, RootIdentity: Equatable & Sendable,
         Action: GiftUIAction, Roles: SemanticDeclarationRoles
     {
+        appendProjected(
+            record: record, semantic: semantic, root: root, rootIdentity: rootIdentity,
+            rootOrdinal: rootOrdinal, actionType: actionType, roles: roles,
+            isEnabled: isEnabled, bounds: bounds, clip: clip, paintOrder: paintOrder,
+            interaction: &interaction, projection: { $0 })
+    }
+
+    static func appendProjected<
+        Candidate, Committed, Hits, Model, RootIdentity, Action, Roles, Payload
+    >(
+        record: SemanticRecordReference,
+        semantic: borrowing SemanticRecordView<Payload>,
+        root: borrowing ObservableStateRootScope<Model, RootIdentity>, rootIdentity: RootIdentity,
+        rootOrdinal: UInt16, actionType: Action.Type, roles: Roles.Type,
+        isEnabled: Bool, bounds: Rect, clip: Rect, paintOrder: UInt16,
+        interaction: inout InteractionOwnedKeyState<Candidate, Committed, Hits>,
+        projection: (Payload) -> SemanticStandardPayload?
+    ) -> InteractionCandidateAppendResult
+    where
+        Candidate: InteractionCandidateRecordStorage, Committed: InteractionCommittedRecordStorage,
+        Hits: InteractionHitRegionStorage, Candidate.Identity == SemanticCompleteIdentity,
+        Committed.Identity == SemanticCompleteIdentity, Hits.Identity == SemanticCompleteIdentity,
+        Model: ObservableStateModel & ~Copyable, RootIdentity: Equatable & Sendable,
+        Action: GiftUIAction, Roles: SemanticDeclarationRoles
+    {
         var failures = InteractionVisibleFailures()
         let identity = semantic.completeIdentity(for: record)
         let value = semantic.record(record)
@@ -31,7 +56,7 @@ package enum RuntimeRecordInteractionBridge {
         if generation == nil { failures.insert(.missingModelTarget) }
         var code: UInt16?
         if semantic.isCandidate, let value, value.kind == .action,
-            let payload = semantic.payload(at: value.payload),
+            let stored = semantic.payload(at: value.payload), let payload = projection(stored),
             case .action(let role, let raw) = payload
         {
             code = raw

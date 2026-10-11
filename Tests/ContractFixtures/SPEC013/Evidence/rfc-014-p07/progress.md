@@ -25,6 +25,33 @@ the finite P07 exit and hand off to separate Strong review. Contract/scope
 decisions outside this correction still return to Eugene. Consecutive
 unproductive repair count remains **0/2** across resumption.
 
+## Step 14 — actual complete-pipeline entry fixture
+
+Both concrete profile storage joins now execute RuntimeCompletePipeline with
+actual Observable State, semantic banks, layout, Canvas staging/plan, combined
+render, Interaction key/record owners and checked mutation dispatch. The existing
+record Interaction bridge gains a Canvas-payload overload through its same
+validation/append implementation. The finite endpoint records actual production.
+
+After scripts/format-swift.sh, the registered macos-static RFC-014 command passes
+401 assertions and ten compiler negatives; receipt step-14-macos-static.json.
+New cycles cover acceptance, checked mutation followed by retryable refusal,
+accepted retry without mutation replay, eleven first-failure stage injections,
+retirement and unavailable entry. Static and Dynamic both execute these cycles.
+This remains incremental fixture integration: existing concrete coordinator and
+admission wiring, actual aggregate storage audit, exact per-resource cleanup
+order, additional offer/partial-mutation evidence and four-route exit are pending.
+No full P07 conformance claim is made.
+
+The first compile exposed internal visibility and explicit ownership spelling in
+the fixture; both were corrected. Diagnostic-only debug builds isolated the first
+runtime failure to missing custom-body identity (confirmed against
+SemanticRecordExpansion.enterCustomBody), then contiguous action paint order
+(InteractionState.appendFailure). Both joins were corrected; the fresh optimized
+registered driver passed. Debug linking initially omitted parse-as-library and
+was corrected; diagnostic builds are not acceptance evidence. These were measured
+advances on distinct causes, not repeated unproductive repairs; counter **0/2**.
+
 ## Step 8 — approved concrete-binding contract recorded
 
 The exact SPEC-013 associated-requirement removals and mandatory relocated

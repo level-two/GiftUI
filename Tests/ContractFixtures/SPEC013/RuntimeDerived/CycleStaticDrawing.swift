@@ -11,14 +11,14 @@ import GiftUISemanticCore
 import CycleSchema
 import P07TargetWorkspace
 
-private typealias Payload = CanvasSemanticPayload<CycleValueTable.CaptureStorage>
+typealias StaticCyclePayload = CanvasSemanticPayload<CycleValueTable.CaptureStorage>
 // Only a finite assembly adapter: local IDs refer to the current borrowed bank.
 // The existing target workspace still owns all layout records and algorithms.
-private struct LocalSemantic: ~Escapable, SemanticLayoutView {
-    let bank: SemanticRecordView<Payload>
-    let base: SemanticRecordLayoutView<Payload>
+struct LocalSemantic: ~Escapable, SemanticLayoutView {
+    let bank: SemanticRecordView<StaticCyclePayload>
+    let base: SemanticRecordLayoutView<StaticCyclePayload>
     @_lifetime(borrow bank)
-    init(_ bank: borrowing SemanticRecordView<Payload>) { self.bank = copy bank; base = SemanticRecordLayoutView(bank) }
+    init(_ bank: borrowing SemanticRecordView<StaticCyclePayload>) { self.bank = copy bank; base = SemanticRecordLayoutView(bank) }
     var rootIdentity: UInt16 { base.rootIdentity.ordinal + 1 }
     var scopeCount: UInt16 { base.scopeCount }
     func reference(_ id: UInt16) -> SemanticRecordReference? { id == 0 ? nil : bank.reference(at: id - 1) }
@@ -31,7 +31,7 @@ private struct LocalSemantic: ~Escapable, SemanticLayoutView {
     func textScalarCount(of id: UInt16) -> UInt16? { guard let ref = reference(id) else { return nil }; return base.textScalarCount(of: ref) }
     func textScalar(of id: UInt16, at index: UInt16) -> UInt32? { guard let ref = reference(id) else { return nil }; return base.textScalar(of: ref, at: index) }
 }
-private struct QualifiedLayout: ResolvedRenderLayoutView {
+struct QualifiedLayout: ResolvedRenderLayoutView {
     let base: StaticSignalAnalyzerNRFResolvedLayoutView
     let references: InlineArray<126, SemanticRecordReference?>
     var rootIdentity: SemanticRecordReference { references[Int(base.rootIdentity - 1)]! }
@@ -107,7 +107,7 @@ package func cycleStaticDrawing(
     }
 }
 
-private struct QualifiedRender: RenderProductionWorkspace {
+struct QualifiedRender: RenderProductionWorkspace {
     typealias Identity = SemanticRecordReference
     var base: StaticSignalAnalyzerNRFRenderWorkspace
     var capacity: RenderLimits { base.capacity }

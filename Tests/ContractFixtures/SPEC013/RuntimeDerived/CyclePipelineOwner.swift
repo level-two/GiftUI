@@ -1,0 +1,272 @@
+import GiftUI
+import GiftUIDrawing
+@testable import GiftUIExecution
+import GiftUIInteraction
+import GiftUILayout
+import GiftUIObservableState
+import GiftUIRenderCore
+import GiftUIRenderLowering
+@testable import GiftUIRuntimeCore
+import GiftUISemanticCore
+import CycleSchema
+import CyclePresentation
+
+struct CycleControl {
+    var show = true
+    var mutate = false
+    var fault: RuntimeCompletePipelineStage?
+    var offer: FrameOfferDisposition = .accepted
+    var stages: UInt16 = 0
+    var cleanups: UInt16 = 0
+    var finalized = 0
+    var applied = 0
+    var streams = 0
+    var commits = 0
+    var result: RuntimeCompletePipelineResult<RuntimeOwnerFailure>?
+}
+struct CycleEndpoint: SynchronousFrameEndpoint {
+    var disposition: FrameOfferDisposition = .accepted
+    var sink = CycleRenderSink()
+    var calls = 0
+    var streams = 0
+    mutating func offer(provenance: FrameProvenance, body: (inout CycleRenderSink) -> FrameStreamResult) -> FrameOfferResult {
+        calls += 1
+        guard disposition == .accepted else { return .init(disposition: disposition, failure: disposition == .failed ? .invalidEnvelope : nil)! }
+        sink = CycleRenderSink(); streams += 1
+        switch body(&sink) {
+        case .complete: return .init(disposition: .accepted, failure: nil)!
+        case .producerFailed: return .init(disposition: .failed, failure: .producerFailed)!
+        case .insufficientCapacity: return .init(disposition: .failed, failure: .insufficientCapacity)!
+        case .endpointRefused: return .init(disposition: .nonRetryableRefusal, failure: nil)!
+        case .contractViolation: return .init(disposition: .failed, failure: .contractViolation)!
+        }
+    }
+}
+struct CyclePipelineOwner<Geometry, Candidate, Committed, Hits>: ~Copyable, ~Escapable, RuntimeCompletePipelineOwner
+where Geometry: CycleGeometry, Candidate: InteractionCandidateRecordStorage, Committed: InteractionCommittedRecordStorage, Hits: InteractionHitRegionStorage, Candidate.Identity == SemanticCompleteIdentity, Committed.Identity == SemanticCompleteIdentity, Hits.Identity == SemanticCompleteIdentity {
+    typealias OwnerFailure = RuntimeOwnerFailure
+    let models: ObservableModelScope<CycleOwnedModel, CycleModelSchema>
+    let root: ObservableStateRootScope<CycleOwnedModel, SemanticCompleteIdentity>
+    let semantic: SemanticRecordStore<CyclePayload>
+    let values: CanvasStagedValues<SemanticRecordReference, CycleValueTable>
+    let control: UnsafeMutablePointer<CycleControl>
+    var geometry: Geometry
+    var interaction: InteractionOwnedKeyState<Candidate, Committed, Hits>
+    var phase = ExecutionPhaseMachine()
+    var cycles = RunCycleIDAllocator()
+    var revisions = SemanticRevisionAllocator()
+    var candidates = CandidateFrameIDAllocator()
+    var presentations = PresentationRevisionAllocator()
+    var generations = RuntimeActionGenerationAllocator<SemanticCompleteIdentity>()
+    var endpoint = CycleEndpoint()
+    var frameActive = false
+    var observableCandidate = false
+    var semanticCandidate = false
+    var interactionCandidate = false
+    var rootIdentity: SemanticCompleteIdentity?
+    var actionIdentity: SemanticCompleteIdentity?
+    var header: RenderPlanHeader?
+    var provenance: FrameProvenance?
+    var presentation: PresentationRevision?
+    var changed = true
+    var pending = false
+    var quiescent = false
+    @_lifetime(copy models, copy root, copy semantic, copy values, borrow control)
+    init(models: consuming ObservableModelScope<CycleOwnedModel, CycleModelSchema>, root: consuming ObservableStateRootScope<CycleOwnedModel, SemanticCompleteIdentity>, semantic: consuming SemanticRecordStore<CyclePayload>, values: consuming CanvasStagedValues<SemanticRecordReference, CycleValueTable>, geometry: consuming Geometry, interaction: consuming InteractionOwnedKeyState<Candidate, Committed, Hits>, control: borrowing UnsafeMutablePointer<CycleControl>) {
+        self.models = consume models; self.root = consume root; self.semantic = consume semantic; self.values = consume values
+        self.geometry = consume geometry; self.interaction = consume interaction; self.control = copy control
+        precondition(self.root.belongs(to: self.models))
+    }
+    mutating func boundary(_ stage: RuntimeCompletePipelineStage) -> RunCycleFailure<RuntimeOwnerFailure>? {
+        control.pointee.stages |= UInt16(1) << stage.rawValue
+        if control.pointee.fault == stage { return .execution(.capacityExhausted) }
+        return nil
+    }
+    mutating func admitAndSeal() -> RuntimePipelineStepResult<RuntimeOwnerFailure> {
+        guard !quiescent else { return .failure(.execution(.requiredFacilityUnavailable)) }
+        if let error = phase.beginCycle(reservingFrom: &cycles) { return .failure(.execution(error)) }
+        if let error = boundary(.admissionAndSeal) { return .failure(error) }
+        guard ExecutionAdmissionSealer.select(pendingInputEvents: 0, pendingStateChangeFacts: control.pointee.mutate ? 1 : 0, pendingCompletionFacts: 0, sameCycleActivationCandidates: 0, includesDirtyRederivation: changed, includesPresentationRecovery: pending, limits: ExecutionLimits(maximumInputEvents: 2, maximumStateChangeFacts: 1, maximumCompletionFacts: 0, maximumSemanticActions: 1, maximumActiveInputSources: 1, maximumCommittedActions: 6)!) != nil else { return .failure(.execution(.invariantViolation)) }
+        return .advanced
+    }
+    mutating func applyAdmittedWork() -> RuntimePipelineMutationResult<RuntimeOwnerFailure> {
+        if let error = phase.transition(to: .mutating) { return .failure(.execution(error), mutationApplied: false) }
+        if let error = boundary(.applyAdmittedWork) { return .failure(error, mutationApplied: false) }
+        guard control.pointee.mutate else { return .applied(false) }
+        control.pointee.mutate = false
+        guard let rootIdentity, let actionIdentity, let record = interaction.committedRecord(for: actionIdentity) else { return .failure(.execution(.invalidProvenance), mutationApplied: false) }
+        let target = ObservableStateRootTargetAccess(root: root, identity: rootIdentity, ordinal: 0)
+        let captured = CapturedAction(identity: actionIdentity, generation: record.generation)
+        switch RuntimeRecordInteractionBridge.dispatch(captured, records: interaction, target: target, actionType: CycleAction.self, operation: CycleHandler.operation) {
+        case .interaction(.dispatched): control.pointee.applied += 1; changed = true; return .applied(true)
+        case .observableFailure(let error): return .failure(.focusedOwner(.observableState(error)), mutationApplied: false)
+        default: return .failure(.execution(.invalidProvenance), mutationApplied: false)
+        }
+    }
+    mutating func freezeObservableMutation() -> RuntimePipelineStepResult<RuntimeOwnerFailure> {
+        if let error = boundary(.freezeObservableMutation) { return .failure(error) }
+        do throws(ObservableStateError) { try models.beginFrame(); frameActive = true }
+        catch { return .failure(.focusedOwner(.observableState(error))) }
+        if let error = phase.transition(to: .deriving) { return .failure(.execution(error)) }
+        return .advanced
+    }
+    mutating func beginObservableCandidateAndExpandSemantics() -> RuntimePipelineStepResult<RuntimeOwnerFailure> {
+        if let error = boundary(.observableCandidateAndSemanticExpansion) { return .failure(error) }
+        do throws(ObservableStateError) {
+            try models.withDiscovery { () throws(ObservableStateError) in
+                if case .failure(let error) = root.beginCandidate() { throw error }
+            }
+            observableCandidate = true
+        } catch { return .failure(.focusedOwner(.observableState(error))) }
+        let limits = SemanticExpansionLimits(maximumDepth: 34, maximumSemanticNodes: 48, maximumBodyEvaluations: 14, maximumModifierApplications: 50, maximumActionOccurrences: 6)!
+        let result = semantic.expand(CycleScene<CycleDomain>(show: control.pointee.show), roles: CycleRoles.self, codec: CanvasSemanticPayloadCodec<CycleRoles, CycleValueTable>.self, limits: limits, binding: ObservableSemanticBodyBinding(models: models.borrowedScope(), root: root.borrowedRoot(), domain: CycleDomain.self))
+        switch result {
+        case .success: semanticCandidate = true
+        case .semanticFailure(let error): discardLocalCandidates(); return .failure(.focusedOwner(.semantic(error)))
+        case .bindingFailure(let error): discardLocalCandidates(); return .failure(.focusedOwner(.observableState(error)))
+        case .accessFailure: discardLocalCandidates(); return .failure(.focusedOwner(.observableState(.staleModel)))
+        }
+        do throws(DrawingError) { try CanvasSemanticTransfer.stage(from: semantic, into: values, table: CycleValueTable()) }
+        catch { discardLocalCandidates(); return .failure(.focusedOwner(.drawing(.invariantViolation))) }
+        return .advanced
+    }
+    mutating func resolveLayout() -> RuntimePipelineStepResult<RuntimeOwnerFailure> {
+        if let error = boundary(.layout) { return .failure(error) }
+        do throws(SemanticExpansionError) {
+            return try semantic.withCandidateView { bank in
+                switch geometry.layout(bank) { case .success: return .advanced; case .failure(let error): return .failure(.focusedOwner(.layout(error))) }
+            }
+        } catch { return .failure(.focusedOwner(.semantic(error))) }
+    }
+    mutating func invokeCanvasesAndDerivePlan() -> RuntimePipelineStepResult<RuntimeOwnerFailure> {
+        if let error = boundary(.canvasInvocationAndPlan) { return .failure(error) }
+        var source = CycleSource(models: models.borrowedScope(), values: values.borrowedValues(), table: CycleValueTable())
+        switch geometry.draw(source: &source, context: phase.context) { case .success: return .advanced; case .failure(let error): return .failure(.focusedOwner(.drawing(error))) }
+    }
+    mutating func preflightCombinedRender() -> RuntimePipelineStepResult<RuntimeOwnerFailure> {
+        if let error = boundary(.combinedRenderPreflight) { return .failure(error) }
+        do throws(SemanticExpansionError) {
+            return try semantic.withCandidateView { bank in
+                switch geometry.preflight(bank) { case .success(let value): header = value; return .advanced; case .failure(let error): return .failure(.renderProduction(error)) }
+            }
+        } catch { return .failure(.focusedOwner(.semantic(error))) }
+    }
+    mutating func buildInteractionCandidate() -> RuntimePipelineStepResult<RuntimeOwnerFailure> {
+        if let error = boundary(.interactionCandidate) { return .failure(error) }
+        if let error = interaction.beginCandidate(limits: InteractionLimits(maximumActions: 6, maximumHitRegions: 6)!) { return .failure(.focusedOwner(.interaction(error))) }
+        interactionCandidate = true
+        do throws(SemanticExpansionError) {
+            return try semantic.withCandidateView { bank in
+                var target: SemanticCompleteIdentity?
+                for index: UInt16 in 0..<bank.recordCount {
+                    var identity = bank.completeIdentity(for: bank.reference(at: index)!)!
+                    guard identity.append(.init(kind: .customBody)) else { return .failure(.execution(.invariantViolation)) }
+                    if root.generation(identity: identity, ordinal: 0, publishable: true) != nil { target = identity; break }
+                }
+                for index: UInt16 in 0..<bank.recordCount {
+                    let ref = bank.reference(at: index)!
+                    guard bank.record(ref)?.kind == .action else { continue }
+                    guard let target, let bounds = geometry.bounds(ref), let clip = geometry.clip(ref) else { return .failure(.execution(.invariantViolation)) }
+                    let identity = bank.completeIdentity(for: ref)!
+                    switch RuntimeRecordInteractionBridge.append(record: ref, semantic: bank, root: root, rootIdentity: target, rootOrdinal: 0, actionType: CycleAction.self, roles: CycleRoles.self, isEnabled: true, bounds: bounds, clip: clip, paintOrder: 0, interaction: &interaction) {
+                    case .failure(let error): return .failure(.focusedOwner(.interaction(error)))
+                    case .requiresGeneration:
+                        guard let generation = generations.generation(for: identity), interaction.assignGeneration(generation, to: identity) == nil else { return .failure(.execution(.identityExhausted)) }
+                    case .preserved: break
+                    }
+                    actionIdentity = identity
+                }
+                rootIdentity = target
+                if let error = interaction.finishCandidate() { return .failure(.focusedOwner(.interaction(error))) }
+                return .advanced
+            }
+        } catch { return .failure(.focusedOwner(.semantic(error))) }
+    }
+    mutating func publishSemanticAndObservableCandidate() -> RuntimePipelinePublicationResult<RuntimeOwnerFailure> {
+        if let error = boundary(.semanticAndObservablePublication) { return .failure(error) }
+        if let error = phase.transition(to: .publishing) { return .failure(.execution(error)) }
+        do throws(ObservableStateError) {
+            try models.withDiscovery { () throws(ObservableStateError) in
+                if case .failure(let error) = root.finishCandidate(.publish) { throw error }
+            }
+            observableCandidate = false
+        } catch { quiescent = true; return .failure(.focusedOwner(.observableState(error))) }
+        do throws(SemanticExpansionError) { try semantic.publishCandidate(); semanticCandidate = false }
+        catch { quiescent = true; return .failure(.focusedOwner(.semantic(error))) }
+        let revision: SemanticRevision
+        if changed || phase.context.semanticRevision == nil { guard let next = revisions.reserve() else { return .failure(.execution(.identityExhausted)) }; revision = next }
+        else { revision = phase.context.semanticRevision! }
+        if let error = phase.recordPublishedSemanticRevision(revision) { return .failure(.execution(error)) }
+        return .published(.init(semanticRevision: revision, changed: changed))
+    }
+    mutating func allocateCandidate() -> RuntimePipelineStepResult<RuntimeOwnerFailure> {
+        if let error = boundary(.candidateAllocation) { return .failure(error) }
+        guard let candidate = candidates.reserve(), let presentation = presentations.reserve(), let cycle = phase.context.cycle, let revision = phase.context.semanticRevision else { return .failure(.execution(.identityExhausted)) }
+        if let error = phase.recordCandidateFrame(candidate) { return .failure(.execution(error)) }
+        self.presentation = presentation; provenance = .init(cycle: cycle, semanticRevision: revision, candidateFrame: candidate)
+        return .advanced
+    }
+    mutating func offerAndProduce() -> RuntimePipelineOfferResult<RuntimeOwnerFailure> {
+        if let error = boundary(.offerAndProduction) { return .failure(error) }
+        if let error = phase.transition(to: .offering) { return .failure(.execution(error)) }
+        endpoint.disposition = control.pointee.offer
+        var retained: RenderProductionError?
+        let offer = endpoint.offer(provenance: provenance!) { sink in
+            control.pointee.streams += 1
+            do throws(SemanticExpansionError) {
+                return try semantic.withPublishedView { bank in
+                    switch geometry.produce(bank, header: header!, sink: &sink) {
+                    case .success: return .complete
+                    case .failure(let error): retained = error; return RecordingRenderProductionAdapter.observe(error: error).streamResult!
+                    }
+                }
+            } catch { retained = .invariantViolation; return .contractViolation }
+        }
+        if let retained { return .failure(.renderProduction(retained)) }
+        switch offer.disposition {
+        case .accepted: return .accepted(presentation!)
+        case .backpressured: return .backpressured
+        case .retryableRefusal: return .retryableRefusal
+        case .nonRetryableRefusal: return .nonRetryableRefusal(.endpoint)
+        case .failed: return .failure(.frameOffer(offer.failure!))
+        }
+    }
+    mutating func discardLocalCandidates() {
+        values.discard()
+        if semanticCandidate { try? semantic.discardCandidate(); semanticCandidate = false }
+        if observableCandidate {
+            do throws(ObservableStateError) { try models.withDiscovery { () throws(ObservableStateError) in
+                if case .failure(let error) = root.finishCandidate(.discard) { throw error }
+            } } catch { quiescent = true }
+            observableCandidate = false
+        }
+    }
+    mutating func cleanup(_ action: RuntimeCleanupAction) {
+        control.pointee.cleanups |= UInt16(1) << action.rawValue
+        switch action {
+        case .releaseCanvasCallable: values.discard()
+        case .discardSemanticCandidate: if semanticCandidate { try? semantic.discardCandidate(); semanticCandidate = false }
+        case .discardObservableCandidate:
+            if observableCandidate { discardLocalCandidates() }
+        case .discardInteractionCandidate: interaction.resolveCandidate(.discard); generations.resolveCandidate(committed: false); interactionCandidate = false
+        case .commitInteractionCandidate: interaction.resolveCandidate(.commit(presentation!)); generations.resolveCandidate(committed: true); interactionCandidate = false; control.pointee.commits += 1
+        case .resetAttemptStorage:
+            discardLocalCandidates()
+            if interactionCandidate { interaction.resolveCandidate(.discard); generations.resolveCandidate(committed: false); interactionCandidate = false }
+            geometry.reset()
+            if frameActive { do throws(ObservableStateError) { try models.endFrame() } catch { quiescent = true }; frameActive = false }
+        default: break
+        }
+    }
+    mutating func applyDisposition(_ disposition: RuntimePipelineDisposition) {
+        changed = disposition.semanticDisposition == .dirty
+        pending = disposition.presentationIntentState == .pending
+    }
+    mutating func finalizePipeline() {
+        if phase.context.phase != .idle {
+            precondition(phase.transition(to: .finalizing) == nil)
+            precondition(phase.transition(to: .idle) == nil)
+        }
+        control.pointee.finalized += 1
+    }
+}
