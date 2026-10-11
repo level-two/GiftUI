@@ -81,3 +81,16 @@ where
         )
     }
 }
+
+extension StaticRuntimeExecutionCoordinator: GiftUIRuntimeProfileCoordinator
+where
+    Binding: RuntimeAuditedExecutionProfileBinding & ~Copyable & ~Escapable,
+    Admission: ~Copyable & ~Escapable,
+    Opportunity: ~Copyable & ~Escapable
+{
+    package typealias Endpoint = Binding.Endpoint
+    package var profile: RuntimeProfileKind { .static }
+    package var storageAudit: RuntimeStorageAudit { binding.storageAudit }
+    package var executionContext: ExecutionContext { binding.executionContext }
+    package var isQuiescent: Bool { binding.isQuiescent }
+}

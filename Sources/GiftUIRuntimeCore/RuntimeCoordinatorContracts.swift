@@ -20,3 +20,11 @@ package protocol GiftUIRuntimeProfileCoordinator:
 
     mutating func quiesce()
 }
+
+/// A concrete factory supplies this retained audit only after validating the
+/// same owners whose scopes are lent to the execution opportunity.
+package protocol RuntimeAuditedExecutionProfileBinding: ~Copyable, ~Escapable {
+    associatedtype Endpoint: SynchronousFrameEndpoint
+    where Endpoint.Sink: DrawingOperationSink
+    var storageAudit: RuntimeStorageAudit { get }
+}
