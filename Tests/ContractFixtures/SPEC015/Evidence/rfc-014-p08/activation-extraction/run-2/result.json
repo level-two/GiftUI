@@ -1,0 +1,17 @@
+{
+  "number": 2,
+  "hypothesis": "struct-owner-switch-negative",
+  "command": "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.3.2-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/contracts/p08-activation-extraction-cache -disable-sandbox -target arm64-apple-macosx26.0 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk -D GIFTUI_DYNAMIC_PROFILE -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014/189dda86d331e15d-wpk82ft7/macos-dynamic -parse-as-library -I /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpke3zvfyl/macos-dynamic -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014/189dda86d331e15d-wpk82ft7/macos-dynamic -enable-testing -I /Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-ie3r3cmc -module-name P08ActivationResolution /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-extraction/Boundary.swift /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-extraction/MinimalOwner.swift /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-extraction/OwnerSwitchNegative.swift -o /Users/eugene/work/GiftUI/.build/contracts/p08-activation-extraction-2",
+  "compiler_sha256": "d8e40107da0e2c1c59640a983faea326d5d2bddfe81f7609db14bade43c4a5b9",
+  "schema_receipt_sha256": "397d42439c721526962baf584e13885a9e04835c81e567d06ab03b8161b9b664",
+  "sources": {
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-extraction/Boundary.swift": "3bb56c5e99baf96d5acb6881d671e0471fbf4afeb86d8cdfef7252956c01476f",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-extraction/MinimalOwner.swift": "d64195069b28fac8ebd657facb694ebbab56e6a3f08a15121c21aa53faf29119",
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-extraction/OwnerSwitchNegative.swift": "1509a83d3608ebd6a7bb6778a8d2a2e0d2cad51109a6e387e233873ab95e2c71"
+  },
+  "link_objects": {},
+  "status": "completed",
+  "exit": 0,
+  "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}

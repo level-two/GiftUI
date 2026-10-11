@@ -1,0 +1,22 @@
+{
+  "Boundary.swift": "3bb56c5e99baf96d5acb6881d671e0471fbf4afeb86d8cdfef7252956c01476f",
+  "MinimalOwner.swift": "d64195069b28fac8ebd657facb694ebbab56e6a3f08a15121c21aa53faf29119",
+  "OwnerSwitchNegative.swift": "1509a83d3608ebd6a7bb6778a8d2a2e0d2cad51109a6e387e233873ab95e2c71",
+  "SpanTakeNegative.swift": "85512aa07e5740337ef462182a899e017ab4ec9844d285c7fd08582ff77023bf",
+  "ledger.json": "9c70287c84205e293b920aad80bf2e64e5f126526b05c2d77870219068e5888a",
+  "result.md": "ef516f93d8b2130084cf94ebd5770cf1a0a5189ad422ac8fce0fd7ce0cbdd813",
+  "run-1/SpanTakeNegative.swift": "85512aa07e5740337ef462182a899e017ab4ec9844d285c7fd08582ff77023bf",
+  "run-1/command.txt": "1dc4d9156f690fa0c219d31c9af2e74812b46d7edaf90b261051f4f19c9b4fd7",
+  "run-1/result.json": "215bef2d1be1f395a513c31d1f1958313d28d39f45e255a4aa49178e3bdd88af",
+  "run-1/stderr.txt": "ab033a4fedb45bf6460b1bf9da2243b8f0d54e5b83f0bf864c572289111e0507",
+  "run-1/stdout.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "run-2/Boundary.swift": "3bb56c5e99baf96d5acb6881d671e0471fbf4afeb86d8cdfef7252956c01476f",
+  "run-2/MinimalOwner.swift": "d64195069b28fac8ebd657facb694ebbab56e6a3f08a15121c21aa53faf29119",
+  "run-2/OwnerSwitchNegative.swift": "1509a83d3608ebd6a7bb6778a8d2a2e0d2cad51109a6e387e233873ab95e2c71",
+  "run-2/command.txt": "423f0e8419bb95ffb0eef67b0bffc5e8d0e016a73f8b701b2f71da39a8bdcc76",
+  "run-2/result.json": "055a40fa9792cae33ab4878ca8a3f5d871c5a815f43fdb2380819b1eeb83904b",
+  "run-2/stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "run-2/stdout.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "run-one.py": "87894c4b92d611fa8c98187888cdafbfa02f0519ddbbdb00c2dc8c92077b2b94",
+  "scope.md": "47e2d6c1b786ae3ccc982ea0144af3fb227a3b9ab03f0e839effc33f2540d62d"
+}
