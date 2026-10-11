@@ -3,6 +3,7 @@ import GiftUI
 import GiftUIDrawing
 import GiftUIExecution
 import GiftUILayout
+import GiftUIRenderCore
 import GiftUIRenderLowering
 import GiftUIObservableState
 import GiftUIReferenceTextResources
@@ -121,4 +122,59 @@ struct QualifiedRender: RenderProductionWorkspace {
     mutating func pushForeground(_ color: Color) -> Bool { base.pushForeground(color) }
     mutating func popForeground() -> Bool { base.popForeground() }
     mutating func reset() { base.reset() }
+}
+
+// Fault injection at storage reads, below StrokeSnapshotProducer's validation.
+struct CycleMalformedPath: LivePathStorage {
+    let fault: UInt8
+    var maximumPointCount: UInt16 { 4 }
+    var maximumSubpathCount: UInt16 { 2 }
+    var pointCount: UInt16 { 4 }
+    var subpathCount: UInt16 { 2 }
+    func point(at index: UInt16) -> Point? {
+        guard index < 4, !(fault == 1 && index == 2) else { return nil }
+        return Point(x: fault == 3 && index == 3 ? GeometryScalar.max : GeometryScalar(index), y: GeometryScalar(index))
+    }
+    func subpath(at index: UInt16) -> SubpathRange? {
+        guard index < 2, !(fault == 2 && index == 1) else { return nil }
+        return SubpathRange(firstPoint: index * 2, pointCount: 2)
+    }
+    mutating func startFirstSubpath(at point: Point) -> Bool { false }
+    mutating func replaceCurrentSubpathStart(with point: Point) -> Bool { false }
+    mutating func startNextSubpath(at point: Point) -> Bool { false }
+    mutating func appendLine(to point: Point) -> Bool { false }
+    mutating func reset() {}
+}
+let cycleFaultOrigin = Point(x: 1, y: 2)
+let cycleFaultHeader = StraightLineStrokeHeader(color: .white, lineWidth: 1, lineCap: .butt, lineJoin: .miter, surfaceOrigin: cycleFaultOrigin, inheritedClip: cycleSurface, pointCount: 4, subpathCount: 2)
+
+package func cycleStaticDrawingRollback() -> Int {
+    var bytes: InlineArray<13536, UInt8> = .init(repeating: 0)
+    return withUnsafeMutableBytes(of: &bytes) { region in
+        var plan = StaticSignalAnalyzerNRFDrawingPlanStorage(region: region, capacity: cycleDrawingLimits)!
+        var checks = 0
+        func expect(_ value: Bool) { checks += 1; precondition(value, "Static malformed Drawing rollback") }
+        for _ in 0..<2 {
+            expect(plan.acquire())
+            expect(plan.beginCanvas(identity: 1, origin: cycleFaultOrigin))
+            expect(plan.appendStroke(header: cycleFaultHeader, path: CycleMalformedPath(fault: 0)))
+            for fault: UInt8 in 1...3 {
+                expect(!plan.appendStroke(header: cycleFaultHeader, path: CycleMalformedPath(fault: fault)))
+                expect(plan.pointCount == 4 && plan.subpathCount == 2 && plan.strokeCount == 1)
+            }
+            expect(plan.appendStroke(header: cycleFaultHeader, path: CycleMalformedPath(fault: 0)))
+            expect(plan.pointCount == 8 && plan.subpathCount == 4 && plan.strokeCount == 2)
+            expect(plan.endCanvas())
+            guard case .success = plan.seal(canvasOccurrenceCount: 1) else { preconditionFailure("Static rollback seal") }
+            checks += 1
+            for stroke: UInt16 in 0..<2 {
+                expect(plan.strokeHeader(of: 1, at: stroke) == cycleFaultHeader)
+                for index: UInt16 in 0..<4 { expect(plan.point(of: 1, stroke: stroke, at: index) == Point(x: GeometryScalar(index) + 1, y: GeometryScalar(index) + 2)) }
+                for index: UInt16 in 0..<2 { expect(plan.subpath(of: 1, stroke: stroke, at: index) == SubpathRange(firstPoint: index * 2, pointCount: 2)) }
+            }
+            plan.discard(); plan.reset()
+            expect(plan.pointCount == 0 && plan.subpathCount == 0 && plan.strokeCount == 0)
+        }
+        return checks
+    }
 }

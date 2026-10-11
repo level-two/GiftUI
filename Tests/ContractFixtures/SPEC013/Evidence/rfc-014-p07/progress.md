@@ -937,3 +937,47 @@ match; [storage audit](lifecycle-step-4-storage-regions.json) includes the new
 candidate fields in actual metadata size. Formatter and whitespace checks pass.
 The red/green repair was productive; resumed guard remains **0/2**. Malformed
 Drawing rollback and the final four-route/independent exit review remain.
+
+## Lifecycle step 5 — malformed Drawing append rollback
+
+The maintained DynamicDrawingPlanWorkspace append transaction is factored into
+an internal helper, called by its unchanged package appendStroke entry. The
+@testable fixture registers a real Canvas context and injects malformed storage
+reads directly into that same transaction after the context borrow ends; this
+avoids aliasing GraphicsContext or substituting a mock plan. The fault seam bypasses
+upstream StrokeSnapshotProducer validation specifically to reach partial append
+rollback. It is not a new package/public protocol. No retained fields are added.
+
+Dynamic aggregate pools and maintained Static region storage each receive a valid
+prefix, then missing point 2/4, missing subpath 1/2, and late translated coordinate
+overflow. Every refusal preserves counts 4/2/1. A valid suffix succeeds, and both
+complete headers, all 8 translated points and all 4 subpath boundaries are checked
+after seal. Discard/reset and a second full pass prove reuse; Dynamic plan/live
+path retained payload capacities remain identical. These local storage tests
+supplement the actual-owner discard/no-partial-stream tests under SPEC-012's
+Stroke snapshot and plan / Coordinate resolution and lowering clauses.
+
+Fresh [native gate](lifecycle-step-5-macos-static.json): **3495 assertions,
+12 negative controls**, zero failures on the first run. [Complete actual-owner
+transcripts](lifecycle-step-5-logical-transcripts.json) and [26-field actual
+storage audit](lifecycle-step-5-storage-regions.json) remain passing. Formatter,
+whitespace and governance gates pass. Resumed guard remains **0/2**.
+
+### Remaining exit duties after this bounded lifecycle milestone
+
+- Collect four fresh final P07 route receipts from this final source: macos-static,
+  macos-dynamic, raspberry-pi-armv6, nrf52840-embedded, preserving the historical
+  controls and platform evidence limitations. Existing native slice evidence is
+  not a substitute for the parent-sequenced final four-route collection.
+- Reconcile the implementation plan/task-context/progress evidence and any stale
+  report labels, and perform the independent Strong P07 exit review. P07 is not
+  self-accepted here.
+- Review the already reported, unproved newer-semantic-revision recovery case:
+  CycleCoordinatorProbe calls recovery.clearPending(for: currentRevision), whose
+  maintained implementation only clears a matching revision. Same-revision retry
+  exhaustion/backpressure/acceptance are proved; supersession followed by accepted
+  newer revision has no focused P07 assertion yet. Determine its required local
+  disposition before package exit rather than claiming that evidence.
+- T9.1/T11.1 and later complete-image/resource/application gates remain open.
+  No full-image zero-heap/stack/RAM/timing/hardware conformance or P08 work is
+  claimed by these focused lifecycle/storage tests.

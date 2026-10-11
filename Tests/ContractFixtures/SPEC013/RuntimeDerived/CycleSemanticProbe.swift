@@ -108,7 +108,7 @@ private func withSemantic(models: borrowing ObservableModelScope<CycleOwnedModel
     } catch { preconditionFailure("semantic owner") }
 }
 public func giftuiP07CycleSemantic() -> Int {
-    var checks = cycleAdmissionBackingProbe() + cycleFactoryProbe() + cycleFactoryCapacityProbe() + cycleConfiguredLimitProbe()
+    var checks = cycleStaticDrawingRollback() + cycleAdmissionBackingProbe() + cycleFactoryProbe() + cycleFactoryCapacityProbe() + cycleConfiguredLimitProbe()
     do throws(ObservableStateError) {
         var namespace = ObservableModelOwnerNamespace()
         var storage = StaticObservableRootAdapter<CycleOwnedModel, SemanticCompleteIdentity>(identity: try namespace.issue(), schema: 1, needsCapture: false)!
@@ -120,7 +120,7 @@ public func giftuiP07CycleSemantic() -> Int {
             withSemantic(models: models, root: root, dynamic: false)
         }
         #if !hasFeature(Embedded)
-        checks += cycleDynamicStorageEdges()
+        checks += cycleDynamicStorageEdges() + cycleDynamicDrawingRollback()
         let dynamic = DynamicObservableRootAdapter<CycleOwnedModel, SemanticCompleteIdentity>(identity: try namespace.issue(), schema: 1, needsCapture: false)!
         let dynamicLayout = dynamic.storageLayout
         precondition(dynamicLayout.models == staticLayout.models && dynamicLayout.claims == staticLayout.claims && dynamicLayout.pins == staticLayout.pins)

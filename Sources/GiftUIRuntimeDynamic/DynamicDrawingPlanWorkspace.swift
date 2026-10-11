@@ -230,7 +230,19 @@ package struct DynamicDrawingPlanWorkspace: DrawingPlanConstructionWorkspace,
         header: StraightLineStrokeHeader,
         path: borrowing PathStorage
     ) -> Bool where PathStorage: LivePathStorage {
-        guard let canvas = currentIdentity, let origin = currentOrigin,
+        guard let canvas = currentIdentity, let origin = currentOrigin else { return false }
+        return appendSnapshot(header: header, path: path, canvas: canvas, origin: origin)
+    }
+
+    // The transaction is separate from the Canvas context so malformed storage
+    // reads can be tested without aliasing the active GraphicsContext borrow.
+    mutating func appendSnapshot<PathStorage>(
+        header: StraightLineStrokeHeader,
+        path: borrowing PathStorage,
+        canvas: SemanticRecordReference,
+        origin: Point
+    ) -> Bool where PathStorage: LivePathStorage {
+        guard isActive, canvasIdentities.contains(canvas),
             strokes.count < Int(limits.maximumPlanStrokes),
             points.count + Int(path.pointCount) <= Int(limits.maximumPlanPoints),
             subpaths.count + Int(path.subpathCount) <= Int(limits.maximumPlanSubpaths)

@@ -11,7 +11,7 @@ import CycleSchema
 #if !hasFeature(Embedded)
 import GiftUIRuntimeCore
 import GiftUIInteraction
-import GiftUIRuntimeDynamic
+@testable import GiftUIRuntimeDynamic
 
 package func cycleDynamicDrawing(
     semantic: borrowing SemanticRecordStore<CanvasSemanticPayload<CycleValueTable.CaptureStorage>>,
@@ -119,4 +119,37 @@ package func cycleDynamicStorageEdges() -> Int {
     }
     return checks
 }
+package func cycleDynamicDrawingRollback() -> Int {
+    var namespace = SemanticRecordOwnerNamespace()
+    let canvas = SemanticRecordReference(owner: try! namespace.issue(), bank: 0, revision: 1, ordinal: 0)
+    var plan = DynamicDrawingPlanWorkspace(capacity: cycleDrawingLimits)
+    let planBytes = plan.planReservedPayloadBytes, pathBytes = plan.livePathReservedPayloadBytes
+    var checks = 0
+    func expect(_ value: Bool) { checks += 1; precondition(value, "Dynamic malformed Drawing rollback") }
+    for _ in 0..<2 {
+        expect(plan.acquire())
+        do throws(DrawingError) {
+            try plan.withCanvasContext(identity: canvas, surfaceOrigin: cycleFaultOrigin, inheritedClip: cycleSurface) { (_: inout GraphicsContext) throws(DrawingError) in }
+        } catch { preconditionFailure("Dynamic rollback canvas") }
+        expect(plan.appendSnapshot(header: cycleFaultHeader, path: CycleMalformedPath(fault: 0), canvas: canvas, origin: cycleFaultOrigin))
+        for fault: UInt8 in 1...3 {
+            expect(!plan.appendSnapshot(header: cycleFaultHeader, path: CycleMalformedPath(fault: fault), canvas: canvas, origin: cycleFaultOrigin))
+            expect(plan.pointCount == 4 && plan.subpathCount == 2 && plan.strokeCount == 1)
+        }
+        expect(plan.appendSnapshot(header: cycleFaultHeader, path: CycleMalformedPath(fault: 0), canvas: canvas, origin: cycleFaultOrigin))
+        expect(plan.pointCount == 8 && plan.subpathCount == 4 && plan.strokeCount == 2)
+        guard case .success = plan.seal(canvasOccurrenceCount: 1) else { preconditionFailure("Dynamic rollback seal") }
+        checks += 1
+        for stroke: UInt16 in 0..<2 {
+            expect(plan.strokeHeader(of: canvas, at: stroke) == cycleFaultHeader)
+            for index: UInt16 in 0..<4 { expect(plan.point(of: canvas, stroke: stroke, at: index) == Point(x: GeometryScalar(index) + 1, y: GeometryScalar(index) + 2)) }
+            for index: UInt16 in 0..<2 { expect(plan.subpath(of: canvas, stroke: stroke, at: index) == SubpathRange(firstPoint: index * 2, pointCount: 2)) }
+        }
+        plan.discard(); plan.reset()
+        expect(plan.pointCount == 0 && plan.subpathCount == 0 && plan.strokeCount == 0)
+        expect(plan.planReservedPayloadBytes == planBytes && plan.livePathReservedPayloadBytes == pathBytes)
+    }
+    return checks
+}
+
 #endif
