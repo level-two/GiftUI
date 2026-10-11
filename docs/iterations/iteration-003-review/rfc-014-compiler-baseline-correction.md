@@ -22,11 +22,14 @@ validation and P08 activation integration under the existing bounded repair and
 independent-review process. Approval is not a declaration that these later
 checks have passed or that P08 is complete.
 
-The [fresh native activation feasibility](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/compiler-native-join/scope.md)
-is a separate non-authoritative check. Its result must be frozen and independently
-reviewed before this proposal is presented for approval. It rebuilds dependencies
-instead of mixing Swift 6.3.2 modules with Swift 6.4, and preserves the actual
-Static-coordinator fixture's original Dynamic-profile compilation settings.
+The [fresh native activation feasibility result](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/compiler-native-join/result.md)
+also passed [independent review](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/compiler-native-join/final-review.md).
+All 25 dependency modules rebuilt with Swift 6.4; the unchanged actual activation
+positive executed its opportunity and quiescence, and its unchanged callback
+negative rejected for the intended lifetime. This preserves the actual Static
+coordinator fixture's original Dynamic-profile settings. The separate existing
+macro-tool process was recorded rather than rebuilt. This is bounded feasibility
+evidence, not generic-host integration, full baseline migration or P08 acceptance.
 
 ## Exact replacement configuration
 
