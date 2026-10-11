@@ -1,0 +1,14 @@
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-host-proof/Current.swift:41:8: error: type 'ScopedHost<Coordinator>' does not conform to protocol 'Escapable'
+28 | }
+29 | 
+30 | package protocol MVPHostInstance: ~Copyable {
+   |                  `- note: type 'ScopedHost<Coordinator>' does not conform to inherited protocol 'Escapable'
+31 |     associatedtype ActivationFailure: Equatable & Sendable
+32 |     associatedtype OwnerFailure: Equatable & Sendable = RuntimeOwnerFailure
+   :
+39 | 
+40 | 
+41 | struct ScopedHost<Coordinator>: ~Copyable, ~Escapable, MVPHostInstance
+   |        `- error: type 'ScopedHost<Coordinator>' does not conform to protocol 'Escapable'
+42 | where Coordinator: GiftUIRuntimeProfileCoordinator & ~Copyable & ~Escapable {
+43 |     typealias ActivationFailure = RuntimeOwnerFailure

@@ -6,7 +6,7 @@ status: ready
 owners:
   - codex
 created: 2026-09-09
-updated: 2026-10-10
+updated: 2026-10-11
 related_design_notes:
   - ../implementation-designs/spec-015-generated-workload-and-presets.md
   - ../implementation-designs/spec-015-wake-and-pacing.md
@@ -33,6 +33,15 @@ Earlier tasks and readiness/closure statements remain historical baseline eviden
 not additional authorization to rerun an MVP implementation or reopen experiments.
 
 ### Current owner checkpoint
+
+P08 entry orientation is authorized after P07, but affected integration is
+blocked on the [exact containing-host decision](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-host-constraint.md).
+The [proposed diff](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/proposed-spec-015.diff)
+is not approved. Seven pinned compile controls verify the host constraint,
+concrete-return feasibility and remaining internal factory limitation. No source
+or schema implementation has begun; SPEC-015 stays approved and this plan ready.
+[P08 progress](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/progress.md)
+records the 0/2 guard and required independent review/maintainer decision.
 
 - [ ] `T8.1` — Schema-4 validation and explicit limits, real host owners, four-config counter, complete host ledger and lifetime checks.
   **Scope:** GiftUIHostConfiguration, scalar workload generator/validator and finite counter repository composition and directly corresponding tests/fixtures/build wiring.

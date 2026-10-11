@@ -1,0 +1,7 @@
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-host-proof/CopyHost.swift:107:18: error: 'copy' cannot be applied to noncopyable types
+105 | func forbiddenCopy<C>(_ host: borrowing ScopedHost<C>)
+106 | where C: GiftUIRuntimeProfileCoordinator & ~Copyable & ~Escapable {
+107 |     let copied = copy host
+    |                  `- error: 'copy' cannot be applied to noncopyable types
+108 |     _ = consume copied
+109 | }

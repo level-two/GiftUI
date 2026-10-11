@@ -1,0 +1,31 @@
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-host-proof/EscapeHost.swift:106:73: error: stored property 'host' of 'Copyable'-conforming generic struct 'EscapingBox' has non-Copyable type 'ScopedHost<C>'
+ 39 | 
+ 40 | 
+ 41 | struct ScopedHost<Coordinator>: ~Copyable, ~Escapable, MVPHostInstance
+    |        `- note: generic struct 'ScopedHost' has '~Copyable' constraint preventing 'Copyable' conformance
+ 42 | where Coordinator: GiftUIRuntimeProfileCoordinator & ~Copyable & ~Escapable {
+ 43 |     typealias ActivationFailure = RuntimeOwnerFailure
+    :
+103 | }
+104 | 
+105 | struct EscapingBox<C>
+    |        `- note: consider adding '~Copyable' to generic struct 'EscapingBox'
+106 | where C: GiftUIRuntimeProfileCoordinator & ~Copyable & ~Escapable { let host: ScopedHost<C> }
+    |                                                                         `- error: stored property 'host' of 'Copyable'-conforming generic struct 'EscapingBox' has non-Copyable type 'ScopedHost<C>'
+107 | 
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-host-proof/EscapeHost.swift:106:73: error: stored property 'host' of 'Escapable'-conforming generic struct 'EscapingBox' has non-Escapable type 'ScopedHost<C>'
+ 39 | 
+ 40 | 
+ 41 | struct ScopedHost<Coordinator>: ~Copyable, ~Escapable, MVPHostInstance
+    |        `- note: generic struct 'ScopedHost' has '~Escapable' constraint preventing 'Escapable' conformance
+ 42 | where Coordinator: GiftUIRuntimeProfileCoordinator & ~Copyable & ~Escapable {
+ 43 |     typealias ActivationFailure = RuntimeOwnerFailure
+    :
+103 | }
+104 | 
+105 | struct EscapingBox<C>
+    |        `- note: consider adding '~Escapable' to generic struct 'EscapingBox'
+106 | where C: GiftUIRuntimeProfileCoordinator & ~Copyable & ~Escapable { let host: ScopedHost<C> }
+    |                                                                         `- error: stored property 'host' of 'Escapable'-conforming generic struct 'EscapingBox' has non-Escapable type 'ScopedHost<C>'
+107 | 

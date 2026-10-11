@@ -1,5 +1,15 @@
 # RFC-014 bounded implementation sequence — 2026-10-10
 
+**Current P08 checkpoint — host lifetime decision required, 2026-10-11:**
+User authorized proceeding after P07. Entry orientation at clean `9fa495dd`
+reproduces the exact SPEC-015 containing-host constraint mismatch with actual
+scoped P07 coordinator types. The [decision packet](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-host-constraint.md)
+and [proposed diff](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/proposed-spec-015.diff) are evidence-only, not approved.
+Seven pinned compile controls match their expected results; no production or
+schema implementation has begun. Independent review and explicit maintainer
+contract approval are required before affected work. P08 guard **0/2**;
+[P08 receipt](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/progress.md). P09–P12 remain pending.
+
 **Current P07 checkpoint — finite package exit passed, 2026-10-11:**
 The explicitly [resumed consuming-owner implementation](../../../Tests/ContractFixtures/SPEC013/Evidence/rfc-014-p07/consuming-owner-resumption.md)
 includes audited construction and lifecycle steps 1–6, followed by R1 (`0741894a`)
@@ -10,7 +20,7 @@ compiler negatives across 26 actual Static/Dynamic case pairs. Cross routes pass
 selected-module compilation and CPU/VFP checks; no target execution is claimed.
 Independent Strong [repair exit review](../../../Tests/ContractFixtures/SPEC013/Evidence/rfc-014-p07/independent-repair-exit-review.md) passes the finite P07 exit at `329570ab`, resolving R1/R2. Full owner conformance remains separate.
 Resumed consecutive unproductive repairs: **0/2**. Historical 2/2 stop preserved.
-T9.1/T11.1 and P10–P12 remain open. P08–P12 have not started.
+T9.1/T11.1 and P10–P12 remain open. P08 production implementation has not started.
 
 The bench and stop records below describe earlier boundaries; their statements
 that continuation is unauthorized are superseded only by the resumption above.
@@ -29,7 +39,7 @@ that continuation is unauthorized are superseded only by the resumption above.
 > historical; production integration and P08 remain stopped. The new bounded
 > bench allowance must not be interpreted as an unlimited P07 restart.
 
-**P01–P07 passed; P08–P12 pending.** This is the shared
+**P01–P07 passed; P08 blocked on host lifetime decision; P09–P12 pending.** This is the shared
 sequencing index for nine owner Implementation Plans, not another contract or
 investigation. It derives only the [approved Spec amendments](rfc-014-spec-approval.md)
 at `3c260bbc` and accepted ADR-035/036/037. ITERATION-003 I3-04/05 supplies the

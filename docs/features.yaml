@@ -98,6 +98,7 @@ features:
     # Explicit consuming-owner resumption 2026-10-11; repair count 0/2; historical 2/2 stop preserved.
     # RFC-014 P01–P07 passed; historical2/2 stop and bench3997da73 preserved; P08–P12 pending.
     # SPEC-013 implementing; T11.1 open through P10–P12.
+    # P08 orientation started; exact SPEC-015 host lifetime decision pending; no production implementation; guard0/2.
     # SPEC-009 scoped coordinator correction implementing; T9.1 belongs to P07, amended conformance pending.
     # Optional source-conditional cleanup: FW-029, linked from SPEC-013.
     # ITERATION-003 revision 5 governs bounded runtime/memory/performance preparation.

@@ -1,0 +1,65 @@
+{
+  "authority_and_source_sha256": {
+    "Sources/GiftUIHostConfiguration/HostConfigurationResults.swift": "1f48c2d5933c7a7d29bd94df55dfa92b270369545f61a2e575e98cf8f8f3d467",
+    "Sources/GiftUIHostConfiguration/HostPresetBootstrap.swift": "9657f21277292848b850474fbb1dd881fdaee118a360a72c060f3b5bd91edc3c",
+    "docs/specs/spec-009-execution-cycle-and-frame-handoff.md": "60c9d9d2b5446ff15c12d66827c36eed5fa476fb2ce3bec598c49bc857ece845",
+    "docs/specs/spec-013-runtime-profiles.md": "2f6ddecc67b000ec6da8047be5875e793c5cd00813d30c5c1b444e6168cbde79",
+    "docs/specs/spec-015-host-configuration.md": "01cebe29a6167fb710095c475b276556183c51e960b0e5d0b2a7fe8bf7069940"
+  },
+  "compiler": ".toolchains/host/swift-6.3.2-RELEASE-osx/usr/bin/swiftc",
+  "compiler_sha256": "d8e40107da0e2c1c59640a983faea326d5d2bddfe81f7609db14bade43c4a5b9",
+  "object_directory": ".build/contracts/spec-015-lifetime-boundary/p08-3f6txsxb",
+  "results": {
+    "ConcreteConstruction": {
+      "exit": 0,
+      "expected_diagnostic": null,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "object_sha256": "1cfbfb612f727d9b00025e5223b22af7de64c137e4007d36e6c99c7b91021da9",
+      "source_sha256": "3c22366b8e8c120da91108c1924489e4714acfec7996b292b50812aed33ef0b9"
+    },
+    "CopyHost": {
+      "exit": 1,
+      "expected_diagnostic": "noncopyable",
+      "log_sha256": "679d4a2792828351e929e16f0967ecbc775c79753109daade01c5bc3fbe5f88b",
+      "source_sha256": "981f62c0456fad83a517d9764189888a00dee371d34ffe1b004b56bd41cc43b4"
+    },
+    "Current": {
+      "exit": 1,
+      "expected_diagnostic": "inherited protocol 'Escapable'",
+      "log_sha256": "b563bd6cbf901a1a10f0e77677e0462747c769a2cc265fa1d7b3d400b82a829d",
+      "source_sha256": "7138652eeae82c87f9cccc5e0386d16fcae24ed65085339f88240c8cd1be3bde"
+    },
+    "EscapeHost": {
+      "exit": 1,
+      "expected_diagnostic": "Escapable",
+      "log_sha256": "2575f959e99e8f30e1a79d3395a1ba9210feaf3f020168ec81cb67e79fbe3f05",
+      "source_sha256": "5066e6391a4687636d0a095f1aef88b045e8e3220a59828cf1585da084c68a30"
+    },
+    "FactoryCurrent": {
+      "exit": 1,
+      "expected_diagnostic": "does not conform to 'Copyable'",
+      "log_sha256": "eb9106744d4fc5c92eb982f30a69e3ebc8cb40970f999f4f6e73d9353d0c387f",
+      "source_sha256": "3f3d7131a70a4b7df9d284fd678d86769a7736fce11c84697f8a7605556f2f9e"
+    },
+    "FactorySuppressionRejected": {
+      "exit": 1,
+      "expected_diagnostic": "cannot suppress 'Escapable' requirement of an associated type",
+      "log_sha256": "85234718749e8dfa0a7f10c309043d4fe81002c896938823522f7fa09eb099e7",
+      "source_sha256": "50aef8e174159771f22ee35e2118f2fe0e16d645183e3792eaeaa2f11f78fc71"
+    },
+    "Proposed": {
+      "exit": 0,
+      "expected_diagnostic": null,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "object_sha256": "354f0f51023783ccb61e06d0d59820d6965716fceb348415a387c4c6392f0107",
+      "source_sha256": "51aa8dd1f33f073ae3250a16e36da5313d76cf72614277f74f7fceb6a9d8ff07"
+    }
+  },
+  "runtime_receipt": "/Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpwj8mqyyn/macos-static/result.json",
+  "runtime_receipt_sha256": "aeaa021470ae4f4149a0d23c64cc6547e775c340eff045b570c39e338381cd1b",
+  "scope": "compile-only exact host/protocol and actual P07 coordinator types; inert report/audit/result payload scaffolding; no host validation, runtime execution, lifecycle, resource, target or package acceptance",
+  "source_commit": "9fa495dd7e9cc38f09be3738efa793a6cc81a41c",
+  "source_dirty": true,
+  "verified_runtime_artifacts": 143,
+  "verified_runtime_inputs": 165
+}

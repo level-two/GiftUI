@@ -1,0 +1,26 @@
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-host-proof/FactoryCurrent.swift:103:21: error: cannot copy the lifetime of an Escapable type, use '@_lifetime(&self)' instead
+101 | where C: GiftUIRuntimeProfileCoordinator & ~Copyable & ~Escapable {
+102 |     typealias Instance = ScopedHost<C>
+103 |     @_lifetime(copy self)
+    |                     `- error: cannot copy the lifetime of an Escapable type, use '@_lifetime(&self)' instead
+104 |     mutating func construct(validatedBy report: HostAssemblyReport) -> Instance { fatalError() }
+105 |     borrowing func audit(_ instance: borrowing Instance) -> HostConstructedInstanceAudit { .init() }
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-host-proof/FactoryCurrent.swift:100:8: error: type 'ProbeFactory<C>' does not conform to protocol 'MVPValidatedHostInstanceFactory'
+ 86 | package struct HostConstructedInstanceAudit: Equatable, Sendable {}
+ 87 | package protocol MVPValidatedHostInstanceFactory: ~Copyable {
+ 88 |     associatedtype Instance: MVPHostInstance
+    |                    `- note: protocol requires nested type 'Instance'
+ 89 | 
+ 90 |     mutating func construct(
+    :
+ 98 | 
+ 99 | 
+100 | struct ProbeFactory<C>: MVPValidatedHostInstanceFactory
+    |        |- error: type 'ProbeFactory<C>' does not conform to protocol 'MVPValidatedHostInstanceFactory'
+    |        `- note: add stubs for conformance
+101 | where C: GiftUIRuntimeProfileCoordinator & ~Copyable & ~Escapable {
+102 |     typealias Instance = ScopedHost<C>
+    |               `- note: possibly intended match 'ProbeFactory<C>.Instance' (aka 'ScopedHost<C>') does not conform to 'Copyable'
+103 |     @_lifetime(copy self)
+104 |     mutating func construct(validatedBy report: HostAssemblyReport) -> Instance { fatalError() }

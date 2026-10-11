@@ -1,0 +1,27 @@
+--- a/docs/specs/spec-015-host-configuration.md
++++ b/docs/specs/spec-015-host-configuration.md
+@@ -736,7 +736,7 @@
+     case invalidLifecycle
+ }
+ 
+-package protocol MVPHostInstance: ~Copyable {
++package protocol MVPHostInstance: ~Copyable, ~Escapable {
+     associatedtype ActivationFailure: Equatable & Sendable
+     associatedtype OwnerFailure: Equatable & Sendable = RuntimeOwnerFailure
+     var lifecycleState: MVPHostLifecycleState { get }
+@@ -765,6 +765,15 @@
+ package protocol MVPHostResidualPolicy: GiftUIResidualFailurePolicy
+ where Context == HostResidualPolicyContext {}
+ ```
++
++A scope-bearing `MVPHostInstance` returned by a concrete construction function
++MUST retain a compiler-checked lifetime dependence on its supplied backing or
++consumed scoped coordinator. It MUST remain within every backing owner's
++activation lifetime and MUST NOT escape an activation callback or survive backing
++release. Validation MUST still precede live-owner construction and instance
++exposure. The existing lifecycle methods remain the only activation, opportunity
++and teardown entry points. Escapable conformers remain permitted; no new host
++abstraction, role, policy or fallback is introduced by this constraint correction.
+ 
+ Each first-party preset exposes one concrete construction function with two
+ phases: it constructs its concrete validator from the exact inputs in the

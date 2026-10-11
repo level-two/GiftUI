@@ -2,10 +2,10 @@
 spec: SPEC-015
 feature: giftui-mvp-architecture
 title: SPEC-015 Conformance Report
-status: complete
+status: collecting
 reviewers: [codex]
 created: 2026-09-19
-updated: 2026-10-09
+updated: 2026-10-11
 implementation_plan: ../implementation-plans/spec-015-implementation-plan.md
 related_future_work:
   - FW-022
@@ -18,6 +18,17 @@ superseded_by: null
 ---
 
 # SPEC-015 Conformance Report
+
+## Current RFC-014 amendment applicability — 2026-10-11
+
+Collecting for the approved schema-4 amendment. Historical completed evidence
+below applies to its frozen baseline, not the amended host/runtime migration.
+P08 orientation exposes an [exact scoped host contract blocker](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-host-constraint.md);
+the evidence-only proposal requires separate review and explicit approval.
+No production implementation or schema-4 conformance is claimed. T8.1,
+HC-RD-001–004 and full P10–P12 obligations remain open; P07's finite pass does
+not satisfy them. [P08 receipt](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/progress.md)
+records source/compiler identities, expected compile controls and guard0/2.
 
 **Current amendment — 2026-10-05:** Approved five-second retention is implemented and all four hardware-free profiles pass in the [fresh integration](../iterations/iteration-002-cleanup/evidence/18-retention-integration/result.md). Focused nRF connected checks/restoration and current Pi deployment/ARMv6 rehearsal/bounded physical endpoint loop succeed. Original exception authority remains unchanged.
 
