@@ -1,9 +1,10 @@
 import GiftUI
 import GiftUIDrawing
 import GiftUIRenderCore
+import GiftUISemanticCore
 
 private struct DynamicDrawingPlanStroke {
-    let canvas: DynamicSemanticIdentity
+    let canvas: SemanticRecordReference
     let header: StraightLineStrokeHeader
     let points: [Point]
     let subpaths: [SubpathRange]
@@ -16,9 +17,9 @@ package struct DynamicDrawingPlanWorkspace: DrawingPlanConstructionWorkspace,
     package private(set) var isActive = false
 
     private var publishedSummary: DrawingPlanSummary?
-    private var canvasIdentities: [DynamicSemanticIdentity] = []
+    private var canvasIdentities: [SemanticRecordReference] = []
     private var strokes: [DynamicDrawingPlanStroke] = []
-    private var currentIdentity: DynamicSemanticIdentity?
+    private var currentIdentity: SemanticRecordReference?
     private var currentOrigin: Point?
     private var currentClip: Rect?
     private var contextGeneration: UInt32 = 0
@@ -54,7 +55,7 @@ package struct DynamicDrawingPlanWorkspace: DrawingPlanConstructionWorkspace,
     }
 
     package mutating func withCanvasContext<Result>(
-        identity: DynamicSemanticIdentity,
+        identity: SemanticRecordReference,
         surfaceOrigin: Point,
         inheritedClip: Rect,
         _ body: (inout GraphicsContext) throws(DrawingError) -> Result
@@ -137,7 +138,7 @@ package struct DynamicDrawingPlanWorkspace: DrawingPlanConstructionWorkspace,
         canvasIdentities.removeAll(keepingCapacity: true)
     }
 
-    package func strokeCount(of canvas: DynamicSemanticIdentity) -> UInt16? {
+    package func strokeCount(of canvas: SemanticRecordReference) -> UInt16? {
         guard publishedSummary != nil, canvasIdentities.contains(canvas) else {
             return nil
         }
@@ -145,14 +146,14 @@ package struct DynamicDrawingPlanWorkspace: DrawingPlanConstructionWorkspace,
     }
 
     package func strokeHeader(
-        of canvas: DynamicSemanticIdentity,
+        of canvas: SemanticRecordReference,
         at index: UInt16
     ) -> StraightLineStrokeHeader? {
         stroke(of: canvas, at: index)?.header
     }
 
     package func point(
-        of canvas: DynamicSemanticIdentity,
+        of canvas: SemanticRecordReference,
         stroke strokeIndex: UInt16,
         at index: UInt16
     ) -> Point? {
@@ -163,7 +164,7 @@ package struct DynamicDrawingPlanWorkspace: DrawingPlanConstructionWorkspace,
     }
 
     package func subpath(
-        of canvas: DynamicSemanticIdentity,
+        of canvas: SemanticRecordReference,
         stroke strokeIndex: UInt16,
         at index: UInt16
     ) -> SubpathRange? {
@@ -287,7 +288,7 @@ package struct DynamicDrawingPlanWorkspace: DrawingPlanConstructionWorkspace,
     }
 
     private func stroke(
-        of canvas: DynamicSemanticIdentity,
+        of canvas: SemanticRecordReference,
         at index: UInt16
     ) -> DynamicDrawingPlanStroke? {
         guard publishedSummary != nil else { return nil }

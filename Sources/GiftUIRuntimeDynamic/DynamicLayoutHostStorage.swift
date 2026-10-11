@@ -1,9 +1,25 @@
 import GiftUI
 import GiftUILayout
+import GiftUISemanticCore
 import GiftUITextResources
 
+/// Exact transient record lookup; all owner/bank/revision/ordinal fields
+/// participate. This does not replace owned complete Interaction identities.
+private struct DynamicRecordLookupKey: Hashable {
+    let owner: UInt32
+    let bank: UInt8
+    let revision: UInt32
+    let ordinal: UInt16
+    init(_ reference: SemanticRecordReference) {
+        owner = reference.owner.rawValue
+        bank = reference.bank
+        revision = reference.revision
+        ordinal = reference.ordinal
+    }
+}
+
 private struct DynamicLayoutWorkspaceScope {
-    let identity: DynamicSemanticIdentity
+    let identity: SemanticRecordReference
     var measurement: LayoutMeasurement
     var placement: LayoutPlacement?
     var lineRange: Range<UInt16>?
@@ -19,10 +35,10 @@ package struct DynamicLayoutWorkspace: LayoutWorkspace {
     package private(set) var isLayoutActive = false
 
     private var scopes: [DynamicLayoutWorkspaceScope] = []
-    private var scopeIndex: [DynamicSemanticIdentity: Int] = [:]
-    private var lines: [LayoutTextLine<DynamicSemanticIdentity>] = []
-    private var glyphs: [LayoutPositionedGlyph<DynamicSemanticIdentity>] = []
-    private var depth: [DynamicSemanticIdentity] = []
+    private var scopeIndex: [DynamicRecordLookupKey: Int] = [:]
+    private var lines: [LayoutTextLine<SemanticRecordReference>] = []
+    private var glyphs: [LayoutPositionedGlyph<SemanticRecordReference>] = []
+    private var depth: [SemanticRecordReference] = []
 
     package init(limits: LayoutLimits) {
         maximumScopes = limits.maximumScopes
@@ -44,14 +60,14 @@ package struct DynamicLayoutWorkspace: LayoutWorkspace {
     }
 
     package mutating func appendScope(
-        identity: borrowing DynamicSemanticIdentity,
+        identity: borrowing SemanticRecordReference,
         measurement: LayoutMeasurement
     ) -> Bool {
         let identity = copy identity
         guard scopes.count < Int(maximumScopes),
-            scopeIndex[identity] == nil
+            scopeIndex[DynamicRecordLookupKey(identity)] == nil
         else { return false }
-        scopeIndex[identity] = scopes.count
+        scopeIndex[DynamicRecordLookupKey(identity)] = scopes.count
         scopes.append(
             DynamicLayoutWorkspaceScope(
                 identity: identity,
@@ -66,25 +82,25 @@ package struct DynamicLayoutWorkspace: LayoutWorkspace {
 
     package var scopeCount: UInt16 { UInt16(scopes.count) }
 
-    package func scopeIdentity(at index: UInt16) -> DynamicSemanticIdentity? {
+    package func scopeIdentity(at index: UInt16) -> SemanticRecordReference? {
         guard Int(index) < scopes.count else { return nil }
         return scopes[Int(index)].identity
     }
 
     package func measurement(
-        for identity: borrowing DynamicSemanticIdentity
+        for identity: borrowing SemanticRecordReference
     ) -> LayoutMeasurement? {
         let identity = copy identity
-        guard let index = scopeIndex[identity] else { return nil }
+        guard let index = scopeIndex[DynamicRecordLookupKey(identity)] else { return nil }
         return scopes[index].measurement
     }
 
     package mutating func storeMeasurement(
         _ measurement: LayoutMeasurement,
-        for identity: borrowing DynamicSemanticIdentity
+        for identity: borrowing SemanticRecordReference
     ) -> Bool {
         let identity = copy identity
-        guard let index = scopeIndex[identity]
+        guard let index = scopeIndex[DynamicRecordLookupKey(identity)]
         else { return false }
         scopes[index].measurement = measurement
         return true
@@ -92,10 +108,10 @@ package struct DynamicLayoutWorkspace: LayoutWorkspace {
 
     package mutating func storePlacement(
         _ placement: LayoutPlacement,
-        for identity: borrowing DynamicSemanticIdentity
+        for identity: borrowing SemanticRecordReference
     ) -> Bool {
         let identity = copy identity
-        guard let index = scopeIndex[identity],
+        guard let index = scopeIndex[DynamicRecordLookupKey(identity)],
             scopes[index].placement == nil
         else { return false }
         scopes[index].placement = placement
@@ -103,20 +119,20 @@ package struct DynamicLayoutWorkspace: LayoutWorkspace {
     }
 
     package func placement(
-        for identity: borrowing DynamicSemanticIdentity
+        for identity: borrowing SemanticRecordReference
     ) -> LayoutPlacement? {
         let identity = copy identity
-        guard let index = scopeIndex[identity] else { return nil }
+        guard let index = scopeIndex[DynamicRecordLookupKey(identity)] else { return nil }
         return scopes[index].placement
     }
 
     package var textLineCount: UInt16 { UInt16(lines.count) }
 
     package mutating func appendTextLine(
-        _ line: LayoutTextLine<DynamicSemanticIdentity>
+        _ line: LayoutTextLine<SemanticRecordReference>
     ) -> Bool {
         guard lines.count < Int(maximumTextLines),
-            let index = scopeIndex[line.identity]
+            let index = scopeIndex[DynamicRecordLookupKey(line.identity)]
         else { return false }
         let ordinal = UInt16(lines.count)
         if let range = scopes[index].lineRange {
@@ -130,22 +146,22 @@ package struct DynamicLayoutWorkspace: LayoutWorkspace {
     }
 
     package func textLineRange(
-        for identity: borrowing DynamicSemanticIdentity
+        for identity: borrowing SemanticRecordReference
     ) -> Range<UInt16>? {
         let identity = copy identity
-        guard let index = scopeIndex[identity] else { return nil }
+        guard let index = scopeIndex[DynamicRecordLookupKey(identity)] else { return nil }
         return scopes[index].lineRange
     }
 
     package func textLine(
         at index: UInt16
-    ) -> LayoutTextLine<DynamicSemanticIdentity>? {
+    ) -> LayoutTextLine<SemanticRecordReference>? {
         guard Int(index) < lines.count else { return nil }
         return lines[Int(index)]
     }
 
     package mutating func storeTextLine(
-        _ line: LayoutTextLine<DynamicSemanticIdentity>,
+        _ line: LayoutTextLine<SemanticRecordReference>,
         at index: UInt16
     ) -> Bool {
         guard Int(index) < lines.count else { return false }
@@ -156,10 +172,10 @@ package struct DynamicLayoutWorkspace: LayoutWorkspace {
     package var positionedGlyphCount: UInt16 { UInt16(glyphs.count) }
 
     package mutating func appendPositionedGlyph(
-        _ glyph: LayoutPositionedGlyph<DynamicSemanticIdentity>
+        _ glyph: LayoutPositionedGlyph<SemanticRecordReference>
     ) -> Bool {
         guard glyphs.count < Int(maximumPositionedGlyphs),
-            let index = scopeIndex[glyph.identity]
+            let index = scopeIndex[DynamicRecordLookupKey(glyph.identity)]
         else { return false }
         let ordinal = UInt16(glyphs.count)
         if let range = scopes[index].glyphRange {
@@ -173,22 +189,22 @@ package struct DynamicLayoutWorkspace: LayoutWorkspace {
     }
 
     package func positionedGlyphRange(
-        for identity: borrowing DynamicSemanticIdentity
+        for identity: borrowing SemanticRecordReference
     ) -> Range<UInt16>? {
         let identity = copy identity
-        guard let index = scopeIndex[identity] else { return nil }
+        guard let index = scopeIndex[DynamicRecordLookupKey(identity)] else { return nil }
         return scopes[index].glyphRange
     }
 
     package func positionedGlyph(
         at index: UInt16
-    ) -> LayoutPositionedGlyph<DynamicSemanticIdentity>? {
+    ) -> LayoutPositionedGlyph<SemanticRecordReference>? {
         guard Int(index) < glyphs.count else { return nil }
         return glyphs[Int(index)]
     }
 
     package mutating func storePositionedGlyph(
-        _ glyph: LayoutPositionedGlyph<DynamicSemanticIdentity>,
+        _ glyph: LayoutPositionedGlyph<SemanticRecordReference>,
         at index: UInt16
     ) -> Bool {
         guard Int(index) < glyphs.count else { return false }
@@ -197,7 +213,7 @@ package struct DynamicLayoutWorkspace: LayoutWorkspace {
     }
 
     package mutating func pushScope(
-        _ identity: borrowing DynamicSemanticIdentity
+        _ identity: borrowing SemanticRecordReference
     ) -> Bool {
         guard depth.count < Int(maximumDepth) else { return false }
         depth.append(copy identity)
@@ -219,23 +235,23 @@ package struct DynamicLayoutWorkspace: LayoutWorkspace {
 }
 
 private struct DynamicResolvedLayoutScope: Equatable, Sendable {
-    let identity: DynamicSemanticIdentity
+    let identity: SemanticRecordReference
     let bounds: Rect
     let clip: Rect
 }
 
 private struct DynamicResolvedLayoutLine: Equatable, Sendable {
-    let identity: DynamicSemanticIdentity
+    let identity: SemanticRecordReference
     let line: ResolvedRenderTextLine
 }
 
 private struct DynamicResolvedLayoutGlyph: Equatable, Sendable {
-    let identity: DynamicSemanticIdentity
+    let identity: SemanticRecordReference
     let glyph: ResolvedRenderGlyph
 }
 
 package struct DynamicResolvedLayoutView: ResolvedRenderLayoutView {
-    package let rootIdentity: DynamicSemanticIdentity
+    package let rootIdentity: SemanticRecordReference
     package let layoutScopeCount: UInt16
     package let renderSnapshotVersion: UInt32
     package let rootBounds: Rect
@@ -244,7 +260,7 @@ package struct DynamicResolvedLayoutView: ResolvedRenderLayoutView {
     private let glyphs: [DynamicResolvedLayoutGlyph]
 
     fileprivate init(
-        rootIdentity: DynamicSemanticIdentity,
+        rootIdentity: SemanticRecordReference,
         layoutScopeCount: UInt16,
         renderSnapshotVersion: UInt32,
         rootBounds: Rect,
@@ -261,30 +277,30 @@ package struct DynamicResolvedLayoutView: ResolvedRenderLayoutView {
         self.glyphs = glyphs
     }
 
-    package func layoutIdentity(at ordinal: UInt16) -> DynamicSemanticIdentity? {
+    package func layoutIdentity(at ordinal: UInt16) -> SemanticRecordReference? {
         guard Int(ordinal) < scopes.count else { return nil }
         return scopes[Int(ordinal)].identity
     }
 
-    package func layoutOrdinal(of identity: DynamicSemanticIdentity) -> UInt16? {
+    package func layoutOrdinal(of identity: SemanticRecordReference) -> UInt16? {
         scopes.firstIndex { $0.identity == identity }.map(UInt16.init)
     }
 
-    package func bounds(of identity: DynamicSemanticIdentity) -> Rect? {
+    package func bounds(of identity: SemanticRecordReference) -> Rect? {
         scopes.first { $0.identity == identity }?.bounds
     }
 
-    package func clip(of identity: DynamicSemanticIdentity) -> Rect? {
+    package func clip(of identity: SemanticRecordReference) -> Rect? {
         scopes.first { $0.identity == identity }?.clip
     }
 
-    package func textLineCount(of identity: DynamicSemanticIdentity) -> UInt16? {
+    package func textLineCount(of identity: SemanticRecordReference) -> UInt16? {
         guard scopes.contains(where: { $0.identity == identity }) else { return nil }
         return UInt16(lines.lazy.filter { $0.identity == identity }.count)
     }
 
     package func textLine(
-        of identity: DynamicSemanticIdentity,
+        of identity: SemanticRecordReference,
         at index: UInt16
     ) -> ResolvedRenderTextLine? {
         lines.first {
@@ -293,7 +309,7 @@ package struct DynamicResolvedLayoutView: ResolvedRenderLayoutView {
     }
 
     package func glyph(
-        of identity: DynamicSemanticIdentity,
+        of identity: SemanticRecordReference,
         at index: UInt16
     ) -> ResolvedRenderGlyph? {
         glyphs.first {
@@ -357,7 +373,7 @@ package struct DynamicResolvedLayoutStorage: ResolvedRenderLayoutResultStorage {
     }
 
     package mutating func stageScope(
-        identity: DynamicSemanticIdentity,
+        identity: SemanticRecordReference,
         bounds: Rect,
         clip: Rect
     ) -> Bool {
@@ -372,7 +388,7 @@ package struct DynamicResolvedLayoutStorage: ResolvedRenderLayoutResultStorage {
     }
 
     package mutating func stageTextLine(
-        identity: DynamicSemanticIdentity,
+        identity: SemanticRecordReference,
         lineIndex: UInt16,
         bounds: Rect,
         baseline: Point,
@@ -398,7 +414,7 @@ package struct DynamicResolvedLayoutStorage: ResolvedRenderLayoutResultStorage {
     }
 
     package mutating func stageGlyph(
-        identity: DynamicSemanticIdentity,
+        identity: SemanticRecordReference,
         lineIndex: UInt16,
         glyphIndex: UInt16,
         instance: FontInstanceID,

@@ -91,6 +91,33 @@ semantic error enum. Each narrowed the cause or passed a new check. One native
 intermediate run overlapped a driver edit and is excluded from committed evidence;
 the final two receipts were collected from stable inputs. Repair count **0/2**.
 
+## Step 7 — partial record-workspace integration, stopped at protocol boundary
+
+WIP preservation only; not a complete or behaviorally accepted cycle slice.
+The existing Dynamic Layout/Drawing/Render workspace types now use qualified
+SemanticRecordReference values. Dynamic Layout's transient dictionary key includes
+all owner/bank/revision/ordinal fields. Static Drawing has a thin qualifier adapter
+around its existing UInt16 workspace; it rejects mismatched bank qualifications.
+The tiny P07 fault presentation includes generated State, text, one Button, one
+Canvas and conditional removal. It does not add P08 host/schema/preset work.
+
+After formatting, the macOS Static Step 2 invocation selected/compiled these
+current workspaces and generated presentation; existing 179 assertions and six
+lifetime negatives passed. Receipt: `step-7-partial-macos-static.json`. These
+assertions do NOT exercise the new workspace adapter or the presentation. Their
+behavioral integration, audit and cross-target proof remain unvalidated. The
+honest WIP commit preserves this work without claiming package completion.
+
+Integration stopped on a newly confirmed exact associated-type boundary in
+GiftUIRuntimeProfileCoordinator. The approved three protocol suppressions did
+not change its associated requirements. Storage still requires Copyable; the
+pinned compiler rejects suppressing Copyable on an associated type. The same
+bounded protocol's Handler/TargetAccess requirements still select the legacy
+raw-model callback interfaces rather than the approved scoped checked-operation
+join. A separate decision/review packet records the minimal compiler evidence,
+exact proposed correction and lost static checks. No such amendment is applied.
+Repair counter remains **0/2**; T9.1/T11.1 and P07 exit remain open.
+
 ## Parent checkpoint — contract escalation, 2026-10-11
 
 P07 is **incomplete and blocked on the scoped coordinator contract decision**.

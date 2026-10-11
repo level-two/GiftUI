@@ -71,14 +71,23 @@ module('GiftUIObservableState', [ROOT / 'Sources/GiftUIObservableState' / name f
     'ObservableModelTicket.swift', 'ObservableModelScope.swift', 'ObservableModelMutation.swift',
     'ObservableStateModel.swift', 'ObservableStateRegistrationLifecycle.swift', 'ObservableStateRootScope.swift',
     'ObservableStateRootTargetAccess.swift', 'ObservableStateBindingDecorator.swift', 'ObservableSemanticBodyBinding.swift')])
-module('GiftUIRenderLowering', [ROOT / 'Sources/GiftUIRenderLowering/RenderProductionValues.swift'])
-module('GiftUIDrawing', [ROOT / 'Sources/GiftUIDrawing' / name for name in ('DrawingLimits.swift', 'DrawingValues.swift')])
+module('GiftUIRenderLowering', sorted((ROOT / 'Sources/GiftUIRenderLowering').glob('*.swift')))
+module('GiftUIDrawing', [ROOT / 'Sources/GiftUIDrawing' / name for name in ('CanvasInvocationSource.swift', 'CanvasPlanProducer.swift', 'CanvasStagedValues.swift', 'CanvasSemanticPayload.swift', 'DrawingLimits.swift', 'DrawingPlan.swift', 'DrawingValues.swift', 'StaticCanvasCallableTable.swift', 'PathConstruction.swift', 'StrokeSnapshot.swift')])
 module('GiftUIRuntimeCore', [ROOT / 'Sources/GiftUIRuntimeCore' / name for name in (
-    'RuntimeProfileValues.swift', 'RuntimeProfileValidation.swift', 'RuntimeStorageRegistry.swift',
+    'ObservableCanvasInvocationSource.swift', 'RuntimeProfileValues.swift', 'RuntimeProfileValidation.swift', 'RuntimeStorageRegistry.swift',
     'RuntimeOwnerFailure.swift', 'RuntimeCoordinatorCleanup.swift', 'RuntimeCompletePipeline.swift', 'RuntimeCoordinatorContracts.swift', 'RuntimeProfileStorage.swift')])
-module('GiftUIRuntimeStatic', [ROOT / 'Sources/GiftUIRuntimeStatic' / name for name in ('StaticRuntimeExecutionCoordinator.swift', 'StaticObservableModelStorage.swift')])
+module('GiftUIRuntimeStatic', [ROOT / 'Sources/GiftUIRuntimeStatic' / name for name in ('StaticRuntimeExecutionCoordinator.swift', 'StaticObservableModelStorage.swift', 'StaticObservableRootAdapter.swift', 'StaticObservableRootTargetAccess.swift', 'StaticCanvasValueStorage.swift', 'StaticSemanticRecordStorage.swift', 'StaticInteractionStorage.swift', 'StaticRecordDrawingWorkspace.swift')])
 if profile != 'nrf52840-embedded':
-    module('GiftUIRuntimeDynamic', [ROOT / 'Sources/GiftUIRuntimeDynamic' / name for name in ('DynamicRuntimeExecutionCoordinator.swift', 'DynamicObservableModelStorage.swift')])
+    module('GiftUIRuntimeDynamic', [ROOT / 'Sources/GiftUIRuntimeDynamic' / name for name in ('DynamicRuntimeExecutionCoordinator.swift', 'DynamicObservableModelStorage.swift', 'DynamicObservableModelRegistration.swift', 'DynamicObservableRootAdapter.swift', 'DynamicObservableRootTargetAccess.swift', 'DynamicObservableStateReconciler.swift', 'DynamicCanvasCallableStorage.swift', 'DynamicSemanticRecordStorage.swift', 'DynamicInteractionStorage.swift', 'DynamicLayoutHostStorage.swift', 'DynamicDrawingPlanWorkspace.swift', 'DynamicLivePathStorage.swift', 'DynamicRenderWorkspace.swift')])
+macro = ROOT / '.build/rfc014-p02/tool/debug/GiftUIMacros-tool'
+assert digest(macro) == core['macro_tool_sha256']
+fixture = ROOT / 'Tests/ContractFixtures/SPEC013/RuntimeDerived'
+inputs.extend([macro, fixture / 'Cycle.schema.json', fixture / 'Cycle.swift'])
+run('cycle-lowering', [macro, '--lower-source', fixture / 'Cycle.schema.json', fixture / 'Cycle.swift',
+                      out / 'CycleSchema.swift', out / 'Cycle.swift', out / 'CycleTable.swift', 'CyclePresentation'])
+module('CycleSchema', [out / 'CycleSchema.swift'])
+module('CyclePresentation', [out / 'Cycle.swift'])
+module('CycleTable', [out / 'CycleTable.swift'])
 module('RuntimeCycleProbe', [ROOT / 'Tests/ContractFixtures/SPEC013/RuntimeDerived/RuntimeValuesProbe.swift', ROOT / 'Tests/ContractFixtures/SPEC013/RuntimeDerived/ScopedOwnerProbe.swift', ROOT / 'Tests/ContractFixtures/SPEC013/RuntimeDerived/ScopedCoordinatorProbe.swift', ROOT / 'Tests/ContractFixtures/SPEC013/RuntimeDerived/FrameLeaseProbe.swift', ROOT / 'Tests/ContractFixtures/SPEC013/RuntimeDerived/ScopedSemanticProbe.swift'])
 for name, source, diagnostic in (
     ('escape-owner', 'struct Escape<M: ~Copyable, S>: ~Copyable { let owner: ScopedOwner<M, S> }', 'non-Escapable'),

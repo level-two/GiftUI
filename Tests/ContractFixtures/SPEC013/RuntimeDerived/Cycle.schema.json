@@ -1,0 +1,13 @@
+{
+  "module": "CycleSchema",
+  "domain": "CycleReadDomain",
+  "imports": [],
+  "models": [{
+    "authoredType": "CycleModel",
+    "schema": "CycleModelSchema",
+    "facade": "CycleRead",
+    "seedFields": [{"name": "value", "type": "UInt8"}],
+    "fields": [{"name": "value", "type": "UInt8", "indexed": false}]
+  }],
+  "calls": ["GeometryScalar", "BoundedText", "Int32"]
+}

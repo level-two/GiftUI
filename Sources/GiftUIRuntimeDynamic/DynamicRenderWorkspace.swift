@@ -1,8 +1,9 @@
 import GiftUI
 import GiftUIRenderLowering
+import GiftUISemanticCore
 
 package struct DynamicRenderWorkspace: RenderProductionWorkspace {
-    package typealias Identity = DynamicSemanticIdentity
+    package typealias Identity = SemanticRecordReference
 
     package let capacity: RenderLimits
     package let structuralCapacity: RenderWorkspaceCapacity
