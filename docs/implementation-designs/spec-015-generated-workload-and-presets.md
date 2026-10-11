@@ -6,7 +6,7 @@ status: current
 authors:
   - codex
 created: 2026-09-13
-updated: 2026-10-11
+updated: 2026-10-12
 implementation_plan: ../implementation-plans/spec-015-implementation-plan.md
 related_future_work: []
 related_explorations: []
@@ -62,6 +62,33 @@ evidence. Full analyzer migration/cutover and P10–P12 gates remain open.
 
 Fresh component evidence is recorded in the
 [P08 receipt](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/progress.md).
+
+### Scoped activation realization
+
+The approved Swift 6.4 baseline permits the maintained `ActivationJoin` component
+fixtures to exercise the existing generic `SignalAnalyzerPresetHostInstance`.
+An inert owner stores supplied scoped model, semantic, Canvas, geometry and
+interaction values. `constructRuntimeAndEndpoint`, called by the existing
+activation controller, first constructs the actual pipeline, recording endpoint
+and Static coordinator. No active coordinator is constructed during validation
+or before `activate()`.
+
+A callback-local Span marker is retained across the inert, active and retired
+states. Its supplying callback is nested inside every borrowed storage scope;
+the owner also preserves those values' lifetime dependencies. Swift 6.4 rejects
+reachable callback escape, a constant-marker variant, destroyed local backing
+and double consumption of the actual generic host. The fixture contains no
+unchecked lifetime extension.
+
+The positive component checks actual accepted runtime work, activation refusal
+outside the valid state, failure containment after runtime construction,
+idempotent ordered teardown and report invalidation before backing release.
+The report is a synthetic component sentinel; application/source lifecycle
+adapters record ordering. This realizes the runtime ownership join and does not
+prove the nine-stage validator, application owners, counter routes, early images
+or full SPEC-015 conformance. Those retain their existing P08–P12 obligations.
+Reproduction and independent review belong to the
+[activation integration record](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-integration/scope.md).
 
 ## Historical schema-3 realization
 
