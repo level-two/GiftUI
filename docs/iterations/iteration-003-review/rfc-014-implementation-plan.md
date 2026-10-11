@@ -1,6 +1,6 @@
 # RFC-014 bounded implementation sequence — 2026-10-10
 
-**P01–P06 passed; P07 resumed under the approved concrete-binding correction;
+**P01–P06 passed; P07 stopped at the 2/2 unproductive-repair limit;
 P08–P12 pending.** This is the shared
 sequencing index for nine owner Implementation Plans, not another contract or
 investigation. It derives only the [approved Spec amendments](rfc-014-spec-approval.md)
@@ -21,8 +21,16 @@ with the selected scoped owner realization. The
 [concrete decision packet](../../../Tests/ContractFixtures/SPEC013/Evidence/rfc-014-p07/scoped-coordinator-constraint.md)
 is historical; the [narrow correction is now approved](rfc-014-spec-approval.md#scoped-coordinator-constraint-amendment--2026-10-11). SPEC-009 T9.1 is a directly necessary P07 checkpoint, not another package. Complete profile integration
 and package exit remain open; SPEC-015 host lifetime remains a separately
-reviewed boundary. Consecutive unproductive repairs: **0/2**. No successor work
+reviewed boundary. Consecutive unproductive repairs: **2/2**. No successor work
 has started.
+
+Current stop: [audited-construction repair record](../../../Tests/ContractFixtures/SPEC013/Evidence/rfc-014-p07/audited-construction-stop/stop.md),
+committed at `e132dfe5`. Maintained source is restored to validated `c234058e`
+(531 native assertions and ten compiler negatives); the failed in-place-lend
+patch, exact command, diagnostics and intermediate evidence are preserved.
+Actual audited factory/common-coordinator conformance and the remaining package
+exit are incomplete. No further affected repair, context switch or alternative
+factoring is authorized without the maintainer decision required by the guard.
 
 The prior correction is implemented. The new [associated-type decision packet](../../../Tests/ContractFixtures/SPEC013/Evidence/rfc-014-p07/associated-type-constraint.md)
 records the remaining Storage/Handler/TargetAccess boundary, bounded compiler

@@ -37,6 +37,12 @@ not additional authorization to rerun an MVP implementation or reopen experiment
 
 ### Current owner checkpoint
 
+P07 is currently stopped at the shared **2/2** unproductive-repair limit.
+The [stop record](../../Tests/ContractFixtures/SPEC013/Evidence/rfc-014-p07/audited-construction-stop/stop.md)
+preserves the attempted audited-construction patch and exact compiler failure.
+Maintained source is restored to validated `c234058e`. The approvals below
+remain valid but do not reset the guard; T11.1 and the package exit remain open.
+
 P07 resumes under the [approved concrete-binding correction](../iterations/iteration-003-review/rfc-014-spec-approval.md#concrete-coordinator-binding-amendment--2026-10-11).
 Apply the exact three associated-requirement removals. T11.1 must prove concrete
 storage/audit and common Model/Schema bindings, immutable finite action domain

@@ -1,5 +1,12 @@
 # RFC-014 task context guide
 
+**Current P07 stop:** the [audited-construction repair guard](../../../Tests/ContractFixtures/SPEC013/Evidence/rfc-014-p07/audited-construction-stop/stop.md)
+is exhausted at **2/2**. Source is restored to validated `c234058e`; failed
+work and commands are preserved at `e132dfe5`. Earlier resumption instructions
+below do not authorize further repair. Actual audited construction, remaining
+lifecycle/transcript evidence, final four-route checks and package review remain
+open. P08 has not started.
+
 Navigation and assignment clarification for the [P01–P12 sequence](rfc-014-implementation-plan.md),
 checked against the working tree on 2026-10-11. This derives from the approved
 contracts; it does not define APIs or prove task completion. Read the relevant
