@@ -1,6 +1,7 @@
 # RFC-014 bounded implementation sequence — 2026-10-10
 
-**P01–P06 passed; P07–P12 pending.** This is the shared
+**P01–P06 passed; P07 partially implemented and blocked on a contract decision;
+P08–P12 pending.** This is the shared
 sequencing index for nine owner Implementation Plans, not another contract or
 investigation. It derives only the [approved Spec amendments](rfc-014-spec-approval.md)
 at `3c260bbc` and accepted ADR-035/036/037. ITERATION-003 I3-04/05 supplies the
@@ -11,6 +12,17 @@ For a new or resumed assignment, use the [task context guide](rfc-014-task-conte
 to reach the relevant contract, source, tests and current evidence without
 reconstructing the investigation history. Package boundaries and model routing
 remain in this sequence.
+
+P07's [progress receipt](../../../Tests/ContractFixtures/SPEC013/Evidence/rfc-014-p07/progress.md)
+records committed limits/audit and internal scoped-runner steps. The
+[independent Strong review](../../../Tests/ContractFixtures/SPEC013/Evidence/rfc-014-p07/independent-blocker-review.md)
+at `d7d6cdd1` confirms the explicit SPEC-009/013 coordinator constraints conflict
+with the selected scoped owner realization. The
+[concrete decision packet](../../../Tests/ContractFixtures/SPEC013/Evidence/rfc-014-p07/scoped-coordinator-constraint.md)
+proposes a narrow correction; it is not approved. Complete profile integration
+and package exit remain open; SPEC-015 host lifetime remains a separately
+reviewed boundary. Consecutive unproductive repairs: **0/2**. No successor work
+has started.
 
 ## Fixed deliverable and scope rules
 

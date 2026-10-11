@@ -80,7 +80,11 @@ records matched receipts and review limits. P04 subsequently passed after separa
 Strong review at `037607c7`. P05 passed after separate Strong review at
 `42b5f639`. P06 passed after the explicitly approved scoped-source amendment
 and separate Strong repair review at `59c80b52`; all captured Canvas model keys
-bind before authored drawing, including read-free paths. P07–P12 remain pending.
+bind before authored drawing, including read-free paths. P07 has committed
+limits/audit and internal scoped-runner steps, but its actual coordinator join
+is stopped at the [reviewed SPEC-009/013 constraint boundary](../../../Tests/ContractFixtures/SPEC013/Evidence/rfc-014-p07/independent-blocker-review.md).
+Resume from its [progress receipt and decision packet](../../../Tests/ContractFixtures/SPEC013/Evidence/rfc-014-p07/progress.md),
+not a package-pass assumption. P08–P12 remain pending.
 Do not infer complete-module, coordinator or linked-resource completion from
 these component probes.
 

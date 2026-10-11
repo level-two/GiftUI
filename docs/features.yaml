@@ -93,7 +93,7 @@ features:
     milestone: MVP
   giftui-mvp-architecture:
     # SPEC-007/011 P05 passed; T9.1/T12.1 remain open; shared receipt Tests/ContractFixtures/SPEC011/Evidence/rfc-014-p05/progress.md.
-    # RFC-014 P01–P06 passed; P06 separate Strong review: 59c80b52; P07 active, P08–P12 pending.
+    # RFC-014 P01–P06 passed; P07 partial, blocked on reviewed SPEC-009/013 scoped coordinator constraints (d7d6cdd1); P08–P12 pending.
     # SPEC-013 implementing; T11.1 open through P10–P12.
     # Optional source-conditional cleanup: FW-029, linked from SPEC-013.
     # ITERATION-003 revision 5 governs bounded runtime/memory/performance preparation.

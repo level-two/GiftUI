@@ -1,5 +1,20 @@
 # RFC-014 P07 progress
 
+## Parent checkpoint — contract escalation, 2026-10-11
+
+P07 is **incomplete and blocked on the scoped coordinator contract decision**.
+The parent accepts the bounded independent review at `d7d6cdd1` as confirmation
+of the blocker, not as package acceptance. Validated implementation steps are
+`2935fb73` and `bbc753e5`; the decision packet is committed at `7bb8dfb2`.
+Execution and review used sequential Strong `gpt-6-astra` / `medium` assignments.
+No Standard or Economy assignment was needed. Each step is committed.
+
+The user must decide whether to approve the packet's narrow SPEC-009/013
+constraint correction before affected integration resumes. SPEC-015's containing
+host lifetime remains a separately reviewed boundary. Actual profile cycle/fault
+evidence and final Strong package review remain pending; T11.1 remains open.
+P01–P06 passed, P08–P12 have not started. Repair counter: **0/2**.
+
 ## Launch and Strong implementation assignment — 2026-10-11
 
 P07 is authorized by the user's request to execute it sequentially and commit
