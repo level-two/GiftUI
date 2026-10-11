@@ -1,0 +1,21 @@
+{
+  "core_receipt": ".build/contracts/spec-006-rfc-014/dd5d4849463055f2-hwlll28l/macos-static/result.json",
+  "core_receipt_sha256": "97777496e89594aff076fa54a3eb25f59639a6f111068328c23c0060e230e8f9",
+  "expected_assertion_change": {
+    "after": "precondition(began == 0 && outcome == .invalidModelAccess && released == 1)",
+    "before": "precondition(began == 1 && outcome == .capacityExhausted && released == 1)"
+  },
+  "files": {
+    ".build/contracts/spec-012-p06-repair-review/CounterCanvas.o": "c880f6043c3b062d56784914830be995e416a2f66647c9f47c60a3e249e9f13f",
+    ".build/contracts/spec-012-p06-repair-review/CounterCanvas.swift": "500b43674767130eda96f8a3499eca168104875036d9375d4ccac49c08342bdb",
+    ".build/contracts/spec-012-p06-repair-review/Main.swift": "623c7fda8ee6cbe50fe1633c41a035aee6d558323380a45de589c6d20e7ad387",
+    ".build/contracts/spec-012-p06-repair-review/binding-order": "425dc618c86df7d5d6475dbb06b6ba9e1aa9c0ffc65c54de629efac4ddcacbc4",
+    ".build/rfc014-p02/tool/debug/GiftUIMacros-tool": "9bbb7c7532d763b1908cdcabbe4b9b87c6a7eb0c07e83cc93cc9bb154b313285",
+    ".toolchains/host/swift-6.3.2-RELEASE-osx/usr/bin/swiftc": "d8e40107da0e2c1c59640a983faea326d5d2bddfe81f7609db14bade43c4a5b9",
+    "Tests/ContractFixtures/SPEC012/Evidence/rfc-014-p06/exit-review-binding/CounterCanvas.swift": "f705f0b057126d30c493bd1b2da1c982fb02816b96bca09ddc2bc39d231d094c",
+    "Tests/ContractFixtures/SPEC012/Evidence/rfc-014-p06/exit-review-binding/Main.swift": "1de583fb5cedbd0391b889da880535f570433a34020af430372550deeddc5c24"
+  },
+  "native_component_only": true,
+  "result": "stale-key draw: beginPathCalls=0 invalidModelAccess=true capacityExhausted=false releases=1",
+  "reviewed_source_commit": "431293f9a11fdf7c48020520a37f8be1c31ce304"
+}

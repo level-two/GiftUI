@@ -25,8 +25,10 @@ The [independent P06 review](../../Tests/ContractFixtures/SPEC012/Evidence/rfc-0
 historically recommended **BLOCKED** under SPEC-012 T10.1 on P06-R1: a stale
 Canvas model key could reach path construction before binding, changing failure
 order. Repair `431293f9` now prebinds captured model keys before authored drawing.
-Its adversarial controls and refreshed four-profile evidence are ready for
-separate independent repair review; the package is not marked passed.
+The [separate repair review](../../Tests/ContractFixtures/SPEC012/Evidence/rfc-014-p06/repair-exit-review.md)
+resolves P06-R1 and recommends finite P06 PASS after independent counterexample
+replay and evidence reconciliation. Parent package disposition is separate;
+T10.1 and full acceptance remain open.
 The actual-owner native reproduction and independently verified receipts are
 linked from that report. No production repair was made by the reviewer. The
 [shared receipt](../../Tests/ContractFixtures/SPEC012/Evidence/rfc-014-p06/progress.md)

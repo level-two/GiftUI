@@ -1,0 +1,185 @@
+{
+  "additional_core_identity_checks": {
+    "macos-dynamic": {
+      "index_matches_receipt": true,
+      "macro_tool_sha256": "9bbb7c7532d763b1908cdcabbe4b9b87c6a7eb0c07e83cc93cc9bb154b313285",
+      "swift_syntax_sha256": "b3e79ef59e1778527bdefdd1467cd0235bfd05ad0bf6137c23ab464e7fef9e8c"
+    },
+    "macos-static": {
+      "index_matches_receipt": true,
+      "macro_tool_sha256": "9bbb7c7532d763b1908cdcabbe4b9b87c6a7eb0c07e83cc93cc9bb154b313285",
+      "swift_syntax_sha256": "b3e79ef59e1778527bdefdd1467cd0235bfd05ad0bf6137c23ab464e7fef9e8c"
+    },
+    "nrf52840-embedded": {
+      "index_matches_receipt": true,
+      "macro_tool_sha256": "9bbb7c7532d763b1908cdcabbe4b9b87c6a7eb0c07e83cc93cc9bb154b313285",
+      "swift_syntax_sha256": "b3e79ef59e1778527bdefdd1467cd0235bfd05ad0bf6137c23ab464e7fef9e8c"
+    },
+    "raspberry-pi-armv6": {
+      "index_matches_receipt": true,
+      "macro_tool_sha256": "9bbb7c7532d763b1908cdcabbe4b9b87c6a7eb0c07e83cc93cc9bb154b313285",
+      "swift_syntax_sha256": "b3e79ef59e1778527bdefdd1467cd0235bfd05ad0bf6137c23ab464e7fef9e8c"
+    }
+  },
+  "historical_review_unchanged": {
+    "Tests/ContractFixtures/SPEC012/Evidence/rfc-014-p06/exit-review-binding/0.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "Tests/ContractFixtures/SPEC012/Evidence/rfc-014-p06/exit-review-binding/1.log": "ab8e2d68747b59222d5650e8a8d69962371f7aedb3b191555359184dd55076ae",
+    "Tests/ContractFixtures/SPEC012/Evidence/rfc-014-p06/exit-review-binding/2.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "Tests/ContractFixtures/SPEC012/Evidence/rfc-014-p06/exit-review-binding/3.log": "cd4dee91dd74cd854875a350b37f5ed4a010da9ae77ad2b96b55b6878d0d211a",
+    "Tests/ContractFixtures/SPEC012/Evidence/rfc-014-p06/exit-review-binding/CounterCanvas.swift": "f705f0b057126d30c493bd1b2da1c982fb02816b96bca09ddc2bc39d231d094c",
+    "Tests/ContractFixtures/SPEC012/Evidence/rfc-014-p06/exit-review-binding/Main.swift": "1de583fb5cedbd0391b889da880535f570433a34020af430372550deeddc5c24",
+    "Tests/ContractFixtures/SPEC012/Evidence/rfc-014-p06/exit-review-binding/commands.txt": "f83114fec7d0714723b34781136292148b76e5eabd13315ccf79e9b7d01cc90d",
+    "Tests/ContractFixtures/SPEC012/Evidence/rfc-014-p06/exit-review-binding/reproduce.py": "1e642f6257381015574904d241e63ed3ba30490f2424e39388432ed813c21a9f",
+    "Tests/ContractFixtures/SPEC012/Evidence/rfc-014-p06/exit-review-binding/result.json": "0b487a7c83fff1558530f6ddf08332c5eeffdb05f63fff79abaab7fd9b3d8769",
+    "Tests/ContractFixtures/SPEC012/Evidence/rfc-014-p06/exit-review-evidence-verification.json": "da4d49e046eec6ef85cb84d7570357f67b8f9e2df83dee31cf0b2d3bf532bdc2",
+    "Tests/ContractFixtures/SPEC012/Evidence/rfc-014-p06/exit-review.md": "8e10930d783fcb2cbfb459578997d7fe5b0dc63f97bfea3128b408a948598f17",
+    "Tests/ContractFixtures/SPEC012/Evidence/rfc-014-p06/verify-exit-evidence.py": "a6813e249e442677e6fe5559f9f8c9d1a59f20f227cb0f1a2c2cf7bd2258830d"
+  },
+  "implementation_inputs_unchanged_since_431293f9": true,
+  "independent_review_input": "ddf092a1",
+  "mismatches": [],
+  "original_counterexample_replay": {
+    "core_receipt": ".build/contracts/spec-006-rfc-014/dd5d4849463055f2-hwlll28l/macos-static/result.json",
+    "core_receipt_sha256": "97777496e89594aff076fa54a3eb25f59639a6f111068328c23c0060e230e8f9",
+    "expected_assertion_change": {
+      "after": "precondition(began == 0 && outcome == .invalidModelAccess && released == 1)",
+      "before": "precondition(began == 1 && outcome == .capacityExhausted && released == 1)"
+    },
+    "files": {
+      ".build/contracts/spec-012-p06-repair-review/CounterCanvas.o": "c880f6043c3b062d56784914830be995e416a2f66647c9f47c60a3e249e9f13f",
+      ".build/contracts/spec-012-p06-repair-review/CounterCanvas.swift": "500b43674767130eda96f8a3499eca168104875036d9375d4ccac49c08342bdb",
+      ".build/contracts/spec-012-p06-repair-review/Main.swift": "623c7fda8ee6cbe50fe1633c41a035aee6d558323380a45de589c6d20e7ad387",
+      ".build/contracts/spec-012-p06-repair-review/binding-order": "425dc618c86df7d5d6475dbb06b6ba9e1aa9c0ffc65c54de629efac4ddcacbc4",
+      ".build/rfc014-p02/tool/debug/GiftUIMacros-tool": "9bbb7c7532d763b1908cdcabbe4b9b87c6a7eb0c07e83cc93cc9bb154b313285",
+      ".toolchains/host/swift-6.3.2-RELEASE-osx/usr/bin/swiftc": "d8e40107da0e2c1c59640a983faea326d5d2bddfe81f7609db14bade43c4a5b9",
+      "Tests/ContractFixtures/SPEC012/Evidence/rfc-014-p06/exit-review-binding/CounterCanvas.swift": "f705f0b057126d30c493bd1b2da1c982fb02816b96bca09ddc2bc39d231d094c",
+      "Tests/ContractFixtures/SPEC012/Evidence/rfc-014-p06/exit-review-binding/Main.swift": "1de583fb5cedbd0391b889da880535f570433a34020af430372550deeddc5c24"
+    },
+    "native_component_only": true,
+    "result": "stale-key draw: beginPathCalls=0 invalidModelAccess=true capacityExhausted=false releases=1",
+    "reviewed_source_commit": "431293f9a11fdf7c48020520a37f8be1c31ce304"
+  },
+  "profiles": {
+    "macos-dynamic": {
+      "analyzer_payload_delta_bytes": 1568,
+      "artifact_hashes_and_sizes": 217,
+      "checks": 43,
+      "counter_payload_delta_bytes": 784,
+      "current_recorded_inputs_match": true,
+      "input_hashes": 151,
+      "native_or_abi_log_verified": true,
+      "negative_diagnostics_verified": [
+        "missing-witness",
+        "async-draw",
+        "effect",
+        "inout-effect",
+        "closure-fallback",
+        "escape-staged-values",
+        "copy-staged-values",
+        "escape-source",
+        "copy-source",
+        "wrong-domain",
+        "escape-read",
+        "escape-context",
+        "missing-compiled-witness"
+      ],
+      "semantic_payload_slots_charged": 196,
+      "source_commit": "431293f9a11fdf7c48020520a37f8be1c31ce304",
+      "source_dirty": false
+    },
+    "macos-static": {
+      "analyzer_payload_delta_bytes": 1568,
+      "artifact_hashes_and_sizes": 217,
+      "checks": 43,
+      "counter_payload_delta_bytes": 784,
+      "current_recorded_inputs_match": true,
+      "input_hashes": 151,
+      "native_or_abi_log_verified": true,
+      "negative_diagnostics_verified": [
+        "missing-witness",
+        "async-draw",
+        "effect",
+        "inout-effect",
+        "closure-fallback",
+        "escape-staged-values",
+        "copy-staged-values",
+        "escape-source",
+        "copy-source",
+        "wrong-domain",
+        "escape-read",
+        "escape-context",
+        "missing-compiled-witness"
+      ],
+      "semantic_payload_slots_charged": 196,
+      "source_commit": "724389318964a02fd14dc94f5ac0db94b8e5764e",
+      "source_dirty": true
+    },
+    "nrf52840-embedded": {
+      "analyzer_payload_delta_bytes": 784,
+      "artifact_hashes_and_sizes": 188,
+      "checks": 42,
+      "counter_payload_delta_bytes": 784,
+      "current_recorded_inputs_match": true,
+      "input_hashes": 149,
+      "native_or_abi_log_verified": true,
+      "negative_diagnostics_verified": [
+        "missing-witness",
+        "async-draw",
+        "effect",
+        "inout-effect",
+        "closure-fallback",
+        "escape-staged-values",
+        "copy-staged-values",
+        "escape-source",
+        "copy-source",
+        "wrong-domain",
+        "escape-read",
+        "escape-context",
+        "missing-compiled-witness"
+      ],
+      "semantic_payload_slots_charged": 196,
+      "source_commit": "431293f9a11fdf7c48020520a37f8be1c31ce304",
+      "source_dirty": false
+    },
+    "raspberry-pi-armv6": {
+      "analyzer_payload_delta_bytes": 784,
+      "artifact_hashes_and_sizes": 190,
+      "checks": 42,
+      "counter_payload_delta_bytes": 784,
+      "current_recorded_inputs_match": true,
+      "input_hashes": 151,
+      "native_or_abi_log_verified": true,
+      "negative_diagnostics_verified": [
+        "missing-witness",
+        "async-draw",
+        "effect",
+        "inout-effect",
+        "closure-fallback",
+        "escape-staged-values",
+        "copy-staged-values",
+        "escape-source",
+        "copy-source",
+        "wrong-domain",
+        "escape-read",
+        "escape-context",
+        "missing-compiled-witness"
+      ],
+      "semantic_payload_slots_charged": 196,
+      "source_commit": "431293f9a11fdf7c48020520a37f8be1c31ce304",
+      "source_dirty": false
+    }
+  },
+  "reviewed_implementation": "431293f9",
+  "unchanged_controls": {
+    "Sources/GiftUIDrawing/PathConstruction.swift": "7fd45fdc43dc48defcd6edc4e4ba694767ff6c2ac47314a3b613ea72fb6fad41",
+    "Sources/GiftUIDrawing/StrokeSnapshot.swift": "3345b05fb9f6f219fb09e7aa4e7e7a9a18c70f77d192734c36a08d0f84836a51",
+    "Sources/GiftUIRasterCore/RasterStrokeCoverage.swift": "9e26044f3f7e99516742b686767cfe5a03d24d1efceee28f4d7ee6e21a90b579",
+    "Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFDrawingPlanStorage.swift": "e3e8680e972cc1c5dbdf188cc30aa007cd6a45a963968b310ead6cc039a0a855",
+    "Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFLivePathStorage.swift": "c7cc2e652dafdfd1cbfd2fe8db1ae8d98c2ab628743ecf2d8dafad553d364eef",
+    "Tests/ContractFixtures/SPEC012/raster-vectors.yaml": "37ec5e69867dbc04c053e050e3a74bc21e14695f990ce4405c735e177cf20afb",
+    "scripts/contracts/check-spec-012-raster-vectors.rb": "e1f8fbc582cb95834c26a3dab137850d4692fdca2a5de26e162db44aafb5f58e"
+  },
+  "verification_command": "python3 Tests/ContractFixtures/SPEC012/Evidence/rfc-014-p06/verify-repair-evidence.py",
+  "verified": true,
+  "verifier_sha256": "1df09dfbe072c7e372a5e391f492770bc13ba6c965a7074e1a218ccccdee4f9d"
+}

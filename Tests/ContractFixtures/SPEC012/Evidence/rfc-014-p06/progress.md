@@ -1,5 +1,19 @@
 # RFC-014 P06 progress
 
+## Independent repair exit-review recommendation — 2026-10-11
+
+[Separate Strong repair review](repair-exit-review.md) resolves P06-R1 and
+recommends **PASS for finite P06**, subject to parent package disposition.
+The original counterexample now yields zero beginPath calls, invalidModelAccess
+and one release; its historical inputs/report are unchanged. Independent
+verification matches all 602 inputs, 812 artifacts, receipts/compiler/tool
+identities, unchanged physical layouts and historical controls. No other blocker
+was found. No production repair was performed by the reviewer.
+
+Counter remains **0/2**. T10.1, DR-RD acceptance and P07–P12/full-conformance,
+resource and target-execution obligations remain open. Review records and links
+passed `scripts/validate-governance.rb` and `git diff --check`.
+
 ## P06-R1 final repair handoff — four profiles refreshed, independent review pending
 
 Implementation repair: `72438931..431293f9`; following evidence-only commit

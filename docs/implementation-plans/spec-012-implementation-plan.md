@@ -71,7 +71,10 @@ scoped invocation/store work; existing package scope, checks and bounds remain.
   four-profile receipts, `verify-repair-evidence.py` and
   `repair-evidence-verification.json` map this correction to T10.1 / DR-007 /
   DR-RD-002/003. The original actual-owner reproduction and independent review
-  remain preserved; separate repair review and full acceptance remain pending. The shared receipt records
+  remain preserved. [Separate repair review](../../Tests/ContractFixtures/SPEC012/Evidence/rfc-014-p06/repair-exit-review.md)
+  resolves P06-R1 and recommends finite P06 PASS, with independent original-proof
+  replay and receipt verification. Parent package disposition and full acceptance
+  remain separate; T10.1 stays open. The shared receipt records
   scope limits and actual artifact identities for every tested seam.
 
 The single current acceptance matrix retains each criterion once. Its historical

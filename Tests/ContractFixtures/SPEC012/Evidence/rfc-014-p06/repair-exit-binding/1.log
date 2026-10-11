@@ -1,0 +1,7 @@
+/Users/eugene/work/GiftUI/.build/contracts/spec-012-p06-repair-review/CounterCanvas.swift:38:47: warning: extraneous duplicate parameter name; 'context' already has an argument label
+36 | 
+37 |     package init() {}
+38 |     package func _giftUIDraw(in bounds: Rect, context context: inout GraphicsContext,
+   |                                               `- warning: extraneous duplicate parameter name; 'context' already has an argument label
+39 |     read: borrowing _GiftUIFrameRead<D>) throws(DrawingError) {}
+40 | }
