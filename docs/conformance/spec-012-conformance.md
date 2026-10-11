@@ -21,7 +21,11 @@ superseded_by: null
 
 ## RFC-014 migration checkpoint
 
-P06 implementation evidence is ready for independent review under SPEC-012 T10.1. The
+The [independent P06 review](../../Tests/ContractFixtures/SPEC012/Evidence/rfc-014-p06/exit-review.md)
+recommends **BLOCKED** under SPEC-012 T10.1 on P06-R1: a stale Canvas model key can
+reach path construction before binding, changing the approved failure order.
+The actual-owner native reproduction and independently verified receipts are
+linked from that report. No production repair was made by the reviewer. The
 [shared receipt](../../Tests/ContractFixtures/SPEC012/Evidence/rfc-014-p06/progress.md)
 records four selected-component profiles, scoped stores/reads/semantic transfer,
 error and negative checks, retained production geometry, all17 immutable pixel

@@ -1,5 +1,22 @@
 # RFC-014 P06 progress
 
+## Independent exit-review result — 2026-10-11
+
+[Strong review](exit-review.md) recommends **BLOCKED** on P06-R1: generated model
+binding is lazy within the authored draw body, so path construction can execute
+before a stale-key failure and change failure precedence. The narrow actual-owner
+[reproduction](exit-review-binding/result.json) confirms one beginPath call and
+capacityExhausted instead of invalidModelAccess, with one staged release.
+Production is unchanged. Parent owns sequential repair and package disposition;
+no successor is authorized. Counter remains **0/2**.
+
+[Independent evidence verification](exit-review-evidence-verification.json)
+matches 602 P06/core input hashes, 812 artifact hashes/sizes, all receipt/compiler
+identities, negative diagnostics and seven baseline-unchanged controls. Dirty
+Static/nRF inputs match final implementation source. P07–P12 and T10.1/full
+acceptance remain open. Review validation: `scripts/validate-governance.rb` and
+`git diff --check` both passed.
+
 ## Independent exit-review dispatch — 2026-10-11
 
 - Input clean `5a24a271`; review `a17724b2..5a24a271`, with implementation

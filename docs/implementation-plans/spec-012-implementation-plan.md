@@ -64,7 +64,11 @@ scoped invocation/store work; existing package scope, checks and bounds remain.
   Fresh geometry/pixel controls map to DR-004/006; target layouts and narrowly
   stated allocation attribution map to DR-011/012. Four selected-component
   profiles are indexed in `Evidence/rfc-014-p06/final-index.json`. Independent
-  P06 review and full acceptance remain pending. The shared receipt records
+  [P06 independent review](../../Tests/ContractFixtures/SPEC012/Evidence/rfc-014-p06/exit-review.md)
+  recommends BLOCKED on P06-R1: model binding occurs after authored drawing can
+  begin. Its narrow actual-owner reproduction and independent receipt hash
+  verification map to T10.1 / DR-007 / DR-RD-002/003. Full acceptance remains
+  pending. The shared receipt records
   scope limits and actual artifact identities for every tested seam.
 
 The single current acceptance matrix retains each criterion once. Its historical

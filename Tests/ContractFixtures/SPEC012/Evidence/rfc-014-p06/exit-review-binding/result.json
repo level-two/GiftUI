@@ -1,0 +1,15 @@
+{
+  "core_receipt": ".build/contracts/spec-006-rfc-014/d4469901da4c0259-9wtdw756/macos-static/result.json",
+  "core_receipt_sha256": "a494b8ee7f4ef7a356c515cb74489319f71f9c8531d202b5fe9f8dade1b6bdef",
+  "files": {
+    ".build/contracts/spec-012-p06-exit-review/CounterCanvas.o": "94423e7f4296822341d8c5cefa723b1a6aaa52f9b39bc8faf2fa72b22a7289f3",
+    ".build/contracts/spec-012-p06-exit-review/CounterCanvas.swift": "2167b8dad3b09b87016dd80a79335f3670ce40c2ba04b309cfea61bc7e900221",
+    ".build/contracts/spec-012-p06-exit-review/binding-order": "7af7ab857a12d0954fce333a3f1b0ba75ca5bf7430f849635abe239c883134c6",
+    ".toolchains/host/swift-6.3.2-RELEASE-osx/usr/bin/swiftc": "d8e40107da0e2c1c59640a983faea326d5d2bddfe81f7609db14bade43c4a5b9",
+    "Tests/ContractFixtures/SPEC012/Evidence/rfc-014-p06/exit-review-binding/CounterCanvas.swift": "f705f0b057126d30c493bd1b2da1c982fb02816b96bca09ddc2bc39d231d094c",
+    "Tests/ContractFixtures/SPEC012/Evidence/rfc-014-p06/exit-review-binding/Main.swift": "1de583fb5cedbd0391b889da880535f570433a34020af430372550deeddc5c24"
+  },
+  "native_component_only": true,
+  "result": "stale-key draw: beginPathCalls=1 invalidModelAccess=false capacityExhausted=true releases=1",
+  "reviewed_source_commit": "909a7dab8581368aa776c5d93f7f2b0e33d68ec2"
+}
