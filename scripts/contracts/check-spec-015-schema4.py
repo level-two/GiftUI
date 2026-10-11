@@ -50,7 +50,8 @@ def run(label, command, diagnostic=None):
     result = subprocess.run(command, cwd=ROOT, capture_output=True, text=True)
     log = result.stdout + result.stderr
     (out / (label + '.log')).write_text(log)
-    okay = result.returncode == 0 if diagnostic is None else result.returncode != 0 and diagnostic in log
+    expected = diagnostic if isinstance(diagnostic, tuple) else (diagnostic,)
+    okay = result.returncode == 0 if diagnostic is None else result.returncode != 0 and all(text in log for text in expected)
     checks.append(dict(name=label, exit=result.returncode, passed=okay, diagnostic=diagnostic))
     if not okay:
         raise SystemExit(f'{label}: {out}\n{log}')
@@ -75,9 +76,12 @@ if args.activation_join:
                             '-o', out / 'RuntimeCycleProbe.o'])
     for label, filename, diagnostic in (
         ('activation-copy', 'ActivationJoinCopyNegative.swift', 'consumed more than once'),
-        ('activation-callback', 'ActivationJoinCallbackNegative.swift', 'escapes'),
-        ('activation-constant-callback', 'ActivationJoinConstantCallbackNegative.swift', 'escapes'),
-        ('activation-backing', 'ActivationJoinBackingNegative.swift', 'escapes'),
+        ('activation-callback', 'ActivationJoinCallbackNegative.swift',
+         ("lifetime-dependent variable 'escaped' escapes its scope", "lifetime of variable 'activationBacking'")),
+        ('activation-constant-callback', 'ActivationJoinConstantCallbackNegative.swift',
+         ("lifetime-dependent variable 'escaped' escapes its scope", "lifetime of variable 'activationBacking'")),
+        ('activation-backing', 'ActivationJoinBackingNegative.swift',
+         ('lifetime-dependent value escapes its scope', "scoped access to variable 'profile'")),
     ):
         negative = activation_root / filename
         inputs.append(negative)
