@@ -37,3 +37,28 @@ Full ARMv6/nRF linked resource pairs remain required where contracts prescribe
 them; existing support-module API failure should be identified before costly
 repetition of the same invalid source graph. Baseline correction and parent
 closure decisions must retain any such unmet prerequisite explicitly.
+
+## Parent-authorized continuation — initial stages complete
+
+Initial stages2–6 pass, including SPEC003 native Static two pristine matched6.4
+pairs (RAM444, code592, stack64). Stage1 stops at SPEC002 interface spelling
+checks before resources. Parent explicitly authorizes this continuation under
+the approved compiler correction; all mandatory baseline costs remain required.
+
+Continue with five fixed evidence-harness stages, each once:
+`003-static-latency`, `003-dynamic` (layout/allocation/latency and two pristine
+matched pairs), `003-arm-linked`, `003-nrf-linked`, `004-nrf-linked`.
+Preserve existing functions/checkers verbatim, compiler identities, optimization,
+ABI flags, pristine build/repeatability gates and resource ceilings. Target
+functions use project-local current approved SDK/toolchain environment and no
+hardware. nRF build outputs use .build/nrf52840/p08-resource-regression;
+ARMv6 outputs use .build/raspberry-pi/p08-resource-regression.
+
+Also inspect SPEC002 surface parser against its emitted6.4 package interface.
+One narrowly justified parser spelling correction plus one rerun of the exact
+macos-static RFC014 command is permitted; no missing contract declaration may be
+waived. If this is actual obsolete API rather than spelling, stop/report it.
+The overall maximum remains two narrowed repair cycles and the two-unproductive
+stop guard. No003/004 maintained driver edit is needed for these exact functions.
+Raw initial failure is retained. Full resource pairs cannot be substituted by
+layout/allocator results; all unmeasured dimensions remain explicit blockers.
