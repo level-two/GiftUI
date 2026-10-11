@@ -102,3 +102,17 @@ CanvasInvocationSource and producer Source are implicitly Copyable/Escapable.
 No production constraint change is applied. A concrete minimal compile proof
 and narrow proposed correction are being prepared for parent/maintainer review.
 No P06 exit or acceptance criterion is marked passed.
+
+## Scoped-source contract boundary — 2026-10-11
+
+Safe step 1 committed as `58cf89c7`. The next adapter step is held at the
+[exact Source constraint issue](scoped-source-constraint.md). A reproducible
+native compiler proof uses the actual P03 owner scope, distinguishes Copyable
+and Escapable rejection, and shows only the proposed protocol/generic changes
+compiling. The proposal is confined to Evidence; production constraints and
+normative specification declarations are unchanged. No static storage,
+invocation adapter or semantic join was started under unapproved constraints.
+
+Parent/maintainer decision is required before the proposed exact package API
+amendment. This is a current blocker, not deferred work or a new package. All
+remaining P06 exit work and separate Strong review remain open. Counter **0/2**.

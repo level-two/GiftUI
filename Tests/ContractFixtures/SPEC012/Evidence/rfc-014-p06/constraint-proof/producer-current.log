@@ -1,0 +1,21 @@
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC012/Evidence/rfc-014-p06/constraint-proof/producer-current.swift:5:5: error: global function 'producer(source:)' requires that 'ScopedCanvasSource<Model, Schema>' conform to 'Copyable'
+1 | import GiftUI
+2 | import GiftUIObservableState
+3 | package func producer<Source: CanvasInvocationSource>(source: inout Source) {}
+  |              `- note: 'where Source: Copyable' is implicit here
+4 | package func call<Model: ~Copyable, Schema>(source: inout ScopedCanvasSource<Model, Schema>) {
+5 |     producer(source: &source)
+  |     `- error: global function 'producer(source:)' requires that 'ScopedCanvasSource<Model, Schema>' conform to 'Copyable'
+6 | }
+7 | 
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC012/Evidence/rfc-014-p06/constraint-proof/producer-current.swift:5:5: error: global function 'producer(source:)' requires that 'ScopedCanvasSource<Model, Schema>' conform to 'Escapable'
+1 | import GiftUI
+2 | import GiftUIObservableState
+3 | package func producer<Source: CanvasInvocationSource>(source: inout Source) {}
+  |              `- note: 'where Source: Escapable' is implicit here
+4 | package func call<Model: ~Copyable, Schema>(source: inout ScopedCanvasSource<Model, Schema>) {
+5 |     producer(source: &source)
+  |     `- error: global function 'producer(source:)' requires that 'ScopedCanvasSource<Model, Schema>' conform to 'Escapable'
+6 | }
+7 | 

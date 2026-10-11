@@ -1,0 +1,15 @@
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC012/RuntimeDerived/ScopedSourceConstraint.swift:6:16: error: type 'ScopedCanvasSource<Model, Schema>' does not conform to protocol 'Copyable'
+ 4 | // Compile proof only. This declaration retains the actual P03 lifetime-bearing
+ 5 | // model scope, not a copyable raw pointer descriptor or a prebuilt read facade.
+ 6 | package struct ScopedCanvasSource<Model: ~Copyable, Schema>:
+   |                `- error: type 'ScopedCanvasSource<Model, Schema>' does not conform to protocol 'Copyable'
+ 7 |     ~Copyable, ~Escapable, CanvasInvocationSource
+ 8 | {
+
+/Users/eugene/work/GiftUI/Sources/GiftUIDrawing/CanvasInvocationSource.swift:3:18: note: type 'ScopedCanvasSource<Model, Schema>' does not conform to inherited protocol 'Copyable'
+ 1 | import GiftUI
+ 2 | 
+ 3 | package protocol CanvasInvocationSource {
+   |                  `- note: type 'ScopedCanvasSource<Model, Schema>' does not conform to inherited protocol 'Copyable'
+ 4 |     associatedtype Identity: Equatable, Sendable
+ 5 | 

@@ -1,0 +1,43 @@
+{
+  "compiler": ".toolchains/host/swift-6.3.2-RELEASE-osx/usr/bin/swiftc",
+  "compiler_sha256": "d8e40107da0e2c1c59640a983faea326d5d2bddfe81f7609db14bade43c4a5b9",
+  "core_receipt": ".build/contracts/spec-006-rfc-014/d18dacad362b4a35-znvim124/macos-static/result.json",
+  "core_receipt_sha256": "92bd30c763b4f2df0593d9fda99d4b269a9b1f65a4ac4e3526dddf59a1d46116",
+  "inputs": {
+    "Sources/GiftUIDrawing/CanvasInvocationSource.swift": "b526ad4cfc331cbb8d9dd10362919ef163fffe17485fa9bb385d9c4712c807f5",
+    "Sources/GiftUIDrawing/CanvasPlanProducer.swift": "8fa95373777fac5b7eb28aa98fc67d79995460814270dbaf7b664ad6a67da6c0",
+    "Sources/GiftUIObservableState/ObservableModelScope.swift": "6a370d5d89868af7d45197e360166b2ca30dc3b231efbc0e415872161956d77b",
+    "Tests/ContractFixtures/SPEC012/Evidence/rfc-014-p06/constraint-proof/reproduce.py": "689272642bc8546471d30a6b0faf5ddf5c11138eb11c776f6b6131492551d090",
+    "Tests/ContractFixtures/SPEC012/RuntimeDerived/ScopedSourceConstraint.swift": "f8f6b91e1443c1ba014365ca858b68a0ceff25e410cbb9f73aee29164a4175a5"
+  },
+  "observable_module_sha256": "dec7bb7325163ee1efd9f6e8b455e3cd19b040c10351af86aef0565abe747849",
+  "records_receipt": ".build/contracts/spec-006-records/tmpuu24enfv/macos-static/result.json",
+  "records_receipt_sha256": "cb186cef8154491e1321c049d9b75d9c3733c54b24448948067ce40fa81c5bbd",
+  "results": [
+    {
+      "case": "current",
+      "exit": 1,
+      "log_sha256": "0f3995915b7343115011a38ebaafa7d63e63152b69168e154edb37846c1fc506"
+    },
+    {
+      "case": "copyable-only-proposal",
+      "exit": 1,
+      "log_sha256": "edea6842481850aedc556f1a696ae02d495f027eebfd7110b18cff4242ee747c"
+    },
+    {
+      "case": "proposed",
+      "exit": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "case": "producer-current",
+      "exit": 1,
+      "log_sha256": "ad4c64bfe94e6d6dcf287a2063e458482266f3e267ecc760a75a358ae0b61512"
+    },
+    {
+      "case": "producer-proposed",
+      "exit": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ]
+}
