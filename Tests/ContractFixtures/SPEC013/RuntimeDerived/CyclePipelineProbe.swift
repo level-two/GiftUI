@@ -137,6 +137,23 @@ func exercisePipeline<G, C, R, H>(models: borrowing ObservableModelScope<CycleOw
                 expect(trace.pointee.cleanupOrder[index - 1] < trace.pointee.cleanupOrder[index])
             }
         }
+        // A rejected removal candidate must not change the target used by the
+        // still-published model and committed action table.
+        let preservedTarget = owner.rootIdentity!
+        let preservedRouting = owner.interaction.committedRevision
+        trace.pointee.show = false; trace.pointee.fault = .semanticAndObservablePublication
+        owner.changed = true
+        result = owner.runTracedPipeline()
+        guard case .failed(let rejectedRemoval) = result else { preconditionFailure("removal publication fault") }
+        expect(rejectedRemoval.stage == .semanticAndObservablePublication && rejectedRemoval.publication == nil)
+        cycleTrace("discarded-removal-target", owner.rootIdentity == preservedTarget)
+        expect(owner.rootIdentity == preservedTarget && owner.interaction.committedRevision == preservedRouting)
+        expect(root.generation(identity: preservedTarget, ordinal: 0, publishable: false) != nil)
+        let beforePreservedAction = trace.pointee.applied
+        trace.pointee.show = true; trace.pointee.fault = nil; trace.pointee.mutate = true
+        result = owner.runTracedPipeline()
+        guard case .completed = result else { preconditionFailure("action after discarded removal") }
+        expect(trace.pointee.applied == beforePreservedAction + 1 && owner.rootIdentity == preservedTarget)
         trace.pointee.fault = nil
         let staleIdentity = owner.rootIdentity!
         let staleRecord = owner.interaction.committedRecord(for: owner.actionIdentity!)!

@@ -124,6 +124,8 @@ where Geometry: CycleGeometry, Candidate: CycleCandidateBacking, Committed: Cycl
     var interactionCandidate = false
     var rootIdentity: SemanticCompleteIdentity?
     var actionIdentity: SemanticCompleteIdentity?
+    var candidateRootIdentity: SemanticCompleteIdentity?
+    var candidateActionIdentity: SemanticCompleteIdentity?
     var header: RenderPlanHeader?
     var provenance: FrameProvenance?
     var presentation: PresentationRevision?
@@ -316,6 +318,7 @@ where Geometry: CycleGeometry, Candidate: CycleCandidateBacking, Committed: Cycl
         if let error = boundary(.interactionCandidate) { return .failure(error) }
         if let error = interaction.beginCandidate(limits: limits.interaction) { return .failure(.focusedOwner(.interaction(error))) }
         interactionCandidate = true
+        candidateRootIdentity = nil; candidateActionIdentity = nil
         do throws(SemanticExpansionError) {
             return try semantic.withCandidateView { bank in
                 var target: SemanticCompleteIdentity?
@@ -335,10 +338,10 @@ where Geometry: CycleGeometry, Candidate: CycleCandidateBacking, Committed: Cycl
                         guard let generation = generations.generation(for: identity), interaction.assignGeneration(generation, to: identity) == nil else { return .failure(.execution(.identityExhausted)) }
                     case .preserved: break
                     }
-                    actionIdentity = identity
+                    candidateActionIdentity = identity
                     control.pointee.actionPoint = bounds.origin
                 }
-                rootIdentity = target
+                candidateRootIdentity = target
                 if let error = interaction.finishCandidate() { return .failure(.focusedOwner(.interaction(error))) }
                 return .advanced
             }
@@ -358,6 +361,7 @@ where Geometry: CycleGeometry, Candidate: CycleCandidateBacking, Committed: Cycl
         } catch { quiescent = true; return .failure(.focusedOwner(.observableState(error))) }
         do throws(SemanticExpansionError) { try semantic.publishCandidate(); semanticCandidate = false }
         catch { quiescent = true; return .failure(.focusedOwner(.semantic(error))) }
+        rootIdentity = candidateRootIdentity
         if let error = phase.recordPublishedSemanticRevision(revision) { return .failure(.execution(error)) }
         control.pointee.context = phase.context
         return .published(.init(semanticRevision: revision, changed: changed))
@@ -421,10 +425,11 @@ where Geometry: CycleGeometry, Candidate: CycleCandidateBacking, Committed: Cycl
         case .discardObservableCandidate:
             if observableCandidate { discardLocalCandidates() }
         case .discardInteractionCandidate: interaction.resolveCandidate(.discard); generations.resolveCandidate(committed: false); interactionCandidate = false
-        case .commitInteractionCandidate: interaction.resolveCandidate(.commit(presentation!)); generations.resolveCandidate(committed: true); interactionCandidate = false; control.pointee.commits += 1; committedPresentation = presentation; control.pointee.runtime.committedPresentation = presentation
+        case .commitInteractionCandidate: interaction.resolveCandidate(.commit(presentation!)); generations.resolveCandidate(committed: true); interactionCandidate = false; control.pointee.commits += 1; actionIdentity = candidateActionIdentity; committedPresentation = presentation; control.pointee.runtime.committedPresentation = presentation
         case .resetAttemptStorage:
             discardLocalCandidates()
             if interactionCandidate { interaction.resolveCandidate(.discard); generations.resolveCandidate(committed: false); interactionCandidate = false }
+            candidateRootIdentity = nil; candidateActionIdentity = nil
             geometry.reset()
             if frameActive { do throws(ObservableStateError) { try models.endFrame() } catch { quiescent = true }; frameActive = false }
         }

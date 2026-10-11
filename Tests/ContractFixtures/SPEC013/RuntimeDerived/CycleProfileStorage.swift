@@ -595,7 +595,7 @@ func cycleConfiguredLimitProbe() -> Int {
             precondition(terminal.failure == .nonRetryableRefusal(.endpoint))
             precondition(terminal.disposition.presentationIntentState == .unavailable)
             precondition(control.unavailable && control.committedRecords == 0)
-            precondition(control.applied == 4)
+            precondition(control.applied == 5)
         } else {
             let stage: RuntimeCompletePipelineStage = switch axis {
             case 0, 2: .canvasInvocationAndPlan

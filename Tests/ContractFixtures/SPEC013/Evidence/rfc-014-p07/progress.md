@@ -917,3 +917,23 @@ and subsequent action dispatch. This is an unproved current P07 correctness case
 not deferred scope, and needs a focused regression/disposition before package exit.
 Malformed Drawing append rollback and final fresh four-route/independent Strong
 exit evidence also remain. P08 and complete-image/hardware claims remain excluded.
+
+## Lifecycle step 4 — discarded removal preserves published target
+
+A focused regression reproduced the premature root-identity replacement against
+849b7bd3: `discarded-removal-target=false` in the isolated
+`.build/contracts/spec-013-runtime-cycle/tmpr4kp0gt3/macos-static/removal-regression/execute.log`.
+Candidate root/action identities now remain attempt-local until successful semantic
+publication / accepted Interaction commit respectively. Attempt reset clears both
+candidate fields; refusal preserves the committed action identity. The regression
+removes the root, fails publication, verifies published root/routing/generation,
+then dispatches one later checked mutation against the preserved root. Existing
+successful removal, refused offer, stale-target cancellation and accepted retry
+follow in the same actual-owner transcript.
+
+Fresh [native gate](lifecycle-step-4-macos-static.json): **3385 assertions,
+12 negative controls**, zero failures. [Actual profile transcripts](lifecycle-step-4-logical-transcripts.json)
+match; [storage audit](lifecycle-step-4-storage-regions.json) includes the new
+candidate fields in actual metadata size. Formatter and whitespace checks pass.
+The red/green repair was productive; resumed guard remains **0/2**. Malformed
+Drawing rollback and the final four-route/independent exit review remain.
