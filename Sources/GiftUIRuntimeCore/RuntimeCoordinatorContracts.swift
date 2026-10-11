@@ -28,3 +28,10 @@ package protocol RuntimeAuditedExecutionProfileBinding: ~Copyable, ~Escapable {
     where Endpoint.Sink: DrawingOperationSink
     var storageAudit: RuntimeStorageAudit { get }
 }
+
+/// Internal cleanup of resources retained by the consumed opportunity. The
+/// execution protocol stays independent of runtime storage and teardown.
+package protocol RuntimeOpportunityQuiescence: ~Copyable, ~Escapable {
+    var isOpportunityQuiescent: Bool { get }
+    mutating func quiesceOpportunity()
+}

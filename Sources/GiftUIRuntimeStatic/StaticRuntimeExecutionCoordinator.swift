@@ -17,7 +17,7 @@ package struct StaticRuntimeExecutionCoordinator<Binding, Admission, Opportunity
 where
     Binding: StaticExecutionProfileBinding & ~Copyable & ~Escapable,
     Admission: ExecutionAdmissionSink & ~Copyable & ~Escapable,
-    Opportunity: ExecutionOpportunityRunner & ~Copyable & ~Escapable
+    Opportunity: ExecutionOpportunityRunner & RuntimeOpportunityQuiescence & ~Copyable & ~Escapable
 {
     package typealias StateChangeFact = Admission.StateChangeFact
     package typealias CompletionFact = Admission.CompletionFact
@@ -72,13 +72,14 @@ where
 
     package mutating func quiesce() {
         binding.quiesce()
+        opportunity.quiesceOpportunity()
     }
 
-    /// Transfers the opportunity only after synchronous binding quiescence. The
+    /// Transfers the opportunity only after synchronous coordinator quiescence. The
     /// returned value retains all of its original backing lifetime dependence.
     @_lifetime(copy self)
     package consuming func takeQuiescedOpportunity() -> Opportunity? {
-        guard binding.isQuiescent else { return nil }
+        guard binding.isQuiescent && opportunity.isOpportunityQuiescent else { return nil }
         return consume opportunity
     }
 
@@ -100,5 +101,5 @@ where
     package var profile: RuntimeProfileKind { .static }
     package var storageAudit: RuntimeStorageAudit { binding.storageAudit }
     package var executionContext: ExecutionContext { binding.executionContext }
-    package var isQuiescent: Bool { binding.isQuiescent }
+    package var isQuiescent: Bool { binding.isQuiescent && opportunity.isOpportunityQuiescent }
 }

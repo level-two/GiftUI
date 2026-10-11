@@ -5,7 +5,7 @@ import GiftUIRuntimeCore
 
 // Real P03 storage scope, not a pointer descriptor or mock read domain.
 struct ScopedCoordinator<Model: ~Copyable, Schema>:
-    ~Copyable, ~Escapable, ExecutionAdmissionSink, ExecutionOpportunityRunner
+    ~Copyable, ~Escapable, ExecutionAdmissionSink, ExecutionOpportunityRunner, RuntimeOpportunityQuiescence
 {
     typealias StateChangeFact = UInt8
     typealias CompletionFact = UInt16
@@ -16,6 +16,8 @@ struct ScopedCoordinator<Model: ~Copyable, Schema>:
     init(models: consuming ObservableModelScope<Model, Schema>) {
         self.models = consume models
     }
+    var isOpportunityQuiescent = false
+    mutating func quiesceOpportunity() { isOpportunityQuiescent = true }
     var context: ExecutionContext {
         .init(cycle: nil, semanticRevision: nil, candidateFrame: nil, phase: .idle)
     }

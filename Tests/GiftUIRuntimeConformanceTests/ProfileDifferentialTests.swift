@@ -244,7 +244,9 @@ private struct DifferentialAdmission: ExecutionAdmissionSink {
     }
 }
 
-private struct DifferentialOpportunity: ExecutionOpportunityRunner {
+private struct DifferentialOpportunity: ExecutionOpportunityRunner, RuntimeOpportunityQuiescence {
+    var isOpportunityQuiescent = false
+    mutating func quiesceOpportunity() { isOpportunityQuiescent = true }
     mutating func runOpportunity() -> RunCycleResult<RuntimeOwnerFailure> {
         .failure(
             ExecutionContext(

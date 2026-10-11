@@ -10,7 +10,13 @@ import GiftUIRuntimeDynamic
 import GiftUISemanticCore
 import CycleSchema
 
-extension CyclePipelineOwner: ExecutionOpportunityRunner {
+extension CyclePipelineOwner: ExecutionOpportunityRunner, RuntimeOpportunityQuiescence {
+    var isOpportunityQuiescent: Bool { presentationTeardownComplete }
+    mutating func quiesceOpportunity() {
+        quiescent = true
+        control.pointee.unavailable = true
+        if phase.context.phase == .idle { terminatePresentation() }
+    }
     mutating func runOpportunity() -> RunCycleResult<RuntimeOwnerFailure> {
         guard phase.context.phase == .idle else {
             return .failure(phase.context, .execution(.reentrancyViolation), nil)
@@ -92,8 +98,6 @@ struct CycleExecutionBinding: ~Copyable, ~Escapable, StaticExecutionProfileBindi
         guard !isQuiescent else { return }
         control.pointee.unavailable = true
         control.pointee.admission.resetAll()
-        do throws(ObservableStateError) { try root.shutdown() }
-        catch { models.requireStop() }
     }
 }
 #if !hasFeature(Embedded)
@@ -177,7 +181,12 @@ func cycleConcreteCoordinator<G, C, R, H>(owner: consuming CyclePipelineOwner<G,
         }
         precondition(coordinator.opportunity.geometry.storageMeasurement() == geometryBefore)
         precondition(cycleMeasureInteraction(coordinator.opportunity.interaction) == interactionBefore)
-        let lifecycleChecks = exerciseConcreteLifecycle(&coordinator, control: control)
+        let lifecycleChecks = control.pointee.idleQuiesceMode == 0
+            ? exerciseConcreteLifecycle(&coordinator, control: control)
+            : exerciseConcreteIdleQuiescence(&coordinator, control: control)
+        precondition(coordinator.opportunity.interaction.committedRecordCount == 0)
+        precondition(coordinator.opportunity.recovery.pendingIntent == nil && !coordinator.opportunity.recovery.wakes.wakeOutstanding)
+        precondition(coordinator.opportunity.rootIdentity == nil && coordinator.opportunity.presentationTeardownComplete)
         var returned = coordinator.takeQuiescedOpportunity()!
         precondition(returned.geometry.storageMeasurement() == geometryBefore)
         precondition(cycleMeasureInteraction(returned.interaction) == interactionBefore)
@@ -198,7 +207,12 @@ func cycleConcreteCoordinator<G, C, R, H>(owner: consuming CyclePipelineOwner<G,
     }
     precondition(coordinator.opportunity.geometry.storageMeasurement() == geometryBefore)
     precondition(cycleMeasureInteraction(coordinator.opportunity.interaction) == interactionBefore)
-    let lifecycleChecks = exerciseConcreteLifecycle(&coordinator, control: control)
+    let lifecycleChecks = control.pointee.idleQuiesceMode == 0
+            ? exerciseConcreteLifecycle(&coordinator, control: control)
+            : exerciseConcreteIdleQuiescence(&coordinator, control: control)
+        precondition(coordinator.opportunity.interaction.committedRecordCount == 0)
+        precondition(coordinator.opportunity.recovery.pendingIntent == nil && !coordinator.opportunity.recovery.wakes.wakeOutstanding)
+        precondition(coordinator.opportunity.rootIdentity == nil && coordinator.opportunity.presentationTeardownComplete)
     var returned = coordinator.takeQuiescedOpportunity()!
     precondition(returned.geometry.storageMeasurement() == geometryBefore)
     precondition(cycleMeasureInteraction(returned.interaction) == interactionBefore)
@@ -341,14 +355,14 @@ func exerciseConcreteLifecycle<C: GiftUIRuntimeProfileCoordinator & ~Copyable & 
         guard case .failure(_, .nonRetryableRefusal(.endpoint), let stopped) = coordinator.runOpportunity() else { preconditionFailure("nonretryable terminal") }
         expect(stopped?.presentationIntentState == .unavailable && stopped?.presentationPending == nil)
     }
-    expect(coordinator.isQuiescent && control.pointee.committedRecords == 0)
+    expect(coordinator.isQuiescent && control.pointee.committedRecords == 0 && control.pointee.teardowns == 1)
     expect(control.pointee.admission.pointerCount == 0 && !control.pointee.mutate)
     expect(control.pointee.applied == applied && control.pointee.streams == streams)
     let finalized = control.pointee.finalized
     coordinator.quiesce(); coordinator.quiesce()
     expect(coordinator.submit(stateChange: 1).result == .unavailable)
     guard case .failure(_, .execution(.requiredFacilityUnavailable), nil) = coordinator.runOpportunity() else { preconditionFailure("terminal entry") }
-    expect(control.pointee.finalized == finalized && control.pointee.applied == applied)
+    expect(control.pointee.finalized == finalized && control.pointee.applied == applied && control.pointee.teardowns == 1)
     return checks
 }
 
@@ -449,5 +463,42 @@ func exerciseOrdinaryFailureRecovery<G, C, R, H>(_ owner: inout CyclePipelineOwn
     owner.control.pointee.offer = .accepted
     guard case .success = owner.runOpportunity() else { preconditionFailure("normal operation after ordinary failures") }
     expect(owner.control.pointee.applied == applied && owner.recovery.pendingIntent == nil)
+    return checks
+}
+
+
+func exerciseConcreteIdleQuiescence<C: GiftUIRuntimeProfileCoordinator & ~Copyable & ~Escapable>(_ coordinator: inout C, control: UnsafeMutablePointer<CycleControl>) -> Int where C.StateChangeFact == UInt8, C.CompletionFact == UInt16, C.OwnerFailure == RuntimeOwnerFailure {
+    var checks = 0
+    func expect(_ value: Bool) { checks += 1; precondition(value, "idle coordinator quiescence") }
+    guard case .success(let ready) = coordinator.runOpportunity() else { preconditionFailure("healthy idle baseline") }
+    let sequence: UInt32 = coordinator.storageAudit.limits.execution.maximumInputEvents == 2 ? 1 : 0
+    let down = NormalizedPointerEvent(phase: .down, position: control.pointee.actionPoint, source: .init(rawValue: 0), sequence: .init(rawValue: sequence), ordinal: .init(rawValue: 0), presentationRevision: ready.committedPresentationRevision!)
+    expect(coordinator.submit(pointer: down).result == .queued)
+    guard case .success(let captured) = coordinator.runOpportunity() else { preconditionFailure("capture before idle quiescence") }
+    expect(captured.admission.inputEventCount == 1 && captured.admission.semanticActionCount == 0)
+    expect(control.pointee.runtime.pointer.capture.current != nil && control.pointee.committedRecords == 1)
+    if control.pointee.idleQuiesceMode == 2 {
+        control.pointee.offer = .backpressured
+        guard case .operational(.backpressured, let refused) = coordinator.runOpportunity() else { preconditionFailure("pending before idle quiescence") }
+        expect(refused.presentationPending?.retryableRefusalCount == 0 && refused.presentationIntentState == .pending)
+        expect(control.pointee.runtime.pointer.capture.current != nil && control.pointee.committedRecords == 1)
+    }
+    expect(coordinator.submit(stateChange: 1).result == .queued)
+    let applied = control.pointee.applied, finalized = control.pointee.finalized, streams = control.pointee.streams
+    expect(control.pointee.teardowns == 0)
+    coordinator.quiesce()
+    expect(coordinator.isQuiescent && control.pointee.teardowns == 1)
+    expect(control.pointee.runtime.pointer.capture.current == nil && control.pointee.runtime.pointer.source == nil)
+    expect(control.pointee.committedRecords == 0 && !control.pointee.hasRoot)
+    expect(control.pointee.admission.pointerCount == 0 && !control.pointee.mutate)
+    expect(control.pointee.applied == applied && control.pointee.finalized == finalized && control.pointee.streams == streams)
+    coordinator.quiesce(); coordinator.quiesce()
+    expect(control.pointee.teardowns == 1)
+    expect(coordinator.submit(pointer: down).result == .unavailable)
+    expect(coordinator.submit(stateChange: 1).result == .unavailable)
+    expect(coordinator.submit(completion: 1).result == .unavailable)
+    guard case .failure(_, .execution(.requiredFacilityUnavailable), nil) = coordinator.runOpportunity() else { preconditionFailure("idle terminal entry") }
+    expect(control.pointee.applied == applied && control.pointee.finalized == finalized && control.pointee.streams == streams && control.pointee.teardowns == 1)
+    cycleTrace("idle-quiesce", (control.pointee.idleQuiesceMode, control.pointee.teardowns, control.pointee.committedRecords, control.pointee.runtime.pointer.capture.current == nil))
     return checks
 }

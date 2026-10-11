@@ -1094,3 +1094,38 @@ match actual profiles and [all 26 measured fields](repair-r1-storage-regions.jso
 reconcile. Input hashes match final sources. First repair validation passes;
 resumed consecutive unproductive repairs remain **0/2**. R2, fresh final four
 routes and separate rereview remain required. No P07 acceptance or P08 work.
+
+
+## P07-R2 repair — concrete opportunity quiescence
+
+R2 from the preserved [independent FAIL report](independent-exit-review.md) is
+repaired pending rereview. Both concrete coordinators stop binding admission,
+then request cleanup from their consumed opportunity through a minimal package-only
+`RuntimeOpportunityQuiescence` hook. The approved common coordinator and
+`ExecutionOpportunityRunner` method signatures and construction/ownership duties
+remain unchanged. The hook exposes actual existing owner cleanup state; it adds
+no policy, capacity, compiler or contract. Coordinator quiescence and opportunity
+extraction require both binding stop and opportunity cleanup completion.
+
+The actual owner synchronously releases idle Interaction routing, pointer capture
+and sequence/source correlation, pending recovery/wakes, queued admissions and
+root identities before returning. Terminal and repeated calls share one guarded
+teardown. A stop during real scoped derivation marks the owner unavailable while
+retaining its live frame; mandatory attempt cleanup/finalization releases that
+frame before exactly one teardown completes. The completion observation is based
+on this actual deferred path, preventing an admission stop from falsely reporting
+finished cleanup. The real Static/Dynamic regression covers idle live capture,
+retained backpressure recovery, repeated stop, terminal stop and scoped deferral.
+All conformers used by the four-route fixture are compiled; the existing broader
+unit fixture supplies the same minimal hook for its later repository gate.
+
+Fresh [native R2 receipt](repair-r2-macos-static.json): **5904 assertions, zero
+failures, twelve compiler negatives**. [Complete values](repair-r2-logical-transcripts.json)
+and [26-field backing descriptors](repair-r2-storage-regions.json) match both
+actual profiles. All input, compiler, core-receipt and artifact hashes verify.
+One initial fixture setup compile error issued model identities in a narrower
+typed-throws scope; moving issuance to the existing outer scope corrected that
+known cause. The bounded repair made progress and the resumed consecutive
+unproductive-repair count remains **0/2**. Formatter, whitespace and governance
+checks pass. Final fresh four routes and separate rereview remain required;
+the original FAIL is preserved and P07 is not accepted.

@@ -38,6 +38,24 @@ func exercisePipeline<G, C, R, H>(models: borrowing ObservableModelScope<CycleOw
         expect(trace.pointee.stages == 2047 && trace.pointee.finalized == 1 && trace.pointee.commits == 1)
         expect(models.phase == .mutating && values.count == 0)
         expect(owner.interaction.committedRecordCount == 1)
+        if trace.pointee.idleQuiesceMode == 3 {
+            // A stop request during an actual scoped derivation must leave its
+            // backing alive until mandatory attempt cleanup/finalization ends.
+            expect(owner.admitAndSeal() == .advanced && owner.applyAdmittedWork() == .applied(false))
+            expect(owner.freezeObservableMutation() == .advanced && owner.beginObservableCandidateAndExpandSemantics() == .advanced)
+            expect(owner.frameActive && values.count == 1 && models.phase == .reading)
+            owner.quiesceOpportunity()
+            expect(trace.pointee.unavailable && !owner.isOpportunityQuiescent && trace.pointee.teardowns == 0)
+            expect(owner.frameActive && values.count == 1 && owner.interaction.committedRecordCount == 1)
+            owner.cleanup(.resetAttemptStorage)
+            owner.finalizePipeline()
+            expect(owner.isOpportunityQuiescent && trace.pointee.teardowns == 1)
+            expect(!owner.frameActive && values.count == 0 && owner.interaction.committedRecordCount == 0 && owner.rootIdentity == nil)
+            owner.quiesceOpportunity()
+            expect(trace.pointee.teardowns == 1)
+            cycleTrace("deferred-quiesce", (owner.isOpportunityQuiescent, trace.pointee.teardowns))
+            return owner.returnWorkspaces(checks: checks)
+        }
         // Reset a real incomplete attempt after an earlier publication. The
         // enclosing factory still owns the same semantic/model backing; reset
         // must release candidate work without retiring that live publication.

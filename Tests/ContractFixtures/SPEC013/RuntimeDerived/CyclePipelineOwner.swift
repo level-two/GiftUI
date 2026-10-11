@@ -61,6 +61,8 @@ struct CycleControl {
         admission.cancel(source: source, sequence: sequence)
     }
     var actionPoint = Point(x: 0, y: 0)
+    var idleQuiesceMode: UInt8 = 0
+    var teardowns = 0
     var terminalRetry = false
     var failAfterMutation = false
     var cleanupOrder: InlineArray<9, UInt8> = .init(repeating: 255)
@@ -135,6 +137,7 @@ where Geometry: CycleGeometry, Candidate: CycleCandidateBacking, Committed: Cycl
     var presentationIntentState: PresentationIntentState { quiescent || control.pointee.unavailable ? .unavailable : pending ? .pending : .satisfied }
     var hasAllocatedCandidateFrame: Bool { phase.context.candidateFrame != nil }
     var quiescent = false
+    var presentationTeardownComplete = false
     @_lifetime(copy models, copy root, copy semantic, copy values, borrow control)
     init(models: consuming ObservableModelScope<CycleOwnedModel, CycleModelSchema>, root: consuming ObservableStateRootScope<CycleOwnedModel, SemanticCompleteIdentity>, semantic: consuming SemanticRecordStore<CyclePayload>, values: consuming CanvasStagedValues<SemanticRecordReference, CycleValueTable>, geometry: consuming Geometry, interaction: consuming InteractionOwnedKeyState<Candidate, Committed, Hits>, control: borrowing UnsafeMutablePointer<CycleControl>, limits: RuntimeProfileLimits) {
         self.models = consume models; self.root = consume root; self.semantic = consume semantic; self.values = consume values
@@ -154,23 +157,32 @@ where Geometry: CycleGeometry, Candidate: CycleCandidateBacking, Committed: Cycl
         return result
     }
     mutating func terminatePresentation() {
-        guard !control.pointee.unavailable else { return }
+        guard !presentationTeardownComplete else { return }
         // Called only after the synchronous attempt finalized and released reads.
         precondition(!frameActive && !observableCandidate && !semanticCandidate && !interactionCandidate)
+        presentationTeardownComplete = true
+        control.pointee.teardowns += 1
         control.pointee.unavailable = true
         quiescent = true; pending = false
         control.pointee.admission.resetAll()
         control.pointee.runtime.pointer.capture.cancel()
+        control.pointee.runtime.pointer.sequence.cancelCurrentSequence()
+        control.pointee.runtime.pointer.source = nil
+        if let retained = recovery.pendingIntent { recovery.clearPending(for: retained.semanticRevision) }
+        _ = recovery.acknowledgeWakeAtIdleOpportunity()
         interaction.resetAllStorage()
         control.pointee.committedRecords = 0
         do throws(ObservableStateError) { try root.shutdown() }
         catch { models.requireStop() }
+        rootIdentity = nil; actionIdentity = nil
+        control.pointee.hasRoot = false
         cycleTrace("terminal", (interaction.committedRecordCount, values.count, models.phase))
     }
     mutating func boundary(_ stage: RuntimeCompletePipelineStage) -> RunCycleFailure<RuntimeOwnerFailure>? {
         control.pointee.context = phase.context
         cycleTrace("stage", stage)
         control.pointee.stages |= UInt16(1) << stage.rawValue
+        if control.pointee.unavailable { return .execution(.requiredFacilityUnavailable) }
         if control.pointee.fault == stage { return control.pointee.boundaryFailure }
         return nil
     }
@@ -456,5 +468,6 @@ where Geometry: CycleGeometry, Candidate: CycleCandidateBacking, Committed: Cycl
         control.pointee.context = phase.context
         cycleTrace("finalized", (completedContext, control.pointee.applied, control.pointee.commits, interaction.committedRecordCount, values.count, models.phase))
         control.pointee.finalized += 1
+        if quiescent { terminatePresentation() }
     }
 }

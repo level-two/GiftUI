@@ -427,6 +427,9 @@ func cycleFactoryProbe() -> Int {
         let staticOwner = try models.issue()
         let dynamicOwner = try models.issue()
         let retryStaticOwner = try models.issue(), retryDynamicOwner = try models.issue()
+        let idleStaticOwner = try models.issue(), pendingStaticOwner = try models.issue()
+        let idleDynamicOwner = try models.issue(), pendingDynamicOwner = try models.issue()
+        let activeStaticOwner = try models.issue(), activeDynamicOwner = try models.issue()
         do throws(SemanticExpansionError) {
             var storage = StaticCycleProfileStorage(modelOwner: staticOwner, semanticOwner: try semantic.issue())
             precondition({ if case .valid = storage.audit() { return true }; return false }())
@@ -460,6 +463,16 @@ func cycleFactoryProbe() -> Int {
             retryDynamic.control.terminalRetry = true
             checks += retryDynamic.run()
             #endif
+            for mode: UInt8 in [1, 2, 3] {
+                var idleStatic = StaticCycleProfileStorage(modelOwner: mode == 1 ? idleStaticOwner : mode == 2 ? pendingStaticOwner : activeStaticOwner, semanticOwner: try semantic.issue())
+                idleStatic.control.idleQuiesceMode = mode
+                checks += idleStatic.run()
+                #if !hasFeature(Embedded)
+                var idleDynamic = DynamicCycleProfileStorage(modelOwner: mode == 1 ? idleDynamicOwner : mode == 2 ? pendingDynamicOwner : activeDynamicOwner, semanticOwner: try semantic.issue())
+                idleDynamic.control.idleQuiesceMode = mode
+                checks += idleDynamic.run()
+                #endif
+            }
             return checks
         } catch { preconditionFailure("factory semantic identity") }
     } catch { preconditionFailure("factory model identity") }
