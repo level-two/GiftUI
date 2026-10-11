@@ -52,6 +52,15 @@ package struct ObservableModelScope<Model: ~Copyable, Schema>: ~Copyable, ~Escap
         needsCapture = other.needsCapture
     }
 
+    // Concrete joins must match the actual owner backing, not merely a schema
+    // or a numeric identity issued by a different namespace.
+    package borrowing func sharesOwner(with other: borrowing ObservableModelScope<Model, Schema>)
+        -> Bool
+    {
+        ownership == other.ownership && models.baseAddress == other.models.baseAddress
+            && schema == other.schema
+    }
+
     package borrowing func validateTicket(_ ticket: borrowing ObservableModelTicket<Schema>)
         throws(ObservableStateError)
     {

@@ -29,6 +29,7 @@ where Domain.Slot == ObservableModelReadSlot<Model> {
         body: (borrowing _GiftUIFrameRead<Domain>) throws(_GiftUIAccessFailure) -> Declaration.Body
     ) -> SemanticBodyEvaluation<Declaration.Body, ObservableStateError>
     where Declaration.Domain == Domain, Declaration.Body.Domain == Domain {
+        guard root.belongs(to: models) else { return .bindingFailure(.incompatibleAssociation) }
         if let failure = beforeBody() { return .semanticFailure(failure) }
         do throws(_GiftUIAccessFailure) {
             return .body(try models.withRead(Domain.self, body))
@@ -43,6 +44,7 @@ where Domain.Slot == ObservableModelReadSlot<Model> {
             throws(_GiftUIAccessFailure) -> Declaration.Body
     ) -> SemanticBodyEvaluation<Declaration.Body, ObservableStateError>
     where Declaration.Domain == Domain, Declaration.Body.Domain == Domain {
+        guard root.belongs(to: models) else { return .bindingFailure(.incompatibleAssociation) }
         do throws(ObservableStateError) {
             return try root.withBoundDeclaration(declaration, identity: structuralIdentity) {
                 (bound) throws(ObservableStateError) in

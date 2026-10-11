@@ -88,7 +88,7 @@ run('cycle-lowering', [macro, '--lower-source', fixture / 'Cycle.schema.json', f
 module('CycleSchema', [out / 'CycleSchema.swift'])
 module('CyclePresentation', [out / 'Cycle.swift'])
 module('CycleTable', [out / 'CycleTable.swift'])
-module('RuntimeCycleProbe', [ROOT / 'Tests/ContractFixtures/SPEC013/RuntimeDerived/RuntimeValuesProbe.swift', ROOT / 'Tests/ContractFixtures/SPEC013/RuntimeDerived/ScopedOwnerProbe.swift', ROOT / 'Tests/ContractFixtures/SPEC013/RuntimeDerived/ScopedCoordinatorProbe.swift', ROOT / 'Tests/ContractFixtures/SPEC013/RuntimeDerived/FrameLeaseProbe.swift', ROOT / 'Tests/ContractFixtures/SPEC013/RuntimeDerived/ScopedSemanticProbe.swift', ROOT / 'Tests/ContractFixtures/SPEC013/RuntimeDerived/ConcreteBindingProbe.swift'])
+module('RuntimeCycleProbe', [ROOT / 'Tests/ContractFixtures/SPEC013/RuntimeDerived/RuntimeValuesProbe.swift', ROOT / 'Tests/ContractFixtures/SPEC013/RuntimeDerived/ScopedOwnerProbe.swift', ROOT / 'Tests/ContractFixtures/SPEC013/RuntimeDerived/ScopedCoordinatorProbe.swift', ROOT / 'Tests/ContractFixtures/SPEC013/RuntimeDerived/FrameLeaseProbe.swift', ROOT / 'Tests/ContractFixtures/SPEC013/RuntimeDerived/ScopedSemanticProbe.swift', ROOT / 'Tests/ContractFixtures/SPEC013/RuntimeDerived/ConcreteBindingProbe.swift', fixture / 'CycleModel.swift', fixture / 'CycleSemanticProbe.swift'])
 for name, source, diagnostic in (
     ('escape-owner', 'struct Escape<M: ~Copyable, S>: ~Copyable { let owner: ScopedOwner<M, S> }', 'non-Escapable'),
     ('copy-owner', 'func copyOwner<M: ~Copyable, S>(_ owner: borrowing ScopedOwner<M, S>) { let other = copy owner; _ = other }', 'noncopyable'),
@@ -116,9 +116,19 @@ for name, source, diagnostic in (
     run(name, [compiler, *flags, '-module-name', 'ScopedSemanticNegative', '-emit-object',
                ROOT / 'Tests/ContractFixtures/SPEC013/RuntimeDerived/ScopedSemanticProbe.swift', negative,
                '-o', out / (name + '.o')], failure=diagnostic)
+binding_imports = 'import GiftUI\nimport GiftUIObservableState\nimport GiftUISemanticCore\nimport CycleSchema\nimport CyclePresentation\nimport RuntimeCycleProbe\n'
+for name, source, diagnostic in (
+    ('mismatched-model', 'func reject<M: ObservableStateModel & ~Copyable>(_ models: borrowing ObservableModelScope<M, M.Schema>, _ root: borrowing ObservableStateRootScope<CycleOwnedModel, SemanticCompleteIdentity>) { _ = ObservableSemanticBodyBinding(models: models.borrowedScope(), root: root.borrowedRoot(), domain: CycleDomain.self) }', "requires the types"),
+    ('mismatched-schema', 'func reject<S>(_ models: borrowing ObservableModelScope<CycleOwnedModel, S>, _ root: borrowing ObservableStateRootScope<CycleOwnedModel, SemanticCompleteIdentity>) { _ = ObservableSemanticBodyBinding(models: models.borrowedScope(), root: root.borrowedRoot(), domain: CycleDomain.self) }', "cannot convert value"),
+    ('mismatched-action', 'enum ForeignAction: UInt16, GiftUIAction { case increment = 1 }; func reject() { _ = CycleHandler.operation(ForeignAction.increment) }', "cannot convert value"),
+    ('mismatched-mutation', 'enum ForeignMutation { case increment }; func reject(_ root: borrowing ObservableStateRootScope<CycleOwnedModel, SemanticCompleteIdentity>, _ key: _GiftUIModelKey<CycleModelSchema>) { _ = root.mutate(key, mutation: ForeignMutation.increment) }', "cannot convert value"),
+):
+    negative = out / (name + '.swift')
+    negative.write_text(binding_imports + source + '\n')
+    run(name, [compiler, *flags, '-module-name', 'ConcreteBindingNegative', '-typecheck', negative], failure=diagnostic)
 if profile.startswith('macos'):
     main = out / 'Main.swift'
-    main.write_text('import RuntimeCycleProbe\n@main struct Main { static func main() { print("P07 values assertions=\\(giftuiP07Values() + Int(giftuiP07FrameLease())) failures=0") } }\n')
+    main.write_text('import RuntimeCycleProbe\n@main struct Main { static func main() { print("P07 values assertions=\\(giftuiP07Values() + Int(giftuiP07FrameLease()) + giftuiP07CycleSemantic()) failures=0") } }\n')
     run('link', [compiler, *flags, main, base / 'GiftUI.o', *sorted(out.glob('*.o')), '-o', out / 'runtime-cycle'])
     execution = run('execute', [out / 'runtime-cycle']).strip()
 else:

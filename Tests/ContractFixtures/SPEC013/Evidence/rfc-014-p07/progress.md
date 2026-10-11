@@ -44,6 +44,29 @@ core dd5d4849463055f2-hwlll28l passes 179 assertions and six lifetime negatives.
 Receipt: step-9-macos-static.json. Concrete constructor mismatch negatives and
 full cycle/provenance guarantees remain pending. Repair count **0/2**.
 
+## Step 10 — concrete binding and root/semantic join
+
+ObservableSemanticBodyBinding now rejects different actual model/root backing
+before traversal or client work. Matching Model/Schema alone is insufficient;
+the comparison checks the live ledger and typed storage, not numeric identities.
+The existing join is retained. A finite fixture provides exhaustive CycleAction
+mapping to CycleOwnedModel.Mutation. Four compiler negatives reject mismatched
+Model/read domain, Schema, action domain and mutation. Six prior lifetime
+negatives remain required.
+
+After scripts/format-swift.sh the registered native Static command passes 211
+assertions and all ten compiler negatives; step-10-macos-static.json records
+commands/input/artifact hashes. The additional 32 runtime assertions exercise
+actual Static/Dynamic root and semantic owners through preserve/remove/reinsert,
+actual Static Canvas transfer/release, and foreign-owner rejection before work.
+This is incremental join evidence, not complete pipeline/offer or Dynamic Canvas
+storage evidence. New drawing integration is not included in this receipt.
+
+A first compile rejected the fixture's three-argument TupleView spelling; the
+existing TupleView3 fixed it and the next check passed. One initial run overlapped
+the formatter and is excluded from acceptance; this final run started after the
+formatter completed. No unproductive repeated repair; counter remains **0/2**.
+
 ## Historical stop — associated requirements, 2026-10-11
 
 The prior approved correction is implemented. A newly confirmed exact

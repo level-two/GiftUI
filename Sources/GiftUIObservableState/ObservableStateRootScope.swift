@@ -135,6 +135,12 @@ package struct ObservableStateRootScope<
         reports = other.reports
     }
 
+    package borrowing func belongs(to scope: borrowing ObservableModelScope<Model, Model.Schema>)
+        -> Bool
+    {
+        models.sharesOwner(with: scope)
+    }
+
     package var isDirty: Bool {
         reports.pointee.routes[0].dirty || reports.pointee.routes[1].dirty
     }
