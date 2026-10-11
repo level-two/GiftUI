@@ -374,7 +374,7 @@ run_macos_resource_pair() {
                     "${compiler}" "${module_dir}" "${object_dir}" "${flags[@]}"
                 compile_resource_candidate_objects "${compiler}" "${module_dir}" "${object_dir}" \
                     "${capacity_flag}" "${flags[@]}"
-                local host_objcopy="${PROJECT_ROOT}/.toolchains/host/swift-6.3.2-RELEASE-osx/usr/bin/llvm-objcopy"
+                local host_objcopy="${PROJECT_ROOT}/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/llvm-objcopy"
                 local production_object
                 # The resource executable is a closed, statically resolved path. Removing
                 # unused runtime-registration records lets dead_strip discard their lazy

@@ -16,8 +16,8 @@ parser = argparse.ArgumentParser()
 parser.add_argument('--profile', required=True, choices=PROFILES)
 args = parser.parse_args()
 profile = args.profile
-host_compiler = ROOT / '.toolchains/host/swift-6.3.2-RELEASE-osx/usr/bin/swiftc'
-compiler = (ROOT / '.toolchains/nrf52840/swift/swift-6.3.2-RELEASE-osx/usr/bin/swiftc'
+host_compiler = ROOT / '.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc'
+compiler = (ROOT / '.toolchains/nrf52840/swift/swift-6.4.0-RELEASE-osx/usr/bin/swiftc'
             if profile == 'nrf52840-embedded' else host_compiler)
 inputs = sorted(set(list((ROOT / 'Sources/GiftUI').glob('*.swift'))
                     + list((ROOT / 'Sources/GiftUIMacros').glob('*.swift'))
@@ -40,7 +40,7 @@ if profile == 'raspberry-pi-armv6':
     parent /= 'raspberry-pi'
 elif profile == 'nrf52840-embedded':
     parent /= 'nrf52840'
-parent /= 'contracts/spec-006-rfc-014'
+parent /= 'contracts/spec-006-rfc-014-swift64'
 parent.mkdir(parents=True, exist_ok=True)
 # A new receipt never overwrites an earlier run, including dirty-tree experiments.
 out = pathlib.Path(tempfile.mkdtemp(prefix=identity[:16] + '-', dir=parent)) / profile
@@ -61,7 +61,7 @@ def run(label, command, failure=None):
     return result.stdout + result.stderr
 
 version = run('compiler-version', [compiler, '--version'])
-assert 'Apple Swift version 6.3.2 (swift-6.3.2-RELEASE)' in version
+assert 'Apple Swift version 6.4 (swift-6.4-RELEASE)' in version
 flags = ['-swift-version', '6', '-Osize', '-whole-module-optimization',
          '-enable-experimental-feature', 'LifetimeDependence',
          '-enable-experimental-feature', 'Lifetimes', '-package-name', 'giftui',
@@ -72,7 +72,7 @@ if profile.startswith('macos'):
     if profile == 'macos-dynamic':
         flags += ['-D', 'GIFTUI_DYNAMIC_PROFILE']
 elif profile == 'raspberry-pi-armv6':
-    sdk = ROOT / '.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6/raspios-bookworm'
+    sdk = ROOT / '.toolchains/sdk/swift-6.4.0-RELEASE-raspios-bookworm-armv6/raspios-bookworm'
     flags += ['-target', 'armv6-unknown-linux-gnueabihf', '-sdk', sdk,
               '-resource-dir', sdk / 'usr/lib/swift_static', '-use-ld=lld',
               '-Xcc', f'--gcc-toolchain={sdk / "usr"}', '-Xcc', '-march=armv6',
@@ -84,9 +84,9 @@ run('required-features', [compiler, *flags, '-typecheck', ROOT / 'Tests/Contract
 # Build the existing target, which links its existing macro executable as a dependency.
 run('host-macro-build', ['bash', '-c', '''set -e
 source scripts/lib/swiftpm.sh
-GIFTUI_SWIFT_EXECUTABLE="$PWD/.toolchains/host/swift-6.3.2-RELEASE-osx/usr/bin/swift" giftui_swiftpm --package-path "$PWD" --scratch-path "$PWD/.build/rfc014-p02/tool" --cache-root "$PWD/.build/rfc014-p02/tool-cache" --configuration debug --target GiftUI --disable-sandbox -- build
+GIFTUI_SWIFT_EXECUTABLE="$PWD/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swift" giftui_swiftpm --package-path "$PWD" --scratch-path "$PWD/.build/rfc014-p02-swift64/tool" --cache-root "$PWD/.build/rfc014-p02-swift64/tool-cache" --configuration debug --target GiftUI --disable-sandbox -- build
 '''])
-macro = ROOT / '.build/rfc014-p02/tool/debug/GiftUIMacros-tool'
+macro = ROOT / '.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool'
 flags += ['-load-plugin-executable', str(macro) + '#GiftUIMacros']
 # Use the exact SwiftSyntax prebuilt selected by SwiftPM for this macro tool.
 plan = json.loads((macro.parent / 'plugin-tools-description.json').read_text())
@@ -208,6 +208,7 @@ assert 'func counterText<' not in (out / 'CounterPresentation.swift').read_text(
 report = {'package': 'P02', 'profile': profile, 'source_commit': source_commit,
           'input_sha256': identity, 'inputs': input_hashes, 'compiler': str(compiler.relative_to(ROOT)),
           'compiler_sha256': compiler_hash, 'version': version.strip(),
+          'macro_tool': str(macro.relative_to(ROOT)),
           'macro_tool_sha256': hashlib.sha256(macro.read_bytes()).hexdigest(),
           'swift_syntax_library': str(syntax_library.relative_to(ROOT)),
           'swift_syntax_sha256': hashlib.sha256(syntax_library.read_bytes()).hexdigest(),

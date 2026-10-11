@@ -9,7 +9,7 @@ import tempfile
 ROOT = Path(__file__).resolve().parents[2]
 FIXTURE = ROOT / 'Tests/ContractFixtures/SPEC002/CompilerBaseline/RequiredFeatures.swift'
 HELPER = ROOT / 'scripts/contracts/compiler-baseline.sh'
-OUT = ROOT / '.build/rfc-014/p01/compiler-controls'
+OUT = ROOT / '.build/rfc-014-swift64/p01/compiler-controls'
 OUT.mkdir(parents=True, exist_ok=True)
 checks = []
 
@@ -48,7 +48,7 @@ try:
         shell('compiler-drift', 'giftui_rfc014_check_compiler "$1" "$2" "$3"',
               [wrong, FIXTURE, OUT], expected=1, diagnostic='compiler identity mismatch')
 
-    sdk_json = ROOT / '.toolchains/sdk/swift-6.3.2-RELEASE-raspios-bookworm-armv6/raspios-bookworm-static.json'
+    sdk_json = ROOT / '.toolchains/sdk/swift-6.4.0-RELEASE-raspios-bookworm-armv6/raspios-bookworm-static.json'
     sdk = json.loads(sdk_json.read_text())
     pi_flags = sdk['extra-swiftc-flags'] + [arg for flag in sdk['extra-cc-flags'] for arg in ('-Xcc', flag)]
     profiles = {

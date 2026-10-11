@@ -91,7 +91,7 @@ case "${profile}" in
 esac
 
 if [[ "${profile}" == "raspberry-pi-armv6" ]]; then
-    compiler_identity="$(.toolchains/host/swift-6.3.2-RELEASE-osx/usr/bin/swiftc --version | tr '\n' ' ')"
+    compiler_identity="$(.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc --version | tr '\n' ' ')"
     build_log="${REPORT_ROOT}/build.log"
     run_check scripts/raspberry-pi/doctor.sh
     scripts/raspberry-pi/build.sh --product "${product}" >"${build_log}" 2>&1
@@ -106,14 +106,14 @@ if [[ "${profile}" == "raspberry-pi-armv6" ]]; then
         printf 'incomplete preset report: %s\n' "${semantic_report}" >&2
         exit 1
     }
-    inspector="${PROJECT_ROOT}/.toolchains/host/swift-6.3.2-RELEASE-osx/usr/bin/llvm-objdump"
+    inspector="${PROJECT_ROOT}/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/llvm-objdump"
     "${inspector}" -p -h "${artifact}" >"${REPORT_ROOT}/elf.txt"
     grep -Fq 'file format elf32-littlearm' "${REPORT_ROOT}/elf.txt"
     output_hash="$(shasum -a 256 "${semantic_report}" | awk '{print $1}')"
     artifact_hash="$(shasum -a 256 "${artifact}" | awk '{print $1}')"
     {
         printf '# schema_version\tprofile\tinput_identity\tcompiler_identity\ttoolchain_identity\toptimization\tcommand_hash\toutput_hash\tstatus\tevidence_kind\n'
-        printf '1\t%s\t%s\t%s\tswift-6.3.2-armv6\trelease\t%s\t%s\tcomplete\tcross-build\n' \
+        printf '1\t%s\t%s\t%s\tswift-6.4-armv6\trelease\t%s\t%s\tcomplete\tcross-build\n' \
             "${profile}" "${input_identity}" "${compiler_identity}" "${command_hash}" "${output_hash}"
         printf '# artifact_identity\t%s\n' "${artifact_hash}"
         printf '# artifact_bytes\t%s\n' "$(stat -f '%z' "${artifact}")"
@@ -124,7 +124,7 @@ if [[ "${profile}" == "raspberry-pi-armv6" ]]; then
 fi
 
 if [[ "${profile}" == "nrf52840-embedded" ]]; then
-    compiler_identity="$(.toolchains/nrf52840/swift/swift-6.3.2-RELEASE-osx/usr/bin/swiftc --version | tr '\n' ' ')"
+    compiler_identity="$(.toolchains/nrf52840/swift/swift-6.4.0-RELEASE-osx/usr/bin/swiftc --version | tr '\n' ' ')"
     build_log="${REPORT_ROOT}/build.log"
     run_check scripts/nrf52840/doctor.sh
     scripts/nrf52840/build.sh --application signal-analyzer-static >"${build_log}" 2>&1
@@ -167,7 +167,7 @@ if [[ "${profile}" == "nrf52840-embedded" ]]; then
     artifact_hash="$(shasum -a 256 "${artifact}" | awk '{print $1}')"
     {
         printf '# schema_version\tprofile\tinput_identity\tcompiler_identity\ttoolchain_identity\toptimization\tcommand_hash\toutput_hash\tstatus\tevidence_kind\n'
-        printf '1\t%s\t%s\t%s\tswift-6.3.2-zephyr-4.3.0\tOsize\t%s\t%s\tcomplete\tcross-build\n' \
+        printf '1\t%s\t%s\t%s\tswift-6.4-zephyr-4.3.0\tOsize\t%s\t%s\tcomplete\tcross-build\n' \
             "${profile}" "${input_identity}" "${compiler_identity}" "${command_hash}" "${output_hash}"
         printf '# artifact_identity\t%s\n' "${artifact_hash}"
         sed -n 's/^/\# /p' "${REPORT_ROOT}/memory-summary.txt"
