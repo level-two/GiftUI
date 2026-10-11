@@ -1,5 +1,75 @@
 # RFC-014 P06 progress
 
+## P06-R1 final repair handoff — four profiles refreshed, independent review pending
+
+Implementation repair: `72438931..431293f9`; following evidence-only commit
+contains this handoff. Strong `gpt-6-astra` / `high`, C3/R3, performed the single
+productive repair. Counter remains **0/2**. No new contract or scope decision,
+constraint suppression, capacity change or successor work was introduced.
+
+The [current index](final-index.json) and four copied receipts now describe the
+repair. Native Static has **43 checks / 13 negatives / 4,042 assertions**;
+native Dynamic has the same. ARMv6 and nRF each have **42 checks / 13 negatives**,
+rooted target component/ABI/layout evidence only, with no board execution.
+Native assertion components are 364 staged/semantic, 13 mapping, 24 finite table,
+17 geometry and 3,624 raster checks. Both staged lenders use the actual P03
+owner for the new binding-order controls.
+
+[Implementation-side reconciliation](repair-evidence-verification.json), rerunnable
+with `python3 Tests/ContractFixtures/SPEC012/Evidence/rfc-014-p06/verify-repair-evidence.py`,
+verifies **602 input hashes, 812 artifact hashes/sizes, seven immutable geometry/
+raster controls**, all expected negative diagnostics, native/target ABI logs,
+and unchanged physical layouts against the pre-repair receipts. There are no
+mismatches. It also verifies the original blocked review, reproduction, logs and
+independent verification artifacts are byte-identical to `72438931`. The original
+`verify-exit-evidence.py` and reproduction are historical scripts for their frozen
+review input, not current repair success gates. Old receipts remain in that Git
+revision and their original `.build` artifact directories.
+
+Static was collected during the repair at dirty `72438931`; all its actual inputs
+match `431293f9`. Dynamic, ARMv6 and nRF were collected from clean `431293f9`.
+The lowerer SHA-256 is
+`7f1486a71ea138a5a5909c3f8e5fddabe1a338f70b3578f70d7730e34435ab81`;
+the refreshed macro tool SHA-256 is
+`9bbb7c7532d763b1908cdcabbe4b9b87c6a7eb0c07e83cc93cc9bb154b313285`.
+Compiler SHA-256 remains
+`d8e40107da0e2c1c59640a983faea326d5d2bddfe81f7609db14bade43c4a5b9`.
+Full receipt and object identities are in the index and receipts.
+
+Exact refreshed commands, following `scripts/format-swift.sh` and the two
+platform doctors (both passed pinned Swift 6.3.2 and SDK checks):
+
+```text
+scripts/contracts/run-spec-006.sh --profile macos-static --compiler-baseline rfc-014
+scripts/contracts/run-spec-012.sh --profile macos-static --compiler-baseline rfc-014 --giftui-build .build/contracts/spec-006-rfc-014/dd5d4849463055f2-hwlll28l/macos-static
+scripts/contracts/run-spec-006.sh --profile macos-dynamic --compiler-baseline rfc-014
+scripts/contracts/run-spec-012.sh --profile macos-dynamic --compiler-baseline rfc-014 --giftui-build .build/contracts/spec-006-rfc-014/189dda86d331e15d-wpk82ft7/macos-dynamic
+scripts/contracts/run-spec-006.sh --profile raspberry-pi-armv6 --compiler-baseline rfc-014
+scripts/contracts/run-spec-012.sh --profile raspberry-pi-armv6 --compiler-baseline rfc-014 --giftui-build .build/raspberry-pi/contracts/spec-006-rfc-014/189dda86d331e15d-w03qxe3s/raspberry-pi-armv6
+scripts/contracts/run-spec-006.sh --profile nrf52840-embedded --compiler-baseline rfc-014
+scripts/contracts/run-spec-012.sh --profile nrf52840-embedded --compiler-baseline rfc-014 --giftui-build .build/nrf52840/contracts/spec-006-rfc-014/189dda86d331e15d-xnmh_sbd/nrf52840-embedded
+```
+
+All reserved physical layouts are unchanged: 196 Counter slots cost 7,056 bytes
+(+784); Analyzer costs 7,840 native (+1,568) / 7,056 target (+784). Complete selected
+Counter banks cost 30,616 bytes. Eleven emitted nRF staged/invocation bodies have
+no direct allocator calls; full linked/transitive allocation, application hosts,
+stack/RAM overlap and target execution remain outside this component evidence.
+
+### Separate Strong repair review packet
+
+Independently review `72438931..431293f9` plus the evidence-only handoff commit,
+using the original P06-R1 proof and SPEC-012 lines 118–120 / 177–178. Check the
+complete deterministic captured-key prologue, immediate facade discard, keyless
+Canvas behavior, existing error mapping and identity/order precedence. Inspect
+both staged-lender adversarial controls (drawing before read, read-free branch,
+stale/wrong owner, competing capacity, valid controls, no later occurrence,
+exactly-once release and ended read). Verify the new receipt applicability and
+unchanged physical resource/geometry claims. No routine four-profile rerun is
+needed merely for commit metadata; use a focused reproduction for any actual
+concern. The parent owns package disposition after this independent review.
+**P06 is not marked passed; T10.1 and P07–P12 remain open.**
+
 ## P06-R1 implementation repair — native validation complete, review pending
 
 Input `72438931`; one productive repair, counter **0/2**. The generated witness

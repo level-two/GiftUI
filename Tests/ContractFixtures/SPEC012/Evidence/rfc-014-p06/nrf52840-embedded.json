@@ -32,11 +32,11 @@
       },
       "$e17GiftUIRuntimeCore32ObservableCanvasInvocationSourceVAARi_zrlE06invokeE02at7context4sizeyq0__0A2UI15GraphicsContextVzAH4SizeVtAH12DrawingErrorOYKF0E10StoreProbe0E5ModelV_13CounterSchema0utV0O0a10UISemanticC023SemanticRecordReferenceV0uE5Table0uvE5TableVyAO0E6DomainOGTg5": {
         "direct_allocator_calls": [],
-        "sha256": "7b265d26c4b0a422ee6ce9940cd89276f2adcd71f6e28fc9beb678dbd774edf8"
+        "sha256": "0ccb29d3705edb36ad52403baadf52eef83abec545875a8fb06f922cb6bd6c8c"
       },
       "$e17GiftUIRuntimeCore32ObservableCanvasInvocationSourceVAARi_zrlE06invokeE02at7context4sizeyq0__0A2UI15GraphicsContextVzAH4SizeVtAH12DrawingErrorOYKF0E10StoreProbe0E5ModelV_13CounterSchema0utV0Os6UInt16V0uE5Table0uveX0VyAO0E6DomainOGTg5": {
         "direct_allocator_calls": [],
-        "sha256": "a6687d3004192cae7f7763f77477fa21fdfd7216c46aaf59a0093694f964026f"
+        "sha256": "bf99a3635f24f37222984c3ed755bf90bc615a765222376a6b7a12b66ed2a6d4"
       },
       "$e17GiftUIRuntimeCore32ObservableCanvasInvocationSourceVAARi_zrlE06invokeE02at7context4sizeyq0__0A2UI15GraphicsContextVzAH4SizeVtAH12DrawingErrorOYKFANSgAH01_A11UIFrameReadVy6DomainQy1_GXEfU_0E10StoreProbe0E5ModelV_13CounterSchema0xwY0Os6UInt16V0xE5Table0xyE5TableVyAU0eT0OGTg5": {
         "direct_allocator_calls": [],
@@ -47,7 +47,7 @@
         "sha256": "8d9a166526f8e772425f664d3ed3bee7e8528281f2b706d5a795d5b9621c8fb9"
       }
     },
-    "ir_sha256": "dad95d51bb45602e1a27ad01369c3af7cdab218c42f2f2c73d7155ca9240c75d"
+    "ir_sha256": "7ab479dd737ee063cfd278be32eb128f8f98c0940f002ac034127509ecc87cb0"
   },
   "artifacts": {
     "Analyzer-lowering.log": {
@@ -59,28 +59,28 @@
       "sha256": "291f370f2dafb6793698f205abb87d9f0a02e759b55e5737e3c277aa0ca64bf0"
     },
     "AnalyzerCanvas.log": {
-      "bytes": 657,
-      "sha256": "76b7a749a44ab947554cd15642972b696e7c364c2d4a8ca5336261f58b6a34bf"
+      "bytes": 624,
+      "sha256": "99c88ac82e81b3745478898a0746a06e9189faeea62b73771021012a3b584917"
     },
     "AnalyzerCanvas.o": {
       "bytes": 4964,
-      "sha256": "d21ea1e77c756a82521e181e35c808e564b298223842b49f0337d50b2cf349d0"
+      "sha256": "33705f05b8dadf33500fba1a6a9832547583a6522c0e5ed73202ad86c8ea78cc"
     },
     "AnalyzerCanvas.swift": {
-      "bytes": 1148,
-      "sha256": "d77f63a6117b8c9b18409cfdafbf5f836072603c73383d571e5a5d546658d46e"
+      "bytes": 1203,
+      "sha256": "e64a83f6fc228289636176033236e10be94c06ac213c4e5a8c4d9fa6df12ceff"
     },
     "AnalyzerCanvas.swiftdoc": {
       "bytes": 384,
       "sha256": "61ff77e6a97650c2bd256732abde6a7d4554856cbd37af0ad82f80e022f7181a"
     },
     "AnalyzerCanvas.swiftmodule": {
-      "bytes": 73092,
-      "sha256": "1e90eaae4c0d5b911356615c0687344d8b7c4c78c689bc24bfa7119029a59fad"
+      "bytes": 73240,
+      "sha256": "84a64f4b66323972075606f57b1a275ff70dc86833aaa801c4cb19686d6faac7"
     },
     "AnalyzerCanvas.swiftsourceinfo": {
       "bytes": 1804,
-      "sha256": "8e76e02b3f5dcc127bf880df15cbb2b71deed0880583ba8e12fdf58459515b49"
+      "sha256": "704e2b0316af39703cbff04e727ab928c833ad55904989ea91892aad7980e068"
     },
     "AnalyzerCanvasTable.log": {
       "bytes": 0,
@@ -88,7 +88,7 @@
     },
     "AnalyzerCanvasTable.o": {
       "bytes": 4764,
-      "sha256": "ceb71f784b8254fb1b91a0c7a70284259d9eec46b4c98a53769e16d9e911dbb9"
+      "sha256": "ad7790ad80774affe6acd234513a0676b29645c52624732f3c7e1d29de902445"
     },
     "AnalyzerCanvasTable.swift": {
       "bytes": 1379,
@@ -100,11 +100,11 @@
     },
     "AnalyzerCanvasTable.swiftmodule": {
       "bytes": 68652,
-      "sha256": "50edce8a573babb0a3661dcc81b4afde089acddb7e1e001a2b63abc89d9a7768"
+      "sha256": "69c05149002ffef8783338d82f1018b8f84cd82efdcaddb57f5d9622687ca425"
     },
     "AnalyzerCanvasTable.swiftsourceinfo": {
       "bytes": 2988,
-      "sha256": "f36d009d778dec35c385772965e1e5c1e71095ce8530763be93d7ee2da1d23eb"
+      "sha256": "72b0db13af71b78933f8f86b7ccd208a265881a072c4a13eca381d677d5760c1"
     },
     "AnalyzerSchema.log": {
       "bytes": 0,
@@ -112,7 +112,7 @@
     },
     "AnalyzerSchema.o": {
       "bytes": 5924,
-      "sha256": "0c4a013fe1bce41c6bde793f991ee12079aea418190ba603d339c0d0c9a8e1b3"
+      "sha256": "e213facd731e30f5eabe1ea8403da62f39635d21cad0d4af311d12500a1ce3f5"
     },
     "AnalyzerSchema.swift": {
       "bytes": 2892,
@@ -124,31 +124,31 @@
     },
     "AnalyzerSchema.swiftmodule": {
       "bytes": 68068,
-      "sha256": "26ba6786f1067669dde57df92a3c317072dc250275eeb223d3476e0b85b3f1a6"
+      "sha256": "dad506837d8bf6600defb0faaa7846d0a9dc759abac9b9a872e32b0158c8e4c2"
     },
     "AnalyzerSchema.swiftsourceinfo": {
       "bytes": 4812,
-      "sha256": "31c57f35a8112decca84c60de1fc3de37cd5f461ec957601c1e6445db7a99b4b"
+      "sha256": "77bbf61e96d99e0d08d16d1c1fd6d4412df75a1db96d437c24dd678eb80394fe"
     },
     "CanvasStoreProbe.log": {
       "bytes": 1506,
       "sha256": "381f5a8890157e1899153d0cdf584e9210f233e6e3d61e367b8983243372d235"
     },
     "CanvasStoreProbe.o": {
-      "bytes": 275900,
-      "sha256": "a1e8c96d29f619cde2d99f11341d1f03aefccb075e79d6177e65d1428bb8097c"
+      "bytes": 278152,
+      "sha256": "6afaf54d54838186719a64000aed78b276ff3e83c72c58bd7d7530a672f6813a"
     },
     "CanvasStoreProbe.swiftdoc": {
       "bytes": 608,
       "sha256": "4e31be2e72d5a9a855bcec03eab80c5507fe4eda38a93f351b90ea70efdec2b3"
     },
     "CanvasStoreProbe.swiftmodule": {
-      "bytes": 3613604,
-      "sha256": "e20fdbbf6c9a497811a7d7162e55719a531413195f08a8d2278b3ef690975b4a"
+      "bytes": 3658468,
+      "sha256": "c08576d2de24821124253fe7d03107cc723dbc0dcc60d1d39e4bc6a0a060a12b"
     },
     "CanvasStoreProbe.swiftsourceinfo": {
-      "bytes": 32280,
-      "sha256": "cd3bb3316ffcecfa0fd667f83f5d419a977240cae48683233f050b70c74e0773"
+      "bytes": 32424,
+      "sha256": "d5aa2dd89a9324d3487259cde11b4eef75dd6eaf1aaa64a336bdf72fae2bdf23"
     },
     "Counter-lowering.log": {
       "bytes": 0,
@@ -160,27 +160,27 @@
     },
     "CounterCanvas.log": {
       "bytes": 561,
-      "sha256": "11e4f0ee185a9af750acae61a8cf3dca59a5a8a44b0e7fcfaf10efacf2b92355"
+      "sha256": "c45b05e66fe749a4603f6f653ddbc1611321a3df5eaf93d3e907605703972ef4"
     },
     "CounterCanvas.o": {
       "bytes": 5108,
-      "sha256": "31347e0218801eea8811958726ed00abb26658072a6c9004025e99b8540b2a0d"
+      "sha256": "8e92a75a841b942e4a76b040b61acbf0872a918e64d032dde8c61fe2e4656387"
     },
     "CounterCanvas.swift": {
-      "bytes": 1702,
-      "sha256": "a79d67cc604cba1b547e6434836c5d7e87946cc08b63bf52f61d48faa3e40047"
+      "bytes": 1885,
+      "sha256": "c02f4a3aa00147d711aa60db6f9a7b2c7b04d54758a338041b8709ce40ae5a9c"
     },
     "CounterCanvas.swiftdoc": {
       "bytes": 384,
       "sha256": "ae4544231f45ac5a85675b848e89f7ba2b14b1136f186447f24a5bd109ed0a21"
     },
     "CounterCanvas.swiftmodule": {
-      "bytes": 84912,
-      "sha256": "b951664b9c84da804556e600b13f3810b384136e7865a59459bfa4b5a0ea5244"
+      "bytes": 87156,
+      "sha256": "a940cf03b6e19df3756fe48e4103c0d23835847bec29f9b86d717494c330e892"
     },
     "CounterCanvas.swiftsourceinfo": {
       "bytes": 3392,
-      "sha256": "1f093d1b07c9c49648961eeb9bdb202f6f509de0c973ac81cd16ed2069284d70"
+      "sha256": "0f631db6f1264a5b2d9cf66a6767b2a8e92a0fd7990426c8016f88d7aa1eb725"
     },
     "CounterCanvasTable.log": {
       "bytes": 0,
@@ -188,7 +188,7 @@
     },
     "CounterCanvasTable.o": {
       "bytes": 4764,
-      "sha256": "ce5c52cb5901283197f4acb97d99b1f4097a8e608b0ae76887db71960bb69fa8"
+      "sha256": "761b8c1613e270fc88aa3affdbd48b438c6a484976959a07155a3dce86bb9b37"
     },
     "CounterCanvasTable.swift": {
       "bytes": 1751,
@@ -200,11 +200,11 @@
     },
     "CounterCanvasTable.swiftmodule": {
       "bytes": 71712,
-      "sha256": "a02c83ef4c659ca11f1d016f78b7a3d79aa77920d29b830ba909288ab77aa1b8"
+      "sha256": "9eb6eff7af159dcd45d87731ef50c8acd1a51271d98716e4483395ef36b77bba"
     },
     "CounterCanvasTable.swiftsourceinfo": {
       "bytes": 3172,
-      "sha256": "d550dd677dcf348b595ca1648b5efdd9d7ff490e882699c14677569f19c6444b"
+      "sha256": "acb3959a4784f5149bd2d2decca58851aa2b6aeb557b315409e305b993dbeedf"
     },
     "CounterSchema.log": {
       "bytes": 0,
@@ -212,7 +212,7 @@
     },
     "CounterSchema.o": {
       "bytes": 5116,
-      "sha256": "18aca52c4449d550a7829975234fac22f92619611196184710bf71f37200c5f7"
+      "sha256": "36115e636be4c92fa1169082b84830e39ff6f3dbaf6ae6982dc790ce5a22a727"
     },
     "CounterSchema.swift": {
       "bytes": 1194,
@@ -224,11 +224,11 @@
     },
     "CounterSchema.swiftmodule": {
       "bytes": 58676,
-      "sha256": "98fd6eb607792d9b83993a3fc9026790e5d118788944c6d69c178ef820154c2f"
+      "sha256": "8505fd9b6e70edeb2c95482969e2ac60281edfbfb580eadb2f3be236cf0df4f5"
     },
     "CounterSchema.swiftsourceinfo": {
       "bytes": 2828,
-      "sha256": "e456acf2a82a577730e358315f26b80f921bedca73a1720db2b4103ce084b4e0"
+      "sha256": "df2d7a51ea7827c36fa1a5723cbfed069314a9167fb85d81fa901f646f2fcec9"
     },
     "GiftUICapabilities.log": {
       "bytes": 0,
@@ -236,7 +236,7 @@
     },
     "GiftUICapabilities.o": {
       "bytes": 47396,
-      "sha256": "e879ecc74608e1dc3fdce8a18ca0ad5b344b70cc925671733973524e373cebd4"
+      "sha256": "32c384829cf48b263b9193f34698bce01c2404ab570669d58d8d601e03aa6b36"
     },
     "GiftUICapabilities.swiftdoc": {
       "bytes": 388,
@@ -244,7 +244,7 @@
     },
     "GiftUICapabilities.swiftmodule": {
       "bytes": 633512,
-      "sha256": "bf1a7349a193e7c809b2b1a1bd6b7022cd672e7e23c8c8405aa9959a9ae3d4a2"
+      "sha256": "9912140e89bc12ee47454b174db80a5c91ba97272853ded1fdf634d88224527f"
     },
     "GiftUICapabilities.swiftsourceinfo": {
       "bytes": 47940,
@@ -256,7 +256,7 @@
     },
     "GiftUIDrawing.o": {
       "bytes": 14372,
-      "sha256": "db26e37448946cab335b2cf416eb750446bf111291235451a95ba1d049557462"
+      "sha256": "72a5c6eae0797ff057353b3cacac64df65067e698d42757f000f763c6888efdf"
     },
     "GiftUIDrawing.swiftdoc": {
       "bytes": 1500,
@@ -264,7 +264,7 @@
     },
     "GiftUIDrawing.swiftmodule": {
       "bytes": 262428,
-      "sha256": "c8e1e4ac0b843a0b3094bdf41fdfc1b707565d2073da6516a7b6f37680a7e051"
+      "sha256": "419d667fa55947d77e7b6f08c3284f5604f7de8c999e618a463d218e5cfdc620"
     },
     "GiftUIDrawing.swiftsourceinfo": {
       "bytes": 29672,
@@ -276,7 +276,7 @@
     },
     "GiftUIDrawingFailureAdapterFixture.o": {
       "bytes": 6460,
-      "sha256": "3f79d39e0130fc838c78979bf7bfdffbd7d40dc4de26fb90b466dc04d53d075e"
+      "sha256": "b762fae4ca64531badcab0b00019994e74309cab3d1e1ab4076233900ee281c2"
     },
     "GiftUIDrawingFailureAdapterFixture.swiftdoc": {
       "bytes": 404,
@@ -284,7 +284,7 @@
     },
     "GiftUIDrawingFailureAdapterFixture.swiftmodule": {
       "bytes": 64228,
-      "sha256": "bf7be0488592f4ae13c1286b6a54cd10d55e165c152cb033768207e9ff9d0127"
+      "sha256": "aee07416ce4f5e4caaae89e706e75727940d884bc41a40d2f3507baf8ebaeb98"
     },
     "GiftUIDrawingFailureAdapterFixture.swiftsourceinfo": {
       "bytes": 1484,
@@ -296,7 +296,7 @@
     },
     "GiftUIExecution.o": {
       "bytes": 13412,
-      "sha256": "94325fc9c40c0c433e8f9312aa77577649e82e8e0bb426a5ca8f8577ff244b00"
+      "sha256": "4ed32a9b9bcb8a75c77191830c0c2a057d4e2188040d1544a7e3422c077fb0bb"
     },
     "GiftUIExecution.swiftdoc": {
       "bytes": 384,
@@ -304,7 +304,7 @@
     },
     "GiftUIExecution.swiftmodule": {
       "bytes": 151992,
-      "sha256": "0585e99e35ab216ad9f78f9fb5c678138503b34416fcdf0eb6e232938ebc6744"
+      "sha256": "68257d0307447ac2d1530344d448670814f9b6318ff3e803f211e45c71f17d97"
     },
     "GiftUIExecution.swiftsourceinfo": {
       "bytes": 13744,
@@ -316,7 +316,7 @@
     },
     "GiftUIFailureCore.o": {
       "bytes": 26600,
-      "sha256": "3cdf905034f4e9c8ca690cadd8c1e4c251ea74766d05f577b7390a1804617fbf"
+      "sha256": "1486f642e443a239730f11537c2140113a04e56d97b64cb6666d3f582fe199a2"
     },
     "GiftUIFailureCore.swiftdoc": {
       "bytes": 388,
@@ -324,7 +324,7 @@
     },
     "GiftUIFailureCore.swiftmodule": {
       "bytes": 284160,
-      "sha256": "f341ae5d28969cedcee07d9eadc3a300f79c02fdc0a6d738dd92a3b65e78aa72"
+      "sha256": "696fe93c380816f9468d0e61831d933648bf1baa6d5328f7bad8fd5f3d4a6413"
     },
     "GiftUIFailureCore.swiftsourceinfo": {
       "bytes": 30752,
@@ -336,7 +336,7 @@
     },
     "GiftUILayout.o": {
       "bytes": 30396,
-      "sha256": "ef79d911fe5c31c48fd3e1f72c951332e02af8173391329ed2c3f3d4581aa11a"
+      "sha256": "618fe81d20b7d39e4af3614562968b801a8e775ce247a4dd2212b3239fdabc2f"
     },
     "GiftUILayout.swiftdoc": {
       "bytes": 380,
@@ -344,7 +344,7 @@
     },
     "GiftUILayout.swiftmodule": {
       "bytes": 594076,
-      "sha256": "056d982b0aa761bb85efd8bb1af9bc07b147205c13f4de1067347ab658eefc9d"
+      "sha256": "8858c979a9bee9bda8b4f4aa9cf10fc60a5170589bcbab21a63e003b1e9fcde3"
     },
     "GiftUILayout.swiftsourceinfo": {
       "bytes": 37196,
@@ -356,7 +356,7 @@
     },
     "GiftUIObservableState.o": {
       "bytes": 54840,
-      "sha256": "cfd67566c0525e67f6e621163eeb12bd0802f17dad1b0d8f6da59f04e5dfa582"
+      "sha256": "7272257606c571f02a7c2649115fb752ef2a34b0c173a79bb5f68e304c6a71d6"
     },
     "GiftUIObservableState.swiftdoc": {
       "bytes": 8164,
@@ -364,7 +364,7 @@
     },
     "GiftUIObservableState.swiftmodule": {
       "bytes": 600512,
-      "sha256": "9b092cc00c20c77d111f9284f897cf710cd5c7d996ab9460ae314ebd7be18c01"
+      "sha256": "2b2a0f3d46f3452a9888ee59da6b5bd271ad5ecb660b6a07b83dc0dcf62e1a62"
     },
     "GiftUIObservableState.swiftsourceinfo": {
       "bytes": 55672,
@@ -376,7 +376,7 @@
     },
     "GiftUIRasterCore.o": {
       "bytes": 38212,
-      "sha256": "23c2a7cb25d3912555118150c5f4ce9d576077291e745cf62822b231f99a2715"
+      "sha256": "33af0e7f4335514c069e846063c8140780c55785b439ed2beb7dfe536850b54e"
     },
     "GiftUIRasterCore.swiftdoc": {
       "bytes": 384,
@@ -384,7 +384,7 @@
     },
     "GiftUIRasterCore.swiftmodule": {
       "bytes": 368828,
-      "sha256": "871dc69699ad2d92539ce8fb35edbd03e0997474266061eb4eba76b969d76796"
+      "sha256": "0287db3566a9aeb954f6b98bff1bfb954fc23d122900bb2eb69943ff8e3bcfbe"
     },
     "GiftUIRasterCore.swiftsourceinfo": {
       "bytes": 5712,
@@ -396,7 +396,7 @@
     },
     "GiftUIRenderCore.o": {
       "bytes": 15384,
-      "sha256": "275ed313cba1440b980094b5830b7099466050cdad9c185c960e0c54e9484600"
+      "sha256": "7a4d97696e5c31c6f2a8508b8c05d1754961d978b39647ab9d99ab55ce81e21a"
     },
     "GiftUIRenderCore.swiftdoc": {
       "bytes": 384,
@@ -404,7 +404,7 @@
     },
     "GiftUIRenderCore.swiftmodule": {
       "bytes": 160800,
-      "sha256": "7eac077ef7ee4e55a439809720afeba8b236c91312b57ea7c7c83fea1c41ccdf"
+      "sha256": "8332963219b87c48f2ba868f1961e9b42ab4b34e03df2745f52b06dda2b79117"
     },
     "GiftUIRenderCore.swiftsourceinfo": {
       "bytes": 20200,
@@ -416,7 +416,7 @@
     },
     "GiftUIRuntimeCore.o": {
       "bytes": 4900,
-      "sha256": "caeb68a8abab9a31e1126e22bcc25b46929899e872b5b5d3c177e5dce0cadc0a"
+      "sha256": "28a3b0d2377c540bf1e2ce2591e184fb05ea9ee7fba3c442c4864830539b7ed3"
     },
     "GiftUIRuntimeCore.swiftdoc": {
       "bytes": 808,
@@ -436,7 +436,7 @@
     },
     "GiftUIRuntimeStatic.o": {
       "bytes": 7012,
-      "sha256": "ba74babd33af72cca0af39a9d13e8d98a9c5795c34d31dfd160fb77d413834b9"
+      "sha256": "2d715b768e8c4ec334f1460984e9ad6db4b2eb3f60b792538de6c26488860c58"
     },
     "GiftUIRuntimeStatic.swiftdoc": {
       "bytes": 1452,
@@ -444,7 +444,7 @@
     },
     "GiftUIRuntimeStatic.swiftmodule": {
       "bytes": 92484,
-      "sha256": "1bb615396d1513c2107c97657066930026975a308d434bf8881469de6fc7fe66"
+      "sha256": "125e062c65660f9e8cdc0ba73a134f65e3a7b14d605bca830e4b5172eece71f1"
     },
     "GiftUIRuntimeStatic.swiftsourceinfo": {
       "bytes": 3308,
@@ -456,7 +456,7 @@
     },
     "GiftUISemanticCore.o": {
       "bytes": 55176,
-      "sha256": "0243edf1e69df402b782d523b1c2a97f5562abfc22031a9f82dda862ae39384a"
+      "sha256": "9dd6af3eb79694577992ee99058df4c1865712de9c4c602cf9636c4980b4a764"
     },
     "GiftUISemanticCore.swiftdoc": {
       "bytes": 7860,
@@ -476,7 +476,7 @@
     },
     "GiftUISurfaceCore.o": {
       "bytes": 7180,
-      "sha256": "e47e4863ecf40db6c4c4641064089b5b1562d6b57ac58ef659eae953881efee5"
+      "sha256": "a8e4fdba8c0352ce007bb41ddcbb9655189f98c9f32fd2f1af077be575c4f12f"
     },
     "GiftUISurfaceCore.swiftdoc": {
       "bytes": 388,
@@ -484,7 +484,7 @@
     },
     "GiftUISurfaceCore.swiftmodule": {
       "bytes": 83048,
-      "sha256": "a880ae5a395acb93bfc4e24bd7f612f3df02538d26f769734cc152f5809588b3"
+      "sha256": "bd3c458a7b5c4bf2707428f769b0b1a7078fdcdc2b8679799a7c40f97a938578"
     },
     "GiftUISurfaceCore.swiftsourceinfo": {
       "bytes": 6376,
@@ -496,7 +496,7 @@
     },
     "GiftUITextResources.o": {
       "bytes": 24380,
-      "sha256": "12970581aff98ab544c610558af0a41e8c918f7fb80a2925d4712a38dba2f44f"
+      "sha256": "5efc56a0305484bcca6de89d98db5ba53ff715b4fa5d1e7d887144d6670812c0"
     },
     "GiftUITextResources.swiftdoc": {
       "bytes": 1724,
@@ -504,7 +504,7 @@
     },
     "GiftUITextResources.swiftmodule": {
       "bytes": 516812,
-      "sha256": "7de6159b2ddac3d3601d4037d627f86f5d17212d53de99ce6bdc667553ab4d59"
+      "sha256": "75881fca731acb40ac9889ffcbaa37e67ec7754bca2fe0c28ed3044b810c89ac"
     },
     "GiftUITextResources.swiftsourceinfo": {
       "bytes": 28932,
@@ -516,7 +516,7 @@
     },
     "P06DrawingWorkspace.o": {
       "bytes": 36448,
-      "sha256": "1d58b89aac7c6ed7f6dcb2d6ee059da055b1f88f89c3091c848d3f97804c006e"
+      "sha256": "19fca689a1a01b31cf543af7cefb0ae0ac641419a56ffa5361849c9e2216c221"
     },
     "P06DrawingWorkspace.swiftdoc": {
       "bytes": 1916,
@@ -524,7 +524,7 @@
     },
     "P06DrawingWorkspace.swiftmodule": {
       "bytes": 422044,
-      "sha256": "65c52d2765c56535353c2310939ab3aed6ae1f369c1b32c12a3fbe8b07afbb07"
+      "sha256": "499702657815a5926867e3e057c0725e20fef62924df73656464868477d40f30"
     },
     "P06DrawingWorkspace.swiftsourceinfo": {
       "bytes": 22084,
@@ -536,11 +536,11 @@
     },
     "allocation-attribution.json": {
       "bytes": 3841,
-      "sha256": "277ab17404e6672d0ec1749ce9881954c126432ff71694590f6614f78b2412b9"
+      "sha256": "5c20cc4c497e786d0b78708699325750f123d906d46eb925015eca94249681e2"
     },
     "async-draw.log": {
       "bytes": 241,
-      "sha256": "4f6d7f1266a8844ed71c7a664d15cb58afedd10136394f813ff1e1db159aa6ad"
+      "sha256": "b0980ce5ef8eb94379c4146414ea07d7b2f4445bd4a363b1c9426fe0025ae3ce"
     },
     "async-draw.swift": {
       "bytes": 126,
@@ -548,7 +548,7 @@
     },
     "closure-fallback.log": {
       "bytes": 184,
-      "sha256": "7e3a5dbc24af9d85c9913314b9771f4d7702f9fbb648cbf4e273a4e07753c233"
+      "sha256": "18b52a965c84012fbfcf347ee9936d9f53b147304cc043d24d6efe85ad778b90"
     },
     "closure-fallback.swift": {
       "bytes": 87,
@@ -556,11 +556,11 @@
     },
     "commands.txt": {
       "bytes": 56419,
-      "sha256": "a4f0710db28d312be92c27b1d9d76695da02e6b8eab6247325afd659fe6db4a9"
+      "sha256": "428ed280de4ee1c8527ec3835463d257d10595600e3e99d44bf666a19297bd2a"
     },
     "copy-source.log": {
       "bytes": 550,
-      "sha256": "7342a567b8b524c280caa38189bfc5bfeb6efd036a2bbc3f2025cbf366bb6770"
+      "sha256": "ed6b325746eda2ced03bd07f5583aa449b1c52513fa2eb45a2000378cbbac52e"
     },
     "copy-source.swift": {
       "bytes": 406,
@@ -568,7 +568,7 @@
     },
     "copy-staged-values.log": {
       "bytes": 488,
-      "sha256": "46b246a87d99182c4d2659100cc2cf123849fbd90bbac67c2e7f665d9c951ec1"
+      "sha256": "219aa78e7c0420830ea5bd9c9b3543a34556dd7f40961ee0ac21fd7ecfccd716"
     },
     "copy-staged-values.swift": {
       "bytes": 222,
@@ -576,7 +576,7 @@
     },
     "effect.log": {
       "bytes": 368,
-      "sha256": "072e10f3055a75ea88900965294f865a50028acd51f24255ec8a3e6ad5fa503e"
+      "sha256": "e6f7b91ed355818c87c12a27af89f8b7147dfb82e425a9abbd157180a30685c5"
     },
     "effect.swift": {
       "bytes": 135,
@@ -584,7 +584,7 @@
     },
     "escape-context.log": {
       "bytes": 531,
-      "sha256": "de0c5574285eaa6893391df946e1a021652171c50b305d9ae07626324d047759"
+      "sha256": "c5612ad598be37da84e7d565b9ba84144a46fb0bec6c5004ca0776245cfe07ae"
     },
     "escape-context.swift": {
       "bytes": 121,
@@ -592,7 +592,7 @@
     },
     "escape-read.log": {
       "bytes": 622,
-      "sha256": "a4cec8eb86dc23e680fa5b27ec688b357b2b603247babb40acc592b9f53644a8"
+      "sha256": "2d4a8dda506b565936a932642a811a1f251306644d77bc89b3db680266c12a54"
     },
     "escape-read.swift": {
       "bytes": 91,
@@ -600,7 +600,7 @@
     },
     "escape-source.log": {
       "bytes": 1093,
-      "sha256": "bb5aa03d7c3f1d673bca181b66b45c9072391ad5e3ce7c30b69c6a6f14ab0491"
+      "sha256": "f571f08a49c71d90d6868707056933731c49d3adc837cf6c2daffecb40903dcf"
     },
     "escape-source.swift": {
       "bytes": 318,
@@ -608,7 +608,7 @@
     },
     "escape-staged-values.log": {
       "bytes": 857,
-      "sha256": "d6e19f657e1be2fbbf588e9ff2820d8995d8184baab2f2ccd30c4cc4d0a23e82"
+      "sha256": "3890e91c8714520d56d601aab22281ee3e4f2aca96a2dd0d4f2660041e5d151b"
     },
     "escape-staged-values.swift": {
       "bytes": 150,
@@ -624,7 +624,7 @@
     },
     "inout-effect.log": {
       "bytes": 381,
-      "sha256": "f877b2320ab07f82215a0509fad68d7fe2a6a7a252be16f71a96380b1c76de95"
+      "sha256": "126040f2a362cc60d23139ab40f0be4799b7cb792d799b6c02a9aa21bacbbdf0"
     },
     "inout-effect.swift": {
       "bytes": 135,
@@ -636,7 +636,7 @@
     },
     "layouts.ll": {
       "bytes": 66570,
-      "sha256": "7f20aa9b9bec8d7fa7a83bf146784ce3b195566716be9cc25bcb046fb92108f1"
+      "sha256": "3c35b146d9b61ae0b56f8b198ddaab772f7031d0b344ee97819aa25b9ebc92a3"
     },
     "layouts.log": {
       "bytes": 0,
@@ -644,7 +644,7 @@
     },
     "missing-compiled-witness.log": {
       "bytes": 1410,
-      "sha256": "407c05995f14cf032c9ca5e7ec2138157f29104314ab835fdd65b13e9a84652f"
+      "sha256": "c14debf2532c904c547c73b0333cd422fb849a781bcc212e95af1af50b6cb60b"
     },
     "missing-compiled-witness.swift": {
       "bytes": 86,
@@ -652,7 +652,7 @@
     },
     "missing-witness.log": {
       "bytes": 190,
-      "sha256": "2e18a8688c279b25a6860aefe597b79fd92cd3513e4036b7149267dc9a78372d"
+      "sha256": "ac866e27def845343c2cb640e985250eee5e930f20dd4af2ed9a730cfdf6e9ba"
     },
     "missing-witness.swift": {
       "bytes": 36,
@@ -663,16 +663,16 @@
       "sha256": "381f5a8890157e1899153d0cdf584e9210f233e6e3d61e367b8983243372d235"
     },
     "static-resources.ll": {
-      "bytes": 3815739,
-      "sha256": "dad95d51bb45602e1a27ad01369c3af7cdab218c42f2f2c73d7155ca9240c75d"
+      "bytes": 3834273,
+      "sha256": "7ab479dd737ee063cfd278be32eb128f8f98c0940f002ac034127509ecc87cb0"
     },
     "target-abi.log": {
       "bytes": 1698,
-      "sha256": "32e47a27ae84d084a4e534b5ae05ab27ecf162d9dcb976fc8f25c25897667a20"
+      "sha256": "564c31e2f9da953f1d04018040401b46903bb11bdb84cc22691874bad3038b72"
     },
     "wrong-domain.log": {
       "bytes": 937,
-      "sha256": "8992c960f8ed7cb052a687460285d1ce52f02d1378fc5932ec264c7566b69934"
+      "sha256": "b21610ae67c0caa58b4b83ff2c069837fc42d2c8875939e6b332b6735f1788f5"
     },
     "wrong-domain.swift": {
       "bytes": 348,
@@ -934,63 +934,63 @@
     }
   ],
   "commands": [
-    "/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.3.2-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded/cache -disable-sandbox -target armv7em-none-none-eabi -enable-experimental-feature Embedded -Xcc -mcpu=cortex-m4 -Xcc -mfloat-abi=hard -Xcc -mfpu=fpv4-sp-d16 -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014/25124cd324d60cb1-2hchpear/nrf52840-embedded -parse-as-library -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014/25124cd324d60cb1-2hchpear/nrf52840-embedded -enable-testing -D GIFTUI_NRF_EMBEDDED -module-name GiftUISemanticCore -emit-module -emit-object /Users/eugene/work/GiftUI/Sources/GiftUISemanticCore/GiftUISemanticCore.swift /Users/eugene/work/GiftUI/Sources/GiftUISemanticCore/SemanticRuntimeRecords.swift /Users/eugene/work/GiftUI/Sources/GiftUISemanticCore/SemanticRecordStore.swift /Users/eugene/work/GiftUI/Sources/GiftUISemanticCore/SemanticRecordExpansion.swift /Users/eugene/work/GiftUI/Sources/GiftUISemanticCore/SemanticStandardPayload.swift /Users/eugene/work/GiftUI/Sources/GiftUISemanticCore/SemanticLayoutView.swift /Users/eugene/work/GiftUI/Sources/GiftUISemanticCore/SemanticRenderView.swift /Users/eugene/work/GiftUI/Sources/GiftUISemanticCore/SemanticRecordLayoutView.swift /Users/eugene/work/GiftUI/Sources/GiftUISemanticCore/SemanticRecordRenderView.swift -emit-module-path /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded/GiftUISemanticCore.swiftmodule -o /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded/GiftUISemanticCore.o",
-    "/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.3.2-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded/cache -disable-sandbox -target armv7em-none-none-eabi -enable-experimental-feature Embedded -Xcc -mcpu=cortex-m4 -Xcc -mfloat-abi=hard -Xcc -mfpu=fpv4-sp-d16 -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014/25124cd324d60cb1-2hchpear/nrf52840-embedded -parse-as-library -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014/25124cd324d60cb1-2hchpear/nrf52840-embedded -enable-testing -D GIFTUI_NRF_EMBEDDED -module-name GiftUITextResources -emit-module -emit-object /Users/eugene/work/GiftUI/Sources/GiftUITextResources/GiftUITextResources.swift -emit-module-path /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded/GiftUITextResources.swiftmodule -o /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded/GiftUITextResources.o",
-    "/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.3.2-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded/cache -disable-sandbox -target armv7em-none-none-eabi -enable-experimental-feature Embedded -Xcc -mcpu=cortex-m4 -Xcc -mfloat-abi=hard -Xcc -mfpu=fpv4-sp-d16 -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014/25124cd324d60cb1-2hchpear/nrf52840-embedded -parse-as-library -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014/25124cd324d60cb1-2hchpear/nrf52840-embedded -enable-testing -D GIFTUI_NRF_EMBEDDED -module-name GiftUILayout -emit-module -emit-object /Users/eugene/work/GiftUI/Sources/GiftUILayout/Layout.swift /Users/eugene/work/GiftUI/Sources/GiftUILayout/LayoutCounters.swift /Users/eugene/work/GiftUI/Sources/GiftUILayout/LayoutEngine.swift /Users/eugene/work/GiftUI/Sources/GiftUILayout/LayoutError.swift /Users/eugene/work/GiftUI/Sources/GiftUILayout/LayoutGeometry.swift /Users/eugene/work/GiftUI/Sources/GiftUILayout/LayoutPublication.swift /Users/eugene/work/GiftUI/Sources/GiftUILayout/LayoutResultSink.swift /Users/eugene/work/GiftUI/Sources/GiftUILayout/LayoutSemanticValidation.swift /Users/eugene/work/GiftUI/Sources/GiftUILayout/LayoutValues.swift /Users/eugene/work/GiftUI/Sources/GiftUILayout/LayoutWorkspace.swift /Users/eugene/work/GiftUI/Sources/GiftUILayout/ResolvedRenderLayoutView.swift -emit-module-path /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded/GiftUILayout.swiftmodule -o /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded/GiftUILayout.o",
-    "/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.3.2-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded/cache -disable-sandbox -target armv7em-none-none-eabi -enable-experimental-feature Embedded -Xcc -mcpu=cortex-m4 -Xcc -mfloat-abi=hard -Xcc -mfpu=fpv4-sp-d16 -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014/25124cd324d60cb1-2hchpear/nrf52840-embedded -parse-as-library -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014/25124cd324d60cb1-2hchpear/nrf52840-embedded -enable-testing -D GIFTUI_NRF_EMBEDDED -module-name GiftUIRenderCore -emit-module -emit-object /Users/eugene/work/GiftUI/Sources/GiftUIRenderCore/DrawingOperationSink.swift /Users/eugene/work/GiftUI/Sources/GiftUIRenderCore/RenderOperationSink.swift /Users/eugene/work/GiftUI/Sources/GiftUIRenderCore/RenderRecordingSink.swift /Users/eugene/work/GiftUI/Sources/GiftUIRenderCore/RenderValues.swift -emit-module-path /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded/GiftUIRenderCore.swiftmodule -o /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded/GiftUIRenderCore.o",
-    "/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.3.2-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded/cache -disable-sandbox -target armv7em-none-none-eabi -enable-experimental-feature Embedded -Xcc -mcpu=cortex-m4 -Xcc -mfloat-abi=hard -Xcc -mfpu=fpv4-sp-d16 -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014/25124cd324d60cb1-2hchpear/nrf52840-embedded -parse-as-library -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014/25124cd324d60cb1-2hchpear/nrf52840-embedded -enable-testing -D GIFTUI_NRF_EMBEDDED -module-name GiftUICapabilities -emit-module -emit-object /Users/eugene/work/GiftUI/Sources/GiftUICapabilities/GiftUICapabilities.swift -emit-module-path /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded/GiftUICapabilities.swiftmodule -o /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded/GiftUICapabilities.o",
-    "/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.3.2-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded/cache -disable-sandbox -target armv7em-none-none-eabi -enable-experimental-feature Embedded -Xcc -mcpu=cortex-m4 -Xcc -mfloat-abi=hard -Xcc -mfpu=fpv4-sp-d16 -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014/25124cd324d60cb1-2hchpear/nrf52840-embedded -parse-as-library -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014/25124cd324d60cb1-2hchpear/nrf52840-embedded -enable-testing -D GIFTUI_NRF_EMBEDDED -module-name GiftUISurfaceCore -emit-module -emit-object /Users/eugene/work/GiftUI/Sources/GiftUISurfaceCore/RasterSurface.swift /Users/eugene/work/GiftUI/Sources/GiftUISurfaceCore/SurfaceValues.swift -emit-module-path /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded/GiftUISurfaceCore.swiftmodule -o /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded/GiftUISurfaceCore.o",
-    "/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.3.2-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded/cache -disable-sandbox -target armv7em-none-none-eabi -enable-experimental-feature Embedded -Xcc -mcpu=cortex-m4 -Xcc -mfloat-abi=hard -Xcc -mfpu=fpv4-sp-d16 -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014/25124cd324d60cb1-2hchpear/nrf52840-embedded -parse-as-library -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014/25124cd324d60cb1-2hchpear/nrf52840-embedded -enable-testing -D GIFTUI_NRF_EMBEDDED -module-name GiftUIRasterCore -emit-module -emit-object /Users/eugene/work/GiftUI/Sources/GiftUIRasterCore/RasterStrokeCoverage.swift /Users/eugene/work/GiftUI/Sources/GiftUIRasterCore/RasterFillCoverage.swift -emit-module-path /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded/GiftUIRasterCore.swiftmodule -o /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded/GiftUIRasterCore.o",
-    "/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.3.2-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded/cache -disable-sandbox -target armv7em-none-none-eabi -enable-experimental-feature Embedded -Xcc -mcpu=cortex-m4 -Xcc -mfloat-abi=hard -Xcc -mfpu=fpv4-sp-d16 -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014/25124cd324d60cb1-2hchpear/nrf52840-embedded -parse-as-library -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014/25124cd324d60cb1-2hchpear/nrf52840-embedded -enable-testing -D GIFTUI_NRF_EMBEDDED -module-name GiftUIExecution -emit-module -emit-object /Users/eugene/work/GiftUI/Sources/GiftUIExecution/ObservableTargetGeneration.swift /Users/eugene/work/GiftUI/Sources/GiftUIExecution/ExecutionValues.swift /Users/eugene/work/GiftUI/Sources/GiftUIExecution/FrameHandoffValues.swift -emit-module-path /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded/GiftUIExecution.swiftmodule -o /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded/GiftUIExecution.o",
-    "/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.3.2-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded/cache -disable-sandbox -target armv7em-none-none-eabi -enable-experimental-feature Embedded -Xcc -mcpu=cortex-m4 -Xcc -mfloat-abi=hard -Xcc -mfpu=fpv4-sp-d16 -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014/25124cd324d60cb1-2hchpear/nrf52840-embedded -parse-as-library -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014/25124cd324d60cb1-2hchpear/nrf52840-embedded -enable-testing -D GIFTUI_NRF_EMBEDDED -module-name GiftUIObservableState -emit-module -emit-object /Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableStateValues.swift /Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableModelIdentity.swift /Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableModelOwnership.swift /Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableModelTicket.swift /Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableModelScope.swift /Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableModelMutation.swift /Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableStateModel.swift /Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableStateRegistrationLifecycle.swift /Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableStateRootScope.swift /Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableStateRootTargetAccess.swift /Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableStateBindingDecorator.swift /Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableSemanticBodyBinding.swift -emit-module-path /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded/GiftUIObservableState.swiftmodule -o /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded/GiftUIObservableState.o",
-    "/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.3.2-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded/cache -disable-sandbox -target armv7em-none-none-eabi -enable-experimental-feature Embedded -Xcc -mcpu=cortex-m4 -Xcc -mfloat-abi=hard -Xcc -mfpu=fpv4-sp-d16 -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014/25124cd324d60cb1-2hchpear/nrf52840-embedded -parse-as-library -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014/25124cd324d60cb1-2hchpear/nrf52840-embedded -enable-testing -D GIFTUI_NRF_EMBEDDED -module-name GiftUIDrawing -emit-module -emit-object /Users/eugene/work/GiftUI/Sources/GiftUIDrawing/CanvasInvocationSource.swift /Users/eugene/work/GiftUI/Sources/GiftUIDrawing/CanvasPlanProducer.swift /Users/eugene/work/GiftUI/Sources/GiftUIDrawing/CanvasStagedValues.swift /Users/eugene/work/GiftUI/Sources/GiftUIDrawing/CanvasSemanticPayload.swift /Users/eugene/work/GiftUI/Sources/GiftUIDrawing/DrawingLimits.swift /Users/eugene/work/GiftUI/Sources/GiftUIDrawing/DrawingPlan.swift /Users/eugene/work/GiftUI/Sources/GiftUIDrawing/DrawingValues.swift /Users/eugene/work/GiftUI/Sources/GiftUIDrawing/StaticCanvasCallableTable.swift /Users/eugene/work/GiftUI/Sources/GiftUIDrawing/PathConstruction.swift /Users/eugene/work/GiftUI/Sources/GiftUIDrawing/StrokeSnapshot.swift -emit-module-path /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded/GiftUIDrawing.swiftmodule -o /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded/GiftUIDrawing.o",
-    "/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.3.2-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded/cache -disable-sandbox -target armv7em-none-none-eabi -enable-experimental-feature Embedded -Xcc -mcpu=cortex-m4 -Xcc -mfloat-abi=hard -Xcc -mfpu=fpv4-sp-d16 -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014/25124cd324d60cb1-2hchpear/nrf52840-embedded -parse-as-library -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014/25124cd324d60cb1-2hchpear/nrf52840-embedded -enable-testing -D GIFTUI_NRF_EMBEDDED -module-name GiftUIFailureCore -emit-module -emit-object /Users/eugene/work/GiftUI/Sources/GiftUIFailureCore/GiftUIFailureCore.swift -emit-module-path /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded/GiftUIFailureCore.swiftmodule -o /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded/GiftUIFailureCore.o",
-    "/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.3.2-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded/cache -disable-sandbox -target armv7em-none-none-eabi -enable-experimental-feature Embedded -Xcc -mcpu=cortex-m4 -Xcc -mfloat-abi=hard -Xcc -mfpu=fpv4-sp-d16 -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014/25124cd324d60cb1-2hchpear/nrf52840-embedded -parse-as-library -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014/25124cd324d60cb1-2hchpear/nrf52840-embedded -enable-testing -D GIFTUI_NRF_EMBEDDED -module-name GiftUIDrawingFailureAdapterFixture -emit-module -emit-object /Users/eugene/work/GiftUI/Sources/GiftUIDrawingFailureAdapterFixture/GiftUIDrawingFailureAdapterFixture.swift -emit-module-path /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded/GiftUIDrawingFailureAdapterFixture.swiftmodule -o /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded/GiftUIDrawingFailureAdapterFixture.o",
-    "/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.3.2-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded/cache -disable-sandbox -target armv7em-none-none-eabi -enable-experimental-feature Embedded -Xcc -mcpu=cortex-m4 -Xcc -mfloat-abi=hard -Xcc -mfpu=fpv4-sp-d16 -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014/25124cd324d60cb1-2hchpear/nrf52840-embedded -parse-as-library -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014/25124cd324d60cb1-2hchpear/nrf52840-embedded -enable-testing -D GIFTUI_NRF_EMBEDDED -module-name GiftUIRuntimeCore -emit-module -emit-object /Users/eugene/work/GiftUI/Sources/GiftUIRuntimeCore/ObservableCanvasInvocationSource.swift -emit-module-path /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded/GiftUIRuntimeCore.swiftmodule -o /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded/GiftUIRuntimeCore.o",
-    "/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.3.2-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded/cache -disable-sandbox -target armv7em-none-none-eabi -enable-experimental-feature Embedded -Xcc -mcpu=cortex-m4 -Xcc -mfloat-abi=hard -Xcc -mfpu=fpv4-sp-d16 -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014/25124cd324d60cb1-2hchpear/nrf52840-embedded -parse-as-library -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014/25124cd324d60cb1-2hchpear/nrf52840-embedded -enable-testing -D GIFTUI_NRF_EMBEDDED -module-name P06DrawingWorkspace -emit-module -emit-object /Users/eugene/work/GiftUI/Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFDrawingPlanRecords.swift /Users/eugene/work/GiftUI/Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFDrawingPlanStorage.swift /Users/eugene/work/GiftUI/Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFLivePathStorage.swift /Users/eugene/work/GiftUI/Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFDrawingWorkspace.swift -emit-module-path /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded/P06DrawingWorkspace.swiftmodule -o /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded/P06DrawingWorkspace.o",
-    "/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.3.2-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded/cache -disable-sandbox -target armv7em-none-none-eabi -enable-experimental-feature Embedded -Xcc -mcpu=cortex-m4 -Xcc -mfloat-abi=hard -Xcc -mfpu=fpv4-sp-d16 -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014/25124cd324d60cb1-2hchpear/nrf52840-embedded -parse-as-library -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014/25124cd324d60cb1-2hchpear/nrf52840-embedded -enable-testing -D GIFTUI_NRF_EMBEDDED -module-name GiftUIRuntimeStatic -emit-module -emit-object /Users/eugene/work/GiftUI/Sources/GiftUIRuntimeStatic/StaticObservableModelStorage.swift /Users/eugene/work/GiftUI/Sources/GiftUIRuntimeStatic/StaticCanvasValueStorage.swift /Users/eugene/work/GiftUI/Sources/GiftUIRuntimeStatic/StaticSemanticRecordStorage.swift -emit-module-path /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded/GiftUIRuntimeStatic.swiftmodule -o /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded/GiftUIRuntimeStatic.o",
-    "/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool --lower-source /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded/Counter.json /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC012/RuntimeDerived/CounterCanvas.swift /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded/CounterSchema.swift /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded/CounterCanvas.swift /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded/CounterCanvasTable.swift CounterCanvas",
-    "/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.3.2-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded/cache -disable-sandbox -target armv7em-none-none-eabi -enable-experimental-feature Embedded -Xcc -mcpu=cortex-m4 -Xcc -mfloat-abi=hard -Xcc -mfpu=fpv4-sp-d16 -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014/25124cd324d60cb1-2hchpear/nrf52840-embedded -parse-as-library -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014/25124cd324d60cb1-2hchpear/nrf52840-embedded -enable-testing -D GIFTUI_NRF_EMBEDDED -module-name CounterSchema -emit-module -emit-object /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded/CounterSchema.swift -emit-module-path /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded/CounterSchema.swiftmodule -o /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded/CounterSchema.o",
-    "/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.3.2-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded/cache -disable-sandbox -target armv7em-none-none-eabi -enable-experimental-feature Embedded -Xcc -mcpu=cortex-m4 -Xcc -mfloat-abi=hard -Xcc -mfpu=fpv4-sp-d16 -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014/25124cd324d60cb1-2hchpear/nrf52840-embedded -parse-as-library -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014/25124cd324d60cb1-2hchpear/nrf52840-embedded -enable-testing -D GIFTUI_NRF_EMBEDDED -module-name CounterCanvas -emit-module -emit-object /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded/CounterCanvas.swift -emit-module-path /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded/CounterCanvas.swiftmodule -o /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded/CounterCanvas.o",
-    "/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.3.2-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded/cache -disable-sandbox -target armv7em-none-none-eabi -enable-experimental-feature Embedded -Xcc -mcpu=cortex-m4 -Xcc -mfloat-abi=hard -Xcc -mfpu=fpv4-sp-d16 -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014/25124cd324d60cb1-2hchpear/nrf52840-embedded -parse-as-library -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014/25124cd324d60cb1-2hchpear/nrf52840-embedded -enable-testing -D GIFTUI_NRF_EMBEDDED -module-name CounterCanvasTable -emit-module -emit-object /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded/CounterCanvasTable.swift -emit-module-path /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded/CounterCanvasTable.swiftmodule -o /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded/CounterCanvasTable.o",
-    "/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool --lower-source /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded/Analyzer.json /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC012/RuntimeDerived/AnalyzerCanvas.swift /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded/AnalyzerSchema.swift /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded/AnalyzerCanvas.swift /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded/AnalyzerCanvasTable.swift AnalyzerCanvas",
-    "/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.3.2-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded/cache -disable-sandbox -target armv7em-none-none-eabi -enable-experimental-feature Embedded -Xcc -mcpu=cortex-m4 -Xcc -mfloat-abi=hard -Xcc -mfpu=fpv4-sp-d16 -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014/25124cd324d60cb1-2hchpear/nrf52840-embedded -parse-as-library -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014/25124cd324d60cb1-2hchpear/nrf52840-embedded -enable-testing -D GIFTUI_NRF_EMBEDDED -module-name AnalyzerSchema -emit-module -emit-object /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded/AnalyzerSchema.swift -emit-module-path /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded/AnalyzerSchema.swiftmodule -o /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded/AnalyzerSchema.o",
-    "/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.3.2-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded/cache -disable-sandbox -target armv7em-none-none-eabi -enable-experimental-feature Embedded -Xcc -mcpu=cortex-m4 -Xcc -mfloat-abi=hard -Xcc -mfpu=fpv4-sp-d16 -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014/25124cd324d60cb1-2hchpear/nrf52840-embedded -parse-as-library -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014/25124cd324d60cb1-2hchpear/nrf52840-embedded -enable-testing -D GIFTUI_NRF_EMBEDDED -module-name AnalyzerCanvas -emit-module -emit-object /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded/AnalyzerCanvas.swift -emit-module-path /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded/AnalyzerCanvas.swiftmodule -o /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded/AnalyzerCanvas.o",
-    "/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.3.2-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded/cache -disable-sandbox -target armv7em-none-none-eabi -enable-experimental-feature Embedded -Xcc -mcpu=cortex-m4 -Xcc -mfloat-abi=hard -Xcc -mfpu=fpv4-sp-d16 -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014/25124cd324d60cb1-2hchpear/nrf52840-embedded -parse-as-library -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014/25124cd324d60cb1-2hchpear/nrf52840-embedded -enable-testing -D GIFTUI_NRF_EMBEDDED -module-name AnalyzerCanvasTable -emit-module -emit-object /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded/AnalyzerCanvasTable.swift -emit-module-path /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded/AnalyzerCanvasTable.swiftmodule -o /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded/AnalyzerCanvasTable.o",
+    "/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.3.2-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded/cache -disable-sandbox -target armv7em-none-none-eabi -enable-experimental-feature Embedded -Xcc -mcpu=cortex-m4 -Xcc -mfloat-abi=hard -Xcc -mfpu=fpv4-sp-d16 -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014/189dda86d331e15d-xnmh_sbd/nrf52840-embedded -parse-as-library -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014/189dda86d331e15d-xnmh_sbd/nrf52840-embedded -enable-testing -D GIFTUI_NRF_EMBEDDED -module-name GiftUISemanticCore -emit-module -emit-object /Users/eugene/work/GiftUI/Sources/GiftUISemanticCore/GiftUISemanticCore.swift /Users/eugene/work/GiftUI/Sources/GiftUISemanticCore/SemanticRuntimeRecords.swift /Users/eugene/work/GiftUI/Sources/GiftUISemanticCore/SemanticRecordStore.swift /Users/eugene/work/GiftUI/Sources/GiftUISemanticCore/SemanticRecordExpansion.swift /Users/eugene/work/GiftUI/Sources/GiftUISemanticCore/SemanticStandardPayload.swift /Users/eugene/work/GiftUI/Sources/GiftUISemanticCore/SemanticLayoutView.swift /Users/eugene/work/GiftUI/Sources/GiftUISemanticCore/SemanticRenderView.swift /Users/eugene/work/GiftUI/Sources/GiftUISemanticCore/SemanticRecordLayoutView.swift /Users/eugene/work/GiftUI/Sources/GiftUISemanticCore/SemanticRecordRenderView.swift -emit-module-path /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded/GiftUISemanticCore.swiftmodule -o /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded/GiftUISemanticCore.o",
+    "/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.3.2-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded/cache -disable-sandbox -target armv7em-none-none-eabi -enable-experimental-feature Embedded -Xcc -mcpu=cortex-m4 -Xcc -mfloat-abi=hard -Xcc -mfpu=fpv4-sp-d16 -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014/189dda86d331e15d-xnmh_sbd/nrf52840-embedded -parse-as-library -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014/189dda86d331e15d-xnmh_sbd/nrf52840-embedded -enable-testing -D GIFTUI_NRF_EMBEDDED -module-name GiftUITextResources -emit-module -emit-object /Users/eugene/work/GiftUI/Sources/GiftUITextResources/GiftUITextResources.swift -emit-module-path /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded/GiftUITextResources.swiftmodule -o /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded/GiftUITextResources.o",
+    "/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.3.2-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded/cache -disable-sandbox -target armv7em-none-none-eabi -enable-experimental-feature Embedded -Xcc -mcpu=cortex-m4 -Xcc -mfloat-abi=hard -Xcc -mfpu=fpv4-sp-d16 -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014/189dda86d331e15d-xnmh_sbd/nrf52840-embedded -parse-as-library -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014/189dda86d331e15d-xnmh_sbd/nrf52840-embedded -enable-testing -D GIFTUI_NRF_EMBEDDED -module-name GiftUILayout -emit-module -emit-object /Users/eugene/work/GiftUI/Sources/GiftUILayout/Layout.swift /Users/eugene/work/GiftUI/Sources/GiftUILayout/LayoutCounters.swift /Users/eugene/work/GiftUI/Sources/GiftUILayout/LayoutEngine.swift /Users/eugene/work/GiftUI/Sources/GiftUILayout/LayoutError.swift /Users/eugene/work/GiftUI/Sources/GiftUILayout/LayoutGeometry.swift /Users/eugene/work/GiftUI/Sources/GiftUILayout/LayoutPublication.swift /Users/eugene/work/GiftUI/Sources/GiftUILayout/LayoutResultSink.swift /Users/eugene/work/GiftUI/Sources/GiftUILayout/LayoutSemanticValidation.swift /Users/eugene/work/GiftUI/Sources/GiftUILayout/LayoutValues.swift /Users/eugene/work/GiftUI/Sources/GiftUILayout/LayoutWorkspace.swift /Users/eugene/work/GiftUI/Sources/GiftUILayout/ResolvedRenderLayoutView.swift -emit-module-path /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded/GiftUILayout.swiftmodule -o /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded/GiftUILayout.o",
+    "/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.3.2-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded/cache -disable-sandbox -target armv7em-none-none-eabi -enable-experimental-feature Embedded -Xcc -mcpu=cortex-m4 -Xcc -mfloat-abi=hard -Xcc -mfpu=fpv4-sp-d16 -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014/189dda86d331e15d-xnmh_sbd/nrf52840-embedded -parse-as-library -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014/189dda86d331e15d-xnmh_sbd/nrf52840-embedded -enable-testing -D GIFTUI_NRF_EMBEDDED -module-name GiftUIRenderCore -emit-module -emit-object /Users/eugene/work/GiftUI/Sources/GiftUIRenderCore/DrawingOperationSink.swift /Users/eugene/work/GiftUI/Sources/GiftUIRenderCore/RenderOperationSink.swift /Users/eugene/work/GiftUI/Sources/GiftUIRenderCore/RenderRecordingSink.swift /Users/eugene/work/GiftUI/Sources/GiftUIRenderCore/RenderValues.swift -emit-module-path /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded/GiftUIRenderCore.swiftmodule -o /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded/GiftUIRenderCore.o",
+    "/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.3.2-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded/cache -disable-sandbox -target armv7em-none-none-eabi -enable-experimental-feature Embedded -Xcc -mcpu=cortex-m4 -Xcc -mfloat-abi=hard -Xcc -mfpu=fpv4-sp-d16 -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014/189dda86d331e15d-xnmh_sbd/nrf52840-embedded -parse-as-library -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014/189dda86d331e15d-xnmh_sbd/nrf52840-embedded -enable-testing -D GIFTUI_NRF_EMBEDDED -module-name GiftUICapabilities -emit-module -emit-object /Users/eugene/work/GiftUI/Sources/GiftUICapabilities/GiftUICapabilities.swift -emit-module-path /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded/GiftUICapabilities.swiftmodule -o /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded/GiftUICapabilities.o",
+    "/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.3.2-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded/cache -disable-sandbox -target armv7em-none-none-eabi -enable-experimental-feature Embedded -Xcc -mcpu=cortex-m4 -Xcc -mfloat-abi=hard -Xcc -mfpu=fpv4-sp-d16 -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014/189dda86d331e15d-xnmh_sbd/nrf52840-embedded -parse-as-library -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014/189dda86d331e15d-xnmh_sbd/nrf52840-embedded -enable-testing -D GIFTUI_NRF_EMBEDDED -module-name GiftUISurfaceCore -emit-module -emit-object /Users/eugene/work/GiftUI/Sources/GiftUISurfaceCore/RasterSurface.swift /Users/eugene/work/GiftUI/Sources/GiftUISurfaceCore/SurfaceValues.swift -emit-module-path /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded/GiftUISurfaceCore.swiftmodule -o /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded/GiftUISurfaceCore.o",
+    "/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.3.2-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded/cache -disable-sandbox -target armv7em-none-none-eabi -enable-experimental-feature Embedded -Xcc -mcpu=cortex-m4 -Xcc -mfloat-abi=hard -Xcc -mfpu=fpv4-sp-d16 -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014/189dda86d331e15d-xnmh_sbd/nrf52840-embedded -parse-as-library -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014/189dda86d331e15d-xnmh_sbd/nrf52840-embedded -enable-testing -D GIFTUI_NRF_EMBEDDED -module-name GiftUIRasterCore -emit-module -emit-object /Users/eugene/work/GiftUI/Sources/GiftUIRasterCore/RasterStrokeCoverage.swift /Users/eugene/work/GiftUI/Sources/GiftUIRasterCore/RasterFillCoverage.swift -emit-module-path /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded/GiftUIRasterCore.swiftmodule -o /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded/GiftUIRasterCore.o",
+    "/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.3.2-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded/cache -disable-sandbox -target armv7em-none-none-eabi -enable-experimental-feature Embedded -Xcc -mcpu=cortex-m4 -Xcc -mfloat-abi=hard -Xcc -mfpu=fpv4-sp-d16 -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014/189dda86d331e15d-xnmh_sbd/nrf52840-embedded -parse-as-library -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014/189dda86d331e15d-xnmh_sbd/nrf52840-embedded -enable-testing -D GIFTUI_NRF_EMBEDDED -module-name GiftUIExecution -emit-module -emit-object /Users/eugene/work/GiftUI/Sources/GiftUIExecution/ObservableTargetGeneration.swift /Users/eugene/work/GiftUI/Sources/GiftUIExecution/ExecutionValues.swift /Users/eugene/work/GiftUI/Sources/GiftUIExecution/FrameHandoffValues.swift -emit-module-path /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded/GiftUIExecution.swiftmodule -o /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded/GiftUIExecution.o",
+    "/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.3.2-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded/cache -disable-sandbox -target armv7em-none-none-eabi -enable-experimental-feature Embedded -Xcc -mcpu=cortex-m4 -Xcc -mfloat-abi=hard -Xcc -mfpu=fpv4-sp-d16 -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014/189dda86d331e15d-xnmh_sbd/nrf52840-embedded -parse-as-library -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014/189dda86d331e15d-xnmh_sbd/nrf52840-embedded -enable-testing -D GIFTUI_NRF_EMBEDDED -module-name GiftUIObservableState -emit-module -emit-object /Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableStateValues.swift /Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableModelIdentity.swift /Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableModelOwnership.swift /Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableModelTicket.swift /Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableModelScope.swift /Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableModelMutation.swift /Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableStateModel.swift /Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableStateRegistrationLifecycle.swift /Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableStateRootScope.swift /Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableStateRootTargetAccess.swift /Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableStateBindingDecorator.swift /Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableSemanticBodyBinding.swift -emit-module-path /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded/GiftUIObservableState.swiftmodule -o /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded/GiftUIObservableState.o",
+    "/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.3.2-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded/cache -disable-sandbox -target armv7em-none-none-eabi -enable-experimental-feature Embedded -Xcc -mcpu=cortex-m4 -Xcc -mfloat-abi=hard -Xcc -mfpu=fpv4-sp-d16 -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014/189dda86d331e15d-xnmh_sbd/nrf52840-embedded -parse-as-library -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014/189dda86d331e15d-xnmh_sbd/nrf52840-embedded -enable-testing -D GIFTUI_NRF_EMBEDDED -module-name GiftUIDrawing -emit-module -emit-object /Users/eugene/work/GiftUI/Sources/GiftUIDrawing/CanvasInvocationSource.swift /Users/eugene/work/GiftUI/Sources/GiftUIDrawing/CanvasPlanProducer.swift /Users/eugene/work/GiftUI/Sources/GiftUIDrawing/CanvasStagedValues.swift /Users/eugene/work/GiftUI/Sources/GiftUIDrawing/CanvasSemanticPayload.swift /Users/eugene/work/GiftUI/Sources/GiftUIDrawing/DrawingLimits.swift /Users/eugene/work/GiftUI/Sources/GiftUIDrawing/DrawingPlan.swift /Users/eugene/work/GiftUI/Sources/GiftUIDrawing/DrawingValues.swift /Users/eugene/work/GiftUI/Sources/GiftUIDrawing/StaticCanvasCallableTable.swift /Users/eugene/work/GiftUI/Sources/GiftUIDrawing/PathConstruction.swift /Users/eugene/work/GiftUI/Sources/GiftUIDrawing/StrokeSnapshot.swift -emit-module-path /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded/GiftUIDrawing.swiftmodule -o /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded/GiftUIDrawing.o",
+    "/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.3.2-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded/cache -disable-sandbox -target armv7em-none-none-eabi -enable-experimental-feature Embedded -Xcc -mcpu=cortex-m4 -Xcc -mfloat-abi=hard -Xcc -mfpu=fpv4-sp-d16 -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014/189dda86d331e15d-xnmh_sbd/nrf52840-embedded -parse-as-library -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014/189dda86d331e15d-xnmh_sbd/nrf52840-embedded -enable-testing -D GIFTUI_NRF_EMBEDDED -module-name GiftUIFailureCore -emit-module -emit-object /Users/eugene/work/GiftUI/Sources/GiftUIFailureCore/GiftUIFailureCore.swift -emit-module-path /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded/GiftUIFailureCore.swiftmodule -o /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded/GiftUIFailureCore.o",
+    "/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.3.2-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded/cache -disable-sandbox -target armv7em-none-none-eabi -enable-experimental-feature Embedded -Xcc -mcpu=cortex-m4 -Xcc -mfloat-abi=hard -Xcc -mfpu=fpv4-sp-d16 -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014/189dda86d331e15d-xnmh_sbd/nrf52840-embedded -parse-as-library -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014/189dda86d331e15d-xnmh_sbd/nrf52840-embedded -enable-testing -D GIFTUI_NRF_EMBEDDED -module-name GiftUIDrawingFailureAdapterFixture -emit-module -emit-object /Users/eugene/work/GiftUI/Sources/GiftUIDrawingFailureAdapterFixture/GiftUIDrawingFailureAdapterFixture.swift -emit-module-path /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded/GiftUIDrawingFailureAdapterFixture.swiftmodule -o /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded/GiftUIDrawingFailureAdapterFixture.o",
+    "/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.3.2-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded/cache -disable-sandbox -target armv7em-none-none-eabi -enable-experimental-feature Embedded -Xcc -mcpu=cortex-m4 -Xcc -mfloat-abi=hard -Xcc -mfpu=fpv4-sp-d16 -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014/189dda86d331e15d-xnmh_sbd/nrf52840-embedded -parse-as-library -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014/189dda86d331e15d-xnmh_sbd/nrf52840-embedded -enable-testing -D GIFTUI_NRF_EMBEDDED -module-name GiftUIRuntimeCore -emit-module -emit-object /Users/eugene/work/GiftUI/Sources/GiftUIRuntimeCore/ObservableCanvasInvocationSource.swift -emit-module-path /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded/GiftUIRuntimeCore.swiftmodule -o /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded/GiftUIRuntimeCore.o",
+    "/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.3.2-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded/cache -disable-sandbox -target armv7em-none-none-eabi -enable-experimental-feature Embedded -Xcc -mcpu=cortex-m4 -Xcc -mfloat-abi=hard -Xcc -mfpu=fpv4-sp-d16 -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014/189dda86d331e15d-xnmh_sbd/nrf52840-embedded -parse-as-library -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014/189dda86d331e15d-xnmh_sbd/nrf52840-embedded -enable-testing -D GIFTUI_NRF_EMBEDDED -module-name P06DrawingWorkspace -emit-module -emit-object /Users/eugene/work/GiftUI/Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFDrawingPlanRecords.swift /Users/eugene/work/GiftUI/Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFDrawingPlanStorage.swift /Users/eugene/work/GiftUI/Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFLivePathStorage.swift /Users/eugene/work/GiftUI/Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFDrawingWorkspace.swift -emit-module-path /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded/P06DrawingWorkspace.swiftmodule -o /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded/P06DrawingWorkspace.o",
+    "/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.3.2-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded/cache -disable-sandbox -target armv7em-none-none-eabi -enable-experimental-feature Embedded -Xcc -mcpu=cortex-m4 -Xcc -mfloat-abi=hard -Xcc -mfpu=fpv4-sp-d16 -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014/189dda86d331e15d-xnmh_sbd/nrf52840-embedded -parse-as-library -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014/189dda86d331e15d-xnmh_sbd/nrf52840-embedded -enable-testing -D GIFTUI_NRF_EMBEDDED -module-name GiftUIRuntimeStatic -emit-module -emit-object /Users/eugene/work/GiftUI/Sources/GiftUIRuntimeStatic/StaticObservableModelStorage.swift /Users/eugene/work/GiftUI/Sources/GiftUIRuntimeStatic/StaticCanvasValueStorage.swift /Users/eugene/work/GiftUI/Sources/GiftUIRuntimeStatic/StaticSemanticRecordStorage.swift -emit-module-path /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded/GiftUIRuntimeStatic.swiftmodule -o /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded/GiftUIRuntimeStatic.o",
+    "/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool --lower-source /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded/Counter.json /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC012/RuntimeDerived/CounterCanvas.swift /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded/CounterSchema.swift /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded/CounterCanvas.swift /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded/CounterCanvasTable.swift CounterCanvas",
+    "/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.3.2-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded/cache -disable-sandbox -target armv7em-none-none-eabi -enable-experimental-feature Embedded -Xcc -mcpu=cortex-m4 -Xcc -mfloat-abi=hard -Xcc -mfpu=fpv4-sp-d16 -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014/189dda86d331e15d-xnmh_sbd/nrf52840-embedded -parse-as-library -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014/189dda86d331e15d-xnmh_sbd/nrf52840-embedded -enable-testing -D GIFTUI_NRF_EMBEDDED -module-name CounterSchema -emit-module -emit-object /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded/CounterSchema.swift -emit-module-path /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded/CounterSchema.swiftmodule -o /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded/CounterSchema.o",
+    "/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.3.2-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded/cache -disable-sandbox -target armv7em-none-none-eabi -enable-experimental-feature Embedded -Xcc -mcpu=cortex-m4 -Xcc -mfloat-abi=hard -Xcc -mfpu=fpv4-sp-d16 -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014/189dda86d331e15d-xnmh_sbd/nrf52840-embedded -parse-as-library -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014/189dda86d331e15d-xnmh_sbd/nrf52840-embedded -enable-testing -D GIFTUI_NRF_EMBEDDED -module-name CounterCanvas -emit-module -emit-object /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded/CounterCanvas.swift -emit-module-path /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded/CounterCanvas.swiftmodule -o /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded/CounterCanvas.o",
+    "/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.3.2-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded/cache -disable-sandbox -target armv7em-none-none-eabi -enable-experimental-feature Embedded -Xcc -mcpu=cortex-m4 -Xcc -mfloat-abi=hard -Xcc -mfpu=fpv4-sp-d16 -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014/189dda86d331e15d-xnmh_sbd/nrf52840-embedded -parse-as-library -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014/189dda86d331e15d-xnmh_sbd/nrf52840-embedded -enable-testing -D GIFTUI_NRF_EMBEDDED -module-name CounterCanvasTable -emit-module -emit-object /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded/CounterCanvasTable.swift -emit-module-path /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded/CounterCanvasTable.swiftmodule -o /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded/CounterCanvasTable.o",
+    "/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool --lower-source /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded/Analyzer.json /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC012/RuntimeDerived/AnalyzerCanvas.swift /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded/AnalyzerSchema.swift /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded/AnalyzerCanvas.swift /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded/AnalyzerCanvasTable.swift AnalyzerCanvas",
+    "/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.3.2-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded/cache -disable-sandbox -target armv7em-none-none-eabi -enable-experimental-feature Embedded -Xcc -mcpu=cortex-m4 -Xcc -mfloat-abi=hard -Xcc -mfpu=fpv4-sp-d16 -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014/189dda86d331e15d-xnmh_sbd/nrf52840-embedded -parse-as-library -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014/189dda86d331e15d-xnmh_sbd/nrf52840-embedded -enable-testing -D GIFTUI_NRF_EMBEDDED -module-name AnalyzerSchema -emit-module -emit-object /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded/AnalyzerSchema.swift -emit-module-path /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded/AnalyzerSchema.swiftmodule -o /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded/AnalyzerSchema.o",
+    "/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.3.2-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded/cache -disable-sandbox -target armv7em-none-none-eabi -enable-experimental-feature Embedded -Xcc -mcpu=cortex-m4 -Xcc -mfloat-abi=hard -Xcc -mfpu=fpv4-sp-d16 -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014/189dda86d331e15d-xnmh_sbd/nrf52840-embedded -parse-as-library -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014/189dda86d331e15d-xnmh_sbd/nrf52840-embedded -enable-testing -D GIFTUI_NRF_EMBEDDED -module-name AnalyzerCanvas -emit-module -emit-object /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded/AnalyzerCanvas.swift -emit-module-path /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded/AnalyzerCanvas.swiftmodule -o /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded/AnalyzerCanvas.o",
+    "/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.3.2-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded/cache -disable-sandbox -target armv7em-none-none-eabi -enable-experimental-feature Embedded -Xcc -mcpu=cortex-m4 -Xcc -mfloat-abi=hard -Xcc -mfpu=fpv4-sp-d16 -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014/189dda86d331e15d-xnmh_sbd/nrf52840-embedded -parse-as-library -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014/189dda86d331e15d-xnmh_sbd/nrf52840-embedded -enable-testing -D GIFTUI_NRF_EMBEDDED -module-name AnalyzerCanvasTable -emit-module -emit-object /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded/AnalyzerCanvasTable.swift -emit-module-path /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded/AnalyzerCanvasTable.swiftmodule -o /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded/AnalyzerCanvasTable.o",
     "/Users/eugene/work/GiftUI/scripts/contracts/check-spec-012-raster-vectors.rb",
-    "python3 /Users/eugene/work/GiftUI/scripts/contracts/generate-spec-012-raster-probe.py /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC012/raster-vectors.yaml /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded/RasterProbe.swift",
-    "/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.3.2-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded/cache -disable-sandbox -target armv7em-none-none-eabi -enable-experimental-feature Embedded -Xcc -mcpu=cortex-m4 -Xcc -mfloat-abi=hard -Xcc -mfpu=fpv4-sp-d16 -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014/25124cd324d60cb1-2hchpear/nrf52840-embedded -parse-as-library -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014/25124cd324d60cb1-2hchpear/nrf52840-embedded -enable-testing -D GIFTUI_NRF_EMBEDDED -module-name CanvasStoreProbe -emit-module -emit-object /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC012/RuntimeDerived/CanvasStoreProbe.swift /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC012/RuntimeDerived/CanvasSemanticProbe.swift /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC012/RuntimeDerived/CanvasErrorProbe.swift /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC012/RuntimeDerived/CanvasTableProbe.swift /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC012/RuntimeDerived/CanvasGeometryProbe.swift /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded/RasterProbe.swift /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC012/RuntimeDerived/CanvasResourceProbe.swift /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC007/RuntimeDerived/LayoutSupport.swift -emit-module-path /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded/CanvasStoreProbe.swiftmodule -o /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded/CanvasStoreProbe.o",
-    "/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.3.2-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded/cache -disable-sandbox -target armv7em-none-none-eabi -enable-experimental-feature Embedded -Xcc -mcpu=cortex-m4 -Xcc -mfloat-abi=hard -Xcc -mfpu=fpv4-sp-d16 -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014/25124cd324d60cb1-2hchpear/nrf52840-embedded -parse-as-library -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014/25124cd324d60cb1-2hchpear/nrf52840-embedded -enable-testing -D GIFTUI_NRF_EMBEDDED -module-name CanvasLayouts -emit-ir /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC012/RuntimeDerived/CanvasLayoutProbe.swift -o /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded/layouts.ll",
-    "/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.3.2-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded/cache -disable-sandbox -target armv7em-none-none-eabi -enable-experimental-feature Embedded -Xcc -mcpu=cortex-m4 -Xcc -mfloat-abi=hard -Xcc -mfpu=fpv4-sp-d16 -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014/25124cd324d60cb1-2hchpear/nrf52840-embedded -parse-as-library -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014/25124cd324d60cb1-2hchpear/nrf52840-embedded -enable-testing -D GIFTUI_NRF_EMBEDDED -module-name CanvasStoreProbe -emit-ir /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC012/RuntimeDerived/CanvasStoreProbe.swift /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC012/RuntimeDerived/CanvasSemanticProbe.swift /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC012/RuntimeDerived/CanvasErrorProbe.swift /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC012/RuntimeDerived/CanvasTableProbe.swift /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC012/RuntimeDerived/CanvasGeometryProbe.swift /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded/RasterProbe.swift /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC012/RuntimeDerived/CanvasResourceProbe.swift /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC007/RuntimeDerived/LayoutSupport.swift -o /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded/static-resources.ll",
-    "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/arm-zephyr-eabi-readelf -h -A /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded/CanvasStoreProbe.o",
-    "/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool --lower-source /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded/Counter.json /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded/missing-witness.swift /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded/missing-witness-schema.swift /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded/missing-witness-lowered.swift",
-    "/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool --lower-source /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded/Counter.json /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded/async-draw.swift /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded/async-draw-schema.swift /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded/async-draw-lowered.swift",
-    "/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool --lower-source /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded/Counter.json /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded/effect.swift /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded/effect-schema.swift /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded/effect-lowered.swift",
-    "/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool --lower-source /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded/Counter.json /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded/inout-effect.swift /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded/inout-effect-schema.swift /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded/inout-effect-lowered.swift",
-    "/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool --lower-source /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded/Counter.json /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded/closure-fallback.swift /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded/closure-fallback-schema.swift /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded/closure-fallback-lowered.swift",
-    "/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.3.2-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded/cache -disable-sandbox -target armv7em-none-none-eabi -enable-experimental-feature Embedded -Xcc -mcpu=cortex-m4 -Xcc -mfloat-abi=hard -Xcc -mfpu=fpv4-sp-d16 -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014/25124cd324d60cb1-2hchpear/nrf52840-embedded -parse-as-library -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014/25124cd324d60cb1-2hchpear/nrf52840-embedded -enable-testing -D GIFTUI_NRF_EMBEDDED -module-name escapestagedvalues -emit-object /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded/escape-staged-values.swift -o /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded/escape-staged-values.o",
-    "/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.3.2-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded/cache -disable-sandbox -target armv7em-none-none-eabi -enable-experimental-feature Embedded -Xcc -mcpu=cortex-m4 -Xcc -mfloat-abi=hard -Xcc -mfpu=fpv4-sp-d16 -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014/25124cd324d60cb1-2hchpear/nrf52840-embedded -parse-as-library -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014/25124cd324d60cb1-2hchpear/nrf52840-embedded -enable-testing -D GIFTUI_NRF_EMBEDDED -module-name copystagedvalues -emit-object /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded/copy-staged-values.swift -o /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded/copy-staged-values.o",
-    "/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.3.2-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded/cache -disable-sandbox -target armv7em-none-none-eabi -enable-experimental-feature Embedded -Xcc -mcpu=cortex-m4 -Xcc -mfloat-abi=hard -Xcc -mfpu=fpv4-sp-d16 -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014/25124cd324d60cb1-2hchpear/nrf52840-embedded -parse-as-library -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014/25124cd324d60cb1-2hchpear/nrf52840-embedded -enable-testing -D GIFTUI_NRF_EMBEDDED -module-name escapesource -emit-object /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded/escape-source.swift -o /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded/escape-source.o",
-    "/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.3.2-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded/cache -disable-sandbox -target armv7em-none-none-eabi -enable-experimental-feature Embedded -Xcc -mcpu=cortex-m4 -Xcc -mfloat-abi=hard -Xcc -mfpu=fpv4-sp-d16 -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014/25124cd324d60cb1-2hchpear/nrf52840-embedded -parse-as-library -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014/25124cd324d60cb1-2hchpear/nrf52840-embedded -enable-testing -D GIFTUI_NRF_EMBEDDED -module-name copysource -emit-object /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded/copy-source.swift -o /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded/copy-source.o",
-    "/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.3.2-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded/cache -disable-sandbox -target armv7em-none-none-eabi -enable-experimental-feature Embedded -Xcc -mcpu=cortex-m4 -Xcc -mfloat-abi=hard -Xcc -mfpu=fpv4-sp-d16 -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014/25124cd324d60cb1-2hchpear/nrf52840-embedded -parse-as-library -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014/25124cd324d60cb1-2hchpear/nrf52840-embedded -enable-testing -D GIFTUI_NRF_EMBEDDED -module-name wrongdomain -emit-object /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded/wrong-domain.swift -o /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded/wrong-domain.o",
-    "/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.3.2-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded/cache -disable-sandbox -target armv7em-none-none-eabi -enable-experimental-feature Embedded -Xcc -mcpu=cortex-m4 -Xcc -mfloat-abi=hard -Xcc -mfpu=fpv4-sp-d16 -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014/25124cd324d60cb1-2hchpear/nrf52840-embedded -parse-as-library -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014/25124cd324d60cb1-2hchpear/nrf52840-embedded -enable-testing -D GIFTUI_NRF_EMBEDDED -module-name escaperead -emit-object /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded/escape-read.swift -o /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded/escape-read.o",
-    "/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.3.2-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded/cache -disable-sandbox -target armv7em-none-none-eabi -enable-experimental-feature Embedded -Xcc -mcpu=cortex-m4 -Xcc -mfloat-abi=hard -Xcc -mfpu=fpv4-sp-d16 -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014/25124cd324d60cb1-2hchpear/nrf52840-embedded -parse-as-library -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014/25124cd324d60cb1-2hchpear/nrf52840-embedded -enable-testing -D GIFTUI_NRF_EMBEDDED -module-name escapecontext -emit-object /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded/escape-context.swift -o /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded/escape-context.o",
-    "/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.3.2-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded/cache -disable-sandbox -target armv7em-none-none-eabi -enable-experimental-feature Embedded -Xcc -mcpu=cortex-m4 -Xcc -mfloat-abi=hard -Xcc -mfpu=fpv4-sp-d16 -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014/25124cd324d60cb1-2hchpear/nrf52840-embedded -parse-as-library -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014/25124cd324d60cb1-2hchpear/nrf52840-embedded -enable-testing -D GIFTUI_NRF_EMBEDDED -module-name missingcompiledwitness -emit-object /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded/missing-compiled-witness.swift -o /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded/missing-compiled-witness.o"
+    "python3 /Users/eugene/work/GiftUI/scripts/contracts/generate-spec-012-raster-probe.py /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC012/raster-vectors.yaml /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded/RasterProbe.swift",
+    "/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.3.2-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded/cache -disable-sandbox -target armv7em-none-none-eabi -enable-experimental-feature Embedded -Xcc -mcpu=cortex-m4 -Xcc -mfloat-abi=hard -Xcc -mfpu=fpv4-sp-d16 -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014/189dda86d331e15d-xnmh_sbd/nrf52840-embedded -parse-as-library -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014/189dda86d331e15d-xnmh_sbd/nrf52840-embedded -enable-testing -D GIFTUI_NRF_EMBEDDED -module-name CanvasStoreProbe -emit-module -emit-object /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC012/RuntimeDerived/CanvasStoreProbe.swift /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC012/RuntimeDerived/CanvasSemanticProbe.swift /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC012/RuntimeDerived/CanvasErrorProbe.swift /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC012/RuntimeDerived/CanvasTableProbe.swift /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC012/RuntimeDerived/CanvasGeometryProbe.swift /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded/RasterProbe.swift /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC012/RuntimeDerived/CanvasResourceProbe.swift /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC007/RuntimeDerived/LayoutSupport.swift -emit-module-path /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded/CanvasStoreProbe.swiftmodule -o /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded/CanvasStoreProbe.o",
+    "/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.3.2-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded/cache -disable-sandbox -target armv7em-none-none-eabi -enable-experimental-feature Embedded -Xcc -mcpu=cortex-m4 -Xcc -mfloat-abi=hard -Xcc -mfpu=fpv4-sp-d16 -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014/189dda86d331e15d-xnmh_sbd/nrf52840-embedded -parse-as-library -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014/189dda86d331e15d-xnmh_sbd/nrf52840-embedded -enable-testing -D GIFTUI_NRF_EMBEDDED -module-name CanvasLayouts -emit-ir /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC012/RuntimeDerived/CanvasLayoutProbe.swift -o /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded/layouts.ll",
+    "/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.3.2-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded/cache -disable-sandbox -target armv7em-none-none-eabi -enable-experimental-feature Embedded -Xcc -mcpu=cortex-m4 -Xcc -mfloat-abi=hard -Xcc -mfpu=fpv4-sp-d16 -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014/189dda86d331e15d-xnmh_sbd/nrf52840-embedded -parse-as-library -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014/189dda86d331e15d-xnmh_sbd/nrf52840-embedded -enable-testing -D GIFTUI_NRF_EMBEDDED -module-name CanvasStoreProbe -emit-ir /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC012/RuntimeDerived/CanvasStoreProbe.swift /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC012/RuntimeDerived/CanvasSemanticProbe.swift /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC012/RuntimeDerived/CanvasErrorProbe.swift /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC012/RuntimeDerived/CanvasTableProbe.swift /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC012/RuntimeDerived/CanvasGeometryProbe.swift /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded/RasterProbe.swift /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC012/RuntimeDerived/CanvasResourceProbe.swift /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC007/RuntimeDerived/LayoutSupport.swift -o /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded/static-resources.ll",
+    "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/arm-zephyr-eabi-readelf -h -A /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded/CanvasStoreProbe.o",
+    "/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool --lower-source /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded/Counter.json /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded/missing-witness.swift /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded/missing-witness-schema.swift /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded/missing-witness-lowered.swift",
+    "/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool --lower-source /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded/Counter.json /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded/async-draw.swift /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded/async-draw-schema.swift /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded/async-draw-lowered.swift",
+    "/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool --lower-source /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded/Counter.json /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded/effect.swift /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded/effect-schema.swift /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded/effect-lowered.swift",
+    "/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool --lower-source /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded/Counter.json /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded/inout-effect.swift /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded/inout-effect-schema.swift /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded/inout-effect-lowered.swift",
+    "/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool --lower-source /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded/Counter.json /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded/closure-fallback.swift /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded/closure-fallback-schema.swift /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded/closure-fallback-lowered.swift",
+    "/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.3.2-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded/cache -disable-sandbox -target armv7em-none-none-eabi -enable-experimental-feature Embedded -Xcc -mcpu=cortex-m4 -Xcc -mfloat-abi=hard -Xcc -mfpu=fpv4-sp-d16 -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014/189dda86d331e15d-xnmh_sbd/nrf52840-embedded -parse-as-library -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014/189dda86d331e15d-xnmh_sbd/nrf52840-embedded -enable-testing -D GIFTUI_NRF_EMBEDDED -module-name escapestagedvalues -emit-object /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded/escape-staged-values.swift -o /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded/escape-staged-values.o",
+    "/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.3.2-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded/cache -disable-sandbox -target armv7em-none-none-eabi -enable-experimental-feature Embedded -Xcc -mcpu=cortex-m4 -Xcc -mfloat-abi=hard -Xcc -mfpu=fpv4-sp-d16 -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014/189dda86d331e15d-xnmh_sbd/nrf52840-embedded -parse-as-library -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014/189dda86d331e15d-xnmh_sbd/nrf52840-embedded -enable-testing -D GIFTUI_NRF_EMBEDDED -module-name copystagedvalues -emit-object /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded/copy-staged-values.swift -o /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded/copy-staged-values.o",
+    "/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.3.2-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded/cache -disable-sandbox -target armv7em-none-none-eabi -enable-experimental-feature Embedded -Xcc -mcpu=cortex-m4 -Xcc -mfloat-abi=hard -Xcc -mfpu=fpv4-sp-d16 -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014/189dda86d331e15d-xnmh_sbd/nrf52840-embedded -parse-as-library -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014/189dda86d331e15d-xnmh_sbd/nrf52840-embedded -enable-testing -D GIFTUI_NRF_EMBEDDED -module-name escapesource -emit-object /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded/escape-source.swift -o /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded/escape-source.o",
+    "/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.3.2-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded/cache -disable-sandbox -target armv7em-none-none-eabi -enable-experimental-feature Embedded -Xcc -mcpu=cortex-m4 -Xcc -mfloat-abi=hard -Xcc -mfpu=fpv4-sp-d16 -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014/189dda86d331e15d-xnmh_sbd/nrf52840-embedded -parse-as-library -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014/189dda86d331e15d-xnmh_sbd/nrf52840-embedded -enable-testing -D GIFTUI_NRF_EMBEDDED -module-name copysource -emit-object /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded/copy-source.swift -o /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded/copy-source.o",
+    "/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.3.2-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded/cache -disable-sandbox -target armv7em-none-none-eabi -enable-experimental-feature Embedded -Xcc -mcpu=cortex-m4 -Xcc -mfloat-abi=hard -Xcc -mfpu=fpv4-sp-d16 -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014/189dda86d331e15d-xnmh_sbd/nrf52840-embedded -parse-as-library -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014/189dda86d331e15d-xnmh_sbd/nrf52840-embedded -enable-testing -D GIFTUI_NRF_EMBEDDED -module-name wrongdomain -emit-object /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded/wrong-domain.swift -o /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded/wrong-domain.o",
+    "/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.3.2-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded/cache -disable-sandbox -target armv7em-none-none-eabi -enable-experimental-feature Embedded -Xcc -mcpu=cortex-m4 -Xcc -mfloat-abi=hard -Xcc -mfpu=fpv4-sp-d16 -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014/189dda86d331e15d-xnmh_sbd/nrf52840-embedded -parse-as-library -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014/189dda86d331e15d-xnmh_sbd/nrf52840-embedded -enable-testing -D GIFTUI_NRF_EMBEDDED -module-name escaperead -emit-object /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded/escape-read.swift -o /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded/escape-read.o",
+    "/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.3.2-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded/cache -disable-sandbox -target armv7em-none-none-eabi -enable-experimental-feature Embedded -Xcc -mcpu=cortex-m4 -Xcc -mfloat-abi=hard -Xcc -mfpu=fpv4-sp-d16 -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014/189dda86d331e15d-xnmh_sbd/nrf52840-embedded -parse-as-library -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014/189dda86d331e15d-xnmh_sbd/nrf52840-embedded -enable-testing -D GIFTUI_NRF_EMBEDDED -module-name escapecontext -emit-object /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded/escape-context.swift -o /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded/escape-context.o",
+    "/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.3.2-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded/cache -disable-sandbox -target armv7em-none-none-eabi -enable-experimental-feature Embedded -Xcc -mcpu=cortex-m4 -Xcc -mfloat-abi=hard -Xcc -mfpu=fpv4-sp-d16 -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014/189dda86d331e15d-xnmh_sbd/nrf52840-embedded -parse-as-library -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded -I /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-006-rfc-014/189dda86d331e15d-xnmh_sbd/nrf52840-embedded -enable-testing -D GIFTUI_NRF_EMBEDDED -module-name missingcompiledwitness -emit-object /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded/missing-compiled-witness.swift -o /Users/eugene/work/GiftUI/.build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded/missing-compiled-witness.o"
   ],
   "compiler": ".toolchains/nrf52840/swift/swift-6.3.2-RELEASE-osx/usr/bin/swiftc",
   "compiler_sha256": "d8e40107da0e2c1c59640a983faea326d5d2bddfe81f7609db14bade43c4a5b9",
-  "core_receipt": ".build/nrf52840/contracts/spec-006-rfc-014/25124cd324d60cb1-2hchpear/nrf52840-embedded/result.json",
-  "core_receipt_sha256": "7f701f97ec94eb67aa49f0fb92081f298324ace020ad54921475228fde8a9844",
+  "core_receipt": ".build/nrf52840/contracts/spec-006-rfc-014/189dda86d331e15d-xnmh_sbd/nrf52840-embedded/result.json",
+  "core_receipt_sha256": "d8665a0ca4f1c07f928f74fd754048e0528528fb1fc6e36b7e092fbd9198c588",
   "execution": "cross-compiled components/ABI only; no board execution",
   "inputs": {
-    ".build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded/AnalyzerCanvas.swift": "d77f63a6117b8c9b18409cfdafbf5f836072603c73383d571e5a5d546658d46e",
-    ".build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded/AnalyzerCanvasTable.swift": "f410e9ea2ee560e8c5c90c5d646cacf4932fcf416a8bbfaef99f09c86ee01d9b",
-    ".build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded/AnalyzerSchema.swift": "a68eafe25b6eb00d7787f5eddbe1113cd7006e16bba7421edf0ce72459528782",
-    ".build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded/CounterCanvas.swift": "a79d67cc604cba1b547e6434836c5d7e87946cc08b63bf52f61d48faa3e40047",
-    ".build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded/CounterCanvasTable.swift": "22f7846e64d2f322423ca1a2b6c46b11b8da4fb2ca55caadff33dae7067a2e8d",
-    ".build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded/CounterSchema.swift": "a36e7b5efba867006cb1f5c3932bd80fc5969f93b33dc3a9e936c61b7af67ccc",
-    ".build/nrf52840/contracts/spec-012-protocol-canvas/tmp0qtf6fi1/nrf52840-embedded/RasterProbe.swift": "f03ea9878dc0c5c4c6870fc5248be8b776c3893aaa77d7a56125d6099d85423e",
-    ".build/rfc014-p02/tool/debug/GiftUIMacros-tool": "b4ff672eb0ae64b64571223a0c17e1dcd95ddcf45a0d6465b0407ec28b226a1b",
+    ".build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded/AnalyzerCanvas.swift": "e64a83f6fc228289636176033236e10be94c06ac213c4e5a8c4d9fa6df12ceff",
+    ".build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded/AnalyzerCanvasTable.swift": "f410e9ea2ee560e8c5c90c5d646cacf4932fcf416a8bbfaef99f09c86ee01d9b",
+    ".build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded/AnalyzerSchema.swift": "a68eafe25b6eb00d7787f5eddbe1113cd7006e16bba7421edf0ce72459528782",
+    ".build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded/CounterCanvas.swift": "c02f4a3aa00147d711aa60db6f9a7b2c7b04d54758a338041b8709ce40ae5a9c",
+    ".build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded/CounterCanvasTable.swift": "22f7846e64d2f322423ca1a2b6c46b11b8da4fb2ca55caadff33dae7067a2e8d",
+    ".build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded/CounterSchema.swift": "a36e7b5efba867006cb1f5c3932bd80fc5969f93b33dc3a9e936c61b7af67ccc",
+    ".build/nrf52840/contracts/spec-012-protocol-canvas/tmpxpa4f9zs/nrf52840-embedded/RasterProbe.swift": "f03ea9878dc0c5c4c6870fc5248be8b776c3893aaa77d7a56125d6099d85423e",
+    ".build/rfc014-p02/tool/debug/GiftUIMacros-tool": "9bbb7c7532d763b1908cdcabbe4b9b87c6a7eb0c07e83cc93cc9bb154b313285",
     "Sources/GiftUICapabilities/GiftUICapabilities.swift": "79a2f7a749cbe3e8033d1d118f9c94fadb67b985d36dbc185996fc255e8ba884",
     "Sources/GiftUIDrawing/CanvasInvocationSource.swift": "9b992bc729e793959c0d8ad3fcb374c0bf3ced7edb1cdd098c57e6ba48c451f2",
     "Sources/GiftUIDrawing/CanvasPlanProducer.swift": "8a75acb55af64e06ad4aad12553c1e6c4c1a6c11aa937599f65e63a7bef68db7",
@@ -1065,9 +1065,9 @@
     "Tests/ContractFixtures/SPEC012/RuntimeDerived/CanvasLayoutProbe.swift": "95ed5c8ce44786fefe6de50a4c2f174609bd8bf93d0c37fcb73ef7070d4253b4",
     "Tests/ContractFixtures/SPEC012/RuntimeDerived/CanvasResourceProbe.swift": "56c0a309f9b9282cf6086e4736bb6b10c19b3bed09a4244770610fba97a7efc8",
     "Tests/ContractFixtures/SPEC012/RuntimeDerived/CanvasSemanticProbe.swift": "2023839f4c4da51f867f64df842c8a88fc26a5a7f08b13a2ef505024c042db97",
-    "Tests/ContractFixtures/SPEC012/RuntimeDerived/CanvasStoreProbe.swift": "4818e794e92ec8caa8f1a7adbf4ad878ee02b95301a205eb01ded7bcac2cc257",
+    "Tests/ContractFixtures/SPEC012/RuntimeDerived/CanvasStoreProbe.swift": "9a5caed6dc3fbdc35384b435be7c3d0e30b88f9609fc21580847b09ca7f3f8fa",
     "Tests/ContractFixtures/SPEC012/RuntimeDerived/CanvasTableProbe.swift": "fe78f66a854ed853c8c3d4fc945e98f365bb36f4767e67c45db90da125192882",
-    "Tests/ContractFixtures/SPEC012/RuntimeDerived/CounterCanvas.swift": "3f1a2cb6724264f2ce74ca55a70d5dd9e85e7f033f614c768a57f5cd0c98fb82",
+    "Tests/ContractFixtures/SPEC012/RuntimeDerived/CounterCanvas.swift": "75774a2bcd90884153acfb7826d11ed48f9923693c390ff61ab3e38e3c595f81",
     "Tests/ContractFixtures/SPEC012/raster-vectors.yaml": "37ec5e69867dbc04c053e050e3a74bc21e14695f990ce4405c735e177cf20afb",
     "scripts/contracts/check-spec-012-protocol-canvas.py": "91de9ef47d7c836672c4fe0b8ea5577a9727afbcac125eb930baedcf58c17e03",
     "scripts/contracts/check-spec-012-raster-vectors.rb": "e1f8fbc582cb95834c26a3dab137850d4692fdca2a5de26e162db44aafb5f58e",
@@ -1147,7 +1147,7 @@
   },
   "package": "P06",
   "profile": "nrf52840-embedded",
-  "source_commit": "d75890238e37de987d169fae5ce248ea0b0f4c23",
-  "source_dirty": true,
+  "source_commit": "431293f9a11fdf7c48020520a37f8be1c31ce304",
+  "source_dirty": false,
   "step": "protocol-lowering"
 }

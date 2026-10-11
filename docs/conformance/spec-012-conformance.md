@@ -22,13 +22,16 @@ superseded_by: null
 ## RFC-014 migration checkpoint
 
 The [independent P06 review](../../Tests/ContractFixtures/SPEC012/Evidence/rfc-014-p06/exit-review.md)
-recommends **BLOCKED** under SPEC-012 T10.1 on P06-R1: a stale Canvas model key can
-reach path construction before binding, changing the approved failure order.
+historically recommended **BLOCKED** under SPEC-012 T10.1 on P06-R1: a stale
+Canvas model key could reach path construction before binding, changing failure
+order. Repair `431293f9` now prebinds captured model keys before authored drawing.
+Its adversarial controls and refreshed four-profile evidence are ready for
+separate independent repair review; the package is not marked passed.
 The actual-owner native reproduction and independently verified receipts are
 linked from that report. No production repair was made by the reviewer. The
 [shared receipt](../../Tests/ContractFixtures/SPEC012/Evidence/rfc-014-p06/progress.md)
 records four selected-component profiles, scoped stores/reads/semantic transfer,
-error and negative checks, retained production geometry, all17 immutable pixel
+error and negative checks, retained production geometry, all 17 immutable pixel
 vectors and actual layout/resource costs. The approved scoped-source constraint
 correction is resolved. DR-RD-001–004 and full retained criteria remain open;
 the prior results below are historical baseline evidence only. No package exit,
