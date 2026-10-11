@@ -297,10 +297,10 @@
       "exit": 0,
       "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "disposition": "NOT accepted negative: scoped-return control compiled. It returns owner tied to still-live profile via @_lifetime(&self); no local-profile destruction/outliving negative has been verified. Requires independent oracle and lifetime review."
+      "disposition": "FAIL lifetime acceptance: owner escapes activation callbacks although dependent on still-live profile. Independent review confirms callback owners finish/reset on exit, so physical allocation lifetime does not justify escape."
     }
   ],
   "historical_production_guard": "2/2 unchanged",
   "historical_investigation_guard": "2/2 unchanged",
-  "status": "STOPPED: 12/12 compiler calls; actual join positive and copy negative pass, required outliving-backing rejection not established. No production adoption authorized by this incomplete proof."
+  "status": "STOPPED: 12/12 compiler calls; actual join positive and copy negative pass, activation-callback lifetime containment FAILS. Candidate must not be adopted."
 }

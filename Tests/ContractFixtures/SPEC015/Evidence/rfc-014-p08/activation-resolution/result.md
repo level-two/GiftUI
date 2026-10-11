@@ -1,7 +1,7 @@
 # P08 activation resolution bench — 2026-10-11
 
 **Stopped at 12/12 compiler invocations. Actual activation join compiles;
-required lifetime-negative evidence remains unproved. No maintained source
+required activation-callback lifetime containment FAILS. No maintained source
 changed and no production adoption is claimed.** Strong Astra 6 Medium,
 sequential, under [authorization](authorization.md), committed before all calls.
 Historical production and investigation guards remain 2/2, unchanged.
@@ -28,9 +28,11 @@ Historical production and investigation guards remain 2/2, unchanged.
 - Run 12 corrects that annotation to the compiler-requested `@_lifetime(&self)`.
   **It compiles, so it is not accepted lifetime-negative evidence.** It returns
   the quiesced owner beyond nested lending callbacks, with dependence on the
-  still-live profile receiver. Whether this oracle validly tests callback escape,
-  or instead permits backing to stay alive, requires independent review. A
-  negative returning an owner from a destroyed local profile was not compiled.
+  still-live profile receiver. Independent Strong review identifies this as a
+  forbidden callback escape: the model/root, semantic and Canvas callbacks
+  finish/reset their activation state on exit even while the profile backing
+  remains allocated. The candidate therefore FAILS required activation-lifetime
+  containment. A separate physical-backing-expiry negative was not compiled.
 
 The last two unsuccessful negative attempts are conservatively charged2/2.
 The numerical12/12 budget is independently exhausted. No additional correction,
@@ -74,7 +76,8 @@ complete runtime receipt, its165 source inputs and143 artifacts before using
 its sources/dependencies. Final read-only verification rechecks those identities.
 No copied fixture file replaces a maintained source during this bench.
 
-Next: independent Strong review must distinguish the successful activation
-mechanism from the unresolved lifetime oracle. Further evidence or adoption
+Independent Strong review distinguishes the successful activation compilation
+from the failed callback-lifetime containment. The current candidate must not be
+adopted. Further evidence or adoption
 requires a separately bounded continuation under the user's resolution request;
 this exhausted bench does not silently extend its allowance.
