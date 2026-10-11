@@ -2,6 +2,7 @@ import GiftUI
 import GiftUIDrawing
 import GiftUIExecution
 import GiftUILayout
+import GiftUIReferenceTextResources
 import GiftUIObservableState
 import GiftUISemanticCore
 import CycleSchema
@@ -20,7 +21,7 @@ package func cycleDynamicDrawing(
     var resolved = DynamicResolvedLayoutStorage(limits: layoutLimits)
     do throws(SemanticExpansionError) {
         try semantic.withCandidateView { bank in
-            let result = layout(semantic: SemanticRecordLayoutView(bank), metrics: StaticTextMetricsView(), proposal: ProposedSize(width: 100, height: 100)!, limits: layoutLimits, workspace: &workspace, sink: &resolved)
+            let result = layout(semantic: SemanticRecordLayoutView(bank), metrics: GiftUIReferenceTextMetricsView(), proposal: ProposedSize(width: 100, height: 100)!, limits: layoutLimits, workspace: &workspace, sink: &resolved)
             guard case .success = result else { preconditionFailure("Dynamic layout") }
         }
     } catch { preconditionFailure("Dynamic semantic borrow") }

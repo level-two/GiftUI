@@ -59,6 +59,9 @@ private func exercise(_ semantic: borrowing SemanticRecordStore<Payload>, models
                     expect(values.count == (show ? 1 : 0))
                     #if !hasFeature(Embedded)
                     if dynamic { checks += cycleDynamicDrawing(semantic: semantic, models: models, values: values, shown: show) }
+                    else { checks += cycleStaticDrawing(semantic: semantic, models: models, values: values, shown: show) }
+                    #else
+                    checks += cycleStaticDrawing(semantic: semantic, models: models, values: values, shown: show)
                     #endif
                     values.discard()
                     expect(values.releaseCount == (show ? 1 : 0))

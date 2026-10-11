@@ -82,6 +82,29 @@ profiles are exercised by that fixture invocation, but four-configuration
 migration, Static geometry adaptation and complete coordinator/offer/fault
 execution remain pending. No failed check in this slice; repair **0/2**.
 
+## Step 12 — Static layout/drawing and bounded occupancy
+
+The finite Static assembly borrows the retained target layout/result/drawing
+owners. Its local semantic ordinals and owned qualified-reference lookup preserve
+owner/bank/revision checks; no target algorithm or storage owner is relocated.
+Both profiles now use the maintained reference text metrics. P07 native passes
+247 assertions and ten negatives (step-12-macos-static.json).
+
+The first Static execution failed at DrawingPlanStorage.seal. A diagnostic-only
+Onone/g rebuild and LLDB inspection of tmpumyoy48i isolated invariantViolation;
+layout/provenance assertions passed. The retained analyzer storage required
+exactly five Canvas/strokes rather than occupancy up to its fixed capacity.
+SPEC-012 limits (lines 865–883) are global maxima. The in-place repair changes
+only the two seal occupancy equalities to <=; backing size, capacity guards and
+record validation remain. The subsequent optimized P07 check passes. The exact
+P06 native command with the same pinned core also passes, preserving its full
+five-Canvas/five-stroke control (step-12-p06-macos-static.json).
+
+Formatting completed before both acceptance runs. Diagnostic rebuild artifacts
+are excluded. One debugger launch transiently failed; rerun succeeded without
+code change. Productive isolated repair; consecutive unproductive count **0/2**.
+Full coordinator, interaction, endpoint, retry/fault and four-route exit pending.
+
 ## Historical stop — associated requirements, 2026-10-11
 
 The prior approved correction is implemented. A newly confirmed exact

@@ -145,8 +145,8 @@ package struct StaticSignalAnalyzerNRFDrawingPlanStorage:
     package mutating func seal(canvasOccurrenceCount: UInt16) -> DrawingPlanResult {
         guard isActive, currentCanvas == nil,
             canvasOccurrenceCount == canvasCount,
-            canvasCount == capacity.maximumCanvasOccurrences,
-            strokeCount == capacity.maximumPlanStrokes,
+            canvasCount <= capacity.maximumCanvasOccurrences,
+            strokeCount <= capacity.maximumPlanStrokes,
             normalizedStrokeOperationCount == strokeCount,
             validateRecords()
         else { return .failure(.invariantViolation) }
