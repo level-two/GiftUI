@@ -25,9 +25,14 @@ package struct StaticObservableRootAdapter<
         )
     {
         let layout = models.storageLayout
+        let fields =
+            layout.metadataBytes + layout.modelBytes + layout.pinBytes
+            + ObservableStateRootStorage<Identity>.liveStorageBytes
+            + ObservableStateRootStorage<Identity>.candidateStorageBytes
+        let padding = MemoryLayout<Self>.size - fields
         return (
             layout.owner, layout.models, layout.claims, layout.pins, layout.captures,
-            layout.metadataBytes, layout.modelBytes, layout.pinBytes,
+            layout.metadataBytes + padding, layout.modelBytes, layout.pinBytes,
             ObservableStateRootStorage<Identity>.liveStorageBytes,
             ObservableStateRootStorage<Identity>.candidateStorageBytes
         )

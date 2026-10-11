@@ -18,6 +18,16 @@ package struct DynamicLivePathStorage: LivePathStorage {
         subpaths.reserveCapacity(Int(maximumSubpathCount))
     }
 
+    /// Reports the actual retained typed buffers; live occupancy is not capacity.
+    package borrowing func visitRetainedPayloadExtents(_ visit: (Int, Int, Int, Int) -> Void) {
+        visit(
+            points.capacity, MemoryLayout<Point>.size, MemoryLayout<Point>.stride,
+            MemoryLayout<Point>.alignment)
+        visit(
+            subpaths.capacity, MemoryLayout<SubpathRange>.size, MemoryLayout<SubpathRange>.stride,
+            MemoryLayout<SubpathRange>.alignment)
+    }
+
     package var reservedPayloadBytes: UInt64 {
         UInt64(points.capacity * MemoryLayout<Point>.stride)
             + UInt64(subpaths.capacity * MemoryLayout<SubpathRange>.stride)

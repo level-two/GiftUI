@@ -90,7 +90,7 @@ module('CycleSchema', [out / 'CycleSchema.swift'])
 module('CyclePresentation', [out / 'Cycle.swift'])
 module('CycleTable', [out / 'CycleTable.swift'])
 module('P07TargetWorkspace', [ROOT / 'Sources/SignalAnalyzerTargetHost' / name for name in ('StaticSignalAnalyzerNRFLayoutScopeCodec.swift', 'StaticSignalAnalyzerNRFLayoutTextCodec.swift', 'StaticSignalAnalyzerNRFLayoutWorkspace.swift', 'StaticSignalAnalyzerNRFResolvedLayout.swift', 'StaticSignalAnalyzerNRFRenderWorkspace.swift', 'StaticSignalAnalyzerNRFDrawingPlanRecords.swift', 'StaticSignalAnalyzerNRFDrawingPlanStorage.swift', 'StaticSignalAnalyzerNRFLivePathStorage.swift', 'StaticSignalAnalyzerNRFDrawingWorkspace.swift')])
-module('RuntimeCycleProbe', [ROOT / 'Tests/ContractFixtures/SPEC013/RuntimeDerived/RuntimeValuesProbe.swift', ROOT / 'Tests/ContractFixtures/SPEC013/RuntimeDerived/ScopedOwnerProbe.swift', ROOT / 'Tests/ContractFixtures/SPEC013/RuntimeDerived/ScopedCoordinatorProbe.swift', ROOT / 'Tests/ContractFixtures/SPEC013/RuntimeDerived/FrameLeaseProbe.swift', ROOT / 'Tests/ContractFixtures/SPEC013/RuntimeDerived/ScopedSemanticProbe.swift', ROOT / 'Tests/ContractFixtures/SPEC013/RuntimeDerived/ConcreteBindingProbe.swift', fixture / 'CycleStorageMeasurement.swift', fixture / 'CycleProfileStorage.swift', fixture / 'CycleModel.swift', fixture / 'CycleSemanticProbe.swift', fixture / 'CycleDynamicDrawing.swift', fixture / 'CycleStaticDrawing.swift', fixture / 'CycleRenderProbe.swift', fixture / 'CycleGeometry.swift', fixture / 'CyclePipelineOwner.swift', fixture / 'CyclePipelineProbe.swift', fixture / 'CycleCoordinatorProbe.swift'])
+module('RuntimeCycleProbe', [ROOT / 'Tests/ContractFixtures/SPEC013/RuntimeDerived/RuntimeValuesProbe.swift', ROOT / 'Tests/ContractFixtures/SPEC013/RuntimeDerived/ScopedOwnerProbe.swift', ROOT / 'Tests/ContractFixtures/SPEC013/RuntimeDerived/ScopedCoordinatorProbe.swift', ROOT / 'Tests/ContractFixtures/SPEC013/RuntimeDerived/FrameLeaseProbe.swift', ROOT / 'Tests/ContractFixtures/SPEC013/RuntimeDerived/ScopedSemanticProbe.swift', ROOT / 'Tests/ContractFixtures/SPEC013/RuntimeDerived/ConcreteBindingProbe.swift', fixture / 'CycleStorageMeasurement.swift', fixture / 'CycleProfileStorage.swift', fixture / 'CycleStorageRegions.swift', fixture / 'CycleModel.swift', fixture / 'CycleSemanticProbe.swift', fixture / 'CycleDynamicDrawing.swift', fixture / 'CycleStaticDrawing.swift', fixture / 'CycleRenderProbe.swift', fixture / 'CycleGeometry.swift', fixture / 'CyclePipelineOwner.swift', fixture / 'CyclePipelineProbe.swift', fixture / 'CycleCoordinatorProbe.swift'])
 for name, source, diagnostic in (
     ('escape-owner', 'struct Escape<M: ~Copyable, S>: ~Copyable { let owner: ScopedOwner<M, S> }', 'non-Escapable'),
     ('copy-owner', 'func copyOwner<M: ~Copyable, S>(_ owner: borrowing ScopedOwner<M, S>) { let other = copy owner; _ = other }', 'noncopyable'),
@@ -139,11 +139,29 @@ for name, source, diagnostic in (
     negative = out / (name + '.swift')
     negative.write_text(binding_imports + source + '\n')
     run(name, [compiler, *flags, '-module-name', 'ConcreteBindingNegative', '-typecheck', negative], failure=diagnostic)
+storage_reports = {}
 if profile.startswith('macos'):
     main = out / 'Main.swift'
     main.write_text('import RuntimeCycleProbe\n@main struct Main { static func main() { print("P07 values assertions=\\(giftuiP07Values() + Int(giftuiP07FrameLease()) + giftuiP07CycleSemantic()) failures=0") } }\n')
     run('link', [compiler, *flags, main, base / 'GiftUI.o', *sorted(out.glob('*.o')), '-o', out / 'runtime-cycle'])
-    execution = run('execute', [out / 'runtime-cycle']).strip()
+    output = run('execute', [out / 'runtime-cycle']).strip()
+    execution = output.splitlines()[-1]
+    for line in output.splitlines():
+        parts = line.split()
+        if not parts or not parts[0].startswith('P07-'): continue
+        report = storage_reports.setdefault(parts[1], {'regions': [], 'fields': []})
+        if parts[0] == 'P07-REGION':
+            report['regions'].append(dict(zip(('family', 'kind', 'count', 'size', 'stride', 'alignment', 'charged_bytes'), map(int, parts[2:]))))
+        elif parts[0] == 'P07-FIELD':
+            report['fields'].append({'index': int(parts[2]), 'name': parts[3], 'bytes': int(parts[4])})
+        elif parts[0] == 'P07-TOTAL': report['checked_total_bytes'] = int(parts[2])
+    assert set(storage_reports) == {'static', 'dynamic'}
+    for report in storage_reports.values():
+        assert [f['index'] for f in report['fields']] == list(range(26))
+        for field in report['fields']:
+            assert sum(r['charged_bytes'] for r in report['regions'] if r['family'] == field['index']) == field['bytes']
+        assert sum(f['bytes'] for f in report['fields']) == report['checked_total_bytes']
+    (out / 'storage-regions.json').write_text(json.dumps(storage_reports, indent=2, sort_keys=True) + '\n')
 else:
     readelf = ROOT / '.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/arm-zephyr-eabi-readelf'
     abi = run('target-abi', [readelf, '-h', '-A', out / 'RuntimeCycleProbe.o'])
@@ -157,7 +175,7 @@ report = {'package': 'P07', 'step': 'frame-acquisition-cleanup', 'profile': prof
           'inputs': {str(p.relative_to(ROOT)): digest(p) for p in sorted(set(inputs))},
           'core_receipt': str((base / 'result.json').relative_to(ROOT)), 'core_receipt_sha256': digest(base / 'result.json'),
           'compiler': core['compiler'], 'compiler_sha256': core['compiler_sha256'],
-          'commands': commands, 'checks': checks, 'execution': execution,
+          'commands': commands, 'checks': checks, 'execution': execution, 'storage_reports': storage_reports,
           'artifacts': {p.name: {'sha256': digest(p), 'bytes': p.stat().st_size} for p in out.iterdir()
                         if p.is_file() and p.name != 'result.json'}}
 (out / 'result.json').write_text(json.dumps(report, indent=2, sort_keys=True) + '\n')

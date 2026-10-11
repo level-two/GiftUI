@@ -40,6 +40,28 @@ package struct DynamicDrawingPlanWorkspace: DrawingPlanConstructionWorkspace,
         strokes.reserveCapacity(Int(capacity.maximumPlanStrokes))
     }
 
+    /// Reports the actual retained typed buffers; live occupancy is not capacity.
+    package borrowing func visitRetainedPlanExtents(_ visit: (Int, Int, Int, Int) -> Void) {
+        visit(
+            canvasIdentities.capacity, MemoryLayout<SemanticRecordReference>.size,
+            MemoryLayout<SemanticRecordReference>.stride,
+            MemoryLayout<SemanticRecordReference>.alignment)
+        visit(
+            strokes.capacity, MemoryLayout<DynamicDrawingPlanStroke>.size,
+            MemoryLayout<DynamicDrawingPlanStroke>.stride,
+            MemoryLayout<DynamicDrawingPlanStroke>.alignment)
+        visit(
+            points.capacity, MemoryLayout<Point>.size, MemoryLayout<Point>.stride,
+            MemoryLayout<Point>.alignment)
+        visit(
+            subpaths.capacity, MemoryLayout<SubpathRange>.size, MemoryLayout<SubpathRange>.stride,
+            MemoryLayout<SubpathRange>.alignment)
+    }
+
+    package borrowing func visitRetainedPathExtents(_ visit: (Int, Int, Int, Int) -> Void) {
+        livePath.storage.visitRetainedPayloadExtents(visit)
+    }
+
     package var planReservedPayloadBytes: UInt64 {
         UInt64(canvasIdentities.capacity * MemoryLayout<SemanticRecordReference>.stride)
             + UInt64(strokes.capacity * MemoryLayout<DynamicDrawingPlanStroke>.stride)

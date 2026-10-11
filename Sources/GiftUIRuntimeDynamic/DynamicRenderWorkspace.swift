@@ -33,6 +33,19 @@ package struct DynamicRenderWorkspace: RenderProductionWorkspace {
     }
 
     /// Retained element extents; the owning value's inline layout is separate.
+    /// Reports the actual retained typed buffers; live occupancy is not capacity.
+    package borrowing func visitRetainedPayloadExtents(_ visit: (Int, Int, Int, Int) -> Void) {
+        visit(
+            semanticVisits.capacity, MemoryLayout<Bool>.size, MemoryLayout<Bool>.stride,
+            MemoryLayout<Bool>.alignment)
+        visit(
+            layoutVisits.capacity, MemoryLayout<Bool>.size, MemoryLayout<Bool>.stride,
+            MemoryLayout<Bool>.alignment)
+        visit(
+            foregrounds.capacity, MemoryLayout<Color>.size, MemoryLayout<Color>.stride,
+            MemoryLayout<Color>.alignment)
+    }
+
     package var reservedPayloadBytes: Int {
         semanticVisits.capacity * MemoryLayout<Bool>.stride
             + layoutVisits.capacity * MemoryLayout<Bool>.stride

@@ -33,6 +33,11 @@ struct CycleSemanticBacking: ~Copyable {
     var paths: InlineArray<756, SemanticPathEntry> = .init(repeating: .init())
     var payloads: InlineArray<196, CyclePayload?> = .init(repeating: nil)
     var scalars: InlineArray<448, UInt32> = .init(repeating: 0)
+    static var paddingBytes: Int {
+        let fields = MemoryLayout<InlineArray<252, SemanticRuntimeRecord>>.size + MemoryLayout<InlineArray<756, SemanticPathEntry>>.size + MemoryLayout<InlineArray<196, CyclePayload?>>.size + MemoryLayout<InlineArray<448, UInt32>>.size
+        precondition(MemoryLayout<Self>.size >= fields)
+        return MemoryLayout<Self>.size - fields
+    }
 }
 
 struct CycleStaticWorkspaceBacking {
@@ -93,11 +98,13 @@ struct CycleSemanticMeasurement {
     let controlBytes: Int
 }
 
-func cycleValidateBacking<G, C, R, H>(profile: RuntimeProfileKind, limits: RuntimeProfileLimits,
-    root: CycleRootLayout, semantic: CycleSemanticMeasurement, geometry: CycleGeometryMeasurement,
+func cycleValidateBacking<G, C, R, H, GR: CycleStorageRegionSource>(profile: RuntimeProfileKind, limits: RuntimeProfileLimits,
+    root: CycleRootLayout, rootMetadataRegion: CycleStorageRegion, semantic: CycleSemanticMeasurement, geometry: CycleGeometryMeasurement,
     interaction: borrowing InteractionOwnedKeyState<C, R, H>, geometryType: G.Type,
     canvasCount: Int, canvasCapacity: UInt16, canvasControlBytes: Int,
-    factoryMetadataBytes: Int) -> RuntimeProfileValidationResult
+    factoryRegion: CycleStorageRegion,
+    geometryRegions: borrowing GR,
+    report: (CycleStorageRegion) -> Void) -> RuntimeProfileValidationResult
 where G: CycleGeometry, C: CycleCandidateBacking, R: CycleCommittedBacking, H: CycleHitBacking,
     C.Identity == SemanticCompleteIdentity, R.Identity == SemanticCompleteIdentity, H.Identity == SemanticCompleteIdentity {
     let keys = cycleMeasureInteraction(interaction)
@@ -125,7 +132,7 @@ where G: CycleGeometry, C: CycleCandidateBacking, R: CycleCommittedBacking, H: C
         - MemoryLayout<InteractionOwnedKeyState<C, R, H>>.size - MemoryLayout<CycleEndpoint>.size
         - Admission.pointerStateStorageBytes
         + MemoryLayout<CycleRuntimeControl>.size - MemoryLayout<CycleAdmissionBacking>.size - result
-        + factoryMetadataBytes
+        + Int(factoryRegion.chargedBytes)
     // Bank zero occupies exactly the configured whole-element prefix. Bank one
     // owns the second configured slice plus any retained allocator tail; never
     // divide a typed element when Array capacity rounds to an odd count.
@@ -139,14 +146,85 @@ where G: CycleGeometry, C: CycleCandidateBacking, R: CycleCommittedBacking, H: C
         semantic.scalars.count >= Int(semanticLimits.textScalars) * 2 else { return .invalid(.insufficientStorage) }
     let candidatePayload = firstPayloads + firstScalars
     let publishedPayload = payloadBytes - firstPayloads + scalarBytes - firstScalars
-    let values: InlineArray<26, UInt64> = [firstPaths, pathBytes - firstPaths, candidatePayload, publishedPayload,
-        0, keys.candidateIdentityBytes, keys.committedIdentityBytes,
+    let firstMatch = UInt64(semanticLimits.paths) * UInt64(MemoryLayout<UInt16>.size)
+    let allMatch = UInt64(semantic.paths.count) * UInt64(MemoryLayout<UInt16>.size)
+    let matchControl = 4 * MemoryLayout<UInt32>.size
+    guard firstPaths >= firstMatch, pathBytes >= allMatch,
+        semantic.controlBytes >= matchControl, coordinator >= 0,
+        interactionMetadata >= 0 else { return .invalid(.invariantViolation) }
+    let values: InlineArray<26, UInt64> = [firstPaths - firstMatch, pathBytes - firstPaths - (allMatch - firstMatch), candidatePayload, publishedPayload,
+        allMatch + UInt64(matchControl), keys.candidateIdentityBytes, keys.committedIdentityBytes,
         UInt64(root.metadataBytes), UInt64(root.modelBytes), UInt64(root.pinBytes),
-        firstRecords + UInt64(semantic.controlBytes), recordBytes - firstRecords,
+        firstRecords + UInt64(semantic.controlBytes - matchControl), recordBytes - firstRecords,
         geometry.layoutBytes, geometry.renderBytes, canvasBytes + UInt64(canvasControlBytes), geometry.pathBytes, geometry.planBytes,
         UInt64(root.liveBytes), UInt64(root.candidateBytes), keys.candidateBytes + UInt64(interactionMetadata), keys.committedBytes,
         UInt64(pending), UInt64(sealed), UInt64(Admission.pointerStateStorageBytes), UInt64(coordinator), UInt64(result)]
     for index in 0..<values.count where UInt32(exactly: values[index]) == nil { return .invalid(.arithmeticOverflow) }
+    var reported: InlineArray<26, UInt64> = .init(repeating: 0)
+    var reportOverflow = false
+    func record(_ region: CycleStorageRegion) {
+        precondition((0..<26).contains(region.family))
+        let sum = reported[region.family].addingReportingOverflow(region.chargedBytes)
+        reportOverflow = reportOverflow || sum.overflow
+        reported[region.family] = sum.partialValue
+        report(region)
+    }
+    record(.elements(SemanticPathEntry.self, count: Int(semanticLimits.paths), family: 0, chargedBytes: values[0]))
+    record(.elements(SemanticPathEntry.self, count: semantic.paths.count - Int(semanticLimits.paths), family: 1, chargedBytes: values[1]))
+    record(.elements(CyclePayload?.self, count: Int(semanticLimits.payloads), family: 2))
+    record(.elements(UInt32.self, count: Int(semanticLimits.textScalars), family: 2))
+    record(.elements(CyclePayload?.self, count: semantic.payloads.count - Int(semanticLimits.payloads), family: 3))
+    record(.elements(UInt32.self, count: semantic.scalars.count - Int(semanticLimits.textScalars), family: 3))
+    // Repeated embedded fields, not a contiguous allocation or another bank.
+    record(.elements(UInt16.self, count: semantic.paths.count, family: 4))
+    record(.elements(UInt32.self, count: 4, family: 4))
+    record(rootMetadataRegion)
+    record(.elements(CycleOwnedModel?.self, count: Int(root.models), family: 8))
+    record(.elements(Bool.self, count: Int(root.pins), family: 9))
+    record(.elements(SemanticRuntimeRecord.self, count: Int(semanticLimits.records), family: 10))
+    if profile == .static {
+        record(.inline(CycleSemanticBacking.self, family: 10, chargedBytes: CycleSemanticBacking.paddingBytes, kind: .metadataPadding))
+        record(.inline(StaticSemanticRecordStorage.self, family: 10, chargedBytes: MemoryLayout<StaticSemanticRecordStorage>.size - matchControl, kind: .partition))
+    }
+    #if !hasFeature(Embedded)
+    if profile == .dynamic {
+        record(.inline(UInt16.self, family: 7))
+        record(.elements(Bool.self, count: 2, family: 7))
+        record(.inline(DynamicObservableModelStorage<CycleOwnedModel, CycleModelSchema>.self, family: 7))
+        record(.inline(InlineArray<2, SemanticRecordBankMetadata>.self, family: 10, chargedBytes: MemoryLayout<InlineArray<2, SemanticRecordBankMetadata>>.size - matchControl, kind: .partition))
+        record(.inline([SemanticRuntimeRecord].self, family: 10))
+        record(.inline([SemanticPathEntry].self, family: 10))
+        record(.inline([CyclePayload?].self, family: 10))
+        record(.inline([UInt32].self, family: 10))
+        record(.inline(SemanticRecordLimits.self, family: 10))
+        record(.inline(SemanticRecordOwnerIdentity.self, family: 10))
+        record(.inline(Bool.self, family: 10))
+    }
+    #endif
+    record(.elements(SemanticRuntimeRecord.self, count: semantic.records.count - Int(semanticLimits.records), family: 11))
+    geometryRegions.visitStorageRegions(record)
+    record(.elements(CanvasStagedEntry<SemanticRecordReference, CycleValueTable.CaptureStorage>?.self, count: canvasCount, family: 14))
+    if profile == .static { record(.inline(StaticCanvasValueStorage.self, family: 14)) }
+    #if !hasFeature(Embedded)
+    if profile == .dynamic { record(.inline(DynamicCanvasCallableStorage<SemanticRecordReference, CycleValueTable>.self, family: 14)) }
+    #endif
+    record(.inline(ObservableStateRootStorage<SemanticCompleteIdentity>.self, family: 17, chargedBytes: root.liveBytes, kind: .partition))
+    record(.inline(ObservableStateRootStorage<SemanticCompleteIdentity>.self, family: 18, chargedBytes: root.candidateBytes, kind: .partition))
+    cycleVisitInteraction(interaction, record)
+    record(.elements(NormalizedPointerEvent?.self, count: 2, family: 21))
+    record(.inline(UInt8?.self, family: 21))
+    record(.inline(CycleAdmissionBacking.self, family: 22, chargedBytes: sealed, kind: .partition))
+    record(.inline(Admission.self, family: 23, chargedBytes: Admission.pointerStateStorageBytes, kind: .partition))
+    let coordinatorFields = concreteCoordinatorBytes - MemoryLayout<G>.size - MemoryLayout<InteractionOwnedKeyState<C, R, H>>.size - MemoryLayout<CycleEndpoint>.size - Admission.pointerStateStorageBytes
+    if profile == .static { record(.inline(Coordinator.self, family: 24, chargedBytes: coordinatorFields, kind: .metadataPadding)) }
+    #if !hasFeature(Embedded)
+    if profile == .dynamic { record(.inline(DynamicRuntimeExecutionCoordinator<CycleExecutionBinding, Admission, Owner>.self, family: 24, chargedBytes: coordinatorFields, kind: .metadataPadding)) }
+    #endif
+    record(.inline(CycleRuntimeControl.self, family: 24, chargedBytes: MemoryLayout<CycleRuntimeControl>.size - MemoryLayout<CycleAdmissionBacking>.size - result, kind: .metadataPadding))
+    record(factoryRegion)
+    record(.inline(RuntimeCompletePipelineResult<RuntimeOwnerFailure>?.self, family: 25))
+    guard !reportOverflow else { return .invalid(.arithmeticOverflow) }
+    for index in 0..<26 { precondition(reported[index] == values[index], "physical region audit mismatch") }
     let bytes = RuntimeStorageByteCounts(semanticCandidatePathBytes: UInt32(values[0]), semanticPublishedPathBytes: UInt32(values[1]), semanticCandidatePayloadBytes: UInt32(values[2]), semanticPublishedPayloadBytes: UInt32(values[3]), identityMatchWorkspaceBytes: UInt32(values[4]), interactionCandidateIdentityBytes: UInt32(values[5]), interactionCommittedIdentityBytes: UInt32(values[6]), modelMetadataBytes: UInt32(values[7]), modelOwnerBytes: UInt32(values[8]), framePinBytes: UInt32(values[9]), semanticCandidateBytes: UInt32(values[10]), semanticPublishedBytes: UInt32(values[11]), layoutCandidateBytes: UInt32(values[12]), renderWorkspaceBytes: UInt32(values[13]), canvasCallableBytes: UInt32(values[14]), pathWorkspaceBytes: UInt32(values[15]), drawingPlanBytes: UInt32(values[16]), observableLiveBytes: UInt32(values[17]), observableCandidateBytes: UInt32(values[18]), interactionCandidateBytes: UInt32(values[19]), interactionCommittedBytes: UInt32(values[20]), admissionQueueBytes: UInt32(values[21]), sealedBatchBytes: UInt32(values[22]), pointerStateBytes: UInt32(values[23]), coordinatorStateBytes: UInt32(values[24]), failureStateBytes: UInt32(values[25]))
     let records = RuntimeRecordLimits(maximumPathEntries: semanticLimits.paths, maximumPathDepth: semanticLimits.depth, maximumPathChildFanout: semanticLimits.fanout, maximumPayloadBytesPerBank: semanticLimits.payloadBytes, maximumIdentityComponentsPerKey: keyLimits.perKey, maximumInteractionIdentityComponents: keyLimits.perBank)
     let inputs = RuntimeProfileLimitInputs(records: limits.records, models: limits.models, semantic: limits.semantic, maximumSemanticStructuralOccurrences: limits.maximumSemanticStructuralOccurrences, layout: limits.layout, render: limits.render, renderWorkspace: limits.renderWorkspace, renderSink: limits.renderSink, maximumOrdinaryRenderOperations: limits.maximumOrdinaryRenderOperations, execution: limits.execution, observableState: limits.observableState, interaction: limits.interaction, drawing: limits.drawing, staticCanvas: limits.staticCanvas, profile: profile)
@@ -190,15 +268,17 @@ struct DynamicCycleProfileStorage: ~Copyable, RuntimeProfileStorage {
         semantic = DynamicSemanticRecordStorage(limits: cycleSemanticLimits, owner: semanticOwner)
         interaction = CycleDynamicKeys(state: InteractionState(candidateRecords: CycleDynamicCandidate(capacity: 6), candidateHitRegions: CycleDynamicHits(capacity: 6), candidateCommittedRecords: CycleDynamicCommitted(capacity: 6), committedRecords: CycleDynamicCommitted(capacity: 6), committedHitRegions: CycleDynamicHits(capacity: 6)), maximumComponentsPerKey: 34, maximumComponents: 204)!
     }
-    borrowing func audit() -> RuntimeProfileValidationResult {
+    borrowing func audit() -> RuntimeProfileValidationResult { audit(report: { _ in }) }
+    borrowing func audit(report: (CycleStorageRegion) -> Void) -> RuntimeProfileValidationResult {
         guard let geometry, let interaction else { return .invalid(.missingStorage) }
         let extent = semantic.retainedExtents
-        return cycleValidateBacking(profile: Self.profile, limits: limits, root: root.storageLayout,
+        return cycleValidateBacking(profile: Self.profile, limits: limits, root: root.storageLayout, rootMetadataRegion: .inline(ObservableModelOwnership.self, family: 7, chargedBytes: root.storageLayout.metadataBytes - MemoryLayout<UInt16>.size - 2 * MemoryLayout<Bool>.size - MemoryLayout<DynamicObservableModelStorage<CycleOwnedModel, CycleModelSchema>>.size, kind: .partition),
             semantic: .init(limits: semantic.storageLimits, records: .elements(SemanticRuntimeRecord.self, count: extent.records), paths: .elements(SemanticPathEntry.self, count: extent.paths), payloads: .elements(CyclePayload?.self, count: extent.payloads), scalars: .elements(UInt32.self, count: extent.scalars), controlBytes: extent.controlBytes),
             geometry: geometry.storageMeasurement(), interaction: interaction, geometryType: DynamicCycleGeometry.self,
             canvasCount: canvas.retainedElementCapacity, canvasCapacity: canvas.capacity,
             canvasControlBytes: MemoryLayout<DynamicCanvasCallableStorage<SemanticRecordReference, CycleValueTable>>.size,
-            factoryMetadataBytes: MemoryLayout<RuntimeProfileLimits>.size + MemoryLayout<Bool>.size)
+            factoryRegion: .inline(Self.self, family: 24, chargedBytes: MemoryLayout<Self>.size - MemoryLayout<DynamicCanvasCallableStorage<SemanticRecordReference, CycleValueTable>>.size - MemoryLayout<DynamicCycleGeometry>.size - MemoryLayout<CycleDynamicKeys>.size - MemoryLayout<CycleControl>.size, kind: .metadataPadding),
+            geometryRegions: geometry, report: report)
     }
     mutating func resetAttemptStorage() {
         precondition(geometry != nil && interaction != nil)
@@ -262,14 +342,16 @@ struct StaticCycleProfileStorage: ~Copyable, RuntimeProfileStorage {
         semantic = StaticSemanticRecordStorage(limits: cycleSemanticLimits, owner: semanticOwner)
         interaction = CycleStaticKeys(state: InteractionState(candidateRecords: CycleStaticCandidate(capacity: 6)!, candidateHitRegions: CycleStaticHits(capacity: 6)!, candidateCommittedRecords: CycleStaticCommitted(capacity: 6)!, committedRecords: CycleStaticCommitted(capacity: 6)!, committedHitRegions: CycleStaticHits(capacity: 6)!), maximumComponentsPerKey: 34, maximumComponents: 204)!
     }
-    borrowing func audit() -> RuntimeProfileValidationResult {
+    borrowing func audit() -> RuntimeProfileValidationResult { audit(report: { _ in }) }
+    borrowing func audit(report: (CycleStorageRegion) -> Void) -> RuntimeProfileValidationResult {
         guard let interaction else { return .invalid(.missingStorage) }
-        return cycleValidateBacking(profile: Self.profile, limits: limits, root: root.storageLayout,
-            semantic: .init(limits: semantic.storageLimits, records: .elements(SemanticRuntimeRecord.self, count: semanticBacking.records.count), paths: .elements(SemanticPathEntry.self, count: semanticBacking.paths.count), payloads: .elements(CyclePayload?.self, count: semanticBacking.payloads.count), scalars: .elements(UInt32.self, count: semanticBacking.scalars.count), controlBytes: MemoryLayout<StaticSemanticRecordStorage>.size),
+        return cycleValidateBacking(profile: Self.profile, limits: limits, root: root.storageLayout, rootMetadataRegion: .inline(StaticObservableRootAdapter<CycleOwnedModel, SemanticCompleteIdentity>.self, family: 7, chargedBytes: root.storageLayout.metadataBytes, kind: .metadataPadding),
+            semantic: .init(limits: semantic.storageLimits, records: .elements(SemanticRuntimeRecord.self, count: semanticBacking.records.count), paths: .elements(SemanticPathEntry.self, count: semanticBacking.paths.count), payloads: .elements(CyclePayload?.self, count: semanticBacking.payloads.count), scalars: .elements(UInt32.self, count: semanticBacking.scalars.count), controlBytes: MemoryLayout<StaticSemanticRecordStorage>.size + CycleSemanticBacking.paddingBytes),
             geometry: workspace.measurement, interaction: interaction, geometryType: StaticCycleGeometry.self,
             canvasCount: canvasBacking.count, canvasCapacity: UInt16(canvasBacking.count),
             canvasControlBytes: MemoryLayout<StaticCanvasValueStorage>.size,
-            factoryMetadataBytes: MemoryLayout<RuntimeProfileLimits>.size + MemoryLayout<Bool>.size)
+            factoryRegion: .inline(Self.self, family: 24, chargedBytes: MemoryLayout<Self>.size - MemoryLayout<StaticObservableRootAdapter<CycleOwnedModel, SemanticCompleteIdentity>>.size - MemoryLayout<StaticSemanticRecordStorage>.size - MemoryLayout<CycleSemanticBacking>.size - MemoryLayout<StaticCanvasValueStorage>.size - MemoryLayout<InlineArray<5, CanvasStagedEntry<SemanticRecordReference, CycleValueTable.CaptureStorage>?>>.size - MemoryLayout<CycleStaticWorkspaceBacking>.size - MemoryLayout<CycleStaticKeys>.size - MemoryLayout<CycleControl>.size, kind: .metadataPadding),
+            geometryRegions: workspace, report: report)
     }
     mutating func resetAttemptStorage() {
         precondition(interaction != nil)
@@ -337,6 +419,9 @@ func cycleFactoryProbe() -> Int {
         do throws(SemanticExpansionError) {
             var storage = StaticCycleProfileStorage(modelOwner: staticOwner, semanticOwner: try semantic.issue())
             precondition({ if case .valid = storage.audit() { return true }; return false }())
+            #if !hasFeature(Embedded)
+            cyclePrintAudit(storage.audit(report: { cyclePrintRegion($0, profile: "static") }), profile: "static")
+            #endif
             let initial = storage.audit()
             storage.control.admission.pendingState = 1
             storage.resetAttemptStorage()
@@ -347,6 +432,7 @@ func cycleFactoryProbe() -> Int {
             #if !hasFeature(Embedded)
             var dynamic = DynamicCycleProfileStorage(modelOwner: dynamicOwner, semanticOwner: try semantic.issue())
             precondition({ if case .valid = dynamic.audit() { return true }; return false }())
+            cyclePrintAudit(dynamic.audit(report: { cyclePrintRegion($0, profile: "dynamic") }), profile: "dynamic")
             let initialDynamic = dynamic.audit()
             dynamic.control.admission.pendingState = 1
             dynamic.resetAttemptStorage()
@@ -425,3 +511,39 @@ func cycleFactoryCapacityProbe() -> Int {
     } catch { preconditionFailure("profile model owner") }
     return checks
 }
+
+#if !hasFeature(Embedded)
+private func cyclePrintAudit(_ result: RuntimeProfileValidationResult, profile: String) {
+    guard case .valid(let audit) = result else { preconditionFailure("reported factory audit failed") }
+    print("P07-FIELD \(profile) 0 semanticCandidatePathBytes \(audit.semanticCandidatePathBytes)")
+    print("P07-FIELD \(profile) 1 semanticPublishedPathBytes \(audit.semanticPublishedPathBytes)")
+    print("P07-FIELD \(profile) 2 semanticCandidatePayloadBytes \(audit.semanticCandidatePayloadBytes)")
+    print("P07-FIELD \(profile) 3 semanticPublishedPayloadBytes \(audit.semanticPublishedPayloadBytes)")
+    print("P07-FIELD \(profile) 4 identityMatchWorkspaceBytes \(audit.identityMatchWorkspaceBytes)")
+    print("P07-FIELD \(profile) 5 interactionCandidateIdentityBytes \(audit.interactionCandidateIdentityBytes)")
+    print("P07-FIELD \(profile) 6 interactionCommittedIdentityBytes \(audit.interactionCommittedIdentityBytes)")
+    print("P07-FIELD \(profile) 7 modelMetadataBytes \(audit.modelMetadataBytes)")
+    print("P07-FIELD \(profile) 8 modelOwnerBytes \(audit.modelOwnerBytes)")
+    print("P07-FIELD \(profile) 9 framePinBytes \(audit.framePinBytes)")
+    print("P07-FIELD \(profile) 10 semanticCandidateBytes \(audit.semanticCandidateBytes)")
+    print("P07-FIELD \(profile) 11 semanticPublishedBytes \(audit.semanticPublishedBytes)")
+    print("P07-FIELD \(profile) 12 layoutCandidateBytes \(audit.layoutCandidateBytes)")
+    print("P07-FIELD \(profile) 13 renderWorkspaceBytes \(audit.renderWorkspaceBytes)")
+    print("P07-FIELD \(profile) 14 canvasCallableBytes \(audit.canvasCallableBytes)")
+    print("P07-FIELD \(profile) 15 pathWorkspaceBytes \(audit.pathWorkspaceBytes)")
+    print("P07-FIELD \(profile) 16 drawingPlanBytes \(audit.drawingPlanBytes)")
+    print("P07-FIELD \(profile) 17 observableLiveBytes \(audit.observableLiveBytes)")
+    print("P07-FIELD \(profile) 18 observableCandidateBytes \(audit.observableCandidateBytes)")
+    print("P07-FIELD \(profile) 19 interactionCandidateBytes \(audit.interactionCandidateBytes)")
+    print("P07-FIELD \(profile) 20 interactionCommittedBytes \(audit.interactionCommittedBytes)")
+    print("P07-FIELD \(profile) 21 admissionQueueBytes \(audit.admissionQueueBytes)")
+    print("P07-FIELD \(profile) 22 sealedBatchBytes \(audit.sealedBatchBytes)")
+    print("P07-FIELD \(profile) 23 pointerStateBytes \(audit.pointerStateBytes)")
+    print("P07-FIELD \(profile) 24 coordinatorStateBytes \(audit.coordinatorStateBytes)")
+    print("P07-FIELD \(profile) 25 failureStateBytes \(audit.failureStateBytes)")
+    print("P07-TOTAL \(profile) \(audit.totalProfileBytes)")
+}
+private func cyclePrintRegion(_ region: CycleStorageRegion, profile: String) {
+    print("P07-REGION \(profile) \(region.family) \(region.kind.rawValue) \(region.count) \(region.size) \(region.stride) \(region.alignment) \(region.chargedBytes)")
+}
+#endif

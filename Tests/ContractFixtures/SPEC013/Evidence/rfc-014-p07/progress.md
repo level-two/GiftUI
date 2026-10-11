@@ -706,3 +706,64 @@ semantic banks split at configured whole-element boundaries, with retained tail
 assigned to the second bank, never by dividing a typed element. Operational
 CycleRuntimeControl is separate from excluded fault/transcript instrumentation.
 No full allocator/image/stack/host total or other platform evidence is claimed.
+
+
+## Consuming-owner resumption — step 5 (2026-10-11)
+
+The actual factories now stream physical extent descriptors without retaining an
+observer bank. [Native descriptors](construction-storage-regions.json) preserve
+count, size, stride, alignment, charged bytes, family, and region kind (0 typed
+repeated elements, 1 inline value, 2 partition, 3 residual metadata/padding).
+The source of each typed extent is CycleStorageRegions.swift and the maintained
+Dynamic backing visitor methods. Embedded scratch fields are repeated typed
+fields, not another contiguous allocation. A partition's type layout describes
+its containing value; its chargedBytes is only the explicitly assigned subset.
+
+All26 field sums are checked against the actual RuntimeStorageAudit in Swift
+and independently by the driver; the checked total is also independently summed.
+This native run has50 Static regions/67,662 bytes and75 Dynamic regions/165,401
+bytes. Matching UInt16 path fields and two banks' matching counters are removed
+from their containing path/control charges. Identity fields are removed from
+Interaction record charges. Static root and semantic aggregate padding are
+explicitly included; aggregate factory/geometry/coordinator residuals retain
+metadata, references, optional tags and padding. Dynamic bank zero is the exact
+configured typed prefix; bank one owns its typed slice and retained whole-element
+tail. Each profile uses its actual coordinator specialization.
+
+The four Static workspace buffers are supplied UInt8 storage (alignment1).
+Their existing explicit byte codecs require alignment1: they do not perform
+typed loads or rebinding. Scoped typed workspace descriptors are separately
+reported with their own MemoryLayout alignment. The render text overlay is
+charged once to layout. Returned raw descriptors still die inside the four
+physical backing callbacks. Dynamic counts are actual retained capacities.
+
+This is the specification's backing audit, not full process/image/stack or
+allocator instrumentation. Dynamic allocator headers and class-object
+inter-field alignment remain separate later resource costs as documented in the
+existing measured owner APIs. Recording endpoint/sink and CycleControl fault/
+transcript instrumentation are excluded; actual CycleRuntimeControl is included.
+Source field partitions, not only equal totals, support the exclusion ledger.
+
+Fresh formatted gate: **685 assertions, zero failures, twelve expected compiler
+negatives**, [receipt](resumption-step-5-macos-static.json). The receipt includes
+inspectable descriptors and all named26 fields. The initial reporting callback
+form produced a nonescaping reentrancy diagnostic; replacing callback parameters
+with the concrete borrowing region-source protocol passed the diagnostic compile
+and execution and then the fresh gate. No escaping/lifetime suppression was used.
+Shared repair guard remains **0/2**. Historical stop remains unchanged.
+
+The prior step4 build directory was reused for explicitly labeled diagnostic
+module/link/execution checks; its archived receipt is historical, not a claim
+that its overwritten object hashes still verify. Step5 is a fresh directory and
+is the current reproducible receipt.
+
+Construction is ready for root's independent milestone review. Actual typed
+factories, preactivation validation, same-owner binding/common coordinator,
+real legal-boundary resets, eight-axis below/equal/above capacity controls,
+profile/provenance rejection and the existing twelve type/lifetime negatives
+are evidenced. Scoped semantic/root/Canvas lifetime teardown clears their state
+before postquiescence factory resets; candidate-preserving cleanup is exercised
+inside the active owner, never by invalidating its outer borrowed factory.
+Remaining P07 lifecycle/transcript, malformed Drawing rollback, four final routes,
+traceability and independent Strong exit review are still pending; no P07 or
+P08 completion is claimed. No compiler/contract or hardware changes.

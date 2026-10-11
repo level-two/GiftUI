@@ -48,6 +48,29 @@ package struct DynamicLayoutWorkspace: LayoutWorkspace {
     }
 
     /// Exclusive retained Array payload; value metadata is accounted by its owner.
+    /// Reports the actual retained typed buffers; live occupancy is not capacity.
+    package borrowing func visitRetainedPayloadExtents(_ visit: (Int, Int, Int, Int) -> Void) {
+        visit(
+            scopes.capacity, MemoryLayout<DynamicLayoutWorkspaceScope>.size,
+            MemoryLayout<DynamicLayoutWorkspaceScope>.stride,
+            MemoryLayout<DynamicLayoutWorkspaceScope>.alignment)
+        visit(
+            scopeIndex.capacity, MemoryLayout<Int?>.size, MemoryLayout<Int?>.stride,
+            MemoryLayout<Int?>.alignment)
+        visit(
+            lines.capacity, MemoryLayout<LayoutTextLine<SemanticRecordReference>>.size,
+            MemoryLayout<LayoutTextLine<SemanticRecordReference>>.stride,
+            MemoryLayout<LayoutTextLine<SemanticRecordReference>>.alignment)
+        visit(
+            glyphs.capacity, MemoryLayout<LayoutPositionedGlyph<SemanticRecordReference>>.size,
+            MemoryLayout<LayoutPositionedGlyph<SemanticRecordReference>>.stride,
+            MemoryLayout<LayoutPositionedGlyph<SemanticRecordReference>>.alignment)
+        visit(
+            depth.capacity, MemoryLayout<SemanticRecordReference>.size,
+            MemoryLayout<SemanticRecordReference>.stride,
+            MemoryLayout<SemanticRecordReference>.alignment)
+    }
+
     package var reservedPayloadBytes: UInt64 {
         UInt64(scopes.capacity * MemoryLayout<DynamicLayoutWorkspaceScope>.stride)
             + UInt64(scopeIndex.capacity * MemoryLayout<Int?>.stride)
@@ -347,6 +370,34 @@ package struct DynamicResolvedLayoutStorage: ResolvedRenderLayoutResultStorage {
         publishedScopes.reserveCapacity(Int(limits.maximumScopes))
         publishedLines.reserveCapacity(Int(limits.maximumTextLines))
         publishedGlyphs.reserveCapacity(Int(limits.maximumPositionedGlyphs))
+    }
+
+    /// Reports the actual retained typed buffers; live occupancy is not capacity.
+    package borrowing func visitRetainedPayloadExtents(_ visit: (Int, Int, Int, Int) -> Void) {
+        visit(
+            candidateScopes.capacity, MemoryLayout<DynamicResolvedLayoutScope>.size,
+            MemoryLayout<DynamicResolvedLayoutScope>.stride,
+            MemoryLayout<DynamicResolvedLayoutScope>.alignment)
+        visit(
+            candidateLines.capacity, MemoryLayout<DynamicResolvedLayoutLine>.size,
+            MemoryLayout<DynamicResolvedLayoutLine>.stride,
+            MemoryLayout<DynamicResolvedLayoutLine>.alignment)
+        visit(
+            candidateGlyphs.capacity, MemoryLayout<DynamicResolvedLayoutGlyph>.size,
+            MemoryLayout<DynamicResolvedLayoutGlyph>.stride,
+            MemoryLayout<DynamicResolvedLayoutGlyph>.alignment)
+        visit(
+            publishedScopes.capacity, MemoryLayout<DynamicResolvedLayoutScope>.size,
+            MemoryLayout<DynamicResolvedLayoutScope>.stride,
+            MemoryLayout<DynamicResolvedLayoutScope>.alignment)
+        visit(
+            publishedLines.capacity, MemoryLayout<DynamicResolvedLayoutLine>.size,
+            MemoryLayout<DynamicResolvedLayoutLine>.stride,
+            MemoryLayout<DynamicResolvedLayoutLine>.alignment)
+        visit(
+            publishedGlyphs.capacity, MemoryLayout<DynamicResolvedLayoutGlyph>.size,
+            MemoryLayout<DynamicResolvedLayoutGlyph>.stride,
+            MemoryLayout<DynamicResolvedLayoutGlyph>.alignment)
     }
 
     package var reservedPayloadBytes: UInt64 {
