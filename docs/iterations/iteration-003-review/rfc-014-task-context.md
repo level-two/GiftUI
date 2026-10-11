@@ -1,5 +1,11 @@
 # RFC-014 task context guide
 
+> **2026-10-11 explicit continuation:** Eugene authorized only the sequential
+> [focused workaround bench](../../../Tests/ContractFixtures/SPEC013/Evidence/rfc-014-p07/focused-bench/authorization.md)
+> for options 1 and 2 on Swift 6.3.2. The original 2/2 stop below remains
+> historical; production integration and P08 remain stopped. The new bounded
+> bench allowance must not be interpreted as an unlimited P07 restart.
+
 **Current P07 stop:** the [audited-construction repair guard](../../../Tests/ContractFixtures/SPEC013/Evidence/rfc-014-p07/audited-construction-stop/stop.md)
 is exhausted at **2/2**. Source is restored to validated `c234058e`; failed
 work and commands are preserved at `e132dfe5`. Earlier resumption instructions

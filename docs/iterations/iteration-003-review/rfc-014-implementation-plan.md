@@ -1,5 +1,11 @@
 # RFC-014 bounded implementation sequence — 2026-10-10
 
+> **2026-10-11 explicit continuation:** Eugene authorized only the sequential
+> [focused workaround bench](../../../Tests/ContractFixtures/SPEC013/Evidence/rfc-014-p07/focused-bench/authorization.md)
+> for options 1 and 2 on Swift 6.3.2. The original 2/2 stop below remains
+> historical; production integration and P08 remain stopped. The new bounded
+> bench allowance must not be interpreted as an unlimited P07 restart.
+
 **P01–P06 passed; P07 stopped at the 2/2 unproductive-repair limit;
 P08–P12 pending.** This is the shared
 sequencing index for nine owner Implementation Plans, not another contract or
