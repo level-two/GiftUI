@@ -11,7 +11,7 @@ package enum CanvasPlanProducer {
         workspace: inout Workspace
     ) -> DrawingPlanResult
     where
-        Source: CanvasInvocationSource,
+        Source: CanvasInvocationSource & ~Copyable & ~Escapable,
         Layout: ResolvedRenderLayoutView,
         Workspace: DrawingPlanConstructionWorkspace,
         Source.Identity == Layout.Identity,
@@ -108,7 +108,7 @@ package enum CanvasPlanProducer {
         occurrenceCount: UInt16
     ) -> Bool
     where
-        Source: CanvasInvocationSource,
+        Source: CanvasInvocationSource & ~Copyable & ~Escapable,
         Layout: ResolvedRenderLayoutView,
         Source.Identity == Layout.Identity
     {
@@ -146,7 +146,7 @@ package enum CanvasPlanProducer {
         workspace: inout Workspace
     ) -> DrawingPlanResult
     where
-        Source: CanvasInvocationSource,
+        Source: CanvasInvocationSource & ~Copyable & ~Escapable,
         Workspace: DrawingPlanWorkspace,
         Source.Identity == Workspace.Identity
     {

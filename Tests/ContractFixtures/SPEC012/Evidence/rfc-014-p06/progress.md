@@ -136,3 +136,42 @@ invocation adapter or semantic join was started under unapproved constraints.
 Parent/maintainer decision is required before the proposed exact package API
 amendment. This is a current blocker, not deferred work or a new package. All
 remaining P06 exit work and separate Strong review remain open. Counter **0/2**.
+
+## Step 2 — scoped source, typed tables and profile storage
+
+Applied only the approved Source protocol/producer/helper suppressions. Finite
+lowering now optionally emits the host/schema-owned typed witness table and
+concrete payload union; IDs are per concrete type, not occurrence. Both profile
+stores lend bounded initialized entries; the adapter's lifetime depends on the
+actual P03 model scope and staged-value scope. Reads open freshly per invocation,
+end before release, and closed typed errors cross the boundary without `any Error`.
+The static table and directly necessary existing forwarding now accept FrameRead.
+
+After formatter, the registered native command
+`scripts/contracts/run-spec-012.sh --profile macos-static --compiler-baseline rfc-014 --giftui-build .build/contracts/spec-006-rfc-014/4a218bc367aa4292-4mpnphal/macos-static`
+passes. Latest receipt at `.build/contracts/spec-012-protocol-canvas/tmpm_plhbb9/macos-static/result.json`
+records exact source/compiler/module/object identities. It executes **176 native
+assertions** across both profile stores using actual P03 backing and generated
+Counter Canvas. Independent expected values are A/B/A = 3/7/3, local endpoint
+sizes 5×7 and 15×21 (surface origin remains workspace-owned), all releases once,
+and two model destructions. Eleven cases include zero occurrences/dimensions,
+invalid later identity, client/path/plan failure, invalid layout, early phase/
+reentrancy/acquisition rejection, and seal failure. Entering discovery immediately
+after invocation proves its read ended. New source copy/escape negatives reject.
+The table corpus now includes a second empty Canvas witness; its invocation and
+full coverage boundary checks remain part of the next focused test extension.
+
+Development failures and narrowed repairs: `tmp7haws0a2` metadata setter scope;
+`tmp7zq88ntb` explicit descriptor copying and lifetime-preserving clone initializer;
+`tmpr4gke2_4` driver singleton tuple; `tmpg772le3d` explicit copy of stateless table
+into Dynamic lender callback; `tmp88hhj22r` fixture initializer visibility. Final
+native checks pass; consecutive unproductive repairs remain **0/2**. No failure
+was worked around by a raw lifetime descriptor, escaping callback or weakened
+expected result.
+
+Selected modules are listed by the driver. Static model backing is used in both
+native cases; full Dynamic coordinator/model-owner adoption, old host wrappers,
+complete modules/applications, cross builds, resource certification and P07+
+integration are not claimed. P06 still requires semantic payload transfer,
+finite coverage/error/boundary extension, retained geometry/pixel controls and
+four-profile matched receipts before its independent review.

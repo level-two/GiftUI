@@ -813,10 +813,10 @@ func schema(_ configuration: Configuration) throws -> String {
 }
 
 func lowerGiftUISource(arguments: [String]) throws {
-    guard arguments.count == 5 else {
+    guard arguments.count == 5 || arguments.count == 7 else {
         throw LoweringFailure(
             description:
-                "usage: GiftUIMacros-tool --lower-source <schema.json> <authored.swift> <schema-output.swift> <presentation-output.swift>"
+                "usage: GiftUIMacros-tool --lower-source <schema.json> <authored.swift> <schema-output.swift> <presentation-output.swift> [<canvas-table-output.swift> <presentation-module>]"
         )
     }
     let configuration = try JSONDecoder().decode(
@@ -843,8 +843,16 @@ func lowerGiftUISource(arguments: [String]) throws {
         throw LoweringFailure(description: lowerer.errors.joined(separator: "\n"))
     }
     let schemaText = try schema(configuration)
+    let tableText =
+        arguments.count == 7
+        ? try canvasWitnessTable(
+            configuration: configuration, inventory: inventory, presentationModule: arguments[6])
+        : nil
     // Emit neither output on any diagnostic. The build consumes only a complete pair.
     try schemaText.write(toFile: arguments[3], atomically: true, encoding: .utf8)
     let presentation = "import \(configuration.module)\n" + lowered.description
     try presentation.write(toFile: arguments[4], atomically: true, encoding: .utf8)
+    if let tableText {
+        try tableText.write(toFile: arguments[5], atomically: true, encoding: .utf8)
+    }
 }

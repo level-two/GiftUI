@@ -1,6 +1,6 @@
 import GiftUI
 
-package protocol CanvasInvocationSource {
+package protocol CanvasInvocationSource: ~Copyable, ~Escapable {
     associatedtype Identity: Equatable, Sendable
 
     var canvasOccurrenceCount: UInt16 { get }

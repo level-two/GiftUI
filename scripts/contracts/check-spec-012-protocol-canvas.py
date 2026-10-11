@@ -64,6 +64,31 @@ def module(name, sources):
     run(name, [compiler, *flags, '-module-name', name, '-emit-module', '-emit-object', *sources,
                '-emit-module-path', out / (name + '.swiftmodule'), '-o', out / (name + '.o')])
 
+module('GiftUISemanticCore', [ROOT / 'Sources/GiftUISemanticCore' / name for name in (
+    'GiftUISemanticCore.swift', 'SemanticRuntimeRecords.swift', 'SemanticRecordStore.swift',
+    'SemanticRecordExpansion.swift', 'SemanticStandardPayload.swift', 'SemanticLayoutView.swift',
+    'SemanticRenderView.swift', 'SemanticRecordLayoutView.swift', 'SemanticRecordRenderView.swift')])
+module('GiftUITextResources', sorted((ROOT / 'Sources/GiftUITextResources').glob('*.swift')))
+module('GiftUILayout', sorted((ROOT / 'Sources/GiftUILayout').glob('*.swift')))
+module('GiftUIRenderCore', sorted((ROOT / 'Sources/GiftUIRenderCore').glob('*.swift')))
+module('GiftUIExecution', [ROOT / 'Sources/GiftUIExecution' / name for name in (
+    'ObservableTargetGeneration.swift', 'ExecutionValues.swift', 'FrameHandoffValues.swift')])
+module('GiftUIObservableState', [ROOT / 'Sources/GiftUIObservableState' / name for name in (
+    'ObservableStateValues.swift', 'ObservableModelIdentity.swift', 'ObservableModelOwnership.swift',
+    'ObservableModelTicket.swift', 'ObservableModelScope.swift', 'ObservableModelMutation.swift',
+    'ObservableStateModel.swift', 'ObservableStateRegistrationLifecycle.swift', 'ObservableStateRootScope.swift',
+    'ObservableStateRootTargetAccess.swift', 'ObservableStateBindingDecorator.swift', 'ObservableSemanticBodyBinding.swift')])
+module('GiftUIDrawing', [ROOT / 'Sources/GiftUIDrawing' / name for name in (
+    'CanvasInvocationSource.swift', 'CanvasPlanProducer.swift', 'CanvasStagedValues.swift',
+    'DrawingLimits.swift', 'DrawingPlan.swift', 'DrawingValues.swift', 'StaticCanvasCallableTable.swift',
+    'PathConstruction.swift', 'StrokeSnapshot.swift')])
+module('GiftUIRuntimeCore', [ROOT / 'Sources/GiftUIRuntimeCore/ObservableCanvasInvocationSource.swift'])
+module('GiftUIRuntimeStatic', [ROOT / 'Sources/GiftUIRuntimeStatic' / name for name in (
+    'StaticObservableModelStorage.swift', 'StaticCanvasValueStorage.swift')])
+if profile != 'nrf52840-embedded':
+    module('GiftUIRuntimeDynamic', [ROOT / 'Sources/GiftUIRuntimeDynamic' / name for name in (
+        'DynamicCanvasCallableStorage.swift',)])
+
 macro = ROOT / '.build/rfc014-p02/tool/debug/GiftUIMacros-tool'
 inputs.append(macro)
 for application in ('Counter', 'Analyzer'):
@@ -76,9 +101,19 @@ for application in ('Counter', 'Analyzer'):
     source = FIXTURE / (application + 'Canvas.swift')
     inputs.append(source)
     run(application + '-lowering', [macro, '--lower-source', schema, source,
-                                   out / (application + 'Schema.swift'), out / (application + 'Canvas.swift')])
+                                   out / (application + 'Schema.swift'), out / (application + 'Canvas.swift'),
+                                   out / (application + 'CanvasTable.swift'), application + 'Canvas'])
     module(application + 'Schema', [out / (application + 'Schema.swift')])
     module(application + 'Canvas', [out / (application + 'Canvas.swift')])
+    module(application + 'CanvasTable', [out / (application + 'CanvasTable.swift')])
+
+module('CanvasStoreProbe', [FIXTURE / 'CanvasStoreProbe.swift'])
+if profile.startswith('macos'):
+    main = out / 'Main.swift'
+    main.write_text('import CanvasStoreProbe\n@main struct Main { static func main() { print("P06 stores assertions=\\(giftuiP06Stores(dynamic: false) + giftuiP06Stores(dynamic: true)) failures=0") } }\n')
+    run('native-link', [compiler, *flags, main, base / 'GiftUI.o', base / 'SignalAnalyzerDomain.o',
+                        *sorted(out.glob('*.o')), '-o', out / 'canvas-stores'])
+    run('native-execute', [out / 'canvas-stores'])
 
 for name, source, diagnostic in (
     ('missing-witness', 'struct Bad: Canvas {}', 'requires exactly one draw witness'),
@@ -95,6 +130,25 @@ for name, source, diagnostic in (
     assert not generated.exists()
 
 for name, source, diagnostic in (
+    ('escape-source', '''import GiftUI
+        import GiftUIDrawing
+        import GiftUIObservableState
+        import GiftUIRuntimeCore
+        import CounterSchema
+        import CanvasStoreProbe
+        struct Escape: ~Copyable { let source: ObservableCanvasInvocationSource<CanvasModel, CounterModelSchema, UInt16, CanvasTable> }
+        ''', 'non-Escapable'),
+    ('copy-source', '''import GiftUI
+        import GiftUIDrawing
+        import GiftUIObservableState
+        import GiftUIRuntimeCore
+        import CounterSchema
+        import CanvasStoreProbe
+        func copySource(_ source: borrowing ObservableCanvasInvocationSource<CanvasModel, CounterModelSchema, UInt16, CanvasTable>) {
+            let other = copy source
+            _ = other.canvasOccurrenceCount
+        }
+        ''', 'noncopyable'),
     ('wrong-domain', '''import GiftUI
         import CounterCanvas
         enum Other: _GiftUIReadDomain { typealias Slot = UInt8 }

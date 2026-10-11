@@ -39,6 +39,7 @@ where Identity: Equatable & Sendable {
 
     package mutating func invoke<Table>(
         table: inout Table,
+        read: borrowing _GiftUIFrameRead<Table.Domain>,
         context: inout GraphicsContext,
         size: Size
     ) throws(DrawingError)
@@ -54,7 +55,8 @@ where Identity: Equatable & Sendable {
             id: callableID,
             captures: capture!,
             context: &context,
-            size: size
+            size: size,
+            read: read
         )
     }
 

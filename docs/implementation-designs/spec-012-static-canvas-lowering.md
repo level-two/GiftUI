@@ -38,10 +38,23 @@ DrawingError cases, avoiding erased error transport through Embedded Swift.
 The private Canvas bridge constructs a checked zero-origin Rect from Layout Size.
 No escaping Canvas closure initializer remains in GiftUI.
 
-This first step does not implement the finite witness table, profile staged-value
-stores, or semantic transfer. Those P06 obligations remain open. The safe adapter
-must preserve the actual P03 model-scope lifetime; the exact source constraints
-are under review in the [shared progress record](../../Tests/ContractFixtures/SPEC012/Evidence/rfc-014-p06/progress.md).
+The approved scoped-source correction now permits the lexical adapter. Optional
+finite-lowering output emits a separate host table, concrete typed union, dense
+nonzero per-type IDs and an exhaustive switch, using actual MemoryLayout stride
+for each payload case. No runtime occurrence topology is generated.
+
+Both profiles lend initialized bounded typed slots through CanvasStagedValues.
+Static takes caller-owned MutableSpan backing; Dynamic allocates one configured
+array before its lending callback. A slot retains identity/witness, optional
+owned value and an invoked bit; release clears its value once. The lender's defer
+cleans any caller-owned early-rejection suffix. The noncopyable/nonescapable
+ObservableCanvasInvocationSource has explicit lifetime dependence on both actual
+P03 model scope and slot scope. Each invoke opens a fresh model read, passes it
+to exactly one validated table case and ends it before release. DrawingError is
+transported as a closed optional result across the access-error callback.
+
+Semantic transfer and final four-profile/oracle/resource evidence remain P06
+work in the [shared progress record](../../Tests/ContractFixtures/SPEC012/Evidence/rfc-014-p06/progress.md).
 The sections below describe the historical baseline, not the current protocol
 representation or permission to retain a closure fallback.
 

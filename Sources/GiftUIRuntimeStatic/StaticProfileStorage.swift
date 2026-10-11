@@ -332,11 +332,13 @@ where
     package mutating func invokeCanvas<Identity>(
         occurrence: inout StaticCanvasOccurrence<Identity, Metadata.CaptureStorage>,
         context: inout GraphicsContext,
-        size: Size
+        size: Size,
+        read: borrowing _GiftUIFrameRead<Metadata.Domain>
     ) throws(DrawingError)
     where Metadata: StaticCanvasCallableTable, Identity: Equatable & Sendable {
         try occurrence.invoke(
             table: &metadata,
+            read: read,
             context: &context,
             size: size
         )
