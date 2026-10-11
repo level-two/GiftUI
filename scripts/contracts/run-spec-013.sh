@@ -25,6 +25,8 @@ fail_usage() {
 }
 
 profile=""
+compiler_baseline=""
+giftui_build=""
 while [[ $# -gt 0 ]]; do
     case "$1" in
         --profile)
@@ -32,6 +34,8 @@ while [[ $# -gt 0 ]]; do
             profile="$2"
             shift 2
             ;;
+        --compiler-baseline) compiler_baseline="${2:-}"; shift 2 ;;
+        --giftui-build) giftui_build="${2:-}"; shift 2 ;;
         -h | --help)
             usage
             exit 0
@@ -44,6 +48,12 @@ case "${profile}" in
     "") fail_usage '--profile is required' ;;
     *) fail_usage "unknown profile: ${profile}" ;;
 esac
+
+if [[ "${compiler_baseline}" == rfc-014 ]]; then
+    [[ -n "${giftui_build}" ]] || { printf 'error: RFC-014 requires --giftui-build\n' >&2; exit 2; }
+    exec python3 "${SCRIPT_DIR}/check-spec-013-runtime-cycle.py" --profile "${profile}" --giftui-build "${giftui_build}"
+fi
+[[ -z "${compiler_baseline}" && -z "${giftui_build}" ]] || { printf 'error: expected --compiler-baseline rfc-014 and --giftui-build\n' >&2; exit 2; }
 
 declared_inputs() {
     find "${FIXTURE_ROOT}" -type f -print

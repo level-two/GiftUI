@@ -60,3 +60,40 @@ current owners. No complete-module or resource pass is inferred from P03–P06.
 
 Validation: `scripts/validate-governance.rb`; `git diff --check`.
 Repair count: 0 of 2.
+
+## Step 2 — required limits and disjoint audit values
+
+Added mandatory RuntimeRecordLimits and RuntimeModelLimits to the runtime input,
+validated limit and capacity surfaces. There are no fallback defaults for omitted
+fields. Candidate and published record capacities validate independently; model
+slots/tickets/pins and capture entitlement validate before activation. Added all
+ten RFC-014 byte fields to the checked 26-field sum, without reclassifying old
+host estimates as actual allocations. Physical count/stride/alignment and
+complete owner integration remain open.
+
+The explicit registered migration route is now:
+`run-spec-013.sh --profile <profile> --compiler-baseline rfc-014 --giftui-build <core>`;
+its default historical route is unchanged. Formatting preceded validation.
+Both native profiles pass **159 assertions** for invalid, absent, below/equal/
+above capacity and every audit field's contribution/overflow; ARMv6 and nRF
+compile the same oracle and pass exact architecture/VFP object checks. Cross
+compilation is not execution. Both platform doctors passed without target access.
+The four `step-2-*.json` receipts contain exact commands, pinned compiler,
+core receipt, source hashes and artifacts. Exact invocations:
+
+```sh
+scripts/contracts/run-spec-013.sh --profile macos-static --compiler-baseline rfc-014 --giftui-build .build/contracts/spec-006-rfc-014/dd5d4849463055f2-hwlll28l/macos-static
+scripts/contracts/run-spec-013.sh --profile macos-dynamic --compiler-baseline rfc-014 --giftui-build .build/contracts/spec-006-rfc-014/189dda86d331e15d-wpk82ft7/macos-dynamic
+scripts/contracts/run-spec-013.sh --profile raspberry-pi-armv6 --compiler-baseline rfc-014 --giftui-build .build/raspberry-pi/contracts/spec-006-rfc-014/189dda86d331e15d-w03qxe3s/raspberry-pi-armv6
+scripts/contracts/run-spec-013.sh --profile nrf52840-embedded --compiler-baseline rfc-014 --giftui-build .build/nrf52840/contracts/spec-006-rfc-014/189dda86d331e15d-xnmh_sbd/nrf52840-embedded
+```
+
+The first native invocation rejected obsolete core `f28bb03491f0640c-ot0b940_`
+on a changed FiniteSourceLowering hash. Selecting the final P06 receipt above
+resolved this input mismatch without changing validation. No failed compile or
+behavior repair occurred. Consecutive unproductive repair count remains **0/2**.
+
+This slice does not migrate legacy profile bindings or P08/P09 host/application
+initializers. Required new arguments intentionally have no schema-3 defaults;
+the migration driver currently proves the values/audit slice only. Full P07
+cycle, focused review and T11.1 remain open.

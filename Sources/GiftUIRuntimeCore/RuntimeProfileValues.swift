@@ -12,7 +12,53 @@ package enum RuntimeProfileKind: UInt8, Equatable, Sendable {
     case `static` = 1
 }
 
+package struct RuntimeRecordLimits: Equatable, Sendable {
+    package let maximumPathEntries: UInt16
+    package let maximumPathDepth: UInt16
+    package let maximumPathChildFanout: UInt16
+    package let maximumPayloadBytesPerBank: UInt32
+    package let maximumIdentityComponentsPerKey: UInt16
+    package let maximumInteractionIdentityComponents: UInt32
+
+    package init(
+        maximumPathEntries: UInt16,
+        maximumPathDepth: UInt16,
+        maximumPathChildFanout: UInt16,
+        maximumPayloadBytesPerBank: UInt32,
+        maximumIdentityComponentsPerKey: UInt16,
+        maximumInteractionIdentityComponents: UInt32
+    ) {
+        self.maximumPathEntries = maximumPathEntries
+        self.maximumPathDepth = maximumPathDepth
+        self.maximumPathChildFanout = maximumPathChildFanout
+        self.maximumPayloadBytesPerBank = maximumPayloadBytesPerBank
+        self.maximumIdentityComponentsPerKey = maximumIdentityComponentsPerKey
+        self.maximumInteractionIdentityComponents = maximumInteractionIdentityComponents
+    }
+}
+
+package struct RuntimeModelLimits: Equatable, Sendable {
+    package let maximumModelSlots: UInt16
+    package let maximumOwningTickets: UInt16
+    package let maximumFramePins: UInt16
+    package let maximumModelCaptureBanks: UInt16
+
+    package init(
+        maximumModelSlots: UInt16,
+        maximumOwningTickets: UInt16,
+        maximumFramePins: UInt16,
+        maximumModelCaptureBanks: UInt16
+    ) {
+        self.maximumModelSlots = maximumModelSlots
+        self.maximumOwningTickets = maximumOwningTickets
+        self.maximumFramePins = maximumFramePins
+        self.maximumModelCaptureBanks = maximumModelCaptureBanks
+    }
+}
+
 package struct RuntimeProfileLimits: Equatable, Sendable {
+    package let records: RuntimeRecordLimits
+    package let models: RuntimeModelLimits
     package let semantic: SemanticExpansionLimits
     package let maximumSemanticStructuralOccurrences: UInt16
     package let layout: LayoutLimits
@@ -27,6 +73,8 @@ package struct RuntimeProfileLimits: Equatable, Sendable {
     package let staticCanvas: StaticCanvasLimits?
 
     package init?(
+        records: RuntimeRecordLimits,
+        models: RuntimeModelLimits,
         semantic: SemanticExpansionLimits,
         maximumSemanticStructuralOccurrences: UInt16,
         layout: LayoutLimits,
@@ -41,7 +89,18 @@ package struct RuntimeProfileLimits: Equatable, Sendable {
         staticCanvas: StaticCanvasLimits?,
         profile: RuntimeProfileKind
     ) {
-        guard maximumSemanticStructuralOccurrences > 0,
+        guard records.maximumPathEntries > 0,
+            records.maximumPathDepth > 0,
+            records.maximumPathDepth <= SemanticCompleteIdentity.capacity,
+            records.maximumPathChildFanout > 0,
+            records.maximumIdentityComponentsPerKey >= records.maximumPathDepth,
+            records.maximumIdentityComponentsPerKey <= SemanticCompleteIdentity.capacity,
+            records.maximumInteractionIdentityComponents > 0,
+            models.maximumModelSlots > 0,
+            models.maximumOwningTickets > 0,
+            models.maximumFramePins > 0,
+            models.maximumModelCaptureBanks <= 1,
+            maximumSemanticStructuralOccurrences > 0,
             maximumSemanticStructuralOccurrences >= semantic.maximumSemanticNodes,
             semantic.maximumActionOccurrences <= interaction.maximumActions,
             interaction.maximumActions <= execution.maximumCommittedActions,
@@ -77,6 +136,8 @@ package struct RuntimeProfileLimits: Equatable, Sendable {
             return nil
         }
 
+        self.records = records
+        self.models = models
         self.semantic = semantic
         self.maximumSemanticStructuralOccurrences = maximumSemanticStructuralOccurrences
         self.layout = layout
@@ -95,6 +156,16 @@ package struct RuntimeProfileLimits: Equatable, Sendable {
 package struct RuntimeStorageAudit: Equatable, Sendable {
     package let profile: RuntimeProfileKind
     package let limits: RuntimeProfileLimits
+    package let semanticCandidatePathBytes: UInt32
+    package let semanticPublishedPathBytes: UInt32
+    package let semanticCandidatePayloadBytes: UInt32
+    package let semanticPublishedPayloadBytes: UInt32
+    package let identityMatchWorkspaceBytes: UInt32
+    package let interactionCandidateIdentityBytes: UInt32
+    package let interactionCommittedIdentityBytes: UInt32
+    package let modelMetadataBytes: UInt32
+    package let modelOwnerBytes: UInt32
+    package let framePinBytes: UInt32
     package let semanticCandidateBytes: UInt32
     package let semanticPublishedBytes: UInt32
     package let layoutCandidateBytes: UInt32
@@ -121,6 +192,16 @@ package struct RuntimeStorageAudit: Equatable, Sendable {
     ) {
         self.profile = profile
         self.limits = limits
+        semanticCandidatePathBytes = byteCounts.semanticCandidatePathBytes
+        semanticPublishedPathBytes = byteCounts.semanticPublishedPathBytes
+        semanticCandidatePayloadBytes = byteCounts.semanticCandidatePayloadBytes
+        semanticPublishedPayloadBytes = byteCounts.semanticPublishedPayloadBytes
+        identityMatchWorkspaceBytes = byteCounts.identityMatchWorkspaceBytes
+        interactionCandidateIdentityBytes = byteCounts.interactionCandidateIdentityBytes
+        interactionCommittedIdentityBytes = byteCounts.interactionCommittedIdentityBytes
+        modelMetadataBytes = byteCounts.modelMetadataBytes
+        modelOwnerBytes = byteCounts.modelOwnerBytes
+        framePinBytes = byteCounts.framePinBytes
         semanticCandidateBytes = byteCounts.semanticCandidateBytes
         semanticPublishedBytes = byteCounts.semanticPublishedBytes
         layoutCandidateBytes = byteCounts.layoutCandidateBytes
@@ -146,7 +227,17 @@ package struct RuntimeStorageAudit: Equatable, Sendable {
         byteCounts: RuntimeStorageByteCounts
     ) -> RuntimeProfileValidationResult {
         var total: UInt32 = 0
-        guard accumulate(byteCounts.semanticCandidateBytes, into: &total),
+        guard accumulate(byteCounts.semanticCandidatePathBytes, into: &total),
+            accumulate(byteCounts.semanticPublishedPathBytes, into: &total),
+            accumulate(byteCounts.semanticCandidatePayloadBytes, into: &total),
+            accumulate(byteCounts.semanticPublishedPayloadBytes, into: &total),
+            accumulate(byteCounts.identityMatchWorkspaceBytes, into: &total),
+            accumulate(byteCounts.interactionCandidateIdentityBytes, into: &total),
+            accumulate(byteCounts.interactionCommittedIdentityBytes, into: &total),
+            accumulate(byteCounts.modelMetadataBytes, into: &total),
+            accumulate(byteCounts.modelOwnerBytes, into: &total),
+            accumulate(byteCounts.framePinBytes, into: &total),
+            accumulate(byteCounts.semanticCandidateBytes, into: &total),
             accumulate(byteCounts.semanticPublishedBytes, into: &total),
             accumulate(byteCounts.layoutCandidateBytes, into: &total),
             accumulate(byteCounts.renderWorkspaceBytes, into: &total),
@@ -184,6 +275,16 @@ package struct RuntimeStorageAudit: Equatable, Sendable {
 }
 
 package struct RuntimeStorageByteCounts: Equatable, Sendable {
+    package let semanticCandidatePathBytes: UInt32
+    package let semanticPublishedPathBytes: UInt32
+    package let semanticCandidatePayloadBytes: UInt32
+    package let semanticPublishedPayloadBytes: UInt32
+    package let identityMatchWorkspaceBytes: UInt32
+    package let interactionCandidateIdentityBytes: UInt32
+    package let interactionCommittedIdentityBytes: UInt32
+    package let modelMetadataBytes: UInt32
+    package let modelOwnerBytes: UInt32
+    package let framePinBytes: UInt32
     package let semanticCandidateBytes: UInt32
     package let semanticPublishedBytes: UInt32
     package let layoutCandidateBytes: UInt32
@@ -202,6 +303,16 @@ package struct RuntimeStorageByteCounts: Equatable, Sendable {
     package let failureStateBytes: UInt32
 
     package init(
+        semanticCandidatePathBytes: UInt32,
+        semanticPublishedPathBytes: UInt32,
+        semanticCandidatePayloadBytes: UInt32,
+        semanticPublishedPayloadBytes: UInt32,
+        identityMatchWorkspaceBytes: UInt32,
+        interactionCandidateIdentityBytes: UInt32,
+        interactionCommittedIdentityBytes: UInt32,
+        modelMetadataBytes: UInt32,
+        modelOwnerBytes: UInt32,
+        framePinBytes: UInt32,
         semanticCandidateBytes: UInt32,
         semanticPublishedBytes: UInt32,
         layoutCandidateBytes: UInt32,
@@ -219,6 +330,16 @@ package struct RuntimeStorageByteCounts: Equatable, Sendable {
         coordinatorStateBytes: UInt32,
         failureStateBytes: UInt32
     ) {
+        self.semanticCandidatePathBytes = semanticCandidatePathBytes
+        self.semanticPublishedPathBytes = semanticPublishedPathBytes
+        self.semanticCandidatePayloadBytes = semanticCandidatePayloadBytes
+        self.semanticPublishedPayloadBytes = semanticPublishedPayloadBytes
+        self.identityMatchWorkspaceBytes = identityMatchWorkspaceBytes
+        self.interactionCandidateIdentityBytes = interactionCandidateIdentityBytes
+        self.interactionCommittedIdentityBytes = interactionCommittedIdentityBytes
+        self.modelMetadataBytes = modelMetadataBytes
+        self.modelOwnerBytes = modelOwnerBytes
+        self.framePinBytes = framePinBytes
         self.semanticCandidateBytes = semanticCandidateBytes
         self.semanticPublishedBytes = semanticPublishedBytes
         self.layoutCandidateBytes = layoutCandidateBytes

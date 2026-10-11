@@ -214,6 +214,8 @@ package enum RuntimeStorageLimit: UInt8, CaseIterable, Equatable, Sendable {
 package extension RuntimeProfileLimitInputs {
     init(validated limits: RuntimeProfileLimits, profile: RuntimeProfileKind) {
         self.init(
+            records: limits.records,
+            models: limits.models,
             semantic: limits.semantic,
             maximumSemanticStructuralOccurrences:
                 limits.maximumSemanticStructuralOccurrences,
@@ -235,6 +237,9 @@ package extension RuntimeProfileLimitInputs {
 package extension RuntimeStorageCapacities {
     init(exact limits: RuntimeProfileLimits, byteCounts: RuntimeStorageByteCounts) {
         self.init(
+            candidateRecords: limits.records,
+            publishedRecords: limits.records,
+            models: limits.models,
             semanticCandidate: limits.semantic,
             semanticPublished: limits.semantic,
             semanticCandidateStructuralOccurrences:

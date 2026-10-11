@@ -8,6 +8,8 @@ import GiftUIRenderLowering
 import GiftUISemanticCore
 
 package struct RuntimeProfileLimitInputs: Sendable {
+    package let records: RuntimeRecordLimits?
+    package let models: RuntimeModelLimits?
     package let semantic: SemanticExpansionLimits?
     package let maximumSemanticStructuralOccurrences: UInt16?
     package let layout: LayoutLimits?
@@ -23,6 +25,8 @@ package struct RuntimeProfileLimitInputs: Sendable {
     package let profile: RuntimeProfileKind
 
     package init(
+        records: RuntimeRecordLimits?,
+        models: RuntimeModelLimits?,
         semantic: SemanticExpansionLimits?,
         maximumSemanticStructuralOccurrences: UInt16?,
         layout: LayoutLimits?,
@@ -37,6 +41,8 @@ package struct RuntimeProfileLimitInputs: Sendable {
         staticCanvas: StaticCanvasLimits?,
         profile: RuntimeProfileKind
     ) {
+        self.records = records
+        self.models = models
         self.semantic = semantic
         self.maximumSemanticStructuralOccurrences = maximumSemanticStructuralOccurrences
         self.layout = layout
@@ -54,6 +60,9 @@ package struct RuntimeProfileLimitInputs: Sendable {
 }
 
 package struct RuntimeStorageCapacities: Sendable {
+    package let candidateRecords: RuntimeRecordLimits?
+    package let publishedRecords: RuntimeRecordLimits?
+    package let models: RuntimeModelLimits?
     package let semanticCandidate: SemanticExpansionLimits?
     package let semanticPublished: SemanticExpansionLimits?
     package let semanticCandidateStructuralOccurrences: UInt16?
@@ -84,6 +93,9 @@ package struct RuntimeStorageCapacities: Sendable {
     package let byteCounts: RuntimeStorageByteCounts?
 
     package init(
+        candidateRecords: RuntimeRecordLimits?,
+        publishedRecords: RuntimeRecordLimits?,
+        models: RuntimeModelLimits?,
         semanticCandidate: SemanticExpansionLimits?,
         semanticPublished: SemanticExpansionLimits?,
         semanticCandidateStructuralOccurrences: UInt16?,
@@ -113,6 +125,9 @@ package struct RuntimeStorageCapacities: Sendable {
         failureStatePresent: Bool,
         byteCounts: RuntimeStorageByteCounts?
     ) {
+        self.candidateRecords = candidateRecords
+        self.publishedRecords = publishedRecords
+        self.models = models
         self.semanticCandidate = semanticCandidate
         self.semanticPublished = semanticPublished
         self.semanticCandidateStructuralOccurrences = semanticCandidateStructuralOccurrences
@@ -205,7 +220,9 @@ package enum RuntimeProfileValidator {
         inputs: RuntimeProfileLimitInputs,
         capacities: RuntimeStorageCapacities
     ) -> CommonValidation {
-        guard let semantic = inputs.semantic,
+        guard let records = inputs.records,
+            let models = inputs.models,
+            let semantic = inputs.semantic,
             let maximumSemanticStructuralOccurrences =
                 inputs.maximumSemanticStructuralOccurrences,
             let layout = inputs.layout,
@@ -220,6 +237,8 @@ package enum RuntimeProfileValidator {
         }
         guard
             let limits = RuntimeProfileLimits(
+                records: records,
+                models: models,
                 semantic: semantic,
                 maximumSemanticStructuralOccurrences: maximumSemanticStructuralOccurrences,
                 layout: layout,
@@ -238,7 +257,10 @@ package enum RuntimeProfileValidator {
             return .invalid(.incompatibleLimits)
         }
 
-        guard let semanticCandidate = capacities.semanticCandidate,
+        guard let candidateRecords = capacities.candidateRecords,
+            let publishedRecords = capacities.publishedRecords,
+            let modelsCapacity = capacities.models,
+            let semanticCandidate = capacities.semanticCandidate,
             let semanticPublished = capacities.semanticPublished,
             let semanticCandidateStructuralOccurrences =
                 capacities.semanticCandidateStructuralOccurrences,
@@ -285,7 +307,10 @@ package enum RuntimeProfileValidator {
             requiredStaticCanvasCaptureBytes = 0
         }
 
-        guard covers(semanticCandidate, limits.semantic),
+        guard covers(candidateRecords, limits.records),
+            covers(publishedRecords, limits.records),
+            covers(modelsCapacity, limits.models),
+            covers(semanticCandidate, limits.semantic),
             covers(semanticPublished, limits.semantic),
             semanticCandidateStructuralOccurrences
                 >= limits.maximumSemanticStructuralOccurrences,
@@ -326,6 +351,26 @@ package enum RuntimeProfileValidator {
         case .invalid(let error):
             return .invalid(error)
         }
+    }
+
+    private static func covers(_ capacity: RuntimeRecordLimits, _ limits: RuntimeRecordLimits)
+        -> Bool
+    {
+        capacity.maximumPathEntries >= limits.maximumPathEntries
+            && capacity.maximumPathDepth >= limits.maximumPathDepth
+            && capacity.maximumPathChildFanout >= limits.maximumPathChildFanout
+            && capacity.maximumPayloadBytesPerBank >= limits.maximumPayloadBytesPerBank
+            && capacity.maximumIdentityComponentsPerKey >= limits.maximumIdentityComponentsPerKey
+            && capacity.maximumInteractionIdentityComponents
+                >= limits.maximumInteractionIdentityComponents
+    }
+
+    private static func covers(_ capacity: RuntimeModelLimits, _ limits: RuntimeModelLimits) -> Bool
+    {
+        capacity.maximumModelSlots >= limits.maximumModelSlots
+            && capacity.maximumOwningTickets >= limits.maximumOwningTickets
+            && capacity.maximumFramePins >= limits.maximumFramePins
+            && capacity.maximumModelCaptureBanks >= limits.maximumModelCaptureBanks
     }
 
     private static func covers(
