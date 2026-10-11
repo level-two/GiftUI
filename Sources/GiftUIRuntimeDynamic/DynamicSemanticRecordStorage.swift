@@ -19,6 +19,30 @@ package final class DynamicSemanticRecordStorage<Payload> {
         payloads = .init(repeating: nil, count: Int(limits.payloads) * 2)
         scalars = .init(repeating: 0, count: Int(limits.textScalars) * 2)
     }
+    /// Counts include allocator-rounded Array capacity, never only live elements.
+    /// Class/object headers and inter-field alignment are separate allocator costs.
+    package var retainedExtents:
+        (
+            records: Int, paths: Int, payloads: Int, scalars: Int,
+            recordBytes: Int, pathBytes: Int, payloadBytes: Int, controlBytes: Int
+        )
+    {
+        (
+            records.capacity, paths.capacity, payloads.capacity, scalars.capacity,
+            records.capacity * MemoryLayout<SemanticRuntimeRecord>.stride,
+            paths.capacity * MemoryLayout<SemanticPathEntry>.stride,
+            payloads.capacity * MemoryLayout<Payload?>.stride + scalars.capacity
+                * MemoryLayout<UInt32>.stride,
+            MemoryLayout<InlineArray<2, SemanticRecordBankMetadata>>.size
+                + MemoryLayout<[SemanticRuntimeRecord]>.size
+                + MemoryLayout<[SemanticPathEntry]>.size
+                + MemoryLayout<[Payload?]>.size + MemoryLayout<[UInt32]>.size
+                + MemoryLayout<SemanticRecordLimits>.size
+                + MemoryLayout<SemanticRecordOwnerIdentity>.size
+                + MemoryLayout<Bool>.size
+        )
+    }
+
     package func withLifetime<Result>(
         _ body: (borrowing SemanticRecordStore<Payload>) throws(SemanticExpansionError) -> Result
     ) throws(SemanticExpansionError) -> Result {

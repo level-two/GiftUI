@@ -22,6 +22,11 @@ package struct ObservableStateRootStorage<Identity: Equatable & Sendable> {
     fileprivate var operationActive = false
     fileprivate var retired = false
 
+    package static var candidateStorageBytes: Int {
+        MemoryLayout<InlineArray<4, ObservableModelOwnership.Claim?>>.size + MemoryLayout<Bool>.size
+    }
+    package static var liveStorageBytes: Int { MemoryLayout<Self>.size - candidateStorageBytes }
+
     package init() {}
 
     // Internal fixture boundary, matching the checked identity cursor controls.

@@ -590,3 +590,24 @@ construction/activation decision boundary before P08 relies on a scoped host.
 This is not the completed-package exit review: P07 remains incomplete, T11.1
 open, P08 unstarted and the unproductive repair count **0/2**. No production or
 normative contract change was made. Governance and whitespace checks pass.
+
+## Consuming-owner resumption — step 1 (2026-10-11)
+
+Under consuming-owner-resumption.md, restored the directly necessary real owner
+measurement accessors and finite disjoint pending/sealed admission backing from
+the preserved prerequisite, retaining the validated consuming Geometry/Interaction
+arrangement. No pointer-only owner or bench observation arrays were adopted.
+Model pin fields are partitioned from ledger metadata; Interaction backing may
+be inspected through a borrowing callback. Dynamic payload extents use retained
+Array capacities, not live counts.
+
+Fresh native module/gate run after scripts/format-swift.sh: **557 assertions,
+zero failures and ten expected compiler negatives**, receipt
+[resumption-step-1-macos-static.json](resumption-step-1-macos-static.json).
+This includes finite queue overflow, seal once, late pending preservation and
+reset/cancel checks. Pointer gesture execution remains explicitly unsupported by
+this adapter and is not claimed as passing P07 action behavior. These APIs are
+prerequisites, not a completed26-field audit or factory.
+
+Resumed consecutive-unproductive counter: **0/2** (passing fresh gate).
+Historical production2/2 and bounded bench evidence remain unchanged.

@@ -88,9 +88,15 @@ private func withSemantic(models: borrowing ObservableModelScope<CycleOwnedModel
         #if !hasFeature(Embedded)
         if dynamic {
             let storage = DynamicSemanticRecordStorage<Payload>(limits: limits, owner: try namespace.issue())
-            return try storage.withLifetime { (semantic) throws(SemanticExpansionError) in
+            let before = storage.retainedExtents
+            precondition(before.records >= 252 && before.paths >= 756 && before.payloads >= 196 && before.scalars >= 448)
+            let result = try storage.withLifetime { (semantic) throws(SemanticExpansionError) in
                 try exercise(semantic, models: models, root: root, dynamic: dynamic)
             }
+            let after = storage.retainedExtents
+            precondition(before.recordBytes == after.recordBytes && before.pathBytes == after.pathBytes)
+            precondition(before.payloadBytes == after.payloadBytes && before.controlBytes == after.controlBytes)
+            return result + 3
         }
         #endif
         var storage = StaticSemanticRecordStorage(limits: limits, owner: try namespace.issue())
@@ -103,16 +109,25 @@ private func withSemantic(models: borrowing ObservableModelScope<CycleOwnedModel
     } catch { preconditionFailure("semantic owner") }
 }
 public func giftuiP07CycleSemantic() -> Int {
-    var checks = 0
+    var checks = cycleAdmissionBackingProbe()
     do throws(ObservableStateError) {
         var namespace = ObservableModelOwnerNamespace()
         var storage = StaticObservableRootAdapter<CycleOwnedModel, SemanticCompleteIdentity>(identity: try namespace.issue(), schema: 1, needsCapture: false)!
+        let staticLayout = storage.storageLayout
+        precondition(staticLayout.models == 2 && staticLayout.claims == 4 && staticLayout.pins == 2 && staticLayout.captures == 0)
+        precondition(staticLayout.pinBytes == 2 * MemoryLayout<Bool>.size)
+        checks += 2
         checks += try storage.withLifetime { (models, root) throws(ObservableStateError) in
             withSemantic(models: models, root: root, dynamic: false)
         }
         #if !hasFeature(Embedded)
         checks += cycleDynamicStorageEdges()
         let dynamic = DynamicObservableRootAdapter<CycleOwnedModel, SemanticCompleteIdentity>(identity: try namespace.issue(), schema: 1, needsCapture: false)!
+        let dynamicLayout = dynamic.storageLayout
+        precondition(dynamicLayout.models == staticLayout.models && dynamicLayout.claims == staticLayout.claims && dynamicLayout.pins == staticLayout.pins)
+        precondition(dynamicLayout.modelBytes == staticLayout.modelBytes && dynamicLayout.pinBytes == staticLayout.pinBytes)
+        precondition(dynamicLayout.liveBytes == staticLayout.liveBytes && dynamicLayout.candidateBytes == staticLayout.candidateBytes)
+        checks += 3
         checks += try dynamic.withLifetime { (models, root) throws(ObservableStateError) in
             withSemantic(models: models, root: root, dynamic: true)
         }

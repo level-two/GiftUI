@@ -14,7 +14,11 @@ import CyclePresentation
 
 struct CycleControl {
     var show = true
-    var mutate = false
+    var admission = CycleAdmissionBacking()
+    var mutate: Bool {
+        get { admission.pendingState != nil }
+        set { admission.pendingState = newValue ? 1 : nil }
+    }
     var failAfterMutation = false
     var cleanupOrder: InlineArray<9, UInt8> = .init(repeating: 255)
     var cleanupCount = 0
@@ -100,15 +104,20 @@ where Geometry: CycleGeometry, Candidate: InteractionCandidateRecordStorage, Com
         guard !quiescent else { return .failure(.execution(.requiredFacilityUnavailable)) }
         if let error = phase.beginCycle(reservingFrom: &cycles) { return .failure(.execution(error)) }
         if let error = boundary(.admissionAndSeal) { return .failure(error) }
-        guard let selection = ExecutionAdmissionSealer.select(pendingInputEvents: 0, pendingStateChangeFacts: control.pointee.mutate ? 1 : 0, pendingCompletionFacts: 0, sameCycleActivationCandidates: 0, includesDirtyRederivation: changed, includesPresentationRecovery: pending, limits: ExecutionLimits(maximumInputEvents: 2, maximumStateChangeFacts: 1, maximumCompletionFacts: 0, maximumSemanticActions: 1, maximumActiveInputSources: 1, maximumCommittedActions: 6)!) else { return .failure(.execution(.invariantViolation)) }
+        guard let selection = ExecutionAdmissionSealer.select(pendingInputEvents: control.pointee.admission.pointerCount, pendingStateChangeFacts: control.pointee.admission.pendingState == nil ? 0 : 1, pendingCompletionFacts: 0, sameCycleActivationCandidates: 0, includesDirtyRederivation: changed, includesPresentationRecovery: pending, limits: ExecutionLimits(maximumInputEvents: 2, maximumStateChangeFacts: 1, maximumCompletionFacts: 0, maximumSemanticActions: 1, maximumActiveInputSources: 1, maximumCommittedActions: 6)!) else { return .failure(.execution(.invariantViolation)) }
+        guard control.pointee.admission.seal(selection.summary) else { return .failure(.execution(.invariantViolation)) }
         sealedAdmission = selection.summary
         return .advanced
     }
     mutating func applyAdmittedWork() -> RuntimePipelineMutationResult<RuntimeOwnerFailure> {
         if let error = phase.transition(to: .mutating) { return .failure(.execution(error), mutationApplied: false) }
         if let error = boundary(.applyAdmittedWork) { return .failure(error, mutationApplied: false) }
-        guard control.pointee.mutate else { return .applied(false) }
-        control.pointee.mutate = false
+        // Pointer gesture cases are completed by the later P07 admission slice;
+        // do not silently discard a sealed pointer that this adapter cannot apply.
+        guard control.pointee.admission.sealedPointerCount == 0 else {
+            return .failure(.execution(.requiredFacilityUnavailable), mutationApplied: false)
+        }
+        guard control.pointee.admission.takeState() != nil else { return .applied(false) }
         guard let rootIdentity, let actionIdentity, let record = interaction.committedRecord(for: actionIdentity) else { return .failure(.execution(.invalidProvenance), mutationApplied: false) }
         let target = ObservableStateRootTargetAccess(root: root, identity: rootIdentity, ordinal: 0)
         let captured = CapturedAction(identity: actionIdentity, generation: record.generation)
@@ -301,6 +310,7 @@ where Geometry: CycleGeometry, Candidate: InteractionCandidateRecordStorage, Com
         pending = disposition.presentationIntentState == .pending
     }
     mutating func finalizePipeline() {
+        control.pointee.admission.finishAttempt()
         completedContext = phase.context
         control.pointee.committedRecords = interaction.committedRecordCount
         control.pointee.hasRoot = rootIdentity != nil

@@ -15,6 +15,11 @@ where Identity: Equatable & Sendable {
 
     package var count: UInt16 { UInt16(records.count) }
 
+    package var retainedElementCapacity: Int { records.capacity }
+    package var reservedPayloadBytes: Int {
+        records.capacity * MemoryLayout<InteractionCandidateRecord<Identity>>.stride
+    }
+
     package mutating func reset() {
         records.removeAll(keepingCapacity: true)
     }
@@ -58,6 +63,11 @@ where Identity: Equatable & Sendable {
 
     package var count: UInt16 { UInt16(records.count) }
 
+    package var retainedElementCapacity: Int { records.capacity }
+    package var reservedPayloadBytes: Int {
+        records.capacity * MemoryLayout<BoundActionRecord<Identity>>.stride
+    }
+
     package mutating func reset() {
         records.removeAll(keepingCapacity: true)
     }
@@ -96,6 +106,11 @@ where Identity: Equatable & Sendable {
     }
 
     package var count: UInt16 { UInt16(regions.count) }
+
+    package var retainedElementCapacity: Int { regions.capacity }
+    package var reservedPayloadBytes: Int {
+        regions.capacity * MemoryLayout<InteractionHitRegion<Identity>>.stride
+    }
 
     package mutating func reset() {
         regions.removeAll(keepingCapacity: true)

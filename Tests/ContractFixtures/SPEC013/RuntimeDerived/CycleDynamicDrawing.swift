@@ -10,6 +10,7 @@ import GiftUIObservableState
 import CycleSchema
 #if !hasFeature(Embedded)
 import GiftUIRuntimeCore
+import GiftUIInteraction
 import GiftUIRuntimeDynamic
 
 package func cycleDynamicDrawing(
@@ -47,16 +48,25 @@ package func cycleDynamicDrawing(
         precondition(plan.point(of: canvas, stroke: 0, at: 0) == Point(x: bounds.origin.x, y: bounds.origin.y + 3))
     }
     var render = DynamicRenderWorkspace(capacity: cycleRenderLimits, structuralCapacity: cycleRenderCapacity)
+    let renderBytes = render.reservedPayloadBytes
     let renderChecks = cycleRender(semantic: semantic, layout: resolved.renderView, plan: plan, workspace: &render, shown: shown)
     plan.discard(); plan.reset()
+    precondition(render.reservedPayloadBytes == renderBytes)
     precondition(workspace.reservedPayloadBytes == layoutBytes)
     precondition(resolved.reservedPayloadBytes == resolvedBytes)
     precondition(plan.planReservedPayloadBytes == planBytes && plan.livePathReservedPayloadBytes == pathBytes)
-    return (shown ? 5 : 3) + renderChecks + 3
+    return (shown ? 5 : 3) + renderChecks + 4
 }
 package func cycleDynamicStorageEdges() -> Int {
     var checks = 0
     func expect(_ value: Bool) { checks += 1; precondition(value) }
+    var candidates = DynamicInteractionCandidateStorage<SemanticCompleteIdentity>(capacity: 6)
+    var committed = DynamicInteractionCommittedStorage<SemanticCompleteIdentity>(capacity: 6)
+    var hits = DynamicInteractionHitStorage<SemanticCompleteIdentity>(capacity: 6)
+    let candidateBytes = candidates.reservedPayloadBytes, committedBytes = committed.reservedPayloadBytes, hitBytes = hits.reservedPayloadBytes
+    expect(candidates.retainedElementCapacity >= 6 && committed.retainedElementCapacity >= 6 && hits.retainedElementCapacity >= 6)
+    candidates.reset(); committed.reset(); hits.reset()
+    expect(candidates.reservedPayloadBytes == candidateBytes && committed.reservedPayloadBytes == committedBytes && hits.reservedPayloadBytes == hitBytes)
     let limits = LayoutLimits(maximumScopes: 2, maximumDepth: 2, maximumTextScalars: 2, maximumTextLines: 2, maximumPositionedGlyphs: 2)!
     var workspace = DynamicLayoutWorkspace(limits: limits, maximumSemanticRecords: 4)
     let bytes = workspace.reservedPayloadBytes

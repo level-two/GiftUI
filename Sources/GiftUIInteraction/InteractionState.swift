@@ -44,6 +44,17 @@ where
         self.committedHitRegions = committedHitRegions
     }
 
+    package borrowing func withBacking<Result>(
+        _ body: (
+            borrowing CandidateRecords, borrowing HitRegions, borrowing CommittedRecords,
+            borrowing CommittedRecords, borrowing HitRegions
+        ) -> Result
+    ) -> Result {
+        body(
+            candidateRecords, candidateHitRegions, candidateCommittedRecords, committedRecords,
+            committedHitRegions)
+    }
+
     package mutating func beginCandidate(
         limits: InteractionLimits
     ) -> InteractionError? {

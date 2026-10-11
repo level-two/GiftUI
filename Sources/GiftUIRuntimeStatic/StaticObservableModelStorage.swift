@@ -19,6 +19,22 @@ package struct StaticObservableModelStorage<Model: ~Copyable, Schema>: ~Copyable
         self.needsCapture = needsCapture
     }
 
+    package var storageLayout:
+        (
+            owner: ObservableModelOwnerIdentity, models: UInt16, claims: UInt16, pins: UInt16,
+            captures: UInt16, metadataBytes: Int, modelBytes: Int, pinBytes: Int
+        )
+    {
+        let capacities = ownership.storageCapacities
+        return (
+            ownership.identity, capacities.models, capacities.claims, capacities.pins,
+            capacities.captures,
+            ObservableModelOwnership.metadataStorageBytes + MemoryLayout<UInt16>.size
+                + MemoryLayout<Bool>.size,
+            MemoryLayout<InlineArray<2, Model?>>.size, ObservableModelOwnership.framePinStorageBytes
+        )
+    }
+
     package mutating func withLifetime<Result>(
         _ body: (borrowing ObservableModelScope<Model, Schema>) throws(ObservableStateError) ->
             Result

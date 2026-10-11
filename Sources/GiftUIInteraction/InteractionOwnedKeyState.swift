@@ -31,6 +31,18 @@ where
         self.maximumComponentsPerKey = maximumComponentsPerKey
         self.maximumComponents = maximumComponents
     }
+    package borrowing func withBacking<Result>(
+        _ body: (
+            borrowing Candidate, borrowing Hits, borrowing Committed,
+            borrowing Committed, borrowing Hits
+        ) -> Result
+    ) -> Result {
+        state.withBacking(body)
+    }
+    package var identityCapacities: (perKey: UInt16, perBank: UInt32) {
+        (maximumComponentsPerKey, maximumComponents)
+    }
+
     package mutating func beginCandidate(limits: InteractionLimits) -> InteractionError? {
         if let error = state.beginCandidate(limits: limits) { return error }
         candidateComponents = 0

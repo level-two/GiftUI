@@ -60,7 +60,7 @@ struct CycleExecutionBinding: ~Copyable, ~Escapable, StaticExecutionProfileBindi
     mutating func quiesce() {
         guard !isQuiescent else { return }
         control.pointee.unavailable = true
-        control.pointee.mutate = false
+        control.pointee.admission.resetAll()
         do throws(ObservableStateError) { try root.shutdown() }
         catch { models.requireStop() }
     }
@@ -72,15 +72,15 @@ struct CycleQueuedFacts: ExecutionPendingAdmissionStorage {
     typealias StateChangeFact = UInt8
     typealias CompletionFact = UInt16
     let control: UnsafeMutablePointer<CycleControl>
-    var pointerCount: UInt16 { 0 }
+    var pointerCount: UInt16 { control.pointee.admission.pointerCount }
     var stateChangeCount: UInt16 { control.pointee.mutate ? 1 : 0 }
     var completionCount: UInt16 { 0 }
     func isValid(stateChange: borrowing UInt8) -> Bool { stateChange == 1 }
     func isValid(completion: borrowing UInt16) -> Bool { false }
-    mutating func enqueue(pointer: NormalizedPointerEvent) -> Bool { false }
+    mutating func enqueue(pointer: NormalizedPointerEvent) -> Bool { control.pointee.admission.enqueue(pointer) }
     mutating func enqueue(stateChange: UInt8) -> Bool { guard !control.pointee.mutate else { return false }; control.pointee.mutate = true; return true }
     mutating func enqueue(completion: UInt16) -> Bool { false }
-    mutating func cancelPointerSequence(source: InputSourceID, sequence: PointerSequenceID) {}
+    mutating func cancelPointerSequence(source: InputSourceID, sequence: PointerSequenceID) { control.pointee.admission.cancel(source: source, sequence: sequence) }
 }
 struct CycleWake: ExecutionWakeRequester, Sendable {
     var reasons: ExecutionWakeReasons = []
@@ -114,4 +114,73 @@ func cycleConcreteCoordinator<G, C, R, H>(owner: consuming CyclePipelineOwner<G,
     precondition(coordinator.submit(stateChange: 1).result == .unavailable)
     guard case .failure(_, .execution(.requiredFacilityUnavailable), nil) = coordinator.runOpportunity() else { preconditionFailure("Static stopped entry") }
     return 7
+}
+
+// Actual disjoint finite stores used by admission and sealing. Completion capacity
+// is zero, so it owns no completion entries. Later arrivals remain in pending.
+struct CycleAdmissionBacking {
+    var pendingPointers: InlineArray<2, NormalizedPointerEvent?> = .init(repeating: nil)
+    var pendingState: UInt8?
+    var sealedPointers: InlineArray<2, NormalizedPointerEvent?> = .init(repeating: nil)
+    var sealedState: UInt8?
+    var sealedAction: CapturedAction<SemanticCompleteIdentity>?
+    var sealedPointerCount: UInt16 = 0
+    var sealActive = false
+    var pointerCount: UInt16 {
+        var count: UInt16 = 0
+        for i in 0..<2 where pendingPointers[i] != nil { count += 1 }
+        return count
+    }
+    mutating func enqueue(_ pointer: NormalizedPointerEvent) -> Bool {
+        for i in 0..<2 where pendingPointers[i] == nil { pendingPointers[i] = pointer; return true }
+        return false
+    }
+    mutating func cancel(source: InputSourceID, sequence: PointerSequenceID) {
+        for i in 0..<2 {
+            if let event = pendingPointers[i], event.source == source && event.sequence == sequence { pendingPointers[i] = nil }
+        }
+    }
+    mutating func seal(_ summary: AdmissionSummary) -> Bool {
+        guard !sealActive, summary.inputEventCount <= pointerCount,
+            summary.stateChangeFactCount <= (pendingState == nil ? 0 : 1), summary.completionFactCount == 0,
+            summary.semanticActionCount <= 1 else { return false }
+        sealedPointerCount = 0
+        for i in 0..<2 where sealedPointerCount < summary.inputEventCount {
+            if let event = pendingPointers[i] {
+                sealedPointers[Int(sealedPointerCount)] = event
+                pendingPointers[i] = nil; sealedPointerCount += 1
+            }
+        }
+        sealedState = summary.stateChangeFactCount == 0 ? nil : pendingState.take()
+        sealActive = true
+        return true
+    }
+    mutating func takeState() -> UInt8? { sealedState.take() }
+    mutating func finishAttempt() {
+        sealedPointers = .init(repeating: nil); sealedPointerCount = 0
+        sealedState = nil; sealedAction = nil; sealActive = false
+    }
+    mutating func resetAll() { finishAttempt(); pendingPointers = .init(repeating: nil); pendingState = nil }
+}
+
+func cycleAdmissionBackingProbe() -> Int {
+    var backing = CycleAdmissionBacking()
+    var checks = 0
+    func expect(_ okay: Bool) { checks += 1; precondition(okay) }
+    let event = NormalizedPointerEvent(phase: .down, position: Point(x: 0, y: 0), source: .init(rawValue: 1), sequence: .init(rawValue: 1), ordinal: .init(rawValue: 0), presentationRevision: .init(rawValue: 1))
+    expect(backing.enqueue(event)); expect(backing.enqueue(event)); expect(!backing.enqueue(event))
+    backing.pendingState = 1
+    let limits = ExecutionLimits(maximumInputEvents: 2, maximumStateChangeFacts: 1, maximumCompletionFacts: 0, maximumSemanticActions: 1, maximumActiveInputSources: 1, maximumCommittedActions: 6)!
+    let summary = ExecutionAdmissionSealer.select(pendingInputEvents: 2, pendingStateChangeFacts: 1, pendingCompletionFacts: 0, sameCycleActivationCandidates: 0, includesDirtyRederivation: false, includesPresentationRecovery: false, limits: limits)!.summary
+    expect(backing.seal(summary)); expect(!backing.seal(summary))
+    expect(backing.pointerCount == 0 && backing.sealedPointerCount == 2)
+    expect(backing.enqueue(event)); backing.pendingState = 1
+    expect(backing.takeState() == 1); expect(backing.takeState() == nil)
+    backing.finishAttempt()
+    expect(backing.pointerCount == 1 && backing.pendingState == 1 && backing.sealedPointerCount == 0)
+    backing.cancel(source: event.source, sequence: event.sequence)
+    expect(backing.pointerCount == 0 && backing.pendingState == 1)
+    backing.resetAll()
+    expect(backing.pendingState == nil && !backing.sealActive)
+    return checks
 }

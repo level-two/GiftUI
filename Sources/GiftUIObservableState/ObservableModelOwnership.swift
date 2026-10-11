@@ -74,6 +74,14 @@ package struct ObservableModelOwnership: ~Copyable {
         self.captureLimit = captureLimit
     }
 
+    package var storageCapacities: (models: UInt16, claims: UInt16, pins: UInt16, captures: UInt16)
+    {
+        (modelLimit, claimLimit, pinLimit, captureLimit)
+    }
+    // The two actual pinned fields are partitioned out of the ledger exactly once.
+    package static var framePinStorageBytes: Int { 2 * MemoryLayout<Bool>.size }
+    package static var metadataStorageBytes: Int { MemoryLayout<Self>.size - framePinStorageBytes }
+
     package var occupiedCount: Int {
         var count = 0
         for index in 0 ..< Int(modelLimit) where records[index].occupied { count += 1 }

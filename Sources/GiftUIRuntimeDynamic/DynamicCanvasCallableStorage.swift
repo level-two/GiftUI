@@ -12,6 +12,10 @@ package struct DynamicCanvasCallableStorage<
         self.capacity = capacity
         entries = .init(repeating: nil, count: Int(capacity))
     }
+    package var reservedPayloadBytes: Int {
+        entries.capacity * MemoryLayout<CanvasStagedEntry<Identity, Table.CaptureStorage>?>.stride
+    }
+
     package mutating func withLifetime<Result>(
         table: borrowing Table, limits: StaticCanvasLimits,
         _ body: (borrowing CanvasStagedValues<Identity, Table>) throws(DrawingError) -> Result

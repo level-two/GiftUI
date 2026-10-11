@@ -32,6 +32,13 @@ package struct DynamicRenderWorkspace: RenderProductionWorkspace {
         )
     }
 
+    /// Retained element extents; the owning value's inline layout is separate.
+    package var reservedPayloadBytes: Int {
+        semanticVisits.capacity * MemoryLayout<Bool>.stride
+            + layoutVisits.capacity * MemoryLayout<Bool>.stride
+            + foregrounds.capacity * MemoryLayout<Color>.stride
+    }
+
     package var currentForeground: Color? {
         guard isActive else { return nil }
         return foregrounds.last
