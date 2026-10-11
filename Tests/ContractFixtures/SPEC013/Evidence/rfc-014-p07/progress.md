@@ -1,5 +1,17 @@
 # RFC-014 P07 progress
 
+## Current stop — associated requirements, 2026-10-11
+
+The prior approved correction is implemented. A newly confirmed exact
+Storage/Handler/TargetAccess boundary stops affected integration. Read the
+[decision packet](associated-type-constraint.md) and its four compile-only proofs.
+It proposes removing exactly three associated requirements from the common
+operational protocol, with explicit lost static checks and required concrete
+construction proofs. No proposal is applied or approved. Separate Strong review
+and human decision remain. Commits: `498720fc`, `2fe8a86e`, `db78cf9c`, and partial
+WIP `027bdc11`. P07 incomplete; T9.1/T11.1 open; repair counter **0/2**.
+
+
 ## Approved resumption assignment — 2026-10-11
 
 After the concrete explanation of the three protocol suppressions and the

@@ -12,6 +12,11 @@ SPEC-013 current checkpoint. The historical blocker proof is not current
 production evidence after the constraints change. SPEC-015 host lifetime is
 still separate; no P08 work is authorized by this correction.
 
+Current stop: [P07 associated-type decision packet](../../../Tests/ContractFixtures/SPEC013/Evidence/rfc-014-p07/associated-type-constraint.md). The prior three
+suppressions are implemented; this new packet inventories the same protocol's
+remaining associated requirements. Review it before resuming; no further contract
+change is approved. `027bdc11` preserves partial work honestly, not a package exit.
+
 ## Build context in this order
 
 1. Read the assigned package's dependency/exit and model-routing rows in the

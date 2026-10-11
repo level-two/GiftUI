@@ -1,6 +1,6 @@
 # RFC-014 bounded implementation sequence — 2026-10-10
 
-**P01–P06 passed; P07 resumed under the approved scoped coordinator correction;
+**P01–P06 passed; P07 stopped at a newly confirmed associated-type contract boundary;
 P08–P12 pending.** This is the shared
 sequencing index for nine owner Implementation Plans, not another contract or
 investigation. It derives only the [approved Spec amendments](rfc-014-spec-approval.md)
@@ -23,6 +23,12 @@ is historical; the [narrow correction is now approved](rfc-014-spec-approval.md#
 and package exit remain open; SPEC-015 host lifetime remains a separately
 reviewed boundary. Consecutive unproductive repairs: **0/2**. No successor work
 has started.
+
+The prior correction is implemented. The new [associated-type decision packet](../../../Tests/ContractFixtures/SPEC013/Evidence/rfc-014-p07/associated-type-constraint.md)
+records the remaining Storage/Handler/TargetAccess boundary, bounded compiler
+proof, concrete proposed operational-protocol correction and lost static checks.
+It is not approved. Validated slices and an honest partial WIP are committed;
+separate Strong review and human decision precede affected integration resumption.
 
 ## Fixed deliverable and scope rules
 

@@ -1,0 +1,28 @@
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC013/Evidence/rfc-014-p07/associated-type-proof/UnsupportedSuppression.swift:13:29: error: cannot suppress 'Copyable' requirement of an associated type
+11 |     ~Copyable, ~Escapable, ExecutionAdmissionSink, ExecutionOpportunityRunner
+12 | {
+13 |     associatedtype Storage: RuntimeProfileStorage & ~Copyable
+   |                             `- error: cannot suppress 'Copyable' requirement of an associated type
+14 |     associatedtype Endpoint: SynchronousFrameEndpoint
+15 |     where Endpoint.Sink: DrawingOperationSink
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC013/Evidence/rfc-014-p07/associated-type-proof/UnsupportedSuppression.swift:35:8: error: type 'ActualStorageCoordinator<S, E, H, T>' does not conform to protocol 'AmendedRuntimeProfileCoordinator'
+11 |     ~Copyable, ~Escapable, ExecutionAdmissionSink, ExecutionOpportunityRunner
+12 | {
+13 |     associatedtype Storage: RuntimeProfileStorage & ~Copyable
+   |                    `- note: protocol requires nested type 'Storage'
+14 |     associatedtype Endpoint: SynchronousFrameEndpoint
+15 |     where Endpoint.Sink: DrawingOperationSink
+   :
+33 | import GiftUIObservableState
+34 | 
+35 | struct ActualStorageCoordinator<S, E, H, T>: ~Copyable, ~Escapable, AmendedRuntimeProfileCoordinator
+   |        |- error: type 'ActualStorageCoordinator<S, E, H, T>' does not conform to protocol 'AmendedRuntimeProfileCoordinator'
+   |        `- note: add stubs for conformance
+36 | where S: RuntimeProfileStorage & ~Copyable, E: SynchronousFrameEndpoint,
+37 |       E.Sink: DrawingOperationSink, H: GiftUIActionHandler, T: ActionModelTargetAccess,
+38 |       T.Model == H.Model {
+39 |     typealias Storage = S
+   |               `- note: possibly intended match 'ActualStorageCoordinator<S, E, H, T>.Storage' (aka 'S') does not conform to 'Copyable'
+40 |     typealias Endpoint = E
+41 |     typealias Handler = H

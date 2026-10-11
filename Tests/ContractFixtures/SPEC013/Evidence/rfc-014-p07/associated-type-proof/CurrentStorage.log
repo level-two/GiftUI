@@ -1,0 +1,21 @@
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC013/Evidence/rfc-014-p07/associated-type-proof/CurrentStorage.swift:8:8: error: type 'ActualStorageCoordinator<S, E, H, T>' does not conform to protocol 'GiftUIRuntimeProfileCoordinator'
+ 6 | import GiftUIObservableState
+ 7 | 
+ 8 | struct ActualStorageCoordinator<S, E, H, T>: ~Copyable, ~Escapable, GiftUIRuntimeProfileCoordinator
+   |        |- error: type 'ActualStorageCoordinator<S, E, H, T>' does not conform to protocol 'GiftUIRuntimeProfileCoordinator'
+   |        `- note: add stubs for conformance
+ 9 | where S: RuntimeProfileStorage & ~Copyable, E: SynchronousFrameEndpoint,
+10 |       E.Sink: DrawingOperationSink, H: GiftUIActionHandler, T: ActionModelTargetAccess,
+11 |       T.Model == H.Model {
+12 |     typealias Storage = S
+   |               `- note: possibly intended match 'ActualStorageCoordinator<S, E, H, T>.Storage' (aka 'S') does not conform to 'Copyable'
+13 |     typealias Endpoint = E
+14 |     typealias Handler = H
+
+/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeCore/RuntimeCoordinatorContracts.swift:13:20: note: protocol requires nested type 'Storage'
+11 |     ~Copyable, ~Escapable, ExecutionAdmissionSink, ExecutionOpportunityRunner
+12 | {
+13 |     associatedtype Storage: RuntimeProfileStorage
+   |                    `- note: protocol requires nested type 'Storage'
+14 |     associatedtype Endpoint: SynchronousFrameEndpoint
+15 |     where Endpoint.Sink: DrawingOperationSink

@@ -1,0 +1,23 @@
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC013/Evidence/rfc-014-p07/associated-type-proof/CurrentTarget.swift:8:8: error: type 'ActualTargetCoordinator<S, E, H, M>' does not conform to protocol 'GiftUIRuntimeProfileCoordinator'
+ 6 | import GiftUIObservableState
+ 7 | 
+ 8 | struct ActualTargetCoordinator<S, E, H, M>: ~Copyable, ~Escapable, GiftUIRuntimeProfileCoordinator
+   |        |- error: type 'ActualTargetCoordinator<S, E, H, M>' does not conform to protocol 'GiftUIRuntimeProfileCoordinator'
+   |        `- note: add stubs for conformance
+ 9 | where S: RuntimeProfileStorage, E: SynchronousFrameEndpoint,
+10 |       E.Sink: DrawingOperationSink, H: GiftUIActionHandler, M: ObservableStateModel & ObservableModelMutation & ~Copyable {
+   :
+12 |     typealias Endpoint = E
+13 |     typealias Handler = H
+14 |     typealias TargetAccess = ObservableStateRootTargetAccess<M, UInt8>
+   |               `- note: possibly intended match 'ActualTargetCoordinator<S, E, H, M>.TargetAccess' (aka 'ObservableStateRootTargetAccess<M, UInt8>') does not conform to 'ActionModelTargetAccess'
+15 |     typealias StateChangeFact = UInt8
+16 |     typealias CompletionFact = UInt16
+
+/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeCore/RuntimeCoordinatorContracts.swift:17:20: note: protocol requires nested type 'TargetAccess'
+15 |     where Endpoint.Sink: DrawingOperationSink
+16 |     associatedtype Handler: GiftUIActionHandler
+17 |     associatedtype TargetAccess: ActionModelTargetAccess
+   |                    `- note: protocol requires nested type 'TargetAccess'
+18 |     where TargetAccess.Model == Handler.Model
+19 | 
