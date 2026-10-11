@@ -242,17 +242,28 @@ package struct ObservableModelScope<Model: ~Copyable, Schema>: ~Copyable, ~Escap
         } catch { return .failure(error) }
     }
 
+    /// The runtime's staged pipeline keeps the activation scope alive across
+    /// these checked transitions. Each successful begin requires one end during
+    /// mandatory attempt cleanup; ordinary lexical callers use withFrame.
+    package borrowing func beginFrame() throws(ObservableStateError) {
+        try ownership.pointee.beginFrame()
+    }
+
+    package borrowing func endFrame() throws(ObservableStateError) {
+        try ownership.pointee.endFrame { models[Int($0)] = nil }
+    }
+
     package borrowing func withFrame<Result>(
         _ body: () throws(ObservableStateError) -> Result
     ) throws(ObservableStateError) -> Result {
-        try ownership.pointee.beginFrame()
+        try beginFrame()
         do {
             let result = try body()
-            try ownership.pointee.endFrame { models[Int($0)] = nil }
+            try endFrame()
             return result
         } catch {
             // Cleanup cannot replace the first operation failure.
-            try? ownership.pointee.endFrame { models[Int($0)] = nil }
+            try? endFrame()
             throw error
         }
     }

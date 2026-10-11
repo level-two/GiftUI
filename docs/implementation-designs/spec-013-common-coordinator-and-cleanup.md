@@ -267,3 +267,22 @@ adapters are isolated in their own files solely to retain old source compatibili
 they are not selected by current scope evidence and are not a second production
 pipeline. The actual owner/cycle join remains pending. SPEC-015 host lifetime
 remains a separate authority boundary.
+
+
+## Frame acquisition before candidate expansion — 2026-10-11
+
+The model owner now exposes its existing checked begin/end-frame transitions to
+package callers; `withFrame` delegates to the same operations. A scoped runtime
+owner can therefore mutate before freeze and retain frame ownership across the
+existing staged pipeline without retaining a read or escaping the activation.
+Semantic record storage similarly lends a lifetime-dependent borrowed scope.
+Neither forwarding operation owns or extends backing storage lifetime.
+
+The complete runner records attempt cleanup immediately after successful freeze.
+Previously it recorded that obligation only after successful semantic expansion,
+which missed the frame lease on an early expansion failure. The focused P07
+regression uses actual Dynamic/Static model stores, pins the model, drops the
+last application ticket under discovery authority, injects expansion failure,
+and verifies one destruction, one cleanup, one finalization and a reusable
+mutation phase. Later stages are unreachable in this regression; it is not the
+complete-cycle differential required for P07 exit.

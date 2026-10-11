@@ -161,6 +161,9 @@ package enum RuntimeCompletePipeline {
             )
         }
 
+        // Frame ownership begins at freeze, before candidate expansion can fail.
+        acquired.insert(.resetAttemptStorage)
+
         if case .failure(let failure) = owner.beginObservableCandidateAndExpandSemantics() {
             return fail(
                 at: .observableCandidateAndSemanticExpansion,

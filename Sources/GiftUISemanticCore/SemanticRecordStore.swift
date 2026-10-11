@@ -77,6 +77,19 @@ package struct SemanticRecordStore<Payload>: ~Copyable, ~Escapable {
         self.limits = limits
         self.owner = owner
     }
+    @_lifetime(copy self)
+    package borrowing func borrowedStore() -> SemanticRecordStore<Payload> {
+        SemanticRecordStore(borrowing: self)
+    }
+
+    @_lifetime(copy other)
+    private init(borrowing other: borrowing SemanticRecordStore<Payload>) {
+        a = other.a
+        b = other.b
+        limits = other.limits
+        owner = other.owner
+    }
+
     private borrowing func bank(_ number: UInt8) -> SemanticRecordBankBuffers<Payload> {
         number == 0 ? a : b
     }

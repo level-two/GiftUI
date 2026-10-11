@@ -65,6 +65,32 @@ Remaining: actual production owner/cycle integration, fault/cleanup differential
 physical audit and quiescence evidence, then separate Strong review. T9.1 and
 T11.1 remain open. No SPEC-015 host lifetime change or P08 work was made.
 
+## Step 6 — frame acquisition cleanup and scoped record forwarding
+
+Successful freeze now records resetAttemptStorage before expansion can fail.
+The model scope exposes existing checked begin/end-frame operations for staged
+runtime ownership; withFrame uses the same operations. SemanticRecordStore lends
+a borrowedStore with lifetime dependence on the actual activation. No backing
+ownership changes. The existing unit cleanup oracle now includes the acquired
+frame lease on expansion failure; historical test receipts are preserved.
+
+After formatting, the Step 2 macOS Static command passes **179 assertions**,
+including actual Dynamic and Static model stores: pin a model, release its last
+ticket under discovery authority, fail expansion, destroy exactly once, retain
+first failure/dirty disposition, finalize once, then repeat on the same backing.
+This is an explicitly focused regression; later pipeline stages are unreachable.
+The nRF Step 2 command cross-compiles the same corpus and passes ARM/VFP checks.
+Both routes reject semantic borrowed-owner copy/escape in addition to prior
+negatives. Receipts: `step-6-macos-static.json`, `step-6-nrf52840-embedded.json`.
+No full repository or complete-profile-cycle pass is inferred.
+
+Fixture repairs: normalized Int/UInt32 assertion count; LLDB localized an initial
+native trap to ticket release in reading phase, corrected to the existing checked
+discovery route; Embedded required an explicit GiftUISemanticCore import for the
+semantic error enum. Each narrowed the cause or passed a new check. One native
+intermediate run overlapped a driver edit and is excluded from committed evidence;
+the final two receipts were collected from stable inputs. Repair count **0/2**.
+
 ## Parent checkpoint — contract escalation, 2026-10-11
 
 P07 is **incomplete and blocked on the scoped coordinator contract decision**.

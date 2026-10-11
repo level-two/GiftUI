@@ -148,9 +148,10 @@ private func expectedFailureCleanups(
     at stage: RuntimeCompletePipelineStage
 ) -> [RuntimeCleanupAction] {
     switch stage {
-    case .admissionAndSeal, .applyAdmittedWork, .freezeObservableMutation,
-        .observableCandidateAndSemanticExpansion:
+    case .admissionAndSeal, .applyAdmittedWork, .freezeObservableMutation:
         []
+    case .observableCandidateAndSemanticExpansion:
+        [.resetAttemptStorage]
     case .layout:
         [.discardSemanticCandidate, .discardObservableCandidate, .resetAttemptStorage]
     case .canvasInvocationAndPlan:

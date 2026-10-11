@@ -76,10 +76,10 @@ module('GiftUIDrawing', [ROOT / 'Sources/GiftUIDrawing' / name for name in ('Dra
 module('GiftUIRuntimeCore', [ROOT / 'Sources/GiftUIRuntimeCore' / name for name in (
     'RuntimeProfileValues.swift', 'RuntimeProfileValidation.swift', 'RuntimeStorageRegistry.swift',
     'RuntimeOwnerFailure.swift', 'RuntimeCoordinatorCleanup.swift', 'RuntimeCompletePipeline.swift', 'RuntimeCoordinatorContracts.swift', 'RuntimeProfileStorage.swift')])
-module('GiftUIRuntimeStatic', [ROOT / 'Sources/GiftUIRuntimeStatic/StaticRuntimeExecutionCoordinator.swift'])
+module('GiftUIRuntimeStatic', [ROOT / 'Sources/GiftUIRuntimeStatic' / name for name in ('StaticRuntimeExecutionCoordinator.swift', 'StaticObservableModelStorage.swift')])
 if profile != 'nrf52840-embedded':
-    module('GiftUIRuntimeDynamic', [ROOT / 'Sources/GiftUIRuntimeDynamic/DynamicRuntimeExecutionCoordinator.swift'])
-module('RuntimeCycleProbe', [ROOT / 'Tests/ContractFixtures/SPEC013/RuntimeDerived/RuntimeValuesProbe.swift', ROOT / 'Tests/ContractFixtures/SPEC013/RuntimeDerived/ScopedOwnerProbe.swift', ROOT / 'Tests/ContractFixtures/SPEC013/RuntimeDerived/ScopedCoordinatorProbe.swift'])
+    module('GiftUIRuntimeDynamic', [ROOT / 'Sources/GiftUIRuntimeDynamic' / name for name in ('DynamicRuntimeExecutionCoordinator.swift', 'DynamicObservableModelStorage.swift')])
+module('RuntimeCycleProbe', [ROOT / 'Tests/ContractFixtures/SPEC013/RuntimeDerived/RuntimeValuesProbe.swift', ROOT / 'Tests/ContractFixtures/SPEC013/RuntimeDerived/ScopedOwnerProbe.swift', ROOT / 'Tests/ContractFixtures/SPEC013/RuntimeDerived/ScopedCoordinatorProbe.swift', ROOT / 'Tests/ContractFixtures/SPEC013/RuntimeDerived/FrameLeaseProbe.swift', ROOT / 'Tests/ContractFixtures/SPEC013/RuntimeDerived/ScopedSemanticProbe.swift'])
 for name, source, diagnostic in (
     ('escape-owner', 'struct Escape<M: ~Copyable, S>: ~Copyable { let owner: ScopedOwner<M, S> }', 'non-Escapable'),
     ('copy-owner', 'func copyOwner<M: ~Copyable, S>(_ owner: borrowing ScopedOwner<M, S>) { let other = copy owner; _ = other }', 'noncopyable'),
@@ -98,9 +98,18 @@ for name, source, diagnostic in (
     run(name, [compiler, *flags, '-module-name', 'ScopedCoordinatorNegative', '-emit-object',
                ROOT / 'Tests/ContractFixtures/SPEC013/RuntimeDerived/ScopedCoordinatorProbe.swift', negative,
                '-o', out / (name + '.o')], failure=diagnostic)
+for name, source, diagnostic in (
+    ('escape-semantic', 'struct Escape<P>: ~Copyable { let owner: ScopedSemanticOwner<P> }', 'non-Escapable'),
+    ('copy-semantic', 'func copySemantic<P>(_ owner: borrowing ScopedSemanticOwner<P>) { let other = copy owner; _ = other }', 'noncopyable'),
+):
+    negative = out / (name + '.swift')
+    negative.write_text(source + '\n')
+    run(name, [compiler, *flags, '-module-name', 'ScopedSemanticNegative', '-emit-object',
+               ROOT / 'Tests/ContractFixtures/SPEC013/RuntimeDerived/ScopedSemanticProbe.swift', negative,
+               '-o', out / (name + '.o')], failure=diagnostic)
 if profile.startswith('macos'):
     main = out / 'Main.swift'
-    main.write_text('import RuntimeCycleProbe\n@main struct Main { static func main() { print("P07 values assertions=\\(giftuiP07Values()) failures=0") } }\n')
+    main.write_text('import RuntimeCycleProbe\n@main struct Main { static func main() { print("P07 values assertions=\\(giftuiP07Values() + Int(giftuiP07FrameLease())) failures=0") } }\n')
     run('link', [compiler, *flags, main, base / 'GiftUI.o', *sorted(out.glob('*.o')), '-o', out / 'runtime-cycle'])
     execution = run('execute', [out / 'runtime-cycle']).strip()
 else:
@@ -110,7 +119,7 @@ else:
     arch = 'v6' if profile == 'raspberry-pi-armv6' else 'v7E-M'
     assert re.search(r'Tag_CPU_arch: ' + arch + r'\s*$', abi, re.MULTILINE)
     execution = 'cross-compiled only; no target execution'
-report = {'package': 'P07', 'step': 'scoped-coordinator-forwarding', 'profile': profile,
+report = {'package': 'P07', 'step': 'frame-acquisition-cleanup', 'profile': profile,
           'source_commit': subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=ROOT, text=True).strip(),
           'source_dirty': bool(subprocess.check_output(['git', 'status', '--porcelain'], cwd=ROOT, text=True)),
           'inputs': {str(p.relative_to(ROOT)): digest(p) for p in sorted(set(inputs))},
