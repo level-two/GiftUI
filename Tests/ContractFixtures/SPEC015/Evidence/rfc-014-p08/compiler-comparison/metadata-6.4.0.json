@@ -1,0 +1,18 @@
+{
+  "version": "6.4.0",
+  "official_url": "https://download.swift.org/swift-6.4.0-release/xcode/swift-6.4.0-RELEASE/swift-6.4.0-RELEASE-osx.pkg",
+  "package": ".toolchains/p08-comparison/downloads/swift-6.4.0-RELEASE-osx.pkg",
+  "package_bytes": 1590830585,
+  "package_sha256": "8fd03185b98fe27f54a54631c2449decf75d5b466ce8e34abbd414141063c6aa",
+  "signature_record": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/compiler-comparison/signature-6.4.0.txt",
+  "signature_record_sha256": "13b9b823194391c3261c32d7111455574762bc550feecf92f8ccb398ee897681",
+  "signature_exit": 0,
+  "signature_status": "signed by Swift Open Source; trusted Apple notarization",
+  "expanded_directory": ".toolchains/p08-comparison/expanded/swift-6.4.0-RELEASE-osx",
+  "compiler": ".toolchains/p08-comparison/expanded/swift-6.4.0-RELEASE-osx/swift-6.4.0-RELEASE-osx-package.pkg/Payload/usr/bin/swiftc",
+  "compiler_resolved": ".toolchains/p08-comparison/expanded/swift-6.4.0-RELEASE-osx/swift-6.4.0-RELEASE-osx-package.pkg/Payload/usr/bin/swift-driver",
+  "compiler_sha256": "79ae5c26645489fb783ae980f0f1bdae810f90fb180c9ac39808807b65e9fd69",
+  "version_exit": 0,
+  "version_stdout": "Apple Swift version 6.4 (swift-6.4-RELEASE)\nTarget: arm64-apple-macosx26.0\n",
+  "version_stderr": ""
+}

@@ -1,0 +1,56 @@
+{
+  "scope": "Project-local official compiler setup and metadata only; no compiler tests or adoption",
+  "date": "2026-10-12",
+  "scope_commit": "ad4c152a",
+  "baseline_preserved": ".toolchains/host/swift-6.3.2-RELEASE-osx",
+  "initial_signature_attempt": {
+    "command": "/usr/sbin/pkgutil --check-signature .toolchains/p08-comparison/downloads/swift-6.3.3-RELEASE-osx.pkg",
+    "sandbox_exit": 1,
+    "sandbox_output": "Package \"swift-6.3.3-RELEASE-osx.pkg\":\n   Status: invalid signature\n",
+    "escalation_outcome": "Initial pending escalation interrupted by parent; not human rejection. Top-level user-approved verification subsequently succeeded for both packages. No trust bypass."
+  },
+  "packages": [
+    {
+      "version": "6.3.3",
+      "official_url": "https://download.swift.org/swift-6.3.3-release/xcode/swift-6.3.3-RELEASE/swift-6.3.3-RELEASE-osx.pkg",
+      "package": ".toolchains/p08-comparison/downloads/swift-6.3.3-RELEASE-osx.pkg",
+      "package_bytes": 1503529808,
+      "package_sha256": "ee82e57774d6650f94aa06302435d6f44a055b9411698db8ecb85d9a3bcc91d0",
+      "signature_record": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/compiler-comparison/signature-6.3.3.txt",
+      "signature_record_sha256": "f5377aee59605dbe9c1e860717493f263ae4d3cf5d95fcc71333671fbafd4b83",
+      "signature_exit": 0,
+      "signature_status": "signed by Swift Open Source; trusted Apple notarization",
+      "expanded_directory": ".toolchains/p08-comparison/expanded/swift-6.3.3-RELEASE-osx",
+      "compiler": ".toolchains/p08-comparison/expanded/swift-6.3.3-RELEASE-osx/swift-6.3.3-RELEASE-osx-package.pkg/Payload/usr/bin/swiftc",
+      "compiler_resolved": ".toolchains/p08-comparison/expanded/swift-6.3.3-RELEASE-osx/swift-6.3.3-RELEASE-osx-package.pkg/Payload/usr/bin/swift-driver",
+      "compiler_sha256": "3d13e20b1504d7d30038fcd2201b9d0a8ead5c09eea752a5da223453b3ae0c6f",
+      "version_exit": 0,
+      "version_stdout": "Apple Swift version 6.3.3 (swift-6.3.3-RELEASE)\nTarget: arm64-apple-macosx26.0\n",
+      "version_stderr": ""
+    },
+    {
+      "version": "6.4.0",
+      "official_url": "https://download.swift.org/swift-6.4.0-release/xcode/swift-6.4.0-RELEASE/swift-6.4.0-RELEASE-osx.pkg",
+      "package": ".toolchains/p08-comparison/downloads/swift-6.4.0-RELEASE-osx.pkg",
+      "package_bytes": 1590830585,
+      "package_sha256": "8fd03185b98fe27f54a54631c2449decf75d5b466ce8e34abbd414141063c6aa",
+      "signature_record": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/compiler-comparison/signature-6.4.0.txt",
+      "signature_record_sha256": "13b9b823194391c3261c32d7111455574762bc550feecf92f8ccb398ee897681",
+      "signature_exit": 0,
+      "signature_status": "signed by Swift Open Source; trusted Apple notarization",
+      "expanded_directory": ".toolchains/p08-comparison/expanded/swift-6.4.0-RELEASE-osx",
+      "compiler": ".toolchains/p08-comparison/expanded/swift-6.4.0-RELEASE-osx/swift-6.4.0-RELEASE-osx-package.pkg/Payload/usr/bin/swiftc",
+      "compiler_resolved": ".toolchains/p08-comparison/expanded/swift-6.4.0-RELEASE-osx/swift-6.4.0-RELEASE-osx-package.pkg/Payload/usr/bin/swift-driver",
+      "compiler_sha256": "79ae5c26645489fb783ae980f0f1bdae810f90fb180c9ac39808807b65e9fd69",
+      "version_exit": 0,
+      "version_stdout": "Apple Swift version 6.4 (swift-6.4-RELEASE)\nTarget: arm64-apple-macosx26.0\n",
+      "version_stderr": ""
+    }
+  ],
+  "compiler_tests": 0,
+  "installer_run": false,
+  "global_selection_changed": false,
+  "sdk_setup": false,
+  "maintained_scripts_changed": false,
+  "metadata_capture_note": "First version metadata queries succeeded but receipt capture used unavailable hashlib.file_digest; final captures use streamed SHA256. Version queries are metadata only."
+}

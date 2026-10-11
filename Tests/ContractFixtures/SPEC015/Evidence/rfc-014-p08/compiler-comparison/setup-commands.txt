@@ -1,0 +1,9 @@
+mkdir -p .toolchains/p08-comparison/downloads .toolchains/p08-comparison/expanded
+curl --fail --location --retry 2 --output .toolchains/p08-comparison/downloads/swift-6.3.3-RELEASE-osx.pkg https://download.swift.org/swift-6.3.3-release/xcode/swift-6.3.3-RELEASE/swift-6.3.3-RELEASE-osx.pkg
+/usr/sbin/pkgutil --check-signature .toolchains/p08-comparison/downloads/swift-6.3.3-RELEASE-osx.pkg
+/usr/sbin/pkgutil --expand-full .toolchains/p08-comparison/downloads/swift-6.3.3-RELEASE-osx.pkg .toolchains/p08-comparison/expanded/swift-6.3.3-RELEASE-osx
+/Users/eugene/work/GiftUI/.toolchains/p08-comparison/expanded/swift-6.3.3-RELEASE-osx/swift-6.3.3-RELEASE-osx-package.pkg/Payload/usr/bin/swiftc --version
+curl --fail --location --retry 2 --output .toolchains/p08-comparison/downloads/swift-6.4.0-RELEASE-osx.pkg https://download.swift.org/swift-6.4.0-release/xcode/swift-6.4.0-RELEASE/swift-6.4.0-RELEASE-osx.pkg
+/usr/sbin/pkgutil --check-signature .toolchains/p08-comparison/downloads/swift-6.4.0-RELEASE-osx.pkg
+/usr/sbin/pkgutil --expand-full .toolchains/p08-comparison/downloads/swift-6.4.0-RELEASE-osx.pkg .toolchains/p08-comparison/expanded/swift-6.4.0-RELEASE-osx
+/Users/eugene/work/GiftUI/.toolchains/p08-comparison/expanded/swift-6.4.0-RELEASE-osx/swift-6.4.0-RELEASE-osx-package.pkg/Payload/usr/bin/swiftc --version
