@@ -71,6 +71,10 @@ module('GiftUISemanticCore', [ROOT / 'Sources/GiftUISemanticCore' / name for nam
 module('GiftUITextResources', sorted((ROOT / 'Sources/GiftUITextResources').glob('*.swift')))
 module('GiftUILayout', sorted((ROOT / 'Sources/GiftUILayout').glob('*.swift')))
 module('GiftUIRenderCore', sorted((ROOT / 'Sources/GiftUIRenderCore').glob('*.swift')))
+module('GiftUICapabilities', sorted((ROOT / 'Sources/GiftUICapabilities').glob('*.swift')))
+module('GiftUISurfaceCore', sorted((ROOT / 'Sources/GiftUISurfaceCore').glob('*.swift')))
+module('GiftUIRasterCore', [ROOT / 'Sources/GiftUIRasterCore' / name for name in (
+    'RasterStrokeCoverage.swift', 'RasterFillCoverage.swift')])
 module('GiftUIExecution', [ROOT / 'Sources/GiftUIExecution' / name for name in (
     'ObservableTargetGeneration.swift', 'ExecutionValues.swift', 'FrameHandoffValues.swift')])
 module('GiftUIObservableState', [ROOT / 'Sources/GiftUIObservableState' / name for name in (
@@ -86,6 +90,9 @@ module('GiftUIFailureCore', [ROOT / 'Sources/GiftUIFailureCore/GiftUIFailureCore
 module('GiftUIDrawingFailureAdapterFixture', [
     ROOT / 'Sources/GiftUIDrawingFailureAdapterFixture/GiftUIDrawingFailureAdapterFixture.swift'])
 module('GiftUIRuntimeCore', [ROOT / 'Sources/GiftUIRuntimeCore/ObservableCanvasInvocationSource.swift'])
+module('P06DrawingWorkspace', [ROOT / 'Sources/SignalAnalyzerTargetHost' / name for name in (
+    'StaticSignalAnalyzerNRFDrawingPlanRecords.swift', 'StaticSignalAnalyzerNRFDrawingPlanStorage.swift',
+    'StaticSignalAnalyzerNRFLivePathStorage.swift', 'StaticSignalAnalyzerNRFDrawingWorkspace.swift')])
 module('GiftUIRuntimeStatic', [ROOT / 'Sources/GiftUIRuntimeStatic' / name for name in (
     'StaticObservableModelStorage.swift', 'StaticCanvasValueStorage.swift', 'StaticSemanticRecordStorage.swift')])
 if profile != 'nrf52840-embedded':
@@ -111,12 +118,19 @@ for application in ('Counter', 'Analyzer'):
     module(application + 'Canvas', [out / (application + 'Canvas.swift')])
     module(application + 'CanvasTable', [out / (application + 'CanvasTable.swift')])
 
+oracle = ROOT / 'scripts/contracts/check-spec-012-raster-vectors.rb'
+vectors = ROOT / 'Tests/ContractFixtures/SPEC012/raster-vectors.yaml'
+generator = ROOT / 'scripts/contracts/generate-spec-012-raster-probe.py'
+inputs.extend([oracle, vectors, generator])
+run('independent-raster-oracle', [oracle])
+run('generate-raster-probe', ['python3', generator, vectors, out / 'RasterProbe.swift'])
 module('CanvasStoreProbe', [FIXTURE / 'CanvasStoreProbe.swift', FIXTURE / 'CanvasSemanticProbe.swift',
                             FIXTURE / 'CanvasErrorProbe.swift', FIXTURE / 'CanvasTableProbe.swift',
+                            FIXTURE / 'CanvasGeometryProbe.swift', out / 'RasterProbe.swift',
                             ROOT / 'Tests/ContractFixtures/SPEC007/RuntimeDerived/LayoutSupport.swift'])
 if profile.startswith('macos'):
     main = out / 'Main.swift'
-    main.write_text('import CanvasStoreProbe\n@main struct Main { static func main() { print("P06 stores assertions=\\(giftuiP06Stores(dynamic: false) + giftuiP06Stores(dynamic: true)) errorMappings=\\(giftuiP06ErrorMappings()) finiteTables=\\(giftuiP06FiniteTables()) failures=0") } }\n')
+    main.write_text('import CanvasStoreProbe\n@main struct Main { static func main() { print("P06 stores assertions=\\(giftuiP06Stores(dynamic: false) + giftuiP06Stores(dynamic: true)) errorMappings=\\(giftuiP06ErrorMappings()) finiteTables=\\(giftuiP06FiniteTables()) geometry=\\(giftuiP06Geometry()) raster=\\(giftuiP06Raster()) failures=0") } }\n')
     run('native-link', [compiler, *flags, main, base / 'GiftUI.o', base / 'SignalAnalyzerDomain.o',
                         *sorted(out.glob('*.o')), '-o', out / 'canvas-stores'])
     run('native-execute', [out / 'canvas-stores'])

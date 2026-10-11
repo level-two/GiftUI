@@ -282,6 +282,7 @@ private func staticNRFStrokePath(
 
 private func staticNRFDrawingStatus(for error: DrawingError) -> UInt8 {
     return switch error {
+    case .invalidModelAccess: _GiftUIDrawingStatus.invalidModelAccess.rawValue
     case .invalidValue: _GiftUIDrawingStatus.invalidValue.rawValue
     case .invalidPathState: _GiftUIDrawingStatus.invalidPathState.rawValue
     case .arithmeticOverflow: _GiftUIDrawingStatus.arithmeticOverflow.rawValue

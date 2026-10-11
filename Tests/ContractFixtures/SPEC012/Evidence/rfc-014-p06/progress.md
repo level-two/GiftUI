@@ -1,5 +1,35 @@
 # RFC-014 P06 progress
 
+## Step 7 — retained production geometry and independent pixel controls
+
+The owner route now compiles the unchanged path/plan storage and workspace
+algorithms from SignalAnalyzerTargetHost as a selected module. The only
+production repair was adding the approved invalidModelAccess/raw9 case to its
+closed status switch, which the new compile exposed (`tmp85vca3za`).
+`CanvasGeometryProbe.swift` exercises scoped two-inout paths, invalid path/style,
+immutable snapshots, subpaths, surface translation, empty strokes and
+discard/reset access. It fills the retained analyzer workspace's exact five
+Canvas/five stroke admission, without changing that profile or any limit.
+
+`generate-spec-012-raster-probe.py` translates all17 immutable YAML vectors to
+inline fixture data; expected masks and encoded bytes are copied literally from
+the normative palette. Production RasterStrokeCoverage and CanonicalEncodedPixel
+execute both encodings against full-surface and one-row tiled damage regions.
+The unchanged independent Q160 Ruby oracle also passes. The negative-origin
+surface is translated to the required zero-origin descriptor coordinate system;
+points and clips move together, and expected pixels are unchanged. Clip tuples
+are half-open edges, while surface tuples are origin/size. A UInt64 untouched
+sentinel cannot alias any four-byte white pixel.
+
+After formatting, the exact native owner command passed at
+`.build/contracts/spec-012-protocol-canvas/tmpypvd_x2n/macos-static/result.json`.
+Preserved harness failures: `tmpgqt8wxtf` initially rejected the negative surface
+origin; `tmpm2j0q6yv` exposed the fixture's incomplete five/five profile before
+seal; `tmp0qj256vc` isolated the clip tuple parsing error at the negative-origin
+vector. Debug-only probe builds diagnosed those failures. Corrections followed
+the retained profile and oracle input definitions; no expected mask/byte or
+production raster/geometry algorithm changed. Counter remains0/2.
+
 ## Step 6 — both transfer profiles and staged adversarial checks
 
 Both Dynamic and Static now execute the same semantic transfer/fence/failure/
