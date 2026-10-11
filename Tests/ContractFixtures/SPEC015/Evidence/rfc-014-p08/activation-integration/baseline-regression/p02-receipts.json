@@ -1,0 +1,102 @@
+[
+  {
+    "checks": 28,
+    "command": [
+      "scripts/contracts/run-spec-006.sh",
+      "--profile",
+      "macos-dynamic",
+      "--compiler-baseline",
+      "rfc-014"
+    ],
+    "compiler": ".toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc",
+    "compiler_sha256": "79ae5c26645489fb783ae980f0f1bdae810f90fb180c9ac39808807b65e9fd69",
+    "execution": "checks=120 failures=0",
+    "exit": 0,
+    "freshness": "all recorded P02 inputs, compiler and macro match current bytes",
+    "input_count": 58,
+    "input_sha256": "af66aaf967e3fe8f7ada23866a6db1fce8c0f50d47873376e3227209b0fb390f",
+    "macro_tool": ".build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool",
+    "macro_tool_sha256": "6bb5eae9d0b726905f893b0f1fa4c0739fee61830f33404aa5cdb8321212c691",
+    "p02_result": ".build/contracts/spec-006-rfc-014-swift64/af66aaf967e3fe8f-__4p5wu2/macos-dynamic/result.json",
+    "p02_sha256": "05f06a2eb45db2a196b7a76bdfbd5ee1429a802640dd00aa1ce251020b699402",
+    "p04_result": ".build/contracts/spec-006-records/tmpqeymxjik/macos-dynamic/result.json",
+    "p04_sha256": "71323b068b32c54bca1f0c433cd9191d940891afff1407364ec7761f0042565d",
+    "profile": "macos-dynamic",
+    "source_commit": "e419601cf77bf9745f9043ac529234120d983623"
+  },
+  {
+    "checks": 28,
+    "command": [
+      "scripts/contracts/run-spec-006.sh",
+      "--profile",
+      "macos-static",
+      "--compiler-baseline",
+      "rfc-014"
+    ],
+    "compiler": ".toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc",
+    "compiler_sha256": "79ae5c26645489fb783ae980f0f1bdae810f90fb180c9ac39808807b65e9fd69",
+    "execution": "checks=120 failures=0",
+    "exit": 0,
+    "freshness": "all recorded P02 inputs, compiler and macro match current bytes",
+    "input_count": 58,
+    "input_sha256": "b694e911d7d7658ac08b0c384134ac36a062eef90dad0e96e884ab7c8959f567",
+    "macro_tool": ".build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool",
+    "macro_tool_sha256": "6bb5eae9d0b726905f893b0f1fa4c0739fee61830f33404aa5cdb8321212c691",
+    "p02_result": ".build/contracts/spec-006-rfc-014-swift64/b694e911d7d7658a-gn53u2vi/macos-static/result.json",
+    "p02_sha256": "4345209f3f2d58e86ea2fdf3b45d15ee5d1da00cce275b964e156ba353c88793",
+    "p04_result": ".build/contracts/spec-006-records/tmpc8ag9y1b/macos-static/result.json",
+    "p04_sha256": "d3ab0b9e228df671915c76f065a1a0aafa0f73fb2b65487e80bd2c43f81873d5",
+    "profile": "macos-static",
+    "source_commit": "6bb67cb4e600c0c326007affd05267c9323dd2bb"
+  },
+  {
+    "checks": 27,
+    "command": [
+      "scripts/contracts/run-spec-006.sh",
+      "--profile",
+      "raspberry-pi-armv6",
+      "--compiler-baseline",
+      "rfc-014"
+    ],
+    "compiler": ".toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc",
+    "compiler_sha256": "79ae5c26645489fb783ae980f0f1bdae810f90fb180c9ac39808807b65e9fd69",
+    "execution": "cross-compiled; no target execution",
+    "exit": 0,
+    "freshness": "all recorded P02 inputs, compiler and macro match current bytes",
+    "input_count": 58,
+    "input_sha256": "39961046dd4e63d8ce1b54fb42f7eb5f536db0022e94a992102eef71f2f9a1ed",
+    "macro_tool": ".build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool",
+    "macro_tool_sha256": "6bb5eae9d0b726905f893b0f1fa4c0739fee61830f33404aa5cdb8321212c691",
+    "p02_result": ".build/raspberry-pi/contracts/spec-006-rfc-014-swift64/39961046dd4e63d8-aj3k5c43/raspberry-pi-armv6/result.json",
+    "p02_sha256": "d9b79b9d6c1ba39f7e58265b9859a1e317973089debddd882be9678ec5e332a6",
+    "p04_result": ".build/raspberry-pi/contracts/spec-006-records/tmpow1jqi5i/raspberry-pi-armv6/result.json",
+    "p04_sha256": "eb551e35379f77b61a329284c719da55d70349d74bbbb66a72d61c42a0e52f35",
+    "profile": "raspberry-pi-armv6",
+    "source_commit": "32fd807a0c3bf0951333895b5d37abcccdce8419"
+  },
+  {
+    "checks": 27,
+    "command": [
+      "scripts/contracts/run-spec-006.sh",
+      "--profile",
+      "nrf52840-embedded",
+      "--compiler-baseline",
+      "rfc-014"
+    ],
+    "compiler": ".toolchains/nrf52840/swift/swift-6.4.0-RELEASE-osx/usr/bin/swiftc",
+    "compiler_sha256": "79ae5c26645489fb783ae980f0f1bdae810f90fb180c9ac39808807b65e9fd69",
+    "execution": "cross-compiled; no target execution",
+    "exit": 0,
+    "freshness": "all recorded P02 inputs, compiler and macro match current bytes",
+    "input_count": 58,
+    "input_sha256": "39961046dd4e63d8ce1b54fb42f7eb5f536db0022e94a992102eef71f2f9a1ed",
+    "macro_tool": ".build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool",
+    "macro_tool_sha256": "6bb5eae9d0b726905f893b0f1fa4c0739fee61830f33404aa5cdb8321212c691",
+    "p02_result": ".build/nrf52840/contracts/spec-006-rfc-014-swift64/39961046dd4e63d8-lv470rbm/nrf52840-embedded/result.json",
+    "p02_sha256": "43637fce83895306edc6f831951665e1ba8d14bc568b6db51f97d2125bcd9b2b",
+    "p04_result": ".build/nrf52840/contracts/spec-006-records/tmp720zdy8o/nrf52840-embedded/result.json",
+    "p04_sha256": "033f6351e95cc8c52afa9b03710d6f38e6026d586b2d4bcac659aa566e7f1b76",
+    "profile": "nrf52840-embedded",
+    "source_commit": "32fd807a0c3bf0951333895b5d37abcccdce8419"
+  }
+]

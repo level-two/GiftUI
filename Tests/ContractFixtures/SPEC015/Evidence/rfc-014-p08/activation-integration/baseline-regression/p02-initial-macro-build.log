@@ -1,0 +1,28 @@
+Building for debugging...
+[Planning deferred tasks]
+[25 / 38] GiftUIMacros
+[35 / 92]
+[44 / 92]
+[48 / 92]
+[55 / 92]
+[59 / 92]
+[65 / 92]
+[67 / 92]
+[69 / 92]
+[72 / 92]
+[73 / 92]
+[74 / 92]
+[79 / 92] GiftUIMacros
+[80 / 92] GiftUIMacros
+[82 / 92] GiftUIMacros
+[98 / 106] GiftUI
+Build complete! (9,96 с)
+swiftpm-command: /Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swift build --package-path /Users/eugene/work/GiftUI --scratch-path /Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool --configuration debug --target GiftUI --disable-sandbox
+Fetching https://github.com/swiftlang/swift-syntax.git from cache
+Fetched https://github.com/swiftlang/swift-syntax.git from cache (1.40s)
+Computing version for https://github.com/swiftlang/swift-syntax.git
+Computed https://github.com/swiftlang/swift-syntax.git at 603.0.2 (8.52s)
+Creating working copy for https://github.com/swiftlang/swift-syntax.git
+Working copy of https://github.com/swiftlang/swift-syntax.git resolved at 603.0.2
+Downloading package prebuilt https://download.swift.org/prebuilts/swift-syntax/603.0.2/swift-6.4.0-RELEASE-macos_universal-MacroSupport.zip
+Downloaded https://download.swift.org/prebuilts/swift-syntax/603.0.2/swift-6.4.0-RELEASE-macos_universal-MacroSupport.zip (0.81s)

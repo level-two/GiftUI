@@ -1,0 +1,19 @@
+{
+  "command": [
+    "python3",
+    "scripts/contracts/check-spec-002-compiler-baseline.py"
+  ],
+  "exit": 0,
+  "execution": "P01 compiler baseline:17controls passed across four configurations.",
+  "source_commit": "67ac677f",
+  "results": ".build/rfc-014-swift64/p01/compiler-controls/results.json",
+  "results_sha256": "c6ad4ac378649e0aeb542c499103859dc8a82fc44b7d460fccb392f0b7e4708f",
+  "inputs": {
+    "scripts/contracts/check-spec-002-compiler-baseline.py": "d46da57a26e0f89f54294a931619a42b99544636986b1beb4fecdf80712b028a",
+    "scripts/contracts/compiler-baseline.sh": "d1b1b075a337aa220a4694b4d22fd6da3f08a321f0ce06707f7496c7d62904c2",
+    "Tests/ContractFixtures/SPEC002/CompilerBaseline/RequiredFeatures.swift": "db13c5049c92b7f94d440381640064b2e243f42dbf04542de2a38ada9716d2b5",
+    "scripts/raspberry-pi/toolchain.env": "839e5d565637012434f60ae107ff7dc10c809cff52ab28a3e39fcd0d6e72a007",
+    "scripts/nrf52840/toolchain.env": "0fc9f2a6c4ee824c45bee2e6d1f88d12914950f0fe37a354ef4912a87dfd2e2e"
+  },
+  "checks": 17
+}

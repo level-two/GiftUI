@@ -11,4 +11,8 @@ under `.build/contracts/spec-006-rfc-014-swift64/acd84ab87aa5533f-8rzbzfko/macos
 Select `--build-system native` explicitly for the host macro build, preserving the
 existing driver's artifact/SwiftSyntax description contract. This is a build
 backend selection correction, not a source, schema or lifetime change. One of
-two narrowed repairs used; outcome pending. P01's 17 controls already pass.
+two narrowed repairs used; productive: all four registered P02 routes now pass,
+including their existing P04 component checks. P01's 17 controls pass. No second
+P02 repair was needed. `p02-receipts.json` records the successful output paths,
+input freshness and compiler/macro identities; `p02-initial-macro-build.log`
+freezes the initial successful macro build preceding the metadata-layout failure.
