@@ -668,3 +668,41 @@ coordinator. Resumed shared guard: **0/2** after the passing check. Historical
 production2/2 remains unchanged. This is a root-authorized sequential context
 handoff, not a package completion or construction acceptance. Continue from
 [consuming-owner-construction-handoff.md](consuming-owner-construction-handoff.md).
+
+
+## Consuming-owner resumption — step 4 (2026-10-11)
+
+Actual finite Dynamic/Static RuntimeProfileStorage factories now own the typed
+root/model adapter, semantic arrays, Canvas staging, geometry/Interaction and
+admission backing that the complete-cycle fixture uses. The factories validate
+before client stages, retain their successful audit in CycleExecutionBinding,
+and instantiate the existing common operational coordinator conformance.
+Dynamic owned workspaces return to factory fields after consuming quiescence;
+Static returned descriptors are reset and destroyed inside all four raw-array
+callbacks. No scoped borrow escapes. The root binding rejects a foreign actual
+model owner, even with compatible concrete types, before client work.
+
+Added actual factory below/equal/above checks for eight capacity axes, wrong
+profile rejection without activation, preuse resetAttempt preservation of queued
+facts and resetAll removal, and re-audit equality after both profiles quiesce.
+A real incomplete attempt after a committed frame verifies reset preserves the
+same published semantic reference, live root association, committed Interaction
+routing and late pending fact while clearing staged Canvas/candidate work.
+
+Fresh gate after formatting: **685 assertions, zero failures and twelve expected
+compiler negatives**, [receipt](resumption-step-4-macos-static.json). The first
+compile lacked the explicit Semantic Core import; fixing it narrowed the error
+to InlineArray's non-Sequence iteration. Indexed iteration passed the diagnostic
+module check. Further diagnostic module/link/execution passes added provenance,
+reset and capacity controls before the fresh full gate. Shared guard stays **0/2**.
+
+This is validated construction integration, **not the construction milestone or
+P07 acceptance**. The current byte-field aggregation is provisional pending the
+next exclusive partition/report step: per-region count/stride/alignment for every
+family, explicit aggregate metadata/padding, matching scratch partitioned out of
+path/control, retained class/reference/factory residuals, and remaining capacity /
+constructor mismatch controls. Dynamic uses its actual coordinator specialization;
+semantic banks split at configured whole-element boundaries, with retained tail
+assigned to the second bank, never by dividing a typed element. Operational
+CycleRuntimeControl is separate from excluded fault/transcript instrumentation.
+No full allocator/image/stack/host total or other platform evidence is claimed.

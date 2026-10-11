@@ -12,9 +12,32 @@ import GiftUISemanticCore
 import CycleSchema
 import CyclePresentation
 
-struct CycleControl {
-    var show = true
+struct CycleRuntimeControl {
     var admission = CycleAdmissionBacking()
+    var result: RuntimeCompletePipelineResult<RuntimeOwnerFailure>?
+    var context = ExecutionContext(cycle: nil, semanticRevision: nil, candidateFrame: nil, phase: .idle)
+    var unavailable = false
+}
+struct CycleControl {
+    var runtime = CycleRuntimeControl()
+    var admission: CycleAdmissionBacking {
+        get { runtime.admission }
+        set { runtime.admission = newValue }
+        _modify { yield &runtime.admission }
+    }
+    var result: RuntimeCompletePipelineResult<RuntimeOwnerFailure>? {
+        get { runtime.result }
+        set { runtime.result = newValue }
+    }
+    var context: ExecutionContext {
+        get { runtime.context }
+        set { runtime.context = newValue }
+    }
+    var unavailable: Bool {
+        get { runtime.unavailable }
+        set { runtime.unavailable = newValue }
+    }
+    var show = true
     var mutate: Bool {
         get { admission.pendingState != nil }
         set { admission.pendingState = newValue ? 1 : nil }
@@ -30,9 +53,6 @@ struct CycleControl {
     var applied = 0
     var streams = 0
     var commits = 0
-    var result: RuntimeCompletePipelineResult<RuntimeOwnerFailure>?
-    var context = ExecutionContext(cycle: nil, semanticRevision: nil, candidateFrame: nil, phase: .idle)
-    var unavailable = false
     var committedRecords: UInt16 = 0
     var hasRoot = false
     var frameActive = false

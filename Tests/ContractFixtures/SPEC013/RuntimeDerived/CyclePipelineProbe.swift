@@ -12,8 +12,7 @@ import GiftUIRuntimeDynamic
 import GiftUISemanticCore
 import CycleSchema
 
-func exercisePipeline<G, C, R, H>(models: borrowing ObservableModelScope<CycleOwnedModel, CycleModelSchema>, root: borrowing ObservableStateRootScope<CycleOwnedModel, SemanticCompleteIdentity>, semantic: borrowing SemanticRecordStore<CyclePayload>, values: borrowing CanvasStagedValues<SemanticRecordReference, CycleValueTable>, dynamic: Bool, geometry: consuming G, interaction: consuming InteractionOwnedKeyState<C, R, H>) -> CycleReturnedWorkspaces<G, C, R, H> where G: CycleGeometry, C: CycleCandidateBacking, R: CycleCommittedBacking, H: CycleHitBacking, C.Identity == SemanticCompleteIdentity, R.Identity == SemanticCompleteIdentity, H.Identity == SemanticCompleteIdentity {
-    var control = CycleControl()
+func exercisePipeline<G, C, R, H>(models: borrowing ObservableModelScope<CycleOwnedModel, CycleModelSchema>, root: borrowing ObservableStateRootScope<CycleOwnedModel, SemanticCompleteIdentity>, semantic: borrowing SemanticRecordStore<CyclePayload>, values: borrowing CanvasStagedValues<SemanticRecordReference, CycleValueTable>, dynamic: Bool, geometry: consuming G, interaction: consuming InteractionOwnedKeyState<C, R, H>, audit: RuntimeStorageAudit, control: inout CycleControl) -> CycleReturnedWorkspaces<G, C, R, H> where G: CycleGeometry, C: CycleCandidateBacking, R: CycleCommittedBacking, H: CycleHitBacking, C.Identity == SemanticCompleteIdentity, R.Identity == SemanticCompleteIdentity, H.Identity == SemanticCompleteIdentity {
     var transferredGeometry: G? = consume geometry
     var transferredInteraction: InteractionOwnedKeyState<C, R, H>? = consume interaction
     return withUnsafeMutablePointer(to: &control) { trace in
@@ -26,6 +25,30 @@ func exercisePipeline<G, C, R, H>(models: borrowing ObservableModelScope<CycleOw
         expect(trace.pointee.stages == 2047 && trace.pointee.finalized == 1 && trace.pointee.commits == 1)
         expect(models.phase == .mutating && values.count == 0)
         expect(owner.interaction.committedRecordCount == 1)
+        // Reset a real incomplete attempt after an earlier publication. The
+        // enclosing factory still owns the same semantic/model backing; reset
+        // must release candidate work without retiring that live publication.
+        var published: SemanticRecordReference?
+        do throws(SemanticExpansionError) { try semantic.withPublishedView { published = $0.rootReference } }
+        catch { preconditionFailure("published before attempt reset") }
+        let liveIdentity = owner.rootIdentity
+        expect(owner.admitAndSeal() == .advanced)
+        expect(owner.applyAdmittedWork() == .applied(false))
+        expect(owner.freezeObservableMutation() == .advanced)
+        expect(owner.beginObservableCandidateAndExpandSemantics() == .advanced)
+        expect(owner.resolveLayout() == .advanced)
+        expect(values.count == 1 && models.phase == .reading)
+        expect(owner.interaction.beginCandidate(limits: audit.limits.interaction) == nil)
+        owner.interactionCandidate = true
+        trace.pointee.mutate = true // Arrived after seal; remains pending.
+        owner.cleanup(.resetAttemptStorage)
+        owner.finalizePipeline()
+        expect(values.count == 0 && models.phase == .mutating)
+        expect(owner.interaction.committedRecordCount == 1 && owner.rootIdentity == liveIdentity)
+        expect(trace.pointee.mutate && trace.pointee.applied == 0)
+        do throws(SemanticExpansionError) { try semantic.withPublishedView { expect($0.rootReference == published) } }
+        catch { preconditionFailure("published lost by attempt reset") }
+        trace.pointee.mutate = false
         trace.pointee.mutate = true; trace.pointee.offer = .retryableRefusal
         result = RuntimeCompletePipeline.run(owner: &owner)
         guard case .completed(let refused) = result else { preconditionFailure("refusal pipeline") }
@@ -88,52 +111,8 @@ func exercisePipeline<G, C, R, H>(models: borrowing ObservableModelScope<CycleOw
         expect(models.phase == .mutating)
         owner.quiescent = false
         trace.pointee.show = true; owner.changed = true
-        var returned = cycleConcreteCoordinator(owner: consume owner, dynamic: dynamic, control: trace)
+        var returned = cycleConcreteCoordinator(owner: consume owner, dynamic: dynamic, control: trace, audit: audit)
         returned.checks += checks
         return consume returned
     }
-}
-func cyclePipelineProbe(models: borrowing ObservableModelScope<CycleOwnedModel, CycleModelSchema>, root: borrowing ObservableStateRootScope<CycleOwnedModel, SemanticCompleteIdentity>, semantic: borrowing SemanticRecordStore<CyclePayload>, dynamic: Bool) -> Int {
-    var checks = 0
-    do throws(DrawingError) {
-        try withPipelineValues(dynamic: dynamic) { values in
-            #if !hasFeature(Embedded)
-            if dynamic {
-                typealias C = DynamicInteractionCandidateStorage<SemanticCompleteIdentity>
-                typealias R = DynamicInteractionCommittedStorage<SemanticCompleteIdentity>
-                typealias H = DynamicInteractionHitStorage<SemanticCompleteIdentity>
-                let state = InteractionState(candidateRecords: C(capacity: 6), candidateHitRegions: H(capacity: 6), candidateCommittedRecords: R(capacity: 6), committedRecords: R(capacity: 6), committedHitRegions: H(capacity: 6))
-                let keys = InteractionOwnedKeyState(state: state, maximumComponentsPerKey: 34, maximumComponents: 204)!
-                checks += exercisePipeline(models: models, root: root, semantic: semantic, values: values, dynamic: dynamic, geometry: DynamicCycleGeometry(), interaction: keys).checks
-                return
-            }
-            #endif
-            typealias C = StaticSixInteractionCandidateStorage<SemanticCompleteIdentity>
-            typealias R = StaticSixInteractionCommittedStorage<SemanticCompleteIdentity>
-            typealias H = StaticSixInteractionHitStorage<SemanticCompleteIdentity>
-            let state = InteractionState(candidateRecords: C(capacity: 6)!, candidateHitRegions: H(capacity: 6)!, candidateCommittedRecords: R(capacity: 6)!, committedRecords: R(capacity: 6)!, committedHitRegions: H(capacity: 6)!)
-            let keys = InteractionOwnedKeyState(state: state, maximumComponentsPerKey: 34, maximumComponents: 204)!
-            var scopes: InlineArray<3136, UInt8> = .init(repeating: 0)
-            var text: InlineArray<4704, UInt8> = .init(repeating: 0)
-            var path: InlineArray<3280, UInt8> = .init(repeating: 0)
-            var plan: InlineArray<13536, UInt8> = .init(repeating: 0)
-            withUnsafeMutableBytes(of: &scopes) { s in withUnsafeMutableBytes(of: &text) { t in withUnsafeMutableBytes(of: &path) { p in withUnsafeMutableBytes(of: &plan) { d in
-                checks += exercisePipeline(models: models, root: root, semantic: semantic, values: values, dynamic: dynamic, geometry: StaticCycleGeometry(scopes: s, text: t, path: p, plan: d), interaction: keys).checks
-            } } } }
-        }
-    } catch { preconditionFailure("pipeline Canvas owner") }
-    return checks
-}
-private func withPipelineValues(dynamic: Bool, _ body: (borrowing CanvasStagedValues<SemanticRecordReference, CycleValueTable>) throws(DrawingError) -> Void) throws(DrawingError) {
-    let limits = StaticCanvasLimits(maximumStaticCallableCases: 1, maximumStaticCaptureBytes: 32)!
-    #if !hasFeature(Embedded)
-    if dynamic {
-        var storage = DynamicCanvasCallableStorage<SemanticRecordReference, CycleValueTable>(capacity: 5)
-        return try storage.withLifetime(table: CycleValueTable(), limits: limits, body)
-    }
-    #endif
-    var storage = StaticCanvasValueStorage()
-    var backing: InlineArray<5, CanvasStagedEntry<SemanticRecordReference, CycleValueTable.CaptureStorage>?> = .init(repeating: nil)
-    var entries = backing.mutableSpan
-    try storage.withLifetime(entries: &entries, table: CycleValueTable(), capacity: 5, limits: limits, body)
 }

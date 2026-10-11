@@ -37,6 +37,10 @@ where
     private var trackedSource: InputSourceID?
     private var sourceSequence = InputSourceSequenceState()
 
+    static var pointerStateStorageBytes: Int {
+        MemoryLayout<InputSourceID?>.size + MemoryLayout<InputSourceSequenceState>.size
+    }
+
     init(
         limits: ExecutionLimits,
         context: ExecutionContext,

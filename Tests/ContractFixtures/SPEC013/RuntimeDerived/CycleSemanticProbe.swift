@@ -78,7 +78,6 @@ private func exercise(_ semantic: borrowing SemanticRecordStore<Payload>, models
             catch { preconditionFailure("semantic publication") }
         }
     } catch { preconditionFailure("model phase") }
-    checks += cyclePipelineProbe(models: models, root: root, semantic: semantic, dynamic: dynamic)
     return checks
 }
 private func withSemantic(models: borrowing ObservableModelScope<CycleOwnedModel, CycleModelSchema>, root: borrowing ObservableStateRootScope<CycleOwnedModel, SemanticCompleteIdentity>, dynamic: Bool) -> Int {
@@ -109,7 +108,7 @@ private func withSemantic(models: borrowing ObservableModelScope<CycleOwnedModel
     } catch { preconditionFailure("semantic owner") }
 }
 public func giftuiP07CycleSemantic() -> Int {
-    var checks = cycleAdmissionBackingProbe()
+    var checks = cycleAdmissionBackingProbe() + cycleFactoryProbe() + cycleFactoryCapacityProbe()
     do throws(ObservableStateError) {
         var namespace = ObservableModelOwnerNamespace()
         var storage = StaticObservableRootAdapter<CycleOwnedModel, SemanticCompleteIdentity>(identity: try namespace.issue(), schema: 1, needsCapture: false)!
