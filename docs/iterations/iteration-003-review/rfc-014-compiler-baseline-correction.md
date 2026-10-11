@@ -1,8 +1,9 @@
-# Proposed RFC-014 compiler-baseline correction
+# Approved RFC-014 compiler-baseline correction
 
-**Status: proposed; explicit maintainer approval pending — 2026-10-12.**
-This review packet is non-authoritative. It does not change a lifecycle status,
-the supported compiler configuration, or any implementation acceptance result.
+**Approved — 2026-10-12.** Eugene explicitly approved this exact correction and
+requested continuation. The [approval record](rfc-014-spec-approval.md#swift-64-compiler-baseline-correction--2026-10-12)
+records the decision. It authorizes coordinated pin correction and implementation;
+it does not declare any remaining validation or P08 acceptance complete.
 
 ## Problem and proposed decision
 
@@ -13,7 +14,7 @@ escape. The official Swift 6.4.0 package, reporting `Apple Swift version 6.4
 positive. The [independently reviewed comparison](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/compiler-comparison/final-review.md)
 records exact sources, commands, compiler/package identities and diagnostics.
 
-**Proposed approval:** replace the RFC-014 migration compiler baseline with this
+**Approved correction:** replace the RFC-014 migration compiler baseline with this
 verified project-local Swift 6.4 toolchain and its matching Swift 6.4.0 ARMv6 SDK,
 while preserving all accepted public semantics, lifecycle entry points,
 ownership requirements, feature flags, target triples, ABI obligations and
@@ -31,7 +32,7 @@ coordinator fixture's original Dynamic-profile settings. The separate existing
 macro-tool process was recorded rather than rebuilt. This is bounded feasibility
 evidence, not generic-host integration, full baseline migration or P08 acceptance.
 
-## Exact replacement configuration
+## Exact approved replacement configuration
 
 | Component | Proposed identity |
 | --- | --- |

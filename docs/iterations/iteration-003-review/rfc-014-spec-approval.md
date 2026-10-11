@@ -163,3 +163,28 @@ pacing, role graph, policy, hardware authorization or package scope. The origina
 blocker packet, probes and review are preserved as historical decision evidence.
 SPEC-015 remains approved until implementation begins; P08 guard remains **0/2**.
 No P08 acceptance, implemented transition or P09 authorization is implied.
+
+## Swift 6.4 compiler-baseline correction — 2026-10-12
+
+Eugene selected “Approve the correction and continue (recommended)” in response
+to the explicit request to replace Swift 6.3.2 with Swift 6.4 (the official 6.4.0
+package and matching ARMv6 SDK), apply the reviewed correction, and finish P08
+host integration and regression checks. This approves the exact
+[compiler-baseline correction](rfc-014-compiler-baseline-correction.md) at
+`593175c3`, supported by independent minimal review `80161faa` and fresh actual
+activation feasibility review `156f3fb4`.
+
+The new migration baseline supersedes only the earlier version-specific 6.3.2
+restriction, including that restriction in the scoped-host amendment above.
+Apply the coordinated compiler/SDK pins, Specification applicability notes and
+drivers, then perform fresh validation and maintained P08 integration. All
+public semantics, ownership and callback containment, target triples, ABI,
+resource ceilings, existing feature flags and hardware authorization remain
+unchanged. No new associated-type feature dependency is approved.
+
+This is an approved configuration correction under the existing architecture,
+not a declaration of conformance. Historical 6.3.2 receipts remain historical;
+they cannot establish fresh 6.4 binary or resource results. Every earlier closed
+investigation ledger remains closed. The resumed implementation uses bounded
+assignments, the existing repair guard and independent review. No P08 exit,
+implemented transition or hardware action is approved by this correction.
