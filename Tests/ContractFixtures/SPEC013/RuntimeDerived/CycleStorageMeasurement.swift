@@ -104,3 +104,16 @@ struct CycleGeometryMeasurement: Equatable {
     let pathBytes: UInt64
     let planBytes: UInt64
 }
+
+// Only the escapable, owned workspaces leave the enclosing scoped opportunity.
+// Model/root/semantic/Canvas scopes are destroyed before this transfer returns.
+struct CycleReturnedWorkspaces<G: CycleGeometry, C: CycleCandidateBacking, R: CycleCommittedBacking, H: CycleHitBacking> where C.Identity == SemanticCompleteIdentity, R.Identity == SemanticCompleteIdentity, H.Identity == SemanticCompleteIdentity {
+    var geometry: G
+    var interaction: InteractionOwnedKeyState<C, R, H>
+    var checks: Int
+    init(geometry: consuming G, interaction: consuming InteractionOwnedKeyState<C, R, H>, checks: Int) {
+        self.geometry = consume geometry
+        self.interaction = consume interaction
+        self.checks = checks
+    }
+}

@@ -87,7 +87,7 @@ struct CycleWake: ExecutionWakeRequester, Sendable {
     mutating func requestWake(for reasons: ExecutionWakeReasons) { self.reasons.formUnion(reasons) }
 }
 
-func cycleConcreteCoordinator<G, C, R, H>(owner: consuming CyclePipelineOwner<G, C, R, H>, dynamic: Bool, control: UnsafeMutablePointer<CycleControl>) -> Int where G: CycleGeometry, C: CycleCandidateBacking, R: CycleCommittedBacking, H: CycleHitBacking, C.Identity == SemanticCompleteIdentity, R.Identity == SemanticCompleteIdentity, H.Identity == SemanticCompleteIdentity {
+func cycleConcreteCoordinator<G, C, R, H>(owner: consuming CyclePipelineOwner<G, C, R, H>, dynamic: Bool, control: UnsafeMutablePointer<CycleControl>) -> CycleReturnedWorkspaces<G, C, R, H> where G: CycleGeometry, C: CycleCandidateBacking, R: CycleCommittedBacking, H: CycleHitBacking, C.Identity == SemanticCompleteIdentity, R.Identity == SemanticCompleteIdentity, H.Identity == SemanticCompleteIdentity {
     let geometryBefore = owner.geometry.storageMeasurement()
     let interactionBefore = cycleMeasureInteraction(owner.interaction)
     let binding = CycleExecutionBinding(models: owner.models.borrowedScope(), root: owner.root.borrowedRoot(), control: control)
@@ -107,7 +107,15 @@ func cycleConcreteCoordinator<G, C, R, H>(owner: consuming CyclePipelineOwner<G,
         precondition(cycleMeasureInteraction(coordinator.opportunity.interaction) == interactionBefore)
         precondition(coordinator.submit(stateChange: 1).result == .unavailable)
         guard case .failure(_, .execution(.requiredFacilityUnavailable), nil) = coordinator.runOpportunity() else { preconditionFailure("Dynamic stopped entry") }
-        return 11
+        var returned = coordinator.takeQuiescedOpportunity()!
+        precondition(returned.geometry.storageMeasurement() == geometryBefore)
+        precondition(cycleMeasureInteraction(returned.interaction) == interactionBefore)
+        returned.geometry.reset()
+        returned.interaction.resetAllStorage()
+        precondition(returned.interaction.committedRecordCount == 0 && returned.interaction.committedComponents == 0)
+        precondition(cycleMeasureInteraction(returned.interaction) == interactionBefore)
+        precondition(returned.geometry.storageMeasurement() == geometryBefore)
+        return returned.returnWorkspaces(checks: 16)
     }
     #endif
     var coordinator = StaticRuntimeExecutionCoordinator(binding: binding, admission: admission, opportunity: owner)
@@ -123,7 +131,15 @@ func cycleConcreteCoordinator<G, C, R, H>(owner: consuming CyclePipelineOwner<G,
         precondition(cycleMeasureInteraction(coordinator.opportunity.interaction) == interactionBefore)
     precondition(coordinator.submit(stateChange: 1).result == .unavailable)
     guard case .failure(_, .execution(.requiredFacilityUnavailable), nil) = coordinator.runOpportunity() else { preconditionFailure("Static stopped entry") }
-    return 11
+    var returned = coordinator.takeQuiescedOpportunity()!
+    precondition(returned.geometry.storageMeasurement() == geometryBefore)
+    precondition(cycleMeasureInteraction(returned.interaction) == interactionBefore)
+    returned.geometry.reset()
+        returned.interaction.resetAllStorage()
+        precondition(returned.interaction.committedRecordCount == 0 && returned.interaction.committedComponents == 0)
+        precondition(cycleMeasureInteraction(returned.interaction) == interactionBefore)
+    precondition(returned.geometry.storageMeasurement() == geometryBefore)
+    return returned.returnWorkspaces(checks: 16)
 }
 
 // Actual disjoint finite stores used by admission and sealing. Completion capacity

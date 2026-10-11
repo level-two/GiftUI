@@ -72,6 +72,14 @@ where
         binding.quiesce()
     }
 
+    /// Transfers the opportunity only after synchronous binding quiescence. The
+    /// returned value retains all of its original backing lifetime dependence.
+    @_lifetime(copy self)
+    package consuming func takeQuiescedOpportunity() -> Opportunity? {
+        guard binding.isQuiescent else { return nil }
+        return consume opportunity
+    }
+
     private func unavailableAdmission() -> ExecutionAdmissionOutcome {
         ExecutionAdmissionOutcome(
             result: .unavailable,

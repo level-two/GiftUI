@@ -297,6 +297,20 @@ where
         phase = .idle
     }
 
+    /// Called by the containing owner only before use or after quiescent teardown.
+    /// Storage allocations and configured physical capacities remain unchanged.
+    package mutating func resetAllStorage() {
+        candidateRecords.reset()
+        candidateHitRegions.reset()
+        candidateCommittedRecords.reset()
+        committedRecords.reset()
+        committedHitRegions.reset()
+        limits = nil
+        candidateError = nil
+        committedPresentationRevision = nil
+        phase = .idle
+    }
+
     package var committedRevision: PresentationRevision? {
         committedPresentationRevision
     }

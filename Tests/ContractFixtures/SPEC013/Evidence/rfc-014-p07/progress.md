@@ -635,3 +635,36 @@ component measurements are unchanged across the consuming coordinator cycles.
 Resumed guard remains **0/2**. Next: the actual typed RuntimeProfileStorage factory,
 full exclusive field partition, audited binding/common conformance, and factory
 profile/limit/capacity/provenance rejection controls. Other P07 obligations remain.
+
+## Consuming-owner resumption — step 3 (2026-10-11)
+
+Both maintained concrete coordinators now support a consuming internal
+`takeQuiescedOpportunity()` transfer, gated on binding quiescence and annotated
+`@_lifetime(copy self)`. The returned scoped opportunity retains its original
+model/root/semantic/Canvas lifetime dependence. The finite owner then forwards
+Geometry/Interaction in a consuming `returnWorkspaces` method; no original
+scoped owner survives the call. Static raw workspace descriptors are consumed
+inside their existing raw-buffer callbacks and never retained beyond them.
+
+Added real Interaction all-storage reset for pre-use/quiescent callers. The
+fixture calls it only after concrete coordinator quiescence; all five backing
+stores are cleared without replacing allocations, and committed record/component
+counts become zero. Existing before/owned/after-return geometry and Interaction
+extent comparisons pass. This is retained-extent equality, not allocator/address
+identity or a full26-field audit.
+
+The first external `consume returned.geometry` / `consume returned.interaction`
+syntax was rejected with source-located partial-consume errors. The exact
+[command](returned-field-transfer-command.txt) and
+[diagnostic](returned-field-transfer-diagnostic.log) are preserved. A duplicate
+compile reproduced the same baseline; no repair occurred between them. The one
+repair moves extraction into a consuming method of the complete owner and passes.
+No generic ownership suppression or lifetime check was weakened.
+
+Fresh formatted gate: **578 assertions, zero failures and twelve expected
+compiler negatives**, [receipt](resumption-step-3-macos-static.json). New negatives
+reject a returned scoped owner declared immortal and use of the consumed
+coordinator. Resumed shared guard: **0/2** after the passing check. Historical
+production2/2 remains unchanged. This is a root-authorized sequential context
+handoff, not a package completion or construction acceptance. Continue from
+[consuming-owner-construction-handoff.md](consuming-owner-construction-handoff.md).

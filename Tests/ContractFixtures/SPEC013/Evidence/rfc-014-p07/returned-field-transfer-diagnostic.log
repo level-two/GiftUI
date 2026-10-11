@@ -1,0 +1,31 @@
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC013/RuntimeDerived/CycleCoordinatorProbe.swift:118:50: error: 'consume' can only be used to partially consume storage of a noncopyable type
+116 |         precondition(cycleMeasureInteraction(returned.interaction) == interactionBefore)
+117 |         precondition(returned.geometry.storageMeasurement() == geometryBefore)
+118 |         return CycleReturnedWorkspaces(geometry: consume returned.geometry, interaction: consume returned.interaction, checks: 16)
+    |                                                  `- error: 'consume' can only be used to partially consume storage of a noncopyable type
+119 |     }
+120 |     #endif
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC013/RuntimeDerived/CycleCoordinatorProbe.swift:118:90: error: 'consume' can only be used to partially consume storage of a noncopyable type
+116 |         precondition(cycleMeasureInteraction(returned.interaction) == interactionBefore)
+117 |         precondition(returned.geometry.storageMeasurement() == geometryBefore)
+118 |         return CycleReturnedWorkspaces(geometry: consume returned.geometry, interaction: consume returned.interaction, checks: 16)
+    |                                                                                          `- error: 'consume' can only be used to partially consume storage of a noncopyable type
+119 |     }
+120 |     #endif
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC013/RuntimeDerived/CycleCoordinatorProbe.swift:142:46: error: 'consume' can only be used to partially consume storage of a noncopyable type
+140 |         precondition(cycleMeasureInteraction(returned.interaction) == interactionBefore)
+141 |     precondition(returned.geometry.storageMeasurement() == geometryBefore)
+142 |     return CycleReturnedWorkspaces(geometry: consume returned.geometry, interaction: consume returned.interaction, checks: 16)
+    |                                              `- error: 'consume' can only be used to partially consume storage of a noncopyable type
+143 | }
+144 | 
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC013/RuntimeDerived/CycleCoordinatorProbe.swift:142:86: error: 'consume' can only be used to partially consume storage of a noncopyable type
+140 |         precondition(cycleMeasureInteraction(returned.interaction) == interactionBefore)
+141 |     precondition(returned.geometry.storageMeasurement() == geometryBefore)
+142 |     return CycleReturnedWorkspaces(geometry: consume returned.geometry, interaction: consume returned.interaction, checks: 16)
+    |                                                                                      `- error: 'consume' can only be used to partially consume storage of a noncopyable type
+143 | }
+144 | 

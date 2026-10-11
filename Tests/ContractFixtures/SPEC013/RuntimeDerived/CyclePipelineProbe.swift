@@ -12,7 +12,7 @@ import GiftUIRuntimeDynamic
 import GiftUISemanticCore
 import CycleSchema
 
-private func exercisePipeline<G, C, R, H>(models: borrowing ObservableModelScope<CycleOwnedModel, CycleModelSchema>, root: borrowing ObservableStateRootScope<CycleOwnedModel, SemanticCompleteIdentity>, semantic: borrowing SemanticRecordStore<CyclePayload>, values: borrowing CanvasStagedValues<SemanticRecordReference, CycleValueTable>, dynamic: Bool, geometry: consuming G, interaction: consuming InteractionOwnedKeyState<C, R, H>) -> Int where G: CycleGeometry, C: CycleCandidateBacking, R: CycleCommittedBacking, H: CycleHitBacking, C.Identity == SemanticCompleteIdentity, R.Identity == SemanticCompleteIdentity, H.Identity == SemanticCompleteIdentity {
+func exercisePipeline<G, C, R, H>(models: borrowing ObservableModelScope<CycleOwnedModel, CycleModelSchema>, root: borrowing ObservableStateRootScope<CycleOwnedModel, SemanticCompleteIdentity>, semantic: borrowing SemanticRecordStore<CyclePayload>, values: borrowing CanvasStagedValues<SemanticRecordReference, CycleValueTable>, dynamic: Bool, geometry: consuming G, interaction: consuming InteractionOwnedKeyState<C, R, H>) -> CycleReturnedWorkspaces<G, C, R, H> where G: CycleGeometry, C: CycleCandidateBacking, R: CycleCommittedBacking, H: CycleHitBacking, C.Identity == SemanticCompleteIdentity, R.Identity == SemanticCompleteIdentity, H.Identity == SemanticCompleteIdentity {
     var control = CycleControl()
     var transferredGeometry: G? = consume geometry
     var transferredInteraction: InteractionOwnedKeyState<C, R, H>? = consume interaction
@@ -88,8 +88,9 @@ private func exercisePipeline<G, C, R, H>(models: borrowing ObservableModelScope
         expect(models.phase == .mutating)
         owner.quiescent = false
         trace.pointee.show = true; owner.changed = true
-        checks += cycleConcreteCoordinator(owner: consume owner, dynamic: dynamic, control: trace)
-        return checks
+        var returned = cycleConcreteCoordinator(owner: consume owner, dynamic: dynamic, control: trace)
+        returned.checks += checks
+        return consume returned
     }
 }
 func cyclePipelineProbe(models: borrowing ObservableModelScope<CycleOwnedModel, CycleModelSchema>, root: borrowing ObservableStateRootScope<CycleOwnedModel, SemanticCompleteIdentity>, semantic: borrowing SemanticRecordStore<CyclePayload>, dynamic: Bool) -> Int {
@@ -103,7 +104,7 @@ func cyclePipelineProbe(models: borrowing ObservableModelScope<CycleOwnedModel, 
                 typealias H = DynamicInteractionHitStorage<SemanticCompleteIdentity>
                 let state = InteractionState(candidateRecords: C(capacity: 6), candidateHitRegions: H(capacity: 6), candidateCommittedRecords: R(capacity: 6), committedRecords: R(capacity: 6), committedHitRegions: H(capacity: 6))
                 let keys = InteractionOwnedKeyState(state: state, maximumComponentsPerKey: 34, maximumComponents: 204)!
-                checks += exercisePipeline(models: models, root: root, semantic: semantic, values: values, dynamic: dynamic, geometry: DynamicCycleGeometry(), interaction: keys)
+                checks += exercisePipeline(models: models, root: root, semantic: semantic, values: values, dynamic: dynamic, geometry: DynamicCycleGeometry(), interaction: keys).checks
                 return
             }
             #endif
@@ -117,7 +118,7 @@ func cyclePipelineProbe(models: borrowing ObservableModelScope<CycleOwnedModel, 
             var path: InlineArray<3280, UInt8> = .init(repeating: 0)
             var plan: InlineArray<13536, UInt8> = .init(repeating: 0)
             withUnsafeMutableBytes(of: &scopes) { s in withUnsafeMutableBytes(of: &text) { t in withUnsafeMutableBytes(of: &path) { p in withUnsafeMutableBytes(of: &plan) { d in
-                checks += exercisePipeline(models: models, root: root, semantic: semantic, values: values, dynamic: dynamic, geometry: StaticCycleGeometry(scopes: s, text: t, path: p, plan: d), interaction: keys)
+                checks += exercisePipeline(models: models, root: root, semantic: semantic, values: values, dynamic: dynamic, geometry: StaticCycleGeometry(scopes: s, text: t, path: p, plan: d), interaction: keys).checks
             } } } }
         }
     } catch { preconditionFailure("pipeline Canvas owner") }

@@ -152,6 +152,15 @@ where
         failure = nil
         isStaging = false
     }
+    /// The containing runtime must establish quiescence before clearing routing.
+    package mutating func resetAllStorage() {
+        state.resetAllStorage()
+        candidateComponents = 0
+        committedComponents = 0
+        isStaging = false
+        failure = nil
+    }
+
     package var committedRevision: PresentationRevision? { state.committedRevision }
     package var committedRecordCount: UInt16 { state.committedRecordCount }
     package borrowing func committedRecord(for identity: Identity) -> BoundActionRecord<Identity>? {

@@ -94,6 +94,12 @@ where Geometry: CycleGeometry, Candidate: CycleCandidateBacking, Committed: Cycl
         self.geometry = consume geometry; self.interaction = consume interaction; self.control = copy control
         precondition(self.root.belongs(to: self.models))
     }
+    // Consuming the complete scoped owner ends its borrows while forwarding the
+    // two escapable owned workspace values. No original owner survives the call.
+    consuming func returnWorkspaces(checks: Int) -> CycleReturnedWorkspaces<Geometry, Candidate, Committed, Hits> {
+        CycleReturnedWorkspaces(geometry: geometry, interaction: interaction, checks: checks)
+    }
+
     mutating func boundary(_ stage: RuntimeCompletePipelineStage) -> RunCycleFailure<RuntimeOwnerFailure>? {
         control.pointee.stages |= UInt16(1) << stage.rawValue
         if control.pointee.fault == stage { return .execution(.capacityExhausted) }

@@ -118,6 +118,17 @@ for name, source, diagnostic in (
     run(name, [compiler, *flags, '-module-name', 'ScopedSemanticNegative', '-emit-object',
                ROOT / 'Tests/ContractFixtures/SPEC013/RuntimeDerived/ScopedSemanticProbe.swift', negative,
                '-o', out / (name + '.o')], failure=diagnostic)
+extraction_imports = 'import GiftUI\nimport GiftUIObservableState\nimport GiftUIRuntimeStatic\n'
+extraction_type = 'StaticRuntimeExecutionCoordinator<ScopedBinding<M, S>, ScopedCoordinator<M, S>, ScopedCoordinator<M, S>>'
+for name, source, diagnostic in (
+    ('returned-owner-use-after-consume', f'func reject<M: ~Copyable, S>(_ coordinator: consuming {extraction_type}) {{ _ = coordinator.takeQuiescedOpportunity(); _ = coordinator.runOpportunity() }}', 'used after consume'),
+    ('returned-owner-escape', f'@_lifetime(immortal) func reject<M: ~Copyable, S>(_ coordinator: consuming {extraction_type}) -> ScopedCoordinator<M, S> {{ coordinator.takeQuiescedOpportunity()! }}', 'escapes'),
+):
+    negative = out / (name + '.swift')
+    negative.write_text(extraction_imports + source + '\n')
+    run(name, [compiler, *flags, '-module-name', 'ReturnedOwnerNegative', '-emit-object',
+               fixture / 'ScopedCoordinatorProbe.swift', negative,
+               '-o', out / (name + '.o')], failure=diagnostic)
 binding_imports = 'import GiftUI\nimport GiftUIObservableState\nimport GiftUISemanticCore\nimport CycleSchema\nimport CyclePresentation\nimport RuntimeCycleProbe\n'
 for name, source, diagnostic in (
     ('mismatched-model', 'func reject<M: ObservableStateModel & ~Copyable>(_ models: borrowing ObservableModelScope<M, M.Schema>, _ root: borrowing ObservableStateRootScope<CycleOwnedModel, SemanticCompleteIdentity>) { _ = ObservableSemanticBodyBinding(models: models.borrowedScope(), root: root.borrowedRoot(), domain: CycleDomain.self) }', "requires the types"),
