@@ -84,7 +84,7 @@ run('required-features', [compiler, *flags, '-typecheck', ROOT / 'Tests/Contract
 # Build the existing target, which links its existing macro executable as a dependency.
 run('host-macro-build', ['bash', '-c', '''set -e
 source scripts/lib/swiftpm.sh
-GIFTUI_SWIFT_EXECUTABLE="$PWD/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swift" giftui_swiftpm --package-path "$PWD" --scratch-path "$PWD/.build/rfc014-p02-swift64/tool" --cache-root "$PWD/.build/rfc014-p02-swift64/tool-cache" --configuration debug --target GiftUI --disable-sandbox -- build
+GIFTUI_SWIFT_EXECUTABLE="$PWD/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swift" giftui_swiftpm --package-path "$PWD" --scratch-path "$PWD/.build/rfc014-p02-swift64/tool" --cache-root "$PWD/.build/rfc014-p02-swift64/tool-cache" --configuration debug --target GiftUI --disable-sandbox -- build --build-system native
 '''])
 macro = ROOT / '.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool'
 flags += ['-load-plugin-executable', str(macro) + '#GiftUIMacros']
