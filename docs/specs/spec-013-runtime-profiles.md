@@ -238,8 +238,14 @@ bank retirement and committed routing retirement are independent lifetimes.
 
 ### Compiler, capability and performance contract
 
-For this migration, pin the already tested project-local Swift 6.3.2 configuration
-with LifetimeDependence and Lifetimes, including required internal annotations.
+For this migration, pin the approved project-local Swift 6.4 configuration
+(official Swift 6.4.0 package and matching ARMv6 SDK) with LifetimeDependence and
+Lifetimes, including required internal annotations. The
+[2026-10-12 compiler-baseline correction](../iterations/iteration-003-review/rfc-014-compiler-baseline-correction.md)
+records exact executable/package/SDK identities and its
+[explicit approval](../iterations/iteration-003-review/rfc-014-spec-approval.md#swift-64-compiler-baseline-correction--2026-10-12).
+It replaces the initial 6.3.2 pin without changing public semantics. Earlier
+compiler receipts remain historical and cannot establish fresh 6.4 conformance.
 Record exact executable identity, feature flags, target triple and optimization
 for each build. This is the migration compiler baseline where older fixture
 instructions name a different version; existing ABI, geometry and public behavior

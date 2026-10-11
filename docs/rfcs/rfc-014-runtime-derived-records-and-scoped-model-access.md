@@ -389,6 +389,14 @@ associated-type feature or unchecked fallback is implied. Exact build integratio
 and all escape diagnostics are Spec/implementation acceptance work; a compiler
 change that forces different public semantics returns for a decision.
 
+**Approved configuration correction — 2026-10-12:** the initial compiler choice
+above is preserved as history. The explicitly
+[approved Swift 6.4 correction](../iterations/iteration-003-review/rfc-014-compiler-baseline-correction.md)
+now governs migration implementation and fresh evidence, with the same public
+semantics, feature settings and lifetime requirements. Its matching target tools
+and validation obligations are recorded in that correction; no unchecked fallback
+or new associated-type feature dependency is introduced.
+
 ## Performance
 
 Preserve SPEC-006 linear expansion: paired path-trie traversal costs O(N × K)

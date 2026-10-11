@@ -115,6 +115,15 @@ without a global compiler change, a newer associated-type feature dependency or
 unchecked fallback. Compiler changes that require different public semantics
 MUST return for a decision.
 
+**Current compiler configuration — approved 2026-10-12:** the
+[Swift 6.4 baseline correction](../iterations/iteration-003-review/rfc-014-compiler-baseline-correction.md)
+supersedes the initial version-specific 6.3.2 pin above for RFC-014 migration.
+The [explicit approval](../iterations/iteration-003-review/rfc-014-spec-approval.md#swift-64-compiler-baseline-correction--2026-10-12)
+preserves this decision's public semantics, lifetime guarantees, required feature
+settings and prohibition on unchecked fallback. The initial pin remains recorded
+as provenance; current implementation and fresh evidence use the approved 6.4
+configuration. A later change of public semantics still requires a decision.
+
 ### Stable ownership, phases and State
 
 Static MUST use stable typed storage supplied before activation. Dynamic may use

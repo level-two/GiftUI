@@ -60,8 +60,11 @@ target_milestone: MVP
 
 Amendment map and review: [RFC-014 specification review](../iterations/iteration-003-review/rfc-014-spec-amendment-review.md).
 
-Accepted ADR-036 selects project-local Swift 6.3.2 with LifetimeDependence and
-Lifetimes for the runtime migration. For that migration's Foundation measurement
+Accepted ADR-036's initial project-local Swift 6.3.2 configuration is replaced
+for the runtime migration by the explicitly
+[approved Swift 6.4 baseline correction](../iterations/iteration-003-review/rfc-014-compiler-baseline-correction.md).
+Use the official 6.4.0 package and matching ARMv6 SDK with LifetimeDependence and
+Lifetimes, preserving accepted public semantics. For the Foundation measurement
 runs, the SPEC-013 pinned compiler configuration takes precedence over the
 historical macOS 6.3.3 measurement row below. Preserve target triples, optimization,
 ABI, value-size/allocation ceilings, linked-delta method and exact identity checks.

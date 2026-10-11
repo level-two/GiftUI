@@ -1038,7 +1038,14 @@ own governing contracts without mutating the capability snapshot.
   a Specification revision and renewed review; it cannot be waived merely
   because the total device image still fits.
 
-The nRF52840 resource comparison MUST use the repository-pinned Swift 6.3.2
+For RFC-014 migration measurements, the explicitly
+[approved Swift 6.4 compiler correction](../iterations/iteration-003-review/rfc-014-compiler-baseline-correction.md)
+replaces only the historical Swift compiler version in the following comparison
+configuration. Both baseline and candidate MUST be rebuilt under the corrected
+compiler; the board, Zephyr/SDK versions, ABI, measurement method and all ceilings
+remain unchanged. Preserve older receipts as historical evidence.
+
+The historical nRF52840 resource comparison MUST use the repository-pinned Swift 6.3.2
 compiler, Zephyr 4.3.0 revision, Zephyr SDK 0.17.4, board
 `nrf52840dk/nrf52840`, and hard-float `armv7em-none-none-eabi` configuration in
 `scripts/nrf52840/toolchain.env`. Both images MUST use whole-module `-Osize`,

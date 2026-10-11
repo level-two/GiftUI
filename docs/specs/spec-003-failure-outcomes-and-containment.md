@@ -958,6 +958,14 @@ its configured fatal hook, but continuation is not allowed.
 
 ### Reproducible resource evidence
 
+For the RFC-014 migration, the explicitly
+[approved Swift 6.4 compiler correction](../iterations/iteration-003-review/rfc-014-compiler-baseline-correction.md)
+and SPEC-013's migration configuration take precedence over the historical
+compiler versions in the table below. Preserve the target triples, optimization,
+ABI, resource limits and measurement method. Rebuild both measurement fixtures
+under the approved compiler and matching SDK; historical receipts do not prove
+new-baseline conformance.
+
 The supported compiler and optimization configurations are fixed for this
 review baseline:
 
