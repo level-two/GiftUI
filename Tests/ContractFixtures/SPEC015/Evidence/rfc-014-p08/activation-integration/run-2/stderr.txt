@@ -1,0 +1,17 @@
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/ActivationJoinCallbackNegative.swift:61:51: warning: result of call to 'activate()' is unused [#NoUsage]
+59 |                                                     owner: consume suppliedOwner)!
+60 |                                             precondition(pointer.pointee.teardowns == 0)
+61 |                                             owner.activate()
+   |                                                   `- warning: result of call to 'activate()' is unused [#NoUsage]
+62 |                                             precondition(!pointer.pointee.unavailable)
+63 |                                             escaped = consume owner
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/ActivationJoinCallbackNegative.swift:76:22: error: value of type 'P08ActivationHost' (aka 'SignalAnalyzerPresetHostInstance<P08ActivationOwner>') has no member 'quiesce'
+74 |         var escapedOwner = escaped.take()!
+75 |         _ = escapedOwner.runOpportunity()
+76 |         escapedOwner.quiesce()
+   |                      `- error: value of type 'P08ActivationHost' (aka 'SignalAnalyzerPresetHostInstance<P08ActivationOwner>') has no member 'quiesce'
+77 |         return checks
+78 |     }
+
+[#NoUsage]: <https://docs.swift.org/compiler/documentation/diagnostics/no-usage>

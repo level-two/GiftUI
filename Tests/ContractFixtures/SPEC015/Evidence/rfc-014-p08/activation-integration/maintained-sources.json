@@ -1,0 +1,9 @@
+{
+  "Tests/ContractFixtures/SPEC015/RuntimeDerived/ActivationJoinBackingNegative.swift": "76a679abb1031b55f98938cfde32b40d2b41883da6ca919586c0d0e61ba8c7ff",
+  "Tests/ContractFixtures/SPEC015/RuntimeDerived/ActivationJoinCallbackNegative.swift": "5f8bc6c335f72b91583847b86afc25e713541ae9212f5a544f10c853c84803cf",
+  "Tests/ContractFixtures/SPEC015/RuntimeDerived/ActivationJoinConstantCallbackNegative.swift": "458e3cc2a133b91cf416addc12906c30aa35de0ba290f49b27773a9befa13e35",
+  "Tests/ContractFixtures/SPEC015/RuntimeDerived/ActivationJoinCopyNegative.swift": "f97f120f299d04228935b07fb834cb7e4ca51220059206c26abe8a39c2627df6",
+  "Tests/ContractFixtures/SPEC015/RuntimeDerived/ActivationJoinOwner.swift": "cd6cde1c5da583b88c9511d181ea2fbe0986cdc51b487bed28b5b59aefde213f",
+  "Tests/ContractFixtures/SPEC015/RuntimeDerived/ActivationJoinProbe.swift": "9016f025db46b855bfe3d6c65d5fbceb6c201bed54811d9dc25c960a9433162f",
+  "Tests/ContractFixtures/SPEC015/RuntimeDerived/ActivationJoinReport.swift": "6ebcdc1baa67315f2ba7388f1f5931be892449f7922bbd8fc23bd37fe6930a60"
+}
