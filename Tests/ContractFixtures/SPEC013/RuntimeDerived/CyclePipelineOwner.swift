@@ -26,6 +26,11 @@ struct CycleControl {
     var streams = 0
     var commits = 0
     var result: RuntimeCompletePipelineResult<RuntimeOwnerFailure>?
+    var context = ExecutionContext(cycle: nil, semanticRevision: nil, candidateFrame: nil, phase: .idle)
+    var unavailable = false
+    var committedRecords: UInt16 = 0
+    var hasRoot = false
+    var frameActive = false
 }
 struct CycleEndpoint: SynchronousFrameEndpoint {
     var disposition: FrameOfferDisposition = .accepted
@@ -61,6 +66,10 @@ where Geometry: CycleGeometry, Candidate: InteractionCandidateRecordStorage, Com
     var candidates = CandidateFrameIDAllocator()
     var presentations = PresentationRevisionAllocator()
     var generations = RuntimeActionGenerationAllocator<SemanticCompleteIdentity>()
+    var completedContext = ExecutionContext(cycle: nil, semanticRevision: nil, candidateFrame: nil, phase: .idle)
+    var committedPresentation: PresentationRevision?
+    var sealedAdmission: AdmissionSummary?
+    var retryCount: UInt8 = 0
     var endpoint = CycleEndpoint()
     var frameActive = false
     var observableCandidate = false
@@ -90,7 +99,8 @@ where Geometry: CycleGeometry, Candidate: InteractionCandidateRecordStorage, Com
         guard !quiescent else { return .failure(.execution(.requiredFacilityUnavailable)) }
         if let error = phase.beginCycle(reservingFrom: &cycles) { return .failure(.execution(error)) }
         if let error = boundary(.admissionAndSeal) { return .failure(error) }
-        guard ExecutionAdmissionSealer.select(pendingInputEvents: 0, pendingStateChangeFacts: control.pointee.mutate ? 1 : 0, pendingCompletionFacts: 0, sameCycleActivationCandidates: 0, includesDirtyRederivation: changed, includesPresentationRecovery: pending, limits: ExecutionLimits(maximumInputEvents: 2, maximumStateChangeFacts: 1, maximumCompletionFacts: 0, maximumSemanticActions: 1, maximumActiveInputSources: 1, maximumCommittedActions: 6)!) != nil else { return .failure(.execution(.invariantViolation)) }
+        guard let selection = ExecutionAdmissionSealer.select(pendingInputEvents: 0, pendingStateChangeFacts: control.pointee.mutate ? 1 : 0, pendingCompletionFacts: 0, sameCycleActivationCandidates: 0, includesDirtyRederivation: changed, includesPresentationRecovery: pending, limits: ExecutionLimits(maximumInputEvents: 2, maximumStateChangeFacts: 1, maximumCompletionFacts: 0, maximumSemanticActions: 1, maximumActiveInputSources: 1, maximumCommittedActions: 6)!) else { return .failure(.execution(.invariantViolation)) }
+        sealedAdmission = selection.summary
         return .advanced
     }
     mutating func applyAdmittedWork() -> RuntimePipelineMutationResult<RuntimeOwnerFailure> {
@@ -290,10 +300,15 @@ where Geometry: CycleGeometry, Candidate: InteractionCandidateRecordStorage, Com
         pending = disposition.presentationIntentState == .pending
     }
     mutating func finalizePipeline() {
+        completedContext = phase.context
+        control.pointee.committedRecords = interaction.committedRecordCount
+        control.pointee.hasRoot = rootIdentity != nil
+        control.pointee.frameActive = frameActive
         if phase.context.phase != .idle {
             precondition(phase.transition(to: .finalizing) == nil)
             precondition(phase.transition(to: .idle) == nil)
         }
+        control.pointee.context = phase.context
         control.pointee.finalized += 1
     }
 }

@@ -25,6 +25,24 @@ the finite P07 exit and hand off to separate Strong review. Contract/scope
 decisions outside this correction still return to Eugene. Consecutive
 unproductive repair count remains **0/2** across resumption.
 
+## Step 16 — existing concrete execution coordinator ownership
+
+The finite assembly now moves each real scoped pipeline owner into the existing
+DynamicRuntimeExecutionCoordinator / StaticRuntimeExecutionCoordinator. Actual
+SingleSourceExecutionAdmissionController queues the finite state-change fact and
+rejects a second at capacity. Both run accepted derivation and checked mutation,
+return the actual admission count, synchronously shut down the real root, and
+reject later admission/opportunity after idempotent quiescence. This does not
+claim full common-protocol conformance, current-context admission synchronization,
+pointer/late-arrival coverage, finite refusal-budget policy or aggregate storage
+audit binding; those remain pending. The wrapper summary adapter is finite test
+assembly, not an additional production coordinator.
+
+After scripts/format-swift.sh, the registered native command passes 491 assertions
+and ten compiler negatives; step-16-macos-static.json. The first driver invocation
+had a missing fixture-directory prefix, corrected before a successful direct
+module check and fresh full gate. No repeated unproductive repair; **0/2**.
+
 ## Step 15 — cleanup boundaries and additional failure dispositions
 
 The actual profile geometry receives each reset at its named cleanup boundary;
