@@ -1,13 +1,23 @@
-# generated from 1071a83c15a74a1142dd11a5c9b43e785acac8a208577a2bb41c99e1e0cd91dd
-schema_version	3
-descriptor_sha256	1071a83c15a74a1142dd11a5c9b43e785acac8a208577a2bb41c99e1e0cd91dd
+# generated from 236501e51d2cd63762df8f7ecf23c53aed62da3294137343077b2e2ac4a2bd7c
+schema_version	4
+descriptor_sha256	236501e51d2cd63762df8f7ecf23c53aed62da3294137343077b2e2ac4a2bd7c
 host_kind	0
 profile	dynamic
+required_path_entries	378
+required_payload_bytes_per_bank	7168
+required_interaction_identity_components	204
+required_path_depth	34
+required_path_child_fanout	5
+required_identity_components_per_key	34
+model_slots	2
+owning_tickets	4
+frame_pins	2
+model_capture_banks	1
 semantic_node_occurrences	48
 semantic_structural_occurrences	126
 render_semantic_scope_occurrences	98
 layout_scope_occurrences	98
-maximum_render_traversal_depth	19
+maximum_render_traversal_depth	13
 render_text_line_count	128
 positioned_glyph_count	224
 ordinary_render_operations	145

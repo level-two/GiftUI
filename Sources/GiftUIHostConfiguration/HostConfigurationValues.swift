@@ -135,6 +135,12 @@ package struct SignalAnalyzerDrawingWorkload: Equatable, Sendable {
 
 package struct SignalAnalyzerHostWorkload: Equatable, Sendable {
     package let schemaVersion: UInt16
+    package let requiredPathEntries: UInt32
+    package let requiredPayloadBytesPerBank: UInt32
+    package let requiredInteractionIdentityComponents: UInt32
+    package let requiredPathDepth: UInt16
+    package let requiredPathChildFanout: UInt16
+    package let requiredIdentityComponentsPerKey: UInt16
     package let requiredRuntimeLimits: RuntimeProfileLimits
     package let semanticNodeOccurrences: UInt16
     package let semanticStructuralOccurrences: UInt16

@@ -1,19 +1,19 @@
-# descriptor_schema_version=2
+# descriptor_schema_version=4
 # One authoritative, host-independent descriptor consumed by generate-spec-015-workload.rb.
 # field	value
-semantic.maximum_depth	40
+semantic.maximum_depth	34
 semantic.maximum_nodes	48
 semantic.maximum_structural_occurrences	126
-semantic.maximum_body_evaluations	16
-semantic.maximum_modifier_applications	51
+semantic.maximum_body_evaluations	14
+semantic.maximum_modifier_applications	50
 semantic.maximum_action_occurrences	6
 layout.maximum_scopes	98
-layout.maximum_depth	19
+layout.maximum_depth	13
 layout.maximum_text_scalars	224
 layout.maximum_text_lines	128
 layout.maximum_positioned_glyphs	224
 render.semantic_scope_occurrences	98
-render.maximum_traversal_depth	19
+render.maximum_traversal_depth	13
 render.maximum_text_lines	128
 render.maximum_operations	145
 render.maximum_positioned_glyphs	224
@@ -51,3 +51,14 @@ preset.macos_dynamic	0,dynamic,320,240,240,1280,307200,307200,1
 preset.macos_static	1,static,320,240,240,1280,307200,307200,1
 preset.raspberry_pi_dynamic	2,dynamic,240,240,16,480,7680,7680,1
 preset.nrf52840_static	3,static,320,240,4,640,2560,2560,1
+# Explicit scalar reservations from the finite runtime vocabulary, never occurrence topology.
+records.maximum_path_entries	378
+records.maximum_path_depth	34
+records.maximum_path_child_fanout	5
+records.maximum_payload_bytes_per_bank	7168
+records.maximum_identity_components_per_key	34
+records.maximum_interaction_identity_components	204
+models.maximum_model_slots	2
+models.maximum_owning_tickets	4
+models.maximum_frame_pins	2
+models.maximum_model_capture_banks	1

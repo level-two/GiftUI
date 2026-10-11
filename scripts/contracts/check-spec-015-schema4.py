@@ -1,0 +1,110 @@
+#!/usr/bin/env python3
+"""P08 schema-4 host component gate; complete counter/early-image gates remain open."""
+import argparse
+import hashlib
+import json
+import pathlib
+import shlex
+import subprocess
+import tempfile
+
+ROOT = pathlib.Path(__file__).resolve().parents[2]
+parser = argparse.ArgumentParser()
+parser.add_argument('--runtime-build', required=True, type=pathlib.Path)
+args = parser.parse_args()
+base = args.runtime_build.resolve()
+prior = json.loads((base / 'result.json').read_text())
+assert prior['profile'].startswith('macos'), 'first-slice execution is native only'
+def digest(path):
+    return hashlib.sha256(path.read_bytes()).hexdigest()
+for name, expected in prior['inputs'].items():
+    assert digest(ROOT / name) == expected, name
+for name, expected in prior['artifacts'].items():
+    assert digest(base / name) == expected['sha256'], name
+command = next(shlex.split(c) for c in prior['commands'] if '-module-name RuntimeCycleProbe ' in c)
+compiler = pathlib.Path(command[0])
+assert digest(compiler) == prior['compiler_sha256']
+flags = command[1:command.index('-module-name')]
+core = pathlib.Path(flags[flags.index('-I') + 1])
+out = pathlib.Path(tempfile.mkdtemp(prefix='p08-scoped-host-', dir=ROOT / '.build/contracts'))
+flags[flags.index('-module-cache-path') + 1] = str(out / 'cache')
+flags += ['-I', str(out)]
+commands, checks = [], []
+inputs = [pathlib.Path(__file__).resolve(), ROOT / 'scripts/contracts/generate-spec-015-workload.rb', ROOT / 'Tests/ContractFixtures/SPEC015/signal-analyzer-workload.tsv', *sorted((ROOT / 'Tests/ContractFixtures/SPEC015/Generated').glob('*.tsv'))]
+core_receipt = json.loads((core / 'result.json').read_text())
+assert digest(core / 'result.json') == prior['core_receipt_sha256']
+for name, expected in core_receipt['inputs'].items():
+    if name.startswith(('Sources/GiftUI/', 'Sources/GiftUIMacros/')):
+        assert digest(ROOT / name) == expected, name
+for name in ('GiftUI.o', 'GiftUI.swiftmodule'):
+    assert digest(core / name) == core_receipt['artifacts'][name]['sha256'], name
+def run(label, command, diagnostic=None):
+    command = list(map(str, command))
+    commands.append(shlex.join(command))
+    (out / 'commands.txt').write_text('\n'.join(commands) + '\n')
+    result = subprocess.run(command, cwd=ROOT, capture_output=True, text=True)
+    log = result.stdout + result.stderr
+    (out / (label + '.log')).write_text(log)
+    okay = result.returncode == 0 if diagnostic is None else result.returncode != 0 and diagnostic in log
+    checks.append(dict(name=label, exit=result.returncode, passed=okay, diagnostic=diagnostic))
+    if not okay:
+        raise SystemExit(f'{label}: {out}\n{log}')
+    return result.stdout
+run('scalar-workload-freshness', ['ruby', ROOT / 'scripts/contracts/generate-spec-015-workload.rb', '--check'])
+for name in ('GiftUICapabilities', 'GiftUIFailureCore', 'GiftUISurfaceCore', 'GiftUIDisplayCore', 'GiftUIRasterCore', 'GiftUIBackendIntegration', 'GiftUIHostConfiguration'):
+    sources = sorted((ROOT / 'Sources' / name).glob('*.swift')) + sorted((ROOT / 'Sources' / name / 'Generated').glob('*.swift'))
+    inputs.extend(sources)
+    run(name, [compiler, *flags, '-module-name', name, '-emit-module', '-emit-object', *sources,
+               '-emit-module-path', out / (name + '.swiftmodule'), '-o', out / (name + '.o')])
+probe = ROOT / 'Tests/ContractFixtures/SPEC015/RuntimeDerived/ScopedHostProbe.swift'
+schema = ROOT / 'Tests/ContractFixtures/SPEC015/RuntimeDerived/Schema4Probe.swift'
+inputs.extend([probe, schema])
+run('scoped-host-probe', [compiler, *flags, '-module-name', 'P08ScopedHostProbe', '-emit-module', '-emit-object', probe, schema,
+                        '-emit-module-path', out / 'P08ScopedHostProbe.swiftmodule', '-o', out / 'P08ScopedHostProbe.o'])
+for label, source, diagnostic in (
+    ('copy-host', 'func reject(_ host: borrowing SignalAnalyzerPresetHostInstance<P08ScopedLiveOwner>) { let other = copy host; _ = other }', 'noncopyable'),
+    ('escape-host', 'struct Reject: ~Copyable { let host: SignalAnalyzerPresetHostInstance<P08ScopedLiveOwner> }', 'non-Escapable'),
+):
+    path = out / (label + '.swift')
+    path.write_text('import GiftUIHostConfiguration\n' + source + '\n')
+    run(label, [compiler, *flags, '-module-name', 'P08ScopedHostNegative', '-emit-object', probe, path,
+                '-o', out / (label + '.o')], diagnostic)
+# Missing fields are compiler errors; the schema has no runtime fill-in path.
+for field, expression in (
+    ('requiredPathEntries', 'axis == 0 ? value : w.requiredPathEntries'),
+    ('requiredPayloadBytesPerBank', 'axis == 1 ? value : w.requiredPayloadBytesPerBank'),
+    ('requiredInteractionIdentityComponents', 'axis == 2 ? value : w.requiredInteractionIdentityComponents'),
+    ('requiredPathDepth', 'axis == 3 ? UInt16(value) : w.requiredPathDepth'),
+    ('requiredPathChildFanout', 'axis == 4 ? UInt16(value) : w.requiredPathChildFanout'),
+    ('requiredIdentityComponentsPerKey', 'axis == 5 ? UInt16(value) : w.requiredIdentityComponentsPerKey'),
+):
+    negative = out / ('missing-' + field + '.swift')
+    negative.write_text(schema.read_text().replace(field + ': ' + expression + ',', '', 1))
+    run('missing-' + field, [compiler, *flags, '-module-name', 'P08SchemaNegative', '-typecheck', negative], "missing argument for parameter '" + field + "'")
+# Generator fail-closed controls run in an isolated output tree, never mutate inputs.
+fixture_root = out / 'generator-controls'
+(fixture_root / 'scripts/contracts').mkdir(parents=True)
+(fixture_root / 'Tests/ContractFixtures/SPEC015').mkdir(parents=True)
+generator = fixture_root / 'scripts/contracts/generate-spec-015-workload.rb'
+generator.write_text((ROOT / 'scripts/contracts/generate-spec-015-workload.rb').read_text())
+descriptor = ROOT / 'Tests/ContractFixtures/SPEC015/signal-analyzer-workload.tsv'
+control_descriptor = fixture_root / 'Tests/ContractFixtures/SPEC015/signal-analyzer-workload.tsv'
+for field in ('records.maximum_path_entries', 'records.maximum_payload_bytes_per_bank', 'records.maximum_interaction_identity_components', 'records.maximum_path_depth', 'records.maximum_path_child_fanout', 'records.maximum_identity_components_per_key', 'models.maximum_model_slots', 'models.maximum_owning_tickets', 'models.maximum_frame_pins', 'models.maximum_model_capture_banks'):
+    control_descriptor.write_text('\n'.join(line for line in descriptor.read_text().splitlines() if not line.startswith(field + '\t')) + '\n')
+    run('generator-missing-' + field, ['ruby', generator], 'missing ' + field)
+control_descriptor.write_text(descriptor.read_text().replace('records.maximum_path_entries\t378', 'records.maximum_path_entries\t65536'))
+run('generator-path-overflow', ['ruby', generator], 'outside UInt16')
+control_descriptor.write_text(descriptor.read_text().replace('records.maximum_payload_bytes_per_bank\t7168', 'records.maximum_payload_bytes_per_bank\t4294967296'))
+run('generator-payload-overflow', ['ruby', generator], 'outside UInt32')
+control_descriptor.write_text(descriptor.read_text().replace('records.maximum_payload_bytes_per_bank\t7168', 'records.maximum_payload_bytes_per_bank\t70000'))
+run('generator-wide-payload', ['ruby', generator])
+assert 'hierarchy-shape' not in generator.read_text()
+main = out / 'Main.swift'
+main.write_text('import P08ScopedHostProbe\n@main struct Main { static func main() { print("P08 schema4 host component assertions=\\(p08ScopedHostController() + p08Schema4Workload()) failures=0") } }\n')
+run('link', [compiler, *flags, main, core / 'GiftUI.o', *sorted(base.glob('*.o')), *sorted(out.glob('*.o')), '-o', out / 'scoped-host'])
+execution = run('execute', [out / 'scoped-host']).strip()
+receipt = dict(scope='P08 scoped host/controller and schema-4 workload components; complete application gates remain open', profile=prior['profile'], runtime_build=str(base.relative_to(ROOT)), runtime_receipt_sha256=digest(base / 'result.json'), compiler=str(compiler.relative_to(ROOT)), compiler_sha256=digest(compiler), inputs={str(p.relative_to(ROOT)): digest(p) for p in inputs}, checks=checks, execution=execution, commands=commands)
+receipt['artifacts'] = {str(p.relative_to(out)): dict(sha256=digest(p), bytes=p.stat().st_size) for p in out.iterdir() if p.is_file()}
+(out / 'result.json').write_text(json.dumps(receipt, indent=2) + '\n')
+print(execution)
+print('P08_SCHEMA4_EVIDENCE', out)

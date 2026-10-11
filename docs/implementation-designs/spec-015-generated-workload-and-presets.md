@@ -6,7 +6,7 @@ status: current
 authors:
   - codex
 created: 2026-09-13
-updated: 2026-09-14
+updated: 2026-10-11
 implementation_plan: ../implementation-plans/spec-015-implementation-plan.md
 related_future_work: []
 related_explorations: []
@@ -20,6 +20,53 @@ superseded_by: null
 > This note explains one replaceable internal realization of an approved
 > contract. It is non-authoritative and cannot introduce architecture or amend
 > the governing Specification.
+
+## Current RFC-014 realization — P08
+
+The schema-4 generator consumes only
+`Tests/ContractFixtures/SPEC015/signal-analyzer-workload.tsv`. The former
+hierarchy-shape input is removed from its source and build dependency. The
+ordered scalar descriptor and approved finite vocabulary determine four
+immutable manifests; no body executes, no active branch or occurrence table is
+generated. Source identity is the scalar descriptor hash. The retained legacy
+root/type-role witness is not consumed by the new runtime topology route;
+removal of remaining analyzer expanded-graph consumers belongs to P09/cutover.
+
+The six required workload fields have no memberwise defaults. The validator
+rejects schema 0–3, zero requirements and first excess; UInt32 path requirements
+are checked with `UInt16(exactly:)` before comparison. Required complete runtime
+limits remain equal. Approved analyzer logical limits are 48 nodes,126 structural
+occurrences,14 bodies,50 modifiers,6 actions,depth34;98 scopes/depth13,224 glyphs,
+128 text lines and145 ordinary/150 combined operations. Models select2 slots,
+4 tickets,2 pins,1 capture bank. Counter's own composition selects capture0 and
+its own scalar limits; these analyzer projections are not counter backing.
+
+Independent scalar reservations are selected from finite source/type vocabulary:
+378 path entries (3 role/path components per126 structural reservations),depth34,
+fanout5,34 identity components per key and204 interaction components (6×34).
+Payload reservation7168 =98×64 +224×4:64 bytes conservatively reserve one tagged
+payload with the declared maximum32-byte finite Canvas capture, plus scalar text.
+These are declared *capacities*, not fabricated `RuntimeStorageAudit` bytes or
+physical budgets. Actual supplied typed pools must cover them and actual complete
+analyzer traversal must prove fit at P09; an underestimated bound fails conformance.
+Changed layout requires regeneration/revalidation. No target ceiling is enlarged.
+
+Generated presets no longer synthesize storage from historical24/32-byte record
+projections, expected byte lists or a synthetic Canvas witness. Their audit helper
+requires a supplied `RuntimeProfileStorage`, checks exact profile/limits, invokes
+its audit and verifies the returned identity. It cannot certify an unrelated
+store. Actual Canvas witness coverage and missing/insufficient storage remain
+SPEC-013 duties exercised by the consuming composition. Legacy analyzer callers
+of the removed no-argument audit are explicitly unmigrated P09 work, not migration
+evidence. Full analyzer migration/cutover and P10–P12 gates remain open.
+
+Fresh component evidence is recorded in the
+[P08 receipt](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/progress.md).
+
+## Historical schema-3 realization
+
+The following description records the prior implementation and does not govern
+RFC-014 schema-4 generation or establish amended conformance.
 
 ## Purpose and Boundary
 

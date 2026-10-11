@@ -7,7 +7,7 @@ package enum SignalAnalyzerDrawingStartupValidation {
         profile: RuntimeProfileKind
     ) -> HostConfigurationError? {
         let drawing = workload.drawing
-        guard workload.schemaVersion == 3,
+        guard workload.schemaVersion == 4,
             drawing.canvasOccurrences == 5,
             drawing.maximumLivePathPoints == 202,
             drawing.maximumLivePathSubpaths == 12,

@@ -1,10 +1,11 @@
 # RFC-014 bounded implementation sequence — 2026-10-10
 
-**Current P08 checkpoint — scoped host component implemented, schema migration next, 2026-10-11:**
+**Current P08 checkpoint — host/schema components implemented, counter integration next, 2026-10-11:**
 Eugene explicitly replied “Approved, please proceed” after the separate
 [independent proposal review](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/independent-blocker-review.md).
 The exact SPEC-015 correction is applied and [approval recorded](rfc-014-spec-approval.md#scoped-host-lifetime-amendment--2026-10-11).
-First host component slice passes 187 assertions and copy/escape controls;
+Host/schema component slice passes 320 assertions per native route, ownership/
+missing-field/generator controls and complete HostConfiguration compilation;
 [step receipt](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-host-step-1.json).
 Original packet/probes/review remain historical. Full P08 construction/activation,
 schema-4/counter and early-image evidence remain required; no package acceptance.

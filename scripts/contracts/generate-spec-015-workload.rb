@@ -6,7 +6,6 @@ require "pathname"
 
 ROOT = Pathname.new(File.expand_path("../..", __dir__))
 INPUT = ROOT.join("Tests/ContractFixtures/SPEC015/signal-analyzer-workload.tsv")
-HIERARCHY_INPUT = ROOT.join("Tests/ContractFixtures/SPEC001/hierarchy-shape-cases.tsv")
 GENERATED_DIR = ROOT.join("Tests/ContractFixtures/SPEC015/Generated")
 SWIFT_OUTPUT = ROOT.join("Sources/GiftUIHostConfiguration/Generated/SignalAnalyzerPresets.generated.swift")
 NRF_MODEL_OUTPUT = ROOT.join("Sources/SignalAnalyzerTargetHost/Generated/StaticSignalAnalyzerNRFModelDescriptor.generated.swift")
@@ -28,10 +27,10 @@ def parse_descriptor(path, label)
   values
 end
 
-def integer(values, key)
+def integer(values, key, bits = 16)
   raw = values.fetch(key) { fail_generation("missing #{key}") }
   value = Integer(raw, 10)
-  fail_generation("#{key} is outside UInt16") unless value.between?(0, 65_535)
+  fail_generation("#{key} is outside UInt#{bits}") unless value.between?(0, (1 << bits) - 1)
   value
 rescue ArgumentError
   fail_generation("#{key} is not an integer")
@@ -61,51 +60,13 @@ def swift_kind(name)
   }.fetch(name)
 end
 
-def byte_counts(profile, structural_occurrences, layout_scopes)
-  if profile == "dynamic"
-    semantic_bytes = structural_occurrences * 32
-    [semantic_bytes, semantic_bytes, layout_scopes * 40, layout_scopes * 64, 160, 3280, 13_536, 256, 256, 384, 384, 2176, 2176, 128, 256, 128]
-  else
-    semantic_bytes = structural_occurrences * 24
-    [semantic_bytes, semantic_bytes, layout_scopes * 32, layout_scopes * 48, 160, 3280, 13_536, 128, 128, 256, 256, 3840, 3840, 96, 192, 96]
-  end
-end
-
 values = parse_descriptor(INPUT, "workload descriptor")
-hierarchy = parse_descriptor(HIERARCHY_INPUT, "portable hierarchy descriptor")
 names = %w[macos_dynamic macos_static raspberry_pi_dynamic nrf52840_static]
 presets = names.to_h { |name| [name, preset(values, "preset.#{name}")] }
-descriptor_hash = Digest::SHA256.hexdigest(INPUT.read + "\0" + HIERARCHY_INPUT.read)
-hierarchy_hash = Digest::SHA256.hexdigest(HIERARCHY_INPUT.read)
-static_root_identity = hierarchy_hash[0, 8].to_i(16)
+descriptor_hash = Digest::SHA256.hexdigest(INPUT.read)
+# Legacy type-role witness identity; no expanded occurrence descriptor is read.
+static_root_identity = descriptor_hash[0, 8].to_i(16)
 fail_generation("generated Static root identity is zero") if static_root_identity.zero?
-
-expected_hierarchy = {
-  "observable-root" => "SignalAnalyzerView",
-  "direct-state-count" => "1",
-  "direct-state-type" => "SignalAnalyzerViewModel",
-  "header-count" => "1",
-  "waveform-count" => "1",
-  "time-ruler-count" => "1",
-  "explicit-channel-count" => "4",
-  "control-count" => "6",
-  "conditional-error-region-count" => "1",
-  "dynamic-collection-count" => "0",
-  "platform-branch-count" => "0"
-}
-fail_generation("portable hierarchy descriptor is not the approved fixed hierarchy") unless hierarchy == expected_hierarchy
-
-hierarchy_integer = ->(key) { Integer(hierarchy.fetch(key), 10) }
-fail_generation("hierarchy action count differs from workload") unless
-  hierarchy_integer.call("control-count") == integer(values, "host.action_cases") &&
-    hierarchy_integer.call("control-count") == integer(values, "application.semantic_actions_per_opportunity")
-fail_generation("hierarchy root-model count differs from workload") unless
-  hierarchy_integer.call("direct-state-count") == integer(values, "host.root_model_locations")
-expected_canvas_count = hierarchy_integer.call("time-ruler-count") +
-  hierarchy_integer.call("explicit-channel-count")
-fail_generation("hierarchy Canvas count differs from workload") unless
-  expected_canvas_count == integer(values, "drawing.canvas_occurrences") &&
-    expected_canvas_count == integer(values, "drawing.submitted_strokes")
 
 ordinary = integer(values, "render.maximum_operations")
 strokes = integer(values, "drawing.normalized_stroke_operations")
@@ -124,8 +85,19 @@ fail_generation("drawing minima changed") unless [
 manifests = {}
 presets.each do |name, projection|
   rows = [
-    ["schema_version", 3], ["descriptor_sha256", descriptor_hash],
+    ["schema_version", 4], ["descriptor_sha256", descriptor_hash],
     ["host_kind", projection[:kind]], ["profile", projection[:profile]],
+    ["required_path_entries", integer(values, "records.maximum_path_entries")],
+    ["required_payload_bytes_per_bank", integer(values, "records.maximum_payload_bytes_per_bank", 32)],
+    ["required_interaction_identity_components", integer(values, "records.maximum_interaction_identity_components", 32)],
+    ["required_path_depth", integer(values, "records.maximum_path_depth")],
+    ["required_path_child_fanout", integer(values, "records.maximum_path_child_fanout")],
+    ["required_identity_components_per_key", integer(values, "records.maximum_identity_components_per_key")],
+    ["model_slots", integer(values, "models.maximum_model_slots")],
+    ["owning_tickets", integer(values, "models.maximum_owning_tickets")],
+    ["frame_pins", integer(values, "models.maximum_frame_pins")],
+    ["model_capture_banks", integer(values, "models.maximum_model_capture_banks")],
+
     ["semantic_node_occurrences", integer(values, "semantic.maximum_nodes")],
     ["semantic_structural_occurrences", integer(values, "semantic.maximum_structural_occurrences")],
     ["render_semantic_scope_occurrences", integer(values, "render.semantic_scope_occurrences")],
@@ -160,6 +132,16 @@ limit_rows = []
 presets.each do |name, projection|
   static = projection[:profile] == "static"
   leaves = {
+    "records.maximumPathEntries" => integer(values, "records.maximum_path_entries"),
+    "records.maximumPathDepth" => integer(values, "records.maximum_path_depth"),
+    "records.maximumPathChildFanout" => integer(values, "records.maximum_path_child_fanout"),
+    "records.maximumPayloadBytesPerBank" => integer(values, "records.maximum_payload_bytes_per_bank", 32),
+    "records.maximumIdentityComponentsPerKey" => integer(values, "records.maximum_identity_components_per_key"),
+    "records.maximumInteractionIdentityComponents" => integer(values, "records.maximum_interaction_identity_components", 32),
+    "models.maximumModelSlots" => integer(values, "models.maximum_model_slots"),
+    "models.maximumOwningTickets" => integer(values, "models.maximum_owning_tickets"),
+    "models.maximumFramePins" => integer(values, "models.maximum_frame_pins"),
+    "models.maximumModelCaptureBanks" => integer(values, "models.maximum_model_capture_banks"),
     "semantic.maximumDepth" => integer(values, "semantic.maximum_depth"),
     "semantic.maximumSemanticNodes" => integer(values, "semantic.maximum_nodes"),
     "maximumSemanticStructuralOccurrences" => integer(values, "semantic.maximum_structural_occurrences"),
@@ -212,7 +194,7 @@ chunks = descriptor_hash.scan(/.{16}/).map { |chunk| "0x#{chunk}" }
 swift = +<<~SWIFT
   // Generated by scripts/contracts/generate-spec-015-workload.rb.
   // Source SHA-256: #{descriptor_hash}
-  // Do not edit independently of the checked workload and hierarchy descriptors.
+  // Do not edit independently of the immutable scalar workload descriptor.
 
   import GiftUICapabilities
   import GiftUIRuntimeCore
@@ -248,7 +230,6 @@ swift = +<<~SWIFT
       package let kind: MVPHostKind
       package let profile: RuntimeProfileKind
       package let runtimeLimits: RuntimeProfileLimits
-      package let expectedStorageBytes: RuntimeStorageByteCounts
       package let workload: SignalAnalyzerHostWorkload
       package let capabilityRequirement: RasterPresentationRequirement
       package let cardinality: SignalAnalyzerHostCardinality
@@ -256,80 +237,20 @@ swift = +<<~SWIFT
       package let raster: GeneratedHostRasterProjection
       package let staticRoot: GeneratedSignalAnalyzerStaticRootDescriptor?
 
-      package func validatedStorageAudit() -> RuntimeProfileValidationResult {
-          let inputs = RuntimeProfileLimitInputs(
-              semantic: runtimeLimits.semantic,
-              maximumSemanticStructuralOccurrences:
-                  runtimeLimits.maximumSemanticStructuralOccurrences,
-              layout: runtimeLimits.layout,
-              render: runtimeLimits.render,
-              renderWorkspace: runtimeLimits.renderWorkspace,
-              renderSink: runtimeLimits.renderSink,
-              maximumOrdinaryRenderOperations: runtimeLimits.maximumOrdinaryRenderOperations,
-              execution: runtimeLimits.execution,
-              observableState: runtimeLimits.observableState,
-              interaction: runtimeLimits.interaction,
-              drawing: runtimeLimits.drawing,
-              staticCanvas: runtimeLimits.staticCanvas,
-              profile: profile
-          )
-          let capacities = RuntimeStorageCapacities(
-              semanticCandidate: runtimeLimits.semantic,
-              semanticPublished: runtimeLimits.semantic,
-              semanticCandidateStructuralOccurrences:
-                  runtimeLimits.maximumSemanticStructuralOccurrences,
-              semanticPublishedStructuralOccurrences:
-                  runtimeLimits.maximumSemanticStructuralOccurrences,
-              layoutCandidate: runtimeLimits.layout,
-              render: runtimeLimits.render,
-              renderWorkspace: runtimeLimits.renderWorkspace,
-              canvasCallableOccurrences: runtimeLimits.drawing.maximumCanvasOccurrences,
-              staticCanvasCaptureBytes: workload.drawing.maximumStaticCaptureBytes,
-              pathPoints: runtimeLimits.drawing.maximumLivePathPoints,
-              pathSubpaths: runtimeLimits.drawing.maximumLivePathSubpaths,
-              drawingPlanStrokes: runtimeLimits.drawing.maximumPlanStrokes,
-              drawingPlanPoints: runtimeLimits.drawing.maximumPlanPoints,
-              drawingPlanSubpaths: runtimeLimits.drawing.maximumPlanSubpaths,
-              normalizedStrokeOperations: runtimeLimits.drawing.maximumNormalizedStrokeOperations,
-              observableLiveLocations: runtimeLimits.observableState.maximumLocations,
-              observableLiveRegistrations: runtimeLimits.observableState.maximumRegistrations,
-              observableCandidateAssociations: runtimeLimits.observableState.maximumStagedAssociations,
-              interactionCandidateActions: runtimeLimits.interaction.maximumActions,
-              interactionCandidateHitRegions: runtimeLimits.interaction.maximumHitRegions,
-              interactionCommittedActions: runtimeLimits.interaction.maximumActions,
-              interactionCommittedHitRegions: runtimeLimits.interaction.maximumHitRegions,
-              admissionQueue: runtimeLimits.execution,
-              sealedBatch: runtimeLimits.execution,
-              pointerStates: runtimeLimits.execution.maximumActiveInputSources,
-              coordinatorStatePresent: true,
-              failureStatePresent: true,
-              byteCounts: expectedStorageBytes
-          )
-          switch profile {
-          case .dynamic:
-              return RuntimeProfileValidator.validateDynamic(inputs: inputs, capacities: capacities)
-          case .static:
-              let metadata = GeneratedStaticCanvasAuditMetadata(
-                  callableCaseCount: workload.drawing.staticCallableCases!,
-                  maximumCaptureBytes: workload.drawing.maximumStaticCaptureBytes!
-              )
-              return RuntimeProfileValidator.validateStatic(
-                  inputs: inputs, capacities: capacities, metadata: metadata
-              )
+      // Only supplied physical owners can establish schema-4 audit evidence.
+      package func validatedStorageAudit<Storage: RuntimeProfileStorage & ~Copyable>(
+          storage: borrowing Storage
+      ) -> RuntimeProfileValidationResult {
+          guard Storage.profile == profile, storage.limits == runtimeLimits else {
+              return .invalid(.invariantViolation)
           }
-      }
-  }
-
-  private struct GeneratedStaticCanvasAuditMetadata: RuntimeStaticCanvasAuditMetadata {
-      let callableCaseCount: UInt16
-      let maximumCaptureBytes: UInt16
-      var declaredEntryCount: UInt16 { callableCaseCount }
-      var maximumDeclaredID: UInt16 { callableCaseCount }
-      func coverageMultiplicity(for id: UInt16) -> UInt8 {
-          id > 0 && id <= callableCaseCount ? 1 : 0
-      }
-      func captureByteCount(for id: UInt16) -> UInt16? {
-          id > 0 && id <= callableCaseCount ? maximumCaptureBytes : nil
+          let result = storage.audit()
+          if case .valid(let audit) = result {
+              guard audit.profile == profile, audit.limits == runtimeLimits else {
+                  return .invalid(.invariantViolation)
+              }
+          }
+          return result
       }
   }
 
@@ -347,10 +268,6 @@ presets.each do |name, projection|
     "raspberry_pi_dynamic" => "raspberryPiDynamic", "nrf52840_static" => "nrf52840Static"
   }.fetch(name)
   static = projection[:profile] == "static"
-  bytes = byte_counts(
-    projection[:profile], integer(values, "semantic.maximum_structural_occurrences"),
-    integer(values, "layout.maximum_scopes")
-  )
   swift << <<~SWIFT
         package static func #{method_name}() -> GeneratedSignalAnalyzerPreset {
             makePreset(
@@ -360,17 +277,8 @@ presets.each do |name, projection|
                 rasterBytes: #{projection[:raster_bytes]}, payloadBytes: #{projection[:payload_bytes]},
                 inFlightPayloads: #{projection[:in_flight_slots]},
                 staticCallableCases: #{static ? integer(values, "static_canvas.callable_cases") : "nil"},
-                staticCaptureBytes: #{static ? integer(values, "static_canvas.maximum_capture_bytes") : "nil"},
-                byteCounts: RuntimeStorageByteCounts(
-                    semanticCandidateBytes: #{bytes[0]}, semanticPublishedBytes: #{bytes[1]},
-                    layoutCandidateBytes: #{bytes[2]}, renderWorkspaceBytes: #{bytes[3]},
-                    canvasCallableBytes: #{bytes[4]}, pathWorkspaceBytes: #{bytes[5]},
-                    drawingPlanBytes: #{bytes[6]}, observableLiveBytes: #{bytes[7]},
-                    observableCandidateBytes: #{bytes[8]}, interactionCandidateBytes: #{bytes[9]},
-                    interactionCommittedBytes: #{bytes[10]}, admissionQueueBytes: #{bytes[11]},
-                    sealedBatchBytes: #{bytes[12]}, pointerStateBytes: #{bytes[13]},
-                    coordinatorStateBytes: #{bytes[14]}, failureStateBytes: #{bytes[15]}
-                )
+                staticCaptureBytes: #{static ? integer(values, "static_canvas.maximum_capture_bytes") : "nil"}
+
             )
         }
 
@@ -389,10 +297,23 @@ swift << <<~SWIFT
           payloadBytes: UInt32,
           inFlightPayloads: UInt8,
           staticCallableCases: UInt16?,
-          staticCaptureBytes: UInt16?,
-          byteCounts: RuntimeStorageByteCounts
+          staticCaptureBytes: UInt16?
       ) -> GeneratedSignalAnalyzerPreset {
           let limits = RuntimeProfileLimits(
+              records: .init(
+                  maximumPathEntries: #{integer(values, "records.maximum_path_entries")},
+                  maximumPathDepth: #{integer(values, "records.maximum_path_depth")},
+                  maximumPathChildFanout: #{integer(values, "records.maximum_path_child_fanout")},
+                  maximumPayloadBytesPerBank: #{integer(values, "records.maximum_payload_bytes_per_bank", 32)},
+                  maximumIdentityComponentsPerKey: #{integer(values, "records.maximum_identity_components_per_key")},
+                  maximumInteractionIdentityComponents: #{integer(values, "records.maximum_interaction_identity_components", 32)}
+              ),
+              models: .init(
+                  maximumModelSlots: #{integer(values, "models.maximum_model_slots")},
+                  maximumOwningTickets: #{integer(values, "models.maximum_owning_tickets")},
+                  maximumFramePins: #{integer(values, "models.maximum_frame_pins")},
+                  maximumModelCaptureBanks: #{integer(values, "models.maximum_model_capture_banks")}
+              ),
               semantic: .init(
                   maximumDepth: #{integer(values, "semantic.maximum_depth")},
                   maximumSemanticNodes: #{integer(values, "semantic.maximum_nodes")},
@@ -455,7 +376,14 @@ swift << <<~SWIFT
               maximumStaticCaptureBytes: staticCaptureBytes
           )
           let workload = SignalAnalyzerHostWorkload(
-              schemaVersion: 3, requiredRuntimeLimits: limits,
+              schemaVersion: 4,
+              requiredPathEntries: #{integer(values, "records.maximum_path_entries")},
+              requiredPayloadBytesPerBank: #{integer(values, "records.maximum_payload_bytes_per_bank", 32)},
+              requiredInteractionIdentityComponents: #{integer(values, "records.maximum_interaction_identity_components", 32)},
+              requiredPathDepth: #{integer(values, "records.maximum_path_depth")},
+              requiredPathChildFanout: #{integer(values, "records.maximum_path_child_fanout")},
+              requiredIdentityComponentsPerKey: #{integer(values, "records.maximum_identity_components_per_key")},
+              requiredRuntimeLimits: limits,
               semanticNodeOccurrences: #{integer(values, "semantic.maximum_nodes")},
               semanticStructuralOccurrences: #{integer(values, "semantic.maximum_structural_occurrences")},
               renderSemanticScopeOccurrences: #{integer(values, "render.semantic_scope_occurrences")},
@@ -471,7 +399,7 @@ swift << <<~SWIFT
           )
           return GeneratedSignalAnalyzerPreset(
               identity: sourceIdentity, kind: kind, profile: profile,
-              runtimeLimits: limits, expectedStorageBytes: byteCounts,
+              runtimeLimits: limits,
               workload: workload,
               capabilityRequirement: RasterPresentationRequirement(
                   operations: [
@@ -533,7 +461,7 @@ outputs[GENERATED_DIR.join("runtime-limit-leaves.generated.tsv")] = limit_corpus
 outputs[SWIFT_OUTPUT] = swift
 outputs[NRF_MODEL_OUTPUT] = <<~SWIFT
   // Generated by scripts/contracts/generate-spec-015-workload.rb.
-  // Descriptor SHA-256: #{descriptor_hash}; hierarchy SHA-256: #{hierarchy_hash}.
+  // Scalar descriptor SHA-256: #{descriptor_hash}; no occurrence-topology input.
   package enum StaticSignalAnalyzerNRFModelDescriptor {
       package static let structuralIdentity: UInt32 = #{static_root_identity}
       package static let declarationOrdinal: UInt16 = 0

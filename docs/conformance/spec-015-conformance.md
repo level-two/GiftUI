@@ -25,8 +25,9 @@ Collecting for the approved schema-4 amendment. Historical completed evidence
 below applies to its frozen baseline, not the amended host/runtime migration.
 P08 orientation exposes an [exact scoped host contract blocker](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-host-constraint.md);
 the exact correction is now explicitly approved and applied after separate review.
-Approved host component propagation is implemented with 187 lifecycle assertions
-and copy/escape controls. Full schema-4 and runtime-host conformance remain unclaimed. T8.1,
+Approved host/schema component slices compile complete HostConfiguration and pass
+320 assertions per native route plus missing-field/generator/ownership controls.
+Complete supplied application audits and runtime-host conformance remain unclaimed. T8.1,
 HC-RD-001–004 and full P10–P12 obligations remain open; P07's finite pass does
 not satisfy them. [P08 receipt](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/progress.md)
 records source/compiler identities, expected compile controls and guard0/2.

@@ -9,8 +9,14 @@ package enum SignalAnalyzerWorkloadStartupValidation {
         let cardinality = configuration.cardinality
         let pacing = configuration.pacing
 
-        guard workload.schemaVersion == 3 else { return .invalidWorkload }
-        guard workload.semanticNodeOccurrences > 0,
+        guard workload.schemaVersion == 4 else { return .invalidWorkload }
+        guard workload.requiredPathEntries > 0,
+            workload.requiredPayloadBytesPerBank > 0,
+            workload.requiredInteractionIdentityComponents > 0,
+            workload.requiredPathDepth > 0,
+            workload.requiredPathChildFanout > 0,
+            workload.requiredIdentityComponentsPerKey > 0,
+            workload.semanticNodeOccurrences > 0,
             workload.semanticStructuralOccurrences > 0,
             workload.renderSemanticScopeOccurrences > 0,
             workload.layoutScopeOccurrences > 0,
@@ -23,7 +29,20 @@ package enum SignalAnalyzerWorkloadStartupValidation {
             workload.completionFactsPerOpportunity > 0
         else { return .invalidWorkload }
 
-        guard workload.requiredRuntimeLimits == limits,
+        guard let pathEntries = UInt16(exactly: workload.requiredPathEntries),
+            pathEntries <= limits.records.maximumPathEntries,
+            workload.requiredPayloadBytesPerBank <= limits.records.maximumPayloadBytesPerBank,
+            workload.requiredInteractionIdentityComponents
+                <= limits.records.maximumInteractionIdentityComponents,
+            workload.requiredPathDepth <= limits.records.maximumPathDepth,
+            workload.requiredPathChildFanout <= limits.records.maximumPathChildFanout,
+            workload.requiredIdentityComponentsPerKey
+                <= limits.records.maximumIdentityComponentsPerKey,
+            limits.models.maximumModelSlots == 2,
+            limits.models.maximumOwningTickets == 4,
+            limits.models.maximumFramePins == 2,
+            limits.models.maximumModelCaptureBanks == 1,
+            workload.requiredRuntimeLimits == limits,
             workload.semanticNodeOccurrences == limits.semantic.maximumSemanticNodes,
             workload.semanticStructuralOccurrences
                 == limits.maximumSemanticStructuralOccurrences,

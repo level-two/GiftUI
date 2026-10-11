@@ -96,3 +96,53 @@ fixture failure-type and mutable-span corrections were productive. Guard **0/2**
 SPEC-015 is now `implementing`, its owner plan `active`; T8.1/HC-RD-001–004 and
 P08 package exit remain open. Next: schema-4 scalar generation and validation,
 actual supplied storage, then complete counter host/lifetime/early image evidence.
+
+
+## Step 2 — schema-4 scalar generation and complete host-module compile
+
+`SignalAnalyzerHostWorkload` now requires all six non-defaulted fields. Workload
+and Drawing validation accept exactly schema4; zero/malformed requirements reject,
+UInt32 path counts convert exactly to UInt16, and each requirement must fit its
+corresponding records limit. Complete limits remain equal; analyzer model bounds
+are exactly2 slots/4 tickets/2 pins/1 capture bank. The scalar descriptor restores
+approved analyzer34/14/50 depth/body/modifier bounds and layout/renderdepth13;
+other approved logical, pacing, queue and raster limits remain unchanged.
+
+The generator reads only the scalar descriptor and emits all four schema4
+manifests plus complete limits/leaves. It no longer reads hierarchy-shape input,
+synthesizes actual storage bytes or substitutes generated Canvas witness coverage.
+`GeneratedSignalAnalyzerPreset.validatedStorageAudit(storage:)` requires a supplied
+physical RuntimeProfileStorage, checks exact profile/limits and rechecks its audit.
+The removed no-argument projection cannot certify schema4 backing. Remaining
+analyzer consumers of that old entry are P09 migration work; this step certifies
+the complete host module, not the analyzer composition or full repository gate.
+
+The [current design note](../../../../../docs/implementation-designs/spec-015-generated-workload-and-presets.md#current-rfc-014-realization--p08)
+records selected378/34/5 path reservations,7168 payload bytes and204 interaction
+components and their finite-vocabulary rationale. These scalar capacities are not
+actual byte audits or physical budgets. P09 must prove complete analyzer traversal
+and supplied layout; the counter must supply its independent scalar pools/capture0.
+
+Exact validation (after formatter):
+
+```sh
+scripts/format-swift.sh
+ruby scripts/contracts/generate-spec-015-workload.rb --check
+python3 scripts/contracts/check-spec-015-schema4.py --runtime-build .build/contracts/spec-013-runtime-cycle/tmpwj8mqyyn/macos-static
+python3 scripts/contracts/check-spec-015-schema4.py --runtime-build .build/contracts/spec-013-runtime-cycle/tmpke3zvfyl/macos-dynamic
+```
+
+Both fresh routes compile complete HostConfiguration including Generated and pass
+320 assertions each (187 lifecycle +133 workload-stage controls). Six missing-field
+compiler controls reject; both host ownership negatives reject. Ten generator
+missing-field controls and UInt16/UInt32 overflow controls reject; a70000-byte
+UInt32 payload capacity generates without narrowing. Freshness and no hierarchy
+input checks pass. Supplied unrelated actual storage is rejected, not recast as
+analyzer backing. [Static receipt](schema4-macos-static.json) and
+[Dynamic receipt](schema4-macos-dynamic.json) retain exact commands/hashes/logs.
+The previously retained Generated initializer failure is resolved. Guard **0/2**.
+
+Next: actual activation-time runtime/endpoint storage join, independent finite
+counter composition using all nine existing validation stages, cache ticket and
+replacement/lifetime controls, four builds and early linked images. T8.1,
+HC-RD-001–004/package exit and P09–P12 remain open.
