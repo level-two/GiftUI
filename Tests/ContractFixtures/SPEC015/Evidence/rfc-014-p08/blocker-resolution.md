@@ -32,7 +32,7 @@ The investigation progressively removed possible explanations:
 
 | Frozen control | Result and independent review |
 | --- | --- |
-| Callback-local token retained by lifetime annotation | Actual positive passes; reachable negative accepted. [Review](activation-fence/final-review.md). |
+| Declared dependence on a callback-local token | Actual positive passes; reachable negative accepted. [Review](activation-fence/final-review.md). |
 | Actual Span retained in both enum states | Direct Span negative rejects; wrapped owner negative accepted. [Review](activation-span/final-review.md). |
 | Identical out-of-line callback and runtime marker | Actual owner and a minimal enum-only program still accept escape. [Review](activation-boundary/final-review.md). |
 | Immutable Span field outside changing state | Minimal struct positive passes; negative accepted. [Review](activation-struct/final-review.md). |
@@ -47,8 +47,9 @@ No further representation trial is authorized by the closed final control.
 
 An [evidence-only compiler comparison](compiler-comparison/scope.md) is in
 progress, using official Swift 6.3.3 and 6.4.0 packages extracted only beneath
-`.toolchains/`. Package verification is pending; no alternate compiler result
-is claimed. The fixed matrix preserves the frozen sources, target, SDK,
+`.toolchains/`. Both official package signatures and Apple notarization passed
+the approved system trust check; extraction is underway. No alternate compiler
+test result is claimed. The fixed matrix preserves the frozen sources, target, SDK,
 optimization and feature flags. A syntax or feature rejection is not a passing
 containment check. Accepted architecture, supported compiler pins and maintained
 source remain unchanged throughout the comparison.
