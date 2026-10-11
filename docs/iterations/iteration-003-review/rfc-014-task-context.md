@@ -1,6 +1,14 @@
 # RFC-014 task context guide
 
-**Current P08 checkpoint — stopped at activation-time owner join, 2026-10-11:**
+**Current P08 checkpoint — authorized blocker resolution, 2026-10-11:**
+The maintainer requested resolution and bounded delegated work under the
+[recorded scope](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-resolution/authorization.md).
+Strong Astra 6 Medium owns the bounded compiler investigation; Standard Sol 6.1
+Medium supports regression planning. Existing contracts and historical guards
+remain unchanged. The prior [final review](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-join-investigation/final-review.md)
+is complete. No verified activation join or P08 exit is claimed yet.
+
+**Historical P08 stop checkpoint, superseded only by the bounded scope above:**
 Approved correction `4dbdc2e0`, host propagation `6eda65d0` and schema4 slice
 `c39733de` are committed. Both native complete HostConfiguration component gates
 pass320 assertions plus ownership/missing-field/generator controls. The attempted

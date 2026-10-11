@@ -37,8 +37,9 @@ Separately authorized evidence-only investigation, continued under independent
 accounting review `c05e6d35`, stopped after3/6 invocations on2/2 layouts with no
 positive/negative pass; conservative candidate guard2/2, production guard2/2 unchanged.
 Its [finite result](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-join-investigation/result.md)
-awaits independent read-only final review; further compilation/integration requires
-a separate explicit decision. P08 remains incomplete.
+has completed [independent final review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-join-investigation/final-review.md).
+The maintainer subsequently authorized [bounded blocker resolution](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-resolution/authorization.md)
+under unchanged contracts; no new passing join is claimed. P08 remains incomplete.
 
 **Current amendment — 2026-10-05:** Approved five-second retention is implemented and all four hardware-free profiles pass in the [fresh integration](../iterations/iteration-002-cleanup/evidence/18-retention-integration/result.md). Focused nRF connected checks/restoration and current Pi deployment/ARMv6 rehearsal/bounded physical endpoint loop succeed. Original exception authority remains unchanged.
 

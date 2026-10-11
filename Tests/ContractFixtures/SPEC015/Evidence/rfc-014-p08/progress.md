@@ -1,6 +1,12 @@
 # RFC-014 P08 execution receipt — 2026-10-11
 
-**Current: production remains stopped at2/2; evidence investigation stopped after3/6 invocations on2/2 layouts, no passing controls, conservative candidate guard2/2.**
+**Current: bounded blocker resolution authorized.** The maintainer requested
+resolution, bounded delegated assignments and a commit for each step. See
+[authorization and finite controls](activation-resolution/authorization.md).
+The prior independent final review is complete. Historical budgets and failed
+controls remain unchanged; no new verified join or package pass is claimed.
+
+**Historical stop: production remains stopped at2/2; evidence investigation stopped after3/6 invocations on2/2 layouts, no passing controls, conservative candidate guard2/2.**
 The [bounded stop packet](activation-join-stop/stop.md) preserves exact controls,
 commands and narrowed cause. `c39733de` is the last validated maintained source;
 P08 remains incomplete. Earlier0/2 checkpoints below are historical.
