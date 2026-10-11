@@ -1,0 +1,8 @@
+curl --fail --location --retry 2 --output .toolchains/downloads/swift-6.4.0-RELEASE-raspios-bookworm-armv6-sdk.tar.gz https://github.com/swift-embedded-linux/armhf-debian/releases/download/6.4.0/swift-6.4.0-RELEASE-raspios-bookworm-armv6-sdk.tar.gz
+tar -tzf /Users/eugene/work/GiftUI/.toolchains/downloads/swift-6.4.0-RELEASE-raspios-bookworm-armv6-sdk.tar.gz
+tar -xzf /Users/eugene/work/GiftUI/.toolchains/downloads/swift-6.4.0-RELEASE-raspios-bookworm-armv6-sdk.tar.gz -C /Users/eugene/work/GiftUI/.toolchains/sdk
+/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc --version
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.4.0-RELEASE-osx/usr/bin/swiftc --version
+bash -n scripts/contracts/compiler-baseline.sh scripts/raspberry-pi/toolchain.env scripts/nrf52840/toolchain.env
+scripts/raspberry-pi/doctor.sh
+scripts/nrf52840/doctor.sh

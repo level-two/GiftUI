@@ -1,0 +1,27 @@
+[
+  {
+    "name": "shell-syntax",
+    "command": [
+      "bash",
+      "-n",
+      "scripts/contracts/compiler-baseline.sh",
+      "scripts/raspberry-pi/toolchain.env",
+      "scripts/nrf52840/toolchain.env"
+    ],
+    "exit": 0
+  },
+  {
+    "name": "pi-doctor",
+    "command": [
+      "scripts/raspberry-pi/doctor.sh"
+    ],
+    "exit": 0
+  },
+  {
+    "name": "nrf-doctor",
+    "command": [
+      "scripts/nrf52840/doctor.sh"
+    ],
+    "exit": 0
+  }
+]

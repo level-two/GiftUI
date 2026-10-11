@@ -1,0 +1,26 @@
+{
+   "version":1,
+   "sdk":"/Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.4.0-RELEASE-raspios-bookworm-armv6/raspios-bookworm",
+   "toolchain-bin-dir":"/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin",
+   "target":"armv6-unknown-linux-gnueabihf",
+   "dynamic-library-extension":"so",
+   "extra-cc-flags":[
+      "-march=armv6",
+      "-mfpu=vfp",
+      "-mfloat-abi=hard",
+      "-D_FILE_OFFSET_BITS=64",
+      "-fPIC"
+   ],
+   "extra-swiftc-flags":[
+      "-target", "armv6-unknown-linux-gnueabihf",
+      "-use-ld=lld",
+      "-Xcc", "--gcc-toolchain=/Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.4.0-RELEASE-raspios-bookworm-armv6/raspios-bookworm/usr",
+      "-Xlinker", "-rpath", "-Xlinker", "/usr/lib/swift/linux",
+      "-Xlinker", "-rpath", "-Xlinker", "/usr/lib/swift/linux/armv6",
+      "-resource-dir", "/Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.4.0-RELEASE-raspios-bookworm-armv6/raspios-bookworm/usr/lib/swift",
+      "-sdk", "/Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.4.0-RELEASE-raspios-bookworm-armv6/raspios-bookworm",
+      "-latomic"
+   ],
+   "extra-cpp-flags":[
+   ]
+}

@@ -6,10 +6,10 @@ giftui_rfc014_select_compiler() {
     local root="$1" profile="$2"
     case "${profile}" in
         macos-dynamic | macos-static | raspberry-pi-armv6)
-            GIFTUI_CONTRACT_SWIFTC="${root}/.toolchains/host/swift-6.3.2-RELEASE-osx/usr/bin/swiftc"
+            GIFTUI_CONTRACT_SWIFTC="${root}/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc"
             ;;
         nrf52840-embedded)
-            GIFTUI_CONTRACT_SWIFTC="${root}/.toolchains/nrf52840/swift/swift-6.3.2-RELEASE-osx/usr/bin/swiftc"
+            GIFTUI_CONTRACT_SWIFTC="${root}/.toolchains/nrf52840/swift/swift-6.4.0-RELEASE-osx/usr/bin/swiftc"
             ;;
         *) printf 'error: unknown migration profile: %s\n' "${profile}" >&2; return 1 ;;
     esac
@@ -28,7 +28,7 @@ giftui_rfc014_check_compiler() {
     shift 3
     local version
     version="$("${compiler}" --version 2>&1)" || return 1
-    [[ "${version}" == *'Apple Swift version 6.3.2 (swift-6.3.2-RELEASE)'* ]] || {
+    [[ "${version}" == *'Apple Swift version 6.4 (swift-6.4-RELEASE)'* ]] || {
         printf 'error: RFC-014 compiler identity mismatch: %s\n' "${version}" >&2
         return 1
     }

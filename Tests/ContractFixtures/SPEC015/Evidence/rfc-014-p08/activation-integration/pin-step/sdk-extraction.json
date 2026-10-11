@@ -1,0 +1,25 @@
+{
+  "archive": ".toolchains/downloads/swift-6.4.0-RELEASE-raspios-bookworm-armv6-sdk.tar.gz",
+  "archive_bytes": 231261913,
+  "archive_sha256": "3332907e1fe366a24cdd9b4af566cb4f1a1f39aa8fad785cb328af17c7484848",
+  "expected_sha256": "3332907e1fe366a24cdd9b4af566cb4f1a1f39aa8fad785cb328af17c7484848",
+  "verified_before_extraction": true,
+  "listing_command": [
+    "tar",
+    "-tzf",
+    "/Users/eugene/work/GiftUI/.toolchains/downloads/swift-6.4.0-RELEASE-raspios-bookworm-armv6-sdk.tar.gz"
+  ],
+  "listing_exit": 0,
+  "members": 6973,
+  "extraction_command": [
+    "tar",
+    "-xzf",
+    "/Users/eugene/work/GiftUI/.toolchains/downloads/swift-6.4.0-RELEASE-raspios-bookworm-armv6-sdk.tar.gz",
+    "-C",
+    "/Users/eugene/work/GiftUI/.toolchains/sdk"
+  ],
+  "extraction_exit": 0,
+  "extraction_stdout": "",
+  "extraction_stderr": "",
+  "sdk_directory": ".toolchains/sdk/swift-6.4.0-RELEASE-raspios-bookworm-armv6"
+}

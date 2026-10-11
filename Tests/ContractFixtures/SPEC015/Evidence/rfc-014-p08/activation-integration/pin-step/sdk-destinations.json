@@ -1,0 +1,18 @@
+[
+  {
+    "path": ".toolchains/sdk/swift-6.4.0-RELEASE-raspios-bookworm-armv6/raspios-bookworm.json",
+    "original_sha256": "16177f260e2f3e02b04a5c8f9a7cd1348a6e319c9bb59808356f6e5fcb169edd",
+    "localized_sha256": "c286ab7121fd5604cdd278442b82671d97a5d6bfa171f0e02d177ac5945406be",
+    "target": "armv6-unknown-linux-gnueabihf",
+    "sdk": "/Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.4.0-RELEASE-raspios-bookworm-armv6/raspios-bookworm",
+    "toolchain_bin_dir": "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin"
+  },
+  {
+    "path": ".toolchains/sdk/swift-6.4.0-RELEASE-raspios-bookworm-armv6/raspios-bookworm-static.json",
+    "original_sha256": "beaa4191dc2d701cb5d60a4f1c1df9edb68ef56cbf2f04da1a48c6ff526feecf",
+    "localized_sha256": "0126b2add4fb612622d7309c4a32eb81376dbe49ce332dd8593a50c664fd3030",
+    "target": "armv6-unknown-linux-gnueabihf",
+    "sdk": "/Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.4.0-RELEASE-raspios-bookworm-armv6/raspios-bookworm",
+    "toolchain_bin_dir": "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin"
+  }
+]

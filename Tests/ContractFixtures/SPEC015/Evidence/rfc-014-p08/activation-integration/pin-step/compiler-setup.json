@@ -1,0 +1,69 @@
+{
+  "approval_commit": "267616c9",
+  "scope": "Approved6.4 compiler pins and local SDK setup; no compiler probes/builds",
+  "prior_setup_receipt": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/compiler-comparison/setup-receipt.json",
+  "prior_setup_receipt_sha256": "391982419638d67e33f35d26cc68321bf6a26b0424473e65b84f0029c4bc26ab",
+  "package_sha256": "8fd03185b98fe27f54a54631c2449decf75d5b466ce8e34abbd414141063c6aa",
+  "compiler_sha256": "79ae5c26645489fb783ae980f0f1bdae810f90fb180c9ac39808807b65e9fd69",
+  "links": [
+    {
+      "path": ".toolchains/host/swift-6.4.0-RELEASE-osx",
+      "link": "../p08-comparison/expanded/swift-6.4.0-RELEASE-osx/swift-6.4.0-RELEASE-osx-package.pkg/Payload",
+      "resolved": ".toolchains/p08-comparison/expanded/swift-6.4.0-RELEASE-osx/swift-6.4.0-RELEASE-osx-package.pkg/Payload"
+    },
+    {
+      "path": ".toolchains/nrf52840/swift/swift-6.4.0-RELEASE-osx",
+      "link": "../../host/swift-6.4.0-RELEASE-osx",
+      "resolved": ".toolchains/p08-comparison/expanded/swift-6.4.0-RELEASE-osx/swift-6.4.0-RELEASE-osx-package.pkg/Payload"
+    },
+    {
+      "path": ".toolchains/downloads/swift-6.4.0-RELEASE-osx.pkg",
+      "link": "../p08-comparison/downloads/swift-6.4.0-RELEASE-osx.pkg",
+      "resolved": ".toolchains/p08-comparison/downloads/swift-6.4.0-RELEASE-osx.pkg"
+    },
+    {
+      "path": ".toolchains/nrf52840/downloads/swift-6.4.0-RELEASE-osx.pkg",
+      "link": "../../p08-comparison/downloads/swift-6.4.0-RELEASE-osx.pkg",
+      "resolved": ".toolchains/p08-comparison/downloads/swift-6.4.0-RELEASE-osx.pkg"
+    }
+  ],
+  "versions": [
+    {
+      "platform": "host",
+      "command": [
+        "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc",
+        "--version"
+      ],
+      "exit": 0,
+      "stdout": "Apple Swift version 6.4 (swift-6.4-RELEASE)\nTarget: arm64-apple-macosx26.0\n",
+      "stderr": "",
+      "compiler_sha256": "79ae5c26645489fb783ae980f0f1bdae810f90fb180c9ac39808807b65e9fd69"
+    },
+    {
+      "platform": "nrf52840",
+      "command": [
+        "/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.4.0-RELEASE-osx/usr/bin/swiftc",
+        "--version"
+      ],
+      "exit": 0,
+      "stdout": "Apple Swift version 6.4 (swift-6.4-RELEASE)\nTarget: arm64-apple-macosx26.0\n",
+      "stderr": "",
+      "compiler_sha256": "79ae5c26645489fb783ae980f0f1bdae810f90fb180c9ac39808807b65e9fd69"
+    }
+  ],
+  "preserved_old_compilers": [
+    {
+      "path": ".toolchains/host/swift-6.3.2-RELEASE-osx/usr/bin/swiftc",
+      "sha256": "d8e40107da0e2c1c59640a983faea326d5d2bddfe81f7609db14bade43c4a5b9"
+    },
+    {
+      "path": ".toolchains/nrf52840/swift/swift-6.3.2-RELEASE-osx/usr/bin/swiftc",
+      "sha256": "d8e40107da0e2c1c59640a983faea326d5d2bddfe81f7609db14bade43c4a5b9"
+    }
+  ],
+  "old_sdk_preserved": true,
+  "reported_version": "6.4",
+  "release_tag": "swift-6.4.0-RELEASE",
+  "compiler_builds": 0,
+  "hardware_actions": false
+}

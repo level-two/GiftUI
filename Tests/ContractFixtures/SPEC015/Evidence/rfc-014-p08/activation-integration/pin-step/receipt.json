@@ -1,0 +1,47 @@
+{
+  "date": "2026-10-12",
+  "approval_commit": "267616c9",
+  "reported_compiler_version": "6.4",
+  "official_release_tag": "swift-6.4.0-RELEASE",
+  "inputs": {
+    "scripts/contracts/compiler-baseline.sh": "d1b1b075a337aa220a4694b4d22fd6da3f08a321f0ce06707f7496c7d62904c2",
+    "scripts/raspberry-pi/toolchain.env": "839e5d565637012434f60ae107ff7dc10c809cff52ab28a3e39fcd0d6e72a007",
+    "scripts/nrf52840/toolchain.env": "0fc9f2a6c4ee824c45bee2e6d1f88d12914950f0fe37a354ef4912a87dfd2e2e"
+  },
+  "checks": [
+    {
+      "name": "shell-syntax",
+      "command": [
+        "bash",
+        "-n",
+        "scripts/contracts/compiler-baseline.sh",
+        "scripts/raspberry-pi/toolchain.env",
+        "scripts/nrf52840/toolchain.env"
+      ],
+      "exit": 0
+    },
+    {
+      "name": "pi-doctor",
+      "command": [
+        "scripts/raspberry-pi/doctor.sh"
+      ],
+      "exit": 0
+    },
+    {
+      "name": "nrf-doctor",
+      "command": [
+        "scripts/nrf52840/doctor.sh"
+      ],
+      "exit": 0
+    }
+  ],
+  "compiler_setup": "compiler-setup.json",
+  "sdk_extraction": "sdk-extraction.json",
+  "sdk_destinations": "sdk-destinations.json",
+  "setup_operations": "Existing verified6.4 package/payload reused through non-overwriting project-local symlinks; SDK SHA256 checked before tar extraction, both destination /opt prefixes and toolchain-bin-dir localized by the existing setup recipe.",
+  "compiler_probes_or_builds": 0,
+  "global_selection_changed": false,
+  "installer_run": false,
+  "hardware_actions": false,
+  "remaining": "Fresh macro/module/target builds, ownership/lifetime and host integration checks, final ABI/resource/regression evidence remain assigned separately."
+}

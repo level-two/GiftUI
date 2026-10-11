@@ -1,0 +1,16 @@
+{
+  "checks.json": "f137d198611465384df14fd54ce67b34aad68fcdf64266bc4be2c77c3ae8bdd1",
+  "commands.txt": "aef0b1241684a42a05664a531d143f29151577c1931d9cafc5fbb36df83e7446",
+  "compiler-setup.json": "9617aa717b41166de91e975dcf3d161695778d4288100ec696ee0d901de84989",
+  "nrf-doctor.log": "48cce1f76df4b4ebe798f1eb88b4aaea3e56a2fb001fa51c001a9d38bf9d7344",
+  "pi-doctor.log": "71b313714fcdfc53362b1ae1e9a32cad5bdc35e1caa2ff4a696a2941b0838cfe",
+  "raspios-bookworm-static.json": "0126b2add4fb612622d7309c4a32eb81376dbe49ce332dd8593a50c664fd3030",
+  "raspios-bookworm-static.json.original": "beaa4191dc2d701cb5d60a4f1c1df9edb68ef56cbf2f04da1a48c6ff526feecf",
+  "raspios-bookworm.json": "c286ab7121fd5604cdd278442b82671d97a5d6bfa171f0e02d177ac5945406be",
+  "raspios-bookworm.json.original": "16177f260e2f3e02b04a5c8f9a7cd1348a6e319c9bb59808356f6e5fcb169edd",
+  "receipt.json": "a105b69aa5e9c0595e7489c7bc7bd77fb36f7d4893e21f450e7275d8516379f4",
+  "result.md": "cf14094b9cc6831f1bc595b5c1629721e3b4fc079420987b0db10813be09b8da",
+  "sdk-destinations.json": "dfee0b052e1f65beb3f9205964ae9591bcb6a0fa21900ec27645c5c4de96d235",
+  "sdk-extraction.json": "b2fa0fb00f169bc78407582d897cde47f2c381067b76c8d66138825792fc48ee",
+  "shell-syntax.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}
