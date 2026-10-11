@@ -1,5 +1,35 @@
 # RFC-014 P06 progress
 
+## Independent exit-review dispatch — 2026-10-11
+
+- Input clean `5a24a271`; review `a17724b2..5a24a271`, with implementation
+  ending at `909a7dab` and approved exact constraint amendment `e6f10f67`.
+  P03/P04 prerequisites and sequential P05 boundary passed.
+- Scope: finite P06 / SPEC-012 T10.1 and DR-RD-001–004 applicable portions,
+  retained geometry/ownership/failure contracts. Read the separate review packet
+  below, owner matrix, approved amendments, ADR-035/036/037 and retained ADRs,
+  resource bounds and exact four-profile receipts. No new contract is delegated.
+- Strong `gpt-6-astra`/`high`, C3/R3, independent of implementation. Inspect
+  source lowering/witness completeness, actual owner/backing lifetime ties,
+  staging/read/transfer/release paths, marker-only semantic publication,
+  finite bounds, error precedence and immutable geometry/pixel oracle evidence.
+  Assess complete reserved union growth and the limits of allocator claims.
+- Expected outcomes come from approved contracts and preserved controls, not
+  merely the implementation-authored fixtures. Allow source inspection and
+  narrowly justified reproductions. Independently verify receipt hashes and
+  dirty-but-matched source provenance; no default rerun of all four routes.
+- Allowed output: review report, reproducible evidence-verification artifact,
+  associated task-evidence links and committed review receipt. No production
+  repair, contract edit, successor work or parent package-pass disposition.
+- Commands: `git diff a17724b2..5a24a271`, hash verification based on
+  `final-index.json`, focused reproductions only for identified concerns,
+  `scripts/validate-governance.rb` and `git diff --check` for final review records.
+  Do not repeat the unverified optional P05 global dependency investigation.
+- Counter remains **0 of 2** across all handoffs. Return blockers to the parent
+  with exact lines/reproduction; contract/scope decisions require the maintainer.
+  Preserve component/native/cross-build versus P07–P12 evidence boundaries.
+  P06 exit remains pending this separate review and parent disposition.
+
 ## Implementation handoff — finite P06 evidence complete, review pending
 
 Implementation source ends at `909a7dab`. The final evidence index and owner
