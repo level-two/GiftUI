@@ -13,13 +13,15 @@ import GiftUISemanticCore
 import CycleSchema
 
 func exercisePipeline<G, C, R, H>(models: borrowing ObservableModelScope<CycleOwnedModel, CycleModelSchema>, root: borrowing ObservableStateRootScope<CycleOwnedModel, SemanticCompleteIdentity>, semantic: borrowing SemanticRecordStore<CyclePayload>, values: borrowing CanvasStagedValues<SemanticRecordReference, CycleValueTable>, dynamic: Bool, geometry: consuming G, interaction: consuming InteractionOwnedKeyState<C, R, H>, audit: RuntimeStorageAudit, control: inout CycleControl) -> CycleReturnedWorkspaces<G, C, R, H> where G: CycleGeometry, C: CycleCandidateBacking, R: CycleCommittedBacking, H: CycleHitBacking, C.Identity == SemanticCompleteIdentity, R.Identity == SemanticCompleteIdentity, H.Identity == SemanticCompleteIdentity {
+    cycleTrace("begin", dynamic ? "dynamic" : "static")
+    defer { cycleTrace("end", dynamic ? "dynamic" : "static") }
     var transferredGeometry: G? = consume geometry
     var transferredInteraction: InteractionOwnedKeyState<C, R, H>? = consume interaction
     return withUnsafeMutablePointer(to: &control) { trace in
         var owner = CyclePipelineOwner(models: models.borrowedScope(), root: root.borrowedRoot(), semantic: semantic.borrowedStore(), values: values.borrowedValues(), geometry: transferredGeometry.take()!, interaction: transferredInteraction.take()!, control: trace, limits: audit.limits)
         var checks = 0
         func expect(_ value: Bool) { checks += 1; precondition(value) }
-        var result = RuntimeCompletePipeline.run(owner: &owner)
+        var result = owner.runTracedPipeline()
         trace.pointee.result = result
         if case .failed = result {
             expect(models.phase == .mutating && values.count == 0 && !owner.frameActive)
@@ -59,29 +61,29 @@ func exercisePipeline<G, C, R, H>(models: borrowing ObservableModelScope<CycleOw
         catch { preconditionFailure("published lost by attempt reset") }
         trace.pointee.mutate = false
         trace.pointee.mutate = true; trace.pointee.offer = .retryableRefusal
-        result = RuntimeCompletePipeline.run(owner: &owner)
+        result = owner.runTracedPipeline()
         guard case .completed(let refused) = result else { preconditionFailure("refusal pipeline") }
         expect(refused.operational == .retryableRefusal && refused.disposition.presentationIntentState == .pending)
         expect(trace.pointee.applied == 1 && trace.pointee.commits == 1)
         trace.pointee.offer = .accepted
-        result = RuntimeCompletePipeline.run(owner: &owner)
+        result = owner.runTracedPipeline()
         guard case .completed(let retried) = result else { preconditionFailure("retry pipeline") }
         expect(retried.publication.semanticRevision == refused.publication.semanticRevision && !retried.publication.changed)
         expect(trace.pointee.applied == 1 && trace.pointee.commits == 2)
         expect(models.phase == .mutating && values.count == 0)
         trace.pointee.mutate = true; trace.pointee.failAfterMutation = true
-        result = RuntimeCompletePipeline.run(owner: &owner)
+        result = owner.runTracedPipeline()
         guard case .failed(let partial) = result else { preconditionFailure("partial mutation") }
         expect(partial.stage == .applyAdmittedWork && partial.disposition.semanticDisposition == .dirty)
         expect(trace.pointee.applied == 2 && partial.disposition.wakeReasons.contains(.semanticDirty))
         trace.pointee.failAfterMutation = false
-        result = RuntimeCompletePipeline.run(owner: &owner)
+        result = owner.runTracedPipeline()
         guard case .completed(let recovered) = result else { preconditionFailure("partial recovery") }
         expect(recovered.publication.changed && trace.pointee.applied == 2)
         for offer: FrameOfferDisposition in [.backpressured, .nonRetryableRefusal] {
             trace.pointee.offer = offer
             let streams = trace.pointee.streams, commits = trace.pointee.commits
-            result = RuntimeCompletePipeline.run(owner: &owner)
+            result = owner.runTracedPipeline()
             switch result {
             case .completed(let refusal):
                 expect(offer == .backpressured && refusal.disposition.logicalFrameDisposition == .aborted)
@@ -98,7 +100,7 @@ func exercisePipeline<G, C, R, H>(models: borrowing ObservableModelScope<CycleOw
             trace.pointee.fault = RuntimeCompletePipelineStage(rawValue: raw)!
             trace.pointee.stages = 0; trace.pointee.cleanups = 0
             let finalized = trace.pointee.finalized
-            result = RuntimeCompletePipeline.run(owner: &owner)
+            result = owner.runTracedPipeline()
             guard case .failed(let failed) = result else { preconditionFailure("fault pipeline") }
             expect(failed.stage.rawValue == raw && failed.failure == .execution(.capacityExhausted))
             expect(trace.pointee.stages == (UInt16(1) << (raw + 1)) - 1)
@@ -109,12 +111,12 @@ func exercisePipeline<G, C, R, H>(models: borrowing ObservableModelScope<CycleOw
             }
         }
         trace.pointee.fault = nil; trace.pointee.show = false; owner.changed = true
-        result = RuntimeCompletePipeline.run(owner: &owner)
+        result = owner.runTracedPipeline()
         guard case .completed = result else { preconditionFailure("retirement pipeline") }
         expect(owner.rootIdentity == nil && owner.interaction.committedRecordCount == 0)
         expect(models.phase == .mutating && values.count == 0)
         owner.quiescent = true
-        result = RuntimeCompletePipeline.run(owner: &owner)
+        result = owner.runTracedPipeline()
         guard case .failed(let stopped) = result else { preconditionFailure("quiescence pipeline") }
         expect(stopped.failure == .execution(.requiredFacilityUnavailable))
         expect(models.phase == .mutating)

@@ -803,3 +803,20 @@ the failure and progressed to a passing run. No contract, compiler, hardware or
 scope change. This is the requested fix milestone awaiting the same independent
 reviewer; no other P07 work has started, and later lifecycle/transcript/final-route
 and exit review obligations remain open.
+
+
+## Lifecycle continuation step 1 — actual profile transcripts (2026-10-11)
+
+P07 now streams complete native logical observations from the actual Static and
+Dynamic cycle owners and compares every case in the focused driver. Render
+headers, fills, glyph headers and values, stroke headers, all points/subpaths,
+offer provenance/disposition, typed pipeline results, stage order and cleanup
+are included. The observer retains no runtime storage; target routes compile
+without host output. [Receipt](lifecycle-step-1-macos-static.json) and
+[complete compared values](logical-transcripts.json) preserve the result.
+
+Fresh formatted macOS Static gate: 2752 assertions, 12 required negative controls,
+identical profile transcripts. Resumed consecutive unproductive repairs: 0/2.
+This extends evidence; it does not pass P07 or cover the still-open pointer,
+terminal lifecycle, finite retry and malformed Drawing append cases. Final four
+routes and independent Strong exit review remain required.

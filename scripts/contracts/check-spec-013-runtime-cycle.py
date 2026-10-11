@@ -140,12 +140,28 @@ for name, source, diagnostic in (
     negative.write_text(binding_imports + source + '\n')
     run(name, [compiler, *flags, '-module-name', 'ConcreteBindingNegative', '-typecheck', negative], failure=diagnostic)
 storage_reports = {}
+logical_transcripts = {}
 if profile.startswith('macos'):
     main = out / 'Main.swift'
     main.write_text('import RuntimeCycleProbe\n@main struct Main { static func main() { print("P07 values assertions=\\(giftuiP07Values() + Int(giftuiP07FrameLease()) + giftuiP07CycleSemantic()) failures=0") } }\n')
     run('link', [compiler, *flags, main, base / 'GiftUI.o', *sorted(out.glob('*.o')), '-o', out / 'runtime-cycle'])
     output = run('execute', [out / 'runtime-cycle']).strip()
     execution = output.splitlines()[-1]
+    active = None
+    for line in output.splitlines():
+        if line.startswith('P07TRACE begin '):
+            assert active is None
+            active = line.split()[-1]
+            logical_transcripts.setdefault(active, []).append([])
+        elif line.startswith('P07TRACE end '):
+            assert active == line.split()[-1]
+            active = None
+        elif active is not None and line.startswith('P07TRACE '):
+            logical_transcripts[active][-1].append(line.removeprefix('P07TRACE '))
+    assert active is None
+    assert set(logical_transcripts) == {'static', 'dynamic'}
+    assert logical_transcripts['static'] and logical_transcripts['static'] == logical_transcripts['dynamic'], 'actual profile logical transcripts differ'
+    (out / 'logical-transcripts.json').write_text(json.dumps(logical_transcripts, indent=2) + '\n')
     for line in output.splitlines():
         parts = line.split()
         if not parts or not parts[0].startswith('P07-'): continue
@@ -169,13 +185,13 @@ else:
     arch = 'v6' if profile == 'raspberry-pi-armv6' else 'v7E-M'
     assert re.search(r'Tag_CPU_arch: ' + arch + r'\s*$', abi, re.MULTILINE)
     execution = 'cross-compiled only; no target execution'
-report = {'package': 'P07', 'step': 'frame-acquisition-cleanup', 'profile': profile,
+report = {'package': 'P07', 'step': 'actual-profile-logical-transcripts', 'profile': profile,
           'source_commit': subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=ROOT, text=True).strip(),
           'source_dirty': bool(subprocess.check_output(['git', 'status', '--porcelain'], cwd=ROOT, text=True)),
           'inputs': {str(p.relative_to(ROOT)): digest(p) for p in sorted(set(inputs))},
           'core_receipt': str((base / 'result.json').relative_to(ROOT)), 'core_receipt_sha256': digest(base / 'result.json'),
           'compiler': core['compiler'], 'compiler_sha256': core['compiler_sha256'],
-          'commands': commands, 'checks': checks, 'execution': execution, 'storage_reports': storage_reports,
+          'commands': commands, 'checks': checks, 'execution': execution, 'storage_reports': storage_reports, 'logical_transcript_cases': len(logical_transcripts.get('static', [])),
           'artifacts': {p.name: {'sha256': digest(p), 'bytes': p.stat().st_size} for p in out.iterdir()
                         if p.is_file() and p.name != 'result.json'}}
 (out / 'result.json').write_text(json.dumps(report, indent=2, sort_keys=True) + '\n')

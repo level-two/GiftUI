@@ -63,6 +63,7 @@ struct CycleEndpoint: SynchronousFrameEndpoint {
     var calls = 0
     var streams = 0
     mutating func offer(provenance: FrameProvenance, body: (inout CycleRenderSink) -> FrameStreamResult) -> FrameOfferResult {
+        cycleTrace("offer", disposition); cycleTrace("provenance", provenance)
         calls += 1
         guard disposition == .accepted else { return .init(disposition: disposition, failure: disposition == .failed ? .invalidEnvelope : nil)! }
         sink = CycleRenderSink(); streams += 1
@@ -122,7 +123,13 @@ where Geometry: CycleGeometry, Candidate: CycleCandidateBacking, Committed: Cycl
         CycleReturnedWorkspaces(geometry: geometry, interaction: interaction, checks: checks)
     }
 
+    mutating func runTracedPipeline() -> RuntimeCompletePipelineResult<RuntimeOwnerFailure> {
+        let result = RuntimeCompletePipeline.run(owner: &self)
+        cycleTrace("result", result)
+        return result
+    }
     mutating func boundary(_ stage: RuntimeCompletePipelineStage) -> RunCycleFailure<RuntimeOwnerFailure>? {
+        cycleTrace("stage", stage)
         control.pointee.stages |= UInt16(1) << stage.rawValue
         if control.pointee.fault == stage { return .execution(.capacityExhausted) }
         return nil
@@ -311,6 +318,7 @@ where Geometry: CycleGeometry, Candidate: CycleCandidateBacking, Committed: Cycl
     }
     mutating func cleanup(_ action: RuntimeCleanupAction) {
         precondition(control.pointee.cleanupCount < 9)
+        cycleTrace("cleanup", action)
         control.pointee.cleanupOrder[control.pointee.cleanupCount] = action.rawValue
         control.pointee.cleanupCount += 1
         precondition(control.pointee.cleanups & (UInt16(1) << action.rawValue) == 0)
@@ -333,6 +341,7 @@ where Geometry: CycleGeometry, Candidate: CycleCandidateBacking, Committed: Cycl
         }
     }
     mutating func applyDisposition(_ disposition: RuntimePipelineDisposition) {
+        cycleTrace("disposition", disposition)
         changed = disposition.semanticDisposition == .dirty
         pending = disposition.presentationIntentState == .pending
     }
@@ -347,6 +356,7 @@ where Geometry: CycleGeometry, Candidate: CycleCandidateBacking, Committed: Cycl
             precondition(phase.transition(to: .idle) == nil)
         }
         control.pointee.context = phase.context
+        cycleTrace("finalized", (completedContext, control.pointee.applied, control.pointee.commits, interaction.committedRecordCount, values.count, models.phase))
         control.pointee.finalized += 1
     }
 }

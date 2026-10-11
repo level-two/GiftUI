@@ -18,7 +18,7 @@ extension CyclePipelineOwner: ExecutionOpportunityRunner {
         guard !control.pointee.unavailable else {
             return .failure(phase.context, .execution(.requiredFacilityUnavailable), nil)
         }
-        let result = RuntimeCompletePipeline.run(owner: &self)
+        let result = runTracedPipeline()
         control.pointee.result = result
         let disposition: RuntimePipelineDisposition
         let operational: ExecutionOperational?

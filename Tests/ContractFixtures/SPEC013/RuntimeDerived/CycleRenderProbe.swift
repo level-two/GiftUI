@@ -7,6 +7,14 @@ import GiftUIRenderLowering
 import GiftUIReferenceTextResources
 import GiftUISemanticCore
 
+// Native evidence streams values immediately; no transcript buffer is owned by
+// either runtime. Embedded routes compile the same sink without host observation.
+func cycleTrace<T>(_ label: StaticString, _ value: T) {
+    #if !hasFeature(Embedded)
+    print("P07TRACE", label, value)
+    #endif
+}
+
 package struct CycleRenderSink: DrawingOperationSink {
     package let capacity = RenderSinkCapacity(maximumOperations: 128, maximumPositionedGlyphs: 224)
     var header: RenderPlanHeader?
@@ -16,17 +24,18 @@ package struct CycleRenderSink: DrawingOperationSink {
     var points: UInt16 = 0
     var finishes = 0
     var discards = 0
-    package mutating func begin(_ header: RenderPlanHeader) -> Bool { self.header = header; return true }
-    package mutating func fillRect(_ operation: FillRectOperation) -> Bool { operations += 1; return true }
-    package mutating func beginPositionedGlyphs(_ operation: PositionedGlyphOperationHeader) -> Bool { operations += 1; return true }
-    package mutating func positionedGlyph(_ glyph: PositionedGlyph) -> Bool { glyphs += 1; return true }
-    package mutating func endPositionedGlyphs() -> Bool { true }
-    package mutating func finish() -> Bool { finishes += 1; return true }
-    package mutating func discard() { discards += 1 }
+    package mutating func begin(_ header: RenderPlanHeader) -> Bool { cycleTrace("render.begin", header); self.header = header; return true }
+    package mutating func fillRect(_ operation: FillRectOperation) -> Bool { cycleTrace("render.fill", operation); operations += 1; return true }
+    package mutating func beginPositionedGlyphs(_ operation: PositionedGlyphOperationHeader) -> Bool { cycleTrace("render.glyphs.begin", operation); operations += 1; return true }
+    package mutating func positionedGlyph(_ glyph: PositionedGlyph) -> Bool { cycleTrace("render.glyph", glyph); glyphs += 1; return true }
+    package mutating func endPositionedGlyphs() -> Bool { cycleTrace("render.glyphs.end", 0); return true }
+    package mutating func finish() -> Bool { cycleTrace("render.finish", 0); finishes += 1; return true }
+    package mutating func discard() { cycleTrace("render.discard", 0); discards += 1 }
     package mutating func straightLineStroke<S: StraightLineStrokeView>(_ stroke: borrowing S) -> Bool {
+        cycleTrace("render.stroke", stroke.header)
         operations += 1; strokes += 1
-        for i: UInt16 in 0..<stroke.header.pointCount { let point = stroke.point(at: i); precondition(point != nil); points += 1 }
-        for i: UInt16 in 0..<stroke.header.subpathCount { let subpath = stroke.subpath(at: i); precondition(subpath != nil) }
+        for i: UInt16 in 0..<stroke.header.pointCount { let point = stroke.point(at: i); precondition(point != nil); cycleTrace("render.point", point!); points += 1 }
+        for i: UInt16 in 0..<stroke.header.subpathCount { let subpath = stroke.subpath(at: i); precondition(subpath != nil); cycleTrace("render.subpath", subpath!) }
         return true
     }
 }
