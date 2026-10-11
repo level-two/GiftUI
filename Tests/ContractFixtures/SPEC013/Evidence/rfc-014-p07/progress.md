@@ -47,3 +47,16 @@ passed their separate Strong reviews; P06's final receipt is
   not reset this allowance. Contract/scope decisions return to the user.
 
 Result: implementation pending. Package exit review pending.
+
+## Step 1 — begin authorized implementation
+
+SPEC-013 is now implementing and its owner plan active. T11.1 remains open.
+The current need is ITERATION-003 I3-04 / IT-AC-006 actual runtime derivation
+across four configurations, retaining ITERATION-001 analyzer/stack semantics.
+The accepted ADR-035/036/037 and approved runtime amendment provide authority.
+Existing profile bindings still reference the former Canvas surface; historical
+gates remain unchanged while the explicit migration route will select the
+current owners. No complete-module or resource pass is inferred from P03–P06.
+
+Validation: `scripts/validate-governance.rb`; `git diff --check`.
+Repair count: 0 of 2.

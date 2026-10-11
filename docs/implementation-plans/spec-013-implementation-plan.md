@@ -2,11 +2,11 @@
 spec: SPEC-013
 feature: giftui-mvp-architecture
 title: SPEC-013 Implementation Plan
-status: ready
+status: active
 owners:
   - codex
 created: 2026-09-09
-updated: 2026-10-10
+updated: 2026-10-11
 related_design_notes:
   - ../implementation-designs/spec-013-common-coordinator-and-cleanup.md
   - ../implementation-designs/spec-013-storage-audit-and-overlay-ownership.md
@@ -28,7 +28,7 @@ superseded_by: null
 ## RFC-014 implementation readiness — 2026-10-10
 
 **Ready under [explicit Spec approval](../iterations/iteration-003-review/rfc-014-spec-approval.md).**
-Implementation has not started. The [bounded sequence](../iterations/iteration-003-review/rfc-014-implementation-plan.md)
+P07 implementation began on 2026-10-11. The [progress record](../../Tests/ContractFixtures/SPEC013/Evidence/rfc-014-p07/progress.md) records the sequential execution; T11.1 remains open through P10–P12. The [bounded sequence](../iterations/iteration-003-review/rfc-014-implementation-plan.md)
 is the shared ordering/scope index: exactly P01–P12, not an expandable backlog.
 This owner contributes P07; its final regression/resource/disposition
 obligations run through P10–P12. Only the current checkpoint below is new work.
