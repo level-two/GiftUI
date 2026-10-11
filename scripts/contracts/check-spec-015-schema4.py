@@ -11,6 +11,8 @@ import tempfile
 ROOT = pathlib.Path(__file__).resolve().parents[2]
 parser = argparse.ArgumentParser()
 parser.add_argument('--runtime-build', required=True, type=pathlib.Path)
+parser.add_argument('--activation-join', action='store_true',
+                    help='also rebuild the actual scoped activation join and ownership negatives')
 args = parser.parse_args()
 base = args.runtime_build.resolve()
 prior = json.loads((base / 'result.json').read_text())
@@ -29,6 +31,9 @@ core = pathlib.Path(flags[flags.index('-I') + 1])
 out = pathlib.Path(tempfile.mkdtemp(prefix='p08-scoped-host-', dir=ROOT / '.build/contracts'))
 flags[flags.index('-module-cache-path') + 1] = str(out / 'cache')
 flags += ['-I', str(out)]
+if args.activation_join:
+    # Resolve the rebuilt RuntimeCycleProbe before its retained dependency copy.
+    flags = ['-I', str(out), *flags]
 commands, checks = [], []
 inputs = [pathlib.Path(__file__).resolve(), ROOT / 'scripts/contracts/generate-spec-015-workload.rb', ROOT / 'Tests/ContractFixtures/SPEC015/signal-analyzer-workload.tsv', *sorted((ROOT / 'Tests/ContractFixtures/SPEC015/Generated').glob('*.tsv'))]
 core_receipt = json.loads((core / 'result.json').read_text())
@@ -56,6 +61,28 @@ for name in ('GiftUICapabilities', 'GiftUIFailureCore', 'GiftUISurfaceCore', 'Gi
     inputs.extend(sources)
     run(name, [compiler, *flags, '-module-name', name, '-emit-module', '-emit-object', *sources,
                '-emit-module-path', out / (name + '.swiftmodule'), '-o', out / (name + '.o')])
+if args.activation_join:
+    # Reuse the exact verified P07 source inventory, not a second maintained list.
+    runtime_sources = [pathlib.Path(value) for value in command[command.index('-module-name') + 2:]
+                       if value.endswith('.swift')]
+    assert runtime_sources, 'runtime receipt has no RuntimeCycleProbe sources'
+    activation_root = ROOT / 'Tests/ContractFixtures/SPEC015/RuntimeDerived'
+    activation = [activation_root / name for name in (
+        'ActivationJoinOwner.swift', 'ActivationJoinReport.swift', 'ActivationJoinProbe.swift')]
+    inputs.extend([*runtime_sources, *activation])
+    run('activation-join', [compiler, *flags, '-module-name', 'RuntimeCycleProbe', '-emit-module', '-emit-object',
+                            *runtime_sources, *activation, '-emit-module-path', out / 'RuntimeCycleProbe.swiftmodule',
+                            '-o', out / 'RuntimeCycleProbe.o'])
+    for label, filename, diagnostic in (
+        ('activation-copy', 'ActivationJoinCopyNegative.swift', 'consumed more than once'),
+        ('activation-callback', 'ActivationJoinCallbackNegative.swift', 'escapes'),
+        ('activation-constant-callback', 'ActivationJoinConstantCallbackNegative.swift', 'escapes'),
+        ('activation-backing', 'ActivationJoinBackingNegative.swift', 'escapes'),
+    ):
+        negative = activation_root / filename
+        inputs.append(negative)
+        run(label, [compiler, *flags, '-module-name', 'RuntimeCycleProbe', '-emit-object',
+                    *runtime_sources, *activation, negative, '-o', out / (label + '.o')], diagnostic)
 probe = ROOT / 'Tests/ContractFixtures/SPEC015/RuntimeDerived/ScopedHostProbe.swift'
 schema = ROOT / 'Tests/ContractFixtures/SPEC015/RuntimeDerived/Schema4Probe.swift'
 inputs.extend([probe, schema])
@@ -100,10 +127,19 @@ control_descriptor.write_text(descriptor.read_text().replace('records.maximum_pa
 run('generator-wide-payload', ['ruby', generator])
 assert 'hierarchy-shape' not in generator.read_text()
 main = out / 'Main.swift'
-main.write_text('import P08ScopedHostProbe\n@main struct Main { static func main() { print("P08 schema4 host component assertions=\\(p08ScopedHostController() + p08Schema4Workload()) failures=0") } }\n')
-run('link', [compiler, *flags, main, core / 'GiftUI.o', *sorted(base.glob('*.o')), *sorted(out.glob('*.o')), '-o', out / 'scoped-host'])
+imports = 'import P08ScopedHostProbe\n'
+assertions = 'p08ScopedHostController() + p08Schema4Workload()'
+runtime_objects = sorted(base.glob('*.o'))
+if args.activation_join:
+    imports += 'import RuntimeCycleProbe\n'
+    assertions += ' + p08ActivationJoin()'
+    runtime_objects = [path for path in runtime_objects if path.name != 'RuntimeCycleProbe.o']
+main.write_text(imports + '@main struct Main { static func main() { print("P08 schema4 host component assertions=\\(' + assertions + ') failures=0") } }\n')
+run('link', [compiler, *flags, main, core / 'GiftUI.o', *runtime_objects, *sorted(out.glob('*.o')), '-o', out / 'scoped-host'])
 execution = run('execute', [out / 'scoped-host']).strip()
 receipt = dict(scope='P08 scoped host/controller and schema-4 workload components; complete application gates remain open', profile=prior['profile'], runtime_build=str(base.relative_to(ROOT)), runtime_receipt_sha256=digest(base / 'result.json'), compiler=str(compiler.relative_to(ROOT)), compiler_sha256=digest(compiler), inputs={str(p.relative_to(ROOT)): digest(p) for p in inputs}, checks=checks, execution=execution, commands=commands)
+if args.activation_join:
+    receipt['scope'] = 'P08 scoped activation join, host/controller and schema-4 workload components; complete application gates remain open'
 receipt['artifacts'] = {str(p.relative_to(out)): dict(sha256=digest(p), bytes=p.stat().st_size) for p in out.iterdir() if p.is_file()}
 (out / 'result.json').write_text(json.dumps(receipt, indent=2) + '\n')
 print(execution)
