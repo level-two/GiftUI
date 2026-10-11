@@ -95,19 +95,55 @@ struct CycleQueuedFacts: ExecutionPendingAdmissionStorage {
     mutating func enqueue(pointer: NormalizedPointerEvent) -> Bool { control.pointee.admission.enqueue(pointer) }
     mutating func enqueue(stateChange: UInt8) -> Bool { guard !control.pointee.mutate else { return false }; control.pointee.mutate = true; return true }
     mutating func enqueue(completion: UInt16) -> Bool { false }
-    mutating func cancelPointerSequence(source: InputSourceID, sequence: PointerSequenceID) { control.pointee.admission.cancel(source: source, sequence: sequence) }
+    mutating func cancelPointerSequence(source: InputSourceID, sequence: PointerSequenceID) {
+        control.pointee.cancelPointerSequence(source: source, sequence: sequence)
+    }
+}
+// One actual admission controller survives all probes and is moved into the
+// concrete coordinator. Its context is synchronized from the scoped owner.
+struct CycleAdmission: ExecutionAdmissionSink {
+    typealias StateChangeFact = UInt8
+    typealias CompletionFact = UInt16
+    typealias Controller = SingleSourceExecutionAdmissionController<CycleQueuedFacts, CycleWake>
+    var controller: Controller
+    let control: UnsafeMutablePointer<CycleControl>
+    static var pointerStateStorageBytes: Int { Controller.pointerStateStorageBytes }
+    init(control: UnsafeMutablePointer<CycleControl>, limits: ExecutionLimits) {
+        self.control = control
+        controller = Controller(limits: limits, context: control.pointee.context, committedPresentationRevision: control.pointee.runtime.committedPresentation, storage: CycleQueuedFacts(control: control), requester: CycleWake())
+    }
+    mutating func synchronize() {
+        controller.synchronize(context: control.pointee.context, committedPresentationRevision: control.pointee.runtime.committedPresentation, sealClosed: control.pointee.admission.sealActive, quiescent: control.pointee.unavailable)
+    }
+    mutating func submit(pointer: NormalizedPointerEvent) -> ExecutionAdmissionOutcome {
+        synchronize(); let outcome = controller.submit(pointer: pointer); cycleTrace("admission.pointer", outcome); return outcome
+    }
+    mutating func submit(stateChange: UInt8) -> ExecutionAdmissionOutcome {
+        synchronize(); let outcome = controller.submit(stateChange: stateChange); cycleTrace("admission.state", outcome); return outcome
+    }
+    mutating func submit(completion: UInt16) -> ExecutionAdmissionOutcome {
+        synchronize(); let outcome = controller.submit(completion: completion); cycleTrace("admission.completion", outcome); return outcome
+    }
+}
+struct CyclePointerState {
+    var source: InputSourceID?
+    var sequence = InputSourceSequenceState()
+    var capture = PointerActionCapture<SemanticCompleteIdentity>()
+    mutating func cancel(source: InputSourceID) {
+        guard self.source == source else { return }
+        capture.cancel(); sequence.cancelCurrentSequence()
+    }
 }
 struct CycleWake: ExecutionWakeRequester, Sendable {
     var reasons: ExecutionWakeReasons = []
     mutating func requestWake(for reasons: ExecutionWakeReasons) { self.reasons.formUnion(reasons) }
 }
 
-func cycleConcreteCoordinator<G, C, R, H>(owner: consuming CyclePipelineOwner<G, C, R, H>, dynamic: Bool, control: UnsafeMutablePointer<CycleControl>, audit: RuntimeStorageAudit, stopAfterFailure: Bool = false) -> CycleReturnedWorkspaces<G, C, R, H> where G: CycleGeometry, C: CycleCandidateBacking, R: CycleCommittedBacking, H: CycleHitBacking, C.Identity == SemanticCompleteIdentity, R.Identity == SemanticCompleteIdentity, H.Identity == SemanticCompleteIdentity {
+func cycleConcreteCoordinator<G, C, R, H>(owner: consuming CyclePipelineOwner<G, C, R, H>, dynamic: Bool, control: UnsafeMutablePointer<CycleControl>, audit: RuntimeStorageAudit, admission: consuming CycleAdmission, stopAfterFailure: Bool = false) -> CycleReturnedWorkspaces<G, C, R, H> where G: CycleGeometry, C: CycleCandidateBacking, R: CycleCommittedBacking, H: CycleHitBacking, C.Identity == SemanticCompleteIdentity, R.Identity == SemanticCompleteIdentity, H.Identity == SemanticCompleteIdentity {
     precondition(owner.limits == audit.limits)
     let geometryBefore = owner.geometry.storageMeasurement()
     let interactionBefore = cycleMeasureInteraction(owner.interaction)
     let binding = CycleExecutionBinding(models: owner.models.borrowedScope(), root: owner.root.borrowedRoot(), control: control, audit: audit)!
-    let admission = SingleSourceExecutionAdmissionController(limits: audit.limits.execution, context: control.pointee.context, committedPresentationRevision: nil, storage: CycleQueuedFacts(control: control), requester: CycleWake())
     #if !hasFeature(Embedded)
     if dynamic {
         var coordinator = DynamicRuntimeExecutionCoordinator(binding: binding, admission: admission, opportunity: owner)
@@ -238,6 +274,37 @@ func exerciseConcreteLifecycle<C: GiftUIRuntimeProfileCoordinator & ~Copyable & 
     expect(coordinator.submit(stateChange: 1).result == .capacityRefused)
     guard case .success(let summary) = coordinator.runOpportunity() else { preconditionFailure("admitted mutation") }
     expect(summary.admission.stateChangeFactCount == 1)
+    let beforePointer = control.pointee.applied
+    let revision = summary.committedPresentationRevision!
+    let inputLimit = coordinator.storageAudit.limits.execution.maximumInputEvents
+    let firstSequence: UInt32 = inputLimit == 2 ? 1 : 0
+    var releaseRevision = revision
+    func event(_ phase: PointerPhase, sequence: UInt32, ordinal: UInt32, revision: PresentationRevision) -> NormalizedPointerEvent {
+        .init(phase: phase, position: control.pointee.actionPoint, source: .init(rawValue: 0), sequence: .init(rawValue: sequence), ordinal: .init(rawValue: ordinal), presentationRevision: revision)
+    }
+    let down = coordinator.submit(pointer: event(.down, sequence: firstSequence, ordinal: 0, revision: revision))
+    expect(down.result == .queued && down.context == coordinator.executionContext)
+    expect(down.context.phase == .idle && down.context.cycle == nil && down.context.semanticRevision == summary.semanticRevision)
+    if inputLimit == 1 {
+        guard case .success(let captured) = coordinator.runOpportunity() else { preconditionFailure("single-input down") }
+        expect(captured.admission.inputEventCount == 1 && captured.admission.semanticActionCount == 0)
+        expect(control.pointee.applied == beforePointer)
+        releaseRevision = captured.committedPresentationRevision!
+    }
+    expect(coordinator.submit(pointer: event(.up, sequence: firstSequence, ordinal: 1, revision: releaseRevision)).result == .queued)
+    guard case .success(let activated) = coordinator.runOpportunity() else { preconditionFailure("sealed pointer activation") }
+    expect(activated.admission.inputEventCount == inputLimit && activated.admission.semanticActionCount == 1 && activated.admission.stateChangeFactCount == 0)
+    expect(control.pointee.applied == beforePointer + 1)
+    let latest = activated.committedPresentationRevision!
+    expect(coordinator.submit(pointer: event(.down, sequence: firstSequence + 1, ordinal: 0, revision: latest)).result == .queued)
+    let rejected = coordinator.submit(pointer: event(.up, sequence: firstSequence + 1, ordinal: 1, revision: revision))
+    expect(rejected.result == .invalidProvenance && rejected.context == coordinator.executionContext)
+    expect(control.pointee.admission.pointerCount == 0 && control.pointee.runtime.pointer.capture.current == nil)
+    // The cancelled, but admitted, down consumed its sequence. Its successor may
+    // resynchronize; dropping it again must never dispatch the abandoned action.
+    expect(coordinator.submit(pointer: event(.down, sequence: firstSequence + 2, ordinal: 0, revision: latest)).result == .queued)
+    expect(coordinator.submit(pointer: event(.up, sequence: firstSequence + 2, ordinal: 1, revision: revision)).result == .invalidProvenance)
+    expect(control.pointee.admission.pointerCount == 0 && control.pointee.applied == beforePointer + 1)
     let applied = control.pointee.applied, streams = control.pointee.streams
     if control.pointee.terminalRetry {
         control.pointee.offer = .retryableRefusal

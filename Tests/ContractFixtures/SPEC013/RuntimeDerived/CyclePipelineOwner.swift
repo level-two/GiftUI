@@ -14,6 +14,8 @@ import CyclePresentation
 
 struct CycleRuntimeControl {
     var admission = CycleAdmissionBacking()
+    var pointer = CyclePointerState()
+    var committedPresentation: PresentationRevision?
     var result: RuntimeCompletePipelineResult<RuntimeOwnerFailure>?
     var context = ExecutionContext(cycle: nil, semanticRevision: nil, candidateFrame: nil, phase: .idle)
     var unavailable = false
@@ -42,6 +44,23 @@ struct CycleControl {
         get { admission.pendingState != nil }
         set { admission.pendingState = newValue ? 1 : nil }
     }
+    mutating func cancelPointerSequence(source: InputSourceID, sequence: PointerSequenceID) {
+        // Already queued phases passed producer-order admission. Preserve that
+        // trusted baseline when cancellation removes them before seal.
+        for index in 0..<2 {
+            guard let event = admission.pendingPointers[index], event.source == source, event.sequence == sequence else { continue }
+            let outcome = runtime.pointer.sequence.validate(phase: event.phase, sequence: event.sequence, ordinal: event.ordinal, targetGateAllowsResynchronization: true)
+            if outcome == .accepted || outcome == .consumedWhileCancelled { runtime.pointer.source = source }
+        }
+        runtime.pointer.cancel(source: source)
+        for index in 0..<Int(admission.sealedPointerCount) {
+            if let event = admission.sealedPointers[index], event.source == source && event.sequence == sequence {
+                admission.sealedAction = nil
+            }
+        }
+        admission.cancel(source: source, sequence: sequence)
+    }
+    var actionPoint = Point(x: 0, y: 0)
     var terminalRetry = false
     var failAfterMutation = false
     var cleanupOrder: InlineArray<9, UInt8> = .init(repeating: 255)
@@ -136,6 +155,7 @@ where Geometry: CycleGeometry, Candidate: CycleCandidateBacking, Committed: Cycl
         control.pointee.unavailable = true
         quiescent = true; pending = false
         control.pointee.admission.resetAll()
+        control.pointee.runtime.pointer.capture.cancel()
         interaction.resetAllStorage()
         control.pointee.committedRecords = 0
         do throws(ObservableStateError) { try root.shutdown() }
@@ -143,6 +163,7 @@ where Geometry: CycleGeometry, Candidate: CycleCandidateBacking, Committed: Cycl
         cycleTrace("terminal", (interaction.committedRecordCount, values.count, models.phase))
     }
     mutating func boundary(_ stage: RuntimeCompletePipelineStage) -> RunCycleFailure<RuntimeOwnerFailure>? {
+        control.pointee.context = phase.context
         cycleTrace("stage", stage)
         control.pointee.stages |= UInt16(1) << stage.rawValue
         if control.pointee.fault == stage { return .execution(.capacityExhausted) }
@@ -153,30 +174,80 @@ where Geometry: CycleGeometry, Candidate: CycleCandidateBacking, Committed: Cycl
         guard !quiescent else { return .failure(.execution(.requiredFacilityUnavailable)) }
         if let error = phase.beginCycle(reservingFrom: &cycles) { return .failure(.execution(error)) }
         if let error = boundary(.admissionAndSeal) { return .failure(error) }
-        guard let selection = ExecutionAdmissionSealer.select(pendingInputEvents: control.pointee.admission.pointerCount, pendingStateChangeFacts: control.pointee.admission.pendingState == nil ? 0 : 1, pendingCompletionFacts: 0, sameCycleActivationCandidates: 0, includesDirtyRederivation: changed, includesPresentationRecovery: pending, limits: limits.execution) else { return .failure(.execution(.invariantViolation)) }
-        guard control.pointee.admission.seal(selection.summary) else { return .failure(.execution(.invariantViolation)) }
-        sealedAdmission = selection.summary
+        sealedAdmission = nil
+        var transaction = ExecutionAdmissionSealTransaction(limits: limits.execution)!
+        precondition(transaction.begin())
+        var staged = control.pointee.runtime.pointer
+        var activation: CapturedAction<SemanticCompleteIdentity>?
+        var selected: UInt16 = 0
+        for index in 0..<2 where selected < limits.execution.maximumInputEvents {
+            guard let pointer = control.pointee.admission.pendingPointers[index] else { continue }
+            let validRevision = pointer.presentationRevision == interaction.committedRevision
+            let validSource = staged.source == nil || staged.source == pointer.source
+            let validation = staged.sequence.validate(phase: pointer.phase, sequence: pointer.sequence, ordinal: pointer.ordinal, targetGateAllowsResynchronization: true)
+            let valid = validRevision && validSource && (validation == .accepted || validation == .consumedWhileCancelled)
+            var createsActivation = false
+            if valid && validation == .accepted {
+                staged.source = pointer.source
+                let gesture: PointerGestureOutcome<SemanticCompleteIdentity>
+                switch pointer.phase {
+                case .down: gesture = ExecutionGestureAdapter.down(at: pointer.position, capture: &staged.capture, resolver: interaction)
+                case .move: gesture = ExecutionGestureAdapter.move(at: pointer.position, capture: &staged.capture, resolver: interaction)
+                case .up: gesture = ExecutionGestureAdapter.up(at: pointer.position, capture: &staged.capture, resolver: interaction)
+                }
+                if case .activationAdmitted(let captured) = gesture { activation = captured; createsActivation = true }
+                cycleTrace("gesture", gesture)
+            }
+            guard transaction.stagePointer(pointer, provenanceValid: valid, createsActivation: createsActivation, transitionReservationAvailable: true) else { break }
+            selected += 1
+        }
+        switch transaction.finish(pendingStateChangeFacts: control.pointee.admission.pendingState == nil ? 0 : 1, pendingCompletionFacts: 0, includesDirtyRederivation: changed, includesPresentationRecovery: pending, batchReservationAvailable: true) {
+        case .failure(let failure):
+            if let cancelled = failure.cancelledSequence {
+                control.pointee.cancelPointerSequence(source: cancelled.source, sequence: cancelled.sequence)
+            }
+            sealedAdmission = failure.summary
+            return .failure(.execution(failure.failure == .invalidProvenance ? .invalidProvenance : .capacityExhausted))
+        case .success(let selection):
+            guard control.pointee.admission.seal(selection.summary) else { return .failure(.execution(.invariantViolation)) }
+            control.pointee.runtime.pointer = staged
+            control.pointee.admission.sealedAction = activation
+            sealedAdmission = selection.summary
+        }
         return .advanced
     }
     mutating func applyAdmittedWork() -> RuntimePipelineMutationResult<RuntimeOwnerFailure> {
         if let error = phase.transition(to: .mutating) { return .failure(.execution(error), mutationApplied: false) }
         if let error = boundary(.applyAdmittedWork) { return .failure(error, mutationApplied: false) }
-        // Pointer gesture cases are completed by the later P07 admission slice;
-        // do not silently discard a sealed pointer that this adapter cannot apply.
-        guard control.pointee.admission.sealedPointerCount == 0 else {
-            return .failure(.execution(.requiredFacilityUnavailable), mutationApplied: false)
+        var applied = false
+        if control.pointee.admission.takeState() != nil {
+            guard let actionIdentity, let record = interaction.committedRecord(for: actionIdentity) else { return .failure(.execution(.invalidProvenance), mutationApplied: false) }
+            switch dispatch(CapturedAction(identity: actionIdentity, generation: record.generation)) {
+            case .applied(let changed): applied = changed
+            case .failure(let failure, let changed): return .failure(failure, mutationApplied: changed)
+            }
         }
-        guard control.pointee.admission.takeState() != nil else { return .applied(false) }
-        guard let rootIdentity, let actionIdentity, let record = interaction.committedRecord(for: actionIdentity) else { return .failure(.execution(.invalidProvenance), mutationApplied: false) }
+        if let captured = control.pointee.admission.sealedAction.take() {
+            switch dispatch(captured) {
+            case .applied(let changed): applied = applied || changed
+            case .failure(let failure, let changed): return .failure(failure, mutationApplied: applied || changed)
+            }
+        }
+        return .applied(applied)
+    }
+    mutating func dispatch(_ captured: CapturedAction<SemanticCompleteIdentity>) -> RuntimePipelineMutationResult<RuntimeOwnerFailure> {
+        guard let rootIdentity else { return .applied(false) }
         let target = ObservableStateRootTargetAccess(root: root, identity: rootIdentity, ordinal: 0)
-        let captured = CapturedAction(identity: actionIdentity, generation: record.generation)
-        switch RuntimeRecordInteractionBridge.dispatch(captured, records: interaction, target: target, actionType: CycleAction.self, operation: CycleHandler.operation) {
+        let result = RuntimeRecordInteractionBridge.dispatch(captured, records: interaction, target: target, actionType: CycleAction.self, operation: CycleHandler.operation)
+        cycleTrace("dispatch", result)
+        switch result {
         case .interaction(.dispatched):
             control.pointee.applied += 1; changed = true
             if control.pointee.failAfterMutation { return .failure(.execution(.capacityExhausted), mutationApplied: true) }
             return .applied(true)
+        case .interaction(.cancelled): return .applied(false)
         case .observableFailure(let error): return .failure(.focusedOwner(.observableState(error)), mutationApplied: false)
-        default: return .failure(.execution(.invalidProvenance), mutationApplied: false)
+        case .interaction(.failure(let error)): return .failure(.focusedOwner(.interaction(error)), mutationApplied: false)
         }
     }
     mutating func freezeObservableMutation() -> RuntimePipelineStepResult<RuntimeOwnerFailure> {
@@ -184,6 +255,7 @@ where Geometry: CycleGeometry, Candidate: CycleCandidateBacking, Committed: Cycl
         do throws(ObservableStateError) { try models.beginFrame(); frameActive = true }
         catch { return .failure(.focusedOwner(.observableState(error))) }
         if let error = phase.transition(to: .deriving) { return .failure(.execution(error)) }
+        control.pointee.context = phase.context
         return .advanced
     }
     mutating func beginObservableCandidateAndExpandSemantics() -> RuntimePipelineStepResult<RuntimeOwnerFailure> {
@@ -264,6 +336,7 @@ where Geometry: CycleGeometry, Candidate: CycleCandidateBacking, Committed: Cycl
                     case .preserved: break
                     }
                     actionIdentity = identity
+                    control.pointee.actionPoint = bounds.origin
                 }
                 rootIdentity = target
                 if let error = interaction.finishCandidate() { return .failure(.focusedOwner(.interaction(error))) }
@@ -286,6 +359,7 @@ where Geometry: CycleGeometry, Candidate: CycleCandidateBacking, Committed: Cycl
         do throws(SemanticExpansionError) { try semantic.publishCandidate(); semanticCandidate = false }
         catch { quiescent = true; return .failure(.focusedOwner(.semantic(error))) }
         if let error = phase.recordPublishedSemanticRevision(revision) { return .failure(.execution(error)) }
+        control.pointee.context = phase.context
         return .published(.init(semanticRevision: revision, changed: changed))
     }
     mutating func allocateCandidate() -> RuntimePipelineStepResult<RuntimeOwnerFailure> {
@@ -298,6 +372,7 @@ where Geometry: CycleGeometry, Candidate: CycleCandidateBacking, Committed: Cycl
     mutating func offerAndProduce() -> RuntimePipelineOfferResult<RuntimeOwnerFailure> {
         if let error = boundary(.offerAndProduction) { return .failure(error) }
         if let error = phase.transition(to: .offering) { return .failure(.execution(error)) }
+        control.pointee.context = phase.context
         endpoint.disposition = control.pointee.offer
         var retained: RenderProductionError?
         let offer = endpoint.offer(provenance: provenance!) { sink in
@@ -346,7 +421,7 @@ where Geometry: CycleGeometry, Candidate: CycleCandidateBacking, Committed: Cycl
         case .discardObservableCandidate:
             if observableCandidate { discardLocalCandidates() }
         case .discardInteractionCandidate: interaction.resolveCandidate(.discard); generations.resolveCandidate(committed: false); interactionCandidate = false
-        case .commitInteractionCandidate: interaction.resolveCandidate(.commit(presentation!)); generations.resolveCandidate(committed: true); interactionCandidate = false; control.pointee.commits += 1
+        case .commitInteractionCandidate: interaction.resolveCandidate(.commit(presentation!)); generations.resolveCandidate(committed: true); interactionCandidate = false; control.pointee.commits += 1; committedPresentation = presentation; control.pointee.runtime.committedPresentation = presentation
         case .resetAttemptStorage:
             discardLocalCandidates()
             if interactionCandidate { interaction.resolveCandidate(.discard); generations.resolveCandidate(committed: false); interactionCandidate = false }

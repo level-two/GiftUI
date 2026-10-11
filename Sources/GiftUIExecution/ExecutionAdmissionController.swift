@@ -58,6 +58,21 @@ where
         trackedSource = nil
     }
 
+    // The serialized containing coordinator supplies its current publication and
+    // phase before producer admission; pointer-order state remains owned here.
+    mutating func synchronize(
+        context: ExecutionContext,
+        committedPresentationRevision: PresentationRevision?,
+        sealClosed: Bool,
+        quiescent: Bool
+    ) {
+        if self.context.cycle != context.cycle { didDeferAfterSeal = false }
+        self.context = context
+        self.committedPresentationRevision = committedPresentationRevision
+        isSealClosed = sealClosed
+        isQuiescent = isQuiescent || quiescent
+    }
+
     mutating func takeWakeAtIdleOpportunity() -> ExecutionWakeReasons {
         wakeAccumulator.takeAtIdleOpportunity(phase: .idle) ?? []
     }

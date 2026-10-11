@@ -125,7 +125,7 @@ where G: CycleGeometry, C: CycleCandidateBacking, R: CycleCommittedBacking, H: C
     let pending = MemoryLayout<InlineArray<2, NormalizedPointerEvent?>>.size + MemoryLayout<UInt8?>.size
     let sealed = MemoryLayout<CycleAdmissionBacking>.size - pending
     let result = MemoryLayout<RuntimeCompletePipelineResult<RuntimeOwnerFailure>?>.size
-    typealias Admission = SingleSourceExecutionAdmissionController<CycleQueuedFacts, CycleWake>
+    typealias Admission = CycleAdmission
     typealias Owner = CyclePipelineOwner<G, C, R, H>
     typealias Coordinator = StaticRuntimeExecutionCoordinator<CycleExecutionBinding, Admission, Owner>
     var concreteCoordinatorBytes = MemoryLayout<Coordinator>.size
@@ -138,7 +138,7 @@ where G: CycleGeometry, C: CycleCandidateBacking, R: CycleCommittedBacking, H: C
     let coordinator = concreteCoordinatorBytes - MemoryLayout<G>.size
         - MemoryLayout<InteractionOwnedKeyState<C, R, H>>.size - MemoryLayout<CycleEndpoint>.size
         - Admission.pointerStateStorageBytes
-        + MemoryLayout<CycleRuntimeControl>.size - MemoryLayout<CycleAdmissionBacking>.size - result
+        + MemoryLayout<CycleRuntimeControl>.size - MemoryLayout<CycleAdmissionBacking>.size - MemoryLayout<CyclePointerState>.size - result
         + Int(factoryRegion.chargedBytes)
     // Bank zero occupies exactly the configured whole-element prefix. Bank one
     // owns the second configured slice plus any retained allocator tail; never
@@ -165,7 +165,7 @@ where G: CycleGeometry, C: CycleCandidateBacking, R: CycleCommittedBacking, H: C
         firstRecords + UInt64(semantic.controlBytes - matchControl), recordBytes - firstRecords,
         geometry.layoutBytes, geometry.renderBytes, canvasBytes + UInt64(canvasControlBytes), geometry.pathBytes, geometry.planBytes,
         UInt64(root.liveBytes), UInt64(root.candidateBytes), keys.candidateBytes + UInt64(interactionMetadata), keys.committedBytes,
-        UInt64(pending), UInt64(sealed), UInt64(Admission.pointerStateStorageBytes), UInt64(coordinator), UInt64(result)]
+        UInt64(pending), UInt64(sealed), UInt64(Admission.pointerStateStorageBytes + MemoryLayout<CyclePointerState>.size), UInt64(coordinator), UInt64(result)]
     for index in 0..<values.count where UInt32(exactly: values[index]) == nil { return .invalid(.arithmeticOverflow) }
     var reported: InlineArray<26, UInt64> = .init(repeating: 0)
     var reportOverflow = false
@@ -222,12 +222,13 @@ where G: CycleGeometry, C: CycleCandidateBacking, R: CycleCommittedBacking, H: C
     record(.inline(UInt8?.self, family: 21))
     record(.inline(CycleAdmissionBacking.self, family: 22, chargedBytes: sealed, kind: .partition))
     record(.inline(Admission.self, family: 23, chargedBytes: Admission.pointerStateStorageBytes, kind: .partition))
+    record(.inline(CyclePointerState.self, family: 23))
     let coordinatorFields = concreteCoordinatorBytes - MemoryLayout<G>.size - MemoryLayout<InteractionOwnedKeyState<C, R, H>>.size - MemoryLayout<CycleEndpoint>.size - Admission.pointerStateStorageBytes
     if profile == .static { record(.inline(Coordinator.self, family: 24, chargedBytes: coordinatorFields, kind: .metadataPadding)) }
     #if !hasFeature(Embedded)
     if profile == .dynamic { record(.inline(DynamicRuntimeExecutionCoordinator<CycleExecutionBinding, Admission, Owner>.self, family: 24, chargedBytes: coordinatorFields, kind: .metadataPadding)) }
     #endif
-    record(.inline(CycleRuntimeControl.self, family: 24, chargedBytes: MemoryLayout<CycleRuntimeControl>.size - MemoryLayout<CycleAdmissionBacking>.size - result, kind: .metadataPadding))
+    record(.inline(CycleRuntimeControl.self, family: 24, chargedBytes: MemoryLayout<CycleRuntimeControl>.size - MemoryLayout<CycleAdmissionBacking>.size - MemoryLayout<CyclePointerState>.size - result, kind: .metadataPadding))
     record(factoryRegion)
     record(.inline(RuntimeCompletePipelineResult<RuntimeOwnerFailure>?.self, family: 25))
     guard !reportOverflow else { return .invalid(.arithmeticOverflow) }
@@ -594,7 +595,7 @@ func cycleConfiguredLimitProbe() -> Int {
             precondition(terminal.failure == .nonRetryableRefusal(.endpoint))
             precondition(terminal.disposition.presentationIntentState == .unavailable)
             precondition(control.unavailable && control.committedRecords == 0)
-            precondition(control.applied == 3)
+            precondition(control.applied == 4)
         } else {
             let stage: RuntimeCompletePipelineStage = switch axis {
             case 0, 2: .canvasInvocationAndPlan

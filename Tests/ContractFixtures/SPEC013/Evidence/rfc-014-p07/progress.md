@@ -860,3 +860,60 @@ Drawing pool append rollback; any remaining early acquisition cases; fresh final
 four-route receipts, traceability reconciliation and separate Strong exit review.
 The existing stage-fault and partial-acquisition controls remain in the transcript.
 P08–P12, complete images/resources and connected hardware remain outside this slice.
+
+
+## Lifecycle continuation step 3 — actual admission and checked pointer dispatch (2026-10-11)
+
+One finite admission adapter now retains the actual existing single-source
+controller from the partial-attempt probe through consuming transfer into each
+concrete coordinator. Its internal synchronization reads the actual owner phase,
+published semantic context, accepted routing revision and seal state; no protocol
+or authored action API changes. Execution's existing seal transaction stages
+pointer-order validation and Interaction's real gesture resolver. Only a completed
+seal transfers the captured identity/generation; mutation dispatch uses the
+existing finite `CycleHandler` and checked `Model.Mutation` bridge.
+
+Evidence covers late state admission in `.deriving` retained for the later seal;
+reentrant opportunity rejection with the active context and untouched queues;
+real down/up sealing and dispatch; immediate stale-presentation cancellation of
+all queued phases; trusted successor sequence resynchronization; and stale-target
+cancellation after actual root retirement while a refused offer preserves old
+committed routing. For the one-input configured limit, down and up use separate
+opportunities and the release uses the newly committed presentation revision.
+Down causes no mutation; one release causes exactly one checked mutation/report.
+The native driver independently counts model commits, synchronous reports and
+successful dispatches for every complete paired transcript.
+
+The sealed-activation cancellation regression follows SPEC-009's
+[producer admission contract](../../../../../docs/specs/spec-009-execution-cycle-and-frame-handoff.md):
+“clears any staged or active capture and activation” and “Later phases cannot
+dispatch semantically.” An actual down/up pair seals input count 2/action count 1;
+a late invalid pointer cancels that activation. The saved AdmissionSummary and
+sealed input membership/count remain unchanged, and applying the batch does not
+mutate. This is mandatory cancellation, not adding late work to a sealed batch.
+
+Fresh [native receipt](lifecycle-step-3-macos-static.json): **3321 assertions,
+12 negative controls**. [Complete logical values](lifecycle-step-3-logical-transcripts.json)
+match across actual Static and Dynamic owners. The new real capture/source state
+is explicitly charged to pointerStateBytes, with the same bytes subtracted from
+coordinator metadata; [all 26 fields](lifecycle-step-3-storage-regions.json)
+reconcile and actual factory audits remain equal after cleanup/returned ownership.
+Formatter, diff whitespace checks and governance validation pass.
+
+Two cause-backed corrections preceded this result: missing fixture imports
+(`tmplmysvm1e`) and a new test attempting two pending pointer entries under the
+existing deliberately configured one-entry limit (`tmpr3aqdd_6`). The latter
+correctly refused capacity after 21 complete paired cases; the test now exercises
+two opportunities without changing limits. Both paths are under
+`.build/contracts/spec-013-runtime-cycle/`. No repeated unproductive repair:
+resumed guard remains **0/2**.
+
+Remaining required P07 case noticed during this slice: `buildInteractionCandidate`
+writes the fixture owner's `rootIdentity` before semantic publication. A candidate
+that removes the root and then fails at the publication boundary may therefore
+leave the old published root/routing intact but the owner's target identity nil.
+The existing per-stage fault matrix does not combine removal, publication failure
+and subsequent action dispatch. This is an unproved current P07 correctness case,
+not deferred scope, and needs a focused regression/disposition before package exit.
+Malformed Drawing append rollback and final fresh four-route/independent Strong
+exit evidence also remain. P08 and complete-image/hardware claims remain excluded.

@@ -1,7 +1,7 @@
 import CycleTable
 import GiftUI
 import GiftUIDrawing
-import GiftUIExecution
+@testable import GiftUIExecution
 import GiftUIInteraction
 import GiftUIObservableState
 @testable import GiftUIRuntimeCore
@@ -11,6 +11,7 @@ import GiftUIRuntimeDynamic
 #endif
 import GiftUISemanticCore
 import CycleSchema
+import CyclePresentation
 
 func exercisePipeline<G, C, R, H>(models: borrowing ObservableModelScope<CycleOwnedModel, CycleModelSchema>, root: borrowing ObservableStateRootScope<CycleOwnedModel, SemanticCompleteIdentity>, semantic: borrowing SemanticRecordStore<CyclePayload>, values: borrowing CanvasStagedValues<SemanticRecordReference, CycleValueTable>, dynamic: Bool, geometry: consuming G, interaction: consuming InteractionOwnedKeyState<C, R, H>, audit: RuntimeStorageAudit, control: inout CycleControl) -> CycleReturnedWorkspaces<G, C, R, H> where G: CycleGeometry, C: CycleCandidateBacking, R: CycleCommittedBacking, H: CycleHitBacking, C.Identity == SemanticCompleteIdentity, R.Identity == SemanticCompleteIdentity, H.Identity == SemanticCompleteIdentity {
     cycleTrace("begin", dynamic ? "dynamic" : "static")
@@ -19,6 +20,7 @@ func exercisePipeline<G, C, R, H>(models: borrowing ObservableModelScope<CycleOw
     var transferredInteraction: InteractionOwnedKeyState<C, R, H>? = consume interaction
     return withUnsafeMutablePointer(to: &control) { trace in
         var owner = CyclePipelineOwner(models: models.borrowedScope(), root: root.borrowedRoot(), semantic: semantic.borrowedStore(), values: values.borrowedValues(), geometry: transferredGeometry.take()!, interaction: transferredInteraction.take()!, control: trace, limits: audit.limits)
+        var admission = CycleAdmission(control: trace, limits: audit.limits.execution)
         var checks = 0
         func expect(_ value: Bool) { checks += 1; precondition(value) }
         var result = owner.runTracedPipeline()
@@ -27,7 +29,7 @@ func exercisePipeline<G, C, R, H>(models: borrowing ObservableModelScope<CycleOw
             expect(models.phase == .mutating && values.count == 0 && !owner.frameActive)
             expect(trace.pointee.applied == 0 && trace.pointee.streams == 0 && trace.pointee.commits == 0)
             expect(owner.interaction.committedRecordCount == 0)
-            var returned = cycleConcreteCoordinator(owner: consume owner, dynamic: dynamic, control: trace, audit: audit, stopAfterFailure: true)
+            var returned = cycleConcreteCoordinator(owner: consume owner, dynamic: dynamic, control: trace, audit: audit, admission: consume admission, stopAfterFailure: true)
             returned.checks += checks
             return consume returned
         }
@@ -43,7 +45,26 @@ func exercisePipeline<G, C, R, H>(models: borrowing ObservableModelScope<CycleOw
         do throws(SemanticExpansionError) { try semantic.withPublishedView { published = $0.rootReference } }
         catch { preconditionFailure("published before attempt reset") }
         let liveIdentity = owner.rootIdentity
+        if audit.limits.execution.maximumInputEvents == 2 {
+            let revision = owner.interaction.committedRevision!
+            for phase: PointerPhase in [.down, .up] {
+                let event = NormalizedPointerEvent(phase: phase, position: trace.pointee.actionPoint, source: .init(rawValue: 0), sequence: .init(rawValue: 0), ordinal: .init(rawValue: phase == .down ? 0 : 1), presentationRevision: revision)
+                expect(admission.submit(pointer: event).result == .queued)
+            }
+        }
         expect(owner.admitAndSeal() == .advanced)
+        if audit.limits.execution.maximumInputEvents == 2 {
+            let sealed = owner.sealedAdmission!
+            expect(sealed.inputEventCount == 2 && sealed.semanticActionCount == 1 && trace.pointee.admission.sealedAction != nil)
+            // SPEC-009 source cancellation invalidates an activation, while the
+            // already admitted membership/counts remain the immutable snapshot.
+            let stale = NormalizedPointerEvent(phase: .up, position: trace.pointee.actionPoint, source: .init(rawValue: 0), sequence: .init(rawValue: 0), ordinal: .init(rawValue: 2), presentationRevision: .init(rawValue: 0))
+            let cancelled = admission.submit(pointer: stale)
+            expect(cancelled.result == .invalidProvenance && cancelled.context == owner.phase.context)
+            expect(owner.sealedAdmission == sealed && trace.pointee.admission.sealedPointerCount == 2)
+            expect(trace.pointee.admission.sealedAction == nil && trace.pointee.runtime.pointer.capture.current == nil)
+            cycleTrace("sealed-cancel", sealed)
+        }
         expect(owner.applyAdmittedWork() == .applied(false))
         expect(owner.freezeObservableMutation() == .advanced)
         expect(owner.beginObservableCandidateAndExpandSemantics() == .advanced)
@@ -51,7 +72,14 @@ func exercisePipeline<G, C, R, H>(models: borrowing ObservableModelScope<CycleOw
         expect(values.count == 1 && models.phase == .reading)
         expect(owner.interaction.beginCandidate(limits: audit.limits.interaction) == nil)
         owner.interactionCandidate = true
-        trace.pointee.mutate = true // Arrived after seal; remains pending.
+        let late = admission.submit(stateChange: 1)
+        expect(late.result == .queued && late.context == owner.phase.context && late.context.phase == .deriving)
+        expect(admission.controller.didDeferAfterSeal && trace.pointee.admission.sealedState == nil)
+        let finalizedBeforeReentry = trace.pointee.finalized
+        guard case .failure(let nestedContext, .execution(.reentrancyViolation), nil) = owner.runOpportunity() else { preconditionFailure("nested opportunity accepted") }
+        expect(nestedContext == owner.phase.context && trace.pointee.finalized == finalizedBeforeReentry)
+        expect(trace.pointee.mutate && trace.pointee.admission.sealedState == nil)
+        cycleTrace("nested", nestedContext)
         owner.cleanup(.resetAttemptStorage)
         owner.finalizePipeline()
         expect(values.count == 0 && models.phase == .mutating)
@@ -59,7 +87,6 @@ func exercisePipeline<G, C, R, H>(models: borrowing ObservableModelScope<CycleOw
         expect(trace.pointee.mutate && trace.pointee.applied == 0)
         do throws(SemanticExpansionError) { try semantic.withPublishedView { expect($0.rootReference == published) } }
         catch { preconditionFailure("published lost by attempt reset") }
-        trace.pointee.mutate = false
         trace.pointee.mutate = true; trace.pointee.offer = .retryableRefusal
         result = owner.runTracedPipeline()
         guard case .completed(let refused) = result else { preconditionFailure("refusal pipeline") }
@@ -110,13 +137,27 @@ func exercisePipeline<G, C, R, H>(models: borrowing ObservableModelScope<CycleOw
                 expect(trace.pointee.cleanupOrder[index - 1] < trace.pointee.cleanupOrder[index])
             }
         }
-        trace.pointee.fault = nil; trace.pointee.show = false; owner.changed = true
+        trace.pointee.fault = nil
+        let staleIdentity = owner.rootIdentity!
+        let staleRecord = owner.interaction.committedRecord(for: owner.actionIdentity!)!
+        let staleAction = CapturedAction(identity: staleRecord.identity, generation: staleRecord.generation)
+        trace.pointee.show = false; owner.changed = true; trace.pointee.offer = .backpressured
+        result = owner.runTracedPipeline()
+        guard case .completed = result else { preconditionFailure("retired target refused offer") }
+        expect(owner.rootIdentity == nil && owner.interaction.committedRecordCount == 1)
+        let staleTarget = ObservableStateRootTargetAccess(root: root, identity: staleIdentity, ordinal: 0)
+        let appliedBeforeStale = trace.pointee.applied
+        let cancelled = RuntimeRecordInteractionBridge.dispatch(staleAction, records: owner.interaction, target: staleTarget, actionType: CycleAction.self, operation: CycleHandler.operation)
+        cycleTrace("stale-target", cancelled)
+        expect(cancelled == .interaction(.cancelled) && trace.pointee.applied == appliedBeforeStale)
+        expect(staleTarget.currentGeneration() == nil)
+        trace.pointee.offer = .accepted
         result = owner.runTracedPipeline()
         guard case .completed = result else { preconditionFailure("retirement pipeline") }
         expect(owner.rootIdentity == nil && owner.interaction.committedRecordCount == 0)
         expect(models.phase == .mutating && values.count == 0)
         trace.pointee.show = true; owner.changed = true
-        var returned = cycleConcreteCoordinator(owner: consume owner, dynamic: dynamic, control: trace, audit: audit)
+        var returned = cycleConcreteCoordinator(owner: consume owner, dynamic: dynamic, control: trace, audit: audit, admission: consume admission)
         returned.checks += checks
         return consume returned
     }

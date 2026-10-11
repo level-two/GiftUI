@@ -21,7 +21,11 @@ package struct CycleOwnedModel: ~Copyable, ObservableStateModel, ObservableModel
         sink = nil
         return true
     }
-    package mutating func reportChange() -> _GiftUIObservableChangeReportOutcome { sink?.reportChange() ?? .coalesced }
+    package mutating func reportChange() -> _GiftUIObservableChangeReportOutcome {
+        let outcome = sink?.reportChange() ?? .coalesced
+        cycleTrace("model.report", outcome)
+        return outcome
+    }
     package borrowing func preflight(_ mutation: Mutation) throws(ObservableStateError) -> UInt8 {
         let next = value.addingReportingOverflow(1)
         guard !next.overflow else { throw .invariantViolation }
@@ -29,6 +33,7 @@ package struct CycleOwnedModel: ~Copyable, ObservableStateModel, ObservableModel
     }
     package mutating func commit(_ prepared: UInt8) -> Bool {
         let changed = value != prepared
+        cycleTrace("model.commit", (value, prepared, changed))
         value = prepared
         return changed
     }

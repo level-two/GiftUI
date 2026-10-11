@@ -161,6 +161,13 @@ if profile.startswith('macos'):
     assert active is None
     assert set(logical_transcripts) == {'static', 'dynamic'}
     assert logical_transcripts['static'] and logical_transcripts['static'] == logical_transcripts['dynamic'], 'actual profile logical transcripts differ'
+    for case in logical_transcripts['static']:
+        commits = [line for line in case if line.startswith('model.commit ')]
+        reports = [line for line in case if line.startswith('model.report ')]
+        dispatched = [line for line in case if line == 'dispatch interaction(GiftUIInteraction.InteractionDispatchResult.dispatched)']
+        assert len(commits) == len(reports) == len(dispatched), 'checked mutation/report/dispatch must be exactly once'
+        assert all(line.endswith('true)') for line in commits)
+        assert all(line in ('model.report dirtied', 'model.report coalesced') for line in reports)
     (out / 'logical-transcripts.json').write_text(json.dumps(logical_transcripts, indent=2) + '\n')
     for line in output.splitlines():
         parts = line.split()
