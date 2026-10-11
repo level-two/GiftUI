@@ -2,10 +2,10 @@
 spec: SPEC-012
 feature: canvas-drawing
 title: SPEC-012 Conformance Report
-status: complete
+status: collecting
 reviewers: [codex]
 created: 2026-09-19
-updated: 2026-10-09
+updated: 2026-10-11
 implementation_plan: ../implementation-plans/spec-012-implementation-plan.md
 related_future_work: []
 related_explorations: []
@@ -19,7 +19,16 @@ superseded_by: null
 > This report records evidence. It does not authorize the governing
 > Specification's `implemented` transition.
 
-## Review Scope
+## RFC-014 migration checkpoint
+
+P06 implementation has started under SPEC-012 T10.1. The
+[shared receipt](../../Tests/ContractFixtures/SPEC012/Evidence/rfc-014-p06/progress.md)
+records the selected declaration/lowering checks and the scoped-source constraint
+issue. DR-RD-001–004 and all applicable retained criteria remain open; the prior
+results below are historical baseline evidence only. No package exit, whole-module,
+application, resource, or connected-target completion is claimed.
+
+## Historical Review Scope
 
 The review freezes [SPEC-012](../specs/spec-012-canvas-path-stroke-drawing.md)
 at pre-report SHA-256

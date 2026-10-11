@@ -54,3 +54,51 @@
 - Consecutive unproductive repair count **0 of 2**; preserve across handoffs.
   Stop after two same-blocker attempts without a new pass or narrowed cause.
 - Result: dispatched; P06 exit pending. No contract/scope issue identified.
+
+## Step 1 — protocol declarations and finite draw lowering
+
+SPEC-012 is now implementing and its plan active. T10.1 remains open. The
+Canvas declaration is the compiled fixed-domain protocol; only Canvas receives
+the Never leaf/default traversal. Its private bridge constructs a checked
+zero-origin Rect. FiniteSourceLowering emits a typed `_giftUIDraw`, preserves
+ordinary Body inference, supports scoped two-parameter withPath, and emits
+schema-specific drawing access mapping. The approved invalidModelAccess case
+and drawing/owner failure mappings are present; runtime mapping execution is
+still part of the remaining P06 tests.
+
+Validation after `scripts/format-swift.sh`:
+
+- `scripts/contracts/run-spec-006.sh --profile macos-static --compiler-baseline rfc-014`
+  passed 28 P02 checks / 120 native assertions, then 30 scoped traversal,
+  58 bank and 57 actual-record assertions per profile. Core receipt:
+  `.build/contracts/spec-006-rfc-014/d18dacad362b4a35-znvim124/macos-static/result.json`.
+- `scripts/contracts/run-spec-012.sh --profile macos-static --compiler-baseline rfc-014 --giftui-build .build/contracts/spec-006-rfc-014/d18dacad362b4a35-znvim124/macos-static`
+  passed the selected declaration/lowering route. Counter and analyzer authored
+  Canvas compile; ordinary custom Body remains inferred. Missing authored and
+  compiled witnesses, async/effect/inout uses, legacy closure initialization,
+  wrong domain, stored read and escaping context all reject for named diagnostics.
+  Receipt: `.build/contracts/spec-012-protocol-canvas/tmpouxbcgc3/macos-static/result.json`;
+  copied to `step-1-macos-static.json`. The receipt records dirty-source hashes,
+  exact compiler/core/commands and object/module identities. This is component
+  compile evidence, not invocation/storage or complete application validation.
+- Governance and `git diff --check` pass. Pi/nRF toolchain doctors passed after
+  reading all four platform toolchain/build skills; cross compilation has not
+  yet run for this step. Full four-profile package evidence remains required.
+
+Preserved development failures were each narrowed and repaired: the private
+bridge initially passed a failable Rect directly (core run
+`ea4421c9d6f286d8-0awfhpu3`); withPath parsing initially accepted only unparenthesized
+parameters (`tmpvacp67bz`); the emitted draw method initially lost leading trivia
+(`tmpqx0rf08e`). Their logs remain in the named .build run roots. Each correction
+advanced the failing stage and the final native route passes. Consecutive
+unproductive repair count remains **0/2**.
+
+Remaining P06: finite witness tables, both bounded staged-value stores, actual
+scoped exact-model invocation and cleanup, semantic transfer/consumer joins,
+full focused runtime/error/layout/resource checks, and four-profile receipts.
+The next adapter step exposed a potential exact-protocol constraint conflict:
+actual P03 ObservableModelScope is noncopyable/nonescapable while the normative
+CanvasInvocationSource and producer Source are implicitly Copyable/Escapable.
+No production constraint change is applied. A concrete minimal compile proof
+and narrow proposed correction are being prepared for parent/maintainer review.
+No P06 exit or acceptance criterion is marked passed.

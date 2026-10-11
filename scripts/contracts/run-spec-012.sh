@@ -13,7 +13,7 @@ REPORT_ROOT="$PROJECT_ROOT/.build/contract-reports/spec-012"
 
 usage() {
     printf '%s\n' \
-        'Usage: scripts/contracts/run-spec-012.sh --profile <profile>' \
+        'Usage: scripts/contracts/run-spec-012.sh --profile <profile> [--compiler-baseline rfc-014 --giftui-build <verified-core-directory>]' \
         '' \
         'Profiles: macos-dynamic, macos-static, raspberry-pi-armv6, nrf52840-embedded'
 }
@@ -24,6 +24,8 @@ fail() {
 }
 
 profile=""
+compiler_baseline=""
+giftui_build=""
 while [[ $# -gt 0 ]]; do
     case "$1" in
         --profile)
@@ -31,6 +33,12 @@ while [[ $# -gt 0 ]]; do
             profile="$2"
             shift 2
             ;;
+        --compiler-baseline)
+            [[ $# -ge 2 && "$2" == rfc-014 ]] || fail 'unsupported compiler baseline'
+            compiler_baseline="$2"; shift 2 ;;
+        --giftui-build)
+            [[ $# -ge 2 ]] || fail '--giftui-build requires a value'
+            giftui_build="$2"; shift 2 ;;
         -h | --help) usage; exit 0 ;;
         *) fail "unknown option: $1" ;;
     esac
@@ -40,6 +48,12 @@ case "$profile" in
     "") fail '--profile is required' ;;
     *) fail "unknown profile: $profile" ;;
 esac
+
+if [[ "$compiler_baseline" == rfc-014 ]]; then
+    [[ -n "$giftui_build" ]] || fail '--giftui-build is required for the RFC-014 route'
+    exec python3 "$SCRIPT_DIR/check-spec-012-protocol-canvas.py" --profile "$profile" --giftui-build "$giftui_build"
+fi
+[[ -z "$giftui_build" ]] || fail '--giftui-build requires --compiler-baseline rfc-014'
 
 declared_inputs() {
     {

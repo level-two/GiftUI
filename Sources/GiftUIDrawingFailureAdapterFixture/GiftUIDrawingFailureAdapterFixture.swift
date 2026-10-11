@@ -4,6 +4,8 @@ import GiftUIFailureCore
 package enum GiftUIDrawingFailureAdapterFixture {
     package static func fact(for error: DrawingProductionError) -> GiftUIFailureFact {
         switch error {
+        case .invalidModelAccess:
+            fact(.invalidIdentity, .rendering, .activeCycle, .contained)
         case .invalidValue, .invalidPathState:
             fact(.invalidValue, .rendering, .activeCycle, .contained)
         case .arithmeticOverflow:

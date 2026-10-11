@@ -6,7 +6,7 @@ status: current
 authors:
   - codex
 created: 2026-09-12
-updated: 2026-09-14
+updated: 2026-10-11
 implementation_plan: ../implementation-plans/spec-012-implementation-plan.md
 related_future_work: []
 related_explorations: []
@@ -22,6 +22,30 @@ superseded_by: null
 > This note explains one replaceable internal realization of an approved
 > contract. It is non-authoritative and cannot introduce architecture or amend
 > the governing Specification.
+
+## RFC-014 P06 current realization — 2026-10-11
+
+The approved runtime amendment replaces the historical closure/capture realization
+below. GiftUI now defines the fixed-domain Canvas protocol and supplies only its
+Never leaf defaults. FiniteSourceLowering identifies authored Canvas declarations,
+checks one synchronous typed draw witness, and emits `_giftUIDraw` with a borrowed
+FrameRead. Ordinary custom views retain their inferred bodies. The existing
+scoped two-parameter withPath form remains supported.
+
+Generated schema facades have a drawing-specific checked initializer and indexed
+accessor. They translate only the five closed access failures into the approved
+DrawingError cases, avoiding erased error transport through Embedded Swift.
+The private Canvas bridge constructs a checked zero-origin Rect from Layout Size.
+No escaping Canvas closure initializer remains in GiftUI.
+
+This first step does not implement the finite witness table, profile staged-value
+stores, or semantic transfer. Those P06 obligations remain open. The safe adapter
+must preserve the actual P03 model-scope lifetime; the exact source constraints
+are under review in the [shared progress record](../../Tests/ContractFixtures/SPEC012/Evidence/rfc-014-p06/progress.md).
+The sections below describe the historical baseline, not the current protocol
+representation or permission to retain a closure fallback.
+
+## Historical baseline realization
 
 ## Purpose and Boundary
 

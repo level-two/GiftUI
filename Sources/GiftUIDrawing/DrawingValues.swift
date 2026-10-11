@@ -30,6 +30,7 @@ package enum DrawingProductionError: UInt8, Equatable, Sendable {
     case reentrancyViolation = 6
     case operationCapacityExhausted = 7
     case invariantViolation = 8
+    case invalidModelAccess = 9
 }
 
 package enum DrawingPlanResult: Equatable, Sendable {

@@ -2,7 +2,7 @@
 spec: SPEC-012
 feature: canvas-drawing
 title: SPEC-012 Implementation Plan
-status: ready
+status: active
 owners:
   - codex
 created: 2026-09-09
@@ -27,7 +27,7 @@ superseded_by: null
 ## RFC-014 implementation readiness — 2026-10-10
 
 **Ready under [explicit Spec approval](../iterations/iteration-003-review/rfc-014-spec-approval.md).**
-Implementation has not started. The [bounded sequence](../iterations/iteration-003-review/rfc-014-implementation-plan.md)
+P06 implementation started on 2026-10-11. The [bounded sequence](../iterations/iteration-003-review/rfc-014-implementation-plan.md)
 is the shared ordering/scope index: exactly P01–P12, not an expandable backlog.
 This owner contributes P06; its final regression/resource/disposition
 obligations run through P10–P12. Only the current checkpoint below is new work.
@@ -47,8 +47,12 @@ not additional authorization to rerun an MVP implementation or reopen experiment
   on the four governed configurations, focused unit/negative checks named by the
   shared sequence, then P10's registered hardware-free gate. Compiler-selection
   propagation follows P01; no historical check is weakened.
-  **Evidence:** existing owner conformance report and immutable owner-driver
-  reports linked to exact commits/artifacts; no success evidence exists yet.
+  **Evidence:** [P06 shared receipt](../../Tests/ContractFixtures/SPEC012/Evidence/rfc-014-p06/progress.md),
+  `RuntimeDerived/CounterCanvas.swift`, `AnalyzerCanvas.swift` and
+  `scripts/contracts/check-spec-012-protocol-canvas.py` through the registered
+  `--compiler-baseline rfc-014 --giftui-build` route. These map T10.1 to the
+  selected declaration/lowering portions of DR-001/002/007/010 and DR-RD-001;
+  runtime/profile/error-mapping execution and full acceptance remain pending.
 
 The single current acceptance matrix retains each criterion once. Its historical
 task IDs remain provenance; `T10.1` adds fresh migration verification without

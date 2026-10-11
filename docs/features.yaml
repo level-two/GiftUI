@@ -180,9 +180,9 @@ features:
       - giftui-mvp-architecture
     milestone: MVP
   canvas-drawing:
-    # SPEC-012 approved as an RFC-014 amendment; ADR-037 supersedes ADR-028.
+    # SPEC-012 implementing RFC-014 P06; ADR-037 supersedes ADR-028.
     title: Canvas, Path, and Stroke Drawing
-    status: specification
+    status: implementation
     proposal:
       - PROPOSAL-006
     rfcs:

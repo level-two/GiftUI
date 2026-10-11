@@ -177,6 +177,7 @@ package enum CanvasPlanProducer {
         for error: DrawingError
     ) -> DrawingProductionError {
         switch error {
+        case .invalidModelAccess: .invalidModelAccess
         case .invalidValue: .invalidValue
         case .invalidPathState: .invalidPathState
         case .arithmeticOverflow: .arithmeticOverflow

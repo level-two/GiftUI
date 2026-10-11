@@ -1,0 +1,340 @@
+{
+  "artifacts": {
+    "Analyzer-lowering.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "Analyzer.json": {
+      "bytes": 598,
+      "sha256": "291f370f2dafb6793698f205abb87d9f0a02e759b55e5737e3c277aa0ca64bf0"
+    },
+    "AnalyzerCanvas.abi.json": {
+      "bytes": 149,
+      "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728"
+    },
+    "AnalyzerCanvas.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "AnalyzerCanvas.o": {
+      "bytes": 11176,
+      "sha256": "55ee259c615351392f1eb56ce103002cdcba3a0de2d35a4dfac1f7f246746630"
+    },
+    "AnalyzerCanvas.swift": {
+      "bytes": 1004,
+      "sha256": "aff05d9ef3bf6d78cba37c8c69536232ea7f7ca5305235a63bedd2f65633bef9"
+    },
+    "AnalyzerCanvas.swiftdoc": {
+      "bytes": 384,
+      "sha256": "3d48f5aca18d0bb273e22470e38fd3d8a4c1940b911cba197aeb5a0d0f633a2c"
+    },
+    "AnalyzerCanvas.swiftmodule": {
+      "bytes": 26060,
+      "sha256": "3ec060dc0f2d3ce1d59edd7e3503f1518a5f66c7be27815760ce17910bdb969b"
+    },
+    "AnalyzerCanvas.swiftsourceinfo": {
+      "bytes": 1556,
+      "sha256": "0d892e0f62b10ec545ec03d612b84ad4aa8f119af0dc3635a9e5265e745868a6"
+    },
+    "AnalyzerSchema.abi.json": {
+      "bytes": 149,
+      "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728"
+    },
+    "AnalyzerSchema.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "AnalyzerSchema.o": {
+      "bytes": 13008,
+      "sha256": "3747a37386b14e94918ad5ed0398335110a8ba91e8e6e5d07fd86397a54a6a46"
+    },
+    "AnalyzerSchema.swift": {
+      "bytes": 2892,
+      "sha256": "a68eafe25b6eb00d7787f5eddbe1113cd7006e16bba7421edf0ce72459528782"
+    },
+    "AnalyzerSchema.swiftdoc": {
+      "bytes": 384,
+      "sha256": "9e8a83eb63f3149f224e0197ef8c530f810f8f3e5a2ce0956b2e84d7d60dd880"
+    },
+    "AnalyzerSchema.swiftmodule": {
+      "bytes": 29720,
+      "sha256": "22cb21ea3c3c56474d552ec89b4bb20668f4768623e605f5bb8c1417c9a9de7e"
+    },
+    "AnalyzerSchema.swiftsourceinfo": {
+      "bytes": 4796,
+      "sha256": "0489ba7042529d26103777e6ba9363df4cecc46dfb11fa4fe2d581333fb2de4a"
+    },
+    "Counter-lowering.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "Counter.json": {
+      "bytes": 271,
+      "sha256": "df5b622f67b8bc767e7c04a00ee9bc0015464002e567536a4578ed2e840b5773"
+    },
+    "CounterCanvas.abi.json": {
+      "bytes": 149,
+      "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728"
+    },
+    "CounterCanvas.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "CounterCanvas.o": {
+      "bytes": 16040,
+      "sha256": "fde010f83229332b26bbf18e1136df2690bc83f863f022632e7c23ffa1aeb6fe"
+    },
+    "CounterCanvas.swift": {
+      "bytes": 1143,
+      "sha256": "9a9e2ec95768230303f4bafaecfb443662467ca7bebad910544e7569cfd7d2e6"
+    },
+    "CounterCanvas.swiftdoc": {
+      "bytes": 384,
+      "sha256": "9052e25039b3dc14bf12fc452704669a832c7100f0612899b8160f697caca681"
+    },
+    "CounterCanvas.swiftmodule": {
+      "bytes": 31500,
+      "sha256": "dafe06f33e94fa9d8ddb405f940d13a58046f0f29a3d8e85c7dbdf238e158cb1"
+    },
+    "CounterCanvas.swiftsourceinfo": {
+      "bytes": 2260,
+      "sha256": "3bcb01776dc16999a0ae6310c0ad0578eae7276eb40620d88c915671ad3283fd"
+    },
+    "CounterSchema.abi.json": {
+      "bytes": 149,
+      "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728"
+    },
+    "CounterSchema.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "CounterSchema.o": {
+      "bytes": 8832,
+      "sha256": "41349467f8c7e4d1cb8a763eac6a1b94b149442800997aeac97a7eb3eeae7511"
+    },
+    "CounterSchema.swift": {
+      "bytes": 1194,
+      "sha256": "a36e7b5efba867006cb1f5c3932bd80fc5969f93b33dc3a9e936c61b7af67ccc"
+    },
+    "CounterSchema.swiftdoc": {
+      "bytes": 384,
+      "sha256": "1d6ceae89bec34bd5ce47a1bcd9c64fb986fa0a1ad3506aebd86a34004158cd3"
+    },
+    "CounterSchema.swiftmodule": {
+      "bytes": 24204,
+      "sha256": "50c59e289684f29a35a2a4713b560a5d645a91b7f0d21e6f09fedd3460b96f68"
+    },
+    "CounterSchema.swiftsourceinfo": {
+      "bytes": 2816,
+      "sha256": "0aed5be207ce3c03ac2edab35b642fe1886ea65fed3079663d8be37693d5b99b"
+    },
+    "async-draw.log": {
+      "bytes": 227,
+      "sha256": "25a5be39f7befe4f04d38f5d54994107a71b54b2901a4694c759b25df41b6f7d"
+    },
+    "async-draw.swift": {
+      "bytes": 126,
+      "sha256": "d23f1465406f5b1fea5d42ea1514b9af778bde5c6564f7205822167b229372b7"
+    },
+    "closure-fallback.log": {
+      "bytes": 170,
+      "sha256": "bd5a33987fa6f5bafbd58c99ba52ffb2e2db7c46ccd067ee6f73ab10f25921d9"
+    },
+    "closure-fallback.swift": {
+      "bytes": 87,
+      "sha256": "94707dfef82214a70f1f786dd78ab3d7fea46c83e6731fe2c0238a5405cfd731"
+    },
+    "commands.txt": {
+      "bytes": 14156,
+      "sha256": "8ef04297c8f2fe584b4fa643b64bef03ffa52e1871eab75bcb01778ff4c8a77a"
+    },
+    "effect.log": {
+      "bytes": 340,
+      "sha256": "1c43013cc1302cb3d10b579c66e5f7c00a1f191f4eee4ba8f692f696372ed04f"
+    },
+    "effect.swift": {
+      "bytes": 135,
+      "sha256": "eaa7584291c3c046cf69764fc242741c2b0323a81b5b054ea19d5dd1680071bf"
+    },
+    "escape-context.log": {
+      "bytes": 517,
+      "sha256": "17ea1b181f6dda1e221367bc40a2087df0cab4669096dafe121f1255ecce4abd"
+    },
+    "escape-context.swift": {
+      "bytes": 121,
+      "sha256": "89a64ced04c212152589c04f3c848818f5b045ff475b1fa730ee4ed17263e77a"
+    },
+    "escape-read.log": {
+      "bytes": 608,
+      "sha256": "3790dbf959f69ce5bb9b6b3566547fa370f141c94669fc5f7abfe09f1ecb32d6"
+    },
+    "escape-read.swift": {
+      "bytes": 91,
+      "sha256": "ebc06e252395f8e29a9e0d41e5004a87ff004bfb45f6b884a865c9f93b4556ce"
+    },
+    "inout-effect.log": {
+      "bytes": 353,
+      "sha256": "def0b0f1d67ab5683bc9311cafe14dab9801deed1794c58a4c47c6bcee6734a8"
+    },
+    "inout-effect.swift": {
+      "bytes": 135,
+      "sha256": "953fd9274c67108dbe6884a6b1e7755b440fb6dd8b32f6bb1ece40a20ab956d4"
+    },
+    "missing-compiled-witness.log": {
+      "bytes": 1396,
+      "sha256": "9e1f48f8ba47cdf3f491799d9be0f71530ef0050ffa53bcd12dba01035066b80"
+    },
+    "missing-compiled-witness.swift": {
+      "bytes": 86,
+      "sha256": "07872bcfb67bdcff4586072efdcfcda050c55ab98dc10b90dd15c1c377d8002b"
+    },
+    "missing-witness.log": {
+      "bytes": 176,
+      "sha256": "a805164c078d815e51c443d9f13cf142550433036485ddc514e2b7df60c3b9fb"
+    },
+    "missing-witness.swift": {
+      "bytes": 36,
+      "sha256": "83b3e934eb712e3451a415980ed29903515a349cfae2f63ff069a5a03bfa3ed9"
+    },
+    "wrong-domain.log": {
+      "bytes": 923,
+      "sha256": "dc1023fc683c7396b5455156a418733deb9ecf4c33c2eb7bced768ff3721638a"
+    },
+    "wrong-domain.swift": {
+      "bytes": 348,
+      "sha256": "f1e6598f4e60e4a43b57b6252d803505871bc4374c84eded26b6e7525cb3a7bd"
+    }
+  },
+  "checks": [
+    {
+      "exit": 0,
+      "expected_failure": null,
+      "name": "Counter-lowering",
+      "pass": true
+    },
+    {
+      "exit": 0,
+      "expected_failure": null,
+      "name": "CounterSchema",
+      "pass": true
+    },
+    {
+      "exit": 0,
+      "expected_failure": null,
+      "name": "CounterCanvas",
+      "pass": true
+    },
+    {
+      "exit": 0,
+      "expected_failure": null,
+      "name": "Analyzer-lowering",
+      "pass": true
+    },
+    {
+      "exit": 0,
+      "expected_failure": null,
+      "name": "AnalyzerSchema",
+      "pass": true
+    },
+    {
+      "exit": 0,
+      "expected_failure": null,
+      "name": "AnalyzerCanvas",
+      "pass": true
+    },
+    {
+      "exit": 1,
+      "expected_failure": "requires exactly one draw witness",
+      "name": "missing-witness",
+      "pass": true
+    },
+    {
+      "exit": 1,
+      "expected_failure": "requires synchronous draw",
+      "name": "async-draw",
+      "pass": true
+    },
+    {
+      "exit": 1,
+      "expected_failure": "unsupported call/effect",
+      "name": "effect",
+      "pass": true
+    },
+    {
+      "exit": 1,
+      "expected_failure": "unchecked inout",
+      "name": "inout-effect",
+      "pass": true
+    },
+    {
+      "exit": 1,
+      "expected_failure": "unsupported call/effect",
+      "name": "closure-fallback",
+      "pass": true
+    },
+    {
+      "exit": 1,
+      "expected_failure": "cannot convert",
+      "name": "wrong-domain",
+      "pass": true
+    },
+    {
+      "exit": 1,
+      "expected_failure": "non-Escapable",
+      "name": "escape-read",
+      "pass": true
+    },
+    {
+      "exit": 1,
+      "expected_failure": "escaping closure captures",
+      "name": "escape-context",
+      "pass": true
+    },
+    {
+      "exit": 1,
+      "expected_failure": "does not conform",
+      "name": "missing-compiled-witness",
+      "pass": true
+    }
+  ],
+  "commands": [
+    "/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool --lower-source /Users/eugene/work/GiftUI/.build/contracts/spec-012-protocol-canvas/tmpouxbcgc3/macos-static/Counter.json /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC012/RuntimeDerived/CounterCanvas.swift /Users/eugene/work/GiftUI/.build/contracts/spec-012-protocol-canvas/tmpouxbcgc3/macos-static/CounterSchema.swift /Users/eugene/work/GiftUI/.build/contracts/spec-012-protocol-canvas/tmpouxbcgc3/macos-static/CounterCanvas.swift",
+    "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.3.2-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/contracts/spec-012-protocol-canvas/tmpouxbcgc3/macos-static/cache -disable-sandbox -target arm64-apple-macosx26.0 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014/d18dacad362b4a35-znvim124/macos-static -parse-as-library -I /Users/eugene/work/GiftUI/.build/contracts/spec-012-protocol-canvas/tmpouxbcgc3/macos-static -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014/d18dacad362b4a35-znvim124/macos-static -enable-testing -module-name CounterSchema -emit-module -emit-object /Users/eugene/work/GiftUI/.build/contracts/spec-012-protocol-canvas/tmpouxbcgc3/macos-static/CounterSchema.swift -emit-module-path /Users/eugene/work/GiftUI/.build/contracts/spec-012-protocol-canvas/tmpouxbcgc3/macos-static/CounterSchema.swiftmodule -o /Users/eugene/work/GiftUI/.build/contracts/spec-012-protocol-canvas/tmpouxbcgc3/macos-static/CounterSchema.o",
+    "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.3.2-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/contracts/spec-012-protocol-canvas/tmpouxbcgc3/macos-static/cache -disable-sandbox -target arm64-apple-macosx26.0 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014/d18dacad362b4a35-znvim124/macos-static -parse-as-library -I /Users/eugene/work/GiftUI/.build/contracts/spec-012-protocol-canvas/tmpouxbcgc3/macos-static -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014/d18dacad362b4a35-znvim124/macos-static -enable-testing -module-name CounterCanvas -emit-module -emit-object /Users/eugene/work/GiftUI/.build/contracts/spec-012-protocol-canvas/tmpouxbcgc3/macos-static/CounterCanvas.swift -emit-module-path /Users/eugene/work/GiftUI/.build/contracts/spec-012-protocol-canvas/tmpouxbcgc3/macos-static/CounterCanvas.swiftmodule -o /Users/eugene/work/GiftUI/.build/contracts/spec-012-protocol-canvas/tmpouxbcgc3/macos-static/CounterCanvas.o",
+    "/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool --lower-source /Users/eugene/work/GiftUI/.build/contracts/spec-012-protocol-canvas/tmpouxbcgc3/macos-static/Analyzer.json /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC012/RuntimeDerived/AnalyzerCanvas.swift /Users/eugene/work/GiftUI/.build/contracts/spec-012-protocol-canvas/tmpouxbcgc3/macos-static/AnalyzerSchema.swift /Users/eugene/work/GiftUI/.build/contracts/spec-012-protocol-canvas/tmpouxbcgc3/macos-static/AnalyzerCanvas.swift",
+    "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.3.2-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/contracts/spec-012-protocol-canvas/tmpouxbcgc3/macos-static/cache -disable-sandbox -target arm64-apple-macosx26.0 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014/d18dacad362b4a35-znvim124/macos-static -parse-as-library -I /Users/eugene/work/GiftUI/.build/contracts/spec-012-protocol-canvas/tmpouxbcgc3/macos-static -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014/d18dacad362b4a35-znvim124/macos-static -enable-testing -module-name AnalyzerSchema -emit-module -emit-object /Users/eugene/work/GiftUI/.build/contracts/spec-012-protocol-canvas/tmpouxbcgc3/macos-static/AnalyzerSchema.swift -emit-module-path /Users/eugene/work/GiftUI/.build/contracts/spec-012-protocol-canvas/tmpouxbcgc3/macos-static/AnalyzerSchema.swiftmodule -o /Users/eugene/work/GiftUI/.build/contracts/spec-012-protocol-canvas/tmpouxbcgc3/macos-static/AnalyzerSchema.o",
+    "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.3.2-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/contracts/spec-012-protocol-canvas/tmpouxbcgc3/macos-static/cache -disable-sandbox -target arm64-apple-macosx26.0 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014/d18dacad362b4a35-znvim124/macos-static -parse-as-library -I /Users/eugene/work/GiftUI/.build/contracts/spec-012-protocol-canvas/tmpouxbcgc3/macos-static -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014/d18dacad362b4a35-znvim124/macos-static -enable-testing -module-name AnalyzerCanvas -emit-module -emit-object /Users/eugene/work/GiftUI/.build/contracts/spec-012-protocol-canvas/tmpouxbcgc3/macos-static/AnalyzerCanvas.swift -emit-module-path /Users/eugene/work/GiftUI/.build/contracts/spec-012-protocol-canvas/tmpouxbcgc3/macos-static/AnalyzerCanvas.swiftmodule -o /Users/eugene/work/GiftUI/.build/contracts/spec-012-protocol-canvas/tmpouxbcgc3/macos-static/AnalyzerCanvas.o",
+    "/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool --lower-source /Users/eugene/work/GiftUI/.build/contracts/spec-012-protocol-canvas/tmpouxbcgc3/macos-static/Counter.json /Users/eugene/work/GiftUI/.build/contracts/spec-012-protocol-canvas/tmpouxbcgc3/macos-static/missing-witness.swift /Users/eugene/work/GiftUI/.build/contracts/spec-012-protocol-canvas/tmpouxbcgc3/macos-static/missing-witness-schema.swift /Users/eugene/work/GiftUI/.build/contracts/spec-012-protocol-canvas/tmpouxbcgc3/macos-static/missing-witness-lowered.swift",
+    "/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool --lower-source /Users/eugene/work/GiftUI/.build/contracts/spec-012-protocol-canvas/tmpouxbcgc3/macos-static/Counter.json /Users/eugene/work/GiftUI/.build/contracts/spec-012-protocol-canvas/tmpouxbcgc3/macos-static/async-draw.swift /Users/eugene/work/GiftUI/.build/contracts/spec-012-protocol-canvas/tmpouxbcgc3/macos-static/async-draw-schema.swift /Users/eugene/work/GiftUI/.build/contracts/spec-012-protocol-canvas/tmpouxbcgc3/macos-static/async-draw-lowered.swift",
+    "/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool --lower-source /Users/eugene/work/GiftUI/.build/contracts/spec-012-protocol-canvas/tmpouxbcgc3/macos-static/Counter.json /Users/eugene/work/GiftUI/.build/contracts/spec-012-protocol-canvas/tmpouxbcgc3/macos-static/effect.swift /Users/eugene/work/GiftUI/.build/contracts/spec-012-protocol-canvas/tmpouxbcgc3/macos-static/effect-schema.swift /Users/eugene/work/GiftUI/.build/contracts/spec-012-protocol-canvas/tmpouxbcgc3/macos-static/effect-lowered.swift",
+    "/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool --lower-source /Users/eugene/work/GiftUI/.build/contracts/spec-012-protocol-canvas/tmpouxbcgc3/macos-static/Counter.json /Users/eugene/work/GiftUI/.build/contracts/spec-012-protocol-canvas/tmpouxbcgc3/macos-static/inout-effect.swift /Users/eugene/work/GiftUI/.build/contracts/spec-012-protocol-canvas/tmpouxbcgc3/macos-static/inout-effect-schema.swift /Users/eugene/work/GiftUI/.build/contracts/spec-012-protocol-canvas/tmpouxbcgc3/macos-static/inout-effect-lowered.swift",
+    "/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool --lower-source /Users/eugene/work/GiftUI/.build/contracts/spec-012-protocol-canvas/tmpouxbcgc3/macos-static/Counter.json /Users/eugene/work/GiftUI/.build/contracts/spec-012-protocol-canvas/tmpouxbcgc3/macos-static/closure-fallback.swift /Users/eugene/work/GiftUI/.build/contracts/spec-012-protocol-canvas/tmpouxbcgc3/macos-static/closure-fallback-schema.swift /Users/eugene/work/GiftUI/.build/contracts/spec-012-protocol-canvas/tmpouxbcgc3/macos-static/closure-fallback-lowered.swift",
+    "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.3.2-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/contracts/spec-012-protocol-canvas/tmpouxbcgc3/macos-static/cache -disable-sandbox -target arm64-apple-macosx26.0 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014/d18dacad362b4a35-znvim124/macos-static -parse-as-library -I /Users/eugene/work/GiftUI/.build/contracts/spec-012-protocol-canvas/tmpouxbcgc3/macos-static -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014/d18dacad362b4a35-znvim124/macos-static -enable-testing -module-name wrongdomain -emit-object /Users/eugene/work/GiftUI/.build/contracts/spec-012-protocol-canvas/tmpouxbcgc3/macos-static/wrong-domain.swift -o /Users/eugene/work/GiftUI/.build/contracts/spec-012-protocol-canvas/tmpouxbcgc3/macos-static/wrong-domain.o",
+    "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.3.2-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/contracts/spec-012-protocol-canvas/tmpouxbcgc3/macos-static/cache -disable-sandbox -target arm64-apple-macosx26.0 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014/d18dacad362b4a35-znvim124/macos-static -parse-as-library -I /Users/eugene/work/GiftUI/.build/contracts/spec-012-protocol-canvas/tmpouxbcgc3/macos-static -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014/d18dacad362b4a35-znvim124/macos-static -enable-testing -module-name escaperead -emit-object /Users/eugene/work/GiftUI/.build/contracts/spec-012-protocol-canvas/tmpouxbcgc3/macos-static/escape-read.swift -o /Users/eugene/work/GiftUI/.build/contracts/spec-012-protocol-canvas/tmpouxbcgc3/macos-static/escape-read.o",
+    "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.3.2-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/contracts/spec-012-protocol-canvas/tmpouxbcgc3/macos-static/cache -disable-sandbox -target arm64-apple-macosx26.0 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014/d18dacad362b4a35-znvim124/macos-static -parse-as-library -I /Users/eugene/work/GiftUI/.build/contracts/spec-012-protocol-canvas/tmpouxbcgc3/macos-static -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014/d18dacad362b4a35-znvim124/macos-static -enable-testing -module-name escapecontext -emit-object /Users/eugene/work/GiftUI/.build/contracts/spec-012-protocol-canvas/tmpouxbcgc3/macos-static/escape-context.swift -o /Users/eugene/work/GiftUI/.build/contracts/spec-012-protocol-canvas/tmpouxbcgc3/macos-static/escape-context.o",
+    "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.3.2-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/contracts/spec-012-protocol-canvas/tmpouxbcgc3/macos-static/cache -disable-sandbox -target arm64-apple-macosx26.0 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014/d18dacad362b4a35-znvim124/macos-static -parse-as-library -I /Users/eugene/work/GiftUI/.build/contracts/spec-012-protocol-canvas/tmpouxbcgc3/macos-static -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014/d18dacad362b4a35-znvim124/macos-static -enable-testing -module-name missingcompiledwitness -emit-object /Users/eugene/work/GiftUI/.build/contracts/spec-012-protocol-canvas/tmpouxbcgc3/macos-static/missing-compiled-witness.swift -o /Users/eugene/work/GiftUI/.build/contracts/spec-012-protocol-canvas/tmpouxbcgc3/macos-static/missing-compiled-witness.o"
+  ],
+  "compiler": ".toolchains/host/swift-6.3.2-RELEASE-osx/usr/bin/swiftc",
+  "compiler_sha256": "d8e40107da0e2c1c59640a983faea326d5d2bddfe81f7609db14bade43c4a5b9",
+  "core_receipt": ".build/contracts/spec-006-rfc-014/d18dacad362b4a35-znvim124/macos-static/result.json",
+  "core_receipt_sha256": "92bd30c763b4f2df0593d9fda99d4b269a9b1f65a4ac4e3526dddf59a1d46116",
+  "inputs": {
+    ".build/contracts/spec-012-protocol-canvas/tmpouxbcgc3/macos-static/AnalyzerCanvas.swift": "aff05d9ef3bf6d78cba37c8c69536232ea7f7ca5305235a63bedd2f65633bef9",
+    ".build/contracts/spec-012-protocol-canvas/tmpouxbcgc3/macos-static/AnalyzerSchema.swift": "a68eafe25b6eb00d7787f5eddbe1113cd7006e16bba7421edf0ce72459528782",
+    ".build/contracts/spec-012-protocol-canvas/tmpouxbcgc3/macos-static/CounterCanvas.swift": "9a9e2ec95768230303f4bafaecfb443662467ca7bebad910544e7569cfd7d2e6",
+    ".build/contracts/spec-012-protocol-canvas/tmpouxbcgc3/macos-static/CounterSchema.swift": "a36e7b5efba867006cb1f5c3932bd80fc5969f93b33dc3a9e936c61b7af67ccc",
+    ".build/rfc014-p02/tool/debug/GiftUIMacros-tool": "fdea05fce68f85bcb00ea8d64da03595ddf8819484803386d6c20365cc3a77ea",
+    "Tests/ContractFixtures/SPEC006/RuntimeDerived/Analyzer.schema.json": "291cf667a93110a8a9dfbd68f7c67370f4b6f5e0d95f22acc92e5a67050c151a",
+    "Tests/ContractFixtures/SPEC006/RuntimeDerived/Counter.schema.json": "e092ddce53ab55b051c8489c81e3214ce6e294affaec69ee6cfb5cb16d38a0f1",
+    "Tests/ContractFixtures/SPEC012/RuntimeDerived/AnalyzerCanvas.swift": "a9bd18af4dcf4663ea87023ef7cbcad07da4749bc808d271163737780edefd0d",
+    "Tests/ContractFixtures/SPEC012/RuntimeDerived/CounterCanvas.swift": "928f79fbb33395458d5f05c8fd25712c5eda73532a9909197a649795680f598f",
+    "scripts/contracts/check-spec-012-protocol-canvas.py": "798155228a118a984407178e4883d0da051af35ccd808f33dc8563a027fce1bb",
+    "scripts/contracts/driver-registry.tsv": "adc249c867be88f2dd6106cf740bb2f7e75476f90ef79a3b8061951539e5a24b",
+    "scripts/contracts/run-spec-012.sh": "508f0559d6a746fd37ddc2c5442d5f6aedbfa1b564fc77592a9ce1b7695ccf50"
+  },
+  "package": "P06",
+  "profile": "macos-static",
+  "source_commit": "883cacbb549fee44ff892201f32e6658958ff013",
+  "source_dirty": true,
+  "step": "protocol-lowering"
+}

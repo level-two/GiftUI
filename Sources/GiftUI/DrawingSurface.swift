@@ -44,6 +44,7 @@ package enum _GiftUIDrawingStatus: UInt8 {
     case invalidPhase = 6
     case reentrancyViolation = 7
     case invariantViolation = 8
+    case invalidModelAccess = 9
 }
 
 package struct _GiftUIDrawingOperations {
@@ -214,6 +215,7 @@ public struct Path: ~Copyable {
 }
 
 public enum DrawingError: Error, Equatable, Sendable {
+    case invalidModelAccess
     case invalidValue
     case invalidPathState
     case arithmeticOverflow
@@ -242,7 +244,19 @@ private func requireDrawingSuccess(_ rawStatus: UInt8) throws(DrawingError) {
         throw DrawingError.invalidPhase
     case .reentrancyViolation:
         throw DrawingError.reentrancyViolation
+    case .invalidModelAccess:
+        throw DrawingError.invalidModelAccess
     case .invariantViolation, nil:
         throw DrawingError.invariantViolation
+    }
+}
+
+extension DrawingError {
+    package init(accessFailure: _GiftUIAccessFailure) {
+        switch accessFailure {
+        case .invalidPhase: self = .invalidPhase
+        case .wrongOwner, .wrongSchema, .staleModel: self = .invalidModelAccess
+        case .outOfBounds: self = .invalidValue
+        }
     }
 }

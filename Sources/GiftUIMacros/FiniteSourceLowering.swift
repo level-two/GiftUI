@@ -40,6 +40,7 @@ struct LoweringFailure: Error, CustomStringConvertible {
 
 final class Inventory: SyntaxVisitor {
     var views: Set<String> = []
+    var canvases: Set<String> = []
     var viewFunctions: Set<String> = []
     var memberViewFunctions: Set<String> = []
     var functions: Set<String> = []
@@ -48,9 +49,14 @@ final class Inventory: SyntaxVisitor {
     override func visit(_ node: StructDeclSyntax) -> SyntaxVisitorContinueKind {
         valueTypes.insert(node.name.text)
         if node.inheritanceClause?.inheritedTypes.contains(where: {
-            $0.type.trimmedDescription == "View"
+            ["View", "Canvas"].contains($0.type.trimmedDescription)
         }) == true {
             views.insert(node.name.text)
+            if node.inheritanceClause?.inheritedTypes.contains(where: {
+                $0.type.trimmedDescription == "Canvas"
+            }) == true {
+                canvases.insert(node.name.text)
+            }
             for member in node.memberBlock.members {
                 if let function = member.decl.as(FunctionDeclSyntax.self),
                     function.signature.returnClause?.type.trimmedDescription == "some View"
@@ -96,7 +102,8 @@ final class Lowerer: SyntaxRewriter {
     static let ownedTypes: Set<String> = [
         "Bool", "UInt8", "UInt16", "UInt32", "Int", "Int32", "Int64", "Duration",
         "BoundedText", "Color", "GeometryScalar", "AcquisitionState", "DigitalLevel",
-        "SignalChannelID", "SignalTransition", "Range<Duration>",
+        "SignalChannelID", "SignalTransition", "Range<Duration>", "Point", "Size", "Rect",
+        "StrokeStyle",
     ]
     let configuration: Configuration
     let inventory: Inventory
@@ -105,6 +112,10 @@ final class Lowerer: SyntaxRewriter {
     var bindings: [String: Model] = [:]
     var evaluating = false
     var insideView = false
+    var insideCanvas = false
+    var drawing = false
+    var drawingContext = ""
+    var drawingPath = ""
     var viewProperties: Set<String> = []
     var stateProperties: Set<String> = []
 
@@ -145,6 +156,7 @@ final class Lowerer: SyntaxRewriter {
                 node, "parameter shadows a State declaration outside the finite source inventory")
         }
         let type = node.type.trimmedDescription
+        if drawing && type == "inout GraphicsContext" { return super.visit(node) }
         if !Self.ownedTypes.contains(type.replacingOccurrences(of: "?", with: "")),
             !inventory.valueTypes.contains(type),
             !configuration.models.contains(where: { $0.authoredType == type })
@@ -165,6 +177,8 @@ final class Lowerer: SyntaxRewriter {
         }
         let previousBindings = bindings
         let previousView = insideView
+        let previousCanvas = insideCanvas
+        insideCanvas = inventory.canvases.contains(node.name.text)
         let previousProperties = viewProperties
         let previousState = stateProperties
         insideView = true
@@ -197,6 +211,14 @@ final class Lowerer: SyntaxRewriter {
                 }
             }
         }
+        if insideCanvas {
+            let witnesses = node.memberBlock.members.compactMap {
+                $0.decl.as(FunctionDeclSyntax.self)
+            }
+            .filter { $0.name.text == "draw" }
+            if witnesses.count != 1 { reject(node, "Canvas requires exactly one draw witness") }
+            if !stateProperties.isEmpty { reject(node, "Canvas cannot declare State") }
+        }
         var result = super.visit(node).cast(StructDeclSyntax.self)
         result.genericParameterClause = GenericParameterClauseSyntax(
             parameters: GenericParameterListSyntax([
@@ -212,6 +234,7 @@ final class Lowerer: SyntaxRewriter {
         )
         bindings = previousBindings
         insideView = previousView
+        insideCanvas = previousCanvas
         viewProperties = previousProperties
         stateProperties = previousState
         return DeclSyntax(result)
@@ -243,6 +266,45 @@ final class Lowerer: SyntaxRewriter {
     }
 
     override func visit(_ node: FunctionDeclSyntax) -> DeclSyntax {
+        if insideCanvas && node.name.text == "draw" {
+            let parameters = node.signature.parameterClause.parameters
+            guard parameters.count == 2,
+                parameters.first?.firstName.text == "in",
+                parameters.first?.type.trimmedDescription == "Rect",
+                parameters.last?.firstName.text == "context",
+                parameters.last?.type.trimmedDescription == "inout GraphicsContext",
+                node.signature.effectSpecifiers?.throwsClause?.type?.trimmedDescription
+                    == "DrawingError",
+                node.signature.effectSpecifiers?.asyncSpecifier == nil,
+                node.signature.returnClause == nil,
+                node.genericParameterClause == nil, let body = node.body,
+                !node.modifiers.contains(where: { ["mutating", "static"].contains($0.name.text) })
+            else {
+                reject(
+                    node,
+                    "Canvas requires synchronous draw(in: Rect, context: inout GraphicsContext) throws(DrawingError)"
+                )
+                return DeclSyntax(node)
+            }
+            let oldEvaluating = evaluating
+            let oldDrawing = drawing
+            let oldContext = drawingContext
+            evaluating = true
+            drawing = true
+            drawingContext = (parameters.last!.secondName ?? parameters.last!.firstName).text
+            let lowered = rewrite(body).cast(CodeBlockSyntax.self)
+            evaluating = oldEvaluating
+            drawing = oldDrawing
+            drawingContext = oldContext
+            let bounds = (parameters.first!.secondName ?? parameters.first!.firstName).text
+            return DeclSyntax(
+                stringLiteral: """
+                    \(node.modifiers.trimmedDescription) func _giftUIDraw(in \(bounds): Rect, context: inout GraphicsContext,
+                        read: borrowing _GiftUIFrameRead<D>) throws(DrawingError) \(lowered)
+                    """
+            )
+            .with(\.leadingTrivia, node.leadingTrivia).with(\.trailingTrivia, node.trailingTrivia)
+        }
         guard node.signature.returnClause?.type.trimmedDescription == "some View" else {
             return super.visit(node)
         }
@@ -365,6 +427,7 @@ final class Lowerer: SyntaxRewriter {
             reject(node, "custom body requires an inferred some View getter")
             return DeclSyntax(node)
         }
+        if insideCanvas { reject(node, "Canvas cannot declare a body or view property") }
         let previous = evaluating
         evaluating = true
         let lowered = super.visit(node).cast(VariableDeclSyntax.self)
@@ -410,13 +473,46 @@ final class Lowerer: SyntaxRewriter {
             modifier = false
         }
         let indexed = modelPath(node.calledExpression)?.fields.last?.indexed == true
-        if !framework.contains(called) && !modifier && !inventory.views.contains(called) && !indexed
+        let scopedDrawingCall =
+            drawing
+            && (["Point", "Size", "Rect", "StrokeStyle", "Shading.color", ".color"].contains(called)
+                || called == drawingContext + ".withPath" || called == drawingContext + ".stroke"
+                || (!drawingPath.isEmpty
+                    && [drawingPath + ".move", drawingPath + ".addLine"].contains(called)))
+        if !scopedDrawingCall && !framework.contains(called) && !modifier
+            && !inventory.views.contains(called) && !indexed
             && !inventory.viewFunctions.contains(name)
             && !configuration.calls.contains(called)
         {
             reject(node, "unsupported call/effect '\(called)'")
         }
+        let oldContext = drawingContext
+        let oldPath = drawingPath
+        if drawing && called == drawingContext + ".withPath" {
+            guard let closure = node.trailingClosure, let signature = closure.signature,
+                signature.capture == nil, signature.effectSpecifiers?.asyncSpecifier == nil,
+                signature.effectSpecifiers?.throwsClause?.type?.trimmedDescription
+                    == "DrawingError", let clause = signature.parameterClause
+            else {
+                reject(node, "withPath requires a scoped two-inout typed DrawingError closure")
+                return ExprSyntax(node)
+            }
+            let names: [String]
+            switch clause {
+            case .simpleInput(let parameters): names = parameters.map { $0.name.text }
+            case .parameterClause(let parameters):
+                names = parameters.parameters.map { ($0.secondName ?? $0.firstName).text }
+            }
+            guard names.count == 2 else {
+                reject(node, "withPath requires exactly two scoped parameters")
+                return ExprSyntax(node)
+            }
+            drawingContext = names[0]
+            drawingPath = names[1]
+        }
         var result = super.visit(node).cast(FunctionCallExprSyntax.self)
+        drawingContext = oldContext
+        drawingPath = oldPath
         if inventory.viewFunctions.contains(name) {
             if !result.arguments.isEmpty {
                 result.arguments[result.arguments.index(before: result.arguments.endIndex)]
@@ -506,7 +602,8 @@ final class Lowerer: SyntaxRewriter {
     override func visit(_ node: MemberAccessExprSyntax) -> ExprSyntax {
         if let base = node.base?.as(DeclReferenceExprSyntax.self)?.baseName.text,
             !inventory.values.contains(base), !inventory.valueTypes.contains(base),
-            !Self.ownedTypes.contains(base), !["self", "Self"].contains(base)
+            !Self.ownedTypes.contains(base), !["self", "Self"].contains(base),
+            !(drawing && [drawingContext, drawingPath].contains(base))
         {
             reject(node, "member access through unknown value '\(base)'")
         }
@@ -530,10 +627,14 @@ final class Lowerer: SyntaxRewriter {
             let rootName = path.root.hasPrefix("self.") ? String(path.root.dropFirst(5)) : path.root
             let root =
                 stateProperties.contains(rootName) ? "try _\(rootName)._giftUIKey()" : path.root
-            let fields = path.fields.map { "." + $0.name + ($0.members == nil ? "" : "()") }
-                .joined()
+            let fields = path.fields.map {
+                "." + (drawing && $0.indexed ? "_giftUIDrawing_" : "") + $0.name
+                    + ($0.members == nil ? "" : "()")
+            }
+            .joined()
             return ExprSyntax(
-                stringLiteral: "(try \(path.model.facade)<D>(\(root), read: read))\(fields)"
+                stringLiteral:
+                    "(try \(path.model.facade)<D>(\(root), \(drawing ? "drawingRead" : "read"): read))\(fields)"
             )
             .with(\.leadingTrivia, node.leadingTrivia)
             .with(\.trailingTrivia, node.trailingTrivia)
@@ -563,7 +664,7 @@ final class Lowerer: SyntaxRewriter {
         case "||": lowered = "((\(lhs)) ? true : (\(rhs)))"
         default:
             lowered =
-                "try { () throws(_GiftUIAccessFailure) in if let value = \(lhs) { return value }; return \(rhs) }()"
+                "try { () throws(\(drawing ? "DrawingError" : "_GiftUIAccessFailure")) in if let value = \(lhs) { return value }; return \(rhs) }()"
         }
         return ExprSyntax(stringLiteral: lowered)
             .with(\.leadingTrivia, node.leadingTrivia)
@@ -632,6 +733,15 @@ func schema(_ configuration: Configuration) throws -> String {
                     slots = read.slots
                 }
 
+                @_lifetime(copy drawingRead)
+                package init(_ key: _GiftUIModelKey<\(schema)>, drawingRead: borrowing _GiftUIFrameRead<D>)
+                    throws(DrawingError) {
+                    do throws(_GiftUIAccessFailure) {
+                        index = try D.bind(key, slots: drawingRead.slots)
+                    } catch { throw DrawingError(accessFailure: error) }
+                    slots = drawingRead.slots
+                }
+
                 """
         } else {
             result += """
@@ -659,6 +769,11 @@ func schema(_ configuration: Configuration) throws -> String {
                 result += """
                     package func \(field.name)(_ position: Int) throws(_GiftUIAccessFailure) -> \(field.type) {
                         try D.\(member)(position, at: index, slots: slots)
+                    }
+                    package func _giftUIDrawing_\(field.name)(_ position: Int) throws(DrawingError) -> \(field.type) {
+                        do throws(_GiftUIAccessFailure) {
+                            return try D.\(member)(position, at: index, slots: slots)
+                        } catch { throw DrawingError(accessFailure: error) }
                     }
 
                     """
