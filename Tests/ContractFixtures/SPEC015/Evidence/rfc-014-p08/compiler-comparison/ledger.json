@@ -1,0 +1,141 @@
+{
+  "limit": 6,
+  "used": 6,
+  "runs": [
+    {
+      "number": 1,
+      "version_label": "6.3.3",
+      "reported_version": "Apple Swift version 6.3.3 (swift-6.3.3-RELEASE)\nTarget: arm64-apple-macosx26.0\n",
+      "control": "positive",
+      "command": "/Users/eugene/work/GiftUI/.toolchains/p08-comparison/expanded/swift-6.3.3-RELEASE-osx/swift-6.3.3-RELEASE-osx-package.pkg/Payload/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/contracts/p08-compiler-comparison-6.3.3-cache -disable-sandbox -target arm64-apple-macosx26.0 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk -D GIFTUI_DYNAMIC_PROFILE -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014/189dda86d331e15d-wpk82ft7/macos-dynamic -parse-as-library -I /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpke3zvfyl/macos-dynamic -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014/189dda86d331e15d-wpk82ft7/macos-dynamic -enable-testing -I /Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-ie3r3cmc -module-name P08ActivationResolution /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-receiver/Boundary.swift /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-receiver/MinimalOwner.swift /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-receiver/MinimalPositive.swift -o /Users/eugene/work/GiftUI/.build/contracts/p08-compiler-comparison-6.3.3-positive",
+      "compiler_sha256": "3d13e20b1504d7d30038fcd2201b9d0a8ead5c09eea752a5da223453b3ae0c6f",
+      "package_sha256": "ee82e57774d6650f94aa06302435d6f44a055b9411698db8ecb85d9a3bcc91d0",
+      "frozen_receipt_sha256": "d8d91b4477c6c56549c09a124b59bf528a5ec2d4b5fd366993bcf880fc7e313e",
+      "sources": {
+        "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-receiver/Boundary.swift": "3bb56c5e99baf96d5acb6881d671e0471fbf4afeb86d8cdfef7252956c01476f",
+        "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-receiver/MinimalOwner.swift": "5b5d8375a9c7c005de26f08b608f58e60820df6ff1289ac238859e000e07fd38",
+        "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-receiver/MinimalPositive.swift": "ae6de99419fbbf51277326c9fd87524ed103d06c3c6a5b649f41f5e226caf671"
+      },
+      "status": "completed",
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "executable_sha256": "d968028771fb6278114ff57c1d4425006a9dbe500035073a573870ea51f3d574",
+      "execution": {
+        "exit": 0,
+        "stdout_sha256": "61a202f836e3c8992459ddc0e97dcd7e17cb298c5d57258a1a3ad51794c432fc",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "disposition": "positive compiles and executes"
+    },
+    {
+      "number": 2,
+      "version_label": "6.3.3",
+      "reported_version": "Apple Swift version 6.3.3 (swift-6.3.3-RELEASE)\nTarget: arm64-apple-macosx26.0\n",
+      "control": "wrapped-negative",
+      "command": "/Users/eugene/work/GiftUI/.toolchains/p08-comparison/expanded/swift-6.3.3-RELEASE-osx/swift-6.3.3-RELEASE-osx-package.pkg/Payload/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/contracts/p08-compiler-comparison-6.3.3-cache -disable-sandbox -target arm64-apple-macosx26.0 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk -D GIFTUI_DYNAMIC_PROFILE -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014/189dda86d331e15d-wpk82ft7/macos-dynamic -parse-as-library -I /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpke3zvfyl/macos-dynamic -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014/189dda86d331e15d-wpk82ft7/macos-dynamic -enable-testing -I /Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-ie3r3cmc -module-name P08ActivationResolution /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-receiver/Boundary.swift /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-receiver/MinimalOwner.swift /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-receiver/OwnerSwitchNegative.swift -o /Users/eugene/work/GiftUI/.build/contracts/p08-compiler-comparison-6.3.3-wrapped-negative",
+      "compiler_sha256": "3d13e20b1504d7d30038fcd2201b9d0a8ead5c09eea752a5da223453b3ae0c6f",
+      "package_sha256": "ee82e57774d6650f94aa06302435d6f44a055b9411698db8ecb85d9a3bcc91d0",
+      "frozen_receipt_sha256": "34ca42ad4f572efde8cad6ce3cab607b2a73eff77cc03a5f6454d0b1e8b1c8ec",
+      "sources": {
+        "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-receiver/Boundary.swift": "3bb56c5e99baf96d5acb6881d671e0471fbf4afeb86d8cdfef7252956c01476f",
+        "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-receiver/MinimalOwner.swift": "5b5d8375a9c7c005de26f08b608f58e60820df6ff1289ac238859e000e07fd38",
+        "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-receiver/OwnerSwitchNegative.swift": "1509a83d3608ebd6a7bb6778a8d2a2e0d2cad51109a6e387e233873ab95e2c71"
+      },
+      "status": "completed",
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "executable_sha256": "006eb59d784b26cd31447168a171569afea1b7b63d0275a4cebcebb3be33f529",
+      "disposition": "wrapped callback escape accepted; executable never run"
+    },
+    {
+      "number": 3,
+      "version_label": "6.3.3",
+      "reported_version": "Apple Swift version 6.3.3 (swift-6.3.3-RELEASE)\nTarget: arm64-apple-macosx26.0\n",
+      "control": "span-negative",
+      "command": "/Users/eugene/work/GiftUI/.toolchains/p08-comparison/expanded/swift-6.3.3-RELEASE-osx/swift-6.3.3-RELEASE-osx-package.pkg/Payload/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/contracts/p08-compiler-comparison-6.3.3-cache -disable-sandbox -target arm64-apple-macosx26.0 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk -D GIFTUI_DYNAMIC_PROFILE -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014/189dda86d331e15d-wpk82ft7/macos-dynamic -parse-as-library -I /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpke3zvfyl/macos-dynamic -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014/189dda86d331e15d-wpk82ft7/macos-dynamic -enable-testing -I /Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-ie3r3cmc -module-name P08ActivationResolution /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-extraction/SpanTakeNegative.swift -o /Users/eugene/work/GiftUI/.build/contracts/p08-compiler-comparison-6.3.3-span-negative",
+      "compiler_sha256": "3d13e20b1504d7d30038fcd2201b9d0a8ead5c09eea752a5da223453b3ae0c6f",
+      "package_sha256": "ee82e57774d6650f94aa06302435d6f44a055b9411698db8ecb85d9a3bcc91d0",
+      "frozen_receipt_sha256": "215bef2d1be1f395a513c31d1f1958313d28d39f45e255a4aa49178e3bdd88af",
+      "sources": {
+        "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-extraction/SpanTakeNegative.swift": "85512aa07e5740337ef462182a899e017ab4ec9844d285c7fd08582ff77023bf"
+      },
+      "status": "completed",
+      "exit": 1,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "ab033a4fedb45bf6460b1bf9da2243b8f0d54e5b83f0bf864c572289111e0507",
+      "disposition": "direct Span callback escape rejected for marker lifetime"
+    },
+    {
+      "number": 4,
+      "version_label": "6.4.0",
+      "reported_version": "Apple Swift version 6.4 (swift-6.4-RELEASE)\nTarget: arm64-apple-macosx26.0\n",
+      "control": "positive",
+      "command": "/Users/eugene/work/GiftUI/.toolchains/p08-comparison/expanded/swift-6.4.0-RELEASE-osx/swift-6.4.0-RELEASE-osx-package.pkg/Payload/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/contracts/p08-compiler-comparison-6.4.0-cache -disable-sandbox -target arm64-apple-macosx26.0 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk -D GIFTUI_DYNAMIC_PROFILE -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014/189dda86d331e15d-wpk82ft7/macos-dynamic -parse-as-library -I /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpke3zvfyl/macos-dynamic -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014/189dda86d331e15d-wpk82ft7/macos-dynamic -enable-testing -I /Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-ie3r3cmc -module-name P08ActivationResolution /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-receiver/Boundary.swift /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-receiver/MinimalOwner.swift /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-receiver/MinimalPositive.swift -o /Users/eugene/work/GiftUI/.build/contracts/p08-compiler-comparison-6.4.0-positive",
+      "compiler_sha256": "79ae5c26645489fb783ae980f0f1bdae810f90fb180c9ac39808807b65e9fd69",
+      "package_sha256": "8fd03185b98fe27f54a54631c2449decf75d5b466ce8e34abbd414141063c6aa",
+      "frozen_receipt_sha256": "d8d91b4477c6c56549c09a124b59bf528a5ec2d4b5fd366993bcf880fc7e313e",
+      "sources": {
+        "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-receiver/Boundary.swift": "3bb56c5e99baf96d5acb6881d671e0471fbf4afeb86d8cdfef7252956c01476f",
+        "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-receiver/MinimalOwner.swift": "5b5d8375a9c7c005de26f08b608f58e60820df6ff1289ac238859e000e07fd38",
+        "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-receiver/MinimalPositive.swift": "ae6de99419fbbf51277326c9fd87524ed103d06c3c6a5b649f41f5e226caf671"
+      },
+      "status": "completed",
+      "exit": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "executable_sha256": "34647b238ba838bb4abe393a378e3027fd452499966afde8d1ff687b748d0ace",
+      "execution": {
+        "exit": 0,
+        "stdout_sha256": "61a202f836e3c8992459ddc0e97dcd7e17cb298c5d57258a1a3ad51794c432fc",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "disposition": "positive compiles and executes"
+    },
+    {
+      "number": 5,
+      "version_label": "6.4.0",
+      "reported_version": "Apple Swift version 6.4 (swift-6.4-RELEASE)\nTarget: arm64-apple-macosx26.0\n",
+      "control": "wrapped-negative",
+      "command": "/Users/eugene/work/GiftUI/.toolchains/p08-comparison/expanded/swift-6.4.0-RELEASE-osx/swift-6.4.0-RELEASE-osx-package.pkg/Payload/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/contracts/p08-compiler-comparison-6.4.0-cache -disable-sandbox -target arm64-apple-macosx26.0 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk -D GIFTUI_DYNAMIC_PROFILE -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014/189dda86d331e15d-wpk82ft7/macos-dynamic -parse-as-library -I /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpke3zvfyl/macos-dynamic -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014/189dda86d331e15d-wpk82ft7/macos-dynamic -enable-testing -I /Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-ie3r3cmc -module-name P08ActivationResolution /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-receiver/Boundary.swift /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-receiver/MinimalOwner.swift /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-receiver/OwnerSwitchNegative.swift -o /Users/eugene/work/GiftUI/.build/contracts/p08-compiler-comparison-6.4.0-wrapped-negative",
+      "compiler_sha256": "79ae5c26645489fb783ae980f0f1bdae810f90fb180c9ac39808807b65e9fd69",
+      "package_sha256": "8fd03185b98fe27f54a54631c2449decf75d5b466ce8e34abbd414141063c6aa",
+      "frozen_receipt_sha256": "34ca42ad4f572efde8cad6ce3cab607b2a73eff77cc03a5f6454d0b1e8b1c8ec",
+      "sources": {
+        "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-receiver/Boundary.swift": "3bb56c5e99baf96d5acb6881d671e0471fbf4afeb86d8cdfef7252956c01476f",
+        "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-receiver/MinimalOwner.swift": "5b5d8375a9c7c005de26f08b608f58e60820df6ff1289ac238859e000e07fd38",
+        "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-receiver/OwnerSwitchNegative.swift": "1509a83d3608ebd6a7bb6778a8d2a2e0d2cad51109a6e387e233873ab95e2c71"
+      },
+      "status": "completed",
+      "exit": 1,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "9c48d1f5963f6c4b38747bad9b0f23d9d88f00c24fd9d8450fefd9bdb7e1f4bd",
+      "disposition": "wrapped callback escape rejected for marker lifetime"
+    },
+    {
+      "number": 6,
+      "version_label": "6.4.0",
+      "reported_version": "Apple Swift version 6.4 (swift-6.4-RELEASE)\nTarget: arm64-apple-macosx26.0\n",
+      "control": "span-negative",
+      "command": "/Users/eugene/work/GiftUI/.toolchains/p08-comparison/expanded/swift-6.4.0-RELEASE-osx/swift-6.4.0-RELEASE-osx-package.pkg/Payload/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/contracts/p08-compiler-comparison-6.4.0-cache -disable-sandbox -target arm64-apple-macosx26.0 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk -D GIFTUI_DYNAMIC_PROFILE -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014/189dda86d331e15d-wpk82ft7/macos-dynamic -parse-as-library -I /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpke3zvfyl/macos-dynamic -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014/189dda86d331e15d-wpk82ft7/macos-dynamic -enable-testing -I /Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-ie3r3cmc -module-name P08ActivationResolution /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-extraction/SpanTakeNegative.swift -o /Users/eugene/work/GiftUI/.build/contracts/p08-compiler-comparison-6.4.0-span-negative",
+      "compiler_sha256": "79ae5c26645489fb783ae980f0f1bdae810f90fb180c9ac39808807b65e9fd69",
+      "package_sha256": "8fd03185b98fe27f54a54631c2449decf75d5b466ce8e34abbd414141063c6aa",
+      "frozen_receipt_sha256": "215bef2d1be1f395a513c31d1f1958313d28d39f45e255a4aa49178e3bdd88af",
+      "sources": {
+        "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-extraction/SpanTakeNegative.swift": "85512aa07e5740337ef462182a899e017ab4ec9844d285c7fd08582ff77023bf"
+      },
+      "status": "completed",
+      "exit": 1,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "ab033a4fedb45bf6460b1bf9da2243b8f0d54e5b83f0bf864c572289111e0507",
+      "disposition": "direct Span callback escape rejected for marker lifetime"
+    }
+  ],
+  "closed_versions": [
+    "6.3.3",
+    "6.4.0"
+  ],
+  "closed": true,
+  "closure": "Fixed six-call matrix complete. No additional compilation authorized."
+}

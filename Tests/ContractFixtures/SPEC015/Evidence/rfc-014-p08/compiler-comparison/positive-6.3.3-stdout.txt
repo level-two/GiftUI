@@ -1,0 +1,1 @@
+invariant private struct span positive passed

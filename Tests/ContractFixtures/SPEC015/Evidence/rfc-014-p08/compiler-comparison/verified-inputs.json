@@ -1,0 +1,20 @@
+{
+  "setup_receipt_sha256": "391982419638d67e33f35d26cc68321bf6a26b0424473e65b84f0029c4bc26ab",
+  "packages": [
+    {
+      "version_label": "6.3.3",
+      "reported_version": "Apple Swift version 6.3.3 (swift-6.3.3-RELEASE)\nTarget: arm64-apple-macosx26.0\n",
+      "package_sha256": "ee82e57774d6650f94aa06302435d6f44a055b9411698db8ecb85d9a3bcc91d0",
+      "compiler_sha256": "3d13e20b1504d7d30038fcd2201b9d0a8ead5c09eea752a5da223453b3ae0c6f",
+      "signature_record_sha256": "f5377aee59605dbe9c1e860717493f263ae4d3cf5d95fcc71333671fbafd4b83"
+    },
+    {
+      "version_label": "6.4.0",
+      "reported_version": "Apple Swift version 6.4 (swift-6.4-RELEASE)\nTarget: arm64-apple-macosx26.0\n",
+      "package_sha256": "8fd03185b98fe27f54a54631c2449decf75d5b466ce8e34abbd414141063c6aa",
+      "compiler_sha256": "79ae5c26645489fb783ae980f0f1bdae810f90fb180c9ac39808807b65e9fd69",
+      "signature_record_sha256": "13b9b823194391c3261c32d7111455574762bc550feecf92f8ccb398ee897681"
+    }
+  ],
+  "note": "All package/compiler/signature hashes revalidated before first comparison compile; no installer or global selection change."
+}

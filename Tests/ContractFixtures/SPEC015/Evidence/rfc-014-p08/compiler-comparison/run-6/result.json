@@ -1,0 +1,17 @@
+{
+  "number": 6,
+  "version_label": "6.4.0",
+  "reported_version": "Apple Swift version 6.4 (swift-6.4-RELEASE)\nTarget: arm64-apple-macosx26.0\n",
+  "control": "span-negative",
+  "command": "/Users/eugene/work/GiftUI/.toolchains/p08-comparison/expanded/swift-6.4.0-RELEASE-osx/swift-6.4.0-RELEASE-osx-package.pkg/Payload/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/contracts/p08-compiler-comparison-6.4.0-cache -disable-sandbox -target arm64-apple-macosx26.0 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk -D GIFTUI_DYNAMIC_PROFILE -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014/189dda86d331e15d-wpk82ft7/macos-dynamic -parse-as-library -I /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpke3zvfyl/macos-dynamic -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014/189dda86d331e15d-wpk82ft7/macos-dynamic -enable-testing -I /Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-ie3r3cmc -module-name P08ActivationResolution /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-extraction/SpanTakeNegative.swift -o /Users/eugene/work/GiftUI/.build/contracts/p08-compiler-comparison-6.4.0-span-negative",
+  "compiler_sha256": "79ae5c26645489fb783ae980f0f1bdae810f90fb180c9ac39808807b65e9fd69",
+  "package_sha256": "8fd03185b98fe27f54a54631c2449decf75d5b466ce8e34abbd414141063c6aa",
+  "frozen_receipt_sha256": "215bef2d1be1f395a513c31d1f1958313d28d39f45e255a4aa49178e3bdd88af",
+  "sources": {
+    "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-extraction/SpanTakeNegative.swift": "85512aa07e5740337ef462182a899e017ab4ec9844d285c7fd08582ff77023bf"
+  },
+  "status": "completed",
+  "exit": 1,
+  "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stderr_sha256": "ab033a4fedb45bf6460b1bf9da2243b8f0d54e5b83f0bf864c572289111e0507"
+}

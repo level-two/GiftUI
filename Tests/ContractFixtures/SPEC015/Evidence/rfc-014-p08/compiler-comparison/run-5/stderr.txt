@@ -1,0 +1,15 @@
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-receiver/OwnerSwitchNegative.swift:4:13: error: lifetime-dependent variable 'escaped' escapes its scope
+ 2 |     static func main() {
+ 3 |         let expected = UInt8(truncatingIfNeeded: CommandLine.arguments.count) | 1
+ 4 |         var escaped: MinimalSpanOwner? = nil
+   |             `- error: lifetime-dependent variable 'escaped' escapes its scope
+ 5 |         _ = invokeActivationCallback {
+ 6 |             let marker: InlineArray<1, UInt8> = [expected]
+   |                 `- note: it depends on the lifetime of variable 'marker'
+ 7 |             var owner = MinimalSpanOwner(span: marker.span)
+ 8 |             owner.activate()
+ 9 |             escaped = consume owner
+10 |             return 1
+   |             `- note: this use causes the lifetime-dependent value to escape
+11 |         }
+12 |         switch escaped {
