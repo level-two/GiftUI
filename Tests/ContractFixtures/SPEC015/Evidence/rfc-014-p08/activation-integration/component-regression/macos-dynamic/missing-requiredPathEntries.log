@@ -1,0 +1,13 @@
+/Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-jge5puc5/missing-requiredPathEntries.swift:10:69: error: missing argument for parameter 'requiredPathEntries' in call
+ 8 | // structural record payload. They do not claim that it implements analyzer storage.
+ 9 | func p08Workload(_ w: SignalAnalyzerHostWorkload, axis: Int, value: UInt32) -> SignalAnalyzerHostWorkload {
+10 |     .init(schemaVersion: axis == 6 ? UInt16(value) : w.schemaVersion,
+   |                                                                     `- error: missing argument for parameter 'requiredPathEntries' in call
+11 |           
+12 |           requiredPayloadBytesPerBank: axis == 1 ? value : w.requiredPayloadBytesPerBank,
+
+GiftUIHostConfiguration.SignalAnalyzerHostWorkload.init:2:10: note: 'init(schemaVersion:requiredPathEntries:requiredPayloadBytesPerBank:requiredInteractionIdentityComponents:requiredPathDepth:requiredPathChildFanout:requiredIdentityComponentsPerKey:requiredRuntimeLimits:semanticNodeOccurrences:semanticStructuralOccurrences:renderSemanticScopeOccurrences:layoutScopeOccurrences:maximumRenderTraversalDepth:renderTextLineCount:positionedGlyphCount:ordinaryRenderOperations:inputEventsPerOpportunity:semanticActionsPerOpportunity:completionFactsPerOpportunity:drawing:)' declared here
+1 | struct SignalAnalyzerHostWorkload {
+2 | internal init(schemaVersion: UInt16, requiredPathEntries: UInt32, requiredPayloadBytesPerBank: UInt32, requiredInteractionIdentityComponents: UInt32, requiredPathDepth: UInt16, requiredPathChildFanout: UInt16, requiredIdentityComponentsPerKey: UInt16, requiredRuntimeLimits: GiftUIRuntimeCore.RuntimeProfileLimits, semanticNodeOccurrences: UInt16, semanticStructuralOccurrences: UInt16, renderSemanticScopeOccurrences: UInt16, layoutScopeOccurrences: UInt16, maximumRenderTraversalDepth: UInt16, renderTextLineCount: UInt16, positionedGlyphCount: UInt16, ordinaryRenderOperations: UInt16, inputEventsPerOpportunity: UInt16, semanticActionsPerOpportunity: UInt16, completionFactsPerOpportunity: UInt16, drawing: GiftUIHostConfiguration.SignalAnalyzerDrawingWorkload)}
+  |          `- note: 'init(schemaVersion:requiredPathEntries:requiredPayloadBytesPerBank:requiredInteractionIdentityComponents:requiredPathDepth:requiredPathChildFanout:requiredIdentityComponentsPerKey:requiredRuntimeLimits:semanticNodeOccurrences:semanticStructuralOccurrences:renderSemanticScopeOccurrences:layoutScopeOccurrences:maximumRenderTraversalDepth:renderTextLineCount:positionedGlyphCount:ordinaryRenderOperations:inputEventsPerOpportunity:semanticActionsPerOpportunity:completionFactsPerOpportunity:drawing:)' declared here
+3 | 

@@ -1,0 +1,22 @@
+{
+  "source_commit": "74c53f2b8eff7bed78f72a70260160aaadd171ed",
+  "invocations": 2,
+  "repairs": 0,
+  "closed": true,
+  "runs": [
+    {
+      "profile": "macos-dynamic",
+      "receipt": ".build/contracts/p08-scoped-host-jge5puc5/result.json",
+      "receipt_sha256": "c9ba65aae2d927119046ca45995dabf3c17bf3506e603bfe45f1a66fd4423a7a",
+      "checks": 37,
+      "execution": "P08 schema4 host component assertions=368 failures=0"
+    },
+    {
+      "profile": "macos-static",
+      "receipt": ".build/contracts/p08-scoped-host-uyngut51/result.json",
+      "receipt_sha256": "f804efd2ded7a585f423e15bb111b37c7e9a981f9985acf35c23d898120cc3f5",
+      "checks": 37,
+      "execution": "P08 schema4 host component assertions=368 failures=0"
+    }
+  ]
+}

@@ -1,0 +1,5 @@
+/Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-uyngut51/copy-host.swift:2:99: error: 'copy' cannot be applied to noncopyable types
+1 | import GiftUIHostConfiguration
+2 | func reject(_ host: borrowing SignalAnalyzerPresetHostInstance<P08ScopedLiveOwner>) { let other = copy host; _ = other }
+  |                                                                                                   `- error: 'copy' cannot be applied to noncopyable types
+3 | 

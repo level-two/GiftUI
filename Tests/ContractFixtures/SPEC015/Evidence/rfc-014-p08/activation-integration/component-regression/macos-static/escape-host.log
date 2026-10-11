@@ -1,0 +1,6 @@
+/Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-uyngut51/escape-host.swift:2:32: error: stored property 'host' of 'Escapable'-conforming struct 'Reject' has non-Escapable type 'SignalAnalyzerPresetHostInstance<P08ScopedLiveOwner>'
+1 | import GiftUIHostConfiguration
+2 | struct Reject: ~Copyable { let host: SignalAnalyzerPresetHostInstance<P08ScopedLiveOwner> }
+  |        |                       `- error: stored property 'host' of 'Escapable'-conforming struct 'Reject' has non-Escapable type 'SignalAnalyzerPresetHostInstance<P08ScopedLiveOwner>'
+  |        `- note: consider adding '~Escapable' to struct 'Reject'
+3 | 
