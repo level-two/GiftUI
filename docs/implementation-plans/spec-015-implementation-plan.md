@@ -2,7 +2,7 @@
 spec: SPEC-015
 feature: giftui-mvp-architecture
 title: SPEC-015 Implementation Plan
-status: ready
+status: active
 owners:
   - codex
 created: 2026-09-09
@@ -25,7 +25,7 @@ superseded_by: null
 ## RFC-014 implementation readiness — 2026-10-10
 
 **Ready under [explicit Spec approval](../iterations/iteration-003-review/rfc-014-spec-approval.md).**
-Implementation has not started. The [bounded sequence](../iterations/iteration-003-review/rfc-014-implementation-plan.md)
+Implementation has begun at the current P08 checkpoint below. The [bounded sequence](../iterations/iteration-003-review/rfc-014-implementation-plan.md)
 is the shared ordering/scope index: exactly P01–P12, not an expandable backlog.
 This owner contributes P08; its final regression/resource/disposition
 obligations run through P10–P12. Only the current checkpoint below is new work.
@@ -39,8 +39,8 @@ The exact scoped-host correction is now explicitly approved and applied; see
 The original packet/probes and independent review remain historical evidence.
 Production implementation/evidence remain required; the construction, activation
 and backing-last teardown obligations are unchanged. [P08 progress](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/progress.md)
-records guard **0/2** and sequential work. SPEC-015 remains approved and this plan
-ready until production implementation begins; no P08 pass is claimed.
+records guard **0/2** and sequential work. Production implementation has begun: SPEC-015 is implementing and this plan
+active; no P08 pass is claimed.
 
 - [ ] `T8.1` — Schema-4 validation and explicit limits, real host owners, four-config counter, complete host ledger and lifetime checks.
   **Scope:** GiftUIHostConfiguration, scalar workload generator/validator and finite counter repository composition and directly corresponding tests/fixtures/build wiring.
@@ -54,7 +54,7 @@ ready until production implementation begins; no P08 pass is claimed.
   shared sequence, then P10's registered hardware-free gate. Compiler-selection
   propagation follows P01; no historical check is weakened.
   **Evidence:** existing owner conformance report and immutable owner-driver
-  reports linked to exact commits/artifacts; no success evidence exists yet.
+  reports linked to exact commits/artifacts; step 1 component receipt is linked in P08 progress; package success remains unclaimed.
 
 The single current acceptance matrix retains each criterion once. Its historical
 task IDs remain provenance; `T8.1` adds fresh migration verification without

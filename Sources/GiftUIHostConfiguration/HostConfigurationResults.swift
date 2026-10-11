@@ -98,7 +98,7 @@ package enum HostOpportunityResult<OwnerFailure: Equatable & Sendable>: Equatabl
     case invalidLifecycle
 }
 
-package protocol MVPHostInstance: ~Copyable {
+package protocol MVPHostInstance: ~Copyable, ~Escapable {
     associatedtype ActivationFailure: Equatable & Sendable
     associatedtype OwnerFailure: Equatable & Sendable = RuntimeOwnerFailure
     var lifecycleState: MVPHostLifecycleState { get }

@@ -29,7 +29,7 @@ package enum HostActivationStepResult<Failure: Equatable & Sendable>:
     case failure(Failure, progress: HostActivationProgress)
 }
 
-package protocol MVPHostActivationOwner: ~Copyable {
+package protocol MVPHostActivationOwner: ~Copyable, ~Escapable {
     associatedtype ActivationFailure: Equatable & Sendable
 
     mutating func constructRuntimeAndEndpoint()
@@ -52,7 +52,7 @@ package protocol MVPHostActivationOwner: ~Copyable {
     mutating func quiesceConstructedRuntime()
 }
 
-package protocol MVPHostTeardownOwner: ~Copyable {
+package protocol MVPHostTeardownOwner: ~Copyable, ~Escapable {
     mutating func refuseApplicationDeliveryAndInput()
     mutating func stopSourceDeliveryAndDetachObservations()
     mutating func cancelPointerSequencesAndHostCallbacks()
@@ -74,7 +74,7 @@ package struct MVPHostActivationController<Failure: Equatable & Sendable> {
         self.lifecycleState = lifecycleState
     }
 
-    package mutating func activate<Owner: MVPHostActivationOwner>(
+    package mutating func activate<Owner: MVPHostActivationOwner & ~Copyable & ~Escapable>(
         owner: inout Owner,
         invariantFailure: Failure
     ) -> HostActivationResult<Failure>
@@ -119,7 +119,9 @@ package struct MVPHostActivationController<Failure: Equatable & Sendable> {
         return .active
     }
 
-    package mutating func teardown<Owner: MVPHostTeardownOwner>(owner: inout Owner) {
+    package mutating func teardown<Owner: MVPHostTeardownOwner & ~Copyable & ~Escapable>(
+        owner: inout Owner
+    ) {
         guard lifecycleState != .quiescing, lifecycleState != .quiescent else {
             return
         }
@@ -153,7 +155,7 @@ package struct MVPHostActivationController<Failure: Equatable & Sendable> {
         }
     }
 
-    private mutating func contain<Owner: MVPHostActivationOwner>(
+    private mutating func contain<Owner: MVPHostActivationOwner & ~Copyable & ~Escapable>(
         _ failure: Failure,
         owner: inout Owner
     ) -> HostActivationResult<Failure>

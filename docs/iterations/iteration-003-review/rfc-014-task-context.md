@@ -1,10 +1,12 @@
 # RFC-014 task context guide
 
-**Current P08 checkpoint — approved host correction, implementation next, 2026-10-11:**
+**Current P08 checkpoint — scoped host component implemented, schema migration next, 2026-10-11:**
 Eugene explicitly replied “Approved, please proceed” after the separate
 [independent proposal review](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/independent-blocker-review.md).
 The exact SPEC-015 correction is applied and [approval recorded](rfc-014-spec-approval.md#scoped-host-lifetime-amendment--2026-10-11).
-Original packet/probes/review remain historical. P08 construction/activation,
+First host component slice passes 187 assertions and copy/escape controls;
+[step receipt](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-host-step-1.json).
+Original packet/probes/review remain historical. Full P08 construction/activation,
 schema-4/counter and early-image evidence remain required; no package acceptance.
 Guard **0/2**; [receipt](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/progress.md).
 P09–P12 remain pending.
@@ -19,7 +21,7 @@ compiler negatives across 26 actual Static/Dynamic case pairs. Cross routes pass
 selected-module compilation and CPU/VFP checks; no target execution is claimed.
 Independent Strong [repair exit review](../../../Tests/ContractFixtures/SPEC013/Evidence/rfc-014-p07/independent-repair-exit-review.md) passes the finite P07 exit at `329570ab`, resolving R1/R2. Full owner conformance remains separate.
 Resumed consecutive unproductive repairs: **0/2**. Historical 2/2 stop preserved.
-T9.1/T11.1 and P10–P12 remain open. P08 production implementation has not started.
+T9.1/T11.1 and P10–P12 remain open. P08 implementation has begun under the current checkpoint.
 
 The bench and stop records below describe earlier boundaries; their statements
 that continuation is unauthorized are superseded only by the resumption above.

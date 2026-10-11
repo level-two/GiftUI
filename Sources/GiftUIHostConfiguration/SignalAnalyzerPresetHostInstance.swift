@@ -40,18 +40,19 @@ package enum NRF52840StaticHostActivationFailure: Equatable, Sendable {
 }
 
 package protocol SignalAnalyzerPresetLiveOwner:
-    MVPHostActivationOwner, MVPHostTeardownOwner
+    ~Copyable, ~Escapable, MVPHostActivationOwner, MVPHostTeardownOwner
 {
     mutating func runOpportunity() -> RunCycleResult<RuntimeOwnerFailure>
 }
 
-package struct SignalAnalyzerPresetHostInstance<Owner>: MVPHostInstance, ~Copyable
-where Owner: SignalAnalyzerPresetLiveOwner {
+package struct SignalAnalyzerPresetHostInstance<Owner>: MVPHostInstance, ~Copyable, ~Escapable
+where Owner: SignalAnalyzerPresetLiveOwner & ~Copyable & ~Escapable {
     package let assemblyReport: HostAssemblyReport
     package private(set) var owner: Owner
     package private(set) var controller: MVPHostActivationController<Owner.ActivationFailure>
     private let invariantFailure: Owner.ActivationFailure
 
+    @_lifetime(copy owner)
     fileprivate init?(
         expectedKind: MVPHostKind,
         assemblyReport: HostAssemblyReport,
@@ -84,7 +85,8 @@ where Owner: SignalAnalyzerPresetLiveOwner {
 }
 
 package enum SignalAnalyzerPresetHostInstances {
-    package static func macOSDynamic<Owner: SignalAnalyzerPresetLiveOwner>(
+    @_lifetime(copy owner)
+    package static func macOSDynamic<Owner: SignalAnalyzerPresetLiveOwner & ~Copyable & ~Escapable>(
         report: HostAssemblyReport,
         owner: consuming Owner
     ) -> SignalAnalyzerPresetHostInstance<Owner>?
@@ -97,7 +99,8 @@ package enum SignalAnalyzerPresetHostInstances {
         )
     }
 
-    package static func macOSStatic<Owner: SignalAnalyzerPresetLiveOwner>(
+    @_lifetime(copy owner)
+    package static func macOSStatic<Owner: SignalAnalyzerPresetLiveOwner & ~Copyable & ~Escapable>(
         report: HostAssemblyReport,
         owner: consuming Owner
     ) -> SignalAnalyzerPresetHostInstance<Owner>?
@@ -110,7 +113,10 @@ package enum SignalAnalyzerPresetHostInstances {
         )
     }
 
-    package static func raspberryPiDynamic<Owner: SignalAnalyzerPresetLiveOwner>(
+    @_lifetime(copy owner)
+    package static func raspberryPiDynamic<
+        Owner: SignalAnalyzerPresetLiveOwner & ~Copyable & ~Escapable
+    >(
         report: HostAssemblyReport,
         owner: consuming Owner
     ) -> SignalAnalyzerPresetHostInstance<Owner>?
@@ -123,7 +129,10 @@ package enum SignalAnalyzerPresetHostInstances {
         )
     }
 
-    package static func nrf52840Static<Owner: SignalAnalyzerPresetLiveOwner>(
+    @_lifetime(copy owner)
+    package static func nrf52840Static<
+        Owner: SignalAnalyzerPresetLiveOwner & ~Copyable & ~Escapable
+    >(
         report: HostAssemblyReport,
         owner: consuming Owner
     ) -> SignalAnalyzerPresetHostInstance<Owner>?
@@ -136,3 +145,6 @@ package enum SignalAnalyzerPresetHostInstances {
         )
     }
 }
+
+// Ordinary owned hosts retain their previous escapable construction surface.
+extension SignalAnalyzerPresetHostInstance: Escapable where Owner: Escapable & ~Copyable {}

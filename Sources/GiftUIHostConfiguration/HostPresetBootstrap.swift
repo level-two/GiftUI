@@ -40,11 +40,15 @@ package protocol MVPValidatedHostInstanceFactory: ~Copyable {
     ) -> HostConstructedInstanceAudit
 }
 
-package enum HostPresetConstructionResult<Instance>
-where Instance: MVPHostInstance {
+package enum HostPresetConstructionResult<Instance>: ~Copyable, ~Escapable
+where Instance: MVPHostInstance & ~Copyable & ~Escapable {
     case invalid(HostValidationResult)
     case constructed(Instance)
 }
+
+// Retain the existing owned construction surface while permitting scoped results.
+extension HostPresetConstructionResult: Copyable where Instance: Copyable & ~Escapable {}
+extension HostPresetConstructionResult: Escapable where Instance: Escapable & ~Copyable {}
 
 package enum HostPresetBootstrap {
     package static func construct<Validator: ~Copyable, Factory: ~Copyable>(

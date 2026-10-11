@@ -2,7 +2,7 @@
 id: SPEC-015
 feature: giftui-mvp-architecture
 title: MVP Target-Host Configuration Contract
-status: approved
+status: implementing
 authors:
   - codex
 created: 2026-08-28

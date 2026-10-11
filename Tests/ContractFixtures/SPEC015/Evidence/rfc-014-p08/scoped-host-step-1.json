@@ -1,0 +1,380 @@
+{
+  "scope": "P08 scoped host/controller component; generated schema and complete application gates remain open",
+  "profile": "macos-static",
+  "runtime_build": ".build/contracts/spec-013-runtime-cycle/tmpwj8mqyyn/macos-static",
+  "runtime_receipt_sha256": "aeaa021470ae4f4149a0d23c64cc6547e775c340eff045b570c39e338381cd1b",
+  "compiler": ".toolchains/host/swift-6.3.2-RELEASE-osx/usr/bin/swiftc",
+  "compiler_sha256": "d8e40107da0e2c1c59640a983faea326d5d2bddfe81f7609db14bade43c4a5b9",
+  "inputs": {
+    "scripts/contracts/check-spec-015-scoped-host.py": "146f04e7f8f505a3f32008f98a00605f77a41ab00171de5820383cc561b72918",
+    "Sources/GiftUICapabilities/GiftUICapabilities.swift": "79a2f7a749cbe3e8033d1d118f9c94fadb67b985d36dbc185996fc255e8ba884",
+    "Sources/GiftUIFailureCore/GiftUIFailureCore.swift": "9e1e92643cdf2aed4efea9684697481af01034b9ad34ef42aff8c6ff6445cae7",
+    "Sources/GiftUISurfaceCore/RasterSurface.swift": "cf0aa2fe88d7cf825e5b9bddb8b8e2fc48d76555f4a8ac94ff4ec0b884fe3b42",
+    "Sources/GiftUISurfaceCore/SurfaceValues.swift": "96e161fdf3d1f58dd4c1de04c043df647a3fa279d17993c57e2b0ce15e19d60c",
+    "Sources/GiftUIDisplayCore/DisplayContracts.swift": "b27ad7489ad1ec6076f0d53b3912d6b9ed85329d355ceda2678707374111f3f0",
+    "Sources/GiftUIDisplayCore/SurfaceDisplayContributionAdapter.swift": "6a53a85962e5a821e5d81c32a580f453f6332feceaf31997f8fc04f2d9d548cf",
+    "Sources/GiftUIRasterCore/FullSurfaceRGB565Framebuffer.swift": "449a1be1050367462f67ab32a98553f6c573a79f1a79a6a26be98e6df06ac5e1",
+    "Sources/GiftUIRasterCore/FullSurfaceRGBA8888Buffer.swift": "27119d052890cad6f40ab4d64ed1f584f32b005d513bf910f23557b6cc86c48d",
+    "Sources/GiftUIRasterCore/RGB565TileWorkspace.swift": "e7f8fdfe6b23a33aeaad656ffc0ad745d14026dd3e55c8a1d069c1cb60915ce4",
+    "Sources/GiftUIRasterCore/RasterBackendContributionAdapter.swift": "07daa8c1ac38863bdbe0340061b8c7de703e912a8990155d91560d07fa88dbb6",
+    "Sources/GiftUIRasterCore/RasterFillCoverage.swift": "e71a27b6a6e5ee0557bef856d70cfa8b7551ab2d3f93e830f31b414a21b03594",
+    "Sources/GiftUIRasterCore/RasterFrameSink.swift": "93e7455f817de8a665933761c3580c59451d4c9cf12d9b9e8773aa4b28e1582a",
+    "Sources/GiftUIRasterCore/RasterFrameWork.swift": "f2433ae30e9ed44bc16e2f1faca715f4c6e1608c7a13545e426e76b72bde5090",
+    "Sources/GiftUIRasterCore/RasterGlyphCoverage.swift": "d73b11eb6382d40bb0e9a0f336fb5d377f5bfb43f484534906b196aea9f26262",
+    "Sources/GiftUIRasterCore/RasterPayloadLimits.swift": "23234d9ba4e630bb6279e31a9ab8ae72b8f9e3b2f9477784bf42697ecab544c3",
+    "Sources/GiftUIRasterCore/RasterStrokeCoverage.swift": "9e26044f3f7e99516742b686767cfe5a03d24d1efceee28f4d7ee6e21a90b579",
+    "Sources/GiftUIRasterCore/RasterWorkTracker.swift": "16f7c34ef32538f22b340163c402f551e3fd875b66f2e074d8049d6f51d6468f",
+    "Sources/GiftUIBackendIntegration/FullSurfacePayloadEmitter.swift": "25ceb74e6fdea87403ae112685960394adcd56012ad7366ec870b0b6217436af",
+    "Sources/GiftUIBackendIntegration/OneShotRasterBackendEndpoint.swift": "fa9c4b3aa3c522a8bd39efa4560abb692f61a1ab578089ed5ea4af182e5dd778",
+    "Sources/GiftUIBackendIntegration/OperationMajorRGB565RasterSession.swift": "8b930d7dd1a226a8d4bdf5c827c1fd4471f0084f634ebe1144696fae2f50b4b5",
+    "Sources/GiftUIBackendIntegration/OperationMajorTileTraversal.swift": "a61e6fbe4e1cd2ea1f1325e11ea2e37332fa1c9c2e09a4a0d7dabdd5a7a2d765",
+    "Sources/GiftUIBackendIntegration/RGB565TilePayloadEmitter.swift": "0d0b245435a848f98bbc1996a0768298b1be2a03563d06d8bbd04d8077cf7c34",
+    "Sources/GiftUIBackendIntegration/RasterBackendEndpoint.swift": "f38c93f26953da1f265aa20b1678d8d1a515fe533707d3646e89556908f62754",
+    "Sources/GiftUIBackendIntegration/RasterBackendOwnerFailureAdapter.swift": "71185f98e32afd8353c6787c209ff671ef277e013df2ad11465ddf991b59d1e4",
+    "Sources/GiftUIBackendIntegration/RasterBackendStartupValidator.swift": "37bcf7159a5263b154e76ee84bd6d5592ca5903917b27614f30eeedc99c667e2",
+    "Sources/GiftUIBackendIntegration/RasterFrameWorkAdmission.swift": "0dd3524e69afc0f87cc9b563f395d8fc46dd09d5a40a41072670bec032fb029e",
+    "Sources/GiftUIBackendIntegration/RasterTextResourceValidation.swift": "8b5b0a273bca73176816366ffdc6d917ef71fe3bebc797113722988b4604579b",
+    "Sources/GiftUIHostConfiguration/CheckedMVPHostConfigurationValidator.swift": "8caf5a83d60ea858e2ecfbe5b1f76232a6dd85efc1a2fb3797adcf3a04810a3e",
+    "Sources/GiftUIHostConfiguration/HostActivationController.swift": "d6a087a6505b10a622221818d20975b63b2aa2138bd965ff2d6e6a9b0a6680da",
+    "Sources/GiftUIHostConfiguration/HostApplicationOpportunityGate.swift": "475df591e6c3fbd741a916dd6eefacf77a572a25678c9c4a27b84ce5d6974e03",
+    "Sources/GiftUIHostConfiguration/HostApplicationStartupValidation.swift": "37bb4fb7d4e0d5069c1f78f9af4a338ad005068b5dfb17e36af8894196013679",
+    "Sources/GiftUIHostConfiguration/HostComponentGraphValidation.swift": "1fe765b7348bdab18abf6b83da6c9e2cadbb2e7a868a729c8d075f5b5109f913",
+    "Sources/GiftUIHostConfiguration/HostConfigurationResults.swift": "3e00d5e22b04e6ccb25ab357f2d6fe96349f2ab31abf3cf9201206110d83b205",
+    "Sources/GiftUIHostConfiguration/HostConfigurationValues.swift": "bda176ef072e43bb666f8f9391ecbbdd310d7d70e4772584dc75d63b1956c53c",
+    "Sources/GiftUIHostConfiguration/HostEndpointHealthController.swift": "b170fb7b19e0627ad7484c81c72bd9c532b4c06455c4d0cd9053e47b1639b434",
+    "Sources/GiftUIHostConfiguration/HostEndpointStartupValidation.swift": "be93841af2abe55c2ac64e1df77219323fc62be40165cd4e89dbec3336fdd2d2",
+    "Sources/GiftUIHostConfiguration/HostFailureAdapter.swift": "6b886b52c8e96892207b7230b8ccf9301b56f9fc62f117d7131c025e0452fde8",
+    "Sources/GiftUIHostConfiguration/HostNormalizedInputGate.swift": "7bd20cd33825f33478e54a1921b670a857805f6a2cf83bf089810e83b93773a7",
+    "Sources/GiftUIHostConfiguration/HostPresentationRecovery.swift": "c8d261e68ad8096015f070d9e896c4952ac36725ff2c3ccc4b8cce56674d635f",
+    "Sources/GiftUIHostConfiguration/HostPresetBootstrap.swift": "15edb5e6d350cfdc95e2edc97d86a82b147e90b3bf391441eb04f173c218e12e",
+    "Sources/GiftUIHostConfiguration/HostResidualFailureRouting.swift": "c7d77a75bc192ccf226c82487e87108d0bd3e5d5a91630d4df3990d6eb3e258c",
+    "Sources/GiftUIHostConfiguration/HostResidualPolicyContracts.swift": "6215618f39789acfa0a40aca1c0657fa8c66c1760884f44dceee1172ee7e7469",
+    "Sources/GiftUIHostConfiguration/HostResidualPolicyTableValidation.swift": "b43e1f7bf466c3dea0266e498d579e78504eb1612740f1d24804a2b19e37b84c",
+    "Sources/GiftUIHostConfiguration/HostScheduledOpportunityController.swift": "6df01c335403928709dd45e593ac833d02b7ac2790b693e9e18810b764045ca6",
+    "Sources/GiftUIHostConfiguration/HostSequencedFactAdmission.swift": "4bd12f192077693af4be89b1483be4d4791f256f2ca5798d025cbef577da07cb",
+    "Sources/GiftUIHostConfiguration/HostWakePacingController.swift": "457479bb631966220e2bb2d26fb7a78ac0143fbcadae8b66c25b78b27125643b",
+    "Sources/GiftUIHostConfiguration/SignalAnalyzerDrawingStartupValidation.swift": "b30461306456a4a07b6850e151b4e46345ae2b20c43d6f538d9a9633ed1adc0f",
+    "Sources/GiftUIHostConfiguration/SignalAnalyzerPresetHostInstance.swift": "8f003af6658f30857ef2db1d93d762ba6725b91151d58705123d5597898bdea4",
+    "Sources/GiftUIHostConfiguration/SignalAnalyzerWorkloadStartupValidation.swift": "2796208c79c09a72da5ae0d981b1eb943edf181793a553aae4bf537afb6bec96",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/ScopedHostProbe.swift": "d68702cd43fc9aee3891cb585b3398c5e0b87290b077b1bc1c6f6ad68acf457e"
+  },
+  "checks": [
+    {
+      "name": "GiftUICapabilities",
+      "exit": 0,
+      "passed": true,
+      "diagnostic": null
+    },
+    {
+      "name": "GiftUIFailureCore",
+      "exit": 0,
+      "passed": true,
+      "diagnostic": null
+    },
+    {
+      "name": "GiftUISurfaceCore",
+      "exit": 0,
+      "passed": true,
+      "diagnostic": null
+    },
+    {
+      "name": "GiftUIDisplayCore",
+      "exit": 0,
+      "passed": true,
+      "diagnostic": null
+    },
+    {
+      "name": "GiftUIRasterCore",
+      "exit": 0,
+      "passed": true,
+      "diagnostic": null
+    },
+    {
+      "name": "GiftUIBackendIntegration",
+      "exit": 0,
+      "passed": true,
+      "diagnostic": null
+    },
+    {
+      "name": "GiftUIHostConfiguration",
+      "exit": 0,
+      "passed": true,
+      "diagnostic": null
+    },
+    {
+      "name": "scoped-host-probe",
+      "exit": 0,
+      "passed": true,
+      "diagnostic": null
+    },
+    {
+      "name": "copy-host",
+      "exit": 1,
+      "passed": true,
+      "diagnostic": "noncopyable"
+    },
+    {
+      "name": "escape-host",
+      "exit": 1,
+      "passed": true,
+      "diagnostic": "non-Escapable"
+    },
+    {
+      "name": "link",
+      "exit": 0,
+      "passed": true,
+      "diagnostic": null
+    },
+    {
+      "name": "execute",
+      "exit": 0,
+      "passed": true,
+      "diagnostic": null
+    }
+  ],
+  "execution": "P08 scoped host assertions=187 failures=0",
+  "commands": [
+    "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.3.2-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-13ylmwfh/cache -disable-sandbox -target arm64-apple-macosx26.0 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014/dd5d4849463055f2-hwlll28l/macos-static -parse-as-library -I /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpwj8mqyyn/macos-static -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014/dd5d4849463055f2-hwlll28l/macos-static -enable-testing -I /Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-13ylmwfh -module-name GiftUICapabilities -emit-module -emit-object /Users/eugene/work/GiftUI/Sources/GiftUICapabilities/GiftUICapabilities.swift -emit-module-path /Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-13ylmwfh/GiftUICapabilities.swiftmodule -o /Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-13ylmwfh/GiftUICapabilities.o",
+    "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.3.2-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-13ylmwfh/cache -disable-sandbox -target arm64-apple-macosx26.0 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014/dd5d4849463055f2-hwlll28l/macos-static -parse-as-library -I /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpwj8mqyyn/macos-static -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014/dd5d4849463055f2-hwlll28l/macos-static -enable-testing -I /Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-13ylmwfh -module-name GiftUIFailureCore -emit-module -emit-object /Users/eugene/work/GiftUI/Sources/GiftUIFailureCore/GiftUIFailureCore.swift -emit-module-path /Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-13ylmwfh/GiftUIFailureCore.swiftmodule -o /Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-13ylmwfh/GiftUIFailureCore.o",
+    "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.3.2-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-13ylmwfh/cache -disable-sandbox -target arm64-apple-macosx26.0 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014/dd5d4849463055f2-hwlll28l/macos-static -parse-as-library -I /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpwj8mqyyn/macos-static -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014/dd5d4849463055f2-hwlll28l/macos-static -enable-testing -I /Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-13ylmwfh -module-name GiftUISurfaceCore -emit-module -emit-object /Users/eugene/work/GiftUI/Sources/GiftUISurfaceCore/RasterSurface.swift /Users/eugene/work/GiftUI/Sources/GiftUISurfaceCore/SurfaceValues.swift -emit-module-path /Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-13ylmwfh/GiftUISurfaceCore.swiftmodule -o /Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-13ylmwfh/GiftUISurfaceCore.o",
+    "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.3.2-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-13ylmwfh/cache -disable-sandbox -target arm64-apple-macosx26.0 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014/dd5d4849463055f2-hwlll28l/macos-static -parse-as-library -I /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpwj8mqyyn/macos-static -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014/dd5d4849463055f2-hwlll28l/macos-static -enable-testing -I /Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-13ylmwfh -module-name GiftUIDisplayCore -emit-module -emit-object /Users/eugene/work/GiftUI/Sources/GiftUIDisplayCore/DisplayContracts.swift /Users/eugene/work/GiftUI/Sources/GiftUIDisplayCore/SurfaceDisplayContributionAdapter.swift -emit-module-path /Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-13ylmwfh/GiftUIDisplayCore.swiftmodule -o /Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-13ylmwfh/GiftUIDisplayCore.o",
+    "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.3.2-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-13ylmwfh/cache -disable-sandbox -target arm64-apple-macosx26.0 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014/dd5d4849463055f2-hwlll28l/macos-static -parse-as-library -I /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpwj8mqyyn/macos-static -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014/dd5d4849463055f2-hwlll28l/macos-static -enable-testing -I /Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-13ylmwfh -module-name GiftUIRasterCore -emit-module -emit-object /Users/eugene/work/GiftUI/Sources/GiftUIRasterCore/FullSurfaceRGB565Framebuffer.swift /Users/eugene/work/GiftUI/Sources/GiftUIRasterCore/FullSurfaceRGBA8888Buffer.swift /Users/eugene/work/GiftUI/Sources/GiftUIRasterCore/RGB565TileWorkspace.swift /Users/eugene/work/GiftUI/Sources/GiftUIRasterCore/RasterBackendContributionAdapter.swift /Users/eugene/work/GiftUI/Sources/GiftUIRasterCore/RasterFillCoverage.swift /Users/eugene/work/GiftUI/Sources/GiftUIRasterCore/RasterFrameSink.swift /Users/eugene/work/GiftUI/Sources/GiftUIRasterCore/RasterFrameWork.swift /Users/eugene/work/GiftUI/Sources/GiftUIRasterCore/RasterGlyphCoverage.swift /Users/eugene/work/GiftUI/Sources/GiftUIRasterCore/RasterPayloadLimits.swift /Users/eugene/work/GiftUI/Sources/GiftUIRasterCore/RasterStrokeCoverage.swift /Users/eugene/work/GiftUI/Sources/GiftUIRasterCore/RasterWorkTracker.swift -emit-module-path /Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-13ylmwfh/GiftUIRasterCore.swiftmodule -o /Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-13ylmwfh/GiftUIRasterCore.o",
+    "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.3.2-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-13ylmwfh/cache -disable-sandbox -target arm64-apple-macosx26.0 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014/dd5d4849463055f2-hwlll28l/macos-static -parse-as-library -I /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpwj8mqyyn/macos-static -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014/dd5d4849463055f2-hwlll28l/macos-static -enable-testing -I /Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-13ylmwfh -module-name GiftUIBackendIntegration -emit-module -emit-object /Users/eugene/work/GiftUI/Sources/GiftUIBackendIntegration/FullSurfacePayloadEmitter.swift /Users/eugene/work/GiftUI/Sources/GiftUIBackendIntegration/OneShotRasterBackendEndpoint.swift /Users/eugene/work/GiftUI/Sources/GiftUIBackendIntegration/OperationMajorRGB565RasterSession.swift /Users/eugene/work/GiftUI/Sources/GiftUIBackendIntegration/OperationMajorTileTraversal.swift /Users/eugene/work/GiftUI/Sources/GiftUIBackendIntegration/RGB565TilePayloadEmitter.swift /Users/eugene/work/GiftUI/Sources/GiftUIBackendIntegration/RasterBackendEndpoint.swift /Users/eugene/work/GiftUI/Sources/GiftUIBackendIntegration/RasterBackendOwnerFailureAdapter.swift /Users/eugene/work/GiftUI/Sources/GiftUIBackendIntegration/RasterBackendStartupValidator.swift /Users/eugene/work/GiftUI/Sources/GiftUIBackendIntegration/RasterFrameWorkAdmission.swift /Users/eugene/work/GiftUI/Sources/GiftUIBackendIntegration/RasterTextResourceValidation.swift -emit-module-path /Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-13ylmwfh/GiftUIBackendIntegration.swiftmodule -o /Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-13ylmwfh/GiftUIBackendIntegration.o",
+    "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.3.2-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-13ylmwfh/cache -disable-sandbox -target arm64-apple-macosx26.0 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014/dd5d4849463055f2-hwlll28l/macos-static -parse-as-library -I /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpwj8mqyyn/macos-static -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014/dd5d4849463055f2-hwlll28l/macos-static -enable-testing -I /Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-13ylmwfh -module-name GiftUIHostConfiguration -emit-module -emit-object /Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/CheckedMVPHostConfigurationValidator.swift /Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostActivationController.swift /Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostApplicationOpportunityGate.swift /Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostApplicationStartupValidation.swift /Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostComponentGraphValidation.swift /Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostConfigurationResults.swift /Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostConfigurationValues.swift /Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostEndpointHealthController.swift /Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostEndpointStartupValidation.swift /Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostFailureAdapter.swift /Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostNormalizedInputGate.swift /Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostPresentationRecovery.swift /Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostPresetBootstrap.swift /Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostResidualFailureRouting.swift /Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostResidualPolicyContracts.swift /Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostResidualPolicyTableValidation.swift /Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostScheduledOpportunityController.swift /Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostSequencedFactAdmission.swift /Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostWakePacingController.swift /Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/SignalAnalyzerDrawingStartupValidation.swift /Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/SignalAnalyzerPresetHostInstance.swift /Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/SignalAnalyzerWorkloadStartupValidation.swift -emit-module-path /Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-13ylmwfh/GiftUIHostConfiguration.swiftmodule -o /Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-13ylmwfh/GiftUIHostConfiguration.o",
+    "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.3.2-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-13ylmwfh/cache -disable-sandbox -target arm64-apple-macosx26.0 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014/dd5d4849463055f2-hwlll28l/macos-static -parse-as-library -I /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpwj8mqyyn/macos-static -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014/dd5d4849463055f2-hwlll28l/macos-static -enable-testing -I /Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-13ylmwfh -module-name P08ScopedHostProbe -emit-module -emit-object /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/ScopedHostProbe.swift -emit-module-path /Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-13ylmwfh/P08ScopedHostProbe.swiftmodule -o /Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-13ylmwfh/P08ScopedHostProbe.o",
+    "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.3.2-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-13ylmwfh/cache -disable-sandbox -target arm64-apple-macosx26.0 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014/dd5d4849463055f2-hwlll28l/macos-static -parse-as-library -I /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpwj8mqyyn/macos-static -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014/dd5d4849463055f2-hwlll28l/macos-static -enable-testing -I /Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-13ylmwfh -module-name P08ScopedHostNegative -emit-object /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/ScopedHostProbe.swift /Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-13ylmwfh/copy-host.swift -o /Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-13ylmwfh/copy-host.o",
+    "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.3.2-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-13ylmwfh/cache -disable-sandbox -target arm64-apple-macosx26.0 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014/dd5d4849463055f2-hwlll28l/macos-static -parse-as-library -I /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpwj8mqyyn/macos-static -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014/dd5d4849463055f2-hwlll28l/macos-static -enable-testing -I /Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-13ylmwfh -module-name P08ScopedHostNegative -emit-object /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/ScopedHostProbe.swift /Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-13ylmwfh/escape-host.swift -o /Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-13ylmwfh/escape-host.o",
+    "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.3.2-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-13ylmwfh/cache -disable-sandbox -target arm64-apple-macosx26.0 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014/dd5d4849463055f2-hwlll28l/macos-static -parse-as-library -I /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpwj8mqyyn/macos-static -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014/dd5d4849463055f2-hwlll28l/macos-static -enable-testing -I /Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-13ylmwfh /Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-13ylmwfh/Main.swift /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014/dd5d4849463055f2-hwlll28l/macos-static/GiftUI.o /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpwj8mqyyn/macos-static/CyclePresentation.o /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpwj8mqyyn/macos-static/CycleSchema.o /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpwj8mqyyn/macos-static/CycleTable.o /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpwj8mqyyn/macos-static/GiftUIDrawing.o /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpwj8mqyyn/macos-static/GiftUIExecution.o /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpwj8mqyyn/macos-static/GiftUIInteraction.o /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpwj8mqyyn/macos-static/GiftUILayout.o /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpwj8mqyyn/macos-static/GiftUIObservableState.o /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpwj8mqyyn/macos-static/GiftUIReferenceTextResources.o /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpwj8mqyyn/macos-static/GiftUIRenderCore.o /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpwj8mqyyn/macos-static/GiftUIRenderLowering.o /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpwj8mqyyn/macos-static/GiftUIRuntimeCore.o /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpwj8mqyyn/macos-static/GiftUIRuntimeDynamic.o /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpwj8mqyyn/macos-static/GiftUIRuntimeStatic.o /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpwj8mqyyn/macos-static/GiftUISemanticCore.o /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpwj8mqyyn/macos-static/GiftUITextResources.o /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpwj8mqyyn/macos-static/P07TargetWorkspace.o /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpwj8mqyyn/macos-static/RuntimeCycleProbe.o /Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-13ylmwfh/GiftUIBackendIntegration.o /Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-13ylmwfh/GiftUICapabilities.o /Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-13ylmwfh/GiftUIDisplayCore.o /Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-13ylmwfh/GiftUIFailureCore.o /Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-13ylmwfh/GiftUIHostConfiguration.o /Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-13ylmwfh/GiftUIRasterCore.o /Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-13ylmwfh/GiftUISurfaceCore.o /Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-13ylmwfh/P08ScopedHostProbe.o -o /Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-13ylmwfh/scoped-host",
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-13ylmwfh/scoped-host"
+  ],
+  "artifacts": {
+    "GiftUICapabilities.swiftdoc": {
+      "sha256": "ec72953207d5ea52e6fff2af757274651b44634b7e6a8c9f98113efa5518acc2",
+      "bytes": 388
+    },
+    "GiftUIBackendIntegration.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "GiftUIRasterCore.o": {
+      "sha256": "84d992588eb1a02f99bef3518e360157898d47590fdd18e5edab74d91d2fc2f6",
+      "bytes": 127488
+    },
+    "escape-host.log": {
+      "sha256": "2ba6a4f4df6751d52b546a038290b3816ea87bd252412cf25b537973c467aa20",
+      "bytes": 634
+    },
+    "copy-host.swift": {
+      "sha256": "c1678afc17d2a56372e91176bd33bb8761de12d79b7cdbb16c5a56d3c1e15224",
+      "bytes": 152
+    },
+    "GiftUISurfaceCore.swiftdoc": {
+      "sha256": "742a6e2e0c4437593905eccab46d2114e653c13a481067f7d3b262bb1c58fee1",
+      "bytes": 388
+    },
+    "P08ScopedHostProbe.o": {
+      "sha256": "9d6273a15f9d9e05f4122dcb8e03c11222c093d90110c59adbbba1cf232f3a6e",
+      "bytes": 29784
+    },
+    "GiftUIDisplayCore.abi.json": {
+      "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+      "bytes": 149
+    },
+    "GiftUIRasterCore.swiftdoc": {
+      "sha256": "d9b2912611c27b1517c05d4dd6b59599acea9e8efd0dd49f0ed69b3f81acdf9d",
+      "bytes": 384
+    },
+    "GiftUISurfaceCore.swiftsourceinfo": {
+      "sha256": "57cfe459248b305b6b59db7f93dc7dcdd79b9e78ca9fed19abae53be0e248c60",
+      "bytes": 6376
+    },
+    "GiftUIHostConfiguration.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "P08ScopedHostProbe.abi.json": {
+      "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+      "bytes": 149
+    },
+    "GiftUIFailureCore.swiftdoc": {
+      "sha256": "9f289b31432f8d552b7a08891f210d6113aafd3b70983a58cb5975350fa31f35",
+      "bytes": 388
+    },
+    "GiftUIDisplayCore.o": {
+      "sha256": "f70b7f7a9366214fcb1fda677a746d1d489d51e063fa8bd2629fdf91eeb6d804",
+      "bytes": 23896
+    },
+    "GiftUIBackendIntegration.swiftsourceinfo": {
+      "sha256": "4071f1ae03a413dc932565ab3ead7486eaee6c1d78b8dc545770eb1ff716dd65",
+      "bytes": 33556
+    },
+    "GiftUIHostConfiguration.swiftdoc": {
+      "sha256": "99a9ecfb1bd2098cb10f7315b791eaadf2fe02409a50992da7ae09b6251b5946",
+      "bytes": 788
+    },
+    "GiftUIHostConfiguration.swiftmodule": {
+      "sha256": "2fbd34b058a05ee5cbeb880ced836f626e577fceb319d75fbc5cd0eef846fd8d",
+      "bytes": 475700
+    },
+    "GiftUIBackendIntegration.swiftdoc": {
+      "sha256": "d0ecbc1c28683456343ee153ffe97786813b5554a17518e4ce0350357f3370e5",
+      "bytes": 1284
+    },
+    "scoped-host": {
+      "sha256": "e343b3954950b491e3e1c336afc52be555434b4791c3437004cfb6f03e50e27f",
+      "bytes": 4664680
+    },
+    "P08ScopedHostProbe.swiftdoc": {
+      "sha256": "3471cdcfbce460743eaaa76d0fb2829d3fc4ffd7eaf7da42a3ec7891d9c4828d",
+      "bytes": 388
+    },
+    "execute.log": {
+      "sha256": "f040f26d7ea1be09bd79890083318e2788dc5aed68c89006f3cd5d5bc407fe52",
+      "bytes": 42
+    },
+    "GiftUIFailureCore.abi.json": {
+      "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+      "bytes": 149
+    },
+    "GiftUIBackendIntegration.o": {
+      "sha256": "5134488e48572075e1421a8ad60d307f5b4ea9a4b358e70672106476a8bd637a",
+      "bytes": 155736
+    },
+    "GiftUIHostConfiguration.o": {
+      "sha256": "5aa10487dacd891a9a4c693c4759b3796db8bb3e07a1055007916f6745f8fe6f",
+      "bytes": 687248
+    },
+    "copy-host.log": {
+      "sha256": "7a4ca93d1158acc54e824fafcc2f36a4514be0b7de600d819884abee77796b82",
+      "bytes": 466
+    },
+    "scoped-host-probe.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "GiftUIHostConfiguration.abi.json": {
+      "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+      "bytes": 149
+    },
+    "GiftUIDisplayCore.swiftsourceinfo": {
+      "sha256": "557ef6f56b5ea4cd7c790d40c059fde67fd9e0354a2f5dc8aaa077d6cd68be4d",
+      "bytes": 11740
+    },
+    "GiftUICapabilities.swiftsourceinfo": {
+      "sha256": "15055e37b07a1b6ddefc5ff18d851bec9ab7a4ce87afe17ee40b9b41a3ce3741",
+      "bytes": 47940
+    },
+    "GiftUIDisplayCore.swiftmodule": {
+      "sha256": "aed8000ccb680920a4fd5194e7477633f056540a2be87a27ab3ed19807cb3abd",
+      "bytes": 44664
+    },
+    "GiftUIBackendIntegration.abi.json": {
+      "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+      "bytes": 149
+    },
+    "GiftUISurfaceCore.swiftmodule": {
+      "sha256": "4d8ddabdab5eb93307bf1e0d2becf1c5597e8a39bacd3d2fff8cffaf8dd8df09",
+      "bytes": 31884
+    },
+    "GiftUICapabilities.abi.json": {
+      "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+      "bytes": 149
+    },
+    "GiftUIDisplayCore.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "commands.txt": {
+      "sha256": "511fb9f1ecb74a543295c7c7f79d85ba71086a8845c7d9c7423188d14ae08e5b",
+      "bytes": 21257
+    },
+    "GiftUIRasterCore.swiftsourceinfo": {
+      "sha256": "fa02aff64c0478610f9eb17074fd77c963cc4b69bb55022e05cc33866654d3d3",
+      "bytes": 38372
+    },
+    "escape-host.swift": {
+      "sha256": "40d263c7289b9c7ad9dba0c77cd157a12ed77924e09b4742bd32c8f69bb3d89a",
+      "bytes": 123
+    },
+    "GiftUIRasterCore.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "GiftUIFailureCore.swiftsourceinfo": {
+      "sha256": "ccbbd7e7209097f4d26ad74edb93601b99e966f5fe108557044b98a995b6952f",
+      "bytes": 30752
+    },
+    "GiftUICapabilities.o": {
+      "sha256": "7a4e9bbdb2bdfbd359d4d24a1dced91deb84c14b0e4c481d7f7c7e170439ed56",
+      "bytes": 226904
+    },
+    "Main.swift": {
+      "sha256": "c6e64736e503e5683f041d506e586c8cb3a4224e66e3edd69b4de9f3c699dec1",
+      "bytes": 147
+    },
+    "GiftUICapabilities.swiftmodule": {
+      "sha256": "b3b0058cda878345d612c97e7baa3165614a9dfc3b2062692ebb0f8593eac872",
+      "bytes": 319872
+    },
+    "P08ScopedHostProbe.swiftmodule": {
+      "sha256": "7953c23c86950072a07ee1ed43a24ae72f6fdf109e1b46d496cc8d9f7227dc2b",
+      "bytes": 58892
+    },
+    "GiftUIHostConfiguration.swiftsourceinfo": {
+      "sha256": "19d2d21c2bcb7dcfc987371467472bb86174f8d065475f4d1d3d4bb2bd8ae1af",
+      "bytes": 136476
+    },
+    "GiftUISurfaceCore.abi.json": {
+      "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+      "bytes": 149
+    },
+    "GiftUIDisplayCore.swiftdoc": {
+      "sha256": "f2ab4e18f213abc026a115d0fb008cd9d92905308b0583ca4fe4b1160010ade8",
+      "bytes": 388
+    },
+    "GiftUICapabilities.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "GiftUIBackendIntegration.swiftmodule": {
+      "sha256": "416e601704fbb2ffdb24dfe11f45109e0c6596ef23471bf5706ac1f2acfae4fa",
+      "bytes": 132476
+    },
+    "link.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "GiftUISurfaceCore.o": {
+      "sha256": "dac56347be7c3dcc7857b0f723c0d021b903eeef18ac09379ca810ed5645dc2f",
+      "bytes": 12200
+    },
+    "P08ScopedHostProbe.swiftsourceinfo": {
+      "sha256": "3310791faaa4f210d810a914d458271e4cde56a882a579264a141ac71394e00d",
+      "bytes": 7744
+    },
+    "GiftUIFailureCore.swiftmodule": {
+      "sha256": "a0f5c20b5e37bf4a28d8de6526e843871cb1e2647a2e8bef48e8ea8c23c381f2",
+      "bytes": 179028
+    },
+    "GiftUIFailureCore.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "GiftUIRasterCore.swiftmodule": {
+      "sha256": "5cb953445413628e5bba9220db273d39996186f202ac51f18ac03ded90ca9134",
+      "bytes": 143712
+    },
+    "GiftUIFailureCore.o": {
+      "sha256": "86d43dc3f294cefac920890b0922e2443191a8d0b158c9dae35b93794cffe00d",
+      "bytes": 127984
+    },
+    "GiftUISurfaceCore.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "GiftUIRasterCore.abi.json": {
+      "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+      "bytes": 149
+    }
+  }
+}

@@ -1,7 +1,7 @@
 # RFC-014 P08 execution receipt — 2026-10-11
 
-**Current boundary: host integration blocked pending exact SPEC-015 lifetime
-review/approval.** User authorized proceeding after P07; orientation started at
+**Historical entry boundary: host integration blocked pending exact SPEC-015 lifetime
+review/approval (resolved by explicit approval below).** User authorized proceeding after P07; orientation started at
 clean `9fa495dd`. Strong Sol 6.1 High, sequential, no delegation. P08 starts and
 remains **0/2 consecutive unproductive repairs**. P07 history is unchanged.
 
@@ -54,3 +54,45 @@ Eugene explicitly replied “Approved, please proceed” after the separate
 records the decision and unchanged construction/activation/teardown obligations.
 Original packet/probes/review remain intact. This commit changes authority and
 traceability only; production implementation starts afterward. Guard **0/2**.
+
+
+## Step 1 — approved host propagation (validated component slice)
+
+The approved protocol constraint is propagated through the existing
+`SignalAnalyzerPresetHostInstance`, activation/teardown owner constraints and
+concrete construction return. Lifetime dependence copies the supplied scoped
+owner; no coordinator is constructed by a host initializer. Conditional
+Escapable/Copyable conformances preserve the existing owned construction result
+surface. `MVPValidatedHostInstanceFactory` remains unchanged: a scoped concrete
+construction route avoids its compiler-limited associated type.
+
+`ScopedHostProbe.swift` borrows actual `StaticObservableModelStorage` through
+`withLifetime`, and tests the unchanged activation controller with an inert
+recording owner. It proves 187 assertions: valid-only activation, seven ordered
+steps, every first failing step and containment, preservation of the injected
+configuration failure, repeated activation refusal, ordered teardown, report
+invalidation and exactly-once repeated teardown. Actual host copy/escape controls
+reject; an owned-owner host remains Escapable. This is component evidence, **not**
+a constructed runtime/endpoint, pure validator, complete counter or production
+factory proof. Those remain P08 steps below.
+
+Exact checks:
+
+```sh
+scripts/format-swift.sh
+python3 scripts/contracts/check-spec-015-scoped-host.py --runtime-build .build/contracts/spec-013-runtime-cycle/tmpwj8mqyyn/macos-static
+```
+
+Fresh selected modules and executable pass; [immutable receipt](scoped-host-step-1.json)
+records commands, hashes, logs and artifacts in `.build/contracts/p08-scoped-host-13ylmwfh`.
+Every reused runtime input/artifact and pinned compiler hash was verified.
+A full host-module attempt including existing Generated schema-3 data fails
+on newly required P07 records/models/byte-count initializer arguments, retained
+at `.build/contracts/p08-host-holu8b57/{commands.txt,GiftUIHostConfiguration.log}`.
+The selected gate explicitly excludes Generated files and does not replace the
+complete host gate; the next schema-4 step must resolve this dependency. Temporary
+fixture failure-type and mutable-span corrections were productive. Guard **0/2**.
+
+SPEC-015 is now `implementing`, its owner plan `active`; T8.1/HC-RD-001–004 and
+P08 package exit remain open. Next: schema-4 scalar generation and validation,
+actual supplied storage, then complete counter host/lifetime/early image evidence.
