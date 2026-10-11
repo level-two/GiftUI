@@ -31,7 +31,7 @@ private struct Backing: ~Copyable {
     var payloads: InlineArray<196, Payload?> = .init(repeating: nil)
     var scalars: InlineArray<448, UInt32> = .init(repeating: 0)
 }
-private func exercise(_ semantic: borrowing SemanticRecordStore<Payload>, models: borrowing ObservableModelScope<CycleOwnedModel, CycleModelSchema>, root: borrowing ObservableStateRootScope<CycleOwnedModel, SemanticCompleteIdentity>) throws(SemanticExpansionError) -> Int {
+private func exercise(_ semantic: borrowing SemanticRecordStore<Payload>, models: borrowing ObservableModelScope<CycleOwnedModel, CycleModelSchema>, root: borrowing ObservableStateRootScope<CycleOwnedModel, SemanticCompleteIdentity>, dynamic: Bool) throws(SemanticExpansionError) -> Int {
     var checks = 0
     func expect(_ okay: Bool) { checks += 1; precondition(okay) }
     let limits = SemanticExpansionLimits(maximumDepth: 34, maximumSemanticNodes: 48, maximumBodyEvaluations: 14, maximumModifierApplications: 50, maximumActionOccurrences: 6)!
@@ -53,13 +53,13 @@ private func exercise(_ semantic: borrowing SemanticRecordStore<Payload>, models
             }
             let result = semantic.expand(CycleScene<CycleDomain>(show: show), roles: CycleRoles.self, codec: CanvasSemanticPayloadCodec<CycleRoles, CycleValueTable>.self, limits: limits, binding: ObservableSemanticBodyBinding(models: models.borrowedScope(), root: root.borrowedRoot(), domain: CycleDomain.self))
             guard case .success = result else { preconditionFailure("finite State expansion") }
-            var storage = StaticCanvasValueStorage()
-            var backing: InlineArray<1, CanvasStagedEntry<SemanticRecordReference, CycleValueTable.CaptureStorage>?> = .init(repeating: nil)
-            var entries = backing.mutableSpan
             do throws(DrawingError) {
-                try storage.withLifetime(entries: &entries, table: CycleValueTable(), capacity: 1, limits: StaticCanvasLimits(maximumStaticCallableCases: 1, maximumStaticCaptureBytes: 32)!) { (values) throws(DrawingError) in
+                try withCycleValues(dynamic: dynamic) { (values) throws(DrawingError) in
                     try CanvasSemanticTransfer.stage(from: semantic, into: values, table: CycleValueTable())
                     expect(values.count == (show ? 1 : 0))
+                    #if !hasFeature(Embedded)
+                    if dynamic { checks += cycleDynamicDrawing(semantic: semantic, models: models, values: values, shown: show) }
+                    #endif
                     values.discard()
                     expect(values.releaseCount == (show ? 1 : 0))
                 }
@@ -84,7 +84,7 @@ private func withSemantic(models: borrowing ObservableModelScope<CycleOwnedModel
         if dynamic {
             let storage = DynamicSemanticRecordStorage<Payload>(limits: limits, owner: try namespace.issue())
             return try storage.withLifetime { (semantic) throws(SemanticExpansionError) in
-                try exercise(semantic, models: models, root: root)
+                try exercise(semantic, models: models, root: root, dynamic: dynamic)
             }
         }
         #endif
@@ -93,7 +93,7 @@ private func withSemantic(models: borrowing ObservableModelScope<CycleOwnedModel
         var records = backing.records.mutableSpan; var paths = backing.paths.mutableSpan
         var payloads = backing.payloads.mutableSpan; var scalars = backing.scalars.mutableSpan
         return try storage.withLifetime(records: &records, paths: &paths, payloads: &payloads, scalars: &scalars) { (semantic) throws(SemanticExpansionError) in
-            try exercise(semantic, models: models, root: root)
+            try exercise(semantic, models: models, root: root, dynamic: dynamic)
         }
     } catch { preconditionFailure("semantic owner") }
 }
@@ -113,4 +113,18 @@ public func giftuiP07CycleSemantic() -> Int {
         #endif
     } catch { preconditionFailure("root owner") }
     return checks
+}
+
+private func withCycleValues(dynamic: Bool, _ body: (borrowing CanvasStagedValues<SemanticRecordReference, CycleValueTable>) throws(DrawingError) -> Void) throws(DrawingError) {
+    let limits = StaticCanvasLimits(maximumStaticCallableCases: 1, maximumStaticCaptureBytes: 32)!
+    #if !hasFeature(Embedded)
+    if dynamic {
+        var storage = DynamicCanvasCallableStorage<SemanticRecordReference, CycleValueTable>(capacity: 1)
+        return try storage.withLifetime(table: CycleValueTable(), limits: limits, body)
+    }
+    #endif
+    var storage = StaticCanvasValueStorage()
+    var backing: InlineArray<1, CanvasStagedEntry<SemanticRecordReference, CycleValueTable.CaptureStorage>?> = .init(repeating: nil)
+    var entries = backing.mutableSpan
+    try storage.withLifetime(entries: &entries, table: CycleValueTable(), capacity: 1, limits: limits, body)
 }

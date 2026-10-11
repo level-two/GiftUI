@@ -67,6 +67,21 @@ existing TupleView3 fixed it and the next check passed. One initial run overlapp
 the formatter and is excluded from acceptance; this final run started after the
 formatter completed. No unproductive repeated repair; counter remains **0/2**.
 
+## Step 11 — Dynamic layout and owned drawing join
+
+The Dynamic route now selects actual Dynamic Canvas staging, migrated Dynamic
+LayoutWorkspace/ResolvedLayoutStorage and DrawingPlanWorkspace. CanvasPlanProducer
+uses the real ObservableCanvasInvocationSource and the resolved geometry. The
+finite check verifies stroke count, transformed first point, release count and
+clean workspace discard/reset across preserve/remove/reinsert attempts. Text
+metrics are the existing deterministic SPEC-007 fixture.
+
+After formatting, the registered macos-static route passes 229 assertions and
+ten expected compiler negatives; receipt step-11-macos-static.json. Both native
+profiles are exercised by that fixture invocation, but four-configuration
+migration, Static geometry adaptation and complete coordinator/offer/fault
+execution remain pending. No failed check in this slice; repair **0/2**.
+
 ## Historical stop — associated requirements, 2026-10-11
 
 The prior approved correction is implemented. A newly confirmed exact
