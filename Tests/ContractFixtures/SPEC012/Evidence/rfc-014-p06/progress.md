@@ -1,5 +1,31 @@
 # RFC-014 P06 progress
 
+## Strong lifetime-fixture handoff — 2026-10-11
+
+Standard `gpt-6-sol`/`medium` committed fixed error-mapping evidence in
+`2fbfad32`. The next finite-table fixture reached a scoped-read lifetime
+diagnostic and stopped without production changes. Uncommitted work is
+`CanvasTableProbe.swift`, its driver registration and the Analyzer fixture's
+package initializer. Preserve this diff; do not restart P06 or repeat passed
+checks only because of the model switch.
+
+Reproduction: `scripts/contracts/run-spec-012.sh --profile macos-static
+--compiler-baseline rfc-014 --giftui-build
+.build/contracts/spec-006-rfc-014/f28bb03491f0640c-ot0b940_/macos-static`.
+Failure: `.build/contracts/spec-012-protocol-canvas/tmpt7qpmsm0/macos-static/CanvasStoreProbe.log`.
+The compiler reports `read`/`analyzerRead` escaping when values derived from
+InlineArray spans are passed through the workspace context closure (probe
+lines 77/87 and 105/113 at handoff). Existing production source is unchanged.
+
+Strong `gpt-6-astra`/`high`, C3/R3, owns diagnosis of the lexical borrow and
+the smallest approved-contract repair. Inspect the actual source and lifetimes;
+do not relax escape controls or fabricate backing annotations. Rerun the exact
+focused route after a justified change, record proof/cause, and commit a coherent
+passing step before resuming remaining fixed evidence. Contract/scope changes
+still return to the maintainer. The prior Standard packet remains the bounded
+remaining work list; separate final Strong review is still required.
+Counter remains **0 of 2** across handoff; no unproductive repair was attempted.
+
 ## Step 3 — bounded semantic transfer, ready for sequential evidence slice
 
 The semantic candidate codec now stages the concrete typed union in the existing
