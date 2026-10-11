@@ -1,0 +1,21 @@
+// CyclePipelineOwner.models.read
+  %6 = struct_element_addr %5, #CyclePipelineOwner.models // user: %7
+  %7 = load [copy] %6                             // users: %9, %15, %8
+  yield %7, resume bb1, unwind bb2                // id: %8
+
+// CyclePipelineOwner.root.read
+  %6 = struct_element_addr %5, #CyclePipelineOwner.root // user: %7
+  %7 = load [copy] %6                             // users: %9, %15, %8
+  yield %7, resume bb1, unwind bb2                // id: %8
+
+// CyclePipelineOwner.semantic.read
+  %6 = struct_element_addr %5, #CyclePipelineOwner.semantic // user: %7
+  %7 = load [copy] %6                             // users: %9, %15, %8
+  yield %7, resume bb1, unwind bb2                // id: %8
+
+// CyclePipelineOwner.values.read
+  %6 = struct_element_addr %5, #CyclePipelineOwner.values // user: %7
+  %7 = load [copy] %6                             // users: %9, %15, %8
+  yield %7, resume bb1, unwind bb2                // id: %8
+
+Full SILGen SHA256: 2bec0395d670d123609f3fc6ca01ecae205316829935059d49b43d8edee12e1d
