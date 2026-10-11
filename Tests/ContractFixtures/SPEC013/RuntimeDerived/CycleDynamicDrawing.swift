@@ -40,7 +40,9 @@ package func cycleDynamicDrawing(
         let bounds = resolved.renderView.bounds(of: canvas)!
         precondition(plan.point(of: canvas, stroke: 0, at: 0) == Point(x: bounds.origin.x, y: bounds.origin.y + 3))
     }
+    var render = DynamicRenderWorkspace(capacity: cycleRenderLimits, structuralCapacity: cycleRenderCapacity)
+    let renderChecks = cycleRender(semantic: semantic, layout: resolved.renderView, plan: plan, workspace: &render, shown: shown)
     plan.discard(); plan.reset()
-    return shown ? 5 : 3
+    return (shown ? 5 : 3) + renderChecks
 }
 #endif

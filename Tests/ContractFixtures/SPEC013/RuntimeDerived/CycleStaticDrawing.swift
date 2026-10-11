@@ -2,6 +2,7 @@ import GiftUI
 import GiftUIDrawing
 import GiftUIExecution
 import GiftUILayout
+import GiftUIRenderLowering
 import GiftUIObservableState
 import GiftUIReferenceTextResources
 import GiftUIRuntimeCore
@@ -96,10 +97,27 @@ package func cycleStaticDrawing(
                         let bounds = resolved.bounds(of: canvas)!
                         precondition(plan.point(of: canvas, stroke: 0, at: 0) == Point(x: bounds.origin.x, y: bounds.origin.y + 3))
                     }
+                    var render = QualifiedRender(base: StaticSignalAnalyzerNRFRenderWorkspace(region: text, capacity: cycleRenderLimits, structuralCapacity: cycleRenderCapacity)!)
+                    let renderChecks = cycleRender(semantic: semantic, layout: resolved, plan: plan, workspace: &render, shown: shown)
                     plan.discard(); plan.reset()
-                    return shown ? 5 : 3
+                    return (shown ? 5 : 3) + renderChecks
                 }
             }
         }
     }
+}
+
+private struct QualifiedRender: RenderProductionWorkspace {
+    typealias Identity = SemanticRecordReference
+    var base: StaticSignalAnalyzerNRFRenderWorkspace
+    var capacity: RenderLimits { base.capacity }
+    var structuralCapacity: RenderWorkspaceCapacity { base.structuralCapacity }
+    var isActive: Bool { base.isActive }
+    var currentForeground: Color? { base.currentForeground }
+    mutating func acquire() -> Bool { base.acquire() }
+    mutating func visitSemanticScope(at ordinal: UInt16) -> RenderWorkspaceVisit { base.visitSemanticScope(at: ordinal) }
+    mutating func visitLayoutScope(at ordinal: UInt16) -> RenderWorkspaceVisit { base.visitLayoutScope(at: ordinal) }
+    mutating func pushForeground(_ color: Color) -> Bool { base.pushForeground(color) }
+    mutating func popForeground() -> Bool { base.popForeground() }
+    mutating func reset() { base.reset() }
 }

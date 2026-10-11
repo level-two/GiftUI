@@ -19,7 +19,7 @@ package enum CanvasRenderProducer {
         workspace: inout Workspace
     ) -> RenderProductionResult
     where
-        Semantic: SemanticRenderView,
+        Semantic: SemanticRenderView & ~Escapable,
         Layout: ResolvedRenderLayoutView,
         Metrics: CanonicalTextMetricsView,
         Plan: DrawingPlanView,
@@ -65,7 +65,7 @@ package enum CanvasRenderProducer {
         sink: inout Sink
     ) -> RenderProductionResult
     where
-        Semantic: SemanticRenderView,
+        Semantic: SemanticRenderView & ~Escapable,
         Layout: ResolvedRenderLayoutView,
         Metrics: CanonicalTextMetricsView,
         Plan: DrawingPlanView,

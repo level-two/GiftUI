@@ -105,6 +105,21 @@ are excluded. One debugger launch transiently failed; rerun succeeded without
 code change. Productive isolated repair; consecutive unproductive count **0/2**.
 Full coordinator, interaction, endpoint, retry/fault and four-route exit pending.
 
+## Step 13 — combined render owner join
+
+CanvasRenderProducer directly forwards the approved nonescapable semantic view
+through its two existing generic methods. Both actual geometry routes now run
+combined render preflight and streaming with the maintained reference metrics
+and their actual render workspaces. The bounded recording sink checks emitted
+header/operation/glyph totals, complete stroke point access, finish/discard and
+workspace release. No endpoint acceptance or complete-cycle claim is made yet.
+
+After formatting, native P07 passes 287 assertions and ten negatives;
+step-13-macos-static.json. The initial fixture compile rejected borrowed generic
+values captured by closures/autoclosures. Explicit copies of owned layout/plan
+views and local stroke projections resolve it; no model/read is copied or
+extended. The next optimized run passes. Repair counter **0/2**.
+
 ## Historical stop — associated requirements, 2026-10-11
 
 The prior approved correction is implemented. A newly confirmed exact
