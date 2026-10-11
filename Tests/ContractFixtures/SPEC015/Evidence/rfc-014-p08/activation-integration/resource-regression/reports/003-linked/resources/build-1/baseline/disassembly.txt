@@ -1,0 +1,19 @@
+/Users/eugene/work/GiftUI/.build/rfc-014-swift64/resource-regression/003-linked/generated/resources/pristine/baseline/resource-image:
+(__TEXT,__text) section
+_main:
+1000004e8:	fd 7b bf a9	stp	x29, x30, [sp, #-0x10]!
+1000004ec:	fd 03 00 91	mov	x29, sp
+1000004f0:	20 05 80 52	mov	w0, #0x29
+1000004f4:	05 00 00 94	bl	_$s4main26giftuiSpec003ResourceEntryys6UInt32VADF
+1000004f8:	06 00 00 94	bl	_giftui_spec003_consume
+1000004fc:	00 00 80 52	mov	w0, #0x0
+100000500:	fd 7b c1 a8	ldp	x29, x30, [sp], #0x10
+100000504:	c0 03 5f d6	ret
+_$s4main26giftuiSpec003ResourceEntryys6UInt32VADF:
+100000508:	00 04 00 11	add	w0, w0, #0x1
+10000050c:	c0 03 5f d6	ret
+_giftui_spec003_consume:
+100000510:	48 00 00 90	adrp	x8, 8 ; 0x100008000
+100000514:	08 01 00 91	add	x8, x8, #0x0
+100000518:	00 01 00 b9	str	w0, [x8]
+10000051c:	c0 03 5f d6	ret

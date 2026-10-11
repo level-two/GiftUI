@@ -1,0 +1,41 @@
+There are 32 section headers, starting at offset 0xa240c:
+
+Section Headers:
+  [Nr] Name              Type            Addr     Off    Size   ES Flg Lk Inf Al
+  [ 0]                   NULL            00000000 000000 000000 00      0   0  0
+  [ 1] rom_start         PROGBITS        00000000 000120 000100 00  AX  0   0  4
+  [ 2] text              PROGBITS        00000100 000220 006a1c 00  AX  0   0  4
+  [ 3] .ARM.exidx        ARM_EXIDX       00006b1c 006c3c 000008 00  AL  2   0  4
+  [ 4] initlevel         PROGBITS        00006b24 006c44 000038 00   A  0   0  4
+  [ 5] device_area       PROGBITS        00006b5c 006c7c 000080 00   A  0   0  4
+  [ 6] sw_isr_table      PROGBITS        00006bdc 006cfc 000180 00   A  0   0  4
+  [ 7] gpio_driver_api_area PROGBITS        00006d5c 006e7c 000024 00   A  0   0  4
+  [ 8] clock_control_driver_api_area PROGBITS        00006d80 006ea0 00001c 00   A  0   0  4
+  [ 9] uart_driver_api_area PROGBITS        00006d9c 006ebc 00000c 00   A  0   0  4
+  [10] tbss              NOBITS          00006da8 006ec8 000004 00 WAT  0   0  4
+  [11] rodata            PROGBITS        00006db0 006ed0 000950 00   A  0   0 16
+  [12] .swift_modhash    PROGBITS        00007700 007820 000010 00  Ao  0   0  1
+  [13] .ramfunc          PROGBITS        20000000 007940 000000 00   W  0   0  1
+  [14] datas             PROGBITS        20000000 007830 000104 00  WA  0   0  4
+  [15] device_states     PROGBITS        20000104 007934 000008 00  WA  0   0  1
+  [16] .comment          PROGBITS        00000000 007940 000020 01  MS  0   0  1
+  [17] .debug_aranges    PROGBITS        00000000 007960 001118 00      0   0  8
+  [18] .debug_info       PROGBITS        00000000 008a78 0384e2 00      0   0  1
+  [19] .debug_abbrev     PROGBITS        00000000 040f5a 0098cc 00      0   0  1
+  [20] .debug_line       PROGBITS        00000000 04a826 01e9ce 00      0   0  1
+  [21] .debug_frame      PROGBITS        00000000 0691f4 00282c 00      0   0  4
+  [22] .debug_str        PROGBITS        00000000 06ba20 00b13d 01  MS  0   0  1
+  [23] .debug_loc        PROGBITS        00000000 076b5d 018e24 00      0   0  1
+  [24] .debug_ranges     PROGBITS        00000000 08f988 004690 00      0   0  8
+  [25] .ARM.attributes   ARM_ATTRIBUTES  00000000 094018 00003c 00      0   0  1
+  [26] .last_section     PROGBITS        0000781c 00793c 000004 00  WA  0   0  4
+  [27] bss               NOBITS          20000110 007990 000e45 00  WA  0   0  8
+  [28] noinit            NOBITS          20000f80 007990 001300 00  WA  0   0 128
+  [29] .symtab           SYMTAB          00000000 094054 006fe0 10     30 856  4
+  [30] .strtab           STRTAB          00000000 09b034 007269 00      0   0  1
+  [31] .shstrtab         STRTAB          00000000 0a229d 00016c 00      0   0  1
+Key to Flags:
+  W (write), A (alloc), X (execute), M (merge), S (strings), I (info),
+  L (link order), O (extra OS processing required), G (group), T (TLS),
+  C (compressed), x (unknown), o (OS specific), E (exclude),
+  D (mbind), y (purecode), p (processor specific)

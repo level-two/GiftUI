@@ -1,0 +1,13 @@
+      Model Identifier: Mac15,7
+      Chip: Apple M3 Pro
+      Total Number of Cores: 12 (6 Performance and 6 Efficiency)
+      Memory: 36 GB
+ProductName:		macOS
+ProductVersion:		26.6.2
+BuildVersion:		25G83
+Apple Swift version 6.4 (swift-6.4-RELEASE)
+Target: arm64-apple-macosx26.0
+reference_model=Mac15,7
+reference_os_version=26.6.2
+reference_os_build=25G83
+reference_runner_match=true

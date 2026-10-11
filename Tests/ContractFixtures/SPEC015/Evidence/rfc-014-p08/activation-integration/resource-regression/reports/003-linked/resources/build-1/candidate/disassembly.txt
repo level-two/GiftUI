@@ -1,0 +1,157 @@
+/Users/eugene/work/GiftUI/.build/rfc-014-swift64/resource-regression/003-linked/generated/resources/pristine/candidate/resource-image:
+(__TEXT,__text) section
+_main:
+100000588:	ff 03 02 d1	sub	sp, sp, #0x80
+10000058c:	f6 57 05 a9	stp	x22, x21, [sp, #0x50]
+100000590:	f4 4f 06 a9	stp	x20, x19, [sp, #0x60]
+100000594:	fd 7b 07 a9	stp	x29, x30, [sp, #0x70]
+100000598:	fd c3 01 91	add	x29, sp, #0x70
+10000059c:	20 05 80 52	mov	w0, #0x29
+1000005a0:	3d 00 00 94	bl	_$s4main26giftuiSpec003ResourceEntryys6UInt32VADF
+1000005a4:	f3 03 00 aa	mov	x19, x0
+1000005a8:	54 00 00 90	adrp	x20, 8 ; 0x100008000
+1000005ac:	94 02 00 91	add	x20, x20, #0x0
+1000005b0:	e1 e3 00 91	add	x1, sp, #0x38
+1000005b4:	e0 03 14 aa	mov	x0, x20
+1000005b8:	02 00 80 d2	mov	x2, #0x0
+1000005bc:	03 00 80 d2	mov	x3, #0x0
+1000005c0:	86 00 00 94	bl	0x1000007d8 ; symbol stub for: _swift_beginAccess
+1000005c4:	94 0e 40 b9	ldr	w20, [x20, #0xc]
+1000005c8:	48 00 00 90	adrp	x8, 8 ; 0x100008000
+1000005cc:	08 0d 40 f9	ldr	x8, [x8, #0x18]
+1000005d0:	1f 05 00 b1	cmn	x8, #0x1
+1000005d4:	61 03 00 54	b.ne	0x100000640
+1000005d8:	94 02 13 0b	add	w20, w20, w19
+1000005dc:	53 00 00 90	adrp	x19, 8 ; 0x100008000
+1000005e0:	73 82 00 91	add	x19, x19, #0x20
+1000005e4:	e1 83 00 91	add	x1, sp, #0x20
+1000005e8:	e0 03 13 aa	mov	x0, x19
+1000005ec:	02 00 80 d2	mov	x2, #0x0
+1000005f0:	03 00 80 d2	mov	x3, #0x0
+1000005f4:	79 00 00 94	bl	0x1000007d8 ; symbol stub for: _swift_beginAccess
+1000005f8:	75 02 40 39	ldrb	w21, [x19]
+1000005fc:	53 00 00 90	adrp	x19, 8 ; 0x100008000
+100000600:	73 a2 06 91	add	x19, x19, #0x1a8
+100000604:	e1 23 00 91	add	x1, sp, #0x8
+100000608:	e0 03 13 aa	mov	x0, x19
+10000060c:	02 00 80 d2	mov	x2, #0x0
+100000610:	03 00 80 d2	mov	x3, #0x0
+100000614:	71 00 00 94	bl	0x1000007d8 ; symbol stub for: _swift_beginAccess
+100000618:	68 02 40 b9	ldr	w8, [x19]
+10000061c:	a8 02 08 0b	add	w8, w21, w8
+100000620:	80 02 08 0b	add	w0, w20, w8
+100000624:	61 00 00 94	bl	_giftui_spec003_consume
+100000628:	00 00 80 52	mov	w0, #0x0
+10000062c:	fd 7b 47 a9	ldp	x29, x30, [sp, #0x70]
+100000630:	f4 4f 46 a9	ldp	x20, x19, [sp, #0x60]
+100000634:	f6 57 45 a9	ldp	x22, x21, [sp, #0x50]
+100000638:	ff 03 02 91	add	sp, sp, #0x80
+10000063c:	c0 03 5f d6	ret
+100000640:	40 00 00 90	adrp	x0, 8 ; 0x100008000
+100000644:	00 60 00 91	add	x0, x0, #0x18
+100000648:	01 00 00 90	adrp	x1, 0 ; 0x100000000
+10000064c:	21 60 19 91	add	x1, x1, #0x658
+100000650:	65 00 00 94	bl	0x1000007e4 ; symbol stub for: _swift_once
+100000654:	e1 ff ff 17	b	0x1000005d8
+_$s4main29giftuiSpec003DiagnosticBuffer_WZ:
+100000658:	ff c3 06 d1	sub	sp, sp, #0x1b0
+10000065c:	fc 6f 19 a9	stp	x28, x27, [sp, #0x190]
+100000660:	fd 7b 1a a9	stp	x29, x30, [sp, #0x1a0]
+100000664:	fd 83 06 91	add	x29, sp, #0x1a0
+100000668:	e8 23 00 91	add	x8, sp, #0x8
+10000066c:	37 00 00 94	bl	_$s24GiftUIFailureDiagnostics0A23UIFixedDiagnosticBufferVACycfC
+100000670:	40 00 00 90	adrp	x0, 8 ; 0x100008000
+100000674:	00 80 00 91	add	x0, x0, #0x20
+100000678:	e1 23 00 91	add	x1, sp, #0x8
+10000067c:	02 31 80 52	mov	w2, #0x188
+100000680:	4e 00 00 94	bl	_memcpy
+100000684:	fd 7b 5a a9	ldp	x29, x30, [sp, #0x1a0]
+100000688:	fc 6f 59 a9	ldp	x28, x27, [sp, #0x190]
+10000068c:	ff c3 06 91	add	sp, sp, #0x1b0
+100000690:	c0 03 5f d6	ret
+_$s4main26giftuiSpec003ResourceEntryys6UInt32VADF:
+100000694:	ff 03 01 d1	sub	sp, sp, #0x40
+100000698:	f4 4f 02 a9	stp	x20, x19, [sp, #0x20]
+10000069c:	fd 7b 03 a9	stp	x29, x30, [sp, #0x30]
+1000006a0:	fd c3 00 91	add	x29, sp, #0x30
+1000006a4:	f3 03 00 aa	mov	x19, x0
+1000006a8:	ff 33 00 39	strb	wzr, [sp, #0xc]
+1000006ac:	ff 03 01 f8	stur	xzr, [sp, #0x10]
+1000006b0:	ff 53 01 f8	stur	xzr, [sp, #0x15]
+1000006b4:	40 01 80 d2	mov	x0, #0xa
+1000006b8:	a0 80 a0 f2	movk	x0, #0x405, lsl #16
+1000006bc:	20 00 c0 f2	movk	x0, #0x1, lsl #32
+1000006c0:	f4 33 00 91	add	x20, sp, #0xc
+1000006c4:	61 00 80 52	mov	w1, #0x3
+1000006c8:	08 00 00 94	bl	_$s17GiftUIFailureCore0A19UIOperationalHealthV13recordFailure_14resultingStateyAA0aB4FactV_AA0adeI0OtF
+1000006cc:	e8 1b 40 b9	ldr	w8, [sp, #0x18]
+1000006d0:	68 02 08 0b	add	w8, w19, w8
+1000006d4:	00 3d 00 11	add	w0, w8, #0xf
+1000006d8:	fd 7b 43 a9	ldp	x29, x30, [sp, #0x30]
+1000006dc:	f4 4f 42 a9	ldp	x20, x19, [sp, #0x20]
+1000006e0:	ff 03 01 91	add	sp, sp, #0x40
+1000006e4:	c0 03 5f d6	ret
+_$s17GiftUIFailureCore0A19UIOperationalHealthV13recordFailure_14resultingStateyAA0aB4FactV_AA0adeI0OtF:
+1000006e8:	28 1c 00 12	and	w8, w1, #0xff
+1000006ec:	89 0e 40 b9	ldr	w9, [x20, #0xc]
+1000006f0:	29 05 00 31	adds	w9, w9, #0x1
+1000006f4:	ea 37 9f 1a	cset	w10, hs
+1000006f8:	29 31 9f 5a	csinv	w9, w9, wzr, lo
+1000006fc:	89 0e 00 b9	str	w9, [x20, #0xc]
+100000700:	89 42 40 39	ldrb	w9, [x20, #0x10]
+100000704:	49 01 09 2a	orr	w9, w10, w9
+100000708:	2a 01 00 12	and	w10, w9, #0x1
+10000070c:	8a 42 00 39	strb	w10, [x20, #0x10]
+100000710:	8a 02 40 39	ldrb	w10, [x20]
+100000714:	5f 0d 00 71	cmp	w10, #0x3
+100000718:	44 11 48 7a	ccmp	w10, w8, #0x4, ne
+10000071c:	40 01 00 54	b.eq	0x100000744
+100000720:	8a 06 40 b9	ldr	w10, [x20, #0x4]
+100000724:	4a 05 00 31	adds	w10, w10, #0x1
+100000728:	eb 37 9f 1a	cset	w11, hs
+10000072c:	4a 31 9f 5a	csinv	w10, w10, wzr, lo
+100000730:	8a 06 00 b9	str	w10, [x20, #0x4]
+100000734:	29 01 0b 2a	orr	w9, w9, w11
+100000738:	29 01 00 12	and	w9, w9, #0x1
+10000073c:	89 42 00 39	strb	w9, [x20, #0x10]
+100000740:	88 02 00 39	strb	w8, [x20]
+100000744:	c0 03 5f d6	ret
+_$s24GiftUIFailureDiagnostics0A23UIFixedDiagnosticBufferVACycfC:
+100000748:	1f 01 00 39	strb	wzr, [x8]
+10000074c:	00 e4 00 6f	movi.2d	v0, #0000000000000000
+100000750:	00 41 81 3c	stur	q0, [x8, #0x14]
+100000754:	00 41 82 3c	stur	q0, [x8, #0x24]
+100000758:	00 41 83 3c	stur	q0, [x8, #0x34]
+10000075c:	00 41 84 3c	stur	q0, [x8, #0x44]
+100000760:	00 41 85 3c	stur	q0, [x8, #0x54]
+100000764:	00 41 86 3c	stur	q0, [x8, #0x64]
+100000768:	00 41 87 3c	stur	q0, [x8, #0x74]
+10000076c:	00 41 88 3c	stur	q0, [x8, #0x84]
+100000770:	00 41 89 3c	stur	q0, [x8, #0x94]
+100000774:	00 41 8a 3c	stur	q0, [x8, #0xa4]
+100000778:	00 41 8b 3c	stur	q0, [x8, #0xb4]
+10000077c:	00 41 8c 3c	stur	q0, [x8, #0xc4]
+100000780:	00 41 8d 3c	stur	q0, [x8, #0xd4]
+100000784:	00 41 8e 3c	stur	q0, [x8, #0xe4]
+100000788:	00 41 8f 3c	stur	q0, [x8, #0xf4]
+10000078c:	1f 85 01 b9	str	wzr, [x8, #0x184]
+100000790:	00 4d 80 3c	str	q0, [x8, #0x4]!
+100000794:	00 01 08 ad	stp	q0, q0, [x8, #0x100]
+100000798:	00 01 09 ad	stp	q0, q0, [x8, #0x120]
+10000079c:	00 01 0a ad	stp	q0, q0, [x8, #0x140]
+1000007a0:	00 01 0b ad	stp	q0, q0, [x8, #0x160]
+1000007a4:	c0 03 5f d6	ret
+_giftui_spec003_consume:
+1000007a8:	48 00 00 90	adrp	x8, 8 ; 0x100008000
+1000007ac:	08 f1 06 91	add	x8, x8, #0x1bc
+1000007b0:	00 01 00 b9	str	w0, [x8]
+1000007b4:	c0 03 5f d6	ret
+_memcpy:
+1000007b8:	08 00 80 d2	mov	x8, #0x0
+1000007bc:	5f 00 08 eb	cmp	x2, x8
+1000007c0:	a0 00 00 54	b.eq	0x1000007d4
+1000007c4:	29 68 68 38	ldrb	w9, [x1, x8]
+1000007c8:	09 68 28 38	strb	w9, [x0, x8]
+1000007cc:	08 05 00 91	add	x8, x8, #0x1
+1000007d0:	fb ff ff 17	b	0x1000007bc
+1000007d4:	c0 03 5f d6	ret

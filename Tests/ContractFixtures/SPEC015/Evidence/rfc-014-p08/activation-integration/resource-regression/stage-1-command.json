@@ -1,0 +1,1 @@
+["scripts/contracts/run-spec-002.sh", "--profile", "macos-static", "--compiler-baseline", "rfc-014"]

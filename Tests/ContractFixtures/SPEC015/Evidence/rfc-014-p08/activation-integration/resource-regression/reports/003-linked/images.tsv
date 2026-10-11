@@ -1,0 +1,4 @@
+resource-build-1-baseline	.build/rfc-014-swift64/resource-regression/003-linked/resources/build-1/baseline/resource-image	ed985de4022fdb9c49cfe464badf314fe4669fb7f0a0e27f50f2dd97a66c7c5a
+resource-build-2-baseline	.build/rfc-014-swift64/resource-regression/003-linked/resources/build-2/baseline/resource-image	ed985de4022fdb9c49cfe464badf314fe4669fb7f0a0e27f50f2dd97a66c7c5a
+resource-build-1-candidate	.build/rfc-014-swift64/resource-regression/003-linked/resources/build-1/candidate/resource-image	052d87c6b6e9377acc83e2d6538811026506bb14a9198b660b6cefd0a91b2460
+resource-build-2-candidate	.build/rfc-014-swift64/resource-regression/003-linked/resources/build-2/candidate/resource-image	052d87c6b6e9377acc83e2d6538811026506bb14a9198b660b6cefd0a91b2460

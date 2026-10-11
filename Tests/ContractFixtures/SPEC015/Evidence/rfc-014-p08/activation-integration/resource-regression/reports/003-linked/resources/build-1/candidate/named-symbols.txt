@@ -1,0 +1,15 @@
+                                  U _swift_beginAccess
+                                  U _swift_once
+0000000100000000 0000000000000000 T __mh_execute_header
+0000000100000588 0000000000000000 T _main
+0000000100000658 0000000000000000 T _$s4main29giftuiSpec003DiagnosticBuffer_WZ
+0000000100000694 0000000000000000 T _$s4main26giftuiSpec003ResourceEntryys6UInt32VADF
+00000001000006e8 0000000000000000 T _$s17GiftUIFailureCore0A19UIOperationalHealthV13recordFailure_14resultingStateyAA0aB4FactV_AA0adeI0OtF
+0000000100000748 0000000000000000 T _$s24GiftUIFailureDiagnostics0A23UIFixedDiagnosticBufferVACycfC
+00000001000007a8 0000000000000000 T _giftui_spec003_consume
+00000001000007b8 0000000000000000 T _memcpy
+0000000100008000 0000000000000000 S _$s4main19giftuiSpec003Health17GiftUIFailureCore0e13UIOperationalD0Vvp
+0000000100008018 0000000000000000 S _$s4main29giftuiSpec003DiagnosticBuffer_Wz
+0000000100008020 0000000000000000 S _$s4main29giftuiSpec003DiagnosticBuffer24GiftUIFailureDiagnostics0f7UIFixeddE0Vvp
+00000001000081a8 0000000000000000 S _$s4main31giftuiSpec003DiagnosticCounters24GiftUIFailureDiagnostics0f20UIDiagnosticDeliveryE0Vvp
+00000001000081bc 0000000000000000 S _giftui_spec003_resource_sink

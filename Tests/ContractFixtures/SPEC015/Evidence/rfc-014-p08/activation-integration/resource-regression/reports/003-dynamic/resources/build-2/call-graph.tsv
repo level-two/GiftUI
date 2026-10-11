@@ -1,0 +1,3 @@
+function	frame_bytes	reachable_direct_callees	instructions	root
+_$s17GiftUIFailureCore0A19UIOperationalHealthV13recordFailure_14resultingStateyAA0aB4FactV_AA0adeI0OtF	0		24	false
+_$s4main26giftuiSpec003ResourceEntryys6UInt32VADF	64	/Users/eugene/work/GiftUI/.build/rfc-014-swift64/resource-regression/003-dynamic/generated/resources/pristine/candidate/resource-image	21	true

@@ -1,0 +1,8 @@
+metric	baseline	candidate	delta_or_value	limit	status
+linked_ram_bytes	8576	8828	252	196608	pass
+linked_flash_bytes	25732	30484	4752	1048576	pass
+flash_warning_threshold_bytes	-	30484	30484	917504	pass
+named_capability_storage_bytes	-	202	202	512	pass
+display_staging_bytes	-	2560	2560	16384	pass
+resolver_stack_bytes	-	80	80	256	pass
+initialization_operations	-	44	44	96	pass

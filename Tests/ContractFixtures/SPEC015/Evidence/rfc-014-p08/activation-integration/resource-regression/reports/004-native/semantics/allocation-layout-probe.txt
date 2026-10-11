@@ -1,0 +1,12 @@
+allocation_count=0
+checksum=3141923148
+layout.RasterPresentationRequirement=25,28,4
+layout.RasterRealizationContribution=24,24,4
+layout.RasterBackendContribution=48,48,4
+layout.SurfaceDisplayContribution=20,20,4
+layout.RasterPresentationPolicy=16,16,4
+layout.RasterPresentationContributions=93,96,4
+layout.RasterPresentationResolverWorkspace=52,52,4
+layout.EffectiveRasterPresentation=40,40,4
+layout.RasterPresentationUnavailable=12,12,4
+layout.CapabilitySnapshot=40,40,4

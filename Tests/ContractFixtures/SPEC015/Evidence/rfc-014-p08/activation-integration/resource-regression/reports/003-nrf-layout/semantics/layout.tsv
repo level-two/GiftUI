@@ -1,0 +1,28 @@
+value	size	stride	alignment
+GiftUIConditionID	2	2	2
+GiftUIFailureOrigin	1	1	1
+GiftUIAffectedScope	1	1	1
+GiftUIContainment	1	1	1
+GiftUIFailureFact	5	6	2
+GiftUIOperationalKind	1	1	1
+GiftUIOperationalFact	3	3	1
+GiftUIOutcome<UInt32>	6	8	4
+GiftUIFailureAnnotation	8	8	4
+GiftUIFailureAnnotations	20	20	4
+GiftUIResidualDisposition	1	1	1
+GiftUIAllowedDispositions	1	1	1
+GiftUIResidualPolicyInput<UInt32>	15	16	4
+GiftUIOperationalHealthState	1	1	1
+GiftUIOperationalHealth	17	20	4
+GiftUIDiagnosticKind	1	1	1
+GiftUIDiagnosticSeverity	1	1	1
+GiftUIDiagnosticSelection	5	6	2
+GiftUIDiagnosticRecord	24	24	4
+GiftUIDiagnosticSinkResult	1	1	1
+GiftUIDiagnosticDeliveryCounters	17	20	4
+GiftUIDiagnosticProjector<GiftUIFixedDiagnosticBuffer>	225	228	4
+GiftUIFixedDiagnosticBuffer	200	200	4
+default_buffer_capacity	8
+named_owned_state	GiftUIOperationalHealth,GiftUIDiagnosticDeliveryCounters,GiftUIFixedDiagnosticBuffer
+owned_state_bytes	234
+writable_ram_limit	320

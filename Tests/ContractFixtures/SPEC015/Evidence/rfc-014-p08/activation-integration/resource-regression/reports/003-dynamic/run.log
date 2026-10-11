@@ -1,0 +1,3 @@
+SPEC-003 layout check passed: 23 values, capacity 64, owned state 1578/2048 bytes.
+SPEC-003 macos-dynamic resource evidence passed: RAM delta 1596, code delta 532, stack 64.
+SPEC-003 macos-dynamic resource evidence passed: RAM delta 1596, code delta 532, stack 64.

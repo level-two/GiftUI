@@ -1,0 +1,7 @@
+allocation-probe	.build/rfc-014-swift64/resource-regression/003-dynamic/build/allocation-probe/allocation-probe	6f49879cda68128fc5d4ffd504f0d23d42f8887d25147c14e0419c87455b6e55
+allocation-interposer	.build/rfc-014-swift64/resource-regression/003-dynamic/build/allocation-probe/libGiftUIAllocationInterposer.dylib	0ad4bb40717a670fb624747106d11e346ecd3e91220cfcc96552e1774860f180
+latency-probe	.build/rfc-014-swift64/resource-regression/003-dynamic/build/latency-probe/latency-probe	bffd4936df630edf50b1c4d5f3dba12c5adc4ca1d4c197241ae9a452c4abee2a
+resource-build-1-baseline	.build/rfc-014-swift64/resource-regression/003-dynamic/resources/build-1/baseline/resource-image	ed985de4022fdb9c49cfe464badf314fe4669fb7f0a0e27f50f2dd97a66c7c5a
+resource-build-2-baseline	.build/rfc-014-swift64/resource-regression/003-dynamic/resources/build-2/baseline/resource-image	ed985de4022fdb9c49cfe464badf314fe4669fb7f0a0e27f50f2dd97a66c7c5a
+resource-build-1-candidate	.build/rfc-014-swift64/resource-regression/003-dynamic/resources/build-1/candidate/resource-image	169ca04eee2600611f7abbf6a28729f284512db45fc3e3dc94d6e8f333c10716
+resource-build-2-candidate	.build/rfc-014-swift64/resource-regression/003-dynamic/resources/build-2/candidate/resource-image	169ca04eee2600611f7abbf6a28729f284512db45fc3e3dc94d6e8f333c10716

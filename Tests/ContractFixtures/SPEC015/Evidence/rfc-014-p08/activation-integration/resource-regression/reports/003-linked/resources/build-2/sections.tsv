@@ -1,0 +1,11 @@
+image	class	segment	section	bytes
+baseline	writable	__DATA	__common	4
+baseline	code-or-read-only	__DATA_CONST	__objc_imageinfo	8
+baseline	code-or-read-only	__TEXT	__text	56
+baseline	code-or-read-only	__TEXT	__unwind_info	104
+candidate	writable	__DATA	__common	448
+candidate	code-or-read-only	__DATA_CONST	__got	16
+candidate	code-or-read-only	__DATA_CONST	__objc_imageinfo	8
+candidate	code-or-read-only	__TEXT	__stubs	24
+candidate	code-or-read-only	__TEXT	__text	592
+candidate	code-or-read-only	__TEXT	__unwind_info	120

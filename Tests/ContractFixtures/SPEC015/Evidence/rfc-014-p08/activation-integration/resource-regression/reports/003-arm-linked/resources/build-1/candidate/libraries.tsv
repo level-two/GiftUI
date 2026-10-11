@@ -1,0 +1,6 @@
+ld-linux-armhf.so.3	linked-image
+libatomic.so.1	linked-image
+libc.so.6	linked-image
+libgcc_s.so.1	linked-image
+libm.so.6	linked-image
+libstdc++.so.6	linked-image

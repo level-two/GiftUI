@@ -1,0 +1,2 @@
+allocation-probe	.build/rfc-014-swift64/resource-regression/004-native/build/allocation-probe/allocation-probe	312a9278981797445ffe2bb7da528b849fbf62d23804e618921439a7ae2057cb
+allocation-interposer	.build/rfc-014-swift64/resource-regression/004-native/build/allocation-probe/libGiftUIAllocationInterposer.dylib	0ad4bb40717a670fb624747106d11e346ecd3e91220cfcc96552e1774860f180

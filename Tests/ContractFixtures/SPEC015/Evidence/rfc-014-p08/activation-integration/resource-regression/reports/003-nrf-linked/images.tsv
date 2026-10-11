@@ -1,0 +1,4 @@
+resource-build-1-baseline	.build/nrf52840/p08-resource-regression/003-nrf-linked/resources/build-1/baseline/resource-image	8751eee6c1869cb3170b6e9f242b602d119d4070248f2f3a8da3bb2be3ca548a
+resource-build-2-baseline	.build/nrf52840/p08-resource-regression/003-nrf-linked/resources/build-2/baseline/resource-image	8751eee6c1869cb3170b6e9f242b602d119d4070248f2f3a8da3bb2be3ca548a
+resource-build-1-candidate	.build/nrf52840/p08-resource-regression/003-nrf-linked/resources/build-1/candidate/resource-image	c706dbd1825df70e43c524e514c8c99ae6ed8c08806a1e007db83f11d501208b
+resource-build-2-candidate	.build/nrf52840/p08-resource-regression/003-nrf-linked/resources/build-2/candidate/resource-image	c706dbd1825df70e43c524e514c8c99ae6ed8c08806a1e007db83f11d501208b

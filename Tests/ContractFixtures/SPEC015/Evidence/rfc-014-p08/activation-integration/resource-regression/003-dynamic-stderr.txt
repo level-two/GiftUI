@@ -1,0 +1,4 @@
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/nm: warning: sizes with --print-size for Mach-O files are always zero.
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/nm: warning: sizes with --print-size for Mach-O files are always zero.
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/nm: warning: sizes with --print-size for Mach-O files are always zero.
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/nm: warning: sizes with --print-size for Mach-O files are always zero.

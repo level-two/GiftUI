@@ -1,0 +1,110 @@
+[
+  {
+    "command": [
+      ".toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/arm-zephyr-eabi-readelf",
+      "-A",
+      ".build/raspberry-pi/p08-resource-regression/003-arm-linked/resources/build-1/baseline/resource-image"
+    ],
+    "exit": 0,
+    "path": ".build/raspberry-pi/p08-resource-regression/003-arm-linked/resources/build-1/baseline/abi-attributes.txt"
+  },
+  {
+    "command": [
+      ".toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/arm-zephyr-eabi-readelf",
+      "-A",
+      ".build/raspberry-pi/p08-resource-regression/003-arm-linked/resources/build-1/candidate/resource-image"
+    ],
+    "exit": 0,
+    "path": ".build/raspberry-pi/p08-resource-regression/003-arm-linked/resources/build-1/candidate/abi-attributes.txt"
+  },
+  {
+    "command": [
+      ".toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/arm-zephyr-eabi-readelf",
+      "-A",
+      ".build/raspberry-pi/p08-resource-regression/003-arm-linked/resources/build-2/baseline/resource-image"
+    ],
+    "exit": 0,
+    "path": ".build/raspberry-pi/p08-resource-regression/003-arm-linked/resources/build-2/baseline/abi-attributes.txt"
+  },
+  {
+    "command": [
+      ".toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/arm-zephyr-eabi-readelf",
+      "-A",
+      ".build/raspberry-pi/p08-resource-regression/003-arm-linked/resources/build-2/candidate/resource-image"
+    ],
+    "exit": 0,
+    "path": ".build/raspberry-pi/p08-resource-regression/003-arm-linked/resources/build-2/candidate/abi-attributes.txt"
+  },
+  {
+    "command": [
+      ".toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/arm-zephyr-eabi-readelf",
+      "-A",
+      ".build/nrf52840/p08-resource-regression/003-nrf-linked/resources/build-1/baseline/resource-image"
+    ],
+    "exit": 0,
+    "path": ".build/nrf52840/p08-resource-regression/003-nrf-linked/resources/build-1/baseline/abi-attributes.txt"
+  },
+  {
+    "command": [
+      ".toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/arm-zephyr-eabi-readelf",
+      "-A",
+      ".build/nrf52840/p08-resource-regression/003-nrf-linked/resources/build-1/candidate/resource-image"
+    ],
+    "exit": 0,
+    "path": ".build/nrf52840/p08-resource-regression/003-nrf-linked/resources/build-1/candidate/abi-attributes.txt"
+  },
+  {
+    "command": [
+      ".toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/arm-zephyr-eabi-readelf",
+      "-A",
+      ".build/nrf52840/p08-resource-regression/003-nrf-linked/resources/build-2/baseline/resource-image"
+    ],
+    "exit": 0,
+    "path": ".build/nrf52840/p08-resource-regression/003-nrf-linked/resources/build-2/baseline/abi-attributes.txt"
+  },
+  {
+    "command": [
+      ".toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/arm-zephyr-eabi-readelf",
+      "-A",
+      ".build/nrf52840/p08-resource-regression/003-nrf-linked/resources/build-2/candidate/resource-image"
+    ],
+    "exit": 0,
+    "path": ".build/nrf52840/p08-resource-regression/003-nrf-linked/resources/build-2/candidate/abi-attributes.txt"
+  },
+  {
+    "command": [
+      ".toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/arm-zephyr-eabi-readelf",
+      "-A",
+      ".build/nrf52840/p08-resource-regression/004-nrf-linked/resources/build-1/baseline/zephyr.elf"
+    ],
+    "exit": 0,
+    "path": ".build/nrf52840/p08-resource-regression/004-nrf-linked/resources/build-1/baseline/abi-attributes.txt"
+  },
+  {
+    "command": [
+      ".toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/arm-zephyr-eabi-readelf",
+      "-A",
+      ".build/nrf52840/p08-resource-regression/004-nrf-linked/resources/build-1/candidate/zephyr.elf"
+    ],
+    "exit": 0,
+    "path": ".build/nrf52840/p08-resource-regression/004-nrf-linked/resources/build-1/candidate/abi-attributes.txt"
+  },
+  {
+    "command": [
+      ".toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/arm-zephyr-eabi-readelf",
+      "-A",
+      ".build/nrf52840/p08-resource-regression/004-nrf-linked/resources/build-2/baseline/zephyr.elf"
+    ],
+    "exit": 0,
+    "path": ".build/nrf52840/p08-resource-regression/004-nrf-linked/resources/build-2/baseline/abi-attributes.txt"
+  },
+  {
+    "command": [
+      ".toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/arm-zephyr-eabi-readelf",
+      "-A",
+      ".build/nrf52840/p08-resource-regression/004-nrf-linked/resources/build-2/candidate/zephyr.elf"
+    ],
+    "exit": 0,
+    "path": ".build/nrf52840/p08-resource-regression/004-nrf-linked/resources/build-2/candidate/abi-attributes.txt"
+  }
+]

@@ -1,0 +1,70 @@
+{
+  "closed": true,
+  "stages": [
+    {
+      "stage": "003-arm-layout",
+      "exit": 0,
+      "root": ".build/raspberry-pi/p08-resource-regression/003-arm-layout"
+    },
+    {
+      "stage": "003-arm-linked",
+      "exit": 0,
+      "root": ".build/raspberry-pi/p08-resource-regression/003-arm-linked"
+    },
+    {
+      "stage": "003-dynamic",
+      "exit": 0,
+      "root": ".build/rfc-014-swift64/resource-regression/003-dynamic"
+    },
+    {
+      "stage": "003-linked",
+      "exit": 0,
+      "root": ".build/rfc-014-swift64/resource-regression/003-linked"
+    },
+    {
+      "stage": "003-native",
+      "exit": 0,
+      "root": ".build/rfc-014-swift64/resource-regression/003-native"
+    },
+    {
+      "stage": "003-nrf-layout",
+      "exit": 0,
+      "root": ".build/rfc-014-swift64/resource-regression/003-nrf-layout"
+    },
+    {
+      "stage": "003-nrf-linked",
+      "exit": 0,
+      "root": ".build/nrf52840/p08-resource-regression/003-nrf-linked"
+    },
+    {
+      "stage": "003-static-latency",
+      "exit": 0,
+      "root": ".build/rfc-014-swift64/resource-regression/003-static-latency"
+    },
+    {
+      "stage": "004-arm-layout",
+      "exit": 0,
+      "root": ".build/raspberry-pi/p08-resource-regression/004-arm-layout"
+    },
+    {
+      "stage": "004-native",
+      "exit": 0,
+      "root": ".build/rfc-014-swift64/resource-regression/004-native"
+    },
+    {
+      "stage": "004-nrf-layout",
+      "exit": 0,
+      "root": ".build/rfc-014-swift64/resource-regression/004-nrf-layout"
+    },
+    {
+      "stage": "004-nrf-linked",
+      "exit": 0,
+      "root": ".build/nrf52840/p08-resource-regression/004-nrf-linked"
+    }
+  ],
+  "initial_spec002_exit": 1,
+  "initial_spec002_disposition": "Transferred to Standard with exact failed boundary-parser diagnostics; no claim from this stage.",
+  "repairs_used": 0,
+  "unproductive_failures": 0,
+  "closure": "All12 focused SPEC003/004 stages passed. SPEC002 continuing under separate owner/scope. No unused continuation authorization."
+}

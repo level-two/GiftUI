@@ -1,0 +1,808 @@
+ok:    running on macOS
+ok:    host architecture is supported
+ok:    CMake is installed
+ok:    CMake is >=3.29.0
+ok:    Ninja is installed
+ok:    Ninja is >=1.10.0
+ok:    Devicetree compiler is installed
+ok:    Devicetree compiler is >=1.6.0
+ok:    project Python environment exists
+ok:    west is installed in the project environment
+ok:    project-local Swift compiler exists
+ok:    Swift compiler is 6.4
+ok:    Zephyr SDK ARM compiler exists
+ok:    Zephyr SDK ELF inspector exists
+ok:    Zephyr checkout matches 4.3.0
+ok:    CMSIS checkout matches pin
+ok:    CMSIS 6 checkout matches pin
+ok:    Nordic HAL checkout matches pin
+ok:    SEGGER module checkout matches pin
+
+Resolved version set
+  Swift:       Apple Swift version 6.4 (swift-6.4-RELEASE)
+  Swift target: armv7em-none-none-eabi
+  Board:       nrf52840dk/nrf52840
+  Zephyr:      4.3.0 (3568e1b6d5cdd51a6b964a2a1d6d29200fea2056)
+  Zephyr SDK:  0.17.4
+  Python:      3.14.6 (lock baseline 3.12.13)
+  west:        West version: v1.5.0
+  CMake:       4.4.2
+  Ninja:       1.13.2
+  DTC:         1.8.1
+  J-Link:      9.66 (tested 8.96; needed only for flash)
+
+GiftUI nRF52840 development environment is ready
+-- west build: generating a build system
+Loading Zephyr default modules (Zephyr base).
+-- Application: /Users/eugene/work/GiftUI/firmware/nrf52840/applications/spec003-resource-probe
+-- CMake version: 4.4.2
+-- Found Python3: /Users/eugene/work/GiftUI/.toolchains/nrf52840/python/bin/python (found suitable version "3.14.6", minimum required is "3.10") found components: Interpreter
+-- Cache files will be written to: /Users/eugene/work/GiftUI/.toolchains/nrf52840/workspace/zephyr/.cache
+-- Zephyr version: 4.3.0 (/Users/eugene/work/GiftUI/.toolchains/nrf52840/workspace/zephyr)
+-- Found west (found suitable version "1.5.0", minimum required is "0.14.0")
+-- Board: nrf52840dk, qualifiers: nrf52840
+-- Found host-tools: zephyr 0.17.4 (/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4)
+-- Found toolchain: zephyr 0.17.4 (/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4)
+-- Found Dtc: /opt/homebrew/bin/dtc (found suitable version "1.8.1", minimum required is "1.4.6")
+-- Found BOARD.dts: /Users/eugene/work/GiftUI/.toolchains/nrf52840/workspace/zephyr/boards/nordic/nrf52840dk/nrf52840dk_nrf52840.dts
+-- Generated zephyr.dts: /Users/eugene/work/GiftUI/.build/nrf52840/p08-resource-regression/003-nrf-linked/generated/resources/pristine/baseline/zephyr-build/zephyr/zephyr.dts
+-- Generated pickled edt: /Users/eugene/work/GiftUI/.build/nrf52840/p08-resource-regression/003-nrf-linked/generated/resources/pristine/baseline/zephyr-build/zephyr/edt.pickle
+-- Generated devicetree_generated.h: /Users/eugene/work/GiftUI/.build/nrf52840/p08-resource-regression/003-nrf-linked/generated/resources/pristine/baseline/zephyr-build/zephyr/include/generated/zephyr/devicetree_generated.h
+Parsing /Users/eugene/work/GiftUI/.toolchains/nrf52840/workspace/zephyr/Kconfig
+Loaded configuration '/Users/eugene/work/GiftUI/.toolchains/nrf52840/workspace/zephyr/boards/nordic/nrf52840dk/nrf52840dk_nrf52840_defconfig'
+Merged configuration '/Users/eugene/work/GiftUI/firmware/nrf52840/applications/spec003-resource-probe/prj.conf'
+Configuration saved to '/Users/eugene/work/GiftUI/.build/nrf52840/p08-resource-regression/003-nrf-linked/generated/resources/pristine/baseline/zephyr-build/zephyr/.config'
+Kconfig header saved to '/Users/eugene/work/GiftUI/.build/nrf52840/p08-resource-regression/003-nrf-linked/generated/resources/pristine/baseline/zephyr-build/zephyr/include/generated/zephyr/autoconf.h'
+-- Found GnuLd: /Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/arm-zephyr-eabi/bin/ld.bfd (found version "2.38")
+-- The C compiler identification is GNU 12.2.0
+-- The CXX compiler identification is GNU 12.2.0
+-- The ASM compiler identification is GNU
+-- Found assembler: /Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/arm-zephyr-eabi-gcc
+-- Found gen_kobject_list: /Users/eugene/work/GiftUI/.toolchains/nrf52840/workspace/zephyr/scripts/build/gen_kobject_list.py
+-- Configuring done (4.6s)
+-- Generating done (0.2s)
+-- Build files have been written to: /Users/eugene/work/GiftUI/.build/nrf52840/p08-resource-regression/003-nrf-linked/generated/resources/pristine/baseline/zephyr-build
+-- west build: building application
+[1/153] Preparing syscall dependency handling
+
+[2/153] Generating include/generated/zephyr/version.h
+-- Zephyr version: 4.3.0 (/Users/eugene/work/GiftUI/.toolchains/nrf52840/workspace/zephyr), build: 3568e1b6d5cd
+[3/153] Generating misc/generated/syscalls_subdirs.trigger
+[4/153] Generating misc/generated/syscalls.json, misc/generated/struct_tags.json
+[5/153] Generating include/generated/device-api-sections.ld, include/generated/device-api-sections.cmake
+[6/153] Generating include/generated/zephyr/syscall_dispatch.c, include/generated/zephyr/syscall_exports_llext.c, syscall_weakdefs_llext.c, include/generated/zephyr/syscall_list.h
+[7/153] Generating include/generated/zephyr/driver-validation.h
+[8/153] Generating include/generated/zephyr/kobj-types-enum.h, include/generated/zephyr/otype-to-str.h, include/generated/zephyr/otype-to-size.h
+[9/153] Building C object zephyr/CMakeFiles/offsets.dir/arch/arm/core/offsets/offsets.c.obj
+[10/153] Generating include/generated/zephyr/offsets.h
+[11/153] Building C object CMakeFiles/app.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC003/ResourceHarness/main.c.obj
+[12/153] Building C object CMakeFiles/app.dir/src/stubs.c.obj
+[13/153] Building C object zephyr/CMakeFiles/zephyr.dir/lib/utils/dec.c.obj
+[14/153] Building C object zephyr/CMakeFiles/zephyr.dir/lib/utils/hex.c.obj
+[15/153] Building C object zephyr/arch/common/CMakeFiles/isr_tables.dir/isr_tables.c.obj
+[16/153] Building C object zephyr/CMakeFiles/zephyr.dir/lib/os/sem.c.obj
+[17/153] Building C object zephyr/CMakeFiles/zephyr.dir/lib/os/thread_entry.c.obj
+[18/153] Building C object zephyr/CMakeFiles/zephyr.dir/lib/os/assert.c.obj
+[19/153] Building C object zephyr/CMakeFiles/zephyr.dir/lib/os/printk.c.obj
+[20/153] Building C object zephyr/CMakeFiles/zephyr.dir/lib/libc/validate_libc.c.obj
+[21/153] Building C object zephyr/CMakeFiles/zephyr.dir/lib/utils/bitmask.c.obj
+[22/153] Building C object zephyr/CMakeFiles/zephyr.dir/lib/utils/last_section_id.c.obj
+[23/153] Building C object zephyr/CMakeFiles/zephyr.dir/misc/generated/configs.c.obj
+[24/153] Building C object zephyr/CMakeFiles/zephyr.dir/lib/os/clock.c.obj
+[25/153] Building C object zephyr/CMakeFiles/zephyr.dir/lib/utils/ring_buffer.c.obj
+[26/153] Building C object zephyr/CMakeFiles/zephyr.dir/lib/utils/timeutil.c.obj
+[27/153] Building C object zephyr/CMakeFiles/zephyr.dir/lib/heap/heap.c.obj
+[28/153] Building C object zephyr/CMakeFiles/zephyr.dir/lib/os/cbprintf_packaged.c.obj
+[29/153] Generating linker_zephyr_pre0.cmd
+[30/153] Building C object zephyr/CMakeFiles/zephyr.dir/subsys/mem_mgmt/mem_attr.c.obj
+[31/153] Building C object zephyr/CMakeFiles/zephyr.dir/lib/utils/notify.c.obj
+[32/153] Building C object zephyr/arch/common/CMakeFiles/arch__common.dir/init.c.obj
+[33/153] Linking C static library zephyr/arch/common/libisr_tables.a
+[34/153] Building C object zephyr/CMakeFiles/zephyr.dir/subsys/tracing/tracing_none.c.obj
+[35/153] Building ASM object zephyr/arch/arch/arm/core/CMakeFiles/arch__arm__core.dir/nmi_on_reset.S.obj
+[36/153] Building C object zephyr/arch/common/CMakeFiles/arch__common.dir/sw_isr_common.c.obj
+[37/153] Building ASM object zephyr/arch/arch/arm/core/cortex_m/CMakeFiles/arch__arm__core__cortex_m.dir/fault_s.S.obj
+[38/153] Building C object zephyr/arch/common/CMakeFiles/arch__common.dir/xip.c.obj
+[39/153] Building ASM object zephyr/arch/arch/arm/core/cortex_m/CMakeFiles/arch__arm__core__cortex_m.dir/reset.S.obj
+[40/153] Building C object zephyr/arch/arch/arm/core/CMakeFiles/arch__arm__core.dir/fatal.c.obj
+[41/153] Building C object zephyr/CMakeFiles/zephyr.dir/lib/os/cbprintf_complete.c.obj
+[42/153] Building C object zephyr/arch/arch/arm/core/cortex_m/CMakeFiles/arch__arm__core__cortex_m.dir/exc_exit.c.obj
+[43/153] Building C object zephyr/arch/arch/arm/core/CMakeFiles/arch__arm__core.dir/nmi.c.obj
+[44/153] Building C object zephyr/arch/arch/arm/core/CMakeFiles/arch__arm__core.dir/tls.c.obj
+[45/153] Building C object zephyr/arch/arch/arm/core/cortex_m/CMakeFiles/arch__arm__core__cortex_m.dir/fpu.c.obj
+[46/153] Building ASM object zephyr/arch/arch/arm/core/cortex_m/CMakeFiles/arch__arm__core__cortex_m.dir/vector_table.S.obj
+[47/153] Building C object zephyr/CMakeFiles/zephyr.dir/lib/utils/onoff.c.obj
+[48/153] Building C object zephyr/arch/arch/arm/core/cortex_m/CMakeFiles/arch__arm__core__cortex_m.dir/scb.c.obj
+[49/153] Building C object zephyr/CMakeFiles/zephyr.dir/lib/utils/rb.c.obj
+[50/153] Building C object zephyr/arch/arch/arm/core/cortex_m/CMakeFiles/arch__arm__core__cortex_m.dir/fault.c.obj
+[51/153] Building ASM object zephyr/arch/arch/arm/core/cortex_m/CMakeFiles/arch__arm__core__cortex_m.dir/swap_helper.S.obj
+[52/153] Building C object zephyr/arch/arch/arm/core/cortex_m/CMakeFiles/arch__arm__core__cortex_m.dir/thread_abort.c.obj
+[53/153] Building ASM object zephyr/arch/arch/arm/core/cortex_m/CMakeFiles/arch__arm__core__cortex_m.dir/__aeabi_read_tp.S.obj
+[54/153] Building C object zephyr/CMakeFiles/zephyr.dir/lib/utils/bitarray.c.obj
+[55/153] Building C object zephyr/arch/arch/arm/core/cortex_m/CMakeFiles/arch__arm__core__cortex_m.dir/irq_manage.c.obj
+[56/153] Building C object zephyr/arch/arch/arm/core/mpu/CMakeFiles/arch__arm__core__mpu.dir/arm_core_mpu.c.obj
+[57/153] Building C object zephyr/arch/arch/arm/core/cortex_m/CMakeFiles/arch__arm__core__cortex_m.dir/irq_init.c.obj
+[58/153] Building C object zephyr/arch/arch/arm/core/cortex_m/CMakeFiles/arch__arm__core__cortex_m.dir/isr_wrapper.c.obj
+[59/153] Building C object zephyr/arch/arch/arm/core/mpu/CMakeFiles/arch__arm__core__mpu.dir/arm_mpu_regions.c.obj
+[60/153] Building C object zephyr/arch/arch/arm/core/cortex_m/CMakeFiles/arch__arm__core__cortex_m.dir/cpu_idle.c.obj
+[61/153] Building C object zephyr/lib/libc/picolibc/CMakeFiles/lib__libc__picolibc.dir/chk_fail.c.obj
+[62/153] Building C object zephyr/lib/libc/picolibc/CMakeFiles/lib__libc__picolibc.dir/assert.c.obj
+[63/153] Building C object zephyr/lib/libc/picolibc/CMakeFiles/lib__libc__picolibc.dir/errno_wrap.c.obj
+[64/153] Building C object zephyr/arch/arch/arm/core/cortex_m/CMakeFiles/arch__arm__core__cortex_m.dir/prep_c.c.obj
+[65/153] Building C object zephyr/arch/arch/arm/core/cortex_m/CMakeFiles/arch__arm__core__cortex_m.dir/thread.c.obj
+[66/153] Building C object zephyr/lib/libc/picolibc/CMakeFiles/lib__libc__picolibc.dir/cbprintf.c.obj
+[67/153] Building C object zephyr/lib/libc/picolibc/CMakeFiles/lib__libc__picolibc.dir/exit.c.obj
+[68/153] Building C object zephyr/lib/libc/common/CMakeFiles/lib__libc__common.dir/source/time/time.c.obj
+[69/153] Building C object zephyr/lib/posix/c_lib_ext/CMakeFiles/lib__posix__c_lib_ext.dir/fnmatch.c.obj
+[70/153] Building C object zephyr/soc/soc/nrf52840/CMakeFiles/soc__nordic.dir/validate_binding_headers.c.obj
+[71/153] Building C object zephyr/lib/libc/common/CMakeFiles/lib__libc__common.dir/source/stdlib/abort.c.obj
+[72/153] Building C object zephyr/arch/arch/arm/core/mpu/CMakeFiles/arch__arm__core__mpu.dir/arm_mpu.c.obj
+[73/153] Building C object zephyr/lib/libc/picolibc/CMakeFiles/lib__libc__picolibc.dir/locks.c.obj
+[74/153] Building C object zephyr/lib/posix/c_lib_ext/CMakeFiles/lib__posix__c_lib_ext.dir/getentropy.c.obj
+[75/153] Building C object zephyr/lib/libc/picolibc/CMakeFiles/lib__libc__picolibc.dir/stdio.c.obj
+[76/153] Building C object zephyr/soc/soc/nrf52840/CMakeFiles/soc__nordic.dir/validate_base_addresses.c.obj
+[77/153] Building C object zephyr/soc/soc/nrf52840/CMakeFiles/soc__nordic.dir/validate_enabled_instances.c.obj
+[78/153] Building C object zephyr/lib/libc/common/CMakeFiles/lib__libc__common.dir/source/stdlib/malloc.c.obj
+[79/153] Building C object zephyr/lib/posix/c_lib_ext/CMakeFiles/lib__posix__c_lib_ext.dir/getopt/getopt_common.c.obj
+[80/153] Building C object zephyr/soc/soc/nrf52840/CMakeFiles/soc__nordic.dir/nrf52/soc.c.obj
+[81/153] Building C object zephyr/drivers/pinctrl/CMakeFiles/drivers__pinctrl.dir/common.c.obj
+[82/153] Building C object zephyr/lib/posix/c_lib_ext/CMakeFiles/lib__posix__c_lib_ext.dir/getopt/getopt.c.obj
+[83/153] Building C object modules/hal_nordic/nrfx/CMakeFiles/nrfx.dir/Users/eugene/work/GiftUI/.toolchains/nrf52840/workspace/modules/hal/nordic/nrfx/mdk/system_nrf52840.c.obj
+[84/153] Building C object zephyr/drivers/timer/CMakeFiles/drivers__timer.dir/sys_clock_init.c.obj
+[85/153] Building C object zephyr/drivers/console/CMakeFiles/drivers__console.dir/uart_console.c.obj
+[86/153] Building C object zephyr/soc/soc/nrf52840/CMakeFiles/soc__nordic.dir/common/reboot.c.obj
+[87/153] Building C object modules/hal_nordic/nrfx/CMakeFiles/nrfx.dir/Users/eugene/work/GiftUI/.toolchains/nrf52840/workspace/modules/hal/nordic/nrfx/helpers/nrfx_flag32_allocator.c.obj
+[88/153] Building C object modules/hal_nordic/nrfx/CMakeFiles/nrfx.dir/nrfx_glue.c.obj
+[89/153] Building C object modules/hal_nordic/nrfx/CMakeFiles/nrfx.dir/Users/eugene/work/GiftUI/.toolchains/nrf52840/workspace/modules/hal/nordic/nrfx/helpers/nrfx_ram_ctrl.c.obj
+[90/153] Building C object modules/hal_nordic/nrfx/CMakeFiles/nrfx.dir/Users/eugene/work/GiftUI/.toolchains/nrf52840/workspace/modules/hal/nordic/nrfx/helpers/nrfx_gppi_dppi.c.obj
+[91/153] Building C object modules/hal_nordic/nrfx/CMakeFiles/nrfx.dir/Users/eugene/work/GiftUI/.toolchains/nrf52840/workspace/modules/hal/nordic/nrfx/helpers/nrfx_gppi_ppi.c.obj
+[92/153] Building C object zephyr/kernel/CMakeFiles/kernel.dir/banner.c.obj
+[93/153] Building C object zephyr/kernel/CMakeFiles/kernel.dir/busy_wait.c.obj
+[94/153] Building C object zephyr/kernel/CMakeFiles/kernel.dir/main_weak.c.obj
+[95/153] Building C object zephyr/drivers/clock_control/CMakeFiles/drivers__clock_control.dir/clock_control_nrf.c.obj
+[96/153] Building C object modules/hal_nordic/nrfx/CMakeFiles/nrfx.dir/Users/eugene/work/GiftUI/.toolchains/nrf52840/workspace/modules/hal/nordic/nrfx/drivers/src/nrfx_ppi.c.obj
+[97/153] Building C object modules/hal_nordic/nrfx/CMakeFiles/nrfx.dir/Users/eugene/work/GiftUI/.toolchains/nrf52840/workspace/modules/hal/nordic/nrfx/drivers/src/nrfx_clock.c.obj
+[98/153] Building C object zephyr/kernel/CMakeFiles/kernel.dir/device.c.obj
+[99/153] Building C object zephyr/kernel/CMakeFiles/kernel.dir/errno.c.obj
+[100/153] Building C object zephyr/kernel/CMakeFiles/kernel.dir/fatal.c.obj
+[101/153] Building C object zephyr/drivers/timer/CMakeFiles/drivers__timer.dir/nrf_rtc_timer.c.obj
+[102/153] Building C object zephyr/kernel/CMakeFiles/kernel.dir/version.c.obj
+[103/153] Building C object zephyr/kernel/CMakeFiles/kernel.dir/float.c.obj
+[104/153] Building C object zephyr/kernel/CMakeFiles/kernel.dir/init.c.obj
+[105/153] Building C object zephyr/kernel/CMakeFiles/kernel.dir/kheap.c.obj
+[106/153] Building C object zephyr/kernel/CMakeFiles/kernel.dir/idle.c.obj
+[107/153] Building C object zephyr/kernel/CMakeFiles/kernel.dir/mem_slab.c.obj
+[108/153] Building C object zephyr/kernel/CMakeFiles/kernel.dir/mailbox.c.obj
+[109/153] Building C object zephyr/drivers/pinctrl/CMakeFiles/drivers__pinctrl.dir/pinctrl_nrf.c.obj
+[110/153] Building C object zephyr/kernel/CMakeFiles/kernel.dir/msg_q.c.obj
+[111/153] Building C object zephyr/kernel/CMakeFiles/kernel.dir/mutex.c.obj
+[112/153] Building C object zephyr/kernel/CMakeFiles/kernel.dir/sem.c.obj
+[113/153] Building C object zephyr/kernel/CMakeFiles/kernel.dir/queue.c.obj
+[114/153] Building C object zephyr/kernel/CMakeFiles/kernel.dir/system_work_q.c.obj
+[115/153] Building C object zephyr/kernel/CMakeFiles/kernel.dir/condvar.c.obj
+[116/153] Building C object zephyr/kernel/CMakeFiles/kernel.dir/stack.c.obj
+[117/153] Building C object zephyr/kernel/CMakeFiles/kernel.dir/timeslicing.c.obj
+[118/153] Building C object zephyr/drivers/gpio/CMakeFiles/drivers__gpio.dir/gpio_nrfx.c.obj
+[119/153] Building C object zephyr/kernel/CMakeFiles/kernel.dir/timer.c.obj
+[120/153] Building C object zephyr/kernel/CMakeFiles/kernel.dir/timeout.c.obj
+[121/153] Building C object zephyr/kernel/CMakeFiles/kernel.dir/pipe.c.obj
+[122/153] Building C object zephyr/kernel/CMakeFiles/kernel.dir/thread.c.obj
+[123/153] Building C object zephyr/CMakeFiles/zephyr_pre0.dir/misc/empty_file.c.obj
+[124/153] Linking C static library app/libapp.a
+[125/153] Building C object zephyr/kernel/CMakeFiles/kernel.dir/mempool.c.obj
+[126/153] Linking C static library zephyr/arch/common/libarch__common.a
+[127/153] Building C object zephyr/kernel/CMakeFiles/kernel.dir/dynamic_disabled.c.obj
+[128/153] Linking C static library zephyr/arch/arch/arm/core/libarch__arm__core.a
+[129/153] Linking C static library zephyr/arch/arch/arm/core/mpu/libarch__arm__core__mpu.a
+[130/153] Linking C static library zephyr/libzephyr.a
+[131/153] Linking C static library zephyr/arch/arch/arm/core/cortex_m/libarch__arm__core__cortex_m.a
+[132/153] Linking C static library zephyr/lib/libc/picolibc/liblib__libc__picolibc.a
+[133/153] Linking C static library zephyr/lib/libc/common/liblib__libc__common.a
+[134/153] Linking C static library zephyr/lib/posix/c_lib_ext/liblib__posix__c_lib_ext.a
+[135/153] Linking C static library zephyr/soc/soc/nrf52840/libsoc__nordic.a
+[136/153] Linking C static library zephyr/drivers/console/libdrivers__console.a
+[137/153] Linking C static library zephyr/drivers/gpio/libdrivers__gpio.a
+[138/153] Linking C static library zephyr/drivers/timer/libdrivers__timer.a
+[139/153] Linking C static library zephyr/drivers/clock_control/libdrivers__clock_control.a
+[140/153] Linking C static library zephyr/drivers/pinctrl/libdrivers__pinctrl.a
+[141/153] Building C object zephyr/kernel/CMakeFiles/kernel.dir/work.c.obj
+[142/153] Building C object zephyr/kernel/CMakeFiles/kernel.dir/sched.c.obj
+[143/153] Linking C static library zephyr/kernel/libkernel.a
+[144/153] Building C object modules/hal_nordic/nrfx/CMakeFiles/nrfx.dir/Users/eugene/work/GiftUI/.toolchains/nrf52840/workspace/modules/hal/nordic/nrfx/drivers/src/nrfx_gpiote.c.obj
+[145/153] Linking C static library modules/hal_nordic/nrfx/libnrfx.a
+[146/153] Building C object zephyr/drivers/serial/CMakeFiles/drivers__serial.dir/uart_nrfx_uarte.c.obj
+[147/153] Linking C static library zephyr/drivers/serial/libdrivers__serial.a
+[148/153] Linking C executable zephyr/zephyr_pre0.elf; Logical command for additional byproducts on target: zephyr_pre0
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `/Users/eugene/work/GiftUI/.build/nrf52840/p08-resource-regression/003-nrf-linked/generated/resources/pristine/baseline/libspec003swift.a(ResourceHarness.o)' being placed in section `.swift_modhash'
+[149/153] Generating linker.cmd
+[150/153] Generating isr_tables.c, isr_tables_vt.ld, isr_tables_swi.ld
+[151/153] Building C object zephyr/CMakeFiles/zephyr_final.dir/misc/empty_file.c.obj
+[152/153] Building C object zephyr/CMakeFiles/zephyr_final.dir/isr_tables.c.obj
+[153/153] Linking C executable zephyr/zephyr.elf
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `/Users/eugene/work/GiftUI/.build/nrf52840/p08-resource-regression/003-nrf-linked/generated/resources/pristine/baseline/libspec003swift.a(ResourceHarness.o)' being placed in section `.swift_modhash'
+Memory region         Used Size  Region Size  %age Used
+           FLASH:       25796 B         1 MB      2.46%
+             RAM:        6016 B       256 KB      2.29%
+        IDT_LIST:          0 GB        32 KB      0.00%
+Generating files from /Users/eugene/work/GiftUI/.build/nrf52840/p08-resource-regression/003-nrf-linked/generated/resources/pristine/baseline/zephyr-build/zephyr/zephyr.elf for board: nrf52840dk
+-- west build: generating a build system
+Loading Zephyr default modules (Zephyr base).
+-- Application: /Users/eugene/work/GiftUI/firmware/nrf52840/applications/spec003-resource-probe
+-- CMake version: 4.4.2
+-- Found Python3: /Users/eugene/work/GiftUI/.toolchains/nrf52840/python/bin/python (found suitable version "3.14.6", minimum required is "3.10") found components: Interpreter
+-- Cache files will be written to: /Users/eugene/work/GiftUI/.toolchains/nrf52840/workspace/zephyr/.cache
+-- Zephyr version: 4.3.0 (/Users/eugene/work/GiftUI/.toolchains/nrf52840/workspace/zephyr)
+-- Found west (found suitable version "1.5.0", minimum required is "0.14.0")
+-- Board: nrf52840dk, qualifiers: nrf52840
+-- Found host-tools: zephyr 0.17.4 (/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4)
+-- Found toolchain: zephyr 0.17.4 (/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4)
+-- Found Dtc: /opt/homebrew/bin/dtc (found suitable version "1.8.1", minimum required is "1.4.6")
+-- Found BOARD.dts: /Users/eugene/work/GiftUI/.toolchains/nrf52840/workspace/zephyr/boards/nordic/nrf52840dk/nrf52840dk_nrf52840.dts
+-- Generated zephyr.dts: /Users/eugene/work/GiftUI/.build/nrf52840/p08-resource-regression/003-nrf-linked/generated/resources/pristine/candidate/zephyr-build/zephyr/zephyr.dts
+-- Generated pickled edt: /Users/eugene/work/GiftUI/.build/nrf52840/p08-resource-regression/003-nrf-linked/generated/resources/pristine/candidate/zephyr-build/zephyr/edt.pickle
+-- Generated devicetree_generated.h: /Users/eugene/work/GiftUI/.build/nrf52840/p08-resource-regression/003-nrf-linked/generated/resources/pristine/candidate/zephyr-build/zephyr/include/generated/zephyr/devicetree_generated.h
+Parsing /Users/eugene/work/GiftUI/.toolchains/nrf52840/workspace/zephyr/Kconfig
+Loaded configuration '/Users/eugene/work/GiftUI/.toolchains/nrf52840/workspace/zephyr/boards/nordic/nrf52840dk/nrf52840dk_nrf52840_defconfig'
+Merged configuration '/Users/eugene/work/GiftUI/firmware/nrf52840/applications/spec003-resource-probe/prj.conf'
+Configuration saved to '/Users/eugene/work/GiftUI/.build/nrf52840/p08-resource-regression/003-nrf-linked/generated/resources/pristine/candidate/zephyr-build/zephyr/.config'
+Kconfig header saved to '/Users/eugene/work/GiftUI/.build/nrf52840/p08-resource-regression/003-nrf-linked/generated/resources/pristine/candidate/zephyr-build/zephyr/include/generated/zephyr/autoconf.h'
+-- Found GnuLd: /Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/arm-zephyr-eabi/bin/ld.bfd (found version "2.38")
+-- The C compiler identification is GNU 12.2.0
+-- The CXX compiler identification is GNU 12.2.0
+-- The ASM compiler identification is GNU
+-- Found assembler: /Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/arm-zephyr-eabi-gcc
+-- Found gen_kobject_list: /Users/eugene/work/GiftUI/.toolchains/nrf52840/workspace/zephyr/scripts/build/gen_kobject_list.py
+-- Configuring done (3.3s)
+-- Generating done (0.2s)
+-- Build files have been written to: /Users/eugene/work/GiftUI/.build/nrf52840/p08-resource-regression/003-nrf-linked/generated/resources/pristine/candidate/zephyr-build
+-- west build: building application
+[1/153] Preparing syscall dependency handling
+
+[2/153] Generating include/generated/zephyr/version.h
+-- Zephyr version: 4.3.0 (/Users/eugene/work/GiftUI/.toolchains/nrf52840/workspace/zephyr), build: 3568e1b6d5cd
+[3/153] Generating misc/generated/syscalls_subdirs.trigger
+[4/153] Generating misc/generated/syscalls.json, misc/generated/struct_tags.json
+[5/153] Generating include/generated/device-api-sections.ld, include/generated/device-api-sections.cmake
+[6/153] Generating include/generated/zephyr/syscall_dispatch.c, include/generated/zephyr/syscall_exports_llext.c, syscall_weakdefs_llext.c, include/generated/zephyr/syscall_list.h
+[7/153] Generating include/generated/zephyr/driver-validation.h
+[8/153] Generating include/generated/zephyr/kobj-types-enum.h, include/generated/zephyr/otype-to-str.h, include/generated/zephyr/otype-to-size.h
+[9/153] Building C object zephyr/CMakeFiles/offsets.dir/arch/arm/core/offsets/offsets.c.obj
+[10/153] Generating include/generated/zephyr/offsets.h
+[11/153] Building C object CMakeFiles/app.dir/src/stubs.c.obj
+[12/153] Building C object CMakeFiles/app.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC003/ResourceHarness/main.c.obj
+[13/153] Building C object zephyr/CMakeFiles/zephyr.dir/lib/utils/hex.c.obj
+[14/153] Building C object zephyr/CMakeFiles/zephyr.dir/lib/utils/dec.c.obj
+[15/153] Building C object zephyr/arch/common/CMakeFiles/isr_tables.dir/isr_tables.c.obj
+[16/153] Building C object zephyr/CMakeFiles/zephyr.dir/lib/os/printk.c.obj
+[17/153] Building C object zephyr/CMakeFiles/zephyr.dir/lib/libc/validate_libc.c.obj
+[18/153] Building C object zephyr/CMakeFiles/zephyr.dir/lib/utils/bitmask.c.obj
+[19/153] Building C object zephyr/CMakeFiles/zephyr.dir/lib/os/thread_entry.c.obj
+[20/153] Building C object zephyr/CMakeFiles/zephyr.dir/lib/os/assert.c.obj
+[21/153] Building C object zephyr/CMakeFiles/zephyr.dir/lib/utils/timeutil.c.obj
+[22/153] Building C object zephyr/CMakeFiles/zephyr.dir/lib/os/sem.c.obj
+[23/153] Building C object zephyr/CMakeFiles/zephyr.dir/lib/utils/last_section_id.c.obj
+[24/153] Building C object zephyr/CMakeFiles/zephyr.dir/misc/generated/configs.c.obj
+[25/153] Building C object zephyr/CMakeFiles/zephyr.dir/lib/utils/ring_buffer.c.obj
+[26/153] Building C object zephyr/CMakeFiles/zephyr.dir/lib/os/clock.c.obj
+[27/153] Building C object zephyr/CMakeFiles/zephyr.dir/lib/utils/notify.c.obj
+[28/153] Generating linker_zephyr_pre0.cmd
+[29/153] Building C object zephyr/CMakeFiles/zephyr.dir/lib/heap/heap.c.obj
+[30/153] Building C object zephyr/CMakeFiles/zephyr.dir/subsys/tracing/tracing_none.c.obj
+[31/153] Building C object zephyr/CMakeFiles/zephyr.dir/subsys/mem_mgmt/mem_attr.c.obj
+[32/153] Linking C static library zephyr/arch/common/libisr_tables.a
+[33/153] Building C object zephyr/arch/common/CMakeFiles/arch__common.dir/init.c.obj
+[34/153] Building ASM object zephyr/arch/arch/arm/core/CMakeFiles/arch__arm__core.dir/nmi_on_reset.S.obj
+[35/153] Building C object zephyr/arch/common/CMakeFiles/arch__common.dir/sw_isr_common.c.obj
+[36/153] Building C object zephyr/CMakeFiles/zephyr.dir/lib/utils/rb.c.obj
+[37/153] Building ASM object zephyr/arch/arch/arm/core/cortex_m/CMakeFiles/arch__arm__core__cortex_m.dir/fault_s.S.obj
+[38/153] Building C object zephyr/CMakeFiles/zephyr.dir/lib/os/cbprintf_packaged.c.obj
+[39/153] Building C object zephyr/CMakeFiles/zephyr.dir/lib/utils/onoff.c.obj
+[40/153] Building C object zephyr/arch/common/CMakeFiles/arch__common.dir/xip.c.obj
+[41/153] Building ASM object zephyr/arch/arch/arm/core/cortex_m/CMakeFiles/arch__arm__core__cortex_m.dir/reset.S.obj
+[42/153] Building ASM object zephyr/arch/arch/arm/core/cortex_m/CMakeFiles/arch__arm__core__cortex_m.dir/vector_table.S.obj
+[43/153] Building C object zephyr/arch/arch/arm/core/CMakeFiles/arch__arm__core.dir/nmi.c.obj
+[44/153] Building C object zephyr/CMakeFiles/zephyr.dir/lib/utils/bitarray.c.obj
+[45/153] Building C object zephyr/arch/arch/arm/core/CMakeFiles/arch__arm__core.dir/tls.c.obj
+[46/153] Building C object zephyr/arch/arch/arm/core/CMakeFiles/arch__arm__core.dir/fatal.c.obj
+[47/153] Building C object zephyr/arch/arch/arm/core/cortex_m/CMakeFiles/arch__arm__core__cortex_m.dir/fpu.c.obj
+[48/153] Building C object zephyr/arch/arch/arm/core/cortex_m/CMakeFiles/arch__arm__core__cortex_m.dir/exc_exit.c.obj
+[49/153] Building ASM object zephyr/arch/arch/arm/core/cortex_m/CMakeFiles/arch__arm__core__cortex_m.dir/swap_helper.S.obj
+[50/153] Building C object zephyr/arch/arch/arm/core/cortex_m/CMakeFiles/arch__arm__core__cortex_m.dir/thread_abort.c.obj
+[51/153] Building ASM object zephyr/arch/arch/arm/core/cortex_m/CMakeFiles/arch__arm__core__cortex_m.dir/__aeabi_read_tp.S.obj
+[52/153] Building C object zephyr/arch/arch/arm/core/cortex_m/CMakeFiles/arch__arm__core__cortex_m.dir/scb.c.obj
+[53/153] Building C object zephyr/arch/arch/arm/core/cortex_m/CMakeFiles/arch__arm__core__cortex_m.dir/fault.c.obj
+[54/153] Building C object zephyr/arch/arch/arm/core/cortex_m/CMakeFiles/arch__arm__core__cortex_m.dir/prep_c.c.obj
+[55/153] Building C object zephyr/arch/arch/arm/core/cortex_m/CMakeFiles/arch__arm__core__cortex_m.dir/irq_manage.c.obj
+[56/153] Building C object zephyr/arch/arch/arm/core/cortex_m/CMakeFiles/arch__arm__core__cortex_m.dir/irq_init.c.obj
+[57/153] Building C object zephyr/arch/arch/arm/core/cortex_m/CMakeFiles/arch__arm__core__cortex_m.dir/isr_wrapper.c.obj
+[58/153] Building C object zephyr/arch/arch/arm/core/cortex_m/CMakeFiles/arch__arm__core__cortex_m.dir/cpu_idle.c.obj
+[59/153] Building C object zephyr/arch/arch/arm/core/mpu/CMakeFiles/arch__arm__core__mpu.dir/arm_mpu_regions.c.obj
+[60/153] Building C object zephyr/arch/arch/arm/core/mpu/CMakeFiles/arch__arm__core__mpu.dir/arm_core_mpu.c.obj
+[61/153] Building C object zephyr/lib/libc/picolibc/CMakeFiles/lib__libc__picolibc.dir/cbprintf.c.obj
+[62/153] Building C object zephyr/arch/arch/arm/core/cortex_m/CMakeFiles/arch__arm__core__cortex_m.dir/thread.c.obj
+[63/153] Building C object zephyr/lib/libc/picolibc/CMakeFiles/lib__libc__picolibc.dir/assert.c.obj
+[64/153] Building C object zephyr/lib/libc/picolibc/CMakeFiles/lib__libc__picolibc.dir/errno_wrap.c.obj
+[65/153] Building C object zephyr/lib/libc/common/CMakeFiles/lib__libc__common.dir/source/time/time.c.obj
+[66/153] Building C object zephyr/lib/libc/picolibc/CMakeFiles/lib__libc__picolibc.dir/exit.c.obj
+[67/153] Building C object zephyr/lib/libc/picolibc/CMakeFiles/lib__libc__picolibc.dir/locks.c.obj
+[68/153] Building C object zephyr/lib/libc/common/CMakeFiles/lib__libc__common.dir/source/stdlib/abort.c.obj
+[69/153] Building C object zephyr/lib/posix/c_lib_ext/CMakeFiles/lib__posix__c_lib_ext.dir/fnmatch.c.obj
+[70/153] Building C object zephyr/lib/libc/picolibc/CMakeFiles/lib__libc__picolibc.dir/stdio.c.obj
+[71/153] Building C object zephyr/lib/libc/picolibc/CMakeFiles/lib__libc__picolibc.dir/chk_fail.c.obj
+[72/153] Building C object zephyr/lib/libc/common/CMakeFiles/lib__libc__common.dir/source/stdlib/malloc.c.obj
+[73/153] Building C object zephyr/soc/soc/nrf52840/CMakeFiles/soc__nordic.dir/validate_binding_headers.c.obj
+[74/153] Building C object zephyr/CMakeFiles/zephyr.dir/lib/os/cbprintf_complete.c.obj
+[75/153] Building C object zephyr/lib/posix/c_lib_ext/CMakeFiles/lib__posix__c_lib_ext.dir/getentropy.c.obj
+[76/153] Building C object zephyr/soc/soc/nrf52840/CMakeFiles/soc__nordic.dir/validate_enabled_instances.c.obj
+[77/153] Building C object zephyr/lib/posix/c_lib_ext/CMakeFiles/lib__posix__c_lib_ext.dir/getopt/getopt_common.c.obj
+[78/153] Building C object zephyr/soc/soc/nrf52840/CMakeFiles/soc__nordic.dir/validate_base_addresses.c.obj
+[79/153] Building C object zephyr/drivers/pinctrl/CMakeFiles/drivers__pinctrl.dir/common.c.obj
+[80/153] Building C object zephyr/lib/posix/c_lib_ext/CMakeFiles/lib__posix__c_lib_ext.dir/getopt/getopt.c.obj
+[81/153] Building C object zephyr/soc/soc/nrf52840/CMakeFiles/soc__nordic.dir/common/reboot.c.obj
+[82/153] Building C object zephyr/arch/arch/arm/core/mpu/CMakeFiles/arch__arm__core__mpu.dir/arm_mpu.c.obj
+[83/153] Building C object zephyr/soc/soc/nrf52840/CMakeFiles/soc__nordic.dir/nrf52/soc.c.obj
+[84/153] Building C object zephyr/drivers/console/CMakeFiles/drivers__console.dir/uart_console.c.obj
+[85/153] Building C object modules/hal_nordic/nrfx/CMakeFiles/nrfx.dir/Users/eugene/work/GiftUI/.toolchains/nrf52840/workspace/modules/hal/nordic/nrfx/mdk/system_nrf52840.c.obj
+[86/153] Building C object modules/hal_nordic/nrfx/CMakeFiles/nrfx.dir/nrfx_glue.c.obj
+[87/153] Building C object modules/hal_nordic/nrfx/CMakeFiles/nrfx.dir/Users/eugene/work/GiftUI/.toolchains/nrf52840/workspace/modules/hal/nordic/nrfx/helpers/nrfx_flag32_allocator.c.obj
+[88/153] Building C object zephyr/drivers/timer/CMakeFiles/drivers__timer.dir/sys_clock_init.c.obj
+[89/153] Building C object modules/hal_nordic/nrfx/CMakeFiles/nrfx.dir/Users/eugene/work/GiftUI/.toolchains/nrf52840/workspace/modules/hal/nordic/nrfx/helpers/nrfx_gppi_dppi.c.obj
+[90/153] Building C object modules/hal_nordic/nrfx/CMakeFiles/nrfx.dir/Users/eugene/work/GiftUI/.toolchains/nrf52840/workspace/modules/hal/nordic/nrfx/helpers/nrfx_gppi_ppi.c.obj
+[91/153] Building C object modules/hal_nordic/nrfx/CMakeFiles/nrfx.dir/Users/eugene/work/GiftUI/.toolchains/nrf52840/workspace/modules/hal/nordic/nrfx/helpers/nrfx_ram_ctrl.c.obj
+[92/153] Building C object zephyr/drivers/clock_control/CMakeFiles/drivers__clock_control.dir/clock_control_nrf.c.obj
+[93/153] Building C object zephyr/drivers/timer/CMakeFiles/drivers__timer.dir/nrf_rtc_timer.c.obj
+[94/153] Building C object zephyr/kernel/CMakeFiles/kernel.dir/main_weak.c.obj
+[95/153] Building C object modules/hal_nordic/nrfx/CMakeFiles/nrfx.dir/Users/eugene/work/GiftUI/.toolchains/nrf52840/workspace/modules/hal/nordic/nrfx/drivers/src/nrfx_ppi.c.obj
+[96/153] Building C object zephyr/kernel/CMakeFiles/kernel.dir/banner.c.obj
+[97/153] Building C object modules/hal_nordic/nrfx/CMakeFiles/nrfx.dir/Users/eugene/work/GiftUI/.toolchains/nrf52840/workspace/modules/hal/nordic/nrfx/drivers/src/nrfx_clock.c.obj
+[98/153] Building C object zephyr/kernel/CMakeFiles/kernel.dir/busy_wait.c.obj
+[99/153] Building C object zephyr/kernel/CMakeFiles/kernel.dir/device.c.obj
+[100/153] Building C object zephyr/kernel/CMakeFiles/kernel.dir/version.c.obj
+[101/153] Building C object zephyr/kernel/CMakeFiles/kernel.dir/errno.c.obj
+[102/153] Building C object zephyr/drivers/pinctrl/CMakeFiles/drivers__pinctrl.dir/pinctrl_nrf.c.obj
+[103/153] Building C object zephyr/drivers/gpio/CMakeFiles/drivers__gpio.dir/gpio_nrfx.c.obj
+[104/153] Building C object zephyr/kernel/CMakeFiles/kernel.dir/fatal.c.obj
+[105/153] Building C object zephyr/kernel/CMakeFiles/kernel.dir/float.c.obj
+[106/153] Building C object zephyr/kernel/CMakeFiles/kernel.dir/init.c.obj
+[107/153] Building C object zephyr/kernel/CMakeFiles/kernel.dir/kheap.c.obj
+[108/153] Building C object zephyr/kernel/CMakeFiles/kernel.dir/idle.c.obj
+[109/153] Building C object zephyr/kernel/CMakeFiles/kernel.dir/mem_slab.c.obj
+[110/153] Building C object zephyr/kernel/CMakeFiles/kernel.dir/mailbox.c.obj
+[111/153] Building C object zephyr/kernel/CMakeFiles/kernel.dir/msg_q.c.obj
+[112/153] Building C object zephyr/kernel/CMakeFiles/kernel.dir/mutex.c.obj
+[113/153] Building C object zephyr/kernel/CMakeFiles/kernel.dir/system_work_q.c.obj
+[114/153] Building C object zephyr/kernel/CMakeFiles/kernel.dir/condvar.c.obj
+[115/153] Building C object zephyr/kernel/CMakeFiles/kernel.dir/stack.c.obj
+[116/153] Building C object zephyr/kernel/CMakeFiles/kernel.dir/thread.c.obj
+[117/153] Building C object zephyr/kernel/CMakeFiles/kernel.dir/pipe.c.obj
+[118/153] Building C object zephyr/kernel/CMakeFiles/kernel.dir/sem.c.obj
+[119/153] Linking C static library app/libapp.a
+[120/153] Building C object zephyr/CMakeFiles/zephyr_pre0.dir/misc/empty_file.c.obj
+[121/153] Building C object zephyr/kernel/CMakeFiles/kernel.dir/queue.c.obj
+[122/153] Linking C static library zephyr/libzephyr.a
+[123/153] Building C object zephyr/kernel/CMakeFiles/kernel.dir/dynamic_disabled.c.obj
+[124/153] Building C object zephyr/kernel/CMakeFiles/kernel.dir/mempool.c.obj
+[125/153] Building C object zephyr/kernel/CMakeFiles/kernel.dir/timeslicing.c.obj
+[126/153] Linking C static library zephyr/arch/common/libarch__common.a
+[127/153] Building C object zephyr/kernel/CMakeFiles/kernel.dir/timer.c.obj
+[128/153] Linking C static library zephyr/arch/arch/arm/core/libarch__arm__core.a
+[129/153] Linking C static library zephyr/arch/arch/arm/core/mpu/libarch__arm__core__mpu.a
+[130/153] Linking C static library zephyr/arch/arch/arm/core/cortex_m/libarch__arm__core__cortex_m.a
+[131/153] Linking C static library zephyr/lib/posix/c_lib_ext/liblib__posix__c_lib_ext.a
+[132/153] Linking C static library zephyr/drivers/clock_control/libdrivers__clock_control.a
+[133/153] Building C object zephyr/kernel/CMakeFiles/kernel.dir/timeout.c.obj
+[134/153] Linking C static library zephyr/lib/libc/common/liblib__libc__common.a
+[135/153] Linking C static library zephyr/lib/libc/picolibc/liblib__libc__picolibc.a
+[136/153] Linking C static library zephyr/soc/soc/nrf52840/libsoc__nordic.a
+[137/153] Linking C static library zephyr/drivers/console/libdrivers__console.a
+[138/153] Linking C static library zephyr/drivers/gpio/libdrivers__gpio.a
+[139/153] Building C object zephyr/kernel/CMakeFiles/kernel.dir/work.c.obj
+[140/153] Linking C static library zephyr/drivers/pinctrl/libdrivers__pinctrl.a
+[141/153] Linking C static library zephyr/drivers/timer/libdrivers__timer.a
+[142/153] Building C object zephyr/kernel/CMakeFiles/kernel.dir/sched.c.obj
+[143/153] Linking C static library zephyr/kernel/libkernel.a
+[144/153] Building C object modules/hal_nordic/nrfx/CMakeFiles/nrfx.dir/Users/eugene/work/GiftUI/.toolchains/nrf52840/workspace/modules/hal/nordic/nrfx/drivers/src/nrfx_gpiote.c.obj
+[145/153] Linking C static library modules/hal_nordic/nrfx/libnrfx.a
+[146/153] Building C object zephyr/drivers/serial/CMakeFiles/drivers__serial.dir/uart_nrfx_uarte.c.obj
+[147/153] Linking C static library zephyr/drivers/serial/libdrivers__serial.a
+[148/153] Linking C executable zephyr/zephyr_pre0.elf; Logical command for additional byproducts on target: zephyr_pre0
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `/Users/eugene/work/GiftUI/.build/nrf52840/p08-resource-regression/003-nrf-linked/generated/resources/pristine/candidate/libspec003swift.a(ResourceHarness.o)' being placed in section `.swift_modhash'
+[149/153] Generating linker.cmd
+[150/153] Generating isr_tables.c, isr_tables_vt.ld, isr_tables_swi.ld
+[151/153] Building C object zephyr/CMakeFiles/zephyr_final.dir/misc/empty_file.c.obj
+[152/153] Building C object zephyr/CMakeFiles/zephyr_final.dir/isr_tables.c.obj
+[153/153] Linking C executable zephyr/zephyr.elf
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `/Users/eugene/work/GiftUI/.build/nrf52840/p08-resource-regression/003-nrf-linked/generated/resources/pristine/candidate/libspec003swift.a(ResourceHarness.o)' being placed in section `.swift_modhash'
+Memory region         Used Size  Region Size  %age Used
+           FLASH:       25924 B         1 MB      2.47%
+             RAM:        6272 B       256 KB      2.39%
+        IDT_LIST:          0 GB        32 KB      0.00%
+Generating files from /Users/eugene/work/GiftUI/.build/nrf52840/p08-resource-regression/003-nrf-linked/generated/resources/pristine/candidate/zephyr-build/zephyr/zephyr.elf for board: nrf52840dk
+SPEC-003 nrf52840-embedded resource evidence passed: RAM delta 256, code delta 132, stack 24.
+-- west build: generating a build system
+Loading Zephyr default modules (Zephyr base).
+-- Application: /Users/eugene/work/GiftUI/firmware/nrf52840/applications/spec003-resource-probe
+-- CMake version: 4.4.2
+-- Found Python3: /Users/eugene/work/GiftUI/.toolchains/nrf52840/python/bin/python (found suitable version "3.14.6", minimum required is "3.10") found components: Interpreter
+-- Cache files will be written to: /Users/eugene/work/GiftUI/.toolchains/nrf52840/workspace/zephyr/.cache
+-- Zephyr version: 4.3.0 (/Users/eugene/work/GiftUI/.toolchains/nrf52840/workspace/zephyr)
+-- Found west (found suitable version "1.5.0", minimum required is "0.14.0")
+-- Board: nrf52840dk, qualifiers: nrf52840
+-- Found host-tools: zephyr 0.17.4 (/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4)
+-- Found toolchain: zephyr 0.17.4 (/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4)
+-- Found Dtc: /opt/homebrew/bin/dtc (found suitable version "1.8.1", minimum required is "1.4.6")
+-- Found BOARD.dts: /Users/eugene/work/GiftUI/.toolchains/nrf52840/workspace/zephyr/boards/nordic/nrf52840dk/nrf52840dk_nrf52840.dts
+-- Generated zephyr.dts: /Users/eugene/work/GiftUI/.build/nrf52840/p08-resource-regression/003-nrf-linked/generated/resources/pristine/baseline/zephyr-build/zephyr/zephyr.dts
+-- Generated pickled edt: /Users/eugene/work/GiftUI/.build/nrf52840/p08-resource-regression/003-nrf-linked/generated/resources/pristine/baseline/zephyr-build/zephyr/edt.pickle
+-- Generated devicetree_generated.h: /Users/eugene/work/GiftUI/.build/nrf52840/p08-resource-regression/003-nrf-linked/generated/resources/pristine/baseline/zephyr-build/zephyr/include/generated/zephyr/devicetree_generated.h
+Parsing /Users/eugene/work/GiftUI/.toolchains/nrf52840/workspace/zephyr/Kconfig
+Loaded configuration '/Users/eugene/work/GiftUI/.toolchains/nrf52840/workspace/zephyr/boards/nordic/nrf52840dk/nrf52840dk_nrf52840_defconfig'
+Merged configuration '/Users/eugene/work/GiftUI/firmware/nrf52840/applications/spec003-resource-probe/prj.conf'
+Configuration saved to '/Users/eugene/work/GiftUI/.build/nrf52840/p08-resource-regression/003-nrf-linked/generated/resources/pristine/baseline/zephyr-build/zephyr/.config'
+Kconfig header saved to '/Users/eugene/work/GiftUI/.build/nrf52840/p08-resource-regression/003-nrf-linked/generated/resources/pristine/baseline/zephyr-build/zephyr/include/generated/zephyr/autoconf.h'
+-- Found GnuLd: /Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/arm-zephyr-eabi/bin/ld.bfd (found version "2.38")
+-- The C compiler identification is GNU 12.2.0
+-- The CXX compiler identification is GNU 12.2.0
+-- The ASM compiler identification is GNU
+-- Found assembler: /Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/arm-zephyr-eabi-gcc
+-- Found gen_kobject_list: /Users/eugene/work/GiftUI/.toolchains/nrf52840/workspace/zephyr/scripts/build/gen_kobject_list.py
+-- Configuring done (3.3s)
+-- Generating done (0.2s)
+-- Build files have been written to: /Users/eugene/work/GiftUI/.build/nrf52840/p08-resource-regression/003-nrf-linked/generated/resources/pristine/baseline/zephyr-build
+-- west build: building application
+[1/153] Preparing syscall dependency handling
+
+[2/153] Generating include/generated/zephyr/version.h
+-- Zephyr version: 4.3.0 (/Users/eugene/work/GiftUI/.toolchains/nrf52840/workspace/zephyr), build: 3568e1b6d5cd
+[3/153] Generating misc/generated/syscalls_subdirs.trigger
+[4/153] Generating misc/generated/syscalls.json, misc/generated/struct_tags.json
+[5/153] Generating include/generated/device-api-sections.ld, include/generated/device-api-sections.cmake
+[6/153] Generating include/generated/zephyr/syscall_dispatch.c, include/generated/zephyr/syscall_exports_llext.c, syscall_weakdefs_llext.c, include/generated/zephyr/syscall_list.h
+[7/153] Generating include/generated/zephyr/driver-validation.h
+[8/153] Generating include/generated/zephyr/kobj-types-enum.h, include/generated/zephyr/otype-to-str.h, include/generated/zephyr/otype-to-size.h
+[9/153] Building C object zephyr/CMakeFiles/offsets.dir/arch/arm/core/offsets/offsets.c.obj
+[10/153] Generating include/generated/zephyr/offsets.h
+[11/153] Building C object CMakeFiles/app.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC003/ResourceHarness/main.c.obj
+[12/153] Building C object CMakeFiles/app.dir/src/stubs.c.obj
+[13/153] Building C object zephyr/CMakeFiles/zephyr.dir/lib/utils/hex.c.obj
+[14/153] Building C object zephyr/CMakeFiles/zephyr.dir/lib/utils/dec.c.obj
+[15/153] Building C object zephyr/arch/common/CMakeFiles/isr_tables.dir/isr_tables.c.obj
+[16/153] Building C object zephyr/CMakeFiles/zephyr.dir/lib/os/assert.c.obj
+[17/153] Building C object zephyr/CMakeFiles/zephyr.dir/lib/libc/validate_libc.c.obj
+[18/153] Building C object zephyr/CMakeFiles/zephyr.dir/lib/os/thread_entry.c.obj
+[19/153] Building C object zephyr/CMakeFiles/zephyr.dir/lib/os/printk.c.obj
+[20/153] Building C object zephyr/CMakeFiles/zephyr.dir/lib/os/sem.c.obj
+[21/153] Building C object zephyr/CMakeFiles/zephyr.dir/lib/utils/bitmask.c.obj
+[22/153] Building C object zephyr/CMakeFiles/zephyr.dir/lib/utils/last_section_id.c.obj
+[23/153] Building C object zephyr/CMakeFiles/zephyr.dir/lib/os/clock.c.obj
+[24/153] Building C object zephyr/CMakeFiles/zephyr.dir/misc/generated/configs.c.obj
+[25/153] Building C object zephyr/CMakeFiles/zephyr.dir/lib/utils/timeutil.c.obj
+[26/153] Building C object zephyr/CMakeFiles/zephyr.dir/lib/utils/ring_buffer.c.obj
+[27/153] Building C object zephyr/CMakeFiles/zephyr.dir/lib/utils/notify.c.obj
+[28/153] Building C object zephyr/CMakeFiles/zephyr.dir/lib/heap/heap.c.obj
+[29/153] Generating linker_zephyr_pre0.cmd
+[30/153] Building C object zephyr/CMakeFiles/zephyr.dir/subsys/mem_mgmt/mem_attr.c.obj
+[31/153] Linking C static library zephyr/arch/common/libisr_tables.a
+[32/153] Building C object zephyr/arch/common/CMakeFiles/arch__common.dir/sw_isr_common.c.obj
+[33/153] Building ASM object zephyr/arch/arch/arm/core/CMakeFiles/arch__arm__core.dir/nmi_on_reset.S.obj
+[34/153] Building C object zephyr/CMakeFiles/zephyr.dir/subsys/tracing/tracing_none.c.obj
+[35/153] Building C object zephyr/arch/common/CMakeFiles/arch__common.dir/init.c.obj
+[36/153] Building C object zephyr/CMakeFiles/zephyr.dir/lib/os/cbprintf_packaged.c.obj
+[37/153] Building C object zephyr/arch/common/CMakeFiles/arch__common.dir/xip.c.obj
+[38/153] Building ASM object zephyr/arch/arch/arm/core/cortex_m/CMakeFiles/arch__arm__core__cortex_m.dir/fault_s.S.obj
+[39/153] Building ASM object zephyr/arch/arch/arm/core/cortex_m/CMakeFiles/arch__arm__core__cortex_m.dir/reset.S.obj
+[40/153] Building C object zephyr/arch/arch/arm/core/CMakeFiles/arch__arm__core.dir/fatal.c.obj
+[41/153] Building C object zephyr/arch/arch/arm/core/CMakeFiles/arch__arm__core.dir/nmi.c.obj
+[42/153] Building C object zephyr/arch/arch/arm/core/cortex_m/CMakeFiles/arch__arm__core__cortex_m.dir/exc_exit.c.obj
+[43/153] Building C object zephyr/CMakeFiles/zephyr.dir/lib/utils/onoff.c.obj
+[44/153] Building ASM object zephyr/arch/arch/arm/core/cortex_m/CMakeFiles/arch__arm__core__cortex_m.dir/vector_table.S.obj
+[45/153] Building C object zephyr/CMakeFiles/zephyr.dir/lib/os/cbprintf_complete.c.obj
+[46/153] Building C object zephyr/arch/arch/arm/core/CMakeFiles/arch__arm__core.dir/tls.c.obj
+[47/153] Building C object zephyr/CMakeFiles/zephyr.dir/lib/utils/bitarray.c.obj
+[48/153] Building C object zephyr/arch/arch/arm/core/cortex_m/CMakeFiles/arch__arm__core__cortex_m.dir/fpu.c.obj
+[49/153] Building ASM object zephyr/arch/arch/arm/core/cortex_m/CMakeFiles/arch__arm__core__cortex_m.dir/swap_helper.S.obj
+[50/153] Building C object zephyr/arch/arch/arm/core/cortex_m/CMakeFiles/arch__arm__core__cortex_m.dir/thread_abort.c.obj
+[51/153] Building ASM object zephyr/arch/arch/arm/core/cortex_m/CMakeFiles/arch__arm__core__cortex_m.dir/__aeabi_read_tp.S.obj
+[52/153] Building C object zephyr/arch/arch/arm/core/cortex_m/CMakeFiles/arch__arm__core__cortex_m.dir/scb.c.obj
+[53/153] Building C object zephyr/CMakeFiles/zephyr.dir/lib/utils/rb.c.obj
+[54/153] Building C object zephyr/arch/arch/arm/core/cortex_m/CMakeFiles/arch__arm__core__cortex_m.dir/irq_init.c.obj
+[55/153] Building C object zephyr/arch/arch/arm/core/cortex_m/CMakeFiles/arch__arm__core__cortex_m.dir/isr_wrapper.c.obj
+[56/153] Building C object zephyr/arch/arch/arm/core/cortex_m/CMakeFiles/arch__arm__core__cortex_m.dir/irq_manage.c.obj
+[57/153] Building C object zephyr/arch/arch/arm/core/cortex_m/CMakeFiles/arch__arm__core__cortex_m.dir/prep_c.c.obj
+[58/153] Building C object zephyr/arch/arch/arm/core/cortex_m/CMakeFiles/arch__arm__core__cortex_m.dir/cpu_idle.c.obj
+[59/153] Building C object zephyr/arch/arch/arm/core/cortex_m/CMakeFiles/arch__arm__core__cortex_m.dir/fault.c.obj
+[60/153] Building C object zephyr/arch/arch/arm/core/cortex_m/CMakeFiles/arch__arm__core__cortex_m.dir/thread.c.obj
+[61/153] Building C object zephyr/arch/arch/arm/core/mpu/CMakeFiles/arch__arm__core__mpu.dir/arm_mpu_regions.c.obj
+[62/153] Building C object zephyr/arch/arch/arm/core/mpu/CMakeFiles/arch__arm__core__mpu.dir/arm_core_mpu.c.obj
+[63/153] Building C object zephyr/lib/libc/picolibc/CMakeFiles/lib__libc__picolibc.dir/assert.c.obj
+[64/153] Building C object zephyr/lib/libc/common/CMakeFiles/lib__libc__common.dir/source/time/time.c.obj
+[65/153] Building C object zephyr/lib/posix/c_lib_ext/CMakeFiles/lib__posix__c_lib_ext.dir/fnmatch.c.obj
+[66/153] Building C object zephyr/lib/libc/picolibc/CMakeFiles/lib__libc__picolibc.dir/errno_wrap.c.obj
+[67/153] Building C object zephyr/lib/libc/picolibc/CMakeFiles/lib__libc__picolibc.dir/chk_fail.c.obj
+[68/153] Building C object zephyr/arch/arch/arm/core/mpu/CMakeFiles/arch__arm__core__mpu.dir/arm_mpu.c.obj
+[69/153] Building C object zephyr/lib/libc/picolibc/CMakeFiles/lib__libc__picolibc.dir/cbprintf.c.obj
+[70/153] Building C object zephyr/lib/libc/picolibc/CMakeFiles/lib__libc__picolibc.dir/exit.c.obj
+[71/153] Building C object zephyr/lib/libc/common/CMakeFiles/lib__libc__common.dir/source/stdlib/malloc.c.obj
+[72/153] Building C object zephyr/lib/posix/c_lib_ext/CMakeFiles/lib__posix__c_lib_ext.dir/getentropy.c.obj
+[73/153] Building C object zephyr/lib/libc/common/CMakeFiles/lib__libc__common.dir/source/stdlib/abort.c.obj
+[74/153] Building C object zephyr/lib/libc/picolibc/CMakeFiles/lib__libc__picolibc.dir/stdio.c.obj
+[75/153] Building C object zephyr/soc/soc/nrf52840/CMakeFiles/soc__nordic.dir/validate_binding_headers.c.obj
+[76/153] Building C object zephyr/lib/libc/picolibc/CMakeFiles/lib__libc__picolibc.dir/locks.c.obj
+[77/153] Building C object zephyr/drivers/pinctrl/CMakeFiles/drivers__pinctrl.dir/common.c.obj
+[78/153] Building C object zephyr/lib/posix/c_lib_ext/CMakeFiles/lib__posix__c_lib_ext.dir/getopt/getopt.c.obj
+[79/153] Building C object zephyr/lib/posix/c_lib_ext/CMakeFiles/lib__posix__c_lib_ext.dir/getopt/getopt_common.c.obj
+[80/153] Building C object zephyr/soc/soc/nrf52840/CMakeFiles/soc__nordic.dir/validate_enabled_instances.c.obj
+[81/153] Building C object zephyr/soc/soc/nrf52840/CMakeFiles/soc__nordic.dir/validate_base_addresses.c.obj
+[82/153] Building C object zephyr/drivers/console/CMakeFiles/drivers__console.dir/uart_console.c.obj
+[83/153] Building C object zephyr/soc/soc/nrf52840/CMakeFiles/soc__nordic.dir/common/reboot.c.obj
+[84/153] Building C object zephyr/drivers/timer/CMakeFiles/drivers__timer.dir/sys_clock_init.c.obj
+[85/153] Building C object modules/hal_nordic/nrfx/CMakeFiles/nrfx.dir/Users/eugene/work/GiftUI/.toolchains/nrf52840/workspace/modules/hal/nordic/nrfx/mdk/system_nrf52840.c.obj
+[86/153] Building C object zephyr/soc/soc/nrf52840/CMakeFiles/soc__nordic.dir/nrf52/soc.c.obj
+[87/153] Building C object modules/hal_nordic/nrfx/CMakeFiles/nrfx.dir/Users/eugene/work/GiftUI/.toolchains/nrf52840/workspace/modules/hal/nordic/nrfx/helpers/nrfx_gppi_dppi.c.obj
+[88/153] Building C object modules/hal_nordic/nrfx/CMakeFiles/nrfx.dir/Users/eugene/work/GiftUI/.toolchains/nrf52840/workspace/modules/hal/nordic/nrfx/helpers/nrfx_flag32_allocator.c.obj
+[89/153] Building C object modules/hal_nordic/nrfx/CMakeFiles/nrfx.dir/nrfx_glue.c.obj
+[90/153] Building C object modules/hal_nordic/nrfx/CMakeFiles/nrfx.dir/Users/eugene/work/GiftUI/.toolchains/nrf52840/workspace/modules/hal/nordic/nrfx/helpers/nrfx_gppi_ppi.c.obj
+[91/153] Building C object modules/hal_nordic/nrfx/CMakeFiles/nrfx.dir/Users/eugene/work/GiftUI/.toolchains/nrf52840/workspace/modules/hal/nordic/nrfx/helpers/nrfx_ram_ctrl.c.obj
+[92/153] Building C object zephyr/drivers/clock_control/CMakeFiles/drivers__clock_control.dir/clock_control_nrf.c.obj
+[93/153] Building C object zephyr/kernel/CMakeFiles/kernel.dir/main_weak.c.obj
+[94/153] Building C object modules/hal_nordic/nrfx/CMakeFiles/nrfx.dir/Users/eugene/work/GiftUI/.toolchains/nrf52840/workspace/modules/hal/nordic/nrfx/drivers/src/nrfx_clock.c.obj
+[95/153] Building C object modules/hal_nordic/nrfx/CMakeFiles/nrfx.dir/Users/eugene/work/GiftUI/.toolchains/nrf52840/workspace/modules/hal/nordic/nrfx/drivers/src/nrfx_ppi.c.obj
+[96/153] Building C object zephyr/kernel/CMakeFiles/kernel.dir/busy_wait.c.obj
+[97/153] Building C object zephyr/kernel/CMakeFiles/kernel.dir/banner.c.obj
+[98/153] Building C object zephyr/drivers/timer/CMakeFiles/drivers__timer.dir/nrf_rtc_timer.c.obj
+[99/153] Building C object zephyr/kernel/CMakeFiles/kernel.dir/device.c.obj
+[100/153] Building C object zephyr/kernel/CMakeFiles/kernel.dir/errno.c.obj
+[101/153] Building C object zephyr/kernel/CMakeFiles/kernel.dir/version.c.obj
+[102/153] Building C object zephyr/kernel/CMakeFiles/kernel.dir/fatal.c.obj
+[103/153] Building C object zephyr/kernel/CMakeFiles/kernel.dir/float.c.obj
+[104/153] Building C object zephyr/kernel/CMakeFiles/kernel.dir/init.c.obj
+[105/153] Building C object zephyr/kernel/CMakeFiles/kernel.dir/kheap.c.obj
+[106/153] Building C object zephyr/kernel/CMakeFiles/kernel.dir/mem_slab.c.obj
+[107/153] Building C object zephyr/drivers/pinctrl/CMakeFiles/drivers__pinctrl.dir/pinctrl_nrf.c.obj
+[108/153] Building C object zephyr/kernel/CMakeFiles/kernel.dir/idle.c.obj
+[109/153] Building C object zephyr/kernel/CMakeFiles/kernel.dir/mutex.c.obj
+[110/153] Building C object zephyr/kernel/CMakeFiles/kernel.dir/mailbox.c.obj
+[111/153] Building C object zephyr/kernel/CMakeFiles/kernel.dir/msg_q.c.obj
+[112/153] Building C object zephyr/kernel/CMakeFiles/kernel.dir/sem.c.obj
+[113/153] Building C object zephyr/kernel/CMakeFiles/kernel.dir/queue.c.obj
+[114/153] Building C object zephyr/kernel/CMakeFiles/kernel.dir/system_work_q.c.obj
+[115/153] Building C object zephyr/drivers/gpio/CMakeFiles/drivers__gpio.dir/gpio_nrfx.c.obj
+[116/153] Building C object zephyr/kernel/CMakeFiles/kernel.dir/stack.c.obj
+[117/153] Linking C static library app/libapp.a
+[118/153] Building C object zephyr/kernel/CMakeFiles/kernel.dir/condvar.c.obj
+[119/153] Building C object zephyr/kernel/CMakeFiles/kernel.dir/thread.c.obj
+[120/153] Building C object zephyr/kernel/CMakeFiles/kernel.dir/mempool.c.obj
+[121/153] Building C object zephyr/kernel/CMakeFiles/kernel.dir/timeslicing.c.obj
+[122/153] Building C object zephyr/kernel/CMakeFiles/kernel.dir/timer.c.obj
+[123/153] Building C object zephyr/kernel/CMakeFiles/kernel.dir/dynamic_disabled.c.obj
+[124/153] Building C object zephyr/kernel/CMakeFiles/kernel.dir/pipe.c.obj
+[125/153] Building C object zephyr/CMakeFiles/zephyr_pre0.dir/misc/empty_file.c.obj
+[126/153] Building C object zephyr/kernel/CMakeFiles/kernel.dir/timeout.c.obj
+[127/153] Linking C static library zephyr/arch/common/libarch__common.a
+[128/153] Linking C static library zephyr/libzephyr.a
+[129/153] Linking C static library zephyr/arch/arch/arm/core/libarch__arm__core.a
+[130/153] Linking C static library zephyr/arch/arch/arm/core/mpu/libarch__arm__core__mpu.a
+[131/153] Linking C static library zephyr/arch/arch/arm/core/cortex_m/libarch__arm__core__cortex_m.a
+[132/153] Linking C static library zephyr/lib/posix/c_lib_ext/liblib__posix__c_lib_ext.a
+[133/153] Linking C static library zephyr/soc/soc/nrf52840/libsoc__nordic.a
+[134/153] Linking C static library zephyr/lib/libc/picolibc/liblib__libc__picolibc.a
+[135/153] Linking C static library zephyr/lib/libc/common/liblib__libc__common.a
+[136/153] Linking C static library zephyr/drivers/console/libdrivers__console.a
+[137/153] Linking C static library zephyr/drivers/gpio/libdrivers__gpio.a
+[138/153] Linking C static library zephyr/drivers/clock_control/libdrivers__clock_control.a
+[139/153] Linking C static library zephyr/drivers/pinctrl/libdrivers__pinctrl.a
+[140/153] Linking C static library zephyr/drivers/timer/libdrivers__timer.a
+[141/153] Building C object zephyr/kernel/CMakeFiles/kernel.dir/work.c.obj
+[142/153] Building C object zephyr/kernel/CMakeFiles/kernel.dir/sched.c.obj
+[143/153] Linking C static library zephyr/kernel/libkernel.a
+[144/153] Building C object modules/hal_nordic/nrfx/CMakeFiles/nrfx.dir/Users/eugene/work/GiftUI/.toolchains/nrf52840/workspace/modules/hal/nordic/nrfx/drivers/src/nrfx_gpiote.c.obj
+[145/153] Linking C static library modules/hal_nordic/nrfx/libnrfx.a
+[146/153] Building C object zephyr/drivers/serial/CMakeFiles/drivers__serial.dir/uart_nrfx_uarte.c.obj
+[147/153] Linking C static library zephyr/drivers/serial/libdrivers__serial.a
+[148/153] Linking C executable zephyr/zephyr_pre0.elf; Logical command for additional byproducts on target: zephyr_pre0
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `/Users/eugene/work/GiftUI/.build/nrf52840/p08-resource-regression/003-nrf-linked/generated/resources/pristine/baseline/libspec003swift.a(ResourceHarness.o)' being placed in section `.swift_modhash'
+[149/153] Generating linker.cmd
+[150/153] Generating isr_tables.c, isr_tables_vt.ld, isr_tables_swi.ld
+[151/153] Building C object zephyr/CMakeFiles/zephyr_final.dir/misc/empty_file.c.obj
+[152/153] Building C object zephyr/CMakeFiles/zephyr_final.dir/isr_tables.c.obj
+[153/153] Linking C executable zephyr/zephyr.elf
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `/Users/eugene/work/GiftUI/.build/nrf52840/p08-resource-regression/003-nrf-linked/generated/resources/pristine/baseline/libspec003swift.a(ResourceHarness.o)' being placed in section `.swift_modhash'
+Memory region         Used Size  Region Size  %age Used
+           FLASH:       25796 B         1 MB      2.46%
+             RAM:        6016 B       256 KB      2.29%
+        IDT_LIST:          0 GB        32 KB      0.00%
+Generating files from /Users/eugene/work/GiftUI/.build/nrf52840/p08-resource-regression/003-nrf-linked/generated/resources/pristine/baseline/zephyr-build/zephyr/zephyr.elf for board: nrf52840dk
+-- west build: generating a build system
+Loading Zephyr default modules (Zephyr base).
+-- Application: /Users/eugene/work/GiftUI/firmware/nrf52840/applications/spec003-resource-probe
+-- CMake version: 4.4.2
+-- Found Python3: /Users/eugene/work/GiftUI/.toolchains/nrf52840/python/bin/python (found suitable version "3.14.6", minimum required is "3.10") found components: Interpreter
+-- Cache files will be written to: /Users/eugene/work/GiftUI/.toolchains/nrf52840/workspace/zephyr/.cache
+-- Zephyr version: 4.3.0 (/Users/eugene/work/GiftUI/.toolchains/nrf52840/workspace/zephyr)
+-- Found west (found suitable version "1.5.0", minimum required is "0.14.0")
+-- Board: nrf52840dk, qualifiers: nrf52840
+-- Found host-tools: zephyr 0.17.4 (/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4)
+-- Found toolchain: zephyr 0.17.4 (/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4)
+-- Found Dtc: /opt/homebrew/bin/dtc (found suitable version "1.8.1", minimum required is "1.4.6")
+-- Found BOARD.dts: /Users/eugene/work/GiftUI/.toolchains/nrf52840/workspace/zephyr/boards/nordic/nrf52840dk/nrf52840dk_nrf52840.dts
+-- Generated zephyr.dts: /Users/eugene/work/GiftUI/.build/nrf52840/p08-resource-regression/003-nrf-linked/generated/resources/pristine/candidate/zephyr-build/zephyr/zephyr.dts
+-- Generated pickled edt: /Users/eugene/work/GiftUI/.build/nrf52840/p08-resource-regression/003-nrf-linked/generated/resources/pristine/candidate/zephyr-build/zephyr/edt.pickle
+-- Generated devicetree_generated.h: /Users/eugene/work/GiftUI/.build/nrf52840/p08-resource-regression/003-nrf-linked/generated/resources/pristine/candidate/zephyr-build/zephyr/include/generated/zephyr/devicetree_generated.h
+Parsing /Users/eugene/work/GiftUI/.toolchains/nrf52840/workspace/zephyr/Kconfig
+Loaded configuration '/Users/eugene/work/GiftUI/.toolchains/nrf52840/workspace/zephyr/boards/nordic/nrf52840dk/nrf52840dk_nrf52840_defconfig'
+Merged configuration '/Users/eugene/work/GiftUI/firmware/nrf52840/applications/spec003-resource-probe/prj.conf'
+Configuration saved to '/Users/eugene/work/GiftUI/.build/nrf52840/p08-resource-regression/003-nrf-linked/generated/resources/pristine/candidate/zephyr-build/zephyr/.config'
+Kconfig header saved to '/Users/eugene/work/GiftUI/.build/nrf52840/p08-resource-regression/003-nrf-linked/generated/resources/pristine/candidate/zephyr-build/zephyr/include/generated/zephyr/autoconf.h'
+-- Found GnuLd: /Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/arm-zephyr-eabi/bin/ld.bfd (found version "2.38")
+-- The C compiler identification is GNU 12.2.0
+-- The CXX compiler identification is GNU 12.2.0
+-- The ASM compiler identification is GNU
+-- Found assembler: /Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/arm-zephyr-eabi-gcc
+-- Found gen_kobject_list: /Users/eugene/work/GiftUI/.toolchains/nrf52840/workspace/zephyr/scripts/build/gen_kobject_list.py
+-- Configuring done (3.3s)
+-- Generating done (0.2s)
+-- Build files have been written to: /Users/eugene/work/GiftUI/.build/nrf52840/p08-resource-regression/003-nrf-linked/generated/resources/pristine/candidate/zephyr-build
+-- west build: building application
+[1/153] Preparing syscall dependency handling
+
+[2/153] Generating include/generated/zephyr/version.h
+-- Zephyr version: 4.3.0 (/Users/eugene/work/GiftUI/.toolchains/nrf52840/workspace/zephyr), build: 3568e1b6d5cd
+[3/153] Generating misc/generated/syscalls_subdirs.trigger
+[4/153] Generating misc/generated/syscalls.json, misc/generated/struct_tags.json
+[5/153] Generating include/generated/device-api-sections.ld, include/generated/device-api-sections.cmake
+[6/153] Generating include/generated/zephyr/syscall_dispatch.c, include/generated/zephyr/syscall_exports_llext.c, syscall_weakdefs_llext.c, include/generated/zephyr/syscall_list.h
+[7/153] Generating include/generated/zephyr/driver-validation.h
+[8/153] Generating include/generated/zephyr/kobj-types-enum.h, include/generated/zephyr/otype-to-str.h, include/generated/zephyr/otype-to-size.h
+[9/153] Building C object zephyr/CMakeFiles/offsets.dir/arch/arm/core/offsets/offsets.c.obj
+[10/153] Generating include/generated/zephyr/offsets.h
+[11/153] Building C object CMakeFiles/app.dir/src/stubs.c.obj
+[12/153] Building C object CMakeFiles/app.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC003/ResourceHarness/main.c.obj
+[13/153] Building C object zephyr/CMakeFiles/zephyr.dir/lib/utils/dec.c.obj
+[14/153] Building C object zephyr/CMakeFiles/zephyr.dir/lib/utils/hex.c.obj
+[15/153] Building C object zephyr/arch/common/CMakeFiles/isr_tables.dir/isr_tables.c.obj
+[16/153] Building C object zephyr/CMakeFiles/zephyr.dir/lib/os/sem.c.obj
+[17/153] Building C object zephyr/CMakeFiles/zephyr.dir/lib/os/thread_entry.c.obj
+[18/153] Building C object zephyr/CMakeFiles/zephyr.dir/lib/libc/validate_libc.c.obj
+[19/153] Building C object zephyr/CMakeFiles/zephyr.dir/lib/os/printk.c.obj
+[20/153] Building C object zephyr/CMakeFiles/zephyr.dir/lib/os/assert.c.obj
+[21/153] Building C object zephyr/CMakeFiles/zephyr.dir/lib/os/clock.c.obj
+[22/153] Building C object zephyr/CMakeFiles/zephyr.dir/lib/utils/bitmask.c.obj
+[23/153] Building C object zephyr/CMakeFiles/zephyr.dir/lib/utils/last_section_id.c.obj
+[24/153] Building C object zephyr/CMakeFiles/zephyr.dir/misc/generated/configs.c.obj
+[25/153] Building C object zephyr/CMakeFiles/zephyr.dir/lib/utils/timeutil.c.obj
+[26/153] Building C object zephyr/CMakeFiles/zephyr.dir/lib/utils/ring_buffer.c.obj
+[27/153] Building C object zephyr/CMakeFiles/zephyr.dir/lib/os/cbprintf_packaged.c.obj
+[28/153] Building C object zephyr/CMakeFiles/zephyr.dir/lib/utils/notify.c.obj
+[29/153] Generating linker_zephyr_pre0.cmd
+[30/153] Building C object zephyr/CMakeFiles/zephyr.dir/lib/heap/heap.c.obj
+[31/153] Building C object zephyr/arch/common/CMakeFiles/arch__common.dir/init.c.obj
+[32/153] Linking C static library zephyr/arch/common/libisr_tables.a
+[33/153] Building C object zephyr/arch/common/CMakeFiles/arch__common.dir/sw_isr_common.c.obj
+[34/153] Building C object zephyr/CMakeFiles/zephyr.dir/subsys/tracing/tracing_none.c.obj
+[35/153] Building C object zephyr/CMakeFiles/zephyr.dir/subsys/mem_mgmt/mem_attr.c.obj
+[36/153] Building ASM object zephyr/arch/arch/arm/core/CMakeFiles/arch__arm__core.dir/nmi_on_reset.S.obj
+[37/153] Building C object zephyr/arch/common/CMakeFiles/arch__common.dir/xip.c.obj
+[38/153] Building ASM object zephyr/arch/arch/arm/core/cortex_m/CMakeFiles/arch__arm__core__cortex_m.dir/fault_s.S.obj
+[39/153] Building ASM object zephyr/arch/arch/arm/core/cortex_m/CMakeFiles/arch__arm__core__cortex_m.dir/reset.S.obj
+[40/153] Building C object zephyr/CMakeFiles/zephyr.dir/lib/os/cbprintf_complete.c.obj
+[41/153] Building C object zephyr/arch/arch/arm/core/CMakeFiles/arch__arm__core.dir/fatal.c.obj
+[42/153] Building C object zephyr/arch/arch/arm/core/CMakeFiles/arch__arm__core.dir/tls.c.obj
+[43/153] Building C object zephyr/arch/arch/arm/core/CMakeFiles/arch__arm__core.dir/nmi.c.obj
+[44/153] Building ASM object zephyr/arch/arch/arm/core/cortex_m/CMakeFiles/arch__arm__core__cortex_m.dir/vector_table.S.obj
+[45/153] Building C object zephyr/arch/arch/arm/core/cortex_m/CMakeFiles/arch__arm__core__cortex_m.dir/fpu.c.obj
+[46/153] Building C object zephyr/CMakeFiles/zephyr.dir/lib/utils/onoff.c.obj
+[47/153] Building C object zephyr/arch/arch/arm/core/cortex_m/CMakeFiles/arch__arm__core__cortex_m.dir/exc_exit.c.obj
+[48/153] Building C object zephyr/CMakeFiles/zephyr.dir/lib/utils/rb.c.obj
+[49/153] Building C object zephyr/arch/arch/arm/core/cortex_m/CMakeFiles/arch__arm__core__cortex_m.dir/scb.c.obj
+[50/153] Building ASM object zephyr/arch/arch/arm/core/cortex_m/CMakeFiles/arch__arm__core__cortex_m.dir/swap_helper.S.obj
+[51/153] Building ASM object zephyr/arch/arch/arm/core/cortex_m/CMakeFiles/arch__arm__core__cortex_m.dir/__aeabi_read_tp.S.obj
+[52/153] Building C object zephyr/arch/arch/arm/core/cortex_m/CMakeFiles/arch__arm__core__cortex_m.dir/thread_abort.c.obj
+[53/153] Building C object zephyr/arch/arch/arm/core/cortex_m/CMakeFiles/arch__arm__core__cortex_m.dir/fault.c.obj
+[54/153] Building C object zephyr/arch/arch/arm/core/cortex_m/CMakeFiles/arch__arm__core__cortex_m.dir/irq_init.c.obj
+[55/153] Building C object zephyr/arch/arch/arm/core/mpu/CMakeFiles/arch__arm__core__mpu.dir/arm_mpu_regions.c.obj
+[56/153] Building C object zephyr/arch/arch/arm/core/cortex_m/CMakeFiles/arch__arm__core__cortex_m.dir/isr_wrapper.c.obj
+[57/153] Building C object zephyr/arch/arch/arm/core/cortex_m/CMakeFiles/arch__arm__core__cortex_m.dir/thread.c.obj
+[58/153] Building C object zephyr/arch/arch/arm/core/cortex_m/CMakeFiles/arch__arm__core__cortex_m.dir/prep_c.c.obj
+[59/153] Building C object zephyr/arch/arch/arm/core/cortex_m/CMakeFiles/arch__arm__core__cortex_m.dir/cpu_idle.c.obj
+[60/153] Building C object zephyr/CMakeFiles/zephyr.dir/lib/utils/bitarray.c.obj
+[61/153] Building C object zephyr/arch/arch/arm/core/cortex_m/CMakeFiles/arch__arm__core__cortex_m.dir/irq_manage.c.obj
+[62/153] Building C object zephyr/arch/arch/arm/core/mpu/CMakeFiles/arch__arm__core__mpu.dir/arm_core_mpu.c.obj
+[63/153] Building C object zephyr/lib/libc/picolibc/CMakeFiles/lib__libc__picolibc.dir/assert.c.obj
+[64/153] Building C object zephyr/lib/libc/picolibc/CMakeFiles/lib__libc__picolibc.dir/cbprintf.c.obj
+[65/153] Building C object zephyr/lib/libc/picolibc/CMakeFiles/lib__libc__picolibc.dir/errno_wrap.c.obj
+[66/153] Building C object zephyr/arch/arch/arm/core/mpu/CMakeFiles/arch__arm__core__mpu.dir/arm_mpu.c.obj
+[67/153] Building C object zephyr/lib/libc/picolibc/CMakeFiles/lib__libc__picolibc.dir/chk_fail.c.obj
+[68/153] Building C object zephyr/lib/libc/common/CMakeFiles/lib__libc__common.dir/source/time/time.c.obj
+[69/153] Building C object zephyr/lib/posix/c_lib_ext/CMakeFiles/lib__posix__c_lib_ext.dir/fnmatch.c.obj
+[70/153] Building C object zephyr/lib/libc/picolibc/CMakeFiles/lib__libc__picolibc.dir/exit.c.obj
+[71/153] Building C object zephyr/lib/libc/common/CMakeFiles/lib__libc__common.dir/source/stdlib/malloc.c.obj
+[72/153] Building C object zephyr/lib/libc/picolibc/CMakeFiles/lib__libc__picolibc.dir/locks.c.obj
+[73/153] Building C object zephyr/lib/libc/picolibc/CMakeFiles/lib__libc__picolibc.dir/stdio.c.obj
+[74/153] Building C object zephyr/soc/soc/nrf52840/CMakeFiles/soc__nordic.dir/validate_binding_headers.c.obj
+[75/153] Building C object zephyr/lib/libc/common/CMakeFiles/lib__libc__common.dir/source/stdlib/abort.c.obj
+[76/153] Building C object zephyr/lib/posix/c_lib_ext/CMakeFiles/lib__posix__c_lib_ext.dir/getopt/getopt_common.c.obj
+[77/153] Building C object zephyr/lib/posix/c_lib_ext/CMakeFiles/lib__posix__c_lib_ext.dir/getopt/getopt.c.obj
+[78/153] Building C object zephyr/lib/posix/c_lib_ext/CMakeFiles/lib__posix__c_lib_ext.dir/getentropy.c.obj
+[79/153] Building C object zephyr/soc/soc/nrf52840/CMakeFiles/soc__nordic.dir/validate_base_addresses.c.obj
+[80/153] Building C object zephyr/drivers/pinctrl/CMakeFiles/drivers__pinctrl.dir/common.c.obj
+[81/153] Building C object zephyr/soc/soc/nrf52840/CMakeFiles/soc__nordic.dir/validate_enabled_instances.c.obj
+[82/153] Building C object zephyr/drivers/timer/CMakeFiles/drivers__timer.dir/sys_clock_init.c.obj
+[83/153] Building C object modules/hal_nordic/nrfx/CMakeFiles/nrfx.dir/Users/eugene/work/GiftUI/.toolchains/nrf52840/workspace/modules/hal/nordic/nrfx/mdk/system_nrf52840.c.obj
+[84/153] Building C object zephyr/drivers/console/CMakeFiles/drivers__console.dir/uart_console.c.obj
+[85/153] Building C object zephyr/soc/soc/nrf52840/CMakeFiles/soc__nordic.dir/common/reboot.c.obj
+[86/153] Building C object zephyr/soc/soc/nrf52840/CMakeFiles/soc__nordic.dir/nrf52/soc.c.obj
+[87/153] Building C object modules/hal_nordic/nrfx/CMakeFiles/nrfx.dir/nrfx_glue.c.obj
+[88/153] Building C object modules/hal_nordic/nrfx/CMakeFiles/nrfx.dir/Users/eugene/work/GiftUI/.toolchains/nrf52840/workspace/modules/hal/nordic/nrfx/helpers/nrfx_flag32_allocator.c.obj
+[89/153] Building C object modules/hal_nordic/nrfx/CMakeFiles/nrfx.dir/Users/eugene/work/GiftUI/.toolchains/nrf52840/workspace/modules/hal/nordic/nrfx/helpers/nrfx_ram_ctrl.c.obj
+[90/153] Building C object modules/hal_nordic/nrfx/CMakeFiles/nrfx.dir/Users/eugene/work/GiftUI/.toolchains/nrf52840/workspace/modules/hal/nordic/nrfx/helpers/nrfx_gppi_dppi.c.obj
+[91/153] Building C object zephyr/drivers/timer/CMakeFiles/drivers__timer.dir/nrf_rtc_timer.c.obj
+[92/153] Building C object modules/hal_nordic/nrfx/CMakeFiles/nrfx.dir/Users/eugene/work/GiftUI/.toolchains/nrf52840/workspace/modules/hal/nordic/nrfx/helpers/nrfx_gppi_ppi.c.obj
+[93/153] Building C object zephyr/kernel/CMakeFiles/kernel.dir/banner.c.obj
+[94/153] Building C object zephyr/drivers/clock_control/CMakeFiles/drivers__clock_control.dir/clock_control_nrf.c.obj
+[95/153] Building C object zephyr/kernel/CMakeFiles/kernel.dir/busy_wait.c.obj
+[96/153] Building C object modules/hal_nordic/nrfx/CMakeFiles/nrfx.dir/Users/eugene/work/GiftUI/.toolchains/nrf52840/workspace/modules/hal/nordic/nrfx/drivers/src/nrfx_ppi.c.obj
+[97/153] Building C object zephyr/kernel/CMakeFiles/kernel.dir/main_weak.c.obj
+[98/153] Building C object modules/hal_nordic/nrfx/CMakeFiles/nrfx.dir/Users/eugene/work/GiftUI/.toolchains/nrf52840/workspace/modules/hal/nordic/nrfx/drivers/src/nrfx_clock.c.obj
+[99/153] Building C object zephyr/kernel/CMakeFiles/kernel.dir/version.c.obj
+[100/153] Building C object zephyr/kernel/CMakeFiles/kernel.dir/errno.c.obj
+[101/153] Building C object zephyr/kernel/CMakeFiles/kernel.dir/device.c.obj
+[102/153] Building C object zephyr/kernel/CMakeFiles/kernel.dir/fatal.c.obj
+[103/153] Building C object zephyr/kernel/CMakeFiles/kernel.dir/float.c.obj
+[104/153] Building C object zephyr/kernel/CMakeFiles/kernel.dir/idle.c.obj
+[105/153] Building C object zephyr/kernel/CMakeFiles/kernel.dir/kheap.c.obj
+[106/153] Building C object zephyr/kernel/CMakeFiles/kernel.dir/mem_slab.c.obj
+[107/153] Building C object zephyr/kernel/CMakeFiles/kernel.dir/init.c.obj
+[108/153] Building C object zephyr/drivers/pinctrl/CMakeFiles/drivers__pinctrl.dir/pinctrl_nrf.c.obj
+[109/153] Building C object zephyr/kernel/CMakeFiles/kernel.dir/mailbox.c.obj
+[110/153] Building C object zephyr/kernel/CMakeFiles/kernel.dir/msg_q.c.obj
+[111/153] Building C object zephyr/kernel/CMakeFiles/kernel.dir/system_work_q.c.obj
+[112/153] Building C object zephyr/kernel/CMakeFiles/kernel.dir/mutex.c.obj
+[113/153] Building C object zephyr/kernel/CMakeFiles/kernel.dir/condvar.c.obj
+[114/153] Building C object zephyr/kernel/CMakeFiles/kernel.dir/stack.c.obj
+[115/153] Building C object zephyr/drivers/gpio/CMakeFiles/drivers__gpio.dir/gpio_nrfx.c.obj
+[116/153] Building C object zephyr/kernel/CMakeFiles/kernel.dir/sem.c.obj
+[117/153] Building C object zephyr/kernel/CMakeFiles/kernel.dir/thread.c.obj
+[118/153] Building C object zephyr/kernel/CMakeFiles/kernel.dir/queue.c.obj
+[119/153] Building C object zephyr/kernel/CMakeFiles/kernel.dir/pipe.c.obj
+[120/153] Linking C static library app/libapp.a
+[121/153] Building C object zephyr/CMakeFiles/zephyr_pre0.dir/misc/empty_file.c.obj
+[122/153] Building C object zephyr/kernel/CMakeFiles/kernel.dir/timeslicing.c.obj
+[123/153] Linking C static library zephyr/arch/common/libarch__common.a
+[124/153] Linking C static library zephyr/libzephyr.a
+[125/153] Linking C static library zephyr/arch/arch/arm/core/libarch__arm__core.a
+[126/153] Building C object zephyr/kernel/CMakeFiles/kernel.dir/dynamic_disabled.c.obj
+[127/153] Building C object zephyr/kernel/CMakeFiles/kernel.dir/timer.c.obj
+[128/153] Building C object zephyr/kernel/CMakeFiles/kernel.dir/mempool.c.obj
+[129/153] Linking C static library zephyr/arch/arch/arm/core/mpu/libarch__arm__core__mpu.a
+[130/153] Linking C static library zephyr/arch/arch/arm/core/cortex_m/libarch__arm__core__cortex_m.a
+[131/153] Building C object zephyr/kernel/CMakeFiles/kernel.dir/work.c.obj
+[132/153] Linking C static library zephyr/lib/libc/common/liblib__libc__common.a
+[133/153] Linking C static library zephyr/soc/soc/nrf52840/libsoc__nordic.a
+[134/153] Linking C static library zephyr/lib/posix/c_lib_ext/liblib__posix__c_lib_ext.a
+[135/153] Linking C static library zephyr/lib/libc/picolibc/liblib__libc__picolibc.a
+[136/153] Linking C static library zephyr/drivers/clock_control/libdrivers__clock_control.a
+[137/153] Linking C static library zephyr/drivers/console/libdrivers__console.a
+[138/153] Linking C static library zephyr/drivers/gpio/libdrivers__gpio.a
+[139/153] Linking C static library zephyr/drivers/pinctrl/libdrivers__pinctrl.a
+[140/153] Building C object zephyr/kernel/CMakeFiles/kernel.dir/timeout.c.obj
+[141/153] Linking C static library zephyr/drivers/timer/libdrivers__timer.a
+[142/153] Building C object zephyr/kernel/CMakeFiles/kernel.dir/sched.c.obj
+[143/153] Linking C static library zephyr/kernel/libkernel.a
+[144/153] Building C object modules/hal_nordic/nrfx/CMakeFiles/nrfx.dir/Users/eugene/work/GiftUI/.toolchains/nrf52840/workspace/modules/hal/nordic/nrfx/drivers/src/nrfx_gpiote.c.obj
+[145/153] Linking C static library modules/hal_nordic/nrfx/libnrfx.a
+[146/153] Building C object zephyr/drivers/serial/CMakeFiles/drivers__serial.dir/uart_nrfx_uarte.c.obj
+[147/153] Linking C static library zephyr/drivers/serial/libdrivers__serial.a
+[148/153] Linking C executable zephyr/zephyr_pre0.elf; Logical command for additional byproducts on target: zephyr_pre0
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `/Users/eugene/work/GiftUI/.build/nrf52840/p08-resource-regression/003-nrf-linked/generated/resources/pristine/candidate/libspec003swift.a(ResourceHarness.o)' being placed in section `.swift_modhash'
+[149/153] Generating linker.cmd
+[150/153] Generating isr_tables.c, isr_tables_vt.ld, isr_tables_swi.ld
+[151/153] Building C object zephyr/CMakeFiles/zephyr_final.dir/misc/empty_file.c.obj
+[152/153] Building C object zephyr/CMakeFiles/zephyr_final.dir/isr_tables.c.obj
+[153/153] Linking C executable zephyr/zephyr.elf
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `/Users/eugene/work/GiftUI/.build/nrf52840/p08-resource-regression/003-nrf-linked/generated/resources/pristine/candidate/libspec003swift.a(ResourceHarness.o)' being placed in section `.swift_modhash'
+Memory region         Used Size  Region Size  %age Used
+           FLASH:       25924 B         1 MB      2.47%
+             RAM:        6272 B       256 KB      2.39%
+        IDT_LIST:          0 GB        32 KB      0.00%
+Generating files from /Users/eugene/work/GiftUI/.build/nrf52840/p08-resource-regression/003-nrf-linked/generated/resources/pristine/candidate/zephyr-build/zephyr/zephyr.elf for board: nrf52840dk
+SPEC-003 nrf52840-embedded resource evidence passed: RAM delta 256, code delta 132, stack 24.

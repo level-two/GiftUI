@@ -1,0 +1,8 @@
+
+Sections:
+Idx Name             Size     VMA              Type
+  0 __text           00000038 00000001000004e8 TEXT
+  1 __swift5_entry   00000008 0000000100000520 DATA
+  2 __unwind_info    00000068 0000000100000528 DATA
+  3 __objc_imageinfo 00000008 0000000100004000 DATA
+  4 __common         00000004 0000000100008000 BSS

@@ -1,0 +1,37 @@
+
+Elf file type is EXEC (Executable file)
+Entry point 0x69ab0
+There are 13 program headers, starting at offset 52
+
+Program Headers:
+  Type           Offset   VirtAddr   PhysAddr   FileSiz MemSiz  Flg Align
+  PHDR           0x000034 0x00010034 0x00010034 0x001a0 0x001a0 R   0x4
+  INTERP         0x0001d4 0x000101d4 0x000101d4 0x00019 0x00019 R   0x1
+      [Requesting program interpreter: /lib/ld-linux-armhf.so.3]
+  LOAD           0x000000 0x00010000 0x00010000 0x49aac 0x49aac R   0x10000
+  LOAD           0x049ab0 0x00069ab0 0x00069ab0 0x425160 0x425160 R E 0x10000
+  LOAD           0x46ec10 0x0049ec10 0x0049ec10 0x0a01c 0x0a3f0 RW  0x10000
+  LOAD           0x478c2c 0x004b8c2c 0x004b8c2c 0xdba54 0xf7390 RW  0x10000
+  TLS            0x46ec10 0x0048ec10 0x0048ec10 0x00000 0x00004 R   0x4
+  DYNAMIC        0x47899c 0x004a899c 0x004a899c 0x000e8 0x000e8 RW  0x4
+  GNU_RELRO      0x46ec10 0x0049ec10 0x0049ec10 0x0a01c 0x0a3f0 R   0x1
+  GNU_EH_FRAME   0x049a9c 0x00059a9c 0x00059a9c 0x0000c 0x0000c R   0x4
+  GNU_STACK      0x000000 0x00000000 0x00000000 0x00000 0x00000 RW  0
+  NOTE           0x0001f0 0x000101f0 0x000101f0 0x00020 0x00020 R   0x4
+  EXIDX          0x001684 0x00011684 0x00011684 0x25278 0x25278 R   0x4
+
+ Section to Segment mapping:
+  Segment Sections...
+   00     
+   01     .interp 
+   02     .interp .note.ABI-tag .dynsym .gnu.version .gnu.version_r .gnu.hash .dynstr .rel.dyn .ARM.exidx .rel.plt swift5_protocols swift5_protocol_conformances swift5_type_metadata swift5_fieldmd swift5_builtin swift5_assocty swift5_capture swift5_reflstr swift5_typeref swift5_mpenum swift5_replace swift5_replac2 swift5_accessible_functions swift5_runtime_attributes swift5_tests swift5_entry .ARM.extab .lldbsummaries swift5_type_metadata_2 .eh_frame_hdr .eh_frame 
+   03     .text .init .fini .plt 
+   04     .fini_array .init_array .data.rel.ro .dynamic .got .relro_padding 
+   05     .tm_clone_table .data .rodata .got.plt .bss 
+   06     .tbss 
+   07     .dynamic 
+   08     .fini_array .init_array .data.rel.ro .dynamic .got .relro_padding 
+   09     .eh_frame_hdr 
+   10     
+   11     .note.ABI-tag 
+   12     .ARM.exidx 

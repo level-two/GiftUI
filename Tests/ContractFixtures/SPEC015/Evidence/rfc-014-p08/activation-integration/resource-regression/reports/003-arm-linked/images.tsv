@@ -1,0 +1,4 @@
+resource-build-1-baseline	.build/raspberry-pi/p08-resource-regression/003-arm-linked/resources/build-1/baseline/resource-image	6262d7f2073f769ff47015f7f112a99e00e4a1e4cf4744af176a66a8f10ec18d
+resource-build-2-baseline	.build/raspberry-pi/p08-resource-regression/003-arm-linked/resources/build-2/baseline/resource-image	6262d7f2073f769ff47015f7f112a99e00e4a1e4cf4744af176a66a8f10ec18d
+resource-build-1-candidate	.build/raspberry-pi/p08-resource-regression/003-arm-linked/resources/build-1/candidate/resource-image	f754b757690956b69ec56e7e5e23c42f7323a41b8a27b51907cd57444add4b5d
+resource-build-2-candidate	.build/raspberry-pi/p08-resource-regression/003-arm-linked/resources/build-2/candidate/resource-image	f754b757690956b69ec56e7e5e23c42f7323a41b8a27b51907cd57444add4b5d

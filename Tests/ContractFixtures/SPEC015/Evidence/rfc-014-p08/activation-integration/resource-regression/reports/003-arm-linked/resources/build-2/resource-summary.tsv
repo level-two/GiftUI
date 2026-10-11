@@ -1,0 +1,5 @@
+metric	baseline	candidate	delta_or_value	limit	status
+writable_ram_bytes	1054592	1055080	488	512	pass
+linked_code_bytes	4407623	4431499	23876	24576	pass
+worst_stack_bytes	-	40	40	384	pass
+reachable_instructions	-	50	50	-	pass

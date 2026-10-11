@@ -1,0 +1,8 @@
+{
+  "compiler": "/Users/eugene/work/GiftUI/.toolchains/p08-comparison/expanded/swift-6.4.0-RELEASE-osx/swift-6.4.0-RELEASE-osx-package.pkg/Payload/usr/bin/swiftc",
+  "compiler_sha256": "79ae5c26645489fb783ae980f0f1bdae810f90fb180c9ac39808807b65e9fd69",
+  "drivers": {
+    "scripts/contracts/run-spec-003.sh": "ebd39e47dd26e866b1a92c3b49ab4188ab50ef9e34b30b6e4e3b9d65df9850f2",
+    "scripts/contracts/run-spec-004.sh": "2cc3c64d4f99a3c1325b6915d3f4186f5f65b25bb3c2ab0bb62153d5e8ee19c0"
+  }
+}

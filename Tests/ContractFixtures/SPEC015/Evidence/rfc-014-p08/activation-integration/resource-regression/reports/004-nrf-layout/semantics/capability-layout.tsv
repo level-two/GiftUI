@@ -1,0 +1,11 @@
+value	size	stride	alignment	maximum_size
+RasterPresentationRequirement	25	28	4	32
+RasterRealizationContribution	24	24	4	40
+RasterBackendContribution	48	48	4	88
+SurfaceDisplayContribution	20	20	4	40
+RasterPresentationPolicy	16	16	4	32
+RasterPresentationContributions	93	96	4	192
+RasterPresentationResolverWorkspace	52	52	4	96
+EffectiveRasterPresentation	40	40	4	48
+RasterPresentationUnavailable	12	12	4	16
+CapabilitySnapshot	40	40	4	56

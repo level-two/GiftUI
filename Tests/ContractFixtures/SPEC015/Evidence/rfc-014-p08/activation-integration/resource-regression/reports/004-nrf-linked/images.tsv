@@ -1,0 +1,4 @@
+resource-build-1-baseline-elf	.build/nrf52840/p08-resource-regression/004-nrf-linked/resources/build-1/baseline/zephyr.elf	0d6117b53eddb3e2a513d710947d2d5b802edc4f19a7c2034e3bf66b4f4aef6c
+resource-build-1-candidate-elf	.build/nrf52840/p08-resource-regression/004-nrf-linked/resources/build-1/candidate/zephyr.elf	19668cf9ee1cd7c87eef8bbcf7fb4a9eb0eba17fabb9e2c5964925861f707071
+resource-build-2-baseline-elf	.build/nrf52840/p08-resource-regression/004-nrf-linked/resources/build-2/baseline/zephyr.elf	0d6117b53eddb3e2a513d710947d2d5b802edc4f19a7c2034e3bf66b4f4aef6c
+resource-build-2-candidate-elf	.build/nrf52840/p08-resource-regression/004-nrf-linked/resources/build-2/candidate/zephyr.elf	19668cf9ee1cd7c87eef8bbcf7fb4a9eb0eba17fabb9e2c5964925861f707071

@@ -1,0 +1,5 @@
+allocation_count=0
+maximum_counted_steps=37
+maximum_normalization_counted_steps=5
+maximum_diagnostic_selection_counted_steps=8
+checksum=1338630

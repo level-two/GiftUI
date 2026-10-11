@@ -1,0 +1,1 @@
+SPEC-002 macos-static contract surface failed; see /Users/eugene/work/GiftUI/.build/contract-reports/spec-002/rfc-014/.tmp-macos-static-69251
