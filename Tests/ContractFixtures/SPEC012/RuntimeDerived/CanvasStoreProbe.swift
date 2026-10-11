@@ -17,6 +17,7 @@ package struct CanvasTrace {
     var reads: InlineArray<4, UInt8> = .init(repeating: 0)
     var endpoints: InlineArray<4, Point> = .init(repeating: Point(x: 0, y: 0))
     var readCount = 0
+    var begins = 0
     var contexts = 0
     var releases = 0
     var strokes = 0
@@ -99,6 +100,8 @@ struct CanvasWorkspace: DrawingPlanConstructionWorkspace {
         let operations = _GiftUIDrawingOperations(
             beginPath: { pointer, _, generation in
                 let t = pointer.assumingMemoryBound(to: CanvasTrace.self)
+                t.pointee.begins += 1
+                if [11, 12, 13, 15].contains(t.pointee.failure) && t.pointee.current == 2 { return _GiftUIDrawingStatus.capacityExhausted.rawValue }
                 if t.pointee.failure == 2 && t.pointee.current == 2 { return _GiftUIDrawingStatus.invalidValue.rawValue }
                 generation.pointee = 1; return 0
             }, endPath: { _, _, _ in 0 }, movePath: { _, _, _, _, _ in 0 },
@@ -126,12 +129,16 @@ private func exerciseValues(_ values: borrowing CanvasStagedValues<UInt16, Canva
     if mode != 9 {
         for identity: UInt16 in 1 ... 3 {
             var key = identity == 2 ? keys.1 : keys.0
-            if mode == 1 && identity == 2 {
+            if [1, 11, 12, 16].contains(mode) && identity == 2 {
                 key = .init(ownerInstance: key._giftUIOwnerInstance,
                     allocationGeneration: key._giftUIAllocationGeneration + 99, slot: key._giftUISlot)
             }
+            if mode == 15 && identity == 2 {
+                key = .init(ownerInstance: key._giftUIOwnerInstance + 1,
+                    allocationGeneration: key._giftUIAllocationGeneration, slot: key._giftUISlot)
+            }
             try values.stage(identity: identity,
-                value: CanvasTable.payload(CounterTrace<CanvasDomain>(model: key, offset: GeometryScalar(identity)))!, table: table)
+                value: CanvasTable.payload(CounterTrace<CanvasDomain>(model: key, offset: mode >= 12 ? -1 : GeometryScalar(identity)))!, table: table)
         }
     }
     expect(values.releaseCount == 0)
@@ -142,7 +149,7 @@ private func exerciseValues(_ values: borrowing CanvasStagedValues<UInt16, Canva
     workspace.refuseAcquire = mode == 7
     workspace.failSeal = mode == 8
     let context = ExecutionContext(cycle: RunCycleID(rawValue: 1), semanticRevision: nil, candidateFrame: nil, phase: mode == 5 ? .idle : .deriving)
-    let result = CanvasPlanProducer.derive(source: &source, layout: CanvasLayout(malformed: mode == 4, zeroSize: mode == 10), executionContext: context, limits: canvasLimits, workspace: &workspace)
+    let result = CanvasPlanProducer.derive(source: &source, layout: CanvasLayout(malformed: mode == 4 || mode == 16, zeroSize: mode == 10), executionContext: context, limits: canvasLimits, workspace: &workspace)
     switch mode {
     case 0, 10:
         guard case .success(let summary) = result else { preconditionFailure("success expected") }
@@ -157,8 +164,23 @@ private func exerciseValues(_ values: borrowing CanvasStagedValues<UInt16, Canva
         expect(trace.pointee.contexts == 2 && values.releaseCount == 3)
     case 2, 3:
         expect(result == .failure(mode == 2 ? .invalidValue : .capacityExhausted))
-        expect(trace.pointee.readCount == 2 && trace.pointee.contexts == 2 && values.releaseCount == 3)
-    case 4:
+        expect(trace.pointee.readCount == (mode == 2 ? 1 : 2) && trace.pointee.contexts == 2 && values.releaseCount == 3)
+    case 11, 12, 15:
+        // SPEC-012 binding precedes all authored work, even a read-free path.
+        // The second path would fail capacity admission if client code ran.
+        expect(result == .failure(.invalidModelAccess))
+        expect(trace.pointee.begins == 1 && trace.pointee.strokes == 1)
+        expect(trace.pointee.readCount == (mode == 11 ? 1 : 0))
+        expect(trace.pointee.contexts == 2 && values.releaseCount == 3)
+    case 13:
+        expect(result == .failure(.capacityExhausted))
+        expect(trace.pointee.begins == 2 && trace.pointee.strokes == 1)
+        expect(trace.pointee.readCount == 0 && values.releaseCount == 3)
+    case 14:
+        guard case .success(let summary) = result else { preconditionFailure("read-free success expected") }
+        expect(summary.canvasOccurrenceCount == 3 && summary.strokeCount == 3)
+        expect(trace.pointee.begins == 3 && trace.pointee.readCount == 0 && values.releaseCount == 3)
+    case 4, 16:
         expect(result == .failure(.invariantViolation)); expect(trace.pointee.readCount == 0 && values.releaseCount == 3)
     case 5, 6, 7:
         expect(result == .failure(mode == 5 ? .invalidPhase : .reentrancyViolation))
@@ -201,7 +223,7 @@ private func exerciseValues(_ values: borrowing CanvasStagedValues<UInt16, Canva
 
 public func giftuiP06Stores(dynamic: Bool) -> UInt32 {
     var checks: UInt32 = 0
-    for mode: UInt8 in 0 ... 10 {
+    for mode: UInt8 in 0 ... 16 {
         var trace = CanvasTrace(); trace.failure = mode
         withUnsafeMutablePointer(to: &trace) { trace in
             do throws(ObservableStateError) {

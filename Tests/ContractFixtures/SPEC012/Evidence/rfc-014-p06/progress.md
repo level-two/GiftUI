@@ -1,5 +1,34 @@
 # RFC-014 P06 progress
 
+## P06-R1 implementation repair — native validation complete, review pending
+
+Input `72438931`; one productive repair, counter **0/2**. The generated witness
+now prebinds every captured typed model key in sorted property-name order before
+any authored statement, using the existing checked drawing facade initializer.
+Each temporary is immediately discarded. Keyless witnesses remain empty; table
+case/payload and producer identity/order checks retain their precedence. No
+constraint, error map, lifetime annotation, bank count or capacity changed.
+
+The registered Counter fixture reads inside withPath and includes a read-free
+branch. Actual P03 scope plus both staged lenders now exercise stale-key
+path-before-read and stale/wrong-owner read-free paths against a deliberately
+failing beginPath, valid-key read-free capacity/success controls, and malformed
+identity/order competing with stale binding. Failed binding admits no second
+path or later occurrence; all three staged values release once and discovery
+confirms the read ended. Expected order is SPEC-012 lines118–120/177–178 and
+ADR-037, with the independent blocked review retained below as historical proof.
+
+After `scripts/format-swift.sh`, the refreshed native Static core route passed
+28 checks/120 assertions plus P03/P04 30/58/57 controls at
+`.build/contracts/spec-006-rfc-014/dd5d4849463055f2-hwlll28l/macos-static`.
+The P06 owner route with that exact `--giftui-build` passed43 checks/13 negatives
+at `.build/contracts/spec-012-protocol-canvas/tmp0jaw1r5b/macos-static/result.json`:
+364 staged/semantic +13 mapping +24 table +17 geometry +3,624 raster =4,042
+runtime assertions. Remaining profile receipts will be refreshed next because
+the lowerer/macro identity changed. The prior independent review/reproduction
+remains untouched; its defect-specific assertion is historical, not a current
+success oracle. P06 is not passed and no successor is authorized.
+
 ## Independent exit-review result — 2026-10-11
 
 [Strong review](exit-review.md) recommends **BLOCKED** on P06-R1: generated model

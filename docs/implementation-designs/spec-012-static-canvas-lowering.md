@@ -35,6 +35,13 @@ scoped two-parameter withPath form remains supported.
 Generated schema facades have a drawing-specific checked initializer and indexed
 accessor. They translate only the five closed access failures into the approved
 DrawingError cases, avoiding erased error transport through Embedded Swift.
+Each generated draw witness first checks all captured typed model keys, in
+sorted property-name order, through those checked initializers. Each temporary
+facade is discarded immediately. This unconditional prologue precedes all
+authored statements, including withPath and branches that do not read model
+fields; keyless Canvas witnesses receive no prologue. Table case/payload and
+producer identity/order validation still precede this binding. The existing
+member-access lowering can revalidate during a field read within the same scope.
 The private Canvas bridge constructs a checked zero-origin Rect from Layout Size.
 No escaping Canvas closure initializer remains in GiftUI.
 

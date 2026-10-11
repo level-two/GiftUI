@@ -293,7 +293,16 @@ final class Lowerer: SyntaxRewriter {
             drawing = true
             let context = (parameters.last!.secondName ?? parameters.last!.firstName).text
             drawingContext = context
-            let lowered = rewrite(body).cast(CodeBlockSyntax.self)
+            var lowered = rewrite(body).cast(CodeBlockSyntax.self)
+            // Validate every staged model identity before any authored drawing,
+            // including paths that never evaluate a model member. Discard each
+            // facade immediately; only the caller's scoped read remains live.
+            let prebinding = bindings.keys.sorted().map { name in
+                CodeBlockItemSyntax(
+                    stringLiteral:
+                        "_ = try \(bindings[name]!.facade)<D>(self.\(name), drawingRead: read)\n")
+            }
+            lowered.statements = CodeBlockItemListSyntax(prebinding + Array(lowered.statements))
             evaluating = oldEvaluating
             drawing = oldDrawing
             drawingContext = oldContext
