@@ -1,0 +1,7 @@
+{
+  "command": ".build/contracts/p08-activation-boundary-1",
+  "exit": 0,
+  "executable_sha256": "06a61981f274584b69068018590d49d76d56248be5805627337d2f690823e726",
+  "stdout_sha256": "6cd9a7912b7c0f997bd453564a30bebbf1ac8ddf788a94a9d3a5496e8bfc30d0",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}
