@@ -30,7 +30,9 @@ Approved host/schema component slices compile complete HostConfiguration and pas
 Complete supplied application audits and runtime-host conformance remain unclaimed. T8.1,
 HC-RD-001–004 and full P10–P12 obligations remain open; P07's finite pass does
 not satisfy them. [P08 receipt](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/progress.md)
-records source/compiler identities, expected compile controls and guard0/2.
+records source/compiler identities, expected compile controls and current guard2/2.
+The [activation-time containing-owner stop](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-join-stop/stop.md)
+preserves exact failed controls; no package acceptance or compiler-bug attribution is claimed.
 
 **Current amendment — 2026-10-05:** Approved five-second retention is implemented and all four hardware-free profiles pass in the [fresh integration](../iterations/iteration-002-cleanup/evidence/18-retention-integration/result.md). Focused nRF connected checks/restoration and current Pi deployment/ARMv6 rehearsal/bounded physical endpoint loop succeed. Original exception authority remains unchanged.
 

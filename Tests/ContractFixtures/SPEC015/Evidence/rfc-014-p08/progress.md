@@ -1,5 +1,10 @@
 # RFC-014 P08 execution receipt — 2026-10-11
 
+**Current: activation-time containing-owner implementation stopped at2/2.**
+The [bounded stop packet](activation-join-stop/stop.md) preserves exact controls,
+commands and narrowed cause. `c39733de` is the last validated maintained source;
+P08 remains incomplete. Earlier0/2 checkpoints below are historical.
+
 **Historical entry boundary: host integration blocked pending exact SPEC-015 lifetime
 review/approval (resolved by explicit approval below).** User authorized proceeding after P07; orientation started at
 clean `9fa495dd`. Strong Sol 6.1 High, sequential, no delegation. P08 starts and
@@ -146,3 +151,17 @@ Next: actual activation-time runtime/endpoint storage join, independent finite
 counter composition using all nine existing validation stages, cache ticket and
 replacement/lifetime controls, four builds and early linked images. T8.1,
 HC-RD-001–004/package exit and P09–P12 remain open.
+
+
+## Step 3 — activation-time storage join, stopped
+
+Initial control and two unproductive repairs reject on the pinned compiler;
+a diagnostic reduction without `activate()` still rejects. See the
+[complete bounded record](activation-join-stop/stop.md). The shared P08 guard is
+now **2/2**, with no reset from model switching, diagnostics or earlier component
+success. Affected implementation has stopped; no failed join was copied into
+maintained source. No new compiler controls or unsafe/lifecycle workaround were
+selected. Current authority remains unchanged and no compiler-bug attribution
+is established. Parent will arrange independent confirmation and a concrete
+maintainer decision before further affected implementation. Remaining package
+requirements and smallest bounded next decision are explicit in the packet.

@@ -39,7 +39,7 @@ The exact scoped-host correction is now explicitly approved and applied; see
 The original packet/probes and independent review remain historical evidence.
 Production implementation/evidence remain required; the construction, activation
 and backing-last teardown obligations are unchanged. [P08 progress](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/progress.md)
-records guard **0/2** and sequential work. Production implementation has begun: SPEC-015 is implementing and this plan
+records current guard **2/2** and the [activation-time join stop](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-join-stop/stop.md). Affected implementation has stopped pending a new bounded decision. Production implementation has begun: SPEC-015 is implementing and this plan
 active; no P08 pass is claimed.
 
 - [ ] `T8.1` — Schema-4 validation and explicit limits, real host owners, four-config counter, complete host ledger and lifetime checks.

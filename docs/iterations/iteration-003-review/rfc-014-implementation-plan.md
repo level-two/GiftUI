@@ -1,15 +1,17 @@
 # RFC-014 bounded implementation sequence — 2026-10-10
 
-**Current P08 checkpoint — host/schema components implemented, counter integration next, 2026-10-11:**
-Eugene explicitly replied “Approved, please proceed” after the separate
-[independent proposal review](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/independent-blocker-review.md).
-The exact SPEC-015 correction is applied and [approval recorded](rfc-014-spec-approval.md#scoped-host-lifetime-amendment--2026-10-11).
-Host/schema component slice passes 320 assertions per native route, ownership/
-missing-field/generator controls and complete HostConfiguration compilation;
-[step receipt](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-host-step-1.json).
-Original packet/probes/review remain historical. Full P08 construction/activation,
-schema-4/counter and early-image evidence remain required; no package acceptance.
-Guard **0/2**; [receipt](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/progress.md).
+**Current P08 checkpoint — stopped at activation-time owner join, 2026-10-11:**
+Approved correction `4dbdc2e0`, host propagation `6eda65d0` and schema4 slice
+`c39733de` are committed. Both native complete HostConfiguration component gates
+pass320 assertions plus ownership/missing-field/generator controls. The attempted
+inert owner for an activation-time actual coordinator rejects on the pinned
+compiler after two unproductive repairs; [exact stop packet](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-join-stop/stop.md).
+Guard **2/2**; no further affected implementation or compiler alternatives are
+authorized without a new bounded decision. This does not prove a compiler bug
+or justify changing the approved contract. SPEC-015 implementing/plan active;
+P08 incomplete, counter/four routes/early images and independent exit review open.
+Original approval packet/probes/review and earlier checkpoints remain historical.
+[Receipt](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/progress.md).
 P09–P12 remain pending.
 
 **Current P07 checkpoint — finite package exit passed, 2026-10-11:**

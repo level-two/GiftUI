@@ -1,0 +1,72 @@
+{
+  "status": "stopped",
+  "guard": "2/2 consecutive unproductive repairs",
+  "date": "2026-10-11",
+  "model": "Strong Sol 6.1 High",
+  "implementation_commit": "c39733de",
+  "authority_commit": "4dbdc2e0",
+  "compiler": ".toolchains/host/swift-6.3.2-RELEASE-osx/usr/bin/swiftc",
+  "compiler_sha256": "d8e40107da0e2c1c59640a983faea326d5d2bddfe81f7609db14bade43c4a5b9",
+  "schema_receipt": ".build/contracts/p08-scoped-host-ie3r3cmc/result.json",
+  "schema_receipt_sha256": "397d42439c721526962baf584e13885a9e04835c81e567d06ab03b8161b9b664",
+  "controls": [
+    {
+      "name": "initial-property-default",
+      "source": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-join-stop/initial-property-default.swift",
+      "sha256": "91e2cce128f1ff59cbce2c2b4c1ec945bd6f3d309c4cb3265333efa78bbeb714",
+      "observed_source_path": "/tmp/P08ActivationJoin.swift",
+      "command": "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.3.2-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-ie3r3cmc/cache -disable-sandbox -target arm64-apple-macosx26.0 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk -D GIFTUI_DYNAMIC_PROFILE -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014/189dda86d331e15d-wpk82ft7/macos-dynamic -parse-as-library -I /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpke3zvfyl/macos-dynamic -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014/189dda86d331e15d-wpk82ft7/macos-dynamic -enable-testing -I /Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-ie3r3cmc -module-name P08ActivationJoin -emit-object /tmp/P08ActivationJoin.swift -o /Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-ie3r3cmc/ActivationJoin.o",
+      "observed_exit": 1,
+      "diagnostic": "error: lifetime-dependent variable 'self' escapes its scope",
+      "notes": [
+        "error in compiler-generated 'init'",
+        "it depends on the lifetime of variable 'self'"
+      ],
+      "disposition": "initial control; not a repair"
+    },
+    {
+      "name": "repair-1-explicit-nil",
+      "source": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-join-stop/repair-1-explicit-nil.swift",
+      "sha256": "3f2eca323e0a48a917b08c2aaade86a2efa7de289fa60f97380048302ae9fd55",
+      "observed_source_path": "/tmp/P08ActivationJoin.swift",
+      "command": "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.3.2-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-ie3r3cmc/cache -disable-sandbox -target arm64-apple-macosx26.0 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk -D GIFTUI_DYNAMIC_PROFILE -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014/189dda86d331e15d-wpk82ft7/macos-dynamic -parse-as-library -I /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpke3zvfyl/macos-dynamic -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014/189dda86d331e15d-wpk82ft7/macos-dynamic -enable-testing -I /Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-ie3r3cmc -module-name P08ActivationJoin -emit-object /tmp/P08ActivationJoin.swift -o /Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-ie3r3cmc/ActivationJoin.o",
+      "observed_exit": 1,
+      "diagnostic": "error: lifetime-dependent variable 'self' escapes its scope",
+      "notes": [
+        "error in compiler-generated 'init'",
+        "it depends on the lifetime of variable 'self'"
+      ],
+      "disposition": "unproductive repair1/2"
+    },
+    {
+      "name": "diagnostic-inert-only",
+      "source": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-join-stop/diagnostic-inert-only.swift",
+      "sha256": "8f7389c136595b6854add57374139bac176226068a2dbb906d83a3aa83113116",
+      "observed_source_path": "/tmp/P08ActivationJoinInert.swift",
+      "command": "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.3.2-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-ie3r3cmc/cache -disable-sandbox -target arm64-apple-macosx26.0 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk -D GIFTUI_DYNAMIC_PROFILE -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014/189dda86d331e15d-wpk82ft7/macos-dynamic -parse-as-library -I /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpke3zvfyl/macos-dynamic -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014/189dda86d331e15d-wpk82ft7/macos-dynamic -enable-testing -I /Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-ie3r3cmc -module-name P08ActivationJoin -emit-object /tmp/P08ActivationJoinInert.swift -o /tmp/ActivationJoinInert.o",
+      "observed_exit": 1,
+      "diagnostic": "error: lifetime-dependent variable 'self' escapes its scope",
+      "notes": [
+        "error in compiler-generated 'init'",
+        "it depends on the lifetime of variable 'self'"
+      ],
+      "disposition": "diagnostic reduction; no repair or guard reset"
+    },
+    {
+      "name": "repair-2-consuming-scopes",
+      "source": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-join-stop/repair-2-consuming-scopes.swift",
+      "sha256": "b87eb202edc45e9e9dc0f30e32b33dc196d976990a4eaeba27e2a574e718f7e7",
+      "observed_source_path": "/tmp/P08ActivationJoinConsuming.swift",
+      "command": "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.3.2-RELEASE-osx/usr/bin/swiftc -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-ie3r3cmc/cache -disable-sandbox -target arm64-apple-macosx26.0 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk -D GIFTUI_DYNAMIC_PROFILE -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014/189dda86d331e15d-wpk82ft7/macos-dynamic -parse-as-library -I /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmpke3zvfyl/macos-dynamic -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014/189dda86d331e15d-wpk82ft7/macos-dynamic -enable-testing -I /Users/eugene/work/GiftUI/.build/contracts/p08-scoped-host-ie3r3cmc -module-name P08ActivationJoin -emit-object /tmp/P08ActivationJoinConsuming.swift -o /tmp/ActivationJoinConsuming.o",
+      "observed_exit": 1,
+      "diagnostic": "error: lifetime-dependent variable 'self' escapes its scope",
+      "notes": [
+        "error in compiler-generated 'init'",
+        "it depends on the lifetime of variable 'self'"
+      ],
+      "disposition": "unproductive repair2/2"
+    }
+  ],
+  "attribution": "Observed compiler rejection of these source controls; root cause and compiler-bug attribution are unproven.",
+  "capture": "Sources and command/diagnostic excerpts preserved from observed tool output. Original invocations printed diagnostics to tool output; this record is not a claim of newly rerun or independently captured full compiler logs."
+}
