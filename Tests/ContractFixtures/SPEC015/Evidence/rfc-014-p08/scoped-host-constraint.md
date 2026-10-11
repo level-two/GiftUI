@@ -6,6 +6,11 @@ made by this packet. P07 remains passed at `9fa495dd`; its exhausted historical
 stop and resumed guard history are unchanged. P08 consecutive unproductive
 repairs: **0/2**. This current correctness prerequisite cannot be deferred.
 
+[Independent Strong review](independent-blocker-review.md) at frozen `2579e980`
+recommends the exact proposal for human approval consideration. All seven
+compiler controls independently reproduce. This is no approval or integration
+pass; validation, activate-time construction and complete teardown remain binding.
+
 ## Proven boundary
 
 [SPEC-015](../../../../../docs/specs/spec-015-host-configuration.md) explicitly
