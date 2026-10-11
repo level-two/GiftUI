@@ -19,7 +19,7 @@ superseded_by: null
 
 # SPEC-015 Conformance Report
 
-## Current RFC-014 amendment applicability — 2026-10-11
+## Current RFC-014 amendment applicability — 2026-10-12
 
 Collecting for the approved schema-4 amendment. Historical completed evidence
 below applies to its frozen baseline, not the amended host/runtime migration.
@@ -30,7 +30,7 @@ Approved host/schema component slices compile complete HostConfiguration and pas
 Complete supplied application audits and runtime-host conformance remain unclaimed. T8.1,
 HC-RD-001–004 and full P10–P12 obligations remain open; P07's finite pass does
 not satisfy them. [P08 receipt](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/progress.md)
-records source/compiler identities, expected compile controls and current guard2/2.
+records source/compiler identities, expected compile controls and historical 2/2 guards.
 The [activation-time containing-owner stop](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-join-stop/stop.md)
 preserves exact failed controls; no package acceptance or compiler-bug attribution is claimed.
 Separately authorized evidence-only investigation, continued under independent
@@ -38,8 +38,15 @@ accounting review `c05e6d35`, stopped after3/6 invocations on2/2 layouts with no
 positive/negative pass; conservative candidate guard2/2, production guard2/2 unchanged.
 Its [finite result](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-join-investigation/result.md)
 has completed [independent final review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-join-investigation/final-review.md).
-The maintainer subsequently authorized [bounded blocker resolution](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-resolution/authorization.md)
-under unchanged contracts; no new passing join is claimed. P08 remains incomplete.
+The maintainer subsequently authorized bounded blocker resolution under unchanged
+contracts. The four later candidates have completed independent reviews rejecting
+adoption; the latest [matched-boundary review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-boundary/final-review.md)
+confirms accepted actual-owner and minimal enum callback escapes. The
+[invariant struct scope](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-struct/scope.md)
+at `99d4ddd1` is the latest unverified hypothesis. No complete activation join
+with passing lifetime containment, maintained adoption, or amended host
+conformance is established. Historical guards and closed budgets remain unchanged;
+P08 remains incomplete.
 
 **Current amendment — 2026-10-05:** Approved five-second retention is implemented and all four hardware-free profiles pass in the [fresh integration](../iterations/iteration-002-cleanup/evidence/18-retention-integration/result.md). Focused nRF connected checks/restoration and current Pi deployment/ARMv6 rehearsal/bounded physical endpoint loop succeed. Original exception authority remains unchanged.
 

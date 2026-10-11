@@ -39,10 +39,16 @@ The exact scoped-host correction is now explicitly approved and applied; see
 The original packet/probes and independent review remain historical evidence.
 Production implementation/evidence remain required; the construction, activation
 and backing-last teardown obligations are unchanged. [P08 progress](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/progress.md)
-records current guard **2/2** and the [activation-time join stop](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-join-stop/stop.md). The prior investigation's final review is complete. The maintainer has now
-authorized [bounded blocker resolution](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-resolution/authorization.md)
-under the unchanged contract, preserving historical guards. Production implementation has begun: SPEC-015 is implementing and this plan
-active; no P08 pass is claimed.
+preserves the historical **2/2** guards and closed bench budgets. Independent
+reviews of the four subsequent activation candidates reject adoption; the latest
+[matched-boundary review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-boundary/final-review.md)
+confirms accepted callback escape, including a minimal enum reduction.
+The [invariant struct scope](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-struct/scope.md)
+at `99d4ddd1` is the current unverified hypothesis as of 2026-10-12, under the
+maintainer's continuing bounded blocker-resolution request. No complete join
+with passing lifetime containment is verified; maintained adoption and regression
+integration remain pending. SPEC-015 remains `implementing`, this plan `active`,
+and P08 incomplete.
 
 - [ ] `T8.1` — Schema-4 validation and explicit limits, real host owners, four-config counter, complete host ledger and lifetime checks.
   **Scope:** GiftUIHostConfiguration, scalar workload generator/validator and finite counter repository composition and directly corresponding tests/fixtures/build wiring.

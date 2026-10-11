@@ -1,12 +1,16 @@
 # RFC-014 task context guide
 
-**Current P08 checkpoint — authorized blocker resolution, 2026-10-11:**
-The maintainer requested resolution and bounded delegated work under the
-[recorded scope](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-resolution/authorization.md).
-Strong Astra 6 Medium owns the bounded compiler investigation; Standard Sol 6.1
-Medium supports regression planning. Existing contracts and historical guards
-remain unchanged. The prior [final review](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-join-investigation/final-review.md)
-is complete. No verified activation join or P08 exit is claimed yet.
+**Current P08 checkpoint — invariant struct anchor pending, 2026-10-12:**
+Start with the [current evidence index](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/progress.md)
+and [latest bounded scope](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-struct/scope.md)
+at `99d4ddd1`. Strong Astra 6 Medium tests a private invariant Span field outside
+mutable enum state; this hypothesis is unverified. The four preceding benches
+have completed independent reviews rejecting adoption; the latest
+[matched-boundary review](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-boundary/final-review.md)
+confirms accepted callback escape in the actual join and minimal enum reduction.
+Historical guards and closed budgets remain unchanged. No complete join with
+passing lifetime containment or P08 exit is claimed; maintained adoption and the
+prepared regression checker remain pending.
 
 **Historical P08 stop checkpoint, superseded only by the bounded scope above:**
 Approved correction `4dbdc2e0`, host propagation `6eda65d0` and schema4 slice
@@ -25,8 +29,9 @@ Independent accounting review `c05e6d35` permitted predeclared B under that same
 allowance. Its positive failed:3/6 fresh invocations on2/2 layouts, no passing
 controls or negatives; conservative candidate guard2/2, productionguard2/2
 unchanged. [Finite result](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-join-investigation/result.md)
-requires independent read-only final review and a separate decision before any
-further compiler work or production integration. Unused calls are not authority.
+has completed [independent final review](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-join-investigation/final-review.md).
+Its closed allowance grants no further compiler work or production integration;
+later bounded scopes are recorded above. Unused calls are not authority.
 P09–P12 remain pending.
 
 **Current P07 checkpoint — finite package exit passed, 2026-10-11:**

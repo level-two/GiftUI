@@ -1,10 +1,23 @@
 # RFC-014 P08 execution receipt — 2026-10-11
 
-**Current: bounded blocker resolution authorized.** The maintainer requested
-resolution, bounded delegated assignments and a commit for each step. See
-[authorization and finite controls](activation-resolution/authorization.md).
-The prior independent final review is complete. Historical budgets and failed
-controls remain unchanged; no new verified join or package pass is claimed.
+**Current checkpoint — invariant struct anchor pending, 2026-10-12.**
+The latest [bounded scope](activation-struct/scope.md), committed at `99d4ddd1`,
+tests a private invariant Span field outside the mutable inert/active enum state.
+This is an unverified internal representation hypothesis under the maintainer's
+[blocker-resolution authorization](activation-resolution/authorization.md).
+No complete activation join with passing lifetime containment is verified;
+maintained adoption and P08 completion remain blocked.
+
+Independent reviews of [activation resolution](activation-resolution/final-review.md),
+[callback token](activation-fence/final-review.md),
+[retained span](activation-span/final-review.md), and
+[matched callback boundary](activation-boundary/final-review.md) are complete
+and reject adoption. The latest matched-boundary result executes the actual
+positive but accepts reachable callback escape, including a minimal enum-only
+reduction. It narrows the tested failure without establishing a compiler defect
+or contract impossibility. Closed budgets (12/12, 7/8, 6/8, and 3/6 respectively)
+and historical 2/2 guards remain unchanged; unused calls grant no continuation.
+The maintained regression checker remains unapplied pending a verified pattern.
 
 **Historical stop: production remains stopped at2/2; evidence investigation stopped after3/6 invocations on2/2 layouts, no passing controls, conservative candidate guard2/2.**
 The [bounded stop packet](activation-join-stop/stop.md) preserves exact controls,

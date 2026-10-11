@@ -1,12 +1,15 @@
 # RFC-014 bounded implementation sequence — 2026-10-10
 
-**Current P08 checkpoint — authorized blocker resolution, 2026-10-11:**
-The maintainer requested resolution and bounded delegated work under the
-[recorded scope](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-resolution/authorization.md).
-Strong Astra 6 Medium owns the bounded compiler investigation; Standard Sol 6.1
-Medium supports regression planning. Existing contracts and historical guards
-remain unchanged. The prior [final review](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-join-investigation/final-review.md)
-is complete. No verified activation join or P08 exit is claimed yet.
+**Current P08 checkpoint — invariant struct anchor pending, 2026-10-12:**
+The [latest bounded scope](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-struct/scope.md)
+at `99d4ddd1` tests a private invariant Span field outside mutable enum state.
+Strong Astra 6 Medium owns the sequential compiler work; the hypothesis is
+unverified. The [current evidence index](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/progress.md)
+links completed independent reviews rejecting all four preceding candidates.
+The latest [matched-boundary review](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-boundary/final-review.md)
+confirms accepted callback escape even in the minimal enum reduction.
+Historical guards and closed bench budgets remain unchanged. No complete join
+with passing lifetime containment, maintained adoption, or P08 exit is claimed.
 
 **Historical P08 stop checkpoint, superseded only by the bounded scope above:**
 Approved correction `4dbdc2e0`, host propagation `6eda65d0` and schema4 slice
@@ -25,8 +28,9 @@ Independent accounting review `c05e6d35` permitted predeclared B under that same
 allowance. Its positive failed:3/6 fresh invocations on2/2 layouts, no passing
 controls or negatives; conservative candidate guard2/2, productionguard2/2
 unchanged. [Finite result](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-join-investigation/result.md)
-requires independent read-only final review and a separate decision before any
-further compiler work or production integration. Unused calls are not authority.
+has completed [independent final review](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-join-investigation/final-review.md).
+Its closed allowance grants no further compiler work or production integration;
+later bounded scopes are recorded above. Unused calls are not authority.
 P09–P12 remain pending.
 
 **Current P07 checkpoint — finite package exit passed, 2026-10-11:**
@@ -58,7 +62,7 @@ that continuation is unauthorized are superseded only by the resumption above.
 > historical; production integration and P08 remain stopped. The new bounded
 > bench allowance must not be interpreted as an unlimited P07 restart.
 
-**P01–P07 passed; P08 approved correction, implementation next; P09–P12 pending.** This is the shared
+**P01–P07 passed; P08 incomplete with bounded diagnosis pending; P09–P12 pending.** This is the shared
 sequencing index for nine owner Implementation Plans, not another contract or
 investigation. It derives only the [approved Spec amendments](rfc-014-spec-approval.md)
 at `3c260bbc` and accepted ADR-035/036/037. ITERATION-003 I3-04/05 supplies the
