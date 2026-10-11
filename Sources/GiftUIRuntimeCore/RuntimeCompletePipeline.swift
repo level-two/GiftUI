@@ -85,6 +85,7 @@ package enum RuntimeCompletePipelineResult<OwnerFailure: Equatable & Sendable>: 
 package protocol RuntimeCompletePipelineOwner: ~Copyable, ~Escapable {
     associatedtype OwnerFailure: Equatable & Sendable = RuntimeOwnerFailure
     var presentationIntentState: PresentationIntentState { get }
+    var hasAllocatedCandidateFrame: Bool { get }
     mutating func admitAndSeal() -> RuntimePipelineStepResult<OwnerFailure>
     mutating func applyAdmittedWork() -> RuntimePipelineMutationResult<OwnerFailure>
     mutating func freezeObservableMutation() -> RuntimePipelineStepResult<OwnerFailure>
@@ -410,11 +411,18 @@ package enum RuntimeCompletePipeline {
     ) -> RuntimeCompletePipelineResult<Owner.OwnerFailure>
     where Owner: RuntimeCompletePipelineOwner & ~Copyable & ~Escapable {
         let wasPublished = publication != nil
+        let unavailable: Bool
+        switch failure {
+        case .nonRetryableRefusal, .execution(.requiredFacilityUnavailable): unavailable = true
+        default: unavailable = false
+        }
         let disposition = RuntimePipelineDisposition(
             semanticDisposition: publication.map { $0.changed ? .published : .unchanged }
                 ?? (mutationApplied ? .dirty : .unchanged),
-            logicalFrameDisposition: wasPublished ? .aborted : .notProduced,
-            presentationIntentState: wasPublished ? .unavailable : priorIntent,
+            logicalFrameDisposition: wasPublished && owner.hasAllocatedCandidateFrame
+                ? .aborted : .notProduced,
+            presentationIntentState: wasPublished
+                ? (unavailable ? .unavailable : .satisfied) : priorIntent,
             wakeReasons: !wasPublished && mutationApplied ? [.semanticDirty] : [],
             commitsInteractionCandidate: false,
             preservesPublishedSemanticRevision: wasPublished

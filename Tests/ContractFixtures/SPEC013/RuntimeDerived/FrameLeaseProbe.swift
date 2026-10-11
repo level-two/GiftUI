@@ -17,6 +17,7 @@ private enum LeaseSchema {}
 // Focused common-pipeline acquisition regression. Later algorithm stages are
 // unreachable; this deliberately does not stand in for complete-cycle evidence.
 private struct LeaseOwner: ~Copyable, ~Escapable, RuntimeCompletePipelineOwner {
+    var hasAllocatedCandidateFrame: Bool { false }
     let presentationIntentState: PresentationIntentState
     let models: ObservableModelScope<LeaseModel, LeaseSchema>
     var ticket: ObservableModelTicket<LeaseSchema>

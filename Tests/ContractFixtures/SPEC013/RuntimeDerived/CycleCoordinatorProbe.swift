@@ -398,3 +398,56 @@ func exercisePendingSupersession<G, C, R, H>(_ owner: inout CyclePipelineOwner<G
     expect(owner.control.pointee.applied == applied + 3 && owner.recovery.wakes.requester.requestCount == wakeCount + 4)
     return checks
 }
+
+
+// SPEC-009 exhaustive outcome table: ordinary postpublication failures clear
+// recovery without making presentation unavailable. Allocation identity failure
+// and presentation identity failure differ by actual acquired candidate state.
+func exerciseOrdinaryFailureRecovery<G, C, R, H>(_ owner: inout CyclePipelineOwner<G, C, R, H>) -> Int {
+    var checks = 0
+    func expect(_ value: Bool) { checks += 1; precondition(value, "ordinary failure disposition") }
+    owner.control.pointee.offer = .retryableRefusal
+    guard case .operational(.retryableRefusal, _) = owner.runOpportunity() else { preconditionFailure("pending before failure") }
+    let applied = owner.control.pointee.applied
+    let routing = owner.interaction.committedRevision
+    let candidates = owner.candidates
+    owner.candidates = CandidateFrameIDAllocator(nextRawValue: nil)
+    guard case .failure(_, .execution(.identityExhausted), let candidateFailure) = owner.runOpportunity() else { preconditionFailure("candidate ID exhaustion") }
+    expect(candidateFailure?.logicalFrameDisposition == .notProduced && candidateFailure?.presentationIntentState == .satisfied)
+    expect(candidateFailure?.presentationPending == nil && owner.recovery.pendingIntent == nil && !owner.pending)
+    expect(!owner.recovery.wakes.wakeOutstanding && owner.interaction.committedRevision == routing)
+    owner.candidates = candidates
+    owner.control.pointee.offer = .backpressured
+    guard case .operational(.backpressured, _) = owner.runOpportunity() else { preconditionFailure("pending before presentation failure") }
+    let presentations = owner.presentations
+    owner.presentations = PresentationRevisionAllocator(nextRawValue: nil)
+    guard case .failure(_, .execution(.identityExhausted), let presentationFailure) = owner.runOpportunity() else { preconditionFailure("presentation ID exhaustion") }
+    expect(presentationFailure?.logicalFrameDisposition == .aborted && presentationFailure?.presentationIntentState == .satisfied)
+    expect(presentationFailure?.presentationPending == nil && owner.recovery.pendingIntent == nil && !owner.pending)
+    expect(!owner.recovery.wakes.wakeOutstanding && owner.interaction.committedRevision == routing)
+    owner.presentations = presentations
+    guard case .operational(.backpressured, _) = owner.runOpportunity() else { preconditionFailure("pending before offer failure") }
+    owner.control.pointee.offer = .failed
+    guard case .failure(_, .frameOffer(.invalidEnvelope), let offerFailure) = owner.runOpportunity() else { preconditionFailure("real endpoint failure") }
+    expect(offerFailure?.logicalFrameDisposition == .aborted && offerFailure?.presentationIntentState == .satisfied)
+    expect(offerFailure?.presentationPending == nil && owner.recovery.pendingIntent == nil && !owner.pending)
+    expect(!owner.recovery.wakes.wakeOutstanding && owner.interaction.committedRevision == routing)
+    expect(owner.control.pointee.applied == applied && !owner.control.pointee.unavailable)
+    // Direct common-pipeline controls stop before the outer terminal policy, so
+    // both facility-loss rows can be inspected on this still-owned composition.
+    owner.control.pointee.boundaryFailure = .execution(.requiredFacilityUnavailable)
+    for stage: RuntimeCompletePipelineStage in [.candidateAllocation, .offerAndProduction] {
+        owner.control.pointee.fault = stage
+        guard case .failed(let failure) = owner.runTracedPipeline() else { preconditionFailure("facility loss") }
+        expect(failure.failure == .execution(.requiredFacilityUnavailable))
+        expect(failure.disposition.logicalFrameDisposition == (stage == .candidateAllocation ? .notProduced : .aborted))
+        expect(failure.disposition.presentationIntentState == .unavailable && failure.disposition.preservesPublishedSemanticRevision)
+        expect(failure.disposition.wakeReasons == [] && !failure.disposition.commitsInteractionCandidate)
+    }
+    owner.control.pointee.fault = nil
+    owner.control.pointee.boundaryFailure = .execution(.capacityExhausted)
+    owner.control.pointee.offer = .accepted
+    guard case .success = owner.runOpportunity() else { preconditionFailure("normal operation after ordinary failures") }
+    expect(owner.control.pointee.applied == applied && owner.recovery.pendingIntent == nil)
+    return checks
+}

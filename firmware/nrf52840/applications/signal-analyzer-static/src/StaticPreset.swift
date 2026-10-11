@@ -2673,6 +2673,7 @@ private struct StaticSignalAnalyzerHealthSnapshot: MVPHostEndpointHealthSource {
 }
 
 private struct StaticSignalAnalyzerCommonOwner: RuntimeCompletePipelineOwner, ~Copyable {
+    var hasAllocatedCandidateFrame: Bool { candidate != nil }
     var presentationIntentState: PresentationIntentState {
         !state.isAvailable || !state.recovery.isAvailable ? .unavailable
             : state.recovery.pendingIntent != nil ? .pending : .satisfied

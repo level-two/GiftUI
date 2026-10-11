@@ -12,6 +12,7 @@ import Testing
 @testable import GiftUIHostConfiguration
 
 private struct SignalAnalyzerMutationPipelineOwner: RuntimeCompletePipelineOwner {
+    var hasAllocatedCandidateFrame = false
     var presentationIntentState: PresentationIntentState { .satisfied }
     let admission: DynamicSignalAnalyzerHostFactAdmission
     let model: SignalAnalyzerViewModel
@@ -126,7 +127,8 @@ private struct SignalAnalyzerMutationPipelineOwner: RuntimeCompletePipelineOwner
     }
 
     mutating func allocateCandidate() -> RuntimePipelineStepResult<RuntimeOwnerFailure> {
-        .advanced
+        hasAllocatedCandidateFrame = true
+        return .advanced
     }
     mutating func offerAndProduce() -> RuntimePipelineOfferResult<RuntimeOwnerFailure> {
         .backpressured

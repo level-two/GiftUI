@@ -43,6 +43,7 @@ private struct DifferentialTranscript: Equatable {
 }
 
 private struct DifferentialPipelineOwner: RuntimeCompletePipelineOwner {
+    var hasAllocatedCandidateFrame = false
     var presentationIntentState: PresentationIntentState { .satisfied }
     private(set) var stages: [RuntimeCompletePipelineStage] = []
     private(set) var cleanups: [RuntimeCleanupAction] = []
@@ -96,7 +97,8 @@ private struct DifferentialPipelineOwner: RuntimeCompletePipelineOwner {
     }
 
     mutating func allocateCandidate() -> RuntimePipelineStepResult<RuntimeOwnerFailure> {
-        step(.candidateAllocation)
+        hasAllocatedCandidateFrame = true
+        return step(.candidateAllocation)
     }
 
     mutating func offerAndProduce() -> RuntimePipelineOfferResult<RuntimeOwnerFailure> {
@@ -626,6 +628,7 @@ private let partialMutationContext = ExecutionContext(
 )
 
 private struct PartialMutationPipelineOwner: RuntimeCompletePipelineOwner {
+    var hasAllocatedCandidateFrame = false
     var presentationIntentState: PresentationIntentState {
         lastDisposition?.presentationIntentState ?? .satisfied
     }
@@ -705,7 +708,8 @@ private struct PartialMutationPipelineOwner: RuntimeCompletePipelineOwner {
     }
 
     mutating func allocateCandidate() -> RuntimePipelineStepResult<PartialMutationOwnerFailure> {
-        step(.candidateAllocation)
+        hasAllocatedCandidateFrame = true
+        return step(.candidateAllocation)
     }
 
     mutating func offerAndProduce() -> RuntimePipelineOfferResult<PartialMutationOwnerFailure> {

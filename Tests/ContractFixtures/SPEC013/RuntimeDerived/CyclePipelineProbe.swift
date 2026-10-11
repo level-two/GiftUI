@@ -130,6 +130,10 @@ func exercisePipeline<G, C, R, H>(models: borrowing ObservableModelScope<CycleOw
             result = owner.runTracedPipeline()
             guard case .failed(let failed) = result else { preconditionFailure("fault pipeline") }
             expect(failed.stage.rawValue == raw && failed.failure == .execution(.capacityExhausted))
+            expect(failed.disposition.logicalFrameDisposition == (raw == 10 ? .aborted : .notProduced))
+            expect(failed.disposition.presentationIntentState == (raw < 9 ? .pending : .satisfied))
+            expect(failed.disposition.preservesPublishedSemanticRevision == (raw >= 9))
+            expect(!failed.disposition.commitsInteractionCandidate && failed.disposition.wakeReasons == [])
             expect(trace.pointee.stages == (UInt16(1) << (raw + 1)) - 1)
             expect(trace.pointee.finalized == finalized + 1)
             expect(models.phase == .mutating && values.count == 0 && !owner.frameActive)
@@ -174,6 +178,7 @@ func exercisePipeline<G, C, R, H>(models: borrowing ObservableModelScope<CycleOw
         expect(owner.rootIdentity == nil && owner.interaction.committedRecordCount == 0)
         expect(models.phase == .mutating && values.count == 0)
         trace.pointee.show = true; owner.changed = true
+        checks += exerciseOrdinaryFailureRecovery(&owner)
         checks += exercisePendingSupersession(&owner, admission: &admission)
         var returned = cycleConcreteCoordinator(owner: consume owner, dynamic: dynamic, control: trace, audit: audit, admission: consume admission)
         returned.checks += checks

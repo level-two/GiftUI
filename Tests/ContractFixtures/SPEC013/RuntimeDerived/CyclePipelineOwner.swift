@@ -65,6 +65,7 @@ struct CycleControl {
     var failAfterMutation = false
     var cleanupOrder: InlineArray<9, UInt8> = .init(repeating: 255)
     var cleanupCount = 0
+    var boundaryFailure: RunCycleFailure<RuntimeOwnerFailure> = .execution(.capacityExhausted)
     var fault: RuntimeCompletePipelineStage?
     var offer: FrameOfferDisposition = .accepted
     var stages: UInt16 = 0
@@ -132,6 +133,7 @@ where Geometry: CycleGeometry, Candidate: CycleCandidateBacking, Committed: Cycl
     var changed = true
     var pending = false
     var presentationIntentState: PresentationIntentState { quiescent || control.pointee.unavailable ? .unavailable : pending ? .pending : .satisfied }
+    var hasAllocatedCandidateFrame: Bool { phase.context.candidateFrame != nil }
     var quiescent = false
     @_lifetime(copy models, copy root, copy semantic, copy values, borrow control)
     init(models: consuming ObservableModelScope<CycleOwnedModel, CycleModelSchema>, root: consuming ObservableStateRootScope<CycleOwnedModel, SemanticCompleteIdentity>, semantic: consuming SemanticRecordStore<CyclePayload>, values: consuming CanvasStagedValues<SemanticRecordReference, CycleValueTable>, geometry: consuming Geometry, interaction: consuming InteractionOwnedKeyState<Candidate, Committed, Hits>, control: borrowing UnsafeMutablePointer<CycleControl>, limits: RuntimeProfileLimits) {
@@ -169,7 +171,7 @@ where Geometry: CycleGeometry, Candidate: CycleCandidateBacking, Committed: Cycl
         control.pointee.context = phase.context
         cycleTrace("stage", stage)
         control.pointee.stages |= UInt16(1) << stage.rawValue
-        if control.pointee.fault == stage { return .execution(.capacityExhausted) }
+        if control.pointee.fault == stage { return control.pointee.boundaryFailure }
         return nil
     }
     mutating func admitAndSeal() -> RuntimePipelineStepResult<RuntimeOwnerFailure> {
@@ -369,8 +371,9 @@ where Geometry: CycleGeometry, Candidate: CycleCandidateBacking, Committed: Cycl
     }
     mutating func allocateCandidate() -> RuntimePipelineStepResult<RuntimeOwnerFailure> {
         if let error = boundary(.candidateAllocation) { return .failure(error) }
-        guard let candidate = candidates.reserve(), let presentation = presentations.reserve(), let cycle = phase.context.cycle, let revision = phase.context.semanticRevision else { return .failure(.execution(.identityExhausted)) }
+        guard let candidate = candidates.reserve(), let cycle = phase.context.cycle, let revision = phase.context.semanticRevision else { return .failure(.execution(.identityExhausted)) }
         if let error = phase.recordCandidateFrame(candidate) { return .failure(.execution(error)) }
+        guard let presentation = presentations.reserve() else { return .failure(.execution(.identityExhausted)) }
         self.presentation = presentation; provenance = .init(cycle: cycle, semanticRevision: revision, candidateFrame: candidate)
         return .advanced
     }

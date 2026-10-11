@@ -10,6 +10,7 @@ import Testing
 @testable import GiftUIRuntimeCore
 
 private struct CompletePipelineRecorder: RuntimeCompletePipelineOwner {
+    var hasAllocatedCandidateFrame = false
     var presentationIntentState: PresentationIntentState = .satisfied
     var failureStage: RuntimeCompletePipelineStage?
     var injectedFailure: RunCycleFailure<RuntimeOwnerFailure>?
@@ -73,7 +74,9 @@ private struct CompletePipelineRecorder: RuntimeCompletePipelineOwner {
     }
 
     mutating func allocateCandidate() -> RuntimePipelineStepResult<RuntimeOwnerFailure> {
-        step(.candidateAllocation)
+        let result = step(.candidateAllocation)
+        if case .advanced = result { hasAllocatedCandidateFrame = true }
+        return result
     }
 
     mutating func offerAndProduce() -> RuntimePipelineOfferResult<RuntimeOwnerFailure> {
@@ -393,10 +396,10 @@ private func expectedFailureCleanups(
             )
             #expect(
                 record.disposition.logicalFrameDisposition
-                    == (wasPublished ? .aborted : .notProduced))
+                    == (stage == .offerAndProduction ? .aborted : .notProduced))
             #expect(
                 record.disposition.presentationIntentState
-                    == (wasPublished ? .unavailable : .satisfied))
+                    == .satisfied)
             #expect(
                 record.disposition.wakeReasons
                     == (mutationWasApplied && !wasPublished ? [.semanticDirty] : []))
@@ -485,7 +488,7 @@ private func expectedFailureCleanups(
     #expect(failure.publication?.semanticRevision == SemanticRevision(rawValue: 7))
     #expect(failure.disposition.semanticDisposition == .published)
     #expect(failure.disposition.logicalFrameDisposition == .aborted)
-    #expect(failure.disposition.presentationIntentState == .unavailable)
+    #expect(failure.disposition.presentationIntentState == .satisfied)
     #expect(failure.disposition.wakeReasons.isEmpty)
     #expect(!failure.disposition.commitsInteractionCandidate)
     #expect(failure.disposition.preservesPublishedSemanticRevision)

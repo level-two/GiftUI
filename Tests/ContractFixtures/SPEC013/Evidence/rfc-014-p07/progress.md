@@ -1062,3 +1062,35 @@ route collection needed no repair; the resumed guard remains **0/2**. Independen
 Strong exit review is the next required boundary and is assigned separately;
 P07 is not self-accepted. T9.1/T11.1, full P10–P12/resource/image/timing/hardware
 obligations remain open. P08 has not started.
+
+
+## P07-R1 repair — exact post-publication dispositions
+
+The independent [FAIL report](independent-exit-review.md) remains preserved.
+R1 is repaired pending rereview: the common runner observes the owner's actual
+allocated candidate before cleanup, preserves prior intent before publication,
+and uses satisfied for ordinary post-publication failure. Only nonretryable
+refusal or required-facility loss select unavailable. An unallocated candidate
+produces notProduced; a staged candidate produces aborted. The additional
+package-only read-only observation leaves all exact method/result/failure shapes
+unchanged and introduces no authority or authored contract. Real owner conformers
+observe their existing candidate state; early-only fixtures report no candidate.
+
+The actual fixture records candidate allocation before presentation-ID reservation.
+Its actual-profile fault loop now asserts exact frame/intent/preservation/wake/
+commit fields. Dedicated existing-allocator exhaustion cases distinguish missing
+candidate ID (notProduced) from missing presentation ID after candidate allocation
+(aborted). A real failed endpoint and both facility-loss boundaries are checked.
+Ordinary failure after pending recovery clears intent/wakes, preserves prior
+routing, retains semantic publication and applies no new mutation. Facility-loss
+rows are inspected directly through the common pipeline before outer terminal
+policy; existing full terminal tests remain separate. Legacy unit expectations
+now follow the same exhaustive SPEC-009 table, retaining true nonretryable
+unavailable results.
+
+Fresh [native repair receipt](repair-r1-macos-static.json): **4925 assertions,
+zero failures, twelve compiler negatives**; [complete values](repair-r1-logical-transcripts.json)
+match actual profiles and [all 26 measured fields](repair-r1-storage-regions.json)
+reconcile. Input hashes match final sources. First repair validation passes;
+resumed consecutive unproductive repairs remain **0/2**. R2, fresh final four
+routes and separate rereview remain required. No P07 acceptance or P08 work.

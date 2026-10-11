@@ -4,6 +4,7 @@ import GiftUIObservableState
 import GiftUIRuntimeCore
 
 struct ScopedOwner<Model: ~Copyable, Schema>: ~Copyable, ~Escapable, RuntimeCompletePipelineOwner {
+    var hasAllocatedCandidateFrame: Bool { false }
     var presentationIntentState: PresentationIntentState { .satisfied }
     let models: ObservableModelScope<Model, Schema>
     @_lifetime(copy models)

@@ -85,6 +85,7 @@ private struct IntegratedCycleTranscript: Equatable {
 }
 
 private struct IntegratedCycleOwner: RuntimeCompletePipelineOwner {
+    var hasAllocatedCandidateFrame = false
     var presentationIntentState: PresentationIntentState {
         disposition?.presentationIntentState ?? .satisfied
     }
@@ -198,6 +199,7 @@ private struct IntegratedCycleOwner: RuntimeCompletePipelineOwner {
 
     mutating func allocateCandidate() -> RuntimePipelineStepResult<RuntimeOwnerFailure> {
         stages.append(.candidateAllocation)
+        hasAllocatedCandidateFrame = true
         return .advanced
     }
 

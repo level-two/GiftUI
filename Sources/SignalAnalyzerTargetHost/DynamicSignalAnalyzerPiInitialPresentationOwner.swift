@@ -548,6 +548,7 @@ where Target: DisplayTarget {
 }
 
 extension DynamicSignalAnalyzerPiInitialPresentationOwner: RuntimeCompletePipelineOwner {
+    package var hasAllocatedCandidateFrame: Bool { attemptCorrelation != nil }
     package var presentationIntentState: PresentationIntentState {
         !recovery.isAvailable || state == .quiescent
             ? .unavailable
