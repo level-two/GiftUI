@@ -444,3 +444,9 @@ verified final receipt hashes, and found no remaining blocker. The
 records 645 assertions per native profile, all four compile/negative routes and
 the remaining integration/resource evidence boundaries. P03 has passed; owner
 T10.1 remains open through P10–P12.
+
+## Deferred and Follow-up Work
+
+[FW-036](../../future-work/fw-036-swift-compiler-upgrade-assessment.md) records the
+compiler-upgrade assessment explicitly scheduled for ITERATION-004 I4-05 by
+Eugene on 2026-10-11. P07 retains Swift 6.3.2 and all current exit obligations.

@@ -40,7 +40,8 @@ related_specs:
   - SPEC-012
   - SPEC-013
   - SPEC-015
-related_future_work: []
+related_future_work:
+  - FW-036
 related_explorations: []
 related_spikes:
   - SPIKE-069
@@ -535,6 +536,10 @@ The separate 4 MHz iteration performance issue remains unresolved outside this
 RFC's scope; no display or requirement decision is made here.
 
 ## Deferred and Follow-up Work
+
+[FW-036](../future-work/fw-036-swift-compiler-upgrade-assessment.md) records the
+compiler compatibility assessment scheduled for ITERATION-004 I4-05. This
+follow-up changes no current compiler contract or P07 acceptance obligation.
 
 The [implementation handoff](../iterations/iteration-003-review/rfc-014-implementation-handoff.md)
 contains IH-1–6 prerequisites and acceptance evidence. ADR-035/036/037 are extracted
