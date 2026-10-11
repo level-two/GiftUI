@@ -68,6 +68,15 @@ proceed with your options 1 and 2 - in a focused test bench try to find workarou
 This approves the assessment commitment and focused current-baseline bench,
 not a compiler version change or architecture amendment.
 
+## Current-baseline bench evidence
+
+The [authorized P07 bench](../../Tests/ContractFixtures/SPEC013/Evidence/rfc-014-p07/focused-bench/result.md)
+found a passing consuming-ownership direction on Swift 6.3.2 (`3997da73`), while
+the pointer-owner borrowed projections still fail. Use this distinction during
+I4-05: an upgrade is not demonstrated necessary for the tested ownership route,
+and the original compiler failure remains a useful compatibility case. Full P07
+audited construction and target evidence remain open.
+
 ## References
 
 - [ITERATION-004 task and criterion](../iterations/iteration-004-backend-and-application-integration.md)

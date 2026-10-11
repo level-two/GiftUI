@@ -1,5 +1,13 @@
 # RFC-014 bounded implementation sequence — 2026-10-10
 
+> **Focused bench complete (2026-10-11):** [candidate 2 passes](../../../Tests/ContractFixtures/SPEC013/Evidence/rfc-014-p07/focused-bench/result.md)
+> on Swift 6.3.2: consuming ownership with audit access while coordinator-owned;
+> 535 native assertions and one positive / three negative ownership controls.
+> Commits `230f2fe8` and `3997da73`; 7/12 diagnostics and both candidates used.
+> Candidate 1 still fails. Production source remains at `c234058e`; the complete
+> 26-field audit and P07 exit remain unproved. No further bench or production
+> repair is authorized by this completed bounded continuation.
+
 > **2026-10-11 explicit continuation:** Eugene authorized only the sequential
 > [focused workaround bench](../../../Tests/ContractFixtures/SPEC013/Evidence/rfc-014-p07/focused-bench/authorization.md)
 > for options 1 and 2 on Swift 6.3.2. The original 2/2 stop below remains

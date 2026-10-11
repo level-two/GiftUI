@@ -1,5 +1,12 @@
 # RFC-014 P07 progress
 
+> **2026-10-11 focused bench boundary:** the separately authorized
+> [bench result](focused-bench/result.md) recommends preserving consuming ownership
+> and observing backing while coordinator-owned. Candidate 2 passes 535 assertions
+> with zero failures plus borrowing/copy/use-after-consume/escape controls;
+> candidate 1 still fails. Commits `230f2fe8` / `3997da73`. Maintained source and
+> the original 2/2 production stop remain unchanged; P07 is incomplete.
+
 ## Current stop — audited construction, 2/2 repair guard
 
 The next audited-construction slice reached the shared consecutive unproductive
