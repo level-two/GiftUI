@@ -137,3 +137,15 @@ all diffs, commands, source/artifact identities and limits preserved. No new
 ownership workaround, further package or P08 work is authorized by this finding.
 P07 and T11.1 remain open; separate Strong review has not run.
 Consecutive unproductive repair count: **0 of 2**.
+
+## Independent Strong blocker review — 2026-10-11
+
+The [bounded independent review](independent-blocker-review.md) confirms the
+exact contract blocker at `7bb8dfb2`. Independent replay verified the pinned
+compiler, source and artifact hashes and reproduced current/CopyableOnly
+rejections plus proposed-shadow success. It recommends the narrow SPEC-009/013
+constraint correction for explicit human approval, preserving the SPEC-015
+construction/activation decision boundary before P08 relies on a scoped host.
+This is not the completed-package exit review: P07 remains incomplete, T11.1
+open, P08 unstarted and the unproductive repair count **0/2**. No production or
+normative contract change was made. Governance and whitespace checks pass.
