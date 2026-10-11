@@ -1,5 +1,29 @@
 # RFC-014 P07 progress
 
+## Approved resumption assignment — 2026-10-11
+
+After the concrete explanation of the three protocol suppressions and the
+separate SPEC-015 boundary, Eugene replied: “Got it. Please proceed then.”
+This approves the reviewed narrow SPEC-009/013 correction and resumes P07.
+Record the exact amendment and approval in the Specifications and approval
+ledger before implementation. The earlier blocker records remain historical.
+
+Sequential Strong assignment: `gpt-6-astra` / `medium`, C3/R3, same P07
+footprint and RP-RD-001–004/current owner criteria. Extend the footprint only
+to the approved SPEC-009 declaration correction and directly necessary generic
+forwarding, with owner-plan/conformance traceability. No new package is added.
+All other contract signatures, behavior and limits remain fixed. SPEC-015's
+containing host construction/activation is not approved by this correction.
+
+Resume from `dfe15494` and committed slices `2935fb73`/`bbc753e5`, using the
+existing exact commands and evidence. Update pinned inputs when source changes
+require it; never weaken hash validation. Implement actual Dynamic/Static
+coordinators and the finite phase/fault/retirement/offer/retry cleanup exit,
+then hand off to a separate Strong exit review. No P08 work. Commit each
+coherent step. Remaining implementation choices are internal realization
+within the approved contracts; new contract/scope questions return to Eugene.
+Consecutive unproductive repair count remains **0/2**, not reset by resumption.
+
 ## Parent checkpoint — contract escalation, 2026-10-11
 
 P07 is **incomplete and blocked on the scoped coordinator contract decision**.
