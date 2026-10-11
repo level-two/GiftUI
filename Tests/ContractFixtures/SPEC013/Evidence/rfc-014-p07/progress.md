@@ -25,6 +25,26 @@ the finite P07 exit and hand off to separate Strong review. Contract/scope
 decisions outside this correction still return to Eugene. Consecutive
 unproductive repair count remains **0/2** across resumption.
 
+## Step 19 — complete-cycle ownership transfer and Canvas capacity
+
+The complete-cycle assembly reserves five staged Canvas entries, matching its
+Drawing limit. Geometry and Interaction enter the real pipeline owner through
+one Optional.take transfer; the enclosing callback no longer retains copied
+backing that could trigger Dynamic Array copy-on-write. This is a prerequisite
+repair, not actual RuntimeProfileStorage construction or common conformance.
+
+After formatting, the fresh native Static RFC-014 gate passes 531 assertions
+and ten negative compilations (step-19-macos-static.json, tmp8zwdko79), exercising
+both actual profiles. Direct consume from the pointer callback initially failed
+because captured values require reinitialization; Optional.take empties the
+transfer slots and the fresh gate passes. Repair count remains **0/2**.
+
+The audit inventory also found the current finite admission adapter owns only
+a state-change Bool while advertising two pointer entries. Actual bounded
+admission/sealed storage is required before capacity agreement can pass; it is
+included in this same P07 construction slice. Later admission/lifecycle cases
+remain separately required, and no P07 acceptance is claimed.
+
 ## Sequential context handoff — audited construction remains open
 
 The parent requested a fresh sequential Strong context after the validated

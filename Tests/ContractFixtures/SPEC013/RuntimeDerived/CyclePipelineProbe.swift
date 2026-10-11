@@ -14,8 +14,10 @@ import CycleSchema
 
 private func exercisePipeline<G, C, R, H>(models: borrowing ObservableModelScope<CycleOwnedModel, CycleModelSchema>, root: borrowing ObservableStateRootScope<CycleOwnedModel, SemanticCompleteIdentity>, semantic: borrowing SemanticRecordStore<CyclePayload>, values: borrowing CanvasStagedValues<SemanticRecordReference, CycleValueTable>, dynamic: Bool, geometry: consuming G, interaction: consuming InteractionOwnedKeyState<C, R, H>) -> Int where G: CycleGeometry, C: InteractionCandidateRecordStorage, R: InteractionCommittedRecordStorage, H: InteractionHitRegionStorage, C.Identity == SemanticCompleteIdentity, R.Identity == SemanticCompleteIdentity, H.Identity == SemanticCompleteIdentity {
     var control = CycleControl()
+    var transferredGeometry: G? = consume geometry
+    var transferredInteraction: InteractionOwnedKeyState<C, R, H>? = consume interaction
     return withUnsafeMutablePointer(to: &control) { trace in
-        var owner = CyclePipelineOwner(models: models.borrowedScope(), root: root.borrowedRoot(), semantic: semantic.borrowedStore(), values: values.borrowedValues(), geometry: copy geometry, interaction: copy interaction, control: trace)
+        var owner = CyclePipelineOwner(models: models.borrowedScope(), root: root.borrowedRoot(), semantic: semantic.borrowedStore(), values: values.borrowedValues(), geometry: transferredGeometry.take()!, interaction: transferredInteraction.take()!, control: trace)
         var checks = 0
         func expect(_ value: Bool) { checks += 1; precondition(value) }
         var result = RuntimeCompletePipeline.run(owner: &owner)
@@ -125,12 +127,12 @@ private func withPipelineValues(dynamic: Bool, _ body: (borrowing CanvasStagedVa
     let limits = StaticCanvasLimits(maximumStaticCallableCases: 1, maximumStaticCaptureBytes: 32)!
     #if !hasFeature(Embedded)
     if dynamic {
-        var storage = DynamicCanvasCallableStorage<SemanticRecordReference, CycleValueTable>(capacity: 1)
+        var storage = DynamicCanvasCallableStorage<SemanticRecordReference, CycleValueTable>(capacity: 5)
         return try storage.withLifetime(table: CycleValueTable(), limits: limits, body)
     }
     #endif
     var storage = StaticCanvasValueStorage()
-    var backing: InlineArray<1, CanvasStagedEntry<SemanticRecordReference, CycleValueTable.CaptureStorage>?> = .init(repeating: nil)
+    var backing: InlineArray<5, CanvasStagedEntry<SemanticRecordReference, CycleValueTable.CaptureStorage>?> = .init(repeating: nil)
     var entries = backing.mutableSpan
-    try storage.withLifetime(entries: &entries, table: CycleValueTable(), capacity: 1, limits: limits, body)
+    try storage.withLifetime(entries: &entries, table: CycleValueTable(), capacity: 5, limits: limits, body)
 }
