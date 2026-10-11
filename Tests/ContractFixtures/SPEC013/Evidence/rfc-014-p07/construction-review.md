@@ -147,3 +147,89 @@ remain explicitly pending. Their absence is not an additional finding in this
 construction review. Full RP-RD-001–004/RP-002, full resources and Specification
 transition remain open. No connected hardware, compiler upgrade, P08 or later
 package action occurred. No new out-of-scope idea or deferred artifact was needed.
+
+
+## C1 bounded re-review — 2026-10-11
+
+**Current construction checkpoint: PASS at `c39fa0fd`; C1 resolved.** The initial
+FAIL above remains the historical result for `ac6f2886`. This re-review covers
+C1 and the changed construction, lifetime and backing-accounting surfaces only.
+There is no remaining construction blocker identified in this bounded review.
+P07 exit and full Specification conformance remain pending. The shared repair
+guard remains **0/2**; this review does not reset it.
+
+The [correction record](construction-c1-correction.md) is supported by source
+inspection, not just the original probe's changed outcome:
+
+- `CyclePipelineOwner` retains `audit.limits`; concrete coordinator assembly
+  checks equality and gives admission the same ExecutionLimits. Sealing,
+  semantic expansion, Layout, Interaction, Drawing and Render use the retained
+  configured fields rather than the old fixture operation constants.
+- The semantic factories pass configured record/path/depth/fanout/payload-byte
+  budgets separately from physical capacity. `withSemanticRecordStore` slices
+  its two disjoint banks using the original physical counts, then lends a store
+  with configured limits. Smaller accepted limits cannot move the second bank
+  into the first bank's retained extent.
+- Model adapters bind configured model/claim/pin bounds into the ownership
+  ledger; their audit reports the actual fixed two-model/four-claim/two-pin
+  backing. Oversized requested bounds remain rejected by the factory audit
+  before activation. Observable root limits reach location, registration and
+  association checks. Canvas occurrence bounds and Static table/capture bounds,
+  and Interaction per-key/per-bank budgets, reach their actual focused owners.
+- Both Drawing implementations separate physical capacity from configured
+  live-path/plan limits. Point, subpath and plan writes check configured bounds;
+  fixed Static byte offsets still use physical capacity. Line width remains an
+  operational bound rather than an allocation dimension.
+- The Render adapter exposes the configured structural capacity while borrowing
+  the actual workspace after physical coverage validation. Preflight/production
+  receive configured Render/sink limits, and preflight checks the ordinary
+  operation budget separately from normalized strokes. Its raw pointer is
+  constructed and consumed in one callback returning only RenderProductionResult;
+  it is not retained in an owner or returned descriptor.
+
+The consuming geometry/Interaction transfer, nested Static raw-buffer callbacks,
+semantic/root/Canvas lifetime teardown, and postquiescent reset boundary remain
+intact. The failure branch releases candidate state, consumes the coordinator
+only after quiescence, and returns the same owned workspaces. No new retained
+observer bank, second mutable owner, lifetime suppression, or escaping pointer
+was found in the changed construction path.
+
+Independently re-linked and executed the exact original LimitProbe from this
+report against the unchanged fresh step-6 modules. Both now audit a one-point
+configuration and return after failure with zero mutations:
+
+```text
+Static audited path point limit=1
+Static run checks=11 applied mutations=0
+Dynamic audited path point limit=1
+Dynamic run checks=10 applied mutations=0
+```
+
+The maintained regression additionally checks the exact
+`focusedOwner(drawing(capacityExhausted))` failure at Canvas invocation, zero
+streams/commits and cleanup/quiescence. Adequate two-point live-path and plan
+configurations run the full successful fixture with three mutations. The
+[21-configuration-per-profile matrix](construction-c1-configured-limits.txt)
+executes semantic, Layout, Render and identity-capacity failures and adequate
+model/observable/Interaction/admission configurations. Source review confirms
+remaining scalar fields are forwarded to the focused algorithms; this is not a
+claim that every scalar combination has independent executable coverage.
+
+Verified all **165 input hashes**, **142 artifact hashes**, compiler hash and
+core-receipt hash in [step 6](resumption-step-6-macos-static.json). Its fresh
+native directory is
+`.build/contracts/spec-013-runtime-cycle/tmpl44e4dw4/macos-static`;
+it records **2,752 assertions, zero failures and 12 compiler negatives**.
+The [new descriptor report](construction-c1-storage-regions.json) exactly matches
+the receipt. Independently checked descriptor extent bounds and all 26 field
+sums: **Static 50 regions / 67,814 bytes; Dynamic 75 / 165,551 bytes**. Added
+configured-limit metadata is included through the actual root/Interaction/
+Drawing/coordinator layouts and residual partitions. Physical buffers and
+whole-element tail ownership remain separate. These are native backing totals,
+not allocator, full heap, stack, image or hardware measurements.
+
+No broad gate was rerun and no implementation was edited during this review.
+Governance validation and `git diff --check` pass. The original outstanding
+lifecycle/transcript, Drawing rollback, four-route and independent P07 exit
+obligations remain unchanged; no status or manifest transition is authorized
+by this checkpoint result.
