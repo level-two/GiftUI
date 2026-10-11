@@ -27,8 +27,11 @@ has started.
 The prior correction is implemented. The new [associated-type decision packet](../../../Tests/ContractFixtures/SPEC013/Evidence/rfc-014-p07/associated-type-constraint.md)
 records the remaining Storage/Handler/TargetAccess boundary, bounded compiler
 proof, concrete proposed operational-protocol correction and lost static checks.
-It is not approved. Validated slices and an honest partial WIP are committed;
-separate Strong review and human decision precede affected integration resumption.
+It is not approved. Validated slices and an honest partial WIP are committed.
+The [independent Strong review](../../../Tests/ContractFixtures/SPEC013/Evidence/rfc-014-p07/independent-associated-type-review.md)
+at `8d9f76c9` confirms the blocker and recommends the exact correction with
+mandatory concrete binding proofs. Human decision precedes affected integration
+resumption; this review does not accept the package.
 
 ## Fixed deliverable and scope rules
 

@@ -8,7 +8,8 @@ Storage/Handler/TargetAccess boundary stops affected integration. Read the
 It proposes removing exactly three associated requirements from the common
 operational protocol, with explicit lost static checks and required concrete
 construction proofs. No proposal is applied or approved. Separate Strong review
-and human decision remain. Commits: `498720fc`, `2fe8a86e`, `db78cf9c`, and partial
+passed the bounded blocker assessment at `8d9f76c9`; human decision remains.
+Commits: `498720fc`, `2fe8a86e`, `db78cf9c`, and partial
 WIP `027bdc11`. P07 incomplete; T9.1/T11.1 open; repair counter **0/2**.
 
 The [independent Strong associated-type review](independent-associated-type-review.md)
@@ -18,6 +19,13 @@ proofs. It confirms RFC-014 checked-write precedence over legacy dispatch
 realization without waiving finite typed handler semantics. Independent replay
 passed all four cases with compiler/input/module-artifact identity checks.
 P07 acceptance, full integration and SPEC-015's host boundary remain open.
+
+Parent checkpoint: accept the independent blocker assessment, not P07 exit.
+Escalate its exact single SPEC-013 amendment with mandatory concrete binding
+and negative-test obligations. Existing RFC-014 precedence resolves the legacy
+dispatch wording; no extra SPEC-011 approval gate is introduced. Work remains
+sequential and fully committed; remaining package IDs and repair count are
+unchanged. No unapproved associated-type removal was applied.
 
 
 ## Approved resumption assignment — 2026-10-11
