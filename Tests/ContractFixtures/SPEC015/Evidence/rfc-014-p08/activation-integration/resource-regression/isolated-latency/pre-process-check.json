@@ -1,0 +1,13 @@
+{
+  "source": "Parent /root direct coordination message after runs, quoting inspection performed before clearance",
+  "command": "ps -axo pid,etime,command | rg 'check-spec|run-spec|swift-build|swift-frontend|resource-regression|quick_validate|regression_plan' | head -25",
+  "exit": 0,
+  "tool_receipt": "functions.exec cell182",
+  "reported_matching_lines": [
+    "78804 00:00 /bin/zsh -c ps ...",
+    "78806 00:00 rg check-spec|run-spec|swift-build|swift-frontend|resource-regression|quick_validate|regression_plan"
+  ],
+  "line_note": "First line is abbreviated exactly as parent supplied; no fabricated expansion. Only the inspection shell/filter matched.",
+  "timestamp": null,
+  "ordering": "Inspection completed; Standard interrupted and confirmed no active process; reviewer idle; parent sent ALL-BUILDS-IDLE; parent ran no tools/repository commands until FINISHED after both runs."
+}

@@ -1,6 +1,9 @@
 # Swift 6.4 focused resource compatibility — 2026-10-12
 
-All twelve focused SPEC-003/004 stages passed. They retain the unchanged layout,
+All twelve focused SPEC-003/004 programs completed successfully. The original
+latency samples lacked documented isolation and are informative only; the
+[isolated correction](isolated-latency/result.md) supplies the current timing
+evidence. The stages retain the unchanged layout,
 allocation, latency and linked-resource functions/checkers from the maintained
 drivers, with the approved6.4 compiler explicitly selected. No ceiling,
 optimization, ABI flag, measurement algorithm or production source changed.
@@ -15,8 +18,8 @@ These are actual linked comparisons, not value-layout substitutes.
 
 | Contract/profile | RAM delta / limit | Code or flash delta / limit | Candidate stack / limit | Other bound |
 | --- | --- | --- | --- | --- |
-| SPEC003 macOS Static |444 /512 B|592 /24576 B|64 /384 B|p99 42 ns /100000 ns|
-| SPEC003 macOS Dynamic |1596 /2048 B|532 /32768 B|64 /512 B|p99 84 ns /100000 ns|
+| SPEC003 macOS Static |444 /512 B|592 /24576 B|64 /384 B|isolated p99 250 ns /100000 ns|
+| SPEC003 macOS Dynamic |1596 /2048 B|532 /32768 B|64 /512 B|isolated p99 125 ns /100000 ns|
 | SPEC003 ARMv6 |488 /512 B|23876 /24576 B|40 /384 B|50 reachable instructions, descriptive|
 | SPEC003 nRF52840 |256 /320 B|132 /16384 B|24 /256 B|38 /4096 reachable instructions|
 | SPEC004 nRF52840 |252 B delta;8828 /196608 B total|4752 B delta;30484 /1048576 B total|80 /256 B|44 /96 initialization operations|
@@ -26,8 +29,11 @@ display staging. Its flash warning threshold is917504 B; total30484 B is below i
 The ARMv6 SPEC003 code margin is700 B. That is current measured headroom, not an
 optimization claim or permission to exceed future bounds.
 
-Native timing probes each retain1000 warm-up iterations and10000 raw samples;
-both report reference_runner_match=true for the contract reference machine/OS.
+The isolated native timing probes each retain1000 warm-up iterations and10000
+raw samples; both report reference_runner_match=true for the contract reference
+machine/OS. Parent pre-inspection and its coordinated all-job hold establish the
+measurement interval; the unavailable post-inspection is explicitly documented
+in the correction. Original42/84 ns streams remain intact and informative only.
 No target firmware or ARMv6 executable ran. ARMv6 hardware latency was not measured
 and is not inferred from host timings or instruction counts. The specified cross
 resource commands are hardware-free build/inspection seams.
@@ -76,7 +82,8 @@ unchanged focused functions expose the exact resource measurements directly.
 
 ## Closure
 
-The finite scope is closed: twelve focused passes, one initial002 failure handed
+The original finite scope is closed: twelve completed focused programs, with
+original timing claims superseded by the isolated correction, one initial002 failure handed
 off, zero repair cycles, zero consecutive unproductive failures. No gate was
 weakened or skipped after failure. This evidence supports compiler-baseline
 resource compatibility for these exact common-component paths. It does not prove

@@ -1,0 +1,90 @@
+{
+  ".build/rfc-014-swift64/resource-regression/isolated-latency/macos-static/run.log": {
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  ".build/rfc-014-swift64/resource-regression/isolated-latency/macos-static/commands.txt": {
+    "sha256": "5376f37509956ee704a951d4a8dc194102d05a11db1dd5d932e1d18fdd7095a7",
+    "bytes": 1963
+  },
+  ".build/rfc-014-swift64/resource-regression/isolated-latency/macos-static/images.tsv": {
+    "sha256": "ca0204af5d9e97d5a13139ae2629736589d50a7f84cbec7f12b08b92d1039f6c",
+    "bytes": 186
+  },
+  ".build/rfc-014-swift64/resource-regression/isolated-latency/macos-static/semantics/latency-runner.txt": {
+    "sha256": "3f16436df4e1305ad6ef3d587073d7d90e520a7cc046694aa4c07882d8b9cf34",
+    "bytes": 387
+  },
+  ".build/rfc-014-swift64/resource-regression/isolated-latency/macos-static/semantics/latency-samples.txt": {
+    "sha256": "5cca3fa41ef49d00ffc9078c875b1e1ee2201a32918d80aa7db6c139685f777e",
+    "bytes": 279212
+  },
+  ".build/rfc-014-swift64/resource-regression/isolated-latency/macos-static/build/latency-probe/GiftUIFailureCore.swiftdoc": {
+    "sha256": "59356d4bca216fc88757be9b711f72d33c4b59d209327c8dcaedb92f7063fbbf",
+    "bytes": 384
+  },
+  ".build/rfc-014-swift64/resource-regression/isolated-latency/macos-static/build/latency-probe/latency-probe": {
+    "sha256": "b71b17b4ce067020947a4d27b488c697b7e5b8750a8b750aa2b4f6d80876716b",
+    "bytes": 56528
+  },
+  ".build/rfc-014-swift64/resource-regression/isolated-latency/macos-static/build/latency-probe/GiftUIFailureCore.abi.json": {
+    "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+    "bytes": 149
+  },
+  ".build/rfc-014-swift64/resource-regression/isolated-latency/macos-static/build/latency-probe/libGiftUIFailureCore.dylib": {
+    "sha256": "18dfd69a8954dd469048c8895b28d06c264fbcd07af7667ff100d09e70223804",
+    "bytes": 139640
+  },
+  ".build/rfc-014-swift64/resource-regression/isolated-latency/macos-static/build/latency-probe/GiftUIFailureCore.swiftsourceinfo": {
+    "sha256": "9d732c7ac46434874c988bda7f6972ee7a7afa59beb085ddf0443f966b9c86f1",
+    "bytes": 30748
+  },
+  ".build/rfc-014-swift64/resource-regression/isolated-latency/macos-static/build/latency-probe/GiftUIFailureCore.swiftmodule": {
+    "sha256": "43e9ec638b80f1cf8d3e8b8692874e5c87e65ce297fe016cf7fbbcd7927b6b32",
+    "bytes": 168452
+  },
+  ".build/rfc-014-swift64/resource-regression/isolated-latency/macos-dynamic/run.log": {
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  ".build/rfc-014-swift64/resource-regression/isolated-latency/macos-dynamic/commands.txt": {
+    "sha256": "f2cf207dde7095e03e94514322b3030f6ceb7577e55cf444d48af42b6cdb1c44",
+    "bytes": 1972
+  },
+  ".build/rfc-014-swift64/resource-regression/isolated-latency/macos-dynamic/images.tsv": {
+    "sha256": "4b665b32f84dc3ed6f0d21e8ab428760ddec22064f4985230a82bc18d85d4a0d",
+    "bytes": 187
+  },
+  ".build/rfc-014-swift64/resource-regression/isolated-latency/macos-dynamic/semantics/latency-runner.txt": {
+    "sha256": "3f16436df4e1305ad6ef3d587073d7d90e520a7cc046694aa4c07882d8b9cf34",
+    "bytes": 387
+  },
+  ".build/rfc-014-swift64/resource-regression/isolated-latency/macos-dynamic/semantics/latency-samples.txt": {
+    "sha256": "388f5fdf96dbf76c0ad89a47a50c10b0f2caeb216cc8719e1031b1681ab26d60",
+    "bytes": 281470
+  },
+  ".build/rfc-014-swift64/resource-regression/isolated-latency/macos-dynamic/build/latency-probe/GiftUIFailureCore.swiftdoc": {
+    "sha256": "59356d4bca216fc88757be9b711f72d33c4b59d209327c8dcaedb92f7063fbbf",
+    "bytes": 384
+  },
+  ".build/rfc-014-swift64/resource-regression/isolated-latency/macos-dynamic/build/latency-probe/latency-probe": {
+    "sha256": "4dcbcc80fe22e717125c8171f21c94f51f4d55769b8e2c72c7eef4545a67f250",
+    "bytes": 56528
+  },
+  ".build/rfc-014-swift64/resource-regression/isolated-latency/macos-dynamic/build/latency-probe/GiftUIFailureCore.abi.json": {
+    "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+    "bytes": 149
+  },
+  ".build/rfc-014-swift64/resource-regression/isolated-latency/macos-dynamic/build/latency-probe/libGiftUIFailureCore.dylib": {
+    "sha256": "e21b15c74ac6a36c8b326f094621e239118224f8c93b6051eeb926008c23547f",
+    "bytes": 139640
+  },
+  ".build/rfc-014-swift64/resource-regression/isolated-latency/macos-dynamic/build/latency-probe/GiftUIFailureCore.swiftsourceinfo": {
+    "sha256": "9d732c7ac46434874c988bda7f6972ee7a7afa59beb085ddf0443f966b9c86f1",
+    "bytes": 30748
+  },
+  ".build/rfc-014-swift64/resource-regression/isolated-latency/macos-dynamic/build/latency-probe/GiftUIFailureCore.swiftmodule": {
+    "sha256": "43e9ec638b80f1cf8d3e8b8692874e5c87e65ce297fe016cf7fbbcd7927b6b32",
+    "bytes": 168452
+  }
+}

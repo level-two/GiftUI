@@ -66,5 +66,6 @@
   "initial_spec002_disposition": "Transferred to Standard with exact failed boundary-parser diagnostics; no claim from this stage.",
   "repairs_used": 0,
   "unproductive_failures": 0,
-  "closure": "All12 focused SPEC003/004 stages passed. SPEC002 continuing under separate owner/scope. No unused continuation authorization."
+  "closure": "All12 focused SPEC003/004 stages passed. SPEC002 continuing under separate owner/scope. No unused continuation authorization.",
+  "timing_correction": "Original Static42/Dynamic84ns informative only: concurrent-job condition not established. isolated-latency/receipt.json supplies coordinated isolated Static250/Dynamic125ns; post-inspection unavailable explicitly disclosed."
 }

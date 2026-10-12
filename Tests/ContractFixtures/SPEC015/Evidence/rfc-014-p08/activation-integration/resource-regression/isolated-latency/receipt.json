@@ -1,0 +1,51 @@
+{
+  "start_utc": "2026-10-12T05:11:32.085925+00:00",
+  "commit": "c226d75323f97e7b519e24485899ab5fe60475b9",
+  "compiler": "/Users/eugene/work/GiftUI/.toolchains/p08-comparison/expanded/swift-6.4.0-RELEASE-osx/swift-6.4.0-RELEASE-osx-package.pkg/Payload/usr/bin/swiftc",
+  "compiler_sha256": "79ae5c26645489fb783ae980f0f1bdae810f90fb180c9ac39808807b65e9fd69",
+  "inputs": {
+    "Sources/GiftUIFailureCore/GiftUIFailureCore.swift": "9e1e92643cdf2aed4efea9684697481af01034b9ad34ef42aff8c6ff6445cae7",
+    "Tests/ContractFixtures/SPEC003/Instrumentation/LatencyProbe/main.swift": "f4c11ef55e12acb817f4cdb6cc17d0b51b47832dbcc4dc0bf4979050404303d3",
+    "functions-003.sh": "8ce16e92a1014e183391cfccb84ce42739f0ba5f9d6f5482e98e50ea9fed9429",
+    "run-latency.sh": "11d4fe8da7655d104375123f0f32e9c3b5ea2ba0c18a69e774a604867f81aa99"
+  },
+  "runs": [
+    {
+      "profile": "static",
+      "command": [
+        "bash",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-integration/resource-regression/isolated-latency/run-latency.sh",
+        "static"
+      ],
+      "start_utc": "2026-10-12T05:11:32.093967+00:00",
+      "end_utc": "2026-10-12T05:11:34.089831+00:00",
+      "exit": 0,
+      "p99_nanoseconds": 250,
+      "limit_nanoseconds": 100000,
+      "reference_runner_match": true,
+      "raw_samples_sha256": "5cca3fa41ef49d00ffc9078c875b1e1ee2201a32918d80aa7db6c139685f777e"
+    },
+    {
+      "profile": "dynamic",
+      "command": [
+        "bash",
+        "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-integration/resource-regression/isolated-latency/run-latency.sh",
+        "dynamic"
+      ],
+      "start_utc": "2026-10-12T05:11:34.090224+00:00",
+      "end_utc": "2026-10-12T05:11:35.973497+00:00",
+      "exit": 0,
+      "p99_nanoseconds": 125,
+      "limit_nanoseconds": 100000,
+      "reference_runner_match": true,
+      "raw_samples_sha256": "388f5fdf96dbf76c0ad89a47a50c10b0f2caeb216cc8719e1031b1681ab26d60"
+    }
+  ],
+  "end_utc": "2026-10-12T05:11:35.973892+00:00",
+  "closed": true,
+  "compiler_link_invocations": 4,
+  "positive_executions": 2,
+  "repairs": 0,
+  "isolation_evidence": "clearance.json, pre-process-check.json; coordinated repository-job hold through receipt end_utc",
+  "post_process_snapshot_available": false
+}

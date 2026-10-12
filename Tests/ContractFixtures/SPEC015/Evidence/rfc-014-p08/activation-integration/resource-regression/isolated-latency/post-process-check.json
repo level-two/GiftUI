@@ -1,0 +1,5 @@
+{
+  "available": false,
+  "reason": "Post-run ps was blocked by sandbox PermissionError. Escalated retry remained pending and was interrupted without output. No post-run process snapshot is claimed.",
+  "isolation_basis": "Parent pre-run filtered process inspection plus explicit coordinated job hold through both complete runs. No concurrent repository job was observed or reported during that interval."
+}
