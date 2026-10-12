@@ -356,3 +356,5 @@ images remain open; no complete image or P08 exit claim.
 2026-10-12 step7d [wake-free policy extraction](remaining-implementation/step-7d-wake-free-states/result.md) passes counter1,348,543/23controls and existing16wrapper test bodies/80expectations. Internal realization under reviewed approved contract; no public requirement change; guard0/2.
 
 2026-10-12 step7e [canonical wake integration](remaining-implementation/step-7e-canonical-wake/result.md) passes1,348,543assertions/23controls. Actual source wake, shared canonical state and paced action corpus; no unchecked Sendable. Guard0/2. Remaining integrated wake controls, graph and linked targets.
+
+2026-10-12 step7f [integrated wake controls](remaining-implementation/step-7f-wake-controls/result.md) passes1,348,627/23;42checks per actual host cover reason coalescing, deadline, late callback, dirty/backpressure/refusal/no replay and terminal disable. Guard0/2; graph/linked routes remain.

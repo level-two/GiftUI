@@ -39,6 +39,9 @@ struct CounterControl {
     var lastTakenWakeReasons: ExecutionWakeReasons = []
     var acceptedFactWakeRecords = 0
     var disabledWakeRejections = 0
+    var injectCompletionAtApply = false
+    var lateCallbackObservedActive = false
+    var lateCallbackDidNotRunRuntime = false
     var inputGate = HostNormalizedInputGate(configuredSource: .init(rawValue: 0))
     var semanticSnapshot = CounterSemanticSnapshot()
     var lastFrame = CounterRenderSink()
@@ -216,6 +219,14 @@ where Geometry: CounterGeometry, Candidate: CounterCandidateBacking, Committed: 
         control.pointee.context = phase.context
         counterTrace("stage", stage)
         control.pointee.stages |= UInt16(1) << stage.rawValue
+        if stage == .applyAdmittedWork && control.pointee.injectCompletionAtApply {
+            control.pointee.injectCompletionAtApply = false
+            let finalized = control.pointee.finalized
+            var producer = CounterAdmission(borrowing: control)
+            precondition(producer.submit(completion: 0).result == .queued)
+            control.pointee.lateCallbackObservedActive = phase.context.phase == .mutating
+            control.pointee.lateCallbackDidNotRunRuntime = control.pointee.finalized == finalized
+        }
         if control.pointee.unavailable { return .execution(.requiredFacilityUnavailable) }
         if control.pointee.fault == stage { return control.pointee.boundaryFailure }
         return nil

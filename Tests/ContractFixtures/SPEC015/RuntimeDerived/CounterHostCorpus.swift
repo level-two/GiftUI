@@ -126,7 +126,7 @@ func counterHostCorpus<H: MVPHostInstance & ~Copyable & ~Escapable>(host: inout 
     click(0, expected: 9, changed: false)
     click(1, expected: 0, changed: true)
     click(1, expected: 0, changed: false)
-    return checks
+    return checks + counterWakeControls(host: &host, control: control)
 }
 
 private func counterCorpusExpect(_ condition: Bool, file: StaticString = #fileID, line: UInt = #line) {

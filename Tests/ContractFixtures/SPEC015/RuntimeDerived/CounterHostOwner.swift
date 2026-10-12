@@ -183,7 +183,6 @@ enum CounterHostState: ~Copyable, ~Escapable {
     mutating func runOpportunity() -> RunCycleResult<RuntimeOwnerFailure> {
         switch consume self {
         case .active(var coordinator, let cache, let span):
-            coordinator.opportunity.control.pointee.offer = .accepted
             let result = coordinator.runOpportunity()
             self = .active(consume coordinator, consume cache, span)
             return result
@@ -279,6 +278,7 @@ struct CounterHostOwner: ~Copyable, ~Escapable, SignalAnalyzerPresetLiveOwner {
     }
     mutating func acceptFirstPresentationAndEnableInput() -> HostActivationStepResult<ActivationFailure> {
         precondition(activationStep == 4)
+        state.controlPointer.pointee.offer = .accepted
         guard case .success(let summary) = state.runOpportunity(), summary.logicalFrameDisposition == .committed else { return .failure(.invariant, progress: .init()) }
         application!.inputEnabled = true
         activationStep = 5; return .advanced
