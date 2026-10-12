@@ -1,5 +1,15 @@
 # P08 bounded wake ownership decision
 
+## Independent Strong review disposition —2026-10-12
+
+Parent commissioned sequential read-only Strong review after48a5f185. Review selected narrowed alternative2 as an internal realization under the already approved contract; no user decision or normative amendment is currently required. This is source-level feasibility review, not compiler/conformance proof. Guard remains0/2; historical closed guards remain closed.
+
+Extract wake-free SingleSourceExecutionAdmissionState from the existing controller, preserving the controller wrapper and its existing callers. Extract wake-free PresentationPendingState while preserving the recording wrapper. The counter uses those states and one ExecutionWakeAccumulator<CounterWake> in stable CounterControl, initialized after validation, alongside one existing HostScheduledOpportunityController. CounterWake remains a checked value recorder; no retained scoped requester and no unchecked Sendable pointer. Synchronous notification draining records host pending work before integration returns. Every queued fact separately records its timestamp/deadline even behind an outstanding non-fact wake.
+
+At actual CounterPipelineOwner idle entry, after guards and before runTracedPipeline, take the canonical reasons. Actual dirty disposition emits semanticDirty; backpressure and non-exhausted refusal emit presentationPending. Teardown disables/clears canonical and host wake state; retryable-refusal policy stays three. Split the existing scheduler's begin/complete operations so each short mutable borrow ends before host.runOpportunity callbacks; preserve service convenience behavior and report/pacing validation. No overlapping inout self, second component accumulator, new algorithm or host abstraction.
+
+Normative protocol is implicitly Copyable/Escapable; implementation-added Sendable constraints are distinct from the protocol. Review authority: SPEC009429/444–460, SPEC0151139–1163, SPEC013189–197. Compiler proof must still establish scoped copy/escape negatives, exact storage and actual graph. Required integrated controls remain listed below. Finish source seam and actual graph before sequential four-route/early-linked-image collection. No P08 pass is implied.
+
 2026-10-12, sequential Strong Sol6.1 High. Step7c is independently complete at86761375. Guard0/2. No failed compiler attempt or unchecked Sendable implementation is associated with this packet. Hold this seam for sequential independent parent review; no upstream contract blocker is declared merely because the current containers add constraints.
 
 ## Exact authority and observed gap
