@@ -1,6 +1,17 @@
 # RFC-014 task context guide
 
-**Current P08 checkpoint — R05 native PASS; separate review next, 2026-10-12.**
+**Current P08 checkpoint — R06 route WIP stopped for authority/scope review, 2026-10-12.**
+R01–R05 native are independently accepted at0f7290ce; tiled endpoint source at
+c49fc9b0 passes1,353,625/0,24/24. Current selected nativeStatic/Dynamic routes pass
+1,349,555/1,349,501 assertions, zero failures24/24; Pi ARMv6 current Dynamic route
+cross-compiles28/28. nRF fails fresh HostConfiguration compilation on130 missing
+per-file direct-import diagnostics in5files, before counter model. [Exact frozen
+route checkpoint and dependency authority packet](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/remaining-implementation/r06-profile-routes/result.md).
+No import/dependency repair or image work pending separate Strong review; no target
+execution/image fit claim. Historical helper2/2/B031/1 closed. P08/T8.1 open,
+SPEC015 implementing/plan active, P09–P12 pending.
+
+**Historical P08 checkpoint — R05 native PASS; separate review next, 2026-10-12.**
 [Finite actual construction-origin result](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/remaining-implementation/r05-factory-origin-controls/result.md) passes2,697,625 assertions/zero
 failures24/24. All13 legal-edge omissions and3 concrete hidden/bound-input cases
 reject at graph stage before eight later projections; canonical selections drive

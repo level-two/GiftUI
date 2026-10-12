@@ -12,10 +12,15 @@ ROOT = pathlib.Path(__file__).resolve().parents[2]
 parser = argparse.ArgumentParser()
 parser.add_argument('--runtime-build', required=True, type=pathlib.Path)
 parser.add_argument('--host-build', type=pathlib.Path, default=ROOT / '.build/contracts/p08-scoped-host-c5eocina')
+parser.add_argument('--profile', choices=('macos-dynamic', 'macos-static', 'raspberry-pi-armv6', 'nrf52840-embedded'))
 parser.add_argument('--raster-realization', choices=('full-surface', 'tiled'), default='full-surface')
 args = parser.parse_args()
 base = args.runtime_build.resolve()
 prior = json.loads((base / 'result.json').read_text())
+if args.profile:
+    assert prior['profile'] == args.profile, 'runtime recipe profile mismatch'
+is_target = args.profile in ('raspberry-pi-armv6', 'nrf52840-embedded')
+is_embedded = args.profile == 'nrf52840-embedded'
 def digest(path):
     return hashlib.sha256(path.read_bytes()).hexdigest()
 for name, expected in prior['inputs'].items():
@@ -41,15 +46,21 @@ for name, expected in host_receipt['inputs'].items():
         assert digest(ROOT / name) == expected, name
 for name, expected in host_receipt['artifacts'].items():
     assert digest(host / name) == expected['sha256'], name
-out = pathlib.Path(tempfile.mkdtemp(prefix='p08-counter-', dir=ROOT / '.build/contracts'))
+output_root = ROOT / ('.build/raspberry-pi/contracts' if args.profile == 'raspberry-pi-armv6' else '.build/nrf52840/contracts' if is_embedded else '.build/contracts')
+output_root.mkdir(parents=True, exist_ok=True)
+out = pathlib.Path(tempfile.mkdtemp(prefix='p08-counter-', dir=output_root))
 flags[flags.index('-module-cache-path') + 1] = str(out / 'cache')
-flags = ['-I', str(out), '-I', str(host), *flags]
-if args.raster_realization == 'tiled':
+flags = ['-I', str(out), *([] if is_target else ['-I', str(host)]), *flags]
+if args.profile in ('macos-dynamic', 'raspberry-pi-armv6'):
+    flags += ['-D', 'GIFTUI_COUNTER_ROUTE_DYNAMIC']
+if is_embedded:
+    flags += ['-Xfrontend', '-function-sections', '-Xfrontend', '-disable-stack-protector']
+if args.raster_realization == 'tiled' or is_target:
     flags += ['-D', 'GIFTUI_COUNTER_TILED']
 fixture = ROOT / 'Tests/ContractFixtures/SPEC015/RuntimeDerived'
 inputs = [pathlib.Path(__file__).resolve(), fixture / 'Counter.swift', fixture / 'Counter.schema.json', fixture / 'CounterModel.swift', fixture / 'CounterModelProbe.swift', fixture / 'CounterSemantic.swift', fixture / 'CounterSemanticProbe.swift', fixture / 'CounterGeometry.swift', fixture / 'CounterStaticGeometry.swift', fixture / 'CounterRender.swift', fixture / 'CounterFixedStorageProbe.swift']
 storage_sources = sorted(fixture.glob('StaticCounter*.swift'))
-join_sources = [fixture / name for name in ('CounterAdmission.swift', 'CounterPipelineOwner.swift', 'CounterProfileStorage.swift', 'CounterStorageMeasurement.swift', 'CounterStorageRegions.swift', 'CounterCoordinatorProbe.swift', 'CounterWorkload.swift', 'CounterHostAssembly.swift', 'CounterHostOwner.swift', 'CounterHostProbe.swift', 'CounterDynamicHostOwner.swift', 'CounterDynamicHostProbe.swift', 'CounterHostCorpus.swift', 'CounterNativeRaster.swift', 'CounterTiledRaster.swift', 'CounterPixelOracle.swift', 'CounterApplication.swift', 'CounterWakeIntegration.swift', 'CounterGraphProbe.swift')]
+join_sources = [fixture / name for name in ('CounterAdmission.swift', 'CounterPipelineOwner.swift', 'CounterProfileStorage.swift', 'CounterStorageMeasurement.swift', 'CounterStorageRegions.swift', 'CounterCoordinatorProbe.swift', 'CounterWorkload.swift', 'CounterHostAssembly.swift', 'CounterHostOwner.swift', 'CounterHostProbe.swift', 'CounterDynamicHostOwner.swift', 'CounterDynamicHostProbe.swift', 'CounterHostCorpus.swift', 'CounterNativeRaster.swift', 'CounterTiledRaster.swift', 'CounterPixelOracle.swift', 'CounterApplication.swift', 'CounterWakeIntegration.swift', 'CounterGraphProbe.swift', 'CounterRouteEntry.swift')]
 inputs.extend(join_sources)
 inputs.extend(storage_sources)
 commands, checks = [], []
@@ -79,6 +90,20 @@ for old in prior['commands']:
     run(module_name, [compiler, *flags, '-module-name', module_name, '-emit-module', '-emit-object', *sources,
                       '-emit-module-path', out / (module_name + '.swiftmodule'), '-o', out / (module_name + '.o')])
     rebuilt_runtime.append(module_name)
+# The verified native host receipt supplies source recipes only on targets.
+# Every lower host module is freshly compiled with the selected target flags.
+if is_target:
+    for old in host_receipt['commands']:
+        pieces = shlex.split(old)
+        if '-module-name' not in pieces or '-emit-module' not in pieces:
+            continue
+        name = pieces[pieces.index('-module-name') + 1]
+        if name not in ('GiftUICapabilities', 'GiftUIFailureCore', 'GiftUISurfaceCore', 'GiftUIDisplayCore', 'GiftUIRasterCore', 'GiftUIBackendIntegration'):
+            continue
+        sources = [pathlib.Path(value) for value in pieces[pieces.index('-module-name') + 2:] if value.endswith('.swift')]
+        inputs.extend(sources)
+        run(name, [compiler, *flags, '-module-name', name, '-emit-module', '-emit-object', *sources,
+                   '-emit-module-path', out / (name + '.swiftmodule'), '-o', out / (name + '.o')])
 host_sources = sorted((ROOT / 'Sources/GiftUIHostConfiguration').glob('*.swift')) + sorted((ROOT / 'Sources/GiftUIHostConfiguration/Generated').glob('*.swift'))
 inputs.extend(host_sources)
 run('GiftUIHostConfiguration', [compiler, *flags, '-module-name', 'GiftUIHostConfiguration', '-emit-module', '-emit-object', *host_sources,
@@ -94,7 +119,7 @@ run('counter-model', [compiler, *flags, '-module-name', 'P08CounterRuntime', '-e
 copy_negative = out / 'CounterHostCopyNegative.swift'
 copy_negative.write_text('import GiftUIHostConfiguration\nfunc reject(_ host: borrowing SignalAnalyzerPresetHostInstance<CounterHostOwner>) { let duplicate = copy host; _ = duplicate }\n')
 backing_negative = out / 'CounterHostBackingNegative.swift'
-positive = (fixture / 'CounterHostProbe.swift').read_text().split('package func p08CounterHost()')[0]
+positive = (fixture / 'CounterHostProbe.swift').read_text().split('package func p08CounterHost(')[0]
 positive = positive.replace('let ownedChecks = counterOwnedSchedulerCompatibility(assembly.report)', 'let ownedChecks = 0')
 positive = positive.replace('runCounterHost(failAfterRuntime: Bool)', 'rejectCounterHostEscape(failAfterRuntime: Bool)')
 positive = positive.replace('        guard case .valid(let audit)', '        var escaped: SignalAnalyzerPresetHostInstance<CounterHostOwner>? = nil\n        guard case .valid(let audit)', 1)
@@ -118,14 +143,20 @@ for label, negative, diagnostic in (
     ('counter-host-backing', backing_negative, ("lifetime-dependent variable 'escaped' escapes its scope", "activationBacking", "root.withLifetime", "semantic.withLifetime", "canvas.withLifetime", "withUnsafeMutablePointer")),
     ('counter-dynamic-host-backing', dynamic_backing_negative, ("lifetime-dependent variable 'escaped' escapes its scope", "activationBacking", "root.withLifetime", "semantic.withLifetime", "canvas.withLifetime", "withUnsafeMutablePointer")),
 ):
+    if is_embedded and label == 'counter-dynamic-host-backing':
+        continue  # Dynamic composition does not exist in the Embedded route.
     run(label, [compiler, *flags, '-module-name', 'P08CounterRuntime', '-emit-object', *counter_sources, *storage_sources, *join_sources, negative, '-o', out / (label + '.o')], diagnostic)
-main = out / 'Main.swift'
-main.write_text('import P08CounterRuntime\nimport Darwin\n@main struct Main { static func main() { setbuf(stdout, nil); print("P08 counter components assertions=\\(p08CounterGraph() + p08CounterModel() + p08CounterSemantic() + p08CounterFixedStorage() + p08CounterCoordinator() + p08CounterHost() + p08CounterDynamicHost()) failures=0") } }\n')
-objects = []  # All selected runtime objects were freshly rebuilt above.
-host_objects = [path for path in sorted(host.glob('GiftUI*.o')) if path.name != 'GiftUIHostConfiguration.o']
-run('link', [compiler, *flags, main, core / 'GiftUI.o', *objects, *host_objects, *sorted(out.glob('*.o')), '-o', out / 'counter'])
-execution = run('execute', [out / 'counter']).strip()
-receipt = dict(scope=__doc__, raster_realization=args.raster_realization, profile=prior['profile'], compiler=str(compiler.relative_to(ROOT)), compiler_sha256=digest(compiler), runtime_build=str(base.relative_to(ROOT)), runtime_receipt_sha256=digest(base / 'result.json'), host_build=str(host.relative_to(ROOT)), host_receipt_sha256=digest(host / 'result.json'), inputs={str(p.relative_to(ROOT)): digest(p) for p in inputs}, commands=commands, checks=checks, execution=execution)
+if not is_target:
+    main = out / 'Main.swift'
+    expression = 'p08CounterRoute() + p08CounterModel() + p08CounterSemantic() + p08CounterFixedStorage() + p08CounterCoordinator()' if args.profile else 'p08CounterGraph() + p08CounterModel() + p08CounterSemantic() + p08CounterFixedStorage() + p08CounterCoordinator() + p08CounterHost() + p08CounterDynamicHost()'
+    main.write_text('import P08CounterRuntime\nimport Darwin\n@main struct Main { static func main() { setbuf(stdout, nil); print("P08 counter components assertions=\\(' + expression + ') failures=0") } }\n')
+    host_objects = [path for path in sorted(host.glob('GiftUI*.o')) if path.name != 'GiftUIHostConfiguration.o']
+    run('link', [compiler, *flags, main, core / 'GiftUI.o', *host_objects, *sorted(out.glob('*.o')), '-o', out / 'counter'])
+    execution = run('execute', [out / 'counter']).strip()
+else:
+    execution = 'cross-compiled current selected counter host only; no target execution or linked-image claim'
+    (out / 'objects.list').write_text('\n'.join(map(str, [core / 'GiftUI.o', *sorted(out.glob('*.o'))])) + '\n')
+receipt = dict(scope=__doc__, raster_realization="tiled" if is_target else args.raster_realization, profile=prior['profile'], selected_host_profile=args.profile, target_flags=flags, embedded_dynamic_escape_applicable=not is_embedded, compiler=str(compiler.relative_to(ROOT)), compiler_sha256=digest(compiler), runtime_build=str(base.relative_to(ROOT)), runtime_receipt_sha256=digest(base / 'result.json'), host_build=str(host.relative_to(ROOT)), host_receipt_sha256=digest(host / 'result.json'), inputs={str(p.relative_to(ROOT)): digest(p) for p in inputs}, commands=commands, checks=checks, execution=execution)
 receipt['artifacts'] = {str(p.relative_to(out)): dict(sha256=digest(p), bytes=p.stat().st_size) for p in out.iterdir() if p.is_file()}
 (out / 'result.json').write_text(json.dumps(receipt, indent=2) + '\n')
 print(execution.splitlines()[-1])

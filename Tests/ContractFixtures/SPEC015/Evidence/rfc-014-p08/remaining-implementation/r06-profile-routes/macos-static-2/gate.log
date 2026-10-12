@@ -1,0 +1,42 @@
+counter-model: /Users/eugene/work/GiftUI/.build/contracts/p08-counter-zm06j_ju
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostProbe.swift:137:14: error: function cannot be declared package because its parameter uses an internal type
+135 | }
+136 | 
+137 | package func p08CounterHost(write: CounterTiledPixelWrite? = nil) -> Int {
+    |              `- error: function cannot be declared package because its parameter uses an internal type
+138 |     var models = ObservableModelOwnerNamespace()
+139 |     var semantics = SemanticRecordOwnerNamespace()
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterRouteEntry.swift:3:11: note: type declared here
+ 1 | import GiftUIHostConfiguration
+ 2 | 
+ 3 | typealias CounterTiledPixelWrite = @convention(c) (UInt16, UInt16, UInt16, UInt16, UnsafePointer<UInt8>?, Int) -> Int32
+   |           `- note: type declared here
+ 4 | 
+ 5 | var counterStaticHostKind: MVPHostKind {
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterGraphProbe.swift:41:13: warning: variable 'profile' was never mutated; consider changing to 'let' constant [#VariableNeverMutated]
+39 |     var count = 46
+40 |     do {
+41 |         var profile = StaticCounterProfileStorage(modelOwner: try modelOwners.issue(), semanticOwner: try semanticOwners.issue())
+   |             `- warning: variable 'profile' was never mutated; consider changing to 'let' constant [#VariableNeverMutated]
+42 |         guard case .valid(let audit) = profile.audit() else { preconditionFailure("counter graph audit") }
+43 |         func reject(_ negative: CounterConstructionNegative, profile: borrowing StaticCounterProfileStorage) {
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterRouteEntry.swift:29:14: error: function cannot be declared package because its parameter uses an internal type
+ 1 | import GiftUIHostConfiguration
+ 2 | 
+ 3 | typealias CounterTiledPixelWrite = @convention(c) (UInt16, UInt16, UInt16, UInt16, UnsafePointer<UInt8>?, Int) -> Int32
+   |           `- note: type declared here
+ 4 | 
+ 5 | var counterStaticHostKind: MVPHostKind {
+   :
+27 |     UInt32(p08CounterRoute(write: write))
+28 | }
+29 | package func p08CounterRoute(write: CounterTiledPixelWrite? = nil) -> Int {
+   |              `- error: function cannot be declared package because its parameter uses an internal type
+30 |     #if GIFTUI_COUNTER_ROUTE_DYNAMIC
+31 |     p08CounterGraph() + p08CounterDynamicHost()
+
+[#VariableNeverMutated]: <https://docs.swift.org/compiler/documentation/diagnostics/variable-never-mutated>
+

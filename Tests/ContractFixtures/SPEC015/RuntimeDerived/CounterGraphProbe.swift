@@ -44,7 +44,7 @@ package func p08CounterGraph() -> Int {
             let graph = CounterHostGraph(negative: negative)
             precondition(HostComponentGraphValidation.validate(graph) == nil)
             var observation = CounterConstructionObservation()
-            precondition(CounterHostAssembly.validate(audit, kind: .macOSStatic, negative: negative, observation: &observation) == nil)
+            precondition(CounterHostAssembly.validate(audit, kind: counterStaticHostKind, negative: negative, observation: &observation) == nil)
             precondition(observation.result == .invalid(stage: .graph, error: .invalidGraph))
             precondition(observation.hasNoLaterReads)
             precondition(profile.control.applicationConstructions == 0 && profile.control.finalized == 0 && profile.control.wake == nil)
@@ -58,7 +58,7 @@ package func p08CounterGraph() -> Int {
         reject(.hiddenRetainedReport, profile: profile)
         reject(.undeclaredBoundText, profile: profile)
         var positive = CounterConstructionObservation()
-        precondition(CounterHostAssembly.validate(audit, kind: .macOSStatic, negative: nil, observation: &positive) != nil)
+        precondition(CounterHostAssembly.validate(audit, kind: counterStaticHostKind, negative: nil, observation: &positive) != nil)
         guard case .valid? = positive.result else { preconditionFailure("counter graph positive") }
         precondition(positive.runtimeReads == 1 && positive.textReads == 1 && positive.workloadReads == 1 && positive.capabilityReads == 1 && positive.endpointReads == 1 && positive.applicationReads == 1 && positive.inputReads == 1 && positive.policyReads == 1)
         precondition(profile.control.applicationConstructions == 0 && profile.control.finalized == 0 && profile.control.wake == nil)

@@ -10,12 +10,12 @@ import GiftUISemanticCore
 
 extension DynamicCounterProfileStorage {
     mutating func runCounterDynamicHost(failAfterRuntime: Bool) -> Int {
-        guard case .valid(let audit) = audit(), let assembly = CounterHostAssembly.validate(audit, kind: .macOSDynamic) else { preconditionFailure("counter Dynamic valid-only host") }
+        guard case .valid(let audit) = audit(), let assembly = CounterHostAssembly.validate(audit, kind: counterDynamicHostKind) else { preconditionFailure("counter Dynamic valid-only host") }
         // Declared producer-projection negatives, not analyzer producer behavior.
-        precondition(CounterHostAssembly.validate(audit, kind: .macOSDynamic, sourceCallbacks: 21) == nil)
-        precondition(CounterHostAssembly.validate(audit, kind: .macOSDynamic, repositoryCallbacks: 2) == nil)
-        precondition(CounterHostAssembly.validate(audit, kind: .macOSDynamic, useCaseCallbacks: 2) == nil)
-        precondition(CounterHostAssembly.validate(audit, kind: .macOSDynamic, nonTransitionPublications: 2) == nil)
+        precondition(CounterHostAssembly.validate(audit, kind: counterDynamicHostKind, sourceCallbacks: 21) == nil)
+        precondition(CounterHostAssembly.validate(audit, kind: counterDynamicHostKind, repositoryCallbacks: 2) == nil)
+        precondition(CounterHostAssembly.validate(audit, kind: counterDynamicHostKind, useCaseCallbacks: 2) == nil)
+        precondition(CounterHostAssembly.validate(audit, kind: counterDynamicHostKind, nonTransitionPublications: 2) == nil)
         return counterForeignJoinScope { foreignModels, foreignRoot, foreignControl in
             let limits = self.limits
             var movedGeometry = geometry.take()
@@ -64,7 +64,11 @@ extension DynamicCounterProfileStorage {
                                         precondition(owner.constructions == 0 && owner.activationStep == 0)
                                         precondition(counterJoinSnapshot(pointer) == expected && counterJoinSnapshot(foreignControl) == foreignExpected)
                                         joinChecks += 3
+                                        #if os(Linux)
+                                        var host = SignalAnalyzerPresetHostInstances.raspberryPiDynamic(report: assembly.report, owner: consume owner)!
+                                        #else
                                         var host = SignalAnalyzerPresetHostInstances.macOSDynamic(report: assembly.report, owner: consume owner)!
+                                        #endif
                                         precondition(host.lifecycleState == .valid && host.owner.constructions == 0 && pointer.pointee.finalized == 0)
                                         precondition(host.runOpportunity() == .invalidLifecycle)
                                         var count = 2 + joinChecks

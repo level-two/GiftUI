@@ -1,0 +1,54 @@
+{
+  "macos-static-3": {
+    "exit": 0,
+    "builds": [
+      ".build/contracts/p08-counter-ecyz4tl1"
+    ],
+    "source_patch_sha256": "f8694d9045996b597689808e5c73554e32f1e128819c1a4d26829203895114ec",
+    "profile": "macos-static",
+    "selected_host_profile": "macos-static",
+    "raster_realization": "full-surface",
+    "checks": 24,
+    "passed": 24,
+    "inputs": 192,
+    "input_mismatches": [],
+    "result_sha256": "bed38874400c9138968e955bb16ada8d6b71bbec789bf80fe387654424bec30b"
+  },
+  "macos-dynamic-1": {
+    "exit": 0,
+    "builds": [
+      ".build/contracts/p08-counter-18g4uy1r"
+    ],
+    "source_patch_sha256": "f8694d9045996b597689808e5c73554e32f1e128819c1a4d26829203895114ec",
+    "profile": "macos-dynamic",
+    "selected_host_profile": "macos-dynamic",
+    "raster_realization": "full-surface",
+    "checks": 24,
+    "passed": 24,
+    "inputs": 192,
+    "input_mismatches": [],
+    "result_sha256": "8cd841f1e23926ca175c58ae9d5d80b039fc816272482bd175e2be4546ce9d60"
+  },
+  "raspberry-pi-armv6-1": {
+    "exit": 0,
+    "builds": [
+      ".build/raspberry-pi/contracts/p08-counter-5snuaa2q"
+    ],
+    "source_patch_sha256": "f8694d9045996b597689808e5c73554e32f1e128819c1a4d26829203895114ec",
+    "profile": "raspberry-pi-armv6",
+    "selected_host_profile": "raspberry-pi-armv6",
+    "raster_realization": "tiled",
+    "checks": 28,
+    "passed": 28,
+    "inputs": 219,
+    "input_mismatches": [],
+    "result_sha256": "f3280a4895e4765fec959235417b8955c2059b2e20d38f112783c7d10156ba20"
+  },
+  "nrf52840-embedded-1": {
+    "exit": 1,
+    "builds": [
+      ".build/nrf52840/contracts/p08-counter-36l6m4yi"
+    ],
+    "source_patch_sha256": "f8694d9045996b597689808e5c73554e32f1e128819c1a4d26829203895114ec"
+  }
+}

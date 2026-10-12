@@ -10,14 +10,14 @@ import GiftUISemanticCore
 
 extension StaticCounterProfileStorage {
     mutating func runCounterHost(failAfterRuntime: Bool) -> Int {
-        guard case .valid(let audit) = audit(), let assembly = CounterHostAssembly.validate(audit, kind: .macOSStatic) else { preconditionFailure("counter valid-only host") }
+        guard case .valid(let audit) = audit(), let assembly = CounterHostAssembly.validate(audit, kind: counterStaticHostKind) else { preconditionFailure("counter valid-only host") }
         return counterForeignJoinScope { foreignModels, foreignRoot, foreignControl in
             let ownedChecks = counterOwnedSchedulerCompatibility(assembly.report)
             // Declared producer-projection negatives, not analyzer producer behavior.
-            precondition(CounterHostAssembly.validate(audit, kind: .macOSStatic, sourceCallbacks: 21) == nil)
-            precondition(CounterHostAssembly.validate(audit, kind: .macOSStatic, repositoryCallbacks: 2) == nil)
-            precondition(CounterHostAssembly.validate(audit, kind: .macOSStatic, useCaseCallbacks: 2) == nil)
-            precondition(CounterHostAssembly.validate(audit, kind: .macOSStatic, nonTransitionPublications: 2) == nil)
+            precondition(CounterHostAssembly.validate(audit, kind: counterStaticHostKind, sourceCallbacks: 21) == nil)
+            precondition(CounterHostAssembly.validate(audit, kind: counterStaticHostKind, repositoryCallbacks: 2) == nil)
+            precondition(CounterHostAssembly.validate(audit, kind: counterStaticHostKind, useCaseCallbacks: 2) == nil)
+            precondition(CounterHostAssembly.validate(audit, kind: counterStaticHostKind, nonTransitionPublications: 2) == nil)
             let limits = self.limits
             var keys = interaction.take()
             var checks = 0
@@ -70,7 +70,11 @@ extension StaticCounterProfileStorage {
                                             precondition(owner.constructions == 0 && owner.activationStep == 0)
                                             precondition(counterJoinSnapshot(pointer) == expected && counterJoinSnapshot(foreignControl) == foreignExpected)
                                             joinChecks += 3
+                                            #if hasFeature(Embedded)
+                                            var host = SignalAnalyzerPresetHostInstances.nrf52840Static(report: assembly.report, owner: consume owner)!
+                                            #else
                                             var host = SignalAnalyzerPresetHostInstances.macOSStatic(report: assembly.report, owner: consume owner)!
+                                            #endif
                                             precondition(host.lifecycleState == .valid && host.owner.constructions == 0 && pointer.pointee.finalized == 0)
                                             precondition(host.runOpportunity() == .invalidLifecycle)
                                             var count = 2 + joinChecks
@@ -130,7 +134,7 @@ extension StaticCounterProfileStorage {
     }
 }
 
-package func p08CounterHost() -> Int {
+package func p08CounterHost(write: CounterTiledPixelWrite? = nil) -> Int {
     var models = ObservableModelOwnerNamespace()
     var semantics = SemanticRecordOwnerNamespace()
     do {
@@ -138,10 +142,18 @@ package func p08CounterHost() -> Int {
         var partial = StaticCounterProfileStorage(modelOwner: try models.issue(), semanticOwner: try semantics.issue())
         var nonRetryable = StaticCounterProfileStorage(modelOwner: try models.issue(), semanticOwner: try semantics.issue())
         nonRetryable.control.terminalRetry = true
+        #if hasFeature(Embedded) || GIFTUI_COUNTER_TILED
+        complete.control.backend.write = write
+        partial.control.backend.write = write
+        nonRetryable.control.backend.write = write
+        #endif
         var failures = 0
         for step: UInt8 in 2...7 {
             var failed = StaticCounterProfileStorage(modelOwner: try models.issue(), semanticOwner: try semantics.issue())
             failed.control.idleQuiesceMode = step
+            #if hasFeature(Embedded) || GIFTUI_COUNTER_TILED
+            failed.control.backend.write = write
+            #endif
             failures += failed.runCounterHost(failAfterRuntime: false)
         }
         return complete.runCounterHost(failAfterRuntime: false) + partial.runCounterHost(failAfterRuntime: true) + nonRetryable.runCounterHost(failAfterRuntime: false) + failures
@@ -151,7 +163,7 @@ package func p08CounterHost() -> Int {
 // Ordinary owned conformers remain valid callers of the same widened internal
 // helper; runtime failures and lifecycle gating remain unchanged.
 private struct CounterOwnedSchedulerHost: MVPHostInstance {
-    typealias ActivationFailure = MacOSStaticHostActivationFailure
+    typealias ActivationFailure = CounterHostOwner.ActivationFailure
     let assemblyReport: HostAssemblyReport
     var lifecycleState: MVPHostLifecycleState = .active
     var calls = 0

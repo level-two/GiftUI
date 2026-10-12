@@ -1,0 +1,519 @@
+/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostApplicationStartupValidation.swift:9:38: error: property 'models' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUIRuntimeCore' was not imported by this file
+ 7 |         let isCounter = actionCount == 2
+ 8 |         guard isCounter || actionCount == 6,
+ 9 |             structural.runtimeLimits.models.maximumModelCaptureBanks == (isCounter ? 0 : 1),
+   |                                      `- error: property 'models' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUIRuntimeCore' was not imported by this file
+10 |             actionAndModel.firstActionCode == 0,
+11 |             actionAndModel.lastActionCode == actionCount - 1,
+
+/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostApplicationStartupValidation.swift:9:45: error: property 'maximumModelCaptureBanks' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUIRuntimeCore' was not imported by this file
+ 7 |         let isCounter = actionCount == 2
+ 8 |         guard isCounter || actionCount == 6,
+ 9 |             structural.runtimeLimits.models.maximumModelCaptureBanks == (isCounter ? 0 : 1),
+   |                                             `- error: property 'maximumModelCaptureBanks' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUIRuntimeCore' was not imported by this file
+10 |             actionAndModel.firstActionCode == 0,
+11 |             actionAndModel.lastActionCode == actionCount - 1,
+
+/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostApplicationStartupValidation.swift:46:38: error: property 'execution' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUIRuntimeCore' was not imported by this file
+44 |                 == structural.cardinality.normalizedInputSourceCapacity,
+45 |             inputAndWake.targetLocalPresentationGateCount == 1,
+46 |             structural.runtimeLimits.execution.maximumActiveInputSources == 1
+   |                                      `- error: property 'execution' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUIRuntimeCore' was not imported by this file
+47 |         else { return .invalidInputIntegration }
+48 |         guard inputAndWake.wakeRequesterCount == 1,
+
+/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostApplicationStartupValidation.swift:46:48: error: property 'maximumActiveInputSources' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUIExecution' was not imported by this file
+44 |                 == structural.cardinality.normalizedInputSourceCapacity,
+45 |             inputAndWake.targetLocalPresentationGateCount == 1,
+46 |             structural.runtimeLimits.execution.maximumActiveInputSources == 1
+   |                                                `- error: property 'maximumActiveInputSources' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUIExecution' was not imported by this file
+47 |         else { return .invalidInputIntegration }
+48 |         guard inputAndWake.wakeRequesterCount == 1,
+
+/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostEndpointStartupValidation.swift:10:13: error: struct 'RasterSurfaceDescriptor' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUISurfaceCore' was not imported by this file
+ 8 |         selectedTextRasterRealization: RasterRealizationID
+ 9 |     ) -> HostConfigurationError? {
+10 |         let descriptor = endpoint.descriptor
+   |             `- error: struct 'RasterSurfaceDescriptor' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUISurfaceCore' was not imported by this file
+11 |         let payload = endpoint.payloadLimits
+12 |         guard endpoint.effectivePresentation == effectivePresentation,
+
+/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostEndpointStartupValidation.swift:11:13: error: struct 'RasterPayloadLimits' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUIRasterCore' was not imported by this file
+ 9 |     ) -> HostConfigurationError? {
+10 |         let descriptor = endpoint.descriptor
+11 |         let payload = endpoint.payloadLimits
+   |             `- error: struct 'RasterPayloadLimits' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUIRasterCore' was not imported by this file
+12 |         guard endpoint.effectivePresentation == effectivePresentation,
+13 |             descriptor.capabilityExtent == effectivePresentation.extent,
+
+/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostEndpointStartupValidation.swift:13:24: error: property 'capabilityExtent' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUISurfaceCore' was not imported by this file
+11 |         let payload = endpoint.payloadLimits
+12 |         guard endpoint.effectivePresentation == effectivePresentation,
+13 |             descriptor.capabilityExtent == effectivePresentation.extent,
+   |                        `- error: property 'capabilityExtent' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUISurfaceCore' was not imported by this file
+14 |             descriptor.encoding == effectivePresentation.encoding,
+15 |             descriptor.bytesPerRow == effectivePresentation.rowBytes.rawValue,
+
+/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostEndpointStartupValidation.swift:14:24: error: property 'encoding' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUISurfaceCore' was not imported by this file
+12 |         guard endpoint.effectivePresentation == effectivePresentation,
+13 |             descriptor.capabilityExtent == effectivePresentation.extent,
+14 |             descriptor.encoding == effectivePresentation.encoding,
+   |                        `- error: property 'encoding' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUISurfaceCore' was not imported by this file
+15 |             descriptor.bytesPerRow == effectivePresentation.rowBytes.rawValue,
+16 |             descriptor.realization == effectivePresentation.realization,
+
+/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostEndpointStartupValidation.swift:15:24: error: property 'bytesPerRow' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUISurfaceCore' was not imported by this file
+13 |             descriptor.capabilityExtent == effectivePresentation.extent,
+14 |             descriptor.encoding == effectivePresentation.encoding,
+15 |             descriptor.bytesPerRow == effectivePresentation.rowBytes.rawValue,
+   |                        `- error: property 'bytesPerRow' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUISurfaceCore' was not imported by this file
+16 |             descriptor.realization == effectivePresentation.realization,
+17 |             descriptor.regionWidth == effectivePresentation.regionExtent.width,
+
+/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostEndpointStartupValidation.swift:16:24: error: property 'realization' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUISurfaceCore' was not imported by this file
+14 |             descriptor.encoding == effectivePresentation.encoding,
+15 |             descriptor.bytesPerRow == effectivePresentation.rowBytes.rawValue,
+16 |             descriptor.realization == effectivePresentation.realization,
+   |                        `- error: property 'realization' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUISurfaceCore' was not imported by this file
+17 |             descriptor.regionWidth == effectivePresentation.regionExtent.width,
+18 |             descriptor.regionHeight == effectivePresentation.regionExtent.height,
+
+/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostEndpointStartupValidation.swift:17:24: error: property 'regionWidth' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUISurfaceCore' was not imported by this file
+15 |             descriptor.bytesPerRow == effectivePresentation.rowBytes.rawValue,
+16 |             descriptor.realization == effectivePresentation.realization,
+17 |             descriptor.regionWidth == effectivePresentation.regionExtent.width,
+   |                        `- error: property 'regionWidth' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUISurfaceCore' was not imported by this file
+18 |             descriptor.regionHeight == effectivePresentation.regionExtent.height,
+19 |             endpoint.surfaceWritableCapacityBytes
+
+/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostEndpointStartupValidation.swift:18:24: error: property 'regionHeight' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUISurfaceCore' was not imported by this file
+16 |             descriptor.realization == effectivePresentation.realization,
+17 |             descriptor.regionWidth == effectivePresentation.regionExtent.width,
+18 |             descriptor.regionHeight == effectivePresentation.regionExtent.height,
+   |                        `- error: property 'regionHeight' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUISurfaceCore' was not imported by this file
+19 |             endpoint.surfaceWritableCapacityBytes
+20 |                 == effectivePresentation.requiredRasterBytes.rawValue,
+
+/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostEndpointStartupValidation.swift:21:21: error: property 'maximumRasterBytes' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUIRasterCore' was not imported by this file
+19 |             endpoint.surfaceWritableCapacityBytes
+20 |                 == effectivePresentation.requiredRasterBytes.rawValue,
+21 |             payload.maximumRasterBytes
+   |                     `- error: property 'maximumRasterBytes' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUIRasterCore' was not imported by this file
+22 |                 == effectivePresentation.requiredRasterBytes.rawValue,
+23 |             payload.maximumPayloadBytes
+
+/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostEndpointStartupValidation.swift:23:21: error: property 'maximumPayloadBytes' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUIRasterCore' was not imported by this file
+21 |             payload.maximumRasterBytes
+22 |                 == effectivePresentation.requiredRasterBytes.rawValue,
+23 |             payload.maximumPayloadBytes
+   |                     `- error: property 'maximumPayloadBytes' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUIRasterCore' was not imported by this file
+24 |                 == effectivePresentation.requiredPayloadBytes.rawValue,
+25 |             payload.maximumInFlightPayloads == effectivePresentation.inFlightCount,
+
+/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostEndpointStartupValidation.swift:25:21: error: property 'maximumInFlightPayloads' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUIRasterCore' was not imported by this file
+23 |             payload.maximumPayloadBytes
+24 |                 == effectivePresentation.requiredPayloadBytes.rawValue,
+25 |             payload.maximumInFlightPayloads == effectivePresentation.inFlightCount,
+   |                     `- error: property 'maximumInFlightPayloads' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUIRasterCore' was not imported by this file
+26 |             payload.maximumInFlightBytes
+27 |                 == effectivePresentation.requiredInFlightBytes.rawValue,
+
+/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostEndpointStartupValidation.swift:26:21: error: property 'maximumInFlightBytes' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUIRasterCore' was not imported by this file
+24 |                 == effectivePresentation.requiredPayloadBytes.rawValue,
+25 |             payload.maximumInFlightPayloads == effectivePresentation.inFlightCount,
+26 |             payload.maximumInFlightBytes
+   |                     `- error: property 'maximumInFlightBytes' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUIRasterCore' was not imported by this file
+27 |                 == effectivePresentation.requiredInFlightBytes.rawValue,
+28 |             endpoint.displaySubmissionLifetime
+
+/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/SignalAnalyzerDrawingStartupValidation.swift:34:43: error: property 'maximumSemanticScopes' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUIRenderLowering' was not imported by this file
+32 |         guard
+33 |             workload.renderSemanticScopeOccurrences
+34 |                 == limits.renderWorkspace.maximumSemanticScopes,
+   |                                           `- error: property 'maximumSemanticScopes' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUIRenderLowering' was not imported by this file
+35 |             workload.layoutScopeOccurrences == limits.renderWorkspace.maximumLayoutScopes,
+36 |             workload.maximumRenderTraversalDepth
+
+/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/SignalAnalyzerDrawingStartupValidation.swift:35:71: error: property 'maximumLayoutScopes' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUIRenderLowering' was not imported by this file
+33 |             workload.renderSemanticScopeOccurrences
+34 |                 == limits.renderWorkspace.maximumSemanticScopes,
+35 |             workload.layoutScopeOccurrences == limits.renderWorkspace.maximumLayoutScopes,
+   |                                                                       `- error: property 'maximumLayoutScopes' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUIRenderLowering' was not imported by this file
+36 |             workload.maximumRenderTraversalDepth
+37 |                 == limits.renderWorkspace.maximumTraversalDepth,
+
+/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/SignalAnalyzerDrawingStartupValidation.swift:37:43: error: property 'maximumTraversalDepth' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUIRenderLowering' was not imported by this file
+35 |             workload.layoutScopeOccurrences == limits.renderWorkspace.maximumLayoutScopes,
+36 |             workload.maximumRenderTraversalDepth
+37 |                 == limits.renderWorkspace.maximumTraversalDepth,
+   |                                           `- error: property 'maximumTraversalDepth' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUIRenderLowering' was not imported by this file
+38 |             workload.renderTextLineCount == limits.renderWorkspace.maximumTextLines,
+39 |             workload.ordinaryRenderOperations == limits.maximumOrdinaryRenderOperations
+
+/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/SignalAnalyzerDrawingStartupValidation.swift:38:68: error: property 'maximumTextLines' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUIRenderLowering' was not imported by this file
+36 |             workload.maximumRenderTraversalDepth
+37 |                 == limits.renderWorkspace.maximumTraversalDepth,
+38 |             workload.renderTextLineCount == limits.renderWorkspace.maximumTextLines,
+   |                                                                    `- error: property 'maximumTextLines' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUIRenderLowering' was not imported by this file
+39 |             workload.ordinaryRenderOperations == limits.maximumOrdinaryRenderOperations
+40 |         else { return .insufficientWorkloadCapacity }
+
+/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/SignalAnalyzerDrawingStartupValidation.swift:42:59: error: property 'maximumCanvasOccurrences' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUIDrawing' was not imported by this file
+40 |         else { return .insufficientWorkloadCapacity }
+41 | 
+42 |         guard drawing.canvasOccurrences == limits.drawing.maximumCanvasOccurrences,
+   |                                                           `- error: property 'maximumCanvasOccurrences' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUIDrawing' was not imported by this file
+43 |             drawing.maximumLivePathPoints == limits.drawing.maximumLivePathPoints,
+44 |             drawing.maximumLivePathSubpaths == limits.drawing.maximumLivePathSubpaths,
+
+/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/SignalAnalyzerDrawingStartupValidation.swift:43:61: error: property 'maximumLivePathPoints' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUIDrawing' was not imported by this file
+41 | 
+42 |         guard drawing.canvasOccurrences == limits.drawing.maximumCanvasOccurrences,
+43 |             drawing.maximumLivePathPoints == limits.drawing.maximumLivePathPoints,
+   |                                                             `- error: property 'maximumLivePathPoints' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUIDrawing' was not imported by this file
+44 |             drawing.maximumLivePathSubpaths == limits.drawing.maximumLivePathSubpaths,
+45 |             drawing.submittedStrokes == limits.drawing.maximumPlanStrokes,
+
+/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/SignalAnalyzerDrawingStartupValidation.swift:44:63: error: property 'maximumLivePathSubpaths' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUIDrawing' was not imported by this file
+42 |         guard drawing.canvasOccurrences == limits.drawing.maximumCanvasOccurrences,
+43 |             drawing.maximumLivePathPoints == limits.drawing.maximumLivePathPoints,
+44 |             drawing.maximumLivePathSubpaths == limits.drawing.maximumLivePathSubpaths,
+   |                                                               `- error: property 'maximumLivePathSubpaths' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUIDrawing' was not imported by this file
+45 |             drawing.submittedStrokes == limits.drawing.maximumPlanStrokes,
+46 |             drawing.snapshottedPoints == limits.drawing.maximumPlanPoints,
+
+/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/SignalAnalyzerDrawingStartupValidation.swift:45:56: error: property 'maximumPlanStrokes' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUIDrawing' was not imported by this file
+43 |             drawing.maximumLivePathPoints == limits.drawing.maximumLivePathPoints,
+44 |             drawing.maximumLivePathSubpaths == limits.drawing.maximumLivePathSubpaths,
+45 |             drawing.submittedStrokes == limits.drawing.maximumPlanStrokes,
+   |                                                        `- error: property 'maximumPlanStrokes' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUIDrawing' was not imported by this file
+46 |             drawing.snapshottedPoints == limits.drawing.maximumPlanPoints,
+47 |             drawing.snapshottedSubpaths == limits.drawing.maximumPlanSubpaths,
+
+/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/SignalAnalyzerDrawingStartupValidation.swift:46:57: error: property 'maximumPlanPoints' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUIDrawing' was not imported by this file
+44 |             drawing.maximumLivePathSubpaths == limits.drawing.maximumLivePathSubpaths,
+45 |             drawing.submittedStrokes == limits.drawing.maximumPlanStrokes,
+46 |             drawing.snapshottedPoints == limits.drawing.maximumPlanPoints,
+   |                                                         `- error: property 'maximumPlanPoints' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUIDrawing' was not imported by this file
+47 |             drawing.snapshottedSubpaths == limits.drawing.maximumPlanSubpaths,
+48 |             drawing.normalizedStrokeOperations
+
+/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/SignalAnalyzerDrawingStartupValidation.swift:47:59: error: property 'maximumPlanSubpaths' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUIDrawing' was not imported by this file
+45 |             drawing.submittedStrokes == limits.drawing.maximumPlanStrokes,
+46 |             drawing.snapshottedPoints == limits.drawing.maximumPlanPoints,
+47 |             drawing.snapshottedSubpaths == limits.drawing.maximumPlanSubpaths,
+   |                                                           `- error: property 'maximumPlanSubpaths' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUIDrawing' was not imported by this file
+48 |             drawing.normalizedStrokeOperations
+49 |                 == limits.drawing.maximumNormalizedStrokeOperations,
+
+/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/SignalAnalyzerDrawingStartupValidation.swift:49:35: error: property 'maximumNormalizedStrokeOperations' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUIDrawing' was not imported by this file
+47 |             drawing.snapshottedSubpaths == limits.drawing.maximumPlanSubpaths,
+48 |             drawing.normalizedStrokeOperations
+49 |                 == limits.drawing.maximumNormalizedStrokeOperations,
+   |                                   `- error: property 'maximumNormalizedStrokeOperations' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUIDrawing' was not imported by this file
+50 |             drawing.greatestLineWidth == limits.drawing.maximumLineWidth,
+51 |             combined.partialValue <= limits.render.maximumOperations,
+
+/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/SignalAnalyzerDrawingStartupValidation.swift:50:57: error: property 'maximumLineWidth' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUIDrawing' was not imported by this file
+48 |             drawing.normalizedStrokeOperations
+49 |                 == limits.drawing.maximumNormalizedStrokeOperations,
+50 |             drawing.greatestLineWidth == limits.drawing.maximumLineWidth,
+   |                                                         `- error: property 'maximumLineWidth' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUIDrawing' was not imported by this file
+51 |             combined.partialValue <= limits.render.maximumOperations,
+52 |             combined.partialValue <= limits.renderSink.maximumOperations
+
+/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/SignalAnalyzerDrawingStartupValidation.swift:51:52: error: property 'maximumOperations' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUIRenderLowering' was not imported by this file
+49 |                 == limits.drawing.maximumNormalizedStrokeOperations,
+50 |             drawing.greatestLineWidth == limits.drawing.maximumLineWidth,
+51 |             combined.partialValue <= limits.render.maximumOperations,
+   |                                                    `- error: property 'maximumOperations' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUIRenderLowering' was not imported by this file
+52 |             combined.partialValue <= limits.renderSink.maximumOperations
+53 |         else { return .insufficientWorkloadCapacity }
+
+/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/SignalAnalyzerDrawingStartupValidation.swift:52:56: error: property 'maximumOperations' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUIRenderCore' was not imported by this file
+50 |             drawing.greatestLineWidth == limits.drawing.maximumLineWidth,
+51 |             combined.partialValue <= limits.render.maximumOperations,
+52 |             combined.partialValue <= limits.renderSink.maximumOperations
+   |                                                        `- error: property 'maximumOperations' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUIRenderCore' was not imported by this file
+53 |         else { return .insufficientWorkloadCapacity }
+54 | 
+
+/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/SignalAnalyzerDrawingStartupValidation.swift:68:49: error: property 'maximumStaticCallableCases' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUIDrawing' was not imported by this file
+66 |                 let staticLimits = limits.staticCanvas
+67 |             else { return .invalidWorkload }
+68 |             guard callableCases == staticLimits.maximumStaticCallableCases,
+   |                                                 `- error: property 'maximumStaticCallableCases' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUIDrawing' was not imported by this file
+69 |                 captureBytes == staticLimits.maximumStaticCaptureBytes
+70 |             else { return .insufficientWorkloadCapacity }
+
+/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/SignalAnalyzerDrawingStartupValidation.swift:69:46: error: property 'maximumStaticCaptureBytes' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUIDrawing' was not imported by this file
+67 |             else { return .invalidWorkload }
+68 |             guard callableCases == staticLimits.maximumStaticCallableCases,
+69 |                 captureBytes == staticLimits.maximumStaticCaptureBytes
+   |                                              `- error: property 'maximumStaticCaptureBytes' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUIDrawing' was not imported by this file
+70 |             else { return .insufficientWorkloadCapacity }
+71 |         }
+
+/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/SignalAnalyzerWorkloadStartupValidation.swift:48:65: error: property 'maximumSemanticNodes' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUISemanticCore' was not imported by this file
+ 46 |             limits.models.maximumModelCaptureBanks == (isCounter ? 0 : 1),
+ 47 |             workload.requiredRuntimeLimits == limits,
+ 48 |             workload.semanticNodeOccurrences == limits.semantic.maximumSemanticNodes,
+    |                                                                 `- error: property 'maximumSemanticNodes' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUISemanticCore' was not imported by this file
+ 49 |             workload.semanticStructuralOccurrences
+ 50 |                 == limits.maximumSemanticStructuralOccurrences,
+
+/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/SignalAnalyzerWorkloadStartupValidation.swift:52:43: error: property 'maximumSemanticScopes' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUIRenderLowering' was not imported by this file
+ 50 |                 == limits.maximumSemanticStructuralOccurrences,
+ 51 |             workload.renderSemanticScopeOccurrences
+ 52 |                 == limits.renderWorkspace.maximumSemanticScopes,
+    |                                           `- error: property 'maximumSemanticScopes' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUIRenderLowering' was not imported by this file
+ 53 |             workload.layoutScopeOccurrences == limits.layout.maximumScopes,
+ 54 |             workload.layoutScopeOccurrences == limits.renderWorkspace.maximumLayoutScopes,
+
+/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/SignalAnalyzerWorkloadStartupValidation.swift:53:62: error: property 'maximumScopes' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUILayout' was not imported by this file
+ 51 |             workload.renderSemanticScopeOccurrences
+ 52 |                 == limits.renderWorkspace.maximumSemanticScopes,
+ 53 |             workload.layoutScopeOccurrences == limits.layout.maximumScopes,
+    |                                                              `- error: property 'maximumScopes' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUILayout' was not imported by this file
+ 54 |             workload.layoutScopeOccurrences == limits.renderWorkspace.maximumLayoutScopes,
+ 55 |             workload.maximumRenderTraversalDepth
+
+/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/SignalAnalyzerWorkloadStartupValidation.swift:54:71: error: property 'maximumLayoutScopes' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUIRenderLowering' was not imported by this file
+ 52 |                 == limits.renderWorkspace.maximumSemanticScopes,
+ 53 |             workload.layoutScopeOccurrences == limits.layout.maximumScopes,
+ 54 |             workload.layoutScopeOccurrences == limits.renderWorkspace.maximumLayoutScopes,
+    |                                                                       `- error: property 'maximumLayoutScopes' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUIRenderLowering' was not imported by this file
+ 55 |             workload.maximumRenderTraversalDepth
+ 56 |                 == limits.renderWorkspace.maximumTraversalDepth,
+
+/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/SignalAnalyzerWorkloadStartupValidation.swift:56:43: error: property 'maximumTraversalDepth' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUIRenderLowering' was not imported by this file
+ 54 |             workload.layoutScopeOccurrences == limits.renderWorkspace.maximumLayoutScopes,
+ 55 |             workload.maximumRenderTraversalDepth
+ 56 |                 == limits.renderWorkspace.maximumTraversalDepth,
+    |                                           `- error: property 'maximumTraversalDepth' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUIRenderLowering' was not imported by this file
+ 57 |             workload.renderTextLineCount == limits.layout.maximumTextLines,
+ 58 |             workload.renderTextLineCount == limits.renderWorkspace.maximumTextLines,
+
+/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/SignalAnalyzerWorkloadStartupValidation.swift:57:59: error: property 'maximumTextLines' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUILayout' was not imported by this file
+ 55 |             workload.maximumRenderTraversalDepth
+ 56 |                 == limits.renderWorkspace.maximumTraversalDepth,
+ 57 |             workload.renderTextLineCount == limits.layout.maximumTextLines,
+    |                                                           `- error: property 'maximumTextLines' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUILayout' was not imported by this file
+ 58 |             workload.renderTextLineCount == limits.renderWorkspace.maximumTextLines,
+ 59 |             workload.positionedGlyphCount == limits.layout.maximumPositionedGlyphs,
+
+/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/SignalAnalyzerWorkloadStartupValidation.swift:58:68: error: property 'maximumTextLines' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUIRenderLowering' was not imported by this file
+ 56 |                 == limits.renderWorkspace.maximumTraversalDepth,
+ 57 |             workload.renderTextLineCount == limits.layout.maximumTextLines,
+ 58 |             workload.renderTextLineCount == limits.renderWorkspace.maximumTextLines,
+    |                                                                    `- error: property 'maximumTextLines' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUIRenderLowering' was not imported by this file
+ 59 |             workload.positionedGlyphCount == limits.layout.maximumPositionedGlyphs,
+ 60 |             workload.positionedGlyphCount == limits.render.maximumPositionedGlyphs,
+
+/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/SignalAnalyzerWorkloadStartupValidation.swift:59:60: error: property 'maximumPositionedGlyphs' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUILayout' was not imported by this file
+ 57 |             workload.renderTextLineCount == limits.layout.maximumTextLines,
+ 58 |             workload.renderTextLineCount == limits.renderWorkspace.maximumTextLines,
+ 59 |             workload.positionedGlyphCount == limits.layout.maximumPositionedGlyphs,
+    |                                                            `- error: property 'maximumPositionedGlyphs' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUILayout' was not imported by this file
+ 60 |             workload.positionedGlyphCount == limits.render.maximumPositionedGlyphs,
+ 61 |             workload.positionedGlyphCount == limits.renderSink.maximumPositionedGlyphs,
+
+/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/SignalAnalyzerWorkloadStartupValidation.swift:60:60: error: property 'maximumPositionedGlyphs' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUIRenderLowering' was not imported by this file
+ 58 |             workload.renderTextLineCount == limits.renderWorkspace.maximumTextLines,
+ 59 |             workload.positionedGlyphCount == limits.layout.maximumPositionedGlyphs,
+ 60 |             workload.positionedGlyphCount == limits.render.maximumPositionedGlyphs,
+    |                                                            `- error: property 'maximumPositionedGlyphs' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUIRenderLowering' was not imported by this file
+ 61 |             workload.positionedGlyphCount == limits.renderSink.maximumPositionedGlyphs,
+ 62 |             workload.ordinaryRenderOperations == limits.maximumOrdinaryRenderOperations,
+
+/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/SignalAnalyzerWorkloadStartupValidation.swift:61:64: error: property 'maximumPositionedGlyphs' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUIRenderCore' was not imported by this file
+ 59 |             workload.positionedGlyphCount == limits.layout.maximumPositionedGlyphs,
+ 60 |             workload.positionedGlyphCount == limits.render.maximumPositionedGlyphs,
+ 61 |             workload.positionedGlyphCount == limits.renderSink.maximumPositionedGlyphs,
+    |                                                                `- error: property 'maximumPositionedGlyphs' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUIRenderCore' was not imported by this file
+ 62 |             workload.ordinaryRenderOperations == limits.maximumOrdinaryRenderOperations,
+ 63 |             workload.inputEventsPerOpportunity == limits.execution.maximumInputEvents,
+
+/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/SignalAnalyzerWorkloadStartupValidation.swift:63:68: error: property 'maximumInputEvents' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUIExecution' was not imported by this file
+ 61 |             workload.positionedGlyphCount == limits.renderSink.maximumPositionedGlyphs,
+ 62 |             workload.ordinaryRenderOperations == limits.maximumOrdinaryRenderOperations,
+ 63 |             workload.inputEventsPerOpportunity == limits.execution.maximumInputEvents,
+    |                                                                    `- error: property 'maximumInputEvents' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUIExecution' was not imported by this file
+ 64 |             workload.semanticActionsPerOpportunity
+ 65 |                 == limits.semantic.maximumActionOccurrences,
+
+/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/SignalAnalyzerWorkloadStartupValidation.swift:65:36: error: property 'maximumActionOccurrences' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUISemanticCore' was not imported by this file
+ 63 |             workload.inputEventsPerOpportunity == limits.execution.maximumInputEvents,
+ 64 |             workload.semanticActionsPerOpportunity
+ 65 |                 == limits.semantic.maximumActionOccurrences,
+    |                                    `- error: property 'maximumActionOccurrences' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUISemanticCore' was not imported by this file
+ 66 |             workload.semanticActionsPerOpportunity
+ 67 |                 == limits.execution.maximumSemanticActions,
+
+/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/SignalAnalyzerWorkloadStartupValidation.swift:67:37: error: property 'maximumSemanticActions' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUIExecution' was not imported by this file
+ 65 |                 == limits.semantic.maximumActionOccurrences,
+ 66 |             workload.semanticActionsPerOpportunity
+ 67 |                 == limits.execution.maximumSemanticActions,
+    |                                     `- error: property 'maximumSemanticActions' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUIExecution' was not imported by this file
+ 68 |             workload.semanticActionsPerOpportunity
+ 69 |                 == limits.execution.maximumCommittedActions,
+
+/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/SignalAnalyzerWorkloadStartupValidation.swift:69:37: error: property 'maximumCommittedActions' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUIExecution' was not imported by this file
+ 67 |                 == limits.execution.maximumSemanticActions,
+ 68 |             workload.semanticActionsPerOpportunity
+ 69 |                 == limits.execution.maximumCommittedActions,
+    |                                     `- error: property 'maximumCommittedActions' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUIExecution' was not imported by this file
+ 70 |             workload.semanticActionsPerOpportunity == limits.interaction.maximumActions,
+ 71 |             workload.semanticActionsPerOpportunity == limits.interaction.maximumHitRegions,
+
+/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/SignalAnalyzerWorkloadStartupValidation.swift:70:74: error: property 'maximumActions' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUIInteraction' was not imported by this file
+ 68 |             workload.semanticActionsPerOpportunity
+ 69 |                 == limits.execution.maximumCommittedActions,
+ 70 |             workload.semanticActionsPerOpportunity == limits.interaction.maximumActions,
+    |                                                                          `- error: property 'maximumActions' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUIInteraction' was not imported by this file
+ 71 |             workload.semanticActionsPerOpportunity == limits.interaction.maximumHitRegions,
+ 72 |             workload.completionFactsPerOpportunity
+
+/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/SignalAnalyzerWorkloadStartupValidation.swift:71:74: error: property 'maximumHitRegions' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUIInteraction' was not imported by this file
+ 69 |                 == limits.execution.maximumCommittedActions,
+ 70 |             workload.semanticActionsPerOpportunity == limits.interaction.maximumActions,
+ 71 |             workload.semanticActionsPerOpportunity == limits.interaction.maximumHitRegions,
+    |                                                                          `- error: property 'maximumHitRegions' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUIInteraction' was not imported by this file
+ 72 |             workload.completionFactsPerOpportunity
+ 73 |                 == limits.execution.maximumCompletionFacts
+
+/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/SignalAnalyzerWorkloadStartupValidation.swift:73:37: error: property 'maximumCompletionFacts' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUIExecution' was not imported by this file
+ 71 |             workload.semanticActionsPerOpportunity == limits.interaction.maximumHitRegions,
+ 72 |             workload.completionFactsPerOpportunity
+ 73 |                 == limits.execution.maximumCompletionFacts
+    |                                     `- error: property 'maximumCompletionFacts' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUIExecution' was not imported by this file
+ 74 |         else { return .insufficientWorkloadCapacity }
+ 75 | 
+
+/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/SignalAnalyzerWorkloadStartupValidation.swift:85:36: error: property 'maximumLocations' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUIObservableState' was not imported by this file
+ 83 |             cardinality.normalizedInputSourceCapacity == 1,
+ 84 |             workload.semanticActionsPerOpportunity == cardinality.actionCaseCount,
+ 85 |             limits.observableState.maximumLocations
+    |                                    `- error: property 'maximumLocations' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUIObservableState' was not imported by this file
+ 86 |                 == cardinality.rootModelLocationCount,
+ 87 |             limits.observableState.maximumRegistrations
+
+/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/SignalAnalyzerWorkloadStartupValidation.swift:87:36: error: property 'maximumRegistrations' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUIObservableState' was not imported by this file
+ 85 |             limits.observableState.maximumLocations
+ 86 |                 == cardinality.rootModelLocationCount,
+ 87 |             limits.observableState.maximumRegistrations
+    |                                    `- error: property 'maximumRegistrations' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUIObservableState' was not imported by this file
+ 88 |                 == cardinality.activeRegistrationCount,
+ 89 |             limits.observableState.maximumStagedAssociations
+
+/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/SignalAnalyzerWorkloadStartupValidation.swift:89:36: error: property 'maximumStagedAssociations' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUIObservableState' was not imported by this file
+ 87 |             limits.observableState.maximumRegistrations
+ 88 |                 == cardinality.activeRegistrationCount,
+ 89 |             limits.observableState.maximumStagedAssociations
+    |                                    `- error: property 'maximumStagedAssociations' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUIObservableState' was not imported by this file
+ 90 |                 == cardinality.stagedAssociationCount,
+ 91 |             limits.execution.maximumActiveInputSources
+
+/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/SignalAnalyzerWorkloadStartupValidation.swift:91:30: error: property 'maximumActiveInputSources' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUIExecution' was not imported by this file
+ 89 |             limits.observableState.maximumStagedAssociations
+ 90 |                 == cardinality.stagedAssociationCount,
+ 91 |             limits.execution.maximumActiveInputSources
+    |                              `- error: property 'maximumActiveInputSources' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUIExecution' was not imported by this file
+ 92 |                 == cardinality.normalizedInputSourceCapacity
+ 93 |         else { return .invalidWorkload }
+
+/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/SignalAnalyzerWorkloadStartupValidation.swift:102:30: error: property 'maximumStateChangeFacts' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUIExecution' was not imported by this file
+100 |         guard !totalPhysicalFactCapacity.overflow else { return .arithmeticOverflow }
+101 |         guard
+102 |             limits.execution.maximumStateChangeFacts
+    |                              `- error: property 'maximumStateChangeFacts' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUIExecution' was not imported by this file
+103 |                 >= totalPhysicalFactCapacity.partialValue
+104 |         else { return .insufficientWorkloadCapacity }
+
+/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/Generated/SignalAnalyzerPresets.generated.swift:149:24: error: initializer 'init(maximumDepth:maximumSemanticNodes:maximumBodyEvaluations:maximumModifierApplications:maximumActionOccurrences:)' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUISemanticCore' was not imported by this file
+147 |                 maximumModelCaptureBanks: 1
+148 |             ),
+149 |             semantic: .init(
+    |                        `- error: initializer 'init(maximumDepth:maximumSemanticNodes:maximumBodyEvaluations:maximumModifierApplications:maximumActionOccurrences:)' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUISemanticCore' was not imported by this file
+150 |                 maximumDepth: 34,
+151 |                 maximumSemanticNodes: 48,
+
+/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/Generated/SignalAnalyzerPresets.generated.swift:157:22: error: initializer 'init(maximumScopes:maximumDepth:maximumTextScalars:maximumTextLines:maximumPositionedGlyphs:)' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUILayout' was not imported by this file
+155 |             )!,
+156 |             maximumSemanticStructuralOccurrences: 126,
+157 |             layout: .init(
+    |                      `- error: initializer 'init(maximumScopes:maximumDepth:maximumTextScalars:maximumTextLines:maximumPositionedGlyphs:)' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUILayout' was not imported by this file
+158 |                 maximumScopes: 98,
+159 |                 maximumDepth: 13,
+
+/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/Generated/SignalAnalyzerPresets.generated.swift:164:22: error: initializer 'init(maximumOperations:maximumPositionedGlyphs:maximumClipDepth:)' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUIRenderLowering' was not imported by this file
+162 |                 maximumPositionedGlyphs: 224
+163 |             )!,
+164 |             render: .init(
+    |                      `- error: initializer 'init(maximumOperations:maximumPositionedGlyphs:maximumClipDepth:)' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUIRenderLowering' was not imported by this file
+165 |                 maximumOperations: 150,
+166 |                 maximumPositionedGlyphs: 224,
+
+/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/Generated/SignalAnalyzerPresets.generated.swift:169:31: error: initializer 'init(maximumSemanticScopes:maximumLayoutScopes:maximumTraversalDepth:maximumTextLines:)' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUIRenderLowering' was not imported by this file
+167 |                 maximumClipDepth: 5
+168 |             )!,
+169 |             renderWorkspace: .init(
+    |                               `- error: initializer 'init(maximumSemanticScopes:maximumLayoutScopes:maximumTraversalDepth:maximumTextLines:)' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUIRenderLowering' was not imported by this file
+170 |                 maximumSemanticScopes: 98,
+171 |                 maximumLayoutScopes: 98,
+
+/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/Generated/SignalAnalyzerPresets.generated.swift:175:26: error: initializer 'init(maximumOperations:maximumPositionedGlyphs:)' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUIRenderCore' was not imported by this file
+173 |                 maximumTextLines: 128
+174 |             )!,
+175 |             renderSink: .init(maximumOperations: 150, maximumPositionedGlyphs: 224),
+    |                          `- error: initializer 'init(maximumOperations:maximumPositionedGlyphs:)' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUIRenderCore' was not imported by this file
+176 |             maximumOrdinaryRenderOperations: 145,
+177 |             execution: .init(
+
+/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/Generated/SignalAnalyzerPresets.generated.swift:177:25: error: initializer 'init(maximumInputEvents:maximumStateChangeFacts:maximumCompletionFacts:maximumSemanticActions:maximumActiveInputSources:maximumCommittedActions:)' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUIExecution' was not imported by this file
+175 |             renderSink: .init(maximumOperations: 150, maximumPositionedGlyphs: 224),
+176 |             maximumOrdinaryRenderOperations: 145,
+177 |             execution: .init(
+    |                         `- error: initializer 'init(maximumInputEvents:maximumStateChangeFacts:maximumCompletionFacts:maximumSemanticActions:maximumActiveInputSources:maximumCommittedActions:)' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUIExecution' was not imported by this file
+178 |                 maximumInputEvents: 6,
+179 |                 maximumStateChangeFacts: 34,
+
+/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/Generated/SignalAnalyzerPresets.generated.swift:185:31: error: initializer 'init(maximumLocations:maximumRegistrations:maximumStagedAssociations:)' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUIObservableState' was not imported by this file
+183 |                 maximumCommittedActions: 6
+184 |             )!,
+185 |             observableState: .init(maximumLocations: 1, maximumRegistrations: 1, maximumStagedAssociations: 1)!,
+    |                               `- error: initializer 'init(maximumLocations:maximumRegistrations:maximumStagedAssociations:)' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUIObservableState' was not imported by this file
+186 |             interaction: .init(maximumActions: 6, maximumHitRegions: 6)!,
+187 |             drawing: .init(
+
+/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/Generated/SignalAnalyzerPresets.generated.swift:186:27: error: initializer 'init(maximumActions:maximumHitRegions:)' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUIInteraction' was not imported by this file
+184 |             )!,
+185 |             observableState: .init(maximumLocations: 1, maximumRegistrations: 1, maximumStagedAssociations: 1)!,
+186 |             interaction: .init(maximumActions: 6, maximumHitRegions: 6)!,
+    |                           `- error: initializer 'init(maximumActions:maximumHitRegions:)' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUIInteraction' was not imported by this file
+187 |             drawing: .init(
+188 |                 maximumLineWidth: 1,
+
+/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/Generated/SignalAnalyzerPresets.generated.swift:187:23: error: initializer 'init(maximumLineWidth:maximumCanvasOccurrences:maximumLivePathPoints:maximumLivePathSubpaths:maximumPlanStrokes:maximumPlanPoints:maximumPlanSubpaths:maximumNormalizedStrokeOperations:)' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUIDrawing' was not imported by this file
+185 |             observableState: .init(maximumLocations: 1, maximumRegistrations: 1, maximumStagedAssociations: 1)!,
+186 |             interaction: .init(maximumActions: 6, maximumHitRegions: 6)!,
+187 |             drawing: .init(
+    |                       `- error: initializer 'init(maximumLineWidth:maximumCanvasOccurrences:maximumLivePathPoints:maximumLivePathSubpaths:maximumPlanStrokes:maximumPlanPoints:maximumPlanSubpaths:maximumNormalizedStrokeOperations:)' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUIDrawing' was not imported by this file
+188 |                 maximumLineWidth: 1,
+189 |                 maximumCanvasOccurrences: 5,
+
+/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/Generated/SignalAnalyzerPresets.generated.swift:197:51: error: struct 'StaticCanvasLimits' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUIDrawing' was not imported by this file
+195 |                 maximumNormalizedStrokeOperations: 5
+196 |             )!,
+197 |             staticCanvas: staticCallableCases.map { cases in
+    |                                                   `- error: struct 'StaticCanvasLimits' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUIDrawing' was not imported by this file
+198 |                 .init(maximumStaticCallableCases: cases, maximumStaticCaptureBytes: staticCaptureBytes!)!
+199 |             },
+
+/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/Generated/SignalAnalyzerPresets.generated.swift:198:18: error: initializer 'init(maximumStaticCallableCases:maximumStaticCaptureBytes:)' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUIDrawing' was not imported by this file
+196 |             )!,
+197 |             staticCanvas: staticCallableCases.map { cases in
+198 |                 .init(maximumStaticCallableCases: cases, maximumStaticCaptureBytes: staticCaptureBytes!)!
+    |                  `- error: initializer 'init(maximumStaticCallableCases:maximumStaticCaptureBytes:)' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUIDrawing' was not imported by this file
+199 |             },
+200 |             profile: profile

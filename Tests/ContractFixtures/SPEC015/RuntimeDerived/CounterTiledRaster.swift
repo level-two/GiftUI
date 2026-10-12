@@ -12,7 +12,6 @@ import GiftUIRenderCore
 import GiftUISurfaceCore
 import GiftUITextResources
 
-typealias CounterTiledPixelWrite = @convention(c) (UInt16, UInt16, UInt16, UInt16, UnsafePointer<UInt8>?, Int) -> Int32
 // The existing control owns one tile and coverage bank. No payload copy is kept.
 // Native validation alone retains a display observation, excluded from firmware.
 struct CounterTiledBackendStorage {

@@ -1,0 +1,363 @@
+diff --git a/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterDynamicHostOwner.swift b/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterDynamicHostOwner.swift
+index 57895b9b..fd24c881 100644
+--- a/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterDynamicHostOwner.swift
++++ b/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterDynamicHostOwner.swift
+@@ -214,7 +214,11 @@ enum CounterDynamicHostState: ~Copyable, ~Escapable {
+ typealias CounterDynamicApplicationOwners = CounterApplicationOwners
+ 
+ struct CounterDynamicHostOwner: ~Copyable, ~Escapable, SignalAnalyzerPresetLiveOwner {
++    #if os(Linux)
++    typealias ActivationFailure = RaspberryPiDynamicHostActivationFailure
++    #else
+     typealias ActivationFailure = MacOSDynamicHostActivationFailure
++    #endif
+     private var state: CounterDynamicHostState
+     private var application: CounterDynamicApplicationOwners?
+     private(set) var constructions = 0
+diff --git a/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterDynamicHostProbe.swift b/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterDynamicHostProbe.swift
+index 1f4797d2..4342f953 100644
+--- a/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterDynamicHostProbe.swift
++++ b/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterDynamicHostProbe.swift
+@@ -10,12 +10,12 @@ import GiftUISemanticCore
+ 
+ extension DynamicCounterProfileStorage {
+     mutating func runCounterDynamicHost(failAfterRuntime: Bool) -> Int {
+-        guard case .valid(let audit) = audit(), let assembly = CounterHostAssembly.validate(audit, kind: .macOSDynamic) else { preconditionFailure("counter Dynamic valid-only host") }
++        guard case .valid(let audit) = audit(), let assembly = CounterHostAssembly.validate(audit, kind: counterDynamicHostKind) else { preconditionFailure("counter Dynamic valid-only host") }
+         // Declared producer-projection negatives, not analyzer producer behavior.
+-        precondition(CounterHostAssembly.validate(audit, kind: .macOSDynamic, sourceCallbacks: 21) == nil)
+-        precondition(CounterHostAssembly.validate(audit, kind: .macOSDynamic, repositoryCallbacks: 2) == nil)
+-        precondition(CounterHostAssembly.validate(audit, kind: .macOSDynamic, useCaseCallbacks: 2) == nil)
+-        precondition(CounterHostAssembly.validate(audit, kind: .macOSDynamic, nonTransitionPublications: 2) == nil)
++        precondition(CounterHostAssembly.validate(audit, kind: counterDynamicHostKind, sourceCallbacks: 21) == nil)
++        precondition(CounterHostAssembly.validate(audit, kind: counterDynamicHostKind, repositoryCallbacks: 2) == nil)
++        precondition(CounterHostAssembly.validate(audit, kind: counterDynamicHostKind, useCaseCallbacks: 2) == nil)
++        precondition(CounterHostAssembly.validate(audit, kind: counterDynamicHostKind, nonTransitionPublications: 2) == nil)
+         return counterForeignJoinScope { foreignModels, foreignRoot, foreignControl in
+             let limits = self.limits
+             var movedGeometry = geometry.take()
+@@ -64,7 +64,11 @@ extension DynamicCounterProfileStorage {
+                                         precondition(owner.constructions == 0 && owner.activationStep == 0)
+                                         precondition(counterJoinSnapshot(pointer) == expected && counterJoinSnapshot(foreignControl) == foreignExpected)
+                                         joinChecks += 3
++                                        #if os(Linux)
++                                        var host = SignalAnalyzerPresetHostInstances.raspberryPiDynamic(report: assembly.report, owner: consume owner)!
++                                        #else
+                                         var host = SignalAnalyzerPresetHostInstances.macOSDynamic(report: assembly.report, owner: consume owner)!
++                                        #endif
+                                         precondition(host.lifecycleState == .valid && host.owner.constructions == 0 && pointer.pointee.finalized == 0)
+                                         precondition(host.runOpportunity() == .invalidLifecycle)
+                                         var count = 2 + joinChecks
+diff --git a/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterGraphProbe.swift b/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterGraphProbe.swift
+index 2351c629..a42f8ddc 100644
+--- a/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterGraphProbe.swift
++++ b/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterGraphProbe.swift
+@@ -44,7 +44,7 @@ package func p08CounterGraph() -> Int {
+             let graph = CounterHostGraph(negative: negative)
+             precondition(HostComponentGraphValidation.validate(graph) == nil)
+             var observation = CounterConstructionObservation()
+-            precondition(CounterHostAssembly.validate(audit, kind: .macOSStatic, negative: negative, observation: &observation) == nil)
++            precondition(CounterHostAssembly.validate(audit, kind: counterStaticHostKind, negative: negative, observation: &observation) == nil)
+             precondition(observation.result == .invalid(stage: .graph, error: .invalidGraph))
+             precondition(observation.hasNoLaterReads)
+             precondition(profile.control.applicationConstructions == 0 && profile.control.finalized == 0 && profile.control.wake == nil)
+@@ -58,7 +58,7 @@ package func p08CounterGraph() -> Int {
+         reject(.hiddenRetainedReport, profile: profile)
+         reject(.undeclaredBoundText, profile: profile)
+         var positive = CounterConstructionObservation()
+-        precondition(CounterHostAssembly.validate(audit, kind: .macOSStatic, negative: nil, observation: &positive) != nil)
++        precondition(CounterHostAssembly.validate(audit, kind: counterStaticHostKind, negative: nil, observation: &positive) != nil)
+         guard case .valid? = positive.result else { preconditionFailure("counter graph positive") }
+         precondition(positive.runtimeReads == 1 && positive.textReads == 1 && positive.workloadReads == 1 && positive.capabilityReads == 1 && positive.endpointReads == 1 && positive.applicationReads == 1 && positive.inputReads == 1 && positive.policyReads == 1)
+         precondition(profile.control.applicationConstructions == 0 && profile.control.finalized == 0 && profile.control.wake == nil)
+diff --git a/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostOwner.swift b/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostOwner.swift
+index c9ab7880..87e6ec20 100644
+--- a/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostOwner.swift
++++ b/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostOwner.swift
+@@ -271,7 +271,11 @@ enum CounterHostState: ~Copyable, ~Escapable {
+ }
+ 
+ struct CounterHostOwner: ~Copyable, ~Escapable, SignalAnalyzerPresetLiveOwner {
++    #if hasFeature(Embedded)
++    typealias ActivationFailure = NRF52840StaticHostActivationFailure
++    #else
+     typealias ActivationFailure = MacOSStaticHostActivationFailure
++    #endif
+     private var state: CounterHostState
+     private var application: CounterApplicationOwners?
+     private(set) var constructions = 0
+diff --git a/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostProbe.swift b/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostProbe.swift
+index 21cbf45e..f1e4cee7 100644
+--- a/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostProbe.swift
++++ b/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostProbe.swift
+@@ -10,14 +10,14 @@ import GiftUISemanticCore
+ 
+ extension StaticCounterProfileStorage {
+     mutating func runCounterHost(failAfterRuntime: Bool) -> Int {
+-        guard case .valid(let audit) = audit(), let assembly = CounterHostAssembly.validate(audit, kind: .macOSStatic) else { preconditionFailure("counter valid-only host") }
++        guard case .valid(let audit) = audit(), let assembly = CounterHostAssembly.validate(audit, kind: counterStaticHostKind) else { preconditionFailure("counter valid-only host") }
+         return counterForeignJoinScope { foreignModels, foreignRoot, foreignControl in
+             let ownedChecks = counterOwnedSchedulerCompatibility(assembly.report)
+             // Declared producer-projection negatives, not analyzer producer behavior.
+-            precondition(CounterHostAssembly.validate(audit, kind: .macOSStatic, sourceCallbacks: 21) == nil)
+-            precondition(CounterHostAssembly.validate(audit, kind: .macOSStatic, repositoryCallbacks: 2) == nil)
+-            precondition(CounterHostAssembly.validate(audit, kind: .macOSStatic, useCaseCallbacks: 2) == nil)
+-            precondition(CounterHostAssembly.validate(audit, kind: .macOSStatic, nonTransitionPublications: 2) == nil)
++            precondition(CounterHostAssembly.validate(audit, kind: counterStaticHostKind, sourceCallbacks: 21) == nil)
++            precondition(CounterHostAssembly.validate(audit, kind: counterStaticHostKind, repositoryCallbacks: 2) == nil)
++            precondition(CounterHostAssembly.validate(audit, kind: counterStaticHostKind, useCaseCallbacks: 2) == nil)
++            precondition(CounterHostAssembly.validate(audit, kind: counterStaticHostKind, nonTransitionPublications: 2) == nil)
+             let limits = self.limits
+             var keys = interaction.take()
+             var checks = 0
+@@ -70,7 +70,11 @@ extension StaticCounterProfileStorage {
+                                             precondition(owner.constructions == 0 && owner.activationStep == 0)
+                                             precondition(counterJoinSnapshot(pointer) == expected && counterJoinSnapshot(foreignControl) == foreignExpected)
+                                             joinChecks += 3
++                                            #if hasFeature(Embedded)
++                                            var host = SignalAnalyzerPresetHostInstances.nrf52840Static(report: assembly.report, owner: consume owner)!
++                                            #else
+                                             var host = SignalAnalyzerPresetHostInstances.macOSStatic(report: assembly.report, owner: consume owner)!
++                                            #endif
+                                             precondition(host.lifecycleState == .valid && host.owner.constructions == 0 && pointer.pointee.finalized == 0)
+                                             precondition(host.runOpportunity() == .invalidLifecycle)
+                                             var count = 2 + joinChecks
+@@ -130,7 +134,7 @@ extension StaticCounterProfileStorage {
+     }
+ }
+ 
+-package func p08CounterHost() -> Int {
++package func p08CounterHost(write: CounterTiledPixelWrite? = nil) -> Int {
+     var models = ObservableModelOwnerNamespace()
+     var semantics = SemanticRecordOwnerNamespace()
+     do {
+@@ -138,10 +142,18 @@ package func p08CounterHost() -> Int {
+         var partial = StaticCounterProfileStorage(modelOwner: try models.issue(), semanticOwner: try semantics.issue())
+         var nonRetryable = StaticCounterProfileStorage(modelOwner: try models.issue(), semanticOwner: try semantics.issue())
+         nonRetryable.control.terminalRetry = true
++        #if hasFeature(Embedded) || GIFTUI_COUNTER_TILED
++        complete.control.backend.write = write
++        partial.control.backend.write = write
++        nonRetryable.control.backend.write = write
++        #endif
+         var failures = 0
+         for step: UInt8 in 2...7 {
+             var failed = StaticCounterProfileStorage(modelOwner: try models.issue(), semanticOwner: try semantics.issue())
+             failed.control.idleQuiesceMode = step
++            #if hasFeature(Embedded) || GIFTUI_COUNTER_TILED
++            failed.control.backend.write = write
++            #endif
+             failures += failed.runCounterHost(failAfterRuntime: false)
+         }
+         return complete.runCounterHost(failAfterRuntime: false) + partial.runCounterHost(failAfterRuntime: true) + nonRetryable.runCounterHost(failAfterRuntime: false) + failures
+@@ -151,7 +163,7 @@ package func p08CounterHost() -> Int {
+ // Ordinary owned conformers remain valid callers of the same widened internal
+ // helper; runtime failures and lifecycle gating remain unchanged.
+ private struct CounterOwnedSchedulerHost: MVPHostInstance {
+-    typealias ActivationFailure = MacOSStaticHostActivationFailure
++    typealias ActivationFailure = CounterHostOwner.ActivationFailure
+     let assemblyReport: HostAssemblyReport
+     var lifecycleState: MVPHostLifecycleState = .active
+     var calls = 0
+diff --git a/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterTiledRaster.swift b/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterTiledRaster.swift
+index cbd11577..9e880a38 100644
+--- a/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterTiledRaster.swift
++++ b/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterTiledRaster.swift
+@@ -12,7 +12,6 @@ import GiftUIRenderCore
+ import GiftUISurfaceCore
+ import GiftUITextResources
+ 
+-typealias CounterTiledPixelWrite = @convention(c) (UInt16, UInt16, UInt16, UInt16, UnsafePointer<UInt8>?, Int) -> Int32
+ // The existing control owns one tile and coverage bank. No payload copy is kept.
+ // Native validation alone retains a display observation, excluded from firmware.
+ struct CounterTiledBackendStorage {
+diff --git a/scripts/contracts/check-spec-015-counter.py b/scripts/contracts/check-spec-015-counter.py
+index 405d6614..70bfb6bf 100644
+--- a/scripts/contracts/check-spec-015-counter.py
++++ b/scripts/contracts/check-spec-015-counter.py
+@@ -12,10 +12,15 @@ ROOT = pathlib.Path(__file__).resolve().parents[2]
+ parser = argparse.ArgumentParser()
+ parser.add_argument('--runtime-build', required=True, type=pathlib.Path)
+ parser.add_argument('--host-build', type=pathlib.Path, default=ROOT / '.build/contracts/p08-scoped-host-c5eocina')
++parser.add_argument('--profile', choices=('macos-dynamic', 'macos-static', 'raspberry-pi-armv6', 'nrf52840-embedded'))
+ parser.add_argument('--raster-realization', choices=('full-surface', 'tiled'), default='full-surface')
+ args = parser.parse_args()
+ base = args.runtime_build.resolve()
+ prior = json.loads((base / 'result.json').read_text())
++if args.profile:
++    assert prior['profile'] == args.profile, 'runtime recipe profile mismatch'
++is_target = args.profile in ('raspberry-pi-armv6', 'nrf52840-embedded')
++is_embedded = args.profile == 'nrf52840-embedded'
+ def digest(path):
+     return hashlib.sha256(path.read_bytes()).hexdigest()
+ for name, expected in prior['inputs'].items():
+@@ -41,15 +46,21 @@ for name, expected in host_receipt['inputs'].items():
+         assert digest(ROOT / name) == expected, name
+ for name, expected in host_receipt['artifacts'].items():
+     assert digest(host / name) == expected['sha256'], name
+-out = pathlib.Path(tempfile.mkdtemp(prefix='p08-counter-', dir=ROOT / '.build/contracts'))
++output_root = ROOT / ('.build/raspberry-pi/contracts' if args.profile == 'raspberry-pi-armv6' else '.build/nrf52840/contracts' if is_embedded else '.build/contracts')
++output_root.mkdir(parents=True, exist_ok=True)
++out = pathlib.Path(tempfile.mkdtemp(prefix='p08-counter-', dir=output_root))
+ flags[flags.index('-module-cache-path') + 1] = str(out / 'cache')
+-flags = ['-I', str(out), '-I', str(host), *flags]
+-if args.raster_realization == 'tiled':
++flags = ['-I', str(out), *([] if is_target else ['-I', str(host)]), *flags]
++if args.profile in ('macos-dynamic', 'raspberry-pi-armv6'):
++    flags += ['-D', 'GIFTUI_COUNTER_ROUTE_DYNAMIC']
++if is_embedded:
++    flags += ['-Xfrontend', '-function-sections', '-Xfrontend', '-disable-stack-protector']
++if args.raster_realization == 'tiled' or is_target:
+     flags += ['-D', 'GIFTUI_COUNTER_TILED']
+ fixture = ROOT / 'Tests/ContractFixtures/SPEC015/RuntimeDerived'
+ inputs = [pathlib.Path(__file__).resolve(), fixture / 'Counter.swift', fixture / 'Counter.schema.json', fixture / 'CounterModel.swift', fixture / 'CounterModelProbe.swift', fixture / 'CounterSemantic.swift', fixture / 'CounterSemanticProbe.swift', fixture / 'CounterGeometry.swift', fixture / 'CounterStaticGeometry.swift', fixture / 'CounterRender.swift', fixture / 'CounterFixedStorageProbe.swift']
+ storage_sources = sorted(fixture.glob('StaticCounter*.swift'))
+-join_sources = [fixture / name for name in ('CounterAdmission.swift', 'CounterPipelineOwner.swift', 'CounterProfileStorage.swift', 'CounterStorageMeasurement.swift', 'CounterStorageRegions.swift', 'CounterCoordinatorProbe.swift', 'CounterWorkload.swift', 'CounterHostAssembly.swift', 'CounterHostOwner.swift', 'CounterHostProbe.swift', 'CounterDynamicHostOwner.swift', 'CounterDynamicHostProbe.swift', 'CounterHostCorpus.swift', 'CounterNativeRaster.swift', 'CounterTiledRaster.swift', 'CounterPixelOracle.swift', 'CounterApplication.swift', 'CounterWakeIntegration.swift', 'CounterGraphProbe.swift')]
++join_sources = [fixture / name for name in ('CounterAdmission.swift', 'CounterPipelineOwner.swift', 'CounterProfileStorage.swift', 'CounterStorageMeasurement.swift', 'CounterStorageRegions.swift', 'CounterCoordinatorProbe.swift', 'CounterWorkload.swift', 'CounterHostAssembly.swift', 'CounterHostOwner.swift', 'CounterHostProbe.swift', 'CounterDynamicHostOwner.swift', 'CounterDynamicHostProbe.swift', 'CounterHostCorpus.swift', 'CounterNativeRaster.swift', 'CounterTiledRaster.swift', 'CounterPixelOracle.swift', 'CounterApplication.swift', 'CounterWakeIntegration.swift', 'CounterGraphProbe.swift', 'CounterRouteEntry.swift')]
+ inputs.extend(join_sources)
+ inputs.extend(storage_sources)
+ commands, checks = [], []
+@@ -79,6 +90,20 @@ for old in prior['commands']:
+     run(module_name, [compiler, *flags, '-module-name', module_name, '-emit-module', '-emit-object', *sources,
+                       '-emit-module-path', out / (module_name + '.swiftmodule'), '-o', out / (module_name + '.o')])
+     rebuilt_runtime.append(module_name)
++# The verified native host receipt supplies source recipes only on targets.
++# Every lower host module is freshly compiled with the selected target flags.
++if is_target:
++    for old in host_receipt['commands']:
++        pieces = shlex.split(old)
++        if '-module-name' not in pieces or '-emit-module' not in pieces:
++            continue
++        name = pieces[pieces.index('-module-name') + 1]
++        if name not in ('GiftUICapabilities', 'GiftUIFailureCore', 'GiftUISurfaceCore', 'GiftUIDisplayCore', 'GiftUIRasterCore', 'GiftUIBackendIntegration'):
++            continue
++        sources = [pathlib.Path(value) for value in pieces[pieces.index('-module-name') + 2:] if value.endswith('.swift')]
++        inputs.extend(sources)
++        run(name, [compiler, *flags, '-module-name', name, '-emit-module', '-emit-object', *sources,
++                   '-emit-module-path', out / (name + '.swiftmodule'), '-o', out / (name + '.o')])
+ host_sources = sorted((ROOT / 'Sources/GiftUIHostConfiguration').glob('*.swift')) + sorted((ROOT / 'Sources/GiftUIHostConfiguration/Generated').glob('*.swift'))
+ inputs.extend(host_sources)
+ run('GiftUIHostConfiguration', [compiler, *flags, '-module-name', 'GiftUIHostConfiguration', '-emit-module', '-emit-object', *host_sources,
+@@ -94,7 +119,7 @@ run('counter-model', [compiler, *flags, '-module-name', 'P08CounterRuntime', '-e
+ copy_negative = out / 'CounterHostCopyNegative.swift'
+ copy_negative.write_text('import GiftUIHostConfiguration\nfunc reject(_ host: borrowing SignalAnalyzerPresetHostInstance<CounterHostOwner>) { let duplicate = copy host; _ = duplicate }\n')
+ backing_negative = out / 'CounterHostBackingNegative.swift'
+-positive = (fixture / 'CounterHostProbe.swift').read_text().split('package func p08CounterHost()')[0]
++positive = (fixture / 'CounterHostProbe.swift').read_text().split('package func p08CounterHost(')[0]
+ positive = positive.replace('let ownedChecks = counterOwnedSchedulerCompatibility(assembly.report)', 'let ownedChecks = 0')
+ positive = positive.replace('runCounterHost(failAfterRuntime: Bool)', 'rejectCounterHostEscape(failAfterRuntime: Bool)')
+ positive = positive.replace('        guard case .valid(let audit)', '        var escaped: SignalAnalyzerPresetHostInstance<CounterHostOwner>? = nil\n        guard case .valid(let audit)', 1)
+@@ -118,14 +143,20 @@ for label, negative, diagnostic in (
+     ('counter-host-backing', backing_negative, ("lifetime-dependent variable 'escaped' escapes its scope", "activationBacking", "root.withLifetime", "semantic.withLifetime", "canvas.withLifetime", "withUnsafeMutablePointer")),
+     ('counter-dynamic-host-backing', dynamic_backing_negative, ("lifetime-dependent variable 'escaped' escapes its scope", "activationBacking", "root.withLifetime", "semantic.withLifetime", "canvas.withLifetime", "withUnsafeMutablePointer")),
+ ):
++    if is_embedded and label == 'counter-dynamic-host-backing':
++        continue  # Dynamic composition does not exist in the Embedded route.
+     run(label, [compiler, *flags, '-module-name', 'P08CounterRuntime', '-emit-object', *counter_sources, *storage_sources, *join_sources, negative, '-o', out / (label + '.o')], diagnostic)
+-main = out / 'Main.swift'
+-main.write_text('import P08CounterRuntime\nimport Darwin\n@main struct Main { static func main() { setbuf(stdout, nil); print("P08 counter components assertions=\\(p08CounterGraph() + p08CounterModel() + p08CounterSemantic() + p08CounterFixedStorage() + p08CounterCoordinator() + p08CounterHost() + p08CounterDynamicHost()) failures=0") } }\n')
+-objects = []  # All selected runtime objects were freshly rebuilt above.
+-host_objects = [path for path in sorted(host.glob('GiftUI*.o')) if path.name != 'GiftUIHostConfiguration.o']
+-run('link', [compiler, *flags, main, core / 'GiftUI.o', *objects, *host_objects, *sorted(out.glob('*.o')), '-o', out / 'counter'])
+-execution = run('execute', [out / 'counter']).strip()
+-receipt = dict(scope=__doc__, raster_realization=args.raster_realization, profile=prior['profile'], compiler=str(compiler.relative_to(ROOT)), compiler_sha256=digest(compiler), runtime_build=str(base.relative_to(ROOT)), runtime_receipt_sha256=digest(base / 'result.json'), host_build=str(host.relative_to(ROOT)), host_receipt_sha256=digest(host / 'result.json'), inputs={str(p.relative_to(ROOT)): digest(p) for p in inputs}, commands=commands, checks=checks, execution=execution)
++if not is_target:
++    main = out / 'Main.swift'
++    expression = 'p08CounterRoute() + p08CounterModel() + p08CounterSemantic() + p08CounterFixedStorage() + p08CounterCoordinator()' if args.profile else 'p08CounterGraph() + p08CounterModel() + p08CounterSemantic() + p08CounterFixedStorage() + p08CounterCoordinator() + p08CounterHost() + p08CounterDynamicHost()'
++    main.write_text('import P08CounterRuntime\nimport Darwin\n@main struct Main { static func main() { setbuf(stdout, nil); print("P08 counter components assertions=\\(' + expression + ') failures=0") } }\n')
++    host_objects = [path for path in sorted(host.glob('GiftUI*.o')) if path.name != 'GiftUIHostConfiguration.o']
++    run('link', [compiler, *flags, main, core / 'GiftUI.o', *host_objects, *sorted(out.glob('*.o')), '-o', out / 'counter'])
++    execution = run('execute', [out / 'counter']).strip()
++else:
++    execution = 'cross-compiled current selected counter host only; no target execution or linked-image claim'
++    (out / 'objects.list').write_text('\n'.join(map(str, [core / 'GiftUI.o', *sorted(out.glob('*.o'))])) + '\n')
++receipt = dict(scope=__doc__, raster_realization="tiled" if is_target else args.raster_realization, profile=prior['profile'], selected_host_profile=args.profile, target_flags=flags, embedded_dynamic_escape_applicable=not is_embedded, compiler=str(compiler.relative_to(ROOT)), compiler_sha256=digest(compiler), runtime_build=str(base.relative_to(ROOT)), runtime_receipt_sha256=digest(base / 'result.json'), host_build=str(host.relative_to(ROOT)), host_receipt_sha256=digest(host / 'result.json'), inputs={str(p.relative_to(ROOT)): digest(p) for p in inputs}, commands=commands, checks=checks, execution=execution)
+ receipt['artifacts'] = {str(p.relative_to(out)): dict(sha256=digest(p), bytes=p.stat().st_size) for p in out.iterdir() if p.is_file()}
+ (out / 'result.json').write_text(json.dumps(receipt, indent=2) + '\n')
+ print(execution.splitlines()[-1])
+diff --git a/scripts/contracts/run-spec-015.sh b/scripts/contracts/run-spec-015.sh
+index f879b552..4bb71020 100755
+--- a/scripts/contracts/run-spec-015.sh
++++ b/scripts/contracts/run-spec-015.sh
+@@ -15,13 +15,21 @@ mkdir -p "${CLANG_MODULE_CACHE_PATH}"
+ 
+ usage() {
+     printf '%s\n' 'Usage: scripts/contracts/run-spec-015.sh --profile <profile>' \
+-        '' 'Profiles: macos-dynamic, macos-static, raspberry-pi-armv6, nrf52840-embedded'
++        '' 'Profiles: macos-dynamic, macos-static, raspberry-pi-armv6, nrf52840-embedded' \
++        'Optional: --corpus rfc-014-counter --runtime-build PATH [--host-build PATH]' \
++        'Counter target routes compile current objects; supported image build is separate.'
+ }
+ 
+ profile=""
++corpus="legacy"
++runtime_build=""
++host_build=""
+ while [[ $# -gt 0 ]]; do
+     case "$1" in
+         --profile) [[ $# -ge 2 ]] || { usage >&2; exit 2; }; profile="$2"; shift 2 ;;
++        --corpus) [[ $# -ge 2 ]] || { usage >&2; exit 2; }; corpus="$2"; shift 2 ;;
++        --runtime-build) [[ $# -ge 2 ]] || { usage >&2; exit 2; }; runtime_build="$2"; shift 2 ;;
++        --host-build) [[ $# -ge 2 ]] || { usage >&2; exit 2; }; host_build="$2"; shift 2 ;;
+         -h | --help) usage; exit 0 ;;
+         *) usage >&2; exit 2 ;;
+     esac
+@@ -31,6 +39,17 @@ case "${profile}" in
+     *) usage >&2; exit 2 ;;
+ esac
+ 
++case "${corpus}" in
++    legacy) [[ -z "${runtime_build}${host_build}" ]] || { usage >&2; exit 2; } ;;
++    rfc-014-counter)
++        [[ -n "${runtime_build}" ]] || { printf 'counter route requires matching --runtime-build receipt\n' >&2; exit 2; }
++        counter_arguments=(--profile "${profile}" --runtime-build "${runtime_build}")
++        if [[ -n "${host_build}" ]]; then counter_arguments+=(--host-build "${host_build}"); fi
++        exec python3 "${SCRIPT_DIR}/check-spec-015-counter.py" "${counter_arguments[@]}"
++        ;;
++    *) usage >&2; exit 2 ;;
++esac
++
+ if [[ "${GIFTUI_IMMUTABLE_REPORT_INNER:-false}" != true ]]; then
+     exec "${SCRIPT_DIR}/run-immutable-contract-driver.sh" \
+         --spec SPEC-015 --profile "${profile}" --driver "$0"
+diff --git a/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterRouteEntry.swift b/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterRouteEntry.swift
+new file mode 100644
+index 00000000..f4bd35a8
+--- /dev/null
++++ b/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterRouteEntry.swift
+@@ -0,0 +1,35 @@
++import GiftUIHostConfiguration
++
++package typealias CounterTiledPixelWrite = @convention(c) (UInt16, UInt16, UInt16, UInt16, UnsafePointer<UInt8>?, Int) -> Int32
++
++var counterStaticHostKind: MVPHostKind {
++    #if hasFeature(Embedded)
++    .nrf52840Static
++    #else
++    .macOSStatic
++    #endif
++}
++
++#if !hasFeature(Embedded)
++var counterDynamicHostKind: MVPHostKind {
++    #if os(Linux)
++    .raspberryPiDynamic
++    #else
++    .macOSDynamic
++    #endif
++}
++
++#endif
++// One selected registered profile, with the same finite host corpus.
++// Firmware supplies its existing synchronous SPI writer at this fixture C root.
++@_cdecl("giftui_rfc014_counter_entry")
++func giftuiRFC014CounterEntry(_ write: CounterTiledPixelWrite?) -> UInt32 {
++    UInt32(p08CounterRoute(write: write))
++}
++package func p08CounterRoute(write: CounterTiledPixelWrite? = nil) -> Int {
++    #if GIFTUI_COUNTER_ROUTE_DYNAMIC
++    p08CounterGraph() + p08CounterDynamicHost()
++    #else
++    p08CounterGraph() + p08CounterHost(write: write)
++    #endif
++}

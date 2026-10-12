@@ -214,7 +214,11 @@ enum CounterDynamicHostState: ~Copyable, ~Escapable {
 typealias CounterDynamicApplicationOwners = CounterApplicationOwners
 
 struct CounterDynamicHostOwner: ~Copyable, ~Escapable, SignalAnalyzerPresetLiveOwner {
+    #if os(Linux)
+    typealias ActivationFailure = RaspberryPiDynamicHostActivationFailure
+    #else
     typealias ActivationFailure = MacOSDynamicHostActivationFailure
+    #endif
     private var state: CounterDynamicHostState
     private var application: CounterDynamicApplicationOwners?
     private(set) var constructions = 0

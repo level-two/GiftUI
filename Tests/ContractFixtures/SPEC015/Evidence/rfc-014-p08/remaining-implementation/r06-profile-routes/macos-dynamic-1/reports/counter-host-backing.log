@@ -1,0 +1,141 @@
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterGraphProbe.swift:41:13: warning: variable 'profile' was never mutated; consider changing to 'let' constant [#VariableNeverMutated]
+39 |     var count = 46
+40 |     do {
+41 |         var profile = StaticCounterProfileStorage(modelOwner: try modelOwners.issue(), semanticOwner: try semanticOwners.issue())
+   |             `- warning: variable 'profile' was never mutated; consider changing to 'let' constant [#VariableNeverMutated]
+42 |         guard case .valid(let audit) = profile.audit() else { preconditionFailure("counter graph audit") }
+43 |         func reject(_ negative: CounterConstructionNegative, profile: borrowing StaticCounterProfileStorage) {
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-counter-18g4uy1r/CounterHostBackingNegative.swift:13:13: error: lifetime-dependent variable 'escaped' escapes its scope
+11 | extension StaticCounterProfileStorage {
+12 |     mutating func rejectCounterHostEscape(failAfterRuntime: Bool) -> Int {
+13 |         var escaped: SignalAnalyzerPresetHostInstance<CounterHostOwner>? = nil
+   |             `- error: lifetime-dependent variable 'escaped' escapes its scope
+14 |         guard case .valid(let audit) = audit(), let assembly = CounterHostAssembly.validate(audit, kind: counterStaticHostKind) else { preconditionFailure("counter valid-only host") }
+15 |         return counterForeignJoinScope { foreignModels, foreignRoot, foreignControl in
+   :
+24 |             var checks = 0
+25 |             do throws(ObservableStateError) {
+26 |                 try root.withLifetime(limits: limits.observableState) { (models, root) throws(ObservableStateError) in
+   |                                                                          `- note: it depends on a closure capture; this is not yet supported
+27 |                     do throws(SemanticExpansionError) {
+28 |                         var records = semanticBacking.records.mutableSpan
+   :
+79 |                                             _ = host.activate()
+80 |                                         escaped = consume host
+81 |                                         return 1
+   |                                         `- note: this use causes the lifetime-dependent value to escape
+82 |                                         }
+83 |                                     }
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-counter-18g4uy1r/CounterHostBackingNegative.swift:13:13: error: lifetime-dependent variable 'escaped' escapes its scope
+11 | extension StaticCounterProfileStorage {
+12 |     mutating func rejectCounterHostEscape(failAfterRuntime: Bool) -> Int {
+13 |         var escaped: SignalAnalyzerPresetHostInstance<CounterHostOwner>? = nil
+   |             `- error: lifetime-dependent variable 'escaped' escapes its scope
+14 |         guard case .valid(let audit) = audit(), let assembly = CounterHostAssembly.validate(audit, kind: counterStaticHostKind) else { preconditionFailure("counter valid-only host") }
+15 |         return counterForeignJoinScope { foreignModels, foreignRoot, foreignControl in
+   :
+24 |             var checks = 0
+25 |             do throws(ObservableStateError) {
+26 |                 try root.withLifetime(limits: limits.observableState) { (models, root) throws(ObservableStateError) in
+   |                                                                                  `- note: it depends on a closure capture; this is not yet supported
+27 |                     do throws(SemanticExpansionError) {
+28 |                         var records = semanticBacking.records.mutableSpan
+   :
+79 |                                             _ = host.activate()
+80 |                                         escaped = consume host
+81 |                                         return 1
+   |                                         `- note: this use causes the lifetime-dependent value to escape
+82 |                                         }
+83 |                                     }
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-counter-18g4uy1r/CounterHostBackingNegative.swift:13:13: error: lifetime-dependent variable 'escaped' escapes its scope
+11 | extension StaticCounterProfileStorage {
+12 |     mutating func rejectCounterHostEscape(failAfterRuntime: Bool) -> Int {
+13 |         var escaped: SignalAnalyzerPresetHostInstance<CounterHostOwner>? = nil
+   |             `- error: lifetime-dependent variable 'escaped' escapes its scope
+14 |         guard case .valid(let audit) = audit(), let assembly = CounterHostAssembly.validate(audit, kind: counterStaticHostKind) else { preconditionFailure("counter valid-only host") }
+15 |         return counterForeignJoinScope { foreignModels, foreignRoot, foreignControl in
+   :
+30 |                         var payloads = semanticBacking.payloads.mutableSpan
+31 |                         var scalars = semanticBacking.scalars.mutableSpan
+32 |                         try semantic.withLifetime(configuredLimits: counterSemanticConfiguration(limits), records: &records, paths: &paths, payloads: &payloads, scalars: &scalars) { (semantic) throws(SemanticExpansionError) in
+   |                                                                                                                                                                                        `- note: it depends on a closure capture; this is not yet supported
+33 |                             do throws(DrawingError) {
+34 |                                 var entries = canvasBacking.mutableSpan
+   :
+79 |                                             _ = host.activate()
+80 |                                         escaped = consume host
+81 |                                         return 1
+   |                                         `- note: this use causes the lifetime-dependent value to escape
+82 |                                         }
+83 |                                     }
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-counter-18g4uy1r/CounterHostBackingNegative.swift:13:13: error: lifetime-dependent variable 'escaped' escapes its scope
+11 | extension StaticCounterProfileStorage {
+12 |     mutating func rejectCounterHostEscape(failAfterRuntime: Bool) -> Int {
+13 |         var escaped: SignalAnalyzerPresetHostInstance<CounterHostOwner>? = nil
+   |             `- error: lifetime-dependent variable 'escaped' escapes its scope
+14 |         guard case .valid(let audit) = audit(), let assembly = CounterHostAssembly.validate(audit, kind: counterStaticHostKind) else { preconditionFailure("counter valid-only host") }
+15 |         return counterForeignJoinScope { foreignModels, foreignRoot, foreignControl in
+   :
+33 |                             do throws(DrawingError) {
+34 |                                 var entries = canvasBacking.mutableSpan
+35 |                                 try canvas.withLifetime(entries: &entries, table: CounterValueTable(), capacity: 1, limits: limits.staticCanvas!) { values in
+   |                                                                                                                                                     `- note: it depends on a closure capture; this is not yet supported
+36 |                                     checks = workspace.withGeometry { geometry in
+37 |                                         withUnsafeMutablePointer(to: &control) { pointer in
+   :
+79 |                                             _ = host.activate()
+80 |                                         escaped = consume host
+81 |                                         return 1
+   |                                         `- note: this use causes the lifetime-dependent value to escape
+82 |                                         }
+83 |                                     }
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-counter-18g4uy1r/CounterHostBackingNegative.swift:13:13: error: lifetime-dependent variable 'escaped' escapes its scope
+11 | extension StaticCounterProfileStorage {
+12 |     mutating func rejectCounterHostEscape(failAfterRuntime: Bool) -> Int {
+13 |         var escaped: SignalAnalyzerPresetHostInstance<CounterHostOwner>? = nil
+   |             `- error: lifetime-dependent variable 'escaped' escapes its scope
+14 |         guard case .valid(let audit) = audit(), let assembly = CounterHostAssembly.validate(audit, kind: counterStaticHostKind) else { preconditionFailure("counter valid-only host") }
+15 |         return counterForeignJoinScope { foreignModels, foreignRoot, foreignControl in
+   :
+35 |                                 try canvas.withLifetime(entries: &entries, table: CounterValueTable(), capacity: 1, limits: limits.staticCanvas!) { values in
+36 |                                     checks = workspace.withGeometry { geometry in
+37 |                                         withUnsafeMutablePointer(to: &control) { pointer in
+   |                                                                                  `- note: it depends on the lifetime of argument 'pointer'
+38 |                                             let activationBacking: InlineArray<1, UInt8> = [1]
+39 |                                             let supplied = CounterHostSupplied(models: models.borrowedScope(), root: root.borrowedRoot(), semantic: semantic.borrowedStore(), values: values.borrowedValues(), control: pointer, audit: audit, geometry: geometry, interaction: keys.take()!)
+   :
+79 |                                             _ = host.activate()
+80 |                                         escaped = consume host
+81 |                                         return 1
+   |                                         `- note: this use causes the lifetime-dependent value to escape
+82 |                                         }
+83 |                                     }
+
+/Users/eugene/work/GiftUI/.build/contracts/p08-counter-18g4uy1r/CounterHostBackingNegative.swift:13:13: error: lifetime-dependent variable 'escaped' escapes its scope
+11 | extension StaticCounterProfileStorage {
+12 |     mutating func rejectCounterHostEscape(failAfterRuntime: Bool) -> Int {
+13 |         var escaped: SignalAnalyzerPresetHostInstance<CounterHostOwner>? = nil
+   |             `- error: lifetime-dependent variable 'escaped' escapes its scope
+14 |         guard case .valid(let audit) = audit(), let assembly = CounterHostAssembly.validate(audit, kind: counterStaticHostKind) else { preconditionFailure("counter valid-only host") }
+15 |         return counterForeignJoinScope { foreignModels, foreignRoot, foreignControl in
+   :
+36 |                                     checks = workspace.withGeometry { geometry in
+37 |                                         withUnsafeMutablePointer(to: &control) { pointer in
+38 |                                             let activationBacking: InlineArray<1, UInt8> = [1]
+   |                                                 `- note: it depends on the lifetime of variable 'activationBacking'
+39 |                                             let supplied = CounterHostSupplied(models: models.borrowedScope(), root: root.borrowedRoot(), semantic: semantic.borrowedStore(), values: values.borrowedValues(), control: pointer, audit: audit, geometry: geometry, interaction: keys.take()!)
+40 |                                             var owner = CounterHostOwner(supplied: consume supplied, activationSpan: activationBacking.span, assembly: assembly, failAfterRuntime: failAfterRuntime)
+   :
+79 |                                             _ = host.activate()
+80 |                                         escaped = consume host
+81 |                                         return 1
+   |                                         `- note: this use causes the lifetime-dependent value to escape
+82 |                                         }
+83 |                                     }
+
+[#VariableNeverMutated]: <https://docs.swift.org/compiler/documentation/diagnostics/variable-never-mutated>

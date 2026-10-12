@@ -15,19 +15,38 @@ mkdir -p "${CLANG_MODULE_CACHE_PATH}"
 
 usage() {
     printf '%s\n' 'Usage: scripts/contracts/run-spec-015.sh --profile <profile>' \
-        '' 'Profiles: macos-dynamic, macos-static, raspberry-pi-armv6, nrf52840-embedded'
+        '' 'Profiles: macos-dynamic, macos-static, raspberry-pi-armv6, nrf52840-embedded' \
+        'Optional: --corpus rfc-014-counter --runtime-build PATH [--host-build PATH]' \
+        'Counter target routes compile current objects; supported image build is separate.'
 }
 
 profile=""
+corpus="legacy"
+runtime_build=""
+host_build=""
 while [[ $# -gt 0 ]]; do
     case "$1" in
         --profile) [[ $# -ge 2 ]] || { usage >&2; exit 2; }; profile="$2"; shift 2 ;;
+        --corpus) [[ $# -ge 2 ]] || { usage >&2; exit 2; }; corpus="$2"; shift 2 ;;
+        --runtime-build) [[ $# -ge 2 ]] || { usage >&2; exit 2; }; runtime_build="$2"; shift 2 ;;
+        --host-build) [[ $# -ge 2 ]] || { usage >&2; exit 2; }; host_build="$2"; shift 2 ;;
         -h | --help) usage; exit 0 ;;
         *) usage >&2; exit 2 ;;
     esac
 done
 case "${profile}" in
     macos-dynamic | macos-static | raspberry-pi-armv6 | nrf52840-embedded) ;;
+    *) usage >&2; exit 2 ;;
+esac
+
+case "${corpus}" in
+    legacy) [[ -z "${runtime_build}${host_build}" ]] || { usage >&2; exit 2; } ;;
+    rfc-014-counter)
+        [[ -n "${runtime_build}" ]] || { printf 'counter route requires matching --runtime-build receipt\n' >&2; exit 2; }
+        counter_arguments=(--profile "${profile}" --runtime-build "${runtime_build}")
+        if [[ -n "${host_build}" ]]; then counter_arguments+=(--host-build "${host_build}"); fi
+        exec python3 "${SCRIPT_DIR}/check-spec-015-counter.py" "${counter_arguments[@]}"
+        ;;
     *) usage >&2; exit 2 ;;
 esac
 

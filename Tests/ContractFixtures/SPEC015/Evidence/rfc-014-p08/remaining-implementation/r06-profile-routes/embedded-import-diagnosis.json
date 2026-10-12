@@ -1,0 +1,39 @@
+{
+  "build": ".build/nrf52840/contracts/p08-counter-36l6m4yi",
+  "stage": "GiftUIHostConfiguration",
+  "diagnostics": 130,
+  "required_direct_imports": {
+    "Sources/GiftUIHostConfiguration/HostApplicationStartupValidation.swift": [
+      "GiftUIExecution",
+      "GiftUIRuntimeCore"
+    ],
+    "Sources/GiftUIHostConfiguration/HostEndpointStartupValidation.swift": [
+      "GiftUIRasterCore",
+      "GiftUISurfaceCore"
+    ],
+    "Sources/GiftUIHostConfiguration/SignalAnalyzerDrawingStartupValidation.swift": [
+      "GiftUIDrawing",
+      "GiftUIRenderCore",
+      "GiftUIRenderLowering"
+    ],
+    "Sources/GiftUIHostConfiguration/SignalAnalyzerWorkloadStartupValidation.swift": [
+      "GiftUIExecution",
+      "GiftUIInteraction",
+      "GiftUILayout",
+      "GiftUIObservableState",
+      "GiftUIRenderCore",
+      "GiftUIRenderLowering",
+      "GiftUISemanticCore"
+    ],
+    "Sources/GiftUIHostConfiguration/Generated/SignalAnalyzerPresets.generated.swift": [
+      "GiftUIDrawing",
+      "GiftUIExecution",
+      "GiftUIInteraction",
+      "GiftUILayout",
+      "GiftUIObservableState",
+      "GiftUIRenderCore",
+      "GiftUIRenderLowering",
+      "GiftUISemanticCore"
+    ]
+  }
+}

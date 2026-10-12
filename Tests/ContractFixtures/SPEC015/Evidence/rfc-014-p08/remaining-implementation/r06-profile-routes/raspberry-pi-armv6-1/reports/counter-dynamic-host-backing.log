@@ -1,0 +1,141 @@
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterGraphProbe.swift:41:13: warning: variable 'profile' was never mutated; consider changing to 'let' constant [#VariableNeverMutated]
+39 |     var count = 46
+40 |     do {
+41 |         var profile = StaticCounterProfileStorage(modelOwner: try modelOwners.issue(), semanticOwner: try semanticOwners.issue())
+   |             `- warning: variable 'profile' was never mutated; consider changing to 'let' constant [#VariableNeverMutated]
+42 |         guard case .valid(let audit) = profile.audit() else { preconditionFailure("counter graph audit") }
+43 |         func reject(_ negative: CounterConstructionNegative, profile: borrowing StaticCounterProfileStorage) {
+
+/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-counter-5snuaa2q/CounterDynamicHostBackingNegative.swift:13:13: error: lifetime-dependent variable 'escaped' escapes its scope
+11 | extension DynamicCounterProfileStorage {
+12 |     mutating func rejectCounterDynamicHostEscape(failAfterRuntime: Bool) -> Int {
+13 |         var escaped: SignalAnalyzerPresetHostInstance<CounterDynamicHostOwner>? = nil
+   |             `- error: lifetime-dependent variable 'escaped' escapes its scope
+14 |         guard case .valid(let audit) = audit(), let assembly = CounterHostAssembly.validate(audit, kind: counterDynamicHostKind) else { preconditionFailure("counter Dynamic valid-only host") }
+15 |         // Declared producer-projection negatives, not analyzer producer behavior.
+   :
+24 |             var checks = 0
+25 |             do throws(ObservableStateError) {
+26 |                 try root.withLifetime(limits: limits.observableState) { (models, root) throws(ObservableStateError) in
+   |                                                                          `- note: it depends on a closure capture; this is not yet supported
+27 |                     do throws(SemanticExpansionError) {
+28 |                         try semantic.withLifetime(configuredLimits: counterSemanticConfiguration(limits)) { (semantic) throws(SemanticExpansionError) in
+   :
+73 |                                         _ = host.activate()
+74 |                                         escaped = consume host
+75 |                                         return 1
+   |                                         `- note: this use causes the lifetime-dependent value to escape
+76 |                                     }
+77 |                                 }
+
+/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-counter-5snuaa2q/CounterDynamicHostBackingNegative.swift:13:13: error: lifetime-dependent variable 'escaped' escapes its scope
+11 | extension DynamicCounterProfileStorage {
+12 |     mutating func rejectCounterDynamicHostEscape(failAfterRuntime: Bool) -> Int {
+13 |         var escaped: SignalAnalyzerPresetHostInstance<CounterDynamicHostOwner>? = nil
+   |             `- error: lifetime-dependent variable 'escaped' escapes its scope
+14 |         guard case .valid(let audit) = audit(), let assembly = CounterHostAssembly.validate(audit, kind: counterDynamicHostKind) else { preconditionFailure("counter Dynamic valid-only host") }
+15 |         // Declared producer-projection negatives, not analyzer producer behavior.
+   :
+24 |             var checks = 0
+25 |             do throws(ObservableStateError) {
+26 |                 try root.withLifetime(limits: limits.observableState) { (models, root) throws(ObservableStateError) in
+   |                                                                                  `- note: it depends on a closure capture; this is not yet supported
+27 |                     do throws(SemanticExpansionError) {
+28 |                         try semantic.withLifetime(configuredLimits: counterSemanticConfiguration(limits)) { (semantic) throws(SemanticExpansionError) in
+   :
+73 |                                         _ = host.activate()
+74 |                                         escaped = consume host
+75 |                                         return 1
+   |                                         `- note: this use causes the lifetime-dependent value to escape
+76 |                                     }
+77 |                                 }
+
+/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-counter-5snuaa2q/CounterDynamicHostBackingNegative.swift:13:13: error: lifetime-dependent variable 'escaped' escapes its scope
+11 | extension DynamicCounterProfileStorage {
+12 |     mutating func rejectCounterDynamicHostEscape(failAfterRuntime: Bool) -> Int {
+13 |         var escaped: SignalAnalyzerPresetHostInstance<CounterDynamicHostOwner>? = nil
+   |             `- error: lifetime-dependent variable 'escaped' escapes its scope
+14 |         guard case .valid(let audit) = audit(), let assembly = CounterHostAssembly.validate(audit, kind: counterDynamicHostKind) else { preconditionFailure("counter Dynamic valid-only host") }
+15 |         // Declared producer-projection negatives, not analyzer producer behavior.
+   :
+26 |                 try root.withLifetime(limits: limits.observableState) { (models, root) throws(ObservableStateError) in
+27 |                     do throws(SemanticExpansionError) {
+28 |                         try semantic.withLifetime(configuredLimits: counterSemanticConfiguration(limits)) { (semantic) throws(SemanticExpansionError) in
+   |                                                                                                              `- note: it depends on a closure capture; this is not yet supported
+29 |                             do throws(DrawingError) {
+30 |                                 try canvas.withLifetime(table: CounterValueTable(), limits: counterCanvasLimits, configuredCapacity: 1) { values in
+   :
+73 |                                         _ = host.activate()
+74 |                                         escaped = consume host
+75 |                                         return 1
+   |                                         `- note: this use causes the lifetime-dependent value to escape
+76 |                                     }
+77 |                                 }
+
+/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-counter-5snuaa2q/CounterDynamicHostBackingNegative.swift:13:13: error: lifetime-dependent variable 'escaped' escapes its scope
+11 | extension DynamicCounterProfileStorage {
+12 |     mutating func rejectCounterDynamicHostEscape(failAfterRuntime: Bool) -> Int {
+13 |         var escaped: SignalAnalyzerPresetHostInstance<CounterDynamicHostOwner>? = nil
+   |             `- error: lifetime-dependent variable 'escaped' escapes its scope
+14 |         guard case .valid(let audit) = audit(), let assembly = CounterHostAssembly.validate(audit, kind: counterDynamicHostKind) else { preconditionFailure("counter Dynamic valid-only host") }
+15 |         // Declared producer-projection negatives, not analyzer producer behavior.
+   :
+28 |                         try semantic.withLifetime(configuredLimits: counterSemanticConfiguration(limits)) { (semantic) throws(SemanticExpansionError) in
+29 |                             do throws(DrawingError) {
+30 |                                 try canvas.withLifetime(table: CounterValueTable(), limits: counterCanvasLimits, configuredCapacity: 1) { values in
+   |                                                                                                                                           `- note: it depends on a closure capture; this is not yet supported
+31 |                                     checks = withUnsafeMutablePointer(to: &control) { pointer in
+32 |                                         let activationBacking: InlineArray<1, UInt8> = [1]
+   :
+73 |                                         _ = host.activate()
+74 |                                         escaped = consume host
+75 |                                         return 1
+   |                                         `- note: this use causes the lifetime-dependent value to escape
+76 |                                     }
+77 |                                 }
+
+/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-counter-5snuaa2q/CounterDynamicHostBackingNegative.swift:13:13: error: lifetime-dependent variable 'escaped' escapes its scope
+11 | extension DynamicCounterProfileStorage {
+12 |     mutating func rejectCounterDynamicHostEscape(failAfterRuntime: Bool) -> Int {
+13 |         var escaped: SignalAnalyzerPresetHostInstance<CounterDynamicHostOwner>? = nil
+   |             `- error: lifetime-dependent variable 'escaped' escapes its scope
+14 |         guard case .valid(let audit) = audit(), let assembly = CounterHostAssembly.validate(audit, kind: counterDynamicHostKind) else { preconditionFailure("counter Dynamic valid-only host") }
+15 |         // Declared producer-projection negatives, not analyzer producer behavior.
+   :
+29 |                             do throws(DrawingError) {
+30 |                                 try canvas.withLifetime(table: CounterValueTable(), limits: counterCanvasLimits, configuredCapacity: 1) { values in
+31 |                                     checks = withUnsafeMutablePointer(to: &control) { pointer in
+   |                                                                                       `- note: it depends on the lifetime of argument 'pointer'
+32 |                                         let activationBacking: InlineArray<1, UInt8> = [1]
+33 |                                         let supplied = CounterDynamicHostSupplied(models: models.borrowedScope(), root: root.borrowedRoot(), semantic: semantic.borrowedStore(), values: values.borrowedValues(), control: pointer, audit: audit, geometry: movedGeometry.take()!, interaction: keys.take()!)
+   :
+73 |                                         _ = host.activate()
+74 |                                         escaped = consume host
+75 |                                         return 1
+   |                                         `- note: this use causes the lifetime-dependent value to escape
+76 |                                     }
+77 |                                 }
+
+/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-counter-5snuaa2q/CounterDynamicHostBackingNegative.swift:13:13: error: lifetime-dependent variable 'escaped' escapes its scope
+11 | extension DynamicCounterProfileStorage {
+12 |     mutating func rejectCounterDynamicHostEscape(failAfterRuntime: Bool) -> Int {
+13 |         var escaped: SignalAnalyzerPresetHostInstance<CounterDynamicHostOwner>? = nil
+   |             `- error: lifetime-dependent variable 'escaped' escapes its scope
+14 |         guard case .valid(let audit) = audit(), let assembly = CounterHostAssembly.validate(audit, kind: counterDynamicHostKind) else { preconditionFailure("counter Dynamic valid-only host") }
+15 |         // Declared producer-projection negatives, not analyzer producer behavior.
+   :
+30 |                                 try canvas.withLifetime(table: CounterValueTable(), limits: counterCanvasLimits, configuredCapacity: 1) { values in
+31 |                                     checks = withUnsafeMutablePointer(to: &control) { pointer in
+32 |                                         let activationBacking: InlineArray<1, UInt8> = [1]
+   |                                             `- note: it depends on the lifetime of variable 'activationBacking'
+33 |                                         let supplied = CounterDynamicHostSupplied(models: models.borrowedScope(), root: root.borrowedRoot(), semantic: semantic.borrowedStore(), values: values.borrowedValues(), control: pointer, audit: audit, geometry: movedGeometry.take()!, interaction: keys.take()!)
+34 |                                         var owner = CounterDynamicHostOwner(supplied: consume supplied, activationSpan: activationBacking.span, assembly: assembly, failAfterRuntime: failAfterRuntime)
+   :
+73 |                                         _ = host.activate()
+74 |                                         escaped = consume host
+75 |                                         return 1
+   |                                         `- note: this use causes the lifetime-dependent value to escape
+76 |                                     }
+77 |                                 }
+
+[#VariableNeverMutated]: <https://docs.swift.org/compiler/documentation/diagnostics/variable-never-mutated>

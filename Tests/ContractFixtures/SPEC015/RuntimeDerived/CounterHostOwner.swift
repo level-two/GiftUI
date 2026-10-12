@@ -271,7 +271,11 @@ enum CounterHostState: ~Copyable, ~Escapable {
 }
 
 struct CounterHostOwner: ~Copyable, ~Escapable, SignalAnalyzerPresetLiveOwner {
+    #if hasFeature(Embedded)
+    typealias ActivationFailure = NRF52840StaticHostActivationFailure
+    #else
     typealias ActivationFailure = MacOSStaticHostActivationFailure
+    #endif
     private var state: CounterHostState
     private var application: CounterApplicationOwners?
     private(set) var constructions = 0

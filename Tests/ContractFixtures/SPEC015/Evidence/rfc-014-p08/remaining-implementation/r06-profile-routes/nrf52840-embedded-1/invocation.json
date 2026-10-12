@@ -1,0 +1,21 @@
+{
+  "entry_commit": "c49fc9b05e2b2bd67d6f0ca540d985dd4b2f079e",
+  "command": [
+    "scripts/contracts/run-spec-015.sh",
+    "--profile",
+    "nrf52840-embedded",
+    "--corpus",
+    "rfc-014-counter",
+    "--runtime-build",
+    ".build/nrf52840/contracts/spec-013-runtime-cycle/tmp9d1k2h7s/nrf52840-embedded"
+  ],
+  "started_utc": "2026-10-12T13:22:37.708562+00:00",
+  "scope": "r06-profile-routes changed coherent controls only; historical2/2/B031/1 closed",
+  "formatter_exit": 0,
+  "source_patch_sha256": "f8694d9045996b597689808e5c73554e32f1e128819c1a4d26829203895114ec",
+  "exit_status": 1,
+  "finished_utc": "2026-10-12T13:22:59.628854+00:00",
+  "builds": [
+    ".build/nrf52840/contracts/p08-counter-36l6m4yi"
+  ]
+}
