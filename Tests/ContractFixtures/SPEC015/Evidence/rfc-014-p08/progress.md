@@ -1030,3 +1030,35 @@ Missing descriptor is an implementation gap, not automatically new contract or
 user gate. Proposed private finite inert descriptor must serve actual consumers;
 duplicate mask alone cannot prove actual callback/derived-value origins. R04 raw
 geometry claim remains qualified. Return after commit for independent review.
+
+### Remaining native independent review dispatch — R01–R04 and R05 realization
+
+Entry `a118e917`, clean. Strong `gpt-6.1-sol` / `high`, C3/R3, sequential.
+Review native changes/evidence R01 `d2df7dcc`, R02 `1d3e9f77`, R03 `7c9a43d1`,
+R04 `1f3a7ea0`, with exact approved behavior and latest source/artifact identity.
+Use existing frozen receipts for unchanged earlier evidence; no redundant full
+revalidation. Determine failures and limits, especially real preconstruction
+identity guard, no replay, seven-stage teardown and geometry backing proof.
+Then disposition the R05 private finite descriptor proposal as ordinary local
+realization if it satisfies approved HC-003; specify exact actual construction
+consumers and independent omission/callback-hidden-origin oracles. Do not accept
+a second mask table as proof or invent an approval gate for an internal descriptor.
+If true contract/scope/ownership choice is required, name the smallest decision.
+Allowed output: review/progress only, commit. No source edits, compiler, binary,
+tests, builds, dependency refresh or target operations. Historical guards stay
+closed; this is not a package-exit claim. Return bounded R05/geometry handoff.
+
+Independent review outcome: bounded native R01–R04 accepted at latest
+2,697,541/zero,24/24. Matched190 cumulative inputs against current/Git R04,
+124 artifacts,26 frozen reports and patch identity; no mismatch or execution.
+Actual identity guard, supersession/refusal/no replay and seven-stage partial
+activation plus ordered teardown confirmed in source. Geometry source nesting
+contains the actual host in its shorter control/span scope; standalone raw
+geometry expiry rejection remains unclaimed and does not force a new generic API.
+[Exact review and R05 handoff](remaining-implementation/r05-factory-origin-findings/independent-review.md).
+Private finite inert construction selections consumed by actual endpoint/text,
+root/admission and retained-report scheduler paths are authorized ordinary
+HC003 realization. Reject all13 legal-edge omissions and concrete hidden/bound
+origins at graph stage before later projections; duplicate masks alone do not
+suffice. Fresh changed-source R05 validation is permitted; historical helper2/2
+and B031/1 stay closed. No P08 exit, target pass or lifecycle approval claimed.
