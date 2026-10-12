@@ -1,9 +1,31 @@
 # RFC-014 P08 execution receipt — 2026-10-11
 
-**Current checkpoint — remaining P08 implementation resumed, 2026-10-12; guard0/2.**
+**Current checkpoint — 2026-10-12: Option B documents approved; implementation
+separate/not started.** Eugene's [exact approval and subsequent limit](../../../../../docs/iterations/iteration-003-review/rfc-014-spec-approval.md#option-b-construction-graph-amendment--2026-10-12)
+approve the targeted RFC-014/ADR-038/SPEC-015 authority delta, with reciprocal
+SPEC-009 clarification. Authority commit `61f968b1` passes governance validation
+(193 nodes / 1970 edges; 7 features / 74 lifecycle artifacts) and diff checking.
+These are documentation checks only. No source/test/script change, compiler
+invocation, native gate or target build occurred in this activity.
+
+The former operation-inclusive graph decision is resolved by Option B; actual
+construction masks, mandatory backing/configuration origins, typed operational
+wake identity and complete lifetime behavior remain unproved for this graph WIP.
+Last validated source remains `48a987cd` (1,348,627 assertions / 23 controls);
+`cfaa57af` is unvalidated. Old **2/2** guard stays closed and the later single
+native allowance remains **0/1, unconsumed**. No budget is reset or spent.
+The [current bounded handoff](../../../../../docs/iterations/iteration-003-review/rfc-014-implementation-plan.md#option-b-resumption-sequence--separate-activity)
+is B01 inventory/review → B02 bounded helper/mask realization → B03 one native
+attempt/freeze/separate review, then existing four-route/early-image P08 exit
+and P09–P12. SPEC-015 implementing, plan active, T8.1/P08 open; no pass claimed.
+
+Earlier checkpoint statements below retain their historical scope and budgets.
+
+
+**Historical checkpoint — remaining P08 implementation resumed, 2026-10-12; guard0/2.**
 [Explicit resumption and next slice](remaining-implementation/resumption.md) record the user instruction, exact dependencies and unchanged finite boundary. The verified activation blocker remains closed.
 
-**Current checkpoint — activation blocker resolved, 2026-10-12.**
+**Historical checkpoint — activation blocker resolved, 2026-10-12.**
 The [approved compiler correction](../../../../../docs/iterations/iteration-003-review/rfc-014-spec-approval.md#swift-64-compiler-baseline-correction--2026-10-12)
 `267616c9` is applied. [Independent final audit](activation-integration/baseline-final-review.md)
 `0555805f` passes the complete baseline-compatibility and actual generic-host join

@@ -25,7 +25,8 @@ superseded_by: null
 ## RFC-014 implementation readiness — 2026-10-10
 
 **Ready under [explicit Spec approval](../iterations/iteration-003-review/rfc-014-spec-approval.md).**
-Implementation has begun at the current P08 checkpoint below. The [bounded sequence](../iterations/iteration-003-review/rfc-014-implementation-plan.md)
+P08 implementation has begun; the newly approved Option B implementation has not
+started and is reserved for a separate activity at the current checkpoint below. The [bounded sequence](../iterations/iteration-003-review/rfc-014-implementation-plan.md)
 is the shared ordering/scope index: exactly P01–P12, not an expandable backlog.
 This owner contributes P08; its final regression/resource/disposition
 obligations run through P10–P12. Only the current checkpoint below is new work.
@@ -33,6 +34,26 @@ Earlier tasks and readiness/closure statements remain historical baseline eviden
 not additional authorization to rerun an MVP implementation or reopen experiments.
 
 ### Current owner checkpoint
+
+**2026-10-12 — Option B documents approved; implementation separate/not started.**
+[Exact approval and limit](../iterations/iteration-003-review/rfc-014-spec-approval.md#option-b-construction-graph-amendment--2026-10-12),
+accepted [ADR-038](../adrs/adr-038-construction-graph-and-operational-contracts.md)
+and SPEC-015's direct construction/operational distinction govern the next work.
+Follow the shared [P08-B01→B02→B03 sequence](../iterations/iteration-003-review/rfc-014-implementation-plan.md#option-b-resumption-sequence--separate-activity):
+review actual construction/activation/operation/backing inventory, then the two
+bounded helper shapes and audited masks, then one native invocation and freeze
+for separate review. No source change or compiler run is authorized by this
+documentation activity. Last validated source is `48a987cd`; `cfaa57af` remains
+unvalidated graph WIP. Historical **2/2** is closed; latest **0/1** remains
+unconsumed. Approval does not establish graph or compiler feasibility.
+
+T8.1 includes HC-003's exact construction-origin, operational wake and lifetime
+proofs alongside HC-011/014/018 and HC-RD-001–004. After the reviewed native slice
+passes, the remaining four registered routes, early linked target resource/ABI
+checks and independent P08 exit precede P09; P10–P12 obligations remain open.
+SPEC-015 stays implementing and this plan active; no acceptance box is closed.
+
+**Historical activation checkpoint — resolved before the later graph stop:**
 
 The exact scoped-host correction is now explicitly approved and applied; see
 [approval](../iterations/iteration-003-review/rfc-014-spec-approval.md#scoped-host-lifetime-amendment--2026-10-11).
@@ -315,7 +336,7 @@ exactly once here with its implementation work and expected evidence.
 | --- | --- | --- | --- |
 | `HC-001` — Complete authority, metadata, manifest, portfolio, and upstream linkage without implied SPEC-001 approval | `T0.1`, `T7.4`, `T8.1` | Governance and reciprocal-link audit; RFC-014 P10 functional / P11 resource-connected / P12 conformance evidence | migration pending; prior evidence remains baseline only |
 | `HC-002` — Pure ordered validation, first failure, no side effects or partial assembly, and valid-only instance exposure | `T1.4`, `T3.6`, `T4.1`, `T7.1`, `T8.1` | Access-order probes, owner-call ledger, repeat-call corpus, construction transcript; RFC-014 P10 functional / P11 resource-connected / P12 conformance evidence | migration pending; prior evidence remains baseline only |
-| `HC-003` — Exact acyclic one-owner graph, portable import boundary, and no ambient/platform stack | `T0.2`, `T1.2`, `T7.1`, `T8.1` | Exact graph corpus, source/import/link scans, negative compile fixtures; RFC-014 P10 functional / P11 resource-connected / P12 conformance evidence | migration pending; prior evidence remains baseline only |
+| `HC-003` — Exact eighteen-role direct construction graph, mandatory input/backing/configuration origins, separate typed wake/lifetime proofs and lower import boundaries | `T0.2`, `T1.2`, `T7.1`, `T8.1` | P08-B01 construction/activation/operation/lifetime inventory; B02 reviewed masks/controls and bounded helper shapes; B03 one native attempt plus independent review; four-route graph/operational/backing negatives; P10 functional / P11 resource-connected / P12 conformance | Option B documents approved; implementation not started; migration pending |
 | `HC-004` — Exact SPEC-013 audit and complete schema-3 runtime-limit equality, including four 224-slot scalar/glyph leaves and 128 text lines | `T0.4`, `T2.1`, `T2.2`, `T3.1`, `T3.2`, `T6.4`, `T8.1` | Fresh four-manifest generation, schema-version rejection, per-leaf equality/lowering corpus including semantic structural and render-workspace source/limit pairs, audit identity reports, static-table and byte-total checks; RFC-014 P10 functional / P11 resource-connected / P12 conformance evidence | migration pending; prior evidence remains baseline only |
 | `HC-005` — Exact five-Canvas minima, 214-scalar/glyph maximal printable diagnostic, 117-line maximal LF fixture, and equal bounded render structural/ordinary operation counts | `T2.1`, `T2.3`, `T3.2`, `T6.4`, `T8.1` | Generated workload manifests, checked arithmetic and capacity reports plus full-pipeline W/LF diagnostic tests; RFC-014 P10 functional / P11 resource-connected / P12 conformance evidence | migration pending; prior evidence remains baseline only |
 | `HC-006` — Independent conjunctive Drawing and capability gates | `T3.2`, `T3.3`, `T7.1`, `T8.1` | Two independent negatives, combined success, capability-vocabulary audit; RFC-014 P10 functional / P11 resource-connected / P12 conformance evidence | migration pending; prior evidence remains baseline only |

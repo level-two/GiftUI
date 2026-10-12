@@ -114,3 +114,14 @@ Neither is approved or implemented. Current stop is this graph-boundary conflict
 before the two projection replacements or compiler invocation. New allowance
 **0/1** unused; historical **2/2** remains closed. No compiler failure occurred
 under the new allowance, and no new compiler defect is inferred.
+
+
+## Later approved disposition — 2026-10-12
+
+The operation-inclusive interpretation above records the historical review.
+Eugene subsequently selected Option B; the
+[approved disposition](graph-boundary-decision.md#approved-option-b-disposition--2026-10-12)
+and accepted ADR-038 now govern construction versus operation classification.
+This inventory has not yet been reconciled to that amendment, no existing mask
+is declared valid, and implementation remains a separate activity. Historical
+2/2 stays closed and later 0/1 stays unconsumed. No compiler run occurred here.

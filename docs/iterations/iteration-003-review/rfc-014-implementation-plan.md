@@ -1,6 +1,26 @@
 # RFC-014 bounded implementation sequence — 2026-10-10
 
-**Current P08 checkpoint — graph-boundary decision required, 2026-10-12:**
+**Current P08 checkpoint — Option B documents approved; implementation separate,
+not started, 2026-10-12.** Eugene selected Option B and instructed that its
+required documents be treated as approved, then explicitly said not to proceed
+with its implementation in this activity. [Exact approval and limit](rfc-014-spec-approval.md#option-b-construction-graph-amendment--2026-10-12).
+Accepted [ADR-038](../../adrs/adr-038-construction-graph-and-operational-contracts.md)
+and the amended SPEC-015 graph/operational contract resolve the decision needed
+at the prior checkpoint. They do not validate the existing masks or replace
+construction, backing, activation or runtime proofs.
+
+Last validated source remains `48a987cd` (1,348,627 assertions / 23 controls);
+`cfaa57af` preserves unvalidated graph WIP. Historical **2/2** stays closed;
+the later native allowance stays **0/1, unconsumed**. No source edit, compiler
+invocation or target build occurred for this documentation activity. SPEC-015
+remains implementing, its plan active and T8.1/P08 open. P09–P12 remain pending.
+The separate implementation activity starts at the bounded B01→B02→B03 sequence
+below, then the remaining existing P08 gates. No step runs automatically from
+this documentation approval. Earlier stops/approvals below are preserved as
+history; their decision-required language predates the approved Option B delta.
+
+
+**Historical P08 checkpoint — graph-boundary decision required, 2026-10-12:**
 The user explicitly approved the previously proposed bounded continuation at clean
 `87b6a0bf`: dependency trace first, two projection-helper replacements, then one
 native gate attempt with no automatic repair. [Trace checkpoint](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/remaining-implementation/step-7g-graph-stop/bounded-continuation-trace.md)
@@ -113,10 +133,10 @@ that continuation is unauthorized are superseded only by the resumption above.
 > historical; production integration and P08 remain stopped. The new bounded
 > bench allowance must not be interpreted as an unlimited P07 restart.
 
-**P01–P07 passed; P08 incomplete with bounded diagnosis pending; P09–P12 pending.** This is the shared
+**P01–P07 passed; P08 incomplete with Option B documents approved and implementation separate/not started; P09–P12 pending.** This is the shared
 sequencing index for nine owner Implementation Plans, not another contract or
 investigation. It derives only the [approved Spec amendments](rfc-014-spec-approval.md)
-at `3c260bbc` and accepted ADR-035/036/037. ITERATION-003 I3-04/05 supplies the
+at `3c260bbc`, their subsequent explicit amendments, and accepted ADR-035/036/037/038. ITERATION-003 I3-04/05 supplies the
 analyzer/counter and four-configuration delivery scope; the closed MVP supplies
 regression semantics. ITERATION-004 external delivery remains separate.
 
@@ -231,6 +251,43 @@ inside these existing owner boundaries are permitted. Importing application
 schemas into GiftUI, moving owners between modules or changing unrelated backend
 algorithms is not. An integration edit in an unchanged owner must preserve its
 contract and be traceable to a failing migration check.
+
+## Option B resumption sequence — separate activity
+
+This is a finite continuation inside P08/T8.1, derived from accepted ADR-038 and
+SPEC-015 HC-003, HC-011, HC-014, HC-018 and HC-RD-001–004; SPEC-009's wake contract
+remains unchanged. All rows are **not started** under Option B. This activity
+updates documents only. The separate implementation assignment must record its
+entry revision, exact allowed files, reviewed inventory, dependency/artifact
+identities and the still-unconsumed one-native-attempt allowance before edits.
+The old 2/2 guard and all closed investigation budgets remain closed.
+
+| Step / dependency | Bounded work and required output | Checkpoint and stop |
+| --- | --- | --- |
+| **P08-B01**; approved Option B documents | Reconcile the actual eighteen-role factory/owner trace with direct construction inputs, activation wiring and operation-only calls. Identify every mandatory borrowed/retained input, bound construction callback, backing and derived configuration origin. Distinguish the finite counter's actual executor gate from its aggregate; shared Mutation vocabulary from live target access; use-case start and normalized submit operational arguments from construction inputs. Audit admission→canonical wake, binding identity, scheduler, deadlines, phase and backing-last teardown separately. | Commit the inventory and exact proposed masks/projection changes for separate Strong review before source edits. Do not declare current masks valid. A required upward construction edge, hidden origin, ambiguous lifetime or new ownership choice stops for upstream resolution. No compiler invocation. |
+| **P08-B02**; B01 reviewed | Replace only the two failed whole-coordinator projection helper shapes and directly corresponding activation call sites using the existing approved controlPointer projections. Reconcile direct construction masks and directly corresponding graph controls with B01's actual inputs; eliminate physical-placement-only edges, retain every required configuration/backing origin. Preserve initializer root/model association, cache lifetime, actual application/endpoint checks and all operational wake proofs. | Commit the bounded source/test diff with its applicability and evidence gaps. No public protocol redesign, automatic Option A forwarding, new wake accumulator, retained requester adapter, unsafe conformance, allocator/capacity/compiler change or unrelated refactor. No feasibility claim before B03. |
+| **P08-B03**; B02 complete, reviewed inputs available | Format maintained Swift, then invoke the existing native counter gate **once**, using the verified pinned Swift 6.4 runtime dependency receipt below. Capture exact source/compiler/module identities, command, assertions/controls, diagnostics and outcome. | **No automatic repair or rerun**, whether pass or fail. Freeze evidence, commit the outcome and stop for separate Strong result review. Success establishes only the bounded native slice; failure preserves the exact blocker for maintainer disposition. Never reset the old 2/2 guard or enlarge the one-attempt allowance. |
+| **Remaining P08**; B03 passes and independent result review accepts | Continue existing registered macOS Dynamic/Static, Pi ARMv6 and nRF Embedded application routes; actual counter action/text/stroke and host lifetime/activation/failure coverage; early linked Pi/nRF images with RAM/stack/allocator/ABI evidence. | Record source/artifact-specific results and limitations; separate Strong P08 exit review must pass before P09. A native graph pass or cross-build is not complete host/application/hardware conformance. |
+| **P09→P10→P11→P12**; preceding existing gates | Analyzer migration → integrated functional conformance → complete resource/workload evidence → production cutover/closeout, within each unchanged package footprint below. | Execute sequentially as separately assigned bounded packages, report and commit each package boundary, retain existing repair/escalation and connected-work approvals. Request implemented transitions separately after conformance; no auto-run during this activity. |
+
+The predeclared single native invocation, for the later assigned B03 only, is:
+
+```sh
+python3 scripts/contracts/check-spec-015-counter.py --runtime-build .build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static
+```
+
+Its exact dependency receipt must still match before use. Missing/stale inputs
+are a handoff blocker, not permission to rebuild a dependency graph, switch a
+compiler or spend an extra invocation. Existing native controls must separately
+cover queued-only admission notification, every accepted fact behind nonfact
+wake, canonical three-reason coalescing and one outstanding bit, cycle-time
+notifications surviving the take, refusal/backpressure/supersession/no replay,
+terminal rejection and backing validity. Record any missing required coverage
+before B02; do not hide an operational or lifetime gap behind a graph pass.
+
+The packet's old Option A forwarding inventory remains historical reasoning;
+Option B does not require producer-by-producer forwarding. No helper replacement
+or graph implementation has been performed by this documentation update.
 
 ## Ordered work packages
 

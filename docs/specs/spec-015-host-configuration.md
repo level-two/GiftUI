@@ -832,8 +832,9 @@ arguments supplied only to a runtime operation do not automatically establish
 construction edges. A callback bound as a required constructor input still does;
 this is not a general callback exception. Shared mutation/action value vocabulary
 alone does not identify a live model registration/target owner. The actual
-executor role is its serialization gate, not automatically the aggregate that
-contains it. These distinctions MUST be established from actual selected symbols
+executor role in the finite counter is its selected serialization gate, not the
+enclosing aggregate. Other presets MUST identify their actual selected executor
+from their own factory/owner inventory. These distinctions MUST be established from actual selected symbols
 and inputs, not assumed from the existing masks.
 
 For the finite counter, use-case `start(source:repository:deliver:)` and normalized

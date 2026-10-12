@@ -1,5 +1,16 @@
 # RFC-014: final investigation disposition and implementation handoff
 
+**Current handoff — 2026-10-12:** P01–P07 passed; P08 remains incomplete.
+Option B's [authority documents are approved](rfc-014-spec-approval.md#option-b-construction-graph-amendment--2026-10-12),
+including accepted [ADR-038](../../adrs/adr-038-construction-graph-and-operational-contracts.md).
+Eugene explicitly reserved its implementation for a separate activity. Start
+that activity at [P08-B01→B02→B03](rfc-014-implementation-plan.md#option-b-resumption-sequence--separate-activity),
+then remaining four-route/early-image P08 acceptance and independent exit,
+followed sequentially by P09–P12 under their existing gates. No automatic run,
+source edit or compiler invocation follows this documentation update. Old 2/2
+stays closed; later 0/1 stays unconsumed. Earlier routing below is historical.
+
+
 **2026-10-10 — investigation, RFC review and ADR acceptance complete; proceed to
 bounded implementation.** This is a routing and acceptance
 checklist; the [ready bounded sequence](rfc-014-implementation-plan.md) links the
@@ -70,7 +81,8 @@ rows do not allocate a new investigation budget or weaken existing requirements.
 | IH-6 | Measure and enforce final resource/performance limits on actual supported artifacts. | Complete pool/descriptor/registration/host-ticket/stack/IRQ accounting, linked ELF RAM/flash, allocator reachability and zero heap where required, matched Dynamic costs, accepted capture/admission limits and frame/acquisition requirements. Inspect the fixture's allocator references in the actual linked implementation; never treat unresolved references or unknown stack paths as zero. |
 
 IH-1 is complete. IH-2–6 are realized by the fixed P01–P12 packages in the
-[bounded sequence](rfc-014-implementation-plan.md); P01 passed and P02 is next.
+[bounded sequence](rfc-014-implementation-plan.md). The original handoff routed
+P01→P02; the current P08 checkpoint above now governs the next assignment.
 The [P01 receipt](../../../Tests/ContractFixtures/SPEC002/Evidence/rfc-014-p01/result.md)
 records the implementation and hardware-free compiler/Foundation evidence. Full
 migration/conformance/cost work is deliberately not a prerequisite to *finishing

@@ -1,4 +1,12 @@
-# P08 graph boundary — decision required before implementation
+# P08 graph boundary — decision packet and approved Option B disposition
+
+**Current disposition — 2026-10-12:** Eugene selected Option B and approved its
+required documents, then explicitly reserved implementation for a separate
+activity. See the appended approval disposition below. The original conflict,
+Option A recommendation and then-unapproved alternatives are retained as
+historical decision reasoning. No source edit or compiler invocation followed
+this documentation approval; existing graph conformance is not asserted.
+
 
 2026-10-12. Current source remains the unvalidated graph checkpoint `cfaa57af`;
 last validated source is `48a987cd`, with 1,348,627 assertions and23 controls.
@@ -112,3 +120,51 @@ Affected implementation is stopped for the user decision. No compiler allowance
 has been spent; old guard2/2 is not reset. Four registered routes, early linked
 ARMv6/nRF image resource/ABI evidence and P08 exit remain open. SPEC-015 stays
 implementing, plan active, T8.1 incomplete. No graph/P08 pass or target claim.
+
+
+## Approved Option B disposition — 2026-10-12
+
+The [exact maintainer instructions](../../../../../../../docs/iterations/iteration-003-review/rfc-014-spec-approval.md#option-b-construction-graph-amendment--2026-10-12)
+approve Option B's documents while explicitly prohibiting implementation during
+this activity. [ADR-038](../../../../../../../docs/adrs/adr-038-construction-graph-and-operational-contracts.md)
+is accepted; the coordinated RFC-014 and SPEC-015 amendments and reciprocal
+SPEC-009 clarification are approved. Authority commit `61f968b1` passed
+repository governance and diff checks. This is not compiler or conformance proof.
+
+The fixed eighteen-role graph now describes exact direct factory/construction
+dependencies. Mandatory borrowed/retained inputs, backing, required construction
+callbacks and derived configuration origins remain fully traced; actual required
+construction edges cannot be omitted through pointer, callback or shared backing
+indirection. Ordering/cycle/lower-edge constraints remain. Any actual upward
+construction dependency still stops for upstream resolution.
+
+Constructor inputs, activation wiring and runtime operation arguments are
+classified separately and consistently. Use-case start/source/repository and
+normalized submit/admission arguments are not automatically construction edges.
+The finite counter's executor is its actual serialization gate, not its enclosing aggregate;
+Mutation vocabulary does not establish a live root target owner. Backing-origin
+and lifetime evidence is still required for all these distinctions. Existing
+counter masks are not approved merely because this new contract was approved.
+
+Runtime admission may retain automatic canonical notification through the typed
+consumer-owned wake contract; the host binds it to platform scheduling once.
+Option A per-producer forwarding is not selected. Separate validation must prove
+binding/runtime identity, one canonical reason set/outstanding bit, every queued
+fact's clock/deadline, canonical coalescing, cycle-time notification, no reentry,
+refusal/backpressure/no replay, quiescence and backing-last teardown. Graph shape
+is not a substitute for any of that evidence. Module imports remain unchanged
+under ADR-007/008; no public protocol, service framework, frontend/IR, unsafe
+conformance, allocator, capacity, compiler or hardware change is selected.
+FW-035/FW-009 remain captured and do not enlarge current scope.
+
+The [separate implementation sequence](../../../../../../../docs/iterations/iteration-003-review/rfc-014-implementation-plan.md#option-b-resumption-sequence--separate-activity)
+is B01 actual construction/operation/lifetime inventory and review → B02 only the
+two failed helper shapes/direct activation sites with audited construction masks
+and corresponding controls → B03 exactly one predeclared native invocation, no
+automatic repair/rerun, then freeze and independent review. Only a reviewed pass
+leads to the remaining registered four routes, early linked images and independent
+P08 exit; P09–P12 follow their existing gates. Nothing runs in this activity.
+
+Historical 2/2 remains closed. Latest 0/1 remains unconsumed, not reset. Last
+validated source remains `48a987cd`; `cfaa57af` remains unvalidated graph WIP.
+SPEC-015 implementing / plan active / T8.1 and P08 open; no graph or P08 pass.

@@ -21,6 +21,18 @@ superseded_by: null
 
 ## Current RFC-014 amendment applicability — 2026-10-12
 
+**Option B documents approved; implementation separate/not started.** Accepted
+[ADR-038](../adrs/adr-038-construction-graph-and-operational-contracts.md) and the
+[exact approval with execution limit](../iterations/iteration-003-review/rfc-014-spec-approval.md#option-b-construction-graph-amendment--2026-10-12)
+now govern HC-003's direct construction graph and separate operational/lifetime
+proofs. This report remains collecting. HC-003's amended requirements are pending;
+historical passing rows below prove only their named baseline. No current mask,
+compiler feasibility or P08 exit is established by document approval. Follow
+[P08-B01→B02→B03](../iterations/iteration-003-review/rfc-014-implementation-plan.md#option-b-resumption-sequence--separate-activity)
+in a separate implementation activity, then the remaining P08 gates. Historical
+2/2 remains closed; latest 0/1 remains unconsumed. No new implementation evidence
+was produced in this documentation activity.
+
 Collecting for the approved schema-4 amendment. Historical completed evidence
 below applies to its frozen baseline, not the amended host/runtime migration.
 P08 orientation exposes an [exact scoped host contract blocker](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-host-constraint.md);

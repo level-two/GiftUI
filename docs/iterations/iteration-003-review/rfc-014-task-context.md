@@ -1,6 +1,27 @@
 # RFC-014 task context guide
 
-**Current P08 checkpoint — graph-boundary decision required, 2026-10-12:**
+**Current P08 checkpoint — Option B documents approved; implementation separate,
+not started, 2026-10-12.** Eugene selected Option B and instructed that its
+required documents be treated as approved, then explicitly said not to proceed
+with its implementation in this activity. [Exact approval and limit](rfc-014-spec-approval.md#option-b-construction-graph-amendment--2026-10-12).
+Accepted [ADR-038](../../adrs/adr-038-construction-graph-and-operational-contracts.md)
+and the amended SPEC-015 graph/operational contract resolve the decision needed
+at the prior checkpoint. They do not validate the existing masks or replace
+construction, backing, activation or runtime proofs.
+
+Last validated source remains `48a987cd` (1,348,627 assertions / 23 controls);
+`cfaa57af` preserves unvalidated graph WIP. Historical **2/2** stays closed;
+the later native allowance stays **0/1, unconsumed**. No source edit, compiler
+invocation or target build occurred for this documentation activity. SPEC-015
+remains implementing, its plan active and T8.1/P08 open. P09–P12 remain pending.
+The separate implementation activity starts at the
+[bounded B01→B02→B03 sequence](rfc-014-implementation-plan.md#option-b-resumption-sequence--separate-activity),
+then the remaining existing P08 gates. No step runs automatically from
+this documentation approval. Earlier stops/approvals below are preserved as
+history; their decision-required language predates the approved Option B delta.
+
+
+**Historical P08 checkpoint — graph-boundary decision required, 2026-10-12:**
 The user explicitly approved the previously proposed bounded continuation at clean
 `87b6a0bf`: dependency trace first, two projection-helper replacements, then one
 native gate attempt with no automatic repair. [Trace checkpoint](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/remaining-implementation/step-7g-graph-stop/bounded-continuation-trace.md)
