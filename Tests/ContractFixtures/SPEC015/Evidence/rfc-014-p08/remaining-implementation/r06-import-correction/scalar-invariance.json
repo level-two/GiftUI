@@ -1,0 +1,8 @@
+{
+  "generated_nonimport_contents_identical": true,
+  "descriptor_sha256": "236501e51d2cd63762df8f7ecf23c53aed62da3294137343077b2e2ac4a2bd7c",
+  "nonimport_sha256": "cc4bd343a06ebc2b5e3cb50aeefac98b3cddf5ccdc175b9e7b80083e9d07b8f8",
+  "other_generated_changes": [
+    "Sources/GiftUIHostConfiguration/Generated/SignalAnalyzerPresets.generated.swift"
+  ]
+}

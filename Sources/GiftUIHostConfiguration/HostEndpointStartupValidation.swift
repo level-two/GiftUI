@@ -1,4 +1,6 @@
 import GiftUICapabilities
+import GiftUIRasterCore
+import GiftUISurfaceCore
 import GiftUITextResources
 
 package enum HostEndpointStartupValidation {

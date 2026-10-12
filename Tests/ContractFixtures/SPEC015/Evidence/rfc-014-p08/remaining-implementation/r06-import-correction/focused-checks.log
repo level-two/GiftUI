@@ -1,0 +1,9 @@
+scripts/format-swift.sh: exit0, only reviewed source changes
+ruby scripts/contracts/generate-spec-015-workload.rb --check: exit0 immutable236501e51d2cd63762df8f7ecf23c53aed62da3294137343077b2e2ac4a2bd7c
+ruby scripts/contracts/check-spec-015-source-boundaries.rb: exit0,23host files17imports232protected files zero ambient lookup
+Pinned swift package dump-package with CLANG_MODULE_CACHE_PATH/SWIFTPM_MODULECACHE_OVERRIDE under .build/contracts: exit0 (two disabled usercache warnings), no package builds
+ruby scripts/contracts/check-target-dependencies.rb < dump-package JSON: exit0,84targets382directedges acyclic
+Initial wrong stdin and cache sandbox errors are invocation/setup failures; corrected command succeeds, no compiler/source repairs for those. Legacy generated-workload checker208vs168 remains unchanged P10 baseline gap.
+Corrected nRF wrapper preflight1 blocked before compilation because Package.swift/generator exact approved metadata revisions were not yet included alongside5source revisions. Added exact old/new hashes for those2metadata files, no other check relaxed. Compiler attempt2 not invoked by preflightfailure.
+Registered nRF invocation2 preflight stops before output directory/compilation: driver also verifies historical Package.swift/runtime and generator/host recipe metadata. Driver now verifies exact recorded metadata old/new hashes alongside5source revisions; historical artifacts remain unchanged. Next call is first compiler invocation after reviewed import correction.
+nRF compile-attempt3 wrapper preflight first stops on CounterWorkload.swift (also frozen host recipe input). Added exact old/new diagnosed import-header identity; no compiler invoked and no other pin relaxed.

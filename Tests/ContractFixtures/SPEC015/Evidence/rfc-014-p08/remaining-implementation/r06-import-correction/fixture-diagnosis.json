@@ -1,0 +1,62 @@
+{
+  "primary": 88,
+  "missing_imports": {
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemanticProbe.swift": [
+      "P08CounterTable"
+    ],
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterRender.swift": [
+      "GiftUIInteraction",
+      "P08CounterTable"
+    ],
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWorkload.swift": [
+      "GiftUIDrawing",
+      "GiftUIExecution",
+      "GiftUIInteraction",
+      "GiftUILayout",
+      "GiftUIObservableState",
+      "GiftUIRenderCore",
+      "GiftUIRenderLowering",
+      "GiftUISemanticCore"
+    ],
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostProbe.swift": [
+      "P08CounterTable"
+    ],
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostCorpus.swift": [
+      "GiftUITextResources"
+    ],
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWakeIntegration.swift": [
+      "GiftUI"
+    ]
+  },
+  "other": [
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemanticProbe.swift:79:54: error: missing argument label 'terminator:' in call",
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemanticProbe.swift:79:83: error: cannot convert value of type 'BoundSemanticExpansionResult<ObservableSemanticBodyBinding<CounterOwnedModel, SemanticCompleteIdentity, CounterDomain>.Failure>' (aka 'BoundSemanticExpansionResult<ObservableStateError>') to expected argument type 'StaticString'",
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemanticProbe.swift:94:36: error: missing argument label 'terminator:' in call",
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemanticProbe.swift:94:55: error: cannot convert value of type 'SemanticExpansionError' to expected argument type 'StaticString'",
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemanticProbe.swift:99:28: error: missing argument label 'terminator:' in call",
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemanticProbe.swift:99:47: error: cannot convert value of type 'DrawingError' to expected argument type 'StaticString'",
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemanticProbe.swift:105:24: error: missing argument label 'terminator:' in call",
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemanticProbe.swift:105:43: error: cannot convert value of type 'ObservableStateError' to expected argument type 'StaticString'",
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemanticProbe.swift:135:20: error: missing argument label 'terminator:' in call",
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemanticProbe.swift:135:39: error: cannot convert value of type 'ObservableStateError' to expected argument type 'StaticString'",
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemanticProbe.swift:156:20: error: missing argument label 'terminator:' in call",
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemanticProbe.swift:156:39: error: cannot convert value of type 'SemanticExpansionError' to expected argument type 'StaticString'",
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemanticProbe.swift:171:20: error: missing argument label 'terminator:' in call",
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemanticProbe.swift:171:39: error: cannot convert value of type 'ObservableStateError' to expected argument type 'StaticString'",
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemanticProbe.swift:176:61: error: extra argument in call",
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterRender.swift:66:54: error: missing argument label 'terminator:' in call",
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterRender.swift:66:80: error: cannot convert value of type 'LayoutResult' to expected argument type 'StaticString'",
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterRender.swift:70:61: error: missing argument label 'terminator:' in call",
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterRender.swift:70:85: error: cannot convert value of type 'DrawingPlanResult' to expected argument type 'StaticString'",
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterRender.swift:79:66: error: missing argument label 'terminator:' in call",
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterRender.swift:79:102: error: cannot convert value of type 'RenderProductionResult' to expected argument type 'StaticString'",
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterRender.swift:138:68: error: extra argument in call",
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift:520:64: error: missing argument label 'terminator:' in call",
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift:520:72: error: cannot convert value of type 'T' to expected argument type 'StaticString'",
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterCoordinatorProbe.swift:70:49: error: missing argument label 'terminator:' in call",
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterCoordinatorProbe.swift:70:74: error: cannot convert value of type 'RuntimeProfileValidationResult' to expected argument type 'StaticString'",
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostCorpus.swift:133:66: error: extra argument in call",
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWakeIntegration.swift:112:64: error: missing argument label 'terminator:' in call",
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWakeIntegration.swift:112:96: error: cannot convert value of type 'Int' to expected argument type 'StaticString'"
+  ]
+}

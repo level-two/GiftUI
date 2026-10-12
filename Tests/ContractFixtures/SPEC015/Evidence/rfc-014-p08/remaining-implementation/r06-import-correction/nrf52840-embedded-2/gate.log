@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "/Users/eugene/work/GiftUI/scripts/contracts/check-spec-015-counter.py", line 37, in <module>
+    verify_recipe_source(name, expected)
+  File "/Users/eugene/work/GiftUI/scripts/contracts/check-spec-015-counter.py", line 34, in verify_recipe_source
+    assert digest(ROOT / name) == expected, name
+AssertionError: Package.swift

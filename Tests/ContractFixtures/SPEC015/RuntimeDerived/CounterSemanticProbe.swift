@@ -1,3 +1,4 @@
+import P08CounterTable
 import GiftUI
 import GiftUIDrawing
 import GiftUIObservableState
@@ -76,7 +77,11 @@ private func exerciseCounter(_ semantic: borrowing SemanticRecordStore<CounterPa
                 guard case .success = root.beginCandidate() else { preconditionFailure("counter begin") }
             }
             let result = semantic.expand(CounterScreen<CounterDomain>(), roles: CounterRoles.self, codec: CanvasSemanticPayloadCodec<CounterRoles, CounterValueTable>.self, limits: counterExpansionLimits, binding: ObservableSemanticBodyBinding(models: models.borrowedScope(), root: root.borrowedRoot(), domain: CounterDomain.self))
-            guard case .success = result else { print("counter expansion failed", result); preconditionFailure("counter expansion") }
+            guard case .success = result else {
+            #if !hasFeature(Embedded)
+            print("counter expansion failed", result)
+            #endif
+            preconditionFailure("counter expansion") }
             if value == 0 {
                 do throws(SemanticExpansionError) { try semantic.resetAfterQuiescence(); preconditionFailure("candidate reset accepted") }
                 catch { counterSemanticExpect(error == .reentrancyViolation); checks += 1 }
@@ -91,18 +96,30 @@ private func exerciseCounter(_ semantic: borrowing SemanticRecordStore<CounterPa
                             let inspected = inspectCounter(bank, value: value)
                             identity = inspected.0; checks += inspected.1
                         }
-                    } catch { print("counter caught", error); preconditionFailure("counter view") }
+                    } catch {
+                    #if !hasFeature(Embedded)
+                    print("counter caught", error)
+                    #endif
+                    preconditionFailure("counter view") }
                     checks += counterRenderActual(semantic: semantic, models: models, values: values, value: value, dynamic: dynamic)
                     values.discard()
                     counterSemanticExpect(values.count == 0 && values.releaseCount == 1); checks += 1
                 }
-            } catch { print("counter caught", error); preconditionFailure("counter Canvas transfer") }
+            } catch {
+            #if !hasFeature(Embedded)
+            print("counter caught", error)
+            #endif
+            preconditionFailure("counter Canvas transfer") }
             try models.withDiscovery { () throws(ObservableStateError) in
                 guard case .success = root.finishCandidate(.publish) else { preconditionFailure("counter publish State") }
             }
             try models.endFrame()
             key = root.modelKey(identity: identity!, ordinal: 0)!
-        } catch { print("counter caught", error); preconditionFailure("counter model phase") }
+        } catch {
+        #if !hasFeature(Embedded)
+        print("counter caught", error)
+        #endif
+        preconditionFailure("counter model phase") }
         try semantic.publishCandidate()
         if value == 0 {
             try semantic.withPublishedView { _ in
@@ -132,7 +149,11 @@ private func exerciseCounter(_ semantic: borrowing SemanticRecordStore<CounterPa
         try models.endFrame()
         counterSemanticExpect(models.mutate(key!, mutation: .reset, report: { .dirtied }) == .failure(.staleModel)); checks += 1
         try root.shutdown(); checks += 1
-    } catch { print("counter caught", error); preconditionFailure("counter cache/replacement") }
+    } catch {
+    #if !hasFeature(Embedded)
+    print("counter caught", error)
+    #endif
+    preconditionFailure("counter cache/replacement") }
     try semantic.resetAfterQuiescence(); checks += 1
     try semantic.resetAfterQuiescence(); checks += 1
     do throws(SemanticExpansionError) { try semantic.withPublishedView { _ in preconditionFailure("reset publication visible") } }
@@ -153,7 +174,11 @@ private func counterSemanticBacking(models: borrowing ObservableModelScope<Count
         var records = backing.records.mutableSpan; var paths = backing.paths.mutableSpan
         var payloads = backing.payloads.mutableSpan; var scalars = backing.scalars.mutableSpan
         return try storage.withLifetime(records: &records, paths: &paths, payloads: &payloads, scalars: &scalars) { (semantic) throws(SemanticExpansionError) in try exerciseCounter(semantic, models: models, root: root, dynamic: false) }
-    } catch { print("counter caught", error); preconditionFailure("counter semantic backing") }
+    } catch {
+    #if !hasFeature(Embedded)
+    print("counter caught", error)
+    #endif
+    preconditionFailure("counter semantic backing") }
 }
 package func p08CounterSemantic() -> Int {
     var checks = 0
@@ -168,10 +193,18 @@ package func p08CounterSemantic() -> Int {
         counterSemanticExpect(dynamic.storageLayout.models == 2 && dynamic.storageLayout.claims == 4 && dynamic.storageLayout.pins == 2 && dynamic.storageLayout.captures == 0); checks += 1
         checks += try dynamic.withLifetime { (models, root) throws(ObservableStateError) in counterSemanticBacking(models: models, root: root, dynamic: true) }
         #endif
-    } catch { print("counter caught", error); preconditionFailure("counter root") }
+    } catch {
+    #if !hasFeature(Embedded)
+    print("counter caught", error)
+    #endif
+    preconditionFailure("counter root") }
     return checks
 }
 
 private func counterSemanticExpect(_ condition: Bool, file: StaticString = #fileID, line: UInt = #line) {
-    if !condition { print("counter assertion failed", file, line); preconditionFailure("counter assertion") }
+    if !condition {
+    #if !hasFeature(Embedded)
+    print("counter assertion failed", file, line)
+    #endif
+    preconditionFailure("counter assertion") }
 }

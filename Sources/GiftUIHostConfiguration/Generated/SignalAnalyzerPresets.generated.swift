@@ -3,7 +3,15 @@
 // Do not edit independently of the immutable scalar workload descriptor.
 
 import GiftUICapabilities
+import GiftUIDrawing
+import GiftUIExecution
+import GiftUIInteraction
+import GiftUILayout
+import GiftUIObservableState
+import GiftUIRenderCore
+import GiftUIRenderLowering
 import GiftUIRuntimeCore
+import GiftUISemanticCore
 
 package struct GeneratedHostPresetIdentity: Equatable, Sendable {
     package let word0: UInt64

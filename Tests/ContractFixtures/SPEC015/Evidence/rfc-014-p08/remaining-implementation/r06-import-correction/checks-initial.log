@@ -1,0 +1,4 @@
+formatter exit0; no out-of-scope edits
+ruby scripts/contracts/check-spec-015-generated-workload.rb: exit1 after generator freshness PASS; unchanged 208rows (52per preset), legacy checker expects168 (42per preset). No generator scalar/corpus edit.
+scripts/contracts/check-target-dependencies.rb: exit1 JSON parse empty stdin; invocation error, checker requires dump-package JSON. Correct invocation follows.
+ruby scripts/contracts/check-spec-015-source-boundaries.rb: exit0,23host files17imports232protected files zero ambient lookup.

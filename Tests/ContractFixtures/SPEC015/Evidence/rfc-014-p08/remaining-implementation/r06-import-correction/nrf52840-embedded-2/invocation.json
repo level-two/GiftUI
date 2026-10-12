@@ -1,0 +1,19 @@
+{
+  "entry_commit": "7f6ef9172299e12bf12100841fecae483b16313b",
+  "command": [
+    "scripts/contracts/run-spec-015.sh",
+    "--profile",
+    "nrf52840-embedded",
+    "--corpus",
+    "rfc-014-counter",
+    "--runtime-build",
+    ".build/nrf52840/contracts/spec-013-runtime-cycle/tmp9d1k2h7s/nrf52840-embedded"
+  ],
+  "started_utc": "2026-10-12T13:43:10.671712+00:00",
+  "scope": "r06-import-correction changed coherent controls only; historical2/2/B031/1 closed",
+  "formatter_exit": 0,
+  "source_patch_sha256": "03aad7a8dd483f4c7f8ef37fe2d8e28ab131296abf7d5c5e31eb7f4c81e4cdbb",
+  "exit_status": 1,
+  "finished_utc": "2026-10-12T13:43:10.776258+00:00",
+  "builds": []
+}

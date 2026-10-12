@@ -1,0 +1,185 @@
+diff --git a/Package.swift b/Package.swift
+index a90ccc7f..55f9f032 100644
+--- a/Package.swift
++++ b/Package.swift
+@@ -280,10 +280,17 @@ let package = Package(
+                 "GiftUIBackendIntegration",
+                 "GiftUICapabilities",
+                 "GiftUIDisplayCore",
++                "GiftUIDrawing",
+                 "GiftUIExecution",
+                 "GiftUIFailureCore",
++                "GiftUIInteraction",
++                "GiftUILayout",
++                "GiftUIObservableState",
+                 "GiftUIRasterCore",
++                "GiftUIRenderCore",
++                "GiftUIRenderLowering",
+                 "GiftUIRuntimeCore",
++                "GiftUISemanticCore",
+                 "GiftUISurfaceCore",
+                 "GiftUITextResources",
+             ]
+diff --git a/Sources/GiftUIHostConfiguration/Generated/SignalAnalyzerPresets.generated.swift b/Sources/GiftUIHostConfiguration/Generated/SignalAnalyzerPresets.generated.swift
+index 03c6e038..7b2fe121 100644
+--- a/Sources/GiftUIHostConfiguration/Generated/SignalAnalyzerPresets.generated.swift
++++ b/Sources/GiftUIHostConfiguration/Generated/SignalAnalyzerPresets.generated.swift
+@@ -3,7 +3,15 @@
+ // Do not edit independently of the immutable scalar workload descriptor.
+ 
+ import GiftUICapabilities
++import GiftUIDrawing
++import GiftUIExecution
++import GiftUIInteraction
++import GiftUILayout
++import GiftUIObservableState
++import GiftUIRenderCore
++import GiftUIRenderLowering
+ import GiftUIRuntimeCore
++import GiftUISemanticCore
+ 
+ package struct GeneratedHostPresetIdentity: Equatable, Sendable {
+     package let word0: UInt64
+diff --git a/Sources/GiftUIHostConfiguration/HostApplicationStartupValidation.swift b/Sources/GiftUIHostConfiguration/HostApplicationStartupValidation.swift
+index 3038bacf..04d4a67e 100644
+--- a/Sources/GiftUIHostConfiguration/HostApplicationStartupValidation.swift
++++ b/Sources/GiftUIHostConfiguration/HostApplicationStartupValidation.swift
+@@ -1,3 +1,6 @@
++import GiftUIExecution
++import GiftUIRuntimeCore
++
+ package enum HostApplicationStartupValidation {
+     package static func validateActionAndModel(
+         _ actionAndModel: HostActionModelConfiguration,
+diff --git a/Sources/GiftUIHostConfiguration/HostEndpointStartupValidation.swift b/Sources/GiftUIHostConfiguration/HostEndpointStartupValidation.swift
+index 825c2505..d8c1fd5a 100644
+--- a/Sources/GiftUIHostConfiguration/HostEndpointStartupValidation.swift
++++ b/Sources/GiftUIHostConfiguration/HostEndpointStartupValidation.swift
+@@ -1,4 +1,6 @@
+ import GiftUICapabilities
++import GiftUIRasterCore
++import GiftUISurfaceCore
+ import GiftUITextResources
+ 
+ package enum HostEndpointStartupValidation {
+diff --git a/Sources/GiftUIHostConfiguration/SignalAnalyzerDrawingStartupValidation.swift b/Sources/GiftUIHostConfiguration/SignalAnalyzerDrawingStartupValidation.swift
+index 256f03a0..43e08e29 100644
+--- a/Sources/GiftUIHostConfiguration/SignalAnalyzerDrawingStartupValidation.swift
++++ b/Sources/GiftUIHostConfiguration/SignalAnalyzerDrawingStartupValidation.swift
+@@ -1,3 +1,6 @@
++import GiftUIDrawing
++import GiftUIRenderCore
++import GiftUIRenderLowering
+ import GiftUIRuntimeCore
+ 
+ package enum SignalAnalyzerDrawingStartupValidation {
+diff --git a/Sources/GiftUIHostConfiguration/SignalAnalyzerWorkloadStartupValidation.swift b/Sources/GiftUIHostConfiguration/SignalAnalyzerWorkloadStartupValidation.swift
+index 45a338ba..1987e315 100644
+--- a/Sources/GiftUIHostConfiguration/SignalAnalyzerWorkloadStartupValidation.swift
++++ b/Sources/GiftUIHostConfiguration/SignalAnalyzerWorkloadStartupValidation.swift
+@@ -1,4 +1,11 @@
++import GiftUIExecution
++import GiftUIInteraction
++import GiftUILayout
++import GiftUIObservableState
++import GiftUIRenderCore
++import GiftUIRenderLowering
+ import GiftUIRuntimeCore
++import GiftUISemanticCore
+ 
+ package enum SignalAnalyzerWorkloadStartupValidation {
+     package static func validate(
+diff --git a/Tests/ContractFixtures/SPEC002/target-dependencies.yaml b/Tests/ContractFixtures/SPEC002/target-dependencies.yaml
+index 91a46561..8579c0ce 100644
+--- a/Tests/ContractFixtures/SPEC002/target-dependencies.yaml
++++ b/Tests/ContractFixtures/SPEC002/target-dependencies.yaml
+@@ -370,10 +370,17 @@ targets:
+       - GiftUIBackendIntegration
+       - GiftUICapabilities
+       - GiftUIDisplayCore
++      - GiftUIDrawing
+       - GiftUIExecution
+       - GiftUIFailureCore
++      - GiftUIInteraction
++      - GiftUILayout
++      - GiftUIObservableState
+       - GiftUIRasterCore
++      - GiftUIRenderCore
++      - GiftUIRenderLowering
+       - GiftUIRuntimeCore
++      - GiftUISemanticCore
+       - GiftUISurfaceCore
+       - GiftUITextResources
+   GiftUIHostConfigurationTests:
+diff --git a/Tests/ContractFixtures/SPEC015/module-owners.tsv b/Tests/ContractFixtures/SPEC015/module-owners.tsv
+index 7a7bee72..417634f5 100644
+--- a/Tests/ContractFixtures/SPEC015/module-owners.tsv
++++ b/Tests/ContractFixtures/SPEC015/module-owners.tsv
+@@ -1,3 +1,3 @@
+ # target	type	status	dependencies	forbidden_imports
+-GiftUIHostConfiguration	regular	active	GiftUI,GiftUIBackendIntegration,GiftUICapabilities,GiftUIDisplayCore,GiftUIExecution,GiftUIFailureCore,GiftUIRasterCore,GiftUIRuntimeCore,GiftUISurfaceCore,GiftUITextResources	GiftUIDrawing,GiftUIInteraction,GiftUILayout,GiftUIObservableState,GiftUIRenderLowering,GiftUISemanticCore
++GiftUIHostConfiguration	regular	active	GiftUI,GiftUIBackendIntegration,GiftUICapabilities,GiftUIDisplayCore,GiftUIDrawing,GiftUIExecution,GiftUIFailureCore,GiftUIInteraction,GiftUILayout,GiftUIObservableState,GiftUIRasterCore,GiftUIRenderCore,GiftUIRenderLowering,GiftUIRuntimeCore,GiftUISemanticCore,GiftUISurfaceCore,GiftUITextResources	-
+ GiftUIHostConfigurationTests	test	active	GiftUIExecution,GiftUIFailureCore,GiftUIHostConfiguration,GiftUIInteraction,GiftUIRuntimeCore,SignalAnalyzerData,SignalAnalyzerDomain,SignalAnalyzerPresentation	-
+diff --git a/scripts/contracts/check-spec-015-counter.py b/scripts/contracts/check-spec-015-counter.py
+index 70bfb6bf..8c912233 100644
+--- a/scripts/contracts/check-spec-015-counter.py
++++ b/scripts/contracts/check-spec-015-counter.py
+@@ -23,9 +23,19 @@ is_target = args.profile in ('raspberry-pi-armv6', 'nrf52840-embedded')
+ is_embedded = args.profile == 'nrf52840-embedded'
+ def digest(path):
+     return hashlib.sha256(path.read_bytes()).hexdigest()
++revision_path = ROOT / 'Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/remaining-implementation/r06-import-correction/reviewed-source-revisions.json'
++revision_receipt = json.loads(revision_path.read_text())
++reviewed_revisions = revision_receipt['sources'] | revision_receipt['recipe_metadata']
++def verify_recipe_source(name, expected):
++    if name in reviewed_revisions:
++        revision = reviewed_revisions[name]
++        assert expected == revision['recipe_sha256'], name + ': unreviewed recipe revision'
++        assert digest(ROOT / name) == revision['rebuilt_sha256'], name + ': unreviewed rebuilt revision'
++    else:
++        assert digest(ROOT / name) == expected, name
+ for name, expected in prior['inputs'].items():
+     if name not in ('Sources/GiftUISemanticCore/SemanticRecordStore.swift', 'Sources/GiftUIHostConfiguration/HostScheduledOpportunityController.swift', 'Sources/GiftUIExecution/ExecutionAdmissionController.swift', 'Sources/GiftUIExecution/RecordingPresentationPendingCoordinator.swift'):
+-        assert digest(ROOT / name) == expected, name
++        verify_recipe_source(name, expected)
+ for name, expected in prior['artifacts'].items():
+     assert digest(base / name) == expected['sha256'], name
+ command = next(shlex.split(c) for c in prior['commands'] if '-module-name RuntimeCycleProbe ' in c)
+@@ -43,7 +53,7 @@ host_receipt = json.loads((host / 'result.json').read_text())
+ assert host_receipt['compiler_sha256'] == prior['compiler_sha256']
+ for name, expected in host_receipt['inputs'].items():
+     if name not in ('Sources/GiftUISemanticCore/SemanticRecordStore.swift', 'Sources/GiftUIHostConfiguration/HostScheduledOpportunityController.swift', 'Sources/GiftUIExecution/ExecutionAdmissionController.swift', 'Sources/GiftUIExecution/RecordingPresentationPendingCoordinator.swift'):
+-        assert digest(ROOT / name) == expected, name
++        verify_recipe_source(name, expected)
+ for name, expected in host_receipt['artifacts'].items():
+     assert digest(host / name) == expected['sha256'], name
+ output_root = ROOT / ('.build/raspberry-pi/contracts' if args.profile == 'raspberry-pi-armv6' else '.build/nrf52840/contracts' if is_embedded else '.build/contracts')
+@@ -58,7 +68,7 @@ if is_embedded:
+ if args.raster_realization == 'tiled' or is_target:
+     flags += ['-D', 'GIFTUI_COUNTER_TILED']
+ fixture = ROOT / 'Tests/ContractFixtures/SPEC015/RuntimeDerived'
+-inputs = [pathlib.Path(__file__).resolve(), fixture / 'Counter.swift', fixture / 'Counter.schema.json', fixture / 'CounterModel.swift', fixture / 'CounterModelProbe.swift', fixture / 'CounterSemantic.swift', fixture / 'CounterSemanticProbe.swift', fixture / 'CounterGeometry.swift', fixture / 'CounterStaticGeometry.swift', fixture / 'CounterRender.swift', fixture / 'CounterFixedStorageProbe.swift']
++inputs = [pathlib.Path(__file__).resolve(), revision_path, fixture / 'Counter.swift', fixture / 'Counter.schema.json', fixture / 'CounterModel.swift', fixture / 'CounterModelProbe.swift', fixture / 'CounterSemantic.swift', fixture / 'CounterSemanticProbe.swift', fixture / 'CounterGeometry.swift', fixture / 'CounterStaticGeometry.swift', fixture / 'CounterRender.swift', fixture / 'CounterFixedStorageProbe.swift']
+ storage_sources = sorted(fixture.glob('StaticCounter*.swift'))
+ join_sources = [fixture / name for name in ('CounterAdmission.swift', 'CounterPipelineOwner.swift', 'CounterProfileStorage.swift', 'CounterStorageMeasurement.swift', 'CounterStorageRegions.swift', 'CounterCoordinatorProbe.swift', 'CounterWorkload.swift', 'CounterHostAssembly.swift', 'CounterHostOwner.swift', 'CounterHostProbe.swift', 'CounterDynamicHostOwner.swift', 'CounterDynamicHostProbe.swift', 'CounterHostCorpus.swift', 'CounterNativeRaster.swift', 'CounterTiledRaster.swift', 'CounterPixelOracle.swift', 'CounterApplication.swift', 'CounterWakeIntegration.swift', 'CounterGraphProbe.swift', 'CounterRouteEntry.swift')]
+ inputs.extend(join_sources)
+diff --git a/scripts/contracts/generate-spec-015-workload.rb b/scripts/contracts/generate-spec-015-workload.rb
+index 203f3923..03646dba 100644
+--- a/scripts/contracts/generate-spec-015-workload.rb
++++ b/scripts/contracts/generate-spec-015-workload.rb
+@@ -197,7 +197,15 @@ swift = +<<~SWIFT
+   // Do not edit independently of the immutable scalar workload descriptor.
+ 
+   import GiftUICapabilities
++  import GiftUIDrawing
++  import GiftUIExecution
++  import GiftUIInteraction
++  import GiftUILayout
++  import GiftUIObservableState
++  import GiftUIRenderCore
++  import GiftUIRenderLowering
+   import GiftUIRuntimeCore
++  import GiftUISemanticCore
+ 
+   package struct GeneratedHostPresetIdentity: Equatable, Sendable {
+       package let word0: UInt64

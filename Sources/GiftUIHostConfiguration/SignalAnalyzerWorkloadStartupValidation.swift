@@ -1,4 +1,11 @@
+import GiftUIExecution
+import GiftUIInteraction
+import GiftUILayout
+import GiftUIObservableState
+import GiftUIRenderCore
+import GiftUIRenderLowering
 import GiftUIRuntimeCore
+import GiftUISemanticCore
 
 package enum SignalAnalyzerWorkloadStartupValidation {
     package static func validate(

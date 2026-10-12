@@ -35,7 +35,16 @@ not additional authorization to rerun an MVP implementation or reopen experiment
 
 ### Current owner checkpoint
 
-**Current owner checkpoint — R06 route WIP stopped for authority/scope review, 2026-10-12.**
+**Current owner checkpoint — corrected nRF counter route PASS; other current routes next, 2026-10-12.**
+Independent7f6ef917 authorizes bounded contract-owner import realization. Corrected
+Embedded Static route PASS26/26;207 current inputs match. [Exact correction,
+failures and remaining route obligations](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/remaining-implementation/r06-import-correction/result.md).
+Native/Pi earlier receipts remain historical after shared source changes; fresh
+current-source routes and R07 linked images/resource/ABI remain open. No target
+execution/image-fit claim. R01–R05 accepted; historical helper2/2/B031/1 closed.
+P08/T8.1 open, SPEC015 implementing/plan active, P09–P12 pending.
+
+**Historical owner checkpoint — R06 route WIP stopped for authority/scope review, 2026-10-12.**
 R01–R05 native are independently accepted at0f7290ce; tiled endpoint source at
 c49fc9b0 passes1,353,625/0,24/24. Current selected nativeStatic/Dynamic routes pass
 1,349,555/1,349,501 assertions, zero failures24/24; Pi ARMv6 current Dynamic route

@@ -1,3 +1,4 @@
+import GiftUI
 @testable import GiftUIExecution
 import GiftUIHostConfiguration
 import GiftUIRuntimeCore
@@ -109,7 +110,11 @@ func counterWakeControls<H: MVPHostInstance & ~Copyable & ~Escapable>(host: inou
     var admission = CounterAdmission(borrowing: control)
     var timestamp = control.pointee.wakeClockMicroseconds
     var checks = 0
-    func expect(_ value: Bool) { checks += 1; if !value { print("counter wake control failed", checks) }; precondition(value) }
+    func expect(_ value: Bool) { checks += 1; if !value {
+    #if !hasFeature(Embedded)
+    print("counter wake control failed", checks)
+    #endif
+    }; precondition(value) }
     // Rejection outcomes alone do not prove queued-only notification. Observe
     // the actual canonical owner, pacing inputs and runtime before each call.
     func expectNoWake(_ expected: ExecutionAdmissionResult, submit: () -> ExecutionAdmissionOutcome) {

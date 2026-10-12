@@ -1,0 +1,12 @@
+{
+  "Sources/GiftUIHostConfiguration/HostApplicationStartupValidation.swift": "afbfb8cbd95df3a56052e8909c44592e560c94a2907a76ca515aaeed2489cfb8",
+  "Sources/GiftUIHostConfiguration/HostEndpointStartupValidation.swift": "be93841af2abe55c2ac64e1df77219323fc62be40165cd4e89dbec3336fdd2d2",
+  "Sources/GiftUIHostConfiguration/SignalAnalyzerDrawingStartupValidation.swift": "2efabc013dc02ce505b80fe018a6f8aacb46602eabf23dece2d612a6ecc3f307",
+  "Sources/GiftUIHostConfiguration/SignalAnalyzerWorkloadStartupValidation.swift": "6e36ee3bb65f6b924d985f7e6e2861d5879df1537d3e012ea1bf3c65b85140b6",
+  "Sources/GiftUIHostConfiguration/Generated/SignalAnalyzerPresets.generated.swift": "51a3f553626e07454aa5b2acc324703899044c8d6d0465a3e2f7838612830d5b",
+  "scripts/contracts/generate-spec-015-workload.rb": "58b8beafc81c81f9faca83a883baf760f564930096243391c88d2d799f8a5aeb",
+  "Package.swift": "8f1ef6222486f1ae40d9b24b9298d60d742c6c1717f85448b5afc4b80804276a",
+  "Tests/ContractFixtures/SPEC002/target-dependencies.yaml": "ea18194bf93df8114c1b15cb8e42ac7ed59d0c0ce6865d890425f2266cb332db",
+  "Tests/ContractFixtures/SPEC015/module-owners.tsv": "ea26da77ffcd254676d5b47a3278c42d5100b7bf47d73d78c020a750f3a57d7f",
+  "scripts/contracts/check-spec-015-counter.py": "5eb3f7f2044a80f01c6d4ccb73e6a05b40aaa87a3ce07feb970c2dedaeb39405"
+}

@@ -370,10 +370,17 @@ targets:
       - GiftUIBackendIntegration
       - GiftUICapabilities
       - GiftUIDisplayCore
+      - GiftUIDrawing
       - GiftUIExecution
       - GiftUIFailureCore
+      - GiftUIInteraction
+      - GiftUILayout
+      - GiftUIObservableState
       - GiftUIRasterCore
+      - GiftUIRenderCore
+      - GiftUIRenderLowering
       - GiftUIRuntimeCore
+      - GiftUISemanticCore
       - GiftUISurfaceCore
       - GiftUITextResources
   GiftUIHostConfigurationTests:

@@ -1217,3 +1217,24 @@ report identities match; Pi ARMv6 compile-only. nRF has65 primary missing-import
 diagnostics rendered as130 error occurrences, first visibility failure/no repair.
 Fresh corrected-source validation may continue with explicit recipe applicability;
 no nRF result/image/resource/P08 completion claimed, historical budgets closed.
+
+### R06 resume — reviewed explicit contract-owner imports
+
+Entry `7f6ef917`, clean. Independent Strong review establishes local realization
+within accepted SPEC-015, no user gate. Strong `gpt-6.1-sol` / `high`, C3/R3.
+Apply only reviewed per-file headers (five files), owning generator header,
+seven direct Package dependencies and exact HostConfiguration entries in
+SPEC015/module-owners.tsv and SPEC002/target-dependencies.yaml. No behavior or
+ownership change; do not bypass registries. Record exact source/artifact evidence
+applicability and any expected rebuilt-input identity changes before validation.
+Format and run focused dependency/generator checks and corrected nRF route using
+established recipe; retain exact failures and same-blocker guard. Commit the
+coherent correction once validated, then complete current-source route/image
+obligations under existing R06/R07 dispatch. Older native/Pi receipts remain
+historical when their input identities change; do not claim them fresh by label.
+Historical helper2/2 and B031/1 remain closed; nRF has one uncorrected visibility
+failure (65 primary diagnostics printed twice), no exhausted allowance.
+
+### R06 reviewed import correction outcome
+
+Corrected current nRF Static counter route PASS26/26 compile/negative checks at .build/nrf52840/contracts/p08-counter-7x97oi7d. Reviewed host headers/edges/registries and owning generator match; scalar invariance, formatter, generator freshness, source boundaries,84target382edge graph PASS. Distinct later fixture import/Embedded print-overload diagnostics narrowed and corrected without changing checks/control flow/native logs; all failures preserved. Exact reviewed old→new recipe input map retains unchanged pins. [Result](remaining-implementation/r06-import-correction/result.md). Historical208vs168generated-checker mismatch remains P10 gap. No target execution/image claim. Commit correction then fresh current native/Pi routes; R07 unstarted, P08 open; historicalhelper2/2+B031/1 closed.

@@ -23,9 +23,19 @@ is_target = args.profile in ('raspberry-pi-armv6', 'nrf52840-embedded')
 is_embedded = args.profile == 'nrf52840-embedded'
 def digest(path):
     return hashlib.sha256(path.read_bytes()).hexdigest()
+revision_path = ROOT / 'Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/remaining-implementation/r06-import-correction/reviewed-source-revisions.json'
+revision_receipt = json.loads(revision_path.read_text())
+reviewed_revisions = revision_receipt['sources'] | revision_receipt['recipe_metadata']
+def verify_recipe_source(name, expected):
+    if name in reviewed_revisions:
+        revision = reviewed_revisions[name]
+        assert expected == revision['recipe_sha256'], name + ': unreviewed recipe revision'
+        assert digest(ROOT / name) == revision['rebuilt_sha256'], name + ': unreviewed rebuilt revision'
+    else:
+        assert digest(ROOT / name) == expected, name
 for name, expected in prior['inputs'].items():
     if name not in ('Sources/GiftUISemanticCore/SemanticRecordStore.swift', 'Sources/GiftUIHostConfiguration/HostScheduledOpportunityController.swift', 'Sources/GiftUIExecution/ExecutionAdmissionController.swift', 'Sources/GiftUIExecution/RecordingPresentationPendingCoordinator.swift'):
-        assert digest(ROOT / name) == expected, name
+        verify_recipe_source(name, expected)
 for name, expected in prior['artifacts'].items():
     assert digest(base / name) == expected['sha256'], name
 command = next(shlex.split(c) for c in prior['commands'] if '-module-name RuntimeCycleProbe ' in c)
@@ -43,7 +53,7 @@ host_receipt = json.loads((host / 'result.json').read_text())
 assert host_receipt['compiler_sha256'] == prior['compiler_sha256']
 for name, expected in host_receipt['inputs'].items():
     if name not in ('Sources/GiftUISemanticCore/SemanticRecordStore.swift', 'Sources/GiftUIHostConfiguration/HostScheduledOpportunityController.swift', 'Sources/GiftUIExecution/ExecutionAdmissionController.swift', 'Sources/GiftUIExecution/RecordingPresentationPendingCoordinator.swift'):
-        assert digest(ROOT / name) == expected, name
+        verify_recipe_source(name, expected)
 for name, expected in host_receipt['artifacts'].items():
     assert digest(host / name) == expected['sha256'], name
 output_root = ROOT / ('.build/raspberry-pi/contracts' if args.profile == 'raspberry-pi-armv6' else '.build/nrf52840/contracts' if is_embedded else '.build/contracts')
@@ -58,7 +68,7 @@ if is_embedded:
 if args.raster_realization == 'tiled' or is_target:
     flags += ['-D', 'GIFTUI_COUNTER_TILED']
 fixture = ROOT / 'Tests/ContractFixtures/SPEC015/RuntimeDerived'
-inputs = [pathlib.Path(__file__).resolve(), fixture / 'Counter.swift', fixture / 'Counter.schema.json', fixture / 'CounterModel.swift', fixture / 'CounterModelProbe.swift', fixture / 'CounterSemantic.swift', fixture / 'CounterSemanticProbe.swift', fixture / 'CounterGeometry.swift', fixture / 'CounterStaticGeometry.swift', fixture / 'CounterRender.swift', fixture / 'CounterFixedStorageProbe.swift']
+inputs = [pathlib.Path(__file__).resolve(), revision_path, fixture / 'Counter.swift', fixture / 'Counter.schema.json', fixture / 'CounterModel.swift', fixture / 'CounterModelProbe.swift', fixture / 'CounterSemantic.swift', fixture / 'CounterSemanticProbe.swift', fixture / 'CounterGeometry.swift', fixture / 'CounterStaticGeometry.swift', fixture / 'CounterRender.swift', fixture / 'CounterFixedStorageProbe.swift']
 storage_sources = sorted(fixture.glob('StaticCounter*.swift'))
 join_sources = [fixture / name for name in ('CounterAdmission.swift', 'CounterPipelineOwner.swift', 'CounterProfileStorage.swift', 'CounterStorageMeasurement.swift', 'CounterStorageRegions.swift', 'CounterCoordinatorProbe.swift', 'CounterWorkload.swift', 'CounterHostAssembly.swift', 'CounterHostOwner.swift', 'CounterHostProbe.swift', 'CounterDynamicHostOwner.swift', 'CounterDynamicHostProbe.swift', 'CounterHostCorpus.swift', 'CounterNativeRaster.swift', 'CounterTiledRaster.swift', 'CounterPixelOracle.swift', 'CounterApplication.swift', 'CounterWakeIntegration.swift', 'CounterGraphProbe.swift', 'CounterRouteEntry.swift')]
 inputs.extend(join_sources)

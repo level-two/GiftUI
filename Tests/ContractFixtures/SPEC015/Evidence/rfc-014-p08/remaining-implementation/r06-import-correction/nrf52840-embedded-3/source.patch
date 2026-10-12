@@ -1,0 +1,453 @@
+diff --git a/Package.swift b/Package.swift
+index a90ccc7f..55f9f032 100644
+--- a/Package.swift
++++ b/Package.swift
+@@ -280,10 +280,17 @@ let package = Package(
+                 "GiftUIBackendIntegration",
+                 "GiftUICapabilities",
+                 "GiftUIDisplayCore",
++                "GiftUIDrawing",
+                 "GiftUIExecution",
+                 "GiftUIFailureCore",
++                "GiftUIInteraction",
++                "GiftUILayout",
++                "GiftUIObservableState",
+                 "GiftUIRasterCore",
++                "GiftUIRenderCore",
++                "GiftUIRenderLowering",
+                 "GiftUIRuntimeCore",
++                "GiftUISemanticCore",
+                 "GiftUISurfaceCore",
+                 "GiftUITextResources",
+             ]
+diff --git a/Sources/GiftUIHostConfiguration/Generated/SignalAnalyzerPresets.generated.swift b/Sources/GiftUIHostConfiguration/Generated/SignalAnalyzerPresets.generated.swift
+index 03c6e038..7b2fe121 100644
+--- a/Sources/GiftUIHostConfiguration/Generated/SignalAnalyzerPresets.generated.swift
++++ b/Sources/GiftUIHostConfiguration/Generated/SignalAnalyzerPresets.generated.swift
+@@ -3,7 +3,15 @@
+ // Do not edit independently of the immutable scalar workload descriptor.
+ 
+ import GiftUICapabilities
++import GiftUIDrawing
++import GiftUIExecution
++import GiftUIInteraction
++import GiftUILayout
++import GiftUIObservableState
++import GiftUIRenderCore
++import GiftUIRenderLowering
+ import GiftUIRuntimeCore
++import GiftUISemanticCore
+ 
+ package struct GeneratedHostPresetIdentity: Equatable, Sendable {
+     package let word0: UInt64
+diff --git a/Sources/GiftUIHostConfiguration/HostApplicationStartupValidation.swift b/Sources/GiftUIHostConfiguration/HostApplicationStartupValidation.swift
+index 3038bacf..04d4a67e 100644
+--- a/Sources/GiftUIHostConfiguration/HostApplicationStartupValidation.swift
++++ b/Sources/GiftUIHostConfiguration/HostApplicationStartupValidation.swift
+@@ -1,3 +1,6 @@
++import GiftUIExecution
++import GiftUIRuntimeCore
++
+ package enum HostApplicationStartupValidation {
+     package static func validateActionAndModel(
+         _ actionAndModel: HostActionModelConfiguration,
+diff --git a/Sources/GiftUIHostConfiguration/HostEndpointStartupValidation.swift b/Sources/GiftUIHostConfiguration/HostEndpointStartupValidation.swift
+index 825c2505..d8c1fd5a 100644
+--- a/Sources/GiftUIHostConfiguration/HostEndpointStartupValidation.swift
++++ b/Sources/GiftUIHostConfiguration/HostEndpointStartupValidation.swift
+@@ -1,4 +1,6 @@
+ import GiftUICapabilities
++import GiftUIRasterCore
++import GiftUISurfaceCore
+ import GiftUITextResources
+ 
+ package enum HostEndpointStartupValidation {
+diff --git a/Sources/GiftUIHostConfiguration/SignalAnalyzerDrawingStartupValidation.swift b/Sources/GiftUIHostConfiguration/SignalAnalyzerDrawingStartupValidation.swift
+index 256f03a0..43e08e29 100644
+--- a/Sources/GiftUIHostConfiguration/SignalAnalyzerDrawingStartupValidation.swift
++++ b/Sources/GiftUIHostConfiguration/SignalAnalyzerDrawingStartupValidation.swift
+@@ -1,3 +1,6 @@
++import GiftUIDrawing
++import GiftUIRenderCore
++import GiftUIRenderLowering
+ import GiftUIRuntimeCore
+ 
+ package enum SignalAnalyzerDrawingStartupValidation {
+diff --git a/Sources/GiftUIHostConfiguration/SignalAnalyzerWorkloadStartupValidation.swift b/Sources/GiftUIHostConfiguration/SignalAnalyzerWorkloadStartupValidation.swift
+index 45a338ba..1987e315 100644
+--- a/Sources/GiftUIHostConfiguration/SignalAnalyzerWorkloadStartupValidation.swift
++++ b/Sources/GiftUIHostConfiguration/SignalAnalyzerWorkloadStartupValidation.swift
+@@ -1,4 +1,11 @@
++import GiftUIExecution
++import GiftUIInteraction
++import GiftUILayout
++import GiftUIObservableState
++import GiftUIRenderCore
++import GiftUIRenderLowering
+ import GiftUIRuntimeCore
++import GiftUISemanticCore
+ 
+ package enum SignalAnalyzerWorkloadStartupValidation {
+     package static func validate(
+diff --git a/Tests/ContractFixtures/SPEC002/target-dependencies.yaml b/Tests/ContractFixtures/SPEC002/target-dependencies.yaml
+index 91a46561..8579c0ce 100644
+--- a/Tests/ContractFixtures/SPEC002/target-dependencies.yaml
++++ b/Tests/ContractFixtures/SPEC002/target-dependencies.yaml
+@@ -370,10 +370,17 @@ targets:
+       - GiftUIBackendIntegration
+       - GiftUICapabilities
+       - GiftUIDisplayCore
++      - GiftUIDrawing
+       - GiftUIExecution
+       - GiftUIFailureCore
++      - GiftUIInteraction
++      - GiftUILayout
++      - GiftUIObservableState
+       - GiftUIRasterCore
++      - GiftUIRenderCore
++      - GiftUIRenderLowering
+       - GiftUIRuntimeCore
++      - GiftUISemanticCore
+       - GiftUISurfaceCore
+       - GiftUITextResources
+   GiftUIHostConfigurationTests:
+diff --git a/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterCoordinatorProbe.swift b/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterCoordinatorProbe.swift
+index 5f98f82b..1429396f 100644
+--- a/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterCoordinatorProbe.swift
++++ b/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterCoordinatorProbe.swift
+@@ -67,12 +67,18 @@ package func p08CounterCoordinator() -> Int {
+     var semantics = SemanticRecordOwnerNamespace()
+     do {
+         var storage = StaticCounterProfileStorage(modelOwner: try models.issue(), semanticOwner: try semantics.issue())
+-        let staticAudit = storage.audit(); print("counter static audit", staticAudit)
++        let staticAudit = storage.audit();
++        #if !hasFeature(Embedded)
++        print("counter static audit", staticAudit)
++        #endif
+         guard case .valid = staticAudit else { preconditionFailure("counter static audit") }
+         var checks = storage.run() + 1
+         #if !hasFeature(Embedded)
+         var dynamic = DynamicCounterProfileStorage(modelOwner: try models.issue(), semanticOwner: try semantics.issue())
+-        let dynamicAudit = dynamic.audit(); print("counter dynamic audit", dynamicAudit)
++        let dynamicAudit = dynamic.audit();
++        #if !hasFeature(Embedded)
++        print("counter dynamic audit", dynamicAudit)
++        #endif
+         guard case .valid = dynamicAudit else { preconditionFailure("counter dynamic audit") }
+         checks += dynamic.run() + 1
+         #endif
+diff --git a/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostCorpus.swift b/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostCorpus.swift
+index 84a8cc8c..62db1fa9 100644
+--- a/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostCorpus.swift
++++ b/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostCorpus.swift
+@@ -1,3 +1,4 @@
++import GiftUITextResources
+ import GiftUI
+ import GiftUIExecution
+ import GiftUIHostConfiguration
+@@ -130,5 +131,9 @@ func counterHostCorpus<H: MVPHostInstance & ~Copyable & ~Escapable>(host: inout
+ }
+ 
+ private func counterCorpusExpect(_ condition: Bool, file: StaticString = #fileID, line: UInt = #line) {
+-    if !condition { print("counter host corpus assertion", file, line); preconditionFailure("counter corpus") }
++    if !condition {
++    #if !hasFeature(Embedded)
++    print("counter host corpus assertion", file, line)
++    #endif
++    preconditionFailure("counter corpus") }
+ }
+diff --git a/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostProbe.swift b/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostProbe.swift
+index f1e4cee7..3258a077 100644
+--- a/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostProbe.swift
++++ b/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostProbe.swift
+@@ -1,3 +1,4 @@
++import P08CounterTable
+ import P08CounterSchema
+ import GiftUI
+ import GiftUIDrawing
+diff --git a/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift b/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift
+index f3e78af5..4c09aac6 100644
+--- a/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift
++++ b/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift
+@@ -517,7 +517,11 @@ private func counterActionIsEnabled(_ ref: SemanticRecordReference, bank: borrow
+     }
+     return true
+ }
+-func counterTrace<T>(_ label: StaticString, _ value: T) { print(label, value) }
++func counterTrace<T>(_ label: StaticString, _ value: T) {
++#if !hasFeature(Embedded)
++print(label, value)
++#endif
++}
+ 
+ private func counterActionCode(_ ref: SemanticRecordReference, bank: borrowing SemanticRecordView<CounterPayload>) -> UInt16 {
+     guard let record = bank.record(ref), let payload = bank.payload(at: record.payload), case .standard(.action(_, let code)) = payload else { preconditionFailure("counter action payload") }
+diff --git a/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterRender.swift b/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterRender.swift
+index 279d1448..7fc370a5 100644
+--- a/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterRender.swift
++++ b/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterRender.swift
+@@ -1,3 +1,5 @@
++import GiftUIInteraction
++import P08CounterTable
+ import GiftUI
+ import GiftUIDrawing
+ import GiftUIExecution
+@@ -63,11 +65,19 @@ private func renderCounter<G: CounterGeometry>(geometry: inout G,
+     do throws(SemanticExpansionError) {
+         try semantic.withCandidateView { bank in
+             let result = geometry.layout(bank, limits: limits)
+-            guard case .success = result else { print("counter layout failed", result); preconditionFailure("counter layout") }
++            guard case .success = result else {
++            #if !hasFeature(Embedded)
++            print("counter layout failed", result)
++            #endif
++            preconditionFailure("counter layout") }
+         }
+         let context = ExecutionContext(cycle: RunCycleID(rawValue: 1), semanticRevision: nil, candidateFrame: nil, phase: .deriving)
+         let draw = geometry.draw(source: &source, context: context, limits: limits)
+-        guard case .success(let summary) = draw else { print("counter draw failed", draw); preconditionFailure("counter drawing") }
++        guard case .success(let summary) = draw else {
++        #if !hasFeature(Embedded)
++        print("counter draw failed", draw)
++        #endif
++        preconditionFailure("counter drawing") }
+         counterRenderExpect(summary.canvasOccurrenceCount == 1 && summary.strokeCount == (value == 0 ? 0 : 1)); checks += 1
+         checks += geometry.verifyPlan(canvas: canvas, value: value)
+         // Invocation releases the owned capture while retaining identity metadata
+@@ -76,7 +86,11 @@ private func renderCounter<G: CounterGeometry>(geometry: inout G,
+         var sink = CounterRenderSink()
+         try semantic.withCandidateView { bank in
+             let result = geometry.preflight(bank, limits: limits)
+-            guard case .success(let header) = result else { print("counter render preflight failed", result); preconditionFailure("counter render preflight") }
++            guard case .success(let header) = result else {
++            #if !hasFeature(Embedded)
++            print("counter render preflight failed", result)
++            #endif
++            preconditionFailure("counter render preflight") }
+             let produced = geometry.produce(bank, header: header, sink: &sink, limits: limits)
+             counterRenderExpect(produced == .success(header)); checks += 1
+             counterRenderExpect(sink.operations == header.operationCount && sink.glyphs == header.positionedGlyphCount); checks += 1
+@@ -135,5 +149,9 @@ func counterVerifyPlan<P: DrawingPlanView>(_ plan: borrowing P, canvas: Semantic
+ }
+ 
+ private func counterRenderExpect(_ condition: Bool, file: StaticString = #fileID, line: UInt = #line) {
+-    if !condition { print("counter render assertion failed", file, line); preconditionFailure("counter render assertion") }
++    if !condition {
++    #if !hasFeature(Embedded)
++    print("counter render assertion failed", file, line)
++    #endif
++    preconditionFailure("counter render assertion") }
+ }
+diff --git a/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemanticProbe.swift b/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemanticProbe.swift
+index 66c8df99..cb28bbc6 100644
+--- a/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemanticProbe.swift
++++ b/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemanticProbe.swift
+@@ -1,3 +1,4 @@
++import P08CounterTable
+ import GiftUI
+ import GiftUIDrawing
+ import GiftUIObservableState
+@@ -76,7 +77,11 @@ private func exerciseCounter(_ semantic: borrowing SemanticRecordStore<CounterPa
+                 guard case .success = root.beginCandidate() else { preconditionFailure("counter begin") }
+             }
+             let result = semantic.expand(CounterScreen<CounterDomain>(), roles: CounterRoles.self, codec: CanvasSemanticPayloadCodec<CounterRoles, CounterValueTable>.self, limits: counterExpansionLimits, binding: ObservableSemanticBodyBinding(models: models.borrowedScope(), root: root.borrowedRoot(), domain: CounterDomain.self))
+-            guard case .success = result else { print("counter expansion failed", result); preconditionFailure("counter expansion") }
++            guard case .success = result else {
++            #if !hasFeature(Embedded)
++            print("counter expansion failed", result)
++            #endif
++            preconditionFailure("counter expansion") }
+             if value == 0 {
+                 do throws(SemanticExpansionError) { try semantic.resetAfterQuiescence(); preconditionFailure("candidate reset accepted") }
+                 catch { counterSemanticExpect(error == .reentrancyViolation); checks += 1 }
+@@ -91,18 +96,30 @@ private func exerciseCounter(_ semantic: borrowing SemanticRecordStore<CounterPa
+                             let inspected = inspectCounter(bank, value: value)
+                             identity = inspected.0; checks += inspected.1
+                         }
+-                    } catch { print("counter caught", error); preconditionFailure("counter view") }
++                    } catch {
++                    #if !hasFeature(Embedded)
++                    print("counter caught", error)
++                    #endif
++                    preconditionFailure("counter view") }
+                     checks += counterRenderActual(semantic: semantic, models: models, values: values, value: value, dynamic: dynamic)
+                     values.discard()
+                     counterSemanticExpect(values.count == 0 && values.releaseCount == 1); checks += 1
+                 }
+-            } catch { print("counter caught", error); preconditionFailure("counter Canvas transfer") }
++            } catch {
++            #if !hasFeature(Embedded)
++            print("counter caught", error)
++            #endif
++            preconditionFailure("counter Canvas transfer") }
+             try models.withDiscovery { () throws(ObservableStateError) in
+                 guard case .success = root.finishCandidate(.publish) else { preconditionFailure("counter publish State") }
+             }
+             try models.endFrame()
+             key = root.modelKey(identity: identity!, ordinal: 0)!
+-        } catch { print("counter caught", error); preconditionFailure("counter model phase") }
++        } catch {
++        #if !hasFeature(Embedded)
++        print("counter caught", error)
++        #endif
++        preconditionFailure("counter model phase") }
+         try semantic.publishCandidate()
+         if value == 0 {
+             try semantic.withPublishedView { _ in
+@@ -132,7 +149,11 @@ private func exerciseCounter(_ semantic: borrowing SemanticRecordStore<CounterPa
+         try models.endFrame()
+         counterSemanticExpect(models.mutate(key!, mutation: .reset, report: { .dirtied }) == .failure(.staleModel)); checks += 1
+         try root.shutdown(); checks += 1
+-    } catch { print("counter caught", error); preconditionFailure("counter cache/replacement") }
++    } catch {
++    #if !hasFeature(Embedded)
++    print("counter caught", error)
++    #endif
++    preconditionFailure("counter cache/replacement") }
+     try semantic.resetAfterQuiescence(); checks += 1
+     try semantic.resetAfterQuiescence(); checks += 1
+     do throws(SemanticExpansionError) { try semantic.withPublishedView { _ in preconditionFailure("reset publication visible") } }
+@@ -153,7 +174,11 @@ private func counterSemanticBacking(models: borrowing ObservableModelScope<Count
+         var records = backing.records.mutableSpan; var paths = backing.paths.mutableSpan
+         var payloads = backing.payloads.mutableSpan; var scalars = backing.scalars.mutableSpan
+         return try storage.withLifetime(records: &records, paths: &paths, payloads: &payloads, scalars: &scalars) { (semantic) throws(SemanticExpansionError) in try exerciseCounter(semantic, models: models, root: root, dynamic: false) }
+-    } catch { print("counter caught", error); preconditionFailure("counter semantic backing") }
++    } catch {
++    #if !hasFeature(Embedded)
++    print("counter caught", error)
++    #endif
++    preconditionFailure("counter semantic backing") }
+ }
+ package func p08CounterSemantic() -> Int {
+     var checks = 0
+@@ -168,10 +193,18 @@ package func p08CounterSemantic() -> Int {
+         counterSemanticExpect(dynamic.storageLayout.models == 2 && dynamic.storageLayout.claims == 4 && dynamic.storageLayout.pins == 2 && dynamic.storageLayout.captures == 0); checks += 1
+         checks += try dynamic.withLifetime { (models, root) throws(ObservableStateError) in counterSemanticBacking(models: models, root: root, dynamic: true) }
+         #endif
+-    } catch { print("counter caught", error); preconditionFailure("counter root") }
++    } catch {
++    #if !hasFeature(Embedded)
++    print("counter caught", error)
++    #endif
++    preconditionFailure("counter root") }
+     return checks
+ }
+ 
+ private func counterSemanticExpect(_ condition: Bool, file: StaticString = #fileID, line: UInt = #line) {
+-    if !condition { print("counter assertion failed", file, line); preconditionFailure("counter assertion") }
++    if !condition {
++    #if !hasFeature(Embedded)
++    print("counter assertion failed", file, line)
++    #endif
++    preconditionFailure("counter assertion") }
+ }
+diff --git a/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWakeIntegration.swift b/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWakeIntegration.swift
+index 8e6c43df..ac1501ef 100644
+--- a/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWakeIntegration.swift
++++ b/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWakeIntegration.swift
+@@ -1,3 +1,4 @@
++import GiftUI
+ @testable import GiftUIExecution
+ import GiftUIHostConfiguration
+ import GiftUIRuntimeCore
+@@ -109,7 +110,11 @@ func counterWakeControls<H: MVPHostInstance & ~Copyable & ~Escapable>(host: inou
+     var admission = CounterAdmission(borrowing: control)
+     var timestamp = control.pointee.wakeClockMicroseconds
+     var checks = 0
+-    func expect(_ value: Bool) { checks += 1; if !value { print("counter wake control failed", checks) }; precondition(value) }
++    func expect(_ value: Bool) { checks += 1; if !value {
++    #if !hasFeature(Embedded)
++    print("counter wake control failed", checks)
++    #endif
++    }; precondition(value) }
+     // Rejection outcomes alone do not prove queued-only notification. Observe
+     // the actual canonical owner, pacing inputs and runtime before each call.
+     func expectNoWake(_ expected: ExecutionAdmissionResult, submit: () -> ExecutionAdmissionOutcome) {
+diff --git a/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWorkload.swift b/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWorkload.swift
+index 8361e57e..e447f197 100644
+--- a/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWorkload.swift
++++ b/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWorkload.swift
+@@ -1,3 +1,11 @@
++import GiftUIDrawing
++import GiftUIExecution
++import GiftUIInteraction
++import GiftUILayout
++import GiftUIObservableState
++import GiftUIRenderCore
++import GiftUIRenderLowering
++import GiftUISemanticCore
+ import GiftUIRuntimeCore
+ @testable import GiftUIHostConfiguration
+ 
+diff --git a/Tests/ContractFixtures/SPEC015/module-owners.tsv b/Tests/ContractFixtures/SPEC015/module-owners.tsv
+index 7a7bee72..417634f5 100644
+--- a/Tests/ContractFixtures/SPEC015/module-owners.tsv
++++ b/Tests/ContractFixtures/SPEC015/module-owners.tsv
+@@ -1,3 +1,3 @@
+ # target	type	status	dependencies	forbidden_imports
+-GiftUIHostConfiguration	regular	active	GiftUI,GiftUIBackendIntegration,GiftUICapabilities,GiftUIDisplayCore,GiftUIExecution,GiftUIFailureCore,GiftUIRasterCore,GiftUIRuntimeCore,GiftUISurfaceCore,GiftUITextResources	GiftUIDrawing,GiftUIInteraction,GiftUILayout,GiftUIObservableState,GiftUIRenderLowering,GiftUISemanticCore
++GiftUIHostConfiguration	regular	active	GiftUI,GiftUIBackendIntegration,GiftUICapabilities,GiftUIDisplayCore,GiftUIDrawing,GiftUIExecution,GiftUIFailureCore,GiftUIInteraction,GiftUILayout,GiftUIObservableState,GiftUIRasterCore,GiftUIRenderCore,GiftUIRenderLowering,GiftUIRuntimeCore,GiftUISemanticCore,GiftUISurfaceCore,GiftUITextResources	-
+ GiftUIHostConfigurationTests	test	active	GiftUIExecution,GiftUIFailureCore,GiftUIHostConfiguration,GiftUIInteraction,GiftUIRuntimeCore,SignalAnalyzerData,SignalAnalyzerDomain,SignalAnalyzerPresentation	-
+diff --git a/scripts/contracts/check-spec-015-counter.py b/scripts/contracts/check-spec-015-counter.py
+index 70bfb6bf..8c912233 100644
+--- a/scripts/contracts/check-spec-015-counter.py
++++ b/scripts/contracts/check-spec-015-counter.py
+@@ -23,9 +23,19 @@ is_target = args.profile in ('raspberry-pi-armv6', 'nrf52840-embedded')
+ is_embedded = args.profile == 'nrf52840-embedded'
+ def digest(path):
+     return hashlib.sha256(path.read_bytes()).hexdigest()
++revision_path = ROOT / 'Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/remaining-implementation/r06-import-correction/reviewed-source-revisions.json'
++revision_receipt = json.loads(revision_path.read_text())
++reviewed_revisions = revision_receipt['sources'] | revision_receipt['recipe_metadata']
++def verify_recipe_source(name, expected):
++    if name in reviewed_revisions:
++        revision = reviewed_revisions[name]
++        assert expected == revision['recipe_sha256'], name + ': unreviewed recipe revision'
++        assert digest(ROOT / name) == revision['rebuilt_sha256'], name + ': unreviewed rebuilt revision'
++    else:
++        assert digest(ROOT / name) == expected, name
+ for name, expected in prior['inputs'].items():
+     if name not in ('Sources/GiftUISemanticCore/SemanticRecordStore.swift', 'Sources/GiftUIHostConfiguration/HostScheduledOpportunityController.swift', 'Sources/GiftUIExecution/ExecutionAdmissionController.swift', 'Sources/GiftUIExecution/RecordingPresentationPendingCoordinator.swift'):
+-        assert digest(ROOT / name) == expected, name
++        verify_recipe_source(name, expected)
+ for name, expected in prior['artifacts'].items():
+     assert digest(base / name) == expected['sha256'], name
+ command = next(shlex.split(c) for c in prior['commands'] if '-module-name RuntimeCycleProbe ' in c)
+@@ -43,7 +53,7 @@ host_receipt = json.loads((host / 'result.json').read_text())
+ assert host_receipt['compiler_sha256'] == prior['compiler_sha256']
+ for name, expected in host_receipt['inputs'].items():
+     if name not in ('Sources/GiftUISemanticCore/SemanticRecordStore.swift', 'Sources/GiftUIHostConfiguration/HostScheduledOpportunityController.swift', 'Sources/GiftUIExecution/ExecutionAdmissionController.swift', 'Sources/GiftUIExecution/RecordingPresentationPendingCoordinator.swift'):
+-        assert digest(ROOT / name) == expected, name
++        verify_recipe_source(name, expected)
+ for name, expected in host_receipt['artifacts'].items():
+     assert digest(host / name) == expected['sha256'], name
+ output_root = ROOT / ('.build/raspberry-pi/contracts' if args.profile == 'raspberry-pi-armv6' else '.build/nrf52840/contracts' if is_embedded else '.build/contracts')
+@@ -58,7 +68,7 @@ if is_embedded:
+ if args.raster_realization == 'tiled' or is_target:
+     flags += ['-D', 'GIFTUI_COUNTER_TILED']
+ fixture = ROOT / 'Tests/ContractFixtures/SPEC015/RuntimeDerived'
+-inputs = [pathlib.Path(__file__).resolve(), fixture / 'Counter.swift', fixture / 'Counter.schema.json', fixture / 'CounterModel.swift', fixture / 'CounterModelProbe.swift', fixture / 'CounterSemantic.swift', fixture / 'CounterSemanticProbe.swift', fixture / 'CounterGeometry.swift', fixture / 'CounterStaticGeometry.swift', fixture / 'CounterRender.swift', fixture / 'CounterFixedStorageProbe.swift']
++inputs = [pathlib.Path(__file__).resolve(), revision_path, fixture / 'Counter.swift', fixture / 'Counter.schema.json', fixture / 'CounterModel.swift', fixture / 'CounterModelProbe.swift', fixture / 'CounterSemantic.swift', fixture / 'CounterSemanticProbe.swift', fixture / 'CounterGeometry.swift', fixture / 'CounterStaticGeometry.swift', fixture / 'CounterRender.swift', fixture / 'CounterFixedStorageProbe.swift']
+ storage_sources = sorted(fixture.glob('StaticCounter*.swift'))
+ join_sources = [fixture / name for name in ('CounterAdmission.swift', 'CounterPipelineOwner.swift', 'CounterProfileStorage.swift', 'CounterStorageMeasurement.swift', 'CounterStorageRegions.swift', 'CounterCoordinatorProbe.swift', 'CounterWorkload.swift', 'CounterHostAssembly.swift', 'CounterHostOwner.swift', 'CounterHostProbe.swift', 'CounterDynamicHostOwner.swift', 'CounterDynamicHostProbe.swift', 'CounterHostCorpus.swift', 'CounterNativeRaster.swift', 'CounterTiledRaster.swift', 'CounterPixelOracle.swift', 'CounterApplication.swift', 'CounterWakeIntegration.swift', 'CounterGraphProbe.swift', 'CounterRouteEntry.swift')]
+ inputs.extend(join_sources)
+diff --git a/scripts/contracts/generate-spec-015-workload.rb b/scripts/contracts/generate-spec-015-workload.rb
+index 203f3923..03646dba 100644
+--- a/scripts/contracts/generate-spec-015-workload.rb
++++ b/scripts/contracts/generate-spec-015-workload.rb
+@@ -197,7 +197,15 @@ swift = +<<~SWIFT
+   // Do not edit independently of the immutable scalar workload descriptor.
+ 
+   import GiftUICapabilities
++  import GiftUIDrawing
++  import GiftUIExecution
++  import GiftUIInteraction
++  import GiftUILayout
++  import GiftUIObservableState
++  import GiftUIRenderCore
++  import GiftUIRenderLowering
+   import GiftUIRuntimeCore
++  import GiftUISemanticCore
+ 
+   package struct GeneratedHostPresetIdentity: Equatable, Sendable {
+       package let word0: UInt64

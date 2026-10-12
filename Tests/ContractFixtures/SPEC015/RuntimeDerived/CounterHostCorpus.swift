@@ -1,3 +1,4 @@
+import GiftUITextResources
 import GiftUI
 import GiftUIExecution
 import GiftUIHostConfiguration
@@ -130,5 +131,9 @@ func counterHostCorpus<H: MVPHostInstance & ~Copyable & ~Escapable>(host: inout 
 }
 
 private func counterCorpusExpect(_ condition: Bool, file: StaticString = #fileID, line: UInt = #line) {
-    if !condition { print("counter host corpus assertion", file, line); preconditionFailure("counter corpus") }
+    if !condition {
+    #if !hasFeature(Embedded)
+    print("counter host corpus assertion", file, line)
+    #endif
+    preconditionFailure("counter corpus") }
 }

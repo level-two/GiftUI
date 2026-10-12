@@ -1,3 +1,6 @@
+import GiftUIDrawing
+import GiftUIRenderCore
+import GiftUIRenderLowering
 import GiftUIRuntimeCore
 
 package enum SignalAnalyzerDrawingStartupValidation {

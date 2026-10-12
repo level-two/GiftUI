@@ -1,3 +1,5 @@
+import GiftUIInteraction
+import P08CounterTable
 import GiftUI
 import GiftUIDrawing
 import GiftUIExecution
@@ -63,11 +65,19 @@ private func renderCounter<G: CounterGeometry>(geometry: inout G,
     do throws(SemanticExpansionError) {
         try semantic.withCandidateView { bank in
             let result = geometry.layout(bank, limits: limits)
-            guard case .success = result else { print("counter layout failed", result); preconditionFailure("counter layout") }
+            guard case .success = result else {
+            #if !hasFeature(Embedded)
+            print("counter layout failed", result)
+            #endif
+            preconditionFailure("counter layout") }
         }
         let context = ExecutionContext(cycle: RunCycleID(rawValue: 1), semanticRevision: nil, candidateFrame: nil, phase: .deriving)
         let draw = geometry.draw(source: &source, context: context, limits: limits)
-        guard case .success(let summary) = draw else { print("counter draw failed", draw); preconditionFailure("counter drawing") }
+        guard case .success(let summary) = draw else {
+        #if !hasFeature(Embedded)
+        print("counter draw failed", draw)
+        #endif
+        preconditionFailure("counter drawing") }
         counterRenderExpect(summary.canvasOccurrenceCount == 1 && summary.strokeCount == (value == 0 ? 0 : 1)); checks += 1
         checks += geometry.verifyPlan(canvas: canvas, value: value)
         // Invocation releases the owned capture while retaining identity metadata
@@ -76,7 +86,11 @@ private func renderCounter<G: CounterGeometry>(geometry: inout G,
         var sink = CounterRenderSink()
         try semantic.withCandidateView { bank in
             let result = geometry.preflight(bank, limits: limits)
-            guard case .success(let header) = result else { print("counter render preflight failed", result); preconditionFailure("counter render preflight") }
+            guard case .success(let header) = result else {
+            #if !hasFeature(Embedded)
+            print("counter render preflight failed", result)
+            #endif
+            preconditionFailure("counter render preflight") }
             let produced = geometry.produce(bank, header: header, sink: &sink, limits: limits)
             counterRenderExpect(produced == .success(header)); checks += 1
             counterRenderExpect(sink.operations == header.operationCount && sink.glyphs == header.positionedGlyphCount); checks += 1
@@ -135,5 +149,9 @@ func counterVerifyPlan<P: DrawingPlanView>(_ plan: borrowing P, canvas: Semantic
 }
 
 private func counterRenderExpect(_ condition: Bool, file: StaticString = #fileID, line: UInt = #line) {
-    if !condition { print("counter render assertion failed", file, line); preconditionFailure("counter render assertion") }
+    if !condition {
+    #if !hasFeature(Embedded)
+    print("counter render assertion failed", file, line)
+    #endif
+    preconditionFailure("counter render assertion") }
 }

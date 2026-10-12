@@ -1,0 +1,713 @@
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemanticProbe.swift:29:94: error: type alias 'CaptureStorage' cannot be used in an embedded function not marked '@export(interface)' because 'P08CounterTable' was not imported by this file
+ 27 |     #endif
+ 28 |     var storage = StaticCanvasValueStorage()
+ 29 |     var backing: InlineArray<1, CanvasStagedEntry<SemanticRecordReference, CounterValueTable.CaptureStorage>?> = .init(repeating: nil)
+    |                                                                                              `- error: type alias 'CaptureStorage' cannot be used in an embedded function not marked '@export(interface)' because 'P08CounterTable' was not imported by this file
+ 30 |     var entries = backing.mutableSpan
+ 31 |     try storage.withLifetime(entries: &entries, table: CounterValueTable(), capacity: 1, limits: limits, body)
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemanticProbe.swift:30:9: error: type alias 'CaptureStorage' cannot be used in an embedded function not marked '@export(interface)' because 'P08CounterTable' was not imported by this file
+ 28 |     var storage = StaticCanvasValueStorage()
+ 29 |     var backing: InlineArray<1, CanvasStagedEntry<SemanticRecordReference, CounterValueTable.CaptureStorage>?> = .init(repeating: nil)
+ 30 |     var entries = backing.mutableSpan
+    |         `- error: type alias 'CaptureStorage' cannot be used in an embedded function not marked '@export(interface)' because 'P08CounterTable' was not imported by this file
+ 31 |     try storage.withLifetime(entries: &entries, table: CounterValueTable(), capacity: 1, limits: limits, body)
+ 32 | }
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemanticProbe.swift:31:56: error: initializer 'init()' cannot be used in an embedded function not marked '@export(interface)' because 'P08CounterTable' was not imported by this file
+ 29 |     var backing: InlineArray<1, CanvasStagedEntry<SemanticRecordReference, CounterValueTable.CaptureStorage>?> = .init(repeating: nil)
+ 30 |     var entries = backing.mutableSpan
+ 31 |     try storage.withLifetime(entries: &entries, table: CounterValueTable(), capacity: 1, limits: limits, body)
+    |                                                        `- error: initializer 'init()' cannot be used in an embedded function not marked '@export(interface)' because 'P08CounterTable' was not imported by this file
+ 32 | }
+ 33 | private func inspectCounter(_ bank: borrowing SemanticRecordView<CounterPayload>, value: UInt8) -> (SemanticCompleteIdentity, Int) {
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemanticProbe.swift:79:54: error: missing argument label 'terminator:' in call
+ 77 |             }
+ 78 |             let result = semantic.expand(CounterScreen<CounterDomain>(), roles: CounterRoles.self, codec: CanvasSemanticPayloadCodec<CounterRoles, CounterValueTable>.self, limits: counterExpansionLimits, binding: ObservableSemanticBodyBinding(models: models.borrowedScope(), root: root.borrowedRoot(), domain: CounterDomain.self))
+ 79 |             guard case .success = result else { print("counter expansion failed", result); preconditionFailure("counter expansion") }
+    |                                                      `- error: missing argument label 'terminator:' in call
+ 80 |             if value == 0 {
+ 81 |                 do throws(SemanticExpansionError) { try semantic.resetAfterQuiescence(); preconditionFailure("candidate reset accepted") }
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemanticProbe.swift:79:83: error: cannot convert value of type 'BoundSemanticExpansionResult<ObservableSemanticBodyBinding<CounterOwnedModel, SemanticCompleteIdentity, CounterDomain>.Failure>' (aka 'BoundSemanticExpansionResult<ObservableStateError>') to expected argument type 'StaticString'
+ 77 |             }
+ 78 |             let result = semantic.expand(CounterScreen<CounterDomain>(), roles: CounterRoles.self, codec: CanvasSemanticPayloadCodec<CounterRoles, CounterValueTable>.self, limits: counterExpansionLimits, binding: ObservableSemanticBodyBinding(models: models.borrowedScope(), root: root.borrowedRoot(), domain: CounterDomain.self))
+ 79 |             guard case .success = result else { print("counter expansion failed", result); preconditionFailure("counter expansion") }
+    |                                                                                   `- error: cannot convert value of type 'BoundSemanticExpansionResult<ObservableSemanticBodyBinding<CounterOwnedModel, SemanticCompleteIdentity, CounterDomain>.Failure>' (aka 'BoundSemanticExpansionResult<ObservableStateError>') to expected argument type 'StaticString'
+ 80 |             if value == 0 {
+ 81 |                 do throws(SemanticExpansionError) { try semantic.resetAfterQuiescence(); preconditionFailure("candidate reset accepted") }
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemanticProbe.swift:94:36: error: missing argument label 'terminator:' in call
+ 92 |                             identity = inspected.0; checks += inspected.1
+ 93 |                         }
+ 94 |                     } catch { print("counter caught", error); preconditionFailure("counter view") }
+    |                                    `- error: missing argument label 'terminator:' in call
+ 95 |                     checks += counterRenderActual(semantic: semantic, models: models, values: values, value: value, dynamic: dynamic)
+ 96 |                     values.discard()
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemanticProbe.swift:94:55: error: cannot convert value of type 'SemanticExpansionError' to expected argument type 'StaticString'
+ 92 |                             identity = inspected.0; checks += inspected.1
+ 93 |                         }
+ 94 |                     } catch { print("counter caught", error); preconditionFailure("counter view") }
+    |                                                       `- error: cannot convert value of type 'SemanticExpansionError' to expected argument type 'StaticString'
+ 95 |                     checks += counterRenderActual(semantic: semantic, models: models, values: values, value: value, dynamic: dynamic)
+ 96 |                     values.discard()
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemanticProbe.swift:99:28: error: missing argument label 'terminator:' in call
+ 97 |                     counterSemanticExpect(values.count == 0 && values.releaseCount == 1); checks += 1
+ 98 |                 }
+ 99 |             } catch { print("counter caught", error); preconditionFailure("counter Canvas transfer") }
+    |                            `- error: missing argument label 'terminator:' in call
+100 |             try models.withDiscovery { () throws(ObservableStateError) in
+101 |                 guard case .success = root.finishCandidate(.publish) else { preconditionFailure("counter publish State") }
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemanticProbe.swift:99:47: error: cannot convert value of type 'DrawingError' to expected argument type 'StaticString'
+ 97 |                     counterSemanticExpect(values.count == 0 && values.releaseCount == 1); checks += 1
+ 98 |                 }
+ 99 |             } catch { print("counter caught", error); preconditionFailure("counter Canvas transfer") }
+    |                                               `- error: cannot convert value of type 'DrawingError' to expected argument type 'StaticString'
+100 |             try models.withDiscovery { () throws(ObservableStateError) in
+101 |                 guard case .success = root.finishCandidate(.publish) else { preconditionFailure("counter publish State") }
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemanticProbe.swift:105:24: error: missing argument label 'terminator:' in call
+103 |             try models.endFrame()
+104 |             key = root.modelKey(identity: identity!, ordinal: 0)!
+105 |         } catch { print("counter caught", error); preconditionFailure("counter model phase") }
+    |                        `- error: missing argument label 'terminator:' in call
+106 |         try semantic.publishCandidate()
+107 |         if value == 0 {
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemanticProbe.swift:105:43: error: cannot convert value of type 'ObservableStateError' to expected argument type 'StaticString'
+103 |             try models.endFrame()
+104 |             key = root.modelKey(identity: identity!, ordinal: 0)!
+105 |         } catch { print("counter caught", error); preconditionFailure("counter model phase") }
+    |                                           `- error: cannot convert value of type 'ObservableStateError' to expected argument type 'StaticString'
+106 |         try semantic.publishCandidate()
+107 |         if value == 0 {
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemanticProbe.swift:135:20: error: missing argument label 'terminator:' in call
+133 |         counterSemanticExpect(models.mutate(key!, mutation: .reset, report: { .dirtied }) == .failure(.staleModel)); checks += 1
+134 |         try root.shutdown(); checks += 1
+135 |     } catch { print("counter caught", error); preconditionFailure("counter cache/replacement") }
+    |                    `- error: missing argument label 'terminator:' in call
+136 |     try semantic.resetAfterQuiescence(); checks += 1
+137 |     try semantic.resetAfterQuiescence(); checks += 1
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemanticProbe.swift:135:39: error: cannot convert value of type 'ObservableStateError' to expected argument type 'StaticString'
+133 |         counterSemanticExpect(models.mutate(key!, mutation: .reset, report: { .dirtied }) == .failure(.staleModel)); checks += 1
+134 |         try root.shutdown(); checks += 1
+135 |     } catch { print("counter caught", error); preconditionFailure("counter cache/replacement") }
+    |                                       `- error: cannot convert value of type 'ObservableStateError' to expected argument type 'StaticString'
+136 |     try semantic.resetAfterQuiescence(); checks += 1
+137 |     try semantic.resetAfterQuiescence(); checks += 1
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemanticProbe.swift:156:20: error: missing argument label 'terminator:' in call
+154 |         var payloads = backing.payloads.mutableSpan; var scalars = backing.scalars.mutableSpan
+155 |         return try storage.withLifetime(records: &records, paths: &paths, payloads: &payloads, scalars: &scalars) { (semantic) throws(SemanticExpansionError) in try exerciseCounter(semantic, models: models, root: root, dynamic: false) }
+156 |     } catch { print("counter caught", error); preconditionFailure("counter semantic backing") }
+    |                    `- error: missing argument label 'terminator:' in call
+157 | }
+158 | package func p08CounterSemantic() -> Int {
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemanticProbe.swift:156:39: error: cannot convert value of type 'SemanticExpansionError' to expected argument type 'StaticString'
+154 |         var payloads = backing.payloads.mutableSpan; var scalars = backing.scalars.mutableSpan
+155 |         return try storage.withLifetime(records: &records, paths: &paths, payloads: &payloads, scalars: &scalars) { (semantic) throws(SemanticExpansionError) in try exerciseCounter(semantic, models: models, root: root, dynamic: false) }
+156 |     } catch { print("counter caught", error); preconditionFailure("counter semantic backing") }
+    |                                       `- error: cannot convert value of type 'SemanticExpansionError' to expected argument type 'StaticString'
+157 | }
+158 | package func p08CounterSemantic() -> Int {
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemanticProbe.swift:171:20: error: missing argument label 'terminator:' in call
+169 |         checks += try dynamic.withLifetime { (models, root) throws(ObservableStateError) in counterSemanticBacking(models: models, root: root, dynamic: true) }
+170 |         #endif
+171 |     } catch { print("counter caught", error); preconditionFailure("counter root") }
+    |                    `- error: missing argument label 'terminator:' in call
+172 |     return checks
+173 | }
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemanticProbe.swift:171:39: error: cannot convert value of type 'ObservableStateError' to expected argument type 'StaticString'
+169 |         checks += try dynamic.withLifetime { (models, root) throws(ObservableStateError) in counterSemanticBacking(models: models, root: root, dynamic: true) }
+170 |         #endif
+171 |     } catch { print("counter caught", error); preconditionFailure("counter root") }
+    |                                       `- error: cannot convert value of type 'ObservableStateError' to expected argument type 'StaticString'
+172 |     return checks
+173 | }
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemanticProbe.swift:176:61: error: extra argument in call
+174 | 
+175 | private func counterSemanticExpect(_ condition: Bool, file: StaticString = #fileID, line: UInt = #line) {
+176 |     if !condition { print("counter assertion failed", file, line); preconditionFailure("counter assertion") }
+    |                                                             `- error: extra argument in call
+177 | }
+178 | 
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterRender.swift:62:104: error: initializer 'init()' cannot be used in an embedded function not marked '@export(interface)' because 'P08CounterTable' was not imported by this file
+ 60 |     var checks = 0
+ 61 |     let canvas = values.identity(at: 0)!
+ 62 |     var source = CounterSource(models: models.borrowedScope(), values: values.borrowedValues(), table: CounterValueTable())
+    |                                                                                                        `- error: initializer 'init()' cannot be used in an embedded function not marked '@export(interface)' because 'P08CounterTable' was not imported by this file
+ 63 |     do throws(SemanticExpansionError) {
+ 64 |         try semantic.withCandidateView { bank in
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterRender.swift:66:54: error: missing argument label 'terminator:' in call
+ 64 |         try semantic.withCandidateView { bank in
+ 65 |             let result = geometry.layout(bank, limits: limits)
+ 66 |             guard case .success = result else { print("counter layout failed", result); preconditionFailure("counter layout") }
+    |                                                      `- error: missing argument label 'terminator:' in call
+ 67 |         }
+ 68 |         let context = ExecutionContext(cycle: RunCycleID(rawValue: 1), semanticRevision: nil, candidateFrame: nil, phase: .deriving)
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterRender.swift:66:80: error: cannot convert value of type 'LayoutResult' to expected argument type 'StaticString'
+ 64 |         try semantic.withCandidateView { bank in
+ 65 |             let result = geometry.layout(bank, limits: limits)
+ 66 |             guard case .success = result else { print("counter layout failed", result); preconditionFailure("counter layout") }
+    |                                                                                `- error: cannot convert value of type 'LayoutResult' to expected argument type 'StaticString'
+ 67 |         }
+ 68 |         let context = ExecutionContext(cycle: RunCycleID(rawValue: 1), semanticRevision: nil, candidateFrame: nil, phase: .deriving)
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterRender.swift:70:61: error: missing argument label 'terminator:' in call
+ 68 |         let context = ExecutionContext(cycle: RunCycleID(rawValue: 1), semanticRevision: nil, candidateFrame: nil, phase: .deriving)
+ 69 |         let draw = geometry.draw(source: &source, context: context, limits: limits)
+ 70 |         guard case .success(let summary) = draw else { print("counter draw failed", draw); preconditionFailure("counter drawing") }
+    |                                                             `- error: missing argument label 'terminator:' in call
+ 71 |         counterRenderExpect(summary.canvasOccurrenceCount == 1 && summary.strokeCount == (value == 0 ? 0 : 1)); checks += 1
+ 72 |         checks += geometry.verifyPlan(canvas: canvas, value: value)
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterRender.swift:70:85: error: cannot convert value of type 'DrawingPlanResult' to expected argument type 'StaticString'
+ 68 |         let context = ExecutionContext(cycle: RunCycleID(rawValue: 1), semanticRevision: nil, candidateFrame: nil, phase: .deriving)
+ 69 |         let draw = geometry.draw(source: &source, context: context, limits: limits)
+ 70 |         guard case .success(let summary) = draw else { print("counter draw failed", draw); preconditionFailure("counter drawing") }
+    |                                                                                     `- error: cannot convert value of type 'DrawingPlanResult' to expected argument type 'StaticString'
+ 71 |         counterRenderExpect(summary.canvasOccurrenceCount == 1 && summary.strokeCount == (value == 0 ? 0 : 1)); checks += 1
+ 72 |         checks += geometry.verifyPlan(canvas: canvas, value: value)
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterRender.swift:79:66: error: missing argument label 'terminator:' in call
+ 77 |         try semantic.withCandidateView { bank in
+ 78 |             let result = geometry.preflight(bank, limits: limits)
+ 79 |             guard case .success(let header) = result else { print("counter render preflight failed", result); preconditionFailure("counter render preflight") }
+    |                                                                  `- error: missing argument label 'terminator:' in call
+ 80 |             let produced = geometry.produce(bank, header: header, sink: &sink, limits: limits)
+ 81 |             counterRenderExpect(produced == .success(header)); checks += 1
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterRender.swift:79:102: error: cannot convert value of type 'RenderProductionResult' to expected argument type 'StaticString'
+ 77 |         try semantic.withCandidateView { bank in
+ 78 |             let result = geometry.preflight(bank, limits: limits)
+ 79 |             guard case .success(let header) = result else { print("counter render preflight failed", result); preconditionFailure("counter render preflight") }
+    |                                                                                                      `- error: cannot convert value of type 'RenderProductionResult' to expected argument type 'StaticString'
+ 80 |             let produced = geometry.produce(bank, header: header, sink: &sink, limits: limits)
+ 81 |             counterRenderExpect(produced == .success(header)); checks += 1
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterRender.swift:117:1008: error: initializer 'init(maximumActions:maximumHitRegions:)' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUIInteraction' was not imported by this file
+115 | 
+116 | func counterActualLimits(_ profile: RuntimeProfileKind) -> RuntimeProfileLimits {
+117 |     RuntimeProfileLimits(records: .init(maximumPathEntries: 192, maximumPathDepth: 24, maximumPathChildFanout: 5, maximumPayloadBytesPerBank: 4096, maximumIdentityComponentsPerKey: 24, maximumInteractionIdentityComponents: 48), models: .init(maximumModelSlots: 2, maximumOwningTickets: 4, maximumFramePins: 2, maximumModelCaptureBanks: 0), semantic: .init(maximumDepth: 24, maximumSemanticNodes: 24, maximumBodyEvaluations: 8, maximumModifierApplications: 8, maximumActionOccurrences: 2)!, maximumSemanticStructuralOccurrences: 64, layout: counterLayoutLimits, render: counterRenderLimits, renderWorkspace: counterRenderCapacity, renderSink: CounterRenderSink().capacity, maximumOrdinaryRenderOperations: 24, execution: .init(maximumInputEvents: 2, maximumStateChangeFacts: 34, maximumCompletionFacts: 1, maximumSemanticActions: 2, maximumActiveInputSources: 1, maximumCommittedActions: 2)!, observableState: .init(maximumLocations: 1, maximumRegistrations: 1, maximumStagedAssociations: 1)!, interaction: .init(maximumActions: 2, maximumHitRegions: 2)!, drawing: counterDrawingLimits, staticCanvas: profile == .static ? .init(maximumStaticCallableCases: 1, maximumStaticCaptureBytes: UInt16(MemoryLayout<CounterValueTable.CaptureStorage>.stride))! : nil, profile: profile)!
+    |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                `- error: initializer 'init(maximumActions:maximumHitRegions:)' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUIInteraction' was not imported by this file
+118 | }
+119 | 
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterRender.swift:117:1224: error: type alias 'CaptureStorage' cannot be used in an embedded function not marked '@export(interface)' because 'P08CounterTable' was not imported by this file
+115 | 
+116 | func counterActualLimits(_ profile: RuntimeProfileKind) -> RuntimeProfileLimits {
+117 |     RuntimeProfileLimits(records: .init(maximumPathEntries: 192, maximumPathDepth: 24, maximumPathChildFanout: 5, maximumPayloadBytesPerBank: 4096, maximumIdentityComponentsPerKey: 24, maximumInteractionIdentityComponents: 48), models: .init(maximumModelSlots: 2, maximumOwningTickets: 4, maximumFramePins: 2, maximumModelCaptureBanks: 0), semantic: .init(maximumDepth: 24, maximumSemanticNodes: 24, maximumBodyEvaluations: 8, maximumModifierApplications: 8, maximumActionOccurrences: 2)!, maximumSemanticStructuralOccurrences: 64, layout: counterLayoutLimits, render: counterRenderLimits, renderWorkspace: counterRenderCapacity, renderSink: CounterRenderSink().capacity, maximumOrdinaryRenderOperations: 24, execution: .init(maximumInputEvents: 2, maximumStateChangeFacts: 34, maximumCompletionFacts: 1, maximumSemanticActions: 2, maximumActiveInputSources: 1, maximumCommittedActions: 2)!, observableState: .init(maximumLocations: 1, maximumRegistrations: 1, maximumStagedAssociations: 1)!, interaction: .init(maximumActions: 2, maximumHitRegions: 2)!, drawing: counterDrawingLimits, staticCanvas: profile == .static ? .init(maximumStaticCallableCases: 1, maximumStaticCaptureBytes: UInt16(MemoryLayout<CounterValueTable.CaptureStorage>.stride))! : nil, profile: profile)!
+    |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        `- error: type alias 'CaptureStorage' cannot be used in an embedded function not marked '@export(interface)' because 'P08CounterTable' was not imported by this file
+118 | }
+119 | 
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterRender.swift:138:68: error: extra argument in call
+136 | 
+137 | private func counterRenderExpect(_ condition: Bool, file: StaticString = #fileID, line: UInt = #line) {
+138 |     if !condition { print("counter render assertion failed", file, line); preconditionFailure("counter render assertion") }
+    |                                                                    `- error: extra argument in call
+139 | }
+140 | 
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift:520:64: error: missing argument label 'terminator:' in call
+518 |     return true
+519 | }
+520 | func counterTrace<T>(_ label: StaticString, _ value: T) { print(label, value) }
+    |                                                                `- error: missing argument label 'terminator:' in call
+521 | 
+522 | private func counterActionCode(_ ref: SemanticRecordReference, bank: borrowing SemanticRecordView<CounterPayload>) -> UInt16 {
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift:520:72: error: cannot convert value of type 'T' to expected argument type 'StaticString'
+518 |     return true
+519 | }
+520 | func counterTrace<T>(_ label: StaticString, _ value: T) { print(label, value) }
+    |                                                                        `- error: cannot convert value of type 'T' to expected argument type 'StaticString'
+521 | 
+522 | private func counterActionCode(_ ref: SemanticRecordReference, bank: borrowing SemanticRecordView<CounterPayload>) -> UInt16 {
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterCoordinatorProbe.swift:70:49: error: missing argument label 'terminator:' in call
+68 |     do {
+69 |         var storage = StaticCounterProfileStorage(modelOwner: try models.issue(), semanticOwner: try semantics.issue())
+70 |         let staticAudit = storage.audit(); print("counter static audit", staticAudit)
+   |                                                 `- error: missing argument label 'terminator:' in call
+71 |         guard case .valid = staticAudit else { preconditionFailure("counter static audit") }
+72 |         var checks = storage.run() + 1
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterCoordinatorProbe.swift:70:74: error: cannot convert value of type 'RuntimeProfileValidationResult' to expected argument type 'StaticString'
+68 |     do {
+69 |         var storage = StaticCounterProfileStorage(modelOwner: try models.issue(), semanticOwner: try semantics.issue())
+70 |         let staticAudit = storage.audit(); print("counter static audit", staticAudit)
+   |                                                                          `- error: cannot convert value of type 'RuntimeProfileValidationResult' to expected argument type 'StaticString'
+71 |         guard case .valid = staticAudit else { preconditionFailure("counter static audit") }
+72 |         var checks = storage.run() + 1
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWorkload.swift:16:24: error: initializer 'init(maximumDepth:maximumSemanticNodes:maximumBodyEvaluations:maximumModifierApplications:maximumActionOccurrences:)' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUISemanticCore' was not imported by this file
+14 |             models: models ?? .init(maximumModelSlots: 2, maximumOwningTickets: 4,
+15 |                 maximumFramePins: 2, maximumModelCaptureBanks: 0),
+16 |             semantic: .init(maximumDepth: 24, maximumSemanticNodes: 24,
+   |                        `- error: initializer 'init(maximumDepth:maximumSemanticNodes:maximumBodyEvaluations:maximumModifierApplications:maximumActionOccurrences:)' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUISemanticCore' was not imported by this file
+17 |                 maximumBodyEvaluations: 8, maximumModifierApplications: 8,
+18 |                 maximumActionOccurrences: actionCount)!,
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWorkload.swift:20:22: error: initializer 'init(maximumScopes:maximumDepth:maximumTextScalars:maximumTextLines:maximumPositionedGlyphs:)' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUILayout' was not imported by this file
+18 |                 maximumActionOccurrences: actionCount)!,
+19 |             maximumSemanticStructuralOccurrences: 64,
+20 |             layout: .init(maximumScopes: 32, maximumDepth: 12, maximumTextScalars: 64,
+   |                      `- error: initializer 'init(maximumScopes:maximumDepth:maximumTextScalars:maximumTextLines:maximumPositionedGlyphs:)' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUILayout' was not imported by this file
+21 |                 maximumTextLines: 16, maximumPositionedGlyphs: 64)!,
+22 |             render: .init(maximumOperations: 25, maximumPositionedGlyphs: 64, maximumClipDepth: 4)!,
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWorkload.swift:22:22: error: initializer 'init(maximumOperations:maximumPositionedGlyphs:maximumClipDepth:)' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUIRenderLowering' was not imported by this file
+20 |             layout: .init(maximumScopes: 32, maximumDepth: 12, maximumTextScalars: 64,
+21 |                 maximumTextLines: 16, maximumPositionedGlyphs: 64)!,
+22 |             render: .init(maximumOperations: 25, maximumPositionedGlyphs: 64, maximumClipDepth: 4)!,
+   |                      `- error: initializer 'init(maximumOperations:maximumPositionedGlyphs:maximumClipDepth:)' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUIRenderLowering' was not imported by this file
+23 |             renderWorkspace: .init(maximumSemanticScopes: 32, maximumLayoutScopes: 32,
+24 |                 maximumTraversalDepth: 12, maximumTextLines: 16)!,
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWorkload.swift:23:31: error: initializer 'init(maximumSemanticScopes:maximumLayoutScopes:maximumTraversalDepth:maximumTextLines:)' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUIRenderLowering' was not imported by this file
+21 |                 maximumTextLines: 16, maximumPositionedGlyphs: 64)!,
+22 |             render: .init(maximumOperations: 25, maximumPositionedGlyphs: 64, maximumClipDepth: 4)!,
+23 |             renderWorkspace: .init(maximumSemanticScopes: 32, maximumLayoutScopes: 32,
+   |                               `- error: initializer 'init(maximumSemanticScopes:maximumLayoutScopes:maximumTraversalDepth:maximumTextLines:)' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUIRenderLowering' was not imported by this file
+24 |                 maximumTraversalDepth: 12, maximumTextLines: 16)!,
+25 |             renderSink: .init(maximumOperations: 25, maximumPositionedGlyphs: 64),
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWorkload.swift:25:26: error: initializer 'init(maximumOperations:maximumPositionedGlyphs:)' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUIRenderCore' was not imported by this file
+23 |             renderWorkspace: .init(maximumSemanticScopes: 32, maximumLayoutScopes: 32,
+24 |                 maximumTraversalDepth: 12, maximumTextLines: 16)!,
+25 |             renderSink: .init(maximumOperations: 25, maximumPositionedGlyphs: 64),
+   |                          `- error: initializer 'init(maximumOperations:maximumPositionedGlyphs:)' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUIRenderCore' was not imported by this file
+26 |             maximumOrdinaryRenderOperations: 24,
+27 |             execution: .init(maximumInputEvents: max(2, actionCount), maximumStateChangeFacts: 34,
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWorkload.swift:27:25: error: initializer 'init(maximumInputEvents:maximumStateChangeFacts:maximumCompletionFacts:maximumSemanticActions:maximumActiveInputSources:maximumCommittedActions:)' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUIExecution' was not imported by this file
+25 |             renderSink: .init(maximumOperations: 25, maximumPositionedGlyphs: 64),
+26 |             maximumOrdinaryRenderOperations: 24,
+27 |             execution: .init(maximumInputEvents: max(2, actionCount), maximumStateChangeFacts: 34,
+   |                         `- error: initializer 'init(maximumInputEvents:maximumStateChangeFacts:maximumCompletionFacts:maximumSemanticActions:maximumActiveInputSources:maximumCommittedActions:)' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUIExecution' was not imported by this file
+28 |                 maximumCompletionFacts: 1, maximumSemanticActions: actionCount,
+29 |                 maximumActiveInputSources: 1, maximumCommittedActions: actionCount)!,
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWorkload.swift:30:31: error: initializer 'init(maximumLocations:maximumRegistrations:maximumStagedAssociations:)' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUIObservableState' was not imported by this file
+28 |                 maximumCompletionFacts: 1, maximumSemanticActions: actionCount,
+29 |                 maximumActiveInputSources: 1, maximumCommittedActions: actionCount)!,
+30 |             observableState: .init(maximumLocations: 1, maximumRegistrations: 1,
+   |                               `- error: initializer 'init(maximumLocations:maximumRegistrations:maximumStagedAssociations:)' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUIObservableState' was not imported by this file
+31 |                 maximumStagedAssociations: 1)!,
+32 |             interaction: .init(maximumActions: actionCount, maximumHitRegions: actionCount)!,
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWorkload.swift:32:27: error: initializer 'init(maximumActions:maximumHitRegions:)' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUIInteraction' was not imported by this file
+30 |             observableState: .init(maximumLocations: 1, maximumRegistrations: 1,
+31 |                 maximumStagedAssociations: 1)!,
+32 |             interaction: .init(maximumActions: actionCount, maximumHitRegions: actionCount)!,
+   |                           `- error: initializer 'init(maximumActions:maximumHitRegions:)' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUIInteraction' was not imported by this file
+33 |             drawing: .init(maximumLineWidth: 1, maximumCanvasOccurrences: 1,
+34 |                 maximumLivePathPoints: 2, maximumLivePathSubpaths: 1, maximumPlanStrokes: 1,
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWorkload.swift:33:23: error: initializer 'init(maximumLineWidth:maximumCanvasOccurrences:maximumLivePathPoints:maximumLivePathSubpaths:maximumPlanStrokes:maximumPlanPoints:maximumPlanSubpaths:maximumNormalizedStrokeOperations:)' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUIDrawing' was not imported by this file
+31 |                 maximumStagedAssociations: 1)!,
+32 |             interaction: .init(maximumActions: actionCount, maximumHitRegions: actionCount)!,
+33 |             drawing: .init(maximumLineWidth: 1, maximumCanvasOccurrences: 1,
+   |                       `- error: initializer 'init(maximumLineWidth:maximumCanvasOccurrences:maximumLivePathPoints:maximumLivePathSubpaths:maximumPlanStrokes:maximumPlanPoints:maximumPlanSubpaths:maximumNormalizedStrokeOperations:)' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUIDrawing' was not imported by this file
+34 |                 maximumLivePathPoints: 2, maximumLivePathSubpaths: 1, maximumPlanStrokes: 1,
+35 |                 maximumPlanPoints: 2, maximumPlanSubpaths: 1, maximumNormalizedStrokeOperations: 1)!,
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWorkload.swift:37:20: error: initializer 'init(maximumStaticCallableCases:maximumStaticCaptureBytes:)' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUIDrawing' was not imported by this file
+35 |                 maximumPlanPoints: 2, maximumPlanSubpaths: 1, maximumNormalizedStrokeOperations: 1)!,
+36 |             staticCanvas: profile == .static
+37 |                 ? .init(maximumStaticCallableCases: 1, maximumStaticCaptureBytes: captureBytes)! : nil,
+   |                    `- error: initializer 'init(maximumStaticCallableCases:maximumStaticCaptureBytes:)' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUIDrawing' was not imported by this file
+38 |             profile: profile)!
+39 |     }
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWorkload.swift:48:57: error: property 'maximumInputEvents' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUIExecution' was not imported by this file
+46 |             layoutScopeOccurrences: 32, maximumRenderTraversalDepth: 12,
+47 |             renderTextLineCount: 16, positionedGlyphCount: 64, ordinaryRenderOperations: 24,
+48 |             inputEventsPerOpportunity: limits.execution.maximumInputEvents,
+   |                                                         `- error: property 'maximumInputEvents' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUIExecution' was not imported by this file
+49 |             semanticActionsPerOpportunity: limits.semantic.maximumActionOccurrences,
+50 |             completionFactsPerOpportunity: 1,
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWorkload.swift:49:60: error: property 'maximumActionOccurrences' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUISemanticCore' was not imported by this file
+47 |             renderTextLineCount: 16, positionedGlyphCount: 64, ordinaryRenderOperations: 24,
+48 |             inputEventsPerOpportunity: limits.execution.maximumInputEvents,
+49 |             semanticActionsPerOpportunity: limits.semantic.maximumActionOccurrences,
+   |                                                            `- error: property 'maximumActionOccurrences' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUISemanticCore' was not imported by this file
+50 |             completionFactsPerOpportunity: 1,
+51 |             drawing: .init(canvasOccurrences: 1, maximumLivePathPoints: 2,
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWorkload.swift:54:59: error: property 'maximumStaticCallableCases' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUIDrawing' was not imported by this file
+52 |                 maximumLivePathSubpaths: 1, submittedStrokes: 1, snapshottedPoints: 2,
+53 |                 snapshottedSubpaths: 1, normalizedStrokeOperations: 1, greatestLineWidth: 1,
+54 |                 staticCallableCases: limits.staticCanvas?.maximumStaticCallableCases,
+   |                                                           `- error: property 'maximumStaticCallableCases' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUIDrawing' was not imported by this file
+55 |                 maximumStaticCaptureBytes: limits.staticCanvas?.maximumStaticCaptureBytes))
+56 |     }
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWorkload.swift:55:65: error: property 'maximumStaticCaptureBytes' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUIDrawing' was not imported by this file
+53 |                 snapshottedSubpaths: 1, normalizedStrokeOperations: 1, greatestLineWidth: 1,
+54 |                 staticCallableCases: limits.staticCanvas?.maximumStaticCallableCases,
+55 |                 maximumStaticCaptureBytes: limits.staticCanvas?.maximumStaticCaptureBytes))
+   |                                                                 `- error: property 'maximumStaticCaptureBytes' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUIDrawing' was not imported by this file
+56 |     }
+57 |     static let cardinality = SignalAnalyzerHostCardinality(actionCaseCount: 2,
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostProbe.swift:33:37: error: type alias 'CaptureStorage' cannot be used in an embedded function not marked '@export(interface)' because 'P08CounterTable' was not imported by this file
+ 31 |                         try semantic.withLifetime(configuredLimits: counterSemanticConfiguration(limits), records: &records, paths: &paths, payloads: &payloads, scalars: &scalars) { (semantic) throws(SemanticExpansionError) in
+ 32 |                             do throws(DrawingError) {
+ 33 |                                 var entries = canvasBacking.mutableSpan
+    |                                     `- error: type alias 'CaptureStorage' cannot be used in an embedded function not marked '@export(interface)' because 'P08CounterTable' was not imported by this file
+ 34 |                                 try canvas.withLifetime(entries: &entries, table: CounterValueTable(), capacity: 1, limits: limits.staticCanvas!) { values in
+ 35 |                                     checks = workspace.withGeometry { geometry in
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostProbe.swift:34:83: error: initializer 'init()' cannot be used in an embedded function not marked '@export(interface)' because 'P08CounterTable' was not imported by this file
+ 32 |                             do throws(DrawingError) {
+ 33 |                                 var entries = canvasBacking.mutableSpan
+ 34 |                                 try canvas.withLifetime(entries: &entries, table: CounterValueTable(), capacity: 1, limits: limits.staticCanvas!) { values in
+    |                                                                                   `- error: initializer 'init()' cannot be used in an embedded function not marked '@export(interface)' because 'P08CounterTable' was not imported by this file
+ 35 |                                     checks = workspace.withGeometry { geometry in
+ 36 |                                         withUnsafeMutablePointer(to: &control) { pointer in
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostProbe.swift:34:147: error: generic struct 'P08CounterSchemaCanvasTable' cannot be used in an embedded function not marked '@export(interface)' because 'P08CounterTable' was not imported by this file
+ 32 |                             do throws(DrawingError) {
+ 33 |                                 var entries = canvasBacking.mutableSpan
+ 34 |                                 try canvas.withLifetime(entries: &entries, table: CounterValueTable(), capacity: 1, limits: limits.staticCanvas!) { values in
+    |                                                                                                                                                   `- error: generic struct 'P08CounterSchemaCanvasTable' cannot be used in an embedded function not marked '@export(interface)' because 'P08CounterTable' was not imported by this file
+ 35 |                                     checks = workspace.withGeometry { geometry in
+ 36 |                                         withUnsafeMutablePointer(to: &control) { pointer in
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostCorpus.swift:65:45: error: property 'rawValue' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUITextResources' was not imported by this file
+ 63 |         for _ in 0..<Int(lengths[line]) {
+ 64 |             let glyph = frame.glyphRecords[ordinal]!
+ 65 |             counterCorpusExpect(glyph.glyph.rawValue == (ordinal == 7 ? digits[Int(value)] : glyphIDs[ordinal]))
+    |                                             `- error: property 'rawValue' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUITextResources' was not imported by this file
+ 66 |             counterCorpusExpect(glyph.baseline == Point(x: x, y: 16 + GeometryScalar(line) * 24))
+ 67 |             x += ordinal == 7 ? digitAdvance : advances[ordinal]; ordinal += 1
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostCorpus.swift:133:66: error: extra argument in call
+131 | 
+132 | private func counterCorpusExpect(_ condition: Bool, file: StaticString = #fileID, line: UInt = #line) {
+133 |     if !condition { print("counter host corpus assertion", file, line); preconditionFailure("counter corpus") }
+    |                                                                  `- error: extra argument in call
+134 | }
+135 | 
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWakeIntegration.swift:112:64: error: missing argument label 'terminator:' in call
+110 |     var timestamp = control.pointee.wakeClockMicroseconds
+111 |     var checks = 0
+112 |     func expect(_ value: Bool) { checks += 1; if !value { print("counter wake control failed", checks) }; precondition(value) }
+    |                                                                `- error: missing argument label 'terminator:' in call
+113 |     // Rejection outcomes alone do not prove queued-only notification. Observe
+114 |     // the actual canonical owner, pacing inputs and runtime before each call.
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWakeIntegration.swift:112:96: error: cannot convert value of type 'Int' to expected argument type 'StaticString'
+110 |     var timestamp = control.pointee.wakeClockMicroseconds
+111 |     var checks = 0
+112 |     func expect(_ value: Bool) { checks += 1; if !value { print("counter wake control failed", checks) }; precondition(value) }
+    |                                                                                                `- error: cannot convert value of type 'Int' to expected argument type 'StaticString'
+113 |     // Rejection outcomes alone do not prove queued-only notification. Observe
+114 |     // the actual canonical owner, pacing inputs and runtime before each call.
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWakeIntegration.swift:140:9: error: struct 'PresentationRevision' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUI' was not imported by this file
+138 |         expect(control.pointee.disabledWakeRejections == disabled)
+139 |     }
+140 |     let revision = control.pointee.runtime.committedPresentation!
+    |         `- error: struct 'PresentationRevision' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUI' was not imported by this file
+141 |     expectNoWake(.invalidValue) { admission.submit(stateChange: 10) }
+142 |     expectNoWake(.invalidValue) { admission.submit(completion: 1) }
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWakeIntegration.swift:143:67: error: initializer 'init(phase:position:source:sequence:ordinal:presentationRevision:)' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUI' was not imported by this file
+141 |     expectNoWake(.invalidValue) { admission.submit(stateChange: 10) }
+142 |     expectNoWake(.invalidValue) { admission.submit(completion: 1) }
+143 |     expectNoWake(.invalidProvenance) { admission.submit(pointer: .init(phase: .down, position: .init(x: 99, y: 119), source: .init(rawValue: 1), sequence: .init(rawValue: 0), ordinal: .init(rawValue: 0), presentationRevision: .init(rawValue: revision.rawValue + 1))) }
+    |                                                                   `- error: initializer 'init(phase:position:source:sequence:ordinal:presentationRevision:)' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUI' was not imported by this file
+144 |     let initialFinalized = control.pointee.finalized
+145 |     let initialApplied = control.pointee.applied
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWakeIntegration.swift:143:80: error: enum case 'down' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUI' was not imported by this file
+141 |     expectNoWake(.invalidValue) { admission.submit(stateChange: 10) }
+142 |     expectNoWake(.invalidValue) { admission.submit(completion: 1) }
+143 |     expectNoWake(.invalidProvenance) { admission.submit(pointer: .init(phase: .down, position: .init(x: 99, y: 119), source: .init(rawValue: 1), sequence: .init(rawValue: 0), ordinal: .init(rawValue: 0), presentationRevision: .init(rawValue: revision.rawValue + 1))) }
+    |                                                                                `- error: enum case 'down' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUI' was not imported by this file
+144 |     let initialFinalized = control.pointee.finalized
+145 |     let initialApplied = control.pointee.applied
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWakeIntegration.swift:143:97: error: initializer 'init(x:y:)' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUI' was not imported by this file
+141 |     expectNoWake(.invalidValue) { admission.submit(stateChange: 10) }
+142 |     expectNoWake(.invalidValue) { admission.submit(completion: 1) }
+143 |     expectNoWake(.invalidProvenance) { admission.submit(pointer: .init(phase: .down, position: .init(x: 99, y: 119), source: .init(rawValue: 1), sequence: .init(rawValue: 0), ordinal: .init(rawValue: 0), presentationRevision: .init(rawValue: revision.rawValue + 1))) }
+    |                                                                                                 `- error: initializer 'init(x:y:)' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUI' was not imported by this file
+144 |     let initialFinalized = control.pointee.finalized
+145 |     let initialApplied = control.pointee.applied
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWakeIntegration.swift:143:127: error: initializer 'init(rawValue:)' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUI' was not imported by this file
+141 |     expectNoWake(.invalidValue) { admission.submit(stateChange: 10) }
+142 |     expectNoWake(.invalidValue) { admission.submit(completion: 1) }
+143 |     expectNoWake(.invalidProvenance) { admission.submit(pointer: .init(phase: .down, position: .init(x: 99, y: 119), source: .init(rawValue: 1), sequence: .init(rawValue: 0), ordinal: .init(rawValue: 0), presentationRevision: .init(rawValue: revision.rawValue + 1))) }
+    |                                                                                                                               `- error: initializer 'init(rawValue:)' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUI' was not imported by this file
+144 |     let initialFinalized = control.pointee.finalized
+145 |     let initialApplied = control.pointee.applied
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWakeIntegration.swift:143:157: error: initializer 'init(rawValue:)' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUI' was not imported by this file
+141 |     expectNoWake(.invalidValue) { admission.submit(stateChange: 10) }
+142 |     expectNoWake(.invalidValue) { admission.submit(completion: 1) }
+143 |     expectNoWake(.invalidProvenance) { admission.submit(pointer: .init(phase: .down, position: .init(x: 99, y: 119), source: .init(rawValue: 1), sequence: .init(rawValue: 0), ordinal: .init(rawValue: 0), presentationRevision: .init(rawValue: revision.rawValue + 1))) }
+    |                                                                                                                                                             `- error: initializer 'init(rawValue:)' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUI' was not imported by this file
+144 |     let initialFinalized = control.pointee.finalized
+145 |     let initialApplied = control.pointee.applied
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWakeIntegration.swift:143:186: error: initializer 'init(rawValue:)' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUI' was not imported by this file
+141 |     expectNoWake(.invalidValue) { admission.submit(stateChange: 10) }
+142 |     expectNoWake(.invalidValue) { admission.submit(completion: 1) }
+143 |     expectNoWake(.invalidProvenance) { admission.submit(pointer: .init(phase: .down, position: .init(x: 99, y: 119), source: .init(rawValue: 1), sequence: .init(rawValue: 0), ordinal: .init(rawValue: 0), presentationRevision: .init(rawValue: revision.rawValue + 1))) }
+    |                                                                                                                                                                                          `- error: initializer 'init(rawValue:)' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUI' was not imported by this file
+144 |     let initialFinalized = control.pointee.finalized
+145 |     let initialApplied = control.pointee.applied
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWakeIntegration.swift:143:228: error: initializer 'init(rawValue:)' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUI' was not imported by this file
+141 |     expectNoWake(.invalidValue) { admission.submit(stateChange: 10) }
+142 |     expectNoWake(.invalidValue) { admission.submit(completion: 1) }
+143 |     expectNoWake(.invalidProvenance) { admission.submit(pointer: .init(phase: .down, position: .init(x: 99, y: 119), source: .init(rawValue: 1), sequence: .init(rawValue: 0), ordinal: .init(rawValue: 0), presentationRevision: .init(rawValue: revision.rawValue + 1))) }
+    |                                                                                                                                                                                                                                    `- error: initializer 'init(rawValue:)' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUI' was not imported by this file
+144 |     let initialFinalized = control.pointee.finalized
+145 |     let initialApplied = control.pointee.applied
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWakeIntegration.swift:143:252: error: property 'rawValue' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUI' was not imported by this file
+141 |     expectNoWake(.invalidValue) { admission.submit(stateChange: 10) }
+142 |     expectNoWake(.invalidValue) { admission.submit(completion: 1) }
+143 |     expectNoWake(.invalidProvenance) { admission.submit(pointer: .init(phase: .down, position: .init(x: 99, y: 119), source: .init(rawValue: 1), sequence: .init(rawValue: 0), ordinal: .init(rawValue: 0), presentationRevision: .init(rawValue: revision.rawValue + 1))) }
+    |                                                                                                                                                                                                                                                            `- error: property 'rawValue' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUI' was not imported by this file
+144 |     let initialFinalized = control.pointee.finalized
+145 |     let initialApplied = control.pointee.applied
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWakeIntegration.swift:175:67: error: enum case 'down' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUI' was not imported by this file
+173 |     expectAcceptedFact(3)
+174 |     control.pointee.wakeClockMicroseconds = timestamp + 40
+175 |     guard case .queued = control.pointee.inputGate.submit(phase: .down, position: .init(x: 99, y: 119), source: .init(rawValue: 0), observedPresentationRevision: revision, isMalformed: false, priorPhysicalSequenceIsComplete: true, to: &admission) else { preconditionFailure("counter multi-category down") }
+    |                                                                   `- error: enum case 'down' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUI' was not imported by this file
+176 |     expectAcceptedFact(4)
+177 |     control.pointee.wakeClockMicroseconds = timestamp + 50
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWakeIntegration.swift:175:84: error: initializer 'init(x:y:)' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUI' was not imported by this file
+173 |     expectAcceptedFact(3)
+174 |     control.pointee.wakeClockMicroseconds = timestamp + 40
+175 |     guard case .queued = control.pointee.inputGate.submit(phase: .down, position: .init(x: 99, y: 119), source: .init(rawValue: 0), observedPresentationRevision: revision, isMalformed: false, priorPhysicalSequenceIsComplete: true, to: &admission) else { preconditionFailure("counter multi-category down") }
+    |                                                                                    `- error: initializer 'init(x:y:)' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUI' was not imported by this file
+176 |     expectAcceptedFact(4)
+177 |     control.pointee.wakeClockMicroseconds = timestamp + 50
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWakeIntegration.swift:175:114: error: initializer 'init(rawValue:)' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUI' was not imported by this file
+173 |     expectAcceptedFact(3)
+174 |     control.pointee.wakeClockMicroseconds = timestamp + 40
+175 |     guard case .queued = control.pointee.inputGate.submit(phase: .down, position: .init(x: 99, y: 119), source: .init(rawValue: 0), observedPresentationRevision: revision, isMalformed: false, priorPhysicalSequenceIsComplete: true, to: &admission) else { preconditionFailure("counter multi-category down") }
+    |                                                                                                                  `- error: initializer 'init(rawValue:)' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUI' was not imported by this file
+176 |     expectAcceptedFact(4)
+177 |     control.pointee.wakeClockMicroseconds = timestamp + 50
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWakeIntegration.swift:178:67: error: enum case 'up' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUI' was not imported by this file
+176 |     expectAcceptedFact(4)
+177 |     control.pointee.wakeClockMicroseconds = timestamp + 50
+178 |     guard case .queued = control.pointee.inputGate.submit(phase: .up, position: .init(x: 99, y: 119), source: .init(rawValue: 0), observedPresentationRevision: revision, isMalformed: false, priorPhysicalSequenceIsComplete: true, to: &admission) else { preconditionFailure("counter multi-category up") }
+    |                                                                   `- error: enum case 'up' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUI' was not imported by this file
+179 |     expectAcceptedFact(5)
+180 |     expectNoWake(.invalidValue) { admission.submit(stateChange: 10) }
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWakeIntegration.swift:178:82: error: initializer 'init(x:y:)' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUI' was not imported by this file
+176 |     expectAcceptedFact(4)
+177 |     control.pointee.wakeClockMicroseconds = timestamp + 50
+178 |     guard case .queued = control.pointee.inputGate.submit(phase: .up, position: .init(x: 99, y: 119), source: .init(rawValue: 0), observedPresentationRevision: revision, isMalformed: false, priorPhysicalSequenceIsComplete: true, to: &admission) else { preconditionFailure("counter multi-category up") }
+    |                                                                                  `- error: initializer 'init(x:y:)' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUI' was not imported by this file
+179 |     expectAcceptedFact(5)
+180 |     expectNoWake(.invalidValue) { admission.submit(stateChange: 10) }
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWakeIntegration.swift:178:112: error: initializer 'init(rawValue:)' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUI' was not imported by this file
+176 |     expectAcceptedFact(4)
+177 |     control.pointee.wakeClockMicroseconds = timestamp + 50
+178 |     guard case .queued = control.pointee.inputGate.submit(phase: .up, position: .init(x: 99, y: 119), source: .init(rawValue: 0), observedPresentationRevision: revision, isMalformed: false, priorPhysicalSequenceIsComplete: true, to: &admission) else { preconditionFailure("counter multi-category up") }
+    |                                                                                                                `- error: initializer 'init(rawValue:)' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUI' was not imported by this file
+179 |     expectAcceptedFact(5)
+180 |     expectNoWake(.invalidValue) { admission.submit(stateChange: 10) }
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWakeIntegration.swift:182:67: error: initializer 'init(phase:position:source:sequence:ordinal:presentationRevision:)' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUI' was not imported by this file
+180 |     expectNoWake(.invalidValue) { admission.submit(stateChange: 10) }
+181 |     expectNoWake(.invalidValue) { admission.submit(completion: 1) }
+182 |     expectNoWake(.invalidProvenance) { admission.submit(pointer: .init(phase: .down, position: .init(x: 99, y: 119), source: .init(rawValue: 1), sequence: .init(rawValue: 0), ordinal: .init(rawValue: 0), presentationRevision: .init(rawValue: revision.rawValue + 1))) }
+    |                                                                   `- error: initializer 'init(phase:position:source:sequence:ordinal:presentationRevision:)' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUI' was not imported by this file
+183 |     expectNoWake(.capacityRefused) { admission.submit(completion: 0) }
+184 |     expectNoWake(.capacityRefused) { admission.submit(pointer: .init(phase: .down, position: .init(x: 99, y: 119), source: .init(rawValue: 1), sequence: .init(rawValue: 0), ordinal: .init(rawValue: 0), presentationRevision: revision)) }
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWakeIntegration.swift:182:80: error: enum case 'down' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUI' was not imported by this file
+180 |     expectNoWake(.invalidValue) { admission.submit(stateChange: 10) }
+181 |     expectNoWake(.invalidValue) { admission.submit(completion: 1) }
+182 |     expectNoWake(.invalidProvenance) { admission.submit(pointer: .init(phase: .down, position: .init(x: 99, y: 119), source: .init(rawValue: 1), sequence: .init(rawValue: 0), ordinal: .init(rawValue: 0), presentationRevision: .init(rawValue: revision.rawValue + 1))) }
+    |                                                                                `- error: enum case 'down' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUI' was not imported by this file
+183 |     expectNoWake(.capacityRefused) { admission.submit(completion: 0) }
+184 |     expectNoWake(.capacityRefused) { admission.submit(pointer: .init(phase: .down, position: .init(x: 99, y: 119), source: .init(rawValue: 1), sequence: .init(rawValue: 0), ordinal: .init(rawValue: 0), presentationRevision: revision)) }
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWakeIntegration.swift:182:97: error: initializer 'init(x:y:)' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUI' was not imported by this file
+180 |     expectNoWake(.invalidValue) { admission.submit(stateChange: 10) }
+181 |     expectNoWake(.invalidValue) { admission.submit(completion: 1) }
+182 |     expectNoWake(.invalidProvenance) { admission.submit(pointer: .init(phase: .down, position: .init(x: 99, y: 119), source: .init(rawValue: 1), sequence: .init(rawValue: 0), ordinal: .init(rawValue: 0), presentationRevision: .init(rawValue: revision.rawValue + 1))) }
+    |                                                                                                 `- error: initializer 'init(x:y:)' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUI' was not imported by this file
+183 |     expectNoWake(.capacityRefused) { admission.submit(completion: 0) }
+184 |     expectNoWake(.capacityRefused) { admission.submit(pointer: .init(phase: .down, position: .init(x: 99, y: 119), source: .init(rawValue: 1), sequence: .init(rawValue: 0), ordinal: .init(rawValue: 0), presentationRevision: revision)) }
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWakeIntegration.swift:182:127: error: initializer 'init(rawValue:)' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUI' was not imported by this file
+180 |     expectNoWake(.invalidValue) { admission.submit(stateChange: 10) }
+181 |     expectNoWake(.invalidValue) { admission.submit(completion: 1) }
+182 |     expectNoWake(.invalidProvenance) { admission.submit(pointer: .init(phase: .down, position: .init(x: 99, y: 119), source: .init(rawValue: 1), sequence: .init(rawValue: 0), ordinal: .init(rawValue: 0), presentationRevision: .init(rawValue: revision.rawValue + 1))) }
+    |                                                                                                                               `- error: initializer 'init(rawValue:)' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUI' was not imported by this file
+183 |     expectNoWake(.capacityRefused) { admission.submit(completion: 0) }
+184 |     expectNoWake(.capacityRefused) { admission.submit(pointer: .init(phase: .down, position: .init(x: 99, y: 119), source: .init(rawValue: 1), sequence: .init(rawValue: 0), ordinal: .init(rawValue: 0), presentationRevision: revision)) }
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWakeIntegration.swift:182:157: error: initializer 'init(rawValue:)' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUI' was not imported by this file
+180 |     expectNoWake(.invalidValue) { admission.submit(stateChange: 10) }
+181 |     expectNoWake(.invalidValue) { admission.submit(completion: 1) }
+182 |     expectNoWake(.invalidProvenance) { admission.submit(pointer: .init(phase: .down, position: .init(x: 99, y: 119), source: .init(rawValue: 1), sequence: .init(rawValue: 0), ordinal: .init(rawValue: 0), presentationRevision: .init(rawValue: revision.rawValue + 1))) }
+    |                                                                                                                                                             `- error: initializer 'init(rawValue:)' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUI' was not imported by this file
+183 |     expectNoWake(.capacityRefused) { admission.submit(completion: 0) }
+184 |     expectNoWake(.capacityRefused) { admission.submit(pointer: .init(phase: .down, position: .init(x: 99, y: 119), source: .init(rawValue: 1), sequence: .init(rawValue: 0), ordinal: .init(rawValue: 0), presentationRevision: revision)) }
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWakeIntegration.swift:182:186: error: initializer 'init(rawValue:)' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUI' was not imported by this file
+180 |     expectNoWake(.invalidValue) { admission.submit(stateChange: 10) }
+181 |     expectNoWake(.invalidValue) { admission.submit(completion: 1) }
+182 |     expectNoWake(.invalidProvenance) { admission.submit(pointer: .init(phase: .down, position: .init(x: 99, y: 119), source: .init(rawValue: 1), sequence: .init(rawValue: 0), ordinal: .init(rawValue: 0), presentationRevision: .init(rawValue: revision.rawValue + 1))) }
+    |                                                                                                                                                                                          `- error: initializer 'init(rawValue:)' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUI' was not imported by this file
+183 |     expectNoWake(.capacityRefused) { admission.submit(completion: 0) }
+184 |     expectNoWake(.capacityRefused) { admission.submit(pointer: .init(phase: .down, position: .init(x: 99, y: 119), source: .init(rawValue: 1), sequence: .init(rawValue: 0), ordinal: .init(rawValue: 0), presentationRevision: revision)) }
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWakeIntegration.swift:182:228: error: initializer 'init(rawValue:)' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUI' was not imported by this file
+180 |     expectNoWake(.invalidValue) { admission.submit(stateChange: 10) }
+181 |     expectNoWake(.invalidValue) { admission.submit(completion: 1) }
+182 |     expectNoWake(.invalidProvenance) { admission.submit(pointer: .init(phase: .down, position: .init(x: 99, y: 119), source: .init(rawValue: 1), sequence: .init(rawValue: 0), ordinal: .init(rawValue: 0), presentationRevision: .init(rawValue: revision.rawValue + 1))) }
+    |                                                                                                                                                                                                                                    `- error: initializer 'init(rawValue:)' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUI' was not imported by this file
+183 |     expectNoWake(.capacityRefused) { admission.submit(completion: 0) }
+184 |     expectNoWake(.capacityRefused) { admission.submit(pointer: .init(phase: .down, position: .init(x: 99, y: 119), source: .init(rawValue: 1), sequence: .init(rawValue: 0), ordinal: .init(rawValue: 0), presentationRevision: revision)) }
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWakeIntegration.swift:182:252: error: property 'rawValue' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUI' was not imported by this file
+180 |     expectNoWake(.invalidValue) { admission.submit(stateChange: 10) }
+181 |     expectNoWake(.invalidValue) { admission.submit(completion: 1) }
+182 |     expectNoWake(.invalidProvenance) { admission.submit(pointer: .init(phase: .down, position: .init(x: 99, y: 119), source: .init(rawValue: 1), sequence: .init(rawValue: 0), ordinal: .init(rawValue: 0), presentationRevision: .init(rawValue: revision.rawValue + 1))) }
+    |                                                                                                                                                                                                                                                            `- error: property 'rawValue' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUI' was not imported by this file
+183 |     expectNoWake(.capacityRefused) { admission.submit(completion: 0) }
+184 |     expectNoWake(.capacityRefused) { admission.submit(pointer: .init(phase: .down, position: .init(x: 99, y: 119), source: .init(rawValue: 1), sequence: .init(rawValue: 0), ordinal: .init(rawValue: 0), presentationRevision: revision)) }
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWakeIntegration.swift:184:65: error: initializer 'init(phase:position:source:sequence:ordinal:presentationRevision:)' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUI' was not imported by this file
+182 |     expectNoWake(.invalidProvenance) { admission.submit(pointer: .init(phase: .down, position: .init(x: 99, y: 119), source: .init(rawValue: 1), sequence: .init(rawValue: 0), ordinal: .init(rawValue: 0), presentationRevision: .init(rawValue: revision.rawValue + 1))) }
+183 |     expectNoWake(.capacityRefused) { admission.submit(completion: 0) }
+184 |     expectNoWake(.capacityRefused) { admission.submit(pointer: .init(phase: .down, position: .init(x: 99, y: 119), source: .init(rawValue: 1), sequence: .init(rawValue: 0), ordinal: .init(rawValue: 0), presentationRevision: revision)) }
+    |                                                                 `- error: initializer 'init(phase:position:source:sequence:ordinal:presentationRevision:)' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUI' was not imported by this file
+185 |     var atDeadline = control.pointee.scheduler!
+186 |     expect(atDeadline.begin(at: timestamp + 250010, lifecycleState: host.lifecycleState, assemblyReport: host.assemblyReport) == .began(.init(rawValue: 7)))
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWakeIntegration.swift:184:78: error: enum case 'down' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUI' was not imported by this file
+182 |     expectNoWake(.invalidProvenance) { admission.submit(pointer: .init(phase: .down, position: .init(x: 99, y: 119), source: .init(rawValue: 1), sequence: .init(rawValue: 0), ordinal: .init(rawValue: 0), presentationRevision: .init(rawValue: revision.rawValue + 1))) }
+183 |     expectNoWake(.capacityRefused) { admission.submit(completion: 0) }
+184 |     expectNoWake(.capacityRefused) { admission.submit(pointer: .init(phase: .down, position: .init(x: 99, y: 119), source: .init(rawValue: 1), sequence: .init(rawValue: 0), ordinal: .init(rawValue: 0), presentationRevision: revision)) }
+    |                                                                              `- error: enum case 'down' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUI' was not imported by this file
+185 |     var atDeadline = control.pointee.scheduler!
+186 |     expect(atDeadline.begin(at: timestamp + 250010, lifecycleState: host.lifecycleState, assemblyReport: host.assemblyReport) == .began(.init(rawValue: 7)))
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWakeIntegration.swift:184:95: error: initializer 'init(x:y:)' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUI' was not imported by this file
+182 |     expectNoWake(.invalidProvenance) { admission.submit(pointer: .init(phase: .down, position: .init(x: 99, y: 119), source: .init(rawValue: 1), sequence: .init(rawValue: 0), ordinal: .init(rawValue: 0), presentationRevision: .init(rawValue: revision.rawValue + 1))) }
+183 |     expectNoWake(.capacityRefused) { admission.submit(completion: 0) }
+184 |     expectNoWake(.capacityRefused) { admission.submit(pointer: .init(phase: .down, position: .init(x: 99, y: 119), source: .init(rawValue: 1), sequence: .init(rawValue: 0), ordinal: .init(rawValue: 0), presentationRevision: revision)) }
+    |                                                                                               `- error: initializer 'init(x:y:)' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUI' was not imported by this file
+185 |     var atDeadline = control.pointee.scheduler!
+186 |     expect(atDeadline.begin(at: timestamp + 250010, lifecycleState: host.lifecycleState, assemblyReport: host.assemblyReport) == .began(.init(rawValue: 7)))
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWakeIntegration.swift:184:125: error: initializer 'init(rawValue:)' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUI' was not imported by this file
+182 |     expectNoWake(.invalidProvenance) { admission.submit(pointer: .init(phase: .down, position: .init(x: 99, y: 119), source: .init(rawValue: 1), sequence: .init(rawValue: 0), ordinal: .init(rawValue: 0), presentationRevision: .init(rawValue: revision.rawValue + 1))) }
+183 |     expectNoWake(.capacityRefused) { admission.submit(completion: 0) }
+184 |     expectNoWake(.capacityRefused) { admission.submit(pointer: .init(phase: .down, position: .init(x: 99, y: 119), source: .init(rawValue: 1), sequence: .init(rawValue: 0), ordinal: .init(rawValue: 0), presentationRevision: revision)) }
+    |                                                                                                                             `- error: initializer 'init(rawValue:)' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUI' was not imported by this file
+185 |     var atDeadline = control.pointee.scheduler!
+186 |     expect(atDeadline.begin(at: timestamp + 250010, lifecycleState: host.lifecycleState, assemblyReport: host.assemblyReport) == .began(.init(rawValue: 7)))
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWakeIntegration.swift:184:155: error: initializer 'init(rawValue:)' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUI' was not imported by this file
+182 |     expectNoWake(.invalidProvenance) { admission.submit(pointer: .init(phase: .down, position: .init(x: 99, y: 119), source: .init(rawValue: 1), sequence: .init(rawValue: 0), ordinal: .init(rawValue: 0), presentationRevision: .init(rawValue: revision.rawValue + 1))) }
+183 |     expectNoWake(.capacityRefused) { admission.submit(completion: 0) }
+184 |     expectNoWake(.capacityRefused) { admission.submit(pointer: .init(phase: .down, position: .init(x: 99, y: 119), source: .init(rawValue: 1), sequence: .init(rawValue: 0), ordinal: .init(rawValue: 0), presentationRevision: revision)) }
+    |                                                                                                                                                           `- error: initializer 'init(rawValue:)' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUI' was not imported by this file
+185 |     var atDeadline = control.pointee.scheduler!
+186 |     expect(atDeadline.begin(at: timestamp + 250010, lifecycleState: host.lifecycleState, assemblyReport: host.assemblyReport) == .began(.init(rawValue: 7)))
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWakeIntegration.swift:184:184: error: initializer 'init(rawValue:)' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUI' was not imported by this file
+182 |     expectNoWake(.invalidProvenance) { admission.submit(pointer: .init(phase: .down, position: .init(x: 99, y: 119), source: .init(rawValue: 1), sequence: .init(rawValue: 0), ordinal: .init(rawValue: 0), presentationRevision: .init(rawValue: revision.rawValue + 1))) }
+183 |     expectNoWake(.capacityRefused) { admission.submit(completion: 0) }
+184 |     expectNoWake(.capacityRefused) { admission.submit(pointer: .init(phase: .down, position: .init(x: 99, y: 119), source: .init(rawValue: 1), sequence: .init(rawValue: 0), ordinal: .init(rawValue: 0), presentationRevision: revision)) }
+    |                                                                                                                                                                                        `- error: initializer 'init(rawValue:)' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUI' was not imported by this file
+185 |     var atDeadline = control.pointee.scheduler!
+186 |     expect(atDeadline.begin(at: timestamp + 250010, lifecycleState: host.lifecycleState, assemblyReport: host.assemblyReport) == .began(.init(rawValue: 7)))
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWakeIntegration.swift:304:61: error: initializer 'init(phase:position:source:sequence:ordinal:presentationRevision:)' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUI' was not imported by this file
+302 |     expectNoWake(.unavailable) { admission.submit(stateChange: 0) }
+303 |     expectNoWake(.unavailable) { admission.submit(completion: 0) }
+304 |     expectNoWake(.unavailable) { admission.submit(pointer: .init(phase: .down, position: .init(x: 99, y: 119), source: .init(rawValue: 1), sequence: .init(rawValue: 0), ordinal: .init(rawValue: 0), presentationRevision: revision)) }
+    |                                                             `- error: initializer 'init(phase:position:source:sequence:ordinal:presentationRevision:)' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUI' was not imported by this file
+305 |     control.pointee.emitCounterWake(.admittedWork, acceptedFact: true)
+306 |     expect(control.pointee.wake!.requester.requestCount == stoppedRequests && control.pointee.finalized == stoppedFinalized)
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWakeIntegration.swift:304:74: error: enum case 'down' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUI' was not imported by this file
+302 |     expectNoWake(.unavailable) { admission.submit(stateChange: 0) }
+303 |     expectNoWake(.unavailable) { admission.submit(completion: 0) }
+304 |     expectNoWake(.unavailable) { admission.submit(pointer: .init(phase: .down, position: .init(x: 99, y: 119), source: .init(rawValue: 1), sequence: .init(rawValue: 0), ordinal: .init(rawValue: 0), presentationRevision: revision)) }
+    |                                                                          `- error: enum case 'down' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUI' was not imported by this file
+305 |     control.pointee.emitCounterWake(.admittedWork, acceptedFact: true)
+306 |     expect(control.pointee.wake!.requester.requestCount == stoppedRequests && control.pointee.finalized == stoppedFinalized)
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWakeIntegration.swift:304:91: error: initializer 'init(x:y:)' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUI' was not imported by this file
+302 |     expectNoWake(.unavailable) { admission.submit(stateChange: 0) }
+303 |     expectNoWake(.unavailable) { admission.submit(completion: 0) }
+304 |     expectNoWake(.unavailable) { admission.submit(pointer: .init(phase: .down, position: .init(x: 99, y: 119), source: .init(rawValue: 1), sequence: .init(rawValue: 0), ordinal: .init(rawValue: 0), presentationRevision: revision)) }
+    |                                                                                           `- error: initializer 'init(x:y:)' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUI' was not imported by this file
+305 |     control.pointee.emitCounterWake(.admittedWork, acceptedFact: true)
+306 |     expect(control.pointee.wake!.requester.requestCount == stoppedRequests && control.pointee.finalized == stoppedFinalized)
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWakeIntegration.swift:304:121: error: initializer 'init(rawValue:)' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUI' was not imported by this file
+302 |     expectNoWake(.unavailable) { admission.submit(stateChange: 0) }
+303 |     expectNoWake(.unavailable) { admission.submit(completion: 0) }
+304 |     expectNoWake(.unavailable) { admission.submit(pointer: .init(phase: .down, position: .init(x: 99, y: 119), source: .init(rawValue: 1), sequence: .init(rawValue: 0), ordinal: .init(rawValue: 0), presentationRevision: revision)) }
+    |                                                                                                                         `- error: initializer 'init(rawValue:)' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUI' was not imported by this file
+305 |     control.pointee.emitCounterWake(.admittedWork, acceptedFact: true)
+306 |     expect(control.pointee.wake!.requester.requestCount == stoppedRequests && control.pointee.finalized == stoppedFinalized)
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWakeIntegration.swift:304:151: error: initializer 'init(rawValue:)' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUI' was not imported by this file
+302 |     expectNoWake(.unavailable) { admission.submit(stateChange: 0) }
+303 |     expectNoWake(.unavailable) { admission.submit(completion: 0) }
+304 |     expectNoWake(.unavailable) { admission.submit(pointer: .init(phase: .down, position: .init(x: 99, y: 119), source: .init(rawValue: 1), sequence: .init(rawValue: 0), ordinal: .init(rawValue: 0), presentationRevision: revision)) }
+    |                                                                                                                                                       `- error: initializer 'init(rawValue:)' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUI' was not imported by this file
+305 |     control.pointee.emitCounterWake(.admittedWork, acceptedFact: true)
+306 |     expect(control.pointee.wake!.requester.requestCount == stoppedRequests && control.pointee.finalized == stoppedFinalized)
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWakeIntegration.swift:304:180: error: initializer 'init(rawValue:)' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUI' was not imported by this file
+302 |     expectNoWake(.unavailable) { admission.submit(stateChange: 0) }
+303 |     expectNoWake(.unavailable) { admission.submit(completion: 0) }
+304 |     expectNoWake(.unavailable) { admission.submit(pointer: .init(phase: .down, position: .init(x: 99, y: 119), source: .init(rawValue: 1), sequence: .init(rawValue: 0), ordinal: .init(rawValue: 0), presentationRevision: revision)) }
+    |                                                                                                                                                                                    `- error: initializer 'init(rawValue:)' cannot be used in an embedded function not marked '@export(interface)' because 'GiftUI' was not imported by this file
+305 |     control.pointee.emitCounterWake(.admittedWork, acceptedFact: true)
+306 |     expect(control.pointee.wake!.requester.requestCount == stoppedRequests && control.pointee.finalized == stoppedFinalized)
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterGraphProbe.swift:41:13: warning: variable 'profile' was never mutated; consider changing to 'let' constant [#VariableNeverMutated]
+39 |     var count = 46
+40 |     do {
+41 |         var profile = StaticCounterProfileStorage(modelOwner: try modelOwners.issue(), semanticOwner: try semanticOwners.issue())
+   |             `- warning: variable 'profile' was never mutated; consider changing to 'let' constant [#VariableNeverMutated]
+42 |         guard case .valid(let audit) = profile.audit() else { preconditionFailure("counter graph audit") }
+43 |         func reject(_ negative: CounterConstructionNegative, profile: borrowing StaticCounterProfileStorage) {
+
+[#VariableNeverMutated]: <https://docs.swift.org/compiler/documentation/diagnostics/variable-never-mutated>

@@ -517,7 +517,11 @@ private func counterActionIsEnabled(_ ref: SemanticRecordReference, bank: borrow
     }
     return true
 }
-func counterTrace<T>(_ label: StaticString, _ value: T) { print(label, value) }
+func counterTrace<T>(_ label: StaticString, _ value: T) {
+#if !hasFeature(Embedded)
+print(label, value)
+#endif
+}
 
 private func counterActionCode(_ ref: SemanticRecordReference, bank: borrowing SemanticRecordView<CounterPayload>) -> UInt16 {
     guard let record = bank.record(ref), let payload = bank.payload(at: record.payload), case .standard(.action(_, let code)) = payload else { preconditionFailure("counter action payload") }

@@ -67,12 +67,18 @@ package func p08CounterCoordinator() -> Int {
     var semantics = SemanticRecordOwnerNamespace()
     do {
         var storage = StaticCounterProfileStorage(modelOwner: try models.issue(), semanticOwner: try semantics.issue())
-        let staticAudit = storage.audit(); print("counter static audit", staticAudit)
+        let staticAudit = storage.audit();
+        #if !hasFeature(Embedded)
+        print("counter static audit", staticAudit)
+        #endif
         guard case .valid = staticAudit else { preconditionFailure("counter static audit") }
         var checks = storage.run() + 1
         #if !hasFeature(Embedded)
         var dynamic = DynamicCounterProfileStorage(modelOwner: try models.issue(), semanticOwner: try semantics.issue())
-        let dynamicAudit = dynamic.audit(); print("counter dynamic audit", dynamicAudit)
+        let dynamicAudit = dynamic.audit();
+        #if !hasFeature(Embedded)
+        print("counter dynamic audit", dynamicAudit)
+        #endif
         guard case .valid = dynamicAudit else { preconditionFailure("counter dynamic audit") }
         checks += dynamic.run() + 1
         #endif

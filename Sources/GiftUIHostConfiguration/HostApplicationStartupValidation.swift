@@ -1,3 +1,6 @@
+import GiftUIExecution
+import GiftUIRuntimeCore
+
 package enum HostApplicationStartupValidation {
     package static func validateActionAndModel(
         _ actionAndModel: HostActionModelConfiguration,
