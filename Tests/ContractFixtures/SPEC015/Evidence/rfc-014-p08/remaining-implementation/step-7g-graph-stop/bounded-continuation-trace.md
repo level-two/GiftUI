@@ -84,3 +84,33 @@ python3 scripts/contracts/check-spec-015-counter.py --runtime-build .build/contr
 
 No repair/rerun, compiler change, unsafe conformance, target build or P08 pass is
 authorized by this allowance. Freeze outcome and stop for independent review.
+
+## Independent trace review disposition — current stop
+
+The parent supplied sequential independent read-only Strong review conclusions
+after this trace checkpoint (`fca0a3a9`), with no implementation or compiler work:
+
+- Executor7 is the actual gate, not the enclosing composition aggregate; no peer
+  dependency for its parameterless constructor.
+- UseCaseSet10 has direct typed source8/repository9 dependencies. NormalizedInput15
+  has direct admission11 dependency; physical placement does not imply profile0.
+- CounterOwnedModel.Mutation is shared value vocabulary. The handler owns or
+  accesses no root instance, model key, registration or target; coordinator
+  separately supplies handler and target access to dispatch. SPEC-015 line1119
+  names model, handler and target separately. Keep handler13→actionDomain12; no
+  handler13→rootModelTarget14 edge is established by the mutation result type.
+- **Current realization conflicts with the accepted direct operational dependency
+  trace:** CounterAdmission.submit invokes emitCounterWake on canonical role16.
+  Thus factAdmission11→wakeRequester16 is a forbidden upward edge under
+  SPEC-015 lines791–800. Indirection through profile-backed CounterControl does
+  not erase the behavior identity. Omitting it would be inconsistent with the
+  accepted use-case and normalized-input operation edges.
+
+The implementation-executor skill requires affected work to pause on a contract
+or scope defect and forbids reinterpreting the Specification to fit existing
+code. The concrete [decision packet](graph-boundary-decision.md) proposes a local
+implementation relocation or a separately reviewed Specification amendment.
+Neither is approved or implemented. Current stop is this graph-boundary conflict,
+before the two projection replacements or compiler invocation. New allowance
+**0/1** unused; historical **2/2** remains closed. No compiler failure occurred
+under the new allowance, and no new compiler defect is inferred.

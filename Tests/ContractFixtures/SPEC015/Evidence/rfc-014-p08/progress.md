@@ -376,3 +376,19 @@ the dependency-trace requirement. Its proposed one-attempt continuation remains
 untested and requires fresh authorization. Graph/four routes/early linked images
 and P08 exit remain open. SPEC-015 implementing, plan active, T8.1 incomplete.
 No graph validation, upstream contract blocker or P08 pass is claimed.
+
+
+## Current stop — exact graph boundary decision (2026-10-12)
+
+User approved the bounded trace/two-helper/one-gate continuation at87b6a0bf.
+[Trace](remaining-implementation/step-7g-graph-stop/bounded-continuation-trace.md)
+fca0a3a9 received sequential independent Strong review: executor is actual gate;
+useCase10→8|9 and normalized15→11 are required; handler mutation is shared value
+vocabulary, not root target ownership. Actual admission11→canonicalWake16 is a
+forbidden upward dependency; backing indirection does not remove it.
+[Decision packet](remaining-implementation/step-7g-graph-stop/graph-boundary-decision.md)
+recommends enumerated host-boundary forwarding via existing outcomes (new scope
+approval needed), alternatively reviewed graph-contract amendment. No source
+edit/compiler invocation; new allowance0/1 unused, prior2/2 closed. Last validated
+48a987cd remains1,348,627/23; graph WIPcfaa57af unvalidated. Stop for user decision;
+SPEC-015 implementing/plan active/T8.1 incomplete, no graph/P08/target pass.

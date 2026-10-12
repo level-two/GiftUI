@@ -1,6 +1,26 @@
 # RFC-014 bounded implementation sequence — 2026-10-10
 
-**Current P08 checkpoint — unvalidated graph slice stopped, 2026-10-12:**
+**Current P08 checkpoint — graph-boundary decision required, 2026-10-12:**
+The user explicitly approved the previously proposed bounded continuation at clean
+`87b6a0bf`: dependency trace first, two projection-helper replacements, then one
+native gate attempt with no automatic repair. [Trace checkpoint](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/remaining-implementation/step-7g-graph-stop/bounded-continuation-trace.md)
+`fca0a3a9` and sequential independent Strong review found that the current actual
+admission11→canonicalWake16 notification is a forbidden upward dependency under
+the exact direct graph contract. Backing indirection cannot erase it. Affected
+source edits and compilation stopped before the gate; new allowance **0/1** is
+unused and prior **2/2** remains closed. Last validated source is `48a987cd`,
+1,348,627 assertions and23 controls. The graph WIP in `cfaa57af` stays unvalidated.
+
+[Decision packet](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/remaining-implementation/step-7g-graph-stop/graph-boundary-decision.md)
+recommends moving notification forwarding to enumerated enclosing host boundaries
+using existing outcomes, preserving the approved contract. This exceeds the
+currently authorized two-helper edit scope and requires explicit approval; the
+alternative is a reviewed Specification amendment to construction-only graph
+semantics. Neither is implemented or approved. No compiler or target build ran.
+SPEC-015 remains implementing, plan active and T8.1/P08 incomplete; graph,
+four routes, early linked images and independent exit review remain open.
+
+**Historical P08 checkpoint — unvalidated graph slice stopped, 2026-10-12:**
 Last validated source is `48a987cd`: actual canonical wake integration and
 [step7f controls](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/remaining-implementation/step-7f-wake-controls/result.md)
 pass 1,348,627 assertions and 23 controls. The subsequent exact construction graph

@@ -342,3 +342,13 @@ six-file failed graph WIP, with no further source repair or compilation. Plan,
 task context and progress now identify local guard2/2 as the current stop while
 preserving all historical receipts. Last validated48a987cd; independent read-only
 review precedes any newly authorized bounded continuation. No graph/P08 pass.
+
+2026-10-12 bounded continuation approved at clean87b6a0bf; trace first committed
+fca0a3a9. Sequential independent review resolves gate/aggregate and shared model
+mutation vocabulary, requires typed useCase8/9 and input11 edges, and finds actual
+admission11→wake16 forbidden upward dependency. No projection edit or compile.
+[Decision packet](step-7g-graph-stop/graph-boundary-decision.md) recommends moving
+notification to every enclosing host producer boundary using existing outcomes;
+this exceeds the approved two-helper edit scope and awaits explicit user approval.
+Alternative is reviewed construction-only graph amendment. New allowance0/1
+unused, prior2/2 closed; last validated48a987cd, graph WIPcfaa57af unvalidated.
