@@ -254,23 +254,47 @@ func counterWakeControls<H: MVPHostInstance & ~Copyable & ~Escapable>(host: inou
     expect(pending.presentationPending?.retryableRefusalCount == 0)
     expect(control.pointee.wake!.accumulatedReasons == .presentationPending)
     let afterBackpressure = control.pointee.applied
+    let olderIntent = pending.presentationPending!.semanticRevision
+    expect(admission.submit(stateChange: 4).result == .queued)
+    timestamp += 250000
+    guard case .cycle(_, .cycle(.operational(.backpressured, let superseding))) = counterServiceHost(at: timestamp, host: &host, control: access) else { preconditionFailure("counter actual supersession") }
+    expect(superseding.operationalEvents.contains(.superseded))
+    expect(superseding.semanticRevision != olderIntent && superseding.presentationPending?.semanticRevision == superseding.semanticRevision)
+    expect(superseding.presentationPending?.retryableRefusalCount == 0)
+    expect(superseding.admission.stateChangeFactCount == 1 && superseding.admission.inputEventCount == 0 && superseding.admission.completionFactCount == 0 && superseding.admission.semanticActionCount == 0)
+    expect(control.pointee.applied == afterBackpressure + 1 && control.pointee.admission.pendingStateCount == 0)
+    let afterSupersession = control.pointee.applied
     control.pointee.offer = .accepted
     timestamp += 250000
     guard case .cycle(.presentationPending, .cycle(.success(let accepted))) = counterServiceHost(at: timestamp, host: &host, control: access) else { preconditionFailure("counter actual backpressure recovery") }
-    expect(accepted.admission.stateChangeFactCount == 0 && accepted.admission.includesPresentationRecovery)
-    expect(accepted.presentationPending == nil && control.pointee.applied == afterBackpressure)
+    expect(accepted.admission.stateChangeFactCount == 0 && accepted.admission.inputEventCount == 0 && accepted.admission.completionFactCount == 0 && accepted.admission.semanticActionCount == 0 && accepted.admission.includesPresentationRecovery)
+    expect(accepted.presentationPending == nil && control.pointee.applied == afterSupersession)
     expect(counterServiceHost(at: timestamp, host: &host, control: access) == .noWork)
 
-    // Same actual endpoint refuses three paced attempts. Count three is terminal;
-    // no notification survives or invokes the runtime after teardown.
-    expect(admission.submit(stateChange: 3).result == .queued)
-    control.pointee.offer = .retryableRefusal
-    for count: UInt8 in 1...3 {
+    if control.pointee.terminalRetry {
+        // Additional fresh host: actual endpoint refuses without invoking body.
+        expect(admission.submit(stateChange: 3).result == .queued)
+        control.pointee.offer = .nonRetryableRefusal
+        let streams = control.pointee.streams
+        let applied = control.pointee.applied
         timestamp += 250000
-        guard case .cycle(_, .cycle(.operational(.retryableRefusal, let refusal))) = counterServiceHost(at: timestamp, host: &host, control: access) else { preconditionFailure("counter actual refusal recovery") }
-        expect(refusal.admission.stateChangeFactCount == (count == 1 ? 1 : 0))
-        expect(refusal.presentationPending?.retryableRefusalCount == (count < 3 ? count : nil))
-        expect(refusal.presentationIntentState == (count < 3 ? .pending : .unavailable))
+        guard case .cycle(_, .cycle(.failure(_, .nonRetryableRefusal(.endpoint), let refused?))) = counterServiceHost(at: timestamp, host: &host, control: access) else { preconditionFailure("counter actual nonretryable refusal") }
+        expect(refused.presentationIntentState == .unavailable && refused.presentationPending == nil)
+        expect(refused.admission.stateChangeFactCount == 1 && refused.admission.inputEventCount == 0 && refused.admission.completionFactCount == 0 && refused.admission.semanticActionCount == 0)
+        expect(control.pointee.applied == applied + 1 && control.pointee.streams == streams)
+        expect(control.pointee.admission.pendingStateCount == 0 && control.pointee.runtime.pointer.capture.current == nil)
+    } else {
+        // Same actual endpoint refuses three paced attempts. Count three is terminal;
+        // no notification survives or invokes the runtime after teardown.
+        expect(admission.submit(stateChange: 3).result == .queued)
+        control.pointee.offer = .retryableRefusal
+        for count: UInt8 in 1...3 {
+            timestamp += 250000
+            guard case .cycle(_, .cycle(.operational(.retryableRefusal, let refusal))) = counterServiceHost(at: timestamp, host: &host, control: access) else { preconditionFailure("counter actual refusal recovery") }
+            expect(refusal.admission.stateChangeFactCount == (count == 1 ? 1 : 0))
+            expect(refusal.presentationPending?.retryableRefusalCount == (count < 3 ? count : nil))
+            expect(refusal.presentationIntentState == (count < 3 ? .pending : .unavailable))
+        }
     }
     expect(!control.pointee.wakeEnabled && !control.pointee.wake!.wakeOutstanding && !control.pointee.inputGate.inputIsEligible)
     let stoppedRequests = control.pointee.wake!.requester.requestCount

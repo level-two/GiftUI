@@ -1,0 +1,6 @@
+{
+  "reference": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/remaining-implementation/option-b/b01-dependency-identities.json",
+  "sha256": "e006a88c16fa11e244200dc27ab5c415c4badc41a2d056624744838ba9663a8d",
+  "comparisons": 496,
+  "failures": []
+}

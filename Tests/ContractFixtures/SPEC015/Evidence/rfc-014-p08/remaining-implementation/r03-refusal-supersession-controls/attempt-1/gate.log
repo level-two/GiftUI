@@ -1,0 +1,9 @@
+counter-model: /Users/eugene/work/GiftUI/.build/contracts/p08-counter-mbxjgszr
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWakeIntegration.swift:277:34: error: type 'FrameOfferDisposition' has no member 'endpointRefused'
+275 |         // Additional fresh host: actual endpoint refuses without invoking body.
+276 |         expect(admission.submit(stateChange: 3).result == .queued)
+277 |         control.pointee.offer = .endpointRefused
+    |                                  `- error: type 'FrameOfferDisposition' has no member 'endpointRefused'
+278 |         let streams = control.pointee.streams
+279 |         let applied = control.pointee.applied
+

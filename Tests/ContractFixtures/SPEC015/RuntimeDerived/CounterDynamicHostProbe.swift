@@ -121,7 +121,9 @@ package func p08CounterDynamicHost() -> Int {
     do {
         var complete = DynamicCounterProfileStorage(modelOwner: try models.issue(), semanticOwner: try semantics.issue())
         var partial = DynamicCounterProfileStorage(modelOwner: try models.issue(), semanticOwner: try semantics.issue())
-        return complete.runCounterDynamicHost(failAfterRuntime: false) + partial.runCounterDynamicHost(failAfterRuntime: true)
+        var nonRetryable = DynamicCounterProfileStorage(modelOwner: try models.issue(), semanticOwner: try semantics.issue())
+        nonRetryable.control.terminalRetry = true
+        return complete.runCounterDynamicHost(failAfterRuntime: false) + partial.runCounterDynamicHost(failAfterRuntime: true) + nonRetryable.runCounterDynamicHost(failAfterRuntime: false)
     } catch { preconditionFailure("counter Dynamic identities") }
 }
 #endif

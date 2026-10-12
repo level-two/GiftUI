@@ -960,3 +960,33 @@ lexical correction resolves owner capture without a new ownership/API choice.
 [continuation result](remaining-implementation/r02-binding-controls/continuation-result.md).
 Commit this coherent step before R03. Historical helper2/2/B031/1 remain closed;
 no failed-attempt deletion or allowance reset. Independent result review pending.
+
+### R03 exact pre-edit receipt — 2026-10-12
+
+Entry1d3e9f77, R02 native PASS. Files: CounterWakeIntegration.swift
+(counterWakeControls); CounterHostProbe.swift(p08CounterHost);
+CounterDynamicHostProbe.swift(p08CounterDynamicHost). Reuse existing unused
+CounterControl.terminalRetry as a fixture-only selector for the additional
+terminal endpoint-refusal instance; no control layout or production API change.
+Cases: actual backpressured intent followed by a newer admitted mutation while
+still backpressured must publish a distinct semantic revision, emit superseded,
+replace intent with count0, then recover with zero prior facts/actions and no
+second mutation. Both native profiles additionally run a fresh fully activated
+host whose actual endpoint returns endpointRefused; exact failure must be
+nonRetryableRefusal(endpoint), summary unavailable/no intent, one sealed new
+state/no input/completion/action, no stream-body call, immediate wake/input
+quiescence, and subsequent admission/scheduling invoke no runtime. Existing
+three-retry terminal case remains separately exercised. Contract SPEC015:1211–1220,
+SPEC009:1084–1121. Format then one changed-source pinned counter driver invocation
+as recorded by r03-refusal-supersession-controls/attempt-1; same pins/no targets.
+Historical helper2/2/B031/1 closed; same-blocker base guard unchanged.
+
+R03 attempt1 stops at counter-model compile: test used FrameStreamResult's
+endpointRefused spelling for FrameOfferDisposition. Correct fixture input is
+.nonRetryableRefusal (CounterEndpoint.offer:123–129); expected endpoint-origin
+failure unchanged. One bounded test-only correction; distinct narrowed cause,
+no passing runtime yet. Exact failure frozen in attempt1; format then attempt2.
+
+R03 outcome: attempt2 PASS2,696,981/zero failures23/23,496 unchanged pins.
+[Exact receipt](remaining-implementation/r03-refusal-supersession-controls/result.md).
+Commit this step before R04; no ledger reset. R04/R05 remain open.

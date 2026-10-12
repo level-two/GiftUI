@@ -128,7 +128,9 @@ package func p08CounterHost() -> Int {
     do {
         var complete = StaticCounterProfileStorage(modelOwner: try models.issue(), semanticOwner: try semantics.issue())
         var partial = StaticCounterProfileStorage(modelOwner: try models.issue(), semanticOwner: try semantics.issue())
-        return complete.runCounterHost(failAfterRuntime: false) + partial.runCounterHost(failAfterRuntime: true)
+        var nonRetryable = StaticCounterProfileStorage(modelOwner: try models.issue(), semanticOwner: try semantics.issue())
+        nonRetryable.control.terminalRetry = true
+        return complete.runCounterHost(failAfterRuntime: false) + partial.runCounterHost(failAfterRuntime: true) + nonRetryable.runCounterHost(failAfterRuntime: false)
     } catch { preconditionFailure("counter host identities") }
 }
 

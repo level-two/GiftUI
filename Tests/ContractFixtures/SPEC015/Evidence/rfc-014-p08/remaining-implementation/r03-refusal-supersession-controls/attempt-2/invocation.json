@@ -1,0 +1,18 @@
+{
+  "entry_commit": "1d3e9f77c68683809b0dab8cbb71247f4e6df86e",
+  "command": [
+    "python3",
+    "scripts/contracts/check-spec-015-counter.py",
+    "--runtime-build",
+    ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static"
+  ],
+  "started_utc": "2026-10-12T12:04:46.476168+00:00",
+  "scope": "r03-refusal-supersession-controls changed coherent controls only; historical2/2/B031/1 closed",
+  "formatter_exit": 0,
+  "source_patch_sha256": "6f6f26414428a0befcc532a99d5d96dcedeb46ee27533ebfedf23cf17c42cde0",
+  "exit_status": 0,
+  "finished_utc": "2026-10-12T12:06:20.731416+00:00",
+  "builds": [
+    ".build/contracts/p08-counter-ibs389qo"
+  ]
+}
