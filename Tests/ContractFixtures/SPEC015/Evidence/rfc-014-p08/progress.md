@@ -305,3 +305,13 @@ ordered idempotent teardown and actual copy/backing escape rejection. Minimal
 internal semantic reset and scheduler generic propagation are validated. Dynamic
 host, complete behavior/live construction audits/raster/4routes/earlyimages remain
 open explicitly; guard0/2. No P08 exit claim.
+
+
+## Remaining step5c — Dynamic scoped counter host (2026-10-12)
+
+[Receipt](remaining-implementation/step-5c-counter-dynamic-host/result.md):1,359
+assertions/23controls pass, including actual Dynamic scoped activation, partial
+failure, paced opportunity and ordered idempotent teardown. Both hosts retain
+returned geometry/Interaction backing through profile reset/report invalidation.
+Guard0/2; no new Swift blocker. Complete application/raster/live construction,
+four routes and early linked images remain open; no P08 exit claim.

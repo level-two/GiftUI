@@ -46,7 +46,7 @@ flags = ['-I', str(out), '-I', str(host), *flags]
 fixture = ROOT / 'Tests/ContractFixtures/SPEC015/RuntimeDerived'
 inputs = [pathlib.Path(__file__).resolve(), fixture / 'Counter.swift', fixture / 'Counter.schema.json', fixture / 'CounterModel.swift', fixture / 'CounterModelProbe.swift', fixture / 'CounterSemantic.swift', fixture / 'CounterSemanticProbe.swift', fixture / 'CounterGeometry.swift', fixture / 'CounterStaticGeometry.swift', fixture / 'CounterRender.swift', fixture / 'CounterFixedStorageProbe.swift']
 storage_sources = sorted(fixture.glob('StaticCounter*.swift'))
-join_sources = [fixture / name for name in ('CounterAdmission.swift', 'CounterPipelineOwner.swift', 'CounterProfileStorage.swift', 'CounterStorageMeasurement.swift', 'CounterStorageRegions.swift', 'CounterCoordinatorProbe.swift', 'CounterWorkload.swift', 'CounterHostAssembly.swift', 'CounterHostOwner.swift', 'CounterHostProbe.swift')]
+join_sources = [fixture / name for name in ('CounterAdmission.swift', 'CounterPipelineOwner.swift', 'CounterProfileStorage.swift', 'CounterStorageMeasurement.swift', 'CounterStorageRegions.swift', 'CounterCoordinatorProbe.swift', 'CounterWorkload.swift', 'CounterHostAssembly.swift', 'CounterHostOwner.swift', 'CounterHostProbe.swift', 'CounterDynamicHostOwner.swift', 'CounterDynamicHostProbe.swift')]
 inputs.extend(join_sources)
 inputs.extend(storage_sources)
 commands, checks = [], []
@@ -107,7 +107,7 @@ for label, negative, diagnostic in (
 ):
     run(label, [compiler, *flags, '-module-name', 'P08CounterRuntime', '-emit-object', *counter_sources, *storage_sources, *join_sources, negative, '-o', out / (label + '.o')], diagnostic)
 main = out / 'Main.swift'
-main.write_text('import P08CounterRuntime\nimport Darwin\n@main struct Main { static func main() { setbuf(stdout, nil); print("P08 counter components assertions=\\(p08CounterModel() + p08CounterSemantic() + p08CounterFixedStorage() + p08CounterCoordinator() + p08CounterHost()) failures=0") } }\n')
+main.write_text('import P08CounterRuntime\nimport Darwin\n@main struct Main { static func main() { setbuf(stdout, nil); print("P08 counter components assertions=\\(p08CounterModel() + p08CounterSemantic() + p08CounterFixedStorage() + p08CounterCoordinator() + p08CounterHost() + p08CounterDynamicHost()) failures=0") } }\n')
 objects = []  # All selected runtime objects were freshly rebuilt above.
 host_objects = [path for path in sorted(host.glob('GiftUI*.o')) if path.name != 'GiftUIHostConfiguration.o']
 run('link', [compiler, *flags, main, core / 'GiftUI.o', *objects, *host_objects, *sorted(out.glob('*.o')), '-o', out / 'counter'])

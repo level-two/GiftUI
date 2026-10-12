@@ -146,3 +146,25 @@ verified host modules from .build/contracts/p08-scoped-host-c5eocina plus P07
 Swift6.4 runtime, verify receipts before imports/link; new driver records both.
 The finite recording endpoint remains a component until real raster integration;
 report validation alone does not certify backend pixels/application target gate.
+
+## Step5c — actual Dynamic scoped host and backing-last retention, before edits
+
+Strong Sol6.1 High; guard0/2 atfa346972. Add finite Dynamic supplied/state/liveowner
+and actual nested Dynamic profile caller using the same approved6.4 construction
+pattern and common protocol. No new host abstraction. Preserve geometry and
+interaction physical backing in retired state after consuming the quiesced
+opportunity at platform-owner release; reset them with semantic banks atstage7,
+retain them until report invalidation/hostscope end. Static retains the same
+fixed stores/descriptors through that interval. Current scalar source/application
+component, live graph/endpoint audit and actual raster obligations stay explicit;
+next steps finish those before four-route and early linked target evidence.
+
+
+## Step5c result — 2026-10-12
+
+[Receipt](step-5c-counter-dynamic-host/result.md): actual Dynamic scoped host and
+Static/Dynamic backing-last retention pass1,359 assertions/23controls on pinned
+Swift6.4. Final `.build/contracts/p08-counter-9_q0mt13`. Pending build's local
+Python tuple/path error corrected; no new Swift join blocker. Source/artifact
+hashes reverified. Guard0/2; historical guards unchanged. Full action/raster/live
+owner corpus and four-route/early linked image obligations remain open.

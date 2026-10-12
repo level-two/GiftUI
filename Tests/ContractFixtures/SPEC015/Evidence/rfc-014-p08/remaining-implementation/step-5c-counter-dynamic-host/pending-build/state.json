@@ -1,0 +1,15 @@
+{
+  "build": ".build/contracts/p08-counter-z5fhx2ss",
+  "result_present": false,
+  "counter_module": {
+    "P08CounterRuntime.swiftmodule": {
+      "sha256": "27e771a888faa61faa10bc54c6597026e13a6ad895ae5609c4099e22925201ad",
+      "bytes": 864632
+    },
+    "P08CounterRuntime.o": {
+      "sha256": "ab9eb118efc8b3c9e1c0e0862008d1d382171334d9709fd5a61c4f4e74dbf684",
+      "bytes": 1083440
+    }
+  },
+  "limitation": "Pending build produced module/object; no final receipt; driver tuple/read_text error corrected before fresh full rerun."
+}

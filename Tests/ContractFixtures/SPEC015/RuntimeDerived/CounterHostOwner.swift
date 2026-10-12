@@ -122,7 +122,7 @@ extension CounterExecutionBinding {
 enum CounterHostState: ~Copyable, ~Escapable {
     case inert(CounterHostSupplied, Span<UInt8>)
     case active(CounterHostCoordinator, ObservableModelTicket<CounterModelSchema>?, Span<UInt8>)
-    case retired(SemanticRecordStore<CounterPayload>, Span<UInt8>)
+    case retired(SemanticRecordStore<CounterPayload>, StaticCounterGeometry, CounterStaticKeys, Span<UInt8>)
     @_lifetime(copy supplied, copy activationSpan)
     init(supplied: consuming CounterHostSupplied, activationSpan: Span<UInt8>) {
         self = .inert(consume supplied, activationSpan)
@@ -137,7 +137,7 @@ enum CounterHostState: ~Copyable, ~Escapable {
             let coordinator = CounterHostCoordinator(binding: binding, admission: CounterAdmission(control: supplied.controlPointer, limits: supplied.audit.limits.execution), opportunity: pipeline)
             self = .active(consume coordinator, nil, span)
         case .active(let coordinator, let cache, let span): self = .active(consume coordinator, consume cache, span)
-        case .retired(let semantic, let span): self = .retired(consume semantic, span); preconditionFailure("retired host")
+        case .retired(let semantic, let geometry, let interaction, let span): self = .retired(consume semantic, geometry, interaction, span); preconditionFailure("retired host")
         }
     }
     @_lifetime(self: copy self)
@@ -156,7 +156,7 @@ enum CounterHostState: ~Copyable, ~Escapable {
                 return true
             } catch { self = .active(consume coordinator, nil, span); return false }
         case .inert(let supplied, let span): self = .inert(consume supplied, span); return false
-        case .retired(let semantic, let span): self = .retired(consume semantic, span); return false
+        case .retired(let semantic, let geometry, let interaction, let span): self = .retired(consume semantic, geometry, interaction, span); return false
         }
     }
     @_lifetime(self: copy self)
@@ -167,7 +167,7 @@ enum CounterHostState: ~Copyable, ~Escapable {
             self = .active(consume coordinator, consume cache, span)
             return outcome.result == .queued
         case .inert(let supplied, let span): self = .inert(consume supplied, span); return false
-        case .retired(let semantic, let span): self = .retired(consume semantic, span); return false
+        case .retired(let semantic, let geometry, let interaction, let span): self = .retired(consume semantic, geometry, interaction, span); return false
         }
     }
     @_lifetime(self: copy self)
@@ -179,7 +179,7 @@ enum CounterHostState: ~Copyable, ~Escapable {
             self = .active(consume coordinator, consume cache, span)
             return result
         case .inert(let supplied, let span): self = .inert(consume supplied, span); preconditionFailure("inactive host")
-        case .retired(let semantic, let span): self = .retired(consume semantic, span); preconditionFailure("retired host")
+        case .retired(let semantic, let geometry, let interaction, let span): self = .retired(consume semantic, geometry, interaction, span); preconditionFailure("retired host")
         }
     }
     @_lifetime(self: copy self)
@@ -194,7 +194,7 @@ enum CounterHostState: ~Copyable, ~Escapable {
             precondition(coordinator.isQuiescent)
             self = .active(consume coordinator, nil, span)
         case .inert(let supplied, let span): self = .inert(consume supplied, span)
-        case .retired(let semantic, let span): self = .retired(consume semantic, span)
+        case .retired(let semantic, let geometry, let interaction, let span): self = .retired(consume semantic, geometry, interaction, span)
         }
     }
     @_lifetime(self: copy self)
@@ -202,20 +202,31 @@ enum CounterHostState: ~Copyable, ~Escapable {
         switch consume self {
         case .active(let coordinator, let cache, let span):
             precondition(coordinator.isQuiescent && cache == nil)
-            let semantic = coordinator.opportunity.semantic.borrowedStore()
-            self = .retired(consume semantic, span)
-        case .inert(let supplied, let span): self = .retired(supplied.borrowedSemantic(), span)
-        case .retired(let semantic, let span): self = .retired(consume semantic, span)
+            let returned = coordinator.takeQuiescedOpportunity()!
+            let semantic = returned.semantic.borrowedStore()
+            self = .retired(consume semantic, returned.geometry, returned.interaction, span)
+        case .inert(let supplied, let span): self = .retired(supplied.borrowedSemantic(), supplied.geometry, supplied.interaction, span)
+        case .retired(let semantic, let geometry, let interaction, let span): self = .retired(consume semantic, geometry, interaction, span)
         }
     }
-    borrowing func resetProfileStorage() {
-        switch self {
-        case .retired(let semantic, _):
+    @_lifetime(self: copy self)
+    mutating func resetProfileStorage() {
+        switch consume self {
+        case .retired(let semantic, var geometry, var interaction, let span):
             do throws(SemanticExpansionError) { try semantic.resetAfterQuiescence() }
             catch { preconditionFailure("counter semantic reset") }
-        default: preconditionFailure("platform owners must release before profile reset")
+            geometry.reset()
+            interaction.resetAllStorage()
+            self = .retired(consume semantic, geometry, interaction, span)
+        case .active(let coordinator, let cache, let span):
+            self = .active(consume coordinator, consume cache, span)
+            preconditionFailure("platform owners must release before profile reset")
+        case .inert(let supplied, let span):
+            self = .inert(consume supplied, span)
+            preconditionFailure("platform owners must release before profile reset")
         }
     }
+
 }
 
 // Finite counter application delivery owns its source value, repository value,
