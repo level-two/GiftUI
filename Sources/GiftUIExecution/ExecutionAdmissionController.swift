@@ -20,18 +20,13 @@ protocol ExecutionPendingAdmissionStorage {
     )
 }
 
-struct SingleSourceExecutionAdmissionController<Storage, Requester>:
-    ExecutionAdmissionSink
-where
-    Storage: ExecutionPendingAdmissionStorage,
-    Requester: ExecutionWakeRequester & Sendable
-{
+struct SingleSourceExecutionAdmissionState<Storage>: ExecutionAdmissionSink
+where Storage: ExecutionPendingAdmissionStorage {
     private let limits: ExecutionLimits
     private(set) var context: ExecutionContext
     private(set) var committedPresentationRevision: PresentationRevision?
     private(set) var isQuiescent: Bool
     private(set) var storage: Storage
-    private(set) var wakeAccumulator: ExecutionWakeAccumulator<Requester>
     private(set) var isSealClosed: Bool = false
     private(set) var didDeferAfterSeal: Bool = false
     private var trackedSource: InputSourceID?
@@ -46,7 +41,6 @@ where
         context: ExecutionContext,
         committedPresentationRevision: PresentationRevision?,
         storage: Storage,
-        requester: Requester,
         isQuiescent: Bool = false
     ) {
         self.limits = limits
@@ -54,7 +48,6 @@ where
         self.committedPresentationRevision = committedPresentationRevision
         self.isQuiescent = isQuiescent
         self.storage = storage
-        wakeAccumulator = ExecutionWakeAccumulator(requester: requester)
         trackedSource = nil
     }
 
@@ -71,10 +64,6 @@ where
         self.committedPresentationRevision = committedPresentationRevision
         isSealClosed = sealClosed
         isQuiescent = isQuiescent || quiescent
-    }
-
-    mutating func takeWakeAtIdleOpportunity() -> ExecutionWakeReasons {
-        wakeAccumulator.takeAtIdleOpportunity(phase: .idle) ?? []
     }
 
     mutating func closeAdmissionSeal() {
@@ -175,7 +164,6 @@ where
         if isSealClosed {
             didDeferAfterSeal = true
         }
-        wakeAccumulator.accumulate(.admittedWork)
     }
 
     private mutating func cancel(_ pointer: NormalizedPointerEvent) {
@@ -192,5 +180,60 @@ where
         _ result: ExecutionAdmissionResult
     ) -> ExecutionAdmissionOutcome {
         ExecutionAdmissionOutcome(result: result, context: context)
+    }
+}
+
+// Existing callers retain the same wake-owning controller. The state is also
+// usable inside a containing runtime with one canonical wake owner.
+struct SingleSourceExecutionAdmissionController<Storage, Requester>: ExecutionAdmissionSink
+where Storage: ExecutionPendingAdmissionStorage, Requester: ExecutionWakeRequester & Sendable {
+    private var state: SingleSourceExecutionAdmissionState<Storage>
+    private(set) var wakeAccumulator: ExecutionWakeAccumulator<Requester>
+    var context: ExecutionContext { state.context }
+    var committedPresentationRevision: PresentationRevision? { state.committedPresentationRevision }
+    var isQuiescent: Bool { state.isQuiescent }
+    var storage: Storage { state.storage }
+    var isSealClosed: Bool { state.isSealClosed }
+    var didDeferAfterSeal: Bool { state.didDeferAfterSeal }
+    static var pointerStateStorageBytes: Int {
+        SingleSourceExecutionAdmissionState<Storage>.pointerStateStorageBytes
+    }
+    init(
+        limits: ExecutionLimits, context: ExecutionContext,
+        committedPresentationRevision: PresentationRevision?, storage: Storage,
+        requester: Requester, isQuiescent: Bool = false
+    ) {
+        state = SingleSourceExecutionAdmissionState(
+            limits: limits, context: context,
+            committedPresentationRevision: committedPresentationRevision, storage: storage,
+            isQuiescent: isQuiescent)
+        wakeAccumulator = ExecutionWakeAccumulator(requester: requester)
+    }
+    mutating func synchronize(
+        context: ExecutionContext, committedPresentationRevision: PresentationRevision?,
+        sealClosed: Bool, quiescent: Bool
+    ) {
+        state.synchronize(
+            context: context, committedPresentationRevision: committedPresentationRevision,
+            sealClosed: sealClosed, quiescent: quiescent)
+    }
+    mutating func takeWakeAtIdleOpportunity() -> ExecutionWakeReasons {
+        wakeAccumulator.takeAtIdleOpportunity(phase: .idle) ?? []
+    }
+    mutating func closeAdmissionSeal() { state.closeAdmissionSeal() }
+    mutating func submit(pointer: NormalizedPointerEvent) -> ExecutionAdmissionOutcome {
+        record(state.submit(pointer: pointer))
+    }
+    mutating func submit(stateChange: Storage.StateChangeFact) -> ExecutionAdmissionOutcome {
+        record(state.submit(stateChange: stateChange))
+    }
+    mutating func submit(completion: Storage.CompletionFact) -> ExecutionAdmissionOutcome {
+        record(state.submit(completion: completion))
+    }
+    mutating func quiesce() { state.quiesce() }
+    private mutating func record(_ outcome: ExecutionAdmissionOutcome) -> ExecutionAdmissionOutcome
+    {
+        if outcome.result == .queued { wakeAccumulator.accumulate(.admittedWork) }
+        return outcome
     }
 }

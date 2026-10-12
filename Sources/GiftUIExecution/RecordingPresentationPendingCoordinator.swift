@@ -6,21 +6,17 @@ struct RecordingPendingTransition: Equatable, Sendable {
     let exhausted: Bool
 }
 
-struct RecordingPresentationPendingCoordinator<Requester>: Sendable
-where Requester: ExecutionWakeRequester & Sendable {
+struct PresentationPendingState: Sendable {
     let maximumRetryableRefusals: UInt8
     private(set) var pendingIntent: PresentationPendingIntent?
-    private(set) var wakes: ExecutionWakeAccumulator<Requester>
 
     init?(
         maximumRetryableRefusals: UInt8,
-        pendingIntent: PresentationPendingIntent? = nil,
-        requester: Requester
+        pendingIntent: PresentationPendingIntent? = nil
     ) {
         guard maximumRetryableRefusals > 0 else { return nil }
         self.maximumRetryableRefusals = maximumRetryableRefusals
         self.pendingIntent = pendingIntent
-        wakes = ExecutionWakeAccumulator(requester: requester)
     }
 
     mutating func recordBackpressure(
@@ -42,7 +38,6 @@ where Requester: ExecutionWakeRequester & Sendable {
             retryableRefusalCount: count
         )
         pendingIntent = intent
-        wakes.accumulate(.presentationPending)
         return RecordingPendingTransition(
             intent: intent,
             operationalEvents: events,
@@ -79,7 +74,6 @@ where Requester: ExecutionWakeRequester & Sendable {
             retryableRefusalCount: next
         )
         pendingIntent = intent
-        wakes.accumulate(.presentationPending)
         return RecordingPendingTransition(
             intent: intent,
             operationalEvents: events,
@@ -92,6 +86,41 @@ where Requester: ExecutionWakeRequester & Sendable {
         pendingIntent = nil
     }
 
+}
+
+// Recording callers keep their existing wake behavior around the same policy.
+struct RecordingPresentationPendingCoordinator<Requester>: Sendable
+where Requester: ExecutionWakeRequester & Sendable {
+    private var state: PresentationPendingState
+    private(set) var wakes: ExecutionWakeAccumulator<Requester>
+    var maximumRetryableRefusals: UInt8 { state.maximumRetryableRefusals }
+    var pendingIntent: PresentationPendingIntent? { state.pendingIntent }
+    init?(
+        maximumRetryableRefusals: UInt8, pendingIntent: PresentationPendingIntent? = nil,
+        requester: Requester
+    ) {
+        guard
+            let state = PresentationPendingState(
+                maximumRetryableRefusals: maximumRetryableRefusals, pendingIntent: pendingIntent)
+        else { return nil }
+        self.state = state
+        wakes = ExecutionWakeAccumulator(requester: requester)
+    }
+    mutating func recordBackpressure(for latestRevision: SemanticRevision)
+        -> RecordingPendingTransition
+    {
+        let transition = state.recordBackpressure(for: latestRevision)
+        wakes.accumulate(.presentationPending)
+        return transition
+    }
+    mutating func recordRetryableRefusal(for latestRevision: SemanticRevision)
+        -> RecordingPendingTransition
+    {
+        let transition = state.recordRetryableRefusal(for: latestRevision)
+        if !transition.exhausted { wakes.accumulate(.presentationPending) }
+        return transition
+    }
+    mutating func clearPending(for revision: SemanticRevision) { state.clearPending(for: revision) }
     mutating func acknowledgeWakeAtIdleOpportunity() -> ExecutionWakeReasons {
         wakes.takeAtIdleOpportunity(phase: .idle) ?? []
     }

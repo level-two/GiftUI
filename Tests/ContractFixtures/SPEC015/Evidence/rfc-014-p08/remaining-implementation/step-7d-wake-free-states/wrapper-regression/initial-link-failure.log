@@ -1,0 +1,11 @@
+error: link command failed with exit code 1 (use -v to see invocation)
+Undefined symbols for architecture arm64:
+  "nominal type descriptor for GiftUIRenderCore.RenderSinkCapacity", referenced from:
+      _symbolic _____ 16GiftUIRenderCore18RenderSinkCapacityV in GiftUIExecution.o
+  "protocol descriptor for GiftUIRenderCore.RenderOperationSink", referenced from:
+      l_got.$s16GiftUIRenderCore19RenderOperationSinkMp in GiftUIExecution.o
+  "nominal type descriptor for GiftUIRenderCore.RenderProductionError", referenced from:
+      _symbolic _____Sg 16GiftUIRenderCore21RenderProductionErrorO in GiftUIExecution.o
+      _symbolic _____ 16GiftUIRenderCore21RenderProductionErrorO in GiftUIExecution.o
+ld: symbol(s) not found for architecture arm64
+clang: error: linker command failed with exit code 1 (use -v to see invocation)

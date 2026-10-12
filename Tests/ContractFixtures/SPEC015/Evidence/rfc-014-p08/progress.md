@@ -352,3 +352,5 @@ negatives pass. Guard0/2. Real graph/application/wake, four routes and early lin
 images remain open; no complete image or P08 exit claim.
 
 2026-10-12 P08 step7c: actual finite source→repository→admission callback lifecycle in both scoped hosts, exact detach, reentrant/post-stop rejection. [Receipt](remaining-implementation/step-7c-counter-application/result.md),1,348,543assertions/23controls; guard0/2. No graph/wake or complete-image claim.
+
+2026-10-12 step7d [wake-free policy extraction](remaining-implementation/step-7d-wake-free-states/result.md) passes counter1,348,543/23controls and existing16wrapper test bodies/80expectations. Internal realization under reviewed approved contract; no public requirement change; guard0/2.

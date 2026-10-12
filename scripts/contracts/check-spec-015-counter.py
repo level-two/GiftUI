@@ -18,7 +18,7 @@ prior = json.loads((base / 'result.json').read_text())
 def digest(path):
     return hashlib.sha256(path.read_bytes()).hexdigest()
 for name, expected in prior['inputs'].items():
-    if name not in ('Sources/GiftUISemanticCore/SemanticRecordStore.swift', 'Sources/GiftUIHostConfiguration/HostScheduledOpportunityController.swift'):
+    if name not in ('Sources/GiftUISemanticCore/SemanticRecordStore.swift', 'Sources/GiftUIHostConfiguration/HostScheduledOpportunityController.swift', 'Sources/GiftUIExecution/ExecutionAdmissionController.swift', 'Sources/GiftUIExecution/RecordingPresentationPendingCoordinator.swift'):
         assert digest(ROOT / name) == expected, name
 for name, expected in prior['artifacts'].items():
     assert digest(base / name) == expected['sha256'], name
@@ -36,7 +36,7 @@ host = args.host_build.resolve()
 host_receipt = json.loads((host / 'result.json').read_text())
 assert host_receipt['compiler_sha256'] == prior['compiler_sha256']
 for name, expected in host_receipt['inputs'].items():
-    if name not in ('Sources/GiftUISemanticCore/SemanticRecordStore.swift', 'Sources/GiftUIHostConfiguration/HostScheduledOpportunityController.swift'):
+    if name not in ('Sources/GiftUISemanticCore/SemanticRecordStore.swift', 'Sources/GiftUIHostConfiguration/HostScheduledOpportunityController.swift', 'Sources/GiftUIExecution/ExecutionAdmissionController.swift', 'Sources/GiftUIExecution/RecordingPresentationPendingCoordinator.swift'):
         assert digest(ROOT / name) == expected, name
 for name, expected in host_receipt['artifacts'].items():
     assert digest(host / name) == expected['sha256'], name

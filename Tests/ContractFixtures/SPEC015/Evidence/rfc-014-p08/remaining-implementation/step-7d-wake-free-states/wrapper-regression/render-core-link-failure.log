@@ -1,0 +1,11 @@
+error: link command failed with exit code 1 (use -v to see invocation)
+Undefined symbols for architecture arm64:
+  "static GiftUITextResources.FontInstanceID.__derived_struct_equals(GiftUITextResources.FontInstanceID, GiftUITextResources.FontInstanceID) -> Swift.Bool", referenced from:
+      static GiftUIRenderCore.RenderRecordingEvent.__derived_enum_equals(GiftUIRenderCore.RenderRecordingEvent, GiftUIRenderCore.RenderRecordingEvent) -> Swift.Bool in GiftUIRenderCore.o
+      static GiftUIRenderCore.PositionedGlyphOperationHeader.__derived_struct_equals(GiftUIRenderCore.PositionedGlyphOperationHeader, GiftUIRenderCore.PositionedGlyphOperationHeader) -> Swift.Bool in GiftUIRenderCore.o
+  "nominal type descriptor for GiftUITextResources.FontInstanceID", referenced from:
+      _symbolic _____ 19GiftUITextResources14FontInstanceIDV in GiftUIRenderCore.o
+  "nominal type descriptor for GiftUITextResources.GlyphID", referenced from:
+      _symbolic _____ 19GiftUITextResources7GlyphIDV in GiftUIRenderCore.o
+ld: symbol(s) not found for architecture arm64
+clang: error: linker command failed with exit code 1 (use -v to see invocation)

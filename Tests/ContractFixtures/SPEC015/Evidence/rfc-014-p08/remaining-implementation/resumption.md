@@ -322,3 +322,5 @@ pending contract audit; no unchecked conformance added. Graph/wake remain open.
 Step7c [receipt](step-7c-counter-application/result.md): actual application callbacks pass1,348,543assertions/23controls in9k3jnaqc. Source/artifact hashes, formatting/lint, governance and diff pass; guard0/2. Graph/wake and complete linked target images remain open.
 
 Wake ownership seam held for sequential independent parent review: [concrete packet](wake-ownership-decision.md). No unchecked Sendable added. SPEC009 singular runtime wake state and implementation-added Sendable/Copyable containment distinguished; smallest checked notification bridge and focused internal scoped integration alternatives recorded. No upstream blocker declared. Step7c independently complete at86761375; guard0/2. No further source edits/builds running.
+
+Step7d [receipt](step-7d-wake-free-states/result.md): extracted existing wake-free admission/pending policy with wrapper compatibility. Counter1,348,543assertions/23controls; existing16testbodies/80expectations pass. Exact logs/commands/source hashes retained; guard0/2. Canonical wake integration next.
