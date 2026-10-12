@@ -17,7 +17,7 @@ Usage: scripts/nrf52840/build.sh [options]
 Options:
   --application NAME  Firmware application under firmware/nrf52840/applications.
   --pristine          Discard this application's generated build before building.
-  --counter-build PATH Link verified P08 counter objects in the existing application.
+  --counter-build PATH Build verified P08 counter sources in the existing application.
   -h, --help          Show this help.
 USAGE
 }
@@ -53,11 +53,11 @@ counter_cmake_arguments=()
 if [[ -n "${counter_build}" ]]; then
     [[ "${application}" == "signal-analyzer-static" ]] ||
         giftui_nrf_error "counter inputs require the existing signal-analyzer-static application"
-    build_dir="${GIFTUI_NRF_BUILD_ROOT}/${application}/rfc014-counter"
-    counter_input_dir="${GIFTUI_NRF_BUILD_ROOT}/${application}/rfc014-counter-inputs"
+    build_dir="${GIFTUI_NRF_BUILD_ROOT}/${application}/rfc014-counter-firmware"
+    counter_input_dir="${GIFTUI_NRF_BUILD_ROOT}/${application}/rfc014-counter-firmware-inputs"
     python3 "${GIFTUI_NRF_PROJECT_ROOT}/scripts/contracts/build-spec-015-counter-image.py" \
         --profile nrf52840-embedded --counter-build "${counter_build}" --output "${counter_input_dir}"
-    counter_cmake_arguments+=("-DGIFTUI_COUNTER_OBJECT_INPUTS=${counter_input_dir}/counter-objects.cmake")
+    counter_cmake_arguments+=("-DGIFTUI_COUNTER_SOURCE_INPUTS=${counter_input_dir}/counter-sources.cmake")
 fi
 
 giftui_nrf_note "building ${application} for ${GIFTUI_NRF_BOARD}"

@@ -1,0 +1,15 @@
+{
+  "entry_commit": "65474d966175670369f5bfb325796368e4329df5",
+  "command": [
+    "scripts/nrf52840/build.sh",
+    "--application",
+    "signal-analyzer-static",
+    "--counter-build",
+    ".build/nrf52840/contracts/p08-counter-7x97oi7d"
+  ],
+  "started_utc": "2026-10-12T14:22:41.276498+00:00",
+  "formatter_exit": 0,
+  "source_patch_sha256": "b03980bd9e53b30d711476017069836c0f81254a93f2161bb6afb61ba5984255",
+  "exit_status": 1,
+  "finished_utc": "2026-10-12T14:22:48.680701+00:00"
+}

@@ -1291,3 +1291,41 @@ frame capture empty; no gross-stack/image/resource acceptance. First image
 failure/no repair, meaningful narrowed cause; historical2/2+B031/1 closed.
 Pi result/R06routes distinct, P08/R07 open, P09–P12 pending. No source fixes,
 compiler/tests/target execution or hardware during review.
+
+### R07 reviewed firmware recipe correction dispatch
+
+Entry65474d96 clean. Strong gpt-6.1-sol/high, sequential. Implement only bounded
+handoff in r07-early-images/independent-review.md: fresh isolated image-specific
+owner objects INCLUDING GiftUI using existing supported firmware sources/flags,
+separate modules and unchanged pins, limits, workload, actual transport. Record
+exact current inputs and recipe before execution, preserve all historical receipts
+and failures. No new entropy/constructor policy or builtin. Corrected live map
+must establish any remaining requirement. Validate through supported route/image
+boundary, inspect final ABI/allocator/RAM/flash and actual gross stack fit; commit
+coherent steps and stop for independent result review. No hardware. Historical
+helper2/2+B031/1 closed; exact same-blocker progress guard unchanged. Capacity
+interruption did not consume a repair/build attempt. P08 remains open.
+
+### R07 corrected recipe attempt2 triage dispatch
+
+Strong gpt-6.1-sol/high sequential review. Implementer model capacity recurred;
+root recovered approved recorder session43658, completed build exit1. Attempt2
+compiled fresh24modules, removed earlier unresolved division/constructor/entropy
+errors, but prelink failed with swift_modhash orphan warnings and collect2exit1.
+No later compiler pending/running. Inspect exact flags/config/recipe and partial
+map read-only; do not assume warning cause or resource pass. Preserve current
+recipe WIP and exact two attempts in coherent commit, then separate review and
+bounded handoff. No source fix/compiler/hardware. Historical guards remain closed;
+new failure narrowed earlier blockers and does not exhaust same-blocker guard.
+
+### R07 capacity-blocked checkpoint
+
+Both assigned Strong workers returned selected-model capacity errors; independent
+attempt2 diagnosis/review did not complete. Root preserved recipe WIP and exact
+failed attempts in [checkpoint](remaining-implementation/r07-firmware-recipe/result.md).
+Attempt2 completed with buildexit1 at prelink after modules compiled. Earlier
+runtime undefineds absent; swift_modhash warnings do not establish remaining cause.
+No build running; no model substitution, next compile, hardware or contract change.
+P08/T8.1/R07 open; Pi linked pass and four R06 routes retain their stated scope.
+Resume Strong diagnosis then bounded correction, actual image/resource evidence,
+and independent package review. Historical guards remain closed and unchanged.

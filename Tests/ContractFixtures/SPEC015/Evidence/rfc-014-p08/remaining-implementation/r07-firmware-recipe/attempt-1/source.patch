@@ -1,0 +1,201 @@
+diff --git a/firmware/nrf52840/applications/signal-analyzer-static/CMakeLists.txt b/firmware/nrf52840/applications/signal-analyzer-static/CMakeLists.txt
+index 01f65b29..a73c4c9b 100644
+--- a/firmware/nrf52840/applications/signal-analyzer-static/CMakeLists.txt
++++ b/firmware/nrf52840/applications/signal-analyzer-static/CMakeLists.txt
+@@ -11,7 +11,7 @@ set(CMAKE_Swift_COMPILER_WORKS TRUE CACHE BOOL "Embedded Swift cross-compiler" F
+ project(GiftUISignalAnalyzerStatic LANGUAGES C Swift)
+ 
+ set(giftui_project_root "${CMAKE_CURRENT_SOURCE_DIR}/../../../..")
+-if(DEFINED GIFTUI_COUNTER_OBJECT_INPUTS)
++if(DEFINED GIFTUI_COUNTER_SOURCE_INPUTS)
+     include("${CMAKE_CURRENT_SOURCE_DIR}/Counter.cmake")
+     return()
+ endif()
+diff --git a/firmware/nrf52840/applications/signal-analyzer-static/Counter.cmake b/firmware/nrf52840/applications/signal-analyzer-static/Counter.cmake
+index a02d14ee..a4398bf1 100644
+--- a/firmware/nrf52840/applications/signal-analyzer-static/Counter.cmake
++++ b/firmware/nrf52840/applications/signal-analyzer-static/Counter.cmake
+@@ -1,15 +1,64 @@
+-# The supported build boundary verifies every current source/object identity
+-# before this finite existing-application image branch is configured.
+-include("${GIFTUI_COUNTER_OBJECT_INPUTS}")
+-if(NOT giftui_counter_objects)
+-    message(FATAL_ERROR "Verified P08 counter objects are required")
++# The supported boundary verifies the exact current source recipe first.
++# Every owner, including base GiftUI, receives fresh firmware-specific objects.
++include("${GIFTUI_COUNTER_SOURCE_INPUTS}")
++if(NOT giftui_counter_owners OR NOT CONFIG_FP_HARDABI)
++    message(FATAL_ERROR "Verified P08 owners and Cortex-M4F hard-float are required")
+ endif()
+-set_source_files_properties(${giftui_counter_objects} PROPERTIES
+-    EXTERNAL_OBJECT TRUE GENERATED TRUE)
+-target_sources(app PRIVATE
+-    ${giftui_counter_objects}
+-    src/counter_main.c
+-    src/spi_tft.c
+-    src/fault.c
+-    src/stubs.c)
++set(giftui_counter_flags
++    -parse-as-library -Osize -swift-version 6 -package-name giftui -enable-testing
++    -DGIFTUI_NRF_EMBEDDED -DGIFTUI_REFERENCE_BITMAP_ONLY -DGIFTUI_COUNTER_TILED
++    "SHELL:-enable-experimental-feature Embedded"
++    "SHELL:-enable-experimental-feature LifetimeDependence"
++    "SHELL:-enable-experimental-feature Lifetimes"
++    "SHELL:-module-cache-path ${CMAKE_CURRENT_BINARY_DIR}/swift-cache"
++    "SHELL:-load-plugin-executable ${giftui_counter_macro}"
++    "SHELL:-Xfrontend -function-sections"
++    "SHELL:-Xfrontend -disable-stack-protector"
++    "SHELL:-Xcc -mfloat-abi=hard"
++    "SHELL:-Xcc -fshort-enums"
++    "SHELL:-Xcc -fno-pic"
++    "SHELL:-Xcc -fno-pie"
++    "SHELL:-Xcc -I -Xcc ${ZEPHYR_SDK_INSTALL_DIR}/arm-zephyr-eabi/picolibc/include")
++foreach(owner ${giftui_counter_owners})
++    add_library(giftui_counter_${owner} OBJECT ${giftui_counter_sources_${owner}})
++    set_target_properties(giftui_counter_${owner} PROPERTIES
++        Swift_MODULE_NAME ${owner}
++        Swift_MODULE_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/swift-modules/${owner}")
++    target_compile_options(giftui_counter_${owner} PRIVATE ${giftui_counter_flags})
++    add_dependencies(giftui_counter_${owner} syscall_list_h_target)
++    foreach(flag ${TOOLCHAIN_C_FLAGS})
++        string(FIND "${flag}" "-imacro" is_imacro)
++        string(FIND "${flag}" "-mfp16-format" is_mfp16)
++        string(FIND "${flag}" "--sysroot" is_sysroot)
++        if(is_imacro EQUAL -1 AND is_mfp16 EQUAL -1 AND is_sysroot EQUAL -1)
++            target_compile_options(giftui_counter_${owner} PRIVATE "SHELL:-Xcc ${flag}")
++        endif()
++    endforeach()
++    target_sources(app PRIVATE $<TARGET_OBJECTS:giftui_counter_${owner}>)
++endforeach()
++# Only direct and transitive lower-owner modules are visible, as in the
++# supported application recipe. Source lists and imports remain separate.
++foreach(owner ${giftui_counter_owners})
++    set(pending_imports ${giftui_counter_imports_${owner}})
++    set(visible_imports "")
++    while(pending_imports)
++        list(POP_FRONT pending_imports dependency)
++        if(NOT dependency IN_LIST visible_imports)
++            list(APPEND visible_imports "${dependency}")
++            list(APPEND pending_imports ${giftui_counter_imports_${dependency}})
++            add_dependencies(giftui_counter_${owner} giftui_counter_${dependency})
++            target_compile_options(giftui_counter_${owner} PRIVATE
++                "-I${CMAKE_CURRENT_BINARY_DIR}/swift-modules/${dependency}")
++        endif()
++    endwhile()
++endforeach()
++get_target_property(zephyr_defines zephyr_interface INTERFACE_COMPILE_DEFINITIONS)
++foreach(flag ${zephyr_defines})
++    string(FIND "${flag}" "$<" is_expression)
++    if(is_expression EQUAL -1 AND zephyr_defines)
++        target_compile_options(giftui_counter_P08CounterRuntime PRIVATE "SHELL:-Xcc -D${flag}")
++    endif()
++endforeach()
++target_sources(app PRIVATE src/counter_main.c src/spi_tft.c src/fault.c src/stubs.c)
+ target_include_directories(app PRIVATE include)
++set_target_properties(app PROPERTIES LINKER_LANGUAGE C)
+diff --git a/scripts/contracts/build-spec-015-counter-image.py b/scripts/contracts/build-spec-015-counter-image.py
+index 2f4f6ead..9d45fa7e 100644
+--- a/scripts/contracts/build-spec-015-counter-image.py
++++ b/scripts/contracts/build-spec-015-counter-image.py
+@@ -4,6 +4,7 @@ import argparse
+ import hashlib
+ import json
+ import pathlib
++import re
+ import shlex
+ import subprocess
+ 
+@@ -49,9 +50,62 @@ record = dict(profile=args.profile, counter_build=str(base.relative_to(ROOT)),
+               objects={str(path.relative_to(ROOT)): digest(path) for path in objects},
+               execution='not executed; early image link only')
+ if args.profile == 'nrf52840-embedded':
+-    # Each object remains in its actual owner module; no Swift source flattening.
+-    (output / 'counter-objects.cmake').write_text('set(giftui_counter_objects\n' +
+-        ''.join('    "' + str(path) + '"\n' for path in objects) + ')\n')
++    # Rebuild the same selected sources with the supported firmware flags.
++    # The route objects remain frozen evidence; none is linked into this image.
++    core_path = next(path.parent for path in objects if path.name == 'GiftUI.o')
++    core_receipt = json.loads((core_path / 'result.json').read_text())
++    core_commands = [line for line in (core_path / 'commands.txt').read_text().splitlines()
++                     if '-module-name GiftUI ' in line and '-emit-module' in line]
++    assert len(core_commands) == 1
++    commands = [core_commands[0], *receipt['commands']]
++    owners = {}
++    source_hashes = {}
++    for command in commands:
++        parts = shlex.split(command)
++        if '-emit-module' not in parts or '-emit-object' not in parts:
++            continue  # Failed negative controls are not image inputs.
++        owner = parts[parts.index('-module-name') + 1]
++        assert re.fullmatch(r'[A-Za-z0-9_]+', owner) and owner not in owners
++        sources = [pathlib.Path(part) for part in parts if part.endswith('.swift')]
++        assert sources
++        for source in sources:
++            name = str(source.relative_to(ROOT))
++            expected = (core_receipt['inputs'] if owner == 'GiftUI' else receipt['inputs']).get(name)
++            if expected is None:
++                assert source.parent == base and source.name in receipt['artifacts']
++                expected = receipt['artifacts'][source.name]['sha256']
++            assert digest(source) == expected, 'stale image source: ' + name
++            source_hashes[name] = expected
++        owners[owner] = sources
++    assert len(owners) == 24 and 'P08CounterRuntime' in owners
++    imports = {}
++    for owner, sources in owners.items():
++        dependencies = set()
++        for source in sources:
++            if source.read_text().startswith('#if !hasFeature(Embedded)\n'):
++                continue  # The existing Dynamic-only file is wholly inactive.
++            text = source.read_text().replace(
++                '#if !hasFeature(Embedded)\nimport GiftUIRuntimeDynamic\n#endif', '')
++            dependencies.update(re.findall(r'^\s*(?:@[^\n]+?\s+)?import\s+(\w+)', text, re.M))
++        assert dependencies <= owners.keys(), (owner, dependencies - owners.keys())
++        imports[owner] = sorted(dependencies)
++    macro = pathlib.Path(core_receipt['macro_tool'])
++    if not macro.is_absolute():
++        macro = ROOT / macro
++    assert digest(macro) == core_receipt['macro_tool_sha256']
++    lines = ['set(giftui_counter_owners ' + ' '.join(owners) + ')',
++             'set(giftui_counter_macro "' + str(macro) + '#GiftUIMacros")']
++    for owner, sources in owners.items():
++        lines.append('set(giftui_counter_sources_' + owner + '\n' +
++                     ''.join('    "' + str(source) + '"\n' for source in sources) + ')')
++        lines.append('set(giftui_counter_imports_' + owner + ' ' + ' '.join(imports[owner]) + ')')
++    (output / 'counter-sources.cmake').write_text('\n'.join(lines) + '\n')
++    record.update(source_hashes=source_hashes, owners=list(owners), imports=imports,
++                  core_receipt_sha256=digest(core_path / 'result.json'),
++                  core_commands_sha256=digest(core_path / 'commands.txt'),
++                  macro_tool=str(macro.relative_to(ROOT)), macro_tool_sha256=digest(macro),
++                  source_handoff_sha256=digest(output / 'counter-sources.cmake'),
++                  object_use='identity verification only; fresh firmware objects required')
+ else:
+     assert args.destination_json is not None, 'existing static SDK destination is required'
+     destination_path = args.destination_json.resolve()
+diff --git a/scripts/nrf52840/build.sh b/scripts/nrf52840/build.sh
+index 686a42db..0fc5b7ee 100755
+--- a/scripts/nrf52840/build.sh
++++ b/scripts/nrf52840/build.sh
+@@ -17,7 +17,7 @@ Usage: scripts/nrf52840/build.sh [options]
+ Options:
+   --application NAME  Firmware application under firmware/nrf52840/applications.
+   --pristine          Discard this application's generated build before building.
+-  --counter-build PATH Link verified P08 counter objects in the existing application.
++  --counter-build PATH Build verified P08 counter sources in the existing application.
+   -h, --help          Show this help.
+ USAGE
+ }
+@@ -53,11 +53,11 @@ counter_cmake_arguments=()
+ if [[ -n "${counter_build}" ]]; then
+     [[ "${application}" == "signal-analyzer-static" ]] ||
+         giftui_nrf_error "counter inputs require the existing signal-analyzer-static application"
+-    build_dir="${GIFTUI_NRF_BUILD_ROOT}/${application}/rfc014-counter"
+-    counter_input_dir="${GIFTUI_NRF_BUILD_ROOT}/${application}/rfc014-counter-inputs"
++    build_dir="${GIFTUI_NRF_BUILD_ROOT}/${application}/rfc014-counter-firmware"
++    counter_input_dir="${GIFTUI_NRF_BUILD_ROOT}/${application}/rfc014-counter-firmware-inputs"
+     python3 "${GIFTUI_NRF_PROJECT_ROOT}/scripts/contracts/build-spec-015-counter-image.py" \
+         --profile nrf52840-embedded --counter-build "${counter_build}" --output "${counter_input_dir}"
+-    counter_cmake_arguments+=("-DGIFTUI_COUNTER_OBJECT_INPUTS=${counter_input_dir}/counter-objects.cmake")
++    counter_cmake_arguments+=("-DGIFTUI_COUNTER_SOURCE_INPUTS=${counter_input_dir}/counter-sources.cmake")
+ fi
+ 
+ giftui_nrf_note "building ${application} for ${GIFTUI_NRF_BOARD}"

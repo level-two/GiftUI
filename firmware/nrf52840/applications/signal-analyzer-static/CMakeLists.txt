@@ -11,7 +11,7 @@ set(CMAKE_Swift_COMPILER_WORKS TRUE CACHE BOOL "Embedded Swift cross-compiler" F
 project(GiftUISignalAnalyzerStatic LANGUAGES C Swift)
 
 set(giftui_project_root "${CMAKE_CURRENT_SOURCE_DIR}/../../../..")
-if(DEFINED GIFTUI_COUNTER_OBJECT_INPUTS)
+if(DEFINED GIFTUI_COUNTER_SOURCE_INPUTS)
     include("${CMAKE_CURRENT_SOURCE_DIR}/Counter.cmake")
     return()
 endif()

@@ -1,0 +1,214 @@
+COUNTER_INPUTS=/Users/eugene/work/GiftUI/.build/nrf52840/signal-analyzer-static/rfc014-counter-firmware-inputs/input-receipt.json
+==> building signal-analyzer-static for nrf52840dk/nrf52840
+-- west build: generating a build system
+Loading Zephyr default modules (Zephyr base).
+-- Application: /Users/eugene/work/GiftUI/firmware/nrf52840/applications/signal-analyzer-static
+-- CMake version: 4.4.2
+-- Found Python3: /Users/eugene/work/GiftUI/.toolchains/nrf52840/python/bin/python (found suitable version "3.14.6", minimum required is "3.10") found components: Interpreter
+-- Cache files will be written to: /Users/eugene/work/GiftUI/.toolchains/nrf52840/workspace/zephyr/.cache
+-- Zephyr version: 4.3.0 (/Users/eugene/work/GiftUI/.toolchains/nrf52840/workspace/zephyr)
+-- Found west (found suitable version "1.5.0", minimum required is "0.14.0")
+-- Board: nrf52840dk, qualifiers: nrf52840
+-- Found host-tools: zephyr 0.17.4 (/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4)
+-- Found toolchain: zephyr 0.17.4 (/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4)
+-- Found Dtc: /opt/homebrew/bin/dtc (found suitable version "1.8.1", minimum required is "1.4.6")
+-- Found BOARD.dts: /Users/eugene/work/GiftUI/.toolchains/nrf52840/workspace/zephyr/boards/nordic/nrf52840dk/nrf52840dk_nrf52840.dts
+-- Found devicetree overlay: /Users/eugene/work/GiftUI/firmware/nrf52840/applications/signal-analyzer-static/app.overlay
+-- Generated zephyr.dts: /Users/eugene/work/GiftUI/.build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/zephyr.dts
+-- Generated pickled edt: /Users/eugene/work/GiftUI/.build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/edt.pickle
+-- Generated devicetree_generated.h: /Users/eugene/work/GiftUI/.build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/include/generated/zephyr/devicetree_generated.h
+Parsing /Users/eugene/work/GiftUI/.toolchains/nrf52840/workspace/zephyr/Kconfig
+Loaded configuration '/Users/eugene/work/GiftUI/.toolchains/nrf52840/workspace/zephyr/boards/nordic/nrf52840dk/nrf52840dk_nrf52840_defconfig'
+Merged configuration '/Users/eugene/work/GiftUI/firmware/nrf52840/applications/signal-analyzer-static/prj.conf'
+Configuration saved to '/Users/eugene/work/GiftUI/.build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/.config'
+Kconfig header saved to '/Users/eugene/work/GiftUI/.build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/include/generated/zephyr/autoconf.h'
+-- Found GnuLd: /Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/arm-zephyr-eabi/bin/ld.bfd (found version "2.38")
+-- The C compiler identification is GNU 12.2.0
+-- The CXX compiler identification is GNU 12.2.0
+-- The ASM compiler identification is GNU
+-- Found assembler: /Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/arm-zephyr-eabi-gcc
+-- Found gen_kobject_list: /Users/eugene/work/GiftUI/.toolchains/nrf52840/workspace/zephyr/scripts/build/gen_kobject_list.py
+-- The Swift compiler identification is Apple 6.4
+-- Configuring done (3.8s)
+-- Generating done (0.2s)
+-- Build files have been written to: /Users/eugene/work/GiftUI/.build/nrf52840/signal-analyzer-static/rfc014-counter-firmware
+-- west build: building application
+[1/171] Preparing syscall dependency handling
+
+[2/171] Generating include/generated/zephyr/version.h
+-- Zephyr version: 4.3.0 (/Users/eugene/work/GiftUI/.toolchains/nrf52840/workspace/zephyr), build: 3568e1b6d5cd
+[3/171] Generating misc/generated/syscalls_subdirs.trigger
+[4/171] Generating misc/generated/syscalls.json, misc/generated/struct_tags.json
+[5/171] Generating include/generated/device-api-sections.ld, include/generated/device-api-sections.cmake
+[6/171] Generating include/generated/zephyr/syscall_dispatch.c, include/generated/zephyr/syscall_exports_llext.c, syscall_weakdefs_llext.c, include/generated/zephyr/syscall_list.h
+[7/171] Generating include/generated/zephyr/driver-validation.h
+[8/171] Generating include/generated/zephyr/kobj-types-enum.h, include/generated/zephyr/otype-to-str.h, include/generated/zephyr/otype-to-size.h
+[9/171] Building C object zephyr/CMakeFiles/offsets.dir/arch/arm/core/offsets/offsets.c.obj
+[10/171] Generating include/generated/zephyr/offsets.h
+[11/171] Building C object CMakeFiles/app.dir/src/stubs.c.obj
+[12/171] Building C object CMakeFiles/app.dir/src/fault.c.obj
+[13/171] Building C object zephyr/arch/common/CMakeFiles/isr_tables.dir/isr_tables.c.obj
+[14/171] Building C object CMakeFiles/app.dir/src/counter_main.c.obj
+[15/171] Building C object zephyr/CMakeFiles/zephyr.dir/lib/libc/validate_libc.c.obj
+[16/171] Building C object zephyr/CMakeFiles/zephyr.dir/lib/os/printk.c.obj
+[17/171] Building C object zephyr/CMakeFiles/zephyr.dir/lib/os/sem.c.obj
+[18/171] Building C object zephyr/CMakeFiles/zephyr.dir/lib/os/clock.c.obj
+[19/171] Building C object zephyr/CMakeFiles/zephyr.dir/lib/utils/dec.c.obj
+[20/171] Building C object zephyr/CMakeFiles/zephyr.dir/lib/utils/hex.c.obj
+[21/171] Building C object zephyr/CMakeFiles/zephyr.dir/lib/os/assert.c.obj
+[22/171] Building C object CMakeFiles/app.dir/src/spi_tft.c.obj
+[23/171] Building C object zephyr/CMakeFiles/zephyr.dir/lib/utils/timeutil.c.obj
+[24/171] Building C object zephyr/CMakeFiles/zephyr.dir/lib/os/thread_entry.c.obj
+[25/171] Building C object zephyr/CMakeFiles/zephyr.dir/lib/heap/heap.c.obj
+[26/171] Building C object zephyr/CMakeFiles/zephyr.dir/lib/os/cbprintf_packaged.c.obj
+[27/171] Building C object zephyr/CMakeFiles/zephyr.dir/lib/utils/bitmask.c.obj
+[28/171] Building C object zephyr/CMakeFiles/zephyr.dir/lib/utils/last_section_id.c.obj
+[29/171] Building C object zephyr/CMakeFiles/zephyr.dir/misc/generated/configs.c.obj
+[30/171] Generating linker_zephyr_pre0.cmd
+[31/171] Building C object zephyr/CMakeFiles/zephyr.dir/lib/utils/notify.c.obj
+[32/171] Building C object zephyr/arch/common/CMakeFiles/arch__common.dir/init.c.obj
+[33/171] Building C object zephyr/CMakeFiles/zephyr.dir/subsys/mem_mgmt/mem_attr.c.obj
+[34/171] Building C object zephyr/CMakeFiles/zephyr.dir/subsys/tracing/tracing_none.c.obj
+[35/171] Building C object zephyr/arch/common/CMakeFiles/arch__common.dir/sw_isr_common.c.obj
+[36/171] Building C object zephyr/CMakeFiles/zephyr.dir/lib/utils/rb.c.obj
+[37/171] Linking C static library zephyr/arch/common/libisr_tables.a
+[38/171] Building ASM object zephyr/arch/arch/arm/core/CMakeFiles/arch__arm__core.dir/nmi_on_reset.S.obj
+[39/171] Building C object zephyr/CMakeFiles/zephyr.dir/lib/utils/bitarray.c.obj
+[40/171] Building C object zephyr/CMakeFiles/zephyr.dir/lib/utils/onoff.c.obj
+[41/171] Building C object zephyr/arch/common/CMakeFiles/arch__common.dir/xip.c.obj
+[42/171] Building ASM object zephyr/arch/arch/arm/core/cortex_m/CMakeFiles/arch__arm__core__cortex_m.dir/fault_s.S.obj
+[43/171] Building C object zephyr/arch/arch/arm/core/CMakeFiles/arch__arm__core.dir/fatal.c.obj
+[44/171] Building ASM object zephyr/arch/arch/arm/core/cortex_m/CMakeFiles/arch__arm__core__cortex_m.dir/reset.S.obj
+[45/171] Building C object zephyr/arch/arch/arm/core/CMakeFiles/arch__arm__core.dir/tls.c.obj
+[46/171] Building C object zephyr/arch/arch/arm/core/CMakeFiles/arch__arm__core.dir/nmi.c.obj
+[47/171] Building ASM object zephyr/arch/arch/arm/core/cortex_m/CMakeFiles/arch__arm__core__cortex_m.dir/vector_table.S.obj
+[48/171] Building C object zephyr/arch/arch/arm/core/cortex_m/CMakeFiles/arch__arm__core__cortex_m.dir/exc_exit.c.obj
+[49/171] Building C object zephyr/arch/arch/arm/core/cortex_m/CMakeFiles/arch__arm__core__cortex_m.dir/fpu.c.obj
+[50/171] Building C object zephyr/arch/arch/arm/core/cortex_m/CMakeFiles/arch__arm__core__cortex_m.dir/scb.c.obj
+[51/171] Building C object zephyr/arch/arch/arm/core/cortex_m/CMakeFiles/arch__arm__core__cortex_m.dir/fault.c.obj
+[52/171] Building ASM object zephyr/arch/arch/arm/core/cortex_m/CMakeFiles/arch__arm__core__cortex_m.dir/swap_helper.S.obj
+[53/171] Building C object zephyr/CMakeFiles/zephyr.dir/lib/os/cbprintf_complete.c.obj
+[54/171] Building C object zephyr/arch/arch/arm/core/cortex_m/CMakeFiles/arch__arm__core__cortex_m.dir/thread_abort.c.obj
+[55/171] Building ASM object zephyr/arch/arch/arm/core/cortex_m/CMakeFiles/arch__arm__core__cortex_m.dir/__aeabi_read_tp.S.obj
+[56/171] Building C object zephyr/arch/arch/arm/core/cortex_m/CMakeFiles/arch__arm__core__cortex_m.dir/cpu_idle.c.obj
+[57/171] Building C object zephyr/arch/arch/arm/core/cortex_m/CMakeFiles/arch__arm__core__cortex_m.dir/irq_manage.c.obj
+[58/171] Building Swift Module 'GiftUIFailureCore' with 1 source
+[59/171] Building C object zephyr/arch/arch/arm/core/cortex_m/CMakeFiles/arch__arm__core__cortex_m.dir/thread.c.obj
+[60/171] Building C object zephyr/arch/arch/arm/core/cortex_m/CMakeFiles/arch__arm__core__cortex_m.dir/irq_init.c.obj
+[61/171] Building C object zephyr/arch/arch/arm/core/mpu/CMakeFiles/arch__arm__core__mpu.dir/arm_mpu_regions.c.obj
+[62/171] Building C object zephyr/arch/arch/arm/core/cortex_m/CMakeFiles/arch__arm__core__cortex_m.dir/prep_c.c.obj
+[63/171] Building C object zephyr/arch/arch/arm/core/cortex_m/CMakeFiles/arch__arm__core__cortex_m.dir/isr_wrapper.c.obj
+[64/171] Building C object zephyr/arch/arch/arm/core/mpu/CMakeFiles/arch__arm__core__mpu.dir/arm_core_mpu.c.obj
+[65/171] Building C object zephyr/lib/libc/picolibc/CMakeFiles/lib__libc__picolibc.dir/assert.c.obj
+[66/171] Building C object zephyr/arch/arch/arm/core/mpu/CMakeFiles/arch__arm__core__mpu.dir/arm_mpu.c.obj
+[67/171] Building C object zephyr/lib/libc/picolibc/CMakeFiles/lib__libc__picolibc.dir/cbprintf.c.obj
+[68/171] Building C object zephyr/lib/libc/common/CMakeFiles/lib__libc__common.dir/source/time/time.c.obj
+[69/171] Building C object zephyr/lib/libc/picolibc/CMakeFiles/lib__libc__picolibc.dir/errno_wrap.c.obj
+[70/171] Building C object zephyr/lib/libc/picolibc/CMakeFiles/lib__libc__picolibc.dir/chk_fail.c.obj
+[71/171] Building C object zephyr/lib/libc/picolibc/CMakeFiles/lib__libc__picolibc.dir/locks.c.obj
+[72/171] Building C object zephyr/lib/libc/common/CMakeFiles/lib__libc__common.dir/source/stdlib/abort.c.obj
+[73/171] Building C object zephyr/lib/posix/c_lib_ext/CMakeFiles/lib__posix__c_lib_ext.dir/fnmatch.c.obj
+[74/171] Building C object zephyr/lib/libc/picolibc/CMakeFiles/lib__libc__picolibc.dir/exit.c.obj
+[75/171] Building C object zephyr/lib/libc/picolibc/CMakeFiles/lib__libc__picolibc.dir/stdio.c.obj
+[76/171] Building C object zephyr/lib/libc/common/CMakeFiles/lib__libc__common.dir/source/stdlib/malloc.c.obj
+[77/171] Building C object zephyr/lib/posix/c_lib_ext/CMakeFiles/lib__posix__c_lib_ext.dir/getentropy.c.obj
+[78/171] Building C object zephyr/soc/soc/nrf52840/CMakeFiles/soc__nordic.dir/validate_binding_headers.c.obj
+[79/171] Building C object zephyr/soc/soc/nrf52840/CMakeFiles/soc__nordic.dir/validate_enabled_instances.c.obj
+[80/171] Building C object zephyr/drivers/pinctrl/CMakeFiles/drivers__pinctrl.dir/common.c.obj
+[81/171] Building C object zephyr/drivers/console/CMakeFiles/drivers__console.dir/uart_console.c.obj
+[82/171] Building C object zephyr/lib/posix/c_lib_ext/CMakeFiles/lib__posix__c_lib_ext.dir/getopt/getopt_common.c.obj
+[83/171] Building C object zephyr/soc/soc/nrf52840/CMakeFiles/soc__nordic.dir/common/reboot.c.obj
+[84/171] Building C object zephyr/soc/soc/nrf52840/CMakeFiles/soc__nordic.dir/validate_base_addresses.c.obj
+[85/171] Building C object zephyr/soc/soc/nrf52840/CMakeFiles/soc__nordic.dir/nrf52/soc.c.obj
+[86/171] Building C object zephyr/lib/posix/c_lib_ext/CMakeFiles/lib__posix__c_lib_ext.dir/getopt/getopt.c.obj
+[87/171] Building C object modules/hal_nordic/nrfx/CMakeFiles/nrfx.dir/Users/eugene/work/GiftUI/.toolchains/nrf52840/workspace/modules/hal/nordic/nrfx/mdk/system_nrf52840.c.obj
+[88/171] Building C object zephyr/drivers/timer/CMakeFiles/drivers__timer.dir/sys_clock_init.c.obj
+[89/171] Building C object modules/hal_nordic/nrfx/CMakeFiles/nrfx.dir/nrfx_glue.c.obj
+[90/171] Building C object zephyr/drivers/clock_control/CMakeFiles/drivers__clock_control.dir/clock_control_nrf.c.obj
+[91/171] Building C object modules/hal_nordic/nrfx/CMakeFiles/nrfx.dir/Users/eugene/work/GiftUI/.toolchains/nrf52840/workspace/modules/hal/nordic/nrfx/helpers/nrfx_flag32_allocator.c.obj
+[92/171] Building C object zephyr/drivers/timer/CMakeFiles/drivers__timer.dir/nrf_rtc_timer.c.obj
+[93/171] Building C object zephyr/drivers/pinctrl/CMakeFiles/drivers__pinctrl.dir/pinctrl_nrf.c.obj
+[94/171] Building C object modules/hal_nordic/nrfx/CMakeFiles/nrfx.dir/Users/eugene/work/GiftUI/.toolchains/nrf52840/workspace/modules/hal/nordic/nrfx/helpers/nrfx_gppi_dppi.c.obj
+[95/171] Building C object modules/hal_nordic/nrfx/CMakeFiles/nrfx.dir/Users/eugene/work/GiftUI/.toolchains/nrf52840/workspace/modules/hal/nordic/nrfx/helpers/nrfx_ram_ctrl.c.obj
+[96/171] Building Swift Module 'GiftUI' with 16 sources
+sandbox-exec: sandbox_apply: Operation not permitted
+/Users/eugene/work/GiftUI/Sources/GiftUI/ObservableState.swift:6:14: warning: external macro implementation type 'GiftUIMacros.ObservableStateHostMacro' could not be found for macro 'ObservableStateHost()'; '/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/arm64-apple-macosx/debug/GiftUIMacros-tool' produced malformed response
+  4 | )
+  5 | @attached(extension, conformances: _GiftUIObservableStateHost)
+  6 | public macro ObservableStateHost() =
+    |              `- warning: external macro implementation type 'GiftUIMacros.ObservableStateHostMacro' could not be found for macro 'ObservableStateHost()'; '/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/arm64-apple-macosx/debug/GiftUIMacros-tool' produced malformed response
+  7 |     #externalMacro(
+  8 |         module: "GiftUIMacros",
+[97/171] Building C object zephyr/drivers/gpio/CMakeFiles/drivers__gpio.dir/gpio_nrfx.c.obj
+[98/171] Building C object zephyr/drivers/spi/CMakeFiles/drivers__spi.dir/spi_nrfx_common.c.obj
+[99/171] Building C object modules/hal_nordic/nrfx/CMakeFiles/nrfx.dir/Users/eugene/work/GiftUI/.toolchains/nrf52840/workspace/modules/hal/nordic/nrfx/helpers/nrfx_gppi_ppi.c.obj
+[100/171] Building C object modules/hal_nordic/nrfx/CMakeFiles/nrfx.dir/Users/eugene/work/GiftUI/.toolchains/nrf52840/workspace/modules/hal/nordic/nrfx/drivers/src/nrfx_clock.c.obj
+[101/171] Building C object modules/hal_nordic/nrfx/CMakeFiles/nrfx.dir/Users/eugene/work/GiftUI/.toolchains/nrf52840/workspace/modules/hal/nordic/nrfx/drivers/src/nrfx_ppi.c.obj
+[102/171] Building C object zephyr/kernel/CMakeFiles/kernel.dir/main_weak.c.obj
+[103/171] Building C object zephyr/drivers/spi/CMakeFiles/drivers__spi.dir/spi_nrfx_spi.c.obj
+[104/171] Building C object zephyr/kernel/CMakeFiles/kernel.dir/banner.c.obj
+[105/171] Building Swift Module 'GiftUICapabilities' with 1 source
+[106/171] Building C object zephyr/kernel/CMakeFiles/kernel.dir/busy_wait.c.obj
+[107/171] Building C object zephyr/kernel/CMakeFiles/kernel.dir/device.c.obj
+[108/171] Building C object zephyr/kernel/CMakeFiles/kernel.dir/errno.c.obj
+[109/171] Building Swift Module 'P08CounterSchema' with 1 source
+[110/171] Building C object zephyr/kernel/CMakeFiles/kernel.dir/version.c.obj
+[111/171] Building C object zephyr/kernel/CMakeFiles/kernel.dir/fatal.c.obj
+[112/171] Building C object zephyr/kernel/CMakeFiles/kernel.dir/init.c.obj
+[113/171] Building C object zephyr/kernel/CMakeFiles/kernel.dir/kheap.c.obj
+[114/171] Building C object zephyr/kernel/CMakeFiles/kernel.dir/float.c.obj
+[115/171] Building C object zephyr/kernel/CMakeFiles/kernel.dir/mem_slab.c.obj
+[116/171] Building C object modules/hal_nordic/nrfx/CMakeFiles/nrfx.dir/Users/eugene/work/GiftUI/.toolchains/nrf52840/workspace/modules/hal/nordic/nrfx/drivers/src/nrfx_spi.c.obj
+[117/171] Building C object zephyr/kernel/CMakeFiles/kernel.dir/nothread.c.obj
+[118/171] Building C object zephyr/kernel/CMakeFiles/kernel.dir/mempool.c.obj
+[119/171] Building C object zephyr/kernel/CMakeFiles/kernel.dir/timer.c.obj
+[120/171] Building Swift Module 'P08CounterPresentation' with 1 source
+FAILED: [code=1] swift-modules/P08CounterPresentation/P08CounterPresentation.swiftmodule CMakeFiles/giftui_counter_P08CounterPresentation.dir/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-counter-7x97oi7d/Counter.swift.obj 
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.4.0-RELEASE-osx/usr/bin/swiftc -target armv7em-none-none-eabi -j 12 -num-threads 12 -c  -parse-as-library -module-name P08CounterPresentation -module-link-name giftui_counter_P08CounterPresentation -wmo -parse-as-library -Osize -swift-version 6 -package-name giftui -enable-testing -DGIFTUI_NRF_EMBEDDED -DGIFTUI_REFERENCE_BITMAP_ONLY -DGIFTUI_COUNTER_TILED -enable-experimental-feature Embedded -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -module-cache-path /Users/eugene/work/GiftUI/.build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/swift-cache -load-plugin-executable "/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool#GiftUIMacros" -Xfrontend -function-sections -Xfrontend -disable-stack-protector -Xcc -mfloat-abi=hard -Xcc -fshort-enums -Xcc -fno-pic -Xcc -fno-pie -Xcc -I -Xcc /Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/picolibc/include -Xcc -mcpu=cortex-m4 -Xcc -mthumb -Xcc -mabi=aapcs -Xcc -mfpu=fpv4-sp-d16 -Xcc -mtp=soft -I/Users/eugene/work/GiftUI/.build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/swift-modules/GiftUI -I/Users/eugene/work/GiftUI/.build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/swift-modules/P08CounterSchema -output-file-map CMakeFiles/giftui_counter_P08CounterPresentation.dir//output-file-map.json -emit-module -emit-module-path swift-modules/P08CounterPresentation/P08CounterPresentation.swiftmodule  /Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-counter-7x97oi7d/Counter.swift
+sandbox-exec: sandbox_apply: Operation not permitted
+/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-counter-7x97oi7d/Counter.swift:40:16: error: external macro implementation type 'GiftUIMacros.ObservableStateHostMacro' could not be found for macro 'ObservableStateHost()'; '/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/arm64-apple-macosx/debug/GiftUIMacros-tool' produced malformed response
+38 | 
+39 | @ObservableStateHost
+40 | package struct CounterScreen<D:CounterReadDomain>: View {package typealias Domain = D
+   |                `- error: external macro implementation type 'GiftUIMacros.ObservableStateHostMacro' could not be found for macro 'ObservableStateHost()'; '/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/arm64-apple-macosx/debug/GiftUIMacros-tool' produced malformed response
+41 | 
+42 |     @State<CounterModelSchema>(seed: CounterModelSchemaSeed(value: 0)) private var model: _GiftUIModelKey<CounterModelSchema>?
+
+/Users/eugene/work/GiftUI/Sources/GiftUI/ObservableState.swift:6:14: note: 'ObservableStateHost()' declared here
+  4 | )
+  5 | @attached(extension, conformances: _GiftUIObservableStateHost)
+  6 | public macro ObservableStateHost() =
+    |              `- note: 'ObservableStateHost()' declared here
+  7 |     #externalMacro(
+  8 |         module: "GiftUIMacros",
+
+/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-counter-7x97oi7d/Counter.swift:40:16: error: external macro implementation type 'GiftUIMacros.ObservableStateHostMacro' could not be found for macro 'ObservableStateHost()'; '/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/arm64-apple-macosx/debug/GiftUIMacros-tool' produced malformed response
+38 | 
+39 | @ObservableStateHost
+40 | package struct CounterScreen<D:CounterReadDomain>: View {package typealias Domain = D
+   |                `- error: external macro implementation type 'GiftUIMacros.ObservableStateHostMacro' could not be found for macro 'ObservableStateHost()'; '/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/arm64-apple-macosx/debug/GiftUIMacros-tool' produced malformed response
+41 | 
+42 |     @State<CounterModelSchema>(seed: CounterModelSchemaSeed(value: 0)) private var model: _GiftUIModelKey<CounterModelSchema>?
+
+/Users/eugene/work/GiftUI/Sources/GiftUI/ObservableState.swift:6:14: note: 'ObservableStateHost()' declared here
+  4 | )
+  5 | @attached(extension, conformances: _GiftUIObservableStateHost)
+  6 | public macro ObservableStateHost() =
+    |              `- note: 'ObservableStateHost()' declared here
+  7 |     #externalMacro(
+  8 |         module: "GiftUIMacros",
+[121/171] Building C object zephyr/CMakeFiles/zephyr_pre0.dir/misc/empty_file.c.obj
+[122/171] Linking C static library zephyr/libzephyr.a
+[123/171] Building C object zephyr/kernel/CMakeFiles/kernel.dir/timeout.c.obj
+[124/171] Building C object zephyr/kernel/CMakeFiles/kernel.dir/dynamic_disabled.c.obj
+[125/171] Linking C static library zephyr/arch/common/libarch__common.a
+[126/171] Linking C static library zephyr/arch/arch/arm/core/libarch__arm__core.a
+[127/171] Linking C static library zephyr/arch/arch/arm/core/cortex_m/libarch__arm__core__cortex_m.a
+[128/171] Building C object modules/hal_nordic/nrfx/CMakeFiles/nrfx.dir/Users/eugene/work/GiftUI/.toolchains/nrf52840/workspace/modules/hal/nordic/nrfx/drivers/src/nrfx_spim.c.obj
+[129/171] Building C object modules/hal_nordic/nrfx/CMakeFiles/nrfx.dir/Users/eugene/work/GiftUI/.toolchains/nrf52840/workspace/modules/hal/nordic/nrfx/drivers/src/nrfx_gpiote.c.obj
+[130/171] Building C object zephyr/drivers/spi/CMakeFiles/drivers__spi.dir/spi_nrfx_spim.c.obj
+[131/171] Building C object zephyr/drivers/serial/CMakeFiles/drivers__serial.dir/uart_nrfx_uarte.c.obj
+[132/171] Building Swift Module 'GiftUITextResources' with 1 source
+[133/171] Building Swift Module 'GiftUISemanticCore' with 9 sources
+ninja: build stopped: subcommand failed.
+FATAL ERROR: command exited with status 1: /opt/homebrew/bin/cmake --build /Users/eugene/work/GiftUI/.build/nrf52840/signal-analyzer-static/rfc014-counter-firmware

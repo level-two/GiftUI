@@ -4,6 +4,7 @@ import argparse
 import hashlib
 import json
 import pathlib
+import re
 import shlex
 import subprocess
 
@@ -49,9 +50,62 @@ record = dict(profile=args.profile, counter_build=str(base.relative_to(ROOT)),
               objects={str(path.relative_to(ROOT)): digest(path) for path in objects},
               execution='not executed; early image link only')
 if args.profile == 'nrf52840-embedded':
-    # Each object remains in its actual owner module; no Swift source flattening.
-    (output / 'counter-objects.cmake').write_text('set(giftui_counter_objects\n' +
-        ''.join('    "' + str(path) + '"\n' for path in objects) + ')\n')
+    # Rebuild the same selected sources with the supported firmware flags.
+    # The route objects remain frozen evidence; none is linked into this image.
+    core_path = next(path.parent for path in objects if path.name == 'GiftUI.o')
+    core_receipt = json.loads((core_path / 'result.json').read_text())
+    core_commands = [line for line in (core_path / 'commands.txt').read_text().splitlines()
+                     if '-module-name GiftUI ' in line and '-emit-module' in line]
+    assert len(core_commands) == 1
+    commands = [core_commands[0], *receipt['commands']]
+    owners = {}
+    source_hashes = {}
+    for command in commands:
+        parts = shlex.split(command)
+        if '-emit-module' not in parts or '-emit-object' not in parts:
+            continue  # Failed negative controls are not image inputs.
+        owner = parts[parts.index('-module-name') + 1]
+        assert re.fullmatch(r'[A-Za-z0-9_]+', owner) and owner not in owners
+        sources = [pathlib.Path(part) for part in parts if part.endswith('.swift')]
+        assert sources
+        for source in sources:
+            name = str(source.relative_to(ROOT))
+            expected = (core_receipt['inputs'] if owner == 'GiftUI' else receipt['inputs']).get(name)
+            if expected is None:
+                assert source.parent == base and source.name in receipt['artifacts']
+                expected = receipt['artifacts'][source.name]['sha256']
+            assert digest(source) == expected, 'stale image source: ' + name
+            source_hashes[name] = expected
+        owners[owner] = sources
+    assert len(owners) == 24 and 'P08CounterRuntime' in owners
+    imports = {}
+    for owner, sources in owners.items():
+        dependencies = set()
+        for source in sources:
+            if source.read_text().startswith('#if !hasFeature(Embedded)\n'):
+                continue  # The existing Dynamic-only file is wholly inactive.
+            text = source.read_text().replace(
+                '#if !hasFeature(Embedded)\nimport GiftUIRuntimeDynamic\n#endif', '')
+            dependencies.update(re.findall(r'^\s*(?:@[^\n]+?\s+)?import\s+(\w+)', text, re.M))
+        assert dependencies <= owners.keys(), (owner, dependencies - owners.keys())
+        imports[owner] = sorted(dependencies)
+    macro = pathlib.Path(core_receipt['macro_tool'])
+    if not macro.is_absolute():
+        macro = ROOT / macro
+    assert digest(macro) == core_receipt['macro_tool_sha256']
+    lines = ['set(giftui_counter_owners ' + ' '.join(owners) + ')',
+             'set(giftui_counter_macro "' + str(macro) + '#GiftUIMacros")']
+    for owner, sources in owners.items():
+        lines.append('set(giftui_counter_sources_' + owner + '\n' +
+                     ''.join('    "' + str(source) + '"\n' for source in sources) + ')')
+        lines.append('set(giftui_counter_imports_' + owner + ' ' + ' '.join(imports[owner]) + ')')
+    (output / 'counter-sources.cmake').write_text('\n'.join(lines) + '\n')
+    record.update(source_hashes=source_hashes, owners=list(owners), imports=imports,
+                  core_receipt_sha256=digest(core_path / 'result.json'),
+                  core_commands_sha256=digest(core_path / 'commands.txt'),
+                  macro_tool=str(macro.relative_to(ROOT)), macro_tool_sha256=digest(macro),
+                  source_handoff_sha256=digest(output / 'counter-sources.cmake'),
+                  object_use='identity verification only; fresh firmware objects required')
 else:
     assert args.destination_json is not None, 'existing static SDK destination is required'
     destination_path = args.destination_json.resolve()
