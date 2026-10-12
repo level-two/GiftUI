@@ -1,0 +1,6 @@
+COUNTER_INPUTS=/Users/eugene/work/GiftUI/.build/raspberry-pi/scratch/SignalAnalyzerRaspberryPiARMv6-rfc014-counter/input-receipt.json
+==> verified early counter ARMv6 hard-float image: /Users/eugene/work/GiftUI/.build/raspberry-pi/scratch/SignalAnalyzerRaspberryPiARMv6-rfc014-counter/counter.elf: ELF 32-bit LSB pie executable, ARM, EABI5 version 1 (SYSV), dynamically linked, interpreter /lib/ld-linux-armhf.so.3, for GNU/Linux 3.2.0, BuildID[sha1]=bfc1004cea9130c3b882b38c6a2d104dae0f7151, not stripped
+ARTIFACT=/Users/eugene/work/GiftUI/.build/raspberry-pi/artifacts/SignalAnalyzerRaspberryPiARMv6-rfc014-counter
+ELF=/Users/eugene/work/GiftUI/.build/raspberry-pi/scratch/SignalAnalyzerRaspberryPiARMv6-rfc014-counter/counter.elf
+MAP=/Users/eugene/work/GiftUI/.build/raspberry-pi/scratch/SignalAnalyzerRaspberryPiARMv6-rfc014-counter/counter.map
+REPORTS=/Users/eugene/work/GiftUI/.build/raspberry-pi/scratch/SignalAnalyzerRaspberryPiARMv6-rfc014-counter

@@ -1,0 +1,69 @@
+{
+  "commands": {
+    "elf-header.txt": [
+      ".toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/arm-zephyr-eabi-readelf",
+      "-h",
+      ".build/raspberry-pi/scratch/SignalAnalyzerRaspberryPiARMv6-rfc014-counter/counter.elf"
+    ],
+    "arm-attributes.txt": [
+      ".toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/arm-zephyr-eabi-readelf",
+      "-A",
+      ".build/raspberry-pi/scratch/SignalAnalyzerRaspberryPiARMv6-rfc014-counter/counter.elf"
+    ],
+    "program-headers.txt": [
+      ".toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/arm-zephyr-eabi-readelf",
+      "-lW",
+      ".build/raspberry-pi/scratch/SignalAnalyzerRaspberryPiARMv6-rfc014-counter/counter.elf"
+    ],
+    "dynamic.txt": [
+      ".toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/arm-zephyr-eabi-readelf",
+      "-dW",
+      ".build/raspberry-pi/scratch/SignalAnalyzerRaspberryPiARMv6-rfc014-counter/counter.elf"
+    ],
+    "sections.txt": [
+      ".toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/arm-zephyr-eabi-readelf",
+      "-SW",
+      ".build/raspberry-pi/scratch/SignalAnalyzerRaspberryPiARMv6-rfc014-counter/counter.elf"
+    ]
+  },
+  "load_segments": [
+    {
+      "file_bytes": 2050432,
+      "memory_bytes": 2050432
+    },
+    {
+      "file_bytes": 6553600,
+      "memory_bytes": 6553600
+    },
+    {
+      "file_bytes": 89728,
+      "memory_bytes": 91776
+    },
+    {
+      "file_bytes": 1042172,
+      "memory_bytes": 1219636
+    }
+  ],
+  "load_file_bytes": 9735932,
+  "load_memory_bytes": 9915444,
+  "artifacts": {
+    ".build/raspberry-pi/scratch/SignalAnalyzerRaspberryPiARMv6-rfc014-counter/counter.elf": {
+      "sha256": "2e48296582977428cae6563f926607cf253373fa6d9e042c9c3ec9a95eed2fc9",
+      "bytes": 15442476
+    },
+    ".build/raspberry-pi/scratch/SignalAnalyzerRaspberryPiARMv6-rfc014-counter/counter.map": {
+      "sha256": "9a8997443c6694b5b5d8526ef738b456ec6de0241c63adf7cac49e6d5eeea7d2",
+      "bytes": 16901089
+    },
+    ".build/raspberry-pi/scratch/SignalAnalyzerRaspberryPiARMv6-rfc014-counter/input-receipt.json": {
+      "sha256": "10497600fc6f198aaf4bef9b599676b41c5140193b0fdb3c637ce8c52a983fba",
+      "bytes": 10104
+    },
+    ".build/raspberry-pi/artifacts/SignalAnalyzerRaspberryPiARMv6-rfc014-counter": {
+      "sha256": "86aefe1bb1b4335fbb90e026e603859d9cf20ad1ac414993cb96cb9103380de8",
+      "bytes": 9738716
+    }
+  },
+  "allocator": "Dynamic profile; linked malloc/calloc/realloc/Swift allocations permitted; no zeroheap claim",
+  "execution": "none; linked image/read-only ELF inspection"
+}

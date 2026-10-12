@@ -15,6 +15,7 @@ configuration="release"
 link_static=1
 probe=0
 clean=0
+counter_build=""
 
 usage() {
     cat <<'USAGE'
@@ -27,6 +28,7 @@ Options:
   --dynamic            Do not statically link the Swift standard library.
   --clean              Clean this product's cross-build scratch directory.
   --probe              Build the bundled ARMv6 toolchain probe.
+  --counter-build PATH Link verified P08 counter objects for the existing ARMv6 product.
   -h, --help           Show this help.
 USAGE
 }
@@ -56,6 +58,11 @@ while [[ $# -gt 0 ]]; do
             ;;
         --probe)
             probe=1
+            ;;
+        --counter-build)
+            [[ $# -ge 2 ]] || giftui_pi_error "--counter-build requires a value"
+            counter_build="$2"
+            shift
             ;;
         -h | --help)
             usage
@@ -94,6 +101,27 @@ host_swift="$(giftui_pi_host_swift)"
 host_version="$(giftui_pi_host_swift_version_line)"
 [[ "${host_version}" == *"Swift version ${GIFTUI_PI_SWIFT_VERSION}"* ]] ||
     giftui_pi_error "host Swift ${GIFTUI_PI_SWIFT_VERSION} is required; found: ${host_version}"
+
+if [[ -n "${counter_build}" ]]; then
+    [[ "${product}" == "SignalAnalyzerRaspberryPiARMv6" && "${probe}" -eq 0 &&
+       "${link_static}" -eq 1 && "${configuration}" == "release" && "${clean}" -eq 0 &&
+       "${package_path}" == "${GIFTUI_PI_PROJECT_ROOT}" ]] ||
+        giftui_pi_error "counter inputs require the existing ARMv6 product, release/static defaults"
+    counter_output="${GIFTUI_PI_BUILD_ROOT}/scratch/${product}-rfc014-counter"
+    python3 "${GIFTUI_PI_PROJECT_ROOT}/scripts/contracts/build-spec-015-counter-image.py" \
+        --profile raspberry-pi-armv6 --counter-build "${counter_build}" --output "${counter_output}" \
+        --destination-json "${GIFTUI_PI_STATIC_DESTINATION}"
+    file_description="$(giftui_pi_verify_armv6_binary "${counter_output}/counter.elf")"
+    artifact_path="${GIFTUI_PI_ARTIFACTS_DIR}/${product}-rfc014-counter"
+    mkdir -p "${GIFTUI_PI_ARTIFACTS_DIR}"
+    cp -f "${counter_output}/counter.elf" "${artifact_path}"
+    "${GIFTUI_PI_HOST_BIN_DIR}/llvm-objcopy" --strip-all "${artifact_path}"
+    chmod 0755 "${artifact_path}"
+    giftui_pi_note "verified early counter ARMv6 hard-float image: ${file_description}"
+    printf 'ARTIFACT=%s\nELF=%s\nMAP=%s\nREPORTS=%s\n' \
+        "${artifact_path}" "${counter_output}/counter.elf" "${counter_output}/counter.map" "${counter_output}"
+    exit 0
+fi
 
 if [[ "${link_static}" -eq 1 ]]; then
     destination="${GIFTUI_PI_STATIC_DESTINATION}"

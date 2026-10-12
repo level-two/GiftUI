@@ -1,0 +1,15 @@
+{
+  "entry_commit": "e676ddd22c8f7f464bd742313ec668776f6c77df",
+  "command": [
+    "scripts/raspberry-pi/build.sh",
+    "--product",
+    "SignalAnalyzerRaspberryPiARMv6",
+    "--counter-build",
+    ".build/raspberry-pi/contracts/p08-counter-7qokob7z"
+  ],
+  "started_utc": "2026-10-12T13:59:12.750877+00:00",
+  "formatter_exit": 0,
+  "source_patch_sha256": "d7d8e2b42aa9da4cd1bfdeac65c1e81c43adb6f4261d6582664e23cfa0d8bcc5",
+  "exit_status": 0,
+  "finished_utc": "2026-10-12T13:59:13.233712+00:00"
+}

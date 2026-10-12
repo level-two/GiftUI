@@ -1,0 +1,37 @@
+
+Elf file type is DYN (Position-Independent Executable file)
+Entry point 0x204980
+There are 13 program headers, starting at offset 52
+
+Program Headers:
+  Type           Offset   VirtAddr   PhysAddr   FileSiz MemSiz  Flg Align
+  PHDR           0x000034 0x00000034 0x00000034 0x001a0 0x001a0 R   0x4
+  INTERP         0x0001d4 0x000001d4 0x000001d4 0x00019 0x00019 R   0x1
+      [Requesting program interpreter: /lib/ld-linux-armhf.so.3]
+  LOAD           0x000000 0x00000000 0x00000000 0x1f4980 0x1f4980 R   0x10000
+  LOAD           0x1f4980 0x00204980 0x00204980 0x640000 0x640000 R E 0x10000
+  LOAD           0x834980 0x00854980 0x00854980 0x15e80 0x16680 RW  0x10000
+  LOAD           0x84a800 0x0087a800 0x0087a800 0xfe6fc 0x129c34 RW  0x10000
+  TLS            0x834980 0x00844980 0x00844980 0x00000 0x00004 R   0x4
+  DYNAMIC        0x849d54 0x00869d54 0x00869d54 0x00100 0x00100 RW  0x4
+  GNU_RELRO      0x834980 0x00854980 0x00854980 0x15e80 0x16680 R   0x1
+  GNU_EH_FRAME   0x1f4970 0x001f4970 0x001f4970 0x0000c 0x0000c R   0x4
+  GNU_STACK      0x000000 0x00000000 0x00000000 0x00000 0x00000 RW  0
+  NOTE           0x0001f0 0x000001f0 0x000001f0 0x00044 0x00044 R   0x4
+  EXIDX          0x176a38 0x00176a38 0x00176a38 0x38778 0x38778 R   0x4
+
+ Section to Segment mapping:
+  Segment Sections...
+   00     
+   01     .interp 
+   02     .interp .note.ABI-tag .note.gnu.build-id .dynsym .gnu.version .gnu.version_r .gnu.hash .dynstr .rel.dyn .ARM.exidx .rel.plt .ARM.extab swift5_protocols swift5_protocol_conformances swift5_type_metadata swift5_fieldmd swift5_builtin swift5_assocty swift5_capture swift5_reflstr swift5_typeref swift5_mpenum swift5_replace swift5_replac2 swift5_accessible_functions swift5_runtime_attributes swift5_tests swift5_entry .swift_modhash swift5_type_metadata_2 .lldbsummaries .eh_frame_hdr .eh_frame 
+   03     .text .init .fini .plt 
+   04     .fini_array .init_array .data.rel.ro .dynamic .got .relro_padding 
+   05     .rodata .data .tm_clone_table .got.plt .bss 
+   06     .tbss 
+   07     .dynamic 
+   08     .fini_array .init_array .data.rel.ro .dynamic .got .relro_padding 
+   09     .eh_frame_hdr 
+   10     
+   11     .note.ABI-tag .note.gnu.build-id 
+   12     .ARM.exidx 

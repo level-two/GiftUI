@@ -1,0 +1,29 @@
+error: link command failed with exit code 1 (use -v to see invocation)
+ld.lld: error: undefined symbol: __atomic_load
+>>> referenced by RefCount.cpp
+>>>               RefCount.cpp.o:(swift::RefCounts<swift::RefCountBitsT<(swift::RefCountInlinedness)1>>::tryIncrementSlow(swift::RefCountBitsT<(swift::RefCountInlinedness)1>)) in archive /Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.4.0-RELEASE-raspios-bookworm-armv6/raspios-bookworm/usr/lib/swift_static/linux/libswiftCore.a
+>>> referenced by RefCount.cpp
+>>>               RefCount.cpp.o:(swift::RefCounts<swift::RefCountBitsT<(swift::RefCountInlinedness)1>>::tryIncrementNonAtomicSlow(swift::RefCountBitsT<(swift::RefCountInlinedness)1>)) in archive /Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.4.0-RELEASE-raspios-bookworm-armv6/raspios-bookworm/usr/lib/swift_static/linux/libswiftCore.a
+>>> referenced by RefCount.cpp
+>>>               RefCount.cpp.o:(swift::HeapObjectSideTableEntry::incrementStrong(unsigned int)) in archive /Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.4.0-RELEASE-raspios-bookworm-armv6/raspios-bookworm/usr/lib/swift_static/linux/libswiftCore.a
+>>> referenced 43 more times
+
+ld.lld: error: undefined symbol: __atomic_compare_exchange
+>>> referenced by RefCount.cpp
+>>>               RefCount.cpp.o:(swift::RefCounts<swift::RefCountBitsT<(swift::RefCountInlinedness)1>>::tryIncrementSlow(swift::RefCountBitsT<(swift::RefCountInlinedness)1>)) in archive /Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.4.0-RELEASE-raspios-bookworm-armv6/raspios-bookworm/usr/lib/swift_static/linux/libswiftCore.a
+>>> referenced by RefCount.cpp
+>>>               RefCount.cpp.o:(swift::HeapObjectSideTableEntry::incrementStrong(unsigned int)) in archive /Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.4.0-RELEASE-raspios-bookworm-armv6/raspios-bookworm/usr/lib/swift_static/linux/libswiftCore.a
+>>> referenced by RefCount.cpp
+>>>               RefCount.cpp.o:(swift::RefCounts<swift::RefCountBitsT<(swift::RefCountInlinedness)1>>::formWeakReference()) in archive /Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.4.0-RELEASE-raspios-bookworm-armv6/raspios-bookworm/usr/lib/swift_static/linux/libswiftCore.a
+>>> referenced 21 more times
+
+ld.lld: error: undefined symbol: __atomic_store
+>>> referenced by RefCount.cpp
+>>>               RefCount.cpp.o:(swift::RefCounts<swift::RefCountBitsT<(swift::RefCountInlinedness)1>>::tryIncrementNonAtomicSlow(swift::RefCountBitsT<(swift::RefCountInlinedness)1>)) in archive /Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.4.0-RELEASE-raspios-bookworm-armv6/raspios-bookworm/usr/lib/swift_static/linux/libswiftCore.a
+>>> referenced by RefCount.cpp
+>>>               RefCount.cpp.o:(swift::RefCounts<swift::RefCountBitsT<(swift::RefCountInlinedness)1>>::allocateSideTable(bool)) in archive /Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.4.0-RELEASE-raspios-bookworm-armv6/raspios-bookworm/usr/lib/swift_static/linux/libswiftCore.a
+>>> referenced by HeapObject.cpp
+>>>               HeapObject.cpp.o:(swift::RefCounts<swift::RefCountBitsT<(swift::RefCountInlinedness)1>>::incrementUnownedNonAtomic(unsigned int)) in archive /Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.4.0-RELEASE-raspios-bookworm-armv6/raspios-bookworm/usr/lib/swift_static/linux/libswiftCore.a
+>>> referenced 2 more times
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+

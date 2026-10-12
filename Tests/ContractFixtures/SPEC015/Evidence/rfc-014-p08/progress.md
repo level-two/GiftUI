@@ -1242,3 +1242,7 @@ Corrected current nRF Static counter route PASS26/26 compile/negative checks at 
 ### R06 four current routes outcome
 
 Source1497f0ae fresh nativeStatic/Dynamic PASS1,349,555/1,349,501 zero24/24; PiARMv6 PASS28/28, corrected nRFStatic PASS26/26. All4current input sets match; exact build/result/hash identities in [current-route result](remaining-implementation/r06-current-routes/result.md). Targets cross-compiled only; original nativeRGBA oracle retained, actual tiledtext/stroke compiled. Three initial revalidations no source edits/repair; historicalhelper2/2+B031/1 closed. Commit R06 coherent evidence then R07 supported links/physicalresource ABI, no execution/deploy/flash. P08/T8.1 open, P09–P12 pending.
+
+### R07 first coherent Pi image outcome
+
+Supported Pi product counter-image attempt2 linked PASSARMv6/VFP, staticSwift+dynamicLinuxClibraries. Actual current Dynamic counter/tiledtextstroke rooted. [Exact image/hash/LOAD/allocator/observed-frame evidence](remaining-implementation/r07-early-images/pi-result.md). LOADmemory9,915,444bytes; selectedcorpus localframe113,560bytes incl savedregs, not whole-callchainpeak/targetexecution proof. Initial missingstaticdestination-latomic linkcause narrowed/resolved using existing exact destination, no new dependency or rebuild. Commit Pi step then existing nRF image link; R07/P08exit open; no deploy/flash. Historicalguardsclosed.

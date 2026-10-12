@@ -1,0 +1,117 @@
+
+.build/raspberry-pi/scratch/SignalAnalyzerRaspberryPiARMv6-rfc014-counter/counter.elf:	file format elf32-littlearm
+
+Disassembly of section .text:
+
+003ff514 <$s17P08CounterRuntime03p08B11DynamicHostSiyF>:
+  3ff514: e92d4ff0     	push	{r4, r5, r6, r7, r8, r9, r10, r11, lr}
+  3ff518: e24ddfdd     	sub	sp, sp, #884
+  3ff51c: e24ddb6e     	sub	sp, sp, #112640
+  3ff520: e59f0434     	ldr	r0, [pc, #0x434]        @ 0x3ff95c <$s17P08CounterRuntime03p08B11DynamicHostSiyF+0x448>
+  3ff524: e28dea1b     	add	lr, sp, #110592
+  3ff528: e28d5020     	add	r5, sp, #32
+  3ff52c: e08f0000     	add	r0, pc, r0
+  3ff530: e3a01000     	mov	r1, #0
+  3ff534: e5900000     	ldr	r0, [r0]
+  3ff538: e3a06000     	mov	r6, #0
+  3ff53c: e5900000     	ldr	r0, [r0]
+  3ff540: e58e0b6c     	str	r0, [lr, #0xb6c]
+  3ff544: e1a00005     	mov	r0, r5
+  3ff548: ebff85db     	bl	0x3e0cbc <$s17P08CounterRuntime19counterActualLimitsy17GiftUIRuntimeCore0c7ProfileF0VAC0cJ4KindOF> @ imm = #-0x1e894
+  3ff54c: e28de905     	add	lr, sp, #81920
+  3ff550: e28e0ed1     	add	r0, lr, #3344
+  3ff554: e3a01000     	mov	r1, #0
+  3ff558: e3a02000     	mov	r2, #0
+  3ff55c: e1a03005     	mov	r3, r5
+  3ff560: ebffc959     	bl	0x3f1acc <$s17P08CounterRuntime07DynamicB14ProfileStorageV10modelOwner08semanticH06limitsAC21GiftUIObservableState015ObservableModelH8IdentityV_0K14UISemanticCore014SemanticRecordhP0V0k9UIRuntimeR00cE6LimitsVtcfC> @ imm = #-0xda9c
+  3ff564: e28d5094     	add	r5, sp, #148
+  3ff568: e1a00005     	mov	r0, r5
+  3ff56c: e3a01000     	mov	r1, #0
+  3ff570: ebff85d1     	bl	0x3e0cbc <$s17P08CounterRuntime19counterActualLimitsy17GiftUIRuntimeCore0c7ProfileF0VAC0cJ4KindOF> @ imm = #-0x1e8bc
+  3ff574: e28dea0d     	add	lr, sp, #53248
+  3ff578: e28e0eeb     	add	r0, lr, #3760
+  3ff57c: e3a01001     	mov	r1, #1
+  3ff580: e3a02001     	mov	r2, #1
+  3ff584: e1a03005     	mov	r3, r5
+
+
+.build/raspberry-pi/scratch/SignalAnalyzerRaspberryPiARMv6-rfc014-counter/counter.elf:	file format elf32-littlearm
+
+Disassembly of section .text:
+
+00405f84 <$s17P08CounterRuntime03p08B5GraphSiyF>:
+  405f84: e92d4ff0     	push	{r4, r5, r6, r7, r8, r9, r10, r11, lr}
+  405f88: e24dd004     	sub	sp, sp, #4
+  405f8c: e24ddb37     	sub	sp, sp, #56320
+  405f90: e28d4e62     	add	r4, sp, #1568
+  405f94: e2840034     	add	r0, r4, #52
+  405f98: e284601c     	add	r6, r4, #28
+  405f9c: e3a07000     	mov	r7, #0
+  405fa0: e3a0b03f     	mov	r11, #63
+  405fa4: e3a0803d     	mov	r8, #61
+  405fa8: e3a09001     	mov	r9, #1
+  405fac: e3a05000     	mov	r5, #0
+  405fb0: e2800b33     	add	r0, r0, #52224
+  405fb4: e58d001c     	str	r0, [sp, #0x1c]
+  405fb8: e3550012     	cmp	r5, #18
+  405fbc: 0a000031     	beq	0x406088 <$s17P08CounterRuntime03p08B5GraphSiyF+0x104> @ imm = #0xc4
+  405fc0: e1a00005     	mov	r0, r5
+  405fc4: ebfa11e8     	bl	0x28a76c <$s23GiftUIHostConfiguration17HostComponentRoleO8rawValueACSgs5UInt8V_tcfC> @ imm = #-0x17b860
+  405fc8: e3e0100a     	mvn	r1, #10
+  405fcc: e6e11070     	uxtab	r1, r1, r0
+  405fd0: e6ef0070     	uxtb	r0, r0
+  405fd4: e3510007     	cmp	r1, #7
+  405fd8: 8a00000c     	bhi	0x406010 <$s17P08CounterRuntime03p08B5GraphSiyF+0x8c> @ imm = #0x30
+  405fdc: e28f2004     	add	r2, pc, #4
+  405fe0: e7921101     	ldr	r1, [r2, r1, lsl #2]
+  405fe4: e082f001     	add	pc, r2, r1
+
+
+.build/raspberry-pi/scratch/SignalAnalyzerRaspberryPiARMv6-rfc014-counter/counter.elf:	file format elf32-littlearm
+
+Disassembly of section .text:
+
+004064f0 <$s17P08CounterRuntime03p08B5Route5writeSis5Int32Vs6UInt16V_A3GSPys5UInt8VGSgSitXCSg_tF>:
+  4064f0: e92d4010     	push	{r4, lr}
+  4064f4: ebfffea2     	bl	0x405f84 <$s17P08CounterRuntime03p08B5GraphSiyF> @ imm = #-0x578
+  4064f8: e1a04000     	mov	r4, r0
+  4064fc: ebffe404     	bl	0x3ff514 <$s17P08CounterRuntime03p08B11DynamicHostSiyF> @ imm = #-0x6ff0
+  406500: e0940000     	adds	r0, r4, r0
+  406504: 78bd8010     	popvc	{r4, pc}
+  406508: e7ffdefe     	trap
+
+
+.build/raspberry-pi/scratch/SignalAnalyzerRaspberryPiARMv6-rfc014-counter/counter.elf:	file format elf32-littlearm
+
+Disassembly of section .text:
+
+003ff15c <$s17P08CounterRuntime07DynamicB14ProfileStorageV03runbD4Host09failAfterC0SiSb_tF>:
+  3ff15c: e92d4bf0     	push	{r4, r5, r6, r7, r8, r9, r11, lr}
+  3ff160: e28db018     	add	r11, sp, #24
+  3ff164: e24ddefe     	sub	sp, sp, #4064
+  3ff168: e3cdd00f     	bic	sp, sp, #15
+  3ff16c: e28deb03     	add	lr, sp, #3072
+  3ff170: e28e5f85     	add	r5, lr, #532
+  3ff174: e58d001c     	str	r0, [sp, #0x1c]
+  3ff178: e1a00005     	mov	r0, r5
+  3ff17c: e1a0100a     	mov	r1, r10
+  3ff180: ebfe6ae4     	bl	0x399d18 <$s17P08CounterRuntime07DynamicB14ProfileStorageV5audit6report17GiftUIRuntimeCore0cE16ValidationResultOyAA0bF6RegionVXE_tF04$s17ab9Runtime07d3B14ef9V5audit17ij9Core0cE16lm10OyFyAA0bF6N6VXEfU_Tf1cn_n> @ imm = #-0x65470
+  3ff184: e1a00005     	mov	r0, r5
+  3ff188: ebf951b6     	bl	0x253868 <$s17GiftUIRuntimeCore30RuntimeProfileValidationResultOWOg> @ imm = #-0x1ab928
+  3ff18c: e28deb03     	add	lr, sp, #3072
+  3ff190: e3500001     	cmp	r0, #1
+  3ff194: 0a0000c8     	beq	0x3ff4bc <$s17P08CounterRuntime07DynamicB14ProfileStorageV03runbD4Host09failAfterC0SiSb_tF+0x360> @ imm = #0x320
+  3ff198: e28e0f85     	add	r0, lr, #532
+  3ff19c: ebfeb712     	bl	0x3acdec <$s17GiftUIInteraction24InteractionOwnedKeyStateVy0A16UIRuntimeDynamic0hC16CandidateStorageVy0A14UISemanticCore24SemanticCompleteIdentityVGAD0hc9CommittedJ0VyAIGAD0hc3HitJ0VyAIGGSgWOg+0x34> @ imm = #-0x523b8
+  3ff1a0: e28deb03     	add	lr, sp, #3072
+  3ff1a4: e28e5fbe     	add	r5, lr, #760
+  3ff1a8: e1a01000     	mov	r1, r0
+  3ff1ac: e1a00005     	mov	r0, r5
+  3ff1b0: e3a020e4     	mov	r2, #228
+  3ff1b4: eb111409     	bl	0x8441e0 <memcpy@plt>   @ imm = #0x445024
+  3ff1b8: e28deb02     	add	lr, sp, #2048
+  3ff1bc: e28e60f8     	add	r6, lr, #248
+  3ff1c0: e1a00006     	mov	r0, r6
+  3ff1c4: ebf93cb2     	bl	0x24e494 <$s23GiftUIHostConfiguration20HostValidationResultOSgWOi0_> @ imm = #-0x1b0d38
+  3ff1c8: e28deb03     	add	lr, sp, #3072
+  3ff1cc: e3a0205b     	mov	r2, #91

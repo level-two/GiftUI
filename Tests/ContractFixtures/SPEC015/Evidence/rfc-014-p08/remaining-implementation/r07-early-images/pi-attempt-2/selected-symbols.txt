@@ -1,0 +1,8 @@
+00788014 t __swift_allocObject_
+00978c44 d _swift_allocObject
+         U calloc
+004064c4 T giftui_rfc014_counter_entry
+         U malloc
+         U malloc_usable_size
+         U realloc
+00788384 t swift_allocObject
