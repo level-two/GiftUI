@@ -1,5 +1,8 @@
 # RFC-014 P08 execution receipt — 2026-10-11
 
+**Current checkpoint — remaining P08 implementation resumed, 2026-10-12; guard0/2.**
+[Explicit resumption and next slice](remaining-implementation/resumption.md) record the user instruction, exact dependencies and unchanged finite boundary. The verified activation blocker remains closed.
+
 **Current checkpoint — activation blocker resolved, 2026-10-12.**
 The [approved compiler correction](../../../../../docs/iterations/iteration-003-review/rfc-014-spec-approval.md#swift-64-compiler-baseline-correction--2026-10-12)
 `267616c9` is applied. [Independent final audit](activation-integration/baseline-final-review.md)

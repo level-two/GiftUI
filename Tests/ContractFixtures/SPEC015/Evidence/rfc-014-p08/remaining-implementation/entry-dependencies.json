@@ -1,0 +1,42 @@
+[
+  {
+    "profile": "macos-dynamic",
+    "receipt": ".build/contracts/spec-013-runtime-cycle/tmp_63jv4xj/macos-dynamic/result.json",
+    "receipt_sha256": "ec8f19aaa3f28ffd0f7e869c9506dff1c75ec4d3a1b8164eae7dfb567a9d7900",
+    "compiler": ".toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc",
+    "compiler_sha256": "79ae5c26645489fb783ae980f0f1bdae810f90fb180c9ac39808807b65e9fd69",
+    "verified_inputs": 165,
+    "verified_artifacts": 143,
+    "core_receipt_sha256": "05f06a2eb45db2a196b7a76bdfbd5ee1429a802640dd00aa1ce251020b699402"
+  },
+  {
+    "profile": "macos-static",
+    "receipt": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/result.json",
+    "receipt_sha256": "39772d9e2cc7d70f47b82970dd1b89ddd3236274ccbb57cf9c547ce4aeaedf69",
+    "compiler": ".toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc",
+    "compiler_sha256": "79ae5c26645489fb783ae980f0f1bdae810f90fb180c9ac39808807b65e9fd69",
+    "verified_inputs": 165,
+    "verified_artifacts": 143,
+    "core_receipt_sha256": "4345209f3f2d58e86ea2fdf3b45d15ee5d1da00cce275b964e156ba353c88793"
+  },
+  {
+    "profile": "raspberry-pi-armv6",
+    "receipt": ".build/raspberry-pi/contracts/spec-013-runtime-cycle/tmpvq70p7a0/raspberry-pi-armv6/result.json",
+    "receipt_sha256": "3ba136e814e0ae8462ea56b49a344d1371c4dc70b95ad79f46c1a471028b877b",
+    "compiler": ".toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc",
+    "compiler_sha256": "79ae5c26645489fb783ae980f0f1bdae810f90fb180c9ac39808807b65e9fd69",
+    "verified_inputs": 165,
+    "verified_artifacts": 120,
+    "core_receipt_sha256": "d9b79b9d6c1ba39f7e58265b9859a1e317973089debddd882be9678ec5e332a6"
+  },
+  {
+    "profile": "nrf52840-embedded",
+    "receipt": ".build/nrf52840/contracts/spec-013-runtime-cycle/tmp9d1k2h7s/nrf52840-embedded/result.json",
+    "receipt_sha256": "51a1091765bb9f839bc53e07f87f5477ceff0d72ae18aac9fe0ddfd72ff9cc25",
+    "compiler": ".toolchains/nrf52840/swift/swift-6.4.0-RELEASE-osx/usr/bin/swiftc",
+    "compiler_sha256": "79ae5c26645489fb783ae980f0f1bdae810f90fb180c9ac39808807b65e9fd69",
+    "verified_inputs": 152,
+    "verified_artifacts": 115,
+    "core_receipt_sha256": "43637fce83895306edc6f831951665e1ba8d14bc568b6db51f97d2125bcd9b2b"
+  }
+]
