@@ -62,6 +62,12 @@ struct CounterApplicationOwners {
         self.control = control
         control.pointee.applicationConstructions += 1
     }
+    var constructedProjectionIsValid: Bool {
+        source.running && source.emissionCount == 1 && repository.publicationCount == 1
+            && repository.observation == observation && observation != nil
+            && useCases.startCalls == 1 && gate.isAvailable && !gate.isExecuting
+            && deliveryEnabled && inputEnabled && control.pointee.applicationConstructions == 1
+    }
     mutating func installObservation() -> UInt8 {
         let installed = repository.observe()
         observation = installed.token

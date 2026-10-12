@@ -1,6 +1,28 @@
 # RFC-014 bounded implementation sequence — 2026-10-10
 
-**Current P08 checkpoint — activation blocker resolved, 2026-10-12:**
+**Current P08 checkpoint — unvalidated graph slice stopped, 2026-10-12:**
+Last validated source is `48a987cd`: actual canonical wake integration and
+[step7f controls](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/remaining-implementation/step-7f-wake-controls/result.md)
+pass 1,348,627 assertions and 23 controls. The subsequent exact construction graph
+and activation projection edits are preserved as an **unvalidated WIP checkpoint**.
+Two pinned Swift 6.4 `counter-model` compiles stopped in SILGen at
+`CounterHostState.constructedRuntimeProjectionIsValid` with the same
+`can't set insertion point to a null instruction` assertion. The local resumed
+same-blocker guard is **2/2**; no third compile or repair is authorized under this
+allowance. [Frozen stop evidence](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/remaining-implementation/step-7g-graph-stop/stop.md)
+was committed in `b3950465`; the following source checkpoint preserves the exact
+failed WIP for independent read-only review. This stop does not reopen the closed
+activation audit or establish an upstream contract blocker.
+
+Independent review of the smallest proposed projection alternative is next;
+a further bounded implementation allowance is required before compiler work.
+Graph validation, four registered routes, early linked target-image evidence and
+independent P08 exit review remain open. SPEC-015 stays implementing, its plan
+active and T8.1 incomplete. No graph validation or P08 pass is claimed. This
+checkpoint supersedes the continuation direction in the historical activation
+checkpoint below; its approval and completed evidence remain unchanged.
+
+**Historical P08 checkpoint — activation blocker resolved, 2026-10-12:**
 The [approved Swift 6.4 correction](rfc-014-spec-approval.md#swift-64-compiler-baseline-correction--2026-10-12)
 `267616c9` is applied and the actual generic-host activation join is verified.
 [Independent final audit](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-integration/baseline-final-review.md)

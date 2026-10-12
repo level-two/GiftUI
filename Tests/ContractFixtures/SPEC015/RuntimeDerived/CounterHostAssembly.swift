@@ -8,11 +8,31 @@ import GiftUISurfaceCore
 import GiftUITextResources
 import GiftUIHostConfiguration
 
+// Exact direct construction requirements of this finite composition. Runtime
+// callback direction is not a retained constructor dependency (see inventory).
 struct CounterHostGraph: HostComponentGraphView {
     let count: UInt8 = 18
     func record(at index: UInt8) -> HostComponentRecord? {
         guard index < count, let role = HostComponentRole(rawValue: index) else { return nil }
-        return .init(role: role, dependencies: index == 0 ? .init(rawValue: 0) : .init(HostComponentRole(rawValue: index - 1)!))
+        let dependencies: UInt32
+        switch role {
+        case .rasterEndpoint:
+            // Actual resolved configuration + profile-owned surface/payload and
+            // the selected text package passed to CounterNativeEndpoint.
+            dependencies = (1 << 0) | (1 << 1) | (1 << 2) | (1 << 3) | (1 << 4) | (1 << 5)
+        case .factAdmission, .rootModelTarget, .normalizedInput, .wakeRequester:
+            // Stable typed profile backing, limits, identity/context and audit.
+            dependencies = 1 << 0
+        case .actionHandler:
+            // CounterHandler.operation is total over the supplied CounterAction.
+            dependencies = 1 << 12
+        default:
+            // Value-only inert contributors/policy and owner-free constructors.
+            // Source/repository/use-case callbacks receive explicit arguments;
+            // those owners retain no callbacks or peer owner references.
+            dependencies = 0
+        }
+        return .init(role: role, dependencies: .init(rawValue: dependencies))
     }
 }
 

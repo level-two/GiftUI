@@ -336,3 +336,9 @@ Step7f [receipt](step-7f-wake-controls/result.md) passes1,348,627assertions/23co
 Step7g ww2ukmjc failed Swift6.4 SILGen at new constructedRuntimeProjectionIsValid borrowing helper, exact function named in crash. Preserve crash and failed source. Remove nested pattern inspecting noncopyable Optional cache, whose retention/lifetime already passed existing host join; retain outer borrowed state pattern and actual root/models/admission/wake/endpoint projections. No compiler/contract change. Conservative same-blocker repair1/2 until next pass or narrower diagnostic; historical guards remain closed.
 
 Step7g [stop packet](step-7g-graph-stop/stop.md): ww2ukmjc then fbi5sbvm same pinned6.4 SILGen assertion in optional new borrowing projection helper; conservative2/2 stop, no third compile. Exact failed changed sources/commands/crashes hashed. Last validated48a987cd; proposed graph/projection source preserved uncommitted for independent review. No target builds or upstream contract blocker inferred.
+
+Step7g source checkpoint follows evidence-only `b3950465`: preserve the exact
+six-file failed graph WIP, with no further source repair or compilation. Plan,
+task context and progress now identify local guard2/2 as the current stop while
+preserving all historical receipts. Last validated48a987cd; independent read-only
+review precedes any newly authorized bounded continuation. No graph/P08 pass.

@@ -358,3 +358,19 @@ images remain open; no complete image or P08 exit claim.
 2026-10-12 step7e [canonical wake integration](remaining-implementation/step-7e-canonical-wake/result.md) passes1,348,543assertions/23controls. Actual source wake, shared canonical state and paced action corpus; no unchecked Sendable. Guard0/2. Remaining integrated wake controls, graph and linked targets.
 
 2026-10-12 step7f [integrated wake controls](remaining-implementation/step-7f-wake-controls/result.md) passes1,348,627/23;42checks per actual host cover reason coalescing, deadline, late callback, dirty/backpressure/refusal/no replay and terminal disable. Guard0/2; graph/linked routes remain.
+
+
+## Current stop — step7g unvalidated graph checkpoint (2026-10-12)
+
+Last validated source `48a987cd` remains the step7f pass of 1,348,627 assertions
+and 23 controls. [Stop evidence](remaining-implementation/step-7g-graph-stop/stop.md)
+`b3950465` freezes both failed runs, `ww2ukmjc` and `fbi5sbvm`. The subsequent
+source checkpoint preserves the exact graph/application/activation projection
+WIP and driver controls; these additions are unvalidated. Both pinned Swift 6.4
+`counter-model` compiles hit the same SILGen assertion in
+`CounterHostState.constructedRuntimeProjectionIsValid`; local resumed guard
+**2/2**, no third compile or repair. Historical closed guards remain closed.
+Parent independent read-only review is next; further bounded authorization is
+required before affected compiler work. Graph/four routes/early linked images
+and P08 exit remain open. SPEC-015 implementing, plan active, T8.1 incomplete.
+No graph validation, upstream contract blocker or P08 pass is claimed.
