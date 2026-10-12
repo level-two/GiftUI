@@ -1,0 +1,121 @@
+{"app_name":"counter","timestamp":"2026-10-12 14:54:43.00 +0200","app_version":"","slice_uuid":"6af55a2f-0016-35da-b01e-4f92af18d776","build_version":"","platform":1,"share_with_app_devs":0,"is_first_party":1,"bug_type":"309","os_version":"macOS 26.6.2 (25G83)","roots_installed":0,"incident_id":"104558CD-DE91-4FF0-B672-0B577F48DA26","name":"counter"}
+{
+  "uptime" : 2000000,
+  "procRole" : "Unspecified",
+  "version" : 2,
+  "userID" : 501,
+  "deployVersion" : 210,
+  "modelCode" : "Mac15,7",
+  "coalitionID" : 84555,
+  "osVersion" : {
+    "train" : "macOS 26.6.2",
+    "build" : "25G83",
+    "releaseType" : "User"
+  },
+  "captureTime" : "2026-10-12 14:54:43.0228 +0200",
+  "codeSigningMonitor" : 2,
+  "incident" : "104558CD-DE91-4FF0-B672-0B577F48DA26",
+  "pid" : 9893,
+  "translated" : false,
+  "cpuType" : "ARM-64",
+  "procLaunch" : "2026-10-12 14:54:42.5833 +0200",
+  "procStartAbsTime" : 49387155514254,
+  "procExitAbsTime" : 49387166056489,
+  "procName" : "counter",
+  "procPath" : "\/Users\/USER\/*\/counter",
+  "parentProc" : "Python",
+  "parentPid" : 9795,
+  "coalitionName" : "com.openai.codex",
+  "crashReporterKey" : "F117E33C-F98D-1651-A461-5B43BD0503CB",
+  "appleIntelligenceStatus" : {"state":"available"},
+  "developerMode" : 1,
+  "responsiblePid" : 38014,
+  "responsibleProc" : "ChatGPT",
+  "codeSigningID" : "counter",
+  "codeSigningTeamID" : "",
+  "codeSigningFlags" : 570556929,
+  "codeSigningValidationCategory" : 10,
+  "codeSigningTrustLevel" : 4294967295,
+  "codeSigningAuxiliaryInfo" : 0,
+  "instructionByteStream" : {"beforePC":"\/ztAkf\/DD5H9e0Wp9E9EqfZXQ6n4X0Kp\/G9BqekjxmzAA1\/WIAAg1A==","atPC":"IAAg1CAAINQgACDUIAAg1CAAINQgACDUIAAg1CAAINQgACDUIAAg1A=="},
+  "bootSessionUUID" : "4ADDBECB-D923-4147-8887-2A3267C5909F",
+  "wakeTime" : 9712,
+  "sleepWakeUUID" : "E353D3C3-B3B3-4978-94F0-C8FA15E212AD",
+  "sip" : "enabled",
+  "exception" : {"codes":"0x0000000000000001, 0x000000010438b9f0","rawCodes":[1,4365793776],"type":"EXC_BREAKPOINT","signal":"SIGTRAP"},
+  "termination" : {"flags":0,"code":5,"namespace":"SIGNAL","indicator":"Trace\/BPT trap: 5","byProc":"exc handler","byPid":9893},
+  "os_fault" : {"process":"counter"},
+  "extMods" : {"caller":{"thread_create":0,"thread_set_state":0,"task_for_pid":0},"system":{"thread_create":0,"thread_set_state":314,"task_for_pid":31},"targeted":{"thread_create":0,"thread_set_state":0,"task_for_pid":0},"warnings":0},
+  "faultingThread" : 0,
+  "threads" : [{"triggered":true,"id":37031858,"threadState":{"x":[{"value":1},{"value":6102203782},{"value":18446744073709551602},{"value":6102206450},{"value":18446744073709548916},{"value":8},{"value":0},{"value":282578791170148},{"value":2},{"value":1},{"value":16492674420480},{"value":0},{"value":10831055658845995009},{"value":4311941377},{"value":4294963440},{"value":2},{"value":6489740128,"symbolLocation":0,"symbol":"_platform_memmove"},{"value":1},{"value":0},{"value":6102205336},{"value":4366344248,"symbolLocation":0,"symbol":"protocol witness table for CounterInvalidGraph"},{"value":6102263064},{"value":6102260112},{"value":536867040},{"value":8},{"value":6102264336},{"value":8312388208,"symbolLocation":0,"symbol":"mach_task_self_"},{"value":0},{"value":0}],"flavor":"ARM_THREAD_STATE64","lr":{"value":4365793552},"cpsr":{"value":1610616832},"fp":{"value":6102263728},"sp":{"value":6102205296},"esr":{"value":4060086273,"description":"(Breakpoint) brk 1"},"pc":{"value":4365793776,"matchesCrashFrame":1},"far":{"value":0}},"queue":"com.apple.main-thread","frames":[{"imageOffset":1178096,"symbol":"p08CounterGraph()","symbolLocation":924,"imageIndex":0},{"imageOffset":3436,"symbol":"static Main.main()","symbolLocation":132,"imageIndex":0},{"imageOffset":3776,"symbol":"main","symbolLocation":12,"imageIndex":0},{"imageOffset":132324,"symbol":"start","symbolLocation":6992,"imageIndex":1}]}],
+  "usedImages" : [
+  {
+    "source" : "P",
+    "arch" : "arm64",
+    "base" : 4364615680,
+    "size" : 1638400,
+    "uuid" : "6af55a2f-0016-35da-b01e-4f92af18d776",
+    "path" : "\/Users\/USER\/*\/counter",
+    "name" : "counter"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64e",
+    "base" : 6485590016,
+    "size" : 734464,
+    "uuid" : "74e52480-c2bd-3c8d-812d-95fe2b74a096",
+    "path" : "\/usr\/lib\/dyld",
+    "name" : "dyld"
+  },
+  {
+    "size" : 0,
+    "source" : "A",
+    "base" : 0,
+    "uuid" : "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64e",
+    "base" : 6489726976,
+    "size" : 35172,
+    "uuid" : "edb83a19-ec17-32de-9350-6145970a85d6",
+    "path" : "\/usr\/lib\/system\/libsystem_platform.dylib",
+    "name" : "libsystem_platform.dylib"
+  }
+],
+  "sharedCache" : {
+  "base" : 6484459520,
+  "size" : 6010847232,
+  "uuid" : "f2e86c53-6052-388b-ba71-5a0c9b569413"
+},
+  "legacyInfo" : {
+  "threadTriggered" : {
+    "queue" : "com.apple.main-thread"
+  }
+},
+  "logWritingSignature" : "a42d2457df30a5de01b7097a324b6bdf16e405a4",
+  "roots_installed" : 0,
+  "bug_type" : "309",
+  "trmStatus" : 1,
+  "trialInfo" : {
+  "rollouts" : [
+    {
+      "rolloutId" : "67181b10c68c361a728c7cfa",
+      "factorPackIds" : [
+
+      ],
+      "deploymentId" : 240000005
+    },
+    {
+      "rolloutId" : "682ef9612c2ae30e2f38d3a4",
+      "factorPackIds" : [
+
+      ],
+      "deploymentId" : 240000006
+    }
+  ],
+  "experiments" : [
+
+  ]
+}
+}

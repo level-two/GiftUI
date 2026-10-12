@@ -1146,3 +1146,41 @@ counter driver is Darwin-only. Next P08 slice maps/adapts actual existing route
 inputs/current counter and Embedded endpoint before crediting four-route or early
 image evidence. Missing integration is not a new human approval gate. Historical
 helper2/2/B031/1 closed; P08/T8.1 open, P09–P12 pending; no package/target pass.
+
+### Remaining P08 R06–R07 dispatch — four routes and early target images
+
+Entry `0f7290ce`, clean before this dispatch. Independent Strong review accepts
+bounded R01–R05 native evidence; P08 remains open. Strong `gpt-6.1-sol` / `high`,
+C3/R3, sequential. HC-RD-001–004, HC-003/011/014/018 and P08 exit require current
+counter corpus on four build routes plus early linked Pi/nRF resource/ABI evidence.
+Read required Pi/nRF toolchain/build skills, current pins/approved Swift6.4
+correction, and run prescribed read-only doctor checks before target work.
+
+R06: map exact current source/compiler/SDK/module inputs, then integrate the
+finite counter into the existing registered four-profile boundaries, preserving
+legacy routes for P10 and avoiding analyzer P09 migration. Record exact files,
+route arguments and independent corpus/oracles before edits. Native routes must
+select actual profile compositions; target builds need actual endpoint/text/stroke
+construction, not the Embedded discard-only placeholder. Keep the finite counter
+workload and all accepted storage/owner/platform contracts. Commit each coherent
+route or endpoint step with its source-specific validation; execute sequentially.
+
+R07: link early counter Pi ARMv6 and nRF52840 images through supported build
+boundaries, retain exact emitted paths/maps/CPU+VFP/allocator/stack/RAM evidence and
+check gross feasibility before package exit. Keep generated outputs under the
+mandated target build directories. No connected execution, deployment or flashing.
+No new application feature, platform, target, general API, compiler/SDK pin,
+resource ceiling or ownership decision. Missing required architecture/contracts
+stop for user decision; missing integration alone is authorized current work.
+
+The initial route inventory must distinguish reusable verified receipts from
+fresh target module compilation required for these image inputs. Do not regenerate
+old package studies or replace pinned dependencies merely for convenience. If
+no existing authorized recipe supplies required target inputs, return a concrete
+handoff before ad hoc substitutions. Apply the exact same-blocker progress guard;
+historical helper2/2 and B031/1 stay closed. Commit each step, preserve every
+failure/cause, stop after route/image evidence for separate Strong P08 exit review.
+
+### R06 first coherent endpoint slice outcome
+
+Pinned native tiled validation PASS1,353,625/zero24/24 on attempt3;191input hashes match,496pins unchanged. [Exact result](remaining-implementation/r06-tiled-endpoint/result.md), [pre-edit route inventory and doctors](remaining-implementation/r06-route-inventory/receipt.md). Actual generic RGB565 session carries unchanged100x120 counter/action/text/stroke with800byte100x4 tile/payload and50coverage, below existing target ceilings; native independent quantized oracle and original RGBA branch retained. Source borrow diagnostic then exact800-vs2560 startup mismatch narrowed and resolved; all failures frozen, historical budgets closed. Commit endpoint step, continue registered actual profile routes and early target images. No four-route/image/P08 exit claim.

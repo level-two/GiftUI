@@ -22,7 +22,9 @@ struct CounterRuntimeControl {
     var unavailable = false
 }
 struct CounterControl {
-    #if !hasFeature(Embedded)
+    #if hasFeature(Embedded) || GIFTUI_COUNTER_TILED
+    var backend = CounterTiledBackendStorage()
+    #else
     var backend = CounterNativeBackendStorage()
     #endif
     var runtime = CounterRuntimeControl()
@@ -110,34 +112,6 @@ struct CounterControl {
     var hasRoot = false
     var frameActive = false
 }
-#if hasFeature(Embedded)
-struct CounterEndpoint: SynchronousFrameEndpoint {
-    var disposition: FrameOfferDisposition = .accepted
-    var sink = CounterRenderSink()
-    init(configuration: HostEndpointConfiguration, control: UnsafeMutablePointer<CounterControl>) {
-        let construction = CounterConstructionInputs.canonical
-        _ = construction.endpointBacking.control(control)
-        _ = construction.endpointConfiguration.configuration(configuration)
-        _ = construction.text.metrics()
-        _ = construction.text.raster()
-    }
-    var calls = 0
-    var streams = 0
-    mutating func offer(provenance: FrameProvenance, body: (inout CounterRenderSink) -> FrameStreamResult) -> FrameOfferResult {
-        counterTrace("offer", disposition); counterTrace("provenance", provenance)
-        calls += 1
-        guard disposition == .accepted else { return .init(disposition: disposition, failure: disposition == .failed ? .invalidEnvelope : nil)! }
-        sink = CounterRenderSink(); streams += 1
-        switch body(&sink) {
-        case .complete: return .init(disposition: .accepted, failure: nil)!
-        case .producerFailed: return .init(disposition: .failed, failure: .producerFailed)!
-        case .insufficientCapacity: return .init(disposition: .failed, failure: .insufficientCapacity)!
-        case .endpointRefused: return .init(disposition: .nonRetryableRefusal, failure: nil)!
-        case .contractViolation: return .init(disposition: .failed, failure: .contractViolation)!
-        }
-    }
-}
-#endif
 struct CounterPipelineOwner<Geometry, Candidate, Committed, Hits>: ~Copyable, ~Escapable, RuntimeCompletePipelineOwner
 where Geometry: CounterGeometry, Candidate: CounterCandidateBacking, Committed: CounterCommittedBacking, Hits: CounterHitBacking, Candidate.Identity == SemanticCompleteIdentity, Committed.Identity == SemanticCompleteIdentity, Hits.Identity == SemanticCompleteIdentity {
     typealias OwnerFailure = RuntimeOwnerFailure
@@ -452,9 +426,6 @@ where Geometry: CounterGeometry, Candidate: CounterCandidateBacking, Committed: 
         if let error = boundary(.offerAndProduction) { return .failure(error) }
         if let error = phase.transition(to: .offering) { return .failure(.execution(error)) }
         control.pointee.context = phase.context
-        #if hasFeature(Embedded)
-        endpoint.disposition = control.pointee.offer
-        #endif
         var retained: RenderProductionError?
         let offer = endpoint.offer(provenance: provenance!) { sink in
             control.pointee.streams += 1

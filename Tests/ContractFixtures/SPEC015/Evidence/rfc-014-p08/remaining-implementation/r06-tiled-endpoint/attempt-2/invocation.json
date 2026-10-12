@@ -1,0 +1,20 @@
+{
+  "entry_commit": "0f7290ce5daba868f5e2d00bd98a5a3c0ef4b077",
+  "command": [
+    "python3",
+    "scripts/contracts/check-spec-015-counter.py",
+    "--runtime-build",
+    ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static",
+    "--raster-realization",
+    "tiled"
+  ],
+  "started_utc": "2026-10-12T12:52:29.281475+00:00",
+  "scope": "r06-tiled-endpoint changed coherent controls only; historical2/2/B031/1 closed",
+  "formatter_exit": 0,
+  "source_patch_sha256": "40b53dc4ad945e1b8bf0121d2a97713e145eb9abd5b995f1eb177abd8daf8cc9",
+  "exit_status": 1,
+  "finished_utc": "2026-10-12T12:54:43.028069+00:00",
+  "builds": [
+    ".build/contracts/p08-counter-z3eqefwp"
+  ]
+}

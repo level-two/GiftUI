@@ -49,6 +49,19 @@ func counterCheckPixels(_ control: borrowing CounterControl, value: UInt8) -> In
     }
     // The existing root background clears previous glyphs/stroke. Unpainted
     // surface outside the74x112 root retains its canonical opaque black seed.
+    #if GIFTUI_COUNTER_TILED
+    for pixel in 0..<12000 {
+        // Black/white authored colors quantize independently to0000/FFFF.
+        let expected: UInt8 = ink[pixel] ? 255 : 0
+        let first = control.backend.displayed[pixel * 2]
+        let second = control.backend.displayed[pixel * 2 + 1]
+        precondition(first == expected && second == expected)
+    }
+    let active = control.backend.active
+    let bytes = control.backend.submittedBytes
+    let rows = control.backend.submittedRows
+    precondition(!active && bytes > 0 && rows > 0)
+    #else
     for pixel in 0..<12000 {
         let expected: UInt8 = ink[pixel] ? 255 : 0
         for channel in 0..<4 {
@@ -63,6 +76,7 @@ func counterCheckPixels(_ control: borrowing CounterControl, value: UInt8) -> In
     let bytes = control.backend.submittedBytes
     let rows = control.backend.submittedRows
     precondition(!active && bytes == 48000 && rows == 120)
+    #endif
     let health = control.backend.health
     let observedHealth = control.backend.endpointHealthObservation
     let constructed = control.backend.constructedEndpoints
@@ -70,6 +84,10 @@ func counterCheckPixels(_ control: borrowing CounterControl, value: UInt8) -> In
     let projectionControls = control.backend.projectionControls
     let envelopeRejections = control.backend.envelopeRejections
     precondition(projectionControls == 5 && envelopeRejections > 0)
+    #if GIFTUI_COUNTER_TILED
+    return 24030
+    #else
     return 48030
+    #endif
 }
 #endif

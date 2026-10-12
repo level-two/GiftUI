@@ -184,6 +184,20 @@ struct CounterHostAssembly {
         observation.capabilityReads += 1
         let operations: RasterOperationSet = [.opaqueRectangles, .positionedText, .straightLineStrokes, .clipping, .damage]
         let extent = CapabilityExtent(width: 100, height: 120)!
+        #if hasFeature(Embedded) || GIFTUI_COUNTER_TILED
+        let bytes = CapabilityByteCount(rawValue: 800)
+        let requirement = RasterPresentationRequirement(operations: operations, extent: extent, operationStream: .synchronousBorrowedOneShot, acceptedEncodings: .rgb565BigEndian, acceptedSubmissionLifetimes: .synchronousBorrow, maximumRasterBytes: bytes, maximumPayloadBytes: bytes, maximumInFlightBytes: bytes, absence: .required)!
+        let realization = RasterRealizationContribution(kind: .tiled, operations: operations, operationStream: .synchronousBorrowedOneShot, encodings: .rgb565BigEndian, producedSubmissionLifetimes: .synchronousBorrow, maximumExtent: extent, maximumRegionWidth: 100, maximumRegionHeight: 4, rowByteAlignment: 2, maximumRasterBytes: bytes, maximumPayloadBytes: bytes)!
+        var contributions = RasterPresentationContributions()
+        precondition(contributions.insert(.renderProducer(.init(operations: operations, operationStream: .synchronousBorrowedOneShot)!)) == .inserted)
+        precondition(contributions.insert(.rasterBackend(.init(primary: realization, alternate: nil)!)) == .inserted)
+        precondition(contributions.insert(.surfaceDisplay(.init(extent: extent, encodings: .rgb565BigEndian, acceptedSubmissionLifetimes: .synchronousBorrow, handoffs: .synchronous, maximumRegionWidth: 100, maximumRegionHeight: 4, rowByteAlignment: 2, maximumInFlightCount: 1, maximumInFlightBytes: bytes)!)) == .inserted)
+        precondition(contributions.insert(.hostResourcePolicy(.init(maximumRasterBytes: bytes, maximumPayloadBytes: bytes, maximumInFlightBytes: bytes, allowedRealizations: .tiled, allowedEncodings: .rgb565BigEndian, preferredRealization: .tiled, preferredEncoding: .rgb565BigEndian)!)) == .inserted)
+        var workspace = RasterPresentationResolverWorkspace()!
+        guard case .available(let effective) = inputs.endpointConfiguration.resolve(requirement: requirement, contributions: contributions, workspace: &workspace) else { return nil }
+        observation.endpointReads += 1
+        let endpoint = HostEndpointConfiguration(effectivePresentation: effective, descriptor: .init(bounds: counterSurface, encoding: .rgb565BigEndian, bytesPerRow: 200, realization: .tiled, regionWidth: 100, regionHeight: 4)!, payloadLimits: .init(maximumRasterBytes: 800, maximumPayloadBytes: 800, maximumRegionsPerPayload: 1, maximumRegionSubmissionsPerFrame: 300000, maximumTileVisitsPerFrame: 750, maximumInFlightPayloads: 1, maximumGlyphRasterBytes: 800, maximumStrokeWorkspaceBytes: 800)!, surfaceWritableCapacityBytes: 800, displaySubmissionLifetime: .synchronousBorrow, displayHandoff: .synchronous, displayMaximumInFlightPayloads: 1, displayMaximumInFlightBytes: 800, textRasterRealization: inputs.text.realization, healthOwnerCount: 1, endpointAndDisplayShareHealthOwner: true)
+        #else
         let bytes = CapabilityByteCount(rawValue: 48000)
         let requirement = RasterPresentationRequirement(operations: operations, extent: extent, operationStream: .synchronousBorrowedOneShot, acceptedEncodings: .rgba8888, acceptedSubmissionLifetimes: .synchronousBorrow, maximumRasterBytes: bytes, maximumPayloadBytes: bytes, maximumInFlightBytes: bytes, absence: .required)!
         let realization = RasterRealizationContribution(kind: .fullSurface, operations: operations, operationStream: .synchronousBorrowedOneShot, encodings: .rgba8888, producedSubmissionLifetimes: .synchronousBorrow, maximumExtent: extent, maximumRegionWidth: 100, maximumRegionHeight: 120, rowByteAlignment: 4, maximumRasterBytes: bytes, maximumPayloadBytes: bytes)!
@@ -196,6 +210,7 @@ struct CounterHostAssembly {
         guard case .available(let effective) = inputs.endpointConfiguration.resolve(requirement: requirement, contributions: contributions, workspace: &workspace) else { return nil }
         observation.endpointReads += 1
         let endpoint = HostEndpointConfiguration(effectivePresentation: effective, descriptor: .init(bounds: counterSurface, encoding: .rgba8888, bytesPerRow: 400, realization: .fullSurface, regionWidth: 100, regionHeight: 120)!, payloadLimits: .init(maximumRasterBytes: 48000, maximumPayloadBytes: 48000, maximumRegionsPerPayload: 120, maximumRegionSubmissionsPerFrame: 1, maximumTileVisitsPerFrame: 1, maximumInFlightPayloads: 1, maximumGlyphRasterBytes: 48000, maximumStrokeWorkspaceBytes: 1)!, surfaceWritableCapacityBytes: 48000, displaySubmissionLifetime: .synchronousBorrow, displayHandoff: .synchronous, displayMaximumInFlightPayloads: 1, displayMaximumInFlightBytes: 48000, textRasterRealization: inputs.text.realization, healthOwnerCount: 1, endpointAndDisplayShareHealthOwner: true)
+        #endif
         observation.runtimeReads += 1
         observation.workloadReads += 1
         observation.textReads += 1

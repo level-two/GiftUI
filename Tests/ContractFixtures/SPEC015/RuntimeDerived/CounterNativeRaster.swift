@@ -1,4 +1,4 @@
-#if !hasFeature(Embedded)
+#if !hasFeature(Embedded) && !GIFTUI_COUNTER_TILED
 import GiftUI
 import GiftUICapabilities
 import GiftUIBackendIntegration

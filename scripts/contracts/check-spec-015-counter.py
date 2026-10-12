@@ -12,6 +12,7 @@ ROOT = pathlib.Path(__file__).resolve().parents[2]
 parser = argparse.ArgumentParser()
 parser.add_argument('--runtime-build', required=True, type=pathlib.Path)
 parser.add_argument('--host-build', type=pathlib.Path, default=ROOT / '.build/contracts/p08-scoped-host-c5eocina')
+parser.add_argument('--raster-realization', choices=('full-surface', 'tiled'), default='full-surface')
 args = parser.parse_args()
 base = args.runtime_build.resolve()
 prior = json.loads((base / 'result.json').read_text())
@@ -43,10 +44,12 @@ for name, expected in host_receipt['artifacts'].items():
 out = pathlib.Path(tempfile.mkdtemp(prefix='p08-counter-', dir=ROOT / '.build/contracts'))
 flags[flags.index('-module-cache-path') + 1] = str(out / 'cache')
 flags = ['-I', str(out), '-I', str(host), *flags]
+if args.raster_realization == 'tiled':
+    flags += ['-D', 'GIFTUI_COUNTER_TILED']
 fixture = ROOT / 'Tests/ContractFixtures/SPEC015/RuntimeDerived'
 inputs = [pathlib.Path(__file__).resolve(), fixture / 'Counter.swift', fixture / 'Counter.schema.json', fixture / 'CounterModel.swift', fixture / 'CounterModelProbe.swift', fixture / 'CounterSemantic.swift', fixture / 'CounterSemanticProbe.swift', fixture / 'CounterGeometry.swift', fixture / 'CounterStaticGeometry.swift', fixture / 'CounterRender.swift', fixture / 'CounterFixedStorageProbe.swift']
 storage_sources = sorted(fixture.glob('StaticCounter*.swift'))
-join_sources = [fixture / name for name in ('CounterAdmission.swift', 'CounterPipelineOwner.swift', 'CounterProfileStorage.swift', 'CounterStorageMeasurement.swift', 'CounterStorageRegions.swift', 'CounterCoordinatorProbe.swift', 'CounterWorkload.swift', 'CounterHostAssembly.swift', 'CounterHostOwner.swift', 'CounterHostProbe.swift', 'CounterDynamicHostOwner.swift', 'CounterDynamicHostProbe.swift', 'CounterHostCorpus.swift', 'CounterNativeRaster.swift', 'CounterPixelOracle.swift', 'CounterApplication.swift', 'CounterWakeIntegration.swift', 'CounterGraphProbe.swift')]
+join_sources = [fixture / name for name in ('CounterAdmission.swift', 'CounterPipelineOwner.swift', 'CounterProfileStorage.swift', 'CounterStorageMeasurement.swift', 'CounterStorageRegions.swift', 'CounterCoordinatorProbe.swift', 'CounterWorkload.swift', 'CounterHostAssembly.swift', 'CounterHostOwner.swift', 'CounterHostProbe.swift', 'CounterDynamicHostOwner.swift', 'CounterDynamicHostProbe.swift', 'CounterHostCorpus.swift', 'CounterNativeRaster.swift', 'CounterTiledRaster.swift', 'CounterPixelOracle.swift', 'CounterApplication.swift', 'CounterWakeIntegration.swift', 'CounterGraphProbe.swift')]
 inputs.extend(join_sources)
 inputs.extend(storage_sources)
 commands, checks = [], []
@@ -122,7 +125,7 @@ objects = []  # All selected runtime objects were freshly rebuilt above.
 host_objects = [path for path in sorted(host.glob('GiftUI*.o')) if path.name != 'GiftUIHostConfiguration.o']
 run('link', [compiler, *flags, main, core / 'GiftUI.o', *objects, *host_objects, *sorted(out.glob('*.o')), '-o', out / 'counter'])
 execution = run('execute', [out / 'counter']).strip()
-receipt = dict(scope=__doc__, profile=prior['profile'], compiler=str(compiler.relative_to(ROOT)), compiler_sha256=digest(compiler), runtime_build=str(base.relative_to(ROOT)), runtime_receipt_sha256=digest(base / 'result.json'), host_build=str(host.relative_to(ROOT)), host_receipt_sha256=digest(host / 'result.json'), inputs={str(p.relative_to(ROOT)): digest(p) for p in inputs}, commands=commands, checks=checks, execution=execution)
+receipt = dict(scope=__doc__, raster_realization=args.raster_realization, profile=prior['profile'], compiler=str(compiler.relative_to(ROOT)), compiler_sha256=digest(compiler), runtime_build=str(base.relative_to(ROOT)), runtime_receipt_sha256=digest(base / 'result.json'), host_build=str(host.relative_to(ROOT)), host_receipt_sha256=digest(host / 'result.json'), inputs={str(p.relative_to(ROOT)): digest(p) for p in inputs}, commands=commands, checks=checks, execution=execution)
 receipt['artifacts'] = {str(p.relative_to(out)): dict(sha256=digest(p), bytes=p.stat().st_size) for p in out.iterdir() if p.is_file()}
 (out / 'result.json').write_text(json.dumps(receipt, indent=2) + '\n')
 print(execution.splitlines()[-1])

@@ -1,0 +1,417 @@
+diff --git a/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostAssembly.swift b/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostAssembly.swift
+index 3bc90783..5ac0f18b 100644
+--- a/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostAssembly.swift
++++ b/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostAssembly.swift
+@@ -184,6 +184,20 @@ struct CounterHostAssembly {
+         observation.capabilityReads += 1
+         let operations: RasterOperationSet = [.opaqueRectangles, .positionedText, .straightLineStrokes, .clipping, .damage]
+         let extent = CapabilityExtent(width: 100, height: 120)!
++        #if hasFeature(Embedded) || GIFTUI_COUNTER_TILED
++        let bytes = CapabilityByteCount(rawValue: 800)
++        let requirement = RasterPresentationRequirement(operations: operations, extent: extent, operationStream: .synchronousBorrowedOneShot, acceptedEncodings: .rgb565BigEndian, acceptedSubmissionLifetimes: .synchronousBorrow, maximumRasterBytes: bytes, maximumPayloadBytes: bytes, maximumInFlightBytes: bytes, absence: .required)!
++        let realization = RasterRealizationContribution(kind: .tiled, operations: operations, operationStream: .synchronousBorrowedOneShot, encodings: .rgb565BigEndian, producedSubmissionLifetimes: .synchronousBorrow, maximumExtent: extent, maximumRegionWidth: 100, maximumRegionHeight: 4, rowByteAlignment: 2, maximumRasterBytes: bytes, maximumPayloadBytes: bytes)!
++        var contributions = RasterPresentationContributions()
++        precondition(contributions.insert(.renderProducer(.init(operations: operations, operationStream: .synchronousBorrowedOneShot)!)) == .inserted)
++        precondition(contributions.insert(.rasterBackend(.init(primary: realization, alternate: nil)!)) == .inserted)
++        precondition(contributions.insert(.surfaceDisplay(.init(extent: extent, encodings: .rgb565BigEndian, acceptedSubmissionLifetimes: .synchronousBorrow, handoffs: .synchronous, maximumRegionWidth: 100, maximumRegionHeight: 4, rowByteAlignment: 2, maximumInFlightCount: 1, maximumInFlightBytes: bytes)!)) == .inserted)
++        precondition(contributions.insert(.hostResourcePolicy(.init(maximumRasterBytes: bytes, maximumPayloadBytes: bytes, maximumInFlightBytes: bytes, allowedRealizations: .tiled, allowedEncodings: .rgb565BigEndian, preferredRealization: .tiled, preferredEncoding: .rgb565BigEndian)!)) == .inserted)
++        var workspace = RasterPresentationResolverWorkspace()!
++        guard case .available(let effective) = inputs.endpointConfiguration.resolve(requirement: requirement, contributions: contributions, workspace: &workspace) else { return nil }
++        observation.endpointReads += 1
++        let endpoint = HostEndpointConfiguration(effectivePresentation: effective, descriptor: .init(bounds: counterSurface, encoding: .rgb565BigEndian, bytesPerRow: 200, realization: .tiled, regionWidth: 100, regionHeight: 4)!, payloadLimits: .init(maximumRasterBytes: 800, maximumPayloadBytes: 800, maximumRegionsPerPayload: 1, maximumRegionSubmissionsPerFrame: 300000, maximumTileVisitsPerFrame: 750, maximumInFlightPayloads: 1, maximumGlyphRasterBytes: 800, maximumStrokeWorkspaceBytes: 800)!, surfaceWritableCapacityBytes: 800, displaySubmissionLifetime: .synchronousBorrow, displayHandoff: .synchronous, displayMaximumInFlightPayloads: 1, displayMaximumInFlightBytes: 800, textRasterRealization: inputs.text.realization, healthOwnerCount: 1, endpointAndDisplayShareHealthOwner: true)
++        #else
+         let bytes = CapabilityByteCount(rawValue: 48000)
+         let requirement = RasterPresentationRequirement(operations: operations, extent: extent, operationStream: .synchronousBorrowedOneShot, acceptedEncodings: .rgba8888, acceptedSubmissionLifetimes: .synchronousBorrow, maximumRasterBytes: bytes, maximumPayloadBytes: bytes, maximumInFlightBytes: bytes, absence: .required)!
+         let realization = RasterRealizationContribution(kind: .fullSurface, operations: operations, operationStream: .synchronousBorrowedOneShot, encodings: .rgba8888, producedSubmissionLifetimes: .synchronousBorrow, maximumExtent: extent, maximumRegionWidth: 100, maximumRegionHeight: 120, rowByteAlignment: 4, maximumRasterBytes: bytes, maximumPayloadBytes: bytes)!
+@@ -196,6 +210,7 @@ struct CounterHostAssembly {
+         guard case .available(let effective) = inputs.endpointConfiguration.resolve(requirement: requirement, contributions: contributions, workspace: &workspace) else { return nil }
+         observation.endpointReads += 1
+         let endpoint = HostEndpointConfiguration(effectivePresentation: effective, descriptor: .init(bounds: counterSurface, encoding: .rgba8888, bytesPerRow: 400, realization: .fullSurface, regionWidth: 100, regionHeight: 120)!, payloadLimits: .init(maximumRasterBytes: 48000, maximumPayloadBytes: 48000, maximumRegionsPerPayload: 120, maximumRegionSubmissionsPerFrame: 1, maximumTileVisitsPerFrame: 1, maximumInFlightPayloads: 1, maximumGlyphRasterBytes: 48000, maximumStrokeWorkspaceBytes: 1)!, surfaceWritableCapacityBytes: 48000, displaySubmissionLifetime: .synchronousBorrow, displayHandoff: .synchronous, displayMaximumInFlightPayloads: 1, displayMaximumInFlightBytes: 48000, textRasterRealization: inputs.text.realization, healthOwnerCount: 1, endpointAndDisplayShareHealthOwner: true)
++        #endif
+         observation.runtimeReads += 1
+         observation.workloadReads += 1
+         observation.textReads += 1
+diff --git a/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterNativeRaster.swift b/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterNativeRaster.swift
+index bd299e9a..61a4da33 100644
+--- a/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterNativeRaster.swift
++++ b/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterNativeRaster.swift
+@@ -1,4 +1,4 @@
+-#if !hasFeature(Embedded)
++#if !hasFeature(Embedded) && !GIFTUI_COUNTER_TILED
+ import GiftUI
+ import GiftUICapabilities
+ import GiftUIBackendIntegration
+diff --git a/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift b/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift
+index 4f60b029..f3e78af5 100644
+--- a/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift
++++ b/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift
+@@ -22,7 +22,9 @@ struct CounterRuntimeControl {
+     var unavailable = false
+ }
+ struct CounterControl {
+-    #if !hasFeature(Embedded)
++    #if hasFeature(Embedded) || GIFTUI_COUNTER_TILED
++    var backend = CounterTiledBackendStorage()
++    #else
+     var backend = CounterNativeBackendStorage()
+     #endif
+     var runtime = CounterRuntimeControl()
+@@ -110,34 +112,6 @@ struct CounterControl {
+     var hasRoot = false
+     var frameActive = false
+ }
+-#if hasFeature(Embedded)
+-struct CounterEndpoint: SynchronousFrameEndpoint {
+-    var disposition: FrameOfferDisposition = .accepted
+-    var sink = CounterRenderSink()
+-    init(configuration: HostEndpointConfiguration, control: UnsafeMutablePointer<CounterControl>) {
+-        let construction = CounterConstructionInputs.canonical
+-        _ = construction.endpointBacking.control(control)
+-        _ = construction.endpointConfiguration.configuration(configuration)
+-        _ = construction.text.metrics()
+-        _ = construction.text.raster()
+-    }
+-    var calls = 0
+-    var streams = 0
+-    mutating func offer(provenance: FrameProvenance, body: (inout CounterRenderSink) -> FrameStreamResult) -> FrameOfferResult {
+-        counterTrace("offer", disposition); counterTrace("provenance", provenance)
+-        calls += 1
+-        guard disposition == .accepted else { return .init(disposition: disposition, failure: disposition == .failed ? .invalidEnvelope : nil)! }
+-        sink = CounterRenderSink(); streams += 1
+-        switch body(&sink) {
+-        case .complete: return .init(disposition: .accepted, failure: nil)!
+-        case .producerFailed: return .init(disposition: .failed, failure: .producerFailed)!
+-        case .insufficientCapacity: return .init(disposition: .failed, failure: .insufficientCapacity)!
+-        case .endpointRefused: return .init(disposition: .nonRetryableRefusal, failure: nil)!
+-        case .contractViolation: return .init(disposition: .failed, failure: .contractViolation)!
+-        }
+-    }
+-}
+-#endif
+ struct CounterPipelineOwner<Geometry, Candidate, Committed, Hits>: ~Copyable, ~Escapable, RuntimeCompletePipelineOwner
+ where Geometry: CounterGeometry, Candidate: CounterCandidateBacking, Committed: CounterCommittedBacking, Hits: CounterHitBacking, Candidate.Identity == SemanticCompleteIdentity, Committed.Identity == SemanticCompleteIdentity, Hits.Identity == SemanticCompleteIdentity {
+     typealias OwnerFailure = RuntimeOwnerFailure
+@@ -452,9 +426,6 @@ where Geometry: CounterGeometry, Candidate: CounterCandidateBacking, Committed:
+         if let error = boundary(.offerAndProduction) { return .failure(error) }
+         if let error = phase.transition(to: .offering) { return .failure(.execution(error)) }
+         control.pointee.context = phase.context
+-        #if hasFeature(Embedded)
+-        endpoint.disposition = control.pointee.offer
+-        #endif
+         var retained: RenderProductionError?
+         let offer = endpoint.offer(provenance: provenance!) { sink in
+             control.pointee.streams += 1
+diff --git a/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPixelOracle.swift b/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPixelOracle.swift
+index e9e91a42..15f7e1bd 100644
+--- a/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPixelOracle.swift
++++ b/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPixelOracle.swift
+@@ -49,6 +49,19 @@ func counterCheckPixels(_ control: borrowing CounterControl, value: UInt8) -> In
+     }
+     // The existing root background clears previous glyphs/stroke. Unpainted
+     // surface outside the74x112 root retains its canonical opaque black seed.
++    #if GIFTUI_COUNTER_TILED
++    for pixel in 0..<12000 {
++        // Black/white authored colors quantize independently to0000/FFFF.
++        let expected: UInt8 = ink[pixel] ? 255 : 0
++        let first = control.backend.displayed[pixel * 2]
++        let second = control.backend.displayed[pixel * 2 + 1]
++        precondition(first == expected && second == expected)
++    }
++    let active = control.backend.active
++    let bytes = control.backend.submittedBytes
++    let rows = control.backend.submittedRows
++    precondition(!active && bytes > 0 && rows > 0)
++    #else
+     for pixel in 0..<12000 {
+         let expected: UInt8 = ink[pixel] ? 255 : 0
+         for channel in 0..<4 {
+@@ -63,6 +76,7 @@ func counterCheckPixels(_ control: borrowing CounterControl, value: UInt8) -> In
+     let bytes = control.backend.submittedBytes
+     let rows = control.backend.submittedRows
+     precondition(!active && bytes == 48000 && rows == 120)
++    #endif
+     let health = control.backend.health
+     let observedHealth = control.backend.endpointHealthObservation
+     let constructed = control.backend.constructedEndpoints
+@@ -70,6 +84,10 @@ func counterCheckPixels(_ control: borrowing CounterControl, value: UInt8) -> In
+     let projectionControls = control.backend.projectionControls
+     let envelopeRejections = control.backend.envelopeRejections
+     precondition(projectionControls == 5 && envelopeRejections > 0)
++    #if GIFTUI_COUNTER_TILED
++    return 24030
++    #else
+     return 48030
++    #endif
+ }
+ #endif
+diff --git a/scripts/contracts/check-spec-015-counter.py b/scripts/contracts/check-spec-015-counter.py
+index 67be20c1..405d6614 100644
+--- a/scripts/contracts/check-spec-015-counter.py
++++ b/scripts/contracts/check-spec-015-counter.py
+@@ -12,6 +12,7 @@ ROOT = pathlib.Path(__file__).resolve().parents[2]
+ parser = argparse.ArgumentParser()
+ parser.add_argument('--runtime-build', required=True, type=pathlib.Path)
+ parser.add_argument('--host-build', type=pathlib.Path, default=ROOT / '.build/contracts/p08-scoped-host-c5eocina')
++parser.add_argument('--raster-realization', choices=('full-surface', 'tiled'), default='full-surface')
+ args = parser.parse_args()
+ base = args.runtime_build.resolve()
+ prior = json.loads((base / 'result.json').read_text())
+@@ -43,10 +44,12 @@ for name, expected in host_receipt['artifacts'].items():
+ out = pathlib.Path(tempfile.mkdtemp(prefix='p08-counter-', dir=ROOT / '.build/contracts'))
+ flags[flags.index('-module-cache-path') + 1] = str(out / 'cache')
+ flags = ['-I', str(out), '-I', str(host), *flags]
++if args.raster_realization == 'tiled':
++    flags += ['-D', 'GIFTUI_COUNTER_TILED']
+ fixture = ROOT / 'Tests/ContractFixtures/SPEC015/RuntimeDerived'
+ inputs = [pathlib.Path(__file__).resolve(), fixture / 'Counter.swift', fixture / 'Counter.schema.json', fixture / 'CounterModel.swift', fixture / 'CounterModelProbe.swift', fixture / 'CounterSemantic.swift', fixture / 'CounterSemanticProbe.swift', fixture / 'CounterGeometry.swift', fixture / 'CounterStaticGeometry.swift', fixture / 'CounterRender.swift', fixture / 'CounterFixedStorageProbe.swift']
+ storage_sources = sorted(fixture.glob('StaticCounter*.swift'))
+-join_sources = [fixture / name for name in ('CounterAdmission.swift', 'CounterPipelineOwner.swift', 'CounterProfileStorage.swift', 'CounterStorageMeasurement.swift', 'CounterStorageRegions.swift', 'CounterCoordinatorProbe.swift', 'CounterWorkload.swift', 'CounterHostAssembly.swift', 'CounterHostOwner.swift', 'CounterHostProbe.swift', 'CounterDynamicHostOwner.swift', 'CounterDynamicHostProbe.swift', 'CounterHostCorpus.swift', 'CounterNativeRaster.swift', 'CounterPixelOracle.swift', 'CounterApplication.swift', 'CounterWakeIntegration.swift', 'CounterGraphProbe.swift')]
++join_sources = [fixture / name for name in ('CounterAdmission.swift', 'CounterPipelineOwner.swift', 'CounterProfileStorage.swift', 'CounterStorageMeasurement.swift', 'CounterStorageRegions.swift', 'CounterCoordinatorProbe.swift', 'CounterWorkload.swift', 'CounterHostAssembly.swift', 'CounterHostOwner.swift', 'CounterHostProbe.swift', 'CounterDynamicHostOwner.swift', 'CounterDynamicHostProbe.swift', 'CounterHostCorpus.swift', 'CounterNativeRaster.swift', 'CounterTiledRaster.swift', 'CounterPixelOracle.swift', 'CounterApplication.swift', 'CounterWakeIntegration.swift', 'CounterGraphProbe.swift')]
+ inputs.extend(join_sources)
+ inputs.extend(storage_sources)
+ commands, checks = [], []
+@@ -122,7 +125,7 @@ objects = []  # All selected runtime objects were freshly rebuilt above.
+ host_objects = [path for path in sorted(host.glob('GiftUI*.o')) if path.name != 'GiftUIHostConfiguration.o']
+ run('link', [compiler, *flags, main, core / 'GiftUI.o', *objects, *host_objects, *sorted(out.glob('*.o')), '-o', out / 'counter'])
+ execution = run('execute', [out / 'counter']).strip()
+-receipt = dict(scope=__doc__, profile=prior['profile'], compiler=str(compiler.relative_to(ROOT)), compiler_sha256=digest(compiler), runtime_build=str(base.relative_to(ROOT)), runtime_receipt_sha256=digest(base / 'result.json'), host_build=str(host.relative_to(ROOT)), host_receipt_sha256=digest(host / 'result.json'), inputs={str(p.relative_to(ROOT)): digest(p) for p in inputs}, commands=commands, checks=checks, execution=execution)
++receipt = dict(scope=__doc__, raster_realization=args.raster_realization, profile=prior['profile'], compiler=str(compiler.relative_to(ROOT)), compiler_sha256=digest(compiler), runtime_build=str(base.relative_to(ROOT)), runtime_receipt_sha256=digest(base / 'result.json'), host_build=str(host.relative_to(ROOT)), host_receipt_sha256=digest(host / 'result.json'), inputs={str(p.relative_to(ROOT)): digest(p) for p in inputs}, commands=commands, checks=checks, execution=execution)
+ receipt['artifacts'] = {str(p.relative_to(out)): dict(sha256=digest(p), bytes=p.stat().st_size) for p in out.iterdir() if p.is_file()}
+ (out / 'result.json').write_text(json.dumps(receipt, indent=2) + '\n')
+ print(execution.splitlines()[-1])
+diff --git a/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterTiledRaster.swift b/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterTiledRaster.swift
+new file mode 100644
+index 00000000..cbd11577
+--- /dev/null
++++ b/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterTiledRaster.swift
+@@ -0,0 +1,230 @@
++#if hasFeature(Embedded) || GIFTUI_COUNTER_TILED
++import GiftUI
++import GiftUICapabilities
++import GiftUIBackendIntegration
++import GiftUIDisplayCore
++import GiftUIExecution
++import GiftUIFailureCore
++import GiftUIHostConfiguration
++import GiftUIRasterCore
++import GiftUIReferenceTextResources
++import GiftUIRenderCore
++import GiftUISurfaceCore
++import GiftUITextResources
++
++typealias CounterTiledPixelWrite = @convention(c) (UInt16, UInt16, UInt16, UInt16, UnsafePointer<UInt8>?, Int) -> Int32
++// The existing control owns one tile and coverage bank. No payload copy is kept.
++// Native validation alone retains a display observation, excluded from firmware.
++struct CounterTiledBackendStorage {
++    var tile: InlineArray<800, UInt8> = .init(repeating: 0)
++    var coverage: InlineArray<50, UInt8> = .init(repeating: 0)
++    #if !hasFeature(Embedded)
++    var displayed: InlineArray<24000, UInt8> = .init(repeating: 0)
++    #endif
++    var write: CounterTiledPixelWrite?
++    var health = GiftUIOperationalHealth()
++    var endpointHealthObservation = GiftUIOperationalHealth()
++    var constructedProjection: HostEndpointConfiguration?
++    var constructedEndpoints = 0
++    var projectionControls = 0
++    var envelopeRejections = 0
++    var reservations = 0
++    var submissions = 0
++    var finishes = 0
++    var cancellations = 0
++    var active = false
++    var submittedBytes: UInt32 = 0
++    var submittedRows: UInt32 = 0
++}
++struct CounterTileStorage: RGB565TileStorage {
++    let control: UnsafeMutablePointer<CounterControl>
++    var byteCapacity: UInt32 { 800 }
++    var pixelCapacity: UInt32 { 400 }
++    mutating func reset(byteCount: UInt32, pixelCount: UInt32) -> Bool {
++        guard byteCount <= byteCapacity, pixelCount <= pixelCapacity else { return false }
++        for index in 0..<Int(byteCount) { control.pointee.backend.tile[index] = 0 }
++        for index in 0..<50 { control.pointee.backend.coverage[index] = 0 }
++        return true
++    }
++    mutating func store(mostSignificantByte: UInt8, leastSignificantByte: UInt8, byteOffset: UInt32, pixelIndex: UInt32) -> Bool {
++        guard byteOffset <= byteCapacity - 2, pixelIndex < pixelCapacity else { return false }
++        control.pointee.backend.tile[Int(byteOffset)] = mostSignificantByte
++        control.pointee.backend.tile[Int(byteOffset) + 1] = leastSignificantByte
++        control.pointee.backend.coverage[Int(pixelIndex / 8)] |= UInt8(1) << UInt8(pixelIndex % 8)
++        return true
++    }
++    borrowing func isAffected(pixelIndex: UInt32) -> Bool {
++        guard pixelIndex < pixelCapacity else { return false }
++        return control.pointee.backend.coverage[Int(pixelIndex / 8)] & (UInt8(1) << UInt8(pixelIndex % 8)) != 0
++    }
++    borrowing func byte(at offset: UInt32) -> UInt8? { offset < byteCapacity ? control.pointee.backend.tile[Int(offset)] : nil }
++    borrowing func withBorrowedRun<R>(byteOffset: UInt32, byteCount: UInt32, _ body: (UnsafeRawBufferPointer) -> R) -> R? {
++        guard byteCount > 0, byteOffset < byteCapacity, byteCount <= byteCapacity - byteOffset else { return nil }
++        return withUnsafeBytes(of: &control.pointee.backend.tile) { bytes in
++            body(UnsafeRawBufferPointer(rebasing: bytes[Int(byteOffset)..<Int(byteOffset + byteCount)]))
++        }
++    }
++}
++struct CounterTileWriter: DisplayPayloadWriter {
++    let control: UnsafeMutablePointer<CounterControl>
++    let capacityBytes: UInt32 = 800
++    let regionCapacity: UInt16 = 1
++    var writtenBytes: UInt32 = 0
++    var writtenRegionCount: UInt16 = 0
++    var origin: Point?
++    var pixels: UInt16 = 0
++    var remaining: UInt32 = 0
++    var completed = false
++    mutating func beginRegion(origin: Point, pixelCount: UInt16, encoding: CanonicalPixelEncoding) -> Bool {
++        guard !completed, self.origin == nil, remaining == 0, writtenRegionCount == 0,
++            encoding == .rgb565BigEndian, pixelCount > 0, origin.x >= 0, origin.y >= 0,
++            origin.x < 100, origin.y < 120, Int32(pixelCount) <= 100 - origin.x else { return false }
++        self.origin = origin; pixels = pixelCount; remaining = UInt32(pixelCount) * 2
++        return remaining <= capacityBytes
++    }
++    mutating func write(byte: UInt8) -> Bool {
++        guard !completed, remaining > 0, writtenBytes < capacityBytes else { return false }
++        control.pointee.backend.tile[Int(writtenBytes)] = byte
++        writtenBytes += 1; remaining -= 1; return true
++    }
++    mutating func endRegion() -> Bool {
++        guard !completed, origin != nil, remaining == 0, writtenBytes == UInt32(pixels) * 2 else { return false }
++        writtenRegionCount = 1; return true
++    }
++    mutating func finish() -> Bool {
++        guard !completed, writtenRegionCount == 1, remaining == 0 else { return false }
++        completed = true; return true
++    }
++    mutating func discard() { writtenBytes = 0; writtenRegionCount = 0; origin = nil; pixels = 0; remaining = 0; completed = false }
++}
++struct CounterTiledDisplayTarget: DisplayTarget {
++    let control: UnsafeMutablePointer<CounterControl>
++    let configuration: HostEndpointConfiguration
++    var writer: CounterTileWriter
++    let submissionLifetime: SubmissionLifetime = .synchronousBorrow
++    let handoff: SubmissionHandoff = .synchronous
++    let maximumInFlightPayloads: UInt8 = 1
++    let maximumInFlightBytes: UInt32 = 800
++    mutating func reserveFrame(descriptor: RasterSurfaceDescriptor, payloadCapacityBytes: UInt32, regionCapacity: UInt16) -> DisplayReservationResult {
++        guard !control.pointee.backend.active else { return .failure(.reentrancyViolation) }
++        guard descriptor == configuration.descriptor, payloadCapacityBytes == maximumInFlightBytes, regionCapacity == 1 else { return .failure(.invalidDescriptor) }
++        control.pointee.backend.reservations += 1
++        switch control.pointee.offer {
++        case .backpressured:
++            control.pointee.backend.health.recordOperational(.init(kind: .backpressured, origin: .displayDriver, affectedScope: .candidateFrame), resultingState: .degraded)
++            return .backpressured
++        case .retryableRefusal: return .retryableRefusal
++        case .nonRetryableRefusal: return .nonRetryableRefusal
++        case .failed: return .failure(.invalidDescriptor)
++        case .accepted: break
++        }
++        writer.discard(); control.pointee.backend.active = true
++        control.pointee.backend.submittedBytes = 0; control.pointee.backend.submittedRows = 0
++        return .reserved(.init(rawValue: UInt32(control.pointee.backend.reservations)))
++    }
++    mutating func withWriter<R>(for reservation: DisplayReservationID, _ body: (inout CounterTileWriter) -> R) -> R? {
++        guard control.pointee.backend.active, reservation.rawValue == UInt32(control.pointee.backend.reservations) else { return nil }
++        return body(&writer)
++    }
++    mutating func submitPayload(_ reservation: DisplayReservationID) -> DisplayTransferResult {
++        guard control.pointee.backend.active, reservation.rawValue == UInt32(control.pointee.backend.reservations), writer.completed, let origin = writer.origin else { return .failureBeforeAcceptance(.invalidReservation) }
++        #if !hasFeature(Embedded)
++        let offset = (Int(origin.y) * 100 + Int(origin.x)) * 2
++        for index in 0..<Int(writer.writtenBytes) { control.pointee.backend.displayed[offset + index] = control.pointee.backend.tile[index] }
++        #endif
++        if let write = control.pointee.backend.write {
++            let result = withUnsafeBytes(of: &control.pointee.backend.tile) { bytes in
++                write(UInt16(origin.x), UInt16(origin.y), writer.pixels, 1, bytes.baseAddress!.assumingMemoryBound(to: UInt8.self), Int(writer.writtenBytes))
++            }
++            if result != 0 {
++                control.pointee.backend.health.recordFailure(.init(condition: .requiredFacilityUnavailable, origin: .presentationIntegration, affectedScope: .component, containment: .contained), resultingState: .unavailable)
++                writer.discard()
++                return .failureAfterAcceptance(.transportUnavailable)
++            }
++        }
++        control.pointee.backend.submittedBytes += writer.writtenBytes
++        control.pointee.backend.submittedRows += 1; control.pointee.backend.submissions += 1
++        writer.discard(); return .completed
++    }
++    mutating func finishFrame(_ reservation: DisplayReservationID) -> DisplayTransferResult {
++        guard control.pointee.backend.active, reservation.rawValue == UInt32(control.pointee.backend.reservations), !writer.completed else { return .failureBeforeAcceptance(.invalidReservation) }
++        control.pointee.backend.active = false; control.pointee.backend.finishes += 1; return .completed
++    }
++    mutating func cancelFrame(_ reservation: DisplayReservationID) { writer.discard(); control.pointee.backend.active = false; control.pointee.backend.cancellations += 1 }
++    borrowing func health() -> GiftUIOperationalHealth { control.pointee.backend.health }
++}
++typealias CounterTiledSession = OperationMajorRGB565RasterSession<CounterTileStorage, CounterTiledDisplayTarget, GiftUIReferenceTextMetricsView, GiftUIReferenceTextRasterView>
++struct CounterTiledRasterAdapter: RasterOfferSessionSink {
++    var session: CounterTiledSession
++    var recording = CounterRenderSink()
++    var capacity: RenderSinkCapacity { session.capacity }
++    var descriptor: RasterSurfaceDescriptor { session.descriptor }
++    var payloadLimits: RasterPayloadLimits { session.payloadLimits }
++    var failure: RasterBackendError? { session.failure }
++    var streamCompleted: Bool { session.streamCompleted }
++    var presentationResponsibilityAccepted: Bool { session.presentationResponsibilityAccepted }
++    var retainedProducerError: RenderProductionError? { session.retainedProducerError }
++    var isIdleForOffer: Bool { session.isIdleForOffer }
++    mutating func retainProducerError(_ error: RenderProductionError) { session.retainProducerError(error) }
++    mutating func reserveFrame(descriptor: RasterSurfaceDescriptor, payloadCapacityBytes: UInt32, regionCapacity: UInt16) -> DisplayReservationResult { session.reserveFrame(descriptor: descriptor, payloadCapacityBytes: payloadCapacityBytes, regionCapacity: regionCapacity) }
++    mutating func cancelReservedFrame() { session.cancelReservedFrame() }
++    mutating func finishTransferredFrameIfNeeded() { session.finishTransferredFrameIfNeeded() }
++    borrowing func health() -> GiftUIOperationalHealth { session.health() }
++    mutating func begin(_ header: RenderPlanHeader) -> Bool { recording = CounterRenderSink(); return session.begin(header) && recording.begin(header) }
++    mutating func fillRect(_ operation: FillRectOperation) -> Bool { session.fillRect(operation) && recording.fillRect(operation) }
++    mutating func beginPositionedGlyphs(_ operation: PositionedGlyphOperationHeader) -> Bool { session.beginPositionedGlyphs(operation) && recording.beginPositionedGlyphs(operation) }
++    mutating func positionedGlyph(_ glyph: PositionedGlyph) -> Bool { session.positionedGlyph(glyph) && recording.positionedGlyph(glyph) }
++    mutating func endPositionedGlyphs() -> Bool { session.endPositionedGlyphs() && recording.endPositionedGlyphs() }
++    mutating func straightLineStroke<S: StraightLineStrokeView>(_ stroke: borrowing S) -> Bool {
++        guard session.straightLineStroke(stroke) else { return false }
++        return recording.straightLineStroke(stroke)
++    }
++    mutating func finish() -> Bool { session.finish() && recording.finish() }
++    mutating func discard() { session.discard(); recording.discard() }
++}
++struct CounterTiledEnvelope: RasterFrameEnvelopeValidator {
++    let expected: FrameProvenance?
++    borrowing func accepts(_ provenance: FrameProvenance) -> Bool { expected == provenance }
++}
++typealias CounterTiledEndpoint = OneShotRasterBackendEndpoint<CounterTiledRasterAdapter, GiftUIReferenceTextMetricsView, GiftUIReferenceTextRasterView, CounterTiledEnvelope>
++struct CounterEndpoint: SynchronousFrameEndpoint {
++    var actual: CounterTiledEndpoint
++    let control: UnsafeMutablePointer<CounterControl>
++    var sink: CounterRenderSink { actual.sink.recording }
++    init(configuration: HostEndpointConfiguration, control: UnsafeMutablePointer<CounterControl>) {
++        let construction = CounterConstructionInputs.canonical
++        let configuration = construction.endpointConfiguration.configuration(configuration)
++        let control = construction.endpointBacking.control(control)
++        self.control = control
++        let target = CounterTiledDisplayTarget(control: control, configuration: configuration, writer: CounterTileWriter(control: control))
++        let session = CounterTiledSession(capacity: CounterRenderSink().capacity, descriptor: configuration.descriptor, payloadLimits: configuration.payloadLimits, metrics: construction.text.metrics(), raster: construction.text.raster(), realization: construction.text.realization, storage: CounterTileStorage(control: control), target: target)!
++        let constructed = HostEndpointConfiguration(effectivePresentation: configuration.effectivePresentation, descriptor: session.descriptor, payloadLimits: session.payloadLimits, surfaceWritableCapacityBytes: 800, displaySubmissionLifetime: target.submissionLifetime, displayHandoff: target.handoff, displayMaximumInFlightPayloads: target.maximumInFlightPayloads, displayMaximumInFlightBytes: target.maximumInFlightBytes, textRasterRealization: construction.text.realization, healthOwnerCount: 1, endpointAndDisplayShareHealthOwner: target.control == control)
++        precondition(HostEndpointStartupValidation.validateConstructedProjection(constructed, equals: configuration) == nil)
++        let capacities: InlineArray<3, UInt32> = [799,800,801]
++        for index in 0..<capacities.count {
++            let capacity = capacities[index]
++            let candidate = HostEndpointConfiguration(effectivePresentation: constructed.effectivePresentation, descriptor: constructed.descriptor, payloadLimits: constructed.payloadLimits, surfaceWritableCapacityBytes: capacity, displaySubmissionLifetime: constructed.displaySubmissionLifetime, displayHandoff: constructed.displayHandoff, displayMaximumInFlightPayloads: constructed.displayMaximumInFlightPayloads, displayMaximumInFlightBytes: constructed.displayMaximumInFlightBytes, textRasterRealization: constructed.textRasterRealization, healthOwnerCount: 1, endpointAndDisplayShareHealthOwner: true)
++            precondition(HostEndpointStartupValidation.validateConstructedProjection(candidate, equals: configuration) == (capacity == 800 ? nil : .invalidEndpointDescriptor)); control.pointee.backend.projectionControls += 1
++        }
++        for shared in [true,false] {
++            let candidate = HostEndpointConfiguration(effectivePresentation: constructed.effectivePresentation, descriptor: constructed.descriptor, payloadLimits: constructed.payloadLimits, surfaceWritableCapacityBytes: 800, displaySubmissionLifetime: constructed.displaySubmissionLifetime, displayHandoff: constructed.displayHandoff, displayMaximumInFlightPayloads: constructed.displayMaximumInFlightPayloads, displayMaximumInFlightBytes: constructed.displayMaximumInFlightBytes, textRasterRealization: constructed.textRasterRealization, healthOwnerCount: shared ? 2 : 1, endpointAndDisplayShareHealthOwner: shared)
++            precondition(HostEndpointStartupValidation.validateConstructedProjection(candidate, equals: configuration) == .invalidEndpointDescriptor); control.pointee.backend.projectionControls += 1
++        }
++        control.pointee.backend.constructedProjection = constructed; control.pointee.backend.constructedEndpoints += 1
++        actual = CounterTiledEndpoint(effectivePresentation: configuration.effectivePresentation, descriptor: configuration.descriptor, payloadLimits: configuration.payloadLimits, textMetrics: construction.text.metrics(), textRaster: construction.text.raster(), textRasterRealization: construction.text.realization, envelopeValidator: CounterTiledEnvelope(expected: nil), sink: CounterTiledRasterAdapter(session: session), startupFailure: nil)!
++    }
++    mutating func offer(provenance: FrameProvenance, body: (inout CounterTiledRasterAdapter) -> FrameStreamResult) -> FrameOfferResult {
++        precondition(actual.replaceEnvelopeValidator(CounterTiledEnvelope(expected: nil)))
++        let reservations = actual.reservationCallCount; let bodies = actual.bodyCallCount
++        let invalid = actual.offer(provenance: provenance) { _ in preconditionFailure("invalid counter envelope invoked producer") }
++        precondition(invalid == .init(disposition: .failed, failure: .invalidEnvelope)!)
++        precondition(actual.reservationCallCount == reservations && actual.bodyCallCount == bodies)
++        control.pointee.backend.envelopeRejections += 1
++        precondition(actual.replaceEnvelopeValidator(CounterTiledEnvelope(expected: provenance)))
++        let result = actual.offer(provenance: provenance, body: body)
++        control.pointee.backend.endpointHealthObservation = actual.health()
++        precondition(actual.health() == control.pointee.backend.health)
++        return result
++    }
++}
++#endif

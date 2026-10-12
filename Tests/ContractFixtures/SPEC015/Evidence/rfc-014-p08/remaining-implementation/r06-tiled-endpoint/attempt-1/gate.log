@@ -1,0 +1,75 @@
+counter-model: /Users/eugene/work/GiftUI/.build/contracts/p08-counter-csfpw01n
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterGraphProbe.swift:41:13: warning: variable 'profile' was never mutated; consider changing to 'let' constant [#VariableNeverMutated]
+39 |     var count = 46
+40 |     do {
+41 |         var profile = StaticCounterProfileStorage(modelOwner: try modelOwners.issue(), semanticOwner: try semanticOwners.issue())
+   |             `- warning: variable 'profile' was never mutated; consider changing to 'let' constant [#VariableNeverMutated]
+42 |         guard case .valid(let audit) = profile.audit() else { preconditionFailure("counter graph audit") }
+43 |         func reject(_ negative: CounterConstructionNegative, profile: borrowing StaticCounterProfileStorage) {
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPixelOracle.swift:9:27: error: 'control' is borrowed and cannot be consumed
+ 7 | // metrics/bitmap bits and expected source layout. No runtime geometry, stream,
+ 8 | // coverage algorithm or emitted pixel supplies the expected result.
+ 9 | func counterCheckPixels(_ control: borrowing CounterControl, value: UInt8) -> Int {
+   |                           `- error: 'control' is borrowed and cannot be consumed
+10 |     var ink: InlineArray<12000, Bool> = .init(repeating: false)
+11 |     let metrics = GiftUIReferenceTextMetricsView()
+   :
+54 |         // Black/white authored colors quantize independently to0000/FFFF.
+55 |         let expected: UInt8 = ink[pixel] ? 255 : 0
+56 |         precondition(control.backend.displayed[pixel * 2] == expected)
+   |                      `- note: consumed here
+57 |         precondition(control.backend.displayed[pixel * 2 + 1] == expected)
+58 |     }
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPixelOracle.swift:9:27: error: 'control' is borrowed and cannot be consumed
+ 7 | // metrics/bitmap bits and expected source layout. No runtime geometry, stream,
+ 8 | // coverage algorithm or emitted pixel supplies the expected result.
+ 9 | func counterCheckPixels(_ control: borrowing CounterControl, value: UInt8) -> Int {
+   |                           `- error: 'control' is borrowed and cannot be consumed
+10 |     var ink: InlineArray<12000, Bool> = .init(repeating: false)
+11 |     let metrics = GiftUIReferenceTextMetricsView()
+   :
+55 |         let expected: UInt8 = ink[pixel] ? 255 : 0
+56 |         precondition(control.backend.displayed[pixel * 2] == expected)
+57 |         precondition(control.backend.displayed[pixel * 2 + 1] == expected)
+   |                      `- note: consumed here
+58 |     }
+59 |     precondition(!control.backend.active && control.backend.submittedBytes > 0 && control.backend.submittedRows > 0)
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPixelOracle.swift:9:27: error: 'control' is borrowed and cannot be consumed
+ 7 | // metrics/bitmap bits and expected source layout. No runtime geometry, stream,
+ 8 | // coverage algorithm or emitted pixel supplies the expected result.
+ 9 | func counterCheckPixels(_ control: borrowing CounterControl, value: UInt8) -> Int {
+   |                           `- error: 'control' is borrowed and cannot be consumed
+10 |     var ink: InlineArray<12000, Bool> = .init(repeating: false)
+11 |     let metrics = GiftUIReferenceTextMetricsView()
+   :
+57 |         precondition(control.backend.displayed[pixel * 2 + 1] == expected)
+58 |     }
+59 |     precondition(!control.backend.active && control.backend.submittedBytes > 0 && control.backend.submittedRows > 0)
+   |                  `- note: consumed here
+60 |     #else
+61 |     for pixel in 0..<12000 {
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterTiledRaster.swift:56:20: error: 'self' cannot be captured by an escaping closure since it is a borrowed parameter
+ 54 |         return true
+ 55 |     }
+ 56 |     borrowing func isAffected(pixelIndex: UInt32) -> Bool {
+    |                    `- error: 'self' cannot be captured by an escaping closure since it is a borrowed parameter
+ 57 |         pixelIndex < pixelCapacity && control.pointee.backend.coverage[Int(pixelIndex / 8)] & (UInt8(1) << UInt8(pixelIndex % 8)) != 0
+    |                                       `- note: closure capturing 'self' here
+ 58 |     }
+ 59 |     borrowing func byte(at offset: UInt32) -> UInt8? { offset < byteCapacity ? control.pointee.backend.tile[Int(offset)] : nil }
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterTiledRaster.swift:177:67: error: 'stroke' is borrowed and cannot be consumed
+175 |     mutating func positionedGlyph(_ glyph: PositionedGlyph) -> Bool { session.positionedGlyph(glyph) && recording.positionedGlyph(glyph) }
+176 |     mutating func endPositionedGlyphs() -> Bool { session.endPositionedGlyphs() && recording.endPositionedGlyphs() }
+177 |     mutating func straightLineStroke<S: StraightLineStrokeView>(_ stroke: borrowing S) -> Bool { session.straightLineStroke(stroke) && recording.straightLineStroke(stroke) }
+    |                                                                   |                                                                    `- note: consumed here
+    |                                                                   `- error: 'stroke' is borrowed and cannot be consumed
+178 |     mutating func finish() -> Bool { session.finish() && recording.finish() }
+179 |     mutating func discard() { session.discard(); recording.discard() }
+
+[#VariableNeverMutated]: <https://docs.swift.org/compiler/documentation/diagnostics/variable-never-mutated>
+
