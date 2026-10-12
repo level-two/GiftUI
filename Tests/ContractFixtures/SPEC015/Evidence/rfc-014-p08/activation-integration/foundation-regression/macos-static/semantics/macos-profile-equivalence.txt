@@ -1,0 +1,2 @@
+counterpart=macos-dynamic
+status=not-yet-generated

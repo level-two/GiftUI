@@ -1,0 +1,48 @@
+SPEC-002 fixture manifest check passed: 3 fixtures.
+SPEC-002 profile corpus check passed: 7 ordered cases, checksum 28.
+SPEC-002 migration closure passed: 24 rows, 6 immutable PoC inventories, exact bounded Foundation source plus approved SPEC-006, SPEC-007, SPEC-008, SPEC-010, and SPEC-012 declarations.
+SPEC-002 traceability passed: reciprocal authority links, supersession, manifest navigation, and split adapter ownership.
+SPEC-002 scope passed: Foundation and owned fixtures contain no downstream policy; adapters remain at split owner boundaries.
+ok:    running on macOS
+ok:    host Swift executable exists
+ok:    host Swift is project-local
+ok:    host swift-autolink-extract exists
+ok:    host llvm-objdump exists
+ok:    host llvm-objcopy exists
+ok:    host Swift is 6.4
+ok:    static ARMv6 destination exists
+ok:    dynamic ARMv6 destination exists
+ok:    destination targets armv6-unknown-linux-gnueabihf
+ok:    destination uses the project-local SDK
+ok:    destination uses the project-local host tools
+ok:    destination contains no /opt SDK path
+ok:    cached SDK archive checksum
+ok:    cached macOS Swift package checksum
+
+Host:   Apple Swift version 6.4 (swift-6.4-RELEASE)
+Tools:  /Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx
+Target: armv6-unknown-linux-gnueabihf
+SDK:    /Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.4.0-RELEASE-raspios-bookworm-armv6
+
+GiftUI Raspberry Pi cross-compilation environment is ready
+Fetching https://github.com/swiftlang/swift-syntax.git from cache
+Fetched https://github.com/swiftlang/swift-syntax.git from cache (0.99s)
+Computing version for https://github.com/swiftlang/swift-syntax.git
+Computed https://github.com/swiftlang/swift-syntax.git at 603.0.2 (1.65s)
+Creating working copy for https://github.com/swiftlang/swift-syntax.git
+Working copy of https://github.com/swiftlang/swift-syntax.git resolved at 603.0.2
+Building for production...
+[0/6] Write sources
+[2/6] Write swift-version-59EEC9ECD79D199D.txt
+[2/6] Write swift-version-7730F15DD8509BE5.txt
+[5/7] Compiling GiftUIMacros CanvasWitnessLowering.swift
+[5/7] Write Objects.LinkFileList
+[6/7] Linking GiftUIMacros-tool
+[8/8] Compiling GiftUI ActionHandler.swift
+Build of target: 'GiftUI' complete! (15.46s)
+warning: '--build-system native' has been deprecated and will be removed in a future release; please report an issue at https://github.com/swiftlang/swift-package-manager/issues if you are unable to adopt the default build system.
+SPEC-002 target semantic IR passed: complete profile corpus reduces to checksum 28.
+SPEC-002 layout check passed: 11 owned values.
+SPEC-002 resource boundary check passed: no forbidden source facility or operation-path symbol.
+/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-002/b5140b92f857485cf83951780ae93eeda3d32336-87cad7ea9aed8edc/resources/baseline/image: ELF 32-bit LSB executable, ARM, EABI5 version 1 (SYSV), statically linked, for GNU/Linux 3.2.0, BuildID[sha1]=416758fd29f65176f10f57f93407bec4c5c8da05, not stripped
+/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-002/b5140b92f857485cf83951780ae93eeda3d32336-87cad7ea9aed8edc/resources/candidate/image: ELF 32-bit LSB executable, ARM, EABI5 version 1 (SYSV), statically linked, for GNU/Linux 3.2.0, BuildID[sha1]=8e06c7fb9d1fc5857d83a7f492d69dc225e5f534, not stripped

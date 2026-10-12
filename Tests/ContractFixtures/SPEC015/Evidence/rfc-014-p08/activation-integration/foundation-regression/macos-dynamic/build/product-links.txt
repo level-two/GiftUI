@@ -1,0 +1,4 @@
+/Users/eugene/work/GiftUI/.build/contract-reports/spec-002/rfc-014/.tmp-macos-dynamic-81195/build/libGiftUI.dylib:
+	/Users/eugene/work/GiftUI/.build/contract-reports/spec-002/rfc-014/.tmp-macos-dynamic-81195/build/libGiftUI.dylib (compatibility version 0.0.0, current version 0.0.0)
+	/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 1356.0.0)
+	/usr/lib/swift/libswiftCore.dylib (compatibility version 1.0.0, current version 0.0.0)

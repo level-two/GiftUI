@@ -1,0 +1,31 @@
+schema_version=2
+input_set_sha256=eeda470c3f434efdc497f91ff1f9a81c669b430c16e95afaefeb632c00b14aeb
+run_id=b5140b92f857485cf83951780ae93eeda3d32336-eeda470c3f434efd
+report_directory=.build/contract-reports/spec-002/b5140b92f857485cf83951780ae93eeda3d32336-eeda470c3f434efd/nrf52840-embedded
+spec=SPEC-002
+profile=nrf52840-embedded
+repository_revision=b5140b92f857485cf83951780ae93eeda3d32336
+compiler_baseline=rfc-014
+invocation=scripts/contracts/run-spec-002.sh --profile nrf52840-embedded --compiler-baseline rfc-014
+semantic_corpus_sha256=3add894045d330ea1441f2a6ff6d5465840c867ba02fb83912657819a20f3ccb
+compiler_version<<EOF
+Apple Swift version 6.4 (swift-6.4-RELEASE)
+Target: arm64-apple-macosx26.0
+EOF
+target=armv7em-none-none-eabi
+board=nrf52840dk/nrf52840
+zephyr_version=4.3.0
+zephyr_revision=3568e1b6d5cdd51a6b964a2a1d6d29200fea2056
+zephyr_sdk_version=0.17.4
+sdk_path=/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4
+optimization=-Osize -whole-module-optimization
+embedded_swift=-enable-experimental-feature Embedded
+float_abi=hard
+compiler_path=/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.4.0-RELEASE-osx/usr/bin/swiftc
+compiler_sha256=79ae5c26645489fb783ae980f0f1bdae810f90fb180c9ac39808807b65e9fd69
+compiler_features=LifetimeDependence,Lifetimes
+compiler_feature_check=passed
+linked_section_inspector<<EOF
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/arm-zephyr-eabi-objdump: GNU objdump (Zephyr SDK 0.17.4) 2.38
+EOF
+exit_code=0

@@ -1,0 +1,61 @@
+
+/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-002/b5140b92f857485cf83951780ae93eeda3d32336-87cad7ea9aed8edc/resources/baseline/image:	file format elf32-littlearm
+
+Sections:
+Idx Name                         Size     VMA      Type
+  0                              00000000 00000000 
+  1 .note.ABI-tag                00000020 00010194 DATA
+  2 .note.gnu.build-id           00000024 000101b4 DATA
+  3 .rel.dyn                     00000060 000101d8 DATA
+  4 .ARM.exidx                   000273a0 00010238 DATA
+  5 .ARM.extab                   0000fd08 000375d8 DATA
+  6 swift5_protocols             000001c0 000472e0 DATA
+  7 swift5_protocol_conformances 00001540 000474a0 DATA
+  8 swift5_type_metadata         00000704 000489e0 DATA
+  9 swift5_fieldmd               000048f0 000490e4 DATA
+ 10 swift5_builtin               00000b68 0004d9d4 DATA
+ 11 swift5_assocty               00005130 0004e53c DATA
+ 12 swift5_capture               0000120c 0005366c DATA
+ 13 swift5_reflstr               00001441 00054880 DATA
+ 14 swift5_typeref               00005b15 00055cc2 DATA
+ 15 swift5_mpenum                00000064 0005b7d8 DATA
+ 16 swift5_replace               00000000 0005b83c DATA
+ 17 swift5_replac2               00000000 0005b83c DATA
+ 18 swift5_accessible_functions  00000000 0005b83c DATA
+ 19 swift5_runtime_attributes    00000000 0005b83c DATA
+ 20 swift5_tests                 00000000 0005b83c DATA
+ 21 .swift_modhash               00000020 0005b83c DATA
+ 22 .lldbsummaries               00000046 0005b85c DATA
+ 23 swift5_type_metadata_2       00000024 0005b8a4 DATA
+ 24 .stapsdt.base                00000001 0005b8c8 DATA
+ 25 .ARM.extab__libc_freeres_fn  00000000 0005b8c9 DATA
+ 26 .eh_frame_hdr                0000000c 0005b8cc DATA
+ 27 .eh_frame                    00000004 0005b8d8 DATA
+ 28 .text                        004d05e0 0006b8e0 TEXT
+ 29 .init                        0000000c 0053bec0 TEXT
+ 30 .fini                        00000008 0053becc TEXT
+ 31 __libc_freeres_fn            00000d1c 0053bed4 TEXT
+ 32 .iplt                        000000c0 0053cbf0 TEXT
+ 33 .tdata                       00000010 0054ccb0 DATA
+ 34 .tbss                        00000038 0054ccc0 BSS
+ 35 .fini_array                  00000004 0054ccc0 DATA
+ 36 .init_array                  00000020 0054ccc4 DATA
+ 37 .data.rel.ro                 0000cc44 0054cce8 DATA
+ 38 .got                         00000584 0055992c DATA
+ 39 .relro_padding               00000150 00559eb0 BSS
+ 40 .rodata                      000f0f30 00569eb0 DATA
+ 41 .data                        00008ce0 0065ade0 DATA
+ 42 .tm_clone_table              00000000 00663ac0 DATA
+ 43 __libc_subfreeres            0000002c 00663ac0 DATA
+ 44 __libc_IO_vtables            0000039c 00663aec DATA
+ 45 __libc_atexit                00000004 00663e88 DATA
+ 46 .bss                         0001fcc0 00663e90 BSS
+ 47 __libc_freeres_ptrs          00000014 00683b50 BSS
+ 48 .ARM.attributes              0000002f 00000000 
+ 49 .comment                     0000017d 00000000 
+ 50 .note.stapsdt                000000bc 00000000 
+ 51 .gnu.warning.dlopen          00000082 00000000 
+ 52 .gnu.warning.dlmopen         00000083 00000000 
+ 53 .symtab                      00112e40 00000000 
+ 54 .shstrtab                    00000307 00000000 
+ 55 .strtab                      001f3837 00000000 

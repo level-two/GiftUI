@@ -1,0 +1,6 @@
+category	baseline_bytes	candidate_bytes	delta_bytes
+code	5248	5540	292
+read_only	3871	3871	0
+initialized	72	72	0
+zero_initialized	2564	2564	0
+file_size	72904	73000	96

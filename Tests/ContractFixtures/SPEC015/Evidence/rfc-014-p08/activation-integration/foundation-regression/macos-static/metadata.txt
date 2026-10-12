@@ -1,0 +1,27 @@
+schema_version=2
+input_set_sha256=87cad7ea9aed8edc7e6df5fb6e143a7cf608a0665266943093e9f74adbecb867
+run_id=b5140b92f857485cf83951780ae93eeda3d32336-87cad7ea9aed8edc
+report_directory=.build/contract-reports/spec-002/b5140b92f857485cf83951780ae93eeda3d32336-87cad7ea9aed8edc/macos-static
+spec=SPEC-002
+profile=macos-static
+repository_revision=b5140b92f857485cf83951780ae93eeda3d32336
+compiler_baseline=rfc-014
+invocation=scripts/contracts/run-spec-002.sh --profile macos-static --compiler-baseline rfc-014
+semantic_corpus_sha256=3add894045d330ea1441f2a6ff6d5465840c867ba02fb83912657819a20f3ccb
+compiler_path=/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc
+compiler_sha256=79ae5c26645489fb783ae980f0f1bdae810f90fb180c9ac39808807b65e9fd69
+compiler_features=LifetimeDependence,Lifetimes
+compiler_feature_check=passed
+compiler_version<<EOF
+Apple Swift version 6.4 (swift-6.4-RELEASE)
+Target: arm64-apple-macosx26.0
+EOF
+target=arm64-apple-macosx26.0
+sdk_path=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk
+sdk_version=26.5
+optimization=-O -whole-module-optimization
+profile_flag=-DGIFTUI_STATIC_PROFILE
+linked_section_inspector<<EOF
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/size: Xcode 26.6;Build version 17F113;
+EOF
+exit_code=0

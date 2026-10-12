@@ -1,0 +1,3987 @@
+{
+  "cLanguageStandard" : null,
+  "cxxLanguageStandard" : null,
+  "defaultLocalization" : null,
+  "dependencies" : [
+    {
+      "sourceControl" : [
+        {
+          "identity" : "swift-syntax",
+          "location" : {
+            "remote" : [
+              {
+                "urlString" : "https://github.com/swiftlang/swift-syntax.git"
+              }
+            ]
+          },
+          "productFilter" : null,
+          "requirement" : {
+            "exact" : [
+              "603.0.2"
+            ]
+          },
+          "traits" : [
+            {
+              "name" : "default"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "name" : "GiftUI",
+  "packageKind" : {
+    "root" : [
+      "/Users/eugene/work/GiftUI"
+    ]
+  },
+  "pkgConfig" : null,
+  "platforms" : [
+    {
+      "options" : [
+
+      ],
+      "platformName" : "macos",
+      "version" : "15.0"
+    }
+  ],
+  "products" : [
+    {
+      "name" : "GiftUI",
+      "settings" : [
+
+      ],
+      "targets" : [
+        "GiftUI"
+      ],
+      "type" : {
+        "library" : [
+          "automatic"
+        ]
+      }
+    },
+    {
+      "name" : "GiftUIFailureCore",
+      "settings" : [
+
+      ],
+      "targets" : [
+        "GiftUIFailureCore"
+      ],
+      "type" : {
+        "library" : [
+          "automatic"
+        ]
+      }
+    },
+    {
+      "name" : "GiftUIFailureDiagnostics",
+      "settings" : [
+
+      ],
+      "targets" : [
+        "GiftUIFailureDiagnostics"
+      ],
+      "type" : {
+        "library" : [
+          "automatic"
+        ]
+      }
+    },
+    {
+      "name" : "GiftUICapabilities",
+      "settings" : [
+
+      ],
+      "targets" : [
+        "GiftUICapabilities"
+      ],
+      "type" : {
+        "library" : [
+          "automatic"
+        ]
+      }
+    },
+    {
+      "name" : "GiftUIDynamicConveniences",
+      "settings" : [
+
+      ],
+      "targets" : [
+        "GiftUIDynamicConveniences"
+      ],
+      "type" : {
+        "library" : [
+          "automatic"
+        ]
+      }
+    },
+    {
+      "name" : "SignalAnalyzerDomain",
+      "settings" : [
+
+      ],
+      "targets" : [
+        "SignalAnalyzerDomain"
+      ],
+      "type" : {
+        "library" : [
+          "automatic"
+        ]
+      }
+    },
+    {
+      "name" : "SignalAnalyzerData",
+      "settings" : [
+
+      ],
+      "targets" : [
+        "SignalAnalyzerData"
+      ],
+      "type" : {
+        "library" : [
+          "automatic"
+        ]
+      }
+    },
+    {
+      "name" : "GiftUIPlatformRaspberryPi",
+      "settings" : [
+
+      ],
+      "targets" : [
+        "GiftUIPlatformRaspberryPi"
+      ],
+      "type" : {
+        "library" : [
+          "automatic"
+        ]
+      }
+    },
+    {
+      "name" : "SignalAnalyzerPresentation",
+      "settings" : [
+
+      ],
+      "targets" : [
+        "SignalAnalyzerPresentation"
+      ],
+      "type" : {
+        "library" : [
+          "automatic"
+        ]
+      }
+    },
+    {
+      "name" : "SignalAnalyzerMacOSDynamic",
+      "settings" : [
+
+      ],
+      "targets" : [
+        "SignalAnalyzerMacOSDynamic"
+      ],
+      "type" : {
+        "executable" : null
+      }
+    },
+    {
+      "name" : "SignalAnalyzerMacOSStatic",
+      "settings" : [
+
+      ],
+      "targets" : [
+        "SignalAnalyzerMacOSStatic"
+      ],
+      "type" : {
+        "executable" : null
+      }
+    },
+    {
+      "name" : "SignalAnalyzerRaspberryPiARMv6",
+      "settings" : [
+
+      ],
+      "targets" : [
+        "SignalAnalyzerRaspberryPiARMv6"
+      ],
+      "type" : {
+        "executable" : null
+      }
+    },
+    {
+      "name" : "SignalAnalyzerNRF52840HostOracle",
+      "settings" : [
+
+      ],
+      "targets" : [
+        "SignalAnalyzerNRF52840HostOracle"
+      ],
+      "type" : {
+        "executable" : null
+      }
+    }
+  ],
+  "providers" : null,
+  "swiftLanguageVersions" : [
+    "6"
+  ],
+  "targets" : [
+    {
+      "dependencies" : [
+        {
+          "product" : [
+            "SwiftCompilerPlugin",
+            "swift-syntax",
+            null,
+            null
+          ]
+        },
+        {
+          "product" : [
+            "SwiftParser",
+            "swift-syntax",
+            null,
+            null
+          ]
+        },
+        {
+          "product" : [
+            "SwiftOperators",
+            "swift-syntax",
+            null,
+            null
+          ]
+        },
+        {
+          "product" : [
+            "SwiftDiagnostics",
+            "swift-syntax",
+            null,
+            null
+          ]
+        },
+        {
+          "product" : [
+            "SwiftSyntax",
+            "swift-syntax",
+            null,
+            null
+          ]
+        },
+        {
+          "product" : [
+            "SwiftSyntaxBuilder",
+            "swift-syntax",
+            null,
+            null
+          ]
+        },
+        {
+          "product" : [
+            "SwiftSyntaxMacros",
+            "swift-syntax",
+            null,
+            null
+          ]
+        }
+      ],
+      "exclude" : [
+
+      ],
+      "name" : "GiftUIMacros",
+      "packageAccess" : true,
+      "resources" : [
+
+      ],
+      "settings" : [
+
+      ],
+      "type" : "macro"
+    },
+    {
+      "dependencies" : [
+        {
+          "byName" : [
+            "GiftUIMacros",
+            null
+          ]
+        }
+      ],
+      "exclude" : [
+
+      ],
+      "name" : "GiftUI",
+      "packageAccess" : true,
+      "resources" : [
+
+      ],
+      "settings" : [
+        {
+          "kind" : {
+            "enableExperimentalFeature" : {
+              "_0" : "LifetimeDependence"
+            }
+          },
+          "tool" : "swift"
+        },
+        {
+          "kind" : {
+            "enableExperimentalFeature" : {
+              "_0" : "Lifetimes"
+            }
+          },
+          "tool" : "swift"
+        }
+      ],
+      "type" : "regular"
+    },
+    {
+      "dependencies" : [
+
+      ],
+      "exclude" : [
+
+      ],
+      "name" : "GiftUIFailureCore",
+      "packageAccess" : true,
+      "resources" : [
+
+      ],
+      "settings" : [
+
+      ],
+      "type" : "regular"
+    },
+    {
+      "dependencies" : [
+        {
+          "byName" : [
+            "GiftUIFailureCore",
+            null
+          ]
+        }
+      ],
+      "exclude" : [
+
+      ],
+      "name" : "GiftUIFailureDiagnostics",
+      "packageAccess" : true,
+      "resources" : [
+
+      ],
+      "settings" : [
+
+      ],
+      "type" : "regular"
+    },
+    {
+      "dependencies" : [
+
+      ],
+      "exclude" : [
+
+      ],
+      "name" : "GiftUICapabilities",
+      "packageAccess" : true,
+      "resources" : [
+
+      ],
+      "settings" : [
+
+      ],
+      "type" : "regular"
+    },
+    {
+      "dependencies" : [
+        {
+          "byName" : [
+            "GiftUI",
+            null
+          ]
+        }
+      ],
+      "exclude" : [
+
+      ],
+      "name" : "GiftUIDynamicConveniences",
+      "packageAccess" : true,
+      "resources" : [
+
+      ],
+      "settings" : [
+
+      ],
+      "type" : "regular"
+    },
+    {
+      "dependencies" : [
+        {
+          "byName" : [
+            "GiftUI",
+            null
+          ]
+        }
+      ],
+      "exclude" : [
+
+      ],
+      "name" : "GiftUISemanticCore",
+      "packageAccess" : true,
+      "resources" : [
+
+      ],
+      "settings" : [
+        {
+          "kind" : {
+            "enableExperimentalFeature" : {
+              "_0" : "LifetimeDependence"
+            }
+          },
+          "tool" : "swift"
+        },
+        {
+          "kind" : {
+            "enableExperimentalFeature" : {
+              "_0" : "Lifetimes"
+            }
+          },
+          "tool" : "swift"
+        }
+      ],
+      "type" : "regular"
+    },
+    {
+      "dependencies" : [
+        {
+          "byName" : [
+            "GiftUI",
+            null
+          ]
+        }
+      ],
+      "exclude" : [
+
+      ],
+      "name" : "GiftUITextResources",
+      "packageAccess" : true,
+      "resources" : [
+
+      ],
+      "settings" : [
+
+      ],
+      "type" : "regular"
+    },
+    {
+      "dependencies" : [
+        {
+          "byName" : [
+            "GiftUI",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUISemanticCore",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUITextResources",
+            null
+          ]
+        }
+      ],
+      "exclude" : [
+
+      ],
+      "name" : "GiftUILayout",
+      "packageAccess" : true,
+      "resources" : [
+
+      ],
+      "settings" : [
+
+      ],
+      "type" : "regular"
+    },
+    {
+      "dependencies" : [
+        {
+          "byName" : [
+            "GiftUIFailureCore",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUILayout",
+            null
+          ]
+        }
+      ],
+      "exclude" : [
+
+      ],
+      "name" : "GiftUILayoutFailureAdapterFixture",
+      "packageAccess" : true,
+      "resources" : [
+
+      ],
+      "settings" : [
+
+      ],
+      "type" : "regular"
+    },
+    {
+      "dependencies" : [
+        {
+          "byName" : [
+            "GiftUI",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUITextResources",
+            null
+          ]
+        }
+      ],
+      "exclude" : [
+
+      ],
+      "name" : "GiftUIRenderCore",
+      "packageAccess" : true,
+      "resources" : [
+
+      ],
+      "settings" : [
+
+      ],
+      "type" : "regular"
+    },
+    {
+      "dependencies" : [
+        {
+          "byName" : [
+            "GiftUI",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUICapabilities",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIRenderCore",
+            null
+          ]
+        }
+      ],
+      "exclude" : [
+
+      ],
+      "name" : "GiftUISurfaceCore",
+      "packageAccess" : true,
+      "resources" : [
+
+      ],
+      "settings" : [
+
+      ],
+      "type" : "regular"
+    },
+    {
+      "dependencies" : [
+        {
+          "byName" : [
+            "GiftUI",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUICapabilities",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIRenderCore",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUISurfaceCore",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUITextResources",
+            null
+          ]
+        }
+      ],
+      "exclude" : [
+
+      ],
+      "name" : "GiftUIRasterCore",
+      "packageAccess" : true,
+      "resources" : [
+
+      ],
+      "settings" : [
+
+      ],
+      "type" : "regular"
+    },
+    {
+      "dependencies" : [
+        {
+          "byName" : [
+            "GiftUI",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUICapabilities",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIFailureCore",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUISurfaceCore",
+            null
+          ]
+        }
+      ],
+      "exclude" : [
+
+      ],
+      "name" : "GiftUIDisplayCore",
+      "packageAccess" : true,
+      "resources" : [
+
+      ],
+      "settings" : [
+
+      ],
+      "type" : "regular"
+    },
+    {
+      "dependencies" : [
+        {
+          "byName" : [
+            "GiftUI",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUICapabilities",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIDisplayCore",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIExecution",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIFailureCore",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIRasterCore",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIRenderCore",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUISurfaceCore",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUITextResources",
+            null
+          ]
+        }
+      ],
+      "exclude" : [
+
+      ],
+      "name" : "GiftUIBackendIntegration",
+      "packageAccess" : true,
+      "resources" : [
+
+      ],
+      "settings" : [
+
+      ],
+      "type" : "regular"
+    },
+    {
+      "dependencies" : [
+        {
+          "byName" : [
+            "GiftUI",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUISemanticCore",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUILayout",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUITextResources",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIRenderCore",
+            null
+          ]
+        }
+      ],
+      "exclude" : [
+
+      ],
+      "name" : "GiftUIRenderLowering",
+      "packageAccess" : true,
+      "resources" : [
+
+      ],
+      "settings" : [
+
+      ],
+      "type" : "regular"
+    },
+    {
+      "dependencies" : [
+        {
+          "byName" : [
+            "GiftUIFailureCore",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIRenderLowering",
+            null
+          ]
+        }
+      ],
+      "exclude" : [
+
+      ],
+      "name" : "GiftUIRenderFailureAdapterFixture",
+      "packageAccess" : true,
+      "resources" : [
+
+      ],
+      "settings" : [
+
+      ],
+      "type" : "regular"
+    },
+    {
+      "dependencies" : [
+        {
+          "byName" : [
+            "GiftUI",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUISemanticCore",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUILayout",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIRenderLowering",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIRenderCore",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIExecution",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUITextResources",
+            null
+          ]
+        }
+      ],
+      "exclude" : [
+
+      ],
+      "name" : "GiftUIDrawing",
+      "packageAccess" : true,
+      "resources" : [
+
+      ],
+      "settings" : [
+
+      ],
+      "type" : "regular"
+    },
+    {
+      "dependencies" : [
+        {
+          "byName" : [
+            "GiftUIDrawing",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIFailureCore",
+            null
+          ]
+        }
+      ],
+      "exclude" : [
+
+      ],
+      "name" : "GiftUIDrawingFailureAdapterFixture",
+      "packageAccess" : true,
+      "resources" : [
+
+      ],
+      "settings" : [
+
+      ],
+      "type" : "regular"
+    },
+    {
+      "dependencies" : [
+        {
+          "byName" : [
+            "GiftUI",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIRenderCore",
+            null
+          ]
+        }
+      ],
+      "exclude" : [
+
+      ],
+      "name" : "GiftUIExecution",
+      "packageAccess" : true,
+      "resources" : [
+
+      ],
+      "settings" : [
+
+      ],
+      "type" : "regular"
+    },
+    {
+      "dependencies" : [
+        {
+          "byName" : [
+            "GiftUI",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIExecution",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUILayout",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUISemanticCore",
+            null
+          ]
+        }
+      ],
+      "exclude" : [
+
+      ],
+      "name" : "GiftUIInteraction",
+      "packageAccess" : true,
+      "resources" : [
+
+      ],
+      "settings" : [
+
+      ],
+      "type" : "regular"
+    },
+    {
+      "dependencies" : [
+        {
+          "byName" : [
+            "GiftUIFailureCore",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIFailureExecution",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIInteraction",
+            null
+          ]
+        }
+      ],
+      "exclude" : [
+
+      ],
+      "name" : "GiftUIInteractionFailureAdapterFixture",
+      "packageAccess" : true,
+      "resources" : [
+
+      ],
+      "settings" : [
+
+      ],
+      "type" : "regular"
+    },
+    {
+      "dependencies" : [
+        {
+          "byName" : [
+            "GiftUIFailureCore",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIExecution",
+            null
+          ]
+        }
+      ],
+      "exclude" : [
+
+      ],
+      "name" : "GiftUIFailureExecution",
+      "packageAccess" : true,
+      "resources" : [
+
+      ],
+      "settings" : [
+
+      ],
+      "type" : "regular"
+    },
+    {
+      "dependencies" : [
+        {
+          "byName" : [
+            "GiftUI",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUISemanticCore",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIExecution",
+            null
+          ]
+        }
+      ],
+      "exclude" : [
+
+      ],
+      "name" : "GiftUIObservableState",
+      "packageAccess" : true,
+      "resources" : [
+
+      ],
+      "settings" : [
+        {
+          "kind" : {
+            "enableExperimentalFeature" : {
+              "_0" : "LifetimeDependence"
+            }
+          },
+          "tool" : "swift"
+        },
+        {
+          "kind" : {
+            "enableExperimentalFeature" : {
+              "_0" : "Lifetimes"
+            }
+          },
+          "tool" : "swift"
+        }
+      ],
+      "type" : "regular"
+    },
+    {
+      "dependencies" : [
+        {
+          "byName" : [
+            "GiftUIFailureCore",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIObservableState",
+            null
+          ]
+        }
+      ],
+      "exclude" : [
+
+      ],
+      "name" : "GiftUIObservableStateFailureAdapterFixture",
+      "packageAccess" : true,
+      "resources" : [
+
+      ],
+      "settings" : [
+
+      ],
+      "type" : "regular"
+    },
+    {
+      "dependencies" : [
+        {
+          "byName" : [
+            "GiftUI",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIDrawing",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIExecution",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIInteraction",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUILayout",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIObservableState",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIRenderCore",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIRenderLowering",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUISemanticCore",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUITextResources",
+            null
+          ]
+        }
+      ],
+      "exclude" : [
+
+      ],
+      "name" : "GiftUIRuntimeCore",
+      "packageAccess" : true,
+      "resources" : [
+
+      ],
+      "settings" : [
+
+      ],
+      "type" : "regular"
+    },
+    {
+      "dependencies" : [
+        {
+          "byName" : [
+            "GiftUI",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIDrawing",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIExecution",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIInteraction",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUILayout",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIObservableState",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIRenderCore",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIRenderLowering",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIRuntimeCore",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUISemanticCore",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUITextResources",
+            null
+          ]
+        }
+      ],
+      "exclude" : [
+
+      ],
+      "name" : "GiftUIRuntimeDynamic",
+      "packageAccess" : true,
+      "resources" : [
+
+      ],
+      "settings" : [
+        {
+          "kind" : {
+            "enableExperimentalFeature" : {
+              "_0" : "LifetimeDependence"
+            }
+          },
+          "tool" : "swift"
+        },
+        {
+          "kind" : {
+            "enableExperimentalFeature" : {
+              "_0" : "Lifetimes"
+            }
+          },
+          "tool" : "swift"
+        }
+      ],
+      "type" : "regular"
+    },
+    {
+      "dependencies" : [
+        {
+          "byName" : [
+            "GiftUI",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIDrawing",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIExecution",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIInteraction",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUILayout",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIObservableState",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIRenderCore",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIRenderLowering",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIRuntimeCore",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUISemanticCore",
+            null
+          ]
+        }
+      ],
+      "exclude" : [
+
+      ],
+      "name" : "GiftUIRuntimeStatic",
+      "packageAccess" : true,
+      "resources" : [
+
+      ],
+      "settings" : [
+        {
+          "kind" : {
+            "enableExperimentalFeature" : {
+              "_0" : "LifetimeDependence"
+            }
+          },
+          "tool" : "swift"
+        },
+        {
+          "kind" : {
+            "enableExperimentalFeature" : {
+              "_0" : "Lifetimes"
+            }
+          },
+          "tool" : "swift"
+        }
+      ],
+      "type" : "regular"
+    },
+    {
+      "dependencies" : [
+        {
+          "byName" : [
+            "GiftUIFailureCore",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIFailureExecution",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIRuntimeCore",
+            null
+          ]
+        }
+      ],
+      "exclude" : [
+
+      ],
+      "name" : "GiftUIRuntimeFailureAdapterFixture",
+      "packageAccess" : true,
+      "resources" : [
+
+      ],
+      "settings" : [
+
+      ],
+      "type" : "regular"
+    },
+    {
+      "dependencies" : [
+        {
+          "byName" : [
+            "GiftUI",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIBackendIntegration",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUICapabilities",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIDisplayCore",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIExecution",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIFailureCore",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIRasterCore",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIRuntimeCore",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUISurfaceCore",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUITextResources",
+            null
+          ]
+        }
+      ],
+      "exclude" : [
+
+      ],
+      "name" : "GiftUIHostConfiguration",
+      "packageAccess" : true,
+      "resources" : [
+
+      ],
+      "settings" : [
+
+      ],
+      "type" : "regular"
+    },
+    {
+      "dependencies" : [
+        {
+          "byName" : [
+            "GiftUI",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUITextResources",
+            null
+          ]
+        }
+      ],
+      "exclude" : [
+        "Generated/generation-manifest.json",
+        "PiCompactGenerated/generation-manifest.json"
+      ],
+      "name" : "GiftUIReferenceTextResources",
+      "packageAccess" : true,
+      "resources" : [
+
+      ],
+      "settings" : [
+
+      ],
+      "type" : "regular"
+    },
+    {
+      "dependencies" : [
+        {
+          "byName" : [
+            "GiftUIFailureCore",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUITextResources",
+            null
+          ]
+        }
+      ],
+      "exclude" : [
+
+      ],
+      "name" : "GiftUITextResourceFailureAdapterFixture",
+      "packageAccess" : true,
+      "resources" : [
+
+      ],
+      "settings" : [
+
+      ],
+      "type" : "regular"
+    },
+    {
+      "dependencies" : [
+        {
+          "byName" : [
+            "GiftUICapabilities",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIFailureCore",
+            null
+          ]
+        }
+      ],
+      "exclude" : [
+
+      ],
+      "name" : "GiftUICapabilityFailureAdapterFixture",
+      "packageAccess" : true,
+      "resources" : [
+
+      ],
+      "settings" : [
+
+      ],
+      "type" : "regular"
+    },
+    {
+      "dependencies" : [
+        {
+          "byName" : [
+            "GiftUIFailureCore",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUISemanticCore",
+            null
+          ]
+        }
+      ],
+      "exclude" : [
+
+      ],
+      "name" : "GiftUISemanticFailureAdapterFixture",
+      "packageAccess" : true,
+      "resources" : [
+
+      ],
+      "settings" : [
+
+      ],
+      "type" : "regular"
+    },
+    {
+      "dependencies" : [
+
+      ],
+      "exclude" : [
+
+      ],
+      "name" : "SignalAnalyzerDomain",
+      "packageAccess" : true,
+      "resources" : [
+
+      ],
+      "settings" : [
+
+      ],
+      "type" : "regular"
+    },
+    {
+      "dependencies" : [
+        {
+          "byName" : [
+            "SignalAnalyzerDomain",
+            null
+          ]
+        }
+      ],
+      "exclude" : [
+
+      ],
+      "name" : "SignalAnalyzerData",
+      "packageAccess" : true,
+      "resources" : [
+
+      ],
+      "settings" : [
+
+      ],
+      "type" : "regular"
+    },
+    {
+      "dependencies" : [
+        {
+          "byName" : [
+            "GiftUI",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIFailureCore",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "SignalAnalyzerDomain",
+            null
+          ]
+        }
+      ],
+      "exclude" : [
+
+      ],
+      "name" : "SignalAnalyzerPresentation",
+      "packageAccess" : true,
+      "resources" : [
+
+      ],
+      "settings" : [
+
+      ],
+      "type" : "regular"
+    },
+    {
+      "dependencies" : [
+        {
+          "byName" : [
+            "GiftUIExecution",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIHostConfiguration",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "SignalAnalyzerDomain",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "SignalAnalyzerPresentation",
+            null
+          ]
+        }
+      ],
+      "exclude" : [
+
+      ],
+      "name" : "SignalAnalyzerHost",
+      "packageAccess" : true,
+      "resources" : [
+
+      ],
+      "settings" : [
+
+      ],
+      "type" : "regular"
+    },
+    {
+      "dependencies" : [
+        {
+          "byName" : [
+            "GiftUI",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIBackendIntegration",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUICapabilities",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIDisplayCore",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIDrawing",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIExecution",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIFailureCore",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIHostConfiguration",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIInteraction",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUILayout",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIObservableState",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIRasterCore",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIReferenceTextResources",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIRenderCore",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIRenderLowering",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIRuntimeCore",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIRuntimeDynamic",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIRuntimeStatic",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUISemanticCore",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUISurfaceCore",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUITextResources",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "SignalAnalyzerData",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "SignalAnalyzerDomain",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "SignalAnalyzerHost",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "SignalAnalyzerPresentation",
+            null
+          ]
+        }
+      ],
+      "exclude" : [
+        "StaticSignalAnalyzerNRFCommonLayoutPass.swift",
+        "StaticSignalAnalyzerNRFCommonLayoutWorkspace.swift",
+        "StaticSignalAnalyzerNRFEmbeddedActionDispatcher.swift",
+        "StaticSignalAnalyzerNRFEmbeddedCanvasPayload.swift",
+        "StaticSignalAnalyzerNRFEmbeddedCanvasSource.swift",
+        "StaticSignalAnalyzerNRFEmbeddedCountingSink.swift",
+        "StaticSignalAnalyzerNRFEmbeddedGestureSession.swift",
+        "StaticSignalAnalyzerNRFEmbeddedInputHandler.swift",
+        "StaticSignalAnalyzerNRFEmbeddedInteractionOccurrences.swift",
+        "StaticSignalAnalyzerNRFEmbeddedInteractionOwner.swift",
+        "StaticSignalAnalyzerNRFEmbeddedLayoutAdapters.swift",
+        "StaticSignalAnalyzerNRFEmbeddedRasterSink.swift",
+        "StaticSignalAnalyzerNRFEmbeddedRenderPreflight.swift",
+        "StaticSignalAnalyzerNRFEmbeddedRenderSemanticAdapter.swift",
+        "StaticSignalAnalyzerNRFEmbeddedTileRuns.swift"
+      ],
+      "name" : "SignalAnalyzerTargetHost",
+      "packageAccess" : true,
+      "resources" : [
+
+      ],
+      "settings" : [
+
+      ],
+      "type" : "regular"
+    },
+    {
+      "dependencies" : [
+        {
+          "byName" : [
+            "GiftUICapabilities",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIHostConfiguration",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIRuntimeCore",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "SignalAnalyzerDomain",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "SignalAnalyzerHost",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "SignalAnalyzerPresentation",
+            null
+          ]
+        }
+      ],
+      "exclude" : [
+
+      ],
+      "name" : "SignalAnalyzerPresetHarness",
+      "packageAccess" : true,
+      "resources" : [
+
+      ],
+      "settings" : [
+
+      ],
+      "type" : "regular"
+    },
+    {
+      "dependencies" : [
+        {
+          "byName" : [
+            "GiftUI",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUICapabilities",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIDisplayCore",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIFailureCore",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUISurfaceCore",
+            null
+          ]
+        }
+      ],
+      "exclude" : [
+
+      ],
+      "name" : "GiftUIPlatformRaspberryPi",
+      "packageAccess" : true,
+      "resources" : [
+
+      ],
+      "settings" : [
+
+      ],
+      "type" : "regular"
+    },
+    {
+      "dependencies" : [
+        {
+          "byName" : [
+            "GiftUIRuntimeDynamic",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "SignalAnalyzerPresetHarness",
+            null
+          ]
+        }
+      ],
+      "exclude" : [
+
+      ],
+      "name" : "SignalAnalyzerMacOSDynamic",
+      "packageAccess" : true,
+      "resources" : [
+
+      ],
+      "settings" : [
+
+      ],
+      "type" : "executable"
+    },
+    {
+      "dependencies" : [
+        {
+          "byName" : [
+            "GiftUIRuntimeStatic",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "SignalAnalyzerPresetHarness",
+            null
+          ]
+        }
+      ],
+      "exclude" : [
+
+      ],
+      "name" : "SignalAnalyzerMacOSStatic",
+      "packageAccess" : true,
+      "resources" : [
+
+      ],
+      "settings" : [
+
+      ],
+      "type" : "executable"
+    },
+    {
+      "dependencies" : [
+        {
+          "byName" : [
+            "GiftUI",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIDisplayCore",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIHostConfiguration",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIPlatformRaspberryPi",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "SignalAnalyzerData",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "SignalAnalyzerDomain",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "SignalAnalyzerPresetHarness",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "SignalAnalyzerPresentation",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "SignalAnalyzerTargetHost",
+            null
+          ]
+        }
+      ],
+      "exclude" : [
+
+      ],
+      "name" : "SignalAnalyzerRaspberryPiARMv6",
+      "packageAccess" : true,
+      "resources" : [
+
+      ],
+      "settings" : [
+
+      ],
+      "type" : "executable"
+    },
+    {
+      "dependencies" : [
+        {
+          "byName" : [
+            "SignalAnalyzerPresetHarness",
+            null
+          ]
+        }
+      ],
+      "exclude" : [
+
+      ],
+      "name" : "SignalAnalyzerNRF52840HostOracle",
+      "packageAccess" : true,
+      "resources" : [
+
+      ],
+      "settings" : [
+
+      ],
+      "type" : "executable"
+    },
+    {
+      "dependencies" : [
+        {
+          "byName" : [
+            "GiftUI",
+            null
+          ]
+        }
+      ],
+      "exclude" : [
+
+      ],
+      "name" : "GiftUITests",
+      "packageAccess" : true,
+      "resources" : [
+
+      ],
+      "settings" : [
+
+      ],
+      "type" : "test"
+    },
+    {
+      "dependencies" : [
+        {
+          "byName" : [
+            "GiftUI",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUICapabilities",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIDisplayCore",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIPlatformRaspberryPi",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUISurfaceCore",
+            null
+          ]
+        }
+      ],
+      "exclude" : [
+
+      ],
+      "name" : "GiftUIPlatformRaspberryPiTests",
+      "packageAccess" : true,
+      "resources" : [
+
+      ],
+      "settings" : [
+
+      ],
+      "type" : "test"
+    },
+    {
+      "dependencies" : [
+        {
+          "byName" : [
+            "GiftUIMacros",
+            null
+          ]
+        },
+        {
+          "product" : [
+            "SwiftSyntaxMacrosTestSupport",
+            "swift-syntax",
+            null,
+            null
+          ]
+        }
+      ],
+      "exclude" : [
+
+      ],
+      "name" : "GiftUIMacrosTests",
+      "packageAccess" : true,
+      "resources" : [
+
+      ],
+      "settings" : [
+
+      ],
+      "type" : "test"
+    },
+    {
+      "dependencies" : [
+        {
+          "byName" : [
+            "GiftUIFailureCore",
+            null
+          ]
+        }
+      ],
+      "exclude" : [
+
+      ],
+      "name" : "GiftUIFailureCoreTests",
+      "packageAccess" : true,
+      "resources" : [
+
+      ],
+      "settings" : [
+
+      ],
+      "type" : "test"
+    },
+    {
+      "dependencies" : [
+        {
+          "byName" : [
+            "GiftUI",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIFailureCore",
+            null
+          ]
+        }
+      ],
+      "exclude" : [
+
+      ],
+      "name" : "GiftUIFoundationFailureAdapterTests",
+      "packageAccess" : true,
+      "resources" : [
+
+      ],
+      "settings" : [
+
+      ],
+      "type" : "test"
+    },
+    {
+      "dependencies" : [
+        {
+          "byName" : [
+            "GiftUIFailureCore",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIFailureDiagnostics",
+            null
+          ]
+        }
+      ],
+      "exclude" : [
+
+      ],
+      "name" : "GiftUIFailureDiagnosticsTests",
+      "packageAccess" : true,
+      "resources" : [
+
+      ],
+      "settings" : [
+
+      ],
+      "type" : "test"
+    },
+    {
+      "dependencies" : [
+        {
+          "byName" : [
+            "GiftUICapabilities",
+            null
+          ]
+        }
+      ],
+      "exclude" : [
+
+      ],
+      "name" : "GiftUICapabilitiesTests",
+      "packageAccess" : true,
+      "resources" : [
+
+      ],
+      "settings" : [
+
+      ],
+      "type" : "test"
+    },
+    {
+      "dependencies" : [
+        {
+          "byName" : [
+            "GiftUI",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIObservableState",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUISemanticCore",
+            null
+          ]
+        }
+      ],
+      "exclude" : [
+
+      ],
+      "name" : "GiftUISemanticCoreTests",
+      "packageAccess" : true,
+      "resources" : [
+
+      ],
+      "settings" : [
+
+      ],
+      "type" : "test"
+    },
+    {
+      "dependencies" : [
+        {
+          "byName" : [
+            "GiftUI",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUITextResources",
+            null
+          ]
+        }
+      ],
+      "exclude" : [
+
+      ],
+      "name" : "GiftUITextResourcesTests",
+      "packageAccess" : true,
+      "resources" : [
+
+      ],
+      "settings" : [
+
+      ],
+      "type" : "test"
+    },
+    {
+      "dependencies" : [
+        {
+          "byName" : [
+            "GiftUI",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUILayout",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIReferenceTextResources",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUISemanticCore",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUITextResources",
+            null
+          ]
+        }
+      ],
+      "exclude" : [
+
+      ],
+      "name" : "GiftUILayoutTests",
+      "packageAccess" : true,
+      "resources" : [
+
+      ],
+      "settings" : [
+
+      ],
+      "type" : "test"
+    },
+    {
+      "dependencies" : [
+        {
+          "byName" : [
+            "GiftUIFailureCore",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUILayout",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUILayoutFailureAdapterFixture",
+            null
+          ]
+        }
+      ],
+      "exclude" : [
+
+      ],
+      "name" : "GiftUILayoutFailureAdapterTests",
+      "packageAccess" : true,
+      "resources" : [
+
+      ],
+      "settings" : [
+
+      ],
+      "type" : "test"
+    },
+    {
+      "dependencies" : [
+        {
+          "byName" : [
+            "GiftUI",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIRenderCore",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUITextResources",
+            null
+          ]
+        }
+      ],
+      "exclude" : [
+
+      ],
+      "name" : "GiftUIRenderCoreTests",
+      "packageAccess" : true,
+      "resources" : [
+
+      ],
+      "settings" : [
+
+      ],
+      "type" : "test"
+    },
+    {
+      "dependencies" : [
+        {
+          "byName" : [
+            "GiftUI",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUICapabilities",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIRenderCore",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUISurfaceCore",
+            null
+          ]
+        }
+      ],
+      "exclude" : [
+
+      ],
+      "name" : "GiftUISurfaceCoreTests",
+      "packageAccess" : true,
+      "resources" : [
+
+      ],
+      "settings" : [
+
+      ],
+      "type" : "test"
+    },
+    {
+      "dependencies" : [
+        {
+          "byName" : [
+            "GiftUI",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUICapabilities",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIRasterCore",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIRenderCore",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUISurfaceCore",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUITextResources",
+            null
+          ]
+        }
+      ],
+      "exclude" : [
+
+      ],
+      "name" : "GiftUIRasterCoreTests",
+      "packageAccess" : true,
+      "resources" : [
+
+      ],
+      "settings" : [
+
+      ],
+      "type" : "test"
+    },
+    {
+      "dependencies" : [
+        {
+          "byName" : [
+            "GiftUI",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUICapabilities",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIDisplayCore",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIFailureCore",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUISurfaceCore",
+            null
+          ]
+        }
+      ],
+      "exclude" : [
+
+      ],
+      "name" : "GiftUIDisplayCoreTests",
+      "packageAccess" : true,
+      "resources" : [
+
+      ],
+      "settings" : [
+
+      ],
+      "type" : "test"
+    },
+    {
+      "dependencies" : [
+        {
+          "byName" : [
+            "GiftUI",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIBackendIntegration",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUICapabilities",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIDisplayCore",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIExecution",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIFailureCore",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIRasterCore",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIRenderCore",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUISurfaceCore",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUITextResources",
+            null
+          ]
+        }
+      ],
+      "exclude" : [
+
+      ],
+      "name" : "GiftUIBackendIntegrationTests",
+      "packageAccess" : true,
+      "resources" : [
+
+      ],
+      "settings" : [
+
+      ],
+      "type" : "test"
+    },
+    {
+      "dependencies" : [
+        {
+          "byName" : [
+            "GiftUI",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIFailureCore",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUILayout",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIRenderCore",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIRenderFailureAdapterFixture",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIRenderLowering",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUISemanticCore",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUITextResources",
+            null
+          ]
+        }
+      ],
+      "exclude" : [
+
+      ],
+      "name" : "GiftUIRenderLoweringTests",
+      "packageAccess" : true,
+      "resources" : [
+
+      ],
+      "settings" : [
+
+      ],
+      "type" : "test"
+    },
+    {
+      "dependencies" : [
+        {
+          "byName" : [
+            "GiftUIFailureCore",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIRenderFailureAdapterFixture",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIRenderLowering",
+            null
+          ]
+        }
+      ],
+      "exclude" : [
+
+      ],
+      "name" : "GiftUIRenderFailureAdapterTests",
+      "packageAccess" : true,
+      "resources" : [
+
+      ],
+      "settings" : [
+
+      ],
+      "type" : "test"
+    },
+    {
+      "dependencies" : [
+        {
+          "byName" : [
+            "GiftUI",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIDrawing",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIDrawingFailureAdapterFixture",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIExecution",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIFailureCore",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUILayout",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIRenderCore",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIRenderLowering",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUISemanticCore",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUITextResources",
+            null
+          ]
+        }
+      ],
+      "exclude" : [
+
+      ],
+      "name" : "GiftUIDrawingTests",
+      "packageAccess" : true,
+      "resources" : [
+
+      ],
+      "settings" : [
+
+      ],
+      "type" : "test"
+    },
+    {
+      "dependencies" : [
+        {
+          "byName" : [
+            "GiftUI",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIExecution",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIRenderCore",
+            null
+          ]
+        }
+      ],
+      "exclude" : [
+
+      ],
+      "name" : "GiftUIExecutionTests",
+      "packageAccess" : true,
+      "resources" : [
+
+      ],
+      "settings" : [
+
+      ],
+      "type" : "test"
+    },
+    {
+      "dependencies" : [
+        {
+          "byName" : [
+            "GiftUI",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIExecution",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIInteraction",
+            null
+          ]
+        }
+      ],
+      "exclude" : [
+
+      ],
+      "name" : "GiftUIInteractionTests",
+      "packageAccess" : true,
+      "resources" : [
+
+      ],
+      "settings" : [
+
+      ],
+      "type" : "test"
+    },
+    {
+      "dependencies" : [
+        {
+          "byName" : [
+            "GiftUIExecution",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIFailureCore",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIFailureDiagnostics",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIFailureExecution",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIInteraction",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIInteractionFailureAdapterFixture",
+            null
+          ]
+        }
+      ],
+      "exclude" : [
+
+      ],
+      "name" : "GiftUIInteractionFailureAdapterTests",
+      "packageAccess" : true,
+      "resources" : [
+
+      ],
+      "settings" : [
+
+      ],
+      "type" : "test"
+    },
+    {
+      "dependencies" : [
+        {
+          "byName" : [
+            "GiftUIExecution",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIFailureCore",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIFailureDiagnostics",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIFailureExecution",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIRenderCore",
+            null
+          ]
+        }
+      ],
+      "exclude" : [
+
+      ],
+      "name" : "GiftUIFailureExecutionTests",
+      "packageAccess" : true,
+      "resources" : [
+
+      ],
+      "settings" : [
+
+      ],
+      "type" : "test"
+    },
+    {
+      "dependencies" : [
+        {
+          "byName" : [
+            "GiftUI",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUISemanticCore",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIExecution",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIObservableState",
+            null
+          ]
+        }
+      ],
+      "exclude" : [
+
+      ],
+      "name" : "GiftUIObservableStateTests",
+      "packageAccess" : true,
+      "resources" : [
+
+      ],
+      "settings" : [
+
+      ],
+      "type" : "test"
+    },
+    {
+      "dependencies" : [
+        {
+          "byName" : [
+            "GiftUIFailureCore",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIFailureDiagnostics",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIObservableState",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIObservableStateFailureAdapterFixture",
+            null
+          ]
+        }
+      ],
+      "exclude" : [
+
+      ],
+      "name" : "GiftUIObservableStateFailureAdapterTests",
+      "packageAccess" : true,
+      "resources" : [
+
+      ],
+      "settings" : [
+
+      ],
+      "type" : "test"
+    },
+    {
+      "dependencies" : [
+        {
+          "byName" : [
+            "GiftUI",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIDrawing",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIExecution",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIInteraction",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUILayout",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIObservableState",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIRenderCore",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIRenderLowering",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIRuntimeCore",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUISemanticCore",
+            null
+          ]
+        }
+      ],
+      "exclude" : [
+
+      ],
+      "name" : "GiftUIRuntimeCoreTests",
+      "packageAccess" : true,
+      "resources" : [
+
+      ],
+      "settings" : [
+
+      ],
+      "type" : "test"
+    },
+    {
+      "dependencies" : [
+        {
+          "byName" : [
+            "GiftUI",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIDrawing",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIDynamicConveniences",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIExecution",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIInteraction",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUILayout",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIObservableState",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIRenderCore",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIRenderLowering",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIRuntimeCore",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIRuntimeDynamic",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUISemanticCore",
+            null
+          ]
+        }
+      ],
+      "exclude" : [
+
+      ],
+      "name" : "GiftUIRuntimeDynamicTests",
+      "packageAccess" : true,
+      "resources" : [
+
+      ],
+      "settings" : [
+
+      ],
+      "type" : "test"
+    },
+    {
+      "dependencies" : [
+        {
+          "byName" : [
+            "GiftUI",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIDrawing",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIExecution",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIInteraction",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUILayout",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIObservableState",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIRenderCore",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIRenderLowering",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIRuntimeCore",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIRuntimeStatic",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUISemanticCore",
+            null
+          ]
+        }
+      ],
+      "exclude" : [
+
+      ],
+      "name" : "GiftUIRuntimeStaticTests",
+      "packageAccess" : true,
+      "resources" : [
+
+      ],
+      "settings" : [
+
+      ],
+      "type" : "test"
+    },
+    {
+      "dependencies" : [
+        {
+          "byName" : [
+            "GiftUI",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIDrawing",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIExecution",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIInteraction",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUILayout",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIObservableState",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIRenderCore",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIRenderLowering",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIRuntimeCore",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIRuntimeDynamic",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIRuntimeStatic",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUISemanticCore",
+            null
+          ]
+        }
+      ],
+      "exclude" : [
+
+      ],
+      "name" : "GiftUIRuntimeConformanceTests",
+      "packageAccess" : true,
+      "resources" : [
+
+      ],
+      "settings" : [
+
+      ],
+      "type" : "test"
+    },
+    {
+      "dependencies" : [
+        {
+          "byName" : [
+            "GiftUIExecution",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIFailureCore",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIFailureExecution",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIRuntimeCore",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIRuntimeFailureAdapterFixture",
+            null
+          ]
+        }
+      ],
+      "exclude" : [
+
+      ],
+      "name" : "GiftUIRuntimeFailureAdapterTests",
+      "packageAccess" : true,
+      "resources" : [
+
+      ],
+      "settings" : [
+
+      ],
+      "type" : "test"
+    },
+    {
+      "dependencies" : [
+        {
+          "byName" : [
+            "GiftUI",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIBackendIntegration",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUICapabilities",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIDisplayCore",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIDrawing",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIExecution",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIFailureCore",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIHostConfiguration",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIInteraction",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUILayout",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIObservableState",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIPlatformRaspberryPi",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIRasterCore",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIReferenceTextResources",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIRenderCore",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIRenderLowering",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIRuntimeCore",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIRuntimeDynamic",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIRuntimeStatic",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUISemanticCore",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUISurfaceCore",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUITextResources",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "SignalAnalyzerData",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "SignalAnalyzerDomain",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "SignalAnalyzerHost",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "SignalAnalyzerPresetHarness",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "SignalAnalyzerPresentation",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "SignalAnalyzerTargetHost",
+            null
+          ]
+        }
+      ],
+      "exclude" : [
+
+      ],
+      "name" : "GiftUIHostConfigurationTests",
+      "packageAccess" : true,
+      "resources" : [
+
+      ],
+      "settings" : [
+
+      ],
+      "type" : "test"
+    },
+    {
+      "dependencies" : [
+        {
+          "byName" : [
+            "GiftUI",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIReferenceTextResources",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUITextResources",
+            null
+          ]
+        }
+      ],
+      "exclude" : [
+
+      ],
+      "name" : "GiftUIReferenceTextResourcesTests",
+      "packageAccess" : true,
+      "resources" : [
+
+      ],
+      "settings" : [
+
+      ],
+      "type" : "test"
+    },
+    {
+      "dependencies" : [
+        {
+          "byName" : [
+            "GiftUIFailureCore",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIFailureDiagnostics",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUITextResourceFailureAdapterFixture",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUITextResources",
+            null
+          ]
+        }
+      ],
+      "exclude" : [
+
+      ],
+      "name" : "GiftUITextResourceOwnerAdapterTests",
+      "packageAccess" : true,
+      "resources" : [
+
+      ],
+      "settings" : [
+
+      ],
+      "type" : "test"
+    },
+    {
+      "dependencies" : [
+        {
+          "byName" : [
+            "GiftUI",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUICapabilities",
+            null
+          ]
+        }
+      ],
+      "exclude" : [
+
+      ],
+      "name" : "GiftUICapabilityAdapterTests",
+      "packageAccess" : true,
+      "resources" : [
+
+      ],
+      "settings" : [
+
+      ],
+      "type" : "test"
+    },
+    {
+      "dependencies" : [
+        {
+          "byName" : [
+            "GiftUICapabilityFailureAdapterFixture",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUICapabilities",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIFailureCore",
+            null
+          ]
+        }
+      ],
+      "exclude" : [
+
+      ],
+      "name" : "GiftUICapabilityFailureAdapterTests",
+      "packageAccess" : true,
+      "resources" : [
+
+      ],
+      "settings" : [
+
+      ],
+      "type" : "test"
+    },
+    {
+      "dependencies" : [
+        {
+          "byName" : [
+            "GiftUIFailureCore",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUISemanticCore",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUISemanticFailureAdapterFixture",
+            null
+          ]
+        }
+      ],
+      "exclude" : [
+
+      ],
+      "name" : "GiftUISemanticFailureAdapterTests",
+      "packageAccess" : true,
+      "resources" : [
+
+      ],
+      "settings" : [
+
+      ],
+      "type" : "test"
+    },
+    {
+      "dependencies" : [
+        {
+          "byName" : [
+            "SignalAnalyzerDomain",
+            null
+          ]
+        }
+      ],
+      "exclude" : [
+
+      ],
+      "name" : "SignalAnalyzerDomainTests",
+      "packageAccess" : true,
+      "resources" : [
+
+      ],
+      "settings" : [
+
+      ],
+      "type" : "test"
+    },
+    {
+      "dependencies" : [
+        {
+          "byName" : [
+            "SignalAnalyzerData",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "SignalAnalyzerDomain",
+            null
+          ]
+        }
+      ],
+      "exclude" : [
+
+      ],
+      "name" : "SignalAnalyzerDataTests",
+      "packageAccess" : true,
+      "resources" : [
+
+      ],
+      "settings" : [
+
+      ],
+      "type" : "test"
+    },
+    {
+      "dependencies" : [
+        {
+          "byName" : [
+            "GiftUI",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "GiftUIFailureCore",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "SignalAnalyzerDomain",
+            null
+          ]
+        },
+        {
+          "byName" : [
+            "SignalAnalyzerPresentation",
+            null
+          ]
+        }
+      ],
+      "exclude" : [
+
+      ],
+      "name" : "SignalAnalyzerPresentationTests",
+      "packageAccess" : true,
+      "resources" : [
+
+      ],
+      "settings" : [
+
+      ],
+      "type" : "test"
+    }
+  ],
+  "toolsVersion" : {
+    "_version" : "6.2.0"
+  },
+  "traits" : [
+
+  ]
+}

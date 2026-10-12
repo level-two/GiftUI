@@ -1,0 +1,26 @@
+Segment __PAGEZERO: 4294967296 (zero fill)  (vmaddr 0x0 fileoff 0)
+Segment __TEXT: 16384 (vmaddr 0x100000000 fileoff 0)
+	Section __text: 5456 (addr 0x1000008a8 offset 2216)
+	Section __stubs: 84 (addr 0x100001df8 offset 7672)
+	Section __const: 1210 (addr 0x100001e50 offset 7760)
+	Section __swift5_typeref: 176 (addr 0x10000230a offset 8970)
+	Section __swift5_reflstr: 133 (addr 0x1000023c0 offset 9152)
+	Section __swift5_assocty: 24 (addr 0x100002448 offset 9288)
+	Section __constg_swiftt: 320 (addr 0x100002460 offset 9312)
+	Section __swift5_fieldmd: 428 (addr 0x1000025a0 offset 9632)
+	Section __swift5_proto: 80 (addr 0x10000274c offset 10060)
+	Section __swift5_types: 44 (addr 0x10000279c offset 10140)
+	Section __unwind_info: 280 (addr 0x1000027c8 offset 10184)
+	total 8235
+Segment __DATA_CONST: 16384 (vmaddr 0x100004000 fileoff 16384)
+	Section __got: 88 (addr 0x100004000 offset 16384)
+	Section __const: 1080 (addr 0x100004058 offset 16472)
+	Section __objc_imageinfo: 8 (addr 0x100004490 offset 17552)
+	total 1176
+Segment __DATA: 16384 (vmaddr 0x100008000 fileoff 32768)
+	Section __data: 72 (addr 0x100008000 offset 32768)
+	Section __bss: 2560 (addr 0x100008050 zerofill)
+	Section __common: 4 (addr 0x100008a50 zerofill)
+	total 2636
+Segment __LINKEDIT: 32768 (vmaddr 0x10000c000 fileoff 49152)
+total 4295049216

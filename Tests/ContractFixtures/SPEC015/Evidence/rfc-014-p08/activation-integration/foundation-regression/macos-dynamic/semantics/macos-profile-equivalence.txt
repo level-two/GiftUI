@@ -1,0 +1,2 @@
+counterpart=macos-static
+status=byte-for-byte-equal

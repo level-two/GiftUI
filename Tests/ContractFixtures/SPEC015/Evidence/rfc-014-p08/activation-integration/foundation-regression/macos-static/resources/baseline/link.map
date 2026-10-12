@@ -1,0 +1,447 @@
+# Path: /Users/eugene/work/GiftUI/.build/contract-reports/spec-002/rfc-014/.tmp-macos-static-80919/resources/baseline/image
+# Arch: arm64
+# Object files:
+[  0] linker synthesized
+[  1] /var/folders/38/tc_rs_016rz5chj25dzt9nfm0000gn/T/TemporaryDirectory.XhosUr/image-1.o
+[  2] /Users/eugene/work/GiftUI/.build/contract-reports/spec-002/rfc-014/.tmp-macos-static-80919/resources/main.o
+[  3] /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk/usr/lib/libSystem.tbd
+[  4] /Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/lib/swift/macosx/libswiftCore.dylib
+# Sections:
+# Address	Size    	Segment	Section
+0x1000008A8	0x0000142C	__TEXT	__text
+0x100001CD4	0x00000054	__TEXT	__stubs
+0x100001D30	0x000004BA	__TEXT	__const
+0x1000021EA	0x000000B0	__TEXT	__swift5_typeref
+0x1000022A0	0x00000085	__TEXT	__swift5_reflstr
+0x100002328	0x00000018	__TEXT	__swift5_assocty
+0x100002340	0x00000140	__TEXT	__constg_swiftt
+0x100002480	0x000001AC	__TEXT	__swift5_fieldmd
+0x10000262C	0x00000050	__TEXT	__swift5_proto
+0x10000267C	0x0000002C	__TEXT	__swift5_types
+0x1000026A8	0x00000118	__TEXT	__unwind_info
+0x100004000	0x00000058	__DATA_CONST	__got
+0x100004058	0x00000438	__DATA_CONST	__const
+0x100004490	0x00000008	__DATA_CONST	__objc_imageinfo
+0x100008000	0x00000048	__DATA	__data
+0x100008050	0x00000A00	__DATA	__bss
+0x100008A50	0x00000004	__DATA	__common
+# Symbols:
+# Address	Size    	File  Name
+0x100000000	0x00000000	[  0] __mh_execute_header
+0x1000008A8	0x0000000C	[  1] _$s5image5PointV1x1yACs5Int32V_AGtcfC
+0x1000008B4	0x00000004	[  1] _$s5image4SizeV5widths5Int32Vvg
+0x1000008B8	0x00000008	[  1] _$s5image4SizeV6heights5Int32Vvg
+0x1000008C0	0x0000001C	[  1] _$s5image4SizeV5width6heightACSgs5Int32V_AHtcfC
+0x1000008DC	0x0000000C	[  1] _$s5image4SizeV23__derived_struct_equalsySbAC_ACtFZ
+0x1000008E8	0x00000030	[  1] _$s5image4SizeV4hash4intoys6HasherVz_tF
+0x100000918	0x00000004	[  1] _$s5image4SizeV9hashValueSivg
+0x10000091C	0x0000005C	[  1] _$s5image5PointV9hashValueSivgTm
+0x100000978	0x00000014	[  1] l___unnamed_1
+0x10000098C	0x00000004	[  1] l___unnamed_2
+0x100000990	0x00000058	[  1] _$s5image5PointVSHAASH9hashValueSivgTWTm
+0x1000009E8	0x00000038	[  1] l___unnamed_3
+0x100000A20	0x00000004	[  1] l___unnamed_4
+0x100000A24	0x00000054	[  1] _$s5image5PointVSHAASH13_rawHashValue4seedS2i_tFTWTm
+0x100000A78	0x00000004	[  1] _$s5image4RectV6originAA5PointVvg
+0x100000A7C	0x00000008	[  1] _$s5image4RectV4sizeAA4SizeVvg
+0x100000A84	0x00000044	[  1] _$s5image4RectV6origin4sizeACSgAA5PointV_AA4SizeVtcfC
+0x100000AC8	0x00000010	[  1] _$s5image18GeometryArithmeticO3addys5Int32VSgAF_AFtFZ
+0x100000AD8	0x00000004	[  1] _$s5image4RectV4minXs5Int32Vvg
+0x100000ADC	0x00000008	[  1] _$s5image4RectV4minYs5Int32Vvg
+0x100000AE4	0x0000000C	[  1] _$s5image4RectV4maxXs5Int32Vvg
+0x100000AF0	0x00000014	[  1] _$s5image4RectV4maxYs5Int32Vvg
+0x100000B04	0x00000040	[  1] _$s5image4RectV8containsySbAA5PointVF
+0x100000B44	0x00000010	[  1] _$s5image4RectV23__derived_struct_equalsySbAC_ACtFZ
+0x100000B54	0x00000050	[  1] _$s5image4RectV4hash4intoys6HasherVz_tF
+0x100000BA4	0x00000084	[  1] _$s5image4RectV9hashValueSivg
+0x100000C28	0x00000034	[  1] _$s5image4RectVSQAASQ2eeoiySbx_xtFZTW
+0x100000C5C	0x0000007C	[  1] _$s5image4RectVSHAASH9hashValueSivgTW
+0x100000CD8	0x00000054	[  1] _$s5image4RectVSHAASH4hash4intoys6HasherVz_tFTW
+0x100000D2C	0x00000078	[  1] _$s5image4RectVSHAASH13_rawHashValue4seedS2i_tFTW
+0x100000DA4	0x00000008	[  1] _$s5image12ProposedSizeV5widths5Int32VSgvg
+0x100000DAC	0x00000008	[  1] _$s5image12ProposedSizeV6heights5Int32VSgvg
+0x100000DB4	0x0000003C	[  1] _$s5image12ProposedSizeV5width6heightACSgs5Int32VSg_AItcfC
+0x100000DF0	0x0000007C	[  1] _$s5image12ProposedSizeV23__derived_struct_equalsySbAC_ACtFZ
+0x100000E6C	0x00000084	[  1] _$s5image12ProposedSizeV4hash4intoys6HasherVz_tF
+0x100000EF0	0x000000AC	[  1] _$s5image12ProposedSizeV9hashValueSivg
+0x100000F9C	0x00000078	[  1] _$s5image12ProposedSizeVSQAASQ2eeoiySbx_xtFZTW
+0x100001014	0x0000001C	[  1] _$s5image12ProposedSizeVSHAASH9hashValueSivgTW
+0x100001030	0x00000084	[  1] _$s5image12ProposedSizeVSHAASH4hash4intoys6HasherVz_tFTW
+0x1000010B4	0x000000A8	[  1] _$s5image12ProposedSizeVSHAASH13_rawHashValue4seedS2i_tFTW
+0x10000115C	0x00000010	[  1] _$s5image18GeometryArithmeticO8subtractys5Int32VSgAF_AFtFZ
+0x10000116C	0x00000018	[  1] _$s5image18GeometryArithmeticO8multiplyys5Int32VSgAF_AFtFZ
+0x100001184	0x00000014	[  1] _$s5image12PointerPhaseO8rawValueACSgs5UInt8V_tcfC
+0x100001198	0x00000004	[  1] _$s5image12PointerPhaseO8rawValues5UInt8Vvg
+0x10000119C	0x00000044	[  1] _$s5image12PointerPhaseOSHAASH9hashValueSivgTW
+0x1000011E0	0x00000028	[  1] _$s5image12PointerPhaseOSHAASH4hash4intoys6HasherVz_tFTW
+0x100001208	0x00000040	[  1] _$s5image12PointerPhaseOSHAASH13_rawHashValue4seedS2i_tFTW
+0x100001248	0x00000018	[  1] _$s5image12PointerPhaseOSYAASY8rawValuexSg03RawE0Qz_tcfCTW
+0x100001260	0x0000000C	[  1] _$s5image12PointerPhaseOSYAASY8rawValue03RawE0QzvgTW
+0x10000126C	0x00000014	[  1] _$s5image12PointerPhaseOSQAASQ2eeoiySbx_xtFZTW
+0x100001280	0x00000004	[  1] _$s5image13InputSourceIDV8rawValues6UInt16Vvg
+0x100001284	0x00000004	[  1] _$s5image13InputSourceIDV8rawValueACs6UInt16V_tcfC
+0x100001288	0x00000010	[  1] _$s5image13InputSourceIDV23__derived_struct_equalsySbAC_ACtFZ
+0x100001298	0x00000024	[  1] _$s5image13InputSourceIDV4hash4intoys6HasherVz_tF
+0x1000012BC	0x00000044	[  1] _$s5image13InputSourceIDV9hashValueSivg
+0x100001300	0x00000014	[  1] _$s5image13InputSourceIDVSQAASQ2eeoiySbx_xtFZTW
+0x100001314	0x00000044	[  1] _$s5image13InputSourceIDVSHAASH9hashValueSivgTW
+0x100001358	0x00000028	[  1] _$s5image13InputSourceIDVSHAASH4hash4intoys6HasherVz_tFTW
+0x100001380	0x00000040	[  1] _$s5image13InputSourceIDVSHAASH13_rawHashValue4seedS2i_tFTW
+0x1000013C0	0x00000004	[  1] _$s5image17PointerSequenceIDV8rawValues6UInt32Vvg
+0x1000013C4	0x00000004	[  1] _$s5image17PointerSequenceIDV8rawValueACs6UInt32V_tcfC
+0x1000013C8	0x00000004	[  1] _$s5image12InputOrdinalV8rawValues6UInt32Vvg
+0x1000013CC	0x00000004	[  1] _$s5image12InputOrdinalV8rawValueACs6UInt32V_tcfC
+0x1000013D0	0x0000000C	[  1] _$s5image12InputOrdinalV23__derived_struct_equalsySbAC_ACtFZ
+0x1000013DC	0x00000024	[  1] _$s5image12InputOrdinalV4hash4intoys6HasherVz_tF
+0x100001400	0x00000004	[  1] _$s5image12InputOrdinalV9hashValueSivg
+0x100001404	0x00000014	[  1] _$s5image12InputOrdinalVSQAASQ2eeoiySbx_xtFZTW
+0x100001418	0x00000004	[  1] _$s5image12InputOrdinalVSHAASH9hashValueSivgTW
+0x10000141C	0x00000028	[  1] _$s5image12InputOrdinalVSHAASH4hash4intoys6HasherVz_tFTW
+0x100001444	0x00000004	[  1] _$s5image12InputOrdinalVSHAASH13_rawHashValue4seedS2i_tFTW
+0x100001448	0x00000004	[  1] _$s5image20PresentationRevisionV8rawValues6UInt32Vvg
+0x10000144C	0x00000004	[  1] _$s5image20PresentationRevisionV8rawValueACs6UInt32V_tcfC
+0x100001450	0x00000044	[  1] _$s5image17PointerSequenceIDV9hashValueSivgTm
+0x100001494	0x00000044	[  1] _$s5image17PointerSequenceIDVSHAASH9hashValueSivgTWTm
+0x1000014D8	0x00000040	[  1] _$s5image17PointerSequenceIDVSHAASH13_rawHashValue4seedS2i_tFTWTm
+0x100001518	0x00000004	[  1] _$s5image22NormalizedPointerEventV5phaseAA0C5PhaseOvg
+0x10000151C	0x00000008	[  1] _$s5image22NormalizedPointerEventV8positionAA5PointVvg
+0x100001524	0x00000008	[  1] _$s5image22NormalizedPointerEventV6sourceAA13InputSourceIDVvg
+0x10000152C	0x00000008	[  1] _$s5image22NormalizedPointerEventV8sequenceAA0C10SequenceIDVvg
+0x100001534	0x00000008	[  1] _$s5image22NormalizedPointerEventV7ordinalAA12InputOrdinalVvg
+0x10000153C	0x00000008	[  1] _$s5image22NormalizedPointerEventV20presentationRevisionAA012PresentationF0Vvg
+0x100001544	0x00000020	[  1] _$s5image22NormalizedPointerEventV5phase8position6source8sequence7ordinal20presentationRevisionAcA0C5PhaseO_AA5PointVAA13InputSourceIDVAA0c8SequenceP0VAA0N7OrdinalVAA012PresentationK0VtcfC
+0x100001564	0x00000014	[  1] _$s5image22NormalizedPointerEventV23__derived_struct_equalsySbAC_ACtFZ
+0x100001578	0x00000040	[  1] _$s5image22NormalizedPointerEventVSQAASQ2eeoiySbx_xtFZTW
+0x1000015B8	0x00000004	[  1] _giftui_spec002_resource_probe
+0x1000015BC	0x00000004	[  1] _$s5image26giftuiSpec002ResourceProbeys5Int32VADF
+0x1000015C0	0x00000028	[  1] _$s5image22NormalizedPointerEventV23__derived_struct_equalsySbAC_ACtFZTf4nnd_n
+0x1000015E8	0x00000004	[  1] _$s5image5PointVSHAASQWb
+0x1000015EC	0x00000040	[  1] _$s5image5PointVACSQAAWl
+0x10000162C	0x00000004	[  1] _$s5image4SizeVSHAASQWb
+0x100001630	0x00000040	[  1] _$s5image4SizeVACSQAAWl
+0x100001670	0x00000004	[  1] _$s5image4RectVSHAASQWb
+0x100001674	0x00000040	[  1] _$s5image4RectVACSQAAWl
+0x1000016B4	0x00000004	[  1] _$s5image12ProposedSizeVSHAASQWb
+0x1000016B8	0x00000040	[  1] _$s5image12ProposedSizeVACSQAAWl
+0x1000016F8	0x00000004	[  1] _$s5image12PointerPhaseOSHAASQWb
+0x1000016FC	0x00000040	[  1] _$s5image12PointerPhaseOACSQAAWl
+0x10000173C	0x00000004	[  1] _$s5image13InputSourceIDVSHAASQWb
+0x100001740	0x00000040	[  1] _$s5image13InputSourceIDVACSQAAWl
+0x100001780	0x00000004	[  1] _$s5image17PointerSequenceIDVSHAASQWb
+0x100001784	0x00000040	[  1] _$s5image17PointerSequenceIDVACSQAAWl
+0x1000017C4	0x00000004	[  1] _$s5image12InputOrdinalVSHAASQWb
+0x1000017C8	0x00000040	[  1] _$s5image12InputOrdinalVACSQAAWl
+0x100001808	0x00000004	[  1] _$s5image20PresentationRevisionVSHAASQWb
+0x10000180C	0x00000040	[  1] _$s5image20PresentationRevisionVACSQAAWl
+0x10000184C	0x0000000C	[  1] ___swift_memcpy8_4
+0x100001858	0x00000004	[  1] ___swift_noop_void_return
+0x10000185C	0x00000010	[  1] _$s5image5PointVMa
+0x10000186C	0x00000020	[  1] _$s5image4SizeVwet
+0x10000188C	0x00000028	[  1] _$s5image4SizeVwst
+0x1000018B4	0x00000010	[  1] _$s5image4SizeVMa
+0x1000018C4	0x0000000C	[  1] ___swift_memcpy16_4
+0x1000018D0	0x00000020	[  1] _$s5image4RectVwet
+0x1000018F0	0x00000028	[  1] _$s5image4RectVwst
+0x100001918	0x00000010	[  1] _$s5image4RectVMa
+0x100001928	0x00000014	[  1] ___swift_memcpy13_4
+0x10000193C	0x00000020	[  1] _$s5image12ProposedSizeVwet
+0x10000195C	0x00000030	[  1] _$s5image12ProposedSizeVwst
+0x10000198C	0x00000010	[  1] _$s5image12ProposedSizeVMa
+0x10000199C	0x00000010	[  1] _$s5image18GeometryArithmeticOMa
+0x1000019AC	0x0000000C	[  1] ___swift_memcpy1_1
+0x1000019B8	0x00000090	[  1] _$s5image12PointerPhaseOwet
+0x100001A48	0x000000B0	[  1] _$s5image12PointerPhaseOwst
+0x100001AF8	0x00000008	[  1] _$s5image12PointerPhaseOwug
+0x100001B00	0x00000004	[  1] _$s5image12PointerPhaseOwup
+0x100001B04	0x00000008	[  1] _$s5image12PointerPhaseOwui
+0x100001B0C	0x00000010	[  1] _$s5image12PointerPhaseOMa
+0x100001B1C	0x00000010	[  1] _$s5image13InputSourceIDVMa
+0x100001B2C	0x00000010	[  1] _$s5image17PointerSequenceIDVMa
+0x100001B3C	0x00000010	[  1] _$s5image12InputOrdinalVMa
+0x100001B4C	0x00000010	[  1] _$s5image20PresentationRevisionVMa
+0x100001B5C	0x0000002C	[  1] _$s5image22NormalizedPointerEventVwCP
+0x100001B88	0x00000014	[  1] ___swift_memcpy28_4
+0x100001B9C	0x00000044	[  1] _$s5image22NormalizedPointerEventVwet
+0x100001BE0	0x00000048	[  1] _$s5image22NormalizedPointerEventVwst
+0x100001C28	0x00000010	[  1] _$s5image22NormalizedPointerEventVMa
+0x100001C38	0x00000004	[  1] _$s5image5PointV1ys5Int32Vvg
+0x100001C3C	0x00000004	[  1] _$s5image5PointV23__derived_struct_equalsySbAC_ACtFZ
+0x100001C40	0x00000004	[  1] _$s5image17PointerSequenceIDV23__derived_struct_equalsySbAC_ACtFZ
+0x100001C44	0x00000004	[  1] _$s5image20PresentationRevisionV23__derived_struct_equalsySbAC_ACtFZ
+0x100001C48	0x00000004	[  1] _$s5image17PointerSequenceIDVSQAASQ2eeoiySbx_xtFZTW
+0x100001C4C	0x00000004	[  1] _$s5image20PresentationRevisionVSQAASQ2eeoiySbx_xtFZTW
+0x100001C50	0x00000004	[  1] _$s5image5PointVSHAASH13_rawHashValue4seedS2i_tFTW
+0x100001C54	0x00000004	[  1] _$s5image4SizeVSHAASH13_rawHashValue4seedS2i_tFTW
+0x100001C58	0x00000004	[  1] _$s5image17PointerSequenceIDVSHAASH13_rawHashValue4seedS2i_tFTW
+0x100001C5C	0x00000004	[  1] _$s5image20PresentationRevisionVSHAASH13_rawHashValue4seedS2i_tFTW
+0x100001C60	0x00000004	[  1] _$s5image5PointVSHAASH4hash4intoys6HasherVz_tFTW
+0x100001C64	0x00000004	[  1] _$s5image4SizeVSHAASH4hash4intoys6HasherVz_tFTW
+0x100001C68	0x00000004	[  1] _$s5image5PointVwst
+0x100001C6C	0x00000004	[  1] _$s5image5PointVwet
+0x100001C70	0x00000004	[  1] _$s5image17PointerSequenceIDV4hash4intoys6HasherVz_tF
+0x100001C74	0x00000004	[  1] _$s5image20PresentationRevisionV4hash4intoys6HasherVz_tF
+0x100001C78	0x00000004	[  1] _$s5image17PointerSequenceIDVSHAASH4hash4intoys6HasherVz_tFTW
+0x100001C7C	0x00000004	[  1] _$s5image20PresentationRevisionVSHAASH4hash4intoys6HasherVz_tFTW
+0x100001C80	0x00000004	[  1] _$s5image5PointV1xs5Int32Vvg
+0x100001C84	0x00000004	[  1] _$s5image5PointVSQAASQ2eeoiySbx_xtFZTW
+0x100001C88	0x00000004	[  1] _$s5image4SizeVSQAASQ2eeoiySbx_xtFZTW
+0x100001C8C	0x00000004	[  1] _$s5image5PointVSHAASH9hashValueSivgTW
+0x100001C90	0x00000004	[  1] _$s5image4SizeVSHAASH9hashValueSivgTW
+0x100001C94	0x00000004	[  1] _$s5image17PointerSequenceIDVSHAASH9hashValueSivgTW
+0x100001C98	0x00000004	[  1] _$s5image20PresentationRevisionVSHAASH9hashValueSivgTW
+0x100001C9C	0x00000004	[  1] _$s5image5PointV4hash4intoys6HasherVz_tF
+0x100001CA0	0x00000004	[  1] _$s5image5PointV9hashValueSivg
+0x100001CA4	0x00000004	[  1] _$s5image17PointerSequenceIDV9hashValueSivg
+0x100001CA8	0x00000004	[  1] _$s5image20PresentationRevisionV9hashValueSivg
+0x100001CAC	0x00000028	[  2] _main
+0x100001CD4	0x0000000C	[  4] _$ss6HasherV5_seedABSi_tcfC.stub
+0x100001CE0	0x0000000C	[  4] _$ss6HasherV8_combineyys5UInt8VF.stub
+0x100001CEC	0x0000000C	[  4] _$ss6HasherV8_combineyys6UInt16VF.stub
+0x100001CF8	0x0000000C	[  4] _$ss6HasherV8_combineyys6UInt32VF.stub
+0x100001D04	0x0000000C	[  4] _$ss6HasherV9_finalizeSiyF.stub
+0x100001D10	0x0000000C	[  4] _swift_getWitnessTable.stub
+0x100001D1C	0x0000000C	[  4] _swift_retain.stub
+0x100001D30	0x00000028	[  1] _$s5image5PointVSQAAMc
+0x100001D58	0x00000040	[  1] _$s5image5PointVSHAAMc
+0x100001D98	0x00000028	[  1] _$s5image4SizeVSQAAMc
+0x100001DC0	0x00000040	[  1] _$s5image4SizeVSHAAMc
+0x100001E00	0x00000028	[  1] _$s5image4RectVSQAAMc
+0x100001E28	0x00000040	[  1] _$s5image4RectVSHAAMc
+0x100001E68	0x00000028	[  1] _$s5image12ProposedSizeVSQAAMc
+0x100001E90	0x00000040	[  1] _$s5image12ProposedSizeVSHAAMc
+0x100001ED0	0x00000040	[  1] _$s5image12PointerPhaseOSHAAMc
+0x100001F10	0x00000038	[  1] _$s5image12PointerPhaseOSYAAMc
+0x100001F48	0x00000028	[  1] _$s5image12PointerPhaseOSQAAMc
+0x100001F70	0x00000028	[  1] _$s5image13InputSourceIDVSQAAMc
+0x100001F98	0x00000040	[  1] _$s5image13InputSourceIDVSHAAMc
+0x100001FD8	0x00000028	[  1] _$s5image17PointerSequenceIDVSQAAMc
+0x100002000	0x00000040	[  1] _$s5image17PointerSequenceIDVSHAAMc
+0x100002040	0x00000028	[  1] _$s5image12InputOrdinalVSQAAMc
+0x100002068	0x00000040	[  1] _$s5image12InputOrdinalVSHAAMc
+0x1000020A8	0x00000028	[  1] _$s5image20PresentationRevisionVSQAAMc
+0x1000020D0	0x00000040	[  1] _$s5image20PresentationRevisionVSHAAMc
+0x100002110	0x00000028	[  1] _$s5image22NormalizedPointerEventVSQAAMc
+0x100002138	0x00000004	[  1] _$s5image5PointV9hashValueSivpMV
+0x100002138	0x00000000	[  1] _$s5image5PointV1ys5Int32VvpMV
+0x100002138	0x00000000	[  1] _$s5image5PointV1xs5Int32VvpMV
+0x100002138	0x00000000	[  1] _$s5image4SizeV9hashValueSivpMV
+0x100002138	0x00000000	[  1] _$s5image4SizeV6heights5Int32VvpMV
+0x100002138	0x00000000	[  1] _$s5image4SizeV5widths5Int32VvpMV
+0x100002138	0x00000000	[  1] _$s5image4RectV9hashValueSivpMV
+0x100002138	0x00000000	[  1] _$s5image4RectV6originAA5PointVvpMV
+0x100002138	0x00000000	[  1] _$s5image4RectV4sizeAA4SizeVvpMV
+0x100002138	0x00000000	[  1] _$s5image4RectV4minYs5Int32VvpMV
+0x100002138	0x00000000	[  1] _$s5image4RectV4minXs5Int32VvpMV
+0x100002138	0x00000000	[  1] _$s5image4RectV4maxYs5Int32VvpMV
+0x100002138	0x00000000	[  1] _$s5image4RectV4maxXs5Int32VvpMV
+0x100002138	0x00000000	[  1] _$s5image22NormalizedPointerEventV8sequenceAA0C10SequenceIDVvpMV
+0x100002138	0x00000000	[  1] _$s5image22NormalizedPointerEventV8positionAA5PointVvpMV
+0x100002138	0x00000000	[  1] _$s5image22NormalizedPointerEventV7ordinalAA12InputOrdinalVvpMV
+0x100002138	0x00000000	[  1] _$s5image22NormalizedPointerEventV6sourceAA13InputSourceIDVvpMV
+0x100002138	0x00000000	[  1] _$s5image22NormalizedPointerEventV5phaseAA0C5PhaseOvpMV
+0x100002138	0x00000000	[  1] _$s5image22NormalizedPointerEventV20presentationRevisionAA012PresentationF0VvpMV
+0x100002138	0x00000000	[  1] _$s5image20PresentationRevisionV9hashValueSivpMV
+0x100002138	0x00000000	[  1] _$s5image20PresentationRevisionV8rawValues6UInt32VvpMV
+0x100002138	0x00000000	[  1] _$s5image17PointerSequenceIDV9hashValueSivpMV
+0x100002138	0x00000000	[  1] _$s5image17PointerSequenceIDV8rawValues6UInt32VvpMV
+0x100002138	0x00000000	[  1] _$s5image13InputSourceIDV9hashValueSivpMV
+0x100002138	0x00000000	[  1] _$s5image13InputSourceIDV8rawValues6UInt16VvpMV
+0x100002138	0x00000000	[  1] _$s5image12ProposedSizeV9hashValueSivpMV
+0x100002138	0x00000000	[  1] _$s5image12ProposedSizeV6heights5Int32VSgvpMV
+0x100002138	0x00000000	[  1] _$s5image12ProposedSizeV5widths5Int32VSgvpMV
+0x100002138	0x00000000	[  1] _$s5image12PointerPhaseO8rawValues5UInt8VvpMV
+0x100002138	0x00000000	[  1] _$s5image12InputOrdinalV9hashValueSivpMV
+0x100002138	0x00000000	[  1] _$s5image12InputOrdinalV8rawValues6UInt32VvpMV
+0x10000213C	0x00000006	[  1] l_.str.5.image
+0x100002142	0x00000006	[  1] l_.str.5.Point
+0x100002148	0x00000005	[  1] l_.str.4.Size
+0x10000214D	0x00000005	[  1] l_.str.4.Rect
+0x100002152	0x0000000E	[  1] l_.str.12.ProposedSize
+0x100002160	0x00000013	[  1] l_.str.18.GeometryArithmetic
+0x100002173	0x0000000D	[  1] l_.str.12.PointerPhase
+0x100002180	0x00000010	[  1] l_.str.13.InputSourceID
+0x100002190	0x00000012	[  1] l_.str.17.PointerSequenceID
+0x1000021A2	0x0000000E	[  1] l_.str.12.InputOrdinal
+0x1000021B0	0x00000020	[  1] l_.str.20.PresentationRevision
+0x1000021D0	0x00000018	[  1] l_.str.22.NormalizedPointerEvent
+0x1000021E8	0x00000002	[  1] ___swift_reflection_version
+0x1000021EA	0x00000008	[  1] _associated conformance 5image5PointVSHAASQ
+0x1000021F2	0x00000008	[  1] _associated conformance 5image4SizeVSHAASQ
+0x1000021FA	0x00000008	[  1] _associated conformance 5image4RectVSHAASQ
+0x100002202	0x00000008	[  1] _associated conformance 5image12ProposedSizeVSHAASQ
+0x10000220A	0x00000008	[  1] _associated conformance 5image12PointerPhaseOSHAASQ
+0x100002212	0x00000006	[  1] _symbolic _____ s5UInt8V
+0x100002218	0x00000006	[  1] _symbolic _____ 5image12PointerPhaseO
+0x10000221E	0x00000006	[  1] _symbolic $sSY
+0x100002224	0x00000008	[  1] _associated conformance 5image13InputSourceIDVSHAASQ
+0x10000222C	0x00000008	[  1] _associated conformance 5image17PointerSequenceIDVSHAASQ
+0x100002234	0x00000008	[  1] _associated conformance 5image12InputOrdinalVSHAASQ
+0x10000223C	0x00000008	[  1] _associated conformance 5image20PresentationRevisionVSHAASQ
+0x100002244	0x00000006	[  1] _symbolic _____ 5image5PointV
+0x10000224A	0x00000006	[  1] _symbolic _____ s5Int32V
+0x100002250	0x00000006	[  1] _symbolic _____ 5image4SizeV
+0x100002256	0x00000006	[  1] _symbolic _____ 5image4RectV
+0x10000225C	0x00000006	[  1] _symbolic _____ 5image12ProposedSizeV
+0x100002262	0x00000008	[  1] _symbolic _____Sg s5Int32V
+0x10000226A	0x00000006	[  1] _symbolic _____ 5image18GeometryArithmeticO
+0x100002270	0x00000006	[  1] _symbolic _____ 5image13InputSourceIDV
+0x100002276	0x00000006	[  1] _symbolic _____ s6UInt16V
+0x10000227C	0x00000006	[  1] _symbolic _____ 5image17PointerSequenceIDV
+0x100002282	0x00000006	[  1] _symbolic _____ s6UInt32V
+0x100002288	0x00000006	[  1] _symbolic _____ 5image12InputOrdinalV
+0x10000228E	0x00000006	[  1] _symbolic _____ 5image20PresentationRevisionV
+0x100002294	0x00000006	[  1] _symbolic _____ 5image22NormalizedPointerEventV
+0x1000022A0	0x00000009	[  1] l___unnamed_5
+0x1000022A9	0x00000002	[  1] l___unnamed_6
+0x1000022AB	0x00000002	[  1] l___unnamed_7
+0x1000022AD	0x00000006	[  1] l___unnamed_8
+0x1000022B3	0x00000007	[  1] l___unnamed_9
+0x1000022BA	0x00000007	[  1] l___unnamed_10
+0x1000022C1	0x00000005	[  1] l___unnamed_11
+0x1000022C6	0x00000005	[  1] l___unnamed_12
+0x1000022CB	0x00000005	[  1] l___unnamed_13
+0x1000022D0	0x00000003	[  1] l___unnamed_14
+0x1000022D3	0x00000009	[  1] l___unnamed_15
+0x1000022DC	0x00000006	[  1] l___unnamed_16
+0x1000022E2	0x00000009	[  1] l___unnamed_17
+0x1000022EB	0x00000007	[  1] l___unnamed_18
+0x1000022F2	0x00000009	[  1] l___unnamed_19
+0x1000022FB	0x00000015	[  1] l___unnamed_20
+0x100002310	0x00000015	[  1] l___unnamed_21
+0x100002328	0x00000018	[  1] _$s5image12PointerPhaseOSYAAMA
+0x100002340	0x0000000C	[  1] _$s5imageMXM
+0x10000234C	0x0000001C	[  1] _$s5image5PointVMn
+0x100002368	0x0000001C	[  1] _$s5image4SizeVMn
+0x100002384	0x0000001C	[  1] _$s5image4RectVMn
+0x1000023A0	0x0000001C	[  1] _$s5image12ProposedSizeVMn
+0x1000023BC	0x0000001C	[  1] _$s5image18GeometryArithmeticOMn
+0x1000023D8	0x0000001C	[  1] _$s5image12PointerPhaseOMn
+0x1000023F4	0x0000001C	[  1] _$s5image13InputSourceIDVMn
+0x100002410	0x0000001C	[  1] _$s5image17PointerSequenceIDVMn
+0x10000242C	0x0000001C	[  1] _$s5image12InputOrdinalVMn
+0x100002448	0x0000001C	[  1] _$s5image20PresentationRevisionVMn
+0x100002464	0x0000001C	[  1] _$s5image22NormalizedPointerEventVMn
+0x100002480	0x00000028	[  1] _$s5image5PointVMF
+0x1000024A8	0x00000028	[  1] _$s5image4SizeVMF
+0x1000024D0	0x00000028	[  1] _$s5image4RectVMF
+0x1000024F8	0x00000028	[  1] _$s5image12ProposedSizeVMF
+0x100002520	0x00000010	[  1] _$s5image18GeometryArithmeticOMF
+0x100002530	0x00000034	[  1] _$s5image12PointerPhaseOMF
+0x100002564	0x0000001C	[  1] _$s5image13InputSourceIDVMF
+0x100002580	0x0000001C	[  1] _$s5image17PointerSequenceIDVMF
+0x10000259C	0x0000001C	[  1] _$s5image12InputOrdinalVMF
+0x1000025B8	0x0000001C	[  1] _$s5image20PresentationRevisionVMF
+0x1000025D4	0x00000058	[  1] _$s5image22NormalizedPointerEventVMF
+0x10000262C	0x00000004	[  1] l_$s5image5PointVSQAAHc
+0x100002630	0x00000004	[  1] l_$s5image5PointVSHAAHc
+0x100002634	0x00000004	[  1] l_$s5image4SizeVSQAAHc
+0x100002638	0x00000004	[  1] l_$s5image4SizeVSHAAHc
+0x10000263C	0x00000004	[  1] l_$s5image4RectVSQAAHc
+0x100002640	0x00000004	[  1] l_$s5image4RectVSHAAHc
+0x100002644	0x00000004	[  1] l_$s5image12ProposedSizeVSQAAHc
+0x100002648	0x00000004	[  1] l_$s5image12ProposedSizeVSHAAHc
+0x10000264C	0x00000004	[  1] l_$s5image12PointerPhaseOSHAAHc
+0x100002650	0x00000004	[  1] l_$s5image12PointerPhaseOSYAAHc
+0x100002654	0x00000004	[  1] l_$s5image12PointerPhaseOSQAAHc
+0x100002658	0x00000004	[  1] l_$s5image13InputSourceIDVSQAAHc
+0x10000265C	0x00000004	[  1] l_$s5image13InputSourceIDVSHAAHc
+0x100002660	0x00000004	[  1] l_$s5image17PointerSequenceIDVSQAAHc
+0x100002664	0x00000004	[  1] l_$s5image17PointerSequenceIDVSHAAHc
+0x100002668	0x00000004	[  1] l_$s5image12InputOrdinalVSQAAHc
+0x10000266C	0x00000004	[  1] l_$s5image12InputOrdinalVSHAAHc
+0x100002670	0x00000004	[  1] l_$s5image20PresentationRevisionVSQAAHc
+0x100002674	0x00000004	[  1] l_$s5image20PresentationRevisionVSHAAHc
+0x100002678	0x00000004	[  1] l_$s5image22NormalizedPointerEventVSQAAHc
+0x10000267C	0x00000004	[  1] l_$s5image5PointVHn
+0x100002680	0x00000004	[  1] l_$s5image4SizeVHn
+0x100002684	0x00000004	[  1] l_$s5image4RectVHn
+0x100002688	0x00000004	[  1] l_$s5image12ProposedSizeVHn
+0x10000268C	0x00000004	[  1] l_$s5image18GeometryArithmeticOHn
+0x100002690	0x00000004	[  1] l_$s5image12PointerPhaseOHn
+0x100002694	0x00000004	[  1] l_$s5image13InputSourceIDVHn
+0x100002698	0x00000004	[  1] l_$s5image17PointerSequenceIDVHn
+0x10000269C	0x00000004	[  1] l_$s5image12InputOrdinalVHn
+0x1000026A0	0x00000004	[  1] l_$s5image20PresentationRevisionVHn
+0x1000026A4	0x00000004	[  1] l_$s5image22NormalizedPointerEventVHn
+0x1000026A8	0x00000118	[  0] compact unwind info
+0x100004000	0x00000008	[  4] _$ss5Int32VMn.got
+0x100004008	0x00000008	[  4] _$ss5UInt8VMn.got
+0x100004010	0x00000008	[  4] _$ss6HasherV5_seedABSi_tcfC.got
+0x100004018	0x00000008	[  4] _$ss6HasherV8_combineyys5UInt8VF.got
+0x100004020	0x00000008	[  4] _$ss6HasherV8_combineyys6UInt16VF.got
+0x100004028	0x00000008	[  4] _$ss6HasherV8_combineyys6UInt32VF.got
+0x100004030	0x00000008	[  4] _$ss6HasherV9_finalizeSiyF.got
+0x100004038	0x00000008	[  4] _$ss6UInt16VMn.got
+0x100004040	0x00000008	[  4] _$ss6UInt32VMn.got
+0x100004048	0x00000008	[  4] _swift_getWitnessTable.got
+0x100004050	0x00000008	[  4] _swift_retain.got
+0x100004058	0x00000058	[  1] _$s5image5PointVWV
+0x1000040B0	0x00000028	[  1] _$s5image5PointVMf
+0x1000040C0	0x00000000	[  1] _$s5image5PointVN
+0x1000040D8	0x00000058	[  1] _$s5image4SizeVWV
+0x100004130	0x00000028	[  1] _$s5image4SizeVMf
+0x100004140	0x00000000	[  1] _$s5image4SizeVN
+0x100004158	0x00000058	[  1] _$s5image4RectVWV
+0x1000041B0	0x00000028	[  1] _$s5image4RectVMf
+0x1000041C0	0x00000000	[  1] _$s5image4RectVN
+0x1000041D8	0x00000058	[  1] _$s5image12ProposedSizeVWV
+0x100004230	0x00000028	[  1] _$s5image12ProposedSizeVMf
+0x100004240	0x00000000	[  1] _$s5image12ProposedSizeVN
+0x100004258	0x00000020	[  1] _$s5image18GeometryArithmeticOMf
+0x100004268	0x00000000	[  1] _$s5image18GeometryArithmeticON
+0x100004278	0x00000070	[  1] _$s5image12PointerPhaseOWV
+0x1000042E8	0x00000020	[  1] _$s5image12PointerPhaseOMf
+0x1000042F8	0x00000000	[  1] _$s5image12PointerPhaseON
+0x100004308	0x00000028	[  1] _$s5image13InputSourceIDVMf
+0x100004318	0x00000000	[  1] _$s5image13InputSourceIDVN
+0x100004330	0x00000028	[  1] _$s5image17PointerSequenceIDVMf
+0x100004340	0x00000000	[  1] _$s5image17PointerSequenceIDVN
+0x100004358	0x00000028	[  1] _$s5image12InputOrdinalVMf
+0x100004368	0x00000000	[  1] _$s5image12InputOrdinalVN
+0x100004380	0x00000028	[  1] _$s5image20PresentationRevisionVMf
+0x100004390	0x00000000	[  1] _$s5image20PresentationRevisionVN
+0x1000043A8	0x00000058	[  1] _$s5image22NormalizedPointerEventVWV
+0x100004400	0x00000038	[  1] _$s5image22NormalizedPointerEventVMf
+0x100004410	0x00000000	[  1] _$s5image22NormalizedPointerEventVN
+0x100004438	0x00000008	[  1] l_got.$sSQMp
+0x100004440	0x00000008	[  1] l_got.$sSQ2eeoiySbx_xtFZTq
+0x100004448	0x00000008	[  1] l_got.$sSHMp
+0x100004450	0x00000008	[  1] l_got.$sSHSQTb
+0x100004458	0x00000008	[  1] l_got.$sSH9hashValueSivgTq
+0x100004460	0x00000008	[  1] l_got.$sSH4hash4intoys6HasherVz_tFTq
+0x100004468	0x00000008	[  1] l_got.$sSH13_rawHashValue4seedS2i_tFTq
+0x100004470	0x00000008	[  1] l_got.$sSYMp
+0x100004478	0x00000008	[  1] l_got.$s8RawValueSYTl
+0x100004480	0x00000008	[  1] l_got.$sSY8rawValuexSg03RawB0Qz_tcfCTq
+0x100004488	0x00000008	[  1] l_got.$sSY8rawValue03RawB0QzvgTq
+0x100004490	0x00000008	[  0] anon
+0x100008000	0x00000008	[  1] _$s5image5PointVACSQAAWL
+0x100008008	0x00000008	[  1] _$s5image4SizeVACSQAAWL
+0x100008010	0x00000008	[  1] _$s5image4RectVACSQAAWL
+0x100008018	0x00000008	[  1] _$s5image12ProposedSizeVACSQAAWL
+0x100008020	0x00000008	[  1] _$s5image12PointerPhaseOACSQAAWL
+0x100008028	0x00000008	[  1] _$s5image13InputSourceIDVACSQAAWL
+0x100008030	0x00000008	[  1] _$s5image17PointerSequenceIDVACSQAAWL
+0x100008038	0x00000008	[  1] _$s5image12InputOrdinalVACSQAAWL
+0x100008040	0x00000008	[  1] _$s5image20PresentationRevisionVACSQAAWL
+0x100008050	0x00000080	[  1] _$s5image5PointVSQAAMcMK
+0x1000080D0	0x00000080	[  1] _$s5image5PointVSHAAMcMK
+0x100008150	0x00000080	[  1] _$s5image4SizeVSQAAMcMK
+0x1000081D0	0x00000080	[  1] _$s5image4SizeVSHAAMcMK
+0x100008250	0x00000080	[  1] _$s5image4RectVSQAAMcMK
+0x1000082D0	0x00000080	[  1] _$s5image4RectVSHAAMcMK
+0x100008350	0x00000080	[  1] _$s5image12ProposedSizeVSQAAMcMK
+0x1000083D0	0x00000080	[  1] _$s5image12ProposedSizeVSHAAMcMK
+0x100008450	0x00000080	[  1] _$s5image12PointerPhaseOSHAAMcMK
+0x1000084D0	0x00000080	[  1] _$s5image12PointerPhaseOSYAAMcMK
+0x100008550	0x00000080	[  1] _$s5image12PointerPhaseOSQAAMcMK
+0x1000085D0	0x00000080	[  1] _$s5image13InputSourceIDVSQAAMcMK
+0x100008650	0x00000080	[  1] _$s5image13InputSourceIDVSHAAMcMK
+0x1000086D0	0x00000080	[  1] _$s5image17PointerSequenceIDVSQAAMcMK
+0x100008750	0x00000080	[  1] _$s5image17PointerSequenceIDVSHAAMcMK
+0x1000087D0	0x00000080	[  1] _$s5image12InputOrdinalVSQAAMcMK
+0x100008850	0x00000080	[  1] _$s5image12InputOrdinalVSHAAMcMK
+0x1000088D0	0x00000080	[  1] _$s5image20PresentationRevisionVSQAAMcMK
+0x100008950	0x00000080	[  1] _$s5image20PresentationRevisionVSHAAMcMK
+0x1000089D0	0x00000080	[  1] _$s5image22NormalizedPointerEventVSQAAMcMK
+0x100008A50	0x00000004	[  2] _giftui_spec002_resource_sink

@@ -1,0 +1,61 @@
+
+/Users/eugene/work/GiftUI/.build/contract-reports/spec-002/rfc-014/.tmp-nrf52840-embedded-81830/resources/baseline/image:     file format elf32-littlearm
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 rom_start     00000100  00000000  00000000  00000120  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 text          00005874  00000100  00000100  00000220  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  2 .ARM.exidx    00000008  00005974  00005974  00005a94  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+  3 initlevel     00000040  0000597c  0000597c  00005a9c  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+  4 device_area   00000080  000059bc  000059bc  00005adc  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+  5 sw_isr_table  00000180  00005a3c  00005a3c  00005b5c  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+  6 gpio_driver_api_area 00000024  00005bbc  00005bbc  00005cdc  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+  7 clock_control_driver_api_area 0000001c  00005be0  00005be0  00005d00  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+  8 uart_driver_api_area 0000000c  00005bfc  00005bfc  00005d1c  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+  9 tbss          00000004  00005c08  00005c08  00005d28  2**2
+                  ALLOC, THREAD_LOCAL
+ 10 rodata        00000950  00005c10  00005c10  00005d30  2**4
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+ 11 .swift_modhash 00000020  00006560  00006560  00006680  2**0
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+ 12 .ramfunc      00000000  20000000  20000000  000066d4  2**0
+                  CONTENTS
+ 13 datas         00000028  20000000  00006580  000066a0  2**2
+                  CONTENTS, ALLOC, LOAD, DATA
+ 14 device_states 00000008  20000028  000065a8  000066c8  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+ 15 .comment      00000020  00000000  00000000  000066d4  2**0
+                  CONTENTS, READONLY
+ 16 .debug_aranges 00001218  00000000  00000000  000066f8  2**3
+                  CONTENTS, READONLY, DEBUGGING, OCTETS
+ 17 .debug_info   0003c6fc  00000000  00000000  00007910  2**0
+                  CONTENTS, READONLY, DEBUGGING, OCTETS
+ 18 .debug_abbrev 0000a159  00000000  00000000  0004400c  2**0
+                  CONTENTS, READONLY, DEBUGGING, OCTETS
+ 19 .debug_line   00020214  00000000  00000000  0004e165  2**0
+                  CONTENTS, READONLY, DEBUGGING, OCTETS
+ 20 .debug_frame  00002b1c  00000000  00000000  0006e37c  2**2
+                  CONTENTS, READONLY, DEBUGGING, OCTETS
+ 21 .debug_str    0000b796  00000000  00000000  00070e98  2**0
+                  CONTENTS, READONLY, DEBUGGING, OCTETS
+ 22 .debug_loc    0001cbc0  00000000  00000000  0007c62e  2**0
+                  CONTENTS, READONLY, DEBUGGING, OCTETS
+ 23 .debug_ranges 00004c98  00000000  00000000  000991f0  2**3
+                  CONTENTS, READONLY, DEBUGGING, OCTETS
+ 24 .ARM.attributes 0000003c  00000000  00000000  0009de88  2**0
+                  CONTENTS, READONLY
+ 25 .last_section 00000004  000065b0  000065b0  000066d0  2**2
+                  CONTENTS, ALLOC, LOAD, DATA
+ 26 bss           00000409  20000030  20000030  00006730  2**3
+                  ALLOC
+ 27 noinit        00001300  20000480  20000480  00006730  2**7
+                  ALLOC

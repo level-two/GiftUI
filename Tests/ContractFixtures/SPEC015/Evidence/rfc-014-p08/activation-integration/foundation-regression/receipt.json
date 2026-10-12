@@ -1,0 +1,49 @@
+{
+  "runs": [
+    {
+      "profile": "macos-static",
+      "report": ".build/contract-reports/spec-002/rfc-014/b5140b92f857485cf83951780ae93eeda3d32336-87cad7ea9aed8edc/macos-static",
+      "metadata_sha256": "57de756930144d36fb428b440dab7422cbf6076115faebbdc1c53bcad93fdc93",
+      "checks": "full SPEC-002 RFC014 gate passed",
+      "verified_hash_counts": {
+        "input-hashes.tsv": 6994,
+        "report-hashes.tsv": 54
+      }
+    },
+    {
+      "profile": "macos-dynamic",
+      "report": ".build/contract-reports/spec-002/rfc-014/b5140b92f857485cf83951780ae93eeda3d32336-87cad7ea9aed8edc/macos-dynamic",
+      "metadata_sha256": "84a86609c27cc406027f21eae768a4596572a36426919230afa3af171343e17e",
+      "checks": "full SPEC-002 RFC014 gate passed",
+      "verified_hash_counts": {
+        "input-hashes.tsv": 6994,
+        "report-hashes.tsv": 54
+      }
+    },
+    {
+      "profile": "raspberry-pi-armv6",
+      "report": ".build/contract-reports/spec-002/rfc-014/b5140b92f857485cf83951780ae93eeda3d32336-87cad7ea9aed8edc/raspberry-pi-armv6",
+      "metadata_sha256": "29f203faf77dcdbfd4a28963478ac43a1d9594035c4e4e413c98212b6db8084b",
+      "checks": "full SPEC-002 RFC014 gate passed",
+      "verified_hash_counts": {
+        "input-hashes.tsv": 6994,
+        "report-hashes.tsv": 21
+      }
+    },
+    {
+      "profile": "nrf52840-embedded",
+      "report": ".build/contract-reports/spec-002/rfc-014/b5140b92f857485cf83951780ae93eeda3d32336-eeda470c3f434efd/nrf52840-embedded",
+      "metadata_sha256": "3688455e08a57bdd5a7d1d7296ecb1b9fb8f654195dfb887d28f167d44a8e5ca",
+      "checks": "full SPEC-002 RFC014 gate passed",
+      "verified_hash_counts": {
+        "input-hashes.tsv": 6994,
+        "report-hashes.tsv": 32
+      }
+    }
+  ],
+  "repair_count": 2,
+  "scope_closed": true,
+  "source_commit": "b5140b92f857485cf83951780ae93eeda3d32336",
+  "native_execution": true,
+  "target_execution": false
+}

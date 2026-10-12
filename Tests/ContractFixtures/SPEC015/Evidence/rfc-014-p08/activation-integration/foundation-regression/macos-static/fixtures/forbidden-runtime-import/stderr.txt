@@ -1,0 +1,4 @@
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC002/Fixtures/Negative/forbidden-runtime-import/main.swift:1:8: error: no such module 'GiftUIRuntimeDynamic'
+1 | import GiftUIRuntimeDynamic
+  |        `- error: no such module 'GiftUIRuntimeDynamic'
+2 | 

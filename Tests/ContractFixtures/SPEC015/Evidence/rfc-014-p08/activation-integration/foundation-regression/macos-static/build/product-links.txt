@@ -1,0 +1,2 @@
+Archive : /Users/eugene/work/GiftUI/.build/contract-reports/spec-002/rfc-014/.tmp-macos-static-80919/build/libGiftUI.a
+/Users/eugene/work/GiftUI/.build/contract-reports/spec-002/rfc-014/.tmp-macos-static-80919/build/libGiftUI.a(GiftUI-1.o):

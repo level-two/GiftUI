@@ -1,0 +1,10 @@
+d8953ebaa6cdd525bc702e3d8de79eafb9f621e6f7c30c9d756805b251a2fe6c  /Users/eugene/work/GiftUI/Sources/GiftUI/GiftUI.swift
+639c63514b23c7c7fa28aa5390f1c52251ef6fb79b683909e651d84e2b729431  /Users/eugene/work/GiftUI/scripts/contracts/run-spec-002.sh
+d1b1b075a337aa220a4694b4d22fd6da3f08a321f0ce06707f7496c7d62904c2  /Users/eugene/work/GiftUI/scripts/contracts/compiler-baseline.sh
+db13c5049c92b7f94d440381640064b2e243f42dbf04542de2a38ada9716d2b5  /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC002/CompilerBaseline/RequiredFeatures.swift
+a740d8524e54241fea11669c2f5feae9b638ac166542730f7049f6c3359a5672  /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC002/CompilerBaseline/route-inventory.tsv
+27812d79fe15727fcfb9897aee84582d784b7fccd39213ace3df68692dbf14b0  /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC002/ResourceProbe/ResourceProbe.swift
+ae16a47963487df1077806617766a1e400c184b0788f98b98470e059f4b8d2c2  /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC002/ResourceProbe/main.c
+dd52996b208866a0b8f37391a278ca8cb9f501f6a5a34e904f2a607423d5dec9  /Users/eugene/work/GiftUI/firmware/nrf52840/applications/spec002-resource-probe/CMakeLists.txt
+ad01d6b32c58376d7941d1c56d5b93f66e0ae3cae93d1affee27da61a32c3681  /Users/eugene/work/GiftUI/firmware/nrf52840/applications/spec002-resource-probe/prj.conf
+300724ac3971a8cef62c82788c10aed663367d3d8b61940db48339792167dd84  /Users/eugene/work/GiftUI/firmware/nrf52840/applications/spec002-resource-probe/src/stubs.c
