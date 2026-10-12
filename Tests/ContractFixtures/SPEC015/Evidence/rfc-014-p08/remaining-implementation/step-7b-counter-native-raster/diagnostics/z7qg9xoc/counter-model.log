@@ -1,0 +1,7 @@
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPixelOracle.swift:39:32: error: value of type 'GlyphMetrics' has no member 'advance'
+37 |             }
+38 |             precondition(accessed == true)
+39 |             baselineX += glyph.advance; ordinal += 1
+   |                                `- error: value of type 'GlyphMetrics' has no member 'advance'
+40 |         }
+41 |     }

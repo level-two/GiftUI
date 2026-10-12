@@ -1,0 +1,19 @@
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterNativeRaster.swift:219:9: error: for-in loop requires 'InlineArray<3, UInt32>' to conform to 'Iterable', which is only available in macOS 27.0 or newer
+207 | }
+208 | typealias CounterNativeEndpoint = OneShotRasterBackendEndpoint<CounterNativeRasterAdapter, GiftUIReferenceTextMetricsView, GiftUIReferenceTextRasterView, CounterNativeEnvelope>
+209 | struct CounterEndpoint: SynchronousFrameEndpoint {
+    |        `- note: add '@available' attribute to enclosing struct
+210 |     var actual: CounterNativeEndpoint
+211 |     var sink: CounterRenderSink { actual.sink.recording }
+212 |     init(configuration: HostEndpointConfiguration, control: UnsafeMutablePointer<CounterControl>) {
+    |     `- note: add '@available' attribute to enclosing initializer
+213 |         let adapter = CounterNativeRasterAdapter(configuration: configuration, control: control)
+214 |         let constructed = HostEndpointConfiguration(effectivePresentation: configuration.effectivePresentation, descriptor: adapter.descriptor, payloadLimits: adapter.payloadLimits, surfaceWritableCapacityBytes: adapter.surface.writableCapacityBytes, displaySubmissionLifetime: adapter.target.submissionLifetime, displayHandoff: adapter.target.handoff, displayMaximumInFlightPayloads: adapter.target.maximumInFlightPayloads, displayMaximumInFlightBytes: adapter.target.maximumInFlightBytes, textRasterRealization: .init(rawValue: 0), healthOwnerCount: 1, endpointAndDisplayShareHealthOwner: adapter.target.control == control)
+    :
+217 |         // the exact actual projection remains the sole activation configuration.
+218 |         let capacities: InlineArray<3, UInt32> = [47999, 48000, 48001]
+219 |         for capacity in capacities {
+    |         |- error: for-in loop requires 'InlineArray<3, UInt32>' to conform to 'Iterable', which is only available in macOS 27.0 or newer
+    |         `- note: add 'if #available' version check
+220 |             let candidate = HostEndpointConfiguration(effectivePresentation: constructed.effectivePresentation, descriptor: constructed.descriptor, payloadLimits: constructed.payloadLimits, surfaceWritableCapacityBytes: capacity, displaySubmissionLifetime: constructed.displaySubmissionLifetime, displayHandoff: constructed.displayHandoff, displayMaximumInFlightPayloads: constructed.displayMaximumInFlightPayloads, displayMaximumInFlightBytes: constructed.displayMaximumInFlightBytes, textRasterRealization: constructed.textRasterRealization, healthOwnerCount: constructed.healthOwnerCount, endpointAndDisplayShareHealthOwner: constructed.endpointAndDisplayShareHealthOwner)
+221 |             precondition(HostEndpointStartupValidation.validateConstructedProjection(candidate, equals: configuration) == (capacity == 48000 ? nil : .invalidEndpointDescriptor))

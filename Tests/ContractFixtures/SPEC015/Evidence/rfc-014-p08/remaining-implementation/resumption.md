@@ -236,3 +236,71 @@ Step7a result: [receipt](step-7a-counter-input-gate/result.md) passes3,687
 assertions/23controls at `.build/contracts/p08-counter-vs_qqlzj`. No compile repair,
 all source/artifact hashes verified. Guard0/2. Remaining endpoint/raster/live graph
 and wake joins, four registered routes and early linked target ledgers stay open.
+
+
+## Step7b — finite native actual endpoint/raster join
+
+Sequential Strong Sol6.1 High; guard0/2. CounterNativeRaster is a fixture adapter
+of existing protocols and existing RGBA buffer/coverage/emitter algorithms, using
+OneShotRasterBackendEndpoint. Actual native surface and payload arrays are inline
+40,000 bytes each in the full physically charged CounterControl. One health value
+lives there; display and endpoint adapters share its stable control identity.
+Validated assembly endpoint projection passes into activate-time construction
+without capability re-resolution. Full-surface emission contains100 row regions
+inside one payload; the former inert maximumRegionsPerPayload1 is corrected100
+without changing any byte/workload/pacing/resource ceiling. It was never actual
+backend evidence. Embedded/Pi RGB565 compositions remain required separately.
+Next pinned gate validates native endpoint construction and complete action corpus;
+independent pixel and failure/identity controls follow within this finite slice.
+
+
+Step7b first native adapter run vtu8hlfi passed3,687assertions/23controls.
+Background authority: SPEC015 amendment counter clause(lines270–274) fixes the
+finite root/actions/text/disabled/stroke corpus, without frozen styling; its
+source inventory cites RFC014-C's explicitly uncompiled illustrative example
+(lines125–165). Existing background semantics add one ordinary operation within
+unchanged24ordinary/25combined limits and preserve geometry/routes. Native
+backing initializes canonical opaque black; root background clears prior glyphs.
+The independent pixel oracle computes expected coverage from authored positions
+and font bitmap bits without invoking layout/raster coverage under test. Its first
+compile z7qg9xoc found a local API spelling error glyph.advance; exact maintained
+GlyphMetrics field is advanceX. Corrected only that name; expected pixels unchanged.
+Guard0/2 pending this bounded repair; exact diagnostic retained.
+
+
+Step7b utlmbslt passed module/ownership/link then stopped at semantic invalidIdentity
+after adding background. Exact source inspection identifies the missing type-role
+entry: CounterScreen.Body is now the background wrapper, so the underlying existing
+VStack concrete type also needs finite role metadata. Added inert type sample role10;
+no topology input or runtime algorithm change. This is narrower evidence, guard0/2.
+Native extent100×100 did not cover stroke pixels; it was never a complete pixel pass.
+Per approved finite fixture scope and parent instruction, select100×120 so all
+112px authored content fits. Surface/payload/inflight byte ceilings consistently
+48000, row regions120; these are fixture-derived extent quantities, with the same
+finite operation and model reservations. Independent stroke mask derives from
+SPEC012 canonical pixel-center/boundary contract: horizontal y104,width1 covers
+rows103/104 and x17..<17+4value; round cap radius.5 includes no extra diagonal center.
+No observed raster output supplies expected coverage. Pi/nRF remain separateRGB565.
+
+
+Step7b ph1qxnz0 passed1,348,359assertions/23controls including all native pixels
+and visible strokes. Final controls revalidate the actual constructed projection
+at48000 bytes and reject47999/48001, duplicate health-owner count and unshared
+health identity. The same actual OneShot endpoint rejects invalid envelopes before
+reservation/producer invocation, then accepts the exact current envelope. No
+configuration repaired or bounds relaxed. Backend arrays remain fully charged
+in CounterControl; excluded endpoint/sink metadata belongs in the later backend
+ledger. Final pinned run follows for this finite proof addition.
+
+
+Final projection-control compile p3znrysf rejected InlineArray for-in iteration
+which requires macOS27 Iterable on this6.4 toolchain. Replace with index iteration
+without changing expected values, target, compiler, deployment version or bounds.
+Precise API correction; no repeated unproductive blocker. Guard0/2.
+
+
+Step7b final [receipt](step-7b-counter-native-raster/result.md) passes1,348,527
+reportedassertions/23controls at `.build/contracts/p08-counter-enb6do6k`. All hashes
+verified; guard0/2. Native visible stroke and exact actual endpoint/health/byte
+controls complete this finite slice. Remaining real graph/application/wake source
+integration precedes sequential final target-route and linked-image collection.

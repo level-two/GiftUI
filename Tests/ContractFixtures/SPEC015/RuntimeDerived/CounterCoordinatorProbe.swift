@@ -19,7 +19,7 @@ func exerciseCounterCoordinator<G, C, R, H>(models: borrowing ObservableModelSco
     var movedGeometry: G? = consume geometry
     var movedInteraction: InteractionOwnedKeyState<C, R, H>? = consume interaction
     return withUnsafeMutablePointer(to: &control) { pointer in
-        let owner = CounterPipelineOwner(models: models.borrowedScope(), root: root.borrowedRoot(), semantic: semantic.borrowedStore(), values: values.borrowedValues(), geometry: movedGeometry.take()!, interaction: movedInteraction.take()!, control: pointer, limits: audit.limits)
+        let owner = CounterPipelineOwner(models: models.borrowedScope(), root: root.borrowedRoot(), semantic: semantic.borrowedStore(), values: values.borrowedValues(), geometry: movedGeometry.take()!, interaction: movedInteraction.take()!, control: pointer, limits: audit.limits, endpointConfiguration: assembly.endpoint)
         let binding = CounterExecutionBinding(models: models.borrowedScope(), root: root.borrowedRoot(), control: pointer, audit: audit)!
         let admission = CounterAdmission(control: pointer, limits: audit.limits.execution)
         #if !hasFeature(Embedded)

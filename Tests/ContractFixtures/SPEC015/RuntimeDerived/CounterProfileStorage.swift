@@ -122,7 +122,8 @@ where G: CounterGeometry, C: CounterCandidateBacking, R: CounterCommittedBacking
         concreteCoordinatorBytes = MemoryLayout<DynamicRuntimeExecutionCoordinator<CounterExecutionBinding, Admission, Owner>>.size
     }
     #endif
-    // Endpoint and sink belong to the recording adapter, not profile storage.
+    // Endpoint/sink metadata belongs to the backend owner, not profile storage.
+    // Physical backend arrays in CounterControl remain fully charged below.
     let coordinator = concreteCoordinatorBytes - MemoryLayout<G>.size
         - MemoryLayout<InteractionOwnedKeyState<C, R, H>>.size - MemoryLayout<CounterEndpoint>.size
         + MemoryLayout<CounterControl>.size - Admission.pointerStateStorageBytes

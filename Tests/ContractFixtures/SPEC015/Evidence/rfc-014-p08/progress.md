@@ -337,3 +337,16 @@ rejections leave the queue empty, and teardown quiesces the gate. Full live cont
 footprint includes the gate. Guard0/2; actual endpoint/raster/wake/live graph, four
 routes and early linked targets remain open. Recording acceptance is not physical
 display proof. No P08 exit claim.
+
+
+## Remaining step7b — actual native endpoint/raster (2026-10-12)
+
+[Receipt](remaining-implementation/step-7b-counter-native-raster/result.md):
+1,348,527reportedassertions/23controls pass. Both actual hosts construct existing
+OneShot endpoint with exact validated native projection, one shared display health
+owner and real RGBA buffer/coverage/payload emission. Independent full-byte oracles
+cover all text/digits/disabled actions and visible optional stroke on100×120.
+Actual96000surface+payload bytes and all control fields are physically charged.
+Equal/adjacent-capacity/shared-health projection and pre-production envelope
+negatives pass. Guard0/2. Real graph/application/wake, four routes and early linked
+images remain open; no complete image or P08 exit claim.

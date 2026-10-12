@@ -22,6 +22,9 @@ struct CounterRuntimeControl {
     var unavailable = false
 }
 struct CounterControl {
+    #if !hasFeature(Embedded)
+    var backend = CounterNativeBackendStorage()
+    #endif
     var runtime = CounterRuntimeControl()
     // The coordinator and finite callback adapter share this single controller.
     var admissionController: CounterAdmission.Controller?
@@ -87,9 +90,11 @@ struct CounterControl {
     var hasRoot = false
     var frameActive = false
 }
+#if hasFeature(Embedded)
 struct CounterEndpoint: SynchronousFrameEndpoint {
     var disposition: FrameOfferDisposition = .accepted
     var sink = CounterRenderSink()
+    init(configuration: HostEndpointConfiguration, control: UnsafeMutablePointer<CounterControl>) {}
     var calls = 0
     var streams = 0
     mutating func offer(provenance: FrameProvenance, body: (inout CounterRenderSink) -> FrameStreamResult) -> FrameOfferResult {
@@ -106,6 +111,7 @@ struct CounterEndpoint: SynchronousFrameEndpoint {
         }
     }
 }
+#endif
 struct CounterPipelineOwner<Geometry, Candidate, Committed, Hits>: ~Copyable, ~Escapable, RuntimeCompletePipelineOwner
 where Geometry: CounterGeometry, Candidate: CounterCandidateBacking, Committed: CounterCommittedBacking, Hits: CounterHitBacking, Candidate.Identity == SemanticCompleteIdentity, Committed.Identity == SemanticCompleteIdentity, Hits.Identity == SemanticCompleteIdentity {
     typealias OwnerFailure = RuntimeOwnerFailure
@@ -127,7 +133,7 @@ where Geometry: CounterGeometry, Candidate: CounterCandidateBacking, Committed: 
     var committedPresentation: PresentationRevision?
     var sealedAdmission: AdmissionSummary?
     var recovery = RecordingPresentationPendingCoordinator(maximumRetryableRefusals: 3, requester: CounterWake())!
-    var endpoint = CounterEndpoint()
+    var endpoint: CounterEndpoint
     var frameActive = false
     var observableCandidate = false
     var semanticCandidate = false
@@ -146,9 +152,10 @@ where Geometry: CounterGeometry, Candidate: CounterCandidateBacking, Committed: 
     var quiescent = false
     var presentationTeardownComplete = false
     @_lifetime(copy models, copy root, copy semantic, copy values, borrow control)
-    init(models: consuming ObservableModelScope<CounterOwnedModel, CounterModelSchema>, root: consuming ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, semantic: consuming SemanticRecordStore<CounterPayload>, values: consuming CanvasStagedValues<SemanticRecordReference, CounterValueTable>, geometry: consuming Geometry, interaction: consuming InteractionOwnedKeyState<Candidate, Committed, Hits>, control: borrowing UnsafeMutablePointer<CounterControl>, limits: RuntimeProfileLimits) {
+    init(models: consuming ObservableModelScope<CounterOwnedModel, CounterModelSchema>, root: consuming ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, semantic: consuming SemanticRecordStore<CounterPayload>, values: consuming CanvasStagedValues<SemanticRecordReference, CounterValueTable>, geometry: consuming Geometry, interaction: consuming InteractionOwnedKeyState<Candidate, Committed, Hits>, control: borrowing UnsafeMutablePointer<CounterControl>, limits: RuntimeProfileLimits, endpointConfiguration: HostEndpointConfiguration) {
         self.models = consume models; self.root = consume root; self.semantic = consume semantic; self.values = consume values
         self.limits = limits
+        self.endpoint = CounterEndpoint(configuration: endpointConfiguration, control: control)
         self.geometry = consume geometry; self.interaction = consume interaction; self.control = copy control
         precondition(self.root.belongs(to: self.models))
     }
@@ -410,7 +417,9 @@ where Geometry: CounterGeometry, Candidate: CounterCandidateBacking, Committed: 
         if let error = boundary(.offerAndProduction) { return .failure(error) }
         if let error = phase.transition(to: .offering) { return .failure(.execution(error)) }
         control.pointee.context = phase.context
+        #if hasFeature(Embedded)
         endpoint.disposition = control.pointee.offer
+        #endif
         var retained: RenderProductionError?
         let offer = endpoint.offer(provenance: provenance!) { sink in
             control.pointee.streams += 1

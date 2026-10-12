@@ -25,6 +25,8 @@ package enum CounterRoles: SemanticDeclarationRoles {
         let canvas = CounterCanvas<CounterDomain>(model: .init(ownerInstance: 0, allocationGeneration: 0, slot: 0)).frame(width: 48, height: 16)
         if matches(type, disabled) { return .init(rawValue: 7) }
         if matches(type, canvas) { return .init(rawValue: 8) }
+        let stack = try! VStack(spacing: 4) { label; label; disabled; disabled; canvas }
+        if matches(type, stack) { return .init(rawValue: 10) }
         if matches(type, TupleView5(label, label, disabled, disabled, canvas)) { return .init(rawValue: 9) }
         return nil
     }

@@ -88,13 +88,14 @@ extension CounterPipelineOwner {
         values: consuming CanvasStagedValues<SemanticRecordReference, CounterValueTable>,
         geometry: consuming Geometry,
         interaction: consuming InteractionOwnedKeyState<Candidate, Committed, Hits>,
-        scopedControl: consuming CounterHostControl, limits: RuntimeProfileLimits
+        scopedControl: consuming CounterHostControl, limits: RuntimeProfileLimits, endpointConfiguration: HostEndpointConfiguration
     ) {
         self.models = consume models
         self.root = consume root
         self.semantic = consume semantic
         self.values = consume values
         self.limits = limits
+        self.endpoint = CounterEndpoint(configuration: endpointConfiguration, control: scopedControl.pointer)
         self.geometry = consume geometry
         self.interaction = consume interaction
         self.control = scopedControl.pointer
@@ -128,11 +129,11 @@ enum CounterHostState: ~Copyable, ~Escapable {
         self = .inert(consume supplied, activationSpan)
     }
     @_lifetime(self: copy self)
-    mutating func activate() {
+    mutating func activate(endpointConfiguration: HostEndpointConfiguration) {
         switch consume self {
         case .inert(let supplied, let span):
             precondition(span.count == 1 && span[0] == 1)
-            let pipeline = CounterHostPipeline(models: supplied.borrowedModels(), root: supplied.borrowedRoot(), semantic: supplied.borrowedSemantic(), values: supplied.borrowedValues(), geometry: supplied.geometry, interaction: supplied.interaction, scopedControl: supplied.borrowedControl(), limits: supplied.audit.limits)
+            let pipeline = CounterHostPipeline(models: supplied.borrowedModels(), root: supplied.borrowedRoot(), semantic: supplied.borrowedSemantic(), values: supplied.borrowedValues(), geometry: supplied.geometry, interaction: supplied.interaction, scopedControl: supplied.borrowedControl(), limits: supplied.audit.limits, endpointConfiguration: endpointConfiguration)
             let binding = CounterExecutionBinding(models: supplied.borrowedModels(), root: supplied.borrowedRoot(), scopedControl: supplied.borrowedControl(), audit: supplied.audit)!
             let coordinator = CounterHostCoordinator(binding: binding, admission: CounterAdmission(control: supplied.controlPointer, limits: supplied.audit.limits.execution), opportunity: pipeline)
             self = .active(consume coordinator, nil, span)
@@ -269,7 +270,7 @@ struct CounterHostOwner: ~Copyable, ~Escapable, SignalAnalyzerPresetLiveOwner {
     }
     mutating func constructRuntimeAndEndpoint() -> HostActivationStepResult<ActivationFailure> {
         precondition(activationStep == 0 && constructions == 0)
-        state.activate(); constructions += 1; activationStep = 1
+        state.activate(endpointConfiguration: assembly.endpoint); constructions += 1; activationStep = 1
         return failAfterRuntime ? .failure(.configuration(.arithmeticOverflow), progress: .init(runtimeConstructed: true)) : .advanced
     }
     mutating func constructApplicationOwners() -> HostActivationStepResult<ActivationFailure> {

@@ -75,7 +75,11 @@ func counterCheckHostFrame(_ control: borrowing CounterControl, value: UInt8) ->
         counterCorpusExpect(frame.secondPoint == Point(x: 17 + 4 * GeometryScalar(value), y: 104))
     }
     counterCorpusExpect(finalized)
-    return 76 + (value > 0 ? 2 : 0)
+    var checks = 76 + (value > 0 ? 2 : 0)
+    #if !hasFeature(Embedded)
+    checks += counterCheckPixels(control, value: value)
+    #endif
+    return checks
 }
 
 // Source/input callback delivery uses the coordinator's same admission owner.

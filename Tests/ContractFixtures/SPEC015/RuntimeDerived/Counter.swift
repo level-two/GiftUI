@@ -43,6 +43,6 @@ package struct CounterScreen: View {
             Button(action: CounterAction.increment) { Text("Increment") }.disabled(model.value == 9)
             Button(action: CounterAction.reset) { Text("Reset") }.disabled(model.value == 0)
             CounterCanvas(model: model).frame(width: 48, height: 16)
-        }
+        }.background(.black)
     }
 }
