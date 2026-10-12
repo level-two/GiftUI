@@ -1,0 +1,8 @@
+/Users/eugene/work/GiftUI/scripts/contracts/check-fixture-manifest.rb 
+/Users/eugene/work/GiftUI/scripts/contracts/check-spec-002-profile-corpus.rb 
+/Users/eugene/work/GiftUI/scripts/contracts/check-spec-002-migration.rb 
+/Users/eugene/work/GiftUI/scripts/contracts/check-spec-002-traceability.rb 
+/Users/eugene/work/GiftUI/scripts/contracts/check-spec-002-scope.rb 
+/Users/eugene/work/GiftUI/scripts/raspberry-pi/doctor.sh 
+/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -target armv6-unknown-linux-gnueabihf -sdk /Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.4.0-RELEASE-raspios-bookworm-armv6/raspios-bookworm -resource-dir /Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.4.0-RELEASE-raspios-bookworm-armv6/raspios-bookworm/usr/lib/swift_static -Xcc --gcc-toolchain=/Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.4.0-RELEASE-raspios-bookworm-armv6/raspios-bookworm/usr -typecheck /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC002/CompilerBaseline/RequiredFeatures.swift 
+/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swift build --package-path /Users/eugene/work/GiftUI --scratch-path /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-002/ff6ec4dfc8e5cc485896c8f7a405c554fd073cb1-9117f0128de9fa71/swiftpm --destination /Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.4.0-RELEASE-raspios-bookworm-armv6/raspios-bookworm-static.json --configuration release --product GiftUI --static-swift-stdlib -Xswiftc -whole-module-optimization --build-system native -Xswiftc -enable-experimental-feature -Xswiftc LifetimeDependence -Xswiftc -enable-experimental-feature -Xswiftc Lifetimes 

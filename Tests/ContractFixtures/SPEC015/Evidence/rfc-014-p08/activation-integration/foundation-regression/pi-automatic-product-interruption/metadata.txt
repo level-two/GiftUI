@@ -1,0 +1,28 @@
+schema_version=1
+spec=SPEC-002
+profile=raspberry-pi-armv6
+repository_revision=ff6ec4dfc8e5cc485896c8f7a405c554fd073cb1
+report_directory=.build/contract-reports/spec-002/raspberry-pi-armv6
+compiler_baseline=rfc-014
+invocation=scripts/contracts/run-spec-002.sh --profile raspberry-pi-armv6 --compiler-baseline rfc-014
+semantic_corpus_sha256=3add894045d330ea1441f2a6ff6d5465840c867ba02fb83912657819a20f3ccb
+compiler_version<<EOF
+Apple Swift version 6.4 (swift-6.4-RELEASE)
+Target: arm64-apple-macosx26.0
+EOF
+sdk_identity<<EOF
+swift_version=6.4
+target=armv6-unknown-linux-gnueabihf
+distribution=raspios-bookworm
+sha256=3332907e1fe366a24cdd9b4af566cb4f1a1f39aa8fad785cb328af17c7484848
+EOF
+target=armv6-unknown-linux-gnueabihf
+sdk_path=/Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.4.0-RELEASE-raspios-bookworm-armv6
+destination=/Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.4.0-RELEASE-raspios-bookworm-armv6/raspios-bookworm-static.json
+optimization=-O -whole-module-optimization
+build_directory=/Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/spec-002/ff6ec4dfc8e5cc485896c8f7a405c554fd073cb1-9117f0128de9fa71
+compiler_path=/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc
+compiler_sha256=79ae5c26645489fb783ae980f0f1bdae810f90fb180c9ac39808807b65e9fd69
+compiler_features=LifetimeDependence,Lifetimes
+compiler_feature_check=passed
+exit_code=130

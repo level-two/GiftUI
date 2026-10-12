@@ -529,11 +529,17 @@ run_raspberry_pi() {
         mkdir -p "${build_dir}"
     fi
     printf 'build_directory=%s\n' "${build_dir}" >>"${metadata_path}"
+    local -a foundation_selection=(--product GiftUI)
+    if [[ "${compiler_baseline}" == rfc-014 ]]; then
+        # GiftUI is an automatic library product: --product otherwise expands
+        # to the default application build instead of this Foundation gate.
+        foundation_selection=(--target GiftUI)
+    fi
     local -a command=(
         "${compiler}" build --package-path "${PROJECT_ROOT}"
         --scratch-path "${build_dir}/swiftpm"
         --destination "${GIFTUI_PI_STATIC_DESTINATION}"
-        --configuration release --product GiftUI --static-swift-stdlib
+        --configuration release "${foundation_selection[@]}" --static-swift-stdlib
         -Xswiftc -whole-module-optimization
     )
     if [[ "${compiler_baseline}" == rfc-014 ]]; then

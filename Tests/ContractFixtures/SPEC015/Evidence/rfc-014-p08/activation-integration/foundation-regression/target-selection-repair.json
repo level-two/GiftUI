@@ -1,0 +1,7 @@
+{
+  "repair_number": 2,
+  "cause": "SwiftPM warns --product cannot be used with automatic product GiftUI; it selects the default application graph.",
+  "action": "Parent sent SIGINT to its SwiftPM process80485 after identifying the warning. Retain interrupted receipt; no failed application build is treated as a Foundation failure.",
+  "repair": "RFC014 Pi gate selects --target GiftUI, retaining existing native backend, release flags, SDK and all independent semantic/layout/resource checks.",
+  "reruns": "Rerun all four Foundation profiles with the final driver input hash; previous native passes remain historical successful inputs."
+}

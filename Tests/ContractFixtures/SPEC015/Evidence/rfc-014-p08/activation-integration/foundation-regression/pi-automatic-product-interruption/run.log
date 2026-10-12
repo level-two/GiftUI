@@ -1,0 +1,61 @@
+SPEC-002 fixture manifest check passed: 3 fixtures.
+SPEC-002 profile corpus check passed: 7 ordered cases, checksum 28.
+SPEC-002 migration closure passed: 24 rows, 6 immutable PoC inventories, exact bounded Foundation source plus approved SPEC-006, SPEC-007, SPEC-008, SPEC-010, and SPEC-012 declarations.
+SPEC-002 traceability passed: reciprocal authority links, supersession, manifest navigation, and split adapter ownership.
+SPEC-002 scope passed: Foundation and owned fixtures contain no downstream policy; adapters remain at split owner boundaries.
+ok:    running on macOS
+ok:    host Swift executable exists
+ok:    host Swift is project-local
+ok:    host swift-autolink-extract exists
+ok:    host llvm-objdump exists
+ok:    host llvm-objcopy exists
+ok:    host Swift is 6.4
+ok:    static ARMv6 destination exists
+ok:    dynamic ARMv6 destination exists
+ok:    destination targets armv6-unknown-linux-gnueabihf
+ok:    destination uses the project-local SDK
+ok:    destination uses the project-local host tools
+ok:    destination contains no /opt SDK path
+ok:    cached SDK archive checksum
+ok:    cached macOS Swift package checksum
+
+Host:   Apple Swift version 6.4 (swift-6.4-RELEASE)
+Tools:  /Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx
+Target: armv6-unknown-linux-gnueabihf
+SDK:    /Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.4.0-RELEASE-raspios-bookworm-armv6
+
+GiftUI Raspberry Pi cross-compilation environment is ready
+Fetching https://github.com/swiftlang/swift-syntax.git from cache
+Fetched https://github.com/swiftlang/swift-syntax.git from cache (1.31s)
+Computing version for https://github.com/swiftlang/swift-syntax.git
+Computed https://github.com/swiftlang/swift-syntax.git at 603.0.2 (8.22s)
+Computed https://github.com/swiftlang/swift-syntax.git at 603.0.2 (0.00s)
+Creating working copy for https://github.com/swiftlang/swift-syntax.git
+Working copy of https://github.com/swiftlang/swift-syntax.git resolved at 603.0.2
+Building for production...
+warning: '--product' cannot be used with the automatic product 'GiftUI'; building the default target instead
+[0/116] Write sources
+[103/116] Write swift-version-7730F15DD8509BE5.txt
+[103/116] Write swift-version-59EEC9ECD79D199D.txt
+[106/127] Compiling SwiftSyntax510 Empty.swift
+[107/127] Compiling SwiftSyntax602 Empty.swift
+[108/127] Compiling SwiftSyntax601 Empty.swift
+[109/127] Compiling SwiftSyntax509 Empty.swift
+[110/127] Compiling SwiftSyntax600 Empty.swift
+[111/127] Compiling SwiftSyntax603 Empty.swift
+[111/128] Compiling _SwiftSyntaxCShims PlatformMutex.c
+[113/129] Compiling GiftUIFailureCore GiftUIFailureCore.swift
+[115/131] Compiling SignalAnalyzerDomain AcquisitionState.swift
+[117/133] Compiling GiftUIFailureDiagnostics GiftUIDiagnosticProjector.swift
+[119/133] Compiling GiftUICapabilities GiftUICapabilities.swift
+[120/134] Compiling GiftUICapabilityFailureAdapterFixture CapabilityFailureAdapter.swift
+[121/134] Compiling GiftUICapabilities GiftUICapabilities.swift
+[122/135] Compiling GiftUICapabilityFailureAdapterFixture CapabilityFailureAdapter.swift
+[123/135] Compiling SignalAnalyzerData DefaultSignalAcquisitionRepository.swift
+[125/135] Compiling SwiftSyntax AbsolutePosition.swift
+[126/138] Compiling SwiftBasicFormat BasicFormat.swift
+[127/138] Compiling SwiftDiagnostics Convenience.swift
+[128/138] Compiling SwiftParser Attributes.swift
+[129/140] Compiling SwiftOperators Operator.swift
+[130/140] Compiling SwiftParserDiagnostics DiagnosticExtensions.swift
+[131/141] Compiling SwiftSyntaxBuilder ConvenienceInitializers.swift
