@@ -8,8 +8,8 @@ import GiftUISurfaceCore
 import GiftUITextResources
 import GiftUIHostConfiguration
 
-// Exact direct construction requirements of this finite composition. Runtime
-// callback direction is not a retained constructor dependency (see inventory).
+// Exact direct construction requirements from the reviewed P08-B01 inventory.
+// Activation wiring and operation-only arguments retain separate lifetime proofs.
 struct CounterHostGraph: HostComponentGraphView {
     let count: UInt8 = 18
     func record(at index: UInt8) -> HostComponentRecord? {
@@ -20,16 +20,18 @@ struct CounterHostGraph: HostComponentGraphView {
             // Actual resolved configuration + profile-owned surface/payload and
             // the selected text package passed to CounterNativeEndpoint.
             dependencies = (1 << 0) | (1 << 1) | (1 << 2) | (1 << 3) | (1 << 4) | (1 << 5)
-        case .factAdmission, .rootModelTarget, .normalizedInput, .wakeRequester:
+        case .factAdmission, .rootModelTarget:
             // Stable typed profile backing, limits, identity/context and audit.
             dependencies = 1 << 0
-        case .actionHandler:
-            // CounterHandler.operation is total over the supplied CounterAction.
-            dependencies = 1 << 12
+        case .wakeRequester:
+            // The scheduler retains the full report: profile audit0 and resolved
+            // capability origins2–5, even though installation occurs at activation.
+            dependencies = (1 << 0) | (1 << 2) | (1 << 3) | (1 << 4) | (1 << 5)
         default:
             // Value-only inert contributors/policy and owner-free constructors.
-            // Source/repository/use-case callbacks receive explicit arguments;
-            // those owners retain no callbacks or peer owner references.
+            // Use-case start, normalized submit and the static handler receive
+            // peer arguments only at operation time. Physical placement of the
+            // normalized gate in profile control does not supply a constructor input.
             dependencies = 0
         }
         return .init(role: role, dependencies: .init(rawValue: dependencies))

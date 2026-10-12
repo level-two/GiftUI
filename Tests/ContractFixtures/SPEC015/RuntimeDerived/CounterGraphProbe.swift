@@ -20,8 +20,19 @@ private struct CounterInvalidGraph: HostComponentGraphView {
     }
 }
 package func p08CounterGraph() -> Int {
+    // Independent expected vector from the reviewed actual-owner inventory:
+    // endpoint6 needs backing0, text1 and configuration2–5; wake16 retains
+    // audit0 and capability2–5 in its full report. Operation-only peers add no edge.
+    let expectedMasks: InlineArray<18, UInt32> = [0, 0, 0, 0, 0, 0, 63, 0, 0, 0, 0, 1, 0, 0, 1, 0, 61, 0]
+    for index: UInt8 in 0..<18 {
+        let record = CounterHostGraph().record(at: index)!
+        precondition(record.role.rawValue == index)
+        precondition(record.dependencies.rawValue == expectedMasks[Int(index)])
+    }
+    // Structural rejection does not establish hidden-origin rejection; that
+    // separate required factory/input coverage remains open in the P08 receipt.
     precondition(HostComponentGraphValidation.validate(CounterHostGraph()) == nil)
     precondition(CounterHostGraph().record(at: 18) == nil)
     for mode: UInt8 in 0...7 { precondition(HostComponentGraphValidation.validate(CounterInvalidGraph(mode: mode)) != nil) }
-    return 10
+    return 46
 }

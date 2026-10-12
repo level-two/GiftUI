@@ -87,19 +87,6 @@ enum CounterDynamicHostState: ~Copyable, ~Escapable {
         case .retired: preconditionFailure("retired counter control")
         }
     }
-    borrowing func constructedRuntimeProjectionIsValid() -> Bool {
-        switch self {
-        case .active(let coordinator, _, _):
-            let pipeline = coordinator.opportunity.control
-            let modelsMatch = coordinator.opportunity.root.belongs(to: coordinator.opportunity.models)
-            let rootPresent = coordinator.opportunity.rootIdentity != nil
-            let admissionPresent = pipeline.pointee.admissionController != nil
-            let wakePresent = pipeline.pointee.wake != nil && pipeline.pointee.scheduler != nil
-            let oneRoot = pipeline.pointee.hasRoot && pipeline.pointee.committedRecords == 2
-            return modelsMatch && rootPresent && admissionPresent && wakePresent && oneRoot
-        case .inert, .retired: return false
-        }
-    }
     @_lifetime(self: copy self)
     mutating func activate(endpointConfiguration: HostEndpointConfiguration) {
         switch consume self {
@@ -257,7 +244,12 @@ struct CounterDynamicHostOwner: ~Copyable, ~Escapable, SignalAnalyzerPresetLiveO
     mutating func establishWakeAndPacingHostLoop() -> HostActivationStepResult<ActivationFailure> {
         precondition(activationStep == 6)
         state.controlPointer.pointee.establishCounterScheduler(report: assembly.report)
-        let runtimeProjection = state.constructedRuntimeProjectionIsValid()
+        let control = state.controlPointer
+        let runtimeProjection = control.pointee.hasRoot
+            && control.pointee.committedRecords == 2
+            && control.pointee.admissionController != nil
+            && control.pointee.wake != nil
+            && control.pointee.scheduler != nil
         let applicationProjection = application!.constructedProjectionIsValid
         precondition(runtimeProjection && applicationProjection)
         #if !hasFeature(Embedded)

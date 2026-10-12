@@ -1,6 +1,15 @@
 # RFC-014 P08 execution receipt — 2026-10-11
 
-**Current checkpoint — 2026-10-12: B01 inventory complete; independent Strong review pending.**
+**Current checkpoint — 2026-10-12: B02 bounded helper/mask realization complete; B03 not started.**
+[B01 independent Strong PASS](remaining-implementation/option-b/b01-independent-review.md)
+accepted the actual inventory, exact masks and projection replacements.
+[B02 diff/result](remaining-implementation/option-b/b02-result.md) records the four
+fixture-file changes and static inspection/whitespace evidence only. No compiler,
+formatter, gate, dependency rebuild or target build ran; no feasibility/pass claim.
+Historical 2/2 closed; B03 native 0/1 unused. Remaining operational/origin controls,
+four routes, early target images and P08 exit remain mandatory and open.
+
+**Historical checkpoint — 2026-10-12: B01 inventory complete; independent Strong review pending.**
 The separate implementation activity is now authorized by the current user.
 [Actual construction/activation/operation inventory](remaining-implementation/option-b/b01-inventory.md)
 records all eighteen selected owners, exact proposed B02 masks and two projection
@@ -518,3 +527,39 @@ formatter, gate, build or dependency refresh ran. `git diff --check` passes.
 B02 is limited to the four inventory files; B03 retains its one later attempt and
 separate result review. Historical2/2 closed, B03 0/1 unused; P08/T8.1/four routes/
 early images/P09–P12 remain open. Entry dispatch is included in this review commit.
+
+### B02 dispatch — reviewed bounded implementation
+
+Entry `6e332ab1`, clean; B01 independent Strong review passes. Strong
+`gpt-6.1-sol` / `high` continues C3/R3 lifetime-sensitive projection work.
+HC-003/014/018 and HC-RD-002 govern. Allowed source files are exactly
+CounterHostOwner.swift, CounterDynamicHostOwner.swift, CounterHostAssembly.swift
+and CounterGraphProbe.swift under RuntimeDerived. Apply the B01 reviewed vector
+and direct controlPointer projections exactly; preserve initializer association,
+cache lifetime, application/endpoint checks and all operational paths. Remaining
+implementation choice: none beyond local syntax/comments matching that review.
+Update B02 receipt here and under option-b, commit this step, and stop before
+B03. Only static inspection/whitespace checks; no compiler/gate or source outside
+that footprint. B03 0/1 unused, historical 2/2 closed. Recorded operational gaps
+remain mandatory later P08 work; no feasibility or package-exit claim.
+
+
+### B02 result — 2026-10-12
+
+Entry `6e332ab1`, B01 separate Strong PASS. Implemented exactly the reviewed
+four fixture files: both whole-coordinator borrowing projection helpers removed;
+activation uses existing controlPointer hasRoot/committedRecords/admission/wake/
+scheduler projections; exact construction masks adopted; corresponding graph
+identity/mask controls added with all structural negatives preserved.
+[Complete B02 result and applicability](remaining-implementation/option-b/b02-result.md).
+Initializer association, independent retained cache lifetime, actual application/
+endpoint checks and operational wake/teardown code remain unchanged.
+
+Expected graph count is46 (formerly10), with36 added role/mask comparisons; no
+assertion executed. Static diff inspection and `git diff --check` pass. No source
+outside the four-file footprint, compiler/version/macro/executable invocation,
+formatter, gate, dependency refresh/rebuild or target build. Entry dispatch is
+included in this commit. All B01 operational/factory-origin gaps remain mandatory
+remaining-P08 work as accepted by independent review. No feasibility, HC/P08 pass
+or package exit. Historical2/2 closed; B03 native0/1 unused; stop for separate
+B03 dispatch. SPEC-015 implementing/planactive/T8.1 open; P09–P12 pending.
