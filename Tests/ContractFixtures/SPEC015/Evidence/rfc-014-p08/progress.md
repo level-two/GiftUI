@@ -759,3 +759,40 @@ Only finding/identity receipt and this dispatch/progress changed; no source,
 formatter/compiler/driver/binary, dependency refresh or target build. R03–R05
 not started, R02 validation not invoked. Historical2/2 and B031/1 closed. Commit
 finding and return for independent Strong review; no self-acceptance or P09.
+
+### R02 independent finding review dispatch
+
+Entry `f978aa81`, clean. Strong `gpt-6.1-sol` / `high`, C3/R3, sequential.
+Review the R02 finding and exact source/contract references. Determine whether
+the existing supplied owner supports the proposed local checked binding join,
+and whether the counter/analyzer capacity distinction is already settled by
+SPEC-015. Select only ordinary implementation details supported by that contract;
+name exact trusted input source, insertion point and existing failure payload.
+If a true ownership/API/contract choice is unavoidable, produce the smallest
+user decision packet. Avoid turning lack of tests into a new approval gate.
+Allowed edits: independent review and progress only; commit. No source edits,
+compiler/tests/builds/dependency changes. Historical 2/2 and B03 1/1 closed.
+
+### R02 independent finding review result — 2026-10-12
+
+**Local checked join available; no new ownership/API/contract or approval gate.**
+[Independent Strong review](remaining-implementation/r02-binding-production-findings/independent-review.md)
+of f978aa81 identifies the trusted actual lexical profile/supplied model-root-control-
+audit inputs and separately validated assembly report. Check candidate binding
+inputs in each inert state.activate before pipeline construction can initialize
+wake/endpoint, using actual sharesOwner/belongs, pointer equality, selected
+profile, full audit/report equality. Propagate existing finite configuration
+errors with empty activation progress, preserving inert/no-owner state on failure.
+Both actual construction routes must use the checked inputs and their negatives
+must exercise that guard; no circular candidate-derived expected descriptors.
+
+SPEC-015 already preserves the counter's own scalar workload:34 accepted state
+slots/35th refusal and finite callback/projection controls are counter evidence.
+Analyzer20/2/6 production burst28, compact32/33 and category proofs remain assigned
+to existing analyzer migration/conformance paths. This is an applicability
+correction, not a limit amendment or optional deferral. R02 may resume under its
+existing bounded assignment after exact symbols/cases are recorded. R02 is not
+implemented/validated here; no source, compiler, tests, build or dependency change.
+All17 reviewed input hashes match. Historical2/2 and B031/1 remain closed;
+R03–R05/P08 exit/four routes/linked evidence/P09 remain open. Review+dispatch
+committed; no lifecycle/manifest transition or new approval requirement.
