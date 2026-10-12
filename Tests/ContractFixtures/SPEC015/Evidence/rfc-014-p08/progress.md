@@ -886,3 +886,43 @@ checkpoint navigation now records this stop while preserving history.
 R03–R05 not started. Historical2/2 closed, B031/1 spent; no reset/new allowance.
 Independent read-only Strong review follows; current WIP is not P08 acceptance.
 SPEC-015 implementing/plan active/T8.1 and P08 open; P09–P12 pending.
+
+### R02 stopped-checkpoint independent review dispatch
+
+Entry `a250aa72`, clean. Sequential Strong `gpt-6.1-sol` / `high`, C3/R3,
+read-only source/evidence review; output only review/progress and commit.
+Verify three frozen attempts, exact latest lifetime-dependent owner closure
+capture, WIP applicability, exhausted guard and last validated R01 boundary.
+Assess the smallest unimplemented continuation hypothesis and whether it requires
+contract/scope decisions; do not execute or repair it. No compiler, binary,
+formatter, test, dependency or source change. Preserve R02 stop, historical 2/2,
+B03 1/1 and R03–R05 unstarted. Return a concrete user-facing package stop report
+with required next authorization, if any, and no inferred feasibility claim.
+
+### R02 frozen-checkpoint independent review — 2026-10-12
+
+**R02 unvalidated; conservative review pause, not demonstrated base-guard
+exhaustion.** [Independent Strong review](remaining-implementation/r02-binding-controls/independent-review.md)
+verifies all three failed attempts,324 artifact hashes,60 frozen reports, exact
+six-file WIP/patch identities and496 dependency comparisons. Latest failure is
+new actual-probe owner closure capture/escape and later consume reinitialization;
+no R02 runtime controls ran. Last validated R01d2df7dcc remains1,349,005/0,23/23;
+its190 source and121 artifact identities independently match.
+
+Correction to the preceding stop interpretation: the canonical plan requires
+two repairs of the same blocker with no passing check **or narrowed cause**.
+Both R02 corrections removed prior ordinary diagnostic sets, exposing the new
+owner-capture limitation. No two unproductive repairs of that blocker occurred.
+Preserve the actual parent-directed pause and all failures; update current
+navigation on resumption to reflect this corrected conservative checkpoint.
+Historical same-helper2/2 stays closed and B031/1 spent; no ledger resets.
+
+Existing R02 authorization suffices for the smallest unimplemented continuation:
+enter foreign lexical scope before constructing owner, keep its construction,
+all six negative checks, consume/activation/teardown wholly inside that callback,
+and avoid nested owner captures via inline/scalar-only assertion helpers. Keep
+the reviewed actual guard, inputs, failures, backing and controls unchanged.
+Feasibility is untested; no source/compiler/test/build/formatter/dependency work
+ran in review. No new human gate is required solely by the failed compiles.
+Review stops here; R03–R05 unstarted, P08/T8.1/four routes/linked evidence and
+P09–P12 remain open. This review and its dispatch are committed.
