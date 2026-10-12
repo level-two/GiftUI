@@ -1020,3 +1020,13 @@ R04 outcome: initial PASS2,697,541/zero failures24/24,496 unchanged pins.
 Seven actual failure stages and both scoped-host escape negatives execute.
 Raw geometry unique expiry is not claimed; actual lexical source proof is explicit
 for independent assessment. Commit before R05. No allowance reset.
+
+### R05 read-only finding dispatch/outcome — 2026-10-12
+
+Parent directs freeze concise finding/commit before implementation for sequential
+Strong review. No R05 source/compiler/target change. [Exact fields, consumers,
+13-origin/callback negatives and current native handoff](remaining-implementation/r05-factory-origin-findings/finding.md).
+Missing descriptor is an implementation gap, not automatically new contract or
+user gate. Proposed private finite inert descriptor must serve actual consumers;
+duplicate mask alone cannot prove actual callback/derived-value origins. R04 raw
+geometry claim remains qualified. Return after commit for independent review.

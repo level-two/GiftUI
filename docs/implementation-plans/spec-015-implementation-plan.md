@@ -35,7 +35,17 @@ not additional authorization to rerun an MVP implementation or reopen experiment
 
 ### Current owner checkpoint
 
-**Current owner checkpoint — R02 native PASS, 2026-10-12.**
+**Current owner checkpoint — R01–R04 native results; R05 finding for review, 2026-10-12.**
+Latest native source `1f3a7ea0` passes2,697,541 assertions/zero failures24/24:
+actual native binding/wake/refusal/supersession and seven-stage activation controls,
+with both scoped-host escape negatives. Raw geometry expiry evidence remains
+explicitly qualified. [R05 finding and exact review handoff](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/remaining-implementation/r05-factory-origin-findings/finding.md) records required
+factory-origin/callback omissions before later projections; proposed finite inert
+descriptor is unimplemented pending sequential Strong review. No new contract or
+user approval gate is inferred. Independent native review remains pending; no
+target build. Historical helper2/2/B031/1 closed; P08/T8.1 open, P09–P12 pending.
+
+**Historical owner checkpoint — R02 native PASS, 2026-10-12.**
 [Reviewed lexical continuation](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/remaining-implementation/r02-binding-controls/continuation-result.md) passes1,349,199 assertions/zero failures
 and23/23 checks, including actual Static/Dynamic binding rejection and own34/35
 operational controls. Independent result review remains pending. The preceding
