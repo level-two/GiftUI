@@ -8,6 +8,7 @@ source "${SCRIPT_DIR}/common.sh"
 
 application="${GIFTUI_NRF_APPLICATION}"
 pristine="auto"
+counter_build=""
 
 usage() {
     cat <<'USAGE'
@@ -16,6 +17,7 @@ Usage: scripts/nrf52840/build.sh [options]
 Options:
   --application NAME  Firmware application under firmware/nrf52840/applications.
   --pristine          Discard this application's generated build before building.
+  --counter-build PATH Link verified P08 counter objects in the existing application.
   -h, --help          Show this help.
 USAGE
 }
@@ -28,6 +30,11 @@ while [[ $# -gt 0 ]]; do
             shift
             ;;
         --pristine) pristine="always" ;;
+        --counter-build)
+            [[ $# -ge 2 ]] || giftui_nrf_error "--counter-build requires a value"
+            counter_build="$2"
+            shift
+            ;;
         -h | --help) usage; exit 0 ;;
         *) giftui_nrf_error "unknown option: $1" ;;
     esac
@@ -42,6 +49,17 @@ build_dir="${GIFTUI_NRF_BUILD_ROOT}/${application}"
 
 giftui_nrf_export_environment
 
+counter_cmake_arguments=()
+if [[ -n "${counter_build}" ]]; then
+    [[ "${application}" == "signal-analyzer-static" ]] ||
+        giftui_nrf_error "counter inputs require the existing signal-analyzer-static application"
+    build_dir="${GIFTUI_NRF_BUILD_ROOT}/${application}/rfc014-counter"
+    counter_input_dir="${GIFTUI_NRF_BUILD_ROOT}/${application}/rfc014-counter-inputs"
+    python3 "${GIFTUI_NRF_PROJECT_ROOT}/scripts/contracts/build-spec-015-counter-image.py" \
+        --profile nrf52840-embedded --counter-build "${counter_build}" --output "${counter_input_dir}"
+    counter_cmake_arguments+=("-DGIFTUI_COUNTER_OBJECT_INPUTS=${counter_input_dir}/counter-objects.cmake")
+fi
+
 giftui_nrf_note "building ${application} for ${GIFTUI_NRF_BOARD}"
 "${GIFTUI_NRF_WEST}" build \
     -p "${pristine}" \
@@ -53,7 +71,8 @@ giftui_nrf_note "building ${application} for ${GIFTUI_NRF_BOARD}"
     "-DCMAKE_Swift_COMPILER=${GIFTUI_NRF_SWIFTC}" \
     "-DGIFTUI_SWIFT_TARGET=${GIFTUI_NRF_SWIFT_TARGET}" \
     "-DDTC=$(giftui_nrf_dtc)" \
-    -DUSE_CCACHE=0
+    -DUSE_CCACHE=0 \
+    "${counter_cmake_arguments[@]}"
 
 elf="${build_dir}/zephyr/zephyr.elf"
 hex="${build_dir}/zephyr/zephyr.hex"
@@ -100,6 +119,9 @@ grep -Fq 'Tag_CPU_arch: v7E-M' "${build_dir}/reports/arm-attributes.txt" ||
 grep -Fq 'Tag_ABI_VFP_args: VFP registers' "${build_dir}/reports/arm-attributes.txt" ||
     giftui_nrf_error "firmware does not declare the hard-float calling convention"
 checks_file="${application_dir}/build-checks.conf"
+if [[ -n "${counter_build}" ]]; then
+    checks_file="${application_dir}/counter-build-checks.conf"
+fi
 if [[ -f "${checks_file}" ]]; then
     while IFS='=' read -r check value; do
         [[ -n "${check}" && "${check}" != \#* ]] || continue

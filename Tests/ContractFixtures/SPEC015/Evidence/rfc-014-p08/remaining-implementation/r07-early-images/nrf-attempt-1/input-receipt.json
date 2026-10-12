@@ -1,0 +1,33 @@
+{
+  "profile": "nrf52840-embedded",
+  "counter_build": ".build/nrf52840/contracts/p08-counter-7x97oi7d",
+  "counter_receipt_sha256": "b9d2d8a3af84716f46aef8e952ea4e7466616cf370eb446ea02dd5fc111082fe",
+  "compiler_sha256": "79ae5c26645489fb783ae980f0f1bdae810f90fb180c9ac39808807b65e9fd69",
+  "objects": {
+    ".build/nrf52840/contracts/spec-006-rfc-014-swift64/39961046dd4e63d8-lv470rbm/nrf52840-embedded/GiftUI.o": "9479c51cce8c4a8b057aaa0412a5639268fdf1ae224d386ad5469e6b0864c1e5",
+    ".build/nrf52840/contracts/p08-counter-7x97oi7d/GiftUIBackendIntegration.o": "d4cc9b70e3af426253378710ccb9c8fdbabac66cd4cea5e83a2d7babd768fa1d",
+    ".build/nrf52840/contracts/p08-counter-7x97oi7d/GiftUICapabilities.o": "895719d69013640912d792eea62cd480a80b5f71dff478b2a417dcde6d690d22",
+    ".build/nrf52840/contracts/p08-counter-7x97oi7d/GiftUIDisplayCore.o": "9c21d3759f6be87ce5311ae28d3cdcadd27695ba797151b6d7ca763b75ad014a",
+    ".build/nrf52840/contracts/p08-counter-7x97oi7d/GiftUIDrawing.o": "18540a801411f90840cddf262758f7fd3200686b2bac41dabd7d05843c962817",
+    ".build/nrf52840/contracts/p08-counter-7x97oi7d/GiftUIExecution.o": "259d4580f480960135e0d7f830fcecbb6743f5f1e7606f0fea1c2412cb9a0d80",
+    ".build/nrf52840/contracts/p08-counter-7x97oi7d/GiftUIFailureCore.o": "35aad817789041b72437dfc6291d340362409813db38a7e04c79ff890c790e54",
+    ".build/nrf52840/contracts/p08-counter-7x97oi7d/GiftUIHostConfiguration.o": "e11fc397e6c4b3932cf21a6f954d07f9d121976817e647e88b9240f4a5418646",
+    ".build/nrf52840/contracts/p08-counter-7x97oi7d/GiftUIInteraction.o": "605bcf263e3e0f07491d2b3f994661aa85edecf9a9a8b4929e8c67a2985b62ed",
+    ".build/nrf52840/contracts/p08-counter-7x97oi7d/GiftUILayout.o": "a8abe31840cc03b56dbf9a096f493d584fdc88389d2084c8a33f29bab26c34fd",
+    ".build/nrf52840/contracts/p08-counter-7x97oi7d/GiftUIObservableState.o": "86e0d5d8cb1c1416983df1aeebf94d53fd27e1e48beffefc4ce9f7ab3a078841",
+    ".build/nrf52840/contracts/p08-counter-7x97oi7d/GiftUIRasterCore.o": "1b2614731ae3879b5ed337d8c4852b6c4549f0901664569aba28d298f07b9d90",
+    ".build/nrf52840/contracts/p08-counter-7x97oi7d/GiftUIReferenceTextResources.o": "017997a45cccfad914e585b21cfd3fd3ea5db41b79e31e5b15e568effe47a4a0",
+    ".build/nrf52840/contracts/p08-counter-7x97oi7d/GiftUIRenderCore.o": "e289661fb61b9e54f9e8961d92c01339b91fdba2a5d97f39ea28541f116ce60e",
+    ".build/nrf52840/contracts/p08-counter-7x97oi7d/GiftUIRenderLowering.o": "cc8fb3033e09b8d3eec5aab07e52c18b838dce7f09e76156be30b934e97c510a",
+    ".build/nrf52840/contracts/p08-counter-7x97oi7d/GiftUIRuntimeCore.o": "3be24361804f53ccdcd50521359740b6f83825a2eeb8b4e008287006a9d92fc3",
+    ".build/nrf52840/contracts/p08-counter-7x97oi7d/GiftUIRuntimeStatic.o": "d47cbb9673ec044043dcf8548a905bead695963856146b4b4ba08947ee7fdb20",
+    ".build/nrf52840/contracts/p08-counter-7x97oi7d/GiftUISemanticCore.o": "2190a6dc2266d0613a1de440d1ee6e865a15655a6233f0d8a51ea454b0c0abd9",
+    ".build/nrf52840/contracts/p08-counter-7x97oi7d/GiftUISurfaceCore.o": "07fdb20a238dd94fb5f994be207e03bb5e79ff51ed75e3942e572cea6a3d79d9",
+    ".build/nrf52840/contracts/p08-counter-7x97oi7d/GiftUITextResources.o": "285076993aa53d41c23e458702c892cd0a8ddb0a0fcc9096106c9c0d63f108a8",
+    ".build/nrf52840/contracts/p08-counter-7x97oi7d/P08CounterPresentation.o": "f65ee7d1351110ce5f36e33f0f9e0dc5e63ea1da51bfbc764ea637ec0865a6ca",
+    ".build/nrf52840/contracts/p08-counter-7x97oi7d/P08CounterRuntime.o": "f7feec1d446195d97d6c4ffaa9c2687208e2c7b882f0a644301074517937abd0",
+    ".build/nrf52840/contracts/p08-counter-7x97oi7d/P08CounterSchema.o": "83aac3191e6a52ce6fc21abee28ec7ed58f65a3797127bf53601257a7c2420a6",
+    ".build/nrf52840/contracts/p08-counter-7x97oi7d/P08CounterTable.o": "5b174fe1d0fe73cb855d44adc2ad7dded4a9e3b5b37930d26fb21ee94b05268b"
+  },
+  "execution": "not executed; early image link only"
+}

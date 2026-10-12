@@ -1246,3 +1246,36 @@ Source1497f0ae fresh nativeStatic/Dynamic PASS1,349,555/1,349,501 zero24/24; PiA
 ### R07 first coherent Pi image outcome
 
 Supported Pi product counter-image attempt2 linked PASSARMv6/VFP, staticSwift+dynamicLinuxClibraries. Actual current Dynamic counter/tiledtextstroke rooted. [Exact image/hash/LOAD/allocator/observed-frame evidence](remaining-implementation/r07-early-images/pi-result.md). LOADmemory9,915,444bytes; selectedcorpus localframe113,560bytes incl savedregs, not whole-callchainpeak/targetexecution proof. Initial missingstaticdestination-latomic linkcause narrowed/resolved using existing exact destination, no new dependency or rebuild. Commit Pi step then existing nRF image link; R07/P08exit open; no deploy/flash. Historicalguardsclosed.
+
+### R07 first nRF image failure and independent review dispatch
+
+Pi image committed0b224929. First nRF prelink failed; exact invocation, input
+receipt, source patch, partial identities and object prologues retained in
+remaining-implementation/r07-early-images/nrf-attempt-1/. No final nRF image,
+ABI/resource/stack feasibility pass or P08 completion. Existing mainstack27648,
+heap0 and resource ceilings unchanged. Four R06 routes remain compile/native
+results only. Historical repair allowances remain closed; this first link failure
+is not same-blocker repair exhaustion.
+
+Worker narrowed __divti3 to missing existing GIFTUI_NRF_EMBEDDED selection:
+RasterStrokeCoverage already contains Embedded-safe division. Existing firmware
+recipe also supplies short enums, noPIC/noPIE and picolibc include flags omitted
+from object-only compilation. GNU static-init and getentropy/device ordinal100
+remain unassessed linker observations, not established new contract requirements.
+Worker interrupted twice by selected Strong model capacity while preparing packet;
+root preserves exact WIP without further source changes or compilers.
+
+Independent Strong gpt-6.1-sol/high, sequential, read-only source/evidence review:
+assess existing supported flags and source reachability, GNUinit/entropy causes,
+and qualified object-frame gross fit. Distinguish ordinary existing-recipe repair
+from actual new runtime/contract/scope decisions; give concrete bounded handoff.
+No compiler/tests/hardware or source fixes. May finish failure packet/navigation
+and commit preserved WIP/evidence followed by separate review commit. Never call
+partial objects a final linked resource pass. Report package open and blockers.
+
+Receiving reviewer completed [first nRF failure packet](remaining-implementation/r07-early-images/nrf-result.md)
+and preserves exact WIP/source patch without fixes or compilers. The frozen
+object-stack-prologues.txt is newline-only, so no nRF gross-frame fit is yet
+evidenced. First prelink failure/no repair; partial map/config/archive do not
+establish final image/resource/ABI/allocator feasibility. Step commit precedes
+separate independent recipe/reachability review; Pi/R06 results remain distinct.

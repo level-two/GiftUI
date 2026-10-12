@@ -1,0 +1,144 @@
+diff --git a/firmware/nrf52840/applications/signal-analyzer-static/CMakeLists.txt b/firmware/nrf52840/applications/signal-analyzer-static/CMakeLists.txt
+index 863c0881..01f65b29 100644
+--- a/firmware/nrf52840/applications/signal-analyzer-static/CMakeLists.txt
++++ b/firmware/nrf52840/applications/signal-analyzer-static/CMakeLists.txt
+@@ -11,6 +11,10 @@ set(CMAKE_Swift_COMPILER_WORKS TRUE CACHE BOOL "Embedded Swift cross-compiler" F
+ project(GiftUISignalAnalyzerStatic LANGUAGES C Swift)
+ 
+ set(giftui_project_root "${CMAKE_CURRENT_SOURCE_DIR}/../../../..")
++if(DEFINED GIFTUI_COUNTER_OBJECT_INPUTS)
++    include("${CMAKE_CURRENT_SOURCE_DIR}/Counter.cmake")
++    return()
++endif()
+ find_program(GIFTUI_RUBY_EXECUTABLE ruby REQUIRED)
+ set(giftui_workload_generator
+     "${giftui_project_root}/scripts/contracts/generate-spec-015-workload.rb")
+diff --git a/scripts/nrf52840/build.sh b/scripts/nrf52840/build.sh
+index 1e6023cd..686a42db 100755
+--- a/scripts/nrf52840/build.sh
++++ b/scripts/nrf52840/build.sh
+@@ -8,6 +8,7 @@ source "${SCRIPT_DIR}/common.sh"
+ 
+ application="${GIFTUI_NRF_APPLICATION}"
+ pristine="auto"
++counter_build=""
+ 
+ usage() {
+     cat <<'USAGE'
+@@ -16,6 +17,7 @@ Usage: scripts/nrf52840/build.sh [options]
+ Options:
+   --application NAME  Firmware application under firmware/nrf52840/applications.
+   --pristine          Discard this application's generated build before building.
++  --counter-build PATH Link verified P08 counter objects in the existing application.
+   -h, --help          Show this help.
+ USAGE
+ }
+@@ -28,6 +30,11 @@ while [[ $# -gt 0 ]]; do
+             shift
+             ;;
+         --pristine) pristine="always" ;;
++        --counter-build)
++            [[ $# -ge 2 ]] || giftui_nrf_error "--counter-build requires a value"
++            counter_build="$2"
++            shift
++            ;;
+         -h | --help) usage; exit 0 ;;
+         *) giftui_nrf_error "unknown option: $1" ;;
+     esac
+@@ -42,6 +49,17 @@ build_dir="${GIFTUI_NRF_BUILD_ROOT}/${application}"
+ 
+ giftui_nrf_export_environment
+ 
++counter_cmake_arguments=()
++if [[ -n "${counter_build}" ]]; then
++    [[ "${application}" == "signal-analyzer-static" ]] ||
++        giftui_nrf_error "counter inputs require the existing signal-analyzer-static application"
++    build_dir="${GIFTUI_NRF_BUILD_ROOT}/${application}/rfc014-counter"
++    counter_input_dir="${GIFTUI_NRF_BUILD_ROOT}/${application}/rfc014-counter-inputs"
++    python3 "${GIFTUI_NRF_PROJECT_ROOT}/scripts/contracts/build-spec-015-counter-image.py" \
++        --profile nrf52840-embedded --counter-build "${counter_build}" --output "${counter_input_dir}"
++    counter_cmake_arguments+=("-DGIFTUI_COUNTER_OBJECT_INPUTS=${counter_input_dir}/counter-objects.cmake")
++fi
++
+ giftui_nrf_note "building ${application} for ${GIFTUI_NRF_BOARD}"
+ "${GIFTUI_NRF_WEST}" build \
+     -p "${pristine}" \
+@@ -53,7 +71,8 @@ giftui_nrf_note "building ${application} for ${GIFTUI_NRF_BOARD}"
+     "-DCMAKE_Swift_COMPILER=${GIFTUI_NRF_SWIFTC}" \
+     "-DGIFTUI_SWIFT_TARGET=${GIFTUI_NRF_SWIFT_TARGET}" \
+     "-DDTC=$(giftui_nrf_dtc)" \
+-    -DUSE_CCACHE=0
++    -DUSE_CCACHE=0 \
++    "${counter_cmake_arguments[@]}"
+ 
+ elf="${build_dir}/zephyr/zephyr.elf"
+ hex="${build_dir}/zephyr/zephyr.hex"
+@@ -100,6 +119,9 @@ grep -Fq 'Tag_CPU_arch: v7E-M' "${build_dir}/reports/arm-attributes.txt" ||
+ grep -Fq 'Tag_ABI_VFP_args: VFP registers' "${build_dir}/reports/arm-attributes.txt" ||
+     giftui_nrf_error "firmware does not declare the hard-float calling convention"
+ checks_file="${application_dir}/build-checks.conf"
++if [[ -n "${counter_build}" ]]; then
++    checks_file="${application_dir}/counter-build-checks.conf"
++fi
+ if [[ -f "${checks_file}" ]]; then
+     while IFS='=' read -r check value; do
+         [[ -n "${check}" && "${check}" != \#* ]] || continue
+diff --git a/firmware/nrf52840/applications/signal-analyzer-static/Counter.cmake b/firmware/nrf52840/applications/signal-analyzer-static/Counter.cmake
+new file mode 100644
+index 00000000..a02d14ee
+--- /dev/null
++++ b/firmware/nrf52840/applications/signal-analyzer-static/Counter.cmake
+@@ -0,0 +1,15 @@
++# The supported build boundary verifies every current source/object identity
++# before this finite existing-application image branch is configured.
++include("${GIFTUI_COUNTER_OBJECT_INPUTS}")
++if(NOT giftui_counter_objects)
++    message(FATAL_ERROR "Verified P08 counter objects are required")
++endif()
++set_source_files_properties(${giftui_counter_objects} PROPERTIES
++    EXTERNAL_OBJECT TRUE GENERATED TRUE)
++target_sources(app PRIVATE
++    ${giftui_counter_objects}
++    src/counter_main.c
++    src/spi_tft.c
++    src/fault.c
++    src/stubs.c)
++target_include_directories(app PRIVATE include)
+diff --git a/firmware/nrf52840/applications/signal-analyzer-static/src/counter_main.c b/firmware/nrf52840/applications/signal-analyzer-static/src/counter_main.c
+new file mode 100644
+index 00000000..a55c3e52
+--- /dev/null
++++ b/firmware/nrf52840/applications/signal-analyzer-static/src/counter_main.c
+@@ -0,0 +1,20 @@
++#include <stdint.h>
++#include <zephyr/kernel.h>
++
++#include "spi_tft.h"
++
++typedef int32_t (*counter_pixel_write)(uint16_t, uint16_t, uint16_t, uint16_t,
++                                      const uint8_t *, size_t);
++extern uint32_t giftui_rfc014_counter_entry(counter_pixel_write write);
++
++int main(void)
++{
++    if (spi_tft_initialize() != 0) {
++        printk("P08 counter display initialization failed\n");
++        return 1;
++    }
++    uint32_t checks = giftui_rfc014_counter_entry(spi_tft_write_rgb565);
++    int shutdown = spi_tft_shutdown();
++    printk("P08 counter assertions=%u shutdown=%d\n", checks, shutdown);
++    return checks > 0 && shutdown == 0 ? 0 : 1;
++}
+diff --git a/firmware/nrf52840/applications/signal-analyzer-static/counter-build-checks.conf b/firmware/nrf52840/applications/signal-analyzer-static/counter-build-checks.conf
+new file mode 100644
+index 00000000..cf65ca31
+--- /dev/null
++++ b/firmware/nrf52840/applications/signal-analyzer-static/counter-build-checks.conf
+@@ -0,0 +1,6 @@
++swift-entry-symbol=giftui_rfc014_counter_entry
++required-symbol=spi_tft_initialize
++required-symbol=spi_tft_shutdown
++required-symbol=spi_tft_write_rgb565
++required-symbol=giftui_fault_record
++zero-heap=true

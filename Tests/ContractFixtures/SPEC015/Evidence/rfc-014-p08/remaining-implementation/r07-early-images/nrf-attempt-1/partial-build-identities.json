@@ -1,0 +1,30 @@
+{
+  ".build/nrf52840/signal-analyzer-static/rfc014-counter/zephyr/zephyr_pre0.map": {
+    "sha256": "70915bd572d536b762c59730bc90f711aed74f4fb0fa457511068943a0855f5e",
+    "bytes": 27607
+  },
+  ".build/nrf52840/signal-analyzer-static/rfc014-counter/zephyr/.config": {
+    "sha256": "4f722a1601be957e850c3ff3b9c79399d72d2918c788f631364ad129ee21e2e1",
+    "bytes": 33927
+  },
+  ".build/nrf52840/signal-analyzer-static/rfc014-counter/zephyr/zephyr.dts": {
+    "sha256": "27a2a26fa786d8506d8bfcec2406e33ae605cebe3d32b39808bb9f9e9e084acf",
+    "bytes": 75427
+  },
+  ".build/nrf52840/signal-analyzer-static/rfc014-counter/build.ninja": {
+    "sha256": "7a4cb9f17265b9285f6dd99ebc9ff095677c4fa77871fb5ece16c65f39bdba2b",
+    "bytes": 1775221
+  },
+  ".build/nrf52840/signal-analyzer-static/rfc014-counter/CMakeCache.txt": {
+    "sha256": "0f5dca2d205a37a8cc04ec42bd48199af520492f135ad98b0b23a245e1a39e82",
+    "bytes": 28357
+  },
+  ".build/nrf52840/signal-analyzer-static/rfc014-counter/app/libapp.a": {
+    "sha256": "8da75658d57bf0bf592d782176ed727e37028d125e5d543968dbc8ac50610096",
+    "bytes": 5012856
+  },
+  ".build/nrf52840/signal-analyzer-static/rfc014-counter-inputs/input-receipt.json": {
+    "sha256": "f63b81cc2daf62f26703eda89778d74d979e63fea35d1e6652eb9fee4bd88ab4",
+    "bytes": 3835
+  }
+}

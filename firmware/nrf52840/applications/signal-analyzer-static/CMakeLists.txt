@@ -11,6 +11,10 @@ set(CMAKE_Swift_COMPILER_WORKS TRUE CACHE BOOL "Embedded Swift cross-compiler" F
 project(GiftUISignalAnalyzerStatic LANGUAGES C Swift)
 
 set(giftui_project_root "${CMAKE_CURRENT_SOURCE_DIR}/../../../..")
+if(DEFINED GIFTUI_COUNTER_OBJECT_INPUTS)
+    include("${CMAKE_CURRENT_SOURCE_DIR}/Counter.cmake")
+    return()
+endif()
 find_program(GIFTUI_RUBY_EXECUTABLE ruby REQUIRED)
 set(giftui_workload_generator
     "${giftui_project_root}/scripts/contracts/generate-spec-015-workload.rb")
