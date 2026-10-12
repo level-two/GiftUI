@@ -232,3 +232,7 @@ The historical **2/2** guard remains closed. The later one-native-invocation
 allowance remains **0/1, unconsumed**; this activity neither spends nor resets it
 and does not authorize running it now. SPEC-015 and SPEC-009 remain implementing,
 the owner plan remains active, and T8.1/P08 and P09–P12 remain incomplete.
+
+The [independent documentation consistency review](rfc-014-option-b-document-review.md)
+records the approved boundary, sequential handoff checks and correction of a
+stale historical resumption instruction. It supplies no implementation evidence.

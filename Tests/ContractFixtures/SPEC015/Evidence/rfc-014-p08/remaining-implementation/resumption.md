@@ -1,5 +1,19 @@
 # Remaining P08 implementation resumption — 2026-10-12
 
+> **Current disposition — Option B documents approved; implementation separate,
+> not started (2026-10-12).** The [approval record](../../../../../../docs/iterations/iteration-003-review/rfc-014-spec-approval.md#option-b-construction-graph-amendment--2026-10-12)
+> selects the construction-graph amendment and preserves the user's instruction
+> not to implement it in this activity. Resume only through the separately assigned
+> [P08-B01 → B02 → B03 sequence](../../../../../../docs/iterations/iteration-003-review/rfc-014-implementation-plan.md#option-b-resumption-sequence--separate-activity).
+> Option A is not selected. Last validated source remains `48a987cd`; `cfaa57af`
+> is unvalidated graph WIP. Historical **2/2** stays closed; the later allowance
+> is **0/1, unconsumed**, and cannot be used by this documentation activity.
+> All chronological entries below, including the opening **0/2**, operation-inclusive
+> edge analysis and requests for Option A approval, are historical. They do not
+> reset a budget or override the approved Option B contract and current plan.
+
+## Historical resumption and sequential implementation record
+
 Eugene explicitly requested: “Please proceed. Blocker was resolved by bumping
 Swift version.” Entry is clean `053f812a`; Strong Sol6.1 High, sequential, no
 delegation. The approved compiler correction and independent final audit
