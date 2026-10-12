@@ -359,5 +359,5 @@
     "firmware/nrf52840/applications/signal-analyzer-static/Counter.cmake"
   ],
   "initial_supported_build_budget": 1,
-  "build_invocations_performed": 0
+  "build_invocations_performed": 1
 }

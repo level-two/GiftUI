@@ -1,6 +1,18 @@
 # RFC-014 task context guide
 
-**Current P08 checkpoint — one R07 GOT-placement diagnostic PASS; independent review next, 2026-10-12.**
+**Current P08 checkpoint — supported nRF image links; gross-stack FAIL, 2026-10-12.**
+Reviewed sourcee5620a35 uses existing Zephyr RODATA hook; [single supported build](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/remaining-implementation/r07-firmware-recipe/production-attempt/result.md)
+passes actual exit0, final ELF/HEX/map/ARMv7EM/VFP/zeroheap/linked RAM31616 and
+flash297604. GOT20bytes lie inside accounted ROM, no RAM copy/remaining relocs.
+Actual selected root calls graph32344byte then host121216byte local frames;
+both exceed unchanged mainstack27648. STOP for separate Strong review; no
+follow-on repair or limit/workload/runtime/compiler/source relaxation. Four R06
+routes and qualified Pi early image remain; R07/P08 exit incomplete.
+Initial supported-build1/1 and diagnostic1/1 consumed; historicalhelper2/2+B031/1
+closed. SPEC015 implementing/planactive/T8.1/HC-RD-003/P08 open, P09–P12 pending.
+No hardware action or target stack-fit claim.
+
+**Historical P08 checkpoint — one R07 GOT-placement diagnostic PASS; independent review next, 2026-10-12.**
 Independent433599e3 prescribed one isolated link, now [actual exit0](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/remaining-implementation/r07-firmware-recipe/got-placement/result.md)
 with the sole GOT script-block change and three argv operand substitutions.
 All346frozen inputs match;20GOTbytes retain two runtime entries, actual

@@ -133,3 +133,13 @@ callees gross stack vs27648, stop any oversized frame/unresolved overlap.
 Limits RAM196608/flash1048576/heap0 unchanged. Commit coherent source step, then
 record the single validation outcome and STOP for independent Strong review.
 Historicalhelper2/2+B031/1 permanently closed; no guard reset or hardware.
+
+
+Production source step committed e5620a35; single supported build exit0/4.876s,
+budget1/1 consumed. Final GOT20bytes inside accounted ROM, no RAM copy/remaining
+relocations; supported ABI/zeroheap/linked RAM31616/flash297604 checks pass.
+Gross-stack FAIL: actual graph32344 and host121216 each exceed27648; stop, no
+automatic repair or second build. Exact root/prologue/result evidence in
+production-attempt/result.md. Independent Strong must disposition approved
+backing/layout feasibility vs an actual contract/scope choice. No limit/workload/
+runtime/source relaxation or hardware; historical guards remain closed.

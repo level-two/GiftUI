@@ -1,0 +1,38 @@
+000265ea <swift_allocObject>:
+   265ea:	f000 b800 	b.w	265ee <swift_allocObject+0x4>
+   265ee:	b51c      	push	{r2, r3, r4, lr}
+   265f0:	460b      	mov	r3, r1
+   265f2:	4604      	mov	r4, r0
+   265f4:	1c51      	adds	r1, r2, #1
+   265f6:	d005      	beq.n	26604 <swift_allocObject+0x1a>
+   265f8:	4291      	cmp	r1, r2
+   265fa:	d610      	bvs.n	2661e <swift_allocObject+0x34>
+   265fc:	2904      	cmp	r1, #4
+   265fe:	bfd8      	it	le
+   26600:	2104      	movle	r1, #4
+   26602:	e000      	b.n	26606 <swift_allocObject+0x1c>
+   26604:	2110      	movs	r1, #16
+   26606:	2000      	movs	r0, #0
+   26608:	461a      	mov	r2, r3
+   2660a:	9001      	str	r0, [sp, #4]
+   2660c:	a801      	add	r0, sp, #4
+   2660e:	f01d fba7 	bl	43d60 <posix_memalign>
+   26612:	9801      	ldr	r0, [sp, #4]
+   26614:	b120      	cbz	r0, 26620 <swift_allocObject+0x36>
+   26616:	2101      	movs	r1, #1
+   26618:	e9c0 4100 	strd	r4, r1, [r0]
+   2661c:	bd1c      	pop	{r2, r3, r4, pc}
+   2661e:	defe      	udf	#254	; 0xfe
+   26620:	defe      	udf	#254	; 0xfe
+
+00026622 <swift_deallocClassInstance>:
+   26622:	6841      	ldr	r1, [r0, #4]
+   26624:	2900      	cmp	r1, #0
+   26626:	d401      	bmi.n	2662c <swift_deallocClassInstance+0xa>
+
+00043d60 <posix_memalign>:
+   43d60:	200c      	movs	r0, #12
+   43d62:	4770      	bx	lr
+
+00043d64 <arch_printk_char_out>:
+   43d64:	2000      	movs	r0, #0

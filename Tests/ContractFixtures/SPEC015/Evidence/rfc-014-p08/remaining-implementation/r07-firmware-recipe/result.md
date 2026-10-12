@@ -57,3 +57,15 @@ failure to its script/GOT interaction, without accepting FLASH placement or
 a production correction. Budget1/1 consumed; STOP for independent Strong review.
 Final supported nRF image and R07/P08 exit remain open; no compiler/config/
 runtime/limit/source change or hardware action.
+
+
+## Reviewed production image — 2026-10-12
+
+[Final supported image result](production-attempt/result.md): sourcee5620a35,
+one build exit0, final ELF/HEX/map, ARMv7EM/VFP/zeroheap and linked RAM31616/
+flash297604 checks pass. GOT20bytes are inside accounted ROM with no RAM copy
+or remaining relocations. **Gross-stack FAIL:** actual root calls graph32344bytes
+then host121216bytes, each above unchanged mainstack27648. No target execution
+or follow-on repair; budget1/1 consumed. STOP for independent Strong review of
+the failure and whether approved backing/layout permits local realization.
+R07/P08 remain open; no speculative contract/ceiling/workload/runtime change.

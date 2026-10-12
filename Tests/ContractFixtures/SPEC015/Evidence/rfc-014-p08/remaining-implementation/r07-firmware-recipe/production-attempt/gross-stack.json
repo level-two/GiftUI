@@ -1,0 +1,50 @@
+{
+  "disposition": "FAIL; stop before execution or repair",
+  "main_stack_bytes": 27648,
+  "actual_call_root": "main -> giftui_rfc014_counter_entry -> giftuiRFC014CounterEntry; sequential p08CounterGraph then p08CounterHost",
+  "frames": [
+    {
+      "name": "p08CounterGraph",
+      "code_address": "0x20f28",
+      "local_reservations": [
+        32256,
+        52
+      ],
+      "saved_registers_bytes": 36,
+      "local_frame_total": 32344,
+      "over_stack_by": 4696
+    },
+    {
+      "name": "p08CounterHost",
+      "code_address": "0x1935c",
+      "local_reservations": [
+        120832,
+        348
+      ],
+      "saved_registers_bytes": 36,
+      "local_frame_total": 121216,
+      "over_stack_by": 93568
+    },
+    {
+      "name": "selected Static counterHostCorpus",
+      "code_address": "0x18d24",
+      "local_reservations": [
+        4352,
+        28
+      ],
+      "saved_registers_bytes": 36,
+      "local_frame_total": 4416
+    },
+    {
+      "name": "selected counterHostCorpus click",
+      "code_address": "0x1d688",
+      "local_reservations": [
+        8320,
+        36
+      ],
+      "saved_registers_bytes": 36,
+      "local_frame_total": 8392
+    }
+  ],
+  "limits": "Observed individual local frames only; not a whole-call-chain/IRQ bound. Oversized frames suffice for gross failure. No further P11 audit or automatic local fix."
+}

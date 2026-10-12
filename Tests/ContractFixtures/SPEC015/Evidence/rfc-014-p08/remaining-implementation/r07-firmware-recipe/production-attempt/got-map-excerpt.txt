@@ -1,0 +1,25 @@
+ *(SORT_BY_ALIGNMENT(.gnu.linkonce.r.*))
+                0x00000000000487bc                . = ALIGN (0x4)
+                0x00000000000487bc                __giftui_counter_got_start = .
+ *(SORT_BY_ALIGNMENT(.got.plt))
+ .got.plt       0x00000000000487bc        0xc zephyr/CMakeFiles/zephyr_final.dir/isr_tables.c.obj
+                0x00000000000487bc                _GLOBAL_OFFSET_TABLE_
+ *(SORT_BY_ALIGNMENT(.igot.plt))
+ .igot.plt      0x00000000000487c8        0x0 zephyr/CMakeFiles/zephyr_final.dir/isr_tables.c.obj
+ *(SORT_BY_ALIGNMENT(.got))
+ .got           0x00000000000487c8        0x8 zephyr/CMakeFiles/zephyr_final.dir/isr_tables.c.obj
+ *(SORT_BY_ALIGNMENT(.igot))
+                0x00000000000487d0                __giftui_counter_got_end = .
+                0x00000000000487d0                . = ALIGN (0x4)
+                [!provide]                        PROVIDE (__eh_frame_start = 0x0)
+                [!provide]                        PROVIDE (__eh_frame_end = 0x0)
+                [!provide]                        PROVIDE (__eh_frame_hdr_start = 0x0)
+                [!provide]                        PROVIDE (__eh_frame_hdr_end = 0x0)
+
+/DISCARD/
+ *(SORT_BY_ALIGNMENT(.eh_frame))
+                0x00000000000487d0                __rodata_region_end = .
+                0x00000000000487e0                . = ALIGN (_region_min_align)
+                0x0000000000080000                . = ALIGN ((0x1 << LOG2CEIL ((__rodata_region_end - ADDR (rom_start)))))
+                0x0000000000080000                __rom_region_end = ((__rom_region_start + .) - ADDR (rom_start))
+                0x0000000000080000                __rom_region_size = (__rom_region_end - __rom_region_start)

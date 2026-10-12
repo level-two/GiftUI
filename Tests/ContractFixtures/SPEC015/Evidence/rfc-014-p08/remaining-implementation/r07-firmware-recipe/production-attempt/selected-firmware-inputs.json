@@ -1,0 +1,8 @@
+{
+  "firmware/nrf52840/applications/signal-analyzer-static/src/counter_main.c": "288e0b3f6c75779a8524d285b579c2d76148631448e3bf170322f73faa81f0f8",
+  "firmware/nrf52840/applications/signal-analyzer-static/src/stubs.c": "3a47e781f83342a7c43161ac5da8d116b04debe3e4e20689cd28047c7425c6f2",
+  "firmware/nrf52840/applications/signal-analyzer-static/src/spi_tft.c": "dda88210a8a70864f3f393ca1057da7b64a84cbe01d3de97da55b1232f1ef00f",
+  "firmware/nrf52840/applications/signal-analyzer-static/src/fault.c": "718bfbb6202b8755cb04487379e22312f2cae4f59de8707480783039ac8ea58c",
+  "firmware/nrf52840/applications/signal-analyzer-static/prj.conf": "c390d7a716f029bebddb569e5ae99dabf2ecb44ffb3c08d0ec59b3af7b74ed12",
+  "firmware/nrf52840/applications/signal-analyzer-static/counter-build-checks.conf": "7ca3be1b2e081793a36a1070b4790140701ec3395da2ff7ce505c1a5cc86b6c5"
+}

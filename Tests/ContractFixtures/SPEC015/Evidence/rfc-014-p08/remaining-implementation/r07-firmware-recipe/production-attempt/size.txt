@@ -1,0 +1,33 @@
+/Users/eugene/work/GiftUI/.build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/zephyr.elf  :
+section                           size        addr
+rom_start                          256           0
+text                            282104         256
+.ARM.exidx                           8      282360
+initlevel                           72      282368
+device_area                        192      282440
+sw_isr_table                       384      282632
+gpio_driver_api_area                36      283016
+spi_driver_api_area                 16      283052
+clock_control_driver_api_area       28      283068
+uart_driver_api_area                12      283096
+.swift_modhash                    3552      283108
+rodata                           10240      286672
+.ramfunc                             0   536870912
+datas                              676   536870912
+device_states                       12   536871588
+.comment                            32           0
+.debug_aranges                    4424           0
+.debug_info                     235859           0
+.debug_abbrev                    40641           0
+.debug_line                     122163           0
+.debug_frame                     10680           0
+.debug_str                       49935           0
+.debug_loc                      108075           0
+.debug_ranges                    17688           0
+.ARM.attributes                     60           0
+.last_section                        4      297600
+bss                               1049   536871600
+noinit                           29824   536872704
+Total                           918022
+
+

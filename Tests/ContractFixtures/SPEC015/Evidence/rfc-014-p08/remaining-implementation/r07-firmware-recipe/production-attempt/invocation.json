@@ -1,0 +1,19 @@
+{
+  "entry_commit": "e5620a358b9d9e1ea9d73ad86e9c5a55659c47c0",
+  "command": [
+    "scripts/nrf52840/build.sh",
+    "--application",
+    "signal-analyzer-static",
+    "--counter-build",
+    ".build/nrf52840/contracts/p08-counter-7x97oi7d"
+  ],
+  "cwd": "/Users/eugene/work/GiftUI",
+  "started_utc": "2026-10-12T15:21:52.437288+00:00",
+  "formatter_exit": 0,
+  "source_patch_sha256": "4655abf58e8b0252a5f060ecaf5f49d0fd5168ab2e2eed05c68ecfabb8162dd2",
+  "invocation_budget": 1,
+  "actual_build_exit": 0,
+  "elapsed_seconds": 4.8762875,
+  "finished_utc": "2026-10-12T15:21:57.313890+00:00",
+  "build_log_sha256": "6406dafd450b06b2b10d5ccbdc9a6d3829c035ba8e2073f267ba21886c7b09cb"
+}

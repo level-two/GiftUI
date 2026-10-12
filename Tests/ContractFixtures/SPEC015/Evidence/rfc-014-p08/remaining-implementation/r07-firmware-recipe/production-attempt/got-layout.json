@@ -1,0 +1,44 @@
+{
+  "start": "0x487bc",
+  "end": "0x487d0",
+  "bytes": 20,
+  "words": [
+    "0x0",
+    "0x0",
+    "0x0",
+    "0x2662f",
+    "0x405"
+  ],
+  "expected_runtime_thumb_symbols": {
+    "swift_setDeallocating": "0x2662f",
+    "swift_initStackObject": "0x405"
+  },
+  "containing_load": {
+    "vma": "0x0",
+    "lma": "0x0",
+    "file_size": 296912,
+    "memory_size": 296912
+  },
+  "got_lma_start": "0x487bc",
+  "rodata_start": "0x44f00",
+  "rodata_end": "0x487d0",
+  "rom_bounds": [
+    "0x0",
+    "0x80000"
+  ],
+  "ram_loads": [
+    {
+      "vma": "0x20000000",
+      "lma": "0x487d0",
+      "file_size": 688,
+      "memory_size": 688
+    },
+    {
+      "vma": "0x200002b0",
+      "lma": "0x200002b0",
+      "file_size": 0,
+      "memory_size": 30928
+    }
+  ],
+  "no_remaining_relocations": true
+}

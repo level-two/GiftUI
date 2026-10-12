@@ -1,0 +1,14 @@
+{
+  "forbidden_allocator_functions_present": [],
+  "retained_allocation_related_functions": [
+    "  3729: 000265eb     4 FUNC    WEAK   PROTECTED    2 swift_allocObject",
+    "  4772: 000265ef    52 FUNC    WEAK   HIDDEN     2 $es17swift_allocObject8metadata12requiredSize0E13AlignmentMaskSpys04HeapC0VGSpys13ClassMetadataVG_S2itF",
+    "  4801: 00000415   168 FUNC    WEAK   PROTECTED    2 swift_allocError",
+    "  4999: 00043d61     4 FUNC    GLOBAL DEFAULT    2 posix_memalign"
+  ],
+  "heap_config_lines": [
+    "CONFIG_COMMON_LIBC_MALLOC_ARENA_SIZE=0",
+    "CONFIG_HEAP_MEM_POOL_SIZE=0"
+  ],
+  "interpretation": "Existing zero-heap config/no-working-general-allocator check passes. Swift allocation thunks remain and use existing posix_memalign refusal stub (returns12); no claim that allocation-call code is absent or all error-path reachability is bounded."
+}

@@ -1,0 +1,88 @@
+0002131c <main>:
+   2131c:	b538      	push	{r3, r4, r5, lr}
+   2131e:	f000 f929 	bl	21574 <spi_tft_initialize>
+   21322:	b120      	cbz	r0, 2132e <main+0x12>
+   21324:	480b      	ldr	r0, [pc, #44]	; (21354 <main+0x38>)
+   21326:	f022 fd1f 	bl	43d68 <printk>
+   2132a:	2001      	movs	r0, #1
+   2132c:	bd38      	pop	{r3, r4, r5, pc}
+   2132e:	480a      	ldr	r0, [pc, #40]	; (21358 <main+0x3c>)
+   21330:	f022 fc8c 	bl	43c4c <giftui_rfc014_counter_entry>
+   21334:	4605      	mov	r5, r0
+   21336:	f000 f85b 	bl	213f0 <spi_tft_shutdown>
+   2133a:	4629      	mov	r1, r5
+   2133c:	4604      	mov	r4, r0
+   2133e:	4602      	mov	r2, r0
+   21340:	4806      	ldr	r0, [pc, #24]	; (2135c <main+0x40>)
+   21342:	f022 fd11 	bl	43d68 <printk>
+   21346:	2d00      	cmp	r5, #0
+   21348:	d0ef      	beq.n	2132a <main+0xe>
+   2134a:	1e20      	subs	r0, r4, #0
+   2134c:	bf18      	it	ne
+   2134e:	2001      	movne	r0, #1
+   21350:	e7ec      	b.n	2132c <main+0x10>
+   21352:	bf00      	nop
+   21354:	00048252 	.word	0x00048252
+   21358:	00021465 	.word	0x00021465
+   2135c:	0004827d 	.word	0x0004827d
+
+
+00043c4c <giftui_rfc014_counter_entry>:
+   43c4c:	f000 b800 	b.w	43c50 <giftui_rfc014_counter_entry+0x4>
+   43c50:	b5b0      	push	{r4, r5, r7, lr}
+   43c52:	4604      	mov	r4, r0
+   43c54:	f7dd f968 	bl	20f28 <CONFIG_CLOCK_CONTROL_NRF_K32SRC_FREQUENCY+0x18f28>
+   43c58:	4605      	mov	r5, r0
+   43c5a:	4620      	mov	r0, r4
+   43c5c:	f7d5 fb7e 	bl	1935c <CONFIG_CLOCK_CONTROL_NRF_K32SRC_FREQUENCY+0x1135c>
+   43c60:	1940      	adds	r0, r0, r5
+   43c62:	d602      	bvs.n	43c6a <giftui_rfc014_counter_entry+0x1e>
+   43c64:	2800      	cmp	r0, #0
+   43c66:	d401      	bmi.n	43c6c <giftui_rfc014_counter_entry+0x20>
+   43c68:	bdb0      	pop	{r4, r5, r7, pc}
+   43c6a:	defe      	udf	#254	; 0xfe
+   43c6c:	defe      	udf	#254	; 0xfe
+
+
+   20f26:	0000      	movs	r0, r0
+   20f28:	e92d 4ff0 	stmdb	sp!, {r4, r5, r6, r7, r8, r9, sl, fp, lr}
+   20f2c:	f5ad 4dfc 	sub.w	sp, sp, #32256	; 0x7e00
+   20f30:	b08d      	sub	sp, #52	; 0x34
+   20f32:	a809      	add	r0, sp, #36	; 0x24
+   20f34:	f50d 6196 	add.w	r1, sp, #1200	; 0x4b0
+   20f38:	2400      	movs	r4, #0
+   20f3a:	f04f 0a3d 	mov.w	sl, #61	; 0x3d
+
+   19358:	00040002 	.word	0x00040002
+   1935c:	e92d 4ff0 	stmdb	sp!, {r4, r5, r6, r7, r8, r9, sl, fp, lr}
+   19360:	f5ad 3dec 	sub.w	sp, sp, #120832	; 0x1d800
+   19364:	b0d7      	sub	sp, #348	; 0x15c
+   19366:	4606      	mov	r6, r0
+   19368:	a863      	add	r0, sp, #396	; 0x18c
+   1936a:	4c56      	ldr	r4, [pc, #344]	; (194c4 <CONFIG_CLOCK_CONTROL_NRF_K32SRC_FREQUENCY+0x114c4>)
+   1936c:	2101      	movs	r1, #1
+
+   18d22:	0000      	movs	r0, r0
+   18d24:	e92d 4ff0 	stmdb	sp!, {r4, r5, r6, r7, r8, r9, sl, fp, lr}
+   18d28:	f5ad 5d88 	sub.w	sp, sp, #4352	; 0x1100
+   18d2c:	b087      	sub	sp, #28
+   18d2e:	ad90      	add	r5, sp, #576	; 0x240
+   18d30:	4681      	mov	r9, r0
+   18d32:	f44f 6269 	mov.w	r2, #3728	; 0xe90
+   18d36:	460c      	mov	r4, r1
+
+   1d684:	00390038 	.word	0x00390038
+   1d688:	e92d 4ff0 	stmdb	sp!, {r4, r5, r6, r7, r8, r9, sl, fp, lr}
+   1d68c:	f5ad 5d02 	sub.w	sp, sp, #8320	; 0x2080
+   1d690:	b089      	sub	sp, #36	; 0x24
+   1d692:	461c      	mov	r4, r3
+   1d694:	f893 36ac 	ldrb.w	r3, [r3, #1708]	; 0x6ac
+   1d698:	2b01      	cmp	r3, #1
+   1d69a:	f000 81b6 	beq.w	1da0a <CONFIG_CLOCK_CONTROL_NRF_K32SRC_FREQUENCY+0x15a0a>
+
+000265ea <swift_allocObject>:
+   265ea:	f000 b800 	b.w	265ee <swift_allocObject+0x4>
+   265ee:	b51c      	push	{r2, r3, r4, lr}
+   265f0:	460b      	mov	r3, r1
+   265f2:	4604      	mov	r4, r0
+   265f4:	1c51      	adds	r1, r2, #1
