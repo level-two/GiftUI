@@ -1,0 +1,22 @@
+[
+  {
+    "name": "swift64",
+    "exit": 0,
+    "output": "SPEC-002 Foundation surface check passed: 5 public and 7 package owners.\n"
+  },
+  {
+    "name": "dot-spelling",
+    "exit": 0,
+    "output": "SPEC-002 Foundation surface check passed: 5 public and 7 package owners.\n"
+  },
+  {
+    "name": "wrong-width",
+    "exit": 1,
+    "output": "SPEC-002 Foundation surface check failed: expected exactly three UInt32 correlation wrappers\n"
+  },
+  {
+    "name": "optional-provenance",
+    "exit": 1,
+    "output": "SPEC-002 Foundation surface check failed: normalized event contains optional provenance\n"
+  }
+]

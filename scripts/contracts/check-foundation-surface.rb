@@ -21,8 +21,10 @@ fail_check("expected public and package interface paths") unless ARGV.length == 
 public_path, package_path = ARGV
 
 begin
-  public_interface = File.read(public_path)
-  package_interface = File.read(package_path)
+  # Swift 6.4 writes module qualification with ::; earlier interfaces use dots.
+  # Normalize only the two allowed owners, retaining every declaration check.
+  public_interface = File.read(public_path).gsub(/\b(Swift|GiftUI)::/, '\1.')
+  package_interface = File.read(package_path).gsub(/\b(Swift|GiftUI)::/, '\1.')
 rescue Errno::ENOENT => error
   fail_check(error.message)
 end

@@ -97,7 +97,7 @@ end
 combined_interface = public_interface + "\n" + package_interface
 if combined_interface.match?(/@_exported\s+import/) ||
    combined_interface.match?(/^\s*import\s+(?:#{FORBIDDEN_GIFTUI_MODULES.join("|")})\b/) ||
-   FORBIDDEN_GIFTUI_MODULES.any? { |name| combined_interface.include?("#{name}.") }
+   FORBIDDEN_GIFTUI_MODULES.any? { |name| combined_interface.match?(/\b#{Regexp.escape(name)}(?:\.|::)/) }
   fail_check("GiftUI public/package interfaces import, re-export, or reference a prohibited module")
 end
 

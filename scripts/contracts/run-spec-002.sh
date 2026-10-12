@@ -537,6 +537,8 @@ run_raspberry_pi() {
         -Xswiftc -whole-module-optimization
     )
     if [[ "${compiler_baseline}" == rfc-014 ]]; then
+        # Preserve the destination-based cross-build layout on Swift 6.4.
+        command+=(--build-system native)
         for flag in "${migration_flags[@]}"; do command+=(-Xswiftc "${flag}"); done
     fi
     sdk_root="${GIFTUI_PI_SDK_DIR}/${GIFTUI_PI_DISTRIBUTION}"
