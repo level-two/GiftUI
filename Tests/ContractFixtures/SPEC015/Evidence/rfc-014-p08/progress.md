@@ -252,3 +252,15 @@ zero negatives/positive passes; conservative candidate guard2/2, production2/2
 unchanged. No further compiles or implementation. The [finite result](activation-join-investigation/result.md)
 preserves all diagnostics/hashes, original held receipt and accounting record.
 Next: independent read-only final review and separate explicit resumption decision.
+
+
+## Remaining P08 step 1 — finite validation dispatch, 2026-10-12
+
+[Validated slice](remaining-implementation/step-1-validator/result.md): existing
+workload/action/drawing validators preserve analyzer bounds and select the
+approved two-action, zero-capture counter with independent scalar reservations.
+Native Static maintained gate passes37checks/428assertions (60 new pure workload
+controls); existing actual activation and four ownership negatives remain passing.
+The nine-stage validator itself is unchanged. Counter actual storage/report/
+application proof remains next, not inferred from these controls. Guard0/2;
+no unproductive repair. No P08 acceptance or target image claim.

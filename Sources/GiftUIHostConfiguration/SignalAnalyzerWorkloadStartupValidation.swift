@@ -8,6 +8,8 @@ package enum SignalAnalyzerWorkloadStartupValidation {
         let limits = configuration.runtimeLimits
         let cardinality = configuration.cardinality
         let pacing = configuration.pacing
+        // SPEC-015 selects exactly these two finite repository compositions.
+        let isCounter = cardinality.actionCaseCount == 2
 
         guard workload.schemaVersion == 4 else { return .invalidWorkload }
         guard workload.requiredPathEntries > 0,
@@ -41,7 +43,7 @@ package enum SignalAnalyzerWorkloadStartupValidation {
             limits.models.maximumModelSlots == 2,
             limits.models.maximumOwningTickets == 4,
             limits.models.maximumFramePins == 2,
-            limits.models.maximumModelCaptureBanks == 1,
+            limits.models.maximumModelCaptureBanks == (isCounter ? 0 : 1),
             workload.requiredRuntimeLimits == limits,
             workload.semanticNodeOccurrences == limits.semantic.maximumSemanticNodes,
             workload.semanticStructuralOccurrences
@@ -71,7 +73,7 @@ package enum SignalAnalyzerWorkloadStartupValidation {
                 == limits.execution.maximumCompletionFacts
         else { return .insufficientWorkloadCapacity }
 
-        guard cardinality.actionCaseCount == 6,
+        guard isCounter || cardinality.actionCaseCount == 6,
             cardinality.rootModelLocationCount == 1,
             cardinality.activeRegistrationCount == 1,
             cardinality.stagedAssociationCount == 1,

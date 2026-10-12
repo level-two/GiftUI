@@ -7,14 +7,19 @@ package enum SignalAnalyzerDrawingStartupValidation {
         profile: RuntimeProfileKind
     ) -> HostConfigurationError? {
         let drawing = workload.drawing
+        let isCounter =
+            workload.semanticActionsPerOpportunity == 2
+            && limits.models.maximumModelCaptureBanks == 0
+        // CounterCanvas emits no stroke at zero and one two-point stroke otherwise.
+        // Analyzer's five-Canvas capacity proof remains unchanged.
         guard workload.schemaVersion == 4,
-            drawing.canvasOccurrences == 5,
-            drawing.maximumLivePathPoints == 202,
-            drawing.maximumLivePathSubpaths == 12,
-            drawing.submittedStrokes == 5,
-            drawing.snapshottedPoints == 832,
-            drawing.snapshottedSubpaths == 16,
-            drawing.normalizedStrokeOperations == 5,
+            drawing.canvasOccurrences == (isCounter ? 1 : 5),
+            drawing.maximumLivePathPoints == (isCounter ? 2 : 202),
+            drawing.maximumLivePathSubpaths == (isCounter ? 1 : 12),
+            drawing.submittedStrokes == (isCounter ? 1 : 5),
+            drawing.snapshottedPoints == (isCounter ? 2 : 832),
+            drawing.snapshottedSubpaths == (isCounter ? 1 : 16),
+            drawing.normalizedStrokeOperations == (isCounter ? 1 : 5),
             drawing.greatestLineWidth == 1,
             workload.ordinaryRenderOperations > 0
         else { return .invalidWorkload }

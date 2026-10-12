@@ -89,8 +89,9 @@ if args.activation_join:
                     *runtime_sources, *activation, negative, '-o', out / (label + '.o')], diagnostic)
 probe = ROOT / 'Tests/ContractFixtures/SPEC015/RuntimeDerived/ScopedHostProbe.swift'
 schema = ROOT / 'Tests/ContractFixtures/SPEC015/RuntimeDerived/Schema4Probe.swift'
-inputs.extend([probe, schema])
-run('scoped-host-probe', [compiler, *flags, '-module-name', 'P08ScopedHostProbe', '-emit-module', '-emit-object', probe, schema,
+counter = [ROOT / "Tests/ContractFixtures/SPEC015/RuntimeDerived" / name for name in ("CounterWorkload.swift", "CounterWorkloadProbe.swift")]
+inputs.extend([probe, schema, *counter])
+run('scoped-host-probe', [compiler, *flags, '-module-name', 'P08ScopedHostProbe', '-emit-module', '-emit-object', probe, schema, *counter,
                         '-emit-module-path', out / 'P08ScopedHostProbe.swiftmodule', '-o', out / 'P08ScopedHostProbe.o'])
 for label, source, diagnostic in (
     ('copy-host', 'func reject(_ host: borrowing SignalAnalyzerPresetHostInstance<P08ScopedLiveOwner>) { let other = copy host; _ = other }', 'noncopyable'),
@@ -132,7 +133,7 @@ run('generator-wide-payload', ['ruby', generator])
 assert 'hierarchy-shape' not in generator.read_text()
 main = out / 'Main.swift'
 imports = 'import P08ScopedHostProbe\n'
-assertions = 'p08ScopedHostController() + p08Schema4Workload()'
+assertions = 'p08ScopedHostController() + p08Schema4Workload() + p08CounterWorkloadValidation()'
 runtime_objects = sorted(base.glob('*.o'))
 if args.activation_join:
     imports += 'import RuntimeCycleProbe\n'

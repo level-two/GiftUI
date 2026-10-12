@@ -3,10 +3,13 @@ package enum HostApplicationStartupValidation {
         _ actionAndModel: HostActionModelConfiguration,
         structural: HostStructuralConfiguration
     ) -> HostConfigurationError? {
-        guard actionAndModel.firstActionCode == 0,
-            actionAndModel.lastActionCode == 5,
-            structural.cardinality.actionCaseCount == 6,
-            structural.workload.semanticActionsPerOpportunity == 6,
+        let actionCount = structural.cardinality.actionCaseCount
+        let isCounter = actionCount == 2
+        guard isCounter || actionCount == 6,
+            structural.runtimeLimits.models.maximumModelCaptureBanks == (isCounter ? 0 : 1),
+            actionAndModel.firstActionCode == 0,
+            actionAndModel.lastActionCode == actionCount - 1,
+            structural.workload.semanticActionsPerOpportunity == actionCount,
             actionAndModel.handlerCount == 1,
             actionAndModel.sourceMinimumTransitionSpacingMicroseconds
                 == structural.pacing.minimumAcceptedTransitionSpacingMicroseconds,
