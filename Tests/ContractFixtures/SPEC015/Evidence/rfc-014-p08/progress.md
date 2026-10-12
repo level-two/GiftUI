@@ -278,3 +278,11 @@ four-route/early-image obligations remain open; no self-pass.
 pass across actual Static/Dynamic scoped model/root/semantic/Canvas owners.
 Explicit cache ownership and final-ticket nonzero scalar replacement pass.
 Full runtime/host/four-route/early-image boundary remains open; guard0/2.
+
+## Remaining step4 — actual counter drawing/render (2026-10-12)
+
+[Receipt](remaining-implementation/step-4-counter-render/result.md):1066counted
+assertions pass across Static/Dynamic source/model/State/semantic/Canvas/layout/
+drawing/combined-render components. Counter owns finite Static codec regions; no
+analyzer backing retained. Actual coordinator/host/fourroutes/earlyimages remain
+open; no package exit claim. Guard0/2.

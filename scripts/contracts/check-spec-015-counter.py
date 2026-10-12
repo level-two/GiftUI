@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Actual P08 finite source/model slice; full application/early images remain open."""
+"""Actual P08 finite counter owner/layout/drawing/render components; host and early images remain open."""
 import argparse
 import hashlib
 import json
@@ -34,7 +34,9 @@ out = pathlib.Path(tempfile.mkdtemp(prefix='p08-counter-', dir=ROOT / '.build/co
 flags[flags.index('-module-cache-path') + 1] = str(out / 'cache')
 flags = ['-I', str(out), *flags]
 fixture = ROOT / 'Tests/ContractFixtures/SPEC015/RuntimeDerived'
-inputs = [pathlib.Path(__file__).resolve(), fixture / 'Counter.swift', fixture / 'Counter.schema.json', fixture / 'CounterModel.swift', fixture / 'CounterModelProbe.swift', fixture / 'CounterSemantic.swift', fixture / 'CounterSemanticProbe.swift']
+inputs = [pathlib.Path(__file__).resolve(), fixture / 'Counter.swift', fixture / 'Counter.schema.json', fixture / 'CounterModel.swift', fixture / 'CounterModelProbe.swift', fixture / 'CounterSemantic.swift', fixture / 'CounterSemanticProbe.swift', fixture / 'CounterGeometry.swift', fixture / 'CounterStaticGeometry.swift', fixture / 'CounterRender.swift', fixture / 'CounterFixedStorageProbe.swift']
+storage_sources = sorted(fixture.glob('StaticCounter*.swift'))
+inputs.extend(storage_sources)
 commands, checks = [], []
 def run(label, command):
     command = list(map(str, command))
@@ -52,11 +54,11 @@ for name, source in (('P08CounterSchema', 'CounterSchema.swift'), ('P08CounterPr
     run(name, [compiler, *flags, '-module-name', name, '-emit-module', '-emit-object', out / source,
                '-emit-module-path', out / (name + '.swiftmodule'), '-o', out / (name + '.o')])
 run('counter-model', [compiler, *flags, '-module-name', 'P08CounterRuntime', '-emit-module', '-emit-object',
-                      fixture / 'CounterModel.swift', fixture / 'CounterModelProbe.swift', fixture / 'CounterSemantic.swift', fixture / 'CounterSemanticProbe.swift',
+                      fixture / 'CounterModel.swift', fixture / 'CounterModelProbe.swift', fixture / 'CounterSemantic.swift', fixture / 'CounterSemanticProbe.swift', fixture / 'CounterGeometry.swift', fixture / 'CounterStaticGeometry.swift', fixture / 'CounterRender.swift', fixture / 'CounterFixedStorageProbe.swift', *storage_sources,
                       '-emit-module-path', out / 'P08CounterRuntime.swiftmodule', '-o', out / 'P08CounterRuntime.o'])
 main = out / 'Main.swift'
-main.write_text('import P08CounterRuntime\nimport Darwin\n@main struct Main { static func main() { setbuf(stdout, nil); print("P08 counter source/model assertions=\\(p08CounterModel() + p08CounterSemantic()) failures=0") } }\n')
-objects = [path for path in sorted(base.glob('*.o')) if path.name not in ('RuntimeCycleProbe.o', 'CycleSchema.o', 'CyclePresentation.o', 'CycleTable.o')]
+main.write_text('import P08CounterRuntime\nimport Darwin\n@main struct Main { static func main() { setbuf(stdout, nil); print("P08 counter components assertions=\\(p08CounterModel() + p08CounterSemantic() + p08CounterFixedStorage()) failures=0") } }\n')
+objects = [path for path in sorted(base.glob('*.o')) if path.name not in ('RuntimeCycleProbe.o', 'CycleSchema.o', 'CyclePresentation.o', 'CycleTable.o', 'P07TargetWorkspace.o')]
 run('link', [compiler, *flags, main, core / 'GiftUI.o', *objects, *sorted(out.glob('*.o')), '-o', out / 'counter'])
 execution = run('execute', [out / 'counter']).strip()
 receipt = dict(scope=__doc__, profile=prior['profile'], compiler=str(compiler.relative_to(ROOT)), compiler_sha256=digest(compiler), runtime_build=str(base.relative_to(ROOT)), runtime_receipt_sha256=digest(base / 'result.json'), inputs={str(p.relative_to(ROOT)): digest(p) for p in inputs}, commands=commands, checks=checks, execution=execution)

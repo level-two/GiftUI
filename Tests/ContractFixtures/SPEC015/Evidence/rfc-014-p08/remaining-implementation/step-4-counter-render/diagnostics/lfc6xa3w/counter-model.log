@@ -1,0 +1,15 @@
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterRender.swift:15:27: error: cannot find 'RenderLimits' in scope
+ 13 | import P08CounterSchema
+ 14 | 
+ 15 | let counterRenderLimits = RenderLimits(maximumOperations: 25, maximumPositionedGlyphs: 64, maximumClipDepth: 4)!
+    |                           `- error: cannot find 'RenderLimits' in scope
+ 16 | let counterRenderCapacity = RenderWorkspaceCapacity(maximumSemanticScopes: 32, maximumLayoutScopes: 32, maximumTraversalDepth: 12, maximumTextLines: 16)!
+ 17 | 
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterRender.swift:16:29: error: cannot find 'RenderWorkspaceCapacity' in scope
+ 14 | 
+ 15 | let counterRenderLimits = RenderLimits(maximumOperations: 25, maximumPositionedGlyphs: 64, maximumClipDepth: 4)!
+ 16 | let counterRenderCapacity = RenderWorkspaceCapacity(maximumSemanticScopes: 32, maximumLayoutScopes: 32, maximumTraversalDepth: 12, maximumTextLines: 16)!
+    |                             `- error: cannot find 'RenderWorkspaceCapacity' in scope
+ 17 | 
+ 18 | struct CounterRenderSink: DrawingOperationSink {

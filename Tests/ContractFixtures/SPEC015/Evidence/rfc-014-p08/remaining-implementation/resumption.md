@@ -88,3 +88,21 @@ expanded occurrence graph; finite type metadata contains no paths or positions.
 Extend the same pinned6.4 `check-spec-015-counter.py` command with these sources
 and actual scope checks. Full coordinator/host join remains subsequent; this is
 an actual owner slice rather than a synthetic report/pipeline assertion.
+
+## Step4 — actual counter layout, Canvas and combined render, before edits
+
+Strong Sol6.1 High; guard0/2. `CounterGeometry.swift`, finite Static local-ID
+qualification adapter and `CounterRender.swift` join existing maintained layout,
+Canvas invocation, drawing-plan and combined render algorithms to actual counter
+owners. Static uses existing fixed target codecs; Dynamic uses owned bounded
+workspaces. New finite fixture composition adapts the already verified P07
+algorithm wiring; it is not an unchanged P07 counter bridge or a new host role.
+Configured scalar limits remain the approved counter descriptor. Physical
+workspace headroom will be included in the complete actual audit/early image.
+
+For each0–9 actual State expansion, invoke generated Canvas with the scoped
+frozen model read; independently assert absent stroke at0, one round white width1
+segment atpositive values, local points(4,8) and(4+4×value,8), translated by Canvas
+layout,22glyphs and one finished synchronous render stream. All temporary Canvas
+values and plans release/reset. Same pinned6.4 counter command; no source graph,
+backend/hardware or full host acceptance claim in this slice.

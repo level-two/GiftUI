@@ -1,0 +1,211 @@
+{
+  "scope": "Actual P08 finite counter owner/layout/drawing/render components; host and early images remain open.",
+  "profile": "macos-static",
+  "compiler": ".toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc",
+  "compiler_sha256": "79ae5c26645489fb783ae980f0f1bdae810f90fb180c9ac39808807b65e9fd69",
+  "runtime_build": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static",
+  "runtime_receipt_sha256": "39772d9e2cc7d70f47b82970dd1b89ddd3236274ccbb57cf9c547ce4aeaedf69",
+  "inputs": {
+    "scripts/contracts/check-spec-015-counter.py": "8387907def229971ffe6dc1a6945a0d2eef373d92b6f1b774fc4d487dc69589f",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/Counter.swift": "c93563527b7c65e3ca12f7c74f0c4353c741f0849ef79a637820510712345b94",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/Counter.schema.json": "3428fbdeb1f321c28c3fa70a7a6ce6159fd86676e6520292366a6b269b3ecbd9",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterModel.swift": "c914bac2d09dc3b13713f682d2d2274021d3f48a58f0179685a0cad46c6b700a",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterModelProbe.swift": "d6cdcf1f033a26225d856eb4dd4c5401b76b63d7f78040e111417cdb82bfa41c",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemantic.swift": "d4ec426fb11aa67ed6f93b48def65ac1be00507486e6a34caa5bdd5ec597cca5",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemanticProbe.swift": "6a655f7a7c9832f22ca08bb23948e65c35825f96ba7ae8fd0206f7a447e9cbf9",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterGeometry.swift": "f50dcd3d17140667634ab6062f0a75deafb7854df58219aa55017d3ef11d0dc2",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterStaticGeometry.swift": "c49cc7ad1d5de5bcc3a228defd78ce16a1d6e56c775d9227f5648339540eaa2c",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterRender.swift": "5050225a0fb512486565af0f8df55aa2eda249c9493060c5b2908af396f88afa",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterFixedStorageProbe.swift": "84915c4d1dd8cbd287470bddeffdc1e59e3c9adfb503ee89c51439ee1182f6c4",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterDrawingPlanRecords.swift": "3435c86d6a65f49d34c951a276323583274f423365f05f8ba67d47a4d183c148",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterDrawingPlanStorage.swift": "ed7bb631e53b8934189a0558c1c015fb56d3e0c2497357d43d0f622bd5eb4092",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterDrawingWorkspace.swift": "6c0f1eaf8074f1b5a176e481d5c5b4026e0d31e761d1ca7d46ac3f224d6f76c5",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLayoutScopeCodec.swift": "7565ad65ff596d2ce4c65ea811583a4b36abcf906a166331995f0c3e16079b06",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLayoutTextCodec.swift": "5b71ad2937239cfd3c01ad16282831c9b0e83a8b592beb64fbdb4904e582e39c",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLayoutWorkspace.swift": "1c2e9e2571d20f90d4427dbda6745629f3dfe37803f71c0a26ece3e106b1cc8a",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLivePathStorage.swift": "714a9aa36f86936919fa1b2eeae36f299331c11afa5123270ed9714c1af26d34",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterRenderWorkspace.swift": "7fe947996496ada49132ec3d1df9849907af5df0e18e8dfd4f9f5bd8713669f0",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterResolvedLayout.swift": "0c8b560a6e96657d9421dcde045485a2c094194f04fb9b9e5a951c0ebf7a7893"
+  },
+  "commands": [
+    "/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool --lower-source /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/Counter.schema.json /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/Counter.swift /Users/eugene/work/GiftUI/.build/contracts/p08-counter-zy3ir___/CounterSchema.swift /Users/eugene/work/GiftUI/.build/contracts/p08-counter-zy3ir___/Counter.swift /Users/eugene/work/GiftUI/.build/contracts/p08-counter-zy3ir___/CounterTable.swift P08CounterPresentation",
+    "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc -I /Users/eugene/work/GiftUI/.build/contracts/p08-counter-zy3ir___ -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/contracts/p08-counter-zy3ir___/cache -disable-sandbox -target arm64-apple-macosx26.0 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/b694e911d7d7658a-gn53u2vi/macos-static -parse-as-library -I /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/b694e911d7d7658a-gn53u2vi/macos-static -enable-testing -module-name P08CounterSchema -emit-module -emit-object /Users/eugene/work/GiftUI/.build/contracts/p08-counter-zy3ir___/CounterSchema.swift -emit-module-path /Users/eugene/work/GiftUI/.build/contracts/p08-counter-zy3ir___/P08CounterSchema.swiftmodule -o /Users/eugene/work/GiftUI/.build/contracts/p08-counter-zy3ir___/P08CounterSchema.o",
+    "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc -I /Users/eugene/work/GiftUI/.build/contracts/p08-counter-zy3ir___ -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/contracts/p08-counter-zy3ir___/cache -disable-sandbox -target arm64-apple-macosx26.0 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/b694e911d7d7658a-gn53u2vi/macos-static -parse-as-library -I /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/b694e911d7d7658a-gn53u2vi/macos-static -enable-testing -module-name P08CounterPresentation -emit-module -emit-object /Users/eugene/work/GiftUI/.build/contracts/p08-counter-zy3ir___/Counter.swift -emit-module-path /Users/eugene/work/GiftUI/.build/contracts/p08-counter-zy3ir___/P08CounterPresentation.swiftmodule -o /Users/eugene/work/GiftUI/.build/contracts/p08-counter-zy3ir___/P08CounterPresentation.o",
+    "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc -I /Users/eugene/work/GiftUI/.build/contracts/p08-counter-zy3ir___ -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/contracts/p08-counter-zy3ir___/cache -disable-sandbox -target arm64-apple-macosx26.0 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/b694e911d7d7658a-gn53u2vi/macos-static -parse-as-library -I /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/b694e911d7d7658a-gn53u2vi/macos-static -enable-testing -module-name P08CounterTable -emit-module -emit-object /Users/eugene/work/GiftUI/.build/contracts/p08-counter-zy3ir___/CounterTable.swift -emit-module-path /Users/eugene/work/GiftUI/.build/contracts/p08-counter-zy3ir___/P08CounterTable.swiftmodule -o /Users/eugene/work/GiftUI/.build/contracts/p08-counter-zy3ir___/P08CounterTable.o",
+    "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc -I /Users/eugene/work/GiftUI/.build/contracts/p08-counter-zy3ir___ -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/contracts/p08-counter-zy3ir___/cache -disable-sandbox -target arm64-apple-macosx26.0 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/b694e911d7d7658a-gn53u2vi/macos-static -parse-as-library -I /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/b694e911d7d7658a-gn53u2vi/macos-static -enable-testing -module-name P08CounterRuntime -emit-module -emit-object /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterModel.swift /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterModelProbe.swift /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemantic.swift /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemanticProbe.swift /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterGeometry.swift /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterStaticGeometry.swift /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterRender.swift /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterFixedStorageProbe.swift /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterDrawingPlanRecords.swift /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterDrawingPlanStorage.swift /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterDrawingWorkspace.swift /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLayoutScopeCodec.swift /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLayoutTextCodec.swift /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLayoutWorkspace.swift /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLivePathStorage.swift /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterRenderWorkspace.swift /Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterResolvedLayout.swift -emit-module-path /Users/eugene/work/GiftUI/.build/contracts/p08-counter-zy3ir___/P08CounterRuntime.swiftmodule -o /Users/eugene/work/GiftUI/.build/contracts/p08-counter-zy3ir___/P08CounterRuntime.o",
+    "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc -I /Users/eugene/work/GiftUI/.build/contracts/p08-counter-zy3ir___ -swift-version 6 -Osize -whole-module-optimization -enable-experimental-feature LifetimeDependence -enable-experimental-feature Lifetimes -package-name giftui -module-cache-path /Users/eugene/work/GiftUI/.build/contracts/p08-counter-zy3ir___/cache -disable-sandbox -target arm64-apple-macosx26.0 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk -load-plugin-executable '/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool#GiftUIMacros' -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/b694e911d7d7658a-gn53u2vi/macos-static -parse-as-library -I /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static -I /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/b694e911d7d7658a-gn53u2vi/macos-static -enable-testing /Users/eugene/work/GiftUI/.build/contracts/p08-counter-zy3ir___/Main.swift /Users/eugene/work/GiftUI/.build/contracts/spec-006-rfc-014-swift64/b694e911d7d7658a-gn53u2vi/macos-static/GiftUI.o /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/GiftUIDrawing.o /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/GiftUIExecution.o /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/GiftUIInteraction.o /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/GiftUILayout.o /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/GiftUIObservableState.o /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/GiftUIReferenceTextResources.o /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/GiftUIRenderCore.o /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/GiftUIRenderLowering.o /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/GiftUIRuntimeCore.o /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/GiftUIRuntimeDynamic.o /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/GiftUIRuntimeStatic.o /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/GiftUISemanticCore.o /Users/eugene/work/GiftUI/.build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/GiftUITextResources.o /Users/eugene/work/GiftUI/.build/contracts/p08-counter-zy3ir___/P08CounterPresentation.o /Users/eugene/work/GiftUI/.build/contracts/p08-counter-zy3ir___/P08CounterRuntime.o /Users/eugene/work/GiftUI/.build/contracts/p08-counter-zy3ir___/P08CounterSchema.o /Users/eugene/work/GiftUI/.build/contracts/p08-counter-zy3ir___/P08CounterTable.o -o /Users/eugene/work/GiftUI/.build/contracts/p08-counter-zy3ir___/counter",
+    "/Users/eugene/work/GiftUI/.build/contracts/p08-counter-zy3ir___/counter"
+  ],
+  "checks": [
+    {
+      "name": "counter-lowering",
+      "exit": 0,
+      "passed": true
+    },
+    {
+      "name": "P08CounterSchema",
+      "exit": 0,
+      "passed": true
+    },
+    {
+      "name": "P08CounterPresentation",
+      "exit": 0,
+      "passed": true
+    },
+    {
+      "name": "P08CounterTable",
+      "exit": 0,
+      "passed": true
+    },
+    {
+      "name": "counter-model",
+      "exit": 0,
+      "passed": true
+    },
+    {
+      "name": "link",
+      "exit": 0,
+      "passed": true
+    },
+    {
+      "name": "execute",
+      "exit": 0,
+      "passed": true
+    }
+  ],
+  "execution": "P08 counter components assertions=1066 failures=0",
+  "artifacts": {
+    "P08CounterSchema.abi.json": {
+      "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+      "bytes": 149
+    },
+    "counter-model.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "P08CounterTable.o": {
+      "sha256": "0c89c6388ae83d296b93c940e1d74e2999d24c5a3f1bcd5578fd6b38c9655c3b",
+      "bytes": 12248
+    },
+    "P08CounterTable.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "P08CounterPresentation.o": {
+      "sha256": "2916cf7e76bf545208c6c688ca4514bde3a1e013a843e0ed2e4e4c6e64cf1c8c",
+      "bytes": 38720
+    },
+    "P08CounterTable.swiftsourceinfo": {
+      "sha256": "91bff1c8e0fd04035212a0380ac8a2b1cccd288d00613991a9b11b1eaf66e5fb",
+      "bytes": 2972
+    },
+    "P08CounterPresentation.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "P08CounterRuntime.swiftmodule": {
+      "sha256": "ae54fbe9fd26de28180d3d05511a75c091cf3111d02b8b3d57cbffead99f2e16",
+      "bytes": 361408
+    },
+    "P08CounterPresentation.abi.json": {
+      "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+      "bytes": 149
+    },
+    "P08CounterTable.abi.json": {
+      "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+      "bytes": 149
+    },
+    "P08CounterSchema.o": {
+      "sha256": "ec9ed0ef235b28f23b1d6885bf7172a5fbe1eb5c104e61f37cb99e8e98f920d6",
+      "bytes": 9336
+    },
+    "P08CounterSchema.swiftmodule": {
+      "sha256": "94fab02b3b6d3716528a040d28d2b44218d76f4fbf9e2defd3c7e72193339106",
+      "bytes": 24984
+    },
+    "CounterTable.swift": {
+      "sha256": "9c1a50d90b57b9f625986cbb7a37fcefc56234bfb0f1e0b2a10abd7ab73efd54",
+      "bytes": 1393
+    },
+    "P08CounterRuntime.abi.json": {
+      "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+      "bytes": 149
+    },
+    "P08CounterPresentation.swiftdoc": {
+      "sha256": "65fd59b043cbe222e88e65581f48c54d425c335304d73c8550513bf3971cc008",
+      "bytes": 388
+    },
+    "P08CounterTable.swiftdoc": {
+      "sha256": "cc020f27b9190ff407a99244647077d6c9c73651d5f6677c7b556c3934beffb9",
+      "bytes": 380
+    },
+    "execute.log": {
+      "sha256": "d1a21633b4bbf6ae6e03dff75a173176b405ee6bcb59eda2a27a0cdef4af8da7",
+      "bytes": 50
+    },
+    "P08CounterSchema.swiftsourceinfo": {
+      "sha256": "219ba8ec50f86caf0de46442aa148f3f2183b85e680159148ae661b3d6347850",
+      "bytes": 2988
+    },
+    "counter-lowering.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "P08CounterRuntime.swiftsourceinfo": {
+      "sha256": "7d9ebc4acbfb2a72aa61415067cb09d09824c73012adc893e68523d78889d0dc",
+      "bytes": 78660
+    },
+    "P08CounterRuntime.swiftdoc": {
+      "sha256": "5772f473c108d1ceaddf22f7e03f1f6c30445b84aae7c80b610cb20c94f8f255",
+      "bytes": 4044
+    },
+    "P08CounterRuntime.o": {
+      "sha256": "b9ef3b7148f7fd781880c34888ac3a1917eb667b4b9b063e5fbc1f12215800ac",
+      "bytes": 362480
+    },
+    "Counter.swift": {
+      "sha256": "cca7bd4c526885f37e181c67d90f862fcd1d7db13e5341d17a5f22d0bb7f6e20",
+      "bytes": 2537
+    },
+    "P08CounterSchema.swiftdoc": {
+      "sha256": "87956c631d40c5661d711f3b8125d5f10e9c72ab2287c1f9d78dbb25977882c9",
+      "bytes": 380
+    },
+    "commands.txt": {
+      "sha256": "2942d598352fffcfac67b6b6d1d8ed5b2a8d833765c7d30fe80ac4d7268165f6",
+      "bytes": 10774
+    },
+    "P08CounterTable.swiftmodule": {
+      "sha256": "f285f2df8e44cc70828e15461737597b3cec6427e0023cde91f4bdfba19caeff",
+      "bytes": 28836
+    },
+    "counter": {
+      "sha256": "4b09cacb4eaef4339af6c1e8ae7b4e74c3dbb2a2c8f0655303d517322277c203",
+      "bytes": 2980760
+    },
+    "P08CounterPresentation.swiftsourceinfo": {
+      "sha256": "bd8be46471fb0a3a619f31a95605e8ae098e3189329e54fd69461c0a5ba0650a",
+      "bytes": 3500
+    },
+    "Main.swift": {
+      "sha256": "9c555cd731267e5e2a470b1919a6a055ee91c6821e9658862103c9048d78a6bb",
+      "bytes": 230
+    },
+    "CounterSchema.swift": {
+      "sha256": "a3a24ab22fdf75c7d2b0fdb90d86755dc377747e0ed663f1c06bac7dbc0dde41",
+      "bytes": 1250
+    },
+    "P08CounterPresentation.swiftmodule": {
+      "sha256": "752720aaaa663fb974844ec2e3fa5c1238e239262481c0e40fb08db4539b6037",
+      "bytes": 44472
+    },
+    "P08CounterSchema.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "link.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    }
+  }
+}

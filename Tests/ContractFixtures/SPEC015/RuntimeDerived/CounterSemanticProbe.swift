@@ -87,6 +87,7 @@ private func exerciseCounter(_ semantic: borrowing SemanticRecordStore<CounterPa
                             identity = inspected.0; checks += inspected.1
                         }
                     } catch { print("counter caught", error); preconditionFailure("counter view") }
+                    checks += counterRenderActual(semantic: semantic, models: models, values: values, value: value, dynamic: dynamic)
                     values.discard()
                     counterSemanticExpect(values.count == 0 && values.releaseCount == 1); checks += 1
                 }
