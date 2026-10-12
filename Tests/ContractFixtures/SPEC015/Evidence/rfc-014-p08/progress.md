@@ -486,3 +486,35 @@ four documented driver source exceptions remain explicit and will be rebuilt
 only inside the later authorized gate. No dependency rebuild or compiler change.
 B01 committed for separate Strong review; B02 not started, historical 2/2 closed,
 B03 native 0/1 unused. P08/four-route/early-image/P09–P12 and T8.1 remain open.
+
+### B01 independent review dispatch
+
+Review `372362b5` sequentially with Strong `gpt-6.1-sol` / `high`, C3/R3,
+against ADR-038/SPEC-015 HC-003 and the B01→B03 sequence. Read
+`remaining-implementation/option-b/b01-inventory.md`, its identity records and
+actual source references; independently assess all proposed masks, retained
+report origins, operational/backing coverage gaps and exact B02 projections.
+Allowed output: independent review plus this progress receipt; no source edit,
+compiler, gate, build or dependency refresh. Determine whether recorded gaps may
+remain for existing remaining-P08 work or block B02 under the approved sequence.
+No new contract/scope choices. Commit review. Historical 2/2 closed; B03 0/1.
+
+### B01 independent Strong review result — 2026-10-12
+
+**PASS for inventory and bounded B02 handoff** at `372362b5`; separate Strong
+`gpt-6.1-sol` high, C3/R3, no delegation. [Independent review](remaining-implementation/option-b/b01-independent-review.md)
+confirms all eighteen proposed masks, specifically handler13=0, normalized15=0,
+wake16=61 and endpoint6=63, and both existing controlPointer projection replacements.
+Initializer association, independent cache release and actual application/endpoint
+checks remain required. No required upward constructor edge or backing ambiguity
+found. Missing operational/factory-origin controls remain mandatory remaining-P08
+exit obligations; the plan permits recorded gaps before bounded B02/B03, with no
+new approval gate or conformance claim.
+
+Independently rehashed29source identities and491file comparisons plus the separate
+host/runtime compiler-equality comparison; exact current driver preflight matches,
+including all four explicit historical source exceptions. No compiler, executable,
+formatter, gate, build or dependency refresh ran. `git diff --check` passes.
+B02 is limited to the four inventory files; B03 retains its one later attempt and
+separate result review. Historical2/2 closed, B03 0/1 unused; P08/T8.1/four routes/
+early images/P09–P12 remain open. Entry dispatch is included in this review commit.
