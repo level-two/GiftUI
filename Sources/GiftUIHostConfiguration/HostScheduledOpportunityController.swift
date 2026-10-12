@@ -16,6 +16,15 @@ package enum HostScheduledOpportunityResult<OwnerFailure: Equatable & Sendable>:
     case rejected(HostScheduledOpportunityError, pacing: HostWakePacingError?)
 }
 
+// Begin and complete are separate short borrows when the instance's callbacks
+// record new work into this same containing scheduler.
+package enum HostScheduledOpportunityBeginResult: Equatable, Sendable {
+    case noWork
+    case wait(untilMicroseconds: UInt64)
+    case began(ExecutionWakeReasons)
+    case rejected(HostScheduledOpportunityError, pacing: HostWakePacingError?)
+}
+
 package struct HostScheduledOpportunityController: Sendable {
     package let assemblyReport: HostAssemblyReport
     private var pacing: HostWakePacingController
@@ -55,39 +64,33 @@ package struct HostScheduledOpportunityController: Sendable {
         pacing.record(reasons, at: timestampMicroseconds)
     }
 
-    package mutating func service<Instance: MVPHostInstance & ~Copyable & ~Escapable>(
+    package mutating func begin(
         at timestampMicroseconds: UInt64,
-        instance: inout Instance
-    ) -> HostScheduledOpportunityResult<Instance.OwnerFailure> {
-        guard instance.lifecycleState == .active else {
-            return .rejected(.invalidLifecycle, pacing: nil)
-        }
-        guard instance.assemblyReport == assemblyReport else {
+        lifecycleState: MVPHostLifecycleState,
+        assemblyReport: HostAssemblyReport
+    ) -> HostScheduledOpportunityBeginResult {
+        guard lifecycleState == .active else { return .rejected(.invalidLifecycle, pacing: nil) }
+        guard assemblyReport == self.assemblyReport else {
             return .rejected(.assemblyReportMismatch, pacing: nil)
         }
         switch pacing.schedule(at: timestampMicroseconds) {
-        case .noWork:
-            return .noWork
-        case .wait(let boundary):
-            return .wait(untilMicroseconds: boundary)
-        case .invalid(let error):
-            return .rejected(.pacingRejected, pacing: error)
-        case .run:
-            break
+        case .noWork: return .noWork
+        case .wait(let boundary): return .wait(untilMicroseconds: boundary)
+        case .invalid(let error): return .rejected(.pacingRejected, pacing: error)
+        case .run: break
         }
-
-        let reasons: ExecutionWakeReasons
         switch pacing.beginOpportunity(at: timestampMicroseconds) {
-        case .began(let accumulated):
-            reasons = accumulated
-        case .rejected(let error):
-            return .rejected(.pacingRejected, pacing: error)
+        case .began(let reasons): return .began(reasons)
+        case .rejected(let error): return .rejected(.pacingRejected, pacing: error)
         }
+    }
 
-        let result = instance.runOpportunity()
-        let completionError = pacing.completeOpportunity(
-            at: timestampMicroseconds
-        )
+    package mutating func complete<OwnerFailure: Equatable & Sendable>(
+        at timestampMicroseconds: UInt64,
+        reasons: ExecutionWakeReasons,
+        result: HostOpportunityResult<OwnerFailure>
+    ) -> HostScheduledOpportunityResult<OwnerFailure> {
+        let completionError = pacing.completeOpportunity(at: timestampMicroseconds)
         guard completionError == nil else {
             return .rejected(.invalidCompletion, pacing: completionError)
         }
@@ -95,6 +98,24 @@ package struct HostScheduledOpportunityController: Sendable {
             return .rejected(.invalidRuntimeResult, pacing: nil)
         }
         return .cycle(reasons: reasons, result: result)
+    }
+
+    package mutating func service<Instance: MVPHostInstance & ~Copyable & ~Escapable>(
+        at timestampMicroseconds: UInt64,
+        instance: inout Instance
+    ) -> HostScheduledOpportunityResult<Instance.OwnerFailure> {
+        let reasons: ExecutionWakeReasons
+        switch begin(
+            at: timestampMicroseconds, lifecycleState: instance.lifecycleState,
+            assemblyReport: instance.assemblyReport)
+        {
+        case .noWork: return .noWork
+        case .wait(let boundary): return .wait(untilMicroseconds: boundary)
+        case .rejected(let error, let pacing): return .rejected(error, pacing: pacing)
+        case .began(let accumulated): reasons = accumulated
+        }
+        let result = instance.runOpportunity()
+        return complete(at: timestampMicroseconds, reasons: reasons, result: result)
     }
 
     package mutating func quiesce() -> HostWakePacingError? {

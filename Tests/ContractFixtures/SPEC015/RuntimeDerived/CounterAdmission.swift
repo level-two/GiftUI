@@ -25,7 +25,7 @@ extension CounterPipelineOwner: ExecutionOpportunityRunner, RuntimeOpportunityQu
             return .failure(phase.context, .execution(.requiredFacilityUnavailable), nil)
         }
         let priorIntent = recovery.pendingIntent
-        _ = recovery.acknowledgeWakeAtIdleOpportunity()
+        _ = control.pointee.takeCounterWakeAtIdleEntry()
         let result = runTracedPipeline()
         control.pointee.result = result
         let disposition: RuntimePipelineDisposition
@@ -51,9 +51,11 @@ extension CounterPipelineOwner: ExecutionOpportunityRunner, RuntimeOpportunityQu
         if operational == .backpressured {
             let transition = recovery.recordBackpressure(for: phase.context.semanticRevision!)
             events.formUnion(transition.operationalEvents); intent = transition.intent
+            control.pointee.emitCounterWake(.presentationPending)
         } else if operational == .retryableRefusal {
             let transition = recovery.recordRetryableRefusal(for: phase.context.semanticRevision!)
             events.formUnion(transition.operationalEvents); intent = transition.intent; terminal = transition.exhausted
+            if !terminal { control.pointee.emitCounterWake(.presentationPending) }
         } else if disposition.presentationIntentState == .pending {
             intent = priorIntent
         } else if let priorIntent {
@@ -68,7 +70,7 @@ extension CounterPipelineOwner: ExecutionOpportunityRunner, RuntimeOpportunityQu
             intent = nil
             terminatePresentation()
         }
-        counterTrace("recovery", (recovery.pendingIntent, recovery.wakes.wakeOutstanding, recovery.wakes.requester.requestCount))
+        counterTrace("recovery", (recovery.pendingIntent, control.pointee.wake!.wakeOutstanding, control.pointee.wake!.requester.requestCount))
         let summary = RunCycleSummary(cycle: counter, admission: admission, semanticRevision: phase.context.semanticRevision, semanticDisposition: disposition.semanticDisposition, logicalFrameDisposition: disposition.logicalFrameDisposition, committedPresentationRevision: committedPresentation, presentationIntentState: terminal ? .unavailable : disposition.presentationIntentState, presentationPending: intent, operationalEvents: events)!
         counterTrace("summary", summary)
         if let failure { return .failure(completedContext, failure, summary) }
@@ -124,7 +126,7 @@ struct CounterQueuedFacts: ExecutionPendingAdmissionStorage {
 struct CounterAdmission: ExecutionAdmissionSink {
     typealias StateChangeFact = UInt8
     typealias CompletionFact = UInt16
-    typealias Controller = SingleSourceExecutionAdmissionController<CounterQueuedFacts, CounterWake>
+    typealias Controller = SingleSourceExecutionAdmissionState<CounterQueuedFacts>
     var controller: Controller {
         get { control.pointee.admissionController! }
         set { control.pointee.admissionController = newValue }
@@ -135,7 +137,7 @@ struct CounterAdmission: ExecutionAdmissionSink {
     init(control: UnsafeMutablePointer<CounterControl>, limits: ExecutionLimits) {
         self.control = control
         precondition(control.pointee.admissionController == nil)
-        control.pointee.admissionController = Controller(limits: limits, context: control.pointee.context, committedPresentationRevision: control.pointee.runtime.committedPresentation, storage: CounterQueuedFacts(control: control), requester: CounterWake())
+        control.pointee.admissionController = Controller(limits: limits, context: control.pointee.context, committedPresentationRevision: control.pointee.runtime.committedPresentation, storage: CounterQueuedFacts(control: control))
     }
     init(borrowing control: UnsafeMutablePointer<CounterControl>) {
         precondition(control.pointee.admissionController != nil)
@@ -145,13 +147,13 @@ struct CounterAdmission: ExecutionAdmissionSink {
         controller.synchronize(context: control.pointee.context, committedPresentationRevision: control.pointee.runtime.committedPresentation, sealClosed: control.pointee.admission.sealActive, quiescent: control.pointee.unavailable)
     }
     mutating func submit(pointer: NormalizedPointerEvent) -> ExecutionAdmissionOutcome {
-        synchronize(); let outcome = controller.submit(pointer: pointer); counterTrace("admission.pointer", outcome); return outcome
+        synchronize(); let outcome = controller.submit(pointer: pointer); if outcome.result == .queued { control.pointee.emitCounterWake(.admittedWork, acceptedFact: true) }; counterTrace("admission.pointer", outcome); return outcome
     }
     mutating func submit(stateChange: UInt8) -> ExecutionAdmissionOutcome {
-        synchronize(); let outcome = controller.submit(stateChange: stateChange); counterTrace("admission.state", outcome); return outcome
+        synchronize(); let outcome = controller.submit(stateChange: stateChange); if outcome.result == .queued { control.pointee.emitCounterWake(.admittedWork, acceptedFact: true) }; counterTrace("admission.state", outcome); return outcome
     }
     mutating func submit(completion: UInt16) -> ExecutionAdmissionOutcome {
-        synchronize(); let outcome = controller.submit(completion: completion); counterTrace("admission.completion", outcome); return outcome
+        synchronize(); let outcome = controller.submit(completion: completion); if outcome.result == .queued { control.pointee.emitCounterWake(.admittedWork, acceptedFact: true) }; counterTrace("admission.completion", outcome); return outcome
     }
 }
 struct CounterPointerState {
@@ -170,7 +172,7 @@ struct CounterWake: ExecutionWakeRequester, Sendable {
         let next = requestCount.addingReportingOverflow(1)
         precondition(!next.overflow)
         requestCount = next.partialValue
-        self.reasons.formUnion(reasons)
+        self.reasons = reasons
     }
 }
 

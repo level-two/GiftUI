@@ -88,6 +88,8 @@ func counterHostCorpus<H: MVPHostInstance & ~Copyable & ~Escapable>(host: inout 
     var checks = counterCheckHostFrame(control.pointee, value: 0)
     var admission = CounterAdmission(borrowing: control)
     var sequence: UInt32 = 0
+    var timestamp = control.pointee.wakeClockMicroseconds
+    let wakeControl = CounterHostControl(pointer: control)
     // Rejected physical input must never reach the coordinator's admission queue.
     let firstRevision = control.pointee.runtime.committedPresentation!
     counterCorpusExpect(control.pointee.inputGate.inputIsEligible)
@@ -111,7 +113,8 @@ func counterHostCorpus<H: MVPHostInstance & ~Copyable & ~Escapable>(host: inout 
         guard case .queued(let downEvent) = down, case .queued(let upEvent) = up else { preconditionFailure("counter physical input gate") }
         counterCorpusExpect(downEvent.sequence.rawValue == sequence && downEvent.ordinal.rawValue == 0 && downEvent.presentationRevision == revision)
         counterCorpusExpect(upEvent.sequence == downEvent.sequence && upEvent.ordinal.rawValue == 1 && upEvent.presentationRevision == revision)
-        guard case .cycle(.success(let summary)) = host.runOpportunity() else { preconditionFailure("counter actual host typed action") }
+        timestamp += 250000
+        guard case .cycle(.admittedWork, .cycle(.success(let summary))) = counterServiceHost(at: timestamp, host: &host, control: wakeControl) else { preconditionFailure("counter actual paced host typed action") }
         counterCorpusExpect(summary.admission.inputEventCount == 2 && summary.admission.semanticActionCount == (changed ? 1 : 0))
         counterCorpusExpect(control.pointee.applied == applied + (changed ? 1 : 0))
         counterCorpusExpect(control.pointee.runtime.pointer.capture.current == nil)

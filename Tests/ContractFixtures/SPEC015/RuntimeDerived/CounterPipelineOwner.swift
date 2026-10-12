@@ -28,6 +28,17 @@ struct CounterControl {
     var runtime = CounterRuntimeControl()
     // The coordinator and finite callback adapter share this single controller.
     var admissionController: CounterAdmission.Controller?
+    var wake: ExecutionWakeAccumulator<CounterWake>?
+    var scheduler: HostScheduledOpportunityController?
+    var wakeClockMicroseconds: UInt64 = 0
+    var wakeFirstFactMicroseconds: UInt64?
+    var wakeEnabled = false
+    var forwardedWakeRequestCount: UInt32 = 0
+    var hostWakeRequests = 0
+    var wakeTakes = 0
+    var lastTakenWakeReasons: ExecutionWakeReasons = []
+    var acceptedFactWakeRecords = 0
+    var disabledWakeRejections = 0
     var inputGate = HostNormalizedInputGate(configuredSource: .init(rawValue: 0))
     var semanticSnapshot = CounterSemanticSnapshot()
     var lastFrame = CounterRenderSink()
@@ -138,7 +149,7 @@ where Geometry: CounterGeometry, Candidate: CounterCandidateBacking, Committed: 
     var completedContext = ExecutionContext(cycle: nil, semanticRevision: nil, candidateFrame: nil, phase: .idle)
     var committedPresentation: PresentationRevision?
     var sealedAdmission: AdmissionSummary?
-    var recovery = RecordingPresentationPendingCoordinator(maximumRetryableRefusals: 3, requester: CounterWake())!
+    var recovery = PresentationPendingState(maximumRetryableRefusals: 3)!
     var endpoint: CounterEndpoint
     var frameActive = false
     var observableCandidate = false
@@ -161,6 +172,7 @@ where Geometry: CounterGeometry, Candidate: CounterCandidateBacking, Committed: 
     init(models: consuming ObservableModelScope<CounterOwnedModel, CounterModelSchema>, root: consuming ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, semantic: consuming SemanticRecordStore<CounterPayload>, values: consuming CanvasStagedValues<SemanticRecordReference, CounterValueTable>, geometry: consuming Geometry, interaction: consuming InteractionOwnedKeyState<Candidate, Committed, Hits>, control: borrowing UnsafeMutablePointer<CounterControl>, limits: RuntimeProfileLimits, endpointConfiguration: HostEndpointConfiguration) {
         self.models = consume models; self.root = consume root; self.semantic = consume semantic; self.values = consume values
         self.limits = limits
+        control.pointee.initializeCounterWake()
         self.endpoint = CounterEndpoint(configuration: endpointConfiguration, control: control)
         self.geometry = consume geometry; self.interaction = consume interaction; self.control = copy control
         precondition(self.root.belongs(to: self.models))
@@ -191,7 +203,7 @@ where Geometry: CounterGeometry, Candidate: CounterCandidateBacking, Committed: 
         control.pointee.runtime.pointer.sequence.cancelCurrentSequence()
         control.pointee.runtime.pointer.source = nil
         if let retained = recovery.pendingIntent { recovery.clearPending(for: retained.semanticRevision) }
-        _ = recovery.acknowledgeWakeAtIdleOpportunity()
+        control.pointee.disableCounterWake()
         interaction.resetAllStorage()
         control.pointee.committedRecords = 0
         do throws(ObservableStateError) { try root.shutdown() }
@@ -486,6 +498,7 @@ where Geometry: CounterGeometry, Candidate: CounterCandidateBacking, Committed: 
     mutating func applyDisposition(_ disposition: RuntimePipelineDisposition) {
         counterTrace("disposition", disposition)
         changed = disposition.semanticDisposition == .dirty
+        if changed { control.pointee.emitCounterWake(.semanticDirty) }
         pending = disposition.presentationIntentState == .pending
     }
     mutating func finalizePipeline() {

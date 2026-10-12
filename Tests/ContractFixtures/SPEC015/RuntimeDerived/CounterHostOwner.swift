@@ -95,6 +95,7 @@ extension CounterPipelineOwner {
         self.semantic = consume semantic
         self.values = consume values
         self.limits = limits
+        scopedControl.pointer.pointee.initializeCounterWake()
         self.endpoint = CounterEndpoint(configuration: endpointConfiguration, control: scopedControl.pointer)
         self.geometry = consume geometry
         self.interaction = consume interaction
@@ -289,6 +290,7 @@ struct CounterHostOwner: ~Copyable, ~Escapable, SignalAnalyzerPresetLiveOwner {
     }
     mutating func establishWakeAndPacingHostLoop() -> HostActivationStepResult<ActivationFailure> {
         precondition(activationStep == 6)
+        state.controlPointer.pointee.establishCounterScheduler(report: assembly.report)
         activationStep = 7; return .advanced
     }
     mutating func stopSourceDeliveryAndRepositoryObservation() { application?.stopDelivery() }

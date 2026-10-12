@@ -43,12 +43,11 @@ extension StaticCounterProfileStorage {
                                             precondition(activation == .active && host.owner.activationStep == 7 && host.owner.constructions == 1)
                                             precondition(pointer.pointee.finalized == 2 && pointer.pointee.commits == 1 && pointer.pointee.committedRecords == 2)
                                             precondition(pointer.pointee.admission.pendingStateCount == 1)
-                                            var scheduler = HostScheduledOpportunityController(assemblyReport: host.assemblyReport, initialFrameOriginMicroseconds: 0)
-                                            guard case .success = scheduler.recordAcceptedFact(at: 0) else { preconditionFailure("counter accepted fact wake") }
-                                            guard case .wait(untilMicroseconds: 250000) = scheduler.service(at: 0, instance: &host) else { preconditionFailure("counter pacing") }
-                                            guard case .cycle(_, .cycle(.success)) = scheduler.service(at: 250000, instance: &host) else { preconditionFailure("counter paced host opportunity") }
+                                            let wakeControl = CounterHostControl(pointer: pointer)
+                                            guard case .wait(untilMicroseconds: 250000) = counterServiceHost(at: 0, host: &host, control: wakeControl) else { preconditionFailure("counter actual wake pacing") }
+                                            guard case .cycle(.admittedWork, .cycle(.success)) = counterServiceHost(at: 250000, host: &host, control: wakeControl) else { preconditionFailure("counter actual paced wake") }
                                             precondition(pointer.pointee.finalized == 3 && pointer.pointee.admission.pendingStateCount == 0)
-                                            precondition(scheduler.quiesce() == nil)
+                                            guard case .noWork = counterServiceHost(at: 250000, host: &host, control: wakeControl) else { preconditionFailure("counter no idle polling") }
                                             count += 7 + counterHostCorpus(host: &host, control: pointer)
                                         }
                                         precondition(host.activate() == .failure(.invariant) && host.owner.constructions == 1)
