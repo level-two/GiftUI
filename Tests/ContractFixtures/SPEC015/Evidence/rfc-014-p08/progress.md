@@ -1279,3 +1279,15 @@ object-stack-prologues.txt is newline-only, so no nRF gross-frame fit is yet
 evidenced. First prelink failure/no repair; partial map/config/archive do not
 establish final image/resource/ABI/allocator feasibility. Step commit precedes
 separate independent recipe/reachability review; Pi/R06 results remain distinct.
+
+Independent R07 first-failure review: [bounded local recipe handoff](remaining-implementation/r07-early-images/independent-review.md).
+24objects/7partial identities/patch match. Existing GIFTUI_NRF_EMBEDDED safe
+division and complete firmware flags justify fresh image-specific selected-owner
+objects INCLUDING baseGiftUI; no builtin/constructor/entropy invention. Partial
+map ties stackguard and arc4random to reusedGiftUI.o; pulled picolibc stackguard
+member has init_array. Correct recipe then reassess actual live reachability;
+no user contract decision established by current linker observations. Frozen
+frame capture empty; no gross-stack/image/resource acceptance. First image
+failure/no repair, meaningful narrowed cause; historical2/2+B031/1 closed.
+Pi result/R06routes distinct, P08/R07 open, P09–P12 pending. No source fixes,
+compiler/tests/target execution or hardware during review.
