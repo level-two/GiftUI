@@ -1,5 +1,13 @@
 # R07 supported image: link PASS, gross-stack FAIL — 2026-10-12
 
+[Independent production-result review](independent-review.md) at1471126c
+accepts the focused linker correction and rejects actual gross-stack fit.
+Existing caller-owned storage authority permits a bounded fixture backing
+realization; exact allowed files, preserved multiple-instance/lifetime behavior,
+receipt requirements and finite checks are recorded there. Compiler realization
+and total feasibility remain unproved. No build/source repair ran in the review;
+R07/P08 remain open and all historical budgets stay closed.
+
 Sourcee5620a35, Sol6.1 High / Strong. The **single supported build passes
 actual exit0**, producing the final Zephyr ELF/HEX/map. Actual retained counter
 frames exceed mainstack27648, so **R07/P08 remain incomplete**. Stop for separate
