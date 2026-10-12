@@ -1,6 +1,17 @@
 # RFC-014 P08 execution receipt — 2026-10-11
 
-**Current checkpoint — 2026-10-12: B02 bounded helper/mask realization complete; B03 not started.**
+**Current checkpoint — 2026-10-12: single B03 native attempt PASS; separate Strong result review pending.**
+[Exact frozen B03 outcome](remaining-implementation/option-b/b03/result.md):
+`102382d7` source, `.build/contracts/p08-counter-s6e2ayc7`, driver exit0,
+1,348,673 reported assertions/zero failures and23/23 checks, including the two
+ownership rejection controls. Pinned preflight496/496; required formatter exit0,
+no source changes. Full diagnostics, commands,190 source snapshots and121 artifact
+identities frozen. No repair/rerun/alternate probe or target build.
+Historical2/2 closed; B03 native1/1 consumed. Stop for separate Strong review;
+remaining operational/origin controls, four routes, early target images and P08
+exit remain open. No HC criterion, P08 exit or target/resource conformance claimed.
+
+**Historical checkpoint — 2026-10-12: B02 bounded helper/mask realization complete; B03 not started.**
 [B01 independent Strong PASS](remaining-implementation/option-b/b01-independent-review.md)
 accepted the actual inventory, exact masks and projection replacements.
 [B02 diff/result](remaining-implementation/option-b/b02-result.md) records the four
@@ -563,3 +574,46 @@ included in this commit. All B01 operational/factory-origin gaps remain mandator
 remaining-P08 work as accepted by independent review. No feasibility, HC/P08 pass
 or package exit. Historical2/2 closed; B03 native0/1 unused; stop for separate
 B03 dispatch. SPEC-015 implementing/planactive/T8.1 open; P09–P12 pending.
+
+### B03 dispatch — single native attempt
+
+Entry `102382d7`, clean; parent inspected the committed four-file diff against
+B01's independently reviewed pattern. Strong `gpt-6.1-sol` / `high` retains the
+existing context for identity/applicability handling, C3/R3. HC-003/014/018 and
+HC-RD-001–004 bounded native evidence only. Recheck pinned dependency identities
+with the established read/hash preflight, run `scripts/format-swift.sh`, and run
+exactly once:
+
+`python3 scripts/contracts/check-spec-015-counter.py --runtime-build .build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static`
+
+No dependency rebuild, compiler switch, repair, rerun or alternate probe. Any
+stale/missing dependency stops before the invocation. Freeze exact command,
+exit status, diagnostics, source/compiler/module/artifact identities and result
+under option-b/b03 evidence. Commit outcome and stop for separate Strong result
+review regardless of outcome. Allowed changes: formatter-required maintained
+files only (report unexpected changes before continuing), evidence and progress.
+No hand-written source edits. Historical 2/2 closed; one B03 attempt currently
+0/1 and becomes 1/1 when invoked. Existing coverage gaps remain open.
+
+
+### B03 result — single native attempt, 2026-10-12
+
+**PASS for bounded native invocation; independent Strong review pending.**
+Source `102382d7`, evidence-only entry dispatch included in this commit.
+[Exact outcome and frozen evidence](remaining-implementation/option-b/b03/result.md).
+Preflight496 matching comparisons (492 prior identities plus4 exception-current
+hashes); required formatter exit0/no source changes. Executed the predeclared
+counter driver exactly once; exit0, `.build/contracts/p08-counter-s6e2ayc7`.
+1,348,673 reported assertions/zero failures,23/23 checks including exact copy/
+backing compiler negatives. Both actual native counter coordinator/scoped-host
+paths execute inside this pinned macos-static dependency route.
+
+Counter-model now passes the previous failure stage. Frozen all diagnostics,
+commands, checks/status, compiler/module/source/artifact identities:49 text
+reports/generated-source files,190 source snapshots,121 artifact hash/size entries.
+No repair/rerun, alternate probe, compiler change, dependency refresh or target
+build. Full B01 operational/factory-origin gaps, four registered routes, early
+linked images/resource/ABI and independent P08 exit remain open; no conformance
+or package exit inferred. Historical2/2 remains closed; B03 native1/1 consumed.
+Stop for separate Strong result review. SPEC-015 implementing/planactive/T8.1
+open; P09–P12 remain pending.

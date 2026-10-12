@@ -1,0 +1,3969 @@
+{
+  "source_commit": "102382d7b2c8af48db932c8695eacd67747aac56",
+  "utc": "2026-10-12T11:01:53.381465+00:00",
+  "method": "Read and hash only; exact B01 pinned identities plus current four existing driver exception inputs. No rebuild/refresh/compiler invocation.",
+  "checks": [
+    {
+      "kind": "runtime-input",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/Cycle.swift",
+      "expected_sha256": "ebb0bdbbec49dcb7945453fff664dbf6da6350de06b0ffd438eec95e2ea8f9f3",
+      "actual_sha256": "ebb0bdbbec49dcb7945453fff664dbf6da6350de06b0ffd438eec95e2ea8f9f3",
+      "matches": true,
+      "bytes": 1967
+    },
+    {
+      "kind": "runtime-input",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/CycleSchema.swift",
+      "expected_sha256": "55d0109f7a8c9950b0dbf7b764a02f303b08e10114fdc628ec5f4f6805791bd5",
+      "actual_sha256": "55d0109f7a8c9950b0dbf7b764a02f303b08e10114fdc628ec5f4f6805791bd5",
+      "matches": true,
+      "bytes": 1228
+    },
+    {
+      "kind": "runtime-input",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/CycleTable.swift",
+      "expected_sha256": "d3c1b751b75a06a26fc3fa8712cb3a4dfef64b6c7eebe8f86e15b81c54e67b98",
+      "actual_sha256": "d3c1b751b75a06a26fc3fa8712cb3a4dfef64b6c7eebe8f86e15b81c54e67b98",
+      "matches": true,
+      "bytes": 1352
+    },
+    {
+      "kind": "runtime-input",
+      "path": ".build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool",
+      "expected_sha256": "6bb5eae9d0b726905f893b0f1fa4c0739fee61830f33404aa5cdb8321212c691",
+      "actual_sha256": "6bb5eae9d0b726905f893b0f1fa4c0739fee61830f33404aa5cdb8321212c691",
+      "matches": true,
+      "bytes": 17031504
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Package.swift",
+      "expected_sha256": "8f1ef6222486f1ae40d9b24b9298d60d742c6c1717f85448b5afc4b80804276a",
+      "actual_sha256": "8f1ef6222486f1ae40d9b24b9298d60d742c6c1717f85448b5afc4b80804276a",
+      "matches": true,
+      "bytes": 26642
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Sources/GiftUIDrawing/CanvasInvocationSource.swift",
+      "expected_sha256": "9b992bc729e793959c0d8ad3fcb374c0bf3ced7edb1cdd098c57e6ba48c451f2",
+      "actual_sha256": "9b992bc729e793959c0d8ad3fcb374c0bf3ced7edb1cdd098c57e6ba48c451f2",
+      "matches": true,
+      "bytes": 440
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Sources/GiftUIDrawing/CanvasPlanProducer.swift",
+      "expected_sha256": "8a75acb55af64e06ad4aad12553c1e6c4c1a6c11aa937599f65e63a7bef68db7",
+      "actual_sha256": "8a75acb55af64e06ad4aad12553c1e6c4c1a6c11aa937599f65e63a7bef68db7",
+      "matches": true,
+      "bytes": 6405
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Sources/GiftUIDrawing/CanvasRenderProducer.swift",
+      "expected_sha256": "70fc175a8490cdf2ba10d46818fc5ff9b80137a47f5fa45d8cf649d9fd292cc2",
+      "actual_sha256": "70fc175a8490cdf2ba10d46818fc5ff9b80137a47f5fa45d8cf649d9fd292cc2",
+      "matches": true,
+      "bytes": 10954
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Sources/GiftUIDrawing/CanvasSemanticPayload.swift",
+      "expected_sha256": "8ff2bf5049d4393d459fef253cf6a137a9796a70c2ad4c413111d7928070b531",
+      "actual_sha256": "8ff2bf5049d4393d459fef253cf6a137a9796a70c2ad4c413111d7928070b531",
+      "matches": true,
+      "bytes": 3398
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Sources/GiftUIDrawing/CanvasStagedValues.swift",
+      "expected_sha256": "2fa24cfc2cca8813002241d77d67429b0eb8895e044da683aa5fd19891ae6437",
+      "actual_sha256": "2fa24cfc2cca8813002241d77d67429b0eb8895e044da683aa5fd19891ae6437",
+      "matches": true,
+      "bytes": 5524
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Sources/GiftUIDrawing/DrawingLimits.swift",
+      "expected_sha256": "eae0cc1be30bc22102c76613cd07b08ee577dbbb1f08d06caf350eb52d64be64",
+      "actual_sha256": "eae0cc1be30bc22102c76613cd07b08ee577dbbb1f08d06caf350eb52d64be64",
+      "matches": true,
+      "bytes": 2779
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Sources/GiftUIDrawing/DrawingPlan.swift",
+      "expected_sha256": "93e3216f2faaee98e2c025deef50cfb7513911efacdd56e90980be3cb6264da9",
+      "actual_sha256": "93e3216f2faaee98e2c025deef50cfb7513911efacdd56e90980be3cb6264da9",
+      "matches": true,
+      "bytes": 1219
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Sources/GiftUIDrawing/DrawingValues.swift",
+      "expected_sha256": "d1008926323fdb292ec32e95e2cefb17958ea5ccbfb8d2e0c48fb67e565f0874",
+      "actual_sha256": "d1008926323fdb292ec32e95e2cefb17958ea5ccbfb8d2e0c48fb67e565f0874",
+      "matches": true,
+      "bytes": 1239
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Sources/GiftUIDrawing/PathConstruction.swift",
+      "expected_sha256": "ff7780b55c1b33f6b00ad322a20bfe9d7408160a13a2908b6da9019cb0bfc68d",
+      "actual_sha256": "ff7780b55c1b33f6b00ad322a20bfe9d7408160a13a2908b6da9019cb0bfc68d",
+      "matches": true,
+      "bytes": 3882
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Sources/GiftUIDrawing/StaticCanvasCallableTable.swift",
+      "expected_sha256": "9c644426cf7f594dddff99cea8a21eb4c2fd57f295f4afdfbe049c55413ff9b6",
+      "actual_sha256": "9c644426cf7f594dddff99cea8a21eb4c2fd57f295f4afdfbe049c55413ff9b6",
+      "matches": true,
+      "bytes": 463
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Sources/GiftUIDrawing/StrokeSnapshot.swift",
+      "expected_sha256": "3345b05fb9f6f219fb09e7aa4e7e7a9a18c70f77d192734c36a08d0f84836a51",
+      "actual_sha256": "3345b05fb9f6f219fb09e7aa4e7e7a9a18c70f77d192734c36a08d0f84836a51",
+      "matches": true,
+      "bytes": 4381
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Sources/GiftUIExecution/AdmissionValues.swift",
+      "expected_sha256": "dfd4f00479635772b2f4f8d09c8e1caff3f052d257f8fbd70cdd05e28eff2d38",
+      "actual_sha256": "dfd4f00479635772b2f4f8d09c8e1caff3f052d257f8fbd70cdd05e28eff2d38",
+      "matches": true,
+      "bytes": 3076
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Sources/GiftUIExecution/ExecutionAdmissionSealTransaction.swift",
+      "expected_sha256": "7a88abcca9f437db94ea1f647ae8fd5ec3dbed82bd629b739ba3446ef8cf67d0",
+      "actual_sha256": "7a88abcca9f437db94ea1f647ae8fd5ec3dbed82bd629b739ba3446ef8cf67d0",
+      "matches": true,
+      "bytes": 5218
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Sources/GiftUIExecution/ExecutionAdmissionSealer.swift",
+      "expected_sha256": "54f3a7809c277a37cf8acfa931d62086ebc0ae1d3e77839ab6dcc28085885345",
+      "actual_sha256": "54f3a7809c277a37cf8acfa931d62086ebc0ae1d3e77839ab6dcc28085885345",
+      "matches": true,
+      "bytes": 1792
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Sources/GiftUIExecution/ExecutionMutationBatch.swift",
+      "expected_sha256": "a0464225588b3101249112a88f404a3258ccb87e8d9eea5e56671a4975501567",
+      "actual_sha256": "a0464225588b3101249112a88f404a3258ccb87e8d9eea5e56671a4975501567",
+      "matches": true,
+      "bytes": 2345
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Sources/GiftUIExecution/ExecutionOpportunityRunner.swift",
+      "expected_sha256": "d28b28c94e179c58805de37cc1a42736541cc26a7ba5bcb187571b8ad8e15a9e",
+      "actual_sha256": "d28b28c94e179c58805de37cc1a42736541cc26a7ba5bcb187571b8ad8e15a9e",
+      "matches": true,
+      "bytes": 193
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Sources/GiftUIExecution/ExecutionPhaseMachine.swift",
+      "expected_sha256": "f2047c05efd5f2f2f7c96f57e3b20fd9b3826635c2fa922bdd1c0d81f545da34",
+      "actual_sha256": "f2047c05efd5f2f2f7c96f57e3b20fd9b3826635c2fa922bdd1c0d81f545da34",
+      "matches": true,
+      "bytes": 2478
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Sources/GiftUIExecution/ExecutionValues.swift",
+      "expected_sha256": "9b1278a5878f4123aa1e92fe723d068a3501a562b75b2e7e6940bf75869a80e2",
+      "actual_sha256": "9b1278a5878f4123aa1e92fe723d068a3501a562b75b2e7e6940bf75869a80e2",
+      "matches": true,
+      "bytes": 2733
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Sources/GiftUIExecution/ExecutionWakeAccumulator.swift",
+      "expected_sha256": "856db20ee149c555a4d0c33731be4d69980486033592181187d8465b60ecf2d2",
+      "actual_sha256": "856db20ee149c555a4d0c33731be4d69980486033592181187d8465b60ecf2d2",
+      "matches": true,
+      "bytes": 1058
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Sources/GiftUIExecution/FrameHandoffValues.swift",
+      "expected_sha256": "8eb1c0aa7c895fb50517e76ef9b4bd96568b2c2059b9a398c8f05486de0b87ba",
+      "actual_sha256": "8eb1c0aa7c895fb50517e76ef9b4bd96568b2c2059b9a398c8f05486de0b87ba",
+      "matches": true,
+      "bytes": 1974
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Sources/GiftUIExecution/FrameOfferNormalization.swift",
+      "expected_sha256": "761740fdf6fb11cb54a52c2817d006ec75a9322e2c9a4351952f893711698a33",
+      "actual_sha256": "761740fdf6fb11cb54a52c2817d006ec75a9322e2c9a4351952f893711698a33",
+      "matches": true,
+      "bytes": 4094
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Sources/GiftUIExecution/IdentityAllocators.swift",
+      "expected_sha256": "8f9bab781054456d49e210b3700200f10abc7a47c1a2f85e3de6013d9f6a3e35",
+      "actual_sha256": "8f9bab781054456d49e210b3700200f10abc7a47c1a2f85e3de6013d9f6a3e35",
+      "matches": true,
+      "bytes": 2646
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Sources/GiftUIExecution/InputSourceSequenceState.swift",
+      "expected_sha256": "b69a01de3871a80fa7b9f556bc7d93f12945c9edcc6569d00faa3569d963c5b3",
+      "actual_sha256": "b69a01de3871a80fa7b9f556bc7d93f12945c9edcc6569d00faa3569d963c5b3",
+      "matches": true,
+      "bytes": 4815
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Sources/GiftUIExecution/ObservableTargetGeneration.swift",
+      "expected_sha256": "07e995cb7594bb54a8018020960a98258482dc771abd86858fd052307e89417f",
+      "actual_sha256": "07e995cb7594bb54a8018020960a98258482dc771abd86858fd052307e89417f",
+      "matches": true,
+      "bytes": 187
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Sources/GiftUIExecution/PointerActionCapture.swift",
+      "expected_sha256": "0acc1d5b8c8f9af3f0aa91959198917bc6868907622d785eab149dee7ceed6a6",
+      "actual_sha256": "0acc1d5b8c8f9af3f0aa91959198917bc6868907622d785eab149dee7ceed6a6",
+      "matches": true,
+      "bytes": 1831
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Sources/GiftUIExecution/RecordingCandidateOfferCoordinator.swift",
+      "expected_sha256": "66b7d07d657785ba0ebf9fbc46c3b1d983b715cf45d4a7dd27d46b856fecff23",
+      "actual_sha256": "66b7d07d657785ba0ebf9fbc46c3b1d983b715cf45d4a7dd27d46b856fecff23",
+      "matches": true,
+      "bytes": 5648
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Sources/GiftUIExecution/RecordingCycleCoordinator.swift",
+      "expected_sha256": "ccfffb285dde8e73132ddba6a32fab791eb488b673b316c09b397d10d292a620",
+      "actual_sha256": "ccfffb285dde8e73132ddba6a32fab791eb488b673b316c09b397d10d292a620",
+      "matches": true,
+      "bytes": 6774
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Sources/GiftUIExecution/RecordingCycleFinalizer.swift",
+      "expected_sha256": "bc9318cd92c095b9473878c575996b8b0b1e500faa3cbf121df1ba774673ffc3",
+      "actual_sha256": "bc9318cd92c095b9473878c575996b8b0b1e500faa3cbf121df1ba774673ffc3",
+      "matches": true,
+      "bytes": 3196
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Sources/GiftUIExecution/RecordingDerivationRecovery.swift",
+      "expected_sha256": "e71108078104eb3f294bad9231ee819c3ec77cf11b0c059d3d670a9c95fbef35",
+      "actual_sha256": "e71108078104eb3f294bad9231ee819c3ec77cf11b0c059d3d670a9c95fbef35",
+      "matches": true,
+      "bytes": 4898
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Sources/GiftUIExecution/RecordingDerivationTransaction.swift",
+      "expected_sha256": "380f3d5ec84f4ab6e45aa1e6054677b3080105fb7c445f79cc3ee6b9558e5bca",
+      "actual_sha256": "380f3d5ec84f4ab6e45aa1e6054677b3080105fb7c445f79cc3ee6b9558e5bca",
+      "matches": true,
+      "bytes": 3252
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Sources/GiftUIExecution/RecordingFocusedFailureSelection.swift",
+      "expected_sha256": "c2f005577a0a33d1d46c74d77836ec5ef03857d5716523d8cf6f4ef07a32fb8f",
+      "actual_sha256": "c2f005577a0a33d1d46c74d77836ec5ef03857d5716523d8cf6f4ef07a32fb8f",
+      "matches": true,
+      "bytes": 2365
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Sources/GiftUIExecution/RecordingFrameCommitTransaction.swift",
+      "expected_sha256": "2cf669bd232c7310fc9650d33ccc242fc717b1071877d8a1b2dcbce32ee7e7c8",
+      "actual_sha256": "2cf669bd232c7310fc9650d33ccc242fc717b1071877d8a1b2dcbce32ee7e7c8",
+      "matches": true,
+      "bytes": 2984
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Sources/GiftUIExecution/RecordingFrameEndpoint.swift",
+      "expected_sha256": "43b75fbc4d7ff5a09db83693f6e557f7256bf62960ed3ab2f4c37f4caca5f849",
+      "actual_sha256": "43b75fbc4d7ff5a09db83693f6e557f7256bf62960ed3ab2f4c37f4caca5f849",
+      "matches": true,
+      "bytes": 7814
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Sources/GiftUIExecution/RecordingMutationBatch.swift",
+      "expected_sha256": "229c26f04e85f737a0c6f41d7bbd76eb9c33ff0955bfa878d70bcf8f2984ff39",
+      "actual_sha256": "229c26f04e85f737a0c6f41d7bbd76eb9c33ff0955bfa878d70bcf8f2984ff39",
+      "matches": true,
+      "bytes": 3958
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Sources/GiftUIExecution/RecordingPresentationTerminalRecovery.swift",
+      "expected_sha256": "c163ff5b21c6a9f920b4b70c0d150403ccd2900c20c212be04d2985be90c53d0",
+      "actual_sha256": "c163ff5b21c6a9f920b4b70c0d150403ccd2900c20c212be04d2985be90c53d0",
+      "matches": true,
+      "bytes": 2276
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Sources/GiftUIExecution/RunCycleValues.swift",
+      "expected_sha256": "4ce7d6c7932e3da3b74d35bb78b946dd1fd8249b3f1e41e5985af9a92bd66cd1",
+      "actual_sha256": "4ce7d6c7932e3da3b74d35bb78b946dd1fd8249b3f1e41e5985af9a92bd66cd1",
+      "matches": true,
+      "bytes": 4880
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Sources/GiftUIExecution/WakeValues.swift",
+      "expected_sha256": "915e835c62177403893bf44318b0d06ded8e017e59ba4f1e11d9f333505275f6",
+      "actual_sha256": "915e835c62177403893bf44318b0d06ded8e017e59ba4f1e11d9f333505275f6",
+      "matches": true,
+      "bytes": 868
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Sources/GiftUIInteraction/EffectiveActionEnabledState.swift",
+      "expected_sha256": "89e3dc5744fa9169605a04345ff52a3d483a72b80c7ff5ec56350520d0014f30",
+      "actual_sha256": "89e3dc5744fa9169605a04345ff52a3d483a72b80c7ff5ec56350520d0014f30",
+      "matches": true,
+      "bytes": 478
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Sources/GiftUIInteraction/ExecutionGestureAdapter.swift",
+      "expected_sha256": "f393fa156862774f0d92fc877a51528b9e5764e10c8678fcc9dca4ea260f107f",
+      "actual_sha256": "f393fa156862774f0d92fc877a51528b9e5764e10c8678fcc9dca4ea260f107f",
+      "matches": true,
+      "bytes": 1783
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Sources/GiftUIInteraction/InteractionFailurePrecedence.swift",
+      "expected_sha256": "ec6e49fd95484273c7fdf8408d1ebbad34d889e75eeb26bcfd923255ea9c644f",
+      "actual_sha256": "ec6e49fd95484273c7fdf8408d1ebbad34d889e75eeb26bcfd923255ea9c644f",
+      "matches": true,
+      "bytes": 1304
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Sources/GiftUIInteraction/InteractionOwnedKeyState.swift",
+      "expected_sha256": "54271aaf4d1fc7f4060c44b03124db356802efbf69ddd56f829964f92dd55af8",
+      "actual_sha256": "54271aaf4d1fc7f4060c44b03124db356802efbf69ddd56f829964f92dd55af8",
+      "matches": true,
+      "bytes": 8594
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Sources/GiftUIInteraction/InteractionState.swift",
+      "expected_sha256": "030ac5f13c350694c1bb75b9a74c46a204949441ce52f760885d72b63dcb961c",
+      "actual_sha256": "030ac5f13c350694c1bb75b9a74c46a204949441ce52f760885d72b63dcb961c",
+      "matches": true,
+      "bytes": 15190
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Sources/GiftUIInteraction/InteractionStorage.swift",
+      "expected_sha256": "3a2e4e4907316de134814c58cb07735ae87d65965ad45e7634148f15bf4356d3",
+      "actual_sha256": "3a2e4e4907316de134814c58cb07735ae87d65965ad45e7634148f15bf4356d3",
+      "matches": true,
+      "bytes": 1983
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Sources/GiftUIInteraction/InteractionValues.swift",
+      "expected_sha256": "49bcf84b9dbbdb93c0990d51c65d61e536579c454978aa42ffc4a5e5e3df97cc",
+      "actual_sha256": "49bcf84b9dbbdb93c0990d51c65d61e536579c454978aa42ffc4a5e5e3df97cc",
+      "matches": true,
+      "bytes": 4600
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Sources/GiftUILayout/Layout.swift",
+      "expected_sha256": "17bd1188e891289330a447eaad77a5c53d149e653862939916b221589a9bf1a3",
+      "actual_sha256": "17bd1188e891289330a447eaad77a5c53d149e653862939916b221589a9bf1a3",
+      "matches": true,
+      "bytes": 2699
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Sources/GiftUILayout/LayoutCounters.swift",
+      "expected_sha256": "735a80dc1133d7fcae6ba5ba455b520a8f0224494b2357af224ddea8c200bc12",
+      "actual_sha256": "735a80dc1133d7fcae6ba5ba455b520a8f0224494b2357af224ddea8c200bc12",
+      "matches": true,
+      "bytes": 3504
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Sources/GiftUILayout/LayoutEngine.swift",
+      "expected_sha256": "d79d5e5d2069c21353a64fb0e31d3cff2ecd6e49dd2c4b369c9a162997ee5ddb",
+      "actual_sha256": "d79d5e5d2069c21353a64fb0e31d3cff2ecd6e49dd2c4b369c9a162997ee5ddb",
+      "matches": true,
+      "bytes": 64995
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Sources/GiftUILayout/LayoutError.swift",
+      "expected_sha256": "5733fe30105131fe00b87c4812e787a4efa6aed7236c84d5f93a0e0ddbcf629b",
+      "actual_sha256": "5733fe30105131fe00b87c4812e787a4efa6aed7236c84d5f93a0e0ddbcf629b",
+      "matches": true,
+      "bytes": 285
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Sources/GiftUILayout/LayoutGeometry.swift",
+      "expected_sha256": "0ac0320ec58947aa4bc7c3f8ec0ff662e57f598d2a7764faa0d1c2bc33acfa92",
+      "actual_sha256": "0ac0320ec58947aa4bc7c3f8ec0ff662e57f598d2a7764faa0d1c2bc33acfa92",
+      "matches": true,
+      "bytes": 4530
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Sources/GiftUILayout/LayoutPublication.swift",
+      "expected_sha256": "02e05a2d5e4031cde4940a33f42b52ffd0f87b9b7ad411b87a8e306cd15aad3a",
+      "actual_sha256": "02e05a2d5e4031cde4940a33f42b52ffd0f87b9b7ad411b87a8e306cd15aad3a",
+      "matches": true,
+      "bytes": 4365
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Sources/GiftUILayout/LayoutResultSink.swift",
+      "expected_sha256": "57a52e0187904a317a7d3b00acf28afcd1854d2e62120cafd4fd12011e2ad06a",
+      "actual_sha256": "57a52e0187904a317a7d3b00acf28afcd1854d2e62120cafd4fd12011e2ad06a",
+      "matches": true,
+      "bytes": 867
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Sources/GiftUILayout/LayoutSemanticValidation.swift",
+      "expected_sha256": "cd50b36ea3ba48c33b56ba2fcf448c988ba057ffae934a973521d9ec16a5d69a",
+      "actual_sha256": "cd50b36ea3ba48c33b56ba2fcf448c988ba057ffae934a973521d9ec16a5d69a",
+      "matches": true,
+      "bytes": 13395
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Sources/GiftUILayout/LayoutValues.swift",
+      "expected_sha256": "ec168c1eb9bc6dff3cfb5144ab752958dad62d4bc1c419e8f0dea1b4149e704b",
+      "actual_sha256": "ec168c1eb9bc6dff3cfb5144ab752958dad62d4bc1c419e8f0dea1b4149e704b",
+      "matches": true,
+      "bytes": 1912
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Sources/GiftUILayout/LayoutWorkspace.swift",
+      "expected_sha256": "bbec7289fc9cb6c1f506e895231257c58bdd818ba6d0a020258cb7c97b342f81",
+      "actual_sha256": "bbec7289fc9cb6c1f506e895231257c58bdd818ba6d0a020258cb7c97b342f81",
+      "matches": true,
+      "bytes": 3680
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Sources/GiftUILayout/ResolvedRenderLayoutView.swift",
+      "expected_sha256": "7278d5216c075b499bee43e8b646f00a34f70f6b877ab9b4fc72de1878f10b33",
+      "actual_sha256": "7278d5216c075b499bee43e8b646f00a34f70f6b877ab9b4fc72de1878f10b33",
+      "matches": true,
+      "bytes": 3952
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Sources/GiftUIObservableState/ObservableModelIdentity.swift",
+      "expected_sha256": "b3100dea3f31eb0b508d07da66dc1aafb3da4235774502a36db9f46c9fd82a0a",
+      "actual_sha256": "b3100dea3f31eb0b508d07da66dc1aafb3da4235774502a36db9f46c9fd82a0a",
+      "matches": true,
+      "bytes": 1789
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Sources/GiftUIObservableState/ObservableModelMutation.swift",
+      "expected_sha256": "8fca003edbd06c94c55e870a0fc06a143654b1cc99bc662f3a181ec441bf062d",
+      "actual_sha256": "8fca003edbd06c94c55e870a0fc06a143654b1cc99bc662f3a181ec441bf062d",
+      "matches": true,
+      "bytes": 589
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Sources/GiftUIObservableState/ObservableModelOwnership.swift",
+      "expected_sha256": "6a572ca44df61b39e6f50add6407f014394795aa687dd8484a54828cc95595a9",
+      "actual_sha256": "6a572ca44df61b39e6f50add6407f014394795aa687dd8484a54828cc95595a9",
+      "matches": true,
+      "bytes": 16719
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Sources/GiftUIObservableState/ObservableModelScope.swift",
+      "expected_sha256": "08be628f0514504f0e83d04cd80e6cdd717c9791658fa46229b005365d8064d3",
+      "actual_sha256": "08be628f0514504f0e83d04cd80e6cdd717c9791658fa46229b005365d8064d3",
+      "matches": true,
+      "bytes": 13327
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Sources/GiftUIObservableState/ObservableModelTicket.swift",
+      "expected_sha256": "ac0e6a5e986da34197ceb103c656147cf57f87ffb71717fe754301d489d374d7",
+      "actual_sha256": "ac0e6a5e986da34197ceb103c656147cf57f87ffb71717fe754301d489d374d7",
+      "matches": true,
+      "bytes": 1537
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Sources/GiftUIObservableState/ObservableSemanticBodyBinding.swift",
+      "expected_sha256": "b0746aaa9e4ed287ac04fd3f717c93534827fe943f88e3724df2f96b8a8a2ca4",
+      "actual_sha256": "b0746aaa9e4ed287ac04fd3f717c93534827fe943f88e3724df2f96b8a8a2ca4",
+      "matches": true,
+      "bytes": 2988
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Sources/GiftUIObservableState/ObservableStateBindingDecorator.swift",
+      "expected_sha256": "b88f911561ac3405bd4ed7264122488162828c395a6668ad9b314f54c37b04d6",
+      "actual_sha256": "b88f911561ac3405bd4ed7264122488162828c395a6668ad9b314f54c37b04d6",
+      "matches": true,
+      "bytes": 347
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Sources/GiftUIObservableState/ObservableStateModel.swift",
+      "expected_sha256": "5cf0f406693e42324823c6ce6e2f4e45600b1afd4ce4f59049418f5d125b7959",
+      "actual_sha256": "5cf0f406693e42324823c6ce6e2f4e45600b1afd4ce4f59049418f5d125b7959",
+      "matches": true,
+      "bytes": 636
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Sources/GiftUIObservableState/ObservableStateRegistrationLifecycle.swift",
+      "expected_sha256": "58367baadd5b6213f1bf3809106c2aba2639ddc86ec01907b6d1e9e79a706774",
+      "actual_sha256": "58367baadd5b6213f1bf3809106c2aba2639ddc86ec01907b6d1e9e79a706774",
+      "matches": true,
+      "bytes": 2950
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Sources/GiftUIObservableState/ObservableStateRootScope.swift",
+      "expected_sha256": "6fbcfe7b098eb5c662d6e52cd020c26f0cff4e78c1765df6658f1e8434313707",
+      "actual_sha256": "6fbcfe7b098eb5c662d6e52cd020c26f0cff4e78c1765df6658f1e8434313707",
+      "matches": true,
+      "bytes": 30171
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Sources/GiftUIObservableState/ObservableStateRootTargetAccess.swift",
+      "expected_sha256": "0ab15cca11e67014c99dc9d1db13303bd25bf2472f069e02f89e98cd9ef2dbc5",
+      "actual_sha256": "0ab15cca11e67014c99dc9d1db13303bd25bf2472f069e02f89e98cd9ef2dbc5",
+      "matches": true,
+      "bytes": 1581
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Sources/GiftUIObservableState/ObservableStateValues.swift",
+      "expected_sha256": "58ab30ae29b27233ed5288422849f58c1b43e3ccbf0ddd78f9726f1aef97bbfb",
+      "actual_sha256": "58ab30ae29b27233ed5288422849f58c1b43e3ccbf0ddd78f9726f1aef97bbfb",
+      "matches": true,
+      "bytes": 2321
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Sources/GiftUIReferenceTextResources/Generated/ReferenceBitmapPayload.generated.swift",
+      "expected_sha256": "5c0e5726f559ee9c43815219f7278b6dd75090e86a20b31e02428a53c396a6ef",
+      "actual_sha256": "5c0e5726f559ee9c43815219f7278b6dd75090e86a20b31e02428a53c396a6ef",
+      "matches": true,
+      "bytes": 60627
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Sources/GiftUIReferenceTextResources/Generated/ReferenceCatalogue.generated.swift",
+      "expected_sha256": "7a4085655de8b4738aeb9e27956922684c2d56235679b4775a7bd4f6de7ff70b",
+      "actual_sha256": "7a4085655de8b4738aeb9e27956922684c2d56235679b4775a7bd4f6de7ff70b",
+      "matches": true,
+      "bytes": 52228
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Sources/GiftUIReferenceTextResources/Generated/ReferenceOutlinePayload.generated.swift",
+      "expected_sha256": "acc9dab1fb43cb20cfcb460dfbb2e902d6dc9096c5b2ecbc15d19f4c42d84551",
+      "actual_sha256": "acc9dab1fb43cb20cfcb460dfbb2e902d6dc9096c5b2ecbc15d19f4c42d84551",
+      "matches": true,
+      "bytes": 235522
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Sources/GiftUIReferenceTextResources/GiftUIPiCompactTextResources.swift",
+      "expected_sha256": "fadbaa0ad0a880800339390d1b3f9f3f151d93fba0e9107d9af24087f025cdce",
+      "actual_sha256": "fadbaa0ad0a880800339390d1b3f9f3f151d93fba0e9107d9af24087f025cdce",
+      "matches": true,
+      "bytes": 3185
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Sources/GiftUIReferenceTextResources/GiftUIReferenceTextResources.swift",
+      "expected_sha256": "824fbc8743921029b8682e775c92628de7b65f1198b8682cc3d2c5be645a4922",
+      "actual_sha256": "824fbc8743921029b8682e775c92628de7b65f1198b8682cc3d2c5be645a4922",
+      "matches": true,
+      "bytes": 5480
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Sources/GiftUIReferenceTextResources/PiCompactGenerated/PiCompactBitmapPayload.generated.swift",
+      "expected_sha256": "6d9ae291e7c780cf049010cd8912742ccc36f8b89452db6132086776e0b7bca3",
+      "actual_sha256": "6d9ae291e7c780cf049010cd8912742ccc36f8b89452db6132086776e0b7bca3",
+      "matches": true,
+      "bytes": 49786
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Sources/GiftUIReferenceTextResources/PiCompactGenerated/PiCompactCatalogue.generated.swift",
+      "expected_sha256": "0f8900aaf2433a975276603039af1d4200759ec081394e193d149656d78c0c89",
+      "actual_sha256": "0f8900aaf2433a975276603039af1d4200759ec081394e193d149656d78c0c89",
+      "matches": true,
+      "bytes": 35970
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Sources/GiftUIRenderCore/DrawingOperationSink.swift",
+      "expected_sha256": "4d35496afb8dc6b4827b52b3441a8258a5f91754c765a8828cb5ff7ebaafba88",
+      "actual_sha256": "4d35496afb8dc6b4827b52b3441a8258a5f91754c765a8828cb5ff7ebaafba88",
+      "matches": true,
+      "bytes": 1692
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Sources/GiftUIRenderCore/RenderOperationSink.swift",
+      "expected_sha256": "02ba1989d36434e1e7db7984acce9ccc4a7861857c53de7d49676968aaaf1f43",
+      "actual_sha256": "02ba1989d36434e1e7db7984acce9ccc4a7861857c53de7d49676968aaaf1f43",
+      "matches": true,
+      "bytes": 500
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Sources/GiftUIRenderCore/RenderRecordingSink.swift",
+      "expected_sha256": "3db5511a8127d03eb51c6e6bf232a817d0eb6a2768583433767a05267ebdead2",
+      "actual_sha256": "3db5511a8127d03eb51c6e6bf232a817d0eb6a2768583433767a05267ebdead2",
+      "matches": true,
+      "bytes": 3025
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Sources/GiftUIRenderCore/RenderValues.swift",
+      "expected_sha256": "d4a0e5274c7c8e88a4e7c6c9c0bf5345ea1e83b5086b1f32373f01c7a4940722",
+      "actual_sha256": "d4a0e5274c7c8e88a4e7c6c9c0bf5345ea1e83b5086b1f32373f01c7a4940722",
+      "matches": true,
+      "bytes": 2536
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Sources/GiftUIRenderLowering/RenderExtensions.swift",
+      "expected_sha256": "b4b73e4193b61650d587b0134e626058da433b2c25176df35e3a9f74618fddf9",
+      "actual_sha256": "b4b73e4193b61650d587b0134e626058da433b2c25176df35e3a9f74618fddf9",
+      "matches": true,
+      "bytes": 1280
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Sources/GiftUIRenderLowering/RenderPreflight.swift",
+      "expected_sha256": "1c25158da80d1929699b9323c359ab5480e792bc6f34c6f783d46879194ef290",
+      "actual_sha256": "1c25158da80d1929699b9323c359ab5480e792bc6f34c6f783d46879194ef290",
+      "matches": true,
+      "bytes": 19907
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Sources/GiftUIRenderLowering/RenderProducer.swift",
+      "expected_sha256": "6cc002c47ec91714c78a88a27599167b71fd6f6a8780a4b8c9c1845a79a3a23c",
+      "actual_sha256": "6cc002c47ec91714c78a88a27599167b71fd6f6a8780a4b8c9c1845a79a3a23c",
+      "matches": true,
+      "bytes": 4953
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Sources/GiftUIRenderLowering/RenderProductionValues.swift",
+      "expected_sha256": "0005e5774c9a7658547f91d79b685b2033d59928d01ecd07136b80eaab535bcc",
+      "actual_sha256": "0005e5774c9a7658547f91d79b685b2033d59928d01ecd07136b80eaab535bcc",
+      "matches": true,
+      "bytes": 2389
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Sources/GiftUIRenderLowering/RenderStreaming.swift",
+      "expected_sha256": "4d06944c09c4ad685857df55e2577ff72a183cdfa8b03fb9e5f545a9ea10aa8f",
+      "actual_sha256": "4d06944c09c4ad685857df55e2577ff72a183cdfa8b03fb9e5f545a9ea10aa8f",
+      "matches": true,
+      "bytes": 16716
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Sources/GiftUIRuntimeCore/ObservableCanvasInvocationSource.swift",
+      "expected_sha256": "ad361c8c2e1237cc1e8b4604c9f030198c77786b52a9c1d70ab78d3dfa08bc34",
+      "actual_sha256": "ad361c8c2e1237cc1e8b4604c9f030198c77786b52a9c1d70ab78d3dfa08bc34",
+      "matches": true,
+      "bytes": 1884
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Sources/GiftUIRuntimeCore/RuntimeCompletePipeline.swift",
+      "expected_sha256": "6a591ea81a12c651512e888c6616c28e1160e20886315d052a350837b98a2f72",
+      "actual_sha256": "6a591ea81a12c651512e888c6616c28e1160e20886315d052a350837b98a2f72",
+      "matches": true,
+      "bytes": 18228
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Sources/GiftUIRuntimeCore/RuntimeCoordinatorCleanup.swift",
+      "expected_sha256": "bc912a0f80009ea097042ae4eeb357be895d161602f00add63868ce05a733597",
+      "actual_sha256": "bc912a0f80009ea097042ae4eeb357be895d161602f00add63868ce05a733597",
+      "matches": true,
+      "bytes": 6067
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Sources/GiftUIRuntimeCore/RuntimeCoordinatorContracts.swift",
+      "expected_sha256": "c19a8f8cb381a933dcb1d12d1cfc8df738f9408717d88b661e35a264b192bddb",
+      "actual_sha256": "c19a8f8cb381a933dcb1d12d1cfc8df738f9408717d88b661e35a264b192bddb",
+      "matches": true,
+      "bytes": 1311
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Sources/GiftUIRuntimeCore/RuntimeInteractionCandidateResolution.swift",
+      "expected_sha256": "62070062fd8829facecacc23b2baebd9333df64213291e99dd19344318be0cf9",
+      "actual_sha256": "62070062fd8829facecacc23b2baebd9333df64213291e99dd19344318be0cf9",
+      "matches": true,
+      "bytes": 2871
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Sources/GiftUIRuntimeCore/RuntimeOwnerFailure.swift",
+      "expected_sha256": "7728c6631e620e312f006ddc60e8fdec5d58efb3ea702b662b21ea187586ae57",
+      "actual_sha256": "7728c6631e620e312f006ddc60e8fdec5d58efb3ea702b662b21ea187586ae57",
+      "matches": true,
+      "bytes": 378
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Sources/GiftUIRuntimeCore/RuntimeProfileStorage.swift",
+      "expected_sha256": "9b00d9d6ced10e8b4868953e67c998fb9addf2e55a228c857c2cf317b0367f66",
+      "actual_sha256": "9b00d9d6ced10e8b4868953e67c998fb9addf2e55a228c857c2cf317b0367f66",
+      "matches": true,
+      "bytes": 2874
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Sources/GiftUIRuntimeCore/RuntimeProfileValidation.swift",
+      "expected_sha256": "770bdb08b6bec4f93e76109838a1e511d88779018fe817b48bb5326608fdb8d1",
+      "actual_sha256": "770bdb08b6bec4f93e76109838a1e511d88779018fe817b48bb5326608fdb8d1",
+      "matches": true,
+      "bytes": 19160
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Sources/GiftUIRuntimeCore/RuntimeProfileValues.swift",
+      "expected_sha256": "377ef975edb74d9e8b86b94228e0756e1bc15414875f74a1fb4dbec33f0d88ca",
+      "actual_sha256": "377ef975edb74d9e8b86b94228e0756e1bc15414875f74a1fb4dbec33f0d88ca",
+      "matches": true,
+      "bytes": 16749
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Sources/GiftUIRuntimeCore/RuntimeRecordCanvasInteractionBridge.swift",
+      "expected_sha256": "a0c386b5dfaf05864bf374644d19ee59f0b254313ffe72c871dcbe983ed69ef9",
+      "actual_sha256": "a0c386b5dfaf05864bf374644d19ee59f0b254313ffe72c871dcbe983ed69ef9",
+      "matches": true,
+      "bytes": 1882
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Sources/GiftUIRuntimeCore/RuntimeRecordInteractionBridge.swift",
+      "expected_sha256": "a6c4fe9a1471daf3b8ee3610d98b98308046abb630ce0956df7235cfe26cf010",
+      "actual_sha256": "a6c4fe9a1471daf3b8ee3610d98b98308046abb630ce0956df7235cfe26cf010",
+      "matches": true,
+      "bytes": 5930
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Sources/GiftUIRuntimeCore/RuntimeStorageRegistry.swift",
+      "expected_sha256": "6f907f1f1c49f5b705439616dfbc5d0f5f6f047998fbb2dc02b1517554fd731e",
+      "actual_sha256": "6f907f1f1c49f5b705439616dfbc5d0f5f6f047998fbb2dc02b1517554fd731e",
+      "matches": true,
+      "bytes": 11405
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Sources/GiftUIRuntimeDynamic/DynamicCanvasCallableStorage.swift",
+      "expected_sha256": "280fb6c4fe28db1b436cf28c7cc808437c8c0d5aaed6803e7136b5c395695f61",
+      "actual_sha256": "280fb6c4fe28db1b436cf28c7cc808437c8c0d5aaed6803e7136b5c395695f61",
+      "matches": true,
+      "bytes": 1424
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Sources/GiftUIRuntimeDynamic/DynamicDrawingPlanWorkspace.swift",
+      "expected_sha256": "641f0e6c5bddd6ffe9b9d2b5284c96e0067a460db745c631f0205478324f506d",
+      "actual_sha256": "641f0e6c5bddd6ffe9b9d2b5284c96e0067a460db745c631f0205478324f506d",
+      "matches": true,
+      "bytes": 17121
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Sources/GiftUIRuntimeDynamic/DynamicInteractionStorage.swift",
+      "expected_sha256": "374c7412495790f1de8e7e336be2902d7012d223edb0130c15ad4e422fdba904",
+      "actual_sha256": "374c7412495790f1de8e7e336be2902d7012d223edb0130c15ad4e422fdba904",
+      "matches": true,
+      "bytes": 4389
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Sources/GiftUIRuntimeDynamic/DynamicLayoutHostStorage.swift",
+      "expected_sha256": "43669b288fa4f6810faa2eafa9c3b4f0ef834a5d9bab662585053dde42cec9a0",
+      "actual_sha256": "43669b288fa4f6810faa2eafa9c3b4f0ef834a5d9bab662585053dde42cec9a0",
+      "matches": true,
+      "bytes": 21258
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Sources/GiftUIRuntimeDynamic/DynamicLivePathStorage.swift",
+      "expected_sha256": "229031aa031794b5241bc70e946e734860ad4fdd7d908524a379770f9dd150d2",
+      "actual_sha256": "229031aa031794b5241bc70e946e734860ad4fdd7d908524a379770f9dd150d2",
+      "matches": true,
+      "bytes": 3981
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Sources/GiftUIRuntimeDynamic/DynamicObservableModelRegistration.swift",
+      "expected_sha256": "a8c02c2e638a1f0138d9efdbd0d25d2890d7c66c8f8c1a1ee64e5c7830840d07",
+      "actual_sha256": "a8c02c2e638a1f0138d9efdbd0d25d2890d7c66c8f8c1a1ee64e5c7830840d07",
+      "matches": true,
+      "bytes": 319
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Sources/GiftUIRuntimeDynamic/DynamicObservableModelStorage.swift",
+      "expected_sha256": "f7696e18e764f65c137d19e4c39ae92614ee80b9a1e056a11b4c37b334927fe0",
+      "actual_sha256": "f7696e18e764f65c137d19e4c39ae92614ee80b9a1e056a11b4c37b334927fe0",
+      "matches": true,
+      "bytes": 2172
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Sources/GiftUIRuntimeDynamic/DynamicObservableRootAdapter.swift",
+      "expected_sha256": "ff9290f45e2a7c009d55ca90244bf034f0e5f19a57942d638812cab75777def2",
+      "actual_sha256": "ff9290f45e2a7c009d55ca90244bf034f0e5f19a57942d638812cab75777def2",
+      "matches": true,
+      "bytes": 2520
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Sources/GiftUIRuntimeDynamic/DynamicObservableRootTargetAccess.swift",
+      "expected_sha256": "30597cee8b751b2f5f27034080227a1bbb1738fa75d46f484a4596defbfd1539",
+      "actual_sha256": "30597cee8b751b2f5f27034080227a1bbb1738fa75d46f484a4596defbfd1539",
+      "matches": true,
+      "bytes": 242
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Sources/GiftUIRuntimeDynamic/DynamicObservableStateReconciler.swift",
+      "expected_sha256": "e59c15cac625661d5863a4aebbef756a7d68b3359cfe3170d1a14bf09222b953",
+      "actual_sha256": "e59c15cac625661d5863a4aebbef756a7d68b3359cfe3170d1a14bf09222b953",
+      "matches": true,
+      "bytes": 286
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Sources/GiftUIRuntimeDynamic/DynamicRenderWorkspace.swift",
+      "expected_sha256": "07e8dba114af4fcdaed8dc1c77545f4e1255b588c63a24782992e8d4479ec517",
+      "actual_sha256": "07e8dba114af4fcdaed8dc1c77545f4e1255b588c63a24782992e8d4479ec517",
+      "matches": true,
+      "bytes": 3755
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Sources/GiftUIRuntimeDynamic/DynamicRuntimeExecutionCoordinator.swift",
+      "expected_sha256": "96689a3086bf2bc22f158a6aac1c84163b641b4da0d8fdc1a382047da26b306b",
+      "actual_sha256": "96689a3086bf2bc22f158a6aac1c84163b641b4da0d8fdc1a382047da26b306b",
+      "matches": true,
+      "bytes": 3886
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Sources/GiftUIRuntimeDynamic/DynamicSemanticRecordStorage.swift",
+      "expected_sha256": "42357e32593459c879fa299b7a74bbcb787536fb176d147a0ebc2fbbf4200f9d",
+      "actual_sha256": "42357e32593459c879fa299b7a74bbcb787536fb176d147a0ebc2fbbf4200f9d",
+      "matches": true,
+      "bytes": 3876
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Sources/GiftUIRuntimeStatic/StaticCanvasValueStorage.swift",
+      "expected_sha256": "5f49964bca470e962471968f1010570732425ebe45cad74ed4ab19c79839b09b",
+      "actual_sha256": "5f49964bca470e962471968f1010570732425ebe45cad74ed4ab19c79839b09b",
+      "matches": true,
+      "bytes": 812
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Sources/GiftUIRuntimeStatic/StaticInteractionStorage.swift",
+      "expected_sha256": "dc3648560338f093f912b7e0bc812bdaa95e7a434a3bd836c903560bf3971219",
+      "actual_sha256": "dc3648560338f093f912b7e0bc812bdaa95e7a434a3bd836c903560bf3971219",
+      "matches": true,
+      "bytes": 12248
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Sources/GiftUIRuntimeStatic/StaticObservableModelStorage.swift",
+      "expected_sha256": "eb63e6c191b8e1af24f19dd2fd523ddb315d04e36151471f534fe6063658e0a0",
+      "actual_sha256": "eb63e6c191b8e1af24f19dd2fd523ddb315d04e36151471f534fe6063658e0a0",
+      "matches": true,
+      "bytes": 2141
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Sources/GiftUIRuntimeStatic/StaticObservableRootAdapter.swift",
+      "expected_sha256": "f6bf84f47f4021eaa61dacd51da8e3a6b9d19066eb577934fc19b9dfd7785078",
+      "actual_sha256": "f6bf84f47f4021eaa61dacd51da8e3a6b9d19066eb577934fc19b9dfd7785078",
+      "matches": true,
+      "bytes": 2723
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Sources/GiftUIRuntimeStatic/StaticObservableRootTargetAccess.swift",
+      "expected_sha256": "f1bb6868e5f37e4deca9fe90707a2b985fda6cb0fa7c00c60ae01ac9b0847d4a",
+      "actual_sha256": "f1bb6868e5f37e4deca9fe90707a2b985fda6cb0fa7c00c60ae01ac9b0847d4a",
+      "matches": true,
+      "bytes": 241
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Sources/GiftUIRuntimeStatic/StaticRecordDrawingWorkspace.swift",
+      "expected_sha256": "42496e7873d81d55b2556699621885b04038b83d0d4941f250af000571ca6a45",
+      "actual_sha256": "42496e7873d81d55b2556699621885b04038b83d0d4941f250af000571ca6a45",
+      "matches": true,
+      "bytes": 3070
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Sources/GiftUIRuntimeStatic/StaticRuntimeExecutionCoordinator.swift",
+      "expected_sha256": "0dd731cdbefcca81360eb2ff896d2e757bedc9829faaaf5e4a4a75b2c48254bd",
+      "actual_sha256": "0dd731cdbefcca81360eb2ff896d2e757bedc9829faaaf5e4a4a75b2c48254bd",
+      "matches": true,
+      "bytes": 3895
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Sources/GiftUIRuntimeStatic/StaticSemanticRecordStorage.swift",
+      "expected_sha256": "db63a7743194b90fec3bc81c32f6280dbb487d40ba251358cfa639649e7be3cb",
+      "actual_sha256": "db63a7743194b90fec3bc81c32f6280dbb487d40ba251358cfa639649e7be3cb",
+      "matches": true,
+      "bytes": 1467
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Sources/GiftUISemanticCore/GiftUISemanticCore.swift",
+      "expected_sha256": "88214d8af4ac0db6c490e6f8a9c8fa671b1490816f5447792e4dfe0927e9efb5",
+      "actual_sha256": "88214d8af4ac0db6c490e6f8a9c8fa671b1490816f5447792e4dfe0927e9efb5",
+      "matches": true,
+      "bytes": 46642
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Sources/GiftUISemanticCore/SemanticLayoutView.swift",
+      "expected_sha256": "f7d067f23913efcab81ebc27ef3c22073c00c2536360b8f866c2f10e5205196b",
+      "actual_sha256": "f7d067f23913efcab81ebc27ef3c22073c00c2536360b8f866c2f10e5205196b",
+      "matches": true,
+      "bytes": 1584
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Sources/GiftUISemanticCore/SemanticRecordExpansion.swift",
+      "expected_sha256": "63b71e4511c486e6481e0e64961e14975f5105cf465ed09342e1eaf2dd24bef3",
+      "actual_sha256": "63b71e4511c486e6481e0e64961e14975f5105cf465ed09342e1eaf2dd24bef3",
+      "matches": true,
+      "bytes": 8890
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Sources/GiftUISemanticCore/SemanticRecordLayoutView.swift",
+      "expected_sha256": "6f2eb6c53e7849ed9cf489ac8b2165a3ab318ff89bb7253076043acfc42ea144",
+      "actual_sha256": "6f2eb6c53e7849ed9cf489ac8b2165a3ab318ff89bb7253076043acfc42ea144",
+      "matches": true,
+      "bytes": 6094
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Sources/GiftUISemanticCore/SemanticRecordRenderView.swift",
+      "expected_sha256": "5d0628083f3ebe29142f7c2245ae7831328ef93c40a28d27b2c2dd20dd029515",
+      "actual_sha256": "5d0628083f3ebe29142f7c2245ae7831328ef93c40a28d27b2c2dd20dd029515",
+      "matches": true,
+      "bytes": 4784
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Sources/GiftUISemanticCore/SemanticRenderView.swift",
+      "expected_sha256": "53f052d9cf5f4dba04edecb9713a11518718f315da8d83855623e41d6e8ebaca",
+      "actual_sha256": "53f052d9cf5f4dba04edecb9713a11518718f315da8d83855623e41d6e8ebaca",
+      "matches": true,
+      "bytes": 801
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Sources/GiftUISemanticCore/SemanticRuntimeRecords.swift",
+      "expected_sha256": "f92786cd8bfae1eb36546e88bbc34c5e864f5a059b7280a2882edc62d57810ba",
+      "actual_sha256": "f92786cd8bfae1eb36546e88bbc34c5e864f5a059b7280a2882edc62d57810ba",
+      "matches": true,
+      "bytes": 15521
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Sources/GiftUISemanticCore/SemanticStandardPayload.swift",
+      "expected_sha256": "2dd204c2c7b5d4fe06e58a085ac7a59aa70dd734e56981231c414c10f7389c70",
+      "actual_sha256": "2dd204c2c7b5d4fe06e58a085ac7a59aa70dd734e56981231c414c10f7389c70",
+      "matches": true,
+      "bytes": 7345
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Sources/GiftUITextResources/GiftUITextResources.swift",
+      "expected_sha256": "7dc3dc0e55b22c9edee699d51272d16c8d364073cf43a840467bf98424efbf9f",
+      "actual_sha256": "7dc3dc0e55b22c9edee699d51272d16c8d364073cf43a840467bf98424efbf9f",
+      "matches": true,
+      "bytes": 51424
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFDrawingPlanRecords.swift",
+      "expected_sha256": "d64b167157bcae57d20e1bae17c17e5c9d0e2fb554e63f150483366717ca93b2",
+      "actual_sha256": "d64b167157bcae57d20e1bae17c17e5c9d0e2fb554e63f150483366717ca93b2",
+      "matches": true,
+      "bytes": 10627
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFDrawingPlanStorage.swift",
+      "expected_sha256": "2252d5740bed6d709574031d6862739050b340424192d0a9b8d17a2d6d2d7d53",
+      "actual_sha256": "2252d5740bed6d709574031d6862739050b340424192d0a9b8d17a2d6d2d7d53",
+      "matches": true,
+      "bytes": 12157
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFDrawingWorkspace.swift",
+      "expected_sha256": "a6df86e5431246dc0c967375043db24e43b23355c024ac0de73caa8a32c497b9",
+      "actual_sha256": "a6df86e5431246dc0c967375043db24e43b23355c024ac0de73caa8a32c497b9",
+      "matches": true,
+      "bytes": 10850
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFLayoutScopeCodec.swift",
+      "expected_sha256": "e7bd705848cda2f0b14ae61599ae86202acaa9fb6d68cfc43a81893d0d212592",
+      "actual_sha256": "e7bd705848cda2f0b14ae61599ae86202acaa9fb6d68cfc43a81893d0d212592",
+      "matches": true,
+      "bytes": 7275
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFLayoutTextCodec.swift",
+      "expected_sha256": "d95f7fb97b8db46781d3b798b82caa33c6faa6bd3e4e97594f9c10806d6f4bfe",
+      "actual_sha256": "d95f7fb97b8db46781d3b798b82caa33c6faa6bd3e4e97594f9c10806d6f4bfe",
+      "matches": true,
+      "bytes": 8690
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFLayoutWorkspace.swift",
+      "expected_sha256": "2b3fed33ccfeedcb2d25780761089de408080fc328ee9909eb5f2940aa589918",
+      "actual_sha256": "2b3fed33ccfeedcb2d25780761089de408080fc328ee9909eb5f2940aa589918",
+      "matches": true,
+      "bytes": 11119
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFLivePathStorage.swift",
+      "expected_sha256": "2e299cbed14b152ba41e46e0ac299d1d8bf5646205e452af0bc278712e62002a",
+      "actual_sha256": "2e299cbed14b152ba41e46e0ac299d1d8bf5646205e452af0bc278712e62002a",
+      "matches": true,
+      "bytes": 5373
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFRenderWorkspace.swift",
+      "expected_sha256": "db981d8dbba39b10ff988eecc4dee43d90c0f92fd14db7939ffffe071daedaab",
+      "actual_sha256": "db981d8dbba39b10ff988eecc4dee43d90c0f92fd14db7939ffffe071daedaab",
+      "matches": true,
+      "bytes": 3980
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFResolvedLayout.swift",
+      "expected_sha256": "c693cff0f81714b57917da5bcf51ae9fe4ec1b81a2d0faef6f7c0782fb6bbf68",
+      "actual_sha256": "c693cff0f81714b57917da5bcf51ae9fe4ec1b81a2d0faef6f7c0782fb6bbf68",
+      "matches": true,
+      "bytes": 11699
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Tests/ContractFixtures/SPEC013/RuntimeDerived/ConcreteBindingProbe.swift",
+      "expected_sha256": "35d04114cbb9dc4a8c47c81eb9f1ad117ec0f876ba7d8ae7453990d0040470fb",
+      "actual_sha256": "35d04114cbb9dc4a8c47c81eb9f1ad117ec0f876ba7d8ae7453990d0040470fb",
+      "matches": true,
+      "bytes": 1941
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Tests/ContractFixtures/SPEC013/RuntimeDerived/Cycle.schema.json",
+      "expected_sha256": "d9740f362b4330822777f498fad97a604e191ac985253cbf6123b8b4132f74bb",
+      "actual_sha256": "d9740f362b4330822777f498fad97a604e191ac985253cbf6123b8b4132f74bb",
+      "matches": true,
+      "bytes": 374
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Tests/ContractFixtures/SPEC013/RuntimeDerived/Cycle.swift",
+      "expected_sha256": "5e2e4dd0344da801eb687679f7bf4d3ca6ac96579d93271943bbcecdcb83c57f",
+      "actual_sha256": "5e2e4dd0344da801eb687679f7bf4d3ca6ac96579d93271943bbcecdcb83c57f",
+      "matches": true,
+      "bytes": 1193
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Tests/ContractFixtures/SPEC013/RuntimeDerived/CycleCoordinatorProbe.swift",
+      "expected_sha256": "ba387f14fd0e276ad4b4a44f451adc022e55ec3a1cde3820d03da2f153aa8a9c",
+      "actual_sha256": "ba387f14fd0e276ad4b4a44f451adc022e55ec3a1cde3820d03da2f153aa8a9c",
+      "matches": true,
+      "bytes": 35557
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Tests/ContractFixtures/SPEC013/RuntimeDerived/CycleDynamicDrawing.swift",
+      "expected_sha256": "ac5bb966de601ad44e4a3c17dc1013cee4eff864908487dc3a686743429a0b33",
+      "actual_sha256": "ac5bb966de601ad44e4a3c17dc1013cee4eff864908487dc3a686743429a0b33",
+      "matches": true,
+      "bytes": 10630
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Tests/ContractFixtures/SPEC013/RuntimeDerived/CycleGeometry.swift",
+      "expected_sha256": "e27c0117a605904ce8b0d9a749ebf41eec2d9654828e98c4b4d11ab9fd7fac4e",
+      "actual_sha256": "e27c0117a605904ce8b0d9a749ebf41eec2d9654828e98c4b4d11ab9fd7fac4e",
+      "matches": true,
+      "bytes": 13563
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Tests/ContractFixtures/SPEC013/RuntimeDerived/CycleModel.swift",
+      "expected_sha256": "74df0a4fb5fe981b0850414fe3ed9e82f6b43173e89efa4967622d231910c1c9",
+      "actual_sha256": "74df0a4fb5fe981b0850414fe3ed9e82f6b43173e89efa4967622d231910c1c9",
+      "matches": true,
+      "bytes": 2522
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Tests/ContractFixtures/SPEC013/RuntimeDerived/CyclePipelineOwner.swift",
+      "expected_sha256": "2b2dad9318f6573f2244a4d7eab6e6223e00f1f7ef25c160eaf831a36965cdd1",
+      "actual_sha256": "2b2dad9318f6573f2244a4d7eab6e6223e00f1f7ef25c160eaf831a36965cdd1",
+      "matches": true,
+      "bytes": 29732
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Tests/ContractFixtures/SPEC013/RuntimeDerived/CyclePipelineProbe.swift",
+      "expected_sha256": "801a3185d3acd0199076e50a8cde497627c5eca104c1e119223138b75be3bd00",
+      "actual_sha256": "801a3185d3acd0199076e50a8cde497627c5eca104c1e119223138b75be3bd00",
+      "matches": true,
+      "bytes": 15113
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Tests/ContractFixtures/SPEC013/RuntimeDerived/CycleProfileStorage.swift",
+      "expected_sha256": "ddbd36e4d6ca2ea8e46dcd9ec81986fd5b29e388c5fc48e07aa13eea828ff709",
+      "actual_sha256": "ddbd36e4d6ca2ea8e46dcd9ec81986fd5b29e388c5fc48e07aa13eea828ff709",
+      "matches": true,
+      "bytes": 53538
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Tests/ContractFixtures/SPEC013/RuntimeDerived/CycleRenderProbe.swift",
+      "expected_sha256": "47b2eb5e389dc3c099a1ca223bbcf32b8f0f4f6e312f4f4eeeb24212a9bb0655",
+      "actual_sha256": "47b2eb5e389dc3c099a1ca223bbcf32b8f0f4f6e312f4f4eeeb24212a9bb0655",
+      "matches": true,
+      "bytes": 4580
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Tests/ContractFixtures/SPEC013/RuntimeDerived/CycleSemanticProbe.swift",
+      "expected_sha256": "b7502debf7770fa3eaf6e5d2a8d7b89b332868a2d5b4328ed3cdce0eb0e15ddd",
+      "actual_sha256": "b7502debf7770fa3eaf6e5d2a8d7b89b332868a2d5b4328ed3cdce0eb0e15ddd",
+      "matches": true,
+      "bytes": 10177
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Tests/ContractFixtures/SPEC013/RuntimeDerived/CycleStaticDrawing.swift",
+      "expected_sha256": "ce22de98ab1909f1614e93fc6d5ef92b999d7a32b14a2efa1f55809bfa2eb366",
+      "actual_sha256": "ce22de98ab1909f1614e93fc6d5ef92b999d7a32b14a2efa1f55809bfa2eb366",
+      "matches": true,
+      "bytes": 12935
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Tests/ContractFixtures/SPEC013/RuntimeDerived/CycleStorageMeasurement.swift",
+      "expected_sha256": "a9588be5cb23e291b49c7bce3e673336a3b4b52ea4db6540d25144a50a75f5ab",
+      "actual_sha256": "a9588be5cb23e291b49c7bce3e673336a3b4b52ea4db6540d25144a50a75f5ab",
+      "matches": true,
+      "bytes": 5783
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Tests/ContractFixtures/SPEC013/RuntimeDerived/CycleStorageRegions.swift",
+      "expected_sha256": "eb3098aa442fd5886c08589a710f1276789f37a27207104e08f9a2c1fea95740",
+      "actual_sha256": "eb3098aa442fd5886c08589a710f1276789f37a27207104e08f9a2c1fea95740",
+      "matches": true,
+      "bytes": 7752
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Tests/ContractFixtures/SPEC013/RuntimeDerived/FrameLeaseProbe.swift",
+      "expected_sha256": "2b9469c68fda07c6fa15e56a873b2946ca3377c7be709415212fb9ba33f2ff0d",
+      "actual_sha256": "2b9469c68fda07c6fa15e56a873b2946ca3377c7be709415212fb9ba33f2ff0d",
+      "matches": true,
+      "bytes": 6031
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Tests/ContractFixtures/SPEC013/RuntimeDerived/RuntimeValuesProbe.swift",
+      "expected_sha256": "0176021907686264e62b4e97e86507ec280d574406045ce6c63ee6e7c8dd8817",
+      "actual_sha256": "0176021907686264e62b4e97e86507ec280d574406045ce6c63ee6e7c8dd8817",
+      "matches": true,
+      "bytes": 13720
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Tests/ContractFixtures/SPEC013/RuntimeDerived/ScopedCoordinatorProbe.swift",
+      "expected_sha256": "970f891c02e96987ab0718dc9203086e58640963aa06470a6f66d477994c1c16",
+      "actual_sha256": "970f891c02e96987ab0718dc9203086e58640963aa06470a6f66d477994c1c16",
+      "matches": true,
+      "bytes": 3006
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Tests/ContractFixtures/SPEC013/RuntimeDerived/ScopedOwnerProbe.swift",
+      "expected_sha256": "f879327eaebbfee08829868fbbd72b5a8f8f1275add9a3494ccd8a8b47044da0",
+      "actual_sha256": "f879327eaebbfee08829868fbbd72b5a8f8f1275add9a3494ccd8a8b47044da0",
+      "matches": true,
+      "bytes": 2140
+    },
+    {
+      "kind": "runtime-input",
+      "path": "Tests/ContractFixtures/SPEC013/RuntimeDerived/ScopedSemanticProbe.swift",
+      "expected_sha256": "0e635444801b08c1ecfbf6c8a58d5b23b172a9f50ad39aea012a7fc4397d31ae",
+      "actual_sha256": "0e635444801b08c1ecfbf6c8a58d5b23b172a9f50ad39aea012a7fc4397d31ae",
+      "matches": true,
+      "bytes": 435
+    },
+    {
+      "kind": "runtime-input",
+      "path": "scripts/contracts/check-spec-013-runtime-cycle.py",
+      "expected_sha256": "51a46241f9737a8d6f4d0cc013b546258a6b577d9e87a92b802028405b79fe0c",
+      "actual_sha256": "51a46241f9737a8d6f4d0cc013b546258a6b577d9e87a92b802028405b79fe0c",
+      "matches": true,
+      "bytes": 18047
+    },
+    {
+      "kind": "runtime-input",
+      "path": "scripts/contracts/driver-registry.tsv",
+      "expected_sha256": "adc249c867be88f2dd6106cf740bb2f7e75476f90ef79a3b8061951539e5a24b",
+      "actual_sha256": "adc249c867be88f2dd6106cf740bb2f7e75476f90ef79a3b8061951539e5a24b",
+      "matches": true,
+      "bytes": 1626
+    },
+    {
+      "kind": "runtime-input",
+      "path": "scripts/contracts/run-spec-013.sh",
+      "expected_sha256": "79ded68eae14b7ef1855c62383989d3451e63fa9fbba05a19a9887ee5088d4ff",
+      "actual_sha256": "79ded68eae14b7ef1855c62383989d3451e63fa9fbba05a19a9887ee5088d4ff",
+      "matches": true,
+      "bytes": 11032
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/Cycle.swift",
+      "expected_sha256": "ebb0bdbbec49dcb7945453fff664dbf6da6350de06b0ffd438eec95e2ea8f9f3",
+      "actual_sha256": "ebb0bdbbec49dcb7945453fff664dbf6da6350de06b0ffd438eec95e2ea8f9f3",
+      "matches": true,
+      "bytes": 1967
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/CyclePresentation.abi.json",
+      "expected_sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+      "actual_sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+      "matches": true,
+      "bytes": 149
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/CyclePresentation.log",
+      "expected_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "actual_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true,
+      "bytes": 0
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/CyclePresentation.o",
+      "expected_sha256": "56fd076606cc85b0ad8533697ef8b2733ac0a8cbe023b9ec000f431bc8eb22e7",
+      "actual_sha256": "56fd076606cc85b0ad8533697ef8b2733ac0a8cbe023b9ec000f431bc8eb22e7",
+      "matches": true,
+      "bytes": 38344
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/CyclePresentation.swiftdoc",
+      "expected_sha256": "89fa56eb6eff791ebf5f46cfcefc96c0f369710d3b2e73ea28af0d33c12c03ae",
+      "actual_sha256": "89fa56eb6eff791ebf5f46cfcefc96c0f369710d3b2e73ea28af0d33c12c03ae",
+      "matches": true,
+      "bytes": 384
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/CyclePresentation.swiftmodule",
+      "expected_sha256": "90ae70b4289f9de4bcc45ecac4f6c739bd02eb7fb52ab9087f8e7ee37c77ea2b",
+      "actual_sha256": "90ae70b4289f9de4bcc45ecac4f6c739bd02eb7fb52ab9087f8e7ee37c77ea2b",
+      "matches": true,
+      "bytes": 46780
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/CyclePresentation.swiftsourceinfo",
+      "expected_sha256": "88b7fb8178bfed30fd1c17e708cfcd691ca14dcea30ecb09201c33ff0c368195",
+      "actual_sha256": "88b7fb8178bfed30fd1c17e708cfcd691ca14dcea30ecb09201c33ff0c368195",
+      "matches": true,
+      "bytes": 3904
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/CycleSchema.abi.json",
+      "expected_sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+      "actual_sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+      "matches": true,
+      "bytes": 149
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/CycleSchema.log",
+      "expected_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "actual_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true,
+      "bytes": 0
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/CycleSchema.o",
+      "expected_sha256": "47ee6b7fb9beb45c1a25a4e1dd6973e28d6dd0a6621ecbbb49c2a543de6419d9",
+      "actual_sha256": "47ee6b7fb9beb45c1a25a4e1dd6973e28d6dd0a6621ecbbb49c2a543de6419d9",
+      "matches": true,
+      "bytes": 9064
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/CycleSchema.swift",
+      "expected_sha256": "55d0109f7a8c9950b0dbf7b764a02f303b08e10114fdc628ec5f4f6805791bd5",
+      "actual_sha256": "55d0109f7a8c9950b0dbf7b764a02f303b08e10114fdc628ec5f4f6805791bd5",
+      "matches": true,
+      "bytes": 1228
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/CycleSchema.swiftdoc",
+      "expected_sha256": "2ddb32a2c62043d037139ea0b0248634e38c82a64393e632944c0315ee56095f",
+      "actual_sha256": "2ddb32a2c62043d037139ea0b0248634e38c82a64393e632944c0315ee56095f",
+      "matches": true,
+      "bytes": 376
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/CycleSchema.swiftmodule",
+      "expected_sha256": "24640251ef9f4ee639c1b85c25f72c905f903aa722966f8ee812b12bf65cfe6d",
+      "actual_sha256": "24640251ef9f4ee639c1b85c25f72c905f903aa722966f8ee812b12bf65cfe6d",
+      "matches": true,
+      "bytes": 24924
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/CycleSchema.swiftsourceinfo",
+      "expected_sha256": "ec0034aed47d7dbaa024b95b5dd19685118046f5e3cf3745635dbedec855ca69",
+      "actual_sha256": "ec0034aed47d7dbaa024b95b5dd19685118046f5e3cf3745635dbedec855ca69",
+      "matches": true,
+      "bytes": 2948
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/CycleTable.abi.json",
+      "expected_sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+      "actual_sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+      "matches": true,
+      "bytes": 149
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/CycleTable.log",
+      "expected_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "actual_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true,
+      "bytes": 0
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/CycleTable.o",
+      "expected_sha256": "40dbf4d1f30b3c1c98c64f6b6e624fc41962b482cf70afb9c71464a90f3f7590",
+      "actual_sha256": "40dbf4d1f30b3c1c98c64f6b6e624fc41962b482cf70afb9c71464a90f3f7590",
+      "matches": true,
+      "bytes": 11896
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/CycleTable.swift",
+      "expected_sha256": "d3c1b751b75a06a26fc3fa8712cb3a4dfef64b6c7eebe8f86e15b81c54e67b98",
+      "actual_sha256": "d3c1b751b75a06a26fc3fa8712cb3a4dfef64b6c7eebe8f86e15b81c54e67b98",
+      "matches": true,
+      "bytes": 1352
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/CycleTable.swiftdoc",
+      "expected_sha256": "6623470d585feb878b09c69ffc7594ef17df811286ba4609f5423af36e97ee9a",
+      "actual_sha256": "6623470d585feb878b09c69ffc7594ef17df811286ba4609f5423af36e97ee9a",
+      "matches": true,
+      "bytes": 376
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/CycleTable.swiftmodule",
+      "expected_sha256": "38fb37ce2a56d4bc91a7637a772ded0e31548aff54f59be58666496198ba524a",
+      "actual_sha256": "38fb37ce2a56d4bc91a7637a772ded0e31548aff54f59be58666496198ba524a",
+      "matches": true,
+      "bytes": 28704
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/CycleTable.swiftsourceinfo",
+      "expected_sha256": "44937ffaaf4e3bab82fe4fb2bf6326567e81f7d89d052105687b27915b603fae",
+      "actual_sha256": "44937ffaaf4e3bab82fe4fb2bf6326567e81f7d89d052105687b27915b603fae",
+      "matches": true,
+      "bytes": 2928
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/GiftUIDrawing.abi.json",
+      "expected_sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+      "actual_sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+      "matches": true,
+      "bytes": 149
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/GiftUIDrawing.log",
+      "expected_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "actual_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true,
+      "bytes": 0
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/GiftUIDrawing.o",
+      "expected_sha256": "6e28280b9ed8ed95adc377e7550df9a8d2c45024c87389311eef4eeda8493972",
+      "actual_sha256": "6e28280b9ed8ed95adc377e7550df9a8d2c45024c87389311eef4eeda8493972",
+      "matches": true,
+      "bytes": 131632
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/GiftUIDrawing.swiftdoc",
+      "expected_sha256": "211f7c78dc01779c87bc0cf44a04e8c84346fa01b0430e51dda90afd634b635e",
+      "actual_sha256": "211f7c78dc01779c87bc0cf44a04e8c84346fa01b0430e51dda90afd634b635e",
+      "matches": true,
+      "bytes": 1496
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/GiftUIDrawing.swiftmodule",
+      "expected_sha256": "18fd8e01c27b1289f3beaca2c794455622e9003ca89fcd66115c479e4afd578d",
+      "actual_sha256": "18fd8e01c27b1289f3beaca2c794455622e9003ca89fcd66115c479e4afd578d",
+      "matches": true,
+      "bytes": 105604
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/GiftUIDrawing.swiftsourceinfo",
+      "expected_sha256": "e53ab81b593e129e1bd177ef7d22d49041ed6fea96cf0f091300ddfd444cea73",
+      "actual_sha256": "e53ab81b593e129e1bd177ef7d22d49041ed6fea96cf0f091300ddfd444cea73",
+      "matches": true,
+      "bytes": 31548
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/GiftUIExecution.abi.json",
+      "expected_sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+      "actual_sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+      "matches": true,
+      "bytes": 149
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/GiftUIExecution.log",
+      "expected_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "actual_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true,
+      "bytes": 0
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/GiftUIExecution.o",
+      "expected_sha256": "e93ee3a0fc1a3b2d589ed923e9ab03c35fd0628dcf029a068dda628acc16908c",
+      "actual_sha256": "e93ee3a0fc1a3b2d589ed923e9ab03c35fd0628dcf029a068dda628acc16908c",
+      "matches": true,
+      "bytes": 561552
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/GiftUIExecution.swiftdoc",
+      "expected_sha256": "c8e4232912f5d7519ccb64f39aa82c8f4eacb3ef786d8632736631ca2096f4bb",
+      "actual_sha256": "c8e4232912f5d7519ccb64f39aa82c8f4eacb3ef786d8632736631ca2096f4bb",
+      "matches": true,
+      "bytes": 380
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/GiftUIExecution.swiftmodule",
+      "expected_sha256": "541ef3f9235ea6c43eeab46e4c7379ec4e5f4d535b2efad287e218c9e986aa84",
+      "actual_sha256": "541ef3f9235ea6c43eeab46e4c7379ec4e5f4d535b2efad287e218c9e986aa84",
+      "matches": true,
+      "bytes": 609168
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/GiftUIExecution.swiftsourceinfo",
+      "expected_sha256": "e1eb2a1462371be4166848bcb90da02d76617ed87b13087e0861801ed2d38218",
+      "actual_sha256": "e1eb2a1462371be4166848bcb90da02d76617ed87b13087e0861801ed2d38218",
+      "matches": true,
+      "bytes": 117720
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/GiftUIInteraction.abi.json",
+      "expected_sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+      "actual_sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+      "matches": true,
+      "bytes": 149
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/GiftUIInteraction.log",
+      "expected_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "actual_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true,
+      "bytes": 0
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/GiftUIInteraction.o",
+      "expected_sha256": "03cda094893f0aba66784ce226c46b9f72760ed68b55516213782c4cfa1682eb",
+      "actual_sha256": "03cda094893f0aba66784ce226c46b9f72760ed68b55516213782c4cfa1682eb",
+      "matches": true,
+      "bytes": 145800
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/GiftUIInteraction.swiftdoc",
+      "expected_sha256": "c9a63ab967e04418e12050448c4e8aaa15ebceae6856c5e507a1211f1cec1e4b",
+      "actual_sha256": "c9a63ab967e04418e12050448c4e8aaa15ebceae6856c5e507a1211f1cec1e4b",
+      "matches": true,
+      "bytes": 2776
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/GiftUIInteraction.swiftmodule",
+      "expected_sha256": "4f7e516a5190f0b4a50f280e8e7ac5d6e6ecff7078476c75fa428f04eb338213",
+      "actual_sha256": "4f7e516a5190f0b4a50f280e8e7ac5d6e6ecff7078476c75fa428f04eb338213",
+      "matches": true,
+      "bytes": 134948
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/GiftUIInteraction.swiftsourceinfo",
+      "expected_sha256": "47f288ac79a1a2e811b3b96606c6028e5e0bdf1b31cf6cd3ebb68687b037d7fd",
+      "actual_sha256": "47f288ac79a1a2e811b3b96606c6028e5e0bdf1b31cf6cd3ebb68687b037d7fd",
+      "matches": true,
+      "bytes": 36452
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/GiftUILayout.abi.json",
+      "expected_sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+      "actual_sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+      "matches": true,
+      "bytes": 149
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/GiftUILayout.log",
+      "expected_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "actual_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true,
+      "bytes": 0
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/GiftUILayout.o",
+      "expected_sha256": "28d58c7f175bb03a6dbb42079b9e74ce6b87b550dfc93790a10cf222500d6c60",
+      "actual_sha256": "28d58c7f175bb03a6dbb42079b9e74ce6b87b550dfc93790a10cf222500d6c60",
+      "matches": true,
+      "bytes": 137824
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/GiftUILayout.swiftdoc",
+      "expected_sha256": "ecf335acc8af95a82c08ee02a9f933f7bb081e654f8724ba10c655227b3a6b05",
+      "actual_sha256": "ecf335acc8af95a82c08ee02a9f933f7bb081e654f8724ba10c655227b3a6b05",
+      "matches": true,
+      "bytes": 376
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/GiftUILayout.swiftmodule",
+      "expected_sha256": "5dceb9af95e4601603446f6f12f2bab6543b61cd44fe74bfd758676cf8a24859",
+      "actual_sha256": "5dceb9af95e4601603446f6f12f2bab6543b61cd44fe74bfd758676cf8a24859",
+      "matches": true,
+      "bytes": 140836
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/GiftUILayout.swiftsourceinfo",
+      "expected_sha256": "405ea5bf2e7882652a0f7ff8b6d26e5029abfe71bf86b72ba77ce49ba513c549",
+      "actual_sha256": "405ea5bf2e7882652a0f7ff8b6d26e5029abfe71bf86b72ba77ce49ba513c549",
+      "matches": true,
+      "bytes": 36152
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/GiftUIObservableState.abi.json",
+      "expected_sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+      "actual_sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+      "matches": true,
+      "bytes": 149
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/GiftUIObservableState.log",
+      "expected_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "actual_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true,
+      "bytes": 0
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/GiftUIObservableState.o",
+      "expected_sha256": "20d9272f635c078a3a7044df12f960c12bffca7d67a975dc2c0188e3fa0f4a82",
+      "actual_sha256": "20d9272f635c078a3a7044df12f960c12bffca7d67a975dc2c0188e3fa0f4a82",
+      "matches": true,
+      "bytes": 235968
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/GiftUIObservableState.swiftdoc",
+      "expected_sha256": "0c26952c20af873979e8039ba5c6271b92bf957c8c9e366300b23d3df70eb307",
+      "actual_sha256": "0c26952c20af873979e8039ba5c6271b92bf957c8c9e366300b23d3df70eb307",
+      "matches": true,
+      "bytes": 8732
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/GiftUIObservableState.swiftmodule",
+      "expected_sha256": "2126a4cf2da75da67dc4e30bc69b8ece4f772ee2e59cf8440efd4ec761720ae8",
+      "actual_sha256": "2126a4cf2da75da67dc4e30bc69b8ece4f772ee2e59cf8440efd4ec761720ae8",
+      "matches": true,
+      "bytes": 220256
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/GiftUIObservableState.swiftsourceinfo",
+      "expected_sha256": "a25bfd729ffc02ad52bd8344a9f3f80aaff160e9b464008b14f73b7231804a1d",
+      "actual_sha256": "a25bfd729ffc02ad52bd8344a9f3f80aaff160e9b464008b14f73b7231804a1d",
+      "matches": true,
+      "bytes": 56076
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/GiftUIReferenceTextResources.abi.json",
+      "expected_sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+      "actual_sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+      "matches": true,
+      "bytes": 149
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/GiftUIReferenceTextResources.log",
+      "expected_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "actual_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true,
+      "bytes": 0
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/GiftUIReferenceTextResources.o",
+      "expected_sha256": "a5ea528882b2d48a9e7469b9bfc7144abc357746c6a2ffb8c68919fb645a3909",
+      "actual_sha256": "a5ea528882b2d48a9e7469b9bfc7144abc357746c6a2ffb8c68919fb645a3909",
+      "matches": true,
+      "bytes": 504456
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/GiftUIReferenceTextResources.swiftdoc",
+      "expected_sha256": "5b9ec28b8006d1ef6ab4fa01d3ed6ba5e09d65e51e94251294b726771da9fa54",
+      "actual_sha256": "5b9ec28b8006d1ef6ab4fa01d3ed6ba5e09d65e51e94251294b726771da9fa54",
+      "matches": true,
+      "bytes": 924
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/GiftUIReferenceTextResources.swiftmodule",
+      "expected_sha256": "c9a1f8785e33c0381c0f7c5c0434f5a020d62bc53581a8f65a8f336c04c182ee",
+      "actual_sha256": "c9a1f8785e33c0381c0f7c5c0434f5a020d62bc53581a8f65a8f336c04c182ee",
+      "matches": true,
+      "bytes": 1216024
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/GiftUIReferenceTextResources.swiftsourceinfo",
+      "expected_sha256": "b531f12a35fa4afba2ac31837133c3bd5b269151db52c3a0c623be0f66620942",
+      "actual_sha256": "b531f12a35fa4afba2ac31837133c3bd5b269151db52c3a0c623be0f66620942",
+      "matches": true,
+      "bytes": 79128
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/GiftUIRenderCore.abi.json",
+      "expected_sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+      "actual_sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+      "matches": true,
+      "bytes": 149
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/GiftUIRenderCore.log",
+      "expected_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "actual_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true,
+      "bytes": 0
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/GiftUIRenderCore.o",
+      "expected_sha256": "aa6f2c0fb1bef6257d171f476bdd633d74e2d1943268a4be045738b5f080f904",
+      "actual_sha256": "aa6f2c0fb1bef6257d171f476bdd633d74e2d1943268a4be045738b5f080f904",
+      "matches": true,
+      "bytes": 62200
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/GiftUIRenderCore.swiftdoc",
+      "expected_sha256": "9824cb07c32b5722a1928d05922b44dd0ad74e1ffe4a8d1f4b03d2f60c067570",
+      "actual_sha256": "9824cb07c32b5722a1928d05922b44dd0ad74e1ffe4a8d1f4b03d2f60c067570",
+      "matches": true,
+      "bytes": 380
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/GiftUIRenderCore.swiftmodule",
+      "expected_sha256": "ed74cbeb6b57f03b5401ae7455b0784519df0054cd796b20cd2d2c661e820867",
+      "actual_sha256": "ed74cbeb6b57f03b5401ae7455b0784519df0054cd796b20cd2d2c661e820867",
+      "matches": true,
+      "bytes": 84380
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/GiftUIRenderCore.swiftsourceinfo",
+      "expected_sha256": "fce9c4b54d2ac91fa9a8212a14befb26b93750801a7eddb8e435752df4f0bb7e",
+      "actual_sha256": "fce9c4b54d2ac91fa9a8212a14befb26b93750801a7eddb8e435752df4f0bb7e",
+      "matches": true,
+      "bytes": 20196
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/GiftUIRenderLowering.abi.json",
+      "expected_sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+      "actual_sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+      "matches": true,
+      "bytes": 149
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/GiftUIRenderLowering.log",
+      "expected_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "actual_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true,
+      "bytes": 0
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/GiftUIRenderLowering.o",
+      "expected_sha256": "3fa79d3bea6286d37eee1366abcd09dd62601697570109633605f12691d585d0",
+      "actual_sha256": "3fa79d3bea6286d37eee1366abcd09dd62601697570109633605f12691d585d0",
+      "matches": true,
+      "bytes": 78864
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/GiftUIRenderLowering.swiftdoc",
+      "expected_sha256": "88210ce918b2b4e43c16186d30cf3755703c4d9901a27367fc0e11d225cd8c48",
+      "actual_sha256": "88210ce918b2b4e43c16186d30cf3755703c4d9901a27367fc0e11d225cd8c48",
+      "matches": true,
+      "bytes": 384
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/GiftUIRenderLowering.swiftmodule",
+      "expected_sha256": "fbca0191add721128eccb3dc71236efc1bf93bd366f287d77986ca212e9889f4",
+      "actual_sha256": "fbca0191add721128eccb3dc71236efc1bf93bd366f287d77986ca212e9889f4",
+      "matches": true,
+      "bytes": 78276
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/GiftUIRenderLowering.swiftsourceinfo",
+      "expected_sha256": "091854b3c3f5590eed0ec0aa9b5662a230a5a71a66568a0b4554546fa0bd71e4",
+      "actual_sha256": "091854b3c3f5590eed0ec0aa9b5662a230a5a71a66568a0b4554546fa0bd71e4",
+      "matches": true,
+      "bytes": 18492
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/GiftUIRuntimeCore.abi.json",
+      "expected_sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+      "actual_sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+      "matches": true,
+      "bytes": 149
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/GiftUIRuntimeCore.log",
+      "expected_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "actual_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true,
+      "bytes": 0
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/GiftUIRuntimeCore.o",
+      "expected_sha256": "3b21e2c4ebdae2d97bfb14dadf49395f61e66db3326b602babef7eccc44b3d49",
+      "actual_sha256": "3b21e2c4ebdae2d97bfb14dadf49395f61e66db3326b602babef7eccc44b3d49",
+      "matches": true,
+      "bytes": 313520
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/GiftUIRuntimeCore.swiftdoc",
+      "expected_sha256": "fd801775ac1f2cef4d70cc991745d39f0522ca7855ed356a87a3fbcb7947d5df",
+      "actual_sha256": "fd801775ac1f2cef4d70cc991745d39f0522ca7855ed356a87a3fbcb7947d5df",
+      "matches": true,
+      "bytes": 2168
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/GiftUIRuntimeCore.swiftmodule",
+      "expected_sha256": "83f17f0b8323eb02f7583cd281438e9a1026bdea0445a1911d20a1ac150868a3",
+      "actual_sha256": "83f17f0b8323eb02f7583cd281438e9a1026bdea0445a1911d20a1ac150868a3",
+      "matches": true,
+      "bytes": 289136
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/GiftUIRuntimeCore.swiftsourceinfo",
+      "expected_sha256": "4970b038a10533d3c441dbd11736b00f02cb2c4e1e6919b85d763930a48903b2",
+      "actual_sha256": "4970b038a10533d3c441dbd11736b00f02cb2c4e1e6919b85d763930a48903b2",
+      "matches": true,
+      "bytes": 95568
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/GiftUIRuntimeDynamic.abi.json",
+      "expected_sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+      "actual_sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+      "matches": true,
+      "bytes": 149
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/GiftUIRuntimeDynamic.log",
+      "expected_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "actual_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true,
+      "bytes": 0
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/GiftUIRuntimeDynamic.o",
+      "expected_sha256": "1c9b49b453a3767f9041400c53501a340a9a1077edb2fdb73f52efa67a5eb6a7",
+      "actual_sha256": "1c9b49b453a3767f9041400c53501a340a9a1077edb2fdb73f52efa67a5eb6a7",
+      "matches": true,
+      "bytes": 246296
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/GiftUIRuntimeDynamic.swiftdoc",
+      "expected_sha256": "736a31d984c7fbc68c05b5a8662e030bb355b4b4dbc3e57898f9fae124155a88",
+      "actual_sha256": "736a31d984c7fbc68c05b5a8662e030bb355b4b4dbc3e57898f9fae124155a88",
+      "matches": true,
+      "bytes": 4868
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/GiftUIRuntimeDynamic.swiftmodule",
+      "expected_sha256": "9fcdf624c85cea6622e2492dd3f6b88cd4afbf61fd956760d29b57ec42504514",
+      "actual_sha256": "9fcdf624c85cea6622e2492dd3f6b88cd4afbf61fd956760d29b57ec42504514",
+      "matches": true,
+      "bytes": 232864
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/GiftUIRuntimeDynamic.swiftsourceinfo",
+      "expected_sha256": "f284aadb94173748c1c05579c217a7d07ad949b69cc7bf3725376c7d5eff7320",
+      "actual_sha256": "f284aadb94173748c1c05579c217a7d07ad949b69cc7bf3725376c7d5eff7320",
+      "matches": true,
+      "bytes": 52312
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/GiftUIRuntimeStatic.abi.json",
+      "expected_sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+      "actual_sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+      "matches": true,
+      "bytes": 149
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/GiftUIRuntimeStatic.log",
+      "expected_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "actual_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true,
+      "bytes": 0
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/GiftUIRuntimeStatic.o",
+      "expected_sha256": "d50c7c3b392482a2a92e610256a6339992b998ec68d61a5d8fdd52821edeaf2f",
+      "actual_sha256": "d50c7c3b392482a2a92e610256a6339992b998ec68d61a5d8fdd52821edeaf2f",
+      "matches": true,
+      "bytes": 275264
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/GiftUIRuntimeStatic.swiftdoc",
+      "expected_sha256": "90a7be7ea08c7933976744fd36b4edc83b88c50a5b30940b42a02d75296d5cdb",
+      "actual_sha256": "90a7be7ea08c7933976744fd36b4edc83b88c50a5b30940b42a02d75296d5cdb",
+      "matches": true,
+      "bytes": 3248
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/GiftUIRuntimeStatic.swiftmodule",
+      "expected_sha256": "2e8a5297c42d8018e772c6ffe28b8014f47da75f356eee49ea9c07ea91946449",
+      "actual_sha256": "2e8a5297c42d8018e772c6ffe28b8014f47da75f356eee49ea9c07ea91946449",
+      "matches": true,
+      "bytes": 135464
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/GiftUIRuntimeStatic.swiftsourceinfo",
+      "expected_sha256": "92cae138f4f2ffae7c9f8572907d4614fd0cbd97cb57e787416d3e4c9c124f0b",
+      "actual_sha256": "92cae138f4f2ffae7c9f8572907d4614fd0cbd97cb57e787416d3e4c9c124f0b",
+      "matches": true,
+      "bytes": 28272
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/GiftUISemanticCore.abi.json",
+      "expected_sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+      "actual_sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+      "matches": true,
+      "bytes": 149
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/GiftUISemanticCore.log",
+      "expected_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "actual_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true,
+      "bytes": 0
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/GiftUISemanticCore.o",
+      "expected_sha256": "e65dbea1a2862f7a79bcbb347045dd8f5076966e867b592d807cf8a7ccef16ee",
+      "actual_sha256": "e65dbea1a2862f7a79bcbb347045dd8f5076966e867b592d807cf8a7ccef16ee",
+      "matches": true,
+      "bytes": 324024
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/GiftUISemanticCore.swiftdoc",
+      "expected_sha256": "b499bf38f5d03b1a154612436ea173d6ebf4137dbacbf93caf1a831d427dd34c",
+      "actual_sha256": "b499bf38f5d03b1a154612436ea173d6ebf4137dbacbf93caf1a831d427dd34c",
+      "matches": true,
+      "bytes": 7868
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/GiftUISemanticCore.swiftmodule",
+      "expected_sha256": "65b813d34b468bc5c7c57fa7472121cedb5a7e820d87ad1961d588532736c41e",
+      "actual_sha256": "65b813d34b468bc5c7c57fa7472121cedb5a7e820d87ad1961d588532736c41e",
+      "matches": true,
+      "bytes": 315404
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/GiftUISemanticCore.swiftsourceinfo",
+      "expected_sha256": "ee7b7e6c31c47b276b896c1018aa1fc31667342d2ba33cd209c30893ab342ec6",
+      "actual_sha256": "ee7b7e6c31c47b276b896c1018aa1fc31667342d2ba33cd209c30893ab342ec6",
+      "matches": true,
+      "bytes": 91272
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/GiftUITextResources.abi.json",
+      "expected_sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+      "actual_sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+      "matches": true,
+      "bytes": 149
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/GiftUITextResources.log",
+      "expected_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "actual_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true,
+      "bytes": 0
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/GiftUITextResources.o",
+      "expected_sha256": "d80b8ffcd146c80ebee364c41bf62be9487d023d998782a0ce39a2002242f18a",
+      "actual_sha256": "d80b8ffcd146c80ebee364c41bf62be9487d023d998782a0ce39a2002242f18a",
+      "matches": true,
+      "bytes": 103264
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/GiftUITextResources.swiftdoc",
+      "expected_sha256": "8ed36b56d14d932c81e660572a959cb99e70cb8b730b320c0172c499213a979c",
+      "actual_sha256": "8ed36b56d14d932c81e660572a959cb99e70cb8b730b320c0172c499213a979c",
+      "matches": true,
+      "bytes": 1720
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/GiftUITextResources.swiftmodule",
+      "expected_sha256": "4278d49997ef76523535f92e878e700be3deced02bb88321a5efdfac71dac02b",
+      "actual_sha256": "4278d49997ef76523535f92e878e700be3deced02bb88321a5efdfac71dac02b",
+      "matches": true,
+      "bytes": 130848
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/GiftUITextResources.swiftsourceinfo",
+      "expected_sha256": "25c6ae683feb76dc44e25acff2de11070834c7692983edbecd77c293e1706235",
+      "actual_sha256": "25c6ae683feb76dc44e25acff2de11070834c7692983edbecd77c293e1706235",
+      "matches": true,
+      "bytes": 25660
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/Main.swift",
+      "expected_sha256": "ae350b2aaaf0ad1906a29438c5bc9ce54fc9391c5c3b64c0ceec00282666aa92",
+      "actual_sha256": "ae350b2aaaf0ad1906a29438c5bc9ce54fc9391c5c3b64c0ceec00282666aa92",
+      "matches": true,
+      "bytes": 189
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/P07TargetWorkspace.abi.json",
+      "expected_sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+      "actual_sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+      "matches": true,
+      "bytes": 149
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/P07TargetWorkspace.log",
+      "expected_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "actual_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true,
+      "bytes": 0
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/P07TargetWorkspace.o",
+      "expected_sha256": "9a9386e045380917180c9b8d6c7c202682d078e430a01b5c6f41a93921802b5a",
+      "actual_sha256": "9a9386e045380917180c9b8d6c7c202682d078e430a01b5c6f41a93921802b5a",
+      "matches": true,
+      "bytes": 156632
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/P07TargetWorkspace.swiftdoc",
+      "expected_sha256": "744b550faa1bb36ffa48151b8d9bd62531b04e8d1be8ee66d3136193ba516d5c",
+      "actual_sha256": "744b550faa1bb36ffa48151b8d9bd62531b04e8d1be8ee66d3136193ba516d5c",
+      "matches": true,
+      "bytes": 4212
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/P07TargetWorkspace.swiftmodule",
+      "expected_sha256": "e46766f286fb06e326f75304653113b2f250ec858e2e76e473d54465866f094c",
+      "actual_sha256": "e46766f286fb06e326f75304653113b2f250ec858e2e76e473d54465866f094c",
+      "matches": true,
+      "bytes": 212704
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/P07TargetWorkspace.swiftsourceinfo",
+      "expected_sha256": "51868f0d39a17d929f9b5c4f22e29fdaa88bf3dbf95e4e7a69bc64f64361b1e5",
+      "actual_sha256": "51868f0d39a17d929f9b5c4f22e29fdaa88bf3dbf95e4e7a69bc64f64361b1e5",
+      "matches": true,
+      "bytes": 45828
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/RuntimeCycleProbe.abi.json",
+      "expected_sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+      "actual_sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+      "matches": true,
+      "bytes": 149
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/RuntimeCycleProbe.log",
+      "expected_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "actual_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true,
+      "bytes": 0
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/RuntimeCycleProbe.o",
+      "expected_sha256": "9f66a1009982e24e916440482b7efed409791a7da7181e09bc62a0853ac2c7dc",
+      "actual_sha256": "9f66a1009982e24e916440482b7efed409791a7da7181e09bc62a0853ac2c7dc",
+      "matches": true,
+      "bytes": 988136
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/RuntimeCycleProbe.swiftdoc",
+      "expected_sha256": "4d515838ad0ea4af52058c8bd3a76db02e89c2cea90da011c303ef8105a79b5c",
+      "actual_sha256": "4d515838ad0ea4af52058c8bd3a76db02e89c2cea90da011c303ef8105a79b5c",
+      "matches": true,
+      "bytes": 384
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/RuntimeCycleProbe.swiftmodule",
+      "expected_sha256": "0e7973dc77ded1fe9b6d9fd833ddcd39922aa7644cada8d7f682611466bc918a",
+      "actual_sha256": "0e7973dc77ded1fe9b6d9fd833ddcd39922aa7644cada8d7f682611466bc918a",
+      "matches": true,
+      "bytes": 607724
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/RuntimeCycleProbe.swiftsourceinfo",
+      "expected_sha256": "cb7eaab4569f1ebd1a8b92c67214824c654444fbdfd31ea8f01968a7e0ec38ff",
+      "actual_sha256": "cb7eaab4569f1ebd1a8b92c67214824c654444fbdfd31ea8f01968a7e0ec38ff",
+      "matches": true,
+      "bytes": 133020
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/commands.txt",
+      "expected_sha256": "1b6b5452a94981578905fe742fa205fe9341d87eaf6950149d18cf093d0f5870",
+      "actual_sha256": "1b6b5452a94981578905fe742fa205fe9341d87eaf6950149d18cf093d0f5870",
+      "matches": true,
+      "bytes": 56222
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/copy-coordinator.log",
+      "expected_sha256": "ec2da47d190865158405f68e2933c297042d3f277f9fe9570e5b6762d2056d05",
+      "actual_sha256": "ec2da47d190865158405f68e2933c297042d3f277f9fe9570e5b6762d2056d05",
+      "matches": true,
+      "bytes": 477
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/copy-coordinator.swift",
+      "expected_sha256": "9a980abdd749a8ebd8f75aada3af504986146e60acb2d7110070b71b31793001",
+      "actual_sha256": "9a980abdd749a8ebd8f75aada3af504986146e60acb2d7110070b71b31793001",
+      "matches": true,
+      "bytes": 132
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/copy-owner.log",
+      "expected_sha256": "f180550074cafad40aef77ddd9fe629eefa0485125d680108f4350458e1df1b2",
+      "actual_sha256": "f180550074cafad40aef77ddd9fe629eefa0485125d680108f4350458e1df1b2",
+      "matches": true,
+      "bytes": 428
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/copy-owner.swift",
+      "expected_sha256": "2d24b18bf6488458e23f6de4e308329ac6f0ac4b09cfbe1d39668140d9ab3be3",
+      "actual_sha256": "2d24b18bf6488458e23f6de4e308329ac6f0ac4b09cfbe1d39668140d9ab3be3",
+      "matches": true,
+      "bytes": 108
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/copy-semantic.log",
+      "expected_sha256": "adf3b656578072260f856e21b2d728a08676e9175a93dd3254aa721324810a84",
+      "actual_sha256": "adf3b656578072260f856e21b2d728a08676e9175a93dd3254aa721324810a84",
+      "matches": true,
+      "bytes": 419
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/copy-semantic.swift",
+      "expected_sha256": "2ff458ef1b764a16a63a4f7233d9af1bdc5e29447782b3345b03483a4b8f866e",
+      "actual_sha256": "2ff458ef1b764a16a63a4f7233d9af1bdc5e29447782b3345b03483a4b8f866e",
+      "matches": true,
+      "bytes": 102
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/cycle-lowering.log",
+      "expected_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "actual_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true,
+      "bytes": 0
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/escape-coordinator.log",
+      "expected_sha256": "167ac4c85c7bda3a129e69d89af1c9ef05911484648e15975cd734a6c300c837",
+      "actual_sha256": "167ac4c85c7bda3a129e69d89af1c9ef05911484648e15975cd734a6c300c837",
+      "matches": true,
+      "bytes": 1212
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/escape-coordinator.swift",
+      "expected_sha256": "47790eeaac37d683b9e6e69e3e14725a13f71c897c10197aaaa35c6152975798",
+      "actual_sha256": "47790eeaac37d683b9e6e69e3e14725a13f71c897c10197aaaa35c6152975798",
+      "matches": true,
+      "bytes": 87
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/escape-owner.log",
+      "expected_sha256": "ca8391f74735482f59b9d508f23912ab69001cf57c71dbdf5cabced1ff09e26f",
+      "actual_sha256": "ca8391f74735482f59b9d508f23912ab69001cf57c71dbdf5cabced1ff09e26f",
+      "matches": true,
+      "bytes": 1165
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/escape-owner.swift",
+      "expected_sha256": "e8baa22fd55d1e10236f8b87ec2da3ef94ef4091533056594d72a0d0be29be2f",
+      "actual_sha256": "e8baa22fd55d1e10236f8b87ec2da3ef94ef4091533056594d72a0d0be29be2f",
+      "matches": true,
+      "bytes": 75
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/escape-semantic.log",
+      "expected_sha256": "49a32bb4a6ad4cbf6d27b06315c9d41ae0fd3db2297b45d3533c88981b8603e5",
+      "actual_sha256": "49a32bb4a6ad4cbf6d27b06315c9d41ae0fd3db2297b45d3533c88981b8603e5",
+      "matches": true,
+      "bytes": 1090
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/escape-semantic.swift",
+      "expected_sha256": "07303ddde75971950b92411f2f16305e1ec5e53cdfe7b9c2022993350f702811",
+      "actual_sha256": "07303ddde75971950b92411f2f16305e1ec5e53cdfe7b9c2022993350f702811",
+      "matches": true,
+      "bytes": 66
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/execute.log",
+      "expected_sha256": "5f4e7c168727af3336e9ea3053ca97a286cdb47125d55ef9b7cb6c01ae7ab1e1",
+      "actual_sha256": "5f4e7c168727af3336e9ea3053ca97a286cdb47125d55ef9b7cb6c01ae7ab1e1",
+      "matches": true,
+      "bytes": 2940326
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/link.log",
+      "expected_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "actual_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true,
+      "bytes": 0
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/logical-transcripts.json",
+      "expected_sha256": "089e279edb96729b6b3dfa15c6faa800f27a51a0db55cd04b67203bab18f314e",
+      "actual_sha256": "089e279edb96729b6b3dfa15c6faa800f27a51a0db55cd04b67203bab18f314e",
+      "matches": true,
+      "bytes": 2914060
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/mismatched-action.log",
+      "expected_sha256": "028ecbccbfd184937c5384fb0e2759f65e7e7a4a6a14903c153adc9959d8817c",
+      "actual_sha256": "028ecbccbfd184937c5384fb0e2759f65e7e7a4a6a14903c153adc9959d8817c",
+      "matches": true,
+      "bytes": 637
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/mismatched-action.swift",
+      "expected_sha256": "71447b820c9d437836066697719db3cb85145da276c8d8143ab50eb106aecec8",
+      "actual_sha256": "71447b820c9d437836066697719db3cb85145da276c8d8143ab50eb106aecec8",
+      "matches": true,
+      "bytes": 273
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/mismatched-model.log",
+      "expected_sha256": "9976b83345f550ae511b78e9e913c4e81dad09b7803b5886b985f7f5c8aaa7a9",
+      "actual_sha256": "9976b83345f550ae511b78e9e913c4e81dad09b7803b5886b985f7f5c8aaa7a9",
+      "matches": true,
+      "bytes": 5210
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/mismatched-model.swift",
+      "expected_sha256": "41309e5192e94c0eb88dc02d7c8300166dbe70d6537415490b4ce61caa251a42",
+      "actual_sha256": "41309e5192e94c0eb88dc02d7c8300166dbe70d6537415490b4ce61caa251a42",
+      "matches": true,
+      "bytes": 452
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/mismatched-mutation.log",
+      "expected_sha256": "c346aef09849bef1bf04e5c3173166e53c751da4fbbf0dc9512e7d262cc29ba8",
+      "actual_sha256": "c346aef09849bef1bf04e5c3173166e53c751da4fbbf0dc9512e7d262cc29ba8",
+      "matches": true,
+      "bytes": 887
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/mismatched-mutation.swift",
+      "expected_sha256": "aaee640f70bb9082afc69c24fafe7a6cb0a18089c61e39c1a916a2964e2136d1",
+      "actual_sha256": "aaee640f70bb9082afc69c24fafe7a6cb0a18089c61e39c1a916a2964e2136d1",
+      "matches": true,
+      "bytes": 382
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/mismatched-schema.log",
+      "expected_sha256": "8c2b0919657538ee1a46a9e7791fde92701362daa2ff543138d4f26341db502d",
+      "actual_sha256": "8c2b0919657538ee1a46a9e7791fde92701362daa2ff543138d4f26341db502d",
+      "matches": true,
+      "bytes": 1517
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/mismatched-schema.swift",
+      "expected_sha256": "529272532b8ddd8ee862dfeb905fead08df1cfaca244c43e2278ea6c9e8b6a41",
+      "actual_sha256": "529272532b8ddd8ee862dfeb905fead08df1cfaca244c43e2278ea6c9e8b6a41",
+      "matches": true,
+      "bytes": 425
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/returned-owner-escape.log",
+      "expected_sha256": "279671d1259605a858f14861bfe8d4ebd83aaa7cce5012a4c7b7367af801107c",
+      "actual_sha256": "279671d1259605a858f14861bfe8d4ebd83aaa7cce5012a4c7b7367af801107c",
+      "matches": true,
+      "bytes": 1214
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/returned-owner-escape.swift",
+      "expected_sha256": "a1650d1bded969cdacc5152b39de98300b8089b5007574acdcaebd2d323faf63",
+      "actual_sha256": "a1650d1bded969cdacc5152b39de98300b8089b5007574acdcaebd2d323faf63",
+      "matches": true,
+      "bytes": 321
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/returned-owner-use-after-consume.log",
+      "expected_sha256": "6452886072280fbbe4552fd9b04c0acb458475762a2789ea42663240ded3bc5f",
+      "actual_sha256": "6452886072280fbbe4552fd9b04c0acb458475762a2789ea42663240ded3bc5f",
+      "matches": true,
+      "bytes": 1016
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/returned-owner-use-after-consume.swift",
+      "expected_sha256": "53f21ec6a1558aec8d6f289419cc5b8b1bfceddcd36f7353b38123747a6ce5b9",
+      "actual_sha256": "53f21ec6a1558aec8d6f289419cc5b8b1bfceddcd36f7353b38123747a6ce5b9",
+      "matches": true,
+      "bytes": 310
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/runtime-cycle",
+      "expected_sha256": "55e22d467a1b8009248c9930dc15a7bf3573bb52554d23fbc770af73ba135669",
+      "actual_sha256": "55e22d467a1b8009248c9930dc15a7bf3573bb52554d23fbc770af73ba135669",
+      "matches": true,
+      "bytes": 3555904
+    },
+    {
+      "kind": "runtime-artifact",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/storage-regions.json",
+      "expected_sha256": "2299b42a962999f87269bfe94282e6ae6249b61177258b3eb5b67706595526c3",
+      "actual_sha256": "2299b42a962999f87269bfe94282e6ae6249b61177258b3eb5b67706595526c3",
+      "matches": true,
+      "bytes": 27503
+    },
+    {
+      "kind": "core-artifact",
+      "path": ".build/contracts/spec-006-rfc-014-swift64/b694e911d7d7658a-gn53u2vi/macos-static/GiftUI.o",
+      "expected_sha256": "cb0dc42f08799e69d10fbc1b7807e639745d07231d651f838e72daccb780be0a",
+      "actual_sha256": "cb0dc42f08799e69d10fbc1b7807e639745d07231d651f838e72daccb780be0a",
+      "matches": true,
+      "bytes": 355384
+    },
+    {
+      "kind": "core-artifact",
+      "path": ".build/contracts/spec-006-rfc-014-swift64/b694e911d7d7658a-gn53u2vi/macos-static/GiftUI.swiftmodule",
+      "expected_sha256": "c103bc5e3cb862e71004819c8e57efee8f7929c5c9730885ae9e0fef9a13269a",
+      "actual_sha256": "c103bc5e3cb862e71004819c8e57efee8f7929c5c9730885ae9e0fef9a13269a",
+      "matches": true,
+      "bytes": 322072
+    },
+    {
+      "kind": "macro-tool",
+      "path": ".build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool",
+      "expected_sha256": "6bb5eae9d0b726905f893b0f1fa4c0739fee61830f33404aa5cdb8321212c691",
+      "actual_sha256": "6bb5eae9d0b726905f893b0f1fa4c0739fee61830f33404aa5cdb8321212c691",
+      "matches": true,
+      "bytes": 17031504
+    },
+    {
+      "kind": "host-input",
+      "path": "scripts/contracts/check-spec-015-schema4.py",
+      "expected_sha256": "c248f4131bcc84196833ea0eaaabf5f40e3742cb9e7c7dd10dcdf4a7ddf67e6b",
+      "actual_sha256": "c248f4131bcc84196833ea0eaaabf5f40e3742cb9e7c7dd10dcdf4a7ddf67e6b",
+      "matches": true,
+      "bytes": 11324
+    },
+    {
+      "kind": "host-input",
+      "path": "scripts/contracts/generate-spec-015-workload.rb",
+      "expected_sha256": "58b8beafc81c81f9faca83a883baf760f564930096243391c88d2d799f8a5aeb",
+      "actual_sha256": "58b8beafc81c81f9faca83a883baf760f564930096243391c88d2d799f8a5aeb",
+      "matches": true,
+      "bytes": 27592
+    },
+    {
+      "kind": "host-input",
+      "path": "Tests/ContractFixtures/SPEC015/signal-analyzer-workload.tsv",
+      "expected_sha256": "236501e51d2cd63762df8f7ecf23c53aed62da3294137343077b2e2ac4a2bd7c",
+      "actual_sha256": "236501e51d2cd63762df8f7ecf23c53aed62da3294137343077b2e2ac4a2bd7c",
+      "matches": true,
+      "bytes": 2515
+    },
+    {
+      "kind": "host-input",
+      "path": "Tests/ContractFixtures/SPEC015/Generated/macos_dynamic.workload.generated.tsv",
+      "expected_sha256": "648173dc4d39803c51429e2818297ca33c948b91eb69223982321ffec80117a9",
+      "actual_sha256": "648173dc4d39803c51429e2818297ca33c948b91eb69223982321ffec80117a9",
+      "matches": true,
+      "bytes": 1254
+    },
+    {
+      "kind": "host-input",
+      "path": "Tests/ContractFixtures/SPEC015/Generated/macos_static.workload.generated.tsv",
+      "expected_sha256": "b014f3ce29669852dadd7fb81c7d1ce1ccb856371994ad6b91108ddd591c725a",
+      "actual_sha256": "b014f3ce29669852dadd7fb81c7d1ce1ccb856371994ad6b91108ddd591c725a",
+      "matches": true,
+      "bytes": 1250
+    },
+    {
+      "kind": "host-input",
+      "path": "Tests/ContractFixtures/SPEC015/Generated/nrf52840_static.workload.generated.tsv",
+      "expected_sha256": "324afd3bbe523c2e282b6bac9b9740b8ea4913a2a58233b27317ac0054908109",
+      "actual_sha256": "324afd3bbe523c2e282b6bac9b9740b8ea4913a2a58233b27317ac0054908109",
+      "matches": true,
+      "bytes": 1243
+    },
+    {
+      "kind": "host-input",
+      "path": "Tests/ContractFixtures/SPEC015/Generated/raspberry_pi_dynamic.workload.generated.tsv",
+      "expected_sha256": "9e9178898f15e644549fecef685e9fbfa33e3823c61139520908a30771627407",
+      "actual_sha256": "9e9178898f15e644549fecef685e9fbfa33e3823c61139520908a30771627407",
+      "matches": true,
+      "bytes": 1248
+    },
+    {
+      "kind": "host-input",
+      "path": "Tests/ContractFixtures/SPEC015/Generated/runtime-limit-leaves.generated.tsv",
+      "expected_sha256": "e4a5ff48727bf0fcf9a2b2ccd0563b26be357d4e06ca2ca922ac4363d155f2a3",
+      "actual_sha256": "e4a5ff48727bf0fcf9a2b2ccd0563b26be357d4e06ca2ca922ac4363d155f2a3",
+      "matches": true,
+      "bytes": 18626
+    },
+    {
+      "kind": "host-input",
+      "path": "Sources/GiftUICapabilities/GiftUICapabilities.swift",
+      "expected_sha256": "79a2f7a749cbe3e8033d1d118f9c94fadb67b985d36dbc185996fc255e8ba884",
+      "actual_sha256": "79a2f7a749cbe3e8033d1d118f9c94fadb67b985d36dbc185996fc255e8ba884",
+      "matches": true,
+      "bytes": 47123
+    },
+    {
+      "kind": "host-input",
+      "path": "Sources/GiftUIFailureCore/GiftUIFailureCore.swift",
+      "expected_sha256": "9e1e92643cdf2aed4efea9684697481af01034b9ad34ef42aff8c6ff6445cae7",
+      "actual_sha256": "9e1e92643cdf2aed4efea9684697481af01034b9ad34ef42aff8c6ff6445cae7",
+      "matches": true,
+      "bytes": 15089
+    },
+    {
+      "kind": "host-input",
+      "path": "Sources/GiftUISurfaceCore/RasterSurface.swift",
+      "expected_sha256": "cf0aa2fe88d7cf825e5b9bddb8b8e2fc48d76555f4a8ac94ff4ec0b884fe3b42",
+      "actual_sha256": "cf0aa2fe88d7cf825e5b9bddb8b8e2fc48d76555f4a8ac94ff4ec0b884fe3b42",
+      "matches": true,
+      "bytes": 481
+    },
+    {
+      "kind": "host-input",
+      "path": "Sources/GiftUISurfaceCore/SurfaceValues.swift",
+      "expected_sha256": "96e161fdf3d1f58dd4c1de04c043df647a3fa279d17993c57e2b0ce15e19d60c",
+      "actual_sha256": "96e161fdf3d1f58dd4c1de04c043df647a3fa279d17993c57e2b0ce15e19d60c",
+      "matches": true,
+      "bytes": 3576
+    },
+    {
+      "kind": "host-input",
+      "path": "Sources/GiftUIDisplayCore/DisplayContracts.swift",
+      "expected_sha256": "b27ad7489ad1ec6076f0d53b3912d6b9ed85329d355ceda2678707374111f3f0",
+      "actual_sha256": "b27ad7489ad1ec6076f0d53b3912d6b9ed85329d355ceda2678707374111f3f0",
+      "matches": true,
+      "bytes": 2747
+    },
+    {
+      "kind": "host-input",
+      "path": "Sources/GiftUIDisplayCore/SurfaceDisplayContributionAdapter.swift",
+      "expected_sha256": "6a53a85962e5a821e5d81c32a580f453f6332feceaf31997f8fc04f2d9d548cf",
+      "actual_sha256": "6a53a85962e5a821e5d81c32a580f453f6332feceaf31997f8fc04f2d9d548cf",
+      "matches": true,
+      "bytes": 1010
+    },
+    {
+      "kind": "host-input",
+      "path": "Sources/GiftUIRasterCore/FullSurfaceRGB565Framebuffer.swift",
+      "expected_sha256": "449a1be1050367462f67ab32a98553f6c573a79f1a79a6a26be98e6df06ac5e1",
+      "actual_sha256": "449a1be1050367462f67ab32a98553f6c573a79f1a79a6a26be98e6df06ac5e1",
+      "matches": true,
+      "bytes": 4822
+    },
+    {
+      "kind": "host-input",
+      "path": "Sources/GiftUIRasterCore/FullSurfaceRGBA8888Buffer.swift",
+      "expected_sha256": "27119d052890cad6f40ab4d64ed1f584f32b005d513bf910f23557b6cc86c48d",
+      "actual_sha256": "27119d052890cad6f40ab4d64ed1f584f32b005d513bf910f23557b6cc86c48d",
+      "matches": true,
+      "bytes": 4674
+    },
+    {
+      "kind": "host-input",
+      "path": "Sources/GiftUIRasterCore/RGB565TileWorkspace.swift",
+      "expected_sha256": "e7f8fdfe6b23a33aeaad656ffc0ad745d14026dd3e55c8a1d069c1cb60915ce4",
+      "actual_sha256": "e7f8fdfe6b23a33aeaad656ffc0ad745d14026dd3e55c8a1d069c1cb60915ce4",
+      "matches": true,
+      "bytes": 5854
+    },
+    {
+      "kind": "host-input",
+      "path": "Sources/GiftUIRasterCore/RasterBackendContributionAdapter.swift",
+      "expected_sha256": "07daa8c1ac38863bdbe0340061b8c7de703e912a8990155d91560d07fa88dbb6",
+      "actual_sha256": "07daa8c1ac38863bdbe0340061b8c7de703e912a8990155d91560d07fa88dbb6",
+      "matches": true,
+      "bytes": 2864
+    },
+    {
+      "kind": "host-input",
+      "path": "Sources/GiftUIRasterCore/RasterFillCoverage.swift",
+      "expected_sha256": "e71a27b6a6e5ee0557bef856d70cfa8b7551ab2d3f93e830f31b414a21b03594",
+      "actual_sha256": "e71a27b6a6e5ee0557bef856d70cfa8b7551ab2d3f93e830f31b414a21b03594",
+      "matches": true,
+      "bytes": 2978
+    },
+    {
+      "kind": "host-input",
+      "path": "Sources/GiftUIRasterCore/RasterFrameSink.swift",
+      "expected_sha256": "93e7455f817de8a665933761c3580c59451d4c9cf12d9b9e8773aa4b28e1582a",
+      "actual_sha256": "93e7455f817de8a665933761c3580c59451d4c9cf12d9b9e8773aa4b28e1582a",
+      "matches": true,
+      "bytes": 257
+    },
+    {
+      "kind": "host-input",
+      "path": "Sources/GiftUIRasterCore/RasterFrameWork.swift",
+      "expected_sha256": "f2433ae30e9ed44bc16e2f1faca715f4c6e1608c7a13545e426e76b72bde5090",
+      "actual_sha256": "f2433ae30e9ed44bc16e2f1faca715f4c6e1608c7a13545e426e76b72bde5090",
+      "matches": true,
+      "bytes": 4130
+    },
+    {
+      "kind": "host-input",
+      "path": "Sources/GiftUIRasterCore/RasterGlyphCoverage.swift",
+      "expected_sha256": "d73b11eb6382d40bb0e9a0f336fb5d377f5bfb43f484534906b196aea9f26262",
+      "actual_sha256": "d73b11eb6382d40bb0e9a0f336fb5d377f5bfb43f484534906b196aea9f26262",
+      "matches": true,
+      "bytes": 9136
+    },
+    {
+      "kind": "host-input",
+      "path": "Sources/GiftUIRasterCore/RasterPayloadLimits.swift",
+      "expected_sha256": "23234d9ba4e630bb6279e31a9ab8ae72b8f9e3b2f9477784bf42697ecab544c3",
+      "actual_sha256": "23234d9ba4e630bb6279e31a9ab8ae72b8f9e3b2f9477784bf42697ecab544c3",
+      "matches": true,
+      "bytes": 3364
+    },
+    {
+      "kind": "host-input",
+      "path": "Sources/GiftUIRasterCore/RasterStrokeCoverage.swift",
+      "expected_sha256": "9e26044f3f7e99516742b686767cfe5a03d24d1efceee28f4d7ee6e21a90b579",
+      "actual_sha256": "9e26044f3f7e99516742b686767cfe5a03d24d1efceee28f4d7ee6e21a90b579",
+      "matches": true,
+      "bytes": 31837
+    },
+    {
+      "kind": "host-input",
+      "path": "Sources/GiftUIRasterCore/RasterWorkTracker.swift",
+      "expected_sha256": "16f7c34ef32538f22b340163c402f551e3fd875b66f2e074d8049d6f51d6468f",
+      "actual_sha256": "16f7c34ef32538f22b340163c402f551e3fd875b66f2e074d8049d6f51d6468f",
+      "matches": true,
+      "bytes": 5041
+    },
+    {
+      "kind": "host-input",
+      "path": "Sources/GiftUIBackendIntegration/FullSurfacePayloadEmitter.swift",
+      "expected_sha256": "25ceb74e6fdea87403ae112685960394adcd56012ad7366ec870b0b6217436af",
+      "actual_sha256": "25ceb74e6fdea87403ae112685960394adcd56012ad7366ec870b0b6217436af",
+      "matches": true,
+      "bytes": 6303
+    },
+    {
+      "kind": "host-input",
+      "path": "Sources/GiftUIBackendIntegration/OneShotRasterBackendEndpoint.swift",
+      "expected_sha256": "fa9c4b3aa3c522a8bd39efa4560abb692f61a1ab578089ed5ea4af182e5dd778",
+      "actual_sha256": "fa9c4b3aa3c522a8bd39efa4560abb692f61a1ab578089ed5ea4af182e5dd778",
+      "matches": true,
+      "bytes": 8294
+    },
+    {
+      "kind": "host-input",
+      "path": "Sources/GiftUIBackendIntegration/OperationMajorRGB565RasterSession.swift",
+      "expected_sha256": "8b930d7dd1a226a8d4bdf5c827c1fd4471f0084f634ebe1144696fae2f50b4b5",
+      "actual_sha256": "8b930d7dd1a226a8d4bdf5c827c1fd4471f0084f634ebe1144696fae2f50b4b5",
+      "matches": true,
+      "bytes": 16826
+    },
+    {
+      "kind": "host-input",
+      "path": "Sources/GiftUIBackendIntegration/OperationMajorTileTraversal.swift",
+      "expected_sha256": "a61e6fbe4e1cd2ea1f1325e11ea2e37332fa1c9c2e09a4a0d7dabdd5a7a2d765",
+      "actual_sha256": "a61e6fbe4e1cd2ea1f1325e11ea2e37332fa1c9c2e09a4a0d7dabdd5a7a2d765",
+      "matches": true,
+      "bytes": 3394
+    },
+    {
+      "kind": "host-input",
+      "path": "Sources/GiftUIBackendIntegration/RGB565TilePayloadEmitter.swift",
+      "expected_sha256": "0d0b245435a848f98bbc1996a0768298b1be2a03563d06d8bbd04d8077cf7c34",
+      "actual_sha256": "0d0b245435a848f98bbc1996a0768298b1be2a03563d06d8bbd04d8077cf7c34",
+      "matches": true,
+      "bytes": 15217
+    },
+    {
+      "kind": "host-input",
+      "path": "Sources/GiftUIBackendIntegration/RasterBackendEndpoint.swift",
+      "expected_sha256": "f38c93f26953da1f265aa20b1678d8d1a515fe533707d3646e89556908f62754",
+      "actual_sha256": "f38c93f26953da1f265aa20b1678d8d1a515fe533707d3646e89556908f62754",
+      "matches": true,
+      "bytes": 773
+    },
+    {
+      "kind": "host-input",
+      "path": "Sources/GiftUIBackendIntegration/RasterBackendOwnerFailureAdapter.swift",
+      "expected_sha256": "71185f98e32afd8353c6787c209ff671ef277e013df2ad11465ddf991b59d1e4",
+      "actual_sha256": "71185f98e32afd8353c6787c209ff671ef277e013df2ad11465ddf991b59d1e4",
+      "matches": true,
+      "bytes": 3529
+    },
+    {
+      "kind": "host-input",
+      "path": "Sources/GiftUIBackendIntegration/RasterBackendStartupValidator.swift",
+      "expected_sha256": "37bcf7159a5263b154e76ee84bd6d5592ca5903917b27614f30eeedc99c667e2",
+      "actual_sha256": "37bcf7159a5263b154e76ee84bd6d5592ca5903917b27614f30eeedc99c667e2",
+      "matches": true,
+      "bytes": 4267
+    },
+    {
+      "kind": "host-input",
+      "path": "Sources/GiftUIBackendIntegration/RasterFrameWorkAdmission.swift",
+      "expected_sha256": "0dd3524e69afc0f87cc9b563f395d8fc46dd09d5a40a41072670bec032fb029e",
+      "actual_sha256": "0dd3524e69afc0f87cc9b563f395d8fc46dd09d5a40a41072670bec032fb029e",
+      "matches": true,
+      "bytes": 1335
+    },
+    {
+      "kind": "host-input",
+      "path": "Sources/GiftUIBackendIntegration/RasterTextResourceValidation.swift",
+      "expected_sha256": "8b5b0a273bca73176816366ffdc6d917ef71fe3bebc797113722988b4604579b",
+      "actual_sha256": "8b5b0a273bca73176816366ffdc6d917ef71fe3bebc797113722988b4604579b",
+      "matches": true,
+      "bytes": 3756
+    },
+    {
+      "kind": "host-input",
+      "path": "Sources/GiftUIHostConfiguration/CheckedMVPHostConfigurationValidator.swift",
+      "expected_sha256": "8caf5a83d60ea858e2ecfbe5b1f76232a6dd85efc1a2fb3797adcf3a04810a3e",
+      "actual_sha256": "8caf5a83d60ea858e2ecfbe5b1f76232a6dd85efc1a2fb3797adcf3a04810a3e",
+      "matches": true,
+      "bytes": 8716
+    },
+    {
+      "kind": "host-input",
+      "path": "Sources/GiftUIHostConfiguration/HostActivationController.swift",
+      "expected_sha256": "d6a087a6505b10a622221818d20975b63b2aa2138bd965ff2d6e6a9b0a6680da",
+      "actual_sha256": "d6a087a6505b10a622221818d20975b63b2aa2138bd965ff2d6e6a9b0a6680da",
+      "matches": true,
+      "bytes": 6535
+    },
+    {
+      "kind": "host-input",
+      "path": "Sources/GiftUIHostConfiguration/HostApplicationOpportunityGate.swift",
+      "expected_sha256": "475df591e6c3fbd741a916dd6eefacf77a572a25678c9c4a27b84ce5d6974e03",
+      "actual_sha256": "475df591e6c3fbd741a916dd6eefacf77a572a25678c9c4a27b84ce5d6974e03",
+      "matches": true,
+      "bytes": 1400
+    },
+    {
+      "kind": "host-input",
+      "path": "Sources/GiftUIHostConfiguration/HostApplicationStartupValidation.swift",
+      "expected_sha256": "afbfb8cbd95df3a56052e8909c44592e560c94a2907a76ca515aaeed2489cfb8",
+      "actual_sha256": "afbfb8cbd95df3a56052e8909c44592e560c94a2907a76ca515aaeed2489cfb8",
+      "matches": true,
+      "bytes": 3117
+    },
+    {
+      "kind": "host-input",
+      "path": "Sources/GiftUIHostConfiguration/HostComponentGraphValidation.swift",
+      "expected_sha256": "1fe765b7348bdab18abf6b83da6c9e2cadbb2e7a868a729c8d075f5b5109f913",
+      "actual_sha256": "1fe765b7348bdab18abf6b83da6c9e2cadbb2e7a868a729c8d075f5b5109f913",
+      "matches": true,
+      "bytes": 2370
+    },
+    {
+      "kind": "host-input",
+      "path": "Sources/GiftUIHostConfiguration/HostConfigurationResults.swift",
+      "expected_sha256": "3e00d5e22b04e6ccb25ab357f2d6fe96349f2ab31abf3cf9201206110d83b205",
+      "actual_sha256": "3e00d5e22b04e6ccb25ab357f2d6fe96349f2ab31abf3cf9201206110d83b205",
+      "matches": true,
+      "bytes": 4833
+    },
+    {
+      "kind": "host-input",
+      "path": "Sources/GiftUIHostConfiguration/HostConfigurationValues.swift",
+      "expected_sha256": "401908c35e265ad19b9788d17a32603bd966da81e4fef10b8ff2fc46a9d255c1",
+      "actual_sha256": "401908c35e265ad19b9788d17a32603bd966da81e4fef10b8ff2fc46a9d255c1",
+      "matches": true,
+      "bytes": 12692
+    },
+    {
+      "kind": "host-input",
+      "path": "Sources/GiftUIHostConfiguration/HostEndpointHealthController.swift",
+      "expected_sha256": "b170fb7b19e0627ad7484c81c72bd9c532b4c06455c4d0cd9053e47b1639b434",
+      "actual_sha256": "b170fb7b19e0627ad7484c81c72bd9c532b4c06455c4d0cd9053e47b1639b434",
+      "matches": true,
+      "bytes": 6244
+    },
+    {
+      "kind": "host-input",
+      "path": "Sources/GiftUIHostConfiguration/HostEndpointStartupValidation.swift",
+      "expected_sha256": "be93841af2abe55c2ac64e1df77219323fc62be40165cd4e89dbec3336fdd2d2",
+      "actual_sha256": "be93841af2abe55c2ac64e1df77219323fc62be40165cd4e89dbec3336fdd2d2",
+      "matches": true,
+      "bytes": 2425
+    },
+    {
+      "kind": "host-input",
+      "path": "Sources/GiftUIHostConfiguration/HostFailureAdapter.swift",
+      "expected_sha256": "6b886b52c8e96892207b7230b8ccf9301b56f9fc62f117d7131c025e0452fde8",
+      "actual_sha256": "6b886b52c8e96892207b7230b8ccf9301b56f9fc62f117d7131c025e0452fde8",
+      "matches": true,
+      "bytes": 6448
+    },
+    {
+      "kind": "host-input",
+      "path": "Sources/GiftUIHostConfiguration/HostNormalizedInputGate.swift",
+      "expected_sha256": "7bd20cd33825f33478e54a1921b670a857805f6a2cf83bf089810e83b93773a7",
+      "actual_sha256": "7bd20cd33825f33478e54a1921b670a857805f6a2cf83bf089810e83b93773a7",
+      "matches": true,
+      "bytes": 7468
+    },
+    {
+      "kind": "host-input",
+      "path": "Sources/GiftUIHostConfiguration/HostPresentationRecovery.swift",
+      "expected_sha256": "c8d261e68ad8096015f070d9e896c4952ac36725ff2c3ccc4b8cce56674d635f",
+      "actual_sha256": "c8d261e68ad8096015f070d9e896c4952ac36725ff2c3ccc4b8cce56674d635f",
+      "matches": true,
+      "bytes": 4525
+    },
+    {
+      "kind": "host-input",
+      "path": "Sources/GiftUIHostConfiguration/HostPresetBootstrap.swift",
+      "expected_sha256": "15edb5e6d350cfdc95e2edc97d86a82b147e90b3bf391441eb04f173c218e12e",
+      "actual_sha256": "15edb5e6d350cfdc95e2edc97d86a82b147e90b3bf391441eb04f173c218e12e",
+      "matches": true,
+      "bytes": 6676
+    },
+    {
+      "kind": "host-input",
+      "path": "Sources/GiftUIHostConfiguration/HostResidualFailureRouting.swift",
+      "expected_sha256": "c7d77a75bc192ccf226c82487e87108d0bd3e5d5a91630d4df3990d6eb3e258c",
+      "actual_sha256": "c7d77a75bc192ccf226c82487e87108d0bd3e5d5a91630d4df3990d6eb3e258c",
+      "matches": true,
+      "bytes": 6861
+    },
+    {
+      "kind": "host-input",
+      "path": "Sources/GiftUIHostConfiguration/HostResidualPolicyContracts.swift",
+      "expected_sha256": "6215618f39789acfa0a40aca1c0657fa8c66c1760884f44dceee1172ee7e7469",
+      "actual_sha256": "6215618f39789acfa0a40aca1c0657fa8c66c1760884f44dceee1172ee7e7469",
+      "matches": true,
+      "bytes": 854
+    },
+    {
+      "kind": "host-input",
+      "path": "Sources/GiftUIHostConfiguration/HostResidualPolicyTableValidation.swift",
+      "expected_sha256": "b43e1f7bf466c3dea0266e498d579e78504eb1612740f1d24804a2b19e37b84c",
+      "actual_sha256": "b43e1f7bf466c3dea0266e498d579e78504eb1612740f1d24804a2b19e37b84c",
+      "matches": true,
+      "bytes": 1628
+    },
+    {
+      "kind": "host-input",
+      "path": "Sources/GiftUIHostConfiguration/HostSequencedFactAdmission.swift",
+      "expected_sha256": "4bd12f192077693af4be89b1483be4d4791f256f2ca5798d025cbef577da07cb",
+      "actual_sha256": "4bd12f192077693af4be89b1483be4d4791f256f2ca5798d025cbef577da07cb",
+      "matches": true,
+      "bytes": 12763
+    },
+    {
+      "kind": "host-input",
+      "path": "Sources/GiftUIHostConfiguration/HostWakePacingController.swift",
+      "expected_sha256": "457479bb631966220e2bb2d26fb7a78ac0143fbcadae8b66c25b78b27125643b",
+      "actual_sha256": "457479bb631966220e2bb2d26fb7a78ac0143fbcadae8b66c25b78b27125643b",
+      "matches": true,
+      "bytes": 6393
+    },
+    {
+      "kind": "host-input",
+      "path": "Sources/GiftUIHostConfiguration/SignalAnalyzerDrawingStartupValidation.swift",
+      "expected_sha256": "2efabc013dc02ce505b80fe018a6f8aacb46602eabf23dece2d612a6ecc3f307",
+      "actual_sha256": "2efabc013dc02ce505b80fe018a6f8aacb46602eabf23dece2d612a6ecc3f307",
+      "matches": true,
+      "bytes": 3701
+    },
+    {
+      "kind": "host-input",
+      "path": "Sources/GiftUIHostConfiguration/SignalAnalyzerPresetHostInstance.swift",
+      "expected_sha256": "8f003af6658f30857ef2db1d93d762ba6725b91151d58705123d5597898bdea4",
+      "actual_sha256": "8f003af6658f30857ef2db1d93d762ba6725b91151d58705123d5597898bdea4",
+      "matches": true,
+      "bytes": 5313
+    },
+    {
+      "kind": "host-input",
+      "path": "Sources/GiftUIHostConfiguration/SignalAnalyzerWorkloadStartupValidation.swift",
+      "expected_sha256": "6e36ee3bb65f6b924d985f7e6e2861d5879df1537d3e012ea1bf3c65b85140b6",
+      "actual_sha256": "6e36ee3bb65f6b924d985f7e6e2861d5879df1537d3e012ea1bf3c65b85140b6",
+      "matches": true,
+      "bytes": 7402
+    },
+    {
+      "kind": "host-input",
+      "path": "Sources/GiftUIHostConfiguration/Generated/SignalAnalyzerPresets.generated.swift",
+      "expected_sha256": "51a3f553626e07454aa5b2acc324703899044c8d6d0465a3e2f7838612830d5b",
+      "actual_sha256": "51a3f553626e07454aa5b2acc324703899044c8d6d0465a3e2f7838612830d5b",
+      "matches": true,
+      "bytes": 11385
+    },
+    {
+      "kind": "host-input",
+      "path": "Tests/ContractFixtures/SPEC013/RuntimeDerived/RuntimeValuesProbe.swift",
+      "expected_sha256": "0176021907686264e62b4e97e86507ec280d574406045ce6c63ee6e7c8dd8817",
+      "actual_sha256": "0176021907686264e62b4e97e86507ec280d574406045ce6c63ee6e7c8dd8817",
+      "matches": true,
+      "bytes": 13720
+    },
+    {
+      "kind": "host-input",
+      "path": "Tests/ContractFixtures/SPEC013/RuntimeDerived/ScopedOwnerProbe.swift",
+      "expected_sha256": "f879327eaebbfee08829868fbbd72b5a8f8f1275add9a3494ccd8a8b47044da0",
+      "actual_sha256": "f879327eaebbfee08829868fbbd72b5a8f8f1275add9a3494ccd8a8b47044da0",
+      "matches": true,
+      "bytes": 2140
+    },
+    {
+      "kind": "host-input",
+      "path": "Tests/ContractFixtures/SPEC013/RuntimeDerived/ScopedCoordinatorProbe.swift",
+      "expected_sha256": "970f891c02e96987ab0718dc9203086e58640963aa06470a6f66d477994c1c16",
+      "actual_sha256": "970f891c02e96987ab0718dc9203086e58640963aa06470a6f66d477994c1c16",
+      "matches": true,
+      "bytes": 3006
+    },
+    {
+      "kind": "host-input",
+      "path": "Tests/ContractFixtures/SPEC013/RuntimeDerived/FrameLeaseProbe.swift",
+      "expected_sha256": "2b9469c68fda07c6fa15e56a873b2946ca3377c7be709415212fb9ba33f2ff0d",
+      "actual_sha256": "2b9469c68fda07c6fa15e56a873b2946ca3377c7be709415212fb9ba33f2ff0d",
+      "matches": true,
+      "bytes": 6031
+    },
+    {
+      "kind": "host-input",
+      "path": "Tests/ContractFixtures/SPEC013/RuntimeDerived/ScopedSemanticProbe.swift",
+      "expected_sha256": "0e635444801b08c1ecfbf6c8a58d5b23b172a9f50ad39aea012a7fc4397d31ae",
+      "actual_sha256": "0e635444801b08c1ecfbf6c8a58d5b23b172a9f50ad39aea012a7fc4397d31ae",
+      "matches": true,
+      "bytes": 435
+    },
+    {
+      "kind": "host-input",
+      "path": "Tests/ContractFixtures/SPEC013/RuntimeDerived/ConcreteBindingProbe.swift",
+      "expected_sha256": "35d04114cbb9dc4a8c47c81eb9f1ad117ec0f876ba7d8ae7453990d0040470fb",
+      "actual_sha256": "35d04114cbb9dc4a8c47c81eb9f1ad117ec0f876ba7d8ae7453990d0040470fb",
+      "matches": true,
+      "bytes": 1941
+    },
+    {
+      "kind": "host-input",
+      "path": "Tests/ContractFixtures/SPEC013/RuntimeDerived/CycleStorageMeasurement.swift",
+      "expected_sha256": "a9588be5cb23e291b49c7bce3e673336a3b4b52ea4db6540d25144a50a75f5ab",
+      "actual_sha256": "a9588be5cb23e291b49c7bce3e673336a3b4b52ea4db6540d25144a50a75f5ab",
+      "matches": true,
+      "bytes": 5783
+    },
+    {
+      "kind": "host-input",
+      "path": "Tests/ContractFixtures/SPEC013/RuntimeDerived/CycleProfileStorage.swift",
+      "expected_sha256": "ddbd36e4d6ca2ea8e46dcd9ec81986fd5b29e388c5fc48e07aa13eea828ff709",
+      "actual_sha256": "ddbd36e4d6ca2ea8e46dcd9ec81986fd5b29e388c5fc48e07aa13eea828ff709",
+      "matches": true,
+      "bytes": 53538
+    },
+    {
+      "kind": "host-input",
+      "path": "Tests/ContractFixtures/SPEC013/RuntimeDerived/CycleStorageRegions.swift",
+      "expected_sha256": "eb3098aa442fd5886c08589a710f1276789f37a27207104e08f9a2c1fea95740",
+      "actual_sha256": "eb3098aa442fd5886c08589a710f1276789f37a27207104e08f9a2c1fea95740",
+      "matches": true,
+      "bytes": 7752
+    },
+    {
+      "kind": "host-input",
+      "path": "Tests/ContractFixtures/SPEC013/RuntimeDerived/CycleModel.swift",
+      "expected_sha256": "74df0a4fb5fe981b0850414fe3ed9e82f6b43173e89efa4967622d231910c1c9",
+      "actual_sha256": "74df0a4fb5fe981b0850414fe3ed9e82f6b43173e89efa4967622d231910c1c9",
+      "matches": true,
+      "bytes": 2522
+    },
+    {
+      "kind": "host-input",
+      "path": "Tests/ContractFixtures/SPEC013/RuntimeDerived/CycleSemanticProbe.swift",
+      "expected_sha256": "b7502debf7770fa3eaf6e5d2a8d7b89b332868a2d5b4328ed3cdce0eb0e15ddd",
+      "actual_sha256": "b7502debf7770fa3eaf6e5d2a8d7b89b332868a2d5b4328ed3cdce0eb0e15ddd",
+      "matches": true,
+      "bytes": 10177
+    },
+    {
+      "kind": "host-input",
+      "path": "Tests/ContractFixtures/SPEC013/RuntimeDerived/CycleDynamicDrawing.swift",
+      "expected_sha256": "ac5bb966de601ad44e4a3c17dc1013cee4eff864908487dc3a686743429a0b33",
+      "actual_sha256": "ac5bb966de601ad44e4a3c17dc1013cee4eff864908487dc3a686743429a0b33",
+      "matches": true,
+      "bytes": 10630
+    },
+    {
+      "kind": "host-input",
+      "path": "Tests/ContractFixtures/SPEC013/RuntimeDerived/CycleStaticDrawing.swift",
+      "expected_sha256": "ce22de98ab1909f1614e93fc6d5ef92b999d7a32b14a2efa1f55809bfa2eb366",
+      "actual_sha256": "ce22de98ab1909f1614e93fc6d5ef92b999d7a32b14a2efa1f55809bfa2eb366",
+      "matches": true,
+      "bytes": 12935
+    },
+    {
+      "kind": "host-input",
+      "path": "Tests/ContractFixtures/SPEC013/RuntimeDerived/CycleRenderProbe.swift",
+      "expected_sha256": "47b2eb5e389dc3c099a1ca223bbcf32b8f0f4f6e312f4f4eeeb24212a9bb0655",
+      "actual_sha256": "47b2eb5e389dc3c099a1ca223bbcf32b8f0f4f6e312f4f4eeeb24212a9bb0655",
+      "matches": true,
+      "bytes": 4580
+    },
+    {
+      "kind": "host-input",
+      "path": "Tests/ContractFixtures/SPEC013/RuntimeDerived/CycleGeometry.swift",
+      "expected_sha256": "e27c0117a605904ce8b0d9a749ebf41eec2d9654828e98c4b4d11ab9fd7fac4e",
+      "actual_sha256": "e27c0117a605904ce8b0d9a749ebf41eec2d9654828e98c4b4d11ab9fd7fac4e",
+      "matches": true,
+      "bytes": 13563
+    },
+    {
+      "kind": "host-input",
+      "path": "Tests/ContractFixtures/SPEC013/RuntimeDerived/CyclePipelineOwner.swift",
+      "expected_sha256": "2b2dad9318f6573f2244a4d7eab6e6223e00f1f7ef25c160eaf831a36965cdd1",
+      "actual_sha256": "2b2dad9318f6573f2244a4d7eab6e6223e00f1f7ef25c160eaf831a36965cdd1",
+      "matches": true,
+      "bytes": 29732
+    },
+    {
+      "kind": "host-input",
+      "path": "Tests/ContractFixtures/SPEC013/RuntimeDerived/CyclePipelineProbe.swift",
+      "expected_sha256": "801a3185d3acd0199076e50a8cde497627c5eca104c1e119223138b75be3bd00",
+      "actual_sha256": "801a3185d3acd0199076e50a8cde497627c5eca104c1e119223138b75be3bd00",
+      "matches": true,
+      "bytes": 15113
+    },
+    {
+      "kind": "host-input",
+      "path": "Tests/ContractFixtures/SPEC013/RuntimeDerived/CycleCoordinatorProbe.swift",
+      "expected_sha256": "ba387f14fd0e276ad4b4a44f451adc022e55ec3a1cde3820d03da2f153aa8a9c",
+      "actual_sha256": "ba387f14fd0e276ad4b4a44f451adc022e55ec3a1cde3820d03da2f153aa8a9c",
+      "matches": true,
+      "bytes": 35557
+    },
+    {
+      "kind": "host-input",
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/ActivationJoinOwner.swift",
+      "expected_sha256": "cd6cde1c5da583b88c9511d181ea2fbe0986cdc51b487bed28b5b59aefde213f",
+      "actual_sha256": "cd6cde1c5da583b88c9511d181ea2fbe0986cdc51b487bed28b5b59aefde213f",
+      "matches": true,
+      "bytes": 12669
+    },
+    {
+      "kind": "host-input",
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/ActivationJoinReport.swift",
+      "expected_sha256": "6ebcdc1baa67315f2ba7388f1f5931be892449f7922bbd8fc23bd37fe6930a60",
+      "actual_sha256": "6ebcdc1baa67315f2ba7388f1f5931be892449f7922bbd8fc23bd37fe6930a60",
+      "matches": true,
+      "bytes": 1737
+    },
+    {
+      "kind": "host-input",
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/ActivationJoinProbe.swift",
+      "expected_sha256": "9016f025db46b855bfe3d6c65d5fbceb6c201bed54811d9dc25c960a9433162f",
+      "actual_sha256": "9016f025db46b855bfe3d6c65d5fbceb6c201bed54811d9dc25c960a9433162f",
+      "matches": true,
+      "bytes": 10128
+    },
+    {
+      "kind": "host-input",
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/ActivationJoinCopyNegative.swift",
+      "expected_sha256": "f97f120f299d04228935b07fb834cb7e4ca51220059206c26abe8a39c2627df6",
+      "actual_sha256": "f97f120f299d04228935b07fb834cb7e4ca51220059206c26abe8a39c2627df6",
+      "matches": true,
+      "bytes": 5254
+    },
+    {
+      "kind": "host-input",
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/ActivationJoinCallbackNegative.swift",
+      "expected_sha256": "5f8bc6c335f72b91583847b86afc25e713541ae9212f5a544f10c853c84803cf",
+      "actual_sha256": "5f8bc6c335f72b91583847b86afc25e713541ae9212f5a544f10c853c84803cf",
+      "matches": true,
+      "bytes": 5043
+    },
+    {
+      "kind": "host-input",
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/ActivationJoinConstantCallbackNegative.swift",
+      "expected_sha256": "458e3cc2a133b91cf416addc12906c30aa35de0ba290f49b27773a9befa13e35",
+      "actual_sha256": "458e3cc2a133b91cf416addc12906c30aa35de0ba290f49b27773a9befa13e35",
+      "matches": true,
+      "bytes": 5040
+    },
+    {
+      "kind": "host-input",
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/ActivationJoinBackingNegative.swift",
+      "expected_sha256": "76a679abb1031b55f98938cfde32b40d2b41883da6ca919586c0d0e61ba8c7ff",
+      "actual_sha256": "76a679abb1031b55f98938cfde32b40d2b41883da6ca919586c0d0e61ba8c7ff",
+      "matches": true,
+      "bytes": 5062
+    },
+    {
+      "kind": "host-input",
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/ScopedHostProbe.swift",
+      "expected_sha256": "d68702cd43fc9aee3891cb585b3398c5e0b87290b077b1bc1c6f6ad68acf457e",
+      "actual_sha256": "d68702cd43fc9aee3891cb585b3398c5e0b87290b077b1bc1c6f6ad68acf457e",
+      "matches": true,
+      "bytes": 7290
+    },
+    {
+      "kind": "host-input",
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/Schema4Probe.swift",
+      "expected_sha256": "a916ea010fa343920ba7146e3de247bba9eee5f56f5b66b6181c18a820db4fde",
+      "actual_sha256": "a916ea010fa343920ba7146e3de247bba9eee5f56f5b66b6181c18a820db4fde",
+      "matches": true,
+      "bytes": 5188
+    },
+    {
+      "kind": "host-input",
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWorkload.swift",
+      "expected_sha256": "c96a534a0c45e445c25c56263c3ddb4ad3c5e68626e8f55aded3129f39721dff",
+      "actual_sha256": "c96a534a0c45e445c25c56263c3ddb4ad3c5e68626e8f55aded3129f39721dff",
+      "matches": true,
+      "bytes": 4854
+    },
+    {
+      "kind": "host-input",
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWorkloadProbe.swift",
+      "expected_sha256": "f93648eb2583b8c30ef1c027982e3547586cf46bf8719447c37f7f46f3adb71e",
+      "actual_sha256": "f93648eb2583b8c30ef1c027982e3547586cf46bf8719447c37f7f46f3adb71e",
+      "matches": true,
+      "bytes": 4900
+    },
+    {
+      "kind": "host-artifact",
+      "path": ".build/contracts/p08-scoped-host-c5eocina/missing-requiredPayloadBytesPerBank.log",
+      "expected_sha256": "2dafb3bb7f0d38d5102135f5465e59901b70eb81034366f71f8aaf63d686f93f",
+      "actual_sha256": "2dafb3bb7f0d38d5102135f5465e59901b70eb81034366f71f8aaf63d686f93f",
+      "matches": true,
+      "bytes": 2686
+    },
+    {
+      "kind": "host-artifact",
+      "path": ".build/contracts/p08-scoped-host-c5eocina/GiftUICapabilities.swiftdoc",
+      "expected_sha256": "b599a0290ae0283fc584bc0c996f6402a9e27e52fe85902bd85632d276beaec7",
+      "actual_sha256": "b599a0290ae0283fc584bc0c996f6402a9e27e52fe85902bd85632d276beaec7",
+      "matches": true,
+      "bytes": 384
+    },
+    {
+      "kind": "host-artifact",
+      "path": ".build/contracts/p08-scoped-host-c5eocina/GiftUIBackendIntegration.log",
+      "expected_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "actual_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true,
+      "bytes": 0
+    },
+    {
+      "kind": "host-artifact",
+      "path": ".build/contracts/p08-scoped-host-c5eocina/activation-constant-callback.log",
+      "expected_sha256": "3c8a6cbea67059f14c3b31419b7d899435200a953c8f514449277bab4946e5da",
+      "actual_sha256": "3c8a6cbea67059f14c3b31419b7d899435200a953c8f514449277bab4946e5da",
+      "matches": true,
+      "bytes": 8945
+    },
+    {
+      "kind": "host-artifact",
+      "path": ".build/contracts/p08-scoped-host-c5eocina/missing-requiredPathChildFanout.swift",
+      "expected_sha256": "54cd2ae3dfb22b0e6dc547dca8d32e448b514f621a11f825c5c2ad138c655112",
+      "actual_sha256": "54cd2ae3dfb22b0e6dc547dca8d32e448b514f621a11f825c5c2ad138c655112",
+      "matches": true,
+      "bytes": 5109
+    },
+    {
+      "kind": "host-artifact",
+      "path": ".build/contracts/p08-scoped-host-c5eocina/missing-requiredPayloadBytesPerBank.swift",
+      "expected_sha256": "bfb6cc0d88f0c38d755385fa9a55899791a6f3a963cfdfc2470852098446d2be",
+      "actual_sha256": "bfb6cc0d88f0c38d755385fa9a55899791a6f3a963cfdfc2470852098446d2be",
+      "matches": true,
+      "bytes": 5109
+    },
+    {
+      "kind": "host-artifact",
+      "path": ".build/contracts/p08-scoped-host-c5eocina/missing-requiredPathDepth.swift",
+      "expected_sha256": "723a45cbd6cff0f4f6d6320216f16500ae8a7fa56baec44d5595ba3094c0743a",
+      "actual_sha256": "723a45cbd6cff0f4f6d6320216f16500ae8a7fa56baec44d5595ba3094c0743a",
+      "matches": true,
+      "bytes": 5121
+    },
+    {
+      "kind": "host-artifact",
+      "path": ".build/contracts/p08-scoped-host-c5eocina/GiftUIRasterCore.o",
+      "expected_sha256": "e00192716dd85a13531bbad784865a62dbe172650e6c112529dee522bab9ecbd",
+      "actual_sha256": "e00192716dd85a13531bbad784865a62dbe172650e6c112529dee522bab9ecbd",
+      "matches": true,
+      "bytes": 126600
+    },
+    {
+      "kind": "host-artifact",
+      "path": ".build/contracts/p08-scoped-host-c5eocina/escape-host.log",
+      "expected_sha256": "9570b6c036bab8dc19ba6fdcc631b0b20ab0b131294f8e4839817db88e76fdbb",
+      "actual_sha256": "9570b6c036bab8dc19ba6fdcc631b0b20ab0b131294f8e4839817db88e76fdbb",
+      "matches": true,
+      "bytes": 634
+    },
+    {
+      "kind": "host-artifact",
+      "path": ".build/contracts/p08-scoped-host-c5eocina/copy-host.swift",
+      "expected_sha256": "c1678afc17d2a56372e91176bd33bb8761de12d79b7cdbb16c5a56d3c1e15224",
+      "actual_sha256": "c1678afc17d2a56372e91176bd33bb8761de12d79b7cdbb16c5a56d3c1e15224",
+      "matches": true,
+      "bytes": 152
+    },
+    {
+      "kind": "host-artifact",
+      "path": ".build/contracts/p08-scoped-host-c5eocina/scalar-workload-freshness.log",
+      "expected_sha256": "9809e7a45ac30b6f91ba830b34fc27dd0399350496e366fe2ba4ca52c27c4db6",
+      "actual_sha256": "9809e7a45ac30b6f91ba830b34fc27dd0399350496e366fe2ba4ca52c27c4db6",
+      "matches": true,
+      "bytes": 105
+    },
+    {
+      "kind": "host-artifact",
+      "path": ".build/contracts/p08-scoped-host-c5eocina/GiftUISurfaceCore.swiftdoc",
+      "expected_sha256": "52b06b587a35dbdc7c0e1680829f8073b508e612b3e45e029bd9d7264ceb7804",
+      "actual_sha256": "52b06b587a35dbdc7c0e1680829f8073b508e612b3e45e029bd9d7264ceb7804",
+      "matches": true,
+      "bytes": 384
+    },
+    {
+      "kind": "host-artifact",
+      "path": ".build/contracts/p08-scoped-host-c5eocina/missing-requiredInteractionIdentityComponents.log",
+      "expected_sha256": "f0dd25ec6c3763e8812769cc614357f047b1ba40867682e8db43aa55786e5c37",
+      "actual_sha256": "f0dd25ec6c3763e8812769cc614357f047b1ba40867682e8db43aa55786e5c37",
+      "matches": true,
+      "bytes": 2682
+    },
+    {
+      "kind": "host-artifact",
+      "path": ".build/contracts/p08-scoped-host-c5eocina/P08ScopedHostProbe.o",
+      "expected_sha256": "d63342d7405ebcb86008a88f514c7b19d4e2250093b16389bfe27e88f7badcd8",
+      "actual_sha256": "d63342d7405ebcb86008a88f514c7b19d4e2250093b16389bfe27e88f7badcd8",
+      "matches": true,
+      "bytes": 54168
+    },
+    {
+      "kind": "host-artifact",
+      "path": ".build/contracts/p08-scoped-host-c5eocina/activation-copy.log",
+      "expected_sha256": "a3d3b022067ea3fe5e1c3f1144dec878051195a66f543c2e0a981c5f4b545564",
+      "actual_sha256": "a3d3b022067ea3fe5e1c3f1144dec878051195a66f543c2e0a981c5f4b545564",
+      "matches": true,
+      "bytes": 10118
+    },
+    {
+      "kind": "host-artifact",
+      "path": ".build/contracts/p08-scoped-host-c5eocina/GiftUIDisplayCore.abi.json",
+      "expected_sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+      "actual_sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+      "matches": true,
+      "bytes": 149
+    },
+    {
+      "kind": "host-artifact",
+      "path": ".build/contracts/p08-scoped-host-c5eocina/activation-backing.log",
+      "expected_sha256": "4dfc2fdaf7c8a444ac77300e66ed46629480cb3600a91f749adcd2b41af3cd7a",
+      "actual_sha256": "4dfc2fdaf7c8a444ac77300e66ed46629480cb3600a91f749adcd2b41af3cd7a",
+      "matches": true,
+      "bytes": 9567
+    },
+    {
+      "kind": "host-artifact",
+      "path": ".build/contracts/p08-scoped-host-c5eocina/GiftUIRasterCore.swiftdoc",
+      "expected_sha256": "a7eee3aee99992439e6e7ed7de698e1f8bf9139a1fecf3064686ef561be50f6d",
+      "actual_sha256": "a7eee3aee99992439e6e7ed7de698e1f8bf9139a1fecf3064686ef561be50f6d",
+      "matches": true,
+      "bytes": 380
+    },
+    {
+      "kind": "host-artifact",
+      "path": ".build/contracts/p08-scoped-host-c5eocina/generator-missing-models.maximum_model_capture_banks.log",
+      "expected_sha256": "c90910d8f66085502796e77d4d9c72c73f22beee0195cde2bb7883ec4e05b8e1",
+      "actual_sha256": "c90910d8f66085502796e77d4d9c72c73f22beee0195cde2bb7883ec4e05b8e1",
+      "matches": true,
+      "bytes": 80
+    },
+    {
+      "kind": "host-artifact",
+      "path": ".build/contracts/p08-scoped-host-c5eocina/generator-missing-records.maximum_path_depth.log",
+      "expected_sha256": "74dffc2915c2d685f914bc7243227c10e811f89da4e1badfb235dc8c08056a59",
+      "actual_sha256": "74dffc2915c2d685f914bc7243227c10e811f89da4e1badfb235dc8c08056a59",
+      "matches": true,
+      "bytes": 72
+    },
+    {
+      "kind": "host-artifact",
+      "path": ".build/contracts/p08-scoped-host-c5eocina/RuntimeCycleProbe.swiftdoc",
+      "expected_sha256": "4d515838ad0ea4af52058c8bd3a76db02e89c2cea90da011c303ef8105a79b5c",
+      "actual_sha256": "4d515838ad0ea4af52058c8bd3a76db02e89c2cea90da011c303ef8105a79b5c",
+      "matches": true,
+      "bytes": 384
+    },
+    {
+      "kind": "host-artifact",
+      "path": ".build/contracts/p08-scoped-host-c5eocina/GiftUISurfaceCore.swiftsourceinfo",
+      "expected_sha256": "adf0fed4a5a824dcbf441095a608bc4cd5d25be485c0a456fd2e39d4ab2ef31f",
+      "actual_sha256": "adf0fed4a5a824dcbf441095a608bc4cd5d25be485c0a456fd2e39d4ab2ef31f",
+      "matches": true,
+      "bytes": 6372
+    },
+    {
+      "kind": "host-artifact",
+      "path": ".build/contracts/p08-scoped-host-c5eocina/GiftUIHostConfiguration.log",
+      "expected_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "actual_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true,
+      "bytes": 0
+    },
+    {
+      "kind": "host-artifact",
+      "path": ".build/contracts/p08-scoped-host-c5eocina/generator-missing-records.maximum_identity_components_per_key.log",
+      "expected_sha256": "745a6036391f8ae8a85409b12177aa3980acc6443b82609062b1b2c30457bf34",
+      "actual_sha256": "745a6036391f8ae8a85409b12177aa3980acc6443b82609062b1b2c30457bf34",
+      "matches": true,
+      "bytes": 89
+    },
+    {
+      "kind": "host-artifact",
+      "path": ".build/contracts/p08-scoped-host-c5eocina/generator-wide-payload.log",
+      "expected_sha256": "7ccdf7f17f04c19d59be6a56ed129ecf6b118eabc89beed599216bc13346bb53",
+      "actual_sha256": "7ccdf7f17f04c19d59be6a56ed129ecf6b118eabc89beed599216bc13346bb53",
+      "matches": true,
+      "bytes": 120
+    },
+    {
+      "kind": "host-artifact",
+      "path": ".build/contracts/p08-scoped-host-c5eocina/P08ScopedHostProbe.abi.json",
+      "expected_sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+      "actual_sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+      "matches": true,
+      "bytes": 149
+    },
+    {
+      "kind": "host-artifact",
+      "path": ".build/contracts/p08-scoped-host-c5eocina/GiftUIFailureCore.swiftdoc",
+      "expected_sha256": "59356d4bca216fc88757be9b711f72d33c4b59d209327c8dcaedb92f7063fbbf",
+      "actual_sha256": "59356d4bca216fc88757be9b711f72d33c4b59d209327c8dcaedb92f7063fbbf",
+      "matches": true,
+      "bytes": 384
+    },
+    {
+      "kind": "host-artifact",
+      "path": ".build/contracts/p08-scoped-host-c5eocina/generator-missing-models.maximum_owning_tickets.log",
+      "expected_sha256": "cc784af26b31bcf9d09e1e04c83286c1498ec50df05c0130a1e9ddadf55a5a53",
+      "actual_sha256": "cc784af26b31bcf9d09e1e04c83286c1498ec50df05c0130a1e9ddadf55a5a53",
+      "matches": true,
+      "bytes": 75
+    },
+    {
+      "kind": "host-artifact",
+      "path": ".build/contracts/p08-scoped-host-c5eocina/GiftUIDisplayCore.o",
+      "expected_sha256": "0f5baaa27134b7360af4fd97720b68f9d91a0df793eddaeaa556682d6e8067f1",
+      "actual_sha256": "0f5baaa27134b7360af4fd97720b68f9d91a0df793eddaeaa556682d6e8067f1",
+      "matches": true,
+      "bytes": 23896
+    },
+    {
+      "kind": "host-artifact",
+      "path": ".build/contracts/p08-scoped-host-c5eocina/GiftUIBackendIntegration.swiftsourceinfo",
+      "expected_sha256": "1079047880ce90fb4292031fc6f67dab4a1da18ba152ca594a54bdc87d3a2978",
+      "actual_sha256": "1079047880ce90fb4292031fc6f67dab4a1da18ba152ca594a54bdc87d3a2978",
+      "matches": true,
+      "bytes": 33552
+    },
+    {
+      "kind": "host-artifact",
+      "path": ".build/contracts/p08-scoped-host-c5eocina/GiftUIHostConfiguration.swiftdoc",
+      "expected_sha256": "518543d8aa4befbf770cb35d98a488b3f33cb089a3e555aa3cd52a94dfe7dab0",
+      "actual_sha256": "518543d8aa4befbf770cb35d98a488b3f33cb089a3e555aa3cd52a94dfe7dab0",
+      "matches": true,
+      "bytes": 784
+    },
+    {
+      "kind": "host-artifact",
+      "path": ".build/contracts/p08-scoped-host-c5eocina/generator-payload-overflow.log",
+      "expected_sha256": "6ffb4dba8968233da1c37e2256db88dcc782882b04c8ec9685d1490e2862f630",
+      "actual_sha256": "6ffb4dba8968233da1c37e2256db88dcc782882b04c8ec9685d1490e2862f630",
+      "matches": true,
+      "bytes": 94
+    },
+    {
+      "kind": "host-artifact",
+      "path": ".build/contracts/p08-scoped-host-c5eocina/generator-missing-models.maximum_frame_pins.log",
+      "expected_sha256": "1f490baed5e56e0d87a875ad5f96478a72dc16b1de55ce14705c472f49f64597",
+      "actual_sha256": "1f490baed5e56e0d87a875ad5f96478a72dc16b1de55ce14705c472f49f64597",
+      "matches": true,
+      "bytes": 71
+    },
+    {
+      "kind": "host-artifact",
+      "path": ".build/contracts/p08-scoped-host-c5eocina/GiftUIHostConfiguration.swiftmodule",
+      "expected_sha256": "c9556d09ac3f5c0de4ef53dcd06a6e6abf51bfe3fea2b266de3134c6cfa92b4f",
+      "actual_sha256": "c9556d09ac3f5c0de4ef53dcd06a6e6abf51bfe3fea2b266de3134c6cfa92b4f",
+      "matches": true,
+      "bytes": 512208
+    },
+    {
+      "kind": "host-artifact",
+      "path": ".build/contracts/p08-scoped-host-c5eocina/GiftUIBackendIntegration.swiftdoc",
+      "expected_sha256": "0cce2bc0737aedbe37bba83cc6c16f427c5b904b03f177f17bbfaed6af511f57",
+      "actual_sha256": "0cce2bc0737aedbe37bba83cc6c16f427c5b904b03f177f17bbfaed6af511f57",
+      "matches": true,
+      "bytes": 1280
+    },
+    {
+      "kind": "host-artifact",
+      "path": ".build/contracts/p08-scoped-host-c5eocina/RuntimeCycleProbe.swiftsourceinfo",
+      "expected_sha256": "285afe4b391b68bc5fd2604dab298c44d61c482ab06aed8f19d6949988141e1a",
+      "actual_sha256": "285afe4b391b68bc5fd2604dab298c44d61c482ab06aed8f19d6949988141e1a",
+      "matches": true,
+      "bytes": 148704
+    },
+    {
+      "kind": "host-artifact",
+      "path": ".build/contracts/p08-scoped-host-c5eocina/scoped-host",
+      "expected_sha256": "f8adac5405edb8df2e5e5c9c430e696041c2e14d711729e014b129092c76c947",
+      "actual_sha256": "f8adac5405edb8df2e5e5c9c430e696041c2e14d711729e014b129092c76c947",
+      "matches": true,
+      "bytes": 4697272
+    },
+    {
+      "kind": "host-artifact",
+      "path": ".build/contracts/p08-scoped-host-c5eocina/RuntimeCycleProbe.abi.json",
+      "expected_sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+      "actual_sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+      "matches": true,
+      "bytes": 149
+    },
+    {
+      "kind": "host-artifact",
+      "path": ".build/contracts/p08-scoped-host-c5eocina/missing-requiredIdentityComponentsPerKey.swift",
+      "expected_sha256": "0d583b1e90ebe034c0cf8b93883a370e4ee9d006311821684ae2535a4ef502fa",
+      "actual_sha256": "0d583b1e90ebe034c0cf8b93883a370e4ee9d006311821684ae2535a4ef502fa",
+      "matches": true,
+      "bytes": 5091
+    },
+    {
+      "kind": "host-artifact",
+      "path": ".build/contracts/p08-scoped-host-c5eocina/RuntimeCycleProbe.o",
+      "expected_sha256": "2a261c7bc249222e765cea74c615ec299e0a25cccc46c294853939d7592197e4",
+      "actual_sha256": "2a261c7bc249222e765cea74c615ec299e0a25cccc46c294853939d7592197e4",
+      "matches": true,
+      "bytes": 1065376
+    },
+    {
+      "kind": "host-artifact",
+      "path": ".build/contracts/p08-scoped-host-c5eocina/P08ScopedHostProbe.swiftdoc",
+      "expected_sha256": "8cca50703e7932dc546750a6e7f91d5af5a16e89aa492f8eec46f54cfee69624",
+      "actual_sha256": "8cca50703e7932dc546750a6e7f91d5af5a16e89aa492f8eec46f54cfee69624",
+      "matches": true,
+      "bytes": 384
+    },
+    {
+      "kind": "host-artifact",
+      "path": ".build/contracts/p08-scoped-host-c5eocina/execute.log",
+      "expected_sha256": "499b09af9db29921cad3b266770b81fa47829e35911b3eb9e6ae4c759ef698e0",
+      "actual_sha256": "499b09af9db29921cad3b266770b81fa47829e35911b3eb9e6ae4c759ef698e0",
+      "matches": true,
+      "bytes": 5536
+    },
+    {
+      "kind": "host-artifact",
+      "path": ".build/contracts/p08-scoped-host-c5eocina/GiftUIFailureCore.abi.json",
+      "expected_sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+      "actual_sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+      "matches": true,
+      "bytes": 149
+    },
+    {
+      "kind": "host-artifact",
+      "path": ".build/contracts/p08-scoped-host-c5eocina/GiftUIBackendIntegration.o",
+      "expected_sha256": "696346a79830f09e0a601fd4968fd40cc7d8f10eee7fe1526bc88123982d62ac",
+      "actual_sha256": "696346a79830f09e0a601fd4968fd40cc7d8f10eee7fe1526bc88123982d62ac",
+      "matches": true,
+      "bytes": 153080
+    },
+    {
+      "kind": "host-artifact",
+      "path": ".build/contracts/p08-scoped-host-c5eocina/GiftUIHostConfiguration.o",
+      "expected_sha256": "45be26d761833237a5d132b557adb0e4fa55c77cb1a3347277610d494488a855",
+      "actual_sha256": "45be26d761833237a5d132b557adb0e4fa55c77cb1a3347277610d494488a855",
+      "matches": true,
+      "bytes": 715952
+    },
+    {
+      "kind": "host-artifact",
+      "path": ".build/contracts/p08-scoped-host-c5eocina/copy-host.log",
+      "expected_sha256": "88f4af964ca20583c3f746f9873df944ed72d1fa3c86fb1a402556bb8b7ff139",
+      "actual_sha256": "88f4af964ca20583c3f746f9873df944ed72d1fa3c86fb1a402556bb8b7ff139",
+      "matches": true,
+      "bytes": 466
+    },
+    {
+      "kind": "host-artifact",
+      "path": ".build/contracts/p08-scoped-host-c5eocina/scoped-host-probe.log",
+      "expected_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "actual_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true,
+      "bytes": 0
+    },
+    {
+      "kind": "host-artifact",
+      "path": ".build/contracts/p08-scoped-host-c5eocina/missing-requiredPathEntries.swift",
+      "expected_sha256": "9dd734752e14e999d30bf814b3b2153aab2d389ef34d55a20009bfa28b1f4eb6",
+      "actual_sha256": "9dd734752e14e999d30bf814b3b2153aab2d389ef34d55a20009bfa28b1f4eb6",
+      "matches": true,
+      "bytes": 5125
+    },
+    {
+      "kind": "host-artifact",
+      "path": ".build/contracts/p08-scoped-host-c5eocina/GiftUIHostConfiguration.abi.json",
+      "expected_sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+      "actual_sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+      "matches": true,
+      "bytes": 149
+    },
+    {
+      "kind": "host-artifact",
+      "path": ".build/contracts/p08-scoped-host-c5eocina/GiftUIDisplayCore.swiftsourceinfo",
+      "expected_sha256": "89c32bfc5622a2a9f12f822c2dd735df8fd50fb4551de9a259ef45b5c73e363c",
+      "actual_sha256": "89c32bfc5622a2a9f12f822c2dd735df8fd50fb4551de9a259ef45b5c73e363c",
+      "matches": true,
+      "bytes": 11736
+    },
+    {
+      "kind": "host-artifact",
+      "path": ".build/contracts/p08-scoped-host-c5eocina/activation-callback.log",
+      "expected_sha256": "2ffc50f650dbab00d4463e4bca108d4cf6dd23af72cbd770ce7aa1fb1432dca7",
+      "actual_sha256": "2ffc50f650dbab00d4463e4bca108d4cf6dd23af72cbd770ce7aa1fb1432dca7",
+      "matches": true,
+      "bytes": 8903
+    },
+    {
+      "kind": "host-artifact",
+      "path": ".build/contracts/p08-scoped-host-c5eocina/generator-missing-records.maximum_path_child_fanout.log",
+      "expected_sha256": "6af5d41ba645e716216614b6bbaa87cc67ddaa089f7010344cdd54c49f60efd0",
+      "actual_sha256": "6af5d41ba645e716216614b6bbaa87cc67ddaa089f7010344cdd54c49f60efd0",
+      "matches": true,
+      "bytes": 79
+    },
+    {
+      "kind": "host-artifact",
+      "path": ".build/contracts/p08-scoped-host-c5eocina/generator-missing-records.maximum_path_entries.log",
+      "expected_sha256": "eccb22c6deb9e5dbb9d23edebf4b25d10b2022f9a1e247eb648ab881c94c75c9",
+      "actual_sha256": "eccb22c6deb9e5dbb9d23edebf4b25d10b2022f9a1e247eb648ab881c94c75c9",
+      "matches": true,
+      "bytes": 74
+    },
+    {
+      "kind": "host-artifact",
+      "path": ".build/contracts/p08-scoped-host-c5eocina/GiftUICapabilities.swiftsourceinfo",
+      "expected_sha256": "a269048819bbf11d33c0bfb4bb6ac7e3b28da1c6b2c51e05bf24b8048a6bf98a",
+      "actual_sha256": "a269048819bbf11d33c0bfb4bb6ac7e3b28da1c6b2c51e05bf24b8048a6bf98a",
+      "matches": true,
+      "bytes": 47936
+    },
+    {
+      "kind": "host-artifact",
+      "path": ".build/contracts/p08-scoped-host-c5eocina/missing-requiredPathEntries.log",
+      "expected_sha256": "04d11450f960f594fb79781069751922a5ea5bf6752538e075f0bcee2a52f001",
+      "actual_sha256": "04d11450f960f594fb79781069751922a5ea5bf6752538e075f0bcee2a52f001",
+      "matches": true,
+      "bytes": 2649
+    },
+    {
+      "kind": "host-artifact",
+      "path": ".build/contracts/p08-scoped-host-c5eocina/generator-missing-models.maximum_model_slots.log",
+      "expected_sha256": "423cc506f5da6b88183aa2c44326025e2a0b15cfe7884ec47090cf4695a715d8",
+      "actual_sha256": "423cc506f5da6b88183aa2c44326025e2a0b15cfe7884ec47090cf4695a715d8",
+      "matches": true,
+      "bytes": 72
+    },
+    {
+      "kind": "host-artifact",
+      "path": ".build/contracts/p08-scoped-host-c5eocina/GiftUIDisplayCore.swiftmodule",
+      "expected_sha256": "71a5cbb5d9024428b31a166bda49c8ba43db465e7a1b3c1410c55331be4b6f71",
+      "actual_sha256": "71a5cbb5d9024428b31a166bda49c8ba43db465e7a1b3c1410c55331be4b6f71",
+      "matches": true,
+      "bytes": 44980
+    },
+    {
+      "kind": "host-artifact",
+      "path": ".build/contracts/p08-scoped-host-c5eocina/GiftUIBackendIntegration.abi.json",
+      "expected_sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+      "actual_sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+      "matches": true,
+      "bytes": 149
+    },
+    {
+      "kind": "host-artifact",
+      "path": ".build/contracts/p08-scoped-host-c5eocina/GiftUISurfaceCore.swiftmodule",
+      "expected_sha256": "ebfeb04dfebf4e6c2c5f1d36d50c670968f482fb5f1161362f686545b79373b1",
+      "actual_sha256": "ebfeb04dfebf4e6c2c5f1d36d50c670968f482fb5f1161362f686545b79373b1",
+      "matches": true,
+      "bytes": 32204
+    },
+    {
+      "kind": "host-artifact",
+      "path": ".build/contracts/p08-scoped-host-c5eocina/GiftUICapabilities.abi.json",
+      "expected_sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+      "actual_sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+      "matches": true,
+      "bytes": 149
+    },
+    {
+      "kind": "host-artifact",
+      "path": ".build/contracts/p08-scoped-host-c5eocina/activation-join.log",
+      "expected_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "actual_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true,
+      "bytes": 0
+    },
+    {
+      "kind": "host-artifact",
+      "path": ".build/contracts/p08-scoped-host-c5eocina/GiftUIDisplayCore.log",
+      "expected_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "actual_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true,
+      "bytes": 0
+    },
+    {
+      "kind": "host-artifact",
+      "path": ".build/contracts/p08-scoped-host-c5eocina/missing-requiredPathChildFanout.log",
+      "expected_sha256": "669a106b93c987f498be7b1c2362ed86e3495040065eac01da2f68fc9fc7392a",
+      "actual_sha256": "669a106b93c987f498be7b1c2362ed86e3495040065eac01da2f68fc9fc7392a",
+      "matches": true,
+      "bytes": 2702
+    },
+    {
+      "kind": "host-artifact",
+      "path": ".build/contracts/p08-scoped-host-c5eocina/RuntimeCycleProbe.swiftmodule",
+      "expected_sha256": "08fcc856afe345f9cc1eb4436aa9e0860c397437ef4c0be75461e5bbaffdbc7d",
+      "actual_sha256": "08fcc856afe345f9cc1eb4436aa9e0860c397437ef4c0be75461e5bbaffdbc7d",
+      "matches": true,
+      "bytes": 649252
+    },
+    {
+      "kind": "host-artifact",
+      "path": ".build/contracts/p08-scoped-host-c5eocina/commands.txt",
+      "expected_sha256": "02915e71136efba2b0ed94cb2f9441f6f034184dfaa5b51ec1cd3458b4251717",
+      "actual_sha256": "02915e71136efba2b0ed94cb2f9441f6f034184dfaa5b51ec1cd3458b4251717",
+      "matches": true,
+      "bytes": 48995
+    },
+    {
+      "kind": "host-artifact",
+      "path": ".build/contracts/p08-scoped-host-c5eocina/GiftUIRasterCore.swiftsourceinfo",
+      "expected_sha256": "7f4db9880f52b223c60582fa0b93be07303ee29794be165ed60b21da7d6e2768",
+      "actual_sha256": "7f4db9880f52b223c60582fa0b93be07303ee29794be165ed60b21da7d6e2768",
+      "matches": true,
+      "bytes": 38368
+    },
+    {
+      "kind": "host-artifact",
+      "path": ".build/contracts/p08-scoped-host-c5eocina/escape-host.swift",
+      "expected_sha256": "40d263c7289b9c7ad9dba0c77cd157a12ed77924e09b4742bd32c8f69bb3d89a",
+      "actual_sha256": "40d263c7289b9c7ad9dba0c77cd157a12ed77924e09b4742bd32c8f69bb3d89a",
+      "matches": true,
+      "bytes": 123
+    },
+    {
+      "kind": "host-artifact",
+      "path": ".build/contracts/p08-scoped-host-c5eocina/GiftUIRasterCore.log",
+      "expected_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "actual_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true,
+      "bytes": 0
+    },
+    {
+      "kind": "host-artifact",
+      "path": ".build/contracts/p08-scoped-host-c5eocina/GiftUIFailureCore.swiftsourceinfo",
+      "expected_sha256": "9d732c7ac46434874c988bda7f6972ee7a7afa59beb085ddf0443f966b9c86f1",
+      "actual_sha256": "9d732c7ac46434874c988bda7f6972ee7a7afa59beb085ddf0443f966b9c86f1",
+      "matches": true,
+      "bytes": 30748
+    },
+    {
+      "kind": "host-artifact",
+      "path": ".build/contracts/p08-scoped-host-c5eocina/GiftUICapabilities.o",
+      "expected_sha256": "81e92347d21112f33f2609005e4f41ca2196b7b4d19fb088f24ee884512301b3",
+      "actual_sha256": "81e92347d21112f33f2609005e4f41ca2196b7b4d19fb088f24ee884512301b3",
+      "matches": true,
+      "bytes": 226576
+    },
+    {
+      "kind": "host-artifact",
+      "path": ".build/contracts/p08-scoped-host-c5eocina/Main.swift",
+      "expected_sha256": "9fceda7ae0b55ab2ad6569c26c09a3619e4862502c9561a171b52c5bf51f294e",
+      "actual_sha256": "9fceda7ae0b55ab2ad6569c26c09a3619e4862502c9561a171b52c5bf51f294e",
+      "matches": true,
+      "bytes": 261
+    },
+    {
+      "kind": "host-artifact",
+      "path": ".build/contracts/p08-scoped-host-c5eocina/GiftUICapabilities.swiftmodule",
+      "expected_sha256": "2154b7cd248e8a93e309f4508aee7798275c35df6981876e0871139232814faf",
+      "actual_sha256": "2154b7cd248e8a93e309f4508aee7798275c35df6981876e0871139232814faf",
+      "matches": true,
+      "bytes": 320112
+    },
+    {
+      "kind": "host-artifact",
+      "path": ".build/contracts/p08-scoped-host-c5eocina/P08ScopedHostProbe.swiftmodule",
+      "expected_sha256": "7190229b62f23ead0e4129bda5504a15652e2335f952334e70ad1f54b2180096",
+      "actual_sha256": "7190229b62f23ead0e4129bda5504a15652e2335f952334e70ad1f54b2180096",
+      "matches": true,
+      "bytes": 67228
+    },
+    {
+      "kind": "host-artifact",
+      "path": ".build/contracts/p08-scoped-host-c5eocina/generator-missing-records.maximum_payload_bytes_per_bank.log",
+      "expected_sha256": "3b49a4af313d7c294b071489d82096781e3aaf9cec65eb1e0b03fe5228aed95a",
+      "actual_sha256": "3b49a4af313d7c294b071489d82096781e3aaf9cec65eb1e0b03fe5228aed95a",
+      "matches": true,
+      "bytes": 84
+    },
+    {
+      "kind": "host-artifact",
+      "path": ".build/contracts/p08-scoped-host-c5eocina/GiftUIHostConfiguration.swiftsourceinfo",
+      "expected_sha256": "82441a932c0a5805bd9e935c097425cbb4add480b3fdc1bc3fc1a5d58e6fe449",
+      "actual_sha256": "82441a932c0a5805bd9e935c097425cbb4add480b3fdc1bc3fc1a5d58e6fe449",
+      "matches": true,
+      "bytes": 145304
+    },
+    {
+      "kind": "host-artifact",
+      "path": ".build/contracts/p08-scoped-host-c5eocina/missing-requiredPathDepth.log",
+      "expected_sha256": "b81d10e086966f9534e8cadf4c31526f836fdb953262a917b3bf8af405cea4eb",
+      "actual_sha256": "b81d10e086966f9534e8cadf4c31526f836fdb953262a917b3bf8af405cea4eb",
+      "matches": true,
+      "bytes": 2695
+    },
+    {
+      "kind": "host-artifact",
+      "path": ".build/contracts/p08-scoped-host-c5eocina/generator-missing-records.maximum_interaction_identity_components.log",
+      "expected_sha256": "ab945fb43663136500436da1b897e096d36fdbff3482b2901f090d4603c321f9",
+      "actual_sha256": "ab945fb43663136500436da1b897e096d36fdbff3482b2901f090d4603c321f9",
+      "matches": true,
+      "bytes": 93
+    },
+    {
+      "kind": "host-artifact",
+      "path": ".build/contracts/p08-scoped-host-c5eocina/GiftUISurfaceCore.abi.json",
+      "expected_sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+      "actual_sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+      "matches": true,
+      "bytes": 149
+    },
+    {
+      "kind": "host-artifact",
+      "path": ".build/contracts/p08-scoped-host-c5eocina/GiftUIDisplayCore.swiftdoc",
+      "expected_sha256": "b8966a9094804b51db0fc90c9e785961c89b0a9f5f4a90587370efd2739089ca",
+      "actual_sha256": "b8966a9094804b51db0fc90c9e785961c89b0a9f5f4a90587370efd2739089ca",
+      "matches": true,
+      "bytes": 384
+    },
+    {
+      "kind": "host-artifact",
+      "path": ".build/contracts/p08-scoped-host-c5eocina/missing-requiredInteractionIdentityComponents.swift",
+      "expected_sha256": "8682e1f744c73d4068974c1135e127d30dd0f894d3941fb7a4d6f55f4cf3d93e",
+      "actual_sha256": "8682e1f744c73d4068974c1135e127d30dd0f894d3941fb7a4d6f55f4cf3d93e",
+      "matches": true,
+      "bytes": 5089
+    },
+    {
+      "kind": "host-artifact",
+      "path": ".build/contracts/p08-scoped-host-c5eocina/generator-path-overflow.log",
+      "expected_sha256": "75cdca8c9a6c70f1e2e92d601c72605d45a8c31894dce27fd47ada54517c65c5",
+      "actual_sha256": "75cdca8c9a6c70f1e2e92d601c72605d45a8c31894dce27fd47ada54517c65c5",
+      "matches": true,
+      "bytes": 84
+    },
+    {
+      "kind": "host-artifact",
+      "path": ".build/contracts/p08-scoped-host-c5eocina/GiftUICapabilities.log",
+      "expected_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "actual_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true,
+      "bytes": 0
+    },
+    {
+      "kind": "host-artifact",
+      "path": ".build/contracts/p08-scoped-host-c5eocina/GiftUIBackendIntegration.swiftmodule",
+      "expected_sha256": "d07e1ef9aefd8a91aca96a834c77255611f0fba50eabd7ecf31ba0f4e00bf19d",
+      "actual_sha256": "d07e1ef9aefd8a91aca96a834c77255611f0fba50eabd7ecf31ba0f4e00bf19d",
+      "matches": true,
+      "bytes": 132748
+    },
+    {
+      "kind": "host-artifact",
+      "path": ".build/contracts/p08-scoped-host-c5eocina/link.log",
+      "expected_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "actual_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true,
+      "bytes": 0
+    },
+    {
+      "kind": "host-artifact",
+      "path": ".build/contracts/p08-scoped-host-c5eocina/GiftUISurfaceCore.o",
+      "expected_sha256": "869006e1fbee9c802dfe5b26ad176ea1727d110c0a994663d919eb2726bcb36c",
+      "actual_sha256": "869006e1fbee9c802dfe5b26ad176ea1727d110c0a994663d919eb2726bcb36c",
+      "matches": true,
+      "bytes": 12144
+    },
+    {
+      "kind": "host-artifact",
+      "path": ".build/contracts/p08-scoped-host-c5eocina/P08ScopedHostProbe.swiftsourceinfo",
+      "expected_sha256": "8b306c9b72acda4f8f2a9cb3ad009558a3219bc88c533ab952129ef730d9e58b",
+      "actual_sha256": "8b306c9b72acda4f8f2a9cb3ad009558a3219bc88c533ab952129ef730d9e58b",
+      "matches": true,
+      "bytes": 10176
+    },
+    {
+      "kind": "host-artifact",
+      "path": ".build/contracts/p08-scoped-host-c5eocina/GiftUIFailureCore.swiftmodule",
+      "expected_sha256": "ce7ffbc90a1067d01bc0eabf58048af72941c51cc2325a3573dcd2a30e25b465",
+      "actual_sha256": "ce7ffbc90a1067d01bc0eabf58048af72941c51cc2325a3573dcd2a30e25b465",
+      "matches": true,
+      "bytes": 179604
+    },
+    {
+      "kind": "host-artifact",
+      "path": ".build/contracts/p08-scoped-host-c5eocina/GiftUIFailureCore.log",
+      "expected_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "actual_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true,
+      "bytes": 0
+    },
+    {
+      "kind": "host-artifact",
+      "path": ".build/contracts/p08-scoped-host-c5eocina/GiftUIRasterCore.swiftmodule",
+      "expected_sha256": "98f2c71f1bcbfe3e5a55f28974f4563d3abf9159fc476ae84ca1a30da5d96301",
+      "actual_sha256": "98f2c71f1bcbfe3e5a55f28974f4563d3abf9159fc476ae84ca1a30da5d96301",
+      "matches": true,
+      "bytes": 144024
+    },
+    {
+      "kind": "host-artifact",
+      "path": ".build/contracts/p08-scoped-host-c5eocina/GiftUIFailureCore.o",
+      "expected_sha256": "e1445864b4b1d22db7364f8b286abb4e3ab2da29cf5b0bde0c662e904cebf957",
+      "actual_sha256": "e1445864b4b1d22db7364f8b286abb4e3ab2da29cf5b0bde0c662e904cebf957",
+      "matches": true,
+      "bytes": 127672
+    },
+    {
+      "kind": "host-artifact",
+      "path": ".build/contracts/p08-scoped-host-c5eocina/GiftUISurfaceCore.log",
+      "expected_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "actual_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true,
+      "bytes": 0
+    },
+    {
+      "kind": "host-artifact",
+      "path": ".build/contracts/p08-scoped-host-c5eocina/GiftUIRasterCore.abi.json",
+      "expected_sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+      "actual_sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+      "matches": true,
+      "bytes": 149
+    },
+    {
+      "kind": "host-artifact",
+      "path": ".build/contracts/p08-scoped-host-c5eocina/missing-requiredIdentityComponentsPerKey.log",
+      "expected_sha256": "67b7ba481387eb27f3f341772865795300420743728fedb799d38dd7797dcf59",
+      "actual_sha256": "67b7ba481387eb27f3f341772865795300420743728fedb799d38dd7797dcf59",
+      "matches": true,
+      "bytes": 2743
+    },
+    {
+      "kind": "compiler-file",
+      "path": ".toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc",
+      "expected_sha256": "79ae5c26645489fb783ae980f0f1bdae810f90fb180c9ac39808807b65e9fd69",
+      "actual_sha256": "79ae5c26645489fb783ae980f0f1bdae810f90fb180c9ac39808807b65e9fd69",
+      "matches": true,
+      "bytes": 230720
+    },
+    {
+      "kind": "host-compiler-receipt",
+      "matches": true
+    },
+    {
+      "kind": "runtime-core-receipt",
+      "path": ".build/contracts/spec-006-rfc-014-swift64/b694e911d7d7658a-gn53u2vi/macos-static/result.json",
+      "expected_sha256": "4345209f3f2d58e86ea2fdf3b45d15ee5d1da00cce275b964e156ba353c88793",
+      "actual_sha256": "4345209f3f2d58e86ea2fdf3b45d15ee5d1da00cce275b964e156ba353c88793",
+      "matches": true,
+      "bytes": 15197
+    },
+    {
+      "kind": "host-runtime-receipt",
+      "path": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/result.json",
+      "expected_sha256": "39772d9e2cc7d70f47b82970dd1b89ddd3236274ccbb57cf9c547ce4aeaedf69",
+      "actual_sha256": "39772d9e2cc7d70f47b82970dd1b89ddd3236274ccbb57cf9c547ce4aeaedf69",
+      "matches": true,
+      "bytes": 134477
+    },
+    {
+      "kind": "macro-swift-syntax-library",
+      "path": "/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/prebuilts/swift-syntax/603.0.2/swift-6.4.0-RELEASE-macos_universal-MacroSupport/lib/libMacroSupport.a",
+      "expected_sha256": "63b1b2670bd94e946bf660aeeda8efccacfce666316cf205e3bbbe9bfbbda308",
+      "actual_sha256": "63b1b2670bd94e946bf660aeeda8efccacfce666316cf205e3bbbe9bfbbda308",
+      "matches": true,
+      "bytes": 61928488
+    },
+    {
+      "kind": "explicit-rebuild-exception-current-identity",
+      "path": "Sources/GiftUIExecution/ExecutionAdmissionController.swift",
+      "expected_sha256": "0aea5ab996e95104ce476aeb7188cc6bfde37d31f6db51b5ee10ae241524d4e2",
+      "actual_sha256": "0aea5ab996e95104ce476aeb7188cc6bfde37d31f6db51b5ee10ae241524d4e2",
+      "matches": true
+    },
+    {
+      "kind": "explicit-rebuild-exception-current-identity",
+      "path": "Sources/GiftUIExecution/RecordingPresentationPendingCoordinator.swift",
+      "expected_sha256": "45ce481da6c05b8509f596d6e2a9eac9961c261afe6cc6401b6035772c9370ed",
+      "actual_sha256": "45ce481da6c05b8509f596d6e2a9eac9961c261afe6cc6401b6035772c9370ed",
+      "matches": true
+    },
+    {
+      "kind": "explicit-rebuild-exception-current-identity",
+      "path": "Sources/GiftUISemanticCore/SemanticRecordStore.swift",
+      "expected_sha256": "d106f913937b30646aac5006789bf12d8b7530b6b9497cbd861a325038415a37",
+      "actual_sha256": "d106f913937b30646aac5006789bf12d8b7530b6b9497cbd861a325038415a37",
+      "matches": true
+    },
+    {
+      "kind": "explicit-rebuild-exception-current-identity",
+      "path": "Sources/GiftUIHostConfiguration/HostScheduledOpportunityController.swift",
+      "expected_sha256": "467525eaaaac20ac9a891e973f1d0a34cc3c037a7eb934448fa968f47a260838",
+      "actual_sha256": "467525eaaaac20ac9a891e973f1d0a34cc3c037a7eb934448fa968f47a260838",
+      "matches": true
+    }
+  ],
+  "passed": true,
+  "checks_count": 496
+}

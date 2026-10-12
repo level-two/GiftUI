@@ -1,0 +1,19 @@
+{
+  "source_commit": "102382d7b2c8af48db932c8695eacd67747aac56",
+  "source_dirty_at_invocation": "Evidence/progress only; no source changes after B02 commit.",
+  "command": [
+    "python3",
+    "scripts/contracts/check-spec-015-counter.py",
+    "--runtime-build",
+    ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static"
+  ],
+  "cwd": "/Users/eugene/work/GiftUI",
+  "started_utc": "2026-10-12T11:02:32.016536+00:00",
+  "historical_guard": "2/2 closed",
+  "B03_native_attempt": "1/1 consumed; no repair/rerun",
+  "exit_status": 0,
+  "finished_utc": "2026-10-12T11:04:03.848576+00:00",
+  "new_build_directories": [
+    ".build/contracts/p08-counter-s6e2ayc7"
+  ]
+}
