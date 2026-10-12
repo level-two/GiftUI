@@ -34,3 +34,14 @@ local repair if supported, validate actual image/resources and obtain independen
 review. Escalate genuine contract/scope choices to the user. Historical helper2/2
 and B031/1 stay closed; no same-blocker exhaustion is claimed. Earlier failures
 were narrowed; no scope/resource relaxation is authorized.
+
+
+## Sequential diagnostic continuation — 2026-10-12
+
+[Exact frozen diagnosis](diagnosis/result.md) records four isolated link diagnostics,
+all exit1/no ELF. Orphan reporting alone does not explain the failure; exact cause
+remains unresolved. No compiler, recipe/source/config repair or hardware action.
+Parent stopped further variants pending independent Strong review. Frozen333object/
+archive/build-command identities and partial maps/logs accompany the result.
+Final nRF ABI/zeroheap/RAM/flash/gross-stack evidence and R07/P08 exit remain open;
+historicalhelper2/2+B031/1 closed, zero production repairs in this continuation.

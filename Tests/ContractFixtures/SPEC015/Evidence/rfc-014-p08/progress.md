@@ -1,6 +1,18 @@
 # RFC-014 P08 execution receipt — 2026-10-11
 
-**Current checkpoint — 2026-10-12: single B03 native attempt PASS; separate Strong result review pending.**
+**Current P08 checkpoint — R07 residual nRF link diagnosis stopped for independent review, 2026-10-12.**
+Four current R06 counter routes pass; Pi early image linked with its qualified
+ARMv6/VFP/resource result. Corrected nRF firmware recipe attempt2 compiles24owners
+but prelink exits1. [Frozen sequential diagnosis](remaining-implementation/r07-firmware-recipe/diagnosis/result.md)
+records four isolated link diagnostics, all exit1/no ELF; orphan reporting mode
+alone does not explain the failure, exact cause unresolved. No compiler/source/
+recipe/config repair in this continuation. Further variants stopped by parent
+pending separate Strong review. Final nRF ABI/zeroheap/RAM/flash/gross-stack and
+independent P08 exit remain open. Historicalhelper2/2+B031/1 closed; zero production
+repairs this continuation. SPEC015 implementing/planactive/T8.1/P08 open;
+P09–P12 pending, no hardware action or target/image-fit claim.
+
+**Historical checkpoint — 2026-10-12: single B03 native attempt PASS; separate Strong result review pending.**
 [Exact frozen B03 outcome](remaining-implementation/option-b/b03/result.md):
 `102382d7` source, `.build/contracts/p08-counter-s6e2ayc7`, driver exit0,
 1,348,673 reported assertions/zero failures and23/23 checks, including the two

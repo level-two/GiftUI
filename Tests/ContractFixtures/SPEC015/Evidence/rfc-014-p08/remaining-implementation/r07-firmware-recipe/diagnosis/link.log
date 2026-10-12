@@ -1,0 +1,1091 @@
+Using built-in specs.
+Reading specs from /Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/lib/picolibc.specs
+rename spec link to picolibc_link
+rename spec cpp to picolibc_cpp
+rename spec cc1 to picolibc_cc1
+rename spec cc1plus to picolibc_cc1plus
+COLLECT_GCC=/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/arm-zephyr-eabi-gcc
+COLLECT_LTO_WRAPPER=/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../libexec/gcc/arm-zephyr-eabi/12.2.0/lto-wrapper
+Target: arm-zephyr-eabi
+Configured with: /Volumes/Workspace/build/.build/arm-zephyr-eabi/src/gcc/configure --build=aarch64-build_apple-darwin23.6.0 --host=aarch64-build_apple-darwin23.6.0 --target=arm-zephyr-eabi --prefix=/Volumes/Workspace/output/arm-zephyr-eabi --exec_prefix=/Volumes/Workspace/output/arm-zephyr-eabi --with-local-prefix=/Volumes/Workspace/output/arm-zephyr-eabi/arm-zephyr-eabi --with-headers=/Volumes/Workspace/output/arm-zephyr-eabi/arm-zephyr-eabi/include --with-newlib --enable-threads=no --disable-shared --with-pkgversion='Zephyr SDK 0.17.4' --with-bugurl=https://github.com/zephyrproject-rtos/sdk-ng/issues --enable-__cxa_atexit --disable-libgomp --disable-libmudflap --disable-libmpx --disable-libssp --disable-libquadmath --disable-libquadmath-support --disable-libstdcxx-verbose --with-gmp=/Volumes/Workspace/build/.build/arm-zephyr-eabi/buildtools --with-mpfr=/Volumes/Workspace/build/.build/arm-zephyr-eabi/buildtools --with-mpc=/Volumes/Workspace/build/.build/arm-zephyr-eabi/buildtools --with-isl=/Volumes/Workspace/build/.build/arm-zephyr-eabi/buildtools --enable-lto --enable-target-optspace --disable-nls --enable-multiarch --with-multilib-list=rmprofile --enable-languages=c,c++ --with-gnu-ld --with-gnu-as --enable-initfini-array
+Thread model: single
+Supported LTO compression algorithms: zlib
+gcc version 12.2.0 (Zephyr SDK 0.17.4) 
+COMPILER_PATH=/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../libexec/gcc/arm-zephyr-eabi/12.2.0/:/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../libexec/gcc/:/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/
+LIBRARY_PATH=/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/thumb/v7e-m+fp/hard/:/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/lib/thumb/v7e-m+fp/hard/:/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/:/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/:/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/lib/
+COLLECT_GCC_OPTIONS='-gdwarf-4' '-Os' '-o' '/Users/eugene/work/GiftUI/.build/nrf52840/contracts/r07-link-diagnosis/zephyr_pre0.elf' '-T' 'zephyr/linker_zephyr_pre0.cmd' '-L/Users/eugene/work/GiftUI/.build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr' '-fuse-ld=bfd' '-mcpu=cortex-m4' '-mthumb' '-mabi=aapcs' '-mfpu=fpv4-sp-d16' '-mfloat-abi=hard' '-mfp16-format=ieee' '-mtp=soft' '-nostdlib' '-static' '-specs=picolibc.specs' '-D' 'PICOLIBC_DOUBLE_PRINTF_SCANF' '-L/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/thumb/v7e-m+fp/hard' '-v' '-mlibarch=armv7e-m+fp' '-march=armv7e-m+fp' '-dumpdir' '/Users/eugene/work/GiftUI/.build/nrf52840/contracts/r07-link-diagnosis/zephyr_pre0.elf.'
+ /Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../libexec/gcc/arm-zephyr-eabi/12.2.0/collect2 -plugin /Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../libexec/gcc/arm-zephyr-eabi/12.2.0/liblto_plugin.so -plugin-opt=/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../libexec/gcc/arm-zephyr-eabi/12.2.0/lto-wrapper -plugin-opt=-fresolution=/var/folders/38/tc_rs_016rz5chj25dzt9nfm0000gn/T//cc2jtZes.res --defsym=vfprintf=__d_vfprintf --defsym=vfscanf=__d_vfscanf -L/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/../../picolibc/arm-zephyr-eabi/lib/thumb/v7e-m+fp/hard -L/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/../../picolibc/arm-zephyr-eabi/lib -Bstatic -X --gc-sections -fuse-ld=bfd -o /Users/eugene/work/GiftUI/.build/nrf52840/contracts/r07-link-diagnosis/zephyr_pre0.elf -L/Users/eugene/work/GiftUI/.build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr -L/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/thumb/v7e-m+fp/hard -L/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/thumb/v7e-m+fp/hard -L/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/lib/thumb/v7e-m+fp/hard -L/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0 -L/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc -L/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/lib zephyr/CMakeFiles/zephyr_pre0.dir/misc/empty_file.c.obj zephyr/CMakeFiles/offsets.dir/./arch/arm/core/offsets/offsets.c.obj -Map /Users/eugene/work/GiftUI/.build/nrf52840/contracts/r07-link-diagnosis/zephyr_pre0.map --whole-archive app/libapp.a zephyr/libzephyr.a zephyr/arch/common/libarch__common.a zephyr/arch/arch/arm/core/libarch__arm__core.a zephyr/arch/arch/arm/core/cortex_m/libarch__arm__core__cortex_m.a zephyr/arch/arch/arm/core/mpu/libarch__arm__core__mpu.a zephyr/lib/libc/picolibc/liblib__libc__picolibc.a zephyr/lib/libc/common/liblib__libc__common.a zephyr/lib/posix/c_lib_ext/liblib__posix__c_lib_ext.a zephyr/soc/soc/nrf52840/libsoc__nordic.a zephyr/drivers/clock_control/libdrivers__clock_control.a zephyr/drivers/console/libdrivers__console.a zephyr/drivers/gpio/libdrivers__gpio.a zephyr/drivers/pinctrl/libdrivers__pinctrl.a zephyr/drivers/serial/libdrivers__serial.a zephyr/drivers/spi/libdrivers__spi.a zephyr/drivers/timer/libdrivers__timer.a modules/hal_nordic/nrfx/libnrfx.a --no-whole-archive zephyr/kernel/libkernel.a zephyr/arch/common/libisr_tables.a --gc-sections --build-id=none --sort-common=descending --sort-section=alignment -u _OffsetAbsSyms -u _ConfigAbsSyms -X -N --orphan-handling=warn -no-pie --undefined=_sw_isr_table --undefined=_irq_vector_table -lc -lgcc --verbose -T zephyr/linker_zephyr_pre0.cmd
+GNU ld (Zephyr SDK 0.17.4) 2.38
+  Supported emulations:
+   armelf
+opened script file zephyr/linker_zephyr_pre0.cmd
+using external linker script:
+==================================================
+ OUTPUT_FORMAT("elf32-littlearm")
+_region_min_align = 32;
+MEMORY
+    {
+    FLASH (rx) : ORIGIN = (0x0 + 0x0), LENGTH = (1024 * 1024 - 0x0 - 0x0)
+    RAM (wx) : ORIGIN = 0x20000000, LENGTH = (256 * 1K)
+   
+    IDT_LIST (wx) : ORIGIN = 0xFFFF7FFF, LENGTH = 32K
+    }
+ENTRY("__start")
+SECTIONS
+    {
+ .rel.plt :
+ {
+ *(.rel.plt)
+ PROVIDE_HIDDEN (__rel_iplt_start = .);
+ *(.rel.iplt)
+ PROVIDE_HIDDEN (__rel_iplt_end = .);
+ }
+ .rela.plt :
+ {
+ *(.rela.plt)
+ PROVIDE_HIDDEN (__rela_iplt_start = .);
+ *(.rela.iplt)
+ PROVIDE_HIDDEN (__rela_iplt_end = .);
+ }
+ .rel.dyn :
+ {
+ *(.rel.*)
+ }
+ .rela.dyn :
+ {
+ *(.rela.*)
+ }
+    /DISCARD/ :
+ {
+ *(.plt)
+ }
+    /DISCARD/ :
+ {
+ *(.iplt)
+ }
+   
+ __rom_region_start = (0x0 + 0x0);
+    rom_start :
+ {
+HIDDEN(__rom_start_address = .);
+FILL(0x00);
+. += 0x0 - (. - __rom_start_address);
+. = ALIGN(4);
+. = ALIGN( 1 << LOG2CEIL(4 * 32) );
+. = ALIGN( 1 << LOG2CEIL(4 * (16 + 48)) );
+_vector_start = .;
+KEEP(*(.exc_vector_table))
+KEEP(*(".exc_vector_table.*"))
+KEEP(*(.vectors))
+_vector_end = .;
+. = ALIGN(4);
+KEEP(*(.gnu.linkonce.irq_vector_table*))
+ _vector_end = .;
+ } > FLASH
+    text :
+ {
+ __text_region_start = .;
+ *(.text)
+ *(".text.*")
+ *(".TEXT.*")
+ *(.gnu.linkonce.t.*)
+ *(.glue_7t) *(.glue_7) *(.vfp11_veneer) *(.v4_bx)
+ . = ALIGN(4);
+ } > FLASH
+ __text_region_end = .;
+ .ARM.exidx :
+ {
+ __exidx_start = .;
+ *(.ARM.exidx* gnu.linkonce.armexidx.*)
+ __exidx_end = .;
+ } > FLASH
+ __rodata_region_start = .;
+ initlevel :
+ {
+  __init_start = .;
+  __init_EARLY_start = .; KEEP(*(SORT(.z_init_EARLY_P_?_*))); KEEP(*(SORT(.z_init_EARLY_P_??_*))); KEEP(*(SORT(.z_init_EARLY_P_???_*)));
+  __init_PRE_KERNEL_1_start = .; KEEP(*(SORT(.z_init_PRE_KERNEL_1_P_?_*))); KEEP(*(SORT(.z_init_PRE_KERNEL_1_P_??_*))); KEEP(*(SORT(.z_init_PRE_KERNEL_1_P_???_*)));
+  __init_PRE_KERNEL_2_start = .; KEEP(*(SORT(.z_init_PRE_KERNEL_2_P_?_*))); KEEP(*(SORT(.z_init_PRE_KERNEL_2_P_??_*))); KEEP(*(SORT(.z_init_PRE_KERNEL_2_P_???_*)));
+  __init_POST_KERNEL_start = .; KEEP(*(SORT(.z_init_POST_KERNEL_P_?_*))); KEEP(*(SORT(.z_init_POST_KERNEL_P_??_*))); KEEP(*(SORT(.z_init_POST_KERNEL_P_???_*)));
+  __init_APPLICATION_start = .; KEEP(*(SORT(.z_init_APPLICATION_P_?_*))); KEEP(*(SORT(.z_init_APPLICATION_P_??_*))); KEEP(*(SORT(.z_init_APPLICATION_P_???_*)));
+  __init_SMP_start = .; KEEP(*(SORT(.z_init_SMP_P_?_*))); KEEP(*(SORT(.z_init_SMP_P_??_*))); KEEP(*(SORT(.z_init_SMP_P_???_*)));
+  __init_end = .;
+ } > FLASH
+ device_area : { _device_list_start = .; KEEP(*(SORT(._device.static.*_?_*))); KEEP(*(SORT(._device.static.*_??_*))); KEEP(*(SORT(._device.static.*_???_*))); KEEP(*(SORT(._device.static.*_????_*))); KEEP(*(SORT(._device.static.*_?????_*))); _device_list_end = .;; } > FLASH
+ sw_isr_table :
+ {
+  . = ALIGN(4);
+  *(.gnu.linkonce.sw_isr_table*)
+ } > FLASH
+ initlevel_error :
+ {
+  KEEP(*(SORT(.z_init_*)))
+ }
+ ASSERT(SIZEOF(initlevel_error) == 0, "Undefined initialization levels used.")
+ app_shmem_regions : ALIGN_WITH_INPUT
+ {
+  __app_shmem_regions_start = .;
+  KEEP(*(SORT(.app_regions.*)));
+  __app_shmem_regions_end = .;
+ } > FLASH
+ k_p4wq_initparam_area : { _k_p4wq_initparam_list_start = .; KEEP(*(SORT_BY_NAME(._k_p4wq_initparam.static.*))); _k_p4wq_initparam_list_end = .;; } > FLASH
+ _static_thread_data_area : { __static_thread_data_list_start = .; KEEP(*(SORT_BY_NAME(.__static_thread_data.static.*))); __static_thread_data_list_end = .;; } > FLASH
+ device_deps : ALIGN_WITH_INPUT
+ {
+__device_deps_start = .;
+KEEP(*(SORT(.__device_deps_pass2*)));
+__device_deps_end = .;
+ } > FLASH
+gpio_driver_api_area : { _gpio_driver_api_list_start = .; KEEP(*(SORT_BY_NAME(._gpio_driver_api.static.*))); _gpio_driver_api_list_end = .;; } > FLASH
+spi_driver_api_area : { _spi_driver_api_list_start = .; KEEP(*(SORT_BY_NAME(._spi_driver_api.static.*))); _spi_driver_api_list_end = .;; } > FLASH
+shared_irq_driver_api_area : { _shared_irq_driver_api_list_start = .; KEEP(*(SORT_BY_NAME(._shared_irq_driver_api.static.*))); _shared_irq_driver_api_list_end = .;; } > FLASH
+crypto_driver_api_area : { _crypto_driver_api_list_start = .; KEEP(*(SORT_BY_NAME(._crypto_driver_api.static.*))); _crypto_driver_api_list_end = .;; } > FLASH
+adc_driver_api_area : { _adc_driver_api_list_start = .; KEEP(*(SORT_BY_NAME(._adc_driver_api.static.*))); _adc_driver_api_list_end = .;; } > FLASH
+auxdisplay_driver_api_area : { _auxdisplay_driver_api_list_start = .; KEEP(*(SORT_BY_NAME(._auxdisplay_driver_api.static.*))); _auxdisplay_driver_api_list_end = .;; } > FLASH
+bbram_driver_api_area : { _bbram_driver_api_list_start = .; KEEP(*(SORT_BY_NAME(._bbram_driver_api.static.*))); _bbram_driver_api_list_end = .;; } > FLASH
+bt_hci_driver_api_area : { _bt_hci_driver_api_list_start = .; KEEP(*(SORT_BY_NAME(._bt_hci_driver_api.static.*))); _bt_hci_driver_api_list_end = .;; } > FLASH
+can_driver_api_area : { _can_driver_api_list_start = .; KEEP(*(SORT_BY_NAME(._can_driver_api.static.*))); _can_driver_api_list_end = .;; } > FLASH
+cellular_driver_api_area : { _cellular_driver_api_list_start = .; KEEP(*(SORT_BY_NAME(._cellular_driver_api.static.*))); _cellular_driver_api_list_end = .;; } > FLASH
+charger_driver_api_area : { _charger_driver_api_list_start = .; KEEP(*(SORT_BY_NAME(._charger_driver_api.static.*))); _charger_driver_api_list_end = .;; } > FLASH
+clock_control_driver_api_area : { _clock_control_driver_api_list_start = .; KEEP(*(SORT_BY_NAME(._clock_control_driver_api.static.*))); _clock_control_driver_api_list_end = .;; } > FLASH
+comparator_driver_api_area : { _comparator_driver_api_list_start = .; KEEP(*(SORT_BY_NAME(._comparator_driver_api.static.*))); _comparator_driver_api_list_end = .;; } > FLASH
+coredump_driver_api_area : { _coredump_driver_api_list_start = .; KEEP(*(SORT_BY_NAME(._coredump_driver_api.static.*))); _coredump_driver_api_list_end = .;; } > FLASH
+counter_driver_api_area : { _counter_driver_api_list_start = .; KEEP(*(SORT_BY_NAME(._counter_driver_api.static.*))); _counter_driver_api_list_end = .;; } > FLASH
+crc_driver_api_area : { _crc_driver_api_list_start = .; KEEP(*(SORT_BY_NAME(._crc_driver_api.static.*))); _crc_driver_api_list_end = .;; } > FLASH
+dac_driver_api_area : { _dac_driver_api_list_start = .; KEEP(*(SORT_BY_NAME(._dac_driver_api.static.*))); _dac_driver_api_list_end = .;; } > FLASH
+dai_driver_api_area : { _dai_driver_api_list_start = .; KEEP(*(SORT_BY_NAME(._dai_driver_api.static.*))); _dai_driver_api_list_end = .;; } > FLASH
+display_driver_api_area : { _display_driver_api_list_start = .; KEEP(*(SORT_BY_NAME(._display_driver_api.static.*))); _display_driver_api_list_end = .;; } > FLASH
+dma_driver_api_area : { _dma_driver_api_list_start = .; KEEP(*(SORT_BY_NAME(._dma_driver_api.static.*))); _dma_driver_api_list_end = .;; } > FLASH
+edac_driver_api_area : { _edac_driver_api_list_start = .; KEEP(*(SORT_BY_NAME(._edac_driver_api.static.*))); _edac_driver_api_list_end = .;; } > FLASH
+eeprom_driver_api_area : { _eeprom_driver_api_list_start = .; KEEP(*(SORT_BY_NAME(._eeprom_driver_api.static.*))); _eeprom_driver_api_list_end = .;; } > FLASH
+emul_bbram_driver_api_area : { _emul_bbram_driver_api_list_start = .; KEEP(*(SORT_BY_NAME(._emul_bbram_driver_api.static.*))); _emul_bbram_driver_api_list_end = .;; } > FLASH
+fuel_gauge_emul_driver_api_area : { _fuel_gauge_emul_driver_api_list_start = .; KEEP(*(SORT_BY_NAME(._fuel_gauge_emul_driver_api.static.*))); _fuel_gauge_emul_driver_api_list_end = .;; } > FLASH
+emul_sensor_driver_api_area : { _emul_sensor_driver_api_list_start = .; KEEP(*(SORT_BY_NAME(._emul_sensor_driver_api.static.*))); _emul_sensor_driver_api_list_end = .;; } > FLASH
+entropy_driver_api_area : { _entropy_driver_api_list_start = .; KEEP(*(SORT_BY_NAME(._entropy_driver_api.static.*))); _entropy_driver_api_list_end = .;; } > FLASH
+espi_driver_api_area : { _espi_driver_api_list_start = .; KEEP(*(SORT_BY_NAME(._espi_driver_api.static.*))); _espi_driver_api_list_end = .;; } > FLASH
+espi_saf_driver_api_area : { _espi_saf_driver_api_list_start = .; KEEP(*(SORT_BY_NAME(._espi_saf_driver_api.static.*))); _espi_saf_driver_api_list_end = .;; } > FLASH
+flash_driver_api_area : { _flash_driver_api_list_start = .; KEEP(*(SORT_BY_NAME(._flash_driver_api.static.*))); _flash_driver_api_list_end = .;; } > FLASH
+fpga_driver_api_area : { _fpga_driver_api_list_start = .; KEEP(*(SORT_BY_NAME(._fpga_driver_api.static.*))); _fpga_driver_api_list_end = .;; } > FLASH
+fuel_gauge_driver_api_area : { _fuel_gauge_driver_api_list_start = .; KEEP(*(SORT_BY_NAME(._fuel_gauge_driver_api.static.*))); _fuel_gauge_driver_api_list_end = .;; } > FLASH
+gnss_driver_api_area : { _gnss_driver_api_list_start = .; KEEP(*(SORT_BY_NAME(._gnss_driver_api.static.*))); _gnss_driver_api_list_end = .;; } > FLASH
+haptics_driver_api_area : { _haptics_driver_api_list_start = .; KEEP(*(SORT_BY_NAME(._haptics_driver_api.static.*))); _haptics_driver_api_list_end = .;; } > FLASH
+hwspinlock_driver_api_area : { _hwspinlock_driver_api_list_start = .; KEEP(*(SORT_BY_NAME(._hwspinlock_driver_api.static.*))); _hwspinlock_driver_api_list_end = .;; } > FLASH
+i2c_driver_api_area : { _i2c_driver_api_list_start = .; KEEP(*(SORT_BY_NAME(._i2c_driver_api.static.*))); _i2c_driver_api_list_end = .;; } > FLASH
+i2c_target_driver_api_area : { _i2c_target_driver_api_list_start = .; KEEP(*(SORT_BY_NAME(._i2c_target_driver_api.static.*))); _i2c_target_driver_api_list_end = .;; } > FLASH
+i2s_driver_api_area : { _i2s_driver_api_list_start = .; KEEP(*(SORT_BY_NAME(._i2s_driver_api.static.*))); _i2s_driver_api_list_end = .;; } > FLASH
+i3c_driver_api_area : { _i3c_driver_api_list_start = .; KEEP(*(SORT_BY_NAME(._i3c_driver_api.static.*))); _i3c_driver_api_list_end = .;; } > FLASH
+ipm_driver_api_area : { _ipm_driver_api_list_start = .; KEEP(*(SORT_BY_NAME(._ipm_driver_api.static.*))); _ipm_driver_api_list_end = .;; } > FLASH
+led_driver_api_area : { _led_driver_api_list_start = .; KEEP(*(SORT_BY_NAME(._led_driver_api.static.*))); _led_driver_api_list_end = .;; } > FLASH
+led_strip_driver_api_area : { _led_strip_driver_api_list_start = .; KEEP(*(SORT_BY_NAME(._led_strip_driver_api.static.*))); _led_strip_driver_api_list_end = .;; } > FLASH
+lora_driver_api_area : { _lora_driver_api_list_start = .; KEEP(*(SORT_BY_NAME(._lora_driver_api.static.*))); _lora_driver_api_list_end = .;; } > FLASH
+mbox_driver_api_area : { _mbox_driver_api_list_start = .; KEEP(*(SORT_BY_NAME(._mbox_driver_api.static.*))); _mbox_driver_api_list_end = .;; } > FLASH
+mdio_driver_api_area : { _mdio_driver_api_list_start = .; KEEP(*(SORT_BY_NAME(._mdio_driver_api.static.*))); _mdio_driver_api_list_end = .;; } > FLASH
+mipi_dbi_driver_api_area : { _mipi_dbi_driver_api_list_start = .; KEEP(*(SORT_BY_NAME(._mipi_dbi_driver_api.static.*))); _mipi_dbi_driver_api_list_end = .;; } > FLASH
+mipi_dsi_driver_api_area : { _mipi_dsi_driver_api_list_start = .; KEEP(*(SORT_BY_NAME(._mipi_dsi_driver_api.static.*))); _mipi_dsi_driver_api_list_end = .;; } > FLASH
+mspi_driver_api_area : { _mspi_driver_api_list_start = .; KEEP(*(SORT_BY_NAME(._mspi_driver_api.static.*))); _mspi_driver_api_list_end = .;; } > FLASH
+opamp_driver_api_area : { _opamp_driver_api_list_start = .; KEEP(*(SORT_BY_NAME(._opamp_driver_api.static.*))); _opamp_driver_api_list_end = .;; } > FLASH
+peci_driver_api_area : { _peci_driver_api_list_start = .; KEEP(*(SORT_BY_NAME(._peci_driver_api.static.*))); _peci_driver_api_list_end = .;; } > FLASH
+ps2_driver_api_area : { _ps2_driver_api_list_start = .; KEEP(*(SORT_BY_NAME(._ps2_driver_api.static.*))); _ps2_driver_api_list_end = .;; } > FLASH
+ptp_clock_driver_api_area : { _ptp_clock_driver_api_list_start = .; KEEP(*(SORT_BY_NAME(._ptp_clock_driver_api.static.*))); _ptp_clock_driver_api_list_end = .;; } > FLASH
+pwm_driver_api_area : { _pwm_driver_api_list_start = .; KEEP(*(SORT_BY_NAME(._pwm_driver_api.static.*))); _pwm_driver_api_list_end = .;; } > FLASH
+regulator_parent_driver_api_area : { _regulator_parent_driver_api_list_start = .; KEEP(*(SORT_BY_NAME(._regulator_parent_driver_api.static.*))); _regulator_parent_driver_api_list_end = .;; } > FLASH
+regulator_driver_api_area : { _regulator_driver_api_list_start = .; KEEP(*(SORT_BY_NAME(._regulator_driver_api.static.*))); _regulator_driver_api_list_end = .;; } > FLASH
+reset_driver_api_area : { _reset_driver_api_list_start = .; KEEP(*(SORT_BY_NAME(._reset_driver_api.static.*))); _reset_driver_api_list_end = .;; } > FLASH
+retained_mem_driver_api_area : { _retained_mem_driver_api_list_start = .; KEEP(*(SORT_BY_NAME(._retained_mem_driver_api.static.*))); _retained_mem_driver_api_list_end = .;; } > FLASH
+rtc_driver_api_area : { _rtc_driver_api_list_start = .; KEEP(*(SORT_BY_NAME(._rtc_driver_api.static.*))); _rtc_driver_api_list_end = .;; } > FLASH
+sdhc_driver_api_area : { _sdhc_driver_api_list_start = .; KEEP(*(SORT_BY_NAME(._sdhc_driver_api.static.*))); _sdhc_driver_api_list_end = .;; } > FLASH
+sensor_driver_api_area : { _sensor_driver_api_list_start = .; KEEP(*(SORT_BY_NAME(._sensor_driver_api.static.*))); _sensor_driver_api_list_end = .;; } > FLASH
+smbus_driver_api_area : { _smbus_driver_api_list_start = .; KEEP(*(SORT_BY_NAME(._smbus_driver_api.static.*))); _smbus_driver_api_list_end = .;; } > FLASH
+stepper_driver_api_area : { _stepper_driver_api_list_start = .; KEEP(*(SORT_BY_NAME(._stepper_driver_api.static.*))); _stepper_driver_api_list_end = .;; } > FLASH
+syscon_driver_api_area : { _syscon_driver_api_list_start = .; KEEP(*(SORT_BY_NAME(._syscon_driver_api.static.*))); _syscon_driver_api_list_end = .;; } > FLASH
+tee_driver_api_area : { _tee_driver_api_list_start = .; KEEP(*(SORT_BY_NAME(._tee_driver_api.static.*))); _tee_driver_api_list_end = .;; } > FLASH
+video_driver_api_area : { _video_driver_api_list_start = .; KEEP(*(SORT_BY_NAME(._video_driver_api.static.*))); _video_driver_api_list_end = .;; } > FLASH
+virtio_driver_api_area : { _virtio_driver_api_list_start = .; KEEP(*(SORT_BY_NAME(._virtio_driver_api.static.*))); _virtio_driver_api_list_end = .;; } > FLASH
+w1_driver_api_area : { _w1_driver_api_list_start = .; KEEP(*(SORT_BY_NAME(._w1_driver_api.static.*))); _w1_driver_api_list_end = .;; } > FLASH
+wdt_driver_api_area : { _wdt_driver_api_list_start = .; KEEP(*(SORT_BY_NAME(._wdt_driver_api.static.*))); _wdt_driver_api_list_end = .;; } > FLASH
+can_transceiver_driver_api_area : { _can_transceiver_driver_api_list_start = .; KEEP(*(SORT_BY_NAME(._can_transceiver_driver_api.static.*))); _can_transceiver_driver_api_list_end = .;; } > FLASH
+nrf_clock_control_driver_api_area : { _nrf_clock_control_driver_api_list_start = .; KEEP(*(SORT_BY_NAME(._nrf_clock_control_driver_api.static.*))); _nrf_clock_control_driver_api_list_end = .;; } > FLASH
+i3c_target_driver_api_area : { _i3c_target_driver_api_list_start = .; KEEP(*(SORT_BY_NAME(._i3c_target_driver_api.static.*))); _i3c_target_driver_api_list_end = .;; } > FLASH
+its_driver_api_area : { _its_driver_api_list_start = .; KEEP(*(SORT_BY_NAME(._its_driver_api.static.*))); _its_driver_api_list_end = .;; } > FLASH
+vtd_driver_api_area : { _vtd_driver_api_list_start = .; KEEP(*(SORT_BY_NAME(._vtd_driver_api.static.*))); _vtd_driver_api_list_end = .;; } > FLASH
+renesas_elc_driver_api_area : { _renesas_elc_driver_api_list_start = .; KEEP(*(SORT_BY_NAME(._renesas_elc_driver_api.static.*))); _renesas_elc_driver_api_list_end = .;; } > FLASH
+tgpio_driver_api_area : { _tgpio_driver_api_list_start = .; KEEP(*(SORT_BY_NAME(._tgpio_driver_api.static.*))); _tgpio_driver_api_list_end = .;; } > FLASH
+pcie_ctrl_driver_api_area : { _pcie_ctrl_driver_api_list_start = .; KEEP(*(SORT_BY_NAME(._pcie_ctrl_driver_api.static.*))); _pcie_ctrl_driver_api_list_end = .;; } > FLASH
+pcie_ep_driver_api_area : { _pcie_ep_driver_api_list_start = .; KEEP(*(SORT_BY_NAME(._pcie_ep_driver_api.static.*))); _pcie_ep_driver_api_list_end = .;; } > FLASH
+psi5_driver_api_area : { _psi5_driver_api_list_start = .; KEEP(*(SORT_BY_NAME(._psi5_driver_api.static.*))); _psi5_driver_api_list_end = .;; } > FLASH
+sent_driver_api_area : { _sent_driver_api_list_start = .; KEEP(*(SORT_BY_NAME(._sent_driver_api.static.*))); _sent_driver_api_list_end = .;; } > FLASH
+svc_driver_api_area : { _svc_driver_api_list_start = .; KEEP(*(SORT_BY_NAME(._svc_driver_api.static.*))); _svc_driver_api_list_end = .;; } > FLASH
+uart_driver_api_area : { _uart_driver_api_list_start = .; KEEP(*(SORT_BY_NAME(._uart_driver_api.static.*))); _uart_driver_api_list_end = .;; } > FLASH
+bc12_emul_driver_api_area : { _bc12_emul_driver_api_list_start = .; KEEP(*(SORT_BY_NAME(._bc12_emul_driver_api.static.*))); _bc12_emul_driver_api_list_end = .;; } > FLASH
+bc12_driver_api_area : { _bc12_driver_api_list_start = .; KEEP(*(SORT_BY_NAME(._bc12_driver_api.static.*))); _bc12_driver_api_list_end = .;; } > FLASH
+usbc_ppc_driver_api_area : { _usbc_ppc_driver_api_list_start = .; KEEP(*(SORT_BY_NAME(._usbc_ppc_driver_api.static.*))); _usbc_ppc_driver_api_list_end = .;; } > FLASH
+tcpc_driver_api_area : { _tcpc_driver_api_list_start = .; KEEP(*(SORT_BY_NAME(._tcpc_driver_api.static.*))); _tcpc_driver_api_list_end = .;; } > FLASH
+usbc_vbus_driver_api_area : { _usbc_vbus_driver_api_list_start = .; KEEP(*(SORT_BY_NAME(._usbc_vbus_driver_api.static.*))); _usbc_vbus_driver_api_list_end = .;; } > FLASH
+ivshmem_driver_api_area : { _ivshmem_driver_api_list_start = .; KEEP(*(SORT_BY_NAME(._ivshmem_driver_api.static.*))); _ivshmem_driver_api_list_end = .;; } > FLASH
+ethphy_driver_api_area : { _ethphy_driver_api_list_start = .; KEEP(*(SORT_BY_NAME(._ethphy_driver_api.static.*))); _ethphy_driver_api_list_end = .;; } > FLASH
+ztest :
+{
+ _ztest_expected_result_entry_list_start = .; KEEP(*(SORT_BY_NAME(._ztest_expected_result_entry.static.*))); _ztest_expected_result_entry_list_end = .;;
+ _ztest_suite_node_list_start = .; KEEP(*(SORT_BY_NAME(._ztest_suite_node.static.*))); _ztest_suite_node_list_end = .;;
+ _ztest_unit_test_list_start = .; KEEP(*(SORT_BY_NAME(._ztest_unit_test.static.*))); _ztest_unit_test_list_end = .;;
+ _ztest_test_rule_list_start = .; KEEP(*(SORT_BY_NAME(._ztest_test_rule.static.*))); _ztest_test_rule_list_end = .;;
+} > FLASH
+ init_array :
+ {
+  __zephyr_init_array_start = .;
+  KEEP (*(SORT_BY_INIT_PRIORITY(.init_array.*)
+   SORT_BY_INIT_PRIORITY(.ctors.*)))
+  KEEP (*(.init_array .ctors))
+  __zephyr_init_array_end = .;
+ } > FLASH
+ ASSERT(__zephyr_init_array_start == __zephyr_init_array_end,
+        "GNU-style constructors required but STATIC_INIT_GNU not enabled")
+ bt_l2cap_fixed_chan_area : { _bt_l2cap_fixed_chan_list_start = .; KEEP(*(SORT_BY_NAME(._bt_l2cap_fixed_chan.static.*))); _bt_l2cap_fixed_chan_list_end = .;; } > FLASH
+ bt_gatt_service_static_area : { _bt_gatt_service_static_list_start = .; KEEP(*(SORT_BY_NAME(._bt_gatt_service_static.static.*))); _bt_gatt_service_static_list_end = .;; } > FLASH
+ log_strings_area : { _log_strings_list_start = .; KEEP(*(SORT_BY_NAME(._log_strings.static.*))); _log_strings_list_end = .;; } > FLASH
+ log_stmesp_ptr_area : { _log_stmesp_ptr_list_start = .; KEEP(*(SORT_BY_NAME(._log_stmesp_ptr.static.*))); _log_stmesp_ptr_list_end = .;; } > FLASH
+ log_stmesp_str_area : { _log_stmesp_str_list_start = .; KEEP(*(SORT_BY_NAME(._log_stmesp_str.static.*))); _log_stmesp_str_list_end = .;; } > FLASH
+ log_const_area : { _log_const_list_start = .; KEEP(*(SORT_BY_NAME(._log_const.static.*))); _log_const_list_end = .;; } > FLASH
+ log_backend_area : { _log_backend_list_start = .; KEEP(*(SORT_BY_NAME(._log_backend.static.*))); _log_backend_list_end = .;; } > FLASH
+ log_link_area : { _log_link_list_start = .; KEEP(*(SORT_BY_NAME(._log_link.static.*))); _log_link_list_end = .;; } > FLASH
+ tracing_backend_area : { _tracing_backend_list_start = .; KEEP(*(SORT_BY_NAME(._tracing_backend.static.*))); _tracing_backend_list_end = .;; } > FLASH
+ zephyr_dbg_info : ALIGN_WITH_INPUT
+ {
+  KEEP(*(".dbg_thread_info"));
+ } > FLASH
+ intc_table_area : { _intc_table_list_start = .; KEEP(*(SORT_BY_NAME(._intc_table.static.*))); _intc_table_list_end = .;; } > FLASH
+ symbol_to_keep : ALIGN_WITH_INPUT
+ {
+  __symbol_to_keep_start = .;
+  KEEP(*(SORT(.symbol_to_keep*)));
+  __symbol_to_keep_end = .;
+ } > FLASH
+ shell_area : { _shell_list_start = .; KEEP(*(SORT_BY_NAME(._shell.static.*))); _shell_list_end = .;; } > FLASH
+ shell_root_cmds_area : { _shell_root_cmds_list_start = .; KEEP(*(SORT_BY_NAME(._shell_root_cmds.static.*))); _shell_root_cmds_list_end = .;; } > FLASH
+ shell_subcmds_area : { _shell_subcmds_list_start = .; KEEP(*(SORT_BY_NAME(._shell_subcmds.static.*))); _shell_subcmds_list_end = .;; } > FLASH
+ shell_dynamic_subcmds_area : { _shell_dynamic_subcmds_list_start = .; KEEP(*(SORT_BY_NAME(._shell_dynamic_subcmds.static.*))); _shell_dynamic_subcmds_list_end = .;; } > FLASH
+ cfb_font_area : { _cfb_font_list_start = .; KEEP(*(SORT_BY_NAME(._cfb_font.static.*))); _cfb_font_list_end = .;; } > FLASH
+ tdata : ALIGN_WITH_INPUT
+ {
+  *(.tdata .tdata.* .gnu.linkonce.td.*);
+ } > FLASH
+ tbss (NOLOAD) : ALIGN_WITH_INPUT
+ {
+  *(.tbss .tbss.* .gnu.linkonce.tb.* .tcommon);
+ } > FLASH
+ PROVIDE(__tdata_start = LOADADDR(tdata));
+ PROVIDE(__tdata_align = ALIGNOF(tdata));
+ PROVIDE(__tdata_size = (SIZEOF(tdata) + __tdata_align - 1) & ~(__tdata_align - 1));
+ PROVIDE(__tdata_end = __tdata_start + __tdata_size);
+ PROVIDE(__tbss_align = ALIGNOF(tbss));
+ PROVIDE(__tbss_start = ADDR(tbss));
+ PROVIDE(__tbss_size = (SIZEOF(tbss) + __tbss_align - 1) & ~(__tbss_align - 1));
+ PROVIDE(__tbss_end = __tbss_start + __tbss_size);
+ PROVIDE(__tls_start = __tdata_start);
+ PROVIDE(__tls_end = __tbss_end);
+ PROVIDE(__tls_size = __tbss_end - __tdata_start);
+    rodata :
+ {
+ *(.rodata)
+ *(".rodata.*")
+ *(.gnu.linkonce.r.*)
+ . = ALIGN(4);
+ } > FLASH
+ PROVIDE(__eh_frame_start = 0);
+ PROVIDE(__eh_frame_end = 0);
+ PROVIDE(__eh_frame_hdr_start = 0);
+ PROVIDE(__eh_frame_hdr_end = 0);
+ /DISCARD/ : { *(.eh_frame) }
+ __rodata_region_end = .;
+ . = ALIGN(_region_min_align); . = ALIGN( 1 << LOG2CEIL(__rodata_region_end - ADDR(rom_start)));
+ __rom_region_end = __rom_region_start + . - ADDR(rom_start);
+ __rom_region_size = __rom_region_end - __rom_region_start;
+   
+    /DISCARD/ : {
+ *(.got.plt)
+ *(.igot.plt)
+ *(.got)
+ *(.igot)
+ }
+   
+ . = 0x20000000;
+ . = ALIGN(_region_min_align);
+ _image_ram_start = .;
+.ramfunc : ALIGN_WITH_INPUT
+{
+ __ramfunc_region_start = .;
+ . = ALIGN(_region_min_align); . = ALIGN( 1 << LOG2CEIL(__ramfunc_size));
+ __ramfunc_start = .;
+ *(.ramfunc)
+ *(".ramfunc.*")
+ . = ALIGN(_region_min_align); . = ALIGN( 1 << LOG2CEIL(__ramfunc_size));
+ __ramfunc_end = .;
+} > RAM AT > FLASH
+__ramfunc_size = __ramfunc_end - __ramfunc_start;
+__ramfunc_load_start = LOADADDR(.ramfunc);
+   
+    datas : ALIGN_WITH_INPUT
+ {
+ __data_region_start = .;
+ __data_start = .;
+ *(.data)
+ *(".data.*")
+ *(".kernel.*")
+ __data_end = .;
+ } > RAM AT > FLASH
+    __data_size = __data_end - __data_start;
+    __data_load_start = LOADADDR(datas);
+    __data_region_load_start = LOADADDR(datas);
+        device_states : ALIGN_WITH_INPUT
+        {
+  . = ALIGN(4);
+                __device_states_start = .;
+  KEEP(*(".z_devstate"));
+  KEEP(*(".z_devstate.*"));
+                __device_states_end = .;
+  . = ALIGN(4);
+        } > RAM AT > FLASH
+ log_mpsc_pbuf_area : ALIGN_WITH_INPUT { _log_mpsc_pbuf_list_start = .; *(SORT_BY_NAME(._log_mpsc_pbuf.static.*)); _log_mpsc_pbuf_list_end = .;; } > RAM AT > FLASH
+ log_msg_ptr_area : ALIGN_WITH_INPUT { _log_msg_ptr_list_start = .; KEEP(*(SORT_BY_NAME(._log_msg_ptr.static.*))); _log_msg_ptr_list_end = .;; } > RAM AT > FLASH
+ log_dynamic_area : ALIGN_WITH_INPUT { _log_dynamic_list_start = .; KEEP(*(SORT_BY_NAME(._log_dynamic.static.*))); _log_dynamic_list_end = .;; } > RAM AT > FLASH
+ k_timer_area : ALIGN_WITH_INPUT { _k_timer_list_start = .; *(SORT_BY_NAME(._k_timer.static.*)); _k_timer_list_end = .;; } > RAM AT > FLASH
+ k_mem_slab_area : ALIGN_WITH_INPUT { _k_mem_slab_list_start = .; *(SORT_BY_NAME(._k_mem_slab.static.*)); _k_mem_slab_list_end = .;; } > RAM AT > FLASH
+ k_heap_area : ALIGN_WITH_INPUT { _k_heap_list_start = .; *(SORT_BY_NAME(._k_heap.static.*)); _k_heap_list_end = .;; } > RAM AT > FLASH
+ k_mutex_area : ALIGN_WITH_INPUT { _k_mutex_list_start = .; *(SORT_BY_NAME(._k_mutex.static.*)); _k_mutex_list_end = .;; } > RAM AT > FLASH
+ k_stack_area : ALIGN_WITH_INPUT { _k_stack_list_start = .; *(SORT_BY_NAME(._k_stack.static.*)); _k_stack_list_end = .;; } > RAM AT > FLASH
+ k_msgq_area : ALIGN_WITH_INPUT { _k_msgq_list_start = .; *(SORT_BY_NAME(._k_msgq.static.*)); _k_msgq_list_end = .;; } > RAM AT > FLASH
+ k_mbox_area : ALIGN_WITH_INPUT { _k_mbox_list_start = .; *(SORT_BY_NAME(._k_mbox.static.*)); _k_mbox_list_end = .;; } > RAM AT > FLASH
+ k_pipe_area : ALIGN_WITH_INPUT { _k_pipe_list_start = .; *(SORT_BY_NAME(._k_pipe.static.*)); _k_pipe_list_end = .;; } > RAM AT > FLASH
+ k_sem_area : ALIGN_WITH_INPUT { _k_sem_list_start = .; *(SORT_BY_NAME(._k_sem.static.*)); _k_sem_list_end = .;; } > RAM AT > FLASH
+ k_event_area : ALIGN_WITH_INPUT { _k_event_list_start = .; *(SORT_BY_NAME(._k_event.static.*)); _k_event_list_end = .;; } > RAM AT > FLASH
+ k_queue_area : ALIGN_WITH_INPUT { _k_queue_list_start = .; *(SORT_BY_NAME(._k_queue.static.*)); _k_queue_list_end = .;; } > RAM AT > FLASH
+ k_fifo_area : ALIGN_WITH_INPUT { _k_fifo_list_start = .; *(SORT_BY_NAME(._k_fifo.static.*)); _k_fifo_list_end = .;; } > RAM AT > FLASH
+ k_lifo_area : ALIGN_WITH_INPUT { _k_lifo_list_start = .; *(SORT_BY_NAME(._k_lifo.static.*)); _k_lifo_list_end = .;; } > RAM AT > FLASH
+ k_condvar_area : ALIGN_WITH_INPUT { _k_condvar_list_start = .; *(SORT_BY_NAME(._k_condvar.static.*)); _k_condvar_list_end = .;; } > RAM AT > FLASH
+ sys_mem_blocks_ptr_area : ALIGN_WITH_INPUT { _sys_mem_blocks_ptr_list_start = .; *(SORT_BY_NAME(._sys_mem_blocks_ptr.static.*)); _sys_mem_blocks_ptr_list_end = .;; } > RAM AT > FLASH
+ net_buf_pool_area : ALIGN_WITH_INPUT { _net_buf_pool_list_start = .; KEEP(*(SORT_BY_NAME(._net_buf_pool.static.*))); _net_buf_pool_list_end = .;; } > RAM AT > FLASH
+    __data_region_end = .;
+PROVIDE(soc_reset_hook = SystemInit);
+.intList :
+{
+ KEEP(*(.irq_info*))
+ KEEP(*(.intList*))
+} > IDT_LIST
+ .stab 0 : { *(.stab) }
+ .stabstr 0 : { *(.stabstr) }
+ .stab.excl 0 : { *(.stab.excl) }
+ .stab.exclstr 0 : { *(.stab.exclstr) }
+ .stab.index 0 : { *(.stab.index) }
+ .stab.indexstr 0 : { *(.stab.indexstr) }
+ .gnu.build.attributes 0 : { *(.gnu.build.attributes .gnu.build.attributes.*) }
+ .comment 0 : { *(.comment) }
+ .debug 0 : { *(.debug) }
+ .line 0 : { *(.line) }
+ .debug_srcinfo 0 : { *(.debug_srcinfo) }
+ .debug_sfnames 0 : { *(.debug_sfnames) }
+ .debug_aranges 0 : { *(.debug_aranges) }
+ .debug_pubnames 0 : { *(.debug_pubnames) }
+ .debug_info 0 : { *(.debug_info .gnu.linkonce.wi.*) }
+ .debug_abbrev 0 : { *(.debug_abbrev) }
+ .debug_line 0 : { *(.debug_line .debug_line.* .debug_line_end ) }
+ .debug_frame 0 : { *(.debug_frame) }
+ .debug_str 0 : { *(.debug_str) }
+ .debug_loc 0 : { *(.debug_loc) }
+ .debug_macinfo 0 : { *(.debug_macinfo) }
+ .debug_weaknames 0 : { *(.debug_weaknames) }
+ .debug_funcnames 0 : { *(.debug_funcnames) }
+ .debug_typenames 0 : { *(.debug_typenames) }
+ .debug_varnames 0 : { *(.debug_varnames) }
+ .debug_pubtypes 0 : { *(.debug_pubtypes) }
+ .debug_ranges 0 : { *(.debug_ranges) }
+ .debug_addr 0 : { *(.debug_addr) }
+ .debug_line_str 0 : { *(.debug_line_str) }
+ .debug_loclists 0 : { *(.debug_loclists) }
+ .debug_macro 0 : { *(.debug_macro) }
+ .debug_names 0 : { *(.debug_names) }
+ .debug_rnglists 0 : { *(.debug_rnglists) }
+ .debug_str_offsets 0 : { *(.debug_str_offsets) }
+ .debug_sup 0 : { *(.debug_sup) }
+    /DISCARD/ : { *(.note.GNU-stack) }
+    .ARM.attributes 0 :
+ {
+ KEEP(*(.ARM.attributes))
+ KEEP(*(.gnu.attributes))
+ }
+   
+.last_section :
+{
+  KEEP(*(.last_section))
+} > FLASH
+_flash_used = LOADADDR(.last_section) + SIZEOF(.last_section) - __rom_region_start;
+    bss (NOLOAD) : ALIGN_WITH_INPUT
+ {
+        . = ALIGN(4);
+ __bss_start = .;
+ __kernel_ram_start = .;
+ *(.bss)
+ *(".bss.*")
+ *(COMMON)
+ *(".kernel_bss.*")
+ __bss_end = ALIGN(4);
+ } > RAM AT > RAM
+noinit (NOLOAD) :
+{
+        *(.noinit)
+        *(".noinit.*")
+} > RAM AT > RAM
+    __kernel_ram_end = 0x20000000 + (256 * 1K);
+    __kernel_ram_size = __kernel_ram_end - __kernel_ram_start;
+    .last_ram_section (NOLOAD) :
+    {
+ _image_ram_end = .;
+ _image_ram_size = _image_ram_end - _image_ram_start;
+ _end = .;
+ z_mapped_end = .;
+    } > RAM AT > RAM
+   
+    }
+
+==================================================
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: mode armelf
+attempt to open zephyr/CMakeFiles/zephyr_pre0.dir/misc/empty_file.c.obj succeeded
+zephyr/CMakeFiles/zephyr_pre0.dir/misc/empty_file.c.obj
+attempt to open zephyr/CMakeFiles/offsets.dir/./arch/arm/core/offsets/offsets.c.obj succeeded
+zephyr/CMakeFiles/offsets.dir/./arch/arm/core/offsets/offsets.c.obj
+attempt to open app/libapp.a succeeded
+app/libapp.a
+(app/libapp.a)ActionHandler.swift.obj
+(app/libapp.a)BoundedText.swift.obj
+(app/libapp.a)Button.swift.obj
+(app/libapp.a)Canvas.swift.obj
+(app/libapp.a)Color.swift.obj
+(app/libapp.a)DeclarativeView.swift.obj
+(app/libapp.a)Disabled.swift.obj
+(app/libapp.a)DrawingStyles.swift.obj
+(app/libapp.a)DrawingSurface.swift.obj
+(app/libapp.a)GiftUI.swift.obj
+(app/libapp.a)LayoutContainers.swift.obj
+(app/libapp.a)LayoutModifiers.swift.obj
+(app/libapp.a)LayoutValues.swift.obj
+(app/libapp.a)ObservableState.swift.obj
+(app/libapp.a)StyleModifiers.swift.obj
+(app/libapp.a)Text.swift.obj
+(app/libapp.a)GiftUISemanticCore.swift.obj
+(app/libapp.a)SemanticRuntimeRecords.swift.obj
+(app/libapp.a)SemanticRecordStore.swift.obj
+(app/libapp.a)SemanticRecordExpansion.swift.obj
+(app/libapp.a)SemanticStandardPayload.swift.obj
+(app/libapp.a)SemanticLayoutView.swift.obj
+(app/libapp.a)SemanticRenderView.swift.obj
+(app/libapp.a)SemanticRecordLayoutView.swift.obj
+(app/libapp.a)SemanticRecordRenderView.swift.obj
+(app/libapp.a)GiftUITextResources.swift.obj
+(app/libapp.a)GiftUIPiCompactTextResources.swift.obj
+(app/libapp.a)GiftUIReferenceTextResources.swift.obj
+(app/libapp.a)ReferenceBitmapPayload.generated.swift.obj
+(app/libapp.a)ReferenceCatalogue.generated.swift.obj
+(app/libapp.a)ReferenceOutlinePayload.generated.swift.obj
+(app/libapp.a)PiCompactBitmapPayload.generated.swift.obj
+(app/libapp.a)PiCompactCatalogue.generated.swift.obj
+(app/libapp.a)Layout.swift.obj
+(app/libapp.a)LayoutCounters.swift.obj
+(app/libapp.a)LayoutEngine.swift.obj
+(app/libapp.a)LayoutError.swift.obj
+(app/libapp.a)LayoutGeometry.swift.obj
+(app/libapp.a)LayoutPublication.swift.obj
+(app/libapp.a)LayoutResultSink.swift.obj
+(app/libapp.a)LayoutSemanticValidation.swift.obj
+(app/libapp.a)LayoutValues.swift.obj
+(app/libapp.a)LayoutWorkspace.swift.obj
+(app/libapp.a)ResolvedRenderLayoutView.swift.obj
+(app/libapp.a)DrawingOperationSink.swift.obj
+(app/libapp.a)RenderOperationSink.swift.obj
+(app/libapp.a)RenderRecordingSink.swift.obj
+(app/libapp.a)RenderValues.swift.obj
+(app/libapp.a)AdmissionValues.swift.obj
+(app/libapp.a)ExecutionAdmissionController.swift.obj
+(app/libapp.a)ExecutionAdmissionSealTransaction.swift.obj
+(app/libapp.a)ExecutionAdmissionSealer.swift.obj
+(app/libapp.a)ExecutionMutationBatch.swift.obj
+(app/libapp.a)ExecutionOpportunityRunner.swift.obj
+(app/libapp.a)ExecutionPhaseMachine.swift.obj
+(app/libapp.a)ExecutionValues.swift.obj
+(app/libapp.a)ExecutionWakeAccumulator.swift.obj
+(app/libapp.a)FrameHandoffValues.swift.obj
+(app/libapp.a)FrameOfferNormalization.swift.obj
+(app/libapp.a)IdentityAllocators.swift.obj
+(app/libapp.a)InputSourceSequenceState.swift.obj
+(app/libapp.a)ObservableTargetGeneration.swift.obj
+(app/libapp.a)PointerActionCapture.swift.obj
+(app/libapp.a)RecordingCandidateOfferCoordinator.swift.obj
+(app/libapp.a)RecordingCycleCoordinator.swift.obj
+(app/libapp.a)RecordingCycleFinalizer.swift.obj
+(app/libapp.a)RecordingDerivationRecovery.swift.obj
+(app/libapp.a)RecordingDerivationTransaction.swift.obj
+(app/libapp.a)RecordingFocusedFailureSelection.swift.obj
+(app/libapp.a)RecordingFrameCommitTransaction.swift.obj
+(app/libapp.a)RecordingFrameEndpoint.swift.obj
+(app/libapp.a)RecordingMutationBatch.swift.obj
+(app/libapp.a)RecordingPresentationPendingCoordinator.swift.obj
+(app/libapp.a)RecordingPresentationTerminalRecovery.swift.obj
+(app/libapp.a)RunCycleValues.swift.obj
+(app/libapp.a)WakeValues.swift.obj
+(app/libapp.a)EffectiveActionEnabledState.swift.obj
+(app/libapp.a)ExecutionGestureAdapter.swift.obj
+(app/libapp.a)InteractionFailurePrecedence.swift.obj
+(app/libapp.a)InteractionOwnedKeyState.swift.obj
+(app/libapp.a)InteractionState.swift.obj
+(app/libapp.a)InteractionStorage.swift.obj
+(app/libapp.a)InteractionValues.swift.obj
+(app/libapp.a)ObservableStateValues.swift.obj
+(app/libapp.a)ObservableModelIdentity.swift.obj
+(app/libapp.a)ObservableModelOwnership.swift.obj
+(app/libapp.a)ObservableModelTicket.swift.obj
+(app/libapp.a)ObservableModelScope.swift.obj
+(app/libapp.a)ObservableModelMutation.swift.obj
+(app/libapp.a)ObservableStateModel.swift.obj
+(app/libapp.a)ObservableStateRegistrationLifecycle.swift.obj
+(app/libapp.a)ObservableStateRootScope.swift.obj
+(app/libapp.a)ObservableStateRootTargetAccess.swift.obj
+(app/libapp.a)ObservableStateBindingDecorator.swift.obj
+(app/libapp.a)ObservableSemanticBodyBinding.swift.obj
+(app/libapp.a)RenderExtensions.swift.obj
+(app/libapp.a)RenderPreflight.swift.obj
+(app/libapp.a)RenderProducer.swift.obj
+(app/libapp.a)RenderProductionValues.swift.obj
+(app/libapp.a)RenderStreaming.swift.obj
+(app/libapp.a)CanvasRenderProducer.swift.obj
+(app/libapp.a)CanvasInvocationSource.swift.obj
+(app/libapp.a)CanvasPlanProducer.swift.obj
+(app/libapp.a)CanvasStagedValues.swift.obj
+(app/libapp.a)CanvasSemanticPayload.swift.obj
+(app/libapp.a)DrawingLimits.swift.obj
+(app/libapp.a)DrawingPlan.swift.obj
+(app/libapp.a)DrawingValues.swift.obj
+(app/libapp.a)StaticCanvasCallableTable.swift.obj
+(app/libapp.a)PathConstruction.swift.obj
+(app/libapp.a)StrokeSnapshot.swift.obj
+(app/libapp.a)RuntimeRecordInteractionBridge.swift.obj
+(app/libapp.a)RuntimeRecordCanvasInteractionBridge.swift.obj
+(app/libapp.a)RuntimeInteractionCandidateResolution.swift.obj
+(app/libapp.a)ObservableCanvasInvocationSource.swift.obj
+(app/libapp.a)RuntimeProfileValues.swift.obj
+(app/libapp.a)RuntimeProfileValidation.swift.obj
+(app/libapp.a)RuntimeStorageRegistry.swift.obj
+(app/libapp.a)RuntimeOwnerFailure.swift.obj
+(app/libapp.a)RuntimeCoordinatorCleanup.swift.obj
+(app/libapp.a)RuntimeCompletePipeline.swift.obj
+(app/libapp.a)RuntimeCoordinatorContracts.swift.obj
+(app/libapp.a)RuntimeProfileStorage.swift.obj
+(app/libapp.a)StaticRuntimeExecutionCoordinator.swift.obj
+(app/libapp.a)StaticObservableModelStorage.swift.obj
+(app/libapp.a)StaticObservableRootAdapter.swift.obj
+(app/libapp.a)StaticObservableRootTargetAccess.swift.obj
+(app/libapp.a)StaticCanvasValueStorage.swift.obj
+(app/libapp.a)StaticSemanticRecordStorage.swift.obj
+(app/libapp.a)StaticInteractionStorage.swift.obj
+(app/libapp.a)StaticRecordDrawingWorkspace.swift.obj
+(app/libapp.a)GiftUICapabilities.swift.obj
+(app/libapp.a)GiftUIFailureCore.swift.obj
+(app/libapp.a)RasterSurface.swift.obj
+(app/libapp.a)SurfaceValues.swift.obj
+(app/libapp.a)DisplayContracts.swift.obj
+(app/libapp.a)SurfaceDisplayContributionAdapter.swift.obj
+(app/libapp.a)FullSurfaceRGB565Framebuffer.swift.obj
+(app/libapp.a)FullSurfaceRGBA8888Buffer.swift.obj
+(app/libapp.a)RGB565TileWorkspace.swift.obj
+(app/libapp.a)RasterBackendContributionAdapter.swift.obj
+(app/libapp.a)RasterFillCoverage.swift.obj
+(app/libapp.a)RasterFrameSink.swift.obj
+(app/libapp.a)RasterFrameWork.swift.obj
+(app/libapp.a)RasterGlyphCoverage.swift.obj
+(app/libapp.a)RasterPayloadLimits.swift.obj
+(app/libapp.a)RasterStrokeCoverage.swift.obj
+(app/libapp.a)RasterWorkTracker.swift.obj
+(app/libapp.a)FullSurfacePayloadEmitter.swift.obj
+(app/libapp.a)OneShotRasterBackendEndpoint.swift.obj
+(app/libapp.a)OperationMajorRGB565RasterSession.swift.obj
+(app/libapp.a)OperationMajorTileTraversal.swift.obj
+(app/libapp.a)RGB565TilePayloadEmitter.swift.obj
+(app/libapp.a)RasterBackendEndpoint.swift.obj
+(app/libapp.a)RasterBackendOwnerFailureAdapter.swift.obj
+(app/libapp.a)RasterBackendStartupValidator.swift.obj
+(app/libapp.a)RasterFrameWorkAdmission.swift.obj
+(app/libapp.a)RasterTextResourceValidation.swift.obj
+(app/libapp.a)CheckedMVPHostConfigurationValidator.swift.obj
+(app/libapp.a)HostActivationController.swift.obj
+(app/libapp.a)HostApplicationOpportunityGate.swift.obj
+(app/libapp.a)HostApplicationStartupValidation.swift.obj
+(app/libapp.a)HostComponentGraphValidation.swift.obj
+(app/libapp.a)HostConfigurationResults.swift.obj
+(app/libapp.a)HostConfigurationValues.swift.obj
+(app/libapp.a)HostEndpointHealthController.swift.obj
+(app/libapp.a)HostEndpointStartupValidation.swift.obj
+(app/libapp.a)HostFailureAdapter.swift.obj
+(app/libapp.a)HostNormalizedInputGate.swift.obj
+(app/libapp.a)HostPresentationRecovery.swift.obj
+(app/libapp.a)HostPresetBootstrap.swift.obj
+(app/libapp.a)HostResidualFailureRouting.swift.obj
+(app/libapp.a)HostResidualPolicyContracts.swift.obj
+(app/libapp.a)HostResidualPolicyTableValidation.swift.obj
+(app/libapp.a)HostScheduledOpportunityController.swift.obj
+(app/libapp.a)HostSequencedFactAdmission.swift.obj
+(app/libapp.a)HostWakePacingController.swift.obj
+(app/libapp.a)SignalAnalyzerDrawingStartupValidation.swift.obj
+(app/libapp.a)SignalAnalyzerPresetHostInstance.swift.obj
+(app/libapp.a)SignalAnalyzerWorkloadStartupValidation.swift.obj
+(app/libapp.a)SignalAnalyzerPresets.generated.swift.obj
+(app/libapp.a)CounterSchema.swift.obj
+(app/libapp.a)Counter.swift.obj
+(app/libapp.a)CounterTable.swift.obj
+(app/libapp.a)CounterModel.swift.obj
+(app/libapp.a)CounterModelProbe.swift.obj
+(app/libapp.a)CounterSemantic.swift.obj
+(app/libapp.a)CounterSemanticProbe.swift.obj
+(app/libapp.a)CounterGeometry.swift.obj
+(app/libapp.a)CounterStaticGeometry.swift.obj
+(app/libapp.a)CounterRender.swift.obj
+(app/libapp.a)CounterFixedStorageProbe.swift.obj
+(app/libapp.a)StaticCounterDrawingPlanRecords.swift.obj
+(app/libapp.a)StaticCounterDrawingPlanStorage.swift.obj
+(app/libapp.a)StaticCounterDrawingWorkspace.swift.obj
+(app/libapp.a)StaticCounterInteractionStorage.swift.obj
+(app/libapp.a)StaticCounterLayoutScopeCodec.swift.obj
+(app/libapp.a)StaticCounterLayoutTextCodec.swift.obj
+(app/libapp.a)StaticCounterLayoutWorkspace.swift.obj
+(app/libapp.a)StaticCounterLivePathStorage.swift.obj
+(app/libapp.a)StaticCounterRenderWorkspace.swift.obj
+(app/libapp.a)StaticCounterResolvedLayout.swift.obj
+(app/libapp.a)CounterAdmission.swift.obj
+(app/libapp.a)CounterPipelineOwner.swift.obj
+(app/libapp.a)CounterProfileStorage.swift.obj
+(app/libapp.a)CounterStorageMeasurement.swift.obj
+(app/libapp.a)CounterStorageRegions.swift.obj
+(app/libapp.a)CounterCoordinatorProbe.swift.obj
+(app/libapp.a)CounterWorkload.swift.obj
+(app/libapp.a)CounterHostAssembly.swift.obj
+(app/libapp.a)CounterHostOwner.swift.obj
+(app/libapp.a)CounterHostProbe.swift.obj
+(app/libapp.a)CounterDynamicHostOwner.swift.obj
+(app/libapp.a)CounterDynamicHostProbe.swift.obj
+(app/libapp.a)CounterHostCorpus.swift.obj
+(app/libapp.a)CounterNativeRaster.swift.obj
+(app/libapp.a)CounterTiledRaster.swift.obj
+(app/libapp.a)CounterPixelOracle.swift.obj
+(app/libapp.a)CounterApplication.swift.obj
+(app/libapp.a)CounterWakeIntegration.swift.obj
+(app/libapp.a)CounterGraphProbe.swift.obj
+(app/libapp.a)CounterRouteEntry.swift.obj
+(app/libapp.a)counter_main.c.obj
+(app/libapp.a)spi_tft.c.obj
+(app/libapp.a)fault.c.obj
+(app/libapp.a)stubs.c.obj
+attempt to open zephyr/libzephyr.a succeeded
+zephyr/libzephyr.a
+(zephyr/libzephyr.a)validate_libc.c.obj
+(zephyr/libzephyr.a)heap.c.obj
+(zephyr/libzephyr.a)cbprintf_packaged.c.obj
+(zephyr/libzephyr.a)clock.c.obj
+(zephyr/libzephyr.a)printk.c.obj
+(zephyr/libzephyr.a)sem.c.obj
+(zephyr/libzephyr.a)thread_entry.c.obj
+(zephyr/libzephyr.a)cbprintf_complete.c.obj
+(zephyr/libzephyr.a)assert.c.obj
+(zephyr/libzephyr.a)dec.c.obj
+(zephyr/libzephyr.a)hex.c.obj
+(zephyr/libzephyr.a)rb.c.obj
+(zephyr/libzephyr.a)timeutil.c.obj
+(zephyr/libzephyr.a)bitarray.c.obj
+(zephyr/libzephyr.a)bitmask.c.obj
+(zephyr/libzephyr.a)onoff.c.obj
+(zephyr/libzephyr.a)notify.c.obj
+(zephyr/libzephyr.a)last_section_id.c.obj
+(zephyr/libzephyr.a)configs.c.obj
+(zephyr/libzephyr.a)mem_attr.c.obj
+(zephyr/libzephyr.a)tracing_none.c.obj
+attempt to open zephyr/arch/common/libarch__common.a succeeded
+zephyr/arch/common/libarch__common.a
+(zephyr/arch/common/libarch__common.a)sw_isr_common.c.obj
+(zephyr/arch/common/libarch__common.a)init.c.obj
+(zephyr/arch/common/libarch__common.a)xip.c.obj
+attempt to open zephyr/arch/arch/arm/core/libarch__arm__core.a succeeded
+zephyr/arch/arch/arm/core/libarch__arm__core.a
+(zephyr/arch/arch/arm/core/libarch__arm__core.a)fatal.c.obj
+(zephyr/arch/arch/arm/core/libarch__arm__core.a)nmi.c.obj
+(zephyr/arch/arch/arm/core/libarch__arm__core.a)nmi_on_reset.S.obj
+(zephyr/arch/arch/arm/core/libarch__arm__core.a)tls.c.obj
+attempt to open zephyr/arch/arch/arm/core/cortex_m/libarch__arm__core__cortex_m.a succeeded
+zephyr/arch/arch/arm/core/cortex_m/libarch__arm__core__cortex_m.a
+(zephyr/arch/arch/arm/core/cortex_m/libarch__arm__core__cortex_m.a)exc_exit.c.obj
+(zephyr/arch/arch/arm/core/cortex_m/libarch__arm__core__cortex_m.a)fault.c.obj
+(zephyr/arch/arch/arm/core/cortex_m/libarch__arm__core__cortex_m.a)fault_s.S.obj
+(zephyr/arch/arch/arm/core/cortex_m/libarch__arm__core__cortex_m.a)fpu.c.obj
+(zephyr/arch/arch/arm/core/cortex_m/libarch__arm__core__cortex_m.a)reset.S.obj
+(zephyr/arch/arch/arm/core/cortex_m/libarch__arm__core__cortex_m.a)scb.c.obj
+(zephyr/arch/arch/arm/core/cortex_m/libarch__arm__core__cortex_m.a)thread_abort.c.obj
+(zephyr/arch/arch/arm/core/cortex_m/libarch__arm__core__cortex_m.a)vector_table.S.obj
+(zephyr/arch/arch/arm/core/cortex_m/libarch__arm__core__cortex_m.a)swap_helper.S.obj
+(zephyr/arch/arch/arm/core/cortex_m/libarch__arm__core__cortex_m.a)irq_manage.c.obj
+(zephyr/arch/arch/arm/core/cortex_m/libarch__arm__core__cortex_m.a)prep_c.c.obj
+(zephyr/arch/arch/arm/core/cortex_m/libarch__arm__core__cortex_m.a)thread.c.obj
+(zephyr/arch/arch/arm/core/cortex_m/libarch__arm__core__cortex_m.a)cpu_idle.c.obj
+(zephyr/arch/arch/arm/core/cortex_m/libarch__arm__core__cortex_m.a)irq_init.c.obj
+(zephyr/arch/arch/arm/core/cortex_m/libarch__arm__core__cortex_m.a)isr_wrapper.c.obj
+(zephyr/arch/arch/arm/core/cortex_m/libarch__arm__core__cortex_m.a)__aeabi_read_tp.S.obj
+attempt to open zephyr/arch/arch/arm/core/mpu/libarch__arm__core__mpu.a succeeded
+zephyr/arch/arch/arm/core/mpu/libarch__arm__core__mpu.a
+(zephyr/arch/arch/arm/core/mpu/libarch__arm__core__mpu.a)arm_core_mpu.c.obj
+(zephyr/arch/arch/arm/core/mpu/libarch__arm__core__mpu.a)arm_mpu.c.obj
+(zephyr/arch/arch/arm/core/mpu/libarch__arm__core__mpu.a)arm_mpu_regions.c.obj
+attempt to open zephyr/lib/libc/picolibc/liblib__libc__picolibc.a succeeded
+zephyr/lib/libc/picolibc/liblib__libc__picolibc.a
+(zephyr/lib/libc/picolibc/liblib__libc__picolibc.a)assert.c.obj
+(zephyr/lib/libc/picolibc/liblib__libc__picolibc.a)cbprintf.c.obj
+(zephyr/lib/libc/picolibc/liblib__libc__picolibc.a)chk_fail.c.obj
+(zephyr/lib/libc/picolibc/liblib__libc__picolibc.a)errno_wrap.c.obj
+(zephyr/lib/libc/picolibc/liblib__libc__picolibc.a)exit.c.obj
+(zephyr/lib/libc/picolibc/liblib__libc__picolibc.a)locks.c.obj
+(zephyr/lib/libc/picolibc/liblib__libc__picolibc.a)stdio.c.obj
+attempt to open zephyr/lib/libc/common/liblib__libc__common.a succeeded
+zephyr/lib/libc/common/liblib__libc__common.a
+(zephyr/lib/libc/common/liblib__libc__common.a)abort.c.obj
+(zephyr/lib/libc/common/liblib__libc__common.a)time.c.obj
+(zephyr/lib/libc/common/liblib__libc__common.a)malloc.c.obj
+attempt to open zephyr/lib/posix/c_lib_ext/liblib__posix__c_lib_ext.a succeeded
+zephyr/lib/posix/c_lib_ext/liblib__posix__c_lib_ext.a
+(zephyr/lib/posix/c_lib_ext/liblib__posix__c_lib_ext.a)fnmatch.c.obj
+(zephyr/lib/posix/c_lib_ext/liblib__posix__c_lib_ext.a)getentropy.c.obj
+(zephyr/lib/posix/c_lib_ext/liblib__posix__c_lib_ext.a)getopt.c.obj
+(zephyr/lib/posix/c_lib_ext/liblib__posix__c_lib_ext.a)getopt_common.c.obj
+attempt to open zephyr/soc/soc/nrf52840/libsoc__nordic.a succeeded
+zephyr/soc/soc/nrf52840/libsoc__nordic.a
+(zephyr/soc/soc/nrf52840/libsoc__nordic.a)validate_base_addresses.c.obj
+(zephyr/soc/soc/nrf52840/libsoc__nordic.a)validate_binding_headers.c.obj
+(zephyr/soc/soc/nrf52840/libsoc__nordic.a)validate_enabled_instances.c.obj
+(zephyr/soc/soc/nrf52840/libsoc__nordic.a)soc.c.obj
+(zephyr/soc/soc/nrf52840/libsoc__nordic.a)reboot.c.obj
+attempt to open zephyr/drivers/clock_control/libdrivers__clock_control.a succeeded
+zephyr/drivers/clock_control/libdrivers__clock_control.a
+(zephyr/drivers/clock_control/libdrivers__clock_control.a)clock_control_nrf.c.obj
+attempt to open zephyr/drivers/console/libdrivers__console.a succeeded
+zephyr/drivers/console/libdrivers__console.a
+(zephyr/drivers/console/libdrivers__console.a)uart_console.c.obj
+attempt to open zephyr/drivers/gpio/libdrivers__gpio.a succeeded
+zephyr/drivers/gpio/libdrivers__gpio.a
+(zephyr/drivers/gpio/libdrivers__gpio.a)gpio_nrfx.c.obj
+attempt to open zephyr/drivers/pinctrl/libdrivers__pinctrl.a succeeded
+zephyr/drivers/pinctrl/libdrivers__pinctrl.a
+(zephyr/drivers/pinctrl/libdrivers__pinctrl.a)common.c.obj
+(zephyr/drivers/pinctrl/libdrivers__pinctrl.a)pinctrl_nrf.c.obj
+attempt to open zephyr/drivers/serial/libdrivers__serial.a succeeded
+zephyr/drivers/serial/libdrivers__serial.a
+(zephyr/drivers/serial/libdrivers__serial.a)uart_nrfx_uarte.c.obj
+attempt to open zephyr/drivers/spi/libdrivers__spi.a succeeded
+zephyr/drivers/spi/libdrivers__spi.a
+(zephyr/drivers/spi/libdrivers__spi.a)spi_nrfx_spi.c.obj
+(zephyr/drivers/spi/libdrivers__spi.a)spi_nrfx_common.c.obj
+(zephyr/drivers/spi/libdrivers__spi.a)spi_nrfx_spim.c.obj
+attempt to open zephyr/drivers/timer/libdrivers__timer.a succeeded
+zephyr/drivers/timer/libdrivers__timer.a
+(zephyr/drivers/timer/libdrivers__timer.a)sys_clock_init.c.obj
+(zephyr/drivers/timer/libdrivers__timer.a)nrf_rtc_timer.c.obj
+attempt to open modules/hal_nordic/nrfx/libnrfx.a succeeded
+modules/hal_nordic/nrfx/libnrfx.a
+(modules/hal_nordic/nrfx/libnrfx.a)system_nrf52840.c.obj
+(modules/hal_nordic/nrfx/libnrfx.a)nrfx_glue.c.obj
+(modules/hal_nordic/nrfx/libnrfx.a)nrfx_flag32_allocator.c.obj
+(modules/hal_nordic/nrfx/libnrfx.a)nrfx_ram_ctrl.c.obj
+(modules/hal_nordic/nrfx/libnrfx.a)nrfx_gppi_dppi.c.obj
+(modules/hal_nordic/nrfx/libnrfx.a)nrfx_gppi_ppi.c.obj
+(modules/hal_nordic/nrfx/libnrfx.a)nrfx_clock.c.obj
+(modules/hal_nordic/nrfx/libnrfx.a)nrfx_gpiote.c.obj
+(modules/hal_nordic/nrfx/libnrfx.a)nrfx_ppi.c.obj
+(modules/hal_nordic/nrfx/libnrfx.a)nrfx_spi.c.obj
+(modules/hal_nordic/nrfx/libnrfx.a)nrfx_spim.c.obj
+attempt to open zephyr/kernel/libkernel.a succeeded
+zephyr/kernel/libkernel.a
+(zephyr/kernel/libkernel.a)busy_wait.c.obj
+(zephyr/kernel/libkernel.a)device.c.obj
+(zephyr/kernel/libkernel.a)fatal.c.obj
+(zephyr/kernel/libkernel.a)init.c.obj
+(zephyr/kernel/libkernel.a)nothread.c.obj
+(zephyr/kernel/libkernel.a)timeout.c.obj
+(zephyr/kernel/libkernel.a)banner.c.obj
+attempt to open zephyr/arch/common/libisr_tables.a succeeded
+zephyr/arch/common/libisr_tables.a
+(zephyr/arch/common/libisr_tables.a)isr_tables.c.obj
+attempt to open /Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/../../picolibc/arm-zephyr-eabi/lib/thumb/v7e-m+fp/hard/libc.a succeeded
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/../../picolibc/arm-zephyr-eabi/lib/thumb/v7e-m+fp/hard/libc.a
+(/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/../../picolibc/arm-zephyr-eabi/lib/thumb/v7e-m+fp/hard/libc.a)strcmp.S.o
+(/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/../../picolibc/arm-zephyr-eabi/lib/thumb/v7e-m+fp/hard/libc.a)aeabi_memset.c.o
+(/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/../../picolibc/arm-zephyr-eabi/lib/thumb/v7e-m+fp/hard/libc.a)bzero.c.o
+(/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/../../picolibc/arm-zephyr-eabi/lib/thumb/v7e-m+fp/hard/libc.a)memcpy.c.o
+(/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/../../picolibc/arm-zephyr-eabi/lib/thumb/v7e-m+fp/hard/libc.a)memmove.c.o
+(/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/../../picolibc/arm-zephyr-eabi/lib/thumb/v7e-m+fp/hard/libc.a)memset.c.o
+(/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/../../picolibc/arm-zephyr-eabi/lib/thumb/v7e-m+fp/hard/libc.a)strlen.S.o
+(/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/../../picolibc/arm-zephyr-eabi/lib/thumb/v7e-m+fp/hard/libc.a)libc_errno_errno.c.o
+(/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/../../picolibc/arm-zephyr-eabi/lib/thumb/v7e-m+fp/hard/libc.a)libc_stdlib_arc4random.c.o
+(/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/../../picolibc/arm-zephyr-eabi/lib/thumb/v7e-m+fp/hard/libc.a)libc_string_explicit_bzero.c.o
+(/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/../../picolibc/arm-zephyr-eabi/lib/thumb/v7e-m+fp/hard/libc.a)libc_string_strchr.c.o
+(/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/../../picolibc/arm-zephyr-eabi/lib/thumb/v7e-m+fp/hard/libc.a)libc_string_strnlen.c.o
+(/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/../../picolibc/arm-zephyr-eabi/lib/thumb/v7e-m+fp/hard/libc.a)libc_tinystdio_puts.c.o
+(/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/../../picolibc/arm-zephyr-eabi/lib/thumb/v7e-m+fp/hard/libc.a)libc_tinystdio_vfprintf.c.o
+(/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/../../picolibc/arm-zephyr-eabi/lib/thumb/v7e-m+fp/hard/libc.a)libc_tinystdio_vfscanf.c.o
+(/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/../../picolibc/arm-zephyr-eabi/lib/thumb/v7e-m+fp/hard/libc.a)libc_tinystdio_atod_ryu.c.o
+(/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/../../picolibc/arm-zephyr-eabi/lib/thumb/v7e-m+fp/hard/libc.a)libc_tinystdio_atof_ryu.c.o
+(/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/../../picolibc/arm-zephyr-eabi/lib/thumb/v7e-m+fp/hard/libc.a)libc_tinystdio_dtoa_ryu.c.o
+(/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/../../picolibc/arm-zephyr-eabi/lib/thumb/v7e-m+fp/hard/libc.a)libc_tinystdio_ryu_divpow2.c.o
+(/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/../../picolibc/arm-zephyr-eabi/lib/thumb/v7e-m+fp/hard/libc.a)libc_tinystdio_ryu_log10.c.o
+(/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/../../picolibc/arm-zephyr-eabi/lib/thumb/v7e-m+fp/hard/libc.a)libc_tinystdio_ryu_log2pow5.c.o
+(/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/../../picolibc/arm-zephyr-eabi/lib/thumb/v7e-m+fp/hard/libc.a)libc_tinystdio_ryu_pow5bits.c.o
+(/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/../../picolibc/arm-zephyr-eabi/lib/thumb/v7e-m+fp/hard/libc.a)libc_tinystdio_ryu_table.c.o
+(/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/../../picolibc/arm-zephyr-eabi/lib/thumb/v7e-m+fp/hard/libc.a)libc_tinystdio_ryu_umul128.c.o
+(/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/../../picolibc/arm-zephyr-eabi/lib/thumb/v7e-m+fp/hard/libc.a)libm_common_s_isnan.c.o
+(/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/../../picolibc/arm-zephyr-eabi/lib/thumb/v7e-m+fp/hard/libc.a)libc_misc_lock.c.o
+(/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/../../picolibc/arm-zephyr-eabi/lib/thumb/v7e-m+fp/hard/libc.a)libc_signal_signal.c.o
+(/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/../../picolibc/arm-zephyr-eabi/lib/thumb/v7e-m+fp/hard/libc.a)libc_tinystdio_dtox_engine.c.o
+(/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/../../picolibc/arm-zephyr-eabi/lib/thumb/v7e-m+fp/hard/libc.a)libc_tinystdio_fgetc.c.o
+(/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/../../picolibc/arm-zephyr-eabi/lib/thumb/v7e-m+fp/hard/libc.a)libc_tinystdio_ungetc.c.o
+attempt to open /Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/../../picolibc/arm-zephyr-eabi/lib/thumb/v7e-m+fp/hard/libgcc.a failed
+attempt to open /Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/../../picolibc/arm-zephyr-eabi/lib/libgcc.a failed
+attempt to open /Users/eugene/work/GiftUI/.build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/libgcc.a failed
+attempt to open /Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/thumb/v7e-m+fp/hard/libgcc.a succeeded
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/thumb/v7e-m+fp/hard/libgcc.a
+(/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/thumb/v7e-m+fp/hard/libgcc.a)_arm_muldf3.o
+(/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/thumb/v7e-m+fp/hard/libgcc.a)_lshrdi3.o
+(/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/thumb/v7e-m+fp/hard/libgcc.a)_ashldi3.o
+(/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/thumb/v7e-m+fp/hard/libgcc.a)_arm_addsubdf3.o
+(/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/thumb/v7e-m+fp/hard/libgcc.a)_arm_muldivdf3.o
+(/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/thumb/v7e-m+fp/hard/libgcc.a)_arm_truncdfsf2.o
+(/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/thumb/v7e-m+fp/hard/libgcc.a)_aeabi_ldivmod.o
+(/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/thumb/v7e-m+fp/hard/libgcc.a)_aeabi_uldivmod.o
+(/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/thumb/v7e-m+fp/hard/libgcc.a)_popcountsi2.o
+(/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/thumb/v7e-m+fp/hard/libgcc.a)_fixdfdi.o
+(/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/thumb/v7e-m+fp/hard/libgcc.a)_fixunsdfdi.o
+(/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/thumb/v7e-m+fp/hard/libgcc.a)_udivmoddi4.o
+(/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/thumb/v7e-m+fp/hard/libgcc.a)_dvmd_tls.o
+(/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/thumb/v7e-m+fp/hard/libgcc.a)_arm_cmpdf2.o
+(/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/thumb/v7e-m+fp/hard/libgcc.a)_arm_fixunsdfsi.o
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(ActionHandler.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(BoundedText.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(Button.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(Canvas.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(Color.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(DeclarativeView.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(Disabled.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(DrawingStyles.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(DrawingSurface.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(GiftUI.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(LayoutContainers.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(LayoutModifiers.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(LayoutValues.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(ObservableState.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(StyleModifiers.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(Text.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(GiftUISemanticCore.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(SemanticRuntimeRecords.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(SemanticRecordStore.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(SemanticRecordExpansion.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(SemanticStandardPayload.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(SemanticLayoutView.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(SemanticRenderView.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(SemanticRecordLayoutView.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(SemanticRecordRenderView.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(GiftUITextResources.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(GiftUIPiCompactTextResources.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(GiftUIReferenceTextResources.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(ReferenceBitmapPayload.generated.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(ReferenceCatalogue.generated.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(ReferenceOutlinePayload.generated.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(PiCompactBitmapPayload.generated.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(PiCompactCatalogue.generated.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(Layout.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(LayoutCounters.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(LayoutEngine.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(LayoutError.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(LayoutGeometry.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(LayoutPublication.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(LayoutResultSink.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(LayoutSemanticValidation.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(LayoutValues.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(LayoutWorkspace.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(ResolvedRenderLayoutView.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(DrawingOperationSink.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(RenderOperationSink.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(RenderRecordingSink.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(RenderValues.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(AdmissionValues.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(ExecutionAdmissionController.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(ExecutionAdmissionSealTransaction.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(ExecutionAdmissionSealer.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(ExecutionMutationBatch.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(ExecutionOpportunityRunner.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(ExecutionPhaseMachine.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(ExecutionValues.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(ExecutionWakeAccumulator.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(FrameHandoffValues.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(FrameOfferNormalization.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(IdentityAllocators.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(InputSourceSequenceState.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(ObservableTargetGeneration.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(PointerActionCapture.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(RecordingCandidateOfferCoordinator.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(RecordingCycleCoordinator.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(RecordingCycleFinalizer.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(RecordingDerivationRecovery.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(RecordingDerivationTransaction.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(RecordingFocusedFailureSelection.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(RecordingFrameCommitTransaction.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(RecordingFrameEndpoint.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(RecordingMutationBatch.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(RecordingPresentationPendingCoordinator.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(RecordingPresentationTerminalRecovery.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(RunCycleValues.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(WakeValues.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(EffectiveActionEnabledState.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(ExecutionGestureAdapter.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(InteractionFailurePrecedence.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(InteractionOwnedKeyState.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(InteractionState.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(InteractionStorage.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(InteractionValues.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(ObservableStateValues.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(ObservableModelIdentity.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(ObservableModelOwnership.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(ObservableModelTicket.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(ObservableModelScope.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(ObservableModelMutation.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(ObservableStateModel.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(ObservableStateRegistrationLifecycle.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(ObservableStateRootScope.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(ObservableStateRootTargetAccess.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(ObservableStateBindingDecorator.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(ObservableSemanticBodyBinding.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(RenderExtensions.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(RenderPreflight.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(RenderProducer.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(RenderProductionValues.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(RenderStreaming.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(CanvasRenderProducer.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(CanvasInvocationSource.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(CanvasPlanProducer.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(CanvasStagedValues.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(CanvasSemanticPayload.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(DrawingLimits.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(DrawingPlan.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(DrawingValues.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(StaticCanvasCallableTable.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(PathConstruction.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(StrokeSnapshot.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(RuntimeRecordInteractionBridge.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(RuntimeRecordCanvasInteractionBridge.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(RuntimeInteractionCandidateResolution.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(ObservableCanvasInvocationSource.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(RuntimeProfileValues.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(RuntimeProfileValidation.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(RuntimeStorageRegistry.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(RuntimeOwnerFailure.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(RuntimeCoordinatorCleanup.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(RuntimeCompletePipeline.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(RuntimeCoordinatorContracts.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(RuntimeProfileStorage.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(StaticRuntimeExecutionCoordinator.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(StaticObservableModelStorage.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(StaticObservableRootAdapter.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(StaticObservableRootTargetAccess.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(StaticCanvasValueStorage.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(StaticSemanticRecordStorage.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(StaticInteractionStorage.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(StaticRecordDrawingWorkspace.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(GiftUICapabilities.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(GiftUIFailureCore.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(RasterSurface.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(SurfaceValues.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(DisplayContracts.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(SurfaceDisplayContributionAdapter.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(FullSurfaceRGB565Framebuffer.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(FullSurfaceRGBA8888Buffer.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(RGB565TileWorkspace.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(RasterBackendContributionAdapter.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(RasterFillCoverage.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(RasterFrameSink.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(RasterFrameWork.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(RasterGlyphCoverage.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(RasterPayloadLimits.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(RasterStrokeCoverage.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(RasterWorkTracker.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(FullSurfacePayloadEmitter.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(OneShotRasterBackendEndpoint.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(OperationMajorRGB565RasterSession.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(OperationMajorTileTraversal.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(RGB565TilePayloadEmitter.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(RasterBackendEndpoint.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(RasterBackendOwnerFailureAdapter.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(RasterBackendStartupValidator.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(RasterFrameWorkAdmission.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(RasterTextResourceValidation.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(CheckedMVPHostConfigurationValidator.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(HostActivationController.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(HostApplicationOpportunityGate.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(HostApplicationStartupValidation.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(HostComponentGraphValidation.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(HostConfigurationResults.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(HostConfigurationValues.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(HostEndpointHealthController.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(HostEndpointStartupValidation.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(HostFailureAdapter.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(HostNormalizedInputGate.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(HostPresentationRecovery.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(HostPresetBootstrap.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(HostResidualFailureRouting.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(HostResidualPolicyContracts.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(HostResidualPolicyTableValidation.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(HostScheduledOpportunityController.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(HostSequencedFactAdmission.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(HostWakePacingController.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(SignalAnalyzerDrawingStartupValidation.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(SignalAnalyzerPresetHostInstance.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(SignalAnalyzerWorkloadStartupValidation.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(SignalAnalyzerPresets.generated.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(CounterSchema.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(Counter.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(CounterTable.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(CounterModel.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(CounterModelProbe.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(CounterSemantic.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(CounterSemanticProbe.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(CounterGeometry.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(CounterStaticGeometry.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(CounterRender.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(CounterFixedStorageProbe.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(StaticCounterDrawingPlanRecords.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(StaticCounterDrawingPlanStorage.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(StaticCounterDrawingWorkspace.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(StaticCounterInteractionStorage.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(StaticCounterLayoutScopeCodec.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(StaticCounterLayoutTextCodec.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(StaticCounterLayoutWorkspace.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(StaticCounterLivePathStorage.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(StaticCounterRenderWorkspace.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(StaticCounterResolvedLayout.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(CounterAdmission.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(CounterPipelineOwner.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(CounterProfileStorage.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(CounterStorageMeasurement.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(CounterStorageRegions.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(CounterCoordinatorProbe.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(CounterWorkload.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(CounterHostAssembly.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(CounterHostOwner.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(CounterHostProbe.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(CounterDynamicHostOwner.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(CounterDynamicHostProbe.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(CounterHostCorpus.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(CounterNativeRaster.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(CounterTiledRaster.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(CounterPixelOracle.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(CounterApplication.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(CounterWakeIntegration.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(CounterGraphProbe.swift.obj)' being placed in section `.swift_modhash'
+/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: warning: orphan section `.swift_modhash' from `app/libapp.a(CounterRouteEntry.swift.obj)' being placed in section `.swift_modhash'
+collect2: error: ld returned 1 exit status

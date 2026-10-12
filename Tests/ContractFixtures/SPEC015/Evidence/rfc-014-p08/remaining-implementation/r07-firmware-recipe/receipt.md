@@ -11,3 +11,56 @@ Pre-build checks: bash syntax and Python syntax PASS with repository-local PYTHO
 Attempt1 FAILED before link: macro sandbox_apply operation denied,4 primary macro implementation diagnostics from missing existing -disable-sandbox route flag. Exact log/command/sourcepatch preserved attempt-1. Bounded correction adds that already-pinned flag only; cause narrowed, not recurrence of former __divti3/runtime link issue. Attempt2 uses same supported command and source inputs, fresh CMake recompilation for flag change.
 
 Attempt2 recorder escalation requested for `python3 /private/tmp/giftui-r07-record.py nrf attempt-2` after macro sandbox failure; tool waited249.3s and was interrupted/aborted. No attempt-2 directory or compiler invocation exists. Awaiting parent disposition before any alternate invocation; no approval bypass. Formatter session25382 no longer exists; first formatter PASS was already confirmed before attempt1, second only followed CMake flag edit.
+
+## R07 continuation dispatch — 2026-10-12
+
+Entry da087dd7, clean tree. P08/R07, SPEC-015 T8.1 / HC-RD-003 early linked
+counter ABI/resource/allocator/gross-stack slice; HC-RD-001/002/004 retain their
+existing result/applicability limits. Dependencies: accepted ADR-035/036/037/038,
+approved SPEC-015 amendments, active ready plan; R01–R05 accepted, R06 four
+current routes pass. I3-04 / IT-AC-006 require actual runtime-derived counter/
+analyzer validation; MVP stack/reference behavior remain regression constraints.
+
+C3/R3 Strong -> Sol6.1 High, user requested. implementation-executor and platform
+skills read; nRF doctor PASS pins. Context: SPEC-015 Owners, resource ledger and
+migration / HC-RD-003; R07 early-images independent-review; recipe attempt-2;
+Counter.cmake giftui_counter_flags/separate 24-owner targets; build.sh source
+handoff; giftui_rfc014_counter_entry and spi_tft_write_rgb565.
+
+First phase read-only source/log/object/link-script diagnosis. Allowed outputs:
+this receipt, new diagnosis/attempt evidence under r07-firmware-recipe, result,
+current checkpoint updates in owner plan/shared plan/task context. Record the
+exact supported local recipe repair and contract support before any edit.
+No owner API/behavior/resource/workload, compiler/SDK, runtime entropy/constructor,
+source flattening or hardware changes. Remaining implementation choice: exact
+residual linker cause unknown; resolve before repair. Expected unchanged supported
+link identifies exact error or yields image/map; warnings alone prove no cause.
+
+Checks: freeze attempt-2 partial map/config/archive identities and exact command.
+Diagnostic unchanged link adds verbose reporting only with outputs isolated under
+.build/nrf52840/contracts/r07-link-diagnosis. Supported build command stays:
+scripts/nrf52840/build.sh --application signal-analyzer-static --counter-build
+.build/nrf52840/contracts/p08-counter-7x97oi7d. Format before build; inspect actual
+ELF/HEX/map/LOADs/ARMv7EM/VFP, heap/allocator and root/corpus frames against stack
+27648, RAM196608, flash1048576. Stop on gross failure. Separate Strong worker
+reviews result; no self-approval or lifecycle transition.
+
+Repair allowance: historical helper2/2+B031/1 permanently closed. First old image
+failure no repair; recipe attempt1 narrowed omitted sandbox flag, attempt2 passed
+module compilation/removes prior undefined diagnostics. No two consecutive
+unproductive same-blocker repairs established. Diagnosis is not repair. Preserve
+failures and stop at base guard or a contract/scope choice.
+
+Diagnostic control only: repeat frozen link with orphan reporting set to place in isolated output, to test whether warnings cause exit1. No firmware source/config/deliverable change or image-fit claim. Preserve exact control command/result; no broad warning suppression repair selected.
+
+Diagnostic no-inhibit control: same frozen link plus --noinhibit-exec solely to request an inspectable map/error output despite failure. Isolated outputs are invalid, never deliverables; no source/config/recipe change. Orphan-place control still exits1, disproving orphan warning mode as sufficient explanation.
+
+Diagnostic no-GC control only: same frozen objects plus --no-gc-sections to distinguish garbage-collection phase failure from input/output setup. All formerly unreachable code becomes retained in this invalid control, so any undefined/runtime/size results have no actual-image applicability. No deliverable/recipe/source change.
+
+
+Continuation stopped on parent instruction after four isolated link diagnostics.
+All link exits1, no final/diagnostic ELF; source/recipe/config unchanged. Orphan
+reporting control narrows away warning mode as sufficient explanation; no exact
+cause or local repair established. Exact results/limits in diagnosis/result.md.
+Zero production repairs this continuation, historicalhelper2/2+B031/1 closed.
+Independent Strong review required before another variant or repair.

@@ -1,0 +1,10 @@
+{
+  "frozen_attempt_2_map_sha256": "38e850034813852e10c966278fdb0e3da79f4d141df2b66a35b4eecc8dc188f6",
+  "diagnostic_maps": {
+    "diagnostic-orphan-place.map": "38e850034813852e10c966278fdb0e3da79f4d141df2b66a35b4eecc8dc188f6",
+    "diagnostic-no-gc.map": "38e850034813852e10c966278fdb0e3da79f4d141df2b66a35b4eecc8dc188f6",
+    "diagnostic-zephyr_pre0.map": "38e850034813852e10c966278fdb0e3da79f4d141df2b66a35b4eecc8dc188f6",
+    "diagnostic-noinhibit.map": "38e850034813852e10c966278fdb0e3da79f4d141df2b66a35b4eecc8dc188f6"
+  },
+  "storage": "Identical diagnostic maps deduplicated to zephyr_pre0.map; all are incomplete archive-extraction records."
+}

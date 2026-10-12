@@ -1,6 +1,18 @@
 # RFC-014 bounded implementation sequence — 2026-10-10
 
-**Current P08 checkpoint — four current counter routes PASS; early images next, 2026-10-12.**
+**Current P08 checkpoint — R07 residual nRF link diagnosis stopped for independent review, 2026-10-12.**
+Four current R06 counter routes pass; Pi early image linked with its qualified
+ARMv6/VFP/resource result. Corrected nRF firmware recipe attempt2 compiles24owners
+but prelink exits1. [Frozen sequential diagnosis](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/remaining-implementation/r07-firmware-recipe/diagnosis/result.md)
+records four isolated link diagnostics, all exit1/no ELF; orphan reporting mode
+alone does not explain the failure, exact cause unresolved. No compiler/source/
+recipe/config repair in this continuation. Further variants stopped by parent
+pending separate Strong review. Final nRF ABI/zeroheap/RAM/flash/gross-stack and
+independent P08 exit remain open. Historicalhelper2/2+B031/1 closed; zero production
+repairs this continuation. SPEC015 implementing/planactive/T8.1/P08 open;
+P09–P12 pending, no hardware action or target/image-fit claim.
+
+**Historical P08 checkpoint — four current counter routes PASS; early images next, 2026-10-12.**
 Source1497f0ae actual nativeStatic/Dynamic PASS1,349,555/1,349,501 zero24/24;
 Pi ARMv6 PASS28/28 and nRF Static PASS26/26 compile-only. All4current source input
 sets match. [Exact current-route result](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/remaining-implementation/r06-current-routes/result.md).
