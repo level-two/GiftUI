@@ -701,3 +701,61 @@ boundaries, lifecycle/factory-origin negatives, four routes and Embedded/early
 linked target resource/ABI evidence. Historical2/2 closed, B031/1 spent; neither
 reset. SPEC-015 implementing/plan active/T8.1 and P08 open, P09–P12 pending.
 Commit and stop for separate review/dispatch.
+
+### Remaining native P08 dispatch — R02 through R05
+
+Entry `d2df7dcc`, clean. Sequential Strong `gpt-6.1-sol` / `high`, C3/R3.
+R01 passes new actual-host wake controls; B03 independent acceptance permits the
+existing remaining-P08 obligations. This bounded assignment covers only the
+remaining native B01 gaps, in separate committed steps:
+
+1. R02: actual foreign control/profile/report binding rejection and production
+   burst/category boundaries (HC-011/018, HC-RD-004).
+2. R03: actual nonretryable refusal/newer-revision supersession without replay
+   (HC-011/014, HC-RD-002/004).
+3. R04: actual activation failures at every step and supplied-backing expiry
+   controls (HC-014/018, HC-RD-002).
+4. R05: actual required construction-origin/callback-indirection rejection before
+   later validation projection (HC-003, HC-RD-001/002).
+
+Before each step, record exact source symbols/files, independently expected cases,
+commands and evidence destination in this receipt. Work remains in the existing
+SPEC015 RuntimeDerived counter composition/tests and directly corresponding
+counter driver; choose local implementation details only within approved
+contracts. Retain exact existing role ownership, runtime APIs, limits, backing,
+canonical wake, scheduler and policies. No generic API redesign, unsafe conformance,
+compiler/dependency change, new allocator/capacity, target builds or P09 work.
+If a required fix falls outside this footprint, report the concrete finding to
+the parent before editing; contract/scope/ownership decisions go to the user.
+
+Format before source-specific validation with the existing verified pinned
+counter command; test each coherent step, freeze concise identities/logs/results,
+commit each step and continue sequentially only after its check passes. Do not
+broaden already passing checks without new edits or an unresolved concern.
+Preserve the base two-consecutive-unproductive-repair stop and every failure;
+historical 2/2 and B03 1/1 remain closed. A recurrence of their exhausted blocker
+stops, not a new allowance. No new budget is authorized here. Independent Strong
+review follows this bounded native assignment; no self-acceptance of P08.
+
+### Remaining P08 R02 pre-edit finding — 2026-10-12
+
+**R02 not implemented; paused at parent-directed independent review boundary.**
+[Concrete source/contract packet and local options](remaining-implementation/r02-binding-production-findings/finding.md)
+separates exact binding identity from production category applicability. Current
+binding constructors guard actual root/model backing association, but accept
+separate arbitrary control/audit inputs. Existing supplied composition may
+provide the trusted anchor for a local checked join without a new owner/API;
+missing guards alone are not declared architectural or a human approval gate.
+The packet explains why raw owner UInt32, copied audit/report or a descriptor
+derived from the same candidate does not independently establish association.
+
+SPEC-015's approved finite-counter amendment preserves its scalar corpus/own
+workload without analyzer storage claims. Actual counter queue34/35 and scalar
+callbacks must not be relabeled analyzer20/2/6, compact32/33 proof. Analyzer
+production obligations remain mandatory; independent review should decide their
+correct existing-path assignment before edits. No limit/contract change proposed.
+
+Only finding/identity receipt and this dispatch/progress changed; no source,
+formatter/compiler/driver/binary, dependency refresh or target build. R03–R05
+not started, R02 validation not invoked. Historical2/2 and B031/1 closed. Commit
+finding and return for independent Strong review; no self-acceptance or P09.

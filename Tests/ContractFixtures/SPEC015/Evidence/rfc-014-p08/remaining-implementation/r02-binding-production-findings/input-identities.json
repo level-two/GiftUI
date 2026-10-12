@@ -1,0 +1,23 @@
+{
+  "entry_commit": "d2df7dcc0e0292ee656b1ce7723a2a2fa471ea6c",
+  "method": "Read/hash only; no source edits, compiler, formatter, driver or binary execution.",
+  "files": {
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterAdmission.swift": "d0c199397cb384ecbd221160773b44ee476df1b930aefc81a9197eed6b72353e",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostOwner.swift": "7b0d21fb2f7da692993706169c8d3025ade17c4c9f548f178b40c5040bae493b",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterDynamicHostOwner.swift": "675692a38fc622e03fdc636a17cfd86da4d800d3f0e6481c96cb3e3fd4150731",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterProfileStorage.swift": "6659fa0acfe4ac6f2bbcd7dda25741e513fc11a2b9f57edd03da1ce0447f33b6",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift": "b3252b9611b68beb020c69de336e572c7b0f9e4da4277843f31b6cc7afbf2d29",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterApplication.swift": "49ca8b09587c31dfbb0e8b8eaf9a84a19c6f87ab5cf2f37f60e992585d3de5e2",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWorkload.swift": "c96a534a0c45e445c25c56263c3ddb4ad3c5e68626e8f55aded3129f39721dff",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostAssembly.swift": "a3bb03a2b7cef094bbc24896716625d4f190eec8309bf8ab030de98c926b4544",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterCoordinatorProbe.swift": "2d7fe7c96b38506e4dbcca9395a2941ad18010bcca27c5cab479219873c62713",
+    "Sources/GiftUIObservableState/ObservableModelIdentity.swift": "b3100dea3f31eb0b508d07da66dc1aafb3da4235774502a36db9f46c9fd82a0a",
+    "Sources/GiftUIObservableState/ObservableModelScope.swift": "08be628f0514504f0e83d04cd80e6cdd717c9791658fa46229b005365d8064d3",
+    "Sources/GiftUIObservableState/ObservableStateRootScope.swift": "6fbcfe7b098eb5c662d6e52cd020c26f0cff4e78c1765df6658f1e8434313707",
+    "Sources/GiftUIHostConfiguration/HostConfigurationResults.swift": "3e00d5e22b04e6ccb25ab357f2d6fe96349f2ab31abf3cf9201206110d83b205",
+    "Sources/GiftUIHostConfiguration/HostScheduledOpportunityController.swift": "467525eaaaac20ac9a891e973f1d0a34cc3c037a7eb934448fa968f47a260838",
+    "Sources/GiftUIHostConfiguration/HostApplicationStartupValidation.swift": "afbfb8cbd95df3a56052e8909c44592e560c94a2907a76ca515aaeed2489cfb8",
+    "docs/specs/spec-015-host-configuration.md": "758a857394c3b9a55be85fcab6806737de5f04cadd2815e940eb4ff8c6810c67",
+    "docs/implementation-designs/spec-015-wake-and-pacing.md": "2366322427062cc75c5e41aa4d68c7a0d308b31ac5b006e6bce385f3bf004dbd"
+  }
+}
