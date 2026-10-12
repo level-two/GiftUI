@@ -370,7 +370,9 @@ WIP and driver controls; these additions are unvalidated. Both pinned Swift 6.4
 `counter-model` compiles hit the same SILGen assertion in
 `CounterHostState.constructedRuntimeProjectionIsValid`; local resumed guard
 **2/2**, no third compile or repair. Historical closed guards remain closed.
-Parent independent read-only review is next; further bounded authorization is
-required before affected compiler work. Graph/four routes/early linked images
+[Independent read-only review](remaining-implementation/step-7g-graph-stop/independent-review.md)
+upholds the stop at clean `cfaa57af`, verifies both frozen failures and identifies
+the dependency-trace requirement. Its proposed one-attempt continuation remains
+untested and requires fresh authorization. Graph/four routes/early linked images
 and P08 exit remain open. SPEC-015 implementing, plan active, T8.1 incomplete.
 No graph validation, upstream contract blocker or P08 pass is claimed.

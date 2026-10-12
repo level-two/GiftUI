@@ -4,7 +4,7 @@
 
 ww2ukmjc failed pinned Swift6.4 counter-model SILGen with `can't set insertion point to a null instruction`, at CounterHostState.constructedRuntimeProjectionIsValid. The helper borrows the retained noncopyable enum and projects actual coordinator/model/root/cache/admission/wake state. Preserve full command, crash/backtrace and proposed changed fixture inputs.
 
-One bounded repair removed nested noncopyable Optional-cache inspection, already covered by prior retained-cache lifetime proof, retaining actual root/models/admission/wake/endpoint checks. fbi5sbvm failed with the same assertion, stage and function, without passing or narrower evidence. Under conservative resumed repair accounting this reaches2/2. No third compile, new compiler, unchecked conformance, weakened expected value or contract change. Historical closed guards remain closed. Proposed source edits are intentionally preserved uncommitted; this packet commits only review evidence.
+One bounded repair removed nested noncopyable Optional-cache inspection, already covered by prior retained-cache lifetime proof, retaining actual root/models/admission/wake/endpoint checks. fbi5sbvm failed with the same assertion, stage and function, without passing or narrower evidence. Under conservative resumed repair accounting this reaches2/2. No third compile, new compiler, unchecked conformance, weakened expected value or contract change. Historical closed guards remain closed. Evidence was committed in b3950465; subsequent checkpoint cfaa57af commits the six unvalidated implementation/driver files unchanged. The working tree was clean at independent review. See [independent stop review](independent-review.md).
 
 ## Proposed construction inventory for review
 

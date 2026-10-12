@@ -14,8 +14,11 @@ was committed in `b3950465`; the following source checkpoint preserves the exact
 failed WIP for independent read-only review. This stop does not reopen the closed
 activation audit or establish an upstream contract blocker.
 
-Independent review of the smallest proposed projection alternative is next;
-a further bounded implementation allowance is required before compiler work.
+[Independent stop review](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/remaining-implementation/step-7g-graph-stop/independent-review.md)
+upholds the stop at clean `cfaa57af`, verifies both frozen failures, and requires
+an exact dependency trace before considering a different projection shape.
+Its proposed one-attempt continuation is untested and requires fresh explicit
+authorization; no further compiler work is authorized by the review.
 Graph validation, four registered routes, early linked target-image evidence and
 independent P08 exit review remain open. SPEC-015 stays implementing, its plan
 active and T8.1 incomplete. No graph validation or P08 pass is claimed. This
