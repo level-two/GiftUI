@@ -1,0 +1,108 @@
+[
+  {
+    "checks": 33,
+    "command": [
+      "scripts/contracts/run-spec-013.sh",
+      "--profile",
+      "macos-dynamic",
+      "--compiler-baseline",
+      "rfc-014",
+      "--giftui-build",
+      ".build/contracts/spec-006-rfc-014-swift64/af66aaf967e3fe8f-__4p5wu2/macos-dynamic"
+    ],
+    "compiler": ".toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc",
+    "compiler_sha256": "79ae5c26645489fb783ae980f0f1bdae810f90fb180c9ac39808807b65e9fd69",
+    "execution": "P07 values assertions=5904 failures=0",
+    "exit": 0,
+    "freshness": "all recorded inputs, artifacts, core receipt and compiler match current bytes",
+    "input_count": 165,
+    "logical_transcript_cases": 26,
+    "profile": "macos-dynamic",
+    "result": ".build/contracts/spec-013-runtime-cycle/tmp_63jv4xj/macos-dynamic/result.json",
+    "result_sha256": "ec8f19aaa3f28ffd0f7e869c9506dff1c75ec4d3a1b8164eae7dfb567a9d7900",
+    "source_commit": "f2ab3dd77461ff6f83255502bbccd1718d1403f2",
+    "source_dirty": true,
+    "storage_totals": {
+      "dynamic": 166240,
+      "static": 68503
+    }
+  },
+  {
+    "checks": 33,
+    "command": [
+      "scripts/contracts/run-spec-013.sh",
+      "--profile",
+      "macos-static",
+      "--compiler-baseline",
+      "rfc-014",
+      "--giftui-build",
+      ".build/contracts/spec-006-rfc-014-swift64/b694e911d7d7658a-gn53u2vi/macos-static"
+    ],
+    "compiler": ".toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc",
+    "compiler_sha256": "79ae5c26645489fb783ae980f0f1bdae810f90fb180c9ac39808807b65e9fd69",
+    "execution": "P07 values assertions=5904 failures=0",
+    "exit": 0,
+    "freshness": "all recorded inputs, artifacts, core receipt and compiler match current bytes",
+    "input_count": 165,
+    "logical_transcript_cases": 26,
+    "profile": "macos-static",
+    "result": ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static/result.json",
+    "result_sha256": "39772d9e2cc7d70f47b82970dd1b89ddd3236274ccbb57cf9c547ce4aeaedf69",
+    "source_commit": "ef5f4dafab10974a47e88fad9bcb4ffd39c8f84d",
+    "source_dirty": true,
+    "storage_totals": {
+      "dynamic": 166240,
+      "static": 68503
+    }
+  },
+  {
+    "checks": 32,
+    "command": [
+      "scripts/contracts/run-spec-013.sh",
+      "--profile",
+      "raspberry-pi-armv6",
+      "--compiler-baseline",
+      "rfc-014",
+      "--giftui-build",
+      ".build/raspberry-pi/contracts/spec-006-rfc-014-swift64/39961046dd4e63d8-aj3k5c43/raspberry-pi-armv6"
+    ],
+    "compiler": ".toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc",
+    "compiler_sha256": "79ae5c26645489fb783ae980f0f1bdae810f90fb180c9ac39808807b65e9fd69",
+    "execution": "cross-compiled only; no target execution",
+    "exit": 0,
+    "freshness": "all recorded inputs, artifacts, core receipt and compiler match current bytes",
+    "input_count": 165,
+    "logical_transcript_cases": 0,
+    "profile": "raspberry-pi-armv6",
+    "result": ".build/raspberry-pi/contracts/spec-013-runtime-cycle/tmpvq70p7a0/raspberry-pi-armv6/result.json",
+    "result_sha256": "3ba136e814e0ae8462ea56b49a344d1371c4dc70b95ad79f46c1a471028b877b",
+    "source_commit": "ef5f4dafab10974a47e88fad9bcb4ffd39c8f84d",
+    "source_dirty": true,
+    "storage_totals": {}
+  },
+  {
+    "checks": 31,
+    "command": [
+      "scripts/contracts/run-spec-013.sh",
+      "--profile",
+      "nrf52840-embedded",
+      "--compiler-baseline",
+      "rfc-014",
+      "--giftui-build",
+      ".build/nrf52840/contracts/spec-006-rfc-014-swift64/39961046dd4e63d8-lv470rbm/nrf52840-embedded"
+    ],
+    "compiler": ".toolchains/nrf52840/swift/swift-6.4.0-RELEASE-osx/usr/bin/swiftc",
+    "compiler_sha256": "79ae5c26645489fb783ae980f0f1bdae810f90fb180c9ac39808807b65e9fd69",
+    "execution": "cross-compiled only; no target execution",
+    "exit": 0,
+    "freshness": "all recorded inputs, artifacts, core receipt and compiler match current bytes",
+    "input_count": 152,
+    "logical_transcript_cases": 0,
+    "profile": "nrf52840-embedded",
+    "result": ".build/nrf52840/contracts/spec-013-runtime-cycle/tmp9d1k2h7s/nrf52840-embedded/result.json",
+    "result_sha256": "51a1091765bb9f839bc53e07f87f5477ceff0d72ae18aac9fe0ddfd72ff9cc25",
+    "source_commit": "74c53f2b8eff7bed78f72a70260160aaadd171ed",
+    "source_dirty": true,
+    "storage_totals": {}
+  }
+]
