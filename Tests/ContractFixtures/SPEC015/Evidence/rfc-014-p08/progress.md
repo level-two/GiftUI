@@ -286,3 +286,12 @@ assertions pass across Static/Dynamic source/model/State/semantic/Canvas/layout/
 drawing/combined-render components. Counter owns finite Static codec regions; no
 analyzer backing retained. Actual coordinator/host/fourroutes/earlyimages remain
 open; no package exit claim. Guard0/2.
+
+## Remaining step5a — actual counter coordinators/storage (2026-10-12)
+
+[Receipt](remaining-implementation/step-5a-counter-coordinator/result.md):1285
+counted assertions pass with actual Static/Dynamic coordinators and26family
+audits. Finite34fact/onecompletion admission, all0–9 full pipeline commits and
+exactly-once quiescent root/routing cleanup pass. Host nine-stage construction/
+activation, complete cache/callback lifecycle, four application routes and early
+linked images remain open. Guard0/2; no package exit claim.

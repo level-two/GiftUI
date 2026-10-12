@@ -11,7 +11,7 @@ import P08CounterPresentation
 
 private let counterRecordLimits = SemanticRecordLimits(records: 64, paths: 192, depth: 24, fanout: 5, payloads: 64, textScalars: 64, payloadBytes: 4096)!
 private let counterExpansionLimits = SemanticExpansionLimits(maximumDepth: 24, maximumSemanticNodes: 24, maximumBodyEvaluations: 8, maximumModifierApplications: 8, maximumActionOccurrences: 2)!
-private struct CounterSemanticBacking: ~Copyable {
+private struct CounterProbeSemanticBacking: ~Copyable {
     var records: InlineArray<128, SemanticRuntimeRecord> = .init(repeating: .init())
     var paths: InlineArray<384, SemanticPathEntry> = .init(repeating: .init())
     var payloads: InlineArray<128, CounterPayload?> = .init(repeating: nil)
@@ -134,7 +134,7 @@ private func counterSemanticBacking(models: borrowing ObservableModelScope<Count
         }
         #endif
         var storage = StaticSemanticRecordStorage(limits: counterRecordLimits, owner: try namespace.issue())
-        var backing = CounterSemanticBacking()
+        var backing = CounterProbeSemanticBacking()
         var records = backing.records.mutableSpan; var paths = backing.paths.mutableSpan
         var payloads = backing.payloads.mutableSpan; var scalars = backing.scalars.mutableSpan
         return try storage.withLifetime(records: &records, paths: &paths, payloads: &payloads, scalars: &scalars) { (semantic) throws(SemanticExpansionError) in try exerciseCounter(semantic, models: models, root: root, dynamic: false) }

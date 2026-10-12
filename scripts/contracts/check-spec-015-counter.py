@@ -36,6 +36,8 @@ flags = ['-I', str(out), *flags]
 fixture = ROOT / 'Tests/ContractFixtures/SPEC015/RuntimeDerived'
 inputs = [pathlib.Path(__file__).resolve(), fixture / 'Counter.swift', fixture / 'Counter.schema.json', fixture / 'CounterModel.swift', fixture / 'CounterModelProbe.swift', fixture / 'CounterSemantic.swift', fixture / 'CounterSemanticProbe.swift', fixture / 'CounterGeometry.swift', fixture / 'CounterStaticGeometry.swift', fixture / 'CounterRender.swift', fixture / 'CounterFixedStorageProbe.swift']
 storage_sources = sorted(fixture.glob('StaticCounter*.swift'))
+join_sources = [fixture / name for name in ('CounterAdmission.swift', 'CounterPipelineOwner.swift', 'CounterProfileStorage.swift', 'CounterStorageMeasurement.swift', 'CounterStorageRegions.swift', 'CounterCoordinatorProbe.swift')]
+inputs.extend(join_sources)
 inputs.extend(storage_sources)
 commands, checks = [], []
 def run(label, command):
@@ -54,10 +56,10 @@ for name, source in (('P08CounterSchema', 'CounterSchema.swift'), ('P08CounterPr
     run(name, [compiler, *flags, '-module-name', name, '-emit-module', '-emit-object', out / source,
                '-emit-module-path', out / (name + '.swiftmodule'), '-o', out / (name + '.o')])
 run('counter-model', [compiler, *flags, '-module-name', 'P08CounterRuntime', '-emit-module', '-emit-object',
-                      fixture / 'CounterModel.swift', fixture / 'CounterModelProbe.swift', fixture / 'CounterSemantic.swift', fixture / 'CounterSemanticProbe.swift', fixture / 'CounterGeometry.swift', fixture / 'CounterStaticGeometry.swift', fixture / 'CounterRender.swift', fixture / 'CounterFixedStorageProbe.swift', *storage_sources,
+                      fixture / 'CounterModel.swift', fixture / 'CounterModelProbe.swift', fixture / 'CounterSemantic.swift', fixture / 'CounterSemanticProbe.swift', fixture / 'CounterGeometry.swift', fixture / 'CounterStaticGeometry.swift', fixture / 'CounterRender.swift', fixture / 'CounterFixedStorageProbe.swift', *storage_sources, *join_sources,
                       '-emit-module-path', out / 'P08CounterRuntime.swiftmodule', '-o', out / 'P08CounterRuntime.o'])
 main = out / 'Main.swift'
-main.write_text('import P08CounterRuntime\nimport Darwin\n@main struct Main { static func main() { setbuf(stdout, nil); print("P08 counter components assertions=\\(p08CounterModel() + p08CounterSemantic() + p08CounterFixedStorage()) failures=0") } }\n')
+main.write_text('import P08CounterRuntime\nimport Darwin\n@main struct Main { static func main() { setbuf(stdout, nil); print("P08 counter components assertions=\\(p08CounterModel() + p08CounterSemantic() + p08CounterFixedStorage() + p08CounterCoordinator()) failures=0") } }\n')
 objects = [path for path in sorted(base.glob('*.o')) if path.name not in ('RuntimeCycleProbe.o', 'CycleSchema.o', 'CyclePresentation.o', 'CycleTable.o', 'P07TargetWorkspace.o')]
 run('link', [compiler, *flags, main, core / 'GiftUI.o', *objects, *sorted(out.glob('*.o')), '-o', out / 'counter'])
 execution = run('execute', [out / 'counter']).strip()

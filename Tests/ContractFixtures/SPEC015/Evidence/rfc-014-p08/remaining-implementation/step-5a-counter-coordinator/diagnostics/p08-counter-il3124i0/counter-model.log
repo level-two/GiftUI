@@ -1,0 +1,95 @@
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterAdmission.swift:20:39: error: cannot find type 'RunCounterResult' in scope
+ 18 |         if phase.context.phase == .idle { terminatePresentation() }
+ 19 |     }
+ 20 |     mutating func runOpportunity() -> RunCounterResult<RuntimeOwnerFailure> {
+    |                                       `- error: cannot find type 'RunCounterResult' in scope
+ 21 |         guard phase.context.phase == .idle else {
+ 22 |             return .failure(phase.context, .execution(.reentrancyViolation), nil)
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterAdmission.swift:33:22: error: cannot find type 'RunCounterFailure' in scope
+ 31 |         let disposition: RuntimePipelineDisposition
+ 32 |         let operational: ExecutionOperational?
+ 33 |         let failure: RunCounterFailure<RuntimeOwnerFailure>?
+    |                      `- error: cannot find type 'RunCounterFailure' in scope
+ 34 |         switch result {
+ 35 |         case .completed(let completion):
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift:119:44: error: incorrect argument label in call (have 'counter:semanticRevision:candidateFrame:phase:', expected 'cycle:semanticRevision:candidateFrame:phase:')
+117 |     var presentations = PresentationRevisionAllocator()
+118 |     var generations = RuntimeActionGenerationAllocator<SemanticCompleteIdentity>()
+119 |     var completedContext = ExecutionContext(counter: nil, semanticRevision: nil, candidateFrame: nil, phase: .idle)
+    |                                            `- error: incorrect argument label in call (have 'counter:semanticRevision:candidateFrame:phase:', expected 'cycle:semanticRevision:candidateFrame:phase:')
+120 |     var committedPresentation: PresentationRevision?
+121 |     var sealedAdmission: AdmissionSummary?
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterAdmission.swift:65:24: error: cannot infer contextual base in reference to member 'execution'
+ 63 |         }
+ 64 |         if case .nonRetryableRefusal = failure { terminal = true }
+ 65 |         if failure == .execution(.requiredFacilityUnavailable) { terminal = true }
+    |                        `- error: cannot infer contextual base in reference to member 'execution'
+ 66 |         if terminal {
+ 67 |             if let retained = recovery.pendingIntent { recovery.clearPending(for: retained.semanticRevision) }
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterAdmission.swift:72:23: error: cannot find 'RunCounterSummary' in scope
+ 70 |         }
+ 71 |         counterTrace("recovery", (recovery.pendingIntent, recovery.wakes.wakeOutstanding, recovery.wakes.requester.requestCount))
+ 72 |         let summary = RunCounterSummary(counter: counter, admission: admission, semanticRevision: phase.context.semanticRevision, semanticDisposition: disposition.semanticDisposition, logicalFrameDisposition: disposition.logicalFrameDisposition, committedPresentationRevision: committedPresentation, presentationIntentState: terminal ? .unavailable : disposition.presentationIntentState, presentationPending: intent, operationalEvents: events)!
+    |                       `- error: cannot find 'RunCounterSummary' in scope
+ 73 |         counterTrace("summary", summary)
+ 74 |         if let failure { return .failure(completedContext, failure, summary) }
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift:20:35: error: incorrect argument label in call (have 'counter:semanticRevision:candidateFrame:phase:', expected 'cycle:semanticRevision:candidateFrame:phase:')
+ 18 |     var committedPresentation: PresentationRevision?
+ 19 |     var result: RuntimeCompletePipelineResult<RuntimeOwnerFailure>?
+ 20 |     var context = ExecutionContext(counter: nil, semanticRevision: nil, candidateFrame: nil, phase: .idle)
+    |                                   `- error: incorrect argument label in call (have 'counter:semanticRevision:candidateFrame:phase:', expected 'cycle:semanticRevision:candidateFrame:phase:')
+ 21 |     var unavailable = false
+ 22 | }
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift:70:26: error: cannot find type 'RunCounterFailure' in scope
+ 68 |     var cleanupOrder: InlineArray<9, UInt8> = .init(repeating: 255)
+ 69 |     var cleanupCount = 0
+ 70 |     var boundaryFailure: RunCounterFailure<RuntimeOwnerFailure> = .execution(.capacityExhausted)
+    |                          `- error: cannot find type 'RunCounterFailure' in scope
+ 71 |     var fault: RuntimeCompletePipelineStage?
+ 72 |     var offer: FrameOfferDisposition = .accepted
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift:113:20: error: cannot find 'RunCounterIDAllocator' in scope
+111 |     var interaction: InteractionOwnedKeyState<Candidate, Committed, Hits>
+112 |     var phase = ExecutionPhaseMachine()
+113 |     var counters = RunCounterIDAllocator()
+    |                    `- error: cannot find 'RunCounterIDAllocator' in scope
+114 |     let limits: RuntimeProfileLimits
+115 |     var revisions = SemanticRevisionAllocator()
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift:179:70: error: cannot find type 'RunCounterFailure' in scope
+177 |         counterTrace("terminal", (interaction.committedRecordCount, values.count, models.phase))
+178 |     }
+179 |     mutating func boundary(_ stage: RuntimeCompletePipelineStage) -> RunCounterFailure<RuntimeOwnerFailure>? {
+    |                                                                      `- error: cannot find type 'RunCounterFailure' in scope
+180 |         control.pointee.context = phase.context
+181 |         counterTrace("stage", stage)
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift:190:30: error: value of type 'ExecutionPhaseMachine' has no member 'beginCounter'
+188 |         control.pointee.cleanups = 0; control.pointee.cleanupCount = 0
+189 |         guard !quiescent else { return .failure(.execution(.requiredFacilityUnavailable)) }
+190 |         if let error = phase.beginCounter(reservingFrom: &counters) { return .failure(.execution(error)) }
+    |                              `- error: value of type 'ExecutionPhaseMachine' has no member 'beginCounter'
+191 |         if let error = boundary(.admissionAndSeal) { return .failure(error) }
+192 |         sealedAdmission = nil
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift:386:81: error: value of type 'ExecutionContext' has no member 'counter'
+384 |     mutating func allocateCandidate() -> RuntimePipelineStepResult<RuntimeOwnerFailure> {
+385 |         if let error = boundary(.candidateAllocation) { return .failure(error) }
+386 |         guard let candidate = candidates.reserve(), let counter = phase.context.counter, let revision = phase.context.semanticRevision else { return .failure(.execution(.identityExhausted)) }
+    |                                                                                 `- error: value of type 'ExecutionContext' has no member 'counter'
+387 |         if let error = phase.recordCandidateFrame(candidate) { return .failure(.execution(error)) }
+388 |         guard let presentation = presentations.reserve() else { return .failure(.execution(.identityExhausted)) }
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift:389:61: error: incorrect argument label in call (have 'counter:semanticRevision:candidateFrame:', expected 'cycle:semanticRevision:candidateFrame:')
+387 |         if let error = phase.recordCandidateFrame(candidate) { return .failure(.execution(error)) }
+388 |         guard let presentation = presentations.reserve() else { return .failure(.execution(.identityExhausted)) }
+389 |         self.presentation = presentation; provenance = .init(counter: counter, semanticRevision: revision, candidateFrame: candidate)
+    |                                                             `- error: incorrect argument label in call (have 'counter:semanticRevision:candidateFrame:', expected 'cycle:semanticRevision:candidateFrame:')
+390 |         return .advanced
+391 |     }

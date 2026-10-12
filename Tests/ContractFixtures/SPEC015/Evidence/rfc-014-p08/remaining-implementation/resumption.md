@@ -106,3 +106,26 @@ segment atpositive values, local points(4,8) and(4+4×value,8), translated by Ca
 layout,22glyphs and one finished synchronous render stream. All temporary Canvas
 values and plans release/reset. Same pinned6.4 counter command; no source graph,
 backend/hardware or full host acceptance claim in this slice.
+
+## Step5 — actual admission/coordinator/profile/host join, before edits
+
+Strong Sol6.1 High; guard0/2. Add finite `CounterAdmission`,
+`CounterPipelineOwner`, `CounterProfileStorage` and actual region measurements;
+use existing concrete Static/Dynamic coordinators and unchanged pipeline order.
+Counter owns2record interaction stores,34fact pending/sealed queues and1completion
+slot; no analyzer reservation or trace substitute. Own State, semantic, geometry,
+Canvas and synchronous endpoint objects from preceding slices. Exact actual
+26family runtime audit feeds the same nine-stage host validator and report.
+Inert scoped supplies construct runtime and endpoint only during host.activate;
+model cache owns accounted tickets. Teardown stops application delivery, quiesces
+actual opportunity, retires routes/releases tickets, resets scoped profile before
+invalidating report and releases enclosing backing last. Minimal internal
+SemanticRecordStore.resetAfterQuiescence checks zero readers/no candidate before
+clearing banks, retaining monotonic revisions; this adds no protocol or lifetime.
+
+Compile next `P08CounterRuntime`/actual host module on verified6.4 dependencies
+through the maintained counter command, explicitly rebuilding Semantic Core when
+that internal seam is added rather than claiming the frozen P07 source hashes
+still match. Validate real nine-stage reports/graph/endpoint/audit and full
+activation/opportunity/teardown before a coherent commit. No P08 exit self-pass;
+four routes, early target images and independent exit review remain required.
