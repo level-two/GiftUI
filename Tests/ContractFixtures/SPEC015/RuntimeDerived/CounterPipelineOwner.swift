@@ -22,6 +22,11 @@ struct CounterRuntimeControl {
 }
 struct CounterControl {
     var runtime = CounterRuntimeControl()
+    // The coordinator and finite callback adapter share this single controller.
+    var admissionController: CounterAdmission.Controller?
+    var semanticSnapshot = CounterSemanticSnapshot()
+    var lastFrame = CounterRenderSink()
+    var actionPoints: InlineArray<2, Point> = .init(repeating: Point(x: 0, y: 0))
     var admission: CounterAdmissionBacking {
         get { runtime.admission }
         set { runtime.admission = newValue }
@@ -315,6 +320,7 @@ where Geometry: CounterGeometry, Candidate: CounterCandidateBacking, Committed: 
         if let error = boundary(.layout) { return .failure(error) }
         do throws(SemanticExpansionError) {
             return try semantic.withCandidateView { bank in
+                control.pointee.semanticSnapshot = CounterSemanticSnapshot(bank)
                 switch geometry.layout(bank, limits: limits) { case .success: return .advanced; case .failure(let error): return .failure(.focusedOwner(.layout(error))) }
             }
         } catch { return .failure(.focusedOwner(.semantic(error))) }
@@ -360,6 +366,9 @@ where Geometry: CounterGeometry, Candidate: CounterCandidateBacking, Committed: 
                     paintOrder += 1
                     candidateActionIdentity = identity
                     control.pointee.actionPoint = bounds.origin
+                    let code = counterActionCode(ref, bank: bank)
+                    precondition(code < 2)
+                    control.pointee.actionPoints[Int(code)] = bounds.origin
                 }
                 candidateRootIdentity = target
                 if let error = interaction.finishCandidate() { return .failure(.focusedOwner(.interaction(error))) }
@@ -411,6 +420,7 @@ where Geometry: CounterGeometry, Candidate: CounterCandidateBacking, Committed: 
                 }
             } catch { retained = .invariantViolation; return .contractViolation }
         }
+        if offer.disposition == .accepted { control.pointee.lastFrame = endpoint.sink }
         if let retained { return .failure(.renderProduction(retained)) }
         switch offer.disposition {
         case .accepted: return .accepted(presentation!)
@@ -489,3 +499,8 @@ private func counterActionIsEnabled(_ ref: SemanticRecordReference, bank: borrow
     return true
 }
 func counterTrace<T>(_ label: StaticString, _ value: T) { print(label, value) }
+
+private func counterActionCode(_ ref: SemanticRecordReference, bank: borrowing SemanticRecordView<CounterPayload>) -> UInt16 {
+    guard let record = bank.record(ref), let payload = bank.payload(at: record.payload), case .standard(.action(_, let code)) = payload else { preconditionFailure("counter action payload") }
+    return code
+}

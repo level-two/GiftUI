@@ -168,3 +168,52 @@ Swift6.4. Final `.build/contracts/p08-counter-9_q0mt13`. Pending build's local
 Python tuple/path error corrected; no new Swift join blocker. Source/artifact
 hashes reverified. Guard0/2; historical guards unchanged. Full action/raster/live
 owner corpus and four-route/early linked image obligations remain open.
+
+
+## Step6 — actual host input/action corpus
+
+Sequential Strong Sol6.1 High. One admission controller now lives in physical
+CounterControl; the actual coordinator and finite callback adapter point to that
+single controller. All callback submission synchronizes context/revision and
+uses the existing admission algorithm. No model alias or independent controller
+copy is acquired. Existing26family audit charges actual Controller? pointer-state
+partition plus coordinator residual metadata, removing the former owned-controller
+partition from coordinator. Render/semantic observations are bounded test costs
+and remain separately identifiable for the later complete ledger.
+
+Both scoped host probes now queue normalized pointer down/up with the committed
+presentation revision and drive host.runOpportunity for increment0–9/reset and
+both disabled edges. Independent expected text and glyph positions come from
+Counter source and the checked-in font catalogue: widths60/10/74/41,
+lineheight20, spacing4, baselines16/40/64/88, Canvasorigin(13,96), stroke
+(17,104)–(17+4value,104). The preparatory guessed(4,88) was replaced before any
+execution; it was never a passing oracle. The selected100×100 surface clips this
+stroke; pixels must preserve that clipping rather than fabricate visibility.
+
+First compile x63iun88 rejected borrowedcontrol inside precondition autoclosures.
+First repair a0e7gaiv narrowed this to the one remaining short-circuit expression.
+Guard conservatively1/2; parent accepted one primitive-field-read correction.
+Next exact pinned counter command validates that correction; stop if the same
+blocker returns without passing or narrower evidence. Exact diagnostics retained.
+
+
+Step6 narrowing:4fyhvg6b compiled the corrected borrowed-field reads, both ownership
+negatives and linked; runtime stopped after the first increment commit at an
+unlabeled oracle assertion. Guard for the borrowed capture resets0/2.8aztjd9p
+added labels without changing expectations and identified glyph-baseline line65.
+Before that result was read, independent catalogue inspection found digit1's
+advance7 and digit7's advance9 (others10); the fixed digit0 center32 was wrong
+for1. Correct expected center is(74-digitAdvance)/2, preserving all real render
+observations. This is an oracle setup repair, no implementation/contract change.
+
+
+## Step6 result — 2026-10-12
+
+[Receipt](step-6-counter-host-corpus/result.md):3,665assertions/23controls pass on
+actual Static/Dynamic hosts, including all0–9 typed gestures, both disabled
+edges, exact text/glyph/stroke geometry and post-teardown callback rejection.
+Final `.build/contracts/p08-counter-o8voc10w`; all hashes reverified. Full physical
+CounterControl (observations/instrumentation/controller/padding included) is
+charged in profile partitions. Endpoint remains separately accounted; no image
+RAM/stack or pixel claim. Guard0/2; finite input-gate/wake/live graph/raster and
+four-route/earlyimage obligations remain open.

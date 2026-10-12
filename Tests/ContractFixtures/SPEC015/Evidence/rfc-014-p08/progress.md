@@ -315,3 +315,14 @@ failure, paced opportunity and ordered idempotent teardown. Both hosts retain
 returned geometry/Interaction backing through profile reset/report invalidation.
 Guard0/2; no new Swift blocker. Complete application/raster/live construction,
 four routes and early linked images remain open; no P08 exit claim.
+
+
+## Remaining step6 — actual host typed action/render corpus (2026-10-12)
+
+[Receipt](remaining-implementation/step-6-counter-host-corpus/result.md):3,665
+assertions/23controls pass. Both actual scoped hosts dispatch normalized typed
+increment/reset through their single shared admission controller; all0–9 text,
+disabled edges,22glyph positions and optional stroke geometry pass. Full physical
+control including live observations is charged; stopped callbacks refuse delivery.
+Guard0/2. Input gate/wake/live graph/actual raster,4routes and early linked images
+remain open. No P08 exit or pixel/resource conformance claim.

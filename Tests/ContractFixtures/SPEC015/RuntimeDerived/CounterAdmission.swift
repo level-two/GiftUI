@@ -125,12 +125,21 @@ struct CounterAdmission: ExecutionAdmissionSink {
     typealias StateChangeFact = UInt8
     typealias CompletionFact = UInt16
     typealias Controller = SingleSourceExecutionAdmissionController<CounterQueuedFacts, CounterWake>
-    var controller: Controller
+    var controller: Controller {
+        get { control.pointee.admissionController! }
+        set { control.pointee.admissionController = newValue }
+        _modify { yield &control.pointee.admissionController! }
+    }
     let control: UnsafeMutablePointer<CounterControl>
     static var pointerStateStorageBytes: Int { Controller.pointerStateStorageBytes }
     init(control: UnsafeMutablePointer<CounterControl>, limits: ExecutionLimits) {
         self.control = control
-        controller = Controller(limits: limits, context: control.pointee.context, committedPresentationRevision: control.pointee.runtime.committedPresentation, storage: CounterQueuedFacts(control: control), requester: CounterWake())
+        precondition(control.pointee.admissionController == nil)
+        control.pointee.admissionController = Controller(limits: limits, context: control.pointee.context, committedPresentationRevision: control.pointee.runtime.committedPresentation, storage: CounterQueuedFacts(control: control), requester: CounterWake())
+    }
+    init(borrowing control: UnsafeMutablePointer<CounterControl>) {
+        precondition(control.pointee.admissionController != nil)
+        self.control = control
     }
     mutating func synchronize() {
         controller.synchronize(context: control.pointee.context, committedPresentationRevision: control.pointee.runtime.committedPresentation, sealClosed: control.pointee.admission.sealActive, quiescent: control.pointee.unavailable)

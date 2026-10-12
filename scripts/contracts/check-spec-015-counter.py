@@ -46,7 +46,7 @@ flags = ['-I', str(out), '-I', str(host), *flags]
 fixture = ROOT / 'Tests/ContractFixtures/SPEC015/RuntimeDerived'
 inputs = [pathlib.Path(__file__).resolve(), fixture / 'Counter.swift', fixture / 'Counter.schema.json', fixture / 'CounterModel.swift', fixture / 'CounterModelProbe.swift', fixture / 'CounterSemantic.swift', fixture / 'CounterSemanticProbe.swift', fixture / 'CounterGeometry.swift', fixture / 'CounterStaticGeometry.swift', fixture / 'CounterRender.swift', fixture / 'CounterFixedStorageProbe.swift']
 storage_sources = sorted(fixture.glob('StaticCounter*.swift'))
-join_sources = [fixture / name for name in ('CounterAdmission.swift', 'CounterPipelineOwner.swift', 'CounterProfileStorage.swift', 'CounterStorageMeasurement.swift', 'CounterStorageRegions.swift', 'CounterCoordinatorProbe.swift', 'CounterWorkload.swift', 'CounterHostAssembly.swift', 'CounterHostOwner.swift', 'CounterHostProbe.swift', 'CounterDynamicHostOwner.swift', 'CounterDynamicHostProbe.swift')]
+join_sources = [fixture / name for name in ('CounterAdmission.swift', 'CounterPipelineOwner.swift', 'CounterProfileStorage.swift', 'CounterStorageMeasurement.swift', 'CounterStorageRegions.swift', 'CounterCoordinatorProbe.swift', 'CounterWorkload.swift', 'CounterHostAssembly.swift', 'CounterHostOwner.swift', 'CounterHostProbe.swift', 'CounterDynamicHostOwner.swift', 'CounterDynamicHostProbe.swift', 'CounterHostCorpus.swift')]
 inputs.extend(join_sources)
 inputs.extend(storage_sources)
 commands, checks = [], []
@@ -96,7 +96,7 @@ positive = positive.replace('let ownedChecks = counterOwnedSchedulerCompatibilit
 positive = positive.replace('runCounterHost(failAfterRuntime: Bool)', 'rejectCounterHostEscape(failAfterRuntime: Bool)')
 positive = positive.replace('        guard case .valid(let audit)', '        var escaped: SignalAnalyzerPresetHostInstance<CounterHostOwner>? = nil\n        guard case .valid(let audit)', 1)
 begin = positive.index('                                        precondition(host.lifecycleState')
-end = positive.index('                                        return count + 5', begin) + len('                                        return count + 5')
+end = positive.index('                                        return count + 7', begin) + len('                                        return count + 7')
 positive = positive[:begin] + '                                        _ = host.activate()\n                                        escaped = consume host\n                                        return 1' + positive[end:]
 positive = positive.replace('        return checks', '        var escapedOwner = escaped.take()!\n        _ = escapedOwner.runOpportunity()\n        escapedOwner.teardown()\n        return checks')
 backing_negative.write_text(positive)

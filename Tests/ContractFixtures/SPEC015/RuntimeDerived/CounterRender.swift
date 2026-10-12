@@ -24,15 +24,23 @@ struct CounterRenderSink: DrawingOperationSink {
     var strokes: UInt16 = 0
     var finishes = 0
     var discards = 0
+    var firstPoint: Point?
+    var secondPoint: Point?
+    var strokeHeader: StraightLineStrokeHeader?
+    var glyphRecords: InlineArray<64, PositionedGlyph?> = .init(repeating: nil)
     mutating func begin(_ header: RenderPlanHeader) -> Bool { self.header = header; return true }
     mutating func fillRect(_ operation: FillRectOperation) -> Bool { operations += 1; return true }
     mutating func beginPositionedGlyphs(_ operation: PositionedGlyphOperationHeader) -> Bool { operations += 1; return true }
-    mutating func positionedGlyph(_ glyph: PositionedGlyph) -> Bool { glyphs += 1; return true }
+    mutating func positionedGlyph(_ glyph: PositionedGlyph) -> Bool {
+        guard glyphs < 64 else { return false }
+        glyphRecords[Int(glyphs)] = glyph; glyphs += 1; return true
+    }
     mutating func endPositionedGlyphs() -> Bool { true }
     mutating func finish() -> Bool { finishes += 1; return true }
     mutating func discard() { discards += 1 }
     mutating func straightLineStroke<S: StraightLineStrokeView>(_ stroke: borrowing S) -> Bool {
         let header = stroke.header
+        strokeHeader = header; firstPoint = stroke.point(at: 0); secondPoint = stroke.point(at: 1)
         let subpath = stroke.subpath(at: 0)
         counterRenderExpect(header.pointCount == 2 && header.subpathCount == 1)
         counterRenderExpect(header.color == .white && header.lineWidth == 1)

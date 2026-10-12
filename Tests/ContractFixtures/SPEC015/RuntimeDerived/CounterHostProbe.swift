@@ -49,7 +49,7 @@ extension StaticCounterProfileStorage {
                                             guard case .cycle(_, .cycle(.success)) = scheduler.service(at: 250000, instance: &host) else { preconditionFailure("counter paced host opportunity") }
                                             precondition(pointer.pointee.finalized == 3 && pointer.pointee.admission.pendingStateCount == 0)
                                             precondition(scheduler.quiesce() == nil)
-                                            count += 7
+                                            count += 7 + counterHostCorpus(host: &host, control: pointer)
                                         }
                                         precondition(host.activate() == .failure(.invariant) && host.owner.constructions == 1)
                                         host.teardown()
@@ -58,7 +58,10 @@ extension StaticCounterProfileStorage {
                                         host.teardown()
                                         precondition(host.owner.teardownStep == 8 && host.runOpportunity() == .invalidLifecycle)
                                         precondition(host.assemblyReport == assembly.report)
-                                        return count + 5
+                                        var stoppedAdmission = CounterAdmission(borrowing: pointer)
+                                        precondition(stoppedAdmission.submit(stateChange: 9).result == .unavailable)
+                                        precondition(pointer.pointee.admission.pendingStateCount == 0)
+                                        return count + 7
                                     }
                                 }
                             }

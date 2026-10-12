@@ -125,8 +125,8 @@ where G: CounterGeometry, C: CounterCandidateBacking, R: CounterCommittedBacking
     // Endpoint and sink belong to the recording adapter, not profile storage.
     let coordinator = concreteCoordinatorBytes - MemoryLayout<G>.size
         - MemoryLayout<InteractionOwnedKeyState<C, R, H>>.size - MemoryLayout<CounterEndpoint>.size
-        - Admission.pointerStateStorageBytes
-        + MemoryLayout<CounterRuntimeControl>.size - MemoryLayout<CounterAdmissionBacking>.size - MemoryLayout<CounterPointerState>.size - result
+        + MemoryLayout<CounterControl>.size - Admission.pointerStateStorageBytes
+        - MemoryLayout<CounterAdmissionBacking>.size - MemoryLayout<CounterPointerState>.size - result
         + Int(factoryRegion.chargedBytes)
     // Bank zero occupies exactly the configured whole-element prefix. Bank one
     // owns the second configured slice plus any retained allocator tail; never
@@ -211,14 +211,16 @@ where G: CounterGeometry, C: CounterCandidateBacking, R: CounterCommittedBacking
     record(.inline(UInt16.self, family: 21))
     record(.inline(UInt16?.self, family: 21))
     record(.inline(CounterAdmissionBacking.self, family: 22, chargedBytes: sealed, kind: .partition))
-    record(.inline(Admission.self, family: 23, chargedBytes: Admission.pointerStateStorageBytes, kind: .partition))
+    record(.inline(Admission.Controller?.self, family: 23, chargedBytes: Admission.pointerStateStorageBytes, kind: .partition))
     record(.inline(CounterPointerState.self, family: 23))
-    let coordinatorFields = concreteCoordinatorBytes - MemoryLayout<G>.size - MemoryLayout<InteractionOwnedKeyState<C, R, H>>.size - MemoryLayout<CounterEndpoint>.size - Admission.pointerStateStorageBytes
+    let coordinatorFields = concreteCoordinatorBytes - MemoryLayout<G>.size - MemoryLayout<InteractionOwnedKeyState<C, R, H>>.size - MemoryLayout<CounterEndpoint>.size
     if profile == .static { record(.inline(Coordinator.self, family: 24, chargedBytes: coordinatorFields, kind: .metadataPadding)) }
     #if !hasFeature(Embedded)
     if profile == .dynamic { record(.inline(DynamicRuntimeExecutionCoordinator<CounterExecutionBinding, Admission, Owner>.self, family: 24, chargedBytes: coordinatorFields, kind: .metadataPadding)) }
     #endif
-    record(.inline(CounterRuntimeControl.self, family: 24, chargedBytes: MemoryLayout<CounterRuntimeControl>.size - MemoryLayout<CounterAdmissionBacking>.size - MemoryLayout<CounterPointerState>.size - result, kind: .metadataPadding))
+    // All outer controls, observations, optional controller metadata and padding
+    // remain physically live and are charged here exactly once.
+    record(.inline(CounterControl.self, family: 24, chargedBytes: MemoryLayout<CounterControl>.size - Admission.pointerStateStorageBytes - MemoryLayout<CounterAdmissionBacking>.size - MemoryLayout<CounterPointerState>.size - result, kind: .metadataPadding))
     record(factoryRegion)
     record(.inline(RuntimeCompletePipelineResult<RuntimeOwnerFailure>?.self, family: 25))
     guard !reportOverflow else { return .invalid(.arithmeticOverflow) }

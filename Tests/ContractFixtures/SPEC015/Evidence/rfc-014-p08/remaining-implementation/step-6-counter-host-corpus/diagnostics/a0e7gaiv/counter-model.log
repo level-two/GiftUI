@@ -1,0 +1,12 @@
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostCorpus.swift:41:30: error: 'control' cannot be captured by an escaping closure since it is a borrowed parameter
+ 39 | }
+ 40 | 
+ 41 | func counterCheckHostFrame(_ control: borrowing CounterControl, value: UInt8) -> Int {
+    |                              `- error: 'control' cannot be captured by an escaping closure since it is a borrowed parameter
+ 42 |     let snapshot = control.semanticSnapshot
+ 43 |     let frame = control.lastFrame
+ 44 |     let finalized = !control.frameActive && !control.admission.sealActive && control.admission.pointerCount == 0
+    |                                             |                                `- note: closure capturing 'control' here
+    |                                             `- note: closure capturing 'control' here
+ 45 |     precondition(snapshot.texts == 4 && snapshot.scalarCount == 22 && snapshot.disabledCount == 2)
+ 46 |     let lengths: InlineArray<4, UInt16> = [7, 1, 9, 5]
