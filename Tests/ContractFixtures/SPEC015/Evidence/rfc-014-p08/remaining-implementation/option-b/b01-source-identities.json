@@ -1,0 +1,816 @@
+{
+  "source_commit": "b3052c6bad5ee630afd3869dbfbdb39ea3265773",
+  "method": "Read-only SHA-256 and source symbol line inventory; no compilation.",
+  "files": [
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostAssembly.swift",
+      "sha256": "2d6a0c41f3d518eab59f466d56c0536d71e5f172a83b3575692cfa61709e616a",
+      "bytes": 6618,
+      "relevant_symbols": [
+        {
+          "line": 19,
+          "text": "case .rasterEndpoint:"
+        },
+        {
+          "line": 23,
+          "text": "case .factAdmission, .rootModelTarget, .normalizedInput, .wakeRequester:"
+        },
+        {
+          "line": 26,
+          "text": "case .actionHandler:"
+        },
+        {
+          "line": 35,
+          "text": "return .init(role: role, dependencies: .init(rawValue: dependencies))"
+        },
+        {
+          "line": 51,
+          "text": "precondition(contributions.insert(.renderProducer(.init(operations: operations, operationStream: .synchronousBorrowedOneShot)!)) == .inserted)"
+        },
+        {
+          "line": 52,
+          "text": "precondition(contributions.insert(.rasterBackend(.init(primary: realization, alternate: nil)!)) == .inserted)"
+        },
+        {
+          "line": 53,
+          "text": "precondition(contributions.insert(.surfaceDisplay(.init(extent: extent, encodings: .rgba8888, acceptedSubmissionLifetimes: .synchronousBorrow, handoffs: .synchronous, maximumRegionWidth: 100, maximumRegionHeight: 120, rowByteAlignment: 4, maximumInFlightCount: 1, maximumInFlightBytes: bytes)!)) == .inserted)"
+        },
+        {
+          "line": 54,
+          "text": "precondition(contributions.insert(.hostResourcePolicy(.init(maximumRasterBytes: bytes, maximumPayloadBytes: bytes, maximumInFlightBytes: bytes, allowedRealizations: .fullSurface, allowedEncodings: .rgba8888, preferredRealization: .fullSurface, preferredEncoding: .rgba8888)!)) == .inserted)"
+        },
+        {
+          "line": 57,
+          "text": "let endpoint = HostEndpointConfiguration(effectivePresentation: effective, descriptor: .init(bounds: counterSurface, encoding: .rgba8888, bytesPerRow: 400, realization: .fullSurface, regionWidth: 100, regionHeight: 120)!, payloadLimits: .init(maximumRasterBytes: 48000, maximumPayloadBytes: 48000, maximumRegionsPerPayload: 120, maximumRegionSubmissionsPerFrame: 1, maximumTileVisitsPerFrame: 1, maximumInFlightPayloads: 1, maximumGlyphRasterBytes: 48000, maximumStrokeWorkspaceBytes: 1)!, surfaceWritableCapacityBytes: 48000, displaySubmissionLifetime: .synchronousBorrow, displayHandoff: .synchronous, displayMaximumInFlightPayloads: 1, displayMaximumInFlightBytes: 48000, textRasterRealization: .init(rawValue: 0), healthOwnerCount: 1, endpointAndDisplayShareHealthOwner: true)"
+        },
+        {
+          "line": 58,
+          "text": "var validator = CheckedMVPHostConfigurationValidator(structuralConfiguration: .init(kind: kind, profile: audit.profile, runtimeLimits: audit.limits, runtimeAudit: audit, cardinality: P08CounterWorkload.cardinality, workload: P08CounterWorkload.value(audit.limits), pacing: P08CounterWorkload.pacing), runtimeProfileValidation: .valid(audit), componentGraph: CounterHostGraph(), textResourceValidation: TextResourceValidator.validate(GiftUIReferenceTextResources.targetPackage, requiring: .init(rawValue: 0)), selectedTextRasterRealization: .init(rawValue: 0), capabilityRequirement: requirement, capabilityContributions: contributions, capabilityWorkspace: .init()!, endpoint: endpoint, actionAndModel: .init(firstActionCode: 0, lastActionCode: 1, handlerCount: 1, rootModelTargetCount: 1, sourceMinimumTransitionSpacingMicroseconds: 50000, maximumSourceCallbacksPerServiceWindow: 20, maximumCallbacksPerAction: 1, maximumRepositoryCallbacksPerAction: 1, maximumUseCaseCallbacksPerAction: 1, maximumNonTransitionPublicationsPerAction: 1, applicationExecutorFactLimit: 28, factAdmissionAdapterCount: 1, targetGenerationIsPublishable: true, actionHandlerIsTotal: true, retainsOwnerReferences: false, callbacksAreReentrant: false), inputAndWake: .init(normalizedInputSourceCount: 1, targetLocalPresentationGateCount: 1, wakeRequesterCount: 1, applicationAndMutationDomainsAreDistinct: true, wakeRequesterIsNonReentrant: true), residualPolicyTable: FixedMVPHostResidualPolicyTable(fatalHookIsAvailable: false))"
+        }
+      ]
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterApplication.swift",
+      "sha256": "49ca8b09587c31dfbb0e8b8eaf9a84a19c6f87ab5cf2f37f60e992585d3de5e2",
+      "bytes": 5020,
+      "relevant_symbols": [
+        {
+          "line": 8,
+          "text": "struct CounterFactSource {"
+        },
+        {
+          "line": 12,
+          "text": "mutating func start(deliver: (UInt8) -> Bool) -> Bool {"
+        },
+        {
+          "line": 24,
+          "text": "struct CounterFactRepository {"
+        },
+        {
+          "line": 45,
+          "text": "struct CounterFactUseCases {"
+        },
+        {
+          "line": 47,
+          "text": "mutating func start(source: inout CounterFactSource, repository: inout CounterFactRepository, deliver: (UInt8) -> Bool) -> Bool {"
+        },
+        {
+          "line": 59,
+          "text": "var gate = HostApplicationOpportunityGate()"
+        },
+        {
+          "line": 61,
+          "text": "init(control: UnsafeMutablePointer<CounterControl>) {"
+        }
+      ]
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterAdmission.swift",
+      "sha256": "d0c199397cb384ecbd221160773b44ee476df1b930aefc81a9197eed6b72353e",
+      "bytes": 13896,
+      "relevant_symbols": [
+        {
+          "line": 137,
+          "text": "init(control: UnsafeMutablePointer<CounterControl>, limits: ExecutionLimits) {"
+        },
+        {
+          "line": 142,
+          "text": "init(borrowing control: UnsafeMutablePointer<CounterControl>) {"
+        },
+        {
+          "line": 181,
+          "text": "var pendingPointers: InlineArray<2, NormalizedPointerEvent?> = .init(repeating: nil)"
+        },
+        {
+          "line": 182,
+          "text": "var pendingStates: InlineArray<34, UInt8> = .init(repeating: 0)"
+        },
+        {
+          "line": 185,
+          "text": "var sealedPointers: InlineArray<2, NormalizedPointerEvent?> = .init(repeating: nil)"
+        },
+        {
+          "line": 186,
+          "text": "var sealedStates: InlineArray<34, UInt8> = .init(repeating: 0)"
+        },
+        {
+          "line": 232,
+          "text": "sealedPointers = .init(repeating: nil); sealedPointerCount = 0"
+        },
+        {
+          "line": 235,
+          "text": "mutating func resetAll() { finishAttempt(); pendingPointers = .init(repeating: nil); pendingStateCount = 0; pendingCompletion = nil }"
+        }
+      ]
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostOwner.swift",
+      "sha256": "fb18a7d85b2f619b42d366ff783a92b7b275f2a354d7f73003de785a37872500",
+      "bytes": 18741,
+      "relevant_symbols": [
+        {
+          "line": 16,
+          "text": "init(pointer: borrowing UnsafeMutablePointer<CounterControl>) { self.pointer = copy pointer }"
+        },
+        {
+          "line": 18,
+          "text": "private init(other: borrowing CounterHostControl) { pointer = other.pointer }"
+        },
+        {
+          "line": 43,
+          "text": "init("
+        },
+        {
+          "line": 84,
+          "text": "init("
+        },
+        {
+          "line": 129,
+          "text": "init(supplied: consuming CounterHostSupplied, activationSpan: Span<UInt8>) {"
+        },
+        {
+          "line": 139,
+          "text": "borrowing func constructedRuntimeProjectionIsValid() -> Bool {"
+        },
+        {
+          "line": 265,
+          "text": "init(supplied: consuming CounterHostSupplied, activationSpan: Span<UInt8>, assembly: CounterHostAssembly, failAfterRuntime: Bool) {"
+        },
+        {
+          "line": 273,
+          "text": "return failAfterRuntime ? .failure(.configuration(.arithmeticOverflow), progress: .init(runtimeConstructed: true)) : .advanced"
+        },
+        {
+          "line": 282,
+          "text": "guard state.attachRoot() else { return .failure(.invariant, progress: .init()) }"
+        },
+        {
+          "line": 288,
+          "text": "guard state.admit(current) else { return .failure(.invariant, progress: .init(observationInstalled: true)) }"
+        },
+        {
+          "line": 295,
+          "text": "guard case .success(let summary) = state.runOpportunity(), summary.logicalFrameDisposition == .committed else { return .failure(.invariant, progress: .init()) }"
+        },
+        {
+          "line": 301,
+          "text": "guard application!.startSource() else { return .failure(.invariant, progress: .init(sourceStarted: true)) }"
+        },
+        {
+          "line": 307,
+          "text": "let runtimeProjection = state.constructedRuntimeProjectionIsValid()"
+        }
+      ]
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterDynamicHostOwner.swift",
+      "sha256": "a597b01a7a035d086a5e6595fc09c805ed0047efdc853538de80b889a020446c",
+      "bytes": 16657,
+      "relevant_symbols": [
+        {
+          "line": 34,
+          "text": "init("
+        },
+        {
+          "line": 80,
+          "text": "init(supplied: consuming CounterDynamicHostSupplied, activationSpan: Span<UInt8>) {"
+        },
+        {
+          "line": 90,
+          "text": "borrowing func constructedRuntimeProjectionIsValid() -> Bool {"
+        },
+        {
+          "line": 218,
+          "text": "init(supplied: consuming CounterDynamicHostSupplied, activationSpan: Span<UInt8>, assembly: CounterHostAssembly, failAfterRuntime: Bool) {"
+        },
+        {
+          "line": 226,
+          "text": "return failAfterRuntime ? .failure(.configuration(.arithmeticOverflow), progress: .init(runtimeConstructed: true)) : .advanced"
+        },
+        {
+          "line": 235,
+          "text": "guard state.attachRoot() else { return .failure(.invariant, progress: .init()) }"
+        },
+        {
+          "line": 241,
+          "text": "guard state.admit(current) else { return .failure(.invariant, progress: .init(observationInstalled: true)) }"
+        },
+        {
+          "line": 248,
+          "text": "guard case .success(let summary) = state.runOpportunity(), summary.logicalFrameDisposition == .committed else { return .failure(.invariant, progress: .init()) }"
+        },
+        {
+          "line": 254,
+          "text": "guard application!.startSource() else { return .failure(.invariant, progress: .init(sourceStarted: true)) }"
+        },
+        {
+          "line": 260,
+          "text": "let runtimeProjection = state.constructedRuntimeProjectionIsValid()"
+        }
+      ]
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostProbe.swift",
+      "sha256": "8793e7bcb3fde71a6c69c97545c74f94f9cf9364fe6fe2bcb85e4486babdebe7",
+      "bytes": 9839,
+      "relevant_symbols": [
+        {
+          "line": 69,
+          "text": "let rejectedInput = pointer.pointee.inputGate.submit(phase: .down, position: .init(x: 0, y: 0), source: .init(rawValue: 0), observedPresentationRevision: pointer.pointee.runtime.committedPresentation, isMalformed: false, priorPhysicalSequenceIsComplete: true, to: &stoppedAdmission)"
+        },
+        {
+          "line": 104,
+          "text": "return .cycle(.failure(.init(cycle: nil, semanticRevision: nil, candidateFrame: nil, phase: .idle), .execution(.capacityExhausted), nil))"
+        }
+      ]
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterDynamicHostProbe.swift",
+      "sha256": "96871647e0a373b7804e7480ac3ffe18d5c58f90eee5c145693a3b4c9aa3a235",
+      "bytes": 7471,
+      "relevant_symbols": [
+        {
+          "line": 64,
+          "text": "let rejectedInput = pointer.pointee.inputGate.submit(phase: .down, position: .init(x: 0, y: 0), source: .init(rawValue: 0), observedPresentationRevision: pointer.pointee.runtime.committedPresentation, isMalformed: false, priorPhysicalSequenceIsComplete: true, to: &stoppedAdmission)"
+        }
+      ]
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterProfileStorage.swift",
+      "sha256": "6659fa0acfe4ac6f2bbcd7dda25741e513fc11a2b9f57edd03da1ce0447f33b6",
+      "bytes": 34478,
+      "relevant_symbols": [
+        {
+          "line": 31,
+          "text": "var records: InlineArray<128, SemanticRuntimeRecord> = .init(repeating: .init())"
+        },
+        {
+          "line": 32,
+          "text": "var paths: InlineArray<384, SemanticPathEntry> = .init(repeating: .init())"
+        },
+        {
+          "line": 33,
+          "text": "var payloads: InlineArray<256, CounterPayload?> = .init(repeating: nil)"
+        },
+        {
+          "line": 34,
+          "text": "var scalars: InlineArray<128, UInt32> = .init(repeating: 0)"
+        },
+        {
+          "line": 43,
+          "text": "var scopes: InlineArray<1024, UInt8> = .init(repeating: 0)"
+        },
+        {
+          "line": 44,
+          "text": "var text: InlineArray<1056, UInt8> = .init(repeating: 0)"
+        },
+        {
+          "line": 45,
+          "text": "var path: InlineArray<20, UInt8> = .init(repeating: 0)"
+        },
+        {
+          "line": 46,
+          "text": "var plan: InlineArray<112, UInt8> = .init(repeating: 0)"
+        },
+        {
+          "line": 48,
+          "text": ".init(layout: counterLayoutLimits, render: counterRenderLimits, renderWorkspace: counterRenderCapacity, drawing: counterDrawingLimits,"
+        },
+        {
+          "line": 159,
+          "text": "var reported: InlineArray<26, UInt64> = .init(repeating: 0)"
+        },
+        {
+          "line": 234,
+          "text": "models: .init(maximumModelSlots: root.models, maximumOwningTickets: root.claims, maximumFramePins: root.pins, maximumModelCaptureBanks: root.captures),"
+        },
+        {
+          "line": 235,
+          "text": "semanticCandidate: .init(maximumDepth: semanticLimits.depth, maximumSemanticNodes: semanticLimits.records, maximumBodyEvaluations: semanticLimits.records, maximumModifierApplications: semanticLimits.records, maximumActionOccurrences: semanticLimits.records),"
+        },
+        {
+          "line": 236,
+          "text": "semanticPublished: .init(maximumDepth: semanticLimits.depth, maximumSemanticNodes: semanticLimits.records, maximumBodyEvaluations: semanticLimits.records, maximumModifierApplications: semanticLimits.records, maximumActionOccurrences: semanticLimits.records),"
+        },
+        {
+          "line": 266,
+          "text": "init(modelOwner: ObservableModelOwnerIdentity, semanticOwner: SemanticRecordOwnerIdentity, limits: RuntimeProfileLimits = counterActualLimits(.dynamic)) {"
+        },
+        {
+          "line": 277,
+          "text": "semantic: .init(limits: semantic.storageLimits, records: .elements(SemanticRuntimeRecord.self, count: extent.records), paths: .elements(SemanticPathEntry.self, count: extent.paths), payloads: .elements(CounterPayload?.self, count: extent.payloads), scalars: .elements(UInt32.self, count: extent.scalars), controlBytes: extent.controlBytes),"
+        },
+        {
+          "line": 336,
+          "text": "var canvasBacking: InlineArray<1, CanvasStagedEntry<SemanticRecordReference, CounterValueTable.CaptureStorage>?> = .init(repeating: nil)"
+        },
+        {
+          "line": 341,
+          "text": "init(modelOwner: ObservableModelOwnerIdentity, semanticOwner: SemanticRecordOwnerIdentity, limits: RuntimeProfileLimits = counterActualLimits(.static)) {"
+        },
+        {
+          "line": 351,
+          "text": "semantic: .init(limits: semantic.storageLimits, records: .elements(SemanticRuntimeRecord.self, count: semanticBacking.records.count), paths: .elements(SemanticPathEntry.self, count: semanticBacking.paths.count), payloads: .elements(CounterPayload?.self, count: semanticBacking.payloads.count), scalars: .elements(UInt32.self, count: semanticBacking.scalars.count), controlBytes: MemoryLayout<StaticSemanticRecordStorage>.size + CounterSemanticBacking.paddingBytes),"
+        }
+      ]
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift",
+      "sha256": "b3252b9611b68beb020c69de336e572c7b0f9e4da4277843f31b6cc7afbf2d29",
+      "bytes": 33835,
+      "relevant_symbols": [
+        {
+          "line": 45,
+          "text": "var inputGate = HostNormalizedInputGate(configuredSource: .init(rawValue: 0))"
+        },
+        {
+          "line": 48,
+          "text": "var actionPoints: InlineArray<2, Point> = .init(repeating: Point(x: 0, y: 0))"
+        },
+        {
+          "line": 98,
+          "text": "var cleanupOrder: InlineArray<9, UInt8> = .init(repeating: 255)"
+        },
+        {
+          "line": 117,
+          "text": "init(configuration: HostEndpointConfiguration, control: UnsafeMutablePointer<CounterControl>) {}"
+        },
+        {
+          "line": 123,
+          "text": "guard disposition == .accepted else { return .init(disposition: disposition, failure: disposition == .failed ? .invalidEnvelope : nil)! }"
+        },
+        {
+          "line": 126,
+          "text": "case .complete: return .init(disposition: .accepted, failure: nil)!"
+        },
+        {
+          "line": 127,
+          "text": "case .producerFailed: return .init(disposition: .failed, failure: .producerFailed)!"
+        },
+        {
+          "line": 128,
+          "text": "case .insufficientCapacity: return .init(disposition: .failed, failure: .insufficientCapacity)!"
+        },
+        {
+          "line": 129,
+          "text": "case .endpointRefused: return .init(disposition: .nonRetryableRefusal, failure: nil)!"
+        },
+        {
+          "line": 130,
+          "text": "case .contractViolation: return .init(disposition: .failed, failure: .contractViolation)!"
+        },
+        {
+          "line": 175,
+          "text": "init(models: consuming ObservableModelScope<CounterOwnedModel, CounterModelSchema>, root: consuming ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, semantic: consuming SemanticRecordStore<CounterPayload>, values: consuming CanvasStagedValues<SemanticRecordReference, CounterValueTable>, geometry: consuming Geometry, interaction: consuming InteractionOwnedKeyState<Candidate, Committed, Hits>, control: borrowing UnsafeMutablePointer<CounterControl>, limits: RuntimeProfileLimits, endpointConfiguration: HostEndpointConfiguration) {"
+        },
+        {
+          "line": 195,
+          "text": "mutating func terminatePresentation() {"
+        },
+        {
+          "line": 302,
+          "text": "mutating func dispatch(_ captured: CapturedAction<SemanticCompleteIdentity>) -> RuntimePipelineMutationResult<RuntimeOwnerFailure> {"
+        },
+        {
+          "line": 391,
+          "text": "guard identity.append(.init(kind: .customBody)) else { return .failure(.execution(.invariantViolation)) }"
+        },
+        {
+          "line": 435,
+          "text": "return .published(.init(semanticRevision: revision, changed: changed))"
+        },
+        {
+          "line": 442,
+          "text": "self.presentation = presentation; provenance = .init(cycle: counter, semanticRevision: revision, candidateFrame: candidate)"
+        },
+        {
+          "line": 515,
+          "text": "mutating func finalizePipeline() {"
+        }
+      ]
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterNativeRaster.swift",
+      "sha256": "3836f08cb007c006f7f0d6706ce97b1dd325bf20d4647ff5c5c50a418d86db2f",
+      "bytes": 17966,
+      "relevant_symbols": [
+        {
+          "line": 18,
+          "text": "var surface: InlineArray<48000, UInt8> = .init(repeating: 0)"
+        },
+        {
+          "line": 19,
+          "text": "var payload: InlineArray<48000, UInt8> = .init(repeating: 0xA5)"
+        },
+        {
+          "line": 33,
+          "text": "init() { for index in 0..<12000 { surface[index * 4 + 3] = 255 } }"
+        },
+        {
+          "line": 98,
+          "text": "control.pointee.backend.health.recordOperational(.init(kind: .backpressured, origin: .displayDriver, affectedScope: .candidateFrame), resultingState: .degraded)"
+        },
+        {
+          "line": 107,
+          "text": "return .reserved(.init(rawValue: UInt32(control.pointee.backend.reservations)))"
+        },
+        {
+          "line": 146,
+          "text": "init(configuration: HostEndpointConfiguration, control: UnsafeMutablePointer<CounterControl>) {"
+        },
+        {
+          "line": 212,
+          "text": "init(configuration: HostEndpointConfiguration, control: UnsafeMutablePointer<CounterControl>) {"
+        },
+        {
+          "line": 214,
+          "text": "let constructed = HostEndpointConfiguration(effectivePresentation: configuration.effectivePresentation, descriptor: adapter.descriptor, payloadLimits: adapter.payloadLimits, surfaceWritableCapacityBytes: adapter.surface.writableCapacityBytes, displaySubmissionLifetime: adapter.target.submissionLifetime, displayHandoff: adapter.target.handoff, displayMaximumInFlightPayloads: adapter.target.maximumInFlightPayloads, displayMaximumInFlightBytes: adapter.target.maximumInFlightBytes, textRasterRealization: .init(rawValue: 0), healthOwnerCount: 1, endpointAndDisplayShareHealthOwner: adapter.target.control == control)"
+        },
+        {
+          "line": 232,
+          "text": "actual = CounterNativeEndpoint(effectivePresentation: configuration.effectivePresentation, descriptor: configuration.descriptor, payloadLimits: configuration.payloadLimits, textMetrics: GiftUIReferenceTextMetricsView(), textRaster: GiftUIReferenceTextRasterView(), textRasterRealization: .init(rawValue: 0), envelopeValidator: CounterNativeEnvelope(expected: nil), sink: adapter, startupFailure: nil)!"
+        },
+        {
+          "line": 239,
+          "text": "precondition(invalid == .init(disposition: .failed, failure: .invalidEnvelope)!)"
+        }
+      ]
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterModel.swift",
+      "sha256": "c914bac2d09dc3b13713f682d2d2274021d3f48a58f0179685a0cad46c6b700a",
+      "bytes": 2755,
+      "relevant_symbols": [
+        {
+          "line": 12,
+          "text": "package init(value: UInt8) { precondition(value <= 9); self.value = value }"
+        },
+        {
+          "line": 57,
+          "text": "package static func operation(_ action: CounterAction) -> CounterOwnedModel.Mutation {"
+        }
+      ]
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/Counter.swift",
+      "sha256": "d3027f5276c01352f4c6ddf98ceba11c4a0c389f7bf0a4225a6e22bc573f88a0",
+      "bytes": 1724,
+      "relevant_symbols": [
+        {
+          "line": 22,
+          "text": "package init(model: CounterModel) { self.model = model }"
+        },
+        {
+          "line": 38,
+          "text": "package init() {}"
+        }
+      ]
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWakeIntegration.swift",
+      "sha256": "a8f0dabe4f3fd14a7d27ae7adb60212f422b0af9b1b5e00fb5d9c4b740b864c1",
+      "bytes": 12883,
+      "relevant_symbols": []
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostCorpus.swift",
+      "sha256": "b4d93ec46603fda1f1e68372df30591ab76cf37b461aac69302f4e15451c5d75",
+      "bytes": 8044,
+      "relevant_symbols": [
+        {
+          "line": 11,
+          "text": "var scalars: InlineArray<22, UInt32> = .init(repeating: 0)"
+        },
+        {
+          "line": 13,
+          "text": "var textLengths: InlineArray<4, UInt16> = .init(repeating: 0)"
+        },
+        {
+          "line": 18,
+          "text": "init() {}"
+        },
+        {
+          "line": 19,
+          "text": "init(_ bank: borrowing SemanticRecordView<CounterPayload>) {"
+        },
+        {
+          "line": 101,
+          "text": "let rejected = control.pointee.inputGate.submit(phase: .down, position: .init(x: 0, y: 0), source: source, observedPresentationRevision: revision, isMalformed: malformed, priorPhysicalSequenceIsComplete: true, to: &admission)"
+        },
+        {
+          "line": 111,
+          "text": "let down = control.pointee.inputGate.submit(phase: .down, position: point, source: .init(rawValue: 0), observedPresentationRevision: revision, isMalformed: false, priorPhysicalSequenceIsComplete: true, to: &admission)"
+        },
+        {
+          "line": 112,
+          "text": "let up = control.pointee.inputGate.submit(phase: .up, position: point, source: .init(rawValue: 0), observedPresentationRevision: revision, isMalformed: false, priorPhysicalSequenceIsComplete: true, to: &admission)"
+        }
+      ]
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterCoordinatorProbe.swift",
+      "sha256": "2d7fe7c96b38506e4dbcca9395a2941ad18010bcca27c5cab479219873c62713",
+      "bytes": 6103,
+      "relevant_symbols": []
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterGraphProbe.swift",
+      "sha256": "78768066a8fcf52c6553d77fcf3d4305b89cfeb0de1fb723d436030dacbd0af9",
+      "bytes": 1372,
+      "relevant_symbols": [
+        {
+          "line": 15,
+          "text": "if mode == 4 { return .init(role: original.role, dependencies: .init(rawValue: 1)) }"
+        },
+        {
+          "line": 16,
+          "text": "if mode == 5 { return .init(role: original.role, dependencies: .init(rawValue: 2)) }"
+        },
+        {
+          "line": 17,
+          "text": "if mode == 6 { return .init(role: original.role, dependencies: .init(rawValue: 1 << 31)) }"
+        }
+      ]
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWorkload.swift",
+      "sha256": "c96a534a0c45e445c25c56263c3ddb4ad3c5e68626e8f55aded3129f39721dff",
+      "bytes": 4854,
+      "relevant_symbols": [
+        {
+          "line": 11,
+          "text": "records: .init(maximumPathEntries: 192, maximumPathDepth: 24,"
+        },
+        {
+          "line": 14,
+          "text": "models: models ?? .init(maximumModelSlots: 2, maximumOwningTickets: 4,"
+        },
+        {
+          "line": 16,
+          "text": "semantic: .init(maximumDepth: 24, maximumSemanticNodes: 24,"
+        },
+        {
+          "line": 20,
+          "text": "layout: .init(maximumScopes: 32, maximumDepth: 12, maximumTextScalars: 64,"
+        },
+        {
+          "line": 22,
+          "text": "render: .init(maximumOperations: 25, maximumPositionedGlyphs: 64, maximumClipDepth: 4)!,"
+        },
+        {
+          "line": 23,
+          "text": "renderWorkspace: .init(maximumSemanticScopes: 32, maximumLayoutScopes: 32,"
+        },
+        {
+          "line": 25,
+          "text": "renderSink: .init(maximumOperations: 25, maximumPositionedGlyphs: 64),"
+        },
+        {
+          "line": 27,
+          "text": "execution: .init(maximumInputEvents: max(2, actionCount), maximumStateChangeFacts: 34,"
+        },
+        {
+          "line": 30,
+          "text": "observableState: .init(maximumLocations: 1, maximumRegistrations: 1,"
+        },
+        {
+          "line": 32,
+          "text": "interaction: .init(maximumActions: actionCount, maximumHitRegions: actionCount)!,"
+        },
+        {
+          "line": 33,
+          "text": "drawing: .init(maximumLineWidth: 1, maximumCanvasOccurrences: 1,"
+        },
+        {
+          "line": 37,
+          "text": "? .init(maximumStaticCallableCases: 1, maximumStaticCaptureBytes: captureBytes)! : nil,"
+        },
+        {
+          "line": 41,
+          "text": ".init(schemaVersion: schema, requiredPathEntries: 192, requiredPayloadBytesPerBank: 4096,"
+        },
+        {
+          "line": 51,
+          "text": "drawing: .init(canvasOccurrences: 1, maximumLivePathPoints: 2,"
+        }
+      ]
+    },
+    {
+      "path": "Sources/GiftUIHostConfiguration/HostComponentGraphValidation.swift",
+      "sha256": "1fe765b7348bdab18abf6b83da6c9e2cadbb2e7a868a729c8d075f5b5109f913",
+      "bytes": 2370,
+      "relevant_symbols": []
+    },
+    {
+      "path": "Sources/GiftUIHostConfiguration/HostConfigurationResults.swift",
+      "sha256": "3e00d5e22b04e6ccb25ab357f2d6fe96349f2ab31abf3cf9201206110d83b205",
+      "bytes": 4833,
+      "relevant_symbols": [
+        {
+          "line": 66,
+          "text": "package init() {}"
+        }
+      ]
+    },
+    {
+      "path": "Sources/GiftUIHostConfiguration/HostConfigurationValues.swift",
+      "sha256": "401908c35e265ad19b9788d17a32603bd966da81e4fef10b8ff2fc46a9d255c1",
+      "bytes": 12692,
+      "relevant_symbols": [
+        {
+          "line": 40,
+          "text": "package init(rawValue: UInt32) {"
+        },
+        {
+          "line": 44,
+          "text": "package init(_ role: HostComponentRole) {"
+        },
+        {
+          "line": 53,
+          "text": "package init(role: HostComponentRole, dependencies: HostComponentRoleSet) {"
+        },
+        {
+          "line": 168,
+          "text": "package init("
+        },
+        {
+          "line": 205,
+          "text": "package init("
+        },
+        {
+          "line": 252,
+          "text": "package init("
+        },
+        {
+          "line": 281,
+          "text": "package init("
+        }
+      ]
+    },
+    {
+      "path": "Sources/GiftUIHostConfiguration/CheckedMVPHostConfigurationValidator.swift",
+      "sha256": "8caf5a83d60ea858e2ecfbe5b1f76232a6dd85efc1a2fb3797adcf3a04810a3e",
+      "bytes": 8716,
+      "relevant_symbols": [
+        {
+          "line": 27,
+          "text": "package init("
+        }
+      ]
+    },
+    {
+      "path": "Sources/GiftUIHostConfiguration/HostScheduledOpportunityController.swift",
+      "sha256": "467525eaaaac20ac9a891e973f1d0a34cc3c037a7eb934448fa968f47a260838",
+      "bytes": 5162,
+      "relevant_symbols": [
+        {
+          "line": 32,
+          "text": "package init("
+        }
+      ]
+    },
+    {
+      "path": "Sources/GiftUIHostConfiguration/HostNormalizedInputGate.swift",
+      "sha256": "7bd20cd33825f33478e54a1921b670a857805f6a2cf83bf089810e83b93773a7",
+      "bytes": 7468,
+      "relevant_symbols": [
+        {
+          "line": 42,
+          "text": "package init("
+        }
+      ]
+    },
+    {
+      "path": "scripts/contracts/check-spec-015-counter.py",
+      "sha256": "2fce8159ce6554eca7aa950e318fce83650983c80de33ac21fe24449a27e36df",
+      "bytes": 10731,
+      "relevant_symbols": []
+    },
+    {
+      "path": "docs/adrs/adr-038-construction-graph-and-operational-contracts.md",
+      "sha256": "910f82febf5791059681fa43ffdbfcd7c74f59512a0a69b1f64a3f10da074fec",
+      "bytes": 6775,
+      "relevant_symbols": []
+    },
+    {
+      "path": "docs/specs/spec-015-host-configuration.md",
+      "sha256": "758a857394c3b9a55be85fcab6806737de5f04cadd2815e940eb4ff8c6810c67",
+      "bytes": 97431,
+      "relevant_symbols": [
+        {
+          "line": 547,
+          "text": "package init(rawValue: UInt32)"
+        },
+        {
+          "line": 548,
+          "text": "package init(_ role: HostComponentRole)"
+        }
+      ]
+    },
+    {
+      "path": "docs/specs/spec-009-execution-cycle-and-frame-handoff.md",
+      "sha256": "7ec1bde228a0c66ffd3f1cad2cd23a3860de3ca6679e3c785ad3e12ec10a0240",
+      "bytes": 89939,
+      "relevant_symbols": [
+        {
+          "line": 304,
+          "text": "package init(rawValue: UInt32)"
+        },
+        {
+          "line": 309,
+          "text": "package init(rawValue: UInt32)"
+        },
+        {
+          "line": 314,
+          "text": "package init(rawValue: UInt32)"
+        },
+        {
+          "line": 319,
+          "text": "package init(rawValue: UInt32)"
+        },
+        {
+          "line": 324,
+          "text": "package init(rawValue: UInt32)"
+        },
+        {
+          "line": 392,
+          "text": "package init(cycle: RunCycleID?,"
+        },
+        {
+          "line": 432,
+          "text": "package init(rawValue: UInt8)"
+        },
+        {
+          "line": 446,
+          "text": "package init(semanticRevision: SemanticRevision,"
+        },
+        {
+          "line": 453,
+          "text": "`ExecutionWakeReasons.init(rawValue:)` MUST mask its input with `0x07`; only the"
+        },
+        {
+          "line": 492,
+          "text": "package init(cycle: RunCycleID,"
+        },
+        {
+          "line": 643,
+          "text": "package init(result: ExecutionAdmissionResult,"
+        },
+        {
+          "line": 692,
+          "text": "package init(identity: Identity, generation: ActionGeneration)"
+        },
+        {
+          "line": 807,
+          "text": "package init(rawValue: UInt8)"
+        },
+        {
+          "line": 884,
+          "text": "`0x10` respectively. `ExecutionOperationalEvents.init(rawValue:)` masks its"
+        }
+      ]
+    },
+    {
+      "path": "docs/iterations/iteration-003-review/rfc-014-implementation-plan.md",
+      "sha256": "3ac92b9b9e94bd5cbed25856620789ce183df1770883ceb57bf59769db3ce4be",
+      "bytes": 54876,
+      "relevant_symbols": [
+        {
+          "line": 49,
+          "text": "`CounterHostState.constructedRuntimeProjectionIsValid` with the same"
+        }
+      ]
+    },
+    {
+      "path": "docs/iterations/iteration-003-review/rfc-014-task-context.md",
+      "sha256": "48da8303b70d977c91d57d38749ee6e0f515d959b9f157d1d55a5cc5f2387c0b",
+      "bytes": 30847,
+      "relevant_symbols": [
+        {
+          "line": 50,
+          "text": "`CounterHostState.constructedRuntimeProjectionIsValid` with the same"
+        }
+      ]
+    }
+  ]
+}

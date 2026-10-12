@@ -1,6 +1,17 @@
 # RFC-014 P08 execution receipt — 2026-10-11
 
-**Current checkpoint — 2026-10-12: Option B documents approved; implementation
+**Current checkpoint — 2026-10-12: B01 inventory complete; independent Strong review pending.**
+The separate implementation activity is now authorized by the current user.
+[Actual construction/activation/operation inventory](remaining-implementation/option-b/b01-inventory.md)
+records all eighteen selected owners, exact proposed B02 masks and two projection
+replacements, backing/teardown trace and required operational coverage gaps.
+[Dependency identities](remaining-implementation/option-b/b01-dependency-identities.json):
+492 comparisons match; four existing driver rebuild exceptions are explicit.
+No source edit, compiler, macro, executable, formatter, build or repository gate
+ran. Historical 2/2 remains closed; B03 allowance 0/1 unused. B02 not started;
+SPEC-015 implementing, plan active, T8.1/P08 open; no acceptance pass claimed.
+
+**Historical checkpoint — 2026-10-12: Option B documents approved; implementation
 separate/not started.** Eugene's [exact approval and subsequent limit](../../../../../docs/iterations/iteration-003-review/rfc-014-spec-approval.md#option-b-construction-graph-amendment--2026-10-12)
 approve the targeted RFC-014/ADR-038/SPEC-015 authority delta, with reciprocal
 SPEC-009 clarification. Authority commit `61f968b1` passes governance validation
@@ -414,3 +425,64 @@ approval needed), alternatively reviewed graph-contract amendment. No source
 edit/compiler invocation; new allowance0/1 unused, prior2/2 closed. Last validated
 48a987cd remains1,348,627/23; graph WIPcfaa57af unvalidated. Stop for user decision;
 SPEC-015 implementing/plan active/T8.1 incomplete, no graph/P08/target pass.
+
+## P08-B01 dispatch — 2026-10-12
+
+The current user explicitly requests P08 execution and a commit per step,
+resuming the separate Option B implementation activity at `b3052c6b` (clean).
+P07's finite exit passed; ADR-038 and the Option B SPEC-015 amendment are approved.
+This supersedes the previous activity's documentation-only limit, not its guards.
+
+- Slice: B01 construction/activation/operation inventory, HC-003, HC-011,
+  HC-014, HC-018 and HC-RD-001–004. No source edit or compiler invocation.
+- Allowed output: this receipt and a B01 inventory under
+  `remaining-implementation/option-b/`; read actual eighteen-role owners,
+  factories, graph controls, the two failed projection helpers and pinned
+  dependency receipts. Propose exact B02 files/masks/projections from that trace.
+- Context: shared plan Option B resumption sequence; task context guide;
+  SPEC-015 graph/runtime amendment; ADR-038; SPEC-009 canonical wake contract;
+  step7g bounded trace and step7f operational controls. Follow repository and
+  implementation-executor required orientation before interpreting source.
+- Independent expected result: every direct construction origin is accounted
+  for; operations and activation retain separate identity/lifetime/wake proofs.
+  Required upward construction edges or missing authority stop for the user.
+- C3/R3; Strong = `gpt-6.1-sol`, `high`. B01 is followed sequentially by a
+  separate Strong review before B02 source edits. Remaining choices are the
+  exact actual-owner classification and masks, within ADR-038 only.
+- Commands: read-only inspection and receipt identity verification; no compiler,
+  target build or counter gate. Commit B01 inventory and return for review.
+- Repair ledger: historical 2/2 closed; B03 native attempt 0/1 unconsumed.
+  No allowance reset, dependency rebuild, compiler change or automatic repair.
+
+
+## P08-B01 result — 2026-10-12
+
+Entry `b3052c6bad5ee630afd3869dbfbdb39ea3265773`; Strong `gpt-6.1-sol` high,
+sequential/no delegation. Read actual owners/factories and approved ADR-038 /
+SPEC-015 construction semantics with SPEC-009 operational wake duties.
+[Inventory and exact review packet](remaining-implementation/option-b/b01-inventory.md),
+[29-file source manifest](remaining-implementation/option-b/b01-source-identities.json),
+and [492 matching pinned dependency identities](remaining-implementation/option-b/b01-dependency-identities.json).
+The entry dispatch above is included in the B01 commit.
+
+Proposed ordered masks: `0,0,0,0,0,0,63,0,0,0,0,1,0,0,1,0,61,0`.
+Handler13 zero is explicitly operation-only (no constructor/live owner);
+normalized15 zero removes physical-placement-only input; wake16 retains profile0
+and full report capability origins2–5. Executor7 is the gate, not its aggregate.
+Both whole-coordinator borrowing helpers are proposed for replacement by the
+existing controlPointer finite projections; initializer association, independent
+cache lifetime, actual application/endpoint checks stay required. No masks changed.
+
+No required upward construction edge or ambiguous supplied-backing origin found.
+Mandatory operational and factory-origin rejection coverage gaps are recorded
+precisely as remaining P08 obligations, not acceptance or optional Future Work.
+B02's four-file helper/mask footprint cannot silently expand to close them;
+independent reviewer assesses B02/B03 progression under the existing plan.
+
+Only read-only inspection, file hashing and `git diff --check` performed; no
+compiler/version/macro/executable invocation, formatter, build or repository gate.
+Pinned historical runtime/core/host receipts and compiler remain unchanged;
+four documented driver source exceptions remain explicit and will be rebuilt
+only inside the later authorized gate. No dependency rebuild or compiler change.
+B01 committed for separate Strong review; B02 not started, historical 2/2 closed,
+B03 native 0/1 unused. P08/four-route/early-image/P09–P12 and T8.1 remain open.
