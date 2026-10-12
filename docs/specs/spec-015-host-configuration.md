@@ -6,7 +6,7 @@ status: implementing
 authors:
   - codex
 created: 2026-08-28
-updated: 2026-10-11
+updated: 2026-10-12
 proposal:
   - PROPOSAL-002
   - PROPOSAL-003
@@ -27,6 +27,7 @@ related_rfcs:
   - RFC-011
   - RFC-014
 related_adrs:
+  - ADR-038
   - ADR-001
   - ADR-034
   - ADR-004
@@ -61,6 +62,8 @@ related_specs:
   - SPEC-013
   - SPEC-014
 related_future_work:
+  - FW-009
+  - FW-035
   - FW-022
   - FW-030
   - FW-032
@@ -73,6 +76,12 @@ target_milestone: MVP
 ---
 
 # SPEC-015: MVP Target-Host Configuration Contract
+
+> **Option B amendment approved — 2026-10-12.** Under accepted
+> [ADR-038](../adrs/adr-038-construction-graph-and-operational-contracts.md), graph
+> records describe exact direct construction dependencies; operational and lifetime
+> obligations are audited separately. [Approval and documentation-only limit](../iterations/iteration-003-review/rfc-014-spec-approval.md#option-b-construction-graph-amendment--2026-10-12).
+> Option B implementation is a separate activity and has not started. P08 remains incomplete.
 
 > **Scoped host correction approved — 2026-10-11.** Eugene replied “Approved, please proceed” after separate review of the exact P08 proposal. [Approval record](../iterations/iteration-003-review/rfc-014-spec-approval.md#scoped-host-lifetime-amendment--2026-10-11). The host permits `~Escapable` conformers with compiler-checked dependence on supplied backing; existing construction, activation and teardown duties remain. Implementation/evidence are still required.
 
@@ -178,8 +187,9 @@ Amendment map and review: [RFC-014 specification review](../iterations/iteration
 
 **Approved contract under ADR-035/036/037.** This section replaces the schema-3
 expanded-hierarchy production input and root-reference access realization. The
-existing host role graph, activation, failure policy, extents, queues, pacing,
-capabilities, transports and application service ownership remain. Scalar workload
+existing host roles (with ADR-038 construction-edge semantics below), activation,
+failure policy, extents, queues, pacing, capabilities, transports and application
+service ownership remain. Scalar workload
 bounds may be generated; occurrence topology may not. No external-package API
 or new host abstraction is authorized (RFC-013 / ITERATION-004 owns that work).
 
@@ -492,6 +502,12 @@ The host is the first and only owner allowed to join:
 - application callbacks with typed fact admission; and
 - wake reasons with platform scheduling and pacing.
 
+Under ADR-038 the host binds the existing typed consumer-owned wake contract to
+platform scheduling once. Runtime-owned admission MAY notify automatically
+through that binding; producers are not required to forward every accepted
+result through host composition. This does not transfer execution or application
+semantics to the host or change any approved module-import prohibition.
+
 ## Types / APIs
 
 The following declarations are package SPI. Concrete static hosts MAY generate
@@ -792,12 +808,41 @@ Every role in `HostComponentRole` is required exactly once. A diagnostic
 projector is optional, is not a component role, and cannot participate in
 validation or correctness. `HostComponentRoleSet` uses bit
 `1 << role.rawValue`; bits `18...31` are invalid. `HostComponentGraphView`
-enumerates the exact compiler-visible direct dependency records of one preset.
-Production views return exactly eighteen records. They are ordered by role raw
-value, contain no self-edge or unknown bit, contain no dependency prohibited by
-the approved package/module contracts, and form an acyclic graph. A missing,
-duplicate, out-of-order, truncated, cyclic, upward, or unknown record is a
-graph-stage failure before any later accessor is evaluated.
+enumerates the exact compiler-visible **direct factory/construction dependency**
+records of one preset under ADR-038. Production views return exactly eighteen
+records, ordered by role raw value. Each dependency MUST name a lower role;
+self-edges, unknown bits, dependencies prohibited by approved package/module
+contracts and cycles are forbidden. A missing, duplicate, out-of-order,
+truncated, cyclic, upward, or unknown record is a graph-stage failure before any
+later accessor is evaluated.
+
+The selected role-to-owner/factory inventory MUST identify every actual mandatory
+construction input: borrowed or retained owners/values, backing, required bound
+callbacks and the origins of derived configuration. Each input supplied by
+another role MUST be represented as a direct construction edge to that role;
+configuration derived from several roles MUST retain all its required origins.
+An inert descriptor, wrapper, pointer or shared storage MUST NOT hide an origin.
+Physical co-location alone does not establish an edge; the actual supplied input
+and its owner must establish it. A required upward construction edge MUST stop
+affected work for upstream resolution, rather than being omitted from a mask.
+
+The inventory MUST distinguish construction, activation wiring and runtime
+operations and trace their backing/lifetime obligations through teardown. Typed
+arguments supplied only to a runtime operation do not automatically establish
+construction edges. A callback bound as a required constructor input still does;
+this is not a general callback exception. Shared mutation/action value vocabulary
+alone does not identify a live model registration/target owner. The actual
+executor role is its serialization gate, not automatically the aggregate that
+contains it. These distinctions MUST be established from actual selected symbols
+and inputs, not assumed from the existing masks.
+
+For the finite counter, use-case `start(source:repository:deliver:)` and normalized
+input `submit(...to:)` MUST be recorded as runtime operations when their peer
+arguments are supplied only at call time; any actual construction inputs still
+produce edges. Admission notification through the typed consumer-owned wake
+contract is separately audited operational behavior. Its backing and any bound
+construction input MUST still be traced. This amendment does not declare the
+current counter graph valid.
 
 A concrete validator receives immutable descriptors and inert factories
 through one initializer or generated construction function owned by its host.
@@ -1136,6 +1181,19 @@ UI or alternate target graph.
 
 ### Opportunity and pacing
 
+Operational wake validation is separate from construction graph shape. The
+host MUST bind one typed consumer-owned requester to platform scheduling and
+prove that runtime-owned admission notification uses that binding with the exact
+runtime/profile identity and valid backing. There MUST remain exactly one
+SPEC-009 canonical reason set and one outstanding bit. Each queued fact MUST
+record its accepted-fact time at the supplied clock even behind an existing
+nonfact wake; rejected/invalid/unavailable submissions MUST emit no admitted-work
+notification. The binding MUST remain non-suspending/non-reentrant, survive
+accepted notifications during a cycle until the next sealed opportunity, and
+become unavailable before backing release. Separate activation and teardown
+proofs MUST cover installation, partial failure, quiescence and backing-last
+release. A graph pass MUST NOT substitute for these proofs.
+
 An empty-to-nonempty SPEC-009 wake-reason transition requests one host wake.
 The wake integration records pending work and returns without entering the
 runtime. The host provides a serialized runtime opportunity at or after the
@@ -1445,6 +1503,15 @@ Required tests include:
 - inert endpoint-descriptor mismatch and already-constructed endpoint mismatch,
   both with SPEC-014's exact safety-not-proven mapping and no live-owner call
   during validation;
+- exact eighteen-role direct construction inventories and masks for both
+  profiles, including each mandatory borrowed/retained input, backing and derived
+  configuration origin; hidden-origin, callback-indirection and actual upward
+  construction negatives; distinguish operation-only arguments and shared value
+  vocabulary from live construction dependencies without dropping lifetime audits;
+- independently test operational wake binding identity, one canonical reason
+  set/outstanding bit, queued-only notification, every fact deadline behind a
+  nonfact wake, cycle-time notification, coalescing, no reentry, stopped-producer
+  rejection, partial activation/teardown and backing expiry;
 - dynamic/static graph, limit, action, fact, and transcript equivalence;
 - six total action decodes, invalid codes, model replacement, stale target
   generations, pointer cancellation, and reentrant application callbacks;
@@ -1480,9 +1547,19 @@ software, transport, and observed architecture separately.
   stops at the first failure, invokes no runtime/client/external behavior, and
   retains no partial assembly; the preset construction function exposes an
   instance only after a valid report.
-- [ ] **HC-003:** Graph fixtures prove exactly one owner per role, an acyclic
-  dependency graph, `GiftUI` as the sole portable import, and no platform-owned
-  semantic stack or ambient lookup.
+- [ ] **HC-003:** Graph fixtures prove exactly eighteen ordered role records and
+  the exact direct construction edges for actual factories, including all
+  mandatory borrowed/retained inputs, backing and derived configuration origins;
+  missing/hidden/self/unknown/upward/cyclic construction edges reject before any
+  later projection. An explicit construction/activation/operation inventory and
+  complete backing/lifetime audit accompany the masks. Operation-only typed
+  arguments and value vocabulary are classified consistently. Separate operational
+  tests prove typed wake-binding identity, the single canonical reason set and
+  outstanding bit, queued-only notification, coalescing, fact deadlines, no reentry
+  and partial-failure/quiescence/backing-last teardown. Both profiles preserve
+  lower-contract module imports, `GiftUI` as the sole portable import, and no
+  platform-owned semantic stack or ambient lookup. Graph shape alone is not a
+  pass for operational or lifetime duties.
 - [ ] **HC-004:** Each preset consumes one exact successful SPEC-013 audit,
   requires equality with its complete schema-3 workload-derived limits, and
   rejects every independently mismatched profile, limit leaf, storage, static
@@ -1582,6 +1659,11 @@ fact-burst, failure normalization, deterministic mock trace, diagnostic, and
 exact host-fixture alignment.
 
 ## Deferred and Follow-up Work
+
+- ADR-038's construction/operation separation may help future composition work,
+  but [FW-035](../future-work/fw-035-generated-view-graph-for-interchangeable-frontends.md)
+  and [FW-009](../future-work/fw-009-shared-delegated-service-foundation.md) remain
+  captured. No frontend/IR, generated topology or service framework is added.
 
 [FW-030](../future-work/fw-030-application-integration-experience.md) captures
 the maintainer's request to assess easier application/backend integration.

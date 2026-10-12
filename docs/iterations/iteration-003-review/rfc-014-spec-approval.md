@@ -188,3 +188,47 @@ they cannot establish fresh 6.4 binary or resource results. Every earlier closed
 investigation ledger remains closed. The resumed implementation uses bounded
 assignments, the existing repair guard and independent review. No P08 exit,
 implemented transition or hardware action is approved by this correction.
+
+
+## Option B construction graph amendment — 2026-10-12
+
+Eugene explicitly selected Option B from the
+[graph-boundary decision packet](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/remaining-implementation/step-7g-graph-stop/graph-boundary-decision.md):
+
+> Yes, let's move into the direction of option B. Please update required documents, treat them as approved, and please update the current implementation plan so we can proceed from the place of blocker with the option B implementation and then proceed with the remaining tasks in the implementation plan.
+
+Eugene then limited this activity:
+
+> But please do not proceed with the implementation of option B by yourself. We will do it as a separate activity.
+
+These instructions explicitly approve the targeted RFC-014 amendment, acceptance
+of [ADR-038](../../adrs/adr-038-construction-graph-and-operational-contracts.md),
+and the coordinated SPEC-015 contract amendment with reciprocal SPEC-009
+clarification. They authorize documentation and planning now; **Option B
+implementation is a separate activity and has not started**. The later limit
+controls execution despite the earlier request to proceed through the plan.
+
+The approved decision makes the fixed eighteen-role graph describe exact direct
+factory/construction dependencies, including mandatory borrowed/retained inputs,
+backing and derived-configuration origins. It separates activation wiring and
+typed runtime operations from that graph without omitting their lifetime,
+identity, failure, teardown or behavioral obligations. Module imports continue
+to follow lower contracts under ADR-007/008. Runtime-owned automatic admission
+notification may use the existing typed consumer-owned wake contract; the host
+binds that contract to platform scheduling once. Per-producer host notification
+forwarding (Option A) is not selected. A callback is not a blanket exception for
+hiding a required construction edge. An actual upward construction dependency
+still blocks implementation and requires upstream resolution.
+
+The change is additive to ADR-007/008; it does not approve a service framework,
+frontend/IR implementation, public protocol redesign, unsafe conformance,
+allocator/capacity change, compiler change, hardware action or broader scope.
+FW-035/FW-009 retain their existing deferred status. Existing wake semantics and
+all resource and lifetime obligations remain required.
+
+Documentation approval is not compiler evidence or graph conformance. Last
+validated source remains `48a987cd`; `cfaa57af` is an unvalidated graph checkpoint.
+The historical **2/2** guard remains closed. The later one-native-invocation
+allowance remains **0/1, unconsumed**; this activity neither spends nor resets it
+and does not authorize running it now. SPEC-015 and SPEC-009 remain implementing,
+the owner plan remains active, and T8.1/P08 and P09–P12 remain incomplete.

@@ -6,12 +6,13 @@ status: accepted
 authors:
   - codex
 created: 2026-10-05
-updated: 2026-10-10
+updated: 2026-10-12
 proposal: []
 related_rfcs:
   - RFC-013
   - RFC-014
 related_adrs:
+  - ADR-038
   - ADR-006
   - ADR-007
   - ADR-008

@@ -92,6 +92,8 @@ features:
       - canvas-drawing
     milestone: MVP
   giftui-mvp-architecture:
+    # ADR-038 accepted: Option B docs approved 2026-10-12; implementation separate, not started.
+    # Approval: docs/iterations/iteration-003-review/rfc-014-spec-approval.md.
     # Compiler-upgrade assessment: FW-036, ITERATION-004 revision 2 I4-05 / I4-AC-006.
     # SPEC-007/011 P05 passed; T9.1/T12.1 remain open; shared receipt Tests/ContractFixtures/SPEC011/Evidence/rfc-014-p05/progress.md.
     # P07 passed independent repair exit review at 329570ab; R1/R2 resolved; original FAIL preserved.
@@ -128,6 +130,7 @@ features:
       - ADR-006
       - ADR-007
       - ADR-008
+      - ADR-038
       - ADR-009
       - ADR-010
       - ADR-011

@@ -6,8 +6,11 @@ status: captured
 authors:
   - Yauheni Lychkouski
 created: 2026-08-16
-updated: 2026-08-20
+updated: 2026-10-12
 source:
+  - SPEC-015
+  - RFC-014
+  - ADR-038
   - RFC-002
   - RFC-005
   - RFC-007
@@ -78,6 +81,12 @@ that those choices reduce complexity.
   foundation is cheaper than the approved consumer-specific alternatives.
 
 ## Disposition
+
+The 2026-10-12 accepted [ADR-038](../adrs/adr-038-construction-graph-and-operational-contracts.md)
+separates exact host construction dependencies from typed runtime operations.
+That may help future composition, but it demonstrates neither the consumer need
+nor the feasibility required by this item's revisit triggers. No promotion,
+implementation, frontend/IR or service-framework scope is added.
 
 Captured. RFC-007 remains a paused draft with `target_milestone: null`. When a
 trigger occurs, re-evaluate whether to revise RFC-007 under PROPOSAL-003 or

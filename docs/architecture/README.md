@@ -31,3 +31,17 @@ ADR-028's retained-closure representation and preserves its drawing lifecycle.
 This is accepted architecture, not a production conformance claim. Affected
 Specification amendments and their approval precede migration; the current
 production graph and historical implementation evidence remain the baseline.
+
+
+## Host construction and operational boundaries
+
+Accepted [ADR-038](../adrs/adr-038-construction-graph-and-operational-contracts.md)
+adds a precise distinction under ADR-007/008: the fixed eighteen-role graph
+records exact direct factory/construction dependencies, including mandatory
+inputs, backing and derived configuration origins. Activation and runtime
+operations retain separate typed-contract, identity, lifetime and behavioral
+validation. Lower-contract imports and actual construction ordering/cycle rules
+remain; indirection cannot hide an edge. Runtime-owned canonical wake notification
+may use the existing consumer-owned contract, bound once to platform scheduling
+by the host. Option B implementation is a separate activity and has not started;
+this decision does not validate the current P08 graph or close any acceptance gate.

@@ -6,8 +6,11 @@ status: captured
 authors:
   - codex
 created: 2026-10-06
-updated: 2026-10-06
+updated: 2026-10-12
 source:
+  - SPEC-015
+  - RFC-014
+  - ADR-038
   - docs/iterations/iteration-003-dev-ux-improvement.md
   - RFC-013
 related_future_work: []
@@ -54,6 +57,12 @@ need justifies retaining a second graph production path now.
   graph would be needed. Frontend availability alone does not select generation.
 
 ## Disposition
+
+The 2026-10-12 accepted [ADR-038](../adrs/adr-038-construction-graph-and-operational-contracts.md)
+separates exact host construction dependencies from typed runtime operations.
+That may help future composition, but it demonstrates neither the consumer need
+nor the feasibility required by this item's revisit triggers. No promotion,
+implementation, frontend/IR or service-framework scope is added.
 
 Captured. Revisit through Exploration or the main lifecycle when the trigger
 occurs. Any adoption requires reviewed architecture and approved contracts;

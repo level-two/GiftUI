@@ -6,7 +6,7 @@ status: approved
 authors:
   - codex
 created: 2026-10-09
-updated: 2026-10-10
+updated: 2026-10-12
 proposal:
   - PROPOSAL-007
 related_rfcs:
@@ -17,6 +17,7 @@ related_rfcs:
   - RFC-010
   - RFC-011
 related_adrs:
+  - ADR-038
   - ADR-006
   - ADR-008
   - ADR-011
@@ -41,6 +42,8 @@ related_specs:
   - SPEC-013
   - SPEC-015
 related_future_work:
+  - FW-009
+  - FW-035
   - FW-036
 related_explorations: []
 related_spikes:
@@ -64,6 +67,37 @@ The [final review](../iterations/iteration-003-review/rfc-014-final-review.md)
 records findings, corrections, evidence limits and finalization provenance.
 RFC approval enables ADR extraction; it does not change accepted ADRs, approve
 Specifications or authorize production migration.
+
+## Approved P08 construction graph amendment — 2026-10-12
+
+Eugene explicitly selected Option B and approved its required documents; the
+[approval record](../iterations/iteration-003-review/rfc-014-spec-approval.md#option-b-construction-graph-amendment--2026-10-12)
+also records the later instruction that implementation is a separate activity.
+[ADR-038](../adrs/adr-038-construction-graph-and-operational-contracts.md) records
+this additive decision under ADR-007/008.
+
+The fixed eighteen-role host graph describes exact direct factory/construction
+dependencies, including mandatory borrowed/retained inputs, backing and derived
+configuration origins. Activation wiring and runtime operations are audited
+separately; operation-only typed arguments and shared value vocabulary do not
+automatically create construction edges. Real construction edges cannot be
+hidden by callbacks, pointer indirection or physical storage placement. Fixed
+ordering, cycles and lower-edge constraints still apply; a required upward
+construction edge stops work for upstream resolution.
+
+Module imports remain toward lower contracts. Runtime-owned admission may notify
+through the existing typed consumer-owned wake contract, bound once by the host
+to platform scheduling. SPEC-009's single canonical reason set/outstanding bit,
+identity, coalescing, deadlines, non-reentry and teardown/backing duties require
+separate operational proof. Option A per-producer forwarding is not selected.
+No shared services, public protocol redesign, new frontend/IR, allocator,
+capacity, compiler or hardware change is approved. Existing P08 feasibility and
+conformance remain unproved; documentation approval is not implementation.
+
+Possible future benefits remain only in
+[FW-035](../future-work/fw-035-generated-view-graph-for-interchangeable-frontends.md)
+and [FW-009](../future-work/fw-009-shared-delegated-service-foundation.md), with
+no promotion or scope expansion.
 
 ## Summary
 
@@ -576,6 +610,10 @@ see the [acceptance record](../iterations/iteration-003-review/rfc-014-adr-accep
 3. [ADR-037 (accepted)](../adrs/adr-037-protocol-canvas-and-scoped-post-layout-drawing.md):
    Protocol Canvas values with Body == Never and scoped post-layout invocation,
    replacing ADR-028's retained-closure realization while preserving its lifecycle.
+
+4. [ADR-038 (accepted, 2026-10-12)](../adrs/adr-038-construction-graph-and-operational-contracts.md):
+   Exact host construction graph and separately validated typed operational
+   contracts, additive to ADR-007/008 under the Option B approval above.
 
 The selected three-bank capacity/refusal policy is part of the ownership decision;
 it does not require an ADR-034 storage amendment. Exact declarations and resource

@@ -6,7 +6,7 @@ status: implementing
 authors:
   - codex
 created: 2026-08-26
-updated: 2026-10-11
+updated: 2026-10-12
 proposal:
   - PROPOSAL-003
 related_rfcs:
@@ -16,6 +16,7 @@ related_rfcs:
   - RFC-005
   - RFC-011
 related_adrs:
+  - ADR-038
   - ADR-036
   - ADR-010
   - ADR-011
@@ -415,6 +416,15 @@ after allocation it retains that identity through offer and finalization. A
 failure adapter MUST preserve the detecting phase and identities exactly.
 
 ### Wake requests and pending presentation
+
+The approved [ADR-038](../adrs/adr-038-construction-graph-and-operational-contracts.md)
+construction/operation distinction is specified by
+[SPEC-015](spec-015-host-configuration.md#opportunity-and-pacing). Runtime-owned
+admission MAY notify automatically through this existing typed consumer-owned
+requester, bound once by host composition to platform scheduling. Its operational
+identity, backing and teardown require separate proof from construction graph
+shape. This reciprocal clarification changes none of the wake behavior, reason
+bits, accumulation, coalescing, non-reentry or quiescence requirements below.
 
 ```swift
 package struct ExecutionWakeReasons: OptionSet, Equatable, Sendable {

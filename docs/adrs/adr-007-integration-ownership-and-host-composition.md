@@ -6,12 +6,13 @@ status: accepted
 authors:
   - Yauheni Lychkouski
 created: 2026-08-20
-updated: 2026-08-28
+updated: 2026-10-12
 proposal:
   - PROPOSAL-003
 related_rfcs:
   - RFC-002
 related_adrs:
+  - ADR-038
   - ADR-005
   - ADR-008
   - ADR-010
@@ -110,6 +111,10 @@ Rejected because it hides dependencies and allows concrete target identity to
 flow upward.
 
 ## References
+
+- [ADR-038](adr-038-construction-graph-and-operational-contracts.md) adds exact
+  host construction graph semantics and separate operational validation. This
+  record's accepted decision and module-import constraints remain unchanged.
 
 - [RFC-002: GiftUI MVP Layered Architecture](../rfcs/rfc-002-giftui-mvp-layered-architecture.md)
 - [PROPOSAL-003: GiftUI MVP Architecture Establishment](../proposals/proposal-003-giftui-mvp-architecture-establishment.md)
