@@ -1,0 +1,9 @@
+{
+  "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/remaining-implementation/r07-firmware-recipe/production-attempt/receipt.md": "1483c67f4dead691e72c9cf3b99c1c116c161ae8ea328fe55f7520266cf74806",
+  "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterGraphProbe.swift": "920639f5493f49d69c115d4bea77c0f0520562b9df5697eadd32e91233cbb768",
+  "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostProbe.swift": "ad9125ed3abfcdfc31689c9acba9312ebf0af5a638ea280a428b87098e086ede",
+  "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterProfileStorage.swift": "6137be3df89bf7d93ccc1d44148e7143d9ad4569f41396978622965aebefa82d",
+  "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterRouteEntry.swift": "39fea522c9ffd618209342f4021a91a91354ec572ddfe072624b679122120335",
+  "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterEmbeddedBacking.swift": "634565f27c8b73667a0994a643247ef5355d85cc7b6d1424eff856c8e3e2af84",
+  "firmware/nrf52840/applications/signal-analyzer-static/src/counter_main.c": "3f14ee50657feff222693ecbcb413366b3d481882f2573c60815c5e063d1a327"
+}

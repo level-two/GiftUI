@@ -1,0 +1,394 @@
+commit 38ba440d140fe02f7a1e5f034d24f1189cbba732
+Author:     Yauheni Lychkouski <370903+level-two@users.noreply.github.com>
+AuthorDate: Mon Oct 12 17:47:49 2026 +0200
+Commit:     Yauheni Lychkouski <370903+level-two@users.noreply.github.com>
+CommitDate: Mon Oct 12 17:47:49 2026 +0200
+
+    refactor: supply explicit backing to Embedded P08 counter profiles
+
+diff --git a/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/remaining-implementation/r07-firmware-recipe/production-attempt/receipt.md b/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/remaining-implementation/r07-firmware-recipe/production-attempt/receipt.md
+index b8984680..98d51ea0 100644
+--- a/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/remaining-implementation/r07-firmware-recipe/production-attempt/receipt.md
++++ b/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/remaining-implementation/r07-firmware-recipe/production-attempt/receipt.md
+@@ -92,3 +92,14 @@ then `scripts/nrf52840/build.sh --application signal-analyzer-static
+ ABI/GOT/relocations/allocator qualification, total RAM/flash and actual nested
+ entry/graph/host/initialization/corpus/click stack chain. Any check/scope failure
+ stops for independent Strong review; P09–P12 and hardware remain untouched.
++
++Source realization step: six source files changed (four existing fixtures, one
++new fixture, counter_main.c). Existing host implementation remains shared via
++CounterSelectedStaticProfileStorage; the existing inline coordinator/native
++owner remains available. Embedded field accessors mutate pointed-to storage
++without mutating the descriptor; only small semantic/Canvas descriptors are
++locally copied for nested scoped spans. No bank payload copies are introduced.
++The shared ledger takes an optional separately charged descriptor region;
++existing callers supply none. The new physical slot includes original trailing
++alignment bytes. Formatter invocation `scripts/format-swift.sh` exited0
++(session81006). No compiler, checker or image build has run for this step.
+diff --git a/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterGraphProbe.swift b/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterGraphProbe.swift
+index a42f8ddc..1865d4aa 100644
+--- a/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterGraphProbe.swift
++++ b/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterGraphProbe.swift
+@@ -21,7 +21,7 @@ private struct CounterInvalidGraph: HostComponentGraphView {
+         return original
+     }
+ }
+-package func p08CounterGraph() -> Int {
++package func p08CounterGraph(backing: UnsafeMutableRawBufferPointer? = nil) -> Int {
+     // Independent expected vector from the reviewed actual-owner inventory:
+     // endpoint6 needs backing0, text1 and configuration2–5; wake16 retains
+     // audit0 and capability2–5 in its full report. Operation-only peers add no edge.
+@@ -38,9 +38,9 @@ package func p08CounterGraph() -> Int {
+     var semanticOwners = SemanticRecordOwnerNamespace()
+     var count = 46
+     do {
+-        var profile = StaticCounterProfileStorage(modelOwner: try modelOwners.issue(), semanticOwner: try semanticOwners.issue())
++        var profile = counterMakeSelectedProfile(modelOwner: try modelOwners.issue(), semanticOwner: try semanticOwners.issue(), backing: counterSelectedProfileBacking(backing, slot: 0))
+         guard case .valid(let audit) = profile.audit() else { preconditionFailure("counter graph audit") }
+-        func reject(_ negative: CounterConstructionNegative, profile: borrowing StaticCounterProfileStorage) {
++        func reject(_ negative: CounterConstructionNegative, profile: borrowing CounterSelectedStaticProfileStorage) {
+             let graph = CounterHostGraph(negative: negative)
+             precondition(HostComponentGraphValidation.validate(graph) == nil)
+             var observation = CounterConstructionObservation()
+diff --git a/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostProbe.swift b/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostProbe.swift
+index 3258a077..a8f38ef0 100644
+--- a/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostProbe.swift
++++ b/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostProbe.swift
+@@ -9,7 +9,7 @@ import GiftUIObservableState
+ import GiftUIRuntimeStatic
+ import GiftUISemanticCore
+ 
+-extension StaticCounterProfileStorage {
++extension CounterSelectedStaticProfileStorage {
+     mutating func runCounterHost(failAfterRuntime: Bool) -> Int {
+         guard case .valid(let audit) = audit(), let assembly = CounterHostAssembly.validate(audit, kind: counterStaticHostKind) else { preconditionFailure("counter valid-only host") }
+         return counterForeignJoinScope { foreignModels, foreignRoot, foreignControl in
+@@ -20,6 +20,12 @@ extension StaticCounterProfileStorage {
+             precondition(CounterHostAssembly.validate(audit, kind: counterStaticHostKind, useCaseCallbacks: 2) == nil)
+             precondition(CounterHostAssembly.validate(audit, kind: counterStaticHostKind, nonTransitionPublications: 2) == nil)
+             let limits = self.limits
++            #if hasFeature(Embedded)
++            // Copy only the small typed descriptors; their disjoint banks stay
++            // in the caller slot until all nested scopes and teardown end.
++            var semanticBacking = self.semanticBacking
++            var canvasBacking = self.canvasBacking
++            #endif
+             var keys = interaction.take()
+             var checks = 0
+             do throws(ObservableStateError) {
+@@ -135,13 +141,13 @@ extension StaticCounterProfileStorage {
+     }
+ }
+ 
+-package func p08CounterHost(write: CounterTiledPixelWrite? = nil) -> Int {
++package func p08CounterHost(write: CounterTiledPixelWrite? = nil, backing: UnsafeMutableRawBufferPointer? = nil) -> Int {
+     var models = ObservableModelOwnerNamespace()
+     var semantics = SemanticRecordOwnerNamespace()
+     do {
+-        var complete = StaticCounterProfileStorage(modelOwner: try models.issue(), semanticOwner: try semantics.issue())
+-        var partial = StaticCounterProfileStorage(modelOwner: try models.issue(), semanticOwner: try semantics.issue())
+-        var nonRetryable = StaticCounterProfileStorage(modelOwner: try models.issue(), semanticOwner: try semantics.issue())
++        var complete = counterMakeSelectedProfile(modelOwner: try models.issue(), semanticOwner: try semantics.issue(), backing: counterSelectedProfileBacking(backing, slot: 0))
++        var partial = counterMakeSelectedProfile(modelOwner: try models.issue(), semanticOwner: try semantics.issue(), backing: counterSelectedProfileBacking(backing, slot: 1))
++        var nonRetryable = counterMakeSelectedProfile(modelOwner: try models.issue(), semanticOwner: try semantics.issue(), backing: counterSelectedProfileBacking(backing, slot: 2))
+         nonRetryable.control.terminalRetry = true
+         #if hasFeature(Embedded) || GIFTUI_COUNTER_TILED
+         complete.control.backend.write = write
+@@ -150,7 +156,7 @@ package func p08CounterHost(write: CounterTiledPixelWrite? = nil) -> Int {
+         #endif
+         var failures = 0
+         for step: UInt8 in 2...7 {
+-            var failed = StaticCounterProfileStorage(modelOwner: try models.issue(), semanticOwner: try semantics.issue())
++            var failed = counterMakeSelectedProfile(modelOwner: try models.issue(), semanticOwner: try semantics.issue(), backing: counterSelectedProfileBacking(backing, slot: 3))
+             failed.control.idleQuiesceMode = step
+             #if hasFeature(Embedded) || GIFTUI_COUNTER_TILED
+             failed.control.backend.write = write
+diff --git a/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterProfileStorage.swift b/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterProfileStorage.swift
+index cc7677c3..8884df31 100644
+--- a/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterProfileStorage.swift
++++ b/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterProfileStorage.swift
+@@ -95,6 +95,7 @@ func counterValidateBacking<G, C, R, H, GR: CounterStorageRegionSource>(profile:
+     interaction: borrowing InteractionOwnedKeyState<C, R, H>, geometryType: G.Type,
+     canvasCount: Int, canvasCapacity: UInt16, canvasControlBytes: Int,
+     factoryRegion: CounterStorageRegion,
++    factoryDescriptorRegion: CounterStorageRegion? = nil,
+     geometryRegions: borrowing GR,
+     report: (CounterStorageRegion) -> Void) -> RuntimeProfileValidationResult
+ where G: CounterGeometry, C: CounterCandidateBacking, R: CounterCommittedBacking, H: CounterHitBacking,
+@@ -128,7 +129,7 @@ where G: CounterGeometry, C: CounterCandidateBacking, R: CounterCommittedBacking
+         - MemoryLayout<InteractionOwnedKeyState<C, R, H>>.size - MemoryLayout<CounterEndpoint>.size
+         + MemoryLayout<CounterControl>.size - Admission.pointerStateStorageBytes
+         - MemoryLayout<CounterAdmissionBacking>.size - MemoryLayout<CounterPointerState>.size - result
+-        + Int(factoryRegion.chargedBytes)
++        + Int(factoryRegion.chargedBytes) + Int(factoryDescriptorRegion?.chargedBytes ?? 0)
+     // Bank zero occupies exactly the configured whole-element prefix. Bank one
+     // owns the second configured slice plus any retained allocator tail; never
+     // divide a typed element when Array capacity rounds to an odd count.
+@@ -223,6 +224,7 @@ where G: CounterGeometry, C: CounterCandidateBacking, R: CounterCommittedBacking
+     // remain physically live and are charged here exactly once.
+     record(.inline(CounterControl.self, family: 24, chargedBytes: MemoryLayout<CounterControl>.size - Admission.pointerStateStorageBytes - MemoryLayout<CounterAdmissionBacking>.size - MemoryLayout<CounterPointerState>.size - result, kind: .metadataPadding))
+     record(factoryRegion)
++    if let factoryDescriptorRegion { record(factoryDescriptorRegion) }
+     record(.inline(RuntimeCompletePipelineResult<RuntimeOwnerFailure>?.self, family: 25))
+     guard !reportOverflow else { return .invalid(.arithmeticOverflow) }
+     for index in 0..<26 { precondition(reported[index] == values[index], "physical region audit mismatch") }
+diff --git a/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterRouteEntry.swift b/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterRouteEntry.swift
+index f4bd35a8..c354e335 100644
+--- a/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterRouteEntry.swift
++++ b/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterRouteEntry.swift
+@@ -22,14 +22,23 @@ var counterDynamicHostKind: MVPHostKind {
+ #endif
+ // One selected registered profile, with the same finite host corpus.
+ // Firmware supplies its existing synchronous SPI writer at this fixture C root.
++#if hasFeature(Embedded)
++@_cdecl("giftui_rfc014_counter_entry")
++func giftuiRFC014CounterEntry(_ write: CounterTiledPixelWrite?, _ backing: UnsafeMutableRawPointer?, _ byteCount: Int) -> UInt32 {
++    precondition(backing != nil && byteCount == counterEmbeddedSlotCount * counterEmbeddedSlotBytes)
++    return UInt32(p08CounterRoute(write: write, backing: UnsafeMutableRawBufferPointer(start: backing, count: byteCount)))
++}
++#else
+ @_cdecl("giftui_rfc014_counter_entry")
+ func giftuiRFC014CounterEntry(_ write: CounterTiledPixelWrite?) -> UInt32 {
+     UInt32(p08CounterRoute(write: write))
+ }
+-package func p08CounterRoute(write: CounterTiledPixelWrite? = nil) -> Int {
++#endif
++
++package func p08CounterRoute(write: CounterTiledPixelWrite? = nil, backing: UnsafeMutableRawBufferPointer? = nil) -> Int {
+     #if GIFTUI_COUNTER_ROUTE_DYNAMIC
+     p08CounterGraph() + p08CounterDynamicHost()
+     #else
+-    p08CounterGraph() + p08CounterHost(write: write)
++    p08CounterGraph(backing: backing) + p08CounterHost(write: write, backing: backing)
+     #endif
+ }
+diff --git a/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterEmbeddedBacking.swift b/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterEmbeddedBacking.swift
+new file mode 100644
+index 00000000..5cf59da5
+--- /dev/null
++++ b/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterEmbeddedBacking.swift
+@@ -0,0 +1,199 @@
++import P08CounterTable
++import P08CounterSchema
++import GiftUI
++import GiftUIDrawing
++@testable import GiftUIExecution
++import GiftUIInteraction
++import GiftUILayout
++import GiftUIObservableState
++import GiftUIRenderCore
++import GiftUIRenderLowering
++@testable import GiftUIRuntimeCore
++import GiftUISemanticCore
++import GiftUIRuntimeStatic
++#if !hasFeature(Embedded)
++import GiftUIRuntimeDynamic
++#endif
++
++// The caller supplies four disjoint, stable slots. Only the selected Embedded
++// graph/host use this realization; other callers retain the inline owner.
++#if hasFeature(Embedded)
++let counterEmbeddedSlotBytes = 30176
++let counterEmbeddedSlotCount = 4
++
++typealias CounterSelectedStaticProfileStorage = CounterEmbeddedProfileStorage
++
++struct CounterEmbeddedElements<Element> {
++    let start: UnsafeMutablePointer<Element>
++    let count: Int
++    var mutableSpan: MutableSpan<Element> {
++        @_lifetime(&self)
++        mutating get { MutableSpan(_unsafeStart: start, count: count) }
++    }
++}
++struct CounterEmbeddedSemanticBacking {
++    var records: CounterEmbeddedElements<SemanticRuntimeRecord>
++    var paths: CounterEmbeddedElements<SemanticPathEntry>
++    var payloads: CounterEmbeddedElements<CounterPayload?>
++    var scalars: CounterEmbeddedElements<UInt32>
++}
++
++// Typed bindings initialize each physical field separately. In particular no
++// full profile or semantic aggregate is ever passed to initialize(to:).
++private func counterEmbeddedField<T: ~Copyable>(_ bytes: UnsafeMutableRawBufferPointer,
++    _ type: T.Type, offset: Int, stride: Int, alignment: Int, count: Int = 1
++) -> UnsafeMutablePointer<T> {
++    precondition(MemoryLayout<T>.stride == stride && MemoryLayout<T>.alignment == alignment)
++    precondition(offset >= 0 && offset + stride * count <= bytes.count)
++    let pointer = bytes.baseAddress!.advanced(by: offset)
++    precondition(Int(bitPattern: pointer) % alignment == 0)
++    return pointer.bindMemory(to: T.self, capacity: count)
++}
++
++struct CounterEmbeddedProfileStorage: ~Copyable, RuntimeProfileStorage {
++    typealias StructuralIdentity = SemanticCompleteIdentity
++    static var profile: RuntimeProfileKind { .static }
++    private let limitsStorage: UnsafeMutablePointer<RuntimeProfileLimits>
++    private let rootStorage: UnsafeMutablePointer<StaticObservableRootAdapter<CounterOwnedModel, SemanticCompleteIdentity>>
++    private let semanticStorage: UnsafeMutablePointer<StaticSemanticRecordStorage>
++    var semanticBacking: CounterEmbeddedSemanticBacking
++    private let canvasStorage: UnsafeMutablePointer<StaticCanvasValueStorage>
++    var canvasBacking: CounterEmbeddedElements<CanvasStagedEntry<SemanticRecordReference, CounterValueTable.CaptureStorage>?>
++    private let workspaceStorage: UnsafeMutablePointer<CounterStaticWorkspaceBacking>
++    private let interactionStorage: UnsafeMutablePointer<CounterStaticKeys?>
++    private let controlStorage: UnsafeMutablePointer<CounterControl>
++    private let usedStorage: UnsafeMutablePointer<Bool>
++    var limits: RuntimeProfileLimits { limitsStorage.pointee }
++    var root: StaticObservableRootAdapter<CounterOwnedModel, SemanticCompleteIdentity> {
++        _read { yield rootStorage.pointee }
++        nonmutating _modify { yield &rootStorage.pointee }
++    }
++    var semantic: StaticSemanticRecordStorage {
++        _read { yield semanticStorage.pointee }
++        nonmutating _modify { yield &semanticStorage.pointee }
++    }
++    var canvas: StaticCanvasValueStorage {
++        _read { yield canvasStorage.pointee }
++        nonmutating _modify { yield &canvasStorage.pointee }
++    }
++    var workspace: CounterStaticWorkspaceBacking {
++        _read { yield workspaceStorage.pointee }
++        nonmutating _modify { yield &workspaceStorage.pointee }
++    }
++    var interaction: CounterStaticKeys? {
++        _read { yield interactionStorage.pointee }
++        nonmutating _modify { yield &interactionStorage.pointee }
++    }
++    var control: CounterControl {
++        _read { yield controlStorage.pointee }
++        nonmutating _modify { yield &controlStorage.pointee }
++    }
++    var used: Bool {
++        _read { yield usedStorage.pointee }
++        nonmutating _modify { yield &usedStorage.pointee }
++    }
++    init(modelOwner: ObservableModelOwnerIdentity, semanticOwner: SemanticRecordOwnerIdentity,
++        backing: UnsafeMutableRawBufferPointer, limits: RuntimeProfileLimits = counterActualLimits(.static)
++    ) {
++        precondition(backing.count == counterEmbeddedSlotBytes)
++        precondition(MemoryLayout<StaticCounterProfileStorage>.stride == counterEmbeddedSlotBytes)
++        precondition(Int(bitPattern: backing.baseAddress!) % 8 == 0)
++        limitsStorage = counterEmbeddedField(backing, RuntimeProfileLimits.self, offset: 0, stride: 116, alignment: 4)
++        rootStorage = counterEmbeddedField(backing, StaticObservableRootAdapter<CounterOwnedModel, SemanticCompleteIdentity>.self, offset: 116, stride: 812, alignment: 4)
++        semanticStorage = counterEmbeddedField(backing, StaticSemanticRecordStorage.self, offset: 928, stride: 116, alignment: 4)
++        semanticBacking = .init(
++            records: .init(start: counterEmbeddedField(backing, SemanticRuntimeRecord.self, offset: 1044, stride: 20, alignment: 2, count: 128), count: 128),
++            paths: .init(start: counterEmbeddedField(backing, SemanticPathEntry.self, offset: 3604, stride: 22, alignment: 2, count: 384), count: 384),
++            payloads: .init(start: counterEmbeddedField(backing, CounterPayload?.self, offset: 12052, stride: 36, alignment: 4, count: 256), count: 256),
++            scalars: .init(start: counterEmbeddedField(backing, UInt32.self, offset: 21268, stride: 4, alignment: 4, count: 128), count: 128))
++        canvasStorage = counterEmbeddedField(backing, StaticCanvasValueStorage.self, offset: 21780, stride: 4, alignment: 2)
++        canvasBacking = .init(start: counterEmbeddedField(backing, CanvasStagedEntry<SemanticRecordReference, CounterValueTable.CaptureStorage>?.self, offset: 21784, stride: 28, alignment: 4), count: 1)
++        workspaceStorage = counterEmbeddedField(backing, CounterStaticWorkspaceBacking.self, offset: 21812, stride: 2212, alignment: 1)
++        interactionStorage = counterEmbeddedField(backing, CounterStaticKeys?.self, offset: 24024, stride: 2412, alignment: 4)
++        controlStorage = counterEmbeddedField(backing, CounterControl.self, offset: 26440, stride: 3728, alignment: 8)
++        usedStorage = counterEmbeddedField(backing, Bool.self, offset: 30168, stride: 1, alignment: 1)
++        // Initialize all semantic sentinels through their typed initializers.
++        // Zero-filled BSS alone is not a valid initial semantic bank.
++        limitsStorage.initialize(to: limits)
++        rootStorage.initialize(to: StaticObservableRootAdapter(identity: modelOwner, schema: 1, needsCapture: false, modelLimit: min(2, max(1, limits.models.maximumModelSlots)), claimLimit: min(4, max(1, limits.models.maximumOwningTickets)), pinLimit: min(2, max(1, limits.models.maximumFramePins)), captureLimit: 0)!)
++        semanticStorage.initialize(to: StaticSemanticRecordStorage(limits: counterSemanticLimits, owner: semanticOwner))
++        for index in 0..<128 { semanticBacking.records.start.advanced(by: index).initialize(to: .init()) }
++        for index in 0..<384 { semanticBacking.paths.start.advanced(by: index).initialize(to: .init()) }
++        for index in 0..<256 { semanticBacking.payloads.start.advanced(by: index).initialize(to: nil) }
++        for index in 0..<128 { semanticBacking.scalars.start.advanced(by: index).initialize(to: 0) }
++        canvasStorage.initialize(to: StaticCanvasValueStorage())
++        canvasBacking.start.initialize(to: nil)
++        workspaceStorage.initialize(to: CounterStaticWorkspaceBacking())
++        interactionStorage.initialize(to: CounterStaticKeys(state: InteractionState(candidateRecords: CounterStaticCandidate(capacity: 2)!, candidateHitRegions: CounterStaticHits(capacity: 2)!, candidateCommittedRecords: CounterStaticCommitted(capacity: 2)!, committedRecords: CounterStaticCommitted(capacity: 2)!, committedHitRegions: CounterStaticHits(capacity: 2)!), maximumComponentsPerKey: 24, maximumComponents: 48)!)
++        controlStorage.initialize(to: CounterControl())
++        usedStorage.initialize(to: false)
++    }
++    deinit {
++        // Every host/runtime borrow and teardown ends before this descriptor.
++        usedStorage.deinitialize(count: 1)
++        controlStorage.deinitialize(count: 1)
++        interactionStorage.deinitialize(count: 1)
++        workspaceStorage.deinitialize(count: 1)
++        canvasBacking.start.deinitialize(count: 1)
++        canvasStorage.deinitialize(count: 1)
++        semanticBacking.scalars.start.deinitialize(count: 128)
++        semanticBacking.payloads.start.deinitialize(count: 256)
++        semanticBacking.paths.start.deinitialize(count: 384)
++        semanticBacking.records.start.deinitialize(count: 128)
++        semanticStorage.deinitialize(count: 1)
++        rootStorage.deinitialize(count: 1)
++        limitsStorage.deinitialize(count: 1)
++    }
++    borrowing func audit() -> RuntimeProfileValidationResult { audit(report: { _ in }) }
++    borrowing func audit(report: (CounterStorageRegion) -> Void) -> RuntimeProfileValidationResult {
++        guard let interaction else { return .invalid(.missingStorage) }
++        return counterValidateBacking(profile: Self.profile, limits: limits, root: root.storageLayout, rootMetadataRegion: .inline(StaticObservableRootAdapter<CounterOwnedModel, SemanticCompleteIdentity>.self, family: 7, chargedBytes: root.storageLayout.metadataBytes, kind: .metadataPadding),
++            semantic: .init(limits: semantic.storageLimits, records: .elements(SemanticRuntimeRecord.self, count: semanticBacking.records.count), paths: .elements(SemanticPathEntry.self, count: semanticBacking.paths.count), payloads: .elements(CounterPayload?.self, count: semanticBacking.payloads.count), scalars: .elements(UInt32.self, count: semanticBacking.scalars.count), controlBytes: MemoryLayout<StaticSemanticRecordStorage>.size + CounterSemanticBacking.paddingBytes),
++            geometry: workspace.measurement, interaction: interaction, geometryType: StaticCounterGeometry.self,
++            canvasCount: canvasBacking.count, canvasCapacity: UInt16(canvasBacking.count),
++            canvasControlBytes: MemoryLayout<StaticCanvasValueStorage>.size,
++            factoryRegion: .inline(StaticCounterProfileStorage.self, family: 24, chargedBytes: MemoryLayout<StaticCounterProfileStorage>.stride - MemoryLayout<StaticObservableRootAdapter<CounterOwnedModel, SemanticCompleteIdentity>>.size - MemoryLayout<StaticSemanticRecordStorage>.size - MemoryLayout<CounterSemanticBacking>.size - MemoryLayout<StaticCanvasValueStorage>.size - MemoryLayout<InlineArray<1, CanvasStagedEntry<SemanticRecordReference, CounterValueTable.CaptureStorage>?>>.size - MemoryLayout<CounterStaticWorkspaceBacking>.size - MemoryLayout<CounterStaticKeys>.size - MemoryLayout<CounterControl>.size, kind: .metadataPadding),
++            factoryDescriptorRegion: .inline(Self.self, family: 24, kind: .metadataPadding),
++            geometryRegions: workspace, report: report)
++    }
++    mutating func resetAttemptStorage() {
++        precondition(interaction != nil)
++        _ = workspace.withGeometry { geometry in
++            var geometry = consume geometry
++            geometry.reset()
++            return 0
++        }
++        interaction!.resolveCandidate(.discard)
++        control.admission.finishAttempt()
++    }
++    mutating func resetAllStorage() {
++        precondition(!used || control.unavailable)
++        resetAttemptStorage()
++        interaction!.resetAllStorage()
++        control.admission.resetAll()
++    }
++
++}
++#else
++typealias CounterSelectedStaticProfileStorage = StaticCounterProfileStorage
++#endif
++
++func counterSelectedProfileBacking(_ backing: UnsafeMutableRawBufferPointer?, slot: Int) -> UnsafeMutableRawBufferPointer? {
++    #if hasFeature(Embedded)
++    guard let backing else { preconditionFailure("Embedded counter requires caller backing") }
++    precondition((0..<counterEmbeddedSlotCount).contains(slot))
++    precondition(backing.count == counterEmbeddedSlotCount * counterEmbeddedSlotBytes)
++    return UnsafeMutableRawBufferPointer(rebasing: backing[(slot * counterEmbeddedSlotBytes)..<((slot + 1) * counterEmbeddedSlotBytes)])
++    #else
++    return nil
++    #endif
++}
++func counterMakeSelectedProfile(modelOwner: ObservableModelOwnerIdentity,
++    semanticOwner: SemanticRecordOwnerIdentity, backing: UnsafeMutableRawBufferPointer?
++) -> CounterSelectedStaticProfileStorage {
++    #if hasFeature(Embedded)
++    return .init(modelOwner: modelOwner, semanticOwner: semanticOwner, backing: backing!)
++    #else
++    return .init(modelOwner: modelOwner, semanticOwner: semanticOwner)
++    #endif
++}
+diff --git a/firmware/nrf52840/applications/signal-analyzer-static/src/counter_main.c b/firmware/nrf52840/applications/signal-analyzer-static/src/counter_main.c
+index a55c3e52..422555a6 100644
+--- a/firmware/nrf52840/applications/signal-analyzer-static/src/counter_main.c
++++ b/firmware/nrf52840/applications/signal-analyzer-static/src/counter_main.c
+@@ -5,15 +5,18 @@
+ 
+ typedef int32_t (*counter_pixel_write)(uint16_t, uint16_t, uint16_t, uint16_t,
+                                       const uint8_t *, size_t);
+-extern uint32_t giftui_rfc014_counter_entry(counter_pixel_write write);
++extern uint32_t giftui_rfc014_counter_entry(counter_pixel_write write, void *backing, size_t byte_count);
+ 
+ int main(void)
+ {
++    /* Explicit caller-owned slots. Graph0 ends before complete0 is created;
++     * failure3 ends after each teardown before the next fresh owner uses it. */
++    static _Alignas(8) uint8_t counter_backing[4][30176];
+     if (spi_tft_initialize() != 0) {
+         printk("P08 counter display initialization failed\n");
+         return 1;
+     }
+-    uint32_t checks = giftui_rfc014_counter_entry(spi_tft_write_rgb565);
++    uint32_t checks = giftui_rfc014_counter_entry(spi_tft_write_rgb565, counter_backing, sizeof(counter_backing));
+     int shutdown = spi_tft_shutdown();
+     printk("P08 counter assertions=%u shutdown=%d\n", checks, shutdown);
+     return checks > 0 && shutdown == 0 ? 0 : 1;

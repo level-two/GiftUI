@@ -1,0 +1,13 @@
+{
+  "argv": [
+    "python3",
+    "scripts/contracts/check-spec-015-counter.py",
+    "--runtime-build",
+    ".build/contracts/spec-013-runtime-cycle/tmp_63jv4xj/macos-dynamic",
+    "--profile",
+    "macos-dynamic"
+  ],
+  "source": "38ba440d",
+  "started": "2026-10-12T15:50:33.554837+00:00",
+  "repair_after_failure": false
+}

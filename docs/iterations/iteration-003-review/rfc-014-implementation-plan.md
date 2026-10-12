@@ -1,6 +1,18 @@
 # RFC-014 bounded implementation sequence — 2026-10-10
 
-**Current P08 checkpoint — supported nRF image links; gross-stack FAIL, 2026-10-12.**
+**Current P08 checkpoint — backing source committed; native routes PASS; capacity interruption, 2026-10-12.**
+Reviewed backing design `19d07b6e` and source `38ba440d` preserve the existing
+counter workload. Current native Static/Dynamic pass 1,349,555/1,349,501 assertions
+with zero failures. [Exact checkpoint](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/remaining-implementation/r07-firmware-recipe/production-attempt/backing-realization/result.md) records the completed evidence and
+remaining sequential Pi/nRF routes, supported image, resource/stack checks and
+independent review. Selected Sol 6.1 High workers returned repeated capacity
+errors; no substitute model, new compiler attempt or repair followed. The
+Embedded backing implementation is not yet target-validated. Previous image
+stack failures remain historical, not current-source measurements. All closed
+allowances remain closed; SPEC-015 implementing/plan active/P08/T8.1 remain open.
+P09–P12 are pending; no hardware action or package pass is claimed.
+
+**Historical P08 checkpoint — supported nRF image links; gross-stack FAIL, 2026-10-12.**
 Reviewed sourcee5620a35 uses existing Zephyr RODATA hook; [single supported build](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/remaining-implementation/r07-firmware-recipe/production-attempt/result.md)
 passes actual exit0, final ELF/HEX/map/ARMv7EM/VFP/zeroheap/linked RAM31616 and
 flash297604. GOT20bytes lie inside accounted ROM, no RAM copy/remaining relocs.

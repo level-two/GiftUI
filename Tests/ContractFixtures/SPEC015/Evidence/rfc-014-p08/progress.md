@@ -1365,3 +1365,14 @@ No build running; no model substitution, next compile, hardware or contract chan
 P08/T8.1/R07 open; Pi linked pass and four R06 routes retain their stated scope.
 Resume Strong diagnosis then bounded correction, actual image/resource evidence,
 and independent package review. Historical guards remain closed and unchanged.
+
+
+### R07 backing realization capacity checkpoint
+
+Design `19d07b6e`, source `38ba440d`; both current native routes pass with
+1,349,555/1,349,501 assertions and zero failures. Repeated selected Sol 6.1 High
+capacity errors interrupted the remaining target validation. Root preserved
+existing evidence only; no substitute model or validation rerun.
+[Exact continuation](remaining-implementation/r07-firmware-recipe/production-attempt/backing-realization/result.md).
+P08/R07 remain open; Embedded backing target feasibility and independent review
+are unproved. All historical closed allowances remain closed.

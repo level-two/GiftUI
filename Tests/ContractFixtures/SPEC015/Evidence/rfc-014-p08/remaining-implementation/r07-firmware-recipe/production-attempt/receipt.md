@@ -103,3 +103,10 @@ The shared ledger takes an optional separately charged descriptor region;
 existing callers supply none. The new physical slot includes original trailing
 alignment bytes. Formatter invocation `scripts/format-swift.sh` exited0
 (session81006). No compiler, checker or image build has run for this step.
+
+Route freshness clarification during native-static validation: parent explicitly
+authorizes exactly one macos-dynamic checker execution after static passes,
+because the changed shared graph/entry bytes affect all four original P08
+routes. The checker has no native compile-only switch. This is an independent
+required route refresh, not a repair or unchanged rerun. Pi and nRF follow
+sequentially as cross-compilation only. No checker modification is authorized.

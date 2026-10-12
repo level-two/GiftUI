@@ -1,0 +1,13 @@
+{
+  "argv": [
+    "python3",
+    "scripts/contracts/check-spec-015-counter.py",
+    "--runtime-build",
+    ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static",
+    "--profile",
+    "macos-static"
+  ],
+  "source": "38ba440d",
+  "started": "2026-10-12T15:48:13.643835+00:00",
+  "repair_after_failure": false
+}
