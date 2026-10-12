@@ -1,5 +1,12 @@
 # One R07 GOT-placement diagnostic — 2026-10-12
 
+[Independent successful-control review](independent-review.md) at40acab83
+supports a counter-only production RODATA linker snippet through the existing
+Zephyr extension, within current contracts. It preserves ROM extent accounting
+and defines one supported production build plus final image/resource review;
+the diagnostic1/1 budget stays consumed. No production edit or build occurred
+in that review. R07/P08 remain open.
+
 Entry433599e3; Sol6.1 High / Strong. The independently prescribed **single link
 passed: actual exit0, 0.172 seconds**, with an isolated pre0 ELF and map.
 This is a diagnostic control, not a production recipe or final Zephyr image.
