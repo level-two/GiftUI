@@ -1,0 +1,37 @@
+28150:                 0x0000000000000000        0x8 app/libapp.a(CounterTiledRaster.swift.obj)
+28151:  .text.$e16GiftUIRasterCore18RasterFillCoverageO12intersectiony0A2UI4RectVSgAG_A3GtFZ
+28152:                 0x0000000000000000      0x154 app/libapp.a(CounterTiledRaster.swift.obj)
+28153:  .ARM.exidx.text.$e16GiftUIRasterCore18RasterFillCoverageO12intersectiony0A2UI4RectVSgAG_A3GtFZ
+28154:                 0x0000000000000000        0x8 app/libapp.a(CounterTiledRaster.swift.obj)
+
+30226:  *(SORT_BY_ALIGNMENT(.text.*))
+30227:  .text.swift_initStackObject
+30228:                 0x0000000000000404       0x10 app/libapp.a(ActionHandler.swift.obj)
+30229:                 0x0000000000000404                swift_initStackObject
+30230:  .text.swift_allocError
+
+30314:                 0x0000000000001e3c                $es41__SwiftNativeNSArrayWithContiguousStorageCABycfC
+30315:  .text.$e16GiftUIRasterCore18RasterFillCoverageO12intersectiony0A2UI4RectVSgAG_A3GtFZ
+30316:                 0x0000000000001e50      0x154 app/libapp.a(RasterFillCoverage.swift.obj)
+30317:                 0x0000000000001e50                $e16GiftUIRasterCore18RasterFillCoverageO12intersectiony0A2UI4RectVSgAG_A3GtFZ
+30318:  .text.$e16GiftUIRasterCore20RasterStrokeCoverageO10bevelScale33_A86C0B843A760FBE7B6141607FFB1E4BLL_WZ
+
+31245:                 0x0000000000026622                swift_deallocClassInstance
+31246:  .text.swift_setDeallocating
+31247:                 0x000000000002662e        0x2 app/libapp.a(ActionHandler.swift.obj)
+31248:                 0x000000000002662e                swift_setDeallocating
+31249:  .text.swift_releaseTm
+
+39696: 
+39697: .r07_diagnostic_got
+39698:                 0x00000000000487bc       0x14
+39699:  *(SORT_BY_ALIGNMENT(.got.plt))
+39700:  .got.plt       0x00000000000487bc        0xc app/libapp.a(ActionHandler.swift.obj)
+39701:                 0x00000000000487bc                _GLOBAL_OFFSET_TABLE_
+39702:  *(SORT_BY_ALIGNMENT(.igot.plt))
+39703:  .igot.plt      0x00000000000487c8        0x0 app/libapp.a(ActionHandler.swift.obj)
+39704:  *(SORT_BY_ALIGNMENT(.got))
+39705:  .got           0x00000000000487c8        0x8 app/libapp.a(ActionHandler.swift.obj)
+39706:  *(SORT_BY_ALIGNMENT(.igot))
+39707:                 0x0000000020000000                . = 0x20000000
+39708:                 0x0000000020000000                . = ALIGN (_region_min_align)

@@ -35,7 +35,19 @@ not additional authorization to rerun an MVP implementation or reopen experiment
 
 ### Current owner checkpoint
 
-**Current owner P08 checkpoint — R07 residual nRF link diagnosis stopped for independent review, 2026-10-12.**
+**Current owner P08 checkpoint — one R07 GOT-placement diagnostic PASS; independent review next, 2026-10-12.**
+Independent433599e3 prescribed one isolated link, now [actual exit0](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/remaining-implementation/r07-firmware-recipe/got-placement/result.md)
+with the sole GOT script-block change and three argv operand substitutions.
+All346frozen inputs match;20GOTbytes retain two runtime entries, actual
+RasterFillCoverage intersection survives. Diagnostic pre0 ELF/map only; no
+production correction or final Zephyr/image-fit acceptance. One-link budget1/1
+consumed, STOP for separate Strong review. Four current R06 routes pass; Pi early
+image remains separately qualified. Final supported nRF image/ABI/zeroheap/
+RAM/flash/gross-stack and independent P08 exit remain open. Historicalhelper2/2+
+B031/1 closed; no compiler/source/config/runtime/limit change or hardware action.
+SPEC015 implementing/planactive/T8.1/P08 open; P09–P12 pending.
+
+**Historical owner P08 checkpoint — R07 residual nRF link diagnosis stopped for independent review, 2026-10-12.**
 Four current R06 counter routes pass; Pi early image linked with its qualified
 ARMv6/VFP/resource result. Corrected nRF firmware recipe attempt2 compiles24owners
 but prelink exits1. [Frozen sequential diagnosis](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/remaining-implementation/r07-firmware-recipe/diagnosis/result.md)

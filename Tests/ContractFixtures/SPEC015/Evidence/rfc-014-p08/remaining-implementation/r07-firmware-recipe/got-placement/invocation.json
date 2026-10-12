@@ -1,0 +1,113 @@
+{
+  "entry_commit": "433599e3978cd9198b4b78d96070d5899ccc8ed7",
+  "review": "diagnosis/independent-review.md",
+  "review_sha256": "d3ad0e376c2ea5f6f093aad83d58b5a314ffd3ca9ef8120d37e4ba7757153ccf",
+  "original_invocation_sha256": "bcc16893f6c811bc7adda1cfcd3f48618927e715fca04a8ae59916d587da4f25",
+  "frozen_identity_manifest_sha256": "95bffa294871f24ca1026540802ab5705c37f34be210d0a9168fd92f1e6d1e25",
+  "checked_input_count": 346,
+  "identity_mismatches": [],
+  "cwd": "/Users/eugene/work/GiftUI/.build/nrf52840/signal-analyzer-static/rfc014-counter-firmware",
+  "command": [
+    "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/arm-zephyr-eabi-gcc",
+    "-gdwarf-4",
+    "-Os",
+    "zephyr/CMakeFiles/zephyr_pre0.dir/misc/empty_file.c.obj",
+    "-o",
+    "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/r07-got-placement/zephyr_pre0-got.elf",
+    "zephyr/CMakeFiles/offsets.dir/./arch/arm/core/offsets/offsets.c.obj",
+    "-T",
+    "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/r07-got-placement/linker_zephyr_pre0-got.cmd",
+    "-Wl,-Map,/Users/eugene/work/GiftUI/.build/nrf52840/contracts/r07-got-placement/zephyr_pre0-got.map",
+    "-Wl,--whole-archive",
+    "app/libapp.a",
+    "zephyr/libzephyr.a",
+    "zephyr/arch/common/libarch__common.a",
+    "zephyr/arch/arch/arm/core/libarch__arm__core.a",
+    "zephyr/arch/arch/arm/core/cortex_m/libarch__arm__core__cortex_m.a",
+    "zephyr/arch/arch/arm/core/mpu/libarch__arm__core__mpu.a",
+    "zephyr/lib/libc/picolibc/liblib__libc__picolibc.a",
+    "zephyr/lib/libc/common/liblib__libc__common.a",
+    "zephyr/lib/posix/c_lib_ext/liblib__posix__c_lib_ext.a",
+    "zephyr/soc/soc/nrf52840/libsoc__nordic.a",
+    "zephyr/drivers/clock_control/libdrivers__clock_control.a",
+    "zephyr/drivers/console/libdrivers__console.a",
+    "zephyr/drivers/gpio/libdrivers__gpio.a",
+    "zephyr/drivers/pinctrl/libdrivers__pinctrl.a",
+    "zephyr/drivers/serial/libdrivers__serial.a",
+    "zephyr/drivers/spi/libdrivers__spi.a",
+    "zephyr/drivers/timer/libdrivers__timer.a",
+    "modules/hal_nordic/nrfx/libnrfx.a",
+    "-Wl,--no-whole-archive",
+    "zephyr/kernel/libkernel.a",
+    "-L/Users/eugene/work/GiftUI/.build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr",
+    "zephyr/arch/common/libisr_tables.a",
+    "-fuse-ld=bfd",
+    "-mcpu=cortex-m4",
+    "-mthumb",
+    "-mabi=aapcs",
+    "-mfpu=fpv4-sp-d16",
+    "-mfloat-abi=hard",
+    "-mfp16-format=ieee",
+    "-mtp=soft",
+    "-Wl,--gc-sections",
+    "-Wl,--build-id=none",
+    "-Wl,--sort-common=descending",
+    "-Wl,--sort-section=alignment",
+    "-Wl,-u,_OffsetAbsSyms",
+    "-Wl,-u,_ConfigAbsSyms",
+    "-nostdlib",
+    "-static",
+    "-Wl,-X",
+    "-Wl,-N",
+    "-Wl,--orphan-handling=warn",
+    "-Wl,-no-pie",
+    "-Wl,--undefined=_sw_isr_table",
+    "-Wl,--undefined=_irq_vector_table",
+    "-specs=picolibc.specs",
+    "-DPICOLIBC_DOUBLE_PRINTF_SCANF",
+    "-L/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/thumb/v7e-m+fp/hard",
+    "-lc",
+    "-lgcc"
+  ],
+  "operand_substitutions": {
+    "8": {
+      "before": "zephyr/linker_zephyr_pre0.cmd",
+      "after": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/r07-got-placement/linker_zephyr_pre0-got.cmd"
+    },
+    "5": {
+      "before": "zephyr/zephyr_pre0.elf",
+      "after": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/r07-got-placement/zephyr_pre0-got.elf"
+    },
+    "9": {
+      "before": "-Wl,-Map,/Users/eugene/work/GiftUI/.build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/zephyr_pre0.map",
+      "after": "-Wl,-Map,/Users/eugene/work/GiftUI/.build/nrf52840/contracts/r07-got-placement/zephyr_pre0-got.map"
+    }
+  },
+  "original_script": "/Users/eugene/work/GiftUI/.build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/linker_zephyr_pre0.cmd",
+  "original_script_sha256": "54a8a8884f27a98fdc6b82df71ae312f8d9b0170a87a5135f1f94ab137528520",
+  "control_script": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/r07-got-placement/linker_zephyr_pre0-got.cmd",
+  "control_script_sha256": "cfb7259e79e123438f7d97c356c0029c13d4c1961c398d1e27b9fa4910e449b7",
+  "script_diff_sha256": "bd51c4aa48987ad6ede6b2187c0ea5e547dcf9303e62d6a3e249b032154b37a2",
+  "invocation_budget": 1,
+  "invocations_performed": 1,
+  "started_utc": "2026-10-12T15:13:13.876916+00:00",
+  "actual_link_exit": 0,
+  "elapsed_seconds": 0.171974833,
+  "finished_utc": "2026-10-12T15:13:14.049154+00:00",
+  "output_identities": {
+    ".build/nrf52840/contracts/r07-got-placement/zephyr_pre0-got.map": {
+      "sha256": "3bb8b7313d1f507112e20dc71d0557c6c50404f9b9069623fc76b810ec2fa88c",
+      "bytes": 4012401
+    },
+    ".build/nrf52840/contracts/r07-got-placement/zephyr_pre0-got.elf": {
+      "sha256": "9ccca06fe99ce036f6471768922e71f4a25c6b876db0f5c8bf4cb454f5ccec38",
+      "bytes": 1191696
+    },
+    ".build/nrf52840/contracts/r07-got-placement/linker_zephyr_pre0-got.cmd": {
+      "sha256": "cfb7259e79e123438f7d97c356c0029c13d4c1961c398d1e27b9fa4910e449b7",
+      "bytes": 28226
+    }
+  },
+  "stdout.log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stderr.log_sha256": "f10ff09ac7054e0823fec23bf99d2510c22989c73af00906e751682d7882c16d"
+}

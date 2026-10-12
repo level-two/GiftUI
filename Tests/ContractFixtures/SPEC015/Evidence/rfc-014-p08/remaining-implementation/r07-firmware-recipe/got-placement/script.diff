@@ -1,0 +1,17 @@
+--- .build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/linker_zephyr_pre0.cmd
++++ .build/nrf52840/contracts/r07-got-placement/linker_zephyr_pre0-got.cmd
+@@ -278,12 +278,12 @@
+  __rom_region_end = __rom_region_start + . - ADDR(rom_start);
+  __rom_region_size = __rom_region_end - __rom_region_start;
+    
+-    /DISCARD/ : {
++.r07_diagnostic_got : ALIGN(4) {
+  *(.got.plt)
+  *(.igot.plt)
+  *(.got)
+  *(.igot)
+- }
++} > FLASH
+    
+  . = 0x20000000;
+  . = ALIGN(_region_min_align);

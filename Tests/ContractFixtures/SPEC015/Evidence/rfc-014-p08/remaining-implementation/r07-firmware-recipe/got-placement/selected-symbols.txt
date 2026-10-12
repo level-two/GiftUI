@@ -1,0 +1,3 @@
+  3581: 0002662f     2 FUNC    WEAK   PROTECTED    2 swift_setDeallocating
+  4185: 00000405    16 FUNC    WEAK   PROTECTED    2 swift_initStackObject
+  4450: 00001e51   340 FUNC    GLOBAL HIDDEN     2 $e16GiftUIRasterCore18RasterFillCoverageO12intersectiony0A2UI4RectVSgAG_A3GtFZ

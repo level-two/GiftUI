@@ -1,0 +1,67 @@
+{
+  "commands": [
+    {
+      "argv": [
+        "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/arm-zephyr-eabi-readelf",
+        "-x",
+        ".r07_diagnostic_got",
+        "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/r07-got-placement/zephyr_pre0-got.elf"
+      ],
+      "exit_status": 0,
+      "stderr": "",
+      "output": "got-hex.txt",
+      "selection": "complete output"
+    },
+    {
+      "argv": [
+        "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/arm-zephyr-eabi-readelf",
+        "-SW",
+        "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/r07-got-placement/zephyr_pre0-got.elf"
+      ],
+      "exit_status": 0,
+      "stderr": "",
+      "output": "sections.txt",
+      "selection": "complete output"
+    },
+    {
+      "argv": [
+        "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/arm-zephyr-eabi-objdump",
+        "-d",
+        "--start-address=0x1e50",
+        "--stop-address=0x1fa4",
+        "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/r07-got-placement/zephyr_pre0-got.elf"
+      ],
+      "exit_status": 0,
+      "stderr": "",
+      "output": "intersection-disassembly.txt",
+      "selection": "complete output"
+    },
+    {
+      "argv": [
+        "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/arm-zephyr-eabi-readelf",
+        "-sW",
+        "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/r07-got-placement/zephyr_pre0-got.elf"
+      ],
+      "exit_status": 0,
+      "stderr": "",
+      "output": "selected-symbols.txt",
+      "selection": "matching three inspected symbols only"
+    }
+  ],
+  "frozen_inputs_post_link_checked": 346,
+  "frozen_input_mismatches": [],
+  "map_compression": "gzip mtime0; decompressed hash equals invocation output identity",
+  "evidence_hashes": {
+    "stderr.log": "f10ff09ac7054e0823fec23bf99d2510c22989c73af00906e751682d7882c16d",
+    "zephyr_pre0-got.map.gz": "14a972b003f4c1db5e2934f955cd3987f0fff2e2205b71303b01d983da39bc43",
+    "sections.txt": "c67014d678c9d3c8cb7651f07152fec92f189eaa20db61bd0e34fa619a948138",
+    "stdout.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "selected-symbols.txt": "4a5fa413e76586d1897b4efb685e5929de30d439c61974cd2fda4fcc645c0506",
+    "got-hex.txt": "f0eaae1fb715c5120839438ce78dce18368e9895cf255757b3c4bc0e17ae350e",
+    "linker_zephyr_pre0-got.cmd": "cfb7259e79e123438f7d97c356c0029c13d4c1961c398d1e27b9fa4910e449b7",
+    "script.diff": "bd51c4aa48987ad6ede6b2187c0ea5e547dcf9303e62d6a3e249b032154b37a2",
+    "invocation.json": "b4e74da527e2d3fc1c01ea64c5f77b8c3dea14d239e8ef1d9fee79a954c27834",
+    "map-excerpts.txt": "b30c5f3378bf1892b86413384dcbbce8586287c1b5a29f37e3db5b928ed0f025",
+    "intersection-disassembly.txt": "22c8cef3790ae4cbc5af6c0f84af55542b383c94d9ccd1a155d82d07b8419298"
+  }
+}

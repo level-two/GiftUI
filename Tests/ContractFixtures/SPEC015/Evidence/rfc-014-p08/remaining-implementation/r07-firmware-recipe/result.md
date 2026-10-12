@@ -45,3 +45,15 @@ Parent stopped further variants pending independent Strong review. Frozen333obje
 archive/build-command identities and partial maps/logs accompany the result.
 Final nRF ABI/zeroheap/RAM/flash/gross-stack evidence and R07/P08 exit remain open;
 historicalhelper2/2+B031/1 closed, zero production repairs in this continuation.
+
+
+## One reviewed GOT-placement control — 2026-10-12
+
+[Exact one-link result](got-placement/result.md): actual exit0, isolated diagnostic
+pre0 ELF/map, all346frozen inputs unchanged. Sole reviewed script block change
+retains20bytes of GOT including swift_initStackObject/swift_setDeallocating entries;
+RasterFillCoverage.swift.obj intersection survives. This narrows the frozen
+failure to its script/GOT interaction, without accepting FLASH placement or
+a production correction. Budget1/1 consumed; STOP for independent Strong review.
+Final supported nRF image and R07/P08 exit remain open; no compiler/config/
+runtime/limit/source change or hardware action.

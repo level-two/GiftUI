@@ -64,3 +64,41 @@ reporting control narrows away warning mode as sufficient explanation; no exact
 cause or local repair established. Exact results/limits in diagnosis/result.md.
 Zero production repairs this continuation, historicalhelper2/2+B031/1 closed.
 Independent Strong review required before another variant or repair.
+
+
+## One GOT-placement diagnostic dispatch — 2026-10-12
+
+Entry433599e3, clean tree. Read independent diagnosis review at433599e3.
+P08/R07 SPEC-015 T8.1 / HC-RD-003; existing accepted authority/ready plan and
+R06 dependencies unchanged. C3/R3 Strong -> Sol6.1 High, unchanged.
+Exactly one link invocation, zero retries/repairs/compiles. No production edit.
+Historicalhelper2/2+B031/1 closed; no guard reset.
+
+Fixed inputs: diagnosis/invocation.json original_command/cwd, frozen346inputs
+including333objects, original pre0 script. Independent lead is exactly four
+R_ARM_GOT_PREL relocations against swift_initStackObject/swift_setDeallocating,
+and the pre0 script's four-pattern GOT DISCARD block. No cause assumed.
+
+Allowed output only: isolated .build/nrf52840/contracts/r07-got-placement
+script/ELF/map, this receipt and got-placement evidence; current result/checkpoint
+links after outcome. Replace exactly one original GOT DISCARD block with reviewed
+.r07_diagnostic_got ALIGN(4) section >FLASH; no KEEP or other text change.
+Replace only -T operand, -o operand and -Wl,-Map output in original argv.
+No -v, orphan/GC/compiler/runtime/source/workload/limit change.
+
+Expected outcomes from independent review: exit0 with retained runtime GOT data
+can establish this frozen pre0 script interaction, not production acceptance;
+explicit error narrows cause for separate review; same silent exit1 is inconclusive.
+Record exact script diff/hashes/argv/stdout/stderr/actual exit/elapsed/output hashes.
+If ELF exists, read-only inspect GOT entries and survived intersection copy.
+No execute/flash. Stop after one result and commit for independent Strong review.
+Remaining implementation choice: none within prescribed diagnostic; production
+disposition remains independent review. All346input hashes matched before prepare.
+
+
+Single reviewed GOT-placement diagnostic completed actual exit0/0.172s, budget1/1
+consumed. All346frozen inputs matched before/after. Retained20-byte GOT has two
+runtime pointers; RasterFillCoverage.swift.obj intersection copy survives,
+CounterTiledRaster.swift.obj copy discarded. Exact outputs/script diff/argv/
+hashes/logs/read-only inspection in got-placement/result.md. No production change
+or final-image/resource claim. STOP for independent Strong review.

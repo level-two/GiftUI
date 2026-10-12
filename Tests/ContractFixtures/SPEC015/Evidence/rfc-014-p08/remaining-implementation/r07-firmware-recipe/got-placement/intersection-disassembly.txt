@@ -1,0 +1,157 @@
+
+/Users/eugene/work/GiftUI/.build/nrf52840/contracts/r07-got-placement/zephyr_pre0-got.elf:     file format elf32-littlearm
+
+
+Disassembly of section text:
+
+00001e50 <swift_allocError+0x1a3c>:
+    1e50:	e92d 4ff0 	stmdb	sp!, {r4, r5, r6, r7, r8, r9, sl, fp, lr}
+    1e54:	b099      	sub	sp, #100	; 0x64
+    1e56:	9303      	str	r3, [sp, #12]
+    1e58:	9001      	str	r0, [sp, #4]
+    1e5a:	460e      	mov	r6, r1
+    1e5c:	4617      	mov	r7, r2
+    1e5e:	484e      	ldr	r0, [pc, #312]	; (1f98 <__z_interrupt_all_stacks_SIZEOF+0x1758>)
+    1e60:	4478      	add	r0, pc
+    1e62:	1d05      	adds	r5, r0, #4
+    1e64:	484d      	ldr	r0, [pc, #308]	; (1f9c <__z_interrupt_all_stacks_SIZEOF+0x175c>)
+    1e66:	a914      	add	r1, sp, #80	; 0x50
+    1e68:	4478      	add	r0, pc
+    1e6a:	f8d0 9000 	ldr.w	r9, [r0]
+    1e6e:	4628      	mov	r0, r5
+    1e70:	47c8      	blx	r9
+    1e72:	9a2b      	ldr	r2, [sp, #172]	; 0xac
+    1e74:	4604      	mov	r4, r0
+    1e76:	f04f 0b02 	mov.w	fp, #2
+    1e7a:	f04f 0a01 	mov.w	sl, #1
+    1e7e:	9923      	ldr	r1, [sp, #140]	; 0x8c
+    1e80:	e9c0 ab02 	strd	sl, fp, [r0, #8]
+    1e84:	4623      	mov	r3, r4
+    1e86:	6102      	str	r2, [r0, #16]
+    1e88:	9a27      	ldr	r2, [sp, #156]	; 0x9c
+    1e8a:	4630      	mov	r0, r6
+    1e8c:	f027 ff7a 	bl	29d84 <OUTLINED_FUNCTION_1+0x13c>
+    1e90:	9002      	str	r0, [sp, #8]
+    1e92:	4843      	ldr	r0, [pc, #268]	; (1fa0 <__z_interrupt_all_stacks_SIZEOF+0x1760>)
+    1e94:	4478      	add	r0, pc
+    1e96:	f8d0 8000 	ldr.w	r8, [r0]
+    1e9a:	4620      	mov	r0, r4
+    1e9c:	47c0      	blx	r8
+    1e9e:	a90f      	add	r1, sp, #60	; 0x3c
+    1ea0:	4628      	mov	r0, r5
+    1ea2:	47c8      	blx	r9
+    1ea4:	4604      	mov	r4, r0
+    1ea6:	982c      	ldr	r0, [sp, #176]	; 0xb0
+    1ea8:	9924      	ldr	r1, [sp, #144]	; 0x90
+    1eaa:	9a28      	ldr	r2, [sp, #160]	; 0xa0
+    1eac:	4623      	mov	r3, r4
+    1eae:	e9c4 ab02 	strd	sl, fp, [r4, #8]
+    1eb2:	6120      	str	r0, [r4, #16]
+    1eb4:	4638      	mov	r0, r7
+    1eb6:	f027 ff65 	bl	29d84 <OUTLINED_FUNCTION_1+0x13c>
+    1eba:	9004      	str	r0, [sp, #16]
+    1ebc:	4620      	mov	r0, r4
+    1ebe:	47c0      	blx	r8
+    1ec0:	a90a      	add	r1, sp, #40	; 0x28
+    1ec2:	4628      	mov	r0, r5
+    1ec4:	47c8      	blx	r9
+    1ec6:	4604      	mov	r4, r0
+    1ec8:	982d      	ldr	r0, [sp, #180]	; 0xb4
+    1eca:	992b      	ldr	r1, [sp, #172]	; 0xac
+    1ecc:	9a23      	ldr	r2, [sp, #140]	; 0x8c
+    1ece:	9b27      	ldr	r3, [sp, #156]	; 0x9c
+    1ed0:	1840      	adds	r0, r0, r1
+    1ed2:	bf68      	it	vs
+    1ed4:	4608      	movvs	r0, r1
+    1ed6:	6120      	str	r0, [r4, #16]
+    1ed8:	9925      	ldr	r1, [sp, #148]	; 0x94
+    1eda:	e9c4 ab02 	strd	sl, fp, [r4, #8]
+    1ede:	9803      	ldr	r0, [sp, #12]
+    1ee0:	1980      	adds	r0, r0, r6
+    1ee2:	bf68      	it	vs
+    1ee4:	4630      	movvs	r0, r6
+    1ee6:	1889      	adds	r1, r1, r2
+    1ee8:	bf68      	it	vs
+    1eea:	4611      	movvs	r1, r2
+    1eec:	9a29      	ldr	r2, [sp, #164]	; 0xa4
+    1eee:	18d2      	adds	r2, r2, r3
+    1ef0:	bf68      	it	vs
+    1ef2:	461a      	movvs	r2, r3
+    1ef4:	4623      	mov	r3, r4
+    1ef6:	f027 ff5e 	bl	29db6 <OUTLINED_FUNCTION_1+0x16e>
+    1efa:	4606      	mov	r6, r0
+    1efc:	4620      	mov	r0, r4
+    1efe:	9c02      	ldr	r4, [sp, #8]
+    1f00:	47c0      	blx	r8
+    1f02:	a905      	add	r1, sp, #20
+    1f04:	4628      	mov	r0, r5
+    1f06:	47c8      	blx	r9
+    1f08:	4605      	mov	r5, r0
+    1f0a:	982e      	ldr	r0, [sp, #184]	; 0xb8
+    1f0c:	992c      	ldr	r1, [sp, #176]	; 0xb0
+    1f0e:	9a24      	ldr	r2, [sp, #144]	; 0x90
+    1f10:	9b28      	ldr	r3, [sp, #160]	; 0xa0
+    1f12:	1840      	adds	r0, r0, r1
+    1f14:	bf68      	it	vs
+    1f16:	4608      	movvs	r0, r1
+    1f18:	6128      	str	r0, [r5, #16]
+    1f1a:	9926      	ldr	r1, [sp, #152]	; 0x98
+    1f1c:	e9c5 ab02 	strd	sl, fp, [r5, #8]
+    1f20:	9822      	ldr	r0, [sp, #136]	; 0x88
+    1f22:	19c0      	adds	r0, r0, r7
+    1f24:	bf68      	it	vs
+    1f26:	4638      	movvs	r0, r7
+    1f28:	1889      	adds	r1, r1, r2
+    1f2a:	bf68      	it	vs
+    1f2c:	4611      	movvs	r1, r2
+    1f2e:	9a2a      	ldr	r2, [sp, #168]	; 0xa8
+    1f30:	18d2      	adds	r2, r2, r3
+    1f32:	bf68      	it	vs
+    1f34:	461a      	movvs	r2, r3
+    1f36:	462b      	mov	r3, r5
+    1f38:	f027 ff3d 	bl	29db6 <OUTLINED_FUNCTION_1+0x16e>
+    1f3c:	4607      	mov	r7, r0
+    1f3e:	4628      	mov	r0, r5
+    1f40:	47c0      	blx	r8
+    1f42:	2000      	movs	r0, #0
+    1f44:	42b4      	cmp	r4, r6
+    1f46:	da19      	bge.n	1f7c <__z_interrupt_all_stacks_SIZEOF+0x173c>
+    1f48:	9d04      	ldr	r5, [sp, #16]
+    1f4a:	42bd      	cmp	r5, r7
+    1f4c:	da17      	bge.n	1f7e <__z_interrupt_all_stacks_SIZEOF+0x173e>
+    1f4e:	2101      	movs	r1, #1
+    1f50:	2001      	movs	r0, #1
+    1f52:	42af      	cmp	r7, r5
+    1f54:	bf78      	it	vc
+    1f56:	2000      	movvc	r0, #0
+    1f58:	42a6      	cmp	r6, r4
+    1f5a:	d60a      	bvs.n	1f72 <__z_interrupt_all_stacks_SIZEOF+0x1732>
+    1f5c:	b948      	cbnz	r0, 1f72 <__z_interrupt_all_stacks_SIZEOF+0x1732>
+    1f5e:	1b7a      	subs	r2, r7, r5
+    1f60:	1b30      	subs	r0, r6, r4
+    1f62:	ea52 0100 	orrs.w	r1, r2, r0
+    1f66:	d415      	bmi.n	1f94 <__z_interrupt_all_stacks_SIZEOF+0x1754>
+    1f68:	1821      	adds	r1, r4, r0
+    1f6a:	d601      	bvs.n	1f70 <__z_interrupt_all_stacks_SIZEOF+0x1730>
+    1f6c:	18a9      	adds	r1, r5, r2
+    1f6e:	d707      	bvc.n	1f80 <__z_interrupt_all_stacks_SIZEOF+0x1740>
+    1f70:	2101      	movs	r1, #1
+    1f72:	2400      	movs	r4, #0
+    1f74:	2500      	movs	r5, #0
+    1f76:	2000      	movs	r0, #0
+    1f78:	2200      	movs	r2, #0
+    1f7a:	e002      	b.n	1f82 <__z_interrupt_all_stacks_SIZEOF+0x1742>
+    1f7c:	9d04      	ldr	r5, [sp, #16]
+    1f7e:	2200      	movs	r2, #0
+    1f80:	2100      	movs	r1, #0
+    1f82:	9b01      	ldr	r3, [sp, #4]
+    1f84:	7419      	strb	r1, [r3, #16]
+    1f86:	e9c3 4500 	strd	r4, r5, [r3]
+    1f8a:	e9c3 0202 	strd	r0, r2, [r3, #8]
+    1f8e:	b019      	add	sp, #100	; 0x64
+    1f90:	e8bd 8ff0 	ldmia.w	sp!, {r4, r5, r6, r7, r8, r9, sl, fp, pc}
+    1f94:	defe      	udf	#254	; 0xfe
+    1f96:	bf00      	nop
+    1f98:	1fffe1dc 	.word	0x1fffe1dc
+    1f9c:	00046960 	.word	0x00046960
+    1fa0:	00046930 	.word	0x00046930
