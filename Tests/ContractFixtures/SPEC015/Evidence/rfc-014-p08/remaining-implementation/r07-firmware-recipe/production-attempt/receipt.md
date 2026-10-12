@@ -92,3 +92,14 @@ then `scripts/nrf52840/build.sh --application signal-analyzer-static
 ABI/GOT/relocations/allocator qualification, total RAM/flash and actual nested
 entry/graph/host/initialization/corpus/click stack chain. Any check/scope failure
 stops for independent Strong review; P09–P12 and hardware remain untouched.
+
+Source realization step: six source files changed (four existing fixtures, one
+new fixture, counter_main.c). Existing host implementation remains shared via
+CounterSelectedStaticProfileStorage; the existing inline coordinator/native
+owner remains available. Embedded field accessors mutate pointed-to storage
+without mutating the descriptor; only small semantic/Canvas descriptors are
+locally copied for nested scoped spans. No bank payload copies are introduced.
+The shared ledger takes an optional separately charged descriptor region;
+existing callers supply none. The new physical slot includes original trailing
+alignment bytes. Formatter invocation `scripts/format-swift.sh` exited0
+(session81006). No compiler, checker or image build has run for this step.

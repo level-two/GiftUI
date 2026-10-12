@@ -21,7 +21,7 @@ private struct CounterInvalidGraph: HostComponentGraphView {
         return original
     }
 }
-package func p08CounterGraph() -> Int {
+package func p08CounterGraph(backing: UnsafeMutableRawBufferPointer? = nil) -> Int {
     // Independent expected vector from the reviewed actual-owner inventory:
     // endpoint6 needs backing0, text1 and configuration2–5; wake16 retains
     // audit0 and capability2–5 in its full report. Operation-only peers add no edge.
@@ -38,9 +38,9 @@ package func p08CounterGraph() -> Int {
     var semanticOwners = SemanticRecordOwnerNamespace()
     var count = 46
     do {
-        var profile = StaticCounterProfileStorage(modelOwner: try modelOwners.issue(), semanticOwner: try semanticOwners.issue())
+        var profile = counterMakeSelectedProfile(modelOwner: try modelOwners.issue(), semanticOwner: try semanticOwners.issue(), backing: counterSelectedProfileBacking(backing, slot: 0))
         guard case .valid(let audit) = profile.audit() else { preconditionFailure("counter graph audit") }
-        func reject(_ negative: CounterConstructionNegative, profile: borrowing StaticCounterProfileStorage) {
+        func reject(_ negative: CounterConstructionNegative, profile: borrowing CounterSelectedStaticProfileStorage) {
             let graph = CounterHostGraph(negative: negative)
             precondition(HostComponentGraphValidation.validate(graph) == nil)
             var observation = CounterConstructionObservation()

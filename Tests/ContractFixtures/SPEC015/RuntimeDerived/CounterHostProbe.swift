@@ -9,7 +9,7 @@ import GiftUIObservableState
 import GiftUIRuntimeStatic
 import GiftUISemanticCore
 
-extension StaticCounterProfileStorage {
+extension CounterSelectedStaticProfileStorage {
     mutating func runCounterHost(failAfterRuntime: Bool) -> Int {
         guard case .valid(let audit) = audit(), let assembly = CounterHostAssembly.validate(audit, kind: counterStaticHostKind) else { preconditionFailure("counter valid-only host") }
         return counterForeignJoinScope { foreignModels, foreignRoot, foreignControl in
@@ -20,6 +20,12 @@ extension StaticCounterProfileStorage {
             precondition(CounterHostAssembly.validate(audit, kind: counterStaticHostKind, useCaseCallbacks: 2) == nil)
             precondition(CounterHostAssembly.validate(audit, kind: counterStaticHostKind, nonTransitionPublications: 2) == nil)
             let limits = self.limits
+            #if hasFeature(Embedded)
+            // Copy only the small typed descriptors; their disjoint banks stay
+            // in the caller slot until all nested scopes and teardown end.
+            var semanticBacking = self.semanticBacking
+            var canvasBacking = self.canvasBacking
+            #endif
             var keys = interaction.take()
             var checks = 0
             do throws(ObservableStateError) {
@@ -135,13 +141,13 @@ extension StaticCounterProfileStorage {
     }
 }
 
-package func p08CounterHost(write: CounterTiledPixelWrite? = nil) -> Int {
+package func p08CounterHost(write: CounterTiledPixelWrite? = nil, backing: UnsafeMutableRawBufferPointer? = nil) -> Int {
     var models = ObservableModelOwnerNamespace()
     var semantics = SemanticRecordOwnerNamespace()
     do {
-        var complete = StaticCounterProfileStorage(modelOwner: try models.issue(), semanticOwner: try semantics.issue())
-        var partial = StaticCounterProfileStorage(modelOwner: try models.issue(), semanticOwner: try semantics.issue())
-        var nonRetryable = StaticCounterProfileStorage(modelOwner: try models.issue(), semanticOwner: try semantics.issue())
+        var complete = counterMakeSelectedProfile(modelOwner: try models.issue(), semanticOwner: try semantics.issue(), backing: counterSelectedProfileBacking(backing, slot: 0))
+        var partial = counterMakeSelectedProfile(modelOwner: try models.issue(), semanticOwner: try semantics.issue(), backing: counterSelectedProfileBacking(backing, slot: 1))
+        var nonRetryable = counterMakeSelectedProfile(modelOwner: try models.issue(), semanticOwner: try semantics.issue(), backing: counterSelectedProfileBacking(backing, slot: 2))
         nonRetryable.control.terminalRetry = true
         #if hasFeature(Embedded) || GIFTUI_COUNTER_TILED
         complete.control.backend.write = write
@@ -150,7 +156,7 @@ package func p08CounterHost(write: CounterTiledPixelWrite? = nil) -> Int {
         #endif
         var failures = 0
         for step: UInt8 in 2...7 {
-            var failed = StaticCounterProfileStorage(modelOwner: try models.issue(), semanticOwner: try semantics.issue())
+            var failed = counterMakeSelectedProfile(modelOwner: try models.issue(), semanticOwner: try semantics.issue(), backing: counterSelectedProfileBacking(backing, slot: 3))
             failed.control.idleQuiesceMode = step
             #if hasFeature(Embedded) || GIFTUI_COUNTER_TILED
             failed.control.backend.write = write

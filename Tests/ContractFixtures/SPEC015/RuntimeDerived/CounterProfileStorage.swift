@@ -95,6 +95,7 @@ func counterValidateBacking<G, C, R, H, GR: CounterStorageRegionSource>(profile:
     interaction: borrowing InteractionOwnedKeyState<C, R, H>, geometryType: G.Type,
     canvasCount: Int, canvasCapacity: UInt16, canvasControlBytes: Int,
     factoryRegion: CounterStorageRegion,
+    factoryDescriptorRegion: CounterStorageRegion? = nil,
     geometryRegions: borrowing GR,
     report: (CounterStorageRegion) -> Void) -> RuntimeProfileValidationResult
 where G: CounterGeometry, C: CounterCandidateBacking, R: CounterCommittedBacking, H: CounterHitBacking,
@@ -128,7 +129,7 @@ where G: CounterGeometry, C: CounterCandidateBacking, R: CounterCommittedBacking
         - MemoryLayout<InteractionOwnedKeyState<C, R, H>>.size - MemoryLayout<CounterEndpoint>.size
         + MemoryLayout<CounterControl>.size - Admission.pointerStateStorageBytes
         - MemoryLayout<CounterAdmissionBacking>.size - MemoryLayout<CounterPointerState>.size - result
-        + Int(factoryRegion.chargedBytes)
+        + Int(factoryRegion.chargedBytes) + Int(factoryDescriptorRegion?.chargedBytes ?? 0)
     // Bank zero occupies exactly the configured whole-element prefix. Bank one
     // owns the second configured slice plus any retained allocator tail; never
     // divide a typed element when Array capacity rounds to an odd count.
@@ -223,6 +224,7 @@ where G: CounterGeometry, C: CounterCandidateBacking, R: CounterCommittedBacking
     // remain physically live and are charged here exactly once.
     record(.inline(CounterControl.self, family: 24, chargedBytes: MemoryLayout<CounterControl>.size - Admission.pointerStateStorageBytes - MemoryLayout<CounterAdmissionBacking>.size - MemoryLayout<CounterPointerState>.size - result, kind: .metadataPadding))
     record(factoryRegion)
+    if let factoryDescriptorRegion { record(factoryDescriptorRegion) }
     record(.inline(RuntimeCompletePipelineResult<RuntimeOwnerFailure>?.self, family: 25))
     guard !reportOverflow else { return .invalid(.arithmeticOverflow) }
     for index in 0..<26 { precondition(reported[index] == values[index], "physical region audit mismatch") }
