@@ -1,0 +1,22 @@
+{
+  "entry_commit": "5475f547195bb06aa222baf1a6827e0d88146629",
+  "source_changes": [
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWakeIntegration.swift: counterWakeControls only"
+  ],
+  "source_sha256": "65732afc4e8bad043f0753ad7a06821669f632bbf4d3004c39d59957982dd205",
+  "command": [
+    "python3",
+    "scripts/contracts/check-spec-015-counter.py",
+    "--runtime-build",
+    ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static"
+  ],
+  "started_utc": "2026-10-12T11:20:05.398406+00:00",
+  "formatter_exit": 0,
+  "formatter_source_changes": [],
+  "scope": "R01 one parent-authorized contextual-init correction of initial test compilation error; no production/API behavior change. Historical2/2 and B031/1 closed.",
+  "exit_status": 0,
+  "finished_utc": "2026-10-12T11:21:36.601816+00:00",
+  "new_build_directories": [
+    ".build/contracts/p08-counter-7i3skcjy"
+  ]
+}

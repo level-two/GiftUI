@@ -650,3 +650,54 @@ production behavior. Fresh validation after new control/source edits belongs to
 remaining P08 with an explicit bounded dispatch and existing stop limits; it does
 not permit a B03 rerun/same-helper repair or reset. Historical2/2 closed; B03 1/1
 spent. This review and entry dispatch are committed; no new approval gate.
+
+### Remaining P08 R01 dispatch — admission wake controls
+
+Entry `5475f547`, clean; independent B03 PASS permits remaining P08 under the
+current user execution request. Strong `gpt-6.1-sol` / `high`, C3/R3;
+SPEC-015 HC-011/014/018, HC-RD-004 and SPEC-009 canonical wake obligations.
+Allowed behavior/test footprint: CounterWakeIntegration.swift actual-host control
+function only, plus directly required control-count expectations in the existing
+counter probe/driver if needed. Add independent expected-value checks for rejected
+admission leaving wake/reason/outstanding/host-request/timestamp state unchanged,
+and accepted multiple fact categories behind a nonfact wake retaining each supplied
+clock/deadline. Reuse existing actual Static/Dynamic host paths and finite bounds.
+Do not redesign wake/binding APIs or alter production behavior to fit a test.
+
+Read B01 gap table and B03 independent review's next-slice guidance first. Record
+exact cases/oracles and source entry points before edits. Format, validate changed
+controls through the existing pinned counter command once initially, retain
+source-specific outcome, and commit R01. A new finding needing behavior changes
+outside this footprint stops for parent triage. Existing two-consecutive-
+unproductive-repair rule applies without reopening any exhausted same-blocker
+budget; historical 2/2 and B03 1/1 remain closed. Fresh validation is justified
+only by these new controls, never an unchanged B03 rerun. No target build yet.
+Also refresh stale current-checkpoint prose in shared plan/task guide/SPEC-015
+owner plan to reviewed B03 PASS with remaining P08 open, preserving historical
+stops and authority. No contract/status transition or P09 work.
+
+### Remaining P08 R01 outcome — 2026-10-12
+
+**PASS for assigned new controls; independent review pending.**
+[Cases, exact attempts and source-specific evidence](remaining-implementation/r01-admission-wake-controls/result.md).
+Only `CounterWakeIntegration.swift:counterWakeControls` changed behavior/test
+source. New rejection snapshots and five multi-category fact notifications run
+through both actual native Static/Dynamic hosts; exact first-fact deadline
+retained. Three checkpoint navigation documents now reflect accepted B03 and
+remaining P08 open, preserving historical stops.
+
+Initial new-control validation exited1 before execution on two missing explicit
+`NormalizedPointerEvent` type names. Parent authorized one bounded contextual
+`.init` correction inside the assigned function; initial source/diagnostics
+preserved. Corrected-source validation exits0 at p08-counter-7i3skcjy:
+1,349,005 reported assertions/zero failures,23/23 checks, exactly332 added checks
+(166 per host). Both formatter runs exit0/no source changes; pre/postflight496
+matching identity comparisons. No production/API/bounds change, dependency
+refresh, target build or next slice. No outside-scope behavior blocker found.
+
+B03 remaining items1–2 receive bounded native evidence; items3–6 and final P08
+exit remain required, including foreign binding/control/report, production
+boundaries, lifecycle/factory-origin negatives, four routes and Embedded/early
+linked target resource/ABI evidence. Historical2/2 closed, B031/1 spent; neither
+reset. SPEC-015 implementing/plan active/T8.1 and P08 open, P09–P12 pending.
+Commit and stop for separate review/dispatch.

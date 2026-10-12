@@ -1,6 +1,20 @@
 # RFC-014 bounded implementation sequence — 2026-10-10
 
-**Current P08 checkpoint — Option B documents approved; implementation separate,
+**Current P08 checkpoint — B03 independently accepted; remaining P08 open, 2026-10-12.**
+B01 inventory/review and B02 bounded helper/mask realization are complete. The
+single B03 native invocation at source `102382d7` passes1,348,673 reported
+assertions/zero failures and23/23 checks; independent Strong result review at
+`5475f547` accepts that bounded result. [Review and remaining-work handoff](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/remaining-implementation/option-b/b03/independent-review.md).
+The current user authorizes remaining P08 execution; R01 adds actual rejected-
+admission wake/timestamp invariance and multiple-fact/category deadline controls.
+Only new controls justify fresh source-specific validation; no unchanged B03
+rerun or same-helper repair is authorized. Historical2/2 remains closed; B03's
+1/1 attempt is permanently consumed. All other operational/origin gaps, four
+registered application routes, actual Embedded endpoint, early linked target
+images/resource/ABI and final independent P08 exit remain open. SPEC-015 stays
+implementing, its plan active and T8.1/P08 open; P09–P12 pending.
+
+**Historical P08 checkpoint — Option B documents approved; implementation separate,
 not started, 2026-10-12.** Eugene selected Option B and instructed that its
 required documents be treated as approved, then explicitly said not to proceed
 with its implementation in this activity. [Exact approval and limit](rfc-014-spec-approval.md#option-b-construction-graph-amendment--2026-10-12).
@@ -133,7 +147,7 @@ that continuation is unauthorized are superseded only by the resumption above.
 > historical; production integration and P08 remain stopped. The new bounded
 > bench allowance must not be interpreted as an unlimited P07 restart.
 
-**P01–P07 passed; P08 incomplete with Option B documents approved and implementation separate/not started; P09–P12 pending.** This is the shared
+**P01–P07 passed; P08 B03 native result independently accepted, remaining P08 open; P09–P12 pending.** This is the shared
 sequencing index for nine owner Implementation Plans, not another contract or
 investigation. It derives only the [approved Spec amendments](rfc-014-spec-approval.md)
 at `3c260bbc`, their subsequent explicit amendments, and accepted ADR-035/036/037/038. ITERATION-003 I3-04/05 supplies the
@@ -256,11 +270,14 @@ contract and be traceable to a failing migration check.
 
 This is a finite continuation inside P08/T8.1, derived from accepted ADR-038 and
 SPEC-015 HC-003, HC-011, HC-014, HC-018 and HC-RD-001–004; SPEC-009's wake contract
-remains unchanged. All rows are **not started** under Option B. This activity
-updates documents only. The separate implementation assignment must record its
+remains unchanged. B01 inventory/review, B02 realization and the single B03
+attempt/result review are now complete; remaining P08 stays open. Historical
+documentation-only activity limits below remain provenance, not the current
+execution boundary. Each subsequent implementation assignment must record its
 entry revision, exact allowed files, reviewed inventory, dependency/artifact
-identities and the still-unconsumed one-native-attempt allowance before edits.
-The old 2/2 guard and all closed investigation budgets remain closed.
+identities and its applicable bounded validation allowance before edits.
+The old 2/2 guard and all closed investigation budgets remain closed. B03 is
+1/1 consumed and its command below is historical, not an available rerun.
 
 | Step / dependency | Bounded work and required output | Checkpoint and stop |
 | --- | --- | --- |

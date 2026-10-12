@@ -1,0 +1,15 @@
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWakeIntegration.swift:141:17: error: cannot find 'NormalizedPointerEvent' in scope
+139 |     }
+140 |     let revision = control.pointee.runtime.committedPresentation!
+141 |     let stale = NormalizedPointerEvent(phase: .down, position: .init(x: 99, y: 119), source: .init(rawValue: 1), sequence: .init(rawValue: 0), ordinal: .init(rawValue: 0), presentationRevision: .init(rawValue: revision.rawValue + 1))
+    |                 `- error: cannot find 'NormalizedPointerEvent' in scope
+142 |     expectNoWake(.invalidValue) { admission.submit(stateChange: 10) }
+143 |     expectNoWake(.invalidValue) { admission.submit(completion: 1) }
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWakeIntegration.swift:182:25: error: cannot find 'NormalizedPointerEvent' in scope
+180 |     expectNoWake(.invalidProvenance) { admission.submit(pointer: stale) }
+181 |     expectNoWake(.capacityRefused) { admission.submit(completion: 0) }
+182 |     let foreignSource = NormalizedPointerEvent(phase: .down, position: .init(x: 99, y: 119), source: .init(rawValue: 1), sequence: .init(rawValue: 0), ordinal: .init(rawValue: 0), presentationRevision: revision)
+    |                         `- error: cannot find 'NormalizedPointerEvent' in scope
+183 |     expectNoWake(.capacityRefused) { admission.submit(pointer: foreignSource) }
+184 |     var atDeadline = control.pointee.scheduler!

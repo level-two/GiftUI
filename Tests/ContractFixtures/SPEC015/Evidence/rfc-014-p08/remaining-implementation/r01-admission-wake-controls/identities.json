@@ -1,0 +1,945 @@
+{
+  "attempt-1": {
+    "build": ".build/contracts/p08-counter-bfzk09x9",
+    "files": {
+      ".build/contracts/p08-counter-bfzk09x9/Counter.swift": {
+        "sha256": "49481900df254eccd291ecf44f1f913357778bf5ad167e226113a9e16ecdce97",
+        "bytes": 2556
+      },
+      ".build/contracts/p08-counter-bfzk09x9/CounterSchema.swift": {
+        "sha256": "a3a24ab22fdf75c7d2b0fdb90d86755dc377747e0ed663f1c06bac7dbc0dde41",
+        "bytes": 1250
+      },
+      ".build/contracts/p08-counter-bfzk09x9/CounterTable.swift": {
+        "sha256": "9c1a50d90b57b9f625986cbb7a37fcefc56234bfb0f1e0b2a10abd7ab73efd54",
+        "bytes": 1393
+      },
+      ".build/contracts/p08-counter-bfzk09x9/GiftUIDrawing.abi.json": {
+        "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+        "bytes": 149
+      },
+      ".build/contracts/p08-counter-bfzk09x9/GiftUIDrawing.log": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      ".build/contracts/p08-counter-bfzk09x9/GiftUIDrawing.o": {
+        "sha256": "899038a246139b07a091bcfbeab2dcd58427366bfdd9b94bda9f7f93641527fd",
+        "bytes": 131632
+      },
+      ".build/contracts/p08-counter-bfzk09x9/GiftUIDrawing.swiftdoc": {
+        "sha256": "211f7c78dc01779c87bc0cf44a04e8c84346fa01b0430e51dda90afd634b635e",
+        "bytes": 1496
+      },
+      ".build/contracts/p08-counter-bfzk09x9/GiftUIDrawing.swiftmodule": {
+        "sha256": "18fd8e01c27b1289f3beaca2c794455622e9003ca89fcd66115c479e4afd578d",
+        "bytes": 105604
+      },
+      ".build/contracts/p08-counter-bfzk09x9/GiftUIDrawing.swiftsourceinfo": {
+        "sha256": "e53ab81b593e129e1bd177ef7d22d49041ed6fea96cf0f091300ddfd444cea73",
+        "bytes": 31548
+      },
+      ".build/contracts/p08-counter-bfzk09x9/GiftUIExecution.abi.json": {
+        "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+        "bytes": 149
+      },
+      ".build/contracts/p08-counter-bfzk09x9/GiftUIExecution.log": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      ".build/contracts/p08-counter-bfzk09x9/GiftUIExecution.o": {
+        "sha256": "ebc527553c013b1e996469141cb7cdc1c2eeafe7d5ffcb7696d9a97ff5d9ef94",
+        "bytes": 575576
+      },
+      ".build/contracts/p08-counter-bfzk09x9/GiftUIExecution.swiftdoc": {
+        "sha256": "c8e4232912f5d7519ccb64f39aa82c8f4eacb3ef786d8632736631ca2096f4bb",
+        "bytes": 380
+      },
+      ".build/contracts/p08-counter-bfzk09x9/GiftUIExecution.swiftmodule": {
+        "sha256": "076658f1cbf6efe1e303b99f4c5867e333f93cf31349093ffcad5cb560785fa1",
+        "bytes": 623392
+      },
+      ".build/contracts/p08-counter-bfzk09x9/GiftUIExecution.swiftsourceinfo": {
+        "sha256": "39be610ffc8cbc3f529f974535bee56a78eba45df827465d7ce97799c17e3a47",
+        "bytes": 123836
+      },
+      ".build/contracts/p08-counter-bfzk09x9/GiftUIHostConfiguration.abi.json": {
+        "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+        "bytes": 149
+      },
+      ".build/contracts/p08-counter-bfzk09x9/GiftUIHostConfiguration.log": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      ".build/contracts/p08-counter-bfzk09x9/GiftUIHostConfiguration.o": {
+        "sha256": "9783c3698391a9b84d1ea724eb906eee7e7a7105bf9f1c336d31a177236957cb",
+        "bytes": 720432
+      },
+      ".build/contracts/p08-counter-bfzk09x9/GiftUIHostConfiguration.swiftdoc": {
+        "sha256": "518543d8aa4befbf770cb35d98a488b3f33cb089a3e555aa3cd52a94dfe7dab0",
+        "bytes": 784
+      },
+      ".build/contracts/p08-counter-bfzk09x9/GiftUIHostConfiguration.swiftmodule": {
+        "sha256": "48233d69ae5f671e57ef0a27151b7b037e38b63a27ee29b2992759bee5d95c7e",
+        "bytes": 515140
+      },
+      ".build/contracts/p08-counter-bfzk09x9/GiftUIHostConfiguration.swiftsourceinfo": {
+        "sha256": "bbb0842ba71da531635dc4d2db1acce294d8121543b7ae549bff2b3805dde78d",
+        "bytes": 146876
+      },
+      ".build/contracts/p08-counter-bfzk09x9/GiftUIInteraction.abi.json": {
+        "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+        "bytes": 149
+      },
+      ".build/contracts/p08-counter-bfzk09x9/GiftUIInteraction.log": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      ".build/contracts/p08-counter-bfzk09x9/GiftUIInteraction.o": {
+        "sha256": "7fa355c9d28c987dfd30a8dca9a77869ea685303a993636ebf45402706f127e0",
+        "bytes": 145800
+      },
+      ".build/contracts/p08-counter-bfzk09x9/GiftUIInteraction.swiftdoc": {
+        "sha256": "c9a63ab967e04418e12050448c4e8aaa15ebceae6856c5e507a1211f1cec1e4b",
+        "bytes": 2776
+      },
+      ".build/contracts/p08-counter-bfzk09x9/GiftUIInteraction.swiftmodule": {
+        "sha256": "4f7e516a5190f0b4a50f280e8e7ac5d6e6ecff7078476c75fa428f04eb338213",
+        "bytes": 134948
+      },
+      ".build/contracts/p08-counter-bfzk09x9/GiftUIInteraction.swiftsourceinfo": {
+        "sha256": "47f288ac79a1a2e811b3b96606c6028e5e0bdf1b31cf6cd3ebb68687b037d7fd",
+        "bytes": 36452
+      },
+      ".build/contracts/p08-counter-bfzk09x9/GiftUILayout.abi.json": {
+        "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+        "bytes": 149
+      },
+      ".build/contracts/p08-counter-bfzk09x9/GiftUILayout.log": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      ".build/contracts/p08-counter-bfzk09x9/GiftUILayout.o": {
+        "sha256": "1d64d34521d3a2cf73bf5f577fe3b39b7ab33763ba07379c04a9a58970160257",
+        "bytes": 137824
+      },
+      ".build/contracts/p08-counter-bfzk09x9/GiftUILayout.swiftdoc": {
+        "sha256": "ecf335acc8af95a82c08ee02a9f933f7bb081e654f8724ba10c655227b3a6b05",
+        "bytes": 376
+      },
+      ".build/contracts/p08-counter-bfzk09x9/GiftUILayout.swiftmodule": {
+        "sha256": "5dceb9af95e4601603446f6f12f2bab6543b61cd44fe74bfd758676cf8a24859",
+        "bytes": 140836
+      },
+      ".build/contracts/p08-counter-bfzk09x9/GiftUILayout.swiftsourceinfo": {
+        "sha256": "405ea5bf2e7882652a0f7ff8b6d26e5029abfe71bf86b72ba77ce49ba513c549",
+        "bytes": 36152
+      },
+      ".build/contracts/p08-counter-bfzk09x9/GiftUIObservableState.abi.json": {
+        "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+        "bytes": 149
+      },
+      ".build/contracts/p08-counter-bfzk09x9/GiftUIObservableState.log": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      ".build/contracts/p08-counter-bfzk09x9/GiftUIObservableState.o": {
+        "sha256": "7d01185c6fe0364aa6e9b3c124af3eb1be19d1d639ed6b77dbe9bd560b349584",
+        "bytes": 235968
+      },
+      ".build/contracts/p08-counter-bfzk09x9/GiftUIObservableState.swiftdoc": {
+        "sha256": "0c26952c20af873979e8039ba5c6271b92bf957c8c9e366300b23d3df70eb307",
+        "bytes": 8732
+      },
+      ".build/contracts/p08-counter-bfzk09x9/GiftUIObservableState.swiftmodule": {
+        "sha256": "2126a4cf2da75da67dc4e30bc69b8ece4f772ee2e59cf8440efd4ec761720ae8",
+        "bytes": 220256
+      },
+      ".build/contracts/p08-counter-bfzk09x9/GiftUIObservableState.swiftsourceinfo": {
+        "sha256": "a25bfd729ffc02ad52bd8344a9f3f80aaff160e9b464008b14f73b7231804a1d",
+        "bytes": 56076
+      },
+      ".build/contracts/p08-counter-bfzk09x9/GiftUIReferenceTextResources.abi.json": {
+        "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+        "bytes": 149
+      },
+      ".build/contracts/p08-counter-bfzk09x9/GiftUIReferenceTextResources.log": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      ".build/contracts/p08-counter-bfzk09x9/GiftUIReferenceTextResources.o": {
+        "sha256": "2f5940557f4410d8fbffb3d093ebeef3a2662008bca746b2587c43621cead8c7",
+        "bytes": 504456
+      },
+      ".build/contracts/p08-counter-bfzk09x9/GiftUIReferenceTextResources.swiftdoc": {
+        "sha256": "5b9ec28b8006d1ef6ab4fa01d3ed6ba5e09d65e51e94251294b726771da9fa54",
+        "bytes": 924
+      },
+      ".build/contracts/p08-counter-bfzk09x9/GiftUIReferenceTextResources.swiftmodule": {
+        "sha256": "c9a1f8785e33c0381c0f7c5c0434f5a020d62bc53581a8f65a8f336c04c182ee",
+        "bytes": 1216024
+      },
+      ".build/contracts/p08-counter-bfzk09x9/GiftUIReferenceTextResources.swiftsourceinfo": {
+        "sha256": "b531f12a35fa4afba2ac31837133c3bd5b269151db52c3a0c623be0f66620942",
+        "bytes": 79128
+      },
+      ".build/contracts/p08-counter-bfzk09x9/GiftUIRenderCore.abi.json": {
+        "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+        "bytes": 149
+      },
+      ".build/contracts/p08-counter-bfzk09x9/GiftUIRenderCore.log": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      ".build/contracts/p08-counter-bfzk09x9/GiftUIRenderCore.o": {
+        "sha256": "5cf37aa8f2063e55aa3f0eadcf2714e2931bf0dcfe41399de0e07b6fd2732607",
+        "bytes": 62200
+      },
+      ".build/contracts/p08-counter-bfzk09x9/GiftUIRenderCore.swiftdoc": {
+        "sha256": "9824cb07c32b5722a1928d05922b44dd0ad74e1ffe4a8d1f4b03d2f60c067570",
+        "bytes": 380
+      },
+      ".build/contracts/p08-counter-bfzk09x9/GiftUIRenderCore.swiftmodule": {
+        "sha256": "ed74cbeb6b57f03b5401ae7455b0784519df0054cd796b20cd2d2c661e820867",
+        "bytes": 84380
+      },
+      ".build/contracts/p08-counter-bfzk09x9/GiftUIRenderCore.swiftsourceinfo": {
+        "sha256": "fce9c4b54d2ac91fa9a8212a14befb26b93750801a7eddb8e435752df4f0bb7e",
+        "bytes": 20196
+      },
+      ".build/contracts/p08-counter-bfzk09x9/GiftUIRenderLowering.abi.json": {
+        "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+        "bytes": 149
+      },
+      ".build/contracts/p08-counter-bfzk09x9/GiftUIRenderLowering.log": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      ".build/contracts/p08-counter-bfzk09x9/GiftUIRenderLowering.o": {
+        "sha256": "4ee2854aab683d9a7231306534167ad694cfa91a84a33b919fd9d921265c9f0d",
+        "bytes": 78864
+      },
+      ".build/contracts/p08-counter-bfzk09x9/GiftUIRenderLowering.swiftdoc": {
+        "sha256": "88210ce918b2b4e43c16186d30cf3755703c4d9901a27367fc0e11d225cd8c48",
+        "bytes": 384
+      },
+      ".build/contracts/p08-counter-bfzk09x9/GiftUIRenderLowering.swiftmodule": {
+        "sha256": "fbca0191add721128eccb3dc71236efc1bf93bd366f287d77986ca212e9889f4",
+        "bytes": 78276
+      },
+      ".build/contracts/p08-counter-bfzk09x9/GiftUIRenderLowering.swiftsourceinfo": {
+        "sha256": "091854b3c3f5590eed0ec0aa9b5662a230a5a71a66568a0b4554546fa0bd71e4",
+        "bytes": 18492
+      },
+      ".build/contracts/p08-counter-bfzk09x9/GiftUIRuntimeCore.abi.json": {
+        "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+        "bytes": 149
+      },
+      ".build/contracts/p08-counter-bfzk09x9/GiftUIRuntimeCore.log": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      ".build/contracts/p08-counter-bfzk09x9/GiftUIRuntimeCore.o": {
+        "sha256": "d928fecd4bff7983057b2c27290609abcc6c32ee46aa5a35bb57953461dba0f2",
+        "bytes": 313520
+      },
+      ".build/contracts/p08-counter-bfzk09x9/GiftUIRuntimeCore.swiftdoc": {
+        "sha256": "fd801775ac1f2cef4d70cc991745d39f0522ca7855ed356a87a3fbcb7947d5df",
+        "bytes": 2168
+      },
+      ".build/contracts/p08-counter-bfzk09x9/GiftUIRuntimeCore.swiftmodule": {
+        "sha256": "83f17f0b8323eb02f7583cd281438e9a1026bdea0445a1911d20a1ac150868a3",
+        "bytes": 289136
+      },
+      ".build/contracts/p08-counter-bfzk09x9/GiftUIRuntimeCore.swiftsourceinfo": {
+        "sha256": "4970b038a10533d3c441dbd11736b00f02cb2c4e1e6919b85d763930a48903b2",
+        "bytes": 95568
+      },
+      ".build/contracts/p08-counter-bfzk09x9/GiftUIRuntimeDynamic.abi.json": {
+        "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+        "bytes": 149
+      },
+      ".build/contracts/p08-counter-bfzk09x9/GiftUIRuntimeDynamic.log": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      ".build/contracts/p08-counter-bfzk09x9/GiftUIRuntimeDynamic.o": {
+        "sha256": "9d0bb4db8754a5fe4341ae0644375c7e7e5e9f05c165f97d10c0b90bad5fffe6",
+        "bytes": 246296
+      },
+      ".build/contracts/p08-counter-bfzk09x9/GiftUIRuntimeDynamic.swiftdoc": {
+        "sha256": "736a31d984c7fbc68c05b5a8662e030bb355b4b4dbc3e57898f9fae124155a88",
+        "bytes": 4868
+      },
+      ".build/contracts/p08-counter-bfzk09x9/GiftUIRuntimeDynamic.swiftmodule": {
+        "sha256": "9fcdf624c85cea6622e2492dd3f6b88cd4afbf61fd956760d29b57ec42504514",
+        "bytes": 232864
+      },
+      ".build/contracts/p08-counter-bfzk09x9/GiftUIRuntimeDynamic.swiftsourceinfo": {
+        "sha256": "f284aadb94173748c1c05579c217a7d07ad949b69cc7bf3725376c7d5eff7320",
+        "bytes": 52312
+      },
+      ".build/contracts/p08-counter-bfzk09x9/GiftUIRuntimeStatic.abi.json": {
+        "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+        "bytes": 149
+      },
+      ".build/contracts/p08-counter-bfzk09x9/GiftUIRuntimeStatic.log": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      ".build/contracts/p08-counter-bfzk09x9/GiftUIRuntimeStatic.o": {
+        "sha256": "4f7074f0a804ae5b77d6ad65ef35e36c29f00d36639c1270e5964225ea179c5c",
+        "bytes": 275264
+      },
+      ".build/contracts/p08-counter-bfzk09x9/GiftUIRuntimeStatic.swiftdoc": {
+        "sha256": "90a7be7ea08c7933976744fd36b4edc83b88c50a5b30940b42a02d75296d5cdb",
+        "bytes": 3248
+      },
+      ".build/contracts/p08-counter-bfzk09x9/GiftUIRuntimeStatic.swiftmodule": {
+        "sha256": "2e8a5297c42d8018e772c6ffe28b8014f47da75f356eee49ea9c07ea91946449",
+        "bytes": 135464
+      },
+      ".build/contracts/p08-counter-bfzk09x9/GiftUIRuntimeStatic.swiftsourceinfo": {
+        "sha256": "92cae138f4f2ffae7c9f8572907d4614fd0cbd97cb57e787416d3e4c9c124f0b",
+        "bytes": 28272
+      },
+      ".build/contracts/p08-counter-bfzk09x9/GiftUISemanticCore.abi.json": {
+        "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+        "bytes": 149
+      },
+      ".build/contracts/p08-counter-bfzk09x9/GiftUISemanticCore.log": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      ".build/contracts/p08-counter-bfzk09x9/GiftUISemanticCore.o": {
+        "sha256": "dab36eb3f248a287af70fa492bde72ed82be9fd26c8023ebfa41f51b2d7ba374",
+        "bytes": 324448
+      },
+      ".build/contracts/p08-counter-bfzk09x9/GiftUISemanticCore.swiftdoc": {
+        "sha256": "90dc08eaed2bb60b8cddd279717f0b481a07ce512ed6b6a68b3b63049ab005cb",
+        "bytes": 8288
+      },
+      ".build/contracts/p08-counter-bfzk09x9/GiftUISemanticCore.swiftmodule": {
+        "sha256": "f66d302f088b5ca50e42afcf2c8bd4484bfe5f9676a4575143e1a26bc083b826",
+        "bytes": 315728
+      },
+      ".build/contracts/p08-counter-bfzk09x9/GiftUISemanticCore.swiftsourceinfo": {
+        "sha256": "f32974ce9f3f7a065afc117d9e9f3f68d1ed85faea187df0916a49a4aeb4a36d",
+        "bytes": 91536
+      },
+      ".build/contracts/p08-counter-bfzk09x9/GiftUITextResources.abi.json": {
+        "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+        "bytes": 149
+      },
+      ".build/contracts/p08-counter-bfzk09x9/GiftUITextResources.log": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      ".build/contracts/p08-counter-bfzk09x9/GiftUITextResources.o": {
+        "sha256": "3566fcef0b45927b0730d124f5b837e34b9a2ccbbd02795ae549ca7fcce61aea",
+        "bytes": 103264
+      },
+      ".build/contracts/p08-counter-bfzk09x9/GiftUITextResources.swiftdoc": {
+        "sha256": "8ed36b56d14d932c81e660572a959cb99e70cb8b730b320c0172c499213a979c",
+        "bytes": 1720
+      },
+      ".build/contracts/p08-counter-bfzk09x9/GiftUITextResources.swiftmodule": {
+        "sha256": "4278d49997ef76523535f92e878e700be3deced02bb88321a5efdfac71dac02b",
+        "bytes": 130848
+      },
+      ".build/contracts/p08-counter-bfzk09x9/GiftUITextResources.swiftsourceinfo": {
+        "sha256": "25c6ae683feb76dc44e25acff2de11070834c7692983edbecd77c293e1706235",
+        "bytes": 25660
+      },
+      ".build/contracts/p08-counter-bfzk09x9/P08CounterPresentation.abi.json": {
+        "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+        "bytes": 149
+      },
+      ".build/contracts/p08-counter-bfzk09x9/P08CounterPresentation.log": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      ".build/contracts/p08-counter-bfzk09x9/P08CounterPresentation.o": {
+        "sha256": "4c9cf12541f05a9a4efc3343c2d26f16db26d601a505a92ebc8b7b5efb63e4fb",
+        "bytes": 39264
+      },
+      ".build/contracts/p08-counter-bfzk09x9/P08CounterPresentation.swiftdoc": {
+        "sha256": "65fd59b043cbe222e88e65581f48c54d425c335304d73c8550513bf3971cc008",
+        "bytes": 388
+      },
+      ".build/contracts/p08-counter-bfzk09x9/P08CounterPresentation.swiftmodule": {
+        "sha256": "3ab82177b8ff05ccb14d69cc1aca393cdfe25b6e2dd19ef9a09c2f75e2e3786f",
+        "bytes": 45152
+      },
+      ".build/contracts/p08-counter-bfzk09x9/P08CounterPresentation.swiftsourceinfo": {
+        "sha256": "e428d7753ec7ac25f867fef977ade4d781338dbe93a31ec2fdc8969a00bb61ca",
+        "bytes": 3500
+      },
+      ".build/contracts/p08-counter-bfzk09x9/P08CounterSchema.abi.json": {
+        "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+        "bytes": 149
+      },
+      ".build/contracts/p08-counter-bfzk09x9/P08CounterSchema.log": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      ".build/contracts/p08-counter-bfzk09x9/P08CounterSchema.o": {
+        "sha256": "1dd4a48e14496487a49affeb6954213b7e8197149b00949f4cbd3a6cd9555af4",
+        "bytes": 9336
+      },
+      ".build/contracts/p08-counter-bfzk09x9/P08CounterSchema.swiftdoc": {
+        "sha256": "87956c631d40c5661d711f3b8125d5f10e9c72ab2287c1f9d78dbb25977882c9",
+        "bytes": 380
+      },
+      ".build/contracts/p08-counter-bfzk09x9/P08CounterSchema.swiftmodule": {
+        "sha256": "94fab02b3b6d3716528a040d28d2b44218d76f4fbf9e2defd3c7e72193339106",
+        "bytes": 24984
+      },
+      ".build/contracts/p08-counter-bfzk09x9/P08CounterSchema.swiftsourceinfo": {
+        "sha256": "3a430c9009793b4c9a3de8b26d6214b281cd1562afc566f67072033210f0a75d",
+        "bytes": 2988
+      },
+      ".build/contracts/p08-counter-bfzk09x9/P08CounterTable.abi.json": {
+        "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+        "bytes": 149
+      },
+      ".build/contracts/p08-counter-bfzk09x9/P08CounterTable.log": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      ".build/contracts/p08-counter-bfzk09x9/P08CounterTable.o": {
+        "sha256": "be1de25183271eeacec9109fc605ee59169ba97c966f10049f0954ddb4ada22e",
+        "bytes": 12248
+      },
+      ".build/contracts/p08-counter-bfzk09x9/P08CounterTable.swiftdoc": {
+        "sha256": "cc020f27b9190ff407a99244647077d6c9c73651d5f6677c7b556c3934beffb9",
+        "bytes": 380
+      },
+      ".build/contracts/p08-counter-bfzk09x9/P08CounterTable.swiftmodule": {
+        "sha256": "f285f2df8e44cc70828e15461737597b3cec6427e0023cde91f4bdfba19caeff",
+        "bytes": 28836
+      },
+      ".build/contracts/p08-counter-bfzk09x9/P08CounterTable.swiftsourceinfo": {
+        "sha256": "0c13d71628364ce95068180e0b255c7340767c93632cdefdf590a3db770522b0",
+        "bytes": 2972
+      },
+      ".build/contracts/p08-counter-bfzk09x9/commands.txt": {
+        "sha256": "3f7f3b38655e32920ef3f8be526f4a78fe0491da46a26e14b807f11ad3786176",
+        "bytes": 41454
+      },
+      ".build/contracts/p08-counter-bfzk09x9/counter-lowering.log": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      ".build/contracts/p08-counter-bfzk09x9/counter-model.log": {
+        "sha256": "55962ae7ca46415416942d1229910a780ff2d3c488274b536cd633320e72bccf",
+        "bytes": 1478
+      }
+    },
+    "source_sha256": "5f365a7700b73ad6938a4a5f0b03512657e0a8b0dee530b3544999a1863c70d0",
+    "exit_status": 1
+  },
+  "attempt-2": {
+    "build": ".build/contracts/p08-counter-7i3skcjy",
+    "files": {
+      ".build/contracts/p08-counter-7i3skcjy/Counter.swift": {
+        "sha256": "49481900df254eccd291ecf44f1f913357778bf5ad167e226113a9e16ecdce97",
+        "bytes": 2556
+      },
+      ".build/contracts/p08-counter-7i3skcjy/CounterHostBackingNegative.swift": {
+        "sha256": "0458d464b366df813224a03f54e009b59e3f8460ffd745c63b8178e2c7b5e70c",
+        "bytes": 3234
+      },
+      ".build/contracts/p08-counter-7i3skcjy/CounterHostCopyNegative.swift": {
+        "sha256": "374cca587f8082f5e6737840ba700b46ba407f1e00e046732cbf7158a9e1aff7",
+        "bytes": 158
+      },
+      ".build/contracts/p08-counter-7i3skcjy/CounterSchema.swift": {
+        "sha256": "a3a24ab22fdf75c7d2b0fdb90d86755dc377747e0ed663f1c06bac7dbc0dde41",
+        "bytes": 1250
+      },
+      ".build/contracts/p08-counter-7i3skcjy/CounterTable.swift": {
+        "sha256": "9c1a50d90b57b9f625986cbb7a37fcefc56234bfb0f1e0b2a10abd7ab73efd54",
+        "bytes": 1393
+      },
+      ".build/contracts/p08-counter-7i3skcjy/GiftUIDrawing.abi.json": {
+        "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+        "bytes": 149
+      },
+      ".build/contracts/p08-counter-7i3skcjy/GiftUIDrawing.log": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      ".build/contracts/p08-counter-7i3skcjy/GiftUIDrawing.o": {
+        "sha256": "d714a86ca3b71789d0ec0fe757809d78ac5bcefde6560c4a895f6b285e70c152",
+        "bytes": 131632
+      },
+      ".build/contracts/p08-counter-7i3skcjy/GiftUIDrawing.swiftdoc": {
+        "sha256": "211f7c78dc01779c87bc0cf44a04e8c84346fa01b0430e51dda90afd634b635e",
+        "bytes": 1496
+      },
+      ".build/contracts/p08-counter-7i3skcjy/GiftUIDrawing.swiftmodule": {
+        "sha256": "18fd8e01c27b1289f3beaca2c794455622e9003ca89fcd66115c479e4afd578d",
+        "bytes": 105604
+      },
+      ".build/contracts/p08-counter-7i3skcjy/GiftUIDrawing.swiftsourceinfo": {
+        "sha256": "e53ab81b593e129e1bd177ef7d22d49041ed6fea96cf0f091300ddfd444cea73",
+        "bytes": 31548
+      },
+      ".build/contracts/p08-counter-7i3skcjy/GiftUIExecution.abi.json": {
+        "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+        "bytes": 149
+      },
+      ".build/contracts/p08-counter-7i3skcjy/GiftUIExecution.log": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      ".build/contracts/p08-counter-7i3skcjy/GiftUIExecution.o": {
+        "sha256": "3ee254ae647b81ce2eee4e3d837b86b49d5b04e692b56c24533291248abd0bdb",
+        "bytes": 575576
+      },
+      ".build/contracts/p08-counter-7i3skcjy/GiftUIExecution.swiftdoc": {
+        "sha256": "c8e4232912f5d7519ccb64f39aa82c8f4eacb3ef786d8632736631ca2096f4bb",
+        "bytes": 380
+      },
+      ".build/contracts/p08-counter-7i3skcjy/GiftUIExecution.swiftmodule": {
+        "sha256": "076658f1cbf6efe1e303b99f4c5867e333f93cf31349093ffcad5cb560785fa1",
+        "bytes": 623392
+      },
+      ".build/contracts/p08-counter-7i3skcjy/GiftUIExecution.swiftsourceinfo": {
+        "sha256": "39be610ffc8cbc3f529f974535bee56a78eba45df827465d7ce97799c17e3a47",
+        "bytes": 123836
+      },
+      ".build/contracts/p08-counter-7i3skcjy/GiftUIHostConfiguration.abi.json": {
+        "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+        "bytes": 149
+      },
+      ".build/contracts/p08-counter-7i3skcjy/GiftUIHostConfiguration.log": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      ".build/contracts/p08-counter-7i3skcjy/GiftUIHostConfiguration.o": {
+        "sha256": "851446d39187fc2d7ea562ebfef35210afad22831b5d79cfd3b194314e3f11d7",
+        "bytes": 720432
+      },
+      ".build/contracts/p08-counter-7i3skcjy/GiftUIHostConfiguration.swiftdoc": {
+        "sha256": "518543d8aa4befbf770cb35d98a488b3f33cb089a3e555aa3cd52a94dfe7dab0",
+        "bytes": 784
+      },
+      ".build/contracts/p08-counter-7i3skcjy/GiftUIHostConfiguration.swiftmodule": {
+        "sha256": "48233d69ae5f671e57ef0a27151b7b037e38b63a27ee29b2992759bee5d95c7e",
+        "bytes": 515140
+      },
+      ".build/contracts/p08-counter-7i3skcjy/GiftUIHostConfiguration.swiftsourceinfo": {
+        "sha256": "bbb0842ba71da531635dc4d2db1acce294d8121543b7ae549bff2b3805dde78d",
+        "bytes": 146876
+      },
+      ".build/contracts/p08-counter-7i3skcjy/GiftUIInteraction.abi.json": {
+        "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+        "bytes": 149
+      },
+      ".build/contracts/p08-counter-7i3skcjy/GiftUIInteraction.log": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      ".build/contracts/p08-counter-7i3skcjy/GiftUIInteraction.o": {
+        "sha256": "fad6fc395a43b749478da6e0a006ef212dfcd929f02d64dab95e3d3af9ec8241",
+        "bytes": 145800
+      },
+      ".build/contracts/p08-counter-7i3skcjy/GiftUIInteraction.swiftdoc": {
+        "sha256": "c9a63ab967e04418e12050448c4e8aaa15ebceae6856c5e507a1211f1cec1e4b",
+        "bytes": 2776
+      },
+      ".build/contracts/p08-counter-7i3skcjy/GiftUIInteraction.swiftmodule": {
+        "sha256": "4f7e516a5190f0b4a50f280e8e7ac5d6e6ecff7078476c75fa428f04eb338213",
+        "bytes": 134948
+      },
+      ".build/contracts/p08-counter-7i3skcjy/GiftUIInteraction.swiftsourceinfo": {
+        "sha256": "47f288ac79a1a2e811b3b96606c6028e5e0bdf1b31cf6cd3ebb68687b037d7fd",
+        "bytes": 36452
+      },
+      ".build/contracts/p08-counter-7i3skcjy/GiftUILayout.abi.json": {
+        "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+        "bytes": 149
+      },
+      ".build/contracts/p08-counter-7i3skcjy/GiftUILayout.log": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      ".build/contracts/p08-counter-7i3skcjy/GiftUILayout.o": {
+        "sha256": "de4f29f110e80656a72b224e93f0fc7c0c9272756e369540d3a280dab74d7d44",
+        "bytes": 137824
+      },
+      ".build/contracts/p08-counter-7i3skcjy/GiftUILayout.swiftdoc": {
+        "sha256": "ecf335acc8af95a82c08ee02a9f933f7bb081e654f8724ba10c655227b3a6b05",
+        "bytes": 376
+      },
+      ".build/contracts/p08-counter-7i3skcjy/GiftUILayout.swiftmodule": {
+        "sha256": "5dceb9af95e4601603446f6f12f2bab6543b61cd44fe74bfd758676cf8a24859",
+        "bytes": 140836
+      },
+      ".build/contracts/p08-counter-7i3skcjy/GiftUILayout.swiftsourceinfo": {
+        "sha256": "405ea5bf2e7882652a0f7ff8b6d26e5029abfe71bf86b72ba77ce49ba513c549",
+        "bytes": 36152
+      },
+      ".build/contracts/p08-counter-7i3skcjy/GiftUIObservableState.abi.json": {
+        "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+        "bytes": 149
+      },
+      ".build/contracts/p08-counter-7i3skcjy/GiftUIObservableState.log": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      ".build/contracts/p08-counter-7i3skcjy/GiftUIObservableState.o": {
+        "sha256": "d5195183bfe9521a0d3860a743e492c5676f567a95c72fb440b15009eea664f6",
+        "bytes": 235968
+      },
+      ".build/contracts/p08-counter-7i3skcjy/GiftUIObservableState.swiftdoc": {
+        "sha256": "0c26952c20af873979e8039ba5c6271b92bf957c8c9e366300b23d3df70eb307",
+        "bytes": 8732
+      },
+      ".build/contracts/p08-counter-7i3skcjy/GiftUIObservableState.swiftmodule": {
+        "sha256": "2126a4cf2da75da67dc4e30bc69b8ece4f772ee2e59cf8440efd4ec761720ae8",
+        "bytes": 220256
+      },
+      ".build/contracts/p08-counter-7i3skcjy/GiftUIObservableState.swiftsourceinfo": {
+        "sha256": "a25bfd729ffc02ad52bd8344a9f3f80aaff160e9b464008b14f73b7231804a1d",
+        "bytes": 56076
+      },
+      ".build/contracts/p08-counter-7i3skcjy/GiftUIReferenceTextResources.abi.json": {
+        "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+        "bytes": 149
+      },
+      ".build/contracts/p08-counter-7i3skcjy/GiftUIReferenceTextResources.log": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      ".build/contracts/p08-counter-7i3skcjy/GiftUIReferenceTextResources.o": {
+        "sha256": "780ef3a3ba5f8be380f74525b92fa2245ff8d4b8d0c40b8901843de02f59fe80",
+        "bytes": 504456
+      },
+      ".build/contracts/p08-counter-7i3skcjy/GiftUIReferenceTextResources.swiftdoc": {
+        "sha256": "5b9ec28b8006d1ef6ab4fa01d3ed6ba5e09d65e51e94251294b726771da9fa54",
+        "bytes": 924
+      },
+      ".build/contracts/p08-counter-7i3skcjy/GiftUIReferenceTextResources.swiftmodule": {
+        "sha256": "c9a1f8785e33c0381c0f7c5c0434f5a020d62bc53581a8f65a8f336c04c182ee",
+        "bytes": 1216024
+      },
+      ".build/contracts/p08-counter-7i3skcjy/GiftUIReferenceTextResources.swiftsourceinfo": {
+        "sha256": "b531f12a35fa4afba2ac31837133c3bd5b269151db52c3a0c623be0f66620942",
+        "bytes": 79128
+      },
+      ".build/contracts/p08-counter-7i3skcjy/GiftUIRenderCore.abi.json": {
+        "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+        "bytes": 149
+      },
+      ".build/contracts/p08-counter-7i3skcjy/GiftUIRenderCore.log": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      ".build/contracts/p08-counter-7i3skcjy/GiftUIRenderCore.o": {
+        "sha256": "6b190c88d4a546044df4685b1010f8415d29a5265ec1c9ceb3bcf6ac95afcb2f",
+        "bytes": 62200
+      },
+      ".build/contracts/p08-counter-7i3skcjy/GiftUIRenderCore.swiftdoc": {
+        "sha256": "9824cb07c32b5722a1928d05922b44dd0ad74e1ffe4a8d1f4b03d2f60c067570",
+        "bytes": 380
+      },
+      ".build/contracts/p08-counter-7i3skcjy/GiftUIRenderCore.swiftmodule": {
+        "sha256": "ed74cbeb6b57f03b5401ae7455b0784519df0054cd796b20cd2d2c661e820867",
+        "bytes": 84380
+      },
+      ".build/contracts/p08-counter-7i3skcjy/GiftUIRenderCore.swiftsourceinfo": {
+        "sha256": "fce9c4b54d2ac91fa9a8212a14befb26b93750801a7eddb8e435752df4f0bb7e",
+        "bytes": 20196
+      },
+      ".build/contracts/p08-counter-7i3skcjy/GiftUIRenderLowering.abi.json": {
+        "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+        "bytes": 149
+      },
+      ".build/contracts/p08-counter-7i3skcjy/GiftUIRenderLowering.log": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      ".build/contracts/p08-counter-7i3skcjy/GiftUIRenderLowering.o": {
+        "sha256": "9019e76b91f378564c956fc30f60561dcbefebcbd92cf01bd3ebf6aee28a1c1f",
+        "bytes": 78864
+      },
+      ".build/contracts/p08-counter-7i3skcjy/GiftUIRenderLowering.swiftdoc": {
+        "sha256": "88210ce918b2b4e43c16186d30cf3755703c4d9901a27367fc0e11d225cd8c48",
+        "bytes": 384
+      },
+      ".build/contracts/p08-counter-7i3skcjy/GiftUIRenderLowering.swiftmodule": {
+        "sha256": "fbca0191add721128eccb3dc71236efc1bf93bd366f287d77986ca212e9889f4",
+        "bytes": 78276
+      },
+      ".build/contracts/p08-counter-7i3skcjy/GiftUIRenderLowering.swiftsourceinfo": {
+        "sha256": "091854b3c3f5590eed0ec0aa9b5662a230a5a71a66568a0b4554546fa0bd71e4",
+        "bytes": 18492
+      },
+      ".build/contracts/p08-counter-7i3skcjy/GiftUIRuntimeCore.abi.json": {
+        "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+        "bytes": 149
+      },
+      ".build/contracts/p08-counter-7i3skcjy/GiftUIRuntimeCore.log": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      ".build/contracts/p08-counter-7i3skcjy/GiftUIRuntimeCore.o": {
+        "sha256": "5446967933ba09ed31c52825b2093547b667cabd5e5055cbfb45ea7707f3bc65",
+        "bytes": 313520
+      },
+      ".build/contracts/p08-counter-7i3skcjy/GiftUIRuntimeCore.swiftdoc": {
+        "sha256": "fd801775ac1f2cef4d70cc991745d39f0522ca7855ed356a87a3fbcb7947d5df",
+        "bytes": 2168
+      },
+      ".build/contracts/p08-counter-7i3skcjy/GiftUIRuntimeCore.swiftmodule": {
+        "sha256": "83f17f0b8323eb02f7583cd281438e9a1026bdea0445a1911d20a1ac150868a3",
+        "bytes": 289136
+      },
+      ".build/contracts/p08-counter-7i3skcjy/GiftUIRuntimeCore.swiftsourceinfo": {
+        "sha256": "4970b038a10533d3c441dbd11736b00f02cb2c4e1e6919b85d763930a48903b2",
+        "bytes": 95568
+      },
+      ".build/contracts/p08-counter-7i3skcjy/GiftUIRuntimeDynamic.abi.json": {
+        "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+        "bytes": 149
+      },
+      ".build/contracts/p08-counter-7i3skcjy/GiftUIRuntimeDynamic.log": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      ".build/contracts/p08-counter-7i3skcjy/GiftUIRuntimeDynamic.o": {
+        "sha256": "2483dadc44924e28793e893f92c0dbd9ea8feb60a62688f167ce07db20b4fd67",
+        "bytes": 246296
+      },
+      ".build/contracts/p08-counter-7i3skcjy/GiftUIRuntimeDynamic.swiftdoc": {
+        "sha256": "736a31d984c7fbc68c05b5a8662e030bb355b4b4dbc3e57898f9fae124155a88",
+        "bytes": 4868
+      },
+      ".build/contracts/p08-counter-7i3skcjy/GiftUIRuntimeDynamic.swiftmodule": {
+        "sha256": "9fcdf624c85cea6622e2492dd3f6b88cd4afbf61fd956760d29b57ec42504514",
+        "bytes": 232864
+      },
+      ".build/contracts/p08-counter-7i3skcjy/GiftUIRuntimeDynamic.swiftsourceinfo": {
+        "sha256": "f284aadb94173748c1c05579c217a7d07ad949b69cc7bf3725376c7d5eff7320",
+        "bytes": 52312
+      },
+      ".build/contracts/p08-counter-7i3skcjy/GiftUIRuntimeStatic.abi.json": {
+        "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+        "bytes": 149
+      },
+      ".build/contracts/p08-counter-7i3skcjy/GiftUIRuntimeStatic.log": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      ".build/contracts/p08-counter-7i3skcjy/GiftUIRuntimeStatic.o": {
+        "sha256": "c3424418821446135b4e0521d9093089c4af1cef2eb2c40c3c2c6b889645463f",
+        "bytes": 275264
+      },
+      ".build/contracts/p08-counter-7i3skcjy/GiftUIRuntimeStatic.swiftdoc": {
+        "sha256": "90a7be7ea08c7933976744fd36b4edc83b88c50a5b30940b42a02d75296d5cdb",
+        "bytes": 3248
+      },
+      ".build/contracts/p08-counter-7i3skcjy/GiftUIRuntimeStatic.swiftmodule": {
+        "sha256": "2e8a5297c42d8018e772c6ffe28b8014f47da75f356eee49ea9c07ea91946449",
+        "bytes": 135464
+      },
+      ".build/contracts/p08-counter-7i3skcjy/GiftUIRuntimeStatic.swiftsourceinfo": {
+        "sha256": "92cae138f4f2ffae7c9f8572907d4614fd0cbd97cb57e787416d3e4c9c124f0b",
+        "bytes": 28272
+      },
+      ".build/contracts/p08-counter-7i3skcjy/GiftUISemanticCore.abi.json": {
+        "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+        "bytes": 149
+      },
+      ".build/contracts/p08-counter-7i3skcjy/GiftUISemanticCore.log": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      ".build/contracts/p08-counter-7i3skcjy/GiftUISemanticCore.o": {
+        "sha256": "a0c2c9d2afbb5faea0f41bf4e977698af2dab5e1439bb017f3aa798e6f692e16",
+        "bytes": 324448
+      },
+      ".build/contracts/p08-counter-7i3skcjy/GiftUISemanticCore.swiftdoc": {
+        "sha256": "90dc08eaed2bb60b8cddd279717f0b481a07ce512ed6b6a68b3b63049ab005cb",
+        "bytes": 8288
+      },
+      ".build/contracts/p08-counter-7i3skcjy/GiftUISemanticCore.swiftmodule": {
+        "sha256": "f66d302f088b5ca50e42afcf2c8bd4484bfe5f9676a4575143e1a26bc083b826",
+        "bytes": 315728
+      },
+      ".build/contracts/p08-counter-7i3skcjy/GiftUISemanticCore.swiftsourceinfo": {
+        "sha256": "f32974ce9f3f7a065afc117d9e9f3f68d1ed85faea187df0916a49a4aeb4a36d",
+        "bytes": 91536
+      },
+      ".build/contracts/p08-counter-7i3skcjy/GiftUITextResources.abi.json": {
+        "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+        "bytes": 149
+      },
+      ".build/contracts/p08-counter-7i3skcjy/GiftUITextResources.log": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      ".build/contracts/p08-counter-7i3skcjy/GiftUITextResources.o": {
+        "sha256": "1a9f9cd18a215cb788376b96f10c98924c7e1f544aa4dc421bf3d35a1594a649",
+        "bytes": 103264
+      },
+      ".build/contracts/p08-counter-7i3skcjy/GiftUITextResources.swiftdoc": {
+        "sha256": "8ed36b56d14d932c81e660572a959cb99e70cb8b730b320c0172c499213a979c",
+        "bytes": 1720
+      },
+      ".build/contracts/p08-counter-7i3skcjy/GiftUITextResources.swiftmodule": {
+        "sha256": "4278d49997ef76523535f92e878e700be3deced02bb88321a5efdfac71dac02b",
+        "bytes": 130848
+      },
+      ".build/contracts/p08-counter-7i3skcjy/GiftUITextResources.swiftsourceinfo": {
+        "sha256": "25c6ae683feb76dc44e25acff2de11070834c7692983edbecd77c293e1706235",
+        "bytes": 25660
+      },
+      ".build/contracts/p08-counter-7i3skcjy/Main.swift": {
+        "sha256": "e86105c1782c7c9ceda0e7a24b0de51e8c740cfa9bbcde640fe2f3e225717e7d",
+        "bytes": 321
+      },
+      ".build/contracts/p08-counter-7i3skcjy/P08CounterPresentation.abi.json": {
+        "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+        "bytes": 149
+      },
+      ".build/contracts/p08-counter-7i3skcjy/P08CounterPresentation.log": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      ".build/contracts/p08-counter-7i3skcjy/P08CounterPresentation.o": {
+        "sha256": "61e3ff82b423a7074d3a18f8a822ae845c707a2263e7d28877cf7de162a5f30d",
+        "bytes": 39264
+      },
+      ".build/contracts/p08-counter-7i3skcjy/P08CounterPresentation.swiftdoc": {
+        "sha256": "65fd59b043cbe222e88e65581f48c54d425c335304d73c8550513bf3971cc008",
+        "bytes": 388
+      },
+      ".build/contracts/p08-counter-7i3skcjy/P08CounterPresentation.swiftmodule": {
+        "sha256": "3ab82177b8ff05ccb14d69cc1aca393cdfe25b6e2dd19ef9a09c2f75e2e3786f",
+        "bytes": 45152
+      },
+      ".build/contracts/p08-counter-7i3skcjy/P08CounterPresentation.swiftsourceinfo": {
+        "sha256": "51618b83f27fd4569217bc476aafc1563fa0113079fb4f72c84fd1ff67ce8ce7",
+        "bytes": 3500
+      },
+      ".build/contracts/p08-counter-7i3skcjy/P08CounterRuntime.abi.json": {
+        "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+        "bytes": 149
+      },
+      ".build/contracts/p08-counter-7i3skcjy/P08CounterRuntime.o": {
+        "sha256": "cf9aefafffb19aadf59737f32a1e377d9b07e67b5a8738b8ac006d19dc6fa961",
+        "bytes": 1387184
+      },
+      ".build/contracts/p08-counter-7i3skcjy/P08CounterRuntime.swiftdoc": {
+        "sha256": "5772f473c108d1ceaddf22f7e03f1f6c30445b84aae7c80b610cb20c94f8f255",
+        "bytes": 4044
+      },
+      ".build/contracts/p08-counter-7i3skcjy/P08CounterRuntime.swiftmodule": {
+        "sha256": "e93c0250c5ea04e174a8d8d3e7eb48e05fe9d540b45da24ae77b48dcefac147b",
+        "bytes": 1056632
+      },
+      ".build/contracts/p08-counter-7i3skcjy/P08CounterRuntime.swiftsourceinfo": {
+        "sha256": "02009c7eaf3c276b2f58a366f5ac93f574108de75637a3d94ffb5d94aac2b531",
+        "bytes": 227824
+      },
+      ".build/contracts/p08-counter-7i3skcjy/P08CounterSchema.abi.json": {
+        "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+        "bytes": 149
+      },
+      ".build/contracts/p08-counter-7i3skcjy/P08CounterSchema.log": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      ".build/contracts/p08-counter-7i3skcjy/P08CounterSchema.o": {
+        "sha256": "50dd92799bdb4c01174e4f52676efc24efe359b76214eb4ab9799b823880d15c",
+        "bytes": 9336
+      },
+      ".build/contracts/p08-counter-7i3skcjy/P08CounterSchema.swiftdoc": {
+        "sha256": "87956c631d40c5661d711f3b8125d5f10e9c72ab2287c1f9d78dbb25977882c9",
+        "bytes": 380
+      },
+      ".build/contracts/p08-counter-7i3skcjy/P08CounterSchema.swiftmodule": {
+        "sha256": "94fab02b3b6d3716528a040d28d2b44218d76f4fbf9e2defd3c7e72193339106",
+        "bytes": 24984
+      },
+      ".build/contracts/p08-counter-7i3skcjy/P08CounterSchema.swiftsourceinfo": {
+        "sha256": "74707458d555f80b09d7eef7f8c8cc4f8d473a6a921938131192129b368d46a2",
+        "bytes": 2988
+      },
+      ".build/contracts/p08-counter-7i3skcjy/P08CounterTable.abi.json": {
+        "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+        "bytes": 149
+      },
+      ".build/contracts/p08-counter-7i3skcjy/P08CounterTable.log": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      ".build/contracts/p08-counter-7i3skcjy/P08CounterTable.o": {
+        "sha256": "270c81ab3ace7c792eba2aa156529bb145d5e14cad98a4d01ccf0480fd85b602",
+        "bytes": 12248
+      },
+      ".build/contracts/p08-counter-7i3skcjy/P08CounterTable.swiftdoc": {
+        "sha256": "cc020f27b9190ff407a99244647077d6c9c73651d5f6677c7b556c3934beffb9",
+        "bytes": 380
+      },
+      ".build/contracts/p08-counter-7i3skcjy/P08CounterTable.swiftmodule": {
+        "sha256": "f285f2df8e44cc70828e15461737597b3cec6427e0023cde91f4bdfba19caeff",
+        "bytes": 28836
+      },
+      ".build/contracts/p08-counter-7i3skcjy/P08CounterTable.swiftsourceinfo": {
+        "sha256": "ce537fbd39e5d8c016432851f273d08cccdff98c79a6cd3aeffb27acef2620dc",
+        "bytes": 2972
+      },
+      ".build/contracts/p08-counter-7i3skcjy/commands.txt": {
+        "sha256": "141730fe8b614d0e39f4885570c5d71726ec37d653582aafaebeca838646eb6b",
+        "bytes": 54821
+      },
+      ".build/contracts/p08-counter-7i3skcjy/counter": {
+        "sha256": "8344a4d05c083db306d191168abe0d12e51eca1e085c515cf4763a07dfc6eacc",
+        "bytes": 4840344
+      },
+      ".build/contracts/p08-counter-7i3skcjy/counter-host-backing.log": {
+        "sha256": "6255a3520df4dae608e9cc7b3d851298461359e7862a04f3a3b4b8616e8643a6",
+        "bytes": 10483
+      },
+      ".build/contracts/p08-counter-7i3skcjy/counter-host-copy.log": {
+        "sha256": "2386c071dbe03ae9222b15368637a14a86a1baec4f596d14b81678ed26d5aa93",
+        "bytes": 485
+      },
+      ".build/contracts/p08-counter-7i3skcjy/counter-lowering.log": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      ".build/contracts/p08-counter-7i3skcjy/counter-model.log": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      ".build/contracts/p08-counter-7i3skcjy/execute.log": {
+        "sha256": "35045fe4d52fc4d7d9942684cb4f978393f35823ae11fad472f5746128c6b368",
+        "bytes": 296520
+      },
+      ".build/contracts/p08-counter-7i3skcjy/link.log": {
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      ".build/contracts/p08-counter-7i3skcjy/result.json": {
+        "sha256": "18424f502893429a5dd084f8708532b4484f217e1c20402f814aa214ce891923",
+        "bytes": 400370
+      }
+    },
+    "source_sha256": "65732afc4e8bad043f0753ad7a06821669f632bbf4d3004c39d59957982dd205",
+    "exit_status": 0
+  },
+  "input_identity": {
+    "entry_commit": "5475f547195bb06aa222baf1a6827e0d88146629",
+    "unchanged_input_source_commit": "102382d7b2c8af48db932c8695eacd67747aac56",
+    "changed_source_path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWakeIntegration.swift",
+    "changed_source_sha256": "65732afc4e8bad043f0753ad7a06821669f632bbf4d3004c39d59957982dd205",
+    "inputs_count": 190,
+    "compiler": ".toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc",
+    "compiler_sha256": "79ae5c26645489fb783ae980f0f1bdae810f90fb180c9ac39808807b65e9fd69"
+  }
+}

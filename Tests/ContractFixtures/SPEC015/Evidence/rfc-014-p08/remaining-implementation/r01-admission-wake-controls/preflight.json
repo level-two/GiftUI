@@ -1,0 +1,8 @@
+{
+  "reference": "../option-b/b01-dependency-identities.json",
+  "reference_sha256": "e006a88c16fa11e244200dc27ab5c415c4badc41a2d056624744838ba9663a8d",
+  "comparisons": 496,
+  "failures": [],
+  "passed": true,
+  "method": "Read/hash only; all492 established comparisons plus4 current documented rebuild exception identities."
+}

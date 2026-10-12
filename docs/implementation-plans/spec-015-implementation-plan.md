@@ -35,7 +35,18 @@ not additional authorization to rerun an MVP implementation or reopen experiment
 
 ### Current owner checkpoint
 
-**2026-10-12 — Option B documents approved; implementation separate/not started.**
+**2026-10-12 — B03 independently accepted; remaining P08/T8.1 open.**
+[Independent Strong review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/remaining-implementation/option-b/b03/independent-review.md)
+accepts B01 inventory/B02 realization and the single B03 result: source102382d7,
+1,348,673 reported assertions/zero failures and23/23 checks. Current authorization
+continues remaining P08, with R01 actual rejected-admission wake/timestamp and
+multiple-fact/category deadline controls. Fresh validation follows new controls;
+B03's1/1 is spent, historical2/2 closed. Other operational/origin gaps, four
+registered routes, actual Embedded endpoint, early target images/resources/ABI
+and final independent P08 exit remain required. SPEC-015 stays implementing,
+this plan active and T8.1/P08 open; no acceptance box or P09 gate is closed.
+
+**Historical 2026-10-12 — Option B documents approved; implementation separate/not started.**
 [Exact approval and limit](../iterations/iteration-003-review/rfc-014-spec-approval.md#option-b-construction-graph-amendment--2026-10-12),
 accepted [ADR-038](../adrs/adr-038-construction-graph-and-operational-contracts.md)
 and SPEC-015's direct construction/operational distinction govern the next work.
@@ -336,7 +347,7 @@ exactly once here with its implementation work and expected evidence.
 | --- | --- | --- | --- |
 | `HC-001` — Complete authority, metadata, manifest, portfolio, and upstream linkage without implied SPEC-001 approval | `T0.1`, `T7.4`, `T8.1` | Governance and reciprocal-link audit; RFC-014 P10 functional / P11 resource-connected / P12 conformance evidence | migration pending; prior evidence remains baseline only |
 | `HC-002` — Pure ordered validation, first failure, no side effects or partial assembly, and valid-only instance exposure | `T1.4`, `T3.6`, `T4.1`, `T7.1`, `T8.1` | Access-order probes, owner-call ledger, repeat-call corpus, construction transcript; RFC-014 P10 functional / P11 resource-connected / P12 conformance evidence | migration pending; prior evidence remains baseline only |
-| `HC-003` — Exact eighteen-role direct construction graph, mandatory input/backing/configuration origins, separate typed wake/lifetime proofs and lower import boundaries | `T0.2`, `T1.2`, `T7.1`, `T8.1` | P08-B01 construction/activation/operation/lifetime inventory; B02 reviewed masks/controls and bounded helper shapes; B03 one native attempt plus independent review; four-route graph/operational/backing negatives; P10 functional / P11 resource-connected / P12 conformance | Option B documents approved; implementation not started; migration pending |
+| `HC-003` — Exact eighteen-role direct construction graph, mandatory input/backing/configuration origins, separate typed wake/lifetime proofs and lower import boundaries | `T0.2`, `T1.2`, `T7.1`, `T8.1` | P08-B01 construction/activation/operation/lifetime inventory; B02 reviewed masks/controls and bounded helper shapes; B03 one native attempt plus independent review; four-route graph/operational/backing negatives; P10 functional / P11 resource-connected / P12 conformance | B01/B02 complete; B03 independently accepted; remaining origin/operational/four-route coverage pending |
 | `HC-004` — Exact SPEC-013 audit and complete schema-3 runtime-limit equality, including four 224-slot scalar/glyph leaves and 128 text lines | `T0.4`, `T2.1`, `T2.2`, `T3.1`, `T3.2`, `T6.4`, `T8.1` | Fresh four-manifest generation, schema-version rejection, per-leaf equality/lowering corpus including semantic structural and render-workspace source/limit pairs, audit identity reports, static-table and byte-total checks; RFC-014 P10 functional / P11 resource-connected / P12 conformance evidence | migration pending; prior evidence remains baseline only |
 | `HC-005` — Exact five-Canvas minima, 214-scalar/glyph maximal printable diagnostic, 117-line maximal LF fixture, and equal bounded render structural/ordinary operation counts | `T2.1`, `T2.3`, `T3.2`, `T6.4`, `T8.1` | Generated workload manifests, checked arithmetic and capacity reports plus full-pipeline W/LF diagnostic tests; RFC-014 P10 functional / P11 resource-connected / P12 conformance evidence | migration pending; prior evidence remains baseline only |
 | `HC-006` — Independent conjunctive Drawing and capability gates | `T3.2`, `T3.3`, `T7.1`, `T8.1` | Two independent negatives, combined success, capability-vocabulary audit; RFC-014 P10 functional / P11 resource-connected / P12 conformance evidence | migration pending; prior evidence remains baseline only |

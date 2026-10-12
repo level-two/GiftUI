@@ -1,6 +1,20 @@
 # RFC-014 task context guide
 
-**Current P08 checkpoint — Option B documents approved; implementation separate,
+**Current P08 checkpoint — B03 independently accepted; remaining P08 open, 2026-10-12.**
+B01 inventory/review and B02 bounded helper/mask realization are complete. The
+single B03 native invocation at source `102382d7` passes1,348,673 reported
+assertions/zero failures and23/23 checks; independent Strong result review at
+`5475f547` accepts that bounded result. [Review and remaining-work handoff](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/remaining-implementation/option-b/b03/independent-review.md).
+The current user authorizes remaining P08 execution; R01 adds actual rejected-
+admission wake/timestamp invariance and multiple-fact/category deadline controls.
+Only new controls justify fresh source-specific validation; no unchanged B03
+rerun or same-helper repair is authorized. Historical2/2 remains closed; B03's
+1/1 attempt is permanently consumed. All other operational/origin gaps, four
+registered application routes, actual Embedded endpoint, early linked target
+images/resource/ABI and final independent P08 exit remain open. SPEC-015 stays
+implementing, its plan active and T8.1/P08 open; P09–P12 pending.
+
+**Historical P08 checkpoint — Option B documents approved; implementation separate,
 not started, 2026-10-12.** Eugene selected Option B and instructed that its
 required documents be treated as approved, then explicitly said not to proceed
 with its implementation in this activity. [Exact approval and limit](rfc-014-spec-approval.md#option-b-construction-graph-amendment--2026-10-12).

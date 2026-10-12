@@ -1,0 +1,22 @@
+{
+  "entry_commit": "5475f547195bb06aa222baf1a6827e0d88146629",
+  "source_changes": [
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWakeIntegration.swift: counterWakeControls only"
+  ],
+  "source_sha256": "5f365a7700b73ad6938a4a5f0b03512657e0a8b0dee530b3544999a1863c70d0",
+  "command": [
+    "python3",
+    "scripts/contracts/check-spec-015-counter.py",
+    "--runtime-build",
+    ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static"
+  ],
+  "started_utc": "2026-10-12T11:16:41.979628+00:00",
+  "formatter_exit": 0,
+  "formatter_source_changes": [],
+  "scope": "R01 initial validation after new controls, not B03 rerun. Historical2/2 and B031/1 closed. Stop for parent triage on finding outside scope.",
+  "exit_status": 1,
+  "finished_utc": "2026-10-12T11:17:10.557889+00:00",
+  "new_build_directories": [
+    ".build/contracts/p08-counter-bfzk09x9"
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "reference": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/remaining-implementation/option-b/b01-dependency-identities.json",
+  "reference_sha256": "e006a88c16fa11e244200dc27ab5c415c4badc41a2d056624744838ba9663a8d",
+  "comparisons": 496,
+  "failures": [],
+  "passed": true,
+  "method": "Read/hash only, after R01 validation;495 path identities plus host compiler receipt equality =496 established comparisons including4 documented rebuild exception-current identities."
+}
