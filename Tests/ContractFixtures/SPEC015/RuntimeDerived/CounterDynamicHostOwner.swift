@@ -233,7 +233,7 @@ struct CounterDynamicHostOwner: ~Copyable, ~Escapable, SignalAnalyzerPresetLiveO
         precondition(activationStep == 0 && constructions == 0)
         if let error = state.activate(assembly: assembly) { return .failure(.configuration(error), progress: .init()) }
         constructions += 1; activationStep = 1
-        return failAfterRuntime ? .failure(.configuration(.arithmeticOverflow), progress: .init(runtimeConstructed: true)) : .advanced
+        return failAfterRuntime || state.controlPointer.pointee.idleQuiesceMode == 1 ? .failure(.configuration(.arithmeticOverflow), progress: .init(runtimeConstructed: true)) : .advanced
     }
     mutating func constructRuntimeAndEndpoint(models: borrowing ObservableModelScope<CounterOwnedModel, CounterModelSchema>, root: borrowing ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, control: UnsafeMutablePointer<CounterControl>, audit: RuntimeStorageAudit, report: HostAssemblyReport) -> HostActivationStepResult<ActivationFailure> {
         precondition(activationStep == 0 && constructions == 0)
@@ -243,32 +243,31 @@ struct CounterDynamicHostOwner: ~Copyable, ~Escapable, SignalAnalyzerPresetLiveO
     }
     mutating func constructApplicationOwners() -> HostActivationStepResult<ActivationFailure> {
         precondition(activationStep == 1)
-        application = CounterDynamicApplicationOwners(control: state.controlPointer); activationStep = 2
-        return .advanced
+        application = CounterDynamicApplicationOwners(control: state.controlPointer); activationStep = 2; return state.controlPointer.pointee.idleQuiesceMode == 2 ? .failure(.configuration(.arithmeticOverflow), progress: .init()) : .advanced
     }
     mutating func attachRootModelInFirstCandidate() -> HostActivationStepResult<ActivationFailure> {
         precondition(activationStep == 2)
         guard state.attachRoot() else { return .failure(.invariant, progress: .init()) }
-        activationStep = 3; return .advanced
+        activationStep = 3; return state.controlPointer.pointee.idleQuiesceMode == 3 ? .failure(.configuration(.arithmeticOverflow), progress: .init()) : .advanced
     }
     mutating func installRepositoryObservationAndAdmitCurrentValues() -> HostActivationStepResult<ActivationFailure> {
         precondition(activationStep == 3)
         let current = application!.installObservation()
         guard state.admit(current) else { return .failure(.invariant, progress: .init(observationInstalled: true)) }
         application!.deliveryEnabled = true
-        activationStep = 4; return .advanced
+        activationStep = 4; return state.controlPointer.pointee.idleQuiesceMode == 4 ? .failure(.configuration(.arithmeticOverflow), progress: .init(observationInstalled: true)) : .advanced
     }
     mutating func acceptFirstPresentationAndEnableInput() -> HostActivationStepResult<ActivationFailure> {
         precondition(activationStep == 4)
         state.controlPointer.pointee.offer = .accepted
         guard case .success(let summary) = state.runOpportunity(), summary.logicalFrameDisposition == .committed else { return .failure(.invariant, progress: .init()) }
         application!.inputEnabled = true
-        activationStep = 5; return .advanced
+        activationStep = 5; return state.controlPointer.pointee.idleQuiesceMode == 5 ? .failure(.configuration(.arithmeticOverflow), progress: .init()) : .advanced
     }
     mutating func startAcquisitionThroughApplicationOpportunity() -> HostActivationStepResult<ActivationFailure> {
         precondition(activationStep == 5)
         guard application!.startSource() else { return .failure(.invariant, progress: .init(sourceStarted: true)) }
-        activationStep = 6; return .advanced
+        activationStep = 6; return state.controlPointer.pointee.idleQuiesceMode == 6 ? .failure(.configuration(.arithmeticOverflow), progress: .init(sourceStarted: true)) : .advanced
     }
     mutating func establishWakeAndPacingHostLoop() -> HostActivationStepResult<ActivationFailure> {
         precondition(activationStep == 6)
@@ -285,7 +284,7 @@ struct CounterDynamicHostOwner: ~Copyable, ~Escapable, SignalAnalyzerPresetLiveO
         precondition(state.controlPointer.pointee.backend.constructedEndpoints == 1)
         precondition(state.controlPointer.pointee.backend.constructedProjection == assembly.endpoint)
         #endif
-        activationStep = 7; return .advanced
+        activationStep = 7; return state.controlPointer.pointee.idleQuiesceMode == 7 ? .failure(.configuration(.arithmeticOverflow), progress: .init()) : .advanced
     }
     mutating func stopSourceDeliveryAndRepositoryObservation() { application?.stopDelivery() }
     mutating func preventInputEligibility() { application?.inputEnabled = false }

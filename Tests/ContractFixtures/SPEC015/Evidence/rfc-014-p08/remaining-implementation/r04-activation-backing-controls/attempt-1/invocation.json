@@ -1,0 +1,18 @@
+{
+  "entry_commit": "7c9a43d1f841874f2ed0dfa6caa92c1cc75a47ae",
+  "command": [
+    "python3",
+    "scripts/contracts/check-spec-015-counter.py",
+    "--runtime-build",
+    ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static"
+  ],
+  "started_utc": "2026-10-12T12:09:16.342487+00:00",
+  "scope": "r04-activation-backing-controls changed coherent controls only; historical2/2/B031/1 closed",
+  "formatter_exit": 0,
+  "source_patch_sha256": "d7c1146f07b04b9b8fa11dc1b0911df9826b170cc4ec0acb5efbae295c6b3948",
+  "exit_status": 0,
+  "finished_utc": "2026-10-12T12:11:21.023630+00:00",
+  "builds": [
+    ".build/contracts/p08-counter-ez40i1cv"
+  ]
+}

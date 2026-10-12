@@ -990,3 +990,33 @@ no passing runtime yet. Exact failure frozen in attempt1; format then attempt2.
 R03 outcome: attempt2 PASS2,696,981/zero failures23/23,496 unchanged pins.
 [Exact receipt](remaining-implementation/r03-refusal-supersession-controls/result.md).
 Commit this step before R04; no ledger reset. R04/R05 remain open.
+
+### R04 exact pre-edit receipt — 2026-10-12
+
+Entry7c9a43d1/R03 native PASS. Files CounterHostOwner.swift and
+CounterDynamicHostOwner.swift: each seven actual activation functions gains
+finite injected failure AFTER its actual side effects; existing idleQuiesceMode
+UInt8 selects step2–7, existing failAfterRuntime retains step1. No field/layout
+or generic API change. Failed-step partial progress must include observation
+at4 and source at6; runtime progress already recorded at1. Probes in
+CounterHostProbe.swift/CounterDynamicHostProbe.swift add fresh instances2–7,
+exact arithmeticOverflow/failed lifecycle, owner activationStep, runtime
+quiescence, finalized count (step1–2:0,3–4:1,5–7:2), application constructors
+(step2+), observations(step4+), source callbacks(step6+), stopped no-reentry,
+then existing ordered teardown8/idempotence/input/unavailable/report invalidation.
+
+Driver check-spec-015-counter.py adds actual Dynamic backing escape negative;
+Static causal notes must show model/root/semantic/Canvas/control/activationSpan,
+Dynamic corresponding model/root/semantic/Canvas/control/activationSpan. Complete
+host must not leave profile lexical backing; geometry's raw regions are guarded
+by the nested compiler-bound control/activation callback, not claimed as an
+independently ~Escapable geometry type. Source-specific inventory documents
+scopes and expiry ordering; no unsafe dereference/probe after expiry. SPEC015
+788–791,1194–1196,HC003/HC018. Format then one existing pinned driver invocation;
+no compiler/dependency refresh or targets. Same-blocker guard unchanged.
+
+R04 outcome: initial PASS2,697,541/zero failures24/24,496 unchanged pins.
+[Exact activation/backing limits](remaining-implementation/r04-activation-backing-controls/result.md).
+Seven actual failure stages and both scoped-host escape negatives execute.
+Raw geometry unique expiry is not claimed; actual lexical source proof is explicit
+for independent assessment. Commit before R05. No allowance reset.

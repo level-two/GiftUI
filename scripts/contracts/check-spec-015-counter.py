@@ -100,10 +100,20 @@ end = positive.index('                                        return count + 13'
 positive = positive[:begin] + '                                        _ = host.activate()\n                                        escaped = consume host\n                                        return 1' + positive[end:]
 positive = positive.replace('        return checks', '        var escapedOwner = escaped.take()!\n        _ = escapedOwner.runOpportunity()\n        escapedOwner.teardown()\n        return checks')
 backing_negative.write_text(positive)
+dynamic_backing_negative = out / 'CounterDynamicHostBackingNegative.swift'
+dynamic_positive = (fixture / 'CounterDynamicHostProbe.swift').read_text().split('package func p08CounterDynamicHost()')[0] + '#endif\n'
+dynamic_positive = dynamic_positive.replace('runCounterDynamicHost(failAfterRuntime: Bool)', 'rejectCounterDynamicHostEscape(failAfterRuntime: Bool)')
+dynamic_positive = dynamic_positive.replace('        guard case .valid(let audit)', '        var escaped: SignalAnalyzerPresetHostInstance<CounterDynamicHostOwner>? = nil\n        guard case .valid(let audit)', 1)
+begin = dynamic_positive.index('                                        precondition(host.lifecycleState')
+end = dynamic_positive.index('                                        return count + 13', begin) + len('                                        return count + 13')
+dynamic_positive = dynamic_positive[:begin] + '                                        _ = host.activate()\n                                        escaped = consume host\n                                        return 1' + dynamic_positive[end:]
+dynamic_positive = dynamic_positive.replace('            return checks', '            var escapedOwner = escaped.take()!\n            _ = escapedOwner.runOpportunity()\n            escapedOwner.teardown()\n            return checks')
+dynamic_backing_negative.write_text(dynamic_positive)
 counter_sources = [fixture / name for name in ('CounterModel.swift', 'CounterModelProbe.swift', 'CounterSemantic.swift', 'CounterSemanticProbe.swift', 'CounterGeometry.swift', 'CounterStaticGeometry.swift', 'CounterRender.swift', 'CounterFixedStorageProbe.swift')]
 for label, negative, diagnostic in (
     ('counter-host-copy', copy_negative, ('noncopyable',)),
-    ('counter-host-backing', backing_negative, ("lifetime-dependent variable 'escaped' escapes its scope", "activationBacking")),
+    ('counter-host-backing', backing_negative, ("lifetime-dependent variable 'escaped' escapes its scope", "activationBacking", "root.withLifetime", "semantic.withLifetime", "canvas.withLifetime", "withUnsafeMutablePointer")),
+    ('counter-dynamic-host-backing', dynamic_backing_negative, ("lifetime-dependent variable 'escaped' escapes its scope", "activationBacking", "root.withLifetime", "semantic.withLifetime", "canvas.withLifetime", "withUnsafeMutablePointer")),
 ):
     run(label, [compiler, *flags, '-module-name', 'P08CounterRuntime', '-emit-object', *counter_sources, *storage_sources, *join_sources, negative, '-o', out / (label + '.o')], diagnostic)
 main = out / 'Main.swift'

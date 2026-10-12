@@ -75,10 +75,15 @@ extension StaticCounterProfileStorage {
                                             precondition(host.runOpportunity() == .invalidLifecycle)
                                             var count = 2 + joinChecks
                                             let activation = host.activate()
-                                            if failAfterRuntime {
+                                            if failAfterRuntime || pointer.pointee.idleQuiesceMode != 0 {
                                                 precondition(activation == .failure(.configuration(.arithmeticOverflow)) && host.lifecycleState == .failed)
-                                                precondition(pointer.pointee.teardowns == 1 && pointer.pointee.finalized == 0)
-                                                count += 2
+                                                let failedStep: UInt8 = failAfterRuntime ? 1 : pointer.pointee.idleQuiesceMode
+                                                precondition(host.owner.activationStep == failedStep && host.owner.constructions == 1)
+                                                precondition(pointer.pointee.teardowns == 1 && pointer.pointee.finalized == (failedStep < 3 ? 0 : failedStep < 5 ? 1 : 2))
+                                                precondition(pointer.pointee.unavailable && !pointer.pointee.inputGate.inputIsEligible)
+                                                precondition(pointer.pointee.admission.pendingStateCount == 0)
+                                                precondition(pointer.pointee.observationsInstalled == (failedStep >= 4 ? 1 : 0) && pointer.pointee.observationsDetached == (failedStep >= 4 ? 1 : 0))
+                                                count += 6
                                             } else {
                                                 precondition(activation == .active && host.owner.activationStep == 7 && host.owner.constructions == 1)
                                                 precondition(pointer.pointee.finalized == 2 && pointer.pointee.commits == 1 && pointer.pointee.committedRecords == 2)
@@ -97,10 +102,13 @@ extension StaticCounterProfileStorage {
                                             host.teardown()
                                             precondition(host.owner.teardownStep == 8 && host.runOpportunity() == .invalidLifecycle)
                                             precondition(host.assemblyReport == assembly.report)
-                                            let expectedApplication = failAfterRuntime ? 0 : 1
+                                            let selectedFailure: UInt8 = failAfterRuntime ? 1 : pointer.pointee.idleQuiesceMode
+                                            let expectedApplication = selectedFailure == 1 ? 0 : 1
+                                            let expectedObservation = selectedFailure == 0 || selectedFailure >= 4 ? 1 : 0
+                                            let expectedCallback = selectedFailure == 0 || selectedFailure >= 6 ? 1 : 0
                                             precondition(pointer.pointee.applicationConstructions == expectedApplication)
-                                            precondition(pointer.pointee.applicationCallbacks == expectedApplication && pointer.pointee.reentrantApplicationRejections == expectedApplication)
-                                            precondition(pointer.pointee.observationsInstalled == expectedApplication && pointer.pointee.observationsDetached == expectedApplication)
+                                            precondition(pointer.pointee.applicationCallbacks == expectedCallback && pointer.pointee.reentrantApplicationRejections == expectedCallback)
+                                            precondition(pointer.pointee.observationsInstalled == expectedObservation && pointer.pointee.observationsDetached == expectedObservation)
                                             precondition(pointer.pointee.stoppedApplicationChecks >= expectedApplication)
                                             var stoppedAdmission = CounterAdmission(borrowing: pointer)
                                             precondition(stoppedAdmission.submit(stateChange: 9).result == .unavailable)
@@ -130,7 +138,13 @@ package func p08CounterHost() -> Int {
         var partial = StaticCounterProfileStorage(modelOwner: try models.issue(), semanticOwner: try semantics.issue())
         var nonRetryable = StaticCounterProfileStorage(modelOwner: try models.issue(), semanticOwner: try semantics.issue())
         nonRetryable.control.terminalRetry = true
-        return complete.runCounterHost(failAfterRuntime: false) + partial.runCounterHost(failAfterRuntime: true) + nonRetryable.runCounterHost(failAfterRuntime: false)
+        var failures = 0
+        for step: UInt8 in 2...7 {
+            var failed = StaticCounterProfileStorage(modelOwner: try models.issue(), semanticOwner: try semantics.issue())
+            failed.control.idleQuiesceMode = step
+            failures += failed.runCounterHost(failAfterRuntime: false)
+        }
+        return complete.runCounterHost(failAfterRuntime: false) + partial.runCounterHost(failAfterRuntime: true) + nonRetryable.runCounterHost(failAfterRuntime: false) + failures
     } catch { preconditionFailure("counter host identities") }
 }
 
