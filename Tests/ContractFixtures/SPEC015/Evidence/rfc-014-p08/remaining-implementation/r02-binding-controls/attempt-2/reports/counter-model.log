@@ -1,0 +1,15 @@
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostOwner.swift:176:9: error: matching a non-'Copyable' value using a case label that has multiple patterns is not implemented
+174 |         case .inert(let supplied, _):
+175 |             if let error = counterBindingJoinError(expectedModels: supplied.borrowedModels(), expectedControl: supplied.controlPointer, expectedAudit: supplied.audit, expectedReport: assembly.report, kind: .macOSStatic, profile: .static, models: models, root: root, control: control, audit: audit, report: report) { return error }
+176 |         case .active, .retired: return .invariantViolation
+    |         `- error: matching a non-'Copyable' value using a case label that has multiple patterns is not implemented
+177 |         }
+178 |         // Successful proposals name exactly the canonical supplied backing and
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterDynamicHostOwner.swift:118:9: error: matching a non-'Copyable' value using a case label that has multiple patterns is not implemented
+116 |         case .inert(let supplied, _):
+117 |             if let error = counterBindingJoinError(expectedModels: supplied.borrowedModels(), expectedControl: supplied.controlPointer, expectedAudit: supplied.audit, expectedReport: assembly.report, kind: .macOSDynamic, profile: .dynamic, models: models, root: root, control: control, audit: audit, report: report) { return error }
+118 |         case .active, .retired: return .invariantViolation
+    |         `- error: matching a non-'Copyable' value using a case label that has multiple patterns is not implemented
+119 |         }
+120 |         // Successful proposals name exactly the canonical supplied backing and

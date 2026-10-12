@@ -796,3 +796,93 @@ implemented/validated here; no source, compiler, tests, build or dependency chan
 All17 reviewed input hashes match. Historical2/2 and B031/1 remain closed;
 R03–R05/P08 exit/four routes/linked evidence/P09 remain open. Review+dispatch
 committed; no lifecycle/manifest transition or new approval requirement.
+
+### R02 resumption after independent finding review
+
+Entry `cf12b935`, clean. Independent Strong review confirms the existing supplied
+composition supports a local checked join before pipeline/endpoint/wake side
+effects, with existing finite configuration errors; no user decision is needed.
+Resume R02 under its existing dispatch using the review's exact trusted-anchor,
+error-order and real guarded-route requirements. Counter34/35 coverage applies
+here; analyzer20/2/6,28/32/33/category evidence stays mandatory in existing
+P09/P10/P11 analyzer paths. Do not resize/tag the counter to mimic that workload.
+Strong `gpt-6.1-sol` / `high`, C3/R3; all prior footprints/repair limits remain.
+Commit R02 once validated, then R03–R05 sequentially as already dispatched.
+
+### R02 exact implementation receipt before edits
+
+Entry cf12b935. Files/symbols: CounterHostOwner.swift and
+CounterDynamicHostOwner.swift shared finite counterBindingJoinError, inert-state
+activate/checked candidate route and constructRuntimeAndEndpoint finite error
+propagation; CounterHostProbe.swift and CounterDynamicHostProbe.swift actual
+preconstruction candidate negatives; CounterWakeIntegration.swift actual
+installed-scheduler report rejection and counter34/35 no-wake/service controls.
+CounterHostAssembly.swift optional action/model declared-projection parameters
+for existing startup validator negatives. No generic API or retained layout added.
+
+Before pipeline/wake/endpoint creation, compare independently trusted supplied
+models/root/control/audit and validated assembly versus candidate actual backing,
+selected profile/kind and full audit/report. Test foreign live control; foreign
+coherent model/root from separately initialized namespace (raw owner0); crossed
+root/model; opposite-profile audit =>profileMismatch; same-profile changed audit
+=>invalidWorkload; changed profile-correct report =>invalidWakeIntegration.
+Foreign model/root=>invalidModelTarget; foreign control=>invalidWakeIntegration.
+All failure returns retain inert state, empty progress, zero constructions/step,
+and no changes to either control wake/reasons/outstanding/fact timestamp/count,
+admission, endpoint/application construction or finalized/applied counters.
+Default successful host uses the same checked lexical supplied values.
+
+Installed scheduler unequal-report rejection must precede time mutation and leave
+original pending work serviceable. Actual counter accepts34 scalar states and
+rejects35th without wake change; next actual paced cycle seals34 with no other
+facts. Existing actual finite source/repository/use-case accepted callback,
+reentry and stopped-delivery checks remain applicable. Declared source/action
+projection excesses reject before owners; these are not analyzer producer proof.
+Analyzer20/2/6,28/32/33/category obligations remain mandatory P09/P10/P11.
+
+Evidence destination remaining-implementation/r02-binding-controls/. Format,
+verify established dependency identities, then source-specific command:
+`python3 scripts/contracts/check-spec-015-counter.py --runtime-build .build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static`.
+Historical2/2 and B031/1 stay closed; no whole-coordinator helper, target or P09.
+
+R02 initial validation attempt1 exited1 compiling counter-model, before any
+execution: review-proposed `audit.limits.profile` is unavailable because
+RuntimeProfileLimits has no profile member; new snapshot/helper imports missing
+P08CounterSchema and testable GiftUIExecution. Exact source patch/diagnostics
+frozen in r02-binding-controls/attempt-1. Bounded correction removes only that
+nonexistent projection (audit.profile plus full audit equality includes the actual
+limits), adds the two test imports. No ownership/lifetime compiler recurrence,
+contract/API change or reset; subsequent source differs for those compile fixes.
+
+R02 attempt2 resolves initial import/profile projection errors, then exits1 on
+two matching-non-Copyable multiple-case-label compiler limitations in new inert
+preflight switches. Frozen exact outputs. Second bounded local correction splits
+`.active` and `.retired` labels, preserving identical finite rejection/no owner
+work. No whole-coordinator helper or exhausted blocker recurrence. Next failure
+without productive progress stops under the existing guard. Formatter invocation
+2 completed exit0 without any changed files; it overlapped initial dependency
+compilation of attempt2, and prior formatter1 had completed before attempt1.
+Corrections affect only fixture files excluded by the maintained formatter.
+
+### R02 implementation guard stop — 2026-10-12
+
+**FAIL before execution; unvalidated WIP checkpoint.**
+[All three exact attempts, source identities and smallest unimplemented options](remaining-implementation/r02-binding-controls/result.md).
+Attempt3 at p08-counter-wmydjwj3 resolves combined-case syntax but rejects new
+CounterHostProbe:38–57 / CounterDynamicHostProbe:32–51 lifetime-dependent owner
+closure capture, propagated backing escapes and missing reinitialization (16
+error diagnostics). Initial plus two corrections all stopped counter-model;
+parent confirmed stop/no further rearrangement, repair or compile. This is a new
+test closure shape, not proof of a contract defect or the historical failed
+whole-coordinator helper. All failures/19-command transcripts/patches retained.
+
+Six declared fixture source files changed; no generic API, retained layout,
+unsafe conformance, bounds or compiler/dependency change. Source-specific R02
+controls did not execute. Preflight/postflight496 identities match. Formatters
+exit0/no changes; exact run2 overlap timing disclosed. Last native validated
+source R01d2df7dcc (1,349,005/zero failures,23/23). Shared plan/task guide/owner
+checkpoint navigation now records this stop while preserving history.
+
+R03–R05 not started. Historical2/2 closed, B031/1 spent; no reset/new allowance.
+Independent read-only Strong review follows; current WIP is not P08 acceptance.
+SPEC-015 implementing/plan active/T8.1 and P08 open; P09–P12 pending.

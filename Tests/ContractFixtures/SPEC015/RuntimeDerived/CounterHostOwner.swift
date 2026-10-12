@@ -10,6 +10,15 @@ import GiftUISemanticCore
 
 @testable import GiftUIHostConfiguration
 
+// Side-effect-free association check against the actual lexical supplied owner.
+func counterBindingJoinError(expectedModels: borrowing ObservableModelScope<CounterOwnedModel, CounterModelSchema>, expectedControl: UnsafeMutablePointer<CounterControl>, expectedAudit: RuntimeStorageAudit, expectedReport: HostAssemblyReport, kind: MVPHostKind, profile: RuntimeProfileKind, models: borrowing ObservableModelScope<CounterOwnedModel, CounterModelSchema>, root: borrowing ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, control: UnsafeMutablePointer<CounterControl>, audit: RuntimeStorageAudit, report: HostAssemblyReport) -> HostConfigurationError? {
+    guard audit.profile == profile && expectedAudit.profile == profile && expectedReport.profile == profile && expectedReport.kind == kind && report.kind == kind && report.profile == profile else { return .profileMismatch }
+    guard models.sharesOwner(with: expectedModels) && root.belongs(to: models) && root.belongs(to: expectedModels) else { return .invalidModelTarget }
+    guard audit == expectedAudit && expectedReport.storageAudit == expectedAudit else { return .invalidWorkload }
+    guard control == expectedControl && report == expectedReport else { return .invalidWakeIntegration }
+    return nil
+}
+
 struct CounterHostControl: ~Copyable, ~Escapable {
     let pointer: UnsafeMutablePointer<CounterControl>
     @_lifetime(borrow pointer)
@@ -137,17 +146,39 @@ enum CounterHostState: ~Copyable, ~Escapable {
         }
     }
     @_lifetime(self: copy self)
-    mutating func activate(endpointConfiguration: HostEndpointConfiguration) {
+    mutating func activate(assembly: CounterHostAssembly) -> HostConfigurationError? {
         switch consume self {
         case .inert(let supplied, let span):
             precondition(span.count == 1 && span[0] == 1)
-            let pipeline = CounterHostPipeline(models: supplied.borrowedModels(), root: supplied.borrowedRoot(), semantic: supplied.borrowedSemantic(), values: supplied.borrowedValues(), geometry: supplied.geometry, interaction: supplied.interaction, scopedControl: supplied.borrowedControl(), limits: supplied.audit.limits, endpointConfiguration: endpointConfiguration)
-            let binding = CounterExecutionBinding(models: supplied.borrowedModels(), root: supplied.borrowedRoot(), scopedControl: supplied.borrowedControl(), audit: supplied.audit)!
-            let coordinator = CounterHostCoordinator(binding: binding, admission: CounterAdmission(control: supplied.controlPointer, limits: supplied.audit.limits.execution), opportunity: pipeline)
+            let models = supplied.borrowedModels()
+            let root = supplied.borrowedRoot()
+            let control = supplied.borrowedControl()
+            let audit = supplied.audit
+            let report = assembly.report
+            if let error = counterBindingJoinError(expectedModels: models, expectedControl: supplied.controlPointer, expectedAudit: supplied.audit, expectedReport: assembly.report, kind: .macOSStatic, profile: .static, models: models, root: root, control: control.pointer, audit: audit, report: report) {
+                self = .inert(consume supplied, span)
+                return error
+            }
+            let pipeline = CounterHostPipeline(models: models.borrowedScope(), root: root.borrowedRoot(), semantic: supplied.borrowedSemantic(), values: supplied.borrowedValues(), geometry: supplied.geometry, interaction: supplied.interaction, scopedControl: control.borrowed(), limits: audit.limits, endpointConfiguration: assembly.endpoint)
+            let binding = CounterExecutionBinding(models: models.borrowedScope(), root: root.borrowedRoot(), scopedControl: control.borrowed(), audit: audit)!
+            let coordinator = CounterHostCoordinator(binding: binding, admission: CounterAdmission(control: control.pointer, limits: audit.limits.execution), opportunity: pipeline)
             self = .active(consume coordinator, nil, span)
         case .active(let coordinator, let cache, let span): self = .active(consume coordinator, consume cache, span)
         case .retired(let semantic, let geometry, let interaction, let span): self = .retired(consume semantic, geometry, interaction, span); preconditionFailure("retired host")
         }
+        return nil
+    }
+    @_lifetime(self: copy self)
+    mutating func activate(assembly: CounterHostAssembly, models: borrowing ObservableModelScope<CounterOwnedModel, CounterModelSchema>, root: borrowing ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, control: UnsafeMutablePointer<CounterControl>, audit: RuntimeStorageAudit, report: HostAssemblyReport) -> HostConfigurationError? {
+        switch self {
+        case .inert(let supplied, _):
+            if let error = counterBindingJoinError(expectedModels: supplied.borrowedModels(), expectedControl: supplied.controlPointer, expectedAudit: supplied.audit, expectedReport: assembly.report, kind: .macOSStatic, profile: .static, models: models, root: root, control: control, audit: audit, report: report) { return error }
+        case .active: return .invariantViolation
+        case .retired: return .invariantViolation
+        }
+        // Successful proposals name exactly the canonical supplied backing and
+        // configuration. Reborrow those same checked values for retained lifetime.
+        return activate(assembly: assembly)
     }
     @_lifetime(self: copy self)
     mutating func attachRoot() -> Bool {
@@ -256,8 +287,15 @@ struct CounterHostOwner: ~Copyable, ~Escapable, SignalAnalyzerPresetLiveOwner {
     }
     mutating func constructRuntimeAndEndpoint() -> HostActivationStepResult<ActivationFailure> {
         precondition(activationStep == 0 && constructions == 0)
-        state.activate(endpointConfiguration: assembly.endpoint); constructions += 1; activationStep = 1
+        if let error = state.activate(assembly: assembly) { return .failure(.configuration(error), progress: .init()) }
+        constructions += 1; activationStep = 1
         return failAfterRuntime ? .failure(.configuration(.arithmeticOverflow), progress: .init(runtimeConstructed: true)) : .advanced
+    }
+    mutating func constructRuntimeAndEndpoint(models: borrowing ObservableModelScope<CounterOwnedModel, CounterModelSchema>, root: borrowing ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, control: UnsafeMutablePointer<CounterControl>, audit: RuntimeStorageAudit, report: HostAssemblyReport) -> HostActivationStepResult<ActivationFailure> {
+        precondition(activationStep == 0 && constructions == 0)
+        if let error = state.activate(assembly: assembly, models: models, root: root, control: control, audit: audit, report: report) { return .failure(.configuration(error), progress: .init()) }
+        constructions += 1; activationStep = 1
+        return .advanced
     }
     mutating func constructApplicationOwners() -> HostActivationStepResult<ActivationFailure> {
         precondition(activationStep == 1)

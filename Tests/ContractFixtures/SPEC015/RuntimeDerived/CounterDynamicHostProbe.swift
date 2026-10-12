@@ -11,6 +11,11 @@ import GiftUISemanticCore
 extension DynamicCounterProfileStorage {
     mutating func runCounterDynamicHost(failAfterRuntime: Bool) -> Int {
         guard case .valid(let audit) = audit(), let assembly = CounterHostAssembly.validate(audit, kind: .macOSDynamic) else { preconditionFailure("counter Dynamic valid-only host") }
+        // Declared producer-projection negatives, not analyzer producer behavior.
+        precondition(CounterHostAssembly.validate(audit, kind: .macOSDynamic, sourceCallbacks: 21) == nil)
+        precondition(CounterHostAssembly.validate(audit, kind: .macOSDynamic, repositoryCallbacks: 2) == nil)
+        precondition(CounterHostAssembly.validate(audit, kind: .macOSDynamic, useCaseCallbacks: 2) == nil)
+        precondition(CounterHostAssembly.validate(audit, kind: .macOSDynamic, nonTransitionPublications: 2) == nil)
         let limits = self.limits
         var movedGeometry = geometry.take()
         var keys = interaction.take()
@@ -24,11 +29,29 @@ extension DynamicCounterProfileStorage {
                                 checks = withUnsafeMutablePointer(to: &control) { pointer in
                                     let activationBacking: InlineArray<1, UInt8> = [1]
                                     let supplied = CounterDynamicHostSupplied(models: models.borrowedScope(), root: root.borrowedRoot(), semantic: semantic.borrowedStore(), values: values.borrowedValues(), control: pointer, audit: audit, geometry: movedGeometry.take()!, interaction: keys.take()!)
-                                    let owner = CounterDynamicHostOwner(supplied: consume supplied, activationSpan: activationBacking.span, assembly: assembly, failAfterRuntime: failAfterRuntime)
+                                    var owner = CounterDynamicHostOwner(supplied: consume supplied, activationSpan: activationBacking.span, assembly: assembly, failAfterRuntime: failAfterRuntime)
+                                        let joinChecks = counterForeignJoinScope { foreignModels, foreignRoot, foreignControl in
+                                            let expected = counterJoinSnapshot(pointer)
+                                            let foreignExpected = counterJoinSnapshot(foreignControl)
+                                            var count = 0
+                                            func reject(_ result: HostActivationStepResult<MacOSDynamicHostActivationFailure>, _ error: HostConfigurationError) {
+                                                precondition(result == .failure(.configuration(error), progress: .init()))
+                                                precondition(owner.constructions == 0 && owner.activationStep == 0)
+                                                precondition(counterJoinSnapshot(pointer) == expected && counterJoinSnapshot(foreignControl) == foreignExpected)
+                                                count += 3
+                                            }
+                                            reject(owner.constructRuntimeAndEndpoint(models: models, root: root, control: foreignControl, audit: audit, report: assembly.report), .invalidWakeIntegration)
+                                            reject(owner.constructRuntimeAndEndpoint(models: foreignModels, root: foreignRoot, control: pointer, audit: audit, report: assembly.report), .invalidModelTarget)
+                                            reject(owner.constructRuntimeAndEndpoint(models: models, root: foreignRoot, control: pointer, audit: audit, report: assembly.report), .invalidModelTarget)
+                                            reject(owner.constructRuntimeAndEndpoint(models: models, root: root, control: pointer, audit: counterJoinAudit(audit, profile: .static), report: assembly.report), .profileMismatch)
+                                            reject(owner.constructRuntimeAndEndpoint(models: models, root: root, control: pointer, audit: counterJoinAudit(audit, profile: audit.profile), report: assembly.report), .invalidWorkload)
+                                            reject(owner.constructRuntimeAndEndpoint(models: models, root: root, control: pointer, audit: audit, report: counterJoinReport(assembly.report)), .invalidWakeIntegration)
+                                            return count
+                                        }
                                     var host = SignalAnalyzerPresetHostInstances.macOSDynamic(report: assembly.report, owner: consume owner)!
                                     precondition(host.lifecycleState == .valid && host.owner.constructions == 0 && pointer.pointee.finalized == 0)
                                     precondition(host.runOpportunity() == .invalidLifecycle)
-                                    var count = 2
+                                    var count = 2 + joinChecks
                                     let activation = host.activate()
                                     if failAfterRuntime {
                                         precondition(activation == .failure(.configuration(.arithmeticOverflow)) && host.lifecycleState == .failed)
@@ -71,7 +94,7 @@ extension DynamicCounterProfileStorage {
                 } catch { preconditionFailure("counter Dynamic semantic") }
             }
         } catch { preconditionFailure("counter Dynamic model") }
-        return checks
+        return checks + 4
     }
 }
 

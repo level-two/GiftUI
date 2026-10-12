@@ -1,0 +1,18 @@
+{
+  "entry_commit": "cf12b93542abf4f2185999752dba3d14bc19883f",
+  "command": [
+    "python3",
+    "scripts/contracts/check-spec-015-counter.py",
+    "--runtime-build",
+    ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static"
+  ],
+  "started_utc": "2026-10-12T11:45:27.761716+00:00",
+  "scope": "r02-binding-controls changed coherent controls only; historical2/2/B031/1 closed",
+  "formatter_exit": 0,
+  "source_patch_sha256": "bb1d053ed3467a2d81e44aea836d5fb2078e838ea217c7295fa021fc91c9e5b4",
+  "exit_status": 1,
+  "finished_utc": "2026-10-12T11:45:56.910546+00:00",
+  "builds": [
+    ".build/contracts/p08-counter-e0vqcqy7"
+  ]
+}

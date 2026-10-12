@@ -1,6 +1,19 @@
 # RFC-014 task context guide
 
-**Current P08 checkpoint — B03 independently accepted; remaining P08 open, 2026-10-12.**
+**Current P08 checkpoint — R02 stopped at repair guard, 2026-10-12.**
+R02's initial invocation and two bounded corrections all stop at counter-model
+compilation. The current WIP is unvalidated; its new actual-probe test closure
+captures a lifetime-dependent owner, which the pinned compiler rejects. Parent
+confirmed no further repair, rearrangement or compilation before independent
+read-only Strong review. [Exact checkpoint and options](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/remaining-implementation/r02-binding-controls/result.md).
+Last validated native source remains R01 `d2df7dcc`:1,349,005 assertions/zero
+failures,23/23 checks. B03 independent acceptance remains its bounded historical
+result. R03–R05 were not started. Historical2/2 and B031/1 remain closed; the R02
+stop does not reset either. Counter34/35 and analyzer20/2/6,28/32/33/category
+applicability stays as reviewed; analyzer evidence remains mandatory P09/P10/P11.
+SPEC-015 implementing/plan active/T8.1 and P08 open; P09–P12 pending.
+
+**Historical P08 checkpoint — B03 independently accepted; remaining P08 open, 2026-10-12.**
 B01 inventory/review and B02 bounded helper/mask realization are complete. The
 single B03 native invocation at source `102382d7` passes1,348,673 reported
 assertions/zero failures and23/23 checks; independent Strong result review at

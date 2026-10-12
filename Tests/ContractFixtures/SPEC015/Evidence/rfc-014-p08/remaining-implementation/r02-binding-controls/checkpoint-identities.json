@@ -1,0 +1,18 @@
+{
+  "entry_commit": "cf12b93542abf4f2185999752dba3d14bc19883f",
+  "last_validated_source": "d2df7dcc0e0292ee656b1ce7723a2a2fa471ea6c",
+  "source_hashes": {
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterDynamicHostOwner.swift": "d3e1ee6d261c387153e5da40bb2236ff72582812d115cf28501d5c6cccc3965e",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterDynamicHostProbe.swift": "15001dfec48f11d83dc5bb3c69b9d331563bd6cf3c9ee7e48834c6d3450f9346",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostAssembly.swift": "c156fc1cdb76692ef4c408bba2ed29d4e1199353b651444cc1e288c4c5ad144a",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostOwner.swift": "f5f2d1e0e53671dafa95eac97ed3d8630e9e9e781f703e11e1e49f958a05712b",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostProbe.swift": "422519d637ff6160add33731bf9fc5ea8905acd89a104f67f1c8ee289c7065fc",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWakeIntegration.swift": "9d3b69c59535a309e6a7c4031c8ddfc7f4c08bdd4dce1e5e90e19732f5c40e1a"
+  },
+  "driver_sha256": "2fce8159ce6554eca7aa950e318fce83650983c80de33ac21fe24449a27e36df",
+  "compiler_sha256": "79ae5c26645489fb783ae980f0f1bdae810f90fb180c9ac39808807b65e9fd69",
+  "postflight_reference": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/remaining-implementation/option-b/b01-dependency-identities.json",
+  "postflight_reference_sha256": "e006a88c16fa11e244200dc27ab5c415c4badc41a2d056624744838ba9663a8d",
+  "postflight_comparisons": 496,
+  "postflight_failures": []
+}

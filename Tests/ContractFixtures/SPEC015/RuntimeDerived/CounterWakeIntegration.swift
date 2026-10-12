@@ -148,6 +148,9 @@ func counterWakeControls<H: MVPHostInstance & ~Copyable & ~Escapable>(host: inou
     let hostRequests = control.pointee.hostWakeRequests
     control.pointee.emitCounterWake(.semanticDirty)
     control.pointee.emitCounterWake(.presentationPending)
+    let beforeReportRejection = counterJoinSnapshot(control)
+    expect(control.pointee.scheduler!.begin(at: timestamp, lifecycleState: host.lifecycleState, assemblyReport: counterJoinReport(host.assemblyReport)) == .rejected(.assemblyReportMismatch, pacing: nil))
+    expect(counterJoinSnapshot(control) == beforeReportRejection)
     // Five independently accepted notifications span all three fact categories.
     // Every supplied clock reaches pacing, while the first fact keeps its deadline.
     func expectAcceptedFact(_ count: Int) {
@@ -195,6 +198,20 @@ func counterWakeControls<H: MVPHostInstance & ~Copyable & ~Escapable>(host: inou
     expect(coalesced.admission.inputEventCount == 2 && coalesced.admission.stateChangeFactCount == 2 && coalesced.admission.completionFactCount == 1 && coalesced.admission.semanticActionCount == 0)
     expect(reasons.rawValue == 7 && control.pointee.lastTakenWakeReasons == reasons)
     expect(!control.pointee.wake!.wakeOutstanding && control.pointee.wakeFirstFactMicroseconds == nil)
+
+    // Counter-specific scalar capacity: this is34/35, never analyzer compact32/33.
+    let burstFacts = control.pointee.acceptedFactWakeRecords
+    let burstRequests = control.pointee.wake!.requester.requestCount
+    let burstFinalized = control.pointee.finalized
+    for _ in 0..<34 { expect(admission.submit(stateChange: 0).result == .queued) }
+    expect(control.pointee.admission.pendingStateCount == 34 && control.pointee.acceptedFactWakeRecords == burstFacts + 34)
+    expect(control.pointee.wakeFirstFactMicroseconds == timestamp && control.pointee.wake!.requester.requestCount == burstRequests + 1)
+    expect(control.pointee.finalized == burstFinalized)
+    expectNoWake(.capacityRefused) { admission.submit(stateChange: 0) }
+    timestamp += 250000
+    guard case .cycle(.admittedWork, .cycle(.success(let burst))) = counterServiceHost(at: timestamp, host: &host, control: access) else { preconditionFailure("counter scalar34 service") }
+    expect(burst.admission.stateChangeFactCount == 34 && burst.admission.inputEventCount == 0 && burst.admission.completionFactCount == 0 && burst.admission.semanticActionCount == 0)
+    expect(control.pointee.admission.pendingStateCount == 0 && !control.pointee.wake!.wakeOutstanding)
 
     // One callback during the active cycle is admitted only for the next seal.
     control.pointee.injectCompletionAtApply = true

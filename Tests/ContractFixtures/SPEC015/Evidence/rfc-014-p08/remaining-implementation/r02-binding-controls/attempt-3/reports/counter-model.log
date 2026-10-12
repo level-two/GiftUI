@@ -1,0 +1,224 @@
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostProbe.swift:57:138: error: missing reinitialization of inout parameter 'owner' after consume while accessing memory
+ 55 |                                             return count
+ 56 |                                         }
+ 57 |                                         var host = SignalAnalyzerPresetHostInstances.macOSStatic(report: assembly.report, owner: consume owner)!
+    |                                                                                                                                          |- error: missing reinitialization of inout parameter 'owner' after consume while accessing memory
+    |                                                                                                                                          `- note: consumed here
+ 58 |                                         precondition(host.lifecycleState == .valid && host.owner.constructions == 0 && pointer.pointee.finalized == 0)
+ 59 |                                         precondition(host.runOpportunity() == .invalidLifecycle)
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostProbe.swift:38:53: error: lifetime-dependent value escapes its scope
+ 22 |         var checks = 0
+ 23 |         do throws(ObservableStateError) {
+ 24 |             try root.withLifetime(limits: limits.observableState) { (models, root) throws(ObservableStateError) in
+    |                                                                      `- note: it depends on a closure capture; this is not yet supported
+ 25 |                 do throws(SemanticExpansionError) {
+ 26 |                     var records = semanticBacking.records.mutableSpan
+    :
+ 36 |                                         let activationBacking: InlineArray<1, UInt8> = [1]
+ 37 |                                         let supplied = CounterHostSupplied(models: models.borrowedScope(), root: root.borrowedRoot(), semantic: semantic.borrowedStore(), values: values.borrowedValues(), control: pointer, audit: audit, geometry: geometry, interaction: keys.take()!)
+ 38 |                                         var owner = CounterHostOwner(supplied: consume supplied, activationSpan: activationBacking.span, assembly: assembly, failAfterRuntime: failAfterRuntime)
+    |                                                     |- error: lifetime-dependent value escapes its scope
+    |                                                     `- note: this use causes the lifetime-dependent value to escape
+ 39 |                                         let joinChecks = counterForeignJoinScope { foreignModels, foreignRoot, foreignControl in
+ 40 |                                             let expected = counterJoinSnapshot(pointer)
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostProbe.swift:38:53: error: lifetime-dependent value escapes its scope
+ 22 |         var checks = 0
+ 23 |         do throws(ObservableStateError) {
+ 24 |             try root.withLifetime(limits: limits.observableState) { (models, root) throws(ObservableStateError) in
+    |                                                                              `- note: it depends on a closure capture; this is not yet supported
+ 25 |                 do throws(SemanticExpansionError) {
+ 26 |                     var records = semanticBacking.records.mutableSpan
+    :
+ 36 |                                         let activationBacking: InlineArray<1, UInt8> = [1]
+ 37 |                                         let supplied = CounterHostSupplied(models: models.borrowedScope(), root: root.borrowedRoot(), semantic: semantic.borrowedStore(), values: values.borrowedValues(), control: pointer, audit: audit, geometry: geometry, interaction: keys.take()!)
+ 38 |                                         var owner = CounterHostOwner(supplied: consume supplied, activationSpan: activationBacking.span, assembly: assembly, failAfterRuntime: failAfterRuntime)
+    |                                                     |- error: lifetime-dependent value escapes its scope
+    |                                                     `- note: this use causes the lifetime-dependent value to escape
+ 39 |                                         let joinChecks = counterForeignJoinScope { foreignModels, foreignRoot, foreignControl in
+ 40 |                                             let expected = counterJoinSnapshot(pointer)
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostProbe.swift:38:53: error: lifetime-dependent value escapes its scope
+ 28 |                     var payloads = semanticBacking.payloads.mutableSpan
+ 29 |                     var scalars = semanticBacking.scalars.mutableSpan
+ 30 |                     try semantic.withLifetime(configuredLimits: counterSemanticConfiguration(limits), records: &records, paths: &paths, payloads: &payloads, scalars: &scalars) { (semantic) throws(SemanticExpansionError) in
+    |                                                                                                                                                                                    `- note: it depends on a closure capture; this is not yet supported
+ 31 |                         do throws(DrawingError) {
+ 32 |                             var entries = canvasBacking.mutableSpan
+    :
+ 36 |                                         let activationBacking: InlineArray<1, UInt8> = [1]
+ 37 |                                         let supplied = CounterHostSupplied(models: models.borrowedScope(), root: root.borrowedRoot(), semantic: semantic.borrowedStore(), values: values.borrowedValues(), control: pointer, audit: audit, geometry: geometry, interaction: keys.take()!)
+ 38 |                                         var owner = CounterHostOwner(supplied: consume supplied, activationSpan: activationBacking.span, assembly: assembly, failAfterRuntime: failAfterRuntime)
+    |                                                     |- error: lifetime-dependent value escapes its scope
+    |                                                     `- note: this use causes the lifetime-dependent value to escape
+ 39 |                                         let joinChecks = counterForeignJoinScope { foreignModels, foreignRoot, foreignControl in
+ 40 |                                             let expected = counterJoinSnapshot(pointer)
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostProbe.swift:38:53: error: lifetime-dependent value escapes its scope
+ 31 |                         do throws(DrawingError) {
+ 32 |                             var entries = canvasBacking.mutableSpan
+ 33 |                             try canvas.withLifetime(entries: &entries, table: CounterValueTable(), capacity: 1, limits: limits.staticCanvas!) { values in
+    |                                                                                                                                                 `- note: it depends on a closure capture; this is not yet supported
+ 34 |                                 checks = workspace.withGeometry { geometry in
+ 35 |                                     withUnsafeMutablePointer(to: &control) { pointer in
+ 36 |                                         let activationBacking: InlineArray<1, UInt8> = [1]
+ 37 |                                         let supplied = CounterHostSupplied(models: models.borrowedScope(), root: root.borrowedRoot(), semantic: semantic.borrowedStore(), values: values.borrowedValues(), control: pointer, audit: audit, geometry: geometry, interaction: keys.take()!)
+ 38 |                                         var owner = CounterHostOwner(supplied: consume supplied, activationSpan: activationBacking.span, assembly: assembly, failAfterRuntime: failAfterRuntime)
+    |                                                     |- error: lifetime-dependent value escapes its scope
+    |                                                     `- note: this use causes the lifetime-dependent value to escape
+ 39 |                                         let joinChecks = counterForeignJoinScope { foreignModels, foreignRoot, foreignControl in
+ 40 |                                             let expected = counterJoinSnapshot(pointer)
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostProbe.swift:38:53: error: lifetime-dependent value escapes its scope
+ 33 |                             try canvas.withLifetime(entries: &entries, table: CounterValueTable(), capacity: 1, limits: limits.staticCanvas!) { values in
+ 34 |                                 checks = workspace.withGeometry { geometry in
+ 35 |                                     withUnsafeMutablePointer(to: &control) { pointer in
+    |                                                                              `- note: it depends on the lifetime of argument 'pointer'
+ 36 |                                         let activationBacking: InlineArray<1, UInt8> = [1]
+ 37 |                                         let supplied = CounterHostSupplied(models: models.borrowedScope(), root: root.borrowedRoot(), semantic: semantic.borrowedStore(), values: values.borrowedValues(), control: pointer, audit: audit, geometry: geometry, interaction: keys.take()!)
+ 38 |                                         var owner = CounterHostOwner(supplied: consume supplied, activationSpan: activationBacking.span, assembly: assembly, failAfterRuntime: failAfterRuntime)
+    |                                                     |- error: lifetime-dependent value escapes its scope
+    |                                                     `- note: this use causes the lifetime-dependent value to escape
+ 39 |                                         let joinChecks = counterForeignJoinScope { foreignModels, foreignRoot, foreignControl in
+ 40 |                                             let expected = counterJoinSnapshot(pointer)
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostProbe.swift:38:53: error: lifetime-dependent value escapes its scope
+ 34 |                                 checks = workspace.withGeometry { geometry in
+ 35 |                                     withUnsafeMutablePointer(to: &control) { pointer in
+ 36 |                                         let activationBacking: InlineArray<1, UInt8> = [1]
+    |                                             `- note: it depends on the lifetime of variable 'activationBacking'
+ 37 |                                         let supplied = CounterHostSupplied(models: models.borrowedScope(), root: root.borrowedRoot(), semantic: semantic.borrowedStore(), values: values.borrowedValues(), control: pointer, audit: audit, geometry: geometry, interaction: keys.take()!)
+ 38 |                                         var owner = CounterHostOwner(supplied: consume supplied, activationSpan: activationBacking.span, assembly: assembly, failAfterRuntime: failAfterRuntime)
+    |                                                     |- error: lifetime-dependent value escapes its scope
+    |                                                     `- note: this use causes the lifetime-dependent value to escape
+ 39 |                                         let joinChecks = counterForeignJoinScope { foreignModels, foreignRoot, foreignControl in
+ 40 |                                             let expected = counterJoinSnapshot(pointer)
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostProbe.swift:38:45: error: lifetime-dependent variable 'owner' escapes its scope
+ 36 |                                         let activationBacking: InlineArray<1, UInt8> = [1]
+ 37 |                                         let supplied = CounterHostSupplied(models: models.borrowedScope(), root: root.borrowedRoot(), semantic: semantic.borrowedStore(), values: values.borrowedValues(), control: pointer, audit: audit, geometry: geometry, interaction: keys.take()!)
+ 38 |                                         var owner = CounterHostOwner(supplied: consume supplied, activationSpan: activationBacking.span, assembly: assembly, failAfterRuntime: failAfterRuntime)
+    |                                             |- error: lifetime-dependent variable 'owner' escapes its scope
+    |                                             `- note: it depends on a closure capture; this is not yet supported
+ 39 |                                         let joinChecks = counterForeignJoinScope { foreignModels, foreignRoot, foreignControl in
+ 40 |                                             let expected = counterJoinSnapshot(pointer)
+    :
+ 52 |                                             reject(owner.constructRuntimeAndEndpoint(models: models, root: root, control: pointer, audit: counterJoinAudit(audit, profile: .dynamic), report: assembly.report), .profileMismatch)
+ 53 |                                             reject(owner.constructRuntimeAndEndpoint(models: models, root: root, control: pointer, audit: counterJoinAudit(audit, profile: audit.profile), report: assembly.report), .invalidWorkload)
+ 54 |                                             reject(owner.constructRuntimeAndEndpoint(models: models, root: root, control: pointer, audit: audit, report: counterJoinReport(assembly.report)), .invalidWakeIntegration)
+    |                                                          `- note: this use causes the lifetime-dependent value to escape
+ 55 |                                             return count
+ 56 |                                         }
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterDynamicHostProbe.swift:51:135: error: missing reinitialization of inout parameter 'owner' after consume while accessing memory
+ 49 |                                             return count
+ 50 |                                         }
+ 51 |                                     var host = SignalAnalyzerPresetHostInstances.macOSDynamic(report: assembly.report, owner: consume owner)!
+    |                                                                                                                                       |- error: missing reinitialization of inout parameter 'owner' after consume while accessing memory
+    |                                                                                                                                       `- note: consumed here
+ 52 |                                     precondition(host.lifecycleState == .valid && host.owner.constructions == 0 && pointer.pointee.finalized == 0)
+ 53 |                                     precondition(host.runOpportunity() == .invalidLifecycle)
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterDynamicHostProbe.swift:32:49: error: lifetime-dependent value escapes its scope
+ 22 |         var checks = 0
+ 23 |         do throws(ObservableStateError) {
+ 24 |             try root.withLifetime(limits: limits.observableState) { (models, root) throws(ObservableStateError) in
+    |                                                                      `- note: it depends on a closure capture; this is not yet supported
+ 25 |                 do throws(SemanticExpansionError) {
+ 26 |                     try semantic.withLifetime(configuredLimits: counterSemanticConfiguration(limits)) { (semantic) throws(SemanticExpansionError) in
+    :
+ 30 |                                     let activationBacking: InlineArray<1, UInt8> = [1]
+ 31 |                                     let supplied = CounterDynamicHostSupplied(models: models.borrowedScope(), root: root.borrowedRoot(), semantic: semantic.borrowedStore(), values: values.borrowedValues(), control: pointer, audit: audit, geometry: movedGeometry.take()!, interaction: keys.take()!)
+ 32 |                                     var owner = CounterDynamicHostOwner(supplied: consume supplied, activationSpan: activationBacking.span, assembly: assembly, failAfterRuntime: failAfterRuntime)
+    |                                                 |- error: lifetime-dependent value escapes its scope
+    |                                                 `- note: this use causes the lifetime-dependent value to escape
+ 33 |                                         let joinChecks = counterForeignJoinScope { foreignModels, foreignRoot, foreignControl in
+ 34 |                                             let expected = counterJoinSnapshot(pointer)
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterDynamicHostProbe.swift:32:49: error: lifetime-dependent value escapes its scope
+ 22 |         var checks = 0
+ 23 |         do throws(ObservableStateError) {
+ 24 |             try root.withLifetime(limits: limits.observableState) { (models, root) throws(ObservableStateError) in
+    |                                                                              `- note: it depends on a closure capture; this is not yet supported
+ 25 |                 do throws(SemanticExpansionError) {
+ 26 |                     try semantic.withLifetime(configuredLimits: counterSemanticConfiguration(limits)) { (semantic) throws(SemanticExpansionError) in
+    :
+ 30 |                                     let activationBacking: InlineArray<1, UInt8> = [1]
+ 31 |                                     let supplied = CounterDynamicHostSupplied(models: models.borrowedScope(), root: root.borrowedRoot(), semantic: semantic.borrowedStore(), values: values.borrowedValues(), control: pointer, audit: audit, geometry: movedGeometry.take()!, interaction: keys.take()!)
+ 32 |                                     var owner = CounterDynamicHostOwner(supplied: consume supplied, activationSpan: activationBacking.span, assembly: assembly, failAfterRuntime: failAfterRuntime)
+    |                                                 |- error: lifetime-dependent value escapes its scope
+    |                                                 `- note: this use causes the lifetime-dependent value to escape
+ 33 |                                         let joinChecks = counterForeignJoinScope { foreignModels, foreignRoot, foreignControl in
+ 34 |                                             let expected = counterJoinSnapshot(pointer)
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterDynamicHostProbe.swift:32:49: error: lifetime-dependent value escapes its scope
+ 24 |             try root.withLifetime(limits: limits.observableState) { (models, root) throws(ObservableStateError) in
+ 25 |                 do throws(SemanticExpansionError) {
+ 26 |                     try semantic.withLifetime(configuredLimits: counterSemanticConfiguration(limits)) { (semantic) throws(SemanticExpansionError) in
+    |                                                                                                          `- note: it depends on a closure capture; this is not yet supported
+ 27 |                         do throws(DrawingError) {
+ 28 |                             try canvas.withLifetime(table: CounterValueTable(), limits: counterCanvasLimits, configuredCapacity: 1) { values in
+    :
+ 30 |                                     let activationBacking: InlineArray<1, UInt8> = [1]
+ 31 |                                     let supplied = CounterDynamicHostSupplied(models: models.borrowedScope(), root: root.borrowedRoot(), semantic: semantic.borrowedStore(), values: values.borrowedValues(), control: pointer, audit: audit, geometry: movedGeometry.take()!, interaction: keys.take()!)
+ 32 |                                     var owner = CounterDynamicHostOwner(supplied: consume supplied, activationSpan: activationBacking.span, assembly: assembly, failAfterRuntime: failAfterRuntime)
+    |                                                 |- error: lifetime-dependent value escapes its scope
+    |                                                 `- note: this use causes the lifetime-dependent value to escape
+ 33 |                                         let joinChecks = counterForeignJoinScope { foreignModels, foreignRoot, foreignControl in
+ 34 |                                             let expected = counterJoinSnapshot(pointer)
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterDynamicHostProbe.swift:32:49: error: lifetime-dependent value escapes its scope
+ 26 |                     try semantic.withLifetime(configuredLimits: counterSemanticConfiguration(limits)) { (semantic) throws(SemanticExpansionError) in
+ 27 |                         do throws(DrawingError) {
+ 28 |                             try canvas.withLifetime(table: CounterValueTable(), limits: counterCanvasLimits, configuredCapacity: 1) { values in
+    |                                                                                                                                       `- note: it depends on a closure capture; this is not yet supported
+ 29 |                                 checks = withUnsafeMutablePointer(to: &control) { pointer in
+ 30 |                                     let activationBacking: InlineArray<1, UInt8> = [1]
+ 31 |                                     let supplied = CounterDynamicHostSupplied(models: models.borrowedScope(), root: root.borrowedRoot(), semantic: semantic.borrowedStore(), values: values.borrowedValues(), control: pointer, audit: audit, geometry: movedGeometry.take()!, interaction: keys.take()!)
+ 32 |                                     var owner = CounterDynamicHostOwner(supplied: consume supplied, activationSpan: activationBacking.span, assembly: assembly, failAfterRuntime: failAfterRuntime)
+    |                                                 |- error: lifetime-dependent value escapes its scope
+    |                                                 `- note: this use causes the lifetime-dependent value to escape
+ 33 |                                         let joinChecks = counterForeignJoinScope { foreignModels, foreignRoot, foreignControl in
+ 34 |                                             let expected = counterJoinSnapshot(pointer)
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterDynamicHostProbe.swift:32:49: error: lifetime-dependent value escapes its scope
+ 27 |                         do throws(DrawingError) {
+ 28 |                             try canvas.withLifetime(table: CounterValueTable(), limits: counterCanvasLimits, configuredCapacity: 1) { values in
+ 29 |                                 checks = withUnsafeMutablePointer(to: &control) { pointer in
+    |                                                                                   `- note: it depends on the lifetime of argument 'pointer'
+ 30 |                                     let activationBacking: InlineArray<1, UInt8> = [1]
+ 31 |                                     let supplied = CounterDynamicHostSupplied(models: models.borrowedScope(), root: root.borrowedRoot(), semantic: semantic.borrowedStore(), values: values.borrowedValues(), control: pointer, audit: audit, geometry: movedGeometry.take()!, interaction: keys.take()!)
+ 32 |                                     var owner = CounterDynamicHostOwner(supplied: consume supplied, activationSpan: activationBacking.span, assembly: assembly, failAfterRuntime: failAfterRuntime)
+    |                                                 |- error: lifetime-dependent value escapes its scope
+    |                                                 `- note: this use causes the lifetime-dependent value to escape
+ 33 |                                         let joinChecks = counterForeignJoinScope { foreignModels, foreignRoot, foreignControl in
+ 34 |                                             let expected = counterJoinSnapshot(pointer)
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterDynamicHostProbe.swift:32:49: error: lifetime-dependent value escapes its scope
+ 28 |                             try canvas.withLifetime(table: CounterValueTable(), limits: counterCanvasLimits, configuredCapacity: 1) { values in
+ 29 |                                 checks = withUnsafeMutablePointer(to: &control) { pointer in
+ 30 |                                     let activationBacking: InlineArray<1, UInt8> = [1]
+    |                                         `- note: it depends on the lifetime of variable 'activationBacking'
+ 31 |                                     let supplied = CounterDynamicHostSupplied(models: models.borrowedScope(), root: root.borrowedRoot(), semantic: semantic.borrowedStore(), values: values.borrowedValues(), control: pointer, audit: audit, geometry: movedGeometry.take()!, interaction: keys.take()!)
+ 32 |                                     var owner = CounterDynamicHostOwner(supplied: consume supplied, activationSpan: activationBacking.span, assembly: assembly, failAfterRuntime: failAfterRuntime)
+    |                                                 |- error: lifetime-dependent value escapes its scope
+    |                                                 `- note: this use causes the lifetime-dependent value to escape
+ 33 |                                         let joinChecks = counterForeignJoinScope { foreignModels, foreignRoot, foreignControl in
+ 34 |                                             let expected = counterJoinSnapshot(pointer)
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterDynamicHostProbe.swift:32:41: error: lifetime-dependent variable 'owner' escapes its scope
+ 30 |                                     let activationBacking: InlineArray<1, UInt8> = [1]
+ 31 |                                     let supplied = CounterDynamicHostSupplied(models: models.borrowedScope(), root: root.borrowedRoot(), semantic: semantic.borrowedStore(), values: values.borrowedValues(), control: pointer, audit: audit, geometry: movedGeometry.take()!, interaction: keys.take()!)
+ 32 |                                     var owner = CounterDynamicHostOwner(supplied: consume supplied, activationSpan: activationBacking.span, assembly: assembly, failAfterRuntime: failAfterRuntime)
+    |                                         |- error: lifetime-dependent variable 'owner' escapes its scope
+    |                                         `- note: it depends on a closure capture; this is not yet supported
+ 33 |                                         let joinChecks = counterForeignJoinScope { foreignModels, foreignRoot, foreignControl in
+ 34 |                                             let expected = counterJoinSnapshot(pointer)
+    :
+ 46 |                                             reject(owner.constructRuntimeAndEndpoint(models: models, root: root, control: pointer, audit: counterJoinAudit(audit, profile: .static), report: assembly.report), .profileMismatch)
+ 47 |                                             reject(owner.constructRuntimeAndEndpoint(models: models, root: root, control: pointer, audit: counterJoinAudit(audit, profile: audit.profile), report: assembly.report), .invalidWorkload)
+ 48 |                                             reject(owner.constructRuntimeAndEndpoint(models: models, root: root, control: pointer, audit: audit, report: counterJoinReport(assembly.report)), .invalidWakeIntegration)
+    |                                                          `- note: this use causes the lifetime-dependent value to escape
+ 49 |                                             return count
+ 50 |                                         }

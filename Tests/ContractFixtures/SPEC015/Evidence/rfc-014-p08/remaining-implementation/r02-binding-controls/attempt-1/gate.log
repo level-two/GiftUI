@@ -1,0 +1,65 @@
+counter-model: /Users/eugene/work/GiftUI/.build/contracts/p08-counter-e0vqcqy7
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostOwner.swift:15:52: error: value of type 'RuntimeProfileLimits' has no member 'profile'
+ 13 | // Side-effect-free association check against the actual lexical supplied owner.
+ 14 | func counterBindingJoinError(expectedModels: borrowing ObservableModelScope<CounterOwnedModel, CounterModelSchema>, expectedControl: UnsafeMutablePointer<CounterControl>, expectedAudit: RuntimeStorageAudit, expectedReport: HostAssemblyReport, kind: MVPHostKind, profile: RuntimeProfileKind, models: borrowing ObservableModelScope<CounterOwnedModel, CounterModelSchema>, root: borrowing ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, control: UnsafeMutablePointer<CounterControl>, audit: RuntimeStorageAudit, report: HostAssemblyReport) -> HostConfigurationError? {
+ 15 |     guard audit.profile == profile && audit.limits.profile == profile && expectedAudit.profile == profile && expectedReport.profile == profile && expectedReport.kind == kind && report.kind == kind && report.profile == profile else { return .profileMismatch }
+    |                                                    `- error: value of type 'RuntimeProfileLimits' has no member 'profile'
+ 16 |     guard models.sharesOwner(with: expectedModels) && root.belongs(to: models) && root.belongs(to: expectedModels) else { return .invalidModelTarget }
+ 17 |     guard audit == expectedAudit && expectedReport.storageAudit == expectedAudit else { return .invalidWorkload }
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostProbe.swift:170:89: error: cannot find type 'CounterModelSchema' in scope
+168 |     return .init(requests: control.pointee.wake?.requester.requestCount, reasons: control.pointee.wake?.accumulatedReasons, outstanding: control.pointee.wake?.wakeOutstanding, hostRequests: control.pointee.hostWakeRequests, factRecords: control.pointee.acceptedFactWakeRecords, firstFact: control.pointee.wakeFirstFactMicroseconds, clock: control.pointee.wakeClockMicroseconds, pointerCount: control.pointee.admission.pointerCount, stateCount: control.pointee.admission.pendingStateCount, completion: control.pointee.admission.pendingCompletion, endpoints: endpoints, applications: control.pointee.applicationConstructions, finalized: control.pointee.finalized, applied: control.pointee.applied)
+169 | }
+170 | func counterForeignJoinScope(_ body: (borrowing ObservableModelScope<CounterOwnedModel, CounterModelSchema>, borrowing ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, UnsafeMutablePointer<CounterControl>) -> Int) -> Int {
+    |                                                                                         `- error: cannot find type 'CounterModelSchema' in scope
+171 |     var namespace = ObservableModelOwnerNamespace()
+172 |     do throws(ObservableStateError) {
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostProbe.swift:168:50: error: 'requester' is inaccessible due to 'internal' protection level
+166 |     let endpoints = 0
+167 |     #endif
+168 |     return .init(requests: control.pointee.wake?.requester.requestCount, reasons: control.pointee.wake?.accumulatedReasons, outstanding: control.pointee.wake?.wakeOutstanding, hostRequests: control.pointee.hostWakeRequests, factRecords: control.pointee.acceptedFactWakeRecords, firstFact: control.pointee.wakeFirstFactMicroseconds, clock: control.pointee.wakeClockMicroseconds, pointerCount: control.pointee.admission.pointerCount, stateCount: control.pointee.admission.pendingStateCount, completion: control.pointee.admission.pendingCompletion, endpoints: endpoints, applications: control.pointee.applicationConstructions, finalized: control.pointee.finalized, applied: control.pointee.applied)
+    |                                                  `- error: 'requester' is inaccessible due to 'internal' protection level
+169 | }
+170 | func counterForeignJoinScope(_ body: (borrowing ObservableModelScope<CounterOwnedModel, CounterModelSchema>, borrowing ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, UnsafeMutablePointer<CounterControl>) -> Int) -> Int {
+
+/Users/eugene/work/GiftUI/Sources/GiftUIExecution/ExecutionWakeAccumulator.swift:5:22: note: 'requester' declared here
+ 3 |     private(set) var accumulatedReasons: ExecutionWakeReasons
+ 4 |     private(set) var wakeOutstanding: Bool
+ 5 |     private(set) var requester: Requester
+   |                      `- note: 'requester' declared here
+ 6 | 
+ 7 |     init(requester: Requester) {
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostProbe.swift:168:105: error: 'accumulatedReasons' is inaccessible due to 'internal' protection level
+166 |     let endpoints = 0
+167 |     #endif
+168 |     return .init(requests: control.pointee.wake?.requester.requestCount, reasons: control.pointee.wake?.accumulatedReasons, outstanding: control.pointee.wake?.wakeOutstanding, hostRequests: control.pointee.hostWakeRequests, factRecords: control.pointee.acceptedFactWakeRecords, firstFact: control.pointee.wakeFirstFactMicroseconds, clock: control.pointee.wakeClockMicroseconds, pointerCount: control.pointee.admission.pointerCount, stateCount: control.pointee.admission.pendingStateCount, completion: control.pointee.admission.pendingCompletion, endpoints: endpoints, applications: control.pointee.applicationConstructions, finalized: control.pointee.finalized, applied: control.pointee.applied)
+    |                                                                                                         `- error: 'accumulatedReasons' is inaccessible due to 'internal' protection level
+169 | }
+170 | func counterForeignJoinScope(_ body: (borrowing ObservableModelScope<CounterOwnedModel, CounterModelSchema>, borrowing ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, UnsafeMutablePointer<CounterControl>) -> Int) -> Int {
+
+/Users/eugene/work/GiftUI/Sources/GiftUIExecution/ExecutionWakeAccumulator.swift:3:22: note: 'accumulatedReasons' declared here
+ 1 | struct ExecutionWakeAccumulator<Requester>: Sendable
+ 2 | where Requester: ExecutionWakeRequester & Sendable {
+ 3 |     private(set) var accumulatedReasons: ExecutionWakeReasons
+   |                      `- note: 'accumulatedReasons' declared here
+ 4 |     private(set) var wakeOutstanding: Bool
+ 5 |     private(set) var requester: Requester
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostProbe.swift:168:160: error: 'wakeOutstanding' is inaccessible due to 'internal' protection level
+166 |     let endpoints = 0
+167 |     #endif
+168 |     return .init(requests: control.pointee.wake?.requester.requestCount, reasons: control.pointee.wake?.accumulatedReasons, outstanding: control.pointee.wake?.wakeOutstanding, hostRequests: control.pointee.hostWakeRequests, factRecords: control.pointee.acceptedFactWakeRecords, firstFact: control.pointee.wakeFirstFactMicroseconds, clock: control.pointee.wakeClockMicroseconds, pointerCount: control.pointee.admission.pointerCount, stateCount: control.pointee.admission.pendingStateCount, completion: control.pointee.admission.pendingCompletion, endpoints: endpoints, applications: control.pointee.applicationConstructions, finalized: control.pointee.finalized, applied: control.pointee.applied)
+    |                                                                                                                                                                `- error: 'wakeOutstanding' is inaccessible due to 'internal' protection level
+169 | }
+170 | func counterForeignJoinScope(_ body: (borrowing ObservableModelScope<CounterOwnedModel, CounterModelSchema>, borrowing ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, UnsafeMutablePointer<CounterControl>) -> Int) -> Int {
+
+/Users/eugene/work/GiftUI/Sources/GiftUIExecution/ExecutionWakeAccumulator.swift:4:22: note: 'wakeOutstanding' declared here
+ 2 | where Requester: ExecutionWakeRequester & Sendable {
+ 3 |     private(set) var accumulatedReasons: ExecutionWakeReasons
+ 4 |     private(set) var wakeOutstanding: Bool
+   |                      `- note: 'wakeOutstanding' declared here
+ 5 |     private(set) var requester: Requester
+ 6 | 
+

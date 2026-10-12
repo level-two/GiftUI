@@ -1,0 +1,380 @@
+diff --git a/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterDynamicHostOwner.swift b/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterDynamicHostOwner.swift
+index b9018d67..ba03aeb1 100644
+--- a/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterDynamicHostOwner.swift
++++ b/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterDynamicHostOwner.swift
+@@ -88,17 +88,38 @@ enum CounterDynamicHostState: ~Copyable, ~Escapable {
+         }
+     }
+     @_lifetime(self: copy self)
+-    mutating func activate(endpointConfiguration: HostEndpointConfiguration) {
++    mutating func activate(assembly: CounterHostAssembly) -> HostConfigurationError? {
+         switch consume self {
+         case .inert(let supplied, let span):
+             precondition(span.count == 1 && span[0] == 1)
+-            let pipeline = CounterDynamicHostPipeline(models: supplied.borrowedModels(), root: supplied.borrowedRoot(), semantic: supplied.borrowedSemantic(), values: supplied.borrowedValues(), geometry: supplied.geometry, interaction: supplied.interaction, scopedControl: supplied.borrowedControl(), limits: supplied.audit.limits, endpointConfiguration: endpointConfiguration)
+-            let binding = CounterExecutionBinding(models: supplied.borrowedModels(), root: supplied.borrowedRoot(), scopedControl: supplied.borrowedControl(), audit: supplied.audit)!
+-            let coordinator = CounterDynamicHostCoordinator(binding: binding, admission: CounterAdmission(control: supplied.controlPointer, limits: supplied.audit.limits.execution), opportunity: pipeline)
++            let models = supplied.borrowedModels()
++            let root = supplied.borrowedRoot()
++            let control = supplied.borrowedControl()
++            let audit = supplied.audit
++            let report = assembly.report
++            if let error = counterBindingJoinError(expectedModels: models, expectedControl: supplied.controlPointer, expectedAudit: supplied.audit, expectedReport: assembly.report, kind: .macOSDynamic, profile: .dynamic, models: models, root: root, control: control.pointer, audit: audit, report: report) {
++                self = .inert(consume supplied, span)
++                return error
++            }
++            let pipeline = CounterDynamicHostPipeline(models: models.borrowedScope(), root: root.borrowedRoot(), semantic: supplied.borrowedSemantic(), values: supplied.borrowedValues(), geometry: supplied.geometry, interaction: supplied.interaction, scopedControl: control.borrowed(), limits: audit.limits, endpointConfiguration: assembly.endpoint)
++            let binding = CounterExecutionBinding(models: models.borrowedScope(), root: root.borrowedRoot(), scopedControl: control.borrowed(), audit: audit)!
++            let coordinator = CounterDynamicHostCoordinator(binding: binding, admission: CounterAdmission(control: control.pointer, limits: audit.limits.execution), opportunity: pipeline)
+             self = .active(consume coordinator, nil, span)
+         case .active(let coordinator, let cache, let span): self = .active(consume coordinator, consume cache, span)
+         case .retired(let semantic, let geometry, let interaction, let span): self = .retired(consume semantic, geometry, interaction, span); preconditionFailure("retired host")
+         }
++        return nil
++    }
++    @_lifetime(self: copy self)
++    mutating func activate(assembly: CounterHostAssembly, models: borrowing ObservableModelScope<CounterOwnedModel, CounterModelSchema>, root: borrowing ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, control: UnsafeMutablePointer<CounterControl>, audit: RuntimeStorageAudit, report: HostAssemblyReport) -> HostConfigurationError? {
++        switch self {
++        case .inert(let supplied, _):
++            if let error = counterBindingJoinError(expectedModels: supplied.borrowedModels(), expectedControl: supplied.controlPointer, expectedAudit: supplied.audit, expectedReport: assembly.report, kind: .macOSDynamic, profile: .dynamic, models: models, root: root, control: control, audit: audit, report: report) { return error }
++        case .active, .retired: return .invariantViolation
++        }
++        // Successful proposals name exactly the canonical supplied backing and
++        // configuration. Reborrow those same checked values for retained lifetime.
++        return activate(assembly: assembly)
+     }
+     @_lifetime(self: copy self)
+     mutating func attachRoot() -> Bool {
+@@ -209,9 +230,16 @@ struct CounterDynamicHostOwner: ~Copyable, ~Escapable, SignalAnalyzerPresetLiveO
+     }
+     mutating func constructRuntimeAndEndpoint() -> HostActivationStepResult<ActivationFailure> {
+         precondition(activationStep == 0 && constructions == 0)
+-        state.activate(endpointConfiguration: assembly.endpoint); constructions += 1; activationStep = 1
++        if let error = state.activate(assembly: assembly) { return .failure(.configuration(error), progress: .init()) }
++        constructions += 1; activationStep = 1
+         return failAfterRuntime ? .failure(.configuration(.arithmeticOverflow), progress: .init(runtimeConstructed: true)) : .advanced
+     }
++    mutating func constructRuntimeAndEndpoint(models: borrowing ObservableModelScope<CounterOwnedModel, CounterModelSchema>, root: borrowing ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, control: UnsafeMutablePointer<CounterControl>, audit: RuntimeStorageAudit, report: HostAssemblyReport) -> HostActivationStepResult<ActivationFailure> {
++        precondition(activationStep == 0 && constructions == 0)
++        if let error = state.activate(assembly: assembly, models: models, root: root, control: control, audit: audit, report: report) { return .failure(.configuration(error), progress: .init()) }
++        constructions += 1; activationStep = 1
++        return .advanced
++    }
+     mutating func constructApplicationOwners() -> HostActivationStepResult<ActivationFailure> {
+         precondition(activationStep == 1)
+         application = CounterDynamicApplicationOwners(control: state.controlPointer); activationStep = 2
+diff --git a/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterDynamicHostProbe.swift b/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterDynamicHostProbe.swift
+index 4b9cd03b..f49dd026 100644
+--- a/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterDynamicHostProbe.swift
++++ b/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterDynamicHostProbe.swift
+@@ -11,6 +11,11 @@ import GiftUISemanticCore
+ extension DynamicCounterProfileStorage {
+     mutating func runCounterDynamicHost(failAfterRuntime: Bool) -> Int {
+         guard case .valid(let audit) = audit(), let assembly = CounterHostAssembly.validate(audit, kind: .macOSDynamic) else { preconditionFailure("counter Dynamic valid-only host") }
++        // Declared producer-projection negatives, not analyzer producer behavior.
++        precondition(CounterHostAssembly.validate(audit, kind: .macOSDynamic, sourceCallbacks: 21) == nil)
++        precondition(CounterHostAssembly.validate(audit, kind: .macOSDynamic, repositoryCallbacks: 2) == nil)
++        precondition(CounterHostAssembly.validate(audit, kind: .macOSDynamic, useCaseCallbacks: 2) == nil)
++        precondition(CounterHostAssembly.validate(audit, kind: .macOSDynamic, nonTransitionPublications: 2) == nil)
+         let limits = self.limits
+         var movedGeometry = geometry.take()
+         var keys = interaction.take()
+@@ -24,11 +29,29 @@ extension DynamicCounterProfileStorage {
+                                 checks = withUnsafeMutablePointer(to: &control) { pointer in
+                                     let activationBacking: InlineArray<1, UInt8> = [1]
+                                     let supplied = CounterDynamicHostSupplied(models: models.borrowedScope(), root: root.borrowedRoot(), semantic: semantic.borrowedStore(), values: values.borrowedValues(), control: pointer, audit: audit, geometry: movedGeometry.take()!, interaction: keys.take()!)
+-                                    let owner = CounterDynamicHostOwner(supplied: consume supplied, activationSpan: activationBacking.span, assembly: assembly, failAfterRuntime: failAfterRuntime)
++                                    var owner = CounterDynamicHostOwner(supplied: consume supplied, activationSpan: activationBacking.span, assembly: assembly, failAfterRuntime: failAfterRuntime)
++                                        let joinChecks = counterForeignJoinScope { foreignModels, foreignRoot, foreignControl in
++                                            let expected = counterJoinSnapshot(pointer)
++                                            let foreignExpected = counterJoinSnapshot(foreignControl)
++                                            var count = 0
++                                            func reject(_ result: HostActivationStepResult<MacOSDynamicHostActivationFailure>, _ error: HostConfigurationError) {
++                                                precondition(result == .failure(.configuration(error), progress: .init()))
++                                                precondition(owner.constructions == 0 && owner.activationStep == 0)
++                                                precondition(counterJoinSnapshot(pointer) == expected && counterJoinSnapshot(foreignControl) == foreignExpected)
++                                                count += 3
++                                            }
++                                            reject(owner.constructRuntimeAndEndpoint(models: models, root: root, control: foreignControl, audit: audit, report: assembly.report), .invalidWakeIntegration)
++                                            reject(owner.constructRuntimeAndEndpoint(models: foreignModels, root: foreignRoot, control: pointer, audit: audit, report: assembly.report), .invalidModelTarget)
++                                            reject(owner.constructRuntimeAndEndpoint(models: models, root: foreignRoot, control: pointer, audit: audit, report: assembly.report), .invalidModelTarget)
++                                            reject(owner.constructRuntimeAndEndpoint(models: models, root: root, control: pointer, audit: counterJoinAudit(audit, profile: .static), report: assembly.report), .profileMismatch)
++                                            reject(owner.constructRuntimeAndEndpoint(models: models, root: root, control: pointer, audit: counterJoinAudit(audit, profile: audit.profile), report: assembly.report), .invalidWorkload)
++                                            reject(owner.constructRuntimeAndEndpoint(models: models, root: root, control: pointer, audit: audit, report: counterJoinReport(assembly.report)), .invalidWakeIntegration)
++                                            return count
++                                        }
+                                     var host = SignalAnalyzerPresetHostInstances.macOSDynamic(report: assembly.report, owner: consume owner)!
+                                     precondition(host.lifecycleState == .valid && host.owner.constructions == 0 && pointer.pointee.finalized == 0)
+                                     precondition(host.runOpportunity() == .invalidLifecycle)
+-                                    var count = 2
++                                    var count = 2 + joinChecks
+                                     let activation = host.activate()
+                                     if failAfterRuntime {
+                                         precondition(activation == .failure(.configuration(.arithmeticOverflow)) && host.lifecycleState == .failed)
+@@ -71,7 +94,7 @@ extension DynamicCounterProfileStorage {
+                 } catch { preconditionFailure("counter Dynamic semantic") }
+             }
+         } catch { preconditionFailure("counter Dynamic model") }
+-        return checks
++        return checks + 4
+     }
+ }
+ 
+diff --git a/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostAssembly.swift b/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostAssembly.swift
+index bf1e705f..3c579804 100644
+--- a/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostAssembly.swift
++++ b/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostAssembly.swift
+@@ -43,7 +43,7 @@ struct CounterHostAssembly {
+     let report: HostAssemblyReport
+     let endpoint: HostEndpointConfiguration
+     let ledger: HostValidationAccessLedger
+-    static func validate(_ audit: RuntimeStorageAudit, kind: MVPHostKind) -> Self? {
++    static func validate(_ audit: RuntimeStorageAudit, kind: MVPHostKind, sourceCallbacks: UInt16 = 20, repositoryCallbacks: UInt8 = 1, useCaseCallbacks: UInt8 = 1, nonTransitionPublications: UInt8 = 1) -> Self? {
+         let operations: RasterOperationSet = [.opaqueRectangles, .positionedText, .straightLineStrokes, .clipping, .damage]
+         let extent = CapabilityExtent(width: 100, height: 120)!
+         let bytes = CapabilityByteCount(rawValue: 48000)
+@@ -57,7 +57,7 @@ struct CounterHostAssembly {
+         var workspace = RasterPresentationResolverWorkspace()!
+         guard case .available(let effective) = RasterPresentationResolver.resolve(requirement: requirement, contributions: contributions, workspace: &workspace) else { return nil }
+         let endpoint = HostEndpointConfiguration(effectivePresentation: effective, descriptor: .init(bounds: counterSurface, encoding: .rgba8888, bytesPerRow: 400, realization: .fullSurface, regionWidth: 100, regionHeight: 120)!, payloadLimits: .init(maximumRasterBytes: 48000, maximumPayloadBytes: 48000, maximumRegionsPerPayload: 120, maximumRegionSubmissionsPerFrame: 1, maximumTileVisitsPerFrame: 1, maximumInFlightPayloads: 1, maximumGlyphRasterBytes: 48000, maximumStrokeWorkspaceBytes: 1)!, surfaceWritableCapacityBytes: 48000, displaySubmissionLifetime: .synchronousBorrow, displayHandoff: .synchronous, displayMaximumInFlightPayloads: 1, displayMaximumInFlightBytes: 48000, textRasterRealization: .init(rawValue: 0), healthOwnerCount: 1, endpointAndDisplayShareHealthOwner: true)
+-        var validator = CheckedMVPHostConfigurationValidator(structuralConfiguration: .init(kind: kind, profile: audit.profile, runtimeLimits: audit.limits, runtimeAudit: audit, cardinality: P08CounterWorkload.cardinality, workload: P08CounterWorkload.value(audit.limits), pacing: P08CounterWorkload.pacing), runtimeProfileValidation: .valid(audit), componentGraph: CounterHostGraph(), textResourceValidation: TextResourceValidator.validate(GiftUIReferenceTextResources.targetPackage, requiring: .init(rawValue: 0)), selectedTextRasterRealization: .init(rawValue: 0), capabilityRequirement: requirement, capabilityContributions: contributions, capabilityWorkspace: .init()!, endpoint: endpoint, actionAndModel: .init(firstActionCode: 0, lastActionCode: 1, handlerCount: 1, rootModelTargetCount: 1, sourceMinimumTransitionSpacingMicroseconds: 50000, maximumSourceCallbacksPerServiceWindow: 20, maximumCallbacksPerAction: 1, maximumRepositoryCallbacksPerAction: 1, maximumUseCaseCallbacksPerAction: 1, maximumNonTransitionPublicationsPerAction: 1, applicationExecutorFactLimit: 28, factAdmissionAdapterCount: 1, targetGenerationIsPublishable: true, actionHandlerIsTotal: true, retainsOwnerReferences: false, callbacksAreReentrant: false), inputAndWake: .init(normalizedInputSourceCount: 1, targetLocalPresentationGateCount: 1, wakeRequesterCount: 1, applicationAndMutationDomainsAreDistinct: true, wakeRequesterIsNonReentrant: true), residualPolicyTable: FixedMVPHostResidualPolicyTable(fatalHookIsAvailable: false))
++        var validator = CheckedMVPHostConfigurationValidator(structuralConfiguration: .init(kind: kind, profile: audit.profile, runtimeLimits: audit.limits, runtimeAudit: audit, cardinality: P08CounterWorkload.cardinality, workload: P08CounterWorkload.value(audit.limits), pacing: P08CounterWorkload.pacing), runtimeProfileValidation: .valid(audit), componentGraph: CounterHostGraph(), textResourceValidation: TextResourceValidator.validate(GiftUIReferenceTextResources.targetPackage, requiring: .init(rawValue: 0)), selectedTextRasterRealization: .init(rawValue: 0), capabilityRequirement: requirement, capabilityContributions: contributions, capabilityWorkspace: .init()!, endpoint: endpoint, actionAndModel: .init(firstActionCode: 0, lastActionCode: 1, handlerCount: 1, rootModelTargetCount: 1, sourceMinimumTransitionSpacingMicroseconds: 50000, maximumSourceCallbacksPerServiceWindow: sourceCallbacks, maximumCallbacksPerAction: 1, maximumRepositoryCallbacksPerAction: repositoryCallbacks, maximumUseCaseCallbacksPerAction: useCaseCallbacks, maximumNonTransitionPublicationsPerAction: nonTransitionPublications, applicationExecutorFactLimit: 28, factAdmissionAdapterCount: 1, targetGenerationIsPublishable: true, actionHandlerIsTotal: true, retainsOwnerReferences: false, callbacksAreReentrant: false), inputAndWake: .init(normalizedInputSourceCount: 1, targetLocalPresentationGateCount: 1, wakeRequesterCount: 1, applicationAndMutationDomainsAreDistinct: true, wakeRequesterIsNonReentrant: true), residualPolicyTable: FixedMVPHostResidualPolicyTable(fatalHookIsAvailable: false))
+         guard case .valid(let report) = validator.validate() else { return nil }
+         return Self(report: report, endpoint: endpoint, ledger: validator.validationAccessLedger)
+     }
+diff --git a/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostOwner.swift b/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostOwner.swift
+index 09f949a1..8735907f 100644
+--- a/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostOwner.swift
++++ b/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostOwner.swift
+@@ -10,6 +10,15 @@ import GiftUISemanticCore
+ 
+ @testable import GiftUIHostConfiguration
+ 
++// Side-effect-free association check against the actual lexical supplied owner.
++func counterBindingJoinError(expectedModels: borrowing ObservableModelScope<CounterOwnedModel, CounterModelSchema>, expectedControl: UnsafeMutablePointer<CounterControl>, expectedAudit: RuntimeStorageAudit, expectedReport: HostAssemblyReport, kind: MVPHostKind, profile: RuntimeProfileKind, models: borrowing ObservableModelScope<CounterOwnedModel, CounterModelSchema>, root: borrowing ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, control: UnsafeMutablePointer<CounterControl>, audit: RuntimeStorageAudit, report: HostAssemblyReport) -> HostConfigurationError? {
++    guard audit.profile == profile && audit.limits.profile == profile && expectedAudit.profile == profile && expectedReport.profile == profile && expectedReport.kind == kind && report.kind == kind && report.profile == profile else { return .profileMismatch }
++    guard models.sharesOwner(with: expectedModels) && root.belongs(to: models) && root.belongs(to: expectedModels) else { return .invalidModelTarget }
++    guard audit == expectedAudit && expectedReport.storageAudit == expectedAudit else { return .invalidWorkload }
++    guard control == expectedControl && report == expectedReport else { return .invalidWakeIntegration }
++    return nil
++}
++
+ struct CounterHostControl: ~Copyable, ~Escapable {
+     let pointer: UnsafeMutablePointer<CounterControl>
+     @_lifetime(borrow pointer)
+@@ -137,17 +146,38 @@ enum CounterHostState: ~Copyable, ~Escapable {
+         }
+     }
+     @_lifetime(self: copy self)
+-    mutating func activate(endpointConfiguration: HostEndpointConfiguration) {
++    mutating func activate(assembly: CounterHostAssembly) -> HostConfigurationError? {
+         switch consume self {
+         case .inert(let supplied, let span):
+             precondition(span.count == 1 && span[0] == 1)
+-            let pipeline = CounterHostPipeline(models: supplied.borrowedModels(), root: supplied.borrowedRoot(), semantic: supplied.borrowedSemantic(), values: supplied.borrowedValues(), geometry: supplied.geometry, interaction: supplied.interaction, scopedControl: supplied.borrowedControl(), limits: supplied.audit.limits, endpointConfiguration: endpointConfiguration)
+-            let binding = CounterExecutionBinding(models: supplied.borrowedModels(), root: supplied.borrowedRoot(), scopedControl: supplied.borrowedControl(), audit: supplied.audit)!
+-            let coordinator = CounterHostCoordinator(binding: binding, admission: CounterAdmission(control: supplied.controlPointer, limits: supplied.audit.limits.execution), opportunity: pipeline)
++            let models = supplied.borrowedModels()
++            let root = supplied.borrowedRoot()
++            let control = supplied.borrowedControl()
++            let audit = supplied.audit
++            let report = assembly.report
++            if let error = counterBindingJoinError(expectedModels: models, expectedControl: supplied.controlPointer, expectedAudit: supplied.audit, expectedReport: assembly.report, kind: .macOSStatic, profile: .static, models: models, root: root, control: control.pointer, audit: audit, report: report) {
++                self = .inert(consume supplied, span)
++                return error
++            }
++            let pipeline = CounterHostPipeline(models: models.borrowedScope(), root: root.borrowedRoot(), semantic: supplied.borrowedSemantic(), values: supplied.borrowedValues(), geometry: supplied.geometry, interaction: supplied.interaction, scopedControl: control.borrowed(), limits: audit.limits, endpointConfiguration: assembly.endpoint)
++            let binding = CounterExecutionBinding(models: models.borrowedScope(), root: root.borrowedRoot(), scopedControl: control.borrowed(), audit: audit)!
++            let coordinator = CounterHostCoordinator(binding: binding, admission: CounterAdmission(control: control.pointer, limits: audit.limits.execution), opportunity: pipeline)
+             self = .active(consume coordinator, nil, span)
+         case .active(let coordinator, let cache, let span): self = .active(consume coordinator, consume cache, span)
+         case .retired(let semantic, let geometry, let interaction, let span): self = .retired(consume semantic, geometry, interaction, span); preconditionFailure("retired host")
+         }
++        return nil
++    }
++    @_lifetime(self: copy self)
++    mutating func activate(assembly: CounterHostAssembly, models: borrowing ObservableModelScope<CounterOwnedModel, CounterModelSchema>, root: borrowing ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, control: UnsafeMutablePointer<CounterControl>, audit: RuntimeStorageAudit, report: HostAssemblyReport) -> HostConfigurationError? {
++        switch self {
++        case .inert(let supplied, _):
++            if let error = counterBindingJoinError(expectedModels: supplied.borrowedModels(), expectedControl: supplied.controlPointer, expectedAudit: supplied.audit, expectedReport: assembly.report, kind: .macOSStatic, profile: .static, models: models, root: root, control: control, audit: audit, report: report) { return error }
++        case .active, .retired: return .invariantViolation
++        }
++        // Successful proposals name exactly the canonical supplied backing and
++        // configuration. Reborrow those same checked values for retained lifetime.
++        return activate(assembly: assembly)
+     }
+     @_lifetime(self: copy self)
+     mutating func attachRoot() -> Bool {
+@@ -256,9 +286,16 @@ struct CounterHostOwner: ~Copyable, ~Escapable, SignalAnalyzerPresetLiveOwner {
+     }
+     mutating func constructRuntimeAndEndpoint() -> HostActivationStepResult<ActivationFailure> {
+         precondition(activationStep == 0 && constructions == 0)
+-        state.activate(endpointConfiguration: assembly.endpoint); constructions += 1; activationStep = 1
++        if let error = state.activate(assembly: assembly) { return .failure(.configuration(error), progress: .init()) }
++        constructions += 1; activationStep = 1
+         return failAfterRuntime ? .failure(.configuration(.arithmeticOverflow), progress: .init(runtimeConstructed: true)) : .advanced
+     }
++    mutating func constructRuntimeAndEndpoint(models: borrowing ObservableModelScope<CounterOwnedModel, CounterModelSchema>, root: borrowing ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, control: UnsafeMutablePointer<CounterControl>, audit: RuntimeStorageAudit, report: HostAssemblyReport) -> HostActivationStepResult<ActivationFailure> {
++        precondition(activationStep == 0 && constructions == 0)
++        if let error = state.activate(assembly: assembly, models: models, root: root, control: control, audit: audit, report: report) { return .failure(.configuration(error), progress: .init()) }
++        constructions += 1; activationStep = 1
++        return .advanced
++    }
+     mutating func constructApplicationOwners() -> HostActivationStepResult<ActivationFailure> {
+         precondition(activationStep == 1)
+         application = CounterApplicationOwners(control: state.controlPointer); activationStep = 2
+diff --git a/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostProbe.swift b/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostProbe.swift
+index 9eb65400..49ee1390 100644
+--- a/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostProbe.swift
++++ b/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostProbe.swift
+@@ -1,9 +1,9 @@
+ import GiftUI
+ import GiftUIDrawing
+ import GiftUIExecution
+-import GiftUIHostConfiguration
++@testable import GiftUIHostConfiguration
+ import GiftUIObservableState
+-import GiftUIRuntimeCore
++@testable import GiftUIRuntimeCore
+ import GiftUIRuntimeStatic
+ import GiftUISemanticCore
+ 
+@@ -11,6 +11,11 @@ extension StaticCounterProfileStorage {
+     mutating func runCounterHost(failAfterRuntime: Bool) -> Int {
+         guard case .valid(let audit) = audit(), let assembly = CounterHostAssembly.validate(audit, kind: .macOSStatic) else { preconditionFailure("counter valid-only host") }
+         let ownedChecks = counterOwnedSchedulerCompatibility(assembly.report)
++        // Declared producer-projection negatives, not analyzer producer behavior.
++        precondition(CounterHostAssembly.validate(audit, kind: .macOSStatic, sourceCallbacks: 21) == nil)
++        precondition(CounterHostAssembly.validate(audit, kind: .macOSStatic, repositoryCallbacks: 2) == nil)
++        precondition(CounterHostAssembly.validate(audit, kind: .macOSStatic, useCaseCallbacks: 2) == nil)
++        precondition(CounterHostAssembly.validate(audit, kind: .macOSStatic, nonTransitionPublications: 2) == nil)
+         let limits = self.limits
+         var keys = interaction.take()
+         var checks = 0
+@@ -29,11 +34,29 @@ extension StaticCounterProfileStorage {
+                                     withUnsafeMutablePointer(to: &control) { pointer in
+                                         let activationBacking: InlineArray<1, UInt8> = [1]
+                                         let supplied = CounterHostSupplied(models: models.borrowedScope(), root: root.borrowedRoot(), semantic: semantic.borrowedStore(), values: values.borrowedValues(), control: pointer, audit: audit, geometry: geometry, interaction: keys.take()!)
+-                                        let owner = CounterHostOwner(supplied: consume supplied, activationSpan: activationBacking.span, assembly: assembly, failAfterRuntime: failAfterRuntime)
++                                        var owner = CounterHostOwner(supplied: consume supplied, activationSpan: activationBacking.span, assembly: assembly, failAfterRuntime: failAfterRuntime)
++                                        let joinChecks = counterForeignJoinScope { foreignModels, foreignRoot, foreignControl in
++                                            let expected = counterJoinSnapshot(pointer)
++                                            let foreignExpected = counterJoinSnapshot(foreignControl)
++                                            var count = 0
++                                            func reject(_ result: HostActivationStepResult<MacOSStaticHostActivationFailure>, _ error: HostConfigurationError) {
++                                                precondition(result == .failure(.configuration(error), progress: .init()))
++                                                precondition(owner.constructions == 0 && owner.activationStep == 0)
++                                                precondition(counterJoinSnapshot(pointer) == expected && counterJoinSnapshot(foreignControl) == foreignExpected)
++                                                count += 3
++                                            }
++                                            reject(owner.constructRuntimeAndEndpoint(models: models, root: root, control: foreignControl, audit: audit, report: assembly.report), .invalidWakeIntegration)
++                                            reject(owner.constructRuntimeAndEndpoint(models: foreignModels, root: foreignRoot, control: pointer, audit: audit, report: assembly.report), .invalidModelTarget)
++                                            reject(owner.constructRuntimeAndEndpoint(models: models, root: foreignRoot, control: pointer, audit: audit, report: assembly.report), .invalidModelTarget)
++                                            reject(owner.constructRuntimeAndEndpoint(models: models, root: root, control: pointer, audit: counterJoinAudit(audit, profile: .dynamic), report: assembly.report), .profileMismatch)
++                                            reject(owner.constructRuntimeAndEndpoint(models: models, root: root, control: pointer, audit: counterJoinAudit(audit, profile: audit.profile), report: assembly.report), .invalidWorkload)
++                                            reject(owner.constructRuntimeAndEndpoint(models: models, root: root, control: pointer, audit: audit, report: counterJoinReport(assembly.report)), .invalidWakeIntegration)
++                                            return count
++                                        }
+                                         var host = SignalAnalyzerPresetHostInstances.macOSStatic(report: assembly.report, owner: consume owner)!
+                                         precondition(host.lifecycleState == .valid && host.owner.constructions == 0 && pointer.pointee.finalized == 0)
+                                         precondition(host.runOpportunity() == .invalidLifecycle)
+-                                        var count = 2
++                                        var count = 2 + joinChecks
+                                         let activation = host.activate()
+                                         if failAfterRuntime {
+                                             precondition(activation == .failure(.configuration(.arithmeticOverflow)) && host.lifecycleState == .failed)
+@@ -77,7 +100,7 @@ extension StaticCounterProfileStorage {
+                 } catch { preconditionFailure("counter host semantics") }
+             }
+         } catch { preconditionFailure("counter host model") }
+-        return checks + ownedChecks
++        return checks + ownedChecks + 4
+     }
+ }
+ 
+@@ -117,3 +140,50 @@ private func counterOwnedSchedulerCompatibility(_ report: HostAssemblyReport) ->
+     precondition(instance.calls == 1)
+     return 6
+ }
++
++
++// Test snapshots observe both live controls without issuing owner work.
++struct CounterJoinSnapshot: Equatable {
++    let requests: UInt32?
++    let reasons: ExecutionWakeReasons?
++    let outstanding: Bool?
++    let hostRequests: Int
++    let factRecords: Int
++    let firstFact: UInt64?
++    let clock: UInt64
++    let pointerCount: UInt16
++    let stateCount: UInt16
++    let completion: UInt16?
++    let endpoints: Int
++    let applications: Int
++    let finalized: Int
++    let applied: Int
++}
++func counterJoinSnapshot(_ control: UnsafeMutablePointer<CounterControl>) -> CounterJoinSnapshot {
++    #if !hasFeature(Embedded)
++    let endpoints = control.pointee.backend.constructedEndpoints
++    #else
++    let endpoints = 0
++    #endif
++    return .init(requests: control.pointee.wake?.requester.requestCount, reasons: control.pointee.wake?.accumulatedReasons, outstanding: control.pointee.wake?.wakeOutstanding, hostRequests: control.pointee.hostWakeRequests, factRecords: control.pointee.acceptedFactWakeRecords, firstFact: control.pointee.wakeFirstFactMicroseconds, clock: control.pointee.wakeClockMicroseconds, pointerCount: control.pointee.admission.pointerCount, stateCount: control.pointee.admission.pendingStateCount, completion: control.pointee.admission.pendingCompletion, endpoints: endpoints, applications: control.pointee.applicationConstructions, finalized: control.pointee.finalized, applied: control.pointee.applied)
++}
++func counterForeignJoinScope(_ body: (borrowing ObservableModelScope<CounterOwnedModel, CounterModelSchema>, borrowing ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, UnsafeMutablePointer<CounterControl>) -> Int) -> Int {
++    var namespace = ObservableModelOwnerNamespace()
++    do throws(ObservableStateError) {
++        let identity = try namespace.issue()
++        precondition(identity.rawValue == 0)
++        var backing = StaticObservableRootAdapter<CounterOwnedModel, SemanticCompleteIdentity>(identity: identity, schema: 1, needsCapture: false, modelLimit: 2, claimLimit: 4, pinLimit: 2, captureLimit: 0)!
++        var foreign = CounterControl()
++        return try backing.withLifetime(limits: .init(maximumLocations: 1, maximumRegistrations: 1, maximumStagedAssociations: 1)!) { (models, root) throws(ObservableStateError) in
++            withUnsafeMutablePointer(to: &foreign) { body(models, root, $0) }
++        }
++    } catch { preconditionFailure("counter foreign live scope") }
++}
++func counterJoinAudit(_ audit: RuntimeStorageAudit, profile: RuntimeProfileKind) -> RuntimeStorageAudit {
++    let bytes = RuntimeStorageByteCounts(semanticCandidatePathBytes: audit.semanticCandidatePathBytes, semanticPublishedPathBytes: audit.semanticPublishedPathBytes, semanticCandidatePayloadBytes: audit.semanticCandidatePayloadBytes, semanticPublishedPayloadBytes: audit.semanticPublishedPayloadBytes, identityMatchWorkspaceBytes: audit.identityMatchWorkspaceBytes, interactionCandidateIdentityBytes: audit.interactionCandidateIdentityBytes, interactionCommittedIdentityBytes: audit.interactionCommittedIdentityBytes, modelMetadataBytes: audit.modelMetadataBytes, modelOwnerBytes: audit.modelOwnerBytes, framePinBytes: audit.framePinBytes, semanticCandidateBytes: audit.semanticCandidateBytes, semanticPublishedBytes: audit.semanticPublishedBytes, layoutCandidateBytes: audit.layoutCandidateBytes, renderWorkspaceBytes: audit.renderWorkspaceBytes, canvasCallableBytes: audit.canvasCallableBytes, pathWorkspaceBytes: audit.pathWorkspaceBytes, drawingPlanBytes: audit.drawingPlanBytes, observableLiveBytes: audit.observableLiveBytes, observableCandidateBytes: audit.observableCandidateBytes, interactionCandidateBytes: audit.interactionCandidateBytes, interactionCommittedBytes: audit.interactionCommittedBytes, admissionQueueBytes: audit.admissionQueueBytes, sealedBatchBytes: audit.sealedBatchBytes, pointerStateBytes: audit.pointerStateBytes, coordinatorStateBytes: audit.coordinatorStateBytes + 1, failureStateBytes: audit.failureStateBytes)
++    guard case .valid(let changed) = RuntimeStorageAudit.checked(profile: profile, limits: profile == audit.profile ? audit.limits : counterActualLimits(profile), byteCounts: bytes) else { preconditionFailure("counter candidate audit") }
++    return changed
++}
++func counterJoinReport(_ report: HostAssemblyReport) -> HostAssemblyReport {
++    .init(kind: report.kind, profile: report.profile, storageAudit: report.storageAudit, capabilitySnapshot: report.capabilitySnapshot, effectivePresentation: report.effectivePresentation, drawingPlanOperationLimit: report.drawingPlanOperationLimit, minimumSinkOperationCapacity: report.minimumSinkOperationCapacity, cardinality: report.cardinality, minimumFrameIntervalMicroseconds: report.minimumFrameIntervalMicroseconds + 1, maximumFactServiceLatencyMicroseconds: report.maximumFactServiceLatencyMicroseconds, minimumAcceptedTransitionSpacingMicroseconds: report.minimumAcceptedTransitionSpacingMicroseconds, maximumCompactFactsPerServiceWindow: report.maximumCompactFactsPerServiceWindow, maximumRetryableRefusals: report.maximumRetryableRefusals)
++}
+diff --git a/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWakeIntegration.swift b/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWakeIntegration.swift
+index 17eb8985..8b883b54 100644
+--- a/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWakeIntegration.swift
++++ b/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWakeIntegration.swift
+@@ -148,6 +148,9 @@ func counterWakeControls<H: MVPHostInstance & ~Copyable & ~Escapable>(host: inou
+     let hostRequests = control.pointee.hostWakeRequests
+     control.pointee.emitCounterWake(.semanticDirty)
+     control.pointee.emitCounterWake(.presentationPending)
++    let beforeReportRejection = counterJoinSnapshot(control)
++    expect(control.pointee.scheduler!.begin(at: timestamp, lifecycleState: host.lifecycleState, assemblyReport: counterJoinReport(host.assemblyReport)) == .rejected(.assemblyReportMismatch, pacing: nil))
++    expect(counterJoinSnapshot(control) == beforeReportRejection)
+     // Five independently accepted notifications span all three fact categories.
+     // Every supplied clock reaches pacing, while the first fact keeps its deadline.
+     func expectAcceptedFact(_ count: Int) {
+@@ -196,6 +199,20 @@ func counterWakeControls<H: MVPHostInstance & ~Copyable & ~Escapable>(host: inou
+     expect(reasons.rawValue == 7 && control.pointee.lastTakenWakeReasons == reasons)
+     expect(!control.pointee.wake!.wakeOutstanding && control.pointee.wakeFirstFactMicroseconds == nil)
+ 
++    // Counter-specific scalar capacity: this is34/35, never analyzer compact32/33.
++    let burstFacts = control.pointee.acceptedFactWakeRecords
++    let burstRequests = control.pointee.wake!.requester.requestCount
++    let burstFinalized = control.pointee.finalized
++    for _ in 0..<34 { expect(admission.submit(stateChange: 0).result == .queued) }
++    expect(control.pointee.admission.pendingStateCount == 34 && control.pointee.acceptedFactWakeRecords == burstFacts + 34)
++    expect(control.pointee.wakeFirstFactMicroseconds == timestamp && control.pointee.wake!.requester.requestCount == burstRequests + 1)
++    expect(control.pointee.finalized == burstFinalized)
++    expectNoWake(.capacityRefused) { admission.submit(stateChange: 0) }
++    timestamp += 250000
++    guard case .cycle(.admittedWork, .cycle(.success(let burst))) = counterServiceHost(at: timestamp, host: &host, control: access) else { preconditionFailure("counter scalar34 service") }
++    expect(burst.admission.stateChangeFactCount == 34 && burst.admission.inputEventCount == 0 && burst.admission.completionFactCount == 0 && burst.admission.semanticActionCount == 0)
++    expect(control.pointee.admission.pendingStateCount == 0 && !control.pointee.wake!.wakeOutstanding)
++
+     // One callback during the active cycle is admitted only for the next seal.
+     control.pointee.injectCompletionAtApply = true
+     expect(admission.submit(stateChange: 0).result == .queued)
