@@ -1,0 +1,30 @@
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostProbe.swift:47:101: error: instance method 'service(at:instance:)' requires that 'SignalAnalyzerPresetHostInstance<CounterHostOwner>' conform to 'Copyable'
+45 |                                             var scheduler = HostScheduledOpportunityController(assemblyReport: host.assemblyReport, initialFrameOriginMicroseconds: 0)
+46 |                                             guard case .success = scheduler.recordAcceptedFact(at: 0) else { preconditionFailure("counter accepted fact wake") }
+47 |                                             guard case .wait(untilMicroseconds: 250000) = scheduler.service(at: 0, instance: &host) else { preconditionFailure("counter pacing") }
+   |                                                                                                     `- error: instance method 'service(at:instance:)' requires that 'SignalAnalyzerPresetHostInstance<CounterHostOwner>' conform to 'Copyable'
+48 |                                             guard case .cycle(_, .cycle(.success)) = scheduler.service(at: 250000, instance: &host) else { preconditionFailure("counter paced host opportunity") }
+49 |                                             precondition(pointer.pointee.finalized == 3 && pointer.pointee.admission.pendingStateCount == 0)
+
+/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostScheduledOpportunityController.swift:58:27: note: 'where Instance: Copyable' is implicit here
+ 56 |     }
+ 57 | 
+ 58 |     package mutating func service<Instance: MVPHostInstance>(
+    |                           `- note: 'where Instance: Copyable' is implicit here
+ 59 |         at timestampMicroseconds: UInt64,
+ 60 |         instance: inout Instance
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostProbe.swift:47:101: error: struct 'HostScheduledOpportunityController' requires that 'CounterHostOwner' conform to 'Escapable'
+45 |                                             var scheduler = HostScheduledOpportunityController(assemblyReport: host.assemblyReport, initialFrameOriginMicroseconds: 0)
+46 |                                             guard case .success = scheduler.recordAcceptedFact(at: 0) else { preconditionFailure("counter accepted fact wake") }
+47 |                                             guard case .wait(untilMicroseconds: 250000) = scheduler.service(at: 0, instance: &host) else { preconditionFailure("counter pacing") }
+   |                                                                                                     `- error: struct 'HostScheduledOpportunityController' requires that 'CounterHostOwner' conform to 'Escapable'
+48 |                                             guard case .cycle(_, .cycle(.success)) = scheduler.service(at: 250000, instance: &host) else { preconditionFailure("counter paced host opportunity") }
+49 |                                             precondition(pointer.pointee.finalized == 3 && pointer.pointee.admission.pendingStateCount == 0)
+
+/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/SignalAnalyzerPresetHostInstance.swift:150:1: note: requirement from conditional conformance of 'SignalAnalyzerPresetHostInstance<CounterHostOwner>' to 'Escapable'
+148 | 
+149 | // Ordinary owned hosts retain their previous escapable construction surface.
+150 | extension SignalAnalyzerPresetHostInstance: Escapable where Owner: Escapable & ~Copyable {}
+    | `- note: requirement from conditional conformance of 'SignalAnalyzerPresetHostInstance<CounterHostOwner>' to 'Escapable'
+151 | 

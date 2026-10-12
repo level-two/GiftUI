@@ -1,0 +1,5 @@
+/Users/eugene/work/GiftUI/.build/contracts/p08-counter-nx9c7bi_/CounterHostCopyNegative.swift:2:101: error: 'copy' cannot be applied to noncopyable types
+1 | import GiftUIHostConfiguration
+2 | func reject(_ host: borrowing SignalAnalyzerPresetHostInstance<CounterHostOwner>) { let duplicate = copy host; _ = duplicate }
+  |                                                                                                     `- error: 'copy' cannot be applied to noncopyable types
+3 | 

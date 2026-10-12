@@ -1,4 +1,5 @@
 import GiftUI
+import GiftUIHostConfiguration
 import GiftUIDrawing
 import GiftUIExecution
 import GiftUIInteraction
@@ -12,6 +13,9 @@ import GiftUISemanticCore
 import P08CounterSchema
 
 func exerciseCounterCoordinator<G, C, R, H>(models: borrowing ObservableModelScope<CounterOwnedModel, CounterModelSchema>, root: borrowing ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, semantic: borrowing SemanticRecordStore<CounterPayload>, values: borrowing CanvasStagedValues<SemanticRecordReference, CounterValueTable>, dynamic: Bool, geometry: consuming G, interaction: consuming InteractionOwnedKeyState<C, R, H>, audit: RuntimeStorageAudit, control: inout CounterControl) -> CounterReturnedWorkspaces<G, C, R, H> where G: CounterGeometry, C: CounterCandidateBacking, R: CounterCommittedBacking, H: CounterHitBacking, C.Identity == SemanticCompleteIdentity, R.Identity == SemanticCompleteIdentity, H.Identity == SemanticCompleteIdentity {
+    guard let assembly = CounterHostAssembly.validate(audit, kind: dynamic ? .macOSDynamic : .macOSStatic) else { preconditionFailure("counter nine-stage assembly") }
+    precondition(assembly.ledger.accessCount == 9 && assembly.ledger.accessedStages == 511 && assembly.ledger.sideEffectCount == 0)
+    precondition(assembly.report.storageAudit == audit && assembly.report.cardinality == P08CounterWorkload.cardinality)
     var movedGeometry: G? = consume geometry
     var movedInteraction: InteractionOwnedKeyState<C, R, H>? = consume interaction
     return withUnsafeMutablePointer(to: &control) { pointer in
@@ -21,12 +25,12 @@ func exerciseCounterCoordinator<G, C, R, H>(models: borrowing ObservableModelSco
         #if !hasFeature(Embedded)
         if dynamic {
             var coordinator = DynamicRuntimeExecutionCoordinator(binding: binding, admission: admission, opportunity: owner)
-            let checks = runCounterCoordinator(&coordinator, control: pointer)
+            let checks = runCounterCoordinator(&coordinator, control: pointer) + 3
             return coordinator.takeQuiescedOpportunity()!.returnWorkspaces(checks: checks)
         }
         #endif
         var coordinator = StaticRuntimeExecutionCoordinator(binding: binding, admission: admission, opportunity: owner)
-        let checks = runCounterCoordinator(&coordinator, control: pointer)
+        let checks = runCounterCoordinator(&coordinator, control: pointer) + 3
         return coordinator.takeQuiescedOpportunity()!.returnWorkspaces(checks: checks)
     }
 }

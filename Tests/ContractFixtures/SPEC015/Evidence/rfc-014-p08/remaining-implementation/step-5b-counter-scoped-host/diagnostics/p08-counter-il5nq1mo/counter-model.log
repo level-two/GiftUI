@@ -1,0 +1,7 @@
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemanticProbe.swift:83:21: error: thrown expression type 'SemanticExpansionError' cannot be converted to error type 'ObservableStateError'
+ 81 |                 do throws(SemanticExpansionError) { try semantic.resetAfterQuiescence(); preconditionFailure("candidate reset accepted") }
+ 82 |                 catch { counterSemanticExpect(error == .reentrancyViolation); checks += 1 }
+ 83 |                 try semantic.withCandidateView { _ in
+    |                     `- error: thrown expression type 'SemanticExpansionError' cannot be converted to error type 'ObservableStateError'
+ 84 |                     do throws(SemanticExpansionError) { try semantic.resetAfterQuiescence(); preconditionFailure("reader reset accepted") }
+ 85 |                     catch { counterSemanticExpect(error == .reentrancyViolation); checks += 1 }

@@ -55,7 +55,7 @@ package struct HostScheduledOpportunityController: Sendable {
         pacing.record(reasons, at: timestampMicroseconds)
     }
 
-    package mutating func service<Instance: MVPHostInstance>(
+    package mutating func service<Instance: MVPHostInstance & ~Copyable & ~Escapable>(
         at timestampMicroseconds: UInt64,
         instance: inout Instance
     ) -> HostScheduledOpportunityResult<Instance.OwnerFailure> {

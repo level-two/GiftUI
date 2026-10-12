@@ -295,3 +295,13 @@ audits. Finite34fact/onecompletion admission, all0–9 full pipeline commits and
 exactly-once quiescent root/routing cleanup pass. Host nine-stage construction/
 activation, complete cache/callback lifecycle, four application routes and early
 linked images remain open. Guard0/2; no package exit claim.
+
+## Remaining step5b — actual native Static scoped counter host (2026-10-12)
+
+[Receipt](remaining-implementation/step-5b-counter-scoped-host/result.md):1336
+assertions/23controls pass, including actual9stagecounter reports, Static scoped
+activation/root/cache/first presentation/paced opportunity, partial activation,
+ordered idempotent teardown and actual copy/backing escape rejection. Minimal
+internal semantic reset and scheduler generic propagation are validated. Dynamic
+host, complete behavior/live construction audits/raster/4routes/earlyimages remain
+open explicitly; guard0/2. No P08 exit claim.

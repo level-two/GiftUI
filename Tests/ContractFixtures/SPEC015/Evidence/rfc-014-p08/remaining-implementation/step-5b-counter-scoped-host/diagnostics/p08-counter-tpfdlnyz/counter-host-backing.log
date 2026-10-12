@@ -1,0 +1,15 @@
+/Users/eugene/work/GiftUI/.build/contracts/p08-counter-tpfdlnyz/CounterHostBackingNegative.swift:14:27: error: 'counterOwnedSchedulerCompatibility' is inaccessible due to 'private' protection level
+12 |         var escaped: SignalAnalyzerPresetHostInstance<CounterHostOwner>? = nil
+13 |         guard case .valid(let audit) = audit(), let assembly = CounterHostAssembly.validate(audit, kind: .macOSStatic) else { preconditionFailure("counter valid-only host") }
+14 |         let ownedChecks = counterOwnedSchedulerCompatibility(assembly.report)
+   |                           `- error: 'counterOwnedSchedulerCompatibility' is inaccessible due to 'private' protection level
+15 |         let limits = self.limits
+16 |         var keys = interaction.take()
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostProbe.swift:98:14: note: 'counterOwnedSchedulerCompatibility' declared here
+ 96 |     mutating func teardown() { lifecycleState = .quiescent }
+ 97 | }
+ 98 | private func counterOwnedSchedulerCompatibility(_ report: HostAssemblyReport) -> Int {
+    |              `- note: 'counterOwnedSchedulerCompatibility' declared here
+ 99 |     var instance = CounterOwnedSchedulerHost(assemblyReport: report)
+100 |     var scheduler = HostScheduledOpportunityController(assemblyReport: report, initialFrameOriginMicroseconds: 0)

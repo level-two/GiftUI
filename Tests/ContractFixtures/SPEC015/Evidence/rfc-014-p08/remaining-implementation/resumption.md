@@ -129,3 +129,20 @@ that internal seam is added rather than claiming the frozen P07 source hashes
 still match. Validate real nine-stage reports/graph/endpoint/audit and full
 activation/opportunity/teardown before a coherent commit. No P08 exit self-pass;
 four routes, early target images and independent exit review remain required.
+
+## Step5b — actual counter report and scoped host, before edits
+
+Strong Sol6.1 High; guard0/2 after validated7836344c. CounterHostAssembly feeds
+CounterProfileStorage's actual audit and CounterWorkload's immutable schema4
+reservations into CheckedMVPHostConfigurationValidator, preserving all9 stages,
+actual reference-text validation,18role finite graph, resolved capability,
+endpoint descriptor and total action/input/policy controls. Counter scoped
+supplies/live-owner realize the existing host roles; no alternate validator or
+host abstraction. Runtime+endpoint are absent from inert supplies and constructed
+only in constructRuntimeAndEndpoint during activate. Actual root discovery,
+cache claims, current-value fact admission and first accepted presentation occur
+in controller order. Scope copies retain all backing dependence. Use exact
+verified host modules from .build/contracts/p08-scoped-host-c5eocina plus P07
+Swift6.4 runtime, verify receipts before imports/link; new driver records both.
+The finite recording endpoint remains a component until real raster integration;
+report validation alone does not certify backend pixels/application target gate.

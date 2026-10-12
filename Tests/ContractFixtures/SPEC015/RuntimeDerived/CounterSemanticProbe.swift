@@ -77,6 +77,11 @@ private func exerciseCounter(_ semantic: borrowing SemanticRecordStore<CounterPa
             }
             let result = semantic.expand(CounterScreen<CounterDomain>(), roles: CounterRoles.self, codec: CanvasSemanticPayloadCodec<CounterRoles, CounterValueTable>.self, limits: counterExpansionLimits, binding: ObservableSemanticBodyBinding(models: models.borrowedScope(), root: root.borrowedRoot(), domain: CounterDomain.self))
             guard case .success = result else { print("counter expansion failed", result); preconditionFailure("counter expansion") }
+            if value == 0 {
+                do throws(SemanticExpansionError) { try semantic.resetAfterQuiescence(); preconditionFailure("candidate reset accepted") }
+                catch { counterSemanticExpect(error == .reentrancyViolation); checks += 1 }
+
+            }
             do throws(DrawingError) {
                 try withCounterValues(dynamic: dynamic) { (values) throws(DrawingError) in
                     try CanvasSemanticTransfer.stage(from: semantic, into: values, table: CounterValueTable())
@@ -99,6 +104,12 @@ private func exerciseCounter(_ semantic: borrowing SemanticRecordStore<CounterPa
             key = root.modelKey(identity: identity!, ordinal: 0)!
         } catch { print("counter caught", error); preconditionFailure("counter model phase") }
         try semantic.publishCandidate()
+        if value == 0 {
+            try semantic.withPublishedView { _ in
+                do throws(SemanticExpansionError) { try semantic.resetAfterQuiescence(); preconditionFailure("published reader reset accepted") }
+                catch { counterSemanticExpect(error == .reentrancyViolation); checks += 1 }
+            }
+        }
     }
     do throws(ObservableStateError) {
         // This explicit-final-ticket transfer API refuses while another cache
@@ -122,6 +133,10 @@ private func exerciseCounter(_ semantic: borrowing SemanticRecordStore<CounterPa
         counterSemanticExpect(models.mutate(key!, mutation: .reset, report: { .dirtied }) == .failure(.staleModel)); checks += 1
         try root.shutdown(); checks += 1
     } catch { print("counter caught", error); preconditionFailure("counter cache/replacement") }
+    try semantic.resetAfterQuiescence(); checks += 1
+    try semantic.resetAfterQuiescence(); checks += 1
+    do throws(SemanticExpansionError) { try semantic.withPublishedView { _ in preconditionFailure("reset publication visible") } }
+    catch { counterSemanticExpect(error == .invariantViolation); checks += 1 }
     return checks
 }
 private func counterSemanticBacking(models: borrowing ObservableModelScope<CounterOwnedModel, CounterModelSchema>, root: borrowing ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, dynamic: Bool) -> Int {

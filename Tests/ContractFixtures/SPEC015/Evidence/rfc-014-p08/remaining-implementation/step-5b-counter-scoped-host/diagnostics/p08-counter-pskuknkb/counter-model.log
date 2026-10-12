@@ -1,0 +1,31 @@
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostAssembly.swift:31:36: error: cannot convert value of type 'RasterPresentationContributionInsertion' to expected argument type 'Bool'
+29 |         let realization = RasterRealizationContribution(kind: .fullSurface, operations: operations, operationStream: .synchronousBorrowedOneShot, encodings: .rgba8888, producedSubmissionLifetimes: .synchronousBorrow, maximumExtent: extent, maximumRegionWidth: 100, maximumRegionHeight: 100, rowByteAlignment: 4, maximumRasterBytes: bytes, maximumPayloadBytes: bytes)!
+30 |         var contributions = RasterPresentationContributions()
+31 |         precondition(contributions.insert(.renderProducer(.init(operations: operations, operationStream: .synchronousBorrowedOneShot)!)))
+   |                                    `- error: cannot convert value of type 'RasterPresentationContributionInsertion' to expected argument type 'Bool'
+32 |         precondition(contributions.insert(.rasterBackend(.init(primary: realization, alternate: nil)!)))
+33 |         precondition(contributions.insert(.surfaceDisplay(.init(extent: extent, encodings: .rgba8888, acceptedSubmissionLifetimes: .synchronousBorrow, handoffs: .synchronous, maximumRegionWidth: 100, maximumRegionHeight: 100, rowByteAlignment: 4, maximumInFlightCount: 1, maximumInFlightBytes: bytes)!)))
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostAssembly.swift:32:36: error: cannot convert value of type 'RasterPresentationContributionInsertion' to expected argument type 'Bool'
+30 |         var contributions = RasterPresentationContributions()
+31 |         precondition(contributions.insert(.renderProducer(.init(operations: operations, operationStream: .synchronousBorrowedOneShot)!)))
+32 |         precondition(contributions.insert(.rasterBackend(.init(primary: realization, alternate: nil)!)))
+   |                                    `- error: cannot convert value of type 'RasterPresentationContributionInsertion' to expected argument type 'Bool'
+33 |         precondition(contributions.insert(.surfaceDisplay(.init(extent: extent, encodings: .rgba8888, acceptedSubmissionLifetimes: .synchronousBorrow, handoffs: .synchronous, maximumRegionWidth: 100, maximumRegionHeight: 100, rowByteAlignment: 4, maximumInFlightCount: 1, maximumInFlightBytes: bytes)!)))
+34 |         precondition(contributions.insert(.hostResourcePolicy(.init(maximumRasterBytes: bytes, maximumPayloadBytes: bytes, maximumInFlightBytes: bytes, allowedRealizations: .fullSurface, allowedEncodings: .rgba8888, preferredRealization: .fullSurface, preferredEncoding: .rgba8888)!)))
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostAssembly.swift:33:36: error: cannot convert value of type 'RasterPresentationContributionInsertion' to expected argument type 'Bool'
+31 |         precondition(contributions.insert(.renderProducer(.init(operations: operations, operationStream: .synchronousBorrowedOneShot)!)))
+32 |         precondition(contributions.insert(.rasterBackend(.init(primary: realization, alternate: nil)!)))
+33 |         precondition(contributions.insert(.surfaceDisplay(.init(extent: extent, encodings: .rgba8888, acceptedSubmissionLifetimes: .synchronousBorrow, handoffs: .synchronous, maximumRegionWidth: 100, maximumRegionHeight: 100, rowByteAlignment: 4, maximumInFlightCount: 1, maximumInFlightBytes: bytes)!)))
+   |                                    `- error: cannot convert value of type 'RasterPresentationContributionInsertion' to expected argument type 'Bool'
+34 |         precondition(contributions.insert(.hostResourcePolicy(.init(maximumRasterBytes: bytes, maximumPayloadBytes: bytes, maximumInFlightBytes: bytes, allowedRealizations: .fullSurface, allowedEncodings: .rgba8888, preferredRealization: .fullSurface, preferredEncoding: .rgba8888)!)))
+35 |         var workspace = RasterPresentationResolverWorkspace()!
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostAssembly.swift:34:36: error: cannot convert value of type 'RasterPresentationContributionInsertion' to expected argument type 'Bool'
+32 |         precondition(contributions.insert(.rasterBackend(.init(primary: realization, alternate: nil)!)))
+33 |         precondition(contributions.insert(.surfaceDisplay(.init(extent: extent, encodings: .rgba8888, acceptedSubmissionLifetimes: .synchronousBorrow, handoffs: .synchronous, maximumRegionWidth: 100, maximumRegionHeight: 100, rowByteAlignment: 4, maximumInFlightCount: 1, maximumInFlightBytes: bytes)!)))
+34 |         precondition(contributions.insert(.hostResourcePolicy(.init(maximumRasterBytes: bytes, maximumPayloadBytes: bytes, maximumInFlightBytes: bytes, allowedRealizations: .fullSurface, allowedEncodings: .rgba8888, preferredRealization: .fullSurface, preferredEncoding: .rgba8888)!)))
+   |                                    `- error: cannot convert value of type 'RasterPresentationContributionInsertion' to expected argument type 'Bool'
+35 |         var workspace = RasterPresentationResolverWorkspace()!
+36 |         guard case .available(let effective) = RasterPresentationResolver.resolve(requirement: requirement, contributions: contributions, workspace: &workspace) else { return nil }

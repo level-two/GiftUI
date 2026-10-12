@@ -107,6 +107,17 @@ package struct SemanticRecordStore<Payload>: ~Copyable, ~Escapable {
         if b.metadata.pointee.phase == .published { return 1 }
         return nil
     }
+    /// Clears retained semantic products only after the owning runtime has ended
+    /// candidates and scoped readers. Bank revisions remain monotonic.
+    package borrowing func resetAfterQuiescence() throws(SemanticExpansionError) {
+        guard a.metadata.pointee.readers == 0, b.metadata.pointee.readers == 0,
+            a.metadata.pointee.phase != .expanding, b.metadata.pointee.phase != .expanding,
+            a.metadata.pointee.phase != .candidate, b.metadata.pointee.phase != .candidate
+        else { throw .reentrancyViolation }
+        a.clear()
+        b.clear()
+    }
+
     package borrowing func beginCandidate() throws(SemanticExpansionError) -> UInt8 {
         guard candidate == nil, a.metadata.pointee.phase != .expanding,
             b.metadata.pointee.phase != .expanding
