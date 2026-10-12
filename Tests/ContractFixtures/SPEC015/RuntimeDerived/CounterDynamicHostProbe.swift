@@ -53,13 +53,18 @@ extension DynamicCounterProfileStorage {
                                     host.teardown()
                                     precondition(host.owner.teardownStep == 8 && host.runOpportunity() == .invalidLifecycle)
                                     precondition(host.assemblyReport == assembly.report)
+                                        let expectedApplication = failAfterRuntime ? 0 : 1
+                                        precondition(pointer.pointee.applicationConstructions == expectedApplication)
+                                        precondition(pointer.pointee.applicationCallbacks == expectedApplication && pointer.pointee.reentrantApplicationRejections == expectedApplication)
+                                        precondition(pointer.pointee.observationsInstalled == expectedApplication && pointer.pointee.observationsDetached == expectedApplication)
+                                        precondition(pointer.pointee.stoppedApplicationChecks >= expectedApplication)
                                     var stoppedAdmission = CounterAdmission(borrowing: pointer)
                                     precondition(stoppedAdmission.submit(stateChange: 9).result == .unavailable)
                                     precondition(pointer.pointee.admission.pendingStateCount == 0)
                                     precondition(!pointer.pointee.inputGate.inputIsEligible)
                                     let rejectedInput = pointer.pointee.inputGate.submit(phase: .down, position: .init(x: 0, y: 0), source: .init(rawValue: 0), observedPresentationRevision: pointer.pointee.runtime.committedPresentation, isMalformed: false, priorPhysicalSequenceIsComplete: true, to: &stoppedAdmission)
                                     precondition(rejectedInput == .sourceQuiesced(.inputUnavailable))
-                                    return count + 9
+                                    return count + 13
                                 }
                             }
                         } catch { preconditionFailure("counter Dynamic Canvas") }

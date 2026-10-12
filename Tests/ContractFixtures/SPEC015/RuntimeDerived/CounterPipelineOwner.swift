@@ -49,6 +49,12 @@ struct CounterControl {
         get { runtime.unavailable }
         set { runtime.unavailable = newValue }
     }
+    var applicationConstructions = 0
+    var applicationCallbacks = 0
+    var observationsInstalled = 0
+    var observationsDetached = 0
+    var reentrantApplicationRejections = 0
+    var stoppedApplicationChecks = 0
     var show = true
     var mutate: Bool {
         get { admission.pendingState != nil }

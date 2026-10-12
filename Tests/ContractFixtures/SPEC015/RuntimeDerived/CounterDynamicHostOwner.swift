@@ -80,6 +80,13 @@ enum CounterDynamicHostState: ~Copyable, ~Escapable {
     init(supplied: consuming CounterDynamicHostSupplied, activationSpan: Span<UInt8>) {
         self = .inert(consume supplied, activationSpan)
     }
+    var controlPointer: UnsafeMutablePointer<CounterControl> {
+        switch self {
+        case .inert(let supplied, _): supplied.controlPointer
+        case .active(let coordinator, _, _): coordinator.opportunity.control
+        case .retired: preconditionFailure("retired counter control")
+        }
+    }
     @_lifetime(self: copy self)
     mutating func activate(endpointConfiguration: HostEndpointConfiguration) {
         switch consume self {
@@ -182,26 +189,7 @@ enum CounterDynamicHostState: ~Copyable, ~Escapable {
 
 }
 
-// Finite counter application delivery owns its source value, repository value,
-// observation token and nonreentrant application opportunity gate.
-struct CounterDynamicApplicationOwners {
-    var sourceValue: UInt8 = 0
-    var repositoryValue: UInt8 = 0
-    var observing = false
-    var sourceStarted = false
-    var deliveryEnabled = false
-    var inputEnabled = false
-    var gate = HostApplicationOpportunityGate()
-    mutating func installObservation() -> UInt8 { observing = true; return repositoryValue }
-    mutating func startSource() -> Bool {
-        guard gate.begin() == .admitted else { return false }
-        defer { precondition(gate.complete() == nil) }
-        sourceStarted = true
-        repositoryValue = sourceValue
-        return observing && deliveryEnabled
-    }
-    mutating func stopDelivery() { deliveryEnabled = false; inputEnabled = false; observing = false; sourceStarted = false; precondition(gate.quiesce() == nil) }
-}
+typealias CounterDynamicApplicationOwners = CounterApplicationOwners
 
 struct CounterDynamicHostOwner: ~Copyable, ~Escapable, SignalAnalyzerPresetLiveOwner {
     typealias ActivationFailure = MacOSDynamicHostActivationFailure
@@ -227,7 +215,7 @@ struct CounterDynamicHostOwner: ~Copyable, ~Escapable, SignalAnalyzerPresetLiveO
     }
     mutating func constructApplicationOwners() -> HostActivationStepResult<ActivationFailure> {
         precondition(activationStep == 1)
-        application = CounterDynamicApplicationOwners(); activationStep = 2
+        application = CounterDynamicApplicationOwners(control: state.controlPointer); activationStep = 2
         return .advanced
     }
     mutating func attachRootModelInFirstCandidate() -> HostActivationStepResult<ActivationFailure> {
@@ -250,7 +238,7 @@ struct CounterDynamicHostOwner: ~Copyable, ~Escapable, SignalAnalyzerPresetLiveO
     }
     mutating func startAcquisitionThroughApplicationOpportunity() -> HostActivationStepResult<ActivationFailure> {
         precondition(activationStep == 5)
-        guard application!.startSource(), state.admit(application!.repositoryValue) else { return .failure(.invariant, progress: .init(sourceStarted: true)) }
+        guard application!.startSource() else { return .failure(.invariant, progress: .init(sourceStarted: true)) }
         activationStep = 6; return .advanced
     }
     mutating func establishWakeAndPacingHostLoop() -> HostActivationStepResult<ActivationFailure> {

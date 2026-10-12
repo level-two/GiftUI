@@ -350,3 +350,5 @@ Actual96000surface+payload bytes and all control fields are physically charged.
 Equal/adjacent-capacity/shared-health projection and pre-production envelope
 negatives pass. Guard0/2. Real graph/application/wake, four routes and early linked
 images remain open; no complete image or P08 exit claim.
+
+2026-10-12 P08 step7c: actual finite source→repository→admission callback lifecycle in both scoped hosts, exact detach, reentrant/post-stop rejection. [Receipt](remaining-implementation/step-7c-counter-application/result.md),1,348,543assertions/23controls; guard0/2. No graph/wake or complete-image claim.

@@ -304,3 +304,19 @@ reportedassertions/23controls at `.build/contracts/p08-counter-enb6do6k`. All ha
 verified; guard0/2. Native visible stroke and exact actual endpoint/health/byte
 controls complete this finite slice. Remaining real graph/application/wake source
 integration precedes sequential final target-route and linked-image collection.
+
+
+## Step7c — actual finite application callbacks
+
+Sequential Strong Sol6.1 High; guard0/2. Replace boolean-only bootstrap with
+actual finite scalar source, repository observation token and use-case owners.
+Their nonescaping synchronous callback arguments deliver source→repository→the
+same real admission controller; no model/ticket alias or callback is retained.
+Existing application opportunity gate rejects reentry inside actual callback.
+Shutdown stops source, detaches exact token, quiesces gate and executes refused
+late-delivery attempts before owner release. Both profiles share this finite
+counter application composition; full/partial activation lifecycle asserts exact
+constructions, callbacks and detach counts. Wake pointer Sendable proposal is held
+pending contract audit; no unchecked conformance added. Graph/wake remain open.
+
+Step7c [receipt](step-7c-counter-application/result.md): actual application callbacks pass1,348,543assertions/23controls in9k3jnaqc. Source/artifact hashes, formatting/lint, governance and diff pass; guard0/2. Graph/wake and complete linked target images remain open.
