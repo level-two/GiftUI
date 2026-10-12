@@ -1,0 +1,6 @@
+/Users/eugene/work/GiftUI/scripts/contracts/check-fixture-manifest.rb 
+/Users/eugene/work/GiftUI/scripts/contracts/check-spec-002-profile-corpus.rb 
+/Users/eugene/work/GiftUI/scripts/contracts/check-spec-002-migration.rb 
+/Users/eugene/work/GiftUI/scripts/contracts/check-spec-002-traceability.rb 
+/Users/eugene/work/GiftUI/scripts/contracts/check-spec-002-scope.rb 
+/Users/eugene/work/GiftUI/scripts/raspberry-pi/doctor.sh 

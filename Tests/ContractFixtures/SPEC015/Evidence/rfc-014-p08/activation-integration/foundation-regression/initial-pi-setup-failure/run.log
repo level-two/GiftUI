@@ -1,0 +1,27 @@
+SPEC-002 fixture manifest check passed: 3 fixtures.
+SPEC-002 profile corpus check passed: 7 ordered cases, checksum 28.
+SPEC-002 migration closure passed: 24 rows, 6 immutable PoC inventories, exact bounded Foundation source plus approved SPEC-006, SPEC-007, SPEC-008, SPEC-010, and SPEC-012 declarations.
+SPEC-002 traceability passed: reciprocal authority links, supersession, manifest navigation, and split adapter ownership.
+SPEC-002 scope passed: Foundation and owned fixtures contain no downstream policy; adapters remain at split owner boundaries.
+ok:    running on macOS
+ok:    host Swift executable exists
+ok:    host Swift is project-local
+ok:    host swift-autolink-extract exists
+ok:    host llvm-objdump exists
+ok:    host llvm-objcopy exists
+ok:    host Swift is 6.4
+ok:    static ARMv6 destination exists
+ok:    dynamic ARMv6 destination exists
+ok:    destination targets armv6-unknown-linux-gnueabihf
+ok:    destination uses the project-local SDK
+ok:    destination uses the project-local host tools
+ok:    destination contains no /opt SDK path
+ok:    cached SDK archive checksum
+ok:    cached macOS Swift package checksum
+
+Host:   Apple Swift version 6.4 (swift-6.4-RELEASE)
+Tools:  /Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx
+Target: armv6-unknown-linux-gnueabihf
+SDK:    /Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.4.0-RELEASE-raspios-bookworm-armv6
+
+GiftUI Raspberry Pi cross-compilation environment is ready

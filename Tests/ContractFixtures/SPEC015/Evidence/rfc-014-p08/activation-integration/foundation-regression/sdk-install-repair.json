@@ -1,0 +1,10 @@
+{
+  "cause": "Manually verified/extracted SDK setup omitted the standard install identity marker read by full SPEC-002 driver.",
+  "repair": "Write the same verified identity fields as setup-toolchain.sh lines222-227; no SDK binary or destination change.",
+  "archive": ".toolchains/downloads/swift-6.4.0-RELEASE-raspios-bookworm-armv6-sdk.tar.gz",
+  "verified_archive_sha256": "3332907e1fe366a24cdd9b4af566cb4f1a1f39aa8fad785cb328af17c7484848",
+  "marker": ".toolchains/sdk/swift-6.4.0-RELEASE-raspios-bookworm-armv6/.giftui-install",
+  "marker_content": "swift_version=6.4\ntarget=armv6-unknown-linux-gnueabihf\ndistribution=raspios-bookworm\nsha256=3332907e1fe366a24cdd9b4af566cb4f1a1f39aa8fad785cb328af17c7484848\n",
+  "repair_number": 1,
+  "failed_report": ".build/contract-reports/spec-002/rfc-014/.tmp-raspberry-pi-armv6-80195"
+}

@@ -1,0 +1,9 @@
+schema_version=1
+spec=SPEC-002
+profile=raspberry-pi-armv6
+repository_revision=81ee86317ecf9be71d4b91c2ef36883cc435f6a5
+report_directory=.build/contract-reports/spec-002/raspberry-pi-armv6
+compiler_baseline=rfc-014
+invocation=scripts/contracts/run-spec-002.sh --profile raspberry-pi-armv6 --compiler-baseline rfc-014
+semantic_corpus_sha256=3add894045d330ea1441f2a6ff6d5465840c867ba02fb83912657819a20f3ccb
+exit_code=1

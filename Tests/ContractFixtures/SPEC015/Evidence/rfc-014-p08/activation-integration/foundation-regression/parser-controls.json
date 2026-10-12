@@ -18,5 +18,15 @@
     "name": "optional-provenance",
     "exit": 1,
     "output": "SPEC-002 Foundation surface check failed: normalized event contains optional provenance\n"
+  },
+  {
+    "name": "forbidden-owner-.",
+    "exit": 1,
+    "output": "SPEC-002 boundary check failed: GiftUI public/package interfaces import, re-export, or reference a prohibited module\n"
+  },
+  {
+    "name": "forbidden-owner-::",
+    "exit": 1,
+    "output": "SPEC-002 boundary check failed: GiftUI public/package interfaces import, re-export, or reference a prohibited module\n"
   }
 ]
