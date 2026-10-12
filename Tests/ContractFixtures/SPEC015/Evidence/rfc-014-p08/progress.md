@@ -264,3 +264,10 @@ controls); existing actual activation and four ownership negatives remain passin
 The nine-stage validator itself is unchanged. Counter actual storage/report/
 application proof remains next, not inferred from these controls. Guard0/2;
 no unproductive repair. No P08 acceptance or target image claim.
+
+## Remaining step 2 — actual counter source/model (2026-10-12)
+
+[Receipt](remaining-implementation/step-2-counter-source/result.md): authored finite
+source lowered and four modules compiled;92actual Static/Dynamic observable-model
+assertions pass. Guard0/2 after narrowed fixture phase correction. Full host and
+four-route/early-image obligations remain open; no self-pass.

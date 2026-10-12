@@ -53,3 +53,22 @@ No contract change is inferred from an implementation convenience.
 [Entry dependency identities](entry-dependencies.json) were verified read-only:
 all inputs/artifacts/compiler/receipt hashes for four fresh P07 routes. Reuse
 those approved Swift6.4 module graphs and newly built macro, never old6.3 modules.
+
+## Step 2 — finite source and concrete model, before edits
+
+Strong Sol6.1 High; guard0/2. Author `RuntimeDerived/Counter.swift` and
+`Counter.schema.json`: UInt8 seeds and reads, exact actions0/1, title/digit,
+Increment/Reset disabled boundaries, one Canvas with absent stroke at0 and
+round width1 segment (4,8) to(4+4×value,8). Lower through the existing finite
+frontend and compile new schema/presentation/table modules, then the concrete
+`CounterOwnedModel` mutation/domain bindings. No supplied source topology or
+preexpanded graph. This slice does not claim the complete host/pipeline.
+
+Command: `python3 scripts/contracts/check-spec-015-counter.py --runtime-build
+.build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static` after
+`scripts/format-swift.sh`; verify retained compiler/module hashes, lower source,
+compile and exercise clamp/reset/no-op/fact preflight against actual scoped
+observable storage. Follow-up host join will consume these exact modules and
+replace trace services with actual owners. The existing semantic owner needs
+quiescent reset before report invalidation; a narrowly guarded internal seam is
+permitted by parent for the approved teardown order, not a new protocol.
