@@ -1121,3 +1121,28 @@ change (fixtures excluded); one unmutated-local warning preserved. No retained
 metadata fields/API/limit/owner changes. R01–R04 independently accepted; R05
 separate review next. Historical helper2/2/B031/1 closed. Commit then STOP;
 no targets, dependency refresh, P08 exit or lifecycle transition.
+
+### R05 independent result review dispatch
+
+Entry `446c165a`, clean. Strong `gpt-6.1-sol` / `high`, C3/R3; sequential.
+Review exact seven-fixture construction-selection delta and frozen initial run
+against prior R05 handoff/HC-003. Verify actual consumers use checked selections,
+13 omission/3 hidden or bound-origin controls reject before later projections,
+identity/lifetime/operational invariants remain and recorded identities match.
+No compiler, binary, test, source edit or dependency rebuild. Review/progress
+only, commit. Return bounded R05 disposition and exact existing four-route/early
+linked-image entry points for next P08 assignment, with any true prerequisite
+blocker distinguished from missing implementation. Historical guards unchanged;
+no complete P08, target execution or resource claim.
+
+R05 independent outcome: bounded native ACCEPT2,697,625/zero24/24. Actual closed
+selections feed endpoint/text/control/configuration, root/admission and retained
+report scheduler;13 omissions plus3 hidden/bound-origin cases reject before all8
+later projections. Matched190 current/Git inputs,124 artifacts,26 frozen reports
+and patch; no mismatch or execution. No lifetime/API/layout/owner change.
+[Exact review and registered-entrypoint handoff](remaining-implementation/r05-factory-origin-controls/independent-review.md).
+Registered run-spec015 profiles still select analyzer products/firmware; native
+counter driver is Darwin-only. Next P08 slice maps/adapts actual existing route
+inputs/current counter and Embedded endpoint before crediting four-route or early
+image evidence. Missing integration is not a new human approval gate. Historical
+helper2/2/B031/1 closed; P08/T8.1 open, P09–P12 pending; no package/target pass.
