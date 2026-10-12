@@ -1,6 +1,8 @@
 # The supported boundary verifies the exact current source recipe first.
 # Every owner, including base GiftUI, receives fresh firmware-specific objects.
 include("${GIFTUI_COUNTER_SOURCE_INPUTS}")
+# Preserve statically resolved Embedded Swift runtime-function references in ROM.
+zephyr_linker_sources(RODATA counter_got.ld)
 if(NOT giftui_counter_owners OR NOT CONFIG_FP_HARDABI)
     message(FATAL_ERROR "Verified P08 owners and Cortex-M4F hard-float are required")
 endif()

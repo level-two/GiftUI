@@ -102,3 +102,34 @@ runtime pointers; RasterFillCoverage.swift.obj intersection copy survives,
 CounterTiledRaster.swift.obj copy discarded. Exact outputs/script diff/argv/
 hashes/logs/read-only inspection in got-placement/result.md. No production change
 or final-image/resource claim. STOP for independent Strong review.
+
+
+## Reviewed production GOT correction dispatch — 2026-10-12
+
+Entry93d15431, clean tree; read got-placement/independent-review.md.
+P08/R07 SPEC-015 T8.1/HC-RD-003, unchanged accepted authority/active plan/R06
+prerequisites. C3/R3 Strong -> Sol6.1 High. All346frozen diagnostic input hashes
+match before edit; successful control remains preserved and budget1/1 closed.
+
+Exact allowed implementation files: current counter branch Counter.cmake adds
+zephyr_linker_sources(RODATA counter_got.ld); adjacent counter_got.ld contains only
+reviewed ALIGN4/boundary symbols/four GOT patterns. Existing pinned Zephyr RODATA
+hook places content before ROM bounds/accounting; no generated script patch,
+KEEP, runtime symbol/behavior/constructor/entropy, source/flags/compiler/SDK,
+workload/resource/heap/stack/config change or normal-analyzer recipe alteration.
+Remaining local implementation choice: none, exact handoff prescribed.
+
+One supported validation invocation after required formatter:
+scripts/nrf52840/build.sh --application signal-analyzer-static --counter-build
+.build/nrf52840/contracts/p08-counter-7x97oi7d. Capture exact two-file patch/input
+hashes/formatter/build argv/timestamps/exit/logs, generated pre0/final scripts and
+ELF/HEX/map/DTS/reports in new production-attempt evidence. Supported CMake
+compilation/link stages permitted; no automatic retry or follow-on repair.
+
+Expected final GOT span20bytes,12zero header plus final runtime Thumb pointers,
+in ROM/FLASH VMA/LMA before accounted end, no RAM copy/dynamic reloc. Check final
+ARMv7EM/VFP, LOAD RAM/flash, zeroheap/allocator; actual retained Croot/Static corpus/
+callees gross stack vs27648, stop any oversized frame/unresolved overlap.
+Limits RAM196608/flash1048576/heap0 unchanged. Commit coherent source step, then
+record the single validation outcome and STOP for independent Strong review.
+Historicalhelper2/2+B031/1 permanently closed; no guard reset or hardware.
