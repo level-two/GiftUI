@@ -56,7 +56,10 @@ extension DynamicCounterProfileStorage {
                                     var stoppedAdmission = CounterAdmission(borrowing: pointer)
                                     precondition(stoppedAdmission.submit(stateChange: 9).result == .unavailable)
                                     precondition(pointer.pointee.admission.pendingStateCount == 0)
-                                    return count + 7
+                                    precondition(!pointer.pointee.inputGate.inputIsEligible)
+                                    let rejectedInput = pointer.pointee.inputGate.submit(phase: .down, position: .init(x: 0, y: 0), source: .init(rawValue: 0), observedPresentationRevision: pointer.pointee.runtime.committedPresentation, isMalformed: false, priorPhysicalSequenceIsComplete: true, to: &stoppedAdmission)
+                                    precondition(rejectedInput == .sourceQuiesced(.inputUnavailable))
+                                    return count + 9
                                 }
                             }
                         } catch { preconditionFailure("counter Dynamic Canvas") }

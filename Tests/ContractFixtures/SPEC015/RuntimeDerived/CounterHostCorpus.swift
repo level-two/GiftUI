@@ -84,14 +84,29 @@ func counterHostCorpus<H: MVPHostInstance & ~Copyable & ~Escapable>(host: inout 
     var checks = counterCheckHostFrame(control.pointee, value: 0)
     var admission = CounterAdmission(borrowing: control)
     var sequence: UInt32 = 0
+    // Rejected physical input must never reach the coordinator's admission queue.
+    let firstRevision = control.pointee.runtime.committedPresentation!
+    counterCorpusExpect(control.pointee.inputGate.inputIsEligible)
+    for (source, revision, malformed, reason) in [
+        (InputSourceID(rawValue: 1), Optional(firstRevision), false, HostNormalizedInputRejection.unknownSource),
+        (InputSourceID(rawValue: 0), nil, false, .stalePresentation),
+        (InputSourceID(rawValue: 0), Optional(firstRevision), true, .malformed),
+    ] {
+        let rejected = control.pointee.inputGate.submit(phase: .down, position: .init(x: 0, y: 0), source: source, observedPresentationRevision: revision, isMalformed: malformed, priorPhysicalSequenceIsComplete: true, to: &admission)
+        counterCorpusExpect(rejected == .dropped(reason))
+        counterCorpusExpect(control.pointee.admission.pointerCount == 0)
+        checks += 2
+    }
+    checks += 1
     func click(_ code: Int, expected: UInt8, changed: Bool) {
         let revision = control.pointee.runtime.committedPresentation!
         let applied = control.pointee.applied
         let point = control.pointee.actionPoints[code]
-        let down = NormalizedPointerEvent(phase: .down, position: point, source: .init(rawValue: 0), sequence: .init(rawValue: sequence), ordinal: .init(rawValue: 0), presentationRevision: revision)
-        let up = NormalizedPointerEvent(phase: .up, position: point, source: .init(rawValue: 0), sequence: .init(rawValue: sequence), ordinal: .init(rawValue: 1), presentationRevision: revision)
-        counterCorpusExpect(admission.submit(pointer: down).result == .queued)
-        counterCorpusExpect(admission.submit(pointer: up).result == .queued)
+        let down = control.pointee.inputGate.submit(phase: .down, position: point, source: .init(rawValue: 0), observedPresentationRevision: revision, isMalformed: false, priorPhysicalSequenceIsComplete: true, to: &admission)
+        let up = control.pointee.inputGate.submit(phase: .up, position: point, source: .init(rawValue: 0), observedPresentationRevision: revision, isMalformed: false, priorPhysicalSequenceIsComplete: true, to: &admission)
+        guard case .queued(let downEvent) = down, case .queued(let upEvent) = up else { preconditionFailure("counter physical input gate") }
+        counterCorpusExpect(downEvent.sequence.rawValue == sequence && downEvent.ordinal.rawValue == 0 && downEvent.presentationRevision == revision)
+        counterCorpusExpect(upEvent.sequence == downEvent.sequence && upEvent.ordinal.rawValue == 1 && upEvent.presentationRevision == revision)
         guard case .cycle(.success(let summary)) = host.runOpportunity() else { preconditionFailure("counter actual host typed action") }
         counterCorpusExpect(summary.admission.inputEventCount == 2 && summary.admission.semanticActionCount == (changed ? 1 : 0))
         counterCorpusExpect(control.pointee.applied == applied + (changed ? 1 : 0))

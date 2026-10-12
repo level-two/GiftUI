@@ -217,3 +217,22 @@ CounterControl (observations/instrumentation/controller/padding included) is
 charged in profile partitions. Endpoint remains separately accounted; no image
 RAM/stack or pixel claim. Guard0/2; finite input-gate/wake/live graph/raster and
 four-route/earlyimage obligations remain open.
+
+
+## Step7a — actual target-local normalized input gate
+
+Sequential Strong Sol6.1 High; guard0/2. The same physical CounterControl owns
+one existing HostNormalizedInputGate. Accepted presentation commits install
+the revision; both host corpora submit physical down/up through that gate into
+the same admission controller. Wrong source, stale revision and malformed input
+must leave the real admission queue empty. Host presentation termination quiesces
+the gate, including partial activation; input after teardown is rejected. Current
+endpoint acceptance is a recording endpoint, so this proves the gate/coordinator
+join and its lifecycle, not physical backend presentation. Endpoint/raster join
+remains required and will preserve that distinction. No new gate or host contract.
+
+
+Step7a result: [receipt](step-7a-counter-input-gate/result.md) passes3,687
+assertions/23controls at `.build/contracts/p08-counter-vs_qqlzj`. No compile repair,
+all source/artifact hashes verified. Guard0/2. Remaining endpoint/raster/live graph
+and wake joins, four registered routes and early linked target ledgers stay open.

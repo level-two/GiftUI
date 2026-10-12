@@ -96,7 +96,7 @@ positive = positive.replace('let ownedChecks = counterOwnedSchedulerCompatibilit
 positive = positive.replace('runCounterHost(failAfterRuntime: Bool)', 'rejectCounterHostEscape(failAfterRuntime: Bool)')
 positive = positive.replace('        guard case .valid(let audit)', '        var escaped: SignalAnalyzerPresetHostInstance<CounterHostOwner>? = nil\n        guard case .valid(let audit)', 1)
 begin = positive.index('                                        precondition(host.lifecycleState')
-end = positive.index('                                        return count + 7', begin) + len('                                        return count + 7')
+end = positive.index('                                        return count + 9', begin) + len('                                        return count + 9')
 positive = positive[:begin] + '                                        _ = host.activate()\n                                        escaped = consume host\n                                        return 1' + positive[end:]
 positive = positive.replace('        return checks', '        var escapedOwner = escaped.take()!\n        _ = escapedOwner.runOpportunity()\n        escapedOwner.teardown()\n        return checks')
 backing_negative.write_text(positive)

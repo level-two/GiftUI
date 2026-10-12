@@ -1,0 +1,13 @@
+{
+  "module": "P08CounterSchema",
+  "domain": "CounterReadDomain",
+  "imports": [],
+  "models": [{
+    "authoredType": "CounterModel",
+    "schema": "CounterModelSchema",
+    "facade": "CounterRead",
+    "seedFields": [{"name": "value", "type": "UInt8"}],
+    "fields": [{"name": "value", "type": "UInt8", "indexed": false}]
+  }],
+  "calls": ["counterText", "BoundedText", "GeometryScalar", "StrokeStyle"]
+}

@@ -3,6 +3,7 @@ import GiftUI
 import GiftUIDrawing
 @testable import GiftUIExecution
 import GiftUIInteraction
+import GiftUIHostConfiguration
 import GiftUILayout
 import GiftUIObservableState
 import GiftUIRenderCore
@@ -24,6 +25,7 @@ struct CounterControl {
     var runtime = CounterRuntimeControl()
     // The coordinator and finite callback adapter share this single controller.
     var admissionController: CounterAdmission.Controller?
+    var inputGate = HostNormalizedInputGate(configuredSource: .init(rawValue: 0))
     var semanticSnapshot = CounterSemanticSnapshot()
     var lastFrame = CounterRenderSink()
     var actionPoints: InlineArray<2, Point> = .init(repeating: Point(x: 0, y: 0))
@@ -169,6 +171,7 @@ where Geometry: CounterGeometry, Candidate: CounterCandidateBacking, Committed: 
         presentationTeardownComplete = true
         control.pointee.teardowns += 1
         control.pointee.unavailable = true
+        control.pointee.inputGate.quiesce()
         quiescent = true; pending = false
         control.pointee.admission.resetAll()
         control.pointee.runtime.pointer.capture.cancel()
@@ -456,7 +459,7 @@ where Geometry: CounterGeometry, Candidate: CounterCandidateBacking, Committed: 
         case .discardObservableCandidate:
             if observableCandidate { discardLocalCandidates() }
         case .discardInteractionCandidate: interaction.resolveCandidate(.discard); generations.resolveCandidate(committed: false); interactionCandidate = false
-        case .commitInteractionCandidate: interaction.resolveCandidate(.commit(presentation!)); generations.resolveCandidate(committed: true); interactionCandidate = false; control.pointee.commits += 1; actionIdentity = candidateActionIdentity; committedPresentation = presentation; control.pointee.runtime.committedPresentation = presentation
+        case .commitInteractionCandidate: interaction.resolveCandidate(.commit(presentation!)); generations.resolveCandidate(committed: true); interactionCandidate = false; control.pointee.commits += 1; actionIdentity = candidateActionIdentity; committedPresentation = presentation; control.pointee.runtime.committedPresentation = presentation; control.pointee.inputGate.installPhysicalPresentation(presentation!)
         case .resetAttemptStorage:
             discardLocalCandidates()
             if interactionCandidate { interaction.resolveCandidate(.discard); generations.resolveCandidate(committed: false); interactionCandidate = false }

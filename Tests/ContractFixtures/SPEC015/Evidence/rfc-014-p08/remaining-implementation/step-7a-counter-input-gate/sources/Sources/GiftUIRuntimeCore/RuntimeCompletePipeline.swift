@@ -1,0 +1,482 @@
+import GiftUI
+import GiftUIExecution
+
+package enum RuntimeCompletePipelineStage: UInt8, Equatable, Sendable {
+    case admissionAndSeal = 0
+    case applyAdmittedWork = 1
+    case freezeObservableMutation = 2
+    case observableCandidateAndSemanticExpansion = 3
+    case layout = 4
+    case canvasInvocationAndPlan = 5
+    case combinedRenderPreflight = 6
+    case interactionCandidate = 7
+    case semanticAndObservablePublication = 8
+    case candidateAllocation = 9
+    case offerAndProduction = 10
+}
+
+package enum RuntimePipelineStepResult<OwnerFailure: Equatable & Sendable>: Equatable, Sendable {
+    case advanced
+    case failure(RunCycleFailure<OwnerFailure>)
+}
+
+package enum RuntimePipelineMutationResult<OwnerFailure: Equatable & Sendable>: Equatable, Sendable
+{
+    case applied(Bool)
+    case failure(RunCycleFailure<OwnerFailure>, mutationApplied: Bool)
+}
+
+package struct RuntimePipelinePublication: Equatable, Sendable {
+    package let semanticRevision: SemanticRevision
+    package let changed: Bool
+
+    package init(semanticRevision: SemanticRevision, changed: Bool) {
+        self.semanticRevision = semanticRevision
+        self.changed = changed
+    }
+}
+
+package enum RuntimePipelinePublicationResult<OwnerFailure: Equatable & Sendable>: Equatable,
+    Sendable
+{
+    case published(RuntimePipelinePublication)
+    case failure(RunCycleFailure<OwnerFailure>)
+}
+
+package enum RuntimePipelineOfferResult<OwnerFailure: Equatable & Sendable>: Equatable, Sendable {
+    case accepted(PresentationRevision)
+    case noChange
+    case backpressured
+    case retryableRefusal
+    case nonRetryableRefusal(FrameRefusalOrigin)
+    case failure(RunCycleFailure<OwnerFailure>)
+}
+
+package struct RuntimePipelineDisposition: Equatable, Sendable {
+    package let semanticDisposition: SemanticCycleDisposition
+    package let logicalFrameDisposition: LogicalFrameDisposition
+    package let presentationIntentState: PresentationIntentState
+    package let wakeReasons: ExecutionWakeReasons
+    package let commitsInteractionCandidate: Bool
+    package let preservesPublishedSemanticRevision: Bool
+}
+
+package struct RuntimePipelineCompletion: Equatable, Sendable {
+    package let publication: RuntimePipelinePublication
+    package let committedPresentationRevision: PresentationRevision?
+    package let operational: ExecutionOperational?
+    package let disposition: RuntimePipelineDisposition
+}
+
+package struct RuntimePipelineFailureRecord<OwnerFailure: Equatable & Sendable>: Equatable, Sendable
+{
+    package let stage: RuntimeCompletePipelineStage
+    package let failure: RunCycleFailure<OwnerFailure>
+    package let publication: RuntimePipelinePublication?
+    package let disposition: RuntimePipelineDisposition
+}
+
+package enum RuntimeCompletePipelineResult<OwnerFailure: Equatable & Sendable>: Equatable, Sendable
+{
+    case completed(RuntimePipelineCompletion)
+    case failed(RuntimePipelineFailureRecord<OwnerFailure>)
+}
+
+package protocol RuntimeCompletePipelineOwner: ~Copyable, ~Escapable {
+    associatedtype OwnerFailure: Equatable & Sendable = RuntimeOwnerFailure
+    var presentationIntentState: PresentationIntentState { get }
+    var hasAllocatedCandidateFrame: Bool { get }
+    mutating func admitAndSeal() -> RuntimePipelineStepResult<OwnerFailure>
+    mutating func applyAdmittedWork() -> RuntimePipelineMutationResult<OwnerFailure>
+    mutating func freezeObservableMutation() -> RuntimePipelineStepResult<OwnerFailure>
+    mutating func beginObservableCandidateAndExpandSemantics() -> RuntimePipelineStepResult<
+        OwnerFailure
+    >
+    mutating func resolveLayout() -> RuntimePipelineStepResult<OwnerFailure>
+    mutating func invokeCanvasesAndDerivePlan() -> RuntimePipelineStepResult<OwnerFailure>
+    mutating func preflightCombinedRender() -> RuntimePipelineStepResult<OwnerFailure>
+    mutating func buildInteractionCandidate() -> RuntimePipelineStepResult<OwnerFailure>
+    mutating func publishSemanticAndObservableCandidate() -> RuntimePipelinePublicationResult<
+        OwnerFailure
+    >
+    mutating func allocateCandidate() -> RuntimePipelineStepResult<OwnerFailure>
+    mutating func offerAndProduce() -> RuntimePipelineOfferResult<OwnerFailure>
+    mutating func cleanup(_ action: RuntimeCleanupAction)
+    mutating func applyDisposition(_ disposition: RuntimePipelineDisposition)
+    mutating func finalizePipeline()
+}
+
+package enum RuntimeCompletePipeline {
+    package static func rejectInactive<Owner>(
+        owner: inout Owner
+    ) -> RuntimeCompletePipelineResult<Owner.OwnerFailure>
+    where Owner: RuntimeCompletePipelineOwner & ~Copyable & ~Escapable {
+        fail(
+            priorIntent: owner.presentationIntentState,
+            at: .admissionAndSeal,
+            failure: .execution(.invalidPhase),
+            mutationApplied: false,
+            publication: nil,
+            acquired: [],
+            owner: &owner
+        )
+    }
+
+    package static func run<Owner>(
+        owner: inout Owner
+    ) -> RuntimeCompletePipelineResult<Owner.OwnerFailure>
+    where Owner: RuntimeCompletePipelineOwner & ~Copyable & ~Escapable {
+        let priorIntent = owner.presentationIntentState
+        var acquired: RuntimeCleanupActions = []
+        var mutationApplied = false
+        var publication: RuntimePipelinePublication?
+
+        if case .failure(let failure) = owner.admitAndSeal() {
+            return fail(
+                priorIntent: priorIntent,
+                at: .admissionAndSeal,
+                failure: failure,
+                mutationApplied: false,
+                publication: nil,
+                acquired: acquired,
+                owner: &owner
+            )
+        }
+        switch owner.applyAdmittedWork() {
+        case .applied(let applied):
+            mutationApplied = applied
+        case .failure(let failure, let applied):
+            return fail(
+                priorIntent: priorIntent,
+                at: .applyAdmittedWork,
+                failure: failure,
+                mutationApplied: applied,
+                publication: nil,
+                acquired: acquired,
+                owner: &owner
+            )
+        }
+        if case .failure(let failure) = owner.freezeObservableMutation() {
+            return fail(
+                priorIntent: priorIntent,
+                at: .freezeObservableMutation,
+                failure: failure,
+                mutationApplied: mutationApplied,
+                publication: nil,
+                acquired: acquired,
+                owner: &owner
+            )
+        }
+
+        // Frame ownership begins at freeze, before candidate expansion can fail.
+        acquired.insert(.resetAttemptStorage)
+
+        if case .failure(let failure) = owner.beginObservableCandidateAndExpandSemantics() {
+            return fail(
+                priorIntent: priorIntent,
+                at: .observableCandidateAndSemanticExpansion,
+                failure: failure,
+                mutationApplied: mutationApplied,
+                publication: nil,
+                acquired: acquired,
+                owner: &owner
+            )
+        }
+        acquired.formUnion([
+            .releaseCanvasCallable,
+            .discardSemanticCandidate,
+            .discardObservableCandidate,
+            .resetAttemptStorage,
+        ])
+
+        if case .failure(let failure) = owner.resolveLayout() {
+            return fail(
+                priorIntent: priorIntent,
+                at: .layout,
+                failure: failure,
+                mutationApplied: mutationApplied,
+                publication: nil,
+                acquired: acquired,
+                owner: &owner
+            )
+        }
+        acquired.insert(.resetLayoutCandidate)
+
+        if case .failure(let failure) = owner.invokeCanvasesAndDerivePlan() {
+            return fail(
+                priorIntent: priorIntent,
+                at: .canvasInvocationAndPlan,
+                failure: failure,
+                mutationApplied: mutationApplied,
+                publication: nil,
+                acquired: acquired,
+                owner: &owner
+            )
+        }
+        acquired.remove(.releaseCanvasCallable)
+        acquired.insert(.resetDrawingPlan)
+
+        if case .failure(let failure) = owner.preflightCombinedRender() {
+            return fail(
+                priorIntent: priorIntent,
+                at: .combinedRenderPreflight,
+                failure: failure,
+                mutationApplied: mutationApplied,
+                publication: nil,
+                acquired: acquired,
+                owner: &owner
+            )
+        }
+        acquired.insert(.resetRenderWorkspace)
+
+        if case .failure(let failure) = owner.buildInteractionCandidate() {
+            return fail(
+                priorIntent: priorIntent,
+                at: .interactionCandidate,
+                failure: failure,
+                mutationApplied: mutationApplied,
+                publication: nil,
+                acquired: acquired,
+                owner: &owner
+            )
+        }
+        acquired.insert(.discardInteractionCandidate)
+
+        switch owner.publishSemanticAndObservableCandidate() {
+        case .published(let value):
+            publication = value
+        case .failure(let failure):
+            return fail(
+                priorIntent: priorIntent,
+                at: .semanticAndObservablePublication,
+                failure: failure,
+                mutationApplied: mutationApplied,
+                publication: nil,
+                acquired: acquired,
+                owner: &owner
+            )
+        }
+        acquired.remove([
+            .resetLayoutCandidate,
+            .discardSemanticCandidate,
+            .discardObservableCandidate,
+        ])
+
+        if case .failure(let failure) = owner.allocateCandidate() {
+            return fail(
+                priorIntent: priorIntent,
+                at: .candidateAllocation,
+                failure: failure,
+                mutationApplied: mutationApplied,
+                publication: publication,
+                acquired: acquired,
+                owner: &owner
+            )
+        }
+
+        let offer = owner.offerAndProduce()
+        let result: RuntimeCompletePipelineResult<Owner.OwnerFailure>
+        switch offer {
+        case .accepted(let revision):
+            let disposition = RuntimePipelineDisposition(
+                semanticDisposition: publication!.changed ? .published : .unchanged,
+                logicalFrameDisposition: .committed,
+                presentationIntentState: .satisfied,
+                wakeReasons: [],
+                commitsInteractionCandidate: true,
+                preservesPublishedSemanticRevision: true
+            )
+            var acceptedAcquired = acquired
+            acceptedAcquired.remove(.discardInteractionCandidate)
+            acceptedAcquired.insert(.commitInteractionCandidate)
+            cleanup(
+                after: .acceptedOffer,
+                acquired: acceptedAcquired,
+                owner: &owner
+            )
+            owner.applyDisposition(disposition)
+            owner.finalizePipeline()
+            result = .completed(
+                RuntimePipelineCompletion(
+                    publication: publication!,
+                    committedPresentationRevision: revision,
+                    operational: nil,
+                    disposition: disposition
+                )
+            )
+        case .noChange:
+            guard !publication!.changed else {
+                return fail(
+                    priorIntent: priorIntent,
+                    at: .offerAndProduction,
+                    failure: .execution(.invariantViolation),
+                    mutationApplied: mutationApplied,
+                    publication: publication,
+                    acquired: acquired,
+                    owner: &owner
+                )
+            }
+            result = finishOfferWithoutCommit(
+                operational: .noChange,
+                state: .satisfied,
+                wakeReasons: [],
+                frameDisposition: .notProduced,
+                publication: publication!,
+                acquired: acquired,
+                owner: &owner
+            )
+        case .backpressured:
+            result = finishOfferWithoutCommit(
+                operational: .backpressured,
+                state: .pending,
+                wakeReasons: [.presentationPending],
+                frameDisposition: .aborted,
+                publication: publication!,
+                acquired: acquired,
+                owner: &owner
+            )
+        case .retryableRefusal:
+            result = finishOfferWithoutCommit(
+                operational: .retryableRefusal,
+                state: .pending,
+                wakeReasons: [.presentationPending],
+                frameDisposition: .aborted,
+                publication: publication!,
+                acquired: acquired,
+                owner: &owner
+            )
+        case .nonRetryableRefusal(let origin):
+            result = fail(
+                priorIntent: priorIntent,
+                at: .offerAndProduction,
+                failure: .nonRetryableRefusal(origin),
+                mutationApplied: mutationApplied,
+                publication: publication,
+                acquired: acquired,
+                owner: &owner
+            )
+        case .failure(let failure):
+            result = fail(
+                priorIntent: priorIntent,
+                at: .offerAndProduction,
+                failure: failure,
+                mutationApplied: mutationApplied,
+                publication: publication,
+                acquired: acquired,
+                owner: &owner
+            )
+        }
+        return result
+    }
+
+    private static func finishOfferWithoutCommit<Owner>(
+        operational: ExecutionOperational,
+        state: PresentationIntentState,
+        wakeReasons: ExecutionWakeReasons,
+        frameDisposition: LogicalFrameDisposition,
+        publication: RuntimePipelinePublication,
+        acquired: RuntimeCleanupActions,
+        owner: inout Owner
+    ) -> RuntimeCompletePipelineResult<Owner.OwnerFailure>
+    where Owner: RuntimeCompletePipelineOwner & ~Copyable & ~Escapable {
+        let disposition = RuntimePipelineDisposition(
+            semanticDisposition: publication.changed ? .published : .unchanged,
+            logicalFrameDisposition: frameDisposition,
+            presentationIntentState: state,
+            wakeReasons: wakeReasons,
+            commitsInteractionCandidate: false,
+            preservesPublishedSemanticRevision: true
+        )
+        cleanup(after: .offerProductionOrEndpoint, acquired: acquired, owner: &owner)
+        owner.applyDisposition(disposition)
+        owner.finalizePipeline()
+        return .completed(
+            RuntimePipelineCompletion(
+                publication: publication,
+                committedPresentationRevision: nil,
+                operational: operational,
+                disposition: disposition
+            )
+        )
+    }
+
+    private static func fail<Owner>(
+        priorIntent: PresentationIntentState,
+        at stage: RuntimeCompletePipelineStage,
+        failure: RunCycleFailure<Owner.OwnerFailure>,
+        mutationApplied: Bool,
+        publication: RuntimePipelinePublication?,
+        acquired: RuntimeCleanupActions,
+        owner: inout Owner
+    ) -> RuntimeCompletePipelineResult<Owner.OwnerFailure>
+    where Owner: RuntimeCompletePipelineOwner & ~Copyable & ~Escapable {
+        let wasPublished = publication != nil
+        let unavailable: Bool
+        switch failure {
+        case .nonRetryableRefusal, .execution(.requiredFacilityUnavailable): unavailable = true
+        default: unavailable = false
+        }
+        let disposition = RuntimePipelineDisposition(
+            semanticDisposition: publication.map { $0.changed ? .published : .unchanged }
+                ?? (mutationApplied ? .dirty : .unchanged),
+            logicalFrameDisposition: wasPublished && owner.hasAllocatedCandidateFrame
+                ? .aborted : .notProduced,
+            presentationIntentState: wasPublished
+                ? (unavailable ? .unavailable : .satisfied) : priorIntent,
+            wakeReasons: !wasPublished && mutationApplied ? [.semanticDirty] : [],
+            commitsInteractionCandidate: false,
+            preservesPublishedSemanticRevision: wasPublished
+        )
+        cleanup(
+            after: cleanupStage(for: stage, wasPublished: wasPublished),
+            acquired: acquired,
+            owner: &owner
+        )
+        owner.applyDisposition(disposition)
+        owner.finalizePipeline()
+        return .failed(
+            RuntimePipelineFailureRecord<Owner.OwnerFailure>(
+                stage: stage,
+                failure: failure,
+                publication: publication,
+                disposition: disposition
+            )
+        )
+    }
+
+    private static func cleanup<Owner>(
+        after stage: RuntimeCoordinatorStage,
+        acquired: RuntimeCleanupActions,
+        owner: inout Owner
+    ) where Owner: RuntimeCompletePipelineOwner & ~Copyable & ~Escapable {
+        var tracker = RuntimeCleanupTracker(
+            plan: RuntimeCoordinatorCleanupOracle.plan(after: stage),
+            acquired: acquired
+        )
+        while let action = tracker.takeNext() {
+            owner.cleanup(action)
+        }
+    }
+
+    private static func cleanupStage(
+        for stage: RuntimeCompletePipelineStage,
+        wasPublished: Bool
+    ) -> RuntimeCoordinatorStage {
+        if wasPublished { return .offerProductionOrEndpoint }
+        return switch stage {
+        case .admissionAndSeal, .applyAdmittedWork, .freezeObservableMutation,
+            .observableCandidateAndSemanticExpansion:
+            .observableBindingOrSemanticExpansion
+        case .layout:
+            .layout
+        case .canvasInvocationAndPlan:
+            .canvasInvocationOrPlan
+        case .combinedRenderPreflight:
+            .combinedRenderPreflight
+        case .interactionCandidate, .semanticAndObservablePublication:
+            .interactionBuildOrGeneration
+        case .candidateAllocation, .offerAndProduction:
+            .offerProductionOrEndpoint
+        }
+    }
+}

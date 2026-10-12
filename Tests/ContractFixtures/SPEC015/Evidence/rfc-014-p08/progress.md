@@ -326,3 +326,14 @@ disabled edges,22glyph positions and optional stroke geometry pass. Full physica
 control including live observations is charged; stopped callbacks refuse delivery.
 Guard0/2. Input gate/wake/live graph/actual raster,4routes and early linked images
 remain open. No P08 exit or pixel/resource conformance claim.
+
+
+## Remaining step7a — actual normalized input gate (2026-10-12)
+
+[Receipt](remaining-implementation/step-7a-counter-input-gate/result.md):3,687
+assertions/23controls pass. Both actual hosts submit all physical gestures through
+one target-local gate into their same admission owner; source/stale/malformed
+rejections leave the queue empty, and teardown quiesces the gate. Full live control
+footprint includes the gate. Guard0/2; actual endpoint/raster/wake/live graph, four
+routes and early linked targets remain open. Recording acceptance is not physical
+display proof. No P08 exit claim.
