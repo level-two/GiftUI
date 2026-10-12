@@ -48,7 +48,7 @@ extension CounterControl {
     }
     mutating func establishCounterScheduler(report: HostAssemblyReport) {
         precondition(wakeEnabled && scheduler == nil)
-        scheduler = HostScheduledOpportunityController(assemblyReport: report, initialFrameOriginMicroseconds: 0)
+        scheduler = CounterConstructionInputs.canonical.report.scheduler(report)
         // Startup opportunities already consumed their own notifications. Seed
         // only the still-pending canonical reasons and unconsumed fact deadline.
         if let firstFact = wakeFirstFactMicroseconds {

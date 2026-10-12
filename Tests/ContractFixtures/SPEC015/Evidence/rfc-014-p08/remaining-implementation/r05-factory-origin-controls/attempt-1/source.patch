@@ -1,0 +1,444 @@
+diff --git a/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterDynamicHostOwner.swift b/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterDynamicHostOwner.swift
+index 4060ca27..57895b9b 100644
+--- a/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterDynamicHostOwner.swift
++++ b/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterDynamicHostOwner.swift
+@@ -49,13 +49,13 @@ struct CounterDynamicHostSuppliedStorage<Geometry: CounterGeometry>: ~Copyable,
+         self.interaction = consume interaction
+     }
+     @_lifetime(copy self)
+-    borrowing func borrowedModels() -> ObservableModelScope<CounterOwnedModel, CounterModelSchema> {
+-        models.borrowedScope()
++    borrowing func borrowedModels(selection: CounterProfileConstructionInput = .supplied) -> ObservableModelScope<CounterOwnedModel, CounterModelSchema> {
++        switch selection { case .supplied: return models.borrowedScope() }
+     }
+     @_lifetime(copy self)
+-    borrowing func borrowedRoot() -> ObservableStateRootScope<
++    borrowing func borrowedRoot(selection: CounterProfileConstructionInput = .supplied) -> ObservableStateRootScope<
+         CounterOwnedModel, SemanticCompleteIdentity
+-    > { root.borrowedRoot() }
++    > { switch selection { case .supplied: return root.borrowedRoot() } }
+     @_lifetime(copy self)
+     borrowing func borrowedSemantic() -> SemanticRecordStore<CounterPayload> {
+         semantic.borrowedStore()
+@@ -92,10 +92,11 @@ enum CounterDynamicHostState: ~Copyable, ~Escapable {
+         switch consume self {
+         case .inert(let supplied, let span):
+             precondition(span.count == 1 && span[0] == 1)
+-            let models = supplied.borrowedModels()
+-            let root = supplied.borrowedRoot()
++            let construction = CounterConstructionInputs.canonical
++            let models = supplied.borrowedModels(selection: construction.root)
++            let root = supplied.borrowedRoot(selection: construction.root)
+             let control = supplied.borrowedControl()
+-            let audit = supplied.audit
++            let audit = construction.root.audit(supplied.audit)
+             let report = assembly.report
+             if let error = counterBindingJoinError(expectedModels: models, expectedControl: supplied.controlPointer, expectedAudit: supplied.audit, expectedReport: assembly.report, kind: .macOSDynamic, profile: .dynamic, models: models, root: root, control: control.pointer, audit: audit, report: report) {
+                 self = .inert(consume supplied, span)
+@@ -103,7 +104,7 @@ enum CounterDynamicHostState: ~Copyable, ~Escapable {
+             }
+             let pipeline = CounterDynamicHostPipeline(models: models.borrowedScope(), root: root.borrowedRoot(), semantic: supplied.borrowedSemantic(), values: supplied.borrowedValues(), geometry: supplied.geometry, interaction: supplied.interaction, scopedControl: control.borrowed(), limits: audit.limits, endpointConfiguration: assembly.endpoint)
+             let binding = CounterExecutionBinding(models: models.borrowedScope(), root: root.borrowedRoot(), scopedControl: control.borrowed(), audit: audit)!
+-            let coordinator = CounterDynamicHostCoordinator(binding: binding, admission: CounterAdmission(control: control.pointer, limits: audit.limits.execution), opportunity: pipeline)
++            let coordinator = CounterDynamicHostCoordinator(binding: binding, admission: CounterAdmission(control: construction.admission.control(control.pointer), limits: construction.admission.audit(audit).limits.execution), opportunity: pipeline)
+             self = .active(consume coordinator, nil, span)
+         case .active(let coordinator, let cache, let span): self = .active(consume coordinator, consume cache, span)
+         case .retired(let semantic, let geometry, let interaction, let span): self = .retired(consume semantic, geometry, interaction, span); preconditionFailure("retired host")
+diff --git a/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterGraphProbe.swift b/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterGraphProbe.swift
+index dc078f4d..2351c629 100644
+--- a/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterGraphProbe.swift
++++ b/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterGraphProbe.swift
+@@ -1,4 +1,6 @@
+ import GiftUIHostConfiguration
++import GiftUIObservableState
++import GiftUISemanticCore
+ 
+ // Malformed views are confined to this negative fixture, never accepted by a
+ // production assembly initializer. Every mutation starts from the actual table.
+@@ -29,10 +31,38 @@ package func p08CounterGraph() -> Int {
+         precondition(record.role.rawValue == index)
+         precondition(record.dependencies.rawValue == expectedMasks[Int(index)])
+     }
+-    // Structural rejection does not establish hidden-origin rejection; that
+-    // separate required factory/input coverage remains open in the P08 receipt.
+     precondition(HostComponentGraphValidation.validate(CounterHostGraph()) == nil)
+     precondition(CounterHostGraph().record(at: 18) == nil)
+     for mode: UInt8 in 0...7 { precondition(HostComponentGraphValidation.validate(CounterInvalidGraph(mode: mode)) != nil) }
+-    return 46
++    var modelOwners = ObservableModelOwnerNamespace()
++    var semanticOwners = SemanticRecordOwnerNamespace()
++    var count = 46
++    do {
++        var profile = StaticCounterProfileStorage(modelOwner: try modelOwners.issue(), semanticOwner: try semanticOwners.issue())
++        guard case .valid(let audit) = profile.audit() else { preconditionFailure("counter graph audit") }
++        func reject(_ negative: CounterConstructionNegative, profile: borrowing StaticCounterProfileStorage) {
++            let graph = CounterHostGraph(negative: negative)
++            precondition(HostComponentGraphValidation.validate(graph) == nil)
++            var observation = CounterConstructionObservation()
++            precondition(CounterHostAssembly.validate(audit, kind: .macOSStatic, negative: negative, observation: &observation) == nil)
++            precondition(observation.result == .invalid(stage: .graph, error: .invalidGraph))
++            precondition(observation.hasNoLaterReads)
++            precondition(profile.control.applicationConstructions == 0 && profile.control.finalized == 0 && profile.control.wake == nil)
++            count += 5
++        }
++        for origin: UInt8 in 0...5 { reject(.omitted(.rasterEndpoint, origin), profile: profile) }
++        reject(.omitted(.factAdmission, 0), profile: profile)
++        reject(.omitted(.rootModelTarget, 0), profile: profile)
++        for origin: UInt8 in [0, 2, 3, 4, 5] { reject(.omitted(.wakeRequester, origin), profile: profile) }
++        reject(.hiddenSelectedText, profile: profile)
++        reject(.hiddenRetainedReport, profile: profile)
++        reject(.undeclaredBoundText, profile: profile)
++        var positive = CounterConstructionObservation()
++        precondition(CounterHostAssembly.validate(audit, kind: .macOSStatic, negative: nil, observation: &positive) != nil)
++        guard case .valid? = positive.result else { preconditionFailure("counter graph positive") }
++        precondition(positive.runtimeReads == 1 && positive.textReads == 1 && positive.workloadReads == 1 && positive.capabilityReads == 1 && positive.endpointReads == 1 && positive.applicationReads == 1 && positive.inputReads == 1 && positive.policyReads == 1)
++        precondition(profile.control.applicationConstructions == 0 && profile.control.finalized == 0 && profile.control.wake == nil)
++        count += 4
++    } catch { preconditionFailure("counter graph profile identities") }
++    return count
+ }
+diff --git a/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostAssembly.swift b/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostAssembly.swift
+index 3c579804..3bc90783 100644
+--- a/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostAssembly.swift
++++ b/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostAssembly.swift
+@@ -8,33 +8,152 @@ import GiftUISurfaceCore
+ import GiftUITextResources
+ import GiftUIHostConfiguration
+ 
+-// Exact direct construction requirements from the reviewed P08-B01 inventory.
+-// Activation wiring and operation-only arguments retain separate lifetime proofs.
++// Closed counter-local factory inputs. These values are inert and never retained
++// by a live owner. Actual constructor paths below use the same selections.
++enum CounterProfileConstructionInput {
++    case supplied
++    var origins: UInt32 { 1 << HostComponentRole.runtimeProfile.rawValue }
++    func control(_ supplied: UnsafeMutablePointer<CounterControl>) -> UnsafeMutablePointer<CounterControl> { supplied }
++    func audit(_ supplied: RuntimeStorageAudit) -> RuntimeStorageAudit { supplied }
++}
++enum CounterResolvedConfigurationInput {
++    case fourContributions
++    var origins: UInt32 {
++        (1 << HostComponentRole.renderProducerContribution.rawValue) | (1 << HostComponentRole.rasterBackendContribution.rawValue)
++            | (1 << HostComponentRole.surfaceDisplayContribution.rawValue) | (1 << HostComponentRole.hostResourcePolicyContribution.rawValue)
++    }
++    func configuration(_ resolved: HostEndpointConfiguration) -> HostEndpointConfiguration { resolved }
++    func resolve(requirement: RasterPresentationRequirement, contributions: borrowing RasterPresentationContributions, workspace: inout RasterPresentationResolverWorkspace) -> RasterPresentationResolution {
++        switch self { case .fourContributions: return RasterPresentationResolver.resolve(requirement: requirement, contributions: contributions, workspace: &workspace) }
++    }
++}
++enum CounterReferenceTextInput {
++    case reference
++    var origins: UInt32 { 1 << HostComponentRole.textResourcePackage.rawValue }
++    var realization: RasterRealizationID { .init(rawValue: 0) }
++    func metrics() -> GiftUIReferenceTextMetricsView { .init() }
++    func raster() -> GiftUIReferenceTextRasterView { .init() }
++    func validate() -> TextResourceValidationResult {
++        TextResourceValidator.validate(GiftUIReferenceTextResources.targetPackage, requiring: realization)
++    }
++}
++enum CounterTextConstruction {
++    case direct(CounterReferenceTextInput)
++    case bound(CounterReferenceTextInput)
++    var input: CounterReferenceTextInput {
++        switch self { case .direct(let input), .bound(let input): return input }
++    }
++    var origins: UInt32 { input.origins }
++    var realization: RasterRealizationID { input.realization }
++    func validate() -> TextResourceValidationResult { input.validate() }
++    func metrics() -> GiftUIReferenceTextMetricsView {
++        switch self {
++        case .direct(let input): return input.metrics()
++        case .bound(let input): return { input.metrics() }()
++        }
++    }
++    func raster() -> GiftUIReferenceTextRasterView {
++        switch self {
++        case .direct(let input): return input.raster()
++        case .bound(let input): return { input.raster() }()
++        }
++    }
++}
++enum CounterFullReportInput {
++    case validatedAssembly
++    var origins: UInt32 {
++        CounterProfileConstructionInput.supplied.origins | CounterResolvedConfigurationInput.fourContributions.origins
++    }
++    func scheduler(_ report: HostAssemblyReport) -> HostScheduledOpportunityController {
++        .init(assemblyReport: report, initialFrameOriginMicroseconds: 0)
++    }
++}
++enum CounterReportConstruction {
++    case direct(CounterFullReportInput)
++    case bound(CounterFullReportInput)
++    // Negative factory branch: this callback requires a selected text input too.
++    // Its construction precondition consumes that same input; it is not an
++    // opaque closure whose captures can disappear from provenance.
++    case boundWithText(CounterFullReportInput, CounterReferenceTextInput)
++    var origins: UInt32 {
++        switch self {
++        case .direct(let input), .bound(let input): return input.origins
++        case .boundWithText(let input, let text): return input.origins | text.origins
++        }
++    }
++    func scheduler(_ report: HostAssemblyReport) -> HostScheduledOpportunityController {
++        switch self {
++        case .direct(let input): return input.scheduler(report)
++        case .bound(let input): return { input.scheduler(report) }()
++        case .boundWithText(let input, let text):
++            return {
++                guard case .valid = text.validate() else { preconditionFailure("bound counter text input") }
++                return input.scheduler(report)
++            }()
++        }
++    }
++}
++struct CounterConstructionInputs {
++    let endpointBacking: CounterProfileConstructionInput = .supplied
++    let endpointConfiguration: CounterResolvedConfigurationInput = .fourContributions
++    let text: CounterTextConstruction = .bound(.reference)
++    let root: CounterProfileConstructionInput = .supplied
++    let admission: CounterProfileConstructionInput = .supplied
++    var report: CounterReportConstruction = .bound(.validatedAssembly)
++    static var canonical: Self { .init() }
++    func origins(for role: HostComponentRole) -> UInt32 {
++        switch role {
++        case .rasterEndpoint: return endpointBacking.origins | endpointConfiguration.origins | text.origins
++        case .rootModelTarget: return root.origins
++        case .factAdmission: return admission.origins
++        case .wakeRequester: return report.origins
++        default: return 0
++        }
++    }
++}
++enum CounterConstructionNegative {
++    case omitted(HostComponentRole, UInt8)
++    case hiddenSelectedText
++    case hiddenRetainedReport
++    case undeclaredBoundText
++    var actualInputs: CounterConstructionInputs {
++        var inputs = CounterConstructionInputs.canonical
++        if case .undeclaredBoundText = self { inputs.report = .boundWithText(.validatedAssembly, .reference) }
++        return inputs
++    }
++    func declaredOrigins(_ original: UInt32, role: HostComponentRole) -> UInt32 {
++        switch self {
++        case .omitted(let target, let origin): return role == target ? original & ~(1 << origin) : original
++        case .hiddenSelectedText: return role == .rasterEndpoint ? original & ~CounterReferenceTextInput.reference.origins : original
++        case .hiddenRetainedReport: return role == .wakeRequester ? 0 : original
++        case .undeclaredBoundText: return original
++        }
++    }
++}
++struct CounterConstructionObservation {
++    var result: HostValidationResult?
++    var runtimeReads: UInt8 = 0
++    var textReads: UInt8 = 0
++    var workloadReads: UInt8 = 0
++    var capabilityReads: UInt8 = 0
++    var endpointReads: UInt8 = 0
++    var applicationReads: UInt8 = 0
++    var inputReads: UInt8 = 0
++    var policyReads: UInt8 = 0
++    var hasNoLaterReads: Bool {
++        runtimeReads == 0 && textReads == 0 && workloadReads == 0 && capabilityReads == 0
++            && endpointReads == 0 && applicationReads == 0 && inputReads == 0 && policyReads == 0
++    }
++}
++
++// Declarations are independent from actual selections under negative mutation.
+ struct CounterHostGraph: HostComponentGraphView {
+     let count: UInt8 = 18
++    var negative: CounterConstructionNegative? = nil
+     func record(at index: UInt8) -> HostComponentRecord? {
+         guard index < count, let role = HostComponentRole(rawValue: index) else { return nil }
+-        let dependencies: UInt32
+-        switch role {
+-        case .rasterEndpoint:
+-            // Actual resolved configuration + profile-owned surface/payload and
+-            // the selected text package passed to CounterNativeEndpoint.
+-            dependencies = (1 << 0) | (1 << 1) | (1 << 2) | (1 << 3) | (1 << 4) | (1 << 5)
+-        case .factAdmission, .rootModelTarget:
+-            // Stable typed profile backing, limits, identity/context and audit.
+-            dependencies = 1 << 0
+-        case .wakeRequester:
+-            // The scheduler retains the full report: profile audit0 and resolved
+-            // capability origins2–5, even though installation occurs at activation.
+-            dependencies = (1 << 0) | (1 << 2) | (1 << 3) | (1 << 4) | (1 << 5)
+-        default:
+-            // Value-only inert contributors/policy and owner-free constructors.
+-            // Use-case start, normalized submit and the static handler receive
+-            // peer arguments only at operation time. Physical placement of the
+-            // normalized gate in profile control does not supply a constructor input.
+-            dependencies = 0
+-        }
+-        return .init(role: role, dependencies: .init(rawValue: dependencies))
++        let origins = CounterConstructionInputs.canonical.origins(for: role)
++        return .init(role: role, dependencies: .init(rawValue: negative?.declaredOrigins(origins, role: role) ?? origins))
+     }
+ }
+ 
+@@ -44,6 +163,25 @@ struct CounterHostAssembly {
+     let endpoint: HostEndpointConfiguration
+     let ledger: HostValidationAccessLedger
+     static func validate(_ audit: RuntimeStorageAudit, kind: MVPHostKind, sourceCallbacks: UInt16 = 20, repositoryCallbacks: UInt8 = 1, useCaseCallbacks: UInt8 = 1, nonTransitionPublications: UInt8 = 1) -> Self? {
++        var observation = CounterConstructionObservation()
++        return validate(audit, kind: kind, sourceCallbacks: sourceCallbacks, repositoryCallbacks: repositoryCallbacks, useCaseCallbacks: useCaseCallbacks, nonTransitionPublications: nonTransitionPublications, negative: nil, observation: &observation)
++    }
++    static func validate(_ audit: RuntimeStorageAudit, kind: MVPHostKind, sourceCallbacks: UInt16 = 20, repositoryCallbacks: UInt8 = 1, useCaseCallbacks: UInt8 = 1, nonTransitionPublications: UInt8 = 1, negative: CounterConstructionNegative?, observation: inout CounterConstructionObservation) -> Self? {
++        let graph = CounterHostGraph(negative: negative)
++        let inputs = negative?.actualInputs ?? .canonical
++        // This is before even eager capability resolution/text validation.
++        if let error = HostComponentGraphValidation.validate(graph) {
++            observation.result = .invalid(stage: .graph, error: error)
++            return nil
++        }
++        for index: UInt8 in 0..<18 {
++            let declared = graph.record(at: index)!
++            guard declared.dependencies.rawValue == inputs.origins(for: declared.role) else {
++                observation.result = .invalid(stage: .graph, error: .invalidGraph)
++                return nil
++            }
++        }
++        observation.capabilityReads += 1
+         let operations: RasterOperationSet = [.opaqueRectangles, .positionedText, .straightLineStrokes, .clipping, .damage]
+         let extent = CapabilityExtent(width: 100, height: 120)!
+         let bytes = CapabilityByteCount(rawValue: 48000)
+@@ -55,10 +193,20 @@ struct CounterHostAssembly {
+         precondition(contributions.insert(.surfaceDisplay(.init(extent: extent, encodings: .rgba8888, acceptedSubmissionLifetimes: .synchronousBorrow, handoffs: .synchronous, maximumRegionWidth: 100, maximumRegionHeight: 120, rowByteAlignment: 4, maximumInFlightCount: 1, maximumInFlightBytes: bytes)!)) == .inserted)
+         precondition(contributions.insert(.hostResourcePolicy(.init(maximumRasterBytes: bytes, maximumPayloadBytes: bytes, maximumInFlightBytes: bytes, allowedRealizations: .fullSurface, allowedEncodings: .rgba8888, preferredRealization: .fullSurface, preferredEncoding: .rgba8888)!)) == .inserted)
+         var workspace = RasterPresentationResolverWorkspace()!
+-        guard case .available(let effective) = RasterPresentationResolver.resolve(requirement: requirement, contributions: contributions, workspace: &workspace) else { return nil }
+-        let endpoint = HostEndpointConfiguration(effectivePresentation: effective, descriptor: .init(bounds: counterSurface, encoding: .rgba8888, bytesPerRow: 400, realization: .fullSurface, regionWidth: 100, regionHeight: 120)!, payloadLimits: .init(maximumRasterBytes: 48000, maximumPayloadBytes: 48000, maximumRegionsPerPayload: 120, maximumRegionSubmissionsPerFrame: 1, maximumTileVisitsPerFrame: 1, maximumInFlightPayloads: 1, maximumGlyphRasterBytes: 48000, maximumStrokeWorkspaceBytes: 1)!, surfaceWritableCapacityBytes: 48000, displaySubmissionLifetime: .synchronousBorrow, displayHandoff: .synchronous, displayMaximumInFlightPayloads: 1, displayMaximumInFlightBytes: 48000, textRasterRealization: .init(rawValue: 0), healthOwnerCount: 1, endpointAndDisplayShareHealthOwner: true)
+-        var validator = CheckedMVPHostConfigurationValidator(structuralConfiguration: .init(kind: kind, profile: audit.profile, runtimeLimits: audit.limits, runtimeAudit: audit, cardinality: P08CounterWorkload.cardinality, workload: P08CounterWorkload.value(audit.limits), pacing: P08CounterWorkload.pacing), runtimeProfileValidation: .valid(audit), componentGraph: CounterHostGraph(), textResourceValidation: TextResourceValidator.validate(GiftUIReferenceTextResources.targetPackage, requiring: .init(rawValue: 0)), selectedTextRasterRealization: .init(rawValue: 0), capabilityRequirement: requirement, capabilityContributions: contributions, capabilityWorkspace: .init()!, endpoint: endpoint, actionAndModel: .init(firstActionCode: 0, lastActionCode: 1, handlerCount: 1, rootModelTargetCount: 1, sourceMinimumTransitionSpacingMicroseconds: 50000, maximumSourceCallbacksPerServiceWindow: sourceCallbacks, maximumCallbacksPerAction: 1, maximumRepositoryCallbacksPerAction: repositoryCallbacks, maximumUseCaseCallbacksPerAction: useCaseCallbacks, maximumNonTransitionPublicationsPerAction: nonTransitionPublications, applicationExecutorFactLimit: 28, factAdmissionAdapterCount: 1, targetGenerationIsPublishable: true, actionHandlerIsTotal: true, retainsOwnerReferences: false, callbacksAreReentrant: false), inputAndWake: .init(normalizedInputSourceCount: 1, targetLocalPresentationGateCount: 1, wakeRequesterCount: 1, applicationAndMutationDomainsAreDistinct: true, wakeRequesterIsNonReentrant: true), residualPolicyTable: FixedMVPHostResidualPolicyTable(fatalHookIsAvailable: false))
+-        guard case .valid(let report) = validator.validate() else { return nil }
++        guard case .available(let effective) = inputs.endpointConfiguration.resolve(requirement: requirement, contributions: contributions, workspace: &workspace) else { return nil }
++        observation.endpointReads += 1
++        let endpoint = HostEndpointConfiguration(effectivePresentation: effective, descriptor: .init(bounds: counterSurface, encoding: .rgba8888, bytesPerRow: 400, realization: .fullSurface, regionWidth: 100, regionHeight: 120)!, payloadLimits: .init(maximumRasterBytes: 48000, maximumPayloadBytes: 48000, maximumRegionsPerPayload: 120, maximumRegionSubmissionsPerFrame: 1, maximumTileVisitsPerFrame: 1, maximumInFlightPayloads: 1, maximumGlyphRasterBytes: 48000, maximumStrokeWorkspaceBytes: 1)!, surfaceWritableCapacityBytes: 48000, displaySubmissionLifetime: .synchronousBorrow, displayHandoff: .synchronous, displayMaximumInFlightPayloads: 1, displayMaximumInFlightBytes: 48000, textRasterRealization: inputs.text.realization, healthOwnerCount: 1, endpointAndDisplayShareHealthOwner: true)
++        observation.runtimeReads += 1
++        observation.workloadReads += 1
++        observation.textReads += 1
++        let selectedTextValidation = inputs.text.validate()
++        observation.applicationReads += 1
++        observation.inputReads += 1
++        observation.policyReads += 1
++        var validator = CheckedMVPHostConfigurationValidator(structuralConfiguration: .init(kind: kind, profile: audit.profile, runtimeLimits: audit.limits, runtimeAudit: audit, cardinality: P08CounterWorkload.cardinality, workload: P08CounterWorkload.value(audit.limits), pacing: P08CounterWorkload.pacing), runtimeProfileValidation: .valid(audit), componentGraph: graph, textResourceValidation: selectedTextValidation, selectedTextRasterRealization: inputs.text.realization, capabilityRequirement: requirement, capabilityContributions: contributions, capabilityWorkspace: .init()!, endpoint: endpoint, actionAndModel: .init(firstActionCode: 0, lastActionCode: 1, handlerCount: 1, rootModelTargetCount: 1, sourceMinimumTransitionSpacingMicroseconds: 50000, maximumSourceCallbacksPerServiceWindow: sourceCallbacks, maximumCallbacksPerAction: 1, maximumRepositoryCallbacksPerAction: repositoryCallbacks, maximumUseCaseCallbacksPerAction: useCaseCallbacks, maximumNonTransitionPublicationsPerAction: nonTransitionPublications, applicationExecutorFactLimit: 28, factAdmissionAdapterCount: 1, targetGenerationIsPublishable: true, actionHandlerIsTotal: true, retainsOwnerReferences: false, callbacksAreReentrant: false), inputAndWake: .init(normalizedInputSourceCount: 1, targetLocalPresentationGateCount: 1, wakeRequesterCount: 1, applicationAndMutationDomainsAreDistinct: true, wakeRequesterIsNonReentrant: true), residualPolicyTable: FixedMVPHostResidualPolicyTable(fatalHookIsAvailable: false))
++        let result = validator.validate()
++        observation.result = result
++        guard case .valid(let report) = result else { return nil }
+         return Self(report: report, endpoint: endpoint, ledger: validator.validationAccessLedger)
+     }
+ }
+diff --git a/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostOwner.swift b/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostOwner.swift
+index 49c17e77..c9ab7880 100644
+--- a/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostOwner.swift
++++ b/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostOwner.swift
+@@ -67,13 +67,13 @@ struct CounterHostSuppliedStorage<Geometry: CounterGeometry>: ~Copyable, ~Escapa
+         self.interaction = consume interaction
+     }
+     @_lifetime(copy self)
+-    borrowing func borrowedModels() -> ObservableModelScope<CounterOwnedModel, CounterModelSchema> {
+-        models.borrowedScope()
++    borrowing func borrowedModels(selection: CounterProfileConstructionInput = .supplied) -> ObservableModelScope<CounterOwnedModel, CounterModelSchema> {
++        switch selection { case .supplied: return models.borrowedScope() }
+     }
+     @_lifetime(copy self)
+-    borrowing func borrowedRoot() -> ObservableStateRootScope<
++    borrowing func borrowedRoot(selection: CounterProfileConstructionInput = .supplied) -> ObservableStateRootScope<
+         CounterOwnedModel, SemanticCompleteIdentity
+-    > { root.borrowedRoot() }
++    > { switch selection { case .supplied: return root.borrowedRoot() } }
+     @_lifetime(copy self)
+     borrowing func borrowedSemantic() -> SemanticRecordStore<CounterPayload> {
+         semantic.borrowedStore()
+@@ -105,7 +105,8 @@ extension CounterPipelineOwner {
+         self.values = consume values
+         self.limits = limits
+         scopedControl.pointer.pointee.initializeCounterWake()
+-        self.endpoint = CounterEndpoint(configuration: endpointConfiguration, control: scopedControl.pointer)
++        let construction = CounterConstructionInputs.canonical
++        self.endpoint = CounterEndpoint(configuration: construction.endpointConfiguration.configuration(endpointConfiguration), control: construction.endpointBacking.control(scopedControl.pointer))
+         self.geometry = consume geometry
+         self.interaction = consume interaction
+         self.control = scopedControl.pointer
+@@ -150,10 +151,11 @@ enum CounterHostState: ~Copyable, ~Escapable {
+         switch consume self {
+         case .inert(let supplied, let span):
+             precondition(span.count == 1 && span[0] == 1)
+-            let models = supplied.borrowedModels()
+-            let root = supplied.borrowedRoot()
++            let construction = CounterConstructionInputs.canonical
++            let models = supplied.borrowedModels(selection: construction.root)
++            let root = supplied.borrowedRoot(selection: construction.root)
+             let control = supplied.borrowedControl()
+-            let audit = supplied.audit
++            let audit = construction.root.audit(supplied.audit)
+             let report = assembly.report
+             if let error = counterBindingJoinError(expectedModels: models, expectedControl: supplied.controlPointer, expectedAudit: supplied.audit, expectedReport: assembly.report, kind: .macOSStatic, profile: .static, models: models, root: root, control: control.pointer, audit: audit, report: report) {
+                 self = .inert(consume supplied, span)
+@@ -161,7 +163,7 @@ enum CounterHostState: ~Copyable, ~Escapable {
+             }
+             let pipeline = CounterHostPipeline(models: models.borrowedScope(), root: root.borrowedRoot(), semantic: supplied.borrowedSemantic(), values: supplied.borrowedValues(), geometry: supplied.geometry, interaction: supplied.interaction, scopedControl: control.borrowed(), limits: audit.limits, endpointConfiguration: assembly.endpoint)
+             let binding = CounterExecutionBinding(models: models.borrowedScope(), root: root.borrowedRoot(), scopedControl: control.borrowed(), audit: audit)!
+-            let coordinator = CounterHostCoordinator(binding: binding, admission: CounterAdmission(control: control.pointer, limits: audit.limits.execution), opportunity: pipeline)
++            let coordinator = CounterHostCoordinator(binding: binding, admission: CounterAdmission(control: construction.admission.control(control.pointer), limits: construction.admission.audit(audit).limits.execution), opportunity: pipeline)
+             self = .active(consume coordinator, nil, span)
+         case .active(let coordinator, let cache, let span): self = .active(consume coordinator, consume cache, span)
+         case .retired(let semantic, let geometry, let interaction, let span): self = .retired(consume semantic, geometry, interaction, span); preconditionFailure("retired host")
+diff --git a/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterNativeRaster.swift b/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterNativeRaster.swift
+index 099bdc8f..bd299e9a 100644
+--- a/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterNativeRaster.swift
++++ b/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterNativeRaster.swift
+@@ -210,8 +210,11 @@ struct CounterEndpoint: SynchronousFrameEndpoint {
+     var actual: CounterNativeEndpoint
+     var sink: CounterRenderSink { actual.sink.recording }
+     init(configuration: HostEndpointConfiguration, control: UnsafeMutablePointer<CounterControl>) {
++        let construction = CounterConstructionInputs.canonical
++        let configuration = construction.endpointConfiguration.configuration(configuration)
++        let control = construction.endpointBacking.control(control)
+         let adapter = CounterNativeRasterAdapter(configuration: configuration, control: control)
+-        let constructed = HostEndpointConfiguration(effectivePresentation: configuration.effectivePresentation, descriptor: adapter.descriptor, payloadLimits: adapter.payloadLimits, surfaceWritableCapacityBytes: adapter.surface.writableCapacityBytes, displaySubmissionLifetime: adapter.target.submissionLifetime, displayHandoff: adapter.target.handoff, displayMaximumInFlightPayloads: adapter.target.maximumInFlightPayloads, displayMaximumInFlightBytes: adapter.target.maximumInFlightBytes, textRasterRealization: .init(rawValue: 0), healthOwnerCount: 1, endpointAndDisplayShareHealthOwner: adapter.target.control == control)
++        let constructed = HostEndpointConfiguration(effectivePresentation: configuration.effectivePresentation, descriptor: adapter.descriptor, payloadLimits: adapter.payloadLimits, surfaceWritableCapacityBytes: adapter.surface.writableCapacityBytes, displaySubmissionLifetime: adapter.target.submissionLifetime, displayHandoff: adapter.target.handoff, displayMaximumInFlightPayloads: adapter.target.maximumInFlightPayloads, displayMaximumInFlightBytes: adapter.target.maximumInFlightBytes, textRasterRealization: construction.text.realization, healthOwnerCount: 1, endpointAndDisplayShareHealthOwner: adapter.target.control == control)
+         precondition(HostEndpointStartupValidation.validateConstructedProjection(constructed, equals: configuration) == nil)
+         // Equality and both adjacent physical byte capacities reject precisely;
+         // the exact actual projection remains the sole activation configuration.
+@@ -229,7 +232,7 @@ struct CounterEndpoint: SynchronousFrameEndpoint {
+         }
+         control.pointee.backend.constructedProjection = constructed
+         control.pointee.backend.constructedEndpoints += 1
+-        actual = CounterNativeEndpoint(effectivePresentation: configuration.effectivePresentation, descriptor: configuration.descriptor, payloadLimits: configuration.payloadLimits, textMetrics: GiftUIReferenceTextMetricsView(), textRaster: GiftUIReferenceTextRasterView(), textRasterRealization: .init(rawValue: 0), envelopeValidator: CounterNativeEnvelope(expected: nil), sink: adapter, startupFailure: nil)!
++        actual = CounterNativeEndpoint(effectivePresentation: configuration.effectivePresentation, descriptor: configuration.descriptor, payloadLimits: configuration.payloadLimits, textMetrics: construction.text.metrics(), textRaster: construction.text.raster(), textRasterRealization: construction.text.realization, envelopeValidator: CounterNativeEnvelope(expected: nil), sink: adapter, startupFailure: nil)!
+     }
+     mutating func offer(provenance: FrameProvenance, body: (inout CounterNativeRasterAdapter) -> FrameStreamResult) -> FrameOfferResult {
+         precondition(actual.replaceEnvelopeValidator(CounterNativeEnvelope(expected: nil)))
+diff --git a/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift b/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift
+index 6ee429ec..4f60b029 100644
+--- a/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift
++++ b/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift
+@@ -114,7 +114,13 @@ struct CounterControl {
+ struct CounterEndpoint: SynchronousFrameEndpoint {
+     var disposition: FrameOfferDisposition = .accepted
+     var sink = CounterRenderSink()
+-    init(configuration: HostEndpointConfiguration, control: UnsafeMutablePointer<CounterControl>) {}
++    init(configuration: HostEndpointConfiguration, control: UnsafeMutablePointer<CounterControl>) {
++        let construction = CounterConstructionInputs.canonical
++        _ = construction.endpointBacking.control(control)
++        _ = construction.endpointConfiguration.configuration(configuration)
++        _ = construction.text.metrics()
++        _ = construction.text.raster()
++    }
+     var calls = 0
+     var streams = 0
+     mutating func offer(provenance: FrameProvenance, body: (inout CounterRenderSink) -> FrameStreamResult) -> FrameOfferResult {
+diff --git a/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWakeIntegration.swift b/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWakeIntegration.swift
+index ebfce139..8e6c43df 100644
+--- a/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWakeIntegration.swift
++++ b/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWakeIntegration.swift
+@@ -48,7 +48,7 @@ extension CounterControl {
+     }
+     mutating func establishCounterScheduler(report: HostAssemblyReport) {
+         precondition(wakeEnabled && scheduler == nil)
+-        scheduler = HostScheduledOpportunityController(assemblyReport: report, initialFrameOriginMicroseconds: 0)
++        scheduler = CounterConstructionInputs.canonical.report.scheduler(report)
+         // Startup opportunities already consumed their own notifications. Seed
+         // only the still-pending canonical reasons and unconsumed fact deadline.
+         if let firstFact = wakeFirstFactMicroseconds {

@@ -1,6 +1,17 @@
 # RFC-014 task context guide
 
-**Current P08 checkpoint — R01–R04 native results; R05 finding for review, 2026-10-12.**
+**Current P08 checkpoint — R05 native PASS; separate review next, 2026-10-12.**
+[Finite actual construction-origin result](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/remaining-implementation/r05-factory-origin-controls/result.md) passes2,697,625 assertions/zero
+failures24/24. All13 legal-edge omissions and3 concrete hidden/bound-input cases
+reject at graph stage before eight later projections; canonical selections drive
+actual endpoint/text, root/admission and full-report scheduler constructors.
+R01–R04 native results are independently accepted at7254e752; R05 result review
+remains pending. Actual nested geometry/backing-last proof stays qualified; no
+standalone stale-geometry claim. Historical helper2/2/B031/1 remain closed.
+No targets started. Registered routes/Embedded/early images and independent P08
+exit remain open; SPEC015 implementing/plan active/P08/T8.1 open, P09–P12 pending.
+
+**Historical P08 checkpoint — R01–R04 native results; R05 finding for review, 2026-10-12.**
 Latest native source `1f3a7ea0` passes2,697,541 assertions/zero failures24/24:
 actual native binding/wake/refusal/supersession and seven-stage activation controls,
 with both scoped-host escape negatives. Raw geometry expiry evidence remains

@@ -210,8 +210,11 @@ struct CounterEndpoint: SynchronousFrameEndpoint {
     var actual: CounterNativeEndpoint
     var sink: CounterRenderSink { actual.sink.recording }
     init(configuration: HostEndpointConfiguration, control: UnsafeMutablePointer<CounterControl>) {
+        let construction = CounterConstructionInputs.canonical
+        let configuration = construction.endpointConfiguration.configuration(configuration)
+        let control = construction.endpointBacking.control(control)
         let adapter = CounterNativeRasterAdapter(configuration: configuration, control: control)
-        let constructed = HostEndpointConfiguration(effectivePresentation: configuration.effectivePresentation, descriptor: adapter.descriptor, payloadLimits: adapter.payloadLimits, surfaceWritableCapacityBytes: adapter.surface.writableCapacityBytes, displaySubmissionLifetime: adapter.target.submissionLifetime, displayHandoff: adapter.target.handoff, displayMaximumInFlightPayloads: adapter.target.maximumInFlightPayloads, displayMaximumInFlightBytes: adapter.target.maximumInFlightBytes, textRasterRealization: .init(rawValue: 0), healthOwnerCount: 1, endpointAndDisplayShareHealthOwner: adapter.target.control == control)
+        let constructed = HostEndpointConfiguration(effectivePresentation: configuration.effectivePresentation, descriptor: adapter.descriptor, payloadLimits: adapter.payloadLimits, surfaceWritableCapacityBytes: adapter.surface.writableCapacityBytes, displaySubmissionLifetime: adapter.target.submissionLifetime, displayHandoff: adapter.target.handoff, displayMaximumInFlightPayloads: adapter.target.maximumInFlightPayloads, displayMaximumInFlightBytes: adapter.target.maximumInFlightBytes, textRasterRealization: construction.text.realization, healthOwnerCount: 1, endpointAndDisplayShareHealthOwner: adapter.target.control == control)
         precondition(HostEndpointStartupValidation.validateConstructedProjection(constructed, equals: configuration) == nil)
         // Equality and both adjacent physical byte capacities reject precisely;
         // the exact actual projection remains the sole activation configuration.
@@ -229,7 +232,7 @@ struct CounterEndpoint: SynchronousFrameEndpoint {
         }
         control.pointee.backend.constructedProjection = constructed
         control.pointee.backend.constructedEndpoints += 1
-        actual = CounterNativeEndpoint(effectivePresentation: configuration.effectivePresentation, descriptor: configuration.descriptor, payloadLimits: configuration.payloadLimits, textMetrics: GiftUIReferenceTextMetricsView(), textRaster: GiftUIReferenceTextRasterView(), textRasterRealization: .init(rawValue: 0), envelopeValidator: CounterNativeEnvelope(expected: nil), sink: adapter, startupFailure: nil)!
+        actual = CounterNativeEndpoint(effectivePresentation: configuration.effectivePresentation, descriptor: configuration.descriptor, payloadLimits: configuration.payloadLimits, textMetrics: construction.text.metrics(), textRaster: construction.text.raster(), textRasterRealization: construction.text.realization, envelopeValidator: CounterNativeEnvelope(expected: nil), sink: adapter, startupFailure: nil)!
     }
     mutating func offer(provenance: FrameProvenance, body: (inout CounterNativeRasterAdapter) -> FrameStreamResult) -> FrameOfferResult {
         precondition(actual.replaceEnvelopeValidator(CounterNativeEnvelope(expected: nil)))

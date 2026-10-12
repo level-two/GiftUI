@@ -114,7 +114,13 @@ struct CounterControl {
 struct CounterEndpoint: SynchronousFrameEndpoint {
     var disposition: FrameOfferDisposition = .accepted
     var sink = CounterRenderSink()
-    init(configuration: HostEndpointConfiguration, control: UnsafeMutablePointer<CounterControl>) {}
+    init(configuration: HostEndpointConfiguration, control: UnsafeMutablePointer<CounterControl>) {
+        let construction = CounterConstructionInputs.canonical
+        _ = construction.endpointBacking.control(control)
+        _ = construction.endpointConfiguration.configuration(configuration)
+        _ = construction.text.metrics()
+        _ = construction.text.raster()
+    }
     var calls = 0
     var streams = 0
     mutating func offer(provenance: FrameProvenance, body: (inout CounterRenderSink) -> FrameStreamResult) -> FrameOfferResult {

@@ -1,4 +1,6 @@
 import GiftUIHostConfiguration
+import GiftUIObservableState
+import GiftUISemanticCore
 
 // Malformed views are confined to this negative fixture, never accepted by a
 // production assembly initializer. Every mutation starts from the actual table.
@@ -29,10 +31,38 @@ package func p08CounterGraph() -> Int {
         precondition(record.role.rawValue == index)
         precondition(record.dependencies.rawValue == expectedMasks[Int(index)])
     }
-    // Structural rejection does not establish hidden-origin rejection; that
-    // separate required factory/input coverage remains open in the P08 receipt.
     precondition(HostComponentGraphValidation.validate(CounterHostGraph()) == nil)
     precondition(CounterHostGraph().record(at: 18) == nil)
     for mode: UInt8 in 0...7 { precondition(HostComponentGraphValidation.validate(CounterInvalidGraph(mode: mode)) != nil) }
-    return 46
+    var modelOwners = ObservableModelOwnerNamespace()
+    var semanticOwners = SemanticRecordOwnerNamespace()
+    var count = 46
+    do {
+        var profile = StaticCounterProfileStorage(modelOwner: try modelOwners.issue(), semanticOwner: try semanticOwners.issue())
+        guard case .valid(let audit) = profile.audit() else { preconditionFailure("counter graph audit") }
+        func reject(_ negative: CounterConstructionNegative, profile: borrowing StaticCounterProfileStorage) {
+            let graph = CounterHostGraph(negative: negative)
+            precondition(HostComponentGraphValidation.validate(graph) == nil)
+            var observation = CounterConstructionObservation()
+            precondition(CounterHostAssembly.validate(audit, kind: .macOSStatic, negative: negative, observation: &observation) == nil)
+            precondition(observation.result == .invalid(stage: .graph, error: .invalidGraph))
+            precondition(observation.hasNoLaterReads)
+            precondition(profile.control.applicationConstructions == 0 && profile.control.finalized == 0 && profile.control.wake == nil)
+            count += 5
+        }
+        for origin: UInt8 in 0...5 { reject(.omitted(.rasterEndpoint, origin), profile: profile) }
+        reject(.omitted(.factAdmission, 0), profile: profile)
+        reject(.omitted(.rootModelTarget, 0), profile: profile)
+        for origin: UInt8 in [0, 2, 3, 4, 5] { reject(.omitted(.wakeRequester, origin), profile: profile) }
+        reject(.hiddenSelectedText, profile: profile)
+        reject(.hiddenRetainedReport, profile: profile)
+        reject(.undeclaredBoundText, profile: profile)
+        var positive = CounterConstructionObservation()
+        precondition(CounterHostAssembly.validate(audit, kind: .macOSStatic, negative: nil, observation: &positive) != nil)
+        guard case .valid? = positive.result else { preconditionFailure("counter graph positive") }
+        precondition(positive.runtimeReads == 1 && positive.textReads == 1 && positive.workloadReads == 1 && positive.capabilityReads == 1 && positive.endpointReads == 1 && positive.applicationReads == 1 && positive.inputReads == 1 && positive.policyReads == 1)
+        precondition(profile.control.applicationConstructions == 0 && profile.control.finalized == 0 && profile.control.wake == nil)
+        count += 4
+    } catch { preconditionFailure("counter graph profile identities") }
+    return count
 }

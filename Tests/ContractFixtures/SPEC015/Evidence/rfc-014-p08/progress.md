@@ -1062,3 +1062,62 @@ HC003 realization. Reject all13 legal-edge omissions and concrete hidden/bound
 origins at graph stage before later projections; duplicate masks alone do not
 suffice. Fresh changed-source R05 validation is permitted; historical helper2/2
 and B031/1 stay closed. No P08 exit, target pass or lifecycle approval claimed.
+
+### R05 implementation dispatch — independently reviewed finite construction selections
+
+Entry `7254e752`, clean. Independent Strong review accepts bounded R01–R04
+native results and actual geometry containment/backing-last proof; no standalone
+raw-geometry lifetime claim is made. Strong `gpt-6.1-sol` / `high`, C3/R3 resumes
+R05 under HC-003/HC-RD-001/002 and the review's exact handoff. Before edits,
+record selected fields/files and independently expected omission/hidden-origin
+cases. Use private finite inert construction selections consumed by the actual
+endpoint/text, root/admission and full-report scheduler paths; graph validation
+must reject missing/hidden origins before later projections. Preserve owner
+boundaries, limits, supplied lifetimes, operational behavior and finite errors.
+No generic API redesign, public contract, retained owner, new capacity/compiler,
+or duplicate-mask-only substitute. Validate new source using pinned counter
+route after formatting; preserve every failure and exact same-blocker guard.
+Commit R05 and stop for separate review before target work. Historical helper2/2
+and B031/1 remain closed. Refresh current checkpoint prose with actual results.
+
+### R05 exact pre-edit realization receipt — 2026-10-12
+
+Entry7254e752; independent bounded R01–R04 acceptance retained. Files:
+CounterHostAssembly.swift(closed profile/reference-text/four-contribution/full-
+report selections; derived construction origins; early concrete graph boundary
+and eight later-projection counters), CounterGraphProbe.swift(13 independent
+legal-bit omissions plus concrete hidden selected-text, hidden full-report and
+undeclared bound-text origin), CounterNativeRaster.swift(actual endpoint backing,
+configuration, selected metrics/raster/realization), CounterPipelineOwner.swift
+(Embedded endpoint corresponding selection), CounterHostOwner.swift and
+CounterDynamicHostOwner.swift(root/profile/admission construction selection),
+CounterWakeIntegration.swift(actual retained full-report scheduler selection).
+No descriptor is retained in audited owners/assembly; canonical selections are
+closed inert value cases, reused at actual call sites. Canonical text/report
+construction uses concrete finite bound-input callbacks and derives union BEFORE
+indirection. Origin oracle is those typed fields/cases, not caller masks.
+
+All13 omission cases keep actual inputs and mutate ONLY the graph declaration:
+endpoint6 bits0...5, admission11 bit0, root14 bit0, wake16 bits0,2...5. Hidden
+text/report cases remove origins despite bound inputs; undeclared bound text
+on the report callback adds its explicit text1 origin while declaration remains
+canonical61. Require structural graph validity, exact graph invalidGraph,
+eight later projection counters all0, zero construction; unaltered actual
+native hosts and concrete bound branches remain passing. Shared concrete helper
+must check before eager resolver/text validation and expose exact result/read
+counts for these tests. Keep18 roles/vector63/1/1/61, operation-only arguments,
+resource/lifetime/limits/public APIs unchanged. Format then one pinned changed-
+source counter command; freeze all failures and same-blocker narrowing honestly.
+Historical helper2/2 and B031/1 remain closed. Commit R05 then stop for review.
+
+### R05 implementation outcome — 2026-10-12
+
+Initial invocation PASS2,697,625/zero failures24/24 (+84 exact), no repair/rerun.
+All496 pins unchanged;190 current input hashes match. [Exact result and limits](remaining-implementation/r05-factory-origin-controls/result.md).
+Closed selections drive actual native constructors;13 omission and3 concrete
+hidden/bound-origin negatives reject graph stage with all8 later reads0.
+Formatter0/no edits; one confirmation overlapped initial invocation without input
+change (fixtures excluded); one unmutated-local warning preserved. No retained
+metadata fields/API/limit/owner changes. R01–R04 independently accepted; R05
+separate review next. Historical helper2/2/B031/1 closed. Commit then STOP;
+no targets, dependency refresh, P08 exit or lifecycle transition.

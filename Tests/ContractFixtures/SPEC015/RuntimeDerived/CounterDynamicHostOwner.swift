@@ -49,13 +49,13 @@ struct CounterDynamicHostSuppliedStorage<Geometry: CounterGeometry>: ~Copyable, 
         self.interaction = consume interaction
     }
     @_lifetime(copy self)
-    borrowing func borrowedModels() -> ObservableModelScope<CounterOwnedModel, CounterModelSchema> {
-        models.borrowedScope()
+    borrowing func borrowedModels(selection: CounterProfileConstructionInput = .supplied) -> ObservableModelScope<CounterOwnedModel, CounterModelSchema> {
+        switch selection { case .supplied: return models.borrowedScope() }
     }
     @_lifetime(copy self)
-    borrowing func borrowedRoot() -> ObservableStateRootScope<
+    borrowing func borrowedRoot(selection: CounterProfileConstructionInput = .supplied) -> ObservableStateRootScope<
         CounterOwnedModel, SemanticCompleteIdentity
-    > { root.borrowedRoot() }
+    > { switch selection { case .supplied: return root.borrowedRoot() } }
     @_lifetime(copy self)
     borrowing func borrowedSemantic() -> SemanticRecordStore<CounterPayload> {
         semantic.borrowedStore()
@@ -92,10 +92,11 @@ enum CounterDynamicHostState: ~Copyable, ~Escapable {
         switch consume self {
         case .inert(let supplied, let span):
             precondition(span.count == 1 && span[0] == 1)
-            let models = supplied.borrowedModels()
-            let root = supplied.borrowedRoot()
+            let construction = CounterConstructionInputs.canonical
+            let models = supplied.borrowedModels(selection: construction.root)
+            let root = supplied.borrowedRoot(selection: construction.root)
             let control = supplied.borrowedControl()
-            let audit = supplied.audit
+            let audit = construction.root.audit(supplied.audit)
             let report = assembly.report
             if let error = counterBindingJoinError(expectedModels: models, expectedControl: supplied.controlPointer, expectedAudit: supplied.audit, expectedReport: assembly.report, kind: .macOSDynamic, profile: .dynamic, models: models, root: root, control: control.pointer, audit: audit, report: report) {
                 self = .inert(consume supplied, span)
@@ -103,7 +104,7 @@ enum CounterDynamicHostState: ~Copyable, ~Escapable {
             }
             let pipeline = CounterDynamicHostPipeline(models: models.borrowedScope(), root: root.borrowedRoot(), semantic: supplied.borrowedSemantic(), values: supplied.borrowedValues(), geometry: supplied.geometry, interaction: supplied.interaction, scopedControl: control.borrowed(), limits: audit.limits, endpointConfiguration: assembly.endpoint)
             let binding = CounterExecutionBinding(models: models.borrowedScope(), root: root.borrowedRoot(), scopedControl: control.borrowed(), audit: audit)!
-            let coordinator = CounterDynamicHostCoordinator(binding: binding, admission: CounterAdmission(control: control.pointer, limits: audit.limits.execution), opportunity: pipeline)
+            let coordinator = CounterDynamicHostCoordinator(binding: binding, admission: CounterAdmission(control: construction.admission.control(control.pointer), limits: construction.admission.audit(audit).limits.execution), opportunity: pipeline)
             self = .active(consume coordinator, nil, span)
         case .active(let coordinator, let cache, let span): self = .active(consume coordinator, consume cache, span)
         case .retired(let semantic, let geometry, let interaction, let span): self = .retired(consume semantic, geometry, interaction, span); preconditionFailure("retired host")

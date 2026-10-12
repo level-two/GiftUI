@@ -25,8 +25,8 @@ superseded_by: null
 ## RFC-014 implementation readiness — 2026-10-10
 
 **Ready under [explicit Spec approval](../iterations/iteration-003-review/rfc-014-spec-approval.md).**
-P08 implementation has begun; the newly approved Option B implementation has not
-started and is reserved for a separate activity at the current checkpoint below. The [bounded sequence](../iterations/iteration-003-review/rfc-014-implementation-plan.md)
+P08 implementation has begun; bounded Option B and remaining native slices have
+results recorded at the current checkpoint below, with P08 exit still open. The [bounded sequence](../iterations/iteration-003-review/rfc-014-implementation-plan.md)
 is the shared ordering/scope index: exactly P01–P12, not an expandable backlog.
 This owner contributes P08; its final regression/resource/disposition
 obligations run through P10–P12. Only the current checkpoint below is new work.
@@ -35,7 +35,18 @@ not additional authorization to rerun an MVP implementation or reopen experiment
 
 ### Current owner checkpoint
 
-**Current owner checkpoint — R01–R04 native results; R05 finding for review, 2026-10-12.**
+**Current owner checkpoint — R05 native PASS; separate review next, 2026-10-12.**
+[Finite actual construction-origin result](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/remaining-implementation/r05-factory-origin-controls/result.md) passes2,697,625 assertions/zero
+failures24/24. All13 legal-edge omissions and3 concrete hidden/bound-input cases
+reject at graph stage before eight later projections; canonical selections drive
+actual endpoint/text, root/admission and full-report scheduler constructors.
+R01–R04 native results are independently accepted at7254e752; R05 result review
+remains pending. Actual nested geometry/backing-last proof stays qualified; no
+standalone stale-geometry claim. Historical helper2/2/B031/1 remain closed.
+No targets started. Registered routes/Embedded/early images and independent P08
+exit remain open; SPEC015 implementing/plan active/P08/T8.1 open, P09–P12 pending.
+
+**Historical owner checkpoint — R01–R04 native results; R05 finding for review, 2026-10-12.**
 Latest native source `1f3a7ea0` passes2,697,541 assertions/zero failures24/24:
 actual native binding/wake/refusal/supersession and seven-stage activation controls,
 with both scoped-host escape negatives. Raw geometry expiry evidence remains
