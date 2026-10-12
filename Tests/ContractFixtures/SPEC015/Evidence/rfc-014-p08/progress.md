@@ -926,3 +926,37 @@ Feasibility is untested; no source/compiler/test/build/formatter/dependency work
 ran in review. No new human gate is required solely by the failed compiles.
 Review stops here; R03–R05 unstarted, P08/T8.1/four routes/linked evidence and
 P09–P12 remain open. This review and its dispatch are committed.
+
+### R02 resume — exact guard interpretation reviewed
+
+Entry `1d83b4e2`, clean. Independent review establishes a conservative pause,
+not exhausted same-blocker allowance: each prior correction removed a different
+diagnostic set and narrowed the cause. Resume within original R02 authorization,
+Strong `gpt-6.1-sol` / `high`, using only the reviewed lexical rearrangement in
+both probes: enter foreign backing scope first; construct/check/consume/activate/
+teardown the owner inside it; inline owner checks or pass only scalar snapshots
+to helpers, with no closure capturing the lifetime-dependent owner. Preserve
+all guarded-path oracles and frozen attempts. Refresh current navigation to this
+reviewed disposition. Validate changed source and record the exact same-blocker
+repair ledger; do not reinterpret distinct progress as exhaustion or reset an
+actual exhausted budget. Historical helper2/2 and B031/1 remain closed.
+
+R02 reviewed lexical correction implemented only in both actual host probes:
+foreign live scopes now enclose the complete existing profile-lifetime body;
+owner construction, all six negative results/scalar snapshot comparisons, move
+into actual host, activation and teardown occur inside. Nested reject helper
+removed; owner never captured by another closure. Guard/oracles/limits unchanged.
+Current navigation corrected to reviewed continuation; actual prior pause and
+three failures preserved. No correction of owner-capture blocker had previously
+been attempted; this is its first focused correction under unchanged same-blocker
+rule. Historical helper2/2 and B031/1 closed. Format then existing pinned command
+with evidence in r02-binding-controls/attempt-4; no broader changes.
+
+### R02 reviewed continuation outcome — 2026-10-12
+
+Attempt4 passes1,349,199 assertions/zero failures,23/23 checks. The exact reviewed
+lexical correction resolves owner capture without a new ownership/API choice.
+496 pinned identities unchanged; formatting/whitespace checks pass. Exact evidence:
+[continuation result](remaining-implementation/r02-binding-controls/continuation-result.md).
+Commit this coherent step before R03. Historical helper2/2/B031/1 remain closed;
+no failed-attempt deletion or allowance reset. Independent result review pending.

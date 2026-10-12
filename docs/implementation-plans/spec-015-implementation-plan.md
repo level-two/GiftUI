@@ -35,7 +35,16 @@ not additional authorization to rerun an MVP implementation or reopen experiment
 
 ### Current owner checkpoint
 
-**Current owner checkpoint — R02 stopped at repair guard, 2026-10-12.**
+**Current owner checkpoint — R02 native PASS, 2026-10-12.**
+[Reviewed lexical continuation](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/remaining-implementation/r02-binding-controls/continuation-result.md) passes1,349,199 assertions/zero failures
+and23/23 checks, including actual Static/Dynamic binding rejection and own34/35
+operational controls. Independent result review remains pending. The preceding
+pause was conservative; its two corrections narrowed distinct causes, and the
+first owner-capture correction now passes. Historical helper2/2 and B031/1
+remain closed. R03–R05 and P08/T8.1 remain open; P09–P12 pending. No target
+build or analyzer applicability claim follows from this finite-counter result.
+
+**Historical owner checkpoint — conservative R02 pause, 2026-10-12.**
 R02's initial invocation and two bounded corrections all stop at counter-model
 compilation. The current WIP is unvalidated; its new actual-probe test closure
 captures a lifetime-dependent owner, which the pinned compiler rejects. Parent

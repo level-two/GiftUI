@@ -1,6 +1,15 @@
 # RFC-014 bounded implementation sequence — 2026-10-10
 
-**Current P08 checkpoint — R02 stopped at repair guard, 2026-10-12.**
+**Current P08 checkpoint — R02 native PASS, 2026-10-12.**
+[Reviewed lexical continuation](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/remaining-implementation/r02-binding-controls/continuation-result.md) passes1,349,199 assertions/zero failures
+and23/23 checks, including actual Static/Dynamic binding rejection and own34/35
+operational controls. Independent result review remains pending. The preceding
+pause was conservative; its two corrections narrowed distinct causes, and the
+first owner-capture correction now passes. Historical helper2/2 and B031/1
+remain closed. R03–R05 and P08/T8.1 remain open; P09–P12 pending. No target
+build or analyzer applicability claim follows from this finite-counter result.
+
+**Historical P08 checkpoint — conservative R02 pause, 2026-10-12.**
 R02's initial invocation and two bounded corrections all stop at counter-model
 compilation. The current WIP is unvalidated; its new actual-probe test closure
 captures a lifetime-dependent owner, which the pinned compiler rejects. Parent
@@ -160,7 +169,7 @@ that continuation is unauthorized are superseded only by the resumption above.
 > historical; production integration and P08 remain stopped. The new bounded
 > bench allowance must not be interpreted as an unlimited P07 restart.
 
-**P01–P07 passed; P08 R02 guard stop with unvalidated WIP, last native PASS R01 d2df7dcc; P09–P12 pending.** This is the shared
+**P01–P07 passed; P08 reviewed R02 continuation, last native PASS R01 d2df7dcc; P09–P12 pending.** This is the shared
 sequencing index for nine owner Implementation Plans, not another contract or
 investigation. It derives only the [approved Spec amendments](rfc-014-spec-approval.md)
 at `3c260bbc`, their subsequent explicit amendments, and accepted ADR-035/036/037/038. ITERATION-003 I3-04/05 supplies the
