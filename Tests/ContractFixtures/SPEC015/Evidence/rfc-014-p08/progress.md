@@ -1188,3 +1188,32 @@ Pinned native tiled validation PASS1,353,625/zero24/24 on attempt3;191input hash
 ### R06 selected-route checkpoint — stop for separate authority/scope review
 
 Current nativeStatic PASS1,349,555/0,24/24 and nativeDynamic PASS1,349,501/0,24/24; PiARMv6 current Dynamic cross-compile/negatives PASS28/28. All3source-specific input sets match. nRF attempt1 fails fresh HostConfiguration with130 missing per-file direct-import diagnostics in5files, beforecounter model; preceding modules compile. Seven lower owners are used transitively but absent direct Package declarations; no permission inferred from that fact. [Exact source/authority packet](remaining-implementation/r06-profile-routes/result.md). All496pins unchanged, identical current route patch across4invocations, failures preserved. No source repair, compiler rerun, image work/deploy/flash pending sequential Strong authority/scope review. Historical helper2/2/B031/1 closed; no same-blocker guard exhaustion. Commit WIP/evidence/navigation; P08/R06/R07 open, P09–P12 pending.
+
+### R06 independent import-boundary review dispatch
+
+Entry `2379dddb`, clean. Strong `gpt-6.1-sol` / `high`, C3/R3, sequential.
+Review R06 exact current route/WIP result and nRF130-diagnostic packet. Determine
+whether explicit per-file imports plus matching direct package declarations for
+already-used contract-owner APIs conform to accepted ADR-008/SPEC-015, or require
+an actual architecture/scope decision. Inspect current source imports and existing
+firmware combination recipe; transitive availability alone is not authority.
+If local realization, give exact bounded files/modules/generator and validation
+handoff without inventing user approval. If not, produce concrete decision options
+and the required upstream artifact. Also assess route-evidence applicability
+(nativeStatic/Dynamic/Pi passed, nRF failed, no images) without reruns.
+Review/progress only, commit; no source/dependency changes, compiler/binary/tests,
+image or hardware actions. Historical repair limits remain closed; no exhausted
+new nRF blocker is claimed from its single attempt.
+
+R06 independent authority outcome: explicit imports/direct declarations for
+the already-used scalar contract APIs are authorized local SPEC015 realization;
+no new ownership/user gate. [Exact bounded correction and provenance review](remaining-implementation/r06-profile-routes/independent-review.md).
+Five source headers + generator header + seven Package direct lower-owner edges;
+also reconcile exact HostConfiguration rows in SPEC002 target-dependencies.yaml
+and SPEC015 module-owners.tsv (stale six forbidden entries). Preserve all lower/
+portable prohibitions, scalar descriptor contents and frozen pins/receipts.
+Passing current nativeStatic192/nativeDynamic192/Pi219 input sets and route/result/
+report identities match; Pi ARMv6 compile-only. nRF has65 primary missing-import
+diagnostics rendered as130 error occurrences, first visibility failure/no repair.
+Fresh corrected-source validation may continue with explicit recipe applicability;
+no nRF result/image/resource/P08 completion claimed, historical budgets closed.
