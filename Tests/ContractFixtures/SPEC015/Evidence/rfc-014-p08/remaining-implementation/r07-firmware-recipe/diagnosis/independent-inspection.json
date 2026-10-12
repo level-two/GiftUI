@@ -1,0 +1,65 @@
+{
+  "review_entry_commit": "fc7a380b",
+  "recorded_inputs_checked": 346,
+  "recorded_object_count": 333,
+  "identity_mismatches_or_missing": [],
+  "readelf": {
+    "argv": [
+      ".toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/arm-zephyr-eabi-readelf",
+      "-rW",
+      ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/app/libapp.a"
+    ],
+    "exit_status": 0,
+    "stderr": "",
+    "relocation_counts": {
+      "R_ARM_THM_CALL": 8610,
+      "R_ARM_PREL31": 7866,
+      "R_ARM_THM_JUMP24": 1321,
+      "R_ARM_REL32": 1136,
+      "R_ARM_ABS32": 1559,
+      "R_ARM_GOT_PREL": 4
+    },
+    "got_prel_entries": [
+      {
+        "member": "File: .build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/app/libapp.a(RasterFillCoverage.swift.obj)",
+        "section": "Relocation section '.rel.text.$e16GiftUIRasterCore18RasterFillCoverageO12intersectiony0A2UI4RectVSgAG_A3GtFZ' at offset 0x5f8 contains 7 entries:",
+        "relocation": "0000014c  00001660 R_ARM_GOT_PREL         00000000   swift_initStackObject"
+      },
+      {
+        "member": "File: .build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/app/libapp.a(RasterFillCoverage.swift.obj)",
+        "section": "Relocation section '.rel.text.$e16GiftUIRasterCore18RasterFillCoverageO12intersectiony0A2UI4RectVSgAG_A3GtFZ' at offset 0x5f8 contains 7 entries:",
+        "relocation": "00000150  00001760 R_ARM_GOT_PREL         00000000   swift_setDeallocating"
+      },
+      {
+        "member": "File: .build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/app/libapp.a(CounterTiledRaster.swift.obj)",
+        "section": "Relocation section '.rel.text.$e16GiftUIRasterCore18RasterFillCoverageO12intersectiony0A2UI4RectVSgAG_A3GtFZ' at offset 0xcc5c contains 7 entries:",
+        "relocation": "0000014c  00039e60 R_ARM_GOT_PREL         00000000   swift_initStackObject"
+      },
+      {
+        "member": "File: .build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/app/libapp.a(CounterTiledRaster.swift.obj)",
+        "section": "Relocation section '.rel.text.$e16GiftUIRasterCore18RasterFillCoverageO12intersectiony0A2UI4RectVSgAG_A3GtFZ' at offset 0xcc5c contains 7 entries:",
+        "relocation": "00000150  00039f60 R_ARM_GOT_PREL         00000000   swift_setDeallocating"
+      }
+    ]
+  },
+  "nm": {
+    "argv": [
+      "nm",
+      "-g",
+      ".toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/arm-zephyr-eabi-ld.bfd"
+    ],
+    "exit_status": 0,
+    "stderr": "",
+    "bfd_error_or_final_link_exports": []
+  },
+  "locally_preserved_reference_source": {
+    "path": "/private/tmp/giftui-r07-elf32-arm.c",
+    "sha256": "1067ed29f7814f5c817b9d107a1627dbd8bce4449932011d8af505e7d2d4e1ea",
+    "relevant_function": "elf32_arm_finish_dynamic_sections",
+    "silent_discard_check_line": 17307,
+    "sdk_binary_branch_not_proven": true
+  },
+  "compiler_linker_test_invocations": 0,
+  "production_repairs": 0,
+  "hardware_actions": 0
+}

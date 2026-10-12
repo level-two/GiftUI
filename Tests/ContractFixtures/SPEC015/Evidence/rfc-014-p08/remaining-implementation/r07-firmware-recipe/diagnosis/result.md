@@ -1,5 +1,14 @@
 # R07 residual prelink diagnostic checkpoint
 
+[Independent sequential review](independent-review.md) at clean fc7a380b
+finds four actual GOT relocations against runtime helpers while the frozen
+script discards GOT sections. It supports exactly one isolated GOT-placement
+diagnostic, with no production correction or image acceptance. The review
+records the exact input transformations, one-invocation budget, proof limits
+and mandatory stop. [Read-only applicability receipt](independent-inspection.json)
+matches all346frozeninputs, including333objects. No compiler/link/test ran in
+that review; R07/P08 and final nRF evidence remain open.
+
 Entry da087dd7; Sol6.1 High / Strong sequential continuation, 2026-10-12.
 P08/R07 and SPEC-015 T8.1 remain open. This is a diagnostic checkpoint for
 independent review, not a recipe correction, image pass or package approval.
