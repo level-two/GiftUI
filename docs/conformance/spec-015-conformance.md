@@ -5,7 +5,7 @@ title: SPEC-015 Conformance Report
 status: collecting
 reviewers: [codex]
 created: 2026-09-19
-updated: 2026-10-11
+updated: 2026-10-12
 implementation_plan: ../implementation-plans/spec-015-implementation-plan.md
 related_future_work:
   - FW-022
@@ -47,14 +47,18 @@ and rejects reachable callback escape. [Independent review](../../Tests/Contract
 at `156f3fb4` passes the bounded pair and supports proposal presentation. This is a
 Static coordinator under preserved Dynamic-profile flags, not full profile coverage.
 The [baseline correction is approved](../iterations/iteration-003-review/rfc-014-spec-approval.md#swift-64-compiler-baseline-correction--2026-10-12)
-at `267616c9`, applied in normative configuration `470137b7` and pins `b594997b`.
-The maintained actual generic-host join `4b1d642b` passes 48 lifecycle assertions
-and four ownership negatives; [independent component review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-integration/final-review.md)
-`0512209f` passes. Fresh macro/native/cross-target baseline and maintained P08
-component regressions remain closure prerequisites. Full validator/application
-owners, counter/four routes/early images/resources and P08 exit remain open.
-Historical guards and closed budgets are preserved; SPEC-015 remains implementing
-and its plan active.
+and applied. **The P08 activation construction/lifetime blocker is resolved.**
+[Independent final audit](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-integration/baseline-final-review.md)
+`0555805f` passes the actual generic-host join, both maintained native P08 gates
+(368 assertions/37 checks each), four-profile macro/core/runtime/Foundation
+regressions, matched resource pairs, target ABI and isolated native latency.
+Existing contracts and resource limits are unchanged. Historical guards and
+closed budgets remain preserved.
+
+Full validator/application owners, finite counter, four-route application/early
+images and remaining P08/P10–P12 criteria still require their own evidence.
+Component synthetic reports and adapter traces do not satisfy those criteria.
+SPEC-015 remains implementing, its plan active, and T8.1/P08 incomplete.
 
 **Current amendment — 2026-10-05:** Approved five-second retention is implemented and all four hardware-free profiles pass in the [fresh integration](../iterations/iteration-002-cleanup/evidence/18-retention-integration/result.md). Focused nRF connected checks/restoration and current Pi deployment/ARMv6 rehearsal/bounded physical endpoint loop succeed. Original exception authority remains unchanged.
 

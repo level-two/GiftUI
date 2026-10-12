@@ -2,14 +2,27 @@
 
 ## Current conclusion
 
-The maintainer approved the Swift 6.4 compiler correction at `267616c9`.
-Normative configuration `470137b7` and compiler/SDK pins `b594997b` are applied.
-The [maintained actual generic-host join](activation-integration/result.md)
-`4b1d642b` passes 48 lifecycle assertions and four intended ownership negatives.
-[Independent component review](activation-integration/final-review.md) at
-`0512209f` passes. Fresh macro/native/cross-target baseline regressions and the
-maintained P08 component checker remain required before activation-blocker
-closure. Full P08 remains open; SPEC-015 remains implementing and its plan active.
+**Resolved: P08's activation-time construction and lifetime-containment blocker.**
+The maintainer approved Swift6.4 at `267616c9`; its pins and matching ARMv6 SDK
+are applied. The actual generic host constructs its coordinator/endpoint only
+through activate, executes real runtime work and quiescence, and rejects copy,
+callback escape, constant-marker escape and expired backing. The tested6.3.2
+configuration could not meet these controls;6.4 meets them without relaxing the
+contract or adding an unchecked lifetime extension.
+
+[Independent final audit](activation-integration/baseline-final-review.md)
+`0555805f` passes the maintained component and the required fresh compiler
+compatibility packet. Both native P08 gates pass368 assertions/37 checks; the
+new macro, four-profile core/runtime/Foundation gates, matched resource pairs,
+target ABI and isolated native latency all pass. All steps are committed and
+historical failures remain preserved. The actual activation fixture uses the
+Static coordinator under separate native Dynamic/Static compilation profiles;
+it is not four-route application acceptance or target execution.
+
+Full P08 remains open: continue finite counter/application integration and the
+four-route application/early-image gates, then the existing P10–P12 obligations.
+Synthetic component reports and application-stage traces do not establish full
+validator/application conformance. SPEC-015 remains implementing and its plan active.
 
 The maintainer authorized resolution, bounded delegation and a commit for each
 step. Strong Astra 6 Medium owns mechanism investigation and separate review;
@@ -74,19 +87,23 @@ records compiler/SDK identities and metadata checks; fresh target compatibility,
 ABI and resource evidence must be assessed separately. Historical failures,
 closed budgets and production guards remain preserved.
 
-## Evidence required to actually unblock implementation
+## Verified closure evidence
 
-1. A reviewed realization that passes actual activation, opportunity and ordered
-   quiescence while rejecting copy, callback escape and expired backing, including
-   a constant-marker control. All supplying activation scopes must be covered.
-2. Integration through the existing `SignalAnalyzerPresetHostInstance`, keeping
-   validation pure and first coordinator/endpoint construction inside activation.
-   Verify lifecycle refusal, repeated activation, failure containment, report
-   invalidation and backing-last teardown.
-3. Maintained regression fixtures and fresh applicable component receipts under
-   the accepted compiler baseline, followed by independent Strong review.
-
-Only then can the activation blocker be marked resolved. The finite counter,
-four routes, early images, resources and complete P08 acceptance remain separate
-work in the approved sequence. The maintained optional regression checker is integrated at `6631d119` and
-`9ccfd2d8`; its fresh execution receipts remain required.
+1. [Maintained actual generic-host join](activation-integration/result.md) and
+   [independent semantic review](activation-integration/final-review.md):48
+   lifecycle assertions, all four ownership negatives, construction through the
+   existing host/controller, failure containment, ordered/idempotent teardown,
+   report invalidation and backing-last component ordering.
+2. [Maintained native component gate](activation-integration/component-regression/result.md):
+   both native profiles pass368 assertions and37 checks, using fresh6.4 dependencies.
+3. [Baseline/core/runtime](activation-integration/baseline-regression/results.md)
+   and [Foundation](activation-integration/foundation-regression/result.md):
+   four-profile compatibility, fresh macro, unchanged semantic/layout/allocation
+   boundaries and linked section evidence.
+4. [Matched resource pairs/ABI](activation-integration/resource-regression/result.md)
+   and [isolated native latency](activation-integration/resource-regression/isolated-latency/result.md):
+   unchanged ceilings and repeated linked measurements; cross evidence is
+   build/inspection only. ARMv6 code headroom is700 bytes, not a future waiver.
+5. [Consolidated independent audit](activation-integration/baseline-final-review.md)
+   at `0555805f` accepts closure of this component blocker. No full P08, P11 or
+   feature lifecycle completion is inferred.

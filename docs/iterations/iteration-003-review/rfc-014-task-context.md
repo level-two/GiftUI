@@ -1,17 +1,21 @@
 # RFC-014 task context guide
 
-**Current P08 checkpoint — approved baseline; fresh regression underway, 2026-10-12:**
-The maintainer [approved the Swift 6.4 correction](rfc-014-spec-approval.md#swift-64-compiler-baseline-correction--2026-10-12)
-at `267616c9`. Normative configuration `470137b7` and compiler/SDK pins
-`b594997b` are applied. The maintained actual generic-host activation join
-`4b1d642b` passes 48 lifecycle assertions and four ownership negatives;
-[independent review](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-integration/final-review.md)
-`0512209f` passes its bounded component scope. Fresh macro, native and cross-target
-baseline regressions and the maintained P08 checker remain closure prerequisites.
-[Current evidence](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/progress.md)
-preserves historical guards and closed budgets. Synthetic component reports and
-application-stage trace adapters do not establish full application validation;
-T8.1, counter/four routes/early images/resources and full P08 exit remain open.
+**Current P08 checkpoint — activation blocker resolved, 2026-10-12:**
+The [approved Swift 6.4 correction](rfc-014-spec-approval.md#swift-64-compiler-baseline-correction--2026-10-12)
+`267616c9` is applied and the actual generic-host activation join is verified.
+[Independent final audit](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-integration/baseline-final-review.md)
+`0555805f` passes the maintained join, fresh macro/core/runtime and Foundation
+four-profile regressions, matched resource pairs, ABI and isolated native timing.
+Both native P08 component gates pass368 assertions and37 checks, including all
+four precise ownership negatives. No contract or resource ceiling was relaxed.
+
+The compiler lifetime-containment and activation-time construction blocker is
+closed. Continue P08's finite counter/application integration and four-route
+application/early-image acceptance under the existing sequence. Synthetic
+component reports and application-stage trace adapters do not satisfy full
+validator/application evidence. T8.1, complete P08 and P10–P12 remain open;
+SPEC-015 stays implementing and its plan active. [Current evidence](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/progress.md)
+preserves historical failures, guards and closed budgets.
 
 **Historical P08 stop checkpoint, superseded only by later explicitly bounded work:**
 Approved correction `4dbdc2e0`, host propagation `6eda65d0` and schema4 slice

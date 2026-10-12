@@ -88,7 +88,7 @@ adapters record ordering. This realizes the runtime ownership join and does not
 prove the nine-stage validator, application owners, counter routes, early images
 or full SPEC-015 conformance. Those retain their existing P08–P12 obligations.
 Reproduction and independent review belong to the
-[activation integration record](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-integration/scope.md).
+[independently reviewed activation integration](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/activation-integration/baseline-final-review.md).
 
 ## Historical schema-3 realization
 

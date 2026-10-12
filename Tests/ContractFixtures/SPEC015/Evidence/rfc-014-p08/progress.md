@@ -1,15 +1,26 @@
 # RFC-014 P08 execution receipt — 2026-10-11
 
-**Current checkpoint — approved baseline; fresh regression underway, 2026-10-12.**
-The [compiler correction is approved](../../../../../docs/iterations/iteration-003-review/rfc-014-spec-approval.md#swift-64-compiler-baseline-correction--2026-10-12)
-at `267616c9`; normative configuration `470137b7` and pins `b594997b` are applied.
-The [maintained actual generic-host join](activation-integration/result.md),
-committed `4b1d642b`, passes 48 lifecycle assertions and four intended ownership
-negatives. [Independent review](activation-integration/final-review.md) at
-`0512209f` passes the bounded component. Fresh macro/core/runtime four-profile
-baseline checks and the [native component regression](activation-integration/component-regression-scope.md)
-remain required before closure. Full validator/application owners, counter,
-four routes, early images/resources and P08 exit retain their existing obligations.
+**Current checkpoint — activation blocker resolved, 2026-10-12.**
+The [approved compiler correction](../../../../../docs/iterations/iteration-003-review/rfc-014-spec-approval.md#swift-64-compiler-baseline-correction--2026-10-12)
+`267616c9` is applied. [Independent final audit](activation-integration/baseline-final-review.md)
+`0555805f` passes the complete baseline-compatibility and actual generic-host join
+packet. The actual coordinator/endpoint is first constructed through host.activate;
+real opportunity and quiescence execute, while copy/callback/constant-marker/
+backing-expiry negatives reject for their intended reasons.
+
+[Fresh native component regressions](activation-integration/component-regression/result.md)
+pass368 assertions and37 checks per native profile. [Fresh baseline/runtime](activation-integration/baseline-regression/results.md)
+passes P01/P02/P04/P07 across the four applicable configurations with a newly
+rebuilt macro; each native P07 gate passes5904 assertions. [Foundation](activation-integration/foundation-regression/result.md)
+passes all four final gates. [Matched resources and ABI](activation-integration/resource-regression/result.md)
+and [isolated latency](activation-integration/resource-regression/isolated-latency/result.md)
+meet unchanged component limits. No target execution or hardware action occurred.
+
+The construction/lifetime blocker is closed; full P08 is not complete. The finite
+counter, real application/validator owners, four-route application/early-image
+acceptance and remaining P10–P12 obligations continue under the approved plan.
+SPEC-015 remains implementing and its plan active. No synthetic report or adapter
+trace is claimed as full application validation.
 
 **Historical investigations below retain their original scopes and closed budgets.**
 The latest [bounded scope](activation-struct/scope.md), committed at `99d4ddd1`,
