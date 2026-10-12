@@ -11,7 +11,9 @@ package struct CounterOwnedModel: ~Copyable, ObservableStateModel, ObservableMod
     private var sink: _GiftUIObservableChangeSink?
     package init(value: UInt8) { precondition(value <= 9); self.value = value }
     package static func materialize(_ seed: Schema.Seed) -> Self { Self(value: seed.value) }
-    package var isEmptyReplacement: Bool { false }
+    // This witness concerns populated capture backing. Every finite scalar seed
+    // has zero capture banks; a nonzero counter value does not add a bank.
+    package var isEmptyReplacement: Bool { true }
     package mutating func attach(_ sink: consuming _GiftUIObservableChangeSink) -> _GiftUIObservationAttachment? {
         let attachment = sink.attachment
         self.sink = consume sink

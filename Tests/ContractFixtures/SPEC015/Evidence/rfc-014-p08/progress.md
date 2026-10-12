@@ -271,3 +271,10 @@ no unproductive repair. No P08 acceptance or target image claim.
 source lowered and four modules compiled;92actual Static/Dynamic observable-model
 assertions pass. Guard0/2 after narrowed fixture phase correction. Full host and
 four-route/early-image obligations remain open; no self-pass.
+
+## Remaining step3 — actual counter owners (2026-10-12)
+
+[Receipt](remaining-implementation/step-3-counter-owners/result.md):804assertions
+pass across actual Static/Dynamic scoped model/root/semantic/Canvas owners.
+Explicit cache ownership and final-ticket nonzero scalar replacement pass.
+Full runtime/host/four-route/early-image boundary remains open; guard0/2.

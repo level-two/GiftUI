@@ -72,3 +72,19 @@ observable storage. Follow-up host join will consume these exact modules and
 replace trace services with actual owners. The existing semantic owner needs
 quiescent reset before report invalidation; a narrowly guarded internal seam is
 permitted by parent for the approved teardown order, not a new protocol.
+
+## Step 3 — actual finite State/semantic/Canvas owners, before edits
+
+Strong Sol6.1 High; guard0/2. Add `CounterSemantic.swift` and
+`CounterSemanticProbe.swift`; exact finite declaration-role metadata, actual
+Static/Dynamic root adapters (2slots/4claims/2pins/0captures), two semantic banks,
+one-entry Canvas storage and generated table. Discover CounterScreen State,
+freeze/read actual retained model, expand each0–9 mutation, inspect independently
+expected title/digit/actions/disabled payloads and stage/release the actual Canvas
+value. Retain/release the host cache ticket explicitly and prove guarded
+replacement refuses a retained cache before accepting after release. No supplied
+expanded occurrence graph; finite type metadata contains no paths or positions.
+
+Extend the same pinned6.4 `check-spec-015-counter.py` command with these sources
+and actual scope checks. Full coordinator/host join remains subsequent; this is
+an actual owner slice rather than a synthetic report/pipeline assertion.

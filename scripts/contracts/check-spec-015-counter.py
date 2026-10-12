@@ -34,7 +34,7 @@ out = pathlib.Path(tempfile.mkdtemp(prefix='p08-counter-', dir=ROOT / '.build/co
 flags[flags.index('-module-cache-path') + 1] = str(out / 'cache')
 flags = ['-I', str(out), *flags]
 fixture = ROOT / 'Tests/ContractFixtures/SPEC015/RuntimeDerived'
-inputs = [pathlib.Path(__file__).resolve(), fixture / 'Counter.swift', fixture / 'Counter.schema.json', fixture / 'CounterModel.swift', fixture / 'CounterModelProbe.swift']
+inputs = [pathlib.Path(__file__).resolve(), fixture / 'Counter.swift', fixture / 'Counter.schema.json', fixture / 'CounterModel.swift', fixture / 'CounterModelProbe.swift', fixture / 'CounterSemantic.swift', fixture / 'CounterSemanticProbe.swift']
 commands, checks = [], []
 def run(label, command):
     command = list(map(str, command))
@@ -52,10 +52,10 @@ for name, source in (('P08CounterSchema', 'CounterSchema.swift'), ('P08CounterPr
     run(name, [compiler, *flags, '-module-name', name, '-emit-module', '-emit-object', out / source,
                '-emit-module-path', out / (name + '.swiftmodule'), '-o', out / (name + '.o')])
 run('counter-model', [compiler, *flags, '-module-name', 'P08CounterRuntime', '-emit-module', '-emit-object',
-                      fixture / 'CounterModel.swift', fixture / 'CounterModelProbe.swift',
+                      fixture / 'CounterModel.swift', fixture / 'CounterModelProbe.swift', fixture / 'CounterSemantic.swift', fixture / 'CounterSemanticProbe.swift',
                       '-emit-module-path', out / 'P08CounterRuntime.swiftmodule', '-o', out / 'P08CounterRuntime.o'])
 main = out / 'Main.swift'
-main.write_text('import P08CounterRuntime\n@main struct Main { static func main() { print("P08 counter source/model assertions=\\(p08CounterModel()) failures=0") } }\n')
+main.write_text('import P08CounterRuntime\nimport Darwin\n@main struct Main { static func main() { setbuf(stdout, nil); print("P08 counter source/model assertions=\\(p08CounterModel() + p08CounterSemantic()) failures=0") } }\n')
 objects = [path for path in sorted(base.glob('*.o')) if path.name not in ('RuntimeCycleProbe.o', 'CycleSchema.o', 'CyclePresentation.o', 'CycleTable.o')]
 run('link', [compiler, *flags, main, core / 'GiftUI.o', *objects, *sorted(out.glob('*.o')), '-o', out / 'counter'])
 execution = run('execute', [out / 'counter']).strip()
