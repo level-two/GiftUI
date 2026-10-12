@@ -1,0 +1,21 @@
+{
+  "entry_commit": "1497f0ae74984a86b52054253aede00c8e0f2e16",
+  "command": [
+    "scripts/contracts/run-spec-015.sh",
+    "--profile",
+    "raspberry-pi-armv6",
+    "--corpus",
+    "rfc-014-counter",
+    "--runtime-build",
+    ".build/raspberry-pi/contracts/spec-013-runtime-cycle/tmpvq70p7a0/raspberry-pi-armv6"
+  ],
+  "started_utc": "2026-10-12T13:52:41.235084+00:00",
+  "scope": "r06-current-routes changed coherent controls only; historical2/2/B031/1 closed",
+  "formatter_exit": 0,
+  "source_patch_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "exit_status": 0,
+  "finished_utc": "2026-10-12T13:54:56.243424+00:00",
+  "builds": [
+    ".build/raspberry-pi/contracts/p08-counter-7qokob7z"
+  ]
+}

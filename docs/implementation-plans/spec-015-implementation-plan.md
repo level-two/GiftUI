@@ -35,7 +35,15 @@ not additional authorization to rerun an MVP implementation or reopen experiment
 
 ### Current owner checkpoint
 
-**Current owner checkpoint — corrected nRF counter route PASS; other current routes next, 2026-10-12.**
+**Current owner checkpoint — four current counter routes PASS; early images next, 2026-10-12.**
+Source1497f0ae actual nativeStatic/Dynamic PASS1,349,555/1,349,501 zero24/24;
+Pi ARMv6 PASS28/28 and nRF Static PASS26/26 compile-only. All4current source input
+sets match. [Exact current-route result](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/remaining-implementation/r06-current-routes/result.md).
+R07 early linked images/map/ABI/RAM/stack/allocator and independent P08 exit remain
+open; no target execution/image-fit claim. Historical helper2/2+B031/1 closed;
+SPEC015 implementing/plan active/P08/T8.1 open, P09–P12 pending.
+
+**Historical owner checkpoint — corrected nRF counter route PASS; other current routes next, 2026-10-12.**
 Independent7f6ef917 authorizes bounded contract-owner import realization. Corrected
 Embedded Static route PASS26/26;207 current inputs match. [Exact correction,
 failures and remaining route obligations](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/remaining-implementation/r06-import-correction/result.md).

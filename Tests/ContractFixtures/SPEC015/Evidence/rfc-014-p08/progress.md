@@ -1238,3 +1238,7 @@ failure (65 primary diagnostics printed twice), no exhausted allowance.
 ### R06 reviewed import correction outcome
 
 Corrected current nRF Static counter route PASS26/26 compile/negative checks at .build/nrf52840/contracts/p08-counter-7x97oi7d. Reviewed host headers/edges/registries and owning generator match; scalar invariance, formatter, generator freshness, source boundaries,84target382edge graph PASS. Distinct later fixture import/Embedded print-overload diagnostics narrowed and corrected without changing checks/control flow/native logs; all failures preserved. Exact reviewed old→new recipe input map retains unchanged pins. [Result](remaining-implementation/r06-import-correction/result.md). Historical208vs168generated-checker mismatch remains P10 gap. No target execution/image claim. Commit correction then fresh current native/Pi routes; R07 unstarted, P08 open; historicalhelper2/2+B031/1 closed.
+
+### R06 four current routes outcome
+
+Source1497f0ae fresh nativeStatic/Dynamic PASS1,349,555/1,349,501 zero24/24; PiARMv6 PASS28/28, corrected nRFStatic PASS26/26. All4current input sets match; exact build/result/hash identities in [current-route result](remaining-implementation/r06-current-routes/result.md). Targets cross-compiled only; original nativeRGBA oracle retained, actual tiledtext/stroke compiled. Three initial revalidations no source edits/repair; historicalhelper2/2+B031/1 closed. Commit R06 coherent evidence then R07 supported links/physicalresource ABI, no execution/deploy/flash. P08/T8.1 open, P09–P12 pending.

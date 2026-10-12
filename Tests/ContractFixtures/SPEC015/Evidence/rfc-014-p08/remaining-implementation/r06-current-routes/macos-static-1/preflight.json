@@ -1,0 +1,48 @@
+{
+  "reference": "Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/remaining-implementation/option-b/b01-dependency-identities.json",
+  "sha256": "e006a88c16fa11e244200dc27ab5c415c4badc41a2d056624744838ba9663a8d",
+  "comparisons": 496,
+  "failures": [],
+  "reviewed_rebuilt_sources": [
+    {
+      "path": "Package.swift",
+      "historical_sha256": "8f1ef6222486f1ae40d9b24b9298d60d742c6c1717f85448b5afc4b80804276a",
+      "rebuilt_sha256": "65eb3e474446adf1b255c0a3369f2b59e19ce22bca28c140701e8cdf134cd6c4"
+    },
+    {
+      "path": "scripts/contracts/generate-spec-015-workload.rb",
+      "historical_sha256": "58b8beafc81c81f9faca83a883baf760f564930096243391c88d2d799f8a5aeb",
+      "rebuilt_sha256": "b33b2a7dc8cecac90b4cbc8773769336a252b76b60520a2bbffadc8182adad2f"
+    },
+    {
+      "path": "Sources/GiftUIHostConfiguration/HostApplicationStartupValidation.swift",
+      "historical_sha256": "afbfb8cbd95df3a56052e8909c44592e560c94a2907a76ca515aaeed2489cfb8",
+      "rebuilt_sha256": "b94f4cbca83a180953ca84c2d18c7fd48565bf449d34af980f0bc5b5b9eb8b67"
+    },
+    {
+      "path": "Sources/GiftUIHostConfiguration/HostEndpointStartupValidation.swift",
+      "historical_sha256": "be93841af2abe55c2ac64e1df77219323fc62be40165cd4e89dbec3336fdd2d2",
+      "rebuilt_sha256": "6f53a358ab30317e2290b162fcd68b4158ae941c3b4b753c546d35b5cd4db5c9"
+    },
+    {
+      "path": "Sources/GiftUIHostConfiguration/SignalAnalyzerDrawingStartupValidation.swift",
+      "historical_sha256": "2efabc013dc02ce505b80fe018a6f8aacb46602eabf23dece2d612a6ecc3f307",
+      "rebuilt_sha256": "3995cd72d80694e4d56cee8d29e70da7da0b825ae5fbfa2de4201da546268061"
+    },
+    {
+      "path": "Sources/GiftUIHostConfiguration/SignalAnalyzerWorkloadStartupValidation.swift",
+      "historical_sha256": "6e36ee3bb65f6b924d985f7e6e2861d5879df1537d3e012ea1bf3c65b85140b6",
+      "rebuilt_sha256": "6676ad3b27a856c5ec74d5a72cd1020f468389abf5ddf5d8ed3c9a60c53c7d04"
+    },
+    {
+      "path": "Sources/GiftUIHostConfiguration/Generated/SignalAnalyzerPresets.generated.swift",
+      "historical_sha256": "51a3f553626e07454aa5b2acc324703899044c8d6d0465a3e2f7838612830d5b",
+      "rebuilt_sha256": "2a541a9b1efbb142f6f6d7d5773ed12c4842d2dfe9e289750c9dc83205306402"
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWorkload.swift",
+      "historical_sha256": "c96a534a0c45e445c25c56263c3ddb4ad3c5e68626e8f55aded3129f39721dff",
+      "rebuilt_sha256": "85f24ef1677592e85aa7d89132f4e2d8c15b56fd4b6547b53db9392ed6e0712e"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "entry_commit": "1497f0ae74984a86b52054253aede00c8e0f2e16",
+  "command": [
+    "scripts/contracts/run-spec-015.sh",
+    "--profile",
+    "macos-static",
+    "--corpus",
+    "rfc-014-counter",
+    "--runtime-build",
+    ".build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static"
+  ],
+  "started_utc": "2026-10-12T13:48:14.984843+00:00",
+  "scope": "r06-current-routes changed coherent controls only; historical2/2/B031/1 closed",
+  "formatter_exit": 0,
+  "source_patch_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "exit_status": 0,
+  "finished_utc": "2026-10-12T13:50:18.355245+00:00",
+  "builds": [
+    ".build/contracts/p08-counter-lc0jgqgt"
+  ]
+}

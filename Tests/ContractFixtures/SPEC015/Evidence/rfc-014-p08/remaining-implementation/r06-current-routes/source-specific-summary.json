@@ -1,0 +1,46 @@
+{
+  "macos-static": {
+    "build": ".build/contracts/p08-counter-lc0jgqgt",
+    "result_sha256": "037aa751e8a0fe0d0f431195574e61d58953960b15f8927759a879354120386e",
+    "checks": 24,
+    "all_passed": true,
+    "inputs": 193,
+    "input_mismatches": [],
+    "selected_host": "macos-static",
+    "raster": "full-surface",
+    "execution": "P08 counter components assertions=1349555 failures=0"
+  },
+  "macos-dynamic": {
+    "build": ".build/contracts/p08-counter-267blmsm",
+    "result_sha256": "7175bdd90dafe1a8b0f76e2d72010aa6c9783beb7180ce674addb62b15a4e6cd",
+    "checks": 24,
+    "all_passed": true,
+    "inputs": 193,
+    "input_mismatches": [],
+    "selected_host": "macos-dynamic",
+    "raster": "full-surface",
+    "execution": "P08 counter components assertions=1349501 failures=0"
+  },
+  "raspberry-pi-armv6": {
+    "build": ".build/raspberry-pi/contracts/p08-counter-7qokob7z",
+    "result_sha256": "9288cedac6f94279af96f229d705007fc078b88603f949c90b2e34e2f8d07195",
+    "checks": 28,
+    "all_passed": true,
+    "inputs": 220,
+    "input_mismatches": [],
+    "selected_host": "raspberry-pi-armv6",
+    "raster": "tiled",
+    "execution": "cross-compiled current selected counter host only; no target execution or linked-image claim"
+  },
+  "nrf52840-embedded": {
+    "build": ".build/nrf52840/contracts/p08-counter-7x97oi7d",
+    "result_sha256": "b9d2d8a3af84716f46aef8e952ea4e7466616cf370eb446ea02dd5fc111082fe",
+    "checks": 26,
+    "all_passed": true,
+    "inputs": 207,
+    "input_mismatches": [],
+    "selected_host": "nrf52840-embedded",
+    "raster": "tiled",
+    "execution": "cross-compiled current selected counter host only; no target execution or linked-image claim"
+  }
+}
