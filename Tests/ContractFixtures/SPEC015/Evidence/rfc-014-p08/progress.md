@@ -1,5 +1,34 @@
 # RFC-014 P08 execution receipt — 2026-10-11
 
+## SO-02 bounded correction-verification dispatch — 2026-10-13
+
+Input: clean `111f20b2`, correction `f67e7efb`, original review `eab732c9`.
+Same independent Strong task `p08_so02_review` verifies B1/B2 corrections only
+and the newly explicit actual-analyzer applicability blocker against live S11
+and delivery allocation. No production allowance, exception or deferral is
+inferred. Allowed edits: review result and this receipt; factual navigation if
+needed. Read-only source/document inspection, links, governance, diff check and
+one documentation commit only; no compiler/build/test/experiment/subagent.
+All criteria, failed fit, historical budgets and cumulative guard persist.
+
+Verification result: [bounded correction review](scoped-storage/so02-independent-review.md#bounded-correction-verification--2026-10-13)
+confirms B1 fixed and B2's exact source/finite-cell registration corrected.
+Its actual-factory positive route remains **BLOCKED** by the confirmed legacy
+model/root/target source mismatch, not an observed compiler failure. Existing
+S11.3/IN-SO-003/allocation cannot be silently read as actual-factory preservation
+proof from unchanged hashes plus the controlled owned dispatcher. Explicit
+maintainer applicability/upstream disposition is required before production
+allowance readiness. The review offers two exact choices: a narrow unresolved
+baseline-factory applicability disposition with owned shared controls and
+explicit later handoff (recommended), or upstream resolution before requiring
+passing actual factories now. No exception, deferral or source repair is granted.
+
+Documentation checks pass: 126 local Markdown file links in the two verification
+records resolve; governance 198 nodes / 2,019 edges and all existing task
+manifests pass; git diff --check passes. Diff inspection covers review/receipt
+only. Commit the bounded verification; production remains NOT AUTHORIZED and
+all failed fit, criteria, budgets, guard and later-package gates persist.
+
 ## SO-02 independent design-review dispatch — 2026-10-13
 
 Input: clean `35f4759c`, SO-01 `d8a3d5ff` and accepted/applied contract

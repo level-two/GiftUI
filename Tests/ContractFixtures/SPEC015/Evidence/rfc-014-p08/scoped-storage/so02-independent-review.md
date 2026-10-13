@@ -7,6 +7,106 @@ the two documentation corrections below.** This review grants no production
 allowance and proves neither Swift acceptance nor fit. No compiler, test/build,
 source edit, experiment, hardware action or subagent ran.
 
+## Bounded correction verification — 2026-10-13
+
+Reviewed correction `f67e7efb` at clean `111f20b2` with only the verification
+dispatch dirty, using the same independent Strong reviewer. Boundary is B1/B2
+and the newly explicit owned-analyzer applicability question; the physical
+design assessment below is not reopened. **B1 is fixed. B2's missing-source/
+finite-cell documentation is fixed, but its actual-factory compatibility route
+remains BLOCKED pending explicit maintainer applicability/upstream disposition.**
+The proposed allowance is not ready and remains NOT AUTHORIZED.
+
+**B1 verified:** design's final-field section and proposal's SO-04 checkpoint
+now distinguish provisional formula/order/prefix/C constant from validated
+numeric acceptance. The named SO-07 target-compiled table and SO-08 exact
+ELF/map/C-symbol comparison produce the missing facts within the proposed
+invocations. Missing/elided facts or a mismatched C constant stop for a separate
+allowance; no early probe or guessed current-target layout is permitted. This
+resolves the ordering defect without claiming any output exists or fits.
+
+**B2 registration verified with a bounded limit:** the exact seven RuntimeCore
+files now include all six changed consumers plus RuntimeOwnerFailure. The
+Drawing/RenderLowering and real ObservableStateProtocols prerequisites address
+the inspected dependencies; SPEC013's tuple update feeds the real counter recipe.
+The six new prerequisite/factory cells plus 29 probe cells total 35; the stated
+legacy compiler counts give 48 native / 47 Pi / 46 Embedded maxima, excluding
+the separately stated native execute/target ABI inspection. Scoped operation,
+conditional owned state, retained dispatcher and actual factory labels are
+explicit. This is a viable source-registration plan for the shared consumers,
+not proof those declarations or proposed fixture bodies compile. The actual
+factory cells cannot presently be advertised as a ready positive route.
+
+The [new applicability blocker](so02-execution-proposal.md#owned-analyzer-source-applicability-blocker)
+is independently confirmed from maintained source, without compiling:
+
+- [Static factory](../../../../../../Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerActionDispatcher.swift)
+  takes a pointer to an owned adapter; the [Dynamic factory](../../../../../../Sources/SignalAnalyzerTargetHost/DynamicSignalAnalyzerActionDispatcher.swift)
+  takes the adapter itself. Both specialize them with the legacy reference
+  ViewModel and initialize target access with only `root:`.
+- The [actual ViewModel](../../../../../../Sources/SignalAnalyzerPresentation/SignalAnalyzerPresentationValues.swift)
+  declares `_GiftUIObservableReference`, while the maintained
+  [Static adapter](../../../../../../Sources/GiftUIRuntimeStatic/StaticObservableRootAdapter.swift)
+  and [Dynamic adapter](../../../../../../Sources/GiftUIRuntimeDynamic/DynamicObservableRootAdapter.swift)
+  require `ObservableStateModel`. The target aliases additionally require
+  `ObservableModelMutation` and resolve to [ObservableStateRootTargetAccess](../../../../../../Sources/GiftUIObservableState/ObservableStateRootTargetAccess.swift),
+  which is noncopyable/nonescapable and requires a borrowed root scope, identity
+  and ordinal. It exposes mutation, not the owned `withCurrentModel` contract.
+- [RuntimeInteractionDispatcher](../../../../../../Sources/GiftUIRuntimeCore/RuntimeInteractionDispatcher.swift)
+  requires [ActionModelTargetAccess](../../../../../../Sources/GiftUIInteraction/InteractionValues.swift),
+  whose owned model/withCurrentModel behavior is distinct. No maintained scoped
+  target conformance or model extension in this proposed finite closure supplies
+  the missing contract. Package target inclusion is recorded in the correction;
+  counter-only passes do not establish a baseline exception. These are source
+  incompatibilities, not observed diagnostic wording or a demonstrated compiler run.
+
+**Authority disposition required now:** S11.3 says RuntimeInteractionDispatcher
+Handler/TargetAccess and analyzer dispatchers stay owned; IN-SO-003 requires
+caller dispositions preserving owned analyzer/native returns. The delivery
+allocation's minimum dependency path and B1/B3 require owned compatibility and
+necessary shared-declaration fixes while reserving full analyzer migration for
+later work. They do not specify one mandatory factory compilation command, but
+neither do they allow a reviewer to replace a known unresolved real factory
+return with hashes or a controlled dispatcher positive and call preservation
+proved. The latter proves only the actual shared dispatcher's owned behavior.
+This baseline mismatch cannot be silently exempted by the design, proposal or
+review, and no broader source repair is selected.
+
+The smallest concrete maintainer choices are:
+
+1. **Recommended: explicitly bound P08 applicability.** Accept an exact
+   unresolved baseline-factory disposition for these two unchanged files;
+   preserve their source and owned constraints, require the real shared owned
+   dispatcher/operation controls, and assign actual-factory reconciliation to
+   the existing P09 analyzer integration and I4-07 conformance handoff. Record
+   the exact missing owned-return evidence in the allocation, SO-01 residuals,
+   proposal and P08 receipt. Remove the currently unready factory compile/return
+   cells and revise the finite counts only after that explicit direction.
+   This is an explicit applicability exception/allocation decision, not a
+   reviewer interpretation that the existing evidence suffices. IN-SO-003/full
+   RFC conformance stays unmet; no target, lifetime, fit or selected counter
+   safety requirement is weakened. Review the resulting exact proposal before
+   granting its production allowance.
+2. **Require passing actual factories in this P08 allowance.** Keep execution
+   stopped and route the owned model/root/target incompatibility upstream for
+   an exact architectural/contract/applicability decision before proposing a
+   repair and its validation. The present source list cannot make the mismatch
+   disappear. No scoped retained dispatcher, invented conformance, shadow type,
+   conditional exclusion or automatic P09 migration is authorized by S11.
+
+Choice 1 limits repair scope around a documented pre-existing source problem;
+it requires explicit maintainer acceptance because the current packet promises
+actual-factory preservation evidence. The reviewer grants neither choice nor
+an exception. No compiler attempt is useful merely to rediscover the recorded
+source mismatch under an advertised positive cell.
+
+All nine criteria, HC-RD-003 and P08/R07/T8.1 remain open; complete physical,
+lifetime, cleanup and resource evidence remains required. Historical allowances,
+58,648/27,648 failure, SPIKE-075 closure and cumulative guard are unchanged.
+Only this review and receipt are edited; documentation checks/commit are recorded
+in the receipt. No compiler, source/driver edit, test/build, experiment, hardware
+action or substitute model/subagent ran in this verification.
+
 ## Authority and bounded finding
 
 Authority is accepted [ADR-039](../../../../../../docs/adrs/adr-039-scoped-storage-ownership.md)
