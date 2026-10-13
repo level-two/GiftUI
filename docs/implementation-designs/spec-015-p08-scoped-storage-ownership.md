@@ -291,8 +291,24 @@ extent and classify surplus/alignment/tail as padding, never as extra elements.
 An empty or misaligned reservation fails before binding. Freeze numeric offsets,
 count/stride/alignment and firmware byte constant from the first authorized
 current-target layout transcript; this note supplies the exact derivation, not
-guessed numeric ABI sizes. SO-04 cannot be accepted without that transcript and
-SO-08 cannot claim fit without its linked attribution.
+guessed numeric ABI sizes. SO-04 ends at a **provisional source checkpoint**:
+the checked formula, typed field order, prefix ledger and provisional C constant
+are reviewable, but numeric layout and SO-04 acceptance stay open. The existing
+SO-07 nRF counter route will register a bounded layout-facts table in its current
+P08CounterRuntime object: each original field's offset/count/stride/alignment,
+slot end/max alignment and four-slot total as target-compiled constant data.
+The existing SO-08 supported firmware invocation retains that table in its
+ELF/map; read-only extraction from those exact artifacts supplies
+`so07-layout-facts.json` and `so08-layout-and-c-reservation.json` in the new
+immutable receipt. The latter compares the facts with the actual C
+`counter_backing` symbol size/alignment and source constant in
+`firmware/nrf52840/applications/signal-analyzer-static/src/counter_main.c`.
+No standalone probe/compiler/IR capture is added. These named derived reports
+have no current output path or result until the authorized drivers emit their
+actual receipt. Any mismatch, missing/elided table, need for earlier capture
+or C-constant correction/recompile stops for a separately specified allowance.
+Only matching current-target evidence can validate numeric SO-04 acceptance;
+SO-08 cannot claim fit without linked construction/IRQ/resource attribution.
 
 Native fields use the compiler's actual typed layout; record addresses/deltas,
 Optional tag/payload padding, byte arrays, outer reservation padding, owner/
@@ -563,8 +579,16 @@ architecture's rejected alternatives remain in ADR-039.
 
 ## Open Implementation Questions
 
-The representation and cleanup mechanism above are selected for review. No
-contract blocker has been identified from current source. Compiler acceptance
+The representation and cleanup mechanism above are selected for review. The
+SO-02 independent review identified no architecture/Spec defect, but
+[its B2 source-coverage correction](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so02-execution-proposal.md#owned-analyzer-source-applicability-blocker)
+now records a source-level owned analyzer compatibility concern. The two actual
+factories use legacy root construction against current scoped target aliases;
+this is not an observed compiler failure or authority for P09 migration.
+Production allowance readiness is blocked until independent applicability/
+upstream disposition makes the required owned compatibility evidence executable
+within the accepted contract. It cannot be marked optional or deferred merely
+because the counter itself does not call these factories. Compiler acceptance
 of the common-token nested borrow, private factory access control, native typed
 Optional-slot projection/address stability, full state/carrier unions and
 consuming cleanup holder is unproved. Numeric ABI layout, constructor/writeback

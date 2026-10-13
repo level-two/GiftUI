@@ -34,6 +34,48 @@ task manifests; git diff --check passes. Diff inspection covers this receipt
 and the new review only. All open criteria, historical budgets and guard remain
 unchanged. Commit this independent review step before any correction step.
 
+## SO-02 B1/B2 correction dispatch — 2026-10-13
+
+Input: clean `eab732c9`, independent Strong review of `35f4759c` at
+[SO-02 review](scoped-storage/so02-independent-review.md). Its two blockers are
+execution-documentation gaps; the physical design is suitable for bounded
+realization once corrected. Sequential Strong task `p08_so02_design` makes
+one correction to the design/proposed allowance and this receipt only:
+B1 separates provisional SO-04 source layout from named SO-07/08 numeric
+acceptance; B2 names all real changed-consumer/analyzer sources, prerequisites,
+finite labels and command cells. No source/driver edits, compiler/build,
+probe, experiment or broad P10 gate. Validate links/governance/diff, commit,
+then return to the same independent reviewer for bounded verification.
+No contract approval, criterion closure, production allowance, historical
+budget reset or stop-guard reset follows. All existing open gates persist.
+
+B1/B2 correction result: [design layout checkpoint](../../../../../docs/implementation-designs/spec-015-p08-scoped-storage-ownership.md#final-typed-field-map-and-reservation-algorithm)
+now keeps numeric SO-04 acceptance open until the existing SO-07 target layout
+facts and SO-08 ELF/map/C-reservation comparison; no new probe. The
+[fixed source/cell proposal](scoped-storage/so02-execution-proposal.md#b2-exact-source-registration-and-fixed-internal-cells)
+registers all six changed RuntimeCore consumers plus real failure/Drawing/
+Observable dependencies, exact actual analyzer factories/Domain/Presentation
+sources and 35 additional compiler cells (SPEC011 maxima 48 native / 47 Pi /
+46 Embedded including legacy cells). SO-07 remains at most 14 drivers.
+
+Read-only inspection also records an unresolved [owned analyzer applicability
+blocker](scoped-storage/so02-execution-proposal.md#owned-analyzer-source-applicability-blocker):
+legacy factories use adapter/pointer root-only construction against current
+scoped target aliases, while the maintained ViewModel/owned target protocols
+have different constraints. This predates proposed S11 work; it is a source-level
+concern, not an observed compiler failure. No repair/stub/exception/defer/P09
+migration is selected. Production allowance readiness stays blocked pending
+independent applicability/upstream disposition; the actual-factory cells are
+required evidence after disposition, not a passing or currently ready route.
+
+Checks pass: 128 local Markdown file links in the three changed documents,
+governance 198 nodes / 2,019 edges and existing task manifests, git diff --check.
+Diff review is limited to design/proposal/receipt; no source/driver/compiler/
+build/probe/experiment ran, no approval or allowance changed. Commit this
+bounded correction for the same independent reviewer to verify B1/B2 and the
+explicit unresolved applicability disposition. All nine SO criteria,
+HC-RD-003/P08/R07/T8.1 and historical budgets/guards remain unchanged.
+
 ## SO-02 physical design dispatch — 2026-10-13
 
 Input: clean `d8a3d5ff`, completed SO-01 inventory at `59d98712`, accepted
