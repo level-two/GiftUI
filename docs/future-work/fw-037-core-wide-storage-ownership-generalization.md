@@ -33,6 +33,40 @@ this distinction across owner boundaries, using Swift to exclude unsupported
 safe-client escapes and aliases while preserving explicit trusted implementation
 and runtime checks. That benefit and a common representation remain hypotheses.
 
+## Ownership and Transfer Model to Assess
+
+For each boundary, identify who owns the resource, who may borrow or mutate it,
+what ownership or access can transfer, when responsibility changes, and who
+cleans up after success, refusal or failure, including cancellation and shutdown.
+Use the same questions for frontend, backend, platform and PC simulator
+compositions:
+
+- **Ownership:** name the physical backing owner, semantic/state-machine owner
+  and party responsible for eventual release; these need not be the same owner.
+- **Borrowing and mutation:** identify permitted access, exclusivity and lifetime
+  limits while ownership stays with the lender.
+- **Transfer:** identify sender, recipient and the exact value or responsibility
+  transferred. Moving a scoped access capability does not transfer its backing
+  ownership or extend its lifetime. Transfer of presentation responsibility is
+  also distinct from transfer of payload storage ownership.
+- **Acceptance and cleanup:** identify the transfer point, what the sender may
+  still access, and whether rejection returns the resource, retains it with the
+  sender or destroys it. Account for post-acceptance failure and final release.
+
+Keep these semantics separate from their Swift enforcement and physical storage
+realization. Assess `borrowing`, `inout`/`mutating`, `consuming`/`consume`, concrete
+`~Copyable` access or owner types, lifetime constraints and restricted construction.
+`consuming` alone does not establish unique resource ownership; reference or
+pointer aliases and copyable values need separate treatment. Distinguish compiler
+checks from runtime validation and trusted implementation obligations.
+
+This is an assessment model, not a new Core contract. Compare existing
+[SPEC-013 borrowing rules](../specs/spec-013-runtime-profiles.md#storage-ownership-and-borrowing),
+[SPEC-014 acceptance and payload transfer rules](../specs/spec-014-backend-integration.md)
+and [draft RFC-015 scoped access](../rfcs/rfc-015-p08-scoped-storage-ownership.md).
+Determine which rules merit shared Core architecture and which remain specific
+to their subsystem; approved Specifications retain authority for current behavior.
+
 ## Why Deferred
 
 P08 needs a coherent finite carrier and physical slot design, not a universal
@@ -78,6 +112,10 @@ revision 3, I4-06 / I4-AC-007. On 2026-10-13, Eugene explicitly requested:
 “Add the produced future work item to the next iteration scope.” In context,
 the produced item is FW-037. This authorizes the assessment scope addition,
 not a Core-wide architecture or simulator implementation.
+
+On 2026-10-13, Eugene requested and authorized recording the ownership-and-transfer
+model above and referencing it from I4-06 and its acceptance criterion. This
+clarifies the scheduled assessment without adopting new ownership contracts.
 
 Evaluate concrete ownership boundaries through Exploration (reuse EXP-002 when
 its scope fits), including a second consumer and PC simulator composition.
