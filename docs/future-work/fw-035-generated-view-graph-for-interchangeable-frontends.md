@@ -6,14 +6,15 @@ status: captured
 authors:
   - codex
 created: 2026-10-06
-updated: 2026-10-12
+updated: 2026-10-13
 source:
   - SPEC-015
   - RFC-014
   - ADR-038
   - docs/iterations/iteration-003-dev-ux-improvement.md
   - RFC-013
-related_future_work: []
+related_future_work:
+  - FW-037
 related_explorations: []
 related_spikes: []
 promoted_to: []
@@ -74,3 +75,7 @@ this item grants no implementation authority.
 - [Maintainer instruction and amendment](../iterations/iteration-003-review/runtime-derivation-scope-amendment.md).
 - [RFC-013](../rfcs/rfc-013-external-application-and-backend-integration.md).
 - [EXP-002 future-direction context](../explorations/exp-002-backend-and-application-integration-shapes.md#sensitivity-to-possible-future-directions--2026-10-05).
+
+[FW-037](fw-037-core-wide-storage-ownership-generalization.md) separately captures
+possible Core-wide storage/access ownership generalization from the P08 draft.
+It changes no scope, architecture, status or revisit trigger in this item.

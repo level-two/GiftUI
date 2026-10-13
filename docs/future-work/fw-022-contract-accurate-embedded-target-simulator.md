@@ -6,10 +6,11 @@ status: captured
 authors:
   - codex
 created: 2026-09-11
-updated: 2026-09-11
+updated: 2026-10-13
 source:
   - SPEC-015
-related_future_work: []
+related_future_work:
+  - FW-037
 related_explorations: []
 related_spikes: []
 promoted_to: []
@@ -349,3 +350,7 @@ authority to implement or to claim embedded-hardware equivalence.
 - [SPIKE-004: Canvas Path Plan Feasibility](../spikes/spike-004-canvas-path-plan-feasibility.md)
 - [FW-007: Cost-Aware Capability Realization Planning](fw-007-cost-aware-capability-planning.md)
 - Historical `PoC:docs/GiftUI_PoC_A_macOS_Simulator_Spec.md`
+
+[FW-037](fw-037-core-wide-storage-ownership-generalization.md) separately captures
+possible Core-wide storage/access ownership generalization from the P08 draft.
+It changes no scope, architecture, status or revisit trigger in this item.

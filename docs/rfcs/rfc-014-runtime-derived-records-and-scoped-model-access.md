@@ -6,7 +6,7 @@ status: approved
 authors:
   - codex
 created: 2026-10-09
-updated: 2026-10-12
+updated: 2026-10-13
 proposal:
   - PROPOSAL-007
 related_rfcs:
@@ -16,6 +16,7 @@ related_rfcs:
   - RFC-009
   - RFC-010
   - RFC-011
+  - RFC-015
 related_adrs:
   - ADR-038
   - ADR-006
@@ -645,3 +646,9 @@ new ADR, changes no production code and closes no implementation acceptance gate
   [contextual design](../iterations/iteration-003-review/rfc-014-contextual-evaluation.md).
   The prior accumulated RFC text is preserved in Git at `e2839fb3`; this final
   document supersedes conflicting recommendations in those supporting drafts.
+
+The separately reviewable [draft RFC-015](rfc-015-p08-scoped-storage-ownership.md)
+proposes a focused P08 geometry/Interaction storage ownership amendment. It is
+non-authoritative and does not change this approved RFC, its accepted ADRs or
+approved Specs. Current syntax, physical-slot and validation/adoption blockers
+remain explicit there; no historical experiment budget is reopened.

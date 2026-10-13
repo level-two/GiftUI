@@ -6,7 +6,7 @@ status: active
 authors:
   - codex
 created: 2026-10-04
-updated: 2026-10-09
+updated: 2026-10-13
 source:
   - FW-030
   - FW-016
@@ -14,6 +14,7 @@ source:
   - docs/explorations/exp-002/backend-foundation-inventory-2026-10-05.md
   - docs/explorations/exp-002/preparation-2026-10-05/README.md
 related_future_work:
+  - FW-037
   - FW-030
   - FW-016
 related_explorations: []
@@ -726,3 +727,8 @@ approval of these candidate designs.
 - [nRF SPI transport](../../Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFSPITFTTransport.swift)
 - [Pi endpoint](../../Sources/SignalAnalyzerTargetHost/DynamicSignalAnalyzerPiEndpoint.swift)
 - [Firmware composition](../../firmware/nrf52840/applications/signal-analyzer-static/CMakeLists.txt)
+
+[FW-037](../future-work/fw-037-core-wide-storage-ownership-generalization.md)
+captures a possible Core-wide storage/access ownership study arising from draft
+RFC-015. Revisit only on its concrete consumer/evidence trigger; this link starts
+no investigation and changes no integration candidate or current scope.

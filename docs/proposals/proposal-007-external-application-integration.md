@@ -6,11 +6,12 @@ status: accepted
 authors:
   - codex
 created: 2026-10-05
-updated: 2026-10-12
+updated: 2026-10-13
 proposal: []
 related_rfcs:
   - RFC-013
   - RFC-014
+  - RFC-015
 related_adrs:
   - ADR-038
   - ADR-006
@@ -293,3 +294,8 @@ from RFC-013 external delivery. RFC-014 was approved on 2026-10-10 under the
 [final review and conditional finalization instruction](../iterations/iteration-003-review/rfc-014-final-review.md).
 RFC-013 remains draft. This updates routing only; Proposal outcomes are unchanged,
 and RFC approval does not approve downstream ADRs, Specs or production migration.
+
+The focused [draft RFC-015](../rfcs/rfc-015-p08-scoped-storage-ownership.md)
+prepares a P08 storage/lifetime contract candidate after implementation review.
+It changes no accepted outcome or approved contract and authorizes no new
+experiment. Its compiler, physical-owner and adoption blockers remain open.
