@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""SPIKE-075: one candidate, sequential object emission, zero repair rounds."""
+"""SPIKE-075: explicit run-1 continuation, one helper correction, no further repairs."""
 from pathlib import Path
 import datetime
 import hashlib
@@ -15,12 +15,16 @@ import uuid
 
 ROOT = Path(__file__).resolve().parents[2]
 FIXTURE = Path(__file__).resolve().parent
+if sys.argv[1:] != ['--continue-run-1']:
+    sys.exit('Initial SPIKE-075 package is closed; only --continue-run-1 is supported.')
+PARENT_EVIDENCE = FIXTURE / 'evidence/run-1'
+EXPERIMENT_LIMIT = 30
 RUN_ID = datetime.datetime.now(datetime.timezone.utc).strftime('%Y%m%dT%H%M%SZ-') + uuid.uuid4().hex[:8]
 RUN = ROOT / '.build/spike-075' / RUN_ID
 RUN.mkdir(parents=True, exist_ok=False)
 RECEIPT = RUN / 'receipt.json'
-receipt = dict(run_id=RUN_ID, status='preparing', repair_rounds=0,
-               experiment_limit=32, identity_limit=2, deadline_seconds=1200,
+receipt = dict(run_id=RUN_ID, status='preparing', repair_rounds=1, further_repair_limit=0,
+               experiment_limit=EXPERIMENT_LIMIT, identity_limit=2, deadline_seconds=1200,
                invocations=[], hashes={}, profile_outputs={})
 first_compiler = None
 experiments = 0
@@ -55,6 +59,80 @@ def tree_sha(path):
     return dict(path=str(path), tree_sha256=digest.hexdigest(), regular_files=count)
 
 
+def verify_parent():
+    # This preflight performs no subprocess/compiler invocation and never repairs.
+    parent_path = PARENT_EVIDENCE / 'receipt.json'
+    receipt.update(parent_receipt=str(parent_path), parent_receipt_sha256=sha(parent_path),
+                   parent_experiment_invocations=3, parent_identity_queries=1,
+                   parent_failed_experiment='macos-dynamic/copy-negative',
+                   cumulative_experiment_invocations=3, cumulative_identity_queries=1,
+                   cumulative_repair_rounds=1, cumulative_experiment_limit=33,
+                   cumulative_identity_limit=3,
+                   fixture_correction='requireCopy<T: Copyable & ~Escapable>(_ value: borrowing T)')
+    save()
+    evidence_hashes = json.loads((PARENT_EVIDENCE / 'SHA256.json').read_text())
+    for relative, expected in evidence_hashes.items():
+        if sha(PARENT_EVIDENCE / relative) != expected:
+            raise RuntimeError('parent evidence hash mismatch: ' + relative)
+    parent = json.loads(parent_path.read_text())
+    if (parent['status'] != 'stopped' or parent['experiment_invocations'] != 3
+            or parent['identity_queries'] != 1 or parent['repair_rounds'] != 0):
+        raise RuntimeError('unexpected parent disposition/counts')
+    parent_native = Path(parent['profile_outputs']['macos-dynamic'])
+    original_sources = parent_native.parent / 'sources'
+    old_helper = 'func requireCopy<T: Copyable>(_ value: T)'
+    new_helper = 'func requireCopy<T: Copyable & ~Escapable>(_ value: borrowing T)'
+    original_swift = {Path(name).name: digest for name, digest in parent['hashes'].items()
+                      if name.endswith('.swift')}
+    if {path.name for path in FIXTURE.glob('*.swift')} != set(original_swift):
+        raise RuntimeError('Swift input set differs from parent')
+    for name, expected in original_swift.items():
+        original = original_sources / name
+        if sha(original) != expected:
+            raise RuntimeError('original source snapshot hash mismatch: ' + name)
+        current = FIXTURE / name
+        if name == 'CopyNegative.swift':
+            original_bytes = original.read_bytes()
+            if original_bytes.count(old_helper.encode()) != 1:
+                raise RuntimeError('original copy helper shape mismatch')
+            if current.read_bytes() != original_bytes.replace(old_helper.encode(), new_helper.encode()):
+                raise RuntimeError('copy fixture differs beyond the one agreed helper correction')
+        elif sha(current) != expected:
+            raise RuntimeError('unchanged Swift input hash mismatch: ' + name)
+    manifest = json.loads((PARENT_EVIDENCE / 'emitted-artifacts.json').read_text())
+    expected_native = {str((parent_native / name).relative_to(ROOT)) for name in (
+        'P08Shadow.swiftmodule', 'P08Shadow.swiftdoc', 'P08Shadow.swiftsourceinfo',
+        'P08Shadow.abi.json',
+        'shadow.o', 'positive.o')}
+    if set(manifest['artifacts']) != expected_native:
+        raise RuntimeError('parent native artifact set mismatch')
+    actual_module_files = {str(path.relative_to(ROOT))
+                           for path in parent_native.glob('P08Shadow.*') if path.is_file()}
+    if actual_module_files != {name for name in expected_native if '/P08Shadow.' in name}:
+        raise RuntimeError('whole parent native module artifact set mismatch')
+    for name, expected in manifest['artifacts'].items():
+        path = ROOT / name
+        if path.stat().st_size != expected['bytes'] or sha(path) != expected['sha256']:
+            raise RuntimeError('parent emitted artifact hash mismatch: ' + name)
+    # Original runner/docs remain available in the untouched original snapshot.
+    for name, expected in parent['hashes'].items():
+        if name.startswith(str(FIXTURE.relative_to(ROOT)) + '/'):
+            if sha(original_sources / Path(name).name) != expected:
+                raise RuntimeError('original package snapshot hash mismatch: ' + name)
+        elif sha(ROOT / name) != expected:
+            raise RuntimeError('compiler/configuration baseline hash mismatch: ' + name)
+    receipt.update(parent_receipt=str(parent_path), parent_receipt_sha256=sha(parent_path),
+                   parent_experiment_invocations=3, parent_identity_queries=1,
+                   parent_failed_experiment='macos-dynamic/copy-negative',
+                   fixture_correction='requireCopy<T: Copyable & ~Escapable>(_ value: borrowing T)',
+                   cumulative_experiment_invocations=3, cumulative_identity_queries=1,
+                   cumulative_repair_rounds=1, cumulative_experiment_limit=33,
+                   cumulative_identity_limit=3, verified_parent_artifacts=manifest['artifacts'],
+                   reused_checks=['macos-dynamic/shadow-module', 'macos-dynamic/positive'])
+    save()
+    return parent, parent_native
+
+
 def invoke(label, command, directory, kind='setup'):
     global first_compiler, experiments, identities
     if kind != 'setup':
@@ -64,8 +142,8 @@ def invoke(label, command, directory, kind='setup'):
         if time.monotonic() - first_compiler >= 1200:
             raise RuntimeError('20-minute compiler deadline reached')
         if kind == 'experiment':
-            if experiments >= 32:
-                raise RuntimeError('32 experiment invocation ceiling reached')
+            if experiments >= EXPERIMENT_LIMIT:
+                raise RuntimeError('30 continuation experiment invocation ceiling reached')
             experiments += 1
         else:
             if identities >= 2:
@@ -80,7 +158,9 @@ def invoke(label, command, directory, kind='setup'):
                  timeout_seconds=timeout, status='recorded-before-spawn',
                  stdout=str(stdout_path), stderr=str(stderr_path))
     receipt['invocations'].append(entry)
-    receipt.update(experiment_invocations=experiments, identity_queries=identities)
+    receipt.update(experiment_invocations=experiments, identity_queries=identities,
+                   cumulative_experiment_invocations=3 + experiments,
+                   cumulative_identity_queries=1 + identities)
     save()
     start = time.monotonic()
     with stdout_path.open('xb') as stdout, stderr_path.open('xb') as stderr:
@@ -139,6 +219,7 @@ signal.signal(signal.SIGTERM, interrupted)
 signal.signal(signal.SIGINT, interrupted)
 save()
 try:
+    parent, parent_native = verify_parent()
     snapshot = RUN / 'sources'
     snapshot.mkdir()
     for source in sorted(FIXTURE.iterdir()):
@@ -178,6 +259,8 @@ try:
     # SDK/resource hashes finish before the first compiler invocation starts the clock.
     receipt['sdk_hashes'] = [tree_sha(native_sdk), tree_sha(Path(sdk['sdk'])),
         tree_sha(compilers['nrf52840-embedded'].parent.parent / 'lib/swift/embedded')]
+    if receipt['sdk_hashes'] != parent['sdk_hashes']:
+        raise RuntimeError('SDK/resource tree differs from parent')
     save()
     checked = set()
     for profile, target_flags, directory in profiles:
@@ -190,12 +273,18 @@ try:
         flags = [str(compiler), '-swift-version', '6', '-enable-experimental-feature', 'LifetimeDependence',
                  '-enable-experimental-feature', 'Lifetimes', '-Osize', '-whole-module-optimization',
                  '-parse-as-library', '-package-name', 'giftui', '-module-cache-path', str(directory / 'module-cache'), *target_flags]
-        module = directory / 'P08Shadow.swiftmodule'
-        sources = [snapshot / name for name in ('DomainAndProtocols.swift', 'Banks.swift', 'States.swift')]
-        expect_success('shadow-module', [*flags, '-module-name', 'P08Shadow', '-emit-module',
-            '-emit-module-path', str(module), '-emit-object', '-o', str(directory / 'shadow.o'), *map(str, sources)], directory)
-        client = [*flags, '-module-name', 'P08Client', '-I', str(directory), '-emit-object']
-        expect_success('positive', [*client, str(snapshot / 'Positive.swift'), '-o', str(directory / 'positive.o')], directory)
+        if profile == 'macos-dynamic':
+            # Import the verified original complete module; do not emit it again.
+            import_directory = parent_native
+        else:
+            import_directory = directory
+            module = directory / 'P08Shadow.swiftmodule'
+            sources = [snapshot / name for name in ('DomainAndProtocols.swift', 'Banks.swift', 'States.swift')]
+            expect_success('shadow-module', [*flags, '-module-name', 'P08Shadow', '-emit-module',
+                '-emit-module-path', str(module), '-emit-object', '-o', str(directory / 'shadow.o'), *map(str, sources)], directory)
+        client = [*flags, '-module-name', 'P08Client', '-I', str(import_directory), '-emit-object']
+        if profile != 'macos-dynamic':
+            expect_success('positive', [*client, str(snapshot / 'Positive.swift'), '-o', str(directory / 'positive.o')], directory)
         expect_negative('copy-negative', [*client, str(snapshot / 'CopyNegative.swift'), '-o', str(directory / 'copy-negative.o')], directory, r'Copyable|noncopyable|non-copyable')
         for bank in range(5):
             expect_negative('escape-' + str(bank), [*client, str(snapshot / ('Escape' + str(bank) + '.swift')), '-o', str(directory / ('escape-' + str(bank) + '.o'))], directory,

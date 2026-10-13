@@ -6,7 +6,7 @@ typealias ScopedWrapped = InteractionOwnedKeyState<ScopedCandidate, ScopedCommit
 
 @inline(never) func consumeWrapped(_ value: consuming ScopedWrapped) -> UInt64 { value.probe() }
 
-@inline(never) func requireCopy<T: Copyable>(_ value: T) -> UInt64 { 1 }
+@inline(never) func requireCopy<T: Copyable & ~Escapable>(_ value: borrowing T) -> UInt64 { 1 }
 @inline(never) public func copyRejected(_ seed: UInt64) -> UInt64 {
     let bank0 = InlineArray<1, UInt64>(repeating: seed)
     let bank1 = InlineArray<1, UInt64>(repeating: seed &+ 1)

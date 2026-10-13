@@ -21,6 +21,10 @@
     ".build/spike-075/20261013T155029Z-b1c24da8/macos-dynamic/shadow.o": {
       "sha256": "0ad30cbc32c8f14d73184a507a9620aad24ac7e62321fc0f68d92c1790d6a3b3",
       "bytes": 90536
+    },
+    ".build/spike-075/20261013T155029Z-b1c24da8/macos-dynamic/P08Shadow.abi.json": {
+      "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+      "bytes": 149
     }
   }
 }

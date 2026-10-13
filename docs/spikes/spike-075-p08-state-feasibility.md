@@ -121,6 +121,11 @@ the gate passed. The observed blocker is the copy-test helper, not a falsified
 RFC declaration. The package's zero-repair boundary prevents a retry. The linked
 package review proposes one harness-only correction and at most 30 further
 experiments for explicit maintainer disposition; it does not allocate them.
+The subsequent maintainer follow-up asks to continue toward conditional RFC
+acceptance and P08 readiness. The [bounded continuation](../../experiments/spike-075-p08-state-feasibility/continuation-scope.md)
+implements that one-helper proposal within the ongoing minimum-evidence task.
+It preserves this initial completed/inconclusive run and all historical counts;
+RFC acceptance remains conditional on resolving the actual architectural blockers.
 If the state gate later passes, record the next minimum carrier/retirement
 question before executing it. Full migration,
 physical resource accounting and linked stack acceptance remain downstream
