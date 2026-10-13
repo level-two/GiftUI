@@ -7,6 +7,15 @@ sections S11, S13 and S15 below; apply approved text verbatim at the named ancho
 Their criteria supplement existing criteria without closing any checkbox or
 changing current implementing status. B1–B4 remain downstream obligations.
 
+## Delivery allocation
+
+Full adoption and conformance belong to ITERATION-004 I4-07 under the
+[maintainer-approved allocation](rfc-015-delivery-allocation.md). P08 implements
+only its necessary dependency path with all applicable safety, compatibility and
+resource evidence. These proposed contracts and nine criteria are preserved; partial
+P08 coverage does not mark a full criterion met. Scope scheduling does not approve
+this packet or authorize a contract exception.
+
 ## Source inventory and application instructions
 
 - Approved [RFC-015](../../rfcs/rfc-015-p08-scoped-storage-ownership.md): six protocol

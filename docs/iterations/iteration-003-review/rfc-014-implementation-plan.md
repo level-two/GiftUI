@@ -1,5 +1,11 @@
 # RFC-014 bounded implementation sequence — 2026-10-10
 
+**RFC-015 delivery allocation — 2026-10-13.**
+[Full delivery belongs to ITERATION-004 I4-07](rfc-015-delivery-allocation.md).
+P08 retains only necessary dependency changes and their complete safety/fit proof;
+SO-01 must justify each included change and list residual work for I4-07.
+Existing P08 exit requirements and closed budgets remain unchanged.
+
 **RFC-015 downstream package — 2026-10-13 (navigation only).** RFC-015 is
 approved; [the conditional P08 handoff](rfc-015-p08-handoff.md) contains proposed
 ADR-039, exact SPEC-011/013/015 amendments and ordered ownership work. Their

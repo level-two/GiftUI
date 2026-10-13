@@ -17,6 +17,8 @@ features:
     # PROPOSAL-007 accepted; RFC-013 draft; RFC-014 approved 2026-10-10 under conditional finalization.
     # RFC-015 approved 2026-10-13 under conditional human instruction after fresh readiness review.
     # Approval: docs/iterations/iteration-003-review/rfc-015-readiness-and-approval.md; B1–B4 are downstream obligations.
+    # ITERATION-004 revision 4 I4-07 owns full RFC-015 delivery; P08 retains only necessary changes/proof.
+    # Allocation: docs/iterations/iteration-003-review/rfc-015-delivery-allocation.md.
     # ADR-039 proposed; exact SPEC-011/013/015 amendments and conditional P08 handoff await approval.
     # Package: docs/iterations/iteration-003-review/rfc-015-p08-handoff.md; closed execution budgets preserved.
     # SPIKE-075 completed: bounded native declarations/copy/function-return controls pass; series closed.

@@ -123,8 +123,11 @@ Evaluate concrete ownership boundaries through Exploration (reuse EXP-002 when
 its scope fits), including a second consumer and PC simulator composition.
 Record evidence gaps and recommend generalization, retaining local contracts,
 or deferral. Then use normal Proposal/RFC/ADR/Spec gates for any adoption.
-RFC-015's implementation and acceptance obligations remain in P08. Status stays captured: scheduling the
-assessment does not itself promote this item to an Exploration or Proposal.
+RFC-015's full implementation and acceptance obligations are now scheduled in
+ITERATION-004 revision 4, I4-07; P08 retains necessary changes and their complete
+proof under the [delivery allocation](../iterations/iteration-003-review/rfc-015-delivery-allocation.md).
+I4-06 remains the separate generalization assessment. Status stays captured:
+scheduling does not itself promote this item to an Exploration or Proposal.
 
 ## References
 

@@ -5,7 +5,7 @@ status: active
 revision: 5
 approved_revision: 5
 created: 2026-10-04
-updated: 2026-10-09
+updated: 2026-10-13
 features:
   - external-application-integration
   - giftui-mvp-architecture
@@ -67,6 +67,12 @@ and [implementation ownership](iteration-003-review/memory-efficiency-plan.md#im
 distinguish executable next work from unresolved runtime design, integrated
 validation and closure. The [working assumptions](iteration-003-review/memory-efficiency-plan.md#working-assumptions-and-evidence-boundaries)
 make the production baseline and conditional 32 MHz reasoning explicit.
+
+The [2026-10-13 RFC-015 allocation](iteration-003-review/rfc-015-delivery-allocation.md)
+schedules full scoped-storage delivery in ITERATION-004 revision 4, I4-07. P08
+retains only changes necessary for its finite counter dependency path and their
+complete safety/fit evidence. This narrows the downstream work package without
+changing revision 5's delivery criteria, limits or required validation.
 
 ## Goal
 

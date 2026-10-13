@@ -30,12 +30,17 @@ related_spikes:
   - SPIKE-075
 supersedes: []
 superseded_by: []
-target_milestone: ITERATION-003
+target_milestone: ITERATION-004
 ---
 
 # RFC-015: P08 Scoped Storage Ownership
 
 ## Summary
+
+Full delivery is scheduled in ITERATION-004 I4-07 by the
+[maintainer-approved allocation](../iterations/iteration-003-review/rfc-015-delivery-allocation.md).
+P08 retains only necessary changes and their complete safety/resource evidence.
+This scheduling amendment preserves the selected architecture and downstream gates.
 
 Downstream extraction: [proposed ADR-039](../adrs/adr-039-scoped-storage-ownership.md),
 [exact Spec amendments](../iterations/iteration-003-review/rfc-015-spec-amendments.md)
@@ -1149,7 +1154,9 @@ architecture must return upstream; it cannot be repaired by weakening them.
   obtain its acceptance, then obtain approval of exact Spec amendments and prepare
   ready plans before implementation. Separately record the bounded production
   validation/repair disposition; no historical allowance is reopened by this RFC.
-  Complete B1–B3 evidence before P08 acceptance, not before RFC approval.
+  Complete B1–B3 evidence applicable to the adopted P08 dependency path before
+  P08 acceptance. Full RFC-wide completion belongs to ITERATION-004 I4-07 under
+  the delivery allocation; no necessary P08 safety/fit obligation is deferred.
 
 ## Deferred and Follow-up Work
 
@@ -1183,8 +1190,9 @@ in [ITERATION-004](../iterations/iteration-004-backend-and-application-integrati
 revision 3, I4-06 / I4-AC-007. It will assess a concrete second consumer and
 record any missing P08 evidence; scheduling does not generalize this decision.
 Existing FW-022, FW-035 and EXP-002 retain simulator, generated-frontends and
-integration-shape questions. None is required to settle P08. B1–B4 cannot be
-moved there to make this RFC appear complete.
+integration-shape questions. None is required to settle P08. I4-07 separately
+owns full RFC delivery; FW-037 does not absorb required B1–B4 obligations or
+make P08 safety/fit failures optional.
 
 ## Decision Summary
 

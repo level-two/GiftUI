@@ -29,7 +29,7 @@ related_spikes:
   - SPIKE-075
 supersedes: []
 superseded_by: []
-target_milestone: ITERATION-003
+target_milestone: ITERATION-004
 ---
 
 # ADR-039: Scoped Storage Ownership
@@ -114,7 +114,10 @@ owned conformances preserve existing finite stores and the selected migration sc
 - Accept this ADR, then approve/apply the [exact Spec packet](../iterations/iteration-003-review/rfc-015-spec-amendments.md).
 - Adopt the [conditional P08 handoff](../iterations/iteration-003-review/rfc-015-p08-handoff.md),
   supply physical design notes and separately bound execution/validation authority.
-- Complete RFC-015 B1–B3 evidence before P08 acceptance; B4 retains these authority gates.
+- Complete the P08-applicable B1–B3 evidence before P08 acceptance; full RFC
+  delivery belongs to ITERATION-004 I4-07 under the
+  [delivery allocation](../iterations/iteration-003-review/rfc-015-delivery-allocation.md).
+  B4 retains these authority gates.
   All historical budgets and the two-consecutive-unproductive stop rule remain.
 
 ## Deferred and Follow-up Work

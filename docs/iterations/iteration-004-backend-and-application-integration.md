@@ -2,15 +2,15 @@
 id: ITERATION-004
 title: Backend and Application Integration
 status: approved
-revision: 3
-approved_revision: 3
+revision: 4
+approved_revision: 4
 created: 2026-10-09
 updated: 2026-10-13
 features:
   - external-application-integration
   - giftui-mvp-architecture
   - signal-analyzer
-approval: "Eugene approved the presented iteration sequencing and requested scope reorganization, dependent updates and commits on 2026-10-09. Evidence: docs/iterations/iteration-003-review/efficiency-sequencing-approval.md. Revision 2: Eugene explicitly requested the compiler assessment as a next-iteration task on 2026-10-11; provenance in docs/future-work/fw-036-swift-compiler-upgrade-assessment.md. Revision 3: Eugene explicitly requested adding FW-037 to the next iteration scope on 2026-10-13; provenance in its Disposition section."
+approval: "Eugene approved the presented iteration sequencing and requested scope reorganization, dependent updates and commits on 2026-10-09. Evidence: docs/iterations/iteration-003-review/efficiency-sequencing-approval.md. Revision 2: Eugene explicitly requested the compiler assessment as a next-iteration task on 2026-10-11; provenance in docs/future-work/fw-036-swift-compiler-upgrade-assessment.md. Revision 3: Eugene explicitly requested adding FW-037 to the next iteration scope on 2026-10-13; provenance in its Disposition section. Revision 4: Eugene explicitly requested full RFC-015 scope in the next iteration while limiting P08 to necessary changes on 2026-10-13; provenance in docs/iterations/iteration-003-review/rfc-015-delivery-allocation.md."
 related_future_work:
   - FW-036
   - FW-037
@@ -27,6 +27,8 @@ Revision 2 adds the explicitly requested compiler assessment (I4-05); see the
 revision history and [FW-036](../future-work/fw-036-swift-compiler-upgrade-assessment.md).
 Revision 3 adds the requested Core-wide ownership assessment (I4-06), sourced
 from [FW-037](../future-work/fw-037-core-wide-storage-ownership-generalization.md).
+Revision 4 adds full RFC-015 delivery (I4-07), with only its necessary dependency
+path retained in P08; see the [delivery allocation](iteration-003-review/rfc-015-delivery-allocation.md).
 This iteration is approved, not active; production extraction waits for its
 entry gates. Architecture and Specification approvals remain separate.
 
@@ -47,6 +49,7 @@ semantic and runtime-derivation results established in iteration 3.
 | I4-04 — Compatibility and author documentation | Approved transfer/renewal of IT-AC-004/005 | Preserve runtime derivation and iteration-3 efficiency; reproducible quick start, adapter and migration guides | Final owner conformance, measured paired artifacts and separate criterion dispositions |
 | I4-05 — Swift compiler compatibility assessment | Maintainer request 2026-10-11; FW-036; RFC-014 P07 compiler failure | Evaluate a newer compiler and recommend upgrade or retain with reproducible compatibility, cost and risk evidence | Assessment only; approve compiler contract/pin changes separately before adoption |
 | I4-06 — Core-wide storage ownership assessment | Maintainer request 2026-10-13; FW-037; focused RFC-015 findings | Evaluate physical ownership, transaction ownership, scoped access and ownership/responsibility transfer using the [FW-037 assessment model](../future-work/fw-037-core-wide-storage-ownership-generalization.md#ownership-and-transfer-model-to-assess) across frontend/backend/platform boundaries, including a PC simulator; recommend which boundaries to generalize and which to keep local | Exploration/evidence and disposition; reuse EXP-002 where appropriate, then normal Proposal/RFC/ADR/Spec gates before adopting a Core-wide contract |
+| I4-07 — Complete RFC-015 scoped-storage delivery | Maintainer request 2026-10-13; approved RFC-015; proposed ADR-039 and SPEC-011/013/015 packet | Complete the full selected RFC scope, reusing the minimum P08 implementation/evidence and delivering the remaining contracts, implementation, compatibility, conformance and documentation | Follow the [delivery allocation](iteration-003-review/rfc-015-delivery-allocation.md); accept ADR and approve Spec amendments before implementation; separate bounded execution authority; no Core-wide generalization |
 
 Use the same bounded counter/status application, changing text, typed actions,
 disabled Button and small Canvas variant as iteration 3. It must now be a real
@@ -68,6 +71,11 @@ application. Runtime graph derivation remains mandatory for both applications.
    with a concrete second consumer and a PC simulator composition; record missing
    evidence explicitly. Feed the disposition into the package/access review.
    Obtain architecture and affected Specification approvals.
+   For I4-07, reconcile the P08 residual matrix against every RFC-015 B1–B4
+   obligation and all nine proposed ownership criteria. Complete remaining work
+   through the approved owner plans before dependent integration; reuse qualified
+   P08 evidence and refresh only changed paths. I4-06 assessment is not a prerequisite
+   to realizing RFC-015's already selected finite ownership contract.
 4. Derive ready implementation plans; extract one coherent vertical consumer
    path and test it before migrating further supported platform compositions.
 5. Run the external consumer/adapter matrix and compare final analyzer memory,
@@ -100,6 +108,7 @@ history. The transfer is approved under iteration-3 revision 4.
 | I4-AC-005 (from IT-AC-005) | Application and adapter authors can reproduce and customize supported integration; every criterion has an evidenced disposition | All supported build routes | Quick start, custom-adapter guide, owner-input inventory, package/API compatibility and migration notes; exact evidence identities and human closure |
 | I4-AC-006 | Compiler assessment records an evidenced upgrade-or-retain recommendation, target-tooling availability, estimated effort and required contract/evidence refresh | macOS Dynamic/Static, actual ARMv6 and Embedded toolchain feasibility | P07 reproducer plus lifetime-negative controls; SwiftSyntax/macros, paired SDK, ABI/VFP, zero-heap and size/stack validation plan; no adoption implied |
 | I4-AC-007 | Ownership assessment records a boundary/owner/dependency map covering borrowing, mutation, ownership versus access-capability transfer, acceptance and cleanup on success/refusal/failure; concrete reuse gaps, alternatives and an adopt-later/retain-local/defer recommendation with lifecycle routing | Static/Embedded and Dynamic ownership; external frontend/backend consumer and PC simulator composition | [FW-037 assessment model](../future-work/fw-037-core-wide-storage-ownership-generalization.md#ownership-and-transfer-model-to-assess) / EXP-002 evidence and disposition; distinguish portable semantics from Swift enforcement and target realization, account for resource/lifetime costs, and identify missing P08 or second-consumer evidence; no Core or simulator implementation implied |
+| I4-AC-008 | Full RFC-015 scope has accepted decisions, approved/applied Spec amendments, implemented residual work and complete conformance dispositions; P08 results are reused with no unnecessary migration | All four governed configurations; existing target evidence requirements preserved | B1–B4 and adopted IN-SO-001–003 / RP-SO-001–003 / HC-SO-001–003 mapped to current-source evidence, caller/physical inventories and owner conformance reports; exact P08 residual handoff, independent review and human lifecycle transitions; failure remains unmet unless explicitly excepted |
 
 The matrix is macOS Dynamic, macOS Static, Raspberry Pi 1
 `armv6-unknown-linux-gnueabihf` Dynamic with framebuffer/PiScreen, and
@@ -110,7 +119,7 @@ ABI checks, and obtain explicit authorization for required connected operations.
 
 ## Dependencies and Open Questions
 
-- Iteration-3 revision 4 and this revision 3 are approved. Their feature and
+- Iteration-3 revision 4 and this revision 4 are approved. Their feature and
   implementation gates remain separate.
 - Production migration depends on iteration-3 safe memory/stack, sustained
   workload, runtime-derivation and compatibility evidence, or a specifically
@@ -119,9 +128,11 @@ ABI checks, and obtain explicit authorization for required connected operations.
 - PROPOSAL-007 remains accepted and RFC-013 draft. Reuse valid studies and
   failures; do not reset SPIKE-067's exhausted allowance or adopt its code by
   moving files. New architecture/contracts remain separate human gates.
-- I4-06 may inventory boundaries before P08 closes, but must not treat draft
-  RFC-015 as accepted architecture or move its B1–B4 blockers into future work.
-  Missing P08 or second-consumer evidence permits an explicit defer disposition;
+- I4-06 may inventory boundaries before P08 closes. RFC-015 is approved, but
+  ADR-039 and Spec amendments remain pending. I4-07 owns full RFC delivery;
+  P08 retains every obligation required by its adopted paths under the delivery
+  allocation. Neither item moves a P08 safety or fit blocker into optional work.
+  For I4-06 assessment, missing P08 or second-consumer evidence permits an explicit defer disposition;
   no compiler/repair allowance is reset by this scope addition.
 - Decide whether the measured owner boundaries require any new core module;
   no module name or inheritance hierarchy is selected by this scope.
@@ -135,6 +146,7 @@ ABI checks, and obtain explicit authorization for required connected operations.
 | 1 | 2026-10-09 | Transfer backend/package/external-host delivery after iteration-3 memory and efficiency work | [Explicit sequencing approval](iteration-003-review/efficiency-sequencing-approval.md) |
 | 2 | 2026-10-11 | Add I4-05 / I4-AC-006 compiler assessment; upgrade adoption remains separately gated | Eugene: “Please add this as a task to the next iteration.” In context, “this” is evaluation of the cost and impact of bumping Swift; [request record](../future-work/fw-036-swift-compiler-upgrade-assessment.md#disposition) |
 | 3 | 2026-10-13 | Add I4-06 / I4-AC-007 Core-wide storage ownership assessment, including frontend/backend/platform and PC simulator boundaries | Eugene: “Add the produced future work item to the next iteration scope.” The item is FW-037; [request record](../future-work/fw-037-core-wide-storage-ownership-generalization.md#disposition) |
+| 4 | 2026-10-13 | Add I4-07 / I4-AC-008 full RFC-015 delivery; retain only necessary changes and their complete proof in P08 | Eugene: “Please include full RFC 015 scope work into the next iteration, while preserving P08 staying focused on the only necessary changes”; [allocation and provenance](iteration-003-review/rfc-015-delivery-allocation.md) |
 
 On 2026-10-13, Eugene authorized making the ownership-and-transfer assessment
 model explicit in FW-037 and referencing it from I4-06 / I4-AC-007. This clarifies
@@ -143,7 +155,7 @@ ownership contract. See [FW-037 disposition](../future-work/fw-037-core-wide-sto
 
 ## Closure and Follow-up
 
-At closure, disposition I4-AC-001–007 as met, unmet or explicitly excepted with
+At closure, disposition I4-AC-001–008 as met, unmet or explicitly excepted with
 current evidence. Preserve remaining work and triggers, and obtain a human
 closure decision. Do not infer delivery from transferred scope or passed studies.
 
