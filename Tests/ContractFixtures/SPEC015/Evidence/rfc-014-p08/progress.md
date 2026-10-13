@@ -1,5 +1,50 @@
 # RFC-014 P08 execution receipt — 2026-10-11
 
+## SO-02 physical design dispatch — 2026-10-13
+
+Input: clean `d8a3d5ff`, completed SO-01 inventory at `59d98712`, accepted
+ADR-039 and approved/applied S11/S13/S15. Sequential Strong task
+`p08_so02_design` prepares one focused implementation design with actual-source
+site inventory, final typed representation, common exclusive session, prefix
+unwind, full cleanup/retirement, measurement and complete stack/IRQ evidence
+requirements. It preserves the P08-required/I4-07 residual allocation.
+
+Allowed changes: this receipt, the focused design note, one concrete proposed
+execution packet if needed, and bidirectional derived navigation in the shared
+and three owner plans/Specs. Allowed checks: read-only source/document review,
+local Markdown links, governance validation, `git diff --check` and diff review,
+then one documentation commit for separate independent Strong design review.
+No source, compiler, test/build, experiment or hardware action is authorized.
+The next implementation/validation allowance is PROPOSED, NOT AUTHORIZED.
+
+All historical helper 2/2, B03 1/1, GOT/image/backing-image, phase
+correction/image and IR capture 1/1 budgets and SPIKE-075's seven experiments
+remain closed. No counter or two-consecutive-unproductive guard resets.
+58,648 construction bytes still fail 27,648; all nine SO criteria, HC-RD-003,
+P08/R07/T8.1 and P09–P12 remain open. Contract defects stop upstream.
+
+SO-02 result: [focused physical design](../../../../../docs/implementation-designs/spec-015-p08-scoped-storage-ownership.md)
+selects separately initialized geometry fields and five final bank objects,
+private typed descriptors, one actual-owner token/exclusive typed borrow,
+reverse prefix destruction and complete both-profile carrier/cleanup/retirement.
+Static Embedded uses a freshly checked caller-slot layout; native uses pinned
+individual typed Optional slots with no raw live-array rebind or heap fallback.
+The original Interaction machine and owned compatibility routes remain.
+[Next execution packet](scoped-storage/so02-execution-proposal.md) proposes SO-03
+first, then independently reviewed sequential SO-04–08 with explicit finite
+commands/profiles/attempts/repair stops. It is NOT AUTHORIZED.
+
+Documentation checks pass: 557 local Markdown file links across ten changed/new
+records resolve; governance passes with 198 nodes / 2,019 edges and all existing
+task manifests; git diff --check passes. Diff review covers only this receipt,
+the two new documentation records, shared/owner plans and Spec References.
+No maintained source/compiler/test/build/experiment/repair ran. Manifest and
+lifecycle statuses need no change. No new contract blocker was identified;
+common-token compiler acceptance, native typed projection, numeric ABI layout,
+constructor/writeback/complete nested stack/IRQ and target fit remain unproved.
+All nine criteria, HC-RD-003 and P08/R07/T8.1 remain open. SO-02 drafting is
+complete for separate independent Strong review; no production allowance opens.
+
 ## SO-01 inventory dispatch — 2026-10-13
 
 Input: clean `59d98712`, accepted ADR-039, approved/applied S11/S13/S15,

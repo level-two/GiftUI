@@ -8,6 +8,7 @@ owners:
 created: 2026-09-09
 updated: 2026-10-13
 related_design_notes:
+  - ../implementation-designs/spec-015-p08-scoped-storage-ownership.md
   - ../implementation-designs/spec-013-common-coordinator-and-cleanup.md
   - ../implementation-designs/spec-013-storage-audit-and-overlay-ownership.md
   - ../implementation-designs/spec-013-static-generation-and-capture-lifetime.md
@@ -64,11 +65,15 @@ not additional authorization to rerun an MVP implementation or reopen experiment
   carries exact residual/source/evidence rows (or explicit empty residual) to I4-07.
   **SO-01 evidence:** [caller/necessity inventory](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so01-inventory.md)
   records P08 applicability and I4-07 residuals; all criteria remain unmet.
-  SO-02 is next; no physical design or production evidence exists yet.
+  **SO-02 design:** [physical ownership note](../implementation-designs/spec-015-p08-scoped-storage-ownership.md)
+  selects final typed fields, common exclusive session, complete cleanup and
+  resource evidence. Drafting is complete; independent Strong design review is
+  next. [Next execution proposal](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so02-execution-proposal.md)
+  is not authorized; production evidence and all criteria remain open.
   **Readiness:** sequential SO-01/SO-02 preparation is authorized. Source,
   compiler/build/repair work awaits the separately recorded bounded allowance;
-  all closed budgets and stop guards remain. No design-note metadata link is
-  added before the SO-02 note exists. Existing T11.1, P08/R07/T8.1 and P10–P12
+  all closed budgets and stop guards remain. The SO-02 draft is linked in
+  related_design_notes for independent review. Existing T11.1, P08/R07/T8.1 and P10–P12
   duties remain open; no resource/timing/hardware exception is inferred.
   **Evidence:** one shared [P08 receipt](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/progress.md),
   actual caller/physical ledgers, exact compiler/source/input identities, unchanged

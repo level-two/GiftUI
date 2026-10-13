@@ -1308,6 +1308,10 @@ profiles remain in their existing lifecycle or deferred tracks.
 
 ## References
 
+- [P08 scoped storage ownership design](../implementation-designs/spec-015-p08-scoped-storage-ownership.md)
+  is the non-authoritative SO-02 realization note for independent review.
+  Implementation/fit and all SO criteria remain unproved.
+
 - [Bounded RFC-014 implementation sequence](../iterations/iteration-003-review/rfc-014-implementation-plan.md).
 
 - [2026-10-02 Shared Pipeline Amendment Review](../../Tests/ContractFixtures/SPEC013/Evidence/milestone-9/seam-amendment-review.md)

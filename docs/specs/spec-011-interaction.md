@@ -977,6 +977,10 @@ configuration contracts.
 
 ## References
 
+- [P08 scoped storage ownership design](../implementation-designs/spec-015-p08-scoped-storage-ownership.md)
+  is the non-authoritative SO-02 realization note for independent review.
+  Implementation/fit and all SO criteria remain unproved.
+
 - [Bounded RFC-014 implementation sequence](../iterations/iteration-003-review/rfc-014-implementation-plan.md).
 
 - [SPEC-011 Implementation Plan](../implementation-plans/spec-011-implementation-plan.md)

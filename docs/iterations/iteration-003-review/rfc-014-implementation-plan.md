@@ -5,8 +5,11 @@
 records concrete P08 dependencies, all maintained caller dispositions, four
 route/compiler identities and I4-07 residual reconciliation. Its mandatory
 Cycle measurement compatibility fixes preserve owned paths and do not reopen
-P07. SO-02 physical design is the next sequential task; no source/production
-allowance or criterion completion follows from this documentation result.
+P07. [SO-02 physical design](../../implementation-designs/spec-015-p08-scoped-storage-ownership.md)
+now selects final typed fields, session/cleanup and evidence strategy for separate
+independent Strong review. The [concrete next execution proposal](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so02-execution-proposal.md)
+is not authorized. No source/production allowance, fit evidence or criterion
+completion follows from this documentation result.
 
 [Explicit acceptance/application](rfc-015-contract-acceptance.md) accepts ADR-039,
 applies exact S11/S13/S15 and adopts the [P08 handoff](rfc-015-p08-handoff.md).
@@ -50,8 +53,8 @@ remain the existing separate sequential packages, not work authorized by this ha
 The [pre-code physical design-note checklist](rfc-015-p08-handoff.md#pre-code-physical-design-note-checklist)
 and [execution disposition and preserved budgets](rfc-015-p08-handoff.md#execution-disposition-and-preserved-budgets)
 are adopted as the design/review and execution constraints. SO-02 must cover every
-checklist item and receive separate Strong review before source work. Add its
-owner-plan metadata link only once the note exists. SO-03–09 require ordered
+checklist item and receive separate Strong review before source work. Its
+owner-plan metadata links now exist. SO-03–09 require ordered
 prerequisites and a separate recorded source/command/profile/attempt/repair allowance;
 none is allocated here. Strong ownership/lifetime/resource routing and independent
 Strong P08 exit remain as specified below, without a new model selection.
