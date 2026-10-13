@@ -65,7 +65,16 @@ not additional authorization to rerun an MVP implementation or reopen experiment
   carries exact residual/source/evidence rows (or explicit empty residual) to I4-07.
   **SO-01 evidence:** [caller/necessity inventory](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so01-inventory.md)
   records P08 applicability and I4-07 residuals; all criteria remain unmet.
-  **Current correction outcome:** fixture source`8d996626`, clean native
+  **Independent correction review:** [Strong review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so03/correction-1/independent-review.md)
+  identifies a local initializer-call lifetime error, no demonstrated contract
+  defect. Common-session factory source follows the reviewed owner/token/descriptor
+  pattern; acceptance remains unproved. Hashes/argv match, 13 pass/1 fail and all
+  27 focused/link/execute unreached. One correction productively narrows the cause;
+  zero follow-up repairs, no historical reset. Both native allowances remain 1/1
+  consumed, 0 remaining. Same-five-consuming-input owned-count helper plus one fresh
+  native driver/zero further repairs and independent review is proposed, NOT
+  AUTHORIZED; all criteria/fit/P08/R07/T8.1/I4-07/P09–P12 remain open.
+  **Historical correction outcome:** fixture source`8d996626`, clean native
   entry`16499074`; single authorized rerun FAILED at OwnedKeyProbe line532
   initializer-only precondition use. Actual14compiler cells13pass/1fail;
   27focusedprobes/link/execute unreached. [Frozen result/review handoff](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so03/correction-1/result.md).

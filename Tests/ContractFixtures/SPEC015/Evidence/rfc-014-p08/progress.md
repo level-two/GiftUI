@@ -1,5 +1,53 @@
 # RFC-014 P08 execution receipt — 2026-10-11
 
+## SO-03 correction-1 independent Strong review dispatch — 2026-10-13
+
+Entry `e82c17ff`, clean; sequential independent Strong task
+`p08_so03_correction_review`, C3/R3. Review source `8d996626`, clean native
+entry `16499074`, [frozen correction outcome](scoped-storage/so03/correction-1/result.md)
+and preceding [independent review](scoped-storage/so03/independent-review.md).
+Inspect the sole fixture delta, independent initializer controls versus closed
+common-session executable family, exact line-532 diagnostics, all frozen hashes,
+43 planned/14 attempted argv, 27 unreached focused labels, and unchanged authority
+under ADR-039/S11.1–4/S13.1 and the accepted SO-03 packet. Classify the remaining
+cause and historical two-consecutive-unproductive guard; recommend the smallest
+concrete handoff without authorizing it. No source/driver edit, compiler, probe,
+test/build, experiment, target/image, hardware or subagent. Review/report/receipt
+and truthful current plan/context navigation only; documentation checks and a
+separate review commit are permitted. Both native allowances remain 1/1 consumed,
+0 remaining; correction 1, automatic follow-up repairs 0. All historical counters,
+criteria, resource failures, I4-07/P09–P12 obligations and lifecycle states persist.
+
+
+Review outcome: **local initializer-only call-site lifetime error; no demonstrated
+contract defect**, [independent Strong review](scoped-storage/so03/correction-1/independent-review.md).
+All 122 source/128 driver/24 pins/80 artifact identities and sizes match; the sole
+source delta and 43 planned/first 14 attempted argv agree. Actual 13 pass/1 fail;
+27 focused/link/execute remain unreached. Factory source follows the reviewed
+actual-owner typed borrow/common token/private complete descriptor pattern;
+compiler/runtime/session acceptance remains unproved. Five independent mutableSpan
+accesses end before the returned Optional state's line-532 read. The one correction
+productively narrows the cause; no new passing check is claimed and no historical
+counter resets. Both native allowances 1/1 consumed, 0 remaining; correction 1,
+automatic follow-up repairs 0.
+
+Smallest proposed next handoff: same-five-consuming-input private helper checks the
+actual so03Union Optional/count within the call and returns only an owned count;
+unchanged independent annotations/twins/27 labels/43-command plan and executable
+assertions. One fixture correction/one fresh native driver, zero further repairs
+and independent Strong review is **NOT AUTHORIZED**. No source/compiler action
+follows. All nine criteria/HC-RD-003/P08/R07/T8.1/58,648-vs-27,648 stack failure and
+mandatory I4-07/P09–P12 remain open; Specs implementing, plans active, SO-04–09
+proposed/unapproved. No new deferred item or manifest/status/contract change.
+
+Review validation PASS: governance 198 nodes / 2,019 edges and all existing task
+manifests; 522 local Markdown file links; read-only frozen hash/size/source-diff/
+argv comparisons; git diff --check. Review scope is exactly this receipt, the
+new independent report and shared/owner current navigation. Strong configuration
+is inherited from the parent assignment, without model/reasoning override or
+substitution. No source/driver/test/compiler action or subagent ran. Commit the
+review separately; the proposed correction/run remains unapproved.
+
 ## SO-03 correction-1 single native outcome — 2026-10-13
 
 Unvalidated fixture source`8d996626`; receipt-only normalization`16499074` is

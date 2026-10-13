@@ -1,6 +1,21 @@
 # RFC-014 bounded implementation sequence — 2026-10-10
 
-Current SO-03 correction outcome — 2026-10-13: unvalidated fixture source
+Current independent correction review — 2026-10-13: [Strong source/result review](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so03/correction-1/independent-review.md)
+classifies the failure as a local initializer-call lifetime error, no demonstrated
+contract defect. Five temporary mutableSpan accesses end before the line-532 state
+read. Common-session factory source follows the reviewed actual-owner/token/private
+descriptor pattern, but its acceptance is unproved. Exact 122/128/24/80 hashes and
+43 planned/14 attempted argv match; 13 pass/1 fail, 27 focused/link/execute unreached.
+One correction narrowed the cause productively; zero automatic follow-up repairs,
+no historical counter reset. Both native allowances stay 1/1 consumed, 0 remaining.
+Smallest proposal: same-five-consuming-input helper checks actual so03Union Optional
+and returns owned count within the call; preserve all 27 labels/independent omitted
+inputs. One correction/one fresh native driver/zero further repairs plus independent
+review is proposed, NOT AUTHORIZED. No source/compiler action follows. All nine
+criteria/fit/P08/R07/T8.1/HC-RD-003 and mandatory I4-07/P09–P12 stay open; Specs
+implementing, plans active, SO-04–09 unapproved.
+
+Historical SO-03 correction outcome — 2026-10-13: unvalidated fixture source
 `8d996626`, clean native entry`16499074`; single authorized rerun FAILED at
 OwnedKeyProbe line532 initializer-only precondition use. Actual14compiler cells
 13pass/1fail;27focusedprobes/link/execute unreached. [Frozen result and independent
