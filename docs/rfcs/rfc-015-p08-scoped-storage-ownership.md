@@ -137,7 +137,9 @@ features; no associated type whose value itself must be nonescapable, no newer
 language dependency and no unchecked fallback. Existing Scalar/Identity/Result
 associated types remain owned Copyable/Escapable values. Static remains bounded
 and zero-heap; Dynamic retains equivalent limits and outcomes. Production
-hardware, compilation, linking and repairs are outside this preparation.
+hardware, production compilation/linking and repairs are outside this preparation.
+The separately authorized SPIKE-075 below permits only its bounded disposable
+compiler experiment; it does not reopen those production allowances.
 
 All historical allowances stay closed, including helper 2/2, B03 1/1, GOT 1/1,
 prior image/backing-image allowances, phase correction/image and diagnostic
@@ -1117,8 +1119,13 @@ findings have been independently closed. All remaining questions below are
 ## Deferred and Follow-up Work
 
 [SPIKE-075](../spikes/spike-075-p08-state-feasibility.md) owns the first minimum
-state-expressibility experiment under the new authorization. Its evidence feeds
-B1; it neither defers a blocker nor approves this RFC. Complete carrier feasibility
+state-expressibility experiment under the new authorization. Its first run passed
+the shadow declarations and positive client on macOS Dynamic, then stopped on a
+copy-test helper that inadvertently required Escapable as well as Copyable.
+Strong exit review classifies this as inconclusive fixture evidence, not a
+falsified RFC contract. Escape negatives and other profiles remain unrun; the
+zero-repair package has ended. Its evidence feeds B1; it neither defers a blocker
+nor approves this RFC. Complete carrier feasibility
 still needs evidence if that first gate passes. Detailed implementation migration,
 physical layout and complete linked resource/stack acceptance remain downstream
 conformance work; RFC approval needs a viable ownership/cleanup plan and enough

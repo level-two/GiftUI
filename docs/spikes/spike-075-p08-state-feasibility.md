@@ -2,7 +2,7 @@
 id: SPIKE-075
 feature: external-application-integration
 title: P08 Scoped and Owned State Feasibility
-status: planned
+status: completed
 authors:
   - codex
 created: 2026-10-13
@@ -96,7 +96,14 @@ commands, exits and diagnostics with the experiment evidence.
 
 Prepared 526 disposable Swift lines after scope commit `722f5862`.
 [Strong preflight review](../../experiments/spike-075-p08-state-feasibility/preflight-review.md)
-found the fixture ready for one bounded run. No compiler invocation has occurred.
+found the fixture ready for one bounded run, committed as `861f012b`.
+Run `20261013T155029Z-b1c24da8` passed the shadow module and positive client on
+macOS Dynamic, then stopped at the copy negative: its helper inadvertently
+required Escapable as well as Copyable. Three experiments and one identity query
+ran, with zero repairs. All escape negatives and other profiles remain unrun.
+[Evidence](../../experiments/spike-075-p08-state-feasibility/evidence/run-1/receipt.json)
+and [Strong package review](../../experiments/spike-075-p08-state-feasibility/package-review.md)
+preserve the inconclusive disposition and the minimum proposed harness correction.
 
 ## Limitations
 
@@ -109,9 +116,13 @@ found the fixture ready for one bounded run. No compiler invocation has occurred
 
 ## Disposition
 
-Planned. A failed architectural premise stops for a maintainer decision. If the
-state gate passes, record the next minimum carrier/retirement question before
-executing it; do not expand this package's fixed case list. Full migration,
+Completed as an attempted, **inconclusive** experiment; this status does not mean
+the gate passed. The observed blocker is the copy-test helper, not a falsified
+RFC declaration. The package's zero-repair boundary prevents a retry. The linked
+package review proposes one harness-only correction and at most 30 further
+experiments for explicit maintainer disposition; it does not allocate them.
+If the state gate later passes, record the next minimum carrier/retirement
+question before executing it. Full migration,
 physical resource accounting and linked stack acceptance remain downstream
 implementation/conformance obligations, not prerequisites to this experiment.
 

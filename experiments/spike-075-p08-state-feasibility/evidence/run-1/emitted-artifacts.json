@@ -1,0 +1,26 @@
+{
+  "fixture_commit": "861f012b",
+  "captured_at": "package-exit-before-any-repair",
+  "artifacts": {
+    ".build/spike-075/20261013T155029Z-b1c24da8/macos-dynamic/P08Shadow.swiftdoc": {
+      "sha256": "496dccb7ef9955b408334d20434d6fea15e10fadd78b297423045b263d3c3b2f",
+      "bytes": 376
+    },
+    ".build/spike-075/20261013T155029Z-b1c24da8/macos-dynamic/P08Shadow.swiftmodule": {
+      "sha256": "584c5c4206e88cb3a12f7295bbbfcae20f1c80979b8279bc54a2d137e55fcec8",
+      "bytes": 60304
+    },
+    ".build/spike-075/20261013T155029Z-b1c24da8/macos-dynamic/P08Shadow.swiftsourceinfo": {
+      "sha256": "37dc57851b819f966b2bd2f3660aaadfa5c4c23f8e5e3ae8defc40c5c27a67ab",
+      "bytes": 30748
+    },
+    ".build/spike-075/20261013T155029Z-b1c24da8/macos-dynamic/positive.o": {
+      "sha256": "4e6b0e53ff08564692ed393efa921ac2accf3741e4f5f81e96673360ce8cf432",
+      "bytes": 9936
+    },
+    ".build/spike-075/20261013T155029Z-b1c24da8/macos-dynamic/shadow.o": {
+      "sha256": "0ad30cbc32c8f14d73184a507a9620aad24ac7e62321fc0f68d92c1790d6a3b3",
+      "bytes": 90536
+    }
+  }
+}
