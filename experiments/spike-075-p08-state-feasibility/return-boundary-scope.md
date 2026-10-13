@@ -30,3 +30,12 @@ inconclusive or failed according to the evidence. Neither outcome authorizes mor
 experiments, RFC acceptance, production migration or a compiler workaround.
 Conclude the task with remaining limitations and a recommendation based on the
 evidence already available. Historical repair limits and failed runs stay intact.
+
+## Preflight
+
+Sequential Strong review (Sol 6.1 High) found the control pair informative but
+requested that a broad lifetime-diagnostic match not count as proof. Before any
+compiler invocation, the runner was changed to leave negative rejection
+unaccepted pending Strong attribution to the local bank's return. Focused recheck
+returned ready. This preparation correction consumed no experiment or repair
+round; no RFC declaration or fixture scope changed.
