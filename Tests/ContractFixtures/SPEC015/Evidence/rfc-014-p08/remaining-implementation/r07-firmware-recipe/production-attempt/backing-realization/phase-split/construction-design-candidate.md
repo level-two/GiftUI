@@ -1,6 +1,15 @@
 # P08 construction candidate — 2026-10-13
 
-Status: unreviewed, design only. Source remains `63e717d1`; no compiler,
+[Independent candidate review](construction-candidate-review.md) at065843c1
+rejects implementation readiness: the unchanged Geometry/Interaction generic
+contracts require escaping conformers, and a separate outer lease does not
+bind an extracted pointer wrapper. The initialized interaction optional also
+requires a real ownership replacement before five bank adapters can exist.
+Fixture-only owned construction work remains within P08; adopting scoped
+portable Interaction generics is an actual maintainer contract decision. No
+source/compile/experiment or new allowance follows this review.
+
+Status: reviewed; not implementation-ready, design only. Source remains `63e717d1`; no compiler,
 source, build, or link attempt follows the closed IR capture. This records
 findings reported by the assigned Strong Sol 6.1 High worker, not an approved
 construction design or evidence of stack fit.
