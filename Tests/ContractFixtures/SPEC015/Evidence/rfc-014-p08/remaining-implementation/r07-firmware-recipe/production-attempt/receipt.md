@@ -136,3 +136,9 @@ Only receipts/evidence and affected plan/context/progress checkpoint may change.
 Any failed validation stops for separate Strong review; no automatic repair,
 P09, target execution or hardware. Model-capacity failure is reported without
 a substitute model or resetting any guard.
+
+Pi current-source refresh PASS on2026-10-13, session90484, actual checkerexit0,
+output `.build/raspberry-pi/contracts/p08-counter-o95xgfoa`, 28/28 checks and
+221matching current input hashes. Exact invocation/log/receipt preserved under
+backing-realization. No native rerun or source repair. nRF remains uninvoked in
+this slice; continue its one reviewed checker only after this committed step.

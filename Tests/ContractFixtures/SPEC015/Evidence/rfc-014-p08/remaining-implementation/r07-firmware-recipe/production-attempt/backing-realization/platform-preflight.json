@@ -1,0 +1,29 @@
+{
+  "date": "2026-10-13",
+  "commands": [
+    {
+      "argv": [
+        "scripts/raspberry-pi/doctor.sh"
+      ],
+      "exit": 0,
+      "session": 75513,
+      "target": "armv6-unknown-linux-gnueabihf",
+      "compiler": "Apple Swift version 6.4 (swift-6.4-RELEASE)"
+    },
+    {
+      "argv": [
+        "scripts/nrf52840/doctor.sh"
+      ],
+      "exit": 0,
+      "target": "armv7em-none-none-eabi",
+      "board": "nrf52840dk/nrf52840",
+      "compiler": "Apple Swift version 6.4 (swift-6.4-RELEASE)",
+      "zephyr": "4.3.0",
+      "zephyr_revision": "3568e1b6d5cdd51a6b964a2a1d6d29200fea2056",
+      "zephyr_sdk": "0.17.4"
+    }
+  ],
+  "probe": false,
+  "setup": false,
+  "hardware": false
+}

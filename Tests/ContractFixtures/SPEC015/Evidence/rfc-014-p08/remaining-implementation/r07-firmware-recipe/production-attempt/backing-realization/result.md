@@ -1,4 +1,4 @@
-# R07 backing realization checkpoint — 2026-10-12
+# R07 backing realization checkpoint — 2026-10-13
 
 P08/R07 remain incomplete. Design step `19d07b6e` and source step `38ba440d`
 implement the bounded caller-owned Embedded backing direction independently
@@ -9,8 +9,9 @@ it is not independent acceptance of the backing implementation or target fit.
 | --- | --- | --- |
 | macos-static | exit 0; 1,349,555 assertions, zero failures | [invocation](native-invocation.json), [exit](native-exit.json), [receipt](macos-static/result.json) |
 | macos-dynamic | exit 0; 1,349,501 assertions, zero failures | [invocation](macos-dynamic-invocation.json), [exit](macos-dynamic-exit.json), [receipt](macos-dynamic/result.json) |
+| raspberry-pi-armv6 | exit 0; 28/28 checks; cross-compilation only | [invocation](raspberry-pi-armv6-invocation.json), [exit](raspberry-pi-armv6-exit.json), [receipt](raspberry-pi-armv6/result.json) |
 
-Both runs use source `38ba440d`. Their commands, logs and receipts are preserved;
+Both native runs use source `38ba440d`; Pi refresh also uses those exact current source bytes. Their commands, logs and receipts are preserved;
 generated objects/executables remain in the recorded `.build/` directories.
 The formatter passed before the source commit. No validation repair occurred.
 Native success does not validate the Embedded-only storage realization.
@@ -24,8 +25,8 @@ failures are not compiler attempts or repair-count resets.
 
 ## Exact remaining boundary
 
-1. Continue the existing receipt's sequential current-source Raspberry Pi and
-   nRF cross-route checks; no backing-realization target run is recorded yet.
+1. Continue the existing receipt's current-source nRF cross-route check;
+   Raspberry Pi compile route passed on2026-10-13, no target execution.
 2. Use the fresh verified nRF receipt for the supported counter firmware build.
 3. Inspect final ABI/GOT/allocator, total RAM/flash and actual nested entry,
    graph, host, initialization and corpus stack use against unchanged limits.
@@ -41,3 +42,8 @@ Historical helper 2/2, B03 1/1, GOT diagnostic 1/1 and earlier supported-image
 1/1 allowances stay closed; continue only the reviewed backing-realization scope.
 No hardware action occurred. SPEC-015 remains implementing, its plan active;
 T8.1/HC-RD-003/P08 remain open, and P09–P12 remain pending.
+
+Pi continuation: `.build/raspberry-pi/contracts/p08-counter-o95xgfoa`,
+actual checker exit0. All221current input hashes match. Preserved native receipts
+remain matching; neither was rerun. Platform preflights passed. Source unchanged,
+no repair, target execution, new Pi image or hardware action. nRF remains next.
