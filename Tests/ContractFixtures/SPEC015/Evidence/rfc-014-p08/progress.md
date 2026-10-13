@@ -1,5 +1,52 @@
 # RFC-014 P08 execution receipt — 2026-10-11
 
+## SO-03 one fixture correction and one native rerun dispatch — 2026-10-13
+
+Entry `a8bccb56`, clean. Eugene answered “Please proceed” to “Approve one
+fixture-only correction, one native rerun, and independent Strong review, with
+zero automatic further repairs?” This records that explicit bounded allowance
+before source work. Sequential Strong `p08_so03_fixture_repair`, Sol 6.1 High;
+implementation-executor skill; no subagents. The independent review at a8bccb56
+is the exact correction packet. ADR-039, S11.1–4/S13.1 and owner T12.1/T11.1/T8.1
+remain governing; implementing Specifications/active plans and I3-04/I3-05
+counter/four-stack necessity persist; closed ITERATION-001 controls stay intact.
+
+Sole source edit: SPEC011/RuntimeDerived/ScopedStorageProbe.swift. Keep its five
+independent MutableSpan inputs for actual state/failable initializer union,
+move/failable-none/scoped-copy controls; explicitly prohibit exchange in that
+initializer-only family. Add a closed fixture-private executable common-session
+family with immutable token evidence derived from the actual typed owner borrow,
+complete owned role descriptors and five nested final typed bank borrows. Validate
+common provenance/distinct banks/equal logical pair capacity before constructing
+accesses. Exchange descriptors including bank-local count/extent/physical identity;
+never spans, payloads or session dependencies. Preserve all real operation/root/
+Canvas/gesture/dispatcher assertions and all 27 labels/positive twins/negative
+causes. Driver wiring only if essential; none currently planned. No architecture,
+contract, production physical owner, SO-04 adoption or fit proof is included.
+
+Before native entry: maintained formatter, governance/diff and read-only source/
+compiler/macro/core pin checks only; freeze corrected source and unchanged 43-argv
+plan, then commit unvalidated source/receipts. No preliminary compiler/probe.
+Exactly one fresh native invocation:
+`scripts/contracts/run-spec-011.sh --profile macos-dynamic --compiler-baseline rfc-014 --giftui-build .build/contracts/spec-006-rfc-014-swift64/af66aaf967e3fe8f-__4p5wu2/macos-dynamic`.
+Maximum42compiler+1execute; new immutable output, never overwrite attempt-1.
+New explicit allowance0/1consumed; original1/1 remains consumed. Stop at first
+positive/prerequisite failure or wrong negative cause, preserve evidence/commit
+and hand to sequential independent Strong review. Zero automatic follow-up repairs.
+No SO-04+, repository suite, hardware/target/image run. Historical helper2/2,
+B031/1, GOT/image/backing/phase/IR allowances and SPIKE-075 seven experiments stay
+closed; no new cumulative counter/reset. All nine criteria/58,648-vs27,648 stack
+failure/HC-RD-003/P08/R07/T8.1 and mandatory I4-07/P09–P12 obligations remain open.
+
+### Correction-1 precompiler freeze
+
+Only authorized fixture changes; [correction freeze/diff/unchanged43argv](scoped-storage/so03/correction-1/result.md).
+Maintained formatter/governance198nodes/2019edges/task manifests/diff PASS.
+122source inputs checked (sole fixture changed),24unaffected pins and compiler/
+macro/core receipt/reused GiftUI artifacts match. Driver/27labels/oracles/argv
+unchanged. No compiler/probe/native invocation. Source/receipt commit precedes
+one permitted rerun; new0/1, original1/1 remains closed, followuprepairs0.
+
 ## SO-03 independent Strong result-review dispatch — 2026-10-13
 
 Entry `522bd23f`, clean; sequential independent Strong task

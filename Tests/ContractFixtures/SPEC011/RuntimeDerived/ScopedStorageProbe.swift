@@ -7,8 +7,9 @@ import GiftUIRuntimeCore
 import GiftUIRuntimeStatic
 import GiftUISemanticCore
 
-// Closed fixture-private access construction from actual typed mutable spans.
-// These are minimal SO-03 lifetime inputs, not the SO-04 physical owner/session.
+// Independent initializer-only inputs keep all five actual span dependencies.
+// They exercise state construction/move/failable-none, never transaction exchange.
+// The separate closed common-session family below executes the real operations.
 private struct SO03Candidate: ~Copyable, ~Escapable, InteractionCandidateRecordStorage {
     typealias Identity = SemanticCompleteIdentity
     private var slots: MutableSpan<InteractionCandidateRecord<Identity>?>
@@ -62,13 +63,7 @@ private struct SO03Committed: ~Copyable, ~Escapable, InteractionCommittedRecordS
         return true
     }
     mutating func exchangeContents(with other: inout Self) {
-        precondition(capacity == other.capacity)
-        let priorSlots = consume slots
-        let priorCount = count
-        slots = consume other.slots
-        count = other.count
-        other.slots = consume priorSlots
-        other.count = priorCount
+        preconditionFailure("Initializer-only independent banks cannot exchange")
     }
 }
 private struct SO03Hits: ~Copyable, ~Escapable, InteractionHitRegionStorage {
@@ -95,15 +90,227 @@ private struct SO03Hits: ~Copyable, ~Escapable, InteractionHitRegionStorage {
         return true
     }
     mutating func exchangeContents(with other: inout Self) {
-        precondition(capacity == other.capacity)
-        let priorSlots = consume slots
-        let priorCount = count
-        slots = consume other.slots
-        count = other.count
-        other.slots = consume priorSlots
-        other.count = priorCount
+        preconditionFailure("Initializer-only independent banks cannot exchange")
     }
 }
+// Ordinary descriptors carry a complete physical bank's role, not a span's
+// independent lifetime. Counts travel with their original address/identity/extent.
+private struct SO03Bank<Element> {
+    var slots: InlineArray<6, Element?> = .init(repeating: nil)
+}
+private struct SO03Role<Element> {
+    let bank: UnsafeMutablePointer<SO03Bank<Element>>
+    let provenance: UInt
+    let physicalIdentity: UInt8
+    let capacity: UInt16
+    let retainedElements: UInt16
+    let retainedBytes: Int
+    var count: UInt16 = 0
+}
+
+// Unique fixture reservation owner over the five final typed objects held by the
+// closed outer reservation below. It does not own Interaction transaction state.
+// Its pointer fields never escape that reservation, and no factory takes a client
+// conformer or exposes any bank/descriptor/access as a returned owned result.
+private struct SO03PhysicalOwner: ~Copyable {
+    let c: UnsafeMutablePointer<SO03Bank<InteractionCandidateRecord<SemanticCompleteIdentity>>>
+    let h0: UnsafeMutablePointer<SO03Bank<InteractionHitRegion<SemanticCompleteIdentity>>>
+    let r0: UnsafeMutablePointer<SO03Bank<BoundActionRecord<SemanticCompleteIdentity>>>
+    let r1: UnsafeMutablePointer<SO03Bank<BoundActionRecord<SemanticCompleteIdentity>>>
+    let h1: UnsafeMutablePointer<SO03Bank<InteractionHitRegion<SemanticCompleteIdentity>>>
+    let provenance: UInt
+    var active = false
+}
+private struct SO03SessionLifetime: ~Escapable {
+    let provenance: UInt
+    @_lifetime(borrow owner)
+    init(owner: borrowing SO03PhysicalOwner) {
+        provenance = owner.provenance
+    }
+}
+private struct SO03SessionCandidate: ~Copyable, ~Escapable, InteractionCandidateRecordStorage {
+    typealias Identity = SemanticCompleteIdentity
+    private let sessionLifetime: SO03SessionLifetime
+    private var role: SO03Role<InteractionCandidateRecord<Identity>>
+    var count: UInt16 { role.count }
+    var capacity: UInt16 { role.capacity }
+    @_lifetime(copy sessionLifetime)
+    init(sessionLifetime: borrowing SO03SessionLifetime, role: SO03Role<InteractionCandidateRecord<Identity>>) {
+        precondition(role.provenance == sessionLifetime.provenance)
+        self.sessionLifetime = copy sessionLifetime
+        self.role = role
+    }
+    mutating func reset() {
+        for index in 0..<Int(role.count) { role.bank.pointee.slots[index] = nil }
+        role.count = 0
+    }
+    borrowing func record(at index: UInt16) -> InteractionCandidateRecord<Identity>? {
+        guard index < role.count else { return nil }
+        return role.bank.pointee.slots[Int(index)]
+    }
+    mutating func append(_ record: consuming InteractionCandidateRecord<Identity>) -> Bool {
+        guard role.count < role.capacity else { return false }
+        role.bank.pointee.slots[Int(role.count)] = consume record
+        role.count += 1
+        return true
+    }
+    mutating func replace(at index: UInt16, with record: consuming InteractionCandidateRecord<Identity>) -> Bool {
+        guard index < role.count else { return false }
+        role.bank.pointee.slots[Int(index)] = consume record
+        return true
+    }
+}
+private struct SO03SessionCommitted: ~Copyable, ~Escapable, InteractionCommittedRecordStorage {
+    typealias Identity = SemanticCompleteIdentity
+    private let sessionLifetime: SO03SessionLifetime
+    private var role: SO03Role<BoundActionRecord<Identity>>
+    var count: UInt16 { role.count }
+    var capacity: UInt16 { role.capacity }
+    @_lifetime(copy sessionLifetime)
+    init(sessionLifetime: borrowing SO03SessionLifetime, role: SO03Role<BoundActionRecord<Identity>>) {
+        precondition(role.provenance == sessionLifetime.provenance)
+        self.sessionLifetime = copy sessionLifetime
+        self.role = role
+    }
+    mutating func reset() {
+        for index in 0..<Int(role.count) { role.bank.pointee.slots[index] = nil }
+        role.count = 0
+    }
+    borrowing func record(at index: UInt16) -> BoundActionRecord<Identity>? {
+        guard index < role.count else { return nil }
+        return role.bank.pointee.slots[Int(index)]
+    }
+    mutating func append(_ record: consuming BoundActionRecord<Identity>) -> Bool {
+        guard role.count < role.capacity else { return false }
+        role.bank.pointee.slots[Int(role.count)] = consume record
+        role.count += 1
+        return true
+    }
+    mutating func exchangeContents(with other: inout Self) {
+        precondition(sessionLifetime.provenance == other.sessionLifetime.provenance)
+        precondition(role.capacity == other.role.capacity && role.physicalIdentity != other.role.physicalIdentity)
+        swap(&role, &other.role)
+    }
+}
+private struct SO03SessionHits: ~Copyable, ~Escapable, InteractionHitRegionStorage {
+    typealias Identity = SemanticCompleteIdentity
+    private let sessionLifetime: SO03SessionLifetime
+    private var role: SO03Role<InteractionHitRegion<Identity>>
+    var count: UInt16 { role.count }
+    var capacity: UInt16 { role.capacity }
+    @_lifetime(copy sessionLifetime)
+    init(sessionLifetime: borrowing SO03SessionLifetime, role: SO03Role<InteractionHitRegion<Identity>>) {
+        precondition(role.provenance == sessionLifetime.provenance)
+        self.sessionLifetime = copy sessionLifetime
+        self.role = role
+    }
+    mutating func reset() {
+        for index in 0..<Int(role.count) { role.bank.pointee.slots[index] = nil }
+        role.count = 0
+    }
+    borrowing func region(at index: UInt16) -> InteractionHitRegion<Identity>? {
+        guard index < role.count else { return nil }
+        return role.bank.pointee.slots[Int(index)]
+    }
+    mutating func append(_ record: consuming InteractionHitRegion<Identity>) -> Bool {
+        guard role.count < role.capacity else { return false }
+        role.bank.pointee.slots[Int(role.count)] = consume record
+        role.count += 1
+        return true
+    }
+    mutating func exchangeContents(with other: inout Self) {
+        precondition(sessionLifetime.provenance == other.sessionLifetime.provenance)
+        precondition(role.capacity == other.role.capacity && role.physicalIdentity != other.role.physicalIdentity)
+        swap(&role, &other.role)
+    }
+}
+private typealias SO03SessionKeys = InteractionOwnedKeyState<SO03SessionCandidate, SO03SessionCommitted, SO03SessionHits>
+
+// Validate the complete typed extents before any access exists. The body is the
+// fixed real SO-03 operation sequence and returns only its ordinary owned count.
+// This fixture mechanism does not implement SO-04 production owner/cleanup/audit.
+private func so03WithSession(owner: inout SO03PhysicalOwner) -> UInt32 {
+    precondition(!owner.active)
+    let c = owner.c, h0 = owner.h0, r0 = owner.r0, r1 = owner.r1, h1 = owner.h1
+    let provenance = owner.provenance
+    let cr = SO03Role(bank: c, provenance: provenance, physicalIdentity: 0, capacity: 6,
+        retainedElements: UInt16(c.pointee.slots.count), retainedBytes: MemoryLayout<SO03Bank<InteractionCandidateRecord<SemanticCompleteIdentity>>>.stride)
+    let h0r = SO03Role(bank: h0, provenance: provenance, physicalIdentity: 1, capacity: 6,
+        retainedElements: UInt16(h0.pointee.slots.count), retainedBytes: MemoryLayout<SO03Bank<InteractionHitRegion<SemanticCompleteIdentity>>>.stride)
+    let r0r = SO03Role(bank: r0, provenance: provenance, physicalIdentity: 2, capacity: 6,
+        retainedElements: UInt16(r0.pointee.slots.count), retainedBytes: MemoryLayout<SO03Bank<BoundActionRecord<SemanticCompleteIdentity>>>.stride)
+    let r1r = SO03Role(bank: r1, provenance: provenance, physicalIdentity: 3, capacity: 6,
+        retainedElements: UInt16(r1.pointee.slots.count), retainedBytes: MemoryLayout<SO03Bank<BoundActionRecord<SemanticCompleteIdentity>>>.stride)
+    let h1r = SO03Role(bank: h1, provenance: provenance, physicalIdentity: 4, capacity: 6,
+        retainedElements: UInt16(h1.pointee.slots.count), retainedBytes: MemoryLayout<SO03Bank<InteractionHitRegion<SemanticCompleteIdentity>>>.stride)
+    precondition(cr.capacity >= 2 && cr.retainedElements >= cr.capacity)
+    precondition(r0r.capacity == r1r.capacity && r0r.capacity >= 2)
+    precondition(h0r.capacity == h1r.capacity && h0r.capacity >= 2)
+    precondition(r0r.retainedElements >= r0r.capacity && r1r.retainedElements >= r1r.capacity)
+    precondition(h0r.retainedElements >= h0r.capacity && h1r.retainedElements >= h1r.capacity)
+    precondition(cr.provenance == provenance && h0r.provenance == provenance && r0r.provenance == provenance
+        && r1r.provenance == provenance && h1r.provenance == provenance)
+    let addresses: InlineArray<5, UInt> = [UInt(bitPattern: c), UInt(bitPattern: h0), UInt(bitPattern: r0), UInt(bitPattern: r1), UInt(bitPattern: h1)]
+    let extents: InlineArray<5, Int> = [cr.retainedBytes, h0r.retainedBytes, r0r.retainedBytes, r1r.retainedBytes, h1r.retainedBytes]
+    let identities: InlineArray<5, UInt8> = [cr.physicalIdentity, h0r.physicalIdentity, r0r.physicalIdentity, r1r.physicalIdentity, h1r.physicalIdentity]
+    for i in 0..<5 {
+        precondition(extents[i] > 0)
+        for j in (i + 1)..<5 {
+            precondition(identities[i] != identities[j])
+            precondition(addresses[i] + UInt(extents[i]) <= addresses[j]
+                || addresses[j] + UInt(extents[j]) <= addresses[i])
+        }
+    }
+    owner.active = true
+    let result = withUnsafeMutablePointer(to: &c.pointee) { _ in
+        withUnsafeMutablePointer(to: &h0.pointee) { _ in
+            withUnsafeMutablePointer(to: &r0.pointee) { _ in
+                withUnsafeMutablePointer(to: &r1.pointee) { _ in
+                    withUnsafeMutablePointer(to: &h1.pointee) { _ in
+                        // Owner's actual typed inout access encloses every bank
+                        // borrow and this reborrow; pointer locals are not tokens.
+                        let sessionLifetime = SO03SessionLifetime(owner: owner)
+                        let state = InteractionState(
+                            candidateRecords: SO03SessionCandidate(sessionLifetime: sessionLifetime, role: cr),
+                            candidateHitRegions: SO03SessionHits(sessionLifetime: sessionLifetime, role: h0r),
+                            candidateCommittedRecords: SO03SessionCommitted(sessionLifetime: sessionLifetime, role: r0r),
+                            committedRecords: SO03SessionCommitted(sessionLifetime: sessionLifetime, role: r1r),
+                            committedHitRegions: SO03SessionHits(sessionLifetime: sessionLifetime, role: h1r))
+                        var keys = SO03SessionKeys(state: consume state,
+                            maximumComponentsPerKey: 34, maximumComponents: 204)!
+                        defer { keys.resetAllStorage() }
+                        return so03Operations(&keys)
+                    }
+                }
+            }
+        }
+    }
+    owner.active = false
+    return result
+}
+private func so03ExecutableChecks() -> UInt32 {
+    var c = SO03Bank<InteractionCandidateRecord<SemanticCompleteIdentity>>()
+    var h0 = SO03Bank<InteractionHitRegion<SemanticCompleteIdentity>>()
+    var r0 = SO03Bank<BoundActionRecord<SemanticCompleteIdentity>>()
+    var r1 = SO03Bank<BoundActionRecord<SemanticCompleteIdentity>>()
+    var h1 = SO03Bank<InteractionHitRegion<SemanticCompleteIdentity>>()
+    // Stable typed reservation borrows precede unique owner construction and
+    // outlive its only closed session and all dependent accesses.
+    return withUnsafeMutablePointer(to: &c) { cp in
+        withUnsafeMutablePointer(to: &h0) { hp0 in
+            withUnsafeMutablePointer(to: &r0) { rp0 in
+                withUnsafeMutablePointer(to: &r1) { rp1 in
+                    withUnsafeMutablePointer(to: &h1) { hp1 in
+                        var owner = SO03PhysicalOwner(c: cp, h0: hp0, r0: rp0, r1: rp1, h1: hp1,
+                            provenance: UInt(bitPattern: cp))
+                        return so03WithSession(owner: &owner)
+                    }
+                }
+            }
+        }
+    }
+}
+
 private typealias SO03Keys = InteractionOwnedKeyState<SO03Candidate, SO03Committed, SO03Hits>
 private typealias SO03State = InteractionState<SO03Candidate, SO03Committed, SO03Hits>
 private typealias SO03OwnedCandidate = StaticSixInteractionCandidateStorage<SemanticCompleteIdentity>
@@ -274,7 +481,7 @@ private func so03RetainedOwnedChecks() -> UInt32 {
     }
 }
 
-private func so03Operations(_ state: inout SO03Keys) -> UInt32 {
+private func so03Operations(_ state: inout SO03SessionKeys) -> UInt32 {
     var observable = SO03Observable(), generations = RuntimeActionGenerationAllocator<SemanticCompleteIdentity>()
     var captures = SO03Captures()
     let limits = InteractionLimits(maximumActions: 2, maximumHitRegions: 2)!
@@ -321,10 +528,9 @@ private func so03ScopedChecks(_ mode: UInt8) -> UInt32 {
     }
     let optional = so03Union(c: SO03Candidate(slots: c.mutableSpan), h0: SO03Hits(slots: h0.mutableSpan),
         r0: SO03Committed(slots: r0.mutableSpan), r1: SO03Committed(slots: r1.mutableSpan), h1: SO03Hits(slots: h1.mutableSpan))
-    var state = optional!
-    let checks = so03Operations(&state)
-    state.resetAllStorage()
-    return checks + so03RetainedOwnedChecks()
+    let state = optional!
+    precondition(state.committedRecordCount == 0)
+    return so03ExecutableChecks() + so03RetainedOwnedChecks()
 }
 
 public func giftuiSO03ScopedStorage() -> UInt32 {

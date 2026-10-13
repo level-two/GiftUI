@@ -65,7 +65,15 @@ not additional authorization to rerun an MVP implementation or reopen experiment
   carries exact residual/source/evidence rows (or explicit empty residual) to I4-07.
   **SO-01 evidence:** [caller/necessity inventory](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so01-inventory.md)
   records P08 applicability and I4-07 residuals; all criteria remain unmet.
-  **Current readiness:** frozen SO-03 source `4c7e8bc2` failed its single native
+  **Current correction allowance:** Eugene explicitly authorized one fixture-only
+  correction, one fresh native rerun and independent Strong review, zero automatic
+  further repairs. [Frozen correction/dispatch](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so03/correction-1/result.md).
+  Only ScopedStorageProbe.swift changes; all27labels/oracles/argv remain unchanged.
+  Correction1written; new allowance0/1consumed; source UNVALIDATED. Commit before
+  single42compiler+1execute maximum; firstfailurestop. Original1/1 and historical
+  counters stay closed. No preliminarycompiler/followuprepair/SO-04+/suite/target/
+  hardware action. Allcriteria/fit/P08/R07/T8.1 and I4-07/P09–P12 remain open.
+  **Historical readiness:** frozen SO-03 source `4c7e8bc2` failed its single native
   invocation at the new scoped fixture exchange: 14 compiler cells, 13 pass /
   1 fail; 27 focused probes/link/execute unreached. Allowance 1/1 consumed,
   0 remaining; automatic repairs 0.

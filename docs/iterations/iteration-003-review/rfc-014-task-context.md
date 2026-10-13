@@ -1,6 +1,15 @@
 # RFC-014 task context guide
 
-Current SO-03 checkpoint — 2026-10-13: source `4c7e8bc2` is frozen after the
+Current SO-03 correction allowance — 2026-10-13: Eugene explicitly authorized
+one fixture-only correction, one fresh native rerun and independent Strong review,
+zero automatic further repairs. [Dispatch/frozen correction](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so03/correction-1/result.md).
+Only ScopedStorageProbe.swift changes; all27labels/oracles/argv remain unchanged.
+Correction1written, native allowance0/1consumed, source UNVALIDATED; commit before
+single42compiler+1execute maximum. No preliminary compiler, follow-up repair,
+SO-04+, repository suite or target/hardware action. Original1/1 and all historical
+counters stay closed; criteria/fit/P08/R07/T8.1 and I4-07/P09–P12 stay open.
+
+Historical SO-03 checkpoint — 2026-10-13: source `4c7e8bc2` is frozen after the
 single native driver failed at the scoped fixture exchange. Actual14compiler
 cells13pass/1fail;27focusedprobes/link/execute were not reached. Allowance1/1
 consumed,0remaining; automaticrepairs0.
