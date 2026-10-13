@@ -145,6 +145,8 @@ implementation/conformance obligations, not prerequisites to this experiment.
 
 ## References
 
+- [Final bounded return control](../../experiments/spike-075-p08-state-feasibility/return-boundary-scope.md):
+  maintainer accepted two native checks, no repairs and no indefinite continuation.
 - [RFC-015](../rfcs/rfc-015-p08-scoped-storage-ownership.md), R1–R4 and B1–B4.
 - [Revision review](../iterations/iteration-003-review/rfc-015-revision-review.md).
 - [Compiler baseline correction](../iterations/iteration-003-review/rfc-014-compiler-baseline-correction.md).
