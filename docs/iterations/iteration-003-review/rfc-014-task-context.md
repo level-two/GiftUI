@@ -1,5 +1,11 @@
 # RFC-014 task context guide
 
+**P08 resumption boundary — 2026-10-13.** Independent Sol 6.1 High review
+confirms the RFC-015 contract/application gates and separate execution allowance
+remain pending. See the [resumption receipt](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/progress.md#resumption-authority-check--2026-10-13)
+for the exact next decision and preserved budgets. No production work resumed;
+the last construction-stack failure and all historical checkpoints remain.
+
 **Current P08 checkpoint — one optimized-IR capture failed, 2026-10-13.**
 Unchangedsource63e717d1; ed985668 prescribed one frozen firmware owner capture.
 [Exact failure](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/remaining-implementation/r07-firmware-recipe/production-attempt/backing-realization/phase-split/ir-capture/result.md) records actualexit-5, emptylogs, no isolatedIR/module

@@ -1,5 +1,53 @@
 # RFC-014 P08 execution receipt — 2026-10-11
 
+## Resumption authority check — 2026-10-13
+
+Input: clean `50f058e6`. The user requested sequential P08 execution, a commit
+per step, preserved repair limits and escalation of contract/scope decisions.
+This is post-MVP ITERATION-003 I3-04/I3-05 finite-counter and stack-validation
+work. SPEC-015 remains implementing, its plan active, and P08/R07/T8.1 open.
+
+The [RFC-015 delivery allocation](../../../../../docs/iterations/iteration-003-review/rfc-015-delivery-allocation.md)
+retains only necessary dependencies and complete safety/fit proof in P08;
+full delivery belongs to ITERATION-004 I4-07. The
+[conditional handoff](../../../../../docs/iterations/iteration-003-review/rfc-015-p08-handoff.md)
+is not ready for production execution: ADR-039 is proposed and the exact
+S11.1–S11.4, S13.1–S13.2 and S15.1–S15.2 amendments are not applied/approved.
+The request to execute P08 does not explicitly accept those contract changes.
+
+Bounded dispatch: P08 authority/boundary review; HC-RD-003 and proposed
+IN-SO/RP-SO/HC-SO criteria; dependencies are the existing reviewed downstream
+packet and maintainer allocation. Allowed output is a read-only finding for
+this receipt; no source, compiler, build, experiment or hardware action.
+Context is the handoff's authority map, execution disposition and final approval
+checklist, the exact amendment packet, ADR-039 and the current failed-capture
+receipt. C3/R3 because ownership authority and closed budgets are consequential;
+Strong = `gpt-6.1-sol`, `high`, separate reviewer `p08_boundary_review`.
+This entry records the dispatch after launch; no implementation ran meanwhile.
+Remaining implementation choice is unresolved physical realization after contract
+approval, not a selected repair. No production attempt or repair is allocated.
+
+The last qualified construction frame remains 58,648 bytes against 27,648;
+prior four-route/link passes do not pass that resource gate. Historical helper
+2/2, B03 1/1, GOT diagnostic, image/backing-image, phase correction/image and IR
+capture 1/1 allowances remain closed. The package's consecutive-unproductive
+guard is neither reset nor newly declared exhausted. No new target evidence exists.
+
+Proposed next decision: explicitly accept ADR-039 and approve/apply the exact
+Spec packet, then update the derived owner/shared plans and perform SO-01
+necessity/caller inventory and SO-02 physical design in order. Those records
+must make the source scope and validation commands concrete before requesting
+the separate bounded production allowance. This proposal grants no allowance
+and changes no contract, criterion disposition or P09–P12 dependency.
+
+Independent Strong result: the reviewer confirms all four missing gates
+(ADR acceptance, exact Spec approval/application, derived plan insertion and
+separate production allowance). Read-only preparation is permitted, but formal
+SO-01 requires approved/applied amendments and SO-02 requires its inventory.
+Recommended documentation-only continuation ends in separate Strong design
+review before presenting exact source/commands/attempt limits for approval.
+No source edits, compiler/build invocations, repairs or new scope were performed.
+
 **Current P08 checkpoint — one optimized-IR capture failed, 2026-10-13.**
 Unchangedsource63e717d1; ed985668 prescribed one frozen firmware owner capture.
 [Exact failure](remaining-implementation/r07-firmware-recipe/production-attempt/backing-realization/phase-split/ir-capture/result.md) records actualexit-5, emptylogs, no isolatedIR/module

@@ -1,5 +1,11 @@
 # RFC-014 bounded implementation sequence — 2026-10-10
 
+**P08 resumption boundary — 2026-10-13.** Independent Sol 6.1 High review
+confirms the RFC-015 contract/application gates and separate execution allowance
+remain pending. See the [resumption receipt](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/progress.md#resumption-authority-check--2026-10-13)
+for the exact next decision and preserved budgets. No production work resumed;
+the last construction-stack failure and all historical checkpoints remain.
+
 **RFC-015 delivery allocation — 2026-10-13.**
 [Full delivery belongs to ITERATION-004 I4-07](rfc-015-delivery-allocation.md).
 P08 retains only necessary dependency changes and their complete safety/fit proof;
