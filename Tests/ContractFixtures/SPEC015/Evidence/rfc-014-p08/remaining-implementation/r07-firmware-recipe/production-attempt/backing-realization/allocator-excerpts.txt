@@ -1,0 +1,27 @@
+   44288:	200c      	movs	r0, #12
+   4428a:	4770      	bx	lr
+
+   268e6:	b51c      	push	{r2, r3, r4, lr}
+   268e8:	460b      	mov	r3, r1
+   268ea:	4604      	mov	r4, r0
+   268ec:	1c51      	adds	r1, r2, #1
+   268ee:	d005      	beq.n	268fc <swift_allocObject+0x1a>
+   268f0:	4291      	cmp	r1, r2
+   268f2:	d610      	bvs.n	26916 <swift_allocObject+0x34>
+   268f4:	2904      	cmp	r1, #4
+   268f6:	bfd8      	it	le
+   268f8:	2104      	movle	r1, #4
+   268fa:	e000      	b.n	268fe <swift_allocObject+0x1c>
+   268fc:	2110      	movs	r1, #16
+   268fe:	2000      	movs	r0, #0
+   26900:	461a      	mov	r2, r3
+   26902:	9001      	str	r0, [sp, #4]
+   26904:	a801      	add	r0, sp, #4
+   26906:	f01d fcbf 	bl	44288 <posix_memalign>
+   2690a:	9801      	ldr	r0, [sp, #4]
+   2690c:	b120      	cbz	r0, 26918 <swift_allocObject+0x36>
+   2690e:	2101      	movs	r1, #1
+   26910:	e9c0 4100 	strd	r4, r1, [r0]
+   26914:	bd1c      	pop	{r2, r3, r4, pc}
+   26916:	defe      	udf	#254	; 0xfe
+   26918:	defe      	udf	#254	; 0xfe

@@ -157,3 +157,21 @@ source38ba440d receipts now all current. Next exact single supported invocation:
 .build/nrf52840/contracts/p08-counter-bpvu3ztk`. It has not yet run. Preserve
 actual exit and final image; inspect actual linked stack/ABI/GOT/allocator and
 RAM/flash, then STOP. No repair follows failed validation.
+
+## Bounded backing validation result — 2026-10-13
+
+Source38ba440d unchanged. All4current routes pass; native passes were preserved,
+not rerun. One supported firmware command, session91357, actualexit0. Linked
+ARMv7E-M/VFP, flash298932/RAM152320, heap0, exact120704-byte caller BSS,20-byte
+GOT inside accounted ROM/no RAM copy/no relocations are preserved in adjacent
+backing-realization. Existing allocation-thunk/refusal-stub qualification stays.
+
+Gross-stack FAIL: selected nested runCounterHost control closure0x17bd0 saves
+32 and subtracts71680+496 =72208bytes, exceeding27648 by44560 alone. Actual
+root/selected-symbol/direct caller attribution and full relevant disassembly
+are preserved. Graph2248 and host3968+alignment improve, but do not establish
+fit. No full peak/IRQ/P11 audit is needed after this decisive local failure.
+Compiler cause unresolved; STOP for separate Strong review. No automatic repair,
+additional build, source/runtime/workload/limit relaxation or hardware action.
+All closed historical guards and current two-consecutive-unproductive rule are
+preserved. Current backing image invocation1/1 consumed; P08 remains open.

@@ -1,6 +1,19 @@
 # RFC-014 bounded implementation sequence — 2026-10-10
 
-**Current P08 checkpoint — backing source committed; native routes PASS; capacity interruption, 2026-10-12.**
+**Current P08 checkpoint — current routes/link PASS; nested gross-stack FAIL, 2026-10-13.**
+Source38ba440d has current nativeStatic/Dynamic1,349,555/1,349,501 zero failures,
+Pi28/28 and nRF26/26 compile routes. [Exact bounded result](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/remaining-implementation/r07-firmware-recipe/production-attempt/backing-realization/result.md) records the
+single supported nRF build actualexit0, ARMv7E-M/VFP, flash298932/RAM152320,
+heap0, caller BSS120704 and20-byte GOT inside ROM/no RAM copy/no relocations.
+Linked roots shrink, but actual selected nested host control closure0x17bd0
+reserves72208local bytes, exceeding unchanged27648 by44560 alone. STOP for
+separate Strong review; no automatic source repair or further build. No full
+P11 peak audit, target execution, hardware or current-source Pi image claim.
+Historical helper2/2+B031/1/diagnostic1/1/earlier image1/1 stay closed; current
+backing image1/1 consumed and two-consecutive-unproductive guard preserved.
+SPEC015 implementing/plan active/T8.1/HC-RD-003/P08 open; P09–P12 pending.
+
+**Historical P08 checkpoint — backing source committed; native routes PASS; capacity interruption, 2026-10-12.**
 Reviewed backing design `19d07b6e` and source `38ba440d` preserve the existing
 counter workload. Current native Static/Dynamic pass 1,349,555/1,349,501 assertions
 with zero failures. [Exact checkpoint](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/remaining-implementation/r07-firmware-recipe/production-attempt/backing-realization/result.md) records the completed evidence and

@@ -1,0 +1,40 @@
+{
+  "build_exit": 0,
+  "source": "38ba440d",
+  "flash_bytes": 298932,
+  "flash_limit": 1048576,
+  "ram_bytes": 152320,
+  "ram_limit": 196608,
+  "caller_backing_bytes": 120704,
+  "caller_backing_address": "0x20000330",
+  "caller_backing_end": "0x2001dab0",
+  "main_stack_bytes": 27648,
+  "isr_stack_bytes": 2048,
+  "heap_pool_bytes": 0,
+  "architecture": "ARMv7E-M",
+  "calling_convention": "VFP registers",
+  "got": {
+    "start": "0x48cec",
+    "end": "0x48d00",
+    "bytes": 20,
+    "little_endian_words": [
+      0,
+      0,
+      0,
+      157991,
+      1029
+    ],
+    "targets": [
+      "12zero header bytes",
+      "swift_setDeallocating Thumb0x26927",
+      "swift_initStackObject Thumb0x405"
+    ],
+    "rom_accounting_end": "0x80000",
+    "flash_vma_equals_lma": true,
+    "first_RAM_copy_load_address": "0x48d00",
+    "RAM_copy_contains_GOT": false,
+    "remaining_relocations": 0
+  },
+  "allocator_qualification": "No malloc/calloc/realloc/aligned_alloc/k_malloc/k_calloc/k_realloc FUNC symbols. Existing Swift allocation thunks remain; posix_memalign stub returns12 and swift_allocObject traps on null. Heap0 is not dynamic all-path allocation proof.",
+  "gross_stack": "FAIL72208local bytes in selected nested host closure; independent review required."
+}

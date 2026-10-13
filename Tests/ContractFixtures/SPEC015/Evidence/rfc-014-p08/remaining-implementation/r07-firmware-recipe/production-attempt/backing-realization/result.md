@@ -1,59 +1,64 @@
-# R07 backing realization checkpoint — 2026-10-13
+# R07 backing realization result — 2026-10-13
 
-P08/R07 remain incomplete. Design step `19d07b6e` and source step `38ba440d`
-implement the bounded caller-owned Embedded backing direction independently
-reviewed in `71c833a9`. This checkpoint preserves completed native validation;
-it is not independent acceptance of the backing implementation or target fit.
+**Supported nRF link PASS; actual nested gross-stack FAIL. STOP for separate
+Strong result review. P08/R07/T8.1/HC-RD-003 remain open.** This is execution
+evidence, not independent acceptance of the implementation or package exit.
+
+Reviewed direction71c833a9, design19d07b6e and source38ba440d implement explicit
+caller backing without changing the workload, capacities, stack/heap limits,
+portable owners, compiler, recipes or runtime. Resume dispatchf376a81c continued
+fromf1c7eccb after the recorded selected-model interruption; no native reruns,
+model substitution, source repair or guard reset occurred.
 
 | Current source route | Result | Evidence |
 | --- | --- | --- |
-| macos-static | exit 0; 1,349,555 assertions, zero failures | [invocation](native-invocation.json), [exit](native-exit.json), [receipt](macos-static/result.json) |
-| macos-dynamic | exit 0; 1,349,501 assertions, zero failures | [invocation](macos-dynamic-invocation.json), [exit](macos-dynamic-exit.json), [receipt](macos-dynamic/result.json) |
-| raspberry-pi-armv6 | exit 0; 28/28 checks; cross-compilation only | [invocation](raspberry-pi-armv6-invocation.json), [exit](raspberry-pi-armv6-exit.json), [receipt](raspberry-pi-armv6/result.json) |
-| nrf52840-embedded | exit 0; 26/26 checks; cross-compilation only | [invocation](nrf52840-embedded-invocation.json), [exit](nrf52840-embedded-exit.json), [receipt](nrf52840-embedded/result.json) |
+| macos-static | exit0;1,349,555 assertions/zero failures;24/24 | [invocation](native-invocation.json), [receipt](macos-static/result.json) |
+| macos-dynamic | exit0;1,349,501 assertions/zero failures;24/24 | [invocation](macos-dynamic-invocation.json), [receipt](macos-dynamic/result.json) |
+| raspberry-pi-armv6 | exit0;28/28;221matching inputs; compilation only | [invocation](raspberry-pi-armv6-invocation.json), [receipt](raspberry-pi-armv6/result.json) |
+| nrf52840-embedded | exit0;26/26;208matching inputs; compilation only | [invocation](nrf52840-embedded-invocation.json), [receipt](nrf52840-embedded/result.json) |
 
-Both native runs use source `38ba440d`; Pi refresh also uses those exact current source bytes. Their commands, logs and receipts are preserved;
-generated objects/executables remain in the recorded `.build/` directories.
-The formatter passed before the source commit. No validation repair occurred.
-Native success does not validate the Embedded-only storage realization.
+Both native194-input receipts still match current source. Pi/nRF refreshed once
+sequentially; commits7dbc69a8 and2baf059e preserve their outcomes. No target was
+executed. Existing Pi linked-image evidence predates38ba440d; this continuation
+makes no new current-source Pi image claim.
 
-The implementation worker hit selected-model capacity after the completed native
-runs; retrying the same Sol 6.1 High worker failed again, and the separate Strong
-worker also returned a capacity error before recovering the handoff. Root copied
-the existing Static logs/receipt and recorded this mechanical checkpoint without
-substituting a model, changing source or claiming independent review. Capacity
-failures are not compiler attempts or repair-count resets.
+The one [supported firmware invocation](firmware-invocation.json) uses fresh
+`.build/nrf52840/contracts/p08-counter-bpvu3ztk` and actually exits0. Final emitted
+ELF/HEX/map/DTS paths, hashes,361object/archive identities, source handoff,
+compiler commands, scripts/config and reports are preserved adjacent. Current
+ELF is `.build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/zephyr.elf`.
 
-## Exact remaining boundary
+[Linked checks](linked-image-summary.json): ARMv7E-M/VFP pass; flash298932 of1048576,
+RAM152320 of196608, configured heap0/mainstack27648/ISR2048. Caller BSS is exactly
+120704bytes at0x20000330–0x2001dab0 (four30176-byte slots). GOT20bytes at
+0x48cec–0x48d00 precede ROM accounting end0x80000; VMA=LMA flash. Twelve zero
+header bytes precede Thumb refs swift_setDeallocating0x26927 and
+swift_initStackObject0x405. Initialized RAM copy begins at LMA0x48d00, after
+GOT; no remaining ELF relocations. No malloc/calloc/realloc/aligned_alloc or
+k_malloc/k_calloc/k_realloc FUNC symbols. Existing Swift allocation thunks
+remain, and posix_memalign returns12; swift_allocObject traps on null. Heap0
+is not dynamic proof that every path avoids allocation.
 
-1. All four current-source route checks now pass. Pi/nRF are cross-compilation
-   evidence only; their targets were not executed.
-2. Use the fresh verified nRF receipt for the supported counter firmware build.
-3. Inspect final ABI/GOT/allocator, total RAM/flash and actual nested entry,
-   graph, host, initialization and corpus stack use against unchanged limits.
-4. Obtain separate Strong result review, then independent P08 package exit review
-   after all required current-source evidence is available.
+[Exact linked stack failure](gross-stack.json), with [full relevant bodies and
+root attribution](linked-host-stack-attribution.txt): main0x21608 calls C entry
+0x44192, which tail-branches to Swift entry0x215c8. That entry calls graph0x211c8
+then host0x19474 sequentially. Graph local frame is2248; host base3968 plus at
+most15bytes dynamic alignment. Final profile initialization is19848bytes;
+these differ from provisional route-object measurements.
 
-Do not rerun the two passing native checks solely because of this handoff.
-The previously linked `e5620a35` image and its 32,344/121,216-byte failing frames
-remain historical evidence; they neither validate nor measure `38ba440d`.
-The backing correction has not yet established target feasibility. No stack,
-heap, capacity, workload, runtime, toolchain or contract change is authorized.
-Historical helper 2/2, B03 1/1, GOT diagnostic 1/1 and earlier supported-image
-1/1 allowances stay closed; continue only the reviewed backing-realization scope.
-No hardware action occurred. SPEC-015 remains implementing, its plan active;
-T8.1/HC-RD-003/P08 remain open, and P09–P12 remain pending.
+The selected host's nested control closure at0x17bd0 is named inside
+CounterEmbeddedProfileStorage.runCounterHost. Its semantic-body caller has
+actual branches at0x17b22/0x17ba6 to that closure. The linked prologue saves
+32bytes and subtracts71680+496: **72208local bytes, exceeding27648 by44560**
+before any caller/descendant/IRQ overlap. This alone establishes no fit. Root
+frames improving does not establish a viable stack. Graph/host sequential
+frames are not summed; no complete P11 peak audit or dynamic watermark is
+claimed. The compiler cause of this remaining large closure is unresolved.
 
-Pi continuation: `.build/raspberry-pi/contracts/p08-counter-o95xgfoa`,
-actual checker exit0. All221current input hashes match. Preserved native receipts
-remain matching; neither was rerun. Platform preflights passed. Source unchanged,
-no repair, target execution, new Pi image or hardware action. nRF subsequently passed26/26 with208matching input hashes at
-`.build/nrf52840/contracts/p08-counter-bpvu3ztk`.
-
-The nRF route initializer emits real construction code (1674-byte symbol); all
-constant typed extent/alignment checks are satisfied. It retains only runtime
-buffer count/alignment guards before construction, not an unconditional layout
-trap. Read-only object inspection records a17592-byte local initializer frame
-(36register bytes +17536+20); this is not final firmware stack evidence or a
-nested-chain pass. Two inspection-tool filters were corrected without any
-compiler rerun. One supported nRF image build remains authorized.
+No further compiler/build variant or source repair followed the failure.
+Historical helper2/2, B031/1, GOT diagnostic1/1 and earlier image1/1 remain
+closed; this backing slice's single supported image invocation is consumed.
+The two-consecutive-unproductive-repair rule is preserved, not reset or
+silently declared exhausted. Separate Strong review must assess the exact
+remaining closure and any smallest contract-supported continuation. SPEC-015
+remains implementing and its plan active; P09–P12 and hardware are untouched.

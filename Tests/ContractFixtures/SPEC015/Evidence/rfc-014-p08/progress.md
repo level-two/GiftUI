@@ -1,6 +1,19 @@
 # RFC-014 P08 execution receipt — 2026-10-11
 
-**Current P08 checkpoint — supported nRF image links; gross-stack FAIL, 2026-10-12.**
+**Current P08 checkpoint — current routes/link PASS; nested gross-stack FAIL, 2026-10-13.**
+Source38ba440d has current nativeStatic/Dynamic1,349,555/1,349,501 zero failures,
+Pi28/28 and nRF26/26 compile routes. [Exact bounded result](remaining-implementation/r07-firmware-recipe/production-attempt/backing-realization/result.md) records the
+single supported nRF build actualexit0, ARMv7E-M/VFP, flash298932/RAM152320,
+heap0, caller BSS120704 and20-byte GOT inside ROM/no RAM copy/no relocations.
+Linked roots shrink, but actual selected nested host control closure0x17bd0
+reserves72208local bytes, exceeding unchanged27648 by44560 alone. STOP for
+separate Strong review; no automatic source repair or further build. No full
+P11 peak audit, target execution, hardware or current-source Pi image claim.
+Historical helper2/2+B031/1/diagnostic1/1/earlier image1/1 stay closed; current
+backing image1/1 consumed and two-consecutive-unproductive guard preserved.
+SPEC015 implementing/plan active/T8.1/HC-RD-003/P08 open; P09–P12 pending.
+
+**Historical P08 checkpoint — supported nRF image links; gross-stack FAIL, 2026-10-12.**
 Reviewed sourcee5620a35 uses existing Zephyr RODATA hook; [single supported build](remaining-implementation/r07-firmware-recipe/production-attempt/result.md)
 passes actual exit0, final ELF/HEX/map/ARMv7EM/VFP/zeroheap/linked RAM31616 and
 flash297604. GOT20bytes lie inside accounted ROM, no RAM copy/remaining relocs.

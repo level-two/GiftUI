@@ -1,0 +1,13 @@
+{
+  "argv": [
+    "scripts/nrf52840/build.sh",
+    "--application",
+    "signal-analyzer-static",
+    "--counter-build",
+    ".build/nrf52840/contracts/p08-counter-bpvu3ztk"
+  ],
+  "source": "38ba440d",
+  "started": "2026-10-13T06:03:51.360774+00:00",
+  "initial_supported_build_count": 1,
+  "repair_after_failure": false
+}

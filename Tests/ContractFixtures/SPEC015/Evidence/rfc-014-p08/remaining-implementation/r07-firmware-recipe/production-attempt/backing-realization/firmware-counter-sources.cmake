@@ -1,0 +1,297 @@
+set(giftui_counter_owners GiftUI GiftUISemanticCore GiftUITextResources GiftUIReferenceTextResources GiftUILayout GiftUIRenderCore GiftUIExecution GiftUIInteraction GiftUIObservableState GiftUIRenderLowering GiftUIDrawing GiftUIRuntimeCore GiftUIRuntimeStatic GiftUICapabilities GiftUIFailureCore GiftUISurfaceCore GiftUIDisplayCore GiftUIRasterCore GiftUIBackendIntegration GiftUIHostConfiguration P08CounterSchema P08CounterPresentation P08CounterTable P08CounterRuntime)
+set(giftui_counter_macro "/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool#GiftUIMacros")
+set(giftui_counter_sources_GiftUI
+    "/Users/eugene/work/GiftUI/Sources/GiftUI/ActionHandler.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUI/BoundedText.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUI/Button.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUI/Canvas.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUI/Color.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUI/DeclarativeView.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUI/Disabled.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUI/DrawingStyles.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUI/DrawingSurface.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUI/GiftUI.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUI/LayoutContainers.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUI/LayoutModifiers.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUI/LayoutValues.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUI/ObservableState.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUI/StyleModifiers.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUI/Text.swift"
+)
+set(giftui_counter_imports_GiftUI )
+set(giftui_counter_sources_GiftUISemanticCore
+    "/Users/eugene/work/GiftUI/Sources/GiftUISemanticCore/GiftUISemanticCore.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUISemanticCore/SemanticRuntimeRecords.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUISemanticCore/SemanticRecordStore.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUISemanticCore/SemanticRecordExpansion.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUISemanticCore/SemanticStandardPayload.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUISemanticCore/SemanticLayoutView.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUISemanticCore/SemanticRenderView.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUISemanticCore/SemanticRecordLayoutView.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUISemanticCore/SemanticRecordRenderView.swift"
+)
+set(giftui_counter_imports_GiftUISemanticCore GiftUI)
+set(giftui_counter_sources_GiftUITextResources
+    "/Users/eugene/work/GiftUI/Sources/GiftUITextResources/GiftUITextResources.swift"
+)
+set(giftui_counter_imports_GiftUITextResources GiftUI)
+set(giftui_counter_sources_GiftUIReferenceTextResources
+    "/Users/eugene/work/GiftUI/Sources/GiftUIReferenceTextResources/GiftUIPiCompactTextResources.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUIReferenceTextResources/GiftUIReferenceTextResources.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUIReferenceTextResources/Generated/ReferenceBitmapPayload.generated.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUIReferenceTextResources/Generated/ReferenceCatalogue.generated.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUIReferenceTextResources/Generated/ReferenceOutlinePayload.generated.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUIReferenceTextResources/PiCompactGenerated/PiCompactBitmapPayload.generated.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUIReferenceTextResources/PiCompactGenerated/PiCompactCatalogue.generated.swift"
+)
+set(giftui_counter_imports_GiftUIReferenceTextResources GiftUI GiftUITextResources)
+set(giftui_counter_sources_GiftUILayout
+    "/Users/eugene/work/GiftUI/Sources/GiftUILayout/Layout.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUILayout/LayoutCounters.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUILayout/LayoutEngine.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUILayout/LayoutError.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUILayout/LayoutGeometry.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUILayout/LayoutPublication.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUILayout/LayoutResultSink.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUILayout/LayoutSemanticValidation.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUILayout/LayoutValues.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUILayout/LayoutWorkspace.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUILayout/ResolvedRenderLayoutView.swift"
+)
+set(giftui_counter_imports_GiftUILayout GiftUI GiftUISemanticCore GiftUITextResources)
+set(giftui_counter_sources_GiftUIRenderCore
+    "/Users/eugene/work/GiftUI/Sources/GiftUIRenderCore/DrawingOperationSink.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUIRenderCore/RenderOperationSink.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUIRenderCore/RenderRecordingSink.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUIRenderCore/RenderValues.swift"
+)
+set(giftui_counter_imports_GiftUIRenderCore GiftUI GiftUITextResources)
+set(giftui_counter_sources_GiftUIExecution
+    "/Users/eugene/work/GiftUI/Sources/GiftUIExecution/AdmissionValues.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUIExecution/ExecutionAdmissionController.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUIExecution/ExecutionAdmissionSealTransaction.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUIExecution/ExecutionAdmissionSealer.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUIExecution/ExecutionMutationBatch.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUIExecution/ExecutionOpportunityRunner.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUIExecution/ExecutionPhaseMachine.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUIExecution/ExecutionValues.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUIExecution/ExecutionWakeAccumulator.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUIExecution/FrameHandoffValues.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUIExecution/FrameOfferNormalization.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUIExecution/IdentityAllocators.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUIExecution/InputSourceSequenceState.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUIExecution/ObservableTargetGeneration.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUIExecution/PointerActionCapture.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUIExecution/RecordingCandidateOfferCoordinator.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUIExecution/RecordingCycleCoordinator.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUIExecution/RecordingCycleFinalizer.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUIExecution/RecordingDerivationRecovery.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUIExecution/RecordingDerivationTransaction.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUIExecution/RecordingFocusedFailureSelection.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUIExecution/RecordingFrameCommitTransaction.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUIExecution/RecordingFrameEndpoint.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUIExecution/RecordingMutationBatch.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUIExecution/RecordingPresentationPendingCoordinator.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUIExecution/RecordingPresentationTerminalRecovery.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUIExecution/RunCycleValues.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUIExecution/WakeValues.swift"
+)
+set(giftui_counter_imports_GiftUIExecution GiftUI GiftUIRenderCore)
+set(giftui_counter_sources_GiftUIInteraction
+    "/Users/eugene/work/GiftUI/Sources/GiftUIInteraction/EffectiveActionEnabledState.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUIInteraction/ExecutionGestureAdapter.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUIInteraction/InteractionFailurePrecedence.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUIInteraction/InteractionOwnedKeyState.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUIInteraction/InteractionState.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUIInteraction/InteractionStorage.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUIInteraction/InteractionValues.swift"
+)
+set(giftui_counter_imports_GiftUIInteraction GiftUI GiftUIExecution GiftUILayout GiftUISemanticCore)
+set(giftui_counter_sources_GiftUIObservableState
+    "/Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableStateValues.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableModelIdentity.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableModelOwnership.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableModelTicket.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableModelScope.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableModelMutation.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableStateModel.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableStateRegistrationLifecycle.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableStateRootScope.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableStateRootTargetAccess.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableStateBindingDecorator.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableSemanticBodyBinding.swift"
+)
+set(giftui_counter_imports_GiftUIObservableState GiftUI GiftUIExecution GiftUISemanticCore)
+set(giftui_counter_sources_GiftUIRenderLowering
+    "/Users/eugene/work/GiftUI/Sources/GiftUIRenderLowering/RenderExtensions.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUIRenderLowering/RenderPreflight.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUIRenderLowering/RenderProducer.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUIRenderLowering/RenderProductionValues.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUIRenderLowering/RenderStreaming.swift"
+)
+set(giftui_counter_imports_GiftUIRenderLowering GiftUI GiftUILayout GiftUIRenderCore GiftUISemanticCore GiftUITextResources)
+set(giftui_counter_sources_GiftUIDrawing
+    "/Users/eugene/work/GiftUI/Sources/GiftUIDrawing/CanvasRenderProducer.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUIDrawing/CanvasInvocationSource.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUIDrawing/CanvasPlanProducer.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUIDrawing/CanvasStagedValues.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUIDrawing/CanvasSemanticPayload.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUIDrawing/DrawingLimits.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUIDrawing/DrawingPlan.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUIDrawing/DrawingValues.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUIDrawing/StaticCanvasCallableTable.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUIDrawing/PathConstruction.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUIDrawing/StrokeSnapshot.swift"
+)
+set(giftui_counter_imports_GiftUIDrawing GiftUI GiftUIExecution GiftUILayout GiftUIRenderCore GiftUIRenderLowering GiftUISemanticCore GiftUITextResources)
+set(giftui_counter_sources_GiftUIRuntimeCore
+    "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeCore/RuntimeRecordInteractionBridge.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeCore/RuntimeRecordCanvasInteractionBridge.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeCore/RuntimeInteractionCandidateResolution.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeCore/ObservableCanvasInvocationSource.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeCore/RuntimeProfileValues.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeCore/RuntimeProfileValidation.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeCore/RuntimeStorageRegistry.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeCore/RuntimeOwnerFailure.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeCore/RuntimeCoordinatorCleanup.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeCore/RuntimeCompletePipeline.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeCore/RuntimeCoordinatorContracts.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeCore/RuntimeProfileStorage.swift"
+)
+set(giftui_counter_imports_GiftUIRuntimeCore GiftUI GiftUIDrawing GiftUIExecution GiftUIInteraction GiftUILayout GiftUIObservableState GiftUIRenderCore GiftUIRenderLowering GiftUISemanticCore)
+set(giftui_counter_sources_GiftUIRuntimeStatic
+    "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeStatic/StaticRuntimeExecutionCoordinator.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeStatic/StaticObservableModelStorage.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeStatic/StaticObservableRootAdapter.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeStatic/StaticObservableRootTargetAccess.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeStatic/StaticCanvasValueStorage.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeStatic/StaticSemanticRecordStorage.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeStatic/StaticInteractionStorage.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeStatic/StaticRecordDrawingWorkspace.swift"
+)
+set(giftui_counter_imports_GiftUIRuntimeStatic GiftUI GiftUIDrawing GiftUIExecution GiftUIInteraction GiftUIObservableState GiftUIRenderCore GiftUIRuntimeCore GiftUISemanticCore)
+set(giftui_counter_sources_GiftUICapabilities
+    "/Users/eugene/work/GiftUI/Sources/GiftUICapabilities/GiftUICapabilities.swift"
+)
+set(giftui_counter_imports_GiftUICapabilities )
+set(giftui_counter_sources_GiftUIFailureCore
+    "/Users/eugene/work/GiftUI/Sources/GiftUIFailureCore/GiftUIFailureCore.swift"
+)
+set(giftui_counter_imports_GiftUIFailureCore )
+set(giftui_counter_sources_GiftUISurfaceCore
+    "/Users/eugene/work/GiftUI/Sources/GiftUISurfaceCore/RasterSurface.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUISurfaceCore/SurfaceValues.swift"
+)
+set(giftui_counter_imports_GiftUISurfaceCore GiftUI GiftUICapabilities GiftUIRenderCore)
+set(giftui_counter_sources_GiftUIDisplayCore
+    "/Users/eugene/work/GiftUI/Sources/GiftUIDisplayCore/DisplayContracts.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUIDisplayCore/SurfaceDisplayContributionAdapter.swift"
+)
+set(giftui_counter_imports_GiftUIDisplayCore GiftUI GiftUICapabilities GiftUIFailureCore GiftUISurfaceCore)
+set(giftui_counter_sources_GiftUIRasterCore
+    "/Users/eugene/work/GiftUI/Sources/GiftUIRasterCore/FullSurfaceRGB565Framebuffer.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUIRasterCore/FullSurfaceRGBA8888Buffer.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUIRasterCore/RGB565TileWorkspace.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUIRasterCore/RasterBackendContributionAdapter.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUIRasterCore/RasterFillCoverage.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUIRasterCore/RasterFrameSink.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUIRasterCore/RasterFrameWork.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUIRasterCore/RasterGlyphCoverage.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUIRasterCore/RasterPayloadLimits.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUIRasterCore/RasterStrokeCoverage.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUIRasterCore/RasterWorkTracker.swift"
+)
+set(giftui_counter_imports_GiftUIRasterCore GiftUI GiftUICapabilities GiftUIRenderCore GiftUISurfaceCore GiftUITextResources)
+set(giftui_counter_sources_GiftUIBackendIntegration
+    "/Users/eugene/work/GiftUI/Sources/GiftUIBackendIntegration/FullSurfacePayloadEmitter.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUIBackendIntegration/OneShotRasterBackendEndpoint.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUIBackendIntegration/OperationMajorRGB565RasterSession.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUIBackendIntegration/OperationMajorTileTraversal.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUIBackendIntegration/RGB565TilePayloadEmitter.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUIBackendIntegration/RasterBackendEndpoint.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUIBackendIntegration/RasterBackendOwnerFailureAdapter.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUIBackendIntegration/RasterBackendStartupValidator.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUIBackendIntegration/RasterFrameWorkAdmission.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUIBackendIntegration/RasterTextResourceValidation.swift"
+)
+set(giftui_counter_imports_GiftUIBackendIntegration GiftUI GiftUICapabilities GiftUIDisplayCore GiftUIExecution GiftUIFailureCore GiftUIRasterCore GiftUIRenderCore GiftUISurfaceCore GiftUITextResources)
+set(giftui_counter_sources_GiftUIHostConfiguration
+    "/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/CheckedMVPHostConfigurationValidator.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostActivationController.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostApplicationOpportunityGate.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostApplicationStartupValidation.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostComponentGraphValidation.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostConfigurationResults.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostConfigurationValues.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostEndpointHealthController.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostEndpointStartupValidation.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostFailureAdapter.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostNormalizedInputGate.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostPresentationRecovery.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostPresetBootstrap.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostResidualFailureRouting.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostResidualPolicyContracts.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostResidualPolicyTableValidation.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostScheduledOpportunityController.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostSequencedFactAdmission.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostWakePacingController.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/SignalAnalyzerDrawingStartupValidation.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/SignalAnalyzerPresetHostInstance.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/SignalAnalyzerWorkloadStartupValidation.swift"
+    "/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/Generated/SignalAnalyzerPresets.generated.swift"
+)
+set(giftui_counter_imports_GiftUIHostConfiguration GiftUI GiftUIBackendIntegration GiftUICapabilities GiftUIDisplayCore GiftUIDrawing GiftUIExecution GiftUIFailureCore GiftUIInteraction GiftUILayout GiftUIObservableState GiftUIRasterCore GiftUIRenderCore GiftUIRenderLowering GiftUIRuntimeCore GiftUISemanticCore GiftUISurfaceCore GiftUITextResources)
+set(giftui_counter_sources_P08CounterSchema
+    "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-counter-bpvu3ztk/CounterSchema.swift"
+)
+set(giftui_counter_imports_P08CounterSchema GiftUI)
+set(giftui_counter_sources_P08CounterPresentation
+    "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-counter-bpvu3ztk/Counter.swift"
+)
+set(giftui_counter_imports_P08CounterPresentation GiftUI P08CounterSchema)
+set(giftui_counter_sources_P08CounterTable
+    "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-counter-bpvu3ztk/CounterTable.swift"
+)
+set(giftui_counter_imports_P08CounterTable GiftUI GiftUIDrawing P08CounterPresentation P08CounterSchema)
+set(giftui_counter_sources_P08CounterRuntime
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterModel.swift"
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterModelProbe.swift"
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemantic.swift"
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemanticProbe.swift"
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterGeometry.swift"
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterStaticGeometry.swift"
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterRender.swift"
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterFixedStorageProbe.swift"
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterDrawingPlanRecords.swift"
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterDrawingPlanStorage.swift"
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterDrawingWorkspace.swift"
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterEmbeddedBacking.swift"
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterInteractionStorage.swift"
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLayoutScopeCodec.swift"
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLayoutTextCodec.swift"
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLayoutWorkspace.swift"
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLivePathStorage.swift"
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterRenderWorkspace.swift"
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterResolvedLayout.swift"
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterAdmission.swift"
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift"
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterProfileStorage.swift"
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterStorageMeasurement.swift"
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterStorageRegions.swift"
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterCoordinatorProbe.swift"
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWorkload.swift"
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostAssembly.swift"
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostOwner.swift"
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostProbe.swift"
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterDynamicHostOwner.swift"
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterDynamicHostProbe.swift"
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostCorpus.swift"
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterNativeRaster.swift"
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterTiledRaster.swift"
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPixelOracle.swift"
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterApplication.swift"
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWakeIntegration.swift"
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterGraphProbe.swift"
+    "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterRouteEntry.swift"
+)
+set(giftui_counter_imports_P08CounterRuntime GiftUI GiftUIBackendIntegration GiftUICapabilities GiftUIDisplayCore GiftUIDrawing GiftUIExecution GiftUIFailureCore GiftUIHostConfiguration GiftUIInteraction GiftUILayout GiftUIObservableState GiftUIRasterCore GiftUIReferenceTextResources GiftUIRenderCore GiftUIRenderLowering GiftUIRuntimeCore GiftUIRuntimeStatic GiftUISemanticCore GiftUISurfaceCore GiftUITextResources P08CounterPresentation P08CounterSchema P08CounterTable)

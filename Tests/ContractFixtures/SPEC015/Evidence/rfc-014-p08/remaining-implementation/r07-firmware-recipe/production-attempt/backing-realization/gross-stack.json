@@ -1,0 +1,49 @@
+{
+  "status": "FAIL",
+  "basis": "Reachable selected host control closure local frame alone exceeds unchanged main stack; no complete peak bound required.",
+  "main_stack_bytes": 27648,
+  "fatal_symbol": "00017bd0 0000126e T closure #1 (Swift.UnsafeMutablePointer<P08CounterRuntime.CounterControl>) -> Swift.Int in closure #1 (__owned P08CounterRuntime.StaticCounterGeometry) -> Swift.Int in closure #1 (GiftUIDrawing.CanvasStagedValues<GiftUISemanticCore.SemanticRecordReference, P08CounterTable.P08CounterSchemaCanvasTable<P08CounterRuntime.CounterDomain>>) -> () in closure #1 (GiftUISemanticCore.SemanticRecordStore<GiftUIDrawing.CanvasSemanticPayload<P08CounterTable.P08CounterSchemaCanvasValues<P08CounterRuntime.CounterDomain>>>) throws(GiftUISemanticCore.SemanticExpansionError) -> () in closure #1 (GiftUIObservableState.ObservableModelScope<P08CounterRuntime.CounterOwnedModel, P08CounterSchema.CounterModelSchema>, GiftUIObservableState.ObservableStateRootScope<P08CounterRuntime.CounterOwnedModel, GiftUISemanticCore.SemanticCompleteIdentity>) throws(GiftUIObservableState.ObservableStateError) -> () in closure #1 (GiftUIObservableState.ObservableModelScope<P08CounterRuntime.CounterOwnedModel, P08CounterSchema.CounterModelSchema>, GiftUIObservableState.ObservableStateRootScope<P08CounterRuntime.CounterOwnedModel, GiftUISemanticCore.SemanticCompleteIdentity>, Swift.UnsafeMutablePointer<P08CounterRuntime.CounterControl>) -> Swift.Int in P08CounterRuntime.CounterEmbeddedProfileStorage.runCounterHost(failAfterRuntime: Swift.Bool) -> Swift.Int",
+  "fatal_address": "0x17bd0",
+  "saved_registers_bytes": 32,
+  "stack_subtractions_bytes": [
+    71680,
+    496
+  ],
+  "fatal_local_frame_bytes": 72208,
+  "excess_bytes": 44560,
+  "other_final_local_frames": {
+    "main": 16,
+    "Swift_entry": 24,
+    "graph": 2248,
+    "host_base_excluding_dynamic_alignment": 3968,
+    "host_dynamic_alignment_extra_at_most": 15,
+    "profile_initializer": 19848
+  },
+  "attribution": {
+    "main_calls_C_entry": "0x21620 -> 0x44192",
+    "C_entry_tail_to_Swift_entry": "0x44192 -> 0x215c8",
+    "Swift_entry_calls_graph_then_host": [
+      "0x215de -> 0x211c8",
+      "0x215ec -> 0x19474"
+    ],
+    "host_calls_runCounterHost": [
+      "0x196f2 -> 0x17118",
+      "0x196fe -> 0x17118",
+      "0x1970c -> 0x17118"
+    ],
+    "runCounterHost_calls_foreign_scope": "0x171c6 -> 0x19194",
+    "foreign_scope_indirect_callback": "0x1938a blx r7; actual host closure forwarders and source attribution preserved",
+    "merged_forwarder_calls_outer_body": "0x40f70 -> 0x171e4",
+    "nested_semantic_body_calls_fatal_closure": [
+      "0x17b22 -> 0x17bd0",
+      "0x17ba6 -> 0x17bd0"
+    ]
+  },
+  "source_attribution": "One shared CounterHostProbe.runCounterHost body; root/semantic/Canvas/geometry/control scopes and complete activation/corpus/teardown retained. Symbols name nested closure inside CounterEmbeddedProfileStorage.runCounterHost.",
+  "qualifications": [
+    "No target execution or dynamic stack watermark.",
+    "Graph and host are sequential; their frames are not summed.",
+    "No full P11 peak/IRQ investigation after decisive local frame failure.",
+    "Compiler cause of remaining large nested closure not established; independent review next."
+  ]
+}
