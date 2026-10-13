@@ -1,5 +1,14 @@
 # One optimized-IR capture failure — 2026-10-13
 
+[Independent capture/package review](independent-review.md) atff2d5d3a
+verifies the three argument differences and accepts the finite failed-capture
+record. No lowering/construction design or new source/compiler allowance is
+supported. Existing P08 authority permits a precise ownership-preserving design
+proposal; broader compiler investigation or actual scope/contract changes need
+their own explicit disposition. Capture1/1 remains closed, package repair guard
+is neither exhausted nor reset, and P08/R07 stop incomplete at the proven58648
+stack failure. No compiler/source/variant ran in that review.
+
 **STOP: authorized capture1/1 consumed; compiler actualexit-5, emptystdout/stderr.**
 Dispatchd2200978 undered985668; unchangedsource63e717d1. No retry, source edit,
 build/link, alternative output/optimization recipe, target action or compiler
