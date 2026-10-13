@@ -6,7 +6,7 @@ status: active
 owners:
   - codex
 created: 2026-09-09
-updated: 2026-10-11
+updated: 2026-10-13
 related_design_notes:
   - ../implementation-designs/spec-013-common-coordinator-and-cleanup.md
   - ../implementation-designs/spec-013-storage-audit-and-overlay-ownership.md
@@ -25,10 +25,12 @@ superseded_by: null
 
 # SPEC-013 Implementation Plan
 
-The [RFC-015 downstream package](../iterations/iteration-003-review/rfc-015-p08-handoff.md)
-proposes ownership/accounting amendments and conditional P08 work. This is navigation
-only: ADR/Spec approval and application remain pending; current task dispositions
-and validation budgets are unchanged.
+The [RFC-015 handoff](../iterations/iteration-003-review/rfc-015-p08-handoff.md)
+is adopted under [explicit acceptance/application](../iterations/iteration-003-review/rfc-015-contract-acceptance.md).
+ADR-039 and the exact owner amendments are authoritative. Full delivery belongs
+to ITERATION-004 I4-07; P08 includes only necessary dependencies and complete
+applicable safety/fit evidence. All new criteria remain unmet; existing tasks,
+active status and closed validation budgets are preserved.
 
 ## Current consuming-owner resumption — 2026-10-11
 
@@ -48,6 +50,27 @@ Earlier tasks and readiness/closure statements remain historical baseline eviden
 not additional authorization to rerun an MVP implementation or reopen experiments.
 
 ### Current owner checkpoint
+
+#### RFC-015 P08 ownership work — 2026-10-13
+
+**Contribution to `T11.1`** — Contribute SO-01/02/04/05/06/07/08 under the [ordered shared sequence](../iterations/iteration-003-review/rfc-014-implementation-plan.md#rfc-015-ordered-p08-ownership-tasks--2026-10-13) and [handoff](../iterations/iteration-003-review/rfc-015-p08-handoff.md).
+  **Dependencies:** approved/applied owner contract, then SO-01 necessity/caller
+  inventory → SO-02 physical design and independent Strong review → SO-03–09 in
+  order. The handoff's owner/module footprints, pre-code design checklist and
+  criterion evidence are part of this task; no independent parallel sequence.
+  **Boundary:** SO-01 classifies each change/subcase as P08-required or I4-07
+  residual. Every obligation needed by an adopted P08 path stays in P08 even if
+  expensive or failing; full criteria cannot close from partial coverage. SO-09
+  carries exact residual/source/evidence rows (or explicit empty residual) to I4-07.
+  **Readiness:** sequential SO-01/SO-02 preparation is authorized. Source,
+  compiler/build/repair work awaits the separately recorded bounded allowance;
+  all closed budgets and stop guards remain. No design-note metadata link is
+  added before the SO-02 note exists. Existing T11.1, P08/R07/T8.1 and P10–P12
+  duties remain open; no resource/timing/hardware exception is inferred.
+  **Evidence:** one shared [P08 receipt](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/progress.md),
+  actual caller/physical ledgers, exact compiler/source/input identities, unchanged
+  control oracles, four profiles and independent Strong P08 exit review. SO-07
+  uses the handoff's owner drivers; SO-08 uses existing target skills and routes.
 
 P07 construction/lifecycle and R1/R2 repairs are committed through `ad671ea6`,
 under the [explicit resumption](../../Tests/ContractFixtures/SPEC013/Evidence/rfc-014-p07/consuming-owner-resumption.md).
@@ -299,6 +322,9 @@ exactly once below.
 | `RP-RD-002` | `T11.1` | P07 exit fixtures; P10 differential/negative tests; P11 actual resource/connected disposition; P12 owner report | P07 [package exit review](../../Tests/ContractFixtures/SPEC013/Evidence/rfc-014-p07/independent-repair-exit-review.md) passes; R1/R2 resolved; P10–P12 obligations open |
 | `RP-RD-003` | `T11.1` | P07 exit fixtures; P10 differential/negative tests; P11 actual resource/connected disposition; P12 owner report | P07 [package exit review](../../Tests/ContractFixtures/SPEC013/Evidence/rfc-014-p07/independent-repair-exit-review.md) passes; R1/R2 resolved; P10–P12 obligations open |
 | `RP-RD-004` | `T11.1` | P07 exit fixtures; P10 differential/negative tests; P11 actual resource/connected disposition; P12 owner report | P07 [package exit review](../../Tests/ContractFixtures/SPEC013/Evidence/rfc-014-p07/independent-repair-exit-review.md) passes; R1/R2 resolved; P10–P12 obligations open |
+| `RP-SO-001` | `T11.1`; SO-02/04/06; SO-09 disposition | Typed physical/address inventory, full retained accounting, initialization-prefix fault unwind and capacity tests; P10–P12 final obligations and I4-07 residual reconciliation | unmet; P08 applicability pending SO-01; full criterion open |
+| `RP-SO-002` | `T11.1`; SO-02/05/06; SO-09 disposition | Both-profile early-return/activation/candidate/quiescence/repeat-session cleanup, Optional moves and classified exclusivity pairs; P10–P12 final obligations and I4-07 residual reconciliation | unmet; P08 applicability pending SO-01; full criterion open |
+| `RP-SO-003` | `T11.1`; SO-05/07/08; SO-09 disposition | Complete four-profile carriers; linked ABI, nested-stack/IRQ/RAM/flash, Static zero heap and matched Dynamic costs; P10–P12 final obligations and I4-07 residual reconciliation | unmet; P08 applicability pending SO-01; full criterion open |
 
 ## Milestones and Tasks
 

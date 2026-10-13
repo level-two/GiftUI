@@ -1,24 +1,72 @@
 # RFC-014 bounded implementation sequence — 2026-10-10
 
-**P08 resumption boundary — 2026-10-13.** Independent Sol 6.1 High review
-confirms the RFC-015 contract/application gates and separate execution allowance
-remain pending. See the [resumption receipt](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/progress.md#resumption-authority-check--2026-10-13)
-for the exact next decision and preserved budgets. No production work resumed;
-the last construction-stack failure and all historical checkpoints remain.
+**Current P08 contract checkpoint — 2026-10-13.**
+[Explicit acceptance/application](rfc-015-contract-acceptance.md) accepts ADR-039,
+applies exact S11/S13/S15 and adopts the [P08 handoff](rfc-015-p08-handoff.md).
+SO-01 inventory then SO-02 physical design are authorized preparation; production
+validation/repair allowance remains separate and absent. The [dispatch receipt](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/progress.md#approved-contract-application-dispatch--2026-10-13)
+records the boundary before edits. Specs stay implementing, plans active; all
+nine SO criteria, HC-RD-003 and P08/R07/T8.1 remain open. Historical budgets,
+stop guards, source-specific passes and the 58,648/27,648 stack failure remain.
 
-**RFC-015 delivery allocation — 2026-10-13.**
-[Full delivery belongs to ITERATION-004 I4-07](rfc-015-delivery-allocation.md).
-P08 retains only necessary dependency changes and their complete safety/fit proof;
-SO-01 must justify each included change and list residual work for I4-07.
-Existing P08 exit requirements and closed budgets remain unchanged.
+## RFC-015 ordered P08 ownership tasks — 2026-10-13
 
-**RFC-015 downstream package — 2026-10-13 (navigation only).** RFC-015 is
-approved; [the conditional P08 handoff](rfc-015-p08-handoff.md) contains proposed
-ADR-039, exact SPEC-011/013/015 amendments and ordered ownership work. Their
-acceptance/application gates remain pending. No active task, failed result or
-closed execution allowance below changes through this link.
+This is an insertion within P08/R07, preserving P01–P12 and every historical
+checkpoint. The [delivery allocation](rfc-015-delivery-allocation.md) assigns full
+RFC delivery to ITERATION-004 I4-07. SO-01 classifies each change/criterion subcase
+by actual P08 dependency or failing gate; every adopted-path safety/fit obligation
+stays in P08. No optional uniform analyzer migration is added. SO-09 transfers
+exact residual rows, source identities and reusable evidence, even an explicit
+empty residual list; partial coverage never closes a full criterion.
 
-**Current P08 checkpoint — one optimized-IR capture failed, 2026-10-13.**
+Each task consumes the preceding task's recorded result, preserving exact source and
+contract identities. A failed check freezes the receipt and invokes the existing
+escalation/stop guard; no unchecked workaround or unbounded repair loop is planned.
+Validation tasks additionally require the separate allowance under Execution disposition.
+
+| Task / dependencies | Owner, allowed modules/files and work | Required evidence / criteria |
+| --- | --- | --- |
+| **SO-01 Contract, necessity and caller inventory**; approved/applied amendments | All three owners: inventory six protocols, both states, every direct/transitive/generated/test consumer and actual Static/Dynamic counter route. Confirm operation-only bridge dispatch and owned analyzer/dispatcher/workspace dispositions; preserve old route/oracles. | One caller-to-disposition table with actual symbols, per-change P08 necessity and explicit I4-07 residual, no hidden retained scoped consumer; trace old/new criterion IDs and compiler/feature identities. IN-SO-003; HC-SO-003; B3/B4. |
+| **SO-02 Physical design note before source edits**; SO-01 | SPEC-013/015: prepare docs/implementation-designs/spec-015-p08-scoped-storage-ownership.md using checklist below. Review actual StaticCounterEmbeddedBacking.swift, CounterGeometry.swift, CounterStaticGeometry.swift, CounterStorageMeasurement.swift, CounterHostAssembly.swift and Static/Dynamic host/pipeline initialization and teardown. | Concrete reviewed physical/cleanup plan, no guessed fit; named old/new binding/init/deinit/audit sites and all return paths. RP-SO-001/002; HC-SO-002; B2. |
+| **SO-03 Interaction and operation consumers**; SO-02 | SPEC-011: InteractionStorage/Values/State/OwnedKeyState/ExecutionGestureAdapter; RuntimeCore RecordInteraction/Canvas bridges, CandidateTransaction/Coordinator/Resolution/Dispatcher. Apply exactly six headers, full state constraints/unions, conditional conformances, owned measurement and selected consumer bounds. Owned Static/StaticSix/Dynamic aliases and analyzer consumers remain owned. | Focused owned/scoped state and failable Optional positive/negative pairs, same-state-machine compatibility and caller inventory update; no seventh protocol. IN-SO-001/003; B1/B3. |
+| **SO-04 Typed physical owner and exclusive factory**; SO-03 | SPEC-013/015: finite RuntimeDerived storage assembly/backing and geometry files identified by SO-02. Replace old Optional slot as one migration; typed final-region initialization, prefix inventory, common session/provenance, pair capacity validation and owned measurement. | Fault-at-each-initialization-address and pair-capacity tests; physical ledger including unequal sufficient extents; no old live overlay. RP-SO-001; IN-SO-002/003; HC-SO-002; B2. |
+| **SO-05 Complete carriers and retirement**; SO-04 | SPEC-013/015: CounterHostOwner/CounterDynamicHostOwner/CounterPipelineOwner/CounterDynamicHostProbe/CounterStorageMeasurement and actual Dynamic pipeline/supplied symbols from SO-01; Static/DynamicRuntimeExecutionCoordinator only for required preserved constraints. Consume capabilities through host, Optional quiesced extraction and scoped retirement; confine owned returnWorkspaces extension. Install body cleanup before activation. | Direct and generic positive/negative carriers including every bank, geometry, model/root/semantic/value/control and activation span independently; inert/failure/active transitions. IN-SO-001; RP-SO-002/003; HC-SO-001/002; B1/B2. |
+| **SO-06 Transaction and lifecycle corpus**; SO-05 | All three owners: directly corresponding Interaction/runtime/SPEC015 unit and contract fixtures, existing control/oracle helpers. Exercise role/count swaps, refusal, capacity/identity/generation boundaries, semantic reuse, early returns and repeated sessions. | Address/count/role/destruction transcripts; both profiles agree; all physical lifecycle paths and old action/semantic/pixel controls preserved. IN-SO-002/003; RP-SO-001/002; HC-SO-002; B2/B3. |
+| **SO-07 Pinned four-profile boundary validation**; SO-06 | Owner drivers scripts/contracts/run-spec-011.sh, run-spec-013.sh and run-spec-015.sh, registered finite counter routes and directly related negative generators. Use approved project-local Swift 6.4 and feature flags; format maintained Swift before repository gate. Run authorized focused matrix then required registered gates once at the frozen source. | macOS Dynamic/Static, Pi ARMv6 Dynamic and nRF Embedded Static receipts, positive twin of each negative, exact failure cause and static/runtime-exclusivity classification, source/compiler/input hashes. IN-SO-001/003; RP-SO-003; HC-SO-001/003; B1/B3. |
+| **SO-08 R07 early images and complete construction-stack check**; SO-07 | SPEC-013/015: existing Raspberry Pi and nRF build routes/recipes only, through their toolchain/build skills. Link current finite-counter early artifacts; inspect ABI, allocation reachability, linked sections and actual enclosing construction plus nested helper stack/feasible IRQ overlap. | Current ELF/map and immutable ledger, Static zero heap and matched Dynamic costs, unchanged target ceilings including 27,648 main stack; no source-size or link-only fit claim. RP-SO-003; HC-SO-003; HC-RD-003; B2/B3. |
+| **SO-09 Independent P08 exit**; SO-08 | All owners: freeze criterion matrix, caller/physical ledgers, command/results and open gates in P08 receipt; separate read-only Strong review. | Accept only complete applicable P08/B1–B3 evidence; transfer remaining full-scope rows to I4-07 without marking them met; maintain open P10–P12 obligations and actual timing/hardware dispositions. P08/R07/T8.1 remain open on any missing/failing evidence. HC-SO-003 and P08-applicable coverage of all nine SO criteria; B4. |
+
+SO-07's protocol-owner evidence is bounded to changed contracts and compatibility;
+it does not reopen baseline implementation or claim full analyzer migration. P09–P12
+remain the existing separate sequential packages, not work authorized by this handoff.
+
+The [pre-code physical design-note checklist](rfc-015-p08-handoff.md#pre-code-physical-design-note-checklist)
+and [execution disposition and preserved budgets](rfc-015-p08-handoff.md#execution-disposition-and-preserved-budgets)
+are adopted as the design/review and execution constraints. SO-02 must cover every
+checklist item and receive separate Strong review before source work. Add its
+owner-plan metadata link only once the note exists. SO-03–09 require ordered
+prerequisites and a separate recorded source/command/profile/attempt/repair allowance;
+none is allocated here. Strong ownership/lifetime/resource routing and independent
+Strong P08 exit remain as specified below, without a new model selection.
+
+| Criteria | Owner/checkpoint | Ordered task/evidence mapping | Disposition |
+| --- | --- | --- | --- |
+| IN-SO-001 | SPEC-011 T12.1 | SO-03/05/07, declarations/state unions/owned Optional and copy/escape pairs | unmet |
+| IN-SO-002 | SPEC-011 T12.1 | SO-04/06, pair/exchange/capacity and existing transactional controls | unmet |
+| IN-SO-003 | SPEC-011 T12.1 | SO-01/03/04/06/07, caller/owned compatibility/client negatives/measurement | unmet |
+| RP-SO-001 | SPEC-013 T11.1 | SO-02/04/06, physical inventory/prefix unwind/capacities | unmet |
+| RP-SO-002 | SPEC-013 T11.1 | SO-02/05/06, cleanup/repeat-session/Optional/exclusivity | unmet |
+| RP-SO-003 | SPEC-013 T11.1 | SO-05/07/08, four carriers/linked ABI/complete stack/resources | unmet |
+| HC-SO-001 | SPEC-015 T8.1 | SO-05/07, complete carrier chain/independent negative matrix | unmet |
+| HC-SO-002 | SPEC-015 T8.1 | SO-02/04/05/06, binding/control/audit/destruction/cleanup and old controls | unmet |
+| HC-SO-003 | SPEC-015 T8.1 | SO-01/07/08/09, actual routes/images/resource inventory/independent exit | unmet |
+
+SO-09 reconciles P08-applicable portions of all nine rows and the unchanged
+four-counter-route/R07 early-image/gross-resource/T8.1 gates. Final P10–P12 and
+hardware/timing dispositions remain separate; P09 cannot start from document
+readiness or partial SO evidence.
+
+**Historical P08 checkpoint — one optimized-IR capture failed, 2026-10-13.**
 Unchangedsource63e717d1; ed985668 prescribed one frozen firmware owner capture.
 [Exact failure](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/remaining-implementation/r07-firmware-recipe/production-attempt/backing-realization/phase-split/ir-capture/result.md) records actualexit-5, emptylogs, no isolatedIR/module
 output and482matching frozeninputs; only3outputaction/path argv substitutions.

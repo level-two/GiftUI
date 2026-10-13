@@ -42,11 +42,12 @@ Full delivery is scheduled in ITERATION-004 I4-07 by the
 P08 retains only necessary changes and their complete safety/resource evidence.
 This scheduling amendment preserves the selected architecture and downstream gates.
 
-Downstream extraction: [proposed ADR-039](../adrs/adr-039-scoped-storage-ownership.md),
-[exact Spec amendments](../iterations/iteration-003-review/rfc-015-spec-amendments.md)
-and [conditional P08 handoff](../iterations/iteration-003-review/rfc-015-p08-handoff.md).
-These await their separate acceptance/approval gates; RFC approval does not reopen
-closed implementation or validation budgets.
+Downstream extraction: [accepted ADR-039](../adrs/adr-039-scoped-storage-ownership.md),
+[approved/applied exact Spec amendments](../iterations/iteration-003-review/rfc-015-spec-amendments.md)
+and [adopted P08 handoff](../iterations/iteration-003-review/rfc-015-p08-handoff.md).
+[Explicit acceptance/application](../iterations/iteration-003-review/rfc-015-contract-acceptance.md)
+permits sequential SO-01/SO-02 preparation; production execution still needs a
+separate bounded allowance. Closed implementation and validation budgets remain.
 
 **Approved architectural direction on 2026-10-13; downstream contracts and
 implementation acceptance remain separate gates.** The
@@ -1203,9 +1204,11 @@ chain. Preserve ADR-035's complete key ownership, ADR-036's stable backing/model
 pins and ADR-038's construction/operation distinction. A conflict requires explicit
 reviewed supersession rather than silent reinterpretation.
 
-Exact proposed downstream impact, **not applied**:
+Downstream impact **accepted and applied on 2026-10-13** under the
+[acceptance record](../iterations/iteration-003-review/rfc-015-contract-acceptance.md);
+implementation and evidence remain open:
 
-| Artifact | Proposed change | Existing obligation retained |
+| Artifact | Adopted change | Existing obligation retained |
 | --- | --- | --- |
 | SPEC-011 Types/APIs and lifecycle | Explicit scoped/noncopyable Self on three storage and three operation protocols; scoped state/owned-key carrier constraints, restricted construction/access, exact role exchange | Complete independently owned keys, accepted-offer commit, refusal/discard, exact identities/generations and bounded infallible resolution |
 | SPEC-013 storage / coordinator contracts | Carrier constraints through actual Static/Dynamic coordinator and retirement uses; typed physical-owner accounting, capacity invariants and assigned session cleanup | Equal bounds/outcomes, zero-heap Static, phase/pin/publication order and complete resource ledger |

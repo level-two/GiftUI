@@ -65,10 +65,14 @@ missing or failed evidence stays unmet unless explicitly excepted by the maintai
 
 ## Records
 
+ADR-039 and the exact Spec packet were subsequently accepted/approved/applied
+on 2026-10-13; see [acceptance provenance](rfc-015-contract-acceptance.md).
+The allocation above is unchanged; production allowance remains separate.
+
 - [ITERATION-004 revision 4](../iteration-004-backend-and-application-integration.md)
 - [Approved RFC-015](../../rfcs/rfc-015-p08-scoped-storage-ownership.md)
-- [Proposed Spec packet](rfc-015-spec-amendments.md)
-- [Conditional P08 handoff](rfc-015-p08-handoff.md)
+- [Approved/applied Spec packet](rfc-015-spec-amendments.md)
+- [Adopted P08 handoff](rfc-015-p08-handoff.md)
 
 The earlier downstream review at `3640bb5e` covers its original package; this
 allocation supersedes that package's blanket assignment of full RFC completion

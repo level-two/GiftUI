@@ -1,10 +1,11 @@
-# RFC-015 conditional P08 implementation handoff — 2026-10-13
+# RFC-015 P08 implementation handoff — 2026-10-13
 
-**Conditional derived plan amendment; not ready for production execution.**
-Approved RFC-015 at `ec29db3c` enables proposed ADR-039 and the
-[exact S11/S13/S15 amendment packet](rfc-015-spec-amendments.md).
-Acceptance/approval/application of those texts remains pending. This document
-changes no active owner-plan task and runs no compiler or experiment.
+**Derived plan amendment applied; production execution allowance pending.**
+ADR-039 is accepted and the [exact S11/S13/S15 amendment packet](rfc-015-spec-amendments.md)
+is approved and applied under [explicit acceptance](rfc-015-contract-acceptance.md).
+The shared and three owner plans now adopt this ordered mapping. SO-01 inventory
+and SO-02 physical design may proceed sequentially; no compiler or experiment
+follows from document readiness.
 
 [Independent Strong review](rfc-015-downstream-review.md) at `3640bb5e`: the
 original contract package was ready for human approval consideration, with no
@@ -22,12 +23,12 @@ in P08. Existing P08/R07/T8.1 exit requirements remain unchanged.
 
 ## Authority, owners and insertion map
 
-After explicit acceptance and Spec approval/application, insert the P08-required
-portion of the ordered SO sequence below after the shared RFC-014 plan's current P08 checkpoint, retaining
-all historical checkpoints. Add criterion/task rows under current owner checkpoints
-and Acceptance-Criterion Matrix in SPEC-011, SPEC-013 and SPEC-015 owner plans.
-Do not mark their existing tasks complete. Link the physical design note in each
-owner plan's related_design_notes only when that note exists.
+The P08-required portion of the ordered SO sequence below is inserted at the
+shared RFC-014 plan's current P08 checkpoint, retaining all historical checkpoints.
+Criterion/task rows are added under current owner checkpoints and the acceptance
+matrices in SPEC-011, SPEC-013 and SPEC-015 owner plans. Existing tasks remain
+open. Link the physical design note in each owner plan's related_design_notes
+only when that note exists; SO-02 has not yet produced it.
 
 | Owner plan / current task | New criteria and SO work | Existing obligations retained |
 | --- | --- | --- |
@@ -127,13 +128,17 @@ deploy/restart, hardware flash or connected validation belongs to SO-01–09.
 
 ## Final human approval checklist and readiness effect
 
-- [ ] Explicitly accept the concrete ADR-039 text in this package, after review;
+The first three entries are completed by the [2026-10-13 acceptance/application](rfc-015-contract-acceptance.md).
+SO-01/SO-02 preparation is authorized; the fourth entry remains an explicit
+separate production allowance. No criterion evidence is claimed by these checks.
+
+- [x] Explicitly accept the concrete ADR-039 text in this package, after review;
   record acceptance provenance, then update its status/manifest/cross-links.
-- [ ] With ADR-039 accepted, explicitly approve packet **S11.1–S11.4** for SPEC-011,
+- [x] With ADR-039 accepted, explicitly approve packet **S11.1–S11.4** for SPEC-011,
   **S13.1–S13.2** for SPEC-013 and **S15.1–S15.2** for SPEC-015, including all nine
   IN-SO/RP-SO/HC-SO criteria and the source/application instructions; apply that text
   and record exact approval provenance without closing implementing criteria.
-- [ ] Apply the P08-required portion of this insertion map/SO-01–09/checklist to
+- [x] Apply the P08-required portion of this insertion map/SO-01–09/checklist to
   shared P08 and the three owner plans; assign residual full-scope work to I4-07 and verify complete
   criterion mapping and dependencies. Plans may
   then be ready for the adopted contract, with execution disposition still explicit.

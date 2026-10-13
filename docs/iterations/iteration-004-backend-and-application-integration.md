@@ -49,7 +49,7 @@ semantic and runtime-derivation results established in iteration 3.
 | I4-04 — Compatibility and author documentation | Approved transfer/renewal of IT-AC-004/005 | Preserve runtime derivation and iteration-3 efficiency; reproducible quick start, adapter and migration guides | Final owner conformance, measured paired artifacts and separate criterion dispositions |
 | I4-05 — Swift compiler compatibility assessment | Maintainer request 2026-10-11; FW-036; RFC-014 P07 compiler failure | Evaluate a newer compiler and recommend upgrade or retain with reproducible compatibility, cost and risk evidence | Assessment only; approve compiler contract/pin changes separately before adoption |
 | I4-06 — Core-wide storage ownership assessment | Maintainer request 2026-10-13; FW-037; focused RFC-015 findings | Evaluate physical ownership, transaction ownership, scoped access and ownership/responsibility transfer using the [FW-037 assessment model](../future-work/fw-037-core-wide-storage-ownership-generalization.md#ownership-and-transfer-model-to-assess) across frontend/backend/platform boundaries, including a PC simulator; recommend which boundaries to generalize and which to keep local | Exploration/evidence and disposition; reuse EXP-002 where appropriate, then normal Proposal/RFC/ADR/Spec gates before adopting a Core-wide contract |
-| I4-07 — Complete RFC-015 scoped-storage delivery | Maintainer request 2026-10-13; approved RFC-015; proposed ADR-039 and SPEC-011/013/015 packet | Complete the full selected RFC scope, reusing the minimum P08 implementation/evidence and delivering the remaining contracts, implementation, compatibility, conformance and documentation | Follow the [delivery allocation](iteration-003-review/rfc-015-delivery-allocation.md); accept ADR and approve Spec amendments before implementation; separate bounded execution authority; no Core-wide generalization |
+| I4-07 — Complete RFC-015 scoped-storage delivery | Maintainer request 2026-10-13; approved RFC-015; accepted ADR-039 and approved/applied SPEC-011/013/015 packet | Complete the full selected RFC scope, reusing the minimum P08 implementation/evidence and delivering the remaining contracts, implementation, compatibility, conformance and documentation | Follow the [delivery allocation](iteration-003-review/rfc-015-delivery-allocation.md); accept ADR and approve Spec amendments before implementation; separate bounded execution authority; no Core-wide generalization |
 
 Use the same bounded counter/status application, changing text, typed actions,
 disabled Button and small Canvas variant as iteration 3. It must now be a real
@@ -72,7 +72,7 @@ application. Runtime graph derivation remains mandatory for both applications.
    evidence explicitly. Feed the disposition into the package/access review.
    Obtain architecture and affected Specification approvals.
    For I4-07, reconcile the P08 residual matrix against every RFC-015 B1–B4
-   obligation and all nine proposed ownership criteria. Complete remaining work
+   obligation and all nine adopted ownership criteria. Complete remaining work
    through the approved owner plans before dependent integration; reuse qualified
    P08 evidence and refresh only changed paths. I4-06 assessment is not a prerequisite
    to realizing RFC-015's already selected finite ownership contract.
@@ -129,7 +129,8 @@ ABI checks, and obtain explicit authorization for required connected operations.
   failures; do not reset SPIKE-067's exhausted allowance or adopt its code by
   moving files. New architecture/contracts remain separate human gates.
 - I4-06 may inventory boundaries before P08 closes. RFC-015 is approved, but
-  ADR-039 and Spec amendments remain pending. I4-07 owns full RFC delivery;
+  ADR-039 and exact Spec amendments are accepted/approved/applied under the
+  [2026-10-13 acceptance](iteration-003-review/rfc-015-contract-acceptance.md). I4-07 owns full RFC delivery;
   P08 retains every obligation required by its adopted paths under the delivery
   allocation. Neither item moves a P08 safety or fit blocker into optional work.
   For I4-06 assessment, missing P08 or second-consumer evidence permits an explicit defer disposition;

@@ -1,12 +1,19 @@
 # RFC-014 task context guide
 
-**P08 resumption boundary — 2026-10-13.** Independent Sol 6.1 High review
-confirms the RFC-015 contract/application gates and separate execution allowance
-remain pending. See the [resumption receipt](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/progress.md#resumption-authority-check--2026-10-13)
-for the exact next decision and preserved budgets. No production work resumed;
-the last construction-stack failure and all historical checkpoints remain.
+**Current P08 contract checkpoint — 2026-10-13.**
+[Acceptance/application](rfc-015-contract-acceptance.md) records Eugene's exact
+instruction, accepted ADR-039 and verbatim live S11/S13/S15 amendments. The
+[ordered SO-01–09 insertion](rfc-014-implementation-plan.md#rfc-015-ordered-p08-ownership-tasks--2026-10-13)
+and three owner plans now map all nine SO criteria; none is met. Next: record
+SO-01 dispatch and caller/necessity/residual inventory, then SO-02 physical design
+and separate Strong review. Consume the [handoff's exact footprints/checklist](rfc-015-p08-handoff.md)
+and [P08 receipt](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/progress.md#approved-contract-application-dispatch--2026-10-13).
+Full scope stays I4-07; all adopted-path safety/fit evidence stays P08. No source,
+compiler/build/repair allowance is inferred; SO-03–09 wait for that separate
+recorded boundary. Existing closed budgets/guards, implementing Specs, active
+plans, unmet stack/HC-RD-003/P08/R07/T8.1 and P09–P12/hardware duties remain.
 
-**Current P08 checkpoint — one optimized-IR capture failed, 2026-10-13.**
+**Historical P08 checkpoint — one optimized-IR capture failed, 2026-10-13.**
 Unchangedsource63e717d1; ed985668 prescribed one frozen firmware owner capture.
 [Exact failure](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/remaining-implementation/r07-firmware-recipe/production-attempt/backing-realization/phase-split/ir-capture/result.md) records actualexit-5, emptylogs, no isolatedIR/module
 output and482matching frozeninputs; only3outputaction/path argv substitutions.
@@ -381,7 +388,7 @@ regression and four-configuration obligations remain in the owner matrices.
 | P05 | [SPEC-007 amendment](../../specs/spec-007-layout.md#rfc-014-runtime-amendment), [SPEC-011 amendment](../../specs/spec-011-interaction.md#rfc-014-runtime-amendment); LY-RD-001–002, IN-RD-001–002 | `Sources/GiftUISemanticCore/SemanticRecordLayoutView.swift`, `SemanticRecordRenderView.swift`; `Sources/GiftUIInteraction/InteractionOwnedKeyState.swift`; `Sources/GiftUIRuntimeCore/RuntimeRecordInteractionBridge.swift`, `RuntimeInteractionCandidateResolution.swift`. Fixtures: `Tests/ContractFixtures/SPEC007/RuntimeDerived` and `SPEC011/RuntimeDerived`; drivers `check-spec-007-bank-layout.py` and `check-spec-011-owned-keys.py` under `scripts/contracts`. [Passed shared exit](../../../Tests/ContractFixtures/SPEC011/Evidence/rfc-014-p05/progress.md#final-p05-package-exit--2026-10-11), [independent review](../../../Tests/ContractFixtures/SPEC011/Evidence/rfc-014-p05/independent-exit-review.md). |
 | P06 | [SPEC-012 amendment](../../specs/spec-012-canvas-path-stroke-drawing.md#rfc-014-runtime-amendment); DR-RD-001–004 | `Sources/GiftUI/Canvas.swift`; `Sources/GiftUIMacros/FiniteSourceLowering.swift`, `CanvasWitnessLowering.swift`; `Sources/GiftUIDrawing/CanvasPlanProducer.swift`, `CanvasStagedValues.swift`, `CanvasSemanticPayload.swift`; `Sources/GiftUIRuntimeCore/ObservableCanvasInvocationSource.swift` and both profile Canvas stores. Fixtures: `Tests/ContractFixtures/SPEC012/RuntimeDerived`; driver: `scripts/contracts/check-spec-012-protocol-canvas.py`. [Passed package exit](../../../Tests/ContractFixtures/SPEC012/Evidence/rfc-014-p06/progress.md#final-p06-package-exit--2026-10-11), [independent repair review](../../../Tests/ContractFixtures/SPEC012/Evidence/rfc-014-p06/repair-exit-review.md), [current design note](../../implementation-designs/spec-012-static-canvas-lowering.md). |
 | P07 | [SPEC-013 amendment](../../specs/spec-013-runtime-profiles.md#rfc-014-runtime-amendment); RP-RD-001–004 | `Sources/GiftUIRuntimeCore/RuntimeCompletePipeline.swift`, `Sources/GiftUIRuntimeCore/RuntimeCoordinatorCleanup.swift`; `Sources/GiftUIRuntimeDynamic/DynamicRuntimeExecutionCoordinator.swift`, `Sources/GiftUIRuntimeStatic/StaticRuntimeExecutionCoordinator.swift`; `Tests/GiftUIRuntimeCoreTests/RuntimeCompletePipelineTests.swift`. |
-| P08 | [SPEC-015 amendment](../../specs/spec-015-host-configuration.md#rfc-014-runtime-amendment); HC-RD-001–004 | `Sources/GiftUIHostConfiguration/CheckedMVPHostConfigurationValidator.swift`, `scripts/contracts/generate-spec-015-workload.rb`; `Tests/GiftUIHostConfigurationTests/HostConfigurationTests.swift`; [finite counter inventory](../../../experiments/spike-072-contextual-traversal-integration/application-coverage.md). This inventory is not an implemented counter host. |
+| P08 | [SPEC-015 amendment](../../specs/spec-015-host-configuration.md#rfc-014-runtime-amendment); HC-RD-001–004; adopted [SO sequence](rfc-014-implementation-plan.md#rfc-015-ordered-p08-ownership-tasks--2026-10-13) and all nine IN-SO/RP-SO/HC-SO criteria | `Sources/GiftUIHostConfiguration/CheckedMVPHostConfigurationValidator.swift`, `scripts/contracts/generate-spec-015-workload.rb`; `Tests/GiftUIHostConfigurationTests/HostConfigurationTests.swift`; [finite counter inventory](../../../experiments/spike-072-contextual-traversal-integration/application-coverage.md). This inventory is not an implemented counter host. |
 | P09 | [SPEC-001 amendment](../../specs/spec-001-signal-analyzer-reference-application.md#rfc-014-runtime-amendment); SA-RD-001–004 | `Sources/SignalAnalyzerPresentation/SignalAnalyzerView.swift`, `Sources/SignalAnalyzerTargetHost/DynamicSignalAnalyzerPiAssembly.swift`, `Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFAssembly.swift`; `scripts/contracts/check-spec-001-revision-boundary.rb`, `scripts/contracts/compare-spec-001-target-actions.rb`. |
 | P10 | Nine acceptance matrices in the [owner mapping](rfc-014-implementation-plan.md#owner-plan-and-criterion-mapping) | `scripts/contracts/driver-registry.tsv`, `scripts/test.sh`; each owner's contract fixtures and conformance report. Establish the exact artifact covered by each result; historical checkboxes are not migration results. |
 | P11 | Resource/workload clauses of [SPEC-001](../../specs/spec-001-signal-analyzer-reference-application.md), [SPEC-002](../../specs/spec-002-portable-foundation.md), [SPEC-013](../../specs/spec-013-runtime-profiles.md), [SPEC-015](../../specs/spec-015-host-configuration.md) and affected owner matrices | P10's exact artifacts and reports; `scripts/contracts/check-spec-013-resource-instrumentation.sh`; [measurement requirements](memory-efficiency-plan.md#measurement-requirements). Collection and interpretation are separate assignments. |

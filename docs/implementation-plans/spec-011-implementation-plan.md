@@ -6,7 +6,7 @@ status: active
 owners:
   - codex
 created: 2026-09-09
-updated: 2026-10-11
+updated: 2026-10-13
 related_design_notes:
   - ../implementation-designs/spec-011-target-bound-dispatch.md
 conformance_report: ../conformance/spec-011-conformance.md
@@ -23,10 +23,12 @@ superseded_by: null
 
 # SPEC-011 Implementation Plan
 
-The [RFC-015 downstream package](../iterations/iteration-003-review/rfc-015-p08-handoff.md)
-proposes scoped Interaction amendments and conditional P08 work. This is navigation
-only: ADR/Spec approval and application remain pending; current task dispositions
-and validation budgets are unchanged.
+The [RFC-015 handoff](../iterations/iteration-003-review/rfc-015-p08-handoff.md)
+is adopted under [explicit acceptance/application](../iterations/iteration-003-review/rfc-015-contract-acceptance.md).
+ADR-039 and the exact owner amendments are authoritative. Full delivery belongs
+to ITERATION-004 I4-07; P08 includes only necessary dependencies and complete
+applicable safety/fit evidence. All new criteria remain unmet; existing tasks,
+active status and closed validation budgets are preserved.
 
 ## RFC-014 implementation readiness — 2026-10-10
 
@@ -39,6 +41,27 @@ Earlier tasks and readiness/closure statements remain historical baseline eviden
 not additional authorization to rerun an MVP implementation or reopen experiments.
 
 ### Current owner checkpoint
+
+#### RFC-015 P08 ownership work — 2026-10-13
+
+**Contribution to `T12.1`** — Contribute SO-01/03/05/06/07 under the [ordered shared sequence](../iterations/iteration-003-review/rfc-014-implementation-plan.md#rfc-015-ordered-p08-ownership-tasks--2026-10-13) and [handoff](../iterations/iteration-003-review/rfc-015-p08-handoff.md).
+  **Dependencies:** approved/applied owner contract, then SO-01 necessity/caller
+  inventory → SO-02 physical design and independent Strong review → SO-03–09 in
+  order. The handoff's owner/module footprints, pre-code design checklist and
+  criterion evidence are part of this task; no independent parallel sequence.
+  **Boundary:** SO-01 classifies each change/subcase as P08-required or I4-07
+  residual. Every obligation needed by an adopted P08 path stays in P08 even if
+  expensive or failing; full criteria cannot close from partial coverage. SO-09
+  carries exact residual/source/evidence rows (or explicit empty residual) to I4-07.
+  **Readiness:** sequential SO-01/SO-02 preparation is authorized. Source,
+  compiler/build/repair work awaits the separately recorded bounded allowance;
+  all closed budgets and stop guards remain. No design-note metadata link is
+  added before the SO-02 note exists. Existing T12.1, P08/R07/T8.1 and P10–P12
+  duties remain open; no resource/timing/hardware exception is inferred.
+  **Evidence:** one shared [P08 receipt](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/progress.md),
+  actual caller/physical ledgers, exact compiler/source/input identities, unchanged
+  control oracles, four profiles and independent Strong P08 exit review. SO-07
+  uses the handoff's owner drivers; SO-08 uses existing target skills and routes.
 
 - [ ] `T12.1` — Independently owned full keys across bank reuse/refusal, accepted-offer routing commit and stale target/action rejection.
   **Scope:** GiftUIInteraction candidate/committed storage and runtime-composed target access and directly corresponding tests/fixtures/build wiring.
@@ -263,6 +286,9 @@ exactly once below.
 | `IN-013` — Every staged record binds the exact publishable target generation before finish and observable non-publication discards Interaction once | `T3.4`-`T3.6`, `T5.1`, `T5.5`, `T7.2`, `T8.2`, `T10.1`, `T10.2`, `T10.3`, `T12.1` | Initial/preserved/replaced/discarded target-generation and exact-once discard transcript; RFC-014 P10 functional / P11 resource-connected / P12 conformance evidence | migration pending; prior evidence remains baseline only |
 | `IN-RD-001` | `T12.1` | P05 exit fixtures; P10 differential/negative tests; P11 actual resource/connected disposition; P12 owner report | pending |
 | `IN-RD-002` | `T12.1` | P05 exit fixtures; P10 differential/negative tests; P11 actual resource/connected disposition; P12 owner report | pending |
+| `IN-SO-001` | `T12.1`; SO-03/05/07; SO-09 disposition | Six declarations and state/initializer unions, conditional owned and failable Optional positive/negative pairs; P10–P12 final obligations and I4-07 residual reconciliation | unmet; P08 applicability pending SO-01; full criterion open |
+| `IN-SO-002` | `T12.1`; SO-04/06; SO-09 disposition | Paired exchange address/count/role transcripts, capacity boundaries, acceptance/refusal and existing identity/generation/action outcomes; P10–P12 final obligations and I4-07 residual reconciliation | unmet; P08 applicability pending SO-01; full criterion open |
+| `IN-SO-003` | `T12.1`; SO-01/03/04/06/07; SO-09 disposition | Caller disposition and owned analyzer/native-return compatibility; client negatives and physical measurement reconciliation; P10–P12 final obligations and I4-07 residual reconciliation | unmet; P08 applicability pending SO-01; full criterion open |
 
 ## Milestones and Tasks
 

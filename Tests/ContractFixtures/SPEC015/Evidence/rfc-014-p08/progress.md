@@ -1,5 +1,52 @@
 # RFC-014 P08 execution receipt — 2026-10-11
 
+## Approved contract application dispatch — 2026-10-13
+
+Input: clean `f01ee97c`. Eugene replied to the concrete ADR/Spec acceptance
+question: “Yes, accept them and commit. And then please proceed with the p08”.
+This explicitly accepts ADR-039 and approves the exact packet S11.1–S11.4,
+S13.1–S13.2 and S15.1–S15.2. It authorizes applying the derived plans, followed
+sequentially by SO-01 inventory and SO-02 physical design. Full RFC-015 delivery
+remains ITERATION-004 I4-07; P08 retains only its necessary dependency path and
+complete applicable safety/fit evidence.
+
+Bounded dispatch before edits: one documentation step, accept ADR-039, apply
+the approved packet verbatim at its named live Spec anchors, update manifest,
+cross-links, shared RFC-014 plan/context and all three owner plans, validate the
+documentation and commit. Scope is those Markdown/YAML records and this receipt;
+no production source, compiler, build, experiment or hardware action. Inputs are
+the exact packet, handoff, delivery allocation, owner contracts/plans and existing
+failed-stack/capture evidence. This is bounded transcription under the existing
+plan's rules; no model selection or production allowance is created.
+
+Allowed checks: exact packet-text comparison, criterion/task/dependency and link
+inspection, `scripts/validate-governance.rb` and `git diff --check`, followed by
+diff inspection and one documentation commit. Correct documentation defects only;
+stop and escalate any ambiguity that would change the accepted contract or scope.
+SO-01 and SO-02 each require their own recorded sequential dispatch; neither is
+started by this step. SO-03–09 production validation/repair authority remains
+separate and absent. No historical budget or consecutive-unproductive guard is
+reset; all prior counters and the 58,648-byte/27,648-byte failure remain preserved.
+All nine SO criteria remain unmet, Specs implementing, plans active and
+P08/R07/T8.1 plus P09–P12/hardware gates open as previously recorded.
+
+Documentation result: ADR-039 accepted; S11/S13/S15 applied verbatim, with all
+nine criteria mapped in the shared and owner plans. Original packet/current
+packet/live Spec text equality, unchanged implementing/active statuses, complete
+three-row owner mappings, absence of premature design-note metadata links and
+changed Markdown local-file links were checked successfully. Diff inspection
+confirms only documentation and task-evidence YAML changes.
+
+The first governance check failed because SPEC-011's task-evidence mapping did
+not yet include IN-SO-001–003. The derived contribution is recorded under the
+existing pending T12.1, with those criteria added to its existing YAML requirement
+list; no task is closed and no implementation/test evidence is fabricated.
+SPEC-013/015 have no corresponding task-evidence manifests; their owner matrices
+record the pending mappings. The subsequent `scripts/validate-governance.rb`
+passes (197 authority nodes, 2,014 edges; existing task manifests pass).
+`git diff --check` passes. No production attempt/repair is consumed or allocated;
+SO-01 and SO-02 have not started. This documentation step is ready to commit.
+
 ## Resumption authority check — 2026-10-13
 
 Input: clean `50f058e6`. The user requested sequential P08 execution, a commit

@@ -6,16 +6,18 @@ status: implementing
 authors:
   - codex
 created: 2026-08-26
-updated: 2026-10-11
+updated: 2026-10-13
 proposal:
   - PROPOSAL-003
   - PROPOSAL-007
 related_rfcs:
+  - RFC-015
   - RFC-002
   - RFC-004
   - RFC-011
   - RFC-014
 related_adrs:
+  - ADR-039
   - ADR-005
   - ADR-006
   - ADR-008
@@ -110,6 +112,168 @@ nonowning key to an owning ticket. Retained detached models do not make retired
 registration targets dispatchable. Replacement changes target generation under
 SPEC-010; allocation generation and bank/revision tokens remain separate.
 
+### RFC-015 scoped storage ownership — approved 2026-10-13
+
+Under [accepted ADR-039](../adrs/adr-039-scoped-storage-ownership.md), the
+[exact amendment packet](../iterations/iteration-003-review/rfc-015-spec-amendments.md)
+is approved and applied here verbatim. [Approval provenance](../iterations/iteration-003-review/rfc-015-contract-acceptance.md)
+retains the explicit maintainer instruction. The following additional criteria
+remain unmet; the Specification remains implementing.
+
+### S11.1 Scoped storage and state declarations
+
+The following six package protocols MUST permit noncopyable and nonescapable Self.
+Replace their declaration headers with these exact headers, preserving every
+existing requirement and owned Identity/record/result type:
+
+```swift
+package protocol InteractionCandidateRecordStorage: ~Copyable, ~Escapable
+package protocol InteractionCommittedRecordStorage: ~Copyable, ~Escapable
+package protocol InteractionHitRegionStorage: ~Copyable, ~Escapable
+package protocol InteractionCandidateBuilder: ~Copyable, ~Escapable
+package protocol InteractionGestureResolver: ~Copyable, ~Escapable
+package protocol InteractionCommittedActionView: ~Copyable, ~Escapable
+```
+
+In these header fragments the existing braces/body follow unchanged. Storage
+count/capacity remain UInt16; reset/append/replace/exchange remain mutating,
+record/region reads remain borrowing and return owned optional records. Builder
+begin/append/assignGeneration/finish/resolve remain mutating with their existing
+owned errors/results. Gesture and committed reads remain borrowing with owned
+results. No nonescapable associated type and no seventh protocol relaxation is added.
+
+Replace implicit owned constraints of the two state declarations with the following
+exact constraints (generic parameter spelling may be expanded without semantic change):
+
+```swift
+package struct InteractionState<C, R, H>: ~Copyable, ~Escapable,
+    InteractionCandidateBuilder, InteractionCommittedActionView, InteractionGestureResolver
+where C: InteractionCandidateRecordStorage & ~Copyable & ~Escapable,
+      R: InteractionCommittedRecordStorage & ~Copyable & ~Escapable,
+      H: InteractionHitRegionStorage & ~Copyable & ~Escapable,
+      C.Identity == R.Identity, C.Identity == H.Identity
+
+package struct InteractionOwnedKeyState<C, R, H>: ~Copyable, ~Escapable,
+    InteractionCandidateBuilder, InteractionCommittedActionView, InteractionGestureResolver
+where C: InteractionCandidateRecordStorage & ~Copyable & ~Escapable,
+      R: InteractionCommittedRecordStorage & ~Copyable & ~Escapable,
+      H: InteractionHitRegionStorage & ~Copyable & ~Escapable,
+      C.Identity == SemanticCompleteIdentity, R.Identity == SemanticCompleteIdentity,
+      H.Identity == SemanticCompleteIdentity
+```
+
+InteractionState retains exactly five lifetime-bearing stored values: candidateRecords C,
+candidateHitRegions H, candidateCommittedRecords R, committedRecords R and
+committedHitRegions H. Its other fields remain owned Phase, optional limits,
+optional candidate error and optional presentation revision. Its consuming initializer
+MUST depend on all five arguments:
+
+```swift
+@_lifetime(copy candidateRecords, copy candidateHitRegions,
+           copy candidateCommittedRecords, copy committedRecords, copy committedHitRegions)
+package init(candidateRecords: consuming C, candidateHitRegions: consuming H,
+             candidateCommittedRecords: consuming R, committedRecords: consuming R,
+             committedHitRegions: consuming H)
+```
+
+InteractionOwnedKeyState retains state plus its existing owned UInt16/UInt32 counters,
+Bool staging flag and optional error; no additional lease, closure or pointer field.
+Its existing failable initializer becomes:
+
+```swift
+@_lifetime(copy state)
+package init?(state: consuming InteractionState<C, R, H>,
+              maximumComponentsPerKey: UInt16, maximumComponents: UInt32)
+
+extension InteractionState: Copyable
+where C: Copyable & ~Escapable, R: Copyable & ~Escapable, H: Copyable & ~Escapable {}
+extension InteractionState: Escapable
+where C: Escapable & ~Copyable, R: Escapable & ~Copyable, H: Escapable & ~Copyable {}
+extension InteractionOwnedKeyState: Copyable
+where C: Copyable & ~Escapable, R: Copyable & ~Escapable, H: Copyable & ~Escapable {}
+extension InteractionOwnedKeyState: Escapable
+where C: Escapable & ~Copyable, R: Escapable & ~Copyable, H: Escapable & ~Copyable {}
+```
+
+All original protocol/Identity equalities continue to apply to these extensions.
+Owned inputs MUST retain owned return/copy semantics including the failable Optional;
+scoped inputs MUST retain every dependence. A second owned state machine or lifetime
+erasure is forbidden. Both withBacking callbacks MUST be removed from supported
+callers and replaced with owned bounded measurement operations; no callback exports
+a storage capability. Measurements MUST describe physical retained banks, never
+substitute adapter MemoryLayout for bank bytes.
+
+### S11.2 Access and transaction semantics
+
+Only reviewed trusted package/fixture code may conform these protocols. They are
+not outside-package extension points; package visibility does not seal conformances.
+Safe client entry points MUST use validated concrete owners/configuration, never an
+arbitrary conformer claiming disjointness. Access constructors and physical fields
+MUST be restricted; no pointer/base/bank getter, descriptor conversion, `_read`/
+`_modify`, duplicating borrowed mutable capability or lifetime-erased adapter is exposed.
+
+The finite P08 accesses MUST be ~Copyable and ~Escapable and share the common
+actual-owner session specified in S13. Interaction controls phase, counts, revision
+and bounded complete copied keys once. Storage never substitutes semantic indices,
+hashes or borrowed path references for complete keys. Exact identity, generations,
+capacity-first-excess behavior, failure precedence and accepted-offer rules remain.
+
+Initialization MUST validate distinct bank identities, common provenance, and equal
+immutable logical capacity within each prepared/committed R and candidate/committed H
+pair, sufficient for the configured action/hit limits. C also covers the action limit.
+Unequal retained physical extents are valid when each covers the shared logical capacity;
+unequal logical pair capacities or undersized extents fail before session acquisition.
+Do not clamp workload limits. This finite rule does not alter owned-store constructors.
+
+After existing finishCandidate preflight, accepted offer exchanges both complete R/H
+role descriptors (address plus bank-local count/extent metadata) and revision without
+allocation, bank copy, fallible work or observer/reentry exposure between them. Logical
+capacity and session lifetime/provenance remain invariant. Physical destruction stays
+with original initialized objects. Reset targets former committed banks. Refusal/discard
+exchanges nothing, resets candidate/prepared storage and preserves committed routing.
+
+### S11.3 Consumer compatibility
+
+Operation-only generic parameters MUST explicitly admit both suppressions while
+preserving existing identity/model/role constraints and owned results:
+
+| File under Sources | Parameter / operation |
+| --- | --- |
+| GiftUIInteraction/ExecutionGestureAdapter.swift | Resolver: InteractionGestureResolver & ~Copyable & ~Escapable for down/move/up; borrowed resolver |
+| GiftUIRuntimeCore/RuntimeRecordInteractionBridge.swift | Candidate/Committed/Hits storage permissions in append/appendProjected; borrowed Records: InteractionCommittedActionView & ~Copyable & ~Escapable in dispatch |
+| GiftUIRuntimeCore/RuntimeRecordCanvasInteractionBridge.swift | Candidate/Committed/Hits storage permissions in append |
+| GiftUIRuntimeCore/RuntimeInteractionCandidateTransaction.swift | Interaction: InteractionCandidateBuilder & ~Copyable & ~Escapable in inout build |
+| GiftUIRuntimeCore/RuntimeInteractionCandidateCoordinator.swift | Same Interaction bound in build/discardCandidates |
+| GiftUIRuntimeCore/RuntimeInteractionCandidateResolution.swift | Same Interaction bound in resolve |
+
+RuntimeInteractionDispatcher's retained Records MUST explicitly require
+InteractionCommittedActionView & Copyable & Escapable; Handler/TargetAccess,
+non-consuming initializer and InteractionDispatcher conformance remain owned.
+Counter dispatch uses the operation-only bridge. A retained scoped dispatcher need
+is an upstream decision; InteractionDispatcher MUST NOT be relaxed here.
+Static/StaticSix/Dynamic banks and aliases retain owned semantics through conditional
+state conformances. Analyzer Dynamic/Static action dispatchers and
+StaticSignalAnalyzerNRFEmbeddedInteractionOwner stay owned. Analyzer presentation
+pipeline, NRF application storage/committer/handler/input owner/candidate producer
+and withInteraction callbacks stay owned, with ordinary owned Result and existing
+pointer lifetime duties. Inventory all transitive/generated/test callers before
+adoption; no newly required scoped retained consumer is authorized by this table.
+
+### S11.4 Additional acceptance criteria
+
+- [ ] **IN-SO-001:** All six declarations, both five-input/state initializer unions,
+  conditional owned copy/escape and failable Optional cases pass the pinned four-profile
+  positive/negative matrix; scoped state copy/escape is rejected for the intended reason.
+- [ ] **IN-SO-002:** Same-session paired exchange tests record addresses/counts before
+  and after repeated unequal-count swaps; equal logical/unequal sufficient physical
+  extents succeed; unequal logical/undersized pairs fail before session. Accepted offers
+  have both exchanges/revision, refusal/discard have none, keys survive semantic reuse
+  and first-excess/identity/generation/stale-action transcripts retain existing outcomes.
+- [ ] **IN-SO-003:** Complete caller inventory shows each S11.3 disposition and preserves
+  owned analyzer/native returns; supported client negatives reject construction,
+  extraction and arbitrary conformer entry. Measurement tests reconcile owned facts
+  to every physical bank before/after role changes without adapter-size substitution.
+
 - [ ] **IN-RD-001:** Reuse both semantic banks repeatedly while retaining committed
   routing through refused offers; previously captured identity/action generation
   still resolves or cancels according to exact current target rules, never an
@@ -186,6 +350,8 @@ module. It is not part of `GiftUI`, this contract, or static semantics.
 
 ## Related ADRs
 
+- [ADR-039](../adrs/adr-039-scoped-storage-ownership.md) governs the additive
+  scoped-storage ownership contract above, preserving the existing decisions.
 - ADR-005 keeps semantic interaction and application dispatch above backends.
 - ADR-006 requires equal portable behavior across dynamic and static profiles.
 - ADR-008 requires the focused Interaction owner, portable `GiftUI` leaf, and

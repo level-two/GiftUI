@@ -2,7 +2,7 @@
 id: ADR-039
 feature: external-application-integration
 title: Scoped Storage Ownership
-status: proposed
+status: accepted
 authors:
   - codex
 created: 2026-10-13
@@ -36,9 +36,10 @@ target_milestone: ITERATION-004
 
 ## Status
 
-Proposed. Extracted from approved RFC-015 at `ec29db3c`; acceptance of this
-new text remains explicit. The [readiness and approval record](../iterations/iteration-003-review/rfc-015-readiness-and-approval.md)
-authorizes downstream preparation and commitment, not acceptance by inference.
+Accepted by Eugene on 2026-10-13: “Yes, accept them and commit. And then
+please proceed with the p08”. The [acceptance record](../iterations/iteration-003-review/rfc-015-contract-acceptance.md)
+identifies the exact ADR/Spec package, application and separate execution boundary.
+Extracted from approved RFC-015 at `ec29db3c`; no prior decision is superseded.
 
 ## Context
 
@@ -111,8 +112,9 @@ owned conformances preserve existing finite stores and the selected migration sc
 
 ### Follow-up
 
-- Accept this ADR, then approve/apply the [exact Spec packet](../iterations/iteration-003-review/rfc-015-spec-amendments.md).
-- Adopt the [conditional P08 handoff](../iterations/iteration-003-review/rfc-015-p08-handoff.md),
+- The [exact Spec packet](../iterations/iteration-003-review/rfc-015-spec-amendments.md)
+  is approved and applied under the recorded acceptance.
+- Follow the [P08 handoff](../iterations/iteration-003-review/rfc-015-p08-handoff.md),
   supply physical design notes and separately bound execution/validation authority.
 - Complete the P08-applicable B1–B3 evidence before P08 acceptance; full RFC
   delivery belongs to ITERATION-004 I4-07 under the

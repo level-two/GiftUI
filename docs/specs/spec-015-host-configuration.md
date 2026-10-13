@@ -6,7 +6,7 @@ status: implementing
 authors:
   - codex
 created: 2026-08-28
-updated: 2026-10-12
+updated: 2026-10-13
 proposal:
   - PROPOSAL-002
   - PROPOSAL-003
@@ -15,6 +15,7 @@ proposal:
   - PROPOSAL-006
   - PROPOSAL-007
 related_rfcs:
+  - RFC-015
   - RFC-012
   - RFC-001
   - RFC-002
@@ -27,6 +28,7 @@ related_rfcs:
   - RFC-011
   - RFC-014
 related_adrs:
+  - ADR-039
   - ADR-038
   - ADR-001
   - ADR-034
@@ -289,6 +291,99 @@ inputs while retaining independent recording/oracle controls. Do not reclassify
 existing baseline evidence as schema-4 conformance. Physical limit changes require
 a reviewed Spec amendment; architectural bound changes return to the maintainer.
 
+### RFC-015 scoped storage ownership — approved 2026-10-13
+
+Under [accepted ADR-039](../adrs/adr-039-scoped-storage-ownership.md), the
+[exact amendment packet](../iterations/iteration-003-review/rfc-015-spec-amendments.md)
+is approved and applied here verbatim. [Approval provenance](../iterations/iteration-003-review/rfc-015-contract-acceptance.md)
+retains the explicit maintainer instruction. The following additional criteria
+remain unmet; the Specification remains implementing.
+
+### S15.1 Construction, transfers and retirement
+
+CounterGeometry and CounterCandidateBacking/CounterCommittedBacking/CounterHitBacking
+MUST explicitly admit ~Copyable and ~Escapable Self, retaining all existing owned
+measurement/operation results. Concrete P08GeometryAccess/P08CandidateAccess/
+P08CommittedAccess/P08HitAccess MUST be fileprivate, ~Copyable and ~Escapable with
+private fields/constructors and SemanticCompleteIdentity for each bank's Identity.
+P08StorageSession holds private geometry and scoped keys; its consuming constructor
+has `@_lifetime(copy geometry, copy interaction)`. No capability accessor is exposed.
+
+Supplied storage and pipeline, both profiles, and CounterRetiredStorage use this
+complete generic constraint set, preserving their existing concrete scope types:
+
+```swift
+where G: CounterGeometry & ~Copyable & ~Escapable,
+      C: CounterCandidateBacking & ~Copyable & ~Escapable,
+      R: CounterCommittedBacking & ~Copyable & ~Escapable,
+      H: CounterHitBacking & ~Copyable & ~Escapable,
+      C.Identity == SemanticCompleteIdentity, R.Identity == SemanticCompleteIdentity,
+      H.Identity == SemanticCompleteIdentity
+```
+
+Their base declarations are ~Copyable, ~Escapable; pipeline retains
+RuntimeCompletePipelineOwner. Supplied/pipeline geometry and Interaction fields
+become private. Consuming storage-transfer initializers MUST add
+`copy geometry, copy interaction` to their existing `copy models, copy root,
+copy semantic, copy values, copy scopedControl` union. The trusted raw-control route
+instead preserves `borrow control` and adds the same two dependencies. Supplied
+retains audit; pipeline retains owned limits/endpointConfiguration. Session.intoSupplied
+consumes model/root/semantic/values/control and has `@_lifetime(copy self, copy models,
+copy root, copy semantic, copy values, copy control)` with its existing owned audit.
+No mandatory backing/origin is omitted from ADR-038's construction graph.
+
+CounterRetiredStorage privately holds semantic, geometry and Interaction;
+its consuming initializer has `@_lifetime(copy semantic, copy geometry, copy interaction)`.
+Its `mutating resetAfterQuiescence()` retains `@_lifetime(self: copy self)`.
+Supplied's consuming `retireInertStorage()` and pipeline's consuming
+`retireQuiescedStorage()` each return that scoped carrier with `@_lifetime(copy self)`.
+Inert retirement requires no transfer to coordinator; active retirement requires
+stop/drain/quiescence and release of pins/registrations, including the cache ticket
+at its existing pre-quiescence point, then consumption of takeQuiescedOpportunity's
+Optional and its pipeline exactly once. Model/root/value/control cleanup still completes.
+
+Live host/state preserve consuming supplied plus activationSpan initialization with
+`@_lifetime(copy supplied, copy activationSpan)`. State has inert(supplied, span),
+active(coordinator, optional model ticket, span), retired(retired storage, span) cases;
+every activation/opportunity/retirement rewrite retains `@_lifetime(self: copy self)`.
+Retired accesses stay scoped through the activation callback even after teardown.
+Reset retains semantic reset, geometry reset then Interaction resetAllStorage order.
+Static and Dynamic retirement transfer equivalently; borrowing fields from a dying
+carrier, copying private fields or dropping an input dependence is forbidden.
+
+CounterReturnedWorkspaces declaration/initializer explicitly require all G/C/R/H
+Copyable & Escapable in addition to existing protocol/equality constraints.
+Pipeline.returnWorkspaces(checks:) is available only in an extension with those
+same owned constraints. Scoped routes return owned report/check counts, never workspaces.
+Optional/enum/tuple/generic/closure wrappers MUST retain the union or reject access;
+no Any/existential/collection/escaping closure/task/async transfer may erase it.
+
+Replace the old initialized CounterStaticKeys? slot, its binding/init/take/control/
+audit/deinit sites together. Five typed banks and final geometry objects have disjoint
+validated regions and one physical inventory; the old owner cannot coexist over those
+bytes. The historical 2,412 bytes is no replacement layout promise. Physical design
+must specify actual offsets/fit/realization before source work; this amendment adopts
+no raw offsets and claims neither syntax acceptance nor optimization.
+
+### S15.2 Additional acceptance criteria
+
+- [ ] **HC-SO-001:** Four-profile actual supplied→pipeline→coordinator→host→retirement
+  chains accept moves and owned reports; paired negatives reject copy/use-after-consume,
+  escape beyond each owner independently, activation-span escape, direct/generic Optional/
+  tuple/closure erasure, owned-only workspace return, construction/extraction, escaping/
+  Sendable/task transfer and overlapping access for the intended classified cause.
+- [ ] **HC-SO-002:** Exact old/new slot, binding, initializer, control, audit and destructor
+  inventory plus fault-at-step/early-return/repeat-session transcripts establish S13/S15
+  lifetime and backing-last duties for both profiles. Host validation remains before
+  activation, preserves first error and rejects mismatched provenance/capacity without
+  client/service effects. Independent action/semantic/pixel controls remain unchanged.
+- [ ] **HC-SO-003:** Complete current-source caller/route inventory, four registered
+  counter routes and early linked Pi/nRF artifacts include ABI, allocator and feasible
+  nested-stack/RAM/flash evidence. A smaller source value or passing link cannot close
+  HC-RD-003; the prior 58,648-byte frame/27,648-byte ceiling remains failed until replaced
+  by measured passing evidence. P08/R07/T8.1 acceptance requires independent exit review;
+  P09–P12, hardware and existing unmet timing dispositions remain separate.
+
 ### Amendment acceptance criteria
 
 - [ ] **HC-RD-001:** All four analyzer manifests and finite counter compositions
@@ -392,6 +487,8 @@ SPEC-001 approval authorizes the application contract that consumes them.
 
 ## Related ADRs
 
+- [ADR-039](../adrs/adr-039-scoped-storage-ownership.md) governs the additive
+  scoped-storage ownership contract above, preserving the existing decisions.
 - ADR-001 places the Signal Analyzer's Domain, Data, Presentation, and concrete
   target composition in their inward dependency order.
 - ADR-034 supplies the four-channel, 10-Hz-per-channel, 80-transition-per-

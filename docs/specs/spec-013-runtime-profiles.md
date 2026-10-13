@@ -6,13 +6,14 @@ status: implementing
 authors:
   - codex
 created: 2026-08-27
-updated: 2026-10-11
+updated: 2026-10-13
 proposal:
   - PROPOSAL-003
   - PROPOSAL-005
   - PROPOSAL-006
   - PROPOSAL-007
 related_rfcs:
+  - RFC-015
   - RFC-012
   - RFC-002
   - RFC-004
@@ -23,6 +24,7 @@ related_rfcs:
   - RFC-011
   - RFC-014
 related_adrs:
+  - ADR-039
   - ADR-034
   - ADR-005
   - ADR-006
@@ -292,6 +294,94 @@ No new action API, type erasure, ownership registry, compiler upgrade, SPEC-015
 host amendment or behavior/resource waiver is introduced by this correction.
 Full phase/failure/publication/offer/cleanup obligations remain unchanged.
 
+### RFC-015 scoped storage ownership — approved 2026-10-13
+
+Under [accepted ADR-039](../adrs/adr-039-scoped-storage-ownership.md), the
+[exact amendment packet](../iterations/iteration-003-review/rfc-015-spec-amendments.md)
+is approved and applied here verbatim. [Approval provenance](../iterations/iteration-003-review/rfc-015-contract-acceptance.md)
+retains the explicit maintainer instruction. The following additional criteria
+remain unmet; the Specification remains implementing.
+
+### S13.1 Physical owner, session and coordinator contract
+
+A unique noncopyable P08TypedBackingOwner MUST reserve final typed geometry and
+five disjoint bank regions, with private fixed-capacity initialized-object inventory
+and lifecycle flag. Interaction transaction metadata exists once in scoped state;
+physical bookkeeping and separately supplied host control MUST NOT duplicate it.
+An immutable private P08SessionLifetime: ~Escapable token MUST depend on the actual
+owner's typed exclusive borrow enclosing the callback. Each concrete geometry/C/R/H
+access constructor has `@_lifetime(copy sessionLifetime)` and a borrowing token input.
+The token may be copied only as immutable lifetime/provenance evidence. All accesses
+retain this common lifetime through moves/exchanges/retirement, never only a pointer
+local's lifetime. Trusted construction validates same-session provenance and distinct
+banks before ready-for-offer; no cross-session exchange is client-callable.
+
+```swift
+fileprivate func initializeP08Backing(
+    _ backing: inout P08TypedBackingOwner
+) -> P08BackingInitializationFailure?
+fileprivate func withP08Storage<Result>(
+    backing: inout P08TypedBackingOwner,
+    _ body: (consuming P08StorageSession) -> Result
+) -> Result
+```
+
+These are nonthrowing internal operations; initialization failures and Result are
+ordinary owned values. Checked initialization validates all capacities, identities,
+schema, alignment and disjointness before initializing. It records successful objects
+and unwinds precisely that prefix in reverse on failure, clearing the inventory.
+No session exists on failure. Success leaves initialized/idle storage. A second
+initialization cannot overwrite it. Factory activation is exclusive, invokes body once
+synchronously, and performs no fallible physical initialization. No scoped Result,
+throwing callback cleanup, scoped error or trap recovery is promised.
+
+The trusted consuming body MUST install structured logical cleanup before activation
+and every possible owned-failure return. It owns stop/drain, candidate resolution,
+pins/registrations, retirement and reset; the factory owns enclosing physical borrowing.
+Failure before host construction releases only acquired scopes. Body completion returns
+storage to initialized/idle only after quiescence, complete reset and access scope end.
+Fresh sessions cannot retain old counts/records/revision/phase/gesture capture; initial
+role assignment is restored only with all banks empty. Generations still obey stale-action
+rules. Failed cleanup forbids reuse/release under existing invariant-failure disposition.
+Final idle release destroys original inventory once in reverse and releases regions last.
+
+Static/Dynamic coordinators retain explicit ~Copyable & ~Escapable Binding/Admission/
+Opportunity parameters, package admission/opportunity getters with private setters,
+consuming constructor and `@_lifetime(copy binding, copy admission, copy opportunity)`.
+`takeQuiescedOpportunity() -> Opportunity?` retains `@_lifetime(copy self)`; consuming
+its Optional must retain every storage/model/semantic/control dependence. Dynamic
+uses its existing concrete scope types; pointer erasure is forbidden. Storage sessions
+do not replace model frame/read pins or alter existing phase/publication order.
+
+Structural borrowing excludes overlapping access where provable; Swift runtime
+exclusivity is required otherwise and its enforcement must be recorded per configuration.
+Trusted session state also excludes reentry, physical aliases and callbacks accessing
+banks. Dynamic shared mutable/COW aliases cannot exist during access; any owned copy
+is independent before activation. No unchecked Sendable or disabled-exclusivity fallback.
+
+### S13.2 Accounting and criteria
+
+The ledger MUST identify every physical geometry/bank object, control, descriptor,
+provenance and inventory field with owner/count/stride/alignment/padding/lifetime and
+actual linked section or stack path. Role exchange cannot alter retained bytes or
+physical destruction attribution. Include construction/body-return temporaries,
+all nested helper frames and feasible IRQ overlap, Static zero heap and bounded Dynamic
+allocation/overhead; no missing path is zero. Preserve all existing target limits,
+three model transition banks, source/admission storage and timing obligations.
+
+- [ ] **RP-SO-001:** Physical inventory reconciles each initialized address and complete
+  retained bytes before/after swaps. Fault injection at each typed acquisition proves
+  reverse successful-prefix destruction exactly once, no live Optional overlay and no
+  duplicate control/bank owner; below/equal/above capacities follow S11.2.
+- [ ] **RP-SO-002:** Both profiles exercise early returns before host, failed activation,
+  failed candidate, commit, refusal, quiescence and a fresh session. Ordered transcripts
+  prove once-only candidate resolution/cleanup, reset and no stale session state; physical
+  release occurs after every scoped user and callback. Actual coordinator Optional moves
+  and runtime/static exclusivity cases have positive twins and classified evidence.
+- [ ] **RP-SO-003:** All four pinned configurations cover the whole carrier matrix;
+  actual linked images/complete feasible stack/IRQ ledgers prove unchanged resource/ABI
+  limits and Static zero heap, with matched Dynamic costs. Unmeasured fit stays unmet.
+
 ### Amendment acceptance criteria
 
 - [ ] **RP-RD-001:** All storage families have measured count/stride/alignment and
@@ -391,6 +481,8 @@ from SPEC-009. It does not own those contracts.
 
 ## Related ADRs
 
+- [ADR-039](../adrs/adr-039-scoped-storage-ownership.md) governs the additive
+  scoped-storage ownership contract above, preserving the existing decisions.
 - ADR-005 and ADR-006 require one semantic, layout, operation-order, failure,
   state-lifetime, action-order, and publication meaning across storage
   profiles.

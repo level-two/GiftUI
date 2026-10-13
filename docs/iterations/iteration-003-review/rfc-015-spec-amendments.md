@@ -1,9 +1,9 @@
 # RFC-015 exact Specification amendment packet — 2026-10-13
 
-**Proposed; non-authoritative.** RFC-015 is approved at `ec29db3c`;
-[ADR-039](../../adrs/adr-039-scoped-storage-ownership.md) is proposed. No live
-Specification changes in this packet. Accept ADR-039 before approving the exact
-sections S11, S13 and S15 below; apply approved text verbatim at the named anchors.
+**Approved and applied — 2026-10-13.** RFC-015 is approved at `ec29db3c`;
+[ADR-039](../../adrs/adr-039-scoped-storage-ownership.md) is accepted. Eugene
+explicitly approved the exact S11.1–S11.4, S13.1–S13.2 and S15.1–S15.2 texts,
+now applied verbatim at the named live Spec anchors. [Acceptance provenance](rfc-015-contract-acceptance.md).
 Their criteria supplement existing criteria without closing any checkbox or
 changing current implementing status. B1–B4 remain downstream obligations.
 
@@ -12,9 +12,8 @@ changing current implementing status. B1–B4 remain downstream obligations.
 Full adoption and conformance belong to ITERATION-004 I4-07 under the
 [maintainer-approved allocation](rfc-015-delivery-allocation.md). P08 implements
 only its necessary dependency path with all applicable safety, compatibility and
-resource evidence. These proposed contracts and nine criteria are preserved; partial
-P08 coverage does not mark a full criterion met. Scope scheduling does not approve
-this packet or authorize a contract exception.
+resource evidence. These approved contracts and nine criteria are preserved; partial
+P08 coverage does not mark a full criterion met. Scope scheduling grants no contract exception; this packet has separate explicit approval.
 
 ## Source inventory and application instructions
 
@@ -44,7 +43,7 @@ headers/owned-state implicit constraints where those conflict; unchanged methods
 and existing semantic contracts remain normative. S13 and S15 add the specified
 constraints to their existing runtime amendments. No unrelated declaration changes
 are approved by these instructions. All text under S11/S13/S15, including criteria,
-is the concrete proposed contract; implementation names are internal, not public API.
+is the concrete approved contract; implementation names are internal, not public API.
 
 ## S11 — insert before SPEC-011 RFC-014 amendment's IN-RD-001
 
