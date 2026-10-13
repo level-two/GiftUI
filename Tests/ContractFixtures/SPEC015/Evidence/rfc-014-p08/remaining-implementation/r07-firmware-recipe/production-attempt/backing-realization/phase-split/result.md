@@ -1,5 +1,14 @@
 # Phase-split result — 2026-10-13
 
+[Independent result/guard review](independent-review.md) at6c0f116a accepts
+the narrowed route/link evidence and rejects58648-byte nested fit. Its finite
+existing-binary trace identifies7284/7807/8155-byte state/owner/host transfers,
+but no specific safe transfer-elimination edit is established. The package's
+two-consecutive-unproductive condition is not met by these productive results;
+the dispatched allowance remains consumed. No new source/build allowance or
+human contract gate is invented. Further variants stop pending a concrete
+evidence-supported proposal/disposition; P08/R07 remain open.
+
 **Four current routes/link PASS; actual nested construction-frame FAIL. STOP
 for independent Strong result and package-guard disposition.** This is execution
 evidence, not independent approval or P08 exit.
