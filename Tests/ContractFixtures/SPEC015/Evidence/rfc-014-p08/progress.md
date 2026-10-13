@@ -1,5 +1,39 @@
 # RFC-014 P08 execution receipt — 2026-10-11
 
+## SO-02 independent design-review dispatch — 2026-10-13
+
+Input: clean `35f4759c`, SO-01 `d8a3d5ff` and accepted/applied contract
+`59d98712`. Sequential independent Strong task `p08_so02_review` reviews the
+focused physical design and exact execution proposal against live S11/S13/S15,
+ADR-039, the handoff checklist/allocation, SO-01 and actual maintained source.
+Boundary: readiness of the bounded source proposal, not compiler acceptance,
+target fit or execution authorization. No subagents or historical broad review.
+
+Allowed changes: this dispatch/result receipt and
+`scoped-storage/so02-independent-review.md`; factual current navigation only if
+needed. Allowed checks: read-only source/document inspection, local Markdown
+links, governance validation, `git diff --check` and diff review, then one review
+commit. No source edits, compiler/build/test, experiment or hardware action.
+Historical budgets, the cumulative unproductive guard, 58,648/27,648 failure,
+all nine criteria and P08/R07/T8.1/P09–P12 dispositions remain unchanged.
+The proposed production allowance stays NOT AUTHORIZED.
+
+SO-02 independent result: [bounded review](scoped-storage/so02-independent-review.md)
+is **BLOCKED for the execution proposal as written** by B1 numeric-layout
+checkpoint/evidence ordering and B2 explicit changed-consumer/owned-factory
+driver coverage. The physical design preserves the accepted contract and is
+suitable for bounded source realization after these documentation corrections;
+actual-owner annotation/typed Optional projection, cleanup, resource and target
+fit evidence remain unproved. No architecture/Spec change or new deferred item
+is identified. Correct the two derived-document issues, then bounded independent
+verification; this review authorizes no compiler/source execution or budget.
+
+Documentation checks pass: 112 local Markdown file links across the two review
+records resolve; governance passes with 198 nodes / 2,019 edges and all existing
+task manifests; git diff --check passes. Diff inspection covers this receipt
+and the new review only. All open criteria, historical budgets and guard remain
+unchanged. Commit this independent review step before any correction step.
+
 ## SO-02 physical design dispatch — 2026-10-13
 
 Input: clean `d8a3d5ff`, completed SO-01 inventory at `59d98712`, accepted
