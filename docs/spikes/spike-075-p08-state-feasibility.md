@@ -94,7 +94,9 @@ commands, exits and diagnostics with the experiment evidence.
 
 ## Results
 
-Not run. The scope commit precedes fixture preparation and execution.
+Prepared 526 disposable Swift lines after scope commit `722f5862`.
+[Strong preflight review](../../experiments/spike-075-p08-state-feasibility/preflight-review.md)
+found the fixture ready for one bounded run. No compiler invocation has occurred.
 
 ## Limitations
 
