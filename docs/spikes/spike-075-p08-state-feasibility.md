@@ -105,6 +105,14 @@ ran, with zero repairs. All escape negatives and other profiles remain unrun.
 and [Strong package review](../../experiments/spike-075-p08-state-feasibility/package-review.md)
 preserve the inconclusive disposition and the minimum proposed harness correction.
 
+The authorized continuation, prepared in `1dbe456b` with raw evidence committed
+in `743e8cf8`, passed the corrected copy negative and then accepted Escape0.
+It stopped immediately after two additional experiments and one identity query
+(cumulative five and two). [Strong continuation review](../../experiments/spike-075-p08-state-feasibility/continuation-exit-review.md)
+finds the outcome inconclusive: the inner lexical block does not establish a
+hard end to the trivial local backing's lifetime. No unsafe escape or compiler
+bug is established. Remaining escape checks and all target profiles are unrun.
+
 ## Limitations
 
 - Shadow declarations isolate language feasibility; they are not production
@@ -126,6 +134,10 @@ acceptance and P08 readiness. The [bounded continuation](../../experiments/spike
 implements that one-helper proposal within the ongoing minimum-evidence task.
 It preserves this initial completed/inconclusive run and all historical counts;
 RFC acceptance remains conditional on resolving the actual architectural blockers.
+The continuation has now ended at its first unexpected result, with its one
+authorized helper correction used and no further repairs. The linked exit review
+proposes a separately bounded function-return control pair; no new calls are
+allocated here. Status remains completed/inconclusive.
 If the state gate later passes, record the next minimum carrier/retirement
 question before executing it. Full migration,
 physical resource accounting and linked stack acceptance remain downstream

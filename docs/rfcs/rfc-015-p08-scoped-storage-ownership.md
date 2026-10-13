@@ -1123,8 +1123,13 @@ state-expressibility experiment under the new authorization. Its first run passe
 the shadow declarations and positive client on macOS Dynamic, then stopped on a
 copy-test helper that inadvertently required Escapable as well as Copyable.
 Strong exit review classifies this as inconclusive fixture evidence, not a
-falsified RFC contract. Escape negatives and other profiles remain unrun; the
-zero-repair package has ended. Its evidence feeds B1; it neither defers a blocker
+falsified RFC contract. The authorized one-helper continuation passed the corrected
+copy negative, then stopped when the first intended escape negative compiled.
+[Strong exit review](../../experiments/spike-075-p08-state-feasibility/continuation-exit-review.md)
+finds that its inner lexical block does not establish the backing's actual
+lifetime end, so this is inconclusive rather than a demonstrated unsafe escape.
+The remaining escape checks and other profiles remain unrun; both packages have
+ended. Its evidence feeds B1; it neither defers a blocker
 nor approves this RFC. Complete carrier feasibility
 still needs evidence if that first gate passes. Detailed implementation migration,
 physical layout and complete linked resource/stack acceptance remain downstream
