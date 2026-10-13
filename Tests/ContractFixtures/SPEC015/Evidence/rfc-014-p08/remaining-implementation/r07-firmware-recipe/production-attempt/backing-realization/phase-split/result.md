@@ -27,3 +27,11 @@ Current Pi ARMv6 route PASS source63e717d1, actualexit0,28/28 checks and221
 matching inputs, allfive Staticseamcounts1. Exact fresh output
 `.build/raspberry-pi/contracts/p08-counter-kwh6apf1`; compilation only, no target
 execution/current-source Pi image claim. No repair. nRF is next sequentially.
+
+Current nRF route PASS source63e717d1, actualexit0,26/26 checks and208matching
+inputs, allfive Staticseamcounts1. Fresh `.build/nrf52840/contracts/p08-counter-yhrdgas4`,
+compile-only/no target execution. All4current source routes now pass. Next exact
+single supported invocation is `scripts/nrf52840/build.sh --application
+signal-analyzer-static --counter-build .build/nrf52840/contracts/p08-counter-yhrdgas4`.
+No repair/source change/variant; preserve linked outcome and actual nestedstack
+including alignment/applicable IRQ overlap, then STOP for independent review.

@@ -1,0 +1,13 @@
+{
+  "argv": [
+    "python3",
+    "scripts/contracts/check-spec-015-counter.py",
+    "--runtime-build",
+    ".build/nrf52840/contracts/spec-013-runtime-cycle/tmp9d1k2h7s/nrf52840-embedded",
+    "--profile",
+    "nrf52840-embedded"
+  ],
+  "source": "63e717d1",
+  "started": "2026-10-13T06:41:19.963613+00:00",
+  "repair_after_failure": false
+}
