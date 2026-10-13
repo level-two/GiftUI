@@ -1,5 +1,12 @@
 # Phase-split checker seam finding — 2026-10-13
 
+[Independent seam review](seam-review.md) at3e4f3f52 permits the exact Static
+generator adaptation together with fixture extraction: two implementation
+files, one unique actual helper-call seam inside the original scopes, unchanged
+escape/provenance oracle and fail-closed generation. This is the same bounded
+correction/check allowance, not an additional attempt or contract gate. No
+source edit or validation ran in that review.
+
 Read independent678e5880 at clean entry678e5880. No source edit, compiler,
 checker or image command ran. Source38ba440d and its four passing route receipts
 remain current; linked image still fails the72208-byte nested local frame.
