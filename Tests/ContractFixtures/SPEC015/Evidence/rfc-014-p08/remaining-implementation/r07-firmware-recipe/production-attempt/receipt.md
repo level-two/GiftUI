@@ -332,3 +332,206 @@ alloca/ownership/lifetime table or evidence-supported avoidabletransferdesign;
 allocation-attribution.md distinguishes priorlinkedcopies from unavailableIR.
 STOP independentread-onlyreview/packageboundary, no renewedbudget/guardreset.
 No humancontractgate inferred; alllimits/history/P08open/noP09/hardware preserved.
+
+## Design-only candidate — unchangedsource63e717d1, entry77b72644
+
+Sol6.1 High / Strong; original P08 authority, SPEC015 bounded caller-owned
+Static backing contract. This is a reviewable candidate, NOT implementation
+readiness, compiler feasibility or image fit. No source/compiler/test/build/
+link/capture ran. Parent ended further reading to preserve this finite boundary.
+All consumed allowances and the package guard stay unchanged. Independent
+disposition of the following concrete plan is required before implementation.
+
+### One mechanism: transfer descriptors, retain ordinary bulk at caller
+
+Select one combined ordinary-workspace realization, not another optional-switch
+or helper experiment. Preserve the current supplied→owner→existing optional
+preset factory→mutable host construction and both reviewed phase helpers.
+Remove the five inline interaction bank payloads and the ordinary geometry
+value from those aggregate transfers; replace them with small typed adapters.
+Retain every actual logical bank, geometry value and scope once at its caller.
+This reduces nominal payload carried by every inert/active/retired state, owner
+and host value. It does not claim that any particular7284/7807/8155-byte memcpy
+or backend temporary disappears, or assign all58648bytes to these fields.
+
+1. Embedded profile initializes five ORIGINAL typed bank objects directly in
+   its already reserved interaction interval, instead of constructing one
+   inline CounterStaticKeys? there. Types are original CounterStaticCandidate,
+   CounterStaticHits, CounterStaticCommitted, CounterStaticCommitted,
+   CounterStaticHits, each capacity2. There is no second copy/bank or new BSS.
+2. Three private fixture protocol adapters each hold a typed pointer to one
+   such original bank. They forward capacity/count/record/region/append/replace/
+   reset exactly to that bank. Committed/hit exchangeContents exchanges the
+   original pointed-to bank contents through their existing method, never
+   swaps lifetime ownership or silently aliases the two physical banks.
+3. CounterHostKeys is InteractionOwnedKeyState over these adapters. Its existing
+   phase, limits, failure, identity-component and presentation metadata remain
+   owned inline in the transferred value; only its five record banks become
+   descriptors. Keep old CounterStaticKeys and native/coordinator realizations
+   available. Embedded-selected host aliases use the new adapter types.
+4. Inside the existing workspace.withGeometry closure, keep exactly one
+   `var bulkGeometry = consume geometry` as an ordinary typed caller local.
+   Borrow it with withUnsafeMutablePointer for the whole original control/
+   activation/host lifetime. A CounterGeometry-conforming private proxy forwards
+   every operation to that same StaticCounterGeometry value. Its references64,
+   layout/render/drawing metadata and raw workspace descriptors remain there;
+   the existing scopes1024/text1056/path20/plan112 bytes remain in their original
+   profile slot. No raw storage contains a scoped host, owner or semantic scope.
+5. A separate explicit ~Copyable/~Escapable bulk lease retains the geometry
+   pointer borrow and a bank-span borrow tied to the selected profile. The
+   ordinary proxy/adapters satisfy existing Copyable/Escapable generic protocol
+   requirements; the lease is stored only in scoped supplied/state ownership.
+   It cannot be discarded while an active or retired state retains adapters.
+
+### Exact proposed source set; no portable or recipe change
+
+- New RuntimeDerived/StaticCounterHostBorrowedWorkspaces.swift: three bank
+  adapters, CounterGeometry proxy, scoped bulk lease, selected host aliases.
+  Existing StaticCounter source glob already includes this naming family.
+- RuntimeDerived/StaticCounterEmbeddedBacking.swift: initialize/deinitialize
+  five original bank objects within the existing2412-byte slot; own the small
+  CounterHostKeys? descriptor and expose only a profile-borrowed bank span.
+- RuntimeDerived/CounterHostOwner.swift: selected CounterHostPipeline aliases;
+  supplied interaction/geometry types; retain the lease through every state
+  transition; extend lifetime dependencies without dropping existing ones.
+- RuntimeDerived/CounterHostProbe.swift: typed geometry caller local/pointer
+  scope and explicit lease construction; otherwise same owner construction,
+  snapshots, rejection helper, existing factory unwrap and lifecycle helper.
+- RuntimeDerived/CounterProfileStorage.swift, CounterStorageMeasurement.swift
+  and CounterStorageRegions.swift: actual selected backing/descriptor accounting.
+
+CounterPipelineOwner.swift's existing generic Geometry/Candidate/Committed/Hits
+interfaces and algorithm are planned unchanged. No portable Sources, factory,
+checker, image builder, compiler/flag/GOT, counter_main.c, C BSS reservation,
+workload/capacity/limit or new diagnostic package change. Any further required
+file or generic-interface change is UNKNOWN/outside this proposed set and must
+return to review before implementation. No opportunistic wider refactor.
+
+### Typed bank layout and physical accounting
+
+Existing per-profile slot is30176bytes, four slots total120704BSS, aligned8.
+Re-use ONLY interaction interval [24024,26436), length2412, alignment4.
+Let C/H/R be exact target MemoryLayout strides of the original three bank types.
+Place candidate at24024; candidateHits at24024+C; preparedCommitted at24024+C+H;
+committed at24024+C+H+R; committedHits at24024+C+H+2R; end24024+C+2H+2R.
+These are exact typed expressions, not invented numeric extents. Required
+pre-access checks: each type alignment≤4, each cursor aligned, pairwise disjoint,
+C+2H+2R≤2412; residual interval is padding charged once. The old owned-key type
+contains these same five types plus state/control metadata, providing the
+source-level fit rationale. Literal per-bank target strides/this re-layout's
+measured extent remain UNKNOWN until independently accepted layout evidence;
+no guessed value may become an unsafe load/bind or a relaxed bound.
+
+Initialize each original bank separately with its existing capacity2 initializer
+and nil slots/count0. Initialize the small owned-key descriptor with existing
+maximumComponentsPerKey24/maximumComponents48 and the same state defaults.
+Never initialize the old whole inline key aggregate in that interval as well.
+No extra bank or allocation is reserved. At profile end, first destroy the
+returned/remaining small descriptor after all borrows; deinitialize the five
+typed banks in reverse order. Slot3 is reused only after original failure host
+teardown and profile deinit; graph0 ends before complete0 initialization.
+
+Geometry is one existing ordinary value relocated into an explicit caller
+local, not new bank capacity. Its nominal size and any initializer/move scratch
+are part of stack evidence. The proxy pointer is additional small metadata.
+Audit candidate/prepared/committed identities, optional record arrays, each
+original bank header, owned-key metadata, descriptors and residual padding once
+under their true family. Pointer-wrapper MemoryLayout must never replace the
+backing's physical byte charge. Existing Dynamic/inline ledger paths remain.
+Same limits/capacities must accept the true new ledger; otherwise stop.
+
+### Ownership, lifetimes, exclusivity and retained versus removed states
+
+The proposed bulk lease constructor depends on BOTH borrowed geometry pointer
+and copied profile-bound bank span. Supplied initializer retains all existing
+model/root/semantic/Canvas/control dependencies and additionally copies the
+lease lifetime. Owner init remains consuming supplied plus activationSpan.
+CounterHostState inert retains supplied/lease; active retains coordinator, root
+cache, activationSpan AND lease; retired retains semantic/geometry proxy/key
+descriptors/activationSpan AND lease. Every consume-self switch restores that
+same lease along with the original state, including rejection/failure arms.
+No lease or original scope may be shortened on activation, quiesce or retirement.
+
+The generic pipeline still owns its ordinary proxy and key metadata, borrowing
+no raw scoped owner. Its model/root/semantic/Canvas/control dependencies remain
+unchanged. The containing scoped host state retains the additional bulk lease.
+Returned quiesced opportunity is used only inside the current state transition;
+its proxy/keys are transferred to retired state while retaining the same lease.
+Geometry reset and key reset occur at the same teardown step through the same
+physical values. Only after repeated teardown/stopped-input checks and host
+destruction does the geometry-pointer scope end; only after root/semantic/Canvas
+borrows end can profile bank destruction/reuse occur.
+
+At each source ownership transition there is one logical mutable owner of the
+interaction metadata and banks. Inert negative proposals borrow/inspect them;
+no mutation occurs through another retained bank adapter. Activation consumes
+supplied; factory consumes owner; phase helpers take inout same owner/host.
+Operations on candidate/prepared/committed banks address pairwise disjoint
+objects, and exchange checks cannot accept same-pointer operands. Immutable
+returned records remain value copies as today. No raw host placement, ambient
+lookup, extra global lease, aliased scratch role or deinitialization shortcut.
+
+RETAIN: supplied, owner, optional factory result, mutable host, full coordinator
+state, model ticket, semantic/Canvas/root scopes, activation span, all rejection/
+failure/producer/corpus/teardown state and original operation order.
+REMOVE FROM TRANSFERRED AGGREGATES: repeated inline five-bank payload and
+ordinary StaticCounterGeometry fields only; replace with descriptor plus lease.
+Do not remove the existing factory validation or assume optional unwrap elides.
+
+### Unchanged factory/oracle and explicit UNKNOWN semantic constraints
+
+Existing macOS/nRF preset factory and nil/failure behavior stay exactly intact.
+CounterHostOwner construction/binding validation, full assembly report and
+caller identity selection stay intact. The actual counterRunHostLifecycle call
+keeps its exact checker seam; escaped declaration/use and host-copy/Dynamic
+negatives are unchanged. Static must still fail with ALL exact current tuple
+entries: escaped lifetime diagnostic, activationBacking, root.withLifetime,
+semantic.withLifetime, canvas.withLifetime, withUnsafeMutablePointer. The new
+lease adds dependency; it cannot replace those established provenance sources.
+
+UNKNOWN, semantic review required before readiness: whether existing generic
+bank protocol contracts or any relevant interaction operation require an
+independent mutable value copy rather than the proposed single-owner pointer
+adapter. The private construction/consume/inout discipline is the proposed
+proof; it must be checked against those contracts, not assumed from Copyable.
+If independent copies are required, this adapter plan is NOT valid as written;
+do not silently weaken semantics or implement a COW heap/supplementary bank.
+
+UNKNOWN, language/lifetime review: exact lease storage/annotations and every
+consume-self branch must keep new geometry/profile dependencies while satisfying
+existing nonescapable generic constraints and inout exclusivity. Ordinary
+protocol adapters cannot themselves claim to be ~Escapable if their current
+protocols require Escapable; the separate lease/container is essential.
+Native/Dynamic selected realization stays inline; conditional aliases/lease
+plumbing must not accidentally change their types or behavior. The exact
+minimal native plumbing is UNKNOWN and must be resolved by independent design
+review within the named fixture set, not a compiler trial.
+
+These are proof obligations, distinct from empirical stack fit. If semantic
+review rejects the copy or lease argument, this candidate cannot be implemented
+under the present design. The precise options are revise only this fixture
+ownership plan with a demonstrated legal borrow, or return a concrete changed
+ownership/contract choice through existing governance. No such change is
+asserted necessary or approved now, and no broader compiler investigation is
+automatically opened by this design.
+
+### Later validation boundary; no allowance granted here
+
+If independently accepted, the proposal must receive exact finite implementation
+dispatch before edits/checks. Required evidence: real target typed bank layout/
+alignment/accounting; unchanged native Static/Dynamic assertion counts and all
+exact negatives; fresh Pi/nRF current-source receipts; supported image with
+unchanged ABI/GOT/heap/RAM/flash and actual feasible nested construction/helper/
+initializer/corpus/click stack including alignment/applicable IRQ overlap≤27648.
+Native gates must meaningfully exercise adapter semantics as independently
+reviewed; native inline-only passes alone cannot prove Embedded adapters. How
+to provide that focused native parity check without altering the corpus is
+UNKNOWN test-maintenance detail, not permission to weaken existing gates.
+
+Nominal payload reduction is a source mechanism; actual layout, emitted copies,
+initializer scratch and whole nested fit remain UNPROVED validation obligations.
+Do not equate smaller types/locals with accepted image fit. No implementation
+readiness or promised fit is claimed. This design-only section is the entire
+new artifact; no standalone note, compiler/test/build/source attempt, diagnostic
+renewal, new bank/BSS/heap/workload/bound or hardware/P09 action occurred.
+STOP for independent disposition; P08/R07/T8.1 remain incomplete.
