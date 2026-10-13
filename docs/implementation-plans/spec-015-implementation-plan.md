@@ -53,6 +53,9 @@ not additional authorization to rerun an MVP implementation or reopen experiment
   residual. Every obligation needed by an adopted P08 path stays in P08 even if
   expensive or failing; full criteria cannot close from partial coverage. SO-09
   carries exact residual/source/evidence rows (or explicit empty residual) to I4-07.
+  **SO-01 evidence:** [caller/necessity inventory](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so01-inventory.md)
+  records P08 applicability and I4-07 residuals; all criteria remain unmet.
+  SO-02 is next; no physical design or production evidence exists yet.
   **Readiness:** sequential SO-01/SO-02 preparation is authorized. Source,
   compiler/build/repair work awaits the separately recorded bounded allowance;
   all closed budgets and stop guards remain. No design-note metadata link is
@@ -557,9 +560,9 @@ exactly once here with its implementation work and expected evidence.
 | `HC-RD-002` | `T8.1` | P08 exit fixtures; P10 differential/negative tests; P11 actual resource/connected disposition; P12 owner report | pending |
 | `HC-RD-003` | `T8.1` | P08 exit fixtures; P10 differential/negative tests; P11 actual resource/connected disposition; P12 owner report | pending |
 | `HC-RD-004` | `T8.1` | P08 exit fixtures; P10 differential/negative tests; P11 actual resource/connected disposition; P12 owner report | pending |
-| `HC-SO-001` | `T8.1`; SO-05/07; SO-09 disposition | Actual four-profile supplied/pipeline/coordinator/host/retirement chains and complete independently classified carrier negative matrix; P10–P12 final obligations and I4-07 residual reconciliation | unmet; P08 applicability pending SO-01; full criterion open |
-| `HC-SO-002` | `T8.1`; SO-02/04/05/06; SO-09 disposition | Old/new binding/init/control/audit/destructor inventory, both-profile failure/cleanup/backing-last and unchanged action/semantic/pixel controls; P10–P12 final obligations and I4-07 residual reconciliation | unmet; P08 applicability pending SO-01; full criterion open |
-| `HC-SO-003` | `T8.1`; SO-01/07/08/09; SO-09 disposition | Current caller/four-route inventory, early Pi/nRF images, ABI/allocator/complete stack/resources and independent P08 exit; HC-RD-003 stays open; P10–P12 final obligations and I4-07 residual reconciliation | unmet; P08 applicability pending SO-01; full criterion open |
+| `HC-SO-001` | `T8.1`; SO-05/07; SO-09 disposition | Actual four-profile supplied/pipeline/coordinator/host/retirement chains and complete independently classified carrier negative matrix; P10–P12 final obligations and I4-07 residual reconciliation | unmet; P08 applicability recorded in SO-01; full criterion open |
+| `HC-SO-002` | `T8.1`; SO-02/04/05/06; SO-09 disposition | Old/new binding/init/control/audit/destructor inventory, both-profile failure/cleanup/backing-last and unchanged action/semantic/pixel controls; P10–P12 final obligations and I4-07 residual reconciliation | unmet; P08 applicability recorded in SO-01; full criterion open |
+| `HC-SO-003` | `T8.1`; SO-01/07/08/09; SO-09 disposition | Current caller/four-route inventory, early Pi/nRF images, ABI/allocator/complete stack/resources and independent P08 exit; HC-RD-003 stays open; P10–P12 final obligations and I4-07 residual reconciliation | unmet; P08 applicability recorded in SO-01; full criterion open |
 
 ## Milestones and Tasks
 

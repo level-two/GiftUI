@@ -62,6 +62,9 @@ not additional authorization to rerun an MVP implementation or reopen experiment
   residual. Every obligation needed by an adopted P08 path stays in P08 even if
   expensive or failing; full criteria cannot close from partial coverage. SO-09
   carries exact residual/source/evidence rows (or explicit empty residual) to I4-07.
+  **SO-01 evidence:** [caller/necessity inventory](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so01-inventory.md)
+  records P08 applicability and I4-07 residuals; all criteria remain unmet.
+  SO-02 is next; no physical design or production evidence exists yet.
   **Readiness:** sequential SO-01/SO-02 preparation is authorized. Source,
   compiler/build/repair work awaits the separately recorded bounded allowance;
   all closed budgets and stop guards remain. No design-note metadata link is
@@ -322,9 +325,9 @@ exactly once below.
 | `RP-RD-002` | `T11.1` | P07 exit fixtures; P10 differential/negative tests; P11 actual resource/connected disposition; P12 owner report | P07 [package exit review](../../Tests/ContractFixtures/SPEC013/Evidence/rfc-014-p07/independent-repair-exit-review.md) passes; R1/R2 resolved; P10–P12 obligations open |
 | `RP-RD-003` | `T11.1` | P07 exit fixtures; P10 differential/negative tests; P11 actual resource/connected disposition; P12 owner report | P07 [package exit review](../../Tests/ContractFixtures/SPEC013/Evidence/rfc-014-p07/independent-repair-exit-review.md) passes; R1/R2 resolved; P10–P12 obligations open |
 | `RP-RD-004` | `T11.1` | P07 exit fixtures; P10 differential/negative tests; P11 actual resource/connected disposition; P12 owner report | P07 [package exit review](../../Tests/ContractFixtures/SPEC013/Evidence/rfc-014-p07/independent-repair-exit-review.md) passes; R1/R2 resolved; P10–P12 obligations open |
-| `RP-SO-001` | `T11.1`; SO-02/04/06; SO-09 disposition | Typed physical/address inventory, full retained accounting, initialization-prefix fault unwind and capacity tests; P10–P12 final obligations and I4-07 residual reconciliation | unmet; P08 applicability pending SO-01; full criterion open |
-| `RP-SO-002` | `T11.1`; SO-02/05/06; SO-09 disposition | Both-profile early-return/activation/candidate/quiescence/repeat-session cleanup, Optional moves and classified exclusivity pairs; P10–P12 final obligations and I4-07 residual reconciliation | unmet; P08 applicability pending SO-01; full criterion open |
-| `RP-SO-003` | `T11.1`; SO-05/07/08; SO-09 disposition | Complete four-profile carriers; linked ABI, nested-stack/IRQ/RAM/flash, Static zero heap and matched Dynamic costs; P10–P12 final obligations and I4-07 residual reconciliation | unmet; P08 applicability pending SO-01; full criterion open |
+| `RP-SO-001` | `T11.1`; SO-02/04/06; SO-09 disposition | Typed physical/address inventory, full retained accounting, initialization-prefix fault unwind and capacity tests; P10–P12 final obligations and I4-07 residual reconciliation | unmet; P08 applicability recorded in SO-01; full criterion open |
+| `RP-SO-002` | `T11.1`; SO-02/05/06; SO-09 disposition | Both-profile early-return/activation/candidate/quiescence/repeat-session cleanup, Optional moves and classified exclusivity pairs; P10–P12 final obligations and I4-07 residual reconciliation | unmet; P08 applicability recorded in SO-01; full criterion open |
+| `RP-SO-003` | `T11.1`; SO-05/07/08; SO-09 disposition | Complete four-profile carriers; linked ABI, nested-stack/IRQ/RAM/flash, Static zero heap and matched Dynamic costs; P10–P12 final obligations and I4-07 residual reconciliation | unmet; P08 applicability recorded in SO-01; full criterion open |
 
 ## Milestones and Tasks
 

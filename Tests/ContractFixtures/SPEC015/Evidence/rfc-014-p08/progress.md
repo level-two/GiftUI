@@ -1,5 +1,54 @@
 # RFC-014 P08 execution receipt — 2026-10-11
 
+## SO-01 inventory dispatch — 2026-10-13
+
+Input: clean `59d98712`, accepted ADR-039, approved/applied S11/S13/S15,
+the adopted shared/owner SO plans and the P08/I4-07 delivery allocation.
+Eugene authorized sequential P08 work with a commit per step. Dispatch before
+inventory: C3/R3, Strong `gpt-6.1-sol`, `high`; task `p08_so01_inventory`.
+One documentation-only SO-01 step inventories six protocols, both states,
+every maintained direct/transitive/generated/test consumer and all four actual
+counter routes. It records concrete P08 necessity, owned compatibility, old
+oracles, compiler/feature identities and explicit I4-07 residuals.
+
+Allowed changes: this receipt, `scoped-storage/so01-inventory.md`, its current
+tracked caller index/JSON hit list and necessary derived plan/navigation links.
+Allowed checks: source/document inspection,
+caller-search inventory, local Markdown links, governance validation,
+`git diff --check` and diff review; then one documentation commit. No source
+edit, compiler, test/build, experiment, SO-02 design or hardware action is
+authorized by this dispatch. Contract/scope defects stop for upstream review;
+local physical realization questions are handed to SO-02.
+
+No production attempt or repair budget is allocated or reopened. Historical
+helper 2/2, B03 1/1, GOT/image/backing-image, phase correction/image and IR
+capture 1/1 remain closed; the consecutive-unproductive guard persists.
+The qualified 58,648-byte construction frame still exceeds 27,648. All nine
+SO criteria and P08/R07/T8.1 remain open; no target fit or conformance is claimed.
+
+SO-01 result: [necessity/caller inventory](scoped-storage/so01-inventory.md),
+[tracked caller index](scoped-storage/so01-caller-index.md) and
+[machine-readable hit list](scoped-storage/so01-current-callers.json) record
+171 tracked files / 531 file-symbol pairs at `59d98712`, grouped D01–D34
+dispositions, exact four route/compiler/feature identities, all nine criterion
+allocations, preserved oracles and explicit I4-07 residual review/integration/
+conformance work. Every frozen Evidence source snapshot and disposable experiment
+is excluded from maintained caller migration. Counter uses operation-only bridge
+dispatch; retained dispatchers/analyzer and native workspace returns stay owned.
+Removing both withBacking APIs requires four maintained caller repairs, including
+Cycle measurement/regions compatibility; this does not reopen P07.
+
+Documentation checks pass: all 171 indexed tracked source hashes and symbol/line
+pairs match; 283 local Markdown file links resolve; governance passes with 197
+nodes / 2,014 edges and all existing task manifests; `git diff --check` passes.
+Diff review contains only this receipt, the three inventory records and shared/
+owner plan navigation/dispositions. No source, compiler, build/test or production
+repair ran. No manifest/authority/status change was needed. SO-01 is complete as
+inventory only; all nine criteria remain unmet. SO-02 next receives the exact
+old binding/init/take/control/audit/deinit chain, carrier/return paths and unproved
+physical realization/fit questions, followed by separate Strong design review.
+No new contract/scope blocker was identified and no production budget was opened.
+
 ## Approved contract application dispatch — 2026-10-13
 
 Input: clean `f01ee97c`. Eugene replied to the concrete ADR/Spec acceptance

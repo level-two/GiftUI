@@ -1,6 +1,13 @@
 # RFC-014 bounded implementation sequence — 2026-10-10
 
 **Current P08 contract checkpoint — 2026-10-13.**
+[SO-01 inventory](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so01-inventory.md)
+records concrete P08 dependencies, all maintained caller dispositions, four
+route/compiler identities and I4-07 residual reconciliation. Its mandatory
+Cycle measurement compatibility fixes preserve owned paths and do not reopen
+P07. SO-02 physical design is the next sequential task; no source/production
+allowance or criterion completion follows from this documentation result.
+
 [Explicit acceptance/application](rfc-015-contract-acceptance.md) accepts ADR-039,
 applies exact S11/S13/S15 and adopts the [P08 handoff](rfc-015-p08-handoff.md).
 SO-01 inventory then SO-02 physical design are authorized preparation; production

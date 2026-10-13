@@ -53,6 +53,9 @@ not additional authorization to rerun an MVP implementation or reopen experiment
   residual. Every obligation needed by an adopted P08 path stays in P08 even if
   expensive or failing; full criteria cannot close from partial coverage. SO-09
   carries exact residual/source/evidence rows (or explicit empty residual) to I4-07.
+  **SO-01 evidence:** [caller/necessity inventory](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so01-inventory.md)
+  records P08 applicability and I4-07 residuals; all criteria remain unmet.
+  SO-02 is next; no physical design or production evidence exists yet.
   **Readiness:** sequential SO-01/SO-02 preparation is authorized. Source,
   compiler/build/repair work awaits the separately recorded bounded allowance;
   all closed budgets and stop guards remain. No design-note metadata link is
@@ -286,9 +289,9 @@ exactly once below.
 | `IN-013` — Every staged record binds the exact publishable target generation before finish and observable non-publication discards Interaction once | `T3.4`-`T3.6`, `T5.1`, `T5.5`, `T7.2`, `T8.2`, `T10.1`, `T10.2`, `T10.3`, `T12.1` | Initial/preserved/replaced/discarded target-generation and exact-once discard transcript; RFC-014 P10 functional / P11 resource-connected / P12 conformance evidence | migration pending; prior evidence remains baseline only |
 | `IN-RD-001` | `T12.1` | P05 exit fixtures; P10 differential/negative tests; P11 actual resource/connected disposition; P12 owner report | pending |
 | `IN-RD-002` | `T12.1` | P05 exit fixtures; P10 differential/negative tests; P11 actual resource/connected disposition; P12 owner report | pending |
-| `IN-SO-001` | `T12.1`; SO-03/05/07; SO-09 disposition | Six declarations and state/initializer unions, conditional owned and failable Optional positive/negative pairs; P10–P12 final obligations and I4-07 residual reconciliation | unmet; P08 applicability pending SO-01; full criterion open |
-| `IN-SO-002` | `T12.1`; SO-04/06; SO-09 disposition | Paired exchange address/count/role transcripts, capacity boundaries, acceptance/refusal and existing identity/generation/action outcomes; P10–P12 final obligations and I4-07 residual reconciliation | unmet; P08 applicability pending SO-01; full criterion open |
-| `IN-SO-003` | `T12.1`; SO-01/03/04/06/07; SO-09 disposition | Caller disposition and owned analyzer/native-return compatibility; client negatives and physical measurement reconciliation; P10–P12 final obligations and I4-07 residual reconciliation | unmet; P08 applicability pending SO-01; full criterion open |
+| `IN-SO-001` | `T12.1`; SO-03/05/07; SO-09 disposition | Six declarations and state/initializer unions, conditional owned and failable Optional positive/negative pairs; P10–P12 final obligations and I4-07 residual reconciliation | unmet; P08 applicability recorded in SO-01; full criterion open |
+| `IN-SO-002` | `T12.1`; SO-04/06; SO-09 disposition | Paired exchange address/count/role transcripts, capacity boundaries, acceptance/refusal and existing identity/generation/action outcomes; P10–P12 final obligations and I4-07 residual reconciliation | unmet; P08 applicability recorded in SO-01; full criterion open |
+| `IN-SO-003` | `T12.1`; SO-01/03/04/06/07; SO-09 disposition | Caller disposition and owned analyzer/native-return compatibility; client negatives and physical measurement reconciliation; P10–P12 final obligations and I4-07 residual reconciliation | unmet; P08 applicability recorded in SO-01; full criterion open |
 
 ## Milestones and Tasks
 

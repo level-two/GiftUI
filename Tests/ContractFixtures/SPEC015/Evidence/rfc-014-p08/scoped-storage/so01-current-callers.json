@@ -1,0 +1,4827 @@
+{
+  "schema_version": 1,
+  "source_commit": "59d98712",
+  "kind": "read-only tracked current-source symbol inventory, not compiler resolution or edit allowlist",
+  "roots": [
+    "Sources",
+    "Tests (excluding every Evidence directory)",
+    "scripts",
+    "Firmware"
+  ],
+  "patterns": [
+    "Interaction(?:CandidateRecordStorage|CommittedRecordStorage|HitRegionStorage|CandidateBuilder|GestureResolver|CommittedActionView|OwnedKeyState|State|Dispatcher)",
+    "(?:Static(?:Six|Two)?|Dynamic)Interaction\\w*",
+    "Runtime(?:Record(?:Canvas)?InteractionBridge|InteractionCandidate\\w*|InteractionDispatcher|InteractionMutationOwner|CompletePipeline\\w*|OpportunityQuiescence)",
+    "ExecutionGestureAdapter",
+    "(?:Static|Dynamic)RuntimeExecutionCoordinator",
+    "SignalAnalyzerPreset(?:LiveOwner|HostInstance|HostInstances)",
+    "(?:Counter|Cycle)(?:CandidateBacking|CommittedBacking|HitBacking|ReturnedWorkspaces|PipelineOwner|StaticKeys|DynamicKeys|Host\\w*|DynamicHost\\w*)",
+    "(?:DynamicSignalAnalyzer(?:PresentationPipeline|ActionDispatcher)|StaticSignalAnalyzer(?:ActionDispatcher|NRF(?:EmbeddedInteractionOwner|ApplicationInputOwner|ApplicationStorage|ApplicationOwner|InteractionSession|InteractionHandler|InteractionCandidateProducer|PresentationCommitter)))",
+    "withBacking",
+    "returnWorkspaces",
+    "takeQuiescedOpportunity"
+  ],
+  "tracked_files_only": true,
+  "excluded": [
+    "Tests/**/Evidence/** frozen receipts and source snapshots",
+    "experiments/** disposable non-authoritative Spike code",
+    ".build/** generated build outputs",
+    ".toolchains/** compiler/SDK contents"
+  ],
+  "files": [
+    {
+      "path": "Package.swift",
+      "sha256": "65eb3e474446adf1b255c0a3369f2b59e19ce22bca28c140701e8cdf134cd6c4",
+      "disposition": "O/P: D33; existing generator/configuration compatibility, no scoped-owner source generation",
+      "hits": []
+    },
+    {
+      "path": "Sources/GiftUIHostConfiguration/Generated/SignalAnalyzerPresets.generated.swift",
+      "sha256": "2a541a9b1efbb142f6f6d7d5773ed12c4842d2dfe9e289750c9dc83205306402",
+      "disposition": "O: D33; generated limits/resources, no retained scoped-bank migration",
+      "hits": []
+    },
+    {
+      "path": "Sources/GiftUIHostConfiguration/SignalAnalyzerPresetHostInstance.swift",
+      "sha256": "8f003af6658f30857ef2db1d93d762ba6725b91151d58705123d5597898bdea4",
+      "disposition": "O/P: D10/D27; owned banks or existing transitive host/runtime contract; compatibility only",
+      "hits": [
+        {
+          "symbol": "SignalAnalyzerPresetHostInstance",
+          "lines": [
+            48,
+            87,
+            92,
+            94,
+            106,
+            108,
+            122,
+            124,
+            138,
+            140,
+            150
+          ]
+        },
+        {
+          "symbol": "SignalAnalyzerPresetLiveOwner",
+          "lines": [
+            42,
+            49,
+            89,
+            103,
+            118,
+            134
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Sources/GiftUIInteraction/ExecutionGestureAdapter.swift",
+      "sha256": "f393fa156862774f0d92fc877a51528b9e5764e10c8678fcc9dca4ea260f107f",
+      "disposition": "P: D01\u2013D08; exact shared declaration or operation-only bounds",
+      "hits": [
+        {
+          "symbol": "ExecutionGestureAdapter",
+          "lines": [
+            4
+          ]
+        },
+        {
+          "symbol": "InteractionGestureResolver",
+          "lines": [
+            10,
+            24,
+            41
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Sources/GiftUIInteraction/InteractionOwnedKeyState.swift",
+      "sha256": "54271aaf4d1fc7f4060c44b03124db356802efbf69ddd56f829964f92dd55af8",
+      "disposition": "P: D01\u2013D08; exact shared declaration or operation-only bounds",
+      "hits": [
+        {
+          "symbol": "InteractionCandidateBuilder",
+          "lines": [
+            9
+          ]
+        },
+        {
+          "symbol": "InteractionCandidateRecordStorage",
+          "lines": [
+            11
+          ]
+        },
+        {
+          "symbol": "InteractionCommittedActionView",
+          "lines": [
+            9
+          ]
+        },
+        {
+          "symbol": "InteractionCommittedRecordStorage",
+          "lines": [
+            11
+          ]
+        },
+        {
+          "symbol": "InteractionGestureResolver",
+          "lines": [
+            9
+          ]
+        },
+        {
+          "symbol": "InteractionHitRegionStorage",
+          "lines": [
+            12
+          ]
+        },
+        {
+          "symbol": "InteractionOwnedKeyState",
+          "lines": [
+            8
+          ]
+        },
+        {
+          "symbol": "InteractionState",
+          "lines": [
+            16,
+            26
+          ]
+        },
+        {
+          "symbol": "withBacking",
+          "lines": [
+            38,
+            44
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Sources/GiftUIInteraction/InteractionState.swift",
+      "sha256": "030ac5f13c350694c1bb75b9a74c46a204949441ce52f760885d72b63dcb961c",
+      "disposition": "P: D01\u2013D08; exact shared declaration or operation-only bounds",
+      "hits": [
+        {
+          "symbol": "InteractionCandidateBuilder",
+          "lines": [
+            6
+          ]
+        },
+        {
+          "symbol": "InteractionCandidateRecordStorage",
+          "lines": [
+            9
+          ]
+        },
+        {
+          "symbol": "InteractionCommittedActionView",
+          "lines": [
+            6
+          ]
+        },
+        {
+          "symbol": "InteractionCommittedRecordStorage",
+          "lines": [
+            10
+          ]
+        },
+        {
+          "symbol": "InteractionGestureResolver",
+          "lines": [
+            7
+          ]
+        },
+        {
+          "symbol": "InteractionHitRegionStorage",
+          "lines": [
+            11
+          ]
+        },
+        {
+          "symbol": "InteractionState",
+          "lines": [
+            5
+          ]
+        },
+        {
+          "symbol": "withBacking",
+          "lines": [
+            47
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Sources/GiftUIInteraction/InteractionStorage.swift",
+      "sha256": "3a2e4e4907316de134814c58cb07735ae87d65965ad45e7634148f15bf4356d3",
+      "disposition": "P: D01\u2013D08; exact shared declaration or operation-only bounds",
+      "hits": [
+        {
+          "symbol": "InteractionCandidateRecordStorage",
+          "lines": [
+            22
+          ]
+        },
+        {
+          "symbol": "InteractionCommittedRecordStorage",
+          "lines": [
+            36
+          ]
+        },
+        {
+          "symbol": "InteractionHitRegionStorage",
+          "lines": [
+            47
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Sources/GiftUIInteraction/InteractionValues.swift",
+      "sha256": "49bcf84b9dbbdb93c0990d51c65d61e536579c454978aa42ffc4a5e5e3df97cc",
+      "disposition": "P: D01\u2013D08; exact shared declaration or operation-only bounds",
+      "hits": [
+        {
+          "symbol": "InteractionCandidateBuilder",
+          "lines": [
+            96
+          ]
+        },
+        {
+          "symbol": "InteractionCommittedActionView",
+          "lines": [
+            141
+          ]
+        },
+        {
+          "symbol": "InteractionDispatcher",
+          "lines": [
+            149
+          ]
+        },
+        {
+          "symbol": "InteractionGestureResolver",
+          "lines": [
+            117
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Sources/GiftUIMacros/CanvasWitnessLowering.swift",
+      "sha256": "e84c9b92d9819a0954213a7cfa9252c3ee40006457f9eb5e6e3d536cdd5bd84c",
+      "disposition": "O/P: D33; existing generator/configuration compatibility, no scoped-owner source generation",
+      "hits": []
+    },
+    {
+      "path": "Sources/GiftUIMacros/FiniteSourceLowering.swift",
+      "sha256": "7f1486a71ea138a5a5909c3f8e5fddabe1a338f70b3578f70d7730e34435ab81",
+      "disposition": "O/P: D33; existing generator/configuration compatibility, no scoped-owner source generation",
+      "hits": []
+    },
+    {
+      "path": "Sources/GiftUIMacros/GiftUIMacros.swift",
+      "sha256": "db3c0786628995ad46879bb1af674eb94c1fb9fe33c8d702632ed9588f46161b",
+      "disposition": "O/P: D33; existing generator/configuration compatibility, no scoped-owner source generation",
+      "hits": []
+    },
+    {
+      "path": "Sources/GiftUIMacros/ObservableStateHostMacro.swift",
+      "sha256": "2b39b7ff373b4a524f6c627f8668e0cc784cc41c5b81474751be527c525ffc8d",
+      "disposition": "O/P: D33; existing generator/configuration compatibility, no scoped-owner source generation",
+      "hits": []
+    },
+    {
+      "path": "Sources/GiftUIReferenceTextResources/Generated/ReferenceBitmapPayload.generated.swift",
+      "sha256": "5c0e5726f559ee9c43815219f7278b6dd75090e86a20b31e02428a53c396a6ef",
+      "disposition": "O: D33; generated limits/resources, no retained scoped-bank migration",
+      "hits": []
+    },
+    {
+      "path": "Sources/GiftUIReferenceTextResources/Generated/ReferenceCatalogue.generated.swift",
+      "sha256": "7a4085655de8b4738aeb9e27956922684c2d56235679b4775a7bd4f6de7ff70b",
+      "disposition": "O: D33; generated limits/resources, no retained scoped-bank migration",
+      "hits": []
+    },
+    {
+      "path": "Sources/GiftUIReferenceTextResources/Generated/ReferenceOutlinePayload.generated.swift",
+      "sha256": "acc9dab1fb43cb20cfcb460dfbb2e902d6dc9096c5b2ecbc15d19f4c42d84551",
+      "disposition": "O: D33; generated limits/resources, no retained scoped-bank migration",
+      "hits": []
+    },
+    {
+      "path": "Sources/GiftUIRuntimeCore/RuntimeCompletePipeline.swift",
+      "sha256": "6a591ea81a12c651512e888c6616c28e1160e20886315d052a350837b98a2f72",
+      "disposition": "O/P: D10/D27; owned banks or existing transitive host/runtime contract; compatibility only",
+      "hits": [
+        {
+          "symbol": "RuntimeCompletePipeline",
+          "lines": [
+            109
+          ]
+        },
+        {
+          "symbol": "RuntimeCompletePipelineOwner",
+          "lines": [
+            85,
+            113,
+            128,
+            381,
+            412,
+            451
+          ]
+        },
+        {
+          "symbol": "RuntimeCompletePipelineResult",
+          "lines": [
+            79,
+            112,
+            127,
+            278,
+            380,
+            411
+          ]
+        },
+        {
+          "symbol": "RuntimeCompletePipelineStage",
+          "lines": [
+            4,
+            73,
+            405,
+            462
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Sources/GiftUIRuntimeCore/RuntimeCoordinatorContracts.swift",
+      "sha256": "c19a8f8cb381a933dcb1d12d1cfc8df738f9408717d88b661e35a264b192bddb",
+      "disposition": "O/P: D10/D27; owned banks or existing transitive host/runtime contract; compatibility only",
+      "hits": [
+        {
+          "symbol": "RuntimeOpportunityQuiescence",
+          "lines": [
+            34
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Sources/GiftUIRuntimeCore/RuntimeInteractionCandidateCoordinator.swift",
+      "sha256": "a3f42f1e3bc73c6da45f83aa29992acfe8e2c0fe71457a863dfb10310cc769dc",
+      "disposition": "P: D01\u2013D08; exact shared declaration or operation-only bounds",
+      "hits": [
+        {
+          "symbol": "InteractionCandidateBuilder",
+          "lines": [
+            59,
+            133
+          ]
+        },
+        {
+          "symbol": "RuntimeInteractionCandidateBuildResult",
+          "lines": [
+            41,
+            56
+          ]
+        },
+        {
+          "symbol": "RuntimeInteractionCandidateCoordinator",
+          "lines": [
+            47
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Sources/GiftUIRuntimeCore/RuntimeInteractionCandidateResolution.swift",
+      "sha256": "62070062fd8829facecacc23b2baebd9333df64213291e99dd19344318be0cf9",
+      "disposition": "P: D01\u2013D08; exact shared declaration or operation-only bounds",
+      "hits": [
+        {
+          "symbol": "InteractionCandidateBuilder",
+          "lines": [
+            69
+          ]
+        },
+        {
+          "symbol": "RuntimeInteractionCandidateResolution",
+          "lines": [
+            56,
+            67
+          ]
+        },
+        {
+          "symbol": "RuntimeInteractionCandidateTransaction",
+          "lines": [
+            61
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Sources/GiftUIRuntimeCore/RuntimeInteractionCandidateTransaction.swift",
+      "sha256": "2b3b49bd290334e646caf00d75b67d38d322aac4afbc0999814a8c4c313ba687",
+      "disposition": "P: D01\u2013D08; exact shared declaration or operation-only bounds",
+      "hits": [
+        {
+          "symbol": "InteractionCandidateBuilder",
+          "lines": [
+            25
+          ]
+        },
+        {
+          "symbol": "RuntimeInteractionCandidateBuildResult",
+          "lines": [
+            22
+          ]
+        },
+        {
+          "symbol": "RuntimeInteractionCandidateCoordinator",
+          "lines": [
+            33
+          ]
+        },
+        {
+          "symbol": "RuntimeInteractionCandidateTransaction",
+          "lines": [
+            10
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Sources/GiftUIRuntimeCore/RuntimeInteractionDispatcher.swift",
+      "sha256": "260298b71d56e47f5a5d52e12f89e584137a7fbc92e031eae7b10d20c711e1aa",
+      "disposition": "O/P: D09; retained owned Records explicit constraints",
+      "hits": [
+        {
+          "symbol": "InteractionCommittedActionView",
+          "lines": [
+            8
+          ]
+        },
+        {
+          "symbol": "InteractionDispatcher",
+          "lines": [
+            6
+          ]
+        },
+        {
+          "symbol": "RuntimeInteractionDispatcher",
+          "lines": [
+            5
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Sources/GiftUIRuntimeCore/RuntimeInteractionMutationOwner.swift",
+      "sha256": "a0581fb08298386442093a8ca8e6203baa94e040d8c898341f95fb3d98844122",
+      "disposition": "O/P: D10/D27; owned banks or existing transitive host/runtime contract; compatibility only",
+      "hits": [
+        {
+          "symbol": "InteractionDispatcher",
+          "lines": [
+            16
+          ]
+        },
+        {
+          "symbol": "RuntimeInteractionMutationOwner",
+          "lines": [
+            12
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Sources/GiftUIRuntimeCore/RuntimeRecordCanvasInteractionBridge.swift",
+      "sha256": "a0c386b5dfaf05864bf374644d19ee59f0b254313ffe72c871dcbe983ed69ef9",
+      "disposition": "P: D01\u2013D08; exact shared declaration or operation-only bounds",
+      "hits": [
+        {
+          "symbol": "InteractionCandidateRecordStorage",
+          "lines": [
+            22
+          ]
+        },
+        {
+          "symbol": "InteractionCommittedRecordStorage",
+          "lines": [
+            22
+          ]
+        },
+        {
+          "symbol": "InteractionHitRegionStorage",
+          "lines": [
+            23
+          ]
+        },
+        {
+          "symbol": "InteractionOwnedKeyState",
+          "lines": [
+            19
+          ]
+        },
+        {
+          "symbol": "RuntimeRecordInteractionBridge",
+          "lines": [
+            10
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Sources/GiftUIRuntimeCore/RuntimeRecordInteractionBridge.swift",
+      "sha256": "a6c4fe9a1471daf3b8ee3610d98b98308046abb630ce0956df7235cfe26cf010",
+      "disposition": "P: D01\u2013D08; exact shared declaration or operation-only bounds",
+      "hits": [
+        {
+          "symbol": "InteractionCandidateRecordStorage",
+          "lines": [
+            20,
+            45
+          ]
+        },
+        {
+          "symbol": "InteractionCommittedActionView",
+          "lines": [
+            91
+          ]
+        },
+        {
+          "symbol": "InteractionCommittedRecordStorage",
+          "lines": [
+            20,
+            45
+          ]
+        },
+        {
+          "symbol": "InteractionHitRegionStorage",
+          "lines": [
+            21,
+            46
+          ]
+        },
+        {
+          "symbol": "InteractionOwnedKeyState",
+          "lines": [
+            17,
+            41
+          ]
+        },
+        {
+          "symbol": "RuntimeRecordInteractionBridge",
+          "lines": [
+            10
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Sources/GiftUIRuntimeDynamic/DynamicInteractionStorage.swift",
+      "sha256": "374c7412495790f1de8e7e336be2902d7012d223edb0130c15ad4e422fdba904",
+      "disposition": "O/P: D10/D27; owned banks or existing transitive host/runtime contract; compatibility only",
+      "hits": [
+        {
+          "symbol": "DynamicInteractionCandidateStorage",
+          "lines": [
+            4,
+            141
+          ]
+        },
+        {
+          "symbol": "DynamicInteractionCommittedStorage",
+          "lines": [
+            52,
+            142
+          ]
+        },
+        {
+          "symbol": "DynamicInteractionHitStorage",
+          "lines": [
+            96,
+            143
+          ]
+        },
+        {
+          "symbol": "DynamicInteractionState",
+          "lines": [
+            140
+          ]
+        },
+        {
+          "symbol": "InteractionCandidateRecordStorage",
+          "lines": [
+            5
+          ]
+        },
+        {
+          "symbol": "InteractionCommittedRecordStorage",
+          "lines": [
+            53
+          ]
+        },
+        {
+          "symbol": "InteractionHitRegionStorage",
+          "lines": [
+            97
+          ]
+        },
+        {
+          "symbol": "InteractionState",
+          "lines": [
+            140
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Sources/GiftUIRuntimeDynamic/DynamicRuntimeExecutionBindingAdapter.swift",
+      "sha256": "ad4671bd154523175ee1cf691864a7c08d79ca29c4aa1c8af2df19c9c2f03847",
+      "disposition": "O/P: D10/D27; owned banks or existing transitive host/runtime contract; compatibility only",
+      "hits": [
+        {
+          "symbol": "DynamicRuntimeExecutionCoordinator",
+          "lines": [
+            15
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Sources/GiftUIRuntimeDynamic/DynamicRuntimeExecutionCoordinator.swift",
+      "sha256": "96689a3086bf2bc22f158a6aac1c84163b641b4da0d8fdc1a382047da26b306b",
+      "disposition": "O/P: D20; preserve existing complete scoped constraints/Optional union",
+      "hits": [
+        {
+          "symbol": "DynamicRuntimeExecutionCoordinator",
+          "lines": [
+            13,
+            92
+          ]
+        },
+        {
+          "symbol": "RuntimeOpportunityQuiescence",
+          "lines": [
+            18
+          ]
+        },
+        {
+          "symbol": "takeQuiescedOpportunity",
+          "lines": [
+            79
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Sources/GiftUIRuntimeDynamic/DynamicRuntimeProfileBinding.swift",
+      "sha256": "02e75da1b712f1764b84bfa63d3fa92706ede11c7dd927a261bb348c572e28cb",
+      "disposition": "O/P: D10/D27; owned banks or existing transitive host/runtime contract; compatibility only",
+      "hits": [
+        {
+          "symbol": "RuntimeCompletePipeline",
+          "lines": [
+            135,
+            137
+          ]
+        },
+        {
+          "symbol": "RuntimeCompletePipelineOwner",
+          "lines": [
+            133
+          ]
+        },
+        {
+          "symbol": "RuntimeCompletePipelineResult",
+          "lines": [
+            132
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Sources/GiftUIRuntimeStatic/StaticInteractionStorage.swift",
+      "sha256": "dc3648560338f093f912b7e0bc812bdaa95e7a434a3bd836c903560bf3971219",
+      "disposition": "O/P: D10/D27; owned banks or existing transitive host/runtime contract; compatibility only",
+      "hits": [
+        {
+          "symbol": "InteractionCandidateRecordStorage",
+          "lines": [
+            105,
+            274
+          ]
+        },
+        {
+          "symbol": "InteractionCommittedRecordStorage",
+          "lines": [
+            148,
+            317
+          ]
+        },
+        {
+          "symbol": "InteractionHitRegionStorage",
+          "lines": [
+            188,
+            357
+          ]
+        },
+        {
+          "symbol": "InteractionState",
+          "lines": [
+            227,
+            396
+          ]
+        },
+        {
+          "symbol": "StaticInteractionCandidateStorage",
+          "lines": [
+            104,
+            228
+          ]
+        },
+        {
+          "symbol": "StaticInteractionCommittedStorage",
+          "lines": [
+            147,
+            229
+          ]
+        },
+        {
+          "symbol": "StaticInteractionHitStorage",
+          "lines": [
+            187,
+            230
+          ]
+        },
+        {
+          "symbol": "StaticInteractionSlots",
+          "lines": [
+            4,
+            109,
+            152,
+            192
+          ]
+        },
+        {
+          "symbol": "StaticInteractionState",
+          "lines": [
+            227
+          ]
+        },
+        {
+          "symbol": "StaticSixInteractionCandidateStorage",
+          "lines": [
+            273,
+            397
+          ]
+        },
+        {
+          "symbol": "StaticSixInteractionCommittedStorage",
+          "lines": [
+            316,
+            398
+          ]
+        },
+        {
+          "symbol": "StaticSixInteractionHitStorage",
+          "lines": [
+            356,
+            399
+          ]
+        },
+        {
+          "symbol": "StaticSixInteractionSlots",
+          "lines": [
+            235,
+            278,
+            321,
+            361
+          ]
+        },
+        {
+          "symbol": "StaticSixInteractionState",
+          "lines": [
+            396
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Sources/GiftUIRuntimeStatic/StaticRuntimeExecutionCoordinator.swift",
+      "sha256": "0dd731cdbefcca81360eb2ff896d2e757bedc9829faaaf5e4a4a75b2c48254bd",
+      "disposition": "O/P: D20; preserve existing complete scoped constraints/Optional union",
+      "hits": [
+        {
+          "symbol": "RuntimeOpportunityQuiescence",
+          "lines": [
+            20
+          ]
+        },
+        {
+          "symbol": "StaticRuntimeExecutionCoordinator",
+          "lines": [
+            15,
+            94
+          ]
+        },
+        {
+          "symbol": "takeQuiescedOpportunity",
+          "lines": [
+            81
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Sources/GiftUIRuntimeStatic/StaticRuntimeProfileBinding.swift",
+      "sha256": "1162d12ede897a255c5a76e58d0f481f451e7d4c97247e8c43045c8fe2f35a14",
+      "disposition": "O/P: D10/D27; owned banks or existing transitive host/runtime contract; compatibility only",
+      "hits": [
+        {
+          "symbol": "RuntimeCompletePipeline",
+          "lines": [
+            178,
+            180
+          ]
+        },
+        {
+          "symbol": "RuntimeCompletePipelineOwner",
+          "lines": [
+            176
+          ]
+        },
+        {
+          "symbol": "RuntimeCompletePipelineResult",
+          "lines": [
+            175
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Sources/SignalAnalyzerMacOSDynamic/main.swift",
+      "sha256": "8672b0ff62b4122e52563bfc0ed62d0836fb9ad8ccf00d59f064b97c536c3175",
+      "disposition": "O: D28\u2013D30; owned analyzer compatibility only",
+      "hits": [
+        {
+          "symbol": "DynamicInteractionCandidateStorage",
+          "lines": [
+            8
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Sources/SignalAnalyzerMacOSStatic/main.swift",
+      "sha256": "1bb66c6fe2ac2c8b115dc1c2ded10018cc133a1615f55289f9005d10c42d6098",
+      "disposition": "O: D28\u2013D30; owned analyzer compatibility only",
+      "hits": [
+        {
+          "symbol": "StaticInteractionCandidateStorage",
+          "lines": [
+            8
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Sources/SignalAnalyzerTargetHost/DynamicSignalAnalyzerActionDispatcher.swift",
+      "sha256": "b7819b2265cf64114bb0c2287b4e399f3417d9e3abfcbd21f9023af57a7e5c17",
+      "disposition": "O: D28\u2013D30; owned analyzer compatibility only",
+      "hits": [
+        {
+          "symbol": "DynamicSignalAnalyzerActionDispatcher",
+          "lines": [
+            6
+          ]
+        },
+        {
+          "symbol": "InteractionCommittedActionView",
+          "lines": [
+            16
+          ]
+        },
+        {
+          "symbol": "RuntimeInteractionDispatcher",
+          "lines": [
+            10,
+            20
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Sources/SignalAnalyzerTargetHost/DynamicSignalAnalyzerPiInitialPresentationOwner.swift",
+      "sha256": "21a95f740d025b3c29b5555a1a1a24e929287e8ec865f19636744821009116b7",
+      "disposition": "O: D28\u2013D30; owned analyzer compatibility only",
+      "hits": [
+        {
+          "symbol": "DynamicSignalAnalyzerPresentationPipeline",
+          "lines": [
+            59,
+            124
+          ]
+        },
+        {
+          "symbol": "RuntimeCompletePipeline",
+          "lines": [
+            207,
+            265,
+            280
+          ]
+        },
+        {
+          "symbol": "RuntimeCompletePipelineOwner",
+          "lines": [
+            550
+          ]
+        },
+        {
+          "symbol": "RuntimeCompletePipelineResult",
+          "lines": [
+            108,
+            335,
+            448
+          ]
+        },
+        {
+          "symbol": "RuntimeCompletePipelineStage",
+          "lines": [
+            437
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Sources/SignalAnalyzerTargetHost/DynamicSignalAnalyzerPresentationPipeline.swift",
+      "sha256": "5d2b5f979eb7517ec3da36472328d8bb2d3384bcbb656f5ba14fdd89f35354b3",
+      "disposition": "O: D28\u2013D30; owned analyzer compatibility only",
+      "hits": [
+        {
+          "symbol": "DynamicInteractionCandidateStorage",
+          "lines": [
+            283
+          ]
+        },
+        {
+          "symbol": "DynamicInteractionCommittedStorage",
+          "lines": [
+            289,
+            292
+          ]
+        },
+        {
+          "symbol": "DynamicInteractionHitStorage",
+          "lines": [
+            286,
+            295
+          ]
+        },
+        {
+          "symbol": "DynamicInteractionState",
+          "lines": [
+            220,
+            282
+          ]
+        },
+        {
+          "symbol": "DynamicSignalAnalyzerActionDispatcher",
+          "lines": [
+            700
+          ]
+        },
+        {
+          "symbol": "DynamicSignalAnalyzerPresentationPipeline",
+          "lines": [
+            201,
+            720
+          ]
+        },
+        {
+          "symbol": "RuntimeInteractionCandidateResolution",
+          "lines": [
+            622
+          ]
+        },
+        {
+          "symbol": "RuntimeInteractionCandidateTransaction",
+          "lines": [
+            479,
+            623
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Sources/SignalAnalyzerTargetHost/Generated/StaticSignalAnalyzerNRFCanvasTable.generated.swift",
+      "sha256": "5cddb271638c855cefca869e19ce85b939de4a705703750398159a60e44c4c4a",
+      "disposition": "O: D28\u2013D30; owned analyzer compatibility only",
+      "hits": []
+    },
+    {
+      "path": "Sources/SignalAnalyzerTargetHost/Generated/StaticSignalAnalyzerNRFEmbeddedCanvasTable.generated.swift",
+      "sha256": "a9d5c49c7d88b6357ca70102a699714cd482256982f4d5fafb53eeab66e5246c",
+      "disposition": "O: D28\u2013D30; owned analyzer compatibility only",
+      "hits": []
+    },
+    {
+      "path": "Sources/SignalAnalyzerTargetHost/Generated/StaticSignalAnalyzerNRFModelDescriptor.generated.swift",
+      "sha256": "001e530998207ab4c6c0a0c3e88b4c416d1b07750243b83f1243ddf640abd509",
+      "disposition": "O: D28\u2013D30; owned analyzer compatibility only",
+      "hits": []
+    },
+    {
+      "path": "Sources/SignalAnalyzerTargetHost/Generated/StaticSignalAnalyzerNRFModifierPayload.generated.swift",
+      "sha256": "2c47d6a28d5bfd22808b6a9f85d211debcdebd39c346ccd5694f2bdef4c91bb6",
+      "disposition": "O: D28\u2013D30; owned analyzer compatibility only",
+      "hits": []
+    },
+    {
+      "path": "Sources/SignalAnalyzerTargetHost/Generated/StaticSignalAnalyzerNRFPackedSemanticRecords.generated.swift",
+      "sha256": "c8981c6b36c6622c9f843bacf9fa46e3f95e2ea6be101e113e546fca06139b78",
+      "disposition": "O: D28\u2013D30; owned analyzer compatibility only",
+      "hits": []
+    },
+    {
+      "path": "Sources/SignalAnalyzerTargetHost/Generated/StaticSignalAnalyzerNRFPresentationInputs.generated.swift",
+      "sha256": "1db141782f3a3c6a22f751b7245dc2d7ee4699957fbdc909bac8d6b3c94cdf8e",
+      "disposition": "O: D28\u2013D30; owned analyzer compatibility only",
+      "hits": []
+    },
+    {
+      "path": "Sources/SignalAnalyzerTargetHost/Generated/StaticSignalAnalyzerNRFPrimitivePayload.generated.swift",
+      "sha256": "383f33b602e586308e5c4c4ac42169a30038eb7f3f646e1d6674b7860f99ebe0",
+      "disposition": "O: D28\u2013D30; owned analyzer compatibility only",
+      "hits": []
+    },
+    {
+      "path": "Sources/SignalAnalyzerTargetHost/Generated/StaticSignalAnalyzerNRFReferenceMetrics.generated.swift",
+      "sha256": "1b460f1403dae281fdf78349781f7ffee408e7bf65b797c3cc8d5e5c3958c3d6",
+      "disposition": "O: D28\u2013D30; owned analyzer compatibility only",
+      "hits": []
+    },
+    {
+      "path": "Sources/SignalAnalyzerTargetHost/Generated/StaticSignalAnalyzerNRFSemanticRegion.generated.swift",
+      "sha256": "5820ee61fcd24565bd26428a55c2d4adab8bf310a42ac69efe53d6f8bba63dc8",
+      "disposition": "O: D28\u2013D30; owned analyzer compatibility only",
+      "hits": []
+    },
+    {
+      "path": "Sources/SignalAnalyzerTargetHost/Generated/StaticSignalAnalyzerNRFTextPoolWriter.generated.swift",
+      "sha256": "2dafbae6a2293052d51fc796c57c971786266bb502cf39e5eaa1803dd19ec967",
+      "disposition": "O: D28\u2013D30; owned analyzer compatibility only",
+      "hits": []
+    },
+    {
+      "path": "Sources/SignalAnalyzerTargetHost/Generated/StaticSignalAnalyzerNRFTopologyWriter.generated.swift",
+      "sha256": "02c0ee5b21820f9c5c62e20ae2e867dbf8929ee750f0454271fe7409b75643d0",
+      "disposition": "O: D28\u2013D30; owned analyzer compatibility only",
+      "hits": []
+    },
+    {
+      "path": "Sources/SignalAnalyzerTargetHost/Generated/StaticSignalAnalyzerNRFUTF8LayoutView.generated.swift",
+      "sha256": "daf0f768823c35a9974e0d413cf5b2d6e450500f50104b89ac5ab0ae3ae37707",
+      "disposition": "O: D28\u2013D30; owned analyzer compatibility only",
+      "hits": []
+    },
+    {
+      "path": "Sources/SignalAnalyzerTargetHost/Generated/StaticSignalAnalyzerNRFUTF8RenderView.generated.swift",
+      "sha256": "41afeee93288fa58112a17402533cf6acec29450349223483abf6648c81d2e31",
+      "disposition": "O: D28\u2013D30; owned analyzer compatibility only",
+      "hits": []
+    },
+    {
+      "path": "Sources/SignalAnalyzerTargetHost/Generated/StaticSignalAnalyzerNRFUTF8TextPool.generated.swift",
+      "sha256": "eef7636059a3afd12eb91c069b09d988c743846601b7fb1841ed84eaa663e4a9",
+      "disposition": "O: D28\u2013D30; owned analyzer compatibility only",
+      "hits": []
+    },
+    {
+      "path": "Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerActionDispatcher.swift",
+      "sha256": "d8a4046d3cdadcb32395f6b1327ad06848bab5ba5c9a575ffdfcd0efb2624361",
+      "disposition": "O: D28\u2013D30; owned analyzer compatibility only",
+      "hits": [
+        {
+          "symbol": "InteractionCommittedActionView",
+          "lines": [
+            18
+          ]
+        },
+        {
+          "symbol": "RuntimeInteractionDispatcher",
+          "lines": [
+            12,
+            22
+          ]
+        },
+        {
+          "symbol": "StaticSignalAnalyzerActionDispatcher",
+          "lines": [
+            6
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFApplicationInputOwner.swift",
+      "sha256": "4c29a346e714bc5b13b3db601c961f5311e57578623cc6d8d729f059bf9bc8ba",
+      "disposition": "O: D28\u2013D30; owned analyzer compatibility only",
+      "hits": [
+        {
+          "symbol": "StaticInteractionState",
+          "lines": [
+            48
+          ]
+        },
+        {
+          "symbol": "StaticSignalAnalyzerNRFApplicationInputOwner",
+          "lines": [
+            7
+          ]
+        },
+        {
+          "symbol": "StaticSignalAnalyzerNRFInteractionHandler",
+          "lines": [
+            54
+          ]
+        },
+        {
+          "symbol": "StaticSignalAnalyzerNRFInteractionSession",
+          "lines": [
+            9
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFApplicationStorage.swift",
+      "sha256": "aa134c1e242d05835478224fb051eb33e3462652dc594581acf2b6b8353afc51",
+      "disposition": "O: D28\u2013D30; owned analyzer compatibility only",
+      "hits": [
+        {
+          "symbol": "RuntimeInteractionCandidateResolution",
+          "lines": [
+            289
+          ]
+        },
+        {
+          "symbol": "RuntimeInteractionCandidateTransaction",
+          "lines": [
+            293
+          ]
+        },
+        {
+          "symbol": "StaticInteractionCandidateStorage",
+          "lines": [
+            68
+          ]
+        },
+        {
+          "symbol": "StaticInteractionCommittedStorage",
+          "lines": [
+            74,
+            77
+          ]
+        },
+        {
+          "symbol": "StaticInteractionHitStorage",
+          "lines": [
+            71,
+            80
+          ]
+        },
+        {
+          "symbol": "StaticInteractionState",
+          "lines": [
+            56,
+            90,
+            136,
+            146,
+            265
+          ]
+        },
+        {
+          "symbol": "StaticSignalAnalyzerNRFApplicationInputOwner",
+          "lines": [
+            58,
+            97,
+            138,
+            148
+          ]
+        },
+        {
+          "symbol": "StaticSignalAnalyzerNRFApplicationOwner",
+          "lines": [
+            106,
+            113,
+            131
+          ]
+        },
+        {
+          "symbol": "StaticSignalAnalyzerNRFApplicationStorage",
+          "lines": [
+            53
+          ]
+        },
+        {
+          "symbol": "StaticSignalAnalyzerNRFInteractionCandidateProducer",
+          "lines": [
+            277
+          ]
+        },
+        {
+          "symbol": "StaticSignalAnalyzerNRFPresentationCommitter",
+          "lines": [
+            328,
+            336
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFEmbeddedGestureSession.swift",
+      "sha256": "db7e42b2c4d3ffdf9f0a3e29852d6774d5c590b58cfa0b813afa3dd2f3872006",
+      "disposition": "O: D28\u2013D30; owned analyzer compatibility only",
+      "hits": [
+        {
+          "symbol": "ExecutionGestureAdapter",
+          "lines": [
+            52,
+            67,
+            85
+          ]
+        },
+        {
+          "symbol": "StaticSignalAnalyzerNRFEmbeddedInteractionOwner",
+          "lines": [
+            32
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFEmbeddedInputHandler.swift",
+      "sha256": "f285ab1a729e0be4cb52d6698df5fe3f32e28f19be7d024afebb212b5d70510d",
+      "disposition": "O: D28\u2013D30; owned analyzer compatibility only",
+      "hits": [
+        {
+          "symbol": "StaticSignalAnalyzerNRFEmbeddedInteractionOwner",
+          "lines": [
+            7,
+            15
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFEmbeddedInteractionOwner.swift",
+      "sha256": "055793a76d87d4fbdd3308917080846d83809ccb5bd729bc85884f8cce355593",
+      "disposition": "O: D28\u2013D30; owned analyzer compatibility only",
+      "hits": [
+        {
+          "symbol": "InteractionGestureResolver",
+          "lines": [
+            4
+          ]
+        },
+        {
+          "symbol": "RuntimeInteractionCandidateBuildResult",
+          "lines": [
+            76
+          ]
+        },
+        {
+          "symbol": "RuntimeInteractionCandidateCoordinator",
+          "lines": [
+            81
+          ]
+        },
+        {
+          "symbol": "RuntimeInteractionCandidateTransaction",
+          "lines": [
+            89
+          ]
+        },
+        {
+          "symbol": "StaticSignalAnalyzerNRFEmbeddedInteractionOwner",
+          "lines": [
+            3
+          ]
+        },
+        {
+          "symbol": "StaticSixInteractionCandidateStorage",
+          "lines": [
+            11
+          ]
+        },
+        {
+          "symbol": "StaticSixInteractionCommittedStorage",
+          "lines": [
+            13,
+            14
+          ]
+        },
+        {
+          "symbol": "StaticSixInteractionHitStorage",
+          "lines": [
+            12,
+            15
+          ]
+        },
+        {
+          "symbol": "StaticSixInteractionState",
+          "lines": [
+            7,
+            17
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFInteractionCandidateProducer.swift",
+      "sha256": "5c41bbbb5594d46ca1dea7680ba8ee45c80ca72c6ca66a2c203ef07da1a39d8c",
+      "disposition": "O: D28\u2013D30; owned analyzer compatibility only",
+      "hits": [
+        {
+          "symbol": "RuntimeInteractionCandidateCoordinator",
+          "lines": [
+            24
+          ]
+        },
+        {
+          "symbol": "StaticInteractionState",
+          "lines": [
+            19
+          ]
+        },
+        {
+          "symbol": "StaticSignalAnalyzerNRFInteractionCandidateProducer",
+          "lines": [
+            14
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFInteractionHandler.swift",
+      "sha256": "b3154ca1462f8028579c81f1d2059d44583cec31aa7cc2b35db0cf8ab23ea783",
+      "disposition": "O: D28\u2013D30; owned analyzer compatibility only",
+      "hits": [
+        {
+          "symbol": "ExecutionGestureAdapter",
+          "lines": [
+            99,
+            120,
+            147
+          ]
+        },
+        {
+          "symbol": "StaticInteractionState",
+          "lines": [
+            50,
+            89,
+            114,
+            137,
+            192,
+            200
+          ]
+        },
+        {
+          "symbol": "StaticSignalAnalyzerActionDispatcher",
+          "lines": [
+            153
+          ]
+        },
+        {
+          "symbol": "StaticSignalAnalyzerNRFInteractionHandler",
+          "lines": [
+            188
+          ]
+        },
+        {
+          "symbol": "StaticSignalAnalyzerNRFInteractionSession",
+          "lines": [
+            10,
+            191,
+            199
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFPacedApplicationStage.swift",
+      "sha256": "51d1065898a7172c898f0ac9f67e62992ec4508d15bda2d35a58c4968f8067a6",
+      "disposition": "O: D28\u2013D30; owned analyzer compatibility only",
+      "hits": [
+        {
+          "symbol": "StaticSignalAnalyzerNRFApplicationOwner",
+          "lines": [
+            38,
+            124
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFPresentationCommitter.swift",
+      "sha256": "0728772e27510705790ec1d95f2afd21e70a1fe58431fca3c39d840e2cd02bd7",
+      "disposition": "O: D28\u2013D30; owned analyzer compatibility only",
+      "hits": [
+        {
+          "symbol": "RuntimeInteractionCandidateResolution",
+          "lines": [
+            44
+          ]
+        },
+        {
+          "symbol": "RuntimeInteractionCandidateTransaction",
+          "lines": [
+            48
+          ]
+        },
+        {
+          "symbol": "StaticInteractionState",
+          "lines": [
+            12,
+            18
+          ]
+        },
+        {
+          "symbol": "StaticSignalAnalyzerNRFApplicationInputOwner",
+          "lines": [
+            14,
+            20
+          ]
+        },
+        {
+          "symbol": "StaticSignalAnalyzerNRFInteractionCandidateProducer",
+          "lines": [
+            32
+          ]
+        },
+        {
+          "symbol": "StaticSignalAnalyzerNRFPresentationCommitter",
+          "lines": [
+            10
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFPresentationComposition.swift",
+      "sha256": "9ab375f60e1b2aa8fd7eed0aad7d0ab055786a5916ddb9333bc1cf78b56d5fa8",
+      "disposition": "O: D28\u2013D30; owned analyzer compatibility only",
+      "hits": [
+        {
+          "symbol": "StaticSignalAnalyzerNRFApplicationOwner",
+          "lines": [
+            17
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFPresentationHandoff.swift",
+      "sha256": "4c983db5901216b5dd3488b5b7edcaf31073fa5e16c89cca6e53f0de23f9de55",
+      "disposition": "O: D28\u2013D30; owned analyzer compatibility only",
+      "hits": [
+        {
+          "symbol": "RuntimeInteractionCandidateResolution",
+          "lines": [
+            10
+          ]
+        },
+        {
+          "symbol": "StaticSignalAnalyzerNRFApplicationOwner",
+          "lines": [
+            57
+          ]
+        },
+        {
+          "symbol": "StaticSignalAnalyzerNRFPresentationCommitter",
+          "lines": [
+            23
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFPresentationHealth.swift",
+      "sha256": "baf9afb1918990df279e9e2394a936bf52ed1efec92408ad09855b1c0a287c73",
+      "disposition": "O: D28\u2013D30; owned analyzer compatibility only",
+      "hits": [
+        {
+          "symbol": "StaticSignalAnalyzerNRFApplicationOwner",
+          "lines": [
+            19
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFPresentationTransaction.swift",
+      "sha256": "9e6d71240de69b12b083d3773a8ea330a4fb0b850b170748cdbaa5c29fe93e09",
+      "disposition": "O: D28\u2013D30; owned analyzer compatibility only",
+      "hits": [
+        {
+          "symbol": "StaticSignalAnalyzerNRFApplicationOwner",
+          "lines": [
+            16
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerNRFRuntimeStorage.swift",
+      "sha256": "7c54e02ad444649e5578bfbe94a0caf9d2cc2a6a4f3f8f9bfd985c6f66bdeb1e",
+      "disposition": "O: D28\u2013D30; owned analyzer compatibility only",
+      "hits": [
+        {
+          "symbol": "StaticSignalAnalyzerNRFApplicationOwner",
+          "lines": [
+            49
+          ]
+        },
+        {
+          "symbol": "StaticSignalAnalyzerNRFApplicationStorage",
+          "lines": [
+            11,
+            25
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC011/RuntimeDerived/InteractionProbe.swift",
+      "sha256": "0addaef099e62e518a11e7bfec10c7fac4293ae6a4640281dba87432833a6099",
+      "disposition": "O/P: D31; owned/previous scoped fixtures; compatibility only",
+      "hits": [
+        {
+          "symbol": "DynamicInteractionCandidateStorage",
+          "lines": [
+            10
+          ]
+        },
+        {
+          "symbol": "DynamicInteractionCommittedStorage",
+          "lines": [
+            11
+          ]
+        },
+        {
+          "symbol": "DynamicInteractionHitStorage",
+          "lines": [
+            12
+          ]
+        },
+        {
+          "symbol": "InteractionOwnedKeyState",
+          "lines": [
+            18
+          ]
+        },
+        {
+          "symbol": "InteractionState",
+          "lines": [
+            21,
+            23
+          ]
+        },
+        {
+          "symbol": "RuntimeInteractionCandidateTransaction",
+          "lines": [
+            155
+          ]
+        },
+        {
+          "symbol": "RuntimeRecordInteractionBridge",
+          "lines": [
+            181,
+            190,
+            202,
+            205,
+            211,
+            215,
+            227,
+            236,
+            244
+          ]
+        },
+        {
+          "symbol": "StaticSixInteractionCandidateStorage",
+          "lines": [
+            14
+          ]
+        },
+        {
+          "symbol": "StaticSixInteractionCommittedStorage",
+          "lines": [
+            15
+          ]
+        },
+        {
+          "symbol": "StaticSixInteractionHitStorage",
+          "lines": [
+            16
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC011/RuntimeDerived/KeyLayoutProbe.swift",
+      "sha256": "e27f5f61c6a8dac7bd8b1a0d992c7e728af72c36e8f0042b073e925f384f6cdc",
+      "disposition": "O/P: D31; owned/previous scoped fixtures; compatibility only",
+      "hits": [
+        {
+          "symbol": "InteractionOwnedKeyState",
+          "lines": [
+            11
+          ]
+        },
+        {
+          "symbol": "StaticSixInteractionCandidateStorage",
+          "lines": [
+            8
+          ]
+        },
+        {
+          "symbol": "StaticSixInteractionCommittedStorage",
+          "lines": [
+            9
+          ]
+        },
+        {
+          "symbol": "StaticSixInteractionHitStorage",
+          "lines": [
+            10
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC013/RuntimeDerived/CycleCoordinatorProbe.swift",
+      "sha256": "ba387f14fd0e276ad4b4a44f451adc022e55ec3a1cde3820d03da2f153aa8a9c",
+      "disposition": "O/P: D31; owned/previous scoped fixtures; compatibility only",
+      "hits": [
+        {
+          "symbol": "CycleCandidateBacking",
+          "lines": [
+            168
+          ]
+        },
+        {
+          "symbol": "CycleCommittedBacking",
+          "lines": [
+            168
+          ]
+        },
+        {
+          "symbol": "CycleHitBacking",
+          "lines": [
+            168
+          ]
+        },
+        {
+          "symbol": "CyclePipelineOwner",
+          "lines": [
+            13,
+            168,
+            370,
+            420
+          ]
+        },
+        {
+          "symbol": "CycleReturnedWorkspaces",
+          "lines": [
+            168
+          ]
+        },
+        {
+          "symbol": "DynamicRuntimeExecutionCoordinator",
+          "lines": [
+            175
+          ]
+        },
+        {
+          "symbol": "RuntimeCompletePipelineStage",
+          "lines": [
+            453
+          ]
+        },
+        {
+          "symbol": "RuntimeOpportunityQuiescence",
+          "lines": [
+            13
+          ]
+        },
+        {
+          "symbol": "StaticRuntimeExecutionCoordinator",
+          "lines": [
+            201
+          ]
+        },
+        {
+          "symbol": "returnWorkspaces",
+          "lines": [
+            180,
+            198,
+            206,
+            224
+          ]
+        },
+        {
+          "symbol": "takeQuiescedOpportunity",
+          "lines": [
+            179,
+            190,
+            205,
+            216
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC013/RuntimeDerived/CycleDynamicDrawing.swift",
+      "sha256": "ac5bb966de601ad44e4a3c17dc1013cee4eff864908487dc3a686743429a0b33",
+      "disposition": "O/P: D31; owned/previous scoped fixtures; compatibility only",
+      "hits": [
+        {
+          "symbol": "DynamicInteractionCandidateStorage",
+          "lines": [
+            63
+          ]
+        },
+        {
+          "symbol": "DynamicInteractionCommittedStorage",
+          "lines": [
+            64
+          ]
+        },
+        {
+          "symbol": "DynamicInteractionHitStorage",
+          "lines": [
+            65
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC013/RuntimeDerived/CyclePipelineOwner.swift",
+      "sha256": "2b2dad9318f6573f2244a4d7eab6e6223e00f1f7ef25c160eaf831a36965cdd1",
+      "disposition": "O/P: D31; owned/previous scoped fixtures; compatibility only",
+      "hits": [
+        {
+          "symbol": "CycleCandidateBacking",
+          "lines": [
+            103
+          ]
+        },
+        {
+          "symbol": "CycleCommittedBacking",
+          "lines": [
+            103
+          ]
+        },
+        {
+          "symbol": "CycleHitBacking",
+          "lines": [
+            103
+          ]
+        },
+        {
+          "symbol": "CyclePipelineOwner",
+          "lines": [
+            102
+          ]
+        },
+        {
+          "symbol": "CycleReturnedWorkspaces",
+          "lines": [
+            150,
+            151
+          ]
+        },
+        {
+          "symbol": "ExecutionGestureAdapter",
+          "lines": [
+            211,
+            212,
+            213
+          ]
+        },
+        {
+          "symbol": "InteractionOwnedKeyState",
+          "lines": [
+            111,
+            142
+          ]
+        },
+        {
+          "symbol": "RuntimeCompletePipeline",
+          "lines": [
+            155
+          ]
+        },
+        {
+          "symbol": "RuntimeCompletePipelineOwner",
+          "lines": [
+            102
+          ]
+        },
+        {
+          "symbol": "RuntimeCompletePipelineResult",
+          "lines": [
+            19,
+            30,
+            154
+          ]
+        },
+        {
+          "symbol": "RuntimeCompletePipelineStage",
+          "lines": [
+            71,
+            181
+          ]
+        },
+        {
+          "symbol": "RuntimeRecordInteractionBridge",
+          "lines": [
+            258,
+            350
+          ]
+        },
+        {
+          "symbol": "returnWorkspaces",
+          "lines": [
+            150
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC013/RuntimeDerived/CyclePipelineProbe.swift",
+      "sha256": "801a3185d3acd0199076e50a8cde497627c5eca104c1e119223138b75be3bd00",
+      "disposition": "O/P: D31; owned/previous scoped fixtures; compatibility only",
+      "hits": [
+        {
+          "symbol": "CycleCandidateBacking",
+          "lines": [
+            16
+          ]
+        },
+        {
+          "symbol": "CycleCommittedBacking",
+          "lines": [
+            16
+          ]
+        },
+        {
+          "symbol": "CycleHitBacking",
+          "lines": [
+            16
+          ]
+        },
+        {
+          "symbol": "CyclePipelineOwner",
+          "lines": [
+            22
+          ]
+        },
+        {
+          "symbol": "CycleReturnedWorkspaces",
+          "lines": [
+            16
+          ]
+        },
+        {
+          "symbol": "InteractionOwnedKeyState",
+          "lines": [
+            16,
+            20
+          ]
+        },
+        {
+          "symbol": "RuntimeCompletePipelineStage",
+          "lines": [
+            145
+          ]
+        },
+        {
+          "symbol": "RuntimeRecordInteractionBridge",
+          "lines": [
+            189
+          ]
+        },
+        {
+          "symbol": "returnWorkspaces",
+          "lines": [
+            57
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC013/RuntimeDerived/CycleProfileStorage.swift",
+      "sha256": "ddbd36e4d6ca2ea8e46dcd9ec81986fd5b29e388c5fc48e07aa13eea828ff709",
+      "disposition": "O/P: D31; owned/previous scoped fixtures; compatibility only",
+      "hits": [
+        {
+          "symbol": "CycleCandidateBacking",
+          "lines": [
+            112
+          ]
+        },
+        {
+          "symbol": "CycleCommittedBacking",
+          "lines": [
+            112
+          ]
+        },
+        {
+          "symbol": "CycleDynamicKeys",
+          "lines": [
+            261,
+            270,
+            277,
+            288
+          ]
+        },
+        {
+          "symbol": "CycleHitBacking",
+          "lines": [
+            112
+          ]
+        },
+        {
+          "symbol": "CyclePipelineOwner",
+          "lines": [
+            129
+          ]
+        },
+        {
+          "symbol": "CycleReturnedWorkspaces",
+          "lines": [
+            309
+          ]
+        },
+        {
+          "symbol": "CycleStaticKeys",
+          "lines": [
+            25,
+            345,
+            352,
+            362
+          ]
+        },
+        {
+          "symbol": "DynamicInteractionCandidateStorage",
+          "lines": [
+            258
+          ]
+        },
+        {
+          "symbol": "DynamicInteractionCommittedStorage",
+          "lines": [
+            259
+          ]
+        },
+        {
+          "symbol": "DynamicInteractionHitStorage",
+          "lines": [
+            260
+          ]
+        },
+        {
+          "symbol": "DynamicRuntimeExecutionCoordinator",
+          "lines": [
+            134,
+            229
+          ]
+        },
+        {
+          "symbol": "InteractionOwnedKeyState",
+          "lines": [
+            25,
+            107,
+            124,
+            139,
+            226,
+            261
+          ]
+        },
+        {
+          "symbol": "InteractionState",
+          "lines": [
+            277,
+            352
+          ]
+        },
+        {
+          "symbol": "RuntimeCompletePipelineResult",
+          "lines": [
+            127,
+            233
+          ]
+        },
+        {
+          "symbol": "RuntimeCompletePipelineStage",
+          "lines": [
+            613
+          ]
+        },
+        {
+          "symbol": "StaticRuntimeExecutionCoordinator",
+          "lines": [
+            130
+          ]
+        },
+        {
+          "symbol": "StaticSixInteractionCandidateStorage",
+          "lines": [
+            22
+          ]
+        },
+        {
+          "symbol": "StaticSixInteractionCommittedStorage",
+          "lines": [
+            23
+          ]
+        },
+        {
+          "symbol": "StaticSixInteractionHitStorage",
+          "lines": [
+            24
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC013/RuntimeDerived/CycleStorageMeasurement.swift",
+      "sha256": "a9588be5cb23e291b49c7bce3e673336a3b4b52ea4db6540d25144a50a75f5ab",
+      "disposition": "P: D13; mandatory shared withBacking API compatibility; keep owned; P07 not reopened",
+      "hits": [
+        {
+          "symbol": "CycleCandidateBacking",
+          "lines": [
+            44,
+            56,
+            69,
+            82,
+            110
+          ]
+        },
+        {
+          "symbol": "CycleCommittedBacking",
+          "lines": [
+            48,
+            60,
+            73,
+            82,
+            110
+          ]
+        },
+        {
+          "symbol": "CycleHitBacking",
+          "lines": [
+            52,
+            64,
+            77,
+            82,
+            110
+          ]
+        },
+        {
+          "symbol": "CycleReturnedWorkspaces",
+          "lines": [
+            110
+          ]
+        },
+        {
+          "symbol": "DynamicInteractionCandidateStorage",
+          "lines": [
+            69
+          ]
+        },
+        {
+          "symbol": "DynamicInteractionCommittedStorage",
+          "lines": [
+            73
+          ]
+        },
+        {
+          "symbol": "DynamicInteractionHitStorage",
+          "lines": [
+            77
+          ]
+        },
+        {
+          "symbol": "InteractionCandidateRecordStorage",
+          "lines": [
+            44
+          ]
+        },
+        {
+          "symbol": "InteractionCommittedRecordStorage",
+          "lines": [
+            48
+          ]
+        },
+        {
+          "symbol": "InteractionHitRegionStorage",
+          "lines": [
+            52
+          ]
+        },
+        {
+          "symbol": "InteractionOwnedKeyState",
+          "lines": [
+            82,
+            112,
+            114
+          ]
+        },
+        {
+          "symbol": "StaticSixInteractionCandidateStorage",
+          "lines": [
+            56
+          ]
+        },
+        {
+          "symbol": "StaticSixInteractionCommittedStorage",
+          "lines": [
+            60
+          ]
+        },
+        {
+          "symbol": "StaticSixInteractionHitStorage",
+          "lines": [
+            64
+          ]
+        },
+        {
+          "symbol": "withBacking",
+          "lines": [
+            83
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC013/RuntimeDerived/CycleStorageRegions.swift",
+      "sha256": "eb3098aa442fd5886c08589a710f1276789f37a27207104e08f9a2c1fea95740",
+      "disposition": "P: D13; mandatory shared withBacking API compatibility; keep owned; P07 not reopened",
+      "hits": [
+        {
+          "symbol": "CycleCandidateBacking",
+          "lines": [
+            86
+          ]
+        },
+        {
+          "symbol": "CycleCommittedBacking",
+          "lines": [
+            86
+          ]
+        },
+        {
+          "symbol": "CycleHitBacking",
+          "lines": [
+            86
+          ]
+        },
+        {
+          "symbol": "InteractionOwnedKeyState",
+          "lines": [
+            86,
+            107
+          ]
+        },
+        {
+          "symbol": "withBacking",
+          "lines": [
+            100
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC013/RuntimeDerived/FrameLeaseProbe.swift",
+      "sha256": "2b9469c68fda07c6fa15e56a873b2946ca3377c7be709415212fb9ba33f2ff0d",
+      "disposition": "O/P: D31; owned/previous scoped fixtures; compatibility only",
+      "hits": [
+        {
+          "symbol": "RuntimeCompletePipeline",
+          "lines": [
+            72
+          ]
+        },
+        {
+          "symbol": "RuntimeCompletePipelineOwner",
+          "lines": [
+            19
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC013/RuntimeDerived/ScopedCoordinatorProbe.swift",
+      "sha256": "970f891c02e96987ab0718dc9203086e58640963aa06470a6f66d477994c1c16",
+      "disposition": "O/P: D31; owned/previous scoped fixtures; compatibility only",
+      "hits": [
+        {
+          "symbol": "DynamicRuntimeExecutionCoordinator",
+          "lines": [
+            64
+          ]
+        },
+        {
+          "symbol": "RuntimeOpportunityQuiescence",
+          "lines": [
+            8
+          ]
+        },
+        {
+          "symbol": "StaticRuntimeExecutionCoordinator",
+          "lines": [
+            56
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC013/RuntimeDerived/ScopedOwnerProbe.swift",
+      "sha256": "f879327eaebbfee08829868fbbd72b5a8f8f1275add9a3494ccd8a8b47044da0",
+      "disposition": "O/P: D31; owned/previous scoped fixtures; compatibility only",
+      "hits": [
+        {
+          "symbol": "RuntimeCompletePipeline",
+          "lines": [
+            29
+          ]
+        },
+        {
+          "symbol": "RuntimeCompletePipelineOwner",
+          "lines": [
+            6
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/ActivationJoinBackingNegative.swift",
+      "sha256": "76a679abb1031b55f98938cfde32b40d2b41883da6ca919586c0d0e61ba8c7ff",
+      "disposition": "O/P: D31; owned/previous scoped fixtures; compatibility only",
+      "hits": [
+        {
+          "symbol": "SignalAnalyzerPresetHostInstance",
+          "lines": [
+            58
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/ActivationJoinCallbackNegative.swift",
+      "sha256": "5f8bc6c335f72b91583847b86afc25e713541ae9212f5a544f10c853c84803cf",
+      "disposition": "O/P: D31; owned/previous scoped fixtures; compatibility only",
+      "hits": [
+        {
+          "symbol": "SignalAnalyzerPresetHostInstance",
+          "lines": [
+            57
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/ActivationJoinConstantCallbackNegative.swift",
+      "sha256": "458e3cc2a133b91cf416addc12906c30aa35de0ba290f49b27773a9befa13e35",
+      "disposition": "O/P: D31; owned/previous scoped fixtures; compatibility only",
+      "hits": [
+        {
+          "symbol": "SignalAnalyzerPresetHostInstance",
+          "lines": [
+            57
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/ActivationJoinCopyNegative.swift",
+      "sha256": "f97f120f299d04228935b07fb834cb7e4ca51220059206c26abe8a39c2627df6",
+      "disposition": "O/P: D31; owned/previous scoped fixtures; compatibility only",
+      "hits": [
+        {
+          "symbol": "SignalAnalyzerPresetHostInstance",
+          "lines": [
+            57
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/ActivationJoinOwner.swift",
+      "sha256": "cd6cde1c5da583b88c9511d181ea2fbe0986cdc51b487bed28b5b59aefde213f",
+      "disposition": "O/P: D31; owned/previous scoped fixtures; compatibility only",
+      "hits": [
+        {
+          "symbol": "CyclePipelineOwner",
+          "lines": [
+            23,
+            82
+          ]
+        },
+        {
+          "symbol": "CycleStaticKeys",
+          "lines": [
+            40,
+            49
+          ]
+        },
+        {
+          "symbol": "InteractionOwnedKeyState",
+          "lines": [
+            90
+          ]
+        },
+        {
+          "symbol": "SignalAnalyzerPresetHostInstance",
+          "lines": [
+            310
+          ]
+        },
+        {
+          "symbol": "SignalAnalyzerPresetLiveOwner",
+          "lines": [
+            211
+          ]
+        },
+        {
+          "symbol": "StaticRuntimeExecutionCoordinator",
+          "lines": [
+            26
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/ActivationJoinProbe.swift",
+      "sha256": "9016f025db46b855bfe3d6c65d5fbceb6c201bed54811d9dc25c960a9433162f",
+      "disposition": "O/P: D31; owned/previous scoped fixtures; compatibility only",
+      "hits": [
+        {
+          "symbol": "SignalAnalyzerPresetHostInstance",
+          "lines": [
+            58
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/Counter.swift",
+      "sha256": "d3027f5276c01352f4c6ddf98ceba11c4a0c389f7bf0a4225a6e22bc573f88a0",
+      "disposition": "P/O: D11\u2013D25; selected counter dependency or preserved oracle, per main table",
+      "hits": []
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterAdmission.swift",
+      "sha256": "d0c199397cb384ecbd221160773b44ee476df1b930aefc81a9197eed6b72353e",
+      "disposition": "P/O: D11\u2013D25; selected counter dependency or preserved oracle, per main table",
+      "hits": [
+        {
+          "symbol": "CounterPipelineOwner",
+          "lines": [
+            13
+          ]
+        },
+        {
+          "symbol": "RuntimeOpportunityQuiescence",
+          "lines": [
+            13
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterApplication.swift",
+      "sha256": "49ca8b09587c31dfbb0e8b8eaf9a84a19c6f87ab5cf2f37f60e992585d3de5e2",
+      "disposition": "P/O: D11\u2013D25; selected counter dependency or preserved oracle, per main table",
+      "hits": []
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterCoordinatorProbe.swift",
+      "sha256": "d0b48674137e5377b9ee7b4176b2522ca8129b9074761547eee54f03f35c4456",
+      "disposition": "P/O: D11\u2013D25; selected counter dependency or preserved oracle, per main table",
+      "hits": [
+        {
+          "symbol": "CounterCandidateBacking",
+          "lines": [
+            15
+          ]
+        },
+        {
+          "symbol": "CounterCommittedBacking",
+          "lines": [
+            15
+          ]
+        },
+        {
+          "symbol": "CounterHitBacking",
+          "lines": [
+            15
+          ]
+        },
+        {
+          "symbol": "CounterHostAssembly",
+          "lines": [
+            16
+          ]
+        },
+        {
+          "symbol": "CounterPipelineOwner",
+          "lines": [
+            22
+          ]
+        },
+        {
+          "symbol": "CounterReturnedWorkspaces",
+          "lines": [
+            15
+          ]
+        },
+        {
+          "symbol": "DynamicRuntimeExecutionCoordinator",
+          "lines": [
+            27
+          ]
+        },
+        {
+          "symbol": "InteractionOwnedKeyState",
+          "lines": [
+            15,
+            20
+          ]
+        },
+        {
+          "symbol": "StaticRuntimeExecutionCoordinator",
+          "lines": [
+            32
+          ]
+        },
+        {
+          "symbol": "returnWorkspaces",
+          "lines": [
+            29,
+            34
+          ]
+        },
+        {
+          "symbol": "takeQuiescedOpportunity",
+          "lines": [
+            29,
+            34
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterDynamicHostOwner.swift",
+      "sha256": "7b2245641aa5f4493df0dae4f2c8ccf08f10b73366e8d829e89c3cbc7ab798e9",
+      "disposition": "P/O: D11\u2013D25; selected counter dependency or preserved oracle, per main table",
+      "hits": [
+        {
+          "symbol": "CounterDynamicHostCoordinator",
+          "lines": [
+            17,
+            77,
+            107
+          ]
+        },
+        {
+          "symbol": "CounterDynamicHostOwner",
+          "lines": [
+            216
+          ]
+        },
+        {
+          "symbol": "CounterDynamicHostPipeline",
+          "lines": [
+            14,
+            18,
+            105
+          ]
+        },
+        {
+          "symbol": "CounterDynamicHostState",
+          "lines": [
+            75,
+            222,
+            233
+          ]
+        },
+        {
+          "symbol": "CounterDynamicHostSupplied",
+          "lines": [
+            71,
+            76,
+            80,
+            232
+          ]
+        },
+        {
+          "symbol": "CounterDynamicHostSuppliedStorage",
+          "lines": [
+            23,
+            71
+          ]
+        },
+        {
+          "symbol": "CounterDynamicKeys",
+          "lines": [
+            31,
+            40,
+            78
+          ]
+        },
+        {
+          "symbol": "CounterHostAssembly",
+          "lines": [
+            91,
+            115,
+            229,
+            232
+          ]
+        },
+        {
+          "symbol": "CounterHostControl",
+          "lines": [
+            28,
+            46,
+            68
+          ]
+        },
+        {
+          "symbol": "CounterPipelineOwner",
+          "lines": [
+            14
+          ]
+        },
+        {
+          "symbol": "DynamicRuntimeExecutionCoordinator",
+          "lines": [
+            17
+          ]
+        },
+        {
+          "symbol": "SignalAnalyzerPresetLiveOwner",
+          "lines": [
+            216
+          ]
+        },
+        {
+          "symbol": "takeQuiescedOpportunity",
+          "lines": [
+            187
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterDynamicHostProbe.swift",
+      "sha256": "bd2bf1e1ab30bd7eaed8a6e6426eaab5fce48a3471756d460487055233e265b1",
+      "disposition": "P/O: D11\u2013D25; selected counter dependency or preserved oracle, per main table",
+      "hits": [
+        {
+          "symbol": "CounterDynamicHost",
+          "lines": [
+            12,
+            130,
+            142,
+            144
+          ]
+        },
+        {
+          "symbol": "CounterDynamicHostOwner",
+          "lines": [
+            33
+          ]
+        },
+        {
+          "symbol": "CounterDynamicHostSupplied",
+          "lines": [
+            32
+          ]
+        },
+        {
+          "symbol": "CounterHostAssembly",
+          "lines": [
+            13,
+            15,
+            16,
+            17,
+            18
+          ]
+        },
+        {
+          "symbol": "CounterHostControl",
+          "lines": [
+            89
+          ]
+        },
+        {
+          "symbol": "SignalAnalyzerPresetHostInstance",
+          "lines": [
+            68,
+            70
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterFixedStorageProbe.swift",
+      "sha256": "84915c4d1dd8cbd287470bddeffdc1e59e3c9adfb503ee89c51439ee1182f6c4",
+      "disposition": "P/O: D11\u2013D25; selected counter dependency or preserved oracle, per main table",
+      "hits": []
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterGeometry.swift",
+      "sha256": "42b4e4a4bea69ee4dac148cd9c39ee731c39b22ce65f575c30e98be1acfc4d66",
+      "disposition": "P/O: D11\u2013D25; selected counter dependency or preserved oracle, per main table",
+      "hits": []
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterGraphProbe.swift",
+      "sha256": "920639f5493f49d69c115d4bea77c0f0520562b9df5697eadd32e91233cbb768",
+      "disposition": "P/O: D11\u2013D25; selected counter dependency or preserved oracle, per main table",
+      "hits": [
+        {
+          "symbol": "CounterHostAssembly",
+          "lines": [
+            47,
+            61
+          ]
+        },
+        {
+          "symbol": "CounterHostGraph",
+          "lines": [
+            11,
+            30,
+            34,
+            35,
+            44
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostAssembly.swift",
+      "sha256": "0cf80809f83177e0bbafe2d4237882d1fbeb2669f554c39779aaf081922c48ae",
+      "disposition": "P/O: D11\u2013D25; selected counter dependency or preserved oracle, per main table",
+      "hits": [
+        {
+          "symbol": "CounterHostAssembly",
+          "lines": [
+            161
+          ]
+        },
+        {
+          "symbol": "CounterHostGraph",
+          "lines": [
+            150,
+            170
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostCorpus.swift",
+      "sha256": "ab35efa546cc7279770e9ee039166b1f725337f1a090cc68ee15d2ca20a7dcb2",
+      "disposition": "P/O: D11\u2013D25; selected counter dependency or preserved oracle, per main table",
+      "hits": [
+        {
+          "symbol": "CounterHostControl",
+          "lines": [
+            93
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostOwner.swift",
+      "sha256": "80f4e24984d127f3cddd2ac777cb4e29c2b41aafba532a0c5d034e5918b0720a",
+      "disposition": "P/O: D11\u2013D25; selected counter dependency or preserved oracle, per main table",
+      "hits": [
+        {
+          "symbol": "CounterHostAssembly",
+          "lines": [
+            150,
+            174,
+            286,
+            289
+          ]
+        },
+        {
+          "symbol": "CounterHostControl",
+          "lines": [
+            22,
+            27,
+            29,
+            46,
+            64,
+            86,
+            100,
+            122
+          ]
+        },
+        {
+          "symbol": "CounterHostCoordinator",
+          "lines": [
+            35,
+            136,
+            166
+          ]
+        },
+        {
+          "symbol": "CounterHostOwner",
+          "lines": [
+            273
+          ]
+        },
+        {
+          "symbol": "CounterHostPipeline",
+          "lines": [
+            32,
+            36,
+            164
+          ]
+        },
+        {
+          "symbol": "CounterHostState",
+          "lines": [
+            134,
+            279,
+            290
+          ]
+        },
+        {
+          "symbol": "CounterHostSupplied",
+          "lines": [
+            89,
+            135,
+            139,
+            289
+          ]
+        },
+        {
+          "symbol": "CounterHostSuppliedStorage",
+          "lines": [
+            41,
+            89
+          ]
+        },
+        {
+          "symbol": "CounterPipelineOwner",
+          "lines": [
+            32,
+            91
+          ]
+        },
+        {
+          "symbol": "CounterStaticKeys",
+          "lines": [
+            49,
+            58,
+            137
+          ]
+        },
+        {
+          "symbol": "InteractionOwnedKeyState",
+          "lines": [
+            99
+          ]
+        },
+        {
+          "symbol": "SignalAnalyzerPresetLiveOwner",
+          "lines": [
+            273
+          ]
+        },
+        {
+          "symbol": "StaticRuntimeExecutionCoordinator",
+          "lines": [
+            35
+          ]
+        },
+        {
+          "symbol": "takeQuiescedOpportunity",
+          "lines": [
+            246
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostProbe.swift",
+      "sha256": "b44729dbbad4cc2af1f72e7b03c99568c01ad4017383fb1b6f0b4f24efd9a2e6",
+      "disposition": "P/O: D11\u2013D25; selected counter dependency or preserved oracle, per main table",
+      "hits": [
+        {
+          "symbol": "CounterHost",
+          "lines": [
+            13,
+            169,
+            189,
+            191
+          ]
+        },
+        {
+          "symbol": "CounterHostAssembly",
+          "lines": [
+            14,
+            18,
+            19,
+            20,
+            21
+          ]
+        },
+        {
+          "symbol": "CounterHostControl",
+          "lines": [
+            138
+          ]
+        },
+        {
+          "symbol": "CounterHostOwner",
+          "lines": [
+            46,
+            71,
+            117,
+            198
+          ]
+        },
+        {
+          "symbol": "CounterHostSupplied",
+          "lines": [
+            45
+          ]
+        },
+        {
+          "symbol": "SignalAnalyzerPresetHostInstance",
+          "lines": [
+            51,
+            53,
+            117
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterModel.swift",
+      "sha256": "c914bac2d09dc3b13713f682d2d2274021d3f48a58f0179685a0cad46c6b700a",
+      "disposition": "P/O: D11\u2013D25; selected counter dependency or preserved oracle, per main table",
+      "hits": []
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterModelProbe.swift",
+      "sha256": "d6cdcf1f033a26225d856eb4dd4c5401b76b63d7f78040e111417cdb82bfa41c",
+      "disposition": "P/O: D11\u2013D25; selected counter dependency or preserved oracle, per main table",
+      "hits": []
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterNativeRaster.swift",
+      "sha256": "b2ec7e06f02b2084338c0bf07d1c90c1396fc57e0b363c4fd5fc1777d4137a3d",
+      "disposition": "P/O: D11\u2013D25; selected counter dependency or preserved oracle, per main table",
+      "hits": []
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift",
+      "sha256": "8c1ff4d0884431f3c243612a5c99535a9d375924be3f50139271f08a3f28926b",
+      "disposition": "P/O: D11\u2013D25; selected counter dependency or preserved oracle, per main table",
+      "hits": [
+        {
+          "symbol": "CounterCandidateBacking",
+          "lines": [
+            116
+          ]
+        },
+        {
+          "symbol": "CounterCommittedBacking",
+          "lines": [
+            116
+          ]
+        },
+        {
+          "symbol": "CounterHitBacking",
+          "lines": [
+            116
+          ]
+        },
+        {
+          "symbol": "CounterPipelineOwner",
+          "lines": [
+            115
+          ]
+        },
+        {
+          "symbol": "CounterReturnedWorkspaces",
+          "lines": [
+            167,
+            168
+          ]
+        },
+        {
+          "symbol": "ExecutionGestureAdapter",
+          "lines": [
+            236,
+            237,
+            238
+          ]
+        },
+        {
+          "symbol": "InteractionOwnedKeyState",
+          "lines": [
+            124,
+            155
+          ]
+        },
+        {
+          "symbol": "RuntimeCompletePipeline",
+          "lines": [
+            171
+          ]
+        },
+        {
+          "symbol": "RuntimeCompletePipelineOwner",
+          "lines": [
+            115
+          ]
+        },
+        {
+          "symbol": "RuntimeCompletePipelineResult",
+          "lines": [
+            20,
+            56,
+            170
+          ]
+        },
+        {
+          "symbol": "RuntimeCompletePipelineStage",
+          "lines": [
+            103,
+            198
+          ]
+        },
+        {
+          "symbol": "RuntimeRecordInteractionBridge",
+          "lines": [
+            285,
+            379
+          ]
+        },
+        {
+          "symbol": "returnWorkspaces",
+          "lines": [
+            167
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPixelOracle.swift",
+      "sha256": "00dce6f68f9388c38437a7bc8cba09689d0deec1ba8ad1cb922e5e25553c8842",
+      "disposition": "P/O: D11\u2013D25; selected counter dependency or preserved oracle, per main table",
+      "hits": []
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterProfileStorage.swift",
+      "sha256": "6137be3df89bf7d93ccc1d44148e7143d9ad4569f41396978622965aebefa82d",
+      "disposition": "P/O: D11\u2013D25; selected counter dependency or preserved oracle, per main table",
+      "hits": [
+        {
+          "symbol": "CounterCandidateBacking",
+          "lines": [
+            101
+          ]
+        },
+        {
+          "symbol": "CounterCommittedBacking",
+          "lines": [
+            101
+          ]
+        },
+        {
+          "symbol": "CounterDynamicKeys",
+          "lines": [
+            256,
+            265,
+            272,
+            283
+          ]
+        },
+        {
+          "symbol": "CounterHitBacking",
+          "lines": [
+            101
+          ]
+        },
+        {
+          "symbol": "CounterPipelineOwner",
+          "lines": [
+            118
+          ]
+        },
+        {
+          "symbol": "CounterReturnedWorkspaces",
+          "lines": [
+            305
+          ]
+        },
+        {
+          "symbol": "CounterStaticKeys",
+          "lines": [
+            24,
+            340,
+            347,
+            357
+          ]
+        },
+        {
+          "symbol": "DynamicInteractionCandidateStorage",
+          "lines": [
+            253
+          ]
+        },
+        {
+          "symbol": "DynamicInteractionCommittedStorage",
+          "lines": [
+            254
+          ]
+        },
+        {
+          "symbol": "DynamicInteractionHitStorage",
+          "lines": [
+            255
+          ]
+        },
+        {
+          "symbol": "DynamicRuntimeExecutionCoordinator",
+          "lines": [
+            123,
+            221
+          ]
+        },
+        {
+          "symbol": "InteractionOwnedKeyState",
+          "lines": [
+            24,
+            95,
+            113,
+            129,
+            218,
+            256
+          ]
+        },
+        {
+          "symbol": "InteractionState",
+          "lines": [
+            272,
+            347
+          ]
+        },
+        {
+          "symbol": "RuntimeCompletePipelineResult",
+          "lines": [
+            116,
+            228
+          ]
+        },
+        {
+          "symbol": "StaticRuntimeExecutionCoordinator",
+          "lines": [
+            119
+          ]
+        },
+        {
+          "symbol": "StaticTwoInteractionCandidateStorage",
+          "lines": [
+            21
+          ]
+        },
+        {
+          "symbol": "StaticTwoInteractionCommittedStorage",
+          "lines": [
+            22
+          ]
+        },
+        {
+          "symbol": "StaticTwoInteractionHitStorage",
+          "lines": [
+            23
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterRender.swift",
+      "sha256": "b14a1667a899fc539c8a8d8011d2e377188ce0300012e464ac1f0d1203a999ab",
+      "disposition": "P/O: D11\u2013D25; selected counter dependency or preserved oracle, per main table",
+      "hits": []
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterRouteEntry.swift",
+      "sha256": "39fea522c9ffd618209342f4021a91a91354ec572ddfe072624b679122120335",
+      "disposition": "P/O: D11\u2013D25; selected counter dependency or preserved oracle, per main table",
+      "hits": [
+        {
+          "symbol": "CounterDynamicHost",
+          "lines": [
+            40
+          ]
+        },
+        {
+          "symbol": "CounterHost",
+          "lines": [
+            42
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemantic.swift",
+      "sha256": "9ac342b4d90996a1375b9968d1e7dc9d7ada58bd99d288d8acc1bdfb5ce9a2ee",
+      "disposition": "P/O: D11\u2013D25; selected counter dependency or preserved oracle, per main table",
+      "hits": []
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemanticProbe.swift",
+      "sha256": "9c1c0120be11c79235f7febb7e4be950307ac1344095214823aa6248b8ab8f96",
+      "disposition": "P/O: D11\u2013D25; selected counter dependency or preserved oracle, per main table",
+      "hits": []
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterStaticGeometry.swift",
+      "sha256": "c49cc7ad1d5de5bcc3a228defd78ce16a1d6e56c775d9227f5648339540eaa2c",
+      "disposition": "P/O: D11\u2013D25; selected counter dependency or preserved oracle, per main table",
+      "hits": []
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterStorageMeasurement.swift",
+      "sha256": "2257964e7ad3db541d0ec18dced4b671984b4b9a183d5006141f5735836c5316",
+      "disposition": "P/O: D11\u2013D25; selected counter dependency or preserved oracle, per main table",
+      "hits": [
+        {
+          "symbol": "CounterCandidateBacking",
+          "lines": [
+            43,
+            55,
+            68,
+            81,
+            99
+          ]
+        },
+        {
+          "symbol": "CounterCommittedBacking",
+          "lines": [
+            47,
+            59,
+            72,
+            81,
+            99
+          ]
+        },
+        {
+          "symbol": "CounterHitBacking",
+          "lines": [
+            51,
+            63,
+            76,
+            81,
+            99
+          ]
+        },
+        {
+          "symbol": "CounterReturnedWorkspaces",
+          "lines": [
+            99
+          ]
+        },
+        {
+          "symbol": "DynamicInteractionCandidateStorage",
+          "lines": [
+            68
+          ]
+        },
+        {
+          "symbol": "DynamicInteractionCommittedStorage",
+          "lines": [
+            72
+          ]
+        },
+        {
+          "symbol": "DynamicInteractionHitStorage",
+          "lines": [
+            76
+          ]
+        },
+        {
+          "symbol": "InteractionCandidateRecordStorage",
+          "lines": [
+            43
+          ]
+        },
+        {
+          "symbol": "InteractionCommittedRecordStorage",
+          "lines": [
+            47
+          ]
+        },
+        {
+          "symbol": "InteractionHitRegionStorage",
+          "lines": [
+            51
+          ]
+        },
+        {
+          "symbol": "InteractionOwnedKeyState",
+          "lines": [
+            81,
+            101,
+            103
+          ]
+        },
+        {
+          "symbol": "StaticTwoInteractionCandidateStorage",
+          "lines": [
+            55
+          ]
+        },
+        {
+          "symbol": "StaticTwoInteractionCommittedStorage",
+          "lines": [
+            59
+          ]
+        },
+        {
+          "symbol": "StaticTwoInteractionHitStorage",
+          "lines": [
+            63
+          ]
+        },
+        {
+          "symbol": "withBacking",
+          "lines": [
+            82
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterStorageRegions.swift",
+      "sha256": "2a331000c781a0cf29590ab0f6acb730176115126113e3fd687ff272b0fe30f7",
+      "disposition": "P/O: D11\u2013D25; selected counter dependency or preserved oracle, per main table",
+      "hits": [
+        {
+          "symbol": "CounterCandidateBacking",
+          "lines": [
+            85
+          ]
+        },
+        {
+          "symbol": "CounterCommittedBacking",
+          "lines": [
+            85
+          ]
+        },
+        {
+          "symbol": "CounterHitBacking",
+          "lines": [
+            85
+          ]
+        },
+        {
+          "symbol": "InteractionOwnedKeyState",
+          "lines": [
+            85,
+            106
+          ]
+        },
+        {
+          "symbol": "withBacking",
+          "lines": [
+            99
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterTiledRaster.swift",
+      "sha256": "1b1255db3577e1d55bcef72398169ac061c2c1101dda48e783ddb48bc7ee1fed",
+      "disposition": "P/O: D11\u2013D25; selected counter dependency or preserved oracle, per main table",
+      "hits": []
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWakeIntegration.swift",
+      "sha256": "5ff90414394f5b5d70a06790fd633dadc3b5ebacf637164318b2a44c54a1554e",
+      "disposition": "P/O: D11\u2013D25; selected counter dependency or preserved oracle, per main table",
+      "hits": [
+        {
+          "symbol": "CounterHostControl",
+          "lines": [
+            79,
+            92,
+            109
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWorkload.swift",
+      "sha256": "85f24ef1677592e85aa7d89132f4e2d8c15b56fd4b6547b53db9392ed6e0712e",
+      "disposition": "P/O: D11\u2013D25; selected counter dependency or preserved oracle, per main table",
+      "hits": []
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWorkloadProbe.swift",
+      "sha256": "f93648eb2583b8c30ef1c027982e3547586cf46bf8719447c37f7f46f3adb71e",
+      "disposition": "P/O: D11\u2013D25; selected counter dependency or preserved oracle, per main table",
+      "hits": []
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/ScopedHostProbe.swift",
+      "sha256": "d68702cd43fc9aee3891cb585b3398c5e0b87290b077b1bc1c6f6ad68acf457e",
+      "disposition": "O/P: D31; owned/previous scoped fixtures; compatibility only",
+      "hits": [
+        {
+          "symbol": "SignalAnalyzerPresetHostInstance",
+          "lines": [
+            56,
+            57,
+            112
+          ]
+        },
+        {
+          "symbol": "SignalAnalyzerPresetLiveOwner",
+          "lines": [
+            11,
+            109
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterDrawingPlanRecords.swift",
+      "sha256": "3435c86d6a65f49d34c951a276323583274f423365f05f8ba67d47a4d183c148",
+      "disposition": "P/O: D11\u2013D25; selected counter dependency or preserved oracle, per main table",
+      "hits": []
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterDrawingPlanStorage.swift",
+      "sha256": "ed7bb631e53b8934189a0558c1c015fb56d3e0c2497357d43d0f622bd5eb4092",
+      "disposition": "P/O: D11\u2013D25; selected counter dependency or preserved oracle, per main table",
+      "hits": []
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterDrawingWorkspace.swift",
+      "sha256": "6c0f1eaf8074f1b5a176e481d5c5b4026e0d31e761d1ca7d46ac3f224d6f76c5",
+      "disposition": "P/O: D11\u2013D25; selected counter dependency or preserved oracle, per main table",
+      "hits": []
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterEmbeddedBacking.swift",
+      "sha256": "634565f27c8b73667a0994a643247ef5355d85cc7b6d1424eff856c8e3e2af84",
+      "disposition": "P/O: D11\u2013D25; selected counter dependency or preserved oracle, per main table",
+      "hits": [
+        {
+          "symbol": "CounterStaticKeys",
+          "lines": [
+            63,
+            83,
+            112,
+            127,
+            155
+          ]
+        },
+        {
+          "symbol": "InteractionState",
+          "lines": [
+            127
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterInteractionStorage.swift",
+      "sha256": "125da049ee30b1070f1775eec0837c2c382e84235c1811a58b7031c7ea72827b",
+      "disposition": "P/O: D11\u2013D25; selected counter dependency or preserved oracle, per main table",
+      "hits": [
+        {
+          "symbol": "InteractionCandidateRecordStorage",
+          "lines": [
+            14
+          ]
+        },
+        {
+          "symbol": "InteractionCommittedRecordStorage",
+          "lines": [
+            57
+          ]
+        },
+        {
+          "symbol": "InteractionHitRegionStorage",
+          "lines": [
+            97
+          ]
+        },
+        {
+          "symbol": "InteractionState",
+          "lines": [
+            136
+          ]
+        },
+        {
+          "symbol": "StaticTwoInteractionCandidateStorage",
+          "lines": [
+            13,
+            137
+          ]
+        },
+        {
+          "symbol": "StaticTwoInteractionCommittedStorage",
+          "lines": [
+            56,
+            138
+          ]
+        },
+        {
+          "symbol": "StaticTwoInteractionHitStorage",
+          "lines": [
+            96,
+            139
+          ]
+        },
+        {
+          "symbol": "StaticTwoInteractionSlots",
+          "lines": [
+            4,
+            18,
+            61,
+            101
+          ]
+        },
+        {
+          "symbol": "StaticTwoInteractionState",
+          "lines": [
+            136
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLayoutScopeCodec.swift",
+      "sha256": "7565ad65ff596d2ce4c65ea811583a4b36abcf906a166331995f0c3e16079b06",
+      "disposition": "P/O: D11\u2013D25; selected counter dependency or preserved oracle, per main table",
+      "hits": []
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLayoutTextCodec.swift",
+      "sha256": "5b71ad2937239cfd3c01ad16282831c9b0e83a8b592beb64fbdb4904e582e39c",
+      "disposition": "P/O: D11\u2013D25; selected counter dependency or preserved oracle, per main table",
+      "hits": []
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLayoutWorkspace.swift",
+      "sha256": "1c2e9e2571d20f90d4427dbda6745629f3dfe37803f71c0a26ece3e106b1cc8a",
+      "disposition": "P/O: D11\u2013D25; selected counter dependency or preserved oracle, per main table",
+      "hits": []
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLivePathStorage.swift",
+      "sha256": "714a9aa36f86936919fa1b2eeae36f299331c11afa5123270ed9714c1af26d34",
+      "disposition": "P/O: D11\u2013D25; selected counter dependency or preserved oracle, per main table",
+      "hits": []
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterRenderWorkspace.swift",
+      "sha256": "7fe947996496ada49132ec3d1df9849907af5df0e18e8dfd4f9f5bd8713669f0",
+      "disposition": "P/O: D11\u2013D25; selected counter dependency or preserved oracle, per main table",
+      "hits": []
+    },
+    {
+      "path": "Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterResolvedLayout.swift",
+      "sha256": "0c8b560a6e96657d9421dcde045485a2c094194f04fb9b9e5a951c0ebf7a7893",
+      "disposition": "P/O: D11\u2013D25; selected counter dependency or preserved oracle, per main table",
+      "hits": []
+    },
+    {
+      "path": "Tests/GiftUIHostConfigurationTests/SignalAnalyzerDynamicSemanticJoinTests.swift",
+      "sha256": "96942592906dc3cf6f560a446b9b59ca536e801d9d9de3aa0938c27429ae6568",
+      "disposition": "O/P: D32; preserve existing owned assertions and required new contract pairs",
+      "hits": [
+        {
+          "symbol": "DynamicSignalAnalyzerPresentationPipeline",
+          "lines": [
+            143,
+            1253,
+            1364,
+            1941,
+            3045,
+            3261,
+            3331
+          ]
+        },
+        {
+          "symbol": "RuntimeCompletePipelineStage",
+          "lines": [
+            3349
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Tests/GiftUIHostConfigurationTests/SignalAnalyzerHostActionDispatchTests.swift",
+      "sha256": "105cf9d9d312bf5d77c69ee9f3dd0bd7ee4437239e01a6daf1aa142092e2f9bb",
+      "disposition": "O/P: D32; preserve existing owned assertions and required new contract pairs",
+      "hits": [
+        {
+          "symbol": "DynamicSignalAnalyzerActionDispatcher",
+          "lines": [
+            112,
+            171,
+            193,
+            218,
+            289,
+            326,
+            352,
+            359
+          ]
+        },
+        {
+          "symbol": "InteractionCommittedActionView",
+          "lines": [
+            76
+          ]
+        },
+        {
+          "symbol": "StaticSignalAnalyzerActionDispatcher",
+          "lines": [
+            141,
+            390,
+            428,
+            435
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Tests/GiftUIHostConfigurationTests/SignalAnalyzerHostFactAdmissionTests.swift",
+      "sha256": "00774c86f20cc794605537badae9773de8989e9531a3e229d9d1504e76a69d74",
+      "disposition": "O/P: D32; preserve existing owned assertions and required new contract pairs",
+      "hits": [
+        {
+          "symbol": "RuntimeCompletePipeline",
+          "lines": [
+            283,
+            301,
+            341
+          ]
+        },
+        {
+          "symbol": "RuntimeCompletePipelineOwner",
+          "lines": [
+            14
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Tests/GiftUIHostConfigurationTests/SignalAnalyzerIntegratedCycleTests.swift",
+      "sha256": "abe614c20458a9bc1b4645fcaab9baf7a04cdcf14e84a4f76915b8bb5da372a0",
+      "disposition": "O/P: D32; preserve existing owned assertions and required new contract pairs",
+      "hits": [
+        {
+          "symbol": "DynamicSignalAnalyzerActionDispatcher",
+          "lines": [
+            287
+          ]
+        },
+        {
+          "symbol": "InteractionCommittedActionView",
+          "lines": [
+            38
+          ]
+        },
+        {
+          "symbol": "RuntimeCompletePipeline",
+          "lines": [
+            418
+          ]
+        },
+        {
+          "symbol": "RuntimeCompletePipelineOwner",
+          "lines": [
+            87
+          ]
+        },
+        {
+          "symbol": "RuntimeCompletePipelineResult",
+          "lines": [
+            81
+          ]
+        },
+        {
+          "symbol": "RuntimeCompletePipelineStage",
+          "lines": [
+            75,
+            96
+          ]
+        },
+        {
+          "symbol": "StaticSignalAnalyzerActionDispatcher",
+          "lines": [
+            338
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Tests/GiftUIHostConfigurationTests/SignalAnalyzerPresetHostInstanceTests.swift",
+      "sha256": "87c0b6e886706ca07d18dafc8ec6c9163f1e47f3aff11037b0b8192bb1df5946",
+      "disposition": "O/P: D32; preserve existing owned assertions and required new contract pairs",
+      "hits": [
+        {
+          "symbol": "SignalAnalyzerPresetHostInstance",
+          "lines": [
+            123,
+            138,
+            157,
+            167,
+            176,
+            186,
+            195
+          ]
+        },
+        {
+          "symbol": "SignalAnalyzerPresetLiveOwner",
+          "lines": [
+            35,
+            194
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Tests/GiftUIHostConfigurationTests/StaticSignalAnalyzerNRFAssemblyTests.swift",
+      "sha256": "1e2220d520c7b7484e35fe3ab0d95cda7379b7616445f40d02dd0462fd59f50e",
+      "disposition": "O/P: D32; preserve existing owned assertions and required new contract pairs",
+      "hits": [
+        {
+          "symbol": "StaticSignalAnalyzerNRFApplicationStorage",
+          "lines": [
+            99,
+            130,
+            144
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Tests/GiftUIHostConfigurationTests/StaticSignalAnalyzerNRFInteractionHandlerTests.swift",
+      "sha256": "5631703e5ea7b2ee831e82d863f58ff39eb6b4cb899f7edf99c61c21a0ab0275",
+      "disposition": "O/P: D32; preserve existing owned assertions and required new contract pairs",
+      "hits": [
+        {
+          "symbol": "StaticInteractionCandidateStorage",
+          "lines": [
+            197
+          ]
+        },
+        {
+          "symbol": "StaticInteractionCommittedStorage",
+          "lines": [
+            199,
+            200
+          ]
+        },
+        {
+          "symbol": "StaticInteractionHitStorage",
+          "lines": [
+            198,
+            201
+          ]
+        },
+        {
+          "symbol": "StaticInteractionState",
+          "lines": [
+            195,
+            196
+          ]
+        },
+        {
+          "symbol": "StaticSignalAnalyzerNRFApplicationInputOwner",
+          "lines": [
+            180,
+            182,
+            273
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Tests/GiftUIHostConfigurationTests/StaticSignalAnalyzerNRFPresentationInputsTests.swift",
+      "sha256": "296dd406ae39b04e51e28b46ba874975ccc5392586b13520f0c7d0d426d004cd",
+      "disposition": "O/P: D32; preserve existing owned assertions and required new contract pairs",
+      "hits": [
+        {
+          "symbol": "StaticInteractionCandidateStorage",
+          "lines": [
+            65,
+            1086
+          ]
+        },
+        {
+          "symbol": "StaticInteractionCommittedStorage",
+          "lines": [
+            71,
+            74,
+            1092,
+            1095
+          ]
+        },
+        {
+          "symbol": "StaticInteractionHitStorage",
+          "lines": [
+            68,
+            77,
+            1089,
+            1098
+          ]
+        },
+        {
+          "symbol": "StaticInteractionState",
+          "lines": [
+            64,
+            390,
+            1085
+          ]
+        },
+        {
+          "symbol": "StaticSignalAnalyzerNRFApplicationInputOwner",
+          "lines": [
+            408
+          ]
+        },
+        {
+          "symbol": "StaticSignalAnalyzerNRFApplicationStorage",
+          "lines": [
+            1136,
+            1427,
+            1687,
+            1782
+          ]
+        },
+        {
+          "symbol": "StaticSignalAnalyzerNRFInteractionCandidateProducer",
+          "lines": [
+            311,
+            1104,
+            1122
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Tests/GiftUIInteractionTests/InteractionCandidateAppendTests.swift",
+      "sha256": "56114de33a3d727b7fd1243808a41fbd6d8e4044ef6916190783ef3afe355ed8",
+      "disposition": "O/P: D32; preserve existing owned assertions and required new contract pairs",
+      "hits": [
+        {
+          "symbol": "ExecutionGestureAdapter",
+          "lines": [
+            89,
+            97,
+            105,
+            117,
+            130,
+            137,
+            146
+          ]
+        },
+        {
+          "symbol": "InteractionCandidateRecordStorage",
+          "lines": [
+            503
+          ]
+        },
+        {
+          "symbol": "InteractionCommittedRecordStorage",
+          "lines": [
+            525
+          ]
+        },
+        {
+          "symbol": "InteractionHitRegionStorage",
+          "lines": [
+            543
+          ]
+        },
+        {
+          "symbol": "InteractionState",
+          "lines": [
+            11,
+            55,
+            416,
+            419,
+            433,
+            454,
+            484
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Tests/GiftUIRuntimeConformanceTests/ProductionObservableRootActionDispatchTests.swift",
+      "sha256": "ce4ed74d35d46e68554177a61d72df562928bd7b6665ad76a9cb8666bee574ed",
+      "disposition": "O/P: D32; preserve existing owned assertions and required new contract pairs",
+      "hits": [
+        {
+          "symbol": "InteractionCommittedActionView",
+          "lines": [
+            47
+          ]
+        },
+        {
+          "symbol": "RuntimeInteractionDispatcher",
+          "lines": [
+            101,
+            126,
+            173,
+            204
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Tests/GiftUIRuntimeConformanceTests/ProfileDifferentialTests.swift",
+      "sha256": "76fa0442ad749a5180039eb62dfdc579f888130a3c4ac1b3624531d5d01ac77d",
+      "disposition": "O/P: D32; preserve existing owned assertions and required new contract pairs",
+      "hits": [
+        {
+          "symbol": "DynamicInteractionCandidateStorage",
+          "lines": [
+            407
+          ]
+        },
+        {
+          "symbol": "DynamicInteractionCommittedStorage",
+          "lines": [
+            409,
+            410
+          ]
+        },
+        {
+          "symbol": "DynamicInteractionHitStorage",
+          "lines": [
+            408,
+            411
+          ]
+        },
+        {
+          "symbol": "DynamicInteractionState",
+          "lines": [
+            406
+          ]
+        },
+        {
+          "symbol": "DynamicRuntimeExecutionCoordinator",
+          "lines": [
+            358
+          ]
+        },
+        {
+          "symbol": "InteractionCandidateBuilder",
+          "lines": [
+            428
+          ]
+        },
+        {
+          "symbol": "InteractionCommittedActionView",
+          "lines": [
+            428
+          ]
+        },
+        {
+          "symbol": "InteractionGestureResolver",
+          "lines": [
+            429
+          ]
+        },
+        {
+          "symbol": "RuntimeCompletePipelineOwner",
+          "lines": [
+            45,
+            632
+          ]
+        },
+        {
+          "symbol": "RuntimeCompletePipelineResult",
+          "lines": [
+            41,
+            530
+          ]
+        },
+        {
+          "symbol": "RuntimeCompletePipelineStage",
+          "lines": [
+            48,
+            113,
+            524,
+            642,
+            726
+          ]
+        },
+        {
+          "symbol": "RuntimeOpportunityQuiescence",
+          "lines": [
+            247
+          ]
+        },
+        {
+          "symbol": "StaticInteractionCandidateStorage",
+          "lines": [
+            414
+          ]
+        },
+        {
+          "symbol": "StaticInteractionCommittedStorage",
+          "lines": [
+            416,
+            417
+          ]
+        },
+        {
+          "symbol": "StaticInteractionHitStorage",
+          "lines": [
+            415,
+            418
+          ]
+        },
+        {
+          "symbol": "StaticInteractionState",
+          "lines": [
+            413
+          ]
+        },
+        {
+          "symbol": "StaticInteractionStorageProduceEqualBoundedTranscripts",
+          "lines": [
+            405
+          ]
+        },
+        {
+          "symbol": "StaticRuntimeExecutionCoordinator",
+          "lines": [
+            363
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Tests/GiftUIRuntimeCoreTests/RuntimeCompletePipelineTests.swift",
+      "sha256": "d7d3cadc6ea343d146befbf64505545fc43aaa9400b80ccea4cc8e0b11c5dd3d",
+      "disposition": "O/P: D32; preserve existing owned assertions and required new contract pairs",
+      "hits": [
+        {
+          "symbol": "RuntimeCompletePipeline",
+          "lines": [
+            208,
+            222,
+            245,
+            260,
+            286,
+            313,
+            329,
+            330,
+            354,
+            372,
+            419,
+            429,
+            453,
+            464,
+            481,
+            521
+          ]
+        },
+        {
+          "symbol": "RuntimeCompletePipelineOwner",
+          "lines": [
+            12
+          ]
+        },
+        {
+          "symbol": "RuntimeCompletePipelineStage",
+          "lines": [
+            15,
+            25,
+            103,
+            113,
+            129,
+            152,
+            339,
+            391
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Tests/GiftUIRuntimeCoreTests/RuntimeInteractionCandidateCoordinatorTests.swift",
+      "sha256": "88e78e727719c6b879cf74a12d9b412307c8811401aaf91913271985f2316782",
+      "disposition": "O/P: D32; preserve existing owned assertions and required new contract pairs",
+      "hits": [
+        {
+          "symbol": "InteractionCandidateBuilder",
+          "lines": [
+            48
+          ]
+        },
+        {
+          "symbol": "RuntimeInteractionCandidateCoordinator",
+          "lines": [
+            184,
+            217,
+            247
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Tests/GiftUIRuntimeCoreTests/RuntimeInteractionCandidateTransactionTests.swift",
+      "sha256": "2919f00a7984d2cb465893c353326ee863886eb446f94dd828cfa4d4a2659503",
+      "disposition": "O/P: D32; preserve existing owned assertions and required new contract pairs",
+      "hits": [
+        {
+          "symbol": "InteractionCandidateBuilder",
+          "lines": [
+            86
+          ]
+        },
+        {
+          "symbol": "RuntimeInteractionCandidateTransaction",
+          "lines": [
+            172,
+            189,
+            214,
+            228,
+            240,
+            267
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Tests/GiftUIRuntimeCoreTests/RuntimeInteractionDispatcherTests.swift",
+      "sha256": "d88f6f5cf9a822e5d9d2801ffb40bfc590a1bd75800cea4f04e210ede8246fc5",
+      "disposition": "O/P: D32; preserve existing owned assertions and required new contract pairs",
+      "hits": [
+        {
+          "symbol": "InteractionCommittedActionView",
+          "lines": [
+            70,
+            89
+          ]
+        },
+        {
+          "symbol": "RuntimeInteractionDispatcher",
+          "lines": [
+            158,
+            186,
+            218,
+            245,
+            272,
+            300,
+            332,
+            360,
+            386,
+            415,
+            444
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Tests/GiftUIRuntimeCoreTests/RuntimeInteractionMutationOwnerTests.swift",
+      "sha256": "9b3eaba30122b393b8802e081e653bf794685ea5191766dc76ecb4eb5910e7e0",
+      "disposition": "O/P: D32; preserve existing owned assertions and required new contract pairs",
+      "hits": [
+        {
+          "symbol": "InteractionCommittedActionView",
+          "lines": [
+            100
+          ]
+        },
+        {
+          "symbol": "RuntimeInteractionDispatcher",
+          "lines": [
+            162,
+            171
+          ]
+        },
+        {
+          "symbol": "RuntimeInteractionMutationOwner",
+          "lines": [
+            160,
+            169
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Tests/GiftUIRuntimeDynamicTests/DynamicInteractionStorageTests.swift",
+      "sha256": "0236d077a6d1a89f43e3d62206fc4ade08fd505b4d4e048e60d6c4b155a6d745",
+      "disposition": "O/P: D32; preserve existing owned assertions and required new contract pairs",
+      "hits": [
+        {
+          "symbol": "DynamicInteractionCandidateStorage",
+          "lines": [
+            10,
+            25,
+            74
+          ]
+        },
+        {
+          "symbol": "DynamicInteractionCommittedStorage",
+          "lines": [
+            12,
+            13,
+            27,
+            28,
+            76,
+            77
+          ]
+        },
+        {
+          "symbol": "DynamicInteractionHitStorage",
+          "lines": [
+            11,
+            14,
+            26,
+            29,
+            75,
+            78
+          ]
+        },
+        {
+          "symbol": "DynamicInteractionState",
+          "lines": [
+            9,
+            24,
+            49,
+            73
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Tests/GiftUIRuntimeStaticTests/StaticInteractionStorageTests.swift",
+      "sha256": "ab5cd4e224d2f287629da3aafd1e9e9577bacb32c019695577a510807ca124b6",
+      "disposition": "O/P: D32; preserve existing owned assertions and required new contract pairs",
+      "hits": [
+        {
+          "symbol": "StaticInteractionCandidateStorage",
+          "lines": [
+            9,
+            10,
+            13,
+            28,
+            129
+          ]
+        },
+        {
+          "symbol": "StaticInteractionCommittedStorage",
+          "lines": [
+            15,
+            16,
+            30,
+            31,
+            131,
+            132
+          ]
+        },
+        {
+          "symbol": "StaticInteractionHitStorage",
+          "lines": [
+            14,
+            17,
+            29,
+            32,
+            130,
+            133
+          ]
+        },
+        {
+          "symbol": "StaticInteractionState",
+          "lines": [
+            12,
+            27,
+            52,
+            78,
+            128
+          ]
+        },
+        {
+          "symbol": "StaticSixInteractionCandidateStorage",
+          "lines": [
+            72,
+            73,
+            81
+          ]
+        },
+        {
+          "symbol": "StaticSixInteractionCommittedStorage",
+          "lines": [
+            74,
+            83,
+            84
+          ]
+        },
+        {
+          "symbol": "StaticSixInteractionHitStorage",
+          "lines": [
+            75,
+            82,
+            85
+          ]
+        },
+        {
+          "symbol": "StaticSixInteractionState",
+          "lines": [
+            77,
+            80
+          ]
+        }
+      ]
+    },
+    {
+      "path": "scripts/contracts/build-spec-015-counter-image.py",
+      "sha256": "5c62d674d27a6886809801a5874f449c64897cfc753f2d29aff88d66749e1972",
+      "disposition": "P/O: D25\u2013D26/D34; changed API/generator compatibility and required evidence; no execution allowance",
+      "hits": []
+    },
+    {
+      "path": "scripts/contracts/check-spec-001-host-native-rasters.sh",
+      "sha256": "03e22b6005160b1be454c75dad270109d92933fa41bb73aca9eaa1282389e3b1",
+      "disposition": "P/O: D25\u2013D26/D34; changed API/generator compatibility and required evidence; no execution allowance",
+      "hits": [
+        {
+          "symbol": "DynamicSignalAnalyzerPresentationPipeline",
+          "lines": [
+            108
+          ]
+        }
+      ]
+    },
+    {
+      "path": "scripts/contracts/check-spec-006-typed-lowering.py",
+      "sha256": "c5645b188daa539235fc1ac4d38d2a74fa3aa1822fef071652452de5e59ac5fb",
+      "disposition": "O/P: D33; existing generator/configuration compatibility, no scoped-owner source generation",
+      "hits": []
+    },
+    {
+      "path": "scripts/contracts/check-spec-008-package-boundaries.rb",
+      "sha256": "108438b137ac21c2f8c115960786881845a788b26cc76a8be31d7cc9ded90844",
+      "disposition": "P/O: D25\u2013D26/D34; changed API/generator compatibility and required evidence; no execution allowance",
+      "hits": [
+        {
+          "symbol": "DynamicSignalAnalyzerPresentationPipeline",
+          "lines": [
+            58
+          ]
+        }
+      ]
+    },
+    {
+      "path": "scripts/contracts/check-spec-009-owner-integration.rb",
+      "sha256": "f357cfa7877a287fc6d83f73302eaa0e26785e4847c254503099c2641ddb1231",
+      "disposition": "P/O: D25\u2013D26/D34; changed API/generator compatibility and required evidence; no execution allowance",
+      "hits": [
+        {
+          "symbol": "DynamicRuntimeExecutionCoordinator",
+          "lines": [
+            100
+          ]
+        },
+        {
+          "symbol": "ExecutionGestureAdapter",
+          "lines": [
+            46
+          ]
+        },
+        {
+          "symbol": "StaticRuntimeExecutionCoordinator",
+          "lines": [
+            101
+          ]
+        }
+      ]
+    },
+    {
+      "path": "scripts/contracts/check-spec-011-integration-audit.rb",
+      "sha256": "7169d67d1fafb4c86b9c19e58d4c6139431c4e572b57aa767102ca7e2512edd3",
+      "disposition": "P/O: D25\u2013D26/D34; changed API/generator compatibility and required evidence; no execution allowance",
+      "hits": [
+        {
+          "symbol": "DynamicInteractionStorage",
+          "lines": [
+            74
+          ]
+        },
+        {
+          "symbol": "DynamicSignalAnalyzerActionDispatcher",
+          "lines": [
+            84
+          ]
+        },
+        {
+          "symbol": "InteractionState",
+          "lines": [
+            45,
+            71
+          ]
+        },
+        {
+          "symbol": "RuntimeInteractionCandidateCoordinator",
+          "lines": [
+            47,
+            59,
+            68
+          ]
+        },
+        {
+          "symbol": "RuntimeInteractionCandidateTransaction",
+          "lines": [
+            61
+          ]
+        },
+        {
+          "symbol": "RuntimeInteractionDispatcher",
+          "lines": [
+            81
+          ]
+        },
+        {
+          "symbol": "StaticInteractionStorage",
+          "lines": [
+            75
+          ]
+        },
+        {
+          "symbol": "StaticSignalAnalyzerActionDispatcher",
+          "lines": [
+            85
+          ]
+        },
+        {
+          "symbol": "StaticSignalAnalyzerNRFEmbeddedInteractionOwner",
+          "lines": [
+            62
+          ]
+        },
+        {
+          "symbol": "StaticSignalAnalyzerNRFInteractionCandidateProducer",
+          "lines": [
+            63
+          ]
+        }
+      ]
+    },
+    {
+      "path": "scripts/contracts/check-spec-011-owned-keys.py",
+      "sha256": "cf9cb01cd4d99cfd143afc3904201955ae7d49a44588b2dff3cf15492de85a0b",
+      "disposition": "P/O: D25\u2013D26/D34; changed API/generator compatibility and required evidence; no execution allowance",
+      "hits": [
+        {
+          "symbol": "DynamicInteractionStorage",
+          "lines": [
+            76
+          ]
+        },
+        {
+          "symbol": "RuntimeInteractionCandidateResolution",
+          "lines": [
+            77
+          ]
+        },
+        {
+          "symbol": "RuntimeRecordInteractionBridge",
+          "lines": [
+            77
+          ]
+        },
+        {
+          "symbol": "StaticInteractionStorage",
+          "lines": [
+            74
+          ]
+        }
+      ]
+    },
+    {
+      "path": "scripts/contracts/check-spec-013-amended-carriers.py",
+      "sha256": "9b87a350525070c64e35c4437c18a0ca551dc6e1940f22e7d909eb9075b2de49",
+      "disposition": "P/O: D25\u2013D26/D34; changed API/generator compatibility and required evidence; no execution allowance",
+      "hits": [
+        {
+          "symbol": "RuntimeCompletePipeline",
+          "lines": [
+            79
+          ]
+        },
+        {
+          "symbol": "RuntimeCompletePipelineOwner",
+          "lines": [
+            52
+          ]
+        },
+        {
+          "symbol": "RuntimeCompletePipelineResult",
+          "lines": [
+            47
+          ]
+        }
+      ]
+    },
+    {
+      "path": "scripts/contracts/check-spec-013-borrow-boundaries.rb",
+      "sha256": "e7e201d88b7f2bc571aa6323484cb8b87264fde1ad582741ac6182b70a4b01bc",
+      "disposition": "P/O: D25\u2013D26/D34; changed API/generator compatibility and required evidence; no execution allowance",
+      "hits": [
+        {
+          "symbol": "RuntimeInteractionDispatcher",
+          "lines": [
+            56
+          ]
+        }
+      ]
+    },
+    {
+      "path": "scripts/contracts/check-spec-013-cycle-failures.rb",
+      "sha256": "3d4aebbd006dbb2684b3373635b980322f40536e583586bb43f8f3eb87a33bb7",
+      "disposition": "P/O: D25\u2013D26/D34; changed API/generator compatibility and required evidence; no execution allowance",
+      "hits": [
+        {
+          "symbol": "RuntimeCompletePipelineTests",
+          "lines": [
+            9
+          ]
+        }
+      ]
+    },
+    {
+      "path": "scripts/contracts/check-spec-013-downstream-integration.rb",
+      "sha256": "915386f6dcda9ec5d937b5325b2ef438ea58ee5f293e2d5e6a0608ac7c05ef91",
+      "disposition": "P/O: D25\u2013D26/D34; changed API/generator compatibility and required evidence; no execution allowance",
+      "hits": [
+        {
+          "symbol": "RuntimeCompletePipelineTests",
+          "lines": [
+            33
+          ]
+        }
+      ]
+    },
+    {
+      "path": "scripts/contracts/check-spec-013-dynamic-binding.rb",
+      "sha256": "b9d87a4c81a0d689f6033a325802a058ccd3f7070619116c3cd148b2037ee907",
+      "disposition": "P/O: D25\u2013D26/D34; changed API/generator compatibility and required evidence; no execution allowance",
+      "hits": [
+        {
+          "symbol": "InteractionDispatcher",
+          "lines": [
+            41
+          ]
+        },
+        {
+          "symbol": "RuntimeInteractionDispatcher",
+          "lines": [
+            41
+          ]
+        }
+      ]
+    },
+    {
+      "path": "scripts/contracts/check-spec-013-handoff-recovery.rb",
+      "sha256": "65a317d1a589acc542331f90396fa2c8bfa9a241ddc440890b4f149f35c045f2",
+      "disposition": "P/O: D25\u2013D26/D34; changed API/generator compatibility and required evidence; no execution allowance",
+      "hits": [
+        {
+          "symbol": "RuntimeCompletePipelineTests",
+          "lines": [
+            31
+          ]
+        }
+      ]
+    },
+    {
+      "path": "scripts/contracts/check-spec-013-runtime-cycle.py",
+      "sha256": "51a46241f9737a8d6f4d0cc013b546258a6b577d9e87a92b802028405b79fe0c",
+      "disposition": "P/O: D25\u2013D26/D34; changed API/generator compatibility and required evidence; no execution allowance",
+      "hits": [
+        {
+          "symbol": "CyclePipelineOwner",
+          "lines": [
+            93
+          ]
+        },
+        {
+          "symbol": "DynamicInteractionStorage",
+          "lines": [
+            82
+          ]
+        },
+        {
+          "symbol": "DynamicRuntimeExecutionCoordinator",
+          "lines": [
+            82
+          ]
+        },
+        {
+          "symbol": "RuntimeCompletePipeline",
+          "lines": [
+            79
+          ]
+        },
+        {
+          "symbol": "RuntimeInteractionCandidateResolution",
+          "lines": [
+            78
+          ]
+        },
+        {
+          "symbol": "RuntimeRecordCanvasInteractionBridge",
+          "lines": [
+            78
+          ]
+        },
+        {
+          "symbol": "RuntimeRecordInteractionBridge",
+          "lines": [
+            78
+          ]
+        },
+        {
+          "symbol": "StaticInteractionStorage",
+          "lines": [
+            80
+          ]
+        },
+        {
+          "symbol": "StaticRuntimeExecutionCoordinator",
+          "lines": [
+            80,
+            122
+          ]
+        },
+        {
+          "symbol": "takeQuiescedOpportunity",
+          "lines": [
+            124,
+            125
+          ]
+        }
+      ]
+    },
+    {
+      "path": "scripts/contracts/check-spec-015-counter.py",
+      "sha256": "9f6e5c2381e52894358213caf7f433efa44f3b401e0d310194a5e881345f5b25",
+      "disposition": "P/O: D25\u2013D26/D34; changed API/generator compatibility and required evidence; no execution allowance",
+      "hits": [
+        {
+          "symbol": "CounterDynamicHost",
+          "lines": [
+            148,
+            149,
+            167
+          ]
+        },
+        {
+          "symbol": "CounterDynamicHostBackingNegative",
+          "lines": [
+            147
+          ]
+        },
+        {
+          "symbol": "CounterDynamicHostEscape",
+          "lines": [
+            149
+          ]
+        },
+        {
+          "symbol": "CounterDynamicHostOwner",
+          "lines": [
+            73,
+            150
+          ]
+        },
+        {
+          "symbol": "CounterDynamicHostProbe",
+          "lines": [
+            73,
+            148
+          ]
+        },
+        {
+          "symbol": "CounterHost",
+          "lines": [
+            132,
+            142,
+            167
+          ]
+        },
+        {
+          "symbol": "CounterHostAssembly",
+          "lines": [
+            73,
+            143
+          ]
+        },
+        {
+          "symbol": "CounterHostBackingNegative",
+          "lines": [
+            131
+          ]
+        },
+        {
+          "symbol": "CounterHostCopyNegative",
+          "lines": [
+            129
+          ]
+        },
+        {
+          "symbol": "CounterHostCorpus",
+          "lines": [
+            73
+          ]
+        },
+        {
+          "symbol": "CounterHostEscape",
+          "lines": [
+            142
+          ]
+        },
+        {
+          "symbol": "CounterHostOwner",
+          "lines": [
+            73,
+            130,
+            143
+          ]
+        },
+        {
+          "symbol": "CounterHostProbe",
+          "lines": [
+            73,
+            132
+          ]
+        },
+        {
+          "symbol": "CounterPipelineOwner",
+          "lines": [
+            73
+          ]
+        },
+        {
+          "symbol": "SignalAnalyzerPresetHostInstance",
+          "lines": [
+            130,
+            143,
+            150
+          ]
+        }
+      ]
+    },
+    {
+      "path": "scripts/contracts/check-spec-015-schema4.py",
+      "sha256": "c248f4131bcc84196833ea0eaaabf5f40e3742cb9e7c7dd10dcdf4a7ddf67e6b",
+      "disposition": "P/O: D25\u2013D26/D34; changed API/generator compatibility and required evidence; no execution allowance",
+      "hits": [
+        {
+          "symbol": "SignalAnalyzerPresetHostInstance",
+          "lines": [
+            97,
+            98
+          ]
+        }
+      ]
+    },
+    {
+      "path": "scripts/contracts/check-spec-015-scoped-host.py",
+      "sha256": "146f04e7f8f505a3f32008f98a00605f77a41ab00171de5820383cc561b72918",
+      "disposition": "P/O: D25\u2013D26/D34; changed API/generator compatibility and required evidence; no execution allowance",
+      "hits": [
+        {
+          "symbol": "SignalAnalyzerPresetHostInstance",
+          "lines": [
+            60,
+            61
+          ]
+        }
+      ]
+    },
+    {
+      "path": "scripts/contracts/generate-spec-001-nrf-canvas-table.rb",
+      "sha256": "4fce08535729471ad18977cd9c41cda20bf5f84debf3eeb84684f1a31f038ae9",
+      "disposition": "O/P: D33; existing generator/configuration compatibility, no scoped-owner source generation",
+      "hits": []
+    },
+    {
+      "path": "scripts/contracts/generate-spec-001-nrf-topology.py",
+      "sha256": "dee4e002284f1c4eef21306212520531762623cc92f4caa9e31cbb18b7b806e3",
+      "disposition": "O/P: D33; existing generator/configuration compatibility, no scoped-owner source generation",
+      "hits": []
+    },
+    {
+      "path": "scripts/contracts/generate-spec-015-workload.rb",
+      "sha256": "b33b2a7dc8cecac90b4cbc8773769336a252b76b60520a2bbffadc8182adad2f",
+      "disposition": "O/P: D33; existing generator/configuration compatibility, no scoped-owner source generation",
+      "hits": []
+    },
+    {
+      "path": "scripts/contracts/run-spec-009.sh",
+      "sha256": "94c74a61eb747c92f4fbb4d1f4dcdf37f30a554da00a1cb6f40ae91c7b39bedd",
+      "disposition": "P/O: D25\u2013D26/D34; changed API/generator compatibility and required evidence; no execution allowance",
+      "hits": [
+        {
+          "symbol": "DynamicRuntimeExecutionCoordinator",
+          "lines": [
+            50
+          ]
+        },
+        {
+          "symbol": "StaticRuntimeExecutionCoordinator",
+          "lines": [
+            51
+          ]
+        }
+      ]
+    },
+    {
+      "path": "scripts/contracts/run-spec-011.sh",
+      "sha256": "34150f0fd6c6bad121a7e343737ae9a583ad3de76cba85d65100d66a9e5524fb",
+      "disposition": "P/O: D25\u2013D26/D34; changed API/generator compatibility and required evidence; no execution allowance",
+      "hits": []
+    },
+    {
+      "path": "scripts/contracts/run-spec-013.sh",
+      "sha256": "79ded68eae14b7ef1855c62383989d3451e63fa9fbba05a19a9887ee5088d4ff",
+      "disposition": "P/O: D25\u2013D26/D34; changed API/generator compatibility and required evidence; no execution allowance",
+      "hits": []
+    },
+    {
+      "path": "scripts/contracts/run-spec-015.sh",
+      "sha256": "d385f473239ddaf5e3980b739946c93556c0a92f4972b15758aa4af47aa00ba2",
+      "disposition": "P/O: D25\u2013D26/D34; changed API/generator compatibility and required evidence; no execution allowance",
+      "hits": []
+    },
+    {
+      "path": "scripts/nrf52840/build.sh",
+      "sha256": "3e1a640a368e0b54eedf66d92a6746d1d509aa4070b09618757a5761605da559",
+      "disposition": "P/O: D25\u2013D26/D34; changed API/generator compatibility and required evidence; no execution allowance",
+      "hits": []
+    },
+    {
+      "path": "scripts/raspberry-pi/build.sh",
+      "sha256": "5a7ff2a36b26b5aca0534d01256038d70136ae65d73c59491e6ff36b10bc795f",
+      "disposition": "P/O: D25\u2013D26/D34; changed API/generator compatibility and required evidence; no execution allowance",
+      "hits": []
+    },
+    {
+      "path": "scripts/text-resources/generate-pi-compact-resources.py",
+      "sha256": "cf99d5c206b1b0522fe2d54d9ab66fcaa8c89e303f3b12183b331ef964ab99e3",
+      "disposition": "O/P: D33; existing generator/configuration compatibility, no scoped-owner source generation",
+      "hits": []
+    },
+    {
+      "path": "scripts/text-resources/generate-reference-resources.py",
+      "sha256": "8433302f9a8c8ecfe58bb9c0e978d2d488ff8f4a25e9a52bf8883fc734e10d5e",
+      "disposition": "O/P: D33; existing generator/configuration compatibility, no scoped-owner source generation",
+      "hits": []
+    }
+  ],
+  "additional_dependencies": [
+    "Package.swift",
+    "Sources/GiftUIMacros/FiniteSourceLowering.swift",
+    "Sources/GiftUIMacros/CanvasWitnessLowering.swift",
+    "Sources/GiftUIMacros/ObservableStateHostMacro.swift",
+    "Sources/GiftUIMacros/GiftUIMacros.swift",
+    "scripts/contracts/generate-spec-015-workload.rb",
+    "scripts/contracts/generate-spec-001-nrf-topology.py",
+    "scripts/contracts/generate-spec-001-nrf-canvas-table.rb",
+    "scripts/text-resources/generate-reference-resources.py",
+    "scripts/text-resources/generate-pi-compact-resources.py",
+    "scripts/contracts/check-spec-006-typed-lowering.py"
+  ]
+}
