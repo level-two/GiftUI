@@ -98,7 +98,7 @@ func counterValidateBacking<G, C, R, H, GR: CounterStorageRegionSource>(profile:
     factoryDescriptorRegion: CounterStorageRegion? = nil,
     geometryRegions: borrowing GR,
     report: (CounterStorageRegion) -> Void) -> RuntimeProfileValidationResult
-where G: CounterGeometry, C: CounterCandidateBacking, R: CounterCommittedBacking, H: CounterHitBacking,
+where G: CounterGeometry, C: CounterCandidateBacking & InteractionOwnedBankMeasurementSource, R: CounterCommittedBacking & InteractionOwnedBankMeasurementSource, H: CounterHitBacking & InteractionOwnedBankMeasurementSource,
     C.Identity == SemanticCompleteIdentity, R.Identity == SemanticCompleteIdentity, H.Identity == SemanticCompleteIdentity {
     // The concrete scoped render adapter exports exactly the configured view;
     // inaccessible physical headroom remains measured in the backing regions.

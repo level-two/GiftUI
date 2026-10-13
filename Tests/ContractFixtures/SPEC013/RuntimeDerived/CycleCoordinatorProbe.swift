@@ -165,7 +165,7 @@ struct CycleWake: ExecutionWakeRequester, Sendable {
     }
 }
 
-func cycleConcreteCoordinator<G, C, R, H>(owner: consuming CyclePipelineOwner<G, C, R, H>, dynamic: Bool, control: UnsafeMutablePointer<CycleControl>, audit: RuntimeStorageAudit, admission: consuming CycleAdmission, stopAfterFailure: Bool = false) -> CycleReturnedWorkspaces<G, C, R, H> where G: CycleGeometry, C: CycleCandidateBacking, R: CycleCommittedBacking, H: CycleHitBacking, C.Identity == SemanticCompleteIdentity, R.Identity == SemanticCompleteIdentity, H.Identity == SemanticCompleteIdentity {
+func cycleConcreteCoordinator<G, C, R, H>(owner: consuming CyclePipelineOwner<G, C, R, H>, dynamic: Bool, control: UnsafeMutablePointer<CycleControl>, audit: RuntimeStorageAudit, admission: consuming CycleAdmission, stopAfterFailure: Bool = false) -> CycleReturnedWorkspaces<G, C, R, H> where G: CycleGeometry, C: CycleCandidateBacking & InteractionOwnedBankMeasurementSource, R: CycleCommittedBacking & InteractionOwnedBankMeasurementSource, H: CycleHitBacking & InteractionOwnedBankMeasurementSource, C.Identity == SemanticCompleteIdentity, R.Identity == SemanticCompleteIdentity, H.Identity == SemanticCompleteIdentity {
     precondition(owner.limits == audit.limits)
     let geometryBefore = owner.geometry.storageMeasurement()
     let interactionBefore = cycleMeasureInteraction(owner.interaction)

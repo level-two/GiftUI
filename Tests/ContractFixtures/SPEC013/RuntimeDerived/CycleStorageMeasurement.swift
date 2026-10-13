@@ -53,46 +53,77 @@ protocol CycleHitBacking: InteractionHitRegionStorage {
     var retainedIdentitySlots: Int { get }
     var retainedPayloadBytes: Int { get }
 }
-extension StaticSixInteractionCandidateStorage: CycleCandidateBacking {
+extension StaticSixInteractionCandidateStorage: CycleCandidateBacking, InteractionOwnedBankMeasurementSource {
+    package var ownedInteractionBankMeasurement: InteractionOwnedBankMeasurement {
+        .init(count: count, capacity: capacity, retainedIdentitySlots: retainedIdentitySlots,
+            retainedPayloadBytes: retainedPayloadBytes, inlineSize: MemoryLayout<Self>.size,
+            inlineStride: MemoryLayout<Self>.stride, inlineAlignment: MemoryLayout<Self>.alignment)
+    }
     var retainedIdentitySlots: Int { 6 }
     var retainedPayloadBytes: Int { 0 } // Records are already inside Self's inline layout.
 }
-extension StaticSixInteractionCommittedStorage: CycleCommittedBacking {
+extension StaticSixInteractionCommittedStorage: CycleCommittedBacking, InteractionOwnedBankMeasurementSource {
+    package var ownedInteractionBankMeasurement: InteractionOwnedBankMeasurement {
+        .init(count: count, capacity: capacity, retainedIdentitySlots: retainedIdentitySlots,
+            retainedPayloadBytes: retainedPayloadBytes, inlineSize: MemoryLayout<Self>.size,
+            inlineStride: MemoryLayout<Self>.stride, inlineAlignment: MemoryLayout<Self>.alignment)
+    }
     var retainedIdentitySlots: Int { 6 }
     var retainedPayloadBytes: Int { 0 }
 }
-extension StaticSixInteractionHitStorage: CycleHitBacking {
+extension StaticSixInteractionHitStorage: CycleHitBacking, InteractionOwnedBankMeasurementSource {
+    package var ownedInteractionBankMeasurement: InteractionOwnedBankMeasurement {
+        .init(count: count, capacity: capacity, retainedIdentitySlots: retainedIdentitySlots,
+            retainedPayloadBytes: retainedPayloadBytes, inlineSize: MemoryLayout<Self>.size,
+            inlineStride: MemoryLayout<Self>.stride, inlineAlignment: MemoryLayout<Self>.alignment)
+    }
     var retainedIdentitySlots: Int { 6 }
     var retainedPayloadBytes: Int { 0 }
 }
 #if !hasFeature(Embedded)
-extension DynamicInteractionCandidateStorage: CycleCandidateBacking {
+extension DynamicInteractionCandidateStorage: CycleCandidateBacking, InteractionOwnedBankMeasurementSource {
+    package var ownedInteractionBankMeasurement: InteractionOwnedBankMeasurement {
+        .init(count: count, capacity: capacity, retainedIdentitySlots: retainedIdentitySlots,
+            retainedPayloadBytes: retainedPayloadBytes, inlineSize: MemoryLayout<Self>.size,
+            inlineStride: MemoryLayout<Self>.stride, inlineAlignment: MemoryLayout<Self>.alignment)
+    }
     var retainedIdentitySlots: Int { retainedElementCapacity }
     var retainedPayloadBytes: Int { reservedPayloadBytes }
 }
-extension DynamicInteractionCommittedStorage: CycleCommittedBacking {
+extension DynamicInteractionCommittedStorage: CycleCommittedBacking, InteractionOwnedBankMeasurementSource {
+    package var ownedInteractionBankMeasurement: InteractionOwnedBankMeasurement {
+        .init(count: count, capacity: capacity, retainedIdentitySlots: retainedIdentitySlots,
+            retainedPayloadBytes: retainedPayloadBytes, inlineSize: MemoryLayout<Self>.size,
+            inlineStride: MemoryLayout<Self>.stride, inlineAlignment: MemoryLayout<Self>.alignment)
+    }
     var retainedIdentitySlots: Int { retainedElementCapacity }
     var retainedPayloadBytes: Int { reservedPayloadBytes }
 }
-extension DynamicInteractionHitStorage: CycleHitBacking {
+extension DynamicInteractionHitStorage: CycleHitBacking, InteractionOwnedBankMeasurementSource {
+    package var ownedInteractionBankMeasurement: InteractionOwnedBankMeasurement {
+        .init(count: count, capacity: capacity, retainedIdentitySlots: retainedIdentitySlots,
+            retainedPayloadBytes: retainedPayloadBytes, inlineSize: MemoryLayout<Self>.size,
+            inlineStride: MemoryLayout<Self>.stride, inlineAlignment: MemoryLayout<Self>.alignment)
+    }
     var retainedIdentitySlots: Int { retainedElementCapacity }
     var retainedPayloadBytes: Int { reservedPayloadBytes }
 }
 #endif
-func cycleMeasureInteraction<C: CycleCandidateBacking, R: CycleCommittedBacking, H: CycleHitBacking>(_ storage: borrowing InteractionOwnedKeyState<C, R, H>) -> CycleInteractionMeasurement where C.Identity == SemanticCompleteIdentity, R.Identity == SemanticCompleteIdentity, H.Identity == SemanticCompleteIdentity {
-    storage.withBacking { candidate, candidateHits, prepared, committed, committedHits in
+func cycleMeasureInteraction<C: CycleCandidateBacking & InteractionOwnedBankMeasurementSource & Copyable & Escapable, R: CycleCommittedBacking & InteractionOwnedBankMeasurementSource & Copyable & Escapable, H: CycleHitBacking & InteractionOwnedBankMeasurementSource & Copyable & Escapable>(_ storage: borrowing InteractionOwnedKeyState<C, R, H>) -> CycleInteractionMeasurement where C.Identity == SemanticCompleteIdentity, R.Identity == SemanticCompleteIdentity, H.Identity == SemanticCompleteIdentity {
+    let facts = storage.ownedStorageMeasurement()
+    let candidate = facts.candidate, candidateHits = facts.candidateHits
+    let prepared = facts.prepared, committed = facts.committed, committedHits = facts.committedHits
         // Each record owns one complete identity. Candidate includes the prepared
         // committed bank. Key bytes are subtracted from those records, never added twice.
         let candidateKeys = UInt64(candidate.retainedIdentitySlots + candidateHits.retainedIdentitySlots + prepared.retainedIdentitySlots) * UInt64(MemoryLayout<SemanticCompleteIdentity>.size)
         let committedKeys = UInt64(committed.retainedIdentitySlots + committedHits.retainedIdentitySlots) * UInt64(MemoryLayout<SemanticCompleteIdentity>.size)
-        let candidateRaw = UInt64(MemoryLayout<C>.size + MemoryLayout<H>.size + MemoryLayout<R>.size + candidate.retainedPayloadBytes + candidateHits.retainedPayloadBytes + prepared.retainedPayloadBytes)
-        let committedRaw = UInt64(MemoryLayout<R>.size + MemoryLayout<H>.size + committed.retainedPayloadBytes + committedHits.retainedPayloadBytes)
+        let candidateRaw = UInt64(candidate.inlineSize + candidateHits.inlineSize + prepared.inlineSize + candidate.retainedPayloadBytes + candidateHits.retainedPayloadBytes + prepared.retainedPayloadBytes)
+        let committedRaw = UInt64(committed.inlineSize + committedHits.inlineSize + committed.retainedPayloadBytes + committedHits.retainedPayloadBytes)
         precondition(candidateKeys <= candidateRaw && committedKeys <= committedRaw)
         return .init(candidateRecords: min(candidate.capacity, prepared.capacity), candidateHits: candidateHits.capacity,
             committedRecords: committed.capacity, committedHits: committedHits.capacity,
             candidateIdentityBytes: candidateKeys, committedIdentityBytes: committedKeys,
             candidateBytes: candidateRaw - candidateKeys, committedBytes: committedRaw - committedKeys)
-    }
 }
 struct CycleGeometryMeasurement: Equatable {
     let layout: LayoutLimits
@@ -107,7 +138,7 @@ struct CycleGeometryMeasurement: Equatable {
 
 // Only the escapable, owned workspaces leave the enclosing scoped opportunity.
 // Model/root/semantic/Canvas scopes are destroyed before this transfer returns.
-struct CycleReturnedWorkspaces<G: CycleGeometry, C: CycleCandidateBacking, R: CycleCommittedBacking, H: CycleHitBacking> where C.Identity == SemanticCompleteIdentity, R.Identity == SemanticCompleteIdentity, H.Identity == SemanticCompleteIdentity {
+struct CycleReturnedWorkspaces<G: CycleGeometry & Copyable & Escapable, C: CycleCandidateBacking & Copyable & Escapable, R: CycleCommittedBacking & Copyable & Escapable, H: CycleHitBacking & Copyable & Escapable> where C.Identity == SemanticCompleteIdentity, R.Identity == SemanticCompleteIdentity, H.Identity == SemanticCompleteIdentity {
     var geometry: G
     var interaction: InteractionOwnedKeyState<C, R, H>
     var checks: Int

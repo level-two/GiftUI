@@ -109,7 +109,7 @@ func cycleValidateBacking<G, C, R, H, GR: CycleStorageRegionSource>(profile: Run
     factoryRegion: CycleStorageRegion,
     geometryRegions: borrowing GR,
     report: (CycleStorageRegion) -> Void) -> RuntimeProfileValidationResult
-where G: CycleGeometry, C: CycleCandidateBacking, R: CycleCommittedBacking, H: CycleHitBacking,
+where G: CycleGeometry, C: CycleCandidateBacking & InteractionOwnedBankMeasurementSource, R: CycleCommittedBacking & InteractionOwnedBankMeasurementSource, H: CycleHitBacking & InteractionOwnedBankMeasurementSource,
     C.Identity == SemanticCompleteIdentity, R.Identity == SemanticCompleteIdentity, H.Identity == SemanticCompleteIdentity {
     // The concrete scoped render adapter exports exactly the configured view;
     // inaccessible physical headroom remains measured in the backing regions.

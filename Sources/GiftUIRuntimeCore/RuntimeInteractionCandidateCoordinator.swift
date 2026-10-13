@@ -56,7 +56,7 @@ package enum RuntimeInteractionCandidateCoordinator {
     ) -> RuntimeInteractionCandidateBuildResult
     where
         Occurrences: RuntimeInteractionOccurrenceView,
-        Interaction: InteractionCandidateBuilder,
+        Interaction: InteractionCandidateBuilder & ~Copyable & ~Escapable,
         Observable: ObservableStateReconciler & ObservableStateTargetView,
         Generations: RuntimeActionGenerationSource,
         Occurrences.Identity == Interaction.Identity,
@@ -130,7 +130,7 @@ package enum RuntimeInteractionCandidateCoordinator {
         observable: inout Observable
     )
     where
-        Interaction: InteractionCandidateBuilder,
+        Interaction: InteractionCandidateBuilder & ~Copyable & ~Escapable,
         Observable: ObservableStateReconciler
     {
         interaction.resolveCandidate(.discard)

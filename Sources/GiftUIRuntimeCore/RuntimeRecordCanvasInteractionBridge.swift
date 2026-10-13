@@ -19,8 +19,10 @@ extension RuntimeRecordInteractionBridge {
         interaction: inout InteractionOwnedKeyState<Candidate, Committed, Hits>
     ) -> InteractionCandidateAppendResult
     where
-        Candidate: InteractionCandidateRecordStorage, Committed: InteractionCommittedRecordStorage,
-        Hits: InteractionHitRegionStorage, Candidate.Identity == SemanticCompleteIdentity,
+        Candidate: InteractionCandidateRecordStorage & ~Copyable & ~Escapable,
+        Committed: InteractionCommittedRecordStorage & ~Copyable & ~Escapable,
+        Hits: InteractionHitRegionStorage & ~Copyable & ~Escapable,
+        Candidate.Identity == SemanticCompleteIdentity,
         Committed.Identity == SemanticCompleteIdentity, Hits.Identity == SemanticCompleteIdentity,
         Model: ObservableStateModel & ~Copyable, RootIdentity: Equatable & Sendable,
         Action: GiftUIAction, Roles: SemanticDeclarationRoles

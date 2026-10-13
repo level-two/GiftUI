@@ -40,63 +40,94 @@ struct CounterInteractionMeasurement: Equatable {
     let candidateBytes: UInt64
     let committedBytes: UInt64
 }
-protocol CounterCandidateBacking: InteractionCandidateRecordStorage {
+protocol CounterCandidateBacking: ~Copyable, ~Escapable, InteractionCandidateRecordStorage {
     var retainedIdentitySlots: Int { get }
     var retainedPayloadBytes: Int { get }
 }
-protocol CounterCommittedBacking: InteractionCommittedRecordStorage {
+protocol CounterCommittedBacking: ~Copyable, ~Escapable, InteractionCommittedRecordStorage {
     var retainedIdentitySlots: Int { get }
     var retainedPayloadBytes: Int { get }
 }
-protocol CounterHitBacking: InteractionHitRegionStorage {
+protocol CounterHitBacking: ~Copyable, ~Escapable, InteractionHitRegionStorage {
     var retainedIdentitySlots: Int { get }
     var retainedPayloadBytes: Int { get }
 }
-extension StaticTwoInteractionCandidateStorage: CounterCandidateBacking {
+extension StaticTwoInteractionCandidateStorage: CounterCandidateBacking, InteractionOwnedBankMeasurementSource {
+    package var ownedInteractionBankMeasurement: InteractionOwnedBankMeasurement {
+        .init(count: count, capacity: capacity, retainedIdentitySlots: retainedIdentitySlots,
+            retainedPayloadBytes: retainedPayloadBytes, inlineSize: MemoryLayout<Self>.size,
+            inlineStride: MemoryLayout<Self>.stride, inlineAlignment: MemoryLayout<Self>.alignment)
+    }
     var retainedIdentitySlots: Int { 2 }
     var retainedPayloadBytes: Int { 0 } // Records are already inside Self's inline layout.
 }
-extension StaticTwoInteractionCommittedStorage: CounterCommittedBacking {
+extension StaticTwoInteractionCommittedStorage: CounterCommittedBacking, InteractionOwnedBankMeasurementSource {
+    package var ownedInteractionBankMeasurement: InteractionOwnedBankMeasurement {
+        .init(count: count, capacity: capacity, retainedIdentitySlots: retainedIdentitySlots,
+            retainedPayloadBytes: retainedPayloadBytes, inlineSize: MemoryLayout<Self>.size,
+            inlineStride: MemoryLayout<Self>.stride, inlineAlignment: MemoryLayout<Self>.alignment)
+    }
     var retainedIdentitySlots: Int { 2 }
     var retainedPayloadBytes: Int { 0 }
 }
-extension StaticTwoInteractionHitStorage: CounterHitBacking {
+extension StaticTwoInteractionHitStorage: CounterHitBacking, InteractionOwnedBankMeasurementSource {
+    package var ownedInteractionBankMeasurement: InteractionOwnedBankMeasurement {
+        .init(count: count, capacity: capacity, retainedIdentitySlots: retainedIdentitySlots,
+            retainedPayloadBytes: retainedPayloadBytes, inlineSize: MemoryLayout<Self>.size,
+            inlineStride: MemoryLayout<Self>.stride, inlineAlignment: MemoryLayout<Self>.alignment)
+    }
     var retainedIdentitySlots: Int { 2 }
     var retainedPayloadBytes: Int { 0 }
 }
 #if !hasFeature(Embedded)
-extension DynamicInteractionCandidateStorage: CounterCandidateBacking {
+extension DynamicInteractionCandidateStorage: CounterCandidateBacking, InteractionOwnedBankMeasurementSource {
+    package var ownedInteractionBankMeasurement: InteractionOwnedBankMeasurement {
+        .init(count: count, capacity: capacity, retainedIdentitySlots: retainedIdentitySlots,
+            retainedPayloadBytes: retainedPayloadBytes, inlineSize: MemoryLayout<Self>.size,
+            inlineStride: MemoryLayout<Self>.stride, inlineAlignment: MemoryLayout<Self>.alignment)
+    }
     var retainedIdentitySlots: Int { retainedElementCapacity }
     var retainedPayloadBytes: Int { reservedPayloadBytes }
 }
-extension DynamicInteractionCommittedStorage: CounterCommittedBacking {
+extension DynamicInteractionCommittedStorage: CounterCommittedBacking, InteractionOwnedBankMeasurementSource {
+    package var ownedInteractionBankMeasurement: InteractionOwnedBankMeasurement {
+        .init(count: count, capacity: capacity, retainedIdentitySlots: retainedIdentitySlots,
+            retainedPayloadBytes: retainedPayloadBytes, inlineSize: MemoryLayout<Self>.size,
+            inlineStride: MemoryLayout<Self>.stride, inlineAlignment: MemoryLayout<Self>.alignment)
+    }
     var retainedIdentitySlots: Int { retainedElementCapacity }
     var retainedPayloadBytes: Int { reservedPayloadBytes }
 }
-extension DynamicInteractionHitStorage: CounterHitBacking {
+extension DynamicInteractionHitStorage: CounterHitBacking, InteractionOwnedBankMeasurementSource {
+    package var ownedInteractionBankMeasurement: InteractionOwnedBankMeasurement {
+        .init(count: count, capacity: capacity, retainedIdentitySlots: retainedIdentitySlots,
+            retainedPayloadBytes: retainedPayloadBytes, inlineSize: MemoryLayout<Self>.size,
+            inlineStride: MemoryLayout<Self>.stride, inlineAlignment: MemoryLayout<Self>.alignment)
+    }
     var retainedIdentitySlots: Int { retainedElementCapacity }
     var retainedPayloadBytes: Int { reservedPayloadBytes }
 }
 #endif
-func counterMeasureInteraction<C: CounterCandidateBacking, R: CounterCommittedBacking, H: CounterHitBacking>(_ storage: borrowing InteractionOwnedKeyState<C, R, H>) -> CounterInteractionMeasurement where C.Identity == SemanticCompleteIdentity, R.Identity == SemanticCompleteIdentity, H.Identity == SemanticCompleteIdentity {
-    storage.withBacking { candidate, candidateHits, prepared, committed, committedHits in
+func counterMeasureInteraction<C: CounterCandidateBacking & InteractionOwnedBankMeasurementSource & Copyable & Escapable, R: CounterCommittedBacking & InteractionOwnedBankMeasurementSource & Copyable & Escapable, H: CounterHitBacking & InteractionOwnedBankMeasurementSource & Copyable & Escapable>(_ storage: borrowing InteractionOwnedKeyState<C, R, H>) -> CounterInteractionMeasurement where C.Identity == SemanticCompleteIdentity, R.Identity == SemanticCompleteIdentity, H.Identity == SemanticCompleteIdentity {
+    let facts = storage.ownedStorageMeasurement()
+    let candidate = facts.candidate, candidateHits = facts.candidateHits
+    let prepared = facts.prepared, committed = facts.committed, committedHits = facts.committedHits
         // Each record owns one complete identity. Candidate includes the prepared
         // committed bank. Key bytes are subtracted from those records, never added twice.
         let candidateKeys = UInt64(candidate.retainedIdentitySlots + candidateHits.retainedIdentitySlots + prepared.retainedIdentitySlots) * UInt64(MemoryLayout<SemanticCompleteIdentity>.size)
         let committedKeys = UInt64(committed.retainedIdentitySlots + committedHits.retainedIdentitySlots) * UInt64(MemoryLayout<SemanticCompleteIdentity>.size)
-        let candidateRaw = UInt64(MemoryLayout<C>.size + MemoryLayout<H>.size + MemoryLayout<R>.size + candidate.retainedPayloadBytes + candidateHits.retainedPayloadBytes + prepared.retainedPayloadBytes)
-        let committedRaw = UInt64(MemoryLayout<R>.size + MemoryLayout<H>.size + committed.retainedPayloadBytes + committedHits.retainedPayloadBytes)
+        let candidateRaw = UInt64(candidate.inlineSize + candidateHits.inlineSize + prepared.inlineSize + candidate.retainedPayloadBytes + candidateHits.retainedPayloadBytes + prepared.retainedPayloadBytes)
+        let committedRaw = UInt64(committed.inlineSize + committedHits.inlineSize + committed.retainedPayloadBytes + committedHits.retainedPayloadBytes)
         precondition(candidateKeys <= candidateRaw && committedKeys <= committedRaw)
         return .init(candidateRecords: min(candidate.capacity, prepared.capacity), candidateHits: candidateHits.capacity,
             committedRecords: committed.capacity, committedHits: committedHits.capacity,
             candidateIdentityBytes: candidateKeys, committedIdentityBytes: committedKeys,
             candidateBytes: candidateRaw - candidateKeys, committedBytes: committedRaw - committedKeys)
-    }
 }
 
 // Only the escapable, owned workspaces leave the enclosing scoped opportunity.
 // Model/root/semantic/Canvas scopes are destroyed before this transfer returns.
-struct CounterReturnedWorkspaces<G: CounterGeometry, C: CounterCandidateBacking, R: CounterCommittedBacking, H: CounterHitBacking> where C.Identity == SemanticCompleteIdentity, R.Identity == SemanticCompleteIdentity, H.Identity == SemanticCompleteIdentity {
+struct CounterReturnedWorkspaces<G: CounterGeometry & Copyable & Escapable, C: CounterCandidateBacking & Copyable & Escapable, R: CounterCommittedBacking & Copyable & Escapable, H: CounterHitBacking & Copyable & Escapable> where C.Identity == SemanticCompleteIdentity, R.Identity == SemanticCompleteIdentity, H.Identity == SemanticCompleteIdentity {
     var geometry: G
     var interaction: InteractionOwnedKeyState<C, R, H>
     var checks: Int

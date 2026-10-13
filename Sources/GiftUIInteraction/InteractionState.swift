@@ -2,13 +2,14 @@ import GiftUI
 import GiftUIExecution
 import GiftUILayout
 
-package struct InteractionState<CandidateRecords, CommittedRecords, HitRegions>:
+package struct InteractionState<CandidateRecords, CommittedRecords, HitRegions>: ~Copyable,
+    ~Escapable,
     InteractionCandidateBuilder, InteractionCommittedActionView,
     InteractionGestureResolver
 where
-    CandidateRecords: InteractionCandidateRecordStorage,
-    CommittedRecords: InteractionCommittedRecordStorage,
-    HitRegions: InteractionHitRegionStorage,
+    CandidateRecords: InteractionCandidateRecordStorage & ~Copyable & ~Escapable,
+    CommittedRecords: InteractionCommittedRecordStorage & ~Copyable & ~Escapable,
+    HitRegions: InteractionHitRegionStorage & ~Copyable & ~Escapable,
     CandidateRecords.Identity == CommittedRecords.Identity,
     CandidateRecords.Identity == HitRegions.Identity
 {
@@ -30,6 +31,9 @@ where
     private var candidateError: InteractionError?
     private var committedPresentationRevision: PresentationRevision?
 
+    @_lifetime(
+        copy candidateRecords, copy candidateHitRegions, copy candidateCommittedRecords,
+        copy committedRecords, copy committedHitRegions)
     package init(
         candidateRecords: consuming CandidateRecords,
         candidateHitRegions: consuming HitRegions,
@@ -37,22 +41,11 @@ where
         committedRecords: consuming CommittedRecords,
         committedHitRegions: consuming HitRegions
     ) {
-        self.candidateRecords = candidateRecords
-        self.candidateHitRegions = candidateHitRegions
-        self.candidateCommittedRecords = candidateCommittedRecords
-        self.committedRecords = committedRecords
-        self.committedHitRegions = committedHitRegions
-    }
-
-    package borrowing func withBacking<Result>(
-        _ body: (
-            borrowing CandidateRecords, borrowing HitRegions, borrowing CommittedRecords,
-            borrowing CommittedRecords, borrowing HitRegions
-        ) -> Result
-    ) -> Result {
-        body(
-            candidateRecords, candidateHitRegions, candidateCommittedRecords, committedRecords,
-            committedHitRegions)
+        self.candidateRecords = consume candidateRecords
+        self.candidateHitRegions = consume candidateHitRegions
+        self.candidateCommittedRecords = consume candidateCommittedRecords
+        self.committedRecords = consume committedRecords
+        self.committedHitRegions = consume committedHitRegions
     }
 
     package mutating func beginCandidate(
@@ -422,5 +415,34 @@ where
             return .cancelled
         }
         return .activationAdmitted(captured)
+    }
+}
+
+// Conditional ownership preserves the existing owned bank aliases.
+extension InteractionState: Copyable
+where
+    CandidateRecords: Copyable & ~Escapable, CommittedRecords: Copyable & ~Escapable,
+    HitRegions: Copyable & ~Escapable
+{}
+extension InteractionState: Escapable
+where
+    CandidateRecords: Escapable & ~Copyable, CommittedRecords: Escapable & ~Copyable,
+    HitRegions: Escapable & ~Copyable
+{}
+
+// Instrumentation is confined to owned banks; it exports fixed value facts only.
+extension InteractionState
+where
+    CandidateRecords: InteractionOwnedBankMeasurementSource,
+    CommittedRecords: InteractionOwnedBankMeasurementSource,
+    HitRegions: InteractionOwnedBankMeasurementSource
+{
+    package borrowing func ownedStorageMeasurement() -> InteractionOwnedStorageMeasurement {
+        .init(
+            candidate: candidateRecords.ownedInteractionBankMeasurement,
+            candidateHits: candidateHitRegions.ownedInteractionBankMeasurement,
+            prepared: candidateCommittedRecords.ownedInteractionBankMeasurement,
+            committed: committedRecords.ownedInteractionBankMeasurement,
+            committedHits: committedHitRegions.ownedInteractionBankMeasurement)
     }
 }

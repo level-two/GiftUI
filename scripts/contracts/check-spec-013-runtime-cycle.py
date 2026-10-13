@@ -68,7 +68,7 @@ module('GiftUIRenderCore', sorted((ROOT / 'Sources/GiftUIRenderCore').glob('*.sw
 module('GiftUIExecution', sorted((ROOT / 'Sources/GiftUIExecution').glob('*.swift')))
 module('GiftUIInteraction', sorted((ROOT / 'Sources/GiftUIInteraction').glob('*.swift')))
 module('GiftUIObservableState', [ROOT / 'Sources/GiftUIObservableState' / name for name in (
-    'ObservableStateValues.swift', 'ObservableModelIdentity.swift', 'ObservableModelOwnership.swift',
+    'ObservableStateProtocols.swift', 'ObservableStateValues.swift', 'ObservableModelIdentity.swift', 'ObservableModelOwnership.swift',
     'ObservableModelTicket.swift', 'ObservableModelScope.swift', 'ObservableModelMutation.swift',
     'ObservableStateModel.swift', 'ObservableStateRegistrationLifecycle.swift', 'ObservableStateRootScope.swift',
     'ObservableStateRootTargetAccess.swift', 'ObservableStateBindingDecorator.swift', 'ObservableSemanticBodyBinding.swift')])

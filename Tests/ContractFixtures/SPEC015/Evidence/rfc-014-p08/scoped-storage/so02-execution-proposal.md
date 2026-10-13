@@ -37,6 +37,19 @@ Allowed source files:
   and mandatory in ITERATION-004 I4-07 with the existing P09 integration handoff;
   shared owned dispatcher probes below establish only their named shared contract.
 
+SO-03 source-dispatch refinement: owned measurement removal mechanically
+requires C/R/H owned instrumentation constraints in these existing owned helpers:
+SPEC015 CounterProfileStorage.counterValidateBacking; SPEC013
+CycleProfileStorage.cycleValidateBacking, CycleCoordinatorProbe.cycleConcreteCoordinator
+and CyclePipelineProbe.exercisePipeline. Only those signatures are added to
+the source footprint. An ordinary owned instrumentation protocol plus fixed
+owned facts in InteractionValues is the local measurement realization; it adds
+no requirement to the six approved protocols or new scoped-Self protocol.
+Concrete owned banks conform in the already allowed measurement files; future
+scoped CounterBacking contracts do not inherit instrumentation. State combines
+facts in an owned-only extension without exposing banks/calling bank callbacks.
+This derived adjustment adds no compiler invocation or behavior/contract change.
+
 Implement exact S11 declarations/unions/conditional conformances and selected
 operation-only bounds. Add trusted minimal scoped fixture banks to test all
 five independent input lifetimes and failable Optional; preserve owned tests

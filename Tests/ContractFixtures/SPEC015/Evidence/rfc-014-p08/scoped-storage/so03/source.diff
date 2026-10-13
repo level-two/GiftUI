@@ -1,0 +1,1563 @@
+diff --git a/Package.swift b/Package.swift
+index 55f9f032..deceebcf 100644
+--- a/Package.swift
++++ b/Package.swift
+@@ -185,6 +185,10 @@ let package = Package(
+                 "GiftUIExecution",
+                 "GiftUILayout",
+                 "GiftUISemanticCore",
++            ],
++            swiftSettings: [
++                .enableExperimentalFeature("LifetimeDependence"),
++                .enableExperimentalFeature("Lifetimes"),
+             ]
+         ),
+         .target(
+@@ -224,6 +228,10 @@ let package = Package(
+                 "GiftUIRenderLowering",
+                 "GiftUISemanticCore",
+                 "GiftUITextResources",
++            ],
++            swiftSettings: [
++                .enableExperimentalFeature("LifetimeDependence"),
++                .enableExperimentalFeature("Lifetimes"),
+             ]
+         ),
+         .target(
+diff --git a/Sources/GiftUIInteraction/ExecutionGestureAdapter.swift b/Sources/GiftUIInteraction/ExecutionGestureAdapter.swift
+index f8fc66f3..9f73e8b2 100644
+--- a/Sources/GiftUIInteraction/ExecutionGestureAdapter.swift
++++ b/Sources/GiftUIInteraction/ExecutionGestureAdapter.swift
+@@ -7,7 +7,7 @@ package enum ExecutionGestureAdapter {
+         capture: inout PointerActionCapture<Resolver.Identity>,
+         resolver: borrowing Resolver
+     ) -> PointerGestureOutcome<Resolver.Identity>
+-    where Resolver: InteractionGestureResolver {
++    where Resolver: InteractionGestureResolver & ~Copyable & ~Escapable {
+         capture.cancel()
+         let outcome = resolver.resolveDown(at: point)
+         if case .captured(let captured) = outcome {
+@@ -21,7 +21,7 @@ package enum ExecutionGestureAdapter {
+         capture: inout PointerActionCapture<Resolver.Identity>,
+         resolver: borrowing Resolver
+     ) -> PointerGestureOutcome<Resolver.Identity>
+-    where Resolver: InteractionGestureResolver {
++    where Resolver: InteractionGestureResolver & ~Copyable & ~Escapable {
+         guard let current = capture.current else { return .cancelled }
+         let outcome = resolver.resolveMove(current, at: point)
+         switch outcome {
+@@ -38,7 +38,7 @@ package enum ExecutionGestureAdapter {
+         capture: inout PointerActionCapture<Resolver.Identity>,
+         resolver: borrowing Resolver
+     ) -> PointerGestureOutcome<Resolver.Identity>
+-    where Resolver: InteractionGestureResolver {
++    where Resolver: InteractionGestureResolver & ~Copyable & ~Escapable {
+         guard let current = capture.current else { return .cancelled }
+         defer { capture.cancel() }
+         return resolver.resolveUp(current, at: point)
+diff --git a/Sources/GiftUIInteraction/InteractionOwnedKeyState.swift b/Sources/GiftUIInteraction/InteractionOwnedKeyState.swift
+index 5dcef46d..83259158 100644
+--- a/Sources/GiftUIInteraction/InteractionOwnedKeyState.swift
++++ b/Sources/GiftUIInteraction/InteractionOwnedKeyState.swift
+@@ -5,11 +5,13 @@ import GiftUISemanticCore
+ /// The configured component pools are independent of the two semantic banks.
+ /// The selected storage types own complete inline keys (including the endpoint
+ /// role); no reference or ordinal from a semantic bank is retained here.
+-package struct InteractionOwnedKeyState<Candidate, Committed, Hits>:
++package struct InteractionOwnedKeyState<Candidate, Committed, Hits>: ~Copyable, ~Escapable,
+     InteractionCandidateBuilder, InteractionCommittedActionView, InteractionGestureResolver
+ where
+-    Candidate: InteractionCandidateRecordStorage, Committed: InteractionCommittedRecordStorage,
+-    Hits: InteractionHitRegionStorage, Candidate.Identity == SemanticCompleteIdentity,
++    Candidate: InteractionCandidateRecordStorage & ~Copyable & ~Escapable,
++    Committed: InteractionCommittedRecordStorage & ~Copyable & ~Escapable,
++    Hits: InteractionHitRegionStorage & ~Copyable & ~Escapable,
++    Candidate.Identity == SemanticCompleteIdentity,
+     Committed.Identity == SemanticCompleteIdentity, Hits.Identity == SemanticCompleteIdentity
+ {
+     package typealias Identity = SemanticCompleteIdentity
+@@ -22,6 +24,7 @@ where
+     package private(set) var committedComponents: UInt32 = 0
+     private var isStaging = false
+     private var failure: InteractionError?
++    @_lifetime(copy state)
+     package init?(
+         state: consuming InteractionState<Candidate, Committed, Hits>,
+         maximumComponentsPerKey: UInt16, maximumComponents: UInt32
+@@ -35,14 +38,7 @@ where
+         configuredComponentsPerKey = maximumComponentsPerKey
+         configuredComponents = maximumComponents
+     }
+-    package borrowing func withBacking<Result>(
+-        _ body: (
+-            borrowing Candidate, borrowing Hits, borrowing Committed,
+-            borrowing Committed, borrowing Hits
+-        ) -> Result
+-    ) -> Result {
+-        state.withBacking(body)
+-    }
++
+     package var identityCapacities: (perKey: UInt16, perBank: UInt32) {
+         (maximumComponentsPerKey, maximumComponents)
+     }
+@@ -189,3 +185,25 @@ where
+         -> PointerGestureOutcome<Identity>
+     { state.resolveUp(captured, at: point) }
+ }
++
++// Conditional ownership preserves the existing owned bank aliases.
++extension InteractionOwnedKeyState: Copyable
++where
++    Candidate: Copyable & ~Escapable, Committed: Copyable & ~Escapable, Hits: Copyable & ~Escapable
++{}
++extension InteractionOwnedKeyState: Escapable
++where
++    Candidate: Escapable & ~Copyable, Committed: Escapable & ~Copyable, Hits: Escapable & ~Copyable
++{}
++
++// Instrumentation is confined to owned banks; it exports fixed value facts only.
++extension InteractionOwnedKeyState
++where
++    Candidate: InteractionOwnedBankMeasurementSource,
++    Committed: InteractionOwnedBankMeasurementSource,
++    Hits: InteractionOwnedBankMeasurementSource
++{
++    package borrowing func ownedStorageMeasurement() -> InteractionOwnedStorageMeasurement {
++        state.ownedStorageMeasurement()
++    }
++}
+diff --git a/Sources/GiftUIInteraction/InteractionState.swift b/Sources/GiftUIInteraction/InteractionState.swift
+index 443e8574..49e5260f 100644
+--- a/Sources/GiftUIInteraction/InteractionState.swift
++++ b/Sources/GiftUIInteraction/InteractionState.swift
+@@ -2,13 +2,14 @@ import GiftUI
+ import GiftUIExecution
+ import GiftUILayout
+ 
+-package struct InteractionState<CandidateRecords, CommittedRecords, HitRegions>:
++package struct InteractionState<CandidateRecords, CommittedRecords, HitRegions>: ~Copyable,
++    ~Escapable,
+     InteractionCandidateBuilder, InteractionCommittedActionView,
+     InteractionGestureResolver
+ where
+-    CandidateRecords: InteractionCandidateRecordStorage,
+-    CommittedRecords: InteractionCommittedRecordStorage,
+-    HitRegions: InteractionHitRegionStorage,
++    CandidateRecords: InteractionCandidateRecordStorage & ~Copyable & ~Escapable,
++    CommittedRecords: InteractionCommittedRecordStorage & ~Copyable & ~Escapable,
++    HitRegions: InteractionHitRegionStorage & ~Copyable & ~Escapable,
+     CandidateRecords.Identity == CommittedRecords.Identity,
+     CandidateRecords.Identity == HitRegions.Identity
+ {
+@@ -30,6 +31,9 @@ where
+     private var candidateError: InteractionError?
+     private var committedPresentationRevision: PresentationRevision?
+ 
++    @_lifetime(
++        copy candidateRecords, copy candidateHitRegions, copy candidateCommittedRecords,
++        copy committedRecords, copy committedHitRegions)
+     package init(
+         candidateRecords: consuming CandidateRecords,
+         candidateHitRegions: consuming HitRegions,
+@@ -37,22 +41,11 @@ where
+         committedRecords: consuming CommittedRecords,
+         committedHitRegions: consuming HitRegions
+     ) {
+-        self.candidateRecords = candidateRecords
+-        self.candidateHitRegions = candidateHitRegions
+-        self.candidateCommittedRecords = candidateCommittedRecords
+-        self.committedRecords = committedRecords
+-        self.committedHitRegions = committedHitRegions
+-    }
+-
+-    package borrowing func withBacking<Result>(
+-        _ body: (
+-            borrowing CandidateRecords, borrowing HitRegions, borrowing CommittedRecords,
+-            borrowing CommittedRecords, borrowing HitRegions
+-        ) -> Result
+-    ) -> Result {
+-        body(
+-            candidateRecords, candidateHitRegions, candidateCommittedRecords, committedRecords,
+-            committedHitRegions)
++        self.candidateRecords = consume candidateRecords
++        self.candidateHitRegions = consume candidateHitRegions
++        self.candidateCommittedRecords = consume candidateCommittedRecords
++        self.committedRecords = consume committedRecords
++        self.committedHitRegions = consume committedHitRegions
+     }
+ 
+     package mutating func beginCandidate(
+@@ -424,3 +417,32 @@ where
+         return .activationAdmitted(captured)
+     }
+ }
++
++// Conditional ownership preserves the existing owned bank aliases.
++extension InteractionState: Copyable
++where
++    CandidateRecords: Copyable & ~Escapable, CommittedRecords: Copyable & ~Escapable,
++    HitRegions: Copyable & ~Escapable
++{}
++extension InteractionState: Escapable
++where
++    CandidateRecords: Escapable & ~Copyable, CommittedRecords: Escapable & ~Copyable,
++    HitRegions: Escapable & ~Copyable
++{}
++
++// Instrumentation is confined to owned banks; it exports fixed value facts only.
++extension InteractionState
++where
++    CandidateRecords: InteractionOwnedBankMeasurementSource,
++    CommittedRecords: InteractionOwnedBankMeasurementSource,
++    HitRegions: InteractionOwnedBankMeasurementSource
++{
++    package borrowing func ownedStorageMeasurement() -> InteractionOwnedStorageMeasurement {
++        .init(
++            candidate: candidateRecords.ownedInteractionBankMeasurement,
++            candidateHits: candidateHitRegions.ownedInteractionBankMeasurement,
++            prepared: candidateCommittedRecords.ownedInteractionBankMeasurement,
++            committed: committedRecords.ownedInteractionBankMeasurement,
++            committedHits: committedHitRegions.ownedInteractionBankMeasurement)
++    }
++}
+diff --git a/Sources/GiftUIInteraction/InteractionStorage.swift b/Sources/GiftUIInteraction/InteractionStorage.swift
+index e69fdc21..70cdd4d7 100644
+--- a/Sources/GiftUIInteraction/InteractionStorage.swift
++++ b/Sources/GiftUIInteraction/InteractionStorage.swift
+@@ -19,7 +19,7 @@ where Identity: Equatable & Sendable {
+     package let paintOrder: UInt16
+ }
+ 
+-package protocol InteractionCandidateRecordStorage {
++package protocol InteractionCandidateRecordStorage: ~Copyable, ~Escapable {
+     associatedtype Identity: Equatable & Sendable
+ 
+     var count: UInt16 { get }
+@@ -33,7 +33,7 @@ package protocol InteractionCandidateRecordStorage {
+     ) -> Bool
+ }
+ 
+-package protocol InteractionCommittedRecordStorage {
++package protocol InteractionCommittedRecordStorage: ~Copyable, ~Escapable {
+     associatedtype Identity: Equatable & Sendable
+ 
+     var count: UInt16 { get }
+@@ -44,7 +44,7 @@ package protocol InteractionCommittedRecordStorage {
+     mutating func exchangeContents(with other: inout Self)
+ }
+ 
+-package protocol InteractionHitRegionStorage {
++package protocol InteractionHitRegionStorage: ~Copyable, ~Escapable {
+     associatedtype Identity: Equatable & Sendable
+ 
+     var count: UInt16 { get }
+diff --git a/Sources/GiftUIInteraction/InteractionValues.swift b/Sources/GiftUIInteraction/InteractionValues.swift
+index e3cb2f74..839cb5a7 100644
+--- a/Sources/GiftUIInteraction/InteractionValues.swift
++++ b/Sources/GiftUIInteraction/InteractionValues.swift
+@@ -93,7 +93,7 @@ package enum InteractionDispatchResult: Equatable, Sendable {
+     case failure(InteractionError)
+ }
+ 
+-package protocol InteractionCandidateBuilder {
++package protocol InteractionCandidateBuilder: ~Copyable, ~Escapable {
+     associatedtype Identity: Equatable & Sendable
+ 
+     mutating func beginCandidate(limits: InteractionLimits) -> InteractionError?
+@@ -114,7 +114,7 @@ package protocol InteractionCandidateBuilder {
+     mutating func resolveCandidate(_ disposition: InteractionCandidateDisposition)
+ }
+ 
+-package protocol InteractionGestureResolver {
++package protocol InteractionGestureResolver: ~Copyable, ~Escapable {
+     associatedtype Identity: Equatable & Sendable
+ 
+     borrowing func resolveDown(at point: Point) -> PointerGestureOutcome<Identity>
+@@ -138,7 +138,7 @@ package protocol ActionModelTargetAccess {
+     ) -> Bool
+ }
+ 
+-package protocol InteractionCommittedActionView {
++package protocol InteractionCommittedActionView: ~Copyable, ~Escapable {
+     associatedtype Identity: Equatable & Sendable
+ 
+     borrowing func committedRecord(
+@@ -153,3 +153,44 @@ package protocol InteractionDispatcher {
+         _ captured: CapturedAction<Identity>
+     ) -> InteractionDispatchResult
+ }
++
++/// Owned instrumentation facts describe the actual retained bank, including spare
++/// payload capacity. No bank, pointer, closure or mutable capability is returned.
++package struct InteractionOwnedBankMeasurement {
++    package let count: UInt16
++    package let capacity: UInt16
++    package let retainedIdentitySlots: Int
++    package let retainedPayloadBytes: Int
++    package let inlineSize: Int
++    package let inlineStride: Int
++    package let inlineAlignment: Int
++
++    package init(
++        count: UInt16, capacity: UInt16, retainedIdentitySlots: Int,
++        retainedPayloadBytes: Int, inlineSize: Int, inlineStride: Int, inlineAlignment: Int
++    ) {
++        precondition(retainedIdentitySlots >= Int(capacity) && retainedPayloadBytes >= 0)
++        precondition(inlineSize >= 0 && inlineStride >= inlineSize && inlineAlignment > 0)
++        self.count = count
++        self.capacity = capacity
++        self.retainedIdentitySlots = retainedIdentitySlots
++        self.retainedPayloadBytes = retainedPayloadBytes
++        self.inlineSize = inlineSize
++        self.inlineStride = inlineStride
++        self.inlineAlignment = inlineAlignment
++    }
++}
++
++// This separate instrumentation contract remains Copyable and Escapable. It
++// adds no requirement to any of the six scoped storage/operation protocols.
++package protocol InteractionOwnedBankMeasurementSource {
++    var ownedInteractionBankMeasurement: InteractionOwnedBankMeasurement { get }
++}
++
++package struct InteractionOwnedStorageMeasurement {
++    package let candidate: InteractionOwnedBankMeasurement
++    package let candidateHits: InteractionOwnedBankMeasurement
++    package let prepared: InteractionOwnedBankMeasurement
++    package let committed: InteractionOwnedBankMeasurement
++    package let committedHits: InteractionOwnedBankMeasurement
++}
+diff --git a/Sources/GiftUIRuntimeCore/RuntimeInteractionCandidateCoordinator.swift b/Sources/GiftUIRuntimeCore/RuntimeInteractionCandidateCoordinator.swift
+index 6535f4d7..fb3f7e81 100644
+--- a/Sources/GiftUIRuntimeCore/RuntimeInteractionCandidateCoordinator.swift
++++ b/Sources/GiftUIRuntimeCore/RuntimeInteractionCandidateCoordinator.swift
+@@ -56,7 +56,7 @@ package enum RuntimeInteractionCandidateCoordinator {
+     ) -> RuntimeInteractionCandidateBuildResult
+     where
+         Occurrences: RuntimeInteractionOccurrenceView,
+-        Interaction: InteractionCandidateBuilder,
++        Interaction: InteractionCandidateBuilder & ~Copyable & ~Escapable,
+         Observable: ObservableStateReconciler & ObservableStateTargetView,
+         Generations: RuntimeActionGenerationSource,
+         Occurrences.Identity == Interaction.Identity,
+@@ -130,7 +130,7 @@ package enum RuntimeInteractionCandidateCoordinator {
+         observable: inout Observable
+     )
+     where
+-        Interaction: InteractionCandidateBuilder,
++        Interaction: InteractionCandidateBuilder & ~Copyable & ~Escapable,
+         Observable: ObservableStateReconciler
+     {
+         interaction.resolveCandidate(.discard)
+diff --git a/Sources/GiftUIRuntimeCore/RuntimeInteractionCandidateResolution.swift b/Sources/GiftUIRuntimeCore/RuntimeInteractionCandidateResolution.swift
+index 096b3bca..7c02e984 100644
+--- a/Sources/GiftUIRuntimeCore/RuntimeInteractionCandidateResolution.swift
++++ b/Sources/GiftUIRuntimeCore/RuntimeInteractionCandidateResolution.swift
+@@ -66,7 +66,7 @@ package enum RuntimeInteractionCandidateTransaction {
+         generations: inout Generations
+     ) -> RuntimeInteractionCandidateResolution
+     where
+-        Interaction: InteractionCandidateBuilder,
++        Interaction: InteractionCandidateBuilder & ~Copyable & ~Escapable,
+         Generations: RuntimeActionGenerationSource,
+         Interaction.Identity == Generations.Identity
+     {
+diff --git a/Sources/GiftUIRuntimeCore/RuntimeInteractionCandidateTransaction.swift b/Sources/GiftUIRuntimeCore/RuntimeInteractionCandidateTransaction.swift
+index 52ee41a5..9209beda 100644
+--- a/Sources/GiftUIRuntimeCore/RuntimeInteractionCandidateTransaction.swift
++++ b/Sources/GiftUIRuntimeCore/RuntimeInteractionCandidateTransaction.swift
+@@ -22,7 +22,7 @@ extension RuntimeInteractionCandidateTransaction {
+     ) -> RuntimeInteractionCandidateBuildResult
+     where
+         Occurrences: RuntimeInteractionOccurrenceView,
+-        Interaction: InteractionCandidateBuilder,
++        Interaction: InteractionCandidateBuilder & ~Copyable & ~Escapable,
+         Observable: ObservableStateReconciler & ObservableStateTargetView,
+         Generations: RuntimeActionGenerationSource,
+         Captures: RuntimeInteractionCaptureCancellation,
+diff --git a/Sources/GiftUIRuntimeCore/RuntimeInteractionDispatcher.swift b/Sources/GiftUIRuntimeCore/RuntimeInteractionDispatcher.swift
+index 42d126d6..becd4969 100644
+--- a/Sources/GiftUIRuntimeCore/RuntimeInteractionDispatcher.swift
++++ b/Sources/GiftUIRuntimeCore/RuntimeInteractionDispatcher.swift
+@@ -5,7 +5,7 @@ import GiftUIInteraction
+ package struct RuntimeInteractionDispatcher<Records, Handler, TargetAccess>:
+     InteractionDispatcher
+ where
+-    Records: InteractionCommittedActionView,
++    Records: InteractionCommittedActionView & Copyable & Escapable,
+     Handler: GiftUIActionHandler,
+     TargetAccess: ActionModelTargetAccess,
+     TargetAccess.Model == Handler.Model
+diff --git a/Sources/GiftUIRuntimeCore/RuntimeRecordCanvasInteractionBridge.swift b/Sources/GiftUIRuntimeCore/RuntimeRecordCanvasInteractionBridge.swift
+index a7f55b49..df615f59 100644
+--- a/Sources/GiftUIRuntimeCore/RuntimeRecordCanvasInteractionBridge.swift
++++ b/Sources/GiftUIRuntimeCore/RuntimeRecordCanvasInteractionBridge.swift
+@@ -19,8 +19,10 @@ extension RuntimeRecordInteractionBridge {
+         interaction: inout InteractionOwnedKeyState<Candidate, Committed, Hits>
+     ) -> InteractionCandidateAppendResult
+     where
+-        Candidate: InteractionCandidateRecordStorage, Committed: InteractionCommittedRecordStorage,
+-        Hits: InteractionHitRegionStorage, Candidate.Identity == SemanticCompleteIdentity,
++        Candidate: InteractionCandidateRecordStorage & ~Copyable & ~Escapable,
++        Committed: InteractionCommittedRecordStorage & ~Copyable & ~Escapable,
++        Hits: InteractionHitRegionStorage & ~Copyable & ~Escapable,
++        Candidate.Identity == SemanticCompleteIdentity,
+         Committed.Identity == SemanticCompleteIdentity, Hits.Identity == SemanticCompleteIdentity,
+         Model: ObservableStateModel & ~Copyable, RootIdentity: Equatable & Sendable,
+         Action: GiftUIAction, Roles: SemanticDeclarationRoles
+diff --git a/Sources/GiftUIRuntimeCore/RuntimeRecordInteractionBridge.swift b/Sources/GiftUIRuntimeCore/RuntimeRecordInteractionBridge.swift
+index 817b9ca7..4d729925 100644
+--- a/Sources/GiftUIRuntimeCore/RuntimeRecordInteractionBridge.swift
++++ b/Sources/GiftUIRuntimeCore/RuntimeRecordInteractionBridge.swift
+@@ -17,8 +17,10 @@ package enum RuntimeRecordInteractionBridge {
+         interaction: inout InteractionOwnedKeyState<Candidate, Committed, Hits>
+     ) -> InteractionCandidateAppendResult
+     where
+-        Candidate: InteractionCandidateRecordStorage, Committed: InteractionCommittedRecordStorage,
+-        Hits: InteractionHitRegionStorage, Candidate.Identity == SemanticCompleteIdentity,
++        Candidate: InteractionCandidateRecordStorage & ~Copyable & ~Escapable,
++        Committed: InteractionCommittedRecordStorage & ~Copyable & ~Escapable,
++        Hits: InteractionHitRegionStorage & ~Copyable & ~Escapable,
++        Candidate.Identity == SemanticCompleteIdentity,
+         Committed.Identity == SemanticCompleteIdentity, Hits.Identity == SemanticCompleteIdentity,
+         Model: ObservableStateModel & ~Copyable, RootIdentity: Equatable & Sendable,
+         Action: GiftUIAction, Roles: SemanticDeclarationRoles
+@@ -42,8 +44,10 @@ package enum RuntimeRecordInteractionBridge {
+         projection: (Payload) -> SemanticStandardPayload?
+     ) -> InteractionCandidateAppendResult
+     where
+-        Candidate: InteractionCandidateRecordStorage, Committed: InteractionCommittedRecordStorage,
+-        Hits: InteractionHitRegionStorage, Candidate.Identity == SemanticCompleteIdentity,
++        Candidate: InteractionCandidateRecordStorage & ~Copyable & ~Escapable,
++        Committed: InteractionCommittedRecordStorage & ~Copyable & ~Escapable,
++        Hits: InteractionHitRegionStorage & ~Copyable & ~Escapable,
++        Candidate.Identity == SemanticCompleteIdentity,
+         Committed.Identity == SemanticCompleteIdentity, Hits.Identity == SemanticCompleteIdentity,
+         Model: ObservableStateModel & ~Copyable, RootIdentity: Equatable & Sendable,
+         Action: GiftUIAction, Roles: SemanticDeclarationRoles
+@@ -88,7 +92,7 @@ package enum RuntimeRecordInteractionBridge {
+         actionType: Action.Type, operation: (Action) -> Model.Mutation
+     ) -> RuntimeRecordInteractionDispatchResult
+     where
+-        Records: InteractionCommittedActionView,
++        Records: InteractionCommittedActionView & ~Copyable & ~Escapable,
+         Model: ObservableStateModel & ObservableModelMutation & ~Copyable,
+         RootIdentity: Equatable & Sendable, Action: GiftUIAction
+     {
+diff --git a/Tests/ContractFixtures/SPEC011/RuntimeDerived/InteractionProbe.swift b/Tests/ContractFixtures/SPEC011/RuntimeDerived/InteractionProbe.swift
+index dfb6096e..22dc6a32 100644
+--- a/Tests/ContractFixtures/SPEC011/RuntimeDerived/InteractionProbe.swift
++++ b/Tests/ContractFixtures/SPEC011/RuntimeDerived/InteractionProbe.swift
+@@ -1,8 +1,9 @@
+ import GiftUI
++import GiftUIDrawing
+ import GiftUIExecution
+ import GiftUIInteraction
+ import GiftUIObservableState
+-import GiftUIRuntimeCore
++@testable import GiftUIRuntimeCore
+ import GiftUIRuntimeStatic
+ @testable import GiftUISemanticCore
+ #if GIFTUI_DYNAMIC_PROFILE
+@@ -29,13 +30,13 @@ private enum Roles: SemanticDeclarationRoles {
+     static func role<V>(of type: V.Type) -> SemanticRecordingRole? { V.self == Action.self ? .init(rawValue: 9) : nil }
+     static func modifierDiscriminator<V>(of type: V.Type) -> UInt16 { 0 }
+ }
+-private struct Backing: ~Copyable {
++private struct Backing<Payload>: ~Copyable {
+     var metadata: InlineArray<2, SemanticRecordBankMetadata> = .init(repeating: .init())
+     var records: InlineArray<12, SemanticRuntimeRecord> = .init(repeating: .init())
+     var paths: InlineArray<48, SemanticPathEntry> = .init(repeating: .init())
+-    var payloads: InlineArray<12, SemanticStandardPayload?> = .init(repeating: nil)
++    var payloads: InlineArray<12, Payload?> = .init(repeating: nil)
+     var scalars: InlineArray<2, UInt32> = .init(repeating: 0)
+-    mutating func withStore<Result>(owner: SemanticRecordOwnerIdentity, _ body: (borrowing SemanticRecordStore<SemanticStandardPayload>) throws(SemanticExpansionError) -> Result) throws(SemanticExpansionError) -> Result {
++    mutating func withStore<Result>(owner: SemanticRecordOwnerIdentity, _ body: (borrowing SemanticRecordStore<Payload>) throws(SemanticExpansionError) -> Result) throws(SemanticExpansionError) -> Result {
+         var m = metadata.mutableSpan; var r = records.mutableSpan; var p = paths.mutableSpan; var v = payloads.mutableSpan; var s = scalars.mutableSpan
+         return try withSemanticRecordStore(metadata: &m, records: &r, paths: &p, payloads: &v, scalars: &s, limits: .init(records: 6, paths: 24, depth: 34, fanout: 5, payloads: 6, textScalars: 1, payloadBytes: 1024)!, owner: owner, body)
+     }
+@@ -54,7 +55,10 @@ private func emit(_ store: borrowing SemanticRecordStore<SemanticStandardPayload
+ private let rect = Rect(origin: .init(x: 0, y: 0), size: .init(width: 10, height: 10)!)!
+ private let limits = InteractionLimits(maximumActions: 6, maximumHitRegions: 6)!
+ private func expect(_ yes: Bool, _ count: inout UInt32) { count += 1; precondition(yes) }
+-private func append(_ state: inout Keys, _ identity: SemanticCompleteIdentity, target: UInt32 = 1, action: UInt16 = 1, enabled: Bool = true, order: UInt16 = 0) -> InteractionCandidateAppendResult {
++private func append<C, R, H>(_ state: inout InteractionOwnedKeyState<C, R, H>, _ identity: SemanticCompleteIdentity, target: UInt32 = 1, action: UInt16 = 1, enabled: Bool = true, order: UInt16 = 0) -> InteractionCandidateAppendResult where C: InteractionCandidateRecordStorage & ~Copyable & ~Escapable,
++    R: InteractionCommittedRecordStorage & ~Copyable & ~Escapable,
++    H: InteractionHitRegionStorage & ~Copyable & ~Escapable,
++    C.Identity == SemanticCompleteIdentity, R.Identity == SemanticCompleteIdentity, H.Identity == SemanticCompleteIdentity {
+     state.append(identity: identity, isEnabled: enabled, bounds: rect, clip: rect, paintOrder: order, action: .init(code: action), targetGeneration: .init(rawValue: target))
+ }
+ private func key(_ child: UInt8 = 0, role: UInt16 = 2, modifier: UInt16 = 0) -> SemanticCompleteIdentity {
+@@ -162,8 +166,11 @@ private func bankChecks(_ store: borrowing SemanticRecordStore<SemanticStandardP
+     expect(generations.committedReservationCount == 1 && generations.retiredReservationCount == 10, &checks)
+     return checks
+ }
+-private func hostChecks(_ scope: borrowing ObservableModelScope<RootModel, RootSchema>, _ root: borrowing ObservableStateRootScope<RootModel, UInt8>, _ trace: UnsafeMutablePointer<RootTrace>, _ store: borrowing SemanticRecordStore<SemanticStandardPayload>) throws(ObservableStateError) -> UInt32 {
+-    var checks: UInt32 = 0; var state = storage(); var initial = State<RootSchema>(seed: RootSeed(trace: trace))
++private func hostChecks<C, R, H>(_ scope: borrowing ObservableModelScope<RootModel, RootSchema>, _ root: borrowing ObservableStateRootScope<RootModel, UInt8>, _ trace: UnsafeMutablePointer<RootTrace>, _ store: borrowing SemanticRecordStore<SemanticStandardPayload>, _ state: inout InteractionOwnedKeyState<C, R, H>) throws(ObservableStateError) -> UInt32 where C: InteractionCandidateRecordStorage & ~Copyable & ~Escapable,
++    R: InteractionCommittedRecordStorage & ~Copyable & ~Escapable,
++    H: InteractionHitRegionStorage & ~Copyable & ~Escapable,
++    C.Identity == SemanticCompleteIdentity, R.Identity == SemanticCompleteIdentity, H.Identity == SemanticCompleteIdentity {
++    var checks: UInt32 = 0; var initial = State<RootSchema>(seed: RootSeed(trace: trace))
+     do throws(SemanticExpansionError) { try emit(store, branch: 0) } catch { throw .invariantViolation }
+     expect(state.beginCandidate(limits: limits) == nil, &checks)
+     var identity: SemanticCompleteIdentity?
+@@ -178,7 +185,11 @@ private func hostChecks(_ scope: borrowing ObservableModelScope<RootModel, RootS
+                 try emit(store, branch: 0, actionRole: invalid == 0 ? 8 : 9, code: 99)
+                 try store.withCandidateView { view in
+                     let expected: InteractionError = invalid == 0 ? .incompatibleActionDomain : .invalidActionValue
+-                    expect(RuntimeRecordInteractionBridge.append(record: view.reference(at: 1)!, semantic: view, root: root, rootIdentity: 1, rootOrdinal: 0, actionType: Action.self, roles: Roles.self, isEnabled: true, bounds: rect, clip: rect, paintOrder: 0, interaction: &state) == .failure(expected), &checks)
++                    if invalid == 0 {
++                        expect(RuntimeRecordInteractionBridge.appendProjected(record: view.reference(at: 1)!, semantic: view, root: root, rootIdentity: 1, rootOrdinal: 0, actionType: Action.self, roles: Roles.self, isEnabled: true, bounds: rect, clip: rect, paintOrder: 0, interaction: &state, projection: { $0 }) == .failure(expected), &checks)
++                    } else {
++                        expect(RuntimeRecordInteractionBridge.append(record: view.reference(at: 1)!, semantic: view, root: root, rootIdentity: 1, rootOrdinal: 0, actionType: Action.self, roles: Roles.self, isEnabled: true, bounds: rect, clip: rect, paintOrder: 0, interaction: &state) == .failure(expected), &checks)
++                    }
+                     expect(state.finishCandidate() == expected, &checks)
+                 }
+                 state.resolveCandidate(.discard)
+@@ -250,7 +261,7 @@ private func hostChecks(_ scope: borrowing ObservableModelScope<RootModel, RootS
+ @_cdecl("giftui_p05_interaction") public func giftuiP05Interaction() -> UInt32 {
+     var checks = keyChecks()
+     do throws(SemanticExpansionError) {
+-        var namespace = SemanticRecordOwnerNamespace(); var backing = Backing()
++        var namespace = SemanticRecordOwnerNamespace(); var backing = Backing<SemanticStandardPayload>()
+         checks += try backing.withStore(owner: namespace.issue()) { (store) throws(SemanticExpansionError) in try bankChecks(store) }
+         checks += try backing.withStore(owner: namespace.issue()) { (store) throws(SemanticExpansionError) in
+             do throws(ObservableStateError) {
+@@ -258,10 +269,85 @@ private func hostChecks(_ scope: borrowing ObservableModelScope<RootModel, RootS
+                 var root = StaticObservableRootAdapter<RootModel, UInt8>(identity: try models.issue(), schema: 7, needsCapture: true)!
+                 return try withUnsafeTemporaryAllocation(of: RootTrace.self, capacity: 1) { (trace) throws(ObservableStateError) in
+                     trace.initialize(repeating: RootTrace()); defer { trace.deinitialize() }
+-                    return try root.withLifetime { (scope, root) throws(ObservableStateError) in try hostChecks(scope, root, trace.baseAddress!, store) }
++                    return try root.withLifetime { (scope, root) throws(ObservableStateError) in var state = storage(); return try hostChecks(scope, root, trace.baseAddress!, store, &state) }
+                 }
+             } catch { preconditionFailure() }
+         }
+     } catch { preconditionFailure() }
+     return checks
+ }
++
++// Reuse all existing typed model/root/semantic dispatch and replacement oracles
++// with scoped banks; only the storage permission differs from the owned control.
++func so03RecordOperations<C, R, H>(_ state: inout InteractionOwnedKeyState<C, R, H>) -> UInt32
++where C: InteractionCandidateRecordStorage & ~Copyable & ~Escapable,
++    R: InteractionCommittedRecordStorage & ~Copyable & ~Escapable,
++    H: InteractionHitRegionStorage & ~Copyable & ~Escapable,
++    C.Identity == SemanticCompleteIdentity, R.Identity == SemanticCompleteIdentity, H.Identity == SemanticCompleteIdentity
++{
++    var checks: UInt32 = 0
++    var namespace = SemanticRecordOwnerNamespace()
++    var backing = Backing<SemanticStandardPayload>()
++    do throws(SemanticExpansionError) {
++        checks += try backing.withStore(owner: namespace.issue()) { (store) throws(SemanticExpansionError) in
++            do throws(ObservableStateError) {
++                var owners = ObservableModelOwnerNamespace()
++                var adapter = StaticObservableRootAdapter<RootModel, UInt8>(identity: try owners.issue(), schema: 7, needsCapture: true)!
++                return try withUnsafeTemporaryAllocation(of: RootTrace.self, capacity: 1) { (trace) throws(ObservableStateError) in
++                    trace.initialize(repeating: RootTrace()); defer { trace.deinitialize() }
++                    return try adapter.withLifetime { (scope, root) throws(ObservableStateError) in
++                        try hostChecks(scope, root, trace.baseAddress!, store, &state)
++                    }
++                }
++            } catch { preconditionFailure() }
++        }
++    } catch { preconditionFailure() }
++    state.resetAllStorage()
++    var canvas = Backing<CanvasSemanticPayload<UInt8>>()
++    do throws(SemanticExpansionError) {
++        checks += try canvas.withStore(owner: namespace.issue()) { (store) throws(SemanticExpansionError) in
++            let bank = store.expansionBank(try store.beginCandidate())!
++            for component in [SemanticPathComponent(kind: .root), .init(kind: .declarationRole, role: 1), .init(kind: .declarationRole, role: 2)] {
++                if let error = bank.enter(component, limits: store.limits) { throw error }
++            }
++            let empty: InlineArray<0, UInt32> = .init(repeating: 0)
++            if let error = bank.store(.standard(.action(role: 9, code: 1)), kind: .action,
++                text: empty.span, limits: store.limits) { throw error }
++            for _ in 0..<3 { bank.leave() }
++            bank.metadata.pointee.phase = .candidate
++            do throws(ObservableStateError) {
++                var owners = ObservableModelOwnerNamespace()
++                var adapter = StaticObservableRootAdapter<RootModel, UInt8>(identity: try owners.issue(), schema: 7, needsCapture: true)!
++                return try withUnsafeTemporaryAllocation(of: RootTrace.self, capacity: 1) { (trace) throws(ObservableStateError) in
++                    trace.initialize(repeating: RootTrace()); defer { trace.deinitialize() }
++                    return try adapter.withLifetime { (scope, root) throws(ObservableStateError) in
++                        var initial = State<RootSchema>(seed: RootSeed(trace: trace.baseAddress!))
++                        return try scope.withFrame { () throws(ObservableStateError) in
++                            try scope.withDiscovery {
++                                precondition(root.beginCandidate() == .success(.candidateStarted))
++                                precondition(root.encounter(identity: 1, ordinal: 0, state: &initial) == .success(.materialized))
++                            }
++                            precondition(state.beginCandidate(limits: limits) == nil)
++                            do throws(SemanticExpansionError) {
++                                try store.withCandidateView { view in
++                                    let reference = view.reference(at: 0)!
++                                    precondition(RuntimeRecordInteractionBridge.append(record: reference,
++                                        semantic: view, root: root, rootIdentity: 1, rootOrdinal: 0,
++                                        actionType: Action.self, roles: Roles.self, isEnabled: true,
++                                        bounds: rect, clip: rect, paintOrder: 0, interaction: &state) == .requiresGeneration)
++                                    precondition(state.assignGeneration(.init(rawValue: 1), to: view.completeIdentity(for: reference)!) == nil)
++                                }
++                            } catch { throw .invariantViolation }
++                            precondition(state.finishCandidate() == nil)
++                            state.resolveCandidate(.discard)
++                            try scope.withDiscovery { precondition(root.finishCandidate(.publish) == .success(.associationsCommitted)) }
++                            return 7
++                        }
++                    }
++                }
++            } catch { preconditionFailure() }
++        }
++    } catch { preconditionFailure() }
++    state.resetAllStorage()
++    return checks
++}
+diff --git a/Tests/ContractFixtures/SPEC013/RuntimeDerived/CycleCoordinatorProbe.swift b/Tests/ContractFixtures/SPEC013/RuntimeDerived/CycleCoordinatorProbe.swift
+index 73b14451..5ba102ee 100644
+--- a/Tests/ContractFixtures/SPEC013/RuntimeDerived/CycleCoordinatorProbe.swift
++++ b/Tests/ContractFixtures/SPEC013/RuntimeDerived/CycleCoordinatorProbe.swift
+@@ -165,7 +165,7 @@ struct CycleWake: ExecutionWakeRequester, Sendable {
+     }
+ }
+ 
+-func cycleConcreteCoordinator<G, C, R, H>(owner: consuming CyclePipelineOwner<G, C, R, H>, dynamic: Bool, control: UnsafeMutablePointer<CycleControl>, audit: RuntimeStorageAudit, admission: consuming CycleAdmission, stopAfterFailure: Bool = false) -> CycleReturnedWorkspaces<G, C, R, H> where G: CycleGeometry, C: CycleCandidateBacking, R: CycleCommittedBacking, H: CycleHitBacking, C.Identity == SemanticCompleteIdentity, R.Identity == SemanticCompleteIdentity, H.Identity == SemanticCompleteIdentity {
++func cycleConcreteCoordinator<G, C, R, H>(owner: consuming CyclePipelineOwner<G, C, R, H>, dynamic: Bool, control: UnsafeMutablePointer<CycleControl>, audit: RuntimeStorageAudit, admission: consuming CycleAdmission, stopAfterFailure: Bool = false) -> CycleReturnedWorkspaces<G, C, R, H> where G: CycleGeometry, C: CycleCandidateBacking & InteractionOwnedBankMeasurementSource, R: CycleCommittedBacking & InteractionOwnedBankMeasurementSource, H: CycleHitBacking & InteractionOwnedBankMeasurementSource, C.Identity == SemanticCompleteIdentity, R.Identity == SemanticCompleteIdentity, H.Identity == SemanticCompleteIdentity {
+     precondition(owner.limits == audit.limits)
+     let geometryBefore = owner.geometry.storageMeasurement()
+     let interactionBefore = cycleMeasureInteraction(owner.interaction)
+diff --git a/Tests/ContractFixtures/SPEC013/RuntimeDerived/CyclePipelineProbe.swift b/Tests/ContractFixtures/SPEC013/RuntimeDerived/CyclePipelineProbe.swift
+index ad539436..c44432d9 100644
+--- a/Tests/ContractFixtures/SPEC013/RuntimeDerived/CyclePipelineProbe.swift
++++ b/Tests/ContractFixtures/SPEC013/RuntimeDerived/CyclePipelineProbe.swift
+@@ -13,7 +13,7 @@ import GiftUISemanticCore
+ import CycleSchema
+ import CyclePresentation
+ 
+-func exercisePipeline<G, C, R, H>(models: borrowing ObservableModelScope<CycleOwnedModel, CycleModelSchema>, root: borrowing ObservableStateRootScope<CycleOwnedModel, SemanticCompleteIdentity>, semantic: borrowing SemanticRecordStore<CyclePayload>, values: borrowing CanvasStagedValues<SemanticRecordReference, CycleValueTable>, dynamic: Bool, geometry: consuming G, interaction: consuming InteractionOwnedKeyState<C, R, H>, audit: RuntimeStorageAudit, control: inout CycleControl) -> CycleReturnedWorkspaces<G, C, R, H> where G: CycleGeometry, C: CycleCandidateBacking, R: CycleCommittedBacking, H: CycleHitBacking, C.Identity == SemanticCompleteIdentity, R.Identity == SemanticCompleteIdentity, H.Identity == SemanticCompleteIdentity {
++func exercisePipeline<G, C, R, H>(models: borrowing ObservableModelScope<CycleOwnedModel, CycleModelSchema>, root: borrowing ObservableStateRootScope<CycleOwnedModel, SemanticCompleteIdentity>, semantic: borrowing SemanticRecordStore<CyclePayload>, values: borrowing CanvasStagedValues<SemanticRecordReference, CycleValueTable>, dynamic: Bool, geometry: consuming G, interaction: consuming InteractionOwnedKeyState<C, R, H>, audit: RuntimeStorageAudit, control: inout CycleControl) -> CycleReturnedWorkspaces<G, C, R, H> where G: CycleGeometry, C: CycleCandidateBacking & InteractionOwnedBankMeasurementSource, R: CycleCommittedBacking & InteractionOwnedBankMeasurementSource, H: CycleHitBacking & InteractionOwnedBankMeasurementSource, C.Identity == SemanticCompleteIdentity, R.Identity == SemanticCompleteIdentity, H.Identity == SemanticCompleteIdentity {
+     cycleTrace("begin", dynamic ? "dynamic" : "static")
+     defer { cycleTrace("end", dynamic ? "dynamic" : "static") }
+     var transferredGeometry: G? = consume geometry
+diff --git a/Tests/ContractFixtures/SPEC013/RuntimeDerived/CycleProfileStorage.swift b/Tests/ContractFixtures/SPEC013/RuntimeDerived/CycleProfileStorage.swift
+index 736d1dc7..26761121 100644
+--- a/Tests/ContractFixtures/SPEC013/RuntimeDerived/CycleProfileStorage.swift
++++ b/Tests/ContractFixtures/SPEC013/RuntimeDerived/CycleProfileStorage.swift
+@@ -109,7 +109,7 @@ func cycleValidateBacking<G, C, R, H, GR: CycleStorageRegionSource>(profile: Run
+     factoryRegion: CycleStorageRegion,
+     geometryRegions: borrowing GR,
+     report: (CycleStorageRegion) -> Void) -> RuntimeProfileValidationResult
+-where G: CycleGeometry, C: CycleCandidateBacking, R: CycleCommittedBacking, H: CycleHitBacking,
++where G: CycleGeometry, C: CycleCandidateBacking & InteractionOwnedBankMeasurementSource, R: CycleCommittedBacking & InteractionOwnedBankMeasurementSource, H: CycleHitBacking & InteractionOwnedBankMeasurementSource,
+     C.Identity == SemanticCompleteIdentity, R.Identity == SemanticCompleteIdentity, H.Identity == SemanticCompleteIdentity {
+     // The concrete scoped render adapter exports exactly the configured view;
+     // inaccessible physical headroom remains measured in the backing regions.
+diff --git a/Tests/ContractFixtures/SPEC013/RuntimeDerived/CycleStorageMeasurement.swift b/Tests/ContractFixtures/SPEC013/RuntimeDerived/CycleStorageMeasurement.swift
+index bd799d7e..d81d68c8 100644
+--- a/Tests/ContractFixtures/SPEC013/RuntimeDerived/CycleStorageMeasurement.swift
++++ b/Tests/ContractFixtures/SPEC013/RuntimeDerived/CycleStorageMeasurement.swift
+@@ -53,46 +53,77 @@ protocol CycleHitBacking: InteractionHitRegionStorage {
+     var retainedIdentitySlots: Int { get }
+     var retainedPayloadBytes: Int { get }
+ }
+-extension StaticSixInteractionCandidateStorage: CycleCandidateBacking {
++extension StaticSixInteractionCandidateStorage: CycleCandidateBacking, InteractionOwnedBankMeasurementSource {
++    package var ownedInteractionBankMeasurement: InteractionOwnedBankMeasurement {
++        .init(count: count, capacity: capacity, retainedIdentitySlots: retainedIdentitySlots,
++            retainedPayloadBytes: retainedPayloadBytes, inlineSize: MemoryLayout<Self>.size,
++            inlineStride: MemoryLayout<Self>.stride, inlineAlignment: MemoryLayout<Self>.alignment)
++    }
+     var retainedIdentitySlots: Int { 6 }
+     var retainedPayloadBytes: Int { 0 } // Records are already inside Self's inline layout.
+ }
+-extension StaticSixInteractionCommittedStorage: CycleCommittedBacking {
++extension StaticSixInteractionCommittedStorage: CycleCommittedBacking, InteractionOwnedBankMeasurementSource {
++    package var ownedInteractionBankMeasurement: InteractionOwnedBankMeasurement {
++        .init(count: count, capacity: capacity, retainedIdentitySlots: retainedIdentitySlots,
++            retainedPayloadBytes: retainedPayloadBytes, inlineSize: MemoryLayout<Self>.size,
++            inlineStride: MemoryLayout<Self>.stride, inlineAlignment: MemoryLayout<Self>.alignment)
++    }
+     var retainedIdentitySlots: Int { 6 }
+     var retainedPayloadBytes: Int { 0 }
+ }
+-extension StaticSixInteractionHitStorage: CycleHitBacking {
++extension StaticSixInteractionHitStorage: CycleHitBacking, InteractionOwnedBankMeasurementSource {
++    package var ownedInteractionBankMeasurement: InteractionOwnedBankMeasurement {
++        .init(count: count, capacity: capacity, retainedIdentitySlots: retainedIdentitySlots,
++            retainedPayloadBytes: retainedPayloadBytes, inlineSize: MemoryLayout<Self>.size,
++            inlineStride: MemoryLayout<Self>.stride, inlineAlignment: MemoryLayout<Self>.alignment)
++    }
+     var retainedIdentitySlots: Int { 6 }
+     var retainedPayloadBytes: Int { 0 }
+ }
+ #if !hasFeature(Embedded)
+-extension DynamicInteractionCandidateStorage: CycleCandidateBacking {
++extension DynamicInteractionCandidateStorage: CycleCandidateBacking, InteractionOwnedBankMeasurementSource {
++    package var ownedInteractionBankMeasurement: InteractionOwnedBankMeasurement {
++        .init(count: count, capacity: capacity, retainedIdentitySlots: retainedIdentitySlots,
++            retainedPayloadBytes: retainedPayloadBytes, inlineSize: MemoryLayout<Self>.size,
++            inlineStride: MemoryLayout<Self>.stride, inlineAlignment: MemoryLayout<Self>.alignment)
++    }
+     var retainedIdentitySlots: Int { retainedElementCapacity }
+     var retainedPayloadBytes: Int { reservedPayloadBytes }
+ }
+-extension DynamicInteractionCommittedStorage: CycleCommittedBacking {
++extension DynamicInteractionCommittedStorage: CycleCommittedBacking, InteractionOwnedBankMeasurementSource {
++    package var ownedInteractionBankMeasurement: InteractionOwnedBankMeasurement {
++        .init(count: count, capacity: capacity, retainedIdentitySlots: retainedIdentitySlots,
++            retainedPayloadBytes: retainedPayloadBytes, inlineSize: MemoryLayout<Self>.size,
++            inlineStride: MemoryLayout<Self>.stride, inlineAlignment: MemoryLayout<Self>.alignment)
++    }
+     var retainedIdentitySlots: Int { retainedElementCapacity }
+     var retainedPayloadBytes: Int { reservedPayloadBytes }
+ }
+-extension DynamicInteractionHitStorage: CycleHitBacking {
++extension DynamicInteractionHitStorage: CycleHitBacking, InteractionOwnedBankMeasurementSource {
++    package var ownedInteractionBankMeasurement: InteractionOwnedBankMeasurement {
++        .init(count: count, capacity: capacity, retainedIdentitySlots: retainedIdentitySlots,
++            retainedPayloadBytes: retainedPayloadBytes, inlineSize: MemoryLayout<Self>.size,
++            inlineStride: MemoryLayout<Self>.stride, inlineAlignment: MemoryLayout<Self>.alignment)
++    }
+     var retainedIdentitySlots: Int { retainedElementCapacity }
+     var retainedPayloadBytes: Int { reservedPayloadBytes }
+ }
+ #endif
+-func cycleMeasureInteraction<C: CycleCandidateBacking, R: CycleCommittedBacking, H: CycleHitBacking>(_ storage: borrowing InteractionOwnedKeyState<C, R, H>) -> CycleInteractionMeasurement where C.Identity == SemanticCompleteIdentity, R.Identity == SemanticCompleteIdentity, H.Identity == SemanticCompleteIdentity {
+-    storage.withBacking { candidate, candidateHits, prepared, committed, committedHits in
++func cycleMeasureInteraction<C: CycleCandidateBacking & InteractionOwnedBankMeasurementSource & Copyable & Escapable, R: CycleCommittedBacking & InteractionOwnedBankMeasurementSource & Copyable & Escapable, H: CycleHitBacking & InteractionOwnedBankMeasurementSource & Copyable & Escapable>(_ storage: borrowing InteractionOwnedKeyState<C, R, H>) -> CycleInteractionMeasurement where C.Identity == SemanticCompleteIdentity, R.Identity == SemanticCompleteIdentity, H.Identity == SemanticCompleteIdentity {
++    let facts = storage.ownedStorageMeasurement()
++    let candidate = facts.candidate, candidateHits = facts.candidateHits
++    let prepared = facts.prepared, committed = facts.committed, committedHits = facts.committedHits
+         // Each record owns one complete identity. Candidate includes the prepared
+         // committed bank. Key bytes are subtracted from those records, never added twice.
+         let candidateKeys = UInt64(candidate.retainedIdentitySlots + candidateHits.retainedIdentitySlots + prepared.retainedIdentitySlots) * UInt64(MemoryLayout<SemanticCompleteIdentity>.size)
+         let committedKeys = UInt64(committed.retainedIdentitySlots + committedHits.retainedIdentitySlots) * UInt64(MemoryLayout<SemanticCompleteIdentity>.size)
+-        let candidateRaw = UInt64(MemoryLayout<C>.size + MemoryLayout<H>.size + MemoryLayout<R>.size + candidate.retainedPayloadBytes + candidateHits.retainedPayloadBytes + prepared.retainedPayloadBytes)
+-        let committedRaw = UInt64(MemoryLayout<R>.size + MemoryLayout<H>.size + committed.retainedPayloadBytes + committedHits.retainedPayloadBytes)
++        let candidateRaw = UInt64(candidate.inlineSize + candidateHits.inlineSize + prepared.inlineSize + candidate.retainedPayloadBytes + candidateHits.retainedPayloadBytes + prepared.retainedPayloadBytes)
++        let committedRaw = UInt64(committed.inlineSize + committedHits.inlineSize + committed.retainedPayloadBytes + committedHits.retainedPayloadBytes)
+         precondition(candidateKeys <= candidateRaw && committedKeys <= committedRaw)
+         return .init(candidateRecords: min(candidate.capacity, prepared.capacity), candidateHits: candidateHits.capacity,
+             committedRecords: committed.capacity, committedHits: committedHits.capacity,
+             candidateIdentityBytes: candidateKeys, committedIdentityBytes: committedKeys,
+             candidateBytes: candidateRaw - candidateKeys, committedBytes: committedRaw - committedKeys)
+-    }
+ }
+ struct CycleGeometryMeasurement: Equatable {
+     let layout: LayoutLimits
+@@ -107,7 +138,7 @@ struct CycleGeometryMeasurement: Equatable {
+ 
+ // Only the escapable, owned workspaces leave the enclosing scoped opportunity.
+ // Model/root/semantic/Canvas scopes are destroyed before this transfer returns.
+-struct CycleReturnedWorkspaces<G: CycleGeometry, C: CycleCandidateBacking, R: CycleCommittedBacking, H: CycleHitBacking> where C.Identity == SemanticCompleteIdentity, R.Identity == SemanticCompleteIdentity, H.Identity == SemanticCompleteIdentity {
++struct CycleReturnedWorkspaces<G: CycleGeometry & Copyable & Escapable, C: CycleCandidateBacking & Copyable & Escapable, R: CycleCommittedBacking & Copyable & Escapable, H: CycleHitBacking & Copyable & Escapable> where C.Identity == SemanticCompleteIdentity, R.Identity == SemanticCompleteIdentity, H.Identity == SemanticCompleteIdentity {
+     var geometry: G
+     var interaction: InteractionOwnedKeyState<C, R, H>
+     var checks: Int
+diff --git a/Tests/ContractFixtures/SPEC013/RuntimeDerived/CycleStorageRegions.swift b/Tests/ContractFixtures/SPEC013/RuntimeDerived/CycleStorageRegions.swift
+index fbe4f412..9a2f1d76 100644
+--- a/Tests/ContractFixtures/SPEC013/RuntimeDerived/CycleStorageRegions.swift
++++ b/Tests/ContractFixtures/SPEC013/RuntimeDerived/CycleStorageRegions.swift
+@@ -83,7 +83,7 @@ extension CycleStaticWorkspaceBacking: CycleStorageRegionSource {
+     }
+ }
+ 
+-func cycleVisitInteraction<C: CycleCandidateBacking, R: CycleCommittedBacking, H: CycleHitBacking>(_ storage: borrowing InteractionOwnedKeyState<C, R, H>, _ visit: (CycleStorageRegion) -> Void) where C.Identity == SemanticCompleteIdentity, R.Identity == SemanticCompleteIdentity, H.Identity == SemanticCompleteIdentity {
++func cycleVisitInteraction<C: CycleCandidateBacking & InteractionOwnedBankMeasurementSource, R: CycleCommittedBacking & InteractionOwnedBankMeasurementSource, H: CycleHitBacking & InteractionOwnedBankMeasurementSource>(_ storage: borrowing InteractionOwnedKeyState<C, R, H>, _ visit: (CycleStorageRegion) -> Void) where C.Identity == SemanticCompleteIdentity, R.Identity == SemanticCompleteIdentity, H.Identity == SemanticCompleteIdentity {
+     func store<T, Record>(_ type: T.Type, _ record: Record.Type, slots: Int, payload: Int, family: Int, keys: Int) {
+         let identityBytes = UInt64(slots * MemoryLayout<SemanticCompleteIdentity>.size)
+         visit(.elements(SemanticCompleteIdentity.self, count: slots, family: keys, chargedBytes: identityBytes))
+@@ -97,12 +97,13 @@ func cycleVisitInteraction<C: CycleCandidateBacking, R: CycleCommittedBacking, H
+             visit(.inline(type, family: family))
+         }
+     }
+-    storage.withBacking { candidate, hits, prepared, committed, committedHits in
++    let facts = storage.ownedStorageMeasurement()
++    let candidate = facts.candidate, hits = facts.candidateHits
++    let prepared = facts.prepared, committed = facts.committed, committedHits = facts.committedHits
+         store(C.self, InteractionCandidateRecord<SemanticCompleteIdentity>.self, slots: candidate.retainedIdentitySlots, payload: candidate.retainedPayloadBytes, family: 19, keys: 5)
+         store(H.self, InteractionHitRegion<SemanticCompleteIdentity>.self, slots: hits.retainedIdentitySlots, payload: hits.retainedPayloadBytes, family: 19, keys: 5)
+         store(R.self, BoundActionRecord<SemanticCompleteIdentity>.self, slots: prepared.retainedIdentitySlots, payload: prepared.retainedPayloadBytes, family: 19, keys: 5)
+         store(R.self, BoundActionRecord<SemanticCompleteIdentity>.self, slots: committed.retainedIdentitySlots, payload: committed.retainedPayloadBytes, family: 20, keys: 6)
+         store(H.self, InteractionHitRegion<SemanticCompleteIdentity>.self, slots: committedHits.retainedIdentitySlots, payload: committedHits.retainedPayloadBytes, family: 20, keys: 6)
+-    }
+     visit(.inline(InteractionOwnedKeyState<C, R, H>.self, family: 19, chargedBytes: MemoryLayout<InteractionOwnedKeyState<C, R, H>>.size - MemoryLayout<C>.size - MemoryLayout<R>.size * 2 - MemoryLayout<H>.size * 2, kind: .metadataPadding))
+ }
+diff --git a/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterProfileStorage.swift b/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterProfileStorage.swift
+index 8884df31..75d46617 100644
+--- a/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterProfileStorage.swift
++++ b/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterProfileStorage.swift
+@@ -98,7 +98,7 @@ func counterValidateBacking<G, C, R, H, GR: CounterStorageRegionSource>(profile:
+     factoryDescriptorRegion: CounterStorageRegion? = nil,
+     geometryRegions: borrowing GR,
+     report: (CounterStorageRegion) -> Void) -> RuntimeProfileValidationResult
+-where G: CounterGeometry, C: CounterCandidateBacking, R: CounterCommittedBacking, H: CounterHitBacking,
++where G: CounterGeometry, C: CounterCandidateBacking & InteractionOwnedBankMeasurementSource, R: CounterCommittedBacking & InteractionOwnedBankMeasurementSource, H: CounterHitBacking & InteractionOwnedBankMeasurementSource,
+     C.Identity == SemanticCompleteIdentity, R.Identity == SemanticCompleteIdentity, H.Identity == SemanticCompleteIdentity {
+     // The concrete scoped render adapter exports exactly the configured view;
+     // inaccessible physical headroom remains measured in the backing regions.
+diff --git a/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterStorageMeasurement.swift b/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterStorageMeasurement.swift
+index 5a18e477..ecfc2c82 100644
+--- a/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterStorageMeasurement.swift
++++ b/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterStorageMeasurement.swift
+@@ -40,63 +40,94 @@ struct CounterInteractionMeasurement: Equatable {
+     let candidateBytes: UInt64
+     let committedBytes: UInt64
+ }
+-protocol CounterCandidateBacking: InteractionCandidateRecordStorage {
++protocol CounterCandidateBacking: ~Copyable, ~Escapable, InteractionCandidateRecordStorage {
+     var retainedIdentitySlots: Int { get }
+     var retainedPayloadBytes: Int { get }
+ }
+-protocol CounterCommittedBacking: InteractionCommittedRecordStorage {
++protocol CounterCommittedBacking: ~Copyable, ~Escapable, InteractionCommittedRecordStorage {
+     var retainedIdentitySlots: Int { get }
+     var retainedPayloadBytes: Int { get }
+ }
+-protocol CounterHitBacking: InteractionHitRegionStorage {
++protocol CounterHitBacking: ~Copyable, ~Escapable, InteractionHitRegionStorage {
+     var retainedIdentitySlots: Int { get }
+     var retainedPayloadBytes: Int { get }
+ }
+-extension StaticTwoInteractionCandidateStorage: CounterCandidateBacking {
++extension StaticTwoInteractionCandidateStorage: CounterCandidateBacking, InteractionOwnedBankMeasurementSource {
++    package var ownedInteractionBankMeasurement: InteractionOwnedBankMeasurement {
++        .init(count: count, capacity: capacity, retainedIdentitySlots: retainedIdentitySlots,
++            retainedPayloadBytes: retainedPayloadBytes, inlineSize: MemoryLayout<Self>.size,
++            inlineStride: MemoryLayout<Self>.stride, inlineAlignment: MemoryLayout<Self>.alignment)
++    }
+     var retainedIdentitySlots: Int { 2 }
+     var retainedPayloadBytes: Int { 0 } // Records are already inside Self's inline layout.
+ }
+-extension StaticTwoInteractionCommittedStorage: CounterCommittedBacking {
++extension StaticTwoInteractionCommittedStorage: CounterCommittedBacking, InteractionOwnedBankMeasurementSource {
++    package var ownedInteractionBankMeasurement: InteractionOwnedBankMeasurement {
++        .init(count: count, capacity: capacity, retainedIdentitySlots: retainedIdentitySlots,
++            retainedPayloadBytes: retainedPayloadBytes, inlineSize: MemoryLayout<Self>.size,
++            inlineStride: MemoryLayout<Self>.stride, inlineAlignment: MemoryLayout<Self>.alignment)
++    }
+     var retainedIdentitySlots: Int { 2 }
+     var retainedPayloadBytes: Int { 0 }
+ }
+-extension StaticTwoInteractionHitStorage: CounterHitBacking {
++extension StaticTwoInteractionHitStorage: CounterHitBacking, InteractionOwnedBankMeasurementSource {
++    package var ownedInteractionBankMeasurement: InteractionOwnedBankMeasurement {
++        .init(count: count, capacity: capacity, retainedIdentitySlots: retainedIdentitySlots,
++            retainedPayloadBytes: retainedPayloadBytes, inlineSize: MemoryLayout<Self>.size,
++            inlineStride: MemoryLayout<Self>.stride, inlineAlignment: MemoryLayout<Self>.alignment)
++    }
+     var retainedIdentitySlots: Int { 2 }
+     var retainedPayloadBytes: Int { 0 }
+ }
+ #if !hasFeature(Embedded)
+-extension DynamicInteractionCandidateStorage: CounterCandidateBacking {
++extension DynamicInteractionCandidateStorage: CounterCandidateBacking, InteractionOwnedBankMeasurementSource {
++    package var ownedInteractionBankMeasurement: InteractionOwnedBankMeasurement {
++        .init(count: count, capacity: capacity, retainedIdentitySlots: retainedIdentitySlots,
++            retainedPayloadBytes: retainedPayloadBytes, inlineSize: MemoryLayout<Self>.size,
++            inlineStride: MemoryLayout<Self>.stride, inlineAlignment: MemoryLayout<Self>.alignment)
++    }
+     var retainedIdentitySlots: Int { retainedElementCapacity }
+     var retainedPayloadBytes: Int { reservedPayloadBytes }
+ }
+-extension DynamicInteractionCommittedStorage: CounterCommittedBacking {
++extension DynamicInteractionCommittedStorage: CounterCommittedBacking, InteractionOwnedBankMeasurementSource {
++    package var ownedInteractionBankMeasurement: InteractionOwnedBankMeasurement {
++        .init(count: count, capacity: capacity, retainedIdentitySlots: retainedIdentitySlots,
++            retainedPayloadBytes: retainedPayloadBytes, inlineSize: MemoryLayout<Self>.size,
++            inlineStride: MemoryLayout<Self>.stride, inlineAlignment: MemoryLayout<Self>.alignment)
++    }
+     var retainedIdentitySlots: Int { retainedElementCapacity }
+     var retainedPayloadBytes: Int { reservedPayloadBytes }
+ }
+-extension DynamicInteractionHitStorage: CounterHitBacking {
++extension DynamicInteractionHitStorage: CounterHitBacking, InteractionOwnedBankMeasurementSource {
++    package var ownedInteractionBankMeasurement: InteractionOwnedBankMeasurement {
++        .init(count: count, capacity: capacity, retainedIdentitySlots: retainedIdentitySlots,
++            retainedPayloadBytes: retainedPayloadBytes, inlineSize: MemoryLayout<Self>.size,
++            inlineStride: MemoryLayout<Self>.stride, inlineAlignment: MemoryLayout<Self>.alignment)
++    }
+     var retainedIdentitySlots: Int { retainedElementCapacity }
+     var retainedPayloadBytes: Int { reservedPayloadBytes }
+ }
+ #endif
+-func counterMeasureInteraction<C: CounterCandidateBacking, R: CounterCommittedBacking, H: CounterHitBacking>(_ storage: borrowing InteractionOwnedKeyState<C, R, H>) -> CounterInteractionMeasurement where C.Identity == SemanticCompleteIdentity, R.Identity == SemanticCompleteIdentity, H.Identity == SemanticCompleteIdentity {
+-    storage.withBacking { candidate, candidateHits, prepared, committed, committedHits in
++func counterMeasureInteraction<C: CounterCandidateBacking & InteractionOwnedBankMeasurementSource & Copyable & Escapable, R: CounterCommittedBacking & InteractionOwnedBankMeasurementSource & Copyable & Escapable, H: CounterHitBacking & InteractionOwnedBankMeasurementSource & Copyable & Escapable>(_ storage: borrowing InteractionOwnedKeyState<C, R, H>) -> CounterInteractionMeasurement where C.Identity == SemanticCompleteIdentity, R.Identity == SemanticCompleteIdentity, H.Identity == SemanticCompleteIdentity {
++    let facts = storage.ownedStorageMeasurement()
++    let candidate = facts.candidate, candidateHits = facts.candidateHits
++    let prepared = facts.prepared, committed = facts.committed, committedHits = facts.committedHits
+         // Each record owns one complete identity. Candidate includes the prepared
+         // committed bank. Key bytes are subtracted from those records, never added twice.
+         let candidateKeys = UInt64(candidate.retainedIdentitySlots + candidateHits.retainedIdentitySlots + prepared.retainedIdentitySlots) * UInt64(MemoryLayout<SemanticCompleteIdentity>.size)
+         let committedKeys = UInt64(committed.retainedIdentitySlots + committedHits.retainedIdentitySlots) * UInt64(MemoryLayout<SemanticCompleteIdentity>.size)
+-        let candidateRaw = UInt64(MemoryLayout<C>.size + MemoryLayout<H>.size + MemoryLayout<R>.size + candidate.retainedPayloadBytes + candidateHits.retainedPayloadBytes + prepared.retainedPayloadBytes)
+-        let committedRaw = UInt64(MemoryLayout<R>.size + MemoryLayout<H>.size + committed.retainedPayloadBytes + committedHits.retainedPayloadBytes)
++        let candidateRaw = UInt64(candidate.inlineSize + candidateHits.inlineSize + prepared.inlineSize + candidate.retainedPayloadBytes + candidateHits.retainedPayloadBytes + prepared.retainedPayloadBytes)
++        let committedRaw = UInt64(committed.inlineSize + committedHits.inlineSize + committed.retainedPayloadBytes + committedHits.retainedPayloadBytes)
+         precondition(candidateKeys <= candidateRaw && committedKeys <= committedRaw)
+         return .init(candidateRecords: min(candidate.capacity, prepared.capacity), candidateHits: candidateHits.capacity,
+             committedRecords: committed.capacity, committedHits: committedHits.capacity,
+             candidateIdentityBytes: candidateKeys, committedIdentityBytes: committedKeys,
+             candidateBytes: candidateRaw - candidateKeys, committedBytes: committedRaw - committedKeys)
+-    }
+ }
+ 
+ // Only the escapable, owned workspaces leave the enclosing scoped opportunity.
+ // Model/root/semantic/Canvas scopes are destroyed before this transfer returns.
+-struct CounterReturnedWorkspaces<G: CounterGeometry, C: CounterCandidateBacking, R: CounterCommittedBacking, H: CounterHitBacking> where C.Identity == SemanticCompleteIdentity, R.Identity == SemanticCompleteIdentity, H.Identity == SemanticCompleteIdentity {
++struct CounterReturnedWorkspaces<G: CounterGeometry & Copyable & Escapable, C: CounterCandidateBacking & Copyable & Escapable, R: CounterCommittedBacking & Copyable & Escapable, H: CounterHitBacking & Copyable & Escapable> where C.Identity == SemanticCompleteIdentity, R.Identity == SemanticCompleteIdentity, H.Identity == SemanticCompleteIdentity {
+     var geometry: G
+     var interaction: InteractionOwnedKeyState<C, R, H>
+     var checks: Int
+diff --git a/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterStorageRegions.swift b/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterStorageRegions.swift
+index c7424762..8895d2b7 100644
+--- a/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterStorageRegions.swift
++++ b/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterStorageRegions.swift
+@@ -82,7 +82,7 @@ extension CounterStaticWorkspaceBacking: CounterStorageRegionSource {
+     }
+ }
+ 
+-func counterVisitInteraction<C: CounterCandidateBacking, R: CounterCommittedBacking, H: CounterHitBacking>(_ storage: borrowing InteractionOwnedKeyState<C, R, H>, _ visit: (CounterStorageRegion) -> Void) where C.Identity == SemanticCompleteIdentity, R.Identity == SemanticCompleteIdentity, H.Identity == SemanticCompleteIdentity {
++func counterVisitInteraction<C: CounterCandidateBacking & InteractionOwnedBankMeasurementSource, R: CounterCommittedBacking & InteractionOwnedBankMeasurementSource, H: CounterHitBacking & InteractionOwnedBankMeasurementSource>(_ storage: borrowing InteractionOwnedKeyState<C, R, H>, _ visit: (CounterStorageRegion) -> Void) where C.Identity == SemanticCompleteIdentity, R.Identity == SemanticCompleteIdentity, H.Identity == SemanticCompleteIdentity {
+     func store<T, Record>(_ type: T.Type, _ record: Record.Type, slots: Int, payload: Int, family: Int, keys: Int) {
+         let identityBytes = UInt64(slots * MemoryLayout<SemanticCompleteIdentity>.size)
+         visit(.elements(SemanticCompleteIdentity.self, count: slots, family: keys, chargedBytes: identityBytes))
+@@ -96,12 +96,13 @@ func counterVisitInteraction<C: CounterCandidateBacking, R: CounterCommittedBack
+             visit(.inline(type, family: family))
+         }
+     }
+-    storage.withBacking { candidate, hits, prepared, committed, committedHits in
++    let facts = storage.ownedStorageMeasurement()
++    let candidate = facts.candidate, hits = facts.candidateHits
++    let prepared = facts.prepared, committed = facts.committed, committedHits = facts.committedHits
+         store(C.self, InteractionCandidateRecord<SemanticCompleteIdentity>.self, slots: candidate.retainedIdentitySlots, payload: candidate.retainedPayloadBytes, family: 19, keys: 5)
+         store(H.self, InteractionHitRegion<SemanticCompleteIdentity>.self, slots: hits.retainedIdentitySlots, payload: hits.retainedPayloadBytes, family: 19, keys: 5)
+         store(R.self, BoundActionRecord<SemanticCompleteIdentity>.self, slots: prepared.retainedIdentitySlots, payload: prepared.retainedPayloadBytes, family: 19, keys: 5)
+         store(R.self, BoundActionRecord<SemanticCompleteIdentity>.self, slots: committed.retainedIdentitySlots, payload: committed.retainedPayloadBytes, family: 20, keys: 6)
+         store(H.self, InteractionHitRegion<SemanticCompleteIdentity>.self, slots: committedHits.retainedIdentitySlots, payload: committedHits.retainedPayloadBytes, family: 20, keys: 6)
+-    }
+     visit(.inline(InteractionOwnedKeyState<C, R, H>.self, family: 19, chargedBytes: MemoryLayout<InteractionOwnedKeyState<C, R, H>>.size - MemoryLayout<C>.size - MemoryLayout<R>.size * 2 - MemoryLayout<H>.size * 2, kind: .metadataPadding))
+ }
+diff --git a/scripts/contracts/check-spec-011-owned-keys.py b/scripts/contracts/check-spec-011-owned-keys.py
+index 09961072..41de7e1f 100644
+--- a/scripts/contracts/check-spec-011-owned-keys.py
++++ b/scripts/contracts/check-spec-011-owned-keys.py
+@@ -1,12 +1,14 @@
+ #!/usr/bin/env python3
+-"""P05 complete-key Interaction and scoped host bridge evidence; broad conformance remains P10."""
++"""Finite SO-03 owned/scoped Interaction checks; later conformance stays open."""
+ import argparse
++import atexit
+ import hashlib
+ import json
+ import pathlib
+ import re
+ import shlex
+ import subprocess
++import sys
+ import tempfile
+ 
+ ROOT = pathlib.Path(__file__).resolve().parents[2]
+@@ -18,8 +20,10 @@ base = args.giftui_build.resolve()
+ core = json.loads((base / 'result.json').read_text())
+ profile = core['profile']
+ assert args.profile == profile
++
+ def digest(path):
+     return hashlib.sha256(path.read_bytes()).hexdigest()
++
+ for name, expected in core['inputs'].items():
+     if name.startswith(('Sources/GiftUI/', 'Sources/GiftUIMacros/')):
+         assert digest(ROOT / name) == expected, name
+@@ -27,37 +31,73 @@ for name in ('GiftUI.o', 'GiftUI.swiftmodule'):
+     assert digest(base / name) == core['artifacts'][name]['sha256']
+ compiler = ROOT / core['compiler']
+ assert digest(compiler) == core['compiler_sha256']
++macro = ROOT / core.get('macro_tool', '.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool')
++assert digest(macro) == core['macro_tool_sha256']
+ command = next(shlex.split(line) for line in (base / 'commands.txt').read_text().splitlines()
+                if '-module-name GiftUI ' in line)
+ flags = command[1:command.index('-module-name')]
+ parent = ROOT / '.build'
+ if profile == 'raspberry-pi-armv6': parent /= 'raspberry-pi'
+ if profile == 'nrf52840-embedded': parent /= 'nrf52840'
++# Allocate once, then freeze every exact argv before the first compiler.
++# Future separately authorized invocations retain separate immutable outputs.
+ parent /= 'contracts/spec-011-owned-keys'
+ parent.mkdir(parents=True, exist_ok=True)
+ out = pathlib.Path(tempfile.mkdtemp(dir=parent)) / profile
+ out.mkdir()
++(out / 'probe-objects').mkdir()
+ flags[flags.index('-module-cache-path') + 1] = str(out / 'cache')
+ flags += ['-I', str(out), '-I', str(base), '-enable-testing']
+-commands = []
+-inputs = [pathlib.Path(__file__).resolve(), ROOT / 'Package.swift', ROOT / 'scripts/contracts/run-spec-011.sh', ROOT / 'scripts/contracts/driver-registry.tsv']
+-checks = []
++commands, checks, plan, module_names = [], [], [], []
++inputs = [pathlib.Path(__file__).resolve(), ROOT / 'Package.swift',
++          ROOT / 'scripts/contracts/run-spec-011.sh', ROOT / 'scripts/contracts/driver-registry.tsv',
++          ROOT / 'scripts/contracts/check-spec-013-runtime-cycle.py', macro]
++# Freeze the edited noncompiled measurement callers as source applicability,
++# without pretending this component route compiles the later Counter/Cycle graph.
++for spec, names in (
++    ('SPEC015', ('CounterStorageMeasurement', 'CounterStorageRegions', 'CounterProfileStorage')),
++    ('SPEC013', ('CycleStorageMeasurement', 'CycleStorageRegions', 'CycleProfileStorage', 'CycleCoordinatorProbe', 'CyclePipelineProbe')),
++):
++    inputs.extend(ROOT / 'Tests/ContractFixtures' / spec / 'RuntimeDerived' / (name + '.swift') for name in names)
++inputs.extend(ROOT / 'Sources/SignalAnalyzerTargetHost' / name for name in (
++    'DynamicSignalAnalyzerActionDispatcher.swift', 'StaticSignalAnalyzerActionDispatcher.swift'))
++source_commit = subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=ROOT, text=True).strip()
++source_dirty = bool(subprocess.check_output(['git', 'status', '--porcelain'], cwd=ROOT, text=True))
++status, failure, execution, layouts = 'planned', None, None, {}
++frozen_inputs = {}
++
++def write_receipt():
++    report = {
++        'package': 'P08', 'step': 'SO-03', 'profile': profile,
++        'status': status, 'failure': failure, 'source_commit': source_commit, 'source_dirty': source_dirty,
++        'inputs': frozen_inputs, 'compiler': core['compiler'], 'compiler_sha256': digest(compiler),
++        'macro_tool': str(macro.relative_to(ROOT)), 'macro_tool_sha256': digest(macro), 'flags': flags,
++        'owner_command': 'scripts/contracts/run-spec-011.sh --profile ' + profile +
++            ' --compiler-baseline rfc-014 --giftui-build ' + str(base.relative_to(ROOT)),
++        'core_receipt': str((base / 'result.json').relative_to(ROOT)), 'core_receipt_sha256': digest(base / 'result.json'),
++        'planned_commands': plan, 'commands': commands, 'checks': checks,
++        'planned_compiler_count': sum(cell['compiler'] for cell in plan),
++        'attempted_compiler_count': sum(cell['compiler'] for cell in checks),
++        'planned_total_commands': len(plan), 'attempted_total_commands': len(checks),
++        'automatic_repairs': 0, 'driver_invocations': 1, 'execution': execution,
++        'physical_key_layout': layouts,
++        'applicability': 'shared state/operations/owned dispatcher only; unchanged actual analyzer factories unresolved mandatory I4-07; measurement callers source-inspected only',
++        'artifacts': {str(p.relative_to(out)): {'sha256': digest(p), 'bytes': p.stat().st_size}
++            for p in out.rglob('*') if p.is_file() and p.name != 'result.json' and 'cache' not in p.relative_to(out).parts},
++    }
++    (out / 'result.json').write_text(json.dumps(report, indent=2, sort_keys=True) + '\n')
+ 
+-def run(label, args):
+-    args = list(map(str, args))
+-    commands.append(shlex.join(args))
+-    (out / 'commands.txt').write_text('\n'.join(commands) + '\n')
+-    result = subprocess.run(args, cwd=ROOT, text=True, capture_output=True)
+-    (out / (label + '.log')).write_text(result.stdout + result.stderr)
+-    checks.append({'name': label, 'exit': result.returncode})
+-    if result.returncode:
+-        raise SystemExit(f'{label}: {out}\n{result.stdout}{result.stderr}')
+-    return result.stdout
++atexit.register(write_receipt)
+ 
+-def module(name, sources):
++def register(label, argv, expected=None, context=None):
++    plan.append({'label': label, 'argv': list(map(str, argv)), 'expected_failure': expected,
++                 'diagnostic_context': context, 'compiler': pathlib.Path(argv[0]) == compiler})
++
++def module(name, sources, label=None):
+     inputs.extend(sources)
+-    run(name, [compiler, *flags, '-module-name', name, '-emit-module', '-emit-object', *sources,
+-               '-emit-module-path', out / (name + '.swiftmodule'), '-o', out / (name + '.o')])
++    module_names.append(name)
++    register(label or name, [compiler, *flags, '-module-name', name, '-emit-module', '-emit-object', *sources,
++        '-emit-module-path', out / (name + '.swiftmodule'), '-o', out / (name + '.o')])
+ 
+ module('GiftUISemanticCore', [ROOT / 'Sources/GiftUISemanticCore/GiftUISemanticCore.swift', ROOT / 'Sources/GiftUISemanticCore/SemanticRuntimeRecords.swift', ROOT / 'Sources/GiftUISemanticCore/SemanticRecordStore.swift', ROOT / 'Sources/GiftUISemanticCore/SemanticRecordExpansion.swift', *[ROOT / 'Sources/GiftUISemanticCore' / name for name in ('SemanticStandardPayload.swift', 'SemanticLayoutView.swift', 'SemanticRenderView.swift', 'SemanticRecordLayoutView.swift', 'SemanticRecordRenderView.swift')]])
+ module('GiftUITextResources', sorted((ROOT / 'Sources/GiftUITextResources').glob('*.swift')))
+@@ -66,51 +106,115 @@ module('GiftUIRenderCore', sorted((ROOT / 'Sources/GiftUIRenderCore').glob('*.sw
+ module('GiftUIExecution', sorted((ROOT / 'Sources/GiftUIExecution').glob('*.swift')))
+ module('GiftUIInteraction', sorted((ROOT / 'Sources/GiftUIInteraction').glob('*.swift')))
+ module('GiftUIObservableState', [ROOT / 'Sources/GiftUIObservableState' / name for name in (
+-    'ObservableStateValues.swift', 'ObservableModelIdentity.swift', 'ObservableModelOwnership.swift',
++    'ObservableStateProtocols.swift', 'ObservableStateValues.swift', 'ObservableModelIdentity.swift', 'ObservableModelOwnership.swift',
+     'ObservableModelTicket.swift', 'ObservableModelScope.swift', 'ObservableModelMutation.swift',
+     'ObservableStateModel.swift', 'ObservableStateRegistrationLifecycle.swift', 'ObservableStateRootScope.swift',
+     'ObservableStateRootTargetAccess.swift', 'ObservableStateBindingDecorator.swift', 'ObservableSemanticBodyBinding.swift')])
++module('GiftUIRenderLowering', [ROOT / 'Sources/GiftUIRenderLowering' / name for name in ('RenderExtensions.swift', 'RenderPreflight.swift', 'RenderProducer.swift', 'RenderProductionValues.swift', 'RenderStreaming.swift')], label='so03-prereq-render-lowering')
++module('GiftUIDrawing', [ROOT / 'Sources/GiftUIDrawing' / name for name in ('CanvasRenderProducer.swift', 'CanvasInvocationSource.swift', 'CanvasPlanProducer.swift', 'CanvasStagedValues.swift', 'CanvasSemanticPayload.swift', 'DrawingLimits.swift', 'DrawingPlan.swift', 'DrawingValues.swift', 'StaticCanvasCallableTable.swift', 'PathConstruction.swift', 'StrokeSnapshot.swift')], label='so03-prereq-drawing')
+ module('GiftUIRuntimeStatic', [ROOT / 'Sources/GiftUIRuntimeStatic' / name for name in (
+     'StaticObservableModelStorage.swift', 'StaticObservableRootAdapter.swift', 'StaticObservableRootTargetAccess.swift', 'StaticSemanticRecordStorage.swift', 'StaticInteractionStorage.swift')])
+ if profile != 'nrf52840-embedded':
+-    module('GiftUIRuntimeDynamic', [ROOT / 'Sources/GiftUIRuntimeDynamic/DynamicSemanticRecordStorage.swift', ROOT / 'Sources/GiftUIRuntimeDynamic/DynamicInteractionStorage.swift'])
+-module('GiftUIRuntimeCore', [ROOT / 'Sources/GiftUIRuntimeCore/RuntimeRecordInteractionBridge.swift', ROOT / 'Sources/GiftUIRuntimeCore/RuntimeInteractionCandidateResolution.swift'])
+-layout_source = ROOT / 'Tests/ContractFixtures/SPEC011/RuntimeDerived/KeyLayoutProbe.swift'
++    module('GiftUIRuntimeDynamic', [ROOT / 'Sources/GiftUIRuntimeDynamic' / name for name in ('DynamicSemanticRecordStorage.swift', 'DynamicInteractionStorage.swift', 'DynamicObservableModelStorage.swift', 'DynamicObservableModelRegistration.swift', 'DynamicObservableRootAdapter.swift', 'DynamicObservableRootTargetAccess.swift')])
++module('GiftUIRuntimeCore', [ROOT / 'Sources/GiftUIRuntimeCore' / name for name in ('RuntimeRecordInteractionBridge.swift', 'RuntimeRecordCanvasInteractionBridge.swift', 'RuntimeInteractionCandidateTransaction.swift', 'RuntimeInteractionCandidateCoordinator.swift', 'RuntimeInteractionCandidateResolution.swift', 'RuntimeInteractionDispatcher.swift', 'RuntimeOwnerFailure.swift')])
++
++fixture = ROOT / 'Tests/ContractFixtures/SPEC011/RuntimeDerived'
++layout_source = fixture / 'KeyLayoutProbe.swift'
+ inputs.append(layout_source)
+-run('key-layout', [compiler, *flags, '-module-name', 'KeyLayoutProbe', '-emit-ir', layout_source, '-o', out / 'key-layout.ll'])
+-ir = (out / 'key-layout.ll').read_text()
+-layouts = {}
+-for name, body in re.findall(r'define[^\n]*@p05_([a-z_]+)\([^\n]*\)[^{]*\{(.*?)^}', ir, re.S | re.M):
+-    result = re.search(r'ret i32 (\d+)', body)
+-    assert result, name
+-    layouts[name] = int(result.group(1))
+-assert len(layouts) == 14, layouts
+-layouts['candidate_inline_key_regions'] = 6 * 3 * layouts['key_stride']
+-layouts['committed_inline_key_regions'] = 6 * 2 * layouts['key_stride']
+-layouts['static_remaining_bytes_including_control_and_padding'] = layouts['static_owned_state_stride'] - layouts['candidate_inline_key_regions'] - layouts['committed_inline_key_regions']
+-(out / 'key-layout.json').write_text(json.dumps(layouts, indent=2, sort_keys=True) + '\n')
+-module('OwnedKeyProbe', [ROOT / 'Tests/ContractFixtures/SPEC010/RuntimeDerived/RootProbe.swift', ROOT / 'Tests/ContractFixtures/SPEC011/RuntimeDerived/InteractionProbe.swift'])
++register('key-layout', [compiler, *flags, '-module-name', 'KeyLayoutProbe', '-emit-ir', layout_source, '-o', out / 'key-layout.ll'])
++probe_sources = [ROOT / 'Tests/ContractFixtures/SPEC010/RuntimeDerived/RootProbe.swift',
++                 fixture / 'InteractionProbe.swift', fixture / 'ScopedStorageProbe.swift']
++module('OwnedKeyProbe', probe_sources)
++probe_cells = [('so03-state-owned', ['SO03_STATE_OWNED'], None, None),
++               ('so03-state-scoped', ['SO03_STATE_SCOPED'], None, None),
++               ('so03-state-failable', ['SO03_STATE_FAILABLE'], None, None)]
++for bank in ('C', 'H0', 'R0', 'R1', 'H1'):
++    for route in ('direct', 'generic'):
++        for result in ('positive', 'escape'):
++            defines = ['SO03_INPUT_' + bank]
++            if route == 'generic': defines.append('SO03_GENERIC')
++            if result == 'escape': defines.append('SO03_ESCAPE')
++            probe_cells.append(('so03-union-' + bank + '-' + route + '-' + result,
++                defines, 'lifetime-dependent value escapes its scope' if result == 'escape' else None,
++                'so03Union' if result == 'escape' else None))
++probe_cells += [
++    ('so03-state-copy-negative', ['SO03_COPY_NEGATIVE'], "'copy' cannot be applied to noncopyable types", 'copy state'),
++    ('so03-consumer-operations-positive', ['SO03_CONSUMER_OPERATIONS'], None, None),
++    ('so03-retained-dispatcher-owned-positive', ['SO03_DISPATCHER_OWNED'], None, None),
++    ('so03-retained-dispatcher-scoped-negative', ['SO03_DISPATCHER_SCOPED_NEGATIVE'],
++        "requires that.*conform to '(?:Copyable|Escapable)'", 'RuntimeInteractionDispatcher'),
++]
++assert len(probe_cells) == 27
++for label, defines, expected, context in probe_cells:
++    define_flags = [item for define in defines for item in ('-D', define)]
++    register(label, [compiler, *flags, *define_flags, '-module-name', 'SO03Probe', '-emit-object',
++        *probe_sources, '-o', out / 'probe-objects' / (label + '.o')], expected, context)
+ if profile.startswith('macos'):
+     main = out / 'Main.swift'
+-    main.write_text('import OwnedKeyProbe\n@main struct Main { static func main() { let count = giftuiP05Interaction(); precondition(count > 0); let roots = giftuiP03Root(); precondition(roots > 0); print("P05 Interaction assertions=\\(count) P03 root regressions=\\(roots) failures=0") } }\n')
+-    run('link', [compiler, *flags, main, base / 'GiftUI.o', *sorted(out.glob('*.o')), '-o', out / 'interaction'])
+-    execution = run('execute', [out / 'interaction']).strip()
++    main.write_text('import OwnedKeyProbe\n@main struct Main { static func main() { let count = giftuiP05Interaction(); precondition(count > 0); let roots = giftuiP03Root(); precondition(roots > 0); let scoped = giftuiSO03ScopedStorage(); precondition(scoped > 0); print("P05 Interaction assertions=\\(count) P03 root regressions=\\(roots) SO03 scoped/owned assertions=\\(scoped) failures=0") } }\n')
++    inputs.append(main)
++    register('link', [compiler, *flags, main, base / 'GiftUI.o',
++        *sorted(out / (name + '.o') for name in module_names), '-o', out / 'interaction'])
++    register('execute', [out / 'interaction'])
+ else:
+     readelf = ROOT / '.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/arm-zephyr-eabi-readelf'
+-    abi = run('target-abi', [readelf, '-h', '-A', out / 'OwnedKeyProbe.o'])
+-    assert 'Tag_ABI_VFP_args: VFP registers' in abi
+-    arch = 'v6' if profile == 'raspberry-pi-armv6' else 'v7E-M'
+-    assert re.search(r'Tag_CPU_arch: ' + arch + r'\s*$', abi, re.MULTILINE)
+-    execution = 'cross-compiled only; no target execution'
+-report = {'package': 'P05', 'step': 'owned-keys', 'profile': profile,
+-          'source_commit': subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=ROOT, text=True).strip(),
+-          'source_dirty': bool(subprocess.check_output(['git', 'status', '--porcelain'], cwd=ROOT, text=True)),
+-          'inputs': {str(p.relative_to(ROOT)): digest(p) for p in sorted(set(inputs))},
+-          'owner_command': 'scripts/contracts/run-spec-011.sh --profile ' + profile + ' --compiler-baseline rfc-014 --giftui-build ' + str(base.relative_to(ROOT)),
+-          'core_receipt': str((base / 'result.json').relative_to(ROOT)), 'core_receipt_sha256': digest(base / 'result.json'),
+-          'compiler': core['compiler'], 'compiler_sha256': core['compiler_sha256'],
+-          'commands': commands, 'checks': checks, 'execution': execution, 'physical_key_layout': layouts,
+-          'artifacts': {p.name: {'sha256': digest(p), 'bytes': p.stat().st_size} for p in out.iterdir()
+-                        if p.is_file() and p.name != 'result.json'}}
+-(out / 'result.json').write_text(json.dumps(report, indent=2, sort_keys=True) + '\n')
+-print(f'P05 {profile}: {execution}; {out / "result.json"}')
++    register('target-abi', [readelf, '-h', '-A', out / 'OwnedKeyProbe.o'])
++expected_compilers = 40 if profile == 'nrf52840-embedded' else 41 if profile == 'raspberry-pi-armv6' else 42
++assert sum(cell['compiler'] for cell in plan) == expected_compilers
++assert len(plan) == expected_compilers + 1
++frozen_inputs = {str(p.relative_to(ROOT)): digest(p) for p in sorted(set(inputs))}
++(out / 'planned-commands.json').write_text(json.dumps(plan, indent=2, sort_keys=True) + '\n')
++(out / 'input-hashes.json').write_text(json.dumps(frozen_inputs, indent=2, sort_keys=True) + '\n')
++write_receipt()
++
++# Execute only the frozen plan, once. No retry, diagnostic compile or repair.
++status = 'running'
++try:
++    for cell in plan:
++        argv, label = cell['argv'], cell['label']
++        commands.append(shlex.join(argv))
++        (out / 'commands.txt').write_text('\n'.join(commands) + '\n')
++        result = subprocess.run(argv, cwd=ROOT, text=True, capture_output=True)
++        output = result.stdout + result.stderr
++        (out / (label + '.log')).write_text(output)
++        expected = cell['expected_failure']
++        diagnostics = re.findall(r'(?m)^[^\n]*\berror: ([^\n]+)', output)
++        if expected is None:
++            okay = result.returncode == 0
++        else:
++            # Every primary/echoed error must have the intended ownership cause.
++            # Import, prerequisite or other type errors cannot pass a negative.
++            okay = (result.returncode != 0 and bool(diagnostics) and
++                all(re.search(expected, diagnostic) for diagnostic in diagnostics) and
++                cell['diagnostic_context'] in output)
++        checks.append({'name': label, 'exit': result.returncode, 'pass': okay,
++            'compiler': cell['compiler'], 'expected_failure': expected, 'diagnostics': diagnostics})
++        write_receipt()
++        if not okay:
++            raise RuntimeError(label + ': ' + str(out) + '\n' + output)
++        if label == 'key-layout':
++            ir = (out / 'key-layout.ll').read_text()
++            for name, body in re.findall(r'define[^\n]*@p05_([a-z_]+)\([^\n]*\)[^{]*\{(.*?)^}', ir, re.S | re.M):
++                value = re.search(r'ret i32 (\d+)', body)
++                assert value, name
++                layouts[name] = int(value.group(1))
++            assert len(layouts) == 14, layouts
++            layouts['candidate_inline_key_regions'] = 6 * 3 * layouts['key_stride']
++            layouts['committed_inline_key_regions'] = 6 * 2 * layouts['key_stride']
++            layouts['static_remaining_bytes_including_control_and_padding'] = layouts['static_owned_state_stride'] - layouts['candidate_inline_key_regions'] - layouts['committed_inline_key_regions']
++            (out / 'key-layout.json').write_text(json.dumps(layouts, indent=2, sort_keys=True) + '\n')
++        if label == 'execute': execution = result.stdout.strip()
++        if label == 'target-abi':
++            assert 'Tag_ABI_VFP_args: VFP registers' in output
++            arch = 'v6' if profile == 'raspberry-pi-armv6' else 'v7E-M'
++            assert re.search(r'Tag_CPU_arch: ' + arch + r'\s*$', output, re.MULTILINE)
++            execution = 'cross-compiled only; no target execution'
++    assert frozen_inputs == {str(p.relative_to(ROOT)): digest(p) for p in sorted(set(inputs))}
++    status = 'passed'
++except BaseException as error:
++    status, failure = 'failed', str(error)
++    write_receipt()
++    print('SO-03 frozen failure: ' + str(out / 'result.json'), file=sys.stderr)
++    raise
++write_receipt()
++print(f'SO-03 {profile}: {execution}; {out / "result.json"}')
+diff --git a/scripts/contracts/check-spec-013-runtime-cycle.py b/scripts/contracts/check-spec-013-runtime-cycle.py
+index b8de7567..252cf4b7 100755
+--- a/scripts/contracts/check-spec-013-runtime-cycle.py
++++ b/scripts/contracts/check-spec-013-runtime-cycle.py
+@@ -68,7 +68,7 @@ module('GiftUIRenderCore', sorted((ROOT / 'Sources/GiftUIRenderCore').glob('*.sw
+ module('GiftUIExecution', sorted((ROOT / 'Sources/GiftUIExecution').glob('*.swift')))
+ module('GiftUIInteraction', sorted((ROOT / 'Sources/GiftUIInteraction').glob('*.swift')))
+ module('GiftUIObservableState', [ROOT / 'Sources/GiftUIObservableState' / name for name in (
+-    'ObservableStateValues.swift', 'ObservableModelIdentity.swift', 'ObservableModelOwnership.swift',
++    'ObservableStateProtocols.swift', 'ObservableStateValues.swift', 'ObservableModelIdentity.swift', 'ObservableModelOwnership.swift',
+     'ObservableModelTicket.swift', 'ObservableModelScope.swift', 'ObservableModelMutation.swift',
+     'ObservableStateModel.swift', 'ObservableStateRegistrationLifecycle.swift', 'ObservableStateRootScope.swift',
+     'ObservableStateRootTargetAccess.swift', 'ObservableStateBindingDecorator.swift', 'ObservableSemanticBodyBinding.swift')])
+diff --git a/Tests/ContractFixtures/SPEC011/RuntimeDerived/ScopedStorageProbe.swift b/Tests/ContractFixtures/SPEC011/RuntimeDerived/ScopedStorageProbe.swift
+new file mode 100644
+--- /dev/null
++++ b/Tests/ContractFixtures/SPEC011/RuntimeDerived/ScopedStorageProbe.swift
+@@ -0,0 +1,332 @@
++import GiftUI
++import GiftUIDrawing
++import GiftUIExecution
++import GiftUIInteraction
++import GiftUIObservableState
++import GiftUIRuntimeCore
++import GiftUIRuntimeStatic
++import GiftUISemanticCore
++
++// Closed fixture-private access construction from actual typed mutable spans.
++// These are minimal SO-03 lifetime inputs, not the SO-04 physical owner/session.
++private struct SO03Candidate: ~Copyable, ~Escapable, InteractionCandidateRecordStorage {
++    typealias Identity = SemanticCompleteIdentity
++    private var slots: MutableSpan<InteractionCandidateRecord<Identity>?>
++    private(set) var count: UInt16 = 0
++    var capacity: UInt16 { UInt16(slots.count) }
++    @_lifetime(copy slots)
++    init(slots: consuming MutableSpan<InteractionCandidateRecord<Identity>?>) {
++        self.slots = consume slots
++    }
++    mutating func reset() {
++        for index in 0..<Int(count) { slots[index] = nil }
++        count = 0
++    }
++    borrowing func record(at index: UInt16) -> InteractionCandidateRecord<Identity>? {
++        guard index < count else { return nil }
++        return slots[Int(index)]
++    }
++    mutating func append(_ record: consuming InteractionCandidateRecord<Identity>) -> Bool {
++        guard count < capacity else { return false }
++        slots[Int(count)] = consume record
++        count += 1
++        return true
++    }
++    mutating func replace(at index: UInt16, with record: consuming InteractionCandidateRecord<Identity>) -> Bool {
++        guard index < count else { return false }
++        slots[Int(index)] = consume record
++        return true
++    }
++}
++private struct SO03Committed: ~Copyable, ~Escapable, InteractionCommittedRecordStorage {
++    typealias Identity = SemanticCompleteIdentity
++    private var slots: MutableSpan<BoundActionRecord<Identity>?>
++    private(set) var count: UInt16 = 0
++    var capacity: UInt16 { UInt16(slots.count) }
++    @_lifetime(copy slots)
++    init(slots: consuming MutableSpan<BoundActionRecord<Identity>?>) {
++        self.slots = consume slots
++    }
++    mutating func reset() {
++        for index in 0..<Int(count) { slots[index] = nil }
++        count = 0
++    }
++    borrowing func record(at index: UInt16) -> BoundActionRecord<Identity>? {
++        guard index < count else { return nil }
++        return slots[Int(index)]
++    }
++    mutating func append(_ record: consuming BoundActionRecord<Identity>) -> Bool {
++        guard count < capacity else { return false }
++        slots[Int(count)] = consume record
++        count += 1
++        return true
++    }
++    mutating func exchangeContents(with other: inout Self) {
++        precondition(capacity == other.capacity)
++        let priorSlots = consume slots
++        let priorCount = count
++        slots = consume other.slots
++        count = other.count
++        other.slots = consume priorSlots
++        other.count = priorCount
++    }
++}
++private struct SO03Hits: ~Copyable, ~Escapable, InteractionHitRegionStorage {
++    typealias Identity = SemanticCompleteIdentity
++    private var slots: MutableSpan<InteractionHitRegion<Identity>?>
++    private(set) var count: UInt16 = 0
++    var capacity: UInt16 { UInt16(slots.count) }
++    @_lifetime(copy slots)
++    init(slots: consuming MutableSpan<InteractionHitRegion<Identity>?>) {
++        self.slots = consume slots
++    }
++    mutating func reset() {
++        for index in 0..<Int(count) { slots[index] = nil }
++        count = 0
++    }
++    borrowing func region(at index: UInt16) -> InteractionHitRegion<Identity>? {
++        guard index < count else { return nil }
++        return slots[Int(index)]
++    }
++    mutating func append(_ record: consuming InteractionHitRegion<Identity>) -> Bool {
++        guard count < capacity else { return false }
++        slots[Int(count)] = consume record
++        count += 1
++        return true
++    }
++    mutating func exchangeContents(with other: inout Self) {
++        precondition(capacity == other.capacity)
++        let priorSlots = consume slots
++        let priorCount = count
++        slots = consume other.slots
++        count = other.count
++        other.slots = consume priorSlots
++        other.count = priorCount
++    }
++}
++private typealias SO03Keys = InteractionOwnedKeyState<SO03Candidate, SO03Committed, SO03Hits>
++private typealias SO03State = InteractionState<SO03Candidate, SO03Committed, SO03Hits>
++private typealias SO03OwnedCandidate = StaticSixInteractionCandidateStorage<SemanticCompleteIdentity>
++private typealias SO03OwnedCommitted = StaticSixInteractionCommittedStorage<SemanticCompleteIdentity>
++private typealias SO03OwnedHits = StaticSixInteractionHitStorage<SemanticCompleteIdentity>
++private typealias SO03OwnedKeys = InteractionOwnedKeyState<SO03OwnedCandidate, SO03OwnedCommitted, SO03OwnedHits>
++
++@_lifetime(copy c, copy h0, copy r0, copy r1, copy h1)
++private func so03GenericUnion<C, R, H>(c: consuming C, h0: consuming H,
++    r0: consuming R, r1: consuming R, h1: consuming H) -> InteractionOwnedKeyState<C, R, H>?
++where C: InteractionCandidateRecordStorage & ~Copyable & ~Escapable,
++    R: InteractionCommittedRecordStorage & ~Copyable & ~Escapable,
++    H: InteractionHitRegionStorage & ~Copyable & ~Escapable,
++    C.Identity == SemanticCompleteIdentity, R.Identity == SemanticCompleteIdentity,
++    H.Identity == SemanticCompleteIdentity
++{
++    InteractionOwnedKeyState(state: InteractionState(candidateRecords: consume c,
++        candidateHitRegions: consume h0, candidateCommittedRecords: consume r0,
++        committedRecords: consume r1, committedHitRegions: consume h1),
++        maximumComponentsPerKey: 34, maximumComponents: 204)
++}
++
++// Each escape cell differs from its positive twin only by removal of its named
++// independent input from this declared output lifetime. Generic cells pass
++// through the complete generic union above; direct cells invoke the actual init.
++#if SO03_ESCAPE && SO03_INPUT_C
++@_lifetime(copy h0, copy r0, copy r1, copy h1)
++#elseif SO03_ESCAPE && SO03_INPUT_H0
++@_lifetime(copy c, copy r0, copy r1, copy h1)
++#elseif SO03_ESCAPE && SO03_INPUT_R0
++@_lifetime(copy c, copy h0, copy r1, copy h1)
++#elseif SO03_ESCAPE && SO03_INPUT_R1
++@_lifetime(copy c, copy h0, copy r0, copy h1)
++#elseif SO03_ESCAPE && SO03_INPUT_H1
++@_lifetime(copy c, copy h0, copy r0, copy r1)
++#else
++@_lifetime(copy c, copy h0, copy r0, copy r1, copy h1)
++#endif
++private func so03Union(c: consuming SO03Candidate, h0: consuming SO03Hits,
++    r0: consuming SO03Committed, r1: consuming SO03Committed, h1: consuming SO03Hits) -> SO03Keys?
++{
++    #if SO03_GENERIC
++    return so03GenericUnion(c: consume c, h0: consume h0, r0: consume r0,
++        r1: consume r1, h1: consume h1)
++    #else
++    return SO03Keys(state: InteractionState(candidateRecords: consume c,
++        candidateHitRegions: consume h0, candidateCommittedRecords: consume r0,
++        committedRecords: consume r1, committedHitRegions: consume h1),
++        maximumComponentsPerKey: 34, maximumComponents: 204)
++    #endif
++}
++
++#if SO03_COPY_NEGATIVE
++private func so03ForbiddenCopy(_ state: borrowing SO03Keys) -> UInt16 {
++    let duplicate = copy state
++    return duplicate.committedRecordCount
++}
++#endif
++
++private func so03OwnedReturn() -> SO03OwnedKeys? {
++    let state = InteractionState(candidateRecords: SO03OwnedCandidate(capacity: 6)!,
++        candidateHitRegions: SO03OwnedHits(capacity: 6)!,
++        candidateCommittedRecords: SO03OwnedCommitted(capacity: 6)!,
++        committedRecords: SO03OwnedCommitted(capacity: 6)!, committedHitRegions: SO03OwnedHits(capacity: 6)!)
++    let optional = SO03OwnedKeys(state: copy state, maximumComponentsPerKey: 34, maximumComponents: 204)
++    return copy optional
++}
++private func so03Move(c: consuming SO03Candidate, h0: consuming SO03Hits,
++    r0: consuming SO03Committed, r1: consuming SO03Committed, h1: consuming SO03Hits) -> UInt16
++{
++    let state = InteractionState(candidateRecords: consume c, candidateHitRegions: consume h0,
++        candidateCommittedRecords: consume r0, committedRecords: consume r1, committedHitRegions: consume h1)
++    var moved = consume state
++    moved.resetAllStorage()
++    return moved.committedRecordCount
++}
++private func so03Failable(c: consuming SO03Candidate, h0: consuming SO03Hits,
++    r0: consuming SO03Committed, r1: consuming SO03Committed, h1: consuming SO03Hits) -> Bool
++{
++    let state = InteractionState(candidateRecords: consume c, candidateHitRegions: consume h0,
++        candidateCommittedRecords: consume r0, committedRecords: consume r1, committedHitRegions: consume h1)
++    let optional = SO03Keys(state: consume state, maximumComponentsPerKey: 0, maximumComponents: 204)
++    switch consume optional { case .none: return true; case .some: return false }
++}
++
++private func so03Key() -> SemanticCompleteIdentity {
++    var result = SemanticCompleteIdentity()
++    precondition(result.append(.init(kind: .root)))
++    precondition(result.append(.init(kind: .declarationRole, role: 2)))
++    return result
++}
++private let so03Rect = Rect(origin: .init(x: 0, y: 0), size: .init(width: 10, height: 10)!)!
++private struct SO03Occurrences: RuntimeInteractionOccurrenceView {
++    typealias Identity = SemanticCompleteIdentity
++    var fail = false
++    var interactionOccurrenceCount: UInt16 { 1 }
++    borrowing func interactionOccurrence(at index: UInt16) -> RuntimeInteractionOccurrence<Identity>? {
++        guard !fail && index == 0 else { return nil }
++        return .init(identity: so03Key(), isEnabled: true, bounds: so03Rect, clip: so03Rect,
++            paintOrder: 0, action: .init(code: 1))
++    }
++}
++private struct SO03Observable: ObservableStateReconciler, ObservableStateTargetView {
++    typealias StructuralIdentity = SemanticCompleteIdentity
++    var discarded = 0
++    mutating func beginCandidate() -> ObservableStateResult { .success(.candidateStarted) }
++    mutating func encounter<Model: _GiftUIModelSchema>(structuralIdentity: StructuralIdentity,
++        declarationOrdinal: UInt16, state: inout State<Model>) -> ObservableStateResult { .success(.preserved) }
++    mutating func finishCandidate(_ disposition: ObservableStateCandidateDisposition) -> ObservableStateResult {
++        if disposition == .discard { discarded += 1 }
++        return .success(disposition == .discard ? .candidateDiscarded : .associationsCommitted)
++    }
++    borrowing func targetGeneration(structuralIdentity: StructuralIdentity, declarationOrdinal: UInt16) -> ObservableTargetGeneration? { .init(rawValue: 1) }
++    borrowing func publishableTargetGeneration(structuralIdentity: StructuralIdentity, declarationOrdinal: UInt16) -> ObservableTargetGeneration? { .init(rawValue: 1) }
++}
++private struct SO03Captures: RuntimeInteractionCaptureCancellation {
++    var cancellations = 0
++    mutating func cancelAllInteractionCaptures() { cancellations += 1 }
++}
++
++// This reference-contract value and owned target exercise the retained dispatcher
++// independently of the unchanged, unresolved analyzer factory integration.
++private struct SO03Model: _GiftUIObservableReference {
++    mutating func _giftUIAttachChangeSink(_ sink: consuming _GiftUIObservableChangeSink) -> _GiftUIObservationAttachment? { nil }
++    mutating func _giftUIDetachChangeSink(_ attachment: _GiftUIObservationAttachment) {}
++}
++private enum SO03Action: UInt16, GiftUIAction { case activate = 1 }
++private struct SO03Handler: GiftUIActionHandler {
++    typealias Action = SO03Action
++    typealias Model = SO03Model
++    var invoked: UnsafeMutablePointer<UInt32>
++    mutating func handle(_ action: Action, model: borrowing Model) { invoked.pointee += 1 }
++}
++private struct SO03Target: ActionModelTargetAccess {
++    typealias Model = SO03Model
++    borrowing func currentGeneration() -> ObservableTargetGeneration? { .init(rawValue: 1) }
++    mutating func withCurrentModel(matching generation: ObservableTargetGeneration,
++        _ body: (borrowing Model) -> Void) -> Bool {
++        guard generation.rawValue == 1 else { return false }
++        body(SO03Model())
++        return true
++    }
++}
++#if SO03_DISPATCHER_SCOPED_NEGATIVE
++private func so03ForbiddenRetainedDispatcher(_ records: borrowing SO03Keys,
++    _ handler: SO03Handler, _ target: SO03Target) {
++    _ = RuntimeInteractionDispatcher(records: records, handler: handler, targetAccess: target)
++}
++#endif
++private func so03RetainedOwnedChecks() -> UInt32 {
++    var records = so03OwnedReturn()!
++    precondition(records.beginCandidate(limits: .init(maximumActions: 2, maximumHitRegions: 2)!) == nil)
++    precondition(records.append(identity: so03Key(), isEnabled: true, bounds: so03Rect, clip: so03Rect,
++        paintOrder: 0, action: .init(code: 1), targetGeneration: .init(rawValue: 1)) == .requiresGeneration)
++    precondition(records.assignGeneration(.init(rawValue: 1), to: so03Key()) == nil)
++    precondition(records.finishCandidate() == nil)
++    records.resolveCandidate(.commit(.init(rawValue: 1)))
++    var invoked: UInt32 = 0
++    return withUnsafeMutablePointer(to: &invoked) { calls in
++        var dispatcher = RuntimeInteractionDispatcher(records: copy records,
++            handler: SO03Handler(invoked: calls), targetAccess: SO03Target())
++        var duplicate = copy dispatcher
++        let captured = CapturedAction(identity: so03Key(), generation: ActionGeneration(rawValue: 1))
++        precondition(dispatcher.dispatch(captured) == .dispatched)
++        precondition(duplicate.dispatch(captured) == .dispatched)
++        precondition(calls.pointee == 2)
++        return 7
++    }
++}
++
++private func so03Operations(_ state: inout SO03Keys) -> UInt32 {
++    var observable = SO03Observable(), generations = RuntimeActionGenerationAllocator<SemanticCompleteIdentity>()
++    var captures = SO03Captures()
++    let limits = InteractionLimits(maximumActions: 2, maximumHitRegions: 2)!
++    precondition(RuntimeInteractionCandidateTransaction.build(occurrences: SO03Occurrences(), limits: limits,
++        rootIdentity: so03Key(), rootStateOrdinal: 0, interaction: &state, observable: &observable,
++        generations: &generations, captures: &captures) == .ready)
++    precondition(RuntimeInteractionCandidateTransaction.resolve(offer: .init(disposition: .accepted, failure: nil)!,
++        presentationRevision: .init(rawValue: 1), interaction: &state, generations: &generations) == .committed(.init(rawValue: 1)))
++    var capture = PointerActionCapture<SemanticCompleteIdentity>()
++    let down = ExecutionGestureAdapter.down(at: .init(x: 1, y: 1), capture: &capture, resolver: state)
++    guard case .captured = down else { preconditionFailure() }
++    guard case .continued = ExecutionGestureAdapter.move(at: .init(x: 1, y: 1), capture: &capture, resolver: state) else { preconditionFailure() }
++    guard case .activationAdmitted = ExecutionGestureAdapter.up(at: .init(x: 1, y: 1), capture: &capture, resolver: state) else { preconditionFailure() }
++    precondition(RuntimeInteractionCandidateCoordinator.build(occurrences: SO03Occurrences(fail: true), limits: limits,
++        rootIdentity: so03Key(), rootStateOrdinal: 0, interaction: &state, observable: &observable,
++        generations: &generations) == .ownerFailure(.interaction(.invalidIdentity)))
++    precondition(observable.discarded == 1)
++    precondition(RuntimeInteractionCandidateTransaction.build(occurrences: SO03Occurrences(), limits: limits,
++        rootIdentity: so03Key(), rootStateOrdinal: 0, interaction: &state, observable: &observable,
++        generations: &generations, captures: &captures) == .ready)
++    precondition(RuntimeInteractionCandidateTransaction.resolve(offer: .init(disposition: .retryableRefusal, failure: nil)!,
++        presentationRevision: .init(rawValue: 2), interaction: &state, generations: &generations) == .discarded)
++    precondition(state.committedRevision == .init(rawValue: 1))
++    state.resetAllStorage()
++    return 10 + so03RecordOperations(&state)
++}
++
++private func so03ScopedChecks(_ mode: UInt8) -> UInt32 {
++    precondition(so03OwnedReturn() != nil)
++    var c: InlineArray<6, InteractionCandidateRecord<SemanticCompleteIdentity>?> = .init(repeating: nil)
++    var h0: InlineArray<6, InteractionHitRegion<SemanticCompleteIdentity>?> = .init(repeating: nil)
++    var r0: InlineArray<6, BoundActionRecord<SemanticCompleteIdentity>?> = .init(repeating: nil)
++    var r1: InlineArray<6, BoundActionRecord<SemanticCompleteIdentity>?> = .init(repeating: nil)
++    var h1: InlineArray<6, InteractionHitRegion<SemanticCompleteIdentity>?> = .init(repeating: nil)
++    if mode == 0 {
++        precondition(so03Move(c: SO03Candidate(slots: c.mutableSpan), h0: SO03Hits(slots: h0.mutableSpan),
++            r0: SO03Committed(slots: r0.mutableSpan), r1: SO03Committed(slots: r1.mutableSpan), h1: SO03Hits(slots: h1.mutableSpan)) == 0)
++        return 1
++    }
++    if mode == 1 {
++        precondition(so03Failable(c: SO03Candidate(slots: c.mutableSpan), h0: SO03Hits(slots: h0.mutableSpan),
++            r0: SO03Committed(slots: r0.mutableSpan), r1: SO03Committed(slots: r1.mutableSpan), h1: SO03Hits(slots: h1.mutableSpan)))
++        return 1
++    }
++    let optional = so03Union(c: SO03Candidate(slots: c.mutableSpan), h0: SO03Hits(slots: h0.mutableSpan),
++        r0: SO03Committed(slots: r0.mutableSpan), r1: SO03Committed(slots: r1.mutableSpan), h1: SO03Hits(slots: h1.mutableSpan))
++    var state = optional!
++    let checks = so03Operations(&state)
++    state.resetAllStorage()
++    return checks + so03RetainedOwnedChecks()
++}
++
++public func giftuiSO03ScopedStorage() -> UInt32 {
++    so03ScopedChecks(0) + so03ScopedChecks(1) + so03ScopedChecks(2)
++}

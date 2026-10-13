@@ -19,7 +19,7 @@ where Identity: Equatable & Sendable {
     package let paintOrder: UInt16
 }
 
-package protocol InteractionCandidateRecordStorage {
+package protocol InteractionCandidateRecordStorage: ~Copyable, ~Escapable {
     associatedtype Identity: Equatable & Sendable
 
     var count: UInt16 { get }
@@ -33,7 +33,7 @@ package protocol InteractionCandidateRecordStorage {
     ) -> Bool
 }
 
-package protocol InteractionCommittedRecordStorage {
+package protocol InteractionCommittedRecordStorage: ~Copyable, ~Escapable {
     associatedtype Identity: Equatable & Sendable
 
     var count: UInt16 { get }
@@ -44,7 +44,7 @@ package protocol InteractionCommittedRecordStorage {
     mutating func exchangeContents(with other: inout Self)
 }
 
-package protocol InteractionHitRegionStorage {
+package protocol InteractionHitRegionStorage: ~Copyable, ~Escapable {
     associatedtype Identity: Equatable & Sendable
 
     var count: UInt16 { get }

@@ -5,11 +5,13 @@ import GiftUISemanticCore
 /// The configured component pools are independent of the two semantic banks.
 /// The selected storage types own complete inline keys (including the endpoint
 /// role); no reference or ordinal from a semantic bank is retained here.
-package struct InteractionOwnedKeyState<Candidate, Committed, Hits>:
+package struct InteractionOwnedKeyState<Candidate, Committed, Hits>: ~Copyable, ~Escapable,
     InteractionCandidateBuilder, InteractionCommittedActionView, InteractionGestureResolver
 where
-    Candidate: InteractionCandidateRecordStorage, Committed: InteractionCommittedRecordStorage,
-    Hits: InteractionHitRegionStorage, Candidate.Identity == SemanticCompleteIdentity,
+    Candidate: InteractionCandidateRecordStorage & ~Copyable & ~Escapable,
+    Committed: InteractionCommittedRecordStorage & ~Copyable & ~Escapable,
+    Hits: InteractionHitRegionStorage & ~Copyable & ~Escapable,
+    Candidate.Identity == SemanticCompleteIdentity,
     Committed.Identity == SemanticCompleteIdentity, Hits.Identity == SemanticCompleteIdentity
 {
     package typealias Identity = SemanticCompleteIdentity
@@ -22,6 +24,7 @@ where
     package private(set) var committedComponents: UInt32 = 0
     private var isStaging = false
     private var failure: InteractionError?
+    @_lifetime(copy state)
     package init?(
         state: consuming InteractionState<Candidate, Committed, Hits>,
         maximumComponentsPerKey: UInt16, maximumComponents: UInt32
@@ -35,14 +38,7 @@ where
         configuredComponentsPerKey = maximumComponentsPerKey
         configuredComponents = maximumComponents
     }
-    package borrowing func withBacking<Result>(
-        _ body: (
-            borrowing Candidate, borrowing Hits, borrowing Committed,
-            borrowing Committed, borrowing Hits
-        ) -> Result
-    ) -> Result {
-        state.withBacking(body)
-    }
+
     package var identityCapacities: (perKey: UInt16, perBank: UInt32) {
         (maximumComponentsPerKey, maximumComponents)
     }
@@ -188,4 +184,26 @@ where
     package borrowing func resolveUp(_ captured: CapturedAction<Identity>, at point: Point)
         -> PointerGestureOutcome<Identity>
     { state.resolveUp(captured, at: point) }
+}
+
+// Conditional ownership preserves the existing owned bank aliases.
+extension InteractionOwnedKeyState: Copyable
+where
+    Candidate: Copyable & ~Escapable, Committed: Copyable & ~Escapable, Hits: Copyable & ~Escapable
+{}
+extension InteractionOwnedKeyState: Escapable
+where
+    Candidate: Escapable & ~Copyable, Committed: Escapable & ~Copyable, Hits: Escapable & ~Copyable
+{}
+
+// Instrumentation is confined to owned banks; it exports fixed value facts only.
+extension InteractionOwnedKeyState
+where
+    Candidate: InteractionOwnedBankMeasurementSource,
+    Committed: InteractionOwnedBankMeasurementSource,
+    Hits: InteractionOwnedBankMeasurementSource
+{
+    package borrowing func ownedStorageMeasurement() -> InteractionOwnedStorageMeasurement {
+        state.ownedStorageMeasurement()
+    }
 }

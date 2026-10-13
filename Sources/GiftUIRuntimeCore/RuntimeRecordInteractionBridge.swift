@@ -17,8 +17,10 @@ package enum RuntimeRecordInteractionBridge {
         interaction: inout InteractionOwnedKeyState<Candidate, Committed, Hits>
     ) -> InteractionCandidateAppendResult
     where
-        Candidate: InteractionCandidateRecordStorage, Committed: InteractionCommittedRecordStorage,
-        Hits: InteractionHitRegionStorage, Candidate.Identity == SemanticCompleteIdentity,
+        Candidate: InteractionCandidateRecordStorage & ~Copyable & ~Escapable,
+        Committed: InteractionCommittedRecordStorage & ~Copyable & ~Escapable,
+        Hits: InteractionHitRegionStorage & ~Copyable & ~Escapable,
+        Candidate.Identity == SemanticCompleteIdentity,
         Committed.Identity == SemanticCompleteIdentity, Hits.Identity == SemanticCompleteIdentity,
         Model: ObservableStateModel & ~Copyable, RootIdentity: Equatable & Sendable,
         Action: GiftUIAction, Roles: SemanticDeclarationRoles
@@ -42,8 +44,10 @@ package enum RuntimeRecordInteractionBridge {
         projection: (Payload) -> SemanticStandardPayload?
     ) -> InteractionCandidateAppendResult
     where
-        Candidate: InteractionCandidateRecordStorage, Committed: InteractionCommittedRecordStorage,
-        Hits: InteractionHitRegionStorage, Candidate.Identity == SemanticCompleteIdentity,
+        Candidate: InteractionCandidateRecordStorage & ~Copyable & ~Escapable,
+        Committed: InteractionCommittedRecordStorage & ~Copyable & ~Escapable,
+        Hits: InteractionHitRegionStorage & ~Copyable & ~Escapable,
+        Candidate.Identity == SemanticCompleteIdentity,
         Committed.Identity == SemanticCompleteIdentity, Hits.Identity == SemanticCompleteIdentity,
         Model: ObservableStateModel & ~Copyable, RootIdentity: Equatable & Sendable,
         Action: GiftUIAction, Roles: SemanticDeclarationRoles
@@ -88,7 +92,7 @@ package enum RuntimeRecordInteractionBridge {
         actionType: Action.Type, operation: (Action) -> Model.Mutation
     ) -> RuntimeRecordInteractionDispatchResult
     where
-        Records: InteractionCommittedActionView,
+        Records: InteractionCommittedActionView & ~Copyable & ~Escapable,
         Model: ObservableStateModel & ObservableModelMutation & ~Copyable,
         RootIdentity: Equatable & Sendable, Action: GiftUIAction
     {

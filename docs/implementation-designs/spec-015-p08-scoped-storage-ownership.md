@@ -579,16 +579,18 @@ architecture's rejected alternatives remain in ADR-039.
 
 ## Open Implementation Questions
 
-The representation and cleanup mechanism above are selected for review. The
-SO-02 independent review identified no architecture/Spec defect, but
-[its B2 source-coverage correction](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so02-execution-proposal.md#owned-analyzer-source-applicability-blocker)
-now records a source-level owned analyzer compatibility concern. The two actual
-factories use legacy root construction against current scoped target aliases;
-this is not an observed compiler failure or authority for P09 migration.
-Production allowance readiness is blocked until independent applicability/
-upstream disposition makes the required owned compatibility evidence executable
-within the accepted contract. It cannot be marked optional or deferred merely
-because the counter itself does not call these factories. Compiler acceptance
+The representation and cleanup mechanism above remains the reviewed direction.
+The [accepted applicability disposition](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so02-execution-proposal.md#accepted-owned-analyzer-applicability-disposition-evidence-unresolved)
+preserves both pre-existing analyzer factories unchanged and keeps their actual
+model/root/target/factory integration and owned-return evidence mandatory and
+unresolved in ITERATION-004 I4-07 with the existing separate P09 handoff. The
+independent SO-03 readiness check passed; only the recorded one-native-invocation
+slice is authorized. Shared owned dispatcher and all six operation consumers
+remain selected coverage. SO-03 uses an ordinary owned measurement protocol and
+fixed owned facts, with concrete bank conformances and four mechanical owned
+helper bounds; no seventh scoped protocol/storage requirement/state ledger is
+introduced. The future scoped owner supplies physical facts from its original
+inventory. Compiler acceptance
 of the common-token nested borrow, private factory access control, native typed
 Optional-slot projection/address stability, full state/carrier unions and
 consuming cleanup holder is unproved. Numeric ABI layout, constructor/writeback
@@ -603,7 +605,7 @@ stops the affected task for independent review/upstream routing.
 - [P08 dispatch/receipt](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/progress.md#so-02-physical-design-dispatch--2026-10-13).
 - [SO-01 inventory](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so01-inventory.md)
   and [tracked caller/source index](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so01-caller-index.md).
-- [Concrete next execution proposal — not authorized](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so02-execution-proposal.md).
+- [Bounded SO-03 packet; later slices remain proposed](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so02-execution-proposal.md).
 - [Current Embedded backing](../../Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterEmbeddedBacking.swift),
   [geometry](../../Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterGeometry.swift),
   [Static adapters](../../Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterStaticGeometry.swift),

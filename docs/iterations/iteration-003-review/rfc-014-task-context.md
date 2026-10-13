@@ -1,6 +1,14 @@
 # RFC-014 task context guide
 
-**Current P08 checkpoint — 2026-10-13.**
+Current SO-03 checkpoint — 2026-10-13: independent readiness PASS at
+`f18125fb`; authorized unvalidated source slice and exact finite native plan are
+[frozen in the receipt](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/progress.md#so-03-precompiler-source-freeze).
+Owned instrumentation adds no scoped protocol; four existing owned audit/probe
+signatures have mechanical measurement bounds. Source commit precedes one
+macos-dynamic driver invocation, zero automatic repairs, then independent Strong
+result review. All criteria/fit/P08/R07 remain open; SO-04–09 remain unapproved.
+
+**Prior applicability checkpoint — 2026-10-13.**
 SO-01 and SO-02 design/correction review are recorded. Next: independently verify
 the amended [SO-03 packet](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so02-execution-proposal.md),
 then dispatch exact source changes and one native driver invocation, zero automatic

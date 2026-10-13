@@ -93,7 +93,7 @@ package enum InteractionDispatchResult: Equatable, Sendable {
     case failure(InteractionError)
 }
 
-package protocol InteractionCandidateBuilder {
+package protocol InteractionCandidateBuilder: ~Copyable, ~Escapable {
     associatedtype Identity: Equatable & Sendable
 
     mutating func beginCandidate(limits: InteractionLimits) -> InteractionError?
@@ -114,7 +114,7 @@ package protocol InteractionCandidateBuilder {
     mutating func resolveCandidate(_ disposition: InteractionCandidateDisposition)
 }
 
-package protocol InteractionGestureResolver {
+package protocol InteractionGestureResolver: ~Copyable, ~Escapable {
     associatedtype Identity: Equatable & Sendable
 
     borrowing func resolveDown(at point: Point) -> PointerGestureOutcome<Identity>
@@ -138,7 +138,7 @@ package protocol ActionModelTargetAccess {
     ) -> Bool
 }
 
-package protocol InteractionCommittedActionView {
+package protocol InteractionCommittedActionView: ~Copyable, ~Escapable {
     associatedtype Identity: Equatable & Sendable
 
     borrowing func committedRecord(
@@ -152,4 +152,45 @@ package protocol InteractionDispatcher {
     mutating func dispatch(
         _ captured: CapturedAction<Identity>
     ) -> InteractionDispatchResult
+}
+
+/// Owned instrumentation facts describe the actual retained bank, including spare
+/// payload capacity. No bank, pointer, closure or mutable capability is returned.
+package struct InteractionOwnedBankMeasurement {
+    package let count: UInt16
+    package let capacity: UInt16
+    package let retainedIdentitySlots: Int
+    package let retainedPayloadBytes: Int
+    package let inlineSize: Int
+    package let inlineStride: Int
+    package let inlineAlignment: Int
+
+    package init(
+        count: UInt16, capacity: UInt16, retainedIdentitySlots: Int,
+        retainedPayloadBytes: Int, inlineSize: Int, inlineStride: Int, inlineAlignment: Int
+    ) {
+        precondition(retainedIdentitySlots >= Int(capacity) && retainedPayloadBytes >= 0)
+        precondition(inlineSize >= 0 && inlineStride >= inlineSize && inlineAlignment > 0)
+        self.count = count
+        self.capacity = capacity
+        self.retainedIdentitySlots = retainedIdentitySlots
+        self.retainedPayloadBytes = retainedPayloadBytes
+        self.inlineSize = inlineSize
+        self.inlineStride = inlineStride
+        self.inlineAlignment = inlineAlignment
+    }
+}
+
+// This separate instrumentation contract remains Copyable and Escapable. It
+// adds no requirement to any of the six scoped storage/operation protocols.
+package protocol InteractionOwnedBankMeasurementSource {
+    var ownedInteractionBankMeasurement: InteractionOwnedBankMeasurement { get }
+}
+
+package struct InteractionOwnedStorageMeasurement {
+    package let candidate: InteractionOwnedBankMeasurement
+    package let candidateHits: InteractionOwnedBankMeasurement
+    package let prepared: InteractionOwnedBankMeasurement
+    package let committed: InteractionOwnedBankMeasurement
+    package let committedHits: InteractionOwnedBankMeasurement
 }

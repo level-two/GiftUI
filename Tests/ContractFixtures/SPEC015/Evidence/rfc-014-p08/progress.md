@@ -1,5 +1,88 @@
 # RFC-014 P08 execution receipt — 2026-10-11
 
+## SO-03 source implementation dispatch — 2026-10-13
+
+Entry `f18125fb`, clean; independent readiness PASS and Eugene's explicit
+SO-03 allowance apply. Sequential Strong implementation task
+`p08_so03_implementation`; no subagents. Use the implementation-executor skill,
+accepted ADR-039 and SPEC-011 S11, owner T12.1, reviewed SO-02 design and
+[exact bounded packet](scoped-storage/so02-execution-proposal.md).
+Feature/Specifications remain implementing, plans active; selected work supports
+ITERATION-003 I3-04/I3-05 runtime-derived counter/four-stack validation and
+preserves closed ITERATION-001 analyzer controls. Full I4-07 residuals remain.
+
+Allowed source footprint is exactly the packet's five Interaction files, six
+RuntimeCore consumers, SPEC011 InteractionProbe/KeyLayoutProbe and new
+ScopedStorageProbe, the four named Counter/Cycle measurement-region files,
+SPEC011 driver registration, SPEC013 ObservableStateProtocols tuple only,
+and necessary existing Package target lifetime flags. No physical owner,
+host migration, analyzer source edits, compiler probes or SO-04+ work.
+Pre-source inspection must resolve the bounded owned measurement realization
+without introducing requirements on the six approved protocols or exposing
+storage. Record any required contract/footprint choice and stop before compile.
+
+Independent bounded measurement assessment rejects a seventh scoped-Self
+instrumentation protocol under ADR-039's six-protocol boundary. Selected local
+realization is an ordinary owned instrumentation protocol and fixed owned fact
+value in InteractionValues, concrete owned bank conformances in the four
+allowed measurement files, and owned-only state measurement extensions. No
+six-protocol requirement/state field/ledger/callback capability is added.
+Counter backing protocols remain free of owned instrumentation inheritance.
+The derived footprint is mechanically extended, before source edits, to only
+`CounterProfileStorage.counterValidateBacking`,
+`CycleProfileStorage.cycleValidateBacking`,
+`CycleCoordinatorProbe.cycleConcreteCoordinator`, and
+`CyclePipelineProbe.exercisePipeline`: add C/R/H owned instrumentation bounds
+needed by existing measurements. These are existing owned audit/probe helpers;
+no CyclePipelineOwner or scoped-host/physical-owner change is required.
+Parent authorizes this routine conforming propagation within existing caller
+inventory; no user gate, compiler cell or budget is added. Independent result
+review must assess the realization. Future scoped physical measurements remain
+SO-04 original-inventory work, with no scoped instrumentation protocol.
+
+Before compiler: format maintained Swift, governance, diff and static inspection;
+verify unchanged core/compiler/macro inputs read-only; freeze complete source,
+flags, fixed labels/argv and intended negative causes; commit unvalidated source.
+Then exactly one prescribed macos-dynamic driver invocation: legacy13 +
+2 prerequisites +27 probes = maximum42 compiler cells plus1 existing execute.
+SO-03 counter0/1 consumed; automatic repairs0. Any failure freezes immediately,
+with no correction/retry, for independent Strong result review. SO-04–09 remain
+proposed/unapproved; all criteria/fit/historical counters and cumulative guard
+remain unchanged. Original analyzer factory hashes and mandatory unresolved
+I4-07/P09/P10–12 handoff remain intact.
+
+### SO-03 precompiler source freeze
+
+[Source/input freeze](scoped-storage/so03/source-freeze.json),
+[planned43 commands](scoped-storage/so03/planned-commands.json) and
+[source diff](scoped-storage/so03/source.diff) record the unvalidated slice.
+The planner was inspected by Python AST and its declaration-only recipe was
+statically evaluated with recording functions; no driver/compiler ran. The
+unique output directory is the only placeholder, allocated once by the driver,
+which writes every exact argv/input hash before its first compiler.
+Six exact scoped protocol headers, five-input state union, failable wrapper
+union/conditional owned conformances and operation bounds are present. Both
+withBacking APIs and all four callbacks are removed. Owned bank facts retain
+actual Dynamic reservedPayloadBytes/retainedElementCapacity; no bank copies,
+callbacks, mutable capability, duplicated state ledger or new scoped protocol.
+The four added audit/probe signatures carry only owned measurement constraints;
+CounterReturnedWorkspaces explicitly stays Copyable/Escapable without acquiring
+instrumentation requirements. Source fixture accesses use typed MutableSpan
+backing; no adopted SO-04 physical owner/session/host migration is claimed.
+All six real consumers, gesture operations, scoped five-input direct/generic
+Optional pairs and owned retained dispatcher controls are registered in the
+fixed matrix. Existing root/semantic/dispatch checks run through the same generic
+host helper; Canvas append uses real typed root and semantic backing. The legacy
+single link/execute includes the positive scoped/owned checks.
+
+Precompiler checks PASS: maintained Swift formatter, governance198nodes/2019edges
+and task manifests, git diff --check, Python AST/static command arithmetic,
+122 source input hashes,24 unchanged core/factory pins plus compiler and macro
+hashes. Compiler SHA256 remains79ae5c26645489fb783ae980f0f1bdae810f90fb180c9ac39808807b65e9fd69.
+The exact42compiler+1execute plan contains legacy13 plus2prerequisites+27probes;
+no hidden retry. Source commit follows before the prescribed single invocation.
+SO-03 remains0/1 consumed; every acceptance criterion/fit result remains unproved.
+
 ## SO-03 bounded readiness-verification dispatch — 2026-10-13
 
 Input: clean `4a69f9c3`, accepted applicability disposition and one native

@@ -66,7 +66,7 @@ package enum RuntimeInteractionCandidateTransaction {
         generations: inout Generations
     ) -> RuntimeInteractionCandidateResolution
     where
-        Interaction: InteractionCandidateBuilder,
+        Interaction: InteractionCandidateBuilder & ~Copyable & ~Escapable,
         Generations: RuntimeActionGenerationSource,
         Interaction.Identity == Generations.Identity
     {

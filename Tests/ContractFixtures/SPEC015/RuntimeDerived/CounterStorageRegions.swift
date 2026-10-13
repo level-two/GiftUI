@@ -82,7 +82,7 @@ extension CounterStaticWorkspaceBacking: CounterStorageRegionSource {
     }
 }
 
-func counterVisitInteraction<C: CounterCandidateBacking, R: CounterCommittedBacking, H: CounterHitBacking>(_ storage: borrowing InteractionOwnedKeyState<C, R, H>, _ visit: (CounterStorageRegion) -> Void) where C.Identity == SemanticCompleteIdentity, R.Identity == SemanticCompleteIdentity, H.Identity == SemanticCompleteIdentity {
+func counterVisitInteraction<C: CounterCandidateBacking & InteractionOwnedBankMeasurementSource, R: CounterCommittedBacking & InteractionOwnedBankMeasurementSource, H: CounterHitBacking & InteractionOwnedBankMeasurementSource>(_ storage: borrowing InteractionOwnedKeyState<C, R, H>, _ visit: (CounterStorageRegion) -> Void) where C.Identity == SemanticCompleteIdentity, R.Identity == SemanticCompleteIdentity, H.Identity == SemanticCompleteIdentity {
     func store<T, Record>(_ type: T.Type, _ record: Record.Type, slots: Int, payload: Int, family: Int, keys: Int) {
         let identityBytes = UInt64(slots * MemoryLayout<SemanticCompleteIdentity>.size)
         visit(.elements(SemanticCompleteIdentity.self, count: slots, family: keys, chargedBytes: identityBytes))
@@ -96,12 +96,13 @@ func counterVisitInteraction<C: CounterCandidateBacking, R: CounterCommittedBack
             visit(.inline(type, family: family))
         }
     }
-    storage.withBacking { candidate, hits, prepared, committed, committedHits in
+    let facts = storage.ownedStorageMeasurement()
+    let candidate = facts.candidate, hits = facts.candidateHits
+    let prepared = facts.prepared, committed = facts.committed, committedHits = facts.committedHits
         store(C.self, InteractionCandidateRecord<SemanticCompleteIdentity>.self, slots: candidate.retainedIdentitySlots, payload: candidate.retainedPayloadBytes, family: 19, keys: 5)
         store(H.self, InteractionHitRegion<SemanticCompleteIdentity>.self, slots: hits.retainedIdentitySlots, payload: hits.retainedPayloadBytes, family: 19, keys: 5)
         store(R.self, BoundActionRecord<SemanticCompleteIdentity>.self, slots: prepared.retainedIdentitySlots, payload: prepared.retainedPayloadBytes, family: 19, keys: 5)
         store(R.self, BoundActionRecord<SemanticCompleteIdentity>.self, slots: committed.retainedIdentitySlots, payload: committed.retainedPayloadBytes, family: 20, keys: 6)
         store(H.self, InteractionHitRegion<SemanticCompleteIdentity>.self, slots: committedHits.retainedIdentitySlots, payload: committedHits.retainedPayloadBytes, family: 20, keys: 6)
-    }
     visit(.inline(InteractionOwnedKeyState<C, R, H>.self, family: 19, chargedBytes: MemoryLayout<InteractionOwnedKeyState<C, R, H>>.size - MemoryLayout<C>.size - MemoryLayout<R>.size * 2 - MemoryLayout<H>.size * 2, kind: .metadataPadding))
 }

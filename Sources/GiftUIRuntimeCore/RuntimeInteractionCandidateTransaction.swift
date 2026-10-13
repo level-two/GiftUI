@@ -22,7 +22,7 @@ extension RuntimeInteractionCandidateTransaction {
     ) -> RuntimeInteractionCandidateBuildResult
     where
         Occurrences: RuntimeInteractionOccurrenceView,
-        Interaction: InteractionCandidateBuilder,
+        Interaction: InteractionCandidateBuilder & ~Copyable & ~Escapable,
         Observable: ObservableStateReconciler & ObservableStateTargetView,
         Generations: RuntimeActionGenerationSource,
         Captures: RuntimeInteractionCaptureCancellation,

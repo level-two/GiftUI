@@ -7,7 +7,7 @@ package enum ExecutionGestureAdapter {
         capture: inout PointerActionCapture<Resolver.Identity>,
         resolver: borrowing Resolver
     ) -> PointerGestureOutcome<Resolver.Identity>
-    where Resolver: InteractionGestureResolver {
+    where Resolver: InteractionGestureResolver & ~Copyable & ~Escapable {
         capture.cancel()
         let outcome = resolver.resolveDown(at: point)
         if case .captured(let captured) = outcome {
@@ -21,7 +21,7 @@ package enum ExecutionGestureAdapter {
         capture: inout PointerActionCapture<Resolver.Identity>,
         resolver: borrowing Resolver
     ) -> PointerGestureOutcome<Resolver.Identity>
-    where Resolver: InteractionGestureResolver {
+    where Resolver: InteractionGestureResolver & ~Copyable & ~Escapable {
         guard let current = capture.current else { return .cancelled }
         let outcome = resolver.resolveMove(current, at: point)
         switch outcome {
@@ -38,7 +38,7 @@ package enum ExecutionGestureAdapter {
         capture: inout PointerActionCapture<Resolver.Identity>,
         resolver: borrowing Resolver
     ) -> PointerGestureOutcome<Resolver.Identity>
-    where Resolver: InteractionGestureResolver {
+    where Resolver: InteractionGestureResolver & ~Copyable & ~Escapable {
         guard let current = capture.current else { return .cancelled }
         defer { capture.cancel() }
         return resolver.resolveUp(current, at: point)

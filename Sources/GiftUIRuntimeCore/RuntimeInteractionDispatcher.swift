@@ -5,7 +5,7 @@ import GiftUIInteraction
 package struct RuntimeInteractionDispatcher<Records, Handler, TargetAccess>:
     InteractionDispatcher
 where
-    Records: InteractionCommittedActionView,
+    Records: InteractionCommittedActionView & Copyable & Escapable,
     Handler: GiftUIActionHandler,
     TargetAccess: ActionModelTargetAccess,
     TargetAccess.Model == Handler.Model
