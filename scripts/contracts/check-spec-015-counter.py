@@ -130,13 +130,19 @@ copy_negative = out / 'CounterHostCopyNegative.swift'
 copy_negative.write_text('import GiftUIHostConfiguration\nfunc reject(_ host: borrowing SignalAnalyzerPresetHostInstance<CounterHostOwner>) { let duplicate = copy host; _ = duplicate }\n')
 backing_negative = out / 'CounterHostBackingNegative.swift'
 positive = (fixture / 'CounterHostProbe.swift').read_text().split('package func p08CounterHost(')[0]
-positive = positive.replace('let ownedChecks = counterOwnedSchedulerCompatibility(assembly.report)', 'let ownedChecks = 0')
-positive = positive.replace('runCounterHost(failAfterRuntime: Bool)', 'rejectCounterHostEscape(failAfterRuntime: Bool)')
-positive = positive.replace('        guard case .valid(let audit)', '        var escaped: SignalAnalyzerPresetHostInstance<CounterHostOwner>? = nil\n        guard case .valid(let audit)', 1)
-begin = positive.index('                                        precondition(host.lifecycleState')
-end = positive.index('                                        return count + 13', begin) + len('                                        return count + 13')
-positive = positive[:begin] + '                                        _ = host.activate()\n                                        escaped = consume host\n                                        return 1' + positive[end:]
-positive = positive.replace('        return checks', '        var escapedOwner = escaped.take()!\n        _ = escapedOwner.runOpportunity()\n        escapedOwner.teardown()\n        return checks')
+static_negative_seam_counts = {}
+def replace_static_line(old, new, label):
+    global positive
+    lines = positive.splitlines()
+    count = lines.count(old)
+    static_negative_seam_counts[label] = count
+    assert count == 1, 'Static negative source seam absent/ambiguous: ' + label
+    positive = '\n'.join(new if line == old else line for line in lines) + '\n'
+replace_static_line('            let ownedChecks = counterOwnedSchedulerCompatibility(assembly.report)', '            let ownedChecks = 0', 'owned_projection')
+replace_static_line('    mutating func runCounterHost(failAfterRuntime: Bool) -> Int {', '    mutating func rejectCounterHostEscape(failAfterRuntime: Bool) -> Int {', 'method_name')
+replace_static_line('        guard case .valid(let audit) = audit(), let assembly = CounterHostAssembly.validate(audit, kind: counterStaticHostKind) else { preconditionFailure("counter valid-only host") }', '        var escaped: SignalAnalyzerPresetHostInstance<CounterHostOwner>? = nil\n        guard case .valid(let audit) = audit(), let assembly = CounterHostAssembly.validate(audit, kind: counterStaticHostKind) else { preconditionFailure("counter valid-only host") }', 'escaped_declaration')
+replace_static_line('                                        return counterRunHostLifecycle(host: &host, control: pointer, report: assembly.report, failAfterRuntime: failAfterRuntime, joinChecks: joinChecks)', '                                        _ = host.activate()\n                                        escaped = consume host\n                                        return 1', 'lifecycle_call')
+replace_static_line('            return checks + ownedChecks + 4', '            var escapedOwner = escaped.take()!\n            _ = escapedOwner.runOpportunity()\n            escapedOwner.teardown()\n            return checks + ownedChecks + 4', 'post_scope_return')
 backing_negative.write_text(positive)
 dynamic_backing_negative = out / 'CounterDynamicHostBackingNegative.swift'
 dynamic_positive = (fixture / 'CounterDynamicHostProbe.swift').read_text().split('package func p08CounterDynamicHost()')[0] + '#endif\n'
@@ -167,6 +173,7 @@ else:
     execution = 'cross-compiled current selected counter host only; no target execution or linked-image claim'
     (out / 'objects.list').write_text('\n'.join(map(str, [core / 'GiftUI.o', *sorted(out.glob('*.o'))])) + '\n')
 receipt = dict(scope=__doc__, raster_realization="tiled" if is_target else args.raster_realization, profile=prior['profile'], selected_host_profile=args.profile, target_flags=flags, embedded_dynamic_escape_applicable=not is_embedded, compiler=str(compiler.relative_to(ROOT)), compiler_sha256=digest(compiler), runtime_build=str(base.relative_to(ROOT)), runtime_receipt_sha256=digest(base / 'result.json'), host_build=str(host.relative_to(ROOT)), host_receipt_sha256=digest(host / 'result.json'), inputs={str(p.relative_to(ROOT)): digest(p) for p in inputs}, commands=commands, checks=checks, execution=execution)
+receipt['static_negative_seam_counts'] = static_negative_seam_counts
 receipt['artifacts'] = {str(p.relative_to(out)): dict(sha256=digest(p), bytes=p.stat().st_size) for p in out.iterdir() if p.is_file()}
 (out / 'result.json').write_text(json.dumps(receipt, indent=2) + '\n')
 print(execution.splitlines()[-1])

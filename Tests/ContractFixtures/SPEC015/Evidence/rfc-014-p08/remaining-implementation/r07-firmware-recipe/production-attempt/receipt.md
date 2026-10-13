@@ -239,3 +239,10 @@ image uses fresh nRF receipt via existing supported build. Actual nested helper/
 construction/enclosing/initializer/corpus/click frames including alignment and
 applicable IRQ overlap must fit27648; smaller locals alone are insufficient.
 RAM196608/flash1048576/heap0 and all prior qualifications stay. No P09/hardware.
+
+Two-file source step ready: helper extraction preserves59original assertion/
+guard lines and original phase order; same owner/host are passed inout with
+original scopes. Source-text Static generator checks all five exact full-line
+seams once (owned projection, method, declaration, lifecycle call, post-scope
+return). Copy/Dynamic generation and every exact diagnostic tuple unchanged.
+Recorded in phase-split/source-invariants.json. No compiler/check/build yet.

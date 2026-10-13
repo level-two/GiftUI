@@ -1,0 +1,16 @@
+{
+  "generator_seam_counts": {
+    "owned_projection": 1,
+    "method_name": 1,
+    "escaped_declaration": 1,
+    "lifecycle_call": 1,
+    "post_scope_return": 1
+  },
+  "copy_negative_unchanged": true,
+  "Dynamic_generator_unchanged": true,
+  "all_exact_diagnostic_tuples_unchanged": true,
+  "assertion_multiset_equal": true,
+  "assertion_count": 59,
+  "two_reviewed_helpers_before_package_root": true,
+  "no_compiler_or_checker_invocation": true
+}
