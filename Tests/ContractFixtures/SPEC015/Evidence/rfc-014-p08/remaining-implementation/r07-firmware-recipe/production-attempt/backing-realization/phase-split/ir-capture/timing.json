@@ -1,0 +1,6 @@
+{
+  "recorder_command_tool_wall_seconds": 0.436902583,
+  "includes": "Python preflight hashes, compiler subprocess, postflight hashes and receipt writes",
+  "subprocess_only_duration": "not separately instrumented; unavailable",
+  "retry_to_measure": false
+}

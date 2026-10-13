@@ -35,7 +35,17 @@ not additional authorization to rerun an MVP implementation or reopen experiment
 
 ### Current owner checkpoint
 
-**Current P08 checkpoint — phase-split routes/link PASS; construction stack FAIL, 2026-10-13.**
+**Current P08 checkpoint — one optimized-IR capture failed, 2026-10-13.**
+Unchangedsource63e717d1; ed985668 prescribed one frozen firmware owner capture.
+[Exact failure](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/remaining-implementation/r07-firmware-recipe/production-attempt/backing-realization/phase-split/ir-capture/result.md) records actualexit-5, emptylogs, no isolatedIR/module
+output and482matching frozeninputs; only3outputaction/path argv substitutions.
+Capture1/1 consumed; no retry/causeclaim/source/build/link or design selected.
+Prior four current routes/link pass and58648-byte nested stack failure persist.
+STOP for independent read-only review/package boundary; no guardreset or human
+contract gate inferred. SPEC015 implementing/planactive/P08/T8.1 open;
+P09–P12/hardware untouched.
+
+**Historical P08 checkpoint — phase-split routes/link PASS; construction stack FAIL, 2026-10-13.**
 Source63e717d1 changes exactly reviewed fixture/helper and Static-negative seam.
 NativeStatic/Dynamic1,349,555/1,349,501zero, Pi28/28, nRF26/26 pass; five seam
 counts1 and exact lifetime oracles retained. [Bounded linked result](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/remaining-implementation/r07-firmware-recipe/production-attempt/backing-realization/phase-split/result.md)

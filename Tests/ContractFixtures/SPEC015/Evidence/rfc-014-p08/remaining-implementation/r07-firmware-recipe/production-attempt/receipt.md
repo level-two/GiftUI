@@ -317,3 +317,18 @@ from backend-only spills; no fullcompiler/P11 study. Record table and one exact
 fixture constructionflowdesign or precise unresolvedattribution, then STOP for
 independentStrongdesign disposition. Main27648/heap0/RAM196608/flash1048576,
 all historicalclosedguards and package rule preserved; nohardware/P09–P12.
+
+## One IR capture result — d2200978 dispatch, unchangedsource63e717d1
+
+Actualcompilerexit-5; emptystdout/stderr; isolateddirectory contains only
+precreatedoutputmap, zeroIR/moduleoutput. Exactargv3outputtokenchanges/cwd/maps/
+start/exit/log/hashmetadata retained underphase-split/ir-capture. Fullrecorder
+toolwall0.436902583s includespre/posthashes; subprocessdurationnotinstrumented.
+All482frozeninputs stillmatch;364firmwareobjects verifiedbefore. No causeclaim,
+retry, alternatecapture, compilerstudy/source/build/link or nextimplementation.
+
+Capture1/1consumed; existing58648stackfailurepersists. MissingIR preventsnamed
+alloca/ownership/lifetime table or evidence-supported avoidabletransferdesign;
+allocation-attribution.md distinguishes priorlinkedcopies from unavailableIR.
+STOP independentread-onlyreview/packageboundary, no renewedbudget/guardreset.
+No humancontractgate inferred; alllimits/history/P08open/noP09/hardware preserved.
