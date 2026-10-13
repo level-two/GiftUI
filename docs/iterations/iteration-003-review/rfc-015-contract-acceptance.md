@@ -51,3 +51,21 @@ nine new criteria, HC-RD-003 and P08/R07/T8.1 remain open. P09–P12, remaining
 timing/hardware obligations and human implemented transitions remain separate.
 No exception, workload reduction, new compiler, ceiling change or generalization
 is approved. FW-037 retains its separate ITERATION-004 I4-06 assessment.
+
+## Subsequent bounded applicability and execution acceptance — 2026-10-13
+
+At clean `18504c6b`, Eugene accepted the independently reviewed narrow analyzer
+applicability disposition and concrete SO-03 next step: “If they will be addressed
+in the scope of next iteration then yes, let’s keep them and proceed”. He added:
+“The same is for other similar places”. The [allocation amendment](rfc-015-delivery-allocation.md#accepted-pre-existing-integration-gap-disposition--2026-10-13)
+and [receipt](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/progress.md#so-03-applicability-and-allowance-documentation-dispatch--2026-10-13)
+record exact boundaries. Preserve the two unchanged legacy factories; missing
+actual analyzer model/root/target/factory integration and owned-return evidence
+are mandatory ITERATION-004 I4-07 work with the existing P09 integration handoff.
+SO-03 validates shared owned interfaces/all six operation consumers with one
+native driver invocation, zero automatic repairs, then independent result review.
+SO-04–09 remain proposed and unapproved. Analogous pre-existing gaps outside
+selected counter dependency/safety paths receive exact mandatory next-iteration
+residuals without another identical permission request; necessary counter safety/
+fit, new regressions/shared breaks and architecture remain outside that disposition.
+No adopted contract text, criterion status, historical allowance or guard changes.

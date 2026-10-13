@@ -1,17 +1,17 @@
 # RFC-014 task context guide
 
-**Current P08 contract checkpoint — 2026-10-13.**
-[Acceptance/application](rfc-015-contract-acceptance.md) records Eugene's exact
-instruction, accepted ADR-039 and verbatim live S11/S13/S15 amendments. The
-[ordered SO-01–09 insertion](rfc-014-implementation-plan.md#rfc-015-ordered-p08-ownership-tasks--2026-10-13)
-and three owner plans now map all nine SO criteria; none is met. Next: record
-SO-01 dispatch and caller/necessity/residual inventory, then SO-02 physical design
-and separate Strong review. Consume the [handoff's exact footprints/checklist](rfc-015-p08-handoff.md)
-and [P08 receipt](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/progress.md#approved-contract-application-dispatch--2026-10-13).
-Full scope stays I4-07; all adopted-path safety/fit evidence stays P08. No source,
-compiler/build/repair allowance is inferred; SO-03–09 wait for that separate
-recorded boundary. Existing closed budgets/guards, implementing Specs, active
-plans, unmet stack/HC-RD-003/P08/R07/T8.1 and P09–P12/hardware duties remain.
+**Current P08 checkpoint — 2026-10-13.**
+SO-01 and SO-02 design/correction review are recorded. Next: independently verify
+the amended [SO-03 packet](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so02-execution-proposal.md),
+then dispatch exact source changes and one native driver invocation, zero automatic
+repairs, followed by independent result review. [Eugene's accepted disposition](rfc-015-delivery-allocation.md#accepted-pre-existing-integration-gap-disposition--2026-10-13)
+preserves the two legacy analyzer factories unchanged and makes their unresolved
+model/root/target/factory integration and actual owned-return evidence mandatory
+ITERATION-004 I4-07 work with the existing separate P09 integration handoff.
+Shared owned dispatcher/all six operation consumers remain SO-03 coverage.
+SO-04–09 allowances are proposed/unapproved. [Receipt and counters](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/progress.md#so-03-applicability-and-allowance-documentation-dispatch--2026-10-13).
+All nine criteria, stack/HC-RD-003/P08/R07/T8.1 stay open; existing budgets/guard,
+implementing Specs, active plans and P09–P12/hardware duties persist.
 
 **Historical P08 checkpoint — one optimized-IR capture failed, 2026-10-13.**
 Unchangedsource63e717d1; ed985668 prescribed one frozen firmware owner capture.

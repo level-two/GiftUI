@@ -1,14 +1,14 @@
-# SO-02 concrete next execution proposal — NOT AUTHORIZED
+# SO-03 bounded execution packet; SO-04–09 remain proposed
 
-This proposal accompanies the [physical design](../../../../../../docs/implementation-designs/spec-015-p08-scoped-storage-ownership.md).
-It requests no permission by inference. Bounded independent verification of the
-B1/B2 corrections is next. The source-level analyzer applicability blocker below
-means the production allowance is **not ready** merely because documentation
-coverage is corrected. After its explicit disposition, the maintainer must
-record the bounded
-allowance in the existing [P08 receipt](../progress.md) before source/compiler
-work. All values below are proposed maxima, not remaining authorized counters.
-No compiler, source edit, build, experiment or hardware action ran in SO-02.
+This packet accompanies the [physical design](../../../../../../docs/implementation-designs/spec-015-p08-scoped-storage-ownership.md).
+The [independent correction review](so02-independent-review.md#bounded-correction-verification--2026-10-13)
+verified B1/B2 documentation and isolated the pre-existing analyzer applicability
+question. Eugene explicitly accepted its narrow disposition and the one-invocation
+SO-03 next step; the [P08 receipt](../progress.md#so-03-applicability-and-allowance-documentation-dispatch--2026-10-13)
+records exact provenance, source preservation and remaining counters. A separate
+read-only readiness check of this amended packet precedes source dispatch; it
+creates no further permission question. No source/compiler work ran in this
+documentation step. Only SO-03 is authorized; SO-04–09 maxima remain proposals.
 
 ## First slice: SO-03, then independent result review
 
@@ -22,6 +22,9 @@ Allowed source files:
   direct/generic five-input/state/failable-Optional/conditional-owned positive
   and expected-negative pairs in its existing pinned route, and the exact
   real-source/prerequisite/internal-cell registration below;
+- `scripts/contracts/check-spec-013-runtime-cycle.py`: only add the actual
+  ObservableStateProtocols.swift input to its existing Observable module tuple
+  in SO-03; its RuntimeCore tuple extension remains proposed SO-07 work;
 - `Package.swift`: only existing relevant targets' LifetimeDependence/Lifetimes
   propagation if needed to compile the exact adopted declarations;
 - `CounterStorageMeasurement.swift`, `CounterStorageRegions.swift` in SPEC015
@@ -29,9 +32,10 @@ Allowed source files:
   in SPEC013 RuntimeDerived: repair the four withBacking callers together with removal;
   state measurement can return only bounded owned facts, never a callback capability;
 - **No edits** to the two analyzer action dispatcher factories or their
-  model/root/target dependencies. Compile their actual maintained sources via
-  the compatibility cells below; any required correction stops for exact
-  applicability/upstream review, not automatic P09 migration.
+  model/root/target dependencies. Preserve the original SO-01 hashes recorded
+  in the receipt. Actual-factory compilation/owned-return evidence stays unresolved
+  and mandatory in ITERATION-004 I4-07 with the existing P09 integration handoff;
+  shared owned dispatcher probes below establish only their named shared contract.
 
 Implement exact S11 declarations/unions/conditional conformances and selected
 operation-only bounds. Add trusted minimal scoped fixture banks to test all
@@ -39,7 +43,8 @@ five independent input lifetimes and failable Optional; preserve owned tests
 and existing diagnostic causes. No final physical owner or host migration yet.
 Record frozen source hashes/diff and intended negative causes before invocation.
 
-Ordered checks proposed:
+Authorized ordered SO-03 checks (after independent readiness verification and
+source dispatch):
 
 ```text
 scripts/format-swift.sh
@@ -59,11 +64,12 @@ historical optimized-IR diagnostic capture.
 
 ## B2 exact source registration and fixed internal cells
 
-This is a required proposed change to `check-spec-011-owned-keys.py`, not a
+This is the required SO-03 change to `check-spec-011-owned-keys.py`, not a
 claim that its present two-file RuntimeCore tuple covers the affected source.
 Use the same one SO-03 command above and, after source/result review, its four
 SO-07 profile cells. Existing legacy labels/commands remain once each. The
-proposal authorizes no execution until the applicability blocker is resolved.
+SO-03 allowance follows the explicit applicability disposition below; later
+profile invocations remain proposed and unapproved.
 Register/freeze each actual source hash and each label before invoking.
 
 Replace that RuntimeCore source tuple with exactly these seven maintained
@@ -111,34 +117,23 @@ This is source-input registration in an existing module cell, not a new compile
 or a stub of those protocols. Fixture operation inputs may implement these real
 protocols but cannot shadow their declarations or replace the actual algorithms.
 
-Add these four prerequisite/actual-analyzer cells, with real maintained files:
+Do not add the former four analyzer prerequisite/factory cells
+(`so03-prereq-failure-core`, `so03-prereq-analyzer-domain`,
+`so03-prereq-analyzer-presentation`, `so03-actual-analyzer-factories`) or the two
+actual-factory probe cells. Their removal records the accepted applicability
+boundary; it does not produce passing analyzer evidence.
 
-- `so03-prereq-failure-core`: Sources/GiftUIFailureCore/GiftUIFailureCore.swift.
-- `so03-prereq-analyzer-domain`: the eight files under Sources/SignalAnalyzerDomain:
-  AcquisitionState.swift, ModuleBoundary.swift, SignalAcquisitionContracts.swift,
-  SignalAnalyzerDiagnostic.swift, SignalCaptureChange.swift,
-  SignalCapturePublication.swift, SignalPrimitiveValues.swift, SignalValues.swift,
-  freezing exactly these eight paths. No glob growth.
-- `so03-prereq-analyzer-presentation`: under Sources/SignalAnalyzerPresentation,
-  SignalAnalyzerPresentationValues.swift and SignalAnalyzerRuntimeCondition.swift.
-  These are the real ViewModel/ActionHandler/action/use-case/fact dependencies,
-  compiled as SignalAnalyzerPresentation; no replacement model/handler source.
-- `so03-actual-analyzer-factories`: Sources/SignalAnalyzerTargetHost/
-  StaticSignalAnalyzerActionDispatcher.swift and, except Embedded,
-  DynamicSignalAnalyzerActionDispatcher.swift, compiled in one dedicated
-  analyzer-compatibility module importing the actual modules above. This
-  focused source closure is sufficient to type-check those real factory bodies;
-  compiling a lookalike fixture is not compatibility evidence.
-
-The frozen additional *compiler* cells per invocation are exactly these six
-prerequisite/factory cells plus the following 29 probe cells, at most 35 total
-in addition to the unchanged legacy driver's enumerated command list. The
-inspected legacy compiler counts
-are 13 on native profiles (11 module compiles + one layout IR + one link),
-12 on Pi (11 modules + IR), and 11 on Embedded (10 modules + IR, no Dynamic).
-Thus the SPEC011 maximum is 48 native / 47 Pi / 46 Embedded compiler cells,
-with one existing native execute or one existing target ABI inspection. No
-retry or additional compile is hidden in a case:
+The frozen additional *compiler* cells per invocation are exactly the two
+RenderLowering/Drawing prerequisite cells above plus the following 27 probe
+cells, at most 29 total in addition to the unchanged legacy driver's enumerated
+command list. The inspected legacy compiler counts remain 13 on native profiles
+(11 module compiles + one layout IR + one link), 12 on Pi (11 modules + IR),
+and 11 on Embedded (10 modules + IR, no Dynamic). Thus the SPEC011 maxima are
+42 native / 41 Pi / 40 Embedded compiler cells, plus one existing native execute
+or one existing target ABI inspection: 43 / 42 / 41 total commands respectively.
+Only one macos-dynamic invocation is authorized now; target/profile maxima here
+bound the still-proposed SO-07 replay. No retry or additional compile is hidden
+in a case:
 
 | Fixed label / number of compilations | Required operation/input coverage |
 | --- | --- |
@@ -146,16 +141,15 @@ retry or additional compile is hidden in a case:
 | `so03-union-{C,H0,R0,R1,H1}-{direct,generic}-{positive,escape}` — 20 | Each of the five actual state initializer inputs independently limits lifetime; each negative has its exact positive twin. No unconstrained combinatorial generator. |
 | `so03-state-copy-negative` — 1 | Reject scoped state copy for noncopyability, paired with state-scoped move above. |
 | `so03-consumer-operations-positive` — 1 | Instantiate actual record append/appendProjected/dispatch, Canvas append, Transaction.build, Coordinator.build including its private discard branch through a failing occurrence, and Transaction.resolve accepted/refused. All operation consumers borrow/inout the same trusted scoped state; typed model/root/semantic dependencies remain real. Also call ExecutionGestureAdapter down/move/up on a scoped resolver. |
-| `so03-retained-dispatcher-owned-positive`, `so03-retained-dispatcher-scoped-negative` — 2 | Instantiate actual RuntimeInteractionDispatcher with owned records and ordinary owned ActionModelTargetAccess; scoped Records rejection must come from the explicit retained bound. This controlled dispatcher probe does not replace the actual factories. |
-| `so03-analyzer-owned-return-positive`, `so03-analyzer-scoped-records-negative` — 2 | Call both actual make factories (Static only on Embedded), preserve owned returned/copyable dispatcher, reject scoped records at the factory's owned constraint. Real ViewModel/root/target dependencies above; no extension invented to force conformance. |
+| `so03-retained-dispatcher-owned-positive`, `so03-retained-dispatcher-scoped-negative` — 2 | Instantiate actual RuntimeInteractionDispatcher with owned records and ordinary owned ActionModelTargetAccess; scoped Records rejection must come from the explicit retained bound. This controlled dispatcher probe proves shared owned behavior only; actual-factory evidence remains the mandatory unresolved handoff below. |
 
-All 35 cells are compile invocations, not 35 build loops. They use the pinned
+All 29 added cells are compile invocations, not 29 build loops. They use the pinned
 compiler/flags already recovered by the driver. On native profiles extend the
 existing single link/execute pair to run the positive operation/owned checks;
 no second binary/link/execute loop. On targets compile/inspect only. A negative
 must fail for its named ownership/lifetime cause, never a prerequisite/import/
 root-type error; a failure in a prerequisite or positive cell stops immediately
-and preserves partial evidence. Record exact total legacy+35 argv cells and
+and preserves partial evidence. Record exact total legacy+29 argv cells and
 applicability before the first invocation; missing sources or more cells stop
 for a proposal amendment. The legacy script is finite and inspected, not an
 unlimited budget hidden under one invocation.
@@ -165,45 +159,46 @@ At SO-07 also explicitly register these seven RuntimeCore files in
 Observable/profile prerequisite cells already compile the actual dependencies;
 there is no added compiler invocation for this tuple extension. The counter
 recipe replay then receives the complete current runtime tuple. The four
-SPEC-011 profile cells carry the fixed B2 operation/owned/analyzer coverage;
+SPEC-011 profile cells carry the fixed B2 operation/shared-owned coverage;
 no separate broad analyzer/P10 build is inferred. The 14 SO-07 driver maximum
 therefore remains 4 SPEC011 + 4 SPEC013 + 2 native host + 4 counter, each with
 its frozen internal cells. Reuse the unchanged SO-03 SPEC011 cell if qualified.
 
-### Owned analyzer source applicability blocker
+### Accepted owned analyzer applicability disposition; evidence unresolved
 
-Read-only inspection at `eab732c9` identifies a **source-level concern, not an
-observed compiler failure**: both actual factories declare owned root adapter/
-pointer inputs, then call Dynamic/StaticObservableRootTargetAccess(root: root).
-Those maintained alias files now resolve to ObservableStateRootTargetAccess,
-a ~Copyable/~Escapable scoped type requiring ObservableStateModel &
-ObservableModelMutation and an initializer with root scope, identity and ordinal.
-The actual SignalAnalyzerViewModel declares _GiftUIObservableReference;
-ActionModelTargetAccess remains the owned withCurrentModel protocol, whereas
-the scoped target exposes mutate and does not declare that conformance.
-Factory source was last changed at `44ac06a8`; the aliases at `a38b86f1`.
-This mismatch predates the proposed S11 implementation. Package.swift selects
-both factory files for its ordinary native SignalAnalyzerTargetHost target;
-they are not in that target's exclusion list. P08 counter drivers do not
-currently compile them; their old route passes therefore prove no applicability
-exception or analyzer compatibility.
+Read-only inspection at `eab732c9`, independently verified at `18504c6b`,
+identifies a **pre-existing source-level concern, not an observed compiler
+failure**. Both actual factories declare owned root adapter/pointer inputs,
+then call Dynamic/StaticObservableRootTargetAccess(root: root). Those maintained
+aliases resolve to ObservableStateRootTargetAccess, a ~Copyable/~Escapable scoped
+type requiring ObservableStateModel & ObservableModelMutation and an initializer
+with root scope, identity and ordinal. SignalAnalyzerViewModel declares
+_GiftUIObservableReference. ActionModelTargetAccess remains the owned
+withCurrentModel protocol, whereas the scoped target exposes mutate and lacks
+that conformance. Factory source was last changed at `44ac06a8`; aliases at
+`a38b86f1`. Package.swift includes both factories in its native target; counter
+passes are no proof of their actual compatibility.
 
-No source repair is chosen here. Independent review/upstream must determine
-how to obtain the required unchanged owned factory compatibility within the
-accepted P08 path and preserve exact owner contracts. A scoped dispatcher,
-new model/root architecture, shadow conformance/stub target, conditional source
-exclusion or P09 migration is not an allowed correction. If satisfying the
-real factory check needs such work, the affected production allowance remains
-blocked for exact upstream contract/applicability disposition. The reviewer must
-also decide whether preserving these unchanged source files plus the real owned
-RuntimeInteractionDispatcher semantic positive twin satisfies the P08 allocation,
-with full actual-factory reconciliation retained for I4-07. This is an unresolved
-authority/coverage disposition, not a selected exception. Until explicitly
-resolved, required actual-factory compatibility cannot be silently assigned
-optional/I4-07 merely because it is a baseline problem. The finite
-real-source cells above specify what evidence would be required after that
-disposition; they are not a route expected to fail and advertised as ready.
-There is currently no passing actual-factory evidence or production allowance.
+Eugene accepted preserving these exact unchanged factory sources and owned
+constraints while validating the actual shared owned RuntimeInteractionDispatcher
+and all six operation consumers in this P08 slice. The [allocation](../../../../../../docs/iterations/iteration-003-review/rfc-015-delivery-allocation.md#accepted-pre-existing-integration-gap-disposition--2026-10-13)
+and receipt preserve both original hashes. Actual analyzer model/root/target
+reconciliation, both factory bodies and owned returned/copyable dispatcher
+positive and scoped-Records rejection evidence are **mandatory unresolved
+ITERATION-004 I4-07 work**, coordinated with the existing P09 analyzer integration
+and P10–P12 conformance/evidence gates. P09 is a separate package, not an iteration
+alias. This changes applicability/delivery allocation, not S11 or architecture;
+IN-SO-003 and full RFC conformance remain unmet.
+
+The same accepted disposition applies to analogous pre-existing integration/
+compatibility gaps outside the selected P08 counter dependency/safety path:
+preserve current sources, record the exact gap and missing evidence, and assign
+mandatory I4-07 or an appropriate existing next-iteration owner/residual without
+repeating the permission request. No additional such gap is asserted by this
+bounded SO-03 review. Counter correctness/lifetime/cleanup/fit, newly introduced
+regressions or shared compatibility breaks, and new architecture cannot be
+moved out under this direction. No scoped retained dispatcher, shadow conformance,
+stub target, conditional exclusion or automatic analyzer migration is selected.
 
 ## Remaining source work, subject to the recorded allowance and SO-03 review
 
@@ -352,8 +347,9 @@ becomes fully met from partial P08 coverage; no implemented transition is reques
 
 ## Preserved counters and stops
 
-All currently authorized production counters remain **zero/new allowance
-pending**. Historical helper 2/2, B03 1/1, GOT 1/1, prior image/backing-image,
+The authorized SO-03 native driver counter is **0/1 consumed, 1 remaining**;
+automatic repair allowance is **0**. SO-04–09 production counters remain
+**zero/new allowance pending**. Historical helper 2/2, B03 1/1, GOT 1/1, prior image/backing-image,
 phase correction/image and optimized-IR capture 1/1 remain consumed; SPIKE-075's
 seven cumulative experiments remain closed. The package's two-consecutive-
 unproductive guard persists across author/model/task changes. Independent

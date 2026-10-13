@@ -21,7 +21,7 @@ features:
     # Allocation: docs/iterations/iteration-003-review/rfc-015-delivery-allocation.md.
     # ADR-039 accepted; exact S11/S13/S15 amendments approved/applied 2026-10-13; nine SO criteria unmet.
     # Provenance: docs/iterations/iteration-003-review/rfc-015-contract-acceptance.md.
-    # Shared/owner SO plans adopted; SO-01 then SO-02 preparation authorized; production allowance absent.
+    # Shared/owner SO plans adopted; SO-03 one native invocation/zero repairs recorded; SO-04–09 unapproved.
     # Package: docs/iterations/iteration-003-review/rfc-015-p08-handoff.md; closed execution budgets preserved.
     # SPIKE-075 completed: bounded native declarations/copy/function-return controls pass; series closed.
     # Lexical-block control remains inconclusive; full carrier/target/resource proof unclaimed; no successor budget.

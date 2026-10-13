@@ -1,5 +1,103 @@
 # RFC-014 P08 execution receipt — 2026-10-11
 
+## SO-03 applicability and allowance documentation dispatch — 2026-10-13
+
+Input: clean `18504c6b`, bounded independent verification at
+[SO-02 review](scoped-storage/so02-independent-review.md#bounded-correction-verification--2026-10-13).
+Eugene explicitly answered the concrete recommended applicability/next-step
+question: “If they will be addressed in the scope of next iteration then yes,
+let’s keep them and proceed”. He added: “The same is for other similar places”.
+The accepted question preserves the two unchanged legacy analyzer factories,
+validates shared owned interfaces and all six operation consumers in SO-03,
+keeps actual-factory evidence unresolved and mandatory in ITERATION-004 I4-07
+with the existing P09 analyzer integration handoff, and permits one native
+SO-03 driver invocation, zero automatic repairs, then independent result review.
+P09 remains a separate existing package, not the name of ITERATION-004.
+
+This dispatch precedes a documentation-only step: record that disposition and
+allowance, remove the four analyzer prerequisite/factory and two actual-factory
+probe cells, recalculate exact maxima, and update allocation, SO-01 residuals,
+shared/owner navigation and iteration handoff. Preserve historical records and
+source hashes. Validate local links, governance and diff, then commit before
+independent readiness verification. No source/driver edit, compiler/build/test,
+experiment, hardware action or subagent in this step. SO-04–09 allowances remain
+proposed and unapproved; historical counters and the cumulative guard persist.
+
+The analogous-gap direction applies only to pre-existing integration or
+compatibility gaps outside the selected P08 counter dependency/safety path.
+Preserve their current sources, identify exact missing integration/evidence and
+assign mandatory I4-07 or the appropriate existing next-iteration owner/residual;
+keep the affected criterion unmet, without requesting the same permission again.
+It cannot defer necessary counter correctness, lifetime, cleanup or fit, a newly
+caused regression/shared compatibility break, or a new architectural decision.
+Only the current SO-03 closure is inspected; no broad inventory is reopened.
+
+### Accepted SO-03 allowance and mandatory unresolved handoff
+
+The explicit acceptance adopts the recommended narrow applicability disposition;
+it does not call hashes or controlled probes actual-factory preservation proof.
+The original SO-01 snapshot hashes at `59d98712` still match current sources:
+
+| Unchanged source | Original/current SHA-256 |
+| --- | --- |
+| `Sources/SignalAnalyzerTargetHost/DynamicSignalAnalyzerActionDispatcher.swift` | `b7819b2265cf64114bb0c2287b4e399f3417d9e3abfcbd21f9023af57a7e5c17` |
+| `Sources/SignalAnalyzerTargetHost/StaticSignalAnalyzerActionDispatcher.swift` | `d8a4046d3cdadcb32395f6b1327ad06848bab5ba5c9a575ffdfcd0efb2624361` |
+
+Exact unresolved gap: SignalAnalyzerViewModel's legacy reference contract does
+not satisfy the current root adapter's ObservableStateModel requirement; current
+target aliases additionally require ObservableModelMutation and resolve to scoped
+ObservableStateRootTargetAccess, whose root-scope/identity/ordinal initializer and
+mutate interface differ from the factories' owned root-only construction and
+ActionModelTargetAccess.withCurrentModel contract. This predates SO-03; it is
+source inspection, not observed compiler diagnostics. Preserve both factory files
+and owned constraints unchanged. Mandatory ITERATION-004 I4-07 work reconciles
+that actual model/root/target/factory integration and supplies actual-factory owned
+returned/copyable positive and scoped-Records rejection evidence on applicable
+governed configurations, coordinated with the existing separate P09 integration
+handoff and P10–P12 evidence. IN-SO-003/full RFC conformance remain unmet.
+No other analogous gap is asserted by the bounded current SO-03 closure inspection.
+
+Only the [amended SO-03 source footprint and ordered command](scoped-storage/so02-execution-proposal.md#first-slice-so-03-then-independent-result-review)
+are authorized. Exact native command:
+
+```text
+scripts/contracts/run-spec-011.sh --profile macos-dynamic --compiler-baseline rfc-014 --giftui-build .build/contracts/spec-006-rfc-014-swift64/af66aaf967e3fe8f-__4p5wu2/macos-dynamic
+```
+
+Independent read-only readiness verification precedes source dispatch; then freeze
+source hashes/diff, exact labels/argv and intended negative causes before the
+single invocation. Run formatter, governance and diff checks first. SO-03 native
+driver counter **0/1 consumed, 1 remaining**; automatic repairs **0**. Added
+compiler cells: two real RenderLowering/Drawing prerequisites + 27 probes = 29;
+legacy counts remain 13 native / 12 Pi / 11 Embedded. SPEC011 maxima are therefore
+42 / 41 / 40 compiler invocations plus one existing execution/ABI inspection
+(43 / 42 / 41 total commands). Only macos-dynamic is authorized now; the other
+counts bound still-proposed SO-07. Former four analyzer prerequisite/factory and
+two factory probe cells are removed. Real retained owned dispatcher positive/
+scoped-negative controls and all six operation consumers remain mandatory.
+Stop on any prerequisite/positive failure or wrong negative cause, preserve
+partial outputs and commit source/evidence, then separate independent Strong
+result review before a repair proposal. No target/image/repository-suite run or
+SO-04–09 execution is authorized. SO-07's 14-driver maximum and SO-08's two image
+maxima remain proposed/unapproved; all other scopes are unchanged.
+
+Historical helper 2/2, B03 1/1, GOT 1/1, prior image/backing-image, phase
+correction/image, optimized-IR capture 1/1 and SPIKE-075's closed seven cumulative
+experiments remain consumed/closed. The two-consecutive-unproductive guard is
+unchanged and not reset by this allowance. The last qualified construction
+remains 58,648 versus 27,648. All nine SO criteria, HC-RD-003 and P08/R07/T8.1
+remain open; no full RFC/fit/implemented claim, P09–P12 execution or hardware action.
+
+Documentation result: disposition/allowance recorded, mandatory I4-07/P09 handoff
+and analogous-gap boundary linked, four analyzer prerequisite/factory and two
+factory probe cells removed, exact 29-added/42-native arithmetic verified.
+Original factory hashes match; no source/driver/compiler/build/test/experiment or
+hardware action ran. Checks pass: 553 local Markdown file links in the changed
+documents, governance 198 nodes / 2,019 edges and existing task manifests,
+`git diff --check`; reviewed diff is documentation only. Commit this step before
+independent bounded readiness verification; all remaining gates/counters above
+retain their stated disposition.
+
 ## SO-02 bounded correction-verification dispatch — 2026-10-13
 
 Input: clean `111f20b2`, correction `f67e7efb`, original review `eab732c9`.

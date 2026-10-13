@@ -82,6 +82,19 @@ application. Runtime graph derivation remains mandatory for both applications.
    timing and loaded behavior with the iteration-3 baseline.
 6. Publish documentation and criterion dispositions; request human closure.
 
+I4-07 explicitly includes the accepted P08 residual for the two unchanged legacy
+Dynamic/StaticSignalAnalyzerActionDispatcher factories: reconcile the actual
+SignalAnalyzerViewModel/reference contract, root adapters, scoped target aliases/
+initializer and owned ActionModelTargetAccess integration; produce actual-factory
+owned returned/copyable positive and scoped-Records rejection evidence on all
+applicable governed configurations. This is mandatory unresolved next-iteration
+work, coordinated with the existing separate P09 analyzer integration package and
+P10–P12 evidence; it is not optional cleanup or passing compatibility evidence.
+IN-SO-003 and full RFC conformance remain unmet. The [accepted disposition](iteration-003-review/rfc-015-delivery-allocation.md#accepted-pre-existing-integration-gap-disposition--2026-10-13)
+also assigns analogous pre-existing gaps outside the selected counter safety/
+dependency path to exact mandatory next-iteration residuals, preserving required
+counter fixes, new regressions/shared breaks and architectural gates in scope.
+
 ## Exclusions
 
 - A new rendering algorithm solely to justify a new backend module, universal

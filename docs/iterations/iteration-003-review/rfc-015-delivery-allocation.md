@@ -22,7 +22,7 @@ dispatcher paths owned; do not convert them to scoped storage for uniformity.
 | --- | --- | --- |
 | B1 / IN-SO-001, HC-SO-001 | Exact adopted shared declarations and complete lifetime chain of the finite counter, including all five banks, geometry, supplied/pipeline/coordinator/host/retirement, owned compatibility and applicable negative controls on the four existing configurations | Reconcile every remaining RFC declaration, caller and test case against the final source; complete full contract conformance without rerunning unchanged valid evidence |
 | B2 / IN-SO-002, RP-SO-001/002, HC-SO-002 | Concrete final typed inventory, common session, pair-capacity/exchange checks, all reachable initialization/failure/cleanup/repeat-session paths, backing-last proof and correct physical accounting | Close residual full-scope documentation/evidence coverage and refresh paths changed during iteration-4 integration |
-| B3 / IN-SO-003, RP-SO-003, HC-SO-003 | Transitive impact audit and required compatibility fixes; four counter routes, early Pi/nRF artifacts, actual nested-stack/IRQ and allocation/resource evidence required by existing P08/R07 gates | Complete the RFC-wide migration/conformance reconciliation and integration handoff; retain owned-only consumers selected by the RFC |
+| B3 / IN-SO-003, RP-SO-003, HC-SO-003 | Transitive impact audit and required shared/counter compatibility fixes; preserve baseline analyzer factories under the explicit disposition below; four counter routes, early Pi/nRF artifacts, actual nested-stack/IRQ and allocation/resource evidence required by existing P08/R07 gates | Complete RFC-wide reconciliation, including mandatory unresolved actual analyzer model/root/target/factory integration and owned-return evidence below; retain owned-only consumers selected by the RFC |
 | B4 / authority and execution | Accept the governing decision and approve contracts required by the P08 slice; derive its ready tasks and separately bounded allowance | Complete outstanding downstream approvals, plans and conformance dispositions for full RFC delivery |
 
 The rows allocate delivery, not weaker safety criteria. An obligation needed by
@@ -42,6 +42,37 @@ empty residual list if P08 necessarily supplies all implementation evidence.
 The 58,648-byte construction frame still fails the 27,648-byte ceiling. No
 stack exception, reduced workload, omitted dependency, unchecked lifetime fallback,
 new experiment, budget reset or P09–P12 work is authorized by this allocation.
+
+## Accepted pre-existing integration-gap disposition — 2026-10-13
+
+After the [independent applicability review](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so02-independent-review.md#bounded-correction-verification--2026-10-13),
+Eugene explicitly accepted the concrete recommendation: “If they will be
+addressed in the scope of next iteration then yes, let’s keep them and proceed”.
+He added: “The same is for other similar places”. The [P08 receipt](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/progress.md#so-03-applicability-and-allowance-documentation-dispatch--2026-10-13)
+records the exact allowance and unchanged factory identities.
+
+For the two legacy Dynamic/StaticSignalAnalyzerActionDispatcher.make factories,
+P08 preserves sources and owned constraints and validates the real shared owned
+RuntimeInteractionDispatcher plus all six operation consumers. The existing
+SignalAnalyzerViewModel reference contract, root adapter requirements and current
+scoped target alias/initializer/owned ActionModelTargetAccess mismatch remain
+unresolved. No passing actual-factory or owned-return evidence is claimed.
+Mandatory I4-07 residual work is to reconcile that exact model/root/target/factory
+integration under the accepted owned-dispatcher contract and produce actual
+factory owned returned/copyable positive and scoped-Records rejection evidence
+on the applicable governed configurations. Coordinate with the existing P09
+analyzer integration handoff and P10–P12 evidence; P09 remains a separate package,
+not ITERATION-004 itself. Keep IN-SO-003/full RFC conformance unmet until evidenced.
+
+This explicit applicability/delivery disposition also covers analogous
+pre-existing integration/compatibility gaps outside the selected P08 counter
+dependency/safety path: preserve current sources, identify the exact gap and
+missing evidence, and assign mandatory I4-07 or the appropriate existing
+next-iteration owner/residual without repeating permission. It cannot defer
+necessary counter correctness, lifetime, cleanup or fit, newly caused regressions
+or shared compatibility breaks, or new architecture. No broad new inventory is
+requested now. This is not a contract relaxation, scoped analyzer migration or
+new source exclusion. SO-04–09 allowances remain proposed and unapproved.
 
 ## ITERATION-004: full RFC delivery
 

@@ -1,6 +1,6 @@
 # RFC-015 P08 implementation handoff — 2026-10-13
 
-**Derived plan amendment applied; production execution allowance pending.**
+**Derived plan amendment applied; SO-03 bounded allowance recorded, SO-04–09 pending.**
 ADR-039 is accepted and the [exact S11/S13/S15 amendment packet](rfc-015-spec-amendments.md)
 is approved and applied under [explicit acceptance](rfc-015-contract-acceptance.md).
 The shared and three owner plans now adopt this ordered mapping. SO-01 inventory
@@ -20,6 +20,17 @@ its complete safety/fit evidence. SO-01 must classify each change and criterion
 subcase as P08-required or I4-07 residual before source work. The tables below
 remain the full work breakdown, not a requirement to finish every RFC obligation
 in P08. Existing P08/R07/T8.1 exit requirements remain unchanged.
+
+The [subsequent explicit applicability disposition](rfc-015-delivery-allocation.md#accepted-pre-existing-integration-gap-disposition--2026-10-13)
+preserves both legacy analyzer factories unchanged. Their exact model/root/target/
+factory integration and actual owned-return evidence are mandatory unresolved
+ITERATION-004 I4-07 work with existing P09 integration handoff; IN-SO-003 stays
+unmet. SO-03 validates the actual shared owned dispatcher and all six operation
+consumers. The [amended packet](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so02-execution-proposal.md)
+has one native invocation, zero automatic repairs, then independent result review;
+independent readiness verification precedes source dispatch. SO-04–09 remain
+proposed/unapproved. Analogous pre-existing gaps use the allocation's exact
+counter-safety exclusions and mandatory next-iteration residual rule.
 
 ## Authority, owners and insertion map
 
@@ -107,10 +118,11 @@ its proof is required before acceptance, not a prerequisite to RFC selection.
 
 ## Execution disposition and preserved budgets
 
-**Pending, separate from document approval.** Before any compiler/production work,
+**SO-03 recorded; SO-04–09 pending, separate from document approval.** Before any compiler/production work,
 record allowed source scope, ordered commands/profiles, maximum attempts and repairs,
 remaining counters, independent-review boundary and stop conditions in the existing
-P08 receipt. If no new bounded allowance is explicitly supplied, execution stays
+P08 receipt. The current SO-03 allowance is recorded there and in the amended
+packet; later allowances remain proposed. If no new bounded allowance is explicitly supplied, execution stays
 stopped even after contract/plan readiness. This package requests none by inference.
 
 Historical helper 2/2, B03 1/1, GOT 1/1, prior image/backing-image allowances,
@@ -129,8 +141,8 @@ deploy/restart, hardware flash or connected validation belongs to SO-01–09.
 ## Final human approval checklist and readiness effect
 
 The first three entries are completed by the [2026-10-13 acceptance/application](rfc-015-contract-acceptance.md).
-SO-01/SO-02 preparation is authorized; the fourth entry remains an explicit
-separate production allowance. No criterion evidence is claimed by these checks.
+SO-01/SO-02 preparation is complete; the fourth entry now records only the
+explicit SO-03 allowance. SO-04–09 remain separately gated. No criterion evidence is claimed by these checks.
 
 - [x] Explicitly accept the concrete ADR-039 text in this package, after review;
   record acceptance provenance, then update its status/manifest/cross-links.
@@ -142,8 +154,9 @@ separate production allowance. No criterion evidence is claimed by these checks.
   shared P08 and the three owner plans; assign residual full-scope work to I4-07 and verify complete
   criterion mapping and dependencies. Plans may
   then be ready for the adopted contract, with execution disposition still explicit.
-- [ ] Separately supply/record bounded production validation and repair authority
-  before execution. Contract acceptance does not reopen any historical allowance.
+- [x] Separately record the explicitly accepted SO-03 bounded production allowance
+  before execution; independent readiness verification then source dispatch.
+  SO-04–09 still require their own allowance. No historical allowance reopens.
 
 Readiness authorizes ordered work only within its actual gates. It does not claim
 B1–B3 evidence, target fit, P08 exit, P09 start, conformance or an implemented transition.

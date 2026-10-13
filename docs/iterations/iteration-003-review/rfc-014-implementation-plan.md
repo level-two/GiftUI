@@ -1,23 +1,18 @@
 # RFC-014 bounded implementation sequence — 2026-10-10
 
-**Current P08 contract checkpoint — 2026-10-13.**
-[SO-01 inventory](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so01-inventory.md)
-records concrete P08 dependencies, all maintained caller dispositions, four
-route/compiler identities and I4-07 residual reconciliation. Its mandatory
-Cycle measurement compatibility fixes preserve owned paths and do not reopen
-P07. [SO-02 physical design](../../implementation-designs/spec-015-p08-scoped-storage-ownership.md)
-now selects final typed fields, session/cleanup and evidence strategy for separate
-independent Strong review. The [concrete next execution proposal](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so02-execution-proposal.md)
-is not authorized. No source/production allowance, fit evidence or criterion
-completion follows from this documentation result.
-
-[Explicit acceptance/application](rfc-015-contract-acceptance.md) accepts ADR-039,
-applies exact S11/S13/S15 and adopts the [P08 handoff](rfc-015-p08-handoff.md).
-SO-01 inventory then SO-02 physical design are authorized preparation; production
-validation/repair allowance remains separate and absent. The [dispatch receipt](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/progress.md#approved-contract-application-dispatch--2026-10-13)
-records the boundary before edits. Specs stay implementing, plans active; all
-nine SO criteria, HC-RD-003 and P08/R07/T8.1 remain open. Historical budgets,
-stop guards, source-specific passes and the 58,648/27,648 stack failure remain.
+**Current P08 checkpoint — 2026-10-13.**
+SO-01 inventory and SO-02 design/correction review are recorded. Eugene accepted
+the [narrow baseline integration disposition](rfc-015-delivery-allocation.md#accepted-pre-existing-integration-gap-disposition--2026-10-13)
+and [SO-03 packet](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so02-execution-proposal.md):
+preserve the two legacy analyzer factories unchanged, validate real shared owned
+dispatcher/all six operation consumers, and require actual analyzer model/root/
+target/factory reconciliation and owned-return evidence in ITERATION-004 I4-07
+with the existing P09 integration handoff. IN-SO-003/full RFC stays unmet.
+Independent readiness verification precedes source dispatch; SO-03 has one native
+driver invocation, zero automatic repairs and independent result review.
+SO-04–09 allowances remain proposed/unapproved. [Exact receipt](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/progress.md#so-03-applicability-and-allowance-documentation-dispatch--2026-10-13).
+Specs stay implementing, plans active; all nine SO criteria, HC-RD-003 and
+P08/R07/T8.1 remain open. Historical budgets, guard and 58,648/27,648 failure persist.
 
 ## RFC-015 ordered P08 ownership tasks — 2026-10-13
 
@@ -56,7 +51,7 @@ are adopted as the design/review and execution constraints. SO-02 must cover eve
 checklist item and receive separate Strong review before source work. Its
 owner-plan metadata links now exist. SO-03–09 require ordered
 prerequisites and a separate recorded source/command/profile/attempt/repair allowance;
-none is allocated here. Strong ownership/lifetime/resource routing and independent
+SO-03 alone now has the separate recorded allowance above. Strong ownership/lifetime/resource routing and independent
 Strong P08 exit remain as specified below, without a new model selection.
 
 | Criteria | Owner/checkpoint | Ordered task/evidence mapping | Disposition |
@@ -556,7 +551,7 @@ or graph implementation has been performed by this documentation update.
 | **P06 — Protocol Canvas**; P03, P04 | GiftUI Canvas, GiftUIDrawing invocation/plan adapters and profile staged-value storage; finite witness lowering. Replace escaping Canvas closures while retaining scoped withPath, geometry and raster contracts. | Zero/multiple/repeated occurrences, inferred ordinary bodies, exact model choice, checked local bounds/order, escape controls and exactly-once cleanup including rejection before acquisition. Independent geometry/pixel controls stay unchanged. |
 | **P07 — Complete runtime cycle**; P05, P06 | RuntimeCore limits/audit/pipeline/cleanup and both concrete coordinators. Integrate read/discovery/mutation phases, model retirement, candidate semantics, owned geometry, accepted-offer Interaction commit and refusal retry. | Actual Dynamic/Static differential fault transcripts, first/partial failure, no mutation replay, last-read versus registration retirement, quiescence and all early-exit cleanup. No shared mock bridge presented as runtime integration. |
 | **P08 — Schema-4 hosts and finite counter**; P07 | GiftUIHostConfiguration, workload generator/validator and finite repository counter fixture plus four host/profile build routes. Implement explicit pool/model/ticket/pin limits, owner caches and audited layout validation. | Schema-3 rejection, missing/mismatched field/witness and below/equal/above limits; complete counter route/action/text/stroke corpus through actual runtimes on four builds. Link early target images and check gross RAM/stack/allocator problems before analyzer migration. |
-| **P09 — Analyzer migration**; P08 | SignalAnalyzerPresentation/Domain adapters, SignalAnalyzerTargetHost, Pi/native owners and nRF firmware assembly. Explicit capture selection, protocol Canvas and checked compound mutations; preserve Domain-owned capture semantics and source/admission roles. | Entire route inventory accounted for, real host owner replacement tests, 404/405 and horizon/baseline/Clear/revision boundaries, full diagnostics, action and waveform/pixel oracles. Produce linkable analyzer artifacts with no graph-input dependency in the candidate build. |
+| **P09 — Analyzer migration**; P08 | SignalAnalyzerPresentation/Domain adapters, SignalAnalyzerTargetHost, Pi/native owners and nRF firmware assembly. Explicit capture selection, protocol Canvas and checked compound mutations; preserve Domain-owned capture semantics and source/admission roles. | Entire route inventory accounted for, real host owner replacement tests, 404/405 and horizon/baseline/Clear/revision boundaries, full diagnostics, action and waveform/pixel oracles. Produce linkable analyzer artifacts with no graph-input dependency in the candidate build. Consume the mandatory unresolved legacy analyzer model/root/target/factory and actual owned-return evidence handoff under the accepted P08 applicability disposition; coordinate its full conformance closure with ITERATION-004 I4-07. |
 | **P10 — Integrated functional conformance**; P09 | Existing nine owner contract suites, RuntimeConformance and application/preset harnesses; cross-profile adapters and driver registry only as required by changed contracts. | All 180 owner criteria receive a migration disposition: functional/import/negative/error/pixel evidence here; resource/connected parts explicitly pending P11. Run relevant four-profile drivers and one full hardware-free gate. Never regenerate expected pixels merely to match a changed output. |
 | **P11 — Complete resource and workload evidence**; P10 | Actual linked artifacts, map/stack/allocator inspection and existing workload runners; implementation repairs only within the package owning the failure. | Complete live-storage/stack/IRQ ledger, ABI and linked Static zero heap, matched Dynamic costs, preserved three banks and target limits. Record measured 30s acquisition/frame results where authorized. Hardware-free proof and connected evidence are separate; unmet timing/hardware criteria block full adoption, not authorize transport redesign. |
 | **P12 — Production cutover and closeout**; P10/P11 migration gates pass or explicit applicable maintainer disposition | Remove superseded expanded topology/closure production build inputs; preserve independent baseline controls and resource generation. Update nine conformance reports, author/build guidance and task dispositions. | Production uses only runtime derivation; final build-dependency scan plus focused post-removal checks. Every criterion cites final artifact/evidence or explicit exception. Request implemented transition separately. If adoption is blocked, record the exact residual gate, keep the baseline route and leave cutover incomplete; no automatic follow-on phase. |

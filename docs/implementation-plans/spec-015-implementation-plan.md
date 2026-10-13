@@ -56,16 +56,16 @@ not additional authorization to rerun an MVP implementation or reopen experiment
   carries exact residual/source/evidence rows (or explicit empty residual) to I4-07.
   **SO-01 evidence:** [caller/necessity inventory](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so01-inventory.md)
   records P08 applicability and I4-07 residuals; all criteria remain unmet.
-  **SO-02 design:** [physical ownership note](../implementation-designs/spec-015-p08-scoped-storage-ownership.md)
-  selects final typed fields, common exclusive session, complete cleanup and
-  resource evidence. Drafting is complete; independent Strong design review is
-  next. [Next execution proposal](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so02-execution-proposal.md)
-  is not authorized; production evidence and all criteria remain open.
-  **Readiness:** sequential SO-01/SO-02 preparation is authorized. Source,
-  compiler/build/repair work awaits the separately recorded bounded allowance;
-  all closed budgets and stop guards remain. The SO-02 draft is linked in
-  related_design_notes for independent review. Existing T8.1, P08/R07/T8.1 and P10–P12
-  duties remain open; no resource/timing/hardware exception is inferred.
+  **Current readiness:** SO-02 design/correction review is recorded. The
+  [amended SO-03 packet](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so02-execution-proposal.md)
+  has explicit one-native-invocation/zero-automatic-repair authority, followed by
+  independent result review; readiness verification precedes source dispatch.
+  [Accepted applicability](../iterations/iteration-003-review/rfc-015-delivery-allocation.md#accepted-pre-existing-integration-gap-disposition--2026-10-13)
+  preserves both legacy analyzer factories unchanged and assigns their unresolved
+  model/root/target/factory integration and actual owned-return evidence as
+  mandatory ITERATION-004 I4-07 work with the existing separate P09 handoff.
+  Shared owned dispatcher/all six operation consumers remain SO-03 coverage.
+  SO-04–09 remain proposed/unapproved; criteria, budgets and guard stay open/intact.
   **Evidence:** one shared [P08 receipt](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/progress.md),
   actual caller/physical ledgers, exact compiler/source/input identities, unchanged
   control oracles, four profiles and independent Strong P08 exit review. SO-07

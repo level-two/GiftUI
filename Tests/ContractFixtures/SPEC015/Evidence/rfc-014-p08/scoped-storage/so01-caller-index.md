@@ -178,6 +178,18 @@ This index combines six-protocol/state, operation-consumer, owned alias, retaine
 | `scripts/text-resources/generate-pi-compact-resources.py` | No direct contract token; selected counter, image, generator/configuration or generated dependency. | O/P: D33; existing generator/configuration compatibility, no scoped-owner source generation |
 | `scripts/text-resources/generate-reference-resources.py` | No direct contract token; selected counter, image, generator/configuration or generated dependency. | O/P: D33; existing generator/configuration compatibility, no scoped-owner source generation |
 
+## Current applicability amendment — 2026-10-13
+
+The frozen machine-readable hit/hash list remains the original inventory. For D28–D30,
+[explicit maintainer direction](../../../../../../docs/iterations/iteration-003-review/rfc-015-delivery-allocation.md#accepted-pre-existing-integration-gap-disposition--2026-10-13)
+preserves both legacy analyzer factory files unchanged and keeps actual analyzer
+model/root/target/factory integration plus owned-return positive/scoped-Records
+rejection evidence mandatory unresolved ITERATION-004 I4-07 work, coordinated
+with the existing separate P09 integration package. P08 validates the real shared
+owned dispatcher and all six operation consumers; this does not prove actual
+factory compatibility or close IN-SO-003. See the [current residual matrix](so01-inventory.md#criterion-allocation-and-exact-residual-handoff)
+and [receipt identities](../progress.md#so-03-applicability-and-allowance-documentation-dispatch--2026-10-13).
+
 ## Excluded material
 
 - Every `Tests/**/Evidence/**` source tree, emitted negative, command and receipt is an immutable historical snapshot. This includes P08 `remaining-implementation/step-*/sources`, earlier backing/phase-split input captures, and all prior owner-contract evidence. Do not migrate these source copies or rewrite old diagnostics. Use them only for source-specific comparison/oracles.
