@@ -25,7 +25,8 @@ related_specs:
 related_future_work:
   - FW-037
 related_explorations: []
-related_spikes: []
+related_spikes:
+  - SPIKE-075
 supersedes: []
 superseded_by: []
 target_milestone: ITERATION-003
@@ -1009,7 +1010,10 @@ permission from iteration inclusion.
 
 ## Testing Strategy
 
-No tests or compiler experiments are run or authorized by this draft. Before
+On 2026-10-13 the maintainer authorized minimum sequential feasibility experiments
+with preserved repair limits and commits at each step. The separately bounded
+[SPIKE-075](../spikes/spike-075-p08-state-feasibility.md) tests the state contract
+first; it does not authorize the full matrix below or production repairs. Before
 adoption, B1 needs an explicitly bounded validation authorization for exact new
 syntax on the four required profiles and cross-module client boundaries. Test
 both optimized and relevant diagnostics configurations under pinned flags;
@@ -1112,6 +1116,15 @@ findings have been independently closed. All remaining questions below are
 
 ## Deferred and Follow-up Work
 
+[SPIKE-075](../spikes/spike-075-p08-state-feasibility.md) owns the first minimum
+state-expressibility experiment under the new authorization. Its evidence feeds
+B1; it neither defers a blocker nor approves this RFC. Complete carrier feasibility
+still needs evidence if that first gate passes. Detailed implementation migration,
+physical layout and complete linked resource/stack acceptance remain downstream
+conformance work; RFC approval needs a viable ownership/cleanup plan and enough
+compiler evidence to establish the selected architecture, not completed production
+conformance. Historical experiment budgets remain closed.
+
 [FW-037](../future-work/fw-037-core-wide-storage-ownership-generalization.md)
 captures evaluation of this separation for frontend/backend/platform-independent
 GiftUI Core and simulator integration. The maintainer scheduled this assessment
@@ -1120,7 +1133,7 @@ revision 3, I4-06 / I4-AC-007. It will assess a concrete second consumer and
 record any missing P08 evidence; scheduling does not adopt this draft.
 Existing FW-022, FW-035 and EXP-002 retain simulator, generated-frontends and
 integration-shape questions. None is required to settle P08. B1–B4 cannot be
-moved there to make this RFC appear complete. No Spike is created.
+moved there to make this RFC appear complete.
 
 ## Decision Summary
 
