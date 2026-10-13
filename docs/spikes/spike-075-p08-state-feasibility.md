@@ -113,6 +113,15 @@ finds the outcome inconclusive: the inner lexical block does not establish a
 hard end to the trivial local backing's lifetime. No unsafe escape or compiler
 bug is established. Remaining escape checks and all target profiles are unrun.
 
+The final approved function-return pair passed Strong diagnostic review:
+caller-owned return compiled, and returning the bank0-backed local state was
+rejected with an explicit bank0 lifetime/return diagnostic. The
+[final result](../../experiments/spike-075-p08-state-feasibility/final-result.md)
+and [run-3 receipt](../../experiments/spike-075-p08-state-feasibility/evidence/run-3/receipt.json)
+record two final compilations and one identity query. Cumulative counts are
+seven experiments, three identity queries, one earlier helper correction and
+zero new repairs. This is bounded native evidence, not the full state matrix.
+
 ## Limitations
 
 - Shadow declarations isolate language feasibility; they are not production
@@ -124,7 +133,11 @@ bug is established. Remaining escape checks and all target profiles are unrun.
 
 ## Disposition
 
-Completed as an attempted, **inconclusive** experiment; this status does not mean
+**Final disposition: completed with a passing bounded native return control;
+experiment work closed.** No successor is proposed. Full matrix, integration
+and resource proof remain outside this result, and RFC-015 remains draft.
+
+Historical initial disposition: completed as an attempted, **inconclusive** experiment; this status does not mean
 the gate passed. The observed blocker is the copy-test helper, not a falsified
 RFC declaration. The package's zero-repair boundary prevents a retry. The linked
 package review proposes one harness-only correction and at most 30 further
@@ -136,8 +149,9 @@ It preserves this initial completed/inconclusive run and all historical counts;
 RFC acceptance remains conditional on resolving the actual architectural blockers.
 The continuation has now ended at its first unexpected result, with its one
 authorized helper correction used and no further repairs. The linked exit review
-proposes a separately bounded function-return control pair; no new calls are
-allocated here. Status remains completed/inconclusive.
+proposed a separately bounded function-return control pair. The maintainer
+subsequently accepted that final pair with an explicit prohibition on indefinite
+iterations. Its passing bounded result above closes this experiment work.
 If the state gate later passes, record the next minimum carrier/retirement
 question before executing it. Full migration,
 physical resource accounting and linked stack acceptance remain downstream

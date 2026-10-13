@@ -52,8 +52,9 @@ small access value never transfers or relocates its pointee.
 The maintainer authorized preparation of precise ownership boundaries enforced
 by Swift, with broader implications captured separately. That instruction does
 not approve this unseen design, new declarations, ADRs, Specifications, compiler
-runs, repairs or resource exceptions. All new Swift compositions below are
-uncompiled proposals. This draft is **not ready for architectural approval**
+runs, repairs or resource exceptions. Subsequent bounded SPIKE-075 authorization
+produced isolated native state and return-control evidence; the full production
+composition below remains unproved. This draft is **not ready for architectural approval**
 until the blockers in Open Questions are resolved.
 
 ## Context
@@ -1070,6 +1071,14 @@ can violate teardown unless audited by physical owner and actual phase.
 
 ## Open Questions
 
+SPIKE-075's [final native control](../../experiments/spike-075-p08-state-feasibility/final-result.md)
+passed: the five-bank shadow state supports a caller-owned return and rejects a
+return dependent on local bank0. Owned compatibility and scoped copying rejection
+also have bounded native evidence. This qualifies earlier uncompiled-proposal
+labels only for those tested shadows; it does not close the complete B1 carrier,
+target or physical proof. The experiment series is closed, with no automatic
+successor budget.
+
 The independent initial review remains **not ready**. Response mapping:
 
 | Finding | Draft correction | Evidence still missing |
@@ -1129,7 +1138,11 @@ copy negative, then stopped when the first intended escape negative compiled.
 finds that its inner lexical block does not establish the backing's actual
 lifetime end, so this is inconclusive rather than a demonstrated unsafe escape.
 The remaining escape checks and other profiles remain unrun; both packages have
-ended. Its evidence feeds B1; it neither defers a blocker
+ended. A final separately approved two-check function-return control then passed
+Strong review: the compiler accepted caller-owned storage and rejected return
+of the local-bank-dependent wrapper. The experiment series is now closed at
+seven cumulative compiler experiments, with no proposed successor. Its evidence
+feeds B1; it neither defers a blocker
 nor approves this RFC. Complete carrier feasibility
 still needs evidence if that first gate passes. Detailed implementation migration,
 physical layout and complete linked resource/stack acceptance remain downstream

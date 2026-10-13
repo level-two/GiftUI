@@ -17,8 +17,8 @@ features:
     # PROPOSAL-007 accepted; RFC-013 draft; RFC-014 approved 2026-10-10 under conditional finalization.
     # RFC-015 draft: focused P08 storage/lifetime candidate; no adoption or new evidence allowance.
     # Revision review: docs/iterations/iteration-003-review/rfc-015-revision-review.md; B1–B4 remain open.
-    # SPIKE-075 completed/inconclusive: native declarations/positive/copy pass; intended Escape0 accepted.
-    # Lexical block is not a proven owner-lifetime boundary; remaining checks unrun; no further repairs.
+    # SPIKE-075 completed: bounded native declarations/copy/function-return controls pass; series closed.
+    # Lexical-block control remains inconclusive; full carrier/target/resource proof unclaimed; no successor budget.
     # FW-037: ITERATION-004 revision 3 I4-06 / I4-AC-007 ownership assessment; P08 blockers remain in RFC-015.
     # Current one-candidate assessment: docs/iterations/iteration-003-review/candidate-go-no-go.md.
     # 4 MHz NO-GO preserved; 32 MHz review finds no further unavoidable architecture limit.
