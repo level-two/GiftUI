@@ -76,6 +76,13 @@ bounded correction for the same independent reviewer to verify B1/B2 and the
 explicit unresolved applicability disposition. All nine SO criteria,
 HC-RD-003/P08/R07/T8.1 and historical budgets/guards remain unchanged.
 
+The selected Strong author returned model-capacity errors on the original turn
+and one resumption. Parent subsequently verified that correction commit
+`f67e7efb` had completed, reran governance and whitespace checks, and recorded
+this handoff for independent verification. This is a documentation checkpoint, not acceptance of the
+proposed compiler cells or resolution of the analyzer applicability blocker.
+No compiler/production attempt or repair budget was consumed by the interruption.
+
 ## SO-02 physical design dispatch — 2026-10-13
 
 Input: clean `d8a3d5ff`, completed SO-01 inventory at `59d98712`, accepted
