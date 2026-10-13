@@ -5,8 +5,11 @@ single native driver failed at the scoped fixture exchange. Actual14compiler
 cells13pass/1fail;27focusedprobes/link/execute were not reached. Allowance1/1
 consumed,0remaining; automaticrepairs0.
 [Exact result and independent review handoff](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so03/result.md).
-No source repair/next compiler; independent Strong result review determines
-cause, next authority and productive/unproductive guard disposition. All
+The [independent Strong review](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so03/independent-review.md)
+identifies a new local fixture realization defect, no demonstrated contract
+defect. Passing checks/narrowed cause are productive; zero repairs attempted,
+no historical counter reset. Proposed one fixture correction/one fresh native
+driver with zero automatic follow-up repairs remains NOT AUTHORIZED. All
 criteria/fit/P08/R07 stay open; SO-04–09 remain proposed/unapproved.
 
 **Prior applicability checkpoint — 2026-10-13.**

@@ -62,8 +62,11 @@ not additional authorization to rerun an MVP implementation or reopen experiment
   actual14compiler cells13pass/1fail;27focusedprobes/link/execute not reached.
   Allowance1/1consumed,0remaining; automaticrepairs0. All six real consumer
   sources compiled, but full owned/scoped/Optional/negative compatibility stays
-  unproved. Independent Strong read-only result review determines cause/next
-  authority and productive/unproductive disposition before any repair/invocation.
+  unproved. [Independent Strong review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so03/independent-review.md)
+  identifies a local new fixture realization defect, no demonstrated contract
+  defect; passing checks/narrowed cause are productive, zero repairs attempted
+  and historical guards preserved. One fixture correction/one fresh native
+  driver with zero automatic follow-up repairs is proposed, NOT AUTHORIZED.
   Actual analyzer factories remain unchanged, with mandatory unresolved I4-07
   integration/owned-return and separate P09 handoff. SO-04–09 are unapproved;
   criteria, historical budgets and guard remain intact.

@@ -56,10 +56,15 @@ not additional authorization to rerun an MVP implementation or reopen experiment
   carries exact residual/source/evidence rows (or explicit empty residual) to I4-07.
   **SO-01 evidence:** [caller/necessity inventory](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so01-inventory.md)
   records P08 applicability and I4-07 residuals; all criteria remain unmet.
-  **Current readiness:** SO-02 design/correction review is recorded. The
-  [amended SO-03 packet](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so02-execution-proposal.md)
-  has explicit one-native-invocation/zero-automatic-repair authority, followed by
-  independent result review; readiness verification precedes source dispatch.
+  **Current readiness:** frozen SO-03 source `4c7e8bc2` failed its single native
+  invocation at the new scoped fixture exchange: 14 compiler cells, 13 pass /
+  1 fail; 27 focused probes/link/execute unreached. Allowance 1/1 consumed,
+  0 remaining; automatic repairs 0.
+  [Independent Strong review](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so03/independent-review.md)
+  finds a local fixture defect, no demonstrated contract defect. Passing checks/
+  narrowed cause are productive, zero repairs attempted; historical guards
+  persist. One fixture correction/one fresh native driver is proposed, NOT
+  AUTHORIZED; no automatic follow-up repair or SO-04–09 authority follows.
   [Accepted applicability](../iterations/iteration-003-review/rfc-015-delivery-allocation.md#accepted-pre-existing-integration-gap-disposition--2026-10-13)
   preserves both legacy analyzer factories unchanged and assigns their unresolved
   model/root/target/factory integration and actual owned-return evidence as

@@ -1,5 +1,42 @@
 # RFC-014 P08 execution receipt — 2026-10-11
 
+## SO-03 independent Strong result-review dispatch — 2026-10-13
+
+Entry `522bd23f`, clean; sequential independent Strong task
+`p08_so03_result_review` reviews frozen source `4c7e8bc2` and the single failed
+native invocation. Read-only source/result boundary: no compiler, tests/build,
+source repair, experiment, hardware action or subagents. Allowed edits are the
+new SO-03 independent review and receipt/current plan/context navigation, with
+documentation/governance/diff checks and one review commit. Review verifies
+identities/counts, exact fixture failure versus contract defect, necessary owned
+measurement propagation and productive/unproductive guard disposition; any
+next repair/invocation is a concrete proposal, not authorization. The consumed
+1/1 invocation, zero automatic repairs, historical guards and open gates persist.
+
+Review result: **local new fixture realization defect; no demonstrated contract
+defect**, [independent source/result review](scoped-storage/so03/independent-review.md).
+All 122 frozen source / 128 driver inputs / 24 unaffected pins / 80 artifact
+hashes match; actual 14 compiler cells: 13 pass / 1 fail. The 27 focused probes,
+link and execute remain unreached.
+Evidence is productive through passing modules/layout and narrowed fixture cause;
+zero repairs attempted, no new unproductive increment or historical guard reset.
+SO-03 remains 1/1 consumed, 0 remaining, automatic repairs 0. Proposed next allowance
+is one correction confined to ScopedStorageProbe.swift (essential same 27-label
+wiring only if needed), separating independent initializer-lifetime inputs from
+common-session executable descriptor exchange, then one fresh native driver
+(42 compiler + 1 execute maximum), zero follow-up automatic repairs and separate
+Strong result review. This is NOT AUTHORIZED; no compiler/source work follows.
+No payload-copy exchange, lifetime erasure or weakening of the existing matrix.
+All nine criteria/fit/P08/R07/T8.1 and existing I4-07/P09–P12 obligations stay open;
+SO-04–09 remain proposed/unapproved. Checks/commit follow below.
+
+Review checks PASS: governance 198 nodes / 2,019 edges and all existing task
+manifests; 508 local Markdown file links; frozen input/artifact identities and
+normalized exact argv/source-diff comparisons; git diff --check. Inspected diff
+contains only the new review, this receipt and current plan/context navigation.
+No source/driver/compiler/test/build/experiment/hardware/subagent action ran.
+Commit this review separately; the proposed correction/attempt remains unapproved.
+
 ## SO-03 single native result — 2026-10-13
 
 Source checkpoint `4c7e8bc2`, clean; prescribed single invocation exit1.
