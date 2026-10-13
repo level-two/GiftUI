@@ -1,5 +1,28 @@
 # RFC-014 P08 execution receipt — 2026-10-11
 
+## SO-03 correction-1 single native outcome — 2026-10-13
+
+Unvalidated fixture source`8d996626`; receipt-only normalization`16499074` is
+clean driver entry. [Exact frozen outcome and independent review handoff](scoped-storage/so03/correction-1/result.md).
+Single native command exit1; actual14compiler cells13pass/1fail. Bothprerequisites,
+Interaction/Observable/Static/Dynamic/all6RuntimeCoreconsumer sources compiled;
+existing14-value layoutIR passed. OwnedKeyProbe fails on fiveprimary lifetime
+escapes at line532 initializer-only precondition, each tied to one of c/h0/r0/r1/h1.
+27focusedprobes/link/execute unreached; no compatibility/session/runtime/fit pass.
+
+Post-failure122sourcefreeze/128driverinputs/24pins/80artifact hashes match; exact
+43argv/oracles match after sole fresh-output substitution. Originalattempt1 remains
+untouched. New1/1consumed,0remaining; correction1; automaticfollowuprepairs0.
+No source edit or compiler followed firstfailure. Independent Strong review owns
+cause/contract/guard classification and next concrete handoff. Original1/1,
+historicalhelper2/2,B031/1,GOT/image/backing/phase/IR and SPIKE075sevenexperiments
+stay closed; no reset/new cumulative counter. Allcriteria/fit/P08/R07/T8.1/
+HC-RD-003/58,648-vs27,648failure and mandatory I4-07/P09–P12 stay open.
+Specsimplementing/plansactive; SO-04–09remainproposed/unapproved; no suite/target/
+image/hardware or furtherrepair authority. Commit evidence/navigation before
+independent review. Formatter pre-entry and outcome governance/diff/link checks
+are recorded in the correction packet; no additional compiler for validation.
+
 ## SO-03 one fixture correction and one native rerun dispatch — 2026-10-13
 
 Entry `a8bccb56`, clean. Eugene answered “Please proceed” to “Approve one

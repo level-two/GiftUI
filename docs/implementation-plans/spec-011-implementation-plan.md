@@ -56,14 +56,15 @@ not additional authorization to rerun an MVP implementation or reopen experiment
   carries exact residual/source/evidence rows (or explicit empty residual) to I4-07.
   **SO-01 evidence:** [caller/necessity inventory](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so01-inventory.md)
   records P08 applicability and I4-07 residuals; all criteria remain unmet.
-  **Current correction allowance:** Eugene explicitly authorized one fixture-only
-  correction, one fresh native rerun and independent Strong review, zero automatic
-  further repairs. [Frozen correction/dispatch](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so03/correction-1/result.md).
-  Only ScopedStorageProbe.swift changes; all27labels/oracles/argv remain unchanged.
-  Correction1written; new allowance0/1consumed; source UNVALIDATED. Commit before
-  single42compiler+1execute maximum; firstfailurestop. Original1/1 and historical
-  counters stay closed. No preliminarycompiler/followuprepair/SO-04+/suite/target/
-  hardware action. Allcriteria/fit/P08/R07/T8.1 and I4-07/P09–P12 remain open.
+  **Current correction outcome:** fixture source`8d996626`, clean native
+  entry`16499074`; single authorized rerun FAILED at OwnedKeyProbe line532
+  initializer-only precondition use. Actual14compiler cells13pass/1fail;
+  27focusedprobes/link/execute unreached. [Frozen result/review handoff](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so03/correction-1/result.md).
+  Newallowance1/1consumed,0remaining; correction1,automaticfollowuprepairs0;
+  source frozen after failure. Independent Strong read-only classification next;
+  no further compiler/repair/SO-04+/suite/target/hardware authority. Original1/1
+  and all historical counters remain closed; allcriteria/fit/P08/R07/T8.1 and
+  mandatory I4-07/P09–P12 stay open; Specsimplementing/plansactive.
   **Historical readiness:** SO-03 unvalidated source `4c7e8bc2` is frozen after
   its single native invocation failed at the new scoped fixture exchange.
   [Exact result/independent handoff](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so03/result.md):

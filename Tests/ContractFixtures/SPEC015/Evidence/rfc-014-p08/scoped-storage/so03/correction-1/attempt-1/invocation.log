@@ -1,0 +1,67 @@
+SO-03 frozen failure: /Users/eugene/work/GiftUI/.build/contracts/spec-011-owned-keys/tmpg36aookh/macos-dynamic/result.json
+Traceback (most recent call last):
+  File "/Users/eugene/work/GiftUI/scripts/contracts/check-spec-011-owned-keys.py", line 194, in <module>
+    raise RuntimeError(label + ': ' + str(out) + '\n' + output)
+RuntimeError: OwnedKeyProbe: /Users/eugene/work/GiftUI/.build/contracts/spec-011-owned-keys/tmpg36aookh/macos-dynamic
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC011/RuntimeDerived/ScopedStorageProbe.swift:532:18: error: lifetime-dependent value escapes its scope
+527 |         return 1
+528 |     }
+529 |     let optional = so03Union(c: SO03Candidate(slots: c.mutableSpan), h0: SO03Hits(slots: h0.mutableSpan),
+    |                                                        `- note: it depends on this scoped access to variable 'c'
+530 |         r0: SO03Committed(slots: r0.mutableSpan), r1: SO03Committed(slots: r1.mutableSpan), h1: SO03Hits(slots: h1.mutableSpan))
+531 |     let state = optional!
+532 |     precondition(state.committedRecordCount == 0)
+    |     |            `- error: lifetime-dependent value escapes its scope
+    |     `- note: this use of the lifetime-dependent value is out of scope
+533 |     return so03ExecutableChecks() + so03RetainedOwnedChecks()
+534 | }
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC011/RuntimeDerived/ScopedStorageProbe.swift:532:18: error: lifetime-dependent value escapes its scope
+527 |         return 1
+528 |     }
+529 |     let optional = so03Union(c: SO03Candidate(slots: c.mutableSpan), h0: SO03Hits(slots: h0.mutableSpan),
+    |                                                                                             `- note: it depends on this scoped access to variable 'h0'
+530 |         r0: SO03Committed(slots: r0.mutableSpan), r1: SO03Committed(slots: r1.mutableSpan), h1: SO03Hits(slots: h1.mutableSpan))
+531 |     let state = optional!
+532 |     precondition(state.committedRecordCount == 0)
+    |     |            `- error: lifetime-dependent value escapes its scope
+    |     `- note: this use of the lifetime-dependent value is out of scope
+533 |     return so03ExecutableChecks() + so03RetainedOwnedChecks()
+534 | }
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC011/RuntimeDerived/ScopedStorageProbe.swift:532:18: error: lifetime-dependent value escapes its scope
+528 |     }
+529 |     let optional = so03Union(c: SO03Candidate(slots: c.mutableSpan), h0: SO03Hits(slots: h0.mutableSpan),
+530 |         r0: SO03Committed(slots: r0.mutableSpan), r1: SO03Committed(slots: r1.mutableSpan), h1: SO03Hits(slots: h1.mutableSpan))
+    |                                     `- note: it depends on this scoped access to variable 'r0'
+531 |     let state = optional!
+532 |     precondition(state.committedRecordCount == 0)
+    |     |            `- error: lifetime-dependent value escapes its scope
+    |     `- note: this use of the lifetime-dependent value is out of scope
+533 |     return so03ExecutableChecks() + so03RetainedOwnedChecks()
+534 | }
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC011/RuntimeDerived/ScopedStorageProbe.swift:532:18: error: lifetime-dependent value escapes its scope
+528 |     }
+529 |     let optional = so03Union(c: SO03Candidate(slots: c.mutableSpan), h0: SO03Hits(slots: h0.mutableSpan),
+530 |         r0: SO03Committed(slots: r0.mutableSpan), r1: SO03Committed(slots: r1.mutableSpan), h1: SO03Hits(slots: h1.mutableSpan))
+    |                                                                               `- note: it depends on this scoped access to variable 'r1'
+531 |     let state = optional!
+532 |     precondition(state.committedRecordCount == 0)
+    |     |            `- error: lifetime-dependent value escapes its scope
+    |     `- note: this use of the lifetime-dependent value is out of scope
+533 |     return so03ExecutableChecks() + so03RetainedOwnedChecks()
+534 | }
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC011/RuntimeDerived/ScopedStorageProbe.swift:532:18: error: lifetime-dependent value escapes its scope
+528 |     }
+529 |     let optional = so03Union(c: SO03Candidate(slots: c.mutableSpan), h0: SO03Hits(slots: h0.mutableSpan),
+530 |         r0: SO03Committed(slots: r0.mutableSpan), r1: SO03Committed(slots: r1.mutableSpan), h1: SO03Hits(slots: h1.mutableSpan))
+    |                                                                                                                    `- note: it depends on this scoped access to variable 'h1'
+531 |     let state = optional!
+532 |     precondition(state.committedRecordCount == 0)
+    |     |            `- error: lifetime-dependent value escapes its scope
+    |     `- note: this use of the lifetime-dependent value is out of scope
+533 |     return so03ExecutableChecks() + so03RetainedOwnedChecks()
+534 | }
+

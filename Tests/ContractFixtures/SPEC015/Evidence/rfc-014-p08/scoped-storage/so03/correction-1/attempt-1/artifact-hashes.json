@@ -1,0 +1,322 @@
+{
+  "GiftUIDrawing.abi.json": {
+    "bytes": 149,
+    "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728"
+  },
+  "GiftUIDrawing.o": {
+    "bytes": 131632,
+    "sha256": "b575a586b04419483845217c8cd144263f63493a162421f04023823352c69f35"
+  },
+  "GiftUIDrawing.swiftdoc": {
+    "bytes": 1496,
+    "sha256": "211f7c78dc01779c87bc0cf44a04e8c84346fa01b0430e51dda90afd634b635e"
+  },
+  "GiftUIDrawing.swiftmodule": {
+    "bytes": 105604,
+    "sha256": "18fd8e01c27b1289f3beaca2c794455622e9003ca89fcd66115c479e4afd578d"
+  },
+  "GiftUIDrawing.swiftsourceinfo": {
+    "bytes": 31548,
+    "sha256": "e53ab81b593e129e1bd177ef7d22d49041ed6fea96cf0f091300ddfd444cea73"
+  },
+  "GiftUIExecution.abi.json": {
+    "bytes": 149,
+    "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728"
+  },
+  "GiftUIExecution.log": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "GiftUIExecution.o": {
+    "bytes": 575576,
+    "sha256": "6f311ea5ddf355aa6d55dfb981b0b43ee87f9db3cb434419196a79dc59de8dd1"
+  },
+  "GiftUIExecution.swiftdoc": {
+    "bytes": 380,
+    "sha256": "c8e4232912f5d7519ccb64f39aa82c8f4eacb3ef786d8632736631ca2096f4bb"
+  },
+  "GiftUIExecution.swiftmodule": {
+    "bytes": 623392,
+    "sha256": "076658f1cbf6efe1e303b99f4c5867e333f93cf31349093ffcad5cb560785fa1"
+  },
+  "GiftUIExecution.swiftsourceinfo": {
+    "bytes": 123836,
+    "sha256": "39be610ffc8cbc3f529f974535bee56a78eba45df827465d7ce97799c17e3a47"
+  },
+  "GiftUIInteraction.abi.json": {
+    "bytes": 149,
+    "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728"
+  },
+  "GiftUIInteraction.log": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "GiftUIInteraction.o": {
+    "bytes": 163416,
+    "sha256": "d6faa34105453ba7ad339150e39b355ccc69c787d25e3c53b691ddfb71416d94"
+  },
+  "GiftUIInteraction.swiftdoc": {
+    "bytes": 3364,
+    "sha256": "30d00dc258251a48bb559f7bdf3436f452bde966fe685f607aec491339a30676"
+  },
+  "GiftUIInteraction.swiftmodule": {
+    "bytes": 145376,
+    "sha256": "0e2eaad5628d1ad720b72b25450811d81ecf59112ad7ef06dfa2c3df61e4e14b"
+  },
+  "GiftUIInteraction.swiftsourceinfo": {
+    "bytes": 43736,
+    "sha256": "63aad8b5ca4a8440b5f78d89f4fc27caa5336acb8fb0097e2c7bced1dc167b34"
+  },
+  "GiftUILayout.abi.json": {
+    "bytes": 149,
+    "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728"
+  },
+  "GiftUILayout.log": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "GiftUILayout.o": {
+    "bytes": 137824,
+    "sha256": "2d67886a27e5752fedb612f4e1d9e9e4ff0c4337bc77117c0e77d9b60ebb671b"
+  },
+  "GiftUILayout.swiftdoc": {
+    "bytes": 376,
+    "sha256": "ecf335acc8af95a82c08ee02a9f933f7bb081e654f8724ba10c655227b3a6b05"
+  },
+  "GiftUILayout.swiftmodule": {
+    "bytes": 140836,
+    "sha256": "5dceb9af95e4601603446f6f12f2bab6543b61cd44fe74bfd758676cf8a24859"
+  },
+  "GiftUILayout.swiftsourceinfo": {
+    "bytes": 36152,
+    "sha256": "405ea5bf2e7882652a0f7ff8b6d26e5029abfe71bf86b72ba77ce49ba513c549"
+  },
+  "GiftUIObservableState.abi.json": {
+    "bytes": 149,
+    "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728"
+  },
+  "GiftUIObservableState.log": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "GiftUIObservableState.o": {
+    "bytes": 239200,
+    "sha256": "3e4472cb7bd7f1fab4ac5a7cb8558de27093e456dbb431a4ead99b2fd07fd75f"
+  },
+  "GiftUIObservableState.swiftdoc": {
+    "bytes": 8732,
+    "sha256": "0c26952c20af873979e8039ba5c6271b92bf957c8c9e366300b23d3df70eb307"
+  },
+  "GiftUIObservableState.swiftmodule": {
+    "bytes": 222808,
+    "sha256": "0c2acd0eecef3831b5a0911641409e79ae06aa9d61fb4b74fc49cf798fb2e0af"
+  },
+  "GiftUIObservableState.swiftsourceinfo": {
+    "bytes": 59020,
+    "sha256": "5cb002e10d971545165f8d9d71e1ab39e2a1114fa58aa99a59550651abb42e35"
+  },
+  "GiftUIRenderCore.abi.json": {
+    "bytes": 149,
+    "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728"
+  },
+  "GiftUIRenderCore.log": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "GiftUIRenderCore.o": {
+    "bytes": 62200,
+    "sha256": "f6118bac66e5dbf61ad653cfec0e6664871c23c31f6b949ab3b89ff87b9faae0"
+  },
+  "GiftUIRenderCore.swiftdoc": {
+    "bytes": 380,
+    "sha256": "9824cb07c32b5722a1928d05922b44dd0ad74e1ffe4a8d1f4b03d2f60c067570"
+  },
+  "GiftUIRenderCore.swiftmodule": {
+    "bytes": 84380,
+    "sha256": "ed74cbeb6b57f03b5401ae7455b0784519df0054cd796b20cd2d2c661e820867"
+  },
+  "GiftUIRenderCore.swiftsourceinfo": {
+    "bytes": 20196,
+    "sha256": "fce9c4b54d2ac91fa9a8212a14befb26b93750801a7eddb8e435752df4f0bb7e"
+  },
+  "GiftUIRenderLowering.abi.json": {
+    "bytes": 149,
+    "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728"
+  },
+  "GiftUIRenderLowering.o": {
+    "bytes": 78864,
+    "sha256": "42f1a99dc25ab61da778479a64b7a6e380505fd6b19e4f47dc5b9d7fe529c29d"
+  },
+  "GiftUIRenderLowering.swiftdoc": {
+    "bytes": 384,
+    "sha256": "88210ce918b2b4e43c16186d30cf3755703c4d9901a27367fc0e11d225cd8c48"
+  },
+  "GiftUIRenderLowering.swiftmodule": {
+    "bytes": 78276,
+    "sha256": "fbca0191add721128eccb3dc71236efc1bf93bd366f287d77986ca212e9889f4"
+  },
+  "GiftUIRenderLowering.swiftsourceinfo": {
+    "bytes": 18492,
+    "sha256": "091854b3c3f5590eed0ec0aa9b5662a230a5a71a66568a0b4554546fa0bd71e4"
+  },
+  "GiftUIRuntimeCore.abi.json": {
+    "bytes": 149,
+    "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728"
+  },
+  "GiftUIRuntimeCore.log": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "GiftUIRuntimeCore.o": {
+    "bytes": 62936,
+    "sha256": "039d42fba2d60e8ab11c6ff5212de2b5a30e4e42866c0720938ef7827988af3b"
+  },
+  "GiftUIRuntimeCore.swiftdoc": {
+    "bytes": 944,
+    "sha256": "fac5a30e1a3953a209c185a5632609ffc9dc83b31a40f6bb921c914cdc3fd708"
+  },
+  "GiftUIRuntimeCore.swiftmodule": {
+    "bytes": 66868,
+    "sha256": "ea9f7103ba0702cfd6cf2a9e0a1683fd1c15b8aad95c28b86cafe1fff4f6d303"
+  },
+  "GiftUIRuntimeCore.swiftsourceinfo": {
+    "bytes": 17220,
+    "sha256": "616c8c5feb242334f8f1c9810d974779d39762652eaee0fff65d3f06a6b16380"
+  },
+  "GiftUIRuntimeDynamic.abi.json": {
+    "bytes": 149,
+    "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728"
+  },
+  "GiftUIRuntimeDynamic.log": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "GiftUIRuntimeDynamic.o": {
+    "bytes": 66328,
+    "sha256": "27ccaadd3aed80051b48f2424d1497ab89e362e614c9efccf98697777834a6b7"
+  },
+  "GiftUIRuntimeDynamic.swiftdoc": {
+    "bytes": 1708,
+    "sha256": "bd1ed1ca09b841ed2aafd3188f66539e03cc41c60fc5c583961dab59ea8d6882"
+  },
+  "GiftUIRuntimeDynamic.swiftmodule": {
+    "bytes": 80716,
+    "sha256": "abc300f43c710ada0f4f9966dde6466686fff7d0b080efedcbd6e840b68cfaf8"
+  },
+  "GiftUIRuntimeDynamic.swiftsourceinfo": {
+    "bytes": 14756,
+    "sha256": "77651b58a49fb45ce9630aeb7357a5ea91ce09d9b5382e382ac9967fbb277139"
+  },
+  "GiftUIRuntimeStatic.abi.json": {
+    "bytes": 149,
+    "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728"
+  },
+  "GiftUIRuntimeStatic.log": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "GiftUIRuntimeStatic.o": {
+    "bytes": 234040,
+    "sha256": "756ad371e67ef240a4b0e3ecd54536860c78408507f7e159adccd760796a8e0a"
+  },
+  "GiftUIRuntimeStatic.swiftdoc": {
+    "bytes": 1628,
+    "sha256": "c8db7982a28f0473fcdc72f8a45ebdfc9147cfb0a19af1d7fc261439edc81f22"
+  },
+  "GiftUIRuntimeStatic.swiftmodule": {
+    "bytes": 90336,
+    "sha256": "58abcfb20b6335e20e8699285d40cae512db535947079ab98e0f89a7d8b76ade"
+  },
+  "GiftUIRuntimeStatic.swiftsourceinfo": {
+    "bytes": 15848,
+    "sha256": "83f81d5820d974d03245887de9e6bcc65e7e83fc0b2bfa12ea6564ea1bd65cf0"
+  },
+  "GiftUISemanticCore.abi.json": {
+    "bytes": 149,
+    "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728"
+  },
+  "GiftUISemanticCore.log": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "GiftUISemanticCore.o": {
+    "bytes": 324448,
+    "sha256": "012b864238282b20d64dd5eb02fb88f580ff15f8a31c508070fffefd77a36070"
+  },
+  "GiftUISemanticCore.swiftdoc": {
+    "bytes": 8288,
+    "sha256": "90dc08eaed2bb60b8cddd279717f0b481a07ce512ed6b6a68b3b63049ab005cb"
+  },
+  "GiftUISemanticCore.swiftmodule": {
+    "bytes": 315728,
+    "sha256": "f66d302f088b5ca50e42afcf2c8bd4484bfe5f9676a4575143e1a26bc083b826"
+  },
+  "GiftUISemanticCore.swiftsourceinfo": {
+    "bytes": 91536,
+    "sha256": "f32974ce9f3f7a065afc117d9e9f3f68d1ed85faea187df0916a49a4aeb4a36d"
+  },
+  "GiftUITextResources.abi.json": {
+    "bytes": 149,
+    "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728"
+  },
+  "GiftUITextResources.log": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "GiftUITextResources.o": {
+    "bytes": 103264,
+    "sha256": "c09969b3bfc757cd0b63dd3fdfcf8befe09c2663c2e6772e0a88ab4309b1de0b"
+  },
+  "GiftUITextResources.swiftdoc": {
+    "bytes": 1720,
+    "sha256": "8ed36b56d14d932c81e660572a959cb99e70cb8b730b320c0172c499213a979c"
+  },
+  "GiftUITextResources.swiftmodule": {
+    "bytes": 130848,
+    "sha256": "4278d49997ef76523535f92e878e700be3deced02bb88321a5efdfac71dac02b"
+  },
+  "GiftUITextResources.swiftsourceinfo": {
+    "bytes": 25660,
+    "sha256": "25c6ae683feb76dc44e25acff2de11070834c7692983edbecd77c293e1706235"
+  },
+  "Main.swift": {
+    "bytes": 372,
+    "sha256": "5ba7055b0d3ffff423ec53108e4b1845e2281384faa6bbaf01fe0324ed19e323"
+  },
+  "OwnedKeyProbe.log": {
+    "bytes": 4400,
+    "sha256": "3b4d69172b15f503bdfef0726796d26d8cfe113bb2b3725b02d6ada936a6a8c0"
+  },
+  "commands.txt": {
+    "bytes": 27185,
+    "sha256": "1f3a9c6a8989363bb65bd3542301e6276a2aa3164f76fa05bc60df40e995c286"
+  },
+  "input-hashes.json": {
+    "bytes": 16570,
+    "sha256": "ec6701daee3f60e5d2bd05d373637362b8cbbbcf4b52d4df8745fb7c7d7b1717"
+  },
+  "key-layout.json": {
+    "bytes": 606,
+    "sha256": "58672b96ce6a34608473998ff0e50997017aa2dff5b95f52999e02bdd261073c"
+  },
+  "key-layout.ll": {
+    "bytes": 8735,
+    "sha256": "60e2708c5083a4af781d9dbc7e262dbcc90bd204f0037773fac7f1bffccaaf3a"
+  },
+  "key-layout.log": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "planned-commands.json": {
+    "bytes": 93442,
+    "sha256": "043789541dc1ea9264937a8feb328753a289b7d5f659c974ede375f7f619398f"
+  },
+  "so03-prereq-drawing.log": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "so03-prereq-render-lowering.log": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}
