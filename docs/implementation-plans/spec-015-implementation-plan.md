@@ -35,7 +35,20 @@ not additional authorization to rerun an MVP implementation or reopen experiment
 
 ### Current owner checkpoint
 
-**Current P08 checkpoint — phase-split test seam pending review, 2026-10-13.**
+**Current P08 checkpoint — phase-split routes/link PASS; construction stack FAIL, 2026-10-13.**
+Source63e717d1 changes exactly reviewed fixture/helper and Static-negative seam.
+NativeStatic/Dynamic1,349,555/1,349,501zero, Pi28/28, nRF26/26 pass; five seam
+counts1 and exact lifetime oracles retained. [Bounded linked result](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/remaining-implementation/r07-firmware-recipe/production-attempt/backing-realization/phase-split/result.md)
+records supportedexit0, ARMv7E-M/VFP, flash299332/RAM152320, heap0/GOT20/noRAMcopy/
+no relocs. Actual enclosing construction closure0x17a48 reserves58648local bytes,
+exceeding unchanged27648by31000; actual helpercalls and root attribution retained.
+Smaller helpers do not pass nestedstack. STOP for independentStrong result and
+packageguard disposition. Current onecorrection/image consumed; all historical
+closed allowances and two-consecutive-unproductive rule preserved, no reset or
+renewed budget. SPEC015 implementing/planactive/P08/T8.1 open; P09–P12/hardware
+untouched, no target execution/current-source Pi image/fullP11peak claim.
+
+**Historical P08 checkpoint — phase-split test seam pending review, 2026-10-13.**
 Independent678e5880 permits the candidate inout helper split. [Pre-edit finding](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/remaining-implementation/r07-firmware-recipe/production-attempt/backing-realization/phase-split/seam-finding.md)
 identifies necessary Static escape-generator maintenance outside its one-file
 handoff. No source/check/build ran; source38ba440d four-route/link passes and

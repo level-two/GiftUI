@@ -1,0 +1,37 @@
+{
+  "status": "FAIL",
+  "source": "63e717d1",
+  "main_stack_bytes": 27648,
+  "fatal_symbol": "00017a48 00000874 T closure #1 (GiftUISemanticCore.SemanticRecordStore<GiftUIDrawing.CanvasSemanticPayload<P08CounterTable.P08CounterSchemaCanvasValues<P08CounterRuntime.CounterDomain>>>) throws(GiftUISemanticCore.SemanticExpansionError) -> () in closure #1 (GiftUIObservableState.ObservableModelScope<P08CounterRuntime.CounterOwnedModel, P08CounterSchema.CounterModelSchema>, GiftUIObservableState.ObservableStateRootScope<P08CounterRuntime.CounterOwnedModel, GiftUISemanticCore.SemanticCompleteIdentity>) throws(GiftUIObservableState.ObservableStateError) -> () in closure #1 (GiftUIObservableState.ObservableModelScope<P08CounterRuntime.CounterOwnedModel, P08CounterSchema.CounterModelSchema>, GiftUIObservableState.ObservableStateRootScope<P08CounterRuntime.CounterOwnedModel, GiftUISemanticCore.SemanticCompleteIdentity>, Swift.UnsafeMutablePointer<P08CounterRuntime.CounterControl>) -> Swift.Int in P08CounterRuntime.CounterEmbeddedProfileStorage.runCounterHost(failAfterRuntime: Swift.Bool) -> Swift.Int",
+  "fatal_address": "0x17a48",
+  "saved_register_bytes": 32,
+  "subtractions_bytes": [
+    58368,
+    248
+  ],
+  "local_frame_bytes": 58648,
+  "excess_before_any_overlap_bytes": 31000,
+  "direct_phase_helper_calls": [
+    "   17d68:\tf000 faa8 \tbl\t182bc <CONFIG_CLOCK_CONTROL_NRF_K32SRC_FREQUENCY+0x102bc>",
+    "   17dcc:\tf000 fd00 \tbl\t187d0 <CONFIG_CLOCK_CONTROL_NRF_K32SRC_FREQUENCY+0x107d0>",
+    "   1806c:\tf000 f926 \tbl\t182bc <CONFIG_CLOCK_CONTROL_NRF_K32SRC_FREQUENCY+0x102bc>",
+    "   180d4:\tf000 fb7c \tbl\t187d0 <CONFIG_CLOCK_CONTROL_NRF_K32SRC_FREQUENCY+0x107d0>"
+  ],
+  "entry_graph_then_host_calls": [
+    "   217ae:\tf7ff fdf3 \tbl\t21398 <CONFIG_CLOCK_CONTROL_NRF_K32SRC_FREQUENCY+0x19398>",
+    "   217bc:\tf7f7 ffe6 \tbl\t1978c <CONFIG_CLOCK_CONTROL_NRF_K32SRC_FREQUENCY+0x1178c>"
+  ],
+  "other_local_frames": {
+    "counterCheckRejectedBindings": 4768,
+    "counterRunHostLifecycle": 8392,
+    "graph": 2248,
+    "host_base": 3968,
+    "host_dynamic_alignment_at_most": 15,
+    "initializer": 19848,
+    "selected_corpus": 4416,
+    "selected_click": 8392
+  },
+  "nesting_alignment_IRQ_disposition": "Actual selected semantic/construction frame alone exceeds27648. Applicable caller/callee, alignment and IRQ overlap are nonnegative, so cannot restore fit. No complete peak/IRQ maximum proof is needed for this negative result; smaller helper locals do not establish pass.",
+  "attribution": "Registered main/C-entry tail/Swift-entry/graph-host path; runCounterHost outer/model/semantic callback chain; full named bodies and helper calls preserved. No target execution.",
+  "compiler_cause": "Unresolved remaining construction aggregate frame; no automatic source repair/variant."
+}

@@ -1,0 +1,29 @@
+00026ab6 00000034 W Swift.swift_allocObject(metadata: Swift.UnsafeMutablePointer<Swift.ClassMetadata>, requiredSize: Swift.Int, requiredAlignmentMask: Swift.Int) -> Swift.UnsafeMutablePointer<Swift.HeapObject>
+   26ab6:	b51c      	push	{r2, r3, r4, lr}
+   26ab8:	460b      	mov	r3, r1
+   26aba:	4604      	mov	r4, r0
+   26abc:	1c51      	adds	r1, r2, #1
+   26abe:	d005      	beq.n	26acc <swift_allocObject+0x1a>
+   26ac0:	4291      	cmp	r1, r2
+   26ac2:	d610      	bvs.n	26ae6 <swift_allocObject+0x34>
+   26ac4:	2904      	cmp	r1, #4
+   26ac6:	bfd8      	it	le
+   26ac8:	2104      	movle	r1, #4
+   26aca:	e000      	b.n	26ace <swift_allocObject+0x1c>
+   26acc:	2110      	movs	r1, #16
+   26ace:	2000      	movs	r0, #0
+   26ad0:	461a      	mov	r2, r3
+   26ad2:	9001      	str	r0, [sp, #4]
+   26ad4:	a801      	add	r0, sp, #4
+   26ad6:	f01d fca0 	bl	4441a <posix_memalign>
+   26ada:	9801      	ldr	r0, [sp, #4]
+   26adc:	b120      	cbz	r0, 26ae8 <swift_allocObject+0x36>
+   26ade:	2101      	movs	r1, #1
+   26ae0:	e9c0 4100 	strd	r4, r1, [r0]
+   26ae4:	bd1c      	pop	{r2, r3, r4, pc}
+   26ae6:	defe      	udf	#254	; 0xfe
+   26ae8:	defe      	udf	#254	; 0xfe
+
+0004441a 00000004 T posix_memalign
+   4441a:	200c      	movs	r0, #12
+   4441c:	4770      	bx	lr

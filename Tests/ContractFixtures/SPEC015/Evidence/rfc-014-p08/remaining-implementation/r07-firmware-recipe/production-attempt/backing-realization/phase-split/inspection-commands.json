@@ -1,0 +1,26 @@
+[
+  [
+    ".toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/arm-zephyr-eabi-readelf",
+    "-hAlSWr",
+    ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/zephyr.elf"
+  ],
+  [
+    ".toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/arm-zephyr-eabi-readelf",
+    "-sW",
+    ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/zephyr.elf"
+  ],
+  [
+    ".toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/arm-zephyr-eabi-objdump",
+    "-d",
+    ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/zephyr.elf"
+  ],
+  [
+    ".toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/arm-zephyr-eabi-nm",
+    "-S",
+    ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/zephyr.elf"
+  ],
+  [
+    ".toolchains/nrf52840/swift/swift-6.4.0-RELEASE-osx/usr/bin/swift-demangle",
+    "--compact"
+  ]
+]

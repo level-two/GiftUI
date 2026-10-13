@@ -272,3 +272,20 @@ single supported invocation is `scripts/nrf52840/build.sh --application
 signal-analyzer-static --counter-build .build/nrf52840/contracts/p08-counter-yhrdgas4`.
 No repair/source change/variant; preserve linked outcome and actual nestedstack
 including alignment/applicable IRQ overlap, then STOP for independent review.
+
+## Phase-split linked result — source63e717d1, 2026-10-13
+
+All4current routes pass with unchangedexactdiagnosticoracles/five seamcounts1.
+One supported imageactualexit0, session75382; finalARMv7E-M/VFP, flash299332/
+RAM152320, heap0, main27648/ISR2048, unchanged120704callerBSS. GOT20bytes
+0x48e7c–0x48e90 insideaccountedROM, no RAMcopy/remainingrelocs; priorallocator
+qualificationretained. Exactimages/364buildobjectidentities/reports preserved.
+
+Actual nested semantic/construction closure0x17a48 still saves32 and subtracts
+58368+248 =58648local bytes, exceeding27648by31000 before any overlap. Actual
+helpercalls:0x17d68/0x1806c→rejection0x182bc (4768local),0x17dcc/0x180d4→
+lifecycle0x187d0 (8392local). Fullregisteredroot/callback/helperbody attribution
+preserved. Smallerhelpers do not establish fit. No fullP11peak investigation
+needed after decisive localfailure. No auto repair/new build/sourcevariant.
+STOP for separateStrongresult andpackageguard disposition; singlecorrection
+andimageallowancesconsumed, no renewedbudget/guardreset. P08open/nohardware.

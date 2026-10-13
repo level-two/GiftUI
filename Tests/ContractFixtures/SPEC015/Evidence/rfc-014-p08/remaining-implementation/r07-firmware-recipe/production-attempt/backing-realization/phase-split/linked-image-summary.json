@@ -1,0 +1,38 @@
+{
+  "source": "63e717d1",
+  "build_exit": 0,
+  "ARMv7EM": true,
+  "VFP_calling_convention": true,
+  "flash_bytes": 299332,
+  "flash_limit": 1048576,
+  "ram_bytes": 152320,
+  "ram_limit": 196608,
+  "caller_BSS_bytes": 120704,
+  "main_stack": 27648,
+  "IRQ_stack": 2048,
+  "heap_pool": 0,
+  "got": {
+    "start": "0x48e7c",
+    "end": "0x48e90",
+    "bytes": 20,
+    "words": [
+      0,
+      0,
+      0,
+      158455,
+      1029
+    ],
+    "targets": [
+      "12zeroheaderbytes",
+      "0x26af7 swift_setDeallocating",
+      "0x405 swift_initStackObject"
+    ],
+    "inside_ROM_end": "0x80000",
+    "flash_VMA_equals_LMA": true,
+    "initialized_RAM_copy_LMA": "0x48e90",
+    "RAM_copy_contains_GOT": false,
+    "remaining_ELF_relocations": 0
+  },
+  "allocator": "No banned libc/kernel allocator FUNC symbols; existing Swift allocation thunks and posix_memalign refusal12 remain. Heap0 is not dynamic all-path allocation proof.",
+  "gross_stack": "FAIL58648local bytes; any alignment/caller/callee/IRQ overlap only increases it."
+}

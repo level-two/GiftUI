@@ -1,0 +1,18 @@
+{
+  ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/zephyr.elf": {
+    "sha256": "2400c99caea4a39756997cfd5a4d467b91ecdbafcc745972badec06aca6415ac",
+    "bytes": 1199388
+  },
+  ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/zephyr.hex": {
+    "sha256": "4f38adc056e98b20ea1ae25f046ef03823b0589fa92ac7b2079440dc79be4358",
+    "bytes": 842014
+  },
+  ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/zephyr.map": {
+    "sha256": "5416ddf0b1161beb3fde85628fc6ee793b5f004c0b76adb4b3cb0f3bf6edad2f",
+    "bytes": 4098209
+  },
+  ".build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/zephyr.dts": {
+    "sha256": "27a2a26fa786d8506d8bfcec2406e33ae605cebe3d32b39808bb9f9e9e084acf",
+    "bytes": 75427
+  }
+}

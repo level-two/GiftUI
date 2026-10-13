@@ -1,0 +1,86 @@
+[
+  {
+    "raw": "00021798 00000040 T $e17P08CounterRuntime012giftuiRFC014B5Entryys6UInt32Vs5Int32Vs6UInt16V_A3HSPys5UInt8VGSgSitXCSg_SvSgSitF",
+    "demangled": "00021798 00000040 T P08CounterRuntime.giftuiRFC014CounterEntry((@convention(c) (Swift.UInt16, Swift.UInt16, Swift.UInt16, Swift.UInt16, Swift.UnsafePointer<Swift.UInt8>?, Swift.Int) -> Swift.Int32)?, Swift.UnsafeMutableRawPointer?, Swift.Int) -> Swift.UInt32"
+  },
+  {
+    "raw": "0001978c 00000308 T $e17P08CounterRuntime03p08B4Host5write7backingSis5Int32Vs6UInt16V_A3HSPys5UInt8VGSgSitXCSg_SwSgtF",
+    "demangled": "0001978c 00000308 T P08CounterRuntime.p08CounterHost(write: (@convention(c) (Swift.UInt16, Swift.UInt16, Swift.UInt16, Swift.UInt16, Swift.UnsafePointer<Swift.UInt8>?, Swift.Int) -> Swift.Int32)?, backing: Swift.UnsafeMutableRawBufferPointer?) -> Swift.Int"
+  },
+  {
+    "raw": "00021398 000002c8 T $e17P08CounterRuntime03p08B5Graph7backingSiSwSg_tF",
+    "demangled": "00021398 000002c8 T P08CounterRuntime.p08CounterGraph(backing: Swift.UnsafeMutableRawBufferPointer?) -> Swift.Int"
+  },
+  {
+    "raw": "00021660 00000138 T $e17P08CounterRuntime03p08B5Graph7backingSiSwSg_tF6rejectL__7profileyAA0B20ConstructionNegativeO_AA0B22EmbeddedProfileStorageVtFTf0nnns_n",
+    "demangled": "00021660 00000138 T function signature specialization <Arg[3] = Stack Promoted from Box> of reject #1 (_: P08CounterRuntime.CounterConstructionNegative, profile: P08CounterRuntime.CounterEmbeddedProfileStorage) -> () in P08CounterRuntime.p08CounterGraph(backing: Swift.UnsafeMutableRawBufferPointer?) -> Swift.Int"
+  },
+  {
+    "raw": "00017118 000000c8 T $e17P08CounterRuntime0B22EmbeddedProfileStorageV03runB4Host09failAfterC0SiSb_tF",
+    "demangled": "00017118 000000c8 T P08CounterRuntime.CounterEmbeddedProfileStorage.runCounterHost(failAfterRuntime: Swift.Bool) -> Swift.Int"
+  },
+  {
+    "raw": "000171e0 0000023c T $e17P08CounterRuntime0B22EmbeddedProfileStorageV03runB4Host09failAfterC0SiSb_tFSi21GiftUIObservableState20ObservableModelScopeVyAA0b5OwnedO0V0aB6Schema0boR0OG_AF0nm4RootP0VyAJ0K14UISemanticCore24SemanticCompleteIdentityVGSpyAA0B7ControlVGtXEfU_",
+    "demangled": "000171e0 0000023c T closure #1 (GiftUIObservableState.ObservableModelScope<P08CounterRuntime.CounterOwnedModel, P08CounterSchema.CounterModelSchema>, GiftUIObservableState.ObservableStateRootScope<P08CounterRuntime.CounterOwnedModel, GiftUISemanticCore.SemanticCompleteIdentity>, Swift.UnsafeMutablePointer<P08CounterRuntime.CounterControl>) -> Swift.Int in P08CounterRuntime.CounterEmbeddedProfileStorage.runCounterHost(failAfterRuntime: Swift.Bool) -> Swift.Int"
+  },
+  {
+    "raw": "0004036e 00000012 t $e17P08CounterRuntime0B22EmbeddedProfileStorageV03runB4Host09failAfterC0SiSb_tFSi21GiftUIObservableState20ObservableModelScopeVyAA0b5OwnedO0V0aB6Schema0boR0OG_AF0nm4RootP0VyAJ0K14UISemanticCore24SemanticCompleteIdentityVGSpyAA0B7ControlVGtXEfU_TA",
+    "demangled": "0004036e 00000012 t partial apply forwarder for closure #1 (GiftUIObservableState.ObservableModelScope<P08CounterRuntime.CounterOwnedModel, P08CounterSchema.CounterModelSchema>, GiftUIObservableState.ObservableStateRootScope<P08CounterRuntime.CounterOwnedModel, GiftUISemanticCore.SemanticCompleteIdentity>, Swift.UnsafeMutablePointer<P08CounterRuntime.CounterControl>) -> Swift.Int in P08CounterRuntime.CounterEmbeddedProfileStorage.runCounterHost(failAfterRuntime: Swift.Bool) -> Swift.Int"
+  },
+  {
+    "raw": "00041568 00000012 t $e17P08CounterRuntime0B22EmbeddedProfileStorageV03runB4Host09failAfterC0SiSb_tFSi21GiftUIObservableState20ObservableModelScopeVyAA0b5OwnedO0V0aB6Schema0boR0OG_AF0nm4RootP0VyAJ0K14UISemanticCore24SemanticCompleteIdentityVGSpyAA0B7ControlVGtXEfU_TA.1",
+    "demangled": "00041568 00000012 t partial apply forwarder for closure #1 (GiftUIObservableState.ObservableModelScope<P08CounterRuntime.CounterOwnedModel, P08CounterSchema.CounterModelSchema>, GiftUIObservableState.ObservableStateRootScope<P08CounterRuntime.CounterOwnedModel, GiftUISemanticCore.SemanticCompleteIdentity>, Swift.UnsafeMutablePointer<P08CounterRuntime.CounterControl>) -> Swift.Int in P08CounterRuntime.CounterEmbeddedProfileStorage.runCounterHost(failAfterRuntime: Swift.Bool) -> Swift.Int with unmangled suffix \".1\""
+  },
+  {
+    "raw": "00041490 0000002a t $e17P08CounterRuntime0B22EmbeddedProfileStorageV03runB4Host09failAfterC0SiSb_tFSi21GiftUIObservableState20ObservableModelScopeVyAA0b5OwnedO0V0aB6Schema0boR0OG_AF0nm4RootP0VyAJ0K14UISemanticCore24SemanticCompleteIdentityVGSpyAA0B7ControlVGtXEfU_TATm",
+    "demangled": "00041490 0000002a t merged partial apply forwarder for closure #1 (GiftUIObservableState.ObservableModelScope<P08CounterRuntime.CounterOwnedModel, P08CounterSchema.CounterModelSchema>, GiftUIObservableState.ObservableStateRootScope<P08CounterRuntime.CounterOwnedModel, GiftUISemanticCore.SemanticCompleteIdentity>, Swift.UnsafeMutablePointer<P08CounterRuntime.CounterControl>) -> Swift.Int in P08CounterRuntime.CounterEmbeddedProfileStorage.runCounterHost(failAfterRuntime: Swift.Bool) -> Swift.Int"
+  },
+  {
+    "raw": "000178c8 00000180 T $e17P08CounterRuntime0B22EmbeddedProfileStorageV03runB4Host09failAfterC0SiSb_tFSi21GiftUIObservableState20ObservableModelScopeVyAA0b5OwnedO0V0aB6Schema0boR0OG_AF0nm4RootP0VyAJ0K14UISemanticCore24SemanticCompleteIdentityVGSpyAA0B7ControlVGtXEfU_yAN_ATtAF0nM5ErrorOYKXEfU_",
+    "demangled": "000178c8 00000180 T closure #1 (GiftUIObservableState.ObservableModelScope<P08CounterRuntime.CounterOwnedModel, P08CounterSchema.CounterModelSchema>, GiftUIObservableState.ObservableStateRootScope<P08CounterRuntime.CounterOwnedModel, GiftUISemanticCore.SemanticCompleteIdentity>) throws(GiftUIObservableState.ObservableStateError) -> () in closure #1 (GiftUIObservableState.ObservableModelScope<P08CounterRuntime.CounterOwnedModel, P08CounterSchema.CounterModelSchema>, GiftUIObservableState.ObservableStateRootScope<P08CounterRuntime.CounterOwnedModel, GiftUISemanticCore.SemanticCompleteIdentity>, Swift.UnsafeMutablePointer<P08CounterRuntime.CounterControl>) -> Swift.Int in P08CounterRuntime.CounterEmbeddedProfileStorage.runCounterHost(failAfterRuntime: Swift.Bool) -> Swift.Int"
+  },
+  {
+    "raw": "00040442 0000007e t $e17P08CounterRuntime0B22EmbeddedProfileStorageV03runB4Host09failAfterC0SiSb_tFSi21GiftUIObservableState20ObservableModelScopeVyAA0b5OwnedO0V0aB6Schema0boR0OG_AF0nm4RootP0VyAJ0K14UISemanticCore24SemanticCompleteIdentityVGSpyAA0B7ControlVGtXEfU_yAN_ATtAF0nM5ErrorOYKXEfU_TA",
+    "demangled": "00040442 0000007e t partial apply forwarder for closure #1 (GiftUIObservableState.ObservableModelScope<P08CounterRuntime.CounterOwnedModel, P08CounterSchema.CounterModelSchema>, GiftUIObservableState.ObservableStateRootScope<P08CounterRuntime.CounterOwnedModel, GiftUISemanticCore.SemanticCompleteIdentity>) throws(GiftUIObservableState.ObservableStateError) -> () in closure #1 (GiftUIObservableState.ObservableModelScope<P08CounterRuntime.CounterOwnedModel, P08CounterSchema.CounterModelSchema>, GiftUIObservableState.ObservableStateRootScope<P08CounterRuntime.CounterOwnedModel, GiftUISemanticCore.SemanticCompleteIdentity>, Swift.UnsafeMutablePointer<P08CounterRuntime.CounterControl>) -> Swift.Int in P08CounterRuntime.CounterEmbeddedProfileStorage.runCounterHost(failAfterRuntime: Swift.Bool) -> Swift.Int"
+  },
+  {
+    "raw": "00017a48 00000874 T $e17P08CounterRuntime0B22EmbeddedProfileStorageV03runB4Host09failAfterC0SiSb_tFSi21GiftUIObservableState20ObservableModelScopeVyAA0b5OwnedO0V0aB6Schema0boR0OG_AF0nm4RootP0VyAJ0K14UISemanticCore24SemanticCompleteIdentityVGSpyAA0B7ControlVGtXEfU_yAN_ATtAF0nM5ErrorOYKXEfU_yAQ0V11RecordStoreVy0K9UIDrawing06CanvasV7PayloadOy0aB5Table0abR12CanvasValuesOyAA0B6DomainOGGGAQ0v9ExpansionZ0OYKXEfU_",
+    "demangled": "00017a48 00000874 T closure #1 (GiftUISemanticCore.SemanticRecordStore<GiftUIDrawing.CanvasSemanticPayload<P08CounterTable.P08CounterSchemaCanvasValues<P08CounterRuntime.CounterDomain>>>) throws(GiftUISemanticCore.SemanticExpansionError) -> () in closure #1 (GiftUIObservableState.ObservableModelScope<P08CounterRuntime.CounterOwnedModel, P08CounterSchema.CounterModelSchema>, GiftUIObservableState.ObservableStateRootScope<P08CounterRuntime.CounterOwnedModel, GiftUISemanticCore.SemanticCompleteIdentity>) throws(GiftUIObservableState.ObservableStateError) -> () in closure #1 (GiftUIObservableState.ObservableModelScope<P08CounterRuntime.CounterOwnedModel, P08CounterSchema.CounterModelSchema>, GiftUIObservableState.ObservableStateRootScope<P08CounterRuntime.CounterOwnedModel, GiftUISemanticCore.SemanticCompleteIdentity>, Swift.UnsafeMutablePointer<P08CounterRuntime.CounterControl>) -> Swift.Int in P08CounterRuntime.CounterEmbeddedProfileStorage.runCounterHost(failAfterRuntime: Swift.Bool) -> Swift.Int"
+  },
+  {
+    "raw": "000414ce 0000009a t $e17P08CounterRuntime0B22EmbeddedProfileStorageV03runB4Host09failAfterC0SiSb_tFSi21GiftUIObservableState20ObservableModelScopeVyAA0b5OwnedO0V0aB6Schema0boR0OG_AF0nm4RootP0VyAJ0K14UISemanticCore24SemanticCompleteIdentityVGSpyAA0B7ControlVGtXEfU_yAN_ATtAF0nM5ErrorOYKXEfU_yAQ0V11RecordStoreVy0K9UIDrawing06CanvasV7PayloadOy0aB5Table0abR12CanvasValuesOyAA0B6DomainOGGGAQ0v9ExpansionZ0OYKXEfU_TA",
+    "demangled": "000414ce 0000009a t partial apply forwarder for closure #1 (GiftUISemanticCore.SemanticRecordStore<GiftUIDrawing.CanvasSemanticPayload<P08CounterTable.P08CounterSchemaCanvasValues<P08CounterRuntime.CounterDomain>>>) throws(GiftUISemanticCore.SemanticExpansionError) -> () in closure #1 (GiftUIObservableState.ObservableModelScope<P08CounterRuntime.CounterOwnedModel, P08CounterSchema.CounterModelSchema>, GiftUIObservableState.ObservableStateRootScope<P08CounterRuntime.CounterOwnedModel, GiftUISemanticCore.SemanticCompleteIdentity>) throws(GiftUIObservableState.ObservableStateError) -> () in closure #1 (GiftUIObservableState.ObservableModelScope<P08CounterRuntime.CounterOwnedModel, P08CounterSchema.CounterModelSchema>, GiftUIObservableState.ObservableStateRootScope<P08CounterRuntime.CounterOwnedModel, GiftUISemanticCore.SemanticCompleteIdentity>, Swift.UnsafeMutablePointer<P08CounterRuntime.CounterControl>) -> Swift.Int in P08CounterRuntime.CounterEmbeddedProfileStorage.runCounterHost(failAfterRuntime: Swift.Bool) -> Swift.Int"
+  },
+  {
+    "raw": "0000f2d0 0000065c T $e17P08CounterRuntime0B22EmbeddedProfileStorageV10modelOwner08semanticH07backing6limitsAC21GiftUIObservableState015ObservableModelH8IdentityV_0L14UISemanticCore014SemanticRecordhQ0VSw0l9UIRuntimeS00cE6LimitsVtcfC",
+    "demangled": "0000f2d0 0000065c T P08CounterRuntime.CounterEmbeddedProfileStorage.init(modelOwner: GiftUIObservableState.ObservableModelOwnerIdentity, semanticOwner: GiftUISemanticCore.SemanticRecordOwnerIdentity, backing: Swift.UnsafeMutableRawBufferPointer, limits: GiftUIRuntimeCore.RuntimeProfileLimits) -> P08CounterRuntime.CounterEmbeddedProfileStorage"
+  },
+  {
+    "raw": "0001db70 00000518 T $e17P08CounterRuntime17counterHostCorpus4host7controlSixz_SpyAA0B7ControlVGt23GiftUIHostConfiguration15MVPHostInstanceRz0J13UIRuntimeCore0C12OwnerFailureO0qR0RtzRi_zRi0_zlF5clickL__8expected7changedySi_s5UInt8VSbtAhIRzAlNRSRi_zRi0_zlFTf0nnnnsssnss_nAH020SignalAnalyzerPreseteN0VyAA0beQ0VG_Tg5",
+    "demangled": "0001db70 00000518 T generic specialization <GiftUIHostConfiguration.SignalAnalyzerPresetHostInstance<P08CounterRuntime.CounterHostOwner>> of function signature specialization <Arg[4] = Stack Promoted from Box, Arg[5] = Stack Promoted from Box, Arg[6] = Stack Promoted from Box, Arg[8] = Stack Promoted from Box, Arg[9] = Stack Promoted from Box> of click #1 <A where A: GiftUIHostConfiguration.MVPHostInstance, A.OwnerFailure == GiftUIRuntimeCore.RuntimeOwnerFailure, A: ~Swift.Copyable, A: ~Swift.Escapable>(_: Swift.Int, expected: Swift.UInt8, changed: Swift.Bool) -> () in P08CounterRuntime.counterHostCorpus<A where A: GiftUIHostConfiguration.MVPHostInstance, A.OwnerFailure == GiftUIRuntimeCore.RuntimeOwnerFailure, A: ~Swift.Copyable, A: ~Swift.Escapable>(host: inout A, control: Swift.UnsafeMutablePointer<P08CounterRuntime.CounterControl>) -> Swift.Int"
+  },
+  {
+    "raw": "00019438 00000354 W $e17P08CounterRuntime17counterHostCorpus4host7controlSixz_SpyAA0B7ControlVGt23GiftUIHostConfiguration15MVPHostInstanceRz0J13UIRuntimeCore0C12OwnerFailureO0qR0RtzRi_zRi0_zlFAH020SignalAnalyzerPreseteN0VyAA0beQ0VG_Tg5",
+    "demangled": "00019438 00000354 W generic specialization <GiftUIHostConfiguration.SignalAnalyzerPresetHostInstance<P08CounterRuntime.CounterHostOwner>> of P08CounterRuntime.counterHostCorpus<A where A: GiftUIHostConfiguration.MVPHostInstance, A.OwnerFailure == GiftUIRuntimeCore.RuntimeOwnerFailure, A: ~Swift.Copyable, A: ~Swift.Escapable>(host: inout A, control: Swift.UnsafeMutablePointer<P08CounterRuntime.CounterControl>) -> Swift.Int"
+  },
+  {
+    "raw": "000190bc 000002e0 T $e17P08CounterRuntime23counterForeignJoinScopeyS2i21GiftUIObservableState015ObservableModelG0VyAA0b5OwnedL0V0aB6Schema0blN0OG_AC0kj4RootG0VyAG0H14UISemanticCore24SemanticCompleteIdentityVGSpyAA0B7ControlVGtXEF",
+    "demangled": "000190bc 000002e0 T P08CounterRuntime.counterForeignJoinScope((GiftUIObservableState.ObservableModelScope<P08CounterRuntime.CounterOwnedModel, P08CounterSchema.CounterModelSchema>, GiftUIObservableState.ObservableStateRootScope<P08CounterRuntime.CounterOwnedModel, GiftUISemanticCore.SemanticCompleteIdentity>, Swift.UnsafeMutablePointer<P08CounterRuntime.CounterControl>) -> Swift.Int) -> Swift.Int"
+  },
+  {
+    "raw": "000187d0 000008ea T $e17P08CounterRuntime23counterRunHostLifecycle33_61E6B85DAB75F632ED60124EE3523C4FLL4host7control6report09failAfterC010joinChecksSi23GiftUIHostConfiguration020SignalAnalyzerPresetF8InstanceVyAA0bF5OwnerVGz_SpyAA0B7ControlVGAI0F14AssemblyReportVSbSitF",
+    "demangled": "000187d0 000008ea T P08CounterRuntime.(counterRunHostLifecycle in _61E6B85DAB75F632ED60124EE3523C4F)(host: inout GiftUIHostConfiguration.SignalAnalyzerPresetHostInstance<P08CounterRuntime.CounterHostOwner>, control: Swift.UnsafeMutablePointer<P08CounterRuntime.CounterControl>, report: GiftUIHostConfiguration.HostAssemblyReport, failAfterRuntime: Swift.Bool, joinChecks: Swift.Int) -> Swift.Int"
+  },
+  {
+    "raw": "000182bc 00000514 T $e17P08CounterRuntime28counterCheckRejectedBindings33_61E6B85DAB75F632ED60124EE3523C4FLL5owner6models4root13foreignModels0R4Root7control0R7Control5audit6report8expected0R8ExpectedSiAA0B9HostOwnerVz_21GiftUIObservableState20ObservableModelScopeVyAA0B10OwnedModelV0aB6Schema0B11ModelSchemaOGAQ015ObservableStateT5ScopeVyAU18GiftUISemanticCore24SemanticCompleteIdentityVGAYA3_SpyAA0bV0VGA6_17GiftUIRuntimeCore0C12StorageAuditV23GiftUIHostConfiguration18HostAssemblyReportVAA0B12JoinSnapshotVA14_tF",
+    "demangled": "000182bc 00000514 T P08CounterRuntime.(counterCheckRejectedBindings in _61E6B85DAB75F632ED60124EE3523C4F)(owner: inout P08CounterRuntime.CounterHostOwner, models: GiftUIObservableState.ObservableModelScope<P08CounterRuntime.CounterOwnedModel, P08CounterSchema.CounterModelSchema>, root: GiftUIObservableState.ObservableStateRootScope<P08CounterRuntime.CounterOwnedModel, GiftUISemanticCore.SemanticCompleteIdentity>, foreignModels: GiftUIObservableState.ObservableModelScope<P08CounterRuntime.CounterOwnedModel, P08CounterSchema.CounterModelSchema>, foreignRoot: GiftUIObservableState.ObservableStateRootScope<P08CounterRuntime.CounterOwnedModel, GiftUISemanticCore.SemanticCompleteIdentity>, control: Swift.UnsafeMutablePointer<P08CounterRuntime.CounterControl>, foreignControl: Swift.UnsafeMutablePointer<P08CounterRuntime.CounterControl>, audit: GiftUIRuntimeCore.RuntimeStorageAudit, report: GiftUIHostConfiguration.HostAssemblyReport, expected: P08CounterRuntime.CounterJoinSnapshot, foreignExpected: P08CounterRuntime.CounterJoinSnapshot) -> Swift.Int"
+  },
+  {
+    "raw": "00044324 00000004 T giftui_rfc014_counter_entry",
+    "demangled": "00044324 00000004 T giftui_rfc014_counter_entry"
+  },
+  {
+    "raw": "000217d8 00000050 T main",
+    "demangled": "000217d8 00000050 T main"
+  }
+]
