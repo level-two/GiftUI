@@ -200,3 +200,42 @@ oracle. No generator change is made. STOP for separate Strong review before
 widening file handoff; this is ordinary test-maintenance scope disposition, not
 a claimed product/contract decision or human approval requirement. Guards and
 all unconsumed current allowances are preserved; prior image remains failed.
+
+## Amended phase-split implementation dispatch — entryd402ee6a
+
+Same Sol6.1 High / Strong. Authority678e5880 amended by phase-split/seam-review.md
+atd402ee6a; C3/R3, HC-RD-003/P08/T8.1/R07. Exactly two source files allowed:
+RuntimeDerived/CounterHostProbe.swift and scripts/contracts/check-spec-015-counter.py.
+The prior seam finding consumed no source/check/build allowance. One mapped
+correction, formatter, one fresh nativeStatic gate then one Dynamic/Pi/nRF route
+refresh each sequentially, and one supported nRF image only after passes. Stop
+first failure or linked result for independent review; zero automatic repair.
+Historical closed allowances and package two-consecutive-unproductive rule stay.
+
+Phase map is unchanged from the recorded seam-finding: construct supplied/owner
+once within original model/semantic/Canvas/geometry/control/activation borrows;
+inout owner rejection helper preserves all six proposals/assertions/snapshots
+and returns Int18, ending its borrow before original factory consumes owner.
+Same selected host then goes inout to the complete lifecycle helper, preserving
+activation, failures, paced calls/corpus, repeated activation, teardown and all
+stopped-input/admission assertions. Both private @inline(never) helpers precede
+p08CounterHost, neither returns an owner/host/large aggregate. No new BSS/heap,
+raw nonescapable storage, lifetime shortening, scope/ID/order/capacity change.
+
+Checker Static negative matches exactly one complete40-space-indented actual
+counterRunHostLifecycle call line in original control closure. Replace it with
+the same activate/escaped-consume/return1 body. Failclosed exact full-line counts
+for method rename, escaped declaration insertion, post-scope use seam and owned
+projection; record counts. Keep copy/Dynamic negatives, Embedded absence and
+exact Static diagnostic/provenance tuple unchanged. No legacy/fake fallback.
+
+Exact gate recipes reuse existing verified runtime builds: macos-static
+.build/contracts/spec-013-runtime-cycle/tmp0q82npqp/macos-static; macos-dynamic
+.build/contracts/spec-013-runtime-cycle/tmp_63jv4xj/macos-dynamic; Pi
+.build/raspberry-pi/contracts/spec-013-runtime-cycle/tmpvq70p7a0/raspberry-pi-armv6;
+nRF .build/nrf52840/contracts/spec-013-runtime-cycle/tmp9d1k2h7s/nrf52840-embedded.
+Fresh checker outputs/invocations/logs/hashes retained under phase-split. Final
+image uses fresh nRF receipt via existing supported build. Actual nested helper/
+construction/enclosing/initializer/corpus/click frames including alignment and
+applicable IRQ overlap must fit27648; smaller locals alone are insufficient.
+RAM196608/flash1048576/heap0 and all prior qualifications stay. No P09/hardware.
