@@ -1,0 +1,20 @@
+{
+  "emitted-artifacts.json": "e17ec58bc679cf16fda420467768956b494a5a492d4e830b6ca7e0ccf9124cb4",
+  "macos-dynamic/compiler-version.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "macos-dynamic/compiler-version.stdout": "78eb7d906af262cf95beb666fe38b44cfe5e4b4421f16eea8fe218e8a0eb0692",
+  "macos-dynamic/copy-negative.stderr": "a6fb818550a23bdf58a6642c76d98fe50b101e57057521dd02c1de99d2ef518e",
+  "macos-dynamic/copy-negative.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "macos-dynamic/escape-0.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "macos-dynamic/escape-0.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "receipt.json": "b0ad76fc43aa90a14cf351883a028604ea360c6b73e30b503c67d482ab6a6202",
+  "setup/native-sdk.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "setup/native-sdk.stdout": "c2206d451c0f37ff92c73e016a829888392894a99b15cddd3f365a6195412818",
+  "setup/select-macos-dynamic.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "setup/select-macos-dynamic.stdout": "730103d575112e2cde515411e4c88666f24d8f981c88450f21a2559ca8179265",
+  "setup/select-macos-static.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "setup/select-macos-static.stdout": "730103d575112e2cde515411e4c88666f24d8f981c88450f21a2559ca8179265",
+  "setup/select-nrf52840-embedded.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "setup/select-nrf52840-embedded.stdout": "e7befeb56e86c31edf1d1be20eaa93726a032eaba8e4b2513411f353c291b305",
+  "setup/select-raspberry-pi-armv6.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "setup/select-raspberry-pi-armv6.stdout": "730103d575112e2cde515411e4c88666f24d8f981c88450f21a2559ca8179265"
+}

@@ -1,0 +1,47 @@
+/Users/eugene/work/GiftUI/.build/spike-075/20261013T160331Z-f99234e8/sources/CopyNegative.swift:20:12: error: global function 'requireCopy' requires that 'ScopedCandidate' conform to 'Copyable'
+18 |         committedRecords: ScopedCommitted(bank3.span), committedHitRegions: ScopedHit(bank4.span))
+19 |     let wrapped = InteractionOwnedKeyState(state: state, maximumComponentsPerKey: 1, maximumComponents: 1)!
+20 |     return requireCopy(wrapped) &+ consumeWrapped(wrapped)
+   |            `- error: global function 'requireCopy' requires that 'ScopedCandidate' conform to 'Copyable'
+21 | }
+22 | 
+
+/Users/eugene/work/GiftUI/.build/spike-075/20261013T155029Z-b1c24da8/sources/States.swift:103:1: note: requirement from conditional conformance of 'InteractionOwnedKeyState<ScopedCandidate, ScopedCommitted, ScopedHit>' to 'Copyable'
+101 | where C: Escapable & ~Copyable, R: Escapable & ~Copyable,
+102 |       H: Escapable & ~Copyable {}
+103 | extension InteractionOwnedKeyState: Copyable
+    | `- note: requirement from conditional conformance of 'InteractionOwnedKeyState<ScopedCandidate, ScopedCommitted, ScopedHit>' to 'Copyable'
+104 | where C: Copyable & ~Escapable, R: Copyable & ~Escapable,
+105 |       H: Copyable & ~Escapable {}
+
+/Users/eugene/work/GiftUI/.build/spike-075/20261013T160331Z-f99234e8/sources/CopyNegative.swift:20:12: error: global function 'requireCopy' requires that 'ScopedCommitted' conform to 'Copyable'
+18 |         committedRecords: ScopedCommitted(bank3.span), committedHitRegions: ScopedHit(bank4.span))
+19 |     let wrapped = InteractionOwnedKeyState(state: state, maximumComponentsPerKey: 1, maximumComponents: 1)!
+20 |     return requireCopy(wrapped) &+ consumeWrapped(wrapped)
+   |            `- error: global function 'requireCopy' requires that 'ScopedCommitted' conform to 'Copyable'
+21 | }
+22 | 
+
+/Users/eugene/work/GiftUI/.build/spike-075/20261013T155029Z-b1c24da8/sources/States.swift:103:1: note: requirement from conditional conformance of 'InteractionOwnedKeyState<ScopedCandidate, ScopedCommitted, ScopedHit>' to 'Copyable'
+101 | where C: Escapable & ~Copyable, R: Escapable & ~Copyable,
+102 |       H: Escapable & ~Copyable {}
+103 | extension InteractionOwnedKeyState: Copyable
+    | `- note: requirement from conditional conformance of 'InteractionOwnedKeyState<ScopedCandidate, ScopedCommitted, ScopedHit>' to 'Copyable'
+104 | where C: Copyable & ~Escapable, R: Copyable & ~Escapable,
+105 |       H: Copyable & ~Escapable {}
+
+/Users/eugene/work/GiftUI/.build/spike-075/20261013T160331Z-f99234e8/sources/CopyNegative.swift:20:12: error: global function 'requireCopy' requires that 'ScopedHit' conform to 'Copyable'
+18 |         committedRecords: ScopedCommitted(bank3.span), committedHitRegions: ScopedHit(bank4.span))
+19 |     let wrapped = InteractionOwnedKeyState(state: state, maximumComponentsPerKey: 1, maximumComponents: 1)!
+20 |     return requireCopy(wrapped) &+ consumeWrapped(wrapped)
+   |            `- error: global function 'requireCopy' requires that 'ScopedHit' conform to 'Copyable'
+21 | }
+22 | 
+
+/Users/eugene/work/GiftUI/.build/spike-075/20261013T155029Z-b1c24da8/sources/States.swift:103:1: note: requirement from conditional conformance of 'InteractionOwnedKeyState<ScopedCandidate, ScopedCommitted, ScopedHit>' to 'Copyable'
+101 | where C: Escapable & ~Copyable, R: Escapable & ~Copyable,
+102 |       H: Escapable & ~Copyable {}
+103 | extension InteractionOwnedKeyState: Copyable
+    | `- note: requirement from conditional conformance of 'InteractionOwnedKeyState<ScopedCandidate, ScopedCommitted, ScopedHit>' to 'Copyable'
+104 | where C: Copyable & ~Escapable, R: Copyable & ~Escapable,
+105 |       H: Copyable & ~Escapable {}

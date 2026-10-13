@@ -1,0 +1,9 @@
+{
+  "fixture_commit": "1dbe456b",
+  "artifacts": {
+    ".build/spike-075/20261013T160331Z-f99234e8/macos-dynamic/escape-0.o": {
+      "sha256": "bc4a4374f86a8abba85f67d4ae8ce423ce739f76dcc285ef1a4a0601ad13384c",
+      "bytes": 5176
+    }
+  }
+}

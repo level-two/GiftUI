@@ -1,0 +1,327 @@
+{
+  "run_id": "20261013T160331Z-f99234e8",
+  "status": "stopped",
+  "repair_rounds": 1,
+  "further_repair_limit": 0,
+  "experiment_limit": 30,
+  "identity_limit": 2,
+  "deadline_seconds": 1200,
+  "invocations": [
+    {
+      "label": "native-sdk",
+      "kind": "setup",
+      "command": [
+        "xcrun",
+        "--sdk",
+        "macosx",
+        "--show-sdk-path"
+      ],
+      "cwd": "/Users/eugene/work/GiftUI",
+      "timeout_seconds": 180,
+      "status": "exited",
+      "stdout": "/Users/eugene/work/GiftUI/.build/spike-075/20261013T160331Z-f99234e8/native-sdk.stdout",
+      "stderr": "/Users/eugene/work/GiftUI/.build/spike-075/20261013T160331Z-f99234e8/native-sdk.stderr",
+      "pid": 51187,
+      "exit_code": 0,
+      "elapsed_seconds": 0.006309750000000003,
+      "accepted": true
+    },
+    {
+      "label": "select-macos-dynamic",
+      "kind": "setup",
+      "command": [
+        "bash",
+        "-eu",
+        "-c",
+        "source \"$1\"; giftui_rfc014_select_compiler \"$2\" \"$3\"; printf \"%s\\n\" \"$GIFTUI_CONTRACT_SWIFTC\"",
+        "spike-075",
+        "/Users/eugene/work/GiftUI/scripts/contracts/compiler-baseline.sh",
+        "/Users/eugene/work/GiftUI",
+        "macos-dynamic"
+      ],
+      "cwd": "/Users/eugene/work/GiftUI",
+      "timeout_seconds": 180,
+      "status": "exited",
+      "stdout": "/Users/eugene/work/GiftUI/.build/spike-075/20261013T160331Z-f99234e8/macos-dynamic/select-macos-dynamic.stdout",
+      "stderr": "/Users/eugene/work/GiftUI/.build/spike-075/20261013T160331Z-f99234e8/macos-dynamic/select-macos-dynamic.stderr",
+      "pid": 51188,
+      "exit_code": 0,
+      "elapsed_seconds": 0.0030111250000000034,
+      "accepted": true
+    },
+    {
+      "label": "select-macos-static",
+      "kind": "setup",
+      "command": [
+        "bash",
+        "-eu",
+        "-c",
+        "source \"$1\"; giftui_rfc014_select_compiler \"$2\" \"$3\"; printf \"%s\\n\" \"$GIFTUI_CONTRACT_SWIFTC\"",
+        "spike-075",
+        "/Users/eugene/work/GiftUI/scripts/contracts/compiler-baseline.sh",
+        "/Users/eugene/work/GiftUI",
+        "macos-static"
+      ],
+      "cwd": "/Users/eugene/work/GiftUI",
+      "timeout_seconds": 180,
+      "status": "exited",
+      "stdout": "/Users/eugene/work/GiftUI/.build/spike-075/20261013T160331Z-f99234e8/macos-static/select-macos-static.stdout",
+      "stderr": "/Users/eugene/work/GiftUI/.build/spike-075/20261013T160331Z-f99234e8/macos-static/select-macos-static.stderr",
+      "pid": 51189,
+      "exit_code": 0,
+      "elapsed_seconds": 0.0034077080000000093,
+      "accepted": true
+    },
+    {
+      "label": "select-raspberry-pi-armv6",
+      "kind": "setup",
+      "command": [
+        "bash",
+        "-eu",
+        "-c",
+        "source \"$1\"; giftui_rfc014_select_compiler \"$2\" \"$3\"; printf \"%s\\n\" \"$GIFTUI_CONTRACT_SWIFTC\"",
+        "spike-075",
+        "/Users/eugene/work/GiftUI/scripts/contracts/compiler-baseline.sh",
+        "/Users/eugene/work/GiftUI",
+        "raspberry-pi-armv6"
+      ],
+      "cwd": "/Users/eugene/work/GiftUI",
+      "timeout_seconds": 180,
+      "status": "exited",
+      "stdout": "/Users/eugene/work/GiftUI/.build/raspberry-pi/spike-075/20261013T160331Z-f99234e8/select-raspberry-pi-armv6.stdout",
+      "stderr": "/Users/eugene/work/GiftUI/.build/raspberry-pi/spike-075/20261013T160331Z-f99234e8/select-raspberry-pi-armv6.stderr",
+      "pid": 51190,
+      "exit_code": 0,
+      "elapsed_seconds": 0.00336274999999997,
+      "accepted": true
+    },
+    {
+      "label": "select-nrf52840-embedded",
+      "kind": "setup",
+      "command": [
+        "bash",
+        "-eu",
+        "-c",
+        "source \"$1\"; giftui_rfc014_select_compiler \"$2\" \"$3\"; printf \"%s\\n\" \"$GIFTUI_CONTRACT_SWIFTC\"",
+        "spike-075",
+        "/Users/eugene/work/GiftUI/scripts/contracts/compiler-baseline.sh",
+        "/Users/eugene/work/GiftUI",
+        "nrf52840-embedded"
+      ],
+      "cwd": "/Users/eugene/work/GiftUI",
+      "timeout_seconds": 180,
+      "status": "exited",
+      "stdout": "/Users/eugene/work/GiftUI/.build/nrf52840/spike-075/20261013T160331Z-f99234e8/select-nrf52840-embedded.stdout",
+      "stderr": "/Users/eugene/work/GiftUI/.build/nrf52840/spike-075/20261013T160331Z-f99234e8/select-nrf52840-embedded.stderr",
+      "pid": 51191,
+      "exit_code": 0,
+      "elapsed_seconds": 0.0034388750000000634,
+      "accepted": true
+    },
+    {
+      "label": "compiler-version",
+      "kind": "identity",
+      "command": [
+        "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc",
+        "--version"
+      ],
+      "cwd": "/Users/eugene/work/GiftUI",
+      "timeout_seconds": 180,
+      "status": "exited",
+      "stdout": "/Users/eugene/work/GiftUI/.build/spike-075/20261013T160331Z-f99234e8/macos-dynamic/compiler-version.stdout",
+      "stderr": "/Users/eugene/work/GiftUI/.build/spike-075/20261013T160331Z-f99234e8/macos-dynamic/compiler-version.stderr",
+      "pid": 51194,
+      "exit_code": 0,
+      "elapsed_seconds": 0.24119741600000033,
+      "accepted": true
+    },
+    {
+      "label": "copy-negative",
+      "kind": "experiment",
+      "command": [
+        "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc",
+        "-swift-version",
+        "6",
+        "-enable-experimental-feature",
+        "LifetimeDependence",
+        "-enable-experimental-feature",
+        "Lifetimes",
+        "-Osize",
+        "-whole-module-optimization",
+        "-parse-as-library",
+        "-package-name",
+        "giftui",
+        "-module-cache-path",
+        "/Users/eugene/work/GiftUI/.build/spike-075/20261013T160331Z-f99234e8/macos-dynamic/module-cache",
+        "-target",
+        "arm64-apple-macosx26.0",
+        "-sdk",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk",
+        "-DGIFTUI_DYNAMIC_PROFILE",
+        "-module-name",
+        "P08Client",
+        "-I",
+        "/Users/eugene/work/GiftUI/.build/spike-075/20261013T155029Z-b1c24da8/macos-dynamic",
+        "-emit-object",
+        "/Users/eugene/work/GiftUI/.build/spike-075/20261013T160331Z-f99234e8/sources/CopyNegative.swift",
+        "-o",
+        "/Users/eugene/work/GiftUI/.build/spike-075/20261013T160331Z-f99234e8/macos-dynamic/copy-negative.o"
+      ],
+      "cwd": "/Users/eugene/work/GiftUI",
+      "timeout_seconds": 180,
+      "status": "exited",
+      "stdout": "/Users/eugene/work/GiftUI/.build/spike-075/20261013T160331Z-f99234e8/macos-dynamic/copy-negative.stdout",
+      "stderr": "/Users/eugene/work/GiftUI/.build/spike-075/20261013T160331Z-f99234e8/macos-dynamic/copy-negative.stderr",
+      "pid": 51195,
+      "exit_code": 1,
+      "elapsed_seconds": 0.13780583299999982,
+      "accepted": true,
+      "matching_errors": [
+        "/Users/eugene/work/GiftUI/.build/spike-075/20261013T160331Z-f99234e8/sources/CopyNegative.swift:20:12: error: global function 'requireCopy' requires that 'ScopedCandidate' conform to 'Copyable'",
+        "   |            `- error: global function 'requireCopy' requires that 'ScopedCandidate' conform to 'Copyable'",
+        "/Users/eugene/work/GiftUI/.build/spike-075/20261013T160331Z-f99234e8/sources/CopyNegative.swift:20:12: error: global function 'requireCopy' requires that 'ScopedCommitted' conform to 'Copyable'",
+        "   |            `- error: global function 'requireCopy' requires that 'ScopedCommitted' conform to 'Copyable'",
+        "/Users/eugene/work/GiftUI/.build/spike-075/20261013T160331Z-f99234e8/sources/CopyNegative.swift:20:12: error: global function 'requireCopy' requires that 'ScopedHit' conform to 'Copyable'",
+        "   |            `- error: global function 'requireCopy' requires that 'ScopedHit' conform to 'Copyable'"
+      ]
+    },
+    {
+      "label": "escape-0",
+      "kind": "experiment",
+      "command": [
+        "/Users/eugene/work/GiftUI/.toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc",
+        "-swift-version",
+        "6",
+        "-enable-experimental-feature",
+        "LifetimeDependence",
+        "-enable-experimental-feature",
+        "Lifetimes",
+        "-Osize",
+        "-whole-module-optimization",
+        "-parse-as-library",
+        "-package-name",
+        "giftui",
+        "-module-cache-path",
+        "/Users/eugene/work/GiftUI/.build/spike-075/20261013T160331Z-f99234e8/macos-dynamic/module-cache",
+        "-target",
+        "arm64-apple-macosx26.0",
+        "-sdk",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk",
+        "-DGIFTUI_DYNAMIC_PROFILE",
+        "-module-name",
+        "P08Client",
+        "-I",
+        "/Users/eugene/work/GiftUI/.build/spike-075/20261013T155029Z-b1c24da8/macos-dynamic",
+        "-emit-object",
+        "/Users/eugene/work/GiftUI/.build/spike-075/20261013T160331Z-f99234e8/sources/Escape0.swift",
+        "-o",
+        "/Users/eugene/work/GiftUI/.build/spike-075/20261013T160331Z-f99234e8/macos-dynamic/escape-0.o"
+      ],
+      "cwd": "/Users/eugene/work/GiftUI",
+      "timeout_seconds": 180,
+      "status": "exited",
+      "stdout": "/Users/eugene/work/GiftUI/.build/spike-075/20261013T160331Z-f99234e8/macos-dynamic/escape-0.stdout",
+      "stderr": "/Users/eugene/work/GiftUI/.build/spike-075/20261013T160331Z-f99234e8/macos-dynamic/escape-0.stderr",
+      "pid": 51196,
+      "exit_code": 0,
+      "elapsed_seconds": 0.13326324999999972
+    }
+  ],
+  "hashes": {
+    "experiments/spike-075-p08-state-feasibility/Banks.swift": "1e1f6a8dabc3dec95014d35d9c190c8ec230868307a9054c8304cecfb9af19aa",
+    "experiments/spike-075-p08-state-feasibility/CopyNegative.swift": "fed2d0619d1db0d69d7ea7408d074240b50bf910e2d95845a0d6a60892a4c7f8",
+    "experiments/spike-075-p08-state-feasibility/DomainAndProtocols.swift": "1ecf63b3b959eda7f0d2372b6e62edb1352ca3d8c04d5f19ec367b1b2c8c4aac",
+    "experiments/spike-075-p08-state-feasibility/Escape0.swift": "76750f460a640e75829c2818d3bd096230b4264918246290e8c110eaa40f310a",
+    "experiments/spike-075-p08-state-feasibility/Escape1.swift": "f702a16ae8c844c17ed886a0784cedd8e74ad258d8532c555a489bfefcf4fe9f",
+    "experiments/spike-075-p08-state-feasibility/Escape2.swift": "02ecc651e91b177f03e66c69d12d961d5fcc6a47d4cc66fc0eb71c64714bb400",
+    "experiments/spike-075-p08-state-feasibility/Escape3.swift": "5bd9443e14203d578ae2421a1ad5d7f1517b8910553bb249e187244caadb11c7",
+    "experiments/spike-075-p08-state-feasibility/Escape4.swift": "975d7e37fb9c53fc423435104501c3a890f46334f3b68a5472613aa1d5ef1d91",
+    "experiments/spike-075-p08-state-feasibility/Positive.swift": "e8198040de8289cba097801226712abd84790b4255bdc551036f4bd28b02ab92",
+    "experiments/spike-075-p08-state-feasibility/README.md": "54fee4d384be6173a65a4b986a7864bc8b5205a8da41b889c049db2720a14269",
+    "experiments/spike-075-p08-state-feasibility/States.swift": "7563db739fc193634deb1651871961e09c109a1d09d37a612a65eb6bfda27791",
+    "experiments/spike-075-p08-state-feasibility/continuation-scope.md": "cb280e1c0d7ce7144b26c1281617d3aeca80620b0ec562a21d99a9829c189a02",
+    "experiments/spike-075-p08-state-feasibility/package-review.md": "725128f0e71b126eecbb592436fabc9b9d62e9091b182258f44df955f2b41b7b",
+    "experiments/spike-075-p08-state-feasibility/preflight-review.md": "ddf44a4de746d3091b0665a9a49c403ec859b2e418100e1ef61bebf3af40fc89",
+    "experiments/spike-075-p08-state-feasibility/run.py": "7f055b0b61f43aa132a1844d3fbec23a95a1e927aa88a4765f4470575667f2dc",
+    "scripts/contracts/compiler-baseline.sh": "d1b1b075a337aa220a4694b4d22fd6da3f08a321f0ce06707f7496c7d62904c2",
+    "scripts/contracts/check-spec-002-compiler-baseline.py": "d46da57a26e0f89f54294a931619a42b99544636986b1beb4fecdf80712b028a",
+    ".toolchains/sdk/swift-6.4.0-RELEASE-raspios-bookworm-armv6/raspios-bookworm-static.json": "0126b2add4fb612622d7309c4a32eb81376dbe49ce332dd8593a50c664fd3030",
+    ".toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swiftc": "79ae5c26645489fb783ae980f0f1bdae810f90fb180c9ac39808807b65e9fd69",
+    ".toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swift-frontend": "32d565dc81f4e714f91da71cc1a501a335c20347c15d5ab522f9cacf9d225caf",
+    ".toolchains/host/swift-6.4.0-RELEASE-osx/usr/bin/swift-driver": "79ae5c26645489fb783ae980f0f1bdae810f90fb180c9ac39808807b65e9fd69",
+    ".toolchains/nrf52840/swift/swift-6.4.0-RELEASE-osx/usr/bin/swiftc": "79ae5c26645489fb783ae980f0f1bdae810f90fb180c9ac39808807b65e9fd69",
+    ".toolchains/nrf52840/swift/swift-6.4.0-RELEASE-osx/usr/bin/swift-frontend": "32d565dc81f4e714f91da71cc1a501a335c20347c15d5ab522f9cacf9d225caf",
+    ".toolchains/nrf52840/swift/swift-6.4.0-RELEASE-osx/usr/bin/swift-driver": "79ae5c26645489fb783ae980f0f1bdae810f90fb180c9ac39808807b65e9fd69"
+  },
+  "profile_outputs": {
+    "macos-dynamic": "/Users/eugene/work/GiftUI/.build/spike-075/20261013T160331Z-f99234e8/macos-dynamic",
+    "macos-static": "/Users/eugene/work/GiftUI/.build/spike-075/20261013T160331Z-f99234e8/macos-static",
+    "raspberry-pi-armv6": "/Users/eugene/work/GiftUI/.build/raspberry-pi/spike-075/20261013T160331Z-f99234e8",
+    "nrf52840-embedded": "/Users/eugene/work/GiftUI/.build/nrf52840/spike-075/20261013T160331Z-f99234e8"
+  },
+  "parent_receipt": "/Users/eugene/work/GiftUI/experiments/spike-075-p08-state-feasibility/evidence/run-1/receipt.json",
+  "parent_receipt_sha256": "d34b40fd7f3816b70e60f939c5bc9eb81ee2408f24eb3594c6868b4d38b81418",
+  "parent_experiment_invocations": 3,
+  "parent_identity_queries": 1,
+  "parent_failed_experiment": "macos-dynamic/copy-negative",
+  "cumulative_experiment_invocations": 5,
+  "cumulative_identity_queries": 2,
+  "cumulative_repair_rounds": 1,
+  "cumulative_experiment_limit": 33,
+  "cumulative_identity_limit": 3,
+  "fixture_correction": "requireCopy<T: Copyable & ~Escapable>(_ value: borrowing T)",
+  "verified_parent_artifacts": {
+    ".build/spike-075/20261013T155029Z-b1c24da8/macos-dynamic/P08Shadow.swiftdoc": {
+      "sha256": "496dccb7ef9955b408334d20434d6fea15e10fadd78b297423045b263d3c3b2f",
+      "bytes": 376
+    },
+    ".build/spike-075/20261013T155029Z-b1c24da8/macos-dynamic/P08Shadow.swiftmodule": {
+      "sha256": "584c5c4206e88cb3a12f7295bbbfcae20f1c80979b8279bc54a2d137e55fcec8",
+      "bytes": 60304
+    },
+    ".build/spike-075/20261013T155029Z-b1c24da8/macos-dynamic/P08Shadow.swiftsourceinfo": {
+      "sha256": "37dc57851b819f966b2bd2f3660aaadfa5c4c23f8e5e3ae8defc40c5c27a67ab",
+      "bytes": 30748
+    },
+    ".build/spike-075/20261013T155029Z-b1c24da8/macos-dynamic/positive.o": {
+      "sha256": "4e6b0e53ff08564692ed393efa921ac2accf3741e4f5f81e96673360ce8cf432",
+      "bytes": 9936
+    },
+    ".build/spike-075/20261013T155029Z-b1c24da8/macos-dynamic/shadow.o": {
+      "sha256": "0ad30cbc32c8f14d73184a507a9620aad24ac7e62321fc0f68d92c1790d6a3b3",
+      "bytes": 90536
+    },
+    ".build/spike-075/20261013T155029Z-b1c24da8/macos-dynamic/P08Shadow.abi.json": {
+      "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+      "bytes": 149
+    }
+  },
+  "reused_checks": [
+    "macos-dynamic/shadow-module",
+    "macos-dynamic/positive"
+  ],
+  "swift_lines": 526,
+  "experiment_invocations": 2,
+  "identity_queries": 1,
+  "sdk_hashes": [
+    {
+      "path": "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk",
+      "tree_sha256": "b9901c1266bf23715f3b65930a8f55d629be39b22dd21da9c3e8c6d6f1cf5a32",
+      "regular_files": 32345
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.toolchains/sdk/swift-6.4.0-RELEASE-raspios-bookworm-armv6/raspios-bookworm",
+      "tree_sha256": "b71d5892687a1b1ccc85f27821aca5c85f5191fd3ca4bc83e961d8f056fb174a",
+      "regular_files": 6150
+    },
+    {
+      "path": "/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.4.0-RELEASE-osx/usr/lib/swift/embedded",
+      "tree_sha256": "dac08af78cb64473e29c26cbfb58a3f8750f12811afe479c9dd0163bc4ba8801",
+      "regular_files": 476
+    }
+  ],
+  "first_compiler_utc": "2026-10-13T16:03:38.691286+00:00",
+  "stop_reason": "RuntimeError: escape-0: unexpected rejection or acceptance; stop without repair",
+  "finished_utc": "2026-10-13T16:03:39.207835+00:00",
+  "compiler_window_seconds": 0.5165657500000007
+}
