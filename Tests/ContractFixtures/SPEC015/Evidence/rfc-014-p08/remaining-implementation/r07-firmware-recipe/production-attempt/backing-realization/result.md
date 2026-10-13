@@ -10,6 +10,7 @@ it is not independent acceptance of the backing implementation or target fit.
 | macos-static | exit 0; 1,349,555 assertions, zero failures | [invocation](native-invocation.json), [exit](native-exit.json), [receipt](macos-static/result.json) |
 | macos-dynamic | exit 0; 1,349,501 assertions, zero failures | [invocation](macos-dynamic-invocation.json), [exit](macos-dynamic-exit.json), [receipt](macos-dynamic/result.json) |
 | raspberry-pi-armv6 | exit 0; 28/28 checks; cross-compilation only | [invocation](raspberry-pi-armv6-invocation.json), [exit](raspberry-pi-armv6-exit.json), [receipt](raspberry-pi-armv6/result.json) |
+| nrf52840-embedded | exit 0; 26/26 checks; cross-compilation only | [invocation](nrf52840-embedded-invocation.json), [exit](nrf52840-embedded-exit.json), [receipt](nrf52840-embedded/result.json) |
 
 Both native runs use source `38ba440d`; Pi refresh also uses those exact current source bytes. Their commands, logs and receipts are preserved;
 generated objects/executables remain in the recorded `.build/` directories.
@@ -25,8 +26,8 @@ failures are not compiler attempts or repair-count resets.
 
 ## Exact remaining boundary
 
-1. Continue the existing receipt's current-source nRF cross-route check;
-   Raspberry Pi compile route passed on2026-10-13, no target execution.
+1. All four current-source route checks now pass. Pi/nRF are cross-compilation
+   evidence only; their targets were not executed.
 2. Use the fresh verified nRF receipt for the supported counter firmware build.
 3. Inspect final ABI/GOT/allocator, total RAM/flash and actual nested entry,
    graph, host, initialization and corpus stack use against unchanged limits.
@@ -46,4 +47,13 @@ T8.1/HC-RD-003/P08 remain open, and P09–P12 remain pending.
 Pi continuation: `.build/raspberry-pi/contracts/p08-counter-o95xgfoa`,
 actual checker exit0. All221current input hashes match. Preserved native receipts
 remain matching; neither was rerun. Platform preflights passed. Source unchanged,
-no repair, target execution, new Pi image or hardware action. nRF remains next.
+no repair, target execution, new Pi image or hardware action. nRF subsequently passed26/26 with208matching input hashes at
+`.build/nrf52840/contracts/p08-counter-bpvu3ztk`.
+
+The nRF route initializer emits real construction code (1674-byte symbol); all
+constant typed extent/alignment checks are satisfied. It retains only runtime
+buffer count/alignment guards before construction, not an unconditional layout
+trap. Read-only object inspection records a17592-byte local initializer frame
+(36register bytes +17536+20); this is not final firmware stack evidence or a
+nested-chain pass. Two inspection-tool filters were corrected without any
+compiler rerun. One supported nRF image build remains authorized.

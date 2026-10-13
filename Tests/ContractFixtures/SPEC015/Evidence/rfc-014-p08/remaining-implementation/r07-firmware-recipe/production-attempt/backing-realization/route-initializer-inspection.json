@@ -1,0 +1,33 @@
+{
+  "symbol": {
+    "raw": "00000000 0000068a T $e17P08CounterRuntime0B22EmbeddedProfileStorageV10modelOwner08semanticH07backing6limitsAC21GiftUIObservableState015ObservableModelH8IdentityV_0L14UISemanticCore014SemanticRecordhQ0VSw0l9UIRuntimeS00cE6LimitsVtcfC",
+    "demangled": "00000000 0000068a T P08CounterRuntime.CounterEmbeddedProfileStorage.init(modelOwner: GiftUIObservableState.ObservableModelOwnerIdentity, semanticOwner: GiftUISemanticCore.SemanticRecordOwnerIdentity, backing: Swift.UnsafeMutableRawBufferPointer, limits: GiftUIRuntimeCore.RuntimeProfileLimits) -> P08CounterRuntime.CounterEmbeddedProfileStorage"
+  },
+  "commands": [
+    [
+      ".toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/arm-zephyr-eabi-nm",
+      "-S",
+      ".build/nrf52840/contracts/p08-counter-bpvu3ztk/P08CounterRuntime.o"
+    ],
+    [
+      ".toolchains/nrf52840/swift/swift-6.4.0-RELEASE-osx/usr/bin/swift-demangle",
+      "--compact"
+    ],
+    [
+      ".toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/arm-zephyr-eabi-objdump",
+      "-dr",
+      "--disassemble=$e17P08CounterRuntime0B22EmbeddedProfileStorageV10modelOwner08semanticH07backing6limitsAC21GiftUIObservableState015ObservableModelH8IdentityV_0L14UISemanticCore014SemanticRecordhQ0VSw0l9UIRuntimeS00cE6LimitsVtcfC",
+      ".build/nrf52840/contracts/p08-counter-bpvu3ztk/P08CounterRuntime.o"
+    ],
+    [
+      ".toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/bin/arm-zephyr-eabi-objdump",
+      "-Dr",
+      "-j",
+      ".text.$e17P08CounterRuntime0B22EmbeddedProfileStorageV10modelOwner08semanticH07backing6limitsAC21GiftUIObservableState015ObservableModelH8IdentityV_0L14UISemanticCore014SemanticRecordhQ0VSw0l9UIRuntimeS00cE6LimitsVtcfC",
+      ".build/nrf52840/contracts/p08-counter-bpvu3ztk/P08CounterRuntime.o"
+    ]
+  ],
+  "object": ".build/nrf52840/contracts/p08-counter-bpvu3ztk/P08CounterRuntime.o",
+  "object_sha256": "3353180335fb656cceb3b8384a9b96e1218e7c2ddfaa370c3aeb8b6b38bd4e06",
+  "inspection_filter_note": "First read-only filter also matched default-argument helper; refined to exact initializer. No compiler rerun. GNU objdump symbol filter emitted headers only for Swift $e names; exact function section -Dr used read-only."
+}

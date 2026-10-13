@@ -142,3 +142,18 @@ output `.build/raspberry-pi/contracts/p08-counter-o95xgfoa`, 28/28 checks and
 221matching current input hashes. Exact invocation/log/receipt preserved under
 backing-realization. No native rerun or source repair. nRF remains uninvoked in
 this slice; continue its one reviewed checker only after this committed step.
+
+nRF current-source checker PASS on2026-10-13, session11792, actualexit0, output
+`.build/nrf52840/contracts/p08-counter-bpvu3ztk`, 26/26checks and
+208matching current input hashes including new backing fixture. Before the one
+supported image command, inspect the emitted initializer read-only for constant
+layout rejection; no alternate compilation or repair. If it rejects, STOP.
+
+Read-only route initializer inspection confirms construction path, no constant
+layout rejection; local route frame17592bytes remains provisional. Exact
+section disassembly/hash and inspection commands are preserved. Native/Pi/nRF
+source38ba440d receipts now all current. Next exact single supported invocation:
+`scripts/nrf52840/build.sh --application signal-analyzer-static --counter-build
+.build/nrf52840/contracts/p08-counter-bpvu3ztk`. It has not yet run. Preserve
+actual exit and final image; inspect actual linked stack/ABI/GOT/allocator and
+RAM/flash, then STOP. No repair follows failed validation.

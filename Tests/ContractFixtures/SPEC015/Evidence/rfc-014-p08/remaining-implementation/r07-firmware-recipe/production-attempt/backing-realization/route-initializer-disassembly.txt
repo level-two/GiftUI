@@ -1,0 +1,611 @@
+
+.build/nrf52840/contracts/p08-counter-bpvu3ztk/P08CounterRuntime.o:     file format elf32-littlearm
+
+
+Disassembly of section .text.$e17P08CounterRuntime0B22EmbeddedProfileStorageV10modelOwner08semanticH07backing6limitsAC21GiftUIObservableState015ObservableModelH8IdentityV_0L14UISemanticCore014SemanticRecordhQ0VSw0l9UIRuntimeS00cE6LimitsVtcfC:
+
+00000000 <.text.$e17P08CounterRuntime0B22EmbeddedProfileStorageV10modelOwner08semanticH07backing6limitsAC21GiftUIObservableState015ObservableModelH8IdentityV_0L14UISemanticCore014SemanticRecordhQ0VSw0l9UIRuntimeS00cE6LimitsVtcfC>:
+   0:	e92d 4ff0 	stmdb	sp!, {r4, r5, r6, r7, r8, r9, sl, fp, lr}
+   4:	f5ad 4d89 	sub.w	sp, sp, #17536	; 0x4480
+   8:	b085      	sub	sp, #20
+   a:	2b00      	cmp	r3, #0
+   c:	f000 8331 	beq.w	672 <.text.$e17P08CounterRuntime0B22EmbeddedProfileStorageV10modelOwner08semanticH07backing6limitsAC21GiftUIObservableState015ObservableModelH8IdentityV_0L14UISemanticCore014SemanticRecordhQ0VSw0l9UIRuntimeS00cE6LimitsVtcfC+0x672>
+  10:	4682      	mov	sl, r0
+  12:	461d      	mov	r5, r3
+  14:	0758      	lsls	r0, r3, #29
+  16:	f040 832b 	bne.w	670 <.text.$e17P08CounterRuntime0B22EmbeddedProfileStorageV10modelOwner08semanticH07backing6limitsAC21GiftUIObservableState015ObservableModelH8IdentityV_0L14UISemanticCore014SemanticRecordhQ0VSw0l9UIRuntimeS00cE6LimitsVtcfC+0x670>
+  1a:	f50d 4080 	add.w	r0, sp, #16384	; 0x4000
+  1e:	f247 53e0 	movw	r3, #30176	; 0x75e0
+  22:	f8d0 04b8 	ldr.w	r0, [r0, #1208]	; 0x4b8
+  26:	1b40      	subs	r0, r0, r5
+  28:	4298      	cmp	r0, r3
+  2a:	f040 8321 	bne.w	670 <.text.$e17P08CounterRuntime0B22EmbeddedProfileStorageV10modelOwner08semanticH07backing6limitsAC21GiftUIObservableState015ObservableModelH8IdentityV_0L14UISemanticCore014SemanticRecordhQ0VSw0l9UIRuntimeS00cE6LimitsVtcfC+0x670>
+  2e:	9207      	str	r2, [sp, #28]
+  30:	910a      	str	r1, [sp, #40]	; 0x28
+  32:	a802      	add	r0, sp, #8
+  34:	2273      	movs	r2, #115	; 0x73
+  36:	f500 5646 	add.w	r6, r0, #12672	; 0x3180
+  3a:	f50d 4080 	add.w	r0, sp, #16384	; 0x4000
+  3e:	f8d0 44bc 	ldr.w	r4, [r0, #1212]	; 0x4bc
+  42:	4628      	mov	r0, r5
+  44:	f7ff fffe 	bl	0 <.text.$e17P08CounterRuntime0B22EmbeddedProfileStorageV10modelOwner08semanticH07backing6limitsAC21GiftUIObservableState015ObservableModelH8IdentityV_0L14UISemanticCore014SemanticRecordhQ0VSw0l9UIRuntimeS00cE6LimitsVtcfC>
+			44: R_ARM_THM_CALL	OUTLINED_FUNCTION_82
+  48:	8b20      	ldrh	r0, [r4, #24]
+  4a:	f8b4 9016 	ldrh.w	r9, [r4, #22]
+  4e:	9008      	str	r0, [sp, #32]
+  50:	8aa0      	ldrh	r0, [r4, #20]
+  52:	9009      	str	r0, [sp, #36]	; 0x24
+  54:	a809      	add	r0, sp, #36	; 0x24
+  56:	f7ff fffe 	bl	0 <.text.$e17P08CounterRuntime0B22EmbeddedProfileStorageV10modelOwner08semanticH07backing6limitsAC21GiftUIObservableState015ObservableModelH8IdentityV_0L14UISemanticCore014SemanticRecordhQ0VSw0l9UIRuntimeS00cE6LimitsVtcfC>
+			56: R_ARM_THM_CALL	OUTLINED_FUNCTION_237
+  5a:	2000      	movs	r0, #0
+  5c:	f50d 5140 	add.w	r1, sp, #12288	; 0x3000
+  60:	f50d 5858 	add.w	r8, sp, #13824	; 0x3600
+  64:	f881 0616 	strb.w	r0, [r1, #1558]	; 0x616
+  68:	f8a1 0614 	strh.w	r0, [r1, #1556]	; 0x614
+  6c:	f8c6 0488 	str.w	r0, [r6, #1160]	; 0x488
+  70:	f881 0606 	strb.w	r0, [r1, #1542]	; 0x606
+  74:	f8a1 0604 	strh.w	r0, [r1, #1540]	; 0x604
+  78:	f8c6 0478 	str.w	r0, [r6, #1144]	; 0x478
+  7c:	f8c6 0480 	str.w	r0, [r6, #1152]	; 0x480
+  80:	f881 060c 	strb.w	r0, [r1, #1548]	; 0x60c
+  84:	f8c6 0490 	str.w	r0, [r6, #1168]	; 0x490
+  88:	f881 061c 	strb.w	r0, [r1, #1564]	; 0x61c
+  8c:	a904      	add	r1, sp, #16
+  8e:	f501 5156 	add.w	r1, r1, #13696	; 0x3580
+  92:	eb08 0200 	add.w	r2, r8, r0
+  96:	180b      	adds	r3, r1, r0
+  98:	3010      	adds	r0, #16
+  9a:	cad0      	ldmia	r2!, {r4, r6, r7}
+  9c:	2820      	cmp	r0, #32
+  9e:	c3d0      	stmia	r3!, {r4, r6, r7}
+  a0:	7812      	ldrb	r2, [r2, #0]
+  a2:	701a      	strb	r2, [r3, #0]
+  a4:	d1f5      	bne.n	92 <.text.$e17P08CounterRuntime0B22EmbeddedProfileStorageV10modelOwner08semanticH07backing6limitsAC21GiftUIObservableState015ObservableModelH8IdentityV_0L14UISemanticCore014SemanticRecordhQ0VSw0l9UIRuntimeS00cE6LimitsVtcfC+0x92>
+  a6:	a806      	add	r0, sp, #24
+  a8:	a904      	add	r1, sp, #16
+  aa:	2220      	movs	r2, #32
+  ac:	f500 5445 	add.w	r4, r0, #12608	; 0x3140
+  b0:	f501 5156 	add.w	r1, r1, #13696	; 0x3580
+  b4:	1ce0      	adds	r0, r4, #3
+  b6:	f7ff fffe 	bl	0 <__aeabi_memcpy>
+			b6: R_ARM_THM_CALL	__aeabi_memcpy
+  ba:	f7ff fffe 	bl	0 <.text.$e17P08CounterRuntime0B22EmbeddedProfileStorageV10modelOwner08semanticH07backing6limitsAC21GiftUIObservableState015ObservableModelH8IdentityV_0L14UISemanticCore014SemanticRecordhQ0VSw0l9UIRuntimeS00cE6LimitsVtcfC>
+			ba: R_ARM_THM_CALL	OUTLINED_FUNCTION_72
+  be:	2700      	movs	r7, #0
+  c0:	9000      	str	r0, [sp, #0]
+  c2:	a80f      	add	r0, sp, #60	; 0x3c
+  c4:	f500 5b45 	add.w	fp, r0, #12608	; 0x3140
+  c8:	f10b 0034 	add.w	r0, fp, #52	; 0x34
+  cc:	f7ff fffe 	bl	0 <.text.$e17P08CounterRuntime0B22EmbeddedProfileStorageV10modelOwner08semanticH07backing6limitsAC21GiftUIObservableState015ObservableModelH8IdentityV_0L14UISemanticCore014SemanticRecordhQ0VSw0l9UIRuntimeS00cE6LimitsVtcfC>
+			cc: R_ARM_THM_CALL	$es11InlineArrayV9repeatingAByxq_Gq__tcfC$3__21GiftUIObservableState24ObservableModelOwnershipV11ClaimRecordVTt1g5
+  d0:	f50d 5040 	add.w	r0, sp, #12288	; 0x3000
+  d4:	4621      	mov	r1, r4
+  d6:	2223      	movs	r2, #35	; 0x23
+  d8:	f880 718c 	strb.w	r7, [r0, #396]	; 0x18c
+  dc:	a802      	add	r0, sp, #8
+  de:	f500 5646 	add.w	r6, r0, #12672	; 0x3180
+  e2:	f50d 5040 	add.w	r0, sp, #12288	; 0x3000
+  e6:	f880 7184 	strb.w	r7, [r0, #388]	; 0x184
+  ea:	980a      	ldr	r0, [sp, #40]	; 0x28
+  ec:	6037      	str	r7, [r6, #0]
+  ee:	e946 0703 	strd	r0, r7, [r6, #-12]
+  f2:	f10b 0011 	add.w	r0, fp, #17
+  f6:	f7ff fffe 	bl	0 <__aeabi_memcpy>
+			f6: R_ARM_THM_CALL	__aeabi_memcpy
+  fa:	9908      	ldr	r1, [sp, #32]
+  fc:	2002      	movs	r0, #2
+  fe:	f8c6 706e 	str.w	r7, [r6, #110]	; 0x6e
+ 102:	f50d 5240 	add.w	r2, sp, #12288	; 0x3000
+ 106:	2902      	cmp	r1, #2
+ 108:	f04f 0102 	mov.w	r1, #2
+ 10c:	bf38      	it	cc
+ 10e:	2101      	movcc	r1, #1
+ 110:	2401      	movs	r4, #1
+ 112:	f8a2 11f4 	strh.w	r1, [r2, #500]	; 0x1f4
+ 116:	f1b9 0f01 	cmp.w	r9, #1
+ 11a:	bf98      	it	ls
+ 11c:	46a1      	movls	r9, r4
+ 11e:	f50d 5140 	add.w	r1, sp, #12288	; 0x3000
+ 122:	f1b9 0f04 	cmp.w	r9, #4
+ 126:	bf28      	it	cs
+ 128:	f04f 0904 	movcs.w	r9, #4
+ 12c:	f8a1 91f2 	strh.w	r9, [r1, #498]	; 0x1f2
+ 130:	9909      	ldr	r1, [sp, #36]	; 0x24
+ 132:	2902      	cmp	r1, #2
+ 134:	bf38      	it	cc
+ 136:	2001      	movcc	r0, #1
+ 138:	f50d 5140 	add.w	r1, sp, #12288	; 0x3000
+ 13c:	f8a1 01f0 	strh.w	r0, [r1, #496]	; 0x1f0
+ 140:	f10b 0080 	add.w	r0, fp, #128	; 0x80
+ 144:	2138      	movs	r1, #56	; 0x38
+ 146:	f7ff fffe 	bl	0 <__aeabi_memclr4>
+			146: R_ARM_THM_CALL	__aeabi_memclr4
+ 14a:	f50d 5040 	add.w	r0, sp, #12288	; 0x3000
+ 14e:	e9c6 772c 	strd	r7, r7, [r6, #176]	; 0xb0
+ 152:	e9c6 772e 	strd	r7, r7, [r6, #184]	; 0xb8
+ 156:	e9c6 4730 	strd	r4, r7, [r6, #192]	; 0xc0
+ 15a:	e9c6 7732 	strd	r7, r7, [r6, #200]	; 0xc8
+ 15e:	e9c6 7434 	strd	r7, r4, [r6, #208]	; 0xd0
+ 162:	f880 4234 	strb.w	r4, [r0, #564]	; 0x234
+ 166:	f880 7262 	strb.w	r7, [r0, #610]	; 0x262
+ 16a:	f8a0 4260 	strh.w	r4, [r0, #608]	; 0x260
+ 16e:	4658      	mov	r0, fp
+ 170:	f7ff fffe 	bl	0 <.text.$e17P08CounterRuntime0B22EmbeddedProfileStorageV10modelOwner08semanticH07backing6limitsAC21GiftUIObservableState015ObservableModelH8IdentityV_0L14UISemanticCore014SemanticRecordhQ0VSw0l9UIRuntimeS00cE6LimitsVtcfC>
+			170: R_ARM_THM_CALL	$e19GiftUIRuntimeStatic0C22ObservableModelStorageVy17P08CounterRuntime0h5OwnedE0V0gH6Schema0heK0OGSgWOi_
+ 174:	4658      	mov	r0, fp
+ 176:	f7ff fffe 	bl	0 <.text.$e17P08CounterRuntime0B22EmbeddedProfileStorageV10modelOwner08semanticH07backing6limitsAC21GiftUIObservableState015ObservableModelH8IdentityV_0L14UISemanticCore014SemanticRecordhQ0VSw0l9UIRuntimeS00cE6LimitsVtcfC>
+			176: R_ARM_THM_CALL	$e19GiftUIRuntimeStatic0C22ObservableModelStorageVy17P08CounterRuntime0h5OwnedE0V0gH6Schema0heK0OGSgWOg
+ 17a:	2801      	cmp	r0, #1
+ 17c:	f000 827a 	beq.w	674 <.text.$e17P08CounterRuntime0B22EmbeddedProfileStorageV10modelOwner08semanticH07backing6limitsAC21GiftUIObservableState015ObservableModelH8IdentityV_0L14UISemanticCore014SemanticRecordhQ0VSw0l9UIRuntimeS00cE6LimitsVtcfC+0x674>
+ 180:	f245 5034 	movw	r0, #21812	; 0x5534
+ 184:	22e7      	movs	r2, #231	; 0xe7
+ 186:	f105 0474 	add.w	r4, r5, #116	; 0x74
+ 18a:	4428      	add	r0, r5
+ 18c:	900a      	str	r0, [sp, #40]	; 0x28
+ 18e:	f245 3014 	movw	r0, #21268	; 0x5314
+ 192:	4428      	add	r0, r5
+ 194:	9009      	str	r0, [sp, #36]	; 0x24
+ 196:	f642 7014 	movw	r0, #12052	; 0x2f14
+ 19a:	4428      	add	r0, r5
+ 19c:	9008      	str	r0, [sp, #32]
+ 19e:	f605 6014 	addw	r0, r5, #3604	; 0xe14
+ 1a2:	9006      	str	r0, [sp, #24]
+ 1a4:	f205 4014 	addw	r0, r5, #1044	; 0x414
+ 1a8:	9005      	str	r0, [sp, #20]
+ 1aa:	f505 7068 	add.w	r0, r5, #928	; 0x3a0
+ 1ae:	9004      	str	r0, [sp, #16]
+ 1b0:	a809      	add	r0, sp, #36	; 0x24
+ 1b2:	f500 5949 	add.w	r9, r0, #12864	; 0x3240
+ 1b6:	a80f      	add	r0, sp, #60	; 0x3c
+ 1b8:	f500 5145 	add.w	r1, r0, #12608	; 0x3140
+ 1bc:	f7ff fffe 	bl	0 <.text.$e17P08CounterRuntime0B22EmbeddedProfileStorageV10modelOwner08semanticH07backing6limitsAC21GiftUIObservableState015ObservableModelH8IdentityV_0L14UISemanticCore014SemanticRecordhQ0VSw0l9UIRuntimeS00cE6LimitsVtcfC>
+			1bc: R_ARM_THM_CALL	OUTLINED_FUNCTION_229
+ 1c0:	4620      	mov	r0, r4
+ 1c2:	4649      	mov	r1, r9
+ 1c4:	f240 322a 	movw	r2, #810	; 0x32a
+ 1c8:	9403      	str	r4, [sp, #12]
+ 1ca:	f7ff fffe 	bl	0 <__aeabi_memcpy4>
+			1ca: R_ARM_THM_CALL	__aeabi_memcpy4
+ 1ce:	f50d 5040 	add.w	r0, sp, #12288	; 0x3000
+ 1d2:	f8c6 746f 	str.w	r7, [r6, #1135]	; 0x46f
+ 1d6:	f8c6 746b 	str.w	r7, [r6, #1131]	; 0x46b
+ 1da:	f8c6 7467 	str.w	r7, [r6, #1127]	; 0x467
+ 1de:	2112      	movs	r1, #18
+ 1e0:	f8a0 75fb 	strh.w	r7, [r0, #1531]	; 0x5fb
+ 1e4:	a806      	add	r0, sp, #24
+ 1e6:	f500 5957 	add.w	r9, r0, #13760	; 0x35c0
+ 1ea:	f109 0002 	add.w	r0, r9, #2
+ 1ee:	f7ff fffe 	bl	0 <__aeabi_memclr>
+			1ee: R_ARM_THM_CALL	__aeabi_memclr
+ 1f2:	f50d 5040 	add.w	r0, sp, #12288	; 0x3000
+ 1f6:	f8c6 7447 	str.w	r7, [r6, #1095]	; 0x447
+ 1fa:	f8c6 7443 	str.w	r7, [r6, #1091]	; 0x443
+ 1fe:	f8c6 743f 	str.w	r7, [r6, #1087]	; 0x43f
+ 202:	2112      	movs	r1, #18
+ 204:	f8a0 75d3 	strh.w	r7, [r0, #1491]	; 0x5d3
+ 208:	a80c      	add	r0, sp, #48	; 0x30
+ 20a:	f500 5b56 	add.w	fp, r0, #13696	; 0x3580
+ 20e:	f10b 0002 	add.w	r0, fp, #2
+ 212:	f7ff fffe 	bl	0 <__aeabi_memclr>
+			212: R_ARM_THM_CALL	__aeabi_memclr
+ 216:	f885 73a0 	strb.w	r7, [r5, #928]	; 0x3a0
+ 21a:	a90b      	add	r1, sp, #44	; 0x2c
+ 21c:	f205 30a1 	addw	r0, r5, #929	; 0x3a1
+ 220:	2211      	movs	r2, #17
+ 222:	f501 5157 	add.w	r1, r1, #13760	; 0x35c0
+ 226:	f7ff fffe 	bl	0 <__aeabi_memcpy>
+			226: R_ARM_THM_CALL	__aeabi_memcpy
+ 22a:	f04f 34ff 	mov.w	r4, #4294967295	; 0xffffffff
+ 22e:	f205 30ba 	addw	r0, r5, #954	; 0x3ba
+ 232:	4649      	mov	r1, r9
+ 234:	2214      	movs	r2, #20
+ 236:	f8c5 73b4 	str.w	r7, [r5, #948]	; 0x3b4
+ 23a:	f8a5 43b8 	strh.w	r4, [r5, #952]	; 0x3b8
+ 23e:	f7ff fffe 	bl	0 <__aeabi_memcpy>
+			23e: R_ARM_THM_CALL	__aeabi_memcpy
+ 242:	f240 4601 	movw	r6, #1025	; 0x401
+ 246:	f885 73d0 	strb.w	r7, [r5, #976]	; 0x3d0
+ 24a:	f205 30d1 	addw	r0, r5, #977	; 0x3d1
+ 24e:	2211      	movs	r2, #17
+ 250:	f8a5 63ce 	strh.w	r6, [r5, #974]	; 0x3ce
+ 254:	a901      	add	r1, sp, #4
+ 256:	f501 5157 	add.w	r1, r1, #13760	; 0x35c0
+ 25a:	f7ff fffe 	bl	0 <__aeabi_memcpy>
+			25a: R_ARM_THM_CALL	__aeabi_memcpy
+ 25e:	f205 30ea 	addw	r0, r5, #1002	; 0x3ea
+ 262:	4659      	mov	r1, fp
+ 264:	2214      	movs	r2, #20
+ 266:	f8a5 43e8 	strh.w	r4, [r5, #1000]	; 0x3e8
+ 26a:	f8c5 73e4 	str.w	r7, [r5, #996]	; 0x3e4
+ 26e:	f7ff fffe 	bl	0 <__aeabi_memcpy>
+			26e: R_ARM_THM_CALL	__aeabi_memcpy
+ 272:	f44f 5080 	mov.w	r0, #4096	; 0x1000
+ 276:	49fb      	ldr	r1, [pc, #1004]	; (664 <.text.$e17P08CounterRuntime0B22EmbeddedProfileStorageV10modelOwner08semanticH07backing6limitsAC21GiftUIObservableState015ObservableModelH8IdentityV_0L14UISemanticCore014SemanticRecordhQ0VSw0l9UIRuntimeS00cE6LimitsVtcfC+0x664>)
+ 278:	4afb      	ldr	r2, [pc, #1004]	; (668 <.text.$e17P08CounterRuntime0B22EmbeddedProfileStorageV10modelOwner08semanticH07backing6limitsAC21GiftUIObservableState015ObservableModelH8IdentityV_0L14UISemanticCore014SemanticRecordhQ0VSw0l9UIRuntimeS00cE6LimitsVtcfC+0x668>)
+ 27a:	4bfc      	ldr	r3, [pc, #1008]	; (66c <.text.$e17P08CounterRuntime0B22EmbeddedProfileStorageV10modelOwner08semanticH07backing6limitsAC21GiftUIObservableState015ObservableModelH8IdentityV_0L14UISemanticCore014SemanticRecordhQ0VSw0l9UIRuntimeS00cE6LimitsVtcfC+0x66c>)
+ 27c:	f8a5 63fe 	strh.w	r6, [r5, #1022]	; 0x3fe
+ 280:	f8c5 040c 	str.w	r0, [r5, #1036]	; 0x40c
+ 284:	9807      	ldr	r0, [sp, #28]
+ 286:	f8c5 1408 	str.w	r1, [r5, #1032]	; 0x408
+ 28a:	2100      	movs	r1, #0
+ 28c:	f8c5 3400 	str.w	r3, [r5, #1024]	; 0x400
+ 290:	f8c5 2404 	str.w	r2, [r5, #1028]	; 0x404
+ 294:	f8c5 0410 	str.w	r0, [r5, #1040]	; 0x410
+ 298:	f64f 70ff 	movw	r0, #65535	; 0xffff
+ 29c:	186a      	adds	r2, r5, r1
+ 29e:	3114      	adds	r1, #20
+ 2a0:	f5b1 6f20 	cmp.w	r1, #2560	; 0xa00
+ 2a4:	f8a2 441c 	strh.w	r4, [r2, #1052]	; 0x41c
+ 2a8:	f8c2 4418 	str.w	r4, [r2, #1048]	; 0x418
+ 2ac:	f8c2 4414 	str.w	r4, [r2, #1044]	; 0x414
+ 2b0:	f8a2 7426 	strh.w	r7, [r2, #1062]	; 0x426
+ 2b4:	f8c2 7422 	str.w	r7, [r2, #1058]	; 0x422
+ 2b8:	f8a2 0420 	strh.w	r0, [r2, #1056]	; 0x420
+ 2bc:	f882 741e 	strb.w	r7, [r2, #1054]	; 0x41e
+ 2c0:	d1ec      	bne.n	29c <.text.$e17P08CounterRuntime0B22EmbeddedProfileStorageV10modelOwner08semanticH07backing6limitsAC21GiftUIObservableState015ObservableModelH8IdentityV_0L14UISemanticCore014SemanticRecordhQ0VSw0l9UIRuntimeS00cE6LimitsVtcfC+0x29c>
+ 2c2:	f605 611a 	addw	r1, r5, #3610	; 0xe1a
+ 2c6:	2200      	movs	r2, #0
+ 2c8:	f04f 33ff 	mov.w	r3, #4294967295	; 0xffffffff
+ 2cc:	2400      	movs	r4, #0
+ 2ce:	192e      	adds	r6, r5, r4
+ 2d0:	190f      	adds	r7, r1, r4
+ 2d2:	f8a6 2e18 	strh.w	r2, [r6, #3608]	; 0xe18
+ 2d6:	f8c6 2e14 	str.w	r2, [r6, #3604]	; 0xe14
+ 2da:	510b      	str	r3, [r1, r4]
+ 2dc:	3416      	adds	r4, #22
+ 2de:	607b      	str	r3, [r7, #4]
+ 2e0:	f8a6 0e28 	strh.w	r0, [r6, #3624]	; 0xe28
+ 2e4:	f8a6 0e26 	strh.w	r0, [r6, #3622]	; 0xe26
+ 2e8:	f8c6 2e22 	str.w	r2, [r6, #3618]	; 0xe22
+ 2ec:	f5b4 5f04 	cmp.w	r4, #8448	; 0x2100
+ 2f0:	d1ed      	bne.n	2ce <.text.$e17P08CounterRuntime0B22EmbeddedProfileStorageV10modelOwner08semanticH07backing6limitsAC21GiftUIObservableState015ObservableModelH8IdentityV_0L14UISemanticCore014SemanticRecordhQ0VSw0l9UIRuntimeS00cE6LimitsVtcfC+0x2ce>
+ 2f2:	f642 7034 	movw	r0, #12084	; 0x2f34
+ 2f6:	f44f 7680 	mov.w	r6, #256	; 0x100
+ 2fa:	27ff      	movs	r7, #255	; 0xff
+ 2fc:	182c      	adds	r4, r5, r0
+ 2fe:	a802      	add	r0, sp, #8
+ 300:	f500 5946 	add.w	r9, r0, #12672	; 0x3180
+ 304:	f1a4 0020 	sub.w	r0, r4, #32
+ 308:	2120      	movs	r1, #32
+ 30a:	f7ff fffe 	bl	0 <__aeabi_memclr>
+			30a: R_ARM_THM_CALL	__aeabi_memclr
+ 30e:	f804 7b24 	strb.w	r7, [r4], #36
+ 312:	3e01      	subs	r6, #1
+ 314:	d1f6      	bne.n	304 <.text.$e17P08CounterRuntime0B22EmbeddedProfileStorageV10modelOwner08semanticH07backing6limitsAC21GiftUIObservableState015ObservableModelH8IdentityV_0L14UISemanticCore014SemanticRecordhQ0VSw0l9UIRuntimeS00cE6LimitsVtcfC+0x304>
+ 316:	9809      	ldr	r0, [sp, #36]	; 0x24
+ 318:	f44f 7107 	mov.w	r1, #540	; 0x21c
+ 31c:	f7ff fffe 	bl	0 <__aeabi_memclr4>
+			31c: R_ARM_THM_CALL	__aeabi_memclr4
+ 320:	f245 5030 	movw	r0, #21808	; 0x5530
+ 324:	f04f 7100 	mov.w	r1, #33554432	; 0x2000000
+ 328:	5029      	str	r1, [r5, r0]
+ 32a:	980a      	ldr	r0, [sp, #40]	; 0x28
+ 32c:	f640 01a4 	movw	r1, #2212	; 0x8a4
+ 330:	f7ff fffe 	bl	0 <__aeabi_memclr>
+			330: R_ARM_THM_CALL	__aeabi_memclr
+ 334:	a808      	add	r0, sp, #32
+ 336:	f500 5632 	add.w	r6, r0, #11392	; 0x2c80
+ 33a:	4630      	mov	r0, r6
+ 33c:	f7ff fffe 	bl	0 <.text.$e17P08CounterRuntime0B22EmbeddedProfileStorageV10modelOwner08semanticH07backing6limitsAC21GiftUIObservableState015ObservableModelH8IdentityV_0L14UISemanticCore014SemanticRecordhQ0VSw0l9UIRuntimeS00cE6LimitsVtcfC>
+			33c: R_ARM_THM_CALL	$e17GiftUIInteraction26InteractionCandidateRecordVy0A14UISemanticCore24SemanticCompleteIdentityVGSgWOi0_
+ 340:	a80f      	add	r0, sp, #60	; 0x3c
+ 342:	4631      	mov	r1, r6
+ 344:	22f0      	movs	r2, #240	; 0xf0
+ 346:	f500 5405 	add.w	r4, r0, #8512	; 0x2140
+ 34a:	f7ff fffe 	bl	0 <.text.$e17P08CounterRuntime0B22EmbeddedProfileStorageV10modelOwner08semanticH07backing6limitsAC21GiftUIObservableState015ObservableModelH8IdentityV_0L14UISemanticCore014SemanticRecordhQ0VSw0l9UIRuntimeS00cE6LimitsVtcfC>
+			34a: R_ARM_THM_CALL	OUTLINED_FUNCTION_65
+ 34e:	f104 00f0 	add.w	r0, r4, #240	; 0xf0
+ 352:	4631      	mov	r1, r6
+ 354:	f7ff fffe 	bl	0 <.text.$e17P08CounterRuntime0B22EmbeddedProfileStorageV10modelOwner08semanticH07backing6limitsAC21GiftUIObservableState015ObservableModelH8IdentityV_0L14UISemanticCore014SemanticRecordhQ0VSw0l9UIRuntimeS00cE6LimitsVtcfC>
+			354: R_ARM_THM_CALL	OUTLINED_FUNCTION_125
+ 358:	2002      	movs	r0, #2
+ 35a:	f108 0b04 	add.w	fp, r8, #4
+ 35e:	4621      	mov	r1, r4
+ 360:	f44f 72f0 	mov.w	r2, #480	; 0x1e0
+ 364:	f8c9 0478 	str.w	r0, [r9, #1144]	; 0x478
+ 368:	f7ff fffe 	bl	0 <.text.$e17P08CounterRuntime0B22EmbeddedProfileStorageV10modelOwner08semanticH07backing6limitsAC21GiftUIObservableState015ObservableModelH8IdentityV_0L14UISemanticCore014SemanticRecordhQ0VSw0l9UIRuntimeS00cE6LimitsVtcfC>
+			368: R_ARM_THM_CALL	OUTLINED_FUNCTION_152
+ 36c:	4640      	mov	r0, r8
+ 36e:	f7ff fffe 	bl	0 <.text.$e17P08CounterRuntime0B22EmbeddedProfileStorageV10modelOwner08semanticH07backing6limitsAC21GiftUIObservableState015ObservableModelH8IdentityV_0L14UISemanticCore014SemanticRecordhQ0VSw0l9UIRuntimeS00cE6LimitsVtcfC>
+			36e: R_ARM_THM_CALL	$e17P08CounterRuntime36StaticTwoInteractionCandidateStorageVy18GiftUISemanticCore24SemanticCompleteIdentityVGSgWOi_
+ 372:	a804      	add	r0, sp, #16
+ 374:	4641      	mov	r1, r8
+ 376:	f44f 72f2 	mov.w	r2, #484	; 0x1e4
+ 37a:	f500 5436 	add.w	r4, r0, #11648	; 0x2d80
+ 37e:	f7ff fffe 	bl	0 <.text.$e17P08CounterRuntime0B22EmbeddedProfileStorageV10modelOwner08semanticH07backing6limitsAC21GiftUIObservableState015ObservableModelH8IdentityV_0L14UISemanticCore014SemanticRecordhQ0VSw0l9UIRuntimeS00cE6LimitsVtcfC>
+			37e: R_ARM_THM_CALL	OUTLINED_FUNCTION_65
+ 382:	a80d      	add	r0, sp, #52	; 0x34
+ 384:	4621      	mov	r1, r4
+ 386:	f7ff fffe 	bl	0 <.text.$e17P08CounterRuntime0B22EmbeddedProfileStorageV10modelOwner08semanticH07backing6limitsAC21GiftUIObservableState015ObservableModelH8IdentityV_0L14UISemanticCore014SemanticRecordhQ0VSw0l9UIRuntimeS00cE6LimitsVtcfC>
+			386: R_ARM_THM_CALL	OUTLINED_FUNCTION_209
+ 38a:	4620      	mov	r0, r4
+ 38c:	f7ff fffe 	bl	0 <.text.$e17P08CounterRuntime0B22EmbeddedProfileStorageV10modelOwner08semanticH07backing6limitsAC21GiftUIObservableState015ObservableModelH8IdentityV_0L14UISemanticCore014SemanticRecordhQ0VSw0l9UIRuntimeS00cE6LimitsVtcfC>
+			38c: R_ARM_THM_CALL	$e17P08CounterRuntime36StaticTwoInteractionCandidateStorageVy18GiftUISemanticCore24SemanticCompleteIdentityVGSgWOg
+ 390:	2801      	cmp	r0, #1
+ 392:	f000 8175 	beq.w	680 <.text.$e17P08CounterRuntime0B22EmbeddedProfileStorageV10modelOwner08semanticH07backing6limitsAC21GiftUIObservableState015ObservableModelH8IdentityV_0L14UISemanticCore014SemanticRecordhQ0VSw0l9UIRuntimeS00cE6LimitsVtcfC+0x680>
+ 396:	a806      	add	r0, sp, #24
+ 398:	f500 54d9 	add.w	r4, r0, #6944	; 0x1b20
+ 39c:	4620      	mov	r0, r4
+ 39e:	f7ff fffe 	bl	0 <.text.$e17P08CounterRuntime0B22EmbeddedProfileStorageV10modelOwner08semanticH07backing6limitsAC21GiftUIObservableState015ObservableModelH8IdentityV_0L14UISemanticCore014SemanticRecordhQ0VSw0l9UIRuntimeS00cE6LimitsVtcfC>
+			39e: R_ARM_THM_CALL	$e17GiftUIInteraction20InteractionHitRegionVy0A14UISemanticCore24SemanticCompleteIdentityVGSgWOi0_
+ 3a2:	ae0b      	add	r6, sp, #44	; 0x2c
+ 3a4:	4621      	mov	r1, r4
+ 3a6:	22e2      	movs	r2, #226	; 0xe2
+ 3a8:	f7ff fffe 	bl	0 <.text.$e17P08CounterRuntime0B22EmbeddedProfileStorageV10modelOwner08semanticH07backing6limitsAC21GiftUIObservableState015ObservableModelH8IdentityV_0L14UISemanticCore014SemanticRecordhQ0VSw0l9UIRuntimeS00cE6LimitsVtcfC>
+			3a8: R_ARM_THM_CALL	OUTLINED_FUNCTION_79
+ 3ac:	f106 00e4 	add.w	r0, r6, #228	; 0xe4
+ 3b0:	4621      	mov	r1, r4
+ 3b2:	22e2      	movs	r2, #226	; 0xe2
+ 3b4:	9007      	str	r0, [sp, #28]
+ 3b6:	f7ff fffe 	bl	0 <__aeabi_memcpy4>
+			3b6: R_ARM_THM_CALL	__aeabi_memcpy4
+ 3ba:	a807      	add	r0, sp, #28
+ 3bc:	2400      	movs	r4, #0
+ 3be:	f500 57e0 	add.w	r7, r0, #7168	; 0x1c00
+ 3c2:	1938      	adds	r0, r7, r4
+ 3c4:	1931      	adds	r1, r6, r4
+ 3c6:	f7ff fffe 	bl	0 <.text.$e17P08CounterRuntime0B22EmbeddedProfileStorageV10modelOwner08semanticH07backing6limitsAC21GiftUIObservableState015ObservableModelH8IdentityV_0L14UISemanticCore014SemanticRecordhQ0VSw0l9UIRuntimeS00cE6LimitsVtcfC>
+			3c6: R_ARM_THM_CALL	OUTLINED_FUNCTION_141
+ 3ca:	34e4      	adds	r4, #228	; 0xe4
+ 3cc:	f5b4 7fe4 	cmp.w	r4, #456	; 0x1c8
+ 3d0:	d1f7      	bne.n	3c2 <.text.$e17P08CounterRuntime0B22EmbeddedProfileStorageV10modelOwner08semanticH07backing6limitsAC21GiftUIObservableState015ObservableModelH8IdentityV_0L14UISemanticCore014SemanticRecordhQ0VSw0l9UIRuntimeS00cE6LimitsVtcfC+0x3c2>
+ 3d2:	a802      	add	r0, sp, #8
+ 3d4:	2702      	movs	r7, #2
+ 3d6:	f44f 72e4 	mov.w	r2, #456	; 0x1c8
+ 3da:	f500 5046 	add.w	r0, r0, #12672	; 0x3180
+ 3de:	f8c0 7478 	str.w	r7, [r0, #1144]	; 0x478
+ 3e2:	a807      	add	r0, sp, #28
+ 3e4:	f500 51e0 	add.w	r1, r0, #7168	; 0x1c00
+ 3e8:	f7ff fffe 	bl	0 <.text.$e17P08CounterRuntime0B22EmbeddedProfileStorageV10modelOwner08semanticH07backing6limitsAC21GiftUIObservableState015ObservableModelH8IdentityV_0L14UISemanticCore014SemanticRecordhQ0VSw0l9UIRuntimeS00cE6LimitsVtcfC>
+			3e8: R_ARM_THM_CALL	OUTLINED_FUNCTION_152
+ 3ec:	4640      	mov	r0, r8
+ 3ee:	f7ff fffe 	bl	0 <.text.$e17P08CounterRuntime0B22EmbeddedProfileStorageV10modelOwner08semanticH07backing6limitsAC21GiftUIObservableState015ObservableModelH8IdentityV_0L14UISemanticCore014SemanticRecordhQ0VSw0l9UIRuntimeS00cE6LimitsVtcfC>
+			3ee: R_ARM_THM_CALL	$e17P08CounterRuntime30StaticTwoInteractionHitStorageVy18GiftUISemanticCore24SemanticCompleteIdentityVGSgWOi_
+ 3f2:	a801      	add	r0, sp, #4
+ 3f4:	4641      	mov	r1, r8
+ 3f6:	f44f 72e6 	mov.w	r2, #460	; 0x1cc
+ 3fa:	f500 54ef 	add.w	r4, r0, #7648	; 0x1de0
+ 3fe:	f7ff fffe 	bl	0 <.text.$e17P08CounterRuntime0B22EmbeddedProfileStorageV10modelOwner08semanticH07backing6limitsAC21GiftUIObservableState015ObservableModelH8IdentityV_0L14UISemanticCore014SemanticRecordhQ0VSw0l9UIRuntimeS00cE6LimitsVtcfC>
+			3fe: R_ARM_THM_CALL	OUTLINED_FUNCTION_65
+ 402:	a804      	add	r0, sp, #16
+ 404:	4621      	mov	r1, r4
+ 406:	f7ff fffe 	bl	0 <.text.$e17P08CounterRuntime0B22EmbeddedProfileStorageV10modelOwner08semanticH07backing6limitsAC21GiftUIObservableState015ObservableModelH8IdentityV_0L14UISemanticCore014SemanticRecordhQ0VSw0l9UIRuntimeS00cE6LimitsVtcfC>
+			406: R_ARM_THM_CALL	OUTLINED_FUNCTION_206
+ 40a:	4620      	mov	r0, r4
+ 40c:	f7ff fffe 	bl	0 <.text.$e17P08CounterRuntime0B22EmbeddedProfileStorageV10modelOwner08semanticH07backing6limitsAC21GiftUIObservableState015ObservableModelH8IdentityV_0L14UISemanticCore014SemanticRecordhQ0VSw0l9UIRuntimeS00cE6LimitsVtcfC>
+			40c: R_ARM_THM_CALL	$e17P08CounterRuntime30StaticTwoInteractionHitStorageVy18GiftUISemanticCore24SemanticCompleteIdentityVGSgWOg
+ 410:	2801      	cmp	r0, #1
+ 412:	f000 8136 	beq.w	682 <.text.$e17P08CounterRuntime0B22EmbeddedProfileStorageV10modelOwner08semanticH07backing6limitsAC21GiftUIObservableState015ObservableModelH8IdentityV_0L14UISemanticCore014SemanticRecordhQ0VSw0l9UIRuntimeS00cE6LimitsVtcfC+0x682>
+ 416:	f50d 54b4 	add.w	r4, sp, #5760	; 0x1680
+ 41a:	4620      	mov	r0, r4
+ 41c:	f7ff fffe 	bl	0 <.text.$e17P08CounterRuntime0B22EmbeddedProfileStorageV10modelOwner08semanticH07backing6limitsAC21GiftUIObservableState015ObservableModelH8IdentityV_0L14UISemanticCore014SemanticRecordhQ0VSw0l9UIRuntimeS00cE6LimitsVtcfC>
+			41c: R_ARM_THM_CALL	$e17GiftUIInteraction17BoundActionRecordVy0A14UISemanticCore24SemanticCompleteIdentityVGSgWOi0_
+ 420:	f50d 59a5 	add.w	r9, sp, #5280	; 0x14a0
+ 424:	4621      	mov	r1, r4
+ 426:	22f0      	movs	r2, #240	; 0xf0
+ 428:	f7ff fffe 	bl	0 <.text.$e17P08CounterRuntime0B22EmbeddedProfileStorageV10modelOwner08semanticH07backing6limitsAC21GiftUIObservableState015ObservableModelH8IdentityV_0L14UISemanticCore014SemanticRecordhQ0VSw0l9UIRuntimeS00cE6LimitsVtcfC>
+			428: R_ARM_THM_CALL	OUTLINED_FUNCTION_229
+ 42c:	f109 00f0 	add.w	r0, r9, #240	; 0xf0
+ 430:	f7ff fffe 	bl	0 <.text.$e17P08CounterRuntime0B22EmbeddedProfileStorageV10modelOwner08semanticH07backing6limitsAC21GiftUIObservableState015ObservableModelH8IdentityV_0L14UISemanticCore014SemanticRecordhQ0VSw0l9UIRuntimeS00cE6LimitsVtcfC>
+			430: R_ARM_THM_CALL	OUTLINED_FUNCTION_73
+ 434:	a802      	add	r0, sp, #8
+ 436:	4649      	mov	r1, r9
+ 438:	f44f 72f0 	mov.w	r2, #480	; 0x1e0
+ 43c:	f500 5046 	add.w	r0, r0, #12672	; 0x3180
+ 440:	f8c0 7478 	str.w	r7, [r0, #1144]	; 0x478
+ 444:	f7ff fffe 	bl	0 <.text.$e17P08CounterRuntime0B22EmbeddedProfileStorageV10modelOwner08semanticH07backing6limitsAC21GiftUIObservableState015ObservableModelH8IdentityV_0L14UISemanticCore014SemanticRecordhQ0VSw0l9UIRuntimeS00cE6LimitsVtcfC>
+			444: R_ARM_THM_CALL	OUTLINED_FUNCTION_152
+ 448:	4640      	mov	r0, r8
+ 44a:	f7ff fffe 	bl	0 <.text.$e17P08CounterRuntime0B22EmbeddedProfileStorageV10modelOwner08semanticH07backing6limitsAC21GiftUIObservableState015ObservableModelH8IdentityV_0L14UISemanticCore014SemanticRecordhQ0VSw0l9UIRuntimeS00cE6LimitsVtcfC>
+			44a: R_ARM_THM_CALL	$e17P08CounterRuntime36StaticTwoInteractionCommittedStorageVy18GiftUISemanticCore24SemanticCompleteIdentityVGSgWOi_
+ 44e:	a804      	add	r0, sp, #16
+ 450:	4641      	mov	r1, r8
+ 452:	f44f 72f2 	mov.w	r2, #484	; 0x1e4
+ 456:	f500 54bb 	add.w	r4, r0, #5984	; 0x1760
+ 45a:	f7ff fffe 	bl	0 <.text.$e17P08CounterRuntime0B22EmbeddedProfileStorageV10modelOwner08semanticH07backing6limitsAC21GiftUIObservableState015ObservableModelH8IdentityV_0L14UISemanticCore014SemanticRecordhQ0VSw0l9UIRuntimeS00cE6LimitsVtcfC>
+			45a: R_ARM_THM_CALL	OUTLINED_FUNCTION_65
+ 45e:	a805      	add	r0, sp, #20
+ 460:	4621      	mov	r1, r4
+ 462:	f7ff fffe 	bl	0 <.text.$e17P08CounterRuntime0B22EmbeddedProfileStorageV10modelOwner08semanticH07backing6limitsAC21GiftUIObservableState015ObservableModelH8IdentityV_0L14UISemanticCore014SemanticRecordhQ0VSw0l9UIRuntimeS00cE6LimitsVtcfC>
+			462: R_ARM_THM_CALL	OUTLINED_FUNCTION_210
+ 466:	4620      	mov	r0, r4
+ 468:	f7ff fffe 	bl	0 <.text.$e17P08CounterRuntime0B22EmbeddedProfileStorageV10modelOwner08semanticH07backing6limitsAC21GiftUIObservableState015ObservableModelH8IdentityV_0L14UISemanticCore014SemanticRecordhQ0VSw0l9UIRuntimeS00cE6LimitsVtcfC>
+			468: R_ARM_THM_CALL	$e17P08CounterRuntime36StaticTwoInteractionCommittedStorageVy18GiftUISemanticCore24SemanticCompleteIdentityVGSgWOg
+ 46c:	2801      	cmp	r0, #1
+ 46e:	f000 8109 	beq.w	684 <.text.$e17P08CounterRuntime0B22EmbeddedProfileStorageV10modelOwner08semanticH07backing6limitsAC21GiftUIObservableState015ObservableModelH8IdentityV_0L14UISemanticCore014SemanticRecordhQ0VSw0l9UIRuntimeS00cE6LimitsVtcfC+0x684>
+ 472:	f60d 64f8 	addw	r4, sp, #3832	; 0xef8
+ 476:	f50d 57b4 	add.w	r7, sp, #5760	; 0x1680
+ 47a:	22f0      	movs	r2, #240	; 0xf0
+ 47c:	4620      	mov	r0, r4
+ 47e:	4639      	mov	r1, r7
+ 480:	f7ff fffe 	bl	0 <__aeabi_memcpy4>
+			480: R_ARM_THM_CALL	__aeabi_memcpy4
+ 484:	f104 00f0 	add.w	r0, r4, #240	; 0xf0
+ 488:	4639      	mov	r1, r7
+ 48a:	f7ff fffe 	bl	0 <.text.$e17P08CounterRuntime0B22EmbeddedProfileStorageV10modelOwner08semanticH07backing6limitsAC21GiftUIObservableState015ObservableModelH8IdentityV_0L14UISemanticCore014SemanticRecordhQ0VSw0l9UIRuntimeS00cE6LimitsVtcfC>
+			48a: R_ARM_THM_CALL	OUTLINED_FUNCTION_125
+ 48e:	a902      	add	r1, sp, #8
+ 490:	2002      	movs	r0, #2
+ 492:	f44f 72f0 	mov.w	r2, #480	; 0x1e0
+ 496:	f501 5146 	add.w	r1, r1, #12672	; 0x3180
+ 49a:	f8c1 0478 	str.w	r0, [r1, #1144]	; 0x478
+ 49e:	4658      	mov	r0, fp
+ 4a0:	f7ff fffe 	bl	0 <.text.$e17P08CounterRuntime0B22EmbeddedProfileStorageV10modelOwner08semanticH07backing6limitsAC21GiftUIObservableState015ObservableModelH8IdentityV_0L14UISemanticCore014SemanticRecordhQ0VSw0l9UIRuntimeS00cE6LimitsVtcfC>
+			4a0: R_ARM_THM_CALL	OUTLINED_FUNCTION_82
+ 4a4:	4640      	mov	r0, r8
+ 4a6:	f7ff fffe 	bl	0 <.text.$e17P08CounterRuntime0B22EmbeddedProfileStorageV10modelOwner08semanticH07backing6limitsAC21GiftUIObservableState015ObservableModelH8IdentityV_0L14UISemanticCore014SemanticRecordhQ0VSw0l9UIRuntimeS00cE6LimitsVtcfC>
+			4a6: R_ARM_THM_CALL	$e17P08CounterRuntime36StaticTwoInteractionCommittedStorageVy18GiftUISemanticCore24SemanticCompleteIdentityVGSgWOi_
+ 4aa:	a806      	add	r0, sp, #24
+ 4ac:	4641      	mov	r1, r8
+ 4ae:	f44f 72f2 	mov.w	r2, #484	; 0x1e4
+ 4b2:	f500 5486 	add.w	r4, r0, #4288	; 0x10c0
+ 4b6:	f7ff fffe 	bl	0 <.text.$e17P08CounterRuntime0B22EmbeddedProfileStorageV10modelOwner08semanticH07backing6limitsAC21GiftUIObservableState015ObservableModelH8IdentityV_0L14UISemanticCore014SemanticRecordhQ0VSw0l9UIRuntimeS00cE6LimitsVtcfC>
+			4b6: R_ARM_THM_CALL	OUTLINED_FUNCTION_65
+ 4ba:	a807      	add	r0, sp, #28
+ 4bc:	4621      	mov	r1, r4
+ 4be:	f7ff fffe 	bl	0 <.text.$e17P08CounterRuntime0B22EmbeddedProfileStorageV10modelOwner08semanticH07backing6limitsAC21GiftUIObservableState015ObservableModelH8IdentityV_0L14UISemanticCore014SemanticRecordhQ0VSw0l9UIRuntimeS00cE6LimitsVtcfC>
+			4be: R_ARM_THM_CALL	OUTLINED_FUNCTION_211
+ 4c2:	4620      	mov	r0, r4
+ 4c4:	f7ff fffe 	bl	0 <.text.$e17P08CounterRuntime0B22EmbeddedProfileStorageV10modelOwner08semanticH07backing6limitsAC21GiftUIObservableState015ObservableModelH8IdentityV_0L14UISemanticCore014SemanticRecordhQ0VSw0l9UIRuntimeS00cE6LimitsVtcfC>
+			4c4: R_ARM_THM_CALL	$e17P08CounterRuntime36StaticTwoInteractionCommittedStorageVy18GiftUISemanticCore24SemanticCompleteIdentityVGSgWOg
+ 4c8:	2801      	cmp	r0, #1
+ 4ca:	f000 80dc 	beq.w	686 <.text.$e17P08CounterRuntime0B22EmbeddedProfileStorageV10modelOwner08semanticH07backing6limitsAC21GiftUIObservableState015ObservableModelH8IdentityV_0L14UISemanticCore014SemanticRecordhQ0VSw0l9UIRuntimeS00cE6LimitsVtcfC+0x686>
+ 4ce:	a806      	add	r0, sp, #24
+ 4d0:	22e2      	movs	r2, #226	; 0xe2
+ 4d2:	f500 54d9 	add.w	r4, r0, #6944	; 0x1b20
+ 4d6:	4630      	mov	r0, r6
+ 4d8:	f7ff fffe 	bl	0 <.text.$e17P08CounterRuntime0B22EmbeddedProfileStorageV10modelOwner08semanticH07backing6limitsAC21GiftUIObservableState015ObservableModelH8IdentityV_0L14UISemanticCore014SemanticRecordhQ0VSw0l9UIRuntimeS00cE6LimitsVtcfC>
+			4d8: R_ARM_THM_CALL	OUTLINED_FUNCTION_82
+ 4dc:	9807      	ldr	r0, [sp, #28]
+ 4de:	4621      	mov	r1, r4
+ 4e0:	f7ff fffe 	bl	0 <.text.$e17P08CounterRuntime0B22EmbeddedProfileStorageV10modelOwner08semanticH07backing6limitsAC21GiftUIObservableState015ObservableModelH8IdentityV_0L14UISemanticCore014SemanticRecordhQ0VSw0l9UIRuntimeS00cE6LimitsVtcfC>
+			4e0: R_ARM_THM_CALL	OUTLINED_FUNCTION_141
+ 4e4:	2400      	movs	r4, #0
+ 4e6:	f60d 1798 	addw	r7, sp, #2456	; 0x998
+ 4ea:	1938      	adds	r0, r7, r4
+ 4ec:	1931      	adds	r1, r6, r4
+ 4ee:	f7ff fffe 	bl	0 <.text.$e17P08CounterRuntime0B22EmbeddedProfileStorageV10modelOwner08semanticH07backing6limitsAC21GiftUIObservableState015ObservableModelH8IdentityV_0L14UISemanticCore014SemanticRecordhQ0VSw0l9UIRuntimeS00cE6LimitsVtcfC>
+			4ee: R_ARM_THM_CALL	OUTLINED_FUNCTION_141
+ 4f2:	34e4      	adds	r4, #228	; 0xe4
+ 4f4:	f5b4 7fe4 	cmp.w	r4, #456	; 0x1c8
+ 4f8:	d1f7      	bne.n	4ea <.text.$e17P08CounterRuntime0B22EmbeddedProfileStorageV10modelOwner08semanticH07backing6limitsAC21GiftUIObservableState015ObservableModelH8IdentityV_0L14UISemanticCore014SemanticRecordhQ0VSw0l9UIRuntimeS00cE6LimitsVtcfC+0x4ea>
+ 4fa:	a902      	add	r1, sp, #8
+ 4fc:	2002      	movs	r0, #2
+ 4fe:	f44f 72e4 	mov.w	r2, #456	; 0x1c8
+ 502:	f501 5146 	add.w	r1, r1, #12672	; 0x3180
+ 506:	f8c1 0478 	str.w	r0, [r1, #1144]	; 0x478
+ 50a:	f60d 1198 	addw	r1, sp, #2456	; 0x998
+ 50e:	f7ff fffe 	bl	0 <.text.$e17P08CounterRuntime0B22EmbeddedProfileStorageV10modelOwner08semanticH07backing6limitsAC21GiftUIObservableState015ObservableModelH8IdentityV_0L14UISemanticCore014SemanticRecordhQ0VSw0l9UIRuntimeS00cE6LimitsVtcfC>
+			50e: R_ARM_THM_CALL	OUTLINED_FUNCTION_152
+ 512:	4640      	mov	r0, r8
+ 514:	f7ff fffe 	bl	0 <.text.$e17P08CounterRuntime0B22EmbeddedProfileStorageV10modelOwner08semanticH07backing6limitsAC21GiftUIObservableState015ObservableModelH8IdentityV_0L14UISemanticCore014SemanticRecordhQ0VSw0l9UIRuntimeS00cE6LimitsVtcfC>
+			514: R_ARM_THM_CALL	$e17P08CounterRuntime30StaticTwoInteractionHitStorageVy18GiftUISemanticCore24SemanticCompleteIdentityVGSgWOi_
+ 518:	f50d 6436 	add.w	r4, sp, #2912	; 0xb60
+ 51c:	4641      	mov	r1, r8
+ 51e:	f44f 72e6 	mov.w	r2, #460	; 0x1cc
+ 522:	f7ff fffe 	bl	0 <.text.$e17P08CounterRuntime0B22EmbeddedProfileStorageV10modelOwner08semanticH07backing6limitsAC21GiftUIObservableState015ObservableModelH8IdentityV_0L14UISemanticCore014SemanticRecordhQ0VSw0l9UIRuntimeS00cE6LimitsVtcfC>
+			522: R_ARM_THM_CALL	OUTLINED_FUNCTION_65
+ 526:	f60d 502c 	addw	r0, sp, #3372	; 0xd2c
+ 52a:	4621      	mov	r1, r4
+ 52c:	f7ff fffe 	bl	0 <.text.$e17P08CounterRuntime0B22EmbeddedProfileStorageV10modelOwner08semanticH07backing6limitsAC21GiftUIObservableState015ObservableModelH8IdentityV_0L14UISemanticCore014SemanticRecordhQ0VSw0l9UIRuntimeS00cE6LimitsVtcfC>
+			52c: R_ARM_THM_CALL	OUTLINED_FUNCTION_116
+ 530:	4620      	mov	r0, r4
+ 532:	f7ff fffe 	bl	0 <.text.$e17P08CounterRuntime0B22EmbeddedProfileStorageV10modelOwner08semanticH07backing6limitsAC21GiftUIObservableState015ObservableModelH8IdentityV_0L14UISemanticCore014SemanticRecordhQ0VSw0l9UIRuntimeS00cE6LimitsVtcfC>
+			532: R_ARM_THM_CALL	$e17P08CounterRuntime30StaticTwoInteractionHitStorageVy18GiftUISemanticCore24SemanticCompleteIdentityVGSgWOg
+ 536:	2801      	cmp	r0, #1
+ 538:	f000 80a6 	beq.w	688 <.text.$e17P08CounterRuntime0B22EmbeddedProfileStorageV10modelOwner08semanticH07backing6limitsAC21GiftUIObservableState015ObservableModelH8IdentityV_0L14UISemanticCore014SemanticRecordhQ0VSw0l9UIRuntimeS00cE6LimitsVtcfC+0x688>
+ 53c:	a807      	add	r0, sp, #28
+ 53e:	f44f 72f2 	mov.w	r2, #484	; 0x1e4
+ 542:	f500 560d 	add.w	r6, r0, #9024	; 0x2340
+ 546:	a80d      	add	r0, sp, #52	; 0x34
+ 548:	f500 513d 	add.w	r1, r0, #12096	; 0x2f40
+ 54c:	f7ff fffe 	bl	0 <.text.$e17P08CounterRuntime0B22EmbeddedProfileStorageV10modelOwner08semanticH07backing6limitsAC21GiftUIObservableState015ObservableModelH8IdentityV_0L14UISemanticCore014SemanticRecordhQ0VSw0l9UIRuntimeS00cE6LimitsVtcfC>
+			54c: R_ARM_THM_CALL	OUTLINED_FUNCTION_79
+ 550:	a904      	add	r1, sp, #16
+ 552:	f506 70f2 	add.w	r0, r6, #484	; 0x1e4
+ 556:	f7ff fffe 	bl	0 <.text.$e17P08CounterRuntime0B22EmbeddedProfileStorageV10modelOwner08semanticH07backing6limitsAC21GiftUIObservableState015ObservableModelH8IdentityV_0L14UISemanticCore014SemanticRecordhQ0VSw0l9UIRuntimeS00cE6LimitsVtcfC>
+			556: R_ARM_THM_CALL	OUTLINED_FUNCTION_207
+ 55a:	a905      	add	r1, sp, #20
+ 55c:	f506 706c 	add.w	r0, r6, #944	; 0x3b0
+ 560:	f7ff fffe 	bl	0 <.text.$e17P08CounterRuntime0B22EmbeddedProfileStorageV10modelOwner08semanticH07backing6limitsAC21GiftUIObservableState015ObservableModelH8IdentityV_0L14UISemanticCore014SemanticRecordhQ0VSw0l9UIRuntimeS00cE6LimitsVtcfC>
+			560: R_ARM_THM_CALL	OUTLINED_FUNCTION_213
+ 564:	a907      	add	r1, sp, #28
+ 566:	f206 5094 	addw	r0, r6, #1428	; 0x594
+ 56a:	f7ff fffe 	bl	0 <.text.$e17P08CounterRuntime0B22EmbeddedProfileStorageV10modelOwner08semanticH07backing6limitsAC21GiftUIObservableState015ObservableModelH8IdentityV_0L14UISemanticCore014SemanticRecordhQ0VSw0l9UIRuntimeS00cE6LimitsVtcfC>
+			56a: R_ARM_THM_CALL	OUTLINED_FUNCTION_212
+ 56e:	f506 60ef 	add.w	r0, r6, #1912	; 0x778
+ 572:	f60d 512c 	addw	r1, sp, #3372	; 0xd2c
+ 576:	f7ff fffe 	bl	0 <.text.$e17P08CounterRuntime0B22EmbeddedProfileStorageV10modelOwner08semanticH07backing6limitsAC21GiftUIObservableState015ObservableModelH8IdentityV_0L14UISemanticCore014SemanticRecordhQ0VSw0l9UIRuntimeS00cE6LimitsVtcfC>
+			576: R_ARM_THM_CALL	OUTLINED_FUNCTION_116
+ 57a:	af0b      	add	r7, sp, #44	; 0x2c
+ 57c:	4631      	mov	r1, r6
+ 57e:	f640 1244 	movw	r2, #2372	; 0x944
+ 582:	f7ff fffe 	bl	0 <.text.$e17P08CounterRuntime0B22EmbeddedProfileStorageV10modelOwner08semanticH07backing6limitsAC21GiftUIObservableState015ObservableModelH8IdentityV_0L14UISemanticCore014SemanticRecordhQ0VSw0l9UIRuntimeS00cE6LimitsVtcfC>
+			582: R_ARM_THM_CALL	OUTLINED_FUNCTION_85
+ 586:	f44f 6010 	mov.w	r0, #2304	; 0x900
+ 58a:	f04f 0900 	mov.w	r9, #0
+ 58e:	2118      	movs	r1, #24
+ 590:	f04f 0801 	mov.w	r8, #1
+ 594:	f8ad 0994 	strh.w	r0, [sp, #2452]	; 0x994
+ 598:	2030      	movs	r0, #48	; 0x30
+ 59a:	f8cd 9990 	str.w	r9, [sp, #2448]	; 0x990
+ 59e:	f8cd 998c 	str.w	r9, [sp, #2444]	; 0x98c
+ 5a2:	f8ad 1984 	strh.w	r1, [sp, #2436]	; 0x984
+ 5a6:	f8ad 197e 	strh.w	r1, [sp, #2430]	; 0x97e
+ 5aa:	f88d 897c 	strb.w	r8, [sp, #2428]	; 0x97c
+ 5ae:	f8cd 9978 	str.w	r9, [sp, #2424]	; 0x978
+ 5b2:	f8ad 8974 	strh.w	r8, [sp, #2420]	; 0x974
+ 5b6:	f8cd 9970 	str.w	r9, [sp, #2416]	; 0x970
+ 5ba:	f8cd 0988 	str.w	r0, [sp, #2440]	; 0x988
+ 5be:	f8cd 0980 	str.w	r0, [sp, #2432]	; 0x980
+ 5c2:	2009      	movs	r0, #9
+ 5c4:	f88d 0976 	strb.w	r0, [sp, #2422]	; 0x976
+ 5c8:	4638      	mov	r0, r7
+ 5ca:	f7ff fffe 	bl	0 <.text.$e17P08CounterRuntime0B22EmbeddedProfileStorageV10modelOwner08semanticH07backing6limitsAC21GiftUIObservableState015ObservableModelH8IdentityV_0L14UISemanticCore014SemanticRecordhQ0VSw0l9UIRuntimeS00cE6LimitsVtcfC>
+			5ca: R_ARM_THM_CALL	$e17GiftUIInteraction24InteractionOwnedKeyStateVy17P08CounterRuntime09StaticTwoC16CandidateStorageVy0A14UISemanticCore24SemanticCompleteIdentityVGAD0jkc9CommittedM0VyAIGAD0jkc3HitM0VyAIGGSgWOi_
+ 5ce:	f645 50d8 	movw	r0, #24024	; 0x5dd8
+ 5d2:	4639      	mov	r1, r7
+ 5d4:	f640 126a 	movw	r2, #2410	; 0x96a
+ 5d8:	182e      	adds	r6, r5, r0
+ 5da:	f7ff fffe 	bl	0 <.text.$e17P08CounterRuntime0B22EmbeddedProfileStorageV10modelOwner08semanticH07backing6limitsAC21GiftUIObservableState015ObservableModelH8IdentityV_0L14UISemanticCore014SemanticRecordhQ0VSw0l9UIRuntimeS00cE6LimitsVtcfC>
+			5da: R_ARM_THM_CALL	OUTLINED_FUNCTION_79
+ 5de:	f50d 5458 	add.w	r4, sp, #13824	; 0x3600
+ 5e2:	4620      	mov	r0, r4
+ 5e4:	f7ff fffe 	bl	0 <.text.$e17P08CounterRuntime0B22EmbeddedProfileStorageV10modelOwner08semanticH07backing6limitsAC21GiftUIObservableState015ObservableModelH8IdentityV_0L14UISemanticCore014SemanticRecordhQ0VSw0l9UIRuntimeS00cE6LimitsVtcfC>
+			5e4: R_ARM_THM_CALL	$e17P08CounterRuntime0B7ControlVACycfC
+ 5e8:	f246 7048 	movw	r0, #26440	; 0x6748
+ 5ec:	4621      	mov	r1, r4
+ 5ee:	f44f 6269 	mov.w	r2, #3728	; 0xe90
+ 5f2:	182f      	adds	r7, r5, r0
+ 5f4:	4638      	mov	r0, r7
+ 5f6:	f7ff fffe 	bl	0 <__aeabi_memcpy8>
+			5f6: R_ARM_THM_CALL	__aeabi_memcpy8
+ 5fa:	f247 50d8 	movw	r0, #30168	; 0x75d8
+ 5fe:	f245 5114 	movw	r1, #21780	; 0x5514
+ 602:	2280      	movs	r2, #128	; 0x80
+ 604:	f44f 7380 	mov.w	r3, #256	; 0x100
+ 608:	f8ca 8034 	str.w	r8, [sl, #52]	; 0x34
+ 60c:	f8ca 5000 	str.w	r5, [sl]
+ 610:	f805 9000 	strb.w	r9, [r5, r0]
+ 614:	4428      	add	r0, r5
+ 616:	4429      	add	r1, r5
+ 618:	f8ca 3020 	str.w	r3, [sl, #32]
+ 61c:	9b09      	ldr	r3, [sp, #36]	; 0x24
+ 61e:	e9ca 7010 	strd	r7, r0, [sl, #64]	; 0x40
+ 622:	f245 5018 	movw	r0, #21784	; 0x5518
+ 626:	4428      	add	r0, r5
+ 628:	e9ca 3209 	strd	r3, r2, [sl, #36]	; 0x24
+ 62c:	e9ca 100b 	strd	r1, r0, [sl, #44]	; 0x2c
+ 630:	9903      	ldr	r1, [sp, #12]
+ 632:	980a      	ldr	r0, [sp, #40]	; 0x28
+ 634:	f8ca 1004 	str.w	r1, [sl, #4]
+ 638:	9904      	ldr	r1, [sp, #16]
+ 63a:	e9ca 060e 	strd	r0, r6, [sl, #56]	; 0x38
+ 63e:	f44f 70c0 	mov.w	r0, #384	; 0x180
+ 642:	f8ca 1008 	str.w	r1, [sl, #8]
+ 646:	9905      	ldr	r1, [sp, #20]
+ 648:	e9ca 1203 	strd	r1, r2, [sl, #12]
+ 64c:	9906      	ldr	r1, [sp, #24]
+ 64e:	e9ca 1005 	strd	r1, r0, [sl, #20]
+ 652:	9808      	ldr	r0, [sp, #32]
+ 654:	f8ca 001c 	str.w	r0, [sl, #28]
+ 658:	f50d 4d89 	add.w	sp, sp, #17536	; 0x4480
+ 65c:	b005      	add	sp, #20
+ 65e:	e8bd 8ff0 	ldmia.w	sp!, {r4, r5, r6, r7, r8, r9, sl, fp, pc}
+ 662:	bf00      	nop
+ 664:	00400080 	subeq	r0, r0, r0, lsl #1
+ 668:	00050018 	andeq	r0, r5, r8, lsl r0
+ 66c:	00c00040 	sbceq	r0, r0, r0, asr #32
+ 670:	defe      	udf	#254	; 0xfe
+ 672:	defe      	udf	#254	; 0xfe
+ 674:	a80f      	add	r0, sp, #60	; 0x3c
+ 676:	f500 5045 	add.w	r0, r0, #12608	; 0x3140
+ 67a:	f7ff fffe 	bl	0 <.text.$e17P08CounterRuntime0B22EmbeddedProfileStorageV10modelOwner08semanticH07backing6limitsAC21GiftUIObservableState015ObservableModelH8IdentityV_0L14UISemanticCore014SemanticRecordhQ0VSw0l9UIRuntimeS00cE6LimitsVtcfC>
+			67a: R_ARM_THM_CALL	$e19GiftUIRuntimeStatic0C22ObservableModelStorageVy17P08CounterRuntime0h5OwnedE0V0gH6Schema0heK0OGSgWOg
+ 67e:	defe      	udf	#254	; 0xfe
+ 680:	defe      	udf	#254	; 0xfe
+ 682:	defe      	udf	#254	; 0xfe
+ 684:	defe      	udf	#254	; 0xfe
+ 686:	defe      	udf	#254	; 0xfe
+ 688:	defe      	udf	#254	; 0xfe
