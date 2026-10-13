@@ -43,3 +43,9 @@ Preserve exact evidence and commit outcome for sequential independent Strong rev
 No preliminary compiler, follow-up repair/retry, SO-04+, repository suite, target/image
 or hardware action is authorized. Mandatory I4-07/P09–P12 and existing 58,648/27,648
 stack failure/guards persist; no new deferred item arises from current fixture work.
+
+Pre-entry receipt note: source commit `8d996626` contains the unvalidated fixture.
+The staged evidence snapshot's three blank context lines triggered whitespace-only
+`git diff --check` findings. This receipt-only normalization removes their trailing
+context markers; source bytes/argv/hashes are unchanged. A separate receipt commit
+and passing complete diff check precede the native invocation. No compiler ran.
