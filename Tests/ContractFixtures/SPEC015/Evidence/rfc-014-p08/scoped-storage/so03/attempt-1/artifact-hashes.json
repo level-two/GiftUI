@@ -1,0 +1,325 @@
+{
+  "artifacts": {
+    ".build/contracts/spec-011-owned-keys/tmpubqsj1v5/macos-dynamic/GiftUIDrawing.abi.json": {
+      "bytes": 149,
+      "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728"
+    },
+    ".build/contracts/spec-011-owned-keys/tmpubqsj1v5/macos-dynamic/GiftUIDrawing.o": {
+      "bytes": 131632,
+      "sha256": "4f7c8097660dd4b149132a67e58dc65fe6fa9d834a17dbe40e5058db105c95a8"
+    },
+    ".build/contracts/spec-011-owned-keys/tmpubqsj1v5/macos-dynamic/GiftUIDrawing.swiftdoc": {
+      "bytes": 1496,
+      "sha256": "211f7c78dc01779c87bc0cf44a04e8c84346fa01b0430e51dda90afd634b635e"
+    },
+    ".build/contracts/spec-011-owned-keys/tmpubqsj1v5/macos-dynamic/GiftUIDrawing.swiftmodule": {
+      "bytes": 105604,
+      "sha256": "18fd8e01c27b1289f3beaca2c794455622e9003ca89fcd66115c479e4afd578d"
+    },
+    ".build/contracts/spec-011-owned-keys/tmpubqsj1v5/macos-dynamic/GiftUIDrawing.swiftsourceinfo": {
+      "bytes": 31548,
+      "sha256": "e53ab81b593e129e1bd177ef7d22d49041ed6fea96cf0f091300ddfd444cea73"
+    },
+    ".build/contracts/spec-011-owned-keys/tmpubqsj1v5/macos-dynamic/GiftUIExecution.abi.json": {
+      "bytes": 149,
+      "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728"
+    },
+    ".build/contracts/spec-011-owned-keys/tmpubqsj1v5/macos-dynamic/GiftUIExecution.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    ".build/contracts/spec-011-owned-keys/tmpubqsj1v5/macos-dynamic/GiftUIExecution.o": {
+      "bytes": 575576,
+      "sha256": "0f3273cbfe78644c4661c87f01cdf60239c5b283378997edec1af3395a464287"
+    },
+    ".build/contracts/spec-011-owned-keys/tmpubqsj1v5/macos-dynamic/GiftUIExecution.swiftdoc": {
+      "bytes": 380,
+      "sha256": "c8e4232912f5d7519ccb64f39aa82c8f4eacb3ef786d8632736631ca2096f4bb"
+    },
+    ".build/contracts/spec-011-owned-keys/tmpubqsj1v5/macos-dynamic/GiftUIExecution.swiftmodule": {
+      "bytes": 623392,
+      "sha256": "076658f1cbf6efe1e303b99f4c5867e333f93cf31349093ffcad5cb560785fa1"
+    },
+    ".build/contracts/spec-011-owned-keys/tmpubqsj1v5/macos-dynamic/GiftUIExecution.swiftsourceinfo": {
+      "bytes": 123836,
+      "sha256": "39be610ffc8cbc3f529f974535bee56a78eba45df827465d7ce97799c17e3a47"
+    },
+    ".build/contracts/spec-011-owned-keys/tmpubqsj1v5/macos-dynamic/GiftUIInteraction.abi.json": {
+      "bytes": 149,
+      "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728"
+    },
+    ".build/contracts/spec-011-owned-keys/tmpubqsj1v5/macos-dynamic/GiftUIInteraction.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    ".build/contracts/spec-011-owned-keys/tmpubqsj1v5/macos-dynamic/GiftUIInteraction.o": {
+      "bytes": 163416,
+      "sha256": "eca918816801a41f3139a5d5f8cf3d83a0d6a4622ec3ab68b9d514b6b080f229"
+    },
+    ".build/contracts/spec-011-owned-keys/tmpubqsj1v5/macos-dynamic/GiftUIInteraction.swiftdoc": {
+      "bytes": 3364,
+      "sha256": "30d00dc258251a48bb559f7bdf3436f452bde966fe685f607aec491339a30676"
+    },
+    ".build/contracts/spec-011-owned-keys/tmpubqsj1v5/macos-dynamic/GiftUIInteraction.swiftmodule": {
+      "bytes": 145376,
+      "sha256": "0e2eaad5628d1ad720b72b25450811d81ecf59112ad7ef06dfa2c3df61e4e14b"
+    },
+    ".build/contracts/spec-011-owned-keys/tmpubqsj1v5/macos-dynamic/GiftUIInteraction.swiftsourceinfo": {
+      "bytes": 43736,
+      "sha256": "63aad8b5ca4a8440b5f78d89f4fc27caa5336acb8fb0097e2c7bced1dc167b34"
+    },
+    ".build/contracts/spec-011-owned-keys/tmpubqsj1v5/macos-dynamic/GiftUILayout.abi.json": {
+      "bytes": 149,
+      "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728"
+    },
+    ".build/contracts/spec-011-owned-keys/tmpubqsj1v5/macos-dynamic/GiftUILayout.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    ".build/contracts/spec-011-owned-keys/tmpubqsj1v5/macos-dynamic/GiftUILayout.o": {
+      "bytes": 137824,
+      "sha256": "9b8d8b241cddfddf6df3c26b3353e5b71f62ddf88cf92b54d86b9399a7d841d2"
+    },
+    ".build/contracts/spec-011-owned-keys/tmpubqsj1v5/macos-dynamic/GiftUILayout.swiftdoc": {
+      "bytes": 376,
+      "sha256": "ecf335acc8af95a82c08ee02a9f933f7bb081e654f8724ba10c655227b3a6b05"
+    },
+    ".build/contracts/spec-011-owned-keys/tmpubqsj1v5/macos-dynamic/GiftUILayout.swiftmodule": {
+      "bytes": 140836,
+      "sha256": "5dceb9af95e4601603446f6f12f2bab6543b61cd44fe74bfd758676cf8a24859"
+    },
+    ".build/contracts/spec-011-owned-keys/tmpubqsj1v5/macos-dynamic/GiftUILayout.swiftsourceinfo": {
+      "bytes": 36152,
+      "sha256": "405ea5bf2e7882652a0f7ff8b6d26e5029abfe71bf86b72ba77ce49ba513c549"
+    },
+    ".build/contracts/spec-011-owned-keys/tmpubqsj1v5/macos-dynamic/GiftUIObservableState.abi.json": {
+      "bytes": 149,
+      "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728"
+    },
+    ".build/contracts/spec-011-owned-keys/tmpubqsj1v5/macos-dynamic/GiftUIObservableState.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    ".build/contracts/spec-011-owned-keys/tmpubqsj1v5/macos-dynamic/GiftUIObservableState.o": {
+      "bytes": 239200,
+      "sha256": "bdeddc8735764fa1bbebb92808c11497c78fbe640ecac74c8a0951a77c611b92"
+    },
+    ".build/contracts/spec-011-owned-keys/tmpubqsj1v5/macos-dynamic/GiftUIObservableState.swiftdoc": {
+      "bytes": 8732,
+      "sha256": "0c26952c20af873979e8039ba5c6271b92bf957c8c9e366300b23d3df70eb307"
+    },
+    ".build/contracts/spec-011-owned-keys/tmpubqsj1v5/macos-dynamic/GiftUIObservableState.swiftmodule": {
+      "bytes": 222808,
+      "sha256": "0c2acd0eecef3831b5a0911641409e79ae06aa9d61fb4b74fc49cf798fb2e0af"
+    },
+    ".build/contracts/spec-011-owned-keys/tmpubqsj1v5/macos-dynamic/GiftUIObservableState.swiftsourceinfo": {
+      "bytes": 59020,
+      "sha256": "5cb002e10d971545165f8d9d71e1ab39e2a1114fa58aa99a59550651abb42e35"
+    },
+    ".build/contracts/spec-011-owned-keys/tmpubqsj1v5/macos-dynamic/GiftUIRenderCore.abi.json": {
+      "bytes": 149,
+      "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728"
+    },
+    ".build/contracts/spec-011-owned-keys/tmpubqsj1v5/macos-dynamic/GiftUIRenderCore.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    ".build/contracts/spec-011-owned-keys/tmpubqsj1v5/macos-dynamic/GiftUIRenderCore.o": {
+      "bytes": 62200,
+      "sha256": "14c8b3855279792eeb7e775614d98b1459c3e0c2794bc10081e3a8a683158878"
+    },
+    ".build/contracts/spec-011-owned-keys/tmpubqsj1v5/macos-dynamic/GiftUIRenderCore.swiftdoc": {
+      "bytes": 380,
+      "sha256": "9824cb07c32b5722a1928d05922b44dd0ad74e1ffe4a8d1f4b03d2f60c067570"
+    },
+    ".build/contracts/spec-011-owned-keys/tmpubqsj1v5/macos-dynamic/GiftUIRenderCore.swiftmodule": {
+      "bytes": 84380,
+      "sha256": "ed74cbeb6b57f03b5401ae7455b0784519df0054cd796b20cd2d2c661e820867"
+    },
+    ".build/contracts/spec-011-owned-keys/tmpubqsj1v5/macos-dynamic/GiftUIRenderCore.swiftsourceinfo": {
+      "bytes": 20196,
+      "sha256": "fce9c4b54d2ac91fa9a8212a14befb26b93750801a7eddb8e435752df4f0bb7e"
+    },
+    ".build/contracts/spec-011-owned-keys/tmpubqsj1v5/macos-dynamic/GiftUIRenderLowering.abi.json": {
+      "bytes": 149,
+      "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728"
+    },
+    ".build/contracts/spec-011-owned-keys/tmpubqsj1v5/macos-dynamic/GiftUIRenderLowering.o": {
+      "bytes": 78864,
+      "sha256": "02ea739e4728cc4fa749b2d2b33129dbe7eb2983c7aed5e84302d3817bc9a474"
+    },
+    ".build/contracts/spec-011-owned-keys/tmpubqsj1v5/macos-dynamic/GiftUIRenderLowering.swiftdoc": {
+      "bytes": 384,
+      "sha256": "88210ce918b2b4e43c16186d30cf3755703c4d9901a27367fc0e11d225cd8c48"
+    },
+    ".build/contracts/spec-011-owned-keys/tmpubqsj1v5/macos-dynamic/GiftUIRenderLowering.swiftmodule": {
+      "bytes": 78276,
+      "sha256": "fbca0191add721128eccb3dc71236efc1bf93bd366f287d77986ca212e9889f4"
+    },
+    ".build/contracts/spec-011-owned-keys/tmpubqsj1v5/macos-dynamic/GiftUIRenderLowering.swiftsourceinfo": {
+      "bytes": 18492,
+      "sha256": "091854b3c3f5590eed0ec0aa9b5662a230a5a71a66568a0b4554546fa0bd71e4"
+    },
+    ".build/contracts/spec-011-owned-keys/tmpubqsj1v5/macos-dynamic/GiftUIRuntimeCore.abi.json": {
+      "bytes": 149,
+      "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728"
+    },
+    ".build/contracts/spec-011-owned-keys/tmpubqsj1v5/macos-dynamic/GiftUIRuntimeCore.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    ".build/contracts/spec-011-owned-keys/tmpubqsj1v5/macos-dynamic/GiftUIRuntimeCore.o": {
+      "bytes": 62936,
+      "sha256": "161c1ce3cea6fa5bb5928c211e6f48ad832a3619be7575844be05e555fa6e42a"
+    },
+    ".build/contracts/spec-011-owned-keys/tmpubqsj1v5/macos-dynamic/GiftUIRuntimeCore.swiftdoc": {
+      "bytes": 944,
+      "sha256": "fac5a30e1a3953a209c185a5632609ffc9dc83b31a40f6bb921c914cdc3fd708"
+    },
+    ".build/contracts/spec-011-owned-keys/tmpubqsj1v5/macos-dynamic/GiftUIRuntimeCore.swiftmodule": {
+      "bytes": 66868,
+      "sha256": "ea9f7103ba0702cfd6cf2a9e0a1683fd1c15b8aad95c28b86cafe1fff4f6d303"
+    },
+    ".build/contracts/spec-011-owned-keys/tmpubqsj1v5/macos-dynamic/GiftUIRuntimeCore.swiftsourceinfo": {
+      "bytes": 17220,
+      "sha256": "616c8c5feb242334f8f1c9810d974779d39762652eaee0fff65d3f06a6b16380"
+    },
+    ".build/contracts/spec-011-owned-keys/tmpubqsj1v5/macos-dynamic/GiftUIRuntimeDynamic.abi.json": {
+      "bytes": 149,
+      "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728"
+    },
+    ".build/contracts/spec-011-owned-keys/tmpubqsj1v5/macos-dynamic/GiftUIRuntimeDynamic.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    ".build/contracts/spec-011-owned-keys/tmpubqsj1v5/macos-dynamic/GiftUIRuntimeDynamic.o": {
+      "bytes": 66328,
+      "sha256": "14110c6656133dd019d590fd22e77e2ee736e3fca11dc7d3d8f0cf57fc6b692a"
+    },
+    ".build/contracts/spec-011-owned-keys/tmpubqsj1v5/macos-dynamic/GiftUIRuntimeDynamic.swiftdoc": {
+      "bytes": 1708,
+      "sha256": "bd1ed1ca09b841ed2aafd3188f66539e03cc41c60fc5c583961dab59ea8d6882"
+    },
+    ".build/contracts/spec-011-owned-keys/tmpubqsj1v5/macos-dynamic/GiftUIRuntimeDynamic.swiftmodule": {
+      "bytes": 80716,
+      "sha256": "abc300f43c710ada0f4f9966dde6466686fff7d0b080efedcbd6e840b68cfaf8"
+    },
+    ".build/contracts/spec-011-owned-keys/tmpubqsj1v5/macos-dynamic/GiftUIRuntimeDynamic.swiftsourceinfo": {
+      "bytes": 14756,
+      "sha256": "77651b58a49fb45ce9630aeb7357a5ea91ce09d9b5382e382ac9967fbb277139"
+    },
+    ".build/contracts/spec-011-owned-keys/tmpubqsj1v5/macos-dynamic/GiftUIRuntimeStatic.abi.json": {
+      "bytes": 149,
+      "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728"
+    },
+    ".build/contracts/spec-011-owned-keys/tmpubqsj1v5/macos-dynamic/GiftUIRuntimeStatic.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    ".build/contracts/spec-011-owned-keys/tmpubqsj1v5/macos-dynamic/GiftUIRuntimeStatic.o": {
+      "bytes": 234040,
+      "sha256": "8d52b74a75d755b6b9b1fe5b1e5cf21ab6391fae0b0b1149e15dbb80f5a13eca"
+    },
+    ".build/contracts/spec-011-owned-keys/tmpubqsj1v5/macos-dynamic/GiftUIRuntimeStatic.swiftdoc": {
+      "bytes": 1628,
+      "sha256": "c8db7982a28f0473fcdc72f8a45ebdfc9147cfb0a19af1d7fc261439edc81f22"
+    },
+    ".build/contracts/spec-011-owned-keys/tmpubqsj1v5/macos-dynamic/GiftUIRuntimeStatic.swiftmodule": {
+      "bytes": 90336,
+      "sha256": "58abcfb20b6335e20e8699285d40cae512db535947079ab98e0f89a7d8b76ade"
+    },
+    ".build/contracts/spec-011-owned-keys/tmpubqsj1v5/macos-dynamic/GiftUIRuntimeStatic.swiftsourceinfo": {
+      "bytes": 15848,
+      "sha256": "83f81d5820d974d03245887de9e6bcc65e7e83fc0b2bfa12ea6564ea1bd65cf0"
+    },
+    ".build/contracts/spec-011-owned-keys/tmpubqsj1v5/macos-dynamic/GiftUISemanticCore.abi.json": {
+      "bytes": 149,
+      "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728"
+    },
+    ".build/contracts/spec-011-owned-keys/tmpubqsj1v5/macos-dynamic/GiftUISemanticCore.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    ".build/contracts/spec-011-owned-keys/tmpubqsj1v5/macos-dynamic/GiftUISemanticCore.o": {
+      "bytes": 324448,
+      "sha256": "b4460d76d48cd32766426ae3eab53d1cca663c1aa816a47da9bb2a1cf8c0e241"
+    },
+    ".build/contracts/spec-011-owned-keys/tmpubqsj1v5/macos-dynamic/GiftUISemanticCore.swiftdoc": {
+      "bytes": 8288,
+      "sha256": "90dc08eaed2bb60b8cddd279717f0b481a07ce512ed6b6a68b3b63049ab005cb"
+    },
+    ".build/contracts/spec-011-owned-keys/tmpubqsj1v5/macos-dynamic/GiftUISemanticCore.swiftmodule": {
+      "bytes": 315728,
+      "sha256": "f66d302f088b5ca50e42afcf2c8bd4484bfe5f9676a4575143e1a26bc083b826"
+    },
+    ".build/contracts/spec-011-owned-keys/tmpubqsj1v5/macos-dynamic/GiftUISemanticCore.swiftsourceinfo": {
+      "bytes": 91536,
+      "sha256": "f32974ce9f3f7a065afc117d9e9f3f68d1ed85faea187df0916a49a4aeb4a36d"
+    },
+    ".build/contracts/spec-011-owned-keys/tmpubqsj1v5/macos-dynamic/GiftUITextResources.abi.json": {
+      "bytes": 149,
+      "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728"
+    },
+    ".build/contracts/spec-011-owned-keys/tmpubqsj1v5/macos-dynamic/GiftUITextResources.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    ".build/contracts/spec-011-owned-keys/tmpubqsj1v5/macos-dynamic/GiftUITextResources.o": {
+      "bytes": 103264,
+      "sha256": "949cfcf3a450ef8961e426436178f744290508fc4364a3be945586456f1cb589"
+    },
+    ".build/contracts/spec-011-owned-keys/tmpubqsj1v5/macos-dynamic/GiftUITextResources.swiftdoc": {
+      "bytes": 1720,
+      "sha256": "8ed36b56d14d932c81e660572a959cb99e70cb8b730b320c0172c499213a979c"
+    },
+    ".build/contracts/spec-011-owned-keys/tmpubqsj1v5/macos-dynamic/GiftUITextResources.swiftmodule": {
+      "bytes": 130848,
+      "sha256": "4278d49997ef76523535f92e878e700be3deced02bb88321a5efdfac71dac02b"
+    },
+    ".build/contracts/spec-011-owned-keys/tmpubqsj1v5/macos-dynamic/GiftUITextResources.swiftsourceinfo": {
+      "bytes": 25660,
+      "sha256": "25c6ae683feb76dc44e25acff2de11070834c7692983edbecd77c293e1706235"
+    },
+    ".build/contracts/spec-011-owned-keys/tmpubqsj1v5/macos-dynamic/Main.swift": {
+      "bytes": 372,
+      "sha256": "5ba7055b0d3ffff423ec53108e4b1845e2281384faa6bbaf01fe0324ed19e323"
+    },
+    ".build/contracts/spec-011-owned-keys/tmpubqsj1v5/macos-dynamic/OwnedKeyProbe.log": {
+      "bytes": 6167,
+      "sha256": "b821ccbd4bc53c52066ebea4327afaaab280295571400599abc1a5fc56efa601"
+    },
+    ".build/contracts/spec-011-owned-keys/tmpubqsj1v5/macos-dynamic/commands.txt": {
+      "bytes": 27185,
+      "sha256": "4167b8c444ebf2a8d6a048cbf500fb75a3f785222aacdc6ea81a694013ac794d"
+    },
+    ".build/contracts/spec-011-owned-keys/tmpubqsj1v5/macos-dynamic/input-hashes.json": {
+      "bytes": 16570,
+      "sha256": "e75a32abd00ffbdfdfdef101e0303a4f540486473754a6d9e5b6b20d07f836c5"
+    },
+    ".build/contracts/spec-011-owned-keys/tmpubqsj1v5/macos-dynamic/key-layout.json": {
+      "bytes": 606,
+      "sha256": "58672b96ce6a34608473998ff0e50997017aa2dff5b95f52999e02bdd261073c"
+    },
+    ".build/contracts/spec-011-owned-keys/tmpubqsj1v5/macos-dynamic/key-layout.ll": {
+      "bytes": 8735,
+      "sha256": "2afab0fa103581a2dc4c9986fd903244fda006ead464fe88596751bafb41a39b"
+    },
+    ".build/contracts/spec-011-owned-keys/tmpubqsj1v5/macos-dynamic/key-layout.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    ".build/contracts/spec-011-owned-keys/tmpubqsj1v5/macos-dynamic/planned-commands.json": {
+      "bytes": 93442,
+      "sha256": "ce3a5c24576f415d1c201ecc45787b6447645a108f2108ed542c494cb4b25844"
+    },
+    ".build/contracts/spec-011-owned-keys/tmpubqsj1v5/macos-dynamic/so03-prereq-drawing.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    ".build/contracts/spec-011-owned-keys/tmpubqsj1v5/macos-dynamic/so03-prereq-render-lowering.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "immutable_build_directory": ".build/contracts/spec-011-owned-keys/tmpubqsj1v5/macos-dynamic"
+}

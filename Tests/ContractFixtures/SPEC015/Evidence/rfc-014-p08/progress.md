@@ -1,5 +1,25 @@
 # RFC-014 P08 execution receipt — 2026-10-11
 
+## SO-03 single native result — 2026-10-13
+
+Source checkpoint `4c7e8bc2`, clean; prescribed single invocation exit1.
+[Exact result and independent handoff](scoped-storage/so03/result.md) and
+[failure-safe receipt](scoped-storage/so03/attempt-1/result.json) preserve all argv,
+logs, hashes and partial artifacts. Actual14compiler commands:13pass,1fail at
+OwnedKeyProbe. Both prerequisites and existing14-value layout IR passed; all
+six real RuntimeCore consumers compiled. New scoped committed/hit fixture
+exchange reports partial reinitialization after consume and cross-argument
+lifetime escapes. No27focusedprobe/link/execute reached, no compatibility/fit
+acceptance inferred. All122 source hashes remain frozen unchanged.
+
+SO-03 allowance1/1consumed,0remaining; automaticrepairs0. No next compiler or
+source repair after failure. Independent Strong read-only result review owns
+cause/contract routing, smallest next handoff and productive/unproductive guard
+classification. SO-04–09 remain proposed/unapproved; all criteria/P08/R07/T8.1/
+HC-RD-003/fit remain open. Mandatory unresolved analyzer I4-07/P09/P10–12 evidence
+and all historical budgets/guards/58,648-vs27,648 failure persist. Evidence commit
+follows separately from the unvalidated source commit.
+
 ## SO-03 source implementation dispatch — 2026-10-13
 
 Entry `f18125fb`, clean; independent readiness PASS and Eugene's explicit

@@ -1,0 +1,113 @@
+SO-03 frozen failure: /Users/eugene/work/GiftUI/.build/contracts/spec-011-owned-keys/tmpubqsj1v5/macos-dynamic/result.json
+Traceback (most recent call last):
+  File "/Users/eugene/work/GiftUI/scripts/contracts/check-spec-011-owned-keys.py", line 194, in <module>
+    raise RuntimeError(label + ': ' + str(out) + '\n' + output)
+RuntimeError: OwnedKeyProbe: /Users/eugene/work/GiftUI/.build/contracts/spec-011-owned-keys/tmpubqsj1v5/macos-dynamic
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC011/RuntimeDerived/ScopedStorageProbe.swift:68:15: error: cannot partially reinitialize 'self' after it has been consumed; only full reinitialization is allowed
+ 64 |     mutating func exchangeContents(with other: inout Self) {
+ 65 |         precondition(capacity == other.capacity)
+ 66 |         let priorSlots = consume slots
+    |                                  `- note: consumed here
+ 67 |         let priorCount = count
+ 68 |         slots = consume other.slots
+    |               `- error: cannot partially reinitialize 'self' after it has been consumed; only full reinitialization is allowed
+ 69 |         count = other.count
+ 70 |         other.slots = consume priorSlots
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC011/RuntimeDerived/ScopedStorageProbe.swift:70:21: error: cannot partially reinitialize 'other' after it has been consumed; only full reinitialization is allowed
+ 66 |         let priorSlots = consume slots
+ 67 |         let priorCount = count
+ 68 |         slots = consume other.slots
+    |                               `- note: consumed here
+ 69 |         count = other.count
+ 70 |         other.slots = consume priorSlots
+    |                     `- error: cannot partially reinitialize 'other' after it has been consumed; only full reinitialization is allowed
+ 71 |         other.count = priorCount
+ 72 |     }
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC011/RuntimeDerived/ScopedStorageProbe.swift:64:19: error: lifetime-dependent variable 'self' escapes its scope
+ 62 |         return true
+ 63 |     }
+ 64 |     mutating func exchangeContents(with other: inout Self) {
+    |                   |                     `- note: it depends on the lifetime of argument 'other'
+    |                   `- error: lifetime-dependent variable 'self' escapes its scope
+ 65 |         precondition(capacity == other.capacity)
+ 66 |         let priorSlots = consume slots
+    :
+ 70 |         other.slots = consume priorSlots
+ 71 |         other.count = priorCount
+ 72 |     }
+    |     `- note: this use causes the lifetime-dependent value to escape
+ 73 | }
+ 74 | private struct SO03Hits: ~Copyable, ~Escapable, InteractionHitRegionStorage {
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC011/RuntimeDerived/ScopedStorageProbe.swift:64:41: error: lifetime-dependent variable 'other' escapes its scope
+ 62 |         return true
+ 63 |     }
+ 64 |     mutating func exchangeContents(with other: inout Self) {
+    |                   |                     `- error: lifetime-dependent variable 'other' escapes its scope
+    |                   `- note: it depends on the lifetime of argument 'self'
+ 65 |         precondition(capacity == other.capacity)
+ 66 |         let priorSlots = consume slots
+    :
+ 70 |         other.slots = consume priorSlots
+ 71 |         other.count = priorCount
+ 72 |     }
+    |     `- note: this use causes the lifetime-dependent value to escape
+ 73 | }
+ 74 | private struct SO03Hits: ~Copyable, ~Escapable, InteractionHitRegionStorage {
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC011/RuntimeDerived/ScopedStorageProbe.swift:101:15: error: cannot partially reinitialize 'self' after it has been consumed; only full reinitialization is allowed
+ 97 |     mutating func exchangeContents(with other: inout Self) {
+ 98 |         precondition(capacity == other.capacity)
+ 99 |         let priorSlots = consume slots
+    |                                  `- note: consumed here
+100 |         let priorCount = count
+101 |         slots = consume other.slots
+    |               `- error: cannot partially reinitialize 'self' after it has been consumed; only full reinitialization is allowed
+102 |         count = other.count
+103 |         other.slots = consume priorSlots
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC011/RuntimeDerived/ScopedStorageProbe.swift:103:21: error: cannot partially reinitialize 'other' after it has been consumed; only full reinitialization is allowed
+ 99 |         let priorSlots = consume slots
+100 |         let priorCount = count
+101 |         slots = consume other.slots
+    |                               `- note: consumed here
+102 |         count = other.count
+103 |         other.slots = consume priorSlots
+    |                     `- error: cannot partially reinitialize 'other' after it has been consumed; only full reinitialization is allowed
+104 |         other.count = priorCount
+105 |     }
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC011/RuntimeDerived/ScopedStorageProbe.swift:97:19: error: lifetime-dependent variable 'self' escapes its scope
+ 95 |         return true
+ 96 |     }
+ 97 |     mutating func exchangeContents(with other: inout Self) {
+    |                   |                     `- note: it depends on the lifetime of argument 'other'
+    |                   `- error: lifetime-dependent variable 'self' escapes its scope
+ 98 |         precondition(capacity == other.capacity)
+ 99 |         let priorSlots = consume slots
+    :
+103 |         other.slots = consume priorSlots
+104 |         other.count = priorCount
+105 |     }
+    |     `- note: this use causes the lifetime-dependent value to escape
+106 | }
+107 | private typealias SO03Keys = InteractionOwnedKeyState<SO03Candidate, SO03Committed, SO03Hits>
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC011/RuntimeDerived/ScopedStorageProbe.swift:97:41: error: lifetime-dependent variable 'other' escapes its scope
+ 95 |         return true
+ 96 |     }
+ 97 |     mutating func exchangeContents(with other: inout Self) {
+    |                   |                     `- error: lifetime-dependent variable 'other' escapes its scope
+    |                   `- note: it depends on the lifetime of argument 'self'
+ 98 |         precondition(capacity == other.capacity)
+ 99 |         let priorSlots = consume slots
+    :
+103 |         other.slots = consume priorSlots
+104 |         other.count = priorCount
+105 |     }
+    |     `- note: this use causes the lifetime-dependent value to escape
+106 | }
+107 | private typealias SO03Keys = InteractionOwnedKeyState<SO03Candidate, SO03Committed, SO03Hits>
+

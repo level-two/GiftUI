@@ -1,0 +1,19 @@
+{
+  "automatic_repairs": 0,
+  "command": "scripts/contracts/run-spec-011.sh --profile macos-dynamic --compiler-baseline rfc-014 --giftui-build .build/contracts/spec-006-rfc-014-swift64/af66aaf967e3fe8f-__4p5wu2/macos-dynamic",
+  "compiler_cells_attempted": 14,
+  "compiler_cells_failed": 1,
+  "compiler_cells_passed": 13,
+  "compiler_sha256": "79ae5c26645489fb783ae980f0f1bdae810f90fb180c9ac39808807b65e9fd69",
+  "driver_invocations": 1,
+  "exit": 1,
+  "focused_probe_cells_reached": 0,
+  "macro_tool_sha256": "6bb5eae9d0b726905f893b0f1fa4c0739fee61830f33404aa5cdb8321212c691",
+  "native_executions": 0,
+  "native_links": 0,
+  "planned_compilers": 42,
+  "planned_total_commands": 43,
+  "source_commit": "4c7e8bc22e0febd9f2adf0fbae8939906e62a824",
+  "source_dirty_at_driver_start": false,
+  "source_hashes_unchanged_after_failure": true
+}

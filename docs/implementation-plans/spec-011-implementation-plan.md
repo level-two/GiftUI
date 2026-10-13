@@ -56,17 +56,17 @@ not additional authorization to rerun an MVP implementation or reopen experiment
   carries exact residual/source/evidence rows (or explicit empty residual) to I4-07.
   **SO-01 evidence:** [caller/necessity inventory](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so01-inventory.md)
   records P08 applicability and I4-07 residuals; all criteria remain unmet.
-  **Current readiness:** independent SO-03 packet readiness PASS at `f18125fb`.
-  Authorized unvalidated source/input and fixed42compiler+1execute plan are
-  [frozen in P08](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/progress.md#so-03-precompiler-source-freeze).
-  Owned measurement uses a separate ordinary owned instrumentation protocol;
-  the six scoped protocols retain their exact requirements. Four existing owned
-  audit/probe signatures have mechanical measurement bounds. Source commit
-  precedes exactly one native invocation, zero automatic repairs, then independent
-  Strong result review. Shared owned dispatcher/all six operation consumers stay
-  covered. Actual analyzer factory integration/owned-return remains mandatory
-  unresolved I4-07 with the existing separate P09 handoff. SO-04–09 remain
-  proposed/unapproved; criteria, budgets and guard remain intact.
+  **Current readiness:** SO-03 unvalidated source `4c7e8bc2` is frozen after
+  its single native invocation failed at the new scoped fixture exchange.
+  [Exact result/independent handoff](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so03/result.md):
+  actual14compiler cells13pass/1fail;27focusedprobes/link/execute not reached.
+  Allowance1/1consumed,0remaining; automaticrepairs0. All six real consumer
+  sources compiled, but full owned/scoped/Optional/negative compatibility stays
+  unproved. Independent Strong read-only result review determines cause/next
+  authority and productive/unproductive disposition before any repair/invocation.
+  Actual analyzer factories remain unchanged, with mandatory unresolved I4-07
+  integration/owned-return and separate P09 handoff. SO-04–09 are unapproved;
+  criteria, historical budgets and guard remain intact.
   **Evidence:** one shared [P08 receipt](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/progress.md),
   actual caller/physical ledgers, exact compiler/source/input identities, unchanged
   control oracles, four profiles and independent Strong P08 exit review. SO-07
