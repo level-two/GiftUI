@@ -1,0 +1,5 @@
+{
+  "exit": 0,
+  "stdout": "cross-compiled current selected counter host only; no target execution or linked-image claim\nP08_COUNTER_EVIDENCE /Users/eugene/work/GiftUI/.build/raspberry-pi/contracts/p08-counter-kwh6apf1\n",
+  "build": ".build/raspberry-pi/contracts/p08-counter-kwh6apf1"
+}

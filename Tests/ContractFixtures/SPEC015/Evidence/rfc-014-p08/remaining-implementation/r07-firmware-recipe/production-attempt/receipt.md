@@ -259,3 +259,8 @@ Current Dynamic route PASS source63e717d1, actualexit0,1349501zero failures,
 24/24 and194matching inputs, allfive Staticseamcounts1. Exact fresh output
 `.build/contracts/p08-counter-e00kvr4q`; no repair or unchangedrerun. Pi is next
 sequentially, then nRF and supportedimage only after passes.
+
+Current Pi ARMv6 route PASS source63e717d1, actualexit0,28/28 checks and221
+matching inputs, allfive Staticseamcounts1. Exact fresh output
+`.build/raspberry-pi/contracts/p08-counter-kwh6apf1`; compilation only, no target
+execution/current-source Pi image claim. No repair. nRF is next sequentially.

@@ -1,0 +1,13 @@
+{
+  "argv": [
+    "python3",
+    "scripts/contracts/check-spec-015-counter.py",
+    "--runtime-build",
+    ".build/raspberry-pi/contracts/spec-013-runtime-cycle/tmpvq70p7a0/raspberry-pi-armv6",
+    "--profile",
+    "raspberry-pi-armv6"
+  ],
+  "source": "63e717d1",
+  "started": "2026-10-13T06:38:36.222743+00:00",
+  "repair_after_failure": false
+}
