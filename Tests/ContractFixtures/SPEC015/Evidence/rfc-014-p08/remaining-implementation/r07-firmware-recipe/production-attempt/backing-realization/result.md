@@ -1,5 +1,12 @@
 # R07 backing realization result — 2026-10-13
 
+[Independent backing-result review](independent-review.md) atc3eda302 accepts
+the narrowed route/link evidence and rejects actual nested stack fit. It
+identifies residual supplied/owner/optional-host aggregate moves and prescribes
+one fixture-only inout phase split with exact lifetime, file and validation
+limits. Compiler realization/whole nested fit remain unproved; no source edit
+or build ran in that review. All historical budgets stay closed, P08/R07 open.
+
 **Supported nRF link PASS; actual nested gross-stack FAIL. STOP for separate
 Strong result review. P08/R07/T8.1/HC-RD-003 remain open.** This is execution
 evidence, not independent acceptance of the implementation or package exit.
