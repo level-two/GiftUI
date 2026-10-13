@@ -110,3 +110,29 @@ because the changed shared graph/entry bytes affect all four original P08
 routes. The checker has no native compile-only switch. This is an independent
 required route refresh, not a repair or unchanged rerun. Pi and nRF follow
 sequentially as cross-compilation only. No checker modification is authorized.
+
+## Sequential validation resume dispatch — 2026-10-13, entryf1c7eccb
+
+Same Sol6.1 High / Strong, source38ba440d; user renewed proceed instruction.
+C3/R3, P08/T8.1/R07, HC-RD-003 current-route and image physical-fit criteria.
+Read committed backing-realization checkpoint, active plan/context and platform
+skills. Native Static/Dynamic already passed and will not be rerun. No source
+edit or new repair is dispatched. Historical helper2/2, B031/1, diagnostic1/1
+and earlier supported-image1/1 remain closed; two-consecutive-unproductive-
+repair guard and independent review stop remain unchanged.
+
+Allowed remaining checks, sequential, once each: existing checker
+`python3 scripts/contracts/check-spec-015-counter.py --runtime-build
+.build/raspberry-pi/contracts/spec-013-runtime-cycle/tmpvq70p7a0/raspberry-pi-armv6
+--profile raspberry-pi-armv6`; then existing checker with
+`--runtime-build .build/nrf52840/contracts/spec-013-runtime-cycle/tmp9d1k2h7s/nrf52840-embedded
+--profile nrf52840-embedded`. Host build uses its existing default verified
+recipe. Record actual fresh output paths and exact failures. After both pass,
+one `scripts/nrf52840/build.sh --application signal-analyzer-static
+--counter-build <fresh-nrf-output>`, then read-only linked artifact inspection
+for actual nested gross stack, ABI/GOT/allocator/RAM/flash against unchanged
+limits. Platform doctors are read-only preflight; no probes, variants or setup.
+Only receipts/evidence and affected plan/context/progress checkpoint may change.
+Any failed validation stops for separate Strong review; no automatic repair,
+P09, target execution or hardware. Model-capacity failure is reported without
+a substitute model or resetting any guard.
