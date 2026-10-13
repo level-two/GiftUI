@@ -295,7 +295,9 @@ from RFC-013 external delivery. RFC-014 was approved on 2026-10-10 under the
 RFC-013 remains draft. This updates routing only; Proposal outcomes are unchanged,
 and RFC approval does not approve downstream ADRs, Specs or production migration.
 
-The focused [draft RFC-015](../rfcs/rfc-015-p08-scoped-storage-ownership.md)
-prepares a P08 storage/lifetime contract candidate after implementation review.
-It changes no accepted outcome or approved contract and authorizes no new
-experiment. Its compiler, physical-owner and adoption blockers remain open.
+The focused [approved RFC-015](../rfcs/rfc-015-p08-scoped-storage-ownership.md)
+selects P08 storage/lifetime ownership after the
+[2026-10-13 readiness review and conditional approval](../iterations/iteration-003-review/rfc-015-readiness-and-approval.md).
+Proposal outcomes are unchanged. ADR acceptance, exact Spec amendments,
+implementation evidence and production-validation disposition remain separate;
+no new experiment or historical repair allowance follows from RFC approval.

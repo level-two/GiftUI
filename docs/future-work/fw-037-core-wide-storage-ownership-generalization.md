@@ -26,8 +26,8 @@ target_milestone: ITERATION-004
 ## Observation / Opportunity
 
 P08 exposed a distinction between physical backing ownership, state-machine
-ownership and scoped access. [Draft RFC-015](../rfcs/rfc-015-p08-scoped-storage-ownership.md)
-proposes a focused geometry/Interaction contract. A future frontend-, backend-
+ownership and scoped access. [Approved RFC-015](../rfcs/rfc-015-p08-scoped-storage-ownership.md)
+selects a focused geometry/Interaction direction. A future frontend-, backend-
 and platform-independent GiftUI Core might benefit from a consistent version of
 this distinction across owner boundaries, using Swift to exclude unsupported
 safe-client escapes and aliases while preserving explicit trusted implementation
@@ -63,15 +63,16 @@ checks from runtime validation and trusted implementation obligations.
 This is an assessment model, not a new Core contract. Compare existing
 [SPEC-013 borrowing rules](../specs/spec-013-runtime-profiles.md#storage-ownership-and-borrowing),
 [SPEC-014 acceptance and payload transfer rules](../specs/spec-014-backend-integration.md)
-and [draft RFC-015 scoped access](../rfcs/rfc-015-p08-scoped-storage-ownership.md).
+and [RFC-015 scoped access](../rfcs/rfc-015-p08-scoped-storage-ownership.md).
 Determine which rules merit shared Core architecture and which remain specific
 to their subsystem; approved Specifications retain authority for current behavior.
 
 ## Why Deferred
 
 P08 needs a coherent finite carrier and physical slot design, not a universal
-Core redesign. Its draft has unresolved approval blockers and no new compiler or
-resource proof. FW-022 already owns simulator investment/fidelity; FW-035 owns
+Core redesign. RFC-015 now has bounded native compiler evidence and architectural
+approval; its downstream contracts, complete integration and resource proof
+remain outstanding. FW-022 already owns simulator investment/fidelity; FW-035 owns
 generated graphs for interchangeable frontends; EXP-002 compares integration
 shapes. None captures the separate question of whether storage/access ownership
 should generalize across them. This item adds only that narrow observation.
@@ -121,12 +122,12 @@ Evaluate concrete ownership boundaries through Exploration (reuse EXP-002 when
 its scope fits), including a second consumer and PC simulator composition.
 Record evidence gaps and recommend generalization, retaining local contracts,
 or deferral. Then use normal Proposal/RFC/ADR/Spec gates for any adoption.
-RFC-015's current blockers remain in P08. Status stays captured: scheduling the
+RFC-015's implementation and acceptance obligations remain in P08. Status stays captured: scheduling the
 assessment does not itself promote this item to an Exploration or Proposal.
 
 ## References
 
-- [RFC-015](../rfcs/rfc-015-p08-scoped-storage-ownership.md), source and current blockers.
+- [RFC-015](../rfcs/rfc-015-p08-scoped-storage-ownership.md), source and downstream obligations.
 - [FW-022](fw-022-contract-accurate-embedded-target-simulator.md), simulator ownership and fidelity.
 - [FW-035](fw-035-generated-view-graph-for-interchangeable-frontends.md), frontend graph opportunity.
 - [EXP-002](../explorations/exp-002-backend-and-application-integration-shapes.md), integration alternatives.

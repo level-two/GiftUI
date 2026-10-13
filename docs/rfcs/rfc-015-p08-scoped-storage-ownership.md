@@ -2,7 +2,7 @@
 id: RFC-015
 feature: external-application-integration
 title: P08 Scoped Storage Ownership
-status: draft
+status: approved
 authors:
   - codex
 created: 2026-10-13
@@ -36,13 +36,16 @@ target_milestone: ITERATION-003
 
 ## Summary
 
-**Draft candidate, not an approved amendment or permission to implement.**
+**Approved architectural direction on 2026-10-13; downstream contracts and
+implementation acceptance remain separate gates.** The
+[readiness review and conditional human approval](../iterations/iteration-003-review/rfc-015-readiness-and-approval.md)
+record the current disposition.
 The [independent initial review](../iterations/iteration-003-review/rfc-015-initial-review.md)
 at `5770d266` found R1–R4. The response below selects draft corrections; it does
 not change the immutable review verdict or establish compiler acceptance.
 The [revision review](../iterations/iteration-003-review/rfc-015-revision-review.md)
 records additional retirement, cleanup, capacity and gate-order corrections
-against `b39a4f35`; B1–B4 remain open.
+against `b39a4f35`; B1–B4 are retained below as downstream obligations.
 Prepare one narrow P08 direction: stable typed physical owners lend exclusive,
 compiler-bounded storage access to a noncopyable, nonescapable geometry and
 Interaction carrier chain. Interaction retains authority over its transaction;
@@ -54,8 +57,9 @@ by Swift, with broader implications captured separately. That instruction does
 not approve this unseen design, new declarations, ADRs, Specifications, compiler
 runs, repairs or resource exceptions. Subsequent bounded SPIKE-075 authorization
 produced isolated native state and return-control evidence; the full production
-composition below remains unproved. This draft is **not ready for architectural approval**
-until the blockers in Open Questions are resolved.
+composition below remains unproved. The fresh readiness review found the
+architectural choices coherent; the maintainer's conditional approval applies.
+No production conformance or closed-budget reset follows from RFC approval.
 
 ## Context
 
@@ -231,7 +235,7 @@ patterns establish neither a P08 generic storage composition nor its stack cost.
 are deliberately absent. The proposed storage callback is nonthrowing; failures
 are owned values and physical initialization is a separate checked stage. Intended interface signatures
 and lifetime constraints are fixed below; compiler acceptance and implementation
-proof remain approval blocker B1, not assumed implementation details.
+proof remain implementation/acceptance obligation B1, not assumed evidence.
 
 ```swift
 package protocol InteractionCandidateRecordStorage: ~Copyable, ~Escapable {
@@ -684,7 +688,7 @@ requires G/C/R/H: Copyable & Escapable, hence its stored state uses these
 conditional conformances. Its constructor remains consuming for geometry/state.
 No concrete scoped adapter satisfies either owned constraint. If the compiler
 cannot express these exact conformances or initialization/result rules, **R1
-remains an approval blocker under B1**; no separate owned duplication or lifetime
+must stop affected implementation under B1 for upstream review**; no separate owned duplication or lifetime
 erasure is preauthorized.
 
 ### Direct consumer dispositions — R2
@@ -990,6 +994,14 @@ The candidate combines stable ownership, scoped access and final-region typed
 initialization. It does not claim in-place syntax forces optimization or that a
 portable amendment is the only possible P08 repair.
 
+The approved selection favors complete compiler-bounded access through the
+shared Interaction state machine and pipeline over retaining inline owned banks
+or creating a fixture-specific duplicate state machine. That trade-off accepts
+cross-module migration cost and unproved target fit. The fixture-only owned
+alternative remains credible; neither its impossibility nor the selected
+design's sufficient stack reduction has been demonstrated. Selection does not
+depend on either claim.
+
 ## Rejected Approaches
 
 The independent review rejects adoption of the previous combined construction
@@ -1079,24 +1091,30 @@ labels only for those tested shadows; it does not close the complete B1 carrier,
 target or physical proof. The experiment series is closed, with no automatic
 successor budget.
 
-The independent initial review remains **not ready**. Response mapping:
+The independent initial review remains historically **not ready**. The fresh
+[readiness review](../iterations/iteration-003-review/rfc-015-readiness-and-approval.md)
+found its design omissions resolved and supports the approval above. Response
+mapping and remaining implementation evidence:
 
 | Finding | Draft correction | Evidence still missing |
 | --- | --- | --- |
-| R1 | Conditional Copyable/Escapable state route, full stored-field and initializer constraints | Actual compiler acceptance, owned-return/copy and scoped-negative pairs under B1 |
+| R1 | Conditional Copyable/Escapable state route, full stored-field and initializer constraints | Bounded native shadow evidence passes; production/all-input/target pairs remain under B1 |
 | R2 | Direct consumer table; scoped operation-only parameters, owned-only storing dispatcher/analyzer | Complete transitive/generated/client audit and cross-module B1 evidence; any counter need for retained scoped dispatcher is a new decision |
 | R3 | One common actual-owner session lifetime on all concrete adapters; restricted paired exchange | Token/constructor/exchange propagation and physical provenance under B1/B2 |
 | R4 | Nonthrowing callback with owned failures; separate checked physical init and prefix cleanup | Exact initializer/inventory/teardown realization and fault-path proof under B2 |
 | V1 (revision review) | Scoped consuming retirement carrier and owned-only returnWorkspaces member | Full inert/active/Optional/reset lifetime proof under B1 |
 | V2 (revision review) | Explicit trusted-body cleanup and physical-owner/session state transitions | Early-return, repeated-session and partial-failure proof under B2 |
 | V3 (revision review) | Equal logical pair capacities, complete descriptor exchange and physical-owner measurement | Unequal-reservation, repeated-swap and ledger reconciliation under B2 |
-| V4 (revision review) | RFC approval precedes ADR acceptance and Spec amendments | Human selection/evidence disposition remains B4 |
+| V4 (revision review) | RFC approval precedes ADR acceptance and Spec amendments | RFC selected/approved; downstream approvals and execution disposition remain B4 |
 
-These are candidate choices, not approved decisions or a claim that the review's
-findings have been independently closed. All remaining questions below are
-**approval blockers**, not deferred decisions:
+These architectural choices are approved through this RFC; their authority for
+implementation still requires accepted ADRs and approved Specifications.
+**No unresolved architectural approval blocker remains.** B1–B4 are preserved
+as downstream contract, implementation and acceptance obligations, not claims
+that their evidence exists and not deferred work. A failure that requires a new
+architecture must return upstream; it cannot be repaired by weakening them.
 
-- **B1 — Expressible complete API:** Implement the specified interface fragments and
+- **B1 — Complete API implementation and evidence:** Implement the specified interface fragments and
   cross-module positive/negative pairs for every carrier listed above under
   approved Swift 6.4. In particular prove protocol Self suppressions, state
   conformance, consumed generic lifetime union, Optional moves, existing
@@ -1105,25 +1123,26 @@ findings have been independently closed. All remaining questions below are
   the scoped retirement/owned-return separation above.
   Distinguish static/access-control failures from runtime exclusivity checks. This needs
   separately authorized bounded evidence; existing patterns alone are insufficient.
-- **B2 — Exact physical realization:** Provide the five-bank typed initialization,
+- **B2 — Physical realization and conformance:** Provide the five-bank typed initialization,
   control-owner, final geometry storage and destruction inventory replacing the
   initialized old slot. Prove disjointness, partial failure and swap semantics;
   name every changed binding/initializer/deinitializer/audit site. Include the
   cleanup owner for each return path, repeat-session reset and the physical-bank
   measurement replacing the old adapter-size formula. No raw offset
   layout or exact byte promise is adopted here.
-- **B3 — Narrow necessity and migration:** Independent review must compare the
-  candidate with an ownership-preserving fixture-only design and identify the
-  actual cross-module caller inventory. Evidence does not yet prove that the
-  portable contract change is necessary or sufficient for P08 stack fit.
-- **B4 — Authority and validation disposition:** Maintainer chooses whether to
-  pursue this candidate after independent review, including a bounded way to
-  resolve B1/B2 under closed budgets. Resolve the evidence and migration blockers
-  before requesting RFC approval. After human RFC approval, extract a proposed
+- **B3 — Migration and fit acceptance:** The alternatives comparison above and
+  fresh review support selection without claiming the portable change uniquely
+  necessary or sufficient for P08 stack fit. Complete the transitive/generated
+  caller inventory, preserve the selected owned/scoped dispositions, and prove
+  migration compatibility and actual fit before acceptance. A newly required
+  retained scoped dispatcher or other scope expansion returns upstream.
+- **B4 — Downstream authority and validation disposition:** RFC selection is
+  approved under the linked conditional human instruction. Extract a proposed
   additive ownership ADR (or explicit supersession if review finds a conflict),
   obtain its acceptance, then obtain approval of exact Spec amendments and prepare
-  ready plans before implementation. ADR acceptance is not a prerequisite for approving
-  its source RFC. No architectural acceptance is inferred from preparing this RFC.
+  ready plans before implementation. Separately record the bounded production
+  validation/repair disposition; no historical allowance is reopened by this RFC.
+  Complete B1–B3 evidence before P08 acceptance, not before RFC approval.
 
 ## Deferred and Follow-up Work
 
@@ -1142,9 +1161,9 @@ ended. A final separately approved two-check function-return control then passed
 Strong review: the compiler accepted caller-owned storage and rejected return
 of the local-bank-dependent wrapper. The experiment series is now closed at
 seven cumulative compiler experiments, with no proposed successor. Its evidence
-feeds B1; it neither defers a blocker
-nor approves this RFC. Complete carrier feasibility
-still needs evidence if that first gate passes. Detailed implementation migration,
+feeds B1; it did not itself approve this RFC. Approval comes from the subsequent
+linked human instruction and readiness review. Complete carrier feasibility
+still needs implementation evidence. Detailed implementation migration,
 physical layout and complete linked resource/stack acceptance remain downstream
 conformance work; RFC approval needs a viable ownership/cleanup plan and enough
 compiler evidence to establish the selected architecture, not completed production
@@ -1155,14 +1174,14 @@ captures evaluation of this separation for frontend/backend/platform-independent
 GiftUI Core and simulator integration. The maintainer scheduled this assessment
 in [ITERATION-004](../iterations/iteration-004-backend-and-application-integration.md)
 revision 3, I4-06 / I4-AC-007. It will assess a concrete second consumer and
-record any missing P08 evidence; scheduling does not adopt this draft.
+record any missing P08 evidence; scheduling does not generalize this decision.
 Existing FW-022, FW-035 and EXP-002 retain simulator, generated-frontends and
 integration-shape questions. None is required to settle P08. B1–B4 cannot be
 moved there to make this RFC appear complete.
 
 ## Decision Summary
 
-Candidate ADR extraction after RFC approval: one focused additive P08 storage
+Approved extraction boundary: one focused additive P08 storage
 ownership decision distinguishing physical owner, transaction owner and scoped
 access, restricting trusted construction, and requiring a complete type-carrier
 chain. Preserve ADR-035's complete key ownership, ADR-036's stable backing/model
