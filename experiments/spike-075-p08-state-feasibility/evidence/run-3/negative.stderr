@@ -1,0 +1,13 @@
+/Users/eugene/work/GiftUI/.build/spike-075/20261013T163526Z-b3d15308/Negative.swift:12:12: error: lifetime-dependent value escapes its scope
+ 6 | @_lifetime(copy anchor)
+ 7 | func returnLocal(_ anchor: Span<UInt64>, _ seed: UInt64) -> Wrapped? {
+ 8 |     let bank0 = InlineArray<1, UInt64>(repeating: seed)
+   |         `- note: it depends on the lifetime of variable 'bank0'
+ 9 |     let state = InteractionState(candidateRecords: ScopedCandidate(bank0.span),
+10 |         candidateHitRegions: ScopedHit(anchor), candidateCommittedRecords: ScopedCommitted(anchor),
+11 |         committedRecords: ScopedCommitted(anchor), committedHitRegions: ScopedHit(anchor))
+12 |     return Wrapped(state: state, maximumComponentsPerKey: 1, maximumComponents: 1)
+   |     |      `- error: lifetime-dependent value escapes its scope
+   |     `- note: this use causes the lifetime-dependent value to escape
+13 | }
+14 | 
