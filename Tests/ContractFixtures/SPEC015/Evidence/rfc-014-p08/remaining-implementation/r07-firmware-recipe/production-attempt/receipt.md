@@ -289,3 +289,31 @@ preserved. Smallerhelpers do not establish fit. No fullP11peak investigation
 needed after decisive localfailure. No auto repair/new build/sourcevariant.
 STOP for separateStrongresult andpackageguard disposition; singlecorrection
 andimageallowancesconsumed, no renewedbudget/guardreset. P08open/nohardware.
+
+## One optimized-IR evidence capture dispatch — entryed985668
+
+Sol6.1High/Strong, unchangedsource63e717d1; C3/R3/P08/T8.1/HC-RD-003 remaining
+construction-transfer attribution only. ed985668 accepts narrowed priorgates
+and states packageguard is not exhausted/reset; phase correction/image budget
+closed. This dispatch is one unchanged-source compiler output capture, zero
+source edits/builds/links/retries/semantic variants or nextimplementation.
+
+Exact firmware P08CounterRuntime command (148argv/39sources) matches preserved
+compile_commands bytes. Invocation array/diff/outputmaps/frozeninput hashes are
+in phase-split/ir-capture. Only three argv tokens change: -c→-emit-ir, isolated
+output-file-map operand, isolated emit-module-path operand. Per-source object
+outputs become llvm-ir .ll outputs; every ancillary output redirects to isolated
+.build/nrf52840/contracts capture root. Official swift-driver FileType source
+confirms llvm-ir key (linked in receipt); no help/compiler probe was invoked.
+All other argv/cwd, target/compiler pins/Osize/WMO/parallel/lifetime/features/
+macro/Cflags/import/cache paths remain identical. Frozen current sources/import
+modules/compiler/frontend/macro/Cheaders/targetstdlib/pins/config/finalimage
+and364existingfirmware object identities verified before capture.
+
+One invocation next, stop mismatch/failure withoutretry. Analyze only selected
+semantic/construction closure allocations/lifetimes/state→owner→optional/fullhost
+transfers, correlating7284/7807/8155linkedcopies. Distinguish named allocations
+from backend-only spills; no fullcompiler/P11 study. Record table and one exact
+fixture constructionflowdesign or precise unresolvedattribution, then STOP for
+independentStrongdesign disposition. Main27648/heap0/RAM196608/flash1048576,
+all historicalclosedguards and package rule preserved; nohardware/P09–P12.

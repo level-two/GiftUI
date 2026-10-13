@@ -1,0 +1,239 @@
+{
+  "": {
+    "swift-dependencies": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/giftui_counter_P08CounterRuntime.swiftdeps"
+  },
+  "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterAdmission.swift": {
+    "dependencies": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/CounterAdmission.swift.obj.d",
+    "diagnostics": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/CounterAdmission.swift.obj.dia",
+    "llvm-ir": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/CounterAdmission.ll",
+    "swift-dependencies": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/CounterAdmission.swift.obj.swiftdeps"
+  },
+  "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterApplication.swift": {
+    "dependencies": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/CounterApplication.swift.obj.d",
+    "diagnostics": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/CounterApplication.swift.obj.dia",
+    "llvm-ir": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/CounterApplication.ll",
+    "swift-dependencies": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/CounterApplication.swift.obj.swiftdeps"
+  },
+  "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterCoordinatorProbe.swift": {
+    "dependencies": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/CounterCoordinatorProbe.swift.obj.d",
+    "diagnostics": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/CounterCoordinatorProbe.swift.obj.dia",
+    "llvm-ir": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/CounterCoordinatorProbe.ll",
+    "swift-dependencies": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/CounterCoordinatorProbe.swift.obj.swiftdeps"
+  },
+  "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterDynamicHostOwner.swift": {
+    "dependencies": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/CounterDynamicHostOwner.swift.obj.d",
+    "diagnostics": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/CounterDynamicHostOwner.swift.obj.dia",
+    "llvm-ir": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/CounterDynamicHostOwner.ll",
+    "swift-dependencies": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/CounterDynamicHostOwner.swift.obj.swiftdeps"
+  },
+  "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterDynamicHostProbe.swift": {
+    "dependencies": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/CounterDynamicHostProbe.swift.obj.d",
+    "diagnostics": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/CounterDynamicHostProbe.swift.obj.dia",
+    "llvm-ir": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/CounterDynamicHostProbe.ll",
+    "swift-dependencies": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/CounterDynamicHostProbe.swift.obj.swiftdeps"
+  },
+  "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterFixedStorageProbe.swift": {
+    "dependencies": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/CounterFixedStorageProbe.swift.obj.d",
+    "diagnostics": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/CounterFixedStorageProbe.swift.obj.dia",
+    "llvm-ir": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/CounterFixedStorageProbe.ll",
+    "swift-dependencies": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/CounterFixedStorageProbe.swift.obj.swiftdeps"
+  },
+  "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterGeometry.swift": {
+    "dependencies": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/CounterGeometry.swift.obj.d",
+    "diagnostics": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/CounterGeometry.swift.obj.dia",
+    "llvm-ir": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/CounterGeometry.ll",
+    "swift-dependencies": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/CounterGeometry.swift.obj.swiftdeps"
+  },
+  "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterGraphProbe.swift": {
+    "dependencies": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/CounterGraphProbe.swift.obj.d",
+    "diagnostics": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/CounterGraphProbe.swift.obj.dia",
+    "llvm-ir": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/CounterGraphProbe.ll",
+    "swift-dependencies": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/CounterGraphProbe.swift.obj.swiftdeps"
+  },
+  "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostAssembly.swift": {
+    "dependencies": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/CounterHostAssembly.swift.obj.d",
+    "diagnostics": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/CounterHostAssembly.swift.obj.dia",
+    "llvm-ir": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/CounterHostAssembly.ll",
+    "swift-dependencies": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/CounterHostAssembly.swift.obj.swiftdeps"
+  },
+  "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostCorpus.swift": {
+    "dependencies": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/CounterHostCorpus.swift.obj.d",
+    "diagnostics": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/CounterHostCorpus.swift.obj.dia",
+    "llvm-ir": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/CounterHostCorpus.ll",
+    "swift-dependencies": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/CounterHostCorpus.swift.obj.swiftdeps"
+  },
+  "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostOwner.swift": {
+    "dependencies": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/CounterHostOwner.swift.obj.d",
+    "diagnostics": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/CounterHostOwner.swift.obj.dia",
+    "llvm-ir": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/CounterHostOwner.ll",
+    "swift-dependencies": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/CounterHostOwner.swift.obj.swiftdeps"
+  },
+  "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostProbe.swift": {
+    "dependencies": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/CounterHostProbe.swift.obj.d",
+    "diagnostics": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/CounterHostProbe.swift.obj.dia",
+    "llvm-ir": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/CounterHostProbe.ll",
+    "swift-dependencies": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/CounterHostProbe.swift.obj.swiftdeps"
+  },
+  "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterModel.swift": {
+    "dependencies": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/CounterModel.swift.obj.d",
+    "diagnostics": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/CounterModel.swift.obj.dia",
+    "llvm-ir": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/CounterModel.ll",
+    "swift-dependencies": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/CounterModel.swift.obj.swiftdeps"
+  },
+  "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterModelProbe.swift": {
+    "dependencies": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/CounterModelProbe.swift.obj.d",
+    "diagnostics": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/CounterModelProbe.swift.obj.dia",
+    "llvm-ir": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/CounterModelProbe.ll",
+    "swift-dependencies": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/CounterModelProbe.swift.obj.swiftdeps"
+  },
+  "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterNativeRaster.swift": {
+    "dependencies": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/CounterNativeRaster.swift.obj.d",
+    "diagnostics": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/CounterNativeRaster.swift.obj.dia",
+    "llvm-ir": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/CounterNativeRaster.ll",
+    "swift-dependencies": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/CounterNativeRaster.swift.obj.swiftdeps"
+  },
+  "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift": {
+    "dependencies": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/CounterPipelineOwner.swift.obj.d",
+    "diagnostics": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/CounterPipelineOwner.swift.obj.dia",
+    "llvm-ir": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/CounterPipelineOwner.ll",
+    "swift-dependencies": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/CounterPipelineOwner.swift.obj.swiftdeps"
+  },
+  "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPixelOracle.swift": {
+    "dependencies": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/CounterPixelOracle.swift.obj.d",
+    "diagnostics": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/CounterPixelOracle.swift.obj.dia",
+    "llvm-ir": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/CounterPixelOracle.ll",
+    "swift-dependencies": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/CounterPixelOracle.swift.obj.swiftdeps"
+  },
+  "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterProfileStorage.swift": {
+    "dependencies": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/CounterProfileStorage.swift.obj.d",
+    "diagnostics": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/CounterProfileStorage.swift.obj.dia",
+    "llvm-ir": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/CounterProfileStorage.ll",
+    "swift-dependencies": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/CounterProfileStorage.swift.obj.swiftdeps"
+  },
+  "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterRender.swift": {
+    "dependencies": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/CounterRender.swift.obj.d",
+    "diagnostics": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/CounterRender.swift.obj.dia",
+    "llvm-ir": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/CounterRender.ll",
+    "swift-dependencies": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/CounterRender.swift.obj.swiftdeps"
+  },
+  "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterRouteEntry.swift": {
+    "dependencies": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/CounterRouteEntry.swift.obj.d",
+    "diagnostics": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/CounterRouteEntry.swift.obj.dia",
+    "llvm-ir": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/CounterRouteEntry.ll",
+    "swift-dependencies": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/CounterRouteEntry.swift.obj.swiftdeps"
+  },
+  "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemantic.swift": {
+    "dependencies": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/CounterSemantic.swift.obj.d",
+    "diagnostics": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/CounterSemantic.swift.obj.dia",
+    "llvm-ir": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/CounterSemantic.ll",
+    "swift-dependencies": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/CounterSemantic.swift.obj.swiftdeps"
+  },
+  "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemanticProbe.swift": {
+    "dependencies": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/CounterSemanticProbe.swift.obj.d",
+    "diagnostics": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/CounterSemanticProbe.swift.obj.dia",
+    "llvm-ir": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/CounterSemanticProbe.ll",
+    "swift-dependencies": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/CounterSemanticProbe.swift.obj.swiftdeps"
+  },
+  "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterStaticGeometry.swift": {
+    "dependencies": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/CounterStaticGeometry.swift.obj.d",
+    "diagnostics": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/CounterStaticGeometry.swift.obj.dia",
+    "llvm-ir": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/CounterStaticGeometry.ll",
+    "swift-dependencies": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/CounterStaticGeometry.swift.obj.swiftdeps"
+  },
+  "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterStorageMeasurement.swift": {
+    "dependencies": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/CounterStorageMeasurement.swift.obj.d",
+    "diagnostics": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/CounterStorageMeasurement.swift.obj.dia",
+    "llvm-ir": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/CounterStorageMeasurement.ll",
+    "swift-dependencies": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/CounterStorageMeasurement.swift.obj.swiftdeps"
+  },
+  "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterStorageRegions.swift": {
+    "dependencies": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/CounterStorageRegions.swift.obj.d",
+    "diagnostics": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/CounterStorageRegions.swift.obj.dia",
+    "llvm-ir": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/CounterStorageRegions.ll",
+    "swift-dependencies": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/CounterStorageRegions.swift.obj.swiftdeps"
+  },
+  "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterTiledRaster.swift": {
+    "dependencies": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/CounterTiledRaster.swift.obj.d",
+    "diagnostics": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/CounterTiledRaster.swift.obj.dia",
+    "llvm-ir": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/CounterTiledRaster.ll",
+    "swift-dependencies": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/CounterTiledRaster.swift.obj.swiftdeps"
+  },
+  "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWakeIntegration.swift": {
+    "dependencies": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/CounterWakeIntegration.swift.obj.d",
+    "diagnostics": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/CounterWakeIntegration.swift.obj.dia",
+    "llvm-ir": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/CounterWakeIntegration.ll",
+    "swift-dependencies": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/CounterWakeIntegration.swift.obj.swiftdeps"
+  },
+  "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWorkload.swift": {
+    "dependencies": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/CounterWorkload.swift.obj.d",
+    "diagnostics": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/CounterWorkload.swift.obj.dia",
+    "llvm-ir": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/CounterWorkload.ll",
+    "swift-dependencies": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/CounterWorkload.swift.obj.swiftdeps"
+  },
+  "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterDrawingPlanRecords.swift": {
+    "dependencies": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/StaticCounterDrawingPlanRecords.swift.obj.d",
+    "diagnostics": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/StaticCounterDrawingPlanRecords.swift.obj.dia",
+    "llvm-ir": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/StaticCounterDrawingPlanRecords.ll",
+    "swift-dependencies": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/StaticCounterDrawingPlanRecords.swift.obj.swiftdeps"
+  },
+  "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterDrawingPlanStorage.swift": {
+    "dependencies": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/StaticCounterDrawingPlanStorage.swift.obj.d",
+    "diagnostics": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/StaticCounterDrawingPlanStorage.swift.obj.dia",
+    "llvm-ir": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/StaticCounterDrawingPlanStorage.ll",
+    "swift-dependencies": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/StaticCounterDrawingPlanStorage.swift.obj.swiftdeps"
+  },
+  "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterDrawingWorkspace.swift": {
+    "dependencies": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/StaticCounterDrawingWorkspace.swift.obj.d",
+    "diagnostics": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/StaticCounterDrawingWorkspace.swift.obj.dia",
+    "llvm-ir": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/StaticCounterDrawingWorkspace.ll",
+    "swift-dependencies": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/StaticCounterDrawingWorkspace.swift.obj.swiftdeps"
+  },
+  "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterEmbeddedBacking.swift": {
+    "dependencies": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/StaticCounterEmbeddedBacking.swift.obj.d",
+    "diagnostics": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/StaticCounterEmbeddedBacking.swift.obj.dia",
+    "llvm-ir": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/StaticCounterEmbeddedBacking.ll",
+    "swift-dependencies": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/StaticCounterEmbeddedBacking.swift.obj.swiftdeps"
+  },
+  "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterInteractionStorage.swift": {
+    "dependencies": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/StaticCounterInteractionStorage.swift.obj.d",
+    "diagnostics": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/StaticCounterInteractionStorage.swift.obj.dia",
+    "llvm-ir": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/StaticCounterInteractionStorage.ll",
+    "swift-dependencies": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/StaticCounterInteractionStorage.swift.obj.swiftdeps"
+  },
+  "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLayoutScopeCodec.swift": {
+    "dependencies": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/StaticCounterLayoutScopeCodec.swift.obj.d",
+    "diagnostics": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/StaticCounterLayoutScopeCodec.swift.obj.dia",
+    "llvm-ir": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/StaticCounterLayoutScopeCodec.ll",
+    "swift-dependencies": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/StaticCounterLayoutScopeCodec.swift.obj.swiftdeps"
+  },
+  "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLayoutTextCodec.swift": {
+    "dependencies": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/StaticCounterLayoutTextCodec.swift.obj.d",
+    "diagnostics": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/StaticCounterLayoutTextCodec.swift.obj.dia",
+    "llvm-ir": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/StaticCounterLayoutTextCodec.ll",
+    "swift-dependencies": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/StaticCounterLayoutTextCodec.swift.obj.swiftdeps"
+  },
+  "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLayoutWorkspace.swift": {
+    "dependencies": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/StaticCounterLayoutWorkspace.swift.obj.d",
+    "diagnostics": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/StaticCounterLayoutWorkspace.swift.obj.dia",
+    "llvm-ir": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/StaticCounterLayoutWorkspace.ll",
+    "swift-dependencies": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/StaticCounterLayoutWorkspace.swift.obj.swiftdeps"
+  },
+  "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLivePathStorage.swift": {
+    "dependencies": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/StaticCounterLivePathStorage.swift.obj.d",
+    "diagnostics": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/StaticCounterLivePathStorage.swift.obj.dia",
+    "llvm-ir": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/StaticCounterLivePathStorage.ll",
+    "swift-dependencies": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/StaticCounterLivePathStorage.swift.obj.swiftdeps"
+  },
+  "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterRenderWorkspace.swift": {
+    "dependencies": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/StaticCounterRenderWorkspace.swift.obj.d",
+    "diagnostics": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/StaticCounterRenderWorkspace.swift.obj.dia",
+    "llvm-ir": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/StaticCounterRenderWorkspace.ll",
+    "swift-dependencies": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/StaticCounterRenderWorkspace.swift.obj.swiftdeps"
+  },
+  "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterResolvedLayout.swift": {
+    "dependencies": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/StaticCounterResolvedLayout.swift.obj.d",
+    "diagnostics": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/StaticCounterResolvedLayout.swift.obj.dia",
+    "llvm-ir": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/StaticCounterResolvedLayout.ll",
+    "swift-dependencies": "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/outputs/StaticCounterResolvedLayout.swift.obj.swiftdeps"
+  }
+}

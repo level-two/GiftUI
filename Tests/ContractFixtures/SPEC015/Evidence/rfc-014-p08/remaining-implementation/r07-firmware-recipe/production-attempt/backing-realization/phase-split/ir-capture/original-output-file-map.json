@@ -1,0 +1,279 @@
+{
+	"" : 
+	{
+		"swift-dependencies" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir//giftui_counter_P08CounterRuntime.swiftdeps"
+	},
+	"/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterAdmission.swift" : 
+	{
+		"dependencies" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterAdmission.swift.obj.d",
+		"diagnostics" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterAdmission.swift.obj.dia",
+		"object" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterAdmission.swift.obj",
+		"swift-dependencies" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterAdmission.swift.obj.swiftdeps"
+	},
+	"/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterApplication.swift" : 
+	{
+		"dependencies" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterApplication.swift.obj.d",
+		"diagnostics" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterApplication.swift.obj.dia",
+		"object" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterApplication.swift.obj",
+		"swift-dependencies" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterApplication.swift.obj.swiftdeps"
+	},
+	"/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterCoordinatorProbe.swift" : 
+	{
+		"dependencies" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterCoordinatorProbe.swift.obj.d",
+		"diagnostics" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterCoordinatorProbe.swift.obj.dia",
+		"object" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterCoordinatorProbe.swift.obj",
+		"swift-dependencies" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterCoordinatorProbe.swift.obj.swiftdeps"
+	},
+	"/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterDynamicHostOwner.swift" : 
+	{
+		"dependencies" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterDynamicHostOwner.swift.obj.d",
+		"diagnostics" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterDynamicHostOwner.swift.obj.dia",
+		"object" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterDynamicHostOwner.swift.obj",
+		"swift-dependencies" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterDynamicHostOwner.swift.obj.swiftdeps"
+	},
+	"/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterDynamicHostProbe.swift" : 
+	{
+		"dependencies" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterDynamicHostProbe.swift.obj.d",
+		"diagnostics" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterDynamicHostProbe.swift.obj.dia",
+		"object" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterDynamicHostProbe.swift.obj",
+		"swift-dependencies" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterDynamicHostProbe.swift.obj.swiftdeps"
+	},
+	"/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterFixedStorageProbe.swift" : 
+	{
+		"dependencies" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterFixedStorageProbe.swift.obj.d",
+		"diagnostics" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterFixedStorageProbe.swift.obj.dia",
+		"object" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterFixedStorageProbe.swift.obj",
+		"swift-dependencies" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterFixedStorageProbe.swift.obj.swiftdeps"
+	},
+	"/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterGeometry.swift" : 
+	{
+		"dependencies" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterGeometry.swift.obj.d",
+		"diagnostics" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterGeometry.swift.obj.dia",
+		"object" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterGeometry.swift.obj",
+		"swift-dependencies" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterGeometry.swift.obj.swiftdeps"
+	},
+	"/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterGraphProbe.swift" : 
+	{
+		"dependencies" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterGraphProbe.swift.obj.d",
+		"diagnostics" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterGraphProbe.swift.obj.dia",
+		"object" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterGraphProbe.swift.obj",
+		"swift-dependencies" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterGraphProbe.swift.obj.swiftdeps"
+	},
+	"/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostAssembly.swift" : 
+	{
+		"dependencies" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostAssembly.swift.obj.d",
+		"diagnostics" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostAssembly.swift.obj.dia",
+		"object" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostAssembly.swift.obj",
+		"swift-dependencies" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostAssembly.swift.obj.swiftdeps"
+	},
+	"/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostCorpus.swift" : 
+	{
+		"dependencies" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostCorpus.swift.obj.d",
+		"diagnostics" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostCorpus.swift.obj.dia",
+		"object" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostCorpus.swift.obj",
+		"swift-dependencies" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostCorpus.swift.obj.swiftdeps"
+	},
+	"/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostOwner.swift" : 
+	{
+		"dependencies" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostOwner.swift.obj.d",
+		"diagnostics" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostOwner.swift.obj.dia",
+		"object" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostOwner.swift.obj",
+		"swift-dependencies" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostOwner.swift.obj.swiftdeps"
+	},
+	"/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostProbe.swift" : 
+	{
+		"dependencies" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostProbe.swift.obj.d",
+		"diagnostics" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostProbe.swift.obj.dia",
+		"object" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostProbe.swift.obj",
+		"swift-dependencies" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostProbe.swift.obj.swiftdeps"
+	},
+	"/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterModel.swift" : 
+	{
+		"dependencies" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterModel.swift.obj.d",
+		"diagnostics" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterModel.swift.obj.dia",
+		"object" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterModel.swift.obj",
+		"swift-dependencies" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterModel.swift.obj.swiftdeps"
+	},
+	"/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterModelProbe.swift" : 
+	{
+		"dependencies" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterModelProbe.swift.obj.d",
+		"diagnostics" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterModelProbe.swift.obj.dia",
+		"object" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterModelProbe.swift.obj",
+		"swift-dependencies" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterModelProbe.swift.obj.swiftdeps"
+	},
+	"/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterNativeRaster.swift" : 
+	{
+		"dependencies" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterNativeRaster.swift.obj.d",
+		"diagnostics" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterNativeRaster.swift.obj.dia",
+		"object" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterNativeRaster.swift.obj",
+		"swift-dependencies" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterNativeRaster.swift.obj.swiftdeps"
+	},
+	"/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift" : 
+	{
+		"dependencies" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift.obj.d",
+		"diagnostics" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift.obj.dia",
+		"object" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift.obj",
+		"swift-dependencies" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift.obj.swiftdeps"
+	},
+	"/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPixelOracle.swift" : 
+	{
+		"dependencies" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPixelOracle.swift.obj.d",
+		"diagnostics" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPixelOracle.swift.obj.dia",
+		"object" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPixelOracle.swift.obj",
+		"swift-dependencies" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPixelOracle.swift.obj.swiftdeps"
+	},
+	"/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterProfileStorage.swift" : 
+	{
+		"dependencies" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterProfileStorage.swift.obj.d",
+		"diagnostics" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterProfileStorage.swift.obj.dia",
+		"object" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterProfileStorage.swift.obj",
+		"swift-dependencies" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterProfileStorage.swift.obj.swiftdeps"
+	},
+	"/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterRender.swift" : 
+	{
+		"dependencies" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterRender.swift.obj.d",
+		"diagnostics" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterRender.swift.obj.dia",
+		"object" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterRender.swift.obj",
+		"swift-dependencies" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterRender.swift.obj.swiftdeps"
+	},
+	"/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterRouteEntry.swift" : 
+	{
+		"dependencies" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterRouteEntry.swift.obj.d",
+		"diagnostics" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterRouteEntry.swift.obj.dia",
+		"object" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterRouteEntry.swift.obj",
+		"swift-dependencies" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterRouteEntry.swift.obj.swiftdeps"
+	},
+	"/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemantic.swift" : 
+	{
+		"dependencies" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemantic.swift.obj.d",
+		"diagnostics" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemantic.swift.obj.dia",
+		"object" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemantic.swift.obj",
+		"swift-dependencies" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemantic.swift.obj.swiftdeps"
+	},
+	"/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemanticProbe.swift" : 
+	{
+		"dependencies" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemanticProbe.swift.obj.d",
+		"diagnostics" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemanticProbe.swift.obj.dia",
+		"object" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemanticProbe.swift.obj",
+		"swift-dependencies" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemanticProbe.swift.obj.swiftdeps"
+	},
+	"/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterStaticGeometry.swift" : 
+	{
+		"dependencies" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterStaticGeometry.swift.obj.d",
+		"diagnostics" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterStaticGeometry.swift.obj.dia",
+		"object" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterStaticGeometry.swift.obj",
+		"swift-dependencies" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterStaticGeometry.swift.obj.swiftdeps"
+	},
+	"/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterStorageMeasurement.swift" : 
+	{
+		"dependencies" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterStorageMeasurement.swift.obj.d",
+		"diagnostics" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterStorageMeasurement.swift.obj.dia",
+		"object" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterStorageMeasurement.swift.obj",
+		"swift-dependencies" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterStorageMeasurement.swift.obj.swiftdeps"
+	},
+	"/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterStorageRegions.swift" : 
+	{
+		"dependencies" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterStorageRegions.swift.obj.d",
+		"diagnostics" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterStorageRegions.swift.obj.dia",
+		"object" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterStorageRegions.swift.obj",
+		"swift-dependencies" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterStorageRegions.swift.obj.swiftdeps"
+	},
+	"/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterTiledRaster.swift" : 
+	{
+		"dependencies" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterTiledRaster.swift.obj.d",
+		"diagnostics" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterTiledRaster.swift.obj.dia",
+		"object" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterTiledRaster.swift.obj",
+		"swift-dependencies" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterTiledRaster.swift.obj.swiftdeps"
+	},
+	"/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWakeIntegration.swift" : 
+	{
+		"dependencies" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWakeIntegration.swift.obj.d",
+		"diagnostics" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWakeIntegration.swift.obj.dia",
+		"object" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWakeIntegration.swift.obj",
+		"swift-dependencies" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWakeIntegration.swift.obj.swiftdeps"
+	},
+	"/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWorkload.swift" : 
+	{
+		"dependencies" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWorkload.swift.obj.d",
+		"diagnostics" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWorkload.swift.obj.dia",
+		"object" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWorkload.swift.obj",
+		"swift-dependencies" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWorkload.swift.obj.swiftdeps"
+	},
+	"/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterDrawingPlanRecords.swift" : 
+	{
+		"dependencies" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterDrawingPlanRecords.swift.obj.d",
+		"diagnostics" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterDrawingPlanRecords.swift.obj.dia",
+		"object" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterDrawingPlanRecords.swift.obj",
+		"swift-dependencies" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterDrawingPlanRecords.swift.obj.swiftdeps"
+	},
+	"/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterDrawingPlanStorage.swift" : 
+	{
+		"dependencies" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterDrawingPlanStorage.swift.obj.d",
+		"diagnostics" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterDrawingPlanStorage.swift.obj.dia",
+		"object" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterDrawingPlanStorage.swift.obj",
+		"swift-dependencies" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterDrawingPlanStorage.swift.obj.swiftdeps"
+	},
+	"/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterDrawingWorkspace.swift" : 
+	{
+		"dependencies" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterDrawingWorkspace.swift.obj.d",
+		"diagnostics" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterDrawingWorkspace.swift.obj.dia",
+		"object" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterDrawingWorkspace.swift.obj",
+		"swift-dependencies" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterDrawingWorkspace.swift.obj.swiftdeps"
+	},
+	"/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterEmbeddedBacking.swift" : 
+	{
+		"dependencies" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterEmbeddedBacking.swift.obj.d",
+		"diagnostics" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterEmbeddedBacking.swift.obj.dia",
+		"object" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterEmbeddedBacking.swift.obj",
+		"swift-dependencies" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterEmbeddedBacking.swift.obj.swiftdeps"
+	},
+	"/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterInteractionStorage.swift" : 
+	{
+		"dependencies" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterInteractionStorage.swift.obj.d",
+		"diagnostics" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterInteractionStorage.swift.obj.dia",
+		"object" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterInteractionStorage.swift.obj",
+		"swift-dependencies" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterInteractionStorage.swift.obj.swiftdeps"
+	},
+	"/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLayoutScopeCodec.swift" : 
+	{
+		"dependencies" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLayoutScopeCodec.swift.obj.d",
+		"diagnostics" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLayoutScopeCodec.swift.obj.dia",
+		"object" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLayoutScopeCodec.swift.obj",
+		"swift-dependencies" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLayoutScopeCodec.swift.obj.swiftdeps"
+	},
+	"/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLayoutTextCodec.swift" : 
+	{
+		"dependencies" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLayoutTextCodec.swift.obj.d",
+		"diagnostics" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLayoutTextCodec.swift.obj.dia",
+		"object" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLayoutTextCodec.swift.obj",
+		"swift-dependencies" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLayoutTextCodec.swift.obj.swiftdeps"
+	},
+	"/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLayoutWorkspace.swift" : 
+	{
+		"dependencies" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLayoutWorkspace.swift.obj.d",
+		"diagnostics" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLayoutWorkspace.swift.obj.dia",
+		"object" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLayoutWorkspace.swift.obj",
+		"swift-dependencies" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLayoutWorkspace.swift.obj.swiftdeps"
+	},
+	"/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLivePathStorage.swift" : 
+	{
+		"dependencies" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLivePathStorage.swift.obj.d",
+		"diagnostics" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLivePathStorage.swift.obj.dia",
+		"object" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLivePathStorage.swift.obj",
+		"swift-dependencies" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLivePathStorage.swift.obj.swiftdeps"
+	},
+	"/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterRenderWorkspace.swift" : 
+	{
+		"dependencies" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterRenderWorkspace.swift.obj.d",
+		"diagnostics" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterRenderWorkspace.swift.obj.dia",
+		"object" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterRenderWorkspace.swift.obj",
+		"swift-dependencies" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterRenderWorkspace.swift.obj.swiftdeps"
+	},
+	"/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterResolvedLayout.swift" : 
+	{
+		"dependencies" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterResolvedLayout.swift.obj.d",
+		"diagnostics" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterResolvedLayout.swift.obj.dia",
+		"object" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterResolvedLayout.swift.obj",
+		"swift-dependencies" : "CMakeFiles/giftui_counter_P08CounterRuntime.dir/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterResolvedLayout.swift.obj.swiftdeps"
+	}
+}

@@ -1,0 +1,1930 @@
+{
+  "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-construction-ir-cu2idvz1/output-file-map.json": {
+    "sha256": "4c712063864dd5bd3fe5e81573be9c9934b801d52ba0dd2bccb27eae8a9d7d3d",
+    "bytes": 27420
+  },
+  "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-counter-yhrdgas4/Counter.swift": {
+    "sha256": "49481900df254eccd291ecf44f1f913357778bf5ad167e226113a9e16ecdce97",
+    "bytes": 2556
+  },
+  "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-counter-yhrdgas4/CounterSchema.swift": {
+    "sha256": "a3a24ab22fdf75c7d2b0fdb90d86755dc377747e0ed663f1c06bac7dbc0dde41",
+    "bytes": 1250
+  },
+  "/Users/eugene/work/GiftUI/.build/nrf52840/contracts/p08-counter-yhrdgas4/CounterTable.swift": {
+    "sha256": "9c1a50d90b57b9f625986cbb7a37fcefc56234bfb0f1e0b2a10abd7ab73efd54",
+    "bytes": 1393
+  },
+  "/Users/eugene/work/GiftUI/.build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/CMakeFiles/giftui_counter_P08CounterRuntime.dir/output-file-map.json": {
+    "sha256": "f548ec94af0a8a85678d9123c3161b58e13c6fd69a18c29f5a16276114a2d938",
+    "bytes": 32176
+  },
+  "/Users/eugene/work/GiftUI/.build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/compile_commands.json": {
+    "sha256": "291c22b2b193e8466a75182458f4c6881951846c71f4418eb911094445a8d1fc",
+    "bytes": 1449108
+  },
+  "/Users/eugene/work/GiftUI/.build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/swift-modules/GiftUI/GiftUI.swiftdoc": {
+    "sha256": "6b0e34ad275ef31272f764ee90cb3ee4ada1fc55d8e2b26c45b395727dcf6e22",
+    "bytes": 988
+  },
+  "/Users/eugene/work/GiftUI/.build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/swift-modules/GiftUI/GiftUI.swiftmodule": {
+    "sha256": "b50e9b09f3a0ad2a95432e2aa7c39a8f146b73581f121e4230cdf20b2e7f68d2",
+    "bytes": 629100
+  },
+  "/Users/eugene/work/GiftUI/.build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/swift-modules/GiftUI/GiftUI.swiftsourceinfo": {
+    "sha256": "421bc6c6d074bc1ee989db8dd21e991df8c4803d34011aed8fc3b4e699c1c140",
+    "bytes": 80520
+  },
+  "/Users/eugene/work/GiftUI/.build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/swift-modules/GiftUIBackendIntegration/GiftUIBackendIntegration.swiftdoc": {
+    "sha256": "63be5e23ff93496ff6401b734f3c3ddb32190f8164310eec55f16ef77199ed8f",
+    "bytes": 1280
+  },
+  "/Users/eugene/work/GiftUI/.build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/swift-modules/GiftUIBackendIntegration/GiftUIBackendIntegration.swiftmodule": {
+    "sha256": "da4fc5f1dd755ba58ddb1b70c9dd526ecc7e9f751c0d1afd2491a820ed27231a",
+    "bytes": 476184
+  },
+  "/Users/eugene/work/GiftUI/.build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/swift-modules/GiftUIBackendIntegration/GiftUIBackendIntegration.swiftsourceinfo": {
+    "sha256": "b3176113a8915e79bfbbb65d38559556d37f19a396420a8372cca6cc45493c36",
+    "bytes": 33552
+  },
+  "/Users/eugene/work/GiftUI/.build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/swift-modules/GiftUICapabilities/GiftUICapabilities.swiftdoc": {
+    "sha256": "a99d380e723a0adac3d6b3f5d9963cfcc07151baa4b20a8858482dd33109a913",
+    "bytes": 384
+  },
+  "/Users/eugene/work/GiftUI/.build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/swift-modules/GiftUICapabilities/GiftUICapabilities.swiftmodule": {
+    "sha256": "d772b0681aec1ee36920131e18eafc4faf3172f81b70ebcd70cc9cf9b1dde809",
+    "bytes": 650732
+  },
+  "/Users/eugene/work/GiftUI/.build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/swift-modules/GiftUICapabilities/GiftUICapabilities.swiftsourceinfo": {
+    "sha256": "21e7c0a744d7d36b64aad8c8d397b35e88ae6dd5e2304ecde9bfb09dbd5b3adb",
+    "bytes": 47936
+  },
+  "/Users/eugene/work/GiftUI/.build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/swift-modules/GiftUIDisplayCore/GiftUIDisplayCore.swiftdoc": {
+    "sha256": "0c2a464a8958e49cf51fd1e9986d43d0ef92f39f4e6a7ad631fe0e8a45c76681",
+    "bytes": 384
+  },
+  "/Users/eugene/work/GiftUI/.build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/swift-modules/GiftUIDisplayCore/GiftUIDisplayCore.swiftmodule": {
+    "sha256": "b6eca2c081949f110fdd13922ff7c19e901235d1d23f535f85477af2fa6fb2cd",
+    "bytes": 115472
+  },
+  "/Users/eugene/work/GiftUI/.build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/swift-modules/GiftUIDisplayCore/GiftUIDisplayCore.swiftsourceinfo": {
+    "sha256": "85b1db4b22bce3172ec4aeb976d5d9f0b1855402e2b920587c46286cdfeb6011",
+    "bytes": 11736
+  },
+  "/Users/eugene/work/GiftUI/.build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/swift-modules/GiftUIDrawing/GiftUIDrawing.swiftdoc": {
+    "sha256": "984e0334af358089c3ce37a50ffdcc1f75457067ea0b5231a08b246440119751",
+    "bytes": 1496
+  },
+  "/Users/eugene/work/GiftUI/.build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/swift-modules/GiftUIDrawing/GiftUIDrawing.swiftmodule": {
+    "sha256": "4dd218d3e45683a5b9882a199354d7ce7a5f2224ed264e3b05e962e81a5a09d3",
+    "bytes": 339428
+  },
+  "/Users/eugene/work/GiftUI/.build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/swift-modules/GiftUIDrawing/GiftUIDrawing.swiftsourceinfo": {
+    "sha256": "6fa0e4759717afe08cd99da34128054c04ca471af1a4e11b707a281bc588f9dd",
+    "bytes": 31548
+  },
+  "/Users/eugene/work/GiftUI/.build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/swift-modules/GiftUIExecution/GiftUIExecution.swiftdoc": {
+    "sha256": "15d873d085bcd9518a7607d4af83811d966f0b96b732291500b5f5ae6344895e",
+    "bytes": 380
+  },
+  "/Users/eugene/work/GiftUI/.build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/swift-modules/GiftUIExecution/GiftUIExecution.swiftmodule": {
+    "sha256": "fd63b0257d1ccb6a72344822bb3ff056838d894b0c045bcc9f18d2cd098b4485",
+    "bytes": 1179088
+  },
+  "/Users/eugene/work/GiftUI/.build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/swift-modules/GiftUIExecution/GiftUIExecution.swiftsourceinfo": {
+    "sha256": "340679daef7fd04c4f00ed7ebfb56479f231c3b53471cece26a76bb9903b16a0",
+    "bytes": 123836
+  },
+  "/Users/eugene/work/GiftUI/.build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/swift-modules/GiftUIFailureCore/GiftUIFailureCore.swiftdoc": {
+    "sha256": "330758cd4be3862406a47d21813e05df3bd7ae3f93fb2865351eb8f82c98df49",
+    "bytes": 384
+  },
+  "/Users/eugene/work/GiftUI/.build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/swift-modules/GiftUIFailureCore/GiftUIFailureCore.swiftmodule": {
+    "sha256": "c89bb11d74ea4f40cdde2024e2f9829050bdf0d607d3364b9801415e4dbf5d75",
+    "bytes": 301404
+  },
+  "/Users/eugene/work/GiftUI/.build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/swift-modules/GiftUIFailureCore/GiftUIFailureCore.swiftsourceinfo": {
+    "sha256": "6e283049349276d9b02c8845dd314266c092c2ba0dbaf8c87877c96cb5990a9a",
+    "bytes": 30748
+  },
+  "/Users/eugene/work/GiftUI/.build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/swift-modules/GiftUIHostConfiguration/GiftUIHostConfiguration.swiftdoc": {
+    "sha256": "b5ce0d981fe3f72799ce5a5f2c8492249f9f8caa08ac0ffbce44cc81280c1111",
+    "bytes": 784
+  },
+  "/Users/eugene/work/GiftUI/.build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/swift-modules/GiftUIHostConfiguration/GiftUIHostConfiguration.swiftmodule": {
+    "sha256": "67fcd6453b265d05c68aaa4adf5151cb68790135f5fd38e01c4950b9798acc4f",
+    "bytes": 1331948
+  },
+  "/Users/eugene/work/GiftUI/.build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/swift-modules/GiftUIHostConfiguration/GiftUIHostConfiguration.swiftsourceinfo": {
+    "sha256": "cf48e8672e4dbac157a2d65edd8b2f08522d21aac1a2397891f2ab149648781e",
+    "bytes": 146876
+  },
+  "/Users/eugene/work/GiftUI/.build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/swift-modules/GiftUIInteraction/GiftUIInteraction.swiftdoc": {
+    "sha256": "8fe69c3f1d5cf1256f6ab5c4a58be1fceea3302dc52aad855e3fc506dd4bdb29",
+    "bytes": 2776
+  },
+  "/Users/eugene/work/GiftUI/.build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/swift-modules/GiftUIInteraction/GiftUIInteraction.swiftmodule": {
+    "sha256": "86b0dbd4bfc3a9bd490fc8772b2011d535956809b967a4e283ddf7d9857847ae",
+    "bytes": 306512
+  },
+  "/Users/eugene/work/GiftUI/.build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/swift-modules/GiftUIInteraction/GiftUIInteraction.swiftsourceinfo": {
+    "sha256": "665f3ad15da59d48d095b9d1e657c17bd0fc43d36625182c3e2530393f6f8a44",
+    "bytes": 36452
+  },
+  "/Users/eugene/work/GiftUI/.build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/swift-modules/GiftUILayout/GiftUILayout.swiftdoc": {
+    "sha256": "b050ef6bf9296fe498b3ef217b33b824b9e8c95c79689a71753ecffece6a3eb4",
+    "bytes": 376
+  },
+  "/Users/eugene/work/GiftUI/.build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/swift-modules/GiftUILayout/GiftUILayout.swiftmodule": {
+    "sha256": "e12ef9956dd144b23beb92a173188d4b5a64e68591d75539ccc60386098a7adc",
+    "bytes": 617460
+  },
+  "/Users/eugene/work/GiftUI/.build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/swift-modules/GiftUILayout/GiftUILayout.swiftsourceinfo": {
+    "sha256": "a9402577b248991b09c62a9fe099a2ca2a3cb4305b3339bc7ac37fe2717abf73",
+    "bytes": 36152
+  },
+  "/Users/eugene/work/GiftUI/.build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/swift-modules/GiftUIObservableState/GiftUIObservableState.swiftdoc": {
+    "sha256": "1570f287ac6f5783fbf3da01cffc7613deacec595d474b7b385afe6d2c6b4f0c",
+    "bytes": 8732
+  },
+  "/Users/eugene/work/GiftUI/.build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/swift-modules/GiftUIObservableState/GiftUIObservableState.swiftmodule": {
+    "sha256": "1eb236fd70cbc08ca6fd94a127dee7c8030eee153f64f0e66cab3b6f2d0d29a6",
+    "bytes": 642440
+  },
+  "/Users/eugene/work/GiftUI/.build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/swift-modules/GiftUIObservableState/GiftUIObservableState.swiftsourceinfo": {
+    "sha256": "1e76e98f1f6cda457cde659e84034247b73666e3ce03647ddd861cc70fd06973",
+    "bytes": 56076
+  },
+  "/Users/eugene/work/GiftUI/.build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/swift-modules/GiftUIRasterCore/GiftUIRasterCore.swiftdoc": {
+    "sha256": "788da168be83a9bca5e34afcd99e8ce8025a1d7f217641cb5ac4af16531f116e",
+    "bytes": 380
+  },
+  "/Users/eugene/work/GiftUI/.build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/swift-modules/GiftUIRasterCore/GiftUIRasterCore.swiftmodule": {
+    "sha256": "bf347cfcf654b6ed45434cead25232fdf4eb1cd4b71256555470db3d7c3f9b6f",
+    "bytes": 774324
+  },
+  "/Users/eugene/work/GiftUI/.build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/swift-modules/GiftUIRasterCore/GiftUIRasterCore.swiftsourceinfo": {
+    "sha256": "06f0442f83b829e85570550bd1df596890afe9d7c724e37283f58351fd8bca1b",
+    "bytes": 38368
+  },
+  "/Users/eugene/work/GiftUI/.build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/swift-modules/GiftUIReferenceTextResources/GiftUIReferenceTextResources.swiftdoc": {
+    "sha256": "71afd9c166fdf17d4f2b704296cef99b7f902b35d7ad6a58205bd8e10d0d7ef8",
+    "bytes": 924
+  },
+  "/Users/eugene/work/GiftUI/.build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/swift-modules/GiftUIReferenceTextResources/GiftUIReferenceTextResources.swiftmodule": {
+    "sha256": "a9d7c60736308f1ed6e1af3b930f84fe1694718f3ff41c4fa5a84e239d9e4aa8",
+    "bytes": 3067404
+  },
+  "/Users/eugene/work/GiftUI/.build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/swift-modules/GiftUIReferenceTextResources/GiftUIReferenceTextResources.swiftsourceinfo": {
+    "sha256": "e986dbd7445fc9f2cc072a87bf03db1725735abbf74bf7c4d40ef853ab21a4ed",
+    "bytes": 78456
+  },
+  "/Users/eugene/work/GiftUI/.build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/swift-modules/GiftUIRenderCore/GiftUIRenderCore.swiftdoc": {
+    "sha256": "1eaa9cfba3c421db5da10d92214774029bc0603c98599410180a8d855115cc38",
+    "bytes": 380
+  },
+  "/Users/eugene/work/GiftUI/.build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/swift-modules/GiftUIRenderCore/GiftUIRenderCore.swiftmodule": {
+    "sha256": "73ac14d6e6e1c70b4433cd8b434833660a3046187fcf35c35193e6741580ca74",
+    "bytes": 178112
+  },
+  "/Users/eugene/work/GiftUI/.build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/swift-modules/GiftUIRenderCore/GiftUIRenderCore.swiftsourceinfo": {
+    "sha256": "7e5f5cb784416db5591c75499413f06d7c62c73e1db4e5b46fd86c19f055b77c",
+    "bytes": 20196
+  },
+  "/Users/eugene/work/GiftUI/.build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/swift-modules/GiftUIRenderLowering/GiftUIRenderLowering.swiftdoc": {
+    "sha256": "313fdcfdf16bc3c5bf40f41ce69f7ed77d98fefefca1ceb7e851fa5736ce022d",
+    "bytes": 384
+  },
+  "/Users/eugene/work/GiftUI/.build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/swift-modules/GiftUIRenderLowering/GiftUIRenderLowering.swiftmodule": {
+    "sha256": "afb65e12afb8e4a9bf4c20d48c30a977052ae19d95d715600e9a63dce5fd44b0",
+    "bytes": 287856
+  },
+  "/Users/eugene/work/GiftUI/.build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/swift-modules/GiftUIRenderLowering/GiftUIRenderLowering.swiftsourceinfo": {
+    "sha256": "14173fd27be76d9a3521aadbf525b9f651c8e73d8d0fcb77c75b3818da12b92f",
+    "bytes": 18492
+  },
+  "/Users/eugene/work/GiftUI/.build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/swift-modules/GiftUIRuntimeCore/GiftUIRuntimeCore.swiftdoc": {
+    "sha256": "99888dbe745fa8c6d557076d77b3a2e5bdb1709122e3f3f22d53a2db9565b32a",
+    "bytes": 2168
+  },
+  "/Users/eugene/work/GiftUI/.build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/swift-modules/GiftUIRuntimeCore/GiftUIRuntimeCore.swiftmodule": {
+    "sha256": "66d6d729df961bc8fe5695c254fac4ddd31dbea3c29c88ae899a2f123db0dc4d",
+    "bytes": 756624
+  },
+  "/Users/eugene/work/GiftUI/.build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/swift-modules/GiftUIRuntimeCore/GiftUIRuntimeCore.swiftsourceinfo": {
+    "sha256": "3a5faee682b425b99ef15ed5f3cde7aef9fff0081d9541fda3d791ce71242263",
+    "bytes": 95568
+  },
+  "/Users/eugene/work/GiftUI/.build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/swift-modules/GiftUIRuntimeStatic/GiftUIRuntimeStatic.swiftdoc": {
+    "sha256": "bb1f4546bd41cccdfd25f94bcb14561402a6f66fc0578a86a3cc62aa45cf3f53",
+    "bytes": 3248
+  },
+  "/Users/eugene/work/GiftUI/.build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/swift-modules/GiftUIRuntimeStatic/GiftUIRuntimeStatic.swiftmodule": {
+    "sha256": "64d1ef1fa4d36214a85db1501335860bcbe6060683a4da90a8646244a58aa9ee",
+    "bytes": 299232
+  },
+  "/Users/eugene/work/GiftUI/.build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/swift-modules/GiftUIRuntimeStatic/GiftUIRuntimeStatic.swiftsourceinfo": {
+    "sha256": "b5976a0fff580d70617f37c05f3d2be8c3e85c783f7564e898a5b10ea3fde7e0",
+    "bytes": 28272
+  },
+  "/Users/eugene/work/GiftUI/.build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/swift-modules/GiftUISemanticCore/GiftUISemanticCore.swiftdoc": {
+    "sha256": "9756c5e934b6dd3c64a4b3e5c4e9a9205cb28ec85b81c00b7f7d4fc40465de10",
+    "bytes": 8288
+  },
+  "/Users/eugene/work/GiftUI/.build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/swift-modules/GiftUISemanticCore/GiftUISemanticCore.swiftmodule": {
+    "sha256": "dde32a857b5ac99acf55597310c7eacf7d8e68931caf70c094cc048da89ede62",
+    "bytes": 890812
+  },
+  "/Users/eugene/work/GiftUI/.build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/swift-modules/GiftUISemanticCore/GiftUISemanticCore.swiftsourceinfo": {
+    "sha256": "66390a7774ea1c7d3245bcf619863c9a0e24b0fd6cd83ad5259fd57558f0190b",
+    "bytes": 91536
+  },
+  "/Users/eugene/work/GiftUI/.build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/swift-modules/GiftUISurfaceCore/GiftUISurfaceCore.swiftdoc": {
+    "sha256": "eb6aed5d335fd87d9d88ebb9bfab9055b55cd34331e5a942ea2b523d1075baea",
+    "bytes": 384
+  },
+  "/Users/eugene/work/GiftUI/.build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/swift-modules/GiftUISurfaceCore/GiftUISurfaceCore.swiftmodule": {
+    "sha256": "351b080b8d1773f385b4662c4c26718157b63cacac746016859e75f94b7f0589",
+    "bytes": 100104
+  },
+  "/Users/eugene/work/GiftUI/.build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/swift-modules/GiftUISurfaceCore/GiftUISurfaceCore.swiftsourceinfo": {
+    "sha256": "67662f8e9844ad16f1e2ed1cd8e3131cc7ab46be970a6b0dfd7f74f6b012b448",
+    "bytes": 6372
+  },
+  "/Users/eugene/work/GiftUI/.build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/swift-modules/GiftUITextResources/GiftUITextResources.swiftdoc": {
+    "sha256": "4a7a752289b4b95a494f72017a7303a08f9cd291f3251b714c35d09cfc59ed90",
+    "bytes": 1720
+  },
+  "/Users/eugene/work/GiftUI/.build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/swift-modules/GiftUITextResources/GiftUITextResources.swiftmodule": {
+    "sha256": "decf590f71c1f8809f624b6418693d666a74b3b6d68d8b7998f356e8b1176597",
+    "bytes": 598340
+  },
+  "/Users/eugene/work/GiftUI/.build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/swift-modules/GiftUITextResources/GiftUITextResources.swiftsourceinfo": {
+    "sha256": "bc125621a880407c616154b70f6294dfd00ea26b02e6abd32558d84e23bd79fb",
+    "bytes": 25660
+  },
+  "/Users/eugene/work/GiftUI/.build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/swift-modules/P08CounterPresentation/P08CounterPresentation.swiftdoc": {
+    "sha256": "69ed783d3fc228de3e2fbb8fd3a7a02c53ab74fb8da5822a0ff30dd7f392b121",
+    "bytes": 388
+  },
+  "/Users/eugene/work/GiftUI/.build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/swift-modules/P08CounterPresentation/P08CounterPresentation.swiftmodule": {
+    "sha256": "81bf1274988f6c261ee0a21ee5a796d14422b9353e18f3c65ff63cc74e1064b1",
+    "bytes": 131944
+  },
+  "/Users/eugene/work/GiftUI/.build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/swift-modules/P08CounterPresentation/P08CounterPresentation.swiftsourceinfo": {
+    "sha256": "198708aa16994a6bbf8c4a4f6cb9f5bea1b035f4419641e19f538f841521ef19",
+    "bytes": 3508
+  },
+  "/Users/eugene/work/GiftUI/.build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/swift-modules/P08CounterSchema/P08CounterSchema.swiftdoc": {
+    "sha256": "6302e8f4fb2084ad9be90f7ac2d378fc08f5aae9903342f42c15503344410415",
+    "bytes": 380
+  },
+  "/Users/eugene/work/GiftUI/.build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/swift-modules/P08CounterSchema/P08CounterSchema.swiftmodule": {
+    "sha256": "51244319eebaf31329c5a8b577a208919b6849ad8417960b16eb88fdd267b0a0",
+    "bytes": 76444
+  },
+  "/Users/eugene/work/GiftUI/.build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/swift-modules/P08CounterSchema/P08CounterSchema.swiftsourceinfo": {
+    "sha256": "321bb3a5f34fffd42fdcdf0adee9e72c961b42b75d7c625d6bf77f7ea34564ad",
+    "bytes": 2996
+  },
+  "/Users/eugene/work/GiftUI/.build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/swift-modules/P08CounterTable/P08CounterTable.swiftdoc": {
+    "sha256": "d00617058a031769dd930ef257eea86f2b0996ca355abe48087c200babe66708",
+    "bytes": 380
+  },
+  "/Users/eugene/work/GiftUI/.build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/swift-modules/P08CounterTable/P08CounterTable.swiftmodule": {
+    "sha256": "01e7ac498242b2f07cb102c53ca69b319f0da217961985d4ba6bebe1f75a0da5",
+    "bytes": 85292
+  },
+  "/Users/eugene/work/GiftUI/.build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/swift-modules/P08CounterTable/P08CounterTable.swiftsourceinfo": {
+    "sha256": "0de54a46245d645c0af89f33cd5c65dfc2a74313cca55aa88d7f1bc91f244d4f",
+    "bytes": 2984
+  },
+  "/Users/eugene/work/GiftUI/.build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/.config": {
+    "sha256": "4f722a1601be957e850c3ff3b9c79399d72d2918c788f631364ad129ee21e2e1",
+    "bytes": 33927
+  },
+  "/Users/eugene/work/GiftUI/.build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/zephyr.elf": {
+    "sha256": "2400c99caea4a39756997cfd5a4d467b91ecdbafcc745972badec06aca6415ac",
+    "bytes": 1199388
+  },
+  "/Users/eugene/work/GiftUI/.build/nrf52840/signal-analyzer-static/rfc014-counter-firmware/zephyr/zephyr.map": {
+    "sha256": "5416ddf0b1161beb3fde85628fc6ee793b5f004c0b76adb4b3cb0f3bf6edad2f",
+    "bytes": 4098209
+  },
+  "/Users/eugene/work/GiftUI/.build/rfc014-p02-swift64/tool/debug/GiftUIMacros-tool": {
+    "sha256": "6bb5eae9d0b726905f893b0f1fa4c0739fee61830f33404aa5cdb8321212c691",
+    "bytes": 17031504
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.4.0-RELEASE-osx/usr/bin/swift-frontend": {
+    "sha256": "32d565dc81f4e714f91da71cc1a501a335c20347c15d5ab522f9cacf9d225caf",
+    "bytes": 345961024
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.4.0-RELEASE-osx/usr/bin/swiftc": {
+    "sha256": "79ae5c26645489fb783ae980f0f1bdae810f90fb180c9ac39808807b65e9fd69",
+    "bytes": 230720
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.4.0-RELEASE-osx/usr/lib/swift/embedded/EmbeddedPlatformPOSIX.swiftmodule/armv7em-none-none-eabi.swiftdoc": {
+    "sha256": "6996a72f0f0d20e763df056f0445acc26ffc9821a399bff3bccccc2cc649bb3d",
+    "bytes": 388
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.4.0-RELEASE-osx/usr/lib/swift/embedded/EmbeddedPlatformPOSIX.swiftmodule/armv7em-none-none-eabi.swiftmodule": {
+    "sha256": "ae09ddf1a8957c1a0a131a2e313795c159254aa88b2ce44648b768ffb51f47ce",
+    "bytes": 89820
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.4.0-RELEASE-osx/usr/lib/swift/embedded/Swift.swiftmodule/armv7em-none-none-eabi.swiftdoc": {
+    "sha256": "a048e5cccac8f509621db9b232bf1ebd0813bf0e9ba6dbe0ccc38df84dff0abd",
+    "bytes": 4177816
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.4.0-RELEASE-osx/usr/lib/swift/embedded/Swift.swiftmodule/armv7em-none-none-eabi.swiftmodule": {
+    "sha256": "15912e1951ad3738d0dd98e10c5d08d8a48189ad918e59a7156764578705836b",
+    "bytes": 22290788
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.4.0-RELEASE-osx/usr/lib/swift/embedded/Synchronization.swiftmodule/armv7em-none-none-eabi.swiftdoc": {
+    "sha256": "42fd197e217251819455208995de9896412311504361f9d8d11651a970369341",
+    "bytes": 231056
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.4.0-RELEASE-osx/usr/lib/swift/embedded/Synchronization.swiftmodule/armv7em-none-none-eabi.swiftmodule": {
+    "sha256": "20ca2108831eaae5651fa8811717be4c793de66f363aa20def088b903f7f51d5",
+    "bytes": 786480
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.4.0-RELEASE-osx/usr/lib/swift/embedded/_Builtin_float.swiftmodule/armv7em-none-none-eabi.swiftdoc": {
+    "sha256": "2e21ab9edd4e3503822c6f11486338ec75cfab00f7de91b3f44facf0808afd97",
+    "bytes": 380
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.4.0-RELEASE-osx/usr/lib/swift/embedded/_Builtin_float.swiftmodule/armv7em-none-none-eabi.swiftmodule": {
+    "sha256": "38d7ff0b356f1defaca9656a7b3846ed4d1d682da35f86d1852411fc80558fb3",
+    "bytes": 83780
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.4.0-RELEASE-osx/usr/lib/swift/embedded/_Concurrency.swiftmodule/armv7em-none-none-eabi.swiftdoc": {
+    "sha256": "1e95640c59ac197e85430ab6ef052d1fb18c901212e6e3283fd112601de5e385",
+    "bytes": 419140
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.4.0-RELEASE-osx/usr/lib/swift/embedded/_Concurrency.swiftmodule/armv7em-none-none-eabi.swiftmodule": {
+    "sha256": "62f7c423c15c794e569904da02a9a6c4bbe575b81b2c0efc2dc0dce338b65f4e",
+    "bytes": 1486216
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.4.0-RELEASE-osx/usr/lib/swift/embedded/_Volatile.swiftmodule/armv7em-none-none-eabi.swiftdoc": {
+    "sha256": "93c69e922fd24a67a1e4e1210504fabdb3552bd9a6a1c47de0e002cd84934c20",
+    "bytes": 3708
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.4.0-RELEASE-osx/usr/lib/swift/embedded/_Volatile.swiftmodule/armv7em-none-none-eabi.swiftmodule": {
+    "sha256": "dcd30dbfe18069ac8038751b983b4de6bf2836779c564deabc4762915f849998",
+    "bytes": 76536
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.4.0-RELEASE-osx/usr/lib/swift/embedded/armv7em-none-none-eabi/libswiftEmbeddedPlatformPOSIX.a": {
+    "sha256": "5163e01f3aa5e02c726787e455b94b85e210406bec9e0544d4a7e551312dc8a9",
+    "bytes": 31384
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.4.0-RELEASE-osx/usr/lib/swift/embedded/armv7em-none-none-eabi/libswiftExclusivitySingleThreaded.a": {
+    "sha256": "81fe03d2e111746a252e186da149b193e12d78d9f52f649ef396817e881e717d",
+    "bytes": 3688
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.4.0-RELEASE-osx/usr/lib/swift/embedded/armv7em-none-none-eabi/libswiftUnicodeDataTables.a": {
+    "sha256": "e69605552a7ec0bb55e73afd3d4a7f1e5a8d80493f86a6d040eb091e8e33f53a",
+    "bytes": 796344
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.4.0-RELEASE-osx/usr/lib/swift/embedded/armv7em-none-none-eabi/libswift_Concurrency.a": {
+    "sha256": "dde43d161ea7d98562d60626e3482433eaa6bf5b8ac151920fad78a7521bf3eb",
+    "bytes": 5293890
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.4.0-RELEASE-osx/usr/lib/swift/embedded/armv7em-none-none-eabi/libswift_ConcurrencyDefaultExecutor.a": {
+    "sha256": "8e4db8e113463b2e4fabd2fee6c4ebda936f62d5dcdb3c0cc61fd5f2c3f46722",
+    "bytes": 59156
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.4.0-RELEASE-osx/usr/lib/swift/shims/AssertionReporting.h": {
+    "sha256": "a98319e3b1ca0fbde4e52671aed97ac1111e9876c7ab16875ca53e4014815468",
+    "bytes": 2951
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.4.0-RELEASE-osx/usr/lib/swift/shims/CoreFoundationShims.h": {
+    "sha256": "4993a1d3c72252b171c4315b773d99d11867abd239755a5f778f6544d3263517",
+    "bytes": 3301
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.4.0-RELEASE-osx/usr/lib/swift/shims/EmbeddedShims.h": {
+    "sha256": "9c9699d96a31246105d260582848cf51076bebd5b1c2ec1103756e0a39df6e2c",
+    "bytes": 10367
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.4.0-RELEASE-osx/usr/lib/swift/shims/FoundationShims.h": {
+    "sha256": "c28c4625cde9dc0bb06eb291b78695ef27cafff4c32f82138d07d4578c042440",
+    "bytes": 2179
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.4.0-RELEASE-osx/usr/lib/swift/shims/GlobalObjects.h": {
+    "sha256": "626fdb1bea4f4d5df87161b214e7c2916d0e3167621939490c7906e58a29ded4",
+    "bytes": 2911
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.4.0-RELEASE-osx/usr/lib/swift/shims/HeapObject.h": {
+    "sha256": "03880c244dacb15b95d0c8735c29c388b57e79c35fc33230307704d7432a9fd3",
+    "bytes": 11678
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.4.0-RELEASE-osx/usr/lib/swift/shims/KeyPath.h": {
+    "sha256": "238bc9c2ae30a038c444ab2d78f28931f68d11a35b353ef497760a220a4f396e",
+    "bytes": 5479
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.4.0-RELEASE-osx/usr/lib/swift/shims/LibcOverlayShims.h": {
+    "sha256": "c552d062e27a0eda7c1c5e59724db74ab93e7463e3087ec4a2c685ab5c080162",
+    "bytes": 3813
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.4.0-RELEASE-osx/usr/lib/swift/shims/LibcShims.h": {
+    "sha256": "fb4f8192db41260451668840027dfa2c739fbc829a369f95737443d1d08cf636",
+    "bytes": 6502
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.4.0-RELEASE-osx/usr/lib/swift/shims/MetadataSections.h": {
+    "sha256": "acf334ab6e05763f4fdf2309cf291ea586213da8df090e06a7aad59e1db21fc4",
+    "bytes": 3575
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.4.0-RELEASE-osx/usr/lib/swift/shims/ObjCShims.h": {
+    "sha256": "d7ceb06cff66ae8cc63fa6a848bb81291ce7b1fd9c41b9a7628da0805052e764",
+    "bytes": 1426
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.4.0-RELEASE-osx/usr/lib/swift/shims/Random.h": {
+    "sha256": "942ac04105665b7c076901008fcc755e930e0ef8350127a8273ab67bf3ce4820",
+    "bytes": 1151
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.4.0-RELEASE-osx/usr/lib/swift/shims/RefCount.h": {
+    "sha256": "fd34f003ad43aae66ed976473d6f5df99488c256d471e6c40f9b4ad05292a92f",
+    "bytes": 53466
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.4.0-RELEASE-osx/usr/lib/swift/shims/Reflection.h": {
+    "sha256": "49fb9609f2748c30dd4db4d4b3ff98543147c2bc4f7d6991dafa422aecb40ff8",
+    "bytes": 985
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.4.0-RELEASE-osx/usr/lib/swift/shims/RuntimeShims.h": {
+    "sha256": "ef984bd2a0c27eeb7839e7da384bd0c2b0e1c0fff7a039adb248c86d04a8b67c",
+    "bytes": 6424
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.4.0-RELEASE-osx/usr/lib/swift/shims/RuntimeStubs.h": {
+    "sha256": "1404a0e257f4250f6dc65f604501f99b133132816823faf4f592cf66a13a48af",
+    "bytes": 1752
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.4.0-RELEASE-osx/usr/lib/swift/shims/SwiftStdbool.h": {
+    "sha256": "29ee078c5d2d5ea3a6c086a388f707b09b9a064db754ea114602985e0dbbe2f6",
+    "bytes": 703
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.4.0-RELEASE-osx/usr/lib/swift/shims/SwiftStddef.h": {
+    "sha256": "972583952d490ff2b623b9fd22cbd63b2dc6bc74ed215448dd91c9bed46ad403",
+    "bytes": 2234
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.4.0-RELEASE-osx/usr/lib/swift/shims/SwiftStdint.h": {
+    "sha256": "1fb98df56238c545da0d0efb8b724502e8e4bf9380c586ef7d8fe22297a6b426",
+    "bytes": 2999
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.4.0-RELEASE-osx/usr/lib/swift/shims/System.h": {
+    "sha256": "da52c7a4a38fc5b5e21b3b9c28f0c7fd4ea6894c6f8c769e79339689a9ecf33f",
+    "bytes": 10330
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.4.0-RELEASE-osx/usr/lib/swift/shims/Target.h": {
+    "sha256": "5739973eee2eab1f369851d4ed342f6a810a0d0949389168869a415b3f7819ef",
+    "bytes": 1377
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.4.0-RELEASE-osx/usr/lib/swift/shims/ThreadLocalStorage.h": {
+    "sha256": "defe06c8a77078e3bf0cc81c1ad7e08ba4fd9f5a384a0ba4c51b4a3b4c05b8d9",
+    "bytes": 2401
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.4.0-RELEASE-osx/usr/lib/swift/shims/Visibility.h": {
+    "sha256": "86ac510835dac3f7b9f918ad79d9adec09d7752403c415eb01753d8c1edda315",
+    "bytes": 11067
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.4.0-RELEASE-osx/usr/lib/swift/shims/_SwiftConcurrency.h": {
+    "sha256": "43bec5f9cda12084a18dd91af11b1c25ec23f07f6283cc28ad2a6560419c2777",
+    "bytes": 969
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.4.0-RELEASE-osx/usr/lib/swift/shims/_SwiftDistributed.h": {
+    "sha256": "59d32c1257e7bf02aabb0bd70094098e361ed9c2748713b08c3275b0b7dad19a",
+    "bytes": 882
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.4.0-RELEASE-osx/usr/lib/swift/shims/_SynchronizationShims.h": {
+    "sha256": "e30ba889f57155175ac5d1a4b393d477b509975885077e6ac5744e9c70aa3431",
+    "bytes": 1767
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/swift/swift-6.4.0-RELEASE-osx/usr/lib/swift/shims/module.modulemap": {
+    "sha256": "0539fa78a60bb0657ad724c3daf1e17f5398518fee1ed64625b70eb52f6f1b7f",
+    "bytes": 809
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/picolibc/include/alloca.h": {
+    "sha256": "82c2183e2aca74ec5feee3655f4aeadc2c470d23256a915805a57dc9c80af8b8",
+    "bytes": 406
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/picolibc/include/ar.h": {
+    "sha256": "671a654d2461e8f05bad166266eef74c4dda98f11b0af84118e802445acaf70e",
+    "bytes": 2771
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/picolibc/include/argz.h": {
+    "sha256": "4f94392e86ff1f3fb19de6ca53d1ba222cfc7747c1c693210aee1e87af4e8a51",
+    "bytes": 1421
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/picolibc/include/arpa/inet.h": {
+    "sha256": "663f2d5d934e73714e931dfd6a90110a937cf85e0fe5d39f1c8093882b7ed459",
+    "bytes": 893
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/picolibc/include/assert.h": {
+    "sha256": "b77dea645f2c12a0ab75d9bbd32182ef3873f4559e2e29e9c1ca638206633e97",
+    "bytes": 3025
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/picolibc/include/bits/types/mbstate_t.h": {
+    "sha256": "2cc14c820623a9cc3afe64137d9b85ca6d63c537bbe876dbb77d3ef1310021cb",
+    "bytes": 185
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/picolibc/include/byteswap.h": {
+    "sha256": "4802f878965e0278292c8d1a258589847202652bc5cfb7bda015e76712164913",
+    "bytes": 2549
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/picolibc/include/complex.h": {
+    "sha256": "a669eb0227f2e32d350d6618ff244cfa3a0bd191e581b3fe74be48fae3742d95",
+    "bytes": 4820
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/picolibc/include/cpio.h": {
+    "sha256": "47612fbf4485ce61321198c7a154637725d3f4b982a7f3ca559cba215fbc3e6c",
+    "bytes": 1136
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/picolibc/include/ctype.h": {
+    "sha256": "e5d8dcc5c97f65f5c203fc8d60b3c2717294d206f236d767dd9a3b9ae07d6704",
+    "bytes": 10514
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/picolibc/include/devctl.h": {
+    "sha256": "ce480d4d2b01d09ee079ec8ec857869bf9ab91ed05ec0412e48d9cc9c772a696",
+    "bytes": 2566
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/picolibc/include/dirent.h": {
+    "sha256": "99cf2e46c78e47f1424c39b2d64e4a055955b7d8426f5e68ad4db3153f334104",
+    "bytes": 3216
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/picolibc/include/endian.h": {
+    "sha256": "e73d6844fc8c0fddaa61f6280f0bd13e6bd8f028a4e4271a6457fe22be6eec7f",
+    "bytes": 1793
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/picolibc/include/envlock.h": {
+    "sha256": "754152638b8089a18b55bc4636916a619ebed6a0749f9c6883982dbdcfeac193",
+    "bytes": 1757
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/picolibc/include/envz.h": {
+    "sha256": "974264f3ea6c415bd80f17214c661a37740f8e00ed8ef899e36f75fcccca2e2d",
+    "bytes": 969
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/picolibc/include/errno.h": {
+    "sha256": "27a509fbaa29fd6c381fe94017e8bd161f1950c600e4280fc52cb73e9d1c695b",
+    "bytes": 2056
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/picolibc/include/fastmath.h": {
+    "sha256": "1277d2a83378731d6d6d67ce39a1ead4ad9cae5f91913988e92d6e204cc77081",
+    "bytes": 1933
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/picolibc/include/fcntl.h": {
+    "sha256": "c5f4926245457da47b185d8ca67cb3d2af2cbc79e1a3eab6cb712ae894e6a1d5",
+    "bytes": 1815
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/picolibc/include/fenv.h": {
+    "sha256": "ae4b4dae2656a158386f610c7e272beb1d8034e86d39536516e5e39daf635b00",
+    "bytes": 2023
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/picolibc/include/fnmatch.h": {
+    "sha256": "2c997fbc6755654af2147c9509b6d2a0818f1f8df0d5765a4a1923a219dc5df0",
+    "bytes": 2323
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/picolibc/include/getopt.h": {
+    "sha256": "c5f1ee650cf11a86c273c9f8a2e63d7b59f2e176892a65d00fcb2251288c740b",
+    "bytes": 6454
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/picolibc/include/glob.h": {
+    "sha256": "0081df548a2cb02f2ed86044461678cc206f43da0d567aa2510359b56c1963e2",
+    "bytes": 3852
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/picolibc/include/grp.h": {
+    "sha256": "94084ac5139bc657fc5bc6e1eed4ea686233fce4b29c329a7fe4cf1087553cbc",
+    "bytes": 2981
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/picolibc/include/iconv.h": {
+    "sha256": "ad3139a77baf81054743a27e02aa35627f529845908a9b73d01030c8f43e47f8",
+    "bytes": 1872
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/picolibc/include/ieeefp.h": {
+    "sha256": "69894dfc4dccb93ea7a83c35f8047b787b57aabee4d5d58aeedba67a472c6626",
+    "bytes": 2871
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/picolibc/include/inttypes.h": {
+    "sha256": "74e0f12b13faa0950367815b1d8640ec4482e2b8ecee367660d76ae79136ef21",
+    "bytes": 9318
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/picolibc/include/langinfo.h": {
+    "sha256": "93cdddc1c85204859a2aa2155010f6f4da0a3237b2be88ffd3a9fb200d4ea976",
+    "bytes": 4667
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/picolibc/include/libgen.h": {
+    "sha256": "3f8707b7742328b1d651ee376341cafc83f2f2c701142ddb791cbfef2715597b",
+    "bytes": 831
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/picolibc/include/limits.h": {
+    "sha256": "300fdce5c01169b6ce3ba182f74a9c068036a4e5fd29dae2eb481209c60116ba",
+    "bytes": 3918
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/picolibc/include/locale.h": {
+    "sha256": "1998c28660187fb7fd3a5adc9c401f931b202394ac004e6db0ba5aaaabceebf5",
+    "bytes": 3680
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/picolibc/include/machine/_arc4random.h": {
+    "sha256": "4afaacdc76e83f35ae9945366c894035659ebd0a1572e021657a25f7d36e44b7",
+    "bytes": 1083
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/picolibc/include/machine/_default_types.h": {
+    "sha256": "27f8a718fc89397117254832c4ac2ab2dabd8e0dc7847b76460b0c0cdb2fa04f",
+    "bytes": 8756
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/picolibc/include/machine/_endian.h": {
+    "sha256": "4b886bc7fadb6712ef700478167e0b2cf921563bbf5a0f0beacb4925ff016f31",
+    "bytes": 1773
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/picolibc/include/machine/_time.h": {
+    "sha256": "2b4b0a4b5f1acdeb060d79878436d9bf30808b047ee0a1ec78a75f943431fad7",
+    "bytes": 169
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/picolibc/include/machine/_types.h": {
+    "sha256": "31f3742d445b0e7607c8ca270d4c84c1a4897c39ad2a3b04adc00a8364fbad8d",
+    "bytes": 170
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/picolibc/include/machine/acle-compat.h": {
+    "sha256": "49317725ad9d25acec0e9cbc217446332f13a235d8fceb481d2ea5ac84d058eb",
+    "bytes": 5497
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/picolibc/include/machine/ansi.h": {
+    "sha256": "658daa0ead2acc11314867f617f41febe698b479cf6536760bbc754cd112e683",
+    "bytes": 110
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/picolibc/include/machine/endian.h": {
+    "sha256": "a0a584152b2305f32f77ffb8c2ec278f4222d065d41473e799f0e3eaa3a436e6",
+    "bytes": 2318
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/picolibc/include/machine/fastmath.h": {
+    "sha256": "a85868445db25272cd8486b6b2639224105e5c836c928772a519cd378c3356a5",
+    "bytes": 3178
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/picolibc/include/machine/fenv-fp.h": {
+    "sha256": "4a8e1ec97078a1b3918f077544adec9dbe5e9f74fc253ad66659f70f5d37f7ac",
+    "bytes": 4519
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/picolibc/include/machine/fenv-softfloat.h": {
+    "sha256": "85edee8e045e7ebc90364869c87ee4cc724c30010c805b9b58ff54bf46d95015",
+    "bytes": 4196
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/picolibc/include/machine/fenv.h": {
+    "sha256": "08a7ff28d4d05731a76bf4fb345adb2f4505a749eefe638a92fe96ed1fe09dfa",
+    "bytes": 2593
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/picolibc/include/machine/ieeefp.h": {
+    "sha256": "55d171ce1583efdf5507d60ff5cee92d57b69c8952078f7e04abcceae7f83edb",
+    "bytes": 14385
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/picolibc/include/machine/malloc.h": {
+    "sha256": "7d68a02278708ed86167f93e789add3003b853982aae18dc5433150770d0fec8",
+    "bytes": 200
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/picolibc/include/machine/math.h": {
+    "sha256": "ee191f649a999c8fecbceea764d0adc5751dd7b97c2b2a11648d32ceb0571212",
+    "bytes": 6012
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/picolibc/include/machine/param.h": {
+    "sha256": "a0a09c5e66f3e5ae9fc74885dedb41a1fe5f6e1f4eeebe7fad7cbff556970651",
+    "bytes": 208
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/picolibc/include/machine/setjmp.h": {
+    "sha256": "f52fb78946cecf1b18895c3103dc0c7c93534b90938e003cbef6e0a25c353c9c",
+    "bytes": 10941
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/picolibc/include/machine/stdlib.h": {
+    "sha256": "ca6afd3778d215889f9bf4e18e4ed5670f9481cd47e6025d44ab78c8b660f098",
+    "bytes": 200
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/picolibc/include/machine/termios.h": {
+    "sha256": "7c786c19db395a08efa9ab91cd2b7f5f1cdb184b90f79a52147b95c24647c36e",
+    "bytes": 91
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/picolibc/include/machine/time.h": {
+    "sha256": "34e8b0420a5bffdd2914a30c3b6a11ec49fcc0cb30760cf5cade7a95b40b1068",
+    "bytes": 758
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/picolibc/include/machine/types.h": {
+    "sha256": "2e3cfd448092c5a86bd3f96bcdb8023c3e9c089e8128daae0adb83c87188aa20",
+    "bytes": 746
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/picolibc/include/malloc.h": {
+    "sha256": "de1d8d379de6693d1d096c7f696cdfb9476ebe0610d1bab3627d4aca279b0d90",
+    "bytes": 3977
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/picolibc/include/math.h": {
+    "sha256": "e2b2319e665eb2518e87984644908a38b584a78715ffb795c1cbdf178debe5d4",
+    "bytes": 25897
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/picolibc/include/memory.h": {
+    "sha256": "702dd8d3b448d2b616a894b23f8d8c9a272c5c6e02657d053f45bd5181099621",
+    "bytes": 158
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/picolibc/include/ndbm.h": {
+    "sha256": "926b269ff5d74b67c45219089a1492ea93775674a630a2597df985418fc4cd7a",
+    "bytes": 3206
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/picolibc/include/newlib.h": {
+    "sha256": "d71dcf0aa901376a60e4dcc0d28c244df187accbc927c4a8586174e58234e8c6",
+    "bytes": 1637
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/picolibc/include/paths.h": {
+    "sha256": "ab89507cb1b9b1c06bfa812b7ffc6c06a7a2b3076278bdb2ddc01aefca6114d7",
+    "bytes": 1985
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/picolibc/include/picolibc.h": {
+    "sha256": "b56c920fff7a865d7cfac738885bfa92042893c54b16a46644fc212224d84429",
+    "bytes": 3489
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/picolibc/include/picotls.h": {
+    "sha256": "8d9610bfcb7d3fede35e5177d828eb7123a92a740d2154807c6f92059379a8ca",
+    "bytes": 2221
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/picolibc/include/pwd.h": {
+    "sha256": "fbd60f5210107f31b2d67ae600b371b7b0ae3deac4a55a62ed43c17bb333e3ac",
+    "bytes": 2721
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/picolibc/include/regdef.h": {
+    "sha256": "0578873ba44d9a66d75506153c3494ad896d83a076b6919bd42ac787da085c6d",
+    "bytes": 2012
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/picolibc/include/regex.h": {
+    "sha256": "7e2419d323026589cb51cfa3e7b3614fc4119fce572d9d5f218f2d82d47defb6",
+    "bytes": 3620
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/picolibc/include/rpc/types.h": {
+    "sha256": "6688996804fbb5bbb4e540d8f045b7783b493b8a80dd1a3cb8b68bf599c4c1fc",
+    "bytes": 2656
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/picolibc/include/rpc/xdr.h": {
+    "sha256": "85939dcabcb1f8ab17a16b4ff3c258e9fc88f19ad8ee08d938fa5634372101be",
+    "bytes": 14771
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/picolibc/include/sched.h": {
+    "sha256": "c6d71a4cb6c825ad54947de5077efba44b80b8c7306af96eb213918055a72bbe",
+    "bytes": 2679
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/picolibc/include/search.h": {
+    "sha256": "1c12cbfd659751aa2f227bece7ae992ace6ec867563d56623996b6b94245df98",
+    "bytes": 2868
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/picolibc/include/semihost.h": {
+    "sha256": "9bf96e7d3d288b5464f4647ec27278fe812efcad3d8b3d2eccc9996470fd63e3",
+    "bytes": 4277
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/picolibc/include/setjmp.h": {
+    "sha256": "1faeb62d0bbc30f884d437af0aba8c68ecad7ff904fd166d812f470e60a96dbb",
+    "bytes": 2060
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/picolibc/include/signal.h": {
+    "sha256": "247b8b41d45bc8c37448ac3b72c1f3c9d08229a6f6ee7e2ee59d7191be82a7ae",
+    "bytes": 10179
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/picolibc/include/spawn.h": {
+    "sha256": "08dd9433c03b723217bafec38f7038f0f081ffaef1121601c88c1a6fdada34c5",
+    "bytes": 4616
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/picolibc/include/ssp/ssp.h": {
+    "sha256": "ca51f48602808164f50de91bf15d5fadb939573c836975af0213a297959b9f8e",
+    "bytes": 3252
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/picolibc/include/ssp/stdio.h": {
+    "sha256": "08c3338ea5914eac89f06392a2dc279482b5b62870ba36647e04a3e898859de6",
+    "bytes": 3700
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/picolibc/include/ssp/stdlib.h": {
+    "sha256": "cbe73c170b9ffeb4efd95cb79cabbd9c3200fe72a3b5379abadbf928d6d2ffbf",
+    "bytes": 783
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/picolibc/include/ssp/string.h": {
+    "sha256": "0cc36ec22069b3686cde9bbdc4f21a9efa7a6b5b2e00cc1a658f0a4b673cd720",
+    "bytes": 4955
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/picolibc/include/ssp/strings.h": {
+    "sha256": "9a342edfac50fff733eb96acb37bc801abed9fbe9aaaf21b6fbd3f44190de50b",
+    "bytes": 2202
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/picolibc/include/ssp/unistd.h": {
+    "sha256": "d56f837ddc189ac8bfbc4216d279666758f888a7cfd7a3749b178f524c10653e",
+    "bytes": 3438
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/picolibc/include/ssp/wchar.h": {
+    "sha256": "27e1265544bf6650c49387fc5c6b3777cd45732429b5d283e7da9d04b5abfeef",
+    "bytes": 3217
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/picolibc/include/stdint.h": {
+    "sha256": "3363e43f95fb6f9340f1cb90e58eec71bbea8146252d6482e0a88d2a2dd9dba6",
+    "bytes": 12540
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/picolibc/include/stdio-bufio.h": {
+    "sha256": "0daedd7f720fc7dbb8e3a2c9a214440d80180d62205e4c5e59beb654dbb50ecf",
+    "bytes": 7053
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/picolibc/include/stdio.h": {
+    "sha256": "1cbcd940ab58a8a51b78de13badbf54e9db882f31d81c5fd1fca5af69a6599f2",
+    "bytes": 18290
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/picolibc/include/stdlib.h": {
+    "sha256": "e86d335cbf4495010f926a082297b5aebd745983a7487cb2d1abd99ce1f80b17",
+    "bytes": 14024
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/picolibc/include/stdnoreturn.h": {
+    "sha256": "5fac99ab9a19dfbca80a19d5d382b8a55938e4c1f1030783abce17d63ada29f1",
+    "bytes": 1724
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/picolibc/include/string.h": {
+    "sha256": "2e198a6dda9c77f15b7f8143185c1f2f8e39a84fe2779653397a6cb75196f0b2",
+    "bytes": 8340
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/picolibc/include/strings.h": {
+    "sha256": "36b5cab31f6ed0b6951458c6b3eb32f4d907362b4346c79289eef19d38b9d022",
+    "bytes": 2971
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/picolibc/include/sys/_default_fcntl.h": {
+    "sha256": "5272c91ad9730f05cb7096f0ba2aeac6897b736280fc78125072d75cdf36d9e7",
+    "bytes": 7128
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/picolibc/include/sys/_initfini.h": {
+    "sha256": "d23cf957711b59e5a38794d9292ec7b973c075618c533bcf64350fc301b1ba1e",
+    "bytes": 2349
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/picolibc/include/sys/_intsup.h": {
+    "sha256": "acca8771a05e2effaaf7019cd1c1fefe2426f8255f0b5a1eec59f05c7c9321a4",
+    "bytes": 5805
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/picolibc/include/sys/_locale.h": {
+    "sha256": "9c33916e9c0deb89f68a9babf700502cf2cf6c6fb4b7d7b0fadd93c7fc6c8a29",
+    "bytes": 232
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/picolibc/include/sys/_select.h": {
+    "sha256": "b2c6b20abaa8ba9734a85fb9fa1435d1e5cc40c900a280567d9060cda9b2e6e3",
+    "bytes": 3216
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/picolibc/include/sys/_sigset.h": {
+    "sha256": "16e78626ff97ef85ec70ba9898082fccf70b741b0c6586c57e4421fc60b9a07d",
+    "bytes": 2087
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/picolibc/include/sys/_stdint.h": {
+    "sha256": "06480c0354947c53153841fcfc7f93f79d5459d9d8072eec7ae663ea9def60af",
+    "bytes": 1781
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/picolibc/include/sys/_timespec.h": {
+    "sha256": "8286b93e24409cada66cd9ad21d6cb8b993cff00a47c668c65439ec9914a6168",
+    "bytes": 2087
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/picolibc/include/sys/_timeval.h": {
+    "sha256": "0d4ddbcb87df55f97d53f5b949bcd9629f32da15a20b4416dab437f9c4b20d06",
+    "bytes": 1953
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/picolibc/include/sys/_types.h": {
+    "sha256": "947d8a55d20d7f0eb56091cb94b2e9caba55305b6a03cd2eb26faf35c1be6ff1",
+    "bytes": 7005
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/picolibc/include/sys/_tz_structs.h": {
+    "sha256": "19c466e74992b819d44b4862ff03ef36f5e3ad156b7bd8063636979bb0da1ff6",
+    "bytes": 540
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/picolibc/include/sys/_wait.h": {
+    "sha256": "34ea7550f9f53458dcfda21a87ed97a88735ab3b06a1a442b12322b6519bf8f4",
+    "bytes": 2222
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/picolibc/include/sys/auxv.h": {
+    "sha256": "f3fac80f353d058a3e088c7f3bf3c2159b827acee26485042e78ab880fe15dce",
+    "bytes": 1820
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/picolibc/include/sys/cdefs.h": {
+    "sha256": "c9bf4fd409ed28a7b0f61a00193b62164c1a11dddbbfad1370ca2c60bb57d27d",
+    "bytes": 19742
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/picolibc/include/sys/config.h": {
+    "sha256": "a0a4b0746ea09e1e07269906ce23745ecef18b5005d35faf7aa1a02e44cfd72b",
+    "bytes": 8465
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/picolibc/include/sys/custom_file.h": {
+    "sha256": "a862d433909154aae4f1c47342cb39e90850f59947710e1b43a4a0ec94a83265",
+    "bytes": 112
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/picolibc/include/sys/dir.h": {
+    "sha256": "86c06a5771f15d694f351d8c3937a64598157c6e4ac234d24619a985aa7e3295",
+    "bytes": 235
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/picolibc/include/sys/dirent.h": {
+    "sha256": "70d8266bfb9a416537c9b06ed1469e05a601095aa792ec125a105babcccdf7b2",
+    "bytes": 1837
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/picolibc/include/sys/errno.h": {
+    "sha256": "cf3b9af03e3d2da9e0abacae831324d4883cd0d9630d15ce0a6249da3e094292",
+    "bytes": 8757
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/picolibc/include/sys/fcntl.h": {
+    "sha256": "4f334d4e030a138662e197a32f8cd8c378aa6610f9a5fc96252be5b9ac2cf844",
+    "bytes": 1592
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/picolibc/include/sys/features.h": {
+    "sha256": "e436459c71f66e9ecb23f6670fa00ed7c693266ba94becc2b8d092a55aa886b9",
+    "bytes": 13858
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/picolibc/include/sys/file.h": {
+    "sha256": "60611a8fb4714fe6ef1a5dc8a4aa9cb41de0f09729e7b0091f0696d80e02544b",
+    "bytes": 1533
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/picolibc/include/sys/iconvnls.h": {
+    "sha256": "4bbc7d6999bb1e966efc55e2a4e04d6c2bf027653410343b7328e200ba00bc81",
+    "bytes": 2652
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/picolibc/include/sys/lock.h": {
+    "sha256": "2f7ff3de05941dd0c910a16d8a565efaa30b3c44b783c9c942066e436c022815",
+    "bytes": 2052
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/picolibc/include/sys/param.h": {
+    "sha256": "fae1727dfac3916b7643f61b60637fec645b5776772e29abbfcc5a3893b920fa",
+    "bytes": 2211
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/picolibc/include/sys/queue.h": {
+    "sha256": "c622d82410a368e1c437d38473b71fd796b538f9bc322f0a1ef45deb016d6e8b",
+    "bytes": 30288
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/picolibc/include/sys/resource.h": {
+    "sha256": "f6fef00e67b86adc343a9cf433bc4e99d50ac65a4842ddc3ad428f7614b4d5ec",
+    "bytes": 1953
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/picolibc/include/sys/sched.h": {
+    "sha256": "82e865a9c9199135bc414f2c020df367c253be86377471af24a9c07d654a8887",
+    "bytes": 2007
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/picolibc/include/sys/select.h": {
+    "sha256": "6b2479ce8159d12810c875f61c6bc7177b882658c50a5507075e09f83c94f0bb",
+    "bytes": 2059
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/picolibc/include/sys/stat.h": {
+    "sha256": "0057cd1d973f62f87a4b45ba35dfffbfaaaa07a802e9aad9b60297e9d35083a0",
+    "bytes": 10600
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/picolibc/include/sys/string.h": {
+    "sha256": "c1891d16631f057d16b09dc3927bd3eb675fb7ca39fce4d4612db056685757d2",
+    "bytes": 178
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/picolibc/include/sys/syslimits.h": {
+    "sha256": "6fb8da6f30f9c6fca1da684518734608cde2b44791f68bdf5dca54ad8d760c06",
+    "bytes": 4679
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/picolibc/include/sys/time.h": {
+    "sha256": "fac11d60299feec432f7bf01941b44779ce1f684079be0d879f8b46e43ec9675",
+    "bytes": 11567
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/picolibc/include/sys/timeb.h": {
+    "sha256": "d25035f8112304b1a9aa6f8c1787c89b951e1e46adff555c15f02df398dcda7b",
+    "bytes": 2208
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/picolibc/include/sys/times.h": {
+    "sha256": "f7fac5bd508a7b69d32668789c27a0ceed9d95b7fcf91ed94202a6dd879a7d03",
+    "bytes": 2009
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/picolibc/include/sys/timespec.h": {
+    "sha256": "42758b090d2236909c3a02103a0951c831688d1ed1287002d5bc38db1bb3d248",
+    "bytes": 2205
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/picolibc/include/sys/tree.h": {
+    "sha256": "ea81ed212bea5c3878f0291d34ff064c4cddbd7e73ac347f6f2944047052d417",
+    "bytes": 29856
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/picolibc/include/sys/types.h": {
+    "sha256": "2d7bb9a17ee3bd56c5fdf8986974b1c7b0a7f923a7ba4c3726bad17bf1db09c5",
+    "bytes": 6780
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/picolibc/include/sys/unistd.h": {
+    "sha256": "1cf5bab7d04023f3f161c42f3c56f7f0e0d755e73958fcff764489ae5360bb0d",
+    "bytes": 24211
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/picolibc/include/sys/utime.h": {
+    "sha256": "a52eeae60c0fc63a0236ce11a40da5fbd98fc3dc67867332c3f9afda10b40ae7",
+    "bytes": 1852
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/picolibc/include/sys/wait.h": {
+    "sha256": "3dc9fc972f3670e1e9579c168314b3b75f2badeb345be42ef60174d6455ef675",
+    "bytes": 1710
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/picolibc/include/tar.h": {
+    "sha256": "34c472dd491629ee7c1accb7e3e7f88c7b79ef2c651ecf4329eabd9f6fec07e6",
+    "bytes": 1456
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/picolibc/include/termios.h": {
+    "sha256": "77742c652bfdb48dcfa7c47f4ab4d41046f3a4363a12137b7d18027c0cefe9a9",
+    "bytes": 1866
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/picolibc/include/time.h": {
+    "sha256": "c26d4f2c388c5f0a4c7419428b830d8829aba4615c9c3d3c273f46ca2631df76",
+    "bytes": 7881
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/picolibc/include/uchar.h": {
+    "sha256": "3c680afc682f343296028ebf66246666f9562aaee909e7903f7060db701db9b3",
+    "bytes": 2764
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/picolibc/include/unctrl.h": {
+    "sha256": "b04f83551de6a39f6bd736e572b3c4d7797243bed0a6875dca878a898a90d988",
+    "bytes": 1932
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/picolibc/include/unistd.h": {
+    "sha256": "5a747a261a6e26dcd20c194459742e82595c2020e20923159ed33750fd7fcb4d",
+    "bytes": 1881
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/picolibc/include/utime.h": {
+    "sha256": "a8c0f4a8dfa401d11f7b54e474774067c466d0cd1bc6046c659766dd8b642412",
+    "bytes": 1939
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/picolibc/include/utmp.h": {
+    "sha256": "e806375da2e47979fc28ed9045bc03ecaf4f5e9d672f6223305f460047a845b8",
+    "bytes": 1865
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/picolibc/include/wchar.h": {
+    "sha256": "b35e2ee497869f7e9db54740d26e1705e4af35f5c40fba8866b2966c666e9fe6",
+    "bytes": 10955
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/picolibc/include/wctype.h": {
+    "sha256": "0ea6bf307c785631300c3318c094230abb26c4c24ee26775413f5e7e76167f1e",
+    "bytes": 1738
+  },
+  "/Users/eugene/work/GiftUI/.toolchains/nrf52840/zephyr-sdk-0.17.4/arm-zephyr-eabi/picolibc/include/wordexp.h": {
+    "sha256": "4079f316fd5eb55116b52e50525f29a19c237e72026a6394b33fb350b50aca98",
+    "bytes": 1483
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUI/ActionHandler.swift": {
+    "sha256": "d36a53f45d18892c235c02355cbed0e6bf92a20b7c64bc7e84ac39a03fa34d01",
+    "bytes": 201
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUI/BoundedText.swift": {
+    "sha256": "ff468d5e3f17bd2fa05a027a3d487a1db81b4639b60981fd91db3d91f93f68ce",
+    "bytes": 6445
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUI/Button.swift": {
+    "sha256": "d2185a3e2983a38f8d2025a595444bc0e15d5089583b009327e007fc1272cd25",
+    "bytes": 1216
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUI/Canvas.swift": {
+    "sha256": "27997e7b2ad52da93aae9cab94be9bd7190f700557c2a5d06b571c566d2b734c",
+    "bytes": 1161
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUI/Color.swift": {
+    "sha256": "60009e3d58dcdfe65ba39bf6d036047207707837d73db308a5a25e81fc2ee835",
+    "bytes": 668
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUI/DeclarativeView.swift": {
+    "sha256": "8015cbf2b2d5df841799012850833604525af705e5087ac0583dc37064047132",
+    "bytes": 13434
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUI/Disabled.swift": {
+    "sha256": "23f79884bf45546310562cc0d9a47396460623a2234bced096df0c4b31362ee5",
+    "bytes": 1063
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUI/DrawingStyles.swift": {
+    "sha256": "eb28147b2dd565006f9d6b97c7b98e5bcfc52f42e19ebfae1dad1f79b08d130a",
+    "bytes": 762
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUI/DrawingSurface.swift": {
+    "sha256": "b75ae0b7421ec3f731d92375466558013dd1163106ce37ddfc2fb5e40d3ce1ab",
+    "bytes": 7258
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUI/GiftUI.swift": {
+    "sha256": "d8953ebaa6cdd525bc702e3d8de79eafb9f621e6f7c30c9d756805b251a2fe6c",
+    "bytes": 4401
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUI/LayoutContainers.swift": {
+    "sha256": "de2a3c7b10c8734b66a106b89259ae6296c4b4e3e951f75683bb14d07e421043",
+    "bytes": 4628
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUI/LayoutModifiers.swift": {
+    "sha256": "15ff02e7f893112e422ba0e312162e0074aeb879a2ff5b1b6f93bf62869f5576",
+    "bytes": 3817
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUI/LayoutValues.swift": {
+    "sha256": "70c7b34276f6f2d41382d14ee844fcf65d92c075f7caa0a12e79d17181c817f5",
+    "bytes": 1951
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUI/ObservableState.swift": {
+    "sha256": "1d532894156966a50c3ea7bbd3955f14cb1f114c255cb91fc9317920012be406",
+    "bytes": 5043
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUI/StyleModifiers.swift": {
+    "sha256": "4dbbab2cfbf7334556de944ecc58c8587b9b6da0c5be431990a36210cc2e8adc",
+    "bytes": 1467
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUI/Text.swift": {
+    "sha256": "c783fde614d274b115f2ca76db40f08cbf78dd4029f95387707a1f75e1ed54eb",
+    "bytes": 1335
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIBackendIntegration/FullSurfacePayloadEmitter.swift": {
+    "sha256": "25ceb74e6fdea87403ae112685960394adcd56012ad7366ec870b0b6217436af",
+    "bytes": 6303
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIBackendIntegration/OneShotRasterBackendEndpoint.swift": {
+    "sha256": "fa9c4b3aa3c522a8bd39efa4560abb692f61a1ab578089ed5ea4af182e5dd778",
+    "bytes": 8294
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIBackendIntegration/OperationMajorRGB565RasterSession.swift": {
+    "sha256": "8b930d7dd1a226a8d4bdf5c827c1fd4471f0084f634ebe1144696fae2f50b4b5",
+    "bytes": 16826
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIBackendIntegration/OperationMajorTileTraversal.swift": {
+    "sha256": "a61e6fbe4e1cd2ea1f1325e11ea2e37332fa1c9c2e09a4a0d7dabdd5a7a2d765",
+    "bytes": 3394
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIBackendIntegration/RGB565TilePayloadEmitter.swift": {
+    "sha256": "0d0b245435a848f98bbc1996a0768298b1be2a03563d06d8bbd04d8077cf7c34",
+    "bytes": 15217
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIBackendIntegration/RasterBackendEndpoint.swift": {
+    "sha256": "f38c93f26953da1f265aa20b1678d8d1a515fe533707d3646e89556908f62754",
+    "bytes": 773
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIBackendIntegration/RasterBackendOwnerFailureAdapter.swift": {
+    "sha256": "71185f98e32afd8353c6787c209ff671ef277e013df2ad11465ddf991b59d1e4",
+    "bytes": 3529
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIBackendIntegration/RasterBackendStartupValidator.swift": {
+    "sha256": "37bcf7159a5263b154e76ee84bd6d5592ca5903917b27614f30eeedc99c667e2",
+    "bytes": 4267
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIBackendIntegration/RasterFrameWorkAdmission.swift": {
+    "sha256": "0dd3524e69afc0f87cc9b563f395d8fc46dd09d5a40a41072670bec032fb029e",
+    "bytes": 1335
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIBackendIntegration/RasterTextResourceValidation.swift": {
+    "sha256": "8b5b0a273bca73176816366ffdc6d917ef71fe3bebc797113722988b4604579b",
+    "bytes": 3756
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUICapabilities/GiftUICapabilities.swift": {
+    "sha256": "79a2f7a749cbe3e8033d1d118f9c94fadb67b985d36dbc185996fc255e8ba884",
+    "bytes": 47123
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIDisplayCore/DisplayContracts.swift": {
+    "sha256": "b27ad7489ad1ec6076f0d53b3912d6b9ed85329d355ceda2678707374111f3f0",
+    "bytes": 2747
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIDisplayCore/SurfaceDisplayContributionAdapter.swift": {
+    "sha256": "6a53a85962e5a821e5d81c32a580f453f6332feceaf31997f8fc04f2d9d548cf",
+    "bytes": 1010
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIDrawing/CanvasInvocationSource.swift": {
+    "sha256": "9b992bc729e793959c0d8ad3fcb374c0bf3ced7edb1cdd098c57e6ba48c451f2",
+    "bytes": 440
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIDrawing/CanvasPlanProducer.swift": {
+    "sha256": "8a75acb55af64e06ad4aad12553c1e6c4c1a6c11aa937599f65e63a7bef68db7",
+    "bytes": 6405
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIDrawing/CanvasRenderProducer.swift": {
+    "sha256": "70fc175a8490cdf2ba10d46818fc5ff9b80137a47f5fa45d8cf649d9fd292cc2",
+    "bytes": 10954
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIDrawing/CanvasSemanticPayload.swift": {
+    "sha256": "8ff2bf5049d4393d459fef253cf6a137a9796a70c2ad4c413111d7928070b531",
+    "bytes": 3398
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIDrawing/CanvasStagedValues.swift": {
+    "sha256": "2fa24cfc2cca8813002241d77d67429b0eb8895e044da683aa5fd19891ae6437",
+    "bytes": 5524
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIDrawing/DrawingLimits.swift": {
+    "sha256": "eae0cc1be30bc22102c76613cd07b08ee577dbbb1f08d06caf350eb52d64be64",
+    "bytes": 2779
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIDrawing/DrawingPlan.swift": {
+    "sha256": "93e3216f2faaee98e2c025deef50cfb7513911efacdd56e90980be3cb6264da9",
+    "bytes": 1219
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIDrawing/DrawingValues.swift": {
+    "sha256": "d1008926323fdb292ec32e95e2cefb17958ea5ccbfb8d2e0c48fb67e565f0874",
+    "bytes": 1239
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIDrawing/PathConstruction.swift": {
+    "sha256": "ff7780b55c1b33f6b00ad322a20bfe9d7408160a13a2908b6da9019cb0bfc68d",
+    "bytes": 3882
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIDrawing/StaticCanvasCallableTable.swift": {
+    "sha256": "9c644426cf7f594dddff99cea8a21eb4c2fd57f295f4afdfbe049c55413ff9b6",
+    "bytes": 463
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIDrawing/StrokeSnapshot.swift": {
+    "sha256": "3345b05fb9f6f219fb09e7aa4e7e7a9a18c70f77d192734c36a08d0f84836a51",
+    "bytes": 4381
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIExecution/AdmissionValues.swift": {
+    "sha256": "dfd4f00479635772b2f4f8d09c8e1caff3f052d257f8fbd70cdd05e28eff2d38",
+    "bytes": 3076
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIExecution/ExecutionAdmissionController.swift": {
+    "sha256": "0aea5ab996e95104ce476aeb7188cc6bfde37d31f6db51b5ee10ae241524d4e2",
+    "bytes": 8766
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIExecution/ExecutionAdmissionSealTransaction.swift": {
+    "sha256": "7a88abcca9f437db94ea1f647ae8fd5ec3dbed82bd629b739ba3446ef8cf67d0",
+    "bytes": 5218
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIExecution/ExecutionAdmissionSealer.swift": {
+    "sha256": "54f3a7809c277a37cf8acfa931d62086ebc0ae1d3e77839ab6dcc28085885345",
+    "bytes": 1792
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIExecution/ExecutionMutationBatch.swift": {
+    "sha256": "a0464225588b3101249112a88f404a3258ccb87e8d9eea5e56671a4975501567",
+    "bytes": 2345
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIExecution/ExecutionOpportunityRunner.swift": {
+    "sha256": "d28b28c94e179c58805de37cc1a42736541cc26a7ba5bcb187571b8ad8e15a9e",
+    "bytes": 193
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIExecution/ExecutionPhaseMachine.swift": {
+    "sha256": "f2047c05efd5f2f2f7c96f57e3b20fd9b3826635c2fa922bdd1c0d81f545da34",
+    "bytes": 2478
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIExecution/ExecutionValues.swift": {
+    "sha256": "9b1278a5878f4123aa1e92fe723d068a3501a562b75b2e7e6940bf75869a80e2",
+    "bytes": 2733
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIExecution/ExecutionWakeAccumulator.swift": {
+    "sha256": "856db20ee149c555a4d0c33731be4d69980486033592181187d8465b60ecf2d2",
+    "bytes": 1058
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIExecution/FrameHandoffValues.swift": {
+    "sha256": "8eb1c0aa7c895fb50517e76ef9b4bd96568b2c2059b9a398c8f05486de0b87ba",
+    "bytes": 1974
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIExecution/FrameOfferNormalization.swift": {
+    "sha256": "761740fdf6fb11cb54a52c2817d006ec75a9322e2c9a4351952f893711698a33",
+    "bytes": 4094
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIExecution/IdentityAllocators.swift": {
+    "sha256": "8f9bab781054456d49e210b3700200f10abc7a47c1a2f85e3de6013d9f6a3e35",
+    "bytes": 2646
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIExecution/InputSourceSequenceState.swift": {
+    "sha256": "b69a01de3871a80fa7b9f556bc7d93f12945c9edcc6569d00faa3569d963c5b3",
+    "bytes": 4815
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIExecution/ObservableTargetGeneration.swift": {
+    "sha256": "07e995cb7594bb54a8018020960a98258482dc771abd86858fd052307e89417f",
+    "bytes": 187
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIExecution/PointerActionCapture.swift": {
+    "sha256": "0acc1d5b8c8f9af3f0aa91959198917bc6868907622d785eab149dee7ceed6a6",
+    "bytes": 1831
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIExecution/RecordingCandidateOfferCoordinator.swift": {
+    "sha256": "66b7d07d657785ba0ebf9fbc46c3b1d983b715cf45d4a7dd27d46b856fecff23",
+    "bytes": 5648
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIExecution/RecordingCycleCoordinator.swift": {
+    "sha256": "ccfffb285dde8e73132ddba6a32fab791eb488b673b316c09b397d10d292a620",
+    "bytes": 6774
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIExecution/RecordingCycleFinalizer.swift": {
+    "sha256": "bc9318cd92c095b9473878c575996b8b0b1e500faa3cbf121df1ba774673ffc3",
+    "bytes": 3196
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIExecution/RecordingDerivationRecovery.swift": {
+    "sha256": "e71108078104eb3f294bad9231ee819c3ec77cf11b0c059d3d670a9c95fbef35",
+    "bytes": 4898
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIExecution/RecordingDerivationTransaction.swift": {
+    "sha256": "380f3d5ec84f4ab6e45aa1e6054677b3080105fb7c445f79cc3ee6b9558e5bca",
+    "bytes": 3252
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIExecution/RecordingFocusedFailureSelection.swift": {
+    "sha256": "c2f005577a0a33d1d46c74d77836ec5ef03857d5716523d8cf6f4ef07a32fb8f",
+    "bytes": 2365
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIExecution/RecordingFrameCommitTransaction.swift": {
+    "sha256": "2cf669bd232c7310fc9650d33ccc242fc717b1071877d8a1b2dcbce32ee7e7c8",
+    "bytes": 2984
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIExecution/RecordingFrameEndpoint.swift": {
+    "sha256": "43b75fbc4d7ff5a09db83693f6e557f7256bf62960ed3ab2f4c37f4caca5f849",
+    "bytes": 7814
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIExecution/RecordingMutationBatch.swift": {
+    "sha256": "229c26f04e85f737a0c6f41d7bbd76eb9c33ff0955bfa878d70bcf8f2984ff39",
+    "bytes": 3958
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIExecution/RecordingPresentationPendingCoordinator.swift": {
+    "sha256": "45ce481da6c05b8509f596d6e2a9eac9961c261afe6cc6401b6035772c9370ed",
+    "bytes": 4527
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIExecution/RecordingPresentationTerminalRecovery.swift": {
+    "sha256": "c163ff5b21c6a9f920b4b70c0d150403ccd2900c20c212be04d2985be90c53d0",
+    "bytes": 2276
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIExecution/RunCycleValues.swift": {
+    "sha256": "4ce7d6c7932e3da3b74d35bb78b946dd1fd8249b3f1e41e5985af9a92bd66cd1",
+    "bytes": 4880
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIExecution/WakeValues.swift": {
+    "sha256": "915e835c62177403893bf44318b0d06ded8e017e59ba4f1e11d9f333505275f6",
+    "bytes": 868
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIFailureCore/GiftUIFailureCore.swift": {
+    "sha256": "9e1e92643cdf2aed4efea9684697481af01034b9ad34ef42aff8c6ff6445cae7",
+    "bytes": 15089
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/CheckedMVPHostConfigurationValidator.swift": {
+    "sha256": "8caf5a83d60ea858e2ecfbe5b1f76232a6dd85efc1a2fb3797adcf3a04810a3e",
+    "bytes": 8716
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/Generated/SignalAnalyzerPresets.generated.swift": {
+    "sha256": "2a541a9b1efbb142f6f6d7d5773ed12c4842d2dfe9e289750c9dc83205306402",
+    "bytes": 11581
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostActivationController.swift": {
+    "sha256": "d6a087a6505b10a622221818d20975b63b2aa2138bd965ff2d6e6a9b0a6680da",
+    "bytes": 6535
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostApplicationOpportunityGate.swift": {
+    "sha256": "475df591e6c3fbd741a916dd6eefacf77a572a25678c9c4a27b84ce5d6974e03",
+    "bytes": 1400
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostApplicationStartupValidation.swift": {
+    "sha256": "b94f4cbca83a180953ca84c2d18c7fd48565bf449d34af980f0bc5b5b9eb8b67",
+    "bytes": 3166
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostComponentGraphValidation.swift": {
+    "sha256": "1fe765b7348bdab18abf6b83da6c9e2cadbb2e7a868a729c8d075f5b5109f913",
+    "bytes": 2370
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostConfigurationResults.swift": {
+    "sha256": "3e00d5e22b04e6ccb25ab357f2d6fe96349f2ab31abf3cf9201206110d83b205",
+    "bytes": 4833
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostConfigurationValues.swift": {
+    "sha256": "401908c35e265ad19b9788d17a32603bd966da81e4fef10b8ff2fc46a9d255c1",
+    "bytes": 12692
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostEndpointHealthController.swift": {
+    "sha256": "b170fb7b19e0627ad7484c81c72bd9c532b4c06455c4d0cd9053e47b1639b434",
+    "bytes": 6244
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostEndpointStartupValidation.swift": {
+    "sha256": "6f53a358ab30317e2290b162fcd68b4158ae941c3b4b753c546d35b5cd4db5c9",
+    "bytes": 2474
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostFailureAdapter.swift": {
+    "sha256": "6b886b52c8e96892207b7230b8ccf9301b56f9fc62f117d7131c025e0452fde8",
+    "bytes": 6448
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostNormalizedInputGate.swift": {
+    "sha256": "7bd20cd33825f33478e54a1921b670a857805f6a2cf83bf089810e83b93773a7",
+    "bytes": 7468
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostPresentationRecovery.swift": {
+    "sha256": "c8d261e68ad8096015f070d9e896c4952ac36725ff2c3ccc4b8cce56674d635f",
+    "bytes": 4525
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostPresetBootstrap.swift": {
+    "sha256": "15edb5e6d350cfdc95e2edc97d86a82b147e90b3bf391441eb04f173c218e12e",
+    "bytes": 6676
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostResidualFailureRouting.swift": {
+    "sha256": "c7d77a75bc192ccf226c82487e87108d0bd3e5d5a91630d4df3990d6eb3e258c",
+    "bytes": 6861
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostResidualPolicyContracts.swift": {
+    "sha256": "6215618f39789acfa0a40aca1c0657fa8c66c1760884f44dceee1172ee7e7469",
+    "bytes": 854
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostResidualPolicyTableValidation.swift": {
+    "sha256": "b43e1f7bf466c3dea0266e498d579e78504eb1612740f1d24804a2b19e37b84c",
+    "bytes": 1628
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostScheduledOpportunityController.swift": {
+    "sha256": "467525eaaaac20ac9a891e973f1d0a34cc3c037a7eb934448fa968f47a260838",
+    "bytes": 5162
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostSequencedFactAdmission.swift": {
+    "sha256": "4bd12f192077693af4be89b1483be4d4791f256f2ca5798d025cbef577da07cb",
+    "bytes": 12763
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/HostWakePacingController.swift": {
+    "sha256": "457479bb631966220e2bb2d26fb7a78ac0143fbcadae8b66c25b78b27125643b",
+    "bytes": 6393
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/SignalAnalyzerDrawingStartupValidation.swift": {
+    "sha256": "3995cd72d80694e4d56cee8d29e70da7da0b825ae5fbfa2de4201da546268061",
+    "bytes": 3774
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/SignalAnalyzerPresetHostInstance.swift": {
+    "sha256": "8f003af6658f30857ef2db1d93d762ba6725b91151d58705123d5597898bdea4",
+    "bytes": 5313
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIHostConfiguration/SignalAnalyzerWorkloadStartupValidation.swift": {
+    "sha256": "6676ad3b27a856c5ec74d5a72cd1020f468389abf5ddf5d8ed3c9a60c53c7d04",
+    "bytes": 7577
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIInteraction/EffectiveActionEnabledState.swift": {
+    "sha256": "89e3dc5744fa9169605a04345ff52a3d483a72b80c7ff5ec56350520d0014f30",
+    "bytes": 478
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIInteraction/ExecutionGestureAdapter.swift": {
+    "sha256": "f393fa156862774f0d92fc877a51528b9e5764e10c8678fcc9dca4ea260f107f",
+    "bytes": 1783
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIInteraction/InteractionFailurePrecedence.swift": {
+    "sha256": "ec6e49fd95484273c7fdf8408d1ebbad34d889e75eeb26bcfd923255ea9c644f",
+    "bytes": 1304
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIInteraction/InteractionOwnedKeyState.swift": {
+    "sha256": "54271aaf4d1fc7f4060c44b03124db356802efbf69ddd56f829964f92dd55af8",
+    "bytes": 8594
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIInteraction/InteractionState.swift": {
+    "sha256": "030ac5f13c350694c1bb75b9a74c46a204949441ce52f760885d72b63dcb961c",
+    "bytes": 15190
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIInteraction/InteractionStorage.swift": {
+    "sha256": "3a2e4e4907316de134814c58cb07735ae87d65965ad45e7634148f15bf4356d3",
+    "bytes": 1983
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIInteraction/InteractionValues.swift": {
+    "sha256": "49bcf84b9dbbdb93c0990d51c65d61e536579c454978aa42ffc4a5e5e3df97cc",
+    "bytes": 4600
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUILayout/Layout.swift": {
+    "sha256": "17bd1188e891289330a447eaad77a5c53d149e653862939916b221589a9bf1a3",
+    "bytes": 2699
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUILayout/LayoutCounters.swift": {
+    "sha256": "735a80dc1133d7fcae6ba5ba455b520a8f0224494b2357af224ddea8c200bc12",
+    "bytes": 3504
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUILayout/LayoutEngine.swift": {
+    "sha256": "d79d5e5d2069c21353a64fb0e31d3cff2ecd6e49dd2c4b369c9a162997ee5ddb",
+    "bytes": 64995
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUILayout/LayoutError.swift": {
+    "sha256": "5733fe30105131fe00b87c4812e787a4efa6aed7236c84d5f93a0e0ddbcf629b",
+    "bytes": 285
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUILayout/LayoutGeometry.swift": {
+    "sha256": "0ac0320ec58947aa4bc7c3f8ec0ff662e57f598d2a7764faa0d1c2bc33acfa92",
+    "bytes": 4530
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUILayout/LayoutPublication.swift": {
+    "sha256": "02e05a2d5e4031cde4940a33f42b52ffd0f87b9b7ad411b87a8e306cd15aad3a",
+    "bytes": 4365
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUILayout/LayoutResultSink.swift": {
+    "sha256": "57a52e0187904a317a7d3b00acf28afcd1854d2e62120cafd4fd12011e2ad06a",
+    "bytes": 867
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUILayout/LayoutSemanticValidation.swift": {
+    "sha256": "cd50b36ea3ba48c33b56ba2fcf448c988ba057ffae934a973521d9ec16a5d69a",
+    "bytes": 13395
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUILayout/LayoutValues.swift": {
+    "sha256": "ec168c1eb9bc6dff3cfb5144ab752958dad62d4bc1c419e8f0dea1b4149e704b",
+    "bytes": 1912
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUILayout/LayoutWorkspace.swift": {
+    "sha256": "bbec7289fc9cb6c1f506e895231257c58bdd818ba6d0a020258cb7c97b342f81",
+    "bytes": 3680
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUILayout/ResolvedRenderLayoutView.swift": {
+    "sha256": "7278d5216c075b499bee43e8b646f00a34f70f6b877ab9b4fc72de1878f10b33",
+    "bytes": 3952
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableModelIdentity.swift": {
+    "sha256": "b3100dea3f31eb0b508d07da66dc1aafb3da4235774502a36db9f46c9fd82a0a",
+    "bytes": 1789
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableModelMutation.swift": {
+    "sha256": "8fca003edbd06c94c55e870a0fc06a143654b1cc99bc662f3a181ec441bf062d",
+    "bytes": 589
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableModelOwnership.swift": {
+    "sha256": "6a572ca44df61b39e6f50add6407f014394795aa687dd8484a54828cc95595a9",
+    "bytes": 16719
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableModelScope.swift": {
+    "sha256": "08be628f0514504f0e83d04cd80e6cdd717c9791658fa46229b005365d8064d3",
+    "bytes": 13327
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableModelTicket.swift": {
+    "sha256": "ac0e6a5e986da34197ceb103c656147cf57f87ffb71717fe754301d489d374d7",
+    "bytes": 1537
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableSemanticBodyBinding.swift": {
+    "sha256": "b0746aaa9e4ed287ac04fd3f717c93534827fe943f88e3724df2f96b8a8a2ca4",
+    "bytes": 2988
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableStateBindingDecorator.swift": {
+    "sha256": "b88f911561ac3405bd4ed7264122488162828c395a6668ad9b314f54c37b04d6",
+    "bytes": 347
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableStateModel.swift": {
+    "sha256": "5cf0f406693e42324823c6ce6e2f4e45600b1afd4ce4f59049418f5d125b7959",
+    "bytes": 636
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableStateRegistrationLifecycle.swift": {
+    "sha256": "58367baadd5b6213f1bf3809106c2aba2639ddc86ec01907b6d1e9e79a706774",
+    "bytes": 2950
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableStateRootScope.swift": {
+    "sha256": "6fbcfe7b098eb5c662d6e52cd020c26f0cff4e78c1765df6658f1e8434313707",
+    "bytes": 30171
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableStateRootTargetAccess.swift": {
+    "sha256": "0ab15cca11e67014c99dc9d1db13303bd25bf2472f069e02f89e98cd9ef2dbc5",
+    "bytes": 1581
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIObservableState/ObservableStateValues.swift": {
+    "sha256": "58ab30ae29b27233ed5288422849f58c1b43e3ccbf0ddd78f9726f1aef97bbfb",
+    "bytes": 2321
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIRasterCore/FullSurfaceRGB565Framebuffer.swift": {
+    "sha256": "449a1be1050367462f67ab32a98553f6c573a79f1a79a6a26be98e6df06ac5e1",
+    "bytes": 4822
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIRasterCore/FullSurfaceRGBA8888Buffer.swift": {
+    "sha256": "27119d052890cad6f40ab4d64ed1f584f32b005d513bf910f23557b6cc86c48d",
+    "bytes": 4674
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIRasterCore/RGB565TileWorkspace.swift": {
+    "sha256": "e7f8fdfe6b23a33aeaad656ffc0ad745d14026dd3e55c8a1d069c1cb60915ce4",
+    "bytes": 5854
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIRasterCore/RasterBackendContributionAdapter.swift": {
+    "sha256": "07daa8c1ac38863bdbe0340061b8c7de703e912a8990155d91560d07fa88dbb6",
+    "bytes": 2864
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIRasterCore/RasterFillCoverage.swift": {
+    "sha256": "e71a27b6a6e5ee0557bef856d70cfa8b7551ab2d3f93e830f31b414a21b03594",
+    "bytes": 2978
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIRasterCore/RasterFrameSink.swift": {
+    "sha256": "93e7455f817de8a665933761c3580c59451d4c9cf12d9b9e8773aa4b28e1582a",
+    "bytes": 257
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIRasterCore/RasterFrameWork.swift": {
+    "sha256": "f2433ae30e9ed44bc16e2f1faca715f4c6e1608c7a13545e426e76b72bde5090",
+    "bytes": 4130
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIRasterCore/RasterGlyphCoverage.swift": {
+    "sha256": "d73b11eb6382d40bb0e9a0f336fb5d377f5bfb43f484534906b196aea9f26262",
+    "bytes": 9136
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIRasterCore/RasterPayloadLimits.swift": {
+    "sha256": "23234d9ba4e630bb6279e31a9ab8ae72b8f9e3b2f9477784bf42697ecab544c3",
+    "bytes": 3364
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIRasterCore/RasterStrokeCoverage.swift": {
+    "sha256": "9e26044f3f7e99516742b686767cfe5a03d24d1efceee28f4d7ee6e21a90b579",
+    "bytes": 31837
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIRasterCore/RasterWorkTracker.swift": {
+    "sha256": "16f7c34ef32538f22b340163c402f551e3fd875b66f2e074d8049d6f51d6468f",
+    "bytes": 5041
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIReferenceTextResources/Generated/ReferenceBitmapPayload.generated.swift": {
+    "sha256": "5c0e5726f559ee9c43815219f7278b6dd75090e86a20b31e02428a53c396a6ef",
+    "bytes": 60627
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIReferenceTextResources/Generated/ReferenceCatalogue.generated.swift": {
+    "sha256": "7a4085655de8b4738aeb9e27956922684c2d56235679b4775a7bd4f6de7ff70b",
+    "bytes": 52228
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIReferenceTextResources/Generated/ReferenceOutlinePayload.generated.swift": {
+    "sha256": "acc9dab1fb43cb20cfcb460dfbb2e902d6dc9096c5b2ecbc15d19f4c42d84551",
+    "bytes": 235522
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIReferenceTextResources/GiftUIPiCompactTextResources.swift": {
+    "sha256": "fadbaa0ad0a880800339390d1b3f9f3f151d93fba0e9107d9af24087f025cdce",
+    "bytes": 3185
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIReferenceTextResources/GiftUIReferenceTextResources.swift": {
+    "sha256": "824fbc8743921029b8682e775c92628de7b65f1198b8682cc3d2c5be645a4922",
+    "bytes": 5480
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIReferenceTextResources/PiCompactGenerated/PiCompactBitmapPayload.generated.swift": {
+    "sha256": "6d9ae291e7c780cf049010cd8912742ccc36f8b89452db6132086776e0b7bca3",
+    "bytes": 49786
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIReferenceTextResources/PiCompactGenerated/PiCompactCatalogue.generated.swift": {
+    "sha256": "0f8900aaf2433a975276603039af1d4200759ec081394e193d149656d78c0c89",
+    "bytes": 35970
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIRenderCore/DrawingOperationSink.swift": {
+    "sha256": "4d35496afb8dc6b4827b52b3441a8258a5f91754c765a8828cb5ff7ebaafba88",
+    "bytes": 1692
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIRenderCore/RenderOperationSink.swift": {
+    "sha256": "02ba1989d36434e1e7db7984acce9ccc4a7861857c53de7d49676968aaaf1f43",
+    "bytes": 500
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIRenderCore/RenderRecordingSink.swift": {
+    "sha256": "3db5511a8127d03eb51c6e6bf232a817d0eb6a2768583433767a05267ebdead2",
+    "bytes": 3025
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIRenderCore/RenderValues.swift": {
+    "sha256": "d4a0e5274c7c8e88a4e7c6c9c0bf5345ea1e83b5086b1f32373f01c7a4940722",
+    "bytes": 2536
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIRenderLowering/RenderExtensions.swift": {
+    "sha256": "b4b73e4193b61650d587b0134e626058da433b2c25176df35e3a9f74618fddf9",
+    "bytes": 1280
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIRenderLowering/RenderPreflight.swift": {
+    "sha256": "1c25158da80d1929699b9323c359ab5480e792bc6f34c6f783d46879194ef290",
+    "bytes": 19907
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIRenderLowering/RenderProducer.swift": {
+    "sha256": "6cc002c47ec91714c78a88a27599167b71fd6f6a8780a4b8c9c1845a79a3a23c",
+    "bytes": 4953
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIRenderLowering/RenderProductionValues.swift": {
+    "sha256": "0005e5774c9a7658547f91d79b685b2033d59928d01ecd07136b80eaab535bcc",
+    "bytes": 2389
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIRenderLowering/RenderStreaming.swift": {
+    "sha256": "4d06944c09c4ad685857df55e2577ff72a183cdfa8b03fb9e5f545a9ea10aa8f",
+    "bytes": 16716
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeCore/ObservableCanvasInvocationSource.swift": {
+    "sha256": "ad361c8c2e1237cc1e8b4604c9f030198c77786b52a9c1d70ab78d3dfa08bc34",
+    "bytes": 1884
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeCore/RuntimeCompletePipeline.swift": {
+    "sha256": "6a591ea81a12c651512e888c6616c28e1160e20886315d052a350837b98a2f72",
+    "bytes": 18228
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeCore/RuntimeCoordinatorCleanup.swift": {
+    "sha256": "bc912a0f80009ea097042ae4eeb357be895d161602f00add63868ce05a733597",
+    "bytes": 6067
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeCore/RuntimeCoordinatorContracts.swift": {
+    "sha256": "c19a8f8cb381a933dcb1d12d1cfc8df738f9408717d88b661e35a264b192bddb",
+    "bytes": 1311
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeCore/RuntimeInteractionCandidateResolution.swift": {
+    "sha256": "62070062fd8829facecacc23b2baebd9333df64213291e99dd19344318be0cf9",
+    "bytes": 2871
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeCore/RuntimeOwnerFailure.swift": {
+    "sha256": "7728c6631e620e312f006ddc60e8fdec5d58efb3ea702b662b21ea187586ae57",
+    "bytes": 378
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeCore/RuntimeProfileStorage.swift": {
+    "sha256": "9b00d9d6ced10e8b4868953e67c998fb9addf2e55a228c857c2cf317b0367f66",
+    "bytes": 2874
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeCore/RuntimeProfileValidation.swift": {
+    "sha256": "770bdb08b6bec4f93e76109838a1e511d88779018fe817b48bb5326608fdb8d1",
+    "bytes": 19160
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeCore/RuntimeProfileValues.swift": {
+    "sha256": "377ef975edb74d9e8b86b94228e0756e1bc15414875f74a1fb4dbec33f0d88ca",
+    "bytes": 16749
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeCore/RuntimeRecordCanvasInteractionBridge.swift": {
+    "sha256": "a0c386b5dfaf05864bf374644d19ee59f0b254313ffe72c871dcbe983ed69ef9",
+    "bytes": 1882
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeCore/RuntimeRecordInteractionBridge.swift": {
+    "sha256": "a6c4fe9a1471daf3b8ee3610d98b98308046abb630ce0956df7235cfe26cf010",
+    "bytes": 5930
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeCore/RuntimeStorageRegistry.swift": {
+    "sha256": "6f907f1f1c49f5b705439616dfbc5d0f5f6f047998fbb2dc02b1517554fd731e",
+    "bytes": 11405
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeStatic/StaticCanvasValueStorage.swift": {
+    "sha256": "5f49964bca470e962471968f1010570732425ebe45cad74ed4ab19c79839b09b",
+    "bytes": 812
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeStatic/StaticInteractionStorage.swift": {
+    "sha256": "dc3648560338f093f912b7e0bc812bdaa95e7a434a3bd836c903560bf3971219",
+    "bytes": 12248
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeStatic/StaticObservableModelStorage.swift": {
+    "sha256": "eb63e6c191b8e1af24f19dd2fd523ddb315d04e36151471f534fe6063658e0a0",
+    "bytes": 2141
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeStatic/StaticObservableRootAdapter.swift": {
+    "sha256": "f6bf84f47f4021eaa61dacd51da8e3a6b9d19066eb577934fc19b9dfd7785078",
+    "bytes": 2723
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeStatic/StaticObservableRootTargetAccess.swift": {
+    "sha256": "f1bb6868e5f37e4deca9fe90707a2b985fda6cb0fa7c00c60ae01ac9b0847d4a",
+    "bytes": 241
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeStatic/StaticRecordDrawingWorkspace.swift": {
+    "sha256": "42496e7873d81d55b2556699621885b04038b83d0d4941f250af000571ca6a45",
+    "bytes": 3070
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeStatic/StaticRuntimeExecutionCoordinator.swift": {
+    "sha256": "0dd731cdbefcca81360eb2ff896d2e757bedc9829faaaf5e4a4a75b2c48254bd",
+    "bytes": 3895
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUIRuntimeStatic/StaticSemanticRecordStorage.swift": {
+    "sha256": "db63a7743194b90fec3bc81c32f6280dbb487d40ba251358cfa639649e7be3cb",
+    "bytes": 1467
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUISemanticCore/GiftUISemanticCore.swift": {
+    "sha256": "88214d8af4ac0db6c490e6f8a9c8fa671b1490816f5447792e4dfe0927e9efb5",
+    "bytes": 46642
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUISemanticCore/SemanticLayoutView.swift": {
+    "sha256": "f7d067f23913efcab81ebc27ef3c22073c00c2536360b8f866c2f10e5205196b",
+    "bytes": 1584
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUISemanticCore/SemanticRecordExpansion.swift": {
+    "sha256": "63b71e4511c486e6481e0e64961e14975f5105cf465ed09342e1eaf2dd24bef3",
+    "bytes": 8890
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUISemanticCore/SemanticRecordLayoutView.swift": {
+    "sha256": "6f2eb6c53e7849ed9cf489ac8b2165a3ab318ff89bb7253076043acfc42ea144",
+    "bytes": 6094
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUISemanticCore/SemanticRecordRenderView.swift": {
+    "sha256": "5d0628083f3ebe29142f7c2245ae7831328ef93c40a28d27b2c2dd20dd029515",
+    "bytes": 4784
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUISemanticCore/SemanticRecordStore.swift": {
+    "sha256": "d106f913937b30646aac5006789bf12d8b7530b6b9497cbd861a325038415a37",
+    "bytes": 15566
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUISemanticCore/SemanticRenderView.swift": {
+    "sha256": "53f052d9cf5f4dba04edecb9713a11518718f315da8d83855623e41d6e8ebaca",
+    "bytes": 801
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUISemanticCore/SemanticRuntimeRecords.swift": {
+    "sha256": "f92786cd8bfae1eb36546e88bbc34c5e864f5a059b7280a2882edc62d57810ba",
+    "bytes": 15521
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUISemanticCore/SemanticStandardPayload.swift": {
+    "sha256": "2dd204c2c7b5d4fe06e58a085ac7a59aa70dd734e56981231c414c10f7389c70",
+    "bytes": 7345
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUISurfaceCore/RasterSurface.swift": {
+    "sha256": "cf0aa2fe88d7cf825e5b9bddb8b8e2fc48d76555f4a8ac94ff4ec0b884fe3b42",
+    "bytes": 481
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUISurfaceCore/SurfaceValues.swift": {
+    "sha256": "96e161fdf3d1f58dd4c1de04c043df647a3fa279d17993c57e2b0ce15e19d60c",
+    "bytes": 3576
+  },
+  "/Users/eugene/work/GiftUI/Sources/GiftUITextResources/GiftUITextResources.swift": {
+    "sha256": "7dc3dc0e55b22c9edee699d51272d16c8d364073cf43a840467bf98424efbf9f",
+    "bytes": 51424
+  },
+  "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterAdmission.swift": {
+    "sha256": "d0c199397cb384ecbd221160773b44ee476df1b930aefc81a9197eed6b72353e",
+    "bytes": 13896
+  },
+  "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterApplication.swift": {
+    "sha256": "49ca8b09587c31dfbb0e8b8eaf9a84a19c6f87ab5cf2f37f60e992585d3de5e2",
+    "bytes": 5020
+  },
+  "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterCoordinatorProbe.swift": {
+    "sha256": "d0b48674137e5377b9ee7b4176b2522ca8129b9074761547eee54f03f35c4456",
+    "bytes": 6217
+  },
+  "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterDynamicHostOwner.swift": {
+    "sha256": "7b2245641aa5f4493df0dae4f2c8ccf08f10b73366e8d829e89c3cbc7ab798e9",
+    "bytes": 19877
+  },
+  "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterDynamicHostProbe.swift": {
+    "sha256": "bd2bf1e1ab30bd7eaed8a6e6426eaab5fce48a3471756d460487055233e265b1",
+    "bytes": 14539
+  },
+  "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterFixedStorageProbe.swift": {
+    "sha256": "84915c4d1dd8cbd287470bddeffdc1e59e3c9adfb503ee89c51439ee1182f6c4",
+    "bytes": 1497
+  },
+  "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterGeometry.swift": {
+    "sha256": "42b4e4a4bea69ee4dac148cd9c39ee731c39b22ce65f575c30e98be1acfc4d66",
+    "bytes": 14217
+  },
+  "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterGraphProbe.swift": {
+    "sha256": "920639f5493f49d69c115d4bea77c0f0520562b9df5697eadd32e91233cbb768",
+    "bytes": 4543
+  },
+  "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostAssembly.swift": {
+    "sha256": "0cf80809f83177e0bbafe2d4237882d1fbeb2669f554c39779aaf081922c48ae",
+    "bytes": 17027
+  },
+  "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostCorpus.swift": {
+    "sha256": "ab35efa546cc7279770e9ee039166b1f725337f1a090cc68ee15d2ca20a7dcb2",
+    "bytes": 8119
+  },
+  "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostOwner.swift": {
+    "sha256": "80f4e24984d127f3cddd2ac777cb4e29c2b41aafba532a0c5d034e5918b0720a",
+    "bytes": 23397
+  },
+  "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostProbe.swift": {
+    "sha256": "b44729dbbad4cc2af1f72e7b03c99568c01ad4017383fb1b6f0b4f24efd9a2e6",
+    "bytes": 21604
+  },
+  "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterModel.swift": {
+    "sha256": "c914bac2d09dc3b13713f682d2d2274021d3f48a58f0179685a0cad46c6b700a",
+    "bytes": 2755
+  },
+  "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterModelProbe.swift": {
+    "sha256": "d6cdcf1f033a26225d856eb4dd4c5401b76b63d7f78040e111417cdb82bfa41c",
+    "bytes": 3358
+  },
+  "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterNativeRaster.swift": {
+    "sha256": "b2ec7e06f02b2084338c0bf07d1c90c1396fc57e0b363c4fd5fc1777d4137a3d",
+    "bytes": 18226
+  },
+  "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift": {
+    "sha256": "8c1ff4d0884431f3c243612a5c99535a9d375924be3f50139271f08a3f28926b",
+    "bytes": 32598
+  },
+  "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPixelOracle.swift": {
+    "sha256": "00dce6f68f9388c38437a7bc8cba09689d0deec1ba8ad1cb922e5e25553c8842",
+    "bytes": 4411
+  },
+  "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterProfileStorage.swift": {
+    "sha256": "6137be3df89bf7d93ccc1d44148e7143d9ad4569f41396978622965aebefa82d",
+    "bytes": 34657
+  },
+  "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterRender.swift": {
+    "sha256": "b14a1667a899fc539c8a8d8011d2e377188ce0300012e464ac1f0d1203a999ab",
+    "bytes": 9577
+  },
+  "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterRouteEntry.swift": {
+    "sha256": "39fea522c9ffd618209342f4021a91a91354ec572ddfe072624b679122120335",
+    "bytes": 1514
+  },
+  "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemantic.swift": {
+    "sha256": "9ac342b4d90996a1375b9968d1e7dc9d7ada58bd99d288d8acc1bdfb5ce9a2ee",
+    "bytes": 2086
+  },
+  "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterSemanticProbe.swift": {
+    "sha256": "9c1c0120be11c79235f7febb7e4be950307ac1344095214823aa6248b8ab8f96",
+    "bytes": 12958
+  },
+  "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterStaticGeometry.swift": {
+    "sha256": "c49cc7ad1d5de5bcc3a228defd78ce16a1d6e56c775d9227f5648339540eaa2c",
+    "bytes": 4999
+  },
+  "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterStorageMeasurement.swift": {
+    "sha256": "2257964e7ad3db541d0ec18dced4b671984b4b9a183d5006141f5735836c5316",
+    "bytes": 5516
+  },
+  "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterStorageRegions.swift": {
+    "sha256": "2a331000c781a0cf29590ab0f6acb730176115126113e3fd687ff272b0fe30f7",
+    "bytes": 7752
+  },
+  "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterTiledRaster.swift": {
+    "sha256": "1b1255db3577e1d55bcef72398169ac061c2c1101dda48e783ddb48bc7ee1fed",
+    "bytes": 16958
+  },
+  "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWakeIntegration.swift": {
+    "sha256": "5ff90414394f5b5d70a06790fd633dadc3b5ebacf637164318b2a44c54a1554e",
+    "bytes": 22637
+  },
+  "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterWorkload.swift": {
+    "sha256": "85f24ef1677592e85aa7d89132f4e2d8c15b56fd4b6547b53db9392ed6e0712e",
+    "bytes": 5050
+  },
+  "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterDrawingPlanRecords.swift": {
+    "sha256": "3435c86d6a65f49d34c951a276323583274f423365f05f8ba67d47a4d183c148",
+    "bytes": 10654
+  },
+  "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterDrawingPlanStorage.swift": {
+    "sha256": "ed7bb631e53b8934189a0558c1c015fb56d3e0c2497357d43d0f622bd5eb4092",
+    "bytes": 12042
+  },
+  "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterDrawingWorkspace.swift": {
+    "sha256": "6c0f1eaf8074f1b5a176e481d5c5b4026e0d31e761d1ca7d46ac3f224d6f76c5",
+    "bytes": 10872
+  },
+  "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterEmbeddedBacking.swift": {
+    "sha256": "634565f27c8b73667a0994a643247ef5355d85cc7b6d1424eff856c8e3e2af84",
+    "bytes": 12736
+  },
+  "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterInteractionStorage.swift": {
+    "sha256": "125da049ee30b1070f1775eec0837c2c382e84235c1811a58b7031c7ea72827b",
+    "bytes": 4288
+  },
+  "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLayoutScopeCodec.swift": {
+    "sha256": "7565ad65ff596d2ce4c65ea811583a4b36abcf906a166331995f0c3e16079b06",
+    "bytes": 7294
+  },
+  "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLayoutTextCodec.swift": {
+    "sha256": "5b71ad2937239cfd3c01ad16282831c9b0e83a8b592beb64fbdb4904e582e39c",
+    "bytes": 8687
+  },
+  "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLayoutWorkspace.swift": {
+    "sha256": "1c2e9e2571d20f90d4427dbda6745629f3dfe37803f71c0a26ece3e106b1cc8a",
+    "bytes": 10957
+  },
+  "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterLivePathStorage.swift": {
+    "sha256": "714a9aa36f86936919fa1b2eeae36f299331c11afa5123270ed9714c1af26d34",
+    "bytes": 5420
+  },
+  "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterRenderWorkspace.swift": {
+    "sha256": "7fe947996496ada49132ec3d1df9849907af5df0e18e8dfd4f9f5bd8713669f0",
+    "bytes": 3860
+  },
+  "/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC015/RuntimeDerived/StaticCounterResolvedLayout.swift": {
+    "sha256": "0c8b560a6e96657d9421dcde045485a2c094194f04fb9b9e5a951c0ebf7a7893",
+    "bytes": 11497
+  },
+  "/Users/eugene/work/GiftUI/scripts/nrf52840/toolchain.env": {
+    "sha256": "0fc9f2a6c4ee824c45bee2e6d1f88d12914950f0fe37a354ef4912a87dfd2e2e",
+    "bytes": 2177
+  }
+}
