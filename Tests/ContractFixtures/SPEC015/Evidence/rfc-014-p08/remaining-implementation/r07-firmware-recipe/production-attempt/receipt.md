@@ -254,3 +254,8 @@ preserved underphase-split. Selected-model capacity interrupted after command
 completed; resumed same Sol6.1High from recorded result without rerun/model
 substitution/source change/guard reset. Remaining Dynamic/Pi/nRF each once,
 then supportedimage only on passes. No failure/repair occurred.
+
+Current Dynamic route PASS source63e717d1, actualexit0,1349501zero failures,
+24/24 and194matching inputs, allfive Staticseamcounts1. Exact fresh output
+`.build/contracts/p08-counter-e00kvr4q`; no repair or unchangedrerun. Pi is next
+sequentially, then nRF and supportedimage only after passes.

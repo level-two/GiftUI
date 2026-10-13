@@ -1,0 +1,5 @@
+{
+  "exit": 0,
+  "stdout": "P08 counter components assertions=1349501 failures=0\nP08_COUNTER_EVIDENCE /Users/eugene/work/GiftUI/.build/contracts/p08-counter-e00kvr4q\n",
+  "build": ".build/contracts/p08-counter-e00kvr4q"
+}

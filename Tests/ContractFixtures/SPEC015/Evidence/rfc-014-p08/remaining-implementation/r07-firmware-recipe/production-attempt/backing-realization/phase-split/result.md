@@ -17,3 +17,8 @@ and72208frame are historical, not63e717d1 measurements. Actual nested linked
 stack including alignment and applicable IRQ overlap must fit27648; smaller
 locals alone do not establish pass. All existing limits/closed allowances and
 independent-review stop remain. P08 open; no P09–P12/hardware/target execution.
+
+Current Dynamic route PASS source63e717d1, actualexit0,1349501zero failures,
+24/24 and194matching inputs, allfive Staticseamcounts1. Exact fresh output
+`.build/contracts/p08-counter-e00kvr4q`; no repair or unchangedrerun. Pi is next
+sequentially, then nRF and supportedimage only after passes.
