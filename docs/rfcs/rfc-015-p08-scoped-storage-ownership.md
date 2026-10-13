@@ -39,6 +39,9 @@ target_milestone: ITERATION-003
 The [independent initial review](../iterations/iteration-003-review/rfc-015-initial-review.md)
 at `5770d266` found R1–R4. The response below selects draft corrections; it does
 not change the immutable review verdict or establish compiler acceptance.
+The [revision review](../iterations/iteration-003-review/rfc-015-revision-review.md)
+records additional retirement, cleanup, capacity and gate-order corrections
+against `b39a4f35`; B1–B4 remain open.
 Prepare one narrow P08 direction: stable typed physical owners lend exclusive,
 compiler-bounded storage access to a noncopyable, nonescapable geometry and
 Interaction carrier chain. Interaction retains authority over its transaction;
@@ -515,11 +518,41 @@ fileprivate typealias P08Coordinator = StaticRuntimeExecutionCoordinator<
     CounterExecutionBinding, CounterAdmission, P08Pipeline
 >
 
+// Internal retirement transfer, never a callback Result or owned workspace.
+struct CounterRetiredStorage<G, C, R, H>: ~Copyable, ~Escapable
+where G: CounterGeometry & ~Copyable & ~Escapable,
+      C: CounterCandidateBacking & ~Copyable & ~Escapable,
+      R: CounterCommittedBacking & ~Copyable & ~Escapable,
+      H: CounterHitBacking & ~Copyable & ~Escapable,
+      C.Identity == SemanticCompleteIdentity,
+      R.Identity == SemanticCompleteIdentity,
+      H.Identity == SemanticCompleteIdentity {
+    private var semantic: SemanticRecordStore<CounterPayload>
+    private var geometry: G
+    private var interaction: InteractionOwnedKeyState<C, R, H>
+    @_lifetime(copy semantic, copy geometry, copy interaction)
+    init(semantic: consuming SemanticRecordStore<CounterPayload>,
+         geometry: consuming G,
+         interaction: consuming InteractionOwnedKeyState<C, R, H>)
+    @_lifetime(self: copy self)
+    mutating func resetAfterQuiescence()
+}
+fileprivate typealias P08RetiredStorage = CounterRetiredStorage<
+    P08GeometryAccess, P08CandidateAccess, P08CommittedAccess, P08HitAccess
+>
+
+// Members of supplied and pipeline respectively, with their G/C/R/H constraints.
+// Supplied requires that activation has not transferred it to a coordinator;
+// pipeline requires completed quiescence and release of registrations/read pins.
+@_lifetime(copy self)
+consuming func retireInertStorage() -> CounterRetiredStorage<G, C, R, H>
+@_lifetime(copy self)
+consuming func retireQuiescedStorage() -> CounterRetiredStorage<G, C, R, H>
+
 fileprivate enum P08HostState: ~Copyable, ~Escapable {
     case inert(P08Supplied, Span<UInt8>)
     case active(P08Coordinator, ObservableModelTicket<CounterModelSchema>?, Span<UInt8>)
-    case retired(SemanticRecordStore<CounterPayload>, P08GeometryAccess,
-                 P08ScopedKeys, Span<UInt8>)
+    case retired(P08RetiredStorage, Span<UInt8>)
     @_lifetime(copy supplied, copy activationSpan)
     init(supplied: consuming P08Supplied, activationSpan: Span<UInt8>)
     @_lifetime(self: copy self)
@@ -551,14 +584,37 @@ substitution is permitted. Their exact existing scope types stay unchanged.
 The live host's private `state` becomes the scoped state above; its existing
 consuming supplied initializer retains `@_lifetime(copy supplied, copy activationSpan)`.
 Every activation/opportunity/retirement enum rewrite retains
-`@_lifetime(self: copy self)`. No new result carries a scope. The retired case
+`@_lifetime(self: copy self)`. Internal retirement results carry scopes with their
+original dependencies; only the outer factory Result must be owned. The retired case
 holds accesses until the activation callback ends even after logical teardown.
 `CounterReturnedWorkspaces` remains an owned-only route: explicitly constrain
-G/C/R/H to Copyable and Escapable on its declaration and initializer; the scoped
-route returns an owned report/check count instead. `withBacking` is removed from
+G/C/R/H to Copyable and Escapable on its declaration and initializer. Also move
+the existing pipeline `returnWorkspaces(checks:)` member into an extension with
+those same owned constraints; leaving it on the unconstrained scoped pipeline
+would still require constructing an inadmissible owned result. The scoped route
+returns an owned report/check count instead. `withBacking` is removed from
 supported callers and replaced by an owned measurement operation; no callback
 exposes the capability types. Compiler rejection of a required declaration is
 B1 and cannot be repaired by omitting a dependence.
+
+For active retirement, the host completes the existing stop/drain and
+quiescence sequence, including release of the independent cache ticket at its
+existing pre-quiescence point, then consumes the
+coordinator's `takeQuiescedOpportunity()` Optional. It consumes the resulting
+pipeline through `retireQuiescedStorage()` into the retired case. Failed/inert
+activation instead consumes supplied storage through `retireInertStorage()`.
+These operations transfer semantic/geometry/Interaction values exactly once;
+they do not create an alias by borrowing a field from a soon-destroyed carrier.
+The remaining model/root/value/control scopes end only after their required
+cleanup. `resetAfterQuiescence()` retains the existing semantic reset, geometry
+reset and Interaction `resetAllStorage()` order and failure disposition.
+Static and Dynamic host retirement need equivalent transfers. Exact Optional
+consumption, partial moves and lifetime unions remain B1; no scoped route may
+reuse `CounterReturnedWorkspaces`, copy private fields or drop a dependency to
+make retirement compile.
+The generic retirement carrier and transfer members are internal to the trusted
+counter fixture module so its separate host/pipeline files can use them. Concrete
+P08 adapters and their constructors remain file-local to the storage assembly.
 
 ### Complete carrier obligation
 
@@ -577,6 +633,7 @@ current declarations already work:
 | CounterPipelineOwner and both initializer routes | Same complete constraints and lifetime list; private geometry/Interaction; operation-only access; consume onward within session |
 | Static/Dynamic coordinator, host state and live host | Audit every generic constraint, conformance, stored optional and move; propagate session plus activation-span dependence through consuming constructors and mutating transitions |
 | CounterReturnedWorkspaces / callback results | Owned native route stays separate; scoped Embedded route returns only owned checks/report values, never geometry/Interaction/host through current escaping return type |
+| Pipeline returnWorkspaces / supplied and host retirement | Owned-return member is available only with owned G/C/R/H; scoped retirement consumes supplied or quiesced pipeline into CounterRetiredStorage, including the coordinator Optional and every dependency |
 | withBacking / all measurement helpers | Return bounded owned measurements; remove adapter exposure from supported surface; any retained internal borrowing callback proves no escaping return/capture |
 | Optional/enum/tuple/generic wrappers and closures | Carry same lifetime or reject construction; no erased Any/existential wrapper, collection or stored closure fallback; no new nonescapable associated type |
 
@@ -718,6 +775,30 @@ alone does not prove it. Moves and retired host cases preserve that same token
 dependence. B1 must prove exchanged adapters cannot escape the common owner even
 through generic/Optional paths.
 
+For this concrete P08 candidate, compatible means **equal immutable logical
+capacity within each exchanged pair**, each covering the configured action or
+hit limit. Candidate records must also cover the action limit. Unequal physical
+reservations are permitted only when both cover that same logical capacity;
+their full retained bytes remain accounted. Initialization rejects unequal
+pairwise logical capacities or an undersized reservation before any session.
+It never clamps a configured workload limit. This rule applies to the new P08
+adapters; it does not silently restrict existing owned bank constructors.
+Equal logical pair capacities keep the validated capacity stable when roles
+change, as SPEC-013 requires. Allowing logical capacities to move with unequal
+banks would need a different audit contract; copying bank contents would add
+work at commit. Neither alternative is selected for this finite candidate.
+
+An exchange moves the complete role descriptor, including the bank address and
+any bank-local count/extent metadata held in the adapter. Moving only a pointer
+while leaving its count behind would misinterpret the newly selected bank.
+Logical capacity and common-session provenance remain invariant. No allocation,
+bank copy, revalidation failure or recoverable return is introduced between
+accepted offer and the two exchanges/revision update. The session excludes
+observers/reentry throughout that operation; this is serialized publication,
+not a claim of a hardware-atomic multiword swap. Refusal/discard performs no
+exchange. The existing finishCandidate preflight and failure precedence remain
+required even after successful storage initialization.
+
 The checked physical initialization stage is separate from withP08Storage:
 
 ```swift
@@ -735,7 +816,11 @@ fileprivate func withP08Storage<Result>(
 The physical owner's private initial state has final reserved regions but no
 initialized objects or live access. initializeP08Backing validates all capacities,
 alignment and disjointness before initialization. It records each successful
-typed geometry/bank/control initialization in a private fixed-capacity inventory.
+typed geometry/bank initialization in a private fixed-capacity inventory. That
+inventory and the owner's lifecycle flag are physical bookkeeping; Interaction's
+phase/revision/key-pool control is held once in the scoped state. Existing host
+control is supplied separately through its own lifetime input, not initialized
+a second time as part of this inventory.
 On failure it destroys precisely that initialized prefix in reverse order,
 clears the inventory and returns an owned failure; no session exists yet.
 Success leaves the complete validated initialized inventory and no live borrow.
@@ -743,9 +828,39 @@ withP08Storage requires that successful state, acquires the exclusive session
 without fallible initialization, and invokes its body once. Callback operations
 report failure through ordinary owned result/report values (the generic Result
 cannot carry scoped payloads). Library cleanup resolves begun candidates and
-ends accesses before releasing the borrow on every normal/owned-failure return.
+ends accesses before releasing the borrow on every normal/owned-failure return,
+with responsibilities assigned below.
 No throwing-body cleanup promise, scoped error payload, trap recovery guarantee
 or new exception mechanism is made. Exact inventory and field map remain B2.
+
+The consuming callback owns the transferred session/host. The outer factory
+cannot subsequently call methods on that consumed state. Therefore the closed
+trusted assembly body must install structured cleanup around the live host
+before activation and before any owned-failure early return. That cleanup owns
+stop/drain, candidate resolution, pins/registrations, retirement and reset;
+the storage factory owns only the enclosing physical borrow and its completion.
+Dropping a noncopyable value does not itself prove semantic teardown. Audit each
+body/early-return path; do not claim a compiler negative test proves cleanup.
+Failure before host construction releases only the scopes actually acquired.
+
+| Physical owner state | Permitted next action and cleanup owner |
+| --- | --- |
+| Reserved, no initialized objects | Checked initializer validates and initializes; failure unwinds its recorded prefix and returns to reserved |
+| Initialized and idle | Factory may lend one session; repeated initialization is invalid and must not overwrite live objects |
+| Session active | Trusted assembly body owns logical cleanup; owner cannot reinitialize, destroy or lend again |
+| Body finished, all access scopes ended | Factory returns to initialized/idle only after quiescence and complete reset; physical bank objects remain initialized |
+| Initialized/idle, final release | Physical owner destroys its inventory once in reverse initialization order, then releases regions |
+
+A subsequent session is a fresh host activation, never continuation of the old
+Interaction transaction. Previous committed records, counts, revision, gesture
+capture and phase metadata cannot survive into a fresh state machine. Complete
+reset occurs after quiescence while the retiring host still holds its accesses;
+canonical initial role assignment is safe only after all five banks are empty.
+Host/model generation issuance continues to obey existing stale-action rules;
+resetting banks does not authorize reusing an old generation or callback.
+If cleanup cannot establish these conditions, reuse/release is forbidden and the
+existing invariant-failure disposition applies; no factory success or recovery
+from a trap is claimed. B2 must show these transitions for both profiles.
 
 Compile-time lifetime/copy checks and access control cover only the structural
 API boundary. Swift may diagnose overlapping inout statically or use runtime
@@ -846,6 +961,17 @@ No new capture bank, larger RAM/stack/flash ceiling, reduced identity/corpus lim
 or unaccounted rollback copy is proposed. Changed specialization/dispatch text
 must be measured from the actual target image. Fit remains unproved.
 
+The existing `counterMeasureInteraction` derives inline bytes from
+`MemoryLayout<C/R/H>` and obtains retained storage through `withBacking`.
+Substituting small adapter layouts into that formula would omit their physical
+banks. The candidate instead takes physical extents from the backing owner's
+validated owned inventory and logical counts/capacities from owned state
+measurements. The fixture combines those facts without exporting bank access or
+making GiftUIInteraction depend on counter/profile measurement types. It counts
+key bytes within physical records once, and handles/control separately. B2 must
+reconcile this result to actual retained regions across role exchanges; a small
+adapter size is never a physical-bank measurement.
+
 ## Alternatives
 
 | Direction | Strength | Cost / reason not selected as this draft's candidate |
@@ -898,6 +1024,7 @@ assert semantic failure causes rather than arbitrary diagnostics. Required pairs
 | One exclusive activation, mutation through named methods | Second activation, owner mutation/rebinding/release or overlapping inout while first live: exclusivity/lifetime violation |
 | Synchronous nonescaping work, no capture transfer | Escaping closure, task/Sendable transfer or async suspension with access: unsupported API/non-Sendable/lifetime violation |
 | End scopes before backing destruction; owned native workspaces still return | Pass scoped access through CounterReturnedWorkspaces or stored Optional.take return: incompatible constraints or lifetime escape |
+| Consume quiesced coordinator Optional into scoped retirement inside the owning callback; retire inert supplied storage after activation failure | Return the internal carrier beyond semantic/storage lifetime or the retired host beyond activation-span lifetime; call owned-only returnWorkspaces with scoped G/C/R/H: lifetime/constraint rejection |
 | Copy complete owned identity into distinct banks | Retain semantic key reference instead: semantic/runtime conformance rejection, not claimed syntax proof |
 
 For closure/Optional negatives, include both direct and generic helper routes and
@@ -914,6 +1041,15 @@ once destruction by physical address. Record role/address mapping before and
 after exchange; verify no duplicate owner or adapter survives. Existing independent
 semantic/action/pixel controls and actual image/stack/zero-heap evidence remain
 required. These are future evidence obligations, not a new allowance.
+
+Include body early returns before host construction, after activation failure,
+during a failed candidate and after successful commit. Verify cleanup ownership
+and exactly-once resolution, then run a fresh session on the same initialized
+banks: no stale routing, old count or revision may reappear. Test unequal logical
+pair capacities as initialization failures, and unequal physical extents with
+equal sufficient logical capacities as valid constructions. Repeated exchanges
+with different record counts must preserve address/count correspondence, stable
+logical capacity and the original physical destruction/measurement inventory.
 
 ## Risks
 
@@ -936,6 +1072,10 @@ The independent initial review remains **not ready**. Response mapping:
 | R2 | Direct consumer table; scoped operation-only parameters, owned-only storing dispatcher/analyzer | Complete transitive/generated/client audit and cross-module B1 evidence; any counter need for retained scoped dispatcher is a new decision |
 | R3 | One common actual-owner session lifetime on all concrete adapters; restricted paired exchange | Token/constructor/exchange propagation and physical provenance under B1/B2 |
 | R4 | Nonthrowing callback with owned failures; separate checked physical init and prefix cleanup | Exact initializer/inventory/teardown realization and fault-path proof under B2 |
+| V1 (revision review) | Scoped consuming retirement carrier and owned-only returnWorkspaces member | Full inert/active/Optional/reset lifetime proof under B1 |
+| V2 (revision review) | Explicit trusted-body cleanup and physical-owner/session state transitions | Early-return, repeated-session and partial-failure proof under B2 |
+| V3 (revision review) | Equal logical pair capacities, complete descriptor exchange and physical-owner measurement | Unequal-reservation, repeated-swap and ledger reconciliation under B2 |
+| V4 (revision review) | RFC approval precedes ADR acceptance and Spec amendments | Human selection/evidence disposition remains B4 |
 
 These are candidate choices, not approved decisions or a claim that the review's
 findings have been independently closed. All remaining questions below are
@@ -946,13 +1086,16 @@ findings have been independently closed. All remaining questions below are
   approved Swift 6.4. In particular prove protocol Self suppressions, state
   conformance, consumed generic lifetime union, Optional moves, existing
   coordinator constraints and exclusive factory closure behavior, R1 conditional
-  owned conformances, R2 intermediate consumers and R3 common-session exchange.
+  owned conformances, R2 intermediate consumers, R3 common-session exchange and
+  the scoped retirement/owned-return separation above.
   Distinguish static/access-control failures from runtime exclusivity checks. This needs
   separately authorized bounded evidence; existing patterns alone are insufficient.
 - **B2 — Exact physical realization:** Provide the five-bank typed initialization,
   control-owner, final geometry storage and destruction inventory replacing the
   initialized old slot. Prove disjointness, partial failure and swap semantics;
-  name every changed binding/initializer/deinitializer/audit site. No raw offset
+  name every changed binding/initializer/deinitializer/audit site. Include the
+  cleanup owner for each return path, repeat-session reset and the physical-bank
+  measurement replacing the old adapter-size formula. No raw offset
   layout or exact byte promise is adopted here.
 - **B3 — Narrow necessity and migration:** Independent review must compare the
   candidate with an ownership-preserving fixture-only design and identify the
@@ -960,9 +1103,12 @@ findings have been independently closed. All remaining questions below are
   portable contract change is necessary or sufficient for P08 stack fit.
 - **B4 — Authority and validation disposition:** Maintainer chooses whether to
   pursue this candidate after independent review, including a bounded way to
-  resolve B1/B2 under closed budgets. Approval requires a new additive ownership
-  ADR (or explicit supersession if review finds a conflict), then reviewed exact
-  Spec amendments. No architectural acceptance is inferred from preparing this RFC.
+  resolve B1/B2 under closed budgets. Resolve the evidence and migration blockers
+  before requesting RFC approval. After human RFC approval, extract a proposed
+  additive ownership ADR (or explicit supersession if review finds a conflict),
+  obtain its acceptance, then obtain approval of exact Spec amendments and prepare
+  ready plans before implementation. ADR acceptance is not a prerequisite for approving
+  its source RFC. No architectural acceptance is inferred from preparing this RFC.
 
 ## Deferred and Follow-up Work
 
@@ -990,7 +1136,7 @@ Exact proposed downstream impact, **not applied**:
 | Artifact | Proposed change | Existing obligation retained |
 | --- | --- | --- |
 | SPEC-011 Types/APIs and lifecycle | Explicit scoped/noncopyable Self on three storage and three operation protocols; scoped state/owned-key carrier constraints, restricted construction/access, exact role exchange | Complete independently owned keys, accepted-offer commit, refusal/discard, exact identities/generations and bounded infallible resolution |
-| SPEC-013 storage / coordinator contracts | Carrier constraints and lifetime dependence through actual Static/Dynamic coordinator uses; typed physical-owner accounting and session cleanup | Equal bounds/outcomes, zero-heap Static, phase/pin/publication order and complete resource ledger |
+| SPEC-013 storage / coordinator contracts | Carrier constraints through actual Static/Dynamic coordinator and retirement uses; typed physical-owner accounting, capacity invariants and assigned session cleanup | Equal bounds/outcomes, zero-heap Static, phase/pin/publication order and complete resource ledger |
 | SPEC-015 host construction/lifetime and HC-RD-002/003 evidence | Supplied/host geometry+Interaction dependence, no scoped returned-workspace path, physical slot/init/deinit inventory, full negative matrix | Validation before activation, exact construction inputs, no stale dispatch, backing last and unchanged target limits |
 | P08 plan/design/evidence | Only after approved contracts: map tasks to adopted declarations and explicit separately authorized validation | P08/R07/T8.1 remain open; P09–P12 and hardware unaffected; historical budgets/stop guards remain closed |
 
