@@ -36,6 +36,9 @@ target_milestone: ITERATION-003
 ## Summary
 
 **Draft candidate, not an approved amendment or permission to implement.**
+The [independent initial review](../iterations/iteration-003-review/rfc-015-initial-review.md)
+at `5770d266` found R1–R4. The response below selects draft corrections; it does
+not change the immutable review verdict or establish compiler acceptance.
 Prepare one narrow P08 direction: stable typed physical owners lend exclusive,
 compiler-bounded storage access to a noncopyable, nonescapable geometry and
 Interaction carrier chain. Interaction retains authority over its transaction;
@@ -109,8 +112,10 @@ Candidate requirements below use MUST to describe the proposed contract only.
 - P08-SO-001: Every physical initialized object has exactly one backing owner,
   one initialization/deinitialization responsibility and an accounted region.
 - P08-SO-002: Every supported safe client path carrying access depends on all
-  underlying owners. Copy, escape, use after consume, concurrent transfer and
-  overlapping mutable access must fail through types/access control/exclusivity.
+  underlying owners. Types reject copy, lifetime escape and use after consume;
+  access control rejects forging/extraction. Overlapping access is excluded by
+  structural borrowing where provable and Swift runtime exclusivity otherwise;
+  library session/alias rules also exclude reentry and untracked physical aliases.
 - P08-SO-003: Interaction owns transaction metadata and complete bounded copied
   keys independently of semantic-bank lifetime. No storage accessor exports a
   mutable bank, owner ticket, pointer or lifetime-erased adapter.
@@ -171,12 +176,18 @@ owners without merging their semantic responsibilities.
 | Backend/platform integrator | Its endpoint/transport and supplied region ownership | Validated host composition, stop/drain | Forge framework storage capability or bypass live-bank exclusivity |
 | Trusted library bridge | Binding/initialization code and private adapters | Unsafe access only inside actual owning borrows | Treat pointer-descriptor lifetime as pointee proof |
 
-Storage protocols are package implementation contracts, not external conformance
-extension points. Their conformances, unsafe constructors and generic factories
-belong to reviewed trusted library/fixture code. A backend author's safe client
+The whole package implementation, including other modules that can name package
+protocols and generic initializers, is trusted. Swift does not seal those protocols
+against in-package conformances. Storage protocols are not outside-package
+conformance extension points. Their conformances, unsafe constructors and generic
+factories belong to reviewed trusted library/fixture code. A backend author's safe client
 API accepts validated concrete configuration/owners, never an arbitrary conformer
 that claims disjointness. Future public integration must preserve this boundary
-or obtain its own reviewed contract. Arbitrary explicitly unsafe code can violate
+or obtain its own reviewed contract. The actual P08 storage entry is the
+`fileprivate withP08Storage` factory: only the trusted fixture assembly invokes
+it; the outside-package client surface exposes no storage factory or adapter.
+Any future untrusted in-package caller requires an explicitly restricted entry;
+package visibility alone is not that restriction. Arbitrary explicitly unsafe code can violate
 memory safety; this RFC makes no promise to prevent that.
 
 ### Type enforcement and concrete syntax
@@ -209,8 +220,9 @@ The factory retains the actual storage borrows around invocation. Its private
 pointer initializer is safe only through that restricted call path. These
 patterns establish neither a P08 generic storage composition nor its stack cost.
 
-**Proposed, uncompiled declaration shapes:** bodies/witnesses/throwing failure
-transport implementations are deliberately absent. Intended interface signatures
+**Proposed, uncompiled declaration shapes:** bodies and witness implementations
+are deliberately absent. The proposed storage callback is nonthrowing; failures
+are owned values and physical initialization is a separate checked stage. Intended interface signatures
 and lifetime constraints are fixed below; compiler acceptance and implementation
 proof remain approval blocker B1, not assumed implementation details.
 
@@ -315,14 +327,19 @@ This is a proposal to implement scoped borrowing via concrete finite adapters,
 not a blanket addition of suppressions. `P08StorageSession` and every mutable
 adapter MUST be `~Copyable, ~Escapable`, have private storage fields and no
 client-callable initializer, pointer conversion, `_read`/`_modify` accessor or
-raw descriptor. The factory MUST hold actual disjoint typed borrows, call the
-body once synchronously and finish cleanup before releasing them. It must not
+raw descriptor. The factory MUST hold actual disjoint typed borrows, call the nonthrowing
+body once synchronously and finish cleanup before releasing them. Every adapter
+is constructed from one common actual backing-owner session lifetime, not
+independently scoped bank lifetimes; see R3 below. It must not
 return a scope borrowed merely from local pointer descriptors. Any nested unsafe
 callback must enclose all uses. The initializer's lifetime propagation must
 include every bank; omitting one is a failed contract test.
 
 `consuming` transfers the unique access capability, not backing. `borrowing`
-permits only read operations; `mutating`/`inout` grants exclusive operation access.
+prevents consuming or mutating that value itself; it does not prevent a method
+from mutating pointer/reference-backed data. Reviewed concrete methods and hidden
+mutable capabilities enforce semantic read-only access. `mutating`/`inout` grants
+exclusive value access, subject to compile-time and runtime enforcement below.
 No adapter offers a `borrowed()` method that duplicates mutable authority. Scalar
 measurement, Rect and complete identity/action records may return as owned values.
 No blanket Sendable or `@unchecked Sendable` conformance is allowed on session,
@@ -354,7 +371,11 @@ where C: InteractionCandidateRecordStorage & ~Copyable & ~Escapable,
     private var candidateCommittedRecords: R
     private var committedRecords: R
     private var committedHitRegions: H
-    // Existing owned phase/count/revision/error metadata remains here once.
+    private enum Phase: UInt8 { case idle, staging, readyForOffer }
+    private var limits: InteractionLimits?
+    private var phase: Phase = .idle
+    private var candidateError: InteractionError?
+    private var committedPresentationRevision: PresentationRevision?
     @_lifetime(copy candidateRecords, copy candidateHitRegions,
                copy candidateCommittedRecords, copy committedRecords,
                copy committedHitRegions)
@@ -374,6 +395,14 @@ where C: InteractionCandidateRecordStorage & ~Copyable & ~Escapable,
       H.Identity == SemanticCompleteIdentity {
     package typealias Identity = SemanticCompleteIdentity
     private var state: InteractionState<C, R, H>
+    private let maximumComponentsPerKey: UInt16
+    private let maximumComponents: UInt32
+    private var configuredComponentsPerKey: UInt16
+    private var configuredComponents: UInt32
+    private var candidateComponents: UInt32 = 0
+    package private(set) var committedComponents: UInt32 = 0
+    private var isStaging: Bool = false
+    private var failure: InteractionError?
     @_lifetime(copy state)
     package init?(state: consuming InteractionState<C, R, H>,
                   maximumComponentsPerKey: UInt16, maximumComponents: UInt32)
@@ -509,7 +538,8 @@ uses the full list above, with existing owned `limits: RuntimeProfileLimits` and
 pipeline. Owned arguments add no borrowed lifetime.
 
 Static and Dynamic coordinators already declare all retained Binding/Admission/
-Opportunity generics with `~Copyable & ~Escapable`, private storage, and an
+Opportunity generics with `~Copyable & ~Escapable`, package admission/opportunity
+getters with private setters, and an
 initializer `@_lifetime(copy binding, copy admission, copy opportunity)` taking
 all three `consuming`. Preserve that exact constructor chain; the Dynamic
 specialization uses its existing Dynamic binding/admission and the same scoped
@@ -550,6 +580,82 @@ current declarations already work:
 | withBacking / all measurement helpers | Return bounded owned measurements; remove adapter exposure from supported surface; any retained internal borrowing callback proves no escaping return/capture |
 | Optional/enum/tuple/generic wrappers and closures | Carry same lifetime or reject construction; no erased Any/existential wrapper, collection or stored closure fallback; no new nonescapable associated type |
 
+### Owned-state compatibility choice — R1
+
+Choose conditional Copyable and Escapable conformances for **both** existing
+state types; do not introduce a duplicated owned state machine. These are
+uncompiled candidate declarations modeled on the existing conditional extensions
+in [HostPresetBootstrap.swift](../../Sources/GiftUIHostConfiguration/HostPresetBootstrap.swift).
+The maintained single-field pattern is evidence of spelling, not proof of this
+five-field/initializer composition.
+
+```swift
+extension InteractionState: Copyable
+where C: Copyable & ~Escapable, R: Copyable & ~Escapable,
+      H: Copyable & ~Escapable {}
+extension InteractionState: Escapable
+where C: Escapable & ~Copyable, R: Escapable & ~Copyable,
+      H: Escapable & ~Copyable {}
+extension InteractionOwnedKeyState: Copyable
+where C: Copyable & ~Escapable, R: Copyable & ~Escapable,
+      H: Copyable & ~Escapable {}
+extension InteractionOwnedKeyState: Escapable
+where C: Escapable & ~Copyable, R: Escapable & ~Copyable,
+      H: Escapable & ~Copyable {}
+```
+
+The base declarations retain all protocol/Identity equalities above. State's
+five C/R/H fields are the only lifetime-bearing fields. Its Phase, optional
+InteractionLimits, optional InteractionError and optional PresentationRevision
+are ordinary owned Copyable/Escapable values. OwnedKeyState's state field is
+conditionally owned under the same constraints; all UInt16/UInt32 counters,
+Bool staging flag and optional InteractionError are owned. No session, pointer,
+closure or extra lease field is silently added to either generic state. All
+stored fields are listed in the candidate declarations above.
+
+The consuming state initializer and its five-input lifetime union are unchanged;
+when all five inputs are owned Escapable values that union must impose no scoped
+result restriction. The failable OwnedKeyState initializer consumes state and
+inherits its dependence; its Optional result must be conditionally escapable
+when state is owned and remain scoped otherwise. B1 must prove both cases and
+copy semantics, not only type aliases. CounterReturnedWorkspaces explicitly
+requires G/C/R/H: Copyable & Escapable, hence its stored state uses these
+conditional conformances. Its constructor remains consuming for geometry/state.
+No concrete scoped adapter satisfies either owned constraint. If the compiler
+cannot express these exact conformances or initialization/result rules, **R1
+remains an approval blocker under B1**; no separate owned duplication or lifetime
+erasure is preauthorized.
+
+### Direct consumer dispositions — R2
+
+This adopts the bounded inventory from the immutable initial review; it is not
+an exhaustive generated/test/transitive compiler audit. Paths below are under
+`Sources/<Module>/`. Operation-only functions borrow/inout existing state and
+return owned values; each named generic parameter explicitly adds both
+`~Copyable & ~Escapable`, preserving its existing protocol and Identity equalities.
+
+| Module / files | Chosen candidate disposition |
+| --- | --- |
+| GiftUIInteraction: InteractionStorage.swift, InteractionValues.swift, InteractionState.swift, InteractionOwnedKeyState.swift | Six scoped-admitting protocols and the conditional state route above. Both withBacking callbacks are replaced by owned measurements; migrate measurement callers |
+| GiftUIInteraction: ExecutionGestureAdapter.swift | down/move/up use `Resolver: InteractionGestureResolver & ~Copyable & ~Escapable`; resolver is borrowed, gesture returns remain owned |
+| GiftUIRuntimeCore: RuntimeRecordInteractionBridge.swift | append/appendProjected add explicit Candidate/Committed/Hits scoped permissions; dispatch adds `Records: InteractionCommittedActionView & ~Copyable & ~Escapable` to its borrowed operation parameter; all Model/RootIdentity/Action/role constraints and owned returns remain |
+| GiftUIRuntimeCore: RuntimeRecordCanvasInteractionBridge.swift | append adds the same Candidate/Committed/Hits permissions and existing complete-identity equalities; no retained scoped callback |
+| GiftUIRuntimeCore: RuntimeInteractionCandidateTransaction.swift | build adds `Interaction: InteractionCandidateBuilder & ~Copyable & ~Escapable`; preserves existing inout argument and owned result |
+| GiftUIRuntimeCore: RuntimeInteractionCandidateCoordinator.swift | build and discardCandidates receive that same Interaction constraint; other owned occurrence/observable/generation constraints stay unchanged |
+| GiftUIRuntimeCore: RuntimeInteractionCandidateResolution.swift | resolve receives that same Interaction constraint; generation allocator/owned outcomes remain unchanged |
+| GiftUIRuntimeCore: RuntimeInteractionDispatcher.swift | **Owned-only.** Retained Records explicitly require InteractionCommittedActionView & Copyable & Escapable; Handler and TargetAccess remain their existing owned Copyable/Escapable conformers and Model equality. Ordinary stored fields/non-consuming initializer and InteractionDispatcher conformance remain; no seventh operational protocol relaxation |
+| GiftUIRuntimeStatic / GiftUIRuntimeDynamic: StaticInteractionStorage.swift, DynamicInteractionStorage.swift | Existing owned banks and Static/StaticSix/Dynamic state aliases use R1 conditional conformances; same limits/allocations accounting |
+| GiftUIRuntimeStatic / GiftUIRuntimeDynamic: StaticRuntimeExecutionCoordinator.swift, DynamicRuntimeExecutionCoordinator.swift | Preserve scoped constructor union and explicit constraints. admission/opportunity are package getters with private setters, not wholly private; scoped getter/consume results cannot escape. Include consuming `takeQuiescedOpportunity() -> Opportunity?` with `@_lifetime(copy self)` in Optional/retirement proof |
+| SignalAnalyzerTargetHost: DynamicSignalAnalyzerActionDispatcher.swift, StaticSignalAnalyzerActionDispatcher.swift, StaticSignalAnalyzerNRFEmbeddedInteractionOwner.swift | **Owned-only** generic operational consumers/conformer; add explicit Copyable/Escapable bounds if needed after protocol relaxation. No borrowed analyzer architecture selected |
+| SignalAnalyzerTargetHost: DynamicSignalAnalyzerPresentationPipeline.swift, StaticSignalAnalyzerNRFApplicationStorage.swift, StaticSignalAnalyzerNRFPresentationCommitter.swift, StaticSignalAnalyzerNRFInteractionHandler.swift, StaticSignalAnalyzerNRFApplicationInputOwner.swift, StaticSignalAnalyzerNRFInteractionCandidateProducer.swift | **Owned-only** aliases, pointer and inout paths retain existing storage semantics through R1; withInteraction<Result> remains owned-state/non-escaping callback and ordinary owned Result. Validate pointer lifetime and no scoped adapter substitution |
+
+The counter uses operation-only RuntimeRecordInteractionBridge.dispatch with
+borrowed scoped Records, not the storing RuntimeInteractionDispatcher. If the
+actual counter audit finds it must retain a scoped Records dispatcher, stop for
+an explicit new decision on that carrier/conformance; do not expand this draft
+by relaxing InteractionDispatcher. Other tests/generated clients remain B3 audit
+obligations, not assumed compatibility.
+
 The proposed initializers use the existing `@_lifetime(copy ...)` pattern for
 consumed scoped values: explicitly include `copy geometry, copy interaction`
 alongside all existing dependencies. Scope-valued read results use
@@ -572,8 +678,9 @@ rather than erase lifetime at that boundary.
    All existing construction graph backing inputs remain explicit under ADR-038.
 3. Initialize before activation; on partial failure, unwind only successfully
    initialized/acquired values, in reverse acquisition order. End scoped users
-   before destroying physical backing. A throwing callback has the same cleanup
-   obligations; no Optional.take path may leave an untracked initialized bank.
+   before destroying physical backing. The storage callback is nonthrowing and
+   returns only owned reports/failures; no Optional.take path may leave an
+   untracked initialized bank.
 4. During activation, exclusive backing access persists. Frame semantic/model
    borrows and frame pins remain independent obligations from SPEC-013/015;
    storage session is not a model pin. End candidate semantic borrows at their
@@ -583,6 +690,75 @@ rather than erase lifetime at that boundary.
    registrations under existing rules, make callbacks unavailable, end host/
    coordinator/access lifetimes, then deinitialize physical objects once.
    Teardown methods alone do not release the Swift borrow; scope completion does.
+
+### Common session, exclusivity and checked initialization — R3/R4
+
+Choose one immutable private `P08SessionLifetime: ~Escapable` token per exclusive
+actual backing-owner borrow. It may be copied only as immutable lifetime/
+provenance evidence, never mutable authority. Every concrete geometry/C/R/H
+adapter constructor has `@_lifetime(copy sessionLifetime)` and takes that common
+token as `borrowing P08SessionLifetime`; its private bank descriptor is selected
+by the same trusted factory. The token must depend on the actual owner's typed
+borrow enclosing the whole callback, not merely a borrowed pointer local. Exact
+token construction and compiler propagation are B1/B2 obligations, not proven
+syntax. No independently created adapter enters the state initializer through
+the concrete client entry. Only that factory constructs the complete five-access
+state; it checks distinct physical bank identities and stores same-session
+provenance in each concrete adapter.
+
+The concrete `exchangeContents(with:)` witnesses are called only by the private
+state-held prepared/committed R pair and candidate/committed H pair. They require
+same-session provenance, distinct banks and compatible validated capacities;
+checks precede ready-for-offer, so commit stays non-failing. Every adapter keeps
+the common owner/session lifetime unchanged when its role pointer exchanges.
+Physical addresses may change roles but cannot acquire a longer independent
+lifetime. Cross-session exchange is unavailable through the client entry and is
+a trusted implementation invariant, checked before commit; the generic protocol
+alone does not prove it. Moves and retired host cases preserve that same token
+dependence. B1 must prove exchanged adapters cannot escape the common owner even
+through generic/Optional paths.
+
+The checked physical initialization stage is separate from withP08Storage:
+
+```swift
+// Nonthrowing candidate signature; failure is an ordinary owned value.
+fileprivate func initializeP08Backing(
+    _ backing: inout P08TypedBackingOwner
+) -> P08BackingInitializationFailure?
+// Existing fixed callback signature is deliberately nonthrowing:
+fileprivate func withP08Storage<Result>(
+    backing: inout P08TypedBackingOwner,
+    _ body: (consuming P08StorageSession) -> Result
+) -> Result
+```
+
+The physical owner's private initial state has final reserved regions but no
+initialized objects or live access. initializeP08Backing validates all capacities,
+alignment and disjointness before initialization. It records each successful
+typed geometry/bank/control initialization in a private fixed-capacity inventory.
+On failure it destroys precisely that initialized prefix in reverse order,
+clears the inventory and returns an owned failure; no session exists yet.
+Success leaves the complete validated initialized inventory and no live borrow.
+withP08Storage requires that successful state, acquires the exclusive session
+without fallible initialization, and invokes its body once. Callback operations
+report failure through ordinary owned result/report values (the generic Result
+cannot carry scoped payloads). Library cleanup resolves begun candidates and
+ends accesses before releasing the borrow on every normal/owned-failure return.
+No throwing-body cleanup promise, scoped error payload, trap recovery guarantee
+or new exception mechanism is made. Exact inventory and field map remain B2.
+
+Compile-time lifetime/copy checks and access control cover only the structural
+API boundary. Swift may diagnose overlapping inout statically or use runtime
+exclusivity enforcement; B1 must identify which for every negative and pinned
+host/Embedded configuration. Trusted code also rejects reentrant activation and
+preserves exclusive session state before invoking callbacks. Dynamic owners
+must not expose shared mutable reference aliases or COW-buffer descriptors while
+scoped access is active; any owned copy must be independent before entering the
+exclusive factory. Physical disjointness, retained reference aliases, callback
+quiescence and same-session bank provenance require runtime validation plus
+trusted implementation review/B2 evidence. Absence of Sendable proves none of
+those physical properties. No unchecked or disabled-exclusivity fallback is
+permitted if target settings cannot enforce the selected rules.
 
 ### Replacing the live Interaction slot and commit semantics
 
@@ -597,7 +773,8 @@ The old 2,412-byte size is evidence, not an approved new layout budget or proof
 that the replacement fits. This exact realization is B2.
 
 Commit may exchange the two R role handles and the two H role handles only
-within the same exclusive session. It MUST NOT transfer the physical destruction
+within the same exclusive common-owner session under R3, never across independently
+borrowed handles or sessions. It MUST NOT transfer the physical destruction
 responsibility or alias banks. `exchangeContents(with:)` must preserve the
 existing logical exchange meaning, capacities and distinct initialized objects.
 After finish preflight, accepted offer commits both role pairs and presentation
@@ -623,8 +800,8 @@ No public API is changed by this draft. Proposed package protocols and concrete
 carriers have source/constraint effects across modules. Existing owned stores
 remain viable storage implementations; their use must not force borrowed paths
 back to Copyable/Escapable. A separate owned convenience path may remain only if
-it cannot accept or extract scoped access values. Exact conditional Copyable/
-Escapable compatibility, if desired, requires B1 evidence; it is not assumed.
+it cannot accept or extract scoped access values. The exact conditional Copyable/Escapable route selected under R1 requires B1
+evidence; its compiler acceptance is not assumed.
 External authors receive concrete safe operations, not the trusted conformance
 surface. Public exposure later belongs to RFC-013 and its own approval.
 
@@ -729,7 +906,7 @@ positive twin of every negative. A compiler accepting one required escape fails
 the design; no unchecked wrapper repair or compiler bug claim is automatic.
 
 After architecture/Spec approval and separate implementation authorization, test
-partial initialization at each acquisition point, activation failure, throwing
+partial initialization at each acquisition point, activation failure, owned-failure
 callback cleanup, repeated sessions, teardown/quiescence, unequal owner
 identity and capacities, repeated swaps, refusal/discard, first-excess pools,
 identity/generation exhaustion, stale actions, semantic-bank reuse and exact
@@ -751,13 +928,26 @@ can violate teardown unless audited by physical owner and actual phase.
 
 ## Open Questions
 
-All are **approval blockers**, not deferred decisions:
+The independent initial review remains **not ready**. Response mapping:
+
+| Finding | Draft correction | Evidence still missing |
+| --- | --- | --- |
+| R1 | Conditional Copyable/Escapable state route, full stored-field and initializer constraints | Actual compiler acceptance, owned-return/copy and scoped-negative pairs under B1 |
+| R2 | Direct consumer table; scoped operation-only parameters, owned-only storing dispatcher/analyzer | Complete transitive/generated/client audit and cross-module B1 evidence; any counter need for retained scoped dispatcher is a new decision |
+| R3 | One common actual-owner session lifetime on all concrete adapters; restricted paired exchange | Token/constructor/exchange propagation and physical provenance under B1/B2 |
+| R4 | Nonthrowing callback with owned failures; separate checked physical init and prefix cleanup | Exact initializer/inventory/teardown realization and fault-path proof under B2 |
+
+These are candidate choices, not approved decisions or a claim that the review's
+findings have been independently closed. All remaining questions below are
+**approval blockers**, not deferred decisions:
 
 - **B1 — Expressible complete API:** Implement the specified interface fragments and
   cross-module positive/negative pairs for every carrier listed above under
   approved Swift 6.4. In particular prove protocol Self suppressions, state
   conformance, consumed generic lifetime union, Optional moves, existing
-  coordinator constraints and exclusive factory closure behavior. This needs
+  coordinator constraints and exclusive factory closure behavior, R1 conditional
+  owned conformances, R2 intermediate consumers and R3 common-session exchange.
+  Distinguish static/access-control failures from runtime exclusivity checks. This needs
   separately authorized bounded evidence; existing patterns alone are insufficient.
 - **B2 — Exact physical realization:** Provide the five-bank typed initialization,
   control-owner, final geometry storage and destruction inventory replacing the
