@@ -175,3 +175,28 @@ Compiler cause unresolved; STOP for separate Strong review. No automatic repair,
 additional build, source/runtime/workload/limit relaxation or hardware action.
 All closed historical guards and current two-consecutive-unproductive rule are
 preserved. Current backing image invocation1/1 consumed; P08 remains open.
+
+## Phase-split pre-edit dispatch and test-seam finding — entry678e5880
+
+Sol6.1 High / Strong; C3/R3, HC-RD-003/P08/T8.1/R07. Read exact independent
+backing-result review. Mapped two @inline(never) private helpers: rejection
+phase takes inout owner, borrowed canonical/foreign model/root scopes, both
+control pointers, immutable audit/report/snapshots and returns only Int18; full
+lifecycle phase takes inout same selected host, same pointer/report/failure
+selector/join count and returns only Int. Owner consumption into preset factory,
+all enclosing backing/activation lifetimes, proposal/assertion order, profiles/
+IDs/slots and teardown stay unchanged. CounterHostProbe.swift is the only
+authorized source file. No source edit/build/check/repair has run.
+
+Pre-edit unchanged-checker seam analysis identifies necessary additional test
+maintenance: Static negative generator lines133–142 textually inject escape
+inside old in-method lifecycle block. Required top-level helper move removes
+the needle (pure-text ValueError); retaining indentation mis-scopes escaped.
+Exact old/new proposed seam, hashes, argument/lifetime map and finite tests are
+in backing-realization/phase-split/seam-finding.md and seam-analysis.json.
+Additional needed file is check-spec-015-counter.py for the exact Static
+escape-injection call seam, preserving existing independent lifetime/provenance
+oracle. No generator change is made. STOP for separate Strong review before
+widening file handoff; this is ordinary test-maintenance scope disposition, not
+a claimed product/contract decision or human approval requirement. Guards and
+all unconsumed current allowances are preserved; prior image remains failed.

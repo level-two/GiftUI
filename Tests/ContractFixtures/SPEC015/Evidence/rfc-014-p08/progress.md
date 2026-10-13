@@ -1,6 +1,13 @@
 # RFC-014 P08 execution receipt — 2026-10-11
 
-**Current P08 checkpoint — current routes/link PASS; nested gross-stack FAIL, 2026-10-13.**
+**Current P08 checkpoint — phase-split test seam pending review, 2026-10-13.**
+Independent678e5880 permits the candidate inout helper split. [Pre-edit finding](remaining-implementation/r07-firmware-recipe/production-attempt/backing-realization/phase-split/seam-finding.md)
+identifies necessary Static escape-generator maintenance outside its one-file
+handoff. No source/check/build ran; source38ba440d four-route/link passes and
+72208-byte nested stack failure remain current. Separate Strong review next;
+no human contract gate, guard reset, P09 or hardware action.
+
+**Historical P08 checkpoint — current routes/link PASS; nested gross-stack FAIL, 2026-10-13.**
 Source38ba440d has current nativeStatic/Dynamic1,349,555/1,349,501 zero failures,
 Pi28/28 and nRF26/26 compile routes. [Exact bounded result](remaining-implementation/r07-firmware-recipe/production-attempt/backing-realization/result.md) records the
 single supported nRF build actualexit0, ARMv7E-M/VFP, flash298932/RAM152320,

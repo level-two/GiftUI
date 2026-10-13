@@ -1,0 +1,19 @@
+{
+  "kind": "read-only source-text seam analysis, not compiled candidate",
+  "entry": "678e5880",
+  "unchanged_source": "38ba440d",
+  "fixture_sha256": "ad9125ed3abfcdfc31689c9acba9312ebf0af5a638ea280a428b87098e086ede",
+  "checker_sha256": "594e18b1538d28f3008e7f9a1296f8796e337aaebdc4436ad08c109db70dd13b",
+  "old_generator_lines": [
+    133,
+    142
+  ],
+  "original_lifecycle_anchor_found": true,
+  "normalized_top_level_helper_projection": "ValueError: substring not found",
+  "unchanged_indentation_alternative": "Anchor would target private helper, but escaped remains declared only in rejectCounterHostEscape method. Generated injection crosses lexical scopes; it is not the required lifetime escape diagnostic.",
+  "helper_after_package_root_alternative": "Generator truncates before package func p08CounterHost; private helper definitions would be omitted from generated negative file.",
+  "compiler_invocations": 0,
+  "source_edits": 0,
+  "build_invocations": 0,
+  "repair_or_guard_reset": false
+}

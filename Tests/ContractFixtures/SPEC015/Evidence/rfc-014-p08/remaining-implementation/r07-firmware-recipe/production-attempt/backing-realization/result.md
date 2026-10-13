@@ -69,3 +69,9 @@ The two-consecutive-unproductive-repair rule is preserved, not reset or
 silently declared exhausted. Separate Strong review must assess the exact
 remaining closure and any smallest contract-supported continuation. SPEC-015
 remains implementing and its plan active; P09–P12 and hardware are untouched.
+
+Independent678e5880 accepts the narrowed evidence and authorizes a candidate
+fixture phase split. Pre-edit analysis then found required Static escape-test
+generator maintenance outside that one-file handoff. [Exact finding and proposed
+seam](phase-split/seam-finding.md) is stopped for separate Strong review. No
+source edit, compiler/check/build invocation, guard reset or human contract gate.
