@@ -25,6 +25,11 @@ superseded_by: null
 
 # SPEC-013 Implementation Plan
 
+The [RFC-015 downstream package](../iterations/iteration-003-review/rfc-015-p08-handoff.md)
+proposes ownership/accounting amendments and conditional P08 work. This is navigation
+only: ADR/Spec approval and application remain pending; current task dispositions
+and validation budgets are unchanged.
+
 ## Current consuming-owner resumption — 2026-10-11
 
 P07 production integration is explicitly resumed using the passing bench direction;

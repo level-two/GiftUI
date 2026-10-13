@@ -1,5 +1,11 @@
 # RFC-014 bounded implementation sequence — 2026-10-10
 
+**RFC-015 downstream package — 2026-10-13 (navigation only).** RFC-015 is
+approved; [the conditional P08 handoff](rfc-015-p08-handoff.md) contains proposed
+ADR-039, exact SPEC-011/013/015 amendments and ordered ownership work. Their
+acceptance/application gates remain pending. No active task, failed result or
+closed execution allowance below changes through this link.
+
 **Current P08 checkpoint — one optimized-IR capture failed, 2026-10-13.**
 Unchangedsource63e717d1; ed985668 prescribed one frozen firmware owner capture.
 [Exact failure](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/remaining-implementation/r07-firmware-recipe/production-attempt/backing-realization/phase-split/ir-capture/result.md) records actualexit-5, emptylogs, no isolatedIR/module

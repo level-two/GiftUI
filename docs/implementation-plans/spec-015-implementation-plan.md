@@ -22,6 +22,11 @@ superseded_by: null
 
 # SPEC-015 Implementation Plan
 
+The [RFC-015 downstream package](../iterations/iteration-003-review/rfc-015-p08-handoff.md)
+proposes ownership amendments and a conditional P08 sequence. This is navigation
+only: ADR/Spec approval and application remain pending; T8.1 and closed validation
+budgets below are unchanged.
+
 ## RFC-014 implementation readiness — 2026-10-10
 
 **Ready under [explicit Spec approval](../iterations/iteration-003-review/rfc-014-spec-approval.md).**

@@ -18,6 +18,7 @@ related_adrs:
   - ADR-035
   - ADR-036
   - ADR-038
+  - ADR-039
 related_specs:
   - SPEC-011
   - SPEC-013
@@ -35,6 +36,12 @@ target_milestone: ITERATION-003
 # RFC-015: P08 Scoped Storage Ownership
 
 ## Summary
+
+Downstream extraction: [proposed ADR-039](../adrs/adr-039-scoped-storage-ownership.md),
+[exact Spec amendments](../iterations/iteration-003-review/rfc-015-spec-amendments.md)
+and [conditional P08 handoff](../iterations/iteration-003-review/rfc-015-p08-handoff.md).
+These await their separate acceptance/approval gates; RFC approval does not reopen
+closed implementation or validation budgets.
 
 **Approved architectural direction on 2026-10-13; downstream contracts and
 implementation acceptance remain separate gates.** The

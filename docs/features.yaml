@@ -17,6 +17,8 @@ features:
     # PROPOSAL-007 accepted; RFC-013 draft; RFC-014 approved 2026-10-10 under conditional finalization.
     # RFC-015 approved 2026-10-13 under conditional human instruction after fresh readiness review.
     # Approval: docs/iterations/iteration-003-review/rfc-015-readiness-and-approval.md; B1–B4 are downstream obligations.
+    # ADR-039 proposed; exact SPEC-011/013/015 amendments and conditional P08 handoff await approval.
+    # Package: docs/iterations/iteration-003-review/rfc-015-p08-handoff.md; closed execution budgets preserved.
     # SPIKE-075 completed: bounded native declarations/copy/function-return controls pass; series closed.
     # Lexical-block control remains inconclusive; full carrier/target/resource proof unclaimed; no successor budget.
     # FW-037: ITERATION-004 revision 3 I4-06 / I4-AC-007 ownership assessment; P08 blockers remain in RFC-015.
@@ -51,6 +53,7 @@ features:
       - ADR-035
       - ADR-036
       - ADR-037
+      - ADR-039
     specs: []
     dependencies:
       - giftui-mvp-architecture

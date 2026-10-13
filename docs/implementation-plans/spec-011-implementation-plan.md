@@ -23,6 +23,11 @@ superseded_by: null
 
 # SPEC-011 Implementation Plan
 
+The [RFC-015 downstream package](../iterations/iteration-003-review/rfc-015-p08-handoff.md)
+proposes scoped Interaction amendments and conditional P08 work. This is navigation
+only: ADR/Spec approval and application remain pending; current task dispositions
+and validation budgets are unchanged.
+
 ## RFC-014 implementation readiness — 2026-10-10
 
 **Ready under [explicit Spec approval](../iterations/iteration-003-review/rfc-014-spec-approval.md).**
