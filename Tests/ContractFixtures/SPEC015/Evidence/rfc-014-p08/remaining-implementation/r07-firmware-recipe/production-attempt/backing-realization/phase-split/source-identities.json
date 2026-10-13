@@ -1,0 +1,4 @@
+{
+  "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostProbe.swift": "b44729dbbad4cc2af1f72e7b03c99568c01ad4017383fb1b6f0b4f24efd9a2e6",
+  "scripts/contracts/check-spec-015-counter.py": "9f6e5c2381e52894358213caf7f433efa44f3b401e0d310194a5e881345f5b25"
+}

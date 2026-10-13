@@ -1,0 +1,9 @@
+{
+  "argv": [
+    "scripts/format-swift.sh"
+  ],
+  "exit": 0,
+  "session": 79351,
+  "source": "63e717d1",
+  "working_tree_after": "clean"
+}

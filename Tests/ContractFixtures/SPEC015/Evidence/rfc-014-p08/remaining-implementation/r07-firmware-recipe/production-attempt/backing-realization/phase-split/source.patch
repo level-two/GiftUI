@@ -1,0 +1,286 @@
+commit 63e717d1a1763e72647b7ef3200db9a6061d4e5b
+Author:     Yauheni Lychkouski <370903+level-two@users.noreply.github.com>
+AuthorDate: Tue Oct 13 08:31:29 2026 +0200
+Commit:     Yauheni Lychkouski <370903+level-two@users.noreply.github.com>
+CommitDate: Tue Oct 13 08:31:29 2026 +0200
+
+    refactor: split P08 host fixture phases with inout helpers
+
+diff --git a/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/remaining-implementation/r07-firmware-recipe/production-attempt/backing-realization/phase-split/source-invariants.json b/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/remaining-implementation/r07-firmware-recipe/production-attempt/backing-realization/phase-split/source-invariants.json
+new file mode 100644
+index 00000000..8bca20f8
+--- /dev/null
++++ b/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/remaining-implementation/r07-firmware-recipe/production-attempt/backing-realization/phase-split/source-invariants.json
+@@ -0,0 +1,16 @@
++{
++  "generator_seam_counts": {
++    "owned_projection": 1,
++    "method_name": 1,
++    "escaped_declaration": 1,
++    "lifecycle_call": 1,
++    "post_scope_return": 1
++  },
++  "copy_negative_unchanged": true,
++  "Dynamic_generator_unchanged": true,
++  "all_exact_diagnostic_tuples_unchanged": true,
++  "assertion_multiset_equal": true,
++  "assertion_count": 59,
++  "two_reviewed_helpers_before_package_root": true,
++  "no_compiler_or_checker_invocation": true
++}
+diff --git a/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/remaining-implementation/r07-firmware-recipe/production-attempt/receipt.md b/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/remaining-implementation/r07-firmware-recipe/production-attempt/receipt.md
+index 8279c3ec..2a9dfa5e 100644
+--- a/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/remaining-implementation/r07-firmware-recipe/production-attempt/receipt.md
++++ b/Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/remaining-implementation/r07-firmware-recipe/production-attempt/receipt.md
+@@ -239,3 +239,10 @@ image uses fresh nRF receipt via existing supported build. Actual nested helper/
+ construction/enclosing/initializer/corpus/click frames including alignment and
+ applicable IRQ overlap must fit27648; smaller locals alone are insufficient.
+ RAM196608/flash1048576/heap0 and all prior qualifications stay. No P09/hardware.
++
++Two-file source step ready: helper extraction preserves59original assertion/
++guard lines and original phase order; same owner/host are passed inout with
++original scopes. Source-text Static generator checks all five exact full-line
++seams once (owned projection, method, declaration, lifecycle call, post-scope
++return). Copy/Dynamic generation and every exact diagnostic tuple unchanged.
++Recorded in phase-split/source-invariants.json. No compiler/check/build yet.
+diff --git a/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostProbe.swift b/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostProbe.swift
+index a8f38ef0..bd7c9b72 100644
+--- a/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostProbe.swift
++++ b/Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostProbe.swift
+@@ -46,88 +46,13 @@ extension CounterSelectedStaticProfileStorage {
+                                             var owner = CounterHostOwner(supplied: consume supplied, activationSpan: activationBacking.span, assembly: assembly, failAfterRuntime: failAfterRuntime)
+                                             let expected = counterJoinSnapshot(pointer)
+                                             let foreignExpected = counterJoinSnapshot(foreignControl)
+-                                            var joinChecks = 0
+-                                            let rejected0 = owner.constructRuntimeAndEndpoint(models: models, root: root, control: foreignControl, audit: audit, report: assembly.report)
+-                                            precondition(rejected0 == .failure(.configuration(.invalidWakeIntegration), progress: .init()))
+-                                            precondition(owner.constructions == 0 && owner.activationStep == 0)
+-                                            precondition(counterJoinSnapshot(pointer) == expected && counterJoinSnapshot(foreignControl) == foreignExpected)
+-                                            joinChecks += 3
+-                                            let rejected1 = owner.constructRuntimeAndEndpoint(models: foreignModels, root: foreignRoot, control: pointer, audit: audit, report: assembly.report)
+-                                            precondition(rejected1 == .failure(.configuration(.invalidModelTarget), progress: .init()))
+-                                            precondition(owner.constructions == 0 && owner.activationStep == 0)
+-                                            precondition(counterJoinSnapshot(pointer) == expected && counterJoinSnapshot(foreignControl) == foreignExpected)
+-                                            joinChecks += 3
+-                                            let rejected2 = owner.constructRuntimeAndEndpoint(models: models, root: foreignRoot, control: pointer, audit: audit, report: assembly.report)
+-                                            precondition(rejected2 == .failure(.configuration(.invalidModelTarget), progress: .init()))
+-                                            precondition(owner.constructions == 0 && owner.activationStep == 0)
+-                                            precondition(counterJoinSnapshot(pointer) == expected && counterJoinSnapshot(foreignControl) == foreignExpected)
+-                                            joinChecks += 3
+-                                            let rejected3 = owner.constructRuntimeAndEndpoint(models: models, root: root, control: pointer, audit: counterJoinAudit(audit, profile: .dynamic), report: assembly.report)
+-                                            precondition(rejected3 == .failure(.configuration(.profileMismatch), progress: .init()))
+-                                            precondition(owner.constructions == 0 && owner.activationStep == 0)
+-                                            precondition(counterJoinSnapshot(pointer) == expected && counterJoinSnapshot(foreignControl) == foreignExpected)
+-                                            joinChecks += 3
+-                                            let rejected4 = owner.constructRuntimeAndEndpoint(models: models, root: root, control: pointer, audit: counterJoinAudit(audit, profile: audit.profile), report: assembly.report)
+-                                            precondition(rejected4 == .failure(.configuration(.invalidWorkload), progress: .init()))
+-                                            precondition(owner.constructions == 0 && owner.activationStep == 0)
+-                                            precondition(counterJoinSnapshot(pointer) == expected && counterJoinSnapshot(foreignControl) == foreignExpected)
+-                                            joinChecks += 3
+-                                            let rejected5 = owner.constructRuntimeAndEndpoint(models: models, root: root, control: pointer, audit: audit, report: counterJoinReport(assembly.report))
+-                                            precondition(rejected5 == .failure(.configuration(.invalidWakeIntegration), progress: .init()))
+-                                            precondition(owner.constructions == 0 && owner.activationStep == 0)
+-                                            precondition(counterJoinSnapshot(pointer) == expected && counterJoinSnapshot(foreignControl) == foreignExpected)
+-                                            joinChecks += 3
++                                            let joinChecks = counterCheckRejectedBindings(owner: &owner, models: models, root: root, foreignModels: foreignModels, foreignRoot: foreignRoot, control: pointer, foreignControl: foreignControl, audit: audit, report: assembly.report, expected: expected, foreignExpected: foreignExpected)
+                                             #if hasFeature(Embedded)
+                                             var host = SignalAnalyzerPresetHostInstances.nrf52840Static(report: assembly.report, owner: consume owner)!
+                                             #else
+                                             var host = SignalAnalyzerPresetHostInstances.macOSStatic(report: assembly.report, owner: consume owner)!
+                                             #endif
+-                                            precondition(host.lifecycleState == .valid && host.owner.constructions == 0 && pointer.pointee.finalized == 0)
+-                                            precondition(host.runOpportunity() == .invalidLifecycle)
+-                                            var count = 2 + joinChecks
+-                                            let activation = host.activate()
+-                                            if failAfterRuntime || pointer.pointee.idleQuiesceMode != 0 {
+-                                                precondition(activation == .failure(.configuration(.arithmeticOverflow)) && host.lifecycleState == .failed)
+-                                                let failedStep: UInt8 = failAfterRuntime ? 1 : pointer.pointee.idleQuiesceMode
+-                                                precondition(host.owner.activationStep == failedStep && host.owner.constructions == 1)
+-                                                precondition(pointer.pointee.teardowns == 1 && pointer.pointee.finalized == (failedStep < 3 ? 0 : failedStep < 5 ? 1 : 2))
+-                                                precondition(pointer.pointee.unavailable && !pointer.pointee.inputGate.inputIsEligible)
+-                                                precondition(pointer.pointee.admission.pendingStateCount == 0)
+-                                                precondition(pointer.pointee.observationsInstalled == (failedStep >= 4 ? 1 : 0) && pointer.pointee.observationsDetached == (failedStep >= 4 ? 1 : 0))
+-                                                count += 6
+-                                            } else {
+-                                                precondition(activation == .active && host.owner.activationStep == 7 && host.owner.constructions == 1)
+-                                                precondition(pointer.pointee.finalized == 2 && pointer.pointee.commits == 1 && pointer.pointee.committedRecords == 2)
+-                                                precondition(pointer.pointee.admission.pendingStateCount == 1)
+-                                                let wakeControl = CounterHostControl(pointer: pointer)
+-                                                guard case .wait(untilMicroseconds: 250000) = counterServiceHost(at: 0, host: &host, control: wakeControl) else { preconditionFailure("counter actual wake pacing") }
+-                                                guard case .cycle(.admittedWork, .cycle(.success)) = counterServiceHost(at: 250000, host: &host, control: wakeControl) else { preconditionFailure("counter actual paced wake") }
+-                                                precondition(pointer.pointee.finalized == 3 && pointer.pointee.admission.pendingStateCount == 0)
+-                                                guard case .noWork = counterServiceHost(at: 250000, host: &host, control: wakeControl) else { preconditionFailure("counter no idle polling") }
+-                                                count += 7 + counterHostCorpus(host: &host, control: pointer)
+-                                            }
+-                                            precondition(host.activate() == .failure(.invariant) && host.owner.constructions == 1)
+-                                            host.teardown()
+-                                            precondition(host.lifecycleState == .quiescent && !host.controller.assemblyReportRuntimeUseIsValid && host.owner.teardownStep == 8)
+-                                            precondition(pointer.pointee.teardowns == 1 && pointer.pointee.committedRecords == 0 && !pointer.pointee.hasRoot)
+-                                            host.teardown()
+-                                            precondition(host.owner.teardownStep == 8 && host.runOpportunity() == .invalidLifecycle)
+-                                            precondition(host.assemblyReport == assembly.report)
+-                                            let selectedFailure: UInt8 = failAfterRuntime ? 1 : pointer.pointee.idleQuiesceMode
+-                                            let expectedApplication = selectedFailure == 1 ? 0 : 1
+-                                            let expectedObservation = selectedFailure == 0 || selectedFailure >= 4 ? 1 : 0
+-                                            let expectedCallback = selectedFailure == 0 || selectedFailure >= 6 ? 1 : 0
+-                                            precondition(pointer.pointee.applicationConstructions == expectedApplication)
+-                                            precondition(pointer.pointee.applicationCallbacks == expectedCallback && pointer.pointee.reentrantApplicationRejections == expectedCallback)
+-                                            precondition(pointer.pointee.observationsInstalled == expectedObservation && pointer.pointee.observationsDetached == expectedObservation)
+-                                            precondition(pointer.pointee.stoppedApplicationChecks >= expectedApplication)
+-                                            var stoppedAdmission = CounterAdmission(borrowing: pointer)
+-                                            precondition(stoppedAdmission.submit(stateChange: 9).result == .unavailable)
+-                                            precondition(pointer.pointee.admission.pendingStateCount == 0)
+-                                            precondition(!pointer.pointee.inputGate.inputIsEligible)
+-                                            let rejectedInput = pointer.pointee.inputGate.submit(phase: .down, position: .init(x: 0, y: 0), source: .init(rawValue: 0), observedPresentationRevision: pointer.pointee.runtime.committedPresentation, isMalformed: false, priorPhysicalSequenceIsComplete: true, to: &stoppedAdmission)
+-                                            precondition(rejectedInput == .sourceQuiesced(.inputUnavailable))
+-                                            return count + 13
++                                        return counterRunHostLifecycle(host: &host, control: pointer, report: assembly.report, failAfterRuntime: failAfterRuntime, joinChecks: joinChecks)
+                                         }
+                                     }
+                                 }
+@@ -141,6 +66,106 @@ extension CounterSelectedStaticProfileStorage {
+     }
+ }
+ 
++@inline(never)
++private func counterCheckRejectedBindings(
++    owner: inout CounterHostOwner,
++    models: borrowing ObservableModelScope<CounterOwnedModel, CounterModelSchema>,
++    root: borrowing ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>,
++    foreignModels: borrowing ObservableModelScope<CounterOwnedModel, CounterModelSchema>,
++    foreignRoot: borrowing ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>,
++    control pointer: UnsafeMutablePointer<CounterControl>,
++    foreignControl: UnsafeMutablePointer<CounterControl>,
++    audit: RuntimeStorageAudit, report: HostAssemblyReport,
++    expected: CounterJoinSnapshot, foreignExpected: CounterJoinSnapshot
++) -> Int {
++    var joinChecks = 0
++    let rejected0 = owner.constructRuntimeAndEndpoint(models: models, root: root, control: foreignControl, audit: audit, report: report)
++    precondition(rejected0 == .failure(.configuration(.invalidWakeIntegration), progress: .init()))
++    precondition(owner.constructions == 0 && owner.activationStep == 0)
++    precondition(counterJoinSnapshot(pointer) == expected && counterJoinSnapshot(foreignControl) == foreignExpected)
++    joinChecks += 3
++    let rejected1 = owner.constructRuntimeAndEndpoint(models: foreignModels, root: foreignRoot, control: pointer, audit: audit, report: report)
++    precondition(rejected1 == .failure(.configuration(.invalidModelTarget), progress: .init()))
++    precondition(owner.constructions == 0 && owner.activationStep == 0)
++    precondition(counterJoinSnapshot(pointer) == expected && counterJoinSnapshot(foreignControl) == foreignExpected)
++    joinChecks += 3
++    let rejected2 = owner.constructRuntimeAndEndpoint(models: models, root: foreignRoot, control: pointer, audit: audit, report: report)
++    precondition(rejected2 == .failure(.configuration(.invalidModelTarget), progress: .init()))
++    precondition(owner.constructions == 0 && owner.activationStep == 0)
++    precondition(counterJoinSnapshot(pointer) == expected && counterJoinSnapshot(foreignControl) == foreignExpected)
++    joinChecks += 3
++    let rejected3 = owner.constructRuntimeAndEndpoint(models: models, root: root, control: pointer, audit: counterJoinAudit(audit, profile: .dynamic), report: report)
++    precondition(rejected3 == .failure(.configuration(.profileMismatch), progress: .init()))
++    precondition(owner.constructions == 0 && owner.activationStep == 0)
++    precondition(counterJoinSnapshot(pointer) == expected && counterJoinSnapshot(foreignControl) == foreignExpected)
++    joinChecks += 3
++    let rejected4 = owner.constructRuntimeAndEndpoint(models: models, root: root, control: pointer, audit: counterJoinAudit(audit, profile: audit.profile), report: report)
++    precondition(rejected4 == .failure(.configuration(.invalidWorkload), progress: .init()))
++    precondition(owner.constructions == 0 && owner.activationStep == 0)
++    precondition(counterJoinSnapshot(pointer) == expected && counterJoinSnapshot(foreignControl) == foreignExpected)
++    joinChecks += 3
++    let rejected5 = owner.constructRuntimeAndEndpoint(models: models, root: root, control: pointer, audit: audit, report: counterJoinReport(report))
++    precondition(rejected5 == .failure(.configuration(.invalidWakeIntegration), progress: .init()))
++    precondition(owner.constructions == 0 && owner.activationStep == 0)
++    precondition(counterJoinSnapshot(pointer) == expected && counterJoinSnapshot(foreignControl) == foreignExpected)
++    joinChecks += 3
++    return joinChecks
++}
++
++@inline(never)
++private func counterRunHostLifecycle(
++    host: inout SignalAnalyzerPresetHostInstance<CounterHostOwner>,
++    control pointer: UnsafeMutablePointer<CounterControl>, report: HostAssemblyReport,
++    failAfterRuntime: Bool, joinChecks: Int
++) -> Int {
++    precondition(host.lifecycleState == .valid && host.owner.constructions == 0 && pointer.pointee.finalized == 0)
++    precondition(host.runOpportunity() == .invalidLifecycle)
++    var count = 2 + joinChecks
++    let activation = host.activate()
++    if failAfterRuntime || pointer.pointee.idleQuiesceMode != 0 {
++        precondition(activation == .failure(.configuration(.arithmeticOverflow)) && host.lifecycleState == .failed)
++        let failedStep: UInt8 = failAfterRuntime ? 1 : pointer.pointee.idleQuiesceMode
++        precondition(host.owner.activationStep == failedStep && host.owner.constructions == 1)
++        precondition(pointer.pointee.teardowns == 1 && pointer.pointee.finalized == (failedStep < 3 ? 0 : failedStep < 5 ? 1 : 2))
++        precondition(pointer.pointee.unavailable && !pointer.pointee.inputGate.inputIsEligible)
++        precondition(pointer.pointee.admission.pendingStateCount == 0)
++        precondition(pointer.pointee.observationsInstalled == (failedStep >= 4 ? 1 : 0) && pointer.pointee.observationsDetached == (failedStep >= 4 ? 1 : 0))
++        count += 6
++    } else {
++        precondition(activation == .active && host.owner.activationStep == 7 && host.owner.constructions == 1)
++        precondition(pointer.pointee.finalized == 2 && pointer.pointee.commits == 1 && pointer.pointee.committedRecords == 2)
++        precondition(pointer.pointee.admission.pendingStateCount == 1)
++        let wakeControl = CounterHostControl(pointer: pointer)
++        guard case .wait(untilMicroseconds: 250000) = counterServiceHost(at: 0, host: &host, control: wakeControl) else { preconditionFailure("counter actual wake pacing") }
++        guard case .cycle(.admittedWork, .cycle(.success)) = counterServiceHost(at: 250000, host: &host, control: wakeControl) else { preconditionFailure("counter actual paced wake") }
++        precondition(pointer.pointee.finalized == 3 && pointer.pointee.admission.pendingStateCount == 0)
++        guard case .noWork = counterServiceHost(at: 250000, host: &host, control: wakeControl) else { preconditionFailure("counter no idle polling") }
++        count += 7 + counterHostCorpus(host: &host, control: pointer)
++    }
++    precondition(host.activate() == .failure(.invariant) && host.owner.constructions == 1)
++    host.teardown()
++    precondition(host.lifecycleState == .quiescent && !host.controller.assemblyReportRuntimeUseIsValid && host.owner.teardownStep == 8)
++    precondition(pointer.pointee.teardowns == 1 && pointer.pointee.committedRecords == 0 && !pointer.pointee.hasRoot)
++    host.teardown()
++    precondition(host.owner.teardownStep == 8 && host.runOpportunity() == .invalidLifecycle)
++    precondition(host.assemblyReport == report)
++    let selectedFailure: UInt8 = failAfterRuntime ? 1 : pointer.pointee.idleQuiesceMode
++    let expectedApplication = selectedFailure == 1 ? 0 : 1
++    let expectedObservation = selectedFailure == 0 || selectedFailure >= 4 ? 1 : 0
++    let expectedCallback = selectedFailure == 0 || selectedFailure >= 6 ? 1 : 0
++    precondition(pointer.pointee.applicationConstructions == expectedApplication)
++    precondition(pointer.pointee.applicationCallbacks == expectedCallback && pointer.pointee.reentrantApplicationRejections == expectedCallback)
++    precondition(pointer.pointee.observationsInstalled == expectedObservation && pointer.pointee.observationsDetached == expectedObservation)
++    precondition(pointer.pointee.stoppedApplicationChecks >= expectedApplication)
++    var stoppedAdmission = CounterAdmission(borrowing: pointer)
++    precondition(stoppedAdmission.submit(stateChange: 9).result == .unavailable)
++    precondition(pointer.pointee.admission.pendingStateCount == 0)
++    precondition(!pointer.pointee.inputGate.inputIsEligible)
++    let rejectedInput = pointer.pointee.inputGate.submit(phase: .down, position: .init(x: 0, y: 0), source: .init(rawValue: 0), observedPresentationRevision: pointer.pointee.runtime.committedPresentation, isMalformed: false, priorPhysicalSequenceIsComplete: true, to: &stoppedAdmission)
++    precondition(rejectedInput == .sourceQuiesced(.inputUnavailable))
++    return count + 13
++}
++
+ package func p08CounterHost(write: CounterTiledPixelWrite? = nil, backing: UnsafeMutableRawBufferPointer? = nil) -> Int {
+     var models = ObservableModelOwnerNamespace()
+     var semantics = SemanticRecordOwnerNamespace()
+diff --git a/scripts/contracts/check-spec-015-counter.py b/scripts/contracts/check-spec-015-counter.py
+index 8c912233..150e2140 100644
+--- a/scripts/contracts/check-spec-015-counter.py
++++ b/scripts/contracts/check-spec-015-counter.py
+@@ -130,13 +130,19 @@ copy_negative = out / 'CounterHostCopyNegative.swift'
+ copy_negative.write_text('import GiftUIHostConfiguration\nfunc reject(_ host: borrowing SignalAnalyzerPresetHostInstance<CounterHostOwner>) { let duplicate = copy host; _ = duplicate }\n')
+ backing_negative = out / 'CounterHostBackingNegative.swift'
+ positive = (fixture / 'CounterHostProbe.swift').read_text().split('package func p08CounterHost(')[0]
+-positive = positive.replace('let ownedChecks = counterOwnedSchedulerCompatibility(assembly.report)', 'let ownedChecks = 0')
+-positive = positive.replace('runCounterHost(failAfterRuntime: Bool)', 'rejectCounterHostEscape(failAfterRuntime: Bool)')
+-positive = positive.replace('        guard case .valid(let audit)', '        var escaped: SignalAnalyzerPresetHostInstance<CounterHostOwner>? = nil\n        guard case .valid(let audit)', 1)
+-begin = positive.index('                                        precondition(host.lifecycleState')
+-end = positive.index('                                        return count + 13', begin) + len('                                        return count + 13')
+-positive = positive[:begin] + '                                        _ = host.activate()\n                                        escaped = consume host\n                                        return 1' + positive[end:]
+-positive = positive.replace('        return checks', '        var escapedOwner = escaped.take()!\n        _ = escapedOwner.runOpportunity()\n        escapedOwner.teardown()\n        return checks')
++static_negative_seam_counts = {}
++def replace_static_line(old, new, label):
++    global positive
++    lines = positive.splitlines()
++    count = lines.count(old)
++    static_negative_seam_counts[label] = count
++    assert count == 1, 'Static negative source seam absent/ambiguous: ' + label
++    positive = '\n'.join(new if line == old else line for line in lines) + '\n'
++replace_static_line('            let ownedChecks = counterOwnedSchedulerCompatibility(assembly.report)', '            let ownedChecks = 0', 'owned_projection')
++replace_static_line('    mutating func runCounterHost(failAfterRuntime: Bool) -> Int {', '    mutating func rejectCounterHostEscape(failAfterRuntime: Bool) -> Int {', 'method_name')
++replace_static_line('        guard case .valid(let audit) = audit(), let assembly = CounterHostAssembly.validate(audit, kind: counterStaticHostKind) else { preconditionFailure("counter valid-only host") }', '        var escaped: SignalAnalyzerPresetHostInstance<CounterHostOwner>? = nil\n        guard case .valid(let audit) = audit(), let assembly = CounterHostAssembly.validate(audit, kind: counterStaticHostKind) else { preconditionFailure("counter valid-only host") }', 'escaped_declaration')
++replace_static_line('                                        return counterRunHostLifecycle(host: &host, control: pointer, report: assembly.report, failAfterRuntime: failAfterRuntime, joinChecks: joinChecks)', '                                        _ = host.activate()\n                                        escaped = consume host\n                                        return 1', 'lifecycle_call')
++replace_static_line('            return checks + ownedChecks + 4', '            var escapedOwner = escaped.take()!\n            _ = escapedOwner.runOpportunity()\n            escapedOwner.teardown()\n            return checks + ownedChecks + 4', 'post_scope_return')
+ backing_negative.write_text(positive)
+ dynamic_backing_negative = out / 'CounterDynamicHostBackingNegative.swift'
+ dynamic_positive = (fixture / 'CounterDynamicHostProbe.swift').read_text().split('package func p08CounterDynamicHost()')[0] + '#endif\n'
+@@ -167,6 +173,7 @@ else:
+     execution = 'cross-compiled current selected counter host only; no target execution or linked-image claim'
+     (out / 'objects.list').write_text('\n'.join(map(str, [core / 'GiftUI.o', *sorted(out.glob('*.o'))])) + '\n')
+ receipt = dict(scope=__doc__, raster_realization="tiled" if is_target else args.raster_realization, profile=prior['profile'], selected_host_profile=args.profile, target_flags=flags, embedded_dynamic_escape_applicable=not is_embedded, compiler=str(compiler.relative_to(ROOT)), compiler_sha256=digest(compiler), runtime_build=str(base.relative_to(ROOT)), runtime_receipt_sha256=digest(base / 'result.json'), host_build=str(host.relative_to(ROOT)), host_receipt_sha256=digest(host / 'result.json'), inputs={str(p.relative_to(ROOT)): digest(p) for p in inputs}, commands=commands, checks=checks, execution=execution)
++receipt['static_negative_seam_counts'] = static_negative_seam_counts
+ receipt['artifacts'] = {str(p.relative_to(out)): dict(sha256=digest(p), bytes=p.stat().st_size) for p in out.iterdir() if p.is_file()}
+ (out / 'result.json').write_text(json.dumps(receipt, indent=2) + '\n')
+ print(execution.splitlines()[-1])

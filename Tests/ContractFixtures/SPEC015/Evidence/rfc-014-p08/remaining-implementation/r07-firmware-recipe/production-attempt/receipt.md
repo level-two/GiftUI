@@ -246,3 +246,11 @@ original scopes. Source-text Static generator checks all five exact full-line
 seams once (owned projection, method, declaration, lifecycle call, post-scope
 return). Copy/Dynamic generation and every exact diagnostic tuple unchanged.
 Recorded in phase-split/source-invariants.json. No compiler/check/build yet.
+
+Phase-split nativeStatic PASS source63e717d1, actualexit0,1349555zero failures,
+24/24checks;194inputs still match and five generatorseamcounts1. Formatter0.
+Fresh `.build/contracts/p08-counter-qo3vbsn0`; exact logs/negative/identities
+preserved underphase-split. Selected-model capacity interrupted after command
+completed; resumed same Sol6.1High from recorded result without rerun/model
+substitution/source change/guard reset. Remaining Dynamic/Pi/nRF each once,
+then supportedimage only on passes. No failure/repair occurred.

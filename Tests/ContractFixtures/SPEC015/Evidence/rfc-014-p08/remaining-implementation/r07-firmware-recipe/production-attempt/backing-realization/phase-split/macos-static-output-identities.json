@@ -1,0 +1,498 @@
+{
+  ".build/contracts/p08-counter-qo3vbsn0/P08CounterSchema.abi.json": {
+    "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+    "bytes": 149
+  },
+  ".build/contracts/p08-counter-qo3vbsn0/GiftUIExecution.log": {
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  ".build/contracts/p08-counter-qo3vbsn0/counter-model.log": {
+    "sha256": "42c84aa1bc859a14e0bad61b7d9454d811a22cba42cf141942e039a63c4f0722",
+    "bytes": 912
+  },
+  ".build/contracts/p08-counter-qo3vbsn0/P08CounterTable.o": {
+    "sha256": "19dc43308b37a37109ccbbd00e76875206ae4109c9d92d02cf82e70ab88e731d",
+    "bytes": 12248
+  },
+  ".build/contracts/p08-counter-qo3vbsn0/P08CounterTable.log": {
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  ".build/contracts/p08-counter-qo3vbsn0/GiftUIReferenceTextResources.log": {
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  ".build/contracts/p08-counter-qo3vbsn0/GiftUILayout.log": {
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  ".build/contracts/p08-counter-qo3vbsn0/GiftUIReferenceTextResources.swiftdoc": {
+    "sha256": "5b9ec28b8006d1ef6ab4fa01d3ed6ba5e09d65e51e94251294b726771da9fa54",
+    "bytes": 924
+  },
+  ".build/contracts/p08-counter-qo3vbsn0/P08CounterPresentation.o": {
+    "sha256": "741268d480961081f181a86a6d125a4d9ebf6ff72c853a7153bc0bbd526172b4",
+    "bytes": 39264
+  },
+  ".build/contracts/p08-counter-qo3vbsn0/P08CounterTable.swiftsourceinfo": {
+    "sha256": "1d399bf054a691595ca99e9d7d2f623f54afbf2eb3e87c271ea154032c699857",
+    "bytes": 2972
+  },
+  ".build/contracts/p08-counter-qo3vbsn0/P08CounterPresentation.log": {
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  ".build/contracts/p08-counter-qo3vbsn0/P08CounterRuntime.swiftmodule": {
+    "sha256": "666f09b4bf6e4d57ae25b44f7cac4e3b983a218586a3910651e78c5fa93efa9b",
+    "bytes": 1143488
+  },
+  ".build/contracts/p08-counter-qo3vbsn0/result.json": {
+    "sha256": "3ab6d0174a63db7e34896a5fd2bce07e1fd8a1ae4f25db863f24dad4ae7d8973",
+    "bytes": 463060
+  },
+  ".build/contracts/p08-counter-qo3vbsn0/GiftUISemanticCore.swiftmodule": {
+    "sha256": "f66d302f088b5ca50e42afcf2c8bd4484bfe5f9676a4575143e1a26bc083b826",
+    "bytes": 315728
+  },
+  ".build/contracts/p08-counter-qo3vbsn0/GiftUIRenderLowering.log": {
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  ".build/contracts/p08-counter-qo3vbsn0/GiftUILayout.o": {
+    "sha256": "983881c15547a3474c7ee9b8e0407c3a266701a740a40133c7b3a8d809f2ee5f",
+    "bytes": 137824
+  },
+  ".build/contracts/p08-counter-qo3vbsn0/GiftUISemanticCore.log": {
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  ".build/contracts/p08-counter-qo3vbsn0/GiftUIInteraction.swiftsourceinfo": {
+    "sha256": "47f288ac79a1a2e811b3b96606c6028e5e0bdf1b31cf6cd3ebb68687b037d7fd",
+    "bytes": 36452
+  },
+  ".build/contracts/p08-counter-qo3vbsn0/GiftUISemanticCore.swiftsourceinfo": {
+    "sha256": "f32974ce9f3f7a065afc117d9e9f3f68d1ed85faea187df0916a49a4aeb4a36d",
+    "bytes": 91536
+  },
+  ".build/contracts/p08-counter-qo3vbsn0/GiftUIDrawing.swiftmodule": {
+    "sha256": "18fd8e01c27b1289f3beaca2c794455622e9003ca89fcd66115c479e4afd578d",
+    "bytes": 105604
+  },
+  ".build/contracts/p08-counter-qo3vbsn0/GiftUIRenderCore.abi.json": {
+    "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+    "bytes": 149
+  },
+  ".build/contracts/p08-counter-qo3vbsn0/GiftUIRenderLowering.swiftsourceinfo": {
+    "sha256": "091854b3c3f5590eed0ec0aa9b5662a230a5a71a66568a0b4554546fa0bd71e4",
+    "bytes": 18492
+  },
+  ".build/contracts/p08-counter-qo3vbsn0/GiftUIRuntimeCore.swiftdoc": {
+    "sha256": "fd801775ac1f2cef4d70cc991745d39f0522ca7855ed356a87a3fbcb7947d5df",
+    "bytes": 2168
+  },
+  ".build/contracts/p08-counter-qo3vbsn0/GiftUIRuntimeDynamic.abi.json": {
+    "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+    "bytes": 149
+  },
+  ".build/contracts/p08-counter-qo3vbsn0/GiftUIRuntimeStatic.swiftmodule": {
+    "sha256": "2e8a5297c42d8018e772c6ffe28b8014f47da75f356eee49ea9c07ea91946449",
+    "bytes": 135464
+  },
+  ".build/contracts/p08-counter-qo3vbsn0/GiftUISemanticCore.swiftdoc": {
+    "sha256": "90dc08eaed2bb60b8cddd279717f0b481a07ce512ed6b6a68b3b63049ab005cb",
+    "bytes": 8288
+  },
+  ".build/contracts/p08-counter-qo3vbsn0/GiftUIHostConfiguration.log": {
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  ".build/contracts/p08-counter-qo3vbsn0/P08CounterPresentation.abi.json": {
+    "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+    "bytes": 149
+  },
+  ".build/contracts/p08-counter-qo3vbsn0/P08CounterTable.abi.json": {
+    "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+    "bytes": 149
+  },
+  ".build/contracts/p08-counter-qo3vbsn0/GiftUILayout.abi.json": {
+    "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+    "bytes": 149
+  },
+  ".build/contracts/p08-counter-qo3vbsn0/GiftUIRenderLowering.o": {
+    "sha256": "aded493889ab72870c7ac5175b7b0553d964fe6ae554b7adf390106b77d74dd2",
+    "bytes": 78864
+  },
+  ".build/contracts/p08-counter-qo3vbsn0/GiftUIDrawing.swiftdoc": {
+    "sha256": "211f7c78dc01779c87bc0cf44a04e8c84346fa01b0430e51dda90afd634b635e",
+    "bytes": 1496
+  },
+  ".build/contracts/p08-counter-qo3vbsn0/GiftUIExecution.swiftsourceinfo": {
+    "sha256": "39be610ffc8cbc3f529f974535bee56a78eba45df827465d7ce97799c17e3a47",
+    "bytes": 123836
+  },
+  ".build/contracts/p08-counter-qo3vbsn0/GiftUILayout.swiftmodule": {
+    "sha256": "5dceb9af95e4601603446f6f12f2bab6543b61cd44fe74bfd758676cf8a24859",
+    "bytes": 140836
+  },
+  ".build/contracts/p08-counter-qo3vbsn0/GiftUIRenderCore.log": {
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  ".build/contracts/p08-counter-qo3vbsn0/GiftUIRuntimeDynamic.swiftmodule": {
+    "sha256": "9fcdf624c85cea6622e2492dd3f6b88cd4afbf61fd956760d29b57ec42504514",
+    "bytes": 232864
+  },
+  ".build/contracts/p08-counter-qo3vbsn0/GiftUITextResources.swiftdoc": {
+    "sha256": "8ed36b56d14d932c81e660572a959cb99e70cb8b730b320c0172c499213a979c",
+    "bytes": 1720
+  },
+  ".build/contracts/p08-counter-qo3vbsn0/GiftUITextResources.log": {
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  ".build/contracts/p08-counter-qo3vbsn0/GiftUIRuntimeStatic.log": {
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  ".build/contracts/p08-counter-qo3vbsn0/GiftUILayout.swiftsourceinfo": {
+    "sha256": "405ea5bf2e7882652a0f7ff8b6d26e5029abfe71bf86b72ba77ce49ba513c549",
+    "bytes": 36152
+  },
+  ".build/contracts/p08-counter-qo3vbsn0/GiftUIRuntimeStatic.o": {
+    "sha256": "cc0c75b4cbfc6d16d7eb1f249ec02e58625339838005da98b992eed5fe1a0337",
+    "bytes": 275264
+  },
+  ".build/contracts/p08-counter-qo3vbsn0/P08CounterSchema.o": {
+    "sha256": "28dfb0a87bc0fa9b882080d8589bbec743dfebd031d2ee615cdbfbebe1a85f13",
+    "bytes": 9336
+  },
+  ".build/contracts/p08-counter-qo3vbsn0/GiftUIHostConfiguration.swiftdoc": {
+    "sha256": "518543d8aa4befbf770cb35d98a488b3f33cb089a3e555aa3cd52a94dfe7dab0",
+    "bytes": 784
+  },
+  ".build/contracts/p08-counter-qo3vbsn0/GiftUIInteraction.swiftmodule": {
+    "sha256": "4f7e516a5190f0b4a50f280e8e7ac5d6e6ecff7078476c75fa428f04eb338213",
+    "bytes": 134948
+  },
+  ".build/contracts/p08-counter-qo3vbsn0/GiftUIObservableState.log": {
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  ".build/contracts/p08-counter-qo3vbsn0/GiftUIObservableState.swiftdoc": {
+    "sha256": "0c26952c20af873979e8039ba5c6271b92bf957c8c9e366300b23d3df70eb307",
+    "bytes": 8732
+  },
+  ".build/contracts/p08-counter-qo3vbsn0/GiftUIDrawing.o": {
+    "sha256": "5ab9ce843887f2d4b1c31b912215af4f1dc6bda2adc8c8d199cf597a802ad88d",
+    "bytes": 131632
+  },
+  ".build/contracts/p08-counter-qo3vbsn0/P08CounterSchema.swiftmodule": {
+    "sha256": "94fab02b3b6d3716528a040d28d2b44218d76f4fbf9e2defd3c7e72193339106",
+    "bytes": 24984
+  },
+  ".build/contracts/p08-counter-qo3vbsn0/GiftUIObservableState.swiftmodule": {
+    "sha256": "2126a4cf2da75da67dc4e30bc69b8ece4f772ee2e59cf8440efd4ec761720ae8",
+    "bytes": 220256
+  },
+  ".build/contracts/p08-counter-qo3vbsn0/GiftUIExecution.o": {
+    "sha256": "70bd9fccc6e39b9c444394d9794e0cb10205f8adc9658c279a3b92c893e6d03b",
+    "bytes": 575576
+  },
+  ".build/contracts/p08-counter-qo3vbsn0/GiftUIRuntimeStatic.abi.json": {
+    "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+    "bytes": 149
+  },
+  ".build/contracts/p08-counter-qo3vbsn0/GiftUIInteraction.abi.json": {
+    "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+    "bytes": 149
+  },
+  ".build/contracts/p08-counter-qo3vbsn0/GiftUITextResources.o": {
+    "sha256": "ceca48c7a4e1a3dcd55da59e880233844c4f274d911ec71c67570d5a8f133145",
+    "bytes": 103264
+  },
+  ".build/contracts/p08-counter-qo3vbsn0/GiftUIRenderLowering.swiftmodule": {
+    "sha256": "fbca0191add721128eccb3dc71236efc1bf93bd366f287d77986ca212e9889f4",
+    "bytes": 78276
+  },
+  ".build/contracts/p08-counter-qo3vbsn0/GiftUIExecution.abi.json": {
+    "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+    "bytes": 149
+  },
+  ".build/contracts/p08-counter-qo3vbsn0/CounterTable.swift": {
+    "sha256": "9c1a50d90b57b9f625986cbb7a37fcefc56234bfb0f1e0b2a10abd7ab73efd54",
+    "bytes": 1393
+  },
+  ".build/contracts/p08-counter-qo3vbsn0/GiftUIHostConfiguration.swiftmodule": {
+    "sha256": "02784a3e01d4dfd899b607c1a76ce1d818d285d80dd10bc5eecfff4a4fe5e2ed",
+    "bytes": 515296
+  },
+  ".build/contracts/p08-counter-qo3vbsn0/P08CounterRuntime.abi.json": {
+    "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+    "bytes": 149
+  },
+  ".build/contracts/p08-counter-qo3vbsn0/GiftUIObservableState.o": {
+    "sha256": "3b6dcd374d46586389100d6b96e0e8c24479218f1ed578020d361313279feb73",
+    "bytes": 235968
+  },
+  ".build/contracts/p08-counter-qo3vbsn0/GiftUIRenderLowering.abi.json": {
+    "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+    "bytes": 149
+  },
+  ".build/contracts/p08-counter-qo3vbsn0/GiftUIRuntimeCore.abi.json": {
+    "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+    "bytes": 149
+  },
+  ".build/contracts/p08-counter-qo3vbsn0/counter-dynamic-host-backing.log": {
+    "sha256": "d873f65708e91756fbdaa8aa961fce9afd6c2a8946e14899f124e2643c86adb9",
+    "bytes": 12362
+  },
+  ".build/contracts/p08-counter-qo3vbsn0/GiftUIRenderCore.swiftdoc": {
+    "sha256": "9824cb07c32b5722a1928d05922b44dd0ad74e1ffe4a8d1f4b03d2f60c067570",
+    "bytes": 380
+  },
+  ".build/contracts/p08-counter-qo3vbsn0/GiftUIRuntimeDynamic.swiftdoc": {
+    "sha256": "736a31d984c7fbc68c05b5a8662e030bb355b4b4dbc3e57898f9fae124155a88",
+    "bytes": 4868
+  },
+  ".build/contracts/p08-counter-qo3vbsn0/GiftUIReferenceTextResources.swiftmodule": {
+    "sha256": "c9a1f8785e33c0381c0f7c5c0434f5a020d62bc53581a8f65a8f336c04c182ee",
+    "bytes": 1216024
+  },
+  ".build/contracts/p08-counter-qo3vbsn0/GiftUISemanticCore.abi.json": {
+    "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+    "bytes": 149
+  },
+  ".build/contracts/p08-counter-qo3vbsn0/P08CounterPresentation.swiftdoc": {
+    "sha256": "65fd59b043cbe222e88e65581f48c54d425c335304d73c8550513bf3971cc008",
+    "bytes": 388
+  },
+  ".build/contracts/p08-counter-qo3vbsn0/P08CounterTable.swiftdoc": {
+    "sha256": "cc020f27b9190ff407a99244647077d6c9c73651d5f6677c7b556c3934beffb9",
+    "bytes": 380
+  },
+  ".build/contracts/p08-counter-qo3vbsn0/GiftUILayout.swiftdoc": {
+    "sha256": "ecf335acc8af95a82c08ee02a9f933f7bb081e654f8724ba10c655227b3a6b05",
+    "bytes": 376
+  },
+  ".build/contracts/p08-counter-qo3vbsn0/execute.log": {
+    "sha256": "3a1f04ce37cc349c6986bb18c7b311f853fb97e952d9f924453279f961456f5a",
+    "bytes": 349775
+  },
+  ".build/contracts/p08-counter-qo3vbsn0/GiftUITextResources.swiftmodule": {
+    "sha256": "4278d49997ef76523535f92e878e700be3deced02bb88321a5efdfac71dac02b",
+    "bytes": 130848
+  },
+  ".build/contracts/p08-counter-qo3vbsn0/GiftUIRuntimeDynamic.swiftsourceinfo": {
+    "sha256": "f284aadb94173748c1c05579c217a7d07ad949b69cc7bf3725376c7d5eff7320",
+    "bytes": 52312
+  },
+  ".build/contracts/p08-counter-qo3vbsn0/GiftUIDrawing.abi.json": {
+    "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+    "bytes": 149
+  },
+  ".build/contracts/p08-counter-qo3vbsn0/P08CounterSchema.swiftsourceinfo": {
+    "sha256": "2c8e73fbb82702e31b0712ed19c09d88ab504c04ec78ad301743dba9e7743b5a",
+    "bytes": 2988
+  },
+  ".build/contracts/p08-counter-qo3vbsn0/GiftUIHostConfiguration.o": {
+    "sha256": "9c2cbc628bab2a0de68cf9daaa9aeebc1216b0819c5e712b0b15c362fcb1893c",
+    "bytes": 720432
+  },
+  ".build/contracts/p08-counter-qo3vbsn0/counter-lowering.log": {
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  ".build/contracts/p08-counter-qo3vbsn0/GiftUITextResources.abi.json": {
+    "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+    "bytes": 149
+  },
+  ".build/contracts/p08-counter-qo3vbsn0/GiftUIHostConfiguration.abi.json": {
+    "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+    "bytes": 149
+  },
+  ".build/contracts/p08-counter-qo3vbsn0/GiftUIRuntimeStatic.swiftsourceinfo": {
+    "sha256": "92cae138f4f2ffae7c9f8572907d4614fd0cbd97cb57e787416d3e4c9c124f0b",
+    "bytes": 28272
+  },
+  ".build/contracts/p08-counter-qo3vbsn0/GiftUIRuntimeCore.swiftmodule": {
+    "sha256": "83f17f0b8323eb02f7583cd281438e9a1026bdea0445a1911d20a1ac150868a3",
+    "bytes": 289136
+  },
+  ".build/contracts/p08-counter-qo3vbsn0/GiftUIExecution.swiftmodule": {
+    "sha256": "076658f1cbf6efe1e303b99f4c5867e333f93cf31349093ffcad5cb560785fa1",
+    "bytes": 623392
+  },
+  ".build/contracts/p08-counter-qo3vbsn0/P08CounterRuntime.swiftsourceinfo": {
+    "sha256": "9fa560111a17a683e04bd39672b065c312d0746df8c606c172744318d881a57b",
+    "bytes": 250768
+  },
+  ".build/contracts/p08-counter-qo3vbsn0/GiftUIObservableState.abi.json": {
+    "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+    "bytes": 149
+  },
+  ".build/contracts/p08-counter-qo3vbsn0/GiftUIRuntimeCore.o": {
+    "sha256": "199ba3a9387448d6b077ccb845f23a6350d6c28e236b837ee01e4964053c2d39",
+    "bytes": 313520
+  },
+  ".build/contracts/p08-counter-qo3vbsn0/GiftUIInteraction.swiftdoc": {
+    "sha256": "c9a63ab967e04418e12050448c4e8aaa15ebceae6856c5e507a1211f1cec1e4b",
+    "bytes": 2776
+  },
+  ".build/contracts/p08-counter-qo3vbsn0/GiftUIRuntimeStatic.swiftdoc": {
+    "sha256": "90a7be7ea08c7933976744fd36b4edc83b88c50a5b30940b42a02d75296d5cdb",
+    "bytes": 3248
+  },
+  ".build/contracts/p08-counter-qo3vbsn0/GiftUIObservableState.swiftsourceinfo": {
+    "sha256": "a25bfd729ffc02ad52bd8344a9f3f80aaff160e9b464008b14f73b7231804a1d",
+    "bytes": 56076
+  },
+  ".build/contracts/p08-counter-qo3vbsn0/GiftUIDrawing.log": {
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  ".build/contracts/p08-counter-qo3vbsn0/CounterDynamicHostBackingNegative.swift": {
+    "sha256": "b4467b09e4c0eb96287e7fe2c864cecb92529310f78b0f6709a2c81d113e999f",
+    "bytes": 7957
+  },
+  ".build/contracts/p08-counter-qo3vbsn0/GiftUIExecution.swiftdoc": {
+    "sha256": "c8e4232912f5d7519ccb64f39aa82c8f4eacb3ef786d8632736631ca2096f4bb",
+    "bytes": 380
+  },
+  ".build/contracts/p08-counter-qo3vbsn0/counter-host-copy.log": {
+    "sha256": "fcba3855d5393cdb6ec166aee00b7f665ce7758e47116409316637f2a58bac05",
+    "bytes": 1398
+  },
+  ".build/contracts/p08-counter-qo3vbsn0/P08CounterRuntime.swiftdoc": {
+    "sha256": "5772f473c108d1ceaddf22f7e03f1f6c30445b84aae7c80b610cb20c94f8f255",
+    "bytes": 4044
+  },
+  ".build/contracts/p08-counter-qo3vbsn0/P08CounterRuntime.o": {
+    "sha256": "014f5627a6cb751bc9d5eb61ced251c358ddc502f25d2fb4e8cd9f6203650119",
+    "bytes": 1482688
+  },
+  ".build/contracts/p08-counter-qo3vbsn0/Counter.swift": {
+    "sha256": "49481900df254eccd291ecf44f1f913357778bf5ad167e226113a9e16ecdce97",
+    "bytes": 2556
+  },
+  ".build/contracts/p08-counter-qo3vbsn0/GiftUIRenderLowering.swiftdoc": {
+    "sha256": "88210ce918b2b4e43c16186d30cf3755703c4d9901a27367fc0e11d225cd8c48",
+    "bytes": 384
+  },
+  ".build/contracts/p08-counter-qo3vbsn0/GiftUIReferenceTextResources.o": {
+    "sha256": "a9360bb6a7b6dc35b53f22592b1fc50c3e4ad2945c0eed46dabd402d5a867c47",
+    "bytes": 504456
+  },
+  ".build/contracts/p08-counter-qo3vbsn0/GiftUIRenderCore.o": {
+    "sha256": "0d5ac267e922fa3ae2c9b96be359b304515a70d35e5500f5879f485603ba9c85",
+    "bytes": 62200
+  },
+  ".build/contracts/p08-counter-qo3vbsn0/GiftUIRuntimeDynamic.o": {
+    "sha256": "45c9ef7b21edb1c0a57ff78d0bf025fba294e989c09d6ac1963025a32edcf843",
+    "bytes": 246296
+  },
+  ".build/contracts/p08-counter-qo3vbsn0/GiftUIRuntimeDynamic.log": {
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  ".build/contracts/p08-counter-qo3vbsn0/P08CounterSchema.swiftdoc": {
+    "sha256": "87956c631d40c5661d711f3b8125d5f10e9c72ab2287c1f9d78dbb25977882c9",
+    "bytes": 380
+  },
+  ".build/contracts/p08-counter-qo3vbsn0/commands.txt": {
+    "sha256": "7319accbb22e5d1edbd3b4d63ed091ac0eeb902b4eb344a7ca40d899ccc55679",
+    "bytes": 60975
+  },
+  ".build/contracts/p08-counter-qo3vbsn0/P08CounterTable.swiftmodule": {
+    "sha256": "f285f2df8e44cc70828e15461737597b3cec6427e0023cde91f4bdfba19caeff",
+    "bytes": 28836
+  },
+  ".build/contracts/p08-counter-qo3vbsn0/counter": {
+    "sha256": "6c4f9283a921ea0c05564757dc42f7e714f06a29f53c0217057e86760d3ca3d6",
+    "bytes": 4914616
+  },
+  ".build/contracts/p08-counter-qo3vbsn0/GiftUIDrawing.swiftsourceinfo": {
+    "sha256": "e53ab81b593e129e1bd177ef7d22d49041ed6fea96cf0f091300ddfd444cea73",
+    "bytes": 31548
+  },
+  ".build/contracts/p08-counter-qo3vbsn0/GiftUIReferenceTextResources.abi.json": {
+    "sha256": "4277ac6b49f8511196028a5ac20f5b1b1dfa754c24615d34068089f0b1739728",
+    "bytes": 149
+  },
+  ".build/contracts/p08-counter-qo3vbsn0/P08CounterPresentation.swiftsourceinfo": {
+    "sha256": "3609ed52245783786bdbc8b099b1c244d934cafaba6d5cf7f099f6513f29f41d",
+    "bytes": 3500
+  },
+  ".build/contracts/p08-counter-qo3vbsn0/Main.swift": {
+    "sha256": "e246ce21f23bf84d3e6b9b3567f06eb57ece1ee78c50ad1058212226ffe3ec7a",
+    "bytes": 276
+  },
+  ".build/contracts/p08-counter-qo3vbsn0/GiftUIInteraction.o": {
+    "sha256": "6b5eb1e5a46076a817177e2b926d1fa336beb013bd42b6464ab92683f3ed8bdb",
+    "bytes": 145800
+  },
+  ".build/contracts/p08-counter-qo3vbsn0/GiftUIHostConfiguration.swiftsourceinfo": {
+    "sha256": "a7debe6d205c4d0a4391fd29eee153a2acfe6998a448d7ff8070916f9a24d8b3",
+    "bytes": 146876
+  },
+  ".build/contracts/p08-counter-qo3vbsn0/CounterHostCopyNegative.swift": {
+    "sha256": "374cca587f8082f5e6737840ba700b46ba407f1e00e046732cbf7158a9e1aff7",
+    "bytes": 158
+  },
+  ".build/contracts/p08-counter-qo3vbsn0/GiftUIRuntimeCore.swiftsourceinfo": {
+    "sha256": "4970b038a10533d3c441dbd11736b00f02cb2c4e1e6919b85d763930a48903b2",
+    "bytes": 95568
+  },
+  ".build/contracts/p08-counter-qo3vbsn0/CounterSchema.swift": {
+    "sha256": "a3a24ab22fdf75c7d2b0fdb90d86755dc377747e0ed663f1c06bac7dbc0dde41",
+    "bytes": 1250
+  },
+  ".build/contracts/p08-counter-qo3vbsn0/GiftUITextResources.swiftsourceinfo": {
+    "sha256": "25c6ae683feb76dc44e25acff2de11070834c7692983edbecd77c293e1706235",
+    "bytes": 25660
+  },
+  ".build/contracts/p08-counter-qo3vbsn0/GiftUIRenderCore.swiftmodule": {
+    "sha256": "ed74cbeb6b57f03b5401ae7455b0784519df0054cd796b20cd2d2c661e820867",
+    "bytes": 84380
+  },
+  ".build/contracts/p08-counter-qo3vbsn0/P08CounterPresentation.swiftmodule": {
+    "sha256": "3ab82177b8ff05ccb14d69cc1aca393cdfe25b6e2dd19ef9a09c2f75e2e3786f",
+    "bytes": 45152
+  },
+  ".build/contracts/p08-counter-qo3vbsn0/GiftUIInteraction.log": {
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  ".build/contracts/p08-counter-qo3vbsn0/GiftUIRuntimeCore.log": {
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  ".build/contracts/p08-counter-qo3vbsn0/GiftUIReferenceTextResources.swiftsourceinfo": {
+    "sha256": "b531f12a35fa4afba2ac31837133c3bd5b269151db52c3a0c623be0f66620942",
+    "bytes": 79128
+  },
+  ".build/contracts/p08-counter-qo3vbsn0/GiftUIRenderCore.swiftsourceinfo": {
+    "sha256": "fce9c4b54d2ac91fa9a8212a14befb26b93750801a7eddb8e435752df4f0bb7e",
+    "bytes": 20196
+  },
+  ".build/contracts/p08-counter-qo3vbsn0/P08CounterSchema.log": {
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  ".build/contracts/p08-counter-qo3vbsn0/link.log": {
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  ".build/contracts/p08-counter-qo3vbsn0/counter-host-backing.log": {
+    "sha256": "d2f437ab4b4220775fd88c81667ab1f262f40b05d74ad1040ed0c5142a8dc6e3",
+    "bytes": 13460
+  },
+  ".build/contracts/p08-counter-qo3vbsn0/GiftUISemanticCore.o": {
+    "sha256": "eaed3c46e215bfc0bed909754efcadc46bd3895487d59f91213255b31d0fc4ab",
+    "bytes": 324448
+  },
+  ".build/contracts/p08-counter-qo3vbsn0/CounterHostBackingNegative.swift": {
+    "sha256": "3611bbb7012b3e06ddd11a7886032dba419d57342be25ff62a03f998c1bee486",
+    "bytes": 13162
+  }
+}
