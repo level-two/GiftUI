@@ -18,7 +18,7 @@ related_spikes: []
 promoted_to: []
 supersedes: []
 superseded_by: []
-target_milestone: null
+target_milestone: ITERATION-004
 ---
 
 # FW-037: Core-wide Storage Ownership Generalization
@@ -55,10 +55,13 @@ should generalize across them. This item adds only that narrow observation.
   frontend IR/ABI, allocator, simulator implementation or language-independent Core.
 - No deferral of RFC-015's complete lifetime propagation, safe-client boundary,
   disjoint initialization, swap/destruction or exact existing-consumer obligations.
-- No iteration commitment, architecture acceptance, implementation or experiment
-  permission, compiler change or reopened repair allowance.
+- The scheduled assessment does not approve architecture, implementation or
+  experiments, compiler changes or reopened repair allowances.
 
 ## Revisit Triggers
+
+- Start of ITERATION-004 I4-06, alongside package/access and host integration
+  review; inventory gaps even if the P08 evidence below is not yet complete.
 
 - An adopted P08 ownership contract has complete compiler and physical-lifecycle
   evidence, and a concrete second frontend/backend/platform consumer demonstrates
@@ -69,11 +72,19 @@ should generalize across them. This item adds only that narrow observation.
 
 ## Disposition
 
-Captured as cross-cutting work under the existing architecture feature for navigation. On a trigger, first evaluate the concrete
-boundary through Exploration (reuse EXP-002 when its scope fits), then use the
-normal Proposal/RFC/ADR/Spec gates for any adopted generalization. A successful
-P08 implementation alone does not select a Core-wide architecture. No existing
-Future Work item is promoted or iteration scope expanded.
+Captured and scheduled as an assessment in
+[ITERATION-004](../iterations/iteration-004-backend-and-application-integration.md)
+revision 3, I4-06 / I4-AC-007. On 2026-10-13, Eugene explicitly requested:
+“Add the produced future work item to the next iteration scope.” In context,
+the produced item is FW-037. This authorizes the assessment scope addition,
+not a Core-wide architecture or simulator implementation.
+
+Evaluate concrete ownership boundaries through Exploration (reuse EXP-002 when
+its scope fits), including a second consumer and PC simulator composition.
+Record evidence gaps and recommend generalization, retaining local contracts,
+or deferral. Then use normal Proposal/RFC/ADR/Spec gates for any adoption.
+RFC-015's current blockers remain in P08. Status stays captured: scheduling the
+assessment does not itself promote this item to an Exploration or Proposal.
 
 ## References
 

@@ -16,7 +16,7 @@ features:
     title: External Application and Backend Integration
     # PROPOSAL-007 accepted; RFC-013 draft; RFC-014 approved 2026-10-10 under conditional finalization.
     # RFC-015 draft: focused P08 storage/lifetime candidate; no adoption or new evidence allowance.
-    # FW-037 captures Core-wide generalization; current P08 blockers remain in RFC-015.
+    # FW-037: ITERATION-004 revision 3 I4-06 / I4-AC-007 ownership assessment; P08 blockers remain in RFC-015.
     # Current one-candidate assessment: docs/iterations/iteration-003-review/candidate-go-no-go.md.
     # 4 MHz NO-GO preserved; 32 MHz review finds no further unavoidable architecture limit.
     # I3-T02/RFC-014 investigation complete; downstream implementation acceptance remains.

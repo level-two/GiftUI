@@ -968,8 +968,10 @@ findings have been independently closed. All remaining questions below are
 
 [FW-037](../future-work/fw-037-core-wide-storage-ownership-generalization.md)
 captures evaluation of this separation for frontend/backend/platform-independent
-GiftUI Core and simulator integration. Its trigger is an adopted and evidenced
-P08 contract plus a concrete second consumer whose ownership needs differ.
+GiftUI Core and simulator integration. The maintainer scheduled this assessment
+in [ITERATION-004](../iterations/iteration-004-backend-and-application-integration.md)
+revision 3, I4-06 / I4-AC-007. It will assess a concrete second consumer and
+record any missing P08 evidence; scheduling does not adopt this draft.
 Existing FW-022, FW-035 and EXP-002 retain simulator, generated-frontends and
 integration-shape questions. None is required to settle P08. B1–B4 cannot be
 moved there to make this RFC appear complete. No Spike is created.
