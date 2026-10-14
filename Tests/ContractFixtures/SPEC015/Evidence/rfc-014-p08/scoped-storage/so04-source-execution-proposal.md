@@ -1,5 +1,12 @@
 # SO-04→06 coherent source package proposal — 2026-10-14
 
+**Scope addition authorized — 2026-10-14:** Eugene approved the reviewed
+`CounterAdmission.swift` conformance-clause-only addition after its explanation.
+SO-05 may add the four explicit G/C/R/H `~Copyable & ~Escapable` constraints;
+its witness bodies remain unchanged. Resume the original sequential source pass
+with unchanged limits. See [independent review](so04-source-scope-review.md) and
+the [approval receipt](../progress.md#so-0406-scope-addition-approved--2026-10-14).
+
 **SOURCE PACKAGE AUTHORIZED — 2026-10-14.** Eugene replied “Please go ahead”
 to the explicit request for one sequential SO-04→06 source pass, each step
 committed, zero automatic repairs and independent Sol 6.1 High review. Compiler

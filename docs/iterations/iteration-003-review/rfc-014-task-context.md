@@ -1,5 +1,12 @@
 # RFC-014 task context guide
 
+Current resumption — 2026-10-14: Eugene approved the exact reviewed
+CounterAdmission.swift conformance-clause addition with “Ok, please then go ahead
+with it”. Resume the existing sequential SO-04→06 source pass, per-step commits,
+zero automatic repairs and independent Sol 6.1 High source review. Witness bodies
+remain unchanged; no compiler/build/executable/debugger/IR/image/target allowance
+or historical budget reset. [Scope and approval](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so04-source-execution-proposal.md).
+
 Independent scope review — 2026-10-14: [Strong review of `97f1fe3b`](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so04-source-scope-review.md)
 confirms the extension-default inference and minimum CounterAdmission.swift
 conformance-clause-only addition. No compiler failure demonstrated; no other

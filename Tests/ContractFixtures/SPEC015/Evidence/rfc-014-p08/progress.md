@@ -1,5 +1,20 @@
 # RFC-014 P08 execution receipt — 2026-10-11
 
+## SO-04→06 scope addition approved — 2026-10-14
+
+Eugene replied “Ok, please then go ahead with it” after the explanation of the
+reviewed CounterAdmission.swift omission. This authorizes the exact
+[reviewed addition](scoped-storage/so04-source-scope-review.md): add
+`Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterAdmission.swift` to SO-05,
+solely to apply explicit `~Copyable & ~Escapable` constraints to Geometry,
+Candidate, Committed and Hits in its opportunity/quiescence conformance extension.
+Witness bodies remain unchanged. Resume the existing one sequential SO-04→06
+initial source pass, separate step commits, zero automatic repairs and independent
+Sol 6.1 High source review. No new source attempt is counted or historical budget
+reset: the prior stop occurred before source realization. No compiler/build/
+executable/debugger/IR/image/target allowance. All criteria/fit stay open.
+
+
 ## SO-04 independent source scope review — 2026-10-14
 
 At clean `97f1fe3b`, sequential independent Strong review `so04_scope_review`
