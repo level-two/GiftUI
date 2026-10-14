@@ -1,0 +1,7 @@
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC011/RuntimeDerived/ScopedStorageProbe.swift:368:21: error: 'copy' cannot be applied to noncopyable types
+366 | #if SO03_COPY_NEGATIVE
+367 | private func so03ForbiddenCopy(_ state: borrowing SO03Keys) -> UInt16 {
+368 |     let duplicate = copy state
+    |                     `- error: 'copy' cannot be applied to noncopyable types
+369 |     return duplicate.committedRecordCount
+370 | }

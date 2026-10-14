@@ -1,0 +1,12 @@
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC011/RuntimeDerived/ScopedStorageProbe.swift:356:12: error: lifetime-dependent value escapes its scope
+351 | #endif
+352 | private func so03Union(c: consuming SO03Candidate, h0: consuming SO03Hits,
+353 |     r0: consuming SO03Committed, r1: consuming SO03Committed, h1: consuming SO03Hits) -> SO03Keys?
+    |                                                               `- note: it depends on the lifetime of argument 'h1'
+354 | {
+355 |     #if SO03_GENERIC
+356 |     return so03GenericUnion(c: consume c, h0: consume h0, r0: consume r0,
+    |     |      `- error: lifetime-dependent value escapes its scope
+    |     `- note: this use causes the lifetime-dependent value to escape
+357 |         r1: consume r1, h1: consume h1)
+358 |     #else

@@ -1,0 +1,17 @@
+{
+  "all_checks_passed": true,
+  "argv_exactly_matched_plan": true,
+  "artifact_hashes_and_sizes_verified": 130,
+  "attempted_commands": 43,
+  "compiler_cells": 42,
+  "driver_invocations": 1,
+  "execution": "P05 Interaction assertions=215 P03 root regressions=183 SO03 scoped/owned assertions=61 failures=0",
+  "focused_so03_cells": 29,
+  "input_hashes_verified": 128,
+  "local_result_sha256": "31613bfeb49590cbf9e01b107f72aea39a4102f89c2f41e4a5eccc1eb9d72496",
+  "negative_oracles": 12,
+  "planned_commands": 43,
+  "snapshot_files": 49,
+  "source_commit": "5717502571ba1293d4b0cb1882e51fe370ca60fb",
+  "status": "passed"
+}

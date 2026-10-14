@@ -1,0 +1,191 @@
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC011/RuntimeDerived/ScopedStorageProbe.swift:472:9: error: generic struct 'RuntimeInteractionDispatcher' requires that 'SO03Candidate' conform to 'Escapable'
+470 | private func so03ForbiddenRetainedDispatcher(_ records: borrowing SO03Keys,
+471 |     _ handler: SO03Handler, _ target: SO03Target) {
+472 |     _ = RuntimeInteractionDispatcher(records: records, handler: handler, targetAccess: target)
+    |         `- error: generic struct 'RuntimeInteractionDispatcher' requires that 'SO03Candidate' conform to 'Escapable'
+473 | }
+474 | #endif
+
+/Users/eugene/work/GiftUI/Sources/GiftUIInteraction/InteractionOwnedKeyState.swift:194:1: note: requirement from conditional conformance of 'SO03Keys' (aka 'InteractionOwnedKeyState<SO03Candidate, SO03Committed, SO03Hits>') to 'Escapable'
+192 |     Candidate: Copyable & ~Escapable, Committed: Copyable & ~Escapable, Hits: Copyable & ~Escapable
+193 | {}
+194 | extension InteractionOwnedKeyState: Escapable
+    | `- note: requirement from conditional conformance of 'SO03Keys' (aka 'InteractionOwnedKeyState<SO03Candidate, SO03Committed, SO03Hits>') to 'Escapable'
+195 | where
+196 |     Candidate: Escapable & ~Copyable, Committed: Escapable & ~Copyable, Hits: Escapable & ~Copyable
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC011/RuntimeDerived/ScopedStorageProbe.swift:472:9: error: generic struct 'RuntimeInteractionDispatcher' requires that 'SO03Committed' conform to 'Escapable'
+470 | private func so03ForbiddenRetainedDispatcher(_ records: borrowing SO03Keys,
+471 |     _ handler: SO03Handler, _ target: SO03Target) {
+472 |     _ = RuntimeInteractionDispatcher(records: records, handler: handler, targetAccess: target)
+    |         `- error: generic struct 'RuntimeInteractionDispatcher' requires that 'SO03Committed' conform to 'Escapable'
+473 | }
+474 | #endif
+
+/Users/eugene/work/GiftUI/Sources/GiftUIInteraction/InteractionOwnedKeyState.swift:194:1: note: requirement from conditional conformance of 'SO03Keys' (aka 'InteractionOwnedKeyState<SO03Candidate, SO03Committed, SO03Hits>') to 'Escapable'
+192 |     Candidate: Copyable & ~Escapable, Committed: Copyable & ~Escapable, Hits: Copyable & ~Escapable
+193 | {}
+194 | extension InteractionOwnedKeyState: Escapable
+    | `- note: requirement from conditional conformance of 'SO03Keys' (aka 'InteractionOwnedKeyState<SO03Candidate, SO03Committed, SO03Hits>') to 'Escapable'
+195 | where
+196 |     Candidate: Escapable & ~Copyable, Committed: Escapable & ~Copyable, Hits: Escapable & ~Copyable
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC011/RuntimeDerived/ScopedStorageProbe.swift:472:9: error: generic struct 'RuntimeInteractionDispatcher' requires that 'SO03Hits' conform to 'Escapable'
+470 | private func so03ForbiddenRetainedDispatcher(_ records: borrowing SO03Keys,
+471 |     _ handler: SO03Handler, _ target: SO03Target) {
+472 |     _ = RuntimeInteractionDispatcher(records: records, handler: handler, targetAccess: target)
+    |         `- error: generic struct 'RuntimeInteractionDispatcher' requires that 'SO03Hits' conform to 'Escapable'
+473 | }
+474 | #endif
+
+/Users/eugene/work/GiftUI/Sources/GiftUIInteraction/InteractionOwnedKeyState.swift:194:1: note: requirement from conditional conformance of 'SO03Keys' (aka 'InteractionOwnedKeyState<SO03Candidate, SO03Committed, SO03Hits>') to 'Escapable'
+192 |     Candidate: Copyable & ~Escapable, Committed: Copyable & ~Escapable, Hits: Copyable & ~Escapable
+193 | {}
+194 | extension InteractionOwnedKeyState: Escapable
+    | `- note: requirement from conditional conformance of 'SO03Keys' (aka 'InteractionOwnedKeyState<SO03Candidate, SO03Committed, SO03Hits>') to 'Escapable'
+195 | where
+196 |     Candidate: Escapable & ~Copyable, Committed: Escapable & ~Copyable, Hits: Escapable & ~Copyable
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC011/RuntimeDerived/ScopedStorageProbe.swift:472:9: error: generic struct 'RuntimeInteractionDispatcher' requires that 'SO03Candidate' conform to 'Copyable'
+470 | private func so03ForbiddenRetainedDispatcher(_ records: borrowing SO03Keys,
+471 |     _ handler: SO03Handler, _ target: SO03Target) {
+472 |     _ = RuntimeInteractionDispatcher(records: records, handler: handler, targetAccess: target)
+    |         `- error: generic struct 'RuntimeInteractionDispatcher' requires that 'SO03Candidate' conform to 'Copyable'
+473 | }
+474 | #endif
+
+/Users/eugene/work/GiftUI/Sources/GiftUIInteraction/InteractionOwnedKeyState.swift:190:1: note: requirement from conditional conformance of 'SO03Keys' (aka 'InteractionOwnedKeyState<SO03Candidate, SO03Committed, SO03Hits>') to 'Copyable'
+188 | 
+189 | // Conditional ownership preserves the existing owned bank aliases.
+190 | extension InteractionOwnedKeyState: Copyable
+    | `- note: requirement from conditional conformance of 'SO03Keys' (aka 'InteractionOwnedKeyState<SO03Candidate, SO03Committed, SO03Hits>') to 'Copyable'
+191 | where
+192 |     Candidate: Copyable & ~Escapable, Committed: Copyable & ~Escapable, Hits: Copyable & ~Escapable
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC011/RuntimeDerived/ScopedStorageProbe.swift:472:9: error: generic struct 'RuntimeInteractionDispatcher' requires that 'SO03Committed' conform to 'Copyable'
+470 | private func so03ForbiddenRetainedDispatcher(_ records: borrowing SO03Keys,
+471 |     _ handler: SO03Handler, _ target: SO03Target) {
+472 |     _ = RuntimeInteractionDispatcher(records: records, handler: handler, targetAccess: target)
+    |         `- error: generic struct 'RuntimeInteractionDispatcher' requires that 'SO03Committed' conform to 'Copyable'
+473 | }
+474 | #endif
+
+/Users/eugene/work/GiftUI/Sources/GiftUIInteraction/InteractionOwnedKeyState.swift:190:1: note: requirement from conditional conformance of 'SO03Keys' (aka 'InteractionOwnedKeyState<SO03Candidate, SO03Committed, SO03Hits>') to 'Copyable'
+188 | 
+189 | // Conditional ownership preserves the existing owned bank aliases.
+190 | extension InteractionOwnedKeyState: Copyable
+    | `- note: requirement from conditional conformance of 'SO03Keys' (aka 'InteractionOwnedKeyState<SO03Candidate, SO03Committed, SO03Hits>') to 'Copyable'
+191 | where
+192 |     Candidate: Copyable & ~Escapable, Committed: Copyable & ~Escapable, Hits: Copyable & ~Escapable
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC011/RuntimeDerived/ScopedStorageProbe.swift:472:9: error: generic struct 'RuntimeInteractionDispatcher' requires that 'SO03Hits' conform to 'Copyable'
+470 | private func so03ForbiddenRetainedDispatcher(_ records: borrowing SO03Keys,
+471 |     _ handler: SO03Handler, _ target: SO03Target) {
+472 |     _ = RuntimeInteractionDispatcher(records: records, handler: handler, targetAccess: target)
+    |         `- error: generic struct 'RuntimeInteractionDispatcher' requires that 'SO03Hits' conform to 'Copyable'
+473 | }
+474 | #endif
+
+/Users/eugene/work/GiftUI/Sources/GiftUIInteraction/InteractionOwnedKeyState.swift:190:1: note: requirement from conditional conformance of 'SO03Keys' (aka 'InteractionOwnedKeyState<SO03Candidate, SO03Committed, SO03Hits>') to 'Copyable'
+188 | 
+189 | // Conditional ownership preserves the existing owned bank aliases.
+190 | extension InteractionOwnedKeyState: Copyable
+    | `- note: requirement from conditional conformance of 'SO03Keys' (aka 'InteractionOwnedKeyState<SO03Candidate, SO03Committed, SO03Hits>') to 'Copyable'
+191 | where
+192 |     Candidate: Copyable & ~Escapable, Committed: Copyable & ~Escapable, Hits: Copyable & ~Escapable
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC011/RuntimeDerived/ScopedStorageProbe.swift:472:9: error: initializer 'init(records:handler:targetAccess:)' requires that 'SO03Candidate' conform to 'Copyable'
+470 | private func so03ForbiddenRetainedDispatcher(_ records: borrowing SO03Keys,
+471 |     _ handler: SO03Handler, _ target: SO03Target) {
+472 |     _ = RuntimeInteractionDispatcher(records: records, handler: handler, targetAccess: target)
+    |         `- error: initializer 'init(records:handler:targetAccess:)' requires that 'SO03Candidate' conform to 'Copyable'
+473 | }
+474 | #endif
+
+/Users/eugene/work/GiftUI/Sources/GiftUIInteraction/InteractionOwnedKeyState.swift:190:1: note: requirement from conditional conformance of 'SO03Keys' (aka 'InteractionOwnedKeyState<SO03Candidate, SO03Committed, SO03Hits>') to 'Copyable'
+188 | 
+189 | // Conditional ownership preserves the existing owned bank aliases.
+190 | extension InteractionOwnedKeyState: Copyable
+    | `- note: requirement from conditional conformance of 'SO03Keys' (aka 'InteractionOwnedKeyState<SO03Candidate, SO03Committed, SO03Hits>') to 'Copyable'
+191 | where
+192 |     Candidate: Copyable & ~Escapable, Committed: Copyable & ~Escapable, Hits: Copyable & ~Escapable
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC011/RuntimeDerived/ScopedStorageProbe.swift:472:9: error: initializer 'init(records:handler:targetAccess:)' requires that 'SO03Committed' conform to 'Copyable'
+470 | private func so03ForbiddenRetainedDispatcher(_ records: borrowing SO03Keys,
+471 |     _ handler: SO03Handler, _ target: SO03Target) {
+472 |     _ = RuntimeInteractionDispatcher(records: records, handler: handler, targetAccess: target)
+    |         `- error: initializer 'init(records:handler:targetAccess:)' requires that 'SO03Committed' conform to 'Copyable'
+473 | }
+474 | #endif
+
+/Users/eugene/work/GiftUI/Sources/GiftUIInteraction/InteractionOwnedKeyState.swift:190:1: note: requirement from conditional conformance of 'SO03Keys' (aka 'InteractionOwnedKeyState<SO03Candidate, SO03Committed, SO03Hits>') to 'Copyable'
+188 | 
+189 | // Conditional ownership preserves the existing owned bank aliases.
+190 | extension InteractionOwnedKeyState: Copyable
+    | `- note: requirement from conditional conformance of 'SO03Keys' (aka 'InteractionOwnedKeyState<SO03Candidate, SO03Committed, SO03Hits>') to 'Copyable'
+191 | where
+192 |     Candidate: Copyable & ~Escapable, Committed: Copyable & ~Escapable, Hits: Copyable & ~Escapable
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC011/RuntimeDerived/ScopedStorageProbe.swift:472:9: error: initializer 'init(records:handler:targetAccess:)' requires that 'SO03Hits' conform to 'Copyable'
+470 | private func so03ForbiddenRetainedDispatcher(_ records: borrowing SO03Keys,
+471 |     _ handler: SO03Handler, _ target: SO03Target) {
+472 |     _ = RuntimeInteractionDispatcher(records: records, handler: handler, targetAccess: target)
+    |         `- error: initializer 'init(records:handler:targetAccess:)' requires that 'SO03Hits' conform to 'Copyable'
+473 | }
+474 | #endif
+
+/Users/eugene/work/GiftUI/Sources/GiftUIInteraction/InteractionOwnedKeyState.swift:190:1: note: requirement from conditional conformance of 'SO03Keys' (aka 'InteractionOwnedKeyState<SO03Candidate, SO03Committed, SO03Hits>') to 'Copyable'
+188 | 
+189 | // Conditional ownership preserves the existing owned bank aliases.
+190 | extension InteractionOwnedKeyState: Copyable
+    | `- note: requirement from conditional conformance of 'SO03Keys' (aka 'InteractionOwnedKeyState<SO03Candidate, SO03Committed, SO03Hits>') to 'Copyable'
+191 | where
+192 |     Candidate: Copyable & ~Escapable, Committed: Copyable & ~Escapable, Hits: Copyable & ~Escapable
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC011/RuntimeDerived/ScopedStorageProbe.swift:472:9: error: initializer 'init(records:handler:targetAccess:)' requires that 'SO03Candidate' conform to 'Escapable'
+470 | private func so03ForbiddenRetainedDispatcher(_ records: borrowing SO03Keys,
+471 |     _ handler: SO03Handler, _ target: SO03Target) {
+472 |     _ = RuntimeInteractionDispatcher(records: records, handler: handler, targetAccess: target)
+    |         `- error: initializer 'init(records:handler:targetAccess:)' requires that 'SO03Candidate' conform to 'Escapable'
+473 | }
+474 | #endif
+
+/Users/eugene/work/GiftUI/Sources/GiftUIInteraction/InteractionOwnedKeyState.swift:194:1: note: requirement from conditional conformance of 'SO03Keys' (aka 'InteractionOwnedKeyState<SO03Candidate, SO03Committed, SO03Hits>') to 'Escapable'
+192 |     Candidate: Copyable & ~Escapable, Committed: Copyable & ~Escapable, Hits: Copyable & ~Escapable
+193 | {}
+194 | extension InteractionOwnedKeyState: Escapable
+    | `- note: requirement from conditional conformance of 'SO03Keys' (aka 'InteractionOwnedKeyState<SO03Candidate, SO03Committed, SO03Hits>') to 'Escapable'
+195 | where
+196 |     Candidate: Escapable & ~Copyable, Committed: Escapable & ~Copyable, Hits: Escapable & ~Copyable
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC011/RuntimeDerived/ScopedStorageProbe.swift:472:9: error: initializer 'init(records:handler:targetAccess:)' requires that 'SO03Committed' conform to 'Escapable'
+470 | private func so03ForbiddenRetainedDispatcher(_ records: borrowing SO03Keys,
+471 |     _ handler: SO03Handler, _ target: SO03Target) {
+472 |     _ = RuntimeInteractionDispatcher(records: records, handler: handler, targetAccess: target)
+    |         `- error: initializer 'init(records:handler:targetAccess:)' requires that 'SO03Committed' conform to 'Escapable'
+473 | }
+474 | #endif
+
+/Users/eugene/work/GiftUI/Sources/GiftUIInteraction/InteractionOwnedKeyState.swift:194:1: note: requirement from conditional conformance of 'SO03Keys' (aka 'InteractionOwnedKeyState<SO03Candidate, SO03Committed, SO03Hits>') to 'Escapable'
+192 |     Candidate: Copyable & ~Escapable, Committed: Copyable & ~Escapable, Hits: Copyable & ~Escapable
+193 | {}
+194 | extension InteractionOwnedKeyState: Escapable
+    | `- note: requirement from conditional conformance of 'SO03Keys' (aka 'InteractionOwnedKeyState<SO03Candidate, SO03Committed, SO03Hits>') to 'Escapable'
+195 | where
+196 |     Candidate: Escapable & ~Copyable, Committed: Escapable & ~Copyable, Hits: Escapable & ~Copyable
+
+/Users/eugene/work/GiftUI/Tests/ContractFixtures/SPEC011/RuntimeDerived/ScopedStorageProbe.swift:472:9: error: initializer 'init(records:handler:targetAccess:)' requires that 'SO03Hits' conform to 'Escapable'
+470 | private func so03ForbiddenRetainedDispatcher(_ records: borrowing SO03Keys,
+471 |     _ handler: SO03Handler, _ target: SO03Target) {
+472 |     _ = RuntimeInteractionDispatcher(records: records, handler: handler, targetAccess: target)
+    |         `- error: initializer 'init(records:handler:targetAccess:)' requires that 'SO03Hits' conform to 'Escapable'
+473 | }
+474 | #endif
+
+/Users/eugene/work/GiftUI/Sources/GiftUIInteraction/InteractionOwnedKeyState.swift:194:1: note: requirement from conditional conformance of 'SO03Keys' (aka 'InteractionOwnedKeyState<SO03Candidate, SO03Committed, SO03Hits>') to 'Escapable'
+192 |     Candidate: Copyable & ~Escapable, Committed: Copyable & ~Escapable, Hits: Copyable & ~Escapable
+193 | {}
+194 | extension InteractionOwnedKeyState: Escapable
+    | `- note: requirement from conditional conformance of 'SO03Keys' (aka 'InteractionOwnedKeyState<SO03Candidate, SO03Committed, SO03Hits>') to 'Escapable'
+195 | where
+196 |     Candidate: Escapable & ~Copyable, Committed: Escapable & ~Copyable, Hits: Escapable & ~Copyable

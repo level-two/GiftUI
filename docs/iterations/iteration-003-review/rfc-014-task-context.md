@@ -1,6 +1,16 @@
 # RFC-014 task context guide
 
-Current independent trap review — 2026-10-14: [Strong review](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so03/correction-2/trap-diagnostic/independent-review.md)
+Current SO-03 fixture stabilization — 2026-10-14: [Joint source review](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so03/fixture-stabilization/source-review.md)
+and one checked Canvas record append are committed at `57175025` under the
+maintainer's bounded package authorization. [One fresh macOS Dynamic result](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so03/fixture-stabilization/result.md)
+passes 43/43 cells, including all 42 compiler oracles and the native execute:
+SO03 scoped/owned assertions=61, failures=0. The new one-repair/one-driver budget
+is consumed with zero automatic follow-up repairs. Earlier counters and guard
+remain intact. A separate independent Strong boundary review is next. All SO
+criteria, fit/58,648-vs-27,648, HC-RD-003/P08/R07/T8.1 and I4-07/P09–P12
+remain open; SO-04–09 unapproved.
+
+Historical independent trap review — 2026-10-14: [Strong review](../../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/so03/correction-2/trap-diagnostic/independent-review.md)
 passes diagnostic scope/identities and proves a local Canvas fixture defect:
 InteractionProbe.swift stores an action without appendRecord; records stays 0,
 so store must fail invalidIdentity if reached. Exact observed PC-to-condition

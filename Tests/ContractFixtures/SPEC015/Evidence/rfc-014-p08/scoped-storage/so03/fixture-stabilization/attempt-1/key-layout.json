@@ -1,0 +1,19 @@
+{
+  "candidate_element_stride": 240,
+  "candidate_inline_key_regions": 3708,
+  "candidate_record_stride": 240,
+  "captured_action_stride": 212,
+  "committed_element_stride": 240,
+  "committed_inline_key_regions": 2472,
+  "committed_record_stride": 240,
+  "component_stride": 6,
+  "hit_element_stride": 228,
+  "hit_stride": 228,
+  "key_stride": 206,
+  "pointer_capture_stride": 212,
+  "static_candidate_storage_stride": 1444,
+  "static_committed_storage_stride": 1444,
+  "static_hit_storage_stride": 1372,
+  "static_owned_state_stride": 7116,
+  "static_remaining_bytes_including_control_and_padding": 936
+}
