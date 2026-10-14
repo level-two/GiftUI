@@ -57,43 +57,57 @@ struct CounterApplicationOwners {
     var deliveryEnabled = false
     var inputEnabled = false
     var gate = HostApplicationOpportunityGate()
-    let control: UnsafeMutablePointer<CounterControl>
+    private let control: UnsafeMutablePointer<CounterControl>
+    private let producerOrigin: CounterProducerOrigin?
     init(control: UnsafeMutablePointer<CounterControl>) {
         self.control = control
+        producerOrigin = control.pointee.snapshotProducerOrigin()
         control.pointee.applicationConstructions += 1
     }
     var constructedProjectionIsValid: Bool {
-        source.running && source.emissionCount == 1 && repository.publicationCount == 1
+        control.pointee.acceptsProducer(producerOrigin) && source.running && source.emissionCount == 1 && repository.publicationCount == 1
             && repository.observation == observation && observation != nil
             && useCases.startCalls == 1 && gate.isAvailable && !gate.isExecuting
             && deliveryEnabled && inputEnabled && control.pointee.applicationConstructions == 1
     }
     mutating func installObservation() -> UInt8 {
+        guard control.pointee.acceptsProducer(producerOrigin) else { return repository.value }
         let installed = repository.observe()
         observation = installed.token
         control.pointee.observationsInstalled += 1
         return installed.current
     }
     mutating func startSource() -> Bool {
+        guard control.pointee.acceptsProducer(producerOrigin) else { return false }
         guard gate.begin() == .admitted else { return false }
         defer { precondition(gate.complete() == nil) }
         return withUnsafeMutablePointer(to: &self) { application in
             application.pointee.useCases.start(source: &application.pointee.source, repository: &application.pointee.repository) { value in
-                // This reentrant application opportunity is rejected while the
-                // real source→repository callback is still on the stack.
-                precondition(application.pointee.gate.begin() == .rejected(.reentrant))
-                let control = application.pointee.control
-                control.pointee.reentrantApplicationRejections += 1
-                guard application.pointee.deliveryEnabled else { return false }
-                precondition(control.pointee.context.phase == .idle && !control.pointee.frameActive)
-                var admission = CounterAdmission(borrowing: control)
-                let accepted = admission.submit(stateChange: value).result == .queued
-                if accepted { control.pointee.applicationCallbacks += 1 }
-                return accepted
+                return application.pointee.deliver(value)
+            }
+        }
+    }
+    private mutating func deliver(_ value: UInt8) -> Bool {
+        guard control.pointee.acceptsProducer(producerOrigin), deliveryEnabled else { return false }
+        precondition(gate.begin() == .rejected(.reentrant))
+        control.pointee.reentrantApplicationRejections += 1
+        precondition(control.pointee.context.phase == .idle && !control.pointee.frameActive)
+        var admission = CounterAdmission(borrowing: control)
+        let accepted = admission.submit(stateChange: value).result == .queued
+        if accepted { control.pointee.applicationCallbacks += 1 }
+        return accepted
+    }
+    mutating func serviceSource(value: UInt8) -> Bool {
+        guard control.pointee.acceptsProducer(producerOrigin), deliveryEnabled, gate.begin() == .admitted else { return false }
+        defer { precondition(gate.complete() == nil) }
+        return withUnsafeMutablePointer(to: &self) { application in
+            application.pointee.source.service(value: value) { value in
+                application.pointee.repository.receive(value) { application.pointee.deliver($0) }
             }
         }
     }
     mutating func stopDelivery() {
+        guard control.pointee.acceptsProducer(producerOrigin) else { return }
         deliveryEnabled = false; inputEnabled = false
         source.stop()
         if let token = observation.take() {

@@ -10,6 +10,26 @@ No contract/resource/platform relaxation, P09 expansion or hardware operation.
 Escalate material decisions/exhausted budget; commit meaningful steps and report
 at the P08 boundary. All criteria/fit remain open at entry.
 
+## P08 integrated initial source freeze — 2026-10-14
+
+The [initial source freeze](scoped-storage/p08-integrated-source-freeze.md) and
+[exact eight-source/26-label manifest](scoped-storage/p08-integrated-source-manifest.json)
+record fresh full Static/Dynamic hosts over one original initialized inventory
+and the same control address, immutable producer-origin guards, actual raw
+namespace collisions and stale/current action/input/admission/source oracles.
+Necessary existing host-state forwarding and semantic equality edits are included;
+no scoped capability escapes. Existing dirty state has one authority in runtime
+control, with the pipeline retaining its computed interface. The driver accepts
+exact-current source receipts before the fully verified historical correction map.
+Historical receipts remain unchanged. Source candidate unreviewed/unexecuted;
+independent Strong source review is next, followed by the predefined validation
+under the broader activity. Initial pass, corrective cycles0/2, matrix/images0;
+no renewed file-level/source-only approval stop. All criteria/fit/P08 remain open.
+Permitted checks pass: whitespace; driver Python AST without invocation; eight
+source hashes/26 unique route labels; 183 local Markdown targets with no missing
+files; governance198nodes/2,019edges and existing task evidence validation.
+Balanced Swift brace inventory is a source check, not Swift typechecking.
+
 ## SO-04→06 repeated-host independent Strong design review PASS — 2026-10-14
 
 Independent Sol 6.1 High [design review](scoped-storage/so04-06-repeated-host-independent-design-review.md)

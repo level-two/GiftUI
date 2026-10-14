@@ -23,7 +23,7 @@ import GiftUIInteraction
 fileprivate enum P08PhysicalID: UInt8 { case b0, b1, b2, b3, g0, g1, g2, g3, g4, c0, h0, r0, r1, h1 }
 fileprivate enum P08PhysicalLifecycle { case reserved, idle, active, released }
 fileprivate enum P08BackingInitializationFailure: Equatable { case invalidReservation, invalidCapacity, constructor, injected(P08PhysicalID, Int) }
-fileprivate struct P08InitializedEntry {
+fileprivate struct P08InitializedEntry: Equatable {
     let id: P08PhysicalID
     let address: UInt
     let count: Int
@@ -542,6 +542,9 @@ fileprivate struct P08TypedBackingOwner: ~Copyable {
         #endif
         }
     }
+    fileprivate mutating func finishReservation() {
+        if lifecycle == .idle { release() } else { precondition(lifecycle == .released && acquired == 0) }
+    }
     fileprivate mutating func release() {
         precondition(lifecycle == .idle)
         requireEmpty()
@@ -555,7 +558,7 @@ fileprivate struct P08TypedBackingOwner: ~Copyable {
             while remaining > 0 { remaining -= 1; destroyOriginal(inventory[remaining]!) }
         } else { precondition(acquired == 0) }
     }
-    private func requireEmpty() {
+    fileprivate func requireEmpty() {
         switch slots {
         case .static(let s):
             s.g0.withBorrow { precondition($0.pointee.scopeCount == 0 && $0.pointee.textLineCount == 0 && $0.pointee.positionedGlyphCount == 0) }
@@ -1062,9 +1065,13 @@ fileprivate typealias P08ScopedKeys = InteractionOwnedKeyState<P08CandidateAcces
 fileprivate struct P08StorageSession: ~Copyable, ~Escapable {
     private var geometry: P08GeometryAccess
     private var interaction: P08ScopedKeys
+    private let ownerIdentity: UInt
+    private let sessionSerial: UInt64
+    borrowing func installProducerOrigin(_ control: UnsafeMutablePointer<CounterControl>) { control.pointee.installProducerOrigin(owner: ownerIdentity, serial: sessionSerial) }
     @_lifetime(copy geometry, copy interaction)
-    fileprivate init(geometry: consuming P08GeometryAccess, interaction: consuming P08ScopedKeys) {
+    fileprivate init(geometry: consuming P08GeometryAccess, interaction: consuming P08ScopedKeys, ownerIdentity: UInt, sessionSerial: UInt64) {
         self.geometry = consume geometry; self.interaction = consume interaction
+        self.ownerIdentity = ownerIdentity; self.sessionSerial = sessionSerial
     }
     mutating func reset() { geometry.reset(); interaction.resetAllStorage() }
 }
@@ -1111,7 +1118,7 @@ extension P08TypedBackingOwner {
                     let h1Access = P08HitAccess.lend(sessionLifetime: token, descriptor: .static(h1, entry(.h1), configuration[4]), transcript: transcript)
                     let state = InteractionState(candidateRecords: c0Access, candidateHitRegions: h0Access, candidateCommittedRecords: r0Access, committedRecords: r1Access, committedHitRegions: h1Access)
                     let interaction = P08ScopedKeys(state: state, maximumComponentsPerKey: 24, maximumComponents: 48)!
-                    return body(P08StorageSession(geometry: geometry, interaction: interaction))
+                    return body(P08StorageSession(geometry: geometry, interaction: interaction, ownerIdentity: ownerIdentity, sessionSerial: sessionSerial))
                 }
                 }
                 }
@@ -1148,7 +1155,7 @@ extension P08TypedBackingOwner {
                     let h1Access = P08HitAccess.lend(sessionLifetime: token, descriptor: .dynamic(h1, entry(.h1), configuration[4]), transcript: transcript)
                     let state = InteractionState(candidateRecords: c0Access, candidateHitRegions: h0Access, candidateCommittedRecords: r0Access, committedRecords: r1Access, committedHitRegions: h1Access)
                     let interaction = P08ScopedKeys(state: state, maximumComponentsPerKey: 24, maximumComponents: 48)!
-                    return body(P08StorageSession(geometry: geometry, interaction: interaction))
+                    return body(P08StorageSession(geometry: geometry, interaction: interaction, ownerIdentity: ownerIdentity, sessionSerial: sessionSerial))
                 }
                 }
                 }
@@ -1421,6 +1428,167 @@ extension P08TypedBackingOwner {
     }
 }
 
+// Only the two concrete counter owners conform; observations are owned facts.
+fileprivate protocol P08ReuseObservation: ~Copyable, ~Escapable {
+    var teardownStep: UInt8 { get }
+    borrowing func observeModelValue() -> UInt8
+    borrowing func observeProducedAction() -> CounterProducedAction
+    borrowing func deliverProducedAction(_ action: CounterProducedAction) -> Bool
+    borrowing func observeApplicationProducer() -> CounterApplicationOwners
+}
+extension CounterHostOwner: P08ReuseObservation {}
+#if !hasFeature(Embedded)
+extension CounterDynamicHostOwner: P08ReuseObservation {}
+#endif
+fileprivate struct P08HostReuseTranscript {
+    var action: CounterProducedAction?
+    var event: NormalizedPointerEvent?
+    var admission: CounterAdmission?
+    var application: CounterApplicationOwners?
+    var semanticRevision: SemanticRevision?
+    var hosts = 0
+}
+fileprivate func p08ReuseLabel(_ route: StaticString, _ suffix: StaticString) {
+    #if !hasFeature(Embedded)
+    print("so06-reuse-\(route)-\(suffix)")
+    #endif
+}
+fileprivate func p08RequireFreshControl(_ control: UnsafeMutablePointer<CounterControl>) {
+    precondition(control.pointee.admissionController == nil && control.pointee.wake == nil && control.pointee.scheduler == nil)
+    precondition(!control.pointee.inputGate.inputIsEligible && !control.pointee.wakeEnabled && control.pointee.finalized == 0)
+}
+fileprivate func p08RequireRetiredControl(_ control: UnsafeMutablePointer<CounterControl>) {
+    precondition(control.pointee.unavailable && !control.pointee.inputGate.inputIsEligible && !control.pointee.wakeEnabled)
+    precondition(control.pointee.observationsInstalled == control.pointee.observationsDetached)
+    if var scheduler = control.pointee.scheduler {
+        precondition(scheduler.begin(at: control.pointee.wakeClockMicroseconds, lifecycleState: .active, assemblyReport: scheduler.assemblyReport) == .rejected(.pacingRejected, pacing: .unavailable))
+    }
+    precondition(control.pointee.snapshotProducerOrigin() == nil && !control.pointee.frameActive && !control.pointee.hasRoot)
+    precondition(control.pointee.admission.pointerCount == 0 && control.pointee.admission.pendingStateCount == 0 && !control.pointee.admission.sealActive)
+}
+fileprivate func p08RequireSameInventory(_ current: InlineArray<14, P08InitializedEntry?>, _ original: InlineArray<14, P08InitializedEntry?>) {
+    for index in 0..<14 { precondition(current[index] == original[index]) }
+}
+fileprivate struct P08ReuseFingerprint: Equatable {
+    let joins: CounterJoinSnapshot
+    let context: ExecutionContext
+    let capture: CapturedAction<SemanticCompleteIdentity>?
+    let source: InputSourceID?
+    let sequence: InputSourceSequenceState
+    let presentation: PresentationRevision?
+    let semantic: CounterSemanticSnapshot
+    let dirty: Bool
+    let admission: CounterAdmissionBacking
+    let controllerContext: ExecutionContext?
+    let controllerPresentation: PresentationRevision?
+    let controllerQuiescent: Bool?
+    let controllerSeal: Bool?
+    let controllerDeferred: Bool?
+    let schedulerNow: HostScheduledOpportunityBeginResult?
+    let schedulerDeadline: HostScheduledOpportunityBeginResult?
+    let wakeTakes: Int
+    let disabledWakeRejections: Int
+    init(_ control: UnsafeMutablePointer<CounterControl>) {
+        joins = counterJoinSnapshot(control); context = control.pointee.context
+        capture = control.pointee.runtime.pointer.capture.current; source = control.pointee.runtime.pointer.source
+        sequence = control.pointee.runtime.pointer.sequence
+        presentation = control.pointee.runtime.committedPresentation; semantic = control.pointee.semanticSnapshot
+        dirty = control.pointee.runtime.changed
+        admission = control.pointee.admission
+        controllerContext = control.pointee.admissionController?.context
+        controllerPresentation = control.pointee.admissionController?.committedPresentationRevision
+        controllerQuiescent = control.pointee.admissionController?.isQuiescent
+        controllerSeal = control.pointee.admissionController?.isSealClosed
+        controllerDeferred = control.pointee.admissionController?.didDeferAfterSeal
+        var now = control.pointee.scheduler, deadline = control.pointee.scheduler
+        let schedulerReport = control.pointee.scheduler?.assemblyReport
+        let boundary = control.pointee.wakeClockMicroseconds.addingReportingOverflow(250000)
+        precondition(!boundary.overflow)
+        schedulerNow = now?.begin(at: control.pointee.wakeClockMicroseconds, lifecycleState: .active, assemblyReport: schedulerReport!)
+        schedulerDeadline = deadline?.begin(at: boundary.partialValue, lifecycleState: .active, assemblyReport: schedulerReport!)
+        wakeTakes = control.pointee.wakeTakes; disabledWakeRejections = control.pointee.disabledWakeRejections
+    }
+}
+fileprivate func p08RunReuseHost<Owner>(host: inout SignalAnalyzerPresetHostInstance<Owner>, control: UnsafeMutablePointer<CounterControl>, transcript: UnsafeMutablePointer<P08HostReuseTranscript>) -> Int
+where Owner: SignalAnalyzerPresetLiveOwner & P08ReuseObservation & ~Copyable & ~Escapable {
+    let route: StaticString = host.assemblyReport.profile == .static ? "static" : "dynamic"
+    guard case .active = host.activate() else { preconditionFailure("reuse actual activation") }
+    precondition(control.pointee.inputGate.inputIsEligible && control.pointee.wake != nil && control.pointee.scheduler != nil)
+    guard case .cycle(.success) = host.runOpportunity() else { preconditionFailure("reuse source initial fact") }
+    var count = counterCheckHostFrame(control.pointee, value: 0)
+    let action = host.owner.observeProducedAction()
+    var admission = CounterAdmission(borrowing: control)
+    let revision = control.pointee.runtime.committedPresentation!
+    if transcript.pointee.hosts == 1 {
+        let oldAction = transcript.pointee.action!, oldEvent = transcript.pointee.event!
+        precondition(action.captured == oldAction.captured && action.targetGeneration == oldAction.targetGeneration && action.targetIdentity == oldAction.targetIdentity)
+        precondition(control.pointee.context.semanticRevision == transcript.pointee.semanticRevision)
+        precondition(oldEvent.source == .init(rawValue: 0) && oldEvent.sequence.rawValue == 0 && oldEvent.ordinal.rawValue == 0 && oldEvent.presentationRevision == revision)
+        p08ReuseLabel(route, "raw-namespace-collision")
+        let modelBefore = host.owner.observeModelValue()
+        let before = P08ReuseFingerprint(control)
+        precondition(!host.owner.deliverProducedAction(oldAction))
+        precondition(P08ReuseFingerprint(control) == before && host.owner.observeModelValue() == modelBefore); count += counterCheckHostFrame(control.pointee, value: 0)
+        p08ReuseLabel(route, "action-stale")
+        precondition(transcript.pointee.admission!.submit(pointer: oldEvent).result == .unavailable)
+        precondition(P08ReuseFingerprint(control) == before && host.owner.observeModelValue() == modelBefore)
+        p08ReuseLabel(route, "input-stale")
+        precondition(transcript.pointee.admission!.submit(pointer: oldEvent).result == .unavailable)
+        precondition(transcript.pointee.admission!.submit(stateChange: 8).result == .unavailable)
+        precondition(transcript.pointee.admission!.submit(completion: 0).result == .unavailable)
+        precondition(P08ReuseFingerprint(control) == before && host.owner.observeModelValue() == modelBefore)
+        p08ReuseLabel(route, "admission-stale")
+        precondition(!transcript.pointee.application!.constructedProjectionIsValid)
+        precondition(!transcript.pointee.application!.serviceSource(value: 8))
+        precondition(!transcript.pointee.application!.startSource())
+        _ = transcript.pointee.application!.installObservation()
+        transcript.pointee.application!.stopDelivery()
+        precondition(P08ReuseFingerprint(control) == before && host.owner.observeModelValue() == modelBefore)
+        p08ReuseLabel(route, "source-stale")
+    }
+    let down = control.pointee.inputGate.submit(phase: .down, position: control.pointee.actionPoints[0], source: .init(rawValue: 0), observedPresentationRevision: revision, isMalformed: false, priorPhysicalSequenceIsComplete: true, to: &admission)
+    let up = control.pointee.inputGate.submit(phase: .up, position: control.pointee.actionPoints[0], source: .init(rawValue: 0), observedPresentationRevision: revision, isMalformed: false, priorPhysicalSequenceIsComplete: true, to: &admission)
+    guard case .queued(let downEvent) = down, case .queued(let upEvent) = up else { preconditionFailure("reuse actual normalized input") }
+    precondition(downEvent.sequence.rawValue == 0 && upEvent.sequence == downEvent.sequence && upEvent.ordinal.rawValue == 1)
+    if transcript.pointee.hosts == 0 {
+        transcript.pointee.action = action; transcript.pointee.event = downEvent
+        transcript.pointee.semanticRevision = control.pointee.context.semanticRevision
+        transcript.pointee.admission = admission; transcript.pointee.application = host.owner.observeApplicationProducer()
+    }
+    guard case .cycle(.success(let summary)) = host.runOpportunity() else { preconditionFailure("reuse current pointer cycle") }
+    precondition(summary.admission.inputEventCount == 2 && summary.admission.semanticActionCount == 1)
+    count += counterCheckHostFrame(control.pointee, value: 1)
+    if transcript.pointee.hosts == 1 {
+        p08ReuseLabel(route, "input-current")
+        let currentAction = host.owner.observeProducedAction()
+        let applied = control.pointee.applied
+        precondition(host.owner.deliverProducedAction(currentAction) && control.pointee.applied == applied + 1)
+        guard case .cycle(.success) = host.runOpportunity() else { preconditionFailure("reuse current action cycle") }
+        count += counterCheckHostFrame(control.pointee, value: 2); p08ReuseLabel(route, "action-current")
+        let wake = control.pointee.acceptedFactWakeRecords
+        precondition(admission.submit(stateChange: 3).result == .queued)
+        precondition(admission.submit(completion: 0).result == .queued)
+        let currentRevision = control.pointee.runtime.committedPresentation!
+        let pointer = control.pointee.inputGate.submit(phase: .down, position: .init(x: 0, y: 0), source: .init(rawValue: 0), observedPresentationRevision: currentRevision, isMalformed: false, priorPhysicalSequenceIsComplete: true, to: &admission)
+        guard case .queued = pointer else { preconditionFailure("reuse current admission pointer") }
+        precondition(control.pointee.acceptedFactWakeRecords == wake + 3)
+        guard case .cycle(.success) = host.runOpportunity() else { preconditionFailure("reuse current admission cycle") }
+        count += counterCheckHostFrame(control.pointee, value: 3); p08ReuseLabel(route, "admission-current")
+        var application = host.owner.observeApplicationProducer()
+        let callbacks = control.pointee.applicationCallbacks
+        precondition(application.serviceSource(value: 4) && control.pointee.applicationCallbacks == callbacks + 1)
+        guard case .cycle(.success) = host.runOpportunity() else { preconditionFailure("reuse current source cycle") }
+        count += counterCheckHostFrame(control.pointee, value: 4); p08ReuseLabel(route, "source-current")
+    }
+    host.teardown()
+    precondition(host.lifecycleState == .quiescent && host.owner.teardownStep == 8)
+    guard case .failure = host.activate() else { preconditionFailure("terminal host reactivation") }
+    precondition(host.runOpportunity() == .invalidLifecycle)
+    if transcript.pointee.hosts == 0 { p08ReuseLabel(route, "terminal-old-host") }
+    transcript.pointee.hosts += 1
+    return count + 10
+}
+
 fileprivate struct P08StaticOuter: ~Copyable {
     let limits = counterActualLimits(.static)
     var root: StaticObservableRootAdapter<CounterOwnedModel, SemanticCompleteIdentity>
@@ -1446,6 +1614,14 @@ fileprivate struct P08StaticOuterView: ~Copyable {
     let entries: UnsafeMutableBufferPointer<CanvasStagedEntry<SemanticRecordReference, CounterValueTable.CaptureStorage>?>
     let control: UnsafeMutablePointer<CounterControl>
     let outerMetadataBytes: Int
+    borrowing func reconstruct(modelOwner: ObservableModelOwnerIdentity, semanticOwner: SemanticRecordOwnerIdentity) {
+        p08RequireRetiredControl(control)
+        control.deinitialize(count: 1); canvas.deinitialize(count: 1); semantic.deinitialize(count: 1); root.deinitialize(count: 1)
+        root.initialize(to: StaticObservableRootAdapter(identity: modelOwner, schema: 1, needsCapture: false, modelLimit: 2, claimLimit: 4, pinLimit: 2, captureLimit: 0)!)
+        semantic.initialize(to: StaticSemanticRecordStorage(limits: counterSemanticLimits, owner: semanticOwner))
+        canvas.initialize(to: StaticCanvasValueStorage()); control.initialize(to: CounterControl())
+        p08RequireFreshControl(control)
+    }
     borrowing func audit(owner: borrowing P08TypedBackingOwner, report: (CounterStorageRegion) -> Void = { _ in }) -> RuntimeProfileValidationResult {
         let facts = owner.physicalFacts()
         return counterValidatePhysicalBacking(profile: .static, limits: limits, root: root.pointee.storageLayout,
@@ -1465,7 +1641,7 @@ fileprivate func withP08SelectedStatic<Result>(modelOwner: ObservableModelOwnerI
     let outer = P08EmbeddedOuter(modelOwner: modelOwner, semanticOwner: semanticOwner, backing: backing!, limits: counterActualLimits(.static))
     var owner = P08TypedBackingOwner(slots: .static(outer.storageSlots()), identity: UInt(bitPattern: backing!.baseAddress!))
     precondition(initializeP08Backing(&owner) == nil)
-    defer { owner.release() }
+    defer { owner.finishReservation() }
     var occupied = 0
     for index in 0..<25 { let sum = occupied.addingReportingOverflow(outer.layout.regions[index]!.extent); precondition(!sum.overflow); occupied = sum.partialValue }
     let metadata = backing!.count - occupied + MemoryLayout<RuntimeProfileLimits>.stride + MemoryLayout<Bool>.stride - CounterSemanticBacking.paddingBytes
@@ -1486,7 +1662,7 @@ fileprivate func withP08SelectedStatic<Result>(modelOwner: ObservableModelOwnerI
         outer.canvasBacking.withUnsafeMutableBufferPointer { entries in
             withP08StaticReservation { owner in
                 precondition(initializeP08Backing(&owner) == nil)
-                defer { owner.release() }
+                defer { owner.finishReservation() }
                 let metadata = MemoryLayout<P08StaticOuter>.stride - MemoryLayout<StaticObservableRootAdapter<CounterOwnedModel, SemanticCompleteIdentity>>.size - MemoryLayout<StaticSemanticRecordStorage>.size - MemoryLayout<CounterSemanticBacking>.size - MemoryLayout<StaticCanvasValueStorage>.size - MemoryLayout<InlineArray<1, CanvasStagedEntry<SemanticRecordReference, CounterValueTable.CaptureStorage>?>>.size - MemoryLayout<CounterControl>.size + MemoryLayout<P08StaticReservation>.stride - (MemoryLayout<InlineArray<1024, UInt8>?>.stride + MemoryLayout<InlineArray<1056, UInt8>?>.stride + MemoryLayout<InlineArray<20, UInt8>?>.stride + MemoryLayout<InlineArray<112, UInt8>?>.stride + MemoryLayout<StaticCounterLayoutWorkspace?>.stride + MemoryLayout<StaticCounterResolvedLayoutStorage?>.stride + MemoryLayout<InlineArray<64, SemanticRecordReference?>?>.stride + MemoryLayout<StaticRecordDrawingWorkspace<StaticCounterDrawingWorkspace>?>.stride + MemoryLayout<QualifiedRender?>.stride + MemoryLayout<CounterStaticCandidate?>.stride + 2 * MemoryLayout<CounterStaticHits?>.stride + 2 * MemoryLayout<CounterStaticCommitted?>.stride)
                 let view = P08StaticOuterView(limits: limits, root: root, semantic: semantic, records: records, paths: paths, payloads: payloads, scalars: scalars, canvas: canvas, entries: entries, control: control, outerMetadataBytes: metadata)
                 return body(&owner, view)
@@ -1592,12 +1768,14 @@ fileprivate struct P08BodyCleanup: ~Copyable, ~Escapable {
         }
     }
     @_lifetime(self: copy self)
-    mutating func run(control: UnsafeMutablePointer<CounterControl>, report: HostAssemblyReport, failAfterRuntime: Bool, joinChecks: Int, early: UInt8, candidateFailure: RuntimeCompletePipelineStage?) -> Int {
+    mutating func run(control: UnsafeMutablePointer<CounterControl>, report: HostAssemblyReport, failAfterRuntime: Bool, joinChecks: Int, early: UInt8, candidateFailure: RuntimeCompletePipelineStage?, reuse: UnsafeMutablePointer<P08HostReuseTranscript>? = nil) -> Int {
         activationAttempted = true
         switch consume stage.take()! {
         case .host(var host):
             let checks: Int
-            if early == 5 || candidateFailure != nil {
+            if let reuse {
+                checks = p08RunReuseHost(host: &host, control: control, transcript: reuse)
+            } else if early == 5 || candidateFailure != nil {
                 precondition(host.activate() == .active)
                 if let candidateFailure {
                     control.pointee.fault = candidateFailure
@@ -1611,7 +1789,9 @@ fileprivate struct P08BodyCleanup: ~Copyable, ~Escapable {
         #if !hasFeature(Embedded)
         case .dynamicHost(var host):
             let checks: Int
-            if early == 5 || candidateFailure != nil {
+            if let reuse {
+                checks = p08RunReuseHost(host: &host, control: control, transcript: reuse)
+            } else if early == 5 || candidateFailure != nil {
                 precondition(host.activate() == .active)
                 if let candidateFailure {
                     control.pointee.fault = candidateFailure
@@ -1659,12 +1839,14 @@ fileprivate struct P08BodyCleanup: ~Copyable, ~Escapable {
             precondition(control.pointee.runtime.pointer.capture.current == nil && control.pointee.runtime.pointer.source == nil)
             precondition(!control.pointee.hasRoot && control.pointee.committedRecords == 0)
         }
+        control.pointee.retireProducerOrigin()
     }
 }
 
 fileprivate func runP08ScopedBody(session: consuming P08StorageSession,
-    models: consuming ObservableModelScope<CounterOwnedModel, CounterModelSchema>, root: consuming ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, semantic: consuming SemanticRecordStore<CounterPayload>, values: consuming CanvasStagedValues<SemanticRecordReference, CounterValueTable>, control: borrowing UnsafeMutablePointer<CounterControl>, audit: RuntimeStorageAudit, assembly: CounterHostAssembly, foreignModels: borrowing ObservableModelScope<CounterOwnedModel, CounterModelSchema>, foreignRoot: borrowing ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, foreignControl: UnsafeMutablePointer<CounterControl>, dynamic: Bool, failAfterRuntime: Bool, early: UInt8 = 0, candidateFailure: RuntimeCompletePipelineStage? = nil) -> Int {
+    models: consuming ObservableModelScope<CounterOwnedModel, CounterModelSchema>, root: consuming ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, semantic: consuming SemanticRecordStore<CounterPayload>, values: consuming CanvasStagedValues<SemanticRecordReference, CounterValueTable>, control: borrowing UnsafeMutablePointer<CounterControl>, audit: RuntimeStorageAudit, assembly: CounterHostAssembly, foreignModels: borrowing ObservableModelScope<CounterOwnedModel, CounterModelSchema>, foreignRoot: borrowing ObservableStateRootScope<CounterOwnedModel, SemanticCompleteIdentity>, foreignControl: UnsafeMutablePointer<CounterControl>, dynamic: Bool, failAfterRuntime: Bool, early: UInt8 = 0, candidateFailure: RuntimeCompletePipelineStage? = nil, reuse: UnsafeMutablePointer<P08HostReuseTranscript>? = nil) -> Int {
     let activationBacking: InlineArray<1, UInt8> = [1]
+    session.installProducerOrigin(control)
     var holder = P08BodyCleanup(session: session, control: control)
     defer { holder.finish() }
     // This cleanup precedes every owned return and every activation.
@@ -1676,10 +1858,10 @@ fileprivate func runP08ScopedBody(session: consuming P08StorageSession,
     let joins = holder.checkJoins(models: models, root: root, foreignModels: foreignModels, foreignRoot: foreignRoot, control: control, foreignControl: foreignControl, audit: audit, report: assembly.report)
     holder.constructHost(report: assembly.report)
     if early == 4 { return 1 }
-    return holder.run(control: control, report: assembly.report, failAfterRuntime: failAfterRuntime, joinChecks: joins, early: early, candidateFailure: candidateFailure)
+    return holder.run(control: control, report: assembly.report, failAfterRuntime: failAfterRuntime, joinChecks: joins, early: early, candidateFailure: candidateFailure, reuse: reuse)
 }
 
-fileprivate func runP08StaticHost(owner: inout P08TypedBackingOwner, outer: borrowing P08StaticOuterView, failAfterRuntime: Bool, early: UInt8 = 0, candidateFailure: RuntimeCompletePipelineStage? = nil, write: CounterTiledPixelWrite? = nil) -> Int {
+fileprivate func runP08StaticHost(owner: inout P08TypedBackingOwner, outer: borrowing P08StaticOuterView, failAfterRuntime: Bool, early: UInt8 = 0, candidateFailure: RuntimeCompletePipelineStage? = nil, write: CounterTiledPixelWrite? = nil, reuse: UnsafeMutablePointer<P08HostReuseTranscript>? = nil) -> Int {
     #if hasFeature(Embedded) || GIFTUI_COUNTER_TILED
     if let write { outer.control.pointee.backend.write = write }
     #endif
@@ -1703,7 +1885,7 @@ fileprivate func runP08StaticHost(owner: inout P08TypedBackingOwner, outer: borr
                             var entries = MutableSpan(_unsafeStart: outer.entries.baseAddress!, count: outer.entries.count)
                             try outer.canvas.pointee.withLifetime(entries: &entries, table: CounterValueTable(), capacity: 1, limits: outer.limits.staticCanvas!) { values in
                                 checks = withP08Storage(backing: &owner) { session in
-                                    runP08ScopedBody(session: session, models: models.borrowedScope(), root: root.borrowedRoot(), semantic: semantic, values: values, control: outer.control, audit: audit, assembly: assembly, foreignModels: foreignModels, foreignRoot: foreignRoot, foreignControl: foreignControl, dynamic: false, failAfterRuntime: failAfterRuntime, early: early, candidateFailure: candidateFailure)
+                                    runP08ScopedBody(session: session, models: models.borrowedScope(), root: root.borrowedRoot(), semantic: semantic, values: values, control: outer.control, audit: audit, assembly: assembly, foreignModels: foreignModels, foreignRoot: foreignRoot, foreignControl: foreignControl, dynamic: false, failAfterRuntime: failAfterRuntime, early: early, candidateFailure: candidateFailure, reuse: reuse)
                                 }
                             }
                         } catch { preconditionFailure("counter host Canvas") }
@@ -1729,6 +1911,32 @@ package func p08CounterHost(write: CounterTiledPixelWrite? = nil, backing: Unsaf
                 return runP08StaticHost(owner: &owner, outer: outer, failAfterRuntime: scenario == 1)
             }
         }
+        let firstModel = try models.issue(), secondModel = try models.issue()
+        let firstSemantic = try semantics.issue(), secondSemantic = try semantics.issue()
+        precondition(firstModel != secondModel && firstSemantic != secondSemantic)
+        counterTrace("reuse.namespaces", (firstModel, secondModel, firstSemantic, secondSemantic))
+        checks += withP08SelectedStatic(modelOwner: firstModel, semanticOwner: firstSemantic, backing: counterSelectedProfileBacking(backing, slot: 0)) { owner, outer in
+            var transcript = P08HostReuseTranscript()
+            return withUnsafeMutablePointer(to: &transcript) { transcript in
+                let original = owner.originalInventory()
+                let address = UInt(bitPattern: outer.control)
+                p08RequireFreshControl(outer.control)
+                var count = runP08StaticHost(owner: &owner, outer: outer, failAfterRuntime: false, write: write, reuse: transcript)
+                owner.requireEmpty()
+                p08RequireRetiredControl(outer.control)
+                outer.reconstruct(modelOwner: secondModel, semanticOwner: secondSemantic)
+                precondition(UInt(bitPattern: outer.control) == address)
+                count += runP08StaticHost(owner: &owner, outer: outer, failAfterRuntime: false, write: write, reuse: transcript)
+                owner.requireEmpty()
+                p08RequireSameInventory(owner.originalInventory(), original)
+                p08RequireRetiredControl(outer.control)
+                owner.release()
+                precondition(transcript.pointee.hosts == 2)
+                count += p08VerifyDestruction(owner.destructionTranscript(), original: original, expectedCount: 14)
+                p08ReuseLabel("static", "inventory-two-hosts"); p08ReuseLabel("static", "control-same-address"); p08ReuseLabel("static", "cleanup-backing-last")
+                return count + 3
+            }
+        }
         return checks
     } catch { preconditionFailure("counter host identities") }
 }
@@ -1751,6 +1959,14 @@ fileprivate struct P08DynamicOuterView: ~Copyable {
     let semantic: UnsafeMutablePointer<DynamicSemanticRecordStorage<CounterPayload>>
     let canvas: UnsafeMutablePointer<DynamicCanvasCallableStorage<SemanticRecordReference, CounterValueTable>>
     let control: UnsafeMutablePointer<CounterControl>
+    borrowing func reconstruct(modelOwner: ObservableModelOwnerIdentity, semanticOwner: SemanticRecordOwnerIdentity) {
+        p08RequireRetiredControl(control)
+        control.deinitialize(count: 1); canvas.deinitialize(count: 1); semantic.deinitialize(count: 1); root.deinitialize(count: 1)
+        root.initialize(to: DynamicObservableRootAdapter(identity: modelOwner, schema: 1, needsCapture: false, modelLimit: 2, claimLimit: 4, pinLimit: 2, captureLimit: 0)!)
+        semantic.initialize(to: DynamicSemanticRecordStorage(limits: counterSemanticLimits, owner: semanticOwner))
+        canvas.initialize(to: DynamicCanvasCallableStorage<SemanticRecordReference, CounterValueTable>(capacity: 1)); control.initialize(to: CounterControl())
+        p08RequireFreshControl(control)
+    }
     borrowing func audit(owner: borrowing P08TypedBackingOwner) -> RuntimeProfileValidationResult {
         let facts = owner.physicalFacts(), extent = semantic.pointee.retainedExtents
         let model = root.pointee.storageLayout
@@ -1776,13 +1992,13 @@ fileprivate func withP08SelectedDynamic<Result>(modelOwner: ObservableModelOwner
         withUnsafeMutablePointer(to: &outer.canvas) { canvas in
         withUnsafeMutablePointer(to: &outer.control) { control in
             withP08DynamicReservation { owner in
-                precondition(initializeP08Backing(&owner) == nil); defer { owner.release() }
+                precondition(initializeP08Backing(&owner) == nil); defer { owner.finishReservation() }
                 let view = P08DynamicOuterView(limits: limits, root: root, semantic: semantic, canvas: canvas, control: control)
                 return body(&owner, view)
             }
         } } } }
 }
-fileprivate func runP08DynamicHost(owner: inout P08TypedBackingOwner, outer: borrowing P08DynamicOuterView, failAfterRuntime: Bool, early: UInt8 = 0, candidateFailure: RuntimeCompletePipelineStage? = nil) -> Int {
+fileprivate func runP08DynamicHost(owner: inout P08TypedBackingOwner, outer: borrowing P08DynamicOuterView, failAfterRuntime: Bool, early: UInt8 = 0, candidateFailure: RuntimeCompletePipelineStage? = nil, reuse: UnsafeMutablePointer<P08HostReuseTranscript>? = nil) -> Int {
     guard case .valid(let audit) = outer.audit(owner: owner), let assembly = CounterHostAssembly.validate(audit, kind: counterDynamicHostKind) else { preconditionFailure("counter Dynamic valid-only host") }
     precondition(CounterHostAssembly.validate(audit, kind: counterDynamicHostKind, sourceCallbacks: 21) == nil)
     precondition(CounterHostAssembly.validate(audit, kind: counterDynamicHostKind, repositoryCallbacks: 2) == nil)
@@ -1797,7 +2013,7 @@ fileprivate func runP08DynamicHost(owner: inout P08TypedBackingOwner, outer: bor
                         do throws(DrawingError) {
                             try outer.canvas.pointee.withLifetime(table: CounterValueTable(), limits: counterCanvasLimits, configuredCapacity: 1) { values in
                                 checks = withP08Storage(backing: &owner) { session in
-                                    runP08ScopedBody(session: session, models: models.borrowedScope(), root: root.borrowedRoot(), semantic: semantic, values: values, control: outer.control, audit: audit, assembly: assembly, foreignModels: foreignModels, foreignRoot: foreignRoot, foreignControl: foreignControl, dynamic: true, failAfterRuntime: failAfterRuntime, early: early, candidateFailure: candidateFailure)
+                                    runP08ScopedBody(session: session, models: models.borrowedScope(), root: root.borrowedRoot(), semantic: semantic, values: values, control: outer.control, audit: audit, assembly: assembly, foreignModels: foreignModels, foreignRoot: foreignRoot, foreignControl: foreignControl, dynamic: true, failAfterRuntime: failAfterRuntime, early: early, candidateFailure: candidateFailure, reuse: reuse)
                                 }
                             }
                         } catch { preconditionFailure("counter Dynamic Canvas") }
@@ -1817,6 +2033,32 @@ package func p08CounterDynamicHost() -> Int {
                 outer.control.pointee.terminalRetry = scenario == 2
                 outer.control.pointee.idleQuiesceMode = scenario >= 3 ? scenario - 1 : 0
                 return runP08DynamicHost(owner: &owner, outer: outer, failAfterRuntime: scenario == 1)
+            }
+        }
+        let firstModel = try models.issue(), secondModel = try models.issue()
+        let firstSemantic = try semantics.issue(), secondSemantic = try semantics.issue()
+        precondition(firstModel != secondModel && firstSemantic != secondSemantic)
+        counterTrace("reuse.namespaces", (firstModel, secondModel, firstSemantic, secondSemantic))
+        checks += withP08SelectedDynamic(modelOwner: firstModel, semanticOwner: firstSemantic) { owner, outer in
+            var transcript = P08HostReuseTranscript()
+            return withUnsafeMutablePointer(to: &transcript) { transcript in
+                let original = owner.originalInventory()
+                let address = UInt(bitPattern: outer.control)
+                p08RequireFreshControl(outer.control)
+                var count = runP08DynamicHost(owner: &owner, outer: outer, failAfterRuntime: false, reuse: transcript)
+                owner.requireEmpty()
+                p08RequireRetiredControl(outer.control)
+                outer.reconstruct(modelOwner: secondModel, semanticOwner: secondSemantic)
+                precondition(UInt(bitPattern: outer.control) == address)
+                count += runP08DynamicHost(owner: &owner, outer: outer, failAfterRuntime: false, reuse: transcript)
+                owner.requireEmpty()
+                p08RequireSameInventory(owner.originalInventory(), original)
+                p08RequireRetiredControl(outer.control)
+                owner.release()
+                precondition(transcript.pointee.hosts == 2)
+                count += p08VerifyDestruction(owner.destructionTranscript(), original: original, expectedCount: 9)
+                p08ReuseLabel("dynamic", "inventory-two-hosts"); p08ReuseLabel("dynamic", "control-same-address"); p08ReuseLabel("dynamic", "cleanup-backing-last")
+                return count + 3
             }
         }
         return checks

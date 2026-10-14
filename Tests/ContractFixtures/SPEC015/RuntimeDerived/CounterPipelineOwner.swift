@@ -20,8 +20,39 @@ struct CounterRuntimeControl {
     var result: RuntimeCompletePipelineResult<RuntimeOwnerFailure>?
     var context = ExecutionContext(cycle: nil, semanticRevision: nil, candidateFrame: nil, phase: .idle)
     var unavailable = false
+    var changed = true
+}
+// Fixture-private producer identity; raw Execution identities remain runtime-local.
+struct CounterProducerOrigin: Equatable {
+    private let owner: UInt
+    private let serial: UInt64
+    fileprivate init(owner: UInt, serial: UInt64) { self.owner = owner; self.serial = serial }
+}
+struct CounterProducedAction {
+    fileprivate let origin: CounterProducerOrigin
+    let captured: CapturedAction<SemanticCompleteIdentity>
+    let targetGeneration: UInt32
+    let targetIdentity: SemanticCompleteIdentity
+    fileprivate init(origin: CounterProducerOrigin, captured: CapturedAction<SemanticCompleteIdentity>, targetGeneration: UInt32, targetIdentity: SemanticCompleteIdentity) {
+        self.origin = origin; self.captured = captured; self.targetGeneration = targetGeneration; self.targetIdentity = targetIdentity
+    }
 }
 struct CounterControl {
+    private var producerOrigin: CounterProducerOrigin?
+    private var selectedProducer = false
+    mutating func installProducerOrigin(owner: UInt, serial: UInt64) {
+        precondition(!selectedProducer && producerOrigin == nil && admissionController == nil)
+        selectedProducer = true; producerOrigin = .init(owner: owner, serial: serial)
+    }
+    func snapshotProducerOrigin() -> CounterProducerOrigin? { producerOrigin }
+    func acceptsProducer(_ origin: CounterProducerOrigin?) -> Bool {
+        selectedProducer ? origin != nil && origin == producerOrigin : origin == nil
+    }
+    mutating func retireProducerOrigin() {
+        precondition(!inputGate.inputIsEligible && !wakeEnabled && !frameActive && admission.pointerCount == 0 && admission.pendingStateCount == 0 && !admission.sealActive)
+        producerOrigin = nil
+    }
+
     #if hasFeature(Embedded) || GIFTUI_COUNTER_TILED
     var backend = CounterTiledBackendStorage()
     #else
@@ -145,7 +176,10 @@ where Geometry: CounterGeometry & ~Copyable & ~Escapable, Candidate: CounterCand
     var header: RenderPlanHeader?
     var provenance: FrameProvenance?
     var presentation: PresentationRevision?
-    var changed = true
+    var changed: Bool {
+        get { control.pointee.runtime.changed }
+        set { control.pointee.runtime.changed = newValue }
+    }
     var pending = false
     var presentationIntentState: PresentationIntentState { quiescent || control.pointee.unavailable ? .unavailable : pending ? .pending : .satisfied }
     var hasAllocatedCandidateFrame: Bool { phase.context.candidateFrame != nil }
@@ -214,7 +248,43 @@ where Geometry: CounterGeometry & ~Copyable & ~Escapable, Candidate: CounterCand
         if control.pointee.fault == stage { return control.pointee.boundaryFailure }
         return nil
     }
+    borrowing func observeModelValue() -> UInt8 {
+        guard let rootIdentity, let key = root.modelKey(identity: rootIdentity, ordinal: 0) else { preconditionFailure("reuse current model") }
+        do throws(ObservableStateError) {
+            try models.beginFrame(); try models.pin(key)
+            var value: UInt8 = 0
+            do throws(_GiftUIAccessFailure) {
+                value = try models.withRead(CounterDomain.self) { (read) throws(_GiftUIAccessFailure) in
+                    try CounterRead<CounterDomain>(key, read: read).value
+                }
+            } catch { throw ObservableStateError(accessFailure: error) }
+            try models.endFrame()
+            return value
+        } catch { preconditionFailure("reuse actual model observation") }
+    }
+    borrowing func observeProducedAction() -> CounterProducedAction {
+        guard let origin = control.pointee.snapshotProducerOrigin(), let rootIdentity,
+              let targetGeneration = root.generation(identity: rootIdentity, ordinal: 0, publishable: false) else { preconditionFailure("selected capture observation") }
+        var capture = PointerActionCapture<SemanticCompleteIdentity>()
+        let point = control.pointee.actionPoints[0]
+        _ = ExecutionGestureAdapter.down(at: point, capture: &capture, resolver: interaction)
+        guard case .activationAdmitted(let captured) = ExecutionGestureAdapter.up(at: point, capture: &capture, resolver: interaction) else { preconditionFailure("actual selected capture") }
+        return .init(origin: origin, captured: captured, targetGeneration: targetGeneration, targetIdentity: rootIdentity)
+    }
+    // Owned adversarial observation only; the real scoped bridge stays here.
+    borrowing func deliverProducedAction(_ produced: CounterProducedAction) -> Bool {
+        guard control.pointee.acceptsProducer(produced.origin) else { return false }
+        guard !control.pointee.unavailable, let rootIdentity else { return false }
+        let target = ObservableStateRootTargetAccess(root: root, identity: rootIdentity, ordinal: 0)
+        let result = RuntimeRecordInteractionBridge.dispatch(produced.captured, records: interaction, target: target, actionType: CounterAction.self, operation: CounterHandler.operation)
+        guard case .interaction(.dispatched) = result else { return false }
+        control.pointee.applied += 1
+        control.pointee.runtime.changed = true
+        control.pointee.emitCounterWake(.semanticDirty)
+        return true
+    }
     mutating func admitAndSeal() -> RuntimePipelineStepResult<RuntimeOwnerFailure> {
+
         control.pointee.cleanups = 0; control.pointee.cleanupCount = 0
         guard !quiescent else { return .failure(.execution(.requiredFacilityUnavailable)) }
         if let error = phase.beginCycle(reservingFrom: &counters) { return .failure(.execution(error)) }

@@ -1,0 +1,62 @@
+{
+  "kind": "source-freeze-unexecuted",
+  "activity_input": "5ffb7f26",
+  "implementation_baseline": "369906ab",
+  "post_freeze_corrective_cycles_consumed": 0,
+  "post_freeze_corrective_cycles_limit": 2,
+  "compiler_invocations": 0,
+  "runtime_invocations": 0,
+  "initial_matrix_cells_consumed": 0,
+  "initial_image_cells_consumed": 0,
+  "sources": {
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterScopedStorage.swift": "ce84ae4a5093d0e87119a5b2d7172674722f880f61693f3f33daa70882954d5e",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterPipelineOwner.swift": "692ef4ef9f308579deec1f70ef3604b4adde5af1d85a012f17d8fd18350b9950",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterAdmission.swift": "e5b03a220709df8d9c439fde4d7728ef3a4e9e9385eeb0059b6cdb8f27df6d47",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterApplication.swift": "3d9c21a66423bfc26c60c785583a8f6bc614a10ad0fef767bb48607e88f7e415",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostOwner.swift": "2be98f52154a9de6a74f5bd6e91c6cabde3bbf7a10d702f798e15609ffa81571",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterDynamicHostOwner.swift": "94d4aecc371fe92cd38e68c455e0c1e05e0237e0713136b721299ac49a17660f",
+    "Tests/ContractFixtures/SPEC015/RuntimeDerived/CounterHostCorpus.swift": "62813ea95b2b1cd6bfc430fc66e0aae25e4c6f9db8d8e7329b5c10000a739c6b",
+    "scripts/contracts/check-spec-015-counter.py": "6fc0793c4a2b84701aae3ece56096b73d90b7296007439032c722fe674d013ad"
+  },
+  "route_labels": {
+    "static": [
+      "so06-reuse-static-inventory-two-hosts",
+      "so06-reuse-static-control-same-address",
+      "so06-reuse-static-terminal-old-host",
+      "so06-reuse-static-raw-namespace-collision",
+      "so06-reuse-static-action-stale",
+      "so06-reuse-static-action-current",
+      "so06-reuse-static-input-stale",
+      "so06-reuse-static-input-current",
+      "so06-reuse-static-admission-stale",
+      "so06-reuse-static-admission-current",
+      "so06-reuse-static-source-stale",
+      "so06-reuse-static-source-current",
+      "so06-reuse-static-cleanup-backing-last"
+    ],
+    "dynamic": [
+      "so06-reuse-dynamic-inventory-two-hosts",
+      "so06-reuse-dynamic-control-same-address",
+      "so06-reuse-dynamic-terminal-old-host",
+      "so06-reuse-dynamic-raw-namespace-collision",
+      "so06-reuse-dynamic-action-stale",
+      "so06-reuse-dynamic-action-current",
+      "so06-reuse-dynamic-input-stale",
+      "so06-reuse-dynamic-input-current",
+      "so06-reuse-dynamic-admission-stale",
+      "so06-reuse-dynamic-admission-current",
+      "so06-reuse-dynamic-source-stale",
+      "so06-reuse-dynamic-source-current",
+      "so06-reuse-dynamic-cleanup-backing-last"
+    ]
+  },
+  "profile_routes": {
+    "macos-dynamic": "dynamic",
+    "macos-static": "static",
+    "raspberry-pi-armv6": "dynamic",
+    "nrf52840-embedded": "static"
+  },
+  "scoped_compiler_labels_per_nonembedded_profile": 384,
+  "scoped_compiler_labels_embedded": 202,
+  "native_exclusivity_labels": 5
+}

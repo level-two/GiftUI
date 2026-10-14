@@ -128,32 +128,39 @@ struct CounterAdmission: ExecutionAdmissionSink {
     typealias StateChangeFact = UInt8
     typealias CompletionFact = UInt16
     typealias Controller = SingleSourceExecutionAdmissionState<CounterQueuedFacts>
-    var controller: Controller {
+    private var controller: Controller {
         get { control.pointee.admissionController! }
         set { control.pointee.admissionController = newValue }
         _modify { yield &control.pointee.admissionController! }
     }
-    let control: UnsafeMutablePointer<CounterControl>
+    private let control: UnsafeMutablePointer<CounterControl>
+    private let producerOrigin: CounterProducerOrigin?
+    private let rejectionContext: ExecutionContext
     static var pointerStateStorageBytes: Int { Controller.pointerStateStorageBytes }
     init(control: UnsafeMutablePointer<CounterControl>, limits: ExecutionLimits) {
         self.control = control
+        producerOrigin = control.pointee.snapshotProducerOrigin(); rejectionContext = control.pointee.context
         precondition(control.pointee.admissionController == nil)
         control.pointee.admissionController = Controller(limits: limits, context: control.pointee.context, committedPresentationRevision: control.pointee.runtime.committedPresentation, storage: CounterQueuedFacts(control: control))
     }
     init(borrowing control: UnsafeMutablePointer<CounterControl>) {
         precondition(control.pointee.admissionController != nil)
         self.control = control
+        producerOrigin = control.pointee.snapshotProducerOrigin(); rejectionContext = control.pointee.context
     }
-    mutating func synchronize() {
+    private mutating func synchronize() {
         controller.synchronize(context: control.pointee.context, committedPresentationRevision: control.pointee.runtime.committedPresentation, sealClosed: control.pointee.admission.sealActive, quiescent: control.pointee.unavailable)
     }
     mutating func submit(pointer: NormalizedPointerEvent) -> ExecutionAdmissionOutcome {
+        guard control.pointee.acceptsProducer(producerOrigin) else { return .init(result: .unavailable, context: rejectionContext) }
         synchronize(); let outcome = controller.submit(pointer: pointer); if outcome.result == .queued { control.pointee.emitCounterWake(.admittedWork, acceptedFact: true) }; counterTrace("admission.pointer", outcome); return outcome
     }
     mutating func submit(stateChange: UInt8) -> ExecutionAdmissionOutcome {
+        guard control.pointee.acceptsProducer(producerOrigin) else { return .init(result: .unavailable, context: rejectionContext) }
         synchronize(); let outcome = controller.submit(stateChange: stateChange); if outcome.result == .queued { control.pointee.emitCounterWake(.admittedWork, acceptedFact: true) }; counterTrace("admission.state", outcome); return outcome
     }
     mutating func submit(completion: UInt16) -> ExecutionAdmissionOutcome {
+        guard control.pointee.acceptsProducer(producerOrigin) else { return .init(result: .unavailable, context: rejectionContext) }
         synchronize(); let outcome = controller.submit(completion: completion); if outcome.result == .queued { control.pointee.emitCounterWake(.admittedWork, acceptedFact: true) }; counterTrace("admission.completion", outcome); return outcome
     }
 }
@@ -178,7 +185,7 @@ struct CounterWake: ExecutionWakeRequester, Sendable {
 }
 
 
-struct CounterAdmissionBacking {
+struct CounterAdmissionBacking: Equatable {
     var pendingPointers: InlineArray<2, NormalizedPointerEvent?> = .init(repeating: nil)
     var pendingStates: InlineArray<34, UInt8> = .init(repeating: 0)
     var pendingStateCount: UInt16 = 0
@@ -191,6 +198,12 @@ struct CounterAdmissionBacking {
     var sealedAction: CapturedAction<SemanticCompleteIdentity>?
     var sealedPointerCount: UInt16 = 0
     var sealActive = false
+    static func == (left: Self, right: Self) -> Bool {
+        guard left.pendingStateCount == right.pendingStateCount && left.pendingCompletion == right.pendingCompletion && left.sealedStateCount == right.sealedStateCount && left.sealedStateCursor == right.sealedStateCursor && left.sealedCompletion == right.sealedCompletion && left.sealedAction == right.sealedAction && left.sealedPointerCount == right.sealedPointerCount && left.sealActive == right.sealActive else { return false }
+        for index in 0..<2 { if left.pendingPointers[index] != right.pendingPointers[index] || left.sealedPointers[index] != right.sealedPointers[index] { return false } }
+        for index in 0..<34 { if left.pendingStates[index] != right.pendingStates[index] || left.sealedStates[index] != right.sealedStates[index] { return false } }
+        return true
+    }
     var pointerCount: UInt16 { var count: UInt16 = 0; for i in 0..<2 where pendingPointers[i] != nil { count += 1 }; return count }
     var pendingState: UInt8? {
         get { pendingStateCount == 0 ? nil : pendingStates[0] }

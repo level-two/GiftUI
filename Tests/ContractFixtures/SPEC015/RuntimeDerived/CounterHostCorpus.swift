@@ -8,7 +8,7 @@ import GiftUIRuntimeCore
 import GiftUISemanticCore
 
 // Bounded observations copied from actual traversal, never fed back as topology.
-struct CounterSemanticSnapshot {
+struct CounterSemanticSnapshot: Equatable {
     var scalars: InlineArray<22, UInt32> = .init(repeating: 0)
     var scalarCount: UInt16 = 0
     var textLengths: InlineArray<4, UInt16> = .init(repeating: 0)
@@ -16,6 +16,12 @@ struct CounterSemanticSnapshot {
     var disabledMask: UInt8 = 0
     var disabledCount: UInt8 = 0
     var canvasOrigin = Point(x: 0, y: 0)
+    static func == (left: Self, right: Self) -> Bool {
+        guard left.scalarCount == right.scalarCount && left.texts == right.texts && left.disabledMask == right.disabledMask && left.disabledCount == right.disabledCount && left.canvasOrigin == right.canvasOrigin else { return false }
+        for index in 0..<22 { if left.scalars[index] != right.scalars[index] { return false } }
+        for index in 0..<4 { if left.textLengths[index] != right.textLengths[index] { return false } }
+        return true
+    }
     init() {}
     init(_ bank: borrowing SemanticRecordView<CounterPayload>) {
         for index: UInt16 in 0..<bank.recordCount {

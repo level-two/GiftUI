@@ -27,6 +27,8 @@ revision_path = ROOT / 'Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/rema
 revision_receipt = json.loads(revision_path.read_text())
 reviewed_revisions = revision_receipt['sources'] | revision_receipt['recipe_metadata']
 def verify_recipe_source(name, expected):
+    if digest(ROOT / name) == expected:
+        return
     if name in reviewed_revisions:
         revision = reviewed_revisions[name]
         assert expected == revision['recipe_sha256'], name + ': unreviewed recipe revision'
@@ -132,6 +134,12 @@ trusted = fixture / 'CounterScopedStorage.swift'
 trusted_source = trusted.read_text()
 counter_sources = [fixture / name for name in ('CounterModel.swift', 'CounterModelProbe.swift', 'CounterSemantic.swift', 'CounterSemanticProbe.swift', 'CounterGeometry.swift', 'CounterStaticGeometry.swift', 'CounterRender.swift', 'CounterFixedStorageProbe.swift')]
 without_trusted = [path for path in join_sources if path != trusted]
+reuse_suffixes = ('inventory-two-hosts', 'control-same-address', 'terminal-old-host',
+                  'raw-namespace-collision', 'action-stale', 'action-current',
+                  'input-stale', 'input-current', 'admission-stale', 'admission-current',
+                  'source-stale', 'source-current', 'cleanup-backing-last')
+reuse_routes = ('dynamic',) if args.profile in ('macos-dynamic', 'raspberry-pi-armv6') else ('static',) if args.profile in ('macos-static', 'nrf52840-embedded') else ('static', 'dynamic')
+registered_reuse_labels = ['so06-reuse-' + route + '-' + suffix for route in reuse_routes for suffix in reuse_suffixes]
 planned_scoped_labels = []
 def scoped_variant(label, source, diagnostic=None):
     path = out / (label + '.swift')
@@ -275,6 +283,9 @@ if not is_target:
     host_objects = [path for path in sorted(host.glob('GiftUI*.o')) if path.name != 'GiftUIHostConfiguration.o']
     run('link', [compiler, *flags, main, core / 'GiftUI.o', *host_objects, *sorted(out.glob('*.o')), '-o', out / 'counter'])
     execution = run('execute', [out / 'counter']).strip()
+    for label in registered_reuse_labels:
+        assert execution.splitlines().count(label) == 1, label + ': missing or duplicate actual reuse oracle'
+    checks.extend(dict(name=label, passed=True, evidence='execute.log') for label in registered_reuse_labels)
     trap_flags = [*flags, '-D', 'GIFTUI_COUNTER_NATIVE_EXCLUSIVITY']
     run('so06-native-exclusivity-module', [compiler, *trap_flags, '-module-name', 'P08CounterNativeExclusivity', '-emit-module', '-emit-object', *counter_sources, *storage_sources, *join_sources, '-emit-module-path', out / 'P08CounterNativeExclusivity.swiftmodule', '-o', out / 'P08CounterNativeExclusivity.o'])
     trap_objects = [path for path in sorted(out.glob('*.o')) if path.name != 'P08CounterRuntime.o']
@@ -288,7 +299,7 @@ if not is_target:
 else:
     execution = 'cross-compiled current selected counter host only; no target execution or linked-image claim'
     (out / 'objects.list').write_text('\n'.join(map(str, [core / 'GiftUI.o', *sorted(out.glob('*.o'))])) + '\n')
-receipt = dict(scope=__doc__, raster_realization="tiled" if is_target else args.raster_realization, profile=prior['profile'], selected_host_profile=args.profile, target_flags=flags, embedded_dynamic_escape_applicable=not is_embedded, compiler=str(compiler.relative_to(ROOT)), compiler_sha256=digest(compiler), runtime_build=str(base.relative_to(ROOT)), runtime_receipt_sha256=digest(base / 'result.json'), host_build=str(host.relative_to(ROOT)), host_receipt_sha256=digest(host / 'result.json'), inputs={str(p.relative_to(ROOT)): digest(p) for p in inputs}, commands=commands, checks=checks, planned_scoped_labels=planned_scoped_labels, execution=execution)
+receipt = dict(scope=__doc__, raster_realization="tiled" if is_target else args.raster_realization, profile=prior['profile'], selected_host_profile=args.profile, target_flags=flags, embedded_dynamic_escape_applicable=not is_embedded, compiler=str(compiler.relative_to(ROOT)), compiler_sha256=digest(compiler), runtime_build=str(base.relative_to(ROOT)), runtime_receipt_sha256=digest(base / 'result.json'), host_build=str(host.relative_to(ROOT)), host_receipt_sha256=digest(host / 'result.json'), inputs={str(p.relative_to(ROOT)): digest(p) for p in inputs}, commands=commands, checks=checks, planned_scoped_labels=planned_scoped_labels, registered_reuse_labels=registered_reuse_labels, reuse_execution=not is_target, execution=execution)
 receipt['scoped_negative_source'] = str(trusted.relative_to(ROOT))
 receipt['artifacts'] = {str(p.relative_to(out)): dict(sha256=digest(p), bytes=p.stat().st_size) for p in out.iterdir() if p.is_file()}
 (out / 'result.json').write_text(json.dumps(receipt, indent=2) + '\n')

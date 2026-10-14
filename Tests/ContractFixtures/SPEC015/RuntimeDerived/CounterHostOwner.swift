@@ -199,6 +199,24 @@ where Geometry: CounterGeometry & ~Copyable & ~Escapable, Candidate: CounterCand
         case .retired(let storage, let span): self = .retired(consume storage, span); return false
         }
     }
+    borrowing func observeModelValue() -> UInt8 {
+        switch self {
+        case .active(let coordinator, _, _): return coordinator.opportunity.observeModelValue()
+        default: preconditionFailure("selected active model observation")
+        }
+    }
+    borrowing func observeProducedAction() -> CounterProducedAction {
+        switch self {
+        case .active(let coordinator, _, _): return coordinator.opportunity.observeProducedAction()
+        default: preconditionFailure("selected active observation")
+        }
+    }
+    borrowing func deliverProducedAction(_ action: CounterProducedAction) -> Bool {
+        switch self {
+        case .active(let coordinator, _, _): return coordinator.opportunity.deliverProducedAction(action)
+        default: return false
+        }
+    }
     @_lifetime(self: copy self)
     mutating func runOpportunity() -> RunCycleResult<RuntimeOwnerFailure> {
         switch consume self {
@@ -347,6 +365,10 @@ where Geometry: CounterGeometry & ~Copyable & ~Escapable, Candidate: CounterCand
     mutating func resetProfileStorage() { precondition(teardownStep == 6); state.resetProfileStorage(); teardownStep = 7 }
     mutating func invalidateAssemblyReportRuntimeUse() { precondition(teardownStep == 7); reportValid = false; teardownStep = 8 }
     private mutating func quiesceOnce() { if !quiesced { state.quiesce(); quiesced = true } }
+    borrowing func observeModelValue() -> UInt8 { state.observeModelValue() }
+    borrowing func observeProducedAction() -> CounterProducedAction { state.observeProducedAction() }
+    borrowing func deliverProducedAction(_ action: CounterProducedAction) -> Bool { state.deliverProducedAction(action) }
+    borrowing func observeApplicationProducer() -> CounterApplicationOwners { application! }
     mutating func runOpportunity() -> RunCycleResult<RuntimeOwnerFailure> { precondition(reportValid && activationStep == 7); return state.runOpportunity() }
 }
 

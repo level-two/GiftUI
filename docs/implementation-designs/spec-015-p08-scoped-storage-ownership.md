@@ -24,6 +24,21 @@ superseded_by: null
 > design review; it is not implemented code, source authorization, compiler
 > acceptance or target-fit evidence.
 
+## Current integrated source candidate — 2026-10-14
+
+The [broader authorized activity](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-integrated-activity.md)
+now governs necessary existing-contract completion and predefined validation.
+The [initial source freeze](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-integrated-source-freeze.md)
+records the realized private origin guards and actual two-host/same-inventory/
+same-control corpus, necessary existing host-state observation forwarding and
+symbolic accounting. The single existing dirty flag resides in runtime control;
+the pipeline uses a computed view, and the guarded operation-only bridge test
+marks that same flag. No duplicate dirty/transaction state or scoped getter is
+introduced. This is an unreviewed source candidate, with no compiler/runtime/fit
+claim; independent Strong review and the predefined validation are next under
+cycles0/2. The dated design proposal below preserves its historical decision
+boundary and does not reinstate obsolete per-file/source-only permission stops.
+
 ## Repeated Full Hosts — Derived Addendum, 2026-10-14
 
 Input is frozen source `369906abf54f6341b0f0287e09d3dfeec28ab005`, independently
