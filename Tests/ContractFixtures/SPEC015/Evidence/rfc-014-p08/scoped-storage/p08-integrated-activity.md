@@ -1,6 +1,20 @@
 # P08 integrated completion activity — 2026-10-14
 
-## Current authorization and boundary
+## Current package disposition — STOP
+
+Final source `8ef34f59`, source review `72bd3a11`, final affected counter rerun
+failed during Swift 6.4 SILGenCleanup ownership verification of `p08CounterGraph`.
+[Independent package report](p08-integrated-package-stop.md) and
+[immutable final failure](integrated-cycle2-counter/manifest.json).
+Corrective cycles **2/2 consumed**, with both affected reruns failed. Initial
+driver cells **4/14 consumed: 3 pass, 1 fail**; remaining ten initial cells and
+two images unrun. Source readiness does not establish compiler/runtime success.
+The repair-budget stop now applies: no additional source/validation activity
+until a new explicit bounded continuation; documentation and evidence preservation
+complete this package report. Existing resource/contract/platform limits and
+historical budgets/guard remain unchanged. P08 and all criteria remain open.
+
+## Authorization and boundary at entry
 
 Eugene requested a broader activity instead of repeated file-level/micro-step
 approvals and then explicitly instructed: “Please proceed with this broader
@@ -159,3 +173,14 @@ Run the pinned formatter before this invocation. Corrective cycles1/2 consumed;
 initial driver cells4 (3pass/1fail); cycle1 counter rerun consumed on invocation.
 Images0; remaining initial profiles wait. Source-readiness, runtime, fit and P08
 remain open; historical budgets and the two-unproductive guard remain intact.
+
+## Package reporting verification
+
+Independent package-stop assessment/evidence committed `cd00b0b1`. Final
+formatter exit0 left source unchanged before the final run. Documentation-only
+checks pass: whitespace; 494 local Markdown file targets across the current
+navigation/report; governance198nodes/2,019edges, seven features and76lifecycle
+artifacts plus registered task-evidence validation. These are documentation
+checks, not a replacement for the failed counter or unrun target/resource gates.
+Current navigation records the exhausted-budget boundary; historical checkpoints
+and immutable source/review/run evidence remain intact.

@@ -23,6 +23,18 @@ superseded_by: null
 
 # SPEC-015 Implementation Plan
 
+Current P08 package boundary — **STOP, 2026-10-14**. Source `8ef34f59`
+passed independent source review `72bd3a11`, but the final macOS Dynamic counter
+compile failed in Swift 6.4 SILGenCleanup ownership verification for the
+`p08CounterGraph` closure. [Package evidence and disposition](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-integrated-package-stop.md).
+Three component cells passed (459/5,904/187 assertions); actual counter initial
+attempt and both corrective reruns failed before runtime. Both corrective cycles
+are consumed (2/2), with ten remaining initial cells and two images unrun.
+No automatic source repair, rerun, probe or toolchain change remains authorized.
+All nine SO criteria, fit and P08 remain open. The earlier dated checkpoints below
+are historical; this boundary supersedes their pending/current action wording.
+
+
 Current integrated independent SOURCE review — 2026-10-14: [Strong review of `e2d9db9c`](../../Tests/ContractFixtures/SPEC015/Evidence/rfc-014-p08/scoped-storage/p08-integrated-independent-source-review.md) finds **B01 blocking**: current retained-action delivery bypasses the admitted/sealed SPEC-009 mutation path. Original producer guards and full same-inventory/same-address host reconstruction are present; O01 requests targeted application-counter fingerprint coverage. Source readiness fails until correction; no compiler/runtime/fit/conformance result. Broader activity permits a bundled autonomous local correction and independent assessment, with cycles **0/2 consumed**, matrix/images **0 consumed** at review. Historical allowances and the two-unproductive guard persist; no renewed file permission gate.
 
 
