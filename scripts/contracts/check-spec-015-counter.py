@@ -4,9 +4,10 @@ import argparse
 import hashlib
 import json
 import pathlib
+import re
 import shlex
-import subprocess
 import tempfile
+from p08_check_collection import Collector
 
 ROOT = pathlib.Path(__file__).resolve().parents[2]
 parser = argparse.ArgumentParser()
@@ -14,6 +15,10 @@ parser.add_argument('--runtime-build', required=True, type=pathlib.Path)
 parser.add_argument('--host-build', type=pathlib.Path, default=ROOT / '.build/contracts/p08-scoped-host-c5eocina')
 parser.add_argument('--profile', choices=('macos-dynamic', 'macos-static', 'raspberry-pi-armv6', 'nrf52840-embedded'))
 parser.add_argument('--raster-realization', choices=('full-surface', 'tiled'), default='full-surface')
+parser.add_argument('--collect-failures', action='store_true', help='collect independent failures; block dependent checks')
+parser.add_argument('--resume-from', type=pathlib.Path, help='verified complete collection build for focused rerun')
+parser.add_argument('--select-family', action='append', default=[], help='complete matcher/control family to rerun (repeatable)')
+parser.add_argument('--import-legacy-controls', type=pathlib.Path, help='exact immutable compatibility2 partial packet; rebuild preparation')
 args = parser.parse_args()
 base = args.runtime_build.resolve()
 prior = json.loads((base / 'result.json').read_text())
@@ -105,18 +110,30 @@ storage_sources = sorted(fixture.glob('StaticCounter*.swift'))
 join_sources = [fixture / name for name in ('CounterScopedStorage.swift', 'CounterScopedStorageProbe.swift', 'CounterAdmission.swift', 'CounterPipelineOwner.swift', 'CounterProfileStorage.swift', 'CounterStorageMeasurement.swift', 'CounterStorageRegions.swift', 'CounterCoordinatorProbe.swift', 'CounterWorkload.swift', 'CounterHostAssembly.swift', 'CounterHostOwner.swift', 'CounterHostProbe.swift', 'CounterDynamicHostOwner.swift', 'CounterDynamicHostProbe.swift', 'CounterHostCorpus.swift', 'CounterNativeRaster.swift', 'CounterTiledRaster.swift', 'CounterPixelOracle.swift', 'CounterApplication.swift', 'CounterWakeIntegration.swift', 'CounterGraphProbe.swift', 'CounterRouteEntry.swift')]
 inputs.extend(join_sources)
 inputs.extend(storage_sources)
-commands, checks = [], []
-def run(label, command, diagnostic=None):
-    command = list(map(str, command))
-    commands.append(shlex.join(command))
-    (out / 'commands.txt').write_text('\n'.join(commands) + '\n')
-    result = subprocess.run(command, cwd=ROOT, capture_output=True, text=True)
-    (out / (label + '.log')).write_text(result.stdout + result.stderr)
-    okay = result.returncode == 0 if diagnostic is None else result.returncode != 0 and all(value in result.stdout + result.stderr for value in diagnostic)
-    checks.append(dict(name=label, exit=result.returncode, passed=okay, diagnostic=diagnostic))
-    if not okay:
-        raise SystemExit(f'{label}: {out}\n{result.stdout}{result.stderr}')
-    return result.stdout
+inputs.append(ROOT / 'scripts/contracts/p08_check_collection.py')
+host_sources = sorted((ROOT / 'Sources/GiftUIHostConfiguration').glob('*.swift')) + sorted((ROOT / 'Sources/GiftUIHostConfiguration/Generated').glob('*.swift'))
+inputs.extend(host_sources)
+for recipe in (prior, host_receipt) if is_target else (prior,):
+    for old in recipe['commands']:
+        pieces = shlex.split(old)
+        if '-module-name' in pieces and '-emit-module' in pieces:
+            name = pieces[pieces.index('-module-name') + 1]
+            selected = name.startswith('GiftUI') if recipe is prior else name in ('GiftUICapabilities', 'GiftUIFailureCore', 'GiftUISurfaceCore', 'GiftUIDisplayCore', 'GiftUIRasterCore', 'GiftUIBackendIntegration')
+            if selected:
+                inputs.extend(pathlib.Path(token) for token in pieces[pieces.index('-module-name') + 2:] if token.endswith('.swift'))
+collector = Collector(ROOT, out, args.collect_failures, args.resume_from, args.select_family, args.import_legacy_controls)
+recipe_identity = dict(profile=prior['profile'], selected_host_profile=args.profile,
+                       raster_realization='tiled' if is_target else args.raster_realization,
+                       compiler_sha256=digest(compiler), runtime_receipt_sha256=digest(base / 'result.json'),
+                       host_receipt_sha256=digest(host / 'result.json'))
+collector.verify_inputs({str(path.relative_to(ROOT)): digest(path) for path in inputs}, recipe_identity)
+commands, checks = collector.commands, collector.checks
+preparation = []
+def run(label, command, diagnostic=None, requires=None):
+    if requires is None:
+        requires = preparation[-1:]
+        preparation.append(label)
+    return collector.run(label, command, diagnostic, requires)
 # Rebuild the unchanged selected runtime graph with the one newly guarded
 # Semantic Core reset method. Never import the historical module as fresh source.
 rebuilt_runtime = []
@@ -175,7 +192,10 @@ def scoped_variant(label, source, diagnostic=None):
     path = out / (label + '.swift')
     path.write_text(trusted_source + '\n' + source + '\n')
     planned_scoped_labels.append(label)
-    run(label, [compiler, *flags, '-module-name', 'P08CounterRuntime', '-emit-object', *counter_sources, *storage_sources, *without_trusted, path, '-o', out / (label + '.o')], diagnostic)
+    prerequisites = ['counter-model']
+    if label.endswith('-negative'):
+        prerequisites.append(label.removesuffix('-negative') + '-positive')
+    run(label, [compiler, *flags, '-module-name', 'P08CounterRuntime', '-emit-object', *counter_sources, *storage_sources, *without_trusted, path, '-o', out / (label + '.o')], diagnostic, prerequisites)
     # Positive variant objects are diagnostic controls, never extra linked owners.
     object_path = out / (label + '.o')
     if object_path.exists(): object_path.unlink()
@@ -306,32 +326,41 @@ if not is_embedded:
     ):
         scoped_variant(stem + '-positive', positive)
         scoped_variant(stem + '-negative', negative, ('Escapable',))
+assert len(planned_scoped_labels) == (202 if is_embedded else 384), 'scoped corpus inventory changed'
 if not is_target:
     main = out / 'Main.swift'
     expression = 'p08CounterRoute() + p08CounterModel() + p08CounterSemantic() + p08CounterFixedStorage() + p08CounterCoordinator()' if args.profile else 'p08CounterGraph() + p08CounterModel() + p08CounterSemantic() + p08CounterFixedStorage() + p08CounterScopedStorage() + p08CounterCoordinator() + p08CounterHost() + p08CounterDynamicHost()'
     main.write_text('import P08CounterRuntime\nimport Darwin\n@main struct Main { static func main() { setbuf(stdout, nil); print("P08 counter components assertions=\\(' + expression + ') failures=0") } }\n')
     host_objects = [path for path in sorted(host.glob('GiftUI*.o')) if path.name != 'GiftUIHostConfiguration.o']
-    run('link', [compiler, *flags, main, core / 'GiftUI.o', *host_objects, *sorted(out.glob('*.o')), '-o', out / 'counter'])
-    execution = run('execute', [out / 'counter']).strip()
+    module_objects = [out / (name + '.o') for name in preparation if name != 'counter-lowering']
+    module_objects = [out / 'P08CounterRuntime.o' if path.name == 'counter-model.o' else path for path in module_objects]
+    run('link', [compiler, *flags, main, core / 'GiftUI.o', *host_objects, *sorted(module_objects), '-o', out / 'counter'], requires=['counter-model'])
+    execution = run('execute', [out / 'counter'], requires=['link']).strip()
     for label in registered_reuse_labels:
-        assert execution.splitlines().count(label) == 1, label + ': missing or duplicate actual reuse oracle'
-    checks.extend(dict(name=label, passed=True, evidence='execute.log') for label in registered_reuse_labels)
+        collector.observation(label, execution.splitlines().count(label) == 1, ['execute'], 'execute.log')
+    collector.observation('runtime-summary', any(re.fullmatch(r'P08 counter components assertions=[1-9][0-9]* failures=0', line) for line in execution.splitlines()), ['execute'], 'execute.log')
     trap_flags = [*flags, '-D', 'GIFTUI_COUNTER_NATIVE_EXCLUSIVITY']
-    run('so06-native-exclusivity-module', [compiler, *trap_flags, '-module-name', 'P08CounterNativeExclusivity', '-emit-module', '-emit-object', *counter_sources, *storage_sources, *join_sources, '-emit-module-path', out / 'P08CounterNativeExclusivity.swiftmodule', '-o', out / 'P08CounterNativeExclusivity.o'])
-    trap_objects = [path for path in sorted(out.glob('*.o')) if path.name != 'P08CounterRuntime.o']
+    run('so06-native-exclusivity-module', [compiler, *trap_flags, '-module-name', 'P08CounterNativeExclusivity', '-emit-module', '-emit-object', *counter_sources, *storage_sources, *join_sources, '-emit-module-path', out / 'P08CounterNativeExclusivity.swiftmodule', '-o', out / 'P08CounterNativeExclusivity.o'], requires=preparation[-2:-1])
+    trap_objects = sorted([path for path in module_objects if path.name != 'P08CounterRuntime.o'] + [out / 'P08CounterNativeExclusivity.o'])
     for negative in (False, True):
         stem = 'so06-native-exclusivity-' + ('negative' if negative else 'positive')
         main = out / (stem + '.swift')
         main.write_text('import P08CounterNativeExclusivity\n@main struct Main { @MainActor static func main() { let count = p08CounterScopedExclusivity(negative: ' + ('true' if negative else 'false') + '); precondition(count == 1) } }\n')
-        run(stem + '-link', [compiler, *trap_flags, main, core / 'GiftUI.o', *host_objects, *trap_objects, '-o', out / stem])
-        run(stem + '-execute', [out / stem], ('Simultaneous accesses', 'Fatal access conflict') if negative else None)
+        run(stem + '-link', [compiler, *trap_flags, main, core / 'GiftUI.o', *host_objects, *trap_objects, '-o', out / stem], requires=['so06-native-exclusivity-module'])
+        required = [stem + '-link'] + (['so06-native-exclusivity-positive-execute'] if negative else [])
+        run(stem + '-execute', [out / stem], ('Simultaneous accesses', 'Fatal access conflict') if negative else None, required)
 
 else:
     execution = 'cross-compiled current selected counter host only; no target execution or linked-image claim'
     (out / 'objects.list').write_text('\n'.join(map(str, [core / 'GiftUI.o', *sorted(out.glob('*.o'))])) + '\n')
-receipt = dict(scope=__doc__, raster_realization="tiled" if is_target else args.raster_realization, profile=prior['profile'], selected_host_profile=args.profile, target_flags=flags, embedded_dynamic_escape_applicable=not is_embedded, compiler=str(compiler.relative_to(ROOT)), compiler_sha256=digest(compiler), runtime_build=str(base.relative_to(ROOT)), runtime_receipt_sha256=digest(base / 'result.json'), host_build=str(host.relative_to(ROOT)), host_receipt_sha256=digest(host / 'result.json'), inputs={str(p.relative_to(ROOT)): digest(p) for p in inputs}, commands=commands, checks=checks, planned_scoped_labels=planned_scoped_labels, registered_reuse_labels=registered_reuse_labels, reuse_execution=not is_target, qualified_noncompiled_applicability=qualified_applicability, execution=execution)
+passed = collector.finish()
+receipt = dict(scope=__doc__, raster_realization="tiled" if is_target else args.raster_realization, profile=prior['profile'], selected_host_profile=args.profile, target_flags=flags, embedded_dynamic_escape_applicable=not is_embedded, compiler=str(compiler.relative_to(ROOT)), compiler_sha256=digest(compiler), runtime_build=str(base.relative_to(ROOT)), runtime_receipt_sha256=digest(base / 'result.json'), host_build=str(host.relative_to(ROOT)), host_receipt_sha256=digest(host / 'result.json'), inputs={str(p.relative_to(ROOT)): digest(p) for p in inputs}, commands=commands, checks=checks, planned_scoped_labels=planned_scoped_labels, registered_reuse_labels=registered_reuse_labels, reuse_execution=not is_target and collector.passed('execute'), qualified_noncompiled_applicability=qualified_applicability, execution=execution,
+               collection_schema=1, collection_complete=True, passed=passed, selected_families=sorted(collector.selected),
+               prior_collection=dict(path=str(collector.resume.relative_to(ROOT)), sha256=digest(collector.resume / 'result.json')) if collector.resume else None,
+               legacy_import=getattr(collector, 'legacy_identity', None))
 receipt['scoped_negative_source'] = str(trusted.relative_to(ROOT))
 receipt['artifacts'] = {str(p.relative_to(out)): dict(sha256=digest(p), bytes=p.stat().st_size) for p in out.iterdir() if p.is_file()}
 (out / 'result.json').write_text(json.dumps(receipt, indent=2) + '\n')
-print(execution.splitlines()[-1])
+print(execution.splitlines()[-1] if execution else 'runtime execution unavailable; see per-check status')
 print('P08_COUNTER_EVIDENCE', out)
+raise SystemExit(0 if passed else 1)

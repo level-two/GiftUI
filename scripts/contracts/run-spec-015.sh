@@ -19,6 +19,8 @@ usage() {
     printf '%s\n' 'Usage: scripts/contracts/run-spec-015.sh --profile <profile>' \
         '' 'Profiles: macos-dynamic, macos-static, raspberry-pi-armv6, nrf52840-embedded' \
         'Optional: --corpus rfc-014-counter --runtime-build PATH [--host-build PATH]' \
+        'Counter collection: --collect-failures [--import-legacy-controls PATH]' \
+        'Counter focused rerun: --resume-from PATH --select-family FAMILY (repeatable)' \
         'Counter target routes compile current objects; supported image build is separate.'
 }
 
@@ -26,12 +28,15 @@ profile=""
 corpus="legacy"
 runtime_build=""
 host_build=""
+collection_arguments=()
 while [[ $# -gt 0 ]]; do
     case "$1" in
         --profile) [[ $# -ge 2 ]] || { usage >&2; exit 2; }; profile="$2"; shift 2 ;;
         --corpus) [[ $# -ge 2 ]] || { usage >&2; exit 2; }; corpus="$2"; shift 2 ;;
         --runtime-build) [[ $# -ge 2 ]] || { usage >&2; exit 2; }; runtime_build="$2"; shift 2 ;;
         --host-build) [[ $# -ge 2 ]] || { usage >&2; exit 2; }; host_build="$2"; shift 2 ;;
+        --collect-failures) collection_arguments+=("$1"); shift ;;
+        --resume-from | --select-family | --import-legacy-controls) [[ $# -ge 2 ]] || { usage >&2; exit 2; }; collection_arguments+=("$1" "$2"); shift 2 ;;
         -h | --help) usage; exit 0 ;;
         *) usage >&2; exit 2 ;;
     esac
@@ -42,12 +47,12 @@ case "${profile}" in
 esac
 
 case "${corpus}" in
-    legacy) [[ -z "${runtime_build}${host_build}" ]] || { usage >&2; exit 2; } ;;
+    legacy) [[ -z "${runtime_build}${host_build}" && ${#collection_arguments[@]} -eq 0 ]] || { usage >&2; exit 2; } ;;
     rfc-014-counter)
         [[ -n "${runtime_build}" ]] || { printf 'counter route requires matching --runtime-build receipt\n' >&2; exit 2; }
         counter_arguments=(--profile "${profile}" --runtime-build "${runtime_build}")
         if [[ -n "${host_build}" ]]; then counter_arguments+=(--host-build "${host_build}"); fi
-        exec python3 "${SCRIPT_DIR}/check-spec-015-counter.py" "${counter_arguments[@]}"
+        exec python3 "${SCRIPT_DIR}/check-spec-015-counter.py" "${counter_arguments[@]}" "${collection_arguments[@]}"
         ;;
     *) usage >&2; exit 2 ;;
 esac
